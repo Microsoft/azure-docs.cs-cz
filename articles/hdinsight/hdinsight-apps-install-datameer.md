@@ -3,18 +3,18 @@ title: Instalace publikované aplikace – Datameer – Azure HDInsight
 description: Nainstalovat a používat aplikace Hadoop jiných výrobců Datameer.
 services: hdinsight
 author: ashishthaps
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: ashish
-ms.openlocfilehash: 7b75170349f41b0fa611d5e748353484c7fea2e0
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: a428bb7bc9cc6a6a2e28989271ad1998700438cf
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39598584"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43107744"
 ---
 # <a name="install-published-application---datameer"></a>Instalace publikované aplikace – Datameer
 

@@ -7,14 +7,14 @@ author: juliako
 manager: erikre
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 07/31/2018
+ms.date: 08/25/2018
 ms.author: juliako
-ms.openlocfilehash: ba81030c3d6384ca6b66d6a3b14e614d1626e3e0
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.openlocfilehash: b8de9e8d73ba899fb7f3036d871c5d30daf101de
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "41987499"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43049352"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>Vložení widgetů Video Indexer do vašich aplikací
 
@@ -95,7 +95,7 @@ Tato část ukazuje, jak dosáhnout interakce mezi dvě pomůcky Video Indexer t
 
 Nyní když uživatel klikne na ovládací prvek insight ve své aplikaci, hráč přejde na příslušné místo.
 
-Další informace najdete v tématu [tuto ukázku](https://api-portal.videoindexer.ai/demo-all-widgets).
+Další informace najdete v tématu [tuto ukázku](https://codepen.io/videoindexer/pen/NzJeOb).
 
 ### <a name="embed-the-cognitive-insights-widget-and-use-azure-media-player-to-play-the-content"></a>Vložení widgetu kognitivní přehledy a Azure Media Player umožňuje přehrávání obsahu
 
@@ -153,7 +153,7 @@ Tato část ukazuje, jak dosáhnout interakce mezi **kognitivní přehledy** wid
 
 Je třeba nyní schopen komunikovat s vaší Azure Media Playeru.
 
-Další informace najdete v tématu [tuto ukázku](https://api-portal.videoindexer.ai/demo-your-amp).
+Další informace najdete v tématu [tuto ukázku](https://codepen.io/videoindexer/pen/rYONrO).
 
 ### <a name="embed-video-indexer-cognitive-insights-widget-and-use-your-own-player-could-be-any-player"></a>Vložení widgetu kognitivní přehledy Video indexeru a použijte vlastní přehrávač (může být jakékoli player)
 
@@ -201,7 +201,7 @@ Pokud používáte vlastní přehrávač, budete muset starat o manipulaci s př
         </script>
 
 
-Další informace najdete v tématu [tuto ukázku](https://api-portal.videoindexer.ai/demo-your-player).
+Další informace najdete v tématu [tuto ukázku](https://codepen.io/videoindexer/pen/YEyPLd).
 
 ## <a name="adding-subtitles"></a>Přidání titulků
 

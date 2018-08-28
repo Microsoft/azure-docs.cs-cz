@@ -6,15 +6,15 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: tutorial
-ms.date: 04/30/2018
+ms.date: 08/20/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 6347c460ab88929152424d301445a219720b98e8
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 25e3fdfe72fc2a6ffec1bcee23cd9f1edc783838
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38582297"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41918448"
 ---
 # <a name="tutorial-deploy-web-app-from-azure-container-registry"></a>Kurz: Nasazení webové aplikace ze služby Azure Container Registry
 
@@ -42,11 +42,13 @@ V tomto kroku vytvoříte instanci služby Web App for Containers v oblasti *USA
 
 Přihlaste se na portál [Azure Portal](https://portal.azure.com) a přejděte do registru, který jste vytvořili v předchozím kurzu.
 
-Vyberte **Úložiště** > **acr helloworld** a pak klikněte pravým tlačítkem na značku **v1** v části **Značky** a vyberte **Nasadit do webové aplikace**.
+Vyberte **Úložiště** > **acr-helloworld** a pak klikněte pravým tlačítkem na značku **v1** v části **Značky** a vyberte **Nasadit do webové aplikace**:
 
 ![Nasazení do služby App Service na portálu Azure Portal][deploy-app-portal-01]
 
-V zobrazené části **Web App for Containers** zadejte u jednotlivých nastavení následující hodnoty:
+Pokud je možnost Nasadit do webové aplikace zakázaná, pravděpodobně jste nepovolili uživatele s rolí správce registru podle pokynů v části [Vytvoření registru kontejneru](container-registry-tutorial-prepare-registry.md#create-a-container-registry) v prvním kurzu. Uživatele s rolí správce můžete povolit na webu Azure Portal v části **Nastavení** > **Přístupové klíče**.
+
+V části **Web App for Containers**, která se zobrazí po výběru možnosti Nasadit do webové aplikace, zadejte u jednotlivých nastavení následující hodnoty:
 
 | Nastavení | Hodnota |
 |---|---|

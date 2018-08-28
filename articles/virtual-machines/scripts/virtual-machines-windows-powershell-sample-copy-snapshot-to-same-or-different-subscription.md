@@ -1,6 +1,6 @@
 ---
-title: Azure ukázkový skript prostředí PowerShell - kopírování (přesunout) snímek spravovaných disků na stejný nebo jiný předplatné | Microsoft Docs
-description: Azure ukázkový skript prostředí PowerShell - kopírování (přesunout) snímek spravovaných disků na stejný nebo jiný odběr
+title: Ukázkový skript Azure PowerShellu – Kopírování (přesun) snímku spravovaného disku do stejného nebo jiného předplatného | Microsoft Docs
+description: Ukázkový skript Azure PowerShellu – Kopírování (přesun) snímku spravovaného disku do stejného nebo jiného předplatného
 services: virtual-machines-windows
 documentationcenter: storage
 author: ramankumarlive
@@ -15,16 +15,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 06/06/2017
 ms.author: ramankum
-ms.openlocfilehash: 064b5355da10fe683563fa078cfafc65080f7ea2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2905747b6ece93f018bd6ef67fae1b23ec9c9d5d
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23879656"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "41920301"
 ---
-# <a name="copy-snapshot-of-a-managed-disk-in-same-subscription-or-different-subscription-with-powershell"></a>Kopírování snímku spravovaného disku v rámci stejného předplatného nebo jiného předplatného pomocí prostředí PowerShell
+# <a name="copy-snapshot-of-a-managed-disk-in-same-subscription-or-different-subscription-with-powershell"></a>Kopírování snímku spravovaného disku do stejného nebo jiného předplatného pomocí PowerShellu
 
-Tento skript vytvoří kopii snímku ve stejné stejného předplatného nebo jiné předplatné. Pomocí tohoto skriptu přesunout do jiného předplatného pro uchovávání dat snímku. Ukládání snímků v jiném předplatném. můžete chránit před nechtěným odstraněním snímků ve vašem předplatném hlavní. 
+Tento skript vytvoří kopii snímku ve stejném nebo jiném předplatném. Pomocí tohoto skriptu můžete přesunout snímek do jiného předplatného pro zajištění uchovávání dat. Ukládání snímků v jiném předplatném chrání před náhodným odstraněním snímků v hlavním předplatném. 
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
 
@@ -37,18 +37,18 @@ Tento skript vytvoří kopii snímku ve stejné stejného předplatného nebo ji
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript používá následující příkazy pro vytvoření snímku v cílové předplatné pomocí Id zdrojové snímku. Každý příkaz v tabulce odkazy na dokumentaci konkrétní příkaz.
+Tento skript k vytvoření snímku v cílovém předplatném pomocí ID zdrojového snímku používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
 | Příkaz | Poznámky |
 |---|---|
-| [Nové AzureRmSnapshotConfig](/powershell/module/azurerm.compute/New-AzureRmSnapshotConfig) | Vytvoří snímek konfigurace, který se používá pro vytvoření snímku. Obsahuje Id nadřazené snímku a umístění, která je stejná jako nadřazená snímku prostředku.  |
-| [Nové AzureRmSnapshot](/powershell/module/azurerm.compute/New-AzureRmDisk) | Vytvoří snímek pomocí snímek konfigurace, název snímku a předány jako parametry název skupiny prostředků. |
+| [New-AzureRmSnapshotConfig](/powershell/module/azurerm.compute/New-AzureRmSnapshotConfig) | Vytvoří konfiguraci snímku, která se použije při vytvoření snímku. Bude obsahovat ID prostředku nadřazeného snímku a stejné umístění, jako má nadřazený snímek.  |
+| [New-AzureRmSnapshot](/powershell/module/azurerm.compute/New-AzureRmDisk) | Vytvoří snímek s použitím konfigurace snímku, názvu snímku a názvu skupiny prostředků, které se předají jako parametry. |
 
 
 ## <a name="next-steps"></a>Další kroky
 
 [Vytvoření virtuálního počítače ze snímku](./virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md?toc=%2fpowershell%2fmodule%2ftoc.json)
 
-Další informace o modulu Azure PowerShell najdete v tématu [dokumentace Azure PowerShell](/powershell/azure/overview).
+Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 
-Ukázky skriptu PowerShell další virtuální počítač nachází v [virtuálního počítače Windows Azure dokumentaci](../windows/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Další ukázkové skripty PowerShellu pro virtuální počítače najdete v [dokumentaci k virtuálním počítačům Azure s Windows](../windows/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

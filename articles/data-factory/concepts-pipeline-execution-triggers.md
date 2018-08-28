@@ -10,15 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 07/05/2018
 ms.author: shlo
-ms.openlocfilehash: 0af6ea05b663f0954785ce966440e3f698ad14a8
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
-ms.translationtype: HT
+ms.openlocfilehash: 4ac0f27480bbddf28b83af05e4b7b89ca6766871
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867082"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43093774"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Spouštění kanálů a aktivační události v Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
@@ -276,7 +276,7 @@ Následující tabulka obsahuje přehled hlavních elementů schématu souvisej�
 
 ### <a name="schema-defaults-limits-and-examples"></a>Výchozí hodnoty, omezení a příklady schématu
 
-| Vlastnost JSON | Typ | Požaduje se | Výchozí hodnota | Platné hodnoty | Příklad |
+| Vlastnost JSON | Typ | Požaduje se | Výchozí hodnota | Platné hodnoty | Příklad: |
 |:--- |:--- |:--- |:--- |:--- |:--- |
 | **startTime** | řetězec | Ano | Žádný | Data a časy podle normy ISO 8601 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
 | **recurrence** | objekt | Ano | Žádný | Objekt opakování | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
@@ -333,7 +333,7 @@ Tato část obsahuje příklady plánů opakování. Zaměřuje se na objekt **s
 
 V příkladech se předpokládá, že vlastnost **interval** má hodnotu 1 a vlastnost **frequency** má správnou hodnotu s ohledem na definici plánu. Například není možné, aby vlastnost **frequency** měla hodnotu „day“ a zároveň objekt **schedule** obsahoval úpravu atributu **monthDays**. Tyto typy omezení jsou popsané v tabulce v předchozí části.
 
-| Příklad | Popis |
+| Příklad: | Popis |
 |:--- |:--- |
 | `{"hours":[5]}` | Spuštění každý den v 5:00. |
 | `{"minutes":[15], "hours":[5]}` | Spuštění každý den v 5:15. |
@@ -376,7 +376,7 @@ Následující tabulka obsahuje porovnání aktivační události pro přeskakuj
 | **Systémové proměnné** | Podporuje použití systémových proměnných **WindowStart** a **WindowEnd**. Uživatelé mají v definici aktivační události přístup k `triggerOutputs().windowStartTime` a `triggerOutputs().windowEndTime` jako systémovým proměnným aktivační události. Tyto hodnoty se používají v čase začátku okna a v čase konce okna. Například pro aktivační událost pro přeskakující okno, která se spouští každou hodinu, je definice okna od 1:00 do 2:00 následující: `triggerOutputs().WindowStartTime = 2017-09-01T01:00:00Z` a `triggerOutputs().WindowEndTime = 2017-09-01T02:00:00Z`. | Nepodporuje se. |
 | **Vztah mezi kanálem a aktivační událostí** | Podporuje vztah 1:1. Je možné aktivovat pouze jeden kanál. | Podporuje vztahy M:N. Víc aktivačních událostí může aktivovat jeden kanál. Jedna aktivační událost může aktivovat více kanálů. | 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Projděte si tyto kurzy:
 
 - [Rychlý start: Vytvoření datové továrny pomocí sady .NET SDK](quickstart-create-data-factory-dot-net.md)

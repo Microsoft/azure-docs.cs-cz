@@ -5,16 +5,16 @@ services: hdinsight
 ms.service: hdinsight
 author: jasonwhowell
 ms.author: jasonh
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 3bb8546ccf15788317370ccfe654fddbd0fb0cf9
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: ef9292e7e36f5accabf532ef4a26d334fb880859
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39592346"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43052107"
 ---
 # <a name="use-python-user-defined-functions-udf-with-hive-and-pig-in-hdinsight"></a>Použití Pythonu uživatelem definované funkce (UDF) s Hivem a Pig v HDInsight
 

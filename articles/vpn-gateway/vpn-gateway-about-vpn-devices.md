@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2018
 ms.author: yushwang
-ms.openlocfilehash: ba557fdae01df4a631c2acff49cc3350fb08ff59
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 9a97927bb3309fd3ea833cbc7ff0e1eb8a5141f0
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34726233"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43042531"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>O zařízeních VPN a o parametrech protokolu IPsec/IKE pro připojení typu Site-to-Site ke službě VPN Gateway
 
@@ -73,7 +73,7 @@ Pomoc s konfigurací zařízení VPN najdete pod odkazy, které odpovídají př
 | ShareTech | UTM příští generace (řada NU) | 9.0.1.3 | Není kompatibilní | [Průvodce konfigurací](http://www.sharetech.com.tw/images/file/Solution/NU_UTM/S2S_VPN_with_Azure_Route_Based_en.pdf) |
 | SonicWall |Řada TZ, řada NSA<br>Řada SuperMassive<br>Řada E-Class NSA |SonicOS 5.8.x<br>SonicOS 5.9.x<br>SonicOS 6.x |Není kompatibilní |[Průvodce konfigurací](https://www.sonicwall.com/support/knowledge-base/170505320011694) |
 | Sophos | XG Next Gen Firewall | XG v17 | | [Průvodce konfigurací](https://community.sophos.com/kb/127546) |
-| Ubiquiti | EdgeRouter | EdgeOS v1.10 |  | [Protokol BGP prostřednictvím IKEv2 nebo protokolu IPsec](https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fhelp.ubnt.com%2Fhc%2Fen-us%2Farticles%2F115012374708&data=02%7C01%7Cmaafiri%40microsoft.com%7C7580cdf59eb94528c0de08d4f9fd78bd%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636408314443168072&sdata=2EF5KFljZwtAGQDSm8%2FF2f6DqI2bkmA2qKG4u0rPgbQ%3D&reserved=0)<br><br>[VTI prostřednictvím IKEv2 nebo protokolu IPsec](https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fhelp.ubnt.com%2Fhc%2Fen-us%2Farticles%2F115012305347&data=02%7C01%7Cmaafiri%40microsoft.com%7C7580cdf59eb94528c0de08d4f9fd78bd%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636408314443168072&sdata=ycgiDJCOQYTPN7sAEBSigphzC6mBaADz%2FgdCOm7TsXA%3D&reserved=0)
+| Ubiquiti | EdgeRouter | EdgeOS v1.10 |  | [Protokol BGP přes IKEv2 a IPsec](https://help.ubnt.com/hc/en-us/articles/115012374708)<br><br>[VTI přes IKEv2 a IPsec](https://help.ubnt.com/hc/en-us/articles/115012305347)
 | WatchGuard |Vše |Fireware XTM<br> PolicyBased: v11.11.x<br>RouteBased: v11.12.x |[Průvodce konfigurací](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA2F00000000LI7KAM&lang=en_US) |[Průvodce konfigurací](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA22A000000XZogSAG&lang=en_US)|
 
 > [!NOTE]
@@ -82,11 +82,11 @@ Pomoc s konfigurací zařízení VPN najdete pod odkazy, které odpovídají př
 >
 > (\*\*) Směrovače řady ISR 7200 podporují jenom sítě VPN typu PolicyBased.
 
-## <a name="configscripts"></a>Stáhněte si skripty konfigurace zařízení VPN z Azure
+## <a name="configscripts"></a>Stažení skriptů konfigurace zařízení VPN z Azure
 
-Pro určité zařízení, můžete stáhnout konfigurační skripty přímo z Azure. Další informace a pokyny ke stažení, najdete v části [skripty konfigurace zařízení VPN Stáhnout](vpn-gateway-download-vpndevicescript.md).
+Pro určité zařízení, si můžete stáhnout konfigurační skripty přímo z Azure. Další informace a pokyny ke stažení, najdete v části [konfiguračních skriptů zařízení VPN Stáhnout](vpn-gateway-download-vpndevicescript.md).
 
-### <a name="devices-with-available-configuration-scripts"></a>Zařízení s dostupné konfiguračních skriptů
+### <a name="devices-with-available-configuration-scripts"></a>Zařízení s dostupných konfiguračních skriptů
 
 [!INCLUDE [scripts](../../includes/vpn-gateway-device-configuration-scripts.md)]
 

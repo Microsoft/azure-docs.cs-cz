@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/28/2018
 ms.author: zachal
 ms.custom: mvc
-ms.openlocfilehash: 92258ce7ea39a06f2af85efd9174b1b200710566
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 4d5222889d5e840bd03bf77a56584dac48bb740c
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36216962"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41924764"
 ---
 # <a name="manage-windows-updates-by-using-azure-automation"></a>Správa aktualizací pro Windows pomocí služby Azure Automation
 
@@ -126,9 +126,6 @@ Pokud chcete upravit předmět e-mailového oznámení, na stránce **Vytvořit 
 
 Dále naplánujte nasazení odpovídající vašemu plánu vydávání a časovému intervalu pro instalaci aktualizací. Můžete zvolit typy aktualizací, které budou součástí nasazení. Můžete například zahrnout důležité aktualizace nebo aktualizace zabezpečení a vyloučit kumulativní aktualizace.
 
-> [!WARNING]
-> Pokud aktualizace vyžadují restartování, virtuální počítač se restartuje automaticky.
-
 Pokud chcete pro virtuální počítač naplánovat nové nasazení aktualizací, přejděte do části **Správa aktualizací** a pak vyberte **Naplánovat nasazení aktualizací**.
 
 V části **Nové nasazení aktualizací** zadejte následující informace:
@@ -136,6 +133,8 @@ V části **Nové nasazení aktualizací** zadejte následující informace:
 * **Název:** Zadejte jedinečný název nasazení aktualizací.
 
 * **Operační systém:** Vyberte cílový operační systém pro nasazení aktualizací.
+
+* **Počítače k aktualizaci:** Vyberte uložené hledání, importovanou skupinu nebo vyberte jednotlivé počítače z rozevírací nabídky. Pokud zvolíte možnost **Počítače**, ve sloupci **PŘIPRAVENOST AGENTA AKTUALIZACE** se zobrazí připravenost počítačů. Informace o různých způsobech vytváření skupin počítačů v Log Analytics najdete v tématu [Skupiny počítačů v Log Analytics](../log-analytics/log-analytics-computer-groups.md).
 
 * **Klasifikace aktualizací:** Vyberte typy softwaru, které se zahrnou do nasazení aktualizací. Pro účely tohoto kurzu nechte vybrané všechny typy.
 
@@ -154,9 +153,17 @@ V části **Nové nasazení aktualizací** zadejte následující informace:
 
 * **Časové období údržby (minuty):** Ponechte výchozí hodnotu. Můžete nastavit časové okno, ve kterém má dojít k nasazení aktualizací. Toto nastavení pomůže zajistit, že se změny provedou v rámci definovaných časových intervalů pro správu a údržbu.
 
+* **Možnosti restartování:** Toto nastavení určuje, jak se má provádět restartování. Dostupné možnosti jsou:
+  * Restartovat v případě potřeby (výchozí)
+  * Vždy restartovat
+  * Nikdy nerestartovat
+  * Pouze restartovat – nenainstalují se aktualizace
+
+Jakmile budete s konfigurací plánu hotovi, vyberte **Vytvořit**.
+
 ![Podokno nastavení plánu aktualizací](./media/automation-tutorial-update-management/manageupdates-schedule-win.png)
 
-Jakmile budete s konfigurací plánu hotovi, vyberte **Vytvořit**. Vrátíte se na řídicí panel stavu. Vyberte **Naplánovaná nasazení aktualizací** a zobrazte plán nasazení, který jste vytvořili.
+Vrátíte se na řídicí panel stavu. Vyberte **Naplánovaná nasazení aktualizací** a zobrazte plán nasazení, který jste vytvořili.
 
 ## <a name="view-results-of-an-update-deployment"></a>Zobrazení výsledků nasazení aktualizací
 

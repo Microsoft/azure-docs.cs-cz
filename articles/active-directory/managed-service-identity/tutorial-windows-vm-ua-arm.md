@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/10/2018
 ms.author: daveba
-ms.openlocfilehash: 9cc7683b260a9afbe4aee006a22af9c4834c4eb1
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: db4d423a09b6b37fd0ba88d466319cb5da4fdedf
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248383"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "41917938"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-service-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>Kurz: Použití uživatelem přiřazené identity spravované služby na virtuálním počítači s Windows k přístupu k Azure Resource Manageru
 
@@ -42,8 +42,12 @@ Získáte informace o těchto tématech:
 - Pokud Identitu spravované služby neznáte, projděte si část [Přehled](overview.md). **Nezapomeňte si prostudovat [rozdíly mezi systémovými a uživatelem přiřazenými identitami](overview.md#how-does-it-work)**.
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
 - K provedení kroků v tomto kurzu potřebných k vytvoření prostředku a správě rolí potřebuje váš účet oprávnění vlastníka v odpovídajícím oboru (vaše předplatné nebo skupina prostředků). Pokud potřebujete pomoc s přiřazením role, přečtěte si téma [Použití řízení přístupu na základě role ke správě přístupu k prostředkům předplatného Azure](/azure/role-based-access-control/role-assignments-portal).
-
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použít modul Azure PowerShell verze 5.7 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Login-AzureRmAccount` pro vytvoření připojení k Azure.
+- Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použít modul Azure PowerShell verze 5.7.0 nebo novější. Verzi zjistíte spuštěním příkazu ` Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). 
+- Pokud používáte PowerShell místně, je potřeba provést také následující: 
+    - Spuštěním příkazu `Login-AzureRmAccount` vytvořte připojení k Azure.
+    - Nainstalujte [nejnovější verzi modulu PowerShellGet](/powershell/gallery/installing-psget#for-systems-with-powershell-50-or-newer-you-can-install-the-latest-powershellget).
+    - Spuštěním rutiny `Install-Module -Name PowerShellGet -AllowPrerelease` získejte předběžnou verzi modulu `PowerShellGet` (po spuštění tohoto příkazu možná budete muset pomocí příkazu `Exit` ukončit aktuální relaci PowerShellu, aby se modul `AzureRM.ManagedServiceIdentity` nainstaloval).
+    - Spuštěním rutiny `Install-Module -Name AzureRM.ManagedServiceIdentity -AllowPrerelease` nainstalujte předběžnou verzi modulu `AzureRM.ManagedServiceIdentity`, který umožňuje provádět operace s identitou přiřazenou uživatelem v tomto článku.
 
 ## <a name="create-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -83,10 +87,10 @@ Identita přiřazená uživatelem se vytváří jako samostatný prostředek Azu
 [!INCLUDE[ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
 ```azurepowershell-interactive
-Get-AzureRmUserAssignedIdentity -ResourceGroupName myResourceGroupVM -Name ID1
+New-AzureRmUserAssignedIdentity -ResourceGroupName myResourceGroupVM -Name ID1
 ```
 
-Odpověď bude obsahovat podrobnosti o vytvořené identitě přiřazené uživatelem podobně jako v následujícím příkladu. Poznamenejte si hodnotu `Id` pro vaši identitu přiřazenou uživatelem, protože ji použijete v dalším kroku:
+Odpověď bude obsahovat podrobnosti o vytvořené identitě přiřazené uživatelem podobně jako v následujícím příkladu. Poznamenejte si hodnoty `Id` a `ClientId` pro vaši identitu přiřazenou uživatelem, protože je budete potřebovat v dalších krocích:
 
 ```azurepowershell
 {
@@ -148,10 +152,10 @@ Ve zbývající části kurzu použijete k práci dříve vytvořený virtuáln�
 
 4. Teď, když jste vytvořili **připojení ke vzdálené ploše** s virtuálním počítačem, otevřete ve vzdálené relaci **PowerShell**.
 
-5. Pomocí příkazu `Invoke-WebRequest` v PowerShellu odešlete do místního koncového bodu identity spravované služby žádost o přístupový token pro Azure Resource Manager.
+5. Pomocí příkazu `Invoke-WebRequest` v PowerShellu odešlete do místního koncového bodu identity spravované služby žádost o přístupový token pro Azure Resource Manager.  Hodnota `client_id` je hodnota, která se vrátila při [vytvoření spravované identity přiřazené uživatelem](#create-a-user-assigned-identity).
 
     ```azurepowershell
-    $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&client_id=73444643-8088-4d70-9532-c3a0fdc190fz&resource=https://management.azure.com' -Method GET -Headers @{Metadata="true"}
+    $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&client_id=af825a31-b0e0-471f-baea-96de555632f9&resource=https://management.azure.com/' -Method GET -Headers @{Metadata="true"}
     $content = $response.Content | ConvertFrom-Json
     $ArmToken = $content.access_token
     ```
@@ -166,7 +170,7 @@ Použijte přístupový token načtený v předchozím kroku k přístupu k Azur
 Odpověď bude obsahovat informace o konkrétní skupině prostředků podobně jako v následujícím příkladu:
 
 ```json
-{"id":"/subscriptions/<SUBSCRIPTIONID>/resourceGroups/TestRG","name":"myResourceGroupVM","location":"eastus","properties":{"provisioningState":"Succeeded"}}
+{"id":"/subscriptions/<SUBSCRIPTIONID>/resourceGroups/myResourceGroupVM","name":"myResourceGroupVM","location":"eastus","properties":{"provisioningState":"Succeeded"}}
 ```
 
 ## <a name="next-steps"></a>Další kroky

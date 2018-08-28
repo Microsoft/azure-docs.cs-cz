@@ -5,17 +5,17 @@ keywords: Storm Starter, příklad Apache Storm
 services: hdinsight
 author: jasonwhowell
 ms.author: jasonh
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 02/27/2018
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 3c874e296f984355800868eb530c52fa9fcc0104
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
-ms.translationtype: HT
+ms.openlocfilehash: a800b3b44d060627bc8f75d8566507a9ad116f86
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39620184"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43048206"
 ---
 # <a name="get-started-with-apache-storm-on-hdinsight-using-the-storm-starter-examples"></a>Začínáme s Apache Storm v HDInsight pomocí příkladů topologie Storm Starter
 

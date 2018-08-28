@@ -10,15 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 06/14/2018
 ms.author: jingwang
-ms.openlocfilehash: 1e44c6eb4294cfb0e150d6dd1c20b9f4805ca84c
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
-ms.translationtype: HT
+ms.openlocfilehash: a9df3d9d181ed210a7c6aaec7974fa719b4f072e
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37112948"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43086878"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Prostředí Integration Runtime v Azure Data Factory
 Prostředí Integration Runtime (IR) je výpočetní infrastruktura, kterou Azure Data Factory používá k poskytování následujících funkcí integrace dat v různých síťových prostředích:
@@ -154,7 +154,7 @@ Aktivity Lookup a GetMetadata se provádí v prostředí Integration Runtime př
 
 Každá aktivita transformace má cílovou výpočetní propojenou službu, která odkazuje na určité prostředí Integration Runtime. Z této instance prostředí Integration Runtime se aktivita transformace odesílá.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Viz následující články:
 
 - [Vytvoření prostředí Integration Runtime v místním prostředí](create-self-hosted-integration-runtime.md)

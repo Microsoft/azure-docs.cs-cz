@@ -2,18 +2,18 @@
 title: Přesun velkých objemů dat do a z cloudového úložiště v Azure | Dokumentace Microsoftu
 description: Přehled různých metod pro přesun dat do a z Azure Storage.
 services: storage
-author: JarrettRenshaw
+author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 01/30/2017
-ms.author: jarrettr
+ms.date: 08/26/2018
+ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 81d7b5cf03e56ecc54db71b09af335d6cb794806
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 1df237a65a8b5312b20de19a99399b3a3dd075ff
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525531"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43049606"
 ---
 # <a name="moving-data-to-and-from-azure-storage"></a>Přesunutí dat z Azure Storage a do Azure Storage
 Pokud chcete pro přesun místních dat do služby Azure Storage (nebo naopak), existuje široká škála způsobů, jak to provést. Si přístup, který vám bude nejlépe vyhovovat bude záviset na vaší situaci. Tento článek poskytuje stručný přehled různých scénářů a příslušné nabídky pro každé z nich.
@@ -21,7 +21,7 @@ Pokud chcete pro přesun místních dat do služby Azure Storage (nebo naopak), 
 ## <a name="building-applications"></a>Vytváření aplikací
 Pokud už vytváříte aplikace, vývoj s využitím rozhraní REST API nebo jednu z našich mnoho klientské knihovny je skvělým řešením pro přesun dat do a z Azure Storage.
 
-Azure Storage poskytuje množství knihoven klienta pro rozhraní .NET, iOS, Java, Android, univerzální platforma Windows (UPW), Xamarin, C++, Node.JS, PHP, Ruby a Python. Knihovny klienta nabízí pokročilé možnosti a funkce, jako je například logika opakovaných pokusů, protokolování a paralelní ukládání. Můžete také psát aplikace přímo na rozhraní REST API, které může zavolat jakýkoli jazyk schopný vytvářet požadavky přes HTTP/HTTPS.
+Azure Storage poskytuje množství knihoven klienta pro mnoho oblíbených jazyků, včetně .NET, Java, Android, Go, Xamarin, C++, Node.JS, PHP, Ruby, Python a iOS. Knihovny klienta nabízí pokročilé možnosti a funkce, jako je například logika opakovaných pokusů, protokolování a paralelní ukládání. Můžete také psát aplikace přímo na rozhraní REST API, které může zavolat jakýkoli jazyk schopný vytvářet požadavky přes HTTP/HTTPS.
 
 Zobrazit [Začínáme s Azure Blob Storage](../blobs/storage-dotnet-how-to-use-blobs.md) Další informace.
 

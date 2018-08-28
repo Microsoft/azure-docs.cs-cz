@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 05/09/2018
 ms.author: bonova
 manager: craigg
-ms.openlocfilehash: e337a5c7c203e2e1048149dfeff71436a4d2752f
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: a019b21c130bebfe27925e90d7f7843d92654e01
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34850606"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41920047"
 ---
 # <a name="create-an-azure-sql-database-managed-instance-in-the-azure-portal"></a>Vytvoření Azure SQL Database Managed Instance na webu Azure Portal
 
@@ -33,15 +33,17 @@ V tomto kurzu se dozvíte, jak pomocí portálu Azure Portal ve vyhrazené pods�
 > * Připojení k virtuálnímu počítači
 > * Instalace aplikace SSMS a připojení k Managed Instance
 
+> [!Note]
+> Tento kurz vysvětluje, jak pomocí webu Azure Portal nakonfigurovat síť, podsítě, instanci a virtuální počítač, což může být delší proces. Pokud potřebujete kratší rychlý kurz, kde se síť a virtuální počítač sloužící k přístupu k instanci vytvoří jedním kliknutím na tlačítko Nasadit do Azure, můžete se podívat na [kurz Začínáme](sql-database-managed-instance-get-started.md).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 > [!IMPORTANT]
 > Seznam oblastí, ve kterých je Managed Instance aktuálně k dispozici, najdete v tématu [Migrace databází do plně spravované služby pomocí Azure SQL Database Managed Instance](https://azure.microsoft.com/blog/migrate-your-databases-to-a-fully-managed-service-with-azure-sql-database-managed-instance/).
  
-## <a name="log-in-to-the-azure-portal"></a>Přihlášení k portálu Azure Portal
+## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k portálu [Azure Portal](https://portal.azure.com/#create/Microsoft.SQLManagedInstance).
+Přihlaste se k [portálu Azure](https://portal.azure.com/#create/Microsoft.SQLManagedInstance).
 
 ## <a name="whitelist-your-subscription"></a>Přidání předplatného na seznam povolených
 
@@ -160,7 +162,7 @@ Následující kroky ukazují, jak po schválení pro verzi Preview vytvořit Ma
 2. Vyhledejte **Managed Instance** a pak vyberte **Azure SQL Database Managed Instance (Preview)**.
 3. Klikněte na možnost **Vytvořit**.
 
-   ![vytvoření Managed Instance](./media/sql-database-managed-instance-tutorial/managed-instance-create.png)
+   ![vytvoření spravované instance](./media/sql-database-managed-instance-tutorial/managed-instance-create.png)
 
 4. Vyberte své předplatné a ověřte, že se u podmínek verze Perview zobrazuje **Přijato**.
 
@@ -302,7 +304,7 @@ Následující kroky ukazují, jak stáhnout a nainstalovat aplikaci SSMS a pak 
 8. Po zobrazení výzvy začněte kliknutím na **Nainstalovat**.
 9. Až instalace skončí, klikněte na **Zavřít**.
 10. Otevřete aplikaci SSMS.
-11. V dialogovém okně **Připojení k serveru** do pole **Název serveru** zadejte *název hostitele* pro Managed Instance, vyberte **Ověřování SQL Serveru**, zadejte své přihlašovací jméno a heslo a pak klikněte na **Připojit**.
+11. V dialogovém okně **Připojení k serveru** do pole **Název serveru** zadejte **název hostitele** pro Managed Instance, vyberte **Ověřování SQL Serveru**, zadejte své přihlašovací jméno a heslo a pak klikněte na **Připojit**.
 
     ![Připojení přes SSMS](./media/sql-database-managed-instance-tutorial/ssms-connect.png)  
 

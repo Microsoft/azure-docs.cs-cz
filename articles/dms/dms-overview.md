@@ -9,13 +9,13 @@ ms.reviewer: douglasl
 ms.service: database-migration
 ms.workload: data-services
 ms.topic: article
-ms.date: 08/20/2018
-ms.openlocfilehash: 4bfa6ef778f51446146de4c10575ac7a287c68dc
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.date: 08/27/2018
+ms.openlocfilehash: 443edcaf1d087028120f4996ba5abef00b1d2c94
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42054467"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43041333"
 ---
 # <a name="what-is-the-azure-database-migration-service"></a>Co je Azure Database Migration Service?
 Azure Database Migration Service je plně spravovaná služba, která umožňují bezproblémovou migraci z několika databázových zdrojů na platformu Azure Data s minimálními výpadky.
@@ -25,6 +25,12 @@ Azure Database Migration Service integrována některé funkce naší existujíc
 
 ## <a name="regional-availability"></a>Regionální dostupnost
 Aktuální informace o oblastech, ve kterých je dostupná služba Database Migration Service, najdete v části [dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/).
+
+> [!NOTE]
+> Online migrace a SKU doporučení funkce jsou aktuálně k dispozici pouze v těchto oblastech:
+> - Cental USA
+> - USA – východ 2
+> - Západní Evropa
 
 ## <a name="next-steps"></a>Další postup
 - [Vytvoření instance služby Azure Database Migration Service pomocí webu Azure portal](quickstart-create-data-migration-service-portal.md).

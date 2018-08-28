@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: fbc40d0768a7cf1cb83a3e78dd524fac26254bea
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 808914dddcaefa4795264d3904e26ef6200f483e
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42055449"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43087306"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Jak naplánovat vaši implementaci připojení k hybridní službě Azure Active Directory
 
@@ -131,6 +131,7 @@ Pokud vaše prostředí obsahuje spravované domény, podporuje připojení k hy
 Počínaje verzí 1.1.819.0, Azure AD Connect poskytuje průvodce ke konfiguraci připojení k hybridní službě Azure AD. Průvodce umožňuje výrazně zjednodušuje proces konfigurace. Další informace naleznete v tématu:
 
 - [Konfigurace hybridního připojení Azure Active Directory pro federované domény](hybrid-azuread-join-federated-domains.md)
+
 
 - [Konfigurace hybridního připojení Azure Active Directory pro spravované domény](hybrid-azuread-join-managed-domains.md)
 

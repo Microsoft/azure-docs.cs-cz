@@ -5,16 +5,16 @@ services: hdinsight
 ms.service: hdinsight
 author: ashishthaps
 ms.author: ashishth
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/19/2018
-ms.openlocfilehash: 05ac13fe849f90e3f0dbc60d5c232f469e1f290d
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 7e002a43c774bd1a6df9cfe46207ddebd02284b3
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714838"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43104219"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Synchronizace uživatelů Azure Active Directory pro HDInsight cluster
 
@@ -128,7 +128,7 @@ Pomocí rozhraní Ambari REST API používá následující Metoda POST. Další
 
 ## <a name="verify-the-newly-added-azure-ad-user"></a>Ověřte nově přidané uživatele Azure AD
 
-Otevřít [webovému uživatelskému rozhraní Ambari](hdinsight-hadoop-manage-ambari.md) pro ověření, že nové uživatele Azure AD byl přidán. Přístup k webovému uživatelskému rozhraní Ambari, tak, že přejdete do ** `https://<YOUR CLUSTER NAME>.azurehdinsight.net` **. Zadejte uživatelské jméno správce clusteru a heslo.
+Otevřít [webovému uživatelskému rozhraní Ambari](hdinsight-hadoop-manage-ambari.md) pro ověření, že nové uživatele Azure AD byl přidán. Přístup k webovému uživatelskému rozhraní Ambari, tak, že přejdete do **`https://<YOUR CLUSTER NAME>.azurehdinsight.net`**. Zadejte uživatelské jméno správce clusteru a heslo.
 
 1. Z řídicího panelu Ambari vyberte **spravovat Ambari** pod **správce** nabídky.
 

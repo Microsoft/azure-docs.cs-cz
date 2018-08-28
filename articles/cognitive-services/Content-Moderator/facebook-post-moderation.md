@@ -9,12 +9,12 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: sajagtap
-ms.openlocfilehash: 4570b514bef33c8dfa6d220ee4cd88ad068ba4d0
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 66caea65c21bb1f8bb6efa9b50c917599bb71e2f
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "41987524"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43093973"
 ---
 # <a name="facebook-content-moderation-with-content-moderator"></a>Moderování obsahu Facebooku s Content Moderator
 
@@ -67,7 +67,7 @@ Přihlaste se k [portálu pro správu Azure](https://portal.azure.com/) k vytvá
 | Nastavení aplikace | Popis   | 
 | -------------------- |-------------|
 | cm:TeamId   | Vaše TeamId Content Moderatoru  | 
-| cm:SubscriptionKey | Klíč předplatného Content Moderator – viz [přihlašovacích údajů](/review-tool-user-guide/credentials.md) | 
+| cm:SubscriptionKey | Klíč předplatného Content Moderator – viz [přihlašovacích údajů](review-tool-user-guide/credentials.md) | 
 | cm:region | Content Moderator oblasti název, bez mezer. Viz předchozí poznámka. |
 | cm:ImageWorkflow | Název pracovního postupu ke spuštění na Imagích |
 | cm:TextWorkflow | Název pracovního postupu pro spuštění na Text |

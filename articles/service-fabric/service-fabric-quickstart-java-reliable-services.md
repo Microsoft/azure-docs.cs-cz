@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 10/23/2017
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 2e3852ffc01312f01843a90de5f5565784b1c0b5
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: ed5da0afe67deaa7000c1bf3b8d75bdea14f2ecd
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37114247"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42616322"
 ---
 # <a name="quickstart-deploy-a-java-reliable-services-application-to-service-fabric"></a>Rychlý start: Nasazení aplikace spolehlivých služeb v Javě do Service Fabric
 
@@ -66,8 +66,8 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart.git
     ![Místní cluster v pořádku](./media/service-fabric-quickstart-java/localclusterup.png)
 
 2. Otevřete Eclipse.
-3. Klikněte na File (Soubor) > Open Projects from File System... (Otevřít projekty ze systému souborů...).
-4. Klikněte na Directory (Adresář) a zvolte adresář `Voting` ze složky `service-fabric-java-quickstart`, kterou jste naklonovali z GitHubu. Klikněte na tlačítko Dokončit.
+3. Klikněte na File -> Import -> Gradle -> Existing Gradle Project (Soubor -> Importovat -> Gradle -> Existující projekt Gradle) a postupujte podle pokynů v průvodci.
+4. Klikněte na Directory (Adresář) a zvolte adresář `Voting` ze složky `service-fabric-java-quickstart`, kterou jste naklonovali z GitHubu. Klikněte na tlačítko Dokončit. 
 
     ![Dialogové okno importu v Eclipse](./media/service-fabric-quickstart-java/eclipseimport.png)
 
@@ -90,7 +90,7 @@ Pokud chcete nasadit aplikaci do clusteru v Azure, vytvořte si vlastní cluster
 
 Party Clustery jsou bezplatné, časově omezené clustery Service Fabric hostované v Azure a provozované týmem Service Fabric. Party Clustery můžete použít k nasazování aplikací a seznámení se s platformou. Cluster k zajištění zabezpečení mezi uzly a mezi klientem a uzlem využívá jeden certifikát podepsaný svým držitelem.
 
-Přihlaste se a připojte se ke [clusteru s Linuxem](http://aka.ms/tryservicefabric). Stáhněte si certifikát PFX do počítače kliknutím na odkaz **PFX**. Kliknutím na odkaz **ReadMe** zobrazíte heslo certifikátu a pokyny ke konfiguraci různých prostředí pro použití certifikátu. **Úvodní** stránku a stránku **ReadMe** nechte otevřené, protože některé pokyny využijete v následujících krocích.
+Přihlaste se a připojte se ke [clusteru s Linuxem](http://aka.ms/tryservicefabric). Stáhněte si do počítače certifikát PFX kliknutím na odkaz **PFX**. Kliknutím na odkaz **ReadMe** zobrazíte heslo certifikátu a pokyny ke konfiguraci různých prostředí pro použití certifikátu. **Úvodní** stránku a stránku **ReadMe** nechte otevřené, protože některé pokyny využijete v následujících krocích.
 
 > [!Note]
 > Každou hodinu je k dispozici omezený počet Party Clusterů. Pokud se vám při pokusu o registraci Party Clusteru zobrazí chyba, můžete chvíli počkat a zkusit to znovu nebo můžete podle kroků v kurzu [Vytvoření clusteru Service Fabric v Azure](service-fabric-tutorial-create-vnet-and-linux-cluster.md) vytvořit cluster ve svém předplatném.
@@ -179,7 +179,7 @@ Pokud chcete škálovat webovou front-end službu, postupujte následovně:
 
     ![Service Fabric Explorer – škálování služby](./media/service-fabric-quickstart-java/scaleservicejavaquickstart.png)
 
-    Nyní můžete škálovat počet instancí webové front-end služby.
+    Teď můžete škálovat počet instancí webové front-end služby.
 
 3. Změňte počet na **2** a klikněte na **Škálovat službu**.
 4. Ve stromovém zobrazení klikněte na uzel **fabric:/Voting/VotingWeb** a rozbalte uzel oddílu (reprezentovaný identifikátorem GUID).

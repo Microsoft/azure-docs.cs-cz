@@ -3,18 +3,18 @@ title: Použití akce skriptu k Linuxovým systémem HDInsight – Azure nainsta
 description: Zjistěte, jak nainstalovat Solr na clusterech Hadoop využívající systém Linux HDInsight pomocí skriptových akcí.
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: jasonh
-ms.openlocfilehash: 35a7410a5a30e248069ba31ad4213eff58680dcc
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 205983344be8ae5bbe566a208ceb862b2e93cb8d
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39597765"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43093093"
 ---
 # <a name="install-and-use-solr-on-hdinsight-hadoop-clusters"></a>Instalace a použití Solru na clusterech HDInsight Hadoop
 

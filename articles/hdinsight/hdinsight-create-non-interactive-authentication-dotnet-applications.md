@@ -1,7 +1,7 @@
 ---
 title: Vytváření aplikací .NET jako neinteraktivní ověřování v Azure HDInsight
 description: Zjistěte, jak vytvořit neinteraktivní ověřování aplikace Microsoft .NET v Azure HDInsight.
-editor: jasonwhowell
+ms.reviewer: jasonh
 services: hdinsight
 author: jasonwhowell
 ms.service: hdinsight
@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: jasonh
-ms.openlocfilehash: f5f1aae62d8f2959f26a361f3c1187037cafcca5
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 4537c0308ee587d921dc795054966f6a3dbb69c4
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39591515"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43093216"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>Vytvoření aplikace .NET HDInsight pro neinteraktivní ověřování
 Můžete spustit aplikaci Microsoft .NET Azure HDInsight s identitou aplikace vlastní (neinteraktivní) nebo v části identita přihlášeného uživatele (interaktivní) aplikace. V tomto článku se dozvíte, jak vytvořit aplikaci .NET pro připojení k Azure a spravovat HDInsight pro neinteraktivní ověřování. Ukázku interaktivní aplikace najdete v tématu [připojení k Azure HDInsight](hdinsight-administer-use-dotnet-sdk.md#connect-to-azure-hdinsight). 

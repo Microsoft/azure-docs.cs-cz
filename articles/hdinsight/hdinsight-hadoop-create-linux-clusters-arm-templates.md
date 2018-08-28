@@ -3,18 +3,18 @@ title: Vytvoření clusterů Hadoop s použitím šablony – Azure HDInsight
 description: Zjistěte, jak vytvářet clustery pro HDInsight pomocí šablon Resource Manageru
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: jasonh
-ms.openlocfilehash: aea620fcbce4906646c9a52ab042a86c421e32bf
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 9a48b3ff9769e2757ac7930feb14d6537d96fae3
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39600667"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43109234"
 ---
 # <a name="create-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>Vytvoření clusterů Hadoop v HDInsight pomocí šablon Resource Manageru
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]

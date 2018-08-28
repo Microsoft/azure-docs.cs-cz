@@ -4,17 +4,17 @@ description: Naučte se vytvářet clustery HDInsight s účty úložiště Azur
 services: hdinsight
 author: jasonwhowell
 ms.author: jasonh
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 07/24/2018
-ms.openlocfilehash: fd7f9095d7ac00de3ad031f08db49785863176a1
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
-ms.translationtype: HT
+ms.openlocfilehash: 253455d892d38a6e8356b775306b238ebd566da4
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "41920996"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43104496"
 ---
 # <a name="create-hadoop-cluster-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Vytvoření clusteru Hadoop s účty úložiště s bezpečným přenosem ve službě Azure HDInsight
 
@@ -61,7 +61,7 @@ Existuje několik možností, jak přidat další účty úložiště s povolen�
 - Vytvoření clusteru pomocí webu [Azure Portal](https://portal.azure.com) a zadání propojeného účtu úložiště.
 - Použití akce skriptu k přidání dalších účtů úložiště s povoleným zabezpečeným přenosem do existujícího clusteru HDInsight.  Další informace najdete v tématu [Přidání dalších účtů úložiště do služby HDInsight](hdinsight-hadoop-add-storage.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto kurzu jste se naučili vytvořit cluster HDInsight a povolit zabezpečený přenos pro účty úložiště.
 
 Další informace o analýze dat pomocí HDInsight naleznete v následujících článcích:

@@ -10,14 +10,14 @@ ms.component: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 09/05/2017
-ms.author: john.papa
+ms.author: jopapa
 ms.custom: mvc
-ms.openlocfilehash: 8674e5daee003ea0688ea8702362165ebb8ccfcf
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 5bb1aeadeb31728dcc2d9ac5fa0aeade31857169
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39249202"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "41920532"
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-5-use-mongoose-to-connect-to-azure-cosmos-db"></a>Vytvoření aplikace MongoDB s Angular a službou Azure Cosmos DB – Část 5: Připojení ke službě Azure Cosmos DB pomocí Mongoose
 

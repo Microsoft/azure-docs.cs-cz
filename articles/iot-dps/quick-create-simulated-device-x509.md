@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 2f0d3c592cf8e265c215c49c291d3ef420112a15
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 40d6d149d07f55784e8428eb0faa943814195a47
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39090856"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42024032"
 ---
 # <a name="quickstart-provision-an-x509-simulated-device-using-the-azure-iot-c-sdk"></a>Rychlé zprovoznění: Zřízení simulovaného zařízení X.509 s využitím sady Azure IoT C SDK
 

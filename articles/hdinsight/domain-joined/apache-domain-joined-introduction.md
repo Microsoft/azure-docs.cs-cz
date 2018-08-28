@@ -5,16 +5,16 @@ services: hdinsight
 ms.service: hdinsight
 author: omidm1
 ms.author: omidm
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/26/2018
-ms.openlocfilehash: e697b0ffe7cde65cd47a2f1b1db5b544b6dc1d3c
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: c13fd979562cc89831d031c5050fe9dbb184267b
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39595626"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43041128"
 ---
 # <a name="an-introduction-to-hadoop-security-with-domain-joined-hdinsight-clusters"></a>Úvod do zabezpečení Hadoop s clustery HDInsight připojené k doméně
 

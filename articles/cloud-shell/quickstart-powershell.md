@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2018
 ms.author: damaerte
-ms.openlocfilehash: adae7ea79ada9247382c88e58f1ba5331007985b
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: cb4b7f8851c6c891ca43f6c215ba812a0c784d28
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39324489"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43108134"
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell-preview"></a>Rychlý start pro PowerShell ve službě Azure Cloud Shell (Preview)
 
@@ -119,7 +119,7 @@ TestVm2   westus     Succeeded         Standard_DS1_v2 WindowsServer 2016-Datace
 ```
 
 > [!NOTE]
-> Můžete si všimnout, která při druhém volání po zadání `dir`, cloud shell je možné zobrazit položky mnohem rychlejší.
+> Můžete si všimnout, která při druhém volání po zadání `dir`, Cloud Shell je možné zobrazit položky mnohem rychlejší.
 > Je to proto, že podřízené položky jsou uložené v mezipaměti v paměti pro lepší výkon.
 Však můžete vždy použít `dir -Force` zobrazíte čerstvá data.
 
@@ -258,7 +258,6 @@ mywebapp3       Running  MyResourceGroup3   {mywebapp3.azurewebsites.net...   So
 
 ## <a name="ssh"></a>SSH
 
-[Win32-OpenSSH](https://github.com/PowerShell/Win32-OpenSSH) je k dispozici v Cloud Shell s Powershellem.
 K ověření serverů a virtuálních počítačů pomocí protokolu SSH, generování páru veřejného a privátního klíčů ve službě Cloud Shell a publikovat veřejný klíč, který `authorized_keys` na vzdáleném počítači, jako například `/home/user/.ssh/authorized_keys`.
 
 > [!NOTE]

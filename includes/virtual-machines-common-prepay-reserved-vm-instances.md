@@ -4,12 +4,12 @@ ms.author: yashar
 ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 08-07-2018
-ms.openlocfilehash: 19a153a5cdc9d5f878494984313baebd12dbcbb5
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 764470bbf47c18a2ec66dc91d433f8dd14b99a8f
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39631159"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43040328"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances"></a>Předplatit si virtuální počítače se službou Azure Reserved VM Instances
 
@@ -30,6 +30,9 @@ Pole podkategorie měřiče a produktu v datech využití nerozlišuje velikosti
 
 Rezervované instance virtuálních počítačů jsou dostupné pro většinu velikostí virtuálních počítačů s několika výjimkami:
 
+- Klasické virtuální počítače a Cloud services Nezískávat sleva za rezervaci.
+- Potlačené základní virtuální počítače není získejte slevy na rezervaci.
+- Následující virtuální počítač řady Nezískávat slevy na rezervaci: řady A-series, Av2-series a G-series.
 - Virtuální počítače ve verzi Preview: nejsou k dispozici pro nákup rezervace všechny řady virtuálních počítačů nebo velikost, která je ve verzi preview.
 - Cloudy: rezervace nejsou dostupné ke koupi v oblastech Azure US Government, Německo nebo Čína.
 - Nedostatečná kvóta: rezervace, který je v oboru pro jedno předplatné musí mít kvóty virtuálních procesorů dostupných v předplatném pro nové rezervovaných Instancí. Například pokud cílové předplatné má kvótu virtuálních procesorů 10 pro řady D-Series, pak nelze koupíte rezervace pro 11 Standard_D1 instancí. Kontrola kvóty pro rezervace zahrnují virtuální počítače už nasazená v předplatném. Například pokud předplatné má kvótu virtuálních procesorů 10 pro řady D-Series a má dvě instance standard_D1 nasazený, pak můžete koupit rezervaci pro 10 standard_D1 instancí v tomto předplatném. 

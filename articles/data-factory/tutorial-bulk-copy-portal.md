@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 651f9ba71d08698c64f3e90de59b5f29a8afc77d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b6d7b926a414c95d4e05834bafc91a2aa9c047fe
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39433506"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "41917543"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Hromadné kopírování několika tabulek pomocí Azure Data Factory
 Tento kurz představuje **kopírování několika tabulek z Azure SQL Database do služby Azure SQL Data Warehouse**. Stejný vzor můžete využít i u dalších scénářů kopírování. Například při kopírování tabulek z SQL Serveru/Oraclu do služby Azure SQL Database/Data Warehouse/Azure Blob nebo při kopírování různých cest ze služby Blob do tabulek Azure SQL Database.
@@ -239,7 +239,7 @@ Kanál **GetTableListAndTriggerCopyData** přijímá jako parametr seznam tabule
 
     ![Nastavení aktivity ForEach](./media/tutorial-bulk-copy-portal/for-each-activity-settings.png)
 
-    c. Na stránce **Přidat dynamický obsah** sbalte sekce Systémové proměnné a Funkce, klikněte na **tableList** pod **Parametry**. Tím se automaticky vyplní horní textové pole výrazem `@pipeline().parameter.tableList`.Pak klikněte na **Dokončit**. 
+    c. Na stránce **Přidat dynamický obsah** sbalte sekce Systémové proměnné a Funkce a klikněte na **tableList** pod **Parametry**. Tím se automaticky vyplní horní textové pole výrazem `@pipeline().parameter.tableList`. Pak klikněte na **Dokončit**. 
 
     ![Tvůrce parametru ForEach](./media/tutorial-bulk-copy-portal/for-each-parameter-builder.png)
     
@@ -265,7 +265,7 @@ Kanál **GetTableListAndTriggerCopyData** přijímá jako parametr seznam tabule
     1. Klikněte na vstupní pole pro HODNOTU parametru DWTableName -> vyberte dole **Přidat dynamický obsah**, zadejte výraz `[@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]` jako skript -> vyberte **Dokončit**.
     1. Rozbalte **Nastavení Polybase** a vyberte **Povolit Polybase**. 
     1. Vymažte možnost **Použít výchozí typ**. 
-    1. Klikněte na vstupní pole **Skript pro vyčištění** -> vyberte dole **Přidat dynamický obsah** -> zadejte následující výraz jako skript -> vyberte **Dokončit**. 
+    1. Klikněte na vstupní pole **Skript před kopírováním**, vyberte dole **Přidat dynamický obsah**, zadejte následující výraz jako skript a vyberte **Dokončit**. 
 
         ```sql
         TRUNCATE TABLE [@{item().TABLE_SCHEMA}].[@{item().TABLE_NAME}]

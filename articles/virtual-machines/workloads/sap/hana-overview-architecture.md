@@ -1,5 +1,5 @@
 ---
-title: Přehled a architektura SAP HANA v Azure (velké instance) | Microsoft Docs
+title: Přehled a architektura SAP Hana v Azure (velké instance) | Dokumentace Microsoftu
 description: Přehled architektury nasazení SAP HANA v Azure (velké instance).
 services: virtual-machines-linux
 documentationcenter: ''
@@ -11,531 +11,535 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/27/2018
+ms.date: 08/27/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3918096a977cfd48e2128646d7c552e842ab8834
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 9d28b6ea5612a3db539c51d2603c3f12282ca519
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063676"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43090412"
 ---
-# <a name="sap-hana-large-instances-overview-and-architecture-on-azure"></a>Přehled SAP HANA (velké instance) a architektura v Azure
+# <a name="sap-hana-large-instances-overview-and-architecture-on-azure"></a>SAP HANA (velké instance) přehled a architektura v Azure
 
 ## <a name="what-is-sap-hana-on-azure-large-instances"></a>Co je SAP HANA v Azure (velké instance)?
 
-SAP HANA v Azure (velké instance) je jedinečné řešení do Azure. Kromě zajištění virtuálních počítačů pro nasazení a spuštění SAP HANA, Azure nabízí možnost spuštění a nasazení SAP HANA na úplné obnovení serverů, které jsou vyhrazené pro vás. SAP HANA v Azure (velké instance) řešení je založena na nesdílené serveru nebo úplné obnovení hardware, který je přiřazen. Hardware serveru je součástí větší razítek, které obsahují výpočty a serveru, sítě a infrastruktury úložiště. V kombinaci je HANA přizpůsobit integrace center dat (TDI) certifikaci. SAP HANA v Azure (velké instance) nabízí SKU jiný server nebo velikosti. Jednotky může mít 36 jader procesoru Intel a 768 GB paměti a přejděte až jednotky, které mají do 480 jader procesoru Intel a až 24 TB paměti.
+SAP HANA v Azure (velké instance) je jedinečné řešení na Azure. Kromě toho, že virtuální počítače pro nasazování a spouštění SAP HANA, Azure vám nabízí možnost spouštět a nasazovat SAP HANA na holých serverů, které jsou vyhrazené. SAP HANA v Azure (velké instance) řešení je založena na nesdílený hostitele nebo server holého hardwaru, který je vám přiřazena. Hardware serveru je součástí větší razítek, které obsahují výpočty/server, sítí a infrastruktury úložiště. Jako kombinace je HANA přizpůsobené integrace System center data (TDI) certified. SAP HANA v Azure (velké instance) nabízí jiný server SKU nebo velikosti. Jednotky může mít 36 Intel Procesorových jader a o velikosti 768 GB paměti a přejděte do jednotky, které mají až 480 Intel Procesorových jader a až 24 TB paměti.
 
-Izolace zákazníka v rámci infrastruktury razítko se provádí v klientech, který vypadá takto:
+Izolace zákazníka v rámci razítka infrastruktury se provádí v tenantech, který bude vypadat takto:
 
-- **Sítě**: izolace zákazníků v rámci infrastruktury zásobníku prostřednictvím virtuální sítě na zákazníka přiřadit klienta. Klient je přiřazen jednoho zákazníka. Zákazník může mít několik klientů. Izolace sítě klientů, které zakazuje síťovou komunikaci mezi klienty v úrovni razítka infrastruktury, i v případě, že klienti patří do stejného zákazníka.
-- **Součástí úložišť**: izolaci prostřednictvím úložiště virtuálních počítačů, které mají svazky úložiště, které jsou jim přiřazeny. Svazky úložiště lze přiřadit pouze jeden úložiště virtuálnímu počítači. Úložiště virtuálního počítače je přiřazen výhradně jeden jednoho klienta v zásobníku certifikovaných infrastruktury SAP HANA TDI. V důsledku toho je přístupná v jedné konkrétní a související klientovi pouze svazky úložiště, které jsou přiřazeny k virtuálnímu počítači úložiště. Nejsou viditelné mezi různými klienty nasazené.
-- **Server nebo hostitele**: jednotka serveru nebo hostitele není sdílena mezi zákazníky nebo klientů. Server nebo hostitele nasazený na zákazníka, je atomic holých výpočetní jednotka, přiřazený jeden jednoho klienta. *Ne* dělení hardwaru nebo logicky dělení se má použít, může vést k tomu můžete sdílení hostitel nebo server s jinou zákazníka. Úložné svazky, které jsou přiřazeny k virtuálnímu počítači úložiště konkrétní klienta jsou připojené k takové serveru. Klient může mít jeden do mnoha serveru jednotek různé identifikátory SKU výhradně přiřazen.
-- V rámci SAP HANA s časovým razítkem infrastrukturu Azure (velké instance) mnoha různými klienty jsou nasazené a izolované proti sobě prostřednictvím klienta koncepty na sítě, úložiště a výpočetní úroveň. 
-
-
-Tyto jednotky úplné obnovení serveru jsou podporovány pouze spustit SAP HANA. Vrstvy aplikace SAP nebo zatížení střední VMware běží ve virtuálních počítačích. Razítka infrastruktury se systémem SAP HANA na jednotkách Azure (velké instance) jsou připojené k páteřním služby síť Azure. Tímto způsobem se poskytuje s nízkou latencí připojení mezi SAP HANA na jednotkách Azure (velké instance) a virtuální počítače.
-
-Tento dokument je jedním z několika dokumentů, které se týkají SAP HANA v Azure (velké instance). Tento dokument uvádí základní architekturu, zodpovědnostech a služeb poskytovaných řešení. Nejdůležitější funkce řešení jsou popsány i. Pro většinu dalších oblastech, jako je vytváření sítí a připojení se věnují čtyři jiné dokumenty podrobnosti a zobrazit informace. V dokumentaci SAP HANA v Azure (velké instance) nezahrnuje aspekty instalace SAP NetWeaver nebo nasazení SAP NetWeaver ve virtuálních počítačích. SAP NetWeaver v Azure je popsaná v samostatné dokumenty najít ve stejném kontejneru dokumentace k Azure. 
+- **Sítě**: izolace zákazníků v rámci zásobníku infrastruktury prostřednictvím virtuální sítě na tenantovi zákazníka, které jsou přiřazeny. Tenant se přiřadí pro jediného zákazníka. Zákazník může mít více tenantů. Izolace sítě tenantů zakazuje síťové komunikace mezi klienty na úrovni razítka infrastruktury i v případě, že klienti patřit do stejné zákazníka.
+- **Úložiště komponent**: izolace prostřednictvím úložiště virtuálních počítačů, které mají svazky úložiště, které jsou jim přiřazeny. Svazky úložiště je přiřadit pouze jeden úložiště virtuálního počítače. Úložiště virtuálního počítače je exkluzivně přiřazená jedna jednoho tenanta v zásobníku certifikovaných infrastrukturu SAP HANA TDI. V důsledku toho svazky úložiště přiřazené k virtuálnímu počítači úložiště přístupné v jedné konkrétní a související tenanta pouze. Nejsou viditelné mezi různé nasazené tenanty.
+- **Server nebo hostitele**: jednotka serveru nebo hostitele není sdílena mezi zákazníky nebo tenantů. Server nebo hostitele nasazený pro zákazníka, je jednotka atomic výpočetní úplné obnovení systému, který je přiřazen do jednoho jednoho tenanta. *Ne* dělení hardwarové nebo softwarové dělení se používá, který může způsobit sdílíte s odběratele jiného hostitele nebo server. Úložné svazky, které jsou přiřazeny k z konkrétního tenanta úložiště virtuálního počítače jsou připojené taková na server. Klient může mít jeden na mnoho server jednotek z různých skladových položkách exkluzivně přiřazená.
+- V rámci SAP HANA na razítku infrastruktury Azure (velké instance) mnoho různých tenantů se nasazují a izolované proti sobě základními pojmy tenanta na sítě, úložiště a výpočetní úrovně. 
 
 
-Různé dokumenty velké Instance HANA materiálů zahrnovat tyto oblasti:
+Tyto jednotky úplné obnovení systému server jsou podporovány pouze spuštění SAP HANA. Aplikační vrstvě SAP nebo úloh VMware střední vrstvy běží na virtuálních počítačích. Razítka infrastruktury, na kterých běží SAP HANA v Azure (velké instance) jednotky jsou připojené k páteřních služeb sítě Azure. Tímto způsobem je k dispozici připojení s nízkou latencí mezi virtuálními počítači a SAP HANA v Azure (velké instance) jednotky.
 
-- [Přehled SAP HANA (velké instance) a architektura v Azure](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Infrastruktura SAP HANA (velké instance) a připojení v Azure](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Instalace a konfigurace SAP HANA (velké instance) na Azure](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [SAP HANA (velké instance) vysoké dostupnosti a zotavení po havárii v Azure](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Řešení potíží s SAP HANA (velké instance) a sledování v Azure](troubleshooting-monitoring.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Vysoká dostupnost nastavit v SUSE pomocí STONITH](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/ha-setup-with-stonith)
-- [Operační systém zálohování a obnovení pro typ II SKU](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/os-backup-type-ii-skus)
+Tento dokument je jednou z několika dokumenty, které se týkají SAP HANA v Azure (velké instance). Toto téma představuje základní architekturu, zodpovědnostech a služby poskytované řešení. Základní možnosti řešení jsou popsány také. Většinu ostatních oblastech, jako je například sítě a připojení čtyři další dokumenty, které pokrývají podrobnosti a informace o procházení. Dokumentace k systému SAP HANA v Azure (velké instance) nezahrnuje aspekty instalace SAP NetWeaver nebo nasazení SAP NetWeaver na virtuálních počítačích. SAP NetWeaver v Azure je zahrnutých v samostatných dokumentech nalezen ve stejném kontejneru dokumentace k Azure. 
+
+
+Jiné dokumenty velká Instance HANA pokyny zahrnují následující oblasti:
+
+- [SAP HANA (velké instance) přehled a architektura v Azure](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Infrastrukturu SAP HANA (velké instance) a možnosti připojení v Azure](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Instalace a konfigurace SAP HANA (velké instance) v Azure](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [SAP HANA (velké instance) vysokou dostupnost a zotavení po havárii v Azure](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Řešení potíží s SAP HANA (velké instance) a monitorování v Azure](troubleshooting-monitoring.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Vysoká dostupnost v SUSE lze nastavit pomocí využitím techniky STONITH](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/ha-setup-with-stonith)
+- [Operační systém zálohování a obnovení pro SKU typu II](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/os-backup-type-ii-skus)
 
 ## <a name="definitions"></a>Definice
 
-Několik společné definice se často používá v architektuře a technické příručce nasazení. Všimněte si následujících podmínek a jejich významů:
+Několik běžných definice se běžně používají v architektury a technické příručce pro nasazení. Mějte na paměti následující termíny a jejich význam:
 
 - **IaaS**: infrastruktura jako služba.
 - **PaaS**: platforma jako služba.
 - **SaaS**: Software jako služba.
-- **Součást SAP**: jednotlivých aplikací SAP, například ERP centrální součást (ECC), obchodní skladu (BW), správce řešení nebo podnikového portálu (EP). SAP součástí může být založen na tradičních technologií ABAP nebo Java nebo jiných NetWeaver na základě aplikaci, například obchodních objektů.
-- **Prostředí SAP**: jeden nebo více součástí SAP logicky seskupeny provést obchodní funkci, jako je třeba vývoje, zajištění kvality, školení, zotavení po havárii nebo výroby.
-- **Na šířku SAP**: odkazuje na celý SAP prostředky ve vaší IT na šířku. Na šířku SAP zahrnuje všechny produkční a mimo provozní prostředí.
-- **SAP systému**: kombinace databázového systému vrstvy a aplikaci vrstvu, například vývoj systému SAP ERP, testovacím systému SAP BW a produkční systém SAP CRM. Azure nasazení nepodporují dělení tyto dvě vrstvy mezi místními a Azure. Systému SAP je nasadit místně nebo jeho nasazené v Azure. Můžete nasadit různých systémech šířku SAP do Azure nebo místní. Například můžete nasadit SAP CRM vývoj a testování systémy v Azure při nasazování SAP CRM produkční systému místní. Pro SAP HANA v Azure (velké instance) je určena hostujete aplikační vrstvu SAP SAP systémů ve virtuálních počítačích a související instance SAP HANA na jednotce v SAP HANA s časovým razítkem Azure (velké instance).
-- **Velké Instance razítka**: zásobník infrastruktury hardwaru, certifikovaným SAP HANA TDI a vyhrazených ke spuštění SAP HANA instancí v rámci Azure.
-- **SAP HANA v Azure (velké instance):** oficiální název nabídky v Azure ke spuštění HANA instancí v na hardwaru certifikovaném SAP HANA TDI, která je nasazena v velké Instance razítka v různých oblastech Azure. Související termín *velké Instance HANA* je zkratka pro *SAP HANA v Azure (velké instance)* a se často používá v této příručce technického nasazení.
-- **Mezi různými místy**: popisuje scénář, kde jsou nasazené virtuální počítače k předplatnému Azure, který má site-to-site, více lokalit nebo Azure ExpressRoute připojení mezi místní datových center a Azure. Dokumentace k společné Azure, tyto typy nasazení jsou také popsány jako mezi různými místy scénáře. Z důvodu pro připojení je rozšířit místní domény, místní Azure Active Directory nebo OpenLDAP a místní DNS do Azure. Povahu místní je rozšířeno na Azure majetek předplatná Azure. S touto příponou virtuálních počítačů může být součástí místní domény. 
+- **Komponenta SAP**: jednotlivé aplikace SAP, jako je ERP ústřední součást (ECC), Business Warehouse (BW), správci řešení nebo Enterprise Portal (RP). Komponenty SAP může být založen na tradičních technologií ABAP a Java nebo jiných NetWeaver na základě aplikace, například pro obchodní objekty.
+- **Prostředí SAP**: jedna nebo více součástí SAP logicky seskupeny provádět obchodní funkce, jako je vývoj, kontrola kvality, školení, zotavení po havárii nebo produkčního prostředí.
+- **Prostředí SAP**: odkazuje na celý prostředky SAP v prostředí vašeho IT. Prostředí SAP zahrnuje všechny produkčního prostředí a neprodukční prostředí.
+- **Systém SAP**: kombinace DBMS vrstvy a aplikační vrstvě například vývoj systému SAP ERP, systém SAP BW testovací a produkční systém SAP CRM. Nasazení v Azure nepodporují dělení tyto dvě vrstvy mezi místními a Azure. Systém SAP je nasazená místně nebo je nasazené v Azure. Můžete nasadit různé systémy prostředí SAP do Azure nebo místně. Například můžete nasadit vývoj SAP CRM a systémů v Azure můžete testovat při nasazování SAP CRM produkční systém místní. Pro SAP HANA v Azure (velké instance) je určena hostujete aplikační vrstvě SAP systémů SAP na virtuálních počítačích a související instance SAP HANA na jednotce v SAP HANA v Azure (velké instance) razítko.
+- **Velké Instance razítka**: zásobníku hardwarové infrastruktury, který je certifikací pro SAP HANA TDI a vyhrazených ke spuštění instance systému SAP HANA v Azure.
+- **SAP HANA v Azure (velké instance):** oficiální název nabídky v Azure ke spuštění HANA instance na certifikací pro SAP HANA TDI hardwaru, který je nasazený v velká Instance razítka v různých oblastech Azure. Související výraz *velká Instance HANA* je zkratka pro *SAP HANA v Azure (velké instance)* a se běžně používá v této příručce technického nasazení.
+- **Mezi různými místy**: popisuje scénář, ve které jsou nasazené virtuální počítače s předplatným Azure, který má připojení Azure ExpressRoute mezi místní datová centra a Azure, site-to-site a multi-Site. Dokumentace v běžných Azure a tyto druhy nasazení jsou také popsány jako scénáře mezi různými místy. Důvod pro připojení je k rozšíření místních domén, místní Azure Active Directory/OpenLDAP a místní DNS do Azure. V místním prostředí je rozšířit na prostředky Azure z předplatných Azure. U tohoto rozšíření virtuální počítač může být součástí místní domény. 
 
-   Uživatelé domény místní domény, můžete přístup k serverům a spouštění služeb na těchto virtuálních počítačích (například služby databázového systému). Komunikace a název rozlišení mezi virtuálními počítači nasazen místní a virtuální počítače nasazené Azure je možné. Tento scénář je typické pro způsob, ve které jsou nasazeny většina SAP prostředky. Další informace najdete v tématu [plánování a návrhu pro Azure VPN Gateway](../../../vpn-gateway/vpn-gateway-plan-design.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) a [vytvoření virtuální sítě pomocí připojení site-to-site pomocí portálu Azure](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-- **Klienta**: získá do izolované zákazník nasazené v HANA velké Instance razítka *klienta.* Klient je izolované sítě, úložiště a výpočetní vrstvy od ostatních klientů. Úložiště a výpočetní jednotky přiřazené různými klienty nelze zobrazit navzájem ani vzájemně komunikovat na úrovni HANA velké Instance razítka. Zákazník může rozhodnout pro nasazení do jiných klientů. Dokonce i pak není žádná komunikace mezi klienty na úrovni HANA velké Instance razítka.
-- **Kategorie SKU**: pro HANA velké Instance, nabízí tyto dvě kategorie SKU:
-    - **Typ I třídy**: S72, S72m, S144, S144m, S192, S192m a S192xm
-    - **Zadejte třídu II**: S384, S384m, S384xm, S384xxm, S576m, S576xm, S768m, S768xm a S960m
+   Domény uživatele z místní domény můžete přístup k serverům a spustit služby na těchto virtuálních počítačů (například systému DBMS služby). Místně nasadili komunikace a název řešení mezi virtuálními počítači a virtuálních počítačů nasazených Azure je možné. Tento scénář je typický pro způsob, ve které jsou nasazené prostředky většina SAP. Další informace najdete v tématu [plánování a návrh pro Azure VPN Gateway](../../../vpn-gateway/vpn-gateway-plan-design.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) a [vytvoření virtuální sítě s připojením site-to-site pomocí webu Azure portal](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+- **Tenant**: zákazník nasazené v razítku velká Instance HANA načte samostatný do *tenanta.* Tenant je izolovaný v oblasti sítí, úložiště a výpočetní vrstvy od ostatních tenantů. Úložiště a výpočetní jednotky přiřazená různých tenantech nelze zobrazit mezi sebou ani vzájemně komunikovat na úrovni razítko velká Instance HANA. Zákazník se může rozhodnout pro nasazení do různých tenantech. Dokonce i pak neexistuje žádná komunikace mezi klienty na úrovni razítko velká Instance HANA.
+- **Kategorie SKU**: pro velké Instance HANA, jsou k dispozici tyto dvě kategorie skladové položky:
+    - **Typ třídy I**: S72 S72m, S144, S144m, S192, S192m a S192xm
+    - **Zadejte třídu II**: S384 S384m, S384xm, S384xxm, S576m, S576xm, S768m, S768xm a S960m
 
 
-Jsou k dispozici na tom, jak nasadit SAP úlohy v cloudu různé další prostředky. Pokud máte v plánu provést nasazení SAP HANA v Azure, budete muset být zkušenosti s a s ohledem na zásady služby Azure IaaS a nasazení SAP zatížení v Azure IaaS. Než budete pokračovat, najdete v části [použití SAP řešení na virtuálních počítačích Azure](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Další informace. 
+Různé další zdroje informací jsou k dispozici pro nasazení úloh SAP v cloudu. Pokud budete chtít provést nasazení SAP Hana v Azure, musíte být zkušenosti s a nezná zásady Azure IaaS a nasazení úloh SAP v Azure IaaS. Než budete pokračovat, naleznete v tématu [řešení použití SAP na virtuálních počítačích Azure](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Další informace. 
 
 ## <a name="certification"></a>Certifikace
 
-Kromě toho na certifikaci NetWeaver SAP vyžaduje speciální certifikační pro SAP HANA pro podporu SAP HANA na určité infrastruktuře, jako je například Azure IaaS.
+Kromě certifikační NetWeaver SAP vyžaduje speciální certifikaci pro SAP HANA a SAP HANA podporují určité infrastruktury, jako je Azure IaaS.
 
-Jádro Poznámka SAP na NetWeaver a pro SAP HANA stupeň certifikační [SAP Poznámka #1928533 – SAP aplikace v Azure: podporované produkty a virtuální počítač Azure typy](https://launchpad.support.sap.com/#/notes/1928533).
+Je základní Poznámka SAP na systému NetWeaver a SAP HANA stupně certifikace [SAP Poznámka #1928533 – aplikace SAP v Azure: podporované produkty a typy virtuálních počítačů Azure](https://launchpad.support.sap.com/#/notes/1928533).
 
-Zaznamenává certifikační pro SAP HANA na jednotkách Azure (velké instance) najdete v [SAP HANA certifikované platformy IaaS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) lokality. 
+Záznamy certifikaci pro SAP HANA na jednotky Azure (velké instance) najdete v [platformách IaaS s certifikací SAP HANA](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) lokality. 
 
-SAP HANA na typech Azure (velké instance), uvedené v SAP HANA certifikované platformy IaaS lokality poskytuje Microsoft a SAP zákazníkům schopnost nasadit velké SAP Business Suite SAP BW, S/4 HANA BW/4HANA nebo jiných SAP HANA úlohy v Azure. Řešení je založena na značce SAP HANA certifikovaných vyhrazený hardware ([SAP HANA přizpůsobit integrace center dat – TDI](https://scn.sap.com/docs/DOC-63140)). Pokud spustíte SAP HANA TDI nakonfigurované řešení, všechny aplikace na základě SAP HANA (například SAP Business Suite na SAP HANA, SAP BW SAP HANA, S4/HANA a BW4/HANA) funguje na hardware infrastruktury.
+SAP HANA v Azure (velké instance) typů uvedených v SAP HANA s certifikací platformy IaaS lokality poskytuje Microsoft a SAP zákazníkům možnost nasazení velké SAP Business Suite, SAP BW, s/4 HANA, BW/4HANA nebo jiné úlohy SAP HANA v Azure. Toto řešení je založeno na razítku certifikovaných vyhrazený hardware SAP HANA ([SAP HANA přizpůsobená data center integrace – TDI](https://scn.sap.com/docs/DOC-63140)). Pokud spouštíte řešení SAP HANA TDI nakonfigurované, všechny aplikace pro systém SAP HANA (jako je SAP Business Suite v SAP HANA, SAP BW on SAP HANA S4/HANA a BW4/HANA) funguje na hardwarové infrastruktury.
 
-Porovnání se spouštěním SAP HANA ve virtuálních počítačích, toto řešení obsahuje výhody. Poskytuje pro mnohem větší objemy paměti. Chcete-li povolit toto řešení, je potřeba pochopit následující klíčové aspekty:
+Porovnání se spouštěním SAP HANA ve virtuálních počítačích, toto řešení má výhodu. Poskytuje větší objemy paměti. Pokud chcete povolit toto řešení, je potřeba pochopit následující klíčové aspekty:
 
-- SAP aplikace vrstvu a bez SAP aplikace spustit ve virtuálních počítačích, které jsou hostované v razítka obvykle Azure hardwaru.
-- Zákazník místní infrastrukturu, datových center a nasazení aplikací, které jsou připojené k Cloudová platforma prostřednictvím ExpressRoute (doporučeno) nebo virtuální privátní sítě (VPN). Služba Active Directory a DNS také jsou rozšířené do Azure.
-- Instance databáze SAP HANA pro pracovní vytížení HANA běží na SAP HANA v Azure (velké instance). Razítko velké Instance je připojený do sítě Azure, takže software na virtuální počítače mohou komunikovat s HANA instance spuštěné v instanci velké HANA.
-- Hardware SAP HANA v Azure (velké instance) je vyhrazený hardware, které jsou součástí IaaS s SUSE Linux Enterprise Server nebo Red Hat Enterprise Linux předinstalována. Stejně jako u virtuálních počítačů, další aktualizace a údržba pro operační systém je vaší povinností.
-- Instalace HANA nebo žádné další součásti, které jsou nezbytné ke spuštění na jednotkách HANA velké instance SAP HANA je vaší povinností. Všechny příslušné probíhající operace a správa SAP HANA v Azure jsou také vaší povinností.
-- Kromě pomocí řešení popisovaných v tomto poli můžete nainstalovat další součásti ve vašem předplatném Azure, která se připojuje k SAP HANA v Azure (velké instance). Příklady jsou komponenty, které umožňují komunikaci s, nebo přímo k SAP HANA databázové, jako jsou třeba servery Přechod protokolu RDP servery, SAP HANA Studio, SAP Data Services pro SAP BI scénáře, nebo sítě řešení monitorování.
-- Jako v Azure velké Instance HANA nabízí podporu pro vysokou dostupnost a funkci obnovení po havárii.
+- SAP aplikací vrstvy a mimo systém SAP aplikace běží ve virtuálních počítačích, které jsou hostované v razítka obvykle hardware Azure.
+- Zákazník v místní infrastruktuře, datových center, a nasazení aplikací jsou připojené k platformě cloud prostřednictvím ExpressRoute (doporučeno) nebo virtuální privátní sítě (VPN). Služba Active Directory a DNS také se rozšíří do Azure.
+- Instance databáze SAP HANA pro pracovní vytížení HANA běží na systému SAP HANA v Azure (velké instance). Velká Instance razítka je připojen do sítě Azure, aby software spuštěný na virtuálních počítačích můžete pracovat s instance HANA používané velká Instance HANA.
+- Hardware systému SAP HANA v Azure (velké instance) je k dispozici v IaaS s operačním systémem SUSE Linux Enterprise Server nebo Red Hat Enterprise Linux a předinstalovaným vyhrazený hardware. Stejně jako u virtuálních počítačů, další aktualizace a údržba pro operační systém je na vás.
+- Instalace HANA nebo jakékoli další komponenty potřebné ke spuštění SAP HANA na jednotkách velká Instance HANA je vaší povinností. Všechny příslušné probíhající operace a správa SAP HANA v Azure jsou také vaší povinností.
+- Kromě řešení je zde popsáno můžete nainstalovat další komponenty ve vašem předplatném Azure, která se připojuje k SAP HANA v Azure (velké instance). Příklady jsou komponenty, které umožňují komunikaci s, nebo přímo do systému SAP HANA databáze, jako jsou třeba jump servery, servery protokolu RDP, SAP HANA Studio, SAP Data Services pro SAP BI scénáře, nebo řešení pro monitorování sítě.
+- Velká Instance HANA stejně jako v Azure, nabízí podporu pro vysokou dostupnost a funkce pro zotavení po havárii.
 
 ## <a name="architecture"></a>Architektura
 
-SAP HANA na řešení Azure (velké instance) na vysoké úrovni, má aplikační vrstvu SAP, které se nacházejí ve virtuálních počítačích. V databázové vrstvě se nachází na hardwaru SAP TDI nakonfigurované v razítku velké Instance ve stejné oblasti Azure, která je připojena k Azure IaaS.
+Na vysoké úrovni SAP HANA v Azure (velké instance) řešení má aplikační vrstvě SAP, které se nacházejí ve virtuálních počítačích. Databázové vrstvě se nachází na hardwaru SAP TDI nakonfigurované v razítku velké Instance ve stejné oblasti Azure, která je připojená k Azure IaaS.
 
 > [!NOTE]
-> Nasazení SAP aplikační vrstvu ve stejné oblasti Azure jako vrstva databázového systému SAP. Toto pravidlo je dobře zdokumentovat v publikované informace o SAP úlohy v Azure. 
+> Nasaďte aplikační vrstvě SAP ve stejné oblasti Azure jako vrstvě SAP DBMS. Toto pravidlo je dobře zdokumentovaná v publikované informace o úloh SAP v Azure. 
 
-Přehled architektury SAP HANA v Azure (velké instance) poskytuje konfigurace hardwaru certifikovaném SAP TDI, což je nevirtuálním, úplného operačního systému, vysoce výkonné server pro databázi SAP HANA. Poskytuje taky možnost a flexibilitu Azure k prostředkům škálování pro aplikační vrstvy SAP podle svých potřeb.
+Celková architektura SAP HANA v Azure (velké instance) poskytuje certifikací SAP TDI hardwarová konfigurace, což je nevirtualizovaných, holých počítačů, vysoce výkonné server pro databázi SAP HANA. Poskytuje také schopnosti a flexibilitě Azure pro škálování prostředků pro aplikační vrstvě SAP podle svých potřeb.
 
 ![Přehled architektury systému SAP HANA v Azure (velké instance)](./media/hana-overview-architecture/image1-architecture.png)
 
-Architektura vidět je rozdělené do tří částí:
+Architektuře, která je rozdělen na tři části:
 
-- **Pravé**: ukazuje na místní infrastrukturu, který spouští různé aplikace v datech centra, aby koncoví uživatelé přístup obchodních aplikací, jako je například SAP. V ideálním případě by to místní infrastruktury je připojen do Azure s [ExpressRoute](https://azure.microsoft.com/services/expressroute/).
+- **Pravé**: ukazuje na místní infrastrukturu, na kterém běží jiné aplikace v datech centra tak, aby koncoví uživatelé můžou ke obchodní aplikace, jako je SAP. V ideálním případě by tento místní infrastruktury je připojen do Azure s využitím [ExpressRoute](https://azure.microsoft.com/services/expressroute/).
 
-- **Center**: ukazuje Azure IaaS a virtuálních počítačů. v takovém případě použijte k hostování SAP nebo jiné aplikace, které používají SAP HANA jako systém databázového systému. Menší HANA instancí, které funkce s pamětí, které poskytují virtuálních počítačů nasazených ve virtuálních počítačích spolu s jejich aplikační vrstvu. Další informace o virtuálních počítačích najdete v tématu [virtuální počítače](https://azure.microsoft.com/services/virtual-machines/).
+- **System Center**: Zobrazí Azure IaaS a virtuálních počítačů v tomto případě použijte k hostování SAP nebo k jiným aplikacím, které používají SAP HANA jako systém DBMS. Menší instance HANA, které fungují s pamětí, které poskytují virtuálních počítačů nasazených ve virtuálních počítačích spolu s jejich aplikační vrstvu. Další informace o virtuálních počítačích najdete v tématu [virtuálních počítačů](https://azure.microsoft.com/services/virtual-machines/).
 
-   Síť Azure služby slouží k seskupení systémy SAP společně s jiných aplikací do virtuální sítě. Tyto virtuální sítě připojit k místním systémům i, SAP HANA v Azure (velké instance).
+   Síť Azure služby slouží k seskupení systémů SAP vyhrazené společně s další aplikace do virtuální sítě. Tyto virtuální sítě připojit k místním systémům a jde o SAP HANA v Azure (velké instance).
 
-   SAP NetWeaver aplikace a databáze, které jsou podporována pro spuštění v Azure najdete v tématu [SAP podporu Poznámka #1928533 – SAP aplikace v Azure: podporované produkty a virtuální počítač Azure typy](https://launchpad.support.sap.com/#/notes/1928533). Dokumentaci k nasazení SAP řešení v Azure najdete v tématu:
+   Aplikace SAP NetWeaver a databází, které podporují spouštění v Azure najdete v tématu [SAP Support Poznámka #1928533 – aplikace SAP v Azure: podporované produkty a typy virtuálních počítačů Azure](https://launchpad.support.sap.com/#/notes/1928533). Dokumentaci o tom, jak nasadit řešení SAP v Azure najdete v tématu:
 
-  -  [Použití SAP na virtuálních počítačích s Windows](../../virtual-machines-windows-sap-get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-  -  [Použití SAP řešení na virtuálních počítačích Azure](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+  -  [Použití SAP na virtuálních počítačích Windows](../../virtual-machines-windows-sap-get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+  -  [Pomocí řešení SAP na virtuálních počítačích Azure](get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-- **Levé**: zobrazí hardware certifikovaný SAP HANA TDI v razítku velké instanci Azure. Instance HANA velké jednotky jsou připojené k virtuálním sítím předplatného pomocí stejnou technologii jako připojení z místního do Azure.
+- **Vlevo**: zobrazí hardware s certifikací SAP HANA TDI v razítku velkých instancí Azure. Velká Instance HANA jednotky jsou připojené k virtuálním sítím předplatného s využitím stejnou technologii jako připojení z místního do Azure.
 
-Razítko velké instanci Azure samotné kombinuje následující součásti:
+Razítko velkých instancí Azure samotné kombinují následující komponenty:
 
-- **Computing**: servery, které jsou založeny na procesory Intel Xeon E7-8890v3 nebo Intel Xeon E7-8890v4, s nezbytné výpočetní schopnosti, které jsou certifikované SAP HANA.
-- **Sítě**: A unified vysokorychlostní síťové fabric, která propojení výpočty, úložiště a LAN součásti.
-- **Úložiště**: infrastruktury úložiště, které je přístupné přes jednotné síťových prostředcích infrastruktury. Konkrétní úložnou kapacitu, která je k dispozici, závisí na konkrétní SAP HANA v konfiguraci Azure (velké instance), která je nasazena. Větší kapacitu úložiště je k dispozici v dalších měsíčních nákladů.
+- **Výpočetní**: servery, které jsou založeny na procesorech Intel Xeon E7-8890v3 nebo Intel Xeon E7-8890v4, které poskytují nezbytné výpočetní funkce a jsou certifikací SAP HANA.
+- **Síť**: A sjednocené vysokorychlostní síťové infrastruktury, která propojuje výpočty, úložiště a sítě LAN součásti.
+- **Úložiště**: infrastrukturu úložiště, který je přístupný prostřednictvím sjednocené síťové infrastruktury. Konkrétní úložnou kapacitu, která je k dispozici, závisí na konkrétní SAP HANA v Azure (velké instance) konfigurace, která je nasazena. Větší kapacitu úložiště je k dispozici na měsíční poplatek.
 
-V infrastruktuře víceklientské velké Instance razítka jsou zákazníci nasadit jako izolované klienty. V nasazení klienta název v rámci Azure registraci předplatného Azure. Toto předplatné je ten, který velké Instance HANA se fakturuje proti. Tyto klienty mít vztah 1:1 k předplatnému Azure. Pro síť je možné získat přístup k jednotce velké Instance HANA nasazené v jednoho klienta v jedné oblasti Azure z různých virtuálních sítích, které patří do různých předplatných Azure. Těchto předplatných Azure musí patřit do stejné Azure registrace. 
+V infrastruktuře víceklientské velká Instance razítka jsou zákazníci nasadit jako izolovaných tenantů. Při nasazení klienta název předplatného Azure v rámci vaší registrace v Azure. Toto předplatné Azure je ten, který je velká Instance HANA účtovat na vrub. Tyto klienti mají vztah 1:1 k předplatnému Azure. Pro síť je možné pro přístup k celku velká Instance HANA nasazené do jednoho tenanta v jedné oblasti Azure v různých virtuálních sítích, které patří do různých předplatných Azure. Předplatná Azure, musíte patřit do stejné registrace v Azure. 
 
-Stejně jako u virtuálních počítačů, SAP HANA v Azure (velké instance) je k dispozici v několika oblastmi Azure. Nabídka Možnosti obnovení po havárii, můžete vyjádřit výslovný souhlas. Různé velké Instance razítka v rámci jedné politickým geografické oblasti jsou připojené k sobě navzájem. Například HANA velké Instance razítka v oblasti USA – západ a oblasti USA – východ jsou připojené prostřednictvím propojení s vyhrazenou síť pro replikaci obnovení po havárii. 
+Stejně jako u virtuálních počítačů, SAP HANA v Azure (velké instance) se nabízí v několika oblastech Azure. Nabízí možnosti zotavení po havárii, můžete vyjádřit výslovný souhlas. Jiné velké Instance razítka v rámci jedné politické geografické oblasti jsou připojené k sobě navzájem. Například HANA velké Instance razítka v oblasti USA – západ a USA – východ jsou propojeny pomocí propojení vyhrazenou síť pro replikaci pro zotavení po havárii. 
 
-Stejně jako, můžete si vybrat mezi různé typy virtuálních počítačů s virtuálními počítači Azure, můžete z různých SKU z HANA velké instanci, která jsou vytvořena speciálně pro různé zatížení typy SAP HANA. SAP platí poměr paměti na procesor soketu pro různou zátěží podle generace procesor Intel. Následující tabulka uvádí typy SKU nabízí.
+Stejně jako, můžete si vybrat mezi různé typy virtuálních počítačů s Azure Virtual Machines, můžete vybrat z různých skladových položek z velká Instance HANA, které jsou přizpůsobené pro typy různých úloh SAP Hana. SAP platí poměry paměti k procesoru soket pro různé úlohy založené na generace procesorů Intel. V následující tabulce jsou uvedeny typy SKU, které nabízejí.
 
-SAP HANA ve službě Azure (velké instance) je k dispozici v několika konfigurace v oblasti USA – západ USA – východ, Austrálie – východ, Austrálie – jihovýchod, západní Evropa, Severní Evropa, Japonsko – východ, a Japonsko – západ.
+SAP HANA v Azure (velké instance) služba je k dispozici v několika konfigurací v oblasti Azure USA – západ a USA – východ, Austrálie – východ, Austrálie – jihovýchod, západní Evropa, Severní Evropa, Japonsko – východ a Japonsko – západ.
 
-[SAP HANA certifikované velké instance SKU HANA](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) seznamu jako:
+[Velké instance HANA SKU s certifikací SAP HANA](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) seznamu jako:
 
 | Řešení SAP | Procesor | Memory (Paměť) | Úložiště | Dostupnost |
 | --- | --- | --- | --- | --- |
-| Optimalizovaná pro OLAP: SAP BW BW/4HANA<br /> nebo SAP HANA pro obecné zatížení OLAP | Na Azure S72 SAP HANA<br /> – 2 procesor Intel Xeon® x E7 8890 v3<br /> 36 jader procesoru a 72 procesoru vláken |  768 GB |  3 TB | K dispozici. |
-| --- | Na Azure S144 SAP HANA<br /> – Procesor Intel Xeon® x 4 E7 8890 v3<br /> 72 jader procesoru a 144 procesoru vláken |  1,5 TB |  6 TB | Nenabízí se už |
-| --- | Na Azure S192 SAP HANA<br /> – Procesor Intel Xeon® x 4 E7 8890 v4<br /> 96 jader procesoru a 192 procesoru vláken |  2.0 TB |  8 TB | K dispozici. |
-| --- | Na Azure S384 SAP HANA<br /> – 8 procesor Intel Xeon® x E7 8890 v4<br /> 192 jader procesoru a 384 procesoru vláken |  4.0 TB |  16 TB | K dispozici. |
-| Optimalizovaná pro OLTP: SAP Business Suite<br /> na SAP HANA nebo S nebo 4HANA (OLTP)<br /> Obecné OLTP | Na Azure S72m SAP HANA<br /> – 2 procesor Intel Xeon® x E7 8890 v3<br /> 36 jader procesoru a 72 procesoru vláken |  1,5 TB |  6 TB | K dispozici. |
-|---| Na Azure S144m SAP HANA<br /> – Procesor Intel Xeon® x 4 E7 8890 v3<br /> 72 jader procesoru a 144 procesoru vláken |  3.0 TB |  12 TB | Nenabízí se už |
-|---| Na Azure S192m SAP HANA<br /> – Procesor Intel Xeon® x 4 E7 8890 v4<br /> 96 jader procesoru a 192 procesoru vláken  |  4.0 TB |  16 TB | K dispozici. |
-|---| Na Azure S384m SAP HANA<br /> – 8 procesor Intel Xeon® x E7 8890 v4<br /> 192 jader procesoru a 384 procesoru vláken |  6.0 TB |  18 TB | K dispozici. |
-|---| Na Azure S384xm SAP HANA<br /> – 8 procesor Intel Xeon® x E7 8890 v4<br /> 192 jader procesoru a 384 procesoru vláken |  8.0 TB |  22 TB |  K dispozici. |
-|---| Na Azure S576m SAP HANA<br /> – Procesor Intel Xeon® x 12 E7 8890 v4<br /> 288 jader procesoru a 576 procesoru vláken |  12.0 TB |  28 TB | K dispozici. |
-|---| Na Azure S768m SAP HANA<br /> – Procesor Intel Xeon® x 16 E7 8890 v4<br /> 384 jader procesoru a 768 procesoru vláken |  16.0 TB |  36 TB | K dispozici. |
-|---| Na Azure S960m SAP HANA<br /> – 20 procesor Intel Xeon® x E7 8890 v4<br /> 480 jader procesoru a 960 procesoru vláken |  20.0 TB |  46 TB | K dispozici. |
+| Optimalizováno pro OLAP: SAP BW, BW/4HANA<br /> nebo SAP HANA pro obecné úlohy OLAP | SAP HANA v Azure S72<br /> – 2 x procesor Intel® Xeon® E7-8890 v3<br /> 36 Procesorových jader a 72 vlákna CPU |  768 GB |  3 TB | K dispozici. |
+| --- | SAP HANA v Azure S144<br /> – 4 x procesor Intel® Xeon® E7-8890 v3<br /> 72 jader procesoru a 144 vlákna CPU |  1,5 TB |  6 TB | Nenabízí se už |
+| --- | SAP HANA v Azure S192<br /> – 4 x procesor Intel® Xeon® E7-8890 v4<br /> 96 jader procesoru a 192 vlákna CPU |  2.0 TB |  8 TB | K dispozici. |
+| --- | SAP HANA v Azure S384<br /> –. 8 x procesor Intel® Xeon® E7-8890 v4<br /> 192 Procesorových jader a 384 vlákna CPU |  4.0 TB |  16 TB | K dispozici. |
+| Optimalizováno pro OLTP: SAP Business Suite<br /> v SAP HANA nebo S/4HANA (OLTP)<br /> Obecné OLTP | SAP HANA v Azure S72m<br /> – 2 x procesor Intel® Xeon® E7-8890 v3<br /> 36 Procesorových jader a 72 vlákna CPU |  1,5 TB |  6 TB | K dispozici. |
+|---| SAP HANA v Azure S144m<br /> – 4 x procesor Intel® Xeon® E7-8890 v3<br /> 72 jader procesoru a 144 vlákna CPU |  3.0 TB |  12 TB | Nenabízí se už |
+|---| SAP HANA v Azure S192m<br /> – 4 x procesor Intel® Xeon® E7-8890 v4<br /> 96 jader procesoru a 192 vlákna CPU  |  4.0 TB |  16 TB | K dispozici. |
+|---| SAP HANA v Azure S384m<br /> –. 8 x procesor Intel® Xeon® E7-8890 v4<br /> 192 Procesorových jader a 384 vlákna CPU |  6.0 TB |  18 TB | K dispozici. |
+|---| SAP HANA v Azure S384xm<br /> –. 8 x procesor Intel® Xeon® E7-8890 v4<br /> 192 Procesorových jader a 384 vlákna CPU |  8.0 TB |  22 TB |  K dispozici. |
+|---| SAP HANA v Azure S576m<br /> – 12 x procesor Intel® Xeon® E7-8890 v4<br /> 288 Procesorových jader a 576 vlákna CPU |  12.0 TB |  28 TB | K dispozici. |
+|---| SAP HANA v Azure S768m<br /> až 16 x procesor Intel® Xeon® E7-8890 v4<br /> 384 Procesorových jader a 768 vlákna CPU |  16.0 TB |  36 TB | K dispozici. |
+|---| SAP HANA v Azure S960m<br /> – 20 x procesor Intel® Xeon® E7-8890 v4<br /> 480 Procesorových jader a 960 vlákna CPU |  20.0 TB |  46 TB | K dispozici. |
 
 
-V části SAP HANA TDIv5 umožňuje SAP zákaznické dimenzování a zákaznické projekty, které může vést k konfigurace serveru, které nejsou na seznamu jako certifikované v:
+V části TDIv5 SAP HANA SAP umožňuje zákaznického velikosti a zákaznické projekty, které by mohly vést k konfigurace serveru, které nejsou uvedeny jako certifikuje:
 
-- [SAP HANA certifikovaná zařízení](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/appliances.html)
-- [Certifikované platformy IaaS SAP HANA](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)
+- [SAP HANA certifikovaných zařízení](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/appliances.html)
+- [Platformy IaaS s certifikací SAP HANA](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)
 
-V mnoha případech tyto konfigurace serveru zákaznické provádění více paměti, než server jednotky certifikaci s SAP. Při práci s SAP, zákazníci mít možnost získat podporu SAP a certifikaci pro jejich konfigurace zákaznické velikostí serverů. V Azure následující standardní SKU HANA velké Instance jsou k dispozici a Microsoft v cena seznamu pro takové TDIv5 velikosti zákaznické projekty.
+V mnoha případech tyto konfigurace specifické pro zákazníka server provádět více paměti, než je server jednotky certifikace SAP. Při práci s řešením SAP, zákazníci mají možnost získat podpory SAP a certifikace pro jejich konfigurace specifické pro zákazníka velikosti serveru. Následující standardní SKU velká Instance HANA v Azure jsou k dispozici a v Microsoftu ceník pro tyto projekty TDIv5 zákaznického velikosti.
 
 
-| Původní SKU, který může být <br /> Rozšířené v paměti | Procesor | Memory (Paměť) | Úložiště | Dostupnost |
+| Původní skladovou Položku, kterou může být <br /> Rozšířené v paměti | Procesor | Memory (Paměť) | Úložiště | Dostupnost |
 | --- | --- | --- | --- | --- |
-| S192m lze rozšířit na | Na Azure S192xm SAP HANA<br /> – Procesor Intel Xeon® x 4 E7 8890 v4<br /> 96 jader procesoru a 192 procesoru vláken |  6.0 TB |  16 TB | K dispozici. |
-| S384xm lze rozšířit na | Na Azure S384xxm SAP HANA<br /> – 8 procesor Intel Xeon® x E7 8890 v4<br /> 192 jader procesoru a 384 procesoru vláken |  12.0 TB |  28 TB | K dispozici. |
-| S576m lze rozšířit na | Na Azure S576xm SAP HANA<br /> – Procesor Intel Xeon® x 12 E7 8890 v4<br /> 288 jader procesoru a 576 procesoru vláken |  18.0 TB |  41 TB | K dispozici. |
-| S768m lze rozšířit na | Na Azure S768xm SAP HANA<br /> – Procesor Intel Xeon® x 16 E7 8890 v4<br /> 384 jader procesoru a 768 procesoru vláken |  24,0 TB |  56 TB | K dispozici. |
+| S192m je možné rozšířit na | SAP HANA v Azure S192xm<br /> – 4 x procesor Intel® Xeon® E7-8890 v4<br /> 96 jader procesoru a 192 vlákna CPU |  6.0 TB |  16 TB | K dispozici. |
+| S384xm je možné rozšířit na | SAP HANA v Azure S384xxm<br /> –. 8 x procesor Intel® Xeon® E7-8890 v4<br /> 192 Procesorových jader a 384 vlákna CPU |  12.0 TB |  28 TB | K dispozici. |
+| S576m je možné rozšířit na | SAP HANA v Azure S576xm<br /> – 12 x procesor Intel® Xeon® E7-8890 v4<br /> 288 Procesorových jader a 576 vlákna CPU |  18.0 TB |  41 TB | K dispozici. |
+| S768m je možné rozšířit na | SAP HANA v Azure S768xm<br /> až 16 x procesor Intel® Xeon® E7-8890 v4<br /> 384 Procesorových jader a 768 vlákna CPU |  24,0 TB |  56 TB | K dispozici. |
 
-- Jader procesoru = součet jiný-technologie hyper-threaded jader procesoru součtu procesorů jednotky serverů.
-- Vláken procesoru = součet výpočetní vláken poskytované technologie hyper-threaded jader procesoru součtu procesorů jednotky serverů. Většina jednotky jsou nakonfigurované ve výchozím nastavení používají technologii Hyper-Threading.
-- Na základě dodavatele doporučení S768m, S768xm a S960m nejsou nakonfigurovaná pro použití technologie Hyper-Threading pro spuštění SAP HANA.
-
-
-Konkrétní konfigurace vybrali jsou závislé na zatížení, prostředky procesoru a požadovanou paměť. Je možné pro pracovní vytížení OLTP používat SKU, které jsou optimalizované pro pracovní vytížení OLAP. 
-
-Hardware základní nabídky, s výjimkou jednotky pro nastavení velikosti zákaznické projekty jsou certifikované SAP HANA TDI. Dvěma různými třídami hardwaru dělí SKU do:
-
-- S72 S72m, S144, S144m, S192, S192m a S192xm, které jsou označovány jako "Typ I třídy" z jednotky SKU.
-- S384, S384m, S384xm, S384xxm, S576m, S576xm S768m, S768xm a S960m, které se označují jako "Typ třídy II" z jednotky SKU.
-
-Dokončení HANA velké Instance razítka není přidělen výhradně pro jednoho zákazníka&#39;s použití. Tuto skutečnost se vztahuje na stojany s výpočetní a úložnou kapacitu připojené prostřednictvím síťových prostředcích infrastruktury také nasazené v Azure. Velké Instance HANA infrastruktury, jako je například Azure, nasadí různých zákazníků &quot;klienty&quot; , které jsou izolované od sebe navzájem v následující tři úrovně:
-
-- **Sítě**: izolaci pomocí virtuální sítě v rámci HANA velké Instance razítka.
-- **Úložiště**: izolaci prostřednictvím úložiště virtuálních počítačů, které mají přiřazené svazky úložiště a izolovat svazky úložiště mezi klienty.
-- **Výpočetní**: vyhrazený přiřazení serveru jednotek pro jednoho klienta. Ne pevného nebo soft oddíly jednotky serverů. Bez sdílení jedné jednotky serveru nebo hostitele mezi klienty. 
-
-Nasazení velkých Instance HANA jednotky mezi různými klienty nejsou viditelné pro sebe navzájem. Instance HANA velké jednotky nasazené v jiných klientů nemůže komunikovat přímo s jinými na úrovni HANA velké Instance razítka. Pouze Instance HANA velké jednotky v rámci jednoho klienta může na úrovni HANA velké Instance razítka vzájemně komunikovat.
-
-Nasazené klienta v razítko velké Instance je přiřazený k jedno předplatné pro účely fakturace. Pro síť můžete přistupovat z virtuální sítě z jiných předplatných Azure v rámci stejné Azure registrace. Pokud nasadíte pomocí jiného předplatného Azure ve stejné oblasti Azure, také můžete požádat o klienta oddělené HANA velké Instance.
-
-Existují významné rozdíly mezi systémem SAP HANA na velké instanci HANA a SAP HANA běžící na virtuálních počítačích, které jsou nasazené v Azure:
-
-- Neexistuje žádné vrstva virtualizace pro SAP HANA v Azure (velké instance). Zobrazí výkon základní hardware úplné obnovení.
-- Na rozdíl od Azure jsou vyhrazené SAP HANA na serveru Azure (velké instance) na konkrétního zákazníka. Není možné, že server jednotky nebo hostitele pevného nebo soft rozdělena na oddíly. V důsledku toho jednotce HANA velké Instance slouží jako přiřadit jako celek do klienta a který pro vás. Restartování nebo vypnutí serveru nebude automaticky vést k operačního systému a SAP HANA nasazován na jiném serveru. (Pro typ I třídy SKU, jedinou výjimkou je, pokud server narazí problémy a opětovné nasazení je nutné provést na jiném serveru.)
-- Na rozdíl od Azure, kde jsou vybrané typy procesoru hostitele pro nejlepší poměr ceny a výkonu, typy procesoru zvolené pro SAP HANA v Azure (velké instance) jsou nejvyšší provádění řádku procesor Intel E7v3 a E7v4.
+- Jádra procesoru = SUMA bez hyper-threaded Procesorových jader součtu procesory jednotky serverů.
+- Vlákna CPU = SUMA výpočetní vláken poskytuje hyper-threaded Procesorových jader součtu procesory jednotky serverů. Většina jednotky jsou nakonfigurované ve výchozím nastavení používají technologii Hyper-Threading.
+- Podle doporučení dodavatele S768m, S768xm a S960m nejsou nakonfigurovaná pro použití technologie Hyper-Threading pro spuštění SAP HANA.
 
 
-### <a name="run-multiple-sap-hana-instances-on-one-hana-large-instance-unit"></a>Spustit víc instancí SAP HANA na jednu jednotku velké Instance HANA
-Je možné k hostování více než jeden aktivní instance SAP HANA na jednotkách HANA velké Instance. Pokud chcete zadat možnosti úložiště snímků a zotavení po havárii, taková konfigurace vyžaduje svazku nastavit na instanci. V současné době velké Instance HANA jednotky lze dále rozdělit takto:
+Jaké konkrétní konfigurace zvolené jsou závislé na úlohy, prostředky procesoru a požadované paměti. Je možné používat SKU, které jsou optimalizované pro úlohy OLAP úlohy OLTP. 
 
-- **S72, S72m, S144, S192**: V přírůstcích po 256 GB s 256 GB nejmenší počáteční jednotky. Maximum paměti jednotky lze spojovat různých intervalech například 256 GB a 512 GB.
-- **S144m a S192m**: V přírůstcích po 256 GB s 512 GB nejmenší jednotky. Různé násobky například 512 GB a 768 lze spojovat na maximum paměti jednotky.
-- **Zadejte třídu II**: V přírůstcích po 512 GB s nejmenší počáteční jednotky, 2 TB. Maximum paměti jednotky lze spojovat různých intervalech například 512 GB, 1 TB a 1,5 TB.
+U nabídek, s výjimkou jednotky pro nastavení velikosti zákaznické projekty základní hardware jsou certifikací SAP HANA TDI. Dvě různé třídy hardwaru Rozdělit skladové jednotky do:
 
-Některé příklady spuštěním několika instancí SAP HANA může vypadat následovně.
+- S72 S72m, S144, S144m, S192, S192m a S192xm, které jsou označovány jako "Typ můžu třídy" skladových položek.
+- S384, S384m, S384xm, S384xxm, S576m, S576xm S768m, S768xm a S960m, což se označuje jako "Typ II třídy" skladových položek.
 
-| Skladová jednotka (SKU) | Velikost paměti | Velikost úložiště | Velikosti s více databází |
+Kompletní velká Instance HANA razítko není přidělená výhradně pro jediného zákazníka&#39;použijte s. Tato skutečnost platí do stojanů úložnou a výpočetní prostředky připojenými prostřednictvím sítě fabric nasazené v Azure i. Velká Instance HANA infrastruktury, jako je Azure, nasadí různých zákazníků &quot;tenantů&quot; , které jsou izolované od sebe v následujících třech úrovních:
+
+- **Síť**: izolace prostřednictvím virtuálními sítěmi v rámci razítka velká Instance HANA.
+- **Úložiště**: izolace prostřednictvím úložiště virtuálních počítačů, které mají přiřazené svazky úložiště a izolovat svazky úložiště mezi tenanty.
+- **COMPUTE**: vyhrazené přiřazení jednotek serverů do jednoho tenanta. Žádné pevné nebo obnovitelné dělení server jednotek. Bez sdílení serveru nebo hostitele celek mezi tenanty. 
+
+Nasazení jednotky velká Instance HANA mezi různých tenantech nejsou navzájem viditelné. Velká Instance HANA jednotky nasazených v různých tenantech nemůže komunikovat s jinými na úrovni razítko velká Instance HANA. Pouze velká Instance HANA jednotky v rámci jednoho tenanta může komunikovat mezi sebou na úrovni razítko velká Instance HANA.
+
+Nasazené tenanta v razítku velkou instanci se přiřadí na jedno předplatné Azure pro účely fakturace. Pro síť můžete přistupovat z virtuální sítě z jiných předplatných Azure v rámci stejné registrace v Azure. Pokud provádíte nasazení s jiným předplatným Azure ve stejné oblasti Azure, také můžete požádat o oddělené velká Instance HANA tenanta.
+
+Existují významné rozdíly mezi službou SAP HANA na velká Instance HANA a SAP HANA běžící na virtuálních počítačích nasazených v Azure:
+
+- Neexistuje žádná vrstva virtualizace pro SAP HANA v Azure (velké instance). Získáte výkonu základního hardwaru úplné obnovení systému.
+- Na rozdíl od Azure SAP HANA v Azure (velké instance) server je vyhrazen pro konkrétního zákazníka. Není možné, že jednotka serveru nebo hostitele je pevně nebo obnovitelné dělit na oddíly. V důsledku toho jednotka velká Instance HANA se používá jako přiřazená jako celek na tenanta a s ním pro vás. Restartování nebo vypnutí serveru nebude automaticky vést k operačního systému a SAP HANA se nasazuje na jiný server. (Pro typ můžu třídy SKU, jedinou výjimkou je, pokud server zaznamená problémy a opětovné nasazení je třeba provést na jiném serveru.)
+- Na rozdíl od Azure, kde typy procesoru hostitele jsou vybrány pro nejlepší poměr cena/výkon, jsou tyto typy procesoru, zvolená pro SAP HANA v Azure (velké instance), nejvyšší provádění řádku procesor Intel E7v3 a E7v4.
+
+
+### <a name="run-multiple-sap-hana-instances-on-one-hana-large-instance-unit"></a>Spusťte několik instancí SAP HANA na jednu jednotku velká Instance HANA
+Je možné k hostování více než jeden aktivní instanci SAP HANA na jednotkách velká Instance HANA. Poskytují možnosti snímků úložiště a zotavení po havárii, taková konfigurace vyžaduje svazku nastavit na jednu instanci. V současné době velká Instance HANA jednotky lze dále rozdělit následujícím způsobem:
+
+- **S72 S72m, S144, S192**: Dokupuje se násobek 256 GB, 256 GB od nejmenších po počáteční jednotky. Různé přírůstky například 256 GB až 512 GB, mohou být kombinovány pro maximální paměť jednotku.
+- **S144m a S192m**: Dokupuje se násobek 256 GB, 512 GB nejmenší jednotka. Různé přírůstky například 512 GB a o velikosti 768 GB mohou být kombinovány pro maximální paměť jednotku.
+- **Zadejte třídu II**: V přírůstcích po 512 GB, od nejmenších po počáteční jednotku 2 TB. Různé přírůstky například 512 GB, 1 TB a 1,5 TB mohou být kombinovány pro maximální paměť jednotku.
+
+Některé příklady spouštění více instancí SAP HANA může vypadat nějak takto.
+
+| Skladová jednotka (SKU) | Velikost paměti | Velikost úložiště | Velikosti více databází |
 | --- | --- | --- | --- |
-| S72 | 768 GB | 3 TB | instance HANA 1 × 768 GB<br /> nebo instance 1 × 512 GB + 1 × 256 GB instance<br /> nebo instance 3 x 256 GB | 
-| S72m | 1,5 TB | 6 TB | instance 3x512GB HANA<br />nebo instance 1 × 512 GB + 1 × 1 TB instance<br />nebo instance 6 x 256 GB<br />nebo instance 1x1.5 TB | 
-| S192m | 4 TB | 16 TB | instance 8 x 512 GB<br />nebo instance 4 x 1 TB<br />nebo instancí 4 x 512 GB + 2 × 1 TB instancí<br />nebo instancí 4 x 768 GB + instancí 2 x 512 GB<br />nebo instance 1 × 4 TB |
-| S384xm | 8 TB | 22 TB | instance 4 x 2 TB<br />nebo instancí 2 x 4 TB<br />nebo instancí 2 × 3 TB + 1 × 2 TB instancí<br />nebo instancí 2x2.5 TB + 1 × 3 TB instancí<br />nebo instance. 1 x 8 TB |
+| S72 | 768 GB | 3 TB | 1 x 768 GB instance HANA<br /> nebo instance 1 x 512 GB + 1 x 256 GB instance<br /> nebo 3 x 256 GB instance | 
+| S72m | 1,5 TB | 6 TB | instance HANA 3x512GB<br />nebo instance 1 x 512 GB + 1 x 1 TB instance<br />nebo instance 6 x 256 GB<br />nebo instance 1x1.5 TB | 
+| S192m | 4 TB | 16 TB | instance 8 x 512 GB<br />nebo instancích o velikosti 4 x 1 TB<br />nebo instance 4 x 512 GB + instancích o velikosti 2 x 1 TB<br />nebo instance 4 x 768 GB + 2 x 512 GB instance<br />nebo instance 1 × 4 TB |
+| S384xm | 8 TB | 22 TB | instancích o velikosti 4 x 2 TB<br />nebo instancích o velikosti 2 x 4 TB<br />nebo instancích o velikosti 2 x 3 TB + instancích o velikosti 1 × 2 TB<br />nebo 2x2.5 TB instancích a instancích o velikosti 1 × 3 TB<br />nebo instance 1 × 8 TB |
 
 
-Existují také další variace. 
+Existují i další varianty konfigurací. 
 
-### <a name="use-sap-hana-data-tiering-and-extension-nodes"></a>Použít uzly vrstvení a rozšíření dat SAP HANA
-SAP podporuje vrstvení datový model pro SAP BW různé verze SAP NetWeaver a SAP BW/4HANA. Další informace o vrstvení datový model, naleznete v dokumentu SAP [SAP BW/4HANA a SAP BW na HANA s uzly rozšíření SAP HANA](https://www.sap.com/documents/2017/05/ac051285-bc7c-0010-82c7-eda71af511fa.html#).
-S HANA velké instancí můžete použít možnost 1 konfigurace uzlů rozšíření SAP HANA jak je popsáno v blogu dokumenty – nejčastější dotazy a SAP. Možnost 2 konfigurace se dá nastavit pomocí následujících HANA velké Instance SKU: S72m, S192, S192m, S384 a S384m. 
+### <a name="use-sap-hana-data-tiering-and-extension-nodes"></a>Použití rozšíření a ovládání datových vrstev na data uzlů SAP HANA
+SAP podporuje datový model vrstev pro SAP BW dvě různé verze SAP Netweaveru a SAP BW/4HANA. Další informace o modelu vrstev dat, naleznete v dokumentu SAP [SAP BW/4HANA a SAP BW on HANA se SAP HANA rozšíření uzly](https://www.sap.com/documents/2017/05/ac051285-bc7c-0010-82c7-eda71af511fa.html#).
+S velká Instance HANA můžete použít možnost 1 konfiguraci uzlů rozšíření SAP HANA, jak je popsáno v dokumentech blogu – nejčastější dotazy a SAP. Možnost 2 konfigurace můžete nastavit s následující SKU velké Instance HANA: S72m S192, S192m, S384 a S384m. 
 
-Když se podíváte na dokumentaci, výhoda se nemusí zobrazovat okamžitě. Ale když se podíváte na pokyny pro nastavení velikosti SAP, uvidíte několik výhod pomocí možnosti-1 a 2 možnost rozšíření uzly SAP HANA. Zde jsou příklady:
+Při pohledu na dokumentaci výhodu v podobě nemusí zobrazovat okamžitě. Ale když se podíváte na pokyny pro nastavení velikosti SAP, můžete zobrazit výhodu pomocí možnosti-1 a 2 možnost rozšíření uzly SAP HANA. Tady jsou příklady:
 
-- Pokyny k nastavení velikosti SAP HANA obvykle vyžadují dvojnásobek datový svazek jako paměť. Při spuštění vaší instance SAP HANA s aktivní data, máte jenom 50 procent nebo méně paměti, naplní se data. Zbývající paměti je v ideálním případě uchovávat pro SAP HANA provádění své práce.
-- Znamená, že v jednotce HANA velké Instance S192 s 2 TB paměti, systémem databázi SAP BW máte pouze 1 TB jako datový svazek.
-- Pokud používáte dalšího uzlu Rozšíření SAP HANA možnost-1, i S192 HANA velké Instance SKU, nabízí další kapacitu 2 TB pro datový svazek. V konfiguraci možnost 2 získáte další 4 TB pro záložním datový svazek. Ve srovnání s aktivního uzlu, kapacita paměti úplné "záložním" rozšíření uzlu lze použít pro ukládání dat pro možnost-1. Double paměti lze použít pro datový svazek v konfiguraci uzlu Rozšíření SAP HANA možnost-2.
-- Skončili se s kapacitou 3 TB pro vaše data a hot záložním poměr 1:2 pro možnost-1. Máte 5 TB dat a 1:4 poměr konfigurace uzlu Rozšíření možnost-2.
+- Pokyny pro nastavení velikosti SAP HANA obvykle vyžadují dvojnásobek objem dat jako paměť. Při spuštění vaší instance SAP HANA s výměně dat máte pouze 50 % nebo méně paměti naplněný daty. Zbývající část paměti se nachází v ideálním případě pro SAP HANA dělat svou práci.
+- To znamená v jednotce S192 velké Instance HANA 2 TB paměti, s databázi SAP BW máte pouze 1 TB jako datový svazek.
+- Pokud používáte další uzel výrazu SAP HANA možnost-1, také S192 HANA velké Instance SKU, poskytuje dodatečnou kapacitu 2 TB pro datový svazek. V konfiguraci možnost 2 získáte další 4 TB pro teplé datový svazek. Ve srovnání s aktivní uzel, kapacita paměti úplné "teplé" rozšíření uzlu je možné pro ukládání dat pro možnost-1. Double paměti lze použít pro datový svazek v konfiguraci uzlu Rozšíření možnost 2 SAP HANA.
+- Můžete skončit s kapacitou 3 TB pro vaše data a horkou záložním poměr 1:2 pro možnost-1. Máte 5 TB dat a poměru 1:4 s konfigurací uzlu rozšíření pro možnost-2.
 
-Čím datový svazek ve srovnání s paměť, tím vyšší pravděpodobnost jsou uložení záložním data, která se žádostí o na místo na disku.
+Čím vyšší objem dat ve srovnání s pamětí, vyšší pravděpodobnost jsou uložená data warm vyžadujete pro pro službu disk storage.
 
 
-## <a name="operations-model-and-responsibilities"></a>Operace modelu a odpovědnosti
+## <a name="operations-model-and-responsibilities"></a>Provozní model a zodpovědnosti
 
-Služba součástí SAP HANA v Azure (velké instance) je zarovnán služby Azure IaaS. Zobrazí instance velké instance HANA s nainstalovaným operačním systémem, která je optimalizovaná pro SAP HANA. Jako u virtuálních počítačů Azure IaaS většinu úloh posílení zabezpečení operačního systému, instalace dalšího softwaru, instalaci HANA, operační operačního systému a HANA a aktualizaci operačního systému a HANA je vaší povinností. Microsoft nebude v můžete vynutit aktualizace operačního systému, nebo HANA.
+Služby, opatřeného SAP HANA v Azure (velké instance) je v souladu s služby Azure IaaS. Můžete získat instanci velká Instance HANA s nainstalovaným operačním systémem, která je optimalizovaná pro SAP HANA. Stejně jako u virtuálních počítačů Azure IaaS, většinu úloh, posílení zabezpečení operačního systému, instalace dalšího softwaru, instalaci HANA, provozní operačního systému a HANA a aktualizaci operačního systému a HANA je vaší odpovědností. Microsoft nebude vynucení aktualizací operačního systému nebo HANA na vás.
 
-![Odpovědnosti SAP HANA v Azure (velké instance)](./media/hana-overview-architecture/image2-responsibilities.png)
+![Odpovědnosti SAP Hana v Azure (velké instance)](./media/hana-overview-architecture/image2-responsibilities.png)
 
-Jak je vidět v diagramu, SAP HANA v Azure (velké instance) je více klientů, které nabízejí IaaS. Ve většině případů je dělení zodpovědnosti na hranici infrastruktury operačního systému. Microsoft je zodpovědná za všechny aspekty služby pod čarou operačního systému. Jste zodpovědní za všechny aspekty služby výše na řádku. Operačního systému je vaší povinností. Můžete použít nejaktuálnější místní metod, kterou může využít pro dodržování předpisů, zabezpečení, správy aplikací, základ a operačního systému správy. V systémech se zobrazí jako, pokud jsou ve vaší síti všechny namapoval.
+Jak je znázorněno na diagramu, SAP HANA v Azure (velké instance) je více tenanty, které nabízejí IaaS. Ve většině případů je dělení zodpovědnosti na hranici infrastruktury operačního systému. Microsoft je zodpovědná za všechny aspekty služby pod řádkem operačního systému. Zodpovídáte za všechny aspekty služby nad řádku. Operační systém je na vás. Můžete nadále používat nejaktuálnější místních metod, které může využívat pro dodržování předpisů, zabezpečení, Správa aplikací, základ a operačního systému správy. V systémech zobrazují, jakoby se ve vaší síti všechny vztahující.
 
-Tato služba je optimalizovaná pro SAP HANA, existují oblasti, které potřebujete k práci s společnost Microsoft k použití možnosti základní infrastruktury pro dosažení co nejlepších výsledků.
+Tato služba je optimalizovaná pro SAP HANA, existují oblasti, kde potřebujete pro práci s Microsoft používat základní funkce infrastruktury pro dosažení co nejlepších výsledků.
 
-Následující seznam uvádí další podrobnosti o vrstvy a vaše odpovědnosti:
+Následující seznam obsahuje další podrobnosti na jednotlivých vrstev a vaše odpovědnosti:
 
-**Sítě**: všechny interní sítě pro razítko velké Instance systémem SAP HANA. Vaše odpovědnosti patří přístup k úložišti, připojení mezi instancemi (pro Škálováním na více systémů a další funkce), připojení k povahu a připojení k Azure je hostitelem aplikační vrstvu SAP ve virtuálních počítačích. Zahrnuje také připojení k síti WAN mezi datovými centry Azure pro replikaci pro účely obnovení po havárii. Všechny sítě jsou oddíly prostřednictvím klienta a mít kvalitu služby, které jsou použity.
+**Sítě**: interní sítě pro razítko velká Instance spouštějí SAP HANA. Vaší zodpovědností zahrnuje přístup k úložišti, spojení mezi instancí (pro horizontální navýšení kapacity a další funkce), připojení na šířku a připojení k Azure, kde se hostuje aplikační vrstvě SAP na virtuálních počítačích. Zahrnuje také sítě WAN připojení mezi datovými centry Azure pro replikaci pro účely zotavení po havárii. Všechny sítě dělí podle tenanta a mít kvality služeb, které jsou použity.
 
-**Úložiště**: virtualizovaného oddíly úložiště pro všechny svazky, které jsou potřebné SAP HANA servery, a také pro snímky. 
+**Úložiště**: virtualizovaného rozdělit na oddíly úložiště pro všechny svazky, které jsou vyžadované servery SAP HANA, a také pro snímky. 
 
-**Servery**: vyhrazených fyzických serverů ke spuštění databáze SAP HANA, přiřazen klientům. Servery typu I třídy SKU jsou abstrahované hardwaru. Konfigurace serveru s těmito typy serverů se shromažďují a udržuje na profily, které můžou přesouvat z jednoho fyzického hardwaru na jiný fyzický hardware. Takové (ruční) přesunu profilu operacemi je možné charakterizovat trochu opravy služby Azure. Servery SKU – třída typu II nemáte nabízí takové funkce.
+**Servery**: vyhrazených fyzických serverů ke spuštění databáze SAP HANA, která je přiřazena klientům. Servery sady s typem třídy můžu skladových položek jsou abstrahované hardwaru. Konfigurace serveru s těmito typy serverů se shromažďují a udržuje na profilů, které lze přesunout z jednoho fyzického hardwaru do jiného fyzického hardwaru. Takové (ruční) přesun profilu operacemi je možné porovnat trochu s opravou služeb Azure. Servery třídy SKU typu II nenabízí takovou schopnost.
 
-**SDDC**: software pro správu, který se používá ke správě dat soustředí jako softwarově definované entity. Ho fond zdrojů pro škálování, dostupnosti a z důvodů výkonu umožňuje společnosti Microsoft.
+**SDDC**: software pro správu, který se používá pro správu datového centra jako softwarově definovaných entit. Umožňuje Microsoftu do fondu zdrojů pro škálování, dostupnost a kvůli výkonu.
 
-**Podporované OS**: zvolíte (SUSE Linux nebo Red Hat Linux) operačního systému na serverech se systémem. Bitové kopie operačního systému, který se dodává s byly poskytnutý dodavatelem pro jednotlivé Linux společnosti Microsoft pro spuštění SAP HANA. Musíte mít předplatné s dodavatelem Linux pro tento konkrétní obrázek optimalizované SAP HANA. Jste zodpovědní za registraci bitové kopie operačního systému dodavatele. 
+**Zakáže**: operační systém zvolíte (SUSE Linux nebo Red Hat Linux), na kterém běží na serverech. Pro spuštění SAP HANA bylo zadáno Image operačních systémů, které jsou součástí jednotlivých dodavatel Linuxových společnosti Microsoft. Musíte mít předplatné s dodavatelem Linux pro konkrétní image optimalizovaných pro SAP HANA. Zodpovídáte za registraci bitové kopie operačního systému dodavatele. 
 
-Z bodu předání společností Microsoft a jste zodpovědní za jakékoli další opravy operačního systému Linux. Tato opravy zahrnuje další balíčky, které může být nezbytné pro úspěšnou instalaci SAP HANA a které nejsou zahrnuté dodavatelem konkrétní Linux v jejich SAP HANA optimalizované bitové kopie operačního systému. (Další informace najdete v na SAP HANA instalace dokumentace a poznámky SAP.) 
+Z bodu předání společností Microsoft zodpovídáte za všechny další opravy operačního systému Linux. Tato oprava obsahuje další balíčky, který může být nezbytné pro úspěšnou instalaci SAP HANA, která nejsou zahrnuta konkrétní dodavatel Linuxových v jejich SAP HANA optimalizované bitové kopie operačního systému. (Další informace najdete v tématu SAP HANA dokumentaci k instalaci a poznámkách.) 
 
-Jste zodpovědní za použití dílčích oprav operačního systému kvůli selhání nebo optimalizace operačního systému a jeho ovladače relativně ke konkrétní serverový hardware. Také jste zodpovědní za zabezpečení nebo funkční opravy operačního systému. 
+Zodpovídáte za opravy operačního systému z důvodu selhání nebo optimalizace operačního systému a jeho ovladače vzhledem ke konkrétní serverového hardwaru. Můžete také zodpovídají za zabezpečení nebo funkční opravy operačního systému. 
 
 Vaše odpovědnosti také zahrnuje monitorování a plánování kapacity:
 
-- Využití prostředků procesoru.
+- Spotřeba prostředků procesoru.
 - Využití paměti.
-- Diskové svazky související s volného místa, IOPS a latenci.
-- Svazek síťový provoz mezi HANA velké Instance a aplikační vrstvu SAP.
+- Správa pro diskové svazky související s volného místa, vstupně-výstupních operací a latenci.
+- Objem síťového provozu mezi velká Instance HANA a aplikační vrstvě SAP.
 
-Základní infrastruktura velké instance HANA poskytuje funkce pro zálohování a obnovení svazku operačního systému. Pomocí této funkce je také vaší povinností.
+Základní infrastruktury velká Instance HANA poskytuje funkce pro zálohování a obnovení svazek s operačním systémem. Pomocí této funkce je také vaší povinností.
 
-**Middleware**: SAP HANA především Instance. Správu, operace a monitorování jsou vaše zodpovědnosti. Zadaná funkce můžete použít snímky úložiště pro zálohování a obnovení a po havárii pro účely obnovení. Tyto možnosti jsou poskytovány infrastruktury. Vaše odpovědnosti také zahrnovat navrhování vysoké dostupnosti nebo zotavení po havárii s těmito možnostmi monitorování a jejich využití k určení, zda snímky úložiště byl úspěšně proveden.
+**Middleware**: Instance SAP HANA, především. Správa, operace a monitorování jsou vaší odpovědností. Zadaná funkce můžete používat úložiště snímků pro účely obnovení zálohování a obnovení a po havárii. Tyto možnosti jsou k dispozici v infrastruktuře. Vaše odpovědnosti také zahrnovat návrh vysoké dostupnosti nebo zotavení po havárii s těmito možnostmi monitorování a jejich využitím k určení, zda snímků úložiště byl úspěšně proveden.
 
-**Data**: vaše data spravovaná přes SAP HANA a další data, jako je zálohování sdílí soubory umístěné na svazcích nebo souboru. Vaše odpovědnosti zahrnují monitorování volného místa na disku a správu obsahu na svazcích. Také jste zodpovědní za monitorování úspěšné provedení zálohy diskové svazky a úložiště snímků. Úspěšné provedení replikaci dat do lokalit pro zotavení po havárii zodpovídá Microsoft.
+**Data**: vaše data spravovaná přes SAP HANA a další data, jako je zálohování sdílených složek soubory jsou umístěné v svazků nebo souborů. Vaše odpovědnosti patří monitorování volného místa na disku a správu obsahu ve svazcích. Také zodpovídáte za monitorování úspěšné provedení zálohy diskové svazky a snímků úložiště. Úspěšné spuštění replikace dat do lokality pro zotavení po havárii zodpovídá Microsoft.
 
-**Aplikace:** instancí aplikace SAP nebo v případě jiných SAP aplikace, aplikační vrstvu těchto aplikací. Vaše odpovědnosti zahrnují nasazení, správu, operace a monitorování těchto aplikací. Jste zodpovědní za plánování kapacity využití prostředků procesoru, využití paměti, využívání Azure Storage a spotřeba šířky pásma sítě v rámci virtuální sítě. Také jste zodpovědní za plánování kapacity pro spotřeby prostředků z virtuální sítě k SAP HANA v Azure (velké instance).
+**Aplikace:** instancí aplikace SAP nebo v případě aplikací mimo systém SAP, aplikační vrstvu těchto aplikací. Vaše odpovědnosti patří nasazení, správu, operací a monitorování těchto aplikací. Zodpovídáte za spotřebu prostředků procesoru, využití paměti, spotřebu úložiště Azure a využití šířky pásma sítě v rámci virtuálních sítí plánování kapacity. Můžete také zodpovídají za plánování kapacity pro spotřebu prostředků z virtuálních sítí k SAP HANA v Azure (velké instance).
 
-**WAN**: připojení je vytvořit z místního nasazení Azure pro úlohy. Všem zákazníkům s instancí velké HANA použijte Azure ExpressRoute pro připojení k síti. Toto připojení není součástí SAP HANA na řešení Azure (velké instance). Jste zodpovědní za nastavení pro toto připojení.
+**Sítě WAN**: připojení, je vytvořit z místního na nasazení Azure pro úlohy. Všichni zákazníci s velká Instance HANA pomocí Azure ExpressRoute pro připojení. Toto připojení, které nejsou součástí SAP Hana v Azure (velké instance) řešení. Zodpovídáte za nastavení tohoto připojení.
 
-**Archiv**: Chcete archivovat kopií dat pomocí vlastních metod v účtech úložiště. Archivace vyžaduje správu, dodržování předpisů, náklady a operace. Jste zodpovědní za generování archivu kopií a záloh v Azure a uložit je do kompatibilní způsobem.
+**Archiv**: Chcete archivovat kopie dat pomocí vlastní metody v účtech úložiště. Archivace vyžaduje správu, dodržování předpisů, náklady a provoz. Zodpovídáte za generování archivu kopií a záloh v Azure a ukládat je na vyhovující způsobem.
 
-Najdete v článku [SLA pro SAP HANA v Azure (velké instance)](https://azure.microsoft.com/support/legal/sla/sap-hana-large/v1_0/).
+Zobrazit [smlouva SLA pro SAP HANA v Azure (velké instance)](https://azure.microsoft.com/support/legal/sla/sap-hana-large/v1_0/).
 
 ## <a name="sizing"></a>Velikost
 
-Nastavení velikosti pro velké instanci HANA je nejsou jiné než dimenzování pro HANA obecně. U stávajících a nasadit systémy, které chcete přesunout z jiných RDBMS do HANA, SAP poskytuje řadu sestav, které běží na vaše stávající systémy SAP. Pokud databázi přesunete do HANA, tyto sestavy zkontrolujte data a výpočet požadavků na paměť pro instanci HANA. Další informace o tom, jak spustit tyto sestavy a získat jejich nejnovější opravy nebo verze přečtěte si následující poznámky k SAP:
+Nastavení velikosti pro velké Instance HANA se nijak neliší od změny velikosti pro HANA obecně. U stávajících a nasadit systémy, které chcete přesunout z jiných relační databázový systém k HANA, SAP poskytuje řadu sestav, které běží na vašich stávajících systémů SAP. Pokud databáze byla převedena do platformy HANA, tyto sestavy zkontrolujte data a výpočet požadavků na paměť pro instanci HANA. Další informace o tom, jak spustit tyto sestavy a získat jeho nejnovější opravy nebo verze si přečtěte následující poznámky SAP:
 
-- [Poznámka SAP #1793345 - dimenzování pro sadě SAP HANA](https://launchpad.support.sap.com/#/notes/1793345)
-- [Poznámka: #1872170 - Suite na velikosti sestavy HANA a S/4 HANA SAP](https://launchpad.support.sap.com/#/notes/1872170)
-- [Poznámka SAP #2121330 – nejčastější dotazy: SAP BW na HANA Změna velikosti sestav](https://launchpad.support.sap.com/#/notes/2121330)
-- [Poznámka: #1736976 - sestavu nastavení velikosti pro BW HANA SAP](https://launchpad.support.sap.com/#/notes/1736976)
-- [Poznámka: #2296290 - dimenzování nové sestavy pro BW na HANA SAP](https://launchpad.support.sap.com/#/notes/2296290)
+- [Poznámka SAP #1793345 - změny velikosti pro SAP Suite on HANA](https://launchpad.support.sap.com/#/notes/1793345)
+- [Poznámka: #1872170 - Suite on HANA a s/4 HANA zpráva o velikosti SAP](https://launchpad.support.sap.com/#/notes/1872170)
+- [Poznámka SAP #2121330 – nejčastější dotazy: SAP BW on HANA velikosti sestav](https://launchpad.support.sap.com/#/notes/2121330)
+- [Poznámka: #1736976 – Sestava nastavení velikosti pro BW on HANA SAP](https://launchpad.support.sap.com/#/notes/1736976)
+- [Poznámka: #2296290 – nové velikosti sestavy pro BW on HANA SAP](https://launchpad.support.sap.com/#/notes/2296290)
 
-Pro implementace zelená pole je k dispozici vypočítat požadavky na paměť implementace SAP softwaru nad HANA SAP rychlé přizpůsobení velikosti symbolů.
+Pro implementace zelené louce je možné vypočítat požadavky na paměť implementace SAP software nad HANA SAP rychlé přizpůsobení velikosti symbolů.
 
-Požadavky na paměť pro HANA zvýšit s růstem datový svazek. Uvědomte si vaše aktuální využití paměti při předpovědi, co se má být v budoucnosti. Podle požadavky na paměť, potom můžete namapovat vaše vyžádání do jedné Instance SKU velké HANA.
+Požadavky na paměť pro HANA zvýšit objem dat roste. Mějte na paměti z aktuální využití paměti můžete odhadnout, co se děje bude v budoucnu. Podle požadavků na vysoce paměťově, pak můžete mapovat vaši vyžadují do jedné skladové položky velké Instance HANA.
 
 ## <a name="requirements"></a>Požadavky
 
-Tento seznam sestaví požadavky na spuštění SAP HANA v Azure (větší instance).
+Tento seznam sestaví požadavky pro spuštění SAP HANA v Azure (větší instance).
 
 **Microsoft Azure**
 
-- Předplatné Azure, který může být propojený SAP HANA v Azure (velké instance).
-- Kontrakt Microsoft Premier support. Konkrétní informace související se spouštěním SAP v Azure najdete v tématu [SAP podporu Poznámka #2015553 – SAP v Microsoft Azure: podporovat požadavky](https://launchpad.support.sap.com/#/notes/2015553). Pokud použijete instanci HANA velké jednotky s 384 a více procesorů, musíte taky rozšířit prvotřídní podporu kontrakt zahrnout rychlé odpovědi Azure.
-- Sledování HANA velké Instance SKU je nutné po provedení nastavení velikosti cvičení s SAP.
+- Předplatné Azure, které lze propojit k SAP HANA v Azure (velké instance).
+- Smlouvu o podpoře Microsoft Premier. Konkrétní informace související se systémem SAP v Azure najdete v tématu [SAP Support Poznámka #2015553 – SAP v Microsoft Azure: požadavky pro podporu](https://launchpad.support.sap.com/#/notes/2015553). Pokud používáte jednotky velká Instance HANA s 384 a více procesorů, potřebujete také rozšířit na Premier Azure Rapid Response zahrnout smlouvu o podpoře.
+- Sledování HANA velké Instance SKU je nutné po provedení nastavení velikosti cvičení s řešením SAP.
 
 **Připojení k síti**
 
-- ExpressRoute mezi místním nasazením a Azure: připojení místní datové centrum Azure, nezapomeňte uspořádat alespoň 1 GB/s připojení od vašeho poskytovatele internetových služeb. 
+- ExpressRoute mezi místní do Azure: pro připojení k Azure v místním datovém centru, ujistěte se, že k seřazení alespoň 1 GB/s připojení od svého poskytovatele internetových služeb. 
 
 **Operační systém**
 
-- Licence pro SUSE Linux Enterprise Server 12 pro SAP aplikace.
+- Licence pro SUSE Linux Enterprise Server 12 pro aplikace SAP.
 
    > [!NOTE] 
-   > Operační systém dodaných společností Microsoft není registrován u SUSE. Není připojen k instanci nástroj pro správu předplatného.
+   > Operační systém od společnosti Microsoft není zaregistrován SUSE. Není připojen k instanci nástroje pro správu předplatného.
 
-- SUSE Linux předplatné nástroj pro správu nasazené v Azure na virtuálním počítači. Tento nástroj poskytuje možnost pro SAP HANA v Azure (velké instance) pro zápis a SUSE aktualizován v uvedeném pořadí. (Není žádný přístup k Internetu v rámci datového centra velké Instance HANA.) 
+- SUSE Linux předplatné nástroj pro správu nasazených v Azure na virtuálním počítači. Tento nástroj poskytuje možnosti pro SAP HANA v Azure (velké instance) zaregistrované a v uvedeném pořadí aktualizoval SUSE. (Není v rámci datového centra velká Instance HANA bez připojení k Internetu.) 
 - Licence pro Red Hat Enterprise Linux 6.7 nebo 7.x pro SAP HANA.
 
    > [!NOTE]
-   > Operační systém dodaných společností Microsoft není registrován u Red Hat. Není připojen k instanci Red Hat odběr Manager.
+   > Operační systém od společnosti Microsoft není zaregistrován Red Hat. Není připojen k instanci správce předplatného Red Hat.
 
-- Red Hat odběr Manager nasazené v Azure na virtuálním počítači. Správce předplatného Red Hat poskytuje možnost pro SAP HANA v Azure (velké instance) pro zápis a Red Hat aktualizován v uvedeném pořadí. (Není žádný přímý přístup k Internetu z v rámci klienta nasazené na značce velké instanci Azure.)
-- SAP vyžaduje, abyste měli podporu smlouvy s poskytovatelem Linux. Tento požadavek se neodebere řešení pro velká Instance HANA nebo fakt spuštění Linux v Azure. Na rozdíl od pomocí některé z Galerie obrázků Linux Azure, služby poplatek je *není* součástí nabídku řešení HANA velké instance. Je vaší povinností splnit požadavky SAP o smlouvách, podporu s distributorem Linux. 
-   - Pro systémy SUSE Linux vyhledat požadavky na podporu smluv, [SAP Poznámka #1984787 - SUSE Linux Enterprise Server 12: poznámky k instalaci](https://launchpad.support.sap.com/#/notes/1984787) a [SAP Poznámka #1056161 - SUSE priority nepodporují pro aplikace SAP](https://launchpad.support.sap.com/#/notes/1056161).
-   - Red Hat Linux potřebujete úrovněmi správné předplatné, které zahrnují podporu a služby aktualizace pro operační systémy velkých instance HANA. Red Hat [SAP řešení] doporučuje Red Hat Enterprise Linux (https://access.redhat.com/solutions/3082481 předplatné. 
+- Red Hat správce předplatného nasazené v Azure na virtuálním počítači. Správce předplatného Red Hat poskytuje možnosti pro SAP HANA v Azure (velké instance) zaregistrované a aktualizovat v uvedeném pořadí by Red Hat. (Neexistuje žádný přímý přístup k Internetu z v rámci tenanta nasazené na razítku velkých instancí Azure.)
+- SAP vyžaduje podporu kontrakt s poskytovatele Linuxu. Tento požadavek se neodebere řešení pro velké Instance HANA nebo skutečnost, že spouštíte Linux v Azure. Na rozdíl od některých z Galerie imagí Azure pro Linux, poplatky za službu se *není* součástí nabídky řešení velké instance HANA. Je vaší odpovědností pro splnění požadavků SAP ohledně smlouvy o podpoře s distributora Linuxu. 
+   - SUSE Linux, vyhledejte požadavky Smlouvy o podpoře v [SAP Poznámka #1984787 - operačním systémem SUSE Linux Enterprise Server 12: poznámky k instalaci](https://launchpad.support.sap.com/#/notes/1984787) a [SAP Poznámka #1056161 – SUSE prioritní podporu pro aplikace SAP](https://launchpad.support.sap.com/#/notes/1056161).
+   - Pro Red Hat Linux musíte mít správné předplatné úrovně, které zahrnují podporu a služby aktualizace pro operační systémy velká Instance HANA. Red Hat doporučuje Red Hat Enterprise Linux pro [řešení SAP] (https://access.redhat.com/solutions/3082481 předplatného. 
 
-Na matici podpory různých verzí SAP HANA s různými verzemi systému Linux, najdete v části [2235581 # Poznámka SAP](https://launchpad.support.sap.com/#/notes/2235581).
+Matice podpory různých verzí SAP HANA s různými verzemi systému Linux, najdete v části [2235581 # Poznámka SAP](https://launchpad.support.sap.com/#/notes/2235581).
 
-Matice kompatibility operačního systému a verze firmwaru a ovladače HLI, najdete v části [Upgrade operačního systému pro HLI](os-upgrade-hana-large-instance.md).
+Matice kompatibility operačního systému a verze firmwaru a ovladače HLI, najdete v tématu [Upgrade operačního systému pro HLI](os-upgrade-hana-large-instance.md).
+
+
+> [!IMPORTANT] 
+> Typ II jednotek pouze SLES 12 SP2 operačního systému verze se v tuto chvíli nepodporuje. 
 
 
 **Database**
 
-- Licence a součásti instalace softwaru pro SAP HANA (platforma nebo enterprise edition).
+- Licence a software instalační komponenty pro SAP HANA (platformy nebo enterprise edition).
 
 **Aplikace**
 
-- Licence a softwarové součásti od instalace pro všechny aplikace SAP, která se připojují k SAP HANA a související SAP podporovat smluv.
-- Licence a softwarové součásti od instalace pro všechny aplikace bez SAP používá ve vztahu k SAP HANA v prostředí Azure (velké instance) a související smlouvy o podpoře.
+- Licence a software instalační komponenty pro všechny aplikace SAP, které se připojují k SAP HANA a SAP související podporu kontraktů.
+- Licence a software instalační komponenty pro všechny aplikace mimo systém SAP používá ve vztahu k SAP HANA v prostředí Azure (velké instance) a související smlouvy o podpoře.
 
 **Dovednosti**
 
-- Zkušenosti s a znalosti o Azure IaaS a jeho komponenty.
-- Zkušenosti s a znalosti o tom, jak nasadit SAP zatížení v Azure.
-- Instalace SAP HANA certifikované pracovníky.
-- SAP architekti dovednosti pro návrh vysoké dostupnosti a zotavení po havárii kolem SAP HANA.
+- Zkušenosti s a znalosti Azure IaaS a jeho součástí.
+- Prostředí s a znalosti o tom, jak nasadit úloh SAP v Azure.
+- Instalace SAP HANA s certifikací pracovníky.
+- SAP architekt dovednosti: pište návrh vysoké dostupnosti a zotavení po havárii kolem SAP HANA.
 
 **SAP**
 
-- Očekává se, že jste SAP zákazníka a mají podporu kontrakt s SAP.
-- Zejména pro implementace od třídy typu II HANA velké Instance SKU poraďte se s SAP ve verzích systému SAP HANA a závěrečné konfigurace na velkých a velkých hardwaru škálování.
+- Očekává se, že jste je zákazníkem v systému SAP a mají podporu kontraktu s řešením SAP.
+- Zejména pro implementace třídy typu II SKU velké Instance HANA konzultujte s řešením SAP verze SAP HANA a konečný výsledek konfigurace na velkých a velkých vertikálně navýšit kapacitu hardwaru.
 
 
 ## <a name="storage"></a>Úložiště
 
-Rozložení úložiště pro SAP HANA v Azure (velké instance) ke konfiguraci pomocí SAP HANA v modelu nasazení classic prostřednictvím SAP Doporučené pokyny. Pokyny jsou dokumentovány v článku [požadavky na úložiště SAP HANA](http://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) dokumentu white paper.
+Rozložení úložiště pro SAP HANA v Azure (velké instance) je nakonfigurována ve SAP HANA v modelu nasazení classic prostřednictvím SAP Doporučené pokyny. Pokyny jsou dokumentovány v článku [požadavky na úložiště SAP HANA](http://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) dokument white paper.
 
-HANA velké instanci typu I třídy se dodává s čtyřikrát paměti svazek jako svazek úložiště. Pro třídu II typ jednotek HANA velké Instance není čtyřikrát další úložiště. Jednotky se dodávají s svazku, který je určený pro ukládání HANA zálohování transakčního protokolu. Další informace najdete v tématu [nainstalovat a nakonfigurovat SAP HANA (velké instance) na Azure](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Velká Instance HANA typu můžu třídy součástí čtyřikrát paměti svazek jako svazek úložiště. Pro třídu typu II velká Instance HANA jednotek není čtyřnásobnou úložiště. Jednotky se dodávají s svazku, který je určený pro ukládání záloh protokolů transakcí HANA. Další informace najdete v tématu [nainstalujte a nakonfigurujte SAP HANA (velké instance) v Azure](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Viz následující tabulka uvádí přidělení úložiště. V tabulce jsou uvedeny hrubý kapacity pro jiné svazky zadaná u jiné Instance velké HANA jednotek.
+V následující tabulce, jde o přidělení úložiště. Tabulka uvádí přibližnou kapacitu pro různé svazky s různými jednotkami velká Instance HANA k dispozici.
 
-| HANA velké Instance SKU | Hana nebo dat | Hana a protokolování | / sdílené Hana | Hana/logbackups |
+| Velká Instance HANA SKU | data systému Hana / | Hana/log | Hana/shared | Hana/logbackups |
 | --- | --- | --- | --- | --- |
 | S72 | 1,280 GB | 512 GB | 768 GB | 512 GB |
 | S72m | 3,328 GB | 768 GB |1,280 GB | 768 GB |
-| S192 | 4 608 GB | 1024 GB | 1 536 GB | 1024 GB |
+| S192 | 4 608 GB | 1 024 GB | 1 536 GB | 1 024 GB |
 | S192m | 11,520 GB | 1 536 GB | 1,792 GB | 1 536 GB |
 | S192xm |  11,520 GB |  1 536 GB |  1,792 GB |  1 536 GB |
 | S384 | 11,520 GB | 1 536 GB | 1,792 GB | 1 536 GB |
-| S384m | 12 000 GB | 2 050 GB | 2 050 GB | 2,040 GB |
-| S384xm | 16 000 GB | 2 050 GB | 2 050 GB | 2,040 GB |
+| S384m | 12 000 GB | 2 050 GB | 2 050 GB | 2 040 GB |
+| S384xm | 16 000 GB | 2 050 GB | 2 050 GB | 2 040 GB |
 | S384xxm |  20 000 GB | 3,100 GB | 2 050 GB | 3,100 GB |
 | S576m | 20 000 GB | 3,100 GB | 2 050 GB | 3,100 GB |
-| S576xm | 31,744 GB | 4 096 GB | HODNOTU 2 048 GB | 4 096 GB |
+| S576xm | 31,744 GB | 4 096 GB | 2 048 GB | 4 096 GB |
 | S768m | 28,000 GB | 3,100 GB | 2 050 GB | 3,100 GB |
 | S768xm | 40 960 GB | 6,144 GB | 4 096 GB | 6,144 GB |
 | S960m | 36,000 GB | 4,100 GB | 2 050 GB | 4,100 GB |
 
 
-Skutečné nasazené svazky se může lišit v závislosti na nasazení a nástroje, který se používá k zobrazení velikosti svazků.
+Skutečné nasazené svazky může lišit v závislosti na nasazení a nástroje, který se používá k zobrazení velikostí svazku.
 
-Pokud jste rozdělit HANA velké Instance SKU, může vypadat několik příkladů možné dělení částí:
+Pokud rozdělíte SKU velké Instance HANA, několik příkladů kusů možné dělení může vypadat:
 
-| Oddíl paměti v GB | Hana nebo dat | Hana a protokolování | / sdílené Hana | Hana/log/zálohování |
+| Oddíl paměti v GB | data systému Hana / | Hana/log | Hana/shared | Hana/log/zálohování |
 | --- | --- | --- | --- | --- |
 | 256 | 400 GB | 160 GB | 304 GB | 160 GB |
 | 512 | 768 GB | 384 GB | 512 GB | 384 GB |
 | 768 | 1,280 GB | 512 GB | 768 GB | 512 GB |
-| 1,024 | 1,792 GB | 640 GB | 1024 GB | 640 GB |
+| 1,024 | 1,792 GB | 640 GB | 1 024 GB | 640 GB |
 | 1 536 | 3,328 GB | 768 GB | 1,280 GB | 768 GB |
 
 
-Tyto velikosti jsou čísla hrubý svazku, která mírně založené na nasazení a nástroje používané ke podívejte se na svazky se může lišit. Existují také další velikostí oddílu, jako je například 2,5 TB. Velikosti úložiště se počítá pomocí vzorce podobné použita pro předchozí oddíly. Termín "oddíly" neznamená, že operační systém, paměť nebo prostředky procesoru se žádným způsobem rozdělena na oddíly. Označuje oddílů pro úložiště pro různé HANA instance, které chcete nasadit na jedna jednotka HANA velké Instance. 
+Tyto velikosti jsou čísla hrubý svazku, která mírně nasazení a nástroje používané ke podívejte se na svazky se může lišit. Existují také jiné velikosti oddílu, jako je například 2,5 TB. Tyto velikosti úložiště se vypočítávat pomocí vzorce podobný použitému pro předchozí oddíly. Termín "oddíly", neznamená, že operační systém, paměť nebo prostředky procesoru se nijak rozdělit na oddíly. Znamená to oddílů pro úložiště pro různé instance HANA, které můžete chtít nasazení v jedné jednotce velká Instance HANA. 
 
-Můžete potřebovat další úložiště. Úložiště můžete přidat nákupu dalšího úložiště v jednotkách 1 TB. Toto dodatečné úložiště se dá přidat jako další svazek. Také může sloužit k rozšíření jeden nebo více existujících svazcích. Není možné snížit velikost svazků původně nasazení a většinou zdokumentovat, předchozích tabulkách. Také není možné změnit názvy svazků nebo se připojte názvy. Svazky úložiště výše popsané jsou připojené k instanci HANA velké jednotky jako NFS4 svazky.
+Potřebujete další úložiště. Přidání úložiště koupit další úložiště v jednotkách 1 TB. Toto dodatečné úložiště lze přidat jako další svazek. To lze také rozšířit nejméně jeden z existující svazky. Není možné snížit velikost svazků původně nasazené a většinou popsané v předchozích tabulkách. Také není možné změnit názvy svazků nebo připojit názvy. Výše popsaný svazky úložiště jsou připojeny k velká Instance HANA jednotky jako NFS4 svazky.
 
-Úložiště snímků můžete použít pro zálohování a obnovení a po havárii pro účely obnovení. Další informace najdete v tématu [SAP HANA (velké instance) vysoké dostupnosti a zotavení po havárii v Azure](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Snímky úložiště můžete používat pro účely obnovení zálohování a obnovení a po havárii. Další informace najdete v tématu [SAP HANA (velké instance) vysokou dostupnost a zotavení po havárii v Azure](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Odkazovat [HLI Podporované scénáře](hana-supported-scenario.md) podrobnosti rozložení úložiště pro váš scénář.
+Přečtěte si [HLI Podporované scénáře](hana-supported-scenario.md) podrobnosti rozložení úložiště pro váš scénář.
 
 ### <a name="encryption-of-data-at-rest"></a>Šifrování neaktivních uložených dat
-Úložiště použitého pro velké Instance HANA umožňuje transparentní šifrování dat, který je uložen na discích. Při nasazení Instance HANA velké jednotky, můžete povolit tento druh šifrování. Také můžete změnit na svazky šifrované po nasazení probíhá. Přesunutí ze bez šifrování šifrovaných svazcích je transparentní a nevyžaduje výpadek. 
+Úložiště pro velké Instance HANA umožňuje transparentní šifrování dat se ukládají na discích. Při nasazení jednotka velká Instance HANA, můžete povolit tento typ šifrování. Také můžete změnit na šifrovaných svazcích po nasazení se provádí. Přechod z nešifrované na šifrovaných svazcích je transparentní a nevyžaduje výpadek. 
 
-S typem I třídy z SKU, je na svazku spouštěcí logická jednotka je uložený na šifrování. Pro třídu typu II instance SKU z HANA velké budete muset šifrování spouštění logické jednotky s metody operačního systému. Další informace kontaktujte tým Microsoft Service Management.
+S typem můžu třídy SKU, se šifrují spouštěcí logická jednotka je uložený na svazku. Pro třídu typu II skladové položky z velké instance HANA je potřeba šifrovat spouštěcí logické jednotky s operačním systémem metody. Další informace obraťte se na tým Microsoft Service Management.
 
 
 ## <a name="networking"></a>Sítě
 
-Architektura služby síť Azure je klíčovou součástí úspěšné nasazení aplikace SAP HANA velké instance. SAP HANA na nasazení Azure (velké instance) obvykle mají větší šířku SAP v několika různých řešeních pro SAP s různou velikost databáze, využití prostředků procesoru a využití paměti. Je pravděpodobné, že ne všechny tyto systémy SAP jsou založeny na SAP HANA. Vaše šířku SAP je pravděpodobně hybridní, který používá:
+Architektura služby Azure network je klíčovou komponentou úspěšné nasazení aplikace SAP v HANA velkou instanci. SAP HANA v Azure (velké instance) nasazení obvykle mají větší prostředí SAP s několika různých řešení SAP s různou velikostí databází, využití prostředků procesoru a využití paměti v aplikaci. Je pravděpodobné, že ne všechny tyto systémy SAP jsou založené na systému SAP HANA. Prostředí SAP je pravděpodobně hybridní, který používá:
 
-- Nasazení SAP systémy místně. Z důvodu jeho velikosti tyto systémy aktuálně nemůže být hostovaná v Azure. Příkladem je provozní systému SAP ERP, který běží v systému SQL Server (jako databáze) a vyžaduje další prostředky procesoru nebo paměti než může poskytnout virtuálních počítačů.
-- Nasazení na základě SAP HANA SAP systémy místně.
-- Nasazené SAP systémy ve virtuálních počítačích. Tyto systémy může být vývoj, testování, izolovaného prostoru, nebo produkční instance pro všechny aplikace na základě SAP NetWeaver, které můžete úspěšně nasazovat v Azure (na virtuálních počítačích), na základě poptávky prostředků využívání a paměti. Tyto systémy můžou být taky založené na databáze, jako je SQL Server. Další informace najdete v tématu [SAP podporu Poznámka #1928533 – SAP aplikace v Azure: podporované produkty a virtuální počítač Azure typy](https://launchpad.support.sap.com/#/notes/1928533/E). A tyto systémy může být založen na databáze například SAP HANA. Další informace najdete v tématu [SAP HANA certifikované platformy IaaS](http://global.sap.com/community/ebook/2014-09-02-hana-hardware/enEN/iaas.html).
-- Nasazení SAP aplikační servery v Azure (na virtuálních počítačích), které využívají SAP HANA v Azure (velké instance) v Azure velké Instance razítka.
+- Nasazení SAP systémy místní. Z důvodu jejich velikosti tyto systémy momentálně nemůže být hostovaná v Azure. Příkladem je produkční systém SAP ERP, který běží na SQL serveru (jako je databáze) a vyžaduje další prostředky procesoru nebo paměti než virtuální počítače můžete zadat.
+- Na základě SAP HANA SAP systémy místně nasadili.
+- Nasazené systémy SAP na virtuálních počítačích. Tyto systémy můžou být vývoj, testování, izolovaného prostoru, nebo produkční instance pro některé aplikace založené na systému SAP NetWeaver, které můžete úspěšně nasazovat v Azure (na virtuálních počítačích), na základě poptávky spotřeby a paměti prostředků. Tyto systémy také může být založen na databáze, jako jsou SQL Server. Další informace najdete v tématu [SAP Support Poznámka #1928533 – aplikace SAP v Azure: podporované produkty a typy virtuálních počítačů Azure](https://launchpad.support.sap.com/#/notes/1928533/E). A tyto systémy můžou být založené na databáze, jako jsou SAP HANA. Další informace najdete v tématu [platformách IaaS s certifikací SAP HANA](http://global.sap.com/community/ebook/2014-09-02-hana-hardware/enEN/iaas.html).
+- Nasazený aplikační servery SAP v Azure (na virtuálních počítačích), které využívají SAP HANA v Azure (velké instance) v razítka velkých instancí Azure.
 
-Hybridní SAP šířku se čtyřmi nebo více různých scénářů nasazení je typické. Existují také mnoho zákazníků případů dokončení krajiny SAP, které běží v Azure. Virtuální počítače jsou účinnější, zvyšuje počet zákazníků, které přepínají jejich SAP řešení v Azure.
+Vytvoření hybridního prostředí SAP se čtyřmi nebo více různých scénářů nasazení je obvyklé. Existují také většinou zákazníka kompletní prostředí SAP, na kterých běží v Azure. Virtuální počítače budou výkonnější, roste počet zákazníků, které přesunout všechny svoje řešení SAP v Azure.
 
-Azure sítě v kontextu systému SAP nasazené v Azure není složité. Je založena na následující zásady:
+Sítě v rámci systémů SAP v Azure nasadit Azure není složitá. Je založen na následující zásady:
 
-- Virtuální sítě Azure musí být připojen k okruhu ExpressRoute, která se připojuje k místní síti.
-- Okruh ExpressRoute, který se připojuje místní obvykle do Azure by měl mít šířky pásma s 1 GB/s nebo vyšší. Tato minimální šířku pásma umožňuje odpovídající šířku pásma pro přenos dat mezi místní a systémy, které běží na virtuálních počítačích. Umožňuje také odpovídající šířku pásma pro připojení k systémům Azure z místních uživatelů.
-- Všechny systémy SAP v Azure musí být nastavené v virtuální sítě pro komunikaci mezi sebou.
-- Active Directory a DNS hostované na místě jsou rozšířené do Azure prostřednictvím ExpressRoute z místní.
+- Virtuální sítě Azure musí být připojen k okruhu ExpressRoute, který se připojuje k místní síti.
+- Okruh ExpressRoute, která se obvykle připojuje místní do Azure by měl mít 1 GB/s nebo vyšší šířku pásma. Tato minimální šířku pásma umožňuje vyhrazena adekvátní šířka pásma pro přenos dat mezi místními systémy a systémy, které běží na virtuálních počítačích. Umožňuje také vyhrazena adekvátní šířka pásma pro připojení k systémům Azure z místních uživatelů.
+- Všechny systémy SAP v Azure musí být nastavení ve virtuálních sítích komunikovat mezi sebou.
+- Místně hostované služby Active Directory a DNS jsou v místním rozšíří do Azure přes ExpressRoute.
 
 
 > [!NOTE] 
-> Z fakturace hlediska může být propojený jenom jedno předplatné pouze jeden klienta v velké Instance razítka v určité oblasti Azure. Naopak jednoho klienta razítko velké Instance může být propojený jenom jedno předplatné Azure. Tento požadavek je konzistentní s jinými fakturovatelný objekty v Azure.
+> Z fakturační pohledu pouze jedno předplatné Azure může být propojený jenom k jednomu tenantovi velká Instance razítka v konkrétní oblasti Azure. Naopak jednoho tenanta razítko velká Instance může být propojený jenom jedno předplatné Azure. Tento požadavek je konzistentní s jinými fakturovatelné objekty v Azure.
 
-Pokud nasazení SAP HANA v Azure (velké instance) v několika různých oblastech Azure samostatné klienta je nasazena v velké Instance razítka. Můžete spustit i v rámci stejného předplatného Azure, dokud tyto instance jsou součástí stejné šířku SAP. 
+Pokud se SAP HANA v Azure (velké instance) se nasazuje v několika různých oblastech Azure, samostatného tenanta se nasadí v razítku velkou instanci. Můžete spustit i v rámci stejného předplatného Azure, pokud jsou tyto instance součástí stejné prostředí SAP. 
 
 > [!IMPORTANT] 
-> SAP HANA v Azure (velké instance) podporuje pouze nasazení Azure Resource Manager.
+> Se SAP HANA v Azure (velké instance) se podporuje pouze nasazení Azure Resource Manageru.
 
  
 
-### <a name="additional-virtual-network-information"></a>Informace o další virtuální síti
+### <a name="additional-virtual-network-information"></a>Informace o další virtuální sítě
 
-Chcete-li připojit virtuální síť expressroute, musí být vytvořeny bránu Azure. Další informace najdete v tématu [o brány virtuální sítě pro ExpressRoute](../../../expressroute/expressroute-about-virtual-network-gateways.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)). 
+Pokud chcete připojení virtuální sítě pro ExpressRoute, musíte vytvořit brány Azure. Další informace najdete v tématu [o branách virtuálních sítí pro ExpressRoute](../../../expressroute/expressroute-about-virtual-network-gateways.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)). 
 
-Služba Azure gateway lze použít s ExpressRoute infrastruktury mimo Azure nebo s Azure velké Instance razítka. Služba Azure gateway můžete také použít pro připojení mezi virtuálními sítěmi. Další informace najdete v tématu [konfigurace pro správce prostředků do síťového připojení pomocí prostředí PowerShell](../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Tak dlouho, dokud tato připojení pocházejí z různých Microsoft enterprise hraniční směrovače se můžete připojit bránu Azure až na čtyři různá připojení ExpressRoute. Další informace najdete v tématu [infrastruktury SAP HANA (velké instance) a připojení v Azure](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
+Služba Azure gateway je možné s využitím ExpressRoute k infrastruktuře mimo Azure nebo razítku velkých instancí Azure. Služba Azure gateway lze použít také pro připojení mezi virtuálními sítěmi. Další informace najdete v tématu [konfigurace síťové připojení pomocí prostředí PowerShell pro Resource Manager](../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Služba Azure gateway na maximálně čtyři různá připojení ExpressRoute můžete připojit tak dlouho, dokud tato připojení pocházejí z různých hraničním směrovačům Microsoft enterprise. Další informace najdete v tématu [infrastrukturu SAP HANA (velké instance) a možnosti připojení v Azure](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
 
 > [!NOTE] 
-> Propustnost, které poskytuje služba Azure gateway se liší pro oba případy použití. Další informace najdete v tématu [o službě VPN Gateway](../../../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Maximální propustnost, kterou můžete dosáhnout s bránou virtuální sítě je 10 GB/s pomocí připojení ExpressRoute. Kopírování souborů mezi virtuální počítač, který se nachází ve virtuální síti a systému místní (jako jedna kopie datový proud) není dosáhnout úplnou propustnost různých SKU brány. Chcete-li využívat šířku pásma dokončení bránu virtuální sítě, použijte víc datových proudů. Nebo musíte zkopírovat různých souborů v paralelní datové proudy jednoho souboru.
+> Propustnost, kterou poskytuje služba Azure gateway se liší pro oba případy použití. Další informace najdete v tématu [informace o službě VPN Gateway](../../../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Maximální propustnost, které můžete dosáhnout s bránou virtuální sítě je 10 GB/s s použitím připojení typu ExpressRoute. Kopírování souborů mezi virtuálním Počítačem, který se nachází ve virtuální síti a systém v místním (jako datový proud jedna kopie) nelze dosáhnout úplné propustnosti různé skladové položky brány. Využívat šířku pásma kompletní brány virtuální sítě pomocí různých datových proudů. Nebo je nutné zkopírovat různé soubory v paralelní datové proudy jednoho souboru.
 
 
-### <a name="networking-architecture-for-hana-large-instance"></a>Architektura sítě pro instanci velké HANA
-Sítě architekturu pro velké instanci HANA lze rozdělit do čtyř různých částí:
+### <a name="networking-architecture-for-hana-large-instance"></a>Architektura sítě pro velké Instance HANA
+Síťové architektury pro velké Instance HANA lze rozdělit do čtyř různých částí:
 
-- Místní sítě a připojení ExpressRoute do Azure. Tato část je zákazníka doména, která je připojena k Azure prostřednictvím ExpressRoute. Najdete v pravém dolním na následujícím obrázku.
-- Azure síťových služeb, dřív popsané s virtuálními sítěmi, které jsou znovu brány. Tato část je oblast, kde je potřeba najít odpovídající návrhy pro vaše požadavky na aplikace, zabezpečení a požadavky na dodržování předpisů. Jestli používáte velké instanci HANA je jiný vzít v úvahu z hlediska počtu virtuálních sítí a Azure SKU brány lze vybírat. Najdete v pravém horním rohu na obrázku.
-- Připojení velké Instance HANA prostřednictvím ExpressRoute technologie do Azure. Tato část nasazení a postará Microsoft. Všechny, které je potřeba je zadat některé rozsahy IP adres po nasazení vaše prostředky v instanci velké HANA připojit k virtuálním sítím okruh ExpressRoute. Další informace najdete v tématu [infrastruktury SAP HANA (velké instance) a připojení v Azure](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
-- Sítě v HANA velké Instance, který je ve většině případů transparentní pro vás.
+- Místní sítě a připojení ExpressRoute k Azure. Tato část je doména zákazníka a je připojená k Azure přes ExpressRoute. Podívejte se vpravo dole na následujícím obrázku.
+- Síť Azure services, jak jsme uvedli, s virtuálními sítěmi, které znovu mají brány. Tato část je oblast, kde potřebujete najít vhodné návrhů pro požadavky na aplikace, zabezpečení a požadavky na dodržování předpisů. Ať už používáte velká Instance HANA je jiné vzít v úvahu z hlediska počtu virtuálních sítí a Azure SKU brány lze vybírat. Najdete v pravém horním rohu na obrázku.
+- Připojení velká Instance HANA přes ExpressRoute technologie do Azure. Tato část nasazení a postará Microsoft. Všechno, co je potřeba je zadat několik rozsahů IP adres po nasazení vaše prostředky v velká Instance HANA okruh ExpressRoute připojit k virtuálním sítím. Další informace najdete v tématu [infrastrukturu SAP HANA (velké instance) a možnosti připojení v Azure](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
+- Použití sítě ve velké Instance HANA, což je většinou transparentní za vás.
 
-![Virtuální síť připojená k SAP HANA na Azure (velké instance) a na místě](./media/hana-overview-architecture/image3-on-premises-infrastructure.png)
+![Virtuální sítě připojené k SAP HANA v Azure (velké instance) a místní](./media/hana-overview-architecture/image3-on-premises-infrastructure.png)
 
-Požadavek na vaše místní prostředky musí připojit prostřednictvím ExpressRoute do Azure nepodporuje změnit, protože používáte HANA velké instanci. Požadavek na jednu nebo více virtuálních sítí, spuštěné virtuální počítače, které jsou hostiteli aplikační vrstvu, která se připojuje k instancím HANA hostovaná v instanci HANA velké jednotky, máte také nemění. 
+Požadavek na vaše místní prostředky nutné se připojit přes ExpressRoute do Azure není změnit, protože používáte velká Instance HANA. Požadavek na jeden nebo více virtuálními sítěmi, na kterých běží virtuální počítače, které jsou hostiteli aplikační vrstvu, která se připojuje k HANA instance hostované v jednotkách velká Instance HANA, také nemění. 
 
-Rozdíly pro nasazení SAP v Azure jsou:
+Rozdíly pro nasazení SAP v Azure jsou následující:
 
-- Instance HANA velké jednotky vašeho zákazníka klienta jsou připojené prostřednictvím jiného okruhu ExpressRoute do virtuálních sítí. K oddělení zatížení, Nesdílejte místní do virtuální sítě ExpressRoute a odkazy mezi virtuálními sítěmi a HANA velké Instance stejné směrovače.
-- Profil zatížení mezi SAP aplikační vrstvu a velké Instance HANA je i jiná, s mnoho malých požadavků a shluky jako přenosu dat (sady výsledků) z SAP HANA do aplikační vrstvu.
-- Architektura aplikace SAP je více citlivá na latenci sítě než typické scénáře, kde data se vyměňují mezi místními a Azure.
-- Brána virtuální sítě má alespoň dvě připojení ExpressRoute. Obě připojení sdílet maximální šířka pásma pro příchozí data bránu virtuální sítě.
+- Velká Instance HANA jednotek vašeho tenanta zákazníka jsou připojené prostřednictvím jiného okruhu ExpressRoute do virtuální sítě. K oddělení podmínek zátěže, místní virtuální sítě ExpressRoute odkazů a odkazů mezi virtuálními sítěmi a velké Instance HANA Nesdílejte stejné směrovače.
+- Profil zatížení mezi aplikační vrstvě SAP a velké Instance HANA je jiný druh, s mnoha malých požadavků a nárůstem třeba přenos dat (sad výsledků) ze SAP HANA na aplikační vrstvu.
+- Architektura aplikací SAP je citlivější na latenci sítě než typické scénáře, kde data se přemisťují mezi místními a Azure.
+- Brána virtuální sítě má aspoň dvě připojení ExpressRoute. Obě připojení sdílet maximální šířka pásma pro příchozí data brány virtuální sítě.
 
-Latence sítě došlo mezi virtuálními počítači a velký Instance HANA jednotky může být vyšší než typické latence operace round-trip sítě virtuálních počítačů VM. Závisí na oblast Azure, hodnoty měřenou může překročit odezvy latence 0,7 ms jsou klasifikovány jako níže průměr v [SAP Poznámka #1100926 – nejčastější dotazy: výkon sítě](https://launchpad.support.sap.com/#/notes/1100926/E). Nicméně zákazníci nasadit na základě SAP HANA výrobní aplikace SAP úspěšně na velké Instance SAP HANA. Zákazníci, kteří nasazenou skvělé vylepšení sestavy spuštěním svých aplikací SAP na SAP HANA pomocí Instance HANA velké jednotky. Zajistěte, aby že důkladně otestovat své obchodní procesy v Azure HANA velké Instance.
+Latenci sítě mezi virtuálními počítači a velké Instance HANA jednotky může být vyšší než typické latence přenosu sítě virtuálních počítačů VM. Závisí na oblasti Azure, můžete hodnoty měří překročit round-trip latence 0,7 ms jsou klasifikovány jako podprůměrná v [SAP Poznámka #1100926 – nejčastější dotazy: výkon sítě](https://launchpad.support.sap.com/#/notes/1100926/E). Nicméně zákazníci nasadit na základě SAP HANA produkční aplikace SAP úspěšně na velké Instance SAP HANA. Zákazníci, kteří nasadí skvělé vylepšené sestavy spuštěním svých aplikací SAP na systému SAP HANA pomocí jednotek velká Instance HANA. Zajistěte, aby že důkladně otestovat vašich obchodních procesů ve velké Instance Azure HANA.
  
-Zajistit latence deterministický sítě mezi virtuálními počítači a velký Instance HANA volba bránu virtuální sítě SKU je nezbytné. Na rozdíl od vzory přenosů dat mezi místní a virtuální počítače můžete vyvíjet vzoru provoz mezi virtuálními počítači a velký Instance HANA malé ale vysoké shluky požadavky a datové svazky přenášet. Zpracovat takové shluky dobře, důrazně doporučujeme použít UltraPerformance SKU brány. Pro třídu typu II HANA velké Instance SKU použití skladová položka brány UltraPerformance jako brána virtuální sítě je povinné.
+Zajištění deterministické sítích s latencí mezi virtuálními počítači a velké Instance HANA brány virtuální sítě SKU je nezbytné. Na rozdíl od vzorů provozu mezi místními a virtuálními počítači můžete vyvíjet vzor provoz mezi virtuálními počítači a velké Instance HANA malou, avšak vysokou nárůstům požadavků a datové svazky přenášet. Pro zpracování takových nárůstem dobře, důrazně doporučujeme používat SKU brány UltraPerformance. Pro třídu typu II SKU velké Instance HANA je povinné použití SKU brány UltraPerformance jako bránu virtuální sítě.
 
 > [!IMPORTANT] 
-> Zadaný celkový provoz sítě mezi databáze vrstvy a aplikaci SAP, HighPerformance nebo UltraPerformance SKU brány pro virtuální sítě jsou podporovány pro připojení k SAP HANA v Azure (velké instance). Pro HANA velké Instance typu II SKU je podporováno pouze UltraPerformance SKU brány jako brána virtuální sítě.
+> Zadaný celkový provoz sítě mezi aplikací SAP a databázi vrstvy, pouze HighPerformance nebo SKU brány UltraPerformance pro virtuální sítě jsou podporovány pro připojení k SAP HANA v Azure (velké instance). Pro HANA velké Instance SKU typu II je podporován pouze SKU brány UltraPerformance jako bránu virtuální sítě.
 
 
 
-### <a name="single-sap-system"></a>Jednoho systému SAP
+### <a name="single-sap-system"></a>Jeden systému SAP
 
-Místní infrastruktura dříve vidět je připojené prostřednictvím ExpressRoute do Azure. Okruh ExpressRoute připojí do hraniční směrovač podniku. Další informace najdete v tématu [technický přehled ExpressRoute](../../../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Po navázání trasy, která se připojuje do páteřní strukturu Azure a jsou dostupné všechny oblasti Azure.
+V místní infrastruktuře bylo dříve uvedeno je připojené prostřednictvím ExpressRoute do Azure. Okruh ExpressRoute se připojuje do hraniční směrovač podniku. Další informace najdete v tématu [technický přehled ExpressRoute](../../../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Po navázání trasy připojí do páteřní síť Azure a všech oblastech Azure jsou dostupné.
 
 > [!NOTE] 
-> SAP krajiny spustit v Azure, připojí k hraniční směrovač podniku nejbližší oblast Azure z povahu SAP. Azure velké Instance razítka jsou propojeny pomocí vyhrazené podnikové hraniční směrovač zařízení k minimalizaci latence sítě mezi virtuálními počítači v Azure IaaS a velké Instance razítka.
+> Pokud chcete spustit prostředí SAP v Azure, připojte k hraniční směrovač podniku nejbližší oblasti Azure v prostředí SAP. Azure velká Instance razítka jsou propojené prostřednictvím vyhrazené podnikové hraniční směrovače zařízení kvůli minimalizaci latence sítě mezi virtuálními počítači v Azure IaaS a velké Instance razítka.
 
-Brána virtuální sítě pro virtuální počítače, které hostují instance aplikace SAP je připojená k okruhu ExpressRoute. Stejné virtuální síti je připojený k hraniční směrovač vyhrazený pro připojení k velké Instance razítka samostatné podniku.
+Brána virtuální sítě pro virtuální počítače, které hostují instance aplikace SAP je připojen k okruhu ExpressRoute. Stejné virtuální síti je připojený k hraniční směrovač vyhrazený pro připojení k velké Instance razítka samostatné podniku.
 
-Tento systém je jednoduchý příklad jednoho systému SAP. Aplikační vrstvu SAP je hostován v Azure. Databázi SAP HANA běží na SAP HANA v Azure (velké instance). Předpokladem je, že šířku pásma brány virtuální sítě 2 GB/s nebo 10 GB/s propustností nepředstavuje úzkým místem.
+Tento systém je jednoduchý příklad jednoho systému SAP. Aplikační vrstvě SAP je hostované v Azure. Databáze SAP HANA běží na systému SAP HANA v Azure (velké instance). Předpokladem je, že kritický bod nepředstavuje šířky pásma brány virtuální sítě, propustnost 2 GB/s nebo 10 GB/s.
 
-### <a name="multiple-sap-systems-or-large-sap-systems"></a>Více systémů SAP nebo velké systémy SAP
+### <a name="multiple-sap-systems-or-large-sap-systems"></a>Několik systémů SAP vyhrazené nebo rozsáhlých systémů SAP
 
-Pokud pro připojení k SAP HANA v Azure (velké instance) se nasazuje víc systémů SAP nebo velké systémy SAP, propustnost brány virtuální sítě může stát úzkým místem. V takovém případě rozdělte aplikace vrstvy na více virtuálních sítí. Můžete také vytvořit speciální virtuální síť, která se připojí k instanci velké HANA případech, jako například:
+Pokud pro připojení k SAP HANA v Azure (velké instance) jsou nasazeny více systémů SAP vyhrazené nebo rozsáhlých systémů SAP, propustnosti brány virtuální sítě může být kritickým bodem. V takovém případě rozdělení vrstvy aplikace na více virtuálních sítí. Můžete také vytvořit zvláštní virtuální síť, která se připojuje k velká Instance HANA pro případy, například:
 
-- Provádění zálohování přímo z instancí HANA v instanci velké HANA k virtuálnímu počítači v Azure, který je hostitelem sdílených složek NFS.
-- Kopírování velkých zálohy nebo další soubory z Instance HANA velké jednotky na spravovat v Azure místo na disku.
+- Provádění zálohování přímo z instance HANA ve velké Instance HANA VM v Azure, který je hostitelem sdílené složky NFS.
+- Kopírování velkých zálohy nebo jiné soubory z jednotky velká Instance HANA do místa na disku spravované v Azure.
 
-Použijte samostatné virtuální sítě pro hostitele virtuálních počítačů, které správu úložiště. Toto uspořádání zabraňuje účinky velkých souborů nebo přenos dat z velké Instance HANA do Azure na bráně virtuální sítě, která má virtuální počítače, které spustit aplikační vrstvu SAP. 
+Použijte samostatné virtuální sítě pro hostitele virtuálních počítačů, které Správa služby storage. Toto uspořádání se vyhnete účinky velkých souborů nebo přenos dat ze velká Instance HANA do Azure na bráně virtuální sítě, který poskytuje virtuální počítače, na kterých běží SAP aplikační vrstvu. 
 
-Pro více škálovatelná architektura sítě:
+Pro větší škálovatelnost síťové architektury:
 
 - Využívejte více virtuálních sítí pro jeden, větší SAP aplikační vrstvu.
-- Nasaďte jeden samostatný virtuální sítě u každého systému SAP nasazení ve srovnání s kombinace těchto systémů SAP v oddělené podsítě v rámci stejné virtuální síti.
+- Nasazení jedné samostatné virtuální sítě pro každý systém SAP nasazení, ve srovnání se sloučením tyto systémy SAP do samostatných podsítí v rámci stejné virtuální síti.
 
  Větší škálovatelnost sítě architektura pro SAP HANA v Azure (velké instance):
 
-![Nasazení SAP aplikační vrstvu přes více virtuálních sítí](./media/hana-overview-architecture/image4-networking-architecture.png)
+![Nasazení aplikační vrstvě SAP přes více virtuálních sítí](./media/hana-overview-architecture/image4-networking-architecture.png)
 
-Obrázek zobrazuje SAP aplikační vrstvu nebo součásti, které jsou nasazené v více virtuálních sítí. Tato konfigurace se zavedl nevyhnutelné latence režie, které došlo při komunikaci mezi aplikacemi hostované v těchto virtuálních sítí. Ve výchozím nastavení síťový provoz mezi virtuálními počítači, které jsou umístěné v různých virtuálních sítích směrovat přes hraniční směrovače enterprise v této konfiguraci. Způsob, jak optimalizovat a omezit latence při komunikaci mezi dvěma virtuálními sítěmi je partnerského vztahu virtuálních sítí ve stejné oblasti. Tato metoda funguje, i když tyto virtuální sítě jsou v různých předplatných. Partnerský vztah virtuální sítě, komunikace mezi virtuálními počítači ve dvou různých virtuálních sítích pomocí páteřní síti Azure přímou komunikaci mezi sebou. Latence ukazuje, jak je, pokud jsou virtuální počítače ve stejné virtuální síti. Provoz, který řeší rozsahy IP adres, které jsou připojené přes bránu virtuální sítě Azure je směrován přes bránu virtuální sítě jednotlivé virtuální sítě. 
+Obrázek ukazuje aplikační vrstvě SAP nebo komponenty, které jsou nasazené v několika virtuálními sítěmi. Tato konfigurace zavedené nevyhnutelné latence režijní náklady, ke které došlo při komunikaci mezi aplikací hostovaných v těchto virtuálních sítích. Ve výchozím nastavení, síťový provoz mezi virtuálními počítači v různých virtuálních sítích směrovat přes hraniční směrovače organizace v této konfiguraci. Vytvoření partnerského vztahu virtuálních sítí ve stejné oblasti je možné optimalizovat a snížení latence při komunikaci mezi dvěma virtuálními sítěmi. Tato metoda se dá použít i v případě, že jsou tyto virtuální sítě v různých předplatných. Partnerský vztah virtuální sítě, komunikace mezi virtuálními počítači ve dvou různých virtuálních sítích pomocí páteřní síť Azure přímo komunikovat mezi sebou. Latence ukazuje, jak v případě, že jsou virtuální počítače ve stejné virtuální síti. Provoz, který adresuje rozsahy IP adres, které jsou připojené přes bránu virtuální sítě Azure je směrován přes bránu virtuální sítě jednotlivé virtuální sítě. 
 
-Další informace o partnerském vztahu virtuální sítě najdete v tématu [partnerský vztah virtuální sítě](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview).
+Další informace o partnerských vztahů virtuálních sítí najdete v tématu [partnerský vztah virtuálních sítí](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview).
 
 
 ### <a name="routing-in-azure"></a>Směrování v Azure
 
 Tři aspekty směrování sítě jsou důležité pro SAP HANA v Azure (velké instance):
 
-* SAP HANA v Azure (velké instance) lze přistupovat pouze prostřednictvím virtuálních počítačů a vyhrazené připojení ExpressRoute, ne přímo z místní. Přímý přístup z místního s jednotkami velké Instance HANA dodaných společností Microsoft, není možné okamžitě. Přenositelné směrování omezení jsou vzhledem k aktuální architektuře síť Azure pro velké Instance SAP HANA. Někteří klienti správy a všechny aplikace, které potřebují přímý přístup, jako je například SAP řešení správce spuštěného na místě, se nemůže připojit k databázi SAP HANA.
+* SAP HANA v Azure (velké instance) můžete přistupovat pouze prostřednictvím virtuálních počítačů a vyhrazené připojení ExpressRoute, ne přímo z místní. Přímý přístup z místní jednotky velká Instance HANA dodaných společností Microsoft, není možné okamžitě. Přenositelné směrování omezení jsou způsobeny aktuální architektury sítě Azure používané pro velké Instance SAP HANA. Někteří klienti správy a všechny aplikace, které potřebují přímý přístup, jako je SAP správci řešení spuštěné v místním nemůže připojit k databázi SAP HANA.
 
-* Pokud máte velké Instance HANA jednotky nasazené ve dvou různých oblastech Azure pro zotavení po havárii, platí stejné omezení směrování přechodný. Jinými slovy IP adresy Instance HANA velké jednotky v jedné oblasti (například USA – západ) nejsou směrovány ke velké Instance HANA jednotka nasazení v jiné oblasti (například USA – východ). Toto omezení je nezávislé na použití sítě Azure partnerský vztah v oblastech nebo křížové připojení okruhy ExpressRoute, které se připojují k virtuálním sítím Instance HANA velké jednotky. Pro grafické znázornění podívejte se na obrázek v části "Použití HANA velké Instance jednotek v několika oblastech." Toto omezení, která se dodává s nasazené architekturu, zakáže okamžitou použití replikace systému HANA jako funkci obnovení po havárii.
+* Pokud máte velké Instance HANA jednotky nasazené ve dvou různých oblastech Azure pro zotavení po havárii, omezení přechodné směrování použita. Jinými slovy IP adresy velká Instance HANA jednotka v jedné oblasti (například USA – západ) nejsou směrovány na jednotku velká Instance HANA nasadit v jiné oblasti (například USA – východ). Toto omezení je nezávislé na použití síť Azure, partnerský vztah napříč oblastmi nebo křížové připojení okruhy ExpressRoute, které se připojují velká Instance HANA jednotek do virtuálních sítí. Grafické znázornění viz obrázek v části "použití velká Instance HANA ve více oblastech. jednotek" Toto omezení, který se dodává s nasazenou architekturou zakazuje okamžité použijte HANA System Replication funkce zotavení po havárii.
 
-* SAP HANA na jednotkách Azure (velké instance) mají přiřazenou IP adresu z rozsahu adres fondu IP serveru, který jste odeslali. Další informace najdete v tématu [infrastruktury SAP HANA (velké instance) a připojení v Azure](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Tato IP adresa je přístupná prostřednictvím předplatných Azure a ExpressRoute, která se připojuje virtuální sítě k HANA v Azure (velké instance). Přidělit IP adresu mimo, je rozsah adres fondu IP serveru přímo přiřazena k jednotce hardwaru. Má *není* přiřazené prostřednictvím NAT už, stejně jako v případě v prvním nasazení tohoto řešení. 
+* SAP HANA v Azure (velké instance) jednotky mají přiřazenou IP adresu z rozsah adres fondu IP serveru, který jste odeslali. Další informace najdete v tématu [infrastrukturu SAP HANA (velké instance) a možnosti připojení v Azure](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Tato IP adresa je přístupné prostřednictvím ExpressRoute, který se připojuje k HANA v Azure (velké instance) virtuální sítě a předplatných Azure. Přidělit IP adresu z celkového počtu, rozsah adres fondu IP serveru přímo přiřazená jednotky hardwaru. Má *není* přiřazeném prostřednictvím překladu adres už nepotřebujeme, stejně jako v případě v prvním nasazení tohoto řešení. 
 
 > [!NOTE] 
-> K překonání omezení v přechodný směrování, jak je popsáno v první dva seznam položek, použijte další součásti pro směrování. Součásti, které lze použít k překonání omezení může být:
+> K překonání omezení v přechodné směrování, jak je vysvětleno v prvních dvou seznam položek, použijte další komponenty pro směrování. Součásti, které slouží k překonání tohoto omezení může být:
 
-> * Zpětného-proxy server pro směrování dat do a z. Například F5 BIG-IP, NGINX s Traffic Manager nasazené v Azure jako virtuální brány firewall nebo provoz směrování řešení.
-> * Pomocí [IPTables pravidla](http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_%3a_Ch14_%3a_Linux_Firewalls_Using_iptables#.Wkv6tI3rtaQ) v virtuálního počítače s Linuxem umožňující směrování mezi místními umístěními a Instance HANA velké jednotky, nebo mezi jednotky HANA velké Instance v různých oblastech.
+> * Reverzních proxy serverů pro směrování dat do a z. Například F5 BIG-IP, server NGINX pomocí Traffic Manageru nasazené v Azure jako virtuální brána firewall/přenosů směrování řešení.
+> * Pomocí [pravidla iptables tak](http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_%3a_Ch14_%3a_Linux_Firewalls_Using_iptables#.Wkv6tI3rtaQ) v virtuálního počítače s Linuxem umožňující směrování mezi místními umístěními a velké Instance HANA jednotky, nebo mezi jednotkami velká Instance HANA v různých oblastech.
 
-> Upozorňujeme, že implementace a podporu pro vlastní řešení zahrnující třetích stran síťových zařízení nebo IPTables není poskytované společností Microsoft. Podpora musí být poskytnuta dodavatele komponenta, kterou používá nebo integrátor. 
+> Mějte na paměti, že implementaci a podporu pro vlastní řešení zahrnující třetích stran síťových zařízení nebo IPTables není k dispozici společností Microsoft. Podpora musí poskytnout dodavatel komponentu používanou nebo integrátor. 
 
 ### <a name="internet-connectivity-of-hana-large-instance"></a>Připojení k Internetu velké instance HANA
-Velké Instance HANA nemá *není* mít přímé připojení k Internetu. Jako příklad může toto omezení omezit na možnost registrovat bitovou kopii operačního systému přímo s dodavatelem operačního systému. Možná budete muset spolupracovat s vaší místní server SUSE Linux Enterprise předplatné nástroj pro správu serveru nebo Red Hat Enterprise Linux odběr Manager.
+Velká Instance HANA neodpovídá *není* mít přímé připojení k Internetu. Jako příklad toto omezení může omezit možnost zaregistrovat image operačního systému přímo s operačním systémem. Můžete potřebovat pro práci s vaším místním operačním systémem SUSE Linux Enterprise Server předplatné Management Tool serveru nebo správce předplatného Red Hat Enterprise Linux.
 
-### <a name="data-encryption-between-vms-and-hana-large-instance"></a>Šifrování dat mezi virtuálními počítači a velký Instance HANA
-Data přenesená mezi HANA velké Instance a virtuální počítače nejsou šifrována. Můžete však výhradně pro server exchange mezi straně HANA databázového systému a aplikací založeného na JDBC nebo rozhraní ODBC, povolit šifrování přenosů. Další informace najdete v tématu [této dokumentace podle SAP](http://help-legacy.sap.com/saphelp_hanaplatform/helpdata/en/db/d3d887bb571014bf05ca887f897b99/content.htm?frameset=/en/dd/a2ae94bb571014a48fc3b22f8e919e/frameset.htm&current_toc=/en/de/ec02ebbb57101483bdf3194c301d2e/plain.htm&node_id=20&show_children=false).
+### <a name="data-encryption-between-vms-and-hana-large-instance"></a>Šifrování dat mezi virtuálními počítači a velké Instance HANA
+Data přenášená mezi velká Instance HANA a virtuální počítače nejsou šifrována. Výhradně pro server exchange mezi HANA DBMS na straně a aplikace založené na JDBC/ODBC, ale můžete povolit šifrování přenosů. Další informace najdete v tématu [této dokumentace SAP](http://help-legacy.sap.com/saphelp_hanaplatform/helpdata/en/db/d3d887bb571014bf05ca887f897b99/content.htm?frameset=/en/dd/a2ae94bb571014a48fc3b22f8e919e/frameset.htm&current_toc=/en/de/ec02ebbb57101483bdf3194c301d2e/plain.htm&node_id=20&show_children=false).
 
-### <a name="use-hana-large-instance-units-in-multiple-regions"></a>Používat jednotky HANA velké Instance v několika oblastech
+### <a name="use-hana-large-instance-units-in-multiple-regions"></a>Použití jednotek velká Instance HANA ve více oblastech
 
-Můžete mít důvodů, proč nasazení SAP HANA v Azure (velké instance) v několika oblastech Azure jiný než pro zotavení po havárii. Možná budete chtít přístup HANA velké instanci ze všech virtuálních počítačích nasazených v různých virtuálních sítích v oblastech. IP adresy přiřazené k jiné jednotky velké Instance HANA nebudou rozšířeny nad rámec virtuální sítě, které jsou přímo připojené prostřednictvím jejich brány na instance. V důsledku toho byla zavedená mírné změnu na návrh virtuální sítě. Brána virtuální sítě může zpracovávat čtyři jiné okruhy ExpressRoute mimo jiné podnikové hraniční směrovače. Každý virtuální síť, která je připojena k jednomu z velké Instance razítka může být připojen k velké Instance razítka v jiné oblasti Azure.
+Bude pravděpodobně z důvodů pro nasazení SAP HANA v Azure (velké instance) v několika oblastech Azure kromě pro zotavení po havárii. Možná budete chtít přístup ze všech virtuálních počítačů nasazených v různých virtuálních sítích v oblastech velká Instance HANA. IP adresy přiřazené k jiné velké Instance HANA jednotek nejsou šířeny nad rámec virtuální sítě, které jsou přímo připojené prostřednictvím jejich brány do instancí. V důsledku toho se používá i drobnou změnu na návrh virtuální sítě. Bránu virtuální sítě může zpracovávat čtyři různé okruhy ExpressRoute, mimo jiné podnikové hraniční směrovače. Každá virtuální síť, který je připojený k jednomu z razítka velká Instance může být připojen k velké Instance razítka v jiné oblasti Azure.
 
-![Virtuální síť připojená k Azure velké Instance razítka v různých oblastech Azure](./media/hana-overview-architecture/image8-multiple-regions.png)
+![Virtuální sítě připojené k razítkům velkých instancí Azure v různých oblastech Azure](./media/hana-overview-architecture/image8-multiple-regions.png)
 
-Obrázek ukazuje, jak různých virtuálních sítí v obou oblastí jsou připojené dva různé okruhy ExpressRoute, které se používají pro připojení k SAP HANA v Azure (velké instance) v obou oblastech Azure. Nově přináší připojení jsou obdélníková červené čáry. Tato připojení z virtuální sítě virtuální počítače spuštěné v jednom z těchto virtuálních sítí mohou mít přístup ke každé jiné jednotky velké Instance HANA nasazené ve dvou oblastech. Jak ukazuje obrázek, předpokládá se, že máte dvě připojení ExpressRoute z místního dvou oblastech Azure. Toto uspořádání se doporučuje důvodů obnovení po havárii.
+Obrázek ukazuje, jak různých virtuálních sítí v obou oblastech jsou připojené dva různé okruhy ExpressRoute, které se používají k připojení k SAP HANA v Azure (velké instance) v obou oblastech Azure. Nově zavedená připojení jsou obdélníkové červené čáry. Tato připojení z virtuální sítě virtuální počítače spuštěné v jednom z těchto virtuálních sítí můžete přístup k každý z různých jednotek velká Instance HANA nasazené ve dvou oblastech. Jak ukazuje obrázek, se předpokládá, že máte dvě spojení ExpressRoute z místního na dvou oblastech Azure. Toto uspořádání se doporučuje z důvodů pro zotavení po havárii.
 
 > [!IMPORTANT] 
-> Pokud jste použili více okruhů ExpressRoute, předřazení AS Path a místní BGP předvoleb nastavení slouží k zajištění správné směrování provozu.
+> Pokud jste použili víc okruhů ExpressRoute, předřazení AS Path a nastavení místní Preference protokolu BGP by měla sloužit k zajištění správné směrování provozu.
 
 

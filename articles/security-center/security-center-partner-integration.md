@@ -12,14 +12,14 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/07/2018
+ms.date: 08/20/2018
 ms.author: terrylan
-ms.openlocfilehash: b0e674eb161af41a848f0456a033d615293a9947
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 117fc5cb6583c4e3eed0c9506bda470400941f61
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622785"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41918766"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Integrace řešení zabezpečení v Azure Security Center
 Tento dokument vám pomůže se správou řešení zabezpečení již propojených s Azure Security Center a s přidáním nových řešení.
@@ -38,7 +38,11 @@ Mezi integrovaná řešení zabezpečení v současné době patří:
 - Firewall nové generace ([Check Point](https://www.checkpoint.com/products/vsec-microsoft-azure/), [Barracuda](https://campus.barracuda.com/product/nextgenfirewallf/article/NGF/AzureDeployment/), [Fortinet](http://docs.fortinet.com/d/fortigate-fortios-handbook-the-complete-guide-to-fortios-5.2), [Cisco](http://www.cisco.com/c/en/us/td/docs/security/firepower/quick_start/azure/ftdv-azure-qsg.html) a [Palo Alto Networks](https://www.paloaltonetworks.com/products))
 - Posouzení ohrožení zabezpečení ([Qualys](https://www.qualys.com/public-clouds/microsoft-azure/) a [Rapid7](https://www.rapid7.com/products/insightvm/))
 
-Prostředí integrace ochrany koncových bodů se může lišit v závislosti na řešení. Následující tabulka obsahuje další podrobnosti o prostředí jednotlivých řešení:
+> [!NOTE]
+> Security Center neinstaluje agenta Microsoft Monitoring Agent na partnerská virtuální zařízení, protože většina dodavatelů zabezpečení na svých zařízeních zakazuje spouštění externích agentů.
+>
+>
+
 
 | Endpoint Protection (Ochrana koncových bodů)               | Platformy                             | Instalace Security Center | Zjišťování Security Center |
 |-----------------------------------|---------------------------------------|------------------------------|---------------------------|
@@ -68,9 +72,9 @@ Prostředí integrace ochrany koncových bodů se může lišit v závislosti na
 
 2. V **nabídce Microsoft Azure** vyberte **Security Center**. Otevře se obrazovka **Security Center – Přehled**.
 
-  ![Přehled služby Security Center](./media/security-center-partner-integration/overview.png)
+3. V nabídce služby Security Center vyberte **Řešení zabezpečení**.
 
-3. V části **Přehled** vyberte **Řešení zabezpečení**.
+  ![Přehled služby Security Center](./media/security-center-partner-integration/overview.png)
 
 V části **Řešení zabezpečení** můžete zobrazit informace o stavu integrovaných řešení zabezpečení Azure a provádět základní úlohy správy. Můžete také připojit další typy zdrojů dat zabezpečení, jako jsou upozornění služby Azure Active Directory Identity Protection a protokoly brány firewall ve formátu CEF (Common Event Format).
 

@@ -10,22 +10,22 @@ ms.suite: integration
 tags: connectors
 ms.topic: article
 ms.date: 08/23/2018
-ms.openlocfilehash: 94960b95e6de30159ec34b3f97bb5119cac42c35
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: ceef6c5f32372bb69f6ce789e755bc540cb12ba1
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818095"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43051945"
 ---
 # <a name="manage-excel-online-data-with-azure-logic-apps"></a>Spravovat data aplikace Excel Online s Azure Logic Apps
 
-S Azure Logic Apps a konektoru Excelu Online můžete vytvořit automatizovaných úloh a pracovní postupy založené na vašich dat v Excelu Online pro firmy nebo OneDrive. Vaše pracovní postupy mohou provádět tyto akce a další s daty, třeba:
+S Azure Logic Apps a konektoru Excelu Online můžete vytvořit automatizovaných úloh a pracovní postupy založené na vašich dat v Excelu Online pro firmy nebo OneDrive. Tento konektor zajišťuje akce, které vám pomohou pracovat s vašimi daty a spravovat tabulky, například: 
 
 * Vytvoření nových listů a tabulky.
 * Získání a správě listy, tabulky a řádky.
 * Přidáte jednoho řádky a sloupce klíče.
 
-Můžete zahrnout akce ve svých aplikacích logiky, které používají výstup z aplikace Excel Online akce. Tento konektor zajišťuje jenom akce, takže ke spuštění aplikace logiky použít samostatné aktivační událost, například **opakování** aktivační události. Například pokud vytvoříte listů každý týden, můžete odeslat e-mailu o těchto nových listů pomocí konektoru Office 365 Outlook.
+Pak můžete výstup z těchto akcí s akcemi pro ostatní služby. Například pokud použijete akci, která se vytvoří každý týden listy, můžete použít jinou akci, která odešle e-mail s potvrzením pomocí konektoru Office 365 Outlook.
 
 Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 

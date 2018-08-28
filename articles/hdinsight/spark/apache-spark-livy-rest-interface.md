@@ -4,17 +4,17 @@ description: Zjistěte, jak použít rozhraní Apache Spark REST API k odeslán�
 services: hdinsight
 author: jasonwhowell
 ms.author: jasonh
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.openlocfilehash: d174d6103206129744ba7d932982b5d9dcb8294e
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 677c7d27d34725b75c5dfed70cc377735f5d7d61
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618122"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43045208"
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>Pomocí rozhraní Apache Spark REST API můžete odesílat vzdálené úlohy ke clusteru HDInsight Spark
 

@@ -2,7 +2,7 @@
 title: Zjistěte, používá sandboxu - emulátor – Azure HDInsight Hadoop
 description: 'Pokud chcete začít seznamování se se používat v ekosystému Hadoop, můžete nastavit izolovaného prostoru Hadoop od Hortonworks na virtuálním počítači Azure. '
 keywords: emulátor systému hadoop, hadoop sandboxu
-editor: jasonwhowell
+ms.reviewer: jasonh
 services: hdinsight
 author: jasonwhowell
 ms.service: hdinsight
@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: jasonh
-ms.openlocfilehash: 6a2a81f89e86a75dd56283526713b88cdfd21569
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 66450077de4748bcd8703080d33f37169671ebe3
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39598708"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43048695"
 ---
 # <a name="get-started-with-a-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Začínáme s Hadoop sandboxu, emulátoru na virtuálním počítači
 

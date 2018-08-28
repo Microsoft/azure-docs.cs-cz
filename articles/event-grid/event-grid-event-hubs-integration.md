@@ -6,18 +6,18 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: tutorial
-ms.date: 05/04/2018
+ms.date: 08/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: 41cd2f1081cbe8d8fca9d6afa77b87f9aa1017d3
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 432436ee13519cf342313ad369c168ba764f9264
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34302935"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42616511"
 ---
 # <a name="stream-big-data-into-a-data-warehouse"></a>Streamování velkých objemů dat do datového skladu
 
-Azure [Event Grid](overview.md) je inteligentní služba směrování událostí, se kterou můžete reagovat na oznámení aplikací a služeb. V [ukázce služeb Event Hubs Capture a Event Grid](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) si ukážeme, jak používat Azure Event Hubs Capture se službou Azure Event Grid k bezproblémové migraci dat z centra událostí d služby SQL Data Warehouse.
+Azure [Event Grid](overview.md) je inteligentní služba směrování událostí, se kterou můžete reagovat na oznámení aplikací a služeb. Může například aktivovat funkci Azure, která zpracuje data Event Hubs zachycená v úložišti objektů blob v Azure nebo službě Data Lake Store a provede migraci těchto dat do dalších úložišť dat. Tato [ukázka Zachytávání Event Hubs a služby Event Grid](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) ukazuje, jak pomocí Zachytávání Event Hubs a služby Event Grid bezproblémově migrovat data Event Hubs z úložiště objektů blob do služby SQL Data Warehouse.
 
 ![Přehled aplikace](media/event-grid-event-hubs-integration/overview.png)
 
@@ -75,7 +75,7 @@ K dokončení tohoto kurzu potřebujete:
 
 ## <a name="deploy-the-infrastructure"></a>Nasazení infrastruktury
 
-Kvůli zjednodušení tohoto článku použijeme k nasazení potřebné infrastruktury šablonu Resource Manageru. Pokud si chcete prohlédnout nasazené prostředky, prohlédněte si [šablonu](https://github.com/Azure/azure-docs-json-samples/blob/master/event-grid/EventHubsDataMigration.json). K umístění skupiny prostředků použijte některou z [podporovaných oblastí](overview.md).
+Kvůli zjednodušení tohoto článku použijeme k nasazení potřebné infrastruktury šablonu Resource Manageru. Pokud si chcete prohlédnout nasazené prostředky, prohlédněte si [šablonu](https://github.com/Azure/azure-docs-json-samples/blob/master/event-grid/EventHubsDataMigration.json).
 
 Pokud používáte Azure CLI, použijte:
 
@@ -139,7 +139,7 @@ Po publikování funkce můžete začít událost odebírat.
 
 ## <a name="subscribe-to-the-event"></a>Přihlásíte se k odběru události
 
-1. Přejděte na [portál Azure](https://portal.azure.com/). Vyberte skupinu prostředků a aplikaci funkcí.
+1. Přejděte na [Azure Portal](https://portal.azure.com/). Vyberte skupinu prostředků a aplikaci funkcí.
 
    ![Zobrazení aplikace funkcí](media/event-grid-event-hubs-integration/view-function-app.png)
 
@@ -184,6 +184,6 @@ Nastavili jste centrum událostí, datový sklad SQL, aplikaci Azure Function Ap
 
 ## <a name="next-steps"></a>Další kroky
 
-* Úvod do Event Gridu najdete v článku o [Event Gridu](overview.md).
+* Úvod do Event Gridu najdete v článku [Informace o službě Event Grid](overview.md).
 * Úvod do služby Event Hubs Capture najdete v článku o [povolení služby Event Hubs Capture na webu Azure Portal](../event-hubs/event-hubs-capture-enable-through-portal.md).
 * Další informace o nastavení a spuštění ukázky najdete v článku s [ukázkou služeb Event Hubs Capture a Event Grid](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo).

@@ -1,55 +1,65 @@
 ---
-title: Nasazení do Azure IoT hraniční zařízení model Azure Machine Learning | Microsoft Docs
-description: Tento dokument popisuje, jak se dá modely Azure Machine Learning nasadit na zařízení Azure IoT okraj.
+title: Nasadit model ve službě Azure Machine Learning pro zařízení Azure IoT Edge | Dokumentace Microsoftu
+description: Tento dokument popisuje, jak je možné nasadit modely Azure Machine Learning pro zařízení Azure IoT Edge.
 services: machine-learning
 author: tedway
 ms.author: tedway
 manager: mwinkle
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
-ms.date: 2/1/2018
-ms.openlocfilehash: 1dffdee032c5b079aa5b81284cebe8f6471efebd
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.date: 08/24/2018
+ms.openlocfilehash: 24d3cf0c4b1a1283e7a6a7f61f0bb23dae7143d5
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34833634"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43112993"
 ---
-# <a name="deploy-an-azure-machine-learning-model-to-an-azure-iot-edge-device"></a>Model Azure Machine Learning nasadit do Azure IoT hraniční zařízení
+# <a name="deploy-an-azure-machine-learning-model-to-an-azure-iot-edge-device"></a>Nasadit model ve službě Azure Machine Learning pro zařízení Azure IoT Edge
 
-Všechny modely Azure Machine Learning kontejnerizované jako na základě Docker webové služby, můžete spustit také na Azure IoT hraniční zařízení. Další skripty a pokyny najdete v [AI nástrojů pro Azure IoT Edge](http://aka.ms/AI-toolkit).
+Modely Azure Machine Learning můžete kontejnerizovaných jako webových služeb využívajících Docker. Azure IoT Edge umožňuje nasazení kontejnerů do zařízení vzdáleně. Tyto služby použijte současně ke spuštění vašich modelů na hraničních zařízeních pro kratší doby odezvy a menší datové přenosy. 
 
-## <a name="operationalize-the-model"></a>Zprovoznit model
-Váš model zprovoznit podle pokynů v [nasazení služby webové Model Azure Machine Learning Management](model-management-service-deploy.md) vytvoření bitové kopie Docker se svým modelem.
+Další skripty a pokyny najdete v [AI Toolkit pro Azure IoT Edge](http://aka.ms/AI-toolkit).
+
+## <a name="operationalize-the-model"></a>Zprovoznění modelu
+
+Moduly Azure IoT Edge jsou založeny na Image kontejneru. Chcete-li nasadit model strojového učení na zařízení IoT Edge, budete muset vytvoření image Dockeru.
+
+Zprovoznění vašeho modelu podle pokynů v [Azure Machine Learning Model správy webové nasazení služby](model-management-service-deploy.md) k vytvoření image Dockeru obsahující váš model.
 
 ## <a name="deploy-to-azure-iot-edge"></a>Nasazení do Azure IoT Edge
-Azure IoT Edge přesune cloudu analýzy a vlastní obchodní logiku do zařízení. Všechny modely Machine Learning můžete spustit na IoT hraniční zařízení. V dokumentaci k nastavení IoT hraniční zařízení a vytváření nasazení naleznete na [aka.ms/azure-iot-edge-doc](https://aka.ms/azure-iot-edge-doc).
 
-Následují další skutečnosti, které je Poznámka:.
+Až budete mít image váš model, můžete ho nasadit do libovolného zařízení Azure IoT Edge. Všechny modely Machine Learning můžete spustit na zařízeních IoT Edge. 
 
-### <a name="add-registry-credentials-to-the-edge-runtime-on-your-edge-device"></a>Přidejte pověření registru do hraniční runtime v hraniční zařízení
-Na počítači, kde spouštíte IoT Edge přidáte přihlašovací údaje v registru, aby modul runtime může mít přístup ke kontejneru pro vyžádání obsahu.
+### <a name="set-up-an-iot-edge-device"></a>Nastavení zařízení IoT Edge
 
-V případě Windows spusťte následující příkaz:
-```cmd/sh
-iotedgectl login --address <docker-registry-address> --username <docker-username> --password <docker-password>
-```
-V případě Linuxu spusťte následující příkaz:
-```cmd/sh
-sudo iotedgectl login --address <docker-registry-address> --username <docker-username> --password <docker-password>
-```
+Připravte zařízení pomocí dokumentace ke službě Azure IoT Edge. 
 
-### <a name="find-the-machine-learning-container-image-location"></a>Vyhledejte umístění bitové kopie kontejneru Machine Learning
-Je třeba umístění image kontejneru Machine Learning. Vyhledání kontejneru umístění obrázku:
+1. [Registrace zařízení s Azure IoT Hub](../../iot-edge/how-to-register-device-portal.md). Výstup této procesů je připojovací řetězec, který můžete použít ke konfiguraci fyzického zařízení. 
+2. Nainstalujte modul runtime IoT Edge na fyzické zařízení a nakonfigurovat připojovací řetězec. Můžete nainstalovat modul runtime na [Windows](../../iot-edge/how-to-install-iot-edge-windows-with-windows.md) nebo [Linux](../../iot-edge/how-to-install-iot-edge-linux.md) zařízení.  
+
+
+### <a name="find-the-machine-learning-container-image-location"></a>Vyhledejte umístění image kontejneru Machine Learning
+Je třeba umístění image kontejneru s Machine Learning. K vyhledání umístění image kontejneru:
 
 1. Přihlaste se na [Azure Portal](http://portal.azure.com/).
-2. V **registru kontejner Azure**, vyberte registru, které chcete prověřit.
-3. V registru, klikněte na tlačítko **úložiště** zobrazíte seznam všech úložiště a jejich obrázků.
+2. V **Azure Container Registry**, vyberte registru, kterou chcete zkontrolovat.
+3. V registru, klikněte na tlačítko **úložišť** zobrazíte seznam všechna úložiště a jejich bitové kopie.
 
+Když se díváte na svůj registr kontejneru na webu Azure Portal, načtení přihlašovacích údajů registru kontejneru. Tyto přihlašovací údaje musí být uvedeny do zařízení IoT Edge, tak, aby ho stáhněte si image z privátního registru. 
 
+1. V registru kontejneru, klikněte na tlačítko **přístupové klíče**. 
+2. **Povolit** správce, pokud ještě není. 
+3. Uložte příslušné hodnoty pro **přihlašovací server**, **uživatelské jméno**, a **heslo**. 
+
+### <a name="deploy-the-container-image-to-your-device"></a>Nasazení image kontejneru do svého zařízení
+
+Image kontejneru a přihlašovací údaje registru kontejneru jste připraveni nasadit do zařízení IoT Edge modelu strojového učení. 
+
+Postupujte podle pokynů v [moduly nasazení IoT Edge z portálu Azure portal](../../iot-edge/how-to-deploy-modules-portal.md) ke spuštění vašeho modelu zařízení IoT Edge. 
 
 
 

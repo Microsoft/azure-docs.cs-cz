@@ -3,18 +3,18 @@ title: Použití Hivu s Hadoopem pro analýza protokolu webu – Azure HDInsight
 description: Naučte se používat Hive s HDInsight k analýze webových protokolů. Budete pomocí souboru protokolu jako vstup do tabulky HDInsight a použít HiveQL pro dotaz na data.
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/17/2016
 ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: a40aef8d0231fcfc0ae0f399440b1fb98367dd2d
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 47175ed4bc01a43d1f21cbfc84b8a788f11b7338
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39595711"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43048020"
 ---
 # <a name="use-hive-with-windows-based-hdinsight-to-analyze-logs-from-websites"></a>Použití Hivu se službou HDInsight se systémem Windows k analýze protokolů z webů
 Zjistěte, jak použít HiveQL s HDInsight k analýze protokolů na webu. Analýza protokolu webu je možné segmentovat cílovou skupinu podle podobných aktivit, kategorizace návštěvníkům webu podle demografické údaje a přečtěte si obsah, zobrazení, webů, které pocházejí z a tak dále.

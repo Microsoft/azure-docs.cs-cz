@@ -1,18 +1,18 @@
 ### <a name="prerequisites"></a>Požadavky
 * A [Trello](http://trello.com) účtu 
 
-Než v aplikaci logiky můžete použít váš účet Trello, musíte je nejdříve autorizovat aplikaci logiky se připojit ke svému účtu Trello. Naštěstí můžete k tomu snadno z v rámci aplikace logiky na portálu Azure. 
+Předtím, než v aplikaci logiky můžete používat svůj účet Trello, musíte se autorizovat aplikaci logiky se připojit ke svému účtu Trello. Naštěstí vám pomůžou snadno z v rámci aplikace logiky na webu Azure Portal. 
 
-Tady jsou kroky k autorizaci aplikace logiky pro připojení k účtu Trello:
+Tady jsou kroky k autorizaci aplikace logiky se připojit ke svému účtu Trello:
 
-1. Chcete-li vytvořit připojení k Trello, v návrháři aplikace logiky, vyberte **zobrazit Microsoft spravované rozhraní API** v rozevíracím seznamu zadejte *Trello* do vyhledávacího pole. Vyberte aktivační události nebo akci, kterou budete chtít použít:  
+1. Chcete-li vytvořit připojení k Trello, v návrháři aplikace logiky, vyberte **rozhraní API spravovaná Microsoftem zobrazit** v rozevíracím seznamu zadejte *Trello* do vyhledávacího pole. Výběr triggeru nebo akce, které budete chtít použít:  
    ![](./media/connectors-create-api-trello/trello-1.png)
-2. Pokud jste nevytvořili žádné připojení k Trello před, budete získat zobrazí výzva k zadání přihlašovacích údajů vaší Trello. Tyto přihlašovací údaje se použije k autorizaci aplikace logiky pro připojení k a přístup k datům účtu Trello:  
+2. Pokud jste ještě nevytvořili žádná připojení k Trello před, bude výzva k zadání přihlašovacích údajů Trello. Tyto přihlašovací údaje se použijí k autorizaci aplikace logiky pro připojení k a přístup k datům účtu Trello:  
    ![](./media/connectors-create-api-trello/trello-2.png) 
-3. Povolit nám se připojit k Trello:  
+3. Umožňuje připojení k Trello:  
    ![](./media/connectors-create-api-trello/trello-3.png)   
-4. Zadejte svoje Trello uživatelské jméno a heslo k autorizaci aplikace logiky:  
+4. Zadejte své Trello uživatelské jméno a heslo k autorizaci aplikace logiky:  
    ![](./media/connectors-create-api-trello/trello-4.png)  
-5. Všimněte si vytvořil připojení a je nyní můžete pokračovat v dalších krocích v aplikaci logiky:  
+5. Všimněte si, připojení bylo vytvořeno a teď jste zdarma postupujte podle dalších kroků ve vaší aplikaci logiky:  
    ![](./media/connectors-create-api-trello/trello-5.png)
 

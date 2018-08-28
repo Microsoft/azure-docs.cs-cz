@@ -1,175 +1,174 @@
 ---
-title: Pomocí prohlížeče úlohy a zobrazení úloh pro úlohy Azure Data Lake Analytics
-description: Tento článek popisuje, jak používat prohlížeč úlohy a zobrazení úloh pro úlohy Azure Data Lake Analytics.
+title: Použití prohlížeče úloh a zobrazení úloh pro úlohy Azure Data Lake Analytics
+description: Tento článek popisuje použití prohlížeče úloh a zobrazení úloh pro úlohy Azure Data Lake Analytics.
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: jasonwhowell
 ms.author: jasonh
-manager: kfile
-editor: jasonwhowell
+ms.reviewer: jasonwhowell
 ms.assetid: bdf27b4d-6f58-4093-ab83-4fa3a99b5650
 ms.topic: conceptual
 ms.date: 08/02/2017
-ms.openlocfilehash: 6d7ebc8d14e82281e074ff52abd41a16871470c0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 474478c8049dd97558b49b1df4b00655268fc0b3
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34623226"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43044094"
 ---
-# <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics"></a>Použití prohlížeče úlohy a zobrazení úloh pro Azure Data Lake Analytics
-Služba Azure Data Lake Analytics archivy odeslaná úloh v [úložiště dotazů](#query-store). V tomto článku zjistěte, jak používat prohlížeč úlohy a zobrazení úloh v nástrojů Azure Data Lake pro Visual Studio k nalezení informací o historie úlohy. 
+# <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics"></a>Použití prohlížeče úloh a zobrazení úloh pro Azure Data Lake Analytics
+Služba Azure Data Lake Analytics archivuje odeslané úlohy v [úložiště dotazů](#query-store). V tomto článku se dozvíte, jak použití prohlížeče úloh a zobrazení úloh v Azure Data Lake Tools pro Visual Studio k nalezení informací o historie úlohy. 
 
-Ve výchozím nastavení služba Data Lake Analytics archivy úlohy po dobu 30 dnů. Je doba vypršení platnosti lze nakonfigurovat z portálu Azure tak, že nakonfigurujete zásady přizpůsobené vypršení platnosti. Nebudete mít přístup k informacím úlohy po vypršení platnosti. 
+Ve výchozím nastavení služby Data Lake Analytics archivuje úlohy po dobu 30 dnů. Dobu vypršení platnosti je možné nakonfigurovat z portálu Azure tím, že nakonfigurujete zásady přizpůsobené vypršení platnosti. Nebudete mít přístup k informacím úlohy po vypršení platnosti. 
 
 ## <a name="prerequisites"></a>Požadavky
-V tématu [nástroje Data Lake pro Visual Studio požadavky](data-lake-analytics-data-lake-tools-get-started.md#prerequisites).
+Zobrazit [nástrojů Data Lake pro Visual Studio požadavky](data-lake-analytics-data-lake-tools-get-started.md#prerequisites).
 
-## <a name="open-the-job-browser"></a>Otevřete prohlížeč úlohy
-Přístup k úloze prohlížeče prostřednictvím **Průzkumníka serveru > Azure > Data Lake Analytics > úlohy** v sadě Visual Studio.  Pomocí prohlížeče úlohy, získat přístup k úložišti dotazů účtu Data Lake Analytics. Úloha prohlížeče zobrazí úložiště dotazů na levé straně, informací o základní úloh a zobrazení úloh na pravé zobrazující podrobné informace o úlohách.
+## <a name="open-the-job-browser"></a>Otevřít prohlížeč úloh
+Přístup k prohlížeč úloh prostřednictvím **Průzkumník serveru > Azure > Data Lake Analytics > úlohy** v sadě Visual Studio.  Použití prohlížeče úloh, můžete přístup k úložišti dotazů účtu Data Lake Analytics. Prohlížeč úloh zobrazí Query Store na levé straně, informace o základních úlohách a zobrazení úloh na pravé zobrazení podrobné informace o úloze.
 
 ## <a name="job-view"></a>Zobrazení úlohy
-Zobrazení úloh jsou uvedené podrobné informace o úlohy. Chcete-li spustit úlohu, můžete dvakrát klikněte na úlohu v prohlížeči úlohy nebo otevřít z nabídky Data Lake klepnutím zobrazení úloh. Měli byste vidět, zobrazí se dialogové okno naplněný adresu URL úlohy.
+Zobrazení úlohy zobrazuje podrobné informace o úlohu. Spustit úlohu, můžete dvakrát klikněte na úlohu v prohlížeči projektu, nebo otevřete z nabídky Data Lake kliknutím zobrazení úloh. Zobrazí se dialogové okno vyplní adresa URL úlohy.
 
-![Nástroje data Lake Visual Studio úlohy prohlížeče](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-view.png)
+![Nástroje data Lake Visual Studio prohlížeč úloh](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-view.png)
 
-Obsahuje zobrazení úloh:
+Obsahuje zobrazení úlohy:
 
 * Souhrn úlohy
   
-    Aktualizujte zobrazení úlohy zobrazíte nejnovější informace o spuštěných úloh.
+    Aktualizujte zobrazení úlohy zobrazíte nejnovější informace o spouštění úloh.
   
-  * Stav úlohy (grafu):
+  * Stav úlohy (graf):
     
       Stav úlohy popisuje fáze úlohy:
     
       ![Fáze stav úlohy Azure Data Lake Analytics](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-phases.png)
     
-    * Příprava: Odešlete skript do cloudu, kompilace a optimalizace pomocí služby kompilace skriptu.
-    * Zařazených do fronty: Úlohy se zařadí do fronty při čekání na dostatek prostředků nebo úlohy překročí maximální počet souběžných úloh na omezení účtu. Nastavení priority určuje pořadí úloh zařazených do fronty - Čím nižší je číslo, tím vyšší je priorita.
-    * Spuštění: Úloha je ve skutečnosti spuštěna v účtu Data Lake Analytics.
-    * Dokončení: Úloha je dokončení (například dokončení souboru).
+    * Příprava: Nahrajte skript do cloudu, kompilaci a optimalizaci skriptu s použitím služby kompilace.
+    * Ve frontě: Úlohy se zařadí do fronty při čekání dostatek prostředků, nebo úlohy, které překračují maximální počet souběžných úloh na účet omezení. Nastavení priority určuje pořadí ve frontě úloh – Čím nižší je číslo, tím vyšší je priorita.
+    * Spuštění: Úloha je ve skutečnosti spuštěná ve svém účtu Data Lake Analytics.
+    * Dokončování: Úloha dokončuje (například dokončení souboru).
       
-      Úloha může selhat v každé fázi. Například chyby při kompilaci Příprava fáze, vypršení časového limitu ve fázi zařazeno do fronty a provádění chyby ve fázi spuštěná atd.
+      Úloha může selhat v každé fázi. Například chyby kompilace ve fázi Příprava, vypršení časového limitu ve fázi zařazeno do fronty a provádění chyby ve fázi spuštění atd.
   * Základní informace
     
-      Základní úlohy se zobrazuje v dolní části panelu Souhrn úlohy.
+      Informace o základních úlohách zobrazuje v dolní části panely Souhrn úlohy.
     
       ![Fáze stav úlohy Azure Data Lake Analytics](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-info.png)
     
-    * Výsledek úlohy: Byla úspěšná nebo neúspěšná. Úloha může selhat v každé fázi.
-    * Celková doba trvání: Horní času hodin (doba trvání) mezi odesláním čas a koncový čas.
-    * Celková doba výpočetní: Součet při každém spuštění vrchol, můžete zvážit ho jako čas, úloha se spustí v pouze jednoho vrcholu. Celkový počet vrcholy najdete další informace o vrchol odkazovat.
-    * Odeslat/počáteční/koncový čas: Čas, kdy služba Data Lake Analytics přijme úlohy odeslání nebo začne spustit úlohu nebo ukončí úlohu úspěšně nebo ne.
-    * Kompilace nebo zařazeno do fronty nebo spuštění: Skutečný čas strávený během fáze příprava nebo zařazeno do fronty nebo spuštěna.
-    * Účet: Účet Data Lake Analytics používaný ke spuštění úlohy.
-    * Autor: Uživatel, který odeslal úlohu, může být skutečný člověk účet nebo účet system.
-    * Priorita: Prioritu úlohy. Čím nižší je číslo, tím vyšší je priorita. Ovlivňuje pouze pořadí úloh ve frontě. Nastavení s vyšší prioritou není mají prioritu před spuštěné úlohy.
-    * Paralelismus: Požadovaný maximální počet souběžných Azure Data Lake Analytics jednotky (ADLAUs), neboli vrcholy. V současné době jednoho vrcholu rovná jeden virtuální počítač s dva virtuální základní a 6 GB paměti RAM, i když může být upgradována v budoucnosti Data Lake Analytics aktualizací.
-    * Zbývající bajty: Bajtů, které je třeba zpracovat až do dokončení úlohy.
-    * Číst/zapsaných bajtů: bajtů, které byly číst nebo zapisovat od spuštění úlohy.
-    * Celkový počet vrcholy: Úloha je rozdělena na mnoha pracovními, každou část práce se nazývá vrchol. Tato hodnota popisuje kolik jednotek zpracování úlohy se skládá z. Můžete zvážit vrchol jako základní proces jednotku, neboli Azure Data Lake Analytics jednotky (ADLAU), a vrcholy se může spouštět ve stupně paralelního zpracování. 
-    * Byla dokončena nebo spuštěná nebo se nezdařilo: Počet vrcholy dokončit nebo spuštěná nebo se nezdařilo. Vrcholy může selhat z důvodu selhání kódu a systému i uživatele, ale systému opakované pokusy byly neúspěšné vrcholy automaticky několikrát. Pokud po opakovaném pokusu se stále nezdařilo vrchol, celé úlohy se nezdaří.
+    * Výsledek úlohy: Úspěšné nebo neúspěšné. V každé fázi, může úloha selhat.
+    * Celková doba trvání: Stěn čas (doba trvání) mezi odesláním čas a koncový čas.
+    * Celková doba výpočtu: Součet všech doba spuštění vrcholu, můžete ho jako čas, který úlohu spouští v pouze jeden vrchol. Odkazovat na celkový počet vrcholů najdete další informace o vrcholu.
+    * Odeslat/počáteční/koncový čas: Čas, kdy služby Data Lake Analytics přijímá úlohy odeslání/spustí úlohu spustit úlohu/skončí, úspěšně nebo ne.
+    * Kompilace nebo ve frontě/spuštěný: Skutečný čas strávený během fáze příprava nebo ve frontě/spuštěný.
+    * Účtu: Účet Data Lake Analytics používá pro spuštění úlohy.
+    * Autor: Uživatel, který odešle úlohu, může to být účet skutečná osoba nebo systémový účet.
+    * Priorita: Priorita úlohy. Čím nižší je číslo, tím vyšší je priorita. Ovlivňuje pouze pořadí úloh ve frontě. Nastavení s vyšší prioritou neomezoval na probíhající úlohy.
+    * Paralelismus: Požadovaná maximální počet souběžných Azure Data Lake Analytics jednotek (ADLAUs), neboli vrcholy. V současné době jednoho vrcholu se rovná jednomu virtuálnímu počítači s dvě virtuální jádra a 6 GB paměti RAM, i když může být upgradována v budoucnu Data Lake Analytics aktualizuje.
+    * Zbývající bajty: Bajtů, které je potřeba zpracovat, dokud se úloha nedokončí.
+    * Načtených/zapsaných bajtů: počet bajtů, které byly načtených/zapsaných od spuštění úlohy.
+    * Celkový počet vrcholů: Úloha je rozdělený do částí mnoho práce, každá část práce se nazývá vrcholu. Tuto hodnotu popisuje počet jednotek zpracování úlohy se skládá z. Jako jednotku základního procesu, označuje se také jako Azure Data Lake Analytics jednotek (ADLAU), můžete zvážit vrcholu a vrcholy můžete spustit v paralelismu. 
+    * Dokončení/spuštění nebo se nezdařilo: Počet vrcholů dokončení/spuštění nebo se nezdařilo. Vrcholy může selhat z důvodu chyby kódu a systému i uživatele, ale systém opakované pokusy byly neúspěšné vrcholy automaticky několikrát. Pokud po opakovaném pokusu stále selhal vrchol, celá úloha skončí chybou.
 * Graf úlohy
   
-    Skript U-SQL představuje logiku transformace vstupní data na výstupní data. Skript je zkompilovat a optimalizovaná tak, aby na fázi Příprava fyzických spuštění plánu. Graf úlohy je zobrazit plán fyzické spuštění.  Následující diagram znázorňuje proces:
+    Skript U-SQL představuje logiku transformuje vstupní data a výstupní data. Skript je zkompilován a optimalizovaná tak, aby na Příprava fáze spuštění fyzického plánu. Graf úlohy je zobrazíte spuštění fyzického plánu.  Následující obrázek znázorňuje proces:
   
     ![Fáze stav úlohy Azure Data Lake Analytics](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-logical-to-physical-plan.png)
   
-    Úloha je rozdělena na mnoha pracovními. Každý část práce se nazývá vrchol. Vrcholy jsou seskupeny jako Super vrchol (neboli stage) a vizualizována jako graf úlohy. Malá zelená fázi v grafu úlohy zobrazit fáze.
+    Úloha je rozdělený do částí mnoho práce. Každá část práce se nazývá vrcholu. Vrcholy jsou seskupeny jako Super vrcholu (neboli fáze) a vizualizovat jako graf úlohy. Malá zelená fáze v grafu úlohy zobrazit v jednotlivých fázích.
   
-    Všechny vrcholy ve fázi provádí stejný druh pracují s různá stejné data. Například pokud máte soubor s jedním datovým TB a používají stovky vrcholy čtení z něj, každý z nich je čtení bloku. Tyto vrcholy jsou seskupeny ve stejné fáze a to stejné fungovat na různých částí stejné vstupní soubor.
+    Všech vrcholů ve fázi provádí stejný druh práce s různý stejná data. Například pokud máte soubor s jeden TB dat a existují stovky vrcholy čtení z něj, každý z nich čte blok. Tyto vrcholy jsou seskupené ve stejné fázi a tím stejné pracovat na různé softwarové součásti ze stejného vstupního souboru.
   
-  * <a name="state-information"></a>Fáze informace
+  * <a name="state-information"></a>Informace o fázi
     
-      V konkrétní fázi jsou uvedeny některé čísla v štítek.
+      V určité fázi jsou uvedeny některé čísla v štítek.
     
-      ![Fáze graf úlohy Azure Data Lake Analytics](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-graph-stage.png)
+      ![Fáze grafu úlohy Azure Data Lake Analytics](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-graph-stage.png)
     
-    * SV1 Extrahování: název fáze, s názvem číslo a metodu operaci.
-    * 84 vrcholy: Celkový počet vrcholy v této fázi. Na obrázku Určuje, kolik pracovními je rozdělený v této fázi.
-    * 12.90 s/vrchol: vrchol průměrný čas provádění pro tuto fázi. Tato hodnota je vypočítána pomocí SUM (každých čas provádění vrchol) / (celková vrchol počet). To znamená, pokud může přiřadit všechny vrcholy spustit v paralelismus, celou fáze je dokončit 12.90 s. Také znamená, pokud všechny v této fázi práci sériově, náklady na by #vertices * Průměrný čas.
-    * 850,895 řádků zapsaných: Celkový počet řádků, které jsou napsané v této fázi.
-    * R/w: množství dat pro čtení nebo Written v této fázi v bajtech.
-    * Barvy: Barvy jsou ve fázi slouží k určení stavu různých vrchol.
+    * SV1 Extrahovat: název fáze, čísla a operace metodu s názvem.
+    * 84 vrcholy: Celkový počet vrcholů v této fázi. Na obrázku označuje, kolik jednotek zpracování je rozdělen na tuto fázi.
+    * 12.90 s/vrcholu: Průměrná doba spuštění vrcholu pro tuto fázi. Na tomto obrázku je vypočítána SUM (každý doba spuštění vrcholu) / (celkový počet vrcholů). To znamená, že pokud můžete přiřadit všechny vrcholy, které jsou provedeny v paralelismu, celý fáze se dokončí v 12.90 s. To také znamená, že pokud veškerou práci v této fázi se provádí sériově, náklady by byly #vertices * Průměrný čas.
+    * Zapsané řádky 850,895: Celkový počet řádků, které jsou napsané v této fázi.
+    * R/w: objem dat pro čtení/Written v této fázi v bajtech.
+    * Barvy: Barvy se používají ve fázi označuje stav různých vrcholu.
       
       * Zelená značí, že je úspěšně vrchol.
-      * Oranžová označuje, že se pokus o vrchol. Opakován vrchol byl selhal, ale je opakovat automaticky a úspěšně systému, a celkový fáze byla úspěšně dokončena. Pokud vrchol opakovat, ale stále se nezdařilo, změní barvu red a celý úlohy se nezdařilo.
-      * Červená značí selhání, což znamená, že určité vrchol obsahovala byla několikrát opakována v systému, ale stále se nezdařilo. Tento scénář způsobí selhání celé úlohy.
-      * Modré znamená určité vrchol je spuštěna.
-      * Prázdné označuje vrchol čeká. Vrchol může čekat třeba naplánovat až ADLAU bude k dispozici, nebo ho může být čekání na vstup od jeho vstupních dat nemusí být připravené.
+      * Oranžová označuje, že proběhne vrchol. Opakované vrcholu došlo k chybě, ale systém proběhne automaticky a úspěšně a celkové fáze byla úspěšně dokončena. Pokud vrchol opakovat, ale stále se nezdařilo, barva se změní na červené a celé úlohy se nezdařilo.
+      * Červená značí selhání, to znamená, že některé vrcholu měl byla několikrát opakována v systému, ale stále se nezdařilo. Tento scénář způsobí, že celá úloha nezdaří.
+      * Modré znamená, že některé vrchol běží.
+      * Prázdné označuje vrchol čeká. Vrchol může čekat k naplánování, jakmile bude k dispozici ADLAU nebo může být čekání na vstup od jeho vstupních dat pravděpodobně není připravena.
       
-      Můžete najít další podrobnosti pro fázi podržením ukazatele myši podle jednoho stavu:
+      Další podrobnosti můžete najít pro fázi podržením ukazatele myši podle státu:
       
-      ![Graf fáze podrobnosti úlohy Azure Data Lake Analytics](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-graph-stage-details.png)
-  * Vrcholy: Popisuje podrobnosti vrcholy, například kolik vrcholy celkem, kolik vrcholy byly dokončeny, jsou jejich se nezdařilo nebo je stále spuštěná nebo čekání atd.
-  * Číst data mezi nebo uvnitř pod: soubory a data jsou uloženy v několika pracovními stanicemi soustředěnými kolem v systému souborů DFS. Hodnota popisuje, jaké množství dat byl načten ve stejné pod nebo křížové pod.
-  * Celkový čas výpočetní: sum pokaždé, když provádění vrchol ve fázi, můžete zvážit ho jako čas, bude potřeba, pokud všechny fungovat ve fázi se spouštějí v pouze jednoho vrcholu.
-  * Data a řádky zapsána/čtení: Určuje, kolik byly číst nebo zapisovat data nebo řádky, nebo musí přečíst.
-  * Vrchol číst selhání: Popisuje, kolik vrcholy došlo k selhání při čtení dat.
-  * Vrchol duplicitní zahodí: Pokud vrchol běží příliš pomalu, systém může naplánovat více vrcholy ke spuštění stejnou část práce. Reductant vrcholy se zahodí, po jednu vrcholů úspěšně dokončit. Duplicitní zahození vrchol zaznamenává počet vrcholy, které jsou zahozeny jako duplicity vztahující se k ve fázi.
-  * Vrchol odvolání: vrchol bylo úspěšné, ale získat z nějakého důvodu později znovu. Například pokud podřízené vrchol ztratí zprostředkující vstupních dat, bude dotaz nadřazeného vrchol spusťte znovu.
-  * Vrchol plán spuštěních: celkový čas, který bylo naplánováno vrcholy.
-  * Průměr/minimální/maximální vrchol data načtená: minimální/průměrný nebo maximální počet všechny vrcholy číst data.
-  * Doba trvání: Skutečný čas úsek trvá, je třeba načíst profil zobrazíte tuto hodnotu.
+      ![Podrobnosti o grafu fáze úlohy Azure Data Lake Analytics](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-graph-stage-details.png)
+  * Vrcholy: Popisuje podrobnosti vrcholy, například kolik vrcholy celkem, kolik vrcholy nejsou dokončeny, jsou se nezdařilo nebo je stále spuštěna/čeká atd.
+  * Data přečtená mezi/uvnitř podů: soubory a data se ukládají v několik podů se v systému souborů DFS. Tuto hodnotu popisuje, jak velký objem dat byl přečten pod stejné nebo různé pod.
+  * Celková doba výpočtu: součet dob spuštění všech vrcholů ve fázi, můžete ho podle času by to obnášelo případě všechny práci ve fázi se provádí pouze jeden vrchol.
+  * Data a řádky zapisují/čtení: označuje, kolik byly načtených/zapsaných dat nebo řádky, nebo je potřeba načíst.
+  * Nepovedená čtení vrcholů: popisuje počet vrcholů se chyba při čtení dat.
+  * Duplicitní zrušení vrcholů: Pokud vrchol běží příliš pomalu, systém může naplánovat několik vrcholů spustit stejnou část práce. Přijdete o reductant vrcholy po jedné vrcholů úspěšně dokončit. Duplicitní zrušení vrcholů zaznamenává počet vrcholů, které jsou zahozeny jako duplicit ve fázi.
+  * Vrácení vrcholů: vrchol proběhla úspěšně, ale získání z nějakého důvodu později znovu. Například pokud podřízený vrcholu ztratí zprostředkující vstupních dat, budete dotázáni, nadřazený vrcholu spustit znovu.
+  * Spuštění vrcholů podle plánu: celkový čas, který naplánovali vrcholy.
+  * Čtení dat vrcholu průměr/min/Max: minimální/průměrný/maximální počet každý vrchol číst data.
+  * Doba trvání: Skutečný čas fázi přijímá, je potřeba načíst profil chcete zobrazit tuto hodnotu.
   * Přehrávání úloh
     
-      Spustí úlohy data Lake Analytics a archivy vrcholy systémem informace úloh, jako například při spuštění vrcholy zastavená, se nezdařilo a jak jsou opakovat, atd. Všechny informace automaticky je zaznamenána v úložišti dotazů a uložen v jeho profil úlohy. Si můžete stáhnout profil úlohy prostřednictvím "Profil zatížení" v zobrazení úloh a přehrávání úloh lze zobrazit po stažení profilu úlohy.
+      Data Lake Analytics, spouští úlohy a archivy vrcholy s informace o úlohy, například při vrcholy spuštění, zastavení, se nezdařilo a jak se zopakují, atd. Všechny informace, je automaticky zaznamenána v úložišti dotazů a uložených v jeho profil úlohy. Můžete si stáhnout profil úlohy prostřednictvím "Profil zatížení" v zobrazení úloh a přehrávání úlohy můžete zobrazit po stažení profilu úlohy.
     
-      Přehrávání úloh je vizualizaci epitome co se stalo v clusteru. Pomáhá sledovat průběh provádění úlohy a vizuálně detekovat kritická místa v velmi krátké době (méně než 30s obvykle) a anomálie výkonu.
-  * Úloha Heat mapa zobrazení 
+      Přehrání úlohy je vizualizaci epitome co se stalo v clusteru. Pomáhá sledovat průběh provádění úlohy a vizuálně detekovat kritická místa ve velmi krátkém čase (méně než obvykle 30 s) a anomálie výkonu.
+  * Zobrazení úlohy Heat mapy 
     
-      Heat mapa úlohy lze vybrat pomocí rozevíracího seznamu zobrazení v grafu úlohy. 
+      Heat mapa úlohy se dají vybrat pomocí rozevíracího seznamu zobrazení v grafu úlohy. 
     
-      ![Azure Data Lake Analytics úlohy graf haldy zobrazení mapy](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-graph-heat-map-display.png)
+      ![Azure Data Lake Analytics úlohy grafu haldy zobrazení mapy](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-graph-heat-map-display.png)
     
-      Zobrazuje heat mapa vstupně-výstupních operací, čas a propustnost úlohy, pomocí kterého můžete najít kde úloha stráví ve většině případů, nebo zda úlohu úlohu hranic vstupně-výstupních operací a tak dále.
+      Zobrazuje heat mapa vstupně-výstupních operací, čas a propustnost úlohy, pomocí kterého můžete najít kde úloha tráví většinu času, nebo zda úlohy úlohu hranice vstupně-výstupní operace a tak dále.
     
-      ![Příklad haldy mapy úlohy graf Azure Data Lake Analytics](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-graph-heat-map-example.png)
+      ![Příklad haldy mapy úlohy grafu Azure Data Lake Analytics](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-graph-heat-map-example.png)
     
-    * Postup: Provedení úloh průběhu, přečtěte si informace v [Příprava informace](#stage-information).
-    * Číst nebo zapisovat data: heat mapa celkový dat číst nebo zapisovat v jednotlivých fázích.
-    * Výpočetní čas: heat mapa Sum (každých čas provádění vrchol), můžete zvážit to jak dlouho bude trvat, pokud všechnu práci ve fázi proveden s pouze 1 vrchol.
-    * Průměrná doba provádění na jeden uzel: heat mapa Sum (každých čas provádění vrchol) / (vrchol číslo). Což znamená, že pokud může přiřadit všechny vrcholy spustit v paralelismus, fázi celou bude provedeno v této časového rámce.
-    * Propustnost vstupu a výstupu: heat mapa propustnosti vstupu a výstupu u každé fáze, můžete potvrdit, pokud vaše úlohy vázané úlohu vstupně-výstupní operace přes tento.
+    * Průběh: Provádění úlohy průběh, přečtěte si informace v [fáze informace](#stage-information).
+    * Načtených/zapsaných: heat mapa celkové množství dat načtených/zapsaných v jednotlivých fázích.
+    * Čas výpočtu: heat mapa Sum (každý doba spuštění vrcholu), můžete zvážit to, jak dlouho by trvalo, pokud veškerou práci ve fázi provádí s pouze 1 vrcholu.
+    * Průměrná doba provádění na jeden uzel: heat mapa Sum (každý doba spuštění vrcholu) / (vrchol číslo). Což znamená, že pokud můžete přiřadit všechny vrcholy, které jsou provedeny v paralelismu, celý fáze bude provedeno v tohoto časového rámce.
+    * Propustnost vstupu/výstupu: heat mapa vstupně výstupní propustnost každou z fází, můžete ověřit Pokud vaše úloha není vázaný úlohu vstupně-výstupní operace v něm.
 * Operace s metadaty
   
-    Můžete provádět některé operace metadata ve vašem skriptu U-SQL, jako například vytvoření databáze, drop table atd. Tyto operace jsou uvedené v operace metadat po kompilace. Může najít kontrolní výrazy, vytvořte entity, místo pro entity.
+    Můžete provádět některé operace s metadaty ve skriptu U-SQL, jako je vytvoření databáze, vyřaďte tabulku atd. Tyto operace jsou uvedeny v operace s metadaty po kompilaci. Může najít kontrolní výrazy, vytvářet entity, Sem přetáhněte entity.
   
-    ![Operace v Azure Data Lake Analytics úlohy zobrazení metadat](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-view-metadata-operations.png)
+    ![Azure Data Lake Analytics úlohy zobrazení operace s metadaty](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-view-metadata-operations.png)
 * Historie stavů
   
-    Historie stavů jsou také vizualizována ve Souhrn úlohy, ale můžete získat další informace v tomto poli. Podrobné informace můžete najít tak, jak připravit úlohu ve frontě, byl ukončen Začínáme spuštěná. Taky můžete najít kolikrát byl zkompilován úlohy (CcsAttempts: 1), když je úloha odeslaných do clusteru ve skutečnosti (podrobností: odesílání úloh do clusteru) atd.
+    Historie stavu je také vizualizovat v souhrnu úlohy, ale můžete získat další podrobnosti tady. Podrobné informace najdete, jako je při přípravě úlohy ve frontě, Začínáme spuštění skončila. Taky můžete najít kolikrát byl zkompilován úlohy (CcsAttempts: 1), při je úloha odeslána do clusteru ve skutečnosti (podrobnosti: odesílání úloh do clusteru) atd.
   
-    ![Azure Data Lake Analytics úlohy zobrazení historie stavů](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-view-state-history.png)
+    ![Historie stavu Azure Data Lake Analytics úlohy zobrazení](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-view-state-history.png)
 * Diagnostika
   
-    Nástroj automaticky diagnostikuje provádění úlohy. Pokud jsou některé chyby nebo problémy s výkonem v úlohách, budou dostávat upozornění. Upozorňujeme, že budete muset stáhnout profil získat úplné informace v tomto poli. 
+    Nástroj automaticky diagnostikuje provádění úlohy. Pokud nějaké chyby nebo problémy s výkonem ve svých úlohách, dostanete upozornění. Všimněte si, že budete muset stáhnout profil Chcete-li získat úplné informace zde. 
   
-    ![Azure Data Lake Analytics úlohy zobrazení diagnostiky](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-view-diagnostics.png)
+    ![Diagnostika Azure Data Lake Analytics úlohy zobrazení](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-view-diagnostics.png)
   
-  * Upozornění: Výstraha se zde zobrazuje s upozornění kompilátoru. Můžete kliknout na odkaz "x problém(y)" tak, aby měl další podrobnosti, jakmile se zobrazí upozornění.
-  * Vrchol spustit příliš dlouhá: Pokud libovolný bod uchycení používá mimo dobu (například 5 hodin), problémy se nachází tady.
-  * Využití prostředků: Pokud jste přidělili další nebo není dostatek paralelismus, než je nutné, problémy se nachází tady. Také můžete kliknout na využití prostředků najdete v části Další podrobnosti a provádět citlivostních scénářů najít lepší přidělení prostředků (Další podrobnosti najdete v této příručce).
-  * Zkontrolujte paměť: Pokud libovolný bod uchycení používá více než 5 GB paměti, problémy se nachází tady. Provádění úlohy může získat ukončená systému, pokud používá víc paměti než omezení systému.
+  * Upozornění: Upozornění se zobrazí tady s upozorněním kompilátoru. Můžete kliknout na odkaz "x problémů" obsahují více podrobností, jakmile se zobrazí upozornění.
+  * Vrchol spuštění příliš dlouhá: Pokud libovolný vrchol běží mimo dobu (třeba 5 hodin), tady najdete problémy.
+  * Využití prostředků: Pokud jste přidělili další nebo není dostatek paralelismu, než potřebujete, tady najdete problémy. Také můžete kliknout na využití prostředků a zobrazte další podrobnosti a provádět scénáře co kdyby k vyhledání lepší přidělování prostředků (Další podrobnosti najdete v této příručce).
+  * Kontrola paměti: Pokud libovolný vrchol používá více než 5 GB paměti, tady najdete problémy. Provádění úlohy může získat ukončen systému, pokud je větší spotřebu paměti než omezení systému.
 
 ## <a name="job-detail"></a>Podrobnosti úlohy
-Podrobnosti úlohy jsou uvedené podrobné informace o úlohy, včetně skriptu, prostředky a zobrazení provádění vrcholů.
+Podrobnosti úlohy zobrazuje podrobné informace o úloze včetně skriptu, prostředků a zobrazení provádění vrcholu.
 
 ![Podrobnosti úlohy Azure Data Lake Analytics](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-details.png)
 
 * Skript
   
-    Tento skript U-SQL úlohy je uložený v úložišti dotazů. Můžete zobrazit původní skript U-SQL a odešlete ji znovu, v případě potřeby.
+    Tento skript U-SQL úlohy je uložený v úložišti dotazů. Můžete zobrazit původní skript U-SQL a znovu odeslat v případě potřeby.
 * Zdroje a prostředky
   
-    Můžete najít výstupy úlohy kompilace uložené v úložišti dotazů prostřednictvím prostředků. Například můžete najít "algebra.xml", který se používá k zobrazení grafu úlohy, sestavení, které jste zaregistrovali, zde atd.
+    Můžete najít výstupy úlohy kompilace, uložená v úložišti dotazů prostřednictvím prostředků. Například můžete najít "algebra.xml", který slouží k zobrazení grafu úlohy sestavení, které jste zaregistrovali, zde atd.
 * Zobrazení provádění vrcholů
   
-    Podrobnosti o provádění zobrazuje vrcholy. Profil úlohy archivy každých protokolu spuštění vrchol, jako je například celková data číst nebo zapisovat, modul runtime, stav, atd. Prostřednictvím tohoto zobrazení můžete získat další informace o tom, jak úloha běžela. Další informace najdete v tématu [použít zobrazení provádění vrcholů v nástrojů Data Lake pro Visual Studio](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md).
+    Vrcholy zobrazuje podrobnosti o spuštění. Profil úlohy archivuje každý protokolu spuštění vrcholu, jako je například celkové množství dat načtených/zapsaných, modul runtime, stavu, atd. Prostřednictvím tohoto zobrazení můžete získat další informace o tom, jak úloha běžela. Další informace najdete v tématu [použití zobrazení provádění vrcholů v Data Lake Tools pro Visual Studio](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md).
 
 ## <a name="next-steps"></a>Další kroky
 * Pokud chcete protokolovat diagnostické informace, přečtěte si téma [Zobrazení protokolů diagnostiky pro Azure Data Lake Analytics](data-lake-analytics-diagnostic-logs.md).
 * Pokud chcete zobrazit komplexnější dotaz, přejděte k tématu [Analýza webových protokolů pomocí Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md).
-* Pomocí zobrazení provádění vrcholů naleznete v části [použít zobrazení provádění vrcholů v nástrojů Data Lake pro Visual Studio](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)
+* Použití zobrazení provádění vrcholů, najdete v článku [použití zobrazení provádění vrcholů v Data Lake Tools pro Visual Studio](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)
 

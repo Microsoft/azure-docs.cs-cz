@@ -9,12 +9,12 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: zhouwang
-ms.openlocfilehash: f4b6a97260c6dc176600af8844001e4de819ff7c
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 6fb490def6807204943a1ce3ba3c53186055102b
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42357506"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43048453"
 ---
 # <a name="get-started-with-bing-speech-service-client-libraries"></a>Začínáme s klientskými knihovnami Speech Service Bingu
 
@@ -33,7 +33,7 @@ V současné době jsou k dispozici následujících klientských knihoven pro z
 - [Knihovna jazyka Objective-C pro iOS](Get-Started-ObjectiveC-iOS.md)
 
 > [!NOTE] 
-V květnu 2018 jsme také vydali novou [Speech Service](/speech-service/overview.md) ve verzi public preview. Doporučujeme vám [zdarma vyzkoušet](/speech-service/get-started.md). 
+V květnu 2018 jsme také vydali novou [Speech Service](../../speech-service/index.yml) ve verzi public preview. Doporučujeme vám [zdarma vyzkoušet](../../speech-service/get-started.md). 
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 

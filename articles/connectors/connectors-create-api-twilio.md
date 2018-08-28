@@ -1,52 +1,81 @@
 ---
-title: Přidejte konektor Twilio v Azure Logic apps | Dokumentace Microsoftu
-description: Přehled konektor Twilio s parametry rozhraní REST API
+title: Připojení k Twiliu v Azure Logic Apps | Dokumentace Microsoftu
+description: Automatizace úloh a pracovních postupů, které spravují globální zprávy SMS, MMS a IP prostřednictvím svého účtu Twilio pomocí Azure Logic Apps
 services: logic-apps
-documentationcenter: ''
-author: ecfan
-manager: jeconnoc
-editor: ''
-tags: connectors
-ms.assetid: 43116187-4a2f-42e5-9852-a0d62f08c5fc
 ms.service: logic-apps
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.assetid: 43116187-4a2f-42e5-9852-a0d62f08c5fc
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
-ms.date: 09/19/2016
-ms.author: estfan; ladocs
-ms.openlocfilehash: 8bcf69a7c8e04cb45d795fd0d6f20d477c15865d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+tags: connectors
+ms.date: 08/25/2018
+ms.openlocfilehash: db7677042737ea1377af54cc02ee1c82c05435c8
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38652001"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43047570"
 ---
-# <a name="get-started-with-the-twilio-connector"></a>Začínáme s konektor Twilio
-Připojení k Twiliu odesílat a přijímat globální zprávy SMS, MMS a IP. S platformou Twilio můžete:
+# <a name="manage-messages-in-twilio-with-azure-logic-apps"></a>Správa zpráv v Twiliu v Azure Logic Apps
 
-* Vytvoření obchodní toku na základě dat, které získáte ze služby Twilio. 
-* Pomocí akcí, které získat zprávu, seznam zpráv a další. Tyto akce získat odpověď a poté zpřístupní výstup pro další akce. Například když dostanete nové zprávy Twilio, můžete využít tuto zprávu a použije pracovního postupu služby Service Bus. 
+S Azure Logic Apps a konektor Twilio můžete vytvořit automatizovaných úloh a pracovních postupů, které získáte, odesílání a seznam zpráv v Twiliu, mezi které patří globální zprávy SMS, MMS a IP. Tyto akce můžete použít k provádění úloh pomocí svého účtu Twilio. Také můžete mít další akce pomocí výstupu z Twilia akce. Například při přijetí nového e-mailu, můžete odeslání zprávy obsahu s konektorem Slack. Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
-Začněte vytvořením aplikace logiky; Zobrazit [vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+## <a name="prerequisites"></a>Požadavky
 
-## <a name="create-a-connection-to-twilio"></a>Vytvoření připojení k Twiliu
-Když přidáte tento konektor logic Apps, zadejte následující hodnoty Twilio:
+* Předplatné Azure. Pokud nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>. 
 
-| Vlastnost | Požaduje se | Popis |
-| --- | --- | --- |
-| ID účtu |Ano |Zadejte své ID účtu Twilio |
-| Přístupový token |Ano |Zadejte váš přístupový token pro Twilio |
+* Z [Twilio](https://www.twilio.com/): 
 
-> [!INCLUDE [Steps to create a connection to Twilio](../../includes/connectors-create-api-twilio.md)]
-> 
-> 
+  * ID vašeho účtu Twilio a [ověřovací token](https://support.twilio.com/hc/en-us/articles/223136027-Auth-Tokens-and-How-to-Change-Them), které můžete vyhledat na svůj řídicí panel Twilio
 
-Pokud nemáte k dispozici přístupový token Twilio, přečtěte si téma [identitu uživatele a přístupové tokeny](https://www.twilio.com/docs/api/chat/guides/identity).
+    Vaše přihlašovací údaje autorizaci aplikace logiky k vytvoření připojení a přístup k vašemu účtu Twilio vaší aplikace logiky. 
+    Pokud používáte zkušební verzi účtu Twilio, můžete poslat SMS pouze *ověřit* telefonních čísel.
 
-## <a name="connector-specific-details"></a>Podrobné informace specifické pro konektor
+  * Ověřené telefonní číslo Twilio, který můžete poslat SMS
 
-Zobrazit všechny aktivační události a akce definované ve swaggeru a také zjistit žádné omezení [podrobnosti o konektoru](/connectors/twilio/).
+  * Ověřené telefonní číslo Twilio, které můžou přijímat zprávy SMS
 
-## <a name="more-connectors"></a>Více konektorů
-Přejděte zpět [rozhraní API seznamu](apis-list.md).
+* Základní znalosti o [postupy vytváření aplikací logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+
+* Aplikace logiky, ve které chcete přístup k vašemu účtu Twilio. Použít akci Twilio, spuštění aplikace logiky s jinou aktivační událost, například, **opakování** aktivační události.
+
+## <a name="connect-to-twilio"></a>Připojení k Twiliu
+
+[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
+
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com)a otevřete svou aplikaci logiky v návrháři aplikace logiky, není již otevřete.
+
+1. Zvolte cestu: 
+
+     * V posledním kroku, ve které chcete přidat akci, zvolte **nový krok**. 
+
+       -nebo-
+
+     * Mezi kroky, ve které chcete přidat akci přesuňte ukazatel nad šipku mezi kroky. 
+     Vyberte znaménko plus (**+**), který se zobrazí a pak vyberte **přidat akci**.
+     
+       Do vyhledávacího pole zadejte jako filtr "twilio". 
+       V seznamu akcí vyberte požadovanou akci.
+
+1. Zadejte nezbytné podrobnosti připojení a pak zvolte **vytvořit**:
+
+   * Název, který má používat pro připojení
+   * ID vašeho účtu Twilio 
+   * Twilio (ověřování) přístupového tokenu
+
+1. Zadejte potřebné podrobnosti pro vybranou akci a pokračujte v rozvíjení pracovní postup aplikace logiky.
+
+## <a name="connector-reference"></a>Referenční informace ke konektorům
+
+Technické podrobnosti o omezení, akce a triggery, které jsou popsány pomocí konektoru OpenAPI (dříve Swagger) popis, přečtěte si tento konektor [referenční stránce](/connectors/twilio/).
+
+## <a name="get-support"></a>Získat podporu
+
+* Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](http://aka.ms/logicapps-wish).
+
+## <a name="next-steps"></a>Další postup
+
+* Další informace o dalších [konektory Logic Apps](../connectors/apis-list.md)

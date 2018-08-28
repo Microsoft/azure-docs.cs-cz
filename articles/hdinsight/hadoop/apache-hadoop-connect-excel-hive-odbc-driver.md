@@ -4,18 +4,18 @@ description: Zjistěte, jak nastavit a používat pro aplikaci Excel ovladače M
 keywords: excel hadoop, hive aplikace excel, hive odbc
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: jasonh
-ms.openlocfilehash: 4153504e7d0fb6dff4b8a675b301f54fb3588e46
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: b21863d7a91c14f9795d72a13575e33485ba7d2b
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39590863"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43041820"
 ---
 # <a name="connect-excel-to-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Připojení Excelu k systému Hadoop v Azure HDInsight pomocí ovladače Microsoft Hive ODBC
 

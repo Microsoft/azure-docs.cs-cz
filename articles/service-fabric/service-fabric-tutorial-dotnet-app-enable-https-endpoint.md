@@ -1,6 +1,6 @@
 ---
-title: Přidání koncového bodu HTTPS do aplikace Service Fabric v Azure | Microsoft Docs
-description: V tomto kurzu zjistíte, jak do webové front-end služby ASP.NET Core přidat koncový bod HTTPS a nasadit tuto aplikaci do clusteru.
+title: Přidání koncového bodu HTTPS využívajícího Kestrel do aplikace Service Fabric v Azure | Microsoft Docs
+description: V tomto kurzu zjistíte, jak do webové front-end služby ASP.NET Core využívající Kestrel přidat koncový bod HTTPS a nasadit tuto aplikaci do clusteru.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 04/12/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 309a43d3383658029f4fe7f90f869888bac67bb1
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 70bbeabe2c2b14e8e0dcccac9ffa63f2e19230a2
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130046"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "41918183"
 ---
-# <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service"></a>Kurz: Přidání koncového bodu HTTPS do front-end služby webového rozhraní API ASP.NET Core
+# <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>Kurz: Přidání koncového bodu HTTPS do front-endové služby webového rozhraní API ASP.NET Core využívající Kestrel
 
 Tento kurz je třetí částí série.  Zjistíte, jak povolit HTTPS ve službě ASP.NET Core spuštěné v Service Fabric. Až budete hotovi, budete mít hlasovací aplikaci s webovým front-endem ASP.NET Core s povoleným HTTPS, který bude naslouchat na portu 443. Pokud nechcete hlasovací aplikaci vytvářet ručně, v tématu popisujícím [vytvoření aplikace Service Fabric v .NET](service-fabric-tutorial-deploy-app-to-party-cluster.md) si můžete [stáhnout zdrojový kód](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) dokončené aplikace.
 

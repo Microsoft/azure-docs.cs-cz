@@ -3,19 +3,19 @@ title: Použití Hadoop Oozie v HDInsight
 description: Použití Hadoop Oozie v HDInsight, velké objemy dat služby. Zjistěte, jak definovat pracovní postup Oozie a odešlete úlohu Oozie.
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.author: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/25/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3e3b3cbbfa8f79908b2ca1ae6a7389bb04034684
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: f5a6616403d7e3fc7944c26bbbcbfa9fbfb4fff5
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39598894"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43050491"
 ---
 # <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-in-hdinsight"></a>Použití Oozie s Hadoopem k definování a spuštění workflowu v HDInsight
 [!INCLUDE [oozie-selector](../../includes/hdinsight-oozie-selector.md)]

@@ -10,27 +10,27 @@ ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: v-daljep
 ms.reviewer: carlrab
-ms.openlocfilehash: dd6e8f5f46e9fdf6887cc2a0b0c7b15bbd00fabd
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 5c5317a49f56bfefec7c509365008cba5ad26e1c
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626195"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43106930"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Automatické ladění ve službě Azure SQL Database
 
-Azure automatického ladění SQL Database nabízí výkon ve špičce a stabilními úlohami prostřednictvím průběžné výkon ladění využívá umělou inteligenci.
+Azure automatického ladění SQL Database poskytuje nejvyšší výkon a stabilní verze úlohy prostřednictvím průběžné výkon ladění založené na AI a strojové učení.
 
-Automatické ladění je plně spravovaná služba, která používá integrované inteligentní funkce pro průběžné monitorování dotazů na databázi a automaticky zlepšuje jejich výkon. Toho můžete dosáhnout dynamicky přizpůsobení databáze změna úloh a použití doporučení pro vyladění. Automatické ladění vodorovně učí ze všech databází na Azure prostřednictvím umělé inteligence a dynamicky zlepšuje její optimalizačních akcí. Čím delší spuštění služby Azure SQL Database s automatickým laděním na, tím lépe funguje.
+Automatické ladění je plně spravované inteligentní výkonu Služba, která používá integrované inteligentní funkce pro průběžné monitorování dotazů na databázi a automaticky zlepšuje jejich výkon. Toho můžete dosáhnout dynamicky přizpůsobení databáze změna úloh a použití doporučení pro vyladění. Automatické ladění vodorovně učí ze všech databází v Azure pomocí AI a dynamicky zlepšuje její optimalizačních akcí. Čím delší spuštění služby Azure SQL Database s automatickým laděním na, tím lépe funguje.
 
-Azure SQL Database automatické ladění může být jeden z vašich nejdůležitějších funkce umožňující k zajištění stabilních špičkovým výkonem úloh.
+Azure SQL Database automatické ladění může být jeden z vašich nejdůležitějších funkce umožňující k zajištění stabilních špičkovým výkonem databázové úlohy.
 
 ## <a name="what-can-automatic-tuning-do-for-you"></a>Co je automatické ladění? pro vás
 
 - Ladění výkonu automatizované databází Azure SQL Database
 - Automatické ověření zvýšení výkonu
 - Automatické vrácení zpět a samostatné opravy
-- Ladění historie protokolu
+- Historie optimalizace
 - Ladění skriptů T-SQL akce pro ruční nasazení
 - Sledování výkonu aktivní úlohy
 - Horizontální navýšení kapacity schopností na stovky tisíc databází
@@ -40,7 +40,7 @@ Azure SQL Database automatické ladění může být jeden z vašich nejdůleži
 
 Optimalizace operací u databází Azure SQL Database jsou plně bezpečné pro výkon nejintenzivnější úloh. V systému byly navržené s opatrností nechcete v konfliktu s úlohami uživatele. Doporučení automatického ladění se aplikují pouze na doby nízkého využití. Systém může také dočasně zakázat automatické optimalizace operací pro ochranu na výkon úloh. V takovém případě se na webu Azure portal zobrazí zpráva "Zakázáno systém". Automatické ladění jde o úlohy s nejvyšší prioritou prostředků.
 
-Automatické ladění mechanismy jsou až po zralé a byla dovedete na stovky tisíc databází, běží na Azure. Automatické ladění operace použije automaticky ověření k zajištění, že není kladná zlepšování na výkon úloh. Doporučení s nižším výkonem jsou dynamicky zjistila a o tom bezodkladně informuje vrátí zpět. Prostřednictvím optimalizace historie protokolu je vymazat trasování ladění vylepšení v každé databázi SQL Azure. 
+Automatické ladění mechanismy jsou až po zralé a byla dovedete na několik milionů databáze spuštěné v Azure. Automatické ladění operace použije automaticky ověření k zajištění, že není kladná zlepšování na výkon úloh. Doporučení s nižším výkonem jsou dynamicky zjistila a o tom bezodkladně informuje vrátí zpět. Všimněte si, že v případě dotazy ovlivněné doporučení, které nejsou provedeny často pro optimalizaci, ověření fáze může trvat až 72 hodin záměrné. Prostřednictvím optimalizace historie zaznamenán existuje vymazat trasování ladění vylepšení v každé databázi SQL Azure. 
 
 ![Jak funguje automatické ladění](./media/sql-database-automatic-tuning/how-does-automatic-tuning-work.png)
 
@@ -64,10 +64,12 @@ Přehled funkce automatické optimalizace funguje a typické scénáře využit�
 
 Možnosti automatického ladění ve službě Azure SQL Database k dispozici jsou:
  1. **Vytvoření indexu** -identifikuje indexy, které může zlepšit výkon vaší úlohy, vytvoří indexy a automaticky ověřuje, že se zvýšil výkon dotazů.
- 2. **DROP INDEX** -identifikuje redundantní a duplicitních indexů a indexy, které nebyly použity pro velmi dlouhý časový úsek. Mějte prosím na paměti, že tato možnost není kompatibilní s aplikací s použitím pomocné parametry přepnutí a index oddílu.
+ 2. **DROP INDEX** -identifikuje každý den redundantní a duplicitních indexů a indexy, které nebyly použity po dlouhou dobu (> 90 dnů). Všimněte si, že tato možnost není kompatibilní s aplikací s použitím pomocné parametry přepnutí a index oddílu.
  3. **VYNUCENÍ POSLEDNÍHO dobrého plánu** -identifikuje dotazů SQL pomocí plán provádění, která je nižší než předchozí dobrým plánem a dotazy s posledního známého dobrého plánu místo nižším plánu.
 
-Azure SQL Database Určuje **CREATE INDEX**, **DROP INDEX**, a **platnost poslední dobré plánování** doporučení, která můžete optimalizovat vaše databáze a zobrazuje na webu Azure portal. Další informace o identifikaci indexy, které by měla být změněna na [najít doporučení indexu na webu Azure portal](sql-database-advisor-portal.md). Můžete buď ručně provést doporučení pomocí portálu nebo můžete nechat službu Azure SQL Database automaticky používat doporučení, monitorování úloh po provedení změny a ověřte, že doporučení vyšší výkon vašich úloh. 
+Automatické ladění identifikuje **CREATE INDEX**, **DROP INDEX**, a **platnost poslední dobré plánování** doporučení, která můžete optimalizovat výkon své databáze a zobrazí je v [Webu azure portal](sql-database-advisor-portal.md)a zpřístupňuje je prostřednictvím [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) a [rozhraní REST API](https://docs.microsoft.com/rest/api/sql/serverautomatictuning).
+
+Můžete buď ručně provést doporučení pro vyladění pomocí portálu nebo můžete nechat automatické ladění autonomně platí doporučení pro vyladění za vás. Výhody autonomně umožněte systému platí doporučení pro vyladění je, že v takovém případě se automaticky ověřuje existuje kladné zisk na výkon úloh nebo jinak pokud regrese se detekuje automaticky změní zpět doporučení pro ladění. V případě, že jsou ručně zavede ladění doporučení, automatické výkon ověřování a mechanismy opačný nejsou k dispozici.
 
 Možnosti automatického ladění můžete nezávisle na sobě povolit nebo zakázat na databázi, nebo mohou být konfigurovány na logických serverů a použít na každou databázi, která dědí nastavení ze serveru. Logické servery můžete dědit Azure výchozí hodnoty pro nastavení automatického ladění. Výchozích nastavení Azure v tuto chvíli jsou nastaveny na FORCE_LAST_GOOD_PLAN je povoleno, je povoleno CREATE_INDEX a DROP_INDEX je zakázaná.
 
@@ -77,6 +79,7 @@ Konfigurace automatického ladění možnosti na serveru a nastavení pro datab�
 
 - Pokud chcete povolit automatické ladění ve službě Azure SQL Database a spravovat vaše úlohy, naleznete v tématu [povolení automatického ladění](sql-database-automatic-tuning-enable.md).
 - Chcete-li ručně zkontrolovat a použít automatické optimalizace doporučení, najdete v článku [vyhledání a použití doporučení k výkonu](sql-database-advisor-portal.md).
+- Další informace o použití T-SQL pro použití a zobrazit automatické ladění doporučení, najdete v článku [spravovat automatické ladění prostřednictvím T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/).
 - Další informace o vytváření e-mailová oznámení pro doporučení automatického ladění, naleznete v tématu [e-mailová oznámení pro automatické ladění](sql-database-automatic-tuning-email-notifications.md).
 - Další informace o integrovaných inteligentních funkcí používaných pro automatické ladění, naleznete v tématu [umělé inteligence vylaďuje databází Azure SQL Database](https://azure.microsoft.com/blog/artificial-intelligence-tunes-azure-sql-databases/).
 - Další informace o tom, jak automatické ladění funguje v Azure SQL Database a SQL serveru 2017, najdete v článku [automatické ladění SQL serveru](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning).

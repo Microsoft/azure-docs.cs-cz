@@ -1,25 +1,21 @@
 ---
-title: Plánování úloh Azure Data Lake Analytics U-SQL pomocí služby SSIS | Dokumentace Microsoftu
+title: Plánování úloh Azure Data Lake Analytics U-SQL pomocí služby SSIS
 description: Zjistěte, jak použít k naplánování úloh U-SQL služby SQL Server Integration Services.
 services: data-lake-analytics
-documentationcenter: ''
 author: yanancai
-manager: ''
-editor: ''
+ms.author: yanacai
+ms.reviewer: jasonwhowell
 ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/17/2018
-ms.author: yanacai
-ms.openlocfilehash: 919ec4e26c2da945a0623e772dc00d378a583b69
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 8b6c8220bd009505f683ce888558e612aebdc0b3
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126741"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43048100"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>Plánování úloh U-SQL pomocí SQL Server Integration Services (SSIS)
 

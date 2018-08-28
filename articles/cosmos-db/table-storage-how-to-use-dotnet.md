@@ -8,14 +8,14 @@ ms.service: cosmos-db
 ms.component: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: sample
-ms.date: 03/14/2018
+ms.date: 08/17/2018
 ms.author: sngun
-ms.openlocfilehash: d0c587b3d43f7511775a4a114bead96348372bc5
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: c084a08ffef868af751d065c5857a9b67a12485f
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36959963"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41920061"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-net"></a>Začínáme se službou Azure Table Storage a rozhraním Table API služby Azure Cosmos DB pomocí .NET
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -36,10 +36,10 @@ Tento příklad ukazuje, jak používat knihovnu [Microsoft Azure CosmosDB Table
 Pro úspěšné dokončení této ukázky potřebujete následující položky:
 
 * [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
-* [Azure Storage Common Library for .NET (Preview)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/). Jedná se o požadovaný balíček ve verzi Preview, který je podporován v produkčním prostředí. 
-* [Microsoft Azure CosmosDB Table Library for .NET](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table)
+* [Azure Storage Common Library for .NET (Preview)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/). – Požadovaný balíček ve verzi Preview, který se podporuje v produkčním prostředí. 
+* [Microsoft Azure CosmosDB Table Library for .NET](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) –Tato knihovna je aktuálně dostupná pouze pro .NET Standard, pro .NET Core ještě dostupná není.
 * [Azure Configuration Manager for .NET](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/)
-* [Účet služby Azure Storage](../storage/common/storage-create-storage-account.md#create-a-storage-account)
+* [Účet služby Azure Storage](../storage/common/storage-quickstart-create-account.md)
 
 [!INCLUDE [storage-dotnet-client-library-version-include](../../includes/storage-dotnet-client-library-version-include.md)]
 
@@ -50,17 +50,14 @@ Další příklady použití Table Storage najdete v článku [Začínáme s Azu
 [!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]
 
 ### <a name="create-an-azure-storage-account"></a>Vytvoření účtu úložiště Azure
-Nejjednodušší způsob, jak vytvořit první účet úložiště Azure, je pomocí [webu Azure Portal](https://portal.azure.com). Další informace najdete v tématu [Vytvoření účtu úložiště](../storage/common/storage-create-storage-account.md#create-a-storage-account).
+* Nejjednodušší způsob, jak vytvořit první účet úložiště Azure, je pomocí [webu Azure Portal](https://portal.azure.com). Další informace najdete v tématu [Vytvoření účtu úložiště](../storage/common/storage-quickstart-create-account.md).
 
-Účet úložiště Azure můžete vytvořit také pomocí prostředí [Azure PowerShell](../storage/common/storage-powershell-guide-full.md), [rozhraní příkazového řádku Azure](../storage/common/storage-azure-cli.md) nebo pomocí [klientské knihovny pro poskytovatele prostředků úložiště pro rozhraní .NET](/dotnet/api/microsoft.azure.management.storage).
+* Účet úložiště Azure můžete vytvořit také pomocí prostředí [Azure PowerShell](../storage/common/storage-powershell-guide-full.md), [rozhraní příkazového řádku Azure](../storage/common/storage-azure-cli.md) nebo pomocí [klientské knihovny pro poskytovatele prostředků úložiště pro rozhraní .NET](/dotnet/api/microsoft.azure.management.storage).
 
-Pokud teď nechcete vytvářet účet úložiště, můžete také pomocí emulátoru úložiště Azure spustit a otestovat kód v místním prostředí. Další informace najdete v článku [Použití emulátoru úložiště Azure pro vývoj a testování](../storage/common/storage-use-emulator.md).
+* Pokud teď nechcete vytvářet účet úložiště, můžete také pomocí emulátoru úložiště Azure spustit a otestovat kód v místním prostředí. Další informace najdete v článku [Použití emulátoru úložiště Azure pro vývoj a testování](../storage/common/storage-use-emulator.md).
 
 ### <a name="create-an-azure-cosmos-db-table-api-account"></a>Vytvoření účtu rozhraní Table API služby Azure Cosmos DB
 [!INCLUDE [cosmos-db-create-tableapi-account](../../includes/cosmos-db-create-tableapi-account.md)]
-
-## <a name="set-up-your-development-environment"></a>Nastavení vývojového prostředí
-Potom si nastavte vývojové prostředí v sadě Visual Studio, abyste byli připraveni vyzkoušet příklady kódů z této příručky.
 
 ### <a name="create-a-windows-console-application-project"></a>Vytvoření projektu konzolové aplikace pro Windows
 V sadě Visual Studio vytvořte novou konzolovou aplikaci pro Windows. Následující kroky ukazují, jak vytvořit konzolovou aplikaci v sadě Visual Studio 2017. Kroky u ostatních verzí sady Visual Studio jsou podobné.
@@ -75,17 +72,19 @@ Všechny příklady kódu v této ukázce můžete přidat do metody `Main()` v 
 
 Můžete použít knihovnu Azure CosmosDB Table Library z libovolného typu aplikace .NET, včetně webové aplikace nebo cloudové služby Azure, desktopové nebo mobilní aplikace. V této příručce použijeme konzolovou aplikaci kvůli zjednodušení.
 
-### <a name="use-nuget-to-install-the-required-packages"></a>Použití balíčku NuGet k instalaci požadovaných balíčků
+### <a name="install-the-required-nuget-packages"></a>Instalace požadovaných balíčků NuGet
 Abyste mohli tuto ukázku dokončit, potřebujete ze svého projektu odkazovat na tři doporučené balíčky:
 
-* [Azure Storage Common Library for .NET (Preview)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common). 
-* [Microsoft Azure Cosmos DB Table Library for .NET](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table). Tento balíček zajišťuje programový přístup k datovým prostředkům v rámci účtu úložiště Azure Table nebo účtu rozhraní Table API služby Azure Cosmos DB.
+* [Azure Storage Common Library for .NET (Preview)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common). – Použijte verzi, která je nižší nebo rovna 9.0.0.1 (<= 9.0.0.1).
+
+* [Microsoft Azure Cosmos DB Table Library for .NET](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table). Tento balíček zajišťuje programový přístup k datovým prostředkům v rámci účtu úložiště Azure Table nebo účtu rozhraní Table API služby Azure Cosmos DB. Tato knihovna je aktuálně dostupná pouze pro .NET Standard, pro .NET Core ještě dostupná není.
+
 * [Microsoft Azure Configuration Manager library for .NET:](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/) Tento balíček poskytuje třídu pro potřeby analýzy připojovacího řetězce v konfiguračním souboru bez ohledu na to, kde je aplikace spuštěná.
 
-K získání obou balíčků můžete použít balíček NuGet. Postupujte následovně:
+Balíčky NuGet získáte pomocí následujících kroků:
 
 1. V **Průzkumníku řešení** klikněte pravým tlačítkem na projekt a vyberte **Spravovat balíčky NuGet**.
-2. Vyhledejte online text „Microsoft.Azure.Storage.Common“ a výběrem **Instalovat** nainstalujte knihovnu Azure Storage Common Library for .NET (Preview) a její závislé součásti. Zkontrolujte, že je zaškrtnuté políčko **Zahrnout předběžné verze**, protože se jedná o balíček verze Preview.
+2. Vyhledejte online text „Microsoft.Azure.Storage.Common“, zvolte verzi <= 9.0.0.1 a výběrem **Instalovat** nainstalujte knihovnu Azure Storage Common Library for .NET (Preview) a její závislosti. Zkontrolujte, že je zaškrtnuté políčko **Zahrnout předběžné verze**, protože se jedná o balíček verze Preview.
 3. Vyhledejte online text „Microsoft.Azure.CosmosDB.Table“ a výběrem **Instalovat** nainstalujte knihovnu Microsoft Azure CosmosDB Table Library.
 4. Vyhledejte online text „WindowsAzure.ConfigurationManager“ a výběrem **Instalovat** nainstalujete knihovnu Microsoft Azure Configuration Manager Library.
 

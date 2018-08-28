@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 06/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 5c133c61c989bf19be3e84287cb76a7d110dccc8
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6bfe6f9b76693ded79aa9b9d21ddcac4e1a0733e
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39440469"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43110300"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster"></a>Vytvoření clusteru Azure Kubernetes Service (AKS)
 
@@ -48,7 +48,7 @@ Tyto možnosti jsou dostupné `az aks create` příkazu. Zobrazit [referenční 
 | `--enable-rbac` `-r` | Povolte řízení přístupu na základě rolí Kubernetes. | ne |
 | `--generate-ssh-keys` | Generovat soubory veřejného a privátního klíče SSH, pokud chybí. | ne |
 | `--kubernetes-version` `-k` | Verze Kubernetes pro použití při vytváření clusteru, například '1.7.9' nebo "otázku 1.9.6". | ne |
-| `--locaton` `-l` | Umístění pro skupinu automaticky vytvořený prostředek | ne |
+| `--location` `-l` | Umístění pro skupinu automaticky vytvořený prostředek | ne |
 | `--max-pods` `-m` | Maximální počet podů nasaditelný k uzlu. | ne |
 | `--network-plugin` | Použití modulu plug-in sítě Kubernetes. | ne |
 | `--no-ssh-key` `-x` | Použít nebo vytvořit místní klíč SSH. | ne |

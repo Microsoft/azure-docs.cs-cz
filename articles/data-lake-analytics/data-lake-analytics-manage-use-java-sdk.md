@@ -1,38 +1,37 @@
 ---
-title: Správa Azure Data Lake Analytics pomocí sady Azure Java SDK
-description: Tento článek popisuje způsob použití sady Java SDK Azure pro zápis aplikace, které spravovat úlohy Data Lake Analytics, zdroje dat a uživatelů.
+title: Správa Azure Data Lake Analytics pomocí sady Java SDK pro Azure
+description: Tento článek popisuje, jak používat Azure Java SDK pro psaní aplikací, které spravují úlohy Data Lake Analytics, zdroje dat a uživatelů.
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: saveenr
 ms.author: saveenr
-manager: kfile
-editor: jasonwhowell
+ms.reviewer: jasonwhowell
 ms.assetid: 07830b36-2fe3-4809-a846-129cf67b6a9e
 ms.topic: conceptual
 ms.date: 06/18/2017
-ms.openlocfilehash: 4cf8390f55beeb65c1bd99594e885ed9db551d9e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 938b3776f320b7556394fff9aa070eee0c44ee88
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34624229"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43047082"
 ---
-# <a name="manage-azure-data-lake-analytics-using-a-java-app"></a>Správa Azure Data Lake Analytics pomocí aplikace v jazyce Java
+# <a name="manage-azure-data-lake-analytics-using-a-java-app"></a>Správa Azure Data Lake Analytics pomocí aplikace v Javě
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
-Tento článek popisuje, jak pro správu účtů Azure Data Lake Analytics, zdroje dat, uživatelů a úloh pomocí aplikace napsané v jazyce Java SDK služby Azure. 
+Tento článek popisuje, jak spravovat účty Azure Data Lake Analytics, zdroje dat, uživatele a úlohy pomocí aplikace napsané s využitím Azure Java SDK. 
 
 ## <a name="prerequisites"></a>Požadavky
 * **Java Development Kit (JDK) 8** (využívající jazyk Java verze 1.8).
 * **IntelliJ** nebo jiné vhodné vývojové prostředí Java. Pokyny v tomto dokumentu používají IntelliJ.
-* Vytvoření aplikace Azure Active Directory (AAD) a načtení **ID klienta**, **ID tenanta**, a **Klíče**. Další informace o aplikacích AAD a pokyny k získání ID klienta naleznete v tématu [Vytvoření aplikace Active Directory a objektu služby pomocí portálu](../azure-resource-manager/resource-group-create-service-principal-portal.md). Reply URI a klíč je dostupná z portálu, jakmile je aplikace vytvořené a generování klíče.
+* Vytvoření aplikace Azure Active Directory (AAD) a načtení **ID klienta**, **ID tenanta**, a **Klíče**. Další informace o aplikacích AAD a pokyny k získání ID klienta naleznete v tématu [Vytvoření aplikace Active Directory a objektu služby pomocí portálu](../azure-resource-manager/resource-group-create-service-principal-portal.md). Identifikátor URI odpovědi a klíč je k dispozici z portálu, jakmile budete mít aplikaci vytvořili a generování klíče.
 
-## <a name="authenticating-using-azure-active-directory"></a>Ověřování pomocí služby Azure Active Directory
+## <a name="authenticating-using-azure-active-directory"></a>Ověřování pomocí Azure Active Directory
 
 Následující fragment kódu obsahuje kód pro kód **neinteraktivní** ověřování, kdy aplikace poskytuje svoje vlastní přihlašovací údaje.
 
 ## <a name="create-a-java-application"></a>Vytvoření aplikace Java
-1. Otevřete IntelliJ a vytvoření projektu Java pomocí **aplikace příkazového řádku** šablony.
+1. Otevřete IntelliJ a vytvořte projekt Java pomocí **aplikace příkazového řádku** šablony.
 2. Klikněte pravým tlačítkem na projekt na levé straně obrazovky a klikněte na možnost **Přidat podporu architektury**. Vyberte možnost **Maven** a klikněte na tlačítko **OK**.
 3. Otevřete nově vytvořený soubor **pom.xml** a mezi značky **\</version>** a **\</project>** přidejte následující fragment textu:
 
@@ -89,7 +88,7 @@ Následující fragment kódu obsahuje kód pro kód **neinteraktivní** ověřo
 
 Přejděte na **soubor > Nastavení > sestavení > provádění > nasazení**. Vyberte **nástroje sestavení > Maven > Import**. Zkontrolujte **automaticky importovat projekty Maven**.
 
-Otevřete `Main.java` a stávající blok kódu nahraďte následující fragment kódu:
+Otevřít `Main.java` a stávající blok kódu nahraďte následující fragment kódu:
 
 ```
 package com.company;
@@ -199,7 +198,7 @@ string script = "@input =  EXTRACT Data string FROM \"/input1.csv\" USING Extrac
 }
 ```
 
-Zadejte hodnoty pro parametry ve fragmentu kódu:
+Zadejte hodnoty parametrů ve fragmentu kódu:
 * `localFolderPath`
 * `_adlaAccountName`
 * `_adlsAccountName`
@@ -211,7 +210,7 @@ Nahraďte zástupné symboly pro:
 * `TENANT-ID`
 * `SUBSCRIPTION-ID`
 
-## <a name="helper-functions"></a>Podpůrné funkce
+## <a name="helper-functions"></a>Pomocné funkce
 
 ### <a name="setup-clients"></a>Instalace klientů
 
@@ -229,7 +228,7 @@ public static void SetupClients(ServiceClientCredentials creds)
 ```
 
 
-### <a name="wait-for-input"></a>Čekání na vstup
+### <a name="wait-for-input"></a>Počkat na vstup
 
 ```
 public static void WaitForNewline(String reason, String nextAction)

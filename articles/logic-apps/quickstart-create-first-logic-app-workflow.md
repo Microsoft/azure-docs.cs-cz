@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.date: 07/20/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 4774efda6748ac640d87ce83e2d5c4ee68310546
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 0f38aabf008f0335a6f9e21717aa38aefdd21615
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125735"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "42023125"
 ---
 # <a name="quickstart-create-your-first-automated-workflow-with-azure-logic-apps---azure-portal"></a>Rychlý start: Vytvoření prvního automatizovaného pracovního postupu pomocí Azure Logic Apps – Azure Portal
 
@@ -171,6 +171,9 @@ Pokud tuto ukázku už nepotřebujete, odstraňte skupinu prostředků, která o
 2. Pro ověření zadejte název skupiny prostředků a zvolte **Odstranit**.
 
    ![Potvrzení odstranění](./media/quickstart-create-first-logic-app-workflow/delete-resource-group-2.png)
+
+> [!NOTE]
+> Pokud odstraníte aplikaci logiky, nebudou se vytvářet žádné nové instance spuštění. Všechna probíhající a čekající spuštění se zruší. Pokud máte tisíce spuštění, jejich zrušení může trvat značnou dobu.
 
 ## <a name="get-support"></a>Získat podporu
 

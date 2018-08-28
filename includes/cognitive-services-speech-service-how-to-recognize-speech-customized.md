@@ -4,14 +4,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/27/2018
 ms.author: wolfma
-ms.openlocfilehash: 05713be42d27df8f1c15537667f7e6cdbe832588
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: d874f1bd13239be16d7819ad1fa74797bd45ec1f
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39330836"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43093271"
 ---
-## <a name="speech-recognition-using-a-customized-model"></a>Rozpoznávání řeči pomocí přizpůsobených modelu
+## <a name="speech-recognition-with-a-customized-model"></a>Rozpoznávání řeči pomocí přizpůsobených modelu
 
-[Custom Speech Service (CRIS) která](https://www.cris.ai/) poskytuje možnosti vlastního nastavení modul převodu řeči na text od Microsoftu pro vaši aplikaci.
-Následující fragment kódu ukazuje, jak rozpoznávání řeči z mikrofonu pomocí vašeho modelu CRIS; Zadejte klíč předplatného CRIS a vlastní identifikaci nasazení před jejím spuštěním.
+[Custom Speech service (CRIS která)](https://www.cris.ai/) poskytuje možnosti vlastního nastavení modulu pro rozpoznávání řeči na text společnosti Microsoft pro vaši aplikaci.
+Následující fragment kódu ukazuje, jak rozpoznávání řeči z mikrofonu pomocí CRIS modelu. Zadejte klíč předplatného CRIS a vlastní identifikaci nasazení před spuštěním kódu.

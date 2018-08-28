@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 884edbf56fbf67e4ee71e0832f8924a3747994c9
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 049f5211e800dace4b8968cd9e3db9ad968f8813
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42057479"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43050742"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Zřizování a nasazování mikroslužeb předvídatelně v Azure
 Tento kurz ukazuje, jak zřídit a nasadit aplikaci skládající se z [mikroslužeb](https://en.wikipedia.org/wiki/Microservices) v [služby Azure App Service](https://azure.microsoft.com/services/app-service/) jako jednu jednotku a předvídatelným způsobem použití šablony skupin prostředků JSON a Skriptování PowerShell. 
@@ -40,7 +40,7 @@ V tomto kurzu nasazujete aplikaci, která zahrnuje:
 V tomto kurzu použijete následující nástroje. Protože není komplexní informace o nástroji, teď předvedu zůstat do scénáře začátku do konce a právě získáte stručný úvod ke každému, a místo, kde najdete další informace v něm. 
 
 ### <a name="azure-resource-manager-templates-json"></a>Šablony Azure Resource Manageru (JSON)
-Pokaždé, když vytvoříte webovou aplikaci ve službě Azure App Service, například Azure Resource Manageru používá k vytvoření celou skupinu prostředků s prostředky součásti šablony JSON. Komplexní šablony z [Azure Marketplace](/marketplace) stejně jako [škálovatelný WordPress](/marketplace/partners/wordpress/scalablewordpress/) aplikace může obsahovat databáze MySQL, účty úložiště, plán služby App Service, samotnou webovou aplikaci, pravidel upozornění, nastavení aplikace nastavení automatického škálování a další a všechny tyto šablony jsou k dispozici prostřednictvím prostředí PowerShell. Informace o tom, jak stáhnout a použít tyto šablony najdete v tématu [pomocí Azure Powershellu s Azure Resource Managerem](../powershell-azure-resource-manager.md).
+Pokaždé, když vytvoříte webovou aplikaci ve službě Azure App Service, například Azure Resource Manageru používá k vytvoření celou skupinu prostředků s prostředky součásti šablony JSON. Komplexní šablony z [Azure Marketplace](/azure/marketplace) může obsahovat databáze, účty úložiště, plán služby App Service, samotnou webovou aplikaci, pravidel upozornění, nastavení aplikace, nastavení automatického škálování a další, a tyto šablony jsou k dispozici pomocí prostředí PowerShell. Informace o tom, jak stáhnout a použít tyto šablony najdete v tématu [pomocí Azure Powershellu s Azure Resource Managerem](../powershell-azure-resource-manager.md).
 
 Další informace o šablonách Azure Resource Manageru najdete v tématu [vytváření šablon Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md)
 

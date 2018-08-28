@@ -1,6 +1,6 @@
 ---
-title: Rychlý start Azure – Zpracování streamů událostí pomocí Azure CLI | Microsoft Docs
-description: V tomto rychlém startu se dozvíte, jak zpracovávat streamy událostí pomocí Azure CLI.
+title: Rychlý start Azure – Vytvoření centra událostí pomocí Azure CLI | Microsoft Docs
+description: Tento rychlý start popisuje, jak pomocí Azure CLI vytvořit centrum událostí a pak odesílat a přijímat události pomocí Javy.
 services: event-hubs
 author: ShubhaVijayasarathy
 manager: timlt
@@ -10,14 +10,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/26/2018
 ms.author: shvija
-ms.openlocfilehash: 7a15b252727589194da90af729a74e1baad7094f
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 0607c9a65febdb5890eb49808a0fcef582deb37e
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40004560"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42023586"
 ---
-# <a name="quickstart-process-event-streams-using-azure-cli-and-java"></a>Rychlý start: Zpracování streamů událostí pomocí Azure CLI a Javy
+# <a name="quickstart-create-an-event-hub-using-azure-cli"></a>Rychlý start: Vytvoření centra událostí pomocí Azure CLI
 
 Azure Event Hubs je vysoce škálovatelná platforma pro streamování dat a služba pro ingestování, která je schopná přijmout a zpracovat miliony událostí za sekundu. V tomto rychlém startu se dozvíte, jak pomocí Azure CLI vytvořit prostředky služby Event Hubs a pak odesílat streamy událostí do centra událostí a přijímat je z něj pomocí kódu Java.
 

@@ -1,3 +1,20 @@
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: service-bus-relay
+author: clemensv
+ms.service: service-bus-relay
+ms.topic: include
+ms.date: 08/16/2018
+ms.author: clemensv
+ms.custom: include file
+ms.openlocfilehash: fbc5bbff62a13d9b4301271031105ecd7d17fa86
+ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "40183837"
+---
 ### <a name="create-a-console-application"></a>Vytvoření konzolové aplikace
 
 V sadě Visual Studio vytvořte nový projekt **Konzolová aplikace (.NET Framework)**.
@@ -5,8 +22,10 @@ V sadě Visual Studio vytvořte nový projekt **Konzolová aplikace (.NET Framew
 ### <a name="add-the-relay-nuget-package"></a>Přidání balíčku NuGet služby Relay
 
 1. Klikněte pravým tlačítkem na nově vytvořený projekt a vyberte možnost **Spravovat balíčky NuGet**.
-2. Vyberte **Procházet** a vyhledejte **Microsoft.Azure.Relay**. Ve výsledcích hledání vyberte **Microsoft Azure Relay**. 
-3. Vyberte **Nainstalovat** a dokončete instalaci. Zavřete dialogové okno.
+2. Vyberte možnost **Zahrnout předběžné verze**. 
+3. Vyberte **Procházet** a vyhledejte **Microsoft.Azure.Relay**. Ve výsledcích hledání vyberte **Microsoft Azure Relay**.
+4. Jako verzi vyberte **2.0.0-preview1-20180523**. 
+5. Vyberte **Nainstalovat** a dokončete instalaci. Zavřete dialogové okno.
 
 ### <a name="write-code-to-receive-messages"></a>Napsání kódu pro přijímání zpráv
 
@@ -17,6 +36,7 @@ V sadě Visual Studio vytvořte nový projekt **Konzolová aplikace (.NET Framew
     using System.IO;
     using System.Threading;
     using System.Threading.Tasks;
+    using System.Net;
     using Microsoft.Azure.Relay;
     ```
 2. Do třídy `Program` přidejte konstanty s podrobnostmi o hybridním připojení. Zástupné symboly v závorkách nahraďte hodnotami, které jste získali při vytváření hybridního připojení. Nezapomeňte použít plně kvalifikovaný obor názvů.

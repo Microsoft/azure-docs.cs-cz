@@ -9,18 +9,18 @@ ms.topic: quickstart
 ms.date: 07/06/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: de30085ae5ff95e7067684ff3af9ccb0d45357de
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: abba75e731d2550b4719eec70d475884bd7f3c8e
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990859"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "42022399"
 ---
 # <a name="replicate-an-azure-vm-to-another-azure-region"></a>Replikace virtuálního počítače Azure do jiné oblasti Azure
 
 Služba [Azure Site Recovery](site-recovery-overview.md) přispívá ke strategii provozní kontinuity a zotavení po havárii (BCDR) tím, že zajišťuje provoz a dostupnost obchodních aplikací během plánovaných i neplánovaných výpadků. Site Recovery spravuje a orchestruje zotavení po havárii místních počítačů a virtuálních počítačů Azure, včetně replikace, převzetí služeb při selhání a zotavení.
 
-Tento rychlý start popisuje, jak replikovat virtuální počítač Azure do jiné oblasti Azure. 
+Tento rychlý start popisuje, jak replikovat virtuální počítač Azure do jiné oblasti Azure.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -62,8 +62,7 @@ Virtuální počítač v primární oblasti se přestane replikovat, když pro n
 Následujícím způsobem zakažte replikaci:
 
 1. Vyberte virtuální počítač.
-2. V části **Zotavení po havárii** klikněte na **Další**.
-3. Klikněte na **Zakázat replikaci**.
+2. V části **Zotavení po havárii** klikněte na **Zakázat replikaci**.
 
    ![Zákaz replikace](media/azure-to-azure-quickstart/disable2-replication.png)
 

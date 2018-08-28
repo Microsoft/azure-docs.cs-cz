@@ -4,17 +4,17 @@ description: V tomto kurzu nasadíte Azure Stream Analytics jako modul na zaří
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 06/25/2018
+ms.date: 08/10/2018
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: afbdf2171c1fc1eef95514526a509d171e262d4a
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 66d55c07493a540e36a08d48d6abbdc3d082b9b9
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39435678"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "41918442"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module-preview"></a>Kurz: Nasazení služby Azure Stream Analytics jako modulu IoT Edge (Preview)
 
@@ -33,6 +33,10 @@ V tomto kurzu se naučíte:
 > * Připojit se k nové úloze Azure Stream Analytics pomocí jiných modulů IoT Edge
 > * Nasadit úlohu Azure Stream Analytics na zařízení IoT Edge z portálu Azure Portal
 
+<center>
+![Diagram architektury v tomto kurzu](./media/tutorial-deploy-stream-analytics/ASATutorialDiagram.png)
+</center>
+
 >[!NOTE]
 >Moduly Azure Stream Analytics pro IoT Edge jsou ve verzi [Public Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
@@ -43,7 +47,6 @@ V tomto kurzu se naučíte:
 Zařízení Azure IoT Edge:
 
 * Jako hraniční zařízení můžete použít svůj vývojový počítač nebo virtuální počítač podle postupu v rychlém startu pro zařízení s [Linuxem](quickstart-linux.md) nebo [Windows](quickstart.md).
-* Modul Azure Machine Learning nepodporuje procesory ARM.
 
 Cloudové prostředky:
 
@@ -52,57 +55,72 @@ Cloudové prostředky:
 
 ## <a name="create-an-azure-stream-analytics-job"></a>Vytvoření úlohy Azure Stream Analytics
 
-V této části vytvoříte úlohu Azure Stream Analytics, která vezme data ze služby IoT Hub, vytvoří dotaz na odeslaná telemetrická data ze zařízení a potom výsledky předá do kontejneru úložiště objektů blob Azure. Další informace najdete v přehledu v [dokumentaci ke službě Stream Analytics][azure-stream]. 
+V této části vytvoříte úlohu Azure Stream Analytics, která vezme data ze služby IoT Hub, vytvoří dotaz na odeslaná telemetrická data ze zařízení a potom výsledky předá do kontejneru úložiště objektů blob Azure. 
 
 ### <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
-Pro úlohy Azure Stream Analytics je potřeba mít účet Azure Storage, který bude fungovat jako koncový bod pro výstup úlohy. V příkladu v této části používáme typ úložiště objektů blob. Další informace najdete v oddílu věnovaném objektům blob v [dokumentaci ke službě Azure Storage][azure-storage].
+Když vytvoříte úlohu Azure Stream Analytics, která se má spouštět na zařízení IoT Edge, je potřeba ji uložit tak, aby ji bylo možné volat ze zařízení. Můžete použít existující účet úložiště Azure nebo teď vytvořit nový. 
 
-1. Na portálu Azure Portal přejděte na **Vytvořit prostředek**, do vyhledávacího pole zadejte **Storage account** a potom vyberte **Storage account - blob, file, table, queue**.
+1. Na webu Azure Portal přejděte do části **Vytvořit prostředek** > **Úložiště** > **Účet úložiště – objekt blob, soubor, tabulka, fronta**. 
 
-1. V podokně **Vytvořit účet úložiště** zadejte název účtu úložiště, vyberte stejné umístění, ve kterém je uložena služba IoT Hub, vyberte stejnou skupinu prostředků, kterou má i služba IoT Hub, a potom vyberte **Vytvořit**. Tento název si poznamenejte pro pozdější použití.
+1. Zadejte následující hodnoty pro vytvoření účtu úložiště:
 
-    ![vytvořit účet úložiště][1]
+   | Pole | Hodnota |
+   | ----- | ----- |
+   | Název | Zadejte jedinečný název účtu úložiště. | 
+   | Umístění | Zvolte umístění, které je blízko vás. |
+   | Předplatné | Zvolte stejné předplatné jako pro vaše centrum IoT. |
+   | Skupina prostředků | Pro všechny testovací prostředky, které vytvoříte v průběhu rychlých startů a kurzů pro IoT Edge, doporučujeme použít stejnou skupinu prostředků. Například **IoTEdgeResources**. |
 
+1. U ostatních polí ponechte výchozí hodnoty a vyberte **Vytvořit**. 
 
-### <a name="create-a-stream-analytics-job"></a>Vytvoření úlohy Stream Analytics
+### <a name="create-a-new-job"></a>Vytvoření nové úlohy
 
-1. Na webu Azure Portal přejděte na **Vytvořit prostředek** > **Internet věcí** a potom vyberte **Úloha Stream Analytics**.
+1. Na webu Azure Portal přejděte do části **Vytvořit prostředek** > **Internet věcí** > **Úloha Stream Analytics**.
 
-1. V podokně **Nová úloha Stream Analytics** proveďte tyto kroky:
+1. Zadejte následující hodnoty pro vytvoření úlohy:
 
-   1. Do pole **Název úlohy** zadejte název úlohy.
-   
-   1. Použijte stejnou **Skupinu prostředků** a **Umístění** jako u služby IoT Hub. 
-
-      > [!NOTE]
-      > V současné době se úlohy Azure Stream Analytics na zařízeních IoT Edge nepodporují v oblasti USA – západ 2. 
-
-   1. V části **Hostitelské prostředí** vyberte **Edge**.
-    
+   | Pole | Hodnota |
+   | ----- | ----- |
+   | Název úlohy | Zadejte název úlohy. Například **IoTEdgeJob** | 
+   | Předplatné | Zvolte stejné předplatné jako pro vaše centrum IoT. |
+   | Skupina prostředků | Pro všechny testovací prostředky, které vytvoříte v průběhu rychlých startů a kurzů pro IoT Edge, doporučujeme použít stejnou skupinu prostředků. Například **IoTEdgeResources**. |
+   | Umístění | Zvolte umístění, které je blízko vás. | 
+   | Hostitelské prostředí | Vyberte **Edge**. |
+ 
 1. Vyberte **Vytvořit**.
 
-1. Ve vytvořené úloze v části **Topologie úlohy** otevřete **Vstupy**.
+### <a name="configure-your-job"></a>Konfigurace úlohy
+
+Po vytvoření úlohy Stream Analytics na webu Azure Portal pro ni můžete nakonfigurovat vstup, výstup a dotaz, který má spustit pro data, která jí procházejí. 
+
+V této části se s využitím těchto tří prvků (vstup, výstup a dotaz) vytvoří úloha, která přijímá data o teplotě ze zařízení IoT Edge. Úloha analyzuje tato data v 30sekundových intervalech. Pokud průměrná teplota v tomto intervalu přesáhne 70 stupňů, do zařízení IoT Edge se odešle upozornění. V další části při nasazení úlohy přesně určíte, odkud data přicházejí a kam směřují.  
+
+1. Přejděte k vaší úloze Stream Analytics na webu Azure Portal. 
+
+1. V části **Topologie úlohy** vyberte **Vstupy** a pak **Přidat vstup streamu**.
 
    ![Vstup Stream Analytics](./media/tutorial-deploy-stream-analytics/asa_input.png)
 
-1. Vyberte **Přidat vstup streamu** a potom **Edge Hub**.
+1. V rozevíracím seznamu zvolte **Edge Hub**.
 
 1. V podokně **Nový vstup** zadejte **teplota** jako alias pro vstup. 
 
-1. Vyberte **Uložit**.
+1. U ostatních polí ponechte výchozí hodnoty a vyberte **Uložit**.
 
-1. V části **Topologie úlohy** otevřete **Výstupy**.
+1. V části **Topologie úlohy** otevřete **Výstupy** a pak vyberte **Přidat**.
 
    ![Výstup Stream Analytics](./media/tutorial-deploy-stream-analytics/asa_output.png)
 
-1. Vyberte **Přidat** a potom **Edge Hub**.
+1. V rozevíracím seznamu zvolte **Edge Hub**.
 
 1. V podokně **Nový výstup** zadejte **upozornění** jako alias pro výstup. 
 
-1. Vyberte **Uložit**.
+1. U ostatních polí ponechte výchozí hodnoty a vyberte **Uložit**.
 
-1. V části **Topologie úlohy** vyberte **Dotaz** a potom výchozí text nahraďte následujícím dotazem, který vytvoří upozornění v případě, že teplota přístroje v 30sekundovém intervalu dosáhne 70 stupňů:
+1. V části **Topologie úlohy** vyberte **Dotaz**.
+
+1. Výchozí text nahraďte následujícím dotazem. Tento kód SQL odešle do výstupu úlohy příkaz k resetování, pokud průměrná teplota počítače v 30sekundovém intervalu dosáhne 70 stupňů. Příkaz k resetování je ve snímači předem naprogramovaný jako akce, kterou je možné provést. 
 
     ```sql
     SELECT  
@@ -117,6 +135,10 @@ Pro úlohy Azure Stream Analytics je potřeba mít účet Azure Storage, který 
 
 1. Vyberte **Uložit**.
 
+### <a name="configure-iot-edge-settings"></a>Konfigurace nastavení IoT Edge
+
+Pokud chcete úlohu Stream Analytics připravit k nasazení na zařízení IoT Edge, musíte úlohu přidružit ke kontejneru v účtu úložiště. Až přejdete k nasazení úlohy, definice úlohy se exportuje do kontejneru úložiště. 
+
 1. V části **Konfigurovat** vyberte **Nastavení IoT Edge**.
 
 1. Z rozevíracího seznamu vyberte svůj **účet úložiště**.
@@ -125,22 +147,24 @@ Pro úlohy Azure Stream Analytics je potřeba mít účet Azure Storage, který 
 
 1. Vyberte **Uložit**. 
 
-
 ## <a name="deploy-the-job"></a>Nasazení úlohy
 
-Nyní jste připraveni nasadit úlohu Azure Stream Analytics na zařízení IoT Edge.
+Nyní jste připraveni nasadit úlohu Azure Stream Analytics na zařízení IoT Edge. 
+
+V této části pomocí průvodce **Nastavení modulů** na webu Azure Portal vytvoříte *manifest nasazení*. Manifest nasazení je soubor JSON popisující všechny moduly, které se nasadí do zařízení, registry kontejnerů, které uchovávají image modulů, způsob správy modulů a způsob vzájemné komunikace mezi moduly. Vaše zařízení IoT Edge načte svůj manifest nasazení ze služby IoT Hub a pak pomocí informací v něm obsažených nasadí a nakonfiguruje všechny přiřazené moduly. 
+
+Pro účely tohoto kurzu nasadíte dva moduly. Prvním je modul **tempSensor**, který simuluje snímač teploty a vlhkosti. Druhým modulem je vaše úloha Stream Analytics. Modul snímače poskytuje datový proud, který bude analyzovat dotaz vaší úlohy. 
 
 1. Na webu Azure Portal přejděte ve službě IoT Hub na **IoT Edge** a otevřete stránku podrobností zařízení IoT Edge.
 
 1. Vyberte **Nastavit moduly**.  
 
-   Pokud jste na zařízení už dříve nasadili modul tempSensor, může se automaticky doplnit. Pokud ne, přidejte ho následujícím postupem:
+1. Pokud jste na zařízení už dříve nasadili modul tempSensor, může se automaticky doplnit. Pokud ne, přidejte ho následujícím postupem:
 
    1. Klikněte na **Přidat** a vyberte **Modul IoT Edge**.
    1. Jako název zadejte **tempSensor**.
    1. Jako identifikátor URI obrázku zadejte **mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0**. 
-   1. Další nastavení ponechte beze změny.
-   1. Vyberte **Uložit**.
+   1. Ostatní nastavení ponechte beze změny a vyberte **Uložit**.
 
 1. Přidejte úlohu Azure Stream Analytics Edge následujícím postupem:
 
@@ -148,9 +172,17 @@ Nyní jste připraveni nasadit úlohu Azure Stream Analytics na zařízení IoT 
    1. Vyberte předplatné a úlohu Azure Stream Analytics Edge, kterou jste vytvořili. 
    1. Vyberte **Uložit**.
 
-1. Vyberte **Další**.
+1. Po publikování úlohy Stream Analytics do kontejneru úložiště, který jste vytvořili, kliknutím na název modulu zobrazte strukturu modulu Stream Analytics. 
 
-1. Nahraďte výchozí hodnotu v části **Trasy** následujícím kódem. Místo _{moduleName}_ zadejte název modulu Azure Stream Analytics. Modul by měl mít stejný název jako úloha, ze které jste ho vytvořili. 
+   Identifikátor URI image odkazuje na standardní image Azure Stream Analytics. Jedná se o stejnou image, která se používá pro každou úlohu, která se nasadí do zařízení IoT Edge. 
+
+   Dvojče modulu má nakonfigurovanou požadovanou vlastnost **ASAJobInfo**. Hodnota této vlastnosti odkazuje na definici úlohy ve vašem kontejneru úložiště. Tato vlastnost určuje konfiguraci image Stream Analytics s konkrétními informacemi o vaší úloze. 
+
+1. Zavřete stránku modulu.
+
+1. Poznamenejte si název vašeho modulu Stream Analytics, protože ho budete potřebovat v dalším kroku, a pak pokračujte výběrem **Další**.
+
+1. Nahraďte výchozí hodnotu v části **Trasy** následujícím kódem. Místo všech tří výskytů zástupného textu _{moduleName}_ zadejte název vašeho modulu Azure Stream Analytics. 
 
     ```json
     {
@@ -162,6 +194,8 @@ Nyní jste připraveni nasadit úlohu Azure Stream Analytics na zařízení IoT 
         }
     }
     ```
+
+   Trasy, které zde deklarujete, definují tok dat zařízením IoT Edge. Telemetrická data z modulu tempSensor se odesílají do služby IoT Hub a do vstupu **temperature** nakonfigurovaného v úloze Stream Analytics. Výstupní zprávy **upozornění** se odesílají do služby IoT Hub a do modulu tempSensor, kde aktivují příkaz k resetování. 
 
 1. Vyberte **Další**.
 
@@ -197,35 +231,14 @@ Měli byste mít možnost sledovat, jak teplota přístroje pomalu stoupá, doku
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků 
 
-<!--[!INCLUDE [iot-edge-quickstarts-clean-up-resources](../../includes/iot-edge-quickstarts-clean-up-resources.md)] -->
+Pokud máte v plánu pokračovat k dalšímu doporučenému článku, můžete si vytvořené prostředky a konfigurace uschovat a znovu je použít. Také můžete dál používat stejné zařízení IoT Edge jako testovací zařízení. 
 
-Pokud budete pokračovat k dalšímu doporučenému článku, můžete už vytvořené prostředky a konfigurace zachovat a znovu je použít.
+Jinak můžete místní konfigurace a prostředky Azure vytvořené v tomto článku odstranit, abyste se vyhnuli poplatkům. 
+ 
+[!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
-Pokud nebudete pokračovat, můžete místní konfigurace a prostředky Azure vytvořené v tomto článku odstranit, abyste se vyhnuli poplatkům. 
+[!INCLUDE [iot-edge-clean-up-local-resources](../../includes/iot-edge-clean-up-local-resources.md)]
 
-> [!IMPORTANT]
-> Odstranění prostředků Azure a skupiny prostředků je nevratná akce. V případě odstranění se skupina prostředků i všechny prostředky, které obsahuje, trvale odstraní. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. Pokud jste službu IoT Hub vytvořili uvnitř existující skupiny prostředků obsahující prostředky, které chcete zachovat, odstraňte místo skupiny prostředků pouze samotný prostředek služby IoT Hub.
->
-
-Pokud chcete odstranit jenom IoT Hub, spusťte následující příkaz, ve kterém se použije název vaší služby Hub a název skupiny prostředků:
-
-```azurecli-interactive
-az iot hub delete --name {hub_name} --resource-group IoTEdgeResources
-```
-
-
-Odstranění celé skupiny prostředků podle názvu:
-
-1. Přihlaste se k webu [Azure Portal ](https://portal.azure.com) a klikněte na **Skupiny prostředků**.
-
-1. Do textového pole **Filtrovat podle názvu...** zadejte název skupiny prostředků obsahující vaši službu IoT Hub. 
-
-1. V seznamu výsledků klikněte na **...** napravo od vaší skupiny prostředků a pak na **Odstranit skupinu prostředků**.
-
-<!--
-   ![Delete](./media/iot-edge-quickstarts-clean-up-resources/iot-edge-delete-resource-group.png)
--->
-1. Zobrazí se výzva k potvrzení odstranění skupiny prostředků. Potvrďte odstranění tím, že znovu zadáte název vaší skupiny prostředků, a pak klikněte na **Odstranit**. Po chvíli bude skupina prostředků včetně všech obsažených prostředků odstraněná.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -235,7 +248,6 @@ V tomto kurzu jste nakonfigurovali úlohu Azure Streaming Analytics, aby analyzo
 > [Nasazení modelu Azure Machine Learning jako modulu][lnk-ml-tutorial]
 
 <!-- Images. -->
-[1]: ./media/tutorial-deploy-stream-analytics/storage.png
 [4]: ./media/tutorial-deploy-stream-analytics/add_device.png
 [5]: ./media/tutorial-deploy-stream-analytics/asa_job.png
 [6]: ./media/tutorial-deploy-stream-analytics/set_module.png

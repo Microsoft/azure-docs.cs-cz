@@ -5,16 +5,16 @@ services: hdinsight
 ms.service: hdinsight
 author: jasonwhowell
 ms.author: jasonh
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
-ms.openlocfilehash: 1961645e7771fdbddb4cb987a8d72da0075df337
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: aae63b06999c0b8eafa0d42608d32a4d467a900c
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39617764"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43041057"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-store"></a>Použití clusteru Spark v HDInsight k analýze dat v Data Lake Store
 

@@ -14,12 +14,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 07/17/2018
 ms.author: barclayn
-ms.openlocfilehash: 2cda30c85ce8a8dc9b7a6c0134b7cabc58b842a4
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: a55c99764cf9d77ab3ee269e3f5b0c2a13ec1ac7
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39115316"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "42022894"
 ---
 # <a name="what-is-azure-key-vault"></a>Co je Azure Key Vault?
 
@@ -29,13 +29,12 @@ Pro zajištění provozu vašich aplikací máte potřebná hesla, připojovací
 
 Key Vault vám umožní vytvořit několik zabezpečených kontejnerů označovaných jako trezory. Tyto trezory využívají moduly hardwarového zabezpečení (HSM). Trezory pomáhají snížit riziko nechtěné ztráty informací o zabezpečení tím, že centralizují ukládání tajných klíčů aplikací. Trezory klíčů také řídí a protokolují přístup ke všem položkám, které jsou v nich uložené. Azure Key Vault může zpracovávat žádosti o certifikáty TLS (Transport Layer Security) a jejich obnovování a poskytuje funkce potřebné pro robustní řešení správy životního cyklu certifikátů.
 
- Služba Azure Key Vault je navržená pro podporu klíčů a tajných klíčů aplikací. Služba Key Vault není určená k použití jako úložiště uživatelských hesel.
-
+ Služba Azure Key Vault je navržená tak, aby podporovala všechny typy tajných klíčů. To znamená, že službu Key Vault můžete použít k ukládání hesel, přihlašovacích údajů k databázím, klíčů rozhraní API a certifikátů, které můžou být softwarově chráněné nebo chráněné modulem HSM.
 ## <a name="why-use-azure-key-vault"></a>Proč používat Azure Key Vault?
 
 ### <a name="centralize-application-secrets"></a>Centralizace tajných klíčů aplikací
 
-Centralizace ukládání tajných klíčů aplikací ve službě Azure Key Vault umožňuje řídit jejich distribuci. Tím se výrazně snižuje riziko nechtěného úniku tajných klíčů. Při použití služby Key Vault už vývojáři aplikací nemusejí ukládat informace o zabezpečení ve svých aplikacích. Tím se eliminuje potřeba zahrnout tyto informace do kódu. Aplikace se například může potřebovat připojit k databázi. Místo uložení připojovacího řetězce v kódu aplikace ho můžete bezpečně uložit ve službě Key Vault.
+Centralizace ukládání tajných klíčů aplikací ve službě Azure Key Vault umožňuje řídit jejich distribuci. Key Vault výrazně snižuje riziko nechtěného úniku tajných klíčů. Při použití služby Key Vault už vývojáři aplikací nemusejí ukládat informace o zabezpečení ve svých aplikacích. Tím se eliminuje potřeba zahrnout tyto informace do kódu. Aplikace se například může potřebovat připojit k databázi. Místo uložení připojovacího řetězce v kódu aplikace ho můžete bezpečně uložit ve službě Key Vault.
 
 Vaše aplikace můžou v případě potřeby bezpečně přistupovat k těmto informacím pomocí identifikátorů URI, které jim po uložení klíče nebo tajného klíče aplikace ve službě Azure Key Vault umožňují načíst konkrétní verzi tajného klíče. Toto se děje bez nutnosti psát vlastní kód pro zajištění ochrany tajných informací.
 
@@ -65,9 +64,9 @@ Máte kontrolu nad svými protokoly, které můžete zabezpečit prostřednictv�
 
 Pokud ukládáte cenná data, musíte provést několik kroků. Informace o zabezpečení musí být zabezpečené, odpovídat životnímu cyklu a musí být vysoce dostupné. Azure Key Vault spoustu toho zjednodušuje tím, že:
 
-- Odstraňuje potřebu interní znalosti modulů HSM.
+- Odstraňuje potřebu interní znalosti modulů hardwarového zabezpečení.
 - Rychle vertikálně navyšuje kapacitu s ohledem na špičky využití ve vaší organizaci.
-- Replikuje obsah služby Key Vault v jedné oblasti do sekundární oblasti. To zajišťuje vysokou dostupnost a eliminuje potřebu jakékoli akce od správce k aktivaci převzetí služeb při selhání.
+- Replikuje obsah služby Key Vault v jedné oblasti do sekundární oblasti. Key Vault zajišťuje vysokou dostupnost a eliminuje potřebu jakékoli akce od správce k aktivaci převzetí služeb při selhání.
 - Poskytuje standardní možnosti správy Azure prostřednictvím portálu, Azure CLI nebo PowerShellu.
 - Automatizuje určité úlohy, například registraci a obnovení, s certifikáty, které jste zakoupili od veřejných certifikačních autorit.
 

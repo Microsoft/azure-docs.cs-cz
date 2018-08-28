@@ -1,29 +1,28 @@
 ---
-title: Průvodci programovatelnosti U-SQL Azure Data Lake
-description: Další informace o sadu služeb v Azure Data Lake Analytics, které vám umožní vytvořit cloudové velkých objemů dat platformu.
+title: Průvodce programovatelností U-SQL pro Azure Data Lake
+description: Další informace o sadu služeb v Azure Data Lake Analytics, která vám umožní vytvořit velké objemy dat založenému na cloudové platformě.
 services: data-lake-analytics
 ms.service: data-lake-analytics
 author: saveenr
 ms.author: saveenr
-manager: kfile
-editor: jasonwhowell
+ms.reviewer: jasonwhowell
 ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
 ms.topic: conceptual
 ms.date: 06/30/2017
-ms.openlocfilehash: 9ebbecc22acf4be007672f3b52d30f0fec32a47d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0fa695218bb1112324ef2ddac80e52f927a5971b
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34623668"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43045292"
 ---
-# <a name="u-sql-programmability-guide"></a>Průvodce programovatelnosti U-SQL
+# <a name="u-sql-programmability-guide"></a>Průvodce programovatelností U-SQL
 
-U-SQL je dotazovací jazyk, který je určený pro velkých datových typů úloh. Mezi funkce jedinečné jazykem U-SQL se rozumí kombinace jazyka SQL jako deklarativní s rozšiřitelnosti a programovatelnosti, který je zadán v jazyce C#. V této příručce budeme soustředit na rozšiřitelnost a programovatelnosti jazyka U-SQL, který je povolený v jazyce C#.
+U-SQL je dotazovací jazyk, který je určený pro velké objemy dat – typ úlohy. Jeden jedinečné funkce U-SQL je kombinací identifikátoru deklarativní jazyce podobném SQL s rozšiřitelnost a programování, která je k dispozici v jazyce C#. V této příručce se budeme soustředit na rozšiřitelnost a programovací jazyk U-SQL, který je povolen v jazyce C#.
 
 ## <a name="requirements"></a>Požadavky
 
-Stáhněte a nainstalujte [nástrojů Azure Data Lake pro Visual Studio](https://www.microsoft.com/download/details.aspx?id=49504).
+Stáhněte a nainstalujte [Azure Data Lake Tools pro Visual Studio](https://www.microsoft.com/download/details.aspx?id=49504).
 
 ## <a name="get-started-with-u-sql"></a>Začínáme s jazykem U-SQL  
 
@@ -47,9 +46,9 @@ Podívejte se na následující skript U-SQL:
 
 Tento skript definuje dvě sady řádků: `@a` a `@results`. Sada řádků `@results` je definována z `@a`.
 
-## <a name="c-types-and-expressions-in-u-sql-script"></a>Typy C# a výrazy ve skriptu U-SQL
+## <a name="c-types-and-expressions-in-u-sql-script"></a>C# typy a výrazy ve skriptu U-SQL
 
-Výraz U-SQL je výraz jazyka C# v kombinaci s logických operací U-SQL, `AND`, `OR`, a `NOT`. Výrazy U-SQL lze použít s příkazem SELECT, EXTRAHOVÁNÍ, kde s, Seskupit podle a DEKLAROVAT. Například následující skript analyzuje řetězec jako hodnotu data a času.
+Výraz, který U-SQL je výraz C# v kombinaci s logické operace U-SQL například `AND`, `OR`, a `NOT`. Výrazy U-SQL můžete použít s SELECT, EXTRACT, kde, s, Seskupit podle a DEKLAROVAT. Například následující skript analyzuje řetězec jako hodnotu data a času.
 
 ```
 @results =
@@ -66,9 +65,9 @@ Následující fragment kódu analyzuje řetězec jako hodnotu data a času v p�
 DECLARE @d = DateTime.Parse("2016/01/01");
 ```
 
-### <a name="use-c-expressions-for-data-type-conversions"></a>Použití jazyka C# výrazů pro konverze datových typů
+### <a name="use-c-expressions-for-data-type-conversions"></a>Používat výrazy jazyka C# pro převody typů dat
 
-Následující příklad ukazuje, jak můžete provést převod dat data a času pomocí výrazy jazyka C#. V tomto scénáři konkrétní data řetězce data a času jsou převedeny na standardní datetime s půlnoc 00:00:00 čas zápis.
+Následující příklad ukazuje, jak můžete provést převod dat data a času pomocí výrazy jazyka C#. V našem konkrétním scénáři data řetězce data a času jsou převedeny na standardní data a času v zápisu času 00:00:00 půlnoc.
 
 ```
 DECLARE @dt = "2016-07-06 10:23:15";
@@ -84,11 +83,11 @@ OUTPUT @rs1
   USING Outputters.Text();
 ```
 
-### <a name="use-c-expressions-for-todays-date"></a>Použití jazyka C# výrazů pro dnešní datum
+### <a name="use-c-expressions-for-todays-date"></a>Používat výrazy jazyka C# pro dnešní datum
 
-Vyžádání dnešní datum, můžeme použít následující výraz jazyka C#: `DateTime.Now.ToString("M/d/yyyy")`
+Přetahování dnešní datum, můžeme použít následující výraz jazyka C#: `DateTime.Now.ToString("M/d/yyyy")`
 
-Tady je příklad toho, jak používat tento výraz ve skriptu:
+Tady je příklad toho, jak použít tento výraz ve skriptu:
 
 ```
 @rs1 =
@@ -103,15 +102,15 @@ Tady je příklad toho, jak používat tento výraz ve skriptu:
   FROM @rs0
   GROUP BY user, des;
 ```
-## <a name="using-net-assemblies"></a>Použití sestavení rozhraní .NET
+## <a name="using-net-assemblies"></a>Sestavení .NET
 
-Model rozšiřitelnosti U-SQL založena na možnost Přidat vlastního kódu ze sestavení rozhraní .NET. 
+Model rozšíření U-SQL spoléhá na schopnost přidejte vlastní kód ze sestavení .NET. 
 
-### <a name="register-a-net-assembly"></a>Registrace sestavení rozhraní .NET
+### <a name="register-a-net-assembly"></a>Registrace sestavení .NET
 
-Použití `CREATE ASSEMBLY` příkaz umístit sestavení .NET do databáze U-SQL. Později, můžete použít tyto sestavení pomocí skriptů U-SQL `REFERENCE ASSEMBLY` příkaz. 
+Použití `CREATE ASSEMBLY` příkaz umístí sestavení .NET do databáze U-SQL. Později, můžete použít tato sestavení pomocí skriptů U-SQL `REFERENCE ASSEMBLY` příkazu. 
 
-Následující kód ukazuje, jak registrovat sestavení:
+Následující kód ukazuje, jak zaregistrovat sestavení:
 
 ```
 CREATE ASSEMBLY MyDB.[MyAssembly]
@@ -124,22 +123,22 @@ Následující kód ukazuje, jak odkazovat na sestavení:
 REFERENCE ASSEMBLY MyDB.[MyAssembly];
 ```
 
-Obrátit [pokyny pro registraci sestavení](https://blogs.msdn.microsoft.com/azuredatalake/2016/08/26/how-to-register-u-sql-assemblies-in-your-u-sql-catalog/) , která se vztahuje toto téma podrobněji.
+Poraďte [pokyny k registraci sestavení](https://blogs.msdn.microsoft.com/azuredatalake/2016/08/26/how-to-register-u-sql-assemblies-in-your-u-sql-catalog/) , který popisuje Toto téma podrobněji.
 
 
-### <a name="use-assembly-versioning"></a>Pomocí správy verzí sestavení
-U-SQL v současné době používá rozhraní .NET Framework verze 4.5. Proto zajistěte, aby byly kompatibilní s danou verzi modulu runtime vlastního sestavení.
+### <a name="use-assembly-versioning"></a>Použití Správa verzí sestavení
+V současné době U-SQL pomocí rozhraní .NET Framework verze 4.5. Zajistěte proto, že vaše vlastní sestavení nejsou kompatibilní s touto verzí modulu runtime.
 
-Jak už bylo zmíněno dříve, spustí kód U-SQL ve formátu 64bitovou (x 64). Proto se ujistěte, že je zkompilovaný kód pro spuštění na x64. V opačném případě se zobrazí správný formát chyba, uvedena výše.
+Jak bylo zmíněno dříve, spustí kód U-SQL ve formátu 64bitovou (x 64). Proto se ujistěte, že váš kód je zkompilován pro spuštění na x64. Jinak zobrazí chyby nesprávný formát je uvedeno výše.
 
-Každý odeslán sestavení knihoven DLL a souboru prostředků, jako je jiný modul runtime, nativní sestavení nebo konfiguračním souboru může být maximálně 400 MB. Celková velikost nasazené prostředky, prostřednictvím nasazení prostředků nebo prostřednictvím odkazů na sestavení a další soubory, nemůže být delší než 3 GB.
+Každý nahraný sestavení knihovny DLL a soubor prostředků, jako je jiný modul runtime, nativní sestavení nebo konfigurační soubor může obsahovat nejvýše 400 MB. Celková velikost nasazené prostředky prostřednictvím nasazení prostředků nebo přes odkazy na sestavení a další soubory, nemůže být delší než 3 GB.
 
-Nakonec si všimněte, že každý U-SQL databáze může obsahovat pouze jednu verzi žádné zadaného sestavení. Například pokud budete potřebovat verze 7 a 8 verzi knihovny NewtonSoft Json.Net, budete muset registraci je ve dvou různých databází. Kromě toho každý skript může odkazovat pouze na jednu verzi zadaného sestavení knihovny DLL. V tomto ohledu následuje U-SQL C# sestavení správy a správa verzí sémantiky.
+Nakonec si všimněte, že každou databázi U-SQL může obsahovat pouze jednu verzi jakékoli dané sestavení. Například pokud potřebujete verze 7 a 8 verzi knihovny NewtonSoft Json.Net, musíte k registraci ve dvou různých databázích. Kromě toho každý skript mohou odkazovat pouze na jednu verzi dané sestavení knihovny DLL. V tomto ohledu následuje U-SQL C# sestavení správy a správy verzí sémantiku.
 
-## <a name="use-user-defined-functions-udf"></a>Použití uživatelem definované funkce: UDF
-Uživatelem definované funkce U-SQL nebo UDF, jsou programovacích rutin, které přijímají parametry, provedení akce (například komplexní výpočet) a vrátit výsledek této akce jako hodnotu. Návratová hodnota UDF lze pouze jednu skalární hodnota. UDF U-SQL je možné volat v základní skript U-SQL jako všechny ostatní C# skalární funkce.
+## <a name="use-user-defined-functions-udf"></a>Použití uživatelem definovaných funkcí: UDF
+Uživatelem definované funkce U-SQL nebo UDF, jsou programovací postupy, které přijímají parametry, provedení akce (například složité výpočty) a vrátí výsledek akce jako hodnotu. Návratová hodnota UDF lze pouze jednu skalární hodnota. UDF U-SQL je možné volat v základní skript U-SQL, stejně jako jakékoli jiné funkce jazyka C# skalární.
 
-Doporučujeme, abyste inicializaci U-SQL uživatelsky definované funkce jako **veřejné** a **statické**.
+Doporučujeme, abyste inicializaci U-SQL uživatelsky definovaných funkcí jako **veřejné** a **statické**.
 
 ```
 public static string MyFunction(string param1)
@@ -148,11 +147,11 @@ public static string MyFunction(string param1)
 }
 ```
 
-První Podíváme se na jednoduchý příklad vytvoření uživatelem definovanou FUNKCI.
+První Podívejme se na jednoduchý příklad vytvoření uživatelem definovanou FUNKCI.
 
-V tomto scénáři případ použití musíme určit fiskální období, včetně fiskální čtvrtletí a fiskální měsíc prvního sign-in pro konkrétního uživatele. První měsíc fiskálního roku v našem scénáři je června.
+V tomto scénáři případ použití musíme určit fiskální období, včetně fiskální čtvrtletí a fiskální měsíc prvního přihlášení pro konkrétního uživatele. První fiskálního měsíce v roce v našem scénáři je dne.
 
-K výpočtu fiskální období, zavedeme následující funkce jazyka C#:
+Pro výpočet fiskální období zavedeme následující funkce jazyka C#:
 
 ```
 public static string GetFiscalPeriod(DateTime dt)
@@ -189,9 +188,9 @@ public static string GetFiscalPeriod(DateTime dt)
 }
 ```
 
-Jednoduše vypočítá fiskální měsíc a čtvrtletí a vrátí hodnotu řetězce. Pro červen prvního měsíce od první fiskální čtvrtletí používáme "Q1:P1". Pro červenec můžeme použít "Q1:P2" a tak dále.
+Jednoduše vypočítá fiskálního měsíce, čtvrtletí a vrátí hodnotu řetězce. Dne prvního měsíce prvního fiskální čtvrtletí používáme "Q1:P1". Za červenec můžeme použít "Q1:P2" a tak dále.
 
-To je normální C# funkce budeme používat v našem projekt U-SQL.
+To je normální C# funkce, které budeme používat v našem projektu U-SQL.
 
 Zde je, jak vypadá v části kódu v tomto scénáři:
 
@@ -243,13 +242,13 @@ namespace USQL_Programmability
 }
 ```
 
-Teď přidáme volání této funkce ze základní skriptu U-SQL. K tomuto účelu máme zadejte plně kvalifikovaný název funkce, včetně oboru názvů, který je v tomto případě NameSpace.Class.Function(parameter).
+Teď se zaměříme na voláním této funkce ze základní skriptu U-SQL. Provedete to tak, musíme zadejte plně kvalifikovaný název funkce včetně oboru názvů, který v tomto případě je NameSpace.Class.Function(parameter).
 
 ```
 USQL_Programmability.CustomFunctions.GetFiscalPeriod(dt)
 ```
 
-Toto je skutečný základní skript U-SQL:
+Toto je skutečná základní skript U-SQL:
 
 ```
 DECLARE @input_file string = @"\usql-programmability\input_file.tsv";
@@ -281,7 +280,7 @@ OUTPUT @rs1
     USING Outputters.Text();
 ```
 
-Toto je výstupní soubor spuštění skriptu:
+Toto je výstupní soubor provádění skriptu:
 
 ```
 0d8b9630-d5ca-11e5-8329-251efa3a2941,2016-02-11T07:04:17.2630000-08:00,2016-06-01T00:00:00.0000000,"Q3:8","User1",""
@@ -291,22 +290,22 @@ Toto je výstupní soubor spuštění skriptu:
 301f23d2-d690-11e5-9a98-4b4f60a1836f,2016-02-11T09:01:33.9720000-08:00,2016-06-01T00:00:00.0000000,"Q3:8","User3",""
 ```
 
-Tento příklad ukazuje jednoduchý využití vložené UDF v U-SQL.
+Tento příklad ukazuje, jednoduché použití vložených systému souborů UDF v U-SQL.
 
-### <a name="keep-state-between-udf-invocations"></a>Zachovat stav mezi UDF volání
-U-SQL C# programovatelnosti objekty může být více pokročilé, využitím interaktivity prostřednictvím globální proměnné kódu. Podívejme se na následující scénář případu použití firmy.
+### <a name="keep-state-between-udf-invocations"></a>Zachovat stavu mezi volání UDF
+Objekty programovatelností U-SQL C# může být více pokročilé, využívat interaktivitu prostřednictvím použití modelu code-behind globální proměnné. Podívejme se na následující obchodního scénáře případu použití.
 
-Ve velkých organizacích mohou uživatelé přepínat mezi typy interních aplikací. Může jít o Microsoft Dynamics CRM, PowerBI a tak dále. Zákazníci chtít použít analýzu telemetrii jak uživatelé přepínat mezi různými aplikacemi, jaké jsou trendy využití, a tak dále. Cílem pro firmu je za účelem optimalizace využití aplikace. Také může chtějí kombinovat různé aplikace nebo konkrétní rutiny přihlášení.
+Ve velkých organizacích mohou uživatelé přepínat mezi typy prvků interních aplikací. Může jít o Microsoft Dynamics CRM, Power BI a tak dále. Zákazníci pravděpodobně chtějí použít k analýze telemetrických dat o tom, jak uživatelé přepínat mezi různými aplikacemi, jaké jsou trendy využití, a tak dále. Cílem pro firmy je k optimalizaci využití aplikací. Také může být vhodné kombinovat různé aplikace nebo konkrétní rutiny přihlašování.
 
-K dosažení tohoto cíle, musíme určit ID relace a prodlevy mezi poslední relace, který došlo k chybě.
+K dosažení tohoto cíle, musíme určit ID relace a prodlevy mezi poslední relace, ke které došlo.
 
-Potřebujeme najít předchozí přihlášení a pak mu přiřaďte tento přihlášení do všech relací, ke kterým dochází na stejné aplikaci. První výzva je, že základní skript U-SQL nepodporuje nám umožňují použít výpočty již počítaného sloupce se funkce LAG. Druhá výzva je, že se musí zachovat konkrétní relace pro všechny relace v rámci stejné časové období.
+Musíme najít předchozí přihlášení a pak přiřaďte všechny relace, které se generují pro stejnou aplikaci toto přihlášení. Prvním problémem je, že základní skript U-SQL neumožňuje nám výpočty přes již počítané sloupce pomocí funkce LAG. Druhá před obrovskou výzvou je, že máme zachovat konkrétní relaci na všechny relace v rámci stejné časové období.
 
-Chcete-li tento problém vyřešit, používáme globální proměnné v části kódu: `static public string globalSession;`.
+Chcete-li tento problém vyřešit, používáme v části použití modelu code-behind globální proměnné: `static public string globalSession;`.
 
-Tato globální proměnná se použije pro celý řádků při našich provádění skriptu.
+Tato globální proměnná se použije pro celou sadu řádků během naší provádění skriptu.
 
-Tady je části kódu programu naše U-SQL:
+Tady je použití modelu code-behind část našich programů U-SQL:
 
 ```
 using Microsoft.Analytics.Interfaces;
@@ -344,9 +343,9 @@ namespace USQLApplication21
 }
 ```
 
-Tento příklad ukazuje globální proměnná `static public string globalSession;` použít uvnitř `getStampUserSession` funkce a získávání inicializace pokaždé, když se změní parametr relace.
+Tento příklad ukazuje globální proměnná `static public string globalSession;` použít uvnitř `getStampUserSession` funkce a získávání znovu inicializována pokaždé, když se změní parametr relace.
 
-Základní skript U-SQL je následující:
+Základní skript U-SQL je následujícím způsobem:
 
 ```
 DECLARE @in string = @"\UserSession\test1.tsv";
@@ -396,9 +395,9 @@ OUTPUT @rs2
     USING Outputters.Csv();
 ```
 
-Funkce `USQLApplication21.UserSession.getStampUserSession(UserSessionTimestamp)` se nazývá zde během druhé sady řádků výpočtu paměti. Pak předá `UserSessionTimestamp` sloupce a vrátí hodnotu, dokud `UserSessionTimestamp` došlo ke změně.
+Funkce `USQLApplication21.UserSession.getStampUserSession(UserSessionTimestamp)` nazývá zde během druhé sady řádků výpočtu paměti. Pak předá `UserSessionTimestamp` sloupce a vrátí hodnotu, dokud `UserSessionTimestamp` došlo ke změně.
 
-Výstupní soubor je následující:
+Výstupní soubor je následujícím způsobem:
 
 ```
 "2016-02-19T07:32:36.8420000-08:00","User1",,True,"72a0660e-22df-428e-b672-e0977007177f"
@@ -425,17 +424,17 @@ Výstupní soubor je následující:
 "2016-02-19T01:20:31.4800000-08:00","User4","2016-02-18T14:37:27.6560000-08:00",False,"2136f4cf-7c7d-43c1-8ae2-08f4ad6a6e08"
 ```
 
-Tento příklad ukazuje složitější scénář případu použití používáme globální proměnné v části kódu, který se použije pro celý paměti řádků.
+Tento příklad ukazuje složitější scénář případu použití používáme globální proměnné v modelu code-behind oddíl, který se použije pro celou paměť sady řádků.
 
-## <a name="use-user-defined-types-udt"></a>Uživatelem definované typy použití: UDT
-Uživatelem definované typy nebo UDT, je jiná funkcí programovatelnosti U-SQL. U-SQL UDT funguje jako regulární C# definovaný uživatelem typem. C# je jazyk silného typu, který umožňuje použít předdefinované a vlastní uživatelem definované typy.
+## <a name="use-user-defined-types-udt"></a>Použití uživatelem definovaných typů: UDT
+Uživatelem definované typy nebo UDT, je další funkcí programovatelnosti U-SQL. U-SQL UDT funguje jako regulární C# uživatelského typu. C# je jazyk silného typu, který umožňuje použití předdefinované a vlastní uživatelem definované typy.
 
-U-SQL nelze implicitně serializaci nebo libovolný uživatelsky definovaný typ deserializovat, když UDT předána mezi vrcholy v sady řádků. To znamená, že uživatel musí zadat explicitní formátovací modul používá rozhraní IFormatter. To poskytuje U-SQL serializace a deserializovat metody pro UDT.
+U-SQL nelze implicitně serializovat nebo deserializovat libovolný uživatelsky definovaný typ UDT je předána mezi vrcholy v sady řádků. To znamená, že uživatel musí zadat explicitní formátovací modul používá rozhraní IFormatter. To poskytuje U-SQL serializace a deserializujeme metody pro UDT.
 
 > [!NOTE]
-> Předdefinované extraktory U-SQL a outputters aktuálně nelze serializovat nebo deserializovat UDT data do nebo ze souborů i sadou IFormatter. Proto při zápisu do souboru s příkazem výstupní UDT data, nebo jeho čtení s extrakci, budete muset předat jako řetězec nebo bajtové pole. Potom volání serializace a deserializace explicitně kódu (to znamená, metodu ToString() UDT). Uživatelem definované extraktory a outputters, na druhé straně může číst a zapisovat UDT.
+> Integrované extraktory a výstupní moduly U-SQL nyní nelze serializovat nebo deserializovat UDT dat do nebo z soubory i se sadou IFormatter. Proto při zápisu do souboru s příkazem výstup UDT data, nebo čtení s extraktoru, musíte předat jako pole string nebo byte. Potom volání serializace a deserializace kódu (to znamená, UDT metodu ToString()) explicitně. Uživatelem definované extraktory a výstupní moduly, na druhé straně může číst a zapisovat uživatelsky definované typy.
 
-Pokud jsme zkuste použít UDT v EXTRAKTOR nebo OUTPUTTER (mimo předchozí vyberte), jak je vidět tady:
+Pokud se snažíme se použít UDT EXTRAKTOR nebo OUTPUTTER (mimo předchozí výběr), jak je znázorněno zde:
 
 ```
 @rs1 =
@@ -448,7 +447,7 @@ OUTPUT @rs1
     USING Outputters.Text();
 ```
 
-Nemůžeme zobrazit následující chyba:
+Jsme zobrazí následující chyba:
 
 ```
 Error   1   E_CSC_USER_INVALIDTYPEINOUTPUTTER: Outputters.Text was used to output column myfield of type
@@ -465,9 +464,9 @@ the preceding SELECT.   C:\Users\sergeypu\Documents\Visual Studio 2013\Projects\
 USQL-Programmability\Types.usql 52  1   USQL-Programmability
 ```
 
-Pro práci s UDT v outputter, máme buď ho na řetězec pomocí metody ToString() nebo vytvořit vlastní outputter serializovat.
+Pro práci v outputter UDT, máme buď ho na řetězec pomocí metody ToString() nebo vytvořit vlastní outputter serializovat.
 
-UDT aktuálně nelze použít v GROUP BY. Pokud UDT se používá v GROUP BY, je vyvolána k následující chybě:
+Uživatelsky definovaný typ aktuálně nelze používat v GROUP BY. Pokud UDT se používá v GROUP BY, je vyvolána následující chybu:
 
 ```
 Error   1   E_CSC_USER_INVALIDTYPEINCLAUSE: GROUP BY doesn't support type MyNameSpace.Myfunction_Returning_UDT
@@ -484,28 +483,28 @@ C:\Users\sergeypu\Documents\Visual Studio 2013\Projects\USQL-Programmability\USQ
 62  5   USQL-Programmability
 ```
 
-Pokud chcete definovat typ definovaný uživatelem, musíme:
+Pokud chcete definovat UDT, musíme:
 
-* Přidání následujících oborů názvů:
+* Přidejte následující obory názvů:
 
 ```
 using Microsoft.Analytics.Interfaces
 using System.IO;
 ```
 
-* Přidat `Microsoft.Analytics.Interfaces`, což je vyžadováno pro UDT rozhraní. Kromě toho `System.IO` mohou být potřebné k definování rozhraní IFormatter.
+* Přidat `Microsoft.Analytics.Interfaces`, které jsou požadovány pro UDT rozhraní. Kromě toho `System.IO` může být zapotřebí k definování rozhraní IFormatter.
 
-* Definování typu používá definované atributem SqlUserDefinedType.
+* Definování typu použít definované atributem SqlUserDefinedType.
 
-**SqlUserDefinedType** slouží k označení definice typu v sestavení jako uživatelem definovaný typ (UDT) v U-SQL. Vlastnosti v atributu projeví fyzické charakteristiky UDT. Tato třída nelze dědí.
+**SqlUserDefinedType** slouží k označení definice typu v sestavení jako uživatelem definovaný typ (UDT) v U-SQL. Vlastnosti v atributu odrážet fyzické vlastnosti UDT. Tato třída nemůže dědit.
 
-SqlUserDefinedType je povinný atribut pro UDT definici.
+SqlUserDefinedType je povinný atribut pro definici UDT.
 
-V konstruktoru třídy:  
+Konstruktor třídy:  
 
 * SqlUserDefinedTypeAttribute (formátovací modul typu)
 
-* Formátovací modul typu: požadovaný parametr k definování formátování UDT – konkrétně typ `IFormatter` rozhraní musí být předán sem.
+* Formátovací modul typu: povinný parametr pro definování formátování UDT – konkrétně typ `IFormatter` rozhraní musí být předán tady.
 
 ```
 [SqlUserDefinedType(typeof(MyTypeFormatter))]
@@ -513,7 +512,7 @@ public class MyType
 { … }
 ```
 
-* Typické UDT taky vyžaduje definice IFormatter rozhraní, jak je znázorněno v následujícím příkladu:
+* Typické UDT také vyžaduje definici rozhraní IFormatter, jak je znázorněno v následujícím příkladu:
 
 ```
 public class MyTypeFormatter : IFormatter<MyType>
@@ -526,27 +525,27 @@ public class MyTypeFormatter : IFormatter<MyType>
 }
 ```
 
-`IFormatter` Rozhraní serializuje a poté serializuje grafu objektu s kořenový typ \<typeparamref name = "T" >.
+`IFormatter` Rozhraní serializuje a deserializuje grafu objektu s typem kořenového \<typeparamref name = "T" >.
 
-\<typeparam name = "T" > kořenový typ grafu objektů serializovat a deserializovat.
+\<typeparam name = "T" > typ kořenového objektu grafu serializovat a deserializovat.
 
-* **Deserializovat**: zrušte serializuje data na zadaný datový proud a reconstitutes grafu objektů.
+* **Deserializovat**: deserializaci dat na zadaný datový proud a reconstitutes grafu objektů.
 
-* **Serializovat**: serializuje objektu, nebo grafu objektů s danou kořenovou do zadaného datového proudu.
+* **Serializace**: serializuje objekt nebo grafu objektů s danou kořenového adresáře zadaného datového proudu.
 
-`MyType` instance: Instance typu.  
-`IColumnWriter` Zapisovač / `IColumnReader` čtečky: základního datového proudu sloupce.  
-`ISerializationContext` kontext: výčet, který definuje sadu příznaky, která určuje zdrojový nebo cílový kontext pro datový proud během serializace.
+`MyType` instance: Instance daného typu.  
+`IColumnWriter` Zapisovač / `IColumnReader` reader: základního datového proudu sloupce.  
+`ISerializationContext` kontext: výčet, který definuje sadu příznaků, které určuje zdrojový nebo cílový kontext pro datový proud během serializace.
 
-* **Zprostředkující**: Určuje, že kontext zdrojové nebo cílové není trvalého úložiště.
+* **Zprostředkující**: Určuje, že zdrojový nebo cílový kontext není trvalému úložišti.
 
-* **Trvalost**: Určuje, že zdrojový nebo cílový kontext je trvalé úložiště.
+* **Trvalost**: Určuje, že je zdrojový nebo cílový kontext trvalému úložišti.
 
-Jako regulární C# typ definici UDT U-SQL můžete zahrnout přepsání pro operátory, jako +/ == /! =. Může také obsahovat statické metody. Například pokud jsme se bude používat toto UDT jako parametr pro agregační funkci MIN U-SQL, se musí definovat < operátor přepsání.
+Jako regulární C# typ, definici UDT U-SQL může obsahovat přepsání pro operátory, jako +/ == nebo! =. Může také obsahovat statické metody. Například, pokud budeme používat tento UDT jako parametr pro agregační funkci MIN U-SQL, musíme definovat < – operátor přepsání.
 
-Dříve v tomto průvodci jsme ukázán příklad pro fiskálním období identifikaci od určitého data ve formátu `Qn:Pn (Q1:P10)`. Následující příklad ukazuje, jak definovat vlastní typ pro hodnoty fiskálním období.
+Dříve v tomto průvodci, jsme prokázali příklad fiskální identifikaci období od určitého data ve formátu `Qn:Pn (Q1:P10)`. Následující příklad ukazuje, jak definovat vlastní typ pro hodnoty fiskální období.
 
-Tady je příklad oddílu kódu s vlastní UDT a IFormatter rozhraní:
+Následuje příklad použití modelu code-behind oddílu s vlastní UDT a IFormatter rozhraní:
 
 ```
 [SqlUserDefinedType(typeof(FiscalPeriodFormatter))]
@@ -647,11 +646,11 @@ var result = new FiscalPeriod(binaryReader.ReadInt16(), binaryReader.ReadInt16()
 }
 ```
 
-Definovaného typu zahrnuje dvě čísla: čtvrtletí a měsíce. Operátory `==/!=/>/<` a statickou metodu `ToString()` jsou definovány v tomto poli.
+Definovanému typu obsahuje dvě čísla: čtvrtletí a měsíc. Operátory `==/!=/>/<` a statická metoda `ToString()` jsou zde definovány.
 
-Jak už bylo zmíněno dříve, můžete použít ve výrazech vyberte UDT, ale nejde použít v OUTPUTTER/EXTRAKTOR bez vlastní serializace. Buď musí být serializován jako řetězec s `ToString()` nebo používat s vlastní OUTPUTTER/EXTRAKTOR.
+Jak už bylo zmíněno dříve, můžete použít ve výrazech vyberte UDT, ale nelze použít v OUTPUTTER/EXTRAKTOR bez vlastní serializace. Buď musí být serializován jako řetězec s `ToString()` nebo použít ve vlastních OUTPUTTER/EXTRAKTOR.
 
-Nyní probereme využití UDT. V části kódu jsme změnili naše funkce GetFiscalPeriod takto:
+Nyní Pojďme využití UDT. V části použití modelu code-behind jsme změnili naše GetFiscalPeriod funkce takto:
 
 ```
 public static FiscalPeriod GetFiscalPeriodWithCustomType(DateTime dt)
@@ -688,9 +687,9 @@ public static FiscalPeriod GetFiscalPeriodWithCustomType(DateTime dt)
 }
 ```
 
-Jak vidíte, vrátí hodnotu typu naše FiscalPeriod.
+Jak je vidět, vrátí hodnotu typu naše FiscalPeriod.
 
-Zde jsme uveďte příklad toho, jak ho další použít základní skript U-SQL. Tento příklad ukazuje různé formy UDT volání ze skriptu U-SQL.
+Tady vám nabízíme příklad, jak používat dále v základní skript U-SQL. Tento příklad ukazuje různé způsoby volání UDT ze skriptu U-SQL.
 
 ```
 DECLARE @input_file string = @"c:\work\cosmos\usql-programmability\input_file.tsv";
@@ -897,9 +896,9 @@ var result = new FiscalPeriod(binaryReader.ReadInt16(), binaryReader.ReadInt16()
 ```
 
 ## <a name="use-user-defined-aggregates-udagg"></a>Použití uživatelem definovaných agregacích: UDAGG
-Uživatelem definované agregace jsou funkce související s agregace, které jsou součástí není out-of-the-box se U-SQL. V příkladu může být agregace k provedení vlastní matematické výpočty, zřetězení řetězců, manipulace s řetězci a tak dále.
+Uživatelem definované agregace jsou funkce související s agregace, které nejsou dodávané současně out-of-the-box pomocí U-SQL. V příkladu může být agregace provádět vlastní matematické výpočty, zřetězení řetězců, manipulace s řetězci a tak dále.
 
-Definice uživatelem definované agregace základní třídy je následující:
+Definice uživatelem definované agregace základní třídy je následujícím způsobem:
 
 ```csharp
     [SqlUserDefinedAggregate]
@@ -913,12 +912,12 @@ Definice uživatelem definované agregace základní třídy je následující:
     }
 ```
 
-**SqlUserDefinedAggregate** označuje, že typ by měl být registrován jako uživatelem definovaná agregace. Tato třída nelze dědí.
+**SqlUserDefinedAggregate** označuje, že typ by měl být zaregistrován jako uživatelem definovaná agregace. Tato třída nemůže dědit.
 
-Atribut SqlUserDefinedType je **volitelné** pro UDAGG definici.
+Atribut SqlUserDefinedType **volitelné** UDAGG definice.
 
 
-Základní třída umožňuje předat abstraktní tři parametry: dvě jako vstupní parametry a jako výsledek. Datové typy jsou proměnné a by měl být definován během dědičnosti tříd.
+Základní třída umožňuje předat abstraktní tři parametry: dva vstupní parametry a jako výsledek. Datové typy, které jsou proměnné a musí být definován během dědičnost tříd.
 
 ```
 public class GuidAggregate : IAggregate<string, string, string>
@@ -936,11 +935,11 @@ public class GuidAggregate : IAggregate<string, string, string>
 }
 ```
 
-* **Init –** vyvolá jednou pro každou skupinu během výpočtu. Poskytuje rutiny inicializace pro každou skupinu agregace.  
-* **Accumulate** se spustí jednou pro každou hodnotu. Poskytuje hlavní funkce algoritmu agregace. Může sloužit k agregované hodnoty s různými typy dat, které jsou definovány během dědičnosti tříd. Může přijímat dva parametry proměnné datové typy.
-* **Ukončit** se spustí jednou na skupinu agregace na konci zpracování k vypsání výsledků pro každou skupinu.
+* **Init** vyvolá jednou pro každou skupinu při výpočtu. Inicializační rutina poskytuje pro každou skupinu agregace.  
+* **Accumulate** provádí jednou pro každou hodnotu. Poskytuje hlavní funkce pro algoritmus agregace. Je možné můžete agregovat hodnoty s různými typy dat, které jsou definovány během dědičnost tříd. Může přijmout dva parametry typu data proměnných.
+* **Ukončit** provádí jednou na skupinu agregace na konci zpracování do výstupu výsledek pro každou skupinu.
 
-Deklarovat správný vstupní a výstupní datové typy, použijte definici třídy následujícím způsobem:
+Chcete-li deklarovat správný vstup a výstup datové typy, použijte definici třídy následujícím způsobem:
 
 ```
 public abstract class IAggregate<T1, T2, TResult> : IAggregate
@@ -948,7 +947,7 @@ public abstract class IAggregate<T1, T2, TResult> : IAggregate
 
 * T1: Accumulate první parametr
 * T2: Accumulate první parametr
-* TResult: Návratový typ ukončit
+* TResult: Návratový typ ukončení
 
 Příklad:
 
@@ -963,9 +962,9 @@ public class GuidAggregate : IAggregate<string, string, string>
 ```
 
 ### <a name="use-udagg-in-u-sql"></a>Použití UDAGG v U-SQL
-Chcete-li použít UDAGG, nejprve definování v kódu nebo odkazovat z existující programovatelnosti knihovny DLL, jak je popsáno výše.
+Použití UDAGG, nejprve jej definovat na použití modelu code-behind nebo odkazovat z existující programování knihovny DLL, jak je uvedeno výše.
 
-Pak použijte následující syntaxi:
+Potom použijte následující syntaxi:
 
 ```
 AGG<UDAGG_functionname>(param1,param2)
@@ -1024,37 +1023,37 @@ DECLARE @output_file string = @" \usql-programmability\output_file.tsv";
 OUTPUT @rs1 TO @output_file USING Outputters.Text();
 ```
 
-V tomto scénáři případ použití jsme řetězení třída identifikátory GUID pro konkrétní uživatele.
+V tomto scénáři použití jsme zřetězit třídy identifikátory GUID pro konkrétní uživatele.
 
-## <a name="use-user-defined-objects-udo"></a>Uživatelem definované objekty použít: UDO
-U-SQL umožňuje definovat vlastní programovatelnosti objekty, které se nazývají uživatelem definované objekty nebo UDO.
+## <a name="use-user-defined-objects-udo"></a>Použití uživatelem definované objekty: UDO
+U-SQL vám umožní definovat vlastní programovatelnosti objekty, které jsou označovány jako uživatelem definované objekty nebo UDO.
 
 Následuje seznam UDO v U-SQL:
 
-* Uživatelem definované extraktory
+* Uživatelem definované – extraktory
     * Extrakce řádek po řádku
-    * Použít k implementaci extrakce dat z vlastních strukturovaných souborů
+    * Používaný k implementaci extrakce dat z vlastní soubory
 
-* Uživatelem definované outputters
-    * Výstup po řádcích
-    * Použít k výstupu vlastní datové typy nebo vlastního souboru formáty
+* Uživatelem definované výstupní moduly
+    * Výstup řádek po řádku
+    * Použít vlastní datové typy výstupu nebo vlastní soubor formáty
 
 * Uživatelem definované procesorů
-    * Vezme jeden řádek a vytvoří jeden řádek
-    * Umožňuje snížit počet sloupců nebo vytvořit nové sloupce s hodnotami, které jsou odvozené z existující sady sloupců
+    * Využijte jeden řádek a vytvoří jeden řádek
+    * Používá ke snížení počtu sloupců nebo vytvářet nové sloupce s hodnotami, které jsou odvozeny z existující sady sloupců
 
 * Uživatelem definované appliers
-    * Vezme jeden řádek a vytvoří 0 n řádků
-    * Použít s vnější/mezi použít
+    * Využijte jeden řádek a vytvářet 0, n řádků
+    * Použít s vnější a křížové použít
 
 * Uživatelem definované combiners
-    * Kombinuje sady řádků – uživatelem definované spojení
+    * Kombinuje sady řádků – uživatelský spojení
 
-* Uživatelem definované přechodky
-    * Vezme n řádků a vytvoří jeden řádek
-    * Se používá ke snížení počtu řádků
+* Uživatelem definované reduktorů
+    * Využijte n řádků a vytvoří jeden řádek
+    * Používá ke snížení počtu řádků
 
-UDO se obvykle nazývá explicitně ve skriptu U-SQL v rámci následující příkazy U-SQL:
+UDO je obvykle volána explicitně ve skriptu U-SQL jako součást následující příkazy U-SQL:
 
 * EXTRAKCE
 * VÝSTUP
@@ -1063,24 +1062,24 @@ UDO se obvykle nazývá explicitně ve skriptu U-SQL v rámci následující př
 * SNÍŽENÍ
 
 > [!NOTE]  
-> UDO na jsou omezené využívat 0,5 Gb paměti.  Toto omezení paměti se nevztahuje na místní spuštění.
+> Společnosti UDO jsou omezené využívání 0,5 Gb paměti.  Toto omezení paměti se nevztahují na místní spuštění.
 
-## <a name="use-user-defined-extractors"></a>Použití uživatelem definované extraktory
-U-SQL umožňuje importovat externí data pomocí příkazu EXTRAKCE. Příkaz EXTRAKCE můžete použít předdefinované extraktory UDO:  
+## <a name="use-user-defined-extractors"></a>Použití uživatelem definované – extraktory
+U-SQL umožňuje import externích dat pomocí příkazu EXTRAKCE. Příkaz EXTRAKCE můžete použít předdefinované – extraktory UDO:  
 
-* *Extractors.Text()*: poskytuje extrakci z textových souborů s oddělovači různá kódování.
+* *Extractors.Text()*: poskytuje extrakce z textových souborů s oddělovači jiné kódování.
 
-* *Extractors.Csv()*: poskytuje extrakci z hodnot oddělených čárkami (CSV) soubory různá kódování.
+* *Extractors.Csv()*: poskytuje extrakce z hodnot oddělených čárkami (CSV) soubory jiné kódování.
 
-* *Extractors.Tsv()*: poskytuje extrakci z hodnoty oddělené tabulátory (TSV) soubory různá kódování.
+* *Extractors.Tsv()*: poskytuje extrakce z hodnoty oddělené tabulátorem (TSV) soubory jiné kódování.
 
-Může být užitečné pro vývoj vlastních Extraktor. To může být užitečné při importu dat Pokud nám chcete provádět žádnou z následujících úloh:
+Může být užitečné pro vývoj vlastní Extraktor. To může být užitečné při importu dat pokud chceme proveďte jednu z následujících úloh:
 
-* Upravte vstupní data tak, že rozdělení sloupců a změnou jednotlivé hodnoty. Funkce procesoru je lepší pro kombinace sloupců.
-* Analyzovat Nestrukturovaná data, jako jsou webové stránky a e-mailů nebo polovičním nestrukturovaných dat, jako je například XML nebo JSON.
-* Analyzovat data v kódování nepodporovaný.
+* Rozdělování sloupců a jednotlivé hodnoty úpravou upravte vstupní data. Funkce procesoru je lepší pro kombinování sloupce.
+* Analyzovat nestrukturovaných dat jako jsou webové stránky a e-mailů nebo částečně nestrukturovaných dat jako jsou XML nebo JSON.
+* Analyzovat data v nepodporované kódování.
 
-K definování vlastní Extraktor nebo OUČIT, je potřeba vytvořit `IExtractor` rozhraní. Všechny vstupní parametry pro extrakci, jako je například sloupce či řádku oddělovače a kódování, musí být definované v konstruktoru třídy. `IExtractor` Rozhraní musí také obsahovat definice pro `IEnumerable<IRow>` přepsat následujícím způsobem:
+Definovat uživatelem definované Extraktor, nebo zahrnout, potřebujeme vytvořit `IExtractor` rozhraní. Všechny vstupní parametry pro extrakci, jako je například oddělovače řádku/sloupce a kódování, musíte je definovat v konstruktoru třídy. `IExtractor` Rozhraní by měl také obsahovat definici `IEnumerable<IRow>` přepsat následujícím způsobem:
 
 ```
 [SqlUserDefinedExtractor]
@@ -1094,20 +1093,20 @@ public class SampleExtractor : IExtractor
 }
 ```
 
-**SqlUserDefinedExtractor** atribut uvádí, že typ by měl být registrován jako Extraktor se uživatelem definované. Tato třída nelze dědí.
+**SqlUserDefinedExtractor** atribut označuje, že typ by měl být zaregistrován jako Extraktor se definovaný uživatelem. Tato třída nemůže dědit.
 
-SqlUserDefinedExtractor je volitelný atribut pro OUČIT definici. Ji používá k definování vlastností AtomicFileProcessing OUČIT objektu.
+SqlUserDefinedExtractor je volitelný atribut pro definici zahrnout. To slouží k definování AtomicFileProcessing vlastností pro objekt zahrnout.
 
 * BOOL AtomicFileProcessing   
 
-* **Hodnota TRUE,** = označuje, že tento Extraktor vyžaduje atomic vstupní soubory (JSON, XML,...)
-* **false** = označuje, že tento Extraktor můžete řešit rozdělení / distribuované soubory (sdíleného svazku clusteru, SEQ,...)
+* **Hodnota TRUE** = označuje, že tento Extraktor vyžaduje atomic vstupních souborů (JSON, XML,...)
+* **false** = označuje, že tento Extraktor můžete vyřešit rozdělit / distribuovaných souborů (sdílený svazek clusteru, SEQ,...)
 
-Hlavní objekty programovatelnosti OUČIT **vstupní** a **výstup**. Vstupní objekt se používá k vytvoření výčtu vstupní data jako `IUnstructuredReader`. Objekt výstup se používá nastavit výstupní data v důsledku Extraktor aktivity.
+Hlavní objekty programovatelnosti zahrnout **vstupní** a **výstup**. Vstupní objekt se používá k vytvoření výčtu vstupní data jako `IUnstructuredReader`. Výstupní objekt se používá k nastavení výstupní data v důsledku Extraktor aktivity.
 
-Vstupní data přistupuje prostřednictvím `System.IO.Stream` a `System.IO.StreamReader`.
+Vstupní data se přistupuje přes `System.IO.Stream` a `System.IO.StreamReader`.
 
-Pro vstupní sloupce výčet nám nejdřív rozdělení vstupního datového proudu pomocí oddělovač řádků.
+Pro výčet vstupní sloupce jsme nejprve rozdělení vstupního datového proudu pomocí oddělovač řádků.
 
 ```
 foreach (Stream current in input.Split(my_row_delimiter))
@@ -1116,7 +1115,7 @@ foreach (Stream current in input.Split(my_row_delimiter))
 }
 ```
 
-Další rozdělte pak vstupní řádek na části sloupce.
+Pak dále rozdělte vstupní řádek části sloupce.
 
 ```
 foreach (Stream current in input.Split(my_row_delimiter))
@@ -1128,17 +1127,17 @@ foreach (Stream current in input.Split(my_row_delimiter))
 }
 ```
 
-Pokud chcete nastavit výstupní data, použijeme `output.Set` metoda.
+Pokud chcete nastavit výstupní data, používáme `output.Set` metody.
 
-Je důležité si uvědomit, že vlastní Extraktor pouze výstupy sloupců a hodnot, které jsou definovány s výstup. Nastavit volání metody.
+Je důležité pochopit, že vlastní Extraktor pouze výstupů sloupců a hodnot, které jsou definovány s výstupem. Nastavit volání metody.
 
 ```
 output.Set<string>(count, part);
 ```
 
-Skutečné Extraktor výstup se aktivuje při volání metody `yield return output.AsReadOnly();`.
+Skutečné Extraktor výstup se aktivuje pomocí volání `yield return output.AsReadOnly();`.
 
-Následuje příklad Extraktor:
+Tady je příklad Extraktor:
 
 ```
 [SqlUserDefinedExtractor(AtomicFileProcessing = true)]
@@ -1197,9 +1196,9 @@ public class FullDescriptionExtractor : IExtractor
 }
 ```
 
-V tomto scénáři případ použití Extraktor regeneruje identifikátor GUID pro sloupec "guid" a převede k hodnotám sloupce "user" na velká písmena. Vlastní extraktory může vytvářet složitější výsledky analýzou vstupní data a manipulaci.
+V tomto scénáři použití extraktoru znovu vygeneruje identifikátor GUID pro sloupec "guid" a převádí hodnoty sloupce "user" na velká písmena. Vlastních extraktorů výsledky složitější analýzu vstupních dat a manipulaci.
 
-Toto je základní skript U-SQL, která používá vlastní Extraktor:
+Toto je základní skript U-SQL, který používá vlastní Extraktor:
 
 ```
 DECLARE @input_file string = @"\usql-programmability\input_file.tsv";
@@ -1217,22 +1216,22 @@ DECLARE @output_file string = @"\usql-programmability\output_file.tsv";
 OUTPUT @rs0 TO @output_file USING Outputters.Text();
 ```
 
-## <a name="use-user-defined-outputters"></a>Použít outputters uživatelem definované
-Uživatelem definované outputter je jiný UDO U-SQL, který vám umožní rozšiřovat integrovanou funkci U-SQL. Podobně jako Extraktor, existuje několik předdefinovaných outputters.
+## <a name="use-user-defined-outputters"></a>Použití uživatelem definované výstupní moduly
+Uživatelem definované outputter je jiný UDO U-SQL, který umožňuje rozšířit vestavěné funkce U-SQL. Podobně jako extraktoru, existuje několik předdefinovaných výstupní moduly.
 
-* *Outputters.Text()*: zapisuje data do textových souborů s oddělovači různých kódování.
-* *Outputters.Csv()*: zapisuje data do různých kódování na soubory textový soubor s oddělovači (CSV).
-* *Outputters.Tsv()*: zapisuje data do hodnoty oddělené tabulátory (TSV) soubory různá kódování.
+* *Outputters.Text()*: zapisuje data do textových souborů s oddělovači jiné kódování.
+* *Outputters.Csv()*: zapisuje data do různých kódování na soubory hodnotami oddělenými čárkami (CSV).
+* *Outputters.Tsv()*: zapisuje data do hodnoty oddělené tabulátorem (TSV) soubory jiné kódování.
 
-Vlastní outputter umožňuje zapisovat data ve vlastním formátu definované. To může být užitečné pro následující úkoly:
+Vlastní outputter umožňuje zapisovat data ve vlastním formátu definovaný. To může být užitečné pro následující úlohy:
 
-* Zápis dat do částečně strukturovaných nebo nestrukturovaných souborů.
+* Zápis dat do částečně strukturovaná nebo nestrukturovaná soubory.
 * Zápis dat není podporováno kódování.
-* Úprava výstupní data nebo přidání vlastních atributů.
+* Změna výstupní data nebo přidávání vlastních atributů.
 
-K definování outputter definovaný uživatelem, je potřeba vytvořit `IOutputter` rozhraní.
+Chcete-li definovat uživatelem definované outputter, potřebujeme vytvořit `IOutputter` rozhraní.
 
-Toto je základní `IOutputter` implementaci třídy:
+Toto je základní `IOutputter` implementace třídy:
 
 ```
 public abstract class IOutputter : IUserDefinedOperator
@@ -1244,7 +1243,7 @@ public abstract class IOutputter : IUserDefinedOperator
 }
 ```
 
-Všechny vstupní parametry outputter, jako jsou sloupce či řádku oddělovače, kódování a tak dále, musí být definované v konstruktoru třídy. `IOutputter` Rozhraní musí také obsahovat definice pro `void Output` přepsat. Atribut `[SqlUserDefinedOutputter(AtomicFileProcessing = true)` můžete volitelně můžete nastavit pro zpracování atomic souboru. Další informace najdete v tématu následující podrobnosti.
+Všechny vstupní parametry outputter, jako je například oddělovače sloupců a řádků, kódování a tak dále, musíte je definovat v konstruktoru třídy. `IOutputter` Rozhraní by měl také obsahovat definici `void Output` přepsat. Atribut `[SqlUserDefinedOutputter(AtomicFileProcessing = true)` můžete volitelně nastavit pro zpracování souboru atomické. Další informace najdete v tématu následující podrobnosti.
 
 ```
 [SqlUserDefinedOutputter(AtomicFileProcessing = true)]
@@ -1269,29 +1268,29 @@ public class MyOutputter : IOutputter
 ```
 
 * `Output` je volána pro každý řádek vstupu. Vrátí `IUnstructuredWriter output` sady řádků.
-* Konstruktor třída se používá k předat parametry outputter definovaný uživatelem.
-* `Close` slouží k volitelně přepsat verzi nákladné stavu nebo zjistit, kdy byla zapsána poslední řádek.
+* Konstruktor třídy se používá k předání parametrů do outputter definovaný uživatelem.
+* `Close` umožňuje volitelně přepsání nastavení za účelem uvolnění nákladné stavu nebo určit, kdy byla zapsána poslední řádek.
 
-**SqlUserDefinedOutputter** atribut uvádí, že typ by měl být registrován jako outputter se uživatelem definované. Tato třída nelze dědí.
+**SqlUserDefinedOutputter** atribut označuje, že typ by měl být zaregistrován jako outputter se definovaný uživatelem. Tato třída nemůže dědit.
 
-SqlUserDefinedOutputter je volitelný atribut pro definici outputter definovaný uživatelem. Slouží k definování vlastností AtomicFileProcessing.
+SqlUserDefinedOutputter je volitelný atribut pro definici outputter definovaný uživatelem. Používá se k definování vlastností AtomicFileProcessing.
 
 * BOOL AtomicFileProcessing   
 
-* **Hodnota TRUE,** = označuje, že tento outputter vyžaduje atomic výstupní soubory (JSON, XML,...)
-* **false** = označuje, že tento outputter můžete řešit rozdělení / distribuované soubory (sdíleného svazku clusteru, SEQ,...)
+* **Hodnota TRUE** = označuje, že tento outputter vyžaduje atomic výstupní soubory (JSON, XML,...)
+* **false** = označuje, že tento outputter můžete vyřešit rozdělit / distribuovaných souborů (sdílený svazek clusteru, SEQ,...)
 
-Objekty hlavního programovatelnosti **řádek** a **výstup**. **Řádek** objekt se používá k vytvoření výčtu výstupní data jako `IRow` rozhraní. **Výstup** slouží k nastavení výstupní data k cílovému souboru.
+Programovatelnost hlavní objekty jsou **řádek** a **výstup**. **Řádek** objektu se používá k vytvoření výčtu výstupní data jako `IRow` rozhraní. **Výstup** slouží k nastavení výstupní data k cílovému souboru.
 
-Výstupní data přistupuje prostřednictvím `IRow` rozhraní. Výstupní data předávána řádek najednou.
+Výstupní data se přistupuje přes `IRow` rozhraní. Výstupní data se předá řádek v čase.
 
-Jednotlivé hodnoty jsou uvedené voláním metody Get IRow rozhraní:
+Jednotlivé hodnoty výčtu ve volání metody Get rozhraní IRow:
 
 ```
 row.Get<string>("column_name")
 ```
 
-Názvy jednotlivých sloupců se dá určit pomocí volání `row.Schema`:
+Názvy jednotlivých sloupců se dají určit pomocí volání `row.Schema`:
 
 ```
 ISchema schema = row.Schema;
@@ -1299,11 +1298,11 @@ var col = schema[i];
 string val = row.Get<string>(col.Name)
 ```
 
-Tento přístup umožňuje vytvořit flexibilní outputter pro žádné schéma metadat.
+Tento přístup umožňuje vytvářet flexibilní outputter pro žádné schéma metadat.
 
-Výstupní data je zapsán do souboru pomocí `System.IO.StreamWriter`. Parametr datový proud je nastaven na `output.BaseStrea` jako součást `IUnstructuredWriter output`.
+Výstupní data se zapisují do souboru s použitím `System.IO.StreamWriter`. Parametr datový proud je nastaven na `output.BaseStrea` jako součást `IUnstructuredWriter output`.
 
-Všimněte si, že je důležité, abyste po každé iteraci řádek vyprázdní vyrovnávací paměť dat do souboru. Kromě toho `StreamWriter` objekt musí použít s povoleno uvolnitelná atribut (výchozí) a **pomocí** – klíčové slovo:
+Všimněte si, že je důležité, abyste po každé iteraci řádek vyprázdní vyrovnávací paměť dat do souboru. Kromě toho `StreamWriter` objekt musí použít s uvolnitelné atribut povoleno (výchozí) a **pomocí** – klíčové slovo:
 
 ```
 using (StreamWriter streamWriter = new StreamWriter(output.BaseStream, this._encoding))
@@ -1312,10 +1311,10 @@ using (StreamWriter streamWriter = new StreamWriter(output.BaseStream, this._enc
 }
 ```
 
-Jinak volejte metodu Flush() explicitně po každé iteraci. Nemůžeme zobrazit v následujícím příkladu.
+V opačném případě metoda vyprázdnění() explicitně volejte po každé iteraci. Ukážeme to v následujícím příkladu.
 
 ### <a name="set-headers-and-footers-for-user-defined-outputter"></a>Nastavte záhlaví a zápatí pro uživatelem definované outputter
-Pokud chcete nastavit hlavičku, použijte jednu iterace provádění toku.
+Pokud chcete nastavit hlavičku, pomocí jedné iterace spuštění toku.
 
 ```
 public override void Output(IRow row, IUnstructuredWriter output)
@@ -1336,11 +1335,11 @@ if (isHeaderRow)
 }
 ```
 
-Kód v prvním `if (isHeaderRow)` bloku se spustí jenom jednou.
+Kód v prvním `if (isHeaderRow)` bloku je provedeno pouze jednou.
 
-Pro zápatí stránky, použijte odkaz na instanci `System.IO.Stream` objektu (`output.BaseStream`). Zápis zápatí v metodě Close() `IOutputter` rozhraní.  (Další informace najdete v následujícím příkladu.)
+V zápatí je uvedené, použijte odkaz na instanci `System.IO.Stream` objektu (`output.BaseStream`). Zápis v zápatí je uvedené v metodě Close() `IOutputter` rozhraní.  (Další informace viz následující příklad.)
 
-Následuje příklad uživatelem definované outputter:
+Tady je příklad outputter se definovaný uživatelem:
 
 ```
 [SqlUserDefinedOutputter(AtomicFileProcessing = true)]
@@ -1467,16 +1466,16 @@ OUTPUT @rs0
     USING new USQL_Programmability.HTMLOutputter(isHeader: true);
 ```
 
-Toto je outputter HTML, který vytvoří soubor HTML s dat v tabulce.
+Toto je outputter HTML, který vytvoří soubor ve formátu HTML se data v tabulce.
 
 ### <a name="call-outputter-from-u-sql-base-script"></a>Volání outputter ze základní skriptu U-SQL
-Vlastní outputter volat z základní skript U-SQL, je potřeba vytvořit novou instanci objektu outputter.
+Chcete-li zavolat vlastní outputter základní skript U-SQL, je potřeba vytvořit novou instanci objektu outputter.
 
 ```sql
 OUTPUT @rs0 TO @output_file USING new USQL_Programmability.HTMLOutputter(isHeader: true);
 ```
 
-Abyste se vyhnuli, vytvoření instance objektu v základní skriptu, můžeme vytvořit funkce obálku, jak je znázorněno v našem příkladu starší:
+Vyhnout se vytváření instance objektu v základní skript, můžeme vytvořit funkce obálky, jak je znázorněno v našich předchozího příkladu:
 
 ```csharp
         // Define the factory classes
@@ -1489,7 +1488,7 @@ Abyste se vyhnuli, vytvoření instance objektu v základní skriptu, můžeme v
         }
 ```
 
-V takovém případě původní volání vypadá takto:
+V takovém případě původního příkazu vypadá takto:
 
 ```
 OUTPUT @rs0 
@@ -1497,12 +1496,12 @@ TO @output_file
 USING USQL_Programmability.Factory.HTMLOutputter(isHeader: true);
 ```
 
-## <a name="use-user-defined-processors"></a>Používají procesory uživatelem definované
-Uživatelem definované procesoru nebo UDP, je typ UDO U-SQL, která umožňuje použití funkcí programovatelnosti zpracování příchozí řádky. UDP umožňuje sloučení sloupců, upravte hodnoty a v případě potřeby přidejte nové sloupce. V podstatě je dobré se zpracovat sadu řádků k vytvoření požadované datové prvky.
+## <a name="use-user-defined-processors"></a>Použití uživatelem definované procesorů
+Uživatelem definované procesoru, nebo UDP, je typ UDO U-SQL, který umožňuje zpracovávat příchozí řádky s použitím funkcí programovatelnosti. UDP umožňuje kombinovat sloupce, změnit hodnoty a v případě potřeby přidávat nové sloupce. V podstatě pomáhá zpracování sady řádků pro produkci prvků požadovaná data.
 
-K definování UDP, je potřeba vytvořit `IProcessor` rozhraní s `SqlUserDefinedProcessor` atribut, který je pro UDP volitelné.
+K definování UDP, potřebujeme vytvořit `IProcessor` rozhraní se službou `SqlUserDefinedProcessor` atribut, který je volitelný pro protokol UDP.
 
-Toto rozhraní by měl obsahovat definici `IRow` rozhraní řádků přepsat, jak je znázorněno v následujícím příkladu:
+Toto rozhraní může obsahovat definici `IRow` rozhraní sady řádků přepsat, jak je znázorněno v následujícím příkladu:
 
 ```
 [SqlUserDefinedProcessor]
@@ -1515,31 +1514,31 @@ public override IRow Process(IRow input, IUpdatableRow output)
 }
 ```
 
-**SqlUserDefinedProcessor** označuje, že typ by měl být registrován jako procesor uživatelem definované. Tato třída nelze dědí.
+**SqlUserDefinedProcessor** označuje, že typ by měl být zaregistrován jako zpracovatel definovaný uživatelem. Tato třída nemůže dědit.
 
-Je atribut SqlUserDefinedProcessor **volitelné** pro definici UDP.
+Atribut SqlUserDefinedProcessor **volitelné** UDP definice.
 
-Objekty hlavního programovatelnosti **vstupní** a **výstup**. Vstupní objekt se používá výčet vstupní sloupce a výstup a nastavit výstupní data v důsledku činnosti procesoru.
+Programovatelnost hlavní objekty jsou **vstupní** a **výstup**. Vstupní objekt se používá výčet vstupní sloupce a výstup a nastavit výstupní data v důsledku činnosti procesoru.
 
-Pro vstupní sloupce výčet používáme `input.Get` metoda.
+Výčet vstupní sloupce se používá `input.Get` metody.
 
 ```
 string column_name = input.Get<string>("column_name");
 ```
 
-Parametr pro `input.Get` metoda je sloupec, který se předá jako součást `PRODUCE` klauzuli `PROCESS` prohlášení o základní skript U-SQL. Je potřeba použít na správný typ. zde.
+Parametr `input.Get` metoda je sloupec, který je předán jako součást `PRODUCE` klauzuli `PROCESS` příkaz základní skript U-SQL. Musíme zde použít správného datového typu.
 
-Pro výstup, použijte `output.Set` metoda.
+Pro výstup, použijte `output.Set` metody.
 
-Je důležité si uvědomit, že vlastní výrobce pouze výstupy sloupců a hodnot, které jsou definovány pomocí `output.Set` volání metody.
+Je důležité si uvědomit, že vlastní výrobce pouze výstupů sloupců a hodnot, které jsou definovány pomocí `output.Set` volání metody.
 
 ```
 output.Set<string>("mycolumn", mycolumn);
 ```
 
-Skutečné procesoru výstup se aktivuje při volání metody `return output.AsReadOnly();`.
+Skutečné procesoru výstupu se aktivuje pomocí volání `return output.AsReadOnly();`.
 
-Následuje příklad procesoru:
+Tady je příklad procesoru:
 
 ```
 [SqlUserDefinedProcessor]
@@ -1559,11 +1558,11 @@ public override IRow Process(IRow input, IUpdatableRow output)
 }
 ```
 
-V tomto scénáři případ použití procesor generuje nový sloupec s názvem "full_description" kombinací existujícího sloupce – v tomto případě "user" velká a "des". Také znovu vytvoří identifikátor GUID a vrátí původní a nové hodnoty identifikátor GUID.
+V tomto scénáři použití procesor generuje nový sloupec s názvem "full_description" kombinací existujícího sloupce – v tomto případě "user" na velká písmena a "des". Také znovu vygeneruje identifikátor GUID a vrací hodnoty původní a nové GUID.
 
-Jak vidíte z předchozího příkladu, můžete volat metody C# během `output.Set` volání metody.
+Jak je vidět z předchozího příkladu, můžete volat metody jazyka C# během `output.Set` volání metody.
 
-Tady je příklad základní skriptu U-SQL, který používá vlastního procesoru:
+Tady je příklad základní skript U-SQL, který používá vlastního procesoru:
 
 ```
 DECLARE @input_file string = @"\usql-programmability\input_file.tsv";
@@ -1588,12 +1587,12 @@ DECLARE @output_file string = @"\usql-programmability\output_file.tsv";
 OUTPUT @rs1 TO @output_file USING Outputters.Text();
 ```
 
-## <a name="use-user-defined-appliers"></a>Použít appliers uživatelem definované
-Uživatelem definované applier U-SQL umožňuje vyvolání vlastní C# funkce pro každý řádek, který je vrácen vnější tabulky výraz dotazu. Správný vstup je vyhodnotit pro každý řádek z levého vstup a řádky, které vytváří spojují pro finální výstup. Seznam sloupců, které jsou vytvářeny v operátor APPLY jsou kombinace sadu sloupců v vlevo a vpravo vstup.
+## <a name="use-user-defined-appliers"></a>Použití uživatelem definované appliers
+Applier definované uživatelem U-SQL umožňuje vyvolat vlastní funkce C# pro každý řádek, který je vrácený výraz vnější tabulky z dotazu. Správný vstup je vyhodnocen pro každý řádek z levým vstupem a řádky, které jsou vytvářeny zkombinují konečného výstupu. Seznam sloupců, které jsou vytvářeny pomocí operátoru APPLY jsou kombinací sadu sloupců v vlevo a vpravo vstup.
 
-Uživatelem definované applier je volaná jako součást výrazu USQL vyberte.
+Uživatelem definované applier je vyvolávána jako součást výrazu USQL vyberte.
 
-Typické volání applier uživatelem definované vypadá takto:
+Typické volání uživatelem definované applier vypadá takto:
 
 ```
 SELECT …
@@ -1602,9 +1601,9 @@ CROSS APPLYis used to pass parameters
 new MyScript.MyApplier(param1, param2) AS alias(output_param1 string, …);
 ```
 
-Další informace o používání appliers ve výrazu SELECT, najdete v části [U-SQL vyberte výběr z křížové použít a vnější použít](https://msdn.microsoft.com/library/azure/mt621307.aspx).
+Další informace o používání appliers ve výrazu SELECT, naleznete v tématu [U-SQL vyberte výběrem z CROSS APPLY a operátoru OUTER APPLY](https://msdn.microsoft.com/library/azure/mt621307.aspx).
 
-Definice uživatelem definované applier základní třídy je následující:
+Definice uživatelem definované applier základní třídy je následujícím způsobem:
 
 ```
 public abstract class IApplier : IUserDefinedOperator
@@ -1615,7 +1614,7 @@ public abstract IEnumerable<IRow> Apply(IRow input, IUpdatableRow output);
 }
 ```
 
-K definování applier se definovaný uživatelem, je potřeba vytvořit `IApplier` rozhraní s [`SqlUserDefinedApplier`] atribut, který je pro uživatelem definované applier definice volitelné.
+K definování applier se definovaný uživatelem, potřebujeme vytvořit `IApplier` rozhraní se službou [`SqlUserDefinedApplier`] atribut, který je volitelné uživatelem definované applier definici.
 
 ```
 [SqlUserDefinedApplier]
@@ -1633,23 +1632,23 @@ public class ParserApplier : IApplier
 }
 ```
 
-* Použít je volána pro každý řádek vnější tabulky. Vrátí `IUpdatableRow` výstup sady řádků.
-* Konstruktor třída se používá k předat parametry applier definovaný uživatelem.
+* Platí se volá pro každý řádek vnější tabulky. Vrátí `IUpdatableRow` výstupní sada řádků.
+* Konstruktor třídy se používá k předání parametrů do applier definovaný uživatelem.
 
-**SqlUserDefinedApplier** označuje, že typ by měl být registrován jako applier se uživatelem definované. Tato třída nelze dědí.
+**SqlUserDefinedApplier** označuje, že typ by měl být zaregistrován jako applier se definovaný uživatelem. Tato třída nemůže dědit.
 
-**SqlUserDefinedApplier** je **volitelné** pro definici applier definovaný uživatelem.
+**SqlUserDefinedApplier** je **volitelné** applier definice definovaný uživatelem.
 
 
-Objekty hlavního programovatelnosti jsou následující:
+Programovatelnost hlavní objekty jsou následující:
 
 ```
 public override IEnumerable<IRow> Apply(IRow input, IUpdatableRow output)
 ```
 
-Vstupní sady řádků se předávají jako `IRow` vstupní. Výstup řádky jsou generovány jako `IUpdatableRow` rozhraní výstup.
+Vstupní sady řádků jsou předány jako `IRow` vstupu. Výstupní řádky jsou generovány jako `IUpdatableRow` výstup rozhraní.
 
-Názvy jednotlivých sloupců se dá určit pomocí volání `IRow` metoda schématu.
+Názvy jednotlivých sloupců se dají určit pomocí volání `IRow` metoda schématu.
 
 ```
 ISchema schema = row.Schema;
@@ -1657,35 +1656,35 @@ var col = schema[i];
 string val = row.Get<string>(col.Name)
 ```
 
-Chcete-li získat skutečný datových hodnot z příchozích `IRow`, jsme použijte metodu Get() `IRow` rozhraní.
+K získání hodnot skutečná data z příchozí `IRow`, můžeme použít metodu Get() `IRow` rozhraní.
 
 ```
 mycolumn = row.Get<int>("mycolumn")
 ```
 
-Nebo používáme schématu název sloupce:
+Nebo používáme sloupec název schématu:
 
 ```
 row.Get<int>(row.Schema[0].Name)
 ```
 
-Výstupní hodnoty musí být nastavena s `IUpdatableRow` výstup:
+Výstupní hodnoty musí být nastaveno s `IUpdatableRow` výstup:
 
 ```
 output.Set<int>("mycolumn", mycolumn)
 ```
 
-Je důležité si uvědomit, vlastní appliers pouze výstup sloupců a hodnot, které jsou definovány s `output.Set` volání metody.
+Je důležité pochopit, vlastní appliers pouze výstupních sloupců a hodnot, které jsou definovány pomocí `output.Set` volání metody.
 
-Skutečný výstup se aktivuje při volání metody `yield return output.AsReadOnly();`.
+Aktuální výstup se aktivuje pomocí volání `yield return output.AsReadOnly();`.
 
-Uživatelem definované applier parametry mohou být předaný konstruktoru. Applier může vrátit proměnný počet sloupců, které musí být definované během applier volání v základní skript U-SQL.
+Uživatelem definované applier parametrů může být předán konstruktoru. Applier může vrátit proměnný počet sloupců, které je potřeba určit během applier volání v základní skript U-SQL.
 
 ```
 new USQL_Programmability.ParserApplier ("all") AS properties(make string, model string, year string, type string, millage int);
 ```
 
-Tady je příklad applier uživatelem definované:
+Tady je příklad applier definovaný uživatelem:
 
 ```
 [SqlUserDefinedApplier]
@@ -1743,7 +1742,7 @@ public override IEnumerable<IRow> Apply(IRow input, IUpdatableRow output)
 }
 ```
 
-Toto je základní skript U-SQL pro tento uživatelem definované applier:
+Toto je základní skript U-SQL pro tento uživatelský applier:
 
 ```
 DECLARE @input_file string = @"c:\usql-programmability\car_fleet.tsv";
@@ -1772,7 +1771,7 @@ DECLARE @output_file string = @"c:\usql-programmability\output_file.tsv";
 OUTPUT @rs1 TO @output_file USING Outputters.Text();
 ```
 
-V tomto scénáři případu použití uživatelem definované applier funguje jako analyzátor oddělených čárkou pro vlastnosti loďstva Auto. Vstupní soubor řádky vypadat následovně:
+V tomto scénáři použití uživatelem definované applier funguje jako analyzátor hodnot oddělených čárkou pro vlastnosti vozového parku automobilu. Řádky vstupní soubor vypadat nějak takto:
 
 ```
 103 Z1AB2CD123XY45889   Ford,Explorer,2005,SUV,152345
@@ -1780,30 +1779,30 @@ V tomto scénáři případu použití uživatelem definované applier funguje j
 210 X5AB2CD45XY458893   Nissan,Altima,2011,4Dr,74000
 ```
 
-Je typické oddělený tabulátory TSV soubor s vlastností sloupec, který obsahuje vlastnosti car například výrobce a model. Tyto vlastnosti musí být analyzován na sloupce tabulky. Applier, který je k dispozici také umožňuje vygenerovat dynamické počet vlastností v dané sadě řádků výsledek, na základě parametru, který je předán. Můžete vygenerovat buď všechny vlastnosti, nebo konkrétní sadu pouze vlastnosti.
+To je typické oddělený tabulátory TSV soubor s vlastností sloupec, který obsahuje vlastnosti car a modelu. Tyto vlastnosti musí být analyzovány na sloupce tabulky. Applier, která je k dispozici také umožňuje generovat dynamické počet vlastností v dané sadě řádků výsledek, na základě parametru, který je předán. Můžete generovat všechny vlastnosti nebo konkrétní sadu pouze vlastnosti.
 
     …USQL_Programmability.ParserApplier ("all")
     …USQL_Programmability.ParserApplier ("make")
     …USQL_Programmability.ParserApplier ("make&model")
 
-Uživatelem definované applier lze volat jako novou instanci třídy applier objektu:
+Uživatelem definované applier lze volat jako novou instanci objektu applier:
 
 ```
 CROSS APPLY new MyNameSpace.MyApplier (parameter: “value”) AS alias([columns types]…);
 ```
 
-Nebo pomocí volání metody vytváření obálky:
+Nebo pomocí volání metody obálky objekt pro vytváření:
 
 ```csharp
     CROSS APPLY MyNameSpace.MyApplier (parameter: “value”) AS alias([columns types]…);
 ```
 
-## <a name="use-user-defined-combiners"></a>Použít combiners uživatelem definované
-Uživatelem definované kombinační nebo UDC, můžete kombinovat řádky z levé a pravé sady řádků, na základě vlastní logiky. Uživatelem definované kombinační se používá s KOMBINAČNÍ výraz.
+## <a name="use-user-defined-combiners"></a>Použití uživatelem definované combiners
+Uživatelem definované kombinační nebo UDC, umožňují kombinovat řádky z levé a pravé sady řádků na základě vlastní logiky. Uživatelem definované kombinační se používá u výrazu KOMBINOVAT.
 
-Kombinační je volaná s KOMBINAČNÍ výraz, který obsahuje potřebné informace o jak vstupní sady řádků, sloupců seskupení, očekávaný výsledek schématu a další informace.
+Kombinační je vyvolávána s KOMBINOVÁNÍ výraz, který obsahuje nezbytné informace o vstupní sady řádků, sloupců seskupení, očekávaný výsledek schématu i další informace.
 
-Volat kombinační v základní skript U-SQL, můžeme použít následující syntaxi:
+Volání kombinační v základní skript U-SQL, jsme použijte následující syntaxi:
 
 ```
 Combine_Expression :=
@@ -1816,9 +1815,9 @@ Combine_Expression :=
     USING_Clause.
 ```
 
-Další informace najdete v tématu [KOMBINOVAT výrazu (U-SQL)](https://msdn.microsoft.com/library/azure/mt621339.aspx).
+Další informace najdete v tématu [KOMBINOVÁNÍ výrazů (U-SQL)](https://msdn.microsoft.com/library/azure/mt621339.aspx).
 
-K definování kombinační se definovaný uživatelem, je potřeba vytvořit `ICombiner` rozhraní s [`SqlUserDefinedCombiner`] atribut, který je pro definici uživatelem definované kombinační volitelné.
+K definování kombinační se definovaný uživatelem, potřebujeme vytvořit `ICombiner` rozhraní se službou [`SqlUserDefinedCombiner`] atribut, který je volitelný pro definici kombinační definovaný uživatelem.
 
 Základní `ICombiner` definici třídy:
 
@@ -1848,45 +1847,45 @@ public override IEnumerable<IRow> Combine(IRowset left, IRowset right,
 }
 ```
 
-**SqlUserDefinedCombiner** atribut uvádí, že typ by měl být registrován jako kombinační se uživatelem definované. Tato třída nelze dědí.
+**SqlUserDefinedCombiner** atribut označuje, že typ by měl být zaregistrován jako kombinační se definovaný uživatelem. Tato třída nemůže dědit.
 
-**SqlUserDefinedCombiner** se používá k definování vlastnost kombinační režimu. Je volitelný atribut pro definici kombinační definovaný uživatelem.
+**SqlUserDefinedCombiner** se používá k definování vlastností režim kombinační. Je volitelný atribut pro definici kombinační definovaný uživatelem.
 
 Režim CombinerMode
 
-Výčet CombinerMode provést následující hodnoty:
+Výčet CombinerMode může mít následující hodnoty:
 
-* Úplné (0), každý řádek výstupu potenciálně závisí na všechny vstupní řádky z levé a pravé se stejnou hodnotou klíče.
+* Úplné (0), každý řádek výstupu potenciálně závisí na všechny vstupní řádky z levé straně a hned se stejnou hodnotou klíče.
 
-* Doleva (1) každý řádek výstupu závisí na jeden vstupní řádek z doleva (a potenciálně všechny řádky z pravé se stejnou hodnotou klíče).
+* Vlevo (1) každého řádku výstupu závisí na jeden vstupní řádek vlevo (a potenciálně všechny řádky z pravé strany se stejnou hodnotou klíče).
 
-* Práva (2) každý řádek výstupu závisí na jeden vstupní řádek z vpravo (a potenciálně všechny řádky z levé straně se stejnou hodnotou klíče).
+* Práva (2) každý řádek výstupu závisí na jeden vstupní řádek z pravé straně (a potenciálně všechny řádky z levé strany se stejnou hodnotou klíče).
 
-* Vnitřní (3), každý řádek výstupu závisí na jeden řádek vstupu z doleva a doprava a mají stejnou hodnotu.
+* Vnitřní (3) každý řádek výstupu závisí na jeden vstupní řádek z vlevo a vpravo se stejnou hodnotou.
 
 Příklad: [`SqlUserDefinedCombiner(Mode=CombinerMode.Left)`]
 
 
-Objekty hlavního programovatelnosti jsou:
+Programovatelnost hlavní objekty jsou:
 
 ```csharp
     public override IEnumerable<IRow> Combine(IRowset left, IRowset right,
         IUpdatableRow output
 ```
 
-Vstupní sady řádků se předávají jako **levém** a **správné** `IRowset` typu rozhraní. Obě sady řádků musí být ve výčtu objevit pro zpracování. Každé rozhraní můžete pouze výčet jednou, abychom měli vytvořit výčet a uložení do mezipaměti v případě potřeby.
+Vstupní sady řádků jsou předány jako **levé** a **správné** `IRowset` typu rozhraní. Obě sady řádků musí být výčtový pro zpracování. Můžete jenom zobrazit výčet každé rozhraní jednou, takže musíme vytvořit výčet a nabídnout ho do mezipaměti v případě potřeby.
 
-Pro ukládání do mezipaměti pro účely, můžeme vytvořit seznam\<T\> typ konstrukce paměti v důsledku LINQ spuštění dotazu, konkrétně seznam <`IRow`>. Anonymní datový typ lze během výčtu také.
+Pro účely mezipaměti, můžeme vytvořit seznam\<T\> typ struktury paměti v důsledku LINQ provádění dotazu, konkrétně seznam <`IRow`>. Anonymní typ. je možné během výčtu také.
 
-V tématu [Úvod do dotazů LINQ (C#)](https://msdn.microsoft.com/library/bb397906.aspx) Další informace o dotazech LINQ a [rozhraní IEnumerable\<T\> rozhraní](https://msdn.microsoft.com/library/9eekhta0(v=vs.110).aspx) Další informace o rozhraní IEnumerable\<T\> rozhraní.
+Zobrazit [Úvod do dotazů LINQ (C#)](https://msdn.microsoft.com/library/bb397906.aspx) pro další informace o dotazech LINQ, a [IEnumerable\<T\> rozhraní](https://msdn.microsoft.com/library/9eekhta0(v=vs.110).aspx) Další informace o rozhraní IEnumerable\<T\> rozhraní.
 
-Chcete-li získat skutečný datových hodnot z příchozích `IRowset`, jsme použijte metodu Get() `IRow` rozhraní.
+K získání hodnot skutečná data z příchozí `IRowset`, můžeme použít metodu Get() `IRow` rozhraní.
 
 ```
 mycolumn = row.Get<int>("mycolumn")
 ```
 
-Názvy jednotlivých sloupců se dá určit pomocí volání `IRow` metoda schématu.
+Názvy jednotlivých sloupců se dají určit pomocí volání `IRow` metoda schématu.
 
 ```
 ISchema schema = row.Schema;
@@ -1894,13 +1893,13 @@ var col = schema[i];
 string val = row.Get<string>(col.Name)
 ```
 
-Nebo pomocí názvu sloupce schématu:
+Nebo s použitím sloupce název schématu:
 
 ```
 c# row.Get<int>(row.Schema[0].Name)
 ```
 
-Obecné výčtu s dotazy LINQ vypadá takto:
+Obecné výčet s dotazy LINQ vypadá takto:
 
 ```
 var myRowset =
@@ -1911,17 +1910,17 @@ var myRowset =
                           }).ToList();
 ```
 
-Po vytvoření výčtu obě sady řádků, přidáme můžete procházet všechny řádky. Pro každý řádek v levém řádků přidáme najít všechny řádky, které splňují podmínku naše kombinační.
+Po vytvoření výčtu obě sady řádků, budeme k prosmyčkování všech řádků. Pro každý řádek v levém řádků budeme najít všechny řádky, které splňují zadanou podmínku naše kombinační.
 
-Výstupní hodnoty musí být nastavena s `IUpdatableRow` výstup.
+Výstupní hodnoty musí být nastaveno s `IUpdatableRow` výstup.
 
 ```
 output.Set<int>("mycolumn", mycolumn)
 ```
 
-Skutečný výstup se aktivuje při volání do `yield return output.AsReadOnly();`.
+Aktuální výstup se aktivuje při volání k `yield return output.AsReadOnly();`.
 
-Následuje příklad kombinační:
+Tady je příklad kombinační:
 
 ```
 [SqlUserDefinedCombiner]
@@ -1975,9 +1974,9 @@ public override IEnumerable<IRow> Combine(IRowset left, IRowset right,
 }
 ```
 
-V tomto scénáři případ použití jsme se vytváření zprávu o analýzy, které prodejce. Cílem je najít všechny produkty, které náklady více než 20 000 $ a který prodeje prostřednictvím webu rychleji než pomocí regulárních prodejce v určitém časovém rámci.
+V tomto scénáři použití vytváříme analytická sestava pro prodejce. Cílem je vyhledání všech produktů, které stojí více než 20 000 a který prodávat na webových stránkách rychlejší než prostřednictvím pravidelné prodejce v určitém časovém rámci.
 
-Zde je základní skript U-SQL. Můžete porovnat logiku mezi regulárního spojení a kombinační:
+Tady je základní skript U-SQL. Můžete porovnat logika mezi regulárního spojení a kombinační:
 
 ```sql
 DECLARE @LocalURI string = @"\usql-programmability\";
@@ -2072,28 +2071,28 @@ OUTPUT @rs1 TO @output_file1 USING Outputters.Tsv();
 OUTPUT @rs2 TO @output_file2 USING Outputters.Tsv();
 ```
 
-Uživatelem definované kombinační lze volat jako novou instanci třídy applier objektu:
+Nelze volat kombinační uživatelem definované jako novou instanci objektu applier:
 
 ```
 USING new MyNameSpace.MyCombiner();
 ```
 
 
-Nebo pomocí volání metody vytváření obálky:
+Nebo pomocí volání metody obálky objekt pro vytváření:
 
 ```
 USING MyNameSpace.MyCombiner();
 ```
 
-## <a name="use-user-defined-reducers"></a>Použít přechodky uživatelem definované
+## <a name="use-user-defined-reducers"></a>Použití uživatelem definované reduktorů
 
-U-SQL umožňuje psát vlastní řádků přechodky v jazyce C# s využitím rozhraní rozšiřitelnosti uživatelem definovaný operátor a implementace rozhraní IReducer.
+U-SQL umožňuje psát vlastní sady řádků reduktorů v jazyce C# pomocí rozhraní rozšiřitelnosti uživatelem definovaný operátor a implementace rozhraní IReducer.
 
-Uživatelem definované reduktorem nebo UDR, slouží k vyloučení nepotřebných řádků při extrakci dat (Importovat). Je také slouží k manipulaci a vyhodnotit, řádků a sloupců. Na základě programovatelnosti logiky, ho můžete také definovat řádky musí být rozbalena.
+Uživatelem definované redukční funkci nebo uživatelem definovaná TRASA, je možné eliminovat zbytečné řádků během extrakce dat (import). To také umožňuje manipulaci a vyhodnocovat u nich řádků a sloupců. Na základě programovatelnosti logiky, může také definovat řádky, které je potřeba extrahovat.
 
-Můžete definovat třídu UDR, je potřeba vytvořit `IReducer` rozhraní s volitelný `SqlUserDefinedReducer` atribut.
+Definování třídy uživatelem definovaná TRASA, potřebujeme vytvořit `IReducer` rozhraní s volitelným `SqlUserDefinedReducer` atribut.
 
-Tato třída rozhraní by měl obsahovat definici `IEnumerable` přepsat rozhraní sady řádků.
+Toto rozhraní třídy by měl obsahovat definici `IEnumerable` přepsat rozhraní sady řádků.
 
 ```
 [SqlUserDefinedReducer]
@@ -2108,15 +2107,15 @@ public class EmptyUserReducer : IReducer
 }
 ```
 
-**SqlUserDefinedReducer** atribut uvádí, že typ by měl být registrován jako reduktorem se uživatelem definované. Tato třída nelze dědí.
-**SqlUserDefinedReducer** je volitelný atribut pro definici reduktorem definovaný uživatelem. Slouží k definování IsRecursive vlastnost.
+**SqlUserDefinedReducer** atribut označuje, že typ by měl být zaregistrován jako redukční se definovaný uživatelem. Tato třída nemůže dědit.
+**SqlUserDefinedReducer** je volitelný atribut pro definici uživatelem definované redukční funkci. Používá se k definování IsRecursive vlastnost.
 
 * BOOL IsRecursive    
-* **Hodnota TRUE,** = označuje, zda je tento reduktorem asociativní a komutativní
+* **Hodnota TRUE** = označuje, zda je tento redukční funkci asociativních a komutativní
 
-Objekty hlavního programovatelnosti **vstupní** a **výstup**. Vstupní objekt se používá k vytvoření výčtu vstupní řádky. Výstup se používá k nastavení výstupní řádků v důsledku omezení aktivity.
+Programovatelnost hlavní objekty jsou **vstupní** a **výstup**. Vstupní objekt slouží k vytvoření výčtu vstupní řádky. Výstup se používá k nastavení výstupní řádky v důsledku snížení aktivity.
 
-Pro vstupní řádky výčet používáme `Row.Get` metoda.
+Výčet vstupní řádky se používá `Row.Get` metody.
 
 ```
 foreach (IRow row in input.Rows)
@@ -2125,19 +2124,19 @@ foreach (IRow row in input.Rows)
 }
 ```
 
-Parametr pro `Row.Get` metoda je sloupec, který se předá jako součást `PRODUCE` třídu `REDUCE` prohlášení o základní skript U-SQL. Je potřeba použít na správný typ. zde také.
+Parametr `Row.Get` metoda je sloupec, který je předán jako součást `PRODUCE` třídu `REDUCE` příkaz základní skript U-SQL. Musíme použít správného datového typu tady také.
 
-Pro výstup, použijte `output.Set` metoda.
+Pro výstup, použijte `output.Set` metody.
 
-Je důležité si uvědomit, že vlastní reduktorem výstupy pouze hodnoty, které jsou definovány pomocí `output.Set` volání metody.
+Je důležité pochopit, tento vlastní redukční funkci pouze vypíše hodnoty, které jsou definovány `output.Set` volání metody.
 
 ```
 output.Set<string>("mycolumn", guid);
 ```
 
-Skutečné reduktorem výstup se aktivuje při volání metody `yield return output.AsReadOnly();`.
+Výstup skutečné redukční funkci se aktivuje pomocí volání `yield return output.AsReadOnly();`.
 
-Následuje příklad reduktorem:
+Tady je příklad redukční funkci:
 
 ```
 [SqlUserDefinedReducer]
@@ -2173,9 +2172,9 @@ public class EmptyUserReducer : IReducer
 }
 ```
 
-V tomto scénáři případ použití reduktorem přeskakuje řádky s prázdné jméno. Pro každý řádek v sadě řádků přečte každý požadovaný sloupec, následně vyhodnocuje délka uživatelského jména. Skutečný řádek vyprodukuje pouze v případě, že hodnota délka jména uživatele je větší než 0.
+V tomto scénáři případem použití redukční funkci přeskakuje řádky s prázdnou uživatelské jméno. Pro každý řádek v sadě řádků %{Rowset/ čte každý povinný sloupec a pak vyhodnotí délka uživatelského jména. Skutečné řádek výstupu pouze v případě, že hodnota délka jména uživatele je větší než 0.
 
-Toto je základní skript U-SQL, která používá vlastní reduktorem:
+Toto je základní skript U-SQL, který používá vlastní redukční funkci:
 
 ```
 DECLARE @input_file string = @"\usql-programmability\input_file_reducer.tsv";

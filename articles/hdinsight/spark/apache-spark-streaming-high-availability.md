@@ -5,16 +5,16 @@ services: hdinsight
 ms.service: hdinsight
 author: jasonwhowell
 ms.author: jasonh
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/26/2018
-ms.openlocfilehash: c49be5cdacdeee66b6eeadb3627c481c0ea517cd
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 0725c70668ca3089028bff5fc1d8374c6bfdecde
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618289"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43051987"
 ---
 # <a name="create-high-availability-spark-streaming-jobs-with-yarn"></a>Vytvoření úlohy Spark Streaming vysokou dostupnost s YARN
 

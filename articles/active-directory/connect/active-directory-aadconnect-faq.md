@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4f3ffb3c769adeabd1edc10ce064653f7b336330
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 963f0ebdddab9fe7519b34153b7fd787da0fe7dd
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42059091"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43112081"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Nejčastější dotazy ke službě Azure Active Directory Connect
 
@@ -190,7 +190,7 @@ Pokud potřebujete pomoc, upgrade na novější verzi služby Azure AD Connect, 
 ## <a name="troubleshooting"></a>Řešení potíží
 **Otázka: jak lze získat pomoc s Azure AD Connect?**
 
-[Bázi Microsoft Knowledge Base (KB)](https://www.microsoft.com/Search/result.aspx?q=azure%20active%20directory%20connect&form=mssupport)
+[Bázi Microsoft Knowledge Base (KB)](https://www.microsoft.com/en-us/search/result.aspx?q=azure+active+directory+connect)
 
 * Hledejte KB pro technická řešení běžných problémů typu break-fix o podpoře pro Azure AD Connect.
 

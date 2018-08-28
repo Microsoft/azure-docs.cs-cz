@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/11/2018
+ms.date: 08/27/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: 3586804a8384273e5c0589bef9c586cee162939e
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 179d5c71a309fd79c23519544d1da6bcc07cda0c
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42058045"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43044996"
 ---
 # <a name="manage-cost-by-controlling-data-volume-and-retention-in-log-analytics"></a>Spravovat náklady pomocí řízení objemu dat a uchovávání dat v Log Analytics
 
@@ -29,7 +29,7 @@ ms.locfileid: "42058045"
 > - [Analýza využití dat v Log Analytics](log-analytics-manage-cost-storage.md) popisuje, jak analyzovat a upozornění na data využití.
 > - [Monitorování využití a odhadované náklady](../monitoring-and-diagnostics/monitoring-usage-and-estimated-costs.md) popisuje, jak zobrazit využití a odhadované náklady napříč více funkcí pro různé cenové modely pro monitorování Azure. Také popisuje, jak změnit cenový model.
 
-Log Analytics je navržená tak, aby škálování a podporu shromažďování, indexování a ukládání velkých objemů dat za den z libovolného zdroje ve vašem podniku nebo nasazené v Azure.  To může být hlavním důvod pro vaši organizaci, nákladovou efektivnost v konečném důsledku je základní ovladač. Za tímto účelem je důležité pochopit, že náklady na pracovní prostor Log Analytisc není jenom na základě objemu shromážděných dat, je také závislý na vybraného plánu a jak dlouho jste se rozhodli ukládat data generovaná z připojených zdrojů.  
+Log Analytics je navržená tak, aby škálování a podporu shromažďování, indexování a ukládání velkých objemů dat za den z libovolného zdroje ve vašem podniku nebo nasazené v Azure.  To může být hlavním důvod pro vaši organizaci, nákladovou efektivnost v konečném důsledku je základní ovladač. Za tímto účelem je důležité pochopit, že náklady na pracovní prostor Log Analytics není jen na základě objemu shromážděných dat, je také závislý na vybraného plánu a jak dlouho jste se rozhodli ukládat data generovaná z připojených zdrojů.  
 
 V tomto článku jsme zkontrolujte, jak můžete aktivně monitorovat růst objemu a úložiště dat a definování omezení pro řízení těchto související náklady. 
 

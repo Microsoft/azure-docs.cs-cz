@@ -1,5 +1,5 @@
 ---
-title: Přehled základů služby Azure Service Bus | Microsoft Docs
+title: Přehled základů služby Azure Service Bus | Dokumentace Microsoftu
 description: Úvod do používání Service Bus ke spojení aplikace Azure a jiného softwaru.
 services: service-bus-messaging
 documentationcenter: .net
@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: get-started-article
 ms.date: 05/23/2018
 ms.author: sethm
-ms.openlocfilehash: 994510b415e21288fd38a116f7e77a59ba79af59
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: bef88f09f182b1bb450ee0e045985ed59d5b5648
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34641318"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41920530"
 ---
 # <a name="azure-service-bus"></a>Azure Service Bus
 
@@ -36,7 +36,12 @@ V oboru názvů můžete použít jednu nebo víc instancí tří různých komu
 * *Témata*, která poskytují jednosměrnou komunikaci prostřednictvím *odběrů*. Jedno téma může mít několik odběrů. Podobně jako u front je téma něco jako zprostředkovatel, ale každý odběr může volitelně používat filtr a přijímat jen zprávy, které odpovídají konkrétním kritériím.
 * *Předávání*, které umožňuje jednosměrnou komunikaci. Na rozdíl od front a témat se při předávání neukládají žádné zprávy; nejedná se o zprostředkování. Naopak se zprávy jednoduše předají k cílové aplikaci.
 
-Když vytvoříte frontu, téma nebo předávání, musíte je pojmenovat. Kombinace tohoto názvu a vašeho oboru názvů vytváří jedinečný identifikátor objektu. Aplikace můžou tento název poskytnout službě Service Bus, a pak pomocí této fronty, tématu nebo předávání mezi sebou komunikovat. 
+Když vytvoříte frontu, téma nebo předávání, musíte je pojmenovat. Kombinace tohoto názvu a vašeho oboru názvů vytváří jedinečný identifikátor objektu. Aplikace můžou tento název poskytnout službě Service Bus, a pak pomocí této fronty, tématu nebo předávání mezi sebou komunikovat.
+
+ >**Příklad:**   
+     *https://&lt;název_oboru_názvů_služby_service_bus&gt;.servicebus.windows.net/&lt;název_fronty&gt;*  
+     *https://&lt;název_oboru_názvů_služby_service_bus&gt;.servicebus.windows.net/&lt;název_tématu&gt;*  
+     *https://&lt;název_oboru_názvů_služby_service_bus&gt;.servicebus.windows.net/&lt;název_propojení&gt;*  
 
 Pokud aplikace Windows chtějí tyto objekty používat ve scénáři přenosu, můžou využít WCF (Windows Communication Foundation). Tato služba se označuje jako [přenos WCF](../service-bus-relay/relay-what-is-it.md). Pro fronty a témata můžou aplikace Windows použít API pro přenos zpráv, které definuje služba Service Bus. Pro snadnější použití těchto objektů z aplikací pro jinou platformu než Windows uvolnil Microsoft sady SDK pro Javu, Node.js a další jazyky. Přístup k frontám a tématům se může získat i pomocí [REST API](/rest/api/servicebus/) přes HTTP(s). 
 

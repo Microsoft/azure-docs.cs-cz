@@ -1,71 +1,65 @@
 ---
-title: Postup připojení ke zdrojům dat | Microsoft Docs
-description: 'Postupy: článek zvýraznění jak se připojit ke zdrojům dat zjištěným s Azure Data Catalog.'
+title: Jak se připojit ke zdrojům dat ve službě Azure Data Catalog
+description: Článek zvýraznění jak se připojit ke zdrojům dat zjištěným pomocí služby Azure Data Catalog.
 services: data-catalog
-documentationcenter: ''
 author: steelanddata
-manager: NA
-editor: ''
-tags: ''
+ms.author: maroche
 ms.assetid: 4e6b27a5-cf75-4012-b88c-333c1fe638e8
 ms.service: data-catalog
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
+ms.topic: conceptual
 ms.date: 01/18/2018
-ms.author: maroche
-ms.openlocfilehash: b4dfc7a900e42b348c416d2d8c05b73fb15847ae
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 759758c9f3d0f1dadf2048e8ef15eeab8a77ef07
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43053465"
 ---
 # <a name="how-to-connect-to-data-sources"></a>Jak se připojit ke zdrojům dat
 ## <a name="introduction"></a>Úvod
-**Microsoft Azure Data Catalog** je plně spravovaná Cloudová služba, která slouží jako systém registrace a systém pro zjišťování zdrojů dat organizace. Jinými slovy **Azure Data Catalog** se točí kolem osoby zjišťovat, pochopit a používat zdroje dat a pomáhá organizacím získat větší hodnotu z jejich stávající data. Klíčovým prvkem tento scénář používá data – po uživatele zjistí zdroje dat a porozuměl jim svůj účel, dalším krokem je pro připojení ke zdroji dat se umístí jeho data se mají použít.
+**Microsoft Azure Data Catalog** je plně spravovaná Cloudová služba, která slouží jako systém registrace a systém zjišťování pro podnikové zdroje dat. Jinými slovy **Azure Data Catalog** se točí kolem lidé zjišťovat, pochopit a používat zdroje dat a pomáhá organizacím vytěžit více z jejich stávajících dat. Klíčovým prvkem tohoto scénáře používá údaje – Jakmile uživatel zjistí zdroje dat a rozumí jeho účel, dalším krokem je připojení ke zdroji dat do jeho data se mají použít.
 
 ## <a name="data-source-locations"></a>Umístění zdroje dat.
-Během registrace zdroje dat **Azure Data Catalog** obdrží metadata o zdroji dat. Tato metadata obsahuje podrobnosti o zdroji dat umístění. Podrobnosti o umístění bude lišit ze zdroje dat pro zdroj dat, ale bude vždy obsahovat informace potřebné pro připojení. Umístění pro tabulku systému SQL Server například obsahuje název serveru, název databáze, název schématu a název tabulky při umístění pro sestavy SQL Server Reporting Services obsahuje název serveru a cestu k sestavě. Ostatní typy zdrojů dat bude mít umístění, která odráží strukturu a možnosti zdrojového systému.
+Během registrace zdroje dat **Azure Data Catalog** přijímá metadata o zdroji dat. Tato metadata obsahují podrobnosti o umístění zdroje dat. Podrobnosti o umístění závisí ze zdroje dat pro zdroj dat, ale vždy bude obsahovat informace potřebné pro připojení. Umístění pro tabulku SQL serveru patří třeba název serveru, název databáze, název schématu a název tabulky, přestože umístění pro sestavy SQL Server Reporting Services obsahuje název serveru a cestu k sestavě. Další typy zdrojů dat budou mít umístění, které odrážejí strukturu a funkce zdrojového systému.
 
-## <a name="integrated-client-tools"></a>Integrovaného klienta nástroje
-Nejjednodušší způsob, jak se připojit ke zdroji dat se má používat "Otevřít v..." v nabídce **Azure Data Catalog** portálu. Tato nabídka zobrazí seznam možností pro připojení k vybrané datové prostředky.
-Při použití výchozí zobrazení dlaždice, tato nabídka je k dispozici na každou dlaždici.
+## <a name="integrated-client-tools"></a>Integrovaných klientských nástrojích
+Nejjednodušší způsob, jak se připojit ke zdroji dat je použít "Otevřít v..." v nabídce **Azure Data Catalog** portálu. Tato nabídka zobrazí seznam možností pro připojení k vybraný datový asset.
+Při použití výchozí zobrazení tile, tato nabídka je k dispozici na každé dlaždici.
 
- ![Otevírání tabulku systému SQL Server v aplikaci Excel na dlaždici asset dat](./media/data-catalog-how-to-connect/data-catalog-how-to-connect1.png)
+ ![Otevřete tabulku SQL serveru v aplikaci Excel na dlaždici datový asset](./media/data-catalog-how-to-connect/data-catalog-how-to-connect1.png)
 
-Pokud používáte zobrazení seznamu, je k dispozici na panelu Hledat v horní části okna portálu na v nabídce.
+Pokud používáte zobrazení seznamu, v nabídce je k dispozici na panelu hledání v horní části okna portálu.
 
- ![Otevření sestavy služby SQL Server Reporting Services ve správci sestav z panelu Hledat](./media/data-catalog-how-to-connect/data-catalog-how-to-connect2.png)
+ ![Otevření sestavy služby SQL Server Reporting Services ve správci sestav z panelu hledání](./media/data-catalog-how-to-connect/data-catalog-how-to-connect2.png)
 
 ## <a name="supported-client-applications"></a>Podporované klientské aplikace
-Při použití "Otevřít v..." nabídky pro zdroje dat na portálu Azure Data Catalog správné klientská aplikace musí být nainstalován na klientském počítači.
+Při použití "Otevřít v..." nabídky pro zdroje dat na portálu Azure Data Catalog, správné klientská aplikace musí být nainstalován na klientském počítači.
 
-| Otevřít v aplikaci | Příponu souboru / protocol | Verze podporované aplikace |
+| Otevřít v aplikaci | Přípona souboru / protokol | Verze podporované aplikace |
 | --- | --- | --- |
-| Excel |ODC |Excel 2010 nebo novější |
-| Aplikace Excel (horní 1000) |ODC |Excel 2010 nebo novější |
-| Power Query |XLSX |Nainstalované aplikace Excel 2016 nebo aplikaci Excel 2010 nebo Excel 2013 doplněk Power Query pro doplněk aplikace Excel |
-| Power BI Desktop |.pbix |Power BI Desktop července 2016 nebo novější |
-| SQL Server Data Tools |vsweb: / / |Visual Studio 2013 Update 4 nebo novější s nástrojů systému SQL Server nainstalován |
-| Správce sestav |http:// |V tématu [požadavky na prohlížeč pro SQL Server Reporting Services](https://technet.microsoft.com/library/ms156511.aspx) |
+| Excel |ODC |Aplikace Excel 2010 nebo novější |
+| Excel (prvních 1000) |ODC |Aplikace Excel 2010 nebo novější |
+| Power Query |XLSX |Nainstalované aplikace Excel 2016 a Excel 2010 nebo Excel 2013 pomocí Power Query pro Excel add-in |
+| Power BI Desktopu |.pbix |Power BI Desktopu z července 2016 nebo novější |
+| SQL Server Data Tools |vsweb: / / |Visual Studio 2013 Update 4 nebo novější pomocí nástrojů SQL Server nainstalovaný |
+| Správce sestav |http:// |Zobrazit [požadavky na prohlížeč pro SQL Server Reporting Services](https://technet.microsoft.com/library/ms156511.aspx) |
 
-## <a name="your-data-your-tools"></a>Data, vaše nástroje
-Možnosti dostupné v nabídce bude záviset na typu dat asset aktuálně vybrané. Samozřejmě, ne všechny možné nástroje bude součástí "Otevřít v..." nabídce, ale je stále snadné připojení ke zdroji dat pomocí libovolného nástroje klienta. Vybrání datový prostředek v **Azure Data Catalog** portálu umístění dokončení se zobrazí v podokně vlastností.
+## <a name="your-data-your-tools"></a>Vaše data, vaše nástroje
+Možnosti dostupné v nabídce bude záviset na typu aktuálně vybraný datový asset. Samozřejmě, ne všechny možné nástroje se zahrne "Otevřít v..." nabídky, je však stále snadné připojení ke zdroji dat využít libovolný nástroj klienta. Pokud je vybrána k datovému assetu v **Azure Data Catalog** portálu, dokončení umístění se zobrazí v podokně vlastností.
 
- ![Informace o připojení pro tabulku systému SQL Server](./media/data-catalog-how-to-connect/data-catalog-how-to-connect3.png)
+ ![Informace o připojení pro tabulku SQL serveru](./media/data-catalog-how-to-connect/data-catalog-how-to-connect3.png)
 
-Podrobnosti o informace o připojení se liší od typ zdroje dat na typ zdroje dat, ale informace obsažené v portálu získáte vše potřebné pro připojení ke zdroji dat v nástroji žádné klienta. Uživatelé mohou kopírovat podrobnosti připojení zdroje dat, které budou zjištěny pomocí **Azure Data Catalog**, tím jim umožníte pracovat s daty v upřednostňovaném nástroji.
+Podrobné informace o připojení se bude lišit od typ zdroje dat pro typ zdroje dat, ale informace na portálu získáte všechno, co potřebujete k připojení ke zdroji dat v jakékoli nástroji klienta. Uživatelé mohou kopírovat podrobnosti o připojení pro zdroje dat, které jsou zjištěny pomocí **Azure Data Catalog**, což jim umožňuje pracovat s daty v upřednostňovaném nástroji.
 
-## <a name="connecting-and-data-source-permissions"></a>Připojení a data zdroje oprávnění
-I když **Azure Data Catalog** díky zdroje dat zjistitelný, přístup k datům samotné zůstane pod kontrolou vlastník zdroj dat nebo správce. Zjišťování zdroje dat v **Azure Data Catalog** uživatele neposkytuje žádné oprávnění k přístupu ke zdroji dat, sám sebe.
+## <a name="connecting-and-data-source-permissions"></a>Oprávnění k připojení a dat zdroje
+I když **Azure Data Catalog** činí zdroje dat zjistitelné, přístup k datům samotné zůstane pod kontrolou vlastník zdroje dat nebo správce. Zjišťování zdroje dat v **Azure Data Catalog** neuděluje žádná oprávnění pro přístup ke zdroji dat, samotného uživatele.
 
-Aby bylo snazší pro uživatele, kteří zjistit zdroje dat, ale nemáte příslušná oprávnění pro přístup k jeho data, uživatelé mohou poskytovat informace ve vlastnosti žádosti o přístup, při zadávání poznámek ke zdroji dat. Informace, které jsou tady uvedené – včetně odkazy na proces nebo kontaktní bod pro získání přístup ke zdroji dat – jsou poskytovány společně se umístění zdroje dat na portálu.
+Aby bylo snazší pro uživatelé objeví zdroj dat, ale nemáte příslušná oprávnění pro přístup k jeho datům, uživatelé mohou poskytovat informace ve vlastnosti žádost o přístup při zadávání poznámek ke zdroji dat. Informace, včetně odkazů na příslušný proces nebo kontaktní bod pro získání přístupu ke zdroji dat – tady se zobrazí vedle umístění zdroje dat na portálu.
 
- ![Informace o připojení se žádost o přístup pokynů](./media/data-catalog-how-to-connect/data-catalog-how-to-connect4.png)
+ ![Informace o připojení pomocí žádosti o přístup pokynů](./media/data-catalog-how-to-connect/data-catalog-how-to-connect4.png)
 
 ## <a name="summary"></a>Souhrn
-Registrace k datovému zdroji prostřednictvím **Azure Data Catalog** díky dat zjistitelný zkopírováním strukturální a popisný metadat ze zdroje dat ve službě katalogu. Jakmile zdroj dat má byl zaregistrován a zjistit, uživatelé se mohou připojit ke zdroji dat z **Azure Data Catalog** portál "Otevřít v..." " nabídky nebo pomocí nástrojů jejich data výběru.
+Registrace zdroje dat s **Azure Data Catalog** díky těmto datům zjistitelné zkopírováním popisný a strukturální metadata ze zdroje dat ve službě katalogu. Jakmile se zdroje dat má byl zaregistrován a zjištění, uživatelé se mohou připojit ke zdroji dat z **Azure Data Catalog** portál "Otevřít v..." " nabídky nebo pomocí nástrojů svá data podle výběru.
 
 ## <a name="see-also"></a>Další informace najdete v tématech
-* [Začínáme s Azure Data Catalog](data-catalog-get-started.md) kurz podrobné informace o tom, jak se připojit ke zdrojům dat.
+* [Začínáme s Azure Data Catalog](data-catalog-get-started.md) kurz pro podrobné informace o tom, jak se připojit ke zdrojům dat.

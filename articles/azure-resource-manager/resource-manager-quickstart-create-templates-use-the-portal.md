@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 07/17/2018
+ms.date: 08/22/2018
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: d5bb5ed45363216bb1bcd39f85157a3eed68c2f9
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: fcae6d656f6e309b0fdcd60db743d3bebf3cd5a9
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126840"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617034"
 ---
 # <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-azure-portal"></a>Rychlý start: Vytvoření a nasazení šablony Azure Resource Manageru pomocí portálu Azure Portal
 
@@ -78,7 +78,9 @@ V této části vytvoříte účet úložiště pomocí portálu Azure Portal. N
 
 ## <a name="edit-and-deploy-the-template"></a>Úprava a nasazení šablony
 
-V této části otevřete uloženou šablonu z knihovny šablon, upravíte ji na portálu a potom ji nasadíte. Pokud chcete upravit složitější šablonu, zvažte použití nástroje Visual Studio Code, který poskytuje více funkcí úprav.
+V této části otevřete uloženou šablonu z knihovny šablon, upravíte ji na portálu a potom ji nasadíte. Pokud chcete upravit složitější šablonu, zvažte použití editoru [Visual Studio Code](./resource-manager-quickstart-create-templates-use-visual-studio-code.md), který poskytuje více funkcí úprav.
+
+Azure vyžaduje, aby každá služba Azure měla jedinečný název. Pokud zadáte název účtu úložiště, který už existuje, nasazení selže. Pokud se chcete tomuto problému vyhnout, můžete vygenerovat jedinečný název účtu úložiště zavoláním funkce šablony uniquestring().
 
 1. Na portálu Azure Portal vyberte v nabídce nalevo **Všechny služby**, do pole filtru zadejte **šablona** a vyberte **Šablona (PREVIEW)**.
 
@@ -162,7 +164,7 @@ V této části otevřete uloženou šablonu z knihovny šablon, upravíte ji na
 8. Vyberte **Nasadit**.
 9. Zadejte následující hodnoty:
 
-    - **Předplatné**: Vyberte své předplatné Azure.
+    - **Předplatné:** Vyberte své předplatné Azure.
     - **Skupina prostředků**: Zadejte jedinečný název skupiny prostředků.
     - **Umístění:**: Vyberte umístění pro skupinu prostředků.
     - **Umístění:**: Vyberte umístění pro účet úložiště.  Můžete použít stejné umístění jako u skupiny prostředků.
@@ -177,6 +179,14 @@ V této části otevřete uloženou šablonu z knihovny šablon, upravíte ji na
 
 10. Vyberte **Koupit**.
 11. Stav nasazení zobrazíte tak, že nahoře na obrazovce vyberete ikonu zvonku (oznámení).
+
+    ![Oznámení nasazení šablon Azure Resource Manageru](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-portal-notification.png)
+
+12. V podokně oznámení vyberte **Přejít ke skupině prostředků**. Zobrazí se podobná obrazovka:
+
+    ![Skupina prostředků nasazení šablon Azure Resource Manageru](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-portal-deployment-resource-group.png)
+
+    Jak vidíte, nasazení proběhlo úspěšně a skupina prostředků obsahuje pouze jeden účet úložiště. Název účtu úložiště je jedinečný řetězec vygenerovaný šablonou. Další informace o používání účtů úložiště Azure najdete v tématu [Rychlý start: Nahrávání, stahování a výpis objektů blob pomocí webu Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

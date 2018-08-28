@@ -3,18 +3,18 @@ title: Použití zobrazení Ambari k práci s Hive v HDInsight (Hadoop) – Azur
 description: Další informace o použití zobrazení Hivu z webového prohlížeče k odesílání dotazů Hive. Zobrazení Hive je součástí webového rozhraní Ambari, opatřeného vašeho clusteru HDInsight se systémem Linux.
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: jasonh
-ms.openlocfilehash: 933f9f88e4924cba7a3ea71c488e23ce5d647463
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 43b82070ced57c0654d646fbea5a12aeab7c2a31
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39597486"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43048517"
 ---
 # <a name="use-ambari-hive-view-with-hadoop-in-hdinsight"></a>Použití zobrazení Ambari Hive se systémem Hadoop v HDInsight
 

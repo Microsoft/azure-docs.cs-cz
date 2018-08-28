@@ -11,12 +11,12 @@ ms.assetid: 697eb8b0-4a66-40c7-be7b-6aa6b131c7ad
 ms.topic: article
 tags: connectors
 ms.date: 08/24/2018
-ms.openlocfilehash: 9714a00d070caab9d3a3338329295192e1eb9997
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 8f430477883543aa8f87eb3fb0fb49ab31e2d723
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42887583"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43042034"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-azure-logic-apps"></a>Monitorování, vytvářet a spravovat SFTP soubory pomocí Azure Logic Apps
 
@@ -48,24 +48,16 @@ Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Log
 
 1. Přihlaste se k [webu Azure portal](https://portal.azure.com)a otevřete svou aplikaci logiky v návrháři aplikace logiky, není již otevřete.
 
-1. Zvolte cestu: 
+1. V případě prázdné logic apps do vyhledávacího pole zadejte jako filtr "sftp". V seznamu triggerů vyberte trigger, který chcete. 
 
-   * V případě prázdné logic apps do vyhledávacího pole zadejte jako filtr "salesforce". 
-   V seznamu triggerů vyberte trigger, který chcete. 
+   -nebo-
 
-     -nebo-
+   Pro existující aplikace logiky v posledním kroku, ve které chcete přidat akci, zvolte **nový krok**. 
+   Do vyhledávacího pole zadejte jako filtr "sftp". 
+   V seznamu akcí vyberte požadovanou akci.
 
-   * Pro existující aplikace logiky: 
-   
-     * V posledním kroku, ve které chcete přidat akci, zvolte **nový krok**. 
-
-       -nebo-
-
-     * Mezi kroky, ve které chcete přidat akci přesuňte ukazatel nad šipku mezi kroky. 
-     Vyberte znaménko plus (**+**), který se zobrazí a pak vyberte **přidat akci**.
-     
-        Do vyhledávacího pole zadejte jako filtr "sftp". 
-        V seznamu akcí vyberte požadovanou akci.
+   Přidání akce mezi kroky, přesuňte ukazatel nad šipku mezi kroky. 
+   Vyberte znaménko plus (**+**), který se zobrazí a pak vyberte **přidat akci**.
 
 1. Zadejte nezbytné podrobnosti připojení a pak zvolte **vytvořit**.
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 05/10/2017
 ms.author: ambapat
-ms.openlocfilehash: 8bc2355c5df73d2469cab63bfbf783624228b341
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: df577222fb8f9d13bd33c5705e6234362519d351
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39576963"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41920292"
 ---
 # <a name="secure-your-key-vault"></a>Zabezpečení trezoru klíčů
 Azure Key Vault je cloudová služba, která chrání šifrovací klíče a tajné klíče (například certifikáty, připojovací řetězce a hesla) a pro vaše cloudové aplikace. Jelikož tato data jsou citlivá a zcela klíčová pro vaši obchodní (i jinou) činnost, je na místě zabezpečit přístup k trezorům klíčů tak, aby k nim mohli přistupovat jen autorizované aplikace a autorizovaní uživatelé. Tento článek představuje model přístupu k trezoru klíčů, vysvětluje ověření a autorizaci a na příkladu názorně popisuje, jak lze zabezpečit přístup k trezoru klíčů pro vaše cloudové aplikace.
@@ -87,7 +87,7 @@ Přístup lze udělit uživatelům, skupinám nebo aplikacím v konkrétním obo
 ## <a name="data-plane-access-control"></a>Řízení přístupu roviny dat
 Rovina dat trezoru klíčů se skládá z operací, které mají vliv na objekty v trezoru klíčů, jako jsou klíče, tajné klíče a certifikáty.  To zahrnuje operace s klíči, jako je vytvoření, import, aktualizace, výpis, zálohování a obnova klíčů, kryptografické operace jako podepsání, ověření, zašifrování, dešifrování, zabalení a rozbalení a nastavení značek a dalších atributů pro klíče. Pro tajné klíče sem podobně patří operace získat, nastavit, vypsat a odstranit.
 
-Přístup k rovině dat je udělován nastavením zásad přístupu pro trezor klíčů. Uživatel, skupina nebo aplikace musí mít oprávnění role Přispěvatel (RBAC) pro rovinu správy trezoru klíčů, aby mohla nastavovat zásady pro tento trezor klíčů. Uživateli, skupině nebo aplikaci lze udělit přístup k provádění konkrétních operací pro klíče nebo tajné klíče v trezoru klíčů. Trezor klíčů podporuje až 16 položek zásad přístupu na jeden trezor klíčů. Vytvořte skupinu zabezpečení Azure Active Directory a do této skupiny přidejte uživatele, kterým chcete udělit přístup k rovině dat trezoru klíčů.
+Přístup k rovině dat je udělován nastavením zásad přístupu pro trezor klíčů. Uživatel, skupina nebo aplikace musí mít oprávnění role Přispěvatel (RBAC) pro rovinu správy trezoru klíčů, aby mohla nastavovat zásady pro tento trezor klíčů. Uživateli, skupině nebo aplikaci lze udělit přístup k provádění konkrétních operací pro klíče nebo tajné klíče v trezoru klíčů. Trezor klíčů podporuje až 1 024 položek zásad přístupu na jeden trezor klíčů. Vytvořte skupinu zabezpečení Azure Active Directory a do této skupiny přidejte uživatele, kterým chcete udělit přístup k rovině dat trezoru klíčů.
 
 ### <a name="key-vault-access-policies"></a>Zásady přístupu trezoru klíčů
 Zásady přístupu trezoru klíčů udělují odděleně oprávnění pro klíče, tajné klíče a certifikáty. Můžete tak například uživateli udělit přístup pouze ke klíčům, ale žádná oprávnění k tajným klíčům. Nicméně oprávnění pro přístup ke klíčům, tajným klíčům a certifikátům se nastavují na úrovni trezoru. Zásady přístupu trezoru klíčů tedy nepodporují oprávnění na úrovni objektu. K nastavení zásad přístupu pro trezor klíčů můžete použít [Azure Portal](https://portal.azure.com/), [nástroje Azure CLI](../cli-install-nodejs.md), [PowerShell](/powershell/azureps-cmdlets-docs) nebo [rozhraní REST API správy trezoru klíčů](https://msdn.microsoft.com/library/azure/mt620024.aspx).

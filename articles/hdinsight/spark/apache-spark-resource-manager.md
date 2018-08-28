@@ -3,18 +3,18 @@ title: Správa prostředků v clusteru Apache Spark v Azure HDInsight
 description: Další informace o použití spravovat prostředky pro clustery Spark v Azure HDInsight pro zajištění lepšího výkonu.
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: jasonh
-ms.openlocfilehash: 3f85ed1f2e0ce8345a71a725b363d718fc980a07
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: d7395231662d79d284bdf061e651602dea392c28
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622955"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43051494"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Správa prostředků v clusteru Apache Spark v Azure HDInsight 
 

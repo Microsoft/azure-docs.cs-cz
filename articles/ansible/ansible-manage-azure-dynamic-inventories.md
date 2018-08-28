@@ -4,23 +4,23 @@ description: Zjistěte, jak použít Ansible ke správě vašeho Azure dynamick�
 ms.service: ansible
 keywords: ansible, azure, devops, bash, cloud shell, dynamického inventáře
 author: tomarcher
-manager: routlaw
+manager: jeconnoc
 ms.author: tarcher
 ms.date: 08/09/2018
 ms.topic: article
-ms.openlocfilehash: 5f4793759bfba68c8a01d682b6b13de5cb96a8f6
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 2757dea5e73f226efc13b7788ce1ab0702aa2e61
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42060738"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43104693"
 ---
 # <a name="use-ansible-to-manage-your-azure-dynamic-inventories"></a>Správa dynamického inventáře vaše Azure pomocí Ansible
 Ansible je možné načítat informace o inventáři z různých zdrojů (včetně cloudových zdrojů, jako je Azure) do *dynamický inventář*. V tomto článku budete používat [Azure Cloud Shell](./ansible-run-playbook-in-cloudshell.md) ke konfiguraci dynamického inventáře Ansible Azure, ve kterém vytvoříte dva virtuální počítače, označit jednu z těchto virtuálních počítačů a na označené virtuální počítače nainstalujete server Nginx.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- **Předplatné Azure** – Pokud nemáte předplatné Azure, vytvořte [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) předtím, než začnete.
+- **Předplatné Azure** – Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
 
 - **Přihlašovací údaje Azure** - [Azure vytvořit přihlašovací údaje a konfigurace Ansible](/azure/virtual-machines/linux/ansible-install-configure#create-azure-credentials)
 
@@ -28,7 +28,7 @@ Ansible je možné načítat informace o inventáři z různých zdrojů (včetn
 
 1. Přihlaste se k webu [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Otevřít [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview).
+1. Otevřete [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview).
 
 1. Vytvořte skupinu prostředků Azure pro uložení virtuálních počítačů pro účely tohoto kurzu.
 

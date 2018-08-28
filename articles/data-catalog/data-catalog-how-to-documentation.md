@@ -1,53 +1,47 @@
 ---
-title: "Postup dokumentování zdrojů dat | Microsoft Docs"
-description: "Postupy: článek zvýraznění postup dokumentování datových prostředcích v Azure Data Catalog."
+title: Postup dokumentování zdrojů dat ve službě Azure Data Catalog
+description: Článek zvýraznění dokumentování datových prostředků ve službě Azure Data Catalog.
 services: data-catalog
-documentationcenter: 
 author: spelluru
-manager: NA
-editor: 
-tags: 
+ms.author: spelluru
 ms.assetid: 053b1701-b848-4ada-b726-6f485caa9961
 ms.service: data-catalog
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
+ms.topic: conceptual
 ms.date: 01/18/2018
-ms.author: spelluru
-ms.openlocfilehash: 1901ac534c46e4de0446543de4a40de040b8d51e
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 4d3dfac425caf36e9ca9a4d3593bba336b18b7a3
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43053750"
 ---
 # <a name="document-data-sources"></a>Dokumentování zdrojů dat
 ## <a name="introduction"></a>Úvod
-**Microsoft Azure Data Catalog** je plně spravovaná Cloudová služba, která slouží jako systém registrace a systém pro zjišťování zdrojů dat organizace. Jinými slovy **Azure Data Catalog** se točí kolem pomoci zjistit, osoby *pochopit*, použijte zdroje dat a pomáhá organizacím získat větší hodnotu z jejich stávající data.
+**Microsoft Azure Data Catalog** je plně spravovaná Cloudová služba, která slouží jako systém registrace a systém zjišťování pro podnikové zdroje dat. Jinými slovy **Azure Data Catalog** se točí kolem pomáhá lidem objevit, *pochopit*a použije zdroje dat a pomáhá organizacím vytěžit více z jejich stávajících dat.
 
-Při registraci zdroje dat s **Azure Data Catalog**, jeho metadata se zkopíruje a indexované službou, ale není článek existuje ukončení. **Azure Data Catalog** také umožňuje uživatelům poskytnout vlastní kompletní dokumentaci popisující běžné scénáře pro zdroj dat a využití.
+Když je zdroj dat zaregistrován ve službě **Azure Data Catalog**, se zkopíruje a službou indexována, jeho metadata, ale scénář nekončí existuje. **Azure Data Catalog** také umožňuje uživatelům zadat vlastní ucelenou dokumentaci popisující použití a běžné scénáře pro zdroj dat.
 
-V [postup přidání poznámek ke zdrojům dat](data-catalog-how-to-annotate.md), zjistíte, že odborníky, kteří znají zdroj dat může opatřit poznámkami ho pomocí značek a popis. **Azure Data Catalog** portál obsahuje bohatou textového editoru, aby uživatelé můžete plně dokumentů datových prostředků a kontejnery. Editor zahrnuje formátování odstavce, jako je například záhlaví, formátování textu, seznamy s odrážkami, číslované seznamy a tabulky.
+V [postup přidání poznámek ke zdrojům dat](data-catalog-how-to-annotate.md), přečtěte si, že odborníky, kteří znají zdroj dat můžete opatřit poznámkami ho pomocí značek a popis. **Azure Data Catalog** portál obsahuje editor formátovaného textu, takže uživatelé mohou plně dokumentu datových assetů a kontejnerů. Editor obsahuje formátování odstavce, jako je například záhlaví, formátování textu, seznamy s odrážkami, číslované seznamy a tabulky.
 
-Značky a popisy jsou ideální pro jednoduché poznámky. Chcete-li spotřebitelé dat se lépe pochopit zdroje dat a obchodní scénáře použití pro zdroj dat, ale odborník může poskytovat dokončení, podrobnou dokumentaci. Je snadné zdroj dat dokumentu. Vyberte datový prostředek nebo kontejner a vyberte **dokumentaci**.
+Značky a popisy se skvěle hodí pro jednoduché poznámky. Abychom spotřebitelé dat lépe porozumět zdroji dat a obchodní scénáře použití pro zdroj dat, ale odborníky může poskytovat kompletní a podrobné dokumentaci. Je snadné zdroji dat dokumentu. Vyberte datový prostředek nebo kontejner a zvolte **dokumentaci**.
 
 ![](media/data-catalog-documentation/data-catalog-documentation.png)
 
-## <a name="documenting-data-assets"></a>Dokumentace datových prostředků
-Výhodou **Azure Data Catalog** dokumentaci vám umožňuje používat Data Catalog jako obsahu úložiště k vytvoření komentáře dokončení datových prostředků. Můžete si prostudovat podrobné obsah, který popisuje kontejnery a tabulek. Pokud již máte obsah v úložišti jiného obsahu, například SharePoint nebo sdílenou složku, můžete přidat do odkazy dokumentace asset odkazovat na tuto existující obsah. Díky této funkci existující dokumenty zjistitelná.
+## <a name="documenting-data-assets"></a>Dokumentování datových prostředků
+Výhodou **Azure Data Catalog** dokumentace ke službě umožňuje použít katalog dat jako úložiště obsahu k vytvoření kompletní příběh vašich datových prostředků. Můžete procházet podrobné informace, které popisují kontejnery a tabulky. Pokud už máte obsah v jiném úložišti obsahu, jako je SharePoint nebo sdílenou složku, můžete je přidat odkazy na dokumentaci asset odkazovat na tento existující obsah. Díky této funkci můžete vaše stávající dokumenty lepší dostupnost.
 
 > [!NOTE]
-> Dokumentace není součástí indexu vyhledávání.
+> Dokumentace ke službě není součástí indexu vyhledávání.
 >
 >
 
 ![](media/data-catalog-documentation/data-catalog-documentation2.png)
 
-Úroveň dokumentaci rozsahu popisující vlastnosti a hodnotu kontejner dat asset k podrobný popis schématu tabulky v rámci kontejneru. Úroveň dokumenty poskytnuté by měl být doprovází vašim obchodním potřebám. Ale obecně uvádíme několik výhody a nevýhody dokumentace datových prostředků:
+Úroveň dokumentace může být v rozsahu od popisující vlastnosti a hodnoty datového assetu kontejneru na podrobný popis schéma tabulky v rámci kontejneru. Úroveň poskytnutá dokumentace by měl vycházet podle vašich obchodních potřeb. Ale obecně platí, tady je pár výhody a nevýhody dokumentování datových prostředků:
 
-* Zdokumentujte právě kontejner: veškerý obsah na jednom místě, ale může nedostatku potřebné detaily uživatelům provést informované rozhodnutí.
-* Zdokumentujte právě tabulky: obsah je specifické pro tento objekt, ale mají vaši uživatelé více míst pro dokumenty.
-* Zdokumentujte kontejnery a tabulky: nejvíce komplexní přístup, ale může způsobit další údržby dokumentů.
+* Zdokumentujte jenom kontejner: veškerý obsah, který je na jednom místě, ale pravděpodobně chybí nezbytné podrobnosti uživatelé provést informované rozhodnutí.
+* Zdokumentujte pouze tabulky: obsah je specifické pro daný objekt, ale vaši uživatelé mají více místa pro dokumenty.
+* Zdokumentujte kontejnerů a tabulek: nejkomplexnější přístup, ale může způsobit další údržby dokumenty.
 
 ## <a name="summary"></a>Souhrn
-Dokumentace zdroje dat s **Azure Data Catalog** můžete vytvořit komentáře o datových prostředcích v množství podrobností, kolik potřebujete.  Pomocí odkazů můžete propojit na obsah uložený v existující úložišti obsahu, který spojuje vaše stávající dokumenty a data prostředků. Jakmile vaši uživatelé zjistit prostředky příslušná data, mohou mít úplnou sadu dokumentace.
+Dokumentování zdrojů dat s **Azure Data Catalog** můžete vytvořit příběh o datových prostředcích v co nejvíce podrobností, podle potřeby.  Pomocí odkazů můžete propojit k obsahu uloženému v existující úložiště obsahu, který spojuje existující dokumenty a datových assetů. Jakmile uživatelé zjistit příslušné datové assety, můžou mít úplnou sadu dokumentace.

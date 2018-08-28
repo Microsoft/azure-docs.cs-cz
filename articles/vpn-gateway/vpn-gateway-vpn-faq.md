@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/27/2018
 ms.author: cherylmc
 ms.openlocfilehash: 245e5e1048f27fc76141312cf6f9021dc0060ae6
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.sourcegitcommit: baed5a8884cb998138787a6ecfff46de07b8473d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
+ms.lasthandoff: 08/28/2018
 ms.locfileid: "39359056"
 ---
 # <a name="vpn-gateway-faq"></a>Nejčastější dotazy k branám VPN

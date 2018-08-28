@@ -5,15 +5,15 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 7/31/2018
+ms.date: 8/21/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 2990ba290dfdaf45d8a341138ea515bad16d5b30
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: e4bbf86c6cb7e827672fe279e86c8d3fd76e8e8b
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628167"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43049120"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>Pomocí externího nástroje pro monitorování data do centra událostí pro používání Azure Stream
 
@@ -48,26 +48,26 @@ Než začnete, budete muset [vytvoření Event Hubs oboru názvů a Centrum udá
 
 Podrobnosti najdete také [Azure Event Hubs – nejčastější dotazy](../event-hubs/event-hubs-faq.md).
 
-## <a name="how-do-i-set-up-azure-tenant-monitoring-data-to-be-streamed-to-an-event-hub"></a>Jak nastavit monitorování dat tenanta Azure Streamovat do centra událostí?
+## <a name="azure-tenant-monitoring-data"></a>Tenant Azure dat monitorování
 
 Data monitorování klienta Azure je momentálně dostupný jenom pro Azure Active Directory. Můžete použít data z [generování sestav Azure Active Directory](../active-directory/reports-monitoring/overview-reports.md), která obsahuje historii přihlašovací aktivitu a revizní záznam změn provedených v rámci konkrétního tenanta.
 
-### <a name="stream-azure-active-directory-data-into-an-event-hub"></a>Stream služby Azure Active Directory data do centra událostí
+### <a name="azure-active-directory-data"></a>Azure data služby Active Directory
 
 K odesílání dat z protokolů služby Azure Active Directory do Event Hubs oboru názvů, je nastavit nastavení diagnostiky tenanta ve svém tenantovi AAD. [Tento návod](../active-directory/reports-monitoring/quickstart-azure-monitor-stream-logs-to-event-hub.md) nastavit nastavení diagnostiky tenanta.
 
-## <a name="how-do-i-set-up-azure-subscription-monitoring-data-to-be-streamed-to-an-event-hub"></a>Jak nastavit předplatné Azure, data monitorování Streamovat do centra událostí?
+## <a name="azure-subscription-monitoring-data"></a>Předplatné Azure, monitorování dat
 
 Dat monitorování Azure předplatné k dispozici na [protokolu aktivit Azure](./monitoring-overview-activity-logs.md). Obsahuje vytvořit, aktualizovat a operace odstranění z Resource Manageru, změny v [službě Azure service health](../service-health/service-health-overview.md) , který může mít vliv na prostředky v rámci vašeho předplatného [služba resource health](../service-health/resource-health-overview.md) stavu přechody a několik dalších typů událostí na úrovni předplatného. [Tento článek podrobně popisuje všechny kategorie událostí, které se zobrazují v protokolu aktivit Azure](./monitoring-activity-log-schema.md).
 
-### <a name="stream-azure-activity-log-data-into-an-event-hub"></a>Stream data protokolu aktivit Azure do centra událostí
+### <a name="activity-log-data"></a>Data protokolu aktivit
 
 K odesílání dat z protokolu aktivit Azure do Event Hubs oboru názvů, můžete nastavit profil protokolu v rámci předplatného. [Tento návod](./monitoring-stream-activity-logs-event-hubs.md) nastavení profilu protokolu v rámci předplatného. To proveďte, jakmile na jedno předplatné, které chcete monitorovat.
 
 > [!TIP]
 > Profil protokolu aktuálně pouze vám umožní vybrat Event Hubs oboru názvů, ve kterém se vytvoří Centrum událostí s název "insights-operational-logs." Ještě není možné určit vlastní název centra událostí v profilu protokolu.
 
-## <a name="how-do-i-set-up-azure-resource-monitoring-data-to-be-streamed-to-an-event-hub"></a>Jak nastavit data monitorování prostředků Azure Streamovat do centra událostí?
+## <a name="azure-resource-metrics-and-diagnostics-logs"></a>Diagnostika a metriky protokolů prostředků Azure
 
 Prostředky Azure generují data monitorování dva typy:
 1. [Protokolů diagnostiky prostředků](./monitoring-overview-of-diagnostic-logs.md)
@@ -78,25 +78,25 @@ Oba typy dat se posílají do centra událostí pomocí nastavení diagnostiky p
 > [!TIP]
 > Azure Policy můžete použít k zajištění, že každý prostředek v rámci určitého oboru vždy nastavit pomocí nastavení diagnostiky [pomocí DeployIfNotExists efekt v pravidlu zásad](../azure-policy/policy-definition.md#policy-rule). Dnes DeployIfNotExists je podporována pouze na předdefinovaných zásadách.
 
-## <a name="how-do-i-set-up-guest-os-monitoring-data-to-be-streamed-to-an-event-hub"></a>Jak nastavit data monitorování hostovaného operačního systému Streamovat do centra událostí?
+## <a name="guest-os-data"></a>Data hostovaného operačního systému
 
 Je potřeba nainstalovat agenta k odeslání dat monitorování operačního systému hosta do centra událostí. Pro Windows nebo Linux zadejte data, která má k odeslání do centra událostí, jakož i Centrum událostí, ke kterému data, by měly být odeslány v konfiguračním souboru a předat tento konfigurační soubor agenta spuštěného na virtuálním počítači.
 
-### <a name="stream-linux-data-to-an-event-hub"></a>Stream dat s Linuxem do centra událostí
+### <a name="linux-data"></a>Dat s Linuxem
 
 [Agenta diagnostiky Azure Linux](../virtual-machines/extensions/diagnostics-linux.md) je možné odesílat data monitorování z počítače s Linuxem do centra událostí. To proveďte přidáním centra událostí jako jímka v vaše LAD chráněný soubor nastavení JSON. [Najdete v tomto článku se dozvíte informace o přidávání jímky událostí centra diagnostiky Azure Linux agent](../virtual-machines/extensions/diagnostics-linux.md#protected-settings).
 
 > [!NOTE]
 > Nejde nastavit vysílání datového proudu data monitorování hostovaného operačního systému do centra událostí na portálu. Místo toho musíte ručně upravit konfigurační soubor.
 
-### <a name="stream-windows-data-to-an-event-hub"></a>Stream Windows data do centra událostí
+### <a name="windows-data"></a>Windows data
 
 [Agenta diagnostiky Azure Windows](./azure-diagnostics.md) je možné odesílat data monitorování z počítače s Windows do centra událostí. To lze proveďte přidáním centra událostí jako jímka v části privateConfig WAD konfiguračního souboru. [Najdete v tomto článku se dozvíte informace o přidávání jímky centra událostí pro Windows Azure diagnostiky agenta](./azure-diagnostics-streaming-event-hubs.md).
 
 > [!NOTE]
 > Nejde nastavit vysílání datového proudu data monitorování hostovaného operačního systému do centra událostí na portálu. Místo toho musíte ručně upravit konfigurační soubor.
 
-## <a name="how-do-i-set-up-application-monitoring-data-to-be-streamed-to-event-hub"></a>Jak nastavit aplikaci data monitorování se streamují do centra událostí?
+## <a name="application-monitoring-data"></a>Data monitorování aplikace
 
 Monitorování dat aplikací vyžaduje, že váš kód je instrumentovaná pomocí sady SDK, proto není k dispozici pro obecné účely řešení, které směrování application monitoring data do centra událostí v Azure. Ale [Azure Application Insights](../application-insights/app-insights-overview.md) je jedna služba, která slouží ke shromažďování dat Azure úrovni aplikace. Pokud používáte Application Insights, můžete Streamovat data monitorování do centra událostí následujícím způsobem:
 

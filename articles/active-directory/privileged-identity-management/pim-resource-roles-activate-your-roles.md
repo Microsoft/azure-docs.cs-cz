@@ -11,20 +11,20 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: pim
-ms.date: 04/02/2018
+ms.date: 08/21/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 45a2747a60df4d91c2fe1c5247e1d4ac82ff819f
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 2a5c192f231bdc75d04c78cd94838a3f341dc925
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39617145"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43111054"
 ---
 # <a name="activate-roles-for-azure-resources-by-using-privileged-identity-management"></a>Aktivovat role prostředků Azure s použitím Privileged Identity Management
 Privileged Identity Management (PIM) zavádí nové prostředí ve aktivace role prostředků Azure. Oprávněné role členy můžete naplánovat aktivace pro budoucí datum a čas. Může také vybrat dobu trvání konkrétní aktivace v rámci maximální (ve Správci nakonfigurované je). Další informace najdete v tématu [postup aktivace nebo deaktivace role v Azure AD Privileged Identity Management](pim-how-to-activate-role.md).
 
-## <a name="activate-roles"></a>Aktivace role
+## <a name="activate-a-role"></a>Aktivovat roli
 Přejděte **Moje role** části v levém podokně. Vyberte **aktivovat** pro roli, kterou chcete aktivovat.
 
 ![Na kartu "Oprávněných rolí" "role".](media/azure-pim-resource-rbac/rbac-roles.png)
@@ -39,6 +39,19 @@ Pokud je aktivace naplánováno pro budoucí datum a čas, čekající žádost 
 
 ![Seznam čekajících žádostí pomocí tlačítek pro tlačítko Storno.](media/azure-pim-resource-rbac/rbac-activate-pending.png)
 
+## <a name="use-a-role-immediately-after-activation"></a>Použijte roli okamžitě po aktivaci
+
+Z důvodu ukládání do mezipaměti, počet aktivací nedojde okamžitě na webu Azure Portal bez její aktualizaci. Pokud potřebujete omezit možnost zpoždění až po dokončení aktivace rolí, můžete použít **přístupu k aplikacím** stránky na portálu. Nové přiřazení role aplikace k němu přistupovat z této stránky vyhledat okamžitě.
+
+1. Otevřete Azure AD Privileged Identity Management.
+
+1. Klikněte na tlačítko **přístupu k aplikacím** stránky.
+
+    ![Přístup k aplikaci PIM – snímek obrazovky](./media/pim-resource-roles-activate-your-roles/pim-application-access.png)
+
+1. Klikněte na tlačítko **prostředky Azure** znovu otevřít na portálu na **všechny prostředky** stránky.
+
+    Po kliknutí na tento odkaz můžete vynutit aktualizaci a je vyhledat nové přiřazení role prostředků Azure.
 
 ## <a name="apply-just-enough-administration-practices"></a>Použít postupy Just Enough Administration
 

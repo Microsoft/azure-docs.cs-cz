@@ -14,19 +14,19 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-ms.date: 03/13/2018
+ms.date: 08/16/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: d702253c7b58b0a29c03e6563238b56ae75fa0d1
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 8b1290c2030835af1435e9a21602d3d2334a6737
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30841784"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41920528"
 ---
 # <a name="tutorial-connect-virtual-networks-with-virtual-network-peering-using-the-azure-portal"></a>Kurz: Propojení virtuálních sítí s využitím partnerského vztahu virtuálních sítí pomocí webu Azure Portal
 
-Virtuální sítě můžete mezi sebou propojit s využitím partnerského vztahu virtuálních sítí. Po vytvoření partnerského vztahu virtuálních sítí budou moct prostředky v obou virtuálních sítích komunikovat mezi sebou se stejnou latencí a šířkou pásma, jako kdyby byly ve stejné virtuální síti. V tomto kurzu se naučíte:
+Virtuální sítě můžete mezi sebou propojit s využitím partnerského vztahu virtuálních sítí. Tyto virtuální sítě můžou být ve stejné oblasti nebo v různých oblastech (označuje se také jako globální partnerský vztah). Po vytvoření partnerského vztahu virtuálních sítí budou moct prostředky v obou virtuálních sítích komunikovat mezi sebou se stejnou latencí a šířkou pásma, jako kdyby byly ve stejné virtuální síti. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Vytvoření dvou virtuálních sítí
@@ -82,7 +82,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
     |---|---|
     |Název|myVirtualNetwork1-myVirtualNetwork2|
     |Předplatné| Vyberte své předplatné.|
-    |Virtuální síť|myVirtualNetwork2 – Virtuální síť *myVirtualNetwork2*, vyberete tak, že vyberete **Virtuální síť** a pak **myVirtualNetwork2**.|
+    |Virtuální síť|myVirtualNetwork2 – Virtuální síť *myVirtualNetwork2*, vyberete tak, že vyberete **Virtuální síť** a pak **myVirtualNetwork2**. Můžete vybrat virtuální síť ve stejné oblasti nebo v jiné oblasti.|
 
     ![Nastavení partnerského vztahu](./media/tutorial-connect-virtual-networks-portal/peering-settings.png)
 

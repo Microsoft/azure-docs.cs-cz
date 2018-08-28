@@ -10,15 +10,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2018
+ms.date: 08/24/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 9ba954db7003e062444e57bd56f87ff5d279b07f
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 9d33ccf9262d4432ac7255121e97f318d00b5145
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42058378"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43050645"
 ---
 # <a name="resource-provider-api-versions-supported-by-profiles-in-azure-stack"></a>Verze rozhraní API poskytovatele prostředků podporované profily ve službě Azure Stack
 
@@ -197,26 +197,26 @@ Azure Resource Manager umožňuje nasadit a spravovat infrastrukturu pro vaše �
 | Delegovaní poskytovatelé | 2015-01-01 |
 | Delegovaní poskytovatelé/nabídky | 2015-01-01 |
 | DelegatedProviders/offers/estimatePrice | 2015-01-01 |
-| Nasazení | 2016-0209-01 |
-| Nasazení/operace | 2016-0209-01 |
+| Nasazení | 2016-09-01 |
+| Nasazení/operace | 2016-09-01 |
 | Rozšíření metadat | 2015-01-01 |
 | Odkazy | 2016-09-01 |
 | Umístění | 2015-01-01 |
 | Nabídky | 2015-01-01 |
 | Operace | 2015-01-01 |
-| Poskytovatelé | 2015-012017-08-01 |
+| Poskytovatelé | 2017-08-01 |
 | Skupiny prostředků | 2016-09-01 |
 | Zdroje a prostředky | 2016-09-01 |
 | Předplatná | 2016-09-01 |
 | Předplatné/umístění | 2016-09-01 |
 | Výsledky předplatná/operace | 2016-09-01 |
-| Předplatná a poskytovatelé | 2015-012017-08-01 |
+| Předplatná a poskytovatelé | 2017-08-01 |
 | Předplatných nebo skupinách prostředků | 2016-09-01 |
 | Předplatné/resourceGroups/prostředky | 2016-09-01 |
 | Předplatná a prostředky | 2016-09-01 |
-| Předplatné/tagNames | 2016-0609-01 |
-| Předplatné/tagNames/tagValues | 2016-0609-01 |
-| Tenanti | 2015-012017-08-01 |
+| Předplatné/tagNames | 2016-09-01 |
+| Předplatné/tagNames/tagValues | 2016-09-01 |
+| Tenanti | 2017-08-01 |
 
 ### <a name="microsoftstorage"></a>Microsoft.Storage 
 

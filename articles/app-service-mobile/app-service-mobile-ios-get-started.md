@@ -12,30 +12,35 @@ ms.workload: na
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: hero-article
-ms.date: 10/01/2016
+ms.date: 08/17/2018
 ms.author: crdun
-ms.openlocfilehash: 970ad90aa14d5778e8b232e32aa1dacf32789988
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 9809b51f1279c99de69cd1c219ffc57351ff21ef
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38593099"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "41917935"
 ---
 # <a name="create-an-ios-app"></a>Vytvoření aplikace pro iOS
+
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
 ## <a name="overview"></a>Přehled
-Tento kurz ukazuje, jak do aplikace pro iOS přidat cloudovou back-end službu [Azure Mobile Apps](app-service-mobile-value-prop.md). Nejdříve vytvoříme nový mobilní back-end. Poté pomocí jednoduché aplikace pro iOS *Seznam úkolů* uložíme data do Azure.
+
+Tento kurz ukazuje, jak do aplikace pro iOS přidat cloudovou back-end službu [Azure App Service Mobile Apps](app-service-mobile-value-prop.md). Prvním krokem je vytvoření nového mobilního back-endu v Azure. Potom stáhnete ukázkovou aplikaci *seznamu úkolů*, která ukládá data v Azure.
 
 K dokončení tohoto kurzu potřebujete Mac a [účet Azure ](https://azure.microsoft.com/pricing/free-trial/)
 
 ## <a name="step-i-create-a-new-azure-mobile-app-backend"></a>Krok I: Vytvoření nového back-endu mobilní aplikace Azure
+
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
 ## <a name="step-ii-configure-the-backend-project"></a>Krok II: Konfigurace back-end projektu
+
 [!INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
 ## <a name="step-iii-download-and-run-the-ios-app"></a>Krok III: Stažení a spuštění aplikace pro iOS
+
 [!INCLUDE [app-service-mobile-ios-run-app](../../includes/app-service-mobile-ios-run-app.md)]
 
 <!-- URLs -->

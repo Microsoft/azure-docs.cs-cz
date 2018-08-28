@@ -4,18 +4,18 @@ description: Nastavení systému Hadoop, Kafka, Spark, HBase, služby ML nebo cl
 keywords: nastavení clusteru hadoop, cluster kafka nastavení, nastavení clusteru spark, co je cluster hadoop
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: jasonh
-ms.openlocfilehash: 0cb3840c0ce40e062b4de0b7bbd5c9e324d6081f
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: f325e49695cab44d5c3d9fe94cd207755d136f7b
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39595837"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43107125"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-hadoop-spark-kafka-and-more"></a>Nastavení clusterů v HDInsight pomocí Hadoop, Spark, Kafka a další
 

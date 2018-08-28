@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 64bbebcf8b014841d7f0609120e81cf072fdf96e
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: ef3cfb77a47face18ea5f3b75cbbf08d3e275d2e
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091638"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42023730"
 ---
 # <a name="create-and-provision-a-simulated-tpm-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>Vytvoření a zřízení simulovaného zařízení TPM pomocí sady Node.js SDK pro zařízení pro službu IoT Hub Device Provisioning
 
@@ -24,7 +24,7 @@ Tyto kroky ukazují, jak na vývojovém počítači s operačním systémem Wind
 
 Pokud neznáte proces automatického zřizování, měli byste se seznámit také s [koncepty automatického zřizování](concepts-auto-provisioning.md). Než budete pokračovat, ujistěte se také, že jste provedli kroky uvedené v tématu [Nastavení služby IoT Hub Device Provisioning Service pomocí webu Azure Portal](./quick-setup-auto-provision.md). 
 
-[!INCLUDE [IoT DPS basic](../../includes/iot-dps-basic.md)]
+[!INCLUDE [IoT Device Provisioning Service basic](../../includes/iot-dps-basic.md)]
 
 ## <a name="prepare-the-environment"></a>Příprava prostředí 
 

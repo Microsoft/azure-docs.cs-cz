@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: f4bae9ba41f61223a8e18e88e30b8fbf89eff1a9
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: ce1586e472e1d1ea5ddd9ca5a426b1bea2b5b931
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39527588"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42022458"
 ---
 # <a name="set-up-the-iot-hub-device-provisioning-service-with-the-azure-portal"></a>Nastavení služby Azure IoT Hub Device Provisioning pomocí webu Azure Portal
 
@@ -55,10 +55,10 @@ V této části přidáte konfiguraci do instance služby Device Provisioning. T
 
 2. V okně s přehledem služby Device Provisioning vyberte **Propojená centra IoT**. Klikněte na tlačítko **+ Přidat** v horní části. 
 
-3. Na stránce **Přidat propojení na centrum IoT Hub** zadejte následující informace, abyste propojili vaši novou instanci služby Device Provisioning se službou IoT Hub. Potom klikněte na **Uložit**. 
+3. Na stránce **Přidat propojení s centrem IoT** zadejte následující informace, abyste propojili vaši novou instanci služby Device Provisioning s centrem IoT. Potom klikněte na **Uložit**. 
 
-    * **Předplatné:** Vyberte předplatné obsahující službu IoT Hub, kterou chcete propojit s vaší novou instancí služby Device Provisioning.
-    * **IoT Hub:** Vyberte službu IoT Hub k propojení s vaší novou instancí služby Device Provisioning.
+    * **Předplatné:** Vyberte předplatné obsahující centrum IoT, které chcete propojit s vaší novou instancí služby Device Provisioning.
+    * **Centrum IoT:** Vyberte centrum IoT k propojení s vaší novou instancí služby Device Provisioning.
     * **Zásady přístupu:** Vyberte **iothubowner** jako přihlašovací údaje pro vytvoření propojení se službou IoT Hub.  
 
     ![Propojení názvu centra s instancí služby Device Provisioning v okně portálu](./media/quick-setup-auto-provision/link-iot-hub-to-dps-portal.png)  

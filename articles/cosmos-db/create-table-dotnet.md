@@ -9,14 +9,14 @@ ms.component: cosmosdb-table
 ms.custom: quickstart connect, mvc
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 04/10/2018
+ms.date: 08/17/2018
 ms.author: sngun
-ms.openlocfilehash: e70501be61455e9707fcf57d1996729097a0641f
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 020345f5f5de3235a0fb34f1efc27efd771a842d
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38582379"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42023870"
 ---
 # <a name="quickstart-build-a-table-api-app-with-net-and-azure-cosmos-db"></a>Rychlý start: Sestavení aplikace Table API pomocí .NET a Azure Cosmos DB 
 
@@ -117,7 +117,7 @@ Teď jste aktualizovali aplikaci a zadali do ní všechny informace potřebné k
 1. V sadě Visual Studio klikněte v **Průzkumníku řešení** pravým tlačítkem na projekt **TableStorage** a pak klikněte na **Spravovat balíčky NuGet**. 
 
    ![Správa balíčků NuGet](media/create-table-dotnet/azure-cosmosdb-manage-nuget.png)
-2. Do pole **Procházet** NuGet zadejte *Microsoft.Azure.CosmosDB.Table*. Vyhledá se klientská knihovna rozhraní Cosmos DB Table API.
+2. Do pole **Procházet** NuGet zadejte *Microsoft.Azure.CosmosDB.Table*. Vyhledá se klientská knihovna rozhraní Cosmos DB Table API. Poznámka: Tato knihovna je aktuálně dostupná pouze pro .NET Standard, pro .NET Core ještě dostupná není.
    
    ![Karta Procházet NuGet](media/create-table-dotnet/azure-cosmosdb-nuget-browse.png)
 

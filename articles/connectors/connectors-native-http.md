@@ -1,220 +1,91 @@
 ---
-title: Komunikovat s žádný koncový bod přes protokol HTTP - Azure Logic Apps | Microsoft Docs
-description: Vytvoření aplikace logiky, která může komunikovat s žádný koncový bod přes protokol HTTP
+title: Připojte se k libovolný koncový bod protokolu HTTP s Azure Logic Apps | Dokumentace Microsoftu
+description: Automatizace úloh a pracovních postupů, které komunikují s jakýmkoli koncovým bodem HTTP pomocí Azure Logic Apps
 services: logic-apps
-author: jeffhollan
-manager: jeconnoc
-editor: ''
-documentationcenter: ''
-tags: connectors
-ms.assetid: e11c6b4d-65a5-4d2d-8e13-38150db09c0b
 ms.service: logic-apps
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.assetid: e11c6b4d-65a5-4d2d-8e13-38150db09c0b
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 07/15/2016
-ms.author: jehollan; LADocs
-ms.openlocfilehash: 452af4facd03ce2b4f010a29acc0122241df63c1
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+tags: connectors
+ms.date: 08/25/2018
+ms.openlocfilehash: e1561e3be95847efccf487c96bd9c9a8104f161b
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296420"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43106444"
 ---
-# <a name="get-started-with-the-http-action"></a>Začínáme s akce HTTP
+# <a name="call-http-or-https-endpoints-with-azure-logic-apps"></a>Volání koncových bodů HTTP nebo HTTPS s Azure Logic Apps
 
-Pomocí akce HTTP můžete rozšířit pracovní postupy pro vaši organizaci a komunikaci pomocí protokolu HTTP pro libovolný koncový bod.
+S Azure Logic Apps a konektoru protokol HTTP (Hypertext Transfer) můžete automatizovat pracovní postupy, které komunikují s libovolný koncový bod HTTP nebo HTTPS díky vytváření aplikací logiky. Můžete například monitorovat koncový bod služby pro váš web. Pokud k události dojde na tomto koncovém, jako je například webu směrem dolů, událost aktivuje pracovní postup aplikace logiky a spustí zadané akce. 
 
-Můžete:
+HTTP trigger můžete použít jako první krok v váš pracovní postup pro kontrolu nebo *dotazování* koncový bod v pravidelných intervalech. Na každé kontrole, odešle aktivační událost volání nebo *požadavek* ke koncovému bodu. Odpověď koncový bod určuje, jestli se spouští pracovní postup aplikace logiky. Aktivační událost předá jakýkoli obsah z odpovědi na akce ve vaší aplikaci logiky. 
 
-* Vytvořte logiku aplikace pracovní postupy, které aktivovat (aktivační události), kdy web, který spravujete přestane fungovat.
-* Komunikovat s žádný koncový bod přes protokol HTTP rozšířit vaše pracovní postupy k dalším službám.
+Akce HTTP můžete použít jako další krok v pracovním postupu pro volání koncového bodu, pokud chcete. Odpověď koncový bod určuje, jak spustit zbývající akce pracovního postupu.
 
-Chcete-li začít používat akce HTTP v aplikaci logiky, přečtěte si téma [vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
-## <a name="use-the-http-trigger"></a>Pomocí triggeru protokolu HTTP
-Aktivační událost je událost, která můžete použít ke spuštění pracovního postupu, který je definován v aplikaci logiky. [Další informace o aktivační události](connectors-overview.md).
+## <a name="prerequisites"></a>Požadavky
 
-Zde je v sekvenci příklad toho, jak nastavit triggeru protokolu HTTP v Návrháři logiku aplikace.
+* Předplatné Azure. Pokud nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>. 
 
-1. Přidejte triggeru protokolu HTTP v aplikaci logiky.
-2. Zadejte parametry pro koncový bod HTTP, které chcete dotazovat.
-3. Změna intervalu opakování na tom, jak často má dotazovat.
+* Adresa URL pro koncový bod cílové chcete volat 
 
-   Aplikace logiky teď aktivuje s obsahem, který je vrácen během každé kontroly.
+* Základní znalosti o [postupy vytváření aplikací logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-   ![Trigger HTTP](./media/connectors-native-http/using-trigger.png)
+* Pokud chcete volat cílový koncový bod spustit pomocí triggeru protokolu HTTP, aplikace logiky [vytvoření prázdné aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Pokud chcete použít akce HTTP, spusťte aplikaci logiky s triggerem.
 
-### <a name="how-the-http-trigger-works"></a>Jak funguje triggeru protokolu HTTP
+## <a name="add-http-trigger"></a>Přidání triggeru HTTP
 
-Aktivace protokolu HTTP odešle volání koncový bod protokolu HTTP na intervalu opakování. Ve výchozím kódu odpovědi HTTP, která je nižší než 300 způsobí, že aplikace logiky ke spuštění. Chcete-li určit, zda by měly aktivovat aplikaci logiky, můžete upravit aplikaci logiky v zobrazení kódu a přidejte podmínku, která vyhodnotí po volání protokolu HTTP. Tady je příklad HTTP aktivační událost, která aktivuje se v případě vrácený kód stavu je větší než nebo rovno `400`.
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com)a otevřete váš prázdné aplikace logiky v návrháři aplikace logiky, není již otevřete.
 
-```javascript
-"Http":
-{
-    "conditions": [
-        {
-            "expression": "@greaterOrEquals(triggerOutputs()['statusCode'], 400)"
-        }
-    ],
-    "inputs": {
-        "method": "GET",
-        "uri": "https://blogs.msdn.microsoft.com/logicapps/",
-        "headers": {
-            "accept-language": "en"
-        }
-    },
-    "recurrence": {
-        "frequency": "Second",
-        "interval": 15
-    },
-    "type": "Http"
-}
-```
+1. Do vyhledávacího pole zadejte jako filtr "http". V seznamu triggerů vyberte **HTTP** aktivační události. 
 
-Úplné podrobnosti o parametrech aktivace protokolu HTTP jsou k dispozici na [MSDN](https://msdn.microsoft.com/library/azure/mt643939.aspx#HTTP-trigger).
+   ![Výběr triggeru HTTP](./media/connectors-native-http/select-http-trigger.png)
 
-## <a name="use-the-http-action"></a>Pomocí akce HTTP
+1. Zadejte [parametry a hodnoty triggeru HTTP](../logic-apps/logic-apps-workflow-actions-triggers.md##http-trigger) chcete zahrnout při volání do cílového koncového bodu. Nastavení opakování pro jak často chcete, aby se aktivační událost zkontrolujte cílový koncový bod.
 
-Akce je operace, která se provádí v pracovním postupu, který je definován v aplikaci logiky. 
-[Další informace o akcích](connectors-overview.md).
+   ![Zadejte parametry triggeru HTTP](./media/connectors-native-http/http-trigger-parameters.png)
 
-1. Zvolte **nový krok** > **přidat akci**.
-3. Zadejte do vyhledávacího pole Akce **http** seznam akce HTTP.
-   
-    ![Vyberte akci HTTP](./media/connectors-native-http/using-action-1.png)
+   Další informace o aktivační události HTTP, parametry a hodnoty, najdete v části [aktivační události a akce referenční typy](../logic-apps/logic-apps-workflow-actions-triggers.md##http-trigger).
 
-4. Přidejte všechny požadované parametry pro volání protokolu HTTP.
-   
-    ![Dokončení akce HTTP](./media/connectors-native-http/using-action-2.png)
+1. Pokračujte v sestavování pracovního postupu aplikace logiky s akcemi, které běží na aktivaci triggeru.
 
-5. Na panelu nástrojů návrháře, klikněte na tlačítko **Uložit**. Aplikace logiky uložení a publikování (aktivovaný) ve stejnou dobu.
+## <a name="add-http-action"></a>Přidání akce HTTP
 
-## <a name="http-trigger"></a>Trigger HTTP
-Tady jsou uvedené podrobnosti pro aktivační událost, která tento konektor podporuje. Konektor protokolu HTTP má jedna aktivační událost.
+[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-| Trigger | Popis |
-| --- | --- |
-| HTTP |Provede volání protokolu HTTP a vrátí obsahu odpovědi. |
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com)a otevřete svou aplikaci logiky v návrháři aplikace logiky, není již otevřete.
 
-## <a name="http-action"></a>Akce HTTP
-Tady jsou uvedené podrobnosti pro akci, která tento konektor podporuje. Konektor protokolu HTTP má jednu možné akci.
+1. V posledním kroku, ve které chcete přidat akci HTTP, zvolte **nový krok**. 
 
-| Akce | Popis |
-| --- | --- |
-| HTTP |Provede volání protokolu HTTP a vrátí obsahu odpovědi. |
+   V tomto příkladu se spustí aplikace logiky s triggerem HTTP jako první krok.
 
-## <a name="http-details"></a>Podrobnosti protokolu HTTP
-Následující tabulky popisují požadované a volitelné vstupních polí pro akce a odpovídající výstup podrobnosti, které jsou spojené s použitím akce.
+1. Do vyhledávacího pole zadejte jako filtr "http". V seznamu akcí vyberte **HTTP** akce.
 
-#### <a name="http-request"></a>Požadavek protokolu HTTP
-Níže jsou uvedeny vstupních polí pro akce, která umožňuje odchozí požadavku HTTP.
-A * znamená, že je povinné pole.
+   ![Výběr akce HTTP](./media/connectors-native-http/select-http-action.png)
 
-| Zobrazované jméno | Název vlastnosti | Popis |
-| --- | --- | --- |
-| Metoda * |method |Příkaz protokolu HTTP k použití |
-| IDENTIFIKÁTOR URI * |identifikátor uri |Identifikátor URI pro požadavek HTTP |
-| Záhlaví |hlavičky |Objekt JSON zahrnují hlaviček protokolu HTTP |
-| Tělo |hlavní část |Požadavek HTTP |
-| Authentication |Ověřování |Podrobnosti v [ověřování](#authentication) části |
+   Přidání akce mezi kroky, přesuňte ukazatel nad šipku mezi kroky. 
+   Vyberte znaménko plus (**+**), který se zobrazí a pak vyberte **přidat akci**.
 
-<br>
+1. Zadejte [akce HTTP parametry a hodnoty](../logic-apps/logic-apps-workflow-actions-triggers.md##http-action) chcete zahrnout při volání do cílového koncového bodu. 
 
-#### <a name="output-details"></a>Podrobnosti výstupu
-Níže jsou uvedeny podrobnosti výstup pro odpověď HTTP.
+   ![Zadejte parametry akce HTTP](./media/connectors-native-http/http-action-parameters.png)
 
-| Název vlastnosti | Typ dat | Popis |
-| --- | --- | --- |
-| Záhlaví |objekt |Hlavičky odpovědi |
-| Tělo |objekt |Objekt odpovědi |
-| Stavový kód |celá čísla |Stavový kód HTTP |
+1. Jakmile budete hotovi, nezapomeňte že uložení aplikace logiky. Na panelu nástrojů návrháře zvolte **Uložit**. 
 
 ## <a name="authentication"></a>Authentication
-Funkce Logic Apps umožňuje používat různé typy ověřování proti koncových bodů protokolu HTTP. Můžete použít tento ověřování s **HTTP**,  **[HTTP + Swagger](connectors-native-http-swagger.md)**, a **[Webhooku protokolu HTTP](connectors-native-webhook.md)** konektory. Následující typy ověřování se dají konfigurovat:
 
-* [Základní ověřování](#basic-authentication)
-* [Ověřování certifikátu klienta](#client-certificate-authentication)
-* [Ověřování Azure Active Directory (Azure AD) OAuth](#azure-active-directory-oauth-authentication)
+Pokud chcete nastavit ověřování, zvolte **zobrazit pokročilé možnosti** uvnitř triggeru nebo akce. Další informace o typech ověřování k dispozici pro protokol HTTP triggerů a akcí najdete v tématu [aktivační události a akce referenční typy](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication).
 
-#### <a name="basic-authentication"></a>Základní ověřování
+## <a name="get-support"></a>Získat podporu
 
-Následující objekt ověřování je potřeba pro základní ověřování.
-A * znamená, že je povinné pole.
-
-| Název vlastnosti | Typ dat | Popis |
-| --- | --- | --- |
-| Typ * |type |Typ ověřování (musí být `Basic` pro základní ověřování) |
-| Uživatelské jméno * |uživatelské jméno |Uživatelské jméno k ověření |
-| Heslo * |heslo |Heslo k ověření |
-
-> [!TIP]
-> Pokud chcete použít heslo, které nelze načíst z definice, použití `securestring` parametr a `@parameters()`  
->  [funkce definice pracovního postupu](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#secure-parameters-and-inputs-within-a-workflow).
-
-Příklad:
-
-```javascript
-{
-    "type": "Basic",
-    "username": "user",
-    "password": "test"
-}
-```
-
-#### <a name="client-certificate-authentication"></a>Ověřování klientských certifikátů
-
-Následující objekt ověřování je potřeba pro ověřování pomocí certifikátu klienta. A * znamená, že je povinné pole.
-
-| Název vlastnosti | Typ dat | Popis |
-| --- | --- | --- |
-| Typ * |type |Typ ověřování (musí být `ClientCertificate` pro klientské certifikáty SSL) |
-| PFX* |Soubor PFX |Obsah kódováním Base64 soubor Personal Information Exchange (PFX) |
-| Heslo * |heslo |Heslo pro přístup k souboru PFX |
-
-> [!TIP]
-> Chcete-li použít parametr, který nebude možné číst v definici po uložení aplikaci logiky, můžete použít `securestring` parametr a `@parameters()`  
->  [funkce definice pracovního postupu](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#secure-parameters-and-inputs-within-a-workflow).
-
-Příklad:
-
-```javascript
-{
-    "type": "ClientCertificate",
-    "pfx": "aGVsbG8g...d29ybGQ=",
-    "password": "@parameters('myPassword')"
-}
-```
-
-#### <a name="azure-ad-oauth-authentication"></a>Ověřování služby Azure AD OAuth
-Následující objekt ověřování je potřeba pro ověřování Azure AD OAuth. A * znamená, že je povinné pole.
-
-| Název vlastnosti | Typ dat | Popis |
-| --- | --- | --- |
-| Typ * |type |Typ ověřování (musí být `ActiveDirectoryOAuth` pro Azure AD OAuth) |
-| Klienta * |tenant |Identifikátor klienta pro klienta Azure AD |
-| Cílová skupina * |Cílová skupina |Prostředek, pro který žádáte autorizaci, abyste ho mohli používat Příklad: `https://management.core.windows.net/` |
-| Klient ID * |clientId |Identifikátor klienta pro aplikaci Azure AD |
-| Tajný klíč * |Tajný kód |Tajný klíč klienta, který požaduje tokenu |
-
-> [!TIP]
-> Můžete použít `securestring` parametr a `@parameters()` [funkce definice pracovního postupu](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app#secure-parameters-and-inputs-within-a-workflow) použít parametr, který nebude možné číst v definici po uložení.
-> 
-> 
-
-Příklad:
-
-```javascript
-{
-    "type": "ActiveDirectoryOAuth",
-    "tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-    "audience": "https://management.core.windows.net/",
-    "clientId": "34750e0b-72d1-4e4f-bbbe-664f6d04d411",
-    "secret": "hcqgkYc9ebgNLA5c+GDg7xl9ZJMD88TmTJiJBgZ8dFo="
-}
-```
+* Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](http://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Další postup
-Teď vyzkoušet platformu a [vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Ostatní konektory k dispozici v Logic Apps můžete prozkoumat pohledem na našem [rozhraní API seznamu](apis-list.md).
 
+* Další informace o dalších [konektory Logic Apps](../connectors/apis-list.md)

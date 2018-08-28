@@ -1,47 +1,77 @@
 ---
-title: Konektor Trello v Azure Logic Apps | Microsoft Docs
-description: Vytvoření aplikace logiky službou Azure App service. Trello poskytuje perspektivy nad všechny projekty, v práci a doma.  Jedná se o snadný, volné, flexibilní a visual způsob organizace čehokoliv a řízení projektů.  Připojení k Trello ke správě panely, seznamy a karty
+title: Připojení k Trello z Azure Logic Apps | Dokumentace Microsoftu
+description: Automatizace úloh a pracovních postupů, které monitorovat a spravovat seznamy, tabulí a karty v Trellu projektech s využitím Azure Logic Apps
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: ecfan
-manager: jeconnoc
-editor: ''
-tags: connectors
-ms.assetid: fe7a4377-5c24-4f72-ab1a-6d9d23e8d895
 ms.service: logic-apps
-ms.devlang: multiple
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.assetid: fe7a4377-5c24-4f72-ab1a-6d9d23e8d895
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: integration
-ms.date: 08/18/2016
-ms.author: estfan; ladocs
-ms.openlocfilehash: 8f7fefde5f35c65d707ad96a475935dd0d791259
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+tags: connectors
+ms.date: 08/25/2018
+ms.openlocfilehash: 4ae8d3dff108f14844c31d7b9d0b0871326832a3
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296182"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43046145"
 ---
-# <a name="get-started-with-the-trello-connector"></a>Začínáme s konektorem Trello
-Trello poskytuje perspektivy nad všechny projekty, v práci a doma.  Jedná se o snadný, volné, flexibilní a visual způsob organizace čehokoliv a řízení projektů.  Připojte k Trello ke správě panely, seznamy a karty.
+# <a name="monitor-and-manage-trello-with-azure-logic-apps"></a>Monitorování a správa Trello s Azure Logic Apps
 
-Začněte vytvořením aplikace logiky; v tématu [vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+S Azure Logic Apps a konektor Trello můžete vytvořit automatizovaných úloh a pracovních postupů, které monitorovat a spravovat seznam Trello, karty, panely, členové týmu a tak dále, například:
 
-## <a name="create-a-connection-to-trello"></a>Umožňuje vytvořit připojení k Trello
-Chcete-li vytvořit Logic apps s Trello, nejprve vytvořit **připojení**a zadejte podrobnosti pro následující vlastnosti:
+* Monitorování při přidání nové karty do tabulí a seznamy. 
+* Vytvoření, získání a spravovat panely karet a seznamy.
+* Přidejte komentáře a členy na karty.
+* Seznam panely, panel popisky, karty na panely, komentáře karta, Karta Členové, členové týmu a týmů, kterých jste členem. 
+* Získejte týmy.
 
-| Vlastnost | Požaduje se | Popis |
-| --- | --- | --- |
-| Podpisový |Ano |Zadat přihlašovací údaje k Trellu |
+Můžete použít aktivační události, které odpovědi z vašeho účtu Trello a zpřístupnit výstup dalších akcí. Pomocí akcí, které provádějí úlohy s vaším účtem Trello. Také můžete mít další akce pomocí výstupu z akce Trello. Například při přidání nové karty na panelu nebo seznam, můžete odesílat zprávy s konektoru Slack. Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
-Po vytvoření připojení, můžete ke spouštění akcí a naslouchat aktivačních událostí.
+## <a name="prerequisites"></a>Požadavky
 
-> [!INCLUDE [Steps to create a connection to Trello](../../includes/connectors-create-api-trello.md)]
-> 
+* Předplatné Azure. Pokud nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>. 
 
-## <a name="connector-specific-details"></a>Podrobnosti o konkrétní konektor
+* Váš účet a uživatelské přihlašovací údaje k Trellu
 
-Zobrazit všechny aktivační události a akce definované v swagger a také zobrazit žádné limity v [connector – podrobnosti](/connectors/trello/).
+  Vaše přihlašovací údaje autorizaci aplikace logiky k vytvoření připojení a přístup k vašemu účtu Trello.
 
-## <a name="more-connectors"></a>Více konektorů
-Přejděte zpět [rozhraní API seznamu](apis-list.md).
+* Základní znalosti o [postupy vytváření aplikací logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+
+* Aplikace logiky, ve které chcete přístup k vašemu účtu Trello. Spustit s triggerem Trello [vytvoření prázdné aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Použít akci Trello, spuštění aplikace logiky s triggerem, například, **opakování** aktivační události.
+
+## <a name="connect-to-trello"></a>Připojení k Trello
+
+[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
+
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com)a otevřete svou aplikaci logiky v návrháři aplikace logiky, není již otevřete.
+
+1. V případě prázdné logic apps do vyhledávacího pole zadejte jako filtr "trello". V seznamu triggerů vyberte trigger, který chcete. 
+
+   -nebo-
+
+   Pro existující aplikace logiky v posledním kroku, ve které chcete přidat akci, zvolte **nový krok**. 
+   Do vyhledávacího pole zadejte jako filtr "trello". 
+   V seznamu akcí vyberte požadovanou akci.
+
+   Přidání akce mezi kroky, přesuňte ukazatel nad šipku mezi kroky. 
+   Vyberte znaménko plus (**+**), který se zobrazí a pak vyberte **přidat akci**.
+
+1. Pokud se zobrazí výzva k přihlášení k Trellu, autorizaci přístupu pro aplikaci logiky a přihlaste se.
+
+1. Zadejte potřebné podrobnosti o vybrané aktivační události nebo akce a pokračujte v rozvíjení pracovní postup aplikace logiky.
+
+## <a name="connector-reference"></a>Referenční informace ke konektorům
+
+Technické podrobnosti o omezení, akce a triggery, které jsou popsány pomocí konektoru OpenAPI (dříve Swagger) popis, přečtěte si tento konektor [referenční stránce](/connectors/trello/).
+
+## <a name="get-support"></a>Získat podporu
+
+* Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](http://aka.ms/logicapps-wish).
+
+## <a name="next-steps"></a>Další postup
+
+* Další informace o dalších [konektory Logic Apps](../connectors/apis-list.md)

@@ -5,16 +5,16 @@ services: hdinsight
 ms.service: hdinsight
 author: jasonwhowell
 ms.author: jasonh
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 7965a91efe58102268f4d54275e7fa3fc4ff74d3
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
-ms.translationtype: HT
+ms.openlocfilehash: 7b3d2d47db733d1290bccca0e44958098451324e
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39617781"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43046408"
 ---
 # <a name="get-started-with-ml-services-on-azure-hdinsight"></a>Začínáme se službou ML Services v Azure HDInsight
 
@@ -223,7 +223,7 @@ Vytváření clusteru služby ML Services pro HDInsight můžete automatizovat p
 
 Pokud narazíte na problémy s vytvářením clusterů HDInsight, podívejte se na [požadavky na řízení přístupu](../hdinsight-administer-use-portal-linux.md#create-clusters).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto článku jste zjistili, jak vytvořit nový cluster služby ML Services v Azure HDInsight, a seznámili jste se se základy používání konzoly R z relace SSH. Následující články popisují další způsoby správy a práce se službou ML Services v HDInsight:
 

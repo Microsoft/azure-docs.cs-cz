@@ -3,23 +3,19 @@ title: Integrace služby Azure Automation se službou Event Grid | Microsoft Doc
 description: Zjistěte, jak automaticky přidat značku, když se vytvoří nový virtuální počítač, a odeslat oznámení do Microsoft Teams.
 keywords: automation, runbook, teams, event grid, virtual machine, VM
 services: automation
-documentationcenter: ''
 author: eamonoreilly
 manager: ''
-editor: ''
 ms.service: automation
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/06/2017
+ms.date: 08/14/2018
 ms.author: eamono
-ms.openlocfilehash: 6270f8bad893798f46d8db91e7b1140b6a125350
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: a4356f38df017901ab219318463538003d3a979e
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049860"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "41918310"
 ---
 # <a name="integrate-azure-automation-with-event-grid-and-microsoft-teams"></a>Integrace služby Azure Automation se službou Event Grid a Microsoft Teams
 
@@ -87,28 +83,30 @@ K dokončení tohoto kurzu je potřeba [účet Azure Automation](../automation/a
 
     ![Konfigurace parametrů webhooku](media/ensure-tags-exists-on-new-virtual-machines/configure-webhook-parameters.png)
 
-5. Vyberte **OK** a vytvořte webhook runbooku služby Automation.
-
+5. Vyberte **Vytvořit** a vytvořte webhook runbooku služby Automation.
 
 ## <a name="create-an-event-grid-subscription"></a>Vytvoření odběru Event Gridu
+
 1. Na stránce s přehledem **Účet Automation** vyberte **Event Grid**.
 
     ![Výběr Event Gridu](media/ensure-tags-exists-on-new-virtual-machines/select-event-grid.png)
 
-2. Vyberte tlačítko **+ Odběr události**.
+2. Klikněte na **+ Odběr události**.
 
 3. Nakonfigurujte odběr podle následujících informací:
 
-    *   Jako název zadejte **AzureAutomation**.
-    *   V části **Typ tématu** vyberte **Předplatná Azure**.
-    *   Zrušte zaškrtnutí políčka **Přihlásit se k odběru všech typů událostí**.
-    *   V části **Typy událostí** vyberte **Úspěšný zápis prostředku**.
-    *   Do pole **Koncový bod odběratele** zadejte adresu URL webhooku pro runbook Watch-VMWrite.
-    *   V části **Filtr předpon** zadejte předplatné a skupinu prostředků, kde chcete hledat nově vytvořené virtuální počítače. Mělo by to vypadat takto: `/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.Compute/virtualMachines`
+   * Jako **Typ tématu** vyberte **Předplatná Azure**.
+   * Zrušte zaškrtnutí políčka **Přihlásit se k odběru všech typů událostí**.
+   * Jako název zadejte **AzureAutomation**.
+   * V rozevíracím seznamu **Definované typy událostí** zrušte zaškrtnutí všech možností kromě možnosti **Úspěšný zápis prostředku**.
+   * Jako **Typ koncového bodu** vyberte **Webhook**.
+   * Klikněte na **Vybrat koncový bod**. Na stránce **Vybrat webhook**, která se otevře, vložte adresu URL webhooku, který jste vytvořili pro runbook Watch-VMWrite.
+   * V části **FILTRY** zadejte předplatné a skupinu prostředků, kde chcete hledat nově vytvořené virtuální počítače. Mělo by to vypadat takto: `/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.Compute/virtualMachines`
 
 4. Výběrem možnosti **Vytvořit** uložte odběr Event Gridu.
 
 ## <a name="create-a-vm-that-triggers-the-runbook"></a>Vytvoření virtuálního počítače, který spustí runbook
+
 1. Vytvořte nový virtuální počítač ve skupině prostředků, kterou jste zadali ve filtru předpon odběru Event Gridu.
 
 2. Měl by se zavolat runbook Watch-VMWrite a přidat se nová značka k virtuálnímu počítači.
@@ -120,6 +118,7 @@ K dokončení tohoto kurzu je potřeba [účet Azure Automation](../automation/a
     ![Oznámení Microsoft Teams](media/ensure-tags-exists-on-new-virtual-machines/teams-vm-message.png)
 
 ## <a name="next-steps"></a>Další kroky
+
 V tomto kurzu nastavíte integraci služeb Event Grid a Automation. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]

@@ -3,18 +3,18 @@ title: Správa clusterů Hadoop využívající systém Windows v HDInsight pomo
 description: Zjistěte, jak spravovat službu HDInsight. Vytvoření clusteru HDInsight, otevřete interaktivní konzoly jazyka JavaScript a otevřete konzoly příkaz Hadoop.
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: a4cbc0c14d0f6c505b391becf33c56dd95bfc251
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 7b39724c3d382637a048dc4fb9a3436ac1dbeae8
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39592216"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43108020"
 ---
 # <a name="manage-windows-based-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Správa clusterů Hadoop využívající systém Windows v HDInsight pomocí webu Azure portal
 

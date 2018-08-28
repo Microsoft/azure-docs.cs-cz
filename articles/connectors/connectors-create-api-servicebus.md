@@ -1,125 +1,141 @@
 ---
-title: Nastavení zasílání zpráv s Azure Service Bus pro Azure Logic Apps | Microsoft Docs
-description: Odesílat a přijímat zprávy s logic apps pomocí Azure Service Bus
+title: Odesílání a příjem zpráv pomocí služby Azure Service Bus – Azure Logic Apps | Dokumentace Microsoftu
+description: Nastavení cloudu Podnikové zasílání zpráv pomocí služby Azure Service Bus v Azure Logic Apps
 services: logic-apps
-documentationcenter: ''
-author: ecfan
-manager: jeconnoc
-editor: ''
-tags: connectors
-ms.assetid: d6d14f5f-2126-4e33-808e-41de08e6721f
 ms.service: logic-apps
-ms.devlang: multiple
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.assetid: d6d14f5f-2126-4e33-808e-41de08e6721f
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: logic-apps
-ms.date: 02/06/2018
-ms.author: ladocs
-ms.openlocfilehash: aa6ab10dded541b352bdb7c8c3a47dbbbfe6a15c
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+tags: connectors
+ms.date: 08/25/2018
+ms.openlocfilehash: 813df5b4ef37ad1264df48863aa8f0ed5a4d4789
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295464"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43048770"
 ---
-# <a name="send-and-receive-messages-with-the-azure-service-bus-connector"></a>Odesílat a přijímat zprávy pomocí konektoru služby Azure Service Bus
+# <a name="exchange-messages-in-the-cloud-with-azure-service-bus-and-azure-logic-apps"></a>Výměna zpráv v cloudu pomocí služby Azure Service Bus a Azure Logic Apps
 
-Pokud chcete odesílat a přijímat zprávy pomocí aplikace logiky, připojte se ke [Azure Service Bus](https://azure.microsoft.com/services/service-bus/). Můžete provádět akce, například odeslání do fronty, odesílat do tématu, přijímat z fronty a přijímat z odběru. Další informace o [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) a [jak ceny funguje Logic Apps aktivuje](../logic-apps/logic-apps-pricing.md).
+S Azure Logic Apps a konektor služby Azure Service Bus můžete vytvořit automatizovaných úloh a pracovních postupů, které přenosu dat, jako je sales a nákupních objednávek, denících a pohybů plb typu inventáře napříč aplikacemi pro vaši organizaci. Konektor nejen monitoruje, odešle a spravuje zprávy, ale také provede akce s frontami, relace, témata, odběry a tak dále, například:
+
+* Monitorování při doručení (automatické dokončení) nebo jsou přijaté nahlédnutím (peek-lock) do fronty, témata a odběry témat zprávy. 
+* Odesílání zpráv.
+* Vytvářet a odstraňovat odběry tématu.
+* Správa zpráv do front a odběrů tématu, například získat, získat odloženo, dokončení, odložit, zrušení a onta nedoručených zpráv.
+* Obnovte uzamčení zprávy a relace do front a odběrů tématu.
+* Zavřít relace ve frontách a tématech.
+
+Můžete použít aktivační události, které odpovědi ze služby Service Bus a zpřístupnit výstup dalších akcí ve svých aplikacích logiky. Také můžete mít další akce pomocí výstupu z akce služby Service Bus. Pokud jste služby Service Bus a Logic Apps teprve začínáte, přečtěte si [co je Azure Service Bus?](../service-bus-messaging/service-bus-messaging-overview.md) a [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než budete moct použít konektor Service Bus, musíte mít tyto položky, které musí existovat ve stejném předplatném Azure tak, že jsou na sobě navzájem viditelný:
+* Předplatné Azure. Pokud nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>. 
 
-* A [oboru názvů Service Bus a zasílání zpráv entity, jako je například fronty](../service-bus-messaging/service-bus-create-namespace-portal.md)
-* A [aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Obor názvů služby Service Bus a entity pro zasílání zpráv, jako jsou fronty. Pokud nemáte k dispozici tyto položky, zjistěte, jak [vytvoření oboru názvů služby Service Bus a fronty](../service-bus-messaging/service-bus-create-namespace-portal.md). 
+
+  Tyto položky musí existovat ve stejném předplatném Azure jako logic apps, které používají tyto položky.
+
+* Základní znalosti o [postupy vytváření aplikací logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+
+* Aplikace logiky, ve které chcete použít Service Bus. Aplikace logiky musí existovat ve stejném předplatném Azure jako vaše služby Service bus. Začít s triggerem Service Bus [vytvoření prázdné aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Pokud chcete použít akce služby Service Bus, spusťte svou aplikaci logiky s další aktivační události, například, **opakování** aktivační události.
 
 <a name="permissions-connection-string"></a>
 
-## <a name="connect-to-azure-service-bus"></a>Připojení k Azure Service Bus
+## <a name="check-permissions"></a>Zkontrolujte oprávnění
 
-Než se aplikace logiky k jakékoli služby, je nutné vytvořit [ *připojení* ](./connectors-overview.md) mezi svou aplikaci logiky a služby, pokud jste tak ještě neučinili. Toto připojení autorizuje aplikace logiky pro přístup k datům. Aplikace logiky pro přístup k účtu služby Service Bus zkontrolujte svá oprávnění.
+Ověřte, jestli aplikace logiky má oprávnění pro přístup k oboru názvů služby Service Bus. 
 
-1. Přihlaste se na web [Azure Portal](https://portal.azure.com "Azure Portal"). 
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
 
-2. Přejděte na Service Bus *obor názvů*, nikoli konkrétní "entity přenosu zpráv". Na stránce obor názvů v části **nastavení**, zvolte **zásady sdíleného přístupu**. V části **deklarace identity**, zkontrolujte, zda máte **spravovat** oprávnění pro tento obor názvů.
+2. Přejděte na Service Bus *obor názvů*. Na stránce obor názvů v rámci **nastavení**vyberte **zásady sdíleného přístupu**. V části **deklarace identity**, zkontrolujte, jestli máte **spravovat** oprávnění pro tento obor názvů
 
-   ![Správa oprávnění pro obor názvů Service Bus](./media/connectors-create-api-azure-service-bus/azure-service-bus-namespace.png)
+   ![Spravovat oprávnění pro váš obor názvů služby Service Bus](./media/connectors-create-api-azure-service-bus/azure-service-bus-namespace.png)
 
-3. Pokud chcete zadat informace o připojení později ručně, získáte připojovací řetězec pro obor názvů sběrnice. Zvolte **RootManageSharedAccessKey**. Vedle primární klíče připojovacího řetězce vyberte tlačítko Kopírovat. Uložte připojovací řetězec pro pozdější použití.
+3. Získání připojovacího řetězce pro váš obor názvů služby Service Bus. Tento řetězec budete potřebovat při zadání informací o připojení v aplikaci logiky.
 
-   ![Zkopírujte připojovací řetězec sběrnice služeb obor názvů](./media/connectors-create-api-azure-service-bus/find-service-bus-connection-string.png)
+   1. Vyberte **RootManageSharedAccessKey**. 
+   
+   1. Vedle primární připojovací řetězec klikněte na tlačítko Kopírovat. Uložte připojovací řetězec pro pozdější použití.
+
+      ![Zkopírujte připojovací řetězec pro obor názvů Service Bus](./media/connectors-create-api-azure-service-bus/find-service-bus-connection-string.png)
 
    > [!TIP]
-   > Chcete-li ověřit, zda je připojovací řetězec přidružené vašeho oboru názvů Service Bus nebo s konkrétní entitu, zkontrolujte připojovací řetězec pro `EntityPath` parametr. Pokud zjistíte, tento parametr, připojovací řetězec je pro konkrétní entitu a není správný řetězec, který má používat s svou aplikaci logiky.
+   > Potvrďte, zda je přidružené k oboru názvů služby Service Bus nebo entity pro zasílání zpráv, jako jsou fronty, aby váš připojovací řetězec hledání připojovací řetězec pro `EntityPath` parametru. Pokud tento parametr najít, připojovací řetězec je pro konkrétní entitu a není správný řetězec, který má používat s aplikací logiky.
 
-## <a name="trigger-workflow-when-your-service-bus-gets-new-messages"></a>Aktivují pracovní postup, když Service Bus získá nové zprávy
+## <a name="add-trigger-or-action"></a>Přidání triggeru nebo akce
 
-A [ *aktivační událost* ](../logic-apps/logic-apps-overview.md#logic-app-concepts) je událost, která se spouští v aplikaci logiky pracovního postupu. Spuštění pracovního postupu odeslání nové zprávy do služby Service Bus, postupujte podle těchto kroků pro přidání aktivační událost, která rozpoznává tyto zprávy.
+[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. V [portál Azure](https://portal.azure.com "portál Azure"), přejděte do existující aplikace logiky nebo vytvoření aplikace logiky prázdné.
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com)a otevřete svou aplikaci logiky v návrháři aplikace logiky, není již otevřete.
 
-2. V návrháři aplikace logiky zadejte do vyhledávacího pole jako filtr "service bus". Vyberte **Service Bus** konektor. 
+1. Chcete-li přidat *aktivační událost* do prázdné aplikace logiky, do vyhledávacího pole zadejte "Azure Service Bus" jako filtr. V seznamu triggerů vyberte trigger, který chcete. 
 
-   ![Vyberte konektor služby Service Bus](./media/connectors-create-api-azure-service-bus/select-service-bus-connector.png) 
+   Například při vytvoření nové položky se odešlou do fronty služby Service Bus, spustit aplikaci logiky, vyberte tento trigger: **při doručení zprávy do fronty (automatické dokončení)**
 
-3. Vyberte aktivační událost, která chcete použít. Můžete například spustit aplikace logiky po vytvoření nové položky se odešlou do fronty Service Bus, vybrat možnost této aktivační události: **Service Bus - při příjmu zprávy ve frontě (automatické dokončování)**
-
-   ![Vyberte aktivační události služby Service Bus](./media/connectors-create-api-azure-service-bus/select-service-bus-trigger.png)
+   ![Výběr triggeru služby Service Bus](./media/connectors-create-api-azure-service-bus/select-service-bus-trigger.png)
 
    > [!NOTE]
-   > Některé se aktivuje návratový jeden nebo zprávy, jako *Service Bus - při obdržení jeden nebo více zpráv ve frontě (automatické dokončování)* aktivační událost.
-   > Pokud tyto triggery fire, vracejí mezi jeden a počet zpráv zadaný má aktivační procedura **maximální počet zpráv** vlastnost.
+   > Některé aktivačních událostí může vracet instanci jednoho nebo zprávy, například aktivační událost, **při doručení jedné či více zpráv do fronty (automatické dokončení)**. Když tyto triggery aktivují, vrátí rozsahu od 1 do počtu zpráv zadaného má aktivační procedura **maximální počet zpráv** vlastnost.
 
-   1. Pokud již nemáte připojení k oboru názvů Service Bus, se zobrazí výzva k vytvoření nyní toto připojení. Zadejte název připojení a vyberte obor názvů Service Bus, který chcete použít.
+   *Všechny aktivační události služby Service Bus jsou triggery s dlouhým intervalem dotazování*, což znamená, že když se trigger aktivuje, aktivační událost zpracovávat všechny zprávy a poté počká 30 sekund pro další zprávy zobrazit v předplatném fronty nebo tématu. 
+   Pokud během 30 sekund, nezobrazí se žádné zprávy, spuštění aktivační události je přeskočeno. 
+   V opačném případě se aktivační událost pokračuje v čtení zpráv do fronty nebo tématu předplatné je prázdné. Další cyklického dotazování aktivační události je založená na opakování intervalu zadaném ve vlastnosti aktivační události.
 
-      ![Vytvoření připojení k Service Bus](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-1.png)
+1. Chcete-li přidat *akce* do existující aplikace logiky, postupujte podle těchto kroků: 
 
-      Nebo, pokud chcete ručně zadat připojovací řetězec, zvolte **ručně zadat informace o připojení**. 
-      Další informace [jak najít připojovací řetězec](#permissions-connection-string).
-      
+   1. V posledním kroku, ve které chcete přidat akci, zvolte **nový krok**. 
 
-   2. Nyní vyberte zásadu Service Bus, a klikněte na **vytvořit**.
+      Přidání akce mezi kroky, přesuňte ukazatel nad šipku mezi kroky. 
+      Vyberte znaménko plus (**+**), který se zobrazí a pak vyberte **přidat akci**.
+
+   1. Do vyhledávacího pole zadejte jako filtr "Azure Service Bus". 
+   V seznamu akcí vyberte požadovanou akci. 
+ 
+      Například vyberte tuto akci: **odeslat zprávu**
+
+      ![Výběr akce služby Service Bus](./media/connectors-create-api-azure-service-bus/select-service-bus-send-message-action.png) 
+
+1. Pokud vaše aplikace logiky se připojujete poprvé do svého oboru názvů služby Service Bus, Návrhář aplikace logiky teď vás vyzve k zadání informací o připojení. 
+
+   1. Zadejte název připojení a zvolte svůj obor názvů služby Service Bus.
+
+      ![Vytvoření připojení k Service Bus, část 1](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-1.png)
+
+      Chcete-li ručně místo toho zadejte připojovací řetězec, zvolte **ručně zadat informace o připojení**. 
+      Pokud nemáte k dispozici připojovací řetězec, přečtěte si [jak zjistit připojovací řetězec](#permissions-connection-string).
+
+   1. Teď vyberte zásady služby Service Bus a pak zvolte **vytvořit**.
 
       ![Vytvoření připojení k Service Bus, část 2](./media/connectors-create-api-azure-service-bus/create-service-bus-connection-2.png)
 
-4. Vyberte fronty Service Bus použít, a nastavte interval a četnost pro doby kontroly fronty.
+1. V tomto příkladu vyberte entity zasílání zpráv, které potřebujete, jako je například fronta nebo téma. V tomto příkladu vyberte fronty služby Service Bus. 
+   
+   ![Vyberte frontu služby Service Bus](./media/connectors-create-api-azure-service-bus/service-bus-select-queue.png)
 
-   ![Vybrat fronty Service Bus, nastavení intervalu dotazování](./media/connectors-create-api-azure-service-bus/select-service-bus-queue.png)
+1. Zadejte potřebné podrobnosti o triggeru nebo akce. V tomto příkladu postupujte podle příslušných kroků u triggeru nebo akce: 
 
-   > [!NOTE]
-   > Všechny aktivační události služby Service Bus jsou **dlouho dotazování** aktivační události, které znamená, že když aktivační událost se aktivuje, aktivační událost zpracovávat všechny zprávy a potom počká, než 30 sekund pro další zprávy zobrazit v rámci předplatného fronta nebo téma.
-   > Pokud nejsou přijaty žádné zprávy v 30 sekund, je přeskočen spustit aktivační událost. Aktivační událost, jinak hodnota pokračuje čtení zpráv, dokud se fronta nebo téma předplatné je prázdné.
-   > Další cyklického dotazování aktivační události je založena na opakování intervalu zadaném ve vlastnosti aktivační události.
+   * **Pro trigger ukázka**: nastavte interval cyklického dotazování a frekvenci kontroly fronty.
 
-5. Uložte svou aplikaci logiky. Na panelu nástrojů návrháře zvolte **Uložit**.
+     ![Nastavit interval dotazování](./media/connectors-create-api-azure-service-bus/service-bus-trigger-details.png)
 
-Teď když aplikace logiky ověří vybrané frontu a najde nové zprávy, aktivační událost spustí akce v aplikaci logiky nalezena zpráva.
+     Jakmile budete hotovi, pokračujte v sestavování pracovního postupu aplikace logiky tak, že přidáte akce, které chcete. Můžete například přidat akci, která odešle e-mail, když přijde nová zpráva.
+     Když trigger zkontroluje fronty a zjistí novou zprávu, aplikace logiky spouští vaše vybrané akce pro nalezenou zprávu.
 
-## <a name="send-messages-from-your-logic-app-to-your-service-bus"></a>Odesílání zpráv z aplikace logiky k Service Bus
+   * **Ukázka akce**: Zadejte obsah zprávy a další podrobnosti. 
 
-[*Akce*](../logic-apps/logic-apps-overview.md#logic-app-concepts) je úloha, kterou provádí pracovní postup vaší aplikace logiky. Když do aplikace logiky přidáte trigger, můžete přidat akci, která bude provádět určitou operaci s daty generovanými triggerem. K odeslání zprávy do vaší služby Service Bus zasílání zpráv entita z aplikace logiky, postupujte podle těchto kroků.
+     ![Zadejte obsah zprávy a podrobnosti](./media/connectors-create-api-azure-service-bus/service-bus-send-message-details.png)
 
-1. V návrháři aplikace logiky, vyberte v části aktivační událost, **+ nový krok** > **přidat akci**.
+     Jakmile budete hotovi, pokračujte v sestavování pracovního postupu aplikace logiky tak, že přidáte další požadované akce. Můžete například přidat akci, která odešle e-mail s potvrzením, že zpráva byla odeslána.
 
-2. Do vyhledávacího pole zadejte "service bus" jako filtr. Vyberte tento konektor: **Service Bus**
+1. Uložte svou aplikaci logiky. Na panelu nástrojů návrháře zvolte **Uložit**.
 
-   ![Vyberte konektor služby Service Bus](./media/connectors-create-api-azure-service-bus/select-service-bus-connector-for-action.png) 
+## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-3. Vyberte tuto akci: **Service Bus – odesílání zprávy**
-
-   ![Vyberte "Service Bus – odesílání zprávy"](./media/connectors-create-api-azure-service-bus/select-service-bus-send-message-action.png)
-
-4. Vyberte entity zasílání zpráv, což je název fronta nebo téma o tom, kde k odeslání zprávy. Potom zadejte obsah zprávy a další podrobnosti.
-
-   ![Vyberte entity zasílání zpráv a zadejte podrobnosti zprávy](./media/connectors-create-api-azure-service-bus/service-bus-send-message-details.png)    
-
-5. Uložte svou aplikaci logiky. 
-
-Nyní jste nastavili akci, která odesílá zprávy z vaší aplikace logiky. 
-
-## <a name="connector-specific-details"></a>Podrobnosti o konkrétní konektor
-
-Další informace o aktivační události a akce definované těmito souboru Swagger a všechny omezení, podívejte se [connector – podrobnosti](/connectors/servicebus/).
+Technické podrobnosti o omezení, akce a triggery, které jsou popsány pomocí konektoru OpenAPI (dříve Swagger) popis, přečtěte si tento konektor [referenční stránce](/connectors/servicebus/).
 
 ## <a name="get-support"></a>Získat podporu
 
@@ -128,4 +144,4 @@ Další informace o aktivační události a akce definované těmito souboru Swa
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o [ostatní konektory pro Azure Logic apps](../connectors/apis-list.md)
+* Další informace o dalších [konektory Logic Apps](../connectors/apis-list.md)

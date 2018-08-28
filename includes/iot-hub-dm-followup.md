@@ -1,3 +1,20 @@
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: iot-hub
+ms.service: iot-hub
+author: dominicbetts
+ms.topic: include
+ms.date: 05/17/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: 3cdfa74c5f124e57b125399e39b7981b1dfb6d09
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43096382"
+---
 ## <a name="customize-and-extend-the-device-management-actions"></a>Přizpůsobení a rozšíření akce správy zařízení
 
 Řešení IoT můžete rozbalit definovanou sadu vzorů správy zařízení nebo povolit vlastní vzory pomocí dvojče zařízení a primitiv metoda typu cloud zařízení. Ostatní zařízení správu příklady akcí obnovení továrního nastavení, aktualizace firmwaru, aktualizace softwaru, řízení spotřeby, sítě a připojení správy a šifrování dat.
@@ -12,12 +29,8 @@ V tomto kurzu jste použili přímé metody k aktivaci vzdálené restartování
 
 Chcete-li pokračovat v seznamování se službou IoT Hub a schémata správy zařízení jako vzdálené přes aktualizace firmwaru air, naleznete v tématu:
 
-[Kurz: Jak provést upgrade firmwaru][lnk-fwupdate]
+[Kurz: Jak provést upgrade firmwaru](../articles/iot-hub/tutorial-firmware-update.md)
 
-Zjistěte, jak rozšířit vaše IoT řešení a plán metoda volá do různých zařízení, najdete v článku [plánování a vysílání úloh] [ lnk-tutorial-jobs] kurzu.
+Zjistěte, jak rozšířit vaše IoT řešení a plán metoda volá do různých zařízení, najdete v článku [plánování a vysílání úloh](../articles/iot-hub/iot-hub-node-node-schedule-jobs.md) kurzu.
 
-Chcete-li pokračovat v seznamování se službou IoT Hub, přečtěte si téma [Začínáme s IoT Edge][lnk-iot-edge].
-
-[lnk-fwupdate]: ../articles/iot-hub/tutorial-firmware-update.md
-[lnk-tutorial-jobs]: ../articles/iot-hub/iot-hub-node-node-schedule-jobs.md
-[lnk-iot-edge]: ../articles/iot-edge/tutorial-simulate-device-linux.md
+Chcete-li pokračovat v seznamování se službou IoT Hub, přečtěte si téma [Začínáme s IoT Edge](../articles/iot-edge/tutorial-simulate-device-linux.md).

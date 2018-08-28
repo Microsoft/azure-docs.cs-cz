@@ -1,67 +1,82 @@
 ---
-title: Pomocí konektoru systému Slack v Azure logic apps | Microsoft Docs
-description: Připojení k systému Slack ve vašich logic apps
+title: Připojení k Slack z Azure Logic Apps | Dokumentace Microsoftu
+description: Automatizace úloh a pracovních postupů, které soubory monitorování a Správa kanálů, skupin a zprávy v účtu Slack s využitím Azure Logic Apps
 services: logic-apps
-documentationcenter: ''
-author: ecfan
-manager: jeconnoc
-editor: ''
-tags: connectors
-ms.assetid: 234cad64-b13d-4494-ae78-18b17119ba24
 ms.service: logic-apps
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.assetid: 234cad64-b13d-4494-ae78-18b17119ba24
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 05/18/2016
-ms.author: estfan; ladocs
-ms.openlocfilehash: 88b134a90ac385ad957d76f420fe85dc2dbbf751
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+tags: connectors
+ms.date: 08/25/2018
+ms.openlocfilehash: 7af2db528866d687064e854e00e43e81d2601b2b
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296219"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43042321"
 ---
-# <a name="get-started-with-the-slack-connector"></a>Začínáme s Slack konektoru
-Slack je týmový komunikační nástroj, který na jednom místě spojuje veškerou komunikaci v týmu, a to s možností okamžitého vyhledávání a dostupností kdekoli na cestách. 
+# <a name="monitor-and-manage-slack-with-azure-logic-apps"></a>Monitorování a správa Slack s Azure Logic Apps
 
-Začněte vytvořením aplikace logiky nyní; v tématu [vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+S Azure Logic Apps a Slack konektor můžete vytvořit automatizovaných úloh a pracovních postupů, které soubory Slack monitorování a Správa kanálů Slack, zprávy, skupiny a tak dále, například:
 
-## <a name="create-a-connection-to-slack"></a>Umožňuje vytvořit připojení k systému Slack
-K používání konektoru Slack, je třeba nejprve vytvořit **připojení** pak zadejte podrobnosti pro tyto vlastnosti: 
+* Sleduje, vytvoří se nové soubory.
+* Vytváření, výpisu a připojte se k kanály 
+* Odesílání zpráv.
+* Vytváření skupin a sada Nerušit.
 
-| Vlastnost | Požaduje se | Popis |
-| --- | --- | --- |
-| Podpisový |Ano |Zadejte přihlašovací údaje pro Slack. |
+Můžete použít aktivační události, které odpovědi ze svého účtu Slack a zpřístupnit výstup dalších akcí. Pomocí akcí, které provádějí úlohy pomocí svého účtu Slack. Také můžete mít další akce pomocí výstupu z akce Slack. Například když je vytvořen nový soubor, můžete odesílat e-mailu s konektorem Office 365 Outlook. Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
-Přihlaste se k systému Slack pomocí následujících kroků a dokončete konfiguraci rezervy **připojení** v aplikaci logiky:
+## <a name="prerequisites"></a>Požadavky
 
-1. Vyberte **opakování**
-2. Vyberte **frekvence** a zadejte **intervalu**
-3. Vyberte **přidat akci**  
-   ![Konfigurace systému Slack][1]  
-4. Do vyhledávacího pole zadejte Slack a počkejte, než pro vyhledávání, která vrátí všechny záznamy s Slack v názvu
-5. Vyberte **Slack - Post zpráv**
-6. Vyberte **přihlásit k systému Slack**:  
-   ![Konfigurace systému Slack][2]
-7. Zadejte svoje Slack přihlašovací údaje pro přihlášení k aplikaci autorizovat    
-   ![Konfigurace systému Slack][3]  
-8. Budete přesměrováni na přihlašovací stránku vaší organizace. **Autorizovat** Slack k interakci se svou aplikaci logiky:      
-   ![Konfigurace systému Slack][5] 
-9. Po dokončení autorizace, budete přesměrováni na svou aplikaci logiky dokončit, protože se tím, že nakonfigurujete **Slack – získat všechny zprávy** části. Přidejte další aktivační události a akce, které potřebujete.  
-   ![Konfigurace systému Slack][6]
-10. Uložte si práci, výběrem **Uložit** v nabídce (směrem nahoru).
+* Předplatné Azure. Pokud nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>. 
 
-## <a name="connector-specific-details"></a>Podrobnosti o konkrétní konektor
+* Vaše [Slack](https://slack.com/) přihlašovací údaje pro účet a uživatele
 
-Zobrazit všechny aktivační události a akce definované v swagger a také zobrazit žádné limity v [connector – podrobnosti](/connectors/slack/).
+  Vaše přihlašovací údaje autorizaci aplikace logiky k vytvoření připojení a přístup k vašemu účtu Slack.
 
-## <a name="more-connectors"></a>Více konektorů
-Přejděte zpět [rozhraní API seznamu](apis-list.md).
+* Základní znalosti o [postupy vytváření aplikací logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-[1]: ./media/connectors-create-api-slack/connectionconfig1.png
-[2]: ./media/connectors-create-api-slack/connectionconfig2.png 
-[3]: ./media/connectors-create-api-slack/connectionconfig3.png
-[4]: ./media/connectors-create-api-slack/connectionconfig4.png
-[5]: ./media/connectors-create-api-slack/connectionconfig5.png
-[6]: ./media/connectors-create-api-slack/connectionconfig6.png
+* Aplikace logiky, ve které chcete přístup k vašemu účtu Slack. Spustit s triggerem Slack [vytvoření prázdné aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). Pokud chcete použít Slack akci, spusťte svou aplikaci logiky s triggerem, například Slack aktivační události nebo jiné aktivační události, jako **opakování** aktivační události.
+
+## <a name="connect-to-slack"></a>Připojte se k Slack
+
+[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
+
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com)a otevřete svou aplikaci logiky v návrháři aplikace logiky, není již otevřete.
+
+1. V případě prázdné logic apps do vyhledávacího pole zadejte jako filtr "slack". V seznamu triggerů vyberte trigger, který chcete. 
+
+   -nebo-
+
+   Pro existující aplikace logiky v posledním kroku, ve které chcete přidat akci, zvolte **nový krok**. 
+   Do vyhledávacího pole zadejte jako filtr "slack". 
+   V seznamu akcí vyberte požadovanou akci.
+
+   Přidání akce mezi kroky, přesuňte ukazatel nad šipku mezi kroky. 
+   Vyberte znaménko plus (**+**), který se zobrazí a pak vyberte **přidat akci**.
+
+1. Pokud se zobrazí výzva k přihlášení na Slack, přihlaste se do pracovního prostoru Slack. 
+
+   ![Přihlaste se k Slack pracovního prostoru](./media/connectors-create-api-slack/slack-sign-in-workspace.png)
+
+1. Povolit přístup pro aplikaci logiky.
+
+   ![Autorizace přístupu k Slack](./media/connectors-create-api-slack/slack-authorize-access.png)
+
+1. Zadejte potřebné podrobnosti o vybrané aktivační události nebo akce. Chcete-li pokračovat ve vytváření pracovní postup aplikace logiky, přidáte další akce.
+
+## <a name="connector-reference"></a>Referenční informace ke konektorům
+
+Technické podrobnosti o omezení, akce a triggery, které jsou popsány pomocí konektoru OpenAPI (dříve Swagger) popis, přečtěte si tento konektor [referenční stránce](/connectors/slack/).
+
+## <a name="get-support"></a>Získat podporu
+
+* Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Pokud chcete zanechat své nápady na funkce nebo hlasovat, navštivte [web zpětné vazby od uživatelů Logic Apps](http://aka.ms/logicapps-wish).
+
+## <a name="next-steps"></a>Další postup
+
+* Další informace o dalších [konektory Logic Apps](../connectors/apis-list.md)

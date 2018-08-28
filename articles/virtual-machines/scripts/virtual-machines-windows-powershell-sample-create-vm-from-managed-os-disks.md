@@ -1,6 +1,6 @@
 ---
-title: Azure skript prostředí PowerShell ukázkový – vytvoření virtuálního počítače připojením se spravovaným diskem jako disk operačního systému | Microsoft Docs
-description: Azure skript prostředí PowerShell ukázkový – vytvoření virtuálního počítače připojením se spravovaným diskem jako disk operačního systému
+title: Ukázkový skript Azure PowerShellu – Vytvoření virtuálního počítače připojením spravovaného disku jako disku s operačním systémem | Microsoft Docs
+description: Ukázkový skript Azure PowerShellu – Vytvoření virtuálního počítače připojením spravovaného disku jako disku s operačním systémem
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: ramankum
@@ -16,19 +16,19 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: ec532811e94647c8a04b9faf9474f6749969f83e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 519eccdd1d1b4628f41e12616d3e82014a2d301b
+ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23928213"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41918451"
 ---
-# <a name="create-a-virtual-machine-using-an-existing-managed-os-disk-with-powershell"></a>Vytvoření virtuálního počítače pomocí existujícího spravovaného disku operačního systému pomocí prostředí PowerShell
+# <a name="create-a-virtual-machine-using-an-existing-managed-os-disk-with-powershell"></a>Vytvoření virtuálního počítače s použitím existujícího spravovaného disku s operačním systémem pomocí PowerShellu
 
-Tento skript vytvoří virtuální počítač připojením existující spravované disk jako disk s operačním systémem. Pomocí tohoto skriptu v předchozích scénáře:
-* Vytvoření virtuálního počítače z existujícího spravovaného disku operačního systému, který jste zkopírovali ze spravovaných disků v jiném předplatném.
-* Vytvoření virtuálního počítače z existujícího spravovaného disku, který byl vytvořen z specializované soubor virtuálního pevného disku 
-* Vytvoření virtuálního počítače z existujícího spravované disku operačního systému, který byl vytvořen ze snímku 
+Tento skript vytvoří virtuální počítač připojením existujícího spravovaného disku jako disku s operačním systémem. Tento skript můžete použít v následujících scénářích:
+* Vytvoření virtuálního počítače z existujícího spravovaného disku s operačním systémem zkopírovaného ze spravovaného disku v jiném předplatném
+* Vytvoření virtuálního počítače z existujícího spravovaného disku vytvořeného ze specializovaného souboru VHD 
+* Vytvoření virtuálního počítače z existujícího spravovaného disku s operačním systémem vytvořeného ze snímku 
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
@@ -40,7 +40,7 @@ Tento skript vytvoří virtuální počítač připojením existující spravova
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení 
 
-Spusťte následující příkaz pro odebrání skupiny prostředků, virtuální počítač a všechny související prostředky.
+Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuální počítač a všechny související prostředky.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup
@@ -48,20 +48,25 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript používá následující příkazy získat vlastnosti spravovaných disků, připojte spravovaných disků na nový virtuální počítač a vytvoření virtuálního počítače. Každou položku v tabulce odkazy na dokumentaci konkrétní příkaz.
+Tento skript k získání vlastností spravovaného disku, připojení spravovaného disku k novému virtuálnímu počítači a vytvoření virtuálního počítače používá následující příkazy. Každá položka v tabulce odkazuje na příslušnou část dokumentace.
 
 | Příkaz | Poznámky |
 |---|---|
-| [Get-AzureRmDisk](/powershell/module/azurerm.compute/Get-AzureRmDisk) | Získá objekt disku na základě názvu a skupině prostředků disku. Vlastnost ID objektu vrácený disku se používá k připojení disku k vytvoření nového virtuálního počítače |
-| [Nové AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig) | Vytvoří konfigurace virtuálního počítače. Tato konfigurace zahrnuje informace, jako je název virtuálního počítače, operační systém a pověření pro správu. Konfigurace se používá při vytváření virtuálních počítačů. |
-| [Set-AzureRmVMOSDisk](/powershell/module/azurerm.compute/set-azurermvmosdisk) | Připojí se spravovaným diskem pomocí vlastnosti Id disku jako disk operačního systému na nový virtuální počítač |
-| [Nové AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress) | Vytvoří veřejnou IP adresu. |
-| [Nové AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface) | Vytvoří rozhraní sítě. |
-| [Nový AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) | Vytvoření virtuálního počítače. |
-|[Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) | Odebere skupinu prostředků a všechny prostředky obsažené v rámci. |
+| [Get-AzureRmDisk](/powershell/module/azurerm.compute/Get-AzureRmDisk) | Získá objekt disku na základě názvu a skupiny prostředků disku. Vlastnost ID vráceného objektu disku se použije k připojení disku k novému virtuálnímu počítači. |
+| [New-AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig) | Vytvoří konfiguraci virtuálního počítače. Tato konfigurace zahrnuje informace, jako je název virtuálního počítače, operační systém a přihlašovací údaje pro správu. Tato konfigurace se použije při vytváření virtuálního počítače. |
+| [Set-AzureRmVMOSDisk](/powershell/module/azurerm.compute/set-azurermvmosdisk) | S použitím vlastnosti ID disku připojí spravovaný disk jako disk s operačním systémem k novému virtuálnímu počítači. |
+| [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress) | Vytvoří veřejnou IP adresu. |
+| [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface) | Vytvoří síťové rozhraní. |
+| [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) | Vytvoří virtuální počítač. |
+|[Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) | Odebere skupinu prostředků a všechny prostředky, které obsahuje. |
+
+V případě imagí z marketplace k nastavení informací o plánu použijte příkaz [Set-AzureRmVMPlan](https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/set-azurermvmplan?view=azurermps-6.7.0).
+```powershell
+Set-AzureRmVMPlan -VM $VirtualMachine -Publisher $Publisher -Product $Product -Name $Bame
+```
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o modulu Azure PowerShell najdete v tématu [dokumentace Azure PowerShell](/powershell/azure/overview).
+Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 
-Ukázky skriptu PowerShell další virtuální počítač nachází v [virtuálního počítače Windows Azure dokumentaci](../windows/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Další ukázkové skripty PowerShellu pro virtuální počítače najdete v [dokumentaci k virtuálním počítačům Azure s Windows](../windows/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

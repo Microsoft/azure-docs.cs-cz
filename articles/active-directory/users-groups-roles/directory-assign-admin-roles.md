@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 08/21/2018
+ms.date: 08/27/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 6c97d7c2f901110421f9fc5d0a1d4468d832c472
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 813fb79bbdc09d0fb3baa9a66cfaeae74343b3f9
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42061350"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43093631"
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Přiřazení rolí správce v Azure Active Directory
 
@@ -75,6 +75,8 @@ K dispozici jsou následující role správce:
 * **[Správce Information Protection](#information-protection-administrator)**: uživatelé s touto rolí mají všechna oprávnění ve službě Azure Information Protection. Tato role umožňuje konfigurace popisků pro zásady Azure Information Protection, spravovat šablony ochrany a zapnutí ochrany. Tato role neuděluje žádná oprávnění v Centrum Identity Protection, Privileged Identity Management, monitorování Office 365 Service Health, nebo Office 365 Centru zabezpečení a dodržování předpisů.
 
 * **[Správce služby Intune](#intune-service-administrator)**: uživatelé s touto rolí mají globální oprávnění v Microsoft Intune Online, pokud služba není k dispozici. Kromě toho tato role obsahuje možnost spravovat uživatele a zařízení, aby bylo možné přiřazovat zásady, jakož i vytvářet a spravovat skupiny. Další informace na [řízení správy na základě rolí (RBAC) v Microsoft Intune](https://docs.microsoft.com/intune/role-based-access-control)
+
+* **[Správce licencí](#license-administrator)**: v této roli uživatele můžete přidat, odebrat a aktualizovat přiřazení licencí pro uživatele, skupiny (použití skupinové licence) a spravovat místo využívání na uživatele. Role nejsou udělena možnost nákupu nebo spravovat předplatná, vytvořit nebo spravovat skupiny, nebo vytvořit nebo spravovat uživatele nad rámec místo využívání.
 
 * **[Čtenář Centra zpráv](#message-center-reader)**: uživatelé v této roli můžete sledovat oznámení a poradenství stavu aktualizace v [Centru zpráv Office 365](https://support.office.com/article/Message-center-in-Office-365-38FB3333-BFCC-4340-A37B-DEDA509C2093) pro svoji organizaci na nakonfigurované služby, jako je například Exchange, Intune a Microsoft Teams. Centrum zpráv čtečky přijímat týdenního přehledu e-mailu příspěvků, aktualizace a můžete sdílet zpráva center příspěvky ve službách Office 365. Ve službě Azure AD Uživatelé s touto rolí budete mít pouze oprávnění jen pro čtení na služby Azure AD, jako jsou uživatelé a skupiny. 
 
@@ -610,6 +612,17 @@ Může spravovat všechny aspekty produktu Intune.
 | microsoft.aad.directory/User/Update/Manager | Umožňuje aktualizovat vlastnost Users.Manager v Azure Active Directory. |
 | microsoft.aad.supporttickets/AllEntities/AllActions | Umožňuje vytvářet a spravovat lístky podpory Office 365. |
 | microsoft.intune/AllEntities/AllActions | Umožňuje spravovat všechny aspekty Intune. |
+
+### <a name="license-administrator"></a>Správce licencí
+Můžete přiřadit licence uživatelům.
+
+| **Akce** | **Popis** |
+| --- | --- |
+| microsoft.aad.directory/users/assignLicense        | &nbsp; |
+| microsoft.aad.directory/users/usageLocation/update | &nbsp; |
+| microsoft.azure.accessService/allEntities/allTasks | &nbsp; |
+| microsoft.azure.serviceHealth/allEntities/allTasks | &nbsp; |
+| Microsoft.Office365.serviceHealth/allEntities/allTasks | &nbsp; |
 
 ### <a name="lync-service-administrator"></a>Správce služeb Lyncu
 Může spravovat všechny aspekty produktu Skype pro firmy.

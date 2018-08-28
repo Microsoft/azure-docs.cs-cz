@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/17/2018
+ms.date: 08/16/2018
 ms.author: jdial
-ms.openlocfilehash: 63ea834401e5c6798b6f84b6f09a964005d14306
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: c20375d42786b817f677be22dee8f4e71e710bc5
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39257867"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41920527"
 ---
 # <a name="virtual-network-peering"></a>Partnerské vztahy virtuálních sítí
 
@@ -77,7 +77,12 @@ K řešení problémů s připojením k virtuálnímu počítači v partnerské 
 
 ## <a name="requirements-and-constraints"></a>Požadavky a omezení
 
-Informace o požadavcích a omezeních najdete v tématu [Požadavky a omezení partnerských vztahů virtuálních sítí](virtual-network-manage-peering.md#requirements-and-constraints). Informace o omezeních počtu partnerských vztahů, které pro virtuální síť můžete vytvořit, najdete v tématu popisujícím [omezení sítí Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits). 
+Pokud jsou virtuální sítě v globálním partnerském vztahu, platí následující omezení:
+- Virtuální sítě můžou existovat v jakékoli oblasti veřejného cloudu Azure, ale ne v národních cloudech Azure.
+- Prostředky v jedné virtuální síti nemůžou komunikovat s front-endovou IP adresou interního nástroje pro vyrovnávání zatížení Azure ve virtuální síti v globálním partnerském vztahu. Nástroj pro vyrovnávání zatížení a prostředky, které s ním komunikují, musí být ve stejné oblasti.
+- Nemůžete používat vzdálené brány ani povolit průchod bránou. Pokud chcete používat vzdálené brány nebo povolit průchod bránou, virtuální sítě v partnerském vztahu musí být ve stejné oblasti.
+
+Další informace o požadavcích a omezeních najdete v tématu [Požadavky a omezení partnerských vztahů virtuálních sítí](virtual-network-manage-peering.md#requirements-and-constraints). Informace o omezeních počtu partnerských vztahů, které pro virtuální síť můžete vytvořit, najdete v tématu popisujícím [omezení sítí Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits). 
 
 ## <a name="permissions"></a>Oprávnění
 
@@ -102,3 +107,4 @@ Průchod bránou je vlastnost partnerského uzlu, která umožňuje, aby virtuá
 
 * Zjistěte, jak vytvořit [hvězdicovou síťovou topologii](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json).
 * Prostudujte si všechna [nastavení partnerského vztahu virtuálních sítí a jejich změny](virtual-network-manage-peering.md).
+* V tématu věnovaném [nejčastějším dotazům k partnerským vztahům virtuálních sítí](virtual-networks-faq.md#vnet-peering) najdete odpovědi na časté otázky ohledně partnerských vztahů virtuálních sítí a globálních partnerských vztahů virtuálních sítí.

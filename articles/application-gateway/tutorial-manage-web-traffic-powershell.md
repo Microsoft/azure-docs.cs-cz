@@ -1,6 +1,6 @@
 ---
 title: Správa webového provozu – Azure PowerShell
-description: Přečtěte si, jak použít Azure PowerShell k vytvoření aplikační brány se škálovací sadou virtuálních počítačů, která slouží ke správě webového provozu.
+description: Zjistěte, jak pomocí Azure PowerShellu vytvořit aplikační bránu se škálovací sadou virtuálních počítačů, která slouží ke správě webového provozu.
 services: application-gateway
 author: vhorne
 manager: jpconnock
@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.date: 6/5/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: f9b506fbcf5356d02e2c77346b47b17541929704
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 0ece839777747ac7f3683f6f475f3af9d050190e
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39044998"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41917536"
 ---
 # <a name="manage-web-traffic-with-an-application-gateway-using-azure-powershell"></a>Správa webového provozu vytvořením aplikační brány v Azure PowerShellu
 

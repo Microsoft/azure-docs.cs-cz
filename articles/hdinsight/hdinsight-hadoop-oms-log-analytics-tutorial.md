@@ -3,18 +3,18 @@ title: Použití Log Analytics k monitorování clusterů Azure HDInsight
 description: Zjistěte, jak monitorovat úlohy spuštěné v clusteru služby HDInsight pomocí Azure Log Analytics.
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: jasonh
-ms.openlocfilehash: 990a836a405c7baf6327e625aa31a9828f217d9f
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 87d1593327ab45f064c6f6b19dfbe3882baaa446
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39601707"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43109512"
 ---
 # <a name="use-azure-log-analytics-to-monitor-hdinsight-clusters"></a>Monitorování clusterů HDInsight pomocí Azure Log Analytics
 

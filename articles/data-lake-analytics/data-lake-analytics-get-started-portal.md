@@ -5,17 +5,16 @@ services: data-lake-analytics
 ms.service: data-lake-analytics
 author: saveenr
 ms.author: saveenr
-manager: kfile
-editor: jasonwhowell
+ms.reviewer: jasonwhowell
 ms.assetid: b1584d16-e0d2-4019-ad1f-f04be8c5b430
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 03/21/2017
-ms.openlocfilehash: fa6a0febfc268fe96063e962a208d73662f9815a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: 0830f4a6cffb8c1b2dacc8452e52477bb3a3ec91
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34623906"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43039364"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-the-azure-portal"></a>Začínáme s Azure Data Lake Analytics na webu Azure Portal
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -67,7 +66,7 @@ OUTPUT @a
 4. Sledujte **stav** úlohy a počkejte, až se změní na **Úspěšné**.
 5. Vyberte kartu **Data** a pak vyberte kartu **Výstupy**. Vyberte výstupní soubor s názvem `data.csv` a prohlédněte si výstupní data.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 * Pokud chcete začít s vývojem aplikací U-SQL, přejděte k tématu [Vývoj skriptů U-SQL pomocí nástrojů Data Lake pro Visual Studio](data-lake-analytics-data-lake-tools-get-started.md).
 * Pokud se chcete naučit jazyk U-SQL, informace najdete v tématu [Začínáme s jazykem U-SQL Azure Data Lake Analytics](data-lake-analytics-u-sql-get-started.md).

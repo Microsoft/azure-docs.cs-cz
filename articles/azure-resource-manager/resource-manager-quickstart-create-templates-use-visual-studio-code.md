@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 07/17/2018
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: bb0e3ee685d5a52a9f372e99d97f3608f67c17c0
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: d50b84ac61210fc89665341ae0c2de3fc4ce0c11
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39185393"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42022758"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>Rychlý start: Vytvoření šablon Azure Resource Manageru pomocí nástroje Visual Studio Code
 
@@ -127,7 +127,7 @@ Abyste se naučili upravit šablonu v nástroji Visual Studio Code, přidáte da
 
     Ve výstupu na snímku obrazovky má účet úložiště název *3tqebj3slyfyestandardsa*. 
 
-7. Spuštěním následujícího powershellového příkazu zobrazíte nově vytvořený účet úložiště:
+7. Spuštěním následujícího příkazu rozhraní příkazového řádku zobrazíte nově vytvořený účet úložiště:
 
     ```cli
     az storage account show --resource-group <ResourceGroupName> --name <StorageAccountName>

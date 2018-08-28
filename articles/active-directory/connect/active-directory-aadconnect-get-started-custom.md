@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 07/18/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: dcde63c4bce17993ec9e1a9d83889a001d7880e1
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 2d019f9600177f0ad300146733dfcba1a3fbb4a8
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39264432"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "41919375"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Vlastní instalace služby Azure AD Connect
 **Vlastní nastavení** Azure AD Connect se používá, pokud chcete využít další možnosti instalace. Používá se, pokud máte víc doménových struktur, nebo pokud chcete nakonfigurovat volitelné funkce, které nejsou zahrnuty v rychlé instalaci. Používá se ve všech případech, kde možnost [**rychlá instalace**](active-directory-aadconnect-get-started-express.md) nevyhovuje nasazení nebo topologii.
@@ -136,7 +136,7 @@ Atribut sourceAnchor je atribut, který se za dobu existence objektu uživatele 
 
 | Nastavení | Popis |
 | --- | --- |
-| Nechat správu zdrojového ukotvení na Azure | Tuto možnost vyberte, pokud chcete, aby Azure AD vybral atribut za vás. Pokud vyberete tuto možnost, průvodce službou Azure AD Connect použije logiku výběru atributu sourceAnchor popsanou v části článku [Azure AD Connect: Koncepty návrhu – použití msDS-ConsistencyGuid jako parametru sourceAnchor](active-directory-aadconnect-design-concepts.md#using-msds-consistencyguid-as-sourceanchor). Jakmile se vlastní instalace dokončí, průvodce vás informuje, který atribut byl vybrán jako atribut zdrojového ukotvení. |
+| Nechat správu zdrojového ukotvení na Azure | Tuto možnost vyberte, pokud chcete, aby Azure AD vybral atribut za vás. Pokud vyberete tuto možnost, průvodce službou Azure AD Connect použije logiku výběru atributu sourceAnchor popsanou v části článku [Azure AD Connect: Koncepty návrhu – použití ms-DS-ConsistencyGuid jako parametru sourceAnchor](active-directory-aadconnect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor). Jakmile se vlastní instalace dokončí, průvodce vás informuje, který atribut byl vybrán jako atribut zdrojového ukotvení. |
 | Konkrétní atribut | Tuto možnost vyberte, pokud chcete jako atribut sourceAnchor zadat existující atribut AD. |
 
 Protože atribut nejde změnit, je nutné naplánovat a použít dobrý atribut. Jednou z vhodných možností je objectGUID. Tento atribut se změní jenom tehdy, pokud se uživatelský účet přesune mezi doménovými strukturami nebo doménami. V prostředí více doménových struktur, kde přesouváte účty mezi doménovými strukturami, je nutné použít jiný atribut, například atribut s employeeID. Vyhněte se atributům, které se mění, když uživatel uzavře manželství nebo se změní jeho přiřazení. Nelze použít atributy se symbolem @-sign, takže se nedá použít e-mail ani atribut userPrincipalName. V atributu se taky rozlišují velká a malá písmena, proto při přesunutí objektu mezi doménovými strukturami dejte pozor, abyste správně zachovali velká a malá písmena. Binární atributy se zakódují do formátu Base64, ale ostatní typy atributů zůstávají v nekódovaném stavu. Při federacích a v některých rozhraních Azure AD se tento atribut taky nazývá immutableID. Další informace o zdrojovém ukotvení najdete v [konceptech návrhu](active-directory-aadconnect-design-concepts.md#sourceanchor).

@@ -3,18 +3,18 @@ title: Architektura Hadoop – Azure HDInsight
 description: Popisuje Hadoop ukládání a zpracování v clusterech HDInsight.
 services: hdinsight
 author: ashishthaps
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: ashishth
-ms.openlocfilehash: 754f4538f7c2a8de6286198094b38d40c466a15f
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 039a16e7c33a1b3c09c91103c372553e282b6028
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39599468"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43108261"
 ---
 # <a name="hadoop-architecture-in-hdinsight"></a>Architektura Hadoop ve službě HDInsight
 
@@ -29,7 +29,7 @@ Tento článek představuje YARN a jak koordinuje spuštění aplikace v HDInsig
 
 YARN řídí a orchestruje zpracování dat v Hadoopu. YARN má dvě základní služby, které běží jako proces na uzly v clusteru: 
 
-* Správce prostředků 
+* ResourceManager 
 * NodeManager
 
 ResourceManager uděluje clusteru výpočetní prostředky, které aplikace, jako je úloh MapReduce. ResourceManager uděluje tyto prostředky jako kontejnery, ve kterém každý kontejner se skládá z přidělení jader procesoru a paměti RAM. Pokud jste kombinovat všem prostředkům dostupným v clusteru a potom je v blocích o daný počet jader a paměti, každý blok prostředků je kontejner. Každý uzel v clusteru má kapacitu pro počet kontejnerů, a proto cluster má pevný limit počtu kontejnerů, které jsou k dispozici. Plnění zdroje v kontejneru je možné konfigurovat. 

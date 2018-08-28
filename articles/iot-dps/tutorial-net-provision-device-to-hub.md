@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 1d82ccdf85b34416dc630b9fcad969d87cc53ff1
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 84072c7e5f7aa37e89fc1b93c1585167dd6d9f4b
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39520662"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41920987"
 ---
 # <a name="enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Registrace zařízení do centra IoT pomocí klienta služby Azure IoT Hub Device Provisioning (.NET)
 
@@ -70,10 +70,10 @@ Zařízení můžete do služby Device Provisioning zaregistrovat dvěma způsob
     using Microsoft.Azure.Devices.Provisioning.Service;
     ```
 
-1. Do třídy **Program** přidejte následující pole. Nahraďte zástupnou hodnotu připojovacím řetězcem služby DPS, který jste si poznamenali v předchozí části.
+1. Do třídy **Program** přidejte následující pole. Nahraďte zástupnou hodnotu připojovacím řetězcem služby Device Provisioning, který jste si poznamenali v předchozí části.
    
     ```csharp
-    static readonly string ServiceConnectionString = "{DPS connection string}";
+    static readonly string ServiceConnectionString = "{Device Provisioning Service connection string}";
 
     private const string SampleRegistrationId = "sample-individual-csharp";
     private const string SampleTpmEndorsementKey =
@@ -225,7 +225,7 @@ V tuto chvíli je následující nastavení připravené k registraci zařízen�
 1. Vaše zařízení nebo skupina zařízení jsou zaregistrované do služby Device Provisioning. 
 2. Vaše zařízení je připravené s nakonfigurovaným zabezpečením a přístupné přes aplikaci pomocí klientské sady SDK služby Device Provisioning.
 
-Spusťte zařízení, aby klientská aplikace mohla zahájit registraci do vaší služby Device Provisioning.  
+Spusťte aplikaci, aby klientská aplikace mohla zahájit registraci do vaší služby Device Provisioning.  
 
 
 ## <a name="verify-the-device-is-registered"></a>Ověření registrace zařízení

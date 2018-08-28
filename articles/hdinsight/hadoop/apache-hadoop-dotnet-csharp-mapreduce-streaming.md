@@ -3,18 +3,18 @@ title: Použití jazyka C# s MapReduce pro Hadoop v HDInsight – Azure
 description: Další informace o použití jazyka C# k vytvoření řešení MapReduce s Hadoop v Azure HDInsight.
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: jasonh
-ms.openlocfilehash: ef0001d5693d96abc128acf6c052dbedc0983b51
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 91558ae4fd592c7490aef0a0f2fd930e970f498c
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42055048"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43049059"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-hadoop-in-hdinsight"></a>Použití jazyka C# s MapReduce, streaming na platformě Hadoop v HDInsight
 

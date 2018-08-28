@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/24/2018
+ms.date: 08/27/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 5e5ebac221060058a44f7605f77d33a133f5e72c
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: afbe3ff2e6be4e03f8de8ac2490922c3ec788733
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42887219"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43091376"
 ---
 # <a name="azure-stack-1807-update"></a>Aktualizace služby Azure Stack 1807
 
@@ -168,6 +168,8 @@ Další informace o těchto ohrožení zabezpečení, klikněte na výše uveden
 Toto jsou známé problémy této verze sestavení po instalaci.
 
 ### <a name="portal"></a>Portál
+- <!-- 2931230 – IS  ASDK --> Plány, které jsou přidány na předplatné uživatele jako doplňkový plán nelze odstranit, i když odebrat plán ze předplatné uživatele. Plán zůstane, dokud se také odstraní předplatné, které odkazují na doplňkový plán. 
+
 - <!--2760466 – IS  ASDK --> Při instalaci nového prostředí Azure Stack, na kterém běží tato verze, upozornění, která informuje o *vyžadována aktivace* se nemusí zobrazit. [Aktivace](azure-stack-registration.md) se vyžaduje, abyste mohli používat marketplace syndikace.  
 
 - <!-- TBD - IS ASDK --> Dva typy pro správu předplatného, které byly [představený poprvé ve verzi 1804](azure-stack-update-1804.md#new-features) by se neměly. Typy předplatného jsou **měření předplatné**, a **využití předplatného**. Tyto typy předplatného jsou viditelné v novým prostředím Azure Stack od verze 1804, ale ještě nejsou připravené k použití. By měla dál používat **výchozí zprostředkovatel** typu předplatného.

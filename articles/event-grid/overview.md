@@ -6,47 +6,35 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
-ms.date: 06/01/2018
+ms.date: 08/17/2018
 ms.author: babanisa
-ms.openlocfilehash: 6d0f769d65bc8ed4f41469b96edf4f0595d994de
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 90e8d6a3ef093046c5ee6324f6e6590e59124da7
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34725237"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42023867"
 ---
 # <a name="an-introduction-to-azure-event-grid"></a>Úvod k Azure Event Gridu
 
-Azure Event Grid umožňuje snadno sestavovat aplikace pomocí architektur založených na událostech. Vyberete prostředek Azure, k jehož odběru se chcete přihlásit, a uvedete obslužnou rutinu nebo koncový bod webhooku, kam chcete událost odeslat. Event Grid má integrovanou podporu událostí pocházejících ze služeb Azure, jako jsou služby Storage Blob a skupiny prostředků. Event Grid má taky vlastní podporu událostí aplikací a třetích stran využívajících vlastní témata a vlastní webhooky. 
+Azure Event Grid umožňuje snadno sestavovat aplikace pomocí architektur založených na událostech. Nejprve vyberte prostředek Azure, k jehož odběru se chcete přihlásit, a pak zadejte obslužnou rutinu události nebo koncový bod webhooku, kam chcete událost odeslat. Event Grid má integrovanou podporu událostí pocházejících ze služeb Azure, jako jsou služby Storage Blob a skupiny prostředků. Event Grid podporuje také vlastní události s využitím vlastních témat. 
 
-Pomocí filtrů můžete směrovat konkrétní události do různých koncových bodů, zahájit vícesměrové vysílání do více koncových bodů a ujistit se o spolehlivém doručení událostí. Event Grid má taky integrovanou podporu vlastních událostí a událostí třetích stran.
+Pomocí filtrů můžete směrovat konkrétní události do různých koncových bodů, zahájit vícesměrové vysílání do více koncových bodů a ujistit se o spolehlivém doručení událostí.
 
-V současné době Event Grid podporuje následující oblasti:
+V současné době je Azure Event Grid k dispozici ve všech veřejných oblastech. Zatím není k dispozici v cloudech Azure Germany, Azure China ani Azure Government.
 
-* Jihovýchodní Asie
-* Východní Asie
-* Austrálie – východ
-* Austrálie – jihovýchod
-* Střed USA
-*   Východ USA
-*   Východní USA 2
-* Evropa – západ
-* Evropa – sever
-* Japonsko – východ
-* Japonsko – západ
-*   Západní střed USA
-*   Západní USA
-*   Západní USA 2
-
-Tento článek obsahuje přehled Azure Event Gridu. Pokud chcete začít pracovat s Event Gridem, přečtěte si článek [Vytvoření a směrování vlastních událostí pomocí služby Azure Event Grid](custom-event-quickstart.md). Následující obrázek ukazuje, jak Event Grid propojuje zdroje a obslužné rutiny, ale neuvádí úplný seznam podporovaných možností.
+Tento článek obsahuje přehled Azure Event Gridu. Pokud chcete začít pracovat s Event Gridem, přečtěte si článek [Vytvoření a směrování vlastních událostí pomocí služby Azure Event Grid](custom-event-quickstart.md). 
 
 ![Funkční model služby Event Grid](./media/overview/functional-model.png)
 
+Poznámka: Tento obrázek ukazuje, jak Event Grid propojuje zdroje a obslužné rutiny, ale neuvádí úplný seznam podporovaných integrací.
+
 ## <a name="event-sources"></a>Zdroje událostí
 
-V současné době podporují odesílání událostí do Event Gridu následující služby Azure:
+Úplné podrobnosti o možnostech jednotlivých zdrojů a související články najdete v tématu věnovaném [zdrojům událostí](event-sources.md). V současné době podporují odesílání událostí do Event Gridu následující služby Azure:
 
 * Předplatná Azure (operace správy)
+* Container Registry
 * Vlastní témata
 * Event Hubs
 * IoT Hub
@@ -56,11 +44,9 @@ V současné době podporují odesílání událostí do Event Gridu následují
 * Storage Blob
 * Storage univerzální v2 (GPv2)
 
-Odkazy na články, které ukazují, jak používat jednotlivé zdroje událostí, najdete v článku [Zdroje událostí ve službě Azure Event Grid](event-sources.md).
-
 ## <a name="event-handlers"></a>Obslužné rutiny událostí
 
-V současné době podporují zpracování událostí z Event Gridu následující služby Azure: 
+Úplné podrobnosti o možnostech jednotlivých obslužných rutin a související články najdete v tématu věnovaném [obslužným rutinám událostí](event-handlers.md). V současné době podporují zpracování událostí z Event Gridu následující služby Azure: 
 
 * Azure Automation
 * Azure Functions
@@ -70,8 +56,6 @@ V současné době podporují zpracování událostí z Event Gridu následujíc
 * Microsoft Flow
 * Queue Storage
 * Webhooky
-
-Odkazy na články, které ukazují, jak používat jednotlivé obslužné rutiny událostí, najdete v článku [Obslužné rutiny událostí ve službě Azure Event Grid](event-handlers.md).
 
 ## <a name="concepts"></a>Koncepty
 

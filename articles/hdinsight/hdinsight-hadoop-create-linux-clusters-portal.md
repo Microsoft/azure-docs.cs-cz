@@ -3,18 +3,18 @@ title: Vytvoření clusterů Hadoop pomocí webového prohlížeče – Azure HD
 description: Zjistěte, jak vytvářet clustery Hadoop, HBase, Storm nebo Spark na Linuxu pro HDInsight pomocí webového prohlížeče a na portálu Azure preview.
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: jasonh
-ms.openlocfilehash: 210ece6825393917f77e213939770c4ee867fd20
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 77f4b8e8826dab014b81fdb6847755630ac44508
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39600842"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43104938"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-the-azure-portal"></a>Vytvoření clusterů se systémem Linux v HDInsight pomocí webu Azure portal
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]

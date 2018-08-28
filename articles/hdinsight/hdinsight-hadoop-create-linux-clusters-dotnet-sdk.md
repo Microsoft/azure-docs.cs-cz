@@ -3,18 +3,18 @@ title: Vytvoření clusterů Hadoop pomocí rozhraní .NET – Azure HDInsight
 description: Zjistěte, jak vytvářet clustery Hadoop, HBase, Storm nebo Spark na Linuxu pro HDInsight pomocí sady HDInsight .NET SDK.
 services: hdinsight
 author: mamccrea
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: mamccrea
-ms.openlocfilehash: eb6c5ef3a483a5ce702cc0a367f66e0444bc1e45
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: ea5c0d3b9f444601607ebcda8d139797eb8dd2ec
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42054876"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43093907"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-the-net-sdk"></a>Vytvoření clusterů se systémem Linux v HDInsight pomocí sady .NET SDK
 

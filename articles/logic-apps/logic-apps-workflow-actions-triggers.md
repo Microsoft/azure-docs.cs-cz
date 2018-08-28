@@ -5,17 +5,16 @@ services: logic-apps
 ms.service: logic-apps
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
-ms.topic: reference
-ms.date: 06/22/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 427964a6651dd4ab71d0029f89e40afdd34d162a
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.topic: reference
+ms.date: 06/22/2018
+ms.openlocfilehash: 8adfd0b3d6d87834441ab87af194de141b77af34
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390700"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43093614"
 ---
 # <a name="trigger-and-action-types-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Aktivační událost a akce referenční typy pro jazyk pro definování pracovních postupů v Azure Logic Apps
 
@@ -158,6 +157,7 @@ Kontroluje, Tato aktivační událost nebo *hlasování* koncový bod pomocí [r
 |---------|------|-------------| 
 | hlavičky | JSON – objekt | Hlavičky z odpovědi | 
 | hlavní část | JSON – objekt | Text z odpovědi | 
+| Stavový kód | Integer | Stavový kód z odpovědi | 
 |||| 
 
 *Příklad*
@@ -330,6 +330,7 @@ Tento trigger zkontroluje nebo dotazuje zadaný koncový bod na základě plánu
 |---------|------|-------------| 
 | hlavičky | JSON – objekt | Hlavičky z odpovědi | 
 | hlavní část | JSON – objekt | Text z odpovědi | 
+| Stavový kód | Integer | Stavový kód z odpovědi | 
 |||| 
 
 *Požadavky na příchozí požadavky*
@@ -337,7 +338,7 @@ Tento trigger zkontroluje nebo dotazuje zadaný koncový bod na základě plánu
 Aby dobře pracoval s svou aplikaci logiky, musí koncový bod odpovídají vzoru konkrétní aktivační události nebo smlouvy a rozpoznat tyto vlastnosti:  
   
 | Odpověď | Požaduje se | Popis | 
-|----------|----------|-------------|  
+|----------|----------|-------------| 
 | Kód stavu | Ano | "200 OK" stavový kód spustí. Každý jiný stavový kód nelze spustit běh. | 
 | Hlavička retry-after | Ne | Počet sekund do aplikace logiky se dotazuje na koncový bod znovu | 
 | Hlavička umístění | Ne | Adresa URL k volání na další interval dotazování. Pokud není zadán, použije se původní adresu URL. | 
@@ -424,6 +425,7 @@ Některé hodnoty, jako například <*typ metody*>, jsou k dispozici pro obě `"
 |---------|------|-------------| 
 | hlavičky | JSON – objekt | Hlavičky z odpovědi | 
 | hlavní část | JSON – objekt | Text z odpovědi | 
+| Stavový kód | Integer | Stavový kód z odpovědi | 
 |||| 
 
 *Příklad*
@@ -2552,6 +2554,159 @@ Pro běh aplikace logiky jeden, počet akcí, které jsou spouštěny každých 
    "runAfter": {}
 }
 ```
+
+<a name="connector-authentication"></a>
+
+## <a name="authenticate-triggers-or-actions"></a>Ověření aktivační události nebo akce
+
+Koncové body HTTP podporují různé typy ověřování. Můžete nastavit ověřování pro tyto HTTP triggery a akce:
+
+* [HTTP](../connectors/connectors-native-http.md)
+* [HTTP + Swagger](../connectors/connectors-native-http-swagger.md)
+* [HTTP Webhook](../connectors/connectors-native-webhook.md)
+
+Tady jsou typy ověřování, které můžete nastavit:
+
+* [Základní ověřování](#basic-authentication)
+* [Ověření klientského certifikátu](#client-certificate-authentication)
+* [Ověřování Azure Active Directory (Azure AD) OAuth](#azure-active-directory-oauth-authentication)
+
+<a name="basic-authentication"></a>
+
+### <a name="basic-authentication"></a>Základní ověřování
+
+Pro tento typ ověřování, může obsahovat definice aktivační události nebo akce `authentication` objekt JSON, který má tyto vlastnosti:
+
+| Vlastnost | Požaduje se | Hodnota | Popis | 
+|----------|----------|-------|-------------| 
+| **type** | Ano | "Základní" | Typ ověřování použít, což je "Basic" zde | 
+| **uživatelské jméno** | Ano | "@parameters(userNameParam)" | Parametr, který předává uživatelské jméno k ověření pro přístup k cílový koncový bod služby |
+| **Heslo** | Ano | "@parameters(passwordParam)" | Parametr, který se předá heslo k ověření pro přístup k cílový koncový bod služby |
+||||| 
+
+Například tady je formát `authentication` objektu v definici aktivační události nebo akce. Další informace o zabezpečení parametry najdete v tématu [zabezpečení citlivých informací](#secure-info). 
+
+```javascript
+"HTTP": {
+   "type": "Http",
+   "inputs": {
+      "method": "GET",
+      "uri": "http://www.microsoft.com",
+      "authentication": {
+         "type": "Basic",
+         "username": "@parameters('userNameParam')",
+         "password": "@parameters('passwordParam')"
+      }
+  },
+  "runAfter": {}
+}
+```
+
+<a name="client-certificate-authentication"></a>
+
+### <a name="client-certificate-authentication"></a>Ověření klientského certifikátu
+
+Pro tento typ ověřování, může obsahovat definice aktivační události nebo akce `authentication` objekt JSON, který má tyto vlastnosti:
+
+| Vlastnost | Požaduje se | Hodnota | Popis | 
+|----------|----------|-------|-------------| 
+| **type** | Ano | "ClientCertificate" | Typ ověřování pro klientské certifikáty vrstvy SSL (Secure Sockets) | 
+| **PFX** | Ano | <*ve formátu Base64 – kódování – pfx – soubor*> | Obsah s kódováním base64 z soubor Personal Information Exchange (PFX) |
+| **Heslo** | Ano | "@parameters(passwordParam)" | Parametr s heslo pro přístup k souboru PFX |
+||||| 
+
+Například tady je formát `authentication` objektu v definici aktivační události nebo akce. Další informace o zabezpečení parametry najdete v tématu [zabezpečení citlivých informací](#secure-info). 
+
+```javascript
+"authentication": {
+   "password": "@parameters('passwordParam')",
+   "pfx": "aGVsbG8g...d29ybGQ=",
+   "type": "ClientCertificate"
+}
+```
+
+<a name="azure-active-directory-oauth-authentication"></a>
+
+### <a name="azure-active-directory-ad-oauth-authentication"></a>Ověřování Azure Active Directory (AD) OAuth
+
+Pro tento typ ověřování, může obsahovat definice aktivační události nebo akce `authentication` objekt JSON, který má tyto vlastnosti:
+
+| Vlastnost | Požaduje se | Hodnota | Popis | 
+|----------|----------|-------|-------------| 
+| **type** | Ano | `ActiveDirectoryOAuth` | Typ ověřování chcete používat, což je "ActiveDirectoryOAuth" pro Azure AD OAuth | 
+| **Autorita** | Ne | <*Adresa URL-pro autority token vystavitele*> | Adresa URL autority, která poskytuje ověřovací token |  
+| **tenanta** | Ano | <*ID tenanta*> | ID tenanta pro tenanta Azure AD | 
+| **Cílová skupina** | Ano | <*prostředek autorizace*> | Prostředek, který má oprávnění k použití, například `https://management.core.windows.net/` | 
+| **ID klienta** | Ano | <*ID klienta*> | ID klienta aplikace požaduje ověření | 
+| **credentialType** | Ano | "Tajné" nebo "Certifikátu" | Typ přihlašovacích údajů klienta se používá pro žádosti o autorizaci. Tuto vlastnost a hodnota se nezobrazují v základní definici, ale určuje požadované parametry pro typ přihlašovacích údajů. | 
+| **Heslo** | Ano, jenom pro typ přihlašovacích údajů "Certifikátu" | "@parameters(passwordParam)" | Parametr s heslo pro přístup k souboru PFX | 
+| **PFX** | Ano, jenom pro typ přihlašovacích údajů "Certifikátu" | <*ve formátu Base64 – kódování – pfx – soubor*> | Obsah s kódováním base64 z soubor Personal Information Exchange (PFX) |
+| **Tajný klíč** | Ano, jenom pro "Tajné" typ přihlašovacích údajů | <*tajný klíč pro ověřování*> | Tajný klíč s kódováním base64, který klient používá pro žádost o autorizaci |
+||||| 
+
+Například tady je formát `authentication` objektu při vaší definice aktivační události nebo akce na základě typu "Tajné" přihlašovacích údajů: Další informace o zabezpečení parametry najdete v tématu [zabezpečení citlivých informací](#secure-info). 
+
+```javascript
+"authentication": {
+   "audience": "https://management.core.windows.net/",
+   "clientId": "34750e0b-72d1-4e4f-bbbe-664f6d04d411",
+   "secret": "hcqgkYc9ebgNLA5c+GDg7xl9ZJMD88TmTJiJBgZ8dFo="
+   "tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+   "type": "ActiveDirectoryOAuth"
+}
+```
+
+<a name="secure-info"></a>
+
+## <a name="secure-sensitive-information"></a>Zabezpečení citlivých informací
+
+Kvůli ochraně citlivých informací, který používáte pro ověřování, jako jsou uživatelská jména a hesla, vaše definice aktivační události a akce můžete použít parametry a `@parameters()` výraz tak, aby tyto informace není viditelný, až uložíte svoji logiku aplikace. 
+
+Předpokládejme například, že používáte "Základní" ověřování v definici aktivační události nebo akce. Tady je příklad `authentication` objekt, který určuje uživatelské jméno a heslo:
+
+```javascript
+"HTTP": {
+   "type": "Http",
+   "inputs": {
+      "method": "GET",
+      "uri": "http://www.microsoft.com",
+      "authentication": {
+         "type": "Basic",
+         "username": "@parameters('userNameParam')",
+         "password": "@parameters('passwordParam')"
+      }
+  },
+  "runAfter": {}
+}
+```
+
+V `parameters` části pro definici aplikace logiky, definování parametrů použitých v definici aktivační události nebo akce:
+
+```javascript
+"definition": {
+   "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+   "actions": {
+      "HTTP": {
+      }
+   },
+   "parameters": {
+      "passwordParam": {
+         "type": "securestring"
+      },
+      "userNameParam": {
+         "type": "securestring"
+      }
+   },
+   "triggers": {
+      "HTTP": {
+      }
+   },
+   "contentVersion": "1.0.0.0",
+   "outputs": {}
+},
+```
+
+Pokud už vytváříte nebo pomocí šablony nasazení Azure Resource Manageru, je také nutné zahrnout vnějším `parameters` části definice šablony. Další informace o zabezpečení parametry najdete v tématu [zabezpečený přístup k aplikacím logiky](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-and-inputs-within-a-workflow). 
 
 ## <a name="next-steps"></a>Další postup
 

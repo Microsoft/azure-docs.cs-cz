@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 3/15/2018
-ms.openlocfilehash: 77dcad0f3e49b601110f8700245aaf479bde1c4e
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 4f9b14762332bd11fd69a855d8fabdb206e34919
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38722775"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41919522"
 ---
 # <a name="tutorial-2-classify-iris---build-a-model"></a>Kurz 2: Klasifikace Iris – Sestavení modelu
 Služby Azure Machine Learning (Preview) představují integrované řešení datové vědy a pokročilé analýzy pro profesionální datové vědce, které slouží k přípravě dat, vývoji experimentů a nasazování modelů na úrovni cloudu.
@@ -442,7 +442,7 @@ Pokud chcete skript spustit v kontejneru Docker ve vzdáleném počítači s Lin
    >IP adresa může být také veřejně adresovatelný plně kvalifikovaný název domény, například `vm-name.southcentralus.cloudapp.azure.com`. Je vhodné přidat do virtuálního počítače pro datové vědy plně kvalifikovaný název domény a používat ho místo IP adresy. Tento postup je vhodný, protože z důvodu úspory nákladů můžete někdy chtít virtuální počítač vypnout. Kromě toho se může při příštím spuštění virtuálního počítače IP adresa změnit.
 
    >[!NOTE]
-   >Kromě ověřování uživatelského jména a hesla můžete zadat privátní klíč a odpovídající heslo (pokud existuje) pomocí možností `--private-key-file` a (volitelně) `--private-key-passphrase`.
+   >Kromě ověřování uživatelského jména a hesla můžete zadat privátní klíč a odpovídající heslo (pokud existuje) pomocí možností `--private-key-file` a (volitelně) `--private-key-passphrase`. Pokud chcete použít privátní klíč, který jste použili při vytváření DSVM, musíte zadat možnost `--use-azureml-ssh-key`.
 
    Dále připravte cílové výpočetní prostředí **myvm** spuštěním tohoto příkazu.
    

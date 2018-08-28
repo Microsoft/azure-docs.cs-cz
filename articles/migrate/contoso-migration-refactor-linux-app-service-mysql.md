@@ -4,60 +4,59 @@ description: Zjistěte, jak společnosti Contoso refactors Linuxové aplikace v 
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/12/2018
+ms.date: 08/27/2018
 ms.author: raynew
-ms.openlocfilehash: 5981c708abdaa12a662075cc5bf5aae14ccc35c2
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 9c43ce90603fd2bc812e5be00f438ee19054dc16
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39002156"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43103626"
 ---
-# <a name="contoso-migration-refactor-a-contoso-linux-service-desk-app-to-the-azure-app-service-and-azure-mysql"></a>Migrace Contoso: Refaktorovat Contoso Linuxovou aplikaci podpory služby Azure App Service a Azure MySQL
+# <a name="contoso-migration-refactor-a-contoso-linux-service-desk-app-to-multiple-regions-with-azure-app-service-traffic-manager-and-azure-mysql"></a>Migrace Contoso: Refaktorovat Contoso Linuxovou aplikaci helpdesku service do několika oblastí pomocí služby Azure App Service, Traffic Manageru a Azure MySQL
 
 Tento článek popisuje, jak společnosti Contoso refactors jejich místní dvouvrstvé Linux helpdesku app service (osTicket), díky migraci na Azure App Service díky integraci Githubu a MySQL v Azure.
 
-Tento dokument je desetinu série článků, které ukazují, jak fiktivní společnosti Contoso migraci svých místních prostředků do cloudu Microsoft Azure. Obsahuje základní informace a scénáře, které ukazují, jak nastavit infrastrukturu migrace a spustit různé druhy migrace. Scénáře jejich složitost v a přidáme další články v čase.
+Tento dokument je jednou z řady článků, které ukazují, jak fiktivní společnosti Contoso migraci svých místních prostředků do cloudu Microsoft Azure. Obsahuje základní informace a scénáře, které ukazují, jak nastavit infrastrukturu migrace a spustit různé druhy migrace. Scénáře jejich složitost v. Přidáme další články v čase.
 
 **Článek** | **Podrobnosti** | **Stav**
 --- | --- | ---
-[Článek 1: Přehled](contoso-migration-overview.md) | Poskytuje přehled strategie migrace společnosti Contoso, článek řady a ukázkové aplikace, které používáme. | K dispozici.
-[Článek 2: Nasazení infrastruktury Azure](contoso-migration-infrastructure.md) | Popisuje, jak společnosti Contoso připraví jeho místní a infrastrukturu Azure na migraci. Stejnou infrastrukturu se používá pro všechny scénáře migrace Contoso. | K dispozici.
-[Článek 3: Posouzení místních prostředků](contoso-migration-assessment.md)  | Ukazuje, jak společnosti Contoso spuštění posouzení jejich místní dvouvrstvé SmartHotel aplikace spuštěné ve VMware. Jejich posouzení virtuálních počítačů aplikace s [Azure Migrate](migrate-overview.md) služby a databáze aplikace SQL serveru s [Azure Database Migration Assistant](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017). | K dispozici.
-[Článek 4: Metody opětovného hostování na virtuálních počítačích Azure a spravované Instance SQL](contoso-migration-rehost-vm-sql-managed-instance.md) | Ukazuje, jak společnosti Contoso migruje SmartHotel aplikace do Azure. Migraci virtuálního počítače webové aplikace pomocí [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview)a aplikace pomocí databáze [Azure Database Migration](https://docs.microsoft.com/azure/dms/dms-overview) služby k migraci do spravované Instance SQL. | K dispozici.
-[Článek 5: Změna hostitele na virtuálních počítačích Azure](contoso-migration-rehost-vm.md) | Ukazuje, jak migrovat Contoso jejich SmartHotel do virtuálních počítačů Azure IaaS, pomocí služby Site Recovery.
-[Článek 6: Změna hostitele na virtuálních počítačích Azure a skupiny dostupnosti SQL serveru](contoso-migration-rehost-vm-sql-ag.md) | Ukazuje, jak společnosti Contoso migruje SmartHotel aplikace. Používají Site Recovery k migraci aplikace, virtuální počítače a Database Migration service, jak migrovat databázi aplikace do skupiny dostupnosti SQL serveru. | K dispozici.
-[Článek 7: Změna hostitele aplikace na virtuálních počítačích Azure s Linuxem](contoso-migration-rehost-linux-vm.md) | Ukazuje, jak společnosti Contoso migruje jejich osTicket Linuxovou aplikaci do virtuálních počítačů Azure IaaS pomocí služby Azure Site Recovery.
-[Článek 8: Změna hostitele Linuxovou aplikaci na virtuálních počítačích Azure a Azure serveru MySQL](contoso-migration-rehost-linux-vm-mysql.md) | Ukazuje, jak společnosti Contoso migruje osTicket Linuxovou aplikaci. Site Recovery pro migraci virtuálního počítače a aplikace MySQL Workbench používají k migraci na instanci serveru Azure MySQL. | K dispozici.
-[Článek 9: Refaktorujte aplikace na Azure Web Apps a Azure SQL Database](contoso-migration-refactor-web-app-sql.md) | Předvádí, jak společnosti Contoso migruje SmartHotel aplikací založených na kontejnerech webové aplikace Azure a migraci databáze aplikace do Azure SQL Server. | K dispozici.
-Článek 10: Refaktorujte Linuxovou aplikaci na Azure Web Apps a Azure serveru MySQL | Ukazuje, jak společnosti Contoso migruje osTicket Linuxovou aplikaci do služby Azure App Service pomocí kontejneru Dockeru s PHP 7.0. Základ kódu pro nasazení je migrovat na Githubu. Databáze aplikace je migrovat na Azure MySQL. | Tento článek.
-[Článek 11: Refaktorovat TFS na VSTS](contoso-migration-tfs-vsts.md) | Ukazuje, jak společnosti Contoso migruje svoje místní nasazení Team Foundation Server (TFS) a migrujte jej na Visual Studio Team Services (VSTS) v Azure. | K dispozici.
-[Článek 12: Úprava architektury aplikace na kontejnery služby Azure a Azure SQL Database](contoso-migration-rearchitect-container-sql.md) | Ukazuje, jak společnosti Contoso migruje a rearchitects jeho SmartHotel aplikace do Azure. Jejich úprava architektury webové vrstvy aplikace jako kontejner Windows a databáze aplikace ve službě Azure SQL Database. | K dispozici.
-[Článek 13: Znovu sestavte aplikaci v Azure](contoso-migration-rebuild.md) | Ukazuje, jak společnosti Contoso znovu sestavte své aplikace SmartHotel pomocí celé řady funkcí Azure a služeb, včetně služeb App Services, Kubernetes v Azure, Azure Functions, Cognitive services a Cosmos DB. | K dispozici.
+[Článek 1: Přehled](contoso-migration-overview.md) | Přehled řady článku, strategie migrace společnosti Contoso a ukázkové aplikace, které se používají v řadě. | K dispozici.
+[Článek 2: Nasazení infrastruktury Azure](contoso-migration-infrastructure.md) | Contoso připraví svoji místní infrastrukturu a jeho infrastruktury Azure pro migraci. Pro všechny články týkající se migrace z této série se používá stejnou infrastrukturu. | K dispozici.
+[Článek 3: Posouzení místních prostředků pro migraci do Azure](contoso-migration-assessment.md)  | Contoso spuštění posouzení jeho místní SmartHotel aplikaci běžící ve VMware. Contoso vyhodnocuje aplikací virtuálních počítačů pomocí služby Azure Migrate a databáze aplikace SQL Server pomocí Data Migration Assistant. | K dispozici.
+[Článek 4: Změna hostitele aplikace na virtuálním počítači Azure a SQL Database, spravované Instance](contoso-migration-rehost-vm-sql-managed-instance.md) | Contoso běží lift and shift migrace do Azure pro své místní SmartHotel aplikaci. Contoso migruje aplikace front-endového virtuálního počítače pomocí [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview). Contoso migraci databáze aplikace do Azure SQL Database Managed Instance pomocí [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview). | K dispozici.  
+[Článek 5: Změna hostitele aplikace na virtuálních počítačích Azure](contoso-migration-rehost-vm.md) | Contoso migruje svou aplikaci SmartHotel virtuální počítače na virtuální počítače Azure pomocí služby Site Recovery. | K dispozici.
+[Článek 6: Změna hostitele aplikace na virtuálních počítačích Azure a ve skupině dostupnosti AlwaysOn systému SQL Server](contoso-migration-rehost-vm-sql-ag.md) | Contoso migruje SmartHotel aplikace. Společnost Contoso využívá Site Recovery k migraci virtuálních počítačů aplikace. Jak migrovat databázi aplikace do clusteru SQL serveru, který je chráněn skupiny dostupnosti AlwaysOn využívá službu Database Migration Service. | K dispozici.    
+[Článek 7: Změna hostitele aplikace na virtuálních počítačích Azure s Linuxem](contoso-migration-rehost-linux-vm.md) | Contoso dokončení migrace lift and shift aplikace osTicket Linux do virtuálních počítačů Azure pomocí Azure Site Recovery | K dispozici.
+[Článek 8: Změna hostitele Linuxovou aplikaci na virtuálních počítačích Azure a Azure MySQL](contoso-migration-rehost-linux-vm-mysql.md) | Contoso migruje Linuxovou aplikaci osTicket k virtuálním počítačům Azure pomocí Azure Site Recovery a migraci databáze aplikace na instanci serveru Azure MySQL pomocí aplikace MySQL Workbench. | K dispozici.
+[Článek 9: Refaktorujte aplikace na Azure Web Apps a Azure SQL database](contoso-migration-refactor-web-app-sql.md) | Contoso migruje SmartHotel aplikace do webové aplikace Azure a migraci databáze aplikace do instance serveru SQL Azure pomocí Pomocníka s migrací databáze | K dispozici.
+Článek 10: Refaktorujte Linuxovou aplikaci na Azure Web Apps a Azure MySQL | Contoso migruje osTicket své Linuxové aplikace do webové aplikace Azure v několika oblastech Azure pomocí Azure Traffic Manageru, integrovaná se službou GitHub pro průběžné doručování. Contoso migraci databáze aplikace do Azure Database for MySQL – instance. | V tomto článku
+[Článek 11: Refaktorovat TFS na VSTS](contoso-migration-tfs-vsts.md) | Contoso migruje své místní nasazení serveru Team Foundation Server pro Visual Studio Team Services v Azure. | K dispozici.
+[Článek 12: Úprava architektury aplikace na kontejnery služby Azure a Azure SQL Database](contoso-migration-rearchitect-container-sql.md) | Contoso migruje jeho SmartHotel aplikace do Azure. Potom rearchitects webové vrstvy aplikace jako kontejner Windows se spuštěnou v Azure Service Fabric a databázi Azure SQL Database. | K dispozici.
+[Článek 13: Znovu sestavte aplikaci v Azure](contoso-migration-rebuild.md) | Contoso replikujícím svou aplikaci SmartHotel pomocí celé řady funkcí Azure a služeb, včetně služby Azure App Service, Azure Kubernetes Service (AKS), Azure Functions, Azure Cognitive Services a Azure Cosmos DB. | K dispozici.
 
 V tomto článku se migruje Contoso aplikace služby podpory Linux Apache MySQL PHP (LAMP) dvouvrstvé (osTicket) do Azure. Pokud chcete používat tuto aplikaci open source, můžete ji stáhnout [Githubu](https://github.com/osTicket/osTicket).
 
 
-
 ## <a name="business-drivers"></a>Obchodní faktory
 
-Vedení IT úzce spolupracuje s jejich obchodním partnerům umožní pochopit, co chtějí dosáhnout:
+Vedení IT úzké spolupráci s obchodními partnery pochopit, co chtějí dosáhnout:
 
-- **Adresa obchodní růst**: Contoso se rozrůstá a přechod na nové trhy. Technici potřebují agenty služby další odběratele. 
+- **Adresa obchodní růst**: Contoso se rozrůstá a přechod na nové trhy. Rozpojuje agenty služby další odběratele. 
 - **Škálování**: řešení by měly být sestaveny tak, aby Contoso můžete přidat další agenty služby zákazníka jako obchodní škálování.
-- **Zvýšení odolnosti**: poslední problémy s systém vliv jenom interní uživatele. Pomocí svého nového obchodního modelu externí uživatele bude mít vliv a neustále Contoso potřeba aplikace rychle zprovoznit.
+- **Zvýšení odolnosti**: poslední problémy s systém vliv jenom interní uživatele. Pomocí nového obchodního modelu externí uživatele bude mít vliv a neustále Contoso potřeba aplikace rychle zprovoznit.
 
 ## <a name="migration-goals"></a>Migrace cíle
 
 Tým cloudových Contoso má připnutou dolů cíle pro tuto migraci, aby bylo možné určit nejlepší metody migrace:
 
 - Aplikace by se měly škálovat nad rámec aktuální místní kapacitu a výkon.  Contoso je přesouvají aplikace, abyste mohli využívat Azure škálování na vyžádání.
-- Contoso chcete přesunout základní kód aplikace do kanálu průběžného doručování.  Protože změny aplikace jsou vloženy do Githubu, chtějí nasadit tyto změny bez úlohy pro provozní personál.
-- Aplikace musí být odolné s možnostmi pro růst a převzetí služeb při selhání. Chtějí se nasadit aplikaci ve dvou různých oblastech Azure a nastavit tak, aby automatické škálování.
+- Contoso chcete přesunout základní kód aplikace do kanálu průběžného doručování.  Změny aplikace jsou vloženy do Githubu, Contoso chtít nasadit tyto změny bez úlohy pro provozní personál.
+- Aplikace musí být odolné s možnostmi pro růst a převzetí služeb při selhání. Contoso chcete nasadit aplikaci ve dvou různých oblastech Azure a nastavit tak, aby automatické škálování.
 - Contoso chce minimalizovat úlohy správy databáze po přesunu aplikace do cloudu.
 
 ## <a name="solution-design"></a>Návrh řešení
-Po Připnutí dolů své cíle a požadavky, Contoso navrhuje, zkontrolujte nasazení řešení a určení procesu migrace, včetně služeb Azure, které budete používat pro migraci.
+Po Připnutí dolů své cíle a požadavky, Contoso navrhuje a kontrol řešení nasazení a identifikuje proces migrace, včetně služeb Azure, které se použije pro migraci.
 
 
 ## <a name="current-architecture"></a>Aktuální architektura
@@ -72,7 +71,7 @@ Po Připnutí dolů své cíle a požadavky, Contoso navrhuje, zkontrolujte nasa
 
 ## <a name="proposed-architecture"></a>Navrhované architektury
 
-Po Připnutí dolů jejich aktuální architektury, cíle a požadavky na migraci, Contoso navrhuje řešení nasazení a identifikuje proces migrace, včetně služeb Azure, které budete používat pro migraci.
+Tady je architektura navržená:
 
 - Webová aplikace vrstvy v OSTICKETWEB budou migrovány pomocí služby Azure App Service ve dvou oblastech Azure. Azure App Service pro Linux se provádí pomocí kontejneru Dockeru s PHP 7.0.
 - Kód aplikace se přesunou na Githubu a webové aplikace Azure se nakonfiguruje pro průběžné nasazování s Githubem.
@@ -94,9 +93,9 @@ Po Připnutí dolů jejich aktuální architektury, cíle a požadavky na migrac
 
 Contoso dokončí proces migrace následujícím způsobem:
 
-1. Jako první krok nastaví Contoso infrastrukturu Azure, včetně zřizování služby Azure App Services, si Traffic Manager nastavení a zřízení instance Azure MySQL.
+1. Jako první krok nastavte správce společnosti Contoso infrastrukturu Azure, včetně zřizování služby Azure App Services, si Traffic Manager nastavení a zřízení instance Azure MySQL.
 2. Jakmile připravíte Azure, se migrace databáze pomocí aplikace MySQL Workbench. 
-3. Po spuštění databáze v Azure nastavit privátní úložiště GitHub pro službu Azure App Service se průběžné doručování a načíst do ní osTicket aplikace.
+3. Po databáze běží v Azure, jsou do privátního úložiště GitHub pro Azure App Service se průběžné doručování a načtěte ho aplikaci osTicket.
 4. Na webu Azure Portal se načíst aplikaci z Githubu do kontejneru Dockeru spuštěném služby Azure App Service. 
 5. Upravit nastavení DNS a nakonfigurovat automatické škálování pro aplikaci.
 
@@ -114,33 +113,33 @@ Contoso dokončí proces migrace následujícím způsobem:
  
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud chcete spustit tento scénář můžete vy (a Contoso), zde je, co byste měli mít.
+Zde je, co Contoso potřebuje ke spuštění tohoto scénáře.
 
 **Požadavky** | **Podrobnosti**
 --- | ---
-**Předplatné Azure** | Měli jste již vytvořili předplatné během dřívější články v této sérii. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).<br/><br/> Pokud vytvoříte bezplatný účet, jste správcem vašeho předplatného a můžete provádět všechny akce.<br/><br/> Pokud použijete existující předplatné a nejste správce, budete muset správce přiřadit oprávnění vlastníka nebo přispěvatele.<br/><br/> Pokud potřebujete podrobnější oprávnění, přečtěte si [v tomto článku](../site-recovery/site-recovery-role-based-linked-access-control.md). 
+**Předplatné Azure** | Společnosti Contoso vytvořit odběry dříve v této sérii článku. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).<br/><br/> Pokud vytvoříte bezplatný účet, jste správcem vašeho předplatného a můžete provádět všechny akce.<br/><br/> Pokud použijete existující předplatné a nejste správce, budete muset správce přiřadit oprávnění vlastníka nebo přispěvatele. 
 **Infrastruktura Azure** | Nastavit infrastrukturu Azure, jak je popsáno v contoso [infrastrukturu Azure na migraci](contoso-migration-infrastructure.md).
 
 
 
 ## <a name="scenario-steps"></a>Kroky scénáře
 
-Zde je, jak Azure dokončí migraci:
+Zde je, jak bude Contoso dokončení migrace:
 
 > [!div class="checklist"]
-> * **Krok 1: Zřizování Azure App Services**: Contoso zřídí Web Apps v primárních a sekundárních oblastech.
+> * **Krok 1: Zřizování Azure App Services**: Správce společnosti Contoso zřídí Web Apps v primárních a sekundárních oblastech.
 > * **Krok 2: Nastavte Traffic Manager**: nastavte Manager provoz před Web Apps pro směrování a vyrovnávání zatížení provozu.
-> * **Krok 3: Zřízení MySQL**: Contoso v Azure, zřídí instance databáze Azure MySQL.
+> * **Krok 3: Zřízení MySQL**: V Azure, zřizování instance databáze Azure MySQL.
 > * **Krok 4: Migrace databáze**: migraci databáze pomocí aplikace MySQL Workbench. 
-> * **Krok 5: Nastavte GitHub**: Contoso nastaví místní úložiště GitHub pro weby nebo kódu aplikace.
-> * **Krok 6: Nasazení webové aplikace**: Contoso nasadí webové aplikace z Githubu.
+> * **Krok 5: Nastavte GitHub**: nastavené místní úložiště GitHub pro projekt webové stránky nebo kódu aplikace.
+> * **Krok 6: Nasazení webové aplikace**: nasadí webové aplikace z Githubu.
 
 
 
 
 ## <a name="step-1-provision-azure-app-services"></a>Krok 1: Zřizování Azure App Service
 
-Contoso zřídí dvě webové aplikace (jeden v každé oblasti) pomocí služby Azure App Services.
+Správce společnosti Contoso zřízení dvě webové aplikace (jeden v každé oblasti) pomocí služby Azure App Services.
 
 1. Vytvoří prostředek webové aplikace v primární oblasti USA – východ 2 (**osticket eus2**) z Azure Marketplace.
 2. Převedou prostředek ve skupině prostředků produkční **ContosoRG**.
@@ -151,7 +150,7 @@ Contoso zřídí dvě webové aplikace (jeden v každé oblasti) pomocí služby
 
      ![Aplikace Azure](./media/contoso-migration-refactor-linux-app-service-mysql/azure-app2.png) 
     
-4. Contoso vybere operačního systému Linux s zásobník modulu runtime PHP 7.0, což je kontejner Dockeru.
+4. Výběrem operačního systému Linux s zásobník modulu runtime PHP 7.0, což je kontejner Dockeru.
 
     ![Aplikace Azure](./media/contoso-migration-refactor-linux-app-service-mysql/azure-app3.png) 
 
@@ -168,13 +167,13 @@ Contoso zřídí dvě webové aplikace (jeden v každé oblasti) pomocí služby
 
 ## <a name="step-2-set-up-traffic-manager"></a>Krok 2: Nastavte Traffic Manager
 
-Contoso nastaví pro přesměrování příchozích webových požadavků do webové aplikace běžící na osTicket webové vrstvy do Traffic Manageru.
+Contoso správci nastavit pro přesměrování příchozích webových požadavků do webové aplikace běžící na osTicket webové vrstvy do Traffic Manageru.
 
-1. Contoso se vytvoří prostředek Traffic Manageru (**osticket.trafficmanager.net**) z Azure Marketplace. Používají priority směrování tak, aby východní USA 2 je primární lokalita. Prostředek se umístit ve své skupině prostředků infrastruktury (**ContosoInfraRG**). Všimněte si, že Traffic Manager je globální a není vázaná na určité místo
+1. Vytvoří prostředek Traffic Manageru (**osticket.trafficmanager.net**) z Azure Marketplace. Používají priority směrování tak, aby východní USA 2 je primární lokalita. Prostředek se umístit ve své skupině prostředků infrastruktury (**ContosoInfraRG**). Všimněte si, že Traffic Manager je globální a není vázaná na určité místo
 
     ![Traffic Manager](./media/contoso-migration-refactor-linux-app-service-mysql/traffic-manager1.png) 
 
-2. Nyní Contoso konfigurace Traffic Manageru s koncovými body. Východ USA 2 aplikaci přidávají jako primární lokality (**osticket eus2**) a USA (střed) aplikace jako sekundární (**osticket cus**).
+2. Nyní jejich konfigurace Traffic Manageru s koncovými body. Východ USA 2 aplikaci přidávají jako primární lokality (**osticket eus2**) a USA (střed) aplikace jako sekundární (**osticket cus**).
 
     ![Traffic Manager](./media/contoso-migration-refactor-linux-app-service-mysql/traffic-manager2.png) 
 
@@ -189,7 +188,7 @@ Contoso nastaví pro přesměrování příchozích webových požadavků do web
  
 ## <a name="step-3-provision-azure-database-for-mysql"></a>Krok 3: Zřízení Azure Database for MySQL
 
-Contoso předpisy MySQL databáze instance v primární oblasti USA – východ 2.
+Správce společnosti Contoso zřízení instance databáze MySQL v primární oblasti USA – východ 2.
 
 1. Na webu Azure Portal vytváření serveru Azure Database for MySQL prostředků. 
 
@@ -200,11 +199,11 @@ Contoso předpisy MySQL databáze instance v primární oblasti USA – východ 
 
      ![MySQL](./media/contoso-migration-refactor-linux-app-service-mysql/mysql-2.png)
 
-4. Pro **možnosti redundance zálohy**, vybere Contoso použijte **geograficky redundantní**. Tato možnost umožňuje jejich obnovení databáze v jejich sekundární oblasti střed USA, pokud dojde k výpadku. Tato možnost mohou nakonfigurovat pouze při zřizování databáze.
+4. Pro **možnosti redundance zálohy**, vyberou používat **geograficky redundantní**. Tato možnost umožňuje jejich obnovení databáze v jejich sekundární oblasti střed USA, pokud dojde k výpadku. Tato možnost mohou nakonfigurovat pouze při zřizování databáze.
 
     ![Redundance](./media/contoso-migration-refactor-linux-app-service-mysql/db-redundancy.png)
 
-4. Contoso nastavení zabezpečení připojení. V databázi > **zabezpečení připojení**, že nastavení pravidel brány Firewall umožňující databáze přístupu ke službám Azure.
+4. Nastavení zabezpečení připojení. V databázi > **zabezpečení připojení**, že nastavení pravidel brány Firewall umožňující databáze přístupu ke službám Azure.
 5. IP adresa klienta místní pracovní stanici přidávají do počáteční a koncovou IP adresu. To umožňuje webové aplikace pro přístup k databázi MySQL, spolu s klienta databáze, který provádí migraci.
 
     ![MySQL](./media/contoso-migration-refactor-linux-app-service-mysql/mysql-3.png)
@@ -213,11 +212,11 @@ Contoso předpisy MySQL databáze instance v primární oblasti USA – východ 
 
 ## <a name="step-4-migrate-the-database"></a>Krok 4: Migrace databáze
 
-Contoso provede migraci databází pomocí zálohování a obnovení pomocí nástrojů MySQL. Jejich aplikaci MySQL Workbench můžete nainstalovat, proveďte zálohu databáze z OSTICKETMYSQL a jeho následnému obnovení – Azure Database for MySQL Server.
+Správce společnosti Contoso migrace databáze pomocí zálohování a obnovení pomocí nástrojů MySQL. Jejich aplikaci MySQL Workbench můžete nainstalovat, proveďte zálohu databáze z OSTICKETMYSQL a jeho následnému obnovení – Azure Database for MySQL Server.
 
 ### <a name="install-mysql-workbench"></a>Instalace aplikace MySQL Workbench
 
-1. Contoso kontroly [požadavky a soubory ke stažení aplikace MySQL Workbench](https://dev.mysql.com/downloads/workbench/?utm_source=tuicool).
+1. Zkontrolujte, že [požadavky a soubory ke stažení aplikace MySQL Workbench](https://dev.mysql.com/downloads/workbench/?utm_source=tuicool).
 2. Instalace aplikace MySQL Workbench pro Windows v souladu s maticí [pokyny k instalaci](https://dev.mysql.com/doc/workbench/en/wb-installing.html). Na počítači, na kterém instalaci musí být přístupná pro virtuální počítač OSTICKETMYSQL a Azure prostřednictvím Internetu.
 3. V aplikaci MySQL Workbench vytvoří připojení k OSTICKETMYSQL MySQL. 
 
@@ -231,7 +230,7 @@ Contoso provede migraci databází pomocí zálohování a obnovení pomocí ná
 
     ![MySQL Workbench](./media/contoso-migration-refactor-linux-app-service-mysql/workbench3.png)
 
-6. Soubor (obnovení) databáze v instanci Azure MySQL, místním obsažených teď můžete importovat Contoso. Nové schéma (osticket) je vytvořena instance.
+6. Teď se můžete importovat (obnovení) databáze v instanci Azure MySQL, z samostatný soubor. Nové schéma (osticket) je vytvořena instance.
 
     ![MySQL Workbench](./media/contoso-migration-refactor-linux-app-service-mysql/workbench4.png)
 
@@ -241,7 +240,7 @@ Contoso provede migraci databází pomocí zálohování a obnovení pomocí ná
 
     ![MySQL Workbench](./media/contoso-migration-refactor-linux-app-service-mysql/workbench6.png)
 
-8. Nakonec Contoso je potřeba aktualizovat informace o databázi ve službě web apps. Na instanci MySQL otevřete **připojovací řetězce**. 
+8. Nakonec je třeba aktualizovat informace o databázi ve službě web apps. Na instanci MySQL otevřete **připojovací řetězce**. 
 
      ![MySQL Workbench](./media/contoso-migration-refactor-linux-app-service-mysql/workbench7.png)
 
@@ -253,14 +252,14 @@ Contoso provede migraci databází pomocí zálohování a obnovení pomocí ná
 
      ![MySQL Workbench](./media/contoso-migration-refactor-linux-app-service-mysql/workbench9.png)
 
-11. Contoso můžete ověřit název serveru a přihlašovací jméno z **přehled** v instanci MySQL na webu Azure Portal.
+11. Tney můžete ověřit název serveru a přihlašovací jméno z **přehled** v instanci MySQL na webu Azure Portal.
 
     ![MySQL Workbench](./media/contoso-migration-refactor-linux-app-service-mysql/workbench10.png)
 
 
 ## <a name="step-5-set-up-github"></a>Krok 5: Nastavte GitHub
 
-Contoso vytvoří novou privátní úložiště GitHub a nastaví připojení k databázi osTicket v Azure MySQL. Pak načíst webové aplikace Azure s aplikací.  
+Správce společnosti Contoso vytvořit nový privátní úložiště GitHub a nastaví připojení k databázi osTicket v Azure MySQL. Pak načíst webové aplikace Azure s aplikací.  
 
 1.  Přejděte do OsTicket softwaru veřejného úložiště GitHub se vzorovými a rozvětvili do účtu Githubu Contoso.
 
@@ -275,7 +274,7 @@ Contoso vytvoří novou privátní úložiště GitHub a nastaví připojení k 
 
     ![GitHubu](./media/contoso-migration-refactor-linux-app-service-mysql/github3.png)
 
-4. V editoru Contoso aktualizuje podrobnosti o databázi, konkrétně **DBHOST** a **DBUSER**. 
+4. V editoru, konkrétně aktualizovat podrobnosti databáze **DBHOST** a **DBUSER**. 
 
     ![GitHubu](./media/contoso-migration-refactor-linux-app-service-mysql/github4.png)
 
@@ -283,7 +282,7 @@ Contoso vytvoří novou privátní úložiště GitHub a nastaví připojení k 
 
     ![GitHubu](./media/contoso-migration-refactor-linux-app-service-mysql/github5.png)
 
-6. Pro každou webovou aplikaci (**osticket eus2** a **osticket cus**), změnit Contoso **nastavení aplikace** na webu Azure Portal.
+6. Pro každou webovou aplikaci (**osticket eus2** a **osticket cus**), mění **nastavení aplikace** na webu Azure Portal.
 
     ![GitHubu](./media/contoso-migration-refactor-linux-app-service-mysql/github6.png)
 
@@ -293,11 +292,11 @@ Contoso vytvoří novou privátní úložiště GitHub a nastaví připojení k 
 
 ## <a name="step-6-configure-the-web-apps"></a>Krok 6: Konfigurace webových aplikací
 
-Jako poslední krok v procesu migrace Contoso nakonfigurovat osTicket webových serverů webových aplikací.
+Jako poslední krok v procesu migrace konfigurace správce společnosti Contoso webové aplikace s weby osTicket.
 
 
 
-1. V primární web app (**osticket eus2**) otevřete **možnost nasazení** a nastavte zdroj na **Githubu**.
+1. V primární web app (**osticket eus2**) otevřou **možnost nasazení** a nastavte zdroj na **Githubu**.
 
     ![Konfigurace aplikace](./media/contoso-migration-refactor-linux-app-service-mysql/configure-app1.png)
 
@@ -313,7 +312,7 @@ Jako poslední krok v procesu migrace Contoso nakonfigurovat osTicket webových 
 
     ![Konfigurace aplikace](./media/contoso-migration-refactor-linux-app-service-mysql/configure-app4.png)
 
-5. Contoso poté opakuje výše uvedené kroky pro sekundární webové aplikace (**osticket cus**).
+5. Výše uvedené kroky zopakují v sekundární webové aplikace (**osticket cus**).
 6. Po dokončení konfigurace webu je přístupný prostřednictvím profilu Traffic Manageru. Název DNS je nové umístění osTicket aplikace. [Další informace](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-domain#map-a-cname-record).
 
     ![Konfigurace aplikace](./media/contoso-migration-refactor-linux-app-service-mysql/configure-app5.png)
@@ -330,7 +329,7 @@ Jako poslední krok v procesu migrace Contoso nakonfigurovat osTicket webových 
 
 Nakonec se nastavení automatického škálování pro aplikaci. Tím se zajistí, že agentů k používání aplikace, instance aplikace zvýšit nebo snížit podle obchodních potřeb. 
 
-1. Ve službě App Service **aplikace. SRV EUS2**, otevřít Contoso **jednotka škálování**.
+1. Ve službě App Service **aplikace. SRV EUS2**, otevřou **jednotka škálování**.
 2. Nové nastavení automatického škálování, konfigurace s jedním pravidlem, které zvýší počet instancí o jednu, pokud procento využití procesoru pro aktuální instanci je vyšší než 70 % po dobu 10 minut.
 
     ![Automatické škálování](./media/contoso-migration-refactor-linux-app-service-mysql/autoscale1.png)
@@ -343,7 +342,7 @@ Nakonec se nastavení automatického škálování pro aplikaci. Tím se zajist�
 
 Pomocí migrace byla dokončena je teď vyčleněný osTicket aplikace ke spuštěným v Azure webové aplikace pomocí nepřetržité doručování pomocí privátního úložiště GitHub. Aplikace spuštěná ve dvou oblastech pro zvýšení odolnosti. Databáze osTicket běží ve službě Azure database for MySQL po dokončení migrace na platformě PaaS.
 
-Nyní Contoso potřebuje provést následující kroky: 
+Pro čištění, Contoso potřebuje provést následující kroky: 
 - Odeberte virtuální počítače VMware z inventáře vCenter.
 - Odebrání místních virtuálních počítačů z místní úlohy zálohování.
 - Aktualizace interní dokumentaci ukazují novým umístěním a IP adresy. 

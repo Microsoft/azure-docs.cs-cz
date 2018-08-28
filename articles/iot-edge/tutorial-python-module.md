@@ -9,12 +9,12 @@ ms.date: 06/26/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 5766f9708d2439f42f9ad77169fd1fe7f7dc451e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6cf3a721dfd601fc4d4beb122f56b4a4de5fe426
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39439108"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41919902"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-to-your-simulated-device"></a>Kurz: Vývoj modulu IoT Edge Python a jeho nasazení na simulované zařízení
 
@@ -37,7 +37,7 @@ Modul IoT Edge, který v tomto kurzu vytvoříte, filtruje teplotní údaje gene
 Zařízení Azure IoT Edge:
 
 * Jako hraniční zařízení můžete použít svůj vývojový počítač nebo virtuální počítač podle postupu v rychlém startu pro [Linux](quickstart-linux.md).
-* Moduly Python pro IoT Edge nepodporují procesory ARM ani zařízení s Windows.
+* Moduly Python pro IoT Edge nepodporují zařízení s Windows.
 
 Cloudové prostředky:
 
@@ -51,6 +51,9 @@ Prostředky pro vývoj:
 * [Docker CE](https://docs.docker.com/engine/installation/). 
 * [Python](https://www.python.org/downloads/).
 * [Pip](https://pip.pypa.io/en/stable/installing/#installation) pro instalaci balíčků Python (většinou je součástí instalace Pythonu).
+
+>[!Note]
+>Ujistěte se, že se vaše složka `bin` nachází v cestě pro vaši platformu. Obvykle je to `~/.local/` pro UNIX a macOS nebo `%APPDATA%\Python` ve Windows.
 
 ## <a name="create-a-container-registry"></a>Vytvoření registru kontejnerů
 V tomto kurzu pomocí rozšíření Azure IoT Edge pro VS Code sestavíte modul a ze souborů vytvoříte **image kontejneru**. Tuto image pak nasdílíte do **registru**, ve kterém se ukládají a spravují vaše image. Nakonec nasadíte svou image z registru pro spuštění na zařízení IoT Edge.  
@@ -78,6 +81,8 @@ Pomocí balíčku Python **cookiecutter** vytvořte šablonu řešení Python, n
     ```cmd/sh
     pip install --upgrade --user cookiecutter
     ```
+   >[!Note]
+   >Ujistěte se, že se adresář, do kterého se balíček cookiecutter nainstaluje, nachází v cestě `Path` vašeho prostředí, aby bylo možné ho vyvolat z příkazového řádku.
 
 3. Výběrem **View** (Zobrazit)  > **Command Palette** (Paleta příkazů) otevřete paletu příkazů VS Code. 
 
@@ -91,7 +96,13 @@ Pomocí balíčku Python **cookiecutter** vytvořte šablonu řešení Python, n
    4. Pojmenujte modul **PythonModule**. 
    5. Jako úložiště imagí pro první modul určete registr kontejneru Azure, který jste vytvořili v předchozí části. Nahraďte **localhost:5000** hodnotou pro přihlašovací server, kterou jste zkopírovali. Konečný řetězec vypadá takto: \<název_registru\>.azurecr.io/pythonmodule.
  
-V okně nástroje VS Code se načte pracovní prostor řešení IoT Edge: složka s moduly, soubor šablony manifestu nasazení a soubor \.env. 
+   ![Zadání úložiště imagí Dockeru](./media/tutorial-python-module/repository.png)
+
+V okně nástroje VS Code se načte pracovní prostor řešení IoT Edge. Pracovní prostor řešení obsahuje pět komponent nejvyšší úrovně. Soubor **\.gitignore** v tomto kurzu upravovat nebudete. Složka **modules** obsahuje kód Pythonu pro váš modul a také soubory Dockerfile pro sestavení modulu jako image kontejneru. V souboru **\.env** jsou uložené přihlašovací údaje k vašemu registru kontejneru. Soubor **deployment.template.json** obsahuje informace, které modul runtime IoT Edge používá k nasazení modulů do zařízení. 
+
+Pokud jste při vytváření řešení nezadali registr kontejneru, ale přijali jste výchozí hodnotu localhost:5000, nebudete mít soubor \.env. 
+
+   ![Pracovní prostor řešení Pythonu](./media/tutorial-python-module/workspace.png)
 
 ### <a name="add-your-registry-credentials"></a>Přidání přihlašovacích údajů registru
 
@@ -200,7 +211,7 @@ V předchozí části jste vytvořili řešení IoT a do modulu **PythonModule**
 
 4. Soubor uložte.
 
-5. V průzkumníku VS Code klikněte pravým tlačítkem na soubor deployment.template.json a vyberte **Build IoT Edge solution** (Vytvořit řešení IoT Edge). 
+5. V průzkumníku VS Code klikněte pravým tlačítkem na soubor deployment.template.json a vyberte **Build and Push IoT Edge solution** (Vytvořit a odeslat řešení IoT Edge). 
 
 Když editoru Visual Studio Code sdělíte, že má sestavit vaše řešení, nejdříve se načtou informace ze šablony nasazení a v nové složce s názvem **config** se vygeneruje soubor deployment.json. Pak se v integrovaném terminálu spustí dva příkazy: `docker build` a `docker push`. Tyto dva příkazy sestaví kód, provedou kontejnerizaci vašeho kódu Python a kód odešlou do registru kontejneru, který jste zadali při inicializaci řešení. 
 
@@ -208,23 +219,21 @@ Když editoru Visual Studio Code sdělíte, že má sestavit vaše řešení, ne
 
 ## <a name="deploy-and-run-the-solution"></a>Nasazení a spuštění řešení
 
-K nasazení modulu Python na zařízení IoT Edge můžete použít web Azure Portal, jako jste to udělali v rychlých startech. Moduly však můžete také nasadit a monitorovat z editoru Visual Studio Code. Následující sekce používají rozšíření Azure IoT Edge pro VS Code, které bylo uvedené v požadavcích. Pokud jste to ještě neudělali, nainstalujte toto rozšíření nyní. 
+V článku Rychlý start, pomocí kterého jste nastavili své zařízení IoT Edge, jste nasadili modul pomocí webu Azure Portal. Moduly můžete nasazovat také pomocí rozšíření Azure IoT Toolkit pro Visual Studio Code. Pro svůj scénář už máte připravený manifest nasazení – soubor **deployment.json**. Teď stačí jen vybrat zařízení, na které se nasazení provede.
 
-1. Výběrem **View** (Zobrazit)  > **Command Palette** (Paleta příkazů) otevřete paletu příkazů VS Code.
+1. Na paletě příkazů VS Code spusťte **Azure IoT Hub: Select IoT Hub** (Azure IoT Hub: Vybrat IoT Hub). 
 
-2. Vyhledejte a spusťte příkaz **Azure: Sign in** (Azure: Přihlásit se). Podle pokynů se přihlaste ke svému účtu Azure. 
+2. Zvolte předplatné a centrum IoT obsahující zařízení IoT Edge, které chcete nakonfigurovat. 
 
-3. Na paletě příkazů vyhledejte a spusťte příkaz **Azure IoT Hub: Select IoT Hub** (Azure IoT Hub: Vybrat IoT Hub). 
+3. V průzkumníku VS Code rozbalte oddíl **Azure IoT Hub Devices** (Zařízení Azure IoT Hub). 
 
-4. Vyberte předplatné, které obsahuje váš IoT Hub, a pak vyberte IoT Hub, ke kterému chcete získat přístup.
+4. Klikněte pravým tlačítkem na název vašeho zařízení IoT Edge a pak vyberte **Create Deployment for Single Device** (Vytvořit nasazení pro jedno zařízení). 
 
-5. V průzkumníku VS Code rozbalte oddíl **Azure IoT Hub Devices** (Zařízení Azure IoT Hub). 
+   ![Vytvoření nasazení pro jedno zařízení](./media/tutorial-python-module/create-deployment.png)
 
-6. Klikněte pravým tlačítkem na název vašeho zařízení IoT Edge a pak vyberte **Create Deployment for IoT Edge device** (Vytvořit nasazení pro zařízení IoT Edge). 
+5. Vyberte ve složce **config** soubor **deployment.json** a klikněte na **Select Edge Deployment Manifest** (Vybrat manifest nasazení Edge). Nepoužívejte soubor deployment.template.json. 
 
-7. Přejděte do složky řešení, která obsahuje **PythonModule**. Otevřete složku config, vyberte soubor deployment.json a pak zvolte **Select Edge Deployment Manifest** (Vybrat manifest nasazení Edge).
-
-8. Aktualizujte sekci **Azure IoT Hub Devices** (Zařízení Azure IoT Hub). Měl by se zobrazit spuštěný nový modul **PythonModule** společně s modulem **TempSensor** a moduly **$edgeAgent** a **$edgeHub**. 
+6. Klikněte na tlačítko pro obnovení. Měl by se zobrazit spuštěný nový modul **PythonModule** společně s modulem **TempSensor** a moduly **$edgeAgent** a **$edgeHub**. 
 
 ## <a name="view-generated-data"></a>Zobrazení vygenerovaných dat
 
@@ -236,32 +245,42 @@ K nasazení modulu Python na zařízení IoT Edge můžete použít web Azure Po
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků 
 
-<!--[!INCLUDE [iot-edge-quickstarts-clean-up-resources](../../includes/iot-edge-quickstarts-clean-up-resources.md)] -->
-
-Pokud máte v plánu pokračovat k dalšímu doporučenému článku, můžete si vytvořené prostředky a konfigurace uschovat a znovu je použít.
+Pokud máte v plánu pokračovat k dalšímu doporučenému článku, můžete si vytvořené prostředky a konfigurace uschovat a znovu je použít. Také můžete dál používat stejné zařízení IoT Edge jako testovací zařízení. 
 
 Jinak můžete místní konfigurace a prostředky Azure vytvořené v tomto článku odstranit, abyste se vyhnuli poplatkům. 
 
-> [!IMPORTANT]
-> Odstranění prostředků Azure a skupin prostředků je nevratná akce. V případě odstranění se skupina prostředků i všechny prostředky, které obsahuje, trvale odstraní. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. Pokud jste službu IoT Hub vytvořili uvnitř existující skupiny prostředků obsahující prostředky, které chcete zachovat, odstraňte místo skupiny prostředků pouze samotný prostředek služby IoT Hub.
->
+[!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
-Pokud chcete odstranit jenom IoT Hub, spusťte následující příkaz s názvem vaší služby Hub a názvem skupiny prostředků:
+### <a name="delete-local-resources"></a>Odstranění místních prostředků
 
-```azurecli-interactive
-az iot hub delete --name {hub_name} --resource-group IoTEdgeResources
-```
+Pokud ze svého zařízení chcete odebrat modul runtime IoT Edge a související prostředky, použijte následující příkazy. 
 
+Odeberte modul runtime IoT Edge.
 
-Odstranění celé skupiny prostředků podle názvu:
+   ```bash
+   sudo apt-get remove --purge iotedge
+   ```
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) a potom vyberte **Skupiny prostředků**.
+Při odebrání modulu runtime IoT Edge se zastaví kontejnery, které vytvořil, ale na zařízení se zachovají. Zobrazte všechny kontejnery.
 
-2. Do textového pole **Filtrovat podle názvu** zadejte název skupiny prostředků obsahující vaši službu IoT Hub. 
+   ```bash
+   sudo docker ps -a
+   ```
 
-3. Vpravo vedle skupiny prostředků ve výsledcích hledání vyberte tři tečky (**...**) a pak vyberte **Odstranit skupinu prostředků**.
+Odstraňte kontejnery modulu runtime, které se vytvořily ve vašem zařízení.
 
-4. Zobrazí se výzva k potvrzení odstranění skupiny prostředků. Potvrďte odstranění opětovným zadáním názvu vaší skupiny prostředků a vyberte **Odstranit**. Po chvíli bude skupina prostředků včetně všech obsažených prostředků odstraněná.
+   ```bash
+   docker rm -f edgeHub
+   docker rm -f edgeAgent
+   ```
+
+S použitím názvů kontejnerů odstraňte všechny další kontejnery, které se zobrazily ve výstupu příkazu `docker ps`. 
+
+Odeberte kontejnerový modul runtime.
+
+   ```bash
+   sudo apt-get remove --purge moby
+   ```
 
 ## <a name="next-steps"></a>Další kroky
 

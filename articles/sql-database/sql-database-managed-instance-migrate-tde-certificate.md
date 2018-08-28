@@ -8,15 +8,15 @@ ms.reviewer: carlrab, jovanpop
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: tutorial
-ms.date: 07/16/2018
+ms.date: 08/09/2018
 ms.author: mlandzic
 manager: craigg
-ms.openlocfilehash: 042d89017db898102deafc9156cf847a08c92227
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: afecd69cdf9832e1c6dc294ca01968ee50a3eabd
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39074303"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41918880"
 ---
 # <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-managed-instance"></a>Migrace certifikátu databáze s ochranou TDE do spravované instance Azure SQL
 
@@ -38,8 +38,9 @@ K dokončení kroků v tomto článku budete potřebovat následující:
 
 - Nástroj příkazového řádku [Pvk2pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx) nainstalovaný na místním serveru nebo jiném počítači s přístupem k certifikátu, který se exportuje do souboru. Nástroj Pvk2pfx je součástí [Enterprise Windows Driver Kit](https://docs.microsoft.com/windows-hardware/drivers/download-the-wdk), samostatného a nezávislého prostředí příkazového řádku.
 - [Prostředí Windows PowerShell](https://docs.microsoft.com/powershell/scripting/setup/installing-windows-powershell) nainstalované ve verzi 5.0 nebo vyšší.
-- [Nainstalovaný a aktualizovaný](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) modul PowerShellu AzureRM. Modul \[AzureRM.Sqlhttps://www.powershellgallery.com/packages/AzureRM.Sql) verze 4.10.0 nebo vyšší.
-- Modul PowerShell nainstalujte spuštěním následujících příkazů v prostředí PowerShell:
+- [Nainstalovaný a aktualizovaný](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) modul AzureRM PowerShellu.
+- [Modul AzureRM.Sql](https://www.powershellgallery.com/packages/AzureRM.Sql) verze 4.10.0 nebo novější.
+  Modul PowerShell nainstalujte spuštěním následujících příkazů v prostředí PowerShell:
 
    ```powershell
    Install-Module -Name AzureRM.Sql
@@ -108,16 +109,6 @@ Pokud je certifikát v úložišti certifikátů místního počítače systému
 
 4. Postupujte podle pokynů průvodce exportem certifikátu a privátní klíč exportujte do formátu Personal Information Exchange
 
-## <a name="extract-certificate-from-file-to-base-64-string"></a>Extrakce certifikátu ze souboru do řetězce base-64
-
-Výstupem následujícího skriptu PowerShell bude certifikát v kódování base-64:
-
-```powershell
-$fileContentBytes = Get-Content 'C:/full_path/TDE_Cert.pfx' -Encoding Byte
-$base64EncodedCert = [System.Convert]::ToBase64String($fileContentBytes)
-echo $base64EncodedCert
-```
-
 ## <a name="upload-certificate-to-azure-sql-managed-instance-using-azure-powershell-cmdlet"></a>Nahrání certifikátu do spravované instance Azure SQL pomocí rutiny Azure PowerShellu
 
 1. Začněte s přípravnými kroky v prostředí PowerShell:
@@ -129,15 +120,16 @@ echo $base64EncodedCert
    Connect-AzureRmAccount
    # List subscriptions available and copy id of the subscription target Managed Instance belongs to
    Get-AzureRmSubscription
-   # Set subscription for the session
+   # Set subscription for the session (replace Guid_Subscription_Id with actual subscription id)
    Select-AzureRmSubscription Guid_Subscription_Id
    ```
 
 2. Jakmile bude vše připraveno, spuštěním následujících příkazů nahrajte certifikát v kódování base-64 do cílové spravované instance:
 
    ```powershell
-   $privateBlob = "<base-64-encoded-certificate-string>"
-   $securePrivateBlob = $privateBlob  | ConvertTo-SecureString -AsPlainText -Force
+   $fileContentBytes = Get-Content 'C:/full_path/TDE_Cert.pfx' -Encoding Byte
+   $base64EncodedCert = [System.Convert]::ToBase64String($fileContentBytes)
+   $securePrivateBlob = $base64EncodedCert  | ConvertTo-SecureString -AsPlainText -Force
    $password = "SomeStrongPassword"
    $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force
    Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate -ResourceGroupName "<ResourceGroupName>" -ManagedInstanceName "<ManagedInstanceName>" -PrivateBlob $securePrivateBlob -Password $securePassword

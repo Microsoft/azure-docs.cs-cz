@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/19/2018
 ms.author: cherylmc
-ms.openlocfilehash: 4603131c31ab3792efc1df504eb95dfde2eccb17
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 4fd82c110590c3aa5ede729b317fb722e58cc406
+ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38452630"
+ms.lasthandoff: 08/18/2018
+ms.locfileid: "41918621"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>Konfigurace připojení typu Point-to-Site k virtuální síti s použitím nativního ověřování certifikátů Azure: Azure Portal
 
@@ -178,6 +178,8 @@ Konfigurační soubory klienta VPN obsahují nastavení pro konfiguraci zaříze
 ### <a name="to-connect-from-a-mac-vpn-client"></a>Připojení z klienta VPN systému Mac
 
 V dialogovém okně Síť vyhledejte klientský profil, který chcete použít, zadejte nastavení ze souboru [VpnSettings.xml](point-to-site-vpn-client-configuration-azure-cert.md#installmac) a pak klikněte na **Připojit**.
+
+Podrobné pokyny najdete v části [Instalace – Mac (OS X)](https://docs.microsoft.com/en-us/azure/vpn-gateway/point-to-site-vpn-client-configuration-azure-cert#installmac).
 
   ![Připojení v systému Mac](./media/vpn-gateway-howto-point-to-site-rm-ps/applyconnect.png)
 

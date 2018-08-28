@@ -3,18 +3,18 @@ title: Klient HBase Javy – Azure HDInsight
 description: Zjistěte, jak sestavit aplikaci Apache HBase založené na jazyce Java a pak ji nasadit do HBase v Azure HDInsight pomocí nástroje Apache Maven.
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: jasonh
-ms.openlocfilehash: 4700a25cdeb9bf9800d01f09691b0f16df3f6637
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: d198db98c07c01a56be118e74ce2bf4b29b8c757
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39597748"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43048428"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Vytváření aplikací Apache HBase v Javě
 

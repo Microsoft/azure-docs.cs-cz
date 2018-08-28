@@ -3,18 +3,18 @@ title: Protokolům aplikací Hadoop YARN přístupu na základě Linux HDInsight
 description: Zjistěte, jak získat přístup k protokolům aplikace YARN na clusteru Linuxovým systémem HDInsight (Hadoop) pomocí příkazového řádku a webový prohlížeč.
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: jasonh
-ms.openlocfilehash: 0aa8d76ca97789844482d2b8ad7212c2f61a8ab8
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 179349d059fd75e2da01eb908a786e2e7ac91307
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39591799"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43092256"
 ---
 # <a name="access-yarn-application-logs-on-linux-based-hdinsight"></a>Protokoly aplikací YARN přístup na Linuxovým systémem HDInsight
 

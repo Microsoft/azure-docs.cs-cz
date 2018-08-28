@@ -3,19 +3,19 @@ title: Použití Beeline pomocí Apache Hive – Azure HDInsight
 description: Další informace o použití Beeline klienta ke spouštění dotazů Hive se systémem Hadoop v HDInsight. Beeline je nástroj pro práci s HiveServer2 prostřednictvím JDBC.
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 keywords: beeline hive, hive beeline
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: jasonh
-ms.openlocfilehash: 057c57316a291952b959f1e61b4286e87c074088
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 872b0e8ae3469cf3807268e07ca87cec9b00a70b
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39592355"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43051645"
 ---
 # <a name="use-the-beeline-client-with-apache-hive"></a>Použití Beeline klienta s Apache Hive
 

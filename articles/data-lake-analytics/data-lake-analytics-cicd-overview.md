@@ -1,25 +1,21 @@
 ---
-title: Jak vytvořit kanál CI/CD pro Azure Data Lake Analytics | Dokumentace Microsoftu
+title: Jak vytvořit kanál CI/CD pro Azure Data Lake Analytics
 description: Zjistěte, jak nastavit průběžnou integraci a průběžné nasazování pro Azure Data Lake Analytics.
 services: data-lake-analytics
-documentationcenter: ''
 author: yanancai
-manager: ''
-editor: ''
+ms.author: yanacai
+ms.reviewer: jasonwhowell
 ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
-ms.author: yanacai
-ms.openlocfilehash: c114f190ae05f5ea4788c3785a713a6365938ded
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 49ac9f9603a1b8043b19c327d5a66015959b9dd1
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630700"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43045870"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>Jak vytvořit kanál CI/CD pro Azure Data Lake Analytics  
 
@@ -440,16 +436,16 @@ Následujícím postupem nastavit úlohu nasazení databáze ve službě Visual 
         PackageDeploymentTool.exe deploycluster -Package <package path> -Database <database name> -Account <account name> -ResourceGroup <resource group name> -SubscriptionId <subscript id> -Tenant <tenant name> -AzureSDKPath <azure sdk path> -Interactive
         ```
 
-    * Použití **tajný kód** ověřování nasazení databáze U-SQL k účtu Azure Data Lake Analytics:
+    * Použití **secrete** ověřování nasazení databáze U-SQL k účtu Azure Data Lake Analytics:
 
         ```
-        PackageDeploymentTool.exe deploycluster -Package <package path> -Database <database name> -Account <account name> -ResourceGroup <resource group name> -SubscriptionId <subscript id> -Tenant <tenant name> -ClientId <client id> -Secret <secret>
+        PackageDeploymentTool.exe deploycluster -Package <package path> -Database <database name> -Account <account name> -ResourceGroup <resource group name> -SubscriptionId <subscript id> -Tenant <tenant name> -ClientId <client id> -Secrete <secrete>
         ```
 
     * Použití **Soubor_certifikátu** ověřování nasazení databáze U-SQL k účtu Azure Data Lake Analytics:
 
         ```
-        PackageDeploymentTool.exe deploycluster -Package <package path> -Database <database name> -Account <account name> -ResourceGroup <resource group name> -SubscriptionId <subscript id> -Tenant <tenant name> -ClientId <client id> -Secret <secret> -CertFile <certFile>
+        PackageDeploymentTool.exe deploycluster -Package <package path> -Database <database name> -Account <account name> -ResourceGroup <resource group name> -SubscriptionId <subscript id> -Tenant <tenant name> -ClientId <client id> -Secrete <secrete> -CertFile <certFile>
         ```
 
 ### <a name="packagedeploymenttoolexe-parameter-descriptions"></a>Popisy parametrů PackageDeploymentTool.exe
@@ -480,9 +476,9 @@ Následujícím postupem nastavit úlohu nasazení databáze ve službě Visual 
 |AzureSDKPath|Cesty hledání závislých sestavení v sadě Azure SDK.|Hodnotu Null|true (pravda)|
 |Interaktivní|Jestli se mají použít interaktivní režim ověřování.|false (nepravda)|false (nepravda)|
 |ID klienta|Vyžaduje se ID aplikace Azure AD pro neinteraktivní ověřování.|Hodnotu Null|Vyžaduje se pro neinteraktivní ověřování.|
-|Tajný kód|Tajný kód nebo heslo pro neinteraktivní ověřování. Byste měli použít pouze ve důvěryhodné a zabezpečené prostředí.|Hodnotu Null|Vyžaduje se pro neinteraktivní ověřování, jinak použijte SecretFile.|
-|SecretFile|Soubor uloží tajný klíč nebo heslo pro neinteraktivní ověřování. Ujistěte se, že zajistit jeho číst pouze od aktuálního uživatele.|Hodnotu Null|Vyžaduje se pro neinteraktivní ověřování, jinak použijte tajný klíč.|
-|Soubor_certifikátu|Soubor uloží certifikace X.509 pro neinteraktivní ověřování. Výchozí hodnota je použití tajné ověření klienta.|Hodnotu Null|false (nepravda)|
+|Secrete|Secrete nebo heslo pro neinteraktivní ověřování. Byste měli použít pouze ve důvěryhodné a zabezpečené prostředí.|Hodnotu Null|Vyžaduje se pro neinteraktivní ověřování, jinak použijte SecreteFile.|
+|SecreteFile|Soubor uloží secrete nebo heslo pro neinteraktivní ověřování. Ujistěte se, že zajistit jeho číst pouze od aktuálního uživatele.|Hodnotu Null|Vyžaduje se pro neinteraktivní ověřování, jinak použijte Secrete.|
+|Soubor_certifikátu|Soubor uloží certifikace X.509 pro neinteraktivní ověřování. Ve výchozím nastavení je použití klienta secrete ověřování.|Hodnotu Null|false (nepravda)|
 | JobPrefix | Předpona pro nasazení databáze U-SQL DDL úlohy. | Deploy_ + DateTime.Now | false (nepravda) |
 
 ## <a name="next-steps"></a>Další postup

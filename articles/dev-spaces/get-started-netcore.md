@@ -11,12 +11,12 @@ ms.topic: tutorial
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
 manager: douge
-ms.openlocfilehash: 93a63c39b2ba30d0b70607671262428d93392ad4
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: fdaba2afecd453794dbee3b47ef5202700d005d2
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522148"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "41918731"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core"></a>Začínáme s .NET Core v Azure Dev Spaces
 
@@ -34,7 +34,7 @@ Azure Dev Spaces vyžaduje minimální nastavení místního počítače. Větš
 Nejdřív si stáhněte a spusťte [rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli?view=azure-cli-latest). 
 
 > [!IMPORTANT]
-> Pokud už máte Azure CLI nainstalované, ujistěte se, že používáte verzi 2.0.38 nebo novější.
+> Pokud už máte Azure CLI nainstalované, ujistěte se, že používáte verzi 2.0.43 nebo novější.
 
 [!INCLUDE[](includes/sign-into-azure.md)]
 

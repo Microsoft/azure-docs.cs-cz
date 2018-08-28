@@ -5,36 +5,36 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/02/2018
+ms.date: 08/26/2018
 ms.author: raynew
-ms.openlocfilehash: 50d1b8fca8e5377c35810e08258a0ecc3770ae75
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 96f9617e8cabbad1919625fb717940443978b007
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39422320"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43046272"
 ---
 # <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Migrace Contoso: posouzení vhodnosti místních úloh pro migraci do Azure
 
-V tomto článku Contoso vyhodnocuje jeho místní SmartHotel aplikaci během přípravy na migraci aplikací do Azure.
+V tomto článku Contoso vyhodnocuje jeho místní SmartHotel aplikaci pro migraci do Azure.
 
-Tento článek je třetí částí série článků, který popisuje, jak fiktivní společnosti Contoso migraci svých místních prostředků do cloudu Microsoft Azure. Obsahuje základní informace a řadu scénářů nasazení, které ukazují, jak nastavit infrastrukturu migrace vyhodnotit vhodnost migrace místních prostředků a spouštět různé druhy migrace. Scénáře jejich složitost v. V čase se přidají do série článků.
+Tento článek je součástí série, která popisuje, jak fiktivní společnosti Contoso migraci svých místních prostředků do cloudu Microsoft Azure. Obsahuje informatio na pozadí a scénáře podrobné nasazení, které ukazují, jak nastavit infrastrukturu migrace vyhodnotit vhodnost migrace místních prostředků a spouštět různé druhy migrace. Scénáře jejich složitost v. V čase se přidají do série článků.
 
 Článek | Podrobnosti | Status
 --- | --- | ---
-[Článek 1: Přehled](contoso-migration-overview.md) | Přehled strategie migrace společnosti Contoso, článek řady a ukázkové aplikace, které se používají v řadě. | K dispozici.
-[Článek 2: Nasazení infrastruktury Azure](contoso-migration-infrastructure.md) | Contoso připraví svoji místní infrastrukturu a jeho infrastruktury Azure pro migraci. Pro všechny články týkající se migrace z této série se používá stejnou infrastrukturu. | K dispozici.
-Článek 3: Posouzení místních prostředků pro migraci do Azure | Contoso spuštění posouzení jeho místní dvouvrstvé SmartHotel aplikaci běžící ve VMware. Contoso vyhodnocuje aplikací virtuálních počítačů s použitím [Azure Migrate](migrate-overview.md) služby. Contoso vyhodnocuje databáze aplikace SQL serveru s použitím [Data Migration Assistant](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017). | V tomto článku
-[Článek 4: Změna hostitele aplikace na virtuálním počítači Azure a SQL Database, spravované Instance](contoso-migration-rehost-vm-sql-managed-instance.md) | Contoso běží lift and shift migrace do Azure pro své místní SmartHotel aplikaci. Contoso migruje aplikace front-endového virtuálního počítače pomocí [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview). Contoso migraci databáze aplikace do Azure SQL Database Managed Instance pomocí [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview). | K dispozici.
+[Článek 1: Přehled](contoso-migration-overview.md) | Přehled řady článku, strategie migrace společnosti Contoso a ukázkové aplikace, které se používají v řadě. | K dispozici.
+[Článek 2: Nasazení infrastruktury Azure](contoso-migration-infrastructure.md) | Contoso připraví svoji místní infrastrukturu a jeho infrastruktury Azure pro migraci. Pro všechny články v této sérii se používá stejnou infrastrukturu. | K dispozici.
+Článek 3: Posouzení místních prostředků pro migraci do Azure | Contoso spuštění posouzení jeho místní SmartHotel aplikaci běžící ve VMware. Contoso vyhodnocuje aplikací virtuálních počítačů pomocí služby Azure Migrate a databáze aplikace SQL Server pomocí Data Migration Assistant. | V tomto článku
+[Článek 4: Změna hostitele aplikace na virtuálním počítači Azure a SQL Database, spravované Instance](contoso-migration-rehost-vm-sql-managed-instance.md) | Contoso běží lift and shift migrace do Azure pro své místní SmartHotel aplikaci. Migrace aplikace front-endu pomocí služby Azure Site Recovery. Migrace databáze aplikace do Azure SQL Database Managed Instance pomocí Azure Database Migration Service. | K dispozici.
 [Článek 5: Změna hostitele aplikace na virtuálních počítačích Azure](contoso-migration-rehost-vm.md) | Contoso migruje svou aplikaci SmartHotel virtuální počítače na virtuální počítače Azure pomocí služby Site Recovery. | K dispozici.
-[Článek 6: Změna hostitele aplikace na virtuálních počítačích Azure a ve skupině dostupnosti AlwaysOn systému SQL Server](contoso-migration-rehost-vm-sql-ag.md) | Contoso migruje SmartHotel aplikace. Společnost Contoso využívá Site Recovery k migraci virtuálních počítačů aplikace. Jak migrovat databázi aplikace do clusteru SQL serveru, který je chráněn skupiny dostupnosti AlwaysOn využívá službu Database Migration Service. | K dispozici.
-[Článek 7: Změna hostitele aplikace na virtuálních počítačích Azure s Linuxem](contoso-migration-rehost-linux-vm.md) | Contoso dokončení migrace lift and shift jeho Linux osTicket aplikace na virtuální počítače Azure pomocí Site Recovery. | K dispozici.
-[Článek 8: Změna hostitele Linuxovou aplikaci na virtuálních počítačích Azure a Azure Database for MySQL](contoso-migration-rehost-linux-vm-mysql.md) | Contoso migruje svou aplikaci osTicket Linux do virtuálních počítačů Azure pomocí Site Recovery. Migrace databáze aplikace ke službě Azure Database for MySQL pomocí aplikace MySQL Workbench. | K dispozici.
-[Článek 9: Refaktorujte aplikace do webové aplikace Azure a Azure SQL Database](contoso-migration-refactor-web-app-sql.md) | Contoso migruje jeho SmartHotel aplikace do webové aplikace Azure a migraci databáze aplikace na instanci serveru SQL Azure. | K dispozici.
-[Článek 10: Refaktorujte Linuxovou aplikaci v Azure webové aplikace a služby Azure Database for MySQL](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso migruje jeho Linuxovou aplikaci osTicket do webové aplikace Azure v několika lokalitách. Webová aplikace je integrovaná se službou GitHub pro průběžné doručování. Contoso migraci databáze aplikace do Azure Database for MySQL – instance. | K dispozici.
-[Článku 11: Refaktorujte Team Foundation Server ve službě Visual Studio Team Services](contoso-migration-tfs-vsts.md) | Contoso migruje své místní nasazení serveru Team Foundation Server pomocí migrace na Visual Studio Team Services v Azure. | K dispozici.
-[Článek 12: Úprava architektury aplikace na kontejnery služby Azure a Azure SQL Database](contoso-migration-rearchitect-container-sql.md) | Contoso migruje jeho SmartHotel aplikace do Azure a potom rearchitects aplikace. Contoso rearchitects webové vrstvy aplikace jako kontejner Windows a rearchitects databázi aplikace s využitím Azure SQL Database. | K dispozici.
-[Článek 13: Znovu sestavte aplikaci v Azure](contoso-migration-rebuild.md) | Contoso replikujícím svou aplikaci SmartHotel pomocí celé řady funkcí Azure a služeb, včetně služby Azure App Service, Azure Kubernetes Service, Azure Functions, Azure Cognitive Services a Azure Cosmos DB. | K dispozici.
+[Článek 6: Změna hostitele aplikace na virtuálních počítačích Azure a ve skupině dostupnosti AlwaysOn systému SQL Server](contoso-migration-rehost-vm-sql-ag.md) | Contoso migruje SmartHotel aplikace pomocí služby Site Recovery k migraci virtuálních počítačů aplikace a Database Migration Service, jak migrovat databázi aplikace do clusteru SQL serveru, který je chráněn skupiny dostupnosti AlwaysOn. | K dispozici.
+[Článek 7: Změna hostitele aplikace na virtuálních počítačích Azure s Linuxem](contoso-migration-rehost-linux-vm.md) | Contoso se dokončí migrace lift and shift jeho Linux osTicket aplikace na virtuální počítače Azure pomocí služby Site Recovery. | K dispozici.
+[Článek 8: Změna hostitele Linuxovou aplikaci na virtuálních počítačích Azure a Azure Database for MySQL](contoso-migration-rehost-linux-vm-mysql.md) | Contoso migruje jeho Linuxovou aplikaci osTicket k virtuálním počítačům Azure pomocí Site Recovery. Migrace databáze aplikace ke službě Azure Database for MySQL pomocí aplikace MySQL Workbench. | K dispozici.
+[Článek 9: Refaktorujte aplikace do webové aplikace Azure a Azure SQL Database](contoso-migration-refactor-web-app-sql.md) | Contoso migruje jeho SmartHotel aplikace do webové aplikace Azure a migraci databáze aplikace do instance serveru SQL Azure pomocí Pomocníka s migrací databáze. | K dispozici.
+[Článek 10: Refaktorujte Linuxovou aplikaci v Azure webové aplikace a služby Azure Database for MySQL](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso migruje osTicket své Linuxové aplikace do webové aplikace Azure v několika oblastech Azure pomocí Azure Traffic Manageru, integrovaná se službou GitHub pro průběžné doručování. Contoso migraci databáze aplikace do Azure Database for MySQL – instance. | K dispozici.
+[Článku 11: Refaktorujte Team Foundation Server ve službě Visual Studio Team Services](contoso-migration-tfs-vsts.md) | Contoso migruje své místní nasazení serveru Team Foundation Server pro Visual Studio Team Services v Azure. | K dispozici.
+[Článek 12: Úprava architektury aplikace na kontejnery služby Azure a Azure SQL Database](contoso-migration-rearchitect-container-sql.md) | Contoso migruje jeho SmartHotel aplikace do Azure. Potom rearchitects webové vrstvy aplikace jako kontejner Windows se spuštěnou v Azure Service Fabric a databázi Azure SQL Database. | K dispozici.
+[Článek 13: Znovu sestavte aplikaci v Azure](contoso-migration-rebuild.md) | Contoso replikujícím svou aplikaci SmartHotel pomocí celé řady funkcí Azure a služeb, včetně služby Azure App Service, Azure Kubernetes Service (AKS), Azure Functions, Azure Cognitive Services a Azure Cosmos DB. | K dispozici.
 
 
 ## <a name="overview"></a>Přehled
@@ -124,7 +124,7 @@ Contoso a ostatní uživatelé musí splňovat následující požadavky pro ass
 - Oprávnění k instalaci agentů Azure Migrate na každém virtuálním počítači.
 - Virtuální počítače by měly mít přímé připojení k internetu.  
         – Internetový přístup můžete omezit na [požadované adresy URL](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-pre-requisites).  
-        – Pokud je vaše virtuální počítače nemají připojení k Internetu, Azure Log Analytics [bránu OMS](../log-analytics/log-analytics-oms-gateway.md) musí být nainstalované a agenta přenášená přes něj.
+        – Pokud je vaše virtuální počítače nemají připojení k Internetu, Azure [Log Analytics Gateway](../log-analytics/log-analytics-oms-gateway.md) musí být nainstalované a agenta přenášená přes něj.
 - Plně kvalifikovaný název domény virtuálního počítače, na kterém je spuštěná instance SQL Serveru, pro účely posouzení databáze.
 - Brány Windows Firewall spuštěnou na virtuálním počítači SQL serveru by měla umožňovat externí připojení na portu TCP 1433 (výchozí). Toto nastavení umožní Data Migration Assistant pro připojení.
 

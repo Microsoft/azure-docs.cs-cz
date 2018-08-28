@@ -4,17 +4,17 @@ description: Zjistěte, jak zadávat dotazy na data ze služby Azure Storage a A
 services: hdinsight,storage
 author: jasonwhowell
 ms.author: jasonh
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 05/14/2018
-ms.openlocfilehash: bccaf00537dd1455e1364ceb2b5ca152b12f218c
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
-ms.translationtype: HT
+ms.openlocfilehash: 027204065429a9eebd2e8121cbac8bc18b9d9ce6
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39598227"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43091431"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Použití úložiště Azure s clustery Azure HDInsight
 
@@ -60,7 +60,7 @@ Při použití účtu Azure Storage s clustery HDInsight je potřeba zvážit ty
 * **Veřejné kontejnery nebo veřejné objekty blob v účtech úložiště, které NEJSOU připojené ke clusteru:** Máte oprávnění jen pro čtení objektů blob v kontejnerech.
   
   > [!NOTE]
-  > Veřejné kontejnery umožňují získat seznam všech objektů blob, které jsou k dispozici v tomto kontejneru a získat metadata kontejneru. Veřejné objekty blob umožňují přístup k objektům blob jenom v případě, že znáte přesnou adresu URL. Další informace najdete v tématu <a href="http://msdn.microsoft.com/library/windowsazure/dd179354.aspx">Omezení přístupu ke kontejnerům a objektům blob</a>.
+  > Veřejné kontejnery umožňují získat seznam všech objektů blob, které jsou k dispozici v tomto kontejneru a získat metadata kontejneru. Veřejné objekty blob umožňují přístup k objektům blob jenom v případě, že znáte přesnou adresu URL. Další informace najdete v tématu <a href="https://docs.microsoft.com/en-us/azure/storage/blobs/storage-manage-access-to-resources">Správa přístupu ke kontejnerům a objektům blob</a>.
   > 
   > 
 * **Privátní kontejnery v účtech úložiště, které NEJSOU připojené ke clusteru:** Nemůžete získat přístup k objektům blob, dokud nedefinujete účet úložiště při odesílání úlohy WebHCat. To se vysvětluje dále v tomhle článku.
@@ -292,7 +292,7 @@ Při vytváření clusteru HDInsight zadáváte účet služby Azure Storage, kt
 > [!WARNING]
 > Použití dalšího účtu úložiště v jiném umístění, než je cluster HDInsight, není podporováno.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto článku jste zjistili, jak používat HDFS kompatibilní úložiště Azure se službou HDInsight. To umožňuje vytvářet škálovatelná a dlouhodobá řešení pro získávání archivovaných dat a používat službu HDInsight k odemčení informací uvnitř uložených strukturovaných a nestrukturovaných dat.
 
 Další informace naleznete v tématu:

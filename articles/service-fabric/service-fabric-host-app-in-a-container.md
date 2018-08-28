@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: 6fe314125440096d21a1276defd082c4e1997b8e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 50ece1d1f74ace494e6bebb84f9f121c1fad7a6c
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34642678"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "41920675"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Kurz: Nasazení aplikace .NET v kontejneru Windows do Azure Service Fabricu
 
@@ -223,6 +223,9 @@ Aplikace je teď připravená a můžete ji nasadit do clusteru v Azure přímo 
 Postupujte podle pokynů k nasazení v okně výstupu.  Po nasazení aplikace otevřete prohlížeč a zadejte adresu clusteru a port aplikace. Například, http://http://fabrikamfibercallcenter.southcentralus.cloudapp.azure.com:8659/.
 
 ![Ukázka webu Fabrikam][fabrikam-web-page-deployed]
+
+## <a name="set-up-continuous-integration-and-deployment-cicd-with-a-service-fabric-cluster"></a>Nastavení průběžné integrace a nasazování (CI/CD) s využitím clusteru Service Fabric
+Informace o použití VSTS ke konfiguraci nasazení aplikace s CI/CD do clusteru Service Fabric najdete v [kurzu Nasazení aplikace s CI/CD do clusteru Service Fabric](service-fabric-tutorial-deploy-app-with-cicd-vsts.md). Postup popsaný v tomto kurzu je stejný i pro tento projekt (FabrikamFiber), stačí přeskočit stažení ukázky Voting a místo názvu úložiště Voting použít FabrikamFiber.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Po skončení nezapomeňte odebrat všechny prostředky, které jste vytvořili.  Nejjednodušší způsob, jak to udělat, je odebrat skupiny prostředků, které obsahují cluster Service Fabricu, databázi SQL Azure a Azure Container Registry.

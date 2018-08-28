@@ -1,24 +1,19 @@
 ---
-title: Co je nového ve službě Azure Data Catalog | Dokumentace Microsoftu
+title: Co je nového ve službě Azure Data Catalog
 description: Tento článek obsahuje přehled nových funkcí přidaných do katalogu dat Azure.
 services: data-catalog
-documentationcenter: ''
 author: steelanddata
-manager: NA
-editor: ''
-tags: ''
+ms.author: maroche
 ms.assetid: 1201f8d4-6f26-4182-af3f-91e758a12303
 ms.service: data-catalog
-ms.devlang: NA
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/18/2018
-ms.author: maroche
-ms.openlocfilehash: 3d2c0d21d0cf4cc0654c8f7ee2debee4f0320461
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 61f837fbe7f53cdf9f313e5498c6f99ea14203a7
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577058"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43047001"
 ---
 # <a name="whats-new-in-azure-data-catalog"></a>Co je nového ve službě Azure Data Catalog
 Aktualizace **Azure Data Catalog** pravidelně se vydávají. Ne každá vydaná verze obsahuje nové funkce přístupných, protože některých vydání se zaměřuje na možnosti back-end služby. Na této stránce ukazuje novou přístupných možnosti přidané do služby Azure Data Catalog.

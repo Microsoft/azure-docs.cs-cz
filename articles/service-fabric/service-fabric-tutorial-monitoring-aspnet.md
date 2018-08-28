@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/14/2017
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 8a98b12a42dff186c9226df39ce02c71cbc40c7e
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 30dd3f4a467f19efd2edc7ca26305ee2e7ff05a5
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37113319"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41919385"
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric-using-application-insights"></a>Kurz: Monitorování a diagnostika aplikace ASP.NET Core na platformě Service Fabric pomocí Application Insights
 
@@ -100,7 +100,7 @@ Tady je postup nastavení balíčku NuGet:
 3. Vyhledejte `Microsoft.ApplicationInsights.ServiceFabric.Native` a klikněte na odpovídající balíček NuGet.
 
 >[!NOTE]
->Podobným způsobem možná bude potřeba nainstalovat balíček Microsoft.ServiceFabric.Diagnistics.Internal, pokud už nebyl nainstalovaný před instalací balíčku Application Insights.
+>Podobným způsobem možná bude potřeba nainstalovat balíček Microsoft.ServiceFabric.Diagnostics.Internal, pokud už nebyl nainstalovaný před instalací balíčku Application Insights.
 
 4. Na pravé straně klikněte na dvě zaškrtávací políčka vedle dvou služeb v aplikaci – **VotingWeb** a **VotingData** – a klikněte na **Nainstalovat**.
     ![Balíček NuGet sady Application Insights SDK](./media/service-fabric-tutorial-monitoring-aspnet/ai-sdk-nuget-new.png)
@@ -113,7 +113,8 @@ Tady je postup nastavení balíčku NuGet:
     using Microsoft.ApplicationInsights.ServiceFabric;
     ```
 
-    2. Do vnořeného příkazu *return* metody *CreateServiceInstanceListeners()* nebo *CreateServiceReplicaListeners()* v části *ConfigureServices* > *services* přidejte mezi dvě deklarace služeb typu Singleton následující kód: `.AddSingleton<ITelemetryInitializer>((serviceProvider) => FabricTelemetryInitializerExtension.CreateFabricTelemetryInitializer(serviceContext))`. Tím se do vaší telemetrie přidá *kontext služby*, který vám umožní lépe porozumět zdroji telemetrických dat v Application Insights. Váš vnořený příkaz *return* v souboru *VotingWeb.cs* by měl vypadat takto:
+    2. Ve vnořeném příkazu *return* metody *CreateServiceInstanceListeners()* nebo *CreateServiceReplicaListeners()* v části *ConfigureServices* > *služby* přidejte mezi dvě deklarované služby Singleton následující kód: `.AddSingleton<ITelemetryInitializer>((serviceProvider) => FabricTelemetryInitializerExtension.CreateFabricTelemetryInitializer(serviceContext))`
+    Tím se do vaší telemetrie přidá *kontext služby*, který umožňuje lepší porozumění zdroji telemetrie v Application Insights. Váš vnořený příkaz *return* v souboru *VotingWeb.cs* by měl vypadat takto:
 
     ```csharp
     return new WebHostBuilder()

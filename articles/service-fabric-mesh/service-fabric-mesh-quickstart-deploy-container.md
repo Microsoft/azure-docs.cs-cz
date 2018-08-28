@@ -9,12 +9,12 @@ ms.date: 07/12/2018
 ms.topic: quickstart
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: 5359920ab32fab65df0466474aec2d305bcf633c
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: a740672ea948bd86efce92c534e0f95f65563438
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091046"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42022528"
 ---
 # <a name="quickstart-deploy-hello-world-to-service-fabric-mesh"></a>Rychlý start: Nasazení aplikace Hello World do služby Service Fabric Mesh
 
@@ -50,14 +50,14 @@ Vytvořte aplikaci ve skupině prostředků pomocí příkazu `az mesh deploymen
 ```azurecli-interactive
 az mesh deployment create --resource-group myResourceGroup --template-uri https://sfmeshsamples.blob.core.windows.net/templates/helloworld/mesh_rp.linux.json --parameters "{\"location\": {\"value\": \"eastus\"}}" 
 ```
-Předchozí příkaz nasadí Linux pomocí [šablony mesh_rp.linux.json](https://sfmeshsamples.blob.core.windows.net/templates/helloworld/mesh_rp.linux.json). Pokud chcete nasadit aplikaci pro Windows, použijte [šablonu mesh_rp.windows.json](https://sfmeshsamples.blob.core.windows.net/templates/helloworld/mesh_rp.windows.json). Image kontejnerů Windows jsou větší než image kontejnerů Linuxu a jejich nasazení může trvat delší dobu.
+Předchozí příkaz nasadí aplikaci pro Linux pomocí [šablony mesh_rp.linux.json](https://sfmeshsamples.blob.core.windows.net/templates/helloworld/mesh_rp.linux.json). Pokud chcete nasadit aplikaci pro Windows, použijte [šablonu mesh_rp.windows.json](https://sfmeshsamples.blob.core.windows.net/templates/helloworld/mesh_rp.windows.json). Image kontejnerů Windows jsou větší než image kontejnerů Linuxu a jejich nasazení může trvat delší dobu.
 
 Po několika minutách příkaz vrátí následující:
 
 `helloWorldApp has been deployed successfully on helloWorldNetwork with public ip address <IP Address>` 
 
 ## <a name="open-the-application"></a>Otevření aplikace
-Po úspěšném nasazení aplikace zkopírujte veřejnou IP adresu pro koncový bod služby z výstupu rozhraní příkazového řádku.  IP adresu otevřete ve webovém prohlížeči. Zobrazí se webová stránka s logem Azure Service Fabric Mesh.
+Po úspěšném nasazení aplikace zkopírujte veřejnou IP adresu pro koncový bod služby z výstupu rozhraní příkazového řádku. IP adresu otevřete ve webovém prohlížeči. Zobrazí se webová stránka s logem Azure Service Fabric Mesh.
 
 ## <a name="check-the-application-details"></a>Kontrola podrobností aplikace
 Stav aplikace můžete zkontrolovat pomocí příkazu `az mesh app show`. Tento příkaz poskytne užitečné informace, podle kterých můžete postupovat dál.

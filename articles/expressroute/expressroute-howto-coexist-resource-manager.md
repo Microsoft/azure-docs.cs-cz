@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/05/2018
+ms.date: 08/17/2018
 ms.author: charwen,cherylmc,rambala
-ms.openlocfilehash: 80d2f65f516d7f1190f276fa9f2c62206bd31e67
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 0e69a85f320a0a8d77bd07fc0dedb77eb99efb36
+ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39262868"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41920535"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections"></a>Konfigurace společně používaných připojení typu Site-to-Site a ExpressRoute
 > [!div class="op_single_selector"]
@@ -183,14 +183,7 @@ Tento postup vás provede procesem vytvoření virtuální sítě a připojení 
   ```
 
 ## <a name="add"></a>Konfigurace současně existujících připojení pro už existující virtuální síť
-Pokud máte existující virtuální síť, zkontrolujte velikost podsítě brány. Pokud je podsíť brány /28 nebo /29, musíte nejdřív bránu virtuální sítě odstranit a zvýšit velikost podsítě brány. Postup v této části ukazuje, jak to provést.
-
-Pokud je podsíť brány /27 nebo větší a virtuální síť je připojená přes ExpressRoute, můžete přeskočit následující kroky a přejít ke [kroku 4 – Vytvoření brány VPN typu Site-to-Site](#vpngw) v předchozí části. 
-
-> [!NOTE]
-> Pokud odstraníte existující bránu, místní místo ztratí během práce na této konfiguraci připojení k virtuální síti. 
-> 
-> 
+Pokud máte virtuální síť, která obsahuje pouze jednu bránu virtuální sítě (např. bránu VPN typu Site-to-Site), a chcete přidat další bránu jiného typu (např. bránu ExpressRoute), zkontrolujte velikost podsítě brány. Pokud je velikost podsítě brány /27 nebo větší, můžete přeskočit následující kroky a podle kroků v předchozí části přidat bránu VPN typu Site-to-Site nebo bránu ExpressRoute. Pokud je podsíť brány /28 nebo /29, musíte nejdřív bránu virtuální sítě odstranit a zvýšit velikost podsítě brány. Postup v této části ukazuje, jak to provést.
 
 1. Budete potřebovat nainstalovat nejnovější verzi rutin Azure PowerShellu. Další informace o instalaci rutin najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview). Rutiny, které použijete pro tuto konfiguraci, se můžou mírně lišit od těch, co znáte. Ujistěte se, že používáte rutiny určené v těchto pokynech. 
 2. Odstraňte existující bránu ExpressRoute nebo VPN typu site-to-site.
@@ -220,7 +213,7 @@ Pokud je podsíť brány /27 nebo větší a virtuální síť je připojená p�
   ```powershell
   $vnet = Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
   ```
-5. V tuto chvíli máte virtuální síť, která nemá žádné brány. Vytvoření nové brány a dokončení připojení provedete po přejití na [krok 4 – Vytvoření připojení brány VPN typu Site-to-Site](#vpngw), který se nachází v předchozí sadě kroků.
+5. V tuto chvíli máte virtuální síť, která nemá žádné brány. Pokud chcete vytvořit nové brány a nastavit připojení, postupujte podle kroků v předchozí části.
 
 ## <a name="to-add-point-to-site-configuration-to-the-vpn-gateway"></a>Přidání konfigurace point-to-site k bráně VPN
 Podle následujících pokynů můžete k bráně VPN v nastavení koexistence přidat konfiguraci point-to-site.

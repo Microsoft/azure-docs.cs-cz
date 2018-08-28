@@ -3,18 +3,18 @@ title: Použití Apache Phoenixu a SQLLine s HBase v Azure HDInsight
 description: Další informace o použití Apache Phoenixu v HDInsight. Také zjistěte, jak nainstalovat a nastavit SQLLine ve vašem počítači pro připojení ke clusteru služby HBase v HDInsight.
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/03/2018
 ms.author: jasonh
-ms.openlocfilehash: 349f1680cf754a44e2e4217ebde9d0d60479ebcf
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 92e6dcf7bf467bac31798df994e7efa8da40f035
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39597459"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43045654"
 ---
 # <a name="use-apache-phoenix-with-linux-based-hbase-clusters-in-hdinsight"></a>Použití Apache Phoenixu s clustery se systémem Linux HBase v HDInsight
 Další informace o použití [Apache Phoenix](http://phoenix.apache.org/) v Azure HDInsight a jak používat SQLLine. Další informace o Phoenix, naleznete v tématu [Phoenix za 15 minut nebo i rychleji](http://phoenix.apache.org/Phoenix-in-15-minutes-or-less.html). Gramatika Phoenix, naleznete v tématu [Phoenix gramatiky](http://phoenix.apache.org/language/index.html).

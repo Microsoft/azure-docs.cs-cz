@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: b085911f760693a774d443ca055944268b20f055
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 4c850cd98280940c53a07c70c9c478f9e20e2963
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37869559"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "41919494"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>Kurz: Definování nového typu zařízení v aplikaci Azure IoT Central
 
@@ -342,8 +342,8 @@ _Příkazy_ použijete k tomu, abyste operátorovi umožnili spouštět příkaz
     | Zobrazovaný název         | Příkaz pro zobrazení výsledků    |
     | Název pole           | echo            |
     | Výchozí časový limit      | 30              |
-    | Zobrazovaný název         | Zobrazovaný text    |
-    | Zobrazovaný typ         | text            |  
+    | Zobrazovaný typ         | text            |
+    | Popis          | Příkaz zařízení  |  
 
 Kliknutím na **+** pro vstupy můžete do příkazu přidat další vstupy.
 

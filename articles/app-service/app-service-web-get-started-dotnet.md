@@ -1,6 +1,6 @@
 ---
-title: Vytvoření webové aplikace ASP.NET Core v Azure | Dokumentace Microsoftu
-description: Nasazením ukázkové webové aplikace ASP.NET se naučíte, jak spouštět webové aplikace ve službě Azure App Service.
+title: Vytvoření webové aplikace C# ASP.NET Core v Azure | Microsoft Docs
+description: Nasazením výchozí webové aplikace C# ASP.NET se naučíte, jak spouštět webové aplikace ve službě Azure App Service.
 services: app-service\web
 documentationcenter: ''
 author: cephalin
@@ -12,14 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 06/14/2017
+ms.date: 06/11/2018
 ms.author: cephalin
-ms.custom: mvc, devcenter
-ms.openlocfilehash: 91f6fd077146e94833a5527f03ac710352e4fd9c
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.custom: mvc, devcenter, vs-azure
+ms.openlocfilehash: 811f4df807292b9d539084a049cc643dbee07a7e
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42432051"
 ---
 # <a name="create-an-aspnet-core-web-app-in-azure"></a>Vytvoření webové aplikace ASP.NET Core v Azure
 
@@ -37,15 +38,11 @@ ms.lasthandoff: 04/05/2018
 
 ## <a name="prerequisites"></a>Požadavky
 
-K provedení kroků v tomto kurzu je potřeba:
+Pro absolvování tohoto kurzu potřebujete:
 
-* Nainstalovat <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017</a> s následujícími sadami funkcí:
-    - **Vývoj pro ASP.NET a web**
-    - **Azure – vývoj**
+Nainstalujte sadu <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017</a> se sadou funkcí **Vývoj pro ASP.NET a web**.
 
-    ![Vývoj pro ASP.NET a Azure – vývoj (v části Web a cloud)](media/app-service-web-tutorial-dotnet-sqldatabase/workloads.png)
-
-Pokud jste už sadu Visual Studio nainstalovali, přidejte do ní sady funkcí kliknutím na **Nástroje** > **Získat nástroje a funkce**.
+Pokud jste už sadu Visual Studio nainstalovali, přidejte do ní sadu funkcí kliknutím na **Nástroje** > **Získat nástroje a funkce**.
 
 ## <a name="create-an-aspnet-core-web-app"></a>Vytvoření webové aplikace ASP.NET Core
 
@@ -62,10 +59,6 @@ Do Azure můžete nasadit jakýkoli typ webové aplikace ASP.NET Core. V tomto k
 Vyberte **OK**.
 
 ![Dialogové okno Nový projekt ASP.NET](./media/app-service-web-get-started-dotnet/razor-pages-aspnet-dialog.png)
-
-Jakmile se vytvoří projekt ASP.NET Core, zobrazí se úvodní stránka ASP.NET Core s řadou odkazů, které vám pomohou v začátcích. 
-
-![Úvodní stránka](./media/app-service-web-get-started-dotnet/aspnet-core-welcome-page.png)
 
 V nabídce vyberte **Ladit > Spustit bez ladění** a spusťte tak webovou aplikaci místně.
 
@@ -85,11 +78,10 @@ Tím se otevře dialogové okno **Vytvořit plán App Service**, které vám pom
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-V dialogovém okně **Vytvořit plán Aplikační služby** vyberte **Přidat účet** a přihlaste se ke svému předplatnému Azure. Pokud už jste přihlášeni, vyberte z rozevíracího seznamu účet, který obsahuje požadované předplatné.
+V dialogovém okně **Vytvoření služby App Service** klikněte na **Přidat účet** a přihlaste se ke svému předplatnému Azure. Pokud už jste přihlášeni, vyberte z rozevíracího seznamu účet, který obsahuje požadované předplatné.
 
 > [!NOTE]
 > Pokud už jste přihlášení, nevybírejte zatím možnost **Vytvořit**.
->
 >
    
 ![Přihlášení k Azure](./media/app-service-web-get-started-dotnet/sign-in-azure.png)
@@ -151,7 +143,8 @@ Najděte HTML značku `<div id="myCarousel" class="carousel slide" data-ride="ca
 
 Opětovné nasazení do služby Azure provedete tak, že v **Průzkumníku řešení** kliknete pravým tlačítkem na projekt **myFirstAzureWebApp** a vyberete **Publikovat**.
 
-Na stránce publikování vyberte **Publikovat**.
+Na stránce souhrnu publikování vyberte **Publikovat**.
+![Stránka souhrnu publikování v sadě Visual Studio](./media/app-service-web-get-started-dotnet/publish-summary-page.png)
 
 Po dokončení publikování spustí Visual Studio prohlížeč na adrese URL webové aplikace.
 

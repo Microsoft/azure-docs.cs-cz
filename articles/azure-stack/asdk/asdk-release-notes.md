@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/24/2018
+ms.date: 08/27/2018
 ms.author: brenduns
 ms.reviewer: misainat
-ms.openlocfilehash: ed1c47830cbc4a629d827853c7d440b9bbd80d64
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 6016d6fd4dcae699efba49667676373a6586e723
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42888182"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43101641"
 ---
 # <a name="azure-stack-development-kit-release-notes"></a>Zpráva k vydání verze Azure Stack Development Kit  
 Tyto poznámky k verzi obsahují informace o vylepšení, oprav a známé problémy v Azure Stack Development Kit. Pokud si nejste jistí, kterou verzi používáte, můžete si [použití portálu ke kontrole](.\.\azure-stack-updates.md#determine-the-current-version).
@@ -106,6 +106,8 @@ Toto sestavení obsahuje následující vylepšení a oprav pro Azure Stack.
 ### <a name="known-issues"></a>Známé problémy
 
 #### <a name="portal"></a>Portál  
+- <!-- 2931230 – IS  ASDK --> Plány, které jsou přidány na předplatné uživatele jako doplňkový plán nelze odstranit, i když odebrat plán ze předplatné uživatele. Plán zůstane, dokud se také odstraní předplatné, které odkazují na doplňkový plán. 
+
 - <!--2760466 – IS  ASDK --> Při instalaci nového prostředí Azure Stack, na kterém běží tato verze, upozornění, která informuje o *vyžadována aktivace* se nemusí zobrazit. [Aktivace](.\.\azure-stack-registration.md) se vyžaduje, abyste mohli používat marketplace syndikace. 
 
 - <!-- TBD - IS ASDK --> Dva typy pro správu předplatného, které byly [představený poprvé ve verzi 1804](.\.\azure-stack-update-1804.md#new-features) by se neměly. Typy předplatného jsou **měření předplatné**, a **využití předplatného**. Tyto typy předplatného jsou **měření předplatné**, a **využití předplatného**. Tyto typy předplatného jsou viditelné v novým prostředím Azure Stack od verze 1804, ale ještě nejsou připravené k použití. By měla dál používat **předplatné poskytovatele. výchozí** typu.
@@ -251,6 +253,8 @@ Toto sestavení obsahuje následující vylepšení a oprav pro Azure Stack.
 ### <a name="known-issues"></a>Známé problémy
 
 #### <a name="portal"></a>Portál
+- <!-- 2931230 – IS  ASDK --> Plány, které jsou přidány na předplatné uživatele jako doplňkový plán nelze odstranit, i když odebrat plán ze předplatné uživatele. Plán zůstane, dokud se také odstraní předplatné, které odkazují na doplňkový plán. 
+
 - <!-- 2551834 - IS, ASDK --> Když vyberete **přehled** portálech na správce nebo uživatele, informace z účtu úložiště *Essentials* podokně nezobrazí.  V podokně Essentials se zobrazí informace o účtu jako jeho *skupiny prostředků*, *umístění*, a *ID předplatného*.  Další možnosti pro přehled jsou přístupné, jako je *služby* a *monitorování*, stejně jako možnosti *otevřít v Průzkumníkovi* nebo *odstranit účet úložiště* .  
 
   Chcete-li zobrazit není k dispozici informace, použijte [Get-azureRMstorageaccount](https://docs.microsoft.com/powershell/module/azurerm.storage/get-azurermstorageaccount?view=azurermps-6.2.0) rutiny Powershellu.

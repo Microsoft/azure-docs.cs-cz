@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/06/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: aaed3dd5a2a7b32d24aa8b19dab870c28e6f58ec
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 4638b697dcaa0d4c11bae1878a94f76f6237d4a4
+ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216178"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42154777"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region"></a>Nastavení zotavení po havárii pro virtuální počítače Azure do sekundární oblasti Azure
 
@@ -114,8 +114,9 @@ Další informace o [předdefinovaných rolích Azure RBAC](../role-based-access
 2. V rozevíracím seznamu **Zdroj** vyberte **Azure**.
 3. V rozevíracím seznamu **Umístění zdroje** vyberte zdrojovou oblast Azure, kde máte virtuální počítače aktuálně spuštěné.
 4. Vyberte pro virtuální počítače **Model nasazení virtuálních počítačů Azure**: **Resource Manager** nebo **Classic**.
-5. Vyberte **zdrojovou skupinu prostředků** pro virtuální počítače Resource Manageru nebo **cloudovou službu** pro virtuální počítače Classic.
-6. Kliknutím na **OK** uložte nastavení.
+5. Vyberte **Zdrojové předplatné**, ve kterém jsou virtuální počítače spuštěné. Může to být jakékoli předplatné ve stejném tenantovi Azure Active Directory, ve kterém se nachází váš trezor služby Recovery Services.
+6. Vyberte **zdrojovou skupinu prostředků** pro virtuální počítače Resource Manageru nebo **cloudovou službu** pro virtuální počítače Classic.
+7. Kliknutím na **OK** uložte nastavení.
 
 ### <a name="select-the-vms"></a>Výběr virtuálních počítačů
 
@@ -134,9 +135,11 @@ Site Recovery vytvoří výchozí nastavení a zásady replikace pro cílovou ob
   ![Konfigurace nastavení](./media/azure-to-azure-tutorial-enable-replication/settings.png)
 
 
+- **Cílové předplatné:** Cílové předplatné, které se použije pro zotavení po havárii. Ve výchozím nastavení bude cílové předplatné stejné jako zdrojové předplatné. Po kliknutí na Přizpůsobit můžete vybrat jiné cílové předplatné ve stejném tenantovi Azure Active Directory.
+
 - **Cílové umístění:** Cílové umístění, které se použije pro zotavení po havárii. Doporučujeme, aby cílové umístění odpovídalo umístění trezoru Site Recovery.
 
-- **Cílová skupina prostředků:** Skupina prostředků v cílové oblasti, která bude obsahovat virtuální počítače Azure po převzetí služeb při selhání. Ve výchozím nastavení vytvoří Site Recovery v cílové oblasti novou skupinu prostředků s příponou asr. Umístěním cílové skupiny prostředků může být libovolná oblast s výjimkou oblasti, ve které jsou hostované vaše zdrojové virtuální počítače. 
+- **Cílová skupina prostředků:** Skupina prostředků v cílové oblasti, která bude obsahovat virtuální počítače Azure po převzetí služeb při selhání. Ve výchozím nastavení vytvoří Site Recovery v cílové oblasti novou skupinu prostředků s příponou asr. Umístěním cílové skupiny prostředků může být libovolná oblast s výjimkou oblasti, ve které jsou hostované vaše zdrojové virtuální počítače.
 
 - **Cílová virtuální síť:** Síť v cílové oblasti, ve které budou virtuální počítače po převzetí služeb při selhání.
   Ve výchozím nastavení vytvoří Site Recovery v cílové oblasti novou virtuální síť (a podsítě) s příponou asr.

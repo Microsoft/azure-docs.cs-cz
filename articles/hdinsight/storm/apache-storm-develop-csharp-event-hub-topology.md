@@ -3,18 +3,18 @@ title: Zpracování událostí ze služby Event Hubs se Stormem – Azure HDInsi
 description: Zjistěte, jak můžete zpracovávat data z Azure Event Hubs s topologií Storm v jazyce C# vytvořené v sadě Visual Studio pomocí nástrojů HDInsight pro Visual Studio.
 services: hdinsight,notification hubs
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: 24bcc33570a5e62769223c5827556bab1967ae5a
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 7c37abe709559fc0628b94ba50634673c08af375
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39620378"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43051563"
 ---
 # <a name="process-events-from-azure-event-hubs-with-storm-on-hdinsight-c"></a>Zpracování událostí z Azure Event Hubs se Stormem v HDInsight (C#)
 

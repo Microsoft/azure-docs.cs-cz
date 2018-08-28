@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/09/2018
 ms.author: genli
-ms.openlocfilehash: 9845476e23396eecc4149f3e856c40b0f80f13cb
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: f099eefbc6d196f25c2b09669cdc1c3cdec68a12
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40004762"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43050010"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-azure-powershell"></a>Odstranění virtuálního počítače s Windows pomocí připojení disku s operačním systémem k obnovení virtuálního počítače pomocí Azure Powershellu
 Pokud váš Windows virtuální počítač (VM) v Azure dojde k chybě spouštění nebo disku, budete muset provést postup řešení potíží na samotném disku. Běžným příkladem může být aktualizace selhání aplikace, která brání virtuálního počítače moci úspěšně spustil. Tento článek podrobně popisuje, jak pomocí Azure Powershellu pro připojení disku k jinému virtuálnímu počítači Windows opravte všechny chyby a pak opravte původního virtuálního počítače. 
@@ -39,6 +39,8 @@ Proces řešení potíží je následující:
 5. Připojte se k obnovení virtuálního počítače. Upravení souborů nebo spuštění jakékoli nástroje a řešit potíže na zkopírovaný disk s operačním systémem.
 6. Odpojte Image a odpojit disk od virtuálního počítače pro obnovení.
 7. Změňte disk s operačním systémem pro ovlivněné virtuální počítač.
+
+Skripty pro zotavení virtuálního počítače můžete použít k automatizaci kroky 1, 2, 3, 4, 6 a 7. Další dokumentaci a pokyny najdete v tématu [skripty pro zotavení virtuálního počítače pro virtuální počítač Resource Manageru](https://github.com/Azure/azure-support-scripts/tree/master/VMRecovery/ResourceManager).
 
 Ujistěte se, že máte [nejnovější Azure PowerShell](/powershell/azure/overview) nainstalovaný a přihlášení k vašemu předplatnému:
 

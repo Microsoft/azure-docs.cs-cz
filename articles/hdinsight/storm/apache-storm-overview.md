@@ -3,19 +3,19 @@ title: Co je Apache Storm – Azure HDInsight
 description: Apache Storm umožňuje zpracovávat streamy dat v reálném čase. Azure HDInsight umožňuje snadno vytvořit clustery Storm v cloudu Azure. Se sadou Visual Studio můžete vytvořit řešení Storm pomocí C# a potom ho nasadit do clusterů HDInsight Storm.
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 keywords: případy použití apache storm,cluster storm,co je apache storm
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: jasonh
-ms.openlocfilehash: e17c1f50fdfb1b34c8a277c26e1e6fa8ba99dd02
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
-ms.translationtype: HT
+ms.openlocfilehash: 3446488a5dc2bdd1bb01b39bc25b60137fcbc331
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621126"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43040043"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>Co je Apache Storm ve službě Azure HDInsight?
 
@@ -174,7 +174,7 @@ Storm používá Apache Log4j k ukládání informací. Ve výchozím nastavení
 
 Topologii příkladu, která ukazuje, jak nakonfigurovat protokolování, najdete v části [Počet slov na základě jazyka Java](apache-storm-develop-java-topology.md) pro Storm v HDInsight.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o řešení pro analýzu v reálném čase se Stormem v HDInsight:
 

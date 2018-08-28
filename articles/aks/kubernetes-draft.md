@@ -7,16 +7,16 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: iainfou
-ms.openlocfilehash: a64ada61b2edd0a5c5d2314125b7e2a23444a398
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: faffd919e1c57f2dff21c42c2294a06eb82a2c0a
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42055440"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43092606"
 ---
 # <a name="use-draft-with-azure-kubernetes-service-aks"></a>Použití konceptu s Azure Kubernetes Service (AKS)
 
-Koncept je open source nástroj, který pomáhá balíčků a nasazení kontejnerů aplikací v clusteru Kubernetes, poskytne vám můžete soustředit na vývoj cyklus – "vnitřní smyčka" vměstnány vývoje. Draft funguje jako kód je vyvíjena, ale před potvrzením do správy verzí. Pomocí nástroje Draft můžete rychle znovu nasadit aplikaci do Kubernetes jako změnách kódu. Další informace o návrhu, najdete v článku [koncept dokumentaci na Githubu][draft-documentation].
+Koncept je open source nástroj, který pomáhá balíčků a nasazení kontejnerů aplikací v clusteru Kubernetes, poskytne vám zdarma soustředit se v cyklu vývoje - "vnitřní smyčka" vměstnány vývoje. Draft funguje jako kód je vyvíjena, ale před potvrzením do správy verzí. Pomocí nástroje Draft můžete rychle znovu nasadit aplikaci do Kubernetes jako změnách kódu. Další informace o návrhu, najdete v článku [koncept dokumentaci na Githubu][draft-documentation].
 
 Tento článek ukazuje, jak použití konceptu s clusterem Kubernetes v AKS.
 

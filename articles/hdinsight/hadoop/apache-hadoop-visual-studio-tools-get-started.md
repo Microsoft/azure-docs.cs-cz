@@ -5,17 +5,17 @@ keywords: hadoop tools, hive query, visual studio, visual studio hadoop
 services: hdinsight
 author: jasonwhowell
 ms.author: jasonh
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive, hdiseo17may2017
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: d4f444133e8fe6f5ba1a8c12ce08d5c66e8fc18e
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
-ms.translationtype: HT
+ms.openlocfilehash: 0c90dfe0aa76bd4f27bbc6f9a5e7e30c76595ea1
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "41920838"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43050143"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-hive-queries"></a>Použití nástrojů Data Lake pro Visual Studio pro připojení ke službě Azure HDInsight a spouštění dotazů Hive
 
@@ -267,7 +267,7 @@ Pomocí nástrojů Data Lake pro Visual Studio můžete vytvářet a odesílat s
 * Opravili jsme problém, kdy se nezobrazovaly výsledky začínající hodnotami null. Pokud vás tento problém blokuje, kontaktujte tým podpory.
 * Skript HQL, který sada Visual Studio vytváří, je zakódovaný v závislosti na nastavení pro místní oblast uživatele. Skript se nespustí správně, pokud ho nahrajete do clusteru jako binární soubor.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto článku jste zjistili, jak se pomocí balíčku nástrojů Data Lake pro Visual Studio připojit ke clusterům HDInsight ze sady Visual Studio. Také jste se naučili spustit dotaz Hive. Další informace najdete v těchto článcích:
 
 * [Použití Hadoop Hive ve službě HDInsight](hdinsight-use-hive.md)

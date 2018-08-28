@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 3/13/2018
-ms.openlocfilehash: 2270080f8612c69a69955202ececab44136f335c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: de0c93ef5b907b56e6ad66a04bb728b5b9aabb9a
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39445532"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41917706"
 ---
 # <a name="tutorial-3-classify-iris-deploy-a-model"></a>Kurz 3: Klasifikace Iris – Nasazení modelu
 Azure Machine Learning (Preview) představuje integrované, komplexní řešení datové vědy a pokročilé analýzy pro profesionální datové vědce. Datoví vědci pomocí nich můžou připravovat data, vyvíjet experimenty a nasazovat modely na úrovni cloudu.
@@ -247,7 +247,7 @@ Teď můžete vytvořit webovou službu v reálném čase.
    >[!IMPORTANT]
    >Název služby, který je zároveň názvem nové image Dockeru, musí obsahovat jenom malá písmena. Jinak dojde k chybě. 
 
-1. Když příkaz spustíte, do účtu úložiště, který jste vytvořili v rámci vytváření prostředí, se nahraje model a soubory vyhodnocení. Proces nasazení sestaví image Dockeru obsahující váš model, schéma a soubor vyhodnocení a předá ji do služby Azure Container Registry: **\<název_ACR\>.azureacr.io/\<název_image\>:\<verze\>**. 
+1. Když příkaz spustíte, do účtu úložiště, který jste vytvořili v rámci vytváření prostředí, se nahraje model a soubory vyhodnocení. Proces nasazení sestaví image Dockeru obsahující váš model, schéma a soubor vyhodnocení a odešle ji do registru kontejneru Azure: **\<název_ACR\>.azurecr.io/\<název_image\>:\<verze\>**. 
 
    Příkaz tuto image přetáhne do místního počítače a na základě této image spustí kontejner Dockeru. Pokud je vaše prostředí nakonfigurované v režimu clusteru, kontejner Dockeru se místo toho nasadí do clusteru Azure Cloud Services Kubernetes.
 
@@ -313,7 +313,7 @@ Spuštěnou webovou službu **irisapp** můžete otestovat pomocí zakódovanéh
 1. Pokud chcete službu otestovat, spusťte vrácený příkaz ke spuštění služby:
     
    ```azurecli
-   az ml service run realtime -i <web service ID> -d "{\"input_df\": [{\"petal width\": 0.25, \"sepal length\": 3.0, \"sepal width\": 3.6, \"petal length\": 1.3}]}"
+   az ml service run realtime -i <web service ID> -d '{\"input_df\": [{\"petal width\": 0.25, \"sepal length\": 3.0, \"sepal width\": 3.6, \"petal length\": 1.3}]}'
    ```
 
    Výstup je **„Iris-setosa“**, což je předpokládaná třída. (Váš výsledek se může lišit.) 

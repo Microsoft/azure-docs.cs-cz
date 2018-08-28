@@ -3,18 +3,18 @@ title: Analýza zpoždění letů s Hadoop v HDInsight – Azure
 description: Další informace o použití jeden skript prostředí Windows PowerShell k vytvoření clusteru HDInsight, spouštět úlohy Hive, spustit úlohu Sqoop a cluster odstranit.
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7d1ab85f3efeaa17abbe1cc93157e63bbca1a0b9
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 1d39fd1cf40834781375b2c7bd6cb801ccd3cb97
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39592250"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43091894"
 ---
 # <a name="analyze-flight-delay-data-by-using-hive-in-hdinsight"></a>Analyzovat zpoždění letů pomocí Hivu ve službě HDInsight
 Hive poskytuje způsob spouštění Hadoop MapReduce úloh prostřednictvím podobném SQL skriptovacího jazyka nazvaného  *[HiveQL][hadoop-hiveql]*, který je možné použít ke shrnutí, dotazování, a analýzu velkých objemů dat.

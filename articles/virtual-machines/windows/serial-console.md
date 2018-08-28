@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: 91c917687edbdfb49fc7a390187a860d9474623a
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 8d786a337710ed53d58c5fde8e40d5347cd6cfc8
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918920"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43108374"
 ---
 # <a name="virtual-machine-serial-console-preview"></a>Virtuální počítač sériová konzola (preview) 
 
@@ -38,8 +38,10 @@ Dokumentaci konzoly sériového portu pro virtuální počítače s Linuxem [kli
 * Musí používat model nasazení správy prostředků. Klasická nasazení nejsou podporovány. 
 * Virtuální počítač musí mít [Diagnostika spouštění](boot-diagnostics.md) povoleno   ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-diagnostics-settings.png)
 * Účet, pomocí konzoly sériového portu, musí mít [role Přispěvatel](../../role-based-access-control/built-in-roles.md) pro virtuální počítač a [Diagnostika spouštění](boot-diagnostics.md) účtu úložiště. 
+* Virtuální počítač, u kterého jste přístup k pracovnímu konzoly sériového portu musí mít také účet založené na heslech. Můžete si ho vytvořit pomocí [resetovat heslo](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) funkce rozšíření přístupu virtuálních počítačů – snímek najdete níže.
+    ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-reset-password.png)
 
-## <a name="open-the-serial-console"></a>Otevřete konzoly sériového portu
+## <a name="get-started-with-serial-console"></a>Začínáme s konzoly sériového portu
 Konzola sériového portu pro virtuální počítače je k dispozici pouze prostřednictvím [webu Azure portal](https://portal.azure.com). Níže je uvedený postup pro přístup ke konzole sériového portu pro virtuální počítače prostřednictvím portálu 
 
   1. Otevřete na webu Azure portal
@@ -49,7 +51,7 @@ Konzola sériového portu pro virtuální počítače je k dispozici pouze prost
 
 ![](../media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect.gif)
 
-## <a name="access-serial-console-for-windows"></a>Konzoly sériového portu přístup pro Windows 
+## <a name="configure-serial-console-for-windows"></a>Konfigurace konzoly sériového portu pro Windows 
 Novější Image Windows serveru v Azure budou mít [Speciální konzoly pro správu](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) (SAC) ve výchozím nastavení povolená. SAC je podporováno ve verzích Windows na serveru, ale není k dispozici ve verzích klienta (například Windows 10, Windows 8 nebo Windows 7). Povolit konzoly sériového portu pro virtuální počítače Windows vytvořené s použitím Feb2018 nebo nižší bitové kopie použijte následující kroky: 
 
 1. Připojte se k virtuálnímu počítači přes vzdálenou plochu Windows

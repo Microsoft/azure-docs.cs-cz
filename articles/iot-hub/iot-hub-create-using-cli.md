@@ -1,124 +1,93 @@
 ---
-title: Vytvoření služby IoT Hub pomocí rozhraní příkazového řádku Azure (az.py) | Microsoft Docs
-description: Postup vytvoření služby Azure IoT hub pomocí Azure CLI a platformy 2.0 (az.py).
-author: dominicbetts
-manager: timlt
+title: Vytvoření IoT Hubu pomocí rozhraní příkazového řádku Azure | Dokumentace Microsoftu
+description: Postup vytvoření služby Azure IoT hub pomocí Azure CLI.
+author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 06/16/2017
-ms.author: dobett
-ms.openlocfilehash: 9f97775a5a49077a340efb0e3de14b7064db5fe4
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.date: 08/23/2018
+ms.author: robinsh
+ms.openlocfilehash: 95741b1a00c47468c7189e0103608c1dd7fa1d90
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34632760"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43046166"
 ---
-# <a name="create-an-iot-hub-using-the-azure-cli-20"></a>Vytvoření služby IoT hub pomocí Azure CLI 2.0
+# <a name="create-an-iot-hub-using-azure-cli"></a>Vytvoření IoT hubu pomocí rozhraní příkazového řádku Azure
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
-## <a name="introduction"></a>Úvod
+V tomto článku se dozvíte, jak vytvořit IoT hubu pomocí rozhraní příkazového řádku Azure.
 
-Azure CLI 2.0 (az.py) můžete použít k vytváření a správě Azure IoT hubs prostřednictvím kódu programu. Tento článek ukazuje, jak používat Azure CLI 2.0 (az.py) k vytvoření služby IoT hub.
+## <a name="prerequisites"></a>Požadavky
 
-K dokončení úlohy můžete využít jednu z následujících verzí rozhraní příkazového řádku:
+Pokud chcete dokončit tento návod, potřebujete předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-* [Rozhraní příkazového řádku Azure (azure.js)](iot-hub-create-using-cli-nodejs.md) – rozhraní příkazového řádku pro modelem nasazení classic a resource správy.
-* Azure CLI 2.0 (az.py) - nové generace rozhraní příkazového řádku pro model nasazení prostředků správy popsané v tomto článku.
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pro absolvování tohoto kurzu potřebujete:
+## <a name="sign-in-and-set-your-azure-account"></a>Přihlaste se a v nastavení účtu Azure
 
-* Aktivní účet Azure. Pokud účet nemáte, můžete si během několika minut vytvořit [bezplatný účet][lnk-free-trial].
-* [Rozhraní příkazového řádku Azure 2.0][lnk-CLI-install].
+Pokud používáte Azure CLI místně, namísto použití Cloud Shell, musíte se přihlásit ke svému účtu Azure.
 
-## <a name="sign-in-and-set-your-azure-account"></a>Přihlaste se a nastavit váš účet Azure
+Na příkazovém řádku, spusťte [přihlašovací příkaz](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli):
 
-Přihlaste se ke svému účtu Azure a vyberte své předplatné.
-
-1. Na příkazovém řádku spusťte [příkaz pro přihlášení][lnk-login-command]:
-    
     ```azurecli
     az login
     ```
 
-    Postupujte podle pokynů pro ověření pomocí kódu a přihlaste se ke svému účtu Azure ve webovém prohlížeči.
+Postupujte podle pokynů pro ověření pomocí kódu a přihlaste se ke svému účtu Azure ve webovém prohlížeči.
 
-2. Pokud máte více předplatných Azure, přihlášením k Azure získáte přístup ke všem účtům Azure přidruženým k vašim přihlašovacím údajům. Pomocí následujícího [příkazu zobrazte výpis účtů Azure][lnk-az-account-command], které můžete použít:
+## <a name="create-an-iot-hub"></a>Vytvořit IoT Hub
+
+Pomocí rozhraní příkazového řádku Azure vytvořte skupinu prostředků a poté přidejte službu IoT hub.
+
+1. Když vytvoříte službu IoT hub, třeba jej vytvořit ve skupině prostředků. Použijte existující skupinu prostředků, nebo spusťte následující příkaz [příkazu vytvořte skupinu prostředků](https://docs.microsoft.com/cli/azure/resource):
     
-    ```azurecli
-    az account list 
-    ```
+   ```azurecli
+   az group create --name {your resource group name} --location westus
+   ```
 
-    Pomocí následujícího příkazu vyberte předplatné, které chcete použít ke spuštění příkazů pro vytvoření centra IoT. Můžete použít název nebo ID předplatného z výstupu předchozího příkazu:
+   > [!TIP]
+   > Předchozí příklad vytvoří skupinu prostředků v umístění USA – západ. Seznam dostupných umístění můžete zobrazit spuštěním tohoto příkazu: 
+   >
+   >``` bash
+   >az account list-locations -o table
+   >```
+   >
 
-    ```azurecli
-    az account set --subscription {your subscription name or id}
-    ```
-
-## <a name="create-an-iot-hub"></a>Vytvoření služby IoT Hub
-
-Pomocí rozhraní příkazového řádku Azure k vytvoření skupiny prostředků a poté přidejte služby IoT hub.
-
-1. Když vytvoříte Centrum IoT, musíte ji vytvořit ve skupině prostředků. Použijte existující skupinu prostředků, nebo spusťte následující [příkaz pro vytvoření skupiny prostředků][lnk-az-resource-command]:
+2. Spusťte následující příkaz [příkaz pro vytvoření služby IoT hub](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-create) ve vaší skupině prostředků pomocí globálně jedinečný název pro službu IoT hub:
     
-    ```azurecli
-     az group create --name {your resource group name} --location westus
-    ```
-
-    > [!TIP]
-    > Předchozí příklad vytvoří skupinu prostředků v umístění USA – západ. Seznam dostupných umístění můžete zobrazit spuštěním příkazu `az account list-locations -o table`.
-    >
-    >
-
-2. Spusťte následující [příkaz pro vytvoření služby IoT hub] [ lnk-az-iot-command] ve vaší skupině prostředků pomocí globálně jedinečného názvu pro službu IoT hub:
-    
-    ```azurecli
-    az iot hub create --name {your iot hub name} --resource-group {your resource group name} --sku S1
-    ```
+   ```azurecli
+   az iot hub create --name {your iot hub name} \
+      --resource-group {your resource group name} --sku S1
+   ```
 
    [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
 
 
-> [!NOTE]
-> Předchozí příkaz vytvoří služby IoT hub S1 cenovou úroveň, pro kterou se účtují. Další informace najdete v tématu [ceny služby Azure IoT Hub][lnk-iot-pricing].
->
+Předchozí příkaz vytvoří služby IoT hub S1 cenovou úroveň, pro které se vám účtuje. Další informace najdete v tématu [ceny služby Azure IoT Hub](https://azure.microsoft.com/pricing/details/iot-hub/).
 
 ## <a name="remove-an-iot-hub"></a>Odeberte služby IoT Hub
 
-Můžete použít rozhraní příkazového řádku Azure pro [odstranit prostředek jednotlivých][lnk-az-resource-command], například služby IoT hub, nebo odstranit skupinu prostředků a všechny její prostředky, včetně všech centra IoT.
+Můžete použít Azure CLI pro [odstranit jednotlivé prostředky](https://docs.microsoft.com/cli/azure/resource), například služby IoT hub nebo odstranit skupinu prostředků a všechny její prostředky, včetně centra IoT.
 
-Pokud chcete odstranit centrum IoT, spusťte následující příkaz:
+K [odstranit centrum IoT](https://docs.microsoft.com/cli/azure/iot/hub#az-iot-hub-delete), spusťte následující příkaz:
 
 ```azurecli
-az iot hub delete --name {your iot hub name} --resource-group {your resource group name}
+az iot hub delete --name {your iot hub name} -\
+  -resource-group {your resource group name}
 ```
 
-Pokud chcete odstranit skupinu prostředků a všechny její prostředky, spusťte následující příkaz:
+K [odstranit skupinu prostředků](https://docs.microsoft.com/cli/azure/group#az-group-delete) a všechny její prostředky, spusťte následující příkaz:
 
 ```azurecli
 az group delete --name {your resource group name}
 ```
 
 ## <a name="next-steps"></a>Další postup
-Další informace o vývoji pro Centrum IoT, naleznete v následujících článcích:
 
-* [Příručka vývojáře pro službu IoT Hub][lnk-devguide]
+Další informace o používání služby IoT hub, najdete v následujících článcích:
 
-Pokud chcete prozkoumat další možnosti IoT Hub, najdete v části:
-
-* [Použití portálu Azure ke správě služby IoT Hub][lnk-portal]
-
-<!-- Links -->
-[lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
-[lnk-CLI-install]: https://docs.microsoft.com/cli/azure/install-az-cli2
-[lnk-login-command]: https://docs.microsoft.com/cli/azure/get-started-with-az-cli2
-[lnk-az-account-command]: https://docs.microsoft.com/cli/azure/account
-[lnk-az-register-command]: https://docs.microsoft.com/cli/azure/provider
-[lnk-az-addcomponent-command]: https://docs.microsoft.com/cli/azure/component
-[lnk-az-resource-command]: https://docs.microsoft.com/cli/azure/resource
-[lnk-az-iot-command]: https://docs.microsoft.com/cli/azure/iot
-[lnk-iot-pricing]: https://azure.microsoft.com/pricing/details/iot-hub/
-[lnk-devguide]: iot-hub-devguide.md
-[lnk-portal]: iot-hub-create-through-portal.md 
+* [Příručka vývojáře pro IoT Hub](iot-hub-devguide.md)
+* [Pomocí webu Azure portal ke správě služby IoT Hub](iot-hub-create-through-portal.md)

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: ''
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5867012e0322e520b4ef234599fa25a2ec08138d
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: d5b43f81cbb3bbebb231a8a9738f6138b62ef7f6
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325764"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43046025"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-visual-studio-code"></a>Nasadit moduly Azure IoT Edge z Visual Studio Code
 
@@ -130,7 +130,7 @@ Moduly nasadíte do zařízení s použitím manifestu nasazení, který jste na
 
 2. Klikněte pravým tlačítkem na zařízení, na kterém chcete provést konfiguraci s manifestem nasazení. 
 
-3. Vyberte **vytvoření nasazení pro zařízení IoT Edge**. 
+3. Vyberte **vytvoření nasazení pro jedno zařízení**. 
 
 4. Přejděte na soubor manifestu nasazení JSON, který chcete použít a klikněte na tlačítko **vyberte Manifest nasazení Edge**. 
 

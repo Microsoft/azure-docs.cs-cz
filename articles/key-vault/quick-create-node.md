@@ -1,6 +1,6 @@
 ---
-title: Kurz Konfigurace webové aplikace Azure pro čtení tajného kódu ze služby Key Vault | Microsoft Docs
-description: Kurz konfigurace aplikace Node.js pro čtení tajného kódu ze služby Key Vault
+title: Rychlý start – Nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí webové aplikace Node | Microsoft Docs
+description: Rychlý start – Nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí webové aplikace Node
 services: key-vault
 documentationcenter: ''
 author: prashanthyv
@@ -8,19 +8,19 @@ manager: sumedhb
 ms.service: key-vault
 ms.workload: identity
 ms.topic: quickstart
-ms.date: 08/01/2018
+ms.date: 08/08/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: cc43081463667eba06af6538f3d78f16544ed2a5
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 4592b256dfda75e81a94034545cd54dbf0d71532
+ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412238"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42023207"
 ---
-# <a name="quickstart-how-to-set-and-read-a-secret-from-key-vault-in-a-node-web-app"></a>Rychlý start: Nastavení a čtení tajného kódu ze služby Key Vault ve webové aplikaci Node 
+# <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-a-node-web-app"></a>Rychlý start: Nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí webové aplikace Node 
 
-V tomto rychlém startu se dozvíte, jak uložit tajný kód ve službě Key Vault a jak ho načíst pomocí webové aplikace. Tato webová aplikace může být spuštěná místně nebo v Azure. V tomto rychlém startu se používá Node.js a identity spravovaných služeb (MSI).
+V tomto rychlém startu se dozvíte, jak uložit tajný klíč ve službě Key Vault a jak ho načíst pomocí webové aplikace. Pokud chcete zobrazit hodnotu tajného klíče, musíte webovou aplikaci spustit v Azure. V tomto rychlém startu se používá Node.js a identity spravovaných služeb (MSI).
 
 > [!div class="checklist"]
 > * Vytvoření trezoru klíčů
@@ -31,6 +31,9 @@ V tomto rychlém startu se dozvíte, jak uložit tajný kód ve službě Key Vau
 > * Udělení požadovaných oprávnění k načtení dat ze služby Key Vault pro webovou aplikaci
 
 Než budete pokračovat, ujistěte se, že znáte [základní koncepty](key-vault-whatis.md#basic-concepts).
+
+>[!NOTE]
+Abyste pochopili, proč následující kurz představuje osvědčený postup, je potřeba porozumět několika konceptům. Služba Key Vault je centrální úložiště pro ukládání tajných klíčů prostřednictvím kódu programu. Aby to bylo možné, aplikace nebo uživatelé se nejprve musí ve službě Key Vault ověřit, tedy předložit tajný klíč. Za účelem dodržení osvědčených postupů zabezpečení je potřeba pravidelně obměňovat také tento první tajný klíč. Při použití [Identity spravované služby](../active-directory/managed-service-identity/overview.md) se však aplikacím spouštěným v Azure udělí identita, kterou automaticky spravuje Azure. To vám pomůže vyřešit **problém se zavedením tajného klíče** a tím umožníte uživatelům a aplikacím dodržovat osvědčené postupy bez starostí o obměňování prvního tajného klíče.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -49,7 +52,7 @@ az login
 
 ## <a name="create-resource-group"></a>Vytvoření skupiny prostředků
 
-Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az_group_create). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
+Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az-group-create). Skupina prostředků Azure je logický kontejner, ve kterém se nasazují a spravují prostředky Azure.
 
 Vyberte název skupiny prostředků a nahraďte zástupný text.
 Následující příklad vytvoří skupinu prostředků *<YourResourceGroupName>* v umístění *eastus*.
@@ -123,8 +126,6 @@ Následuje několik kroků, které je potřeba provést.
     ```
     # Bash
     az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --runtime "NODE|6.9" --deployment-local-git
-    # PowerShell
-    az --% webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --runtime "NODE|6.9"
     ```
     Po vytvoření webové aplikace Azure CLI zobrazí výstup podobný následujícímu příkladu:
     ```

@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 08/27/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4cb7b165311f57fadd63770646907ddfc0378844
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: f89a6bdbe906d490231725cf528396928faebe47
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445016"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43092090"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Horizontální navýšení kapacity Azure Analysis Services
 
@@ -37,19 +37,7 @@ Po dokončení operace zpracování, je nutné provést synchronizaci mezi serve
 
 ## <a name="region-limits"></a>Omezení oblasti
 
-Počet replik dotazu, které můžete nakonfigurovat se uplatňuje limit vycházející oblast, kterou je server v. Platí následující omezení:
-
-|Oblast  |Maximální počet replik  |
-|---------|---------|
-|Východní USA 2    |    7     |
-|Západní střed USA     |    7     |
-|Západní Evropa     |    7     |
-|Západní USA     |     7    |
-|Střed USA     |     3    |
-|Jihovýchodní Asie    |     3    |
-|Všechny ostatní oblasti  |   1    |
-
-
+Počet replik dotazu, které můžete nakonfigurovat se uplatňuje limit vycházející oblast, kterou je server v. Další informace najdete v tématu [dostupnost podle oblasti](analysis-services-overview.md#availability-by-region).
 
 ## <a name="monitor-qpu-usage"></a>Monitorování využití QPU
 

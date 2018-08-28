@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/14/2018
 ms.author: iainfou
-ms.openlocfilehash: 305a6c805f14e8d3ef9f77fcd90a78a50e0f770c
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: e7208cb4c2cdef6fc4e639b32fdb2fac242bd3a2
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42060083"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43104057"
 ---
 # <a name="use-virtual-kubelet-with-azure-kubernetes-service-aks"></a>Virtual Kubelet pomocí služby Azure Kubernetes Service (AKS)
 
@@ -206,6 +206,9 @@ Použití [az aks remove-connector] [ aks-remove-connector] příkazu odeberte V
 ```azurecli-interactive
 az aks remove-connector --resource-group myAKSCluster --name myAKSCluster --connector-name virtual-kubelet
 ```
+
+> [!NOTE]
+> Pokud dojde k chybám odebrání oba typy konektorů operačního systému, nebo chcete odebrat jenom konektor Windows nebo Linux OS, můžete ručně zadat typ operačního systému. Přidat `--os-type` parametr na předchozí `az aks remove-connector` příkaz a zadejte `Windows` nebo `Linux`.
 
 ## <a name="next-steps"></a>Další postup
 

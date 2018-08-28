@@ -3,18 +3,18 @@ title: Vývoj skriptových akcí s Linuxovým systémem HDInsight – Azure
 description: Další informace o použití skripty Bash přizpůsobit clustery HDInsight založené na Linuxu. Funkci akce skriptu HDInsight umožňuje spouštět skripty během nebo po vytvoření clusteru. Skripty je možné změnit nastavení konfigurace clusteru nebo instalovat další software.
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: jasonh
-ms.openlocfilehash: 35d54970e41a7e1533f3d5adc09fc60dc1bbd68d
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 0225115fb6c74f736e6a5fba09414dc2ebafd84e
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39600485"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43104819"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Vývoj skriptových akcí s HDInsight
 

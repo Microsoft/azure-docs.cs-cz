@@ -13,12 +13,12 @@ ms.workload: identity
 ms.component: pim
 ms.date: 03/30/2018
 ms.author: rolyon
-ms.openlocfilehash: c5b26c01028e2a5746132939a2058cacdcad859f
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: f4b6fafe40fe00492bac7bd6c28268321d4516db
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622098"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43104350"
 ---
 # <a name="discover-and-manage-azure-resources-by-using-privileged-identity-management"></a>Zjišťovat a spravovat prostředky Azure s použitím Privileged Identity Management
 
@@ -27,7 +27,7 @@ Zjistěte, jak zjišťovat a spravovat prostředky Azure, když použijete v Azu
 Když poprvé nastavujete PIM pro prostředky Azure, budete muset zjistit a vyberte prostředky, které chcete chránit pomocí PIM. Neexistuje žádné omezení počtu prostředků, které můžete spravovat pomocí služby PIM. Však doporučujeme začít s prostředky těch nejdůležitějších (produkce).
 
 > [!NOTE]
-> Je možné pouze vyhledejte a vyberte prostředky předplatného, abyste mohli spravovat pomocí PIM. Když spravujete předplatné v PIM, můžete také spravovat podřízené prostředky v předplatném.
+> Je možné pouze vyhledejte a vyberte správu skupiny nebo předplatného prostředky spravovat pomocí PIM. Když spravujete skupinu pro správu nebo předplatného v PIM, můžete také spravovat její podřízené prostředky.
 
 ## <a name="discover-resources"></a>Zjistit prostředky
 

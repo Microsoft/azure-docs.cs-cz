@@ -8,16 +8,16 @@ ms.author: gwallace
 ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: ad0366d333266af0b16a7acaaa4519f20a951a80
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: f42d3fb709807d77fb0f390b6da76efc4a60dced
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342704"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43090566"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-with-run-command"></a>Spouštění skriptů prostředí PowerShell ve virtuálním počítači Windows pomocí příkazu Spustit
 
-Spusťte příkaz používá agent virtuálního počítače ke spuštění skriptů prostředí PowerShell v rámci virtuálního počítače Windows Azure. Tyto skripty lze použít obecné počítače nebo Správa aplikací a umožňuje rychle diagnostikovat a opravit problémy s přístup a síť virtuálního počítače a získat zpět na dobrý stav virtuálního počítače.
+Spusťte příkaz používá agent virtuálního počítače ke spouštění skriptů prostředí PowerShell v rámci virtuálního počítače Windows Azure. Tyto skripty lze použít obecné počítače nebo Správa aplikací a umožňuje rychle diagnostikovat a opravit problémy s přístup a síť virtuálního počítače a získat zpět na dobrý stav virtuálního počítače.
 
 ## <a name="benefits"></a>Výhody
 

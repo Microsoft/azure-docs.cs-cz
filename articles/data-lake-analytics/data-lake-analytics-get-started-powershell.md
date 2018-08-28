@@ -5,17 +5,16 @@ services: data-lake-analytics
 ms.service: data-lake-analytics
 author: saveenr
 ms.author: saveenr
-manager: kfile
-editor: jasonwhowell
+ms.reviewer: jasonwhowell
 ms.assetid: 8a4e901e-9656-4a60-90d0-d78ff2f00656
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 05/04/2017
-ms.openlocfilehash: 70534b050577e749310d81b50c300c7d98e416af
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: 4b4fa05164db402122efc745302dffe8c130b97b
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34623083"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43048064"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-powershell"></a>Začínáme s Azure Data Lake Analytics s využitím Azure PowerShellu
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -125,7 +124,7 @@ Stáhněte výstupní soubor pomocí rutiny `Export-AdlStoreItem`.
 Export-AdlStoreItem -Account $adls -Path "/data.csv" -Destination "C:\data.csv"
 ```
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 * Pokud chcete použít jiné podporované nástroje a zobrazit stejný kurz, klikněte na selektory karet v horní části stránky.
 * Pokud se chcete naučit jazyk U-SQL, informace najdete v tématu [Začínáme s jazykem U-SQL Azure Data Lake Analytics](data-lake-analytics-u-sql-get-started.md).
 * Informace týkající se úloh správy najdete v tématu [Správa služby Azure Data Lake Analytics pomocí webu Azure Portal](data-lake-analytics-manage-use-portal.md).

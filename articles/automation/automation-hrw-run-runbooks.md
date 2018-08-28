@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 07/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 118f9d7865728177f323078c036aee1884a61431
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 8f21457a63470b88e93ead97454f996cea38073a
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390292"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43103764"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Spouštění runbooků v procesu Hybrid Runbook Worker
 
@@ -47,9 +47,9 @@ Ve výchozím nastavení, runbooky spuštěné v kontextu účtu místního syst
 
 Můžete použít [přihlašovacích údajů](automation-credentials.md) a [certifikát](automation-certificates.md) prostředky ve vašem runbooku pomocí rutiny, které umožňují zadat přihlašovací údaje, abyste je mohli ověřit vůči různým prostředkům. Následující příklad ukazuje část sady runbook, který restartuje počítač. Načte přihlašovací údaje z asset přihlašovacích údajů a název počítače z variabilní prostředek a potom pomocí rutiny Restart-Computer použije tyto hodnoty.
 
-```azurepowershell-interactive
-$Cred = Get-AzureRmAutomationCredential -ResourceGroupName "ResourceGroup01" -Name "MyCredential"
-$Computer = Get-AzureRmAutomationVariable -ResourceGroupName "ResourceGroup01" -Name  "ComputerName"
+```powershell
+$Cred = Get-AutomationPSCredential -Name "MyCredential"
+$Computer = Get-AutomationVariable -Name "ComputerName"
 
 Restart-Computer -ComputerName $Computer -Credential $Cred
 ```

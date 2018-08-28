@@ -9,10 +9,10 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 738ebdcc612d944db3794525085d220b33533245
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.sourcegitcommit: baed5a8884cb998138787a6ecfff46de07b8473d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
+ms.lasthandoff: 08/28/2018
 ms.locfileid: "30198226"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>Jsou vlastní zásady IPsec/IKE podporovány ve všech skladových jednotkách (SKU) služby Azure VPN Gateway?

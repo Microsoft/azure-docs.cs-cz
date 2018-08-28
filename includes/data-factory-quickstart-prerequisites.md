@@ -1,3 +1,20 @@
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: data-factory
+author: linda33wj
+ms.service: data-factory
+ms.topic: include
+ms.date: 08/20/2018
+ms.author: jingwang
+ms.custom: include file
+ms.openlocfilehash: ac6b53926ca6c44c8ec1e71db67321366aacb00e
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42617610"
+---
 ## <a name="prerequisites"></a>Požadavky
 
 ### <a name="azure-subscription"></a>Předplatné Azure
@@ -6,8 +23,10 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 ### <a name="azure-roles"></a>Role Azure
 Pro vytvoření instancí služby Data Factory musí být uživatelský účet, který použijete pro přihlášení k Azure, členem role *přispěvatel* nebo *vlastník* nebo *správcem* předplatného Azure. Na webu Azure Portal v pravém horním rohu vyberte své uživatelské jméno a pak výběrem **Oprávnění** zobrazte oprávnění, která v předplatném máte. Pokud máte přístup k několika předplatným, vyberte odpovídající předplatné. Ukázku pokynů pro přidání uživatele k roli najdete v článku věnovaném [přidání rolí](../articles/billing/billing-add-change-azure-subscription-administrator.md).
 
+Pokud chcete vytvářet a spravovat podřízené prostředky (včetně datových sad, propojených služeb, kanálů, triggerů a modulů runtime integrace) pro Data Factory prostřednictvím uživatelského rozhraní pro vytváření a monitorování na webu Azure Portal, musíte patřit do role **Přispěvatel Data Factory**. Pro vytváření a správu podřízených prostředků pomocí PowerShellu nebo sady SDK je dostatečná role **přispěvatele**.
+
 ### <a name="azure-storage-account"></a>Účet služby Azure Storage
-V tomto rychlém startu budete účet úložiště Azure (konkrétně úložiště objektů blob) pro obecné účely používat jako *zdrojové* i *cílové úložiště dat*. Pokud nemáte účet úložiště Azure pro obecné účely, přečtěte si téma [Vytvoření účtu úložiště](../articles/storage/common/storage-create-storage-account.md#create-a-storage-account) a účet si vytvořte. 
+V tomto rychlém startu budete účet úložiště Azure (konkrétně úložiště objektů blob) pro obecné účely používat jako *zdrojové* i *cílové úložiště dat*. Pokud nemáte účet úložiště Azure pro obecné účely, přečtěte si téma [Vytvoření účtu úložiště](../articles/storage/common/storage-quickstart-create-account.md) a účet si vytvořte. 
 
 #### <a name="get-the-storage-account-name-and-account-key"></a>Získání názvu a klíče účtu úložiště
 V tomto rychlém startu použijete název a klíč svého účtu úložiště Azure. Následující postup předvádí kroky k získání názvu a klíče vašeho účtu úložiště. 

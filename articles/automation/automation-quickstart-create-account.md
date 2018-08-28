@@ -4,17 +4,17 @@ description: Zjistěte, jak vytvořit účet Azure Automation a spustit runbook.
 services: automation
 author: csand-msft
 ms.author: csand
-ms.date: 12/13/2017
+ms.date: 08/22/2018
 ms.topic: quickstart
 ms.service: automation
 ms.component: process-automation
 ms.custom: mvc
-ms.openlocfilehash: 3accd62415cd7d3a8210b7a05aa1edfd7a380edc
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 81dbcb4f77708f9f679d146b1db83ddecc30629d
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34055150"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42616592"
 ---
 # <a name="create-an-azure-automation-account"></a>Vytvoření účtu Azure Automation
 
@@ -22,7 +22,7 @@ ms.locfileid: "34055150"
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="log-in-to-azure"></a>Přihlášení k Azure
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k Azure na adrese https://portal.azure.com.
 
@@ -30,13 +30,13 @@ Přihlaste se k Azure na adrese https://portal.azure.com.
 
 1. Klikněte na tlačítko **Vytvořit prostředek** v levém horním rohu Azure.
 
-1. Vyberte **Monitorování a správa** a pak vyberte **Automation**.
+1. Vyberte **Nástroje pro správu** a pak vyberte **Automation**.
 
-1. Zadejte informace o účtu. U možnosti **Vytvořit účet Spustit v Azure jako** zvolte **Ano**, aby se automaticky povolily artefakty, které zjednoduší ověřování do Azure. Jakmile budete hotovi, klikněte na **Vytvořit** a spusťte nasazování účtu Automation.
+1. Zadejte informace o účtu. U možnosti **Vytvořit účet Spustit v Azure jako** zvolte **Ano**, aby se automaticky povolily artefakty, které zjednoduší ověřování do Azure. Je důležité si uvědomit, že při vytváření účtu Automation není možné změnit již zvolený název. Jakmile budete hotovi, klikněte na **Vytvořit** a spusťte nasazování účtu Automation.
 
     ![Zadání informací o účtu Automation na stránce](./media/automation-quickstart-create-account/create-automation-account-portal-blade.png)  
 
-1. Účet Automation se připne na řídicí panel Azure. Po dokončení nasazení se automaticky otevře přehled účtu Automation.
+1. Po dokončení nasazení klikněte na **Všechny služby**, vyberte **Účty Automation** a vyberte účet Automation, který jste vytvořili.
 
     ![Přehled účtu Automation](./media/automation-quickstart-create-account/automation-account-overview.png)
 

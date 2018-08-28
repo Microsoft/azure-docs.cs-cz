@@ -15,12 +15,12 @@ ms.date: 08/19/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 537777d2e379959d427c025036652a87ecc4a1fe
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: e03b2ab45edd57a124dcc960ff518ece4902d2fa
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617154"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43048364"
 ---
 # <a name="built-in-roles-in-azure"></a>Předdefinované role v Azure
 [Řízení přístupu na základě role (RBAC)](overview.md) má několik definic předdefinovaná role, které jste přiřadili pro uživatele, skupiny nebo instanční objekty. Přiřazení rolí představují způsob, jak řídit přístup k prostředkům v Azure. Pokud předdefinované role nesplňují konkrétní požadavky vaší organizace, můžete si vytvořit [vlastní role](custom-roles.md).
@@ -43,7 +43,7 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 | [Role operátor služby API Management](#api-management-service-operator-role) | Může spravovat službu, ale ne rozhraní API. |
 | [Role Čtenář služby API Management](#api-management-service-reader-role) | Přístup ke službě a rozhraním API jen ke čtení |
 | [Přispěvatel součástí Application Insights](#application-insights-component-contributor) | Může spravovat součásti Application Insights. |
-| [Application Insights Snapshot debuggeru.](#application-insights-snapshot-debugger) | Uděluje oprávnění uživatele používat funkce Application Insights Snapshot Debuggeru. |
+| [Application Insights Snapshot debuggeru.](#application-insights-snapshot-debugger) | Uděluje oprávnění uživatele zobrazovat a stahovat ladicí snímky shromážděná pomocí Application Insights Snapshot debuggeru. Všimněte si, že tato role je součástí ani [vlastníka](#owner) ani [Přispěvatel](#contributor) role. |
 | [Operátor úloh Automation](#automation-job-operator) | Vytváření a správa úloh pomocí runbooků služby Automation |
 | [Operátor služby Automation](#automation-operator) | Operátoři Automation můžou spouštět, zastavovat, pozastavovat a obnovovat úlohy. |
 | [Operátor Runbooků Automation](#automation-runbook-operator) | Čtení vlastností runbooků – aby se daly vytvářet úlohy daného runbooku |

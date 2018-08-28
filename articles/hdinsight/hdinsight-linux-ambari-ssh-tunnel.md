@@ -3,18 +3,18 @@ title: Použití SSH tunelové propojení pro přístup k Azure HDInsight
 description: Zjistěte, jak bezpečně procházet webové stránky hostované na svých uzlech založených na Linuxu HDInsight pomocí tunelu SSH.
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: jasonh
-ms.openlocfilehash: 75ef1dfecb92ed19925e514812bfc40b6066b0e1
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 0722a366c374bd69fd9cf97279416a60d7133428
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39595245"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43107665"
 ---
 # <a name="use-ssh-tunneling-to-access-ambari-web-ui-jobhistory-namenode-oozie-and-other-web-uis"></a>Použití tunelování SSH pro přístup k webové uživatelské rozhraní Ambari, JobHistory, NameNode, Oozie a dalším webovým uživatelským rozhraním
 

@@ -1,25 +1,19 @@
 ---
-title: "Začínáme se službou Data Catalog | Dokumentace Microsoftu"
-description: "Koncový kurz představující scénáře a možnosti služby Azure Data Catalog."
-documentationcenter: 
+title: Začínáme s Azure Data Catalog
+description: Koncový kurz představující scénáře a možnosti služby Azure Data Catalog.
 services: data-catalog
 author: steelanddata
-manager: jhubbard
-editor: 
-tags: 
+ms.author: spelluru
 ms.assetid: 03332872-8d84-44a0-8a78-04fd30e14b18
 ms.service: data-catalog
-ms.devlang: NA
-ms.topic: get-started-article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
+ms.topic: conceptual
 ms.date: 01/18/2018
-ms.author: spelluru
-ms.openlocfilehash: d67f8871bbdd87e8a67057e6e8c5d4d770e5cad6
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
-ms.translationtype: HT
+ms.openlocfilehash: c65f5c2ca3f162c17d036198c4285f9c965bbd53
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43053788"
 ---
 # <a name="get-started-with-azure-data-catalog"></a>Začínáme s Azure Data Catalog
 Azure Data Catalog je plně spravovaná cloudová služba, která slouží jako systém pro registraci a zjišťování podnikových datových assetů. Podrobný přehled naleznete v části [Co je Azure Data Catalog?](data-catalog-what-is-data-catalog.md).
@@ -40,14 +34,14 @@ V tomto kurzu se naučíte pracovat se službou Azure Data Catalog. V tomto kurz
 ### <a name="azure-subscription"></a>Předplatné Azure
 Pokud chcete nastavit službu Azure Data Catalog, musíte být vlastníkem nebo spoluvlastníkem předplatného Azure.
 
-Předplatná Azure vám pomohou organizovat přístup k prostředkům cloudové služby, jako je Azure Data Catalog. Zároveň vám pomohou řídit způsob, jak je používání prostředků vykazováno, fakturováno a placeno. Každé předplatné může mít jiné nastavení fakturace a plateb. Můžete tedy mít jiná předplatná a jiné plány pro různá oddělení, projekty, regionální pobočky a podobně. Každá cloudová služba patří k nějakému předplatnému. Před nastavením služby Azure Data Catalog tedy potřebujete mít předplatné. Více informací naleznete v tématu [Správa účtů, předplatných a správních rolí](../active-directory/active-directory-how-subscriptions-associated-directory.md).
+Předplatná Azure vám pomohou organizovat přístup k prostředkům cloudové služby, jako je Azure Data Catalog. Zároveň vám pomohou řídit způsob, jak je používání prostředků vykazováno, fakturováno a placeno. Každé předplatné může mít jiné nastavení fakturace a plateb. Můžete tedy mít jiná předplatná a jiné plány pro různá oddělení, projekty, regionální pobočky a podobně. Každá cloudová služba patří k nějakému předplatnému. Před nastavením služby Azure Data Catalog tedy potřebujete mít předplatné. Více informací naleznete v tématu [Správa účtů, předplatných a správních rolí](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
 Pokud nemáte předplatné, můžete si během několika minut bezplatně vytvořit zkušební účet. Podrobnosti viz [bezplatná zkušební verze](https://azure.microsoft.com/pricing/free-trial/).
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 Pokud chcete nastavit službu Azure Data Catalog, musíte se přihlásit pomocí uživatelského účtu Azure Active Directory (Azure AD). Musíte být vlastníkem nebo spoluvlastníkem předplatného Azure.  
 
-Azure AD umožní vaší firmě snadnou správu identity a přístupu, a to jak v cloudu, tak i místně. Pomocí jednoho pracovního nebo školního účtu se můžete přihlásit k jakékoli cloudové nebo místní webové aplikaci. Služba Azure Data Catalog ověřuje přihlášení pomocí Azure AD. Další informace naleznete v tématu [Co je Azure Active Directory?](../active-directory/active-directory-whatis.md).
+Azure AD umožní vaší firmě snadnou správu identity a přístupu, a to jak v cloudu, tak i místně. Pomocí jednoho pracovního nebo školního účtu se můžete přihlásit k jakékoli cloudové nebo místní webové aplikaci. Služba Azure Data Catalog ověřuje přihlášení pomocí Azure AD. Další informace naleznete v tématu [Co je Azure Active Directory?](../active-directory/fundamentals/active-directory-whatis.md).
 
 ### <a name="azure-active-directory-policy-configuration"></a>Konfigurace zásad Azure Active Directory
 Může nastat situace, že se budete moci přihlásit k portálu Azure Data Catalog, ale při pokusu o přihlášení k nástroji pro registraci zdroje dat narazíte na chybovou zprávu, která vám přihlášení neumožní. K této chybě může dojít tehdy, když se nacházíte v podnikové síti nebo když se připojujete z místa mimo podnikovou síť.

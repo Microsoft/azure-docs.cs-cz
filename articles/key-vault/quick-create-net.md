@@ -1,6 +1,6 @@
 ---
-title: Rychlý start Azure – Konfigurace webové aplikace Azure pro nastavení a načtení tajného klíče ze služby Key Vault | Microsoft Docs
-description: Rychlý start, který ukazuje, jak nakonfigurovat aplikaci ASP.Net Core pro nastavení a načtení tajného klíče ze služby Key Vault
+title: Rychlý start – Nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí webové aplikace Node | Microsoft Docs
+description: Rychlý start – Nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí webové aplikace Node
 services: key-vault
 author: prashanthyv
 manager: sumedhb
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 07/24/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 8b5624ae3083d92213b4ee919dc0860bf5ff4ab7
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: 0188d06e5c58287e1040f6a15456d3ffe291b04a
+ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480198"
+ms.lasthandoff: 08/16/2018
+ms.locfileid: "42023942"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-a-net-web-app"></a>Rychlý start: Nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí webové aplikace .NET
 
@@ -28,7 +28,10 @@ V tomto rychlém startu si projdete nezbytné kroky pro využití webové aplika
 > * [Povolení identit spravované služby](../active-directory/managed-service-identity/overview.md)
 > * Udělení požadovaných oprávnění k načtení dat ze služby Key Vault pro webovou aplikaci
 
-Než budeme pokračovat, přečtěte si [základní koncepty](key-vault-whatis.md#basic-concepts), hlavně informace o [identitě spravované služby](../active-directory/managed-service-identity/overview.md).
+Než budeme pokračovat, přečtěte si [základní koncepty](key-vault-whatis.md#basic-concepts).
+
+>[!NOTE]
+Abyste pochopili, proč následující kurz představuje osvědčený postup, je potřeba porozumět několika konceptům. Služba Key Vault je centrální úložiště pro ukládání tajných klíčů prostřednictvím kódu programu. Aby to bylo možné, aplikace nebo uživatelé se nejprve musí ve službě Key Vault ověřit, tedy předložit tajný klíč. Za účelem dodržení osvědčených postupů zabezpečení je potřeba pravidelně obměňovat také tento první tajný klíč. Při použití [Identity spravované služby](../active-directory/managed-service-identity/overview.md) se však aplikacím spouštěným v Azure udělí identita, kterou automaticky spravuje Azure. To vám pomůže vyřešit **problém se zavedením tajného klíče** a tím umožníte uživatelům a aplikacím dodržovat osvědčené postupy bez starostí o obměňování prvního tajného klíče.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -165,6 +168,8 @@ Potom spusťte příkaz, ve kterém použijete název vašeho trezoru klíčů a
 az keyvault set-policy --name '<YourKeyVaultName>' --object-id <PrincipalId> --secret-permissions get
 
 ```
+
+**Když teď spustíte aplikaci, měla by se zobrazit načtená hodnota vašeho taného klíče**.
 
 ## <a name="next-steps"></a>Další kroky
 

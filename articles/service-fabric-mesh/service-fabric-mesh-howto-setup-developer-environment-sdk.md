@@ -1,24 +1,24 @@
 ---
-title: Nastavení vývojového prostředí ve Windows pro aplikace Service Fabric Mesh | Microsoft Docs
+title: Nastavení vývojového prostředí ve Windows pro sestavování aplikací Service Fabric Mesh | Microsoft Docs
 description: Nastavte své vývojového prostředí ve Windows, abyste mohli vytvořit aplikaci Service Fabric Mesh a nasadit ji do Azure Service Fabric Mesh.
 services: service-fabric-mesh
 keywords: ''
 author: tylermsft
 ms.author: twhitney
-ms.date: 07/20/2018
+ms.date: 08/08/2018
 ms.topic: get-started-article
 ms.service: service-fabric-mesh
-manager: timlt
-ms.openlocfilehash: 589bef1894a3bee1e6974a0ea2516200fae2891f
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+manager: jeconnoc
+ms.openlocfilehash: e95c0ad90503410601cc0764fdc559579a1dd13d
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39185539"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "41920975"
 ---
-# <a name="set-up-your-windows-development-environment-to-build-service-fabric-applications"></a>Nastavení vývojového prostředí ve Windows pro sestavování aplikací Service Fabric
+# <a name="set-up-your-windows-development-environment-to-build-service-fabric-mesh-apps"></a>Nastavení vývojového prostředí ve Windows pro sestavování aplikací Service Fabric Mesh
 
-Pokud chcete sestavovat a spouštět aplikace Azure Service Fabric na vývojovém počítači s Windows, nainstalujte modul runtime Service Fabric, sadu SDK a nástroje.
+Pokud chcete sestavovat a spouštět aplikace Azure Service Fabric Mesh na vývojovém počítači s Windows, nainstalujte modul runtime Service Fabric Mesh, sadu SDK a nástroje.
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
@@ -31,28 +31,30 @@ Pro vývoj jsou podporovány tyto verze operačních systémů:
 
 ## <a name="visual-studio"></a>Visual Studio
 
-K nasazení aplikace Service Fabric je nutné Visual Studio 2017. [Nainstalujte verzi 15.6.0][download-visual-studio] nebo vyšší a povolte následující sady funkcí:
+K nasazování aplikací Service Fabric Mesh se vyžaduje sada Visual Studio 2017. [Nainstalujte verzi 15.6.0][download-visual-studio] nebo vyšší a povolte následující sady funkcí:
 
-- Vývoj pro ASP.NET a web
-- Vývoj pro Azure
- 
-## <a name="windows-10---install-docker"></a>Windows 10 – instalace Dockeru
+* Vývoj pro ASP.NET a web
+* Vývoj pro Azure
+
+## <a name="install-docker"></a>Instalace Dockeru
+
+#### <a name="windows-10"></a>Windows 10
 
 Stáhněte a nainstalujte nejnovější verzi [Docker Community Edition pro Windows][download-docker] sloužící k podpoře kontejnerizovaných aplikací Service Fabric používaných službou Service Fabric Mesh.
 
-Když se během instalace zobrazí výzva, vyberte **Use Windows containers instead of Linux containers** (Použít kontejnery Windows místo kontejnerů Linuxu). Pokud na vašem počítači není povolená technologie Hyper-V, při instalaci Dockeru se zobrazí možnost ji povolit. Po zobrazení příslušné výzvy klikněte na **OK**.
+Když se během instalace zobrazí výzva, vyberte **Use Windows containers instead of Linux containers** (Použít kontejnery Windows místo kontejnerů Linuxu).
 
-## <a name="windows-server-2016---install-hyper-v-and-docker"></a>Windows Server 2016 – instalace Hyper-V a Dockeru
+Pokud na vašem počítači není povolená technologie Hyper-V, v instalačním programu Dockeru se zobrazí možnost ji povolit. Po zobrazení příslušné výzvy klikněte na **OK**.
 
-**Instalace Hyper-V**
+#### <a name="windows-server-2016"></a>Windows Server 2016
 
-Nejdřív otevřete PowerShell jako správce a spusťte následující příkaz, který nainstaluje Hyper-V a restartuje počítač. Další informace najdete v tématu [Docker Enterprise Edition pro Windows Server][download-docker-server].
+Pokud nemáte povolenou roli Hyper-V, otevřete PowerShell jako správce, spuštěním následujícího příkazu povolte Hyper-V a pak restartuje počítač. Další informace najdete v tématu [Docker Enterprise Edition pro Windows Server][download-docker-server].
 
 ```powershell
 Install-WindowsFeature -Name Hyper-V -IncludeManagementTools
 ```
 
-**Instalace Dockeru**
+Restartujte počítač.
 
 Otevřete PowerShell jako správce a spusťte následující příkaz pro instalaci Dockeru:
 
@@ -61,8 +63,6 @@ Install-Module DockerMsftProvider -Force
 Install-Package Docker -ProviderName DockerMsftProvider -Force
 Install-WindowsFeature Containers
 ```
-
-Restartujte počítač.
 
 ## <a name="sdk-and-tools"></a>Sada SDK a nástroje
 

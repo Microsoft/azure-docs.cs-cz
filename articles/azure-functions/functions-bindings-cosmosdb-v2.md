@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: 1237d6a35d279a1036bb8139dd0b0ceaa34edb7b
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 3fc00400590582d21590aadc9741cf0eaf048240
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746838"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43047210"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x-preview"></a>Vazby Azure Cosmos DB pro službu Azure Functions 2.x (Preview)
 
@@ -36,6 +36,10 @@ Tento článek vysvětluje, jak pracovat s [služby Azure Cosmos DB](..\cosmos-d
 > Tato vazba se původně nazývala DocumentDB. Funkce verze 2.x, aktivační událost, vazby a balíčků jsou všechny s názvem služby Cosmos DB.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
+
+## <a name="supported-apis"></a>Podporované rozhraní API
+
+[!INCLUDE [SQL API support only](../../includes/functions-cosmosdb-sqlapi-note.md)]
 
 ## <a name="packages---functions-2x"></a>Balíčky – funkce 2.x
 
@@ -254,10 +258,7 @@ Aktivační událost neukazuje, jestli dokument byl aktualizaci nebo vložení, 
 
 ## <a name="input"></a>Vstup
 
-Vstupní vazby Azure Cosmos DB načte jeden nebo více dokumentů Azure Cosmos DB a předává je do vstupní parametr funkce. Parametry ID nebo dotaz, dokument se dá určit podle aktivační událost, která volá funkci. 
-
->[!NOTE]
-> Nechcete používat Azure Cosmos DB vstupní nebo výstupní vazby, pokud používáte rozhraní MongoDB API služby na účet služby Cosmos DB. Poškození dat je možné.
+Vstupní vazby Azure Cosmos DB pomocí rozhraní SQL API pro načtení jedné nebo více dokumentů Azure Cosmos DB a předává je do vstupní parametr funkce. Parametry ID nebo dotaz, dokument se dá určit podle aktivační událost, která volá funkci. 
 
 ## <a name="input---examples"></a>(Vstup) – příklady
 
@@ -1253,10 +1254,7 @@ Do funkce jazyka JavaScript nejsou automaticky provedeny aktualizace při ukonč
 
 ## <a name="output"></a>Výstup
 
-Azure Cosmos DB výstupní vazbu umožňuje zapsat nový dokument k databázi Azure Cosmos DB. 
-
->[!NOTE]
-> Nechcete používat Azure Cosmos DB vstupní nebo výstupní vazby, pokud používáte rozhraní MongoDB API služby na účet služby Cosmos DB. Poškození dat je možné.
+Azure Cosmos DB výstupní vazbu umožňuje zapsat nový dokument k databázi Azure Cosmos DB pomocí rozhraní SQL API. 
 
 ## <a name="output---examples"></a>Výstup – příklady
 

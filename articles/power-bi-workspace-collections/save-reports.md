@@ -1,55 +1,49 @@
 ---
-title: Uložení sestavy v Power BI prostoru kolekce | Microsoft Docs
-description: Informace o ukládání sestavy v rámci kolekce pracovních prostorů Power BI. To vyžaduje příslušná oprávnění, aby bylo možné správně fungovat.
+title: Ukládání sestav v kolekcích pracovních prostorů Power BI | Dokumentace Microsoftu
+description: Zjistěte, jak uložit sestavy v rámci kolekce pracovních prostorů Power BI. To vyžaduje správná oprávnění, aby bylo možné úspěšně fungovat.
 services: power-bi-embedded
-documentationcenter: ''
 author: markingmyname
-manager: kfile
-editor: ''
-tags: ''
 ROBOTS: NOINDEX
 ms.assetid: ''
 ms.service: power-bi-embedded
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: c5512584531c9f5c8a13e9a50161eb6b5a1f8a7b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 277667bb3b4e39acbb935285e984660a3b44993d
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31411212"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43047952"
 ---
-# <a name="save-reports-in-power-bi-workspace-collections"></a>Uložení sestavy v Power BI prostoru kolekce
+# <a name="save-reports-in-power-bi-workspace-collections"></a>Ukládání sestav v kolekcích pracovních prostorů Power BI
 
-Informace o ukládání sestavy v rámci kolekce pracovních prostorů Power BI. Ukládání sestav vyžaduje příslušná oprávnění, aby bylo možné správně fungovat.
+Zjistěte, jak uložit sestavy v rámci kolekce pracovních prostorů Power BI. Uložení sestavy vyžaduje správná oprávnění, aby bylo možné úspěšně fungovat.
 
 > [!IMPORTANT]
 > Kolekce Pracovních prostorů Power BI jsou zastaralé a dostupné do června 2018 nebo do data uvedeného ve vaší smlouvě. Doporučujeme naplánovat migraci do Power BI Embedded, předejdete tak výpadkům vaší aplikace. Informace o postupu migrace dat do Power BI Embedded najdete v tématu [Migrace obsahu kolekcí Pracovních prostorů Power BI do Power BI Embedded](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/).
 
-V rámci Power BI prostoru kolekcí můžete upravit existující sestavy a uložíte. Můžete také vytvořit novou sestavu a uložit jako novou sestavu k jeho vytvoření.
+V rámci kolekce pracovních prostorů Power BI můžete upravit existující sestavy a jejich uložení. Můžete také vytvořit novou sestavu a uložit jako novou sestavu pro jeho vytvoření.
 
-Chcete-li uložit sestavu, musíte nejprve vytvořit token pro konkrétní sestavu s správné rozsahy:
+Pokud chcete uložit sestavu, musíte nejprve vytvořit token pro konkrétní sestavy se správné rozsahy:
 
-* Chcete-li povolit ukládání Report.ReadWrite obor je požadován
-* Chcete-li uložit jako, jsou požadovány Report.Read a Workspace.Report.Copy oborů
-* Chcete-li uložit a uložit jako, jsou požadovány Report.ReadWrite a Workspace.Report.Copy
+* Umožňuje uložit Report.ReadWrite obor je požadován
+* Chcete-li uložit jako, Report.Read a Workspace.Report.Copy obory se vyžadují.
+* Chcete-li uložit informace a uložit jako, Report.ReadWrite a Workspace.Report.Copy jsou povinné.
 
-V uvedeném pořadí, aby bylo možné povolit právo uložit nebo uložit jako tlačítka v nabídce soubor potřebujete poskytovat správné oprávnění v konfiguraci vložení při vložení sestavy:
+V uvedeném pořadí, chcete-li povolit právo uložit nebo uložit jako tlačítka v nabídce Soubor je potřeba zadat správné oprávnění v konfiguraci vložení při vložení sestavy:
 
 * modely. Permissions.ReadWrite
 * modely. Permissions.Copy
 * modely. Permissions.All
 
 > [!NOTE]
-> Přístupový token musí také odpovídající obory. Další informace najdete v tématu [obory](app-token-flow.md#scopes).
+> Přístupový token musí také příslušných oborech. Další informace najdete v tématu [obory](app-token-flow.md#scopes).
 
-## <a name="embed-report-in-edit-mode"></a>Vložení sestavy v režimu úprav
+## <a name="embed-report-in-edit-mode"></a>Vložení sestavy do režimu úprav
 
-Řekněme, že chcete v režimu úprav uvnitř vaší aplikace, Uděláte to tak, aby předat vlastnosti oprávnění v konfiguraci vložení a volání powerbi.embed() vložení sestavy. Zadejte oprávnění a viewMode, aby bylo možné zobrazit uložení a uložit jako tlačítka v režimu úprav. Další informace najdete v tématu [vložení podrobnosti konfigurace](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Embed-Configuration-Details).
+Řekněme, že chcete vložit sestavu v režimu úprav ve svých aplikacích, aby tak, aby předal správné vlastnosti v konfiguraci vložení volání powerbi.embed(). Zadejte oprávnění a viewMode, aby bylo možné zobrazit uložení a uložit jako tlačítka v režimu úprav. Další informace najdete v tématu [podrobnosti o konfiguraci pro vložení](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Embed-Configuration-Details).
 
 Například v jazyce JavaScript:
 
@@ -83,11 +77,11 @@ Například v jazyce JavaScript:
     var report = powerbi.embed(reportContainer, config);
 ```
 
-Sestavy je vložen do vaší aplikace v režimu úprav.
+Sestavy se teď vloží do vaší aplikace v režimu úprav.
 
-## <a name="save-report"></a>Uloží sestavu
+## <a name="save-report"></a>Uložit sestavu
 
-Po vložení sestavy v režimu úprav s správné token a oprávnění, můžete uložit sestavu v nabídce Soubor nebo z javascript:
+Po vložení sestavy v režimu úprav s správný token a oprávnění, můžete uložit sestavu v nabídce Soubor nebo z jazyka javascript:
 
 ```
  // Get a reference to the embedded report.
@@ -112,9 +106,9 @@ Po vložení sestavy v režimu úprav s správné token a oprávnění, můžete
 ```
 
 > [!IMPORTANT]
-> Až poté, co *uložit jako* je vytvoření nové sestavy. Po uložení se na plátno stále zobrazuje staré sestavu v režimu úprav a není novou sestavu. Vložení nové sestavy, který byl vytvořen. Vložení nové sestavy vyžaduje nový přístupový token, jako jsou vytvořené na sestavu.
+> Až poté, co *uložit jako* je vytvoření nové sestavy. Po uložení plátno stále zobrazuje původní sestavu v režimu úprav a ne novou sestavu. Vložte novou sestavu, která byla vytvořena. Vložení nové sestavy vyžaduje nový přístupový token při jejich vytvoření na sestavu.
 
-Pak bude nutné načíst novou sestavu po *uložit jako*. Načítání nová sestava je podobná vložení žádnou sestavu.
+Pak musíte načíst nové sestavy po *uložit jako*. Načítají se nová sestava je podobný vložení žádné sestavy.
 
 ```
 <div id="reportContainer"></div>

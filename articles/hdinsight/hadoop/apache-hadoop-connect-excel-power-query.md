@@ -4,17 +4,17 @@ description: Zjistěte, jak využít výhod komponenty business intelligence a p
 services: hdinsight
 author: jasonwhowell
 ms.author: jasonh
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: 9677cbef67c6fd99ae00fad1de0692449b84387b
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 45014592cd648ee1a7b75fa59babf8571c151269
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39591641"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43042297"
 ---
 # <a name="connect-excel-to-hadoop-by-using-power-query"></a>Připojení Excelu k Hadoopu pomocí Power Query
 Jednu klíčovou funkcí řešení pro velké objemy dat společnosti Microsoft je integrační komponenty Microsoft business intelligence (BI) s clustery Hadoop v Azure HDInsight. Primární příkladem je schopnost připojit Excel k účtu služby Azure Storage, který obsahuje data spojená s vaším clusterem Hadoop pomocí Microsoft Power Query pro Excel add-in. Tento článek vás provede jak nastavit a provádět dotazy na data související s clusterem Hadoop spravované pomocí HDInsight pomocí Power Query.

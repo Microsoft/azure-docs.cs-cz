@@ -1,41 +1,34 @@
 ---
-title: Přepínání mezi zobrazení a úprava režimu pro sestavy v Power BI prostoru kolekcích | Microsoft Docs
-description: Zjistěte, jak přepínat mezi zobrazení a úprava režim pro sestavy v rámci kolekce pracovních prostorů Power BI.
+title: Přepínání mezi zobrazením a upravit režimu pro sestavy v kolekcích pracovních prostorů Power BI | Dokumentace Microsoftu
+description: Informace o přepínání mezi zobrazením a upravit režimu pro sestavy v rámci kolekce pracovních prostorů Power BI.
 services: power-bi-embedded
-documentationcenter: ''
 author: markingmyname
-manager: kfile
-editor: ''
-tags: ''
 ROBOTS: NOINDEX
-ms.assetid: ''
 ms.service: power-bi-embedded
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: 23a8c4f0dd626a623df56de9546258a23d549d1a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 19a576440742684849ffc74092162be7008621ba
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31409947"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43045014"
 ---
-# <a name="toggle-between-view-and-edit-mode-for-reports-in-power-bi-workspace-collections"></a>Přepínání mezi zobrazení a úprava režimu pro sestavy v Power BI prostoru kolekce
+# <a name="toggle-between-view-and-edit-mode-for-reports-in-power-bi-workspace-collections"></a>Přepínání mezi zobrazením a upravit režimu pro sestavy v kolekcích pracovních prostorů Power BI
 
-Zjistěte, jak přepínat mezi zobrazení a úprava režim pro sestavy v rámci kolekce pracovních prostorů Power BI.
+Informace o přepínání mezi zobrazením a upravit režimu pro sestavy v rámci kolekce pracovních prostorů Power BI.
 
 > [!IMPORTANT]
 > Kolekce Pracovních prostorů Power BI jsou zastaralé a dostupné do června 2018 nebo do data uvedeného ve vaší smlouvě. Doporučujeme naplánovat migraci do Power BI Embedded, předejdete tak výpadkům vaší aplikace. Informace o postupu migrace dat do Power BI Embedded najdete v tématu [Migrace obsahu kolekcí Pracovních prostorů Power BI do Power BI Embedded](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/).
 
-## <a name="creating-an-access-token"></a>Vytváření token přístupu
+## <a name="creating-an-access-token"></a>Vytvoření přístupového tokenu
 
-Budete muset vytvořit přístupový token, který vám dává možnost jak zobrazit a upravit sestavu. Pokud chcete upravit a uložit sestavu, musíte **Report.ReadWrite** token oprávnění. Další informace najdete v tématu [Authenticating a autorizaci v Power BI prostoru kolekce](app-token-flow.md).
+Je potřeba vytvořit přístupový token, který vám dává možnost, jak zobrazit a upravit sestavu. Pokud chcete upravit a uložit sestavu, musíte **Report.ReadWrite** token oprávnění. Další informace najdete v tématu [ověřování a autorizace v kolekcích pracovních prostorů Power BI](app-token-flow.md).
 
 > [!NOTE]
-> To umožňuje upravit a uložit změny do existující sestavy. Pokud také chcete funkci podporu **uložit jako**, budete muset zadat další oprávnění. Další informace najdete v tématu [obory](app-token-flow.md#scopes).
+> Můžete upravit a uložit změny do stávající sestavy. Pokud chcete také funkci podporu **uložit jako**, budete muset zadat další oprávnění. Další informace najdete v tématu [obory](app-token-flow.md#scopes).
 
 ```
 using Microsoft.PowerBI.Security;
@@ -47,9 +40,9 @@ PowerBIToken embedToken = PowerBIToken.CreateReportEmbedTokenForCreation(workspa
 var token = embedToken.Generate("{access key}");
 ```
 
-## <a name="embed-configuration"></a>Vložení konfigurace
+## <a name="embed-configuration"></a>Konfigurace pro vložení
 
-Budete muset zadat oprávnění a viewMode, chcete-li zobrazit uložení tlačítko v režimu úprav. Další informace najdete v tématu [vložení podrobnosti konfigurace](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Embed-Configuration-Details).
+Je třeba zadat oprávnění a viewMode, chcete-li zobrazit uložení tlačítko v režimu úprav. Další informace najdete v tématu [podrobnosti o konfiguraci pro vložení](https://github.com/Microsoft/PowerBI-JavaScript/wiki/Embed-Configuration-Details).
 
 Například v jazyce JavaScript:
 
@@ -83,11 +76,11 @@ Například v jazyce JavaScript:
     var report = powerbi.embed(reportContainer, config);
 ```
 
-To znamená pro vložení sestavy v režimu zobrazení na základě **viewMode** Probíhá nastavení objektu na **modelů. ViewMode.View**.
+Tím je oznámeno vložení sestavy do režimu zobrazení na základě **viewMode** nastavena na **modely. ViewMode.View**.
 
 ## <a name="view-mode"></a>Režim zobrazení
 
-Chcete-li přepnout do režimu zobrazení, pokud jste v režimu úprav, můžete použít následující JavaScript.
+Chcete-li přepnout do režimu zobrazení, pokud jste v režimu úprav můžete použít následující jazyka JavaScript.
 
 ```
 // Get a reference to the embedded report HTML element
@@ -124,7 +117,7 @@ report.switchMode("edit");
 [Ověřování a autorizace v kolekcích Pracovních prostorů Power BI](app-token-flow.md)  
 [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#methods_)  
 [Vložená ukázka JavaScriptu](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
-[Úložiště Git PowerBI CSharp](https://github.com/Microsoft/PowerBI-CSharp)  
-[Úložiště Git PowerBI uzlu](https://github.com/Microsoft/PowerBI-Node)  
+[Úložiště Git PowerBI-CSharp](https://github.com/Microsoft/PowerBI-CSharp)  
+[Power BI uzlu úložiště Git](https://github.com/Microsoft/PowerBI-Node)  
 
 Chcete se ještě na něco zeptat? [Vyzkoušejte komunitu Power BI](http://community.powerbi.com/)

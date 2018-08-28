@@ -1,50 +1,44 @@
 ---
-title: Vložení sestavy v Azure Power BI prostoru kolekcích | Microsoft Docs
-description: Postup vložení sestavy, který je v Power BI prostoru kolekce do vaší aplikace.
+title: Vložení sestavy do kolekce pracovních prostorů Power BI Azure | Dokumentace Microsoftu
+description: Zjistěte, jak pro vložení sestavy, která je v kolekcích pracovních prostorů Power BI do vaší aplikace.
 services: power-bi-embedded
-documentationcenter: ''
 author: markingmyname
-manager: kfile
-editor: ''
-tags: ''
 ROBOTS: NOINDEX
 ms.assetid: ''
 ms.service: power-bi-embedded
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: b6fa46b1cf3a251d6116e7de6ef41a9e6d265c29
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 94476486ed87662f3d6b989b8d5360dd792f8824
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31410348"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43041176"
 ---
-# <a name="embed-a-report-in-power-bi-workspace-collections"></a>Vložení sestavy v Power BI prostoru kolekce
+# <a name="embed-a-report-in-power-bi-workspace-collections"></a>Vložení sestavy do kolekce pracovních prostorů Power BI
 
-Postup vložení sestavy, který je v Power BI prostoru kolekce do vaší aplikace.
+Zjistěte, jak pro vložení sestavy, která je v kolekcích pracovních prostorů Power BI do vaší aplikace.
 
 > [!IMPORTANT]
 > Kolekce Pracovních prostorů Power BI jsou zastaralé a dostupné do června 2018 nebo do data uvedeného ve vaší smlouvě. Doporučujeme naplánovat migraci do Power BI Embedded, předejdete tak výpadkům vaší aplikace. Informace o postupu migrace dat do Power BI Embedded najdete v tématu [Migrace obsahu kolekcí Pracovních prostorů Power BI do Power BI Embedded](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/).
 
-Podíváme se na tom, jak ve skutečnosti vložení sestavy do vaší aplikace. Toto předpokládá, že už máte sestavu, která existuje v rámci pracovního prostoru v kolekci pracovního prostoru. Pokud tento krok jste ještě neudělali, přečtěte si téma [Začínáme s Power BI prostoru kolekce](get-started.md).
+Podíváme se na tom, jak ve skutečnosti vložení sestavy do vaší aplikace. To předpokládá, že už máte sestavu, která existuje v rámci pracovního prostoru ve vaší kolekci pracovních prostorů. Pokud tento krok jste zatím neudělali, přečtěte si téma [začít pracovat s kolekcí pracovních prostorů Power BI](get-started.md).
 
-.NET (C#) nebo Node.js SDK, společně s JavaScript, můžete snadno vytvářet aplikace s Power BI prostoru kolekce.
+.NET (C#) nebo sady Node.js SDK, spolu s jazyka JavaScript, můžete použít k snadnému vytváření vaší aplikace pomocí kolekcí pracovních prostorů Power BI.
 
-## <a name="using-the-access-keys-to-use-rest-apis"></a>Pomocí rozhraní REST API pomocí přístupových kláves
+## <a name="using-the-access-keys-to-use-rest-apis"></a>Použití rozhraní REST API pomocí přístupových klíčů
 
-Aby bylo možné volat rozhraní REST API, můžete předat přístupový klíč, který můžete získat z portálu Azure pro kolekci daného pracovního prostoru. Další informace najdete v tématu [Začínáme s Power BI prostoru kolekce](get-started.md).
+Aby bylo možné volat rozhraní REST API, můžete předat přístupový klíč, který můžete získat z webu Azure portal pro daný pracovní prostor kolekce. Další informace najdete v tématu [začít pracovat s kolekcí pracovních prostorů Power BI](get-started.md).
 
-## <a name="get-a-report-id"></a>Získání ID sestavy
+## <a name="get-a-report-id"></a>Získat ID sestavy
 
-Každý přístupový token je založena na sestavu. Musíte získat id dané sestavy pro sestavu, kterou chcete vložit. To lze provést na základě volání [Get Reports](https://msdn.microsoft.com/library/azure/mt711510.aspx) REST API. Tato možnost vrátí id sestavy a adresu url pro vložení. To lze provést pomocí .NET SDK služby Power BI nebo přímé volání rozhraní REST API.
+Každý přístupový token je založena na sestavě. Je potřeba získat id dané sestavy pro sestavu, kterou chcete vložit. To můžete udělat na základě volání [Get Reports](https://msdn.microsoft.com/library/azure/mt711510.aspx) rozhraní REST API. Vrátí id sestavy a adresu url vložení. To můžete udělat pomocí Power BI .NET SDK nebo přímé volání rozhraní REST API.
 
-### <a name="using-the-power-bi-net-sdk"></a>Pomocí .NET SDK služby Power BI
+### <a name="using-the-power-bi-net-sdk"></a>Pomocí Power BI .NET SDK
 
-Když pomocí sady .NET SDK, musíte vytvořit token přihlašovacích údajů, který je založen na přístupový klíč, který můžete získat z portálu Azure. To je nutné nainstalovat [balíček NuGet pro rozhraní API Power BI](https://www.nuget.org/profiles/powerbi).
+Při použití sady .NET SDK, je potřeba vytvořit token přihlašovacích údajů, který je založen na přístupový klíč, který jste získali z portálu Azure portal. To je nutné nainstalovat [balíček NuGet rozhraní API Power BI](https://www.nuget.org/profiles/powerbi).
 
 **Instalace balíčku NuGet**
 
@@ -86,13 +80,13 @@ using (var response = request.GetResponse() as System.Net.HttpWebResponse)
 }
 ```
 
-## <a name="create-an-access-token"></a>Vytvořit token přístupu
+## <a name="create-an-access-token"></a>Vytvoření přístupového tokenu
 
-Power BI prostoru kolekce použijte vložení tokeny, které jsou HMAC podepsané webových tokenů JSON. Přístupový klíč z vaší kolekce pracovních prostorů Power BI jsou podepsané tokeny. Vložení tokeny, ve výchozím nastavení, slouží k poskytování přístupu jen pro čtení k sestavě pro vložení do aplikace. Vložení tokeny jsou vydán pro konkrétní sestavy a by měly být přidružené adrese URL vložení.
+Použití Power BI kolekce pracovních prostorů vložené tokeny, které jsou HMAC podepsané webových tokenů JSON. Tokeny jsou podepsány pomocí přístupového klíče z vaší kolekce pracovních prostorů Power BI. Vložené tokeny, ve výchozím nastavení, se používají k zajištění přístup jen pro čtení pro sestavy k vložení do aplikace. Vložit tokeny budou vydány pro konkrétní sestavu a by měly být přidružené adrese URL vložení.
 
-Přístupové tokeny by se vytvořit na serveru, přístupové klíče se používají pro přihlášení nebo šifrování tokenů. Informace o tom, jak vytvořit token přístupu najdete v tématu [Authenticating a autorizaci s Power BI prostoru kolekce](app-token-flow.md). Můžete také zkontrolovat [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#methods_) metoda. Tady je příklad co to může vypadat třeba pomocí sady .NET SDK pro Power BI.
+Přístupové tokeny by být vytvořeny na serveru, které přístupové klíče se používají k přihlašování a šifrování tokenů. Informace o tom, jak vytvořit token přístupu najdete v tématu [ověřování a autorizace pomocí kolekcí pracovních prostorů Power BI](app-token-flow.md). Můžete také zkontrolovat [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#methods_) metody. Tady je příklad co to může vypadat třeba pomocí sady .NET SDK pro Power BI.
 
-Můžete použít ID sestavy, které jste získali dříve. Po vytvoření vkládací token pak použijete přístupový klíč pro vygenerování tokenu, který můžete použít z pohledu javascript. *PowerBIToken třída* je nutné nainstalovat [Power BI základní NuGut balíček](https://www.nuget.org/packages/Microsoft.PowerBI.Core/).
+Můžete použít ID sestavy, které jste získali dříve. Jakmile se vytvoří token pro vložení, pak použijete přístupový klíč k vygenerování tokenu, který můžete použít z pohledu jazyka javascript. *PowerBIToken třídy* je nutné nainstalovat [Power BI základní NuGut balíček](https://www.nuget.org/packages/Microsoft.PowerBI.Core/).
 
 **Instalace balíčku NuGet**
 
@@ -111,16 +105,16 @@ embedToken = PowerBIToken.CreateReportEmbedToken(workspaceCollectionName, worksp
 var token = embedToken.Generate("{access key}");
 ```
 
-### <a name="adding-permission-scopes-to-embed-tokens"></a>Přidání obory oprávnění pro vložení tokeny
+### <a name="adding-permission-scopes-to-embed-tokens"></a>Přidání obory oprávnění pro tokeny pro vložení
 
-Pokud používáte vložení tokeny, můžete omezit využití prostředků, které vám umožní získat přístup k. Z tohoto důvodu můžete vygenerovat token s vymezená oprávnění. Další informace najdete v tématu [oborů](app-token-flow.md#scopes)
+Při použití tokenů pro vložení, můžete omezit využití prostředků, které poskytuje přístup k. Z tohoto důvodu můžete vygenerovat token s s vymezeným oborem oprávnění. Další informace najdete v tématu [obory](app-token-flow.md#scopes)
 
-## <a name="embed-using-javascript"></a>Vložení pomocí jazyka JavaScript
+## <a name="embed-using-javascript"></a>Vložení pomocí JavaScriptu
 
-Až budete mít přístupový token a ID sestavy, jsme vložení sestavy pomocí jazyka JavaScript. To je nutné nainstalovat NuGet [Power BI JavaScript balíček](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/). Právě embedUrl bude https://embedded.powerbi.com/appTokenReportEmbed.
+Jakmile máte přístupový token a ID sestavy, jsme vložení sestavy pomocí JavaScriptu. To vyžaduje instalaci balíčku NuGet [balíček Power BI JavaScript](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/). Stačí embedUrl bude https://embedded.powerbi.com/appTokenReportEmbed.
 
 > [!NOTE]
-> Můžete použít [ukázka vložení sestavy JavaScript](https://microsoft.github.io/PowerBI-JavaScript/demo/) správnou funkci. Také nabízí příklady kódu pro různé operace, které jsou k dispozici.
+> Můžete použít [ukázka vložení sestavy JavaScript](https://microsoft.github.io/PowerBI-JavaScript/demo/) k testování funkcí. Poskytuje příklady kódu pro různé operace, které jsou k dispozici.
 
 **Instalace balíčku NuGet**
 
@@ -145,9 +139,9 @@ var $reportContainer = $('#reportContainer');
 var report = powerbi.embed($reportContainer.get(0), embedConfiguration);
 ```
 
-### <a name="set-the-size-of-embedded-elements"></a>Nastavení velikosti vložené prvky
+### <a name="set-the-size-of-embedded-elements"></a>Nastavit velikost prvků embedded
 
-Sestava bude automaticky vložený podle velikosti svého kontejneru. Pokud chcete přepsat výchozí velikost vložené položky, stačí přidáte třídu atributu nebo vložené stylů CSS pro šířku a výšku.
+Sestava bude automaticky vložen v závislosti na velikosti svého kontejneru. Pokud chcete přepsat výchozí velikost vloženou položku, jednoduše přidejte třídy atributu nebo vložené styly CSS pro šířku a výšku.
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
@@ -156,9 +150,9 @@ Sestava bude automaticky vložený podle velikosti svého kontejneru. Pokud chce
 [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#methods_)  
 [Vložená ukázka JavaScriptu](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
 [Power BI JavaScript balíčku](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/)  
-[Power BI rozhraní API NuGet balíček](https://www.nuget.org/profiles/powerbi)
-[Power BI základní NuGut balíčku](https://www.nuget.org/packages/Microsoft.PowerBI.Core/)  
-[Úložiště Git PowerBI CSharp](https://github.com/Microsoft/PowerBI-CSharp)  
-[Úložiště Git PowerBI uzlu](https://github.com/Microsoft/PowerBI-Node)  
+[Power BI NuGet rozhraní API balíčku](https://www.nuget.org/profiles/powerbi)
+[Power BI základní NuGut balíček](https://www.nuget.org/packages/Microsoft.PowerBI.Core/)  
+[Úložiště Git PowerBI-CSharp](https://github.com/Microsoft/PowerBI-CSharp)  
+[Power BI uzlu úložiště Git](https://github.com/Microsoft/PowerBI-Node)  
 
 Chcete se ještě na něco zeptat? [Vyzkoušejte komunitu Power BI](http://community.powerbi.com/)

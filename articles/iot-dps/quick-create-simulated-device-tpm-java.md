@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: a75087c980a98726cc9f871c78b5cd6cb9278643
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 18342b7f3980bcd43b386c3282dda6ebf17eebba
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39090677"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42022902"
 ---
 # <a name="create-and-provision-a-simulated-tpm-device-using-java-device-sdk-for-azure-iot-hub-device-provisioning-service"></a>Vytvoření a zřízení simulovaného zařízení TPM pomocí sady Java SDK pro zařízení pro službu Azure IoT Hub Device Provisioning
 
@@ -25,7 +25,7 @@ Tyto kroky ukazují, jak na vývojovém počítači s operačním systémem Wind
 
 Pokud neznáte proces automatického zřizování, měli byste se seznámit také s [koncepty automatického zřizování](concepts-auto-provisioning.md). Než budete pokračovat, ujistěte se také, že jste provedli kroky uvedené v tématu [Nastavení služby IoT Hub Device Provisioning Service pomocí webu Azure Portal](./quick-setup-auto-provision.md). 
 
-[!INCLUDE [IoT DPS basic](../../includes/iot-dps-basic.md)]
+[!INCLUDE [IoT Device Provisioning Service basic](../../includes/iot-dps-basic.md)]
 
 ## <a name="prepare-the-environment"></a>Příprava prostředí 
 
@@ -64,7 +64,7 @@ Pokud neznáte proces automatického zřizování, měli byste se seznámit tak�
 
 1. Přihlaste se k webu Azure Portal, v nabídce vlevo klikněte na tlačítko **Všechny prostředky** a otevřete svou službu Device Provisioning. Poznamenejte si _Rozsah ID_ a _Globální koncový bod služby zřizování_.
 
-    ![Informace o službě DPS](./media/java-quick-create-simulated-device/extract-dps-endpoints.png)
+    ![Informace o službě Device Provisioning](./media/java-quick-create-simulated-device/extract-dps-endpoints.png)
 
 1. Upravte soubor `src/main/java/samples/com/microsoft/azure/sdk/iot/ProvisioningTpmSample.java` tak, aby zahrnoval váš _Rozsah ID_ a _Globální koncový bod služby zřizování_, které jste si poznamenali dříve.  
 

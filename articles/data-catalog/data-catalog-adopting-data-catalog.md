@@ -1,25 +1,19 @@
 ---
-title: Metody a procesy pro zavádění služby Azure Data Catalog | Dokumentace Microsoftu
+title: Metody a procesy pro zavádění služby Azure Data Catalog
 description: Tento článek představuje přístup a proces pro organizace uvažující o přijmutí služby Azure Data Catalog, včetně definování vize, identifikace klíčových případů obchodního použití a výběr pilotního projektu.
 services: data-catalog
-documentationcenter: ''
 author: steelanddata
-manager: NA
-editor: ''
-tags: ''
+ms.author: maroche
 ms.assetid: 0c771e7a-6fcd-417f-9247-897177719567
 ms.service: data-catalog
-ms.devlang: NA
-ms.topic: hero-article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
+ms.topic: conceptual
 ms.date: 01/18/2018
-ms.author: maroche
-ms.openlocfilehash: e7c104fa9b136df8ac4b94ee1e444100e2a2f969
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: HT
+ms.openlocfilehash: daeb8abdf52466ad5231e9d08e4eb6d853d1f4a8
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43053404"
 ---
 # <a name="approach-and-process-for-adopting-azure-data-catalog"></a>Metody a procesy pro zavádění služby Azure Data Catalog
 Tento článek vám pomůže přijmout službu **Azure Data Catalog** ve vaší organizaci. Chcete-li úspěšně přijmout službu **Azure Data Catalog**, budete se muset zaměřit na tři klíčové položky: definovat svou vizi, identifikovat klíčové případy obchodního použití v rámci vaší organizace a zvolit pilotní projekt.

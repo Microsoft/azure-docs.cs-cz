@@ -1,88 +1,82 @@
 ---
-title: "Klávesové zkratky pro Azure Data Catalog | Microsoft Docs"
-description: "Tento článek ukazuje klávesové zkratky pro Azure Data Catalog."
+title: Klávesové zkratky pro Azure Data Catalog
+description: Tento článek popisuje klávesové zkratky pro Azure Data Catalog.
 services: data-catalog
-documentationcenter: 
 author: spelluru
-manager: NA
-editor: 
-tags: 
+ms.author: spelluru
 ms.assetid: 00b77c88-fbca-4e6f-a175-d40b5cbbf144
 ms.service: data-catalog
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
+ms.topic: conceptual
 ms.date: 01/18/2018
-ms.author: spelluru
-ms.openlocfilehash: 537ed3bccf7d3306628b7a64ba0866f0e51a03e5
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 06a93b23738aa7bc5899de8b8618d824fd24c1d1
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43053629"
 ---
 # <a name="keyboard-shortcuts-for-azure-data-catalog"></a>Klávesové zkratky pro Azure Data Catalog
-## <a name="keyboard-shortcuts-for-the-data-catalog-data-source-registration-tool"></a>Klávesové zkratky pro data katalogu Data Catalog zdroje nástroj pro registraci
+## <a name="keyboard-shortcuts-for-the-data-catalog-data-source-registration-tool"></a>Nástroj pro registraci zdroje klávesové zkratky pro data katalogu Data Catalog
 ### <a name="general-keyboard-shortcuts"></a>Obecné klávesové zkratky
 | Operace | Stisknutím klávesy |
 | --- | --- |
-| Kartu pro každý ovládací prvek na stránce. |Tab |
-| Vyberte jednu možnost |Zadejte nebo MEZERNÍK |
+| Karta pro všechny ovládací prvky na stránce. |Tab |
+| Vyberte jednu možnost |ENTER nebo MEZERNÍK |
 | Maximalizovat stránky |WIN + ŠIPKA NAHORU |
 | Obnovení nebo minimalizace stránky |WIN + ŠIPKA DOLŮ |
-| Otevřete stránku nabídky |ALT+SPACEBAR |
+| Nabídka Otevřít stránku |ALT + MEZERNÍK |
 
-### <a name="authentication-page"></a>Stránka ověřování
+### <a name="authentication-page"></a>Ověřovací stránka
 | Operace | Stisknutím klávesy |
 | --- | --- |
-| Přihlášení do služby |ALT+S |
+| Přihlášení k službě |ALT+S |
 
 ### <a name="data-source-selection-page"></a>Stránka Výběr zdroje dat
 | Operace | Stisknutím klávesy |
 | --- | --- |
-| Přejděte na další stránce (Pokud je povoleno) |ALT+N |
-| Změnit vybraného typu, pokud je fokus nastavený na dlaždici |LEVÉ, pravé nebo šipka dolů |
+| Přejít na další stránku (je-li povoleno) |ALT + N |
+| Vybraný typ změnit, pokud je zaměřena na dlaždici |VLEVO NAHOŘE, vpravo nebo šipka dolů |
 
 ### <a name="data-source-connection-page"></a>Stránka připojení zdroje dat
 | Operace | Stisknutím klávesy |
 | --- | --- |
-| Přejít na předchozí stránce (Pokud je povoleno) |ALT+P |
-| Zvolte tlačítko Připojit. |ALT+C |
+| Přejít na předchozí stránku (je-li povoleno) |ALT+P |
+| Tlačítko Připojit. |ALT + C |
 
 ### <a name="connection-context-page"></a>Připojení kontextu stránky
 | Operace | Stisknutím klávesy |
 | --- | --- |
-| Tlačítko Registrovat (Pokud je povoleno) |ALT+R |
-| Zahrnout políčko verze Preview (Pokud je k dispozici) |ALT+P |
-| Zahrnout Data profilu políčko (Pokud je k dispozici) |ALT + D |
-| Přejděte na jednotlivé položky seznamu |NAHORU nebo šipku dolů |
+| Tlačítko Registrovat (je-li povoleno) |ALT+R |
+| Zahrnout zaškrtávací políčko ve verzi Preview (Pokud je k dispozici) |ALT+P |
+| Zahrnout profil dat políčko (Pokud je k dispozici) |ALT + D |
+| Přejděte na každou položku seznamu |NAHORU nebo šipka dolů |
 | Hierarchie serverů, rozbalte uzel stromové zobrazení |ŠIPKA DOPRAVA |
-| Přesunout vybrané položky pro **dostupné objekty** nebo **objekty k registraci** |MEZERNÍK |
+| Přesune vybrané položky pro **dostupné objekty** nebo **objekty k registraci** |MEZERNÍK |
 
-### <a name="publish-progress-page"></a>Průběh stránky publikování
+### <a name="publish-progress-page"></a>Publikovat stranu průběh
 | Operace | Stisknutím klávesy |
 | --- | --- |
-| Tlačítko Zrušit |ALT+C |
+| Tlačítko Storno. |ALT + C |
 | Tlačítko Registrovat více objektů |ALT+R |
-| Tlačítko zobrazení portálu |ALT+V |
+| Tlačítko pro zobrazení portálu |ALT+V |
 
-### <a name="publish-progress-page"></a>Průběh stránky publikování
+### <a name="publish-progress-page"></a>Publikovat stranu průběh
 | Operace | Stisknutím klávesy |
 | --- | --- |
-| Tlačítko Uložit (Pokud je povoleno) |ALT+S |
-| Tlačítko Zrušit |ALT+C |
+| Tlačítko Uložit (je-li povoleno) |ALT+S |
+| Tlačítko Storno. |ALT + C |
 
-## <a name="keyboard-shortcuts-for-the-data-catalog-portal"></a>Klávesové zkratky pro portál katalogu Data Catalog
+## <a name="keyboard-shortcuts-for-the-data-catalog-portal"></a>Klávesové zkratky pro portál služby Data Catalog
 | Operace | Stisknutím klávesy |
 | --- | --- |
-| Přejděte |TAB a SHIFT + TAB |
-| Klikněte na položku |MÍSTO nebo zadejte |
-| Přejděte do oddílu |MÍSTO nebo zadejte |
+| Navigace |TAB a SHIFT + TAB |
+| Klikněte na položku |MEZERNÍK nebo ENTER |
+| Přejít na oddíl |MEZERNÍK nebo ENTER |
 | Ukončit oddíl |ESC |
-| PIN kód nebo Odepnout prostředek |ALT+P |
-| Na stránce discover při prostředek má právě fokus, vyberte asset |MÍSTO nebo zadejte |
-| Přidá nebo odebrat asset z vícenásobný výběr v |CTRL + MEZERNÍK nebo ENTER |
-| Přepněte nabídce hledání shod |ALT+S |
-| Přepnutí **otevřít v** nabídky |ALT+O |
-| Prozkoumejte kontejneru, pokud je kontejner prostředku |ALT+L |
+| Připnete/odepnete prostředek |ALT+P |
+| Na stránce zjistit když prostředek má fokus, vyberte asset |MEZERNÍK nebo ENTER |
+| Přidá/odebrání prostředku vícenásobný výběr |CTRL + MEZERNÍK nebo ENTER |
+| Přepnout na hledání shody nabídku |ALT+S |
+| Přepnout **Open In** nabídky |ALT+O |
+| Prozkoumejte službu kontejneru, pokud prostředek je kontejner |ALT+L |
 

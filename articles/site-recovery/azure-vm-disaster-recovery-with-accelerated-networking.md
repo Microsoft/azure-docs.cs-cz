@@ -9,12 +9,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/24/2018
 ms.author: manayar
-ms.openlocfilehash: 9ece6a4fc1d499e7fbdce07e90202e76389d6eb2
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: af29333956fb962ed31133260ecbc9607de38fd3
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42920584"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43052059"
 ---
 # <a name="accelerated-networking-with-azure-virtual-machine-disaster-recovery"></a>Akcelerované síťové služby s zotavení po havárii virtuálních počítačů Azure
 
@@ -81,7 +81,7 @@ Pokud jste povolili Akcelerovanými síťovými službami na zdrojovém virtuál
 2. Klikněte na název síťového rozhraní v části **síťová rozhraní** oddílu
 3. Vyberte **povoleno** z rozevíracího seznamu pro Akcelerovanými síťovými službami v rámci **cílové** sloupec
 
-![Povolit akcelerované síťové služby](./media/azure-vm-disaster-recovery-with-accelerated-networking/compute-network-accelerated-networking.png)
+![Povolit akcelerované síťové služby](./media/azure-vm-disaster-recovery-with-accelerated-networking/network-interface-accelerated-networking-enabled.png)
 
 Výše uvedené procesu byste měli dodržet také existující replikované virtuální počítače, které dříve neměla Akcelerovanými síťovými službami povolí automaticky službou Site Recovery.
 

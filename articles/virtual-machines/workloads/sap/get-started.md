@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 07/27/2018
+ms.date: 08/27/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 81b510c2dc5d65af5e8a7f2b6b78f45f3bdced68
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 27fa69043797860c0a4acb1a128b45fe9e2b01c1
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344347"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43090690"
 ---
 # <a name="using-azure-for-hosting-and-running-sap-workload-scenarios"></a>Použití Azure k hostování a spuštění scénáře úloh řešení SAP
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -309,7 +309,7 @@ Hostování scénáře úloh řešení SAP v Azure můžete vytvořit požadavky
 
 Dokumentace ke službě kolem SAP HANA škálovat do M128s virtuálního počítače Azure je teď přidat do:
 
-- [Konfigurace infrastruktury SAP HANA a operací v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)
+- [Konfigurace infrastruktury SAP HANA a operace v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)
 - [Dostupnost SAP HANA v rámci jedné oblasti Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-one-region)
 
 

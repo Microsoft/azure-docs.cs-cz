@@ -3,18 +3,18 @@ title: Extrakce, transformace a načítání (ETL) ve velkém měřítku – Azu
 description: Zjistěte, jak se používá ETL v HDInsight se systémem Hadoop.
 services: hdinsight
 author: ashishthaps
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: bae6fde75e0939fc1f3f2f9c14f275d18ea2c4e2
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 6af55bf8311efc14687ee16c3226988fd730081d
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39598608"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43048998"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Extrakce, transformace a načítání (ETL) ve velkém měřítku
 

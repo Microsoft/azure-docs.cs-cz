@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 11/15/2017
 ms.author: sngun
-ms.openlocfilehash: 1ebf244aeb00b1eb87b846a5bb1db6bd4f954e26
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: a6ac954caa8341d6d949811f0bb9d7e68c0b5aac
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798164"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "42023131"
 ---
 # <a name="developing-with-azure-cosmos-db-table-api-and-azure-table-storage"></a>Vývoj pomocí rozhraní Table API služby Azure Cosmos DB a úložištěm tabulek Azure
 
@@ -26,7 +26,7 @@ Rozhraní Table API služby Azure Cosmos DB a úložiště tabulek Azure sdílej
 ## <a name="developing-with-the-azure-cosmos-db-table-api"></a>Vývoj pomocí rozhraní Table API služby Azure Cosmos DB
 
 [Rozhraní Table API služby Azure Cosmos DB](table-introduction.md) má v současnosti pro vývoj dostupné čtyři sady SDK: 
-- [Microsoft.Azure.CosmosDB.Table](https://aka.ms/tableapinuget) .NET SDK. Tato knihovna má nejen stejné podpisy tříd a metod jako veřejná sada [Windows Azure Storage SDK](https://www.nuget.org/packages/WindowsAzure.Storage), ale také možnost připojení k účtům Azure Cosmos DB pomocí rozhraní Table API. 
+- [Microsoft.Azure.CosmosDB.Table](https://aka.ms/tableapinuget) .NET SDK. Tato knihovna má nejen stejné podpisy tříd a metod jako veřejná sada [Windows Azure Storage SDK](https://www.nuget.org/packages/WindowsAzure.Storage), ale také možnost připojení k účtům Azure Cosmos DB pomocí rozhraní Table API. Poznámka: Knihovna `Microsoft.Azure.CosmosDB.Table` je aktuálně dostupná pouze pro .NET Standard, pro .NET Core ještě dostupná není.
 - [Python SDK](table-sdk-python.md). Nová sada Azure Cosmos DB Python SDK je jediná sada SDK, která podporuje úložiště tabulek Azure v jazyce Python. Tato sada SDK umožňuje připojení k úložišti tabulek Azure i k rozhraní Table API služby Azure Cosmos DB.
 - [Java SDK](table-sdk-java.md). Tato sada Azure Storage SDK umožňuje připojení k účtům služby Azure Cosmos DB pomocí rozhraní Table API.
 - [Node.js SDK](table-sdk-nodejs.md). Tato sada Azure Storage SDK umožňuje připojení k účtům služby Azure Cosmos DB pomocí rozhraní Table API.

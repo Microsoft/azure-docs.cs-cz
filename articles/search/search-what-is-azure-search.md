@@ -6,17 +6,22 @@ author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: overview
-ms.date: 07/09/2018
+ms.date: 08/09/2018
 ms.author: heidist
-ms.openlocfilehash: 4874e42139e277400c866a7fc4c7094faeae136d
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: e4d01fdb4c11277af68127e4671a36ad7e2c74d2
+ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39002200"
+ms.lasthandoff: 08/15/2018
+ms.locfileid: "42023563"
 ---
 # <a name="what-is-azure-search"></a>Co je Azure Search?
-Azure Search je cloudové řešení pro vyhledávání v podobě služby, které poskytuje vývojářům rozhraní API a nástroje, aby mohli přidat výkonné vyhledávání v soukromém heterogenním obsahu ve webových, mobilních a firemních aplikacích.
+Azure Search je cloudové řešení pro vyhledávání v podobě služby, které poskytuje vývojářům rozhraní API a nástroje, aby mohli přidat výkonné vyhledávání v soukromém heterogenním obsahu ve webových, mobilních a firemních aplikacích. Dotazování se provádí nad indexem definovaným uživatelem.
+
++ Vytvořte vyhledávací korpus, který obsahuje pouze vaše data z různých typů obsahu a platforem. 
++ Využijte indexování založené na AI k extrahování textu a vlastností ze souborů obrázků nebo entit a klíčových frází z nezpracovaného textu.
++ Vytvářejte intuitivní vyhledávací prostředí s fasetovou navigací a filtry, synonymy, automatickým dokončováním a analýzou textu umožňující automatické opravy hledaných termínů typu „měli jste na mysli“.
++ Povolte funkci „najít poblíž“ přidáním geografického vyhledávání, umožněte fulltextové vyhledávání v jiném jazyce než angličtině přidáním analyzátorů jazyka a zajistěte řazení výsledků hledání přidáním logiky skórování.
 
 Funkce se zveřejňuje prostřednictvím jednoduchého rozhraní [REST API](/rest/api/searchservice/) nebo [.NET SDK](search-howto-dotnet-sdk.md), které zakrývá zákonitou složitost načítání informací. Kromě rozhraní API portál Azure poskytuje podporu správy a správy obsahu a nástroje pro vytváření prototypů a dotazů na indexy. Služba běží v cloudu, proto infrastrukturu a dostupnost spravuje Microsoft.
 
@@ -51,7 +56,7 @@ Předtím, než budete moct nahrát prohledávatelný obsah, je nutné definovat
 
 Schéma se dá vytvořit na portálu Azure nebo programově pomocí [.NET SDK](search-howto-dotnet-sdk.md) nebo [REST API](/rest/api/searchservice/).
 
-### <a name="step-3-index-data"></a>3. krok: Indexování dat
+### <a name="step-3-load-data"></a>Krok 3: Načtení dat
 Po definování indexu jste připravení nahrát obsah. Můžete použít model nabízení nebo vyžádání.
 
 Model vyžádání načítá data z externích zdrojů dat. Podporují ho *indexery*, které zjednodušují a automatizují aspekty příjmu dat, jako je například připojení k datům a jejich čtení a serializace. [Indexery](/rest/api/searchservice/Indexer-operations) jsou k dispozici pro Azure Cosmos DB, Azure SQL Database, Azure Blob Storage a SQL Server hostované ve virtuálním počítači Azure. V indexeru můžete nakonfigurovat aktualizaci dat na vyžádání nebo podle plánu.
@@ -61,7 +66,7 @@ Model nabízení se zajišťuje prostřednictvím sady SDK nebo rozhraní REST A
 ### <a name="step-4-search"></a>4. krok: Vyhledávání
 Po naplnění indexu můžete [vydávat vyhledávací dotazy](/rest/api/searchservice/Search-Documents) do vašeho koncového bodu služby pomocí jednoduchých žádostí HTTP přes rozhraní REST API nebo .NET SDK.
 
-## <a name="how-azure-search-compares"></a>Jak si stojí Azure Search
+## <a name="how-it-compares"></a>Srovnání s ostatními řešeními
 
 Zákazníci se často ptají, jak je na tom Azure Search v porovnání s jinými řešeními pro vyhledávání. Následující tabulka shrnuje klíčové rozdíly.
 
@@ -104,13 +109,16 @@ Jako druhou možnost si můžete [aktivovat výhody pro předplatitele MSDN](htt
 
 ## <a name="how-to-get-started"></a>Jak začít
 
-1. Vytvořte si službu na [úrovni Free](search-create-service-portal.md).
+1. Vytvořte si [bezplatnou službu](search-create-service-portal.md). Všechny rychlé starty a kurzy je možné absolvovat s bezplatnou službou.
 
-2. Projděte si jeden nebo více z následujících kurzů. 
+2. Projděte si [kurz použití integrovaných nástrojů pro indexování a dotazy](search-get-started-portal.md). Seznamte se s důležitými koncepty a informacemi, které portál nabízí.
 
-  + [Jak používat sadu .NET SDK](search-howto-dotnet-sdk.md) představuje hlavní kroky ve spravovaném kódu.  
-  + [Začínáme s rozhraním API REST](https://github.com/Azure-Samples/search-rest-api-getting-started) ukazuje stejný postup pomocí rozhraní REST API.  
-  + [Vytvořte si první index v portálu](search-get-started-portal.md) pomocí integrovaných funkcí indexování a vytváření prototypů.   
+3. Pokračujte s kódem s využitím .NET nebo rozhraní REST API:
+
+  + [Jak používat sadu .NET SDK](search-howto-dotnet-sdk.md) představuje hlavní pracovní postup ve spravovaném kódu.  
+  + [Začínáme s rozhraním API REST](https://github.com/Azure-Samples/search-rest-api-getting-started) ukazuje stejný postup pomocí rozhraní REST API. Pokud chcete volat rozhraní REST API z nástroje Postman nebo Fiddler, můžete použít také tento rychlý start: [Zkoumání rozhraní REST API služby Azure Search](search-fiddler.md).
+
+## <a name="watch-this-video"></a>Podívejte se na toto video
 
 Vyhledávací moduly jsou běžnými prostředky načítání informací v mobilních aplikacích, na webu a ve firemních úložištích dat. Azure Search nabízí nástroje pro vytváření vyhledávacího prostředí podobného těm na velkých komerčních webech.
 
@@ -122,5 +130,3 @@ V tomto 9minutovém videu od manažera programu Liama Cavanagha se dozvíte, jak
 + 3. a 4. minuta popisuje zřizování služby. 
 + 4. až 6. minuta popisuje průvodce importem dat, který se použije k vytvoření indexu pomocí předdefinované datové sady nemovitostí.
 + 6. až 9. minuta popisuje Průzkumníka služby Search a různé dotazy.
-
-

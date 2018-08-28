@@ -9,12 +9,12 @@ ms.date: 06/26/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: fa01d2d3f4ab3923129ab1690477d5a8af82d4df
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 1bd6f048682b93e3dfa1e19f6b3c50bff2ed232e
+ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448902"
+ms.lasthandoff: 08/11/2018
+ms.locfileid: "41918181"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>Kurz: Ukládání dat na hraničních zařízeních s využitím databází SQL Serveru
 
@@ -36,8 +36,7 @@ V tomto kurzu se naučíte:
 
 Zařízení Azure IoT Edge:
 
-* Jako hraniční zařízení můžete použít svůj vývojový počítač nebo virtuální počítač podle postupu v rychlém startu pro [Linux](quickstart-linux.md).
-* Moduly Python pro IoT Edge nepodporují procesory ARM ani zařízení s Windows.
+* Jako hraniční zařízení můžete použít svůj vývojový počítač nebo virtuální počítač podle postupu v rychlém startu pro zařízení s [Linuxem](quickstart-linux.md) nebo [Windows](quickstart.md).
 
 Cloudové prostředky:
 
@@ -341,45 +340,13 @@ Spuštěním následujícího příkazu v nástroji příkazového řádku SQL z
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-[!INCLUDE [iot-edge-quickstarts-clean-up-resources](../../includes/iot-edge-quickstarts-clean-up-resources.md)]
+Pokud máte v plánu pokračovat k dalšímu doporučenému článku, můžete si vytvořené prostředky a konfigurace uschovat a znovu je použít. Také můžete dál používat stejné zařízení IoT Edge jako testovací zařízení. 
 
-V závislosti na platformě vašeho zařízení IoT (Linux nebo Windows) odeberte modul runtime služby IoT Edge.
+Jinak můžete místní konfigurace a prostředky Azure vytvořené v tomto článku odstranit, abyste se vyhnuli poplatkům. 
 
-#### <a name="windows"></a>Windows
+[!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
-Odeberte modul runtime IoT Edge.
-
-```Powershell
-stop-service iotedge -NoWait
-sleep 5
-sc.exe delete iotedge
-```
-
-Odstraňte kontejnery, které se vytvořily ve vašem zařízení. 
-
-```Powershell
-docker rm -f $(docker ps -a --no-trunc --filter "name=edge" --filter "name=tempSensor")
-```
-
-#### <a name="linux"></a>Linux
-
-Odeberte modul runtime IoT Edge.
-
-```bash
-sudo apt-get remove --purge iotedge
-```
-
-Odstraňte kontejnery, které se vytvořily ve vašem zařízení. 
-
-```bash
-sudo docker rm -f $(sudo docker ps -a --no-trunc --filter "name=edge" --filter "name=tempSensor")
-```
-
-Odeberte kontejnerový modul runtime.
-
-```bash
-sudo apt-get remove --purge moby
-```
+[!INCLUDE [iot-edge-clean-up-local-resources](../../includes/iot-edge-clean-up-local-resources.md)]
 
 
 

@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý start: Spuštění pracovního postupu ve službě Microsoft Genomics | Microsoft Docs'
+title: 'Rychlý start: Spuštění pracovního postupu ve službě Microsoft Genomics | Dokumentace Microsoftu'
 description: Tento článek ukazuje, jak načíst vstupní data do Azure Blob Storage a jak spustit pracovní postup ve službě Microsoft Genomics.
 services: microsoft-genomics
 author: grhuynh
@@ -10,12 +10,12 @@ ms.service: microsoft-genomics
 ms.workload: genomics
 ms.topic: quickstart
 ms.date: 12/07/2017
-ms.openlocfilehash: 1436ad54eb13052aa87ccfd5adc371c8d7d5a100
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4387e1c935ada99e1f9c335fb7e1b67905c01188
+ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31403786"
+ms.lasthandoff: 08/14/2018
+ms.locfileid: "42022898"
 ---
 # <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>Rychlý start: Spuštění pracovního postupu ve službě Microsoft Genomics
 
@@ -41,7 +41,7 @@ Nastavte v účtu Genomics následující údaje, viz předchozí obrázek.
  |Název účtu         | MyGenomicsAccount     |Zvolte jedinečný identifikátor účtu. Informace o platných názvech najdete v části [Pravidla pojmenování](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) |
  |Předplatné         | Název vašeho předplatného|Toto je fakturační jednotka pro vaše služby Azure – podrobnosti o vašem předplatném najdete v části [Předplatná](https://account.azure.com/Subscriptions) |      
  |Skupina prostředků       | MyResourceGroup       |  Skupiny prostředků umožňují sdružení několika prostředků Azure (účet úložiště, účet Genomics atd.) do jedné skupiny pro zjednodušení správy. Další informace najdete v tématu [Skupiny prostředků] (https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups). Platné názvy skupin prostředků najdete v tématu [Pravidla pojmenování](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). |
- |Umístění                   | Západní USA 2                    |    Služba je dostupná v oblastech Západní USA 2, Západní Evropa a Jihovýchodní Asie |
+ |Umístění                   | USA – západ 2                    |    Služba je dostupná v oblastech Západní USA 2, Západní Evropa a Jihovýchodní Asie |
 
 
 
@@ -57,7 +57,9 @@ Uživatelé musí do svého místního prostředí nainstalovat Python i pythono
 
 ### <a name="install-python"></a>Instalace Pythonu
 
-Pythonový klient Microsoft Genomics je kompatibilní s Pythonem 2.7. Doporučujeme použít verzi 2.7.12 nebo novější; optimální je 2.7.14. Můžete si ji stáhnout [tady](https://www.python.org/downloads/). 
+Pythonový klient Microsoft Genomics je kompatibilní s Pythonem 2.7. 12 nebo novější verzí 2.7.xx. Nejnovější verze v době psaní tohoto článku je 2.7.15. Doporučená verze je 2.7.14. Můžete si ji stáhnout [tady](https://www.python.org/downloads/). 
+
+POZNÁMKA: Python 3.x není kompatibilní s Pythonem 2.7.xx.  MSGen je aplikace Pythonu 2.7. Pokud používáte MSGen, ujistěte se, že vaše aktivní prostředí Pythonu používá Python verze 2.7.xx. Pokud se pokusíte použít MSGen s Pythonem verze 3.x, může docházet k chybám.
 
 
 ### <a name="install-the-microsoft-genomics-client"></a>Instalace pythonového klienta Microsoft Genomics
@@ -124,7 +126,7 @@ Nastavte v účtu Storage následující údaje, viz předchozí obrázek. Použ
  |Access tier (Vrstva přístupu)                  | Hot                   | Horká úroveň přístupu znamená, že k objektům v účtu úložiště budete přistupovat častěji.    |
  |Předplatné         | Vaše předplatné Azure |Podrobnosti o vašich předplatných najdete v tématu [Předplatná](https://account.azure.com/Subscriptions). |      
  |Skupina prostředků       | MyResourceGroup       |  Můžete vybrat stejnou skupinu prostředků, ve které je váš účet Genomics. Platné názvy skupin prostředků najdete v tématu [Pravidla pojmenování](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). |
- |Umístění                  | Západní USA 2                  | Použijte stejné umístění, jaké má účet Genomics, abyste se vyhnuli poplatkům za přenosy dat a vyšší latenci. Služba Genomics je dostupná v oblastech Západní USA 2, Západní Evropa a Jihovýchodní Asie.    |
+ |Umístění                  | USA – západ 2                  | Použijte stejné umístění, jaké má účet Genomics, abyste se vyhnuli poplatkům za přenosy dat a vyšší latenci. Služba Genomics je dostupná v oblastech Západní USA 2, Západní Evropa a Jihovýchodní Asie.    |
  |Virtuální sítě                | Zakázáno                   | Ve výchozím nastavení je tato možnost zakázána. Další informace najdete v článku [Virtuální sítě Azure](https://docs.microsoft.com/azure/storage/common/storage-network-security).    |
 
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: cynthn
-ms.openlocfilehash: 56ee63e15c429c5a6212be36d420ae59afa48546
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 3e9a9e3f902439f0fc3f1fa4aa758d4fcd55f5bd
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39629085"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43048940"
 ---
 # <a name="virtual-machine-vcpu-quotas"></a>Kvóty virtuálních procesorů virtuálního počítače
 
@@ -62,8 +62,8 @@ Standard Storage Managed Disks                 5    10000
 Premium Storage Managed Disks                  5    10000
 ```
 
-## <a name="reserved-vm-instances"></a>Reserved VM Instances
-Rezervované instance virtuálních počítačů, které mají rozsah pro jedno předplatné, bude přidán nový aspekt do kvóty virtuálních procesorů. Tyto hodnoty popisuje počet instancí je deklarovaná velikost, který musí být nasaditelný v rámci předplatného. Fungují jako zástupný symbol v kvóta systému a zajistit tak, že tato kvóta je vyhrazený pro Ujistěte se, že je možné nasadit v rámci předplatného Azure rezervace. Například pokud konkrétní předplatné má 10 rezervace Standard_D1 maximálního použití Standard_D1 rezervace bude 10. To způsobí, že Azure a zajistěte, aby vždy alespoň 10 virtuálních procesorů ve nejsou k dispozici celkový počet překročení kvóty virtuálních procesorů se použije pro instance Standard_D1 a nejsou k dispozici v rámci kvóty virtuálních procesorů Standard, řada D se použije pro instance Standard_D1 minimálně 10 virtuálních procesorů.
+## <a name="reserved-vm-instances"></a>Rezervované instance virtuálních počítačů
+Rezervované instance virtuálních počítačů, které mají rozsah v rámci jednoho předplatného bez flexibilitu velikost virtuálního počítače, bude přidán nový aspekt do kvóty virtuálních procesorů. Tyto hodnoty popisuje počet instancí je deklarovaná velikost, který musí být nasaditelný v rámci předplatného. Fungují jako zástupný symbol v kvóta systému a zajistit tak, že tato kvóta je vyhrazený pro Ujistěte se, že je možné nasadit v rámci předplatného Azure rezervace. Například pokud konkrétní předplatné má 10 rezervace Standard_D1 maximálního použití Standard_D1 rezervace bude 10. To způsobí, že Azure a zajistěte, aby vždy alespoň 10 virtuálních procesorů ve nejsou k dispozici celkový počet překročení kvóty virtuálních procesorů se použije pro instance Standard_D1 a nejsou k dispozici v rámci kvóty virtuálních procesorů Standard, řada D se použije pro instance Standard_D1 minimálně 10 virtuálních procesorů.
 
 Pokud je potřeba koupit rezervované instance jednoho předplatného zvýšení kvóty, můžete si [požádat o zvýšení kvóty](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) v rámci předplatného.
 

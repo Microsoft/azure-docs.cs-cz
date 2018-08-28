@@ -5,16 +5,16 @@ services: hdinsight
 ms.service: hdinsight
 author: jasonwhowell
 ms.author: jasonh
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/02/2018
-ms.openlocfilehash: 61732a7ac4daa9f3425d3f7f3b689be57d46b8cd
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 973563a0c9a986bb4dec785b4521566acb657d15
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39620259"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43042390"
 ---
 # <a name="connect-to-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Připojení k systému Kafka v HDInsight pomocí služby Azure Virtual Network
 

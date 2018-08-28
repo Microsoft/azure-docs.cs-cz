@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: 0951b0ee8a1b92f94dd06bfad831b3dd9a9e967c
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 1fcac972e7404c2e0549b9bb9f2e03861977bfad
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918213"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43094767"
 ---
 # <a name="virtual-machine-serial-console-preview"></a>Virtuální počítač sériová konzola (preview) 
 
@@ -35,13 +35,16 @@ Pro dokumentaci ke konzole sériového portu pro virtuální počítače s Windo
 ## <a name="prerequisites"></a>Požadavky 
 
 * Musí používat model nasazení správy prostředků. Klasická nasazení nejsou podporovány. 
-* Virtuální počítač musí mít [Diagnostika spouštění](boot-diagnostics.md) povoleno   ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-diagnostics-settings.png)
-* Účet, pomocí konzoly sériového portu, musí mít [role Přispěvatel](../../role-based-access-control/built-in-roles.md) pro virtuální počítač a [Diagnostika spouštění](boot-diagnostics.md) účtu úložiště. 
+* Virtuální počítač musí mít [Diagnostika spouštění](boot-diagnostics.md) povoleny – snímek najdete níže.
+    ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-diagnostics-settings.png)
+* Musíte mít účet Azure, pomocí konzoly sériového portu [role Přispěvatel](../../role-based-access-control/built-in-roles.md) pro virtuální počítač a [Diagnostika spouštění](boot-diagnostics.md) účtu úložiště. 
+* Virtuální počítač, u kterého jste přístup k pracovnímu konzoly sériového portu musí mít také účet založené na heslech. Můžete si ho vytvořit pomocí [resetovat heslo](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) funkce rozšíření přístupu virtuálních počítačů – snímek najdete níže.
+    ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-reset-password.png)
 * Nastavení specifická pro distribuce Linuxu najdete v části [přístup ke konzole sériového portu pro Linux](#access-serial-console-for-linux)
 
 
 
-## <a name="open-the-serial-console"></a>Otevřete konzoly sériového portu
+## <a name="get-started-with-serial-console"></a>Začínáme s konzoly sériového portu
 Konzola sériového portu pro virtuální počítače je k dispozici pouze prostřednictvím [webu Azure portal](https://portal.azure.com). Níže je uvedený postup pro přístup ke konzole sériového portu pro virtuální počítače prostřednictvím portálu 
 
   1. Otevřete na webu Azure portal

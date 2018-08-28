@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 08/16/2018
 ms.author: wolfma
-ms.openlocfilehash: 0900588f818855d72e415678338c96fb6505318d
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: bbf3c5930de2ec6c709b6b527ae3eac107382420
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41994382"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43047795"
 ---
 # <a name="release-notes"></a>Poznámky k verzi
 
@@ -78,7 +78,7 @@ ms.locfileid: "41994382"
 
 * Oprava nesprávné návratové hodnoty ve výsledku Pokud `RecognizeAsync()` vyprší časový limit.
 * Závislost na knihovny media foundation na Windows Odebereme. Sady SDK je teď používá rozhraní API Core zvuk.
-* Oprava dokumentace: přidání oblasti stránky popisující, jaké jsou podporované oblasti.
+* Oprava dokumentace: přidání [oblastech](regions.md) stránky popisující, jaké jsou podporované oblasti.
 
 **Známé problémy**
 

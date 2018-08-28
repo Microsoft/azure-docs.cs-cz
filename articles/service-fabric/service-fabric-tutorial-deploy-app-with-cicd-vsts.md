@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 12/13/2017
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: f3cc4f518278cca915e40bd691c6a7674219916e
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 2122b6d9c385e1137d0fc6df5229975359fa20d5
+ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37109388"
+ms.lasthandoff: 08/10/2018
+ms.locfileid: "41920277"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>Kurz: Nasazení aplikace s CI/CD do clusteru Service Fabric
 
@@ -50,7 +50,7 @@ Než začnete s tímto kurzem:
 * [Nainstalujte sadu Visual Studio 2017](https://www.visualstudio.com/) se sadami funkcí **Vývoj pro Azure** a **Vývoj pro ASP.NET a web**.
 * [Nainstalujte sadu Service Fabric SDK](service-fabric-get-started.md).
 * Vytvořte v Azure cluster Service Fabric s Windows, například [podle tohoto kurzu](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
-* Vytvořte [účet Team Services](https://www.visualstudio.com/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services).
+* Vytvořte [účet Team Services](https://docs.microsoft.com/vsts/organizations/accounts/create-organization-msa-or-work-student).
 
 ## <a name="download-the-voting-sample-application"></a>Stažení ukázkové aplikace Voting
 
@@ -94,7 +94,13 @@ Definice verze Team Services popisuje pracovní postup, který nasadí balíček
 
 Otevřete webový prohlížeč a přejděte do nového týmového projektu na adrese: [https://&lt;váš_účet&gt;.visualstudio.com/Voting/Voting%20Team/_git/Voting](https://myaccount.visualstudio.com/Voting/Voting%20Team/_git/Voting).
 
-Vyberte kartu **Sestavení a vydání**, pak **Sestavení** a nakonec **+ Nová definice**.  V části **Vybrat šablonu** vyberte šablonu **Aplikace Azure Service Fabric** a klikněte na **Použít**.
+Vyberte kartu **Sestavení a vydání**, pak **Sestavení** a pak klikněte na **Nový kanál**.
+
+![Nový kanál][new-pipeline]
+
+Vyberte zdroj **VSTS Git**, týmový projekt **Voting**, úložiště **Voting** a výchozí větev **master** nebo ruční a plánovaná sestavení.  Pak klikněte na **Pokračovat**.
+
+V části **Vybrat šablonu** vyberte šablonu **Aplikace Azure Service Fabric** a klikněte na **Použít**.
 
 ![Výběr šablony sestavení][select-build-template]
 
@@ -102,7 +108,9 @@ V části **Úlohy** zadejte do pole **Fronta agenta** Hosted VS2017.
 
 ![Výběr úloh][save-and-queue]
 
-V části **Triggery** nastavte **Stav triggeru** a povolte tak průběžnou integraci.  Pokud chcete ručně spustit sestavení, vyberte **Uložit a zařadit do fronty**.
+V části **Triggery** povolte průběžnou integraci zaškrtnutím políčka **Povolit průběžnou integraci**. V části **Filtry větví** klikněte na **+ Přidat** a do pole **Specifikace větve** se vyplní výchozí hodnota **master**. Pokud chcete ručně spustit sestavení, vyberte **Uložit a zařadit do fronty**.
+
+V **dialogovém okně Uložit kanál sestavení a zařadit ho do fronty** klikněte na **Uložit a zařadit do fronty**.
 
 ![Výběr triggerů][save-and-queue2]
 
@@ -110,7 +118,7 @@ Sestavení se aktivují také pro nasdílení změn nebo vrácení se změnami. 
 
 ### <a name="create-a-release-definition"></a>Vytvoření definice verze
 
-Vyberte kartu **Sestavení a vydání**, pak **Vydání** a nakonec **+ Nová definice**.  V části **Vybrat šablonu** vyberte ze seznamu šablonu **Nasazení Azure Service Fabric** a pak klikněte na **Použít**.
+Vyberte kartu **Sestavení a vydání**, pak **Vydání** a nakonec **+ Nový kanál**.  V části **Vybrat šablonu** vyberte ze seznamu šablonu **Nasazení Azure Service Fabric** a pak klikněte na **Použít**.
 
 ![Výběr šablony vydání][select-release-template]
 
@@ -134,7 +142,9 @@ Povolte trigger průběžného nasazování, aby se po dokončení sestavení au
 
 ![Povolení triggeru][enable-trigger]
 
-Výběrem **+ Vydání** -> **Vytvořit vydání** -> **Vytvořit** ručně vytvořte vydání.  Ověřte, že sestavení proběhlo úspěšně a aplikace je spuštěná v clusteru.  Otevřete webový prohlížeč a přejděte na adresu [http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/).  Poznamenejte si verzi aplikace, v tomto příkladu je to 1.0.0.20170616.3.
+Výběrem **+ Vydání** -> **Vytvořit vydání** -> **Vytvořit** ručně vytvořte vydání. Průběh vydání můžete sledovat na kartě **Vydání**.
+
+Ověřte, že sestavení proběhlo úspěšně a aplikace je spuštěná v clusteru.  Otevřete webový prohlížeč a přejděte na adresu [http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/).  Poznamenejte si verzi aplikace, v tomto příkladu je to 1.0.0.20170616.3.
 
 ## <a name="commit-and-push-changes-trigger-a-release"></a>Potvrzení a nasdílení změn, aktivace vydání
 
@@ -188,6 +198,7 @@ Přejděte k dalšímu kurzu:
 [publish-app-profile]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/PublishAppProfile.png
 [push-git-repo]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/PublishGitRepo.png
 [publish-code]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/PublishCode.png
+[new-pipeline]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/NewPipeline.png
 [select-build-template]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/SelectBuildTemplate.png
 [save-and-queue]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/SaveAndQueue.png
 [save-and-queue2]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/SaveAndQueue2.png

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/02/2018
+ms.date: 08/20/2018
 ms.author: pareshmu
-ms.openlocfilehash: 12cafc5888b46799780e066f7fd0de007670d6cc
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: c8a257ba53eca7368ceabcecbc7d770ff79ab72b
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39481009"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41918450"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -82,7 +82,7 @@ Následující tabulka uvádí umístění podle poskytovatele služby. Pokud ch
 | **[AT&amp;T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |Podporuje se |Podporuje se |Amsterdam, Chicago, Dallas, Londýn, Silicon Valley, Singapur, Sydney, Tokio, Toronto, Washington DC |
 | **[Bell Canada](https://business.bell.ca/shop/enterprise/cloud-connect-access-to-cloud-partner-services)** |Podporuje se |Podporuje se |Montreal, Toronto, Quebec City |
 | **[British Telecom](https://globalservices.bt.com/en/solutions/products/bt-compute-for-microsoft-azure)** |Podporuje se |Podporuje se |Amsterdam, Hongkong, Londýn, Silicon Valley, Singapur, Sydney, Tokio, Washington DC |
-| **[C3ntro](https://c3ntro.com/)** |Již brzy |Již brzy |Miami |
+| **[C3ntro](https://c3ntro.com/data/express-route/)** |Již brzy |Již brzy |Miami |
 | **CDC** | Podporuje se | Podporuje se | Canberra, Canberra2 |
 | **[CenturyLink Cloud Connect](http://www.centurylink.com/cloudconnect)** |Podporuje se |Podporuje se |Las Vegas, New York, San Antonio, Silicon Valley, Tokio, Toronto |
 | **China Telecom Global** |Podporuje se |Nepodporuje se |Hongkong |
@@ -93,7 +93,7 @@ Následující tabulka uvádí umístění podle poskytovatele služby. Pokud ch
 | **eir** |Podporuje se |Podporuje se |Dublin|
 | **Epsilon Global Communications** |Podporuje se |Podporuje se |Singapur |
 | **[Equinix](http://www.equinix.com/partners/microsoft-azure/)** |Podporuje se |Podporuje se |Amsterdam, Atlanta, Chicago, Dallas, Dublin, Hongkong, Londýn, Los Angeles, Melbourne, Miami, New York, Ósaka, Paříž, Sao Paulo, Seattle, Silicon Valley, Singapur, Sydney, Tokio, Toronto, Washington DC |
-| **euNetworks** |Podporuje se |Podporuje se |Amsterdam, Londýn |
+| **euNetworks** |Podporuje se |Podporuje se |Amsterdam, Dublin, Londýn |
 | **GÉANT** |Podporuje se |Podporuje se |Amsterdam |
 | **[Global Cloud Xchange (GCX)] (http://globalcloudxchange.com/cloud-platform/cloud-x-fusion/cloud-x-fusion-for-azure/)** | Podporuje se| Podporuje se | Čennaj, Bombaj |
 | **[InterCloud](https://www.intercloud.com/)** |Podporuje se |Podporuje se |Amsterdam, Londýn, Paříž, Singapur, Washington DC |
@@ -134,6 +134,7 @@ Následující tabulka uvádí umístění podle poskytovatele služby. Pokud ch
 | **[Telstra Corporation](http://www.telstra.com.au/business-enterprise/network-services/networks/cloud-direct-connect/)** |Podporuje se |Podporuje se |Melbourne, Sydney |
 | **[Telus](http://www.telus.com)** |Podporuje se |Podporuje se |Montreal, Toronto |
 | **[Teraco](https://www.teraco.co.za/services/africa-cloud-exchange/)** |Podporuje se |Podporuje se |Kapské město, Johannesburg |
+| **ČAS** | Připravuje se | Připravuje se | Kuala Lumpur |
 | **[UOLDIVEO](http://www.uoldiveo.com.br/solucoes/cloud.html#rmcl)** |Podporuje se |Podporuje se |Sao Paulo |
 | **[Verizon](http://www.verizonenterprise.com/products/networking/secure-cloud-interconnect/)** |Podporuje se |Podporuje se |Amsterdam, Chicago, Dallas, Hongkong, Londýn, Silicon Valley, Singapur, Sydney, Tokio, Washington DC |
 | **[Vodafone](http://www.vodafone.com/business/global-enterprise/global-connectivity/vodafone-ip-vpn-cloud-connect)** |Podporuje se |Nepodporuje se |Londýn |
@@ -203,7 +204,9 @@ Pokud poskytovatel připojení není v předchozích částech uvedený, můžet
 | **[BICS](https://bics.com/bics-solutions-suite/cloud-connect/)** | Equinix | Amsterdam, Frankfurt, Londýn, Singapur, Washington DC |
 | **[BroadBand Tower, Inc.](http://www.bbtower.co.jp/product-service/data-center/network/dcconnect-for-azure/)** | Equinix | Tokio |
 | **[C3ntro Telecom](http://www.c3ntro.com/data/cloud-conectivity/)** | Equinix, Megaport | Dallas |
+| **[Chief](https://www.chief.com.tw/dispPageBox/ct.aspx?ddsPageID=ENCLOUDSERVICE&dbid=4852937342)** | Equinix | Hongkong |
 | **[Cinia](https://www.cinia.fi/en/services/connectivity-services/direct-public-cloud-connection.html)** | Equinix, Megaport | Frankfurt, Hamburk |
+| **[CloudXpress](https://www2.telenet.be/fr/business/produits-services/internet/cloudxpress/)** | Equinix | Amsterdam | 
 | **[Cogeco Peer 1](https://www.cogecopeer1.com/en/)**| Equinix | Montreal, Toronto |
 | **[Cox Business](https://www.cox.com/business/networking/cloud-connectivity.html)** | Equinix | Dallas, Silicon Valley, Washington DC | 
 | **[Data Foundry](https://www.datafoundry.com/services/cloud-connect)** | Megaport | Dallas |
@@ -211,6 +214,7 @@ Pokud poskytovatel připojení není v předchozích částech uvedený, můžet
 | **[Eurofiber](https://eurofiber.nl/microsoft-azure/)** | Equinix | Amsterdam |
 | **[Exponential E](http://www.exponential-e.com/services/connectivity-services/cloud-connect-exchange)** | Equinix | Londýn |
 | **[Fastweb S.p.A](http://www.fastweb.it/grandi-aziende/connessione-voce-e-wifi/scheda-prodotto/rete-privata-virtuale/)** | Equinix | Amsterdam |
+| **[Fibrenoire](https://www.fibrenoire.ca/en/cloudextn)** | Megaport | Québec |
 | **[Gtt Communications Inc](https://www.gtt.net/wp-content/uploads/2017/04/EtherCloud-Data-Sheet.pdf)** |Equinix | Washington DC |
 | **[HSO](http://www.hso.co.uk/products/cloud-direct)** |Equinix | Londýn, Slough |
 | **[IVedha Inc](http://www.ivedha.com/cloud/manage-azure-cloud/express-route-4/)**| Equinix | Toronto |
@@ -232,6 +236,7 @@ Pokud poskytovatel připojení není v předchozích částech uvedený, můžet
 | **[ThinkTel](http://www.thinktel.ca/services/agile-ix-data/expressroute/)** | Equinix | Toronto | 
 | **[Transtelco](http://www.transtelco.net/tcloud/microsoft)** |Equinix | Dallas, Los Angeles |  
 | **[United Information Highway (UIH)](https://www.uih.co.th/en/internet-solution/cloud-direct/uih-cloud-direct-for-microsoft-azure-expressroute)**| Equinix | Singapur |
+| **[Venha](http://venhapranuvem.com.br/infraestrutura/oferta-especial-digital-edge-expressroute/)** | Equinix | Sao Paulo |
 | **[Webair](https://www.webair.com/microsoft-express-route-partnership/)**| Megaport | New York |
 | **[Windstream](http://www.windstreambusiness.com/solutions/cloud-services/cloud-and-managed-hosting-services)**| Equinix | Chicago, Silicon Valley, Washington DC |
 | **Zain** |Equinix |Londýn|

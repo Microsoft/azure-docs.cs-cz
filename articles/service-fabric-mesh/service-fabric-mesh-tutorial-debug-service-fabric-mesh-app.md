@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/17/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: ad6812f25ee33bf723ed86d4ec32ca6898d01774
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: c519d24a8401823039f3d6598276890ec6498bbc
+ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186734"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41918613"
 ---
 # <a name="tutorial-debug-a-service-fabric-mesh-web-application"></a>Kurz: Ladění webové aplikace Service Fabric Mesh
 
@@ -74,9 +74,17 @@ Až se místní nasazení dokončí a Visual Studio spustí vaši aplikaci, otev
 
 **Tipy pro ladění**
 
-* Pokud se zobrazí chyba se sdělením, že **žádný místní cluster Service Fabric není spuštěný**, zkontrolujte, že je spuštěný nástroj Service Local Custer Manager (SLCM), klikněte pravým tlačítkem na ikonu SLCM na hlavním panelu a pak klikněte na **Start Local Cluster** (Spustit místní cluster). Po jeho spuštění se vraťte do sady Visual Studio a stiskněte klávesu **F5**.
-* Pokud se po spuštění aplikace zobrazí chyba **404**, pravděpodobně to znamená, že proměnné prostředí v **service.yaml** nejsou správné. Podle pokynů pro [vytvoření proměnných prostředí](https://docs.microsoft.com/azure/service-fabric-mesh/service-fabric-mesh-tutorial-create-dotnetcore#create-environment-variables) zkontrolujte, jestli jsou správně nastavené proměnné `ApiHostPort` a `ServiceName`.
-* Pokud se zobrazí chyby sestavení v **service.yaml**, zkontrolujte, že se k odsazení řádků používají mezery a ne tabulátory. Navíc je prozatím potřeba sestavit aplikaci s anglickým národním prostředím.
+V současné době dochází k problému, který způsobuje, že volání `using (HttpResponseMessage response = client.GetAsync("").GetAwaiter().GetResult())` selže při připojování ke službě. Může k tomu dojít, kdykoli se změní IP adresa hostitele. Řešení je následující:
+
+1. Odeberte aplikaci z místního clusteru (v sadě Visual Studio vyberte **Sestavení** > **Vyčistit řešení**).
+2. V nástroji Service Fabric Local Cluster Manager vyberte **Stop Local CLuster** (Zastavit místní cluster) a pak **Start Local Cluster** (Spustit místní cluster).
+3. Znovu nasaďte aplikaci (v sadě Visual Studio stiskněte **F5**).
+
+Pokud se zobrazí chyba se sdělením, že **žádný místní cluster Service Fabric není spuštěný**, zkontrolujte, že je spuštěný nástroj Service Fabric Local Custer Manager (LCM), klikněte pravým tlačítkem na ikonu LCM na hlavním panelu a pak klikněte na **Start Local Cluster** (Spustit místní cluster). Po jeho spuštění se vraťte do sady Visual Studio a stiskněte klávesu **F5**.
+
+Pokud se po spuštění aplikace zobrazí chyba **404**, může to znamenat, že proměnné prostředí v souboru **service.yaml** nejsou správné. Podle pokynů pro [vytvoření proměnných prostředí](https://docs.microsoft.com/azure/service-fabric-mesh/service-fabric-mesh-tutorial-create-dotnetcore#create-environment-variables) zkontrolujte, jestli jsou správně nastavené proměnné `ApiHostPort` a `ToDoServiceName`.
+
+Pokud se zobrazí chyby sestavení v **service.yaml**, zkontrolujte, že se k odsazení řádků používají mezery a ne tabulátory. Navíc je prozatím potřeba sestavit aplikaci s anglickým národním prostředím.
 
 ### <a name="debug-in-visual-studio"></a>Ladění v sadě Visual Studio
 

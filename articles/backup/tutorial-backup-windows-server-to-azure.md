@@ -7,15 +7,15 @@ manager: shivamg
 keywords: windows server back up; back up windows server; back up and disaster recovery
 ms.service: backup
 ms.topic: tutorial
-ms.date: 2/14/2018
+ms.date: 8/22/2018
 ms.author: saurse
 ms.custom: mvc
-ms.openlocfilehash: d52866a4f441a74bbc4b63f6dc362989865151b3
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9bf4c25b416edf86d29c27bcb19901bf43073bb4
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34609014"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "42616185"
 ---
 # <a name="back-up-windows-server-to-azure"></a>Zálohování Windows Serveru do Azure
 
@@ -29,7 +29,7 @@ Pomocí služby Azure Backup můžete chránit svůj Windows Server před poško
 > * Provedení zálohování ad hoc
 
 
-## <a name="log-in-to-azure"></a>Přihlášení k Azure
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
 
@@ -41,11 +41,11 @@ Před zálohováním Windows Serveru musíte vytvořit místo pro uložení zál
 
    ![otevření trezoru služby Recovery Services](./media/tutorial-backup-windows-server-to-azure/full-browser-open-rs-vault_2.png)
 
-2.  V nabídce **Trezory Recovery Services** klikněte na **Přidat**.
+2. V nabídce **Trezory Recovery Services** klikněte na **Přidat**.
 
    ![zadání informací o trezoru](./media/tutorial-backup-windows-server-to-azure/provide-vault-detail-2.png)
 
-3.  V nabídce **Trezor služby Recovery Services**:
+3. V nabídce **Trezor služby Recovery Services**:
 
     - Jako **Název** zadejte *myRecoveryServicesVault*.
     - V části **Předplatné** se zobrazí ID aktuálního předplatného.
@@ -59,27 +59,28 @@ Když je trezor vytvořený, zobrazí se v seznamu trezorů Služeb zotavení.
 
 Agent služby Microsoft Azure Recovery Services (MARS) vytvoří přidružení mezi Windows Serverem a vaším trezorem služby Recovery Services. Následující postup vysvětluje stažení agenta na server.
 
-1.  V seznamu trezorů služby Recovery Services výběrem trezoru **myRecoveryServicesVault** otevřete jeho řídicí panel.
+1. V seznamu trezorů služby Recovery Services výběrem trezoru **myRecoveryServicesVault** otevřete jeho řídicí panel.
 
    ![zadání informací o trezoru](./media/tutorial-backup-windows-server-to-azure/open-vault-from-list.png)
 
-2.  V nabídce řídicího panelu trezoru klikněte na **Zálohování**.
+2. V nabídce řídicího panelu trezoru klikněte na **Zálohování**.
 
-3.  V nabídce **Cíl zálohování**:
+3. V nabídce **Cíl zálohování**:
 
-    - V části **Kde je spuštěná vaše úloha?** vyberte **Místní prostředí**. 
-    - V části **Co chcete zálohovat?** vyberte **Soubory a složky** a **Stav systému**. 
+   * V části **Kde je spuštěná vaše úloha?** vyberte **Místní prostředí**. 
+   * V části **Co chcete zálohovat?** vyberte **Soubory a složky** a **Stav systému**.
 
-    ![zadání informací o trezoru](./media/tutorial-backup-windows-server-to-azure/backup-goal.png)
-    
-4.  Kliknutím na **Příprava infrastruktury** otevřete nabídku **Příprava infrastruktury**.
-5.  V nabídce **Příprava infrastruktury** klikněte na **Stáhnout agenta pro Windows Server nebo klienta Windows** a stáhněte soubor *MARSAgentInstaller.exe*. 
+   ![zadání informací o trezoru](./media/tutorial-backup-windows-server-to-azure/backup-goal.png)
+
+4. Kliknutím na **Příprava infrastruktury** otevřete nabídku **Příprava infrastruktury**.
+
+5. V nabídce **Příprava infrastruktury** klikněte na **Stáhnout agenta pro Windows Server nebo klienta Windows** a stáhněte soubor *MARSAgentInstaller.exe*. 
 
     ![Příprava infrastruktury](./media/tutorial-backup-windows-server-to-azure/prepare-infrastructure.png)
 
     Instalační program otevřete samostatné okno prohlížeče a stáhne soubor **MARSAgentInstaller.exe**.
  
-6.  Před spuštěním staženého souboru kliknutím na tlačítko **Stáhnout** v okně Příprava infrastruktury stáhněte a uložte soubor s **přihlašovacími údaji trezoru**. Tento soubor se vyžaduje k propojení agenta MARS s trezorem služby Recovery Services.
+6. Před spuštěním staženého souboru v nabídce Příprava infrastruktury klikněte na **Stáhnout** a uložte soubor s **přihlašovacími údaji trezoru**. Přihlašovací údaje trezoru se vyžadují k propojení agenta MARS s trezorem služby Recovery Services.
 
     ![Příprava infrastruktury](./media/tutorial-backup-windows-server-to-azure/download-vault-credentials.png)
  
@@ -115,13 +116,17 @@ Pomocí agenta služby Microsoft Azure Recovery Services můžete nakonfigurovat
 
 5. Klikněte na **Další**.
 
-6. Na stránce **Zadání plánu zálohování (Stav systému)** zadejte denní dobu nebo den v týdnu, kdy se má aktivovat zálohování stavu systému, a klikněte na **Další**. 
+6. Na stránce **Zadání plánu zálohování (Stav systému)** zadejte denní dobu nebo den v týdnu, kdy se má aktivovat zálohování stavu systému, a klikněte na **Další**.
 
-7.  Na stránce **Výběr zásady uchovávání informací (Stav systému)** vyberte zásadu uchovávání informací pro záložní kopii stavu systému a klikněte na **Další**.
+7. Na stránce **Výběr zásady uchovávání informací (Stav systému)** vyberte zásadu uchovávání informací pro záložní kopii stavu systému a klikněte na **Další**.
+
 8. Podobným způsobem vyberte plán zálohování a zásadu uchovávání pro vybrané soubory a složky. 
-8.  Na stránce **Výběr typu prvotní zálohy** ponechejte vybranou možnost **Automaticky přes síť** a pak klikněte na **Další**.
-9.  Na stránce **Potvrzení** zkontrolujte uvedené informace a pak klikněte na **Dokončit**.
-10. Až průvodce dokončí vytváření plánu zálohování, klikněte na **Zavřít**.
+
+9. Na stránce **Výběr typu prvotní zálohy** vyberte **Automaticky přes síť** a klikněte na **Další**.
+
+10. Na stránce **Potvrzení** zkontrolujte uvedené informace a klikněte na **Dokončit**.
+
+11. Až průvodce dokončí vytváření plánu zálohování, klikněte na **Zavřít**.
 
 ## <a name="perform-an-ad-hoc-back-up"></a>Provedení zálohování ad hoc
 

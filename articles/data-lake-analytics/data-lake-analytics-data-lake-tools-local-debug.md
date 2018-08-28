@@ -1,25 +1,21 @@
 ---
-title: Ladění kódu Azure Data Lake Analytics místně | Dokumentace Microsoftu
+title: Ladění kódu Azure Data Lake Analytics místně
 description: Další informace o použití Azure Data Lake Tools pro Visual Studio k ladění úloh U-SQL na místní pracovní stanici.
 services: data-lake-analytics
-documentationcenter: ''
 author: yanancai
-manager: jhubbard
-editor: cgronlun
+ms.author: yanacai
+ms.reviewer: jasonwhowell
 ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
 ms.service: data-lake-analytics
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
-ms.author: yanacai
-ms.openlocfilehash: 55c53afad6925d7390f34b1938e14d84a59b3216
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 9e73fc4db1404842e6d3878d88d8f02511587bc9
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626824"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43044973"
 ---
 # <a name="debug-azure-data-lake-analytics-code-locally"></a>Ladění kódu Azure Data Lake Analytics místně
 

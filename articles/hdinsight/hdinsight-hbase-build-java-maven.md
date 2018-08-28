@@ -3,18 +3,18 @@ title: Vytvoření aplikace Java HBase pro HDInsight založené na Windows Azure
 description: Zjistěte, jak pomocí nástroje Apache Maven k sestavení aplikace založené na jazyce Java Apache HBase a pak ji nasadit do clusteru Azure HDInsight založené na Windows.
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/05/2017
 ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: 20056590d5841f9d17081b9456a491ba128e4f90
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: fc2bd03156d6005f1e10252583b4a13451f66dbf
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39592869"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43092623"
 ---
 # <a name="use-maven-to-build-java-applications-that-use-hbase-with-windows-based-hdinsight-hadoop"></a>Použití Mavenu k vytváření aplikací v Javě, které používají HBase s HDInsight se systémem Windows (Hadoop)
 Zjistěte, jak vytvořit a sestavit [Apache HBase](http://hbase.apache.org/) aplikace v Javě pomocí nástroje Apache Maven. Potom s použitím aplikace s Azure HDInsight (Hadoop).

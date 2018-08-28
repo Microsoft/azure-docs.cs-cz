@@ -9,13 +9,13 @@ manager: kfile
 editor: jasonwhowell
 ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.topic: get-started-article
-ms.date: 05/02/2018
-ms.openlocfilehash: 0acaace474d62f18b9b6ca4aaae324405a2f43db
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.date: 08/13/2018
+ms.openlocfilehash: 852840fc29589292e7a74390026b78b15f81e721
+ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34735789"
+ms.lasthandoff: 08/21/2018
+ms.locfileid: "41920306"
 ---
 # <a name="develop-u-sql-scripts-by-using-data-lake-tools-for-visual-studio"></a>Vývoj skriptů U-SQL pomocí nástrojů Data Lake pro Visual Studio
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -52,16 +52,20 @@ Tento kurz vyžaduje, aby byly nainstalované Nástroje Data Lake pro Visual Stu
 ## <a name="connect-to-an-azure-data-lake-analytics-account"></a>Připojení k účtu Azure Data Lake Analytics
 
 1. Otevřete sadu Visual Studio.
-2. Otevřete Průzkumníka serveru výběrem **Zobrazení** > **Průzkumník serveru**.
-3. Klikněte pravým tlačítkem na **Azure**. Pak vyberte **Připojit k předplatnému Microsoft Azure** a postupujte podle pokynů.
-4. V Průzkumníku serveru vyberte **Azure** > **Data Lake Analytics**. Zobrazí se seznam vašich účtů Data Lake Analytics.
 
+2. Otevřete Průzkumníka serveru výběrem **Zobrazení** > **Průzkumník serveru**.
+
+3. Klikněte pravým tlačítkem na **Azure**. Pak vyberte **Připojit k předplatnému Microsoft Azure** a postupujte podle pokynů.
+
+4. V Průzkumníku serveru vyberte **Azure** > **Data Lake Analytics**. Zobrazí se seznam vašich účtů Data Lake Analytics.
 
 ## <a name="write-your-first-u-sql-script"></a>Napsání prvního skriptu U-SQL
 
 Následující text je jednoduchý skript U-SQL. Definuje malou datovou sadu a zapíše ji do výchozího úložiště Data Lake Store jako soubor s názvem `/data.csv`.
 
 ```
+USE DATABASE master;
+USE SCHEMA dbo;
 @a  = 
     SELECT * FROM 
         (VALUES
@@ -74,7 +78,7 @@ OUTPUT @a
     USING Outputters.Csv();
 ```
 
-### <a name="submit-a-data-lake-analytics-job"></a>Odeslání úlohy Data Lake Analytics
+## <a name="submit-a-data-lake-analytics-job"></a>Odeslání úlohy Data Lake Analytics
 
 1. Vyberte **Soubor** > **Nový** > **Projekt**.
 
@@ -87,31 +91,35 @@ OUTPUT @a
     ![Odeslání projektu U-SQL sady Visual Studio](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-submit-job.png)
 
 5. V levém horním rohu okna **Script.usql** vyberte **Odeslat**.
-6. Zkontrolujte **Účet Analytics** a pak vyberte **Odeslat**. Po dokončení odeslání jsou výsledky odeslání dostupné ve výsledcích nástrojů Data Lake pro Visual Studio.
 
-    ![Odeslání projektu U-SQL sady Visual Studio](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-submit-job-advanced.png)
-7. Pokud chcete zobrazit nejnovější stav úlohy a aktualizovat obrazovku, klikněte na **Aktualizovat**. Když se úloha úspěšně dokončí, zobrazí se **Graf úlohy**, **Operace s metadaty**, **Historie stavů**, **Diagnostika**:
+6. Po odeslání úlohy se otevře karta **Zobrazení úlohy**, na které se zobrazí průběh úlohy. Pokud chcete zobrazit nejnovější stav úlohy a aktualizovat obrazovku, klikněte na **Aktualizovat**.
 
     ![Graf výkonu úlohy U-SQL Visual Studio Data Lake Analytics](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-analytics-data-lake-tools-performance-graph.png)
 
    * **Souhrn úlohy** zobrazuje souhrn úlohy.   
-   * **Podrobnosti o úloze** zobrazují konkrétnější informace o úloze, včetně skriptu, prostředků a vrcholů.
    * **Graf úlohy** vizualizuje průběh úlohy.
    * **Operace s metadaty** zobrazují všechny akce provedené s katalogem U-SQL.
    * **Data** zobrazují všechny vstupy a výstupy.
+   * **Historie stavu** ukazuje časovou osu a podrobnosti o stavu.
+   * **Analýza AU** ukazuje, kolik se v úloze použilo jednotek analýzy, a umožňuje prozkoumat simulace odlišných strategií přidělení jednotek analýzy.
    * **Diagnostika** poskytuje pokročilé analýzy spouštění úlohy a optimalizace výkonu.
 
-### <a name="to-check-job-state"></a>Postup kontroly stavu úlohy
+## <a name="check-job-status"></a>Kontrola stavu úlohy
 
-1. V Průzkumníku serveru vyberte **Azure** > **Data Lake Analytics**. 
+1. V Průzkumníku serveru vyberte **Azure** > **Data Lake Analytics**.
+
 2. Rozbalte název účtu Data Lake Analytics.
+
 3. Dvakrát klikněte na **Úlohy**.
+
 4. Vyberte úlohu, kterou jste dříve odeslali.
 
-### <a name="to-see-the-output-of-a-job"></a>Zobrazení výstupu úlohy
+## <a name="see-the-job-output"></a>Zobrazení výstupu úlohy
 
 1. V Průzkumníku serveru přejděte na úlohu, kterou jste odeslali.
+
 2. Klikněte na kartu **Data**.
+
 3. Na kartě **Výstupy úlohy** vyberte soubor `"/data.csv"`.
 
 ## <a name="next-steps"></a>Další kroky

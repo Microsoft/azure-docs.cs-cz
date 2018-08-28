@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: apimpm
-ms.openlocfilehash: ce3208fed119452ef9383fcb5b5eefb1aac6e224
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: ed8c34a7e1e11d431d9a3b416067736da0d1612c
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42060113"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43046375"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Implementace zotavení po havárii pomocí služby zálohování a obnovení ve službě Azure API Management
 
@@ -179,7 +179,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 kde:
 
 * `subscriptionId` – id předplatného, které obsahuje obnovujete zálohu do služby API Management
-* `resourceGroupName` -řetězec ve formě "Rozhraní Api – výchozí – {služby region}" kde `service-region` identifikuje obnovujete zálohu do služby API Management je hostitelem, například oblast Azure `North-Central-US`
+* `resourceGroupName` – Název skupiny prostředků obsahující obnovujete zálohu do služby Azure API Management
 * `serviceName` – název služby API Management service, který se má obnovit do zadané v okamžiku svého vytvoření
 * `api-version` -nahradit `2018-06-01-preview`
 

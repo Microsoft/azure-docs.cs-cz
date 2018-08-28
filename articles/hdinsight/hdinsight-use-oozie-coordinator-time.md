@@ -3,19 +3,19 @@ title: Použití času koordinátoru Hadoop Oozie v HDInsight
 description: Použití koordinátoru Hadoop Oozie založených na čase v HDInsight, velké objemy dat služby. Zjistěte, jak definovat Oozie pracovní postupy a koordinátory a odesílání úloh.
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.author: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/04/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 61d2e03fad5303f6f66633536b2acc8b1fe300cc
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 783857b9ca1d3e3a5aef13c24f9a3633533a2050
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39597272"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43048471"
 ---
 # <a name="use-time-based-oozie-coordinator-with-hadoop-in-hdinsight-to-define-workflows-and-coordinate-jobs"></a>Použití koordinátoru Oozie časovou synchronizací s Hadoop v HDInsight k definování pracovních postupů a koordinace úloh
 V tomto článku se dozvíte, jak definovat pracovní postupy a koordinátory a jak aktivovat koordinátor úlohy, na základě času. Je užitečné projít [použití Oozie s HDInsight] [ hdinsight-use-oozie] předtím, než v tomto článku. Kromě Oozie toho můžete také plánovat úlohy pomocí služby Azure Data Factory. Další služby Azure Data Factory najdete v tématu [použití Pigu a Hivu s Data Factory](../data-factory/transform-data.md).

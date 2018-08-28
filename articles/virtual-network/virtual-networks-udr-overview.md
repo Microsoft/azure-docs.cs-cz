@@ -1,5 +1,5 @@
 ---
-title: Směrování provozu virtuální sítě Azure | Microsoft Docs
+title: Směrování provozu virtuální sítě Azure | Dokumentace Microsoftu
 description: Zjistěte, jak Azure směruje provoz virtuální sítě a jak můžete směrování Azure přizpůsobit.
 services: virtual-network
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: fc03fa2a12c9031d88404d5d8d9f821254b033bb
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 7ff4c6ce5e42154b3ded9c05ef1437d30f9477f0
+ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34726325"
+ms.lasthandoff: 08/20/2018
+ms.locfileid: "41917544"
 ---
 # <a name="virtual-network-traffic-routing"></a>Směrování provozu virtuální sítě
 
@@ -124,7 +124,7 @@ Místní síťová brána si může vyměňovat trasy s bránou virtuální sít
 
 Pokud vyměňujete trasy s Azure pomocí protokolu BGP, do směrovací tabulky všech podsítí ve virtuální síti se přidá samostatná trasa pro každou inzerovanou předponu. Trasa se přidá s uvedeným zdrojem a typem dalšího segmentu směrování *Brána virtuální sítě*. 
 
-Šíření tras BGP je možné v podsíti zakázat pomocí vlastnosti ve směrovací tabulce. Pokud vyměňujete trasy s Azure pomocí protokolu BGP, do směrovací tabulky všech podsítí se zakázaným šířením BGP se trasy nepřidají. Možnosti připojení u připojení VPN zajišťují [vlastní trasy](#custom-routes) s typem dalšího segmentu směrování VPN. Podrobnosti najdete v tématu popisujícím, [jak zakázat šíření tras BGP](manage-route-table.md#create-a-route-table).
+Šíření tras BGP je možné v podsíti zakázat pomocí vlastnosti ve směrovací tabulce. Pokud vyměňujete trasy s Azure pomocí protokolu BGP, do směrovací tabulky všech podsítí se zakázaným šířením BGP se trasy nepřidají. Možnosti připojení u připojení VPN zajišťují [vlastní trasy](#custom-routes) s typem dalšího segmentu směrování *Brána virtuální sítě*. Podrobnosti najdete v tématu popisujícím, [jak zakázat šíření tras BGP](manage-route-table.md#create-a-route-table).
 
 ## <a name="how-azure-selects-a-route"></a>Jak Azure vybírá trasu
 
@@ -167,7 +167,7 @@ Když přepíšete předponu adresy 0.0.0.0/0, kromě přenosu odchozího provoz
         - Být schopné překládat a předávat síťové adresy nebo předávat provoz přes proxy do cílového prostředku v podsíti a vracet provoz zpět do internetu. 
     - **Brána virtuální sítě:** Pokud je brána bránou virtuální sítě ExpressRoute, místní zařízení připojené k internetu musí být schopné překládat a předávat síťové adresy nebo předávat provoz přes proxy do cílového prostředku v podsíti přes [soukromý partnerský vztah](../expressroute/expressroute-circuit-peerings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-private-peering) ExpressRoute. 
 
-Pokud je vaše virtuální síť připojená k Azure VPN gateway, nepřidružujte k [podsíti brány](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub) směrovací tabulku, která má směrování s cílem 0.0.0.0/0. Mohli byste tím bráně znemožnit správné fungování.
+Pokud je vaše virtuální síť připojená k bráně Azure VPN, nepřidružujte k podsíti brány [GatewaySubnet](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub) směrovací tabulku, která obsahuje trasu s cílem 0.0.0.0/0. Mohli byste tím bráně znemožnit správné fungování.
 
 V tématech [DMZ mezi Azure a místním datovým centrem](/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=%2fazure%2fvirtual-network%2ftoc.json) a [DMZ mezi Azure a internetem](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2fazure%2fvirtual-network%2ftoc.json) najdete podrobné informace k implementaci při použití bran virtuálních sítí a virtuálních zařízení mezi internetem a Azure.
 

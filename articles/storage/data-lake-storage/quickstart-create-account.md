@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: 9d60b85051ff6e24c64f074ccd4fad055ba47ae8
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 18f4d2656ec7f027557d73959531b781be1d8d44
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523576"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "42022963"
 ---
 # <a name="quickstart-create-an-azure-data-lake-storage-gen2-preview-storage-account"></a>Rychlý start: Vytvoření účtu úložiště Azure Data Lake Storage Gen2 Preview
 
@@ -114,15 +114,6 @@ Odebrání skupiny prostředků pomocí webu Azure Portal:
 2. Vyhledejte skupinu prostředků, kterou chcete odstranit, a klikněte pravým tlačítkem na tlačítko **Další** (**...** ) na pravé straně seznamu.
 3. Vyberte **Odstranit skupinu prostředků** a potvrďte tuto akci.
 
-
-## <a name="upgrade-your-powershell-module"></a>Upgrade modulu PowerShell
-
-Abyste mohli s Data Lake Storage Gen2 pracovat přes PowerShell, budete muset modul upgradovat na verzi Preview.
-
-Provedete to tak, že otevřete PowerShell se zvýšenými oprávněními a zadáte následující příkaz: `Install-Module AzureRM.Storage –Repository PSGallery -RequiredVersion 5.0.4-preview –AllowPrerelease –AllowClobber –Force `
-
-Pak prostředí restartujte.
-
 ## <a name="create-an-account-using-powershell"></a>Vytvoření účtu pomocí PowerShellu
 
 Přihlaste se k předplatnému Azure pomocí příkazu `Login-AzureRmAccount` a při ověřování postupujte podle pokynů na obrazovce.
@@ -130,6 +121,14 @@ Přihlaste se k předplatnému Azure pomocí příkazu `Login-AzureRmAccount` a 
 ```powershell
 Login-AzureRmAccount
 ```
+
+### <a name="upgrade-your-powershell-module"></a>Upgrade modulu PowerShell
+
+Abyste mohli s Data Lake Storage Gen2 pracovat přes PowerShell, budete muset modul upgradovat na verzi Preview.
+
+Provedete to tak, že otevřete PowerShell se zvýšenými oprávněními a zadáte následující příkaz: `Install-Module AzureRM.Storage –Repository PSGallery -RequiredVersion 5.0.4-preview –AllowPrerelease –AllowClobber –Force `
+
+Pak prostředí restartujte.
 
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -170,13 +169,7 @@ Pokud chcete odebrat skupinu prostředků a její přidružené prostředky, vč
 Remove-AzureRmResourceGroup -Name $resourceGroup
 ```
 
-## <a name="upgrade-your-cli-module"></a>Upgrade modulu rozhraní příkazového řádku
-
-Abyste mohli s Data Lake Storage Gen2 pracovat přes rozhraní příkazového řádku, budete do prostředí muset přidat rozšíření.
-
-Provedete to tak, že ve službě Cloud Shell nebo v místním prostředí zadáte následující příkaz: `az extension add --name storage-preview`
-
-## <a name="create-an-account-using-azure-cli"></a>Vytvoření účtu pomocí Azure CLI 
+## <a name="create-an-account-using-azure-cli"></a>Vytvoření účtu pomocí Azure CLI
 
 Pokud chcete spustit Azure Cloud Shell, přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
@@ -186,9 +179,15 @@ Pro přihlášení k místní instalaci rozhraní příkazového řádku spusťt
 az login
 ```
 
+### <a name="upgrade-your-cli-module"></a>Upgrade modulu rozhraní příkazového řádku
+
+Abyste mohli s Data Lake Storage Gen2 pracovat přes rozhraní příkazového řádku, budete do prostředí muset přidat rozšíření.
+
+Provedete to tak, že ve službě Cloud Shell nebo v místním prostředí zadáte následující příkaz: `az extension add --name storage-preview`
+
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Pokud chcete vytvořit novou skupinu prostředků pomocí Azure CLI, použijte příkaz [az group create](/cli/azure/group#az_group_create). 
+Pokud chcete vytvořit novou skupinu prostředků pomocí Azure CLI, použijte příkaz [az group create](/cli/azure/group#az_group_create).
 
 ```azurecli-interactive
 az group create \

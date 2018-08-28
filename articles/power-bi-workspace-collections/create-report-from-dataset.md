@@ -1,48 +1,42 @@
 ---
-title: Vytvoření nové sestavy z datové sady v Power BI prostoru kolekcích | Microsoft Docs
-description: Sestavy Power BI kolekce pracovních prostorů můžete vytvořit nyní z datové sady ve vaší vlastní aplikaci.
+title: Vytvoření nové sestavy z datové sady v kolekcích pracovních prostorů Power BI | Dokumentace Microsoftu
+description: Teď je možné vytvářet sestavy Power BI kolekce pracovních prostorů z datové sady ve své aplikaci.
 services: power-bi-embedded
-documentationcenter: ''
 author: markingmyname
-manager: kfile
-editor: ''
-tags: ''
 ROBOTS: NOINDEX
 ms.assetid: ''
 ms.service: power-bi-embedded
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: 5c6a52edd708b6077820f2004e83ac7dee945610
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: dbfe8c98dce1879a2e0956fafba32ab6e608bfdb
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31409512"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43046650"
 ---
-# <a name="create-a-new-report-from-a-dataset-in-power-bi-workspace-collections"></a>Vytvoření nové sestavy z datové sady v Power BI prostoru kolekce
+# <a name="create-a-new-report-from-a-dataset-in-power-bi-workspace-collections"></a>Vytvoření nové sestavy z datové sady v kolekcích pracovních prostorů Power BI
 
-Sestavy Power BI kolekce pracovních prostorů můžete vytvořit nyní z datové sady ve vaší vlastní aplikaci.
+Teď je možné vytvářet sestavy Power BI kolekce pracovních prostorů z datové sady ve své aplikaci.
 
 > [!IMPORTANT]
 > Kolekce Pracovních prostorů Power BI jsou zastaralé a dostupné do června 2018 nebo do data uvedeného ve vaší smlouvě. Doporučujeme naplánovat migraci do Power BI Embedded, předejdete tak výpadkům vaší aplikace. Informace o postupu migrace dat do Power BI Embedded najdete v tématu [Migrace obsahu kolekcí Pracovních prostorů Power BI do Power BI Embedded](https://powerbi.microsoft.com/documentation/powerbi-developer-migrate-from-powerbi-embedded/).
 
-Metoda ověřování je podobné jako vložení sestavy. Je založena na přístupové tokeny, které jsou specifické pro datovou sadu. Pomocí Azure Active Directory (AAD) jsou vydávány tokeny, které používá pro PowerBI.com. Vaše vlastní aplikace jsou vydávány tokeny Power BI kolekce pracovních prostorů.
+Metoda ověřování je podobná vkládání sestav. Je založen na přístupové tokeny, které jsou specifické pro datovou sadu. Pomocí Azure Active Directory (AAD) se vydávají tokeny pro PowerBI.com. Ve své aplikaci se vydávají tokeny Power BI kolekce pracovních prostorů.
 
-Při vytváření zprávu o vložených, jsou tokeny vydané pro konkrétní datové sady. Tokeny by měly být přidruženy s adresou URL vložení u stejného elementu k zajistěte, aby byl každý token jedinečný. Chcete-li vytvořit sestavu vložených *Dataset.Read a Workspace.Report.Create* obory musí být zadáno v tokenu přístupu.
+Při vytvoření vložené sestavy, jsou tokeny vydané pro konkrétní datové sady. Tokeny by měly být přidruženy s vloženou adresu URL u stejného elementu k zajištění, že každá má jedinečný token. Chcete-li vytvořit zprávu o vložených *Dataset.Read a Workspace.Report.Create* obory musí být uvedeny v přístupovém tokenu.
 
-## <a name="create-access-token-needed-to-create-new-report"></a>Vytvoření tokenu přístupu, které jsou nutné k vytvoření nové sestavy
+## <a name="create-access-token-needed-to-create-new-report"></a>Vytvoření přístupového tokenu, které jsou potřeba k vytvoření nové sestavy
 
-Kolekce pracovních prostorů Power BI použijte vložení tokenu, který je HMAC podepsaný webových tokenů JSON. Přístupový klíč z vaší kolekce pracovních prostorů Power BI jsou podepsané tokeny. Vložení tokeny, ve výchozím nastavení, slouží k poskytování přístupu jen pro čtení k sestavě pro vložení do aplikace. Vložení tokeny jsou vydán pro konkrétní sestavy a by měly být přidružené adrese URL vložení.
+Kolekce pracovních prostorů Power BI použít vložení tokenu, který je HMAC podepsaný webových tokenů JSON. Tokeny jsou podepsány pomocí přístupového klíče z vaší kolekce pracovních prostorů Power BI. Vložené tokeny, ve výchozím nastavení, se používají k zajištění přístup jen pro čtení pro sestavy k vložení do aplikace. Vložit tokeny budou vydány pro konkrétní sestavu a by měly být přidružené adrese URL vložení.
 
-Přístupové tokeny by se vytvořit na serveru, přístupové klíče se používají pro přihlášení nebo šifrování tokenů. Informace o tom, jak vytvořit token přístupu najdete v tématu [Authenticating a autorizaci s Power BI prostoru kolekce](app-token-flow.md). Můžete také zkontrolovat [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#methods_) metoda. Tady je příklad co to může vypadat třeba pomocí sady .NET SDK pro Power BI.
+Přístupové tokeny by být vytvořeny na serveru, které přístupové klíče se používají k přihlašování a šifrování tokenů. Informace o tom, jak vytvořit token přístupu najdete v tématu [ověřování a autorizace pomocí kolekcí pracovních prostorů Power BI](app-token-flow.md). Můžete také zkontrolovat [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#methods_) metody. Tady je příklad co to může vypadat třeba pomocí sady .NET SDK pro Power BI.
 
-V tomto příkladu máme naše ID sady dat, který chcete vytvořit novou sestavu na. Také je potřeba přidat obory *Dataset.Read a Workspace.Report.Create*.
+V tomto příkladu máme naše ID datové sady, který chcete vytvořit novou sestavu na. Musíme také přidat obory *Dataset.Read a Workspace.Report.Create*.
 
-*PowerBIToken třída* je nutné nainstalovat [Power BI základní NuGut balíček](https://www.nuget.org/packages/Microsoft.PowerBI.Core/).
+*PowerBIToken třídy* je nutné nainstalovat [Power BI základní NuGut balíček](https://www.nuget.org/packages/Microsoft.PowerBI.Core/).
 
 **Instalace balíčku NuGet**
 
@@ -64,10 +58,10 @@ var token = embedToken.Generate("{access key}");
 
 ## <a name="create-a-new-blank-report"></a>Vytvoření nové prázdné sestavy
 
-Chcete-li vytvořit novou sestavu, je třeba poskytnout vytvořit konfiguraci. To by mělo zahrnovat přístupový token, embedURL a datasetID, který chcete vytvořit sestavu s. To je nutné nainstalovat nuget [Power BI JavaScript balíček](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/). Právě embedUrl bude https://embedded.powerbi.com/appTokenReportEmbed.
+Chcete-li vytvořit novou sestavu, musí být zadána konfigurace vytvořit. Ty by měly zahrnovat přístupový token, embedURL a datasetID, který chcete vytvořit sestavu s. To vyžaduje instalaci balíčku nuget [balíček Power BI JavaScript](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/). Stačí embedUrl bude https://embedded.powerbi.com/appTokenReportEmbed.
 
 > [!NOTE]
-> Můžete použít [ukázka vložení sestavy JavaScript](https://microsoft.github.io/PowerBI-JavaScript/demo/) správnou funkci. Také nabízí příklady kódu pro různé operace, které jsou k dispozici.
+> Můžete použít [ukázka vložení sestavy JavaScript](https://microsoft.github.io/PowerBI-JavaScript/demo/) k testování funkcí. Poskytuje příklady kódu pro různé operace, které jsou k dispozici.
 
 **Instalace balíčku NuGet**
 
@@ -93,13 +87,13 @@ var embedCreateConfiguration = {
     var report = powerbi.createReport(reportContainer, embedCreateConfiguration);
 ```
 
-Volání metody *powerbi.createReport()* díky prázdného plátna v režimu úprav zobrazí v rámci *div* elementu.
+Volání *powerbi.createReport()* díky prázdného plátna v režimu úprav se zobrazí v rámci *div* elementu.
 
-![Novou prázdnou sestavu](media/create-report-from-dataset/create-new-report.png)
+![Nová prázdná sestava](media/create-report-from-dataset/create-new-report.png)
 
-## <a name="save-new-reports"></a>Uložit nové sestavy
+## <a name="save-new-reports"></a>Uložení nové sestavy
 
-Sestava není vytvořena, dokud zavoláte **uložit jako** operaci. Tento krok můžete provést z nabídky soubor nebo pomocí jazyka JavaScript.
+Sestava není vytvořena až do okamžiku volání **uložit jako** operace. To lze provést v nabídce Soubor nebo z jazyka JavaScript.
 
 ```
  // Get a reference to the embedded report.
@@ -114,13 +108,13 @@ Sestava není vytvořena, dokud zavoláte **uložit jako** operaci. Tento krok m
 ```
 
 > [!IMPORTANT]
-> Vytvoření nové sestavy až po **uložit jako** je volána. Po uložení se na plátno, bude mít datovou sadu v režimu úprav a není sestava. Budete muset znovu načíst nové sestavy, stejně jako u jiných sestavách.
+> Vytvoření nové sestavy až po **uložit jako** je volána. Po uložení se na plátně stále zobrazit datovou sadu v režimu úprav a není sestava. Je nutné znovu načíst nové sestavy stejně, jako byste jiných sestavách.
 
-![Soubor nabídky - Uložit jako](media/create-report-from-dataset/save-new-report.png)
+![Uložit soubor jako nabídka –](media/create-report-from-dataset/save-new-report.png)
 
-## <a name="load-the-new-report"></a>Načtení nové sestavy
+## <a name="load-the-new-report"></a>Načíst novou sestavu
 
-Aby bylo možné využívat nové sestavy, které potřebujete k vložení stejným způsobem, jakým aplikace vloží regulární sestavy, což znamená, nový token musí být vydaný speciálně pro novou sestavu a pak volat metodu vložení.
+Aby bylo možné pracovat s novou sestavu, kterou je potřeba ji vložit do aplikace vloží u běžné sestavy stejným způsobem, což znamená, nový token musí být vydaný speciálně pro novou sestavu a poté zavolejte metodu vložení.
 
 ```
 <div id="reportContainer"></div>
@@ -138,9 +132,9 @@ var embedConfiguration = {
     var report = powerbi.embed(reportContainer, embedConfiguration);
 ```
 
-## <a name="automate-save-and-load-of-a-new-report-using-the-saved-event"></a>Automatizovat uložení a načtení nové sestavy pomocí "uložené" události
+## <a name="automate-save-and-load-of-a-new-report-using-the-saved-event"></a>Automatizace uložit a načíst nové sestavy pomocí "uložené" události
 
-Aby bylo možné automatizovat proces "Uložit jako" a pak načítání novou sestavu můžete použít, použijte "uložené" události. Tato událost je aktivována, pokud uložení bylo dokončeno a vrátí objekt Json obsahující nové reportId, název sestavy, staré reportId (pokud existuje) a pokud byla operace Uložit jako nebo uložit.
+Aby bylo možné automatizovat proces "uložení jako" a pak načítání novou sestavu, můžete využít službu "uložené" události. Tato událost se aktivuje při ukládání operace se dokončila a vrátí objekt Json obsahující nové ID sestavy, název sestavy, původní ID sestavy (pokud existuje) a pokud byla operace rezervaci nebo uložit.
 
 ```
 {
@@ -151,7 +145,7 @@ Aby bylo možné automatizovat proces "Uložit jako" a pak načítání novou se
 }
 ```
 
-Pro automatizaci procesu naslouchat "uložené" události, proveďte nové reportId, vytvořit nový token a vložit novou sestavu s ním.
+K automatizaci procesu naslouchání "uložené" události, využít nové ID sestavy, vytvořit nový token a vložit novou sestavu s ním.
 
 ```
 <div id="reportContainer"></div>
@@ -208,7 +202,7 @@ var embedCreateConfiguration = {
 [Ověřování a autorizace v kolekcích Pracovních prostorů Power BI](app-token-flow.md)  
 [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)  
 [Vložená ukázka JavaScriptu](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
-[Power BI základní NuGut balíčku](https://www.nuget.org/packages/Microsoft.PowerBI.Core/)  
+[Power BI základní NuGut balíček](https://www.nuget.org/packages/Microsoft.PowerBI.Core/)  
 [Power BI JavaScript balíčku](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/)  
 
 Chcete se ještě na něco zeptat? [Vyzkoušejte komunitu Power BI](http://community.powerbi.com/)

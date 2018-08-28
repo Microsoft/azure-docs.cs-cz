@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: ccc699a500cbaf20c9b90d71e7c730e617bc572c
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: c2c80790fa3e7c20408346fbebf60c39879a94df
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39145532"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "41918447"
 ---
 # <a name="configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>Konfigurace cloudových prostředků pro zřizování zařízení pomocí služby IoT Hub Device Provisioning
 

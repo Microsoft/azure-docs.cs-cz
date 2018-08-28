@@ -10,12 +10,12 @@ ms.technology: luis
 ms.topic: article
 ms.date: 08/03/2018
 ms.author: diberry
-ms.openlocfilehash: 2fd473226dca2576be79b90bc05d66599f759713
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 633bf16790437ba83e9a2a99f33a23fef9255364
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39524140"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43090522"
 ---
 # <a name="tutorial-improve-app-with-pattern-roles"></a>Kurz: Vylepšit aplikaci pomocí vzoru role
 
@@ -52,7 +52,7 @@ V tomto kurzu zjistí aplikaci lidských zdrojů projevy informace o přesunu do
 |[Hierarchické (žádné role)](luis-quickstart-intent-and-hier-entity.md)|MV Jill Jones z **a-2349** k **b-1298**|a-2349 b-1298|
 |Tento kurz (s rolemi)|Přesunout Billy Patterson z **Yuma** k **Denver**.|Yuma, Denver|
 
-Hierarchické entity ve vzoru nelze použít, protože pouze hierarchické nadřazených objektů se používají v nadřazené položky. Aby bylo možné vrátit pojmenovaná umístění, původu a cíl, muse použití vzoru.
+Hierarchické entity ve vzoru nelze použít, protože pouze hierarchické nadřazených objektů se používají ve vzorcích. Aby bylo možné vrátit pojmenovaná umístění, původu a cíl, muse použití vzoru.
 
 ### <a name="simple-entity-for-new-employee-name"></a>Jednoduchou entitu pro nové jméno zaměstnance
 Název nového zaměstnance Billy Patterson, není součástí seznamu entity **zaměstnance** ještě. Název nového zaměstnance je extrahován nejprve, aby bylo možné odeslat název do externího systému k vytvoření přihlašovacích údajů společnosti. Po vytvoření přihlašovacích údajů společnosti pověření zaměstnanec jsou přidány do seznamu entit **zaměstnance**.

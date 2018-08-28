@@ -3,19 +3,19 @@ title: Součásti systému Hadoop a verze – Azure HDInsight
 description: Zjistěte, komponenty a verze v HDInsight a k dispozici v této cloudové distribuce datovou platformou Hortonworks úrovně služeb.
 keywords: verzích systému hadoop, ekosystém součásti platformy hadoop, součásti platformy hadoop, jak zkontrolovat verze systému hadoop
 services: hdinsight
-editor: jasonwhowell
+ms.reviewer: jasonh
 author: kkampf
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: kakampf
-ms.openlocfilehash: 1dda09896bfe8db5fc78ea64cd20baa78666c593
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 120068cb9dcd92b2b18c2e175793d2072baa2724
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42444321"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43112159"
 ---
 # <a name="what-are-the-hadoop-components-and-versions-available-with-hdinsight"></a>Jaké jsou komponenty a verze, které jsou k dispozici s HDInsight?
 

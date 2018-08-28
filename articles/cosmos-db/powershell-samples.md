@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: sample
 ms.date: 10/16/2017
 ms.author: sngun
-ms.openlocfilehash: 066826661381f40af2943359eb75abae8306bb7b
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 9ee5c7a008f375beffd6bbdf00cca8b28752b1fb
+ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37855579"
+ms.lasthandoff: 08/09/2018
+ms.locfileid: "41919741"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db"></a>Ukázky Azure PowerShellu pro službu Azure Cosmos DB
 
@@ -28,6 +28,8 @@ Následující tabulka obsahuje odkazy na ukázkové skripty Azure PowerShellu p
 |[Vytvoření účtu rozhraní SQL API](scripts/create-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvoří jeden účet služby Azure Cosmos DB k použití s rozhraním SQL API. |
 |[Vytvoření účtu rozhraní MongoDB API](scripts/create-mongodb-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvoří jeden účet služby Azure Cosmos DB k použití s rozhraním MongoDB API. |
 |[Vytvoření účtu rozhraní Gremlin API](scripts/create-graph-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvoří jeden účet služby Azure Cosmos DB k použití s rozhraním Gremlin API. |
+|[Vytvoření účtu rozhraní API Cassandra](scripts/create-and-configure-cassandra-database.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvoří jeden účet služby Azure Cosmos DB pro použití s rozhraním API Cassandra. |
+|[Vytvoření účtu rozhraní Table API](scripts/create-table-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Vytvoří jeden účet služby Azure Cosmos DB pro použití s rozhraním Table API. |
 |**Škálování služby Azure Cosmos DB**||
 |[Replikace účtu služby Azure Cosmos DB ve více oblastech a konfigurace priorit převzetí služeb při selhání](scripts/scale-multiregion-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)|Globálně replikuje data účtu do několika oblastí s určenou prioritou převzetí služeb při selhání.|
 |**Zabezpečení služby Azure Cosmos DB**||

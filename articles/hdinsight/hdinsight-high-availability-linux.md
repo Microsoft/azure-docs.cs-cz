@@ -2,7 +2,7 @@
 title: Vysoká dostupnost pro Hadoop – Azure HDInsight
 description: Zjistěte, jak clustery HDInsight zvýšit spolehlivost a dostupnost pomocí dalšího hlavního uzlu. Zjistěte, jak to má vliv služby Hadoop jako je například Ambari a Hive, a jak se připojit jednotlivě každému hlavnímu uzlu pomocí SSH.
 services: hdinsight
-editor: jasonwhowell
+ms.reviewer: jasonh
 author: jasonwhowell
 keywords: Vysoká dostupnost systému hadoop
 ms.service: hdinsight
@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: jasonh
-ms.openlocfilehash: ad42c1acd795d15bbbe951d90ec9b6b09695cd0a
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: c10ff022d54510c4fb81bf1f922aeaaf4e9036bb
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39592579"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43104850"
 ---
 # <a name="availability-and-reliability-of-hadoop-clusters-in-hdinsight"></a>Dostupnost a spolehlivost clusterů Hadoop ve službě HDInsight
 

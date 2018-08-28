@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: reference
 ms.topic: conceptual
-ms.date: 08/21/2018
+ms.date: 08/27/2018
 ms.author: carlrab
-ms.openlocfilehash: 03e24679ea01dabb78a0d7028d49b624b2e3bf64
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 7f784689e8437d92cf4fc4974983d3ae1455f11b
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42054464"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43091820"
 ---
 # <a name="sql-database-faq"></a>SQL Database – Nejčastější dotazy
 
@@ -155,7 +155,7 @@ Příklad:
 - Když vytvoříte Managed Instance pro obecné účely s 8 virtuálními jádry a pak hned upgradujete na 16 virtuálních jader, bude se vám za první hodinu účtovat sazba za 16 virtuálních jader.
 
 > [!NOTE]
-> Po omezenou dobu až 30. června 2018 poplatky za zálohování a vstupně-výstupní operace neúčtují žádné poplatky.
+> Po omezenou dobu poplatky za zálohování a vstupně-výstupní operace neúčtují žádné poplatky.
 
 ## <a name="how-does-the-use-of-active-geo-replication-in-an-elastic-pool-show-up-on-my-bill"></a>Jak funguje pomocí aktivní geografické replikace v zobrazit elastický fond se na mém vyúčtování?
 Na rozdíl od izolovaných databází pomocí [aktivní geografickou replikaci](sql-database-geo-replication-overview.md) díky elastickým databázím nemá přímý vliv na fakturaci.  Budou účtovat pouze prostředky zřízené pro jednotlivé fondy (fond primární a sekundární fond)

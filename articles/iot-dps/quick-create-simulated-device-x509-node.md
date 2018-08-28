@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: nodejs
 ms.custom: mvc
-ms.openlocfilehash: 7ff567b02fb3371186dc02b97cafb8135ae7bbd2
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 1a3015a458a579b0aadf51d610db512eb908352b
+ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39090941"
+ms.lasthandoff: 08/17/2018
+ms.locfileid: "42023211"
 ---
 # <a name="create-and-provision-an-x509-simulated-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>Vytvoření a zřízení simulovaného zařízení X.509 pomocí sady Node.js SDK pro zařízení pro službu IoT Hub Device Provisioning
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
@@ -24,7 +24,7 @@ Tyto kroky ukazují, jak vytvořit položku registrace ve službě Device Provis
 
 Pokud neznáte proces automatického zřizování, měli byste se seznámit také s [koncepty automatického zřizování](concepts-auto-provisioning.md). Než budete pokračovat, ujistěte se také, že jste provedli kroky uvedené v tématu [Nastavení služby IoT Hub Device Provisioning Service pomocí webu Azure Portal](./quick-setup-auto-provision.md). 
 
-[!INCLUDE [IoT DPS basic](../../includes/iot-dps-basic.md)]
+[!INCLUDE [IoT Device Provisioning Service basic](../../includes/iot-dps-basic.md)]
 
 ## <a name="prepare-the-environment"></a>Příprava prostředí 
 

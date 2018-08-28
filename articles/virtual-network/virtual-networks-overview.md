@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 3/23/2018
+ms.date: 8/8/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 851c8c1eb13497355038ef4a8d5f1f9326c8c3bc
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 179db61777fe60ae53d7fee553c8124d7a9f7abf
+ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33781176"
+ms.lasthandoff: 08/13/2018
+ms.locfileid: "42023206"
 ---
 # <a name="what-is-azure-virtual-network"></a>Co je Azure Virtual Network?
 
@@ -37,7 +37,10 @@ V každém [předplatném](../azure-glossary-cloud-terminology.md?toc=%2fazure%2
 
 ## <a name="communicate-with-the-internet"></a>Komunikace s internetem
 
-Všechny prostředky ve virtuální síti ve výchozím nastavení umožňují odchozí komunikaci s internetem. Příchozí komunikaci s prostředkem můžete umožnit tím, že prostředku přiřadíte veřejnou IP adresu. Další informace najdete v tématu věnovaném [veřejným IP adresám](virtual-network-public-ip-address.md).
+Všechny prostředky ve virtuální síti ve výchozím nastavení umožňují odchozí komunikaci s internetem. Příchozí komunikaci s prostředkem můžete umožnit tím, že prostředku přiřadíte veřejnou IP adresu nebo veřejný Load Balancer. Veřejnou IP adresu nebo veřejný Load Balancer můžete použít také ke správě odchozích připojení.  Další informace o odchozích připojeních v Azure najdete v tématech [Odchozí připojení](../load-balancer/load-balancer-outbound-connections.md), [Veřejné IP adresy](virtual-network-public-ip-address.md) a [Load Balancer](../load-balancer/load-balancer-overview.md).
+
+>[!NOTE]
+>Pokud používáte pouze interní [Standard Load Balancer](../load-balancer/load-balancer-standard-overview.md), odchozí připojení nebudou dostupná, dokud neurčíte, jak mají [odchozí připojení](../load-balancer/load-balancer-outbound-connections.md) pracovat s veřejnou IP adresou nebo veřejným Load Balancerem na úrovni instance.
 
 ## <a name="communicate-between-azure-resources"></a>Komunikace mezi prostředky Azure
 
