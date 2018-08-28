@@ -1,2 +1,0 @@
->[!NOTE]
-> Pokud byl váš pracovní prostor upgradován na [nový dotazovací jazyk Log Analytics](../articles/log-analytics/log-analytics-log-search-upgrade.md), budete muset převést následující dotazy. K provedení tohoto převodu můžete použít [převaděč jazyka](../articles/log-analytics/log-analytics-log-search-transition.md#language-converter).
