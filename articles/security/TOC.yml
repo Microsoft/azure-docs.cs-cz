@@ -40,22 +40,35 @@ items:
     - name: Šifrování neaktivních dat
       href: azure-security-encryption-atrest.md
     - name: Šifrování disků pro virtuální počítače IaaS
-      href: azure-security-disk-encryption-overview.md
       items:
-      - name: Požadavky na šifrování disků
-        href: azure-security-disk-encryption-prerequisites.md
-      - name: Šifrování disků pro virtuální počítače s Windows
-        href: azure-security-disk-encryption-windows.md
-      - name: Šifrování disků pro virtuální počítače s Linuxem
-        href: azure-security-disk-encryption-linux.md
+      - name: Informace o službě Azure Disk Encryption
+        href: azure-security-disk-encryption-overview.md
+      - name: Šablony Rychlý start
+        items:
+        - name: Šifrování virtuálního počítače – Azure PowerShell
+          href: quick-encrypt-vm-powershell.md
+      - name: Azure Disk Encryption
+        items:
+        - name: Požadavky na šifrování disků
+          href: azure-security-disk-encryption-prerequisites.md
+        - name: Šifrování disků pro virtuální počítače s Windows
+          href: azure-security-disk-encryption-windows.md
+        - name: Šifrování disků pro virtuální počítače s Linuxem
+          href: azure-security-disk-encryption-linux.md
       - name: Dodatek k šifrování disků
         href: azure-security-disk-encryption-appendix.md
       - name: Šifrování disků – nejčastější dotazy
         href: azure-security-disk-encryption-faq.md
       - name: Řešení potíží
         href: azure-security-disk-encryption-tsg.md
-    - name: Šifrování virtuálního počítače Azure
-      href: ../security-center/security-center-disk-encryption.md?toc=/azure/security/toc.json&bc=/azure/security/breadcrumb/toc.json
+      - name: Azure Disk Encryption s využitím aplikace Azure AD (předchozí vydaná verze)
+        items:
+        - name: Šifrování disků s využitím aplikace Azure AD – požadavky
+          href: azure-security-disk-encryption-prerequisites-aad.md
+        - name: Šifrování disků s využitím aplikace Azure AD pro virtuální počítače s Windows
+          href: azure-security-disk-encryption-windows-aad.md
+        - name: Šifrování disků s využitím aplikace Azure AD pro virtuální počítače s Linuxem
+          href: azure-security-disk-encryption-linux-aad.md
   - name: Zabezpečení služby Azure Storage
     href: security-storage-overview.md
   - name: Příručka zabezpečení úložiště
@@ -303,9 +316,9 @@ items:
         href: azure-security-threat-modeling-tool-sensitive-data.md
       - name: Správa relací
         href: azure-security-threat-modeling-tool-session-management.md
-ms.openlocfilehash: 0ec99adbb53dda738eeaa3edb5bd181b8a91c0e7
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: cb321a012d89f87022d66f50c3bc8fdcc921d6d6
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "41927252"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42887829"

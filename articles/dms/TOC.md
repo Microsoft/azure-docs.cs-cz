@@ -5,14 +5,19 @@
 ## [Vytvoření služby – Portál](quickstart-create-data-migration-service-portal.md)
 
 # Kurzy
-## [Migrace SQL Serveru do Azure SQL DB](tutorial-sql-server-to-azure-sql.md)
+## [Migrace SQL Serveru do offline Azure SQL DB](tutorial-sql-server-to-azure-sql.md)
+## [Migrace SQL Serveru do online Azure SQL DB](tutorial-sql-server-azure-sql-online.md)
 ## [Migrace SQL Serveru do Azure SQL DB MI](tutorial-sql-server-to-managed-instance.md)
+## [Migrace MySQL do Azure DB for MySQL](tutorial-mysql-azure-mysql-online.md)
 
 # Návody
 ## [Použití PowerShellu k migraci SQL Serveru do Azure SQL DB](howto-sql-server-to-azure-sql-powershell.md)
 ## [Použití PowerShellu k migraci SQL Serveru do Azure SQL DB MI](howto-sql-server-to-azure-sql-mi-powershell.md)
+## [Monitorování aktivit migrace](how-to-monitor-migration-activity.md)
 
 # Zdroje a prostředky
+## [Známé problémy – online migrace do Azure SQL DB](known-issues-azure-sql-online.md)
+## [Známé problémy – online migrace do Azure DB for MySQL](known-issues-azure-mysql-online.md)
 ## [Zpětná vazba na webu User Voice](https://feedback.azure.com/forums/906100-azure-database-migration-service)
 ## [Plány Azure do budoucna](https://azure.microsoft.com/roadmap/)
 ## [Průvodce migrací databáze](https://aka.ms/datamigration)

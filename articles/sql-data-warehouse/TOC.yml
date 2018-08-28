@@ -5,8 +5,18 @@ items:
   items:
   - name: Informace o službě SQL Data Warehouse
     href: sql-data-warehouse-overview-what-is.md
+  - name: Architektura služby SQL Data Warehouse
+    href: massively-parallel-processing-mpp-architecture.md
+  - name: Jednotky datového skladu
+    href: what-is-a-data-warehouse-unit-dwu-cdwu.md
   - name: Tahák
     href: cheat-sheet.md
+  - name: Osvědčené postupy
+    href: sql-data-warehouse-best-practices.md
+  - name: Omezení kapacity
+    href: sql-data-warehouse-service-capacity-limits.md
+  - name: Nejčastější dotazy
+    href: sql-data-warehouse-overview-faq.md
 - name: Poznámky k verzi
   items:
   - name: Srpen 2018
@@ -33,7 +43,7 @@ items:
       href: pause-and-resume-compute-portal.md
     - name: PowerShell
       href: pause-and-resume-compute-powershell.md
-  - name: Zvětšení a zmenšení
+  - name: Měřítko
     items:
     - name: Portál
       href: quickstart-scale-compute-portal.md
@@ -78,18 +88,6 @@ items:
     items:
     - name: Přehled
       href: sql-data-warehouse-overview-develop.md
-    - name: Komponenty datového skladu
-      href: sql-data-warehouse-overview-workload.md
-    - name: Osvědčené postupy
-      href: sql-data-warehouse-best-practices.md
-    - name: Architektura MPP
-      href: massively-parallel-processing-mpp-architecture.md
-    - name: Jednotky datového skladu
-      href: what-is-a-data-warehouse-unit-dwu-cdwu.md
-    - name: Omezení kapacity
-      href: sql-data-warehouse-service-capacity-limits.md
-    - name: Nejčastější dotazy
-      href: sql-data-warehouse-overview-faq.md
     - name: Tabulky
       items:
       - name: Přehled
@@ -112,14 +110,6 @@ items:
         href: sql-data-warehouse-tables-statistics.md
       - name: Dočasné
         href: sql-data-warehouse-tables-temporary.md
-    - name: Dotazy
-      items:
-      - name: Dynamické SQL
-        href: sql-data-warehouse-develop-dynamic-sql.md
-      - name: Možnosti pro seskupení
-        href: sql-data-warehouse-develop-group-by-options.md
-      - name: Popisky
-        href: sql-data-warehouse-develop-label.md
     - name: Elementy jazyka T-SQL
       items:
       - name: Smyčky
@@ -136,6 +126,14 @@ items:
         href: sql-data-warehouse-develop-variable-assignment.md
       - name: Zobrazení
         href: sql-data-warehouse-develop-views.md
+  - name: Dotazování
+    items:
+    - name: Dynamické SQL
+      href: sql-data-warehouse-develop-dynamic-sql.md
+    - name: Možnosti pro seskupení
+      href: sql-data-warehouse-develop-group-by-options.md
+    - name: Popisky
+      href: sql-data-warehouse-develop-label.md
   - name: Správa úloh
     items:
     - name: Třídy prostředků a správa úloh
@@ -278,9 +276,9 @@ items:
       href: sql-data-warehouse-partner-data-integration.md
     - name: Správa dat
       href: sql-data-warehouse-partner-data-management.md
-ms.openlocfilehash: e9148d92614cf0c383ab1e915cce3e16bb9ff7c0
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: bdda7231ea4703b33c8547e493cbd47b68cf9aab
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42745210"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42915121"
