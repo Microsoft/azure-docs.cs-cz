@@ -9,12 +9,12 @@ ms.component: translator-speech
 ms.topic: article
 ms.date: 3/5/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 0a6d3775238512cacc21fb3e47f395e37c3fd29b
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: c8c1945d8343ad966fe4b09f67099bccdae4be29
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "41987594"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128533"
 ---
 # <a name="quickstart-for-microsoft-translator-speech-api-with-c"></a>Rychlý start pro rozhraní Microsoft Translator Speech API pomocí jazyka C# 
 <a name="HOLTop"></a>
@@ -25,7 +25,7 @@ V tomto článku se dozvíte, jak používat Microsoft Translator Speech API pro
 
 Budete potřebovat [Visual Studio 2017](https://www.visualstudio.com/downloads/) tento kód spustit na Windows. (Bude stačit bezplatná verze Community Edition.)
 
-Budete potřebovat soubor WAV s názvem "speak.wav" ve stejné složce jako spustitelný soubor, který kompilaci z níže uvedeného kódu. Tento soubor ve formátu WAV musí být ve standardní PCM, 16 bitů, 16kHz, mono formátu. Můžete získat takový WAV soubor z [převod textu na řeč API](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-apis#text-to-speech).
+Budete potřebovat soubor WAV s názvem "speak.wav" ve stejné složce jako spustitelný soubor, který kompilaci z níže uvedeného kódu. Tento soubor ve formátu WAV musí být ve standardní PCM, 16 bitů, 16kHz, mono formátu.
 
 Musíte mít [účet rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s **Microsoft Translator Speech API**. Budete potřebovat placené předplatné klíče z vašeho [řídicí panel Azure](https://portal.azure.com/#create/Microsoft.CognitiveServices).
 

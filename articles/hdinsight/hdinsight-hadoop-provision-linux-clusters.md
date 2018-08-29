@@ -4,18 +4,18 @@ description: Nastavení systému Hadoop, Kafka, Spark, HBase, služby ML nebo cl
 keywords: nastavení clusteru hadoop, cluster kafka nastavení, nastavení clusteru spark, co je cluster hadoop
 services: hdinsight
 author: jasonwhowell
+ms.author: jasonh
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 05/14/2018
-ms.author: jasonh
-ms.openlocfilehash: f325e49695cab44d5c3d9fe94cd207755d136f7b
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.date: 08/27/2018
+ms.openlocfilehash: 0df38e1bd9c4db1cf988beab31b1c3189da4f0c2
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43107125"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43127903"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-hadoop-spark-kafka-and-more"></a>Nastavení clusterů v HDInsight pomocí Hadoop, Spark, Kafka a další
 
@@ -86,7 +86,7 @@ Zvolte verzi HDInsight pro tento cluster. Další informace najdete v tématu [p
 
 ### <a name="enterprise-security-package"></a>Balíček zabezpečení podniku
 
-Typy clusterů Hadoop, Spark a interaktivní dotazy, můžete povolit **Enterprise Security Package**. Tento balíček poskytuje možnost, aby se nastavení zabezpečení clusteru pomocí Apache Ranger a integraci se službou Azure Active Directory. Další informace najdete v tématu [Enterprise Security Package v Azure HDInsight](./domain-joined/apache-domain-joined-introduction.md).
+Typy clusterů Hadoop, Spark a interaktivní dotazy, můžete povolit **Enterprise Security Package**. Tento balíček poskytuje možnost, aby se nastavení zabezpečení clusteru pomocí Apache Ranger a integrace s Azure Active Directory. Další informace najdete v tématu [Enterprise Security Package v Azure HDInsight](./domain-joined/apache-domain-joined-introduction.md).
 
 ![hdinsight vytvořit možnosti zvolte balíčkem enterprise security package](./media/hdinsight-hadoop-provision-linux-clusters/hdinsight-creation-enterprise-security-package.png)
 
@@ -99,7 +99,7 @@ S clustery HDInsight můžete nakonfigurovat dva uživatelské účty při vytv�
 * Uživatel HTTP: výchozí uživatelské jméno je *správce*. Využívá základní konfigurace na portálu Azure portal. Někdy se označuje jako "Clusteru uživatele."
 * Uživatele SSH (Linuxové clustery): umožňuje připojení ke clusteru přes SSH. Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-Enterprise security package umožňuje integraci HDInsight s Active Directory a Apache Ranger. Můžete vytvořit více uživatelů pomocí balíček zabezpečení rozlehlé sítě.
+Enterprise security package umožňuje integraci HDInsight s Active Directory a Apache Ranger. Můžete vytvořit více uživatelů pomocí balíčkem Enterprise security package.
 
 ## <a name="location"></a>Umístění (oblastí) pro clustery a úložiště
 
@@ -140,10 +140,23 @@ Pokud chcete zvýšit výkon při použití Oozie, použijte vlastní úložišt
 > [!IMPORTANT]
 > Vlastní úložiště metadat Oozie nemůže znovu použít. Pokud chcete používat vlastní úložiště metadat Oozie, musíte zadat prázdnou databázi SQL Azure při vytváření clusteru HDInsight.
 
+
+## <a name="custom-cluster-setup"></a>Nastavení vlastního clusteru
+Sestavení vlastního clusteru instalační program na rychlé vytvoření nastavení a přidá následující možnosti:
+- [Aplikace HDInsight](#install-hdinsight-applications-on-clusters)
+- [Velikost clusteru](#configure-cluster-size)
+- [Akce skriptů](#advanced-settings-script-actions)
+- [Virtuální síť](#advanced-settings-extend-clusters-with-a-virtual-network)
+
+## <a name="install-hdinsight-applications-on-clusters"></a>Instalace aplikací HDInsight v clusterech
+
+Aplikace HDInsight je aplikace, kterou uživatelé mohou nainstalovat na clusteru HDInsight se systémem Linux. Aplikace může používat, pokud se společností Microsoft, třetími stranami nebo které jste sami vývoj. Další informace najdete v tématu [instalace aplikací Hadoop jiných výrobců v Azure HDInsight](hdinsight-apps-install-applications.md).
+
+Většina aplikací HDInsight jsou nainstalované na prázdných hraničních uzlů.  Prázdných hraničních uzlů je virtuální počítač s Linuxem pomocí stejných nástrojů klient nainstalovaný a nakonfigurovaný jako hlavní uzel. Hraniční uzel můžete použít pro přístup ke clusteru, testování vaší klientské aplikace a který je hostitelem klientských aplikací. Další informace najdete v tématu [použití prázdných hraničních uzlů v HDInsight](hdinsight-apps-use-edge-node.md).
+
 ## <a name="configure-cluster-size"></a>Konfigurovat velikost clusteru
 
 Pro uzel využití se účtují, za předpokladu, cluster existuje. Účtování začne při vytvoření clusteru a skončí jeho odstraněním. Clusterů nejde zrušit přidělení nebo pozastavit.
-
 
 ### <a name="number-of-nodes-for-each-cluster-type"></a>Počet uzlů pro každý typ clusteru
 Každý typ clusteru má svůj vlastní počet uzlů, terminologie pro uzly a výchozí velikosti virtuálního počítače. V následující tabulce počet uzlů pro každý typ uzlu je v závorkách.
@@ -191,20 +204,6 @@ A zjistěte, co hodnotou, kterou jste používali k určení velikosti virtuáln
 >
 
 Další informace najdete v tématu [velikosti virtuálních počítačů](../virtual-machines/windows/sizes.md). Informace o různých velikostí cenách najdete v tématu [ceny HDInsight](https://azure.microsoft.com/pricing/details/hdinsight).   
-
-## <a name="custom-cluster-setup"></a>Nastavení vlastního clusteru
-Sestavení vlastního clusteru instalační program na rychlé vytvoření nastavení a přidá následující možnosti:
-- [Aplikace HDInsight](#hdinsight-applications)
-- [Velikost clusteru](#cluster-size)
-- Upřesnit nastavení
-  - [Akce skriptů](#customize-clusters-using-script-action)
-  - [Virtuální síť](#use-virtual-network)
-
-## <a name="install-hdinsight-applications-on-clusters"></a>Instalace aplikací HDInsight v clusterech
-
-Aplikace HDInsight je aplikace, kterou uživatelé mohou nainstalovat na clusteru HDInsight se systémem Linux. Aplikace může používat, pokud se společností Microsoft, třetími stranami nebo které jste sami vývoj. Další informace najdete v tématu [instalace aplikací Hadoop jiných výrobců v Azure HDInsight](hdinsight-apps-install-applications.md).
-
-Většina aplikací HDInsight jsou nainstalované na prázdných hraničních uzlů.  Prázdných hraničních uzlů je virtuální počítač s Linuxem pomocí stejných nástrojů klient nainstalovaný a nakonfigurovaný jako hlavní uzel. Hraniční uzel můžete použít pro přístup ke clusteru, testování vaší klientské aplikace a který je hostitelem klientských aplikací. Další informace najdete v tématu [použití prázdných hraničních uzlů v HDInsight](hdinsight-apps-use-edge-node.md).
 
 ## <a name="advanced-settings-script-actions"></a>Upřesňující nastavení: akcí skriptů
 

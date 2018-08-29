@@ -9,16 +9,16 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: 551439d28bcd7c64faf7ac6ac7388145456f7a53
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: b709b2791ae7472689cc2c7ca747f75ce0f1e6bf
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41987654"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126086"
 ---
 # <a name="quickstart-recognize-speech-in-a-uwp-app-using-the-speech-sdk"></a>Rychlý start: Rozpoznávat řeč v aplikace pro UPW pomocí sady SDK pro řeč
 
-[!include[Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
+[!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 V tomto článku se dozvíte, jak vytvořit aplikaci univerzální platformy Windows (UPW) přepisy převod řeči na text pomocí Cognitive Services SDK řeči.
 Aplikace je sestavená s [Microsoft Cognitive Services řeči balíčku sady SDK NuGet](https://aka.ms/csspeech/nuget) a Microsoft Visual Studio 2017.
@@ -112,7 +112,7 @@ Aplikace je sestavená s [Microsoft Cognitive Services řeči balíčku sady SDK
 
     ![](media/sdk/qs-csharp-uwp-11-ui-result.png)
 
-[!include[Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
+[!INCLUDE [Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 Hledat v této ukázce `quickstart/csharp-uwp` složky.
 
 ## <a name="next-steps"></a>Další postup

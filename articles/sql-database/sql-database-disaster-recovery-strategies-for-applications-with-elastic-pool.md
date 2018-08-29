@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
-ms.date: 07/16/2018
+ms.date: 08/27/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 6952e26898e4ff27dd7c2f6780dcb9b8b224460b
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 8f365d123a234f367a1415232a714d2c18663b63
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092541"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124066"
 ---
 # <a name="disaster-recovery-strategies-for-applications-using-sql-database-elastic-pools"></a>Strategie zotavení po havárii pro aplikace využívající elastické fondy SQL Database
 V průběhu let jsme zjistili, že cloud services nejsou spolehlivá a stát katastrofickými incidenty. SQL Database nabízí několik možnosti, které zajišťuje nepřetržitý chod podniků vaší aplikace zadejte po těchto incidentech. [Elastické fondy](sql-database-elastic-pool.md) a izolované databáze podporují stejný druh možnosti zotavení po havárii. Tento článek popisuje několik strategií zotavení po Havárii pro elastické fondy, které využívají tyto funkce provozní kontinuity SQL Database.

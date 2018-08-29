@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: douglasl
-ms.openlocfilehash: 9bcc73d262f4bc455c923fe0eb7c04c7cf090830
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 8ca7ce2586513373c58552bb1f56b94715f15076
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505357"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128445"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Monitorování prostředí integration runtime ve službě Azure Data Factory  
 **Prostředí Integration runtime** je výpočetní infrastruktura, službou Azure Data Factory používá k poskytování různé možnosti integrace dat v různých síťových prostředích. Existují tři typy prostředí integration runtime nabízí datové továrny:
@@ -85,7 +85,7 @@ Některá nastavení vlastnosti dávat větší smysl, pokud existují dva nebo 
 
 Výchozí hodnota je nastavený limit souběžných úloh podle velikosti počítačů. Faktory, které slouží k výpočtu tato hodnota závisí na množství paměti RAM a počet jader procesoru počítače. Takže více jader a větší množství paměti, tím vyšší výchozí omezení souběžných úloh.
 
-Horizontální navýšení kapacity zvýšením počtu uzlů. Pokud zvýšíte počet uzlů, je limit souběžných úloh součet hodnot limitu souběžných úloh všech dostupných uzlů.  Například pokud se jeden uzel umožňuje spouštět až 12 souběžných úloh, přidáte tři uzly podobné vám umožní spustit určitý počet souběžných úloh 48 (4 x 12). Doporučujeme, abyste zvýšili limit souběžných úloh pouze v případě, že se zobrazí využití prostředků nízké výchozí hodnoty na každém uzlu.
+Horizontální navýšení kapacity zvýšením počtu uzlů. Pokud zvýšíte počet uzlů, limit souběžných úloh je součet hodnot limitu souběžných úloh všech dostupných uzlů.  Například pokud se jeden uzel umožňuje spouštět až 12 souběžných úloh, přidáte tři uzly podobné vám umožní spustit určitý počet souběžných úloh 48 (4 x 12). Doporučujeme, abyste zvýšili limit souběžných úloh pouze v případě, že se zobrazí využití prostředků nízké výchozí hodnoty na každém uzlu.
 
 Můžete přepsat počítané výchozí hodnotu na webu Azure Portal. Vyberte Vytvořit > připojení > prostředí Integration runtime > Upravit > uzlů > změnit hodnotu souběžných úloh na uzlu. Můžete také použít rutinu prostředí PowerShell [aktualizace azurermdatafactoryv2integrationruntimenode](https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactoryv2/update-azurermdatafactoryv2integrationruntimenode?view=azurermps-6.4.0#examples) příkazu.
   
@@ -189,7 +189,7 @@ Prostředí Azure-SSIS integration runtime je plně spravovaný cluster Azure vi
 | Spouštění | Připravuje se tento uzel. |
 | K dispozici. | Tento uzel je připravená k nasazení a spouštění balíčků služby SSIS. |
 | Recyklace | Je tento uzel se opravit nebo restartování. |
-| Není k dispozici | Tento uzel není připravená k nasazení a spouštění balíčků služby SSIS a obsahuje užitečné chyby nebo problémy, které by se dala přeložit. |
+| Není dostupný | Tento uzel není připravená k nasazení a spouštění balíčků služby SSIS a obsahuje užitečné chyby nebo problémy, které by se dala přeložit. |
 
 ### <a name="status-overall-azure-ssis-integration-runtime"></a>Stav (celkové prostředí Azure-SSIS integration runtime)
 

@@ -6,14 +6,14 @@ author: jj09
 manager: jlembicz
 ms.service: search
 ms.topic: conceptual
-ms.date: 07/14/2016
+ms.date: 08/26/2018
 ms.author: jjed
-ms.openlocfilehash: 2f52ed0ab302d1c3dad699258287f6edd7197cef
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 6fed5a8afe6030038752d540bfabbc446c57db2c
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525616"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124147"
 ---
 # <a name="get-started-with-azure-search-in-java"></a>Začínáme s Azure Search v Javě
 > [!div class="op_single_selector"]
@@ -28,9 +28,9 @@ Pokud chcete tuto ukázku spustit, musíte mít službu Azure Search, ke které 
 
 Pro vytvoření a testování tohoto příkladu jsme použili následující software:
 
-* [Integrované vývojové prostředí Eclipse pro vývojáře v jazyce Java EE](https://eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/lunar) Ujistěte se, že jste stáhli verzi EE. Jeden z kroků ověření vyžaduje funkci, která se nachází pouze v této edici.
-* [JDK 8u40](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
-* [Apache Tomcat 8.0](http://tomcat.apache.org/download-80.cgi)
+* [Integrované vývojové prostředí Eclipse pro vývojáře v jazyce Java EE](https://www.eclipse.org/downloads/packages/release/photon/r/eclipse-ide-java-ee-developers) Ujistěte se, že jste stáhli verzi EE. Jeden z kroků ověření vyžaduje funkci, která se nachází pouze v této edici.
+* [JDK 8u181](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+* [Apache Tomcat 8.5.33](https://tomcat.apache.org/download-80.cgi#8.5.33)
 
 ## <a name="about-the-data"></a>Informace o datech
 Tato ukázková aplikace používá data agentury [United States Geological Services (USGS)](http://geonames.usgs.gov/domestic/download_data.htm), která jsou filtrovaná pro stát Rhode Island, aby se zmenšila velikost datové sady. Pomocí těchto dat sestavíme vyhledávací aplikaci, která najde významné budovy, například nemocnice a školy, a geologické prvky, jako jsou vodní toky, jezera a vrcholy.
@@ -51,11 +51,11 @@ Následující seznam popisuje soubory, které se vztahují k tomuto příkladu.
 * SearchServiceHelper.java: Pomocná třída, která poskytuje statické metody.
 * Document.java: Poskytuje datový model.
 * config.properties: Nastavuje adresu URL služby Search a klíč api-key.
-* Pom.xml: Závislost Maven
+* Pom.XML: Závislost Maven
 
 <a id="sub-2"></a>
 
-## <a name="find-the-service-name-and-api-key-of-your-azure-search-service"></a>Nalezení názvu služby a klíče api-key služby Azure Search
+## <a name="find-the-service-name-and-api-key-of-your-azure-search-service"></a>Nalezení názvu služby a klíče API služby Azure Search
 Všechna volání rozhraní API REST služby Azure Search vyžadují, abyste zadali adresu URL služby a klíč api-key. 
 
 1. Přihlaste se k [Portálu Azure](https://portal.azure.com).

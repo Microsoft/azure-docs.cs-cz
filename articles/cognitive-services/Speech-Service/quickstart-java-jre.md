@@ -9,16 +9,16 @@ ms.technology: Speech
 ms.topic: article
 ms.date: 08/16/2018
 ms.author: fmegen
-ms.openlocfilehash: 11aba1ae6f49d6c00fabd928ae3aefedcbea8ed8
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 923ab3378d5e2d833e11c5111d4dd9964fea6dc4
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40234319"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126609"
 ---
 # <a name="quickstart-recognize-speech-in-java-windows-or-linux"></a>Rychlý start: Rozpoznávat řeč v jazyce Java (Windows nebo Linux)
 
-[!include[Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
+[!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 Tento dokument popisuje, jak vytvořit aplikace založené na jazyce Java konzoly pro Java běhové prostředí (prostředí JRE), který využívá sadou SDK pro řeč.
 Aplikace je založena na Microsoft Cognitive Services SDK Maven balíček.
@@ -107,7 +107,7 @@ Další 15 sekund hlasový vstup z mikrofonu se bude používat a protokolovány
 
 ![Výstup na konzole po úspěšné rozpoznávání](media/sdk/qs-java-jre-07-console-output.png)
 
-[!include[Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
+[!INCLUDE [Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 Hledat v této ukázce `quickstart/java-jre` složky.
 
 ## <a name="next-steps"></a>Další postup

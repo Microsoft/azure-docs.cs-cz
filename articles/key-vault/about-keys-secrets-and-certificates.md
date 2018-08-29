@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2018
 ms.author: bryanla
-ms.openlocfilehash: 962f9be53ce0b2022e8e5490bdeb04b2eefb4d7c
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: f36e0e3ddc605d960ed764252308cbf09578832c
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42060748"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126138"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Informace o klíčích, tajných kódů a certifikátů
 Služba Azure Key Vault umožňuje ukládat a používat kryptografických klíčů v rámci prostředí Microsoft Azure. Key Vault podporuje více typy klíčů a algoritmy a umožňuje použití z moduly hardwarového zabezpečení (HSM) pro vysoká hodnota klíče. Kromě toho služby Key Vault umožňuje bezpečné ukládání tajných klíčů. Tajné klíče jsou objekty octet omezenou velikost se žádné specifické sémantiku. Key Vault podporuje také certifikáty, které jsou vytvořené s využitím klíče a tajné kódy a přidat funkci automatického obnovení.
@@ -174,7 +174,7 @@ Azure Key Vault podporuje následující operace na klíčové objekty:
 -   **Zálohování**: Exportuje klíče ve formě chráněné.  
 -   **Obnovit**: importovat dříve zálohovaná klíč.  
 
-Další informace najdete v tématu [klíče operace v odkaz na rozhraní REST API služby Key Vault](/rest/api/keyvault).  
+Další informace najdete v tématu [klíče operací v Key Vault REST API odkaz](/rest/api/keyvault).  
 
 Po vytvoření klíče ve službě Azure Key Vault může následující kryptografické operace provádějí pomocí klíče:  
 
@@ -283,7 +283,7 @@ Tato oprávnění můžete použít, na základě na objekt v položky řízení
 -   *Odstranit*: odstranění tajného klíče  
 -   *všechny*: všechna oprávnění  
 
-Další informace o práci s tajnými kódy, naleznete v tématu [tajných kódů operací v odkaz na rozhraní REST API služby Key Vault](/rest/api/keyvault).  
+Další informace o práci s tajnými kódy, naleznete v tématu [tajných kódů operací v Key Vault REST API odkaz](/rest/api/keyvault).  
 
 ###  <a name="BKMK_SecretTags"></a> Značky tajného kódu  
 Můžete zadat další metadata specifická pro aplikaci ve formě značek. Azure Key Vault podporuje až 15 značek, z nichž každá může mít 256 znaků názvu a hodnoty 256 znaků.  
@@ -443,7 +443,7 @@ Pokud zásady certifikátu je nastavena na automatické obnovení, se odešle oz
 -   *deleteissuers*: umožňuje odstranit vystavitelů certifikátů služby Key Vault  
 -   *všechny*: uděluje všechna oprávnění  
 
-Další informace najdete v tématu [operace v certifikátu odkaz na rozhraní REST API služby Key Vault](/rest/api/keyvault). 
+Další informace najdete v tématu [operace v referenci rozhraní REST API služby Key Vault s certifikáty](/rest/api/keyvault). 
 
 ## <a name="see-also"></a>Viz také
 

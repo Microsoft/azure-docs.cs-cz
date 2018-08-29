@@ -4,15 +4,15 @@ description: Poskytuje přehled zařízení Kolektoru a jeho konfiguraci.
 author: ruturaj
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/27/2018
+ms.date: 08/25/2018
 ms.author: ruturajd
 services: azure-migrate
-ms.openlocfilehash: c99d0f74dbb8cc28cabebae60fe10645f4bdb3b6
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: 551276f88f5c27cd860a400a5769c95f4d94cbbb
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308455"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122883"
 ---
 # <a name="collector-appliance"></a>Zařízení kolektoru
 
@@ -58,6 +58,30 @@ Zařízení kolektoru musí být připojené k Internetu, abychom mohli poslat i
 
 > [!NOTE]
 > Servery proxy server založený na protokolu HTTPS nepodporuje kolektoru.
+
+#### <a name="internet-connectivity-with-intercepting-proxy"></a>Připojení k Internetu pomocí proxy zachycení
+
+Pokud proxy server, který používáte pro připojení k Internetu je prověřuje zachycovací proxy server, musíte importovat certifikát proxy serveru do vašeho virtuálního počítače kolektoru. Toto jsou pokyny, jak můžete importovat certifikát do virtuálního počítače kolektoru.
+
+1. Přejděte ve virtuálním počítači kolektoru **nabídky Start** a vyberte a otevřete **spravovat certifikáty počítače**.
+2. V nástroji pro certifikáty, v levém podokně v části **certifikáty - místní počítač**, Najít **Důvěryhodní vydavatelé**. V části **Důvěryhodní vydavatelé**, klikněte na tlačítko **certifikáty** zobrazíte seznam certifikátů v podokně na pravé straně.
+
+    ![Nástroje pro certifikáty](./media/concepts-intercepting-proxy/certificates-tool.png)
+
+3. Zkopírujte certifikát proxy serveru na virtuálním počítači kolektoru. Bude pravděpodobně nutné kontaktovat správce týmu sítě ve vaší organizaci k získání tohoto certifikátu.
+4. Dvakrát klikněte na certifikát, který chcete otevřít. Klikněte na tlačítko **nainstalovat certifikát**. Tím přejdete na Průvodce importem certifikátu.
+5. V Průvodci importem certifikátu pro Store umístění, zvolte **místního počítače**. **Klikněte na tlačítko Další**.
+
+    ![Umístění úložiště certifikátů](./media/concepts-intercepting-proxy/certificate-store-location.png)
+
+6. Zvolte možnost **všechny certifikáty umístit v následujícím úložišti**. Klikněte na tlačítko **Procházet** a vyberte **Důvěryhodní vydavatelé** ze seznamu certifikátů, které vytvoříte. Klikněte na **Další**.
+
+    ![Úložiště certifikátů](./media/concepts-intercepting-proxy/certificate-store.png)
+    
+7. Klikněte na **Dokončit**. To certifikát budete importovat. 
+8. Volitelně můžete ověřit, že je certifikát importován tak, že otevřete nástroj certifikáty jako v kroku 1 a 2 výše.
+9. V aplikaci Azure Migrate collector ověřte, že kontrolu požadovaných součástí připojení k Internetu je úspěšné.
+
 
 #### <a name="whitelisting-urls-for-internet-connection"></a>Přidávání na seznam povolených adres URL pro připojení k Internetu
 

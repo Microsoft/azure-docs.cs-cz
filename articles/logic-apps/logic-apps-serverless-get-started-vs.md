@@ -3,21 +3,20 @@ title: Vytvářejte aplikace bez serveru pomocí sady Visual Studio | Dokumentac
 description: Vytvořit, nasadit a spravovat vaši první aplikaci bez serveru s Azure Logic Apps a Azure Functions v sadě Visual Studio
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
-ms.reviewer: jehollan, LADocs
-ms.suite: integration
+ms.reviewer: klam, LADocs
+ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.custom: vs-azure
 ms.topic: article
 ms.date: 08/01/2018
-ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
-ms.openlocfilehash: ed56e5f2a4a0d9e3a5e8d8c80e0fd20dbfb098bb
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: a69c129d5ae1405462e3a54a24cd2edbad2a86a7
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42444782"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126773"
 ---
 # <a name="build-your-first-serverless-app-with-azure-logic-apps-and-azure-functions---visual-studio"></a>Vytvořte svoji první aplikaci bez serveru s Azure Logic Apps a Azure Functions – Visual Studio
 

@@ -4,14 +4,14 @@ description: Popisuje, jak posoudit velký počet místních počítačů pomoc�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 08/25/2018
 ms.author: raynew
-ms.openlocfilehash: 06905a2f16a23e5a7c4612f4b567aaf86322924d
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 553e0d6569a3a35802703ef58e1460878dcd930b
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42060085"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43127510"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Zkoumání a vyhodnocení rozsáhlých prostředí VMware
 
@@ -22,7 +22,7 @@ Azure Migrate má limit 1 500 počítačů pro každý projekt, tento článek p
 - **VMware**: virtuální počítače, které chcete migrovat musí být spravované přes vCenter Server verze 5.5, 6.0 nebo 6.5. Kromě toho potřebujete jednoho hostitele ESXi ve verzi 5.0 nebo novější. Chcete-li nasadit virtuální počítač kolektoru.
 - **účet vCenter**: potřebujete účet jen pro čtení pro přístup k systému vCenter Server. Azure Migrate ho použije ke zjištění místních virtuálních počítačů.
 - **Oprávnění**: V systému vCenter Server, musíte mít oprávnění k vytvoření virtuálního počítače pomocí importu souboru ve formátu OVA.
-- **Nastavení statistiky**: nastavení statistiky systému vCenter Server by měla být nastavená na úroveň 3, před zahájením nasazení. Pokud úroveň je nižší než 3, posouzení bude fungovat, ale nebudou shromažďovat údaje o výkonu pro úložiště a sítě. Doporučené velikosti v tomto případě bude zakládat na údaje o výkonu pro využití procesoru a paměti a konfigurační data pro disk a síťové adaptéry.
+- **Nastavení statistiky**: nastavení statistiky systému vCenter Server by měla být nastavená na úroveň 3, před zahájením nasazení. Úroveň statistiky má být nastavena na hodnotu 3 pro každý den, týden a měsíc kolekce intervalech. Pokud úroveň je nižší než 3 pro všechny tři sběru dat, posouzení bude fungovat, ale nebudou shromažďovat data o výkonu pro úložiště a sítě. Doporučené velikosti bude potom založena na údaje o výkonu pro využití procesoru a paměti a konfigurační data pro disk a síťové adaptéry.
 
 
 ### <a name="set-up-permissions"></a>Nastavení oprávnění

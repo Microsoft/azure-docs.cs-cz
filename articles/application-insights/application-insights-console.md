@@ -11,15 +11,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/15/2018
+ms.date: 08/28/2018
 ms.reviewer: lmolkova
 ms.author: mbullwin
-ms.openlocfilehash: b2b5abf3b3b170e60df3aa2d6ec5ce471db74f80
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 6d161a49b35bbdfedcb27dd91f9f09dcf7ba4133
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42057488"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122022"
 ---
 # <a name="application-insights-for-net-console-applications"></a>Application Insights pro .NET konzolové aplikace
 [Application Insights](app-insights-overview.md) umožňuje monitorovat webové aplikace z hlediska dostupnosti, výkonu a využití.
@@ -44,7 +44,7 @@ telemetryClient.TrackTrace("Hello World!");
 Může inicializace a konfigurace Application Insights z kódu nebo použití `ApplicationInsights.config` souboru. Zajistěte, aby se co nejdříve stane inicializace. 
 
 > [!NOTE]
-> Odkaz na pokyny **soubor ApplicationInsights.config** platí pouze pro aplikace, které cílí na .NET Standard a neplatí pro aplikace .NET Core. 
+> Odkaz na pokyny **soubor ApplicationInsights.config** platí pouze pro aplikace, které cílí na rozhraní .NET Framework a neplatí pro aplikace .NET Core.
 
 ### <a name="using-config-file"></a>Pomocí konfiguračního souboru
 

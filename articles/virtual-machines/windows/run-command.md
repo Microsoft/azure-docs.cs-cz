@@ -8,12 +8,12 @@ ms.author: gwallace
 ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: f42d3fb709807d77fb0f390b6da76efc4a60dced
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 60cdcbeba0c4149d8f049bbab553bd658c965338
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43090566"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128591"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-with-run-command"></a>Spouštění skriptů prostředí PowerShell ve virtuálním počítači Windows pomocí příkazu Spustit
 
@@ -63,7 +63,6 @@ Tato tabulka zobrazuje seznam příkazů, které jsou k dispozici pro virtuáln�
 |**EnableAdminAccount**|Zkontroluje, jestli je zakázaný účet místního správce a pokud ano povolí ho.|
 |**IPConfig**| Zobrazí podrobné informace o IP adresu, masku podsítě a výchozí bránu pro každý adaptér vázaný na TCP/IP.|
 |**RDPSettings**|Kontroluje, nastavení registru a nastavení zásad domény. Akce zásad navrhuje, počítač je součástí domény nebo upraví nastavení na výchozí hodnoty.|
-|**ResetAccountPassword**| Resetuje heslo účtu předdefinovaného účtu Administrator.|
 |**ResetRDPCert**|Odstraní certifikát SSL, které jsou vázané na naslouchací proces RDP a obnoví zabezpečení listerner RDP na výchozí hodnoty. Tento skript použijte, pokud nastanou nějaké problémy s certifikátem.|
 |**SetRDPPort**|Nastaví výchozí nebo uživatel zadat číslo portu pro připojení ke vzdálené ploše. Povolí pravidlo brány firewall pro příchozí přístup k portu.|
 

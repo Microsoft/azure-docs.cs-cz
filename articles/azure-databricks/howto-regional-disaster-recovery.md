@@ -8,24 +8,30 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 08/27/2018
-ms.openlocfilehash: 46cb9eaee1d56a96801065ae0a349aa0b1be85e0
-ms.sourcegitcommit: baed5a8884cb998138787a6ecfff46de07b8473d
+ms.openlocfilehash: 671e18346651a40d7f286e984117ce0c9ae62364
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/28/2018
-ms.locfileid: "43115237"
+ms.locfileid: "43125965"
 ---
 # <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Místní zotavení po havárii pro clustery Azure Databricks
 
 Tento článek popisuje architekturu zotavení po havárii, která je pro clustery Azure Databricks a kroky k provedení tohoto návrhu.
 
-## <a name="control-plan-architecture"></a>Architektura ovládacího prvku plán
+## <a name="azure-databricks-overview"></a>Přehled služby Azure Databricks
 
-Na vysoké úrovni, když vytvoříte pracovní prostor Azure Databricks na portálu Azure [spravovaných zařízení](../managed-applications/overview.md) nasazený jako prostředek Azure v rámci vašeho předplatného, a to v oblasti Azure (například USA – západ) vyberete. Toto zařízení je nasazena v [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) s [skupinu zabezpečení sítě](../virtual-network/manage-network-security-group.md) a účet služby Azure Storage k dispozici v rámci vašeho předplatného. Virtuální síť poskytuje úroveň zabezpečení perimetru do pracovního prostoru Databricks a je chráněný přes skupinu zabezpečení sítě. V pracovním prostoru můžete vytvořit Databricks clusterů zadáním pracovních procesů a ovladačů typu virtuálního počítače a modulem runtime Databricks verze. Trvalých dat je k dispozici ve vašem účtu úložiště, který může být Azure Blob Storage nebo Azure Data Lake Store. Jakmile je cluster vytvořen, můžete spustit úlohy prostřednictvím koncových bodů rozhraní ODBC/JDBC poznámkových bloků, rozhraní REST API, připojením na konkrétním clusteru.
+Azure Databricks je rychlá, snadná a spolupráci založená na Apache Sparku analytická služba. Pro velké objemy dat profilace, data (raw nebo strukturovaná) je ingestovat v Azure pomocí Azure Data Factory v dávkách nebo streamuje téměř v reálném čase pomocí Kafka, Centrum událostí nebo službu IoT Hub. Tato data území ve službě data lake pro dlouhodobé trvalé úložiště v Azure Blob Storage nebo Azure Data Lake Storage. Jako součást pracovního postupu analytics pomocí Azure Databricks se číst data z různých zdrojů dat, jako [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md), [Azure Data Lake Storage](../data-lake-store/index.md), [služby Azure Cosmos DB](../cosmos-db/index.yml) , nebo [Azure SQL Data Warehouse](../sql-data-warehouse/index.md) a znovu je zapnout na Převratné přehledy s využitím Sparku.
+
+![Databricks kanálu](media/howto-regional-disaster-recovery/databricks-pipeline.png)
+
+## <a name="azure-databricks-architecture"></a>Architektura služby Azure Databricks
+
+Na vysoké úrovni, když vytvoříte pracovní prostor Azure Databricks na portálu Azure [spravovaných zařízení](../managed-applications/overview.md) nasazený jako prostředek Azure v rámci vašeho předplatného, a to ve vybrané oblasti Azure (například USA – západ). Toto zařízení je nasazena v [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) s [skupinu zabezpečení sítě](../virtual-network/manage-network-security-group.md) a účet služby Azure Storage k dispozici v rámci vašeho předplatného. Virtuální síť poskytuje úroveň zabezpečení perimetru do pracovního prostoru Databricks a je chráněný přes skupinu zabezpečení sítě. V pracovním prostoru můžete vytvořit clustery Databricks zadáním pracovních procesů a ovladačů typu virtuálního počítače a modulem runtime Databricks verze. Trvalých dat je k dispozici ve vašem účtu úložiště, který může být Azure Blob Storage nebo Azure Data Lake Store. Jakmile je cluster vytvořen, můžete spustit úlohy prostřednictvím koncových bodů rozhraní ODBC/JDBC poznámkových bloků, rozhraní REST API, připojením na konkrétním clusteru.
 
 Rovina řízení Databricks spravuje a monitoruje prostředí pracovního prostoru Databricks. Všechny operace správy, které, jako je vytvoření clusteru se iniciovalo v rovině řízení. Všechna metadata, jako je například naplánované úlohy, je uložena v databázi Azure s geografické replikace pro odolnost proti chybám.
 
-![Architektura rovina řízení Databricks](media/howto-regional-disaster-recovery/databricks-control-plane.png)
+![Architektura Databricks](media/howto-regional-disaster-recovery/databricks-architecture.png)
 
 Jednou z výhod této architektury je, se můžou uživatelé připojit k jakémukoli prostředku úložiště do svého účtu Azure Databricks. Klíčovou výhodou je, že oba compute (Azure Databricks) a úložiště je možné škálovat nezávisle na sobě.
 
@@ -243,7 +249,7 @@ Pokud chcete vytvořit vlastní regionálního obnovení topologie, postupujte p
 
 7. **Migrace knihovny**
 
-   Aktuálně neexistuje žádná jednoduchý způsob, jak migrovat knihovny z jednoho pracovního prostoru do jiného. Znovu nainstalujte tyto knihovny do nového pracovního prostoru. Tento krok je proto většinou ruční. To je možné automatizovat pomocí kombinace [DBFS CLI](https://github.com/databricks/databricks-cli#dbfs-cli-examples) nahrát vlastní knihovny do pracovního prostoru a [knihovny rozhraní příkazového řádku](https://github.com/databricks/databricks-cli#libraries-cli).
+   Aktuálně neexistuje žádná jednoduchý způsob, jak migrovat knihovny z jednoho pracovního prostoru do jiného. Místo toho znovu nainstalujte tyto knihovny do nový pracovní prostor ručně. Je možné automatizovat pomocí kombinace [DBFS CLI](https://github.com/databricks/databricks-cli#dbfs-cli-examples) nahrát vlastní knihovny do pracovního prostoru a [knihovny rozhraní příkazového řádku](https://github.com/databricks/databricks-cli#libraries-cli).
 
 8. **Migrace úložiště objektů blob v Azure a připojí k Azure Data Lake Store**
 
@@ -251,7 +257,7 @@ Pokud chcete vytvořit vlastní regionálního obnovení topologie, postupujte p
 
 9. **Migrace clusteru init skriptů**
 
-   Skripty inicializace clusteru je možné migrovat ze starého do nového pomocí pracovního prostoru [DBFS CLI](https://github.com/databricks/databricks-cli#dbfs-cli-examples). Nejprve zkopírujte potřebné skripty z "dbfs: / dat abricks/init /.." do místní pracovní plocha nebo virtuálního počítače. V dalším kroku zkopírujte tyto skripty na nový pracovní prostor na stejné cestě.
+   Skripty inicializace clusteru je možné migrovat ze starého do nového pomocí pracovního prostoru [DBFS CLI](https://github.com/databricks/databricks-cli#dbfs-cli-examples). Nejprve zkopírujte potřebné skripty z `dbfs:/dat abricks/init/..` do místní pracovní plocha nebo virtuálního počítače. V dalším kroku zkopírujte tyto skripty na nový pracovní prostor na stejné cestě.
 
    ```bash
    // Primary to local

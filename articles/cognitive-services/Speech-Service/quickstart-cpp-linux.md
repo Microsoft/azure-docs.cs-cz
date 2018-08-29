@@ -9,16 +9,16 @@ ms.technology: Speech
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: b8bc24123fe75e876f607b07e37423ae68d92ee4
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 92bd5980ac2e6befbe352df6ddf8644f04d37d34
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41988470"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126861"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-linux-using-the-speech-sdk"></a>Rychlý start: Rozpoznávat řeč v jazyce C++ v Linuxu pomocí sadou SDK pro řeč
 
-[!include[Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
+[!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 V tomto článku se dozvíte, jak k vytvoření konzolové aplikace jazyka C++ v systému Linux (Ubuntu 16.04) přepisy převod řeči na text pomocí Cognitive Services SDK řeči.
 
@@ -35,7 +35,7 @@ V tomto článku se dozvíte, jak k vytvoření konzolové aplikace jazyka C++ v
 
 ## <a name="get-the-speech-sdk"></a>Získání sady SDK pro řeč
 
-[!include[License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
+[!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
 Aktuální verze sady SDK pro řeč Cognitive Services je `0.6.0`.
 
@@ -71,7 +71,7 @@ Stáhněte a nainstalujte sadu SDK následujícím způsobem:
 
    Měl by se zobrazit oznámení třetích stran a soubory s licencí, ale i `include` adresáře pro záhlaví a `lib` adresáře pro knihovny.
 
-   [!include[Linux Binary Archive Content](../../../includes/cognitive-services-speech-service-linuxbinary-content.md)]
+   [!INCLUDE [Linux Binary Archive Content](../../../includes/cognitive-services-speech-service-linuxbinary-content.md)]
 
 ## <a name="add-the-sample-code"></a>Přidejte ukázkový kód
 
@@ -129,7 +129,7 @@ Stáhněte a nainstalujte sadu SDK následujícím způsobem:
    We recognized: What's the weather
    ```
 
-[!include[Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
+[!INCLUDE [Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 Hledat v této ukázce `quickstart/cpp-linux` složky.
 
 ## <a name="next-steps"></a>Další postup

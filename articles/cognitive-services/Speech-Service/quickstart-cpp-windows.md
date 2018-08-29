@@ -9,16 +9,16 @@ ms.technology: Speech
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: 59c70d33d537742a5918dc1ba55ab8ac1f84e12c
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 9fae855de2a746084f4775f194e04c6dbe09f684
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41987558"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43127287"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-windows-desktop-using-the-speech-sdk"></a>Rychlý start: Rozpoznávat řeč v jazyce C++ na ploše Windows pomocí sady SDK pro řeč
 
-[!include[Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
+[!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 Zjistíte, jak vytvořit založených na C++ konzolovou aplikaci pro Windows Desktop, který využívá sadou SDK pro řeč.
 Aplikace je založena na [Microsoft Cognitive Services řeči balíčku sady SDK NuGet](https://aka.ms/csspeech/nuget) a Microsoft Visual Studio 2017.
@@ -90,7 +90,7 @@ Na obrazovce licenci, která se otevře přijměte licenci:
 
    ![Výstup na konzole po úspěšné rozpoznávání](media/sdk/qs-cpp-windows-08-console-output-release.png)
 
-[!include[Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
+[!INCLUDE [Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 Hledat v této ukázce `quickstart/cpp-windows` složky.
 
 ## <a name="next-steps"></a>Další postup

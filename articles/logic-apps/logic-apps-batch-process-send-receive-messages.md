@@ -3,19 +3,18 @@ title: Dávkové zpracování zpráv jako skupiny nebo kolekce – Azure Logic A
 description: Odesílání a příjem zpráv jako dávek v Azure Logic Apps
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-manager: jeconnoc
+ms.reviewer: estfan, jonfan, LADocs
 ms.topic: article
 ms.date: 08/19/2018
-ms.reviewer: estfan, LADocs
-ms.suite: integration
-ms.openlocfilehash: 5190e5d4191cb4d07b000920dd1be1b53e679350
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: ee1df77dc18350a64082cb62c297a53700cad223
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42054671"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128741"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>Odesílání, příjem a dávkové zpracování zpráv v Azure Logic Apps
 

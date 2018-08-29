@@ -13,10 +13,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 10/17/2017
 ms.openlocfilehash: 48c21638fe5756e6527288ed0fdc73dd9e331afd
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.sourcegitcommit: baed5a8884cb998138787a6ecfff46de07b8473d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/04/2018
+ms.lasthandoff: 08/28/2018
 ms.locfileid: "35622214"
 ---
 # <a name="image-classification-using-azure-machine-learning-workbench"></a>Klasifikace obrázků s využitím Azure Machine Learning Workbench

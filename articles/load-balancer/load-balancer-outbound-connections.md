@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/15/2018
+ms.date: 08/27/2018
 ms.author: kumud
-ms.openlocfilehash: e9249f3a5787da9ad54945195b47cf9af0f45fb1
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 1f7e605cbf5aa3d519e04c4fdfd737a4c0926a3e
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42054632"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122572"
 ---
 # <a name="outbound-connections-in-azure"></a>Odchozích připojení v Azure
 
@@ -122,13 +122,23 @@ Při použití [Load Balanceru úrovně Standard se zónami dostupnosti](load-ba
 
 Pokud prostředek veřejné nástroje pro vyrovnávání zatížení je spojen s instancí virtuálních počítačů, každý zdroj odchozí připojení je přepsán. Zdroj je přepsána z virtuální sítě privátní adresní prostor IP adres pro front-endu nástroje pro vyrovnávání zatížení veřejnou IP adresu. V veřejný prostor IP adres musí být jedinečný 5-n-tice tok (Zdrojová IP adresa, zdrojový port, přenosový protokol IP, cílová IP adresa, cílový port).  Maskování SNAT portu je možné s protokoly TCP nebo UDP IP.
 
-Dočasné porty (SNAT) umožňují dosáhnete po přepisování privátní zdrojovou IP adresu, protože více toků pocházejí z jedné veřejné IP adresy. 
+Dočasné porty (SNAT) umožňují dosáhnete po přepisování privátní zdrojovou IP adresu, protože více toků pocházejí z jedné veřejné IP adresy. Algoritmu port maskování SNAT jinak přiděluje SNAT porty UDP a TCP.
 
-Na jeden tok do jedné cílové IP adresy, portu a protokolu se spotřebovává jeden port SNAT. Každý tok pro více toků do stejné cílové IP adresy, portu a protokolu, využívá jeden port SNAT. Tím se zajistí, že toky jsou jedinečné, když pocházejí z stejnou veřejnou IP adresu a přejděte do stejné cílové IP adresy, portu a protokolu. 
+#### <a name="tcp"></a>SNAT porty TCP
+
+Na jeden tok do jedné cílové IP adresy, portu se spotřebovává jeden port SNAT. Každý tok TCP více Velkoobjemové toky na stejnou cílovou IP adresu, port a protokol, vyžaduje jeden port SNAT. Tím se zajistí, že toky jsou jedinečné, když pocházejí z stejnou veřejnou IP adresu a přejděte do stejné cílové IP adresy, portu a protokolu. 
 
 Více toků, každý z nich různé cílové IP adresy, portu a protokolu, sdílet jeden port SNAT. Cílové IP adresy, portu a protokolu zkontrolujte toky jedinečný bez nutnosti dalších zdrojových portů k rozlišení toků v veřejný adresní prostor IP adres.
 
+#### <a name="udp"></a> SNAT porty UDP
+
+Porty UDP SNAT spravuje jiný algoritmus než porty TCP SNAT.  Nástroj pro vyrovnávání zatížení používá algoritmus označuje jako "s omezením port kužel NAT" pro protokol UDP.  Pro každý tok, bez ohledu na cílovou IP adresu, port se spotřebovává jeden port SNAT.
+
+#### <a name="exhaustion"></a>Vyčerpání
+
 Když jsou k vyčerpání prostředků port SNAT, odchozí toky neúspěšné, dokud stávající toky release SNAT porty. Nástroje pro vyrovnávání zatížení uvolňuje SNAT porty, když tok se zavře a použije [časový limit nečinnosti 4 minuty](#idletimeout) pro opětovné získání SNAT porty z nečinnosti toky.
+
+Porty UDP SNAT vyčerpání obvykle mnohem rychleji než porty TCP SNAT kvůli rozdílu ve použitý algoritmus. Je nutné návrh a škálování testování pomocí tohoto rozdílu v úvahu.
 
 Vzory podmínky, které běžně vedou k vyčerpání portů SNAT zmírnit, najdete v tématu [Správa SNAT](#snatexhaust) oddílu.
 
@@ -136,7 +146,7 @@ Vzory podmínky, které běžně vedou k vyčerpání portů SNAT zmírnit, najd
 
 Azure používá algoritmus k určení počtu předpřidělené SNAT portů jsou k dispozici na základě velikosti fondu back-endu při použití portu maskování SNAT ([token PAT](#pat)). SNAT porty jsou dočasné porty, které jsou k dispozici pro konkrétní veřejné zdrojové adresy IP.
 
-Stejný počet SNAT porty jsou předpřidělené UDP a TCP v uvedeném pořadí a využívat nezávisle na transportní protokol IP. 
+Stejný počet SNAT porty jsou předpřidělené UDP a TCP v uvedeném pořadí a využívat nezávisle na transportní protokol IP.  Použití portů SNAT se však liší v závislosti na tom, jestli je tok UDP nebo TCP.
 
 >[!IMPORTANT]
 >Standardní SKU SNAT programování je za IP přenosový protokol a odvozené z pravidla Vyrovnávání zatížení.  Pokud existuje pravidlo Vyrovnávání zatížení TCP jenom SNAT je dostupná jenom pro protokol TCP. Pokud máte jenom TCP pravidlo Vyrovnávání zatížení a potřebujete odchozí SNAT UDP, vytvořte pravidla ze stejné front-endu do stejného back-endový fond Vyrovnávání zatížení UDP.  Tím se aktivuje SNAT programování pro protokol UDP.  Pracovní pravidlo nebo stavu testu se nevyžaduje.  Základní skladová položka SNAT vždy programy SNAT pro obě přenosový protokol IP, bez ohledu na to přenosový protokol podle pravidla Vyrovnávání zatížení.

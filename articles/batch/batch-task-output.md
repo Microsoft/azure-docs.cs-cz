@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 06/16/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b578abfa6fc0a10edc5daab40f8a0eea5e6653d9
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: c0fdcdbf838a0bc283db05f36b900641016211b7
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39115058"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43121910"
 ---
 # <a name="persist-job-and-task-output"></a>Trvalý výstup úloh a funkcí
 
@@ -34,7 +34,7 @@ Tento článek popisuje různé možnosti pro zachování výstup úlohy a scén
 
 ## <a name="about-the-batch-file-conventions-standard"></a>O standardních Batch File Conventions
 
-Batch definuje volitelná sada konvence pro pojmenovávání souborů výstup úlohy ve službě Azure Storage. [Batch File Conventions standard](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions) popisuje tyto konvence. Standardní File Conventions Určuje název kontejneru a objektu blob cesta k cílové ve službě Azure Storage pro danou výstupní soubor podle názvu úlohy a úkolů.
+Batch definuje volitelná sada konvence pro pojmenovávání souborů výstup úlohy ve službě Azure Storage. [Batch File Conventions standard](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions) popisuje tyto konvence. Standardní File Conventions Určuje název kontejneru a objektu blob cesta k cílové ve službě Azure Storage pro danou výstupní soubor podle názvu úlohy a úkolů.
 
 To je na vás, jestli rozhodnete použít standardní File Conventions pro pojmenování výstupních datových souborů. Můžete také pojmenujte cílový kontejner a objektů blob, ale chcete. Pokud použijete standardní soubor konvence pro pojmenování výstupních souborů, pak výstupní soubory jsou k dispozici pro zobrazení v [webu Azure portal][portal].
 
@@ -71,13 +71,13 @@ Následující části popisují jednotlivým přístupům podrobněji.
 
 Verze 2017-05-01, služba Batch přidá podporu pro určení výstupních souborů ve službě Azure Storage pro data úloh při vám [přidání úkolu do úlohy](https://docs.microsoft.com/rest/api/batchservice/add-a-task-to-a-job) nebo [Přidání kolekce úkolů do úlohy](https://docs.microsoft.com/rest/api/batchservice/add-a-collection-of-tasks-to-a-job).
 
-Rozhraní API služby Batch podporuje zachování dat úloh na účet služby Azure Storage z fondy vytvořené s konfigurací virtuálního počítače. Pomocí rozhraní API služby Batch můžete zachovat data úlohy beze změny aplikací, na kterém běží vaše úlohy. Volitelně můžete dodržovat [Batch File Conventions standard](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions) pro pojmenovávání souborů, které se zachovávají do služby Azure Storage. 
+Rozhraní API služby Batch podporuje zachování dat úloh na účet služby Azure Storage z fondy vytvořené s konfigurací virtuálního počítače. Pomocí rozhraní API služby Batch můžete zachovat data úlohy beze změny aplikací, na kterém běží vaše úlohy. Volitelně můžete dodržovat [Batch File Conventions standard](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions) pro pojmenovávání souborů, které se zachovávají do služby Azure Storage. 
 
 Rozhraní API služby Batch použijte k uchování při výstup úlohy:
 
 - Chcete zachovat data z úlohy služby Batch a úkolech Správce úloh v fondy vytvořené s konfigurací virtuálního počítače.
 - Chcete zachovat data ke kontejneru služby Azure Storage libovolný název.
-- Chcete zachovat data do kontejneru služby Azure Storage s názvem podle [Batch File Conventions standard](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions). 
+- Chcete zachovat data do kontejneru služby Azure Storage s názvem podle [Batch File Conventions standard](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions). 
 
 > [!NOTE]
 > Rozhraní API služby Batch nepodporuje zachovávání dat. z úloh spuštěných v fondy vytvořené s konfigurací cloudové služby. Informace o zachování úloh, výstup z fondů spuštění konfigurace služby cloud services najdete v tématu [uchování úloh a dat do služby Azure Storage pomocí knihovny Batch File Conventions pro .NET k uchování ](batch-task-output-file-conventions.md)
@@ -88,7 +88,7 @@ Další informace o zachování výstup úlohy s rozhraním API služby Batch na
 
 ### <a name="use-the-batch-file-conventions-library-for-net"></a>Použití služby Batch File Conventions knihovny pro .NET
 
-Vývojářům vyvíjejícím řešení Batch C# a .NET můžete použít [knihovny File Conventions pro .NET] [ nuget_package] k uchování úloh dat do služby Azure Storage account, podle k [dávkového souboru Konvence standardní](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions). Knihovny File Conventions zpracovává přesunutí výstupní soubory do služby Azure Storage a dobře známý způsob pojmenování cílové kontejnerům a objektům BLOB.
+Vývojářům vyvíjejícím řešení Batch C# a .NET můžete použít [knihovny File Conventions pro .NET] [ nuget_package] k uchování úloh dat do služby Azure Storage account, podle k [dávkového souboru Konvence standardní](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions). Knihovny File Conventions zpracovává přesunutí výstupní soubory do služby Azure Storage a dobře známý způsob pojmenování cílové kontejnerům a objektům BLOB.
 
 Knihovny File Conventions podporuje dotazování výstupní soubory podle ID nebo účel, což usnadňuje vyhledání bez nutnosti celý soubor identifikátorů URI. 
 
@@ -106,7 +106,7 @@ Další informace o zachování úlohy výstup pomocí knihovny File Conventions
 
 ### <a name="implement-the-batch-file-conventions-standard"></a>Implementace standardu Batch File Conventions
 
-Pokud používáte jiný jazyk než .NET, můžete implementovat [Batch File Conventions standard](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions) ve své aplikaci. 
+Pokud používáte jiný jazyk než .NET, můžete implementovat [Batch File Conventions standard](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions) ve své aplikaci. 
 
 Můžete provádět standardní pojmenování File Conventions sami když chcete prověřené schéma pojmenování, nebo když chcete zobrazit výstup úlohy na webu Azure Portal.
 

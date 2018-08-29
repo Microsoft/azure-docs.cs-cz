@@ -6,12 +6,12 @@ ms.service: multiple
 ms.topic: article
 ms.date: 07/03/2018
 ms.author: raynew
-ms.openlocfilehash: 4084a5bd8cb82442eb37844f88f2ff6dd166b5ee
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 6eb28ad918f9d95c26d91c05d8ee9556ef768bd3
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42446060"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125848"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Obchodní kontinuity podnikových procesů a zotavení po havárii (BCDR): spárované oblasti Azure
 
@@ -19,7 +19,7 @@ ms.locfileid: "42446060"
 
 Azure funguje v různých geografických oblastech po celém světě. Zeměpisná oblast Azure je definované oblasti na světě, který obsahuje alespoň jedné oblasti Azure. Oblast Azure je oblast v rámci zeměpisné oblasti, který obsahuje jeden nebo více datových centrech.
 
-Každá oblast Azure je spárovaná s jinou oblastí ve stejné zeměpisné oblasti společně vytváření páru oblastí. Výjimkou je Brazílie – Jih, což je spárovaná s oblastí mimo jeho zeměpisné oblasti. Napříč párování oblastí, které bude Azure serializovat aktualizace platformy (plánované údržby), takže dané pouze jeden spárované oblasti aktualizují najednou. Kromě toho se události výpadku by to ovlivnilo více oblastí aspoň jednu oblast v každém páru bude priorita pro obnovení.
+Každá oblast Azure je spárovaná s jinou oblastí ve stejné zeměpisné oblasti společně vytváření páru oblastí. Výjimkou je Brazílie – Jih, což je spárovaná s oblastí mimo jeho zeměpisné oblasti. Napříč párování oblastí, které bude Azure serializovat aktualizace platformy (plánované údržby), takže dané pouze jeden spárované oblasti aktualizují najednou. Kromě toho v případě výpadku by to ovlivnilo více oblastí aspoň jednu oblast v každém páru bude priorita pro obnovení.
 
 ![AzureGeography](./media/best-practices-availability-paired-regions/GeoRegionDataCenter.png)
 

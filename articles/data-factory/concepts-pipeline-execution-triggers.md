@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/05/2018
 ms.author: shlo
-ms.openlocfilehash: 4ac0f27480bbddf28b83af05e4b7b89ca6766871
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 8dfc2448861ca9b376246ac42f7563e44422d6de
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43093774"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122429"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Spouštění kanálů a aktivační události v Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
@@ -324,7 +324,7 @@ Další informace o aktivačních událostech pro přeskakující okno a příkl
 
 ## <a name="event-based-trigger"></a>Aktivační událost na základě události
 
-Aktivační události na základě událostí spouštějí kanály v reakci na událost, jako je příjem souboru nebo odstranění souboru ve službě Azure Blob Storage.
+Aktivační událost založený na událostech spouští kanály v reakci na události, jako je například určení souboru nebo odstranění souboru, ve službě Azure Blob Storage.
 
 Další informace o aktivačních událostech na základě událostí najdete v tématu věnovaném [vytvoření aktivační události, která spustí kanál v reakci na událost](how-to-create-event-trigger.md).
 

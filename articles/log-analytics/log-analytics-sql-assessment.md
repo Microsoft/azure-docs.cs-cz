@@ -1,6 +1,6 @@
 ---
-title: Optimalizace prostředí systému SQL Server s nástrojem Azure Log Analytics | Microsoft Docs
-description: S Azure Log Analytics můžete řešení kontroly stavu SQL pro vyhodnocení rizik a stavu prostředí v pravidelných intervalech.
+title: Optimalizace prostředí SQL serveru pomocí služby Azure Log Analytics | Dokumentace Microsoftu
+description: S Azure Log Analytics vám pomůže řešení SQL Health Check posuzuje rizika a stav prostředí v pravidelných intervalech.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -15,51 +15,51 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: e83a722ee58f49c20871faaca6aae7d7a5678361
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 2dcbd0cab055e8a2b2128b1f83f5c080a0887b85
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130603"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122516"
 ---
-# <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-log-analytics"></a>Optimalizace prostředí SQL s řešením kontroly stavu serveru SQL v analýzy protokolů
+# <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-log-analytics"></a>Optimalizujete si prostředí SQL s řešením kontroly stavu SQL serveru ve službě Log Analytics
 
-![Kontrola stavu SQL – symbol](./media/log-analytics-sql-assessment/sql-assessment-symbol.png)
+![Kontrola stavu SQL symbol](./media/log-analytics-sql-assessment/sql-assessment-symbol.png)
 
-Řešení SQL stavu zkontrolujte můžete použít k vyhodnocení rizik a stavu serveru prostředí v pravidelných intervalech. Tento článek vám pomůže nainstalovat řešení tak, že lze provádět opravné akce pro potenciální problémy.
+Vám pomůže řešení SQL Health Check posuzuje rizika a stav prostředí vašeho serveru v pravidelných intervalech. Tento článek vám pomůže nainstalovat řešení, takže můžete provést opravné akce pro potenciální problémy.
 
-Toto řešení poskytuje seznam doporučení, které jsou specifické pro infrastrukturu nasazené serverů seřazený podle priority. Doporučení jsou rozdělené mezi šest konkrétní oblasti, které vám pomůžou rychle pochopit riziko a proveďte opravné akce.
+Toto řešení poskytuje uspořádaný seznam doporučení, které jsou specifické pro nasazenou serverové infrastruktury. Doporučení jsou zařazené do kategorií v šesti oblastech zaměření, které vám pomohou rychle vědomi rizika a provést opravné akce.
 
-Doporučení, která jsou založené na znalosti a zkušenosti technici Microsoft z tisíce zákazníka návštěvách. Každé doporučení obsahuje informace, proč může pro vás důležitá problém a implementaci navrhované změny.
+Doporučení jsou založeny na znalosti a zkušenosti získané z návštěvě tisíců zákaznických odborníky z Microsoftu. Každé doporučení obsahuje pokyny k proč k problému může být na kterých vám záleží a jak implementovat navrhované změny.
 
-Můžete vybrat konkrétní oblasti, které jsou důležité pro vaši organizaci a sledovat průběh směrem k spuštění prostředí riziko volné a v pořádku.
+Můžete vybrat konkrétní oblasti, které jsou nejdůležitější pro vaši organizaci a sledovat svůj postup směrem ke spuštění prostředí pro riziko free a v dobrém stavu.
 
-Když jste přidali řešení a posouzení je dokončené, souhrnné informace pro konkrétní oblasti je zobrazena na **SQL stavu zkontrolujte** řídicí panel infrastruktury ve vašem prostředí. Následující části popisují, jak používat informace na **SQL stavu zkontrolujte** řídicí panel, kde můžete zobrazit a pak proveďte doporučené akce pro vaši infrastrukturu systému SQL Server.
+Po přidání řešení a posouzení hotové, souhrnné informace pro konkrétní oblasti se zobrazí na **kontroly stavu SQL** řídicí panel infrastruktury ve vašem prostředí. Následující části popisují, jak pomocí informací na **kontroly stavu SQL** řídicí panel, kde můžete zobrazit a pak provést doporučené akce pro vaši infrastrukturu systému SQL Server.
 
-![Obrázek kontroly stavu SQL dlaždice](./media/log-analytics-sql-assessment/sql-healthcheck-summary-tile.png)
+![snímek dlaždice kontroly stavu SQL](./media/log-analytics-sql-assessment/sql-healthcheck-summary-tile.png)
 
-![Obrázek SQL stavu zkontrolujte řídicí panel](./media/log-analytics-sql-assessment/sql-healthcheck-dashboard-01.png)
+![Obrázek řídicího panelu kontroly stavu SQL](./media/log-analytics-sql-assessment/sql-healthcheck-dashboard-01.png)
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Kontrola stavu SQL řešení vyžaduje podporovanou verzi rozhraní .NET Framework 4 nainstalován na každý počítač, který má monitorování agenta MMA (Microsoft) nainstalována.  MMA agent používá System Center 2016 - Operations Manager a Operations Manager 2012 R2 a službu analýzy protokolů.  
-* Podporuje řešení systému SQL Server verze 2012, 2014 a 2016.
-* Pracovní prostor analýzy protokolů pro přidání SQL zkontrolujte stav řešení z Azure marketplace na portálu Azure.  Abyste mohli nainstalovat řešení, musíte být správce nebo Přispěvatel v rámci předplatného Azure.
+* Řešení SQL Health Check vyžaduje podporovanou verzi rozhraní .NET Framework 4 nainstalovaný na každém počítači, který má Microsoft Monitoring Agent (MMA) nainstalovaný.  MMA agent používá System Center 2016 – Operations Manager a Operations Manageru 2012 R2 a služby Log Analytics.  
+* Řešení podporuje SQL Server verze 2012, 2014 a 2016.
+* Pracovní prostor Log Analytics můžete přidat řešení SQL Health Check z Azure marketplace na webu Azure Portal.  Pokud chcete řešení nainstalovat, musíte být správce nebo přispěvatele v předplatném Azure.
 
   > [!NOTE]
-  > Po přidání řešení, soubor AdvisorAssessment.exe je přidán na servery s agenty. Konfigurační data je čtení a pak se odešle službě Analýza protokolů v cloudu pro zpracování. Logika se použije pro přijatá data a cloudové služby zaznamenává data.
+  > Po přidání řešení, se přidá soubor AdvisorAssessment.exe na servery s agenty. Konfigurační data je čtení a pak posílají do služby Log Analytics v cloudu pro zpracování. Logika platí pro přijatá data a cloudové službě zaznamenává data.
   >
   >
 
-K provedení kontroly stavu na serverech systému SQL Server, vyžadují agenta a připojení k analýze protokolů pomocí jedné z následujících podporovaných metod:
+Provádění kontroly stavu na serverech systému SQL Server, vyžadují agenta a připojení ke službě Log Analytics pomocí jedné z následujících podporovaných metod:
 
-1. Nainstalujte [Microsoft Monitoring Agent (MMA)](log-analytics-windows-agent.md) Pokud server není již monitorován pomocí System Center 2016 - Operations Manager nebo Operations Manager 2012 R2.
-2. Pokud je monitorovaný pomocí System Center 2016 - Operations Manager nebo Operations Manager 2012 R2 a skupině pro správu není integrované se službou analýzy protokolů, je možné serveru vícedomé s analýzy protokolů pro shromažďování dat a předání do služby a je stále sledovány serverem Operations Manager.  
-3. Jinak, pokud skupině pro správu nástroje Operations Manager je integrovaná se službou, je nutné přidat řadiče domény pro shromažďování dat pomocí služby podle kroků v části [přidat počítače spravované agentem](log-analytics-om-agents.md#connecting-operations-manager-to-log-analytics) po povolení řešení v pracovním prostoru.  
+1. Nainstalujte [Microsoft Monitoring Agent (MMA)](log-analytics-windows-agent.md) Pokud server není již monitorovaná System Center 2016 – Operations Manager nebo Operations Manager 2012 R2.
+2. Pokud je monitorovat pomocí nástroje System Center 2016 – Operations Manager nebo Operations Manager 2012 R2 a skupině pro správu není integrovaná se službou Log Analytics, je možné serveru s více adresami pomocí Log Analytics pro shromažďování dat a předat službě a stále sledování Operations Managerem.  
+3. Jinak, pokud vaší skupině pro správu Operations Manageru je integrovaná se službou, budete muset přidat řadiče domény pro shromažďování dat podle pokynů v části služby [přidat počítače spravované bez agenta](log-analytics-om-agents.md#connecting-operations-manager-to-log-analytics) po povolení řešení ve vašem pracovním prostoru.  
 
-Agent na serveru SQL Server, které sestavy ke skupině pro správu nástroje Operations Manager shromažďuje data, předává do serveru pro správu přiřazené, se pak odešlou přímo ze serveru pro správu ke službě Analýza protokolů.  Data není zapsán do databáze nástroje Operations Manager.  
+Agent na serveru SQL Server, které sestavy pro skupinu pro správu nástroje Operations Manager shromažďuje data, předává do serveru pro správu přiřazené a pak se odešle přímo ze serveru pro správu služby Log Analytics.  Data není zapsána do databáze nástroje Operations Manager.  
 
-Pokud je nástrojem Operations Manager serveru SQL Server, musíte nakonfigurovat Operations Manager účet Spustit jako. V tématu [účty nástroje Operations Manager spustit jako pro analýzy protokolů](#operations-manager-run-as-accounts-for-log-analytics) níže Další informace.
+Pokud SQL Server je sledování Operations Managerem, budete muset nakonfigurovat Operations Manageru účet Spustit jako. Zobrazit [účty nástroje Operations Manager spustit jako pro Log Analytics](#operations-manager-run-as-accounts-for-log-analytics) níže pro další informace.
 
 ## <a name="sql-health-check-data-collection-details"></a>Kontrola stavu SQL podrobnosti kolekce dat
 Kontrola stavu SQL shromažďuje data z následujících zdrojů pomocí agenta, který jste povolili:
@@ -67,35 +67,35 @@ Kontrola stavu SQL shromažďuje data z následujících zdrojů pomocí agenta,
 * Windows Management Instrumentation (WMI)
 * Registr
 * Čítače výkonu
-* Výsledky zobrazení dynamické správy SQL Server
+* Výsledky zobrazení dynamické správy SQL serveru
 
-Data jsou shromažďována na serveru SQL a předávat k analýze protokolů každých sedm dní.
+Data se shromažďují na SQL serveru a předávají do Log Analytics každých sedm dní.
 
-## <a name="operations-manager-run-as-accounts-for-log-analytics"></a>Účty spustit jako nástroje Operations Manager pro analýzy protokolů
-Analýzy protokolů skupinu pro správu a agent nástroje Operations Manager používá ke shromažďování a odesílání dat do služby analýzy protokolů. Sestavení Analytics protokolu na sady management Pack pro úlohy zajistit hodnotu – Přidání služeb. Každé zatížení vyžaduje určeného pro konkrétní úlohy oprávnění ke spouštění sad management Pack v odlišném kontextu zabezpečení, jako je například účet uživatele domény. Budete muset zadat přihlašovací údaje nakonfigurováním Operations Manager účet Spustit jako.
+## <a name="operations-manager-run-as-accounts-for-log-analytics"></a>Účty spustit jako nástroje Operations Manager ke službě Log Analytics
+Log Analytics používá skupiny management a agent nástroje Operations Manager ke shromažďování a odesílání dat do služby Log Analytics. Log Analytics vychází z sady management Pack pro úlohy zadejte hodnotu přidat služby. Každá úloha vyžaduje specifické úlohy oprávnění ke spuštění sady management Pack v kontextu zabezpečení, jako je například účet uživatele domény. Budete muset zadat přihlašovací údaje tím, že nakonfigurujete Operations Manageru účet Spustit jako.
 
-K nastavení Operations Manager účet Spustit jako pro kontrolu stavu SQL použijte následující informace.
+Chcete-li nastavit Operations Manageru účet Spustit jako pro kontroly stavu SQL použijte následující informace.
 
-### <a name="set-the-run-as-account-for-sql-health-check"></a>Nastavit účet Spustit jako pro kontrolu stavu SQL
- Pokud už používáte sadu management pack systému SQL Server, měli byste použít tato konfigurace spustit jako.
+### <a name="set-the-run-as-account-for-sql-health-check"></a>Nastavení účtu spustit jako pro kontroly stavu SQL
+ Pokud už používáte sadu management pack systému SQL Server, měli byste použít, že konfigurace spustit jako.
 
-#### <a name="to-configure-the-sql-run-as-account-in-the-operations-console"></a>Jak nakonfigurovat účet Spustit jako SQL v konzoli Operations console
+#### <a name="to-configure-the-sql-run-as-account-in-the-operations-console"></a>Ke konfiguraci účtu spustit jako SQL v konzoli Operations console
 > [!NOTE]
-> Ve výchozím nastavení spouští pracovní postupy v sadě management pack v kontextu zabezpečení účtu místního systému. Pokud používáte službu Microsoft Monitoring Agent připojení přímo ke službě namísto vytváření sestav přímo do skupiny správy nástroje Operations Manager, přeskočit kroky 1 až 5 níže a spustit buď T-SQL nebo prostředí PowerShell, zadání NT AUTHORITY\SYSTEM jako uživatelské jméno.
+> Ve výchozím nastavení spouští pracovní postupy v sadě management pack v kontextu zabezpečení účtu místního systému. Pokud používáte Microsoft Monitoring Agent připojí přímo ke službě namísto vytváření sestav přímo do skupiny pro správu Operations Manageru, přeskočte kroky 1 až 5 níže a spuštění T-SQL nebo ukázku prostředí PowerShell, určení NT AUTHORITY\SYSTEM jako uživatelské jméno.
 >
 >
 
-1. V nástroji Operations Manager, otevřete konzoli Operations console a pak klikněte na tlačítko **správy**.
+1. V nástroji Operations Manager, otevřete konzoli Operations console a klikněte na **správu**.
 2. V části **konfigurace spustit jako**, klikněte na tlačítko **profily**a otevřete **OMS SQL Assessment profilu spustit jako**.
-3. Na **účty spustit jako** klikněte na tlačítko **přidat**.
-4. Vyberte účet Spustit jako systému Windows, který obsahuje přihlašovacích údajů nezbytných pro systém SQL Server, nebo klikněte na **nový** k jeho vytvoření.
+3. Na **účty spustit jako** klikněte na **přidat**.
+4. Vyberte účet Spustit jako Windows, který obsahuje přihlašovacích údajů potřebných pro SQL Server, nebo klikněte na tlačítko **nový** k jejímu vytvoření.
 
    > [!NOTE]
-   > Typ účtu spustit jako musí být Windows. Účet Spustit jako musí být také součástí místní skupiny Administrators na všech serverech Windows, který je hostitelem instance serveru SQL.
+   > Typ účtu spustit jako musí být Windows. Účet Spustit jako musí být také součástí místní skupiny Administrators na všechny servery Windows, které hostují instance systému SQL Server.
    >
    >
 5. Klikněte na **Uložit**.
-6. Upravit a potom spusťte následující ukázka T-SQL na každou instanci serveru SQL udělte minimální oprávnění potřebná pro účet Spustit jako k provedení kontroly stavu. Ale nemusíte to dělat, když se účet Spustit jako už je součástí role serveru sysadmin na instance systému SQL Server.
+6. Upravit a potom spusťte následující příklad jazyka T-SQL pro každou instanci serveru SQL Server udělit minimální oprávnění potřebná pro účet Spustit jako k provádění kontroly stavu. Ale není potřeba udělat, pokud účet Spustit jako je již součástí role serveru sysadmin v instancích systému SQL Server.
 
 ```
     ---
@@ -116,8 +116,8 @@ K nastavení Operations Manager účet Spustit jako pro kontrolu stavu SQL použ
 
 ```
 
-#### <a name="to-configure-the-sql-run-as-account-using-windows-powershell"></a>Jak nakonfigurovat účet Spustit jako SQL pomocí prostředí Windows PowerShell
-Otevřete okno prostředí PowerShell a spusťte následující skript po aktualizaci s vaše informace:
+#### <a name="to-configure-the-sql-run-as-account-using-windows-powershell"></a>Konfigurace účtu spustit jako SQL pomocí prostředí Windows PowerShell
+Otevřete okno Powershellu a spusťte následující skript po aktualizaci s informacemi o:
 
 ```
     import-module OperationsManager
@@ -128,143 +128,141 @@ Otevřete okno prostředí PowerShell a spusťte následující skript po aktual
     Set-SCOMRunAsProfile -Action "Add" -Profile $Profile -Account $Account
 ```
 
-## <a name="understanding-how-recommendations-are-prioritized"></a>Pochopení, jak budou doporučení mít vyšší prioritu
-Každé doporučení je zadána hodnota vyvážení, která určuje relativní důležitost doporučení. Zobrazí se jenom deset nejdůležitějších doporučení.
+## <a name="understanding-how-recommendations-are-prioritized"></a>Vysvětlení, jak mají určenou prioritu doporučení
+Každé doporučení je přiřazena hodnota váhu, která identifikuje relativní důležitost doporučení. Zobrazují se jenom deset nejdůležitějších doporučení.
 
-### <a name="how-weights-are-calculated"></a>Jak jsou vypočítávány váhu
-Váhy jsou agregovaných hodnot založena na tři klíčové faktory:
+### <a name="how-weights-are-calculated"></a>Jak se počítají váhy
+Váhy jsou agregované hodnoty, které jsou založené na tři klíčové faktory:
 
-* *Pravděpodobnosti* způsobí, že problém identifikovat problémy. Vyšší pravděpodobnost rovná větší celkové skóre pro doporučení.
-* *Dopad* problému na vaší organizaci, pokud ji způsobovat problémy. Vyšší dopad rovná větší celkové skóre pro doporučení.
-* *Úsilí* potřebnou k implementaci doporučení. Vyšší úsilí rovná menší celkové skóre pro doporučení.
+* *Pravděpodobnost* , způsobí chyby zjištěné potíže. Vyšší pravděpodobnost rovná větší celkové skóre pro doporučení.
+* *Dopad* problému ve vaší organizaci, pokud ho způsobovat problémy. Vyšší dopad odpovídá větší celkové skóre pro doporučení.
+* *Úsilí* potřebnou k implementaci doporučení. Vyšší úsilí odpovídá menší celkové skóre pro doporučení.
 
-Vyvážení pro každé doporučení je vyjádřený jako procentní podíl celkové skóre, které jsou k dispozici pro každou oblast fokus. Například pokud doporučení v oblasti zabezpečení a dodržování předpisů fokus je skóre % 5, implementace tímto doporučením zvýší celkové skóre podle 5 % zabezpečení a dodržování předpisů.
+Váhu pro jednotlivá doporučení je vyjádřené jako procentní podíl celkové skóre, které jsou k dispozici pro každou oblast zaměření. Například pokud doporučení v oblasti zabezpečení a dodržování předpisů zaměření má skóre % 5, implementaci tohoto doporučení zvýší vaše celkové skóre podle 5 % zabezpečení a dodržování předpisů.
 
 ### <a name="focus-areas"></a>Konkrétní oblasti
-**Zabezpečení a dodržování předpisů** – v tomto poli fokus zobrazí doporučení pro potenciální bezpečnostní hrozby a narušení, podnikové zásady a dodržování předpisů technických, právních i regulačních požadavků.
+**Zabezpečení a dodržování předpisů** – zobrazuje tuto oblast zaměření doporučení ohledně potenciálních bezpečnostních hrozeb a porušení, podnikové zásady a technických, právních i regulačních požadavků.
 
-**Dostupnost a provozní kontinuita** – v tomto poli fokus zobrazí doporučení pro dostupnost služeb, odolnost vaší infrastruktury a obchodní ochrany.
+**Dostupnost a plynulost obchodních procesů** -tuto oblast zaměření ukazuje doporučení pro služby dostupnost, odolnost vaší infrastruktury a ochrany firmy.
 
-**Výkon a škálovatelnost** – v tomto poli fokus zobrazí doporučení, která pomůžou vaší organizace IT infrastruktury růst, zajistěte, aby vaše IT prostředí splňuje aktuální požadavky na výkon a schopné reagovat na měnící se infrastruktury potřebuje.
+**Výkon a škálovatelnost** – zobrazuje tuto oblast zaměření doporučení, která vaší organizaci pomoct IT infrastruktury růst, ujistěte se, že splňuje aktuální požadavky na výkon vašeho IT prostředí a je schopný reagovat na měnící se infrastruktury potřebuje.
 
-**Upgrade, nasazení a migrace** – v tomto poli fokus zobrazí doporučení, která vám pomohou upgradovat, migrace a nasazení systému SQL Server k vaší stávající infrastruktury.
+**Upgrade, migrace a nasazení** – zobrazuje tuto oblast zaměření doporučení, která vám pomohou upgrade, migrace a nasazení systému SQL Server do vaší stávající infrastruktury.
 
-**Operace a monitorování** – v tomto poli fokus zobrazí doporučení, která pomůžou zjednodušení operací IT a implementaci preventivní údržby, maximalizovat výkon.
+**Operace a monitorování** – zobrazuje tuto oblast zaměření doporučení, která pomůžou zefektivnit vaše IT oddělení, implementovat preventivní údržby a maximalizovat výkon.
 
-**Správa změn a konfigurací** – v tomto poli fokus zobrazí doporučení pomáhají chránit každodenní operace, zkontrolujte, zda nemáte změny negativně ovlivnit vaši infrastrukturu, vytvořit procedury řízení změn a ke sledování a monitorování Konfigurace systému.
+**Konfigurace správy změn a** -zobrazí doporučení pomáhají chránit každodenní operace, ujistěte se, že změny není mít negativní vliv na vaši infrastrukturu, vytvořit procedury řízení změn a sledovat a auditovat tuto oblast zaměření Konfigurace systému.
 
-### <a name="should-you-aim-to-score-100-in-every-focus-area"></a>Mají usilovat o stanovení skóre 100 % v každé oblasti fokus?
-Ne nutně. Doporučení jsou založené na prostředí, které nebyly získány prostřednictvím Microsoft technici napříč tisíce návštěvy zákazníka a znalostní báze. Ale žádné serverové infrastruktury jsou stejné, a konkrétní doporučení může být vyšší nebo nižší relevantní pro vás. Například může být několik doporučení zabezpečení méně důležité, pokud vaše virtuální počítače nejsou vystaveny v Internetu. Některá doporučení, jaké dostupnosti může být méně důležité pro služby, které poskytují kolekce s nízkou prioritou ad hoc dat a vytváření sestav. Problémy, které jsou důležité, abyste vyspělých firmy může být méně důležité Startup. Můžete určit, které konkrétní oblasti mají vašich priorit a podívejte se na tom, jak se vaše skóre časem změnit.
+### <a name="should-you-aim-to-score-100-in-every-focus-area"></a>By měl být cílem stanovení skóre 100 % v každé oblasti zaměření?
+Ne nutně. Doporučení jsou založeny na znalosti a zkušenosti získané v Microsoftu přes návštěvě tisíců zákaznických. Ale žádné serverové infrastruktury jsou stejné, a konkrétní doporučení může být vyšší nebo nižší pro vás relevantní. Některá doporučení zabezpečení může být například méně relevantní, pokud vaše virtuální počítače nejsou zveřejněné na Internetu. Některá doporučení dostupnosti může být méně důležité pro služby, které poskytují shromažďování dat ad hoc s nízkou prioritou a generování sestav. Problémy, které jsou důležité pro až po zralé podnikání, může být méně důležité spouštěcí. Můžete určit, které konkrétní oblasti mají vašich priorit a podívejte se na tom, jak v průběhu času měnit skóre.
 
-Každé doporučení obsahuje pokyny o tom, proč je důležité. Měli byste použít tyto pokyny k vyhodnocení, zda implementace doporučení je vhodné pro vás, daná povaze vašich IT služeb a obchodním potřebám vaší organizace.
+Každé doporučení obsahuje pokyny o tom, proč je důležité. Měli byste použít tento návod k vyhodnocení, jestli implementace doporučení je vhodné, vzhledem k povaze služeb IT a obchodní potřeby vaší organizace.
 
-## <a name="use-health-check-focus-area-recommendations"></a>Použít kontrolu stavu fokus oblasti doporučení
-Než v analýzy protokolů můžete použít řešení pro vyhodnocení, musíte mít nainstalován řešení.  Po instalaci, zobrazí se souhrn doporučení pomocí dlaždice SQL stavu zkontrolujte na stránce řešení na portálu Azure.
+## <a name="use-health-check-focus-area-recommendations"></a>Použití kontroly stavu doporučení oblasti zaměření
+Před použitím řešení pro posouzení ve službě Log Analytics, musíte mít nainstalované řešení.  Po instalaci, zobrazí se přehled doporučení pomocí kontroly stavu SQL dlaždice na stránce řešení na webu Azure Portal.
 
-Zobrazte vyhodnocování souhrnné dodržování předpisů pro infrastrukturu a potom přejít k podrobnostem doporučení.
+Zobrazení posouzení souhrnné dodržování předpisů pro infrastrukturu a pak přejít k podrobnostem doporučení.
 
-### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>Proveďte opravné akce a zobrazit doporučení pro oblastí zájmu
+### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>Zobrazit doporučení pro oblast zaměření a provedení nápravné akce
 1. Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 2. Na webu Azure Portal klikněte v levém dolním rohu na **Další služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics**.
-3. V podokně odběry analýzy protokolů vyberte pracovní prostor a klikněte **přehled** dlaždici.  
-4. Na **přehled** klikněte na tlačítko **SQL stavu zkontrolujte** dlaždici.
-5. Na **kontroly stavu** zkontrolujte souhrnné informace v jednom z okna oblasti fokus a pak klikněte na jednu zobrazíte doporučení pro tuto oblast fokus.
-6. Na všech stránkách oblasti fokus můžete zobrazit seřazený podle priority doporučení, která se pro vaše prostředí. Klikněte na tlačítko doporučení v části **vliv na objekty** Chcete-li zobrazit podrobnosti, proč se provádí doporučení.<br><br> ![Obrázek kontroly stavu SQL doporučení](./media/log-analytics-sql-assessment/sql-healthcheck-dashboard-02.png)<br>
-7. Můžete provést nápravné akce navržený v **doporučované akce**. Když položka vyřeší, bude záznam novější vyhodnocování které doporučené akce provedené a zvýší se vaše skóre dodržování předpisů. Opravené položky se zobrazí jako **předán objekty**.
+3. V podokně předplatná Log Analytics vyberte pracovní prostor a pak klikněte na tlačítko **přehled** dlaždici.  
+4. Na **přehled** stránky, klikněte na tlačítko **kontroly stavu SQL** dlaždici.
+5. Na **kontroly stavu** stránky, zkontrolujte souhrnné informace u některého okna oblasti zaměření a klikněte na z nich se má zobrazit doporučení pro tuto oblast zaměření.
+6. Na žádném z oblasti stránek fokus můžete zobrazit prioritizovaných doporučení pro vaše prostředí. Kliknutím na doporučení v části **vliv na objekty** zobrazíte podrobnosti o tom, proč je provedeny doporučení.<br><br> ![Obrázek kontroly stavu SQL doporučení](./media/log-analytics-sql-assessment/sql-healthcheck-dashboard-02.png)<br>
+7. Můžete provést opravné akce navržený v **doporučené akce**. Pokud položka byla určena, zaznamená novější posouzení, které doporučené akce byly provedeny a zvýší vaše skóre dodržování předpisů. Opravené položky se zobrazí jako **předaný objekty**.
 
-## <a name="ignore-recommendations"></a>Ignorovat doporučení
-Pokud máte doporučení, které chcete ignorovat, můžete vytvořit textový soubor, který analýzy protokolů použije k zabránění doporučení ze storu ve výsledky hodnocení.
+## <a name="ignore-recommendations"></a>Ignorujte doporučení
+Pokud máte doporučení, která má být ignorována, můžete vytvořit textový soubor, který brání doporučení povolí, nebude vaše výsledky posouzení pomocí Log Analytics.
 
-[!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
-
-### <a name="to-identify-recommendations-that-you-will-ignore"></a>K identifikaci doporučení, které se budou ignorovat.
-1. Na stránce pracovní prostor analýzy protokolů pro vaši vybranou pracovní prostor na portálu Azure, klikněte na tlačítko **hledání protokolů** dlaždici.
-2. Pro počítače ve vašem prostředí použijte následující dotaz, který seznam doporučení, které selhaly.
+### <a name="to-identify-recommendations-that-you-will-ignore"></a>K identifikaci doporučení, která se bude ignorovat.
+1. Na portálu Azure na stránce pracovního prostoru Log Analytics pro váš vybraný pracovní prostor, klikněte na tlačítko **prohledávání protokolů** dlaždici.
+2. Následující dotaz tak, aby seznam doporučení, které se nepodařilo použijte pro počítače se ve vašem prostředí.
 
     ```
     Type=SQLAssessmentRecommendation RecommendationResult=Failed | select Computer, RecommendationId, Recommendation | sort Computer
     ```
 
     >[!NOTE]
-    > Pokud pracovní prostor byl upgradován na verzi [nové analýzy protokolů dotazu jazyka](log-analytics-log-search-upgrade.md), pak výše uvedeném dotazu by změnit na následující.
+    > Pokud byl váš pracovní prostor upgradován na [dotazovací jazyk Log Analytics nové](log-analytics-log-search-upgrade.md), pak se změní výše uvedeném dotazu následující.
     >
     > `SQLAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
-    Zde je snímek obrazovky zobrazující protokolu vyhledávací dotaz:<br><br> ![doporučení se nezdařilo](./media/log-analytics-sql-assessment/sql-assess-failed-recommendations.png)<br>
+    Zde je snímek obrazovky zobrazující z dotazu prohledávání protokolu:<br><br> ![doporučení se nezdařilo](./media/log-analytics-sql-assessment/sql-assess-failed-recommendations.png)<br>
 
-3. Zvolte doporučení, které chcete ignorovat. Hodnoty pro RecommendationId budete používat v dalším postupu.
+3. Zvolte doporučení, která má být ignorována. V dalším postupu budete používat hodnoty pro ID doporučení.
 
-### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>Vytváření a používání textový soubor s IgnoreRecommendations.txt
+### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>Vytvoření a použití textového souboru IgnoreRecommendations.txt
 1. Vytvořte soubor s názvem IgnoreRecommendations.txt.
-2. Vložit nebo zadejte každou RecommendationId pro jednotlivá doporučení, které chcete analýzy protokolů ignorovat na samostatném řádku a potom uložte a zavřete soubor.
-3. Uložte soubor v následující složce na každém počítači, kam chcete analýzy protokolů ignorovat doporučení.
-   * Na počítačích s Microsoft Monitoring Agent (připojené přímo nebo prostřednictvím nástroje Operations Manager) - *SystemDrive*: \Program Files\Microsoft Agent\Agent monitorování
-   * Na serveru pro správu nástroje Operations Manager - *SystemDrive*: \Program Files\Microsoft System Center 2012 R2\Operations Manager\Server
-   * Na serveru pro správu nástroje Operations Manager 2016 - *SystemDrive*: \Program Files\Microsoft Manager\Server 2016\Operations System Center
+2. Vložte nebo zadejte ID jednotlivých doporučení pro jednotlivá doporučení, který má Log Analytics ignorovat na samostatném řádku a potom uložte a zavřete soubor.
+3. Uložte soubor v následující složce na každém počítači místo, kam chcete Log Analytics pro ignorování doporučení.
+   * Na počítačích s Microsoft Monitoring Agent (připojené přímo nebo prostřednictvím Operations managera) - *systemdrive % musí být*: \Program Files\Microsoft Monitoring Agent\Agent
+   * Na serveru pro správu nástroje Operations Manager - *systemdrive % musí být*: \Program Files\Microsoft System Center 2012 R2\Operations Manager\Server
+   * Na serveru pro správu Operations Manageru 2016 - *systemdrive % musí být*: \Program Files\Microsoft System Center 2016\Operations Manager\Server
 
-### <a name="to-verify-that-recommendations-are-ignored"></a>Chcete-li ověřit, že se ignorovat doporučení
-1. Po na další naplánované vyhodnocení běží ve výchozím nastavení každých 7 dní, zadaný doporučení jsou označeny ignorovaná a nezobrazí se na řídicím panelu hodnocení.
-2. Následující dotazy hledání protokolů můžete použít k zobrazení seznamu všech ignorováno doporučení.
+### <a name="to-verify-that-recommendations-are-ignored"></a>Chcete-li ověřit, že jsou ignorovány doporučení
+1. Až dalšího naplánovaného spuštění posouzení ve výchozím nastavení každých 7 dní, zadaný doporučení jsou označeny ignorováno a nezobrazí se na řídicím panelu posouzení.
+2. Do seznamu ignorovaných doporučení můžete použít následující dotazy prohledávání protokolů.
 
     ```
     Type=SQLAssessmentRecommendation RecommendationResult=Ignored | select Computer, RecommendationId, Recommendation | sort Computer
     ```
 
     >[!NOTE]
-    > Pokud pracovní prostor byl upgradován na verzi [nové analýzy protokolů dotazu jazyka](log-analytics-log-search-upgrade.md), pak výše uvedeném dotazu by změnit na následující.
+    > Pokud byl váš pracovní prostor upgradován na [dotazovací jazyk Log Analytics nové](log-analytics-log-search-upgrade.md), pak se změní výše uvedeném dotazu následující.
     >
     > `SQLAssessmentRecommendation | where RecommendationResult == "Ignored" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
-3. Pokud se později rozhodnete, zda chcete zobrazit ignorováno doporučení, odeberte všechny soubory IgnoreRecommendations.txt nebo RecommendationIDs můžete odebrat z nich.
+3. Pokud se později rozhodnete, že chcete zobrazit ignorované doporučení, odeberte všechny soubory IgnoreRecommendations.txt nebo RecommendationIDs můžete odebrat z nich.
 
-## <a name="sql-health-check-solution-faq"></a>Kontrola stavu SQL řešení – nejčastější dotazy
-*Jak často kontrolu stavu spustit?*
+## <a name="sql-health-check-solution-faq"></a>Řešení SQL Health Check – nejčastější dotazy
+*Jak často Kontrola stavu spouštět?*
 
-* Kontrola spouští každých sedm dní.
+* Kontrola proběhne každých sedm dní.
 
-*Existuje způsob, jak nakonfigurovat, jak často neproběhne kontrola?*
+*Existuje způsob, jak konfigurovat, jak často neproběhne kontrola?*
 
 * V tuto chvíli to není možné.
 
-*Pokud jiný server je zjištěno po byly přidány SQL zkontrolujte stav řešení, budou se kontrolovat?*
+*Pokud po přidali jsme řešení SQL Health Check je zjistit další server, budou se kontrolovat?*
 
-* Ano, jakmile se zjistí, že je zaškrtnuté z pak, každých sedm dní.
+* Ano, jakmile je zjištěna zkontroluje z té, každých sedm dní.
 
-*Pokud dojde k deaktivaci serveru, když ho se odebere z kontrolou stavu?*
+*Pokud dojde k deaktivaci na serveru, když ho se odebere z kontroly stavu?*
 
-* Pokud server není odesílání dat 3 týdny, bude odebrán.
+* Pokud server není odesílání dat po dobu 3 týdnů, bude odebrán.
 
-*Jaký je název procesu, který nemá shromažďování dat?*
+*Jaký je název procesu, která provádí sběr dat?*
 
 * AdvisorAssessment.exe
 
-*Jak dlouho trvá na shromáždění dat?*
+*Jak dlouho trvá shromažďování dat?*
 
-* Kolekce skutečná data na serveru trvá asi 1 hodina. Může trvat déle na serverech, které mají velký počet instancí SQL nebo databáze.
+* Skutečná data kolekce na serveru trvá přibližně 1 hodinu. Může trvat delší dobu na serverech, které mají velký počet instancí SQL nebo databází.
 
-*Jaký typ dat shromažďovaných?*
+*Jaký typ dat se shromažďují?*
 
-* Se shromažďují následující typy dat:
+* Jsou shromažďovány následující typy dat:
   * ROZHRANÍ WMI
   * Registr
   * Čítače výkonu
-  * Zobrazení dynamické správy SQL (DMV).
+  * Zobrazení dynamické správy SQL (DMV Sys.DM_OPERATION_STATUS).
 
-*Existuje způsob, jak nakonfigurovat, když jsou shromažďována data?*
+*Existuje způsob, jak konfigurovat, když se shromažďují data?*
 
 * V tuto chvíli to není možné.
 
 *Proč je nutné nakonfigurovat účet Spustit jako?*
 
-* Pro systém SQL Server se spouštějí na malý počet dotazů SQL. Aby, aby se spouštěly musíte použít účet Spustit jako s oprávnění VIEW SERVER STATE do systému SQL.  Kromě toho aby bylo možné odeslat dotaz rozhraní WMI, jsou požadované přihlašovací údaje místního správce.
+* Pro SQL Server se spouštějí menšímu množství dotazů SQL. V pořadí jejich spuštění musíte použít účet Spustit jako s oprávnění VIEW SERVER STATE pro SQL.  Kromě toho aby bylo možné dotazovat služby WMI, jsou požadovány přihlašovací údaje místního správce.
 
 *Proč zobrazit pouze prvních 10 doporučení?*
 
-* Namísto udělení vyčerpávající čtenáře seznam úloh, doporučujeme můžete soustředit na první adresování seřazený podle priority doporučení. Po jejich řešení, bude k dispozici další doporučení. Pokud ji chcete zobrazit podrobné seznamu, můžete zobrazit všechna doporučení pomocí vyhledávání protokolu analýzy protokolů.
+* Místo získáte vyčerpávající seznam náročné úkoly, doporučujeme vám zaměřit nejprve adresování prioritizovaných doporučení. Po jejich řešení, budou k dispozici další doporučení. Pokud chcete zobrazit podrobný seznam, můžete zobrazit všechna doporučení, pomocí prohledávání protokolu Log Analytics.
 
-*Existuje způsob, jak ignorovat doporučení?*
+*Existuje způsob, jak ignorujte doporučení?*
 
-* Ano, najdete v části [ignorovat doporučení](#ignore-recommendations) část výše.
+* Ano, naleznete v tématu [ignorujte doporučení](#ignore-recommendations) výše uvedené části.
 
 ## <a name="next-steps"></a>Další postup
-* [V protokolech Hledat](log-analytics-log-searches.md) se dozvíte, jak analyzovat doporučení a podrobné údaje o kontrolu stavu SQL.
+* [Hledání protokolů](log-analytics-log-searches.md) informace o analýze podrobných dat o kontrolu stavu SQL a doporučení.

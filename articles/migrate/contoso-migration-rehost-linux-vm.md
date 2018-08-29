@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/12/2018
+ms.date: 08/28/2018
 ms.author: raynew
-ms.openlocfilehash: 99733fd80ab722f38a27bd99e5dd61bc32f7ab36
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: dc2e116e9e6bb60da4ba9fecb308ad0f9d7c127b
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43105049"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126790"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-linux-app-to-azure-vms"></a>Migrace Contoso: Změna hostitele aplikace v místním systému Linux do virtuálních počítačů Azure
 
@@ -71,7 +71,7 @@ Po Připnutí dolů cíle a požadavky, Contoso navrhuje, zkontrolujte nasazení
 - Správu prostředí VMware zajišťuje vCenter Server verze 6.5 (**vcenter.contoso.com**), běžící na virtuálním počítači.
 - Contoso má místní datacentrum (**contoso-datacenter**), s řadičem domény v místním (**contosodc1**)
 
-## <a name="proposed-architecture"></a>Navrhované architektury
+### <a name="proposed-architecture"></a>Navrhované architektury
 
 - Protože se aplikace a produkční úlohy, virtuální počítače v Azure se bude nacházet v provozní skupině prostředků **ContosoRG**.
 - Virtuální počítače migrovat do primární oblasti (východní USA 2), který se umístí do produkční sítě (VNET-PROD-EUS2):
@@ -87,7 +87,7 @@ Contoso vyhodnotí navrhovaných návrhu společně vložením seznam výhody a 
 
 **Posouzení** | **Podrobnosti**
 --- | ---
-**V oblasti IT** | Virtuální počítače s aplikace se přesunou do Azure beze změn, provedení migrace jednoduché.<br/><br/> Contoso používá lift and shift pro oba virtuální počítače s aplikací, nejsou potřeba žádné speciální konfigurace nebo migrace nástroje pro databázi aplikace.<br/><br/> Contoso se zachovat plnou kontrolu nad ní virtuální počítače v Azure. <br/><br/> SQL Database nemá předdefinovanou odolnost proti chybám, která Contoso nepotřebuje k nastavení. Tím se zajistí, že datová vrstva již není jediným bodem převzetí služeb při selhání.</br>/br > aplikace virtuální počítače se systémem Ubuntu 16.04-TLS, což je doporučené distribuce Linuxu. [Další informace](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
+**V oblasti IT** | Virtuální počítače s aplikace se přesunou do Azure beze změn, provedení migrace jednoduché.<br/><br/> Contoso používá lift and shift pro oba virtuální počítače s aplikací, nejsou potřeba žádné speciální konfigurace nebo migrace nástroje pro databázi aplikace.<br/><br/> Contoso se zachovat plnou kontrolu nad ní virtuální počítače v Azure. </br>/br > aplikace virtuální počítače se systémem Ubuntu 16.04-TLS, což je doporučené distribuce Linuxu. [Další informace](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).
 **Nevýhody** | Web a datové vrstvy aplikace zůstanou jediný bod převzetí služeb při selhání. <br/><br/> Contoso se potřebujete i nadále podporuje aplikace jako virtuální počítače Azure, spíše než Přesun do spravované služby, jako je například Azure App Service a Azure Database for MySQL.<br/><br/> Contoso je vědět, že udržováním věci jednoduše se migrace virtuálních počítačů lift and shift, že nejsou plně využít funkcí poskytovaných službou [– Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/overview) (integrovanou vysokou dostupnost, předvídatelný výkon Jednoduché škálování, automatické zálohování a integrované zabezpečení).
 
 ### <a name="migration-process"></a>Proces migrace

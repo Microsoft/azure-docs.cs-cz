@@ -7,20 +7,22 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 08/06/2018
+ms.date: 08/27/2018
 ms.author: kgremban
-ms.openlocfilehash: 39e0de6b378ed61ab375c6468b58c8c4a87b5fb9
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: e92adc5dbd0da6ab4f60f8cc7bf6dbe7a58694c6
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39575960"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128414"
 ---
 # <a name="install-azure-iot-edge-runtime-on-windows-to-use-with-windows-containers"></a>Nainstalovat modul runtime Azure IoT Edge ve Windows pro použití s kontejnery Windows
 
-Modul runtime Azure IoT Edge je nasadit na všechna zařízení IoT Edge. Skládá se ze tří částí. **Démon zabezpečení IoT Edge** poskytuje a udržuje standardy zabezpečení na hraniční zařízení. Proces démon spustí při každé spuštění a bootstraps zařízení spuštěním agenta IoT Edge. **Agenta IoT Edge** usnadňuje nasazení a monitorování modulů na hraniční zařízení, včetně hraničních zařízeních IoT hub. Druhým je **IoT Edge Hub**, který na zařízení IoT Edge řídí komunikaci mezi moduly a také mezi zařízením a IoT Hubem.
+Modul runtime Azure IoT Edge je co se změní na zařízení do zařízení IoT Edge. Modul runtime můžete nasadit na zařízení jako Raspberry Pi malé nebo velké průmyslové serveru. Jakmile je zařízení nakonfigurovaná s modulem runtime IoT Edge, můžete začít nasazovat obchodní logiky k němu z cloudu. 
 
-V tomto článku jsou uvedené kroky k instalaci modulu runtime Azure IoT Edge na vaše Windows x64 (AMD nebo Intel) systému. 
+Další informace o fungování modul runtime IoT Edge a jaké součásti jsou zahrnuty, naleznete v tématu [pochopení runtime Azure IoT Edge a jeho architektura](iot-edge-runtime.md).
+
+V tomto článku jsou uvedené kroky k instalaci modulu runtime Azure IoT Edge s kontejnery Windows na vašich Windows x64 (AMD nebo Intel) systému. 
 
 Podpora Windows je aktuálně ve verzi Preview.
 
@@ -28,6 +30,8 @@ Podpora Windows je aktuálně ve verzi Preview.
 Azure IoT Edge s kontejnery Windows je možné s:
   * Windows 10/IoT Enterprise/IoT Core s platný od dubna 2018 update (sestavení 17134 vydaná).
   * Windows Server 1803
+
+Další informace o tom, které jsou aktuálně podporované operační systémy, najdete [podpory Azure IoT Edge](support.md#operating-systems).
 
 ## <a name="install-the-container-runtime"></a>Nainstalovat modul runtime kontejneru 
 

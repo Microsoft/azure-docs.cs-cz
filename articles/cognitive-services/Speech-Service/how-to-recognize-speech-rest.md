@@ -9,16 +9,16 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 54cdfdeabe8b43b079ab0c2ec6280894f217fe12
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: eafec2dd262098bc4b7e485293818b79debe3d27
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43099937"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126842"
 ---
 # <a name="recognize-speech-by-using-the-rest-api"></a>Rozpoznávání řeči pomocí rozhraní REST API
 
-[!include[Selector](../../../includes/cognitive-services-speech-service-how-to-recognize-speech-selector.md)]
+[!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-how-to-recognize-speech-selector.md)]
 
 Rozhraní REST API slouží k rozpoznání krátkých projevy pomocí požadavku HTTP POST.
 

@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.openlocfilehash: 6dcd9ac725b76463259b60df6312e5cafebd9e88
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 446bb23e15d908c8afe189a33e4d8a70faad284a
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43044952"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126633"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Co je Apache Hive a HiveQL v Azure HDInsight?
 
@@ -222,7 +222,7 @@ Existuje několik služeb, které je možné ke spouštění dotazů Hive jako s
 
 ### <a name="azure-data-factory"></a>Azure Data Factory
 
-Azure Data Factory umožňuje používat HDInsight jako součást kanálu služby Data Factory. Další informace o používání Hive v kanálu najdete v článku [transformovat data pomocí aktivity Hivu ve službě Azure Data Factory](/data-factory/transform-data-using-hadoop-hive.md) dokumentu.
+Azure Data Factory umožňuje používat HDInsight jako součást kanálu služby Data Factory. Další informace o používání Hive v kanálu najdete v článku [transformovat data pomocí aktivity Hivu ve službě Azure Data Factory](../../data-factory/transform-data-using-hadoop-hive.md) dokumentu.
 
 ### <a name="hive-jobs-and-sql-server-integration-services"></a>Úlohy Hive a SQL Server Integration Services
 

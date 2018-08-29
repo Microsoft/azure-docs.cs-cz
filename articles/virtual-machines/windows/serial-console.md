@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: 8d786a337710ed53d58c5fde8e40d5347cd6cfc8
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: ddd30729aa2bcb616efab814dc4046d2817c64fa
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43108374"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128673"
 ---
 # <a name="virtual-machine-serial-console-preview"></a>Virtuální počítač sériová konzola (preview) 
 
@@ -36,9 +36,13 @@ Dokumentaci konzoly sériového portu pro virtuální počítače s Linuxem [kli
 ## <a name="prerequisites"></a>Požadavky 
 
 * Musí používat model nasazení správy prostředků. Klasická nasazení nejsou podporovány. 
-* Virtuální počítač musí mít [Diagnostika spouštění](boot-diagnostics.md) povoleno   ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-diagnostics-settings.png)
+* Virtuální počítač musí mít [Diagnostika spouštění](boot-diagnostics.md) povoleno 
+
+    ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-diagnostics-settings.png)
+    
 * Účet, pomocí konzoly sériového portu, musí mít [role Přispěvatel](../../role-based-access-control/built-in-roles.md) pro virtuální počítač a [Diagnostika spouštění](boot-diagnostics.md) účtu úložiště. 
 * Virtuální počítač, u kterého jste přístup k pracovnímu konzoly sériového portu musí mít také účet založené na heslech. Můžete si ho vytvořit pomocí [resetovat heslo](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) funkce rozšíření přístupu virtuálních počítačů – snímek najdete níže.
+
     ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-reset-password.png)
 
 ## <a name="get-started-with-serial-console"></a>Začínáme s konzoly sériového portu

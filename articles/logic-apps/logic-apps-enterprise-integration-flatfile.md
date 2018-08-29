@@ -1,27 +1,23 @@
 ---
-title: Zakódování nebo dekódování plochých souborů v Azure logic apps | Dokumentace Microsoftu
-description: Použití souboru kodér a dekodér v ve službě logic apps Enterprise Integration Pack
+title: Kódovat a dekódovat ploché soubory – Azure Logic Apps | Dokumentace Microsoftu
+description: Zakódování nebo dekódování pro podnikovou integraci s Azure Logic Apps a Enterprise Integration Pack plochých souborů
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: divyaswarnkar
-manager: jeconnoc
-editor: ''
-ms.assetid: 82152dab-c7ad-43df-b721-596559703be8
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: 82152dab-c7ad-43df-b721-596559703be8
 ms.date: 07/08/2016
-ms.author: LADocs; divswa
-ms.openlocfilehash: b13e8da04c984456027f152f5af63cfa6604ddc4
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: d0ef61b94d7bd604b6c0062341224510f3048c57
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42054411"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43123924"
 ---
-# <a name="overview-of-enterprise-integration-with-flat-files"></a>Přehled podniková integrace pomocí plochých souborů
+# <a name="encode-or-decode-flat-files-with-azure-logic-apps-and-enterprise-integration-pack"></a>Kódovat a dekódovat ploché soubory s Azure Logic Apps a Enterprise Integration Pack
 
 Můžete chtít kódování obsahu XML před odesláním do obchodního partnera ve scénáři business-to-business (B2B). V aplikaci logiky můžete k tomu plochého souboru kódování konektoru. Aplikace logiky, kterou vytvoříte můžete získat jeho XML obsahu z nejrůznějších zdrojů, včetně triggeru požadavku HTTP, z jiné aplikace nebo dokonce od mnoho [konektory](../connectors/apis-list.md). Další informace o logic apps, najdete v článku [dokumentace k logic apps](logic-apps-overview.md "Další informace o Logic apps").  
 

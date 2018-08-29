@@ -8,12 +8,12 @@ ms.technology: speech
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 9991e0a1fc54e6aa4a99b8bfbd93abdfe974b01b
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 64dce26303c0e700da54d371af5cb275b1613d70
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283065"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122099"
 ---
 # <a name="speech-service-rest-apis"></a>Speech service rozhraní REST API
 
@@ -23,7 +23,7 @@ Rozhraní REST API služby pro jednotné řeči se podobají rozhraní API posky
 
 Služba Speech to Text API pouze koncových bodů použitých liší od předchozí Speech service rozhraní API pro rozpoznávání řeči. Nové koncové body jsou uvedeny v následující tabulce. Použijte ten, který odpovídá oblasti vašeho předplatného.
 
-[!include[](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
 
 Služba Speech to Text API je podobný v opačném případě [rozhraní REST API](https://docs.microsoft.com/azure/cognitive-services/speech/getstarted/getstartedrest) pro předchozí rozhraní Speech API.
 
@@ -54,7 +54,7 @@ cs-CZ  | Jazykovou verzi US English | Muž   | "Microsoft serveru řeči Text na
 
 Níže jsou koncové body REST pro sjednocené Speech service převod textu na řeč rozhraní API. Použití koncového bodu, který odpovídá oblasti vašeho předplatného.
 
-[!include[](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]
 
 Ponechte tyto rozdíly v úvahu jako odkazujete [dokumentace k rozhraní REST API](https://docs.microsoft.com/azure/cognitive-services/speech/api-reference-rest/bingvoiceoutput) pro předchozí rozhraní Speech API.
 
@@ -62,7 +62,7 @@ Ponechte tyto rozdíly v úvahu jako odkazujete [dokumentace k rozhraní REST AP
 
 Odesílání požadavku do rozhraní REST API služby řeči vyžaduje přístupový token. Získání tokenu tím, že váš klíč předplatného do regionálních služeb řeč poskytuje `issueToken` koncový bod, je znázorněno v následující tabulce. Použití koncového bodu, který odpovídá oblasti vašeho předplatného.
 
-[!include[](../../../includes/cognitive-services-speech-service-endpoints-token-service.md)]
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-token-service.md)]
 
 Každý přístupový token je platný 10 minut. V každém okamžiku může získat nový token – včetně, pokud chcete, těsně před každým požadavkem rozhraní REST API pro rozpoznávání řeči. Chcete-li minimalizovat síťový provoz a latence, ale doporučujeme používat stejný token devět minut.
 

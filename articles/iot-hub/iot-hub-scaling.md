@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: kgremban
-ms.openlocfilehash: 01aeaee03a4cfabbda3a29cddd17febdc8a16e45
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 6ae0217ed4b8833eb42a4719a1f2525461f9dcdd
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003528"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43143644"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Zvolte správné úrovně služby IoT Hub pro vaše řešení
 
@@ -43,7 +43,7 @@ Po vytvoření služby IoT hub můžete upgradovat z úrovně basic na úroveň 
 | [Monitorování a Diagnostika](iot-hub-monitor-resource-health.md) | Ano | Ano |
 | [Zasílání zpráv typu cloud zařízení](iot-hub-devguide-c2d-guidance.md) |   | Ano |
 | [Dvojčata zařízení](iot-hub-devguide-device-twins.md), [dvojčaty modulů](iot-hub-devguide-module-twins.md) a [správy zařízení](iot-hub-device-management-overview.md) |   | Ano |
-| [Azure IoT Edge](../iot-edge/how-iot-edge-works.md) |   | Ano |
+| [Azure IoT Edge](../iot-edge/about-iot-edge.md) |   | Ano |
 
 IoT Hub také nabízí úrovně free, která je určená pro testování a vyhodnocení. Obsahuje všechny funkce úrovně standard, ale omezené limity zasílání zpráv. Nelze upgradovat z úrovně free na basic nebo standard. 
 

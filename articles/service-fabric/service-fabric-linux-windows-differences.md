@@ -14,26 +14,23 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 5e0002437b4fc22d9dfdcdca9a587bf420a7d8fa
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: cb4f738fd63b8b013f674557a0c5f5639c26391e
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207678"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126880"
 ---
 # <a name="differences-between-service-fabric-on-linux-and-windows"></a>Rozdíly mezi Service Fabric v Linuxu a ve Windows
 
-Existují určité funkce, které jsou ve Windows podporované, ale v Linuxu zatím ne. S každou vydanou verzí se rozdíly mezi funkcemi budou zmenšovat, až si nakonec sady funkcí budou odpovídat. Mezi nejnovějšími dostupnými verzemi (tedy mezi verzí 6.0 ve Windows a verzí 6.0 v Linuxu) existují následující rozdíly: 
+Existují určité funkce, které jsou ve Windows podporované, ale v Linuxu zatím ne. S každou vydanou verzí se rozdíly mezi funkcemi budou zmenšovat, až si nakonec sady funkcí budou odpovídat. Existují následující rozdíly mezi nejnovějšími dostupnými verzemi.
 
-* Všechny programovací modely jsou ve verzi Preview (Java/C# Reliable Actors, Reliable Stateless Services a Reliable Stateful Services).
-* Envoy (ReverseProxy) je v Linuxu ve verzi Preview.
+* Envoy (reverzního proxy serveru) je ve verzi preview v Linuxu
 * Samostatný instalační program pro Linux ještě není v Linuxu k dispozici.
 * Přesměrování konzoly (nepodporuje se v produkčních clusterech s Linuxem ani s Windows).
 * Fault Analysis Service (FAS) v Linuxu.
 * Služba DNS pro služby Service Fabric (služba DNS je podporována pro kontejnery v Linuxu).
 * Ekvivalenty příkazů rozhraní příkazového řádku pro určité příkazy PowerShellu (seznam je níže; většina se vztahuje pouze na samostatné clustery).
-
-Nástroje pro vývoj ve Windows a v Linuxu se také liší. Ve Windows se používá sada Visual Studio, PowerShell, VSTS a Trasování událostí pro Windows, zatímco v Linuxu se používá Yeoman, Eclipse, Jenkins a LTTng.
 
 ## <a name="powershell-cmdlets-that-do-not-work-against-a-linux-service-fabric-cluster"></a>Rutiny PowerShellu, které nefungují proti linuxovému clusteru Service Fabric
 

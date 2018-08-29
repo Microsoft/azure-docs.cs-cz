@@ -6,15 +6,15 @@ author: CarlRabeler
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 08/15/2018
+ms.date: 08/27/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: e833cb0e7f98933fd106a92a9aac6c4c2677d50d
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 3d0eca6e1c680dd703f4dceac6abcb70144bac37
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42443578"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124993"
 ---
 # <a name="choosing-a-vcore-service-tier-compute-memory-storage-and-io-resources"></a>Výběr úrovně služeb vCore, výpočty, paměť, úložiště a vstupně-VÝSTUPNÍCH prostředků
 
@@ -35,8 +35,8 @@ Následující tabulka vám pomůže pochopit rozdíly mezi těmito dvěma vrstv
 |Nejvhodnější pro|Většinu obchodních úloh. Nabídky rozpočtu orientovaný vybalancovaných a škálovatelných výpočetních možností a možností ukládání.|Podnikové aplikace s vysokými nároky na V/V. Nabízí nejvyšší odolnost proti selhání s využitím několika izolovaných replik.|
 |Compute|Gen4: vCore 1 až 24<br/>Gen5: vCore 1 až 80|Gen4: vCore 1 až 24<br/>Gen5: vCore 1 až 80|
 |Memory (Paměť)|Gen4: 7 GB na jádro<br>Gen5: 5.5 GB na jádro | Gen4: 7 GB na jádro<br>Gen5: 5.5 GB na jádro |
-|Úložiště|[Vzdálené úložiště úrovně Premium](../virtual-machines/windows/premium-storage.md),<br/>Databáze typu singleton: 5 GB až 4 TB<br/>Spravovanou instanci: 32 GB až 8 TB |Místní úložiště SSD<br/>Izolované databáze: 5 GB až 4 TB<br/>Spravovanou instanci: 32 GB až 4 TB |
-|Vstupně-výstupní propustnost (přibližné)|Databáze typu singleton: 500 IOPS na vCore s 7000 maximální vstupně-výstupních operací</br>Spravovanou instanci: Závisí na [velikost souboru](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)|5000 IOPS na jádro s 200000 maximální IOPS|
+|Úložiště|[Vzdálené úložiště úrovně Premium](../virtual-machines/windows/premium-storage.md),<br/>Izolované databáze: 5 GB až 4 TB<br/>Spravovanou instanci: 32 GB až 8 TB |Místní úložiště SSD<br/>Izolované databáze: 5 GB až 1 TB<br/>Spravovanou instanci: 32 GB až 4 TB |
+|Vstupně-výstupní propustnost (přibližné)|Izolované databáze: 500 IOPS na vCore s 7000 maximální IOPS</br>Spravovanou instanci: Závisí na [velikost souboru](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)|5000 IOPS na jádro s 200000 maximální IOPS|
 |Dostupnost|1 repliky, žádné škálování pro čtení|3 repliky, 1 [repliky pro čtení škálování](sql-database-read-scale-out.md),<br/>Zóna redundantní HA|
 |Zálohování|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7 – 35 dní (7 dní ve výchozím nastavení)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7 – 35 dní (7 dní ve výchozím nastavení)|
 |V paměti|neuvedeno|Podporováno|
@@ -53,10 +53,10 @@ Zobrazit [nejčastější dotazy k SQL Database](sql-database-faq.md) odpovědi 
 
 Zvažte použití těchto zdrojů:
 - Přidělené úložiště využívané datové soubory (MDF) a soubory protokolu souborů (LDF).
-- Každá úroveň výkonu databáze typu Singleton podporuje maximální velikost databáze, s výchozí maximální velikost 32 GB.
-- Když konfigurujete požadovaná velikost databáze typu Singleton (velikost MDF), 30 % dalšího úložiště, je automaticky přidaná kvůli podpoře LDF
+- Každá úroveň výkonu izolované databáze podporuje maximální velikost databáze, s výchozí maximální velikost 32 GB.
+- Když konfigurujete velikost požadované izolovanou databázi (velikost MDF), 30 % dalšího úložiště, je automaticky přidaná kvůli podpoře LDF
 - Velikost úložiště ve spravované instanci musí být určena v násobcích po 32 GB.
-- Můžete vybrat libovolné velikosti databáze typu Singleton mezi 10 GB a podporované maximum
+- Můžete vybrat libovolné velikosti databáze typu singleton mezi 10 GB a podporované maximum
  - Pro úložiště úrovně Standard zvětšit nebo zmenšit velikost v přírůstcích po 10 GB
  - Pro Premium storage zvětšit nebo zmenšit velikost v přírůstcích po 250 GB
 - V úrovni General Purpose služby `tempdb` používá připojené SSD a náklady na toto úložiště je zahrnutá v ceně vCore.

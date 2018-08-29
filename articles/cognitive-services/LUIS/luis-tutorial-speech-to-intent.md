@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.technology: luis
 ms.topic: article
 ms.date: 06/26/2018
-ms.author: diberry;
-ms.openlocfilehash: 286efcd97c0c9ab95a8241215bc36799c486a8b6
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.author: diberry
+ms.openlocfilehash: aadca428fa076d697cc0f893673672850ddc27d4
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39247711"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124392"
 ---
 # <a name="integrate-speech-service"></a>Integrace Speech service
 [Speech service](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/) umožňuje použití jednoho požadavku a přijímat zvuk vrátit LUIS předpovědi objekty JSON.
@@ -120,7 +120,7 @@ Správné záměr **GetEmployeeOrgChart**, byl nalezen s 61 % spolehlivostí. By
 Sadou SDK pro řeč vrátí celé odpovědi služby LUIS. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud už je nepotřebujete, odstraňte aplikaci LUIS Lidskézdroje. Uděláte to tak, vyberte tři tečky (***...*** ) napravo od názvu aplikace v seznamu aplikací vyberte **odstranit**. V automaticky otevíraném dialogovém okně **Delete app?** (Odstranit aplikaci?) vyberte **Ok**.
+Pokud už je nepotřebujete, odstraňte aplikaci LUIS Lidskézdroje. Vyberte tlačítko se třemi tečkami (***...***) vpravo od názvu aplikace v seznamu aplikací a potom vyberte **Delete** (Odstranit). V automaticky otevíraném dialogovém okně **Delete app?** (Odstranit aplikaci?) vyberte **Ok**.
 
 Nezapomeňte odstranit LUIS-Samples directory po dokončení pomocí ukázkového kódu.
 

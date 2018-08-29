@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: efc71e02cc02574973f0b6b428b5b670cd9cfd5b
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 15fe97e39fbc1c669762ddb7523cfd043638d3de
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617348"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43144225"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Zdroje událostí ve službě Azure Event Grid
 
@@ -74,13 +74,14 @@ Příklady služby Event Hubs jako obslužná rutina, najdete v článku [obslu�
 
 ## <a name="iot-hub"></a>IoT Hub
 
-Přihlášení odběru do služby IoT Hub události reagovat na zařízení, vytvoří a odstraní události.
+Přihlášení k odběru služby IoT Hub událostí na zařízení se vytvořilo, odstraněna, připojené a odpojené události.
 
 |Titul  |Popis  |
 |---------|---------|
-| [Kurz: odesílání e-mailová oznámení o událostech služby Azure IoT Hub pomocí Logic Apps](publish-iot-hub-events-to-logic-apps.md) | Aplikace logiky odešle e-mailové oznámení pokaždé, když zařízení do služby IoT hub. |
-| [Přehled: reakce na události služby IoT Hub s využitím služby Event Grid pro aktivaci akcí](../iot-hub/iot-hub-event-grid.md) | Přehled integrace služby Iot hub s využitím služby Event Grid. |
+| [Odeslání e-mailová oznámení o událostech služby Azure IoT Hub pomocí Logic Apps](publish-iot-hub-events-to-logic-apps.md) | Aplikace logiky odešle e-mailové oznámení pokaždé, když zařízení do služby IoT Hub. |
+| [Reakce na události služby IoT Hub s využitím služby Event Grid pro aktivaci akcí](../iot-hub/iot-hub-event-grid.md) | Přehled integrace služby IoT Hub s využitím služby Event Grid. |
 | [Schéma událostí](event-schema-iot-hub.md) | Zobrazí pole ve službě IoT Hub události. |
+| [Pořadí připojená zařízení a zařízení odpojí události](../iot-hub/iot-hub-how-to-order-connection-state-events.md) | Ukazuje, jak pořadí událostí stavu připojení zařízení. |
 
 ## <a name="media-services"></a>Media Services
 

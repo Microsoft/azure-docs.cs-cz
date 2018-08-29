@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/24/2018
+ms.date: 08/28/2018
 ms.author: mstewart
-ms.openlocfilehash: adfacdfda5f2d2f9bc595813800d08080596ca4b
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 62ae0bcfb30e39b3b2cfcf94b3877cce9cadf9d1
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42889607"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43127999"
 ---
 # <a name="azure-disk-encryption-prerequisites-previous-release"></a>Požadavky Azure Disk Encryption (předchozí verze)
 
@@ -266,7 +266,7 @@ Vaše aplikace Azure AD potřebuje oprávnění pro přístup k klíčů nebo ta
      ```
 
 ### <a name="bkmk_KVAPCLI"></a> Nastavit zásady přístupu trezoru klíčů pro aplikace Azure AD pomocí Azure CLI
-Použití [az keyvault set-policy](https://docs.microsoft.com/cli/azure/keyvault.md#az-keyvault-set-policy) nastavení zásad přístupu. Další informace najdete v tématu [Správa služby Key Vault pomocí CLI 2.0](../key-vault/key-vault-manage-with-cli2.md#authorize-the-application-to-use-the-key-or-secret).
+Použití [az keyvault set-policy](https://docs.microsoft.com/cli/azure/keyvault.md#az-keyvault-set-policy) nastavení zásad přístupu. Další informace najdete v tématu [Správa služby Key Vault pomocí CLI 2.0](../key-vault/key-vault-manage-with-cli2.md#authorizing-an-application-to-use-a-key-or-secret).
 
 1. V případě potřeby [připojit ke svému předplatnému Azure](azure-security-disk-encryption-appendix.md#bkmk_ConnectCLI).
 2. Poskytněte instanční objekt vytvoříte pomocí rozhraní příkazového řádku Azure přístup k získání tajných kódů a zalamování klíče pomocí následujícího příkazu:

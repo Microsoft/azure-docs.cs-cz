@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2017
+ms.date: 08/28/2018
 ms.author: jeedes
-ms.openlocfilehash: 6b42098786396cf8bb4a27d688b086a49558e7d1
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 4afe11d6d241e86b57ebb40d54e4c2dceb63a46c
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39445146"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43123052"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-klue"></a>Kurz: Integrace Azure Active Directory se službou Klue
 
@@ -37,7 +37,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s Klue, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Klue jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -49,37 +49,40 @@ Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučen
 - Pokud nemáte prostředí zkušební verzi Azure AD, můžete získat měsíční zkušební [tady](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
+
 V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání Klue z Galerie
-1. Konfigurace a testování Azure AD jednotného přihlašování
+2. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-klue-from-the-gallery"></a>Přidání Klue z Galerie
+
 Konfigurace integrace Klue do služby Azure AD, budete muset přidat Klue z Galerie na váš seznam spravovaných aplikací SaaS.
 
 **Chcete-li přidat Klue z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
-    
-1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Aplikace][3]
 
-1. Do vyhledávacího pole zadejte **Klue**.
+4. Do vyhledávacího pole zadejte **Klue**.
 
     ![Vytváří se testovací uživatele služby Azure AD](./media/klue-tutorial/tutorial_klue_search.png)
 
-1. Na panelu výsledků vyberte **Klue**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
+5. Na panelu výsledků vyberte **Klue**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
 
     ![Vytváří se testovací uživatele služby Azure AD](./media/klue-tutorial/tutorial_klue_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
+
 V této části Konfigurace a testování Azure AD jednotné přihlašování pomocí Klue podle testovacího uživatele nazývá "Britta Simon".
 
 Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšky v Klue je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a související uživatelské v Klue potřeba navázat.
@@ -89,10 +92,10 @@ V Klue, přiřaďte hodnotu **uživatelské jméno** ve službě Azure AD jako h
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Klue, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-1. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-1. **[Vytvoření zkušebního uživatele Klue](#creating-a-klue-test-user)**  – Pokud chcete mít protějšek Britta Simon Klue, který je propojený s Azure AD reprezentace uživatele.
-1. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-1. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+2. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření zkušebního uživatele Klue](#creating-a-klue-test-user)**  – Pokud chcete mít protějšek Britta Simon Klue, který je propojený s Azure AD reprezentace uživatele.
+4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
@@ -104,11 +107,11 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace jednotného přihlašování][4]
 
-1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
- 
+2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
+
     ![Konfigurace jednotného přihlašování](./media/klue-tutorial/tutorial_klue_samlbase.png)
 
-1. Na **Klue domény a adresy URL** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu:
+3. Na **Klue domény a adresy URL** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu:
 
     ![Konfigurace jednotného přihlašování](./media/klue-tutorial/tutorial_klue_url1.png)
 
@@ -116,27 +119,27 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     b. V **adresy URL odpovědi** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://app.klue.com/account/auth/saml/<Customer UUID>/callback`
 
-1. Zkontrolujte **zobrazit pokročilé nastavení URL**. Pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
+4. Zkontrolujte **zobrazit pokročilé nastavení URL**. Pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
 
     ![Konfigurace jednotného přihlašování](./media/klue-tutorial/tutorial_klue_url2.png)
 
     V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://app.klue.com/account/auth/saml/<Customer UUID>/`
-     
-    > [!NOTE] 
+
+    > [!NOTE]
     > Tyto hodnoty nejsou skutečný. Aktualizujte tyto hodnoty se skutečná adresa URL odpovědi, identifikátoru a přihlašovací adresa URL. Kontakt [tým podpory Klue klienta](mailto:support@klue.com) k získání těchto hodnot.
 
-1. Aplikace Klue očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Můžete spravovat hodnotami těchto atributů z "**atributy uživatele**" části na stránce aplikací pro integraci. 
+5. Aplikace Klue očekává, že kontrolní výrazy SAML v určitém formátu, který je potřeba přidat vlastní atribut mapování konfigurace atributy tokenu SAML. Můžete spravovat hodnotami těchto atributů z "**atributy uživatele**" části na stránce aplikací pro integraci.
 
     ![Konfigurace jednotného přihlašování](./media/klue-tutorial/attribute.png)
 
-1. V **atributy uživatele** části na **jednotného přihlašování** dialogovém okně Konfigurovat atribut tokenu SAML, jak je znázorněno na předchozím obrázku a proveďte následující kroky:
-    
+6. V **atributy uživatele** části na **jednotného přihlašování** dialogovém okně Konfigurovat atribut tokenu SAML, jak je znázorněno na předchozím obrázku a proveďte následující kroky:
+
     | Název atributu      | Hodnota atributu      |
     | ------------------- | -------------------- |
     | křestní_jméno          | user.givenname |
     | Příjmení           | user.surname |
     | e-mail               | user.userprincipalname|
-    
+
     a. Klikněte na tlačítko **přidat atribut** otevřít **přidat atribut** dialogového okna.
 
     ![Konfigurace jednotného přihlašování](./media/klue-tutorial/tutorial_attribute_04.png)
@@ -146,27 +149,28 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     b. V **název** textového pole zadejte název atributu, který je zobrazený pro tento řádek.
 
     c. Z **hodnotu** seznamu, zadejte hodnotu atributu zobrazený pro tento řádek.
-    
+
     d. Klikněte na tlačítko **OK**.
 
-1. Na **podpisový certifikát SAML** klikněte na tlačítko **Certificate(Base64)** a uložte soubor certifikátu v počítači.
+    > [!NOTE]
+    > Nechejte prosím **Namespace** prázdnou hodnotu.
+
+7. Na **podpisový certifikát SAML** klikněte na tlačítko **Certificate(Base64)** a uložte soubor certifikátu v počítači.
 
     ![Konfigurace jednotného přihlašování](./media/klue-tutorial/tutorial_klue_certificate.png) 
 
-1. Klikněte na tlačítko **Uložit** tlačítko.
+8. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Konfigurace jednotného přihlašování](./media/klue-tutorial/tutorial_general_400.png)
-    
-1. Na **Klue konfigurace** klikněte na tlačítko **nakonfigurovat Klue** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
+
+9. Na **Klue konfigurace** klikněte na tlačítko **nakonfigurovat Klue** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
 
     ![Konfigurace jednotného přihlašování](./media/klue-tutorial/tutorial_klue_configure.png) 
 
-1. Ke konfiguraci jednotného přihlašování na **Klue** straně, je nutné odeslat na stažený **Certificate(Base64) SAML jednotné přihlašování – adresa URL služby a SAML Entity ID** k [tým podpory Klue](mailto:support@klue.com).
-
-> [!TIP]
-> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
+10. Ke konfiguraci jednotného přihlašování na **Klue** straně, je nutné odeslat na stažený **Certificate(Base64) SAML jednotné přihlašování – adresa URL služby a SAML Entity ID** k [tým podpory Klue](mailto:support@klue.com).
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
+
 Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
 ![Vytvoření uživatele Azure AD][100]
@@ -175,18 +179,18 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
 1. V **webu Azure portal**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/klue-tutorial/create_aaduser_01.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/klue-tutorial/create_aaduser_01.png)
 
-1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
-    
-    ![Vytváří se testovací uživatele služby Azure AD](./media/klue-tutorial/create_aaduser_02.png) 
+2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
 
-1. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
- 
-    ![Vytváří se testovací uživatele služby Azure AD](./media/klue-tutorial/create_aaduser_03.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/klue-tutorial/create_aaduser_02.png)
 
-1. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
- 
+3. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
+
+    ![Vytváří se testovací uživatele služby Azure AD](./media/klue-tutorial/create_aaduser_03.png)
+
+4. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
+
     ![Vytváří se testovací uživatele služby Azure AD](./media/klue-tutorial/create_aaduser_04.png) 
 
     a. V **název** textové pole, typ **BrittaSimon**.
@@ -196,13 +200,13 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
     c. Vyberte **zobrazit heslo** a zapište si hodnotu **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
- 
+
 ### <a name="creating-a-klue-test-user"></a>Vytvoření zkušebního uživatele Klue
 
 Cílem této části je vytvořte uživatele Britta Simon v Klue. Klue podporuje just-in-time zřizování, který je ve výchozím nastavení povolená. Neexistuje žádná položka akce pro vás v této části. Nový uživatel se vytvoří během pokusu o přístup k Klue, pokud ještě neexistuje.
 
->[!Note]
->Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory Klue](mailto:support@klue.com).
+> [!Note]
+> Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory Klue](mailto:support@klue.com).
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
@@ -216,24 +220,24 @@ V této části je povolit Britta Simon k udělení přístupu k Klue použití 
 
     ![Přiřadit uživatele][201] 
 
-1. V seznamu aplikací vyberte **Klue**.
+2. V seznamu aplikací vyberte **Klue**.
 
     ![Konfigurace jednotného přihlašování](./media/klue-tutorial/tutorial_klue_app.png) 
 
-1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
-    ![Přiřadit uživatele][202] 
+    ![Přiřadit uživatele][202]
 
-1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
+4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Přiřadit uživatele][203]
 
-1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
+5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
+6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
-    
+7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
+
 ### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
@@ -245,8 +249,6 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
-
-
 
 <!--Image references-->
 
@@ -261,4 +263,3 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 [201]: ./media/klue-tutorial/tutorial_general_201.png
 [202]: ./media/klue-tutorial/tutorial_general_202.png
 [203]: ./media/klue-tutorial/tutorial_general_203.png
-

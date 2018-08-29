@@ -6,16 +6,16 @@ ms.service: automation
 ms.component: change-inventory-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/15/2018
+ms.date: 08/27/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 86b8f76bd221be9f30a5b9336af858359ae0af8f
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 8066612db20d1569920835a67d84b27d1b852e6e
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238875"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128122"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Sledování změn ve vašem prostředí pomocí řešení Change Tracking
 
@@ -94,8 +94,18 @@ Použijte následující postup ke konfiguraci soubory sledování na počítač
 |Povoleno     | Určuje, pokud je použito nastavení.        |
 |Název položky     | Popisný název souboru, který má být sledovány.        |
 |Skupina     | Název skupiny pro logické seskupení souborů.        |
-|Zadat cestu     | Cesta, ve které se má soubor hledat. Například: c:\temp\myfile.txt       |
+|Zadat cestu     | Cesta ke kontrole souboru: "c:\temp\\\*.txt"<br>Můžete také použít proměnné prostředí, jako "%winDir%\System32\\\*. *"       |
+|Rekurze     | Určuje, jestli se při hledání položky, která se má sledovat, používá rekurze.        |
 |Nahrát obsah souboru pro všechna nastavení| Zapne nebo vypne u sledovaných změn nahrávání obsahu souboru. Dostupné možnosti: **True** nebo **False**.|
+
+## <a name="wildcard-recursion-and-environment-settings"></a>Nastavení zástupný znak, rekurze a prostředí
+
+Rekurze můžete zadat zástupné znaky pro zjednodušení sledování napříč adresářů a proměnných prostředí, aby bylo možné sledovat soubory v rámci prostředí s několika nebo dynamické jednotka názvy. Následuje seznam běžných informací o, byste měli vědět při konfiguraci rekurze:
+
+* Zástupné znaky jsou požadovány pro sledování více souborů
+* Pokud použijete zástupné znaky, že jde použít jenom v posledním segmentu cesty. (například C:\folder\\**souboru** nebo /etc/*.conf)
+* Pokud proměnná prostředí obsahuje neplatnou cestu, bude ověření úspěšné, ale tato cesta se nezdaří spuštění inventáře.
+* Například vyhnout obecné cesty `c:\*.*` při nastavování cestu, protože výsledkem by příliš mnoho složek se procházet.
 
 ## <a name="configure-file-content-tracking"></a>Konfigurovat sledování obsah souboru
 
@@ -122,13 +132,8 @@ Pomocí následujících kroků nakonfigurovat sledování klíčů registru v p
 
 Řešení Change Tracking v současné době nepodporuje následující položky:
 
-* Sledování souborů složek (adresáře) pro Windows
-* Rekurze pro sledování souborů Windows
-* Zástupné znaky pro sledování souborů Windows
 * Rekurze pro sledování registru Windows
-* Proměnné cest
 * Systémy souborů sítě
-* Obsah souboru
 
 Další omezení:
 
@@ -232,7 +237,7 @@ V následující tabulce jsou uvedeny ukázky hledání v protokolech pro měnit
 
 |Dotaz  |Popis  |
 |---------|---------|
-|Jsou konfigurační data<br>&#124;kde ConfigDataType == "WindowsServices" a SvcStartupType == "Auto"<br>&#124;kde SvcState == "Zastavena"<br>&#124;shrnutí arg_max(TimeGenerated, *) podle názvu softwaru, počítač         | Zobrazuje nejnovější záznamy inventáře pro služby Windows, které byly nastavené na automaticky, ale nebyly hlášeny jako zastavení<br>Výsledky jsou omezené na o nejnovější záznam pro tohoto názvu softwaru nebo počítače      |
+|ConfigurationData<br>&#124;kde ConfigDataType == "WindowsServices" a SvcStartupType == "Auto"<br>&#124;kde SvcState == "Zastavena"<br>&#124;shrnutí arg_max(TimeGenerated, *) podle názvu softwaru, počítač         | Zobrazuje nejnovější záznamy inventáře pro služby Windows, které byly nastavené na automaticky, ale nebyly hlášeny jako zastavení<br>Výsledky jsou omezené na o nejnovější záznam pro tohoto názvu softwaru nebo počítače      |
 |ConfigurationChange<br>&#124;kde ConfigChangeType == "Software" a ChangeCategory == "Odebrat"<br>&#124;Řadit podle TimeGenerated desc|Záznamy změn pro odebrání softwaru|
 
 ## <a name="next-steps"></a>Další postup

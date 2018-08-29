@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: 4b25c82de4d2d3f4300fbb688c75be74ce63fe40
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 6a5f8fc126f9c94ce139b99c94936e01da8b4099
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42054428"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126417"
 ---
 # <a name="configure-a-vm-managed-service-identity-by-using-a-template"></a>Konfigurace virtuálních počítačů spravovaná identita služby s použitím šablony
 
@@ -380,7 +380,7 @@ Pokud máte virtuální počítač, který už je identita spravované služby:
  
    **Microsoft.Compute/virtualMachines rozhraní API verze 2017-12-01**
 
-   Chcete-li odebrat jednoho uživatele přiřazeny identity z virtuálního počítače, odeberte ho z `identityIds` pole.
+   K odebrání jednoho uživatele přiřazeny identity z virtuálního počítače, odeberte ho z `identityIds` pole.
 
    Pokud máte identitou přiřazenou systémem, uložte ho v `type` pod `identity` hodnotu.
    

@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.author: cephalin
-ms.openlocfilehash: 1c56f705c07e2001e1ef8f5f9f05c264c33c2c3f
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: ba84d297420ca5a9b75b4cfa432373d3070e0d01
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42055441"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125240"
 ---
 # <a name="troubleshoot-a-web-app-in-azure-app-service-using-visual-studio"></a>Řešení potíží s webovou aplikací ve službě Azure App Service pomocí sady Visual Studio
 ## <a name="overview"></a>Přehled
@@ -623,7 +623,7 @@ Už víte, jak Visual Studio umožňuje snadno zobrazit protokoly vytvořené we
 ### <a name="azure-web-app-troubleshooting"></a>Řešení potíží s Azure web app
 Další informace o řešení potíží s webovými aplikacemi ve službě Azure App Service naleznete na následujících odkazech:
 
-* [Monitorování webových aplikací](/manage/services/web-sites/how-to-monitor-websites/)
+* [Monitorování webových aplikací](web-sites-monitor.md)
 * [Zkoumání nevracení paměti ve službě Azure Web Apps pomocí sady Visual Studio 2013](http://blogs.msdn.com/b/visualstudioalm/archive/2013/12/20/investigating-memory-leaks-in-azure-web-sites-with-visual-studio-2013.aspx). Příspěvek na blogu Microsoft ALM funkcemi sady Visual Studio pro analýzu spravovaných problémy s pamětí.
 * [Online nástroje pro Azure web apps byste měli vědět o](https://azure.microsoft.com/blog/2014/03/28/windows-azure-websites-online-tools-you-should-know-about-2/). Příspěvek na blogu od Amitu Apple.
 
@@ -674,7 +674,7 @@ catch (Exception ex)
 
 * [Protokolování z rozhraní příkazového řádku Azure (plus balíčku Glimpse!) streamování trasování diagnostiky](http://www.hanselman.com/blog/StreamingDiagnosticsTraceLoggingFromTheAzureCommandLinePlusGlimpse.aspx)<br/>
   Použití příkazového řádku provést co tento kurz ukazuje, jak provést v sadě Visual Studio. [Balíčku glimpse](http://www.hanselman.com/blog/IfYoureNotUsingGlimpseWithASPNETForDebuggingAndProfilingYoureMissingOut.aspx) je nástroj pro ladění aplikací ASP.NET.
-* [Použití webových aplikací, protokolování a Diagnostika – s David Ebbo](/documentation/videos/azure-web-site-logging-and-diagnostics/) a [protokoly z webové aplikace – David Ebbo streamování](/documentation/videos/log-streaming-with-azure-web-sites/)<br>
+* [Použití webových aplikací, protokolování a Diagnostika – s David Ebbo](https://azure.microsoft.com/documentation/videos/azure-web-site-logging-and-diagnostics/) a [protokoly z webové aplikace – David Ebbo streamování](https://azure.microsoft.com/documentation/videos/log-streaming-with-azure-web-sites/)<br>
   Videa Scott Hanselman a David Ebbo.
 
 Pro protokolování chyb, je použití rozšiřovatelnou platformu pro protokolování open source, jako alternativu k psaní kódu trasování [ELMAH](http://nuget.org/packages/elmah/). Další informace najdete v tématu [Scott Hanselman příspěvky o ELMAH](http://www.hanselman.com/blog/NuGetPackageOfTheWeek7ELMAHErrorLoggingModulesAndHandlersWithSQLServerCompact.aspx).

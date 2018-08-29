@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 07/06/2018
 ms.author: ramamill
 ms.openlocfilehash: 6aff17908d220557720776a2d7884adc28b5deee
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.sourcegitcommit: baed5a8884cb998138787a6ecfff46de07b8473d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
+ms.lasthandoff: 08/28/2018
 ms.locfileid: "37917165"
 ---
 # <a name="automate-mobility-service-installation-with-system-center-configuration-manager"></a>Automatizace instalace služby Mobility pomocí nástroje System Center Configuration Manager

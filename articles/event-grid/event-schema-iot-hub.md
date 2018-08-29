@@ -10,12 +10,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 08/17/2018
 ms.author: kgremban
-ms.openlocfilehash: 4bb33eae53d31701b66d13cb4e810b1a0b8a4b0b
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: a86b22b3327b2353dd37a9f9863337d12a009434
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42056808"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43143569"
 ---
 # <a name="azure-event-grid-event-schema-for-iot-hub"></a>Schéma událostí Azure Event Grid pro službu IoT Hub
 
@@ -31,8 +31,33 @@ Azure IoT Hub generuje následující typy událostí:
 | ---------- | ----------- |
 | Microsoft.Devices.DeviceCreated | Publikuje, když je zařízení zaregistrované do služby IoT hub. |
 | Microsoft.Devices.DeviceDeleted | Publikuje, když zařízení se odstraní ze služby IoT hub. | 
+| Microsoft.Devices.DeviceConnected | Publikuje, když je zařízení připojené do služby IoT hub. |
+| Microsoft.Devices.DeviceDisconnected | Publikuje, když zařízení je odpojen od služby IoT hub. | 
 
 ## <a name="example-event"></a>Příklad události
+
+Schéma pro DeviceConnected a DeviceDisconnected události mají stejnou strukturu. Událost vzorku pro tento ukazuje schématu události vyvolané při připojení zařízení do služby IoT hub:
+
+```json
+[{
+  "id": "f6bbf8f4-d365-520d-a878-17bf7238abd8", 
+  "topic": "/SUBSCRIPTIONS/<subscription ID>/RESOURCEGROUPS/<resource group name>/PROVIDERS/MICROSOFT.DEVICES/IOTHUBS/<hub name>", 
+  "subject": "devices/LogicAppTestDevice", 
+  "eventType": "Microsoft.Devices.DeviceConnected", 
+  "eventTime": "2018-06-02T19:17:44.4383997Z", 
+  "data": {
+    "deviceConnectionStateEventInfo": {
+      "sequenceNumber":
+        "000000000000000001D4132452F67CE200000002000000000000000000000001"
+    },
+    "hubName": "egtesthub1",
+    "deviceId": "LogicAppTestDevice",
+    "moduleId" : "DeviceModuleID"
+  }, 
+  "dataVersion": "1", 
+  "metadataVersion": "1" 
+}]
+```
 
 Schéma pro DeviceCreated a DeviceDeleted události mají stejnou strukturu. Událost vzorku pro tento ukazuje schématu události vyvolané při registraci zařízení do služby IoT hub:
 
@@ -47,6 +72,7 @@ Schéma pro DeviceCreated a DeviceDeleted události mají stejnou strukturu. Ud�
     "twin": {
       "deviceId": "LogicAppTestDevice",
       "etag": "AAAAAAAAAAE=",
+      "deviceEtag": "null",
       "status": "enabled",
       "statusUpdateTime": "0001-01-01T00:00:00",
       "connectionState": "Disconnected",
@@ -74,11 +100,9 @@ Schéma pro DeviceCreated a DeviceDeleted události mají stejnou strukturu. Ud�
       }
     },
     "hubName": "egtesthub1",
-    "deviceId": "LogicAppTestDevice",
-    "operationTimestamp": "2018-01-02T19:17:44.4383997Z",
-    "opType": "DeviceCreated"
+    "deviceId": "LogicAppTestDevice"
   },
-  "dataVersion": "",
+  "dataVersion": "1",
   "metadataVersion": "1"
 }]
 ```
@@ -98,17 +122,29 @@ Všechny události obsahovat stejná data nejvyšší úrovně:
 | dataVersion | řetězec | Verze schématu datového objektu Vydavatel Určuje verzi schématu. |
 | verze metadataVersion | řetězec | Verze schématu metadat události Event Grid definuje schéma vlastnosti nejvyšší úrovně. Event gridu poskytuje tuto hodnotu. |
 
-Obsah datového objektu se liší pro každý zdroj události. Pro události služby IoT Hub datový objekt obsahuje následující vlastnosti:
+Pro všechny události služby IoT Hub datový objekt obsahuje následující vlastnosti:
 
 | Vlastnost | Typ | Popis |
 | -------- | ---- | ----------- |
 | HubName | řetězec | Název služby IoT Hub, kde byl vytvořen zařízení nebo je odstranit. |
 | deviceId | řetězec | Jedinečný identifikátor zařízení. Tento řetězec malá a velká písmena mohou být dlouhé až 128 znaků a podporuje ASCII 7bitové alfanumerické znaky a následující speciální znaky: `- : . + % _ # * ? ! ( ) , = @ ; $ '`. |
-| operationTimestamp | řetězec | Časové razítko ISO8601 operace. |
-| opType | řetězec | Typ události, který je určený pro tuto operaci ve službě IoT Hub: buď `DeviceCreated` nebo `DeviceDeleted`.
+
+Obsah datového objektu se liší pro každý zdroj události. Pro **zařízení připojeno** a **odpojení zařízení** události služby IoT Hub, datový objekt obsahuje následující vlastnosti:
+
+| Vlastnost | Typ | Popis |
+| -------- | ---- | ----------- |
+| ID modulu | řetězec | Jedinečný identifikátor modulu. Toto pole je výstup pouze pro zařízení se modul. Tento řetězec malá a velká písmena mohou být dlouhé až 128 znaků a podporuje ASCII 7bitové alfanumerické znaky a následující speciální znaky: `- : . + % _ # * ? ! ( ) , = @ ; $ '`. |
+| deviceConnectionStateEventInfo | objekt | Informace o události stavu připojení zařízení
+| sequenceNumber | řetězec | Číslo, která pomáhá určit pořadí připojeno zařízení nebo zařízení odpojí události. Nejnovější událost může mít pořadové číslo, které je vyšší než předchozí události. Toto číslo může změnit ve více než 1, ale přísné zvýšení. Zobrazit [použití pořadové číslo](../iot-hub/iot-hub-how-to-order-connection-state-events.md). |
+
+Obsah datového objektu se liší pro každý zdroj události. Pro **zařízení vytvořit** a **zařízení odstraní** události služby IoT Hub, datový objekt obsahuje následující vlastnosti:
+
+| Vlastnost | Typ | Popis |
+| -------- | ---- | ----------- |
 | dvojče | objekt | Informace o dvojčeti zařízení, což je cloudové represenation metadat zařízení aplikace. | 
 | ID zařízení | řetězec | Jedinečný identifikátor dvojčeti zařízení. | 
-| Značka Etag | řetězec | Určitý údaj, který popisuje obsah dvojčeti zařízení. Každá značka etag je musí být jedinečný na dvojče zařízení. | 
+| Značka Etag | řetězec | Validátor pro zajištění konzistence aktualizace dvojčete zařízení. Každá značka etag je musí být jedinečný na dvojče zařízení. |  
+| deviceEtag| řetězec | Validátor pro zajištění konzistence aktualizací do registru zařízení. Každý deviceEtag je musí být jedinečný na registr zařízení. |
 | status | řetězec | Dvojče zařízení určuje, zda je povoleno nebo zakázáno. | 
 | statusUpdateTime | řetězec | Aktualizovat ISO8601 časové razítko poslední stav dvojčete zařízení. |
 | Vlastnost connectionState | řetězec | Určuje, zda je zařízení připojeno nebo odpojeno. | 

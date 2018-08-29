@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: ellacroi
-ms.openlocfilehash: 5508b5943e116545297d91e85621d2a11a635299
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: b8caeab7f08ffeee81492b01750cbb255e172872
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39059764"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43144518"
 ---
 # <a name="virtual-machine-offer-publishing-guide"></a>Průvodce publikováním nabídky virtuálních počítačů
 
@@ -42,7 +42,7 @@ Můžete uspořádat uživatelům přístup k omezené období softwarových lic
 
 Můžete nasadit jeden nebo více virtuálních počítačů prostřednictvím infrastructure-as-a-service(IaaS) nebo aplikací SaaS. Výhoda test jednotky, kterou možnost publikování je automatického zřizování virtuálního počítače nebo celé řešení vedené partnerem hostované průvodce. Testovací verze poskytuje zákazníkům vyhodnocení bez dalších poplatků. Zákazník nemusí být stávající zákazník Azure provozovat zkušební prostředí s. 
 
-E-mailu amp-testdrive@microsoft.com začít. 
+Kontaktujte nás na adrese [amp testdrive](mailto:amp-testdrive@microsoft.com) začít. 
 
 |Požadavky  |Podrobnosti |
 |---------|---------|

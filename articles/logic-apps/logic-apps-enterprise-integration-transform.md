@@ -1,94 +1,90 @@
 ---
-title: Převést data XML s transformací - Azure Logic Apps | Microsoft Docs
-description: Vytvořit transformací nebo mapps převést data XML mezi formáty v logiku aplikace pomocí sady SDK integrace Enterprise
+title: Transformace XML mezi formáty – Azure Logic Apps | Dokumentace Microsoftu
+description: Vytvoření mapy, které provádějí převod mezi formáty v Azure Logic Apps sadou Enterprise Integration Pack XML nebo transformací
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: msftman
-manager: jeconnoc
-editor: cgronlun
-ms.assetid: add01429-21bc-4bab-8b23-bc76ba7d0bde
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: add01429-21bc-4bab-8b23-bc76ba7d0bde
 ms.date: 07/08/2016
-ms.author: LADocs; padmavc
-ms.openlocfilehash: 1621843d58954aa05a572f43fdab0fb16097332e
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 9dd471f70407191734b4c5a3aa84d5365a7beab8
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299449"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125291"
 ---
-# <a name="enterprise-integration-with-xml-transforms"></a>Enterprise integrace s transformace XML
-## <a name="overview"></a>Přehled
-Konektor Enterprise integrace transformace převádí data z jednoho formátu do jiného formátu. Například můžete mít příchozí zprávy obsahující aktuální datum ve formátu YearMonthDay. Transformace můžete přeformátujte datum ve formátu MonthDayYear.
+# <a name="create-maps-that-transform-xml-between-formats-in-azure-logic-apps-with-enterprise-integration-pack"></a>Vytváření map, které transformují XML mezi formáty v Azure Logic Apps sadou Enterprise Integration Pack
 
-## <a name="what-does-a-transform-do"></a>Transformace k čemu slouží?
-Transformace, která je také označována jako mapu, se skládá z schéma XML pro zdroj (vstup) a cíl XML schema (výstup). Různé integrované funkce můžete použít k manipulaci nebo řízení dat, včetně manipulace s řetězci, podmíněného přiřazení, aritmetických výrazech, datum čas formátování a i opakování ve smyčce konstrukce.
+Enterprise integration transformace konektor převádí data z jednoho formátu do jiného formátu. Například může mít příchozí zprávy, která obsahuje aktuální datum ve formátu YearMonthDay. Transformace můžete opakovaně formátovat datum ve formátu MonthDayYear.
+
+## <a name="what-does-a-transform-do"></a>Co dělá transformace?
+Transformace, která se také označuje jako mapu, se skládá ze zdroje XML schématu (vstup) a cíl XML schématu (výstup). Různé integrované funkce můžete použít k manipulaci nebo určit data, včetně manipulace s řetězci, podmíněného přiřazení, aritmetických výrazů, datum čas formátování a dokonce konstruktorech cyklů.
 
 ## <a name="how-to-create-a-transform"></a>Postup vytvoření transformace?
-Transformace nebo mapu můžete vytvořit pomocí sady Visual Studio [Enterprise integrace SDK](https://aka.ms/vsmapsandschemas). Po dokončení vytváření a testování pro transformaci nahrajete do účtu integrace pro transformaci. 
+Pomocí sady Visual Studio můžete vytvořit transformace/map [Enterprise Integration SDK](https://aka.ms/vsmapsandschemas). Po dokončení vytváření a testování transformací, která nahrajete transformací, která se ke svému účtu integrace. 
 
-## <a name="how-to-use-a-transform"></a>Postup použití transformace
-Po odeslání transformace nebo mapy ke svému účtu integrace, můžete k vytvoření aplikace logiky. Aplikace logiky běží vaše transformace vždy, když se aktivuje aplikaci logiky (a vstupní obsah, který potřebuje k transformaci).
+## <a name="how-to-use-a-transform"></a>Použití transformace
+Po transformaci nebo namapovat nahrajete do účtu pro integraci, můžete k vytvoření aplikace logiky. Pokaždé, když se aplikace logiky se aktivuje (a není nutné transformovat vstupní obsah), spuštění aplikace logiky transformace.
 
-**Tady jsou kroky při použití transformace**:
+**Tady je postup používání transformace**:
 
 ### <a name="prerequisites"></a>Požadavky
 
-* Vytvoření účtu integrace a přidejte do ní mapy  
+* Vytvoření účtu pro integraci a přidání mapy  
 
-Teď, když jste postaráno, požadované součásti, je čas vytvořit svou aplikaci logiky:  
+Teď, když jste postaral o požadavky, je čas vytvořit aplikaci logiky:  
 
-1. Vytvoření aplikace logiky a [ho propojit se svým účtem integrace](../logic-apps/logic-apps-enterprise-integration-accounts.md "zjistěte, jak lze propojit účet integrace aplikace logiky") obsahující mapy.
-2. Přidat **požadavku** aktivační události do aplikace logiky  
+1. Vytvoření aplikace logiky a [propojit ho se svým účtem integrace](../logic-apps/logic-apps-enterprise-integration-accounts.md "se naučíte, jak propojit účet integrace aplikace logiky") , která obsahuje mapu.
+2. Přidat **žádosti** trigger aplikace logiky  
    ![](./media/logic-apps-enterprise-integration-transforms/transform-1.png)    
-3. Přidat **transformace XML** akce první výběrem **přidat akci**   
+3. Přidat **transformace XML** akce tak, že vyberete první **přidat akci**   
    ![](./media/logic-apps-enterprise-integration-transforms/transform-2.png)   
-4. Zadejte slovo *transformace* do vyhledávacího pole vyfiltrujete všechny akce, které ten, který chcete použít  
+4. Zadejte slovo *transformace* do vyhledávacího pole filtrovat všechny akce, které ten, který chcete použít  
    ![](./media/logic-apps-enterprise-integration-transforms/transform-3.png)  
 5. Vyberte **transformace XML** akce   
-6. Přidání souboru XML **obsahu** , můžete transformace. Můžete použít libovolná data XML, který se zobrazí v požadavku HTTP, jako **obsahu**. V tomto příkladu vyberte textu požadavku HTTP, který aktivoval aplikaci logiky.
+6. Přidání souboru XML **obsahu** , který je transformace. Můžete použít libovolná data XML se zobrazí v požadavku HTTP jako **obsahu**. V tomto příkladu vyberte tělo požadavku HTTP, který aktivuje aplikace logiky.
 
    > [!NOTE]
-   > Ujistěte se, že obsah **transformace XML** formátu XML. Pokud obsah není v kódu XML nebo je kódováním base64, musíte zadat výraz, který zpracovává obsah. Například můžete použít [funkce](logic-apps-workflow-definition-language.md#functions), například ```@base64ToBinary``` pro dekódování obsah nebo ```@xml``` pro zpracování obsahu ve formátu XML.
+   > Ujistěte se, že obsah **transformace XML** je XML. Pokud obsah není ve formátu XML nebo je s kódováním base64, musíte zadat výraz, který zpracovává obsah. Například můžete použít [funkce](logic-apps-workflow-definition-language.md#functions), třeba ```@base64ToBinary``` pro dekódování obsahu nebo ```@xml``` pro zpracování obsahu ve formátu XML.
  
 
-7. Vyberte název **MAPY** , kterou chcete použít k provedení transformace. Mapy již musí být v účtu integrace. V předchozím kroku dáte již logiku aplikace přístup k vašemu účtu integrace, která obsahuje vaše mapy.      
+7. Vyberte název **MAPY** , kterou chcete použít k provedení transformace. Na mapě již musí být v účtu integrace. V jednom z předchozích kroků dáte už váš přístup k aplikaci logiky k, která obsahuje mapu účtu integrace.      
    ![](./media/logic-apps-enterprise-integration-transforms/transform-4.png) 
 8. Uložte si práci  
     ![](./media/logic-apps-enterprise-integration-transforms/transform-5.png) 
 
-V tomto okamžiku jste dokončili nastavení mapy. V reálné aplikaci můžete ukládat Transformovaná data obchodní aplikace, například služby SalesForce. Můžete snadno jako akce pro odeslání výstupu transformace do služby Salesforce. 
+V tomto okamžiku budete mít nastavení mapy. V reálné aplikaci můžete uložit Transformovaná data do aplikace LOB jsou například služby SalesForce. Můžete snadno jako akci, aby odesílal výstup transformace do Salesforce. 
 
-Nyní můžete otestovat váš transformace tak, že požadavek na koncový bod HTTP.  
+Teď můžete otestovat vaši transformace tak, že požadavek na koncový bod HTTP.  
 
 
 ## <a name="features-and-use-cases"></a>Funkce a případy použití
-* Transformace vytvořené v mapu může být jednoduchý, jako je například kopírování názvu a adresy z jednoho dokumentu do jiného. Nebo můžete vytvořit složitější transformace pomocí operace, které se na pole mapy.  
-* Více mapy operace nebo funkce jsou snadno dostupné, včetně řetězce, datum časové funkce a tak dále.  
-* Můžete to udělat kopii přímá dat mezi schémat. V Mapper zahrnutý v sadě SDK to je jednoduché, kreslení čáry propojující se svými protějšky ve schématu cílové elementy ve schématu zdroje.  
-* Při vytváření mapy, zobrazí se grafické zobrazení mapy, které ukazují vztahy a odkazy, které vytvoříte.
-* Použijte funkci Test mapy přidat ukázkovou zprávu XML. S jediným kliknutím můžete otestovat mapu, kterou jste vytvořili a najdete v části generovaný výstup.  
-* Nahrát existující mapy  
+* Transformace vytvořeny v objektu map lze jednoduché, jako je například kopírování název a adresu z jednoho dokumentu do jiného. Nebo můžete vytvářet složitější transformace pomocí operace out-of-the-box mapy.  
+* Více operace mapování nebo funkce jsou snadno dostupné, včetně řetězců, čas funkce data a tak dále.  
+* Vám pomůžou s přímým přístupem data kopírování mezi schémata. V mapování součástí sady SDK je to snadné – stačí kreslení čáry, která se připojuje elementy ve schématu zdroje s jejich protějšky v cílové schéma.  
+* Při vytváření mapy, můžete zobrazit grafická reprezentace mapy, která znázorňuje vztahy a odkazy, které vytvoříte.
+* Pomocí funkce mapy testu přidat ukázková zpráva XML. Jediným kliknutím můžete testovat mapu, kterou jste vytvořili a zobrazí se vygenerovaný výstup.  
+* Nahrání existující mapování  
 * Zahrnuje podporu pro formát XML.
 
 ## <a name="advanced-features"></a>Pokročilé funkce
 
-### <a name="reference-assembly-or-custom-code-from-maps"></a>Odkaz na sestavení nebo vlastní kód z mapy 
-Akce transformace také podporuje mapy nebo transformuje nese odkaz na externí sestavení. Tato funkce umožňuje volání vlastní kód .NET přímo z XSLT mapy. Tady jsou požadavky pro použití sestavení v rámci služby maps.
+### <a name="reference-assembly-or-custom-code-from-maps"></a>Odkaz na sestavení nebo vlastního kódu z mapy 
+Akce transformace také podporuje mapy nebo transformuje s odkazem na externí sestavení. Tato možnost umožňuje volání vlastního kódu .NET přímo z XSLT mapy. Tady jsou požadavky na sestavení se používá v rámci služby maps.
 
-* Mapy a sestavení na něj odkazovat z mapy, musí být [integrace účet nahraje](./logic-apps-enterprise-integration-maps.md). 
+* Na mapě a sestavení odkazované z mapování musí být [nahráli do účtu pro integraci](./logic-apps-enterprise-integration-maps.md). 
 
   > [!NOTE]
-  > Mapy a sestavení nutných k odeslání v určitém pořadí. Před nahráním mapu, která odkazuje na sestavení, je potřeba načíst sestavení.
+  > Mapy a sestavení nutných k odeslání v určitém pořadí. Než nahrajete mapa, který odkazuje na sestavení, musíte nahrát sestavení.
 
-* Mapa musí rovněž mít tyto atributy a CDATA oddíl, který obsahuje volání kódu sestavení:
+* Mapování musí také mít tyto atributy a oddíl CDATA, který obsahuje volání do kódu sestavení:
 
     * **název** je název vlastního sestavení.
-    * **obor názvů** je obor názvů ve vaší sestavení, která obsahuje vlastní kód.
+    * **obor názvů** je obor názvů v sestavení, která obsahuje vlastní kód.
 
   Tento příklad ukazuje mapu, která odkazuje na sestavení s názvem "XslUtilitiesLib" a volání `circumreference` metoda ze sestavení.
 
@@ -117,7 +113,7 @@ Akce transformace také podporuje mapy nebo transformuje nese odkaz na externí 
 
 
 ### <a name="byte-order-mark"></a>Značka pořadí bajtů
-Ve výchozím nastavení spustí odpověď z transformace značky pořadí bajtů (BOM). Tuto funkci můžete přistupovat pouze při práci v editoru kódu zobrazení. Chcete-li zakázat tuto funkci, zadejte `disableByteOrderMark` pro `transformOptions` vlastnost:
+Ve výchozím nastavení spustí odpověď od transformace značky pořadí bajtů (BOM). Tato funkce se zpřístupní pouze při práci v editoru kódu zobrazení. Chcete-li tuto funkci zakázat, zadejte `disableByteOrderMark` pro `transformOptions` vlastnost:
 
 ````json
 "Transform_XML": {
@@ -140,6 +136,6 @@ Ve výchozím nastavení spustí odpověď z transformace značky pořadí bajt�
 
 
 ## <a name="learn-more"></a>Další informace
-* [Další informace o integračního balíčku Enterprise](../logic-apps/logic-apps-enterprise-integration-overview.md "Další informace o Enterprise integračního balíčku")  
-* [Další informace o mapování](../logic-apps/logic-apps-enterprise-integration-maps.md "Další informace o enterprise integrace mapy")  
+* [Další informace o Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "přečtěte si víc o Enterprise Integration Pack")  
+* [Další informace o mapování](../logic-apps/logic-apps-enterprise-integration-maps.md "přečtěte si víc o podnikové integrace map")  
 

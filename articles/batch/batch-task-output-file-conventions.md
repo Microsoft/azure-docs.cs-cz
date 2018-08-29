@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 06/16/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4d86a8fcd1dc85ccacea91afe36cb39dabe10464
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 0b4ff1799f77581452859d1dbc0e6e9cc47062e4
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39117592"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128045"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>Uchování úloh a dat do služby Azure Storage pomocí knihovny File Conventions služby Batch pro .NET 
 
@@ -49,7 +49,7 @@ Pokud váš scénář se liší od těch uvedené výše, budete muset vzít v �
 
 ## <a name="what-is-the-batch-file-conventions-standard"></a>Co je Batch File Conventions standard?
 
-[Batch File Conventions standard](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions) obsahuje schéma pojmenování pro určení kontejnery a cesty k objektům blob ke kterým jsou zapsány výstupní soubory. Soubory se ukládají do Azure Storage, který dodržovat standardní File Conventions jsou automaticky dostupné pro zobrazení na webu Azure Portal. Na portálu si je vědoma zásady vytváření názvů a proto můžete zobrazit soubory, které se řídí ji.
+[Batch File Conventions standard](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions) obsahuje schéma pojmenování pro určení kontejnery a cesty k objektům blob ke kterým jsou zapsány výstupní soubory. Soubory se ukládají do Azure Storage, který dodržovat standardní File Conventions jsou automaticky dostupné pro zobrazení na webu Azure Portal. Na portálu si je vědoma zásady vytváření názvů a proto můžete zobrazit soubory, které se řídí ji.
 
 Knihovny File Conventions pro .NET automaticky názvy kontejnerů úložiště a výstupní soubory úloh podle standardní konvence souboru. Knihovny File Conventions dále poskytuje metody pro výstupní soubory ve službě Azure Storage podle ID úlohy, ID úlohy nebo účely dotazů.   
 
@@ -201,7 +201,7 @@ foreach (CloudTask task in myJob.ListTasks())
 
 ## <a name="view-output-files-in-the-azure-portal"></a>Zobrazit výstupní soubory na webu Azure Portal
 
-Na webu Azure portal zobrazuje výstupní soubory úlohy a protokoly, které jsou zachované v propojené služby Azure Storage account pomocí [Batch File Conventions standard](https://github.com/Azure/azure-sdk-for-net/tree/vs17Dev/src/SDKs/Batch/Support/FileConventions#conventions). Můžete implementovat tyto konvence sami v jazyce podle vašeho výběru, nebo můžete pomocí knihovny File Conventions v aplikacích .NET.
+Na webu Azure portal zobrazuje výstupní soubory úlohy a protokoly, které jsou zachované v propojené služby Azure Storage account pomocí [Batch File Conventions standard](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions). Můžete implementovat tyto konvence sami v jazyce podle vašeho výběru, nebo můžete pomocí knihovny File Conventions v aplikacích .NET.
 
 Chcete-li zobrazit výstupní soubory na portálu, musí splňovat následující požadavky:
 

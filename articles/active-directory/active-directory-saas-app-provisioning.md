@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 07/30/2018
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: 9a0b89528adc173fa3aa26415942cbef81dcb291
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 0d6f345a35275328212d6a245242083b809943b7
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364202"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43144080"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Automatizace zřizování a jeho rušení pro aplikace SaaS ve službě Azure Active Directory
 ## <a name="what-is-automated-user-provisioning-for-saas-apps"></a>Co je automatické zřizování uživatelů pro aplikace SaaS?
@@ -235,7 +235,7 @@ Založené na scénářích informace o odstraňování potíží automatické z
 
 > [!VIDEO https://www.youtube.com/embed/MAy8s5WSe3A]
 
-Plán služby příklad podrobný postup nasazení pro zřizování odchozí uživatelů pro aplikace, najdete v článku [Identity – Průvodce nasazením pro zřizování uživatelů](https://aka.ms/userprovisioningdeploymentplan)/
+Plán služby příklad podrobný postup nasazení pro zřizování odchozí uživatelů pro aplikace, najdete v článku [Identity – Průvodce nasazením pro zřizování uživatelů](https://aka.ms/userprovisioningdeploymentplan).
 
 
 ## <a name="related-articles"></a>Související články

@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/25/2018
+ms.date: 08/27/2018
 ms.author: aljo
-ms.openlocfilehash: 9e4d65875085ec293813e2683acde095ae112b75
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: ed904f7d4de9406e60de1652cefeb5bb84e5a1d8
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503702"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43144034"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Nastavení clusteru Service Fabric
 Tento článek popisuje, jak přizpůsobit různá nastavení prostředků infrastruktury pro cluster Service Fabric. Pro clustery hostovaných v Azure, můžete upravit pomocí nastavení [webu Azure portal](https://portal.azure.com) nebo s použitím šablony Azure Resource Manageru. Pro samostatné clustery upravit nastavení aktualizací ClusterConfig.json souborů a provádění upgradu na konfiguraci v clusteru. 
@@ -187,9 +187,10 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 ## <a name="dnsservice"></a>Služba DnsService
 | **Parametr** | **Povolené hodnoty** |**Zásady upgradu**| **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
+|EnablePartitionedQuery|Logická hodnota, výchozí hodnotu FALSE|Statická|Příznak povolení podpory pro dotazy DNS pro dělené služby. Tato funkce je ve výchozím nastavení vypnuta. Další informace najdete v tématu [služba DNS Service Fabricu.](service-fabric-dnsservice.md)|
 |InstanceCount|je int, výchozí hodnota -1|Statická|Výchozí hodnota je -1, což znamená, že služba DnsService běží na všech uzlech. OneBox musí to být nastavena na hodnotu 1, protože služba DnsService používá dobře známý port 53, takže nemůže mít více instancí ve stejném počítači.|
 |IsEnabled|Logická hodnota, výchozí hodnotu FALSE|Statická|Povolí nebo zakáže služba DnsService. Služba DnsService je ve výchozím nastavení vypnutá. Tato konfigurace se musí nastavit, aby je. |
-|PartitionPrefix|řetězec, výchozí hodnota je "-"|Statická|Určuje předponu řetězce oddílu v dotazy DNS pro dělené služby. Hodnota: <ul><li>By měl být kompatibilní s RFC, protože ji budete součást dotazu DNS.</li><li>Nesmí obsahovat tečku, ".", jak je tečka, dochází ke kolizím s chování příponu DNS.</li><li>Nesmí být delší než 5 znaků.</li><li>Nemůže být prázdný řetězec.</li><li>Pokud je přepsána PartitionPrefix nastavení, pak PartitionSuffix musí přepsat a naopak.</li></ul>Další informace najdete v tématu [služba DNS Service Fabricu.](service-fabric-dnsservice.md).|
+|PartitionPrefix|řetězec, výchozí hodnota je "--"|Statická|Určuje předponu řetězce oddílu v dotazy DNS pro dělené služby. Hodnota: <ul><li>By měl být kompatibilní s RFC, protože ji budete součást dotazu DNS.</li><li>Nesmí obsahovat tečku, ".", jak je tečka, dochází ke kolizím s chování příponu DNS.</li><li>Nesmí být delší než 5 znaků.</li><li>Nemůže být prázdný řetězec.</li><li>Pokud je přepsána PartitionPrefix nastavení, pak PartitionSuffix musí přepsat a naopak.</li></ul>Další informace najdete v tématu [služba DNS Service Fabricu.](service-fabric-dnsservice.md).|
 |PartitionSuffix|řetězec, výchozí hodnota je ""|Statická|Určuje řetězcovou hodnotu přípony oddílu v dotazy DNS pro dělené služby. Hodnota: <ul><li>By měl být kompatibilní s RFC, protože ji budete součást dotazu DNS.</li><li>Nesmí obsahovat tečku, ".", jak je tečka, dochází ke kolizím s chování příponu DNS.</li><li>Nesmí být delší než 5 znaků.</li><li>Pokud je přepsána PartitionPrefix nastavení, pak PartitionSuffix musí přepsat a naopak.</li></ul>Další informace najdete v tématu [služba DNS Service Fabricu.](service-fabric-dnsservice.md). |
 
 ## <a name="fabricclient"></a>FabricClient
@@ -350,6 +351,9 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 |ApplicationHostCloseTimeout| Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(120)|Dynamická| Zadejte časový interval v sekundách. Když se v svým zjistí Fabric ukončovací aktivované procesy; FabricRuntime zavře všechny repliky v procesu hostitele (hostitele aplikace) daného uživatele. Toto je časový limit pro operaci zavření. |
 |ApplicationUpgradeTimeout| Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(360)|Dynamická| Zadejte časový interval v sekundách. Časový limit pro upgrade aplikace. Pokud časový limit je menší než "ActivationTimeout" deployer se nezdaří. |
 |ContainerServiceArguments|řetězec, výchozí hodnota je "-H localhost: 2375 -H npipe: / /"|Statická|Service Fabric (SF) spravuje démona dockeru (s výjimkou na klientské počítače s windows jako Win10). Tato konfigurace umožňuje uživateli zadat vlastní argumenty, které by měly být předány démona dockeru, při jeho spuštění. Když zadáte vlastní argumenty, Service Fabric do modulu Dockeru s výjimkou nepředávejte žádné další argumenty '--pidfile "argument. Proto by neměl určovat uživatele '--pidfile "argument jako součást svých argumentů zákazníka. Kromě toho vlastní argumenty se ujistěte, které docker démon naslouchá na kanálu s výchozím názvem ve Windows (nebo Unixovému soketu domény v Linuxu) služba Service Fabric komunikovat s ním.|
+|ContainerServiceLogFileMaxSizeInKb|int, výchozí je 32768|Statická|Maximální velikost souboru protokolu vygenerované kontejnery dockeru.  Jenom Windows.|
+|ContainerServiceLogFileNamePrefix|řetězec, výchozí je "sfcontainerlogs"|Statická|Předpona názvu souboru pro soubory protokolů generované kontejnery dockeru.  Jenom Windows.|
+|ContainerServiceLogFileRetentionCount|Int, výchozí hodnota je 10|Statická|Počet souborů protokolů generovaných kontejnery dockeru se soubory protokolu budou přepsány.  Jenom Windows.|
 |CreateFabricRuntimeTimeout|Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(120)|Dynamická| Zadejte časový interval v sekundách. Hodnota časového limitu pro synchronizaci FabricCreateRuntime volání |
 |DefaultContainerRepositoryAccountName|řetězec, výchozí hodnota je ""|Statická|Výchozí pověření použít místo přihlašovacích údajů zadaných v souboru ApplicationManifest.xml |
 |DefaultContainerRepositoryPassword|řetězec, výchozí hodnota je ""|Statická|Výchozí heslo pověření použít místo přihlašovacích údajů zadaných v souboru ApplicationManifest.xml|
@@ -357,6 +361,7 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 |DeploymentMaxRetryInterval| Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(3600)|Dynamická| Zadejte časový interval v sekundách. Maximální interval opakování pro nasazení. Při každé průběžné selhání interval opakování se počítá jako Min (DeploymentMaxRetryInterval; Průběžný počet selhání * DeploymentRetryBackoffInterval) |
 |DeploymentRetryBackoffInterval| Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(10)|Dynamická|Zadejte časový interval v sekundách. Regresní interval selhání nasazení. Při každé selhání průběžného nasazování bude systém pokusem o nasazení pro až MaxDeploymentFailureCount. Interval opakování je produkt selhání průběžného nasazování a interval omezení rychlosti nasazení. |
 |EnableActivateNoWindow| Logická hodnota, výchozí hodnotu FALSE|Dynamická| Aktivovaný proces se vytvoří na pozadí bez jakékoli konzoly. |
+|EnableContainerServiceDebugMode|Logická hodnota, výchozí hodnotu TRUE|Statická|Povolí nebo zakáže protokolování pro kontejnery dockeru.  Jenom Windows.|
 |EnableDockerHealthCheckIntegration|Logická hodnota, výchozí hodnotu TRUE|Statická|Umožňuje integraci dockeru HEALTHCHECK událostí s sestavy stavu systému Service Fabric |
 |EnableProcessDebugging|Logická hodnota, výchozí hodnotu FALSE|Dynamická| Povolí spouštění hostitele aplikace pod ladicím programem |
 |EndpointProviderEnabled| Logická hodnota, výchozí hodnotu FALSE|Statická| Umožňuje správu koncový bod prostředků infrastruktury. Vyžaduje, aby počáteční a koncové rozsahu portů aplikace v FabricNode. |

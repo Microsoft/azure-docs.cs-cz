@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 08/24/2018
 ms.author: mibender
-ms.openlocfilehash: 3ae912eb88972246577954cb2ff103ba607f18bf
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 2934c2323b056bfb5e556e7d688704ed20882bca
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43110493"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124446"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Začínáme pro operátory Azure IT
 
@@ -181,7 +181,7 @@ Azure je postavený na sadu rozhraní REST API, která podporuje uživatelské r
 
 ### <a name="azure-cloud-shell"></a>Azure Cloud Shell
 
-Správci mohou přistupovat k prostředí Azure PowerShell a rozhraní příkazového řádku Azure prostřednictvím prohlížeče přístupné prostředí volá Azure Cloud Shell. Toto interaktivní rozhraní poskytuje flexibilní nástroj pro systémy Linux a Windows správce používat jejich rozhraní příkazového řádku podle vlastní volby, Bashe nebo Powershellu. Azure Cloud Shell lze přistupovat pomocí portálu, jako samostatné webové rozhraní na [shell.azure.com](https://shell.azure.com), nebo z mnoha jiných přístupových bodů. Další informace najdete v tématu [Přehled služby Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview).
+Správci mohou přistupovat k prostředí Azure PowerShell a rozhraní příkazového řádku Azure prostřednictvím prohlížeče přístupné prostředí volá Azure Cloud Shell. Toto interaktivní rozhraní poskytuje flexibilní nástroj pro systémy Linux a Windows správce používat jejich rozhraní příkazového řádku podle vlastní volby, Bashe nebo Powershellu. Azure Cloud Shell lze přistupovat pomocí portálu, jako samostatné webové rozhraní na [shell.azure.com](https://shell.azure.com), nebo z mnoha jiných přístupových bodů. Další informace najdete v tématu [Přehled služby Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview).
 
 ## <a name="azure-subscriptions"></a>Předplatná Azure
 
@@ -191,17 +191,17 @@ Předplatné je logické seskupení služeb Azure, který je propojený s účte
 
 Než začnete pracovat se službami Azure, musíte mít předplatné. Několik typů předplatného jsou k dispozici.
 
-#### <a name="free-accounts-the-link-to-sign-up-for-a-free-account-is-on-the-azure-websitehttpsazuremicrosoftcom-this-gives-you-a-credit-over-the-course-of-30-days-to-try-any-combination-of-resources-in-azure-if-you-exceed-your-credit-amount-your-account-is-suspended-at-the-end-of-the-trial-your-services-are-decommissioned-and-will-no-longer-work-you-can-upgrade-to-a-pay-as-you-go-subscription-at-any-time"></a>Bezplatné účty: odkaz pro registraci bezplatného účtu je na [web Azure](https://azure.microsoft.com/). Získáte kredit v průběhu 30 dnů vyzkoušet libovolnou kombinaci prostředků v Azure. Při překročení kreditu, který vaše, váš učet je zablokovaný. Na konci zkušebního období vaše služby jsou vyřazeny z provozu a přestane fungovat. Můžete upgradovat na předplatné s průběžnými platbami kdykoli.
+**Bezplatné účty**: odkaz pro registraci bezplatného účtu je na [web Azure](https://azure.microsoft.com/). Získáte kredit v průběhu 30 dnů vyzkoušet libovolnou kombinaci prostředků v Azure. Při překročení kreditu, který vaše, váš učet je zablokovaný. Na konci zkušebního období vaše služby jsou vyřazeny z provozu a přestane fungovat. Můžete upgradovat na předplatné s průběžnými platbami kdykoli.
 
-#### <a name="msdn-subscriptions-if-you-have-an-msdn-subscription-you-get-a-specific-amount-in-azure-credit-each-month-for-example-if-you-have-a-microsoft-visual-studio-enterprise-with-msdn-subscription-you-get-150-per-month-in-azure-credit"></a>Předplatná MSDN: Pokud máte předplatné MSDN, můžete získat určitou velikostí v kreditech Azure každý měsíc. Například pokud máte Microsoft Enterprise sady Visual Studio s předplatným MSDN získáte \$150 USD v kreditech Azure.
+**Předplatná MSDN**: Pokud máte předplatné MSDN, můžete získat určitou velikostí v kreditech Azure každý měsíc. Například pokud máte Microsoft Enterprise sady Visual Studio s předplatným MSDN získáte \$150 USD v kreditech Azure.
 
 Při překročení kreditu, který, služby jsou zakázané, dokud nezačne další měsíc. Můžete vypnout limit útraty a přidat platební kartu pro další náklady. Některé tyto náklady Dáváme pro účty MSDN. Například platíte cenu Linux pro virtuální počítače s Windows serverem a neexistuje žádné další poplatky za servery společnosti Microsoft, jako je Microsoft SQL Server. Díky tomu MSDN účty ideální pro scénáře vývoje a testování.
 
-#### <a name="bizspark-accounts-the-microsoft-bizspark-program-provides-many-benefits-to-startups-one-of-those-benefits-is-access-to-all-the-microsoft-software-for-development-and-test-environments-for-up-to-five-msdn-accounts-you-get-150-in-azure-credit-for-each-of-those-five-msdn-accounts-and-you-pay-reduced-rates-for-several-of-the-azure-services-such-as-virtual-machines"></a>Účty BizSpark: programu The Microsoft BizSpark má spoustu výhod pro začínající firmy. Jednou z těchto výhod je přístup k veškerému softwaru Microsoftu pro vývojová a testovací prostředí pro účty až o pěti MSDN. Získejte 150 USD v kreditech Azure pro každou z těchto pět MSDN účtů a platit nižší sazby pro několik služeb Azure, jako jsou virtuální počítače.
+**Účty BizSpark**: programu The Microsoft BizSpark má spoustu výhod pro začínající firmy. Jednou z těchto výhod je přístup k veškerému softwaru Microsoftu pro vývojová a testovací prostředí pro účty až o pěti MSDN. Získejte 150 USD v kreditech Azure pro každou z těchto pět MSDN účtů a platit nižší sazby pro několik služeb Azure, jako jsou virtuální počítače.
 
-#### <a name="pay-as-you-go-with-this-subscription-you-pay-for-what-you-use-by-attaching-a-credit-card-or-debit-card-to-the-account-if-you-are-an-organization-you-can-also-be-approved-for-invoicing"></a>Průběžné platby: Předplatné, platíte za použití připojením kreditní nebo debetní kartu k účtu. Pokud organizace, můžete je také schválené pro fakturaci.
+**Průběžné platby**: U tohoto předplatného, platíte za použití připojením kreditní nebo debetní kartu k účtu. Pokud organizace, můžete je také schválené pro fakturaci.
 
-#### <a name="enterprise-agreements-with-an-enterprise-agreement-you-commit-to-using-a-certain-number-of-services-in-azure-over-the-next-year-and-you-pay-that-amount-ahead-of-time-the-commitment-that-you-make-is-consumed-throughout-the-year-if-you-exceed-the-commitment-amount-you-can-pay-the-overage-in-arrears-depending-on-the-amount-of-the-commitment-you-get-a-discount-on-the-services-in-azure"></a>Smlouvy Enterprise: se smlouvou enterprise agreement, můžete zavázat k využívání počet služeb v Azure přes příští rok, a vy platíte šířka předem. Závazek, který se spotřebovává během roku. Pokud překročíte závazku odečítá, můžete platit Nadlimitní využití za uplynulé čtvrtletí. V závislosti na množství závazku Získejte slevu na služby v Azure.
+**Smlouvy Enterprise**: se smlouvou enterprise agreement, můžete zavázat k využívání počet služeb v Azure přes příští rok, a vy platíte šířka předem. Závazek, který se spotřebovává během roku. Pokud překročíte závazku odečítá, můžete platit Nadlimitní využití za uplynulé čtvrtletí. V závislosti na množství závazku Získejte slevu na služby v Azure.
 
 ### <a name="grant-administrative-access-to-an-azure-subscription"></a>Udělit přístup správce k předplatnému Azure
 
@@ -465,7 +465,7 @@ Pokud je potřeba povolit uživatelům mít řízený přístup ke svým prostř
 
 ## <a name="azure-virtual-network"></a>Azure Virtual Network
 
-Virtuální sítě jsou nezbytné pro podporu komunikace mezi virtuálními počítači. Můžete definovat podsítě, vlastní IP adresu, nastavení DNS, zabezpečení, filtrování a vyrovnávání zatížení. Azure podporuje různá použití případů: čistě cloudové sítě nebo hybridní virtuální sítě. 
+Virtuální sítě jsou nezbytné pro podporu komunikace mezi virtuálními počítači. Můžete definovat podsítě, vlastní IP adresu, nastavení DNS, zabezpečení, filtrování a vyrovnávání zatížení. Azure podporuje různá použití případů: čistě cloudové sítě nebo hybridní virtuální sítě.
 
 ### <a name="cloud-only-virtual-networks"></a>Výhradně cloudový virtuální sítě
 
@@ -489,7 +489,7 @@ Existuje několik možností pro nasazení virtuální sítě.
 
 - Šablony Azure Resource Manageru
 
->**Kdy použít**: když pracujete s virtuálními počítači v Azure, budete pracovat s virtuálními sítěmi. To umožňuje segmentace vašich virtuálních počítačů do podsítí veřejných a privátních podobné místních datových centrech. 
+>**Kdy použít**: když pracujete s virtuálními počítači v Azure, budete pracovat s virtuálními sítěmi. To umožňuje segmentace vašich virtuálních počítačů do podsítí veřejných a privátních podobné místních datových centrech.
 
 >**Začínáme**: nasazení služby Azure virtual network pomocí webu Azure portal vyžaduje jenom aktivní předplatné Azure a přístup k webovému prohlížeči. Nové virtuální sítě můžete nasadit do skupiny nové nebo existující prostředek. Při vytváření nového virtuálního počítače z portálu, můžete vybrat existující virtuální síť nebo vytvořte novou. Začínáme a [vytvořit virtuální síť pomocí webu Azure portal](../../virtual-network/quick-create-portal.md).
 

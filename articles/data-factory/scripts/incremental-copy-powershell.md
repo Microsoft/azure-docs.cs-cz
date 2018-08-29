@@ -1,6 +1,6 @@
 ---
-title: 'Skript prostředí PowerShell: přírůstkově načtení dat pomocí Azure Data Factory | Microsoft Docs'
-description: Tento skript prostředí PowerShell ukazuje, jak používat Azure Data Factory ke zkopírování dat přírůstkově z databáze SQL Azure do Azure Blob Storage...
+title: 'Skript prostředí PowerShell: přírůstkové načtení dat pomocí služby Azure Data Factory | Dokumentace Microsoftu'
+description: Tento skript prostředí PowerShell ukazuje, jak pomocí Azure Data Factory pro přírůstkové kopírování dat ze služby Azure SQL Database do úložiště objektů Blob v Azure...
 services: data-factory
 author: linda33wj
 manager: craigg
@@ -12,30 +12,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2017
 ms.author: jingwang
-ms.openlocfilehash: 8bfe41f0d8cb8af3ace0164831ef527f6c4700e0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 62f0deeccdd05f4ea9098aab42145be58bf3b328
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30169735"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124894"
 ---
-# <a name="powershell-script---incrementally-load-data-by-using-azure-data-factory"></a>Skript prostředí PowerShell - přírůstkově načtení dat pomocí Azure Data Factory
-Tento ukázkový skript prostředí PowerShell načte pouze nové nebo aktualizované záznamy ze zdrojového úložiště dat do úložiště dat podřízený po počáteční úplnou kopii dat ze zdroje jímky.  
+# <a name="powershell-script---incrementally-load-data-by-using-azure-data-factory"></a>Skript prostředí PowerShell – přírůstkové načtení dat pomocí služby Azure Data Factory
+Tento ukázkový skript Powershellu načte jenom nových nebo aktualizovaných záznamů ze zdrojového úložiště dat do úložiště dat jímky po počáteční úplné kopírování dat ze zdroje do jímky.  
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
-V tématu [kurz: přírůstkové kopie](../tutorial-incremental-copy-powershell.md#prerequisites) pro požadavky na spuštění této ukázce. 
+Zobrazit [kurz: přírůstkového kopírování](../tutorial-incremental-copy-powershell.md#prerequisites) předpoklady pro spuštěním této ukázky. 
 
 ## <a name="sample-script"></a>Ukázkový skript
 
 > [!IMPORTANT]
-> Tento skript vytvoří soubory JSON, které definují entit služby Data Factory (propojené služby, datové sady a kanál) na vašem pevném disku ve složce c:\.
+> Tento skript vytvoří soubory JSON, které definují entity služby Data Factory (propojené služby, datové sady a kanál) na váš pevný disk do složky c:\.
 
 [!code-powershell[main](../../../powershell_scripts/data-factory/incremental-copy-from-azure-sql-to-blob/incremental-copy-from-azure-sql-to-blob.ps1 "Incremental copy from Azure SQL Database to Azure Blob Storage")]
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení
 
-Po spuštění ukázkový skript můžete odebrat skupinu prostředků a všechny prostředky, které jsou s ním spojená následující příkaz:
+Po spuštění ukázkového skriptu můžete k odebrání skupiny prostředků a všechny prostředky, které s ním spojená následující příkaz:
 
 ```powershell
 Remove-AzureRmResourceGroup -ResourceGroupName $resourceGroupName
@@ -54,11 +54,11 @@ Tento skript používá následující příkazy:
 |---|---|
 | [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [Set-AzureRmDataFactoryV2](/powershell/module/azurerm.datafactoryv2/set-azurermdatafactoryv2) | Vytvoření datové továrny |
-| [Set-AzureRmDataFactoryV2LinkedService](/powershell/module/azurerm.datafactoryv2/Set-azurermdatafactoryv2linkedservice) | V datové továrně vytvoří propojené služby. Propojená služba odkazuje na objekt pro vytváření dat v úložišti dat nebo výpočetní. |
-| [Set-AzureRmDataFactoryV2Dataset](/powershell/module/azurerm.datafactoryv2/Set-azurermdatafactoryv2dataset) | Vytvoří datovou sadu v datové továrně. Datové sady představuje vstupu a výstupu pro aktivitu v kanálu. | 
-| [Set-AzureRmDataFactoryV2Pipeline](/powershell/module/azurerm.datafactoryv2/Set-azurermdatafactorv2ypipeline) | Vytvoří v objektu pro vytváření dat kanál. Kanál obsahuje jeden nebo více aktivit, které provádí určité operaci. U tohoto kanálu aktivity kopírování kopíruje data z jednoho umístění do jiného umístění v Azure Blob Storage. |
-| [Invoke-AzureRmDataFactoryV2Pipeline](/powershell/module/azurerm.datafactoryv2/Invoke-azurermdatafactoryv2pipelinerun) | Vytvoří spustit pro kanál. Jinými slovy spouští kanálu. |
-| [Get-AzureRmDataFactoryV2ActivityRun](/powershell/module/azurerm.datafactoryv2/get-azurermdatafactoryv2activityrun) | Získá informace o spouštění aktivity (aktivity při spuštění) v kanálu. 
+| [Set-AzureRmDataFactoryV2LinkedService](/powershell/module/azurerm.datafactoryv2/Set-azurermdatafactoryv2linkedservice) | Vytvoření propojené služby ve službě data factory. Propojená služba propojuje úložiště dat nebo výpočetní výkon s datovou továrnou. |
+| [Set-AzureRmDataFactoryV2Dataset](/powershell/module/azurerm.datafactoryv2/Set-azurermdatafactoryv2dataset) | Vytvoří datovou sadu ve službě data factory. Datová sada představuje vstup/výstup pro aktivitu v kanálu. | 
+| [Set-AzureRmDataFactoryV2Pipeline](/powershell/module/azurerm.datafactoryv2/Set-azurermdatafactoryv2pipeline) | Ve službě data factory vytvoří kanál. Kanál obsahuje jednu nebo víc aktivit, které provádí určité operace. U tohoto kanálu aktivita kopírování kopíruje data z jednoho umístění do jiného umístění ve službě Azure Blob Storage. |
+| [Invoke-AzureRmDataFactoryV2Pipeline](/powershell/module/azurerm.datafactoryv2/Invoke-azurermdatafactoryv2pipeline) | Vytvoří spuštění kanálu. Jinými slovy spouští kanál. |
+| [Get-AzureRmDataFactoryV2ActivityRun](/powershell/module/azurerm.datafactoryv2/get-azurermdatafactoryv2activityrun) | Načte podrobnosti o spuštění aktivit (spuštění aktivit) v kanálu. 
 | [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 |||
 
@@ -66,4 +66,4 @@ Tento skript používá následující příkazy:
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/).
 
-Další ukázky skriptu prostředí PowerShell objekt pro vytváření dat Azure lze nalézt v [skriptů prostředí PowerShell objekt pro vytváření dat Azure](../samples-powershell.md).
+Další ukázkové skripty Azure Powershellu objekt pro vytváření dat najdete v [skripty Powershellu pro Azure Data Factory](../samples-powershell.md).

@@ -1,136 +1,132 @@
 ---
-title: Schémata pro ověření XML - Azure Logic Apps | Microsoft Docs
-description: Ověření XML – dokumenty s schémata pro Azure Logic Apps a Enterprise integračního balíčku
+title: Přidání schémat pro ověřování XML – Azure Logic Apps | Dokumentace Microsoftu
+description: Vytvoření schémat, které byly ověřeny dokumentů XML v Azure Logic Apps sadou Enterprise Integration Pack
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: msftman
-manager: jeconnoc
-editor: cgronlun
-ms.assetid: 56c5846c-5d8c-4ad4-9652-60b07aa8fc3b
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: 56c5846c-5d8c-4ad4-9652-60b07aa8fc3b
 ms.date: 07/29/2016
-ms.author: LADocs; padmavc
-ms.openlocfilehash: e23500ec3c16e66b8dc74fcba29e9b58f0b41790
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: e03346da1c2b77f885c39d5329f990684979c56e
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299058"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43123069"
 ---
-# <a name="validate-xml-with-schemas-for-azure-logic-apps-and-the-enterprise-integration-pack"></a>Ověření XML s schémata pro Azure Logic Apps a Enterprise integračního balíčku
+# <a name="validate-xml-with-schemas-in-azure-logic-apps-with-enterprise-integration-pack"></a>Ověření XML se schématy v Azure Logic Apps sadou Enterprise Integration Pack
 
-Schémata potvrdit, že dokumenty XML, které se zobrazí jsou platné a mít očekávaná data v předdefinovaném formátu. Schémata také pomůže ověřit zprávy, které se vyměňují ve scénáři B2B.
+Schémata potvrdit, že dokumentů XML, který jste dostali jsou platná a mají očekávaná data ve formátu předdefinované. Schémata také pomoci ověření zprávy, které se vyměňují ve scénáři B2B.
 
-## <a name="add-a-schema"></a>Přidat schéma.
+## <a name="add-a-schema"></a>Přidat schéma
 
-1. Na portálu Azure vyberte **všechny služby**.
+1. Na webu Azure Portal, vyberte **všechny služby**.
 
-    ![Portál Azure, "Všechny služby"](media/logic-apps-enterprise-integration-schemas/overview-11.png)
+    ![Azure portal, "Všechny služby"](media/logic-apps-enterprise-integration-schemas/overview-11.png)
 
 2. Do vyhledávacího pole filtru zadejte **integrace**a vyberte **účty pro integraci** ze seznamu výsledků.
 
     ![Pole filtru hledání](media/logic-apps-enterprise-integration-schemas/overview-21.png)
 
-3. Vyberte **integrace účet** ve které chcete přidat schéma.
+3. Vyberte **účtu pro integraci** ve které chcete přidat schéma.
 
-    ![Seznam účtů, integrace](media/logic-apps-enterprise-integration-schemas/overview-31.png)
+    ![Seznam účtů pro integraci](media/logic-apps-enterprise-integration-schemas/overview-31.png)
 
-4. Vyberte **schémata** dlaždici.
+4. Zvolte **schémata** dlaždici.
 
-    ![Příklad integrace účet "Schémata"](media/logic-apps-enterprise-integration-schemas/schema-11.png)
+    ![Příklad integrace účtu "Schémata"](media/logic-apps-enterprise-integration-schemas/schema-11.png)
 
-### <a name="add-a-schema-file-smaller-than-2-mb"></a>Přidejte soubor schématu, která je menší než 2 MB
+### <a name="add-a-schema-file-smaller-than-2-mb"></a>Přidat soubor schématu, která je menší než 2 MB
 
-1. V **schémata** okno, které se otevře (z předchozího postupu), zvolte **přidat**.
+1. V **schémata** okno, které se otevře (z předchozích kroků), zvolte **přidat**.
 
-    ![Schémata okně "Přidat"](media/logic-apps-enterprise-integration-schemas/schema-21.png)
+    ![Okno schémata, "Přidat"](media/logic-apps-enterprise-integration-schemas/schema-21.png)
 
-2. Zadejte název pro schéma. Nahrání souboru schématu výběrem ikony složku do **schématu** pole. Po dokončení procesu nahrávání, vyberte **OK**.
+2. Zadejte název vašeho schématu. Nahrát soubor schématu vedle výběrem ikony složky **schématu** pole. Po dokončení procesu nahrávání, vyberte **OK**.
 
-    ![Snímek obrazovky "Přidat schéma", se zvýrazněnou "malý soubor"](media/logic-apps-enterprise-integration-schemas/schema-31.png)
+    ![Snímek obrazovky "Přidat schéma", se zvýrazněným "malý soubor"](media/logic-apps-enterprise-integration-schemas/schema-31.png)
 
-### <a name="add-a-schema-file-larger-than-2-mb-up-to-8-mb-maximum"></a>Přidejte soubor schématu, která je větší než 2 MB (maximálně 8 MB)
+### <a name="add-a-schema-file-larger-than-2-mb-up-to-8-mb-maximum"></a>Přidat soubor schématu, která je větší než 2 MB (nejvýše 8 MB)
 
-Na úrovni přístupu kontejneru objektu blob se liší podle těchto kroků: **veřejné** nebo **žádné anonymní přístup**.
+Tyto kroky se liší v závislosti na úrovni objektů blob v kontejneru přístup: **veřejné** nebo **bez anonymního přístupu**.
 
 **Chcete-li zjistit tato úroveň přístupu**
 
-1.  Otevřete **Azure Storage Explorer**. 
+1.  Otevřít **Průzkumníka služby Azure Storage**. 
 
 2.  V části **kontejnery objektů Blob**, vyberte kontejner objektů blob, který chcete. 
 
 3.  Vyberte **zabezpečení**, **úroveň přístupu**.
 
-Pokud je úroveň zabezpečení přístupu k objektu blob **veřejné**, postupujte podle těchto kroků.
+Pokud je úroveň přístupu objektu blob zabezpečení **veřejné**, postupujte podle těchto kroků.
 
-![Azure Storage Explorer "Kontejnery objektů Blob", "Zabezpečení" a "Veřejná" zvýrazněná](media/logic-apps-enterprise-integration-schemas/blob-public.png)
+![Průzkumník služby Azure Storage, pomocí "Kontejnery objektů Blob", "Zabezpečení" a "Public" zvýrazněnou](media/logic-apps-enterprise-integration-schemas/blob-public.png)
 
-1. Odeslat schématu do svého účtu úložiště a zkopírujte identifikátor URI.
+1. Nahrajte schéma do účtu úložiště a zkopírujte identifikátor URI.
 
-    ![Účet úložiště se zvýrazněnou identifikátor URI](media/logic-apps-enterprise-integration-schemas/schema-blob.png)
+    ![Účet úložiště, se zvýrazněným identifikátorem URI](media/logic-apps-enterprise-integration-schemas/schema-blob.png)
 
-2. V **přidat schéma**, vyberte **velkých souborů**a zadejte identifikátor URI v **obsahu URI** textové pole.
+2. V **přidat schéma**vyberte **velkých souborů**a zadejte identifikátor URI v **identifikátor URI obsahu** textového pole.
 
-    ![Schémata s tlačítko "Přidat" a "Velkých souborů" zvýrazněná](media/logic-apps-enterprise-integration-schemas/schema-largefile.png)
+    ![Schémata se tlačítko "Přidat" a "velký" zvýrazněnou](media/logic-apps-enterprise-integration-schemas/schema-largefile.png)
 
-Pokud je úroveň zabezpečení přístupu k objektu blob **žádné anonymní přístup**, postupujte podle těchto kroků.
+Pokud je úroveň přístupu objektu blob zabezpečení **bez anonymního přístupu**, postupujte podle těchto kroků.
 
-![Azure Storage Explorer "Kontejnery objektů Blob", "Zabezpečení" a "Žádná anonymní přístup" zvýrazněná](media/logic-apps-enterprise-integration-schemas/blob-1.png)
+![Průzkumník služby Azure Storage, se "Kontejnery objektů Blob", "Zabezpečení" a "Bez anonymního přístupu" zvýrazněnou](media/logic-apps-enterprise-integration-schemas/blob-1.png)
 
-1. Schéma odešlete do svého účtu úložiště.
+1. Nahrajte schéma do účtu úložiště.
 
     ![Účet úložiště](media/logic-apps-enterprise-integration-schemas/blob-3.png)
 
-2. Vygenerujte sdílený přístupový podpis pro schéma.
+2. Vygenerování sdíleného přístupového podpisu pro schéma.
 
     ![Účet úložiště se zvýrazněnou kartu podpisy sdíleného přístupu](media/logic-apps-enterprise-integration-schemas/blob-2.png)
 
-3. V **přidat schéma**, vyberte **velkých souborů**a zadejte sdílený přístupový podpis URI v **obsahu URI** textové pole.
+3. V **přidat schéma**vyberte **velkých souborů**a zadejte URI sdíleného přístupového podpisu v **identifikátor URI obsahu** textového pole.
 
-    ![Schémata s tlačítko "Přidat" a "Velkých souborů" zvýrazněná](media/logic-apps-enterprise-integration-schemas/schema-largefile.png)
+    ![Schémata se tlačítko "Přidat" a "velký" zvýrazněnou](media/logic-apps-enterprise-integration-schemas/schema-largefile.png)
 
-4. V **schémata** okno účtu integrace, by se měla zobrazit vaše nově přidané schéma.
+4. V **schémata** okna účtu pro integraci, by se měla zobrazit nově přidané schéma.
 
-    ![Účtu integrace s "Schémat" a nové schéma zvýrazněná](media/logic-apps-enterprise-integration-schemas/schema-41.png)
+    ![Účtu integrace s "Schémata" a zvýrazní nové schéma](media/logic-apps-enterprise-integration-schemas/schema-41.png)
 
-## <a name="edit-schemas"></a>Upravit schémat.
+## <a name="edit-schemas"></a>Upravit schémata
 
-1. Vyberte **schémata** dlaždici.
+1. Zvolte **schémata** dlaždici.
 
 2. Po **schémata** otevře se okno, vyberte schéma, které chcete upravit.
 
 3. Na **schémata** okně zvolte **upravit**.
 
-    ![Okno schémat.](media/logic-apps-enterprise-integration-schemas/edit-12.png)
+    ![Okno schémata](media/logic-apps-enterprise-integration-schemas/edit-12.png)
 
-4. Vyberte soubor schématu, který chcete upravit a pak vyberte **otevřete**.
+4. Vyberte soubor schématu, kterou chcete upravit a pak vyberte **otevřít**.
 
-    ![Soubor otevřete schématu upravit](media/logic-apps-enterprise-integration-schemas/edit-31.png)
+    ![Otevřít schéma soubor pro úpravy](media/logic-apps-enterprise-integration-schemas/edit-31.png)
 
-Azure zobrazí zpráva, že schéma se úspěšně nahrál.
+Azure zobrazuje zpráva, že schéma se úspěšně nahrál.
 
-## <a name="delete-schemas"></a>Odstranit schémat.
+## <a name="delete-schemas"></a>Odstranit schémata
 
-1. Vyberte **schémata** dlaždici.
+1. Zvolte **schémata** dlaždici.
 
 2. Po **schémata** otevře se okno, vyberte schéma, které chcete odstranit.
 
 3. Na **schémata** okně zvolte **odstranit**.
 
-    ![Okno schémat.](media/logic-apps-enterprise-integration-schemas/delete-12.png)
+    ![Okno schémata](media/logic-apps-enterprise-integration-schemas/delete-12.png)
 
 4. Pokud chcete potvrdit, že chcete odstranit vybrané schéma, zvolte **Ano**.
 
-    ![Potvrzovací zpráva "Odstranit schématu"](media/logic-apps-enterprise-integration-schemas/delete-21.png)
+    !["Odstranit schéma" potvrzení](media/logic-apps-enterprise-integration-schemas/delete-21.png)
 
-    V **schémata** okně seznamu schématu aktualizuje a už obsahuje schéma, které jste odstranili.
+    V **schémata** okně seznamu schéma se aktualizuje a již obsahuje schéma, které jste odstranili.
 
-    ![Svoji integraci účet s "Schémata" zvýrazněná](media/logic-apps-enterprise-integration-schemas/delete-31.png)
+    ![Vaše integrační účet s "Schémata" zvýrazněnou](media/logic-apps-enterprise-integration-schemas/delete-31.png)
 
 ## <a name="next-steps"></a>Další postup
-* [Další informace o integračního balíčku Enterprise](logic-apps-enterprise-integration-overview.md "Další informace o integračního balíčku enterprise").  
+* [Další informace o Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "přečtěte si víc o enterprise integration pack").  
 

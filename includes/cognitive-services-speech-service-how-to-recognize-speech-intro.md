@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/27/2018
 ms.author: wolfma
-ms.openlocfilehash: b46eba502462e0cdbcb222082c5c885f84a8d1e5
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 1103e5a217ca4972cc1c983a7ad0d07b0797e9e9
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43090677"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122633"
 ---
 <!-- N.B. no header, no intents here, language-agnostic -->
 
@@ -25,4 +25,4 @@ Cognitive Services [sadou SDK pro řeč](~/articles/cognitive-services/speech-se
 
 Viz následující fragmenty kódu pro scénáře rozpoznávání řeči, používající sadou SDK pro řeč.
 
-[!include[Get a subscription key](cognitive-services-speech-service-get-subscription-key.md)]
+[!INCLUDE [Get a subscription key](cognitive-services-speech-service-get-subscription-key.md)]

@@ -14,12 +14,12 @@ ms.date: 08/27/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 813fb79bbdc09d0fb3baa9a66cfaeae74343b3f9
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 9b56f540af2b8d35258a4db79502c9edf83cdb45
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43093631"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128462"
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Přiřazení rolí správce v Azure Active Directory
 
@@ -613,16 +613,22 @@ Může spravovat všechny aspekty produktu Intune.
 | microsoft.aad.supporttickets/AllEntities/AllActions | Umožňuje vytvářet a spravovat lístky podpory Office 365. |
 | microsoft.intune/AllEntities/AllActions | Umožňuje spravovat všechny aspekty Intune. |
 
-### <a name="license-administrator"></a>Správce licencí
-Můžete přiřadit licence uživatelům.
 
+### <a name="license-administrator"></a>Správce licencí
+Můžete spravovat licence na produkty na uživatele a skupiny.
+ 
+  > [!NOTE]
+  > Tato role dědí z role ke čtení adresáře další oprávnění.
+  >
+  >
+ 
 | **Akce** | **Popis** |
 | --- | --- |
-| microsoft.aad.directory/users/assignLicense        | &nbsp; |
-| microsoft.aad.directory/users/usageLocation/update | &nbsp; |
-| microsoft.azure.accessService/allEntities/allTasks | &nbsp; |
-| microsoft.azure.serviceHealth/allEntities/allTasks | &nbsp; |
-| Microsoft.Office365.serviceHealth/allEntities/allTasks | &nbsp; |
+| microsoft.aad.directory/users/assignLicense | Správa licencí pro uživatele v Azure Active Directory. |
+| microsoft.aad.directory/users/usageLocation/update | Umožňuje aktualizujte vlastnost users.usageLocation v Azure Active Directory. |
+| microsoft.azure.accessService/allEntities/allTasks | Spravujte všechny aspekty služby Azure Access. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat služby Azure Service Health. |
+| Microsoft.Office365.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat stav služby Office 365. |
 
 ### <a name="lync-service-administrator"></a>Správce služeb Lyncu
 Může spravovat všechny aspekty produktu Skype pro firmy.

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 08/16/2018
 ms.author: wolfma
 ms.openlocfilehash: 07f1c32b923b65aef9feeb932a7bb0de8cb11f78
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42054667"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43129693"
 ---
 > [!div class="op_single_selector"]
 > - [C# – .NET pro Windows](~/articles/cognitive-services/speech-service/quickstart-csharp-dotnet-windows.md)

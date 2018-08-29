@@ -1,6 +1,6 @@
 ---
-title: Optimalizace prostředí System Center Operations Manager s nástrojem Azure Log Analytics | Microsoft Docs
-description: Řešení System Center Operations Manager Health kontrolovat můžete vyhodnotit stav prostředí a riziko v pravidelných intervalech.
+title: Optimalizujete si prostředí System Center Operations Manageru pomocí služby Azure Log Analytics | Dokumentace Microsoftu
+description: Můžete použít řešení kontroly systému System Center Operations Manager Health k vyhodnocení v pravidelných intervalech rizika a stav různých prostředí.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -15,96 +15,96 @@ ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: bdf56a85c43513f573c02e3b28cd93f28217814b
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 7ce8afa04751cd38e64b9ed920a6f863781e3ad1
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128958"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126277"
 ---
-# <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>Optimalizace prostředí s nástrojem System Center Operations Manager Health kontrolovat (Preview) řešení
+# <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>Optimalizujete si prostředí díky řešení System Center Operations Manager kontroly stavu (Preview)
 
-![System Center Operations Manager Health kontrolovat symbol](./media/log-analytics-scom-assessment/scom-assessment-symbol.png)
+![Systém System Center Operations Manager Health Zkontrolujte symbol](./media/log-analytics-scom-assessment/scom-assessment-symbol.png)
 
-Řešení System Center Operations Manager Health kontrolovat můžete použít k vyhodnocení rizik a stavu skupiny pro správu System Center Operations Manager v pravidelných intervalech. Tento článek vám umožňuje instalovat, konfigurovat a používat řešení, takže můžete provést nápravné akce pro potenciální problémy.
+Můžete použít řešení kontroly systému System Center Operations Manager Health k posuzuje rizika a stav skupiny pro správu System Center Operations Manager v pravidelných intervalech. Tento článek pomůže nainstalovat, nakonfigurovat a používat řešení tak, že můžete provést opravné akce pro potenciální problémy.
 
-Toto řešení poskytuje seznam doporučení, které jsou specifické pro infrastrukturu nasazené serverů seřazený podle priority. Doporučení jsou rozdělené mezi čtyři konkrétní oblasti, které vám pomůžou rychle pochopit riziko a proveďte opravné akce.
+Toto řešení poskytuje uspořádaný seznam doporučení, které jsou specifické pro nasazenou serverové infrastruktury. Doporučení jsou rozdělené mezi čtyři oblasti zaměření, které vám pomohou rychle vědomi rizika a provést opravné akce.
 
-Doporučení, která jsou založené na znalosti a zkušenosti technici Microsoft z tisíce zákazníka návštěvách. Každé doporučení obsahuje informace, proč může pro vás důležitá problém a implementaci navrhované změny.
+Doporučení jsou založeny na znalosti a zkušenosti získané z návštěvě tisíců zákaznických odborníky z Microsoftu. Každé doporučení obsahuje pokyny k proč k problému může být na kterých vám záleží a jak implementovat navrhované změny.
 
-Můžete vybrat konkrétní oblasti, které jsou důležité pro vaši organizaci a sledovat průběh směrem k spuštění prostředí riziko volné a v pořádku.
+Můžete vybrat konkrétní oblasti, které jsou nejdůležitější pro vaši organizaci a sledovat svůj postup směrem ke spuštění prostředí pro riziko free a v dobrém stavu.
 
-Poté, co jste přidali řešení a posouzení se provádí, souhrnné informace pro konkrétní oblasti je zobrazena na **System Center Operations Manager Health kontrolovat** řídicí panel pro vaši infrastrukturu. Následující části popisují, jak používat informace na **System Center Operations Manager Health kontrolovat** řídicí panel, kde můžete zobrazit a pak proveďte doporučené akce pro vaše prostředí nástroje Operations Manager.
+Poté, co jste přidali řešení a posouzení se provádí, souhrnné informace pro konkrétní oblasti se zobrazí na **kontroly systému System Center Operations Manager Health** řídicího panelu pro vaši infrastrukturu. Následující části popisují, jak pomocí informací na **kontroly systému System Center Operations Manager Health** řídicí panel, kde můžete zobrazit a pak provést doporučené akce pro vaše prostředí nástroje Operations Manager.
 
 ![Dlaždice řešení System Center Operations Manager](./media/log-analytics-scom-assessment/log-analytics-scom-healthcheck-tile.png)
 
-![System Center Operations Manager Health kontrolovat řídicí panel](./media/log-analytics-scom-assessment/log-analytics-scom-healthcheck-dashboard-01.png)
+![Systém System Center Operations Manager Health zkontrolujte řídicí panel](./media/log-analytics-scom-assessment/log-analytics-scom-healthcheck-dashboard-01.png)
 
 ## <a name="installing-and-configuring-the-solution"></a>Instalace a konfigurace řešení
 
-Toto řešení funguje s Microsoft systému Operations Manager 2012 Service Pack (SP) 1 a 2012 R2.
+Toto řešení spolupracuje s Microsoft nástrojem Operations Manager 2012 Service Pack (SP) 1 a 2012 R2.
 
 K instalaci a konfiguraci řešení můžete použít následující informace.
 
- - Než v analýzy protokolů můžete použít kontrolu stavu řešení, musíte mít nainstalován řešení. Instalaci řešení z [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SCOMAssessmentOMS?tab=Overview).
+ - Než ve službě Log Analytics můžete použít řešení kontroly stavu, musíte mít nainstalované řešení. Nainstalujte řešení od [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SCOMAssessmentOMS?tab=Overview).
 
- - Po přidání řešení do pracovního prostoru, **System Center Operations Manager Health kontrolovat** dlaždice na řídicím panelu zobrazí zprávu vyžaduje další konfiguraci. Klikněte na dlaždici a postupujte podle kroků konfigurace uvedených na stránce
+ - Po přidání řešení do pracovního prostoru, **kontroly systému System Center Operations Manager Health** dlaždice na řídicím panelu zobrazí zprávu vyžaduje další konfiguraci. Klikněte na dlaždici a postupujte podle kroků konfigurace uvedených na stránce
 
- ![Dlaždice řídicího panelu System Center Operations Manager](./media/log-analytics-scom-assessment/scom-configrequired-tile.png)
+ ![Dlaždice řídicího panelu systému System Center Operations Manager](./media/log-analytics-scom-assessment/scom-configrequired-tile.png)
 
 > [!NOTE]
-> Konfiguraci nástroje System Center Operations Manager lze provést pomocí skriptu podle kroků uvedených na stránce konfigurace řešení v analýzy protokolů.
+> Konfigurace nástroje System Center Operations Manager lze provést pomocí skriptu pomocí následujícího postupu uvedeného na stránce konfigurace řešení v Log Analytics.
 
- Konfigurace assessment prostřednictvím konzoly Operations Manager Operations, proveďte následující postup v následujícím pořadí:
-1. [Nastavit účet Spustit jako pro System Center Operations Manager Health kontrolovat](#operations-manager-run-as-accounts-for-log-analytics)  
-2. [Konfigurace pravidla System Center Operations Manager Health kontrolovat](#configure-the-assessment-rule)
+ Hodnocení můžete nakonfigurovat prostřednictvím Operations console Operations Manageru, proveďte následující kroky v uvedeném pořadí:
+1. [Nastavení účtu spustit jako pro kontroly systému System Center Operations Manager Health](#operations-manager-run-as-accounts-for-log-analytics)  
+2. [Konfigurace pravidla kontroly systému System Center Operations Manager Health](#configure-the-assessment-rule)
 
-## <a name="system-center-operations-manager-assessment-data-collection-details"></a>Informace o System Center Operations Manager assessment datových kolekce
+## <a name="system-center-operations-manager-assessment-data-collection-details"></a>Podrobnosti o systému System Center Operations Manager assessment dat kolekce
 
-Hodnocení nástroje System Center Operations Manager shromažďuje data z následujících zdrojů:
+Hodnocení System Center Operations Manager shromažďuje data z následujících zdrojů:
 
 * Registr
 * Windows Management Instrumentation (WMI)
-* V protokolu událostí
+* Protokol událostí
 * Data souborů
-* Přímo z nástroje Operations Manager pomocí prostředí PowerShell a SQL dotazů, ze serveru pro správu, který jste zadali.  
+* Přímo z nástroje Operations Manager pomocí prostředí PowerShell a dotazů SQL, ze serveru pro správu, kterou jste zadali.  
 
-Data jsou shromažďována na serveru pro správu a předávány k analýze protokolů každých sedm dní.  
+Data se shromažďují na serveru pro správu a předávají do Log Analytics každých sedm dní.  
 
-## <a name="operations-manager-run-as-accounts-for-log-analytics"></a>Účty spustit jako nástroje Operations Manager pro analýzy protokolů
+## <a name="operations-manager-run-as-accounts-for-log-analytics"></a>Účty spustit jako nástroje Operations Manager ke službě Log Analytics
 
-Log Analytics staví na sady management Pack pro úlohy zajistit přidanou hodnotou services. Každé zatížení vyžaduje určeného pro konkrétní úlohy oprávnění ke spouštění sad management Pack v odlišném kontextu zabezpečení, jako je například účet uživatele domény. Nakonfigurujte účet Operations Manager spustit jako s privilegovaným přihlašovacím údajům. Další informace najdete v tématu [jak vytvořit účet Spustit jako](https://technet.microsoft.com/library/hh321655(v=sc.12).aspx) v dokumentaci k nástroji Operations Manager.
+Log Analytics sestavení na sadách management Pack pro úlohy zadejte hodnotu přidat služby. Každá úloha vyžaduje specifické úlohy oprávnění ke spuštění sady management Pack v kontextu zabezpečení, jako je například účet uživatele domény. Nakonfigurujte Operations Manageru účet Spustit jako pomocí privilegovaných přihlašovacích údajů. Další informace najdete v tématu [způsob vytvoření účtu spustit jako](https://technet.microsoft.com/library/hh321655(v=sc.12).aspx) v dokumentaci k nástroji Operations Manager.
 
-K nastavení Operations Manager účet Spustit jako pro System Center Operations Manager Health kontrolovat, použijte následující informace.
+Pomocí následujících informací můžete nastavit Operations Manageru účet Spustit jako pro kontroly systému System Center Operations Manager Health.
 
-### <a name="set-the-run-as-account"></a>Nastavit účet Spustit jako
+### <a name="set-the-run-as-account"></a>Nastavte účet Spustit jako
 
-Účet Spustit jako, musí splňovat následující požadavky, než budete pokračovat:
+Účet Spustit jako, musí splňovat následující požadavky před pokračováním:
 
-* Uživatelský účet domény, který je členem místní skupiny Administrators na všech serverech podporujících žádné roli nástroje Operations Manager – server pro správu, SQL Server, který je hostitelem provozní, datového skladu a databáze služby ACS, vytváření sestav, webovou konzolu a server brány.
-* Role správce Manager operace pro skupinu pro správu probíhá vyhodnocení
-* Pokud účet nemá oprávnění správce systému SQL, potom spusťte [skriptu](#sql-script-to-grant-granular-permissions-to-the-run-as-account) udělit oprávnění na podrobné úrovni k účtu na každou instanci serveru SQL, který je hostitelem jednoho nebo všech databází nástroje Operations Manager.
+* Účet uživatele domény, který je členem místní skupiny Administrators na všech serverech podporujících jakákoli role nástroje Operations Manager – server pro správu, serveru SQL Server hostující operační databázi, datového skladu a databáze služby ACS, generování sestav a webové konzole a server brány.
+* Role správce operace správce skupiny pro správu je použit k vyhodnocení
+* Pokud účet nemá práva správce systému SQL, provádějí [skript](#sql-script-to-grant-granular-permissions-to-the-run-as-account) k udělovat různě odstupňovaná oprávnění k účtu pro každou instanci serveru SQL Server hostující jednu nebo všechny databáze nástroje Operations Manager.
 
-1. V konzole nástroje Operations Manager, vyberte **správy** navigační tlačítko.
+1. V konzole nástroje Operations Manager, vyberte **správu** navigační tlačítko.
 2. V části **konfigurace spustit jako**, klikněte na tlačítko **účty**.
-3. V **vytvořit účet Spustit jako** Průvodce na **ÚVOD** klikněte na stránce **Další**.
-4. Na **obecné vlastnosti** vyberte **Windows** v **typ účtu spustit jako:** seznamu.
-5. Zadejte zobrazovaný název v **zobrazovaného názvu** textové pole a volitelně zadejte popis do **popis** pole a pak klikněte na **Další**.
-6. Na **zabezpečení distribuce** vyberte **bezpečnější**.
+3. V **vytvořit účet Spustit jako** Průvodce na **ÚVOD** stránce klikněte na **Další**.
+4. Na **obecné vlastnosti** stránce **Windows** v **typ účtu spustit jako:** seznamu.
+5. Zadejte zobrazovaný název v **zobrazovaného názvu** textové pole a volitelně zadejte popis do **popis** pole a potom klikněte na tlačítko **Další**.
+6. Na **zabezpečení distribuce** stránce **bezpečnější**.
 7. Klikněte na možnost **Vytvořit**.  
 
-Teď, když je vytvořen účet Spustit jako, potřebuje k cílovým serverům správy ve skupině pro správu a přidružené předem definovaného profilu spustit jako, spustí pracovní postupy, pomocí přihlašovacích údajů.  
+Teď, když se vytvoří účet Spustit jako, musí cílové servery pro správu ve skupině pro správu a přidružené předem definovaného profilu spustit jako, pracovní postupy se spustí pomocí přihlašovacích údajů.  
 
-1. V části **konfigurace spustit jako**, **účty**, v podokně výsledků dvakrát klikněte na účet, který jste vytvořili dříve.
-2. Na **distribuční** , klikněte na **přidat** pro **vybrané počítače** a přidejte pro tento účet distribuovat do serveru pro správu.  Klikněte na tlačítko **OK** dvakrát a uložit provedené změny.
+1. V části **konfigurace spustit jako**, **účty**, v podokně výsledků klikněte dvakrát na účtu, který jste vytvořili dříve.
+2. Na **distribuce** klikněte na tlačítko **přidat** pro **vybrané počítače** a přidejte k distribuci účtu na serveru pro správu.  Klikněte na tlačítko **OK** dvakrát tím uložíte provedené změny.
 3. V části **konfigurace spustit jako**, klikněte na tlačítko **profily**.
-4. Vyhledejte *SCOM Assessment profil*.
-5. Název profilu musí být: *Microsoft System Center Advisor SCOM Assessment profilu spustit jako*.
-6. Klikněte pravým tlačítkem myši a aktualizujte jeho vlastnosti a přidejte naposledy vytvořený účet Spustit jako jste vytvořili dříve.
+4. Hledat *profilu posouzení SCOM*.
+5. By měl být název profilu: *Microsoft System Center Advisor SCOM posouzení profilu spustit jako*.
+6. Klikněte pravým tlačítkem myši a aktualizovat jeho vlastnosti a přidat naposledy vytvořený účet Spustit jako jste vytvořili dříve.
 
-### <a name="sql-script-to-grant-granular-permissions-to-the-run-as-account"></a>Skript SQL k udělení oprávnění na podrobné úrovni k účtu spustit jako
+### <a name="sql-script-to-grant-granular-permissions-to-the-run-as-account"></a>Skript SQL pro udělovat různě odstupňovaná oprávnění k účtu spustit jako
 
-Spusťte následující skript SQL udělit potřebná oprávnění k účtu spustit jako v instanci systému SQL Server používané Operations Manager, který je hostitelem provozní, datového skladu a databáze služby ACS.
+Spusťte následující skript SQL udělit požadovaná oprávnění k účtu spustit jako v instanci SQL serveru hostující operační databázi nástroje Operations Manager, datový sklad a databáze služby ACS.
 
 ```
 -- Replace <UserName> with the actual user name being used as Run As Account.
@@ -154,156 +154,154 @@ ALTER ROLE [db_owner] ADD MEMBER [UserName]
 
 ### <a name="configure-the-health-check-rule"></a>Konfigurace pravidla kontroly stavu
 
-Sada management pack řešení System Center Operations Manager Health kontrolovat zahrnuje na pravidlo s názvem *Microsoft System Center Advisor SCOM Assessment spustit Assessment pravidlo*. Toto pravidlo je zodpovědná za spuštění kontroly stavu. Následující postupy použijte, pokud chcete povolit pravidlo a nastavte četnost.
+Sada management pack řešení kontroly systému System Center Operations Manager Health obsahují pravidlo s názvem *Microsoft System Center Advisor SCOM posouzení spustit posouzení pravidlo*. Toto pravidlo je zodpovědný za spouštění kontroly stavu. Následující postupy použijte, pokud chcete povolit pravidlo a nastavte četnost.
 
-Microsoft System Center Advisor SCOM Assessment spustit Assessment pravidlo je ve výchozím nastavení zakázaná. Pokud chcete spustit kontrolu stavu, je nutné povolit pravidlo na serveru pro správu. Pomocí následujících kroků.
+Microsoft System Center Advisor SCOM posouzení spustit posouzení pravidlo je ve výchozím nastavení zakázána. Pokud chcete spustit kontrolu stavu, je nutné povolit pravidlo na serveru pro správu. Pomocí následujícího postupu.
 
-#### <a name="enable-the-rule-for-a-specific-management-server"></a>Povolení pravidla pro konkrétní management server
+#### <a name="enable-the-rule-for-a-specific-management-server"></a>Povolení pravidla pro konkrétní server pro správu
 
-1. V **vytváření** prostoru Operations Manager Operations console, vyhledejte pravidlo *Microsoft System Center Advisor SCOM Assessment spustit Assessment pravidlo* v **pravidla** podokně.
-2. Ve výsledcích hledání vyberte ten, který obsahuje text *typu: Server pro správu*.
-3. Klikněte pravým tlačítkem na pravidlo a pak klikněte na **přepsání** > **pro konkrétní objekt třídy: Server pro správu**.
-4.  V seznamu serverů pro správu k dispozici vyberte server pro správu kde se má pravidlo spustit.  To by měl být stejný server pro správu, které jste dříve nakonfigurovali pro přidružení k účtu spustit jako s.
-5.  Ujistěte se, že změníte hodnotu přepsání **True** pro **povoleno** hodnota parametru.<br><br> ![Přepište parametr](./media/log-analytics-scom-assessment/rule.png)
+1. V **Authoring** pracovního prostoru na konzole Operations Manageru, vyhledejte pravidlo *Microsoft System Center Advisor SCOM posouzení spustit posouzení pravidlo* v **pravidla** podokně.
+2. Ve výsledcích hledání vyberte ten, který obsahuje text *typ: Server pro správu*.
+3. Klikněte pravým tlačítkem na pravidlo a pak klikněte na tlačítko **přepíše** > **pro konkrétní objekt třídy: Server pro správu**.
+4.  V seznamu serverů pro správu k dispozici vyberte ve kterém se má pravidlo spustit server pro správu.  To by měl být stejný server pro správu, který jste nakonfigurovali dříve přidružit účet Spustit jako s.
+5.  Ujistěte se, že změníte hodnotu pro přepisování na **True** pro **povoleno** hodnotu parametru.<br><br> ![Přepište parametr](./media/log-analytics-scom-assessment/rule.png)
 
-    Během tohoto okna nakonfigurujte spuštění četnost pomocí dalšího postupu.
+    Stále v tomto okně Konfigurovat frekvenci běhu pomocí dalšího postupu.
 
-#### <a name="configure-the-run-frequency"></a>Nastavte četnost, spuštění
+#### <a name="configure-the-run-frequency"></a>Konfigurovat frekvenci běhu
 
-Hodnocení je ve výchozím nastavení nakonfigurované ke spuštění každých 10 080 minut (nebo sedm dní). Hodnota, která má minimální hodnotu 1 440 minut (nebo jeden den), můžete přepsat. Hodnota představuje minimální časové prodlevy požadované mezi následných vyhodnocení běží. K přepsání intervalu, použijte následující postup.
+Hodnocení je ve výchozím nastavení nakonfigurované ke spuštění každých 10 080 minut (nebo sedm dní). Můžete přepsat hodnotu na minimální hodnotu 1 440 minut (nebo jeden den). Hodnota představuje minimální časové prodlevy mezi po sobě jdoucích posouzení spuštění vyžaduje. K přepsání intervalu, použijte následující postup.
 
-1. V **vytváření** prostoru konzoly nástroje Operations Manager, vyhledejte pravidlo *Microsoft System Center Advisor SCOM Assessment spustit Assessment pravidlo* v **pravidla** oddíl.
-2. Ve výsledcích hledání vyberte ten, který obsahuje text *typu: Server pro správu*.
-3. Klikněte pravým tlačítkem na pravidlo a pak klikněte na **přepsat pravidlo** > **pro všechny objekty třídy: Server pro správu**.
-4. Změna **Interval** hodnota parametru hodnotu požadovaného intervalu pro. V následujícím příkladu je hodnota nastavena na 1 440 minut (jeden den).<br><br> ![Parametr interval](./media/log-analytics-scom-assessment/interval.png)<br>  
+1. V **Authoring** pracovního prostoru na konzole nástroje Operations Manager, vyhledejte pravidlo *Microsoft System Center Advisor SCOM posouzení spustit posouzení pravidlo* v **pravidla** oddíl.
+2. Ve výsledcích hledání vyberte ten, který obsahuje text *typ: Server pro správu*.
+3. Klikněte pravým tlačítkem na pravidlo a pak klikněte na tlačítko **přepsat pravidlo** > **pro všechny objekty třídy: Server pro správu**.
+4. Změnit **Interval** hodnota parametru hodnotě požadované intervalu. V následujícím příkladu je hodnota nastavena na 1 440 minut (jeden den).<br><br> ![Parametr interval](./media/log-analytics-scom-assessment/interval.png)<br>  
 
-    Pokud je hodnota nastavena na méně než 1 440 minut, pravidlo spustí v intervalu za jeden den. V tomto příkladu pravidlo ignoruje hodnota intervalu a spustí frekvencí jeden den.
+    Pokud je hodnota nastavena na méně než 1 440 minut, se pravidlo spustí v intervalech jeden den. V tomto příkladu pravidlo ignoruje hodnota intervalu a běží s frekvencí jeden den.
 
 
-## <a name="understanding-how-recommendations-are-prioritized"></a>Pochopení, jak budou doporučení mít vyšší prioritu
+## <a name="understanding-how-recommendations-are-prioritized"></a>Vysvětlení, jak mají určenou prioritu doporučení
 
-Každé doporučení je zadána hodnota vyvážení, která určuje relativní důležitost doporučení. Jsou zobrazeny pouze 10 nejdůležitějších doporučení.
+Každé doporučení je přiřazena hodnota váhu, která identifikuje relativní důležitost doporučení. Zobrazí jenom 10 nejdůležitější doporučení.
 
-### <a name="how-weights-are-calculated"></a>Jak jsou vypočítávány váhu
+### <a name="how-weights-are-calculated"></a>Jak se počítají váhy
 
-Váhy jsou agregovaných hodnot založena na tři klíčové faktory:
+Váhy jsou agregované hodnoty, které jsou založené na tři klíčové faktory:
 
-- *Pravděpodobnosti* způsobí, že problém identifikovat problémy. Vyšší pravděpodobnost rovná větší celkové skóre pro doporučení.
-- *Dopad* problému na vaší organizaci, pokud ji způsobovat problémy. Vyšší dopad rovná větší celkové skóre pro doporučení.
-- *Úsilí* potřebnou k implementaci doporučení. Vyšší úsilí rovná menší celkové skóre pro doporučení.
+- *Pravděpodobnost* , způsobí chyby zjištěné potíže. Vyšší pravděpodobnost rovná větší celkové skóre pro doporučení.
+- *Dopad* problému ve vaší organizaci, pokud ho způsobovat problémy. Vyšší dopad odpovídá větší celkové skóre pro doporučení.
+- *Úsilí* potřebnou k implementaci doporučení. Vyšší úsilí odpovídá menší celkové skóre pro doporučení.
 
-Vyvážení pro každé doporučení je vyjádřený jako procentní podíl celkové skóre, které jsou k dispozici pro každou oblast fokus. Například pokud doporučení v oblasti fokus dostupnost a provozní kontinuita je skóre % 5, implementace tímto doporučením zvyšuje celkové skóre podle 5 % dostupnost a provozní kontinuita.
+Váhu pro jednotlivá doporučení je vyjádřené jako procentní podíl celkové skóre, které jsou k dispozici pro každou oblast zaměření. Například pokud doporučení v oblasti zaměření dostupnosti a kontinuity obchodních procesů má skóre % 5, implementaci tohoto doporučení zvýší vaše celkové skóre podle 5 % dostupnosti a kontinuity obchodních procesů.
 
 ### <a name="focus-areas"></a>Konkrétní oblasti
 
-**Dostupnost a provozní kontinuita** – v tomto poli fokus zobrazí doporučení pro dostupnost služeb, odolnost vaší infrastruktury a obchodní ochrany.
+**Dostupnost a plynulost obchodních procesů** -tuto oblast zaměření ukazuje doporučení pro služby dostupnost, odolnost vaší infrastruktury a ochrany firmy.
 
-**Výkon a škálovatelnost** – v tomto poli fokus zobrazí doporučení, která pomůžou vaší organizace IT infrastruktury růst, zajistěte, aby vaše IT prostředí splňuje aktuální požadavky na výkon a schopné reagovat na měnící se infrastruktury potřebuje.
+**Výkon a škálovatelnost** – zobrazuje tuto oblast zaměření doporučení, která vaší organizaci pomoct IT infrastruktury růst, ujistěte se, že splňuje aktuální požadavky na výkon vašeho IT prostředí a je schopný reagovat na měnící se infrastruktury potřebuje.
 
-**Nasazení, upgrade a migrace** – v tomto poli fokus zobrazí doporučení, která vám pomohou upgradovat, migrace a nasazení systému SQL Server k vaší stávající infrastruktury.
+**Upgrade, migrace a nasazení** – zobrazuje tuto oblast zaměření doporučení, která vám pomohou upgrade, migrace a nasazení systému SQL Server do vaší stávající infrastruktury.
 
-**Operace a monitorování** – v tomto poli fokus zobrazí doporučení, která pomůžou zjednodušení operací IT a implementaci preventivní údržby, maximalizovat výkon.
+**Operace a monitorování** – zobrazuje tuto oblast zaměření doporučení, která pomůžou zefektivnit vaše IT oddělení, implementovat preventivní údržby a maximalizovat výkon.
 
-### <a name="should-you-aim-to-score-100-in-every-focus-area"></a>Mají usilovat o stanovení skóre 100 % v každé oblasti fokus?
+### <a name="should-you-aim-to-score-100-in-every-focus-area"></a>By měl být cílem stanovení skóre 100 % v každé oblasti zaměření?
 
-Ne nutně. Doporučení jsou založené na prostředí, které nebyly získány prostřednictvím Microsoft technici napříč tisíce návštěvy zákazníka a znalostní báze. Ale žádné serverové infrastruktury jsou stejné, a konkrétní doporučení může být vyšší nebo nižší relevantní pro vás. Například může být několik doporučení zabezpečení méně důležité, pokud vaše virtuální počítače nejsou vystaveny v Internetu. Některá doporučení, jaké dostupnosti může být méně důležité pro služby, které poskytují kolekce s nízkou prioritou ad hoc dat a vytváření sestav. Problémy, které jsou důležité, abyste vyspělých firmy může být méně důležité Startup. Můžete určit, které konkrétní oblasti mají vašich priorit a podívejte se na tom, jak se vaše skóre časem změnit.
+Ne nutně. Doporučení jsou založeny na znalosti a zkušenosti získané v Microsoftu přes návštěvě tisíců zákaznických. Ale žádné serverové infrastruktury jsou stejné, a konkrétní doporučení může být vyšší nebo nižší pro vás relevantní. Některá doporučení zabezpečení může být například méně relevantní, pokud vaše virtuální počítače nejsou zveřejněné na Internetu. Některá doporučení dostupnosti může být méně důležité pro služby, které poskytují shromažďování dat ad hoc s nízkou prioritou a generování sestav. Problémy, které jsou důležité pro až po zralé podnikání, může být méně důležité spouštěcí. Můžete určit, které konkrétní oblasti mají vašich priorit a podívejte se na tom, jak v průběhu času měnit skóre.
 
-Každé doporučení obsahuje pokyny o tom, proč je důležité. Tyto pokyny slouží k vyhodnocení, zda implementace doporučení je vhodné pro vás, daná povaze vašich IT služeb a obchodním potřebám vaší organizace.
+Každé doporučení obsahuje pokyny o tom, proč je důležité. Tyto pokyny slouží k vyhodnocení, zda implementace doporučení je vhodné, vzhledem k povaze služeb IT a obchodní potřeby vaší organizace.
 
-## <a name="use-health-check-focus-area-recommendations"></a>Použití stavu zkontrolujte fokus oblasti doporučení
+## <a name="use-health-check-focus-area-recommendations"></a>Kontroly stavu použijte doporučení oblasti zaměření
 
-Než v analýzy protokolů můžete použít řešení kontrolu stavu, musíte mít nainstalován řešení. Další informace o instalaci řešení, najdete v části [instalaci řešení správy](log-analytics-add-solutions.md). Po instalaci, můžete zobrazit souhrn doporučení pomocí System Center Operations Manager Health kontrolovat dlaždice **přehled** stránky vašeho pracovního prostoru na portálu Azure.
+Než ve službě Log Analytics můžete použít řešení kontroly stavu, musíte mít nainstalované řešení. Další informace o instalaci řešení, najdete v článku [nainstalovat řešení pro správu](log-analytics-add-solutions.md). Po jeho instalaci, můžete zobrazit souhrn doporučení s využitím kontroly systému System Center Operations Manager Health dlaždici na **přehled** stránku vašeho pracovního prostoru na webu Azure Portal.
 
-Zobrazte vyhodnocování souhrnné dodržování předpisů pro infrastrukturu a potom přejít k podrobnostem doporučení.
+Zobrazení posouzení souhrnné dodržování předpisů pro infrastrukturu a pak přejít k podrobnostem doporučení.
 
-### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>Proveďte opravné akce a zobrazit doporučení pro oblastí zájmu
+### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>Zobrazit doporučení pro oblast zaměření a provedení nápravné akce
 1. Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 2. Na webu Azure Portal klikněte v levém dolním rohu na **Další služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics**.
-3. V podokně odběry analýzy protokolů vyberte pracovní prostor a klikněte **prostoru Souhrn** položku nabídky.  
-4. Na **přehled** klikněte na tlačítko **System Center Operations Manager Health kontrolovat** dlaždici.
-5. Na **System Center Operations Manager Health kontrolovat** zkontrolujte souhrnné informace v jednom z okna oblasti fokus a pak klikněte na jednu zobrazíte doporučení pro tuto oblast fokus.
-6. Na všech stránkách oblasti fokus můžete zobrazit seřazený podle priority doporučení, která se pro vaše prostředí. Klikněte na tlačítko doporučení v části **vliv na objekty** Chcete-li zobrazit podrobnosti, proč se provádí doporučení.<br><br> ![oblastí zájmu](./media/log-analytics-scom-assessment/log-analytics-scom-healthcheck-dashboard-02.png)<br>
-7. Můžete provést nápravné akce navržený v **doporučované akce**. Když položka vyřeší, bude záznam novější vyhodnocování které doporučené akce provedené a zvýší se vaše skóre dodržování předpisů. Opravené položky se zobrazí jako **předán objekty**.
+3. V podokně předplatná Log Analytics vyberte pracovní prostor a pak klikněte na tlačítko **shrnutí pracovního prostoru** položky nabídky.  
+4. Na **přehled** stránky, klikněte na tlačítko **kontroly systému System Center Operations Manager Health** dlaždici.
+5. Na **kontroly systému System Center Operations Manager Health** stránky, zkontrolujte souhrnné informace u některého okna oblasti zaměření a klikněte na z nich se má zobrazit doporučení pro tuto oblast zaměření.
+6. Na žádném z oblasti stránek fokus můžete zobrazit prioritizovaných doporučení pro vaše prostředí. Kliknutím na doporučení v části **vliv na objekty** zobrazíte podrobnosti o tom, proč je provedeny doporučení.<br><br> ![oblast zaměření](./media/log-analytics-scom-assessment/log-analytics-scom-healthcheck-dashboard-02.png)<br>
+7. Můžete provést opravné akce navržený v **doporučené akce**. Pokud položka byla určena, zaznamená novější posouzení, které doporučené akce byly provedeny a zvýší vaše skóre dodržování předpisů. Opravené položky se zobrazí jako **předaný objekty**.
 
-## <a name="ignore-recommendations"></a>Ignorovat doporučení
+## <a name="ignore-recommendations"></a>Ignorujte doporučení
 
-Pokud máte doporučení, které chcete ignorovat, můžete vytvořit textový soubor, který používá analýzy protokolů, aby doporučení ze storu ve výsledky hodnocení.
+Pokud máte doporučení, která má být ignorována, můžete vytvořit textový soubor, který využívá Log Analytics, která brání doporučení povolí, nebude vaše výsledky posouzení.
 
-[!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
-
-### <a name="to-identify-recommendations-that-you-want-to-ignore"></a>K identifikaci doporučení, které chcete ignorovat
-1. Na stránce pracovní prostor analýzy protokolů pro vaši vybranou pracovní prostor na portálu Azure, klikněte na tlačítko **hledání protokolů** položku nabídky.
-2. Pro počítače ve vašem prostředí použijte následující dotaz, který seznam doporučení, které selhaly.
+### <a name="to-identify-recommendations-that-you-want-to-ignore"></a>K identifikaci doporučení, která má být ignorována
+1. Na portálu Azure na stránce pracovního prostoru Log Analytics pro váš vybraný pracovní prostor, klikněte na tlačítko **prohledávání protokolů** položky nabídky.
+2. Následující dotaz tak, aby seznam doporučení, které se nepodařilo použijte pro počítače se ve vašem prostředí.
 
     ```
     Type=SCOMAssessmentRecommendationRecommendationResult=Failed | select Computer, RecommendationId, Recommendation | sort Computer
     ```
 
     >[!NOTE]
-    > Pokud pracovní prostor byl upgradován na verzi [nové analýzy protokolů dotazu jazyka](log-analytics-log-search-upgrade.md), pak výše uvedeném dotazu by změnit na následující.
+    > Pokud byl váš pracovní prostor upgradován na [dotazovací jazyk Log Analytics nové](log-analytics-log-search-upgrade.md), pak se změní výše uvedeném dotazu následující.
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
-    Zde je snímek obrazovky zobrazující protokolu vyhledávací dotaz:<br><br> ![prohledávání protokolů](./media/log-analytics-scom-assessment/scom-log-search.png)<br>
+    Zde je snímek obrazovky zobrazující z dotazu prohledávání protokolu:<br><br> ![prohledávání protokolů](./media/log-analytics-scom-assessment/scom-log-search.png)<br>
 
-3. Zvolte doporučení, které chcete ignorovat. Hodnoty pro RecommendationId budete používat v dalším postupu.
+3. Zvolte doporučení, která má být ignorována. V dalším postupu budete používat hodnoty pro ID doporučení.
 
-### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>Vytváření a používání textový soubor s IgnoreRecommendations.txt
+### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>Vytvoření a použití textového souboru IgnoreRecommendations.txt
 
 1. Vytvořte soubor s názvem IgnoreRecommendations.txt.
-2. Vložit nebo zadejte každou RecommendationId pro jednotlivá doporučení, které chcete analýzy protokolů ignorovat na samostatném řádku a potom uložte a zavřete soubor.
-3. Uložte soubor v následující složce na každém počítači, kam chcete analýzy protokolů ignorovat doporučení.
-4. Na serveru pro správu nástroje Operations Manager - *SystemDrive*: \Program Files\Microsoft System Center 2012 R2\Operations Manager\Server.
+2. Vložte nebo zadejte ID jednotlivých doporučení pro jednotlivá doporučení, který má Log Analytics ignorovat na samostatném řádku a potom uložte a zavřete soubor.
+3. Uložte soubor v následující složce na každém počítači místo, kam chcete Log Analytics pro ignorování doporučení.
+4. Na serveru pro správu nástroje Operations Manager - *systemdrive % musí být*: \Program Files\Microsoft System Center 2012 R2\Operations Manager\Server.
 
-### <a name="to-verify-that-recommendations-are-ignored"></a>Chcete-li ověřit, že se ignorovat doporučení
+### <a name="to-verify-that-recommendations-are-ignored"></a>Chcete-li ověřit, že jsou ignorovány doporučení
 
-1. Po na další naplánované vyhodnocení běží ve výchozím nastavení každých sedm dní, zadaný doporučení jsou označeny ignorovaná a nezobrazí se na řídicím panelu kontroly stavu.
-2. Následující dotazy hledání protokolů můžete použít k zobrazení seznamu všech ignorováno doporučení.
+1. Až dalšího naplánovaného spuštění posouzení ve výchozím nastavení každých sedm dní, zadaný doporučení jsou označeny ignorováno a nezobrazí se na řídicím panelu stavu zaškrtnutí.
+2. Do seznamu ignorovaných doporučení můžete použít následující dotazy prohledávání protokolů.
 
     ```
     Type=SCOMAssessmentRecommendationRecommendationResult=Ignored | select  Computer, RecommendationId, Recommendation | sort  Computer
     ```
 
     >[!NOTE]
-    > Pokud pracovní prostor byl upgradován na verzi [nové analýzy protokolů dotazu jazyka](log-analytics-log-search-upgrade.md), pak výše uvedeném dotazu by změnit na následující.
+    > Pokud byl váš pracovní prostor upgradován na [dotazovací jazyk Log Analytics nové](log-analytics-log-search-upgrade.md), pak se změní výše uvedeném dotazu následující.
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Ignore" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
-3. Pokud se později rozhodnete, zda chcete zobrazit ignorováno doporučení, odeberte všechny soubory IgnoreRecommendations.txt nebo RecommendationIDs můžete odebrat z nich.
+3. Pokud se později rozhodnete, že chcete zobrazit ignorované doporučení, odeberte všechny soubory IgnoreRecommendations.txt nebo RecommendationIDs můžete odebrat z nich.
 
-## <a name="system-center-operations-manager-health-check-solution-faq"></a>System Center Operations Manager Health kontrolovat řešení – nejčastější dotazy
+## <a name="system-center-operations-manager-health-check-solution-faq"></a>Řešení System Center Operations Manager Health zkontrolujte systému – nejčastější dotazy
 
-*Kontrola stavu řešení po přidání do pracovního prostoru analýzy protokolů. Ale doporučení se nezobrazí. Proč ne?* Po přidání řešení, použijte následující postup zobrazení doporučení na řídicím panelu analýzy protokolů.  
+*Kontroly stavu řešení po přidání do pracovního prostoru Log Analytics. Ale nevidím žádná doporučení. Proč ne?* Po přidání řešení, použijte následující postup zobrazení doporučení na řídicím panelu Log Analytics.  
 
-- [Nastavit účet Spustit jako pro System Center Operations Manager Health kontrolovat](#operations-manager-run-as-accounts-for-log-analytics)  
-- [Konfigurace pravidla System Center Operations Manager Health kontrolovat](#configure-the-health-check-rule)
+- [Nastavení účtu spustit jako pro kontroly systému System Center Operations Manager Health](#operations-manager-run-as-accounts-for-log-analytics)  
+- [Konfigurace pravidla kontroly systému System Center Operations Manager Health](#configure-the-health-check-rule)
 
 
-*Existuje způsob, jak nakonfigurovat, jak často neproběhne kontrola?* Ano. V tématu [nakonfigurovat spuštění četnost](#configure-the-run-frequency).
+*Existuje způsob, jak konfigurovat, jak často neproběhne kontrola?* Ano. Zobrazit [konfigurovat frekvenci běhu](#configure-the-run-frequency).
 
-*Pokud po byly přidány řešení System Center Operations Manager hodnocení je zjistit jiný server, budou se kontrolovat?* Ano, po zjišťování, který je ve výchozím nastavení každých sedm dní od toho zkontrolován.
+*Pokud jiný server je zjištěno, po přidali jsme řešení System Center Operations Manager Assessment, budou se kontrolovat?* Ano, po zjištění, které od té chvíle se kontroluje ve výchozím nastavení každých sedm dní.
 
-*Jaký je název procesu, který nemá shromažďování dat?* AdvisorAssessment.exe
+*Jaký je název procesu, která provádí sběr dat?* AdvisorAssessment.exe
 
-*Kde proces AdvisorAssessment.exe spustit?* AdvisorAssessment.exe spuštěna pod proces služby stavu serveru pro správu, kde je povolené pravidlo kontroly stavu. Pomocí tohoto procesu, zjišťování celé prostředí je dosaženo pomocí vzdálených dat kolekce.
+*Pokud proces AdvisorAssessment.exe spustit?* AdvisorAssessment.exe běží v rámci procesu služby stavu serveru pro správu, kde je aktivováno pravidlo kontroly stavu. Pomocí tohoto procesu se prostřednictvím vzdálené shromažďování dat dosahuje zjišťování celého prostředí.
 
-*Jak dlouho trvá pro shromažďování dat?* Shromažďování dat na serveru trvá asi jednu hodinu. Může trvat déle v prostředích, která mají mnoho instancí nástroje Operations Manager nebo databáze.
+*Jak dlouho trvá shromažďování dat?* Shromažďování dat na serveru trvá přibližně jednu hodinu. Může trvat déle, v prostředích, která mají mnoho instancí nástroje Operations Manager nebo databáze.
 
-*Co když lze nastavit interval hodnocení na méně než 1 440 minut?* Hodnocení je předem nakonfigurovaný pro spouštění na maximálně jednou za den. Pokud přepíšete hodnota intervalu na hodnotu menší než 1 440 minut, pak hodnocení používá jako hodnota intervalu 1 440 minut.
+*Co když mám nastavit interval posouzení na menší než 1 440 minut?* Hodnocení je nakonfigurovaná tak, aby spustit maximálně jednou za den. Pokud přepíšete hodnota intervalu na hodnotu menší než 1 440 minut, posouzení používá 1440 minut jako hodnota intervalu.
 
-*Jak potřebujete vědět, pokud jsou požadované selhání?* Pokud byla spuštěna kontrola stavu, která se nezobrazí výsledky, je pravděpodobné, že některé požadované součásti pro kontrolu se nezdařilo. Můžete provést dotazy: `Operation Solution=SCOMAssessment` a `SCOMAssessmentRecommendation FocusArea=Prerequisites` v protokolu hledat neúspěšné požadavky.
+*Jak zjistit, pokud jsou požadované selhání?* Pokud se nezobrazí výsledky spuštění kontroly stavu, je pravděpodobné, že některé z požadovaných součástí pro kontrolu se nezdařilo. Při spouštění dotazů: `Operation Solution=SCOMAssessment` a `SCOMAssessmentRecommendation FocusArea=Prerequisites` v prohledávání protokolu zobrazíte neúspěšné požadavky.
 
-*Je `Failed to connect to the SQL Instance (….).` zprávy v požadovaných selhání. Co je problém?* AdvisorAssessment.exe, proces, který shromažďuje data, běží v procesu služby Health Service na serveru pro správu. Jako součást kontrolou stavu proces pokusí připojit k systému SQL Server, kde databáze nástroje Operations Manager nachází. Této chybě může dojít, když pravidla brány firewall zablokovat připojení k instanci systému SQL Server.
+*Je `Failed to connect to the SQL Instance (….).` zprávy požadavků selhání. V čem je problém?* AdvisorAssessment.exe, proces, který shromažďuje data, běží v rámci procesu služby Health Service na serveru pro správu. V rámci kontroly stavu se proces pokusí připojit k SQL serveru, kde je k dispozici databáze nástroje Operations Manager. Této chybě může dojít, když se pravidla brány firewall zablokovat připojení k instanci systému SQL Server.
 
-*Jaký typ dat shromažďovaných?* Se shromažďují následující typy dat: - dat služby WMI – registru data – data protokolu událostí – Operations Manager data prostřednictvím prostředí Windows PowerShell, dotazy SQL a soubor informace kolekce.
+*Jaký typ dat se shromažďují?* Následující typy dat se shromažďují: - dat služby WMI - registru dat – data protokolu událostí – dat nástroje Operations Manager pomocí prostředí Windows PowerShell, dotazů SQL a soubor informace kolekcí.
 
-*Proč je nutné nakonfigurovat účet Spustit jako?* S nástrojem Operations Manager se spouštějí různé dotazy SQL. Aby mohly spustit musíte použít účet Spustit jako s potřebnými oprávněními. Kromě toho je potřeba dotaz WMI přihlašovací údaje místního správce.
+*Proč je nutné nakonfigurovat účet Spustit jako?* S nástrojem Operations Manager se spouštějí různé dotazy SQL. V pořadí jejich spuštění musíte použít účet Spustit jako s potřebnými oprávněními. Kromě toho je třeba dotaz WMI přihlašovací údaje místního správce.
 
-*Proč zobrazit pouze prvních 10 doporučení?* Namísto udělení vyčerpávající, čtenáře seznam úloh, doporučujeme, byste se zaměřit na první adresování seřazený podle priority doporučení. Po jejich řešení, bude k dispozici další doporučení. Pokud ji chcete zobrazit podrobný seznam, můžete zobrazit všechna doporučení pomocí hledání protokolů.
+*Proč zobrazit pouze prvních 10 doporučení?* Místo získáte vyčerpávající, náročný seznam úkolů, doporučujeme vám zaměřit nejprve adresování prioritizovaných doporučení. Po jejich řešení, budou k dispozici další doporučení. Pokud chcete zobrazit podrobný seznam, můžete zobrazit všechna doporučení, pomocí prohledávání protokolů.
 
-*Existuje způsob, jak ignorovat doporučení?* Ano, najdete v článku [ignorovat doporučení](#Ignore-recommendations).
+*Existuje způsob, jak ignorujte doporučení?* Ano, najdete v článku [ignorujte doporučení](#Ignore-recommendations).
 
 
 ## <a name="next-steps"></a>Další postup
 
-- [V protokolech Hledat](log-analytics-log-searches.md) se dozvíte, jak analyzovat doporučení a podrobné údaje o stavu System Center Operations Manager kontrolovat.
+- [Hledání protokolů](log-analytics-log-searches.md) informace o analýze podrobných dat o stavu systému System Center Operations Manager zkontrolujte a doporučení.

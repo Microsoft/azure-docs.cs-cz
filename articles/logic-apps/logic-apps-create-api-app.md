@@ -1,28 +1,23 @@
 ---
 title: Vytvoření webového rozhraní API a rozhraní REST API pro Azure Logic Apps | Dokumentace Microsoftu
-description: Vytvoření webového rozhraní API a rozhraní REST API pro volání rozhraní API, služby nebo systémy z pracovních postupů aplikace logiky pro integrace systému
-keywords: webové rozhraní API, rozhraní REST API, pracovních postupů, integrace systému
+description: Vytvoření webového rozhraní API a rozhraní REST API pro volání rozhraní API, služby nebo systémy pro systém integrace v Azure Logic Apps
 services: logic-apps
-author: jeffhollan
-manager: jeconnoc
-editor: ''
-documentationcenter: ''
-ms.assetid: bd229179-7199-4aab-bae0-1baf072c7659
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, jehollan, LADocs
 ms.topic: article
-ms.date: 5/26/2017
-ms.author: LADocs; jehollan
-ms.openlocfilehash: 748070d43c34b501af3455d03429be1f44178b7f
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.assetid: bd229179-7199-4aab-bae0-1baf072c7659
+ms.date: 05/26/2017
+ms.openlocfilehash: a761e384a356a0cbf5531eee7340ddbbd1526909
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39172013"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122242"
 ---
-# <a name="create-custom-apis-that-you-can-call-from-logic-app-workflows"></a>Vytvoření vlastních rozhraní API, které můžete volat z pracovních postupů aplikace logiky
+# <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Vytvoření vlastních rozhraní API můžete volat z Azure Logic Apps
 
 I když Azure Logic Apps nabízí [více než 100 integrovaných konektorů](../connectors/apis-list.md) , můžete použít v pracovních postupů aplikace logiky, můžete chtít volat rozhraní API, systémy a služby, které nejsou k dispozici jako konektory. Můžete vytvořit vaše vlastní rozhraní API, které poskytují akcí a triggerů pro použití v aplikacích logiky. Tady jsou další důvody, proč můžete chtít vytvořit vlastní rozhraní API, která můžete volat z pracovních postupů aplikace logiky:
 

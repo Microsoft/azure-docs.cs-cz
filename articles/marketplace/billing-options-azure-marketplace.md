@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: d0dbf603c600639679e121723556a7f3ceb17e37
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 67806563dcd67876d4d922c7f2c76379f7ad7222
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39158977"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125509"
 ---
 # <a name="billing-options-in-the-azure-marketplace"></a>Možnosti fakturace na webu Azure Marketplace
 
@@ -70,7 +70,7 @@ Důležité výhody použití příkazů jazyka Transact možnost publikování 
 V tomto scénáři společnost Microsoft fakturuje a shromažďuje vaším jménem. Fakturace Microsoft eliminuje nutnost vytvořit vlastní zajišťování vztah se zákazníkem. Jednotná fakturace vám může ušetřit čas i prostředky. To vám také může pomoci soustředit se na úvodní prodej, ne na shromažďování faktury. 
 
 ## <a name="enterprise-agreement"></a>Smlouva Enterprise  
-Pokud jste zákazníkem Microsoft Enterprise Agreement, můžete použít vaší smlouvy Enterprise platí pro produkty společnosti Microsoft. Může se vám účtovat produkty Microsoftu, včetně pro využívání služeb Azure. Použití vaší smlouvy Enterprise platí je navržené pro organizace, které chcete licencí softwaru a cloudových služeb pro tři nebo více let. Rozprostřete platby místo provedení jednoho. Pokud zaplatíte zálohu za. Pokud použijete možnost publikování s průběžnými platbami, následuje za náklady na licencování softwaru čtvrtletní při překročení limitu fakturačního cyklu smlouvy Enterprise.  
+Pokud jste zákazníkem Microsoft Enterprise Agreement, můžete použít vaší smlouvy Enterprise platí pro produkty společnosti Microsoft. Může se vám účtovat produkty Microsoftu, včetně pro využívání služeb Azure. Použití vaší smlouvy Enterprise platí je navržené pro organizace, které chcete licencí softwaru a cloudových služeb pro tři nebo více let. Rozprostřete platby místo provedení jednoho Pokud zaplatíte zálohu za. Pokud použijete možnost publikování s průběžnými platbami, následuje za náklady na licencování softwaru čtvrtletní při překročení limitu fakturačního cyklu smlouvy Enterprise.  
 
 ### <a name="monetary-commitment"></a>Peněžní závazek
 Pokud jste zákazník se smlouvou Enterprise, může přidat Azure do vaší smlouvy. Přidat Azure do vaší smlouvy prostřednictvím počátečního peněžního závazku využívání služeb Azure. Svůj peněžní závazek se spotřebovává během roku. Váš závazek zahrnuje libovolnou kombinaci využití služeb Azure.

@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 07/26/2018
 ms.author: diberry
-ms.openlocfilehash: 93ced2d0c79d80a631ad90aa3f5d2dc9f8c79c7e
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: a266055c7685dca87d985775584a9ea7a4bda883
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390190"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128516"
 ---
 # <a name="language-understanding-faq"></a>Language Understanding – nejčastější dotazy
 
@@ -151,7 +151,7 @@ Pokud používáte protokol pro předpověď analýzy, nezachytí projevy testu 
 
 Ne. Datový model aplikace LUIS není používán LUIS k vylepšení LUIS jako platformu nebo používá společnost Microsoft žádným způsobem. Každá aplikace data jsou samostatné a vlastnictví pouze podle uživatele a spolupracovníky. 
 
-Další informace o [ochrana osobních údajů uživatelů](luis-reference-gdpr.md), [dodržování předpisů další bezpečnostní](luis-concept-security.md#security-compliance), a [úložiště dat](luis-concept-data-storage.md).
+Další informace o [ochrana osobních údajů uživatelů](luis-user-privacy.md), [dodržování předpisů další bezpečnostní](luis-concept-security.md#security-compliance), a [úložiště dat](luis-concept-data-storage.md).
 
 ## <a name="language-and-translation-support"></a>Podpora jazyka a překladu 
 

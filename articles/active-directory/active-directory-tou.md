@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.component: compliance
 ms.date: 08/22/2018
 ms.author: rolyon
-ms.openlocfilehash: 6162ee59689df12e2dace9a0419490979a13d4c5
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 69313adea1719324e2b22b45c6a45535ea65097f
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42616859"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125038"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Funkce Azure Active Directory Terms of Use
 Azure AD Terms of Use poskytuje organizacím jednoduchý způsob předkládání informací koncovým uživatelům. Toto předkládání zajistí, že se uživatelům zobrazí příslušná právní omezení pro zákonné požadavky nebo požadavky dodržování předpisů. Tento článek popisuje, jak začít s funkcí Azure AD Terms of Use.
@@ -164,7 +164,7 @@ Následující postup popisuje, jak přidat podmínky použití jazyka.
 
 1. Vyberte podmínky použití, které chcete upravit.
 
-1. V v podokně podrobností klikněte na tlačítko **jazyky** kartu.
+1. V podokně podrobností klikněte na tlačítko **jazyky** kartu.
 
     ![Přidání podmínek použití](media/active-directory-tou/languages-tou.png)
 

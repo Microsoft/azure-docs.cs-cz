@@ -1,181 +1,177 @@
 ---
-title: AS2 zpráv B2B enterprise integrace - Azure Logic Apps | Microsoft Docs
-description: Výměna AS2 zpráv B2B enterprise integraci s Azure Logic Apps
+title: Zprávy AS2 pro podnikovou integraci B2B – Azure Logic Apps | Dokumentace Microsoftu
+description: Výměna zpráv AS2 pro podnikovou integraci B2B v Azure Logic Apps sadou Enterprise Integration Pack
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: divyaswarnkar
-manager: jeconnoc
-editor: ''
-ms.assetid: c9b7e1a9-4791-474c-855f-988bd7bf4b7f
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: c9b7e1a9-4791-474c-855f-988bd7bf4b7f
 ms.date: 06/08/2017
-ms.author: LADocs; divswa
-ms.openlocfilehash: 8984b76c68ebd562ce9e5af9bded859b38d498da
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 2604cdd6bf758858328c2d30fc4cde535f0a7148
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298235"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124658"
 ---
-# <a name="exchange-as2-messages-for-enterprise-integration-with-logic-apps"></a>Výměna zpráv AS2 pro podnikové integrace s logic apps
+# <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>Výměna zpráv AS2 pro podnikovou integraci B2B v Azure Logic Apps sadou Enterprise Integration Pack
 
-Před výměnou zpráv AS2 pro Azure Logic Apps, musíte vytvořit smlouvy AS2 a uložení této smlouvy ve vašem účtu integrace. Tady jsou kroky pro vytvoření smlouvy AS2.
+Předtím, než pro Azure Logic Apps můžou vyměňovat zprávy AS2, musíte vytvořit smlouvy AS2 a uložení této smlouvy v účtu integrace. Tady jsou kroky pro vytvoření smlouvy AS2.
 
 ## <a name="before-you-start"></a>Než začnete
 
 Tady je položky, které budete potřebovat:
 
-* [Integrace účet](../logic-apps/logic-apps-enterprise-integration-accounts.md) který již má definovaný a přidružené k předplatnému Azure
-* Alespoň dva [partnery](logic-apps-enterprise-integration-partners.md) které již jsou definované ve vašem účtu integrace a nakonfigurované kvalifikátor AS2 pod **obchodní identit**
+* [Účtu pro integraci](../logic-apps/logic-apps-enterprise-integration-accounts.md) , který již má definovaný a spojené s předplatným Azure
+* Alespoň dva [partneři](logic-apps-enterprise-integration-partners.md) , které jsou již definovány v účtu integrace a nakonfigurovanou kvalifikátor AS2 v rámci **obchodní identity**
 
 > [!NOTE]
 > Když vytvoříte smlouvu, obsah v souboru smlouvy musí odpovídat typ smlouvy.    
 
-Po jste [vytvoření účtu integrace](../logic-apps/logic-apps-enterprise-integration-accounts.md) a [přidat partnery](logic-apps-enterprise-integration-partners.md), AS2 smlouvu můžete vytvořit pomocí následujících kroků.
+Poté co [vytvořit integrační účet](../logic-apps/logic-apps-enterprise-integration-accounts.md) a [přidání partnerů](logic-apps-enterprise-integration-partners.md), smlouvy AS2 můžete vytvořit pomocí následujících kroků.
 
 ## <a name="create-an-as2-agreement"></a>Vytvoření smlouvy AS2
 
 1.  Přihlaste se na web [Azure Portal](http://portal.azure.com "Azure Portal").  
 
-2. V hlavní nabídce Azure, vyberte **všechny služby**. Do vyhledávacího pole zadejte "integraci" a potom vyberte **účty pro integraci**.
+2. V hlavní nabídce Azure zvolte **všechny služby**. Do vyhledávacího pole zadejte "integrace" a pak vyberte **účty pro integraci**.
 
-   ![Najít váš účet integrace](./media/logic-apps-enterprise-integration-as2/overview-1.png)
+   ![Vyhledejte svůj účet integrace](./media/logic-apps-enterprise-integration-as2/overview-1.png)
 
    > [!TIP]
-   > Pokud nevidíte **všechny služby**, možná budete muset nejdřív rozbalte nabídku. V horní nabídce sbalené, vyberte **zobrazit text popisky**.
+   > Pokud nevidíte **všechny služby**, možná budete muset nejprve rozbalte nabídku. V horní nabídce sbalený vyberte **zobrazit textové popisky**.
 
-3. V části **účty pro integraci**, vyberte účet integrace, kde chcete vytvořit smlouvu.
+3. V části **účty pro integraci**, vyberte účet integrace, ve kterém chcete vytvořit smlouvu.
 
-   ![Vyberte účet, integrace místo pro vytvoření této smlouvy](./media/logic-apps-enterprise-integration-overview/overview-3.png)
+   ![Vyberte místo pro vytvoření smlouvu účtu integrace](./media/logic-apps-enterprise-integration-overview/overview-3.png)
 
-4. Vyberte **smlouvy** dlaždici. Pokud nemáte dlaždici smlouvy, přidejte nejprve dlaždici.
+4. Zvolte **smlouvy** dlaždici. Pokud nemáte k dispozici dlaždici smlouvy, přidejte nejprve na dlaždici.
 
-    ![Vyberte že dlaždici "Smlouvy"](./media/logic-apps-enterprise-integration-as2/agreement-1.png)
+    ![Zvolte dlaždici "smlouvy o"](./media/logic-apps-enterprise-integration-as2/agreement-1.png)
 
 5. V části **smlouvy**, zvolte **přidat**.
 
     ![Zvolte "Přidat"](./media/logic-apps-enterprise-integration-as2/agreement-2.png)
 
-6. V části **přidat**, zadejte **název** pro vaše smlouvy. Pro **typ smlouvy**, vyberte **AS2**. Vyberte **hostitele partnera**, **identitu hostitele**, **hosta partnera**, a **hosta Identity** pro vaše smlouvy.
+6. V části **přidat**, zadejte **název** pro vaši smlouvu. Pro **typ smlouvy**vyberte **AS2**. Vyberte **partner s identitou hostitele**, **identita hostitele**, **partner s identitou hosta**, a **identita hosta** pro vaši smlouvu.
 
     ![Zadejte podrobnosti o smlouvě](./media/logic-apps-enterprise-integration-as2/agreement-3.png)  
 
     | Vlastnost | Popis |
     | --- | --- |
     | Název |Název smlouvy |
-    | Typ smlouvy | Musí být AS2 |
-    | Partner s identitou hostitele |Smlouvu musí hostitelské i hostované partnera. Partner hostitele představuje organizace, která nakonfiguruje smlouvu. |
+    | Typ smlouvy | By měl být AS2 |
+    | Partner s identitou hostitele |Smlouvu musí hostitelské i hostující partnera. Partner hostitele představuje organizace, který konfiguruje smlouvy. |
     | Identita hostitele |Identifikátor pro hostitele partnera |
-    | Partner s identitou hosta |Smlouvu musí hostitelské i hostované partnera. Partner hosta představuje organizace, která je spolupráci s partnery hostitele. |
-    | Identita hosta |Identifikátor pro partnera hosta |
+    | Partner s identitou hosta |Smlouvu musí hostitelské i hostující partnera. Partner s identitou hosta představuje organizace, která je podnikající s partnerem hostitele. |
+    | Identita hosta |Identifikátor partner s identitou hosta |
     | Nastavení příjmu |Tyto vlastnosti se vztahují na všechny zprávy přijaté službou smlouvu. |
-    | Nastavení odesílání |Tyto vlastnosti se vztahují na všechny zprávy odeslané smlouvu. |
+    | Nastavení odesílání |Tyto vlastnosti se vztahují na všechny zprávy odeslané dohodou. |
 
 ## <a name="configure-how-your-agreement-handles-received-messages"></a>Nakonfigurujte, jak vaše smlouvy popisovače přijatých zpráv
 
 Teď, když jste nastavili vlastnosti smlouvy, můžete nakonfigurovat, jak tato smlouva identifikuje a zpracovává příchozí zprávy přijaté od svého partnera prostřednictvím této smlouvy.
 
-1.  V části **přidat**, vyberte **přijímat nastavení**.
-Konfigurujte tyto vlastnosti závislosti na vaší smlouvě se partnera, výměny zpráv s vámi. Popisy vlastností najdete v tabulce v této části.
+1.  V části **přidat**vyberte **přijímat nastavení**.
+Konfigurovat tyto vlastnosti závislosti na vaší smlouvě s partnerem, který vyměňuje zprávy s vámi. Popisy vlastností najdete v tabulce v této části.
 
     ![Konfigurace "Obdrží nastavení"](./media/logic-apps-enterprise-integration-as2/agreement-4.png)
 
-2. Volitelně můžete přepsat vlastnosti příchozí zprávy výběrem **přepsat vlastnosti zprávy**.
+2. Volitelně můžete přepsat vlastnosti příchozí zprávy tak, že vyberete **přepsat vlastnosti zprávy**.
 
-3. Pokud chcete vyžadovat všechny příchozí zprávy podepsat, vyberte **zpráva by měla být podepsána**. Z **certifikát** vyberte existující [hosta partnera veřejný certifikát](../logic-apps/logic-apps-enterprise-integration-certificates.md) pro ověření podpisu zprávy. Nebo vytvořte certifikát, pokud nemáte.
+3. Chcete-li vyžadovat všechny příchozí zprávy podepsané, vyberte **zprávu je nutné podepsat**. Z **certifikát** seznamu, vyberte existující [veřejný certifikát partnera hosta](../logic-apps/logic-apps-enterprise-integration-certificates.md) pro ověření podpisu na zprávy. Nebo vytvořte certifikát, pokud ho nemáte.
 
-4.  Pokud chcete vyžadovat šifrování všechny příchozí zprávy, vyberte **zpráva by měla šifrovat**. Z **certifikát** vyberte existující [privátní certifikát hostitele partnera](../logic-apps/logic-apps-enterprise-integration-certificates.md) pro dešifrování příchozí zprávy. Nebo vytvořte certifikát, pokud nemáte.
+4.  Chcete-li vyžadovat všechny příchozí zprávy šifrování, vyberte **zprávu je nutné zašifrovat**. Z **certifikát** seznamu, vyberte existující [privátní certifikát hostitele partnera](../logic-apps/logic-apps-enterprise-integration-certificates.md) pro dešifrování příchozí zprávy. Nebo vytvořte certifikát, pokud ho nemáte.
 
-5. Chcete-li vyžadovat zpráv, které mají komprimovat, vyberte **zpráva by měla být komprimované**.
+5. Požadovat zprávy, aby se komprimoval, vyberte **zprávu je nutné zkomprimovat**.
 
-6. Odeslat oznámení dispozice synchronní zprávy (MDN) pro přijatých zpráv, vyberte **odeslat MDN**.
+6. Chcete-li odeslat oznámení dispozice synchronní zprávy (MDN) pro přijaté zprávy, vyberte **odesílat zprávy MDN**.
 
-7. Chcete-li odeslat podepsaný MDNs přijaté zprávy, vyberte **odeslat podepsaný MDN**.
+7. Chcete-li odeslat podepsaný něho pro přijaté zprávy, vyberte **odeslat podepsanou zprávu MDN**.
 
-8. Chcete-li odeslat asynchronní MDNs přijaté zprávy, vyberte **odesílat asynchronní MDN**.
+8. Pokud chcete odesílat asynchronní něho pro přijaté zprávy, vyberte **odesílat asynchronní zprávy MDN**.
 
-9. Jakmile jste hotovi, přesvědčte se, uložte nastavení tak, že zvolíte **OK**.
+9. Až budete hotovi, ujistěte se, že uložte nastavení výběrem **OK**.
 
-Nyní je připraven pro zpracování příchozích zpráv, které v souladu s vámi vybrané nastavení vaše smlouvy.
+Smlouvy o je nyní připravena ke zpracování příchozích zpráv, které v souladu s vámi vybrané nastavení.
 
 | Vlastnost | Popis |
 | --- | --- |
-| Přepsat vlastnosti zprávy |Označuje, že je možné přepsat vlastnosti v přijatých zpráv. |
-| Zprávu je nutné podepsat. |Vyžaduje zpráv, které mají být digitálně podepsané. Nakonfigurujte hosta partnera veřejný certifikát pro ověření podpisu.  |
-| Zprávu je nutné zašifrovat. |Vyžaduje šifrování zprávy. Bez šifrované zprávy budou odmítnuty. Nakonfigurujte privátní certifikát hostitele partnera pro dešifrování zprávy.  |
-| Zprávu je nutné zkomprimovat. |Vyžaduje zpráv, které mají být komprimovány. Non komprimovanou zprávy budou odmítnuty. |
+| Přepsat vlastnosti zprávy |Označuje, že se dá přepsat vlastnosti v přijaté zprávy. |
+| Zprávu je nutné podepsat. |Vyžaduje zprávy digitálně podepsané. Nakonfigurujte partnerské hosta veřejný certifikát pro ověření podpisu.  |
+| Zprávu je nutné zašifrovat. |Vyžaduje šifrování zpráv. Zprávy šifrované bez odmítají. Nakonfigurujte privátní certifikát hostitele partnera pro dešifrování zprávy.  |
+| Zprávu je nutné zkomprimovat. |Vyžaduje zprávy, aby se komprimoval. Bez komprimované zprávy jsou odmítnuta. |
 | Text zprávy MDN |Výchozí zprávu dispozice oznámení (MDN) k odeslání do odesílatele zprávy. |
-| Odeslat zprávu MDN |Vyžaduje MDNs k odeslání. |
-| Odeslat podepsanou zprávu MDN |Vyžaduje MDNs k podepsání. |
-| Algoritmus MIC |Vyberte algoritmus použitý k podepisování zpráv. |
-| Odeslat asynchronní zprávu MDN | Vyžaduje asynchronně odesílání zpráv. |
-| zprostředkovatele identity | Zadejte adresu URL, kam má posílat MDNs. |
+| Odeslat zprávu MDN |Vyžaduje něho k odeslání. |
+| Odeslat podepsanou zprávu MDN |Vyžaduje něho podepsat. |
+| Algoritmus MIC |Vyberte algoritmus použitý k podepsání zprávy. |
+| Odeslat asynchronní zprávu MDN | Vyžaduje zpráv k odeslání asynchronně. |
+| zprostředkovatele identity | Zadejte adresu URL, kam má odesílat něho. |
 
-## <a name="configure-how-your-agreement-sends-messages"></a>Nakonfigurujte, jak vaše smlouvy odešle zprávy
+## <a name="configure-how-your-agreement-sends-messages"></a>Nakonfigurujte, jak vaši smlouvu odesílá zprávy
 
-Můžete nakonfigurovat, jak tato smlouva identifikuje a zpracovává odchozích zpráv, které jste odeslali partnerům prostřednictvím této smlouvy.
+Můžete nakonfigurovat, jak tato smlouva identifikuje a zpracovává odchozí zprávy, které jste odeslali partnerům prostřednictvím této smlouvy.
 
-1.  V části **přidat**, vyberte **odeslat nastavení**.
-Konfigurujte tyto vlastnosti závislosti na vaší smlouvě se partnera, výměny zpráv s vámi. Popisy vlastností najdete v tabulce v této části.
+1.  V části **přidat**vyberte **odeslat nastavení**.
+Konfigurovat tyto vlastnosti závislosti na vaší smlouvě s partnerem, který vyměňuje zprávy s vámi. Popisy vlastností najdete v tabulce v této části.
 
-    ![Nastavit vlastnosti "Odeslat nastavení"](./media/logic-apps-enterprise-integration-as2/agreement-51.png)
+    ![Nastavte "Odeslat" nastavení](./media/logic-apps-enterprise-integration-as2/agreement-51.png)
 
-2. Chcete-li odeslat podepsaný zprávy do svého partnera, vyberte **povolit podepisování zpráv**. K podepisování zpráv, v **povinná kontrola úrovně Důvěryhodnosti algoritmus** seznamu, vyberte *privátní certifikát hostitele partnera povinná kontrola úrovně Důvěryhodnosti algoritmus*. A v **certifikát** vyberte existující [privátní certifikát hostitele partnera](../logic-apps/logic-apps-enterprise-integration-certificates.md).
+2. Chcete-li odeslat podepsané zprávy svého partnera, vyberte **povolit podepisování zpráv**. Pro podepisování zpráv, v **algoritmus MIC** seznamu, vyberte *privátní certifikát hostitele partnera algoritmus MIC*. A **certifikát** seznamu, vyberte existující [privátní certifikát hostitele partnera](../logic-apps/logic-apps-enterprise-integration-certificates.md).
 
-3. K odesílání šifrovaných zpráv do partnera, vyberte **povolit šifrování zpráv**. Pro šifrování zprávy, v **šifrovací algoritmus** seznamu, vyberte *hosta partnera veřejný certifikát algoritmus*.
-A v **certifikát** vyberte existující [hosta partnera veřejný certifikát](../logic-apps/logic-apps-enterprise-integration-certificates.md).
+3. K odesílání šifrovaných zpráv partnerovi, vyberte **povolit šifrování zpráv**. Pro šifrování zpráv, v **šifrovací algoritmus** seznamu, vyberte *algoritmus veřejný certifikát partnera hosta*.
+A **certifikát** seznamu, vyberte existující [veřejný certifikát partnera hosta](../logic-apps/logic-apps-enterprise-integration-certificates.md).
 
-4. Chcete-li komprimovat zprávy, vyberte **povolit kompresi zpráva**.
+4. Komprimují se zpráva, vyberte **povolit kompresi zpráv**.
 
-5. Chcete-li unfold hlavičku HTTP content-type na jeden řádek, vyberte **hlavičky Unfold HTTP**.
+5. Chcete-li rozbalit hlavičku HTTP content-type na jeden řádek, vyberte **hlavičky protokolu HTTP při rozvinutí**.
 
-6. Pokud chcete získat synchronní MDNs pro odeslané zprávy, vyberte **požadavku MDN**.
+6. Chcete-li přijímat synchronní něho pro odeslané zprávy, vyberte **požadovat zprávy MDN**.
 
-7. Pokud chcete získat podepsaný MDNs pro odeslané zprávy, vyberte **požadavek podepsané MDN**.
+7. Pro příjem podepsaný něho pro odeslané zprávy, vyberte **požadovat podepsané zprávy MDN**.
 
-8. Pokud chcete získat asynchronní MDNs pro odeslané zprávy, vyberte **žádosti o asynchronní MDN**. Pokud vyberete tuto možnost, zadejte adresu URL, kam můžete odesílat MDNs.
+8. Pokud chcete přijímat asynchronní něho pro odeslané zprávy, vyberte **požadovat asynchronní zprávy MDN**. Pokud vyberete tuto možnost, zadejte adresu URL, kam můžete odeslat něho.
 
-9. Pokud chcete vyžadovat neodvolatelnost příjmu, vyberte **povolit NRR**.  
+9. Chcete-li vyžadovat neodvolatelnost příjmu, vyberte **povolit NRR**.  
 
-10. Můžete nastavit, formát algoritmus, který se použije v povinná kontrola úrovně Důvěryhodnosti nebo podepisování v hlavičkách odchozí zprávy AS2 nebo MDN **algoritmus SHA2 formátu**.  
+10. Chcete-li určit formát algoritmus MIC nebo podepisování v odchozích hlavičkách MDN nebo zprávy AS2, vyberte **formát algoritmu SHA2**.  
 
-11. Jakmile jste hotovi, přesvědčte se, uložte nastavení tak, že zvolíte **OK**.
+11. Až budete hotovi, ujistěte se, že uložte nastavení výběrem **OK**.
 
-Nyní je připraven pro zpracování odchozích zpráv, které v souladu s vámi vybrané nastavení vaše smlouvy.
+Nyní je připravená pro zpracování odchozích zpráv, které v souladu s vámi vybrané nastavení smlouvy.
 
 | Vlastnost | Popis |
 | --- | --- |
-| Povolit podepisování zpráv |Vyžaduje všechny zprávy odeslané z smlouvy k podepsání. |
-| Algoritmus MIC |Algoritmus použitý k podepisování zpráv. Nakonfiguruje privátní certifikát hostitele partnera algoritmus povinná kontrola úrovně Důvěryhodnosti pro podepisování zpráv. |
-| Certifikát |Vyberte certifikát, který chcete použít k podepisování zpráv. Nakonfiguruje privátní certifikát hostitele partnera k podepisování zpráv. |
+| Povolit podepisování zpráv |Vyžaduje všechny zprávy odeslané z dohody podepsat. |
+| Algoritmus MIC |Algoritmus použitý k podepsání zprávy. Nakonfiguruje privátní certifikát hostitele partnera algoritmus MIC k podepsání zprávy. |
+| Certifikát |Vyberte certifikát, který chcete použít pro podepisování zpráv. Nakonfiguruje hostitele partnera privátní certifikát pro podpis zprávy. |
 | Povolit šifrování zpráv |Vyžaduje šifrování všechny zprávy odeslané z této smlouvy. Nakonfiguruje algoritmus hosta partnera veřejný certifikát pro šifrování zprávy. |
-| Šifrovací algoritmus |Šifrovací algoritmus, který chcete použít pro šifrování zpráv. Nakonfiguruje hosta partnera veřejný certifikát pro šifrování zprávy. |
-| Certifikát |Certifikát, který se má použít k šifrování zpráv. Nakonfiguruje hosta partnera privátní certifikát pro šifrování zprávy. |
+| Šifrovací algoritmus |Šifrovací algoritmus pro šifrování zpráv. Nakonfiguruje hosta partnera veřejný certifikát pro šifrování zprávy. |
+| Certifikát |Certifikát, který se má použít k šifrování zpráv. Konfiguruje partnerské hostovaného privátního certifikátu pro šifrování zprávy. |
 | Povolit kompresi zpráv |Vyžaduje komprese všechny zprávy odeslané z této smlouvy. |
-| Rozbalit hlavičky HTTP |Umístí hlavičku HTTP content-type na jeden řádek. |
-| Požadovat zprávy MDN |Vyžaduje MDN pro všechny zprávy odeslané z této smlouvy. |
-| Požadovat podepsané zprávy MDN |Vyžaduje všechny MDNs, které se odesílají do této smlouvy k podepsání. |
-| Požadovat asynchronní zprávy MDN |Vyžaduje asynchronní MDNs k odeslání do této smlouvy. |
-| zprostředkovatele identity |Zadejte adresu URL, kam má posílat MDNs. |
-| Povolit NRR |Vyžaduje neodvolatelnost příjmu (NRR), komunikace atribut, který poskytuje důkaz, tato data byla přijata, jak je řešit. |
-| Formát algoritmu SHA2 |Vyberte formát algoritmus pro použití v povinná kontrola úrovně Důvěryhodnosti nebo podepisování v hlavičkách odchozí MDN nebo AS2 zpráv |
+| Rozbalit hlavičky HTTP |Umístí hlavičku HTTP content-type na jednom řádku. |
+| Požadovat zprávy MDN |Vyžaduje zprávy MDN. pro všechny zprávy odeslané z této smlouvy. |
+| Požadovat podepsané zprávy MDN |Vyžaduje všechny něho, které se odesílají na tuto smlouvu podepsat. |
+| Požadovat asynchronní zprávy MDN |Vyžaduje asynchronní něho k odeslání do této smlouvy. |
+| zprostředkovatele identity |Zadejte adresu URL, kam má odesílat něho. |
+| Povolit NRR |Vyžaduje neodvolatelnost příjmu (NRR) komunikaci atribut, který poskytuje důkazy, který uživateli přišel data, jak je řešit. |
+| Formát algoritmu SHA2 |Vyberte formát algoritmus MIC nebo podepisování v odchozích hlavičkách MDN nebo zprávy AS2 |
 
-## <a name="find-your-created-agreement"></a>Najít vaší vytvořené smlouvy
+## <a name="find-your-created-agreement"></a>Najít vytvořený smlouvy
 
-1. Po dokončení nastavení na všechny vlastnosti vaše smlouvy **přidat** vyberte **OK** dokončit vytváření vaší smlouvy a vrátíte se k účtu integrace.
+1. Po dokončení nastavení na všechny vlastnosti vaší smlouvy **přidat** zvolte **OK** dokončit vytváření vaší smlouvě a vrátit ke svému účtu integrace.
 
-    Nově přidané smlouvy nyní se zobrazí v vaše **smlouvy** seznamu.
+    Smlouvy nově přidané se zobrazí ve vašich **smlouvy** seznamu.
 
-2. Můžete také zobrazit vaše smlouvy v váš účet Přehled integrace. V nabídce váš účet integrace zvolte **přehled**, vyberte **smlouvy** dlaždici. 
+2. Můžete také zobrazit vaše smlouvy v přehled vašeho účtu integrace. V nabídce účtu integrace, zvolte **přehled**a pak **smlouvy** dlaždici. 
 
-   ![Vyberte že dlaždici "Smlouvy" Chcete-li zobrazit všechny smlouvy](./media/logic-apps-enterprise-integration-as2/agreement-6.png)
+   ![Zvolte dlaždici "smlouvy o" Chcete-li zobrazit všechny smlouvy](./media/logic-apps-enterprise-integration-as2/agreement-6.png)
 
-## <a name="view-the-swagger"></a>Zobrazení swagger
-Najdete v článku [swagger podrobnosti](/connectors/as2/). 
+## <a name="view-the-swagger"></a>Zobrazení swaggeru
+Zobrazit [swagger podrobnosti](/connectors/as2/). 
 
 ## <a name="next-steps"></a>Další postup
-* [Další informace o integračního balíčku Enterprise](logic-apps-enterprise-integration-overview.md "Další informace o Enterprise integračního balíčku")  
+* [Další informace o Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "přečtěte si víc o Enterprise Integration Pack")  

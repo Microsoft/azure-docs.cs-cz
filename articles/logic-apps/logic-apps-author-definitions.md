@@ -1,77 +1,73 @@
 ---
-title: Vytvořit, upravit nebo rozšířit JSON pro logiku aplikace definice - Azure Logic Apps | Microsoft Docs
-description: Vytváření a přizpůsobení definice aplikace logiky ve formátu JSON
-author: ecfan
-manager: jeconnoc
-editor: ''
+title: Vytvořit, upravit nebo rozšířit JSON pro logiku definic aplikací – Azure Logic Apps | Dokumentace Microsoftu
+description: Vytvářet a rozšiřovat JSON pro logiku definic aplikací v Azure Logic Apps
 services: logic-apps
-documentationcenter: ''
-ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, jehollan, LADocs
+ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.topic: article
 ms.date: 01/01/2018
-ms.author: estfan; LADocs
-ms.openlocfilehash: 9793fdf2bd351bd1f15bcb88ffd25d6b19485303
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 1f2e136810194ad044255f9d129b5c03549221b9
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35297848"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128656"
 ---
-# <a name="create-edit-or-customize-json-for-logic-app-definitions"></a>Vytvořit, upravit nebo přizpůsobit JSON definice aplikace logiky
+# <a name="create-edit-or-extend-json-for-logic-app-definitions-in-azure-logic-apps"></a>Vytvořit, upravit nebo rozšířit JSON pro logiku definic aplikací v Azure Logic Apps
 
-Při vytváření podnikové řešení integrace s automatizované pracovní postupy v [Azure Logic Apps](../logic-apps/logic-apps-overview.md), základní definice aplikace logiky použít jednoduchý a deklarativní JSON JavaScript Object Notation () spolu s [ Pracovní postup definice jazyka splní schématu](../logic-apps/logic-apps-workflow-definition-language.md) pro jejich popis a ověření. Tyto formáty usnadňují logiku aplikace definice ke čtení a pochopit, aniž by věděly mnohem o kódu. Pokud chcete automatizovat vytváření a nasazování aplikací logiky, můžete zahrnout definice logiku aplikace jako [prostředky Azure](../azure-resource-manager/resource-group-overview.md) uvnitř [šablon Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md#template-deployment). Vytvořit, spravovat a nasazovat aplikace logiky, pak můžete použít [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.logicapp), [rozhraní příkazového řádku Azure](../azure-resource-manager/resource-group-template-deploy-cli.md), nebo [rozhraní API REST Azure Logic Apps](https://docs.microsoft.com/rest/api/logic/).
+Při vytváření podnikových řešení pro integraci s automatizované pracovní postupy v [Azure Logic Apps](../logic-apps/logic-apps-overview.md), základní definic aplikací logiky použít jednoduchý a deklarativní notace JSON (JavaScript Object) spolu s [ Schéma definici jazyka (splní) pracovního postupu](../logic-apps/logic-apps-workflow-definition-language.md) jejich popis a ověřování. Tyto formáty snadněji logiky definic aplikací ke čtení a pochopení bez znalosti většinu kódu. Pokud chcete automatizovat vytváření a nasazování aplikací logic apps, můžete zahrnout definic aplikací logiky jako [prostředky Azure](../azure-resource-manager/resource-group-overview.md) uvnitř [šablon Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md#template-deployment). Chcete-li vytvořit, spravovat a nasazovat aplikace logiky pak můžete použít [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.logicapp), [rozhraní příkazového řádku Azure](../azure-resource-manager/resource-group-template-deploy-cli.md), nebo [REST API služby Azure Logic Apps](https://docs.microsoft.com/rest/api/logic/).
 
-Pro práci s definice aplikace logiky ve formátu JSON, otevřete editor zobrazení kódu při práci na portálu Azure nebo v sadě Visual Studio, nebo zkopírujte do libovolného editoru, který chcete definici. Pokud jste nové aplikace logiky, přečtěte si [postup vytvoření první aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Pro práci s definic aplikací logiky ve formátu JSON, otevřete editor zobrazení kódu při práci na webu Azure Portal nebo v sadě Visual Studio nebo zkopírování definice do libovolného editoru, který chcete. Pokud se službou logic Apps teprve začínáte, přečtěte si [vytvoření vaší první aplikací logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 > [!NOTE]
-> Některé funkce Azure Logic Apps, například definování parametry a více aktivačních událostí v definicích aplikace logiky, jsou k dispozici pouze ve formátu JSON, návrháře typu aplikace logiky. Takže k těmto úlohám je možné v zobrazení kódu nebo jiný editor.
+> Některé funkce Azure Logic Apps, jako je například definovat parametry a více aktivačních událostí v definic aplikací logiky, jsou k dispozici pouze ve formátu JSON, není návrháři pro Logic Apps. Abyste pro tyto úlohy, musí pracovat v zobrazení kódu nebo jiného editoru.
 
-## <a name="edit-json---azure-portal"></a>Upravit JSON - portálu Azure
+## <a name="edit-json---azure-portal"></a>Upravit JSON - webu Azure portal
 
 1. Přihlaste se k <a href="https://portal.azure.com" target="_blank">portálu Azure</a>.
 
-2. V levé nabídce zvolte **všechny služby**. Do vyhledávacího pole Najít "aplikace logiky" a potom ve výsledcích vyberte svou aplikaci logiky.
+2. V levé nabídce zvolte **všechny služby**. Do vyhledávacího pole vyhledejte "aplikace logiky" a potom ve výsledcích vyberte svou aplikaci logiky.
 
-3. V nabídce aplikace logiky v části **nástroje pro vývoj**, vyberte **zobrazení kódu aplikace logiky**.
+3. V nabídce aplikace logiky podle **nástroje pro vývoj**vyberte **zobrazení kódu aplikace logiky**.
 
-   Editor kódu zobrazení otevře a zobrazuje svou definici. aplikaci logiky ve formátu JSON.
+   Editor zobrazení kódu se otevře a zobrazí definici aplikace logiky ve formátu JSON.
 
-## <a name="edit-json---visual-studio"></a>Upravit JSON - sady Visual Studio
+## <a name="edit-json---visual-studio"></a>Upravit JSON – Visual Studio
 
-Než začnete pracovat na svou definici. aplikaci logiky v sadě Visual Studio, ujistěte se, že jste [nainstalovány nástroje pro požadované](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#prerequisites). K vytvoření aplikace logiky pomocí sady Visual Studio, zkontrolujte [rychlý start: automatizaci úloh a procesů službou Azure Logic Apps – Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md).
+Než můžete pracovat na definici aplikace logiky v sadě Visual Studio, ujistěte se, že jste [nainstalovány nástroje požadované](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#prerequisites). Vytvoření aplikace logiky pomocí sady Visual Studio, najdete v tématu [rychlý start: automatizace úloh a procesů pomocí Azure Logic Apps – Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md).
 
-V sadě Visual Studio můžete otevřít logiku aplikace, které byly vytvořeny a nasadit buď přímo z portálu Azure, nebo jako projekty Azure Resource Manageru ze sady Visual Studio.
+V sadě Visual Studio můžete otevřít aplikace logiky, které byly vytvořeny a nasazeny buď přímo z portálu Azure portal, nebo jako projekty Azure Resource Manageru ze sady Visual Studio.
 
-1. Otevřete řešení sady Visual Studio nebo [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) projektu, který obsahuje aplikace logiky.
+1. Otevřít řešení sady Visual Studio nebo [skupiny prostředků Azure](../azure-resource-manager/resource-group-overview.md) projektu, který obsahuje vaši aplikaci logiky.
 
-2. Vyberte a otevřete definici aplikace logiky, která ve výchozím nastavení, zobrazí se v [šablony Resource Manageru](../azure-resource-manager/resource-group-overview.md#template-deployment)s názvem **LogicApp.json**. Můžete používat a přizpůsobit této šablony pro nasazení do různých prostředích.
+2. Vyhledání a otevření definice aplikace logiky, která ve výchozím nastavení, zobrazí se v [šablony Resource Manageru](../azure-resource-manager/resource-group-overview.md#template-deployment)s názvem **LogicApp.json**. Můžete použít a přizpůsobit této šablony pro nasazení do různých prostředí.
 
-3. Otevřete místní nabídku pro definici aplikace logiky a šablonu. Vyberte **Otevřít pomocí Návrháře aplikace logiky**.
+3. Otevřete místní nabídku pro definici aplikace logiky a šablony. Vyberte **Otevřít pomocí Návrháře aplikace logiky**.
 
-   ![Otevřete logiku aplikace v řešení sady Visual Studio](./media/logic-apps-author-definitions/open-logic-app-designer.png)
+   ![Aplikace logiky otevřít v řešení sady Visual Studio](./media/logic-apps-author-definitions/open-logic-app-designer.png)
 
-4. V dolní části návrháře, zvolte **zobrazení kódu**. 
+4. V dolní části návrháře zvolte **zobrazení kódu**. 
 
-   Editor kódu zobrazení otevře a zobrazuje svou definici. aplikaci logiky ve formátu JSON.
+   Editor zobrazení kódu se otevře a zobrazí definici aplikace logiky ve formátu JSON.
 
-5. Se vrátíte do návrháře zobrazení, v dolní části editoru kódu zobrazení, zvolte **návrhu**.
+5. Se vraťte do návrháře zobrazení, v dolní části editoru zobrazení kódu zvolte **návrhu**.
 
 ## <a name="parameters"></a>Parametry
 
-Parametry umožňují znovu použít hodnoty v celé aplikaci logiky a jsou vhodné pro nahrazení hodnot, které mohou změnit často. Například pokud máte e-mailovou adresu, kterou chcete použít na více místech, měli byste tuto e-mailovou adresu jako parametr. 
+Parametry umožňují opakované použití hodnot v rámci vaší aplikace logiky a jsou vhodné pro nahrazení hodnoty, které může často měnit. Například pokud máte e-mailovou adresu, kterou chcete použít na více místech, byste měli definovat tuto e-mailovou adresu jako parametr. 
 
-Parametry jsou užitečné, i když je nutné přepsat parametry v různých prostředích, další informace o [parametry pro nasazení](#deployment-parameters) a [REST API pro Azure Logic Apps dokumentaci](https://docs.microsoft.com/rest/api/logic).
+Parametry jsou užitečné také, pokud je nutné přepsat parametry v různých prostředích, další informace o [parametry pro nasazení](#deployment-parameters) a [rozhraní REST API pro Azure Logic Apps dokumentaci](https://docs.microsoft.com/rest/api/logic).
 
 > [!NOTE]
 > Parametry jsou dostupné jenom v zobrazení kódu.
 
-V [první aplikaci logiky příklad](../logic-apps/quickstart-create-first-logic-app-workflow.md), jste vytvořili pracovní postup, který odešle e-mailů, jakmile se zobrazí nové příspěvky v informačního kanálu RSS na web. Adresa URL informačního kanálu je pevně zakódované, takže tento příklad ukazuje, jak nahradit hodnotu dotazu s parametrem, abyste snadněji změnit adresu URL informačního kanálu.
+V [první příklad aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md), jste vytvořili pracovní postup, který se odešle e-mailů, když se zobrazí nové příspěvky v informačním kanálu RSS webu. Adresa URL informačního kanálu je pevně zakódované, takže tento příklad ukazuje, jak nahradit hodnotu dotazu s parametrem tak, aby adresa URL informačního kanálu můžete změnit snadněji.
 
-1. V zobrazení kódu najdete `parameters : {}` objektu a přidejte `currentFeedUrl` objektu:
+1. V zobrazení kódu vyhledejte `parameters : {}` objektu a přidejte `currentFeedUrl` objektu:
 
    ``` json
      "currentFeedUrl" : {
@@ -100,21 +96,21 @@ V [první aplikaci logiky příklad](../logic-apps/quickstart-create-first-logic
    },   
    ```
 
-   Pro připojení dvě nebo více řetězce, můžete také použít `concat` funkce. 
+   Pro připojení dvou nebo více řetězců, můžete použít také `concat` funkce. 
    Například `"@concat('#',parameters('currentFeedUrl'))"` funguje stejně jako v předchozím příkladu.
 
 3.  Jakmile budete hotoví, vyberte **Uložit**. 
 
-Teď můžete změnit předáním jinou adresu URL prostřednictvím informačního kanálu RSS webu `currentFeedURL` objektu.
+Teď můžete změnit na webu kanálu RSS předáním jinou adresu URL prostřednictvím `currentFeedURL` objektu.
 
 <a name="deployment-parameters"></a>
 
 ## <a name="deployment-parameters-for-different-environments"></a>Parametry nasazení pro různá prostředí
 
-Nasazení životních mají obvykle, prostředí pro vývoj, pracovní a provozní. Například můžete použít stejné definici aplikace logiky v těchto prostředích ale použití různých databází. Podobně můžete chtít použít stejné definice v různých oblastech pro vysokou dostupnost, ale má každá instance aplikace logiky k použití databáze této oblasti. 
+Životní cyklus nasazení mají obvykle, prostředí pro vývoj, přípravném nebo produkčním prostředí. Může například používat stejnou definici aplikace logiky v těchto prostředích ale použití různých databází. Podobně můžete chtít použít stejnou definici pojmů v různých oblastech pro zajištění vysoké dostupnosti, ale má každé instanci aplikace logiky k použití databáze tuto oblast. 
 
 > [!NOTE] 
-> Tento scénář se liší od trvá parametry v *runtime* kde byste měli používat `trigger()` funkce místo.
+> Tento scénář se liší od pořízení parametry na *runtime* kam byste měli použít `trigger()` namísto toho funkci.
 
 Zde je základní definice:
 
@@ -145,7 +141,7 @@ Zde je základní definice:
     "outputs": {}
 }
 ```
-V skutečnou `PUT` požadavku pro logic apps, můžete zadat parametr `uri`. V každém prostředí, můžete zadat jinou hodnotu pro `connection` parametr. Protože výchozí hodnota už existuje, datové části aplikace logiky vyžaduje tento parametr:
+Ve skutečných `PUT` žádosti pro logic apps, můžete zadat parametr `uri`. V každé prostředí, můžete zadat jinou hodnotu pro `connection` parametru. Protože výchozí hodnota již existuje, tento parametr vyžaduje datové části aplikace logiky:
 
 ``` json
 {
@@ -163,11 +159,11 @@ V skutečnou `PUT` požadavku pro logic apps, můžete zadat parametr `uri`. V k
 }
 ``` 
 
-Další informace najdete v tématu [REST API pro Azure Logic Apps dokumentaci](https://docs.microsoft.com/rest/api/logic/).
+Další informace najdete v tématu [rozhraní REST API pro Azure Logic Apps dokumentaci](https://docs.microsoft.com/rest/api/logic/).
 
-## <a name="process-strings-with-functions"></a>Proces řetězce s funkcí
+## <a name="process-strings-with-functions"></a>Proces řetězce s využitím functions
 
-Služba Logic Apps obsahuje různé funkce pro práci s řetězci. Předpokládejme například, že chcete předat název společnosti z pořadí do jiného systému. Ale nevíte jistě o správné zpracování pro kódování znaků. Může provádět na tento řetězec kódování base64, ale abyste se vyhnuli řídicí sekvence v adrese URL, můžete nahradit několik znaků místo. Navíc stačí pouze dílčí řetězec pro název společnosti vzhledem k tomu, že se nepoužívají prvních 5 znaků. 
+Logic Apps se různé funkce pro práci s řetězci. Předpokládejme například, že chcete předat název společnosti z objednávky do jiného systému. Však nevíte o správné zpracování pro kódování znaků. Můžete provést na tento řetězec kódování base64, ale aby se zabránilo řídicí sekvence v adrese URL můžete nahradit několik znaků místo. Navíc potřebujete pouze dílčí řetězec pro název společnosti vzhledem k tomu, že nejsou použity prvních 5 znaků. 
 
 ``` json
 {
@@ -202,17 +198,17 @@ Služba Logic Apps obsahuje různé funkce pro práci s řetězci. Předpokláde
 }
 ```
 
-Tyto kroky popisují, jak tento příklad zpracovává tento řetězec z uvnitř funguje na vnější:
+Tyto kroky popisují, jak v tomto příkladu zpracovává tento řetězec zevnitř funguje na vnější:
 
 ``` 
 "uri": "http://www.example.com/?id=@{replace(replace(base64(substring(parameters('order').companyName,5,sub(length(parameters('order').companyName), 5) )),'+','-') ,'/' ,'_' )}"
 ```
 
-1. Získat [ `length()` ](../logic-apps/logic-apps-workflow-definition-language.md) pro název společnosti, takže získáte celkový počet znaků.
+1. Získejte [ `length()` ](../logic-apps/logic-apps-workflow-definition-language.md) název společnosti, tak získáte celkový počet znaků.
 
-2. Kratší řetězec získáte odečtena `5`.
+2. Kratší řetězec získáte odečtení `5`.
 
-3. Teď se [ `substring()` ](../logic-apps/logic-apps-workflow-definition-language.md). Spustit v indexu `5`a přejděte na zbytek řetězce.
+3. Získejte teď [ `substring()` ](../logic-apps/logic-apps-workflow-definition-language.md). Spustit v indexu `5`a přejděte na zbytek řetězce.
 
 4. Převést tento dílčí [ `base64()` ](../logic-apps/logic-apps-workflow-definition-language.md) řetězec.
 
@@ -220,15 +216,15 @@ Tyto kroky popisují, jak tento příklad zpracovává tento řetězec z uvnitř
 
 6. Nakonec [ `replace()` ](../logic-apps/logic-apps-workflow-definition-language.md) všechny `/` znaků a obsahující `_` znaků.
 
-## <a name="map-list-items-to-property-values-then-use-maps-as-parameters"></a>Mapování položky seznamu hodnot vlastností, potom použijte mapy jako parametry
+## <a name="map-list-items-to-property-values-then-use-maps-as-parameters"></a>Mapování hodnot vlastností položky seznamu, a pak pomocí mapy jako parametry
 
-Chcete-li získat odlišné výsledky na základě vlastnosti na hodnotu, můžete vytvořit mapu, která odpovídá všechny hodnoty vlastností na výsledek a pak použít tento mapování jako parametr. 
+Chcete-li získat jiné výsledky na základě hodnoty vlastnosti, můžete vytvořit mapu, která odpovídá všechny hodnoty vlastností na výsledek a pak použít jako parametr, která je namapována. 
 
-Tento pracovní postup například definuje některé kategorie jako parametry a mapu, která odpovídá těchto kategorií s konkrétní adresy URL. Pracovní postup nejdřív získá seznam článků. Potom pracovní postup používá mapy Pokud chcete vyhledat adresu URL odpovídající kategorii jednotlivých článků.
+Například tento pracovní postup definuje některé kategorie jako parametry a mapu, která odpovídá kategorie s konkrétní adresy URL. Nejprve pracovní postup získává seznam článků. Pracovní postup potom použije na mapě Pokud chcete vyhledat adresu URL odpovídající kategorii pro každý článek.
 
-*   [ `intersection()` ](../logic-apps/logic-apps-workflow-definition-language.md) Funkce kontroluje, zda kategorii odpovídá známé definované kategorie.
+*   [ `intersection()` ](../logic-apps/logic-apps-workflow-definition-language.md) Funkce zkontroluje, zda odpovídá kategorii známé definovaných kategorií.
 
-*   Po získání odpovídající kategorii, vrátí příklad položky od mapy pomocí hranatými závorkami: `parameters[...]`
+*   V příkladu po získání odpovídající kategorii, načítá položku z mapy pomocí hranatých závorek: `parameters[...]`
 
 ``` json
 {
@@ -298,17 +294,17 @@ Tento pracovní postup například definuje některé kategorie jako parametry a
 }
 ```
 
-## <a name="get-data-with-date-functions"></a>Získání dat pomocí funkce datum
+## <a name="get-data-with-date-functions"></a>Získání dat pomocí datové funkce
 
-Chcete-li získat data ze zdroje dat, která nenabízí nativní podporu *aktivační události*, můžete použít datum funkce pro práci s časy a místo toho data. Například tento výraz najde, jak dlouho kroky tento pracovní postup trvá, z uvnitř funguje na vnější:
+K získání dat ze zdroje dat, která nenabízí nativní podporu *triggery*, můžete použít data funkce pro práci s časem a místo toho data. Například tento výraz najde, jak dlouho je možné tento pracovní postup, pracujete z vnitřního ven:
 
 ``` json
 "expression": "@less(actions('order').startTime,addseconds(utcNow(),-1))",
 ```
 
-1. Z `order` akce, extrakce `startTime`. 
+1. Z `order` akce, extrahovat `startTime`. 
 2. Získat aktuální čas s `utcNow()`.
-3. Odečtena sekundu:
+3. Odečtení jedné sekundy:
 
    [`addseconds(..., -1)`](../logic-apps/logic-apps-workflow-definition-language.md) 
 
@@ -316,7 +312,7 @@ Chcete-li získat data ze zdroje dat, která nenabízí nativní podporu *aktiva
 
 3. Teď můžete porovnat tyto dvě hodnoty. 
 
-   Pokud první hodnota je menší než druhá hodnota, která pak více než jedna sekunda byla úspěšná, protože byl nejprve umístit pořadí.
+   Pokud je první hodnota menší než druhá hodnota, která pak více než jedna sekunda byla úspěšná, protože byla objednávka zadána první.
 
 K formátování kalendářních dat, můžete použít formátování řetězce. Například RFC1123 získáte pomocí [ `utcnow('r')` ](../logic-apps/logic-apps-workflow-definition-language.md). Další informace o [datum formátování](../logic-apps/logic-apps-workflow-definition-language.md).
 
@@ -374,9 +370,9 @@ K formátování kalendářních dat, můžete použít formátování řetězce
 ## <a name="next-steps"></a>Další postup
 
 * [Spustit kroky na základě podmínky (podmíněné příkazy)](../logic-apps/logic-apps-control-flow-conditional-statement.md)
-* [Spustit kroky na základě různých hodnot (příkazech switch)](../logic-apps/logic-apps-control-flow-switch-statement.md)
-* [Spuštění a opakujte kroky (smyčky)](../logic-apps/logic-apps-control-flow-loops.md)
-* [Spuštění nebo sloučení paralelní kroky (větve)](../logic-apps/logic-apps-control-flow-branches.md)
-* [Spustit kroky na základě stavu seskupené akce (oborům)](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)
-* Další informace o [jazyk definic workflowů schéma pro Azure Logic Apps](../logic-apps/logic-apps-workflow-definition-language.md)
-* Další informace o [akce pracovního postupu a aktivačních událostí pro Azure Logic Apps](../logic-apps/logic-apps-workflow-actions-triggers.md)
+* [Spustit kroky na základě různých hodnot (příkazů přepínače)](../logic-apps/logic-apps-control-flow-switch-statement.md)
+* [Spuštění a opakujte kroky (cykly)](../logic-apps/logic-apps-control-flow-loops.md)
+* [Spuštění nebo sloučit paralelními kroky (větve)](../logic-apps/logic-apps-control-flow-branches.md)
+* [Spustit kroky na základě stavu seskupené akce (obory)](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)
+* Další informace o [schéma jazyka definice pracovního postupu pro Azure Logic Apps](../logic-apps/logic-apps-workflow-definition-language.md)
+* Další informace o [pracovních postupů akcí a triggerů pro Azure Logic Apps](../logic-apps/logic-apps-workflow-actions-triggers.md)

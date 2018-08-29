@@ -15,12 +15,12 @@ ms.workload: Identity
 ms.date: 07/18/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 20c43669b9da24cea4b0b552a86ec7d5a77dc5a7
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: b730f80faa031b1866d3c11d8a2c885ec67f965e
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39264507"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43144316"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect: Upgrade z předchozí verze na nejnovější verzi
 Toto téma popisuje různé metody, které můžete použít k upgradu na nejnovější verzi vaší instalace služby Azure Active Directory (Azure AD) Connect. Doporučujeme ponechat si aktuální s verzemi služby Azure AD Connect. Také postupujte podle kroků v [Postupná migrace](#swing-migration) části Pokud provedete významné změny konfigurace.
@@ -67,7 +67,7 @@ Tyto kroky pro přesun z Azure AD Sync nebo řešení s FIM + konektoru služby 
 
 ### <a name="use-a-swing-migration-to-upgrade"></a>Pomocí migrace swing upgradovat
 1. Pokud používáte Azure AD Connect na obou serverech a v plánu provést pouze konfiguraci změnit, ujistěte se, že váš aktivní server a pracovní server jsou obě používají stejnou verzi. Který usnadňuje později porovnat rozdíly. Pokud provádíte upgrade ze služby Azure AD Sync, tyto servery mají různé verze. Pokud upgradujete ze starší verze služby Azure AD Connect, je vhodné spustit se dvěma servery, které používají stejnou verzi, ale to není nutné.
-2. Pokud jste provedli vlastní konfigurace a pracovní server nemá, postupujte podle kroků v části [přesunout vlastní konfiguraci z aktivního serveru pracovní server](#move-custom-configuration-from-active-to-staging-server).
+2. Pokud jste provedli vlastní konfigurace a pracovní server nemá, postupujte podle kroků v části [přesunout vlastní konfiguraci z aktivního serveru pracovní server](#move-a-custom-configuration-from-the-active-server-to-the-staging-server).
 3. Pokud upgradujete ze starší verze služby Azure AD Connect, upgradujte pracovní server na nejnovější verzi. Pokud přesouváte ze služby Azure AD Sync, nainstalujte na testovacím serveru služby Azure AD Connect.
 4. Umožní synchronizační modul na testovacím serveru spustit úplný import a úplnou synchronizaci.
 5. Ověřte, že novou konfiguraci neměli způsobit neočekávané změny pomocí kroků v části "Ověřit" v [ověřte konfiguraci serveru](active-directory-aadconnectsync-operations.md#verify-the-configuration-of-a-server). Pokud není něco podle očekávání, opravte ji, spusťte import a synchronizaci a ověřit data, dokud vypadá dobře, pomocí následujících kroků.

@@ -1,108 +1,107 @@
 ---
-title: Připojení k systémům soubor místně - Azure Logic Apps | Microsoft Docs
-description: Připojit k místní systémy souborů z pracovních aplikace logiky prostřednictvím místní brána dat a konektor systému souborů
-keywords: systémy souborů, místní
+title: Připojte se k systémům souborů v místním prostředí – Azure Logic Apps | Dokumentace Microsoftu
+description: Automatizace úloh a pracovních postupů, které se připojují k místním systémům souborů pomocí konektoru systému souborů prostřednictvím místní brány dat v Azure Logic Apps
 services: logic-apps
-author: derek1ee
-manager: jeconnoc
-documentationcenter: ''
-ms.assetid: ''
 ms.service: logic-apps
-ms.devlang: na
+ms.suite: integration
+author: derek1ee
+ms.author: deli
+ms.reviewer: klam, estfan, LADocs
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 09/18/2017
-ms.author: LADocs; deli
-ms.openlocfilehash: 019b5fcd218ddd471c5f02d0332b8f5b5bf0edb3
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.date: 08/25/2018
+ms.openlocfilehash: 41dd8ad721329c4c4d2761c9e4a37c640251dac3
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35300816"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125274"
 ---
-# <a name="connect-to-on-premises-file-systems-from-logic-apps-with-the-file-system-connector"></a>Připojit k místní systémy souborů z aplikace logiky s konektorem systému souborů
+# <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Připojení k místním systémům souborů pomocí Azure Logic Apps
 
-Spravovat data a bezpečný přístup k místním prostředkům, můžete použít aplikace logiky bránu dat na místě. Tento článek ukazuje, jak můžete připojit k systému souborů na místní prostřednictvím této základní příklad scénáře: Zkopírujte soubor, který nahrání dat do sdílené složky a potom odeslat e-mail.
+Pomocí konektoru systému souborů a Azure Logic Apps můžete vytvořit automatizovaných úloh a pracovních postupů, které vytvořit a spravovat soubory na soubor v místním sdílet, například:  
+
+- Vytvořit, získat, přidat, aktualizovat a odstranit soubory
+- Seznam souborů ve složkách nebo kořenových složek.
+- Získáte obsah souboru a metadata.
+
+Tento článek popisuje, jak můžete připojit k systému souborů v místním jak je popsáno v tomto ukázkovém scénáři: Zkopírujte soubor do Dropboxu nahraje do sdílené složky a pak pošle e-mailu. K zabezpečenému připojení a přístup k místním systémům, použijte aplikace logiky [na místní bránu dat](../logic-apps/logic-apps-gateway-connection.md). Pokud se službou logic Apps teprve začínáte, přečtěte si [co je Azure Logic Apps?](../logic-apps/logic-apps-overview.md)
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Stáhněte si nejnovější [místní brána dat](https://www.microsoft.com/download/details.aspx?id=53127).
+* Předplatné Azure. Pokud nemáte předplatné Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrujte si bezplatný účet Azure</a>. 
 
-* Nainstalujte a nastavte si nejnovější místní brána data gateway, verze 1.15.6150.1 nebo vyšší. Pokyny najdete v tématu [připojit ke zdrojům dat místně](http://aka.ms/logicapps-gateway). Než budete pokračovat v těchto krocích, je nutné nainstalovat bránu na místní počítač.
+* Než se aplikace logiky můžete připojit k místním systémům například souborového serveru systému, je potřeba [instalace a nastavení místní brány dat](../logic-apps/logic-apps-gateway-install.md). Tímto způsobem můžete používat instalaci brány při vytváření připojení systému souborů z aplikace logiky.
 
-* Základní znalosti o [postup vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* A [Drobox účet](https://www.dropbox.com/) a pověření uživatele
 
-## <a name="add-trigger-and-actions-for-connecting-to-your-file-system"></a>Přidání aktivační události a akcí pro připojení k systému souborů
+  Vaše přihlašovací údaje autorizaci na vytvoření připojení a přístup k vašemu účtu Drobox aplikace logiky. 
 
-1. Vytvoření prázdné aplikace logiky Přidání této aktivační události jako první krok: **Dropboxu - Pokud dojde k vytvoření souboru** 
+* Základní znalosti o [postup vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md). V tomto příkladu je třeba prázdné aplikace logiky.
 
-2. V části aktivační událost, zvolte **+ další krok** > **přidat akci**. 
+## <a name="add-trigger"></a>Přidání triggeru
 
-3. Do vyhledávacího pole zadejte "systém souborů" jako filtr. Když se zobrazí všechny akce pro konektor systému souborů, vyberte **systém souborů – vytvoření souboru** akce. 
+[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-   ![Vyhledejte soubor konektoru](media/logic-apps-using-file-connector/search-file-connector.png)
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com)a otevřete svou aplikaci logiky v návrháři aplikace logiky, není již otevřete.
 
-4. Pokud již nemáte připojení k systému souborů, se zobrazí výzva k vytvoření připojení. 
+1. Do vyhledávacího pole zadejte jako filtr "dropboxu". Ze seznamu triggerů vyberte tento trigger: **při vytvoření souboru** 
 
-5. Vyberte **připojit prostřednictvím místní brána dat**. Jakmile se zobrazí vlastnosti připojení, nastavte připojení uvedených v tabulce.
+   ![Vyberte trigger Dropboxu](media/logic-apps-using-file-connector/select-dropbox-trigger.png)
 
-   ![Konfigurace připojení](media/logic-apps-using-file-connector/create-file.png)
+1. Přihlaste se pomocí přihlašovacích údajů k účtu Dropbox a autorizaci přístupu k vašim datům Dropboxu pro Azure Logic Apps. 
 
-   | Nastavení | Popis |
-   | ------- | ----------- |
-   | **Kořenová složka** | Zadejte kořenová složka pro systém souborů. Můžete zadat do místní složky v počítači, kde je nainstalován bránu dat na místě, nebo složce může být sdílená síťová složka má počítač přístup. <p>**Tip:** kořenové složky je hlavní nadřazené složky, která se používá k relativní cesty pro všechny akce související s souboru. | 
-   | **Typ ověřování** | Typ ověřování, který je používán systém souborů | 
-   | **Uživatelské jméno** | Zadejte svoje uživatelské jméno {*domény*\\*uživatelské jméno*} pro bránu dříve nainstalované. | 
-   | **Heslo** | Zadejte heslo pro bránu dříve nainstalované. | 
-   | **Brána** | Vyberte dříve nainstalované brány. | 
+1. Zadejte požadované informace pro trigger.
+
+   ![Aktivační události Dropboxu](media/logic-apps-using-file-connector/dropbox-trigger.png)
+
+## <a name="add-actions"></a>Přidání akce
+
+1. Pod triggerem zvolte **další krok**. Do vyhledávacího pole zadejte jako filtr "systém souborů". Ze seznamu akcí vyberte tuto akci: **vytvořit soubor – systém souborů**
+
+   ![Vyhledání konektoru systému souborů](media/logic-apps-using-file-connector/find-file-system-action.png)
+
+1. Pokud ještě nemáte připojení k systému souborů, zobrazí se výzva k vytvoření připojení.
+
+   ![Vytvoření připojení](media/logic-apps-using-file-connector/file-system-connection.png)
+
+   | Vlastnost | Požaduje se | Hodnota | Popis | 
+   | -------- | -------- | ----- | ----------- | 
+   | **Název připojení** | Ano | <*Název připojení*> | Název, který chcete použít pro připojení | 
+   | **Kořenová složka** | Ano | <*název kořenové složky*> | Kořenová složka pro systém souborů, jako je například místní složky v počítači, kde je nainstalována na místní bránu dat, nebo složku pro sdílené síťové složky můžete přistupovat k počítači. <p>Příklad: `\\PublicShare\\DropboxFiles` <p>Kořenová složka je hlavní nadřazené složky, který se používá pro relativní cesty pro všechny akce související se soubory. | 
+   | **Typ ověřování** | Ne | <*Typ ověření*> | Typ ověřování, který využívá systém souborů, například **Windows** | 
+   | **Uživatelské jméno** | Ano | <*domény*>\\<*uživatelské jméno*> | Uživatelské jméno pro vaši bránu data dříve nainstalované | 
+   | **Heslo** | Ano | <*vaše heslo*> | Heslo pro vaši bránu data dříve nainstalované | 
+   | **Brány** | Ano | <*nainstalované název brány*> | Název pro dříve nainstalovanou bránu | 
    ||| 
 
-6. Po zadání všech podrobností o připojení, zvolte **vytvořit**. 
+1. Jakmile budete hotoví, vyberte **Vytvořit**. 
 
-   Služba Logic Apps nakonfiguruje a otestuje připojení, a ujistěte se, že připojení funguje správně. 
-   Pokud je připojení správně nastavena, zobrazí se možnosti pro akci, kterou jste dříve vybrali. 
-   Konektor systému souborů je nyní připravena k použití.
+   Logic Apps nakonfiguruje a otestuje připojení, ujistěte se, že připojení funguje správně. 
+   Pokud je připojení správně nastavené, zobrazí se možnosti pro akci, kterou jste dříve vybrali. 
 
-7. Nastavit **vytvořit soubor** akce pro kopírování souborů z Dropbox do kořenové složky pro místní pro sdílení souborů.
+1. V **vytvořit soubor** akce, zadejte podrobnosti pro kopírování souborů z Dropboxu do kořenové složky ve sdílené složce v místním prostředí. Chcete-li přidat výstupy z předchozích kroků, klikněte do pole a vyberte z dostupných polí, jakmile se zobrazí v seznamu dynamického obsahu.
 
    ![Vytvoření souboru akce](media/logic-apps-using-file-connector/create-file-filled.png)
 
-8. Po této akci pro kopírování souboru přidejte Outlook akci, která odešle e-mail, aby příslušné uživatele vědět o nový soubor. Zadejte příjemce, název a text e-mailu. 
+1. Teď přidejte akci Outlooku, která odešle e-mail, aby příslušné uživatele upozorní na nový soubor. Zadejte příjemce, název a text e-mailu. Pro účely testování můžete použít svou vlastní e-mailovou adresu.
 
-   V **dynamický obsah** seznamu, můžete data výstupy z konektoru nástroje souboru, můžete přidat další podrobnosti k e-mailu.
+   ![Odeslání e-mailové akce](media/logic-apps-using-file-connector/send-email.png)
 
-   ![Odesílání e-mailu akce](media/logic-apps-using-file-connector/send-email.png)
+1. Uložte svou aplikaci logiky. Otestujte aplikaci stisknutím po nahrání souboru do Dropboxu. 
 
-9. Uložte svou aplikaci logiky. Testování aplikace s tím, že nahrajete soubor na Dropbox. Soubor by měl získat zkopírován do místní sdílené složky a měli byste obdržet e-mailu o operaci.
+   Aplikace logiky by měl zkopírujte soubor do místní sdílené složce a poslat příjemcům e-mailu zkopírovaný soubor.
 
-Blahopřejeme, nyní máte pracovní aplikace logiky, která může připojit k systému souborů na místě. 
+## <a name="connector-reference"></a>Referenční informace ke konektorům
 
-Zkuste zkoumat další funkce, které nabízí konektor, například:
-
-- Vytvořit soubor
-- Zobrazit seznam souborů ve složce
-- Připojit soubor
-- Odstranit soubor
-- Získat obsah souboru
-- Získat obsah souboru pomocí cesty
-- Načíst metadata souboru
-- Získat metadata souboru pomocí cesty
-- Zobrazit seznam souborů v kořenové složce
-- Aktualizovat soubor
-
-## <a name="view-the-swagger"></a>Zobrazení swagger
-
-Najdete v článku [swagger podrobnosti](/connectors/fileconnector/). 
+Technické podrobnosti o omezení, akce a triggery, které jsou popsány pomocí konektoru OpenAPI (dříve Swagger) popis, přečtěte si tento konektor [referenční stránce](/connectors/fileconnector/).
 
 ## <a name="get-support"></a>Získat podporu
 
 * Pokud máte dotazy, navštivte [fórum Azure Logic Apps](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
 
-* K vylepšení Azure Logic Apps a konektory, hlasovat o nebo odeslání nápadů na [Azure Logic Apps User Voice lokality](http://aka.ms/logicapps-wish).
+* Chcete-li pomoci při vylepšování Azure Logic Apps a konektorů, Hlasujte nebo Zanechte své nápady na [webu User Voice pro Azure Logic Apps](http://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Další postup
 
-* [Připojení k místním datům](../logic-apps/logic-apps-gateway-connection.md) 
-* [Monitorování aplikací logiky](../logic-apps/logic-apps-monitor-your-logic-apps.md)
-* [Integrace Enterprise pro scénáře B2B](../logic-apps/logic-apps-enterprise-integration-overview.md)
+* Zjistěte, jak [připojení k místním datům](../logic-apps/logic-apps-gateway-connection.md) 
+* Další informace o dalších [konektory Logic Apps](../connectors/apis-list.md)

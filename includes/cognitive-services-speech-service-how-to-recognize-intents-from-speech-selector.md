@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 07/27/2018
 ms.author: wolfma
 ms.openlocfilehash: 35df889008e928929587408e3016f05769cdb34e
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39330786"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43129792"
 ---
 > [!div class="op_single_selector"]
 > - [C#](~/articles/cognitive-services/speech-service/how-to-recognize-intents-from-speech-csharp.md)

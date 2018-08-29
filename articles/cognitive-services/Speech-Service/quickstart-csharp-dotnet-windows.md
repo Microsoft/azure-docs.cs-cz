@@ -9,16 +9,16 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: wolfma
-ms.openlocfilehash: a625ee4d8d672ddfd42128a9dd871dcfcc013060
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 20d0f4736d3aa5f23d9061b4482da7a623862344
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41988137"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128217"
 ---
 # <a name="quickstart-recognize-speech-in-c-under-net-framework-on-windows-using-the-speech-sdk"></a>Rychlý start: Rozpoznávat řeč v jazyce C# v rozhraní .NET Framework ve Windows pomocí sady SDK pro řeč
 
-[!include[Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
+[!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 V tomto článku se dozvíte, jak vytvořit konzolovou aplikaci C# pro rozhraní .NET Framework na Windows přepisy převod řeči na text pomocí Cognitive Services SDK řeči.
 Aplikace je sestavená s [Microsoft Cognitive Services řeči balíčku sady SDK NuGet](https://aka.ms/csspeech/nuget) a Microsoft Visual Studio 2017.
@@ -100,7 +100,7 @@ V této části přidáte novou platformu na konfiguraci, která odpovídá arch
 
     ![Po úspěšném rozpoznávání výstupu konzoly](media/sdk/qs-csharp-dotnet-windows-10-console-output.png "výstupu konzoly po úspěšné rozpoznávání")
 
-[!include[Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
+[!INCLUDE [Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 Hledat v této ukázce `quickstart/csharp-dotnet-windows` složky.
 
 ## <a name="next-steps"></a>Další postup

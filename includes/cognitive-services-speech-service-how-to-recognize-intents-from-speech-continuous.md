@@ -4,16 +4,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/27/2018
 ms.author: wolfma
-ms.openlocfilehash: 3c8d986061a76c0217ea3dfcd1095cdbde74113c
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 81c0ee318a804dc8acbdfaf274394c30f470571f
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39330792"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43143854"
 ---
-## <a name="intent-recognition-from-a-file-using-events"></a>Rozpoznání záměru ze souboru, s použitím událostí
+## <a name="intent-recognition-from-a-file-with-events"></a>Rozpoznání záměru ze souboru s událostmi
 
-Fragment kódu ukazuje, jak se rozpoznávání záměru ve výchozím jazyce (`en-US`) průběžné způsobem. Tento kód umožňuje přístup na další informace, jako jsou průběžné výsledky. Vstup je převzata z zvukový soubor, podporovaný formát je jeden kanál (mono) WAV / PCM s vzorkovací frekvenci kHz 16.
+Následující kód ukazuje, jak se rozpoznávání záměru ve výchozím jazyce (en US) průběžné způsobem. Kód umožňuje přístup na další informace, jako jsou průběžné výsledky. Vstup je převzata z zvukový soubor. Podporovaný formát je jeden kanál (mono) WAV/PCM s vzorkovací frekvenci kHz 16.
 
-[!include[Sample Audio](cognitive-services-speech-service-sample-audio.md)]
+[!INCLUDE [Sample audio](cognitive-services-speech-service-sample-audio.md)]
 

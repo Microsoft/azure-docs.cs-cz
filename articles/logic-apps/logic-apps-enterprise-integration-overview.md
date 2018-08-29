@@ -1,27 +1,23 @@
 ---
-title: Podniková integrace pro B2B – Azure Logic Apps | Dokumentace Microsoftu
-description: Vytvářet pracovní postupy B2B a podporu podnikové scénáře integrace aplikací logiky s využitím sady Enterprise Integration Pack
+title: Přehled integrace B2B enterprise – Azure Logic Apps | Dokumentace Microsoftu
+description: Vytvářet automatizované pracovní postupy B2B pro podniková řešení integrace s Azure Logic Apps a Enterprise Integration Pack
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: msftman
-manager: jeconnoc
-editor: cgronlun
-ms.assetid: dd517c4d-1701-4247-b83c-183c4d8d8aae
 ms.service: logic-apps
-ms.workload: integration
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: divyaswarnkar
+ms.author: divswa
+ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
+ms.assetid: dd517c4d-1701-4247-b83c-183c4d8d8aae
 ms.date: 09/08/2016
-ms.author: LADocs; padmavc
-ms.openlocfilehash: c4f83d2bf082b5f1358b4eee6468d470b5cb8088
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: b2e2c81914e8c0440b358d59c7f0248db46b6c50
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42057175"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124288"
 ---
-# <a name="overview-b2b-scenarios-and-communication-with-the-enterprise-integration-pack"></a>Přehled: Scénáře B2B a komunikace se službou Enterprise Integration Pack
+# <a name="overview-b2b-enterprise-integration-scenarios-in-azure-logic-apps-with-enterprise-integration-pack"></a>Přehled: B2B podnikové integrace scénáře v Azure Logic Apps sadou Enterprise Integration Pack
 
 Pro pracovní postupy business-to-business (B2B) a bezproblémové komunikaci s Azure Logic Apps můžete aktivovat scénáře integrace enterprise od Microsoftu založené na cloudu řešení Enterprise Integration Pack. Organizace si mohou vyměňovat zprávy elektronicky, i když používají různé protokoly a formátů. Této sady transformuje do formátu, který organizace systémy dokážou interpretovat a zpracovat různé formáty. Organizace si mohou vyměňovat zprávy prostřednictvím standardních protokolů, jako jsou třeba [AS2](../logic-apps/logic-apps-enterprise-integration-as2.md), [X12](logic-apps-enterprise-integration-x12.md), a [EDIFACT](../logic-apps/logic-apps-enterprise-integration-edifact.md). Můžete také zabezpečení zpráv pomocí šifrování a digitálním podpisům.
 

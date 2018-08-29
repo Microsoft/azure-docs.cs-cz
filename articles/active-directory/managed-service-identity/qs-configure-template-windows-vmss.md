@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
 ms.author: daveba
-ms.openlocfilehash: 68304b3e5eea50aba28f46344abcbd7ad060c5c8
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 69b88b5aabbadadea3b04f96d9a21f266c85a52f
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42055248"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125380"
 ---
 # <a name="configure-managed-service-identity-on-virtual-machine-scale-using-a-template"></a>Konfigurace Identity spravované služby v měřítku virtuálního počítače pomocí šablony
 
@@ -322,7 +322,7 @@ Pokud máte virtuální počítač škálovací sadu, která už potřebuje iden
 
 1. Ať už jste přihlášení do Azure místně nebo prostřednictvím portálu Azure portal, pomocí účtu, který je přidružený k předplatnému Azure, který obsahuje škálovací sadu virtuálních počítačů.
 
-2. Načíst šablonu do [editor](#azure-resource-manager-templates) a vyhledejte `Microsoft.Compute/virtualMachineScaleSets` prostředků zájmu v rámci `resources` oddílu. Pokud máte škálovací sady virtuálního počítače, který má jenom identity přiřazené uživateli, můžete jej zakázat tak, že změníte typ identity k `None`.
+2. Načíst šablonu do [editor](#azure-resource-manager-templates) a vyhledejte `Microsoft.Compute/virtualMachineScaleSets` prostředků zájmu v rámci `resources` oddílu. Pokud máte škálovací sady virtuálního počítače, který má jenom identity přiřazené uživateli, můžete ho zakázat tak, že změníte typ identity k `None`.
 
    Následující příklad ukazuje, jak odebrat všechny přiřazené identity z virtuálního počítače bez systému identit přiřazených uživateli:
 
@@ -339,7 +339,7 @@ Pokud máte virtuální počítač škálovací sadu, která už potřebuje iden
    
    **Microsoft.Compute/virtualMachineScaleSets rozhraní API verze 2018-06-01**
     
-   K odebrání jednoho uživatele přiřazeny identitu ze škálovací sady virtuálních počítačů, odeberte ho z `userAssignedIdentities` slovníku.
+   K odebrání jednoho uživatele přiřazeny identity ze škálovací sady virtuálních počítačů, odeberte ho z `userAssignedIdentities` slovníku.
 
    Pokud máte identitou přiřazenou systémem, uložte ho v `type` pod `identity` hodnotu.
 

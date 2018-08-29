@@ -2,7 +2,7 @@
 title: Co jsou řízení přístupu v Azure Active Directory podmíněného přístupu? | Dokumenty Microsoft
 description: Zjistěte, jak řízení přístupu v Azure Active Directory podmíněný přístup do práce.
 services: active-directory
-keywords: podmíněný přístup pro aplikace, podmíněný přístup s Azure AD, zabezpečený přístup k prostředkům společnosti, zásady podmíněného přístupu
+keywords: conditional access to apps, conditional access with Azure AD, secure access to company resources, conditional access policies
 documentationcenter: ''
 author: MarkusVi
 manager: mtillman
@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/13/2018
+ms.date: 08/28/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: ba770415d7371463f1370d982f179c2a6f41ee65
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 050ccff8501a22526e9382a620258b0f846efe5c
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39629554"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43128717"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Co jsou řízení přístupu v Azure Active Directory podmíněného přístupu? 
 
@@ -119,9 +119,12 @@ Poskytovatelé aktuálně nabízí kompatibilní služby patří:
 
 - [Duo zabezpečení](https://duo.com/docs/azure-ca)
 
+- [Datacard Entrust](https://www.entrustdatacard.com/products/authentication/intellitrust)
+
 - RSA
 
 - [Trusona](https://www.trusona.com/docs/azure-ad-integration-guide)
+
 
 Další informace o těchto služeb obraťte se na zprostředkovatele přímo.
 
@@ -175,4 +178,4 @@ Další informace o tom, jak vyžadovat omezený přístup se Sharepointem najde
 
 - Pokud chcete vědět, jak nakonfigurovat zásady podmíněného přístupu najdete v tématu [vyžadovat vícefaktorové ověřování pro konkrétní aplikace s podmíněným přístupem Azure Active Directory](app-based-mfa.md).
 
-- Pokud jste připraveni ke konfiguraci zásad podmíněného přístupu pro vaše prostředí, najdete v článku [osvědčené postupy pro podmíněný přístup ve službě Azure Active Directory](best-practices.md). 
+- Pokud jste připraveni nakonfigurovat zásady podmíněného přístupu pro vaše prostředí, přečtěte si [osvědčené postupy pro podmíněný přístup v Azure Active Directory](best-practices.md). 

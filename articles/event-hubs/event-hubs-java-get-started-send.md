@@ -7,14 +7,14 @@ manager: timlt
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
-ms.date: 08/20/2018
+ms.date: 08/27/2018
 ms.author: shvija
-ms.openlocfilehash: 2120fedc83b1dcad5462f4d5fb5118d19c3ce91c
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: f67982eda60a8fdfdf0d50785827c513275fd202
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42747023"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124751"
 ---
 # <a name="send-events-to-azure-event-hubs-using-java"></a>Odesílání událostí do služby Azure Event Hubs pomocí Javy
 
@@ -35,13 +35,13 @@ Kód v tomto kurzu vychází z [SimpleSend Githubu ukázky](https://github.com/A
 
 ## <a name="send-events-to-event-hubs"></a>Odesílání událostí do služby Event Hubs
 
-Klientská knihovna Java pro Event Hubs je k dispozici pro použití v projektech Maven z [centrálního úložiště Maven](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22). Můžete odkazovat na tuto knihovnu pomocí následující deklarace závislostí uvnitř souboru projektu Maven. Aktuální verze je 1.0.1:    
+Klientská knihovna Java pro Event Hubs je k dispozici pro použití v projektech Maven z [centrálního úložiště Maven](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22). Můžete odkazovat na tuto knihovnu pomocí následující deklarace závislostí uvnitř souboru projektu Maven. Aktuální verze je verze 1.0.2:    
 
 ```xml
 <dependency>
     <groupId>com.microsoft.azure</groupId>
     <artifactId>azure-eventhubs</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
 </dependency>
 ```
 
@@ -74,6 +74,10 @@ public class SimpleSend {
 
     public static void main(String[] args)
             throws EventHubException, ExecutionException, InterruptedException, IOException {
+            
+            
+    }
+ }
 ```
 
 ### <a name="construct-connection-string"></a>Vytvoření připojovacího řetězce
@@ -104,6 +108,33 @@ ehClient.sendSync(sendEvent);
 ehClient.closeSync();
 
 ``` 
+
+### <a name="how-messages-are-routed-to-eventhub-partitions"></a>Směrování zpráv do oddílů centra událostí
+
+Předtím, než zprávy jsou načítána pro spotřebitele, mají být publikována do oddílů nejprve podle vydavatele. Po publikování zprávy do centra událostí synchronně pomocí metody sendSync() com.microsoft.azure.eventhubs.EventHubClient objektu, může být zprávu odeslat do konkrétního oddílu ani distribuován do všech dostupných oddílech způsobem kruhové dotazování v závislosti na tom, jestli je nebo není zadána klíč oddílu.
+
+Pokud je zadán řetězec představující klíč oddílu, klíč se k určení oddíl, který se k odeslání události do hashovat.
+
+Pokud není nastaven klíč oddílu, pak zprávy budou kruhové robined na všechny dostupné oddíly.
+
+```java
+// Serialize the event into bytes
+byte[] payloadBytes = gson.toJson(messagePayload).getBytes(Charset.defaultCharset());
+
+// Use the bytes to construct an {@link EventData} object
+EventData sendEvent = EventData.create(payloadBytes);
+
+// Transmits the event to event hub without a partition key
+// If a partition key is not set, then we will round-robin to all topic partitions
+eventHubClient.sendSync(sendEvent);
+
+//  the partitionKey will be hash'ed to determine the partitionId to send the eventData to.
+eventHubClient.sendSync(sendEvent, partitionKey);
+
+// close the client at the end of your program
+eventHubClient.closeSync();
+
+```
 
 ## <a name="next-steps"></a>Další postup
 

@@ -7,20 +7,22 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 08/06/2018
+ms.date: 08/27/2018
 ms.author: kgremban
-ms.openlocfilehash: ea576c0d434d4db7077fc41bc1f5bbbc89e7779e
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: d6852b5b1fe3d0b3c248fc1948fa4c3a9428de89
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39576643"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43125404"
 ---
 # <a name="install-azure-iot-edge-runtime-on-windows-to-use-with-linux-containers"></a>Nainstalovat modul runtime Azure IoT Edge ve Windows pro použití s kontejnery Linuxu
 
-Modul runtime Azure IoT Edge je nasadit na všechna zařízení IoT Edge. Skládá se ze tří částí. **Démon zabezpečení IoT Edge** poskytuje a udržuje standardy zabezpečení na hraniční zařízení. Proces démon spustí při každé spuštění a bootstraps zařízení spuštěním agenta IoT Edge. **Agenta IoT Edge** usnadňuje nasazení a monitorování modulů na hraniční zařízení, včetně hraničních zařízeních IoT hub. Druhým je **IoT Edge Hub**, který na zařízení IoT Edge řídí komunikaci mezi moduly a také mezi zařízením a IoT Hubem.
+Modul runtime Azure IoT Edge je co se změní na zařízení do zařízení IoT Edge. Modul runtime můžete nasadit na zařízení jako Raspberry Pi malé nebo velké průmyslové serveru. Jakmile je zařízení nakonfigurovaná s modulem runtime IoT Edge, můžete začít nasazovat obchodní logiky k němu z cloudu. 
 
-V tomto článku jsou uvedené kroky k instalaci modulu runtime Azure IoT Edge na vaše Windows x64 (AMD nebo Intel) systému. Podpora Windows je aktuálně ve verzi Preview.
+Další informace o fungování modul runtime IoT Edge a jaké součásti jsou zahrnuty, naleznete v tématu [pochopení runtime Azure IoT Edge a jeho architektura](iot-edge-runtime.md).
+
+V tomto článku jsou uvedené kroky k instalaci modulu runtime Azure IoT Edge s kontejnery Linuxu ve vaší Windows x64 (AMD nebo Intel) systému. Podpora Windows je aktuálně ve verzi Preview.
 
 >[!NOTE]
 Pomocí kontejnerů Linuxu na systémy Windows není produkční doporučené nebo podporované konfigurace pro Azure IoT Edge. To však lze použít pro účely vývoje a testování.
@@ -29,6 +31,8 @@ Pomocí kontejnerů Linuxu na systémy Windows není produkční doporučené ne
 Azure IoT Edge může být používané pro vývoj a testování v následujících verzích Windows, při použití kontejnerů Linuxu:
   * Windows 10 nebo novější operační systémy.
   * Windows Server 2016 nebo nové serverové operační systémy.
+
+Další informace o tom, které jsou aktuálně podporované operační systémy, najdete [podpory Azure IoT Edge](support.md#operating-systems). 
 
 ## <a name="install-the-container-runtime"></a>Nainstalovat modul runtime kontejneru 
 
@@ -43,7 +47,7 @@ Můžete použít [Docker pro Windows] [ lnk-docker-for-windows] pro vývoj a te
 
 Jedno zařízení IoT Edge se dá zřídit ručně pomocí řetězce připojení zařízení k dispozici ve službě IoT Hub. Nebo můžete do služby Device Provisioning k automatickému zřízení zařízení, což je užitečné, když máte velký počet zařízení ke zřízení. Podle svého výběru: zřizování zvolte příslušný instalační skript. 
 
-### <a name="install-and-manually-provision"></a>Instalace a ruční zřizování
+### <a name="option-1-install-and-manually-provision"></a>Možnost 1: Instalace a zajištění ručně
 
 1. Postupujte podle kroků v [zaregistrovat nová zařízení Azure IoT Edge] [ lnk-dcs] načíst připojovací řetězec zařízení a zaregistrovat své zařízení. 
 
@@ -58,7 +62,7 @@ Jedno zařízení IoT Edge se dá zřídit ručně pomocí řetězce připojení
 
 4. Při zobrazení výzvy k zadání **DeviceConnectionString**, zadejte připojovací řetězec, který jste získali ze služby IoT Hub. Nezahrnují uvozovky kolem připojovací řetězec. 
 
-### <a name="install-and-automatically-provision"></a>Instalace a automaticky zřizovat
+### <a name="option-2-install-and-automatically-provision"></a>Možnost 2: Instalace a automaticky zřizovat
 
 1. Postupujte podle kroků v [vytvoření a zřízení simulovaného zařízení TPM Edge ve Windows] [ lnk-dps] nastavení služby Device Provisioning a získání jeho **ID oboru**, simulovat čip TPM zařízení a jejich načtení jeho **ID registrace**, pak vytvoření jednotlivé registrace. Jakmile je vaše zařízení zaregistrované ve službě IoT Hub, pokračujte v instalaci.  
 
