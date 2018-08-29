@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 94ade24f1761700b93ab79d497e273c64c51bddf
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: ac2787f69651e950ffb6b786280ba7f11f4fa8e0
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990893"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43127956"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Zpráva k vydání verze Microsoft Azure Storage Explorer
 
@@ -27,31 +27,37 @@ Tento článek obsahuje poznámky k verzi 1.2.0 Průzkumníka služby Azure Stor
 
 [Microsoft Azure Storage Explorer](./vs-azure-tools-storage-manage-with-storage-explorer.md) je samostatná aplikace, která umožňuje jednoduchá práci s daty Azure Storage ve Windows, macOS a Linuxu.
 
-## <a name="version-130"></a>Verze 1.3.0
-07/09/2018
+## <a name="version-141"></a>Verze 1.4.1
+08/28/2018
 
 ### <a name="download-azure-storage-explorer-130"></a>Stáhněte si Průzkumníka služby Azure Storage 1.3.0
 - [Průzkumník služby Azure Storage 1.3.0 pro Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
 - [Průzkumník služby Azure Storage 1.3.0 pro Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
 - [Průzkumník služby Azure Storage 1.3.0 pro Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
 
+### <a name="hotfixes"></a>Opravy hotfix
+* Při prvním spuštění se nepodařilo vygenerovat klíč používaný k šifrování citlivých dat Průzkumníka služby Storage. To způsobí problémy při použití rychlého přístupu a připojení prostředků. [#535](https://github.com/Microsoft/AzureStorageExplorer/issues/535)
+* Pokud váš účet nevyžadoval vícefaktorové ověřování pro jeho domovském tenantovi, ale nebyla pro některé klienty, Průzkumníka služby Storage by nemohl do seznamu. Nyní po přihlášení pomocí uvedený účet, Průzkumníka služby Storage vás vyzve k znovu zadat přihlašovací údaje a proveďte vícefaktorové ověřování. [#74](https://github.com/Microsoft/AzureStorageExplorer/issues/74)
+* Průzkumník služby Storage se nepodařilo připojit prostředky z Azure Germany a Azure US Government. [#572](https://github.com/Microsoft/AzureStorageExplorer/issues/572)
+* Pokud jste se přihlásili k dva účty, které měly stejnou e-mailovou adresu, Průzkumníka služby Storage selže někdy Chcete-li zobrazit vaše prostředky ve stromovém zobrazení. [#580](https://github.com/Microsoft/AzureStorageExplorer/issues/580)
+* Na počítačích Windows pomalejší úvodní obrazovka by někdy trvat značné množství času se zobrazí. [#586](https://github.com/Microsoft/AzureStorageExplorer/issues/586)
+* Dialogové okno Připojit se zobrazí i v případě, že bylo připojené účty nebo služby. [#588](https://github.com/Microsoft/AzureStorageExplorer/issues/588)
+
 ### <a name="new"></a>Nová
-* Přístup k kontejnery $web používají statické webové stránky se teď podporuje. To umožňuje snadno nahrávat a spravovat soubory a složky, které používá váš web. [#223](https://github.com/Microsoft/AzureStorageExplorer/issues/223)
-* Na panelu aplikace v systému macOS se znovu uspořádat. Změny zahrnují nabídku souborů, některé změny klíčů místní a několik nových příkazů v nabídce aplikace. [#99](https://github.com/Microsoft/AzureStorageExplorer/issues/99)
-* Koncového bodu autority pro přihlášení k Azure US Government se změnil na https://login.microsoftonline.us/
-* Usnadnění: Při aktivním čtečky obrazovky navigaci pomocí klávesnice nyní pracuje se s tabulkami použitá pro zobrazení položek na pravé straně. Klávesy se šipkami můžete použít k procházení řádků a sloupců, Enter k vyvolání akce výchozí kontext klávesy nabídky otevřete místní nabídku pro položku a Shift nebo ovládací prvek vícenásobného výběru. [#103](https://github.com/Microsoft/AzureStorageExplorer/issues/103)
+* Přílohy externího zdroje, například připojení SAS a emulátory, je výrazně Vylepšená. Nyní můžete:
+   * Přizpůsobení zobrazovaný název prostředku, který při připojování. [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
+   * Připojení k několika místním emulátory pomocí jiné porty. [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
+   * Přidání připojených zdrojů na rychlý přístup. [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
+* Průzkumník služby Storage teď podporuje obnovitelné odstranění. Můžete:
+   * Umožňuje nakonfigurujte zásadu obnovitelného odstranění kliknutím pravým tlačítkem na uzel kontejnery objektů Blob v účtu úložiště.
+   * Zobrazení obnovitelné odstranění objektů BLOB v editoru objektů Blob tak, že vyberete "aktivní a odstranit objekty BLOB" v rozevírací nabídce vedle na navigačním panelu.
+   * Obnovit obnovitelně odstraněné objekty BLOB.
 
 ### <a name="fixes"></a>Opravy
-*  Na některých počítačích byly podřízené procesy trvá příliš dlouho spustit. Pokud by k tomu dojít, se zobrazí chybu "podřízený proces se nepodařilo spustit včas". Čas přidělený pro podřízený proces spustit nyní se zvýšil z 20 na 90 sekund. Pokud jsou stále postižené tímto problémem, komentovat prosím propojené problém Githubu. [#281](https://github.com/Microsoft/AzureStorageExplorer/issues/281)
-* Při použití SAS, které oprávnění pro čtení, nebylo možné nahrávání velkých objektů blob. V tomto scénáři se změnila logiku pro nahrávání. [#305](https://github.com/Microsoft/AzureStorageExplorer/issues/305)
-* Nastavení úroveň veřejného přístupu pro kontejner odeberte všechny zásady přístupu a naopak. Nyní zásady veřejný přístup nebo přístup se zachová, i když nastavení buď z nich. [#197](https://github.com/Microsoft/AzureStorageExplorer/issues/197)
-* V dialogovém okně Vlastnosti byl zkrácen "AccessTierChangeTime". Tato chyba byla opravena. [#145](https://github.com/Microsoft/AzureStorageExplorer/issues/145)
-* "Microsoft Azure Storage Explorer-" předponu nebyl nalezen v dialogovém okně vytvořte nový adresář. Tato chyba byla opravena. [#299](https://github.com/Microsoft/AzureStorageExplorer/issues/299)
-* Usnadnění: Dialogové okno Přidat entitu bylo obtížné přejděte při použití VoiceOver. Vylepšili jsme. [#206](https://github.com/Microsoft/AzureStorageExplorer/issues/206)
-* Usnadnění: Barva pozadí tlačítka pro podokna akcí a vlastností pro rozbalení/sbalení byl konzistentní se podobně jako ovládací prvky uživatelského rozhraní v motivu Vysoký kontrast – černá. Barva se změnil. [#123](https://github.com/Microsoft/AzureStorageExplorer/issues/123)
-* Usnadnění: V motivu Vysoký kontrast – černá fokus pro používání stylů pro tlačítko "X" v dialogovém okně vlastnosti nebyl viditelný. Tato chyba byla opravena. [#243](https://github.com/Microsoft/AzureStorageExplorer/issues/243)
-* Usnadnění: Karty Akce a vlastnosti byly chybí několik aria hodnoty, které je v prostředí čtečky subpar obrazovky. Byl přidán chybějící hodnoty aria. [#316](https://github.com/Microsoft/AzureStorageExplorer/issues/316)
-* Usnadnění: Uzly sbalený stromu na levé straně nebyly se danou hodnotu rozbalit aria hodnotu false. Tato chyba byla opravena. [#352](https://github.com/Microsoft/AzureStorageExplorer/issues/352)
+* Akce "Konfigurovat nastavení CORS" již není k dispozici na účty Storage úrovně Premium, protože účty služby Premium Storage nepodporují CORS. [#142](https://github.com/Microsoft/AzureStorageExplorer/issues/142)
+* Je nyní vlastnost sdílený přístupový podpis SAS připojené služby. [#184](https://github.com/Microsoft/AzureStorageExplorer/issues/184)
+* Akce "Nastavit výchozí úroveň přístupu" je nyní k dispozici pro objekt Blob a úložiště GPV2 účty, které byla připnuta na rychlý přístup. [#229](https://github.com/Microsoft/AzureStorageExplorer/issues/229)
+* V některých případech Průzkumníka služby Storage selže účty klasického úložiště. [#323](https://github.com/Microsoft/AzureStorageExplorer/issues/323)
 
 ### <a name="known-issues"></a>Známé problémy
 * Při použití emulátorů, jako je například emulátoru úložiště Azure nebo Azurite, je potřeba ho naslouchání pro připojení na jejich výchozích portů. Průzkumník služby Storage v opačném případě nebude schopen připojit se k nim.
@@ -88,6 +94,7 @@ Tento článek obsahuje poznámky k verzi 1.2.0 Průzkumníka služby Azure Stor
 
 ## <a name="previous-releases"></a>Předchozí verze
 
+* [Verze 1.3.0](#version-130)
 * [Verzi 1.2.0](#version-120)
 * [Verze 1.1.0](#version-110)
 * [Verze 1.0.0](#version-100)
@@ -113,6 +120,63 @@ Tento článek obsahuje poznámky k verzi 1.2.0 Průzkumníka služby Azure Stor
 * [Verze 0.7.20160129.1](#version-07201601291)
 * [Verze 0.7.20160105.0](#version-07201601050)
 * [Verze 0.7.20151116.0](#version-07201511160)
+
+## <a name="version-130"></a>Verze 1.3.0
+07/09/2018
+
+### <a name="new"></a>Nová
+* Přístup k kontejnery $web používají statické webové stránky se teď podporuje. To umožňuje snadno nahrávat a spravovat soubory a složky, které používá váš web. [#223](https://github.com/Microsoft/AzureStorageExplorer/issues/223)
+* Na panelu aplikace v systému macOS se znovu uspořádat. Změny zahrnují nabídku souborů, některé změny klíčů místní a několik nových příkazů v nabídce aplikace. [#99](https://github.com/Microsoft/AzureStorageExplorer/issues/99)
+* Koncového bodu autority pro přihlášení k Azure US Government se změnil na https://login.microsoftonline.us/
+* Usnadnění: Při aktivním čtečky obrazovky navigaci pomocí klávesnice nyní pracuje se s tabulkami použitá pro zobrazení položek na pravé straně. Klávesy se šipkami můžete použít k procházení řádků a sloupců, Enter k vyvolání akce výchozí kontext klávesy nabídky otevřete místní nabídku pro položku a Shift nebo ovládací prvek vícenásobného výběru. [#103](https://github.com/Microsoft/AzureStorageExplorer/issues/103)
+
+### <a name="fixes"></a>Opravy
+*  Na některých počítačích byly podřízené procesy trvá příliš dlouho spustit. Pokud by k tomu dojít, se zobrazí chybu "podřízený proces se nepodařilo spustit včas". Čas přidělený pro podřízený proces spustit nyní se zvýšil z 20 na 90 sekund. Pokud jsou stále postižené tímto problémem, komentovat prosím propojené problém Githubu. [#281](https://github.com/Microsoft/AzureStorageExplorer/issues/281)
+* Při použití SAS, které oprávnění pro čtení, nebylo možné nahrávání velkých objektů blob. V tomto scénáři se změnila logiku pro nahrávání. [#305](https://github.com/Microsoft/AzureStorageExplorer/issues/305)
+* Nastavení úroveň veřejného přístupu pro kontejner odeberte všechny zásady přístupu a naopak. Nyní zásady veřejný přístup nebo přístup se zachová, i když nastavení buď z nich. [#197](https://github.com/Microsoft/AzureStorageExplorer/issues/197)
+* V dialogovém okně Vlastnosti byl zkrácen "AccessTierChangeTime". Tato chyba byla opravena. [#145](https://github.com/Microsoft/AzureStorageExplorer/issues/145)
+* "Microsoft Azure Storage Explorer-" předponu nebyl nalezen v dialogovém okně vytvořte nový adresář. Tato chyba byla opravena. [#299](https://github.com/Microsoft/AzureStorageExplorer/issues/299)
+* Usnadnění: Dialogové okno Přidat entitu bylo obtížné přejděte při použití VoiceOver. Vylepšili jsme. [#206](https://github.com/Microsoft/AzureStorageExplorer/issues/206)
+* Usnadnění: Barva pozadí tlačítka pro podokna akcí a vlastností pro rozbalení/sbalení byl konzistentní se podobně jako ovládací prvky uživatelského rozhraní v motivu Vysoký kontrast – černá. Barva se změnil. [#123](https://github.com/Microsoft/AzureStorageExplorer/issues/123)
+* Usnadnění: V motivu Vysoký kontrast – černá fokus pro používání stylů pro tlačítko "X" v dialogovém okně vlastnosti nebyl viditelný. Tato chyba byla opravena. [#243](https://github.com/Microsoft/AzureStorageExplorer/issues/243)
+* Usnadnění: Karty Akce a vlastnosti byly chybí několik aria hodnoty, které je v prostředí čtečky subpar obrazovky. Byl přidán chybějící hodnoty aria. [#316](https://github.com/Microsoft/AzureStorageExplorer/issues/316)
+* Usnadnění: Uzly sbalený stromu na levé straně nebyly se danou hodnotu rozbalit aria hodnotu false. Tato chyba byla opravena. [#352](https://github.com/Microsoft/AzureStorageExplorer/issues/352)
+
+### <a name="known-issues"></a>Známé problémy
+* Odpojení od zdroje připojené pomocí identifikátoru URI SAS, jako je například kontejner objektů blob, může způsobit chybu, která brání jiné přílohy z zobrazovat správně. Chcete-li tento problém obejít, jednoduše obnovte uzel skupiny. Zobrazit [tento problém](https://github.com/Microsoft/AzureStorageExplorer/issues/537) Další informace.
+* Pokud používáte VS pro Mac a již někdy vytvářeli vlastní konfiguraci AAD, je možná nebudete moct přihlásit. Chcete-li tento problém obejít, odstraňte její obsah ~ /. IdentityService/AadConfigurations. Pokud to není překážku, zadejte komentář na [tento problém](https://github.com/Microsoft/AzureStorageExplorer/issues/97).
+* Azurite nebyla ještě implementována plně všechna rozhraní API úložiště. Z toho důvodu může být neočekávané chyby nebo chování při použití Azurite k vývojovým úložištěm.
+* Ve výjimečných případech můžou uváznout stromu fokus na rychlý přístup. Chcete-li unstick fokus, můžete aktualizovat vše.
+* Nahrává se ze složky Onedrivu nefunguje z důvodu chyby v NodeJS. Chyb bylo opraveno, ale zatím nejsou integrované do elektronovým.
+* Při cílení na služby Azure Stack, odesílání určité soubory jako doplňovací objekty BLOB může selhat.
+* Po kliknutí na tlačítko "Storno" na úkol, může trvat nějakou dobu tuto úlohu zrušit. Důvodem je, že používáme popsané řešení filtr Storno [tady](https://github.com/Azure/azure-storage-node/issues/317).
+* Pokud se rozhodnete nesprávný certifikát PIN kód nebo čipová karta, je potřeba restartovat, aby měla zapomenout rozhodnutí Průzkumníka služby Storage.
+* Přejmenování objektů BLOB (jednotlivě nebo uvnitř kontejneru objektů blob přejmenováno) se nezachová snímky. Všechny ostatní vlastnosti a metadat pro objekty BLOB, soubory a entity jsou zachovány při přejmenování.
+* Azure Stack nepodporuje následující funkce a pokus o použití při práci s Azure Stack může vést k neočekávaným chybám:
+   * Sdílené složky
+   * Úrovně přístupu
+   * Obnovitelné odstranění
+* Elektronovým prostředí používané Průzkumníka služby Storage má potíže s hardwarovou akceleraci některé GPU (grafický procesor). Pokud Průzkumník služby Storage se zobrazuje hlavní okno prázdné (prázdné), můžete zkusit spustíte Průzkumníka služby Storage z příkazového řádku a zakázání GPU akceleraci tak, že přidáte `--disable-gpu` přepínače:
+
+```
+./StorageExplorer.exe --disable-gpu
+```
+
+* Pro uživatele systému Linux, budete muset nainstalovat [.NET Core 2.0](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x).
+* Pro uživatele v Ubuntu 14.04, budete muset ověřte, že je aktuální GCC – to můžete udělat spuštěním následujících příkazů a následného restartování počítače:
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* Pro uživatele v Ubuntu č. 17.04 budete muset nainstalovat GConf – to můžete udělat spuštěním následujících příkazů a následného restartování počítače:
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
 
 ## <a name="version-120"></a>Verzi 1.2.0
 06/12/2018
@@ -377,7 +441,7 @@ Tento článek obsahuje poznámky k verzi 1.2.0 Průzkumníka služby Azure Stor
     ```
 
 ## <a name="version-094-and-093"></a>Verze 0.9.4 a 0.9.3
-21. 01/2018
+21/01/2018
 
 ### <a name="new"></a>Nová
 * Existující okno Průzkumníka služby Storage bude znovu použít při:

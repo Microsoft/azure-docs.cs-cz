@@ -9,16 +9,16 @@ ms.technology: Speech
 ms.topic: article
 ms.date: 07/16/2018
 ms.author: fmegen
-ms.openlocfilehash: bbf10d9bd0912dab22c81e2bb850ede52a3bd9e3
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 9f761fed46f0730a64a984111da1bae1229cc93d
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41987596"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43127067"
 ---
 # <a name="quickstart-recognize-speech-in-java-on-android-using-the-speech-sdk"></a>Rychlý start: Rozpoznávat řeč v jazyce Java v Androidu pomocí sadou SDK pro řeč
 
-[!include[Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
+[!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 V tomto článku se dozvíte, jak vytvořit aplikaci v jazyce Java pro Android pomocí Cognitive Services SDK řeči přepisy převod řeči na text.
 Aplikace je založena na Microsoft Cognitive Services řeči Maven balíček SDK, verzi 0.6.0 a Android Studio 3.1.
@@ -61,7 +61,7 @@ Po spuštění nějakou dobu, by měl vyvolají nově vytvořený projekt Androi
 
 ## <a name="configure-your-project-for-the-speech-sdk"></a>Konfigurace projektu pro sadou SDK pro řeč
 
-[!include[License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
+[!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
 Aktuální verze sady SDK pro řeč Cognitive Services je `0.6.0`.
 
@@ -154,7 +154,7 @@ Textové a grafické uživatelské rozhraní verze by teď měl vypadat nějak t
 
 Tento snímek obrazovky dojde k závěru Android tohoto rychlého startu. Úplný projekt vzorový kód můžete stáhnout z úložiště ukázek.
 
-[!include[Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
+[!INCLUDE [Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 Hledat v této ukázce `quickstart/java-android` složky.
 
 ## <a name="next-steps"></a>Další postup
