@@ -5,21 +5,23 @@ services: functions
 author: ggailey777
 ms.service: functions
 ms.topic: include
-ms.date: 07/17/2018
+ms.date: 08/26/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: e8cb5dadb7eed5eb33c15d7a4d1d4640a10099c9
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: f0bcb2e7f99689d31be610f1523d2c57e332deb7
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40245781"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43049748"
 ---
 1. V **Průzkumníku řešení** klikněte pravým tlačítkem na požadovaný projekt a vyberte **Publikovat**.
 
 2. Vyberte **Aplikace Azure Function**, zvolte **Vytvořit novou** a potom vyberte **Publikovat**.
 
     ![Výběr cíle publikování](./media/functions-vstools-publish/functions-vstools-create-new-function-app.png)
+
+    Když povolíte **Spustit ze souboru Zip**, vaše aplikace funkcí se spouští přímo z balíčku pro nasazení. Další informace najdete v tématu věnovaném [spouštění Azure Functions ze souboru balíčku](../articles/azure-functions/run-functions-from-deployment-package.md).
 
 3. Pokud jste ještě nepřipojili Visual Studio k účtu Azure, vyberte **Přidat účet...** .
 

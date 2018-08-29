@@ -60,6 +60,10 @@ items:
     items:
     - name: Použití webu Azure Portal
       href: log-analytics-quick-create-workspace.md
+    - name: Použití Azure CLI
+      href: log-analytics-quick-create-workspace-cli.md
+    - name: Použití Azure Powershell
+      href: log-analytics-quick-create-workspace-posh.md
   - name: Shromažďování dat
     items:
     - name: Připojené zdroje
@@ -114,8 +118,6 @@ items:
     items:
     - name: Dokumentace k jazyku
       items:
-      - name: Přechod ze starší verze jazyka
-        href: log-analytics-log-search-transition.md
       - name: Referenční informace k jazyku
         href: https://docs.loganalytics.io
       - name: Začínáme
@@ -338,9 +340,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=log-analytics
   - name: Analýzy ve Windows
     href: https://www.microsoft.com/en-us/WindowsForBusiness/windows-analytics
-ms.openlocfilehash: 7f3e05c3eda4cdbfd7e0edcf61a7f1f6934be8e6
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 31d31932f941d7bf9c7b1b44a6f9ad7635c725bc
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42110157"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122990"

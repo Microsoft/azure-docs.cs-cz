@@ -7,8 +7,8 @@
 # Kurzy
 ## [Migrace SQL Serveru do offline Azure SQL DB](tutorial-sql-server-to-azure-sql.md)
 ## [Migrace SQL Serveru do online Azure SQL DB](tutorial-sql-server-azure-sql-online.md)
-## [Migrace SQL Serveru do Azure SQL DB MI](tutorial-sql-server-to-managed-instance.md)
-## [Migrace MySQL do Azure DB for MySQL](tutorial-mysql-azure-mysql-online.md)
+## [Migrace SQL Serveru do offline Azure SQL DB MI](tutorial-sql-server-to-managed-instance.md)
+## [Migrace MySQL do online Azure DB for MySQL](tutorial-mysql-azure-mysql-online.md)
 
 # Návody
 ## [Použití PowerShellu k migraci SQL Serveru do Azure SQL DB](howto-sql-server-to-azure-sql-powershell.md)
