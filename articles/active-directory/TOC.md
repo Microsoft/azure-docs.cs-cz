@@ -128,31 +128,6 @@
 #### [Registrace samoobslužného resetování hesla](user-help/active-directory-passwords-reset-register.md)
 
 
-## Správa zařízení
-### [Přehled](devices/overview.md)
-
-### Šablony Rychlý start
-#### [Nastavení zařízení s Windows 10 registrovaných v Azure AD](user-help/device-management-azuread-registered-devices-windows10-setup.md)
-#### [Nastavení zařízení připojených k Azure AD](user-help/device-management-azuread-joined-devices-setup.md)
-
-### Kurzy
-#### [Konfigurace připojení k hybridní službě Azure AD pro spravované domény](devices/hybrid-azuread-join-managed-domains.md)
-#### [Konfigurace připojení k hybridní službě Azure AD pro federované domény](devices/hybrid-azuread-join-federated-domains.md)
-#### [Ruční konfigurace připojení k hybridní službě Azure AD](devices/hybrid-azuread-join-manual-steps.md)
-#### [Konfigurace připojení k Azure AD během prvního spuštění Windows 10](devices/azuread-joined-devices-frx.md)
-
-### Návody
-#### [Plánování připojení ke službě Azure AD](devices/azureadjoin-plan.md)
-#### [Plánování implementace připojení k hybridní službě Azure AD](devices/hybrid-azuread-join-plan.md)
-#### [Řízení připojení vašich zařízení k hybridní službě Azure AD](devices/hybrid-azuread-join-control.md)
-#### [Přiřazení místních správců k zařízením připojeným k Azure AD](devices/assign-local-admin.md)
-#### [Řešení potíží s aktuálními počítači s Windows připojenými k hybridní službě Azure AD](devices/troubleshoot-hybrid-join-windows-current.md)
-#### [Řešení potíží s počítači starší verze s Windows připojenými k hybridní službě Azure AD](devices/troubleshoot-hybrid-join-windows-legacy.md)
-
-### Koncepty
-#### [Správa zařízení pomocí webu Azure Portal](devices/device-management-azure-portal.md)
-#### [Nejčastější dotazy](devices/faq.md)
-
 ## Správa aplikací
 ### [Přehled](manage-apps/what-is-application-management.md)
 ### [Začínáme](manage-apps/plan-an-application-integration.md)

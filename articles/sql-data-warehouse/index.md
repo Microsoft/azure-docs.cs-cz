@@ -6,17 +6,17 @@ author: hirokib
 manager: craigg-msft
 layout: LandingPage
 ms.service: sql-data-warehouse
-ms.topic: landing-page
+ms.topic: overview
 ms.component: design
 ms.date: 04/11/2018
 ms.author: elbutter
 ms.reviewer: igorstan
-ms.openlocfilehash: 28e610f2d7b2f7a30045012eeac9c135e428fd62
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 4c716999d082d33536d70465a23e336ee989d065
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31791405"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43143384"
 ---
 # <a name="sql-data-warehouse-documentation"></a>Dokumentace ke službě SQL Data Warehouse
 

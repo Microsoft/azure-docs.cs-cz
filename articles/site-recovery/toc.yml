@@ -80,8 +80,6 @@ items:
         href: physical-azure-architecture.md
       - name: Podpora více tenantů pro replikaci VMware do Azure
         href: vmware-azure-multi-tenant-overview.md
-      - name: Informace o službě Mobility
-        href: vmware-azure-install-mobility-service.md
       - name: Možnosti umístění navrácení služeb po obnovení
         href: concepts-types-of-failback.md
     - name: Replikace do sekundární lokality
@@ -190,26 +188,26 @@ items:
       items:
       - name: Replikace virtuálních počítačů VMware do Azure s využitím PowerShellu
         href: vmware-azure-disaster-recovery-powershell.md
-      - name: Zotavení po havárii fyzických serverů do Azure
-        href: physical-azure-disaster-recovery.md
       - name: Nastavení zdrojového prostředí pro virtuální počítače VMware
         href: vmware-azure-set-up-source.md
-      - name: Nastavení zdrojového prostředí pro fyzické servery
-        href: physical-azure-set-up-source.md
       - name: Nasazení konfiguračního serveru pro replikaci VMware
         href: vmware-azure-deploy-configuration-server.md
       - name: Nastavení cílového prostředí pro virtuální počítače VMware
         href: vmware-azure-set-up-target.md
-      - name: Nastavení cílového prostředí pro fyzické servery
-        href: physical-azure-set-up-target.md
       - name: Konfigurace nastavení replikace
         href: vmware-azure-set-up-replication.md
-      - name: Vyloučení disků z replikace
-        href: vmware-azure-exclude-disk.md
       - name: Povolení replikace virtuálních počítačů VMware
         href: vmware-azure-enable-replication.md
+      - name: Vyloučení disků z replikace
+        href: vmware-azure-exclude-disk.md
       - name: Víceklientské prostředí s CSP pro virtuální počítače VMWare
         href: vmware-azure-multi-tenant-csp-disaster-recovery.md
+      - name: Nastavení zdrojového prostředí pro fyzické servery
+        href: physical-azure-set-up-source.md
+      - name: Nastavení cílového prostředí pro fyzické servery
+        href: physical-azure-set-up-target.md
+      - name: Zotavení po havárii fyzických serverů do Azure
+        href: physical-azure-disaster-recovery.md
     - name: Nasazení služby Mobility
       items:
       - name: Přehled služby Mobility
@@ -218,24 +216,24 @@ items:
         href: vmware-azure-mobility-install-configuration-mgr.md
     - name: Převzetí služeb při selhání a navrácení služeb po obnovení
       items:
-      - name: Spuštění postupu zotavení po havárii do Azure
-        href: site-recovery-test-failover-to-azure.md
       - name: Nastavení plánů obnovení
         href: site-recovery-create-recovery-plans.md
       - name: Přidání runbooků Azure do plánů obnovení
         href: site-recovery-runbook-automation.md
+      - name: Spuštění postupu zotavení po havárii do Azure
+        href: site-recovery-test-failover-to-azure.md
+      - name: Spuštění převzetí služeb při selhání do Azure
+        href: site-recovery-failover.md
+      - name: Znovunastavení ochrany z Azure do VMware v místním prostředí
+        href: vmware-azure-reprotect.md
+      - name: Navrácení služeb po obnovení z Azure na VMware
+        href: vmware-azure-failback.md
       - name: Nastavení a správa procesních serverů pro navrácení služeb po obnovení v Azure
         href: vmware-azure-set-up-process-server-azure.md
       - name: Nastavení hlavního linuxového cílového serveru pro navrácení služeb po obnovení
         href: vmware-azure-install-linux-master-target.md
-      - name: Spuštění převzetí služeb při selhání do Azure
-        href: site-recovery-failover.md
       - name: Spuštění převzetí služeb při selhání a navrácení služeb po obnovení pro fyzické servery
         href: physical-to-azure-failover-failback.md
-      - name: Navrácení služeb po obnovení z Azure na VMware
-        href: vmware-azure-failback.md
-      - name: Znovunastavení ochrany z Azure do VMware v místním prostředí
-        href: vmware-azure-reprotect.md
     - name: Spravovat
       items:
       - name: Správa konfiguračního serveru pro replikaci VMware
@@ -390,9 +388,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: Aktualizace služeb
     href: https://azure.microsoft.com/updates/?product=site-recovery
-ms.openlocfilehash: cdc1990f71a38e7e0740456ccc8fb82e8ed1b5f9
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: f0469d554b25565411bb8c484f3d3937bb9a87f6
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42914914"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126066"

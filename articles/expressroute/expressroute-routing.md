@@ -194,8 +194,7 @@ Můžete zakoupit víc než jeden okruh ExpressRoute na geopolitickou oblast. Po
 | Indie – jih | 12076:51019 |
 | Indie – západ | 12076:51018 |
 | Indie – střed | 12076:51017 |
-| 
-  **Jižní Korea** | |
+| **Jižní Korea** | |
 | Jižní Korea – jih | 12076:51028 |
 | Jižní Korea – střed | 12076:51029 |
 
