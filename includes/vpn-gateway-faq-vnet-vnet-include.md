@@ -9,10 +9,10 @@ ms.date: 04/05/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 66ff1e2e02728e05cb0aeedce90de1882a8804ce
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.sourcegitcommit: baed5a8884cb998138787a6ecfff46de07b8473d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
+ms.lasthandoff: 08/28/2018
 ms.locfileid: "30921304"
 ---
 Nejčastější dotazy týkající se propojení VNet-to-VNet se vztahují k připojení služby VPN Gateway. Pokud hledáte informace o VNet Peering, přečtěte si téma [Partnerské vztahy virtuálních sítí](../articles/virtual-network/virtual-network-peering-overview.md).
