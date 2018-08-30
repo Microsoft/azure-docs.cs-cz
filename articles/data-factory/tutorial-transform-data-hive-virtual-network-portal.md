@@ -1,5 +1,5 @@
 ---
-title: Transformace dat pomocí Hivu ve službě Azure Virtual Network | Microsoft Docs
+title: Transformace dat pomocí Hivu ve službě Azure Virtual Network | Dokumentace Microsoftu
 description: Tento kurz obsahuje podrobné pokyny pro transformaci dat pomocí aktivity Hivu v Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -9,15 +9,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: tutorial
 ms.date: 01/04/2018
 ms.author: douglasl
-ms.openlocfilehash: 5959eeea7e5a16170414c7ef8036093ce122681d
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 60dc0e88998580732b50cb202fb5d00a7cfcae21
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045666"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43106677"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Transformace dat ve službě Azure Virtual Network pomocí aktivity Hivu v Azure Data Factory
 V tomto kurzu pomocí webu Azure Portal vytvoříte kanál Data Factory, který transformuje data pomocí aktivity Hivu v clusteru HDInsight ve službě Azure Virtual Network. V tomto kurzu provedete následující kroky:
@@ -69,15 +69,15 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
 1. Spusťte webový prohlížeč **Microsoft Edge** nebo **Google Chrome**. Uživatelské rozhraní služby Data Factory podporují v současnosti jenom webové prohlížeče Microsoft Edge a Google Chrome.
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).    
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).    
 2. V nabídce vlevo klikněte na **Nový**, klikněte na **Data + analýzy** a pak na **Data Factory**. 
    
-   ![Nový -> Objekt pro vytváření dat](./media/tutorial-transform-data-using-hive-in-vnet-portal/new-data-factory-menu.png)
+   ![Nový -> Datová továrna](./media/tutorial-transform-data-using-hive-in-vnet-portal/new-data-factory-menu.png)
 3. Na stránce **Nová datová továrna** jako **název** zadejte **ADFTutorialHiveFactory**. 
       
      ![Stránka Nová datová továrna](./media/tutorial-transform-data-using-hive-in-vnet-portal/new-azure-data-factory.png)
  
-   Název objektu pro vytváření dat Azure musí být **globálně jedinečný**. Pokud se zobrazí následující chyba, změňte název datové továrny (například na vaše_jméno_MyAzureSsisDataFactory) a zkuste to znovu. Pravidla pojmenování artefaktů služby Data Factory najdete v článku [Data Factory – pravidla pojmenování](naming-rules.md).
+   Název datové továrny Azure musí být **globálně jedinečný**. Pokud se zobrazí následující chyba, změňte název datové továrny (například na vaše_jméno_MyAzureSsisDataFactory) a zkuste to znovu. Pravidla pojmenování artefaktů služby Data Factory najdete v článku [Data Factory – pravidla pojmenování](naming-rules.md).
   
        `Data factory name “MyAzureSsisDataFactory” is not available`
 3. Vyberte své **předplatné** Azure, ve kterém chcete vytvořit datovou továrnu. 
@@ -88,7 +88,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
          
       Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-overview.md).  
 4. Jako **verzi** vyberte **V2**.
-5. Vyberte **umístění** pro objekt pro vytváření dat. V seznamu se zobrazí pouze podporovaná umístění pro vytváření datových továren.
+5. Vyberte **umístění** pro datovou továrnu. V seznamu se zobrazí pouze podporovaná umístění pro vytváření datových továren.
 6. Zaškrtněte **Připnout na řídicí panel**.     
 7. Klikněte na možnost **Vytvořit**.
 8. Na řídicím panelu vidíte následující dlaždice se statusem: **Nasazování datové továrny**. 
@@ -96,7 +96,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
     ![nasazování dlaždice datové továrny](media/tutorial-transform-data-using-hive-in-vnet-portal/deploying-data-factory.png)
 9. Po vytvoření se zobrazí stránka **Datová továrna**, jak je znázorněno na obrázku.
    
-   ![Domovská stránka objektu pro vytváření dat](./media/tutorial-transform-data-using-hive-in-vnet-portal/data-factory-home-page.png)
+   ![Domovská stránka datové továrny](./media/tutorial-transform-data-using-hive-in-vnet-portal/data-factory-home-page.png)
 10. Kliknutím na dlaždici **Vytvořit a monitorovat** otevřete na samostatné kartě uživatelské rozhraní služby Data Factory.
 11. Na stránce **Začínáme** přepněte na levém panelu na kartu **Upravit**, jak je znázorněno na následujícím obrázku: 
 

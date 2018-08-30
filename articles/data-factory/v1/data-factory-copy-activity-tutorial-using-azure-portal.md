@@ -11,16 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 09cad6b76b2fdefe1163530e5437427faf29d72f
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 1373882fa64ac334b92dc772fc04d4b40260cc25
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38299917"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43093404"
 ---
 # <a name="tutorial-use-azure-portal-to-create-a-data-factory-pipeline-to-copy-data"></a>Kurz: Použití portálu Azure Portal k vytvoření kanálu Data Factory pro kopírování dat 
 > [!div class="op_single_selector"]
@@ -76,14 +76,14 @@ Objekt pro vytváření dat může mít jeden nebo víc kanálů. Kanál může 
 
 1. Po přihlášení k webu [Azure Portal](https://portal.azure.com/) klikněte v levé nabídce na **Vytvořit prostředek**, pak na **Data a analýzy** a pak klikněte na **Data Factory**. 
    
-   ![Nový -> Objekt pro vytváření dat](./media/data-factory-copy-activity-tutorial-using-azure-portal/NewDataFactoryMenu.png)    
+   ![Nový -> Datová továrna](./media/data-factory-copy-activity-tutorial-using-azure-portal/NewDataFactoryMenu.png)    
 2. V okně **Nový objekt pro vytváření dat**:
    
    1. Do pole **Název** zadejte **ADFTutorialDataFactory**. 
       
          ![Okno Nový objekt pro vytváření dat](./media/data-factory-copy-activity-tutorial-using-azure-portal/getstarted-new-data-factory.png)
       
-       Název objektu pro vytváření dat Azure musí být **globálně jedinečný**. Pokud se zobrazí následující chyba, změňte název objektu pro vytváření dat (třeba na váš_název_ADFTutorialDataFactory) a zkuste to znovu. V tématu [Objekty pro vytváření dat – pravidla pojmenování](data-factory-naming-rules.md) najdete pravidla pojmenování artefaktů služby Data Factory.
+       Název datové továrny Azure musí být **globálně jedinečný**. Pokud se zobrazí následující chyba, změňte název objektu pro vytváření dat (třeba na váš_název_ADFTutorialDataFactory) a zkuste to znovu. V tématu [Objekty pro vytváření dat – pravidla pojmenování](data-factory-naming-rules.md) najdete pravidla pojmenování artefaktů služby Data Factory.
       
            Data factory name “ADFTutorialDataFactory” is not available  
       
@@ -110,7 +110,7 @@ Objekt pro vytváření dat může mít jeden nebo víc kanálů. Kanál může 
     ![nasazování dlaždice datové továrny](media/data-factory-copy-activity-tutorial-using-azure-portal/deploying-data-factory.png)
 4. Po vytvoření se zobrazí okno **Objekt pro vytváření dat**, jak je znázorněno na obrázku.
    
-   ![Domovská stránka objektu pro vytváření dat](./media/data-factory-copy-activity-tutorial-using-azure-portal/getstarted-data-factory-home-page.png)
+   ![Domovská stránka datové továrny](./media/data-factory-copy-activity-tutorial-using-azure-portal/getstarted-data-factory-home-page.png)
 
 ## <a name="create-linked-services"></a>Vytvoření propojených služeb
 V datové továrně vytvoříte propojené služby, abyste svá úložiště dat a výpočetní služby spojili s datovou továrnou. V tomto kurzu nebudete používat žádnou výpočetní službu jako je Azure HDInsight nebo Azure Data Lake Analytics. Budete používat dvě úložiště dat typu Azure Storage (zdroj) a Azure SQL Database (cíl). 

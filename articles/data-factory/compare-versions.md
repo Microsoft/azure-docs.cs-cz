@@ -9,15 +9,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: overview
 ms.date: 04/09/2018
 ms.author: makromer
-ms.openlocfilehash: 4821ce5911508cc90c3a784d617a4528ecdeb384
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: ca00a414402c1cfdef55cfbde9291688f091bf77
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37053292"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43095915"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>Porovnání služby Azure Data Factory s verzí 1 služby Data Factory
 Tento článek porovnává Data Factory s verzí 1 služby Data Factory. Se službou Data Factory se můžete seznámit v článku [Úvod do Azure Data Factory](introduction.md). S verzí 1 této služby se můžete seznámit v článku [Úvod do Azure Data Factory](v1/data-factory-introduction.md). 
@@ -131,7 +131,7 @@ Sady SDK aktualizované v aktuální verzi nejsou zpětně kompatibilní s klien
 
 | &nbsp; | V2 | V1 |
 | ------ | -- | -- | 
-| Azure Portal | [Ano](quickstart-create-data-factory-portal.md) | [Ano](data-factory-build-your-first-pipeline-using-editor.md) |
+| portál Azure | [Ano](quickstart-create-data-factory-portal.md) | [Ano](data-factory-build-your-first-pipeline-using-editor.md) |
 | Azure PowerShell | [Ano](quickstart-create-data-factory-powershell.md) | [Ano](data-factory-build-your-first-pipeline-using-powershell.md) |
 | .NET SDK | [Ano](quickstart-create-data-factory-dot-net.md) | [Ano](data-factory-build-your-first-pipeline-using-vs.md) |
 | REST API | [Ano](quickstart-create-data-factory-rest-api.md) | [Ano](data-factory-build-your-first-pipeline-using-rest-api.md) |

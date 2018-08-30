@@ -6,16 +6,16 @@ services: hdinsight
 ms.service: hdinsight
 author: jasonwhowell
 ms.author: jasonh
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017,mvc
 ms.topic: quickstart
 ms.date: 05/07/2018
-ms.openlocfilehash: 4f41dd2fafb65c5fe4fa38cafb63d3d691a953d4
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 9e58f0a9de20acd2a8d65f6a2252e2d439beb250
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39595609"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43049554"
 ---
 # <a name="quickstart-get-started-with-hadoop-and-hive-in-azure-hdinsight-using-resource-manager-template"></a>Rychlý start: Začínáme s Hadoopem a Hivem ve službě Azure HDInsight pomocí šablony Resource Manageru
 

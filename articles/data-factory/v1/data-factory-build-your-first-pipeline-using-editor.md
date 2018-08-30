@@ -11,16 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: d6d6282c3e997a41a27fb65ed7c06fd1bc7916f2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 332ba810aa9da611f998e5865344655c3c87c5d1
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39444656"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43109417"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>Kurz: Vytvoření první datové továrny pomocí webu Azure Portal
 > [!div class="op_single_selector"]

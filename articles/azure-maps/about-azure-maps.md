@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: d0ec146d276f72abf4cbbe3da4d11c0d5539df6d
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: 803e82a294b64452ffd788880097b9d86ac1065b
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39144189"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42745286"
 ---
 # <a name="what-is-azure-maps"></a>Co je služba Azure Maps?
 Azure Maps je kolekce geoprostorových služeb založená na čerstvých mapových datech, takže můžete pro své webové a mobilní aplikace poskytovat přesný geografický kontext. Obsahuje rozhraní REST API pro vykreslování map, hledání bodů zájmu a tras k nim, dopravní informace, časová pásma a služby převodu IP adresy na polohu. Tato rozhraní API můžete používat se známými nástroji k rychlému vývoji a škálování řešení, která integrují informace o poloze do vašich řešení v Azure. Spolu s rozhraními REST API poskytuje webové ovládání v JavaScriptu pro zajištění snadného, flexibilního a přenositelného vývoje napříč různými médii. 
@@ -98,7 +98,7 @@ Informace o rozhraních REST API pro službu IP to Location najdete na stránce 
 
 Azure Maps podporuje mobilitu a může se využívat aplikacemi na různých platformách. Používá programovací model, který není závislý na jazyku, a podporuje výstup JSON prostřednictvím [rozhraní REST API](https://docs.microsoft.com/rest/api/maps/). 
 
-Kromě toho Azure Maps nabízí pohodlný [mapový ovládací prvek v JavaScriptu](https://docs.microsoft.com/javascript/api/azure-maps-javascript/?view=azure-iot-typescript-latest) s jednoduchým programovacím modelem pro rychlý a snadný vývoj webových i mobilních aplikací. 
+Kromě toho Azure Maps nabízí pohodlný [mapový ovládací prvek v JavaScriptu](https://docs.microsoft.com/javascript/api/azure-maps-control/models?view=azure-iot-typescript-latest) s jednoduchým programovacím modelem pro rychlý a snadný vývoj webových i mobilních aplikací. 
 
 
 ## <a name="usage"></a>Využití

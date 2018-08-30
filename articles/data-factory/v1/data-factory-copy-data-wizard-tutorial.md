@@ -10,16 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c0823fa839df98fa81f42bfbb3f7cd2bec6d7c1a
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 85cea4bea0b1cff65464a2ad692e500efdc50c10
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38582532"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43095370"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-data-factory-copy-wizard"></a>Kurz: Vytvoření kanálu s aktivitou kopírování pomocí průvodce kopírováním služby Data Factory.
 > [!div class="op_single_selector"]
@@ -48,10 +48,10 @@ Než se pustíte do tohoto kurzu, dokončete požadované kroky uvedené v člá
 ## <a name="create-data-factory"></a>Vytvoření objektu pro vytváření dat
 V tomto kroku vytvoříte pomocí webu Azure Portal objekt pro vytváření dat Azure s názvem **ADFTutorialDataFactory**.
 
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. V nabídce v levém horním rohu klikněte na **Vytvořit prostředek**, pak na **Data a analýzy** a pak klikněte na **Data Factory**. 
    
-   ![Nový -> Objekt pro vytváření dat](./media/data-factory-copy-data-wizard-tutorial/new-data-factory-menu.png)
+   ![Nový -> Datová továrna](./media/data-factory-copy-data-wizard-tutorial/new-data-factory-menu.png)
 2. V okně **Nový objekt pro vytváření dat**:
    
    1. Do pole **Název** zadejte **ADFTutorialDataFactory**.
@@ -72,7 +72,7 @@ V tomto kroku vytvoříte pomocí webu Azure Portal objekt pro vytváření dat 
        ![Okno Nový objekt pro vytváření dat](media/data-factory-copy-data-wizard-tutorial/new-data-factory-blade.png)            
 3. Po vytvoření se zobrazí okno **Objekt pro vytváření dat**, jak je znázorněno na následujícím obrázku:
    
-   ![Domovská stránka objektu pro vytváření dat](./media/data-factory-copy-data-wizard-tutorial/getstarted-data-factory-home-page.png)
+   ![Domovská stránka datové továrny](./media/data-factory-copy-data-wizard-tutorial/getstarted-data-factory-home-page.png)
 
 ## <a name="launch-copy-wizard"></a>Spuštění průvodce kopírováním
 1. V okně Data Factory klikněte na **Kopírovat data**. Spustí se **průvodce kopírováním**. 

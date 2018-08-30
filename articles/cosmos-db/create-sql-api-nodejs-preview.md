@@ -3,7 +3,7 @@ title: 'Azure Cosmos DB: Vytvoření aplikace s využitím Node.js a rozhraní S
 description: Tento článek představuje vzorový kód Node.js, který můžete použít k připojení a dotazování služby Azure Cosmos DB přes rozhraní SQL API.
 services: cosmos-db
 author: deborahc
-manager: andrl
+manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.custom: quick start connect, mvc
@@ -11,12 +11,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 07/30/2018
 ms.author: dech
-ms.openlocfilehash: 23b7c5d332bd5fb75936c95ab9e38d17e1573999
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 96d09ff6c43a26f1ebf36fa5d5d113627cbc06e9
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42022595"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43043249"
 ---
 # <a name="azure-cosmos-db-build-a-nodejs-app-using-sql-api-javascript-sdk-20-preview-and-the-azure-portal"></a>Azure Cosmos DB: Vytvoření aplikace Node.js s využitím rozhraní SQL API, sady JavaScript SDK 2.0 (Preview) a webu Azure Portal 
 

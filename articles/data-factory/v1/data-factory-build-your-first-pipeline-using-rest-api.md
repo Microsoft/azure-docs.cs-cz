@@ -1,5 +1,5 @@
 ---
-title: Sestavení prvního objektu pro vytváření dat (REST) | Microsoft Docs
+title: Sestavení prvního objektu pro vytváření dat (REST) | Dokumentace Microsoftu
 description: V tomto kurzu vytvoříte pomocí rozhraní REST API služby Data Factory ukázkový kanál služby Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -10,16 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: tutorial
 ms.date: 11/01/2017
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 25667051fa0a1484204f672c78fb94136ac84469
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: d0bb951e7392eb0f818ed0e9b5c17e203f94e753
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054700"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43087846"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>Kurz: Sestavení prvního objektu pro vytváření dat Azure pomocí rozhraní REST API služby Data Factory
 > [!div class="op_single_selector"]

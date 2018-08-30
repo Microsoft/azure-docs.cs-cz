@@ -2,19 +2,18 @@
 title: Přizpůsobení zobrazení operátora v Azure IoT Central | Microsoft Docs
 description: Jako tvůrce můžete přizpůsobit zobrazení operátora ve vaší aplikaci Azure IoT Central.
 author: sandeeppujar
-ms.author: sadeepu
+ms.author: sandeepu
 ms.date: 04/16/2018
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-manager: peterpr
-ms.openlocfilehash: ddb6e6d7859227b8eec7f13b95fab06b333dacda
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: c0b42c3efd5e015eaf1fbd750f835d8de8818de9
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35235364"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43185847"
 ---
 # <a name="tutorial-customize-the-azure-iot-central-operators-view"></a>Kurz: Přizpůsobení zobrazení Azure IoT Central pro operátora
 

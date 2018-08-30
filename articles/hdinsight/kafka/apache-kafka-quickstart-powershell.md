@@ -5,16 +5,16 @@ services: hdinsight
 ms.service: hdinsight
 author: jasonwhowell
 ms.author: jasonh
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.custom: mvc,hdinsightactive
 ms.topic: quickstart
 ms.date: 04/16/2018
-ms.openlocfilehash: 25064873b830a8f323a8ee2287a3d69cf9c4013f
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 756733ec98912685af438861d54db0d18e15a947
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621510"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43046446"
 ---
 # <a name="quickstart-create-a-kafka-on-hdinsight-cluster"></a>Rychlý start: Vytvoření systému Kafka v clusteru HDInsight
 

@@ -7,13 +7,13 @@ author: tomarcher
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: quickstart
-ms.date: 08/21/2018
-ms.openlocfilehash: 66106346b298fae22cce47081916a6c8eec8fd40
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.date: 08/22/2018
+ms.openlocfilehash: 79b10a30eea9e19f7ec21f9f9b7ebb95b4c34bf2
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40250649"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42813381"
 ---
 # <a name="use-ansible-to-manage-a-linux-virtual-machine-in-azure"></a>Použití Ansible ke správě virtuálního počítače s Linuxem v Azure
 Ansible umožňuje automatizovat nasazování a konfiguraci prostředků ve vašem prostředí. Pomocí Ansible můžete spravovat virtuální počítače Azure stejně jako jakékoli jiné prostředky. V tomto článku se dozvíte, jak pomocí playbooku Ansible spustit a zastavit virtuální počítač s Linuxem. 
@@ -22,21 +22,7 @@ Ansible umožňuje automatizovat nasazování a konfiguraci prostředků ve vaš
 
 - **Předplatné Azure** – Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-- **Nakonfigurujte Azure Cloud Shell** nebo **Nainstalujte a nakonfigurujte Ansible na virtuálním počítači s Linuxem**.
-
-  **Konfigurace služby Azure Cloud Shell**
-
-  1. **Konfigurace služby Azure Cloud Shell** – Pokud se službou Azure Cloud Shell teprve začínáte, v článku [Rychlý start pro Bash ve službě Azure Cloud Shell](/azure/cloud-shell/quickstart) se dozvíte, jak spustit a nakonfigurovat Cloud Shell. 
-
-  1. **Virtuální počítač s Linuxem** – Pokud nemáte přístup k virtuálnímu počítači s Linuxem, můžete si [vytvořit virtuální počítač pomocí Ansible](ansible-create-vm.md).
-
-  **-- nebo --**
-
-  **Instalace a konfigurace Ansible na virtuálním počítači s Linuxem**
-
-  1. **Instalace Ansible** –Nainstalujte Ansible na [podporovanou platformu Linux](/azure/virtual-machines/linux/ansible-install-configure#install-ansible-on-an-azure-linux-virtual-machine).
-
-  1. **Konfigurace Ansible** - [Vytvoření přihlašovacích údajů Azure a konfigurace Ansible](/azure/virtual-machines/linux/ansible-install-configure#create-azure-credentials)
+- [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
 
 ## <a name="use-ansible-to-deallocate-stop-an-azure-virtual-machine"></a>Použití Ansible k uvolnění (zastavení) virtuálního počítače Azure
 Tato část ukazuje, jak pomocí Ansible uvolnit (zastavit) virtuální počítač Azure.

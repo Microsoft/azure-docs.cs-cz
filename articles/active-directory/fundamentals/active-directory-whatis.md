@@ -16,10 +16,10 @@ ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: it-pro
 ms.openlocfilehash: 5087f759d682382bc22b5f95f462fe0f08619cc8
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
+ms.lasthandoff: 08/29/2018
 ms.locfileid: "39449990"
 ---
 # <a name="what-is-azure-active-directory"></a>Představení služby Azure Active Directory

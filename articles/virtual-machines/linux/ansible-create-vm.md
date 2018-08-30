@@ -7,13 +7,13 @@ author: tomarcher
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: quickstart
-ms.date: 08/21/2018
-ms.openlocfilehash: a60ba863dbbd308219f4229319fb98c72180114d
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.date: 08/22/2018
+ms.openlocfilehash: ff9929d8f2da66b8aa24160c321c9158c832dbc0
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40250631"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42815181"
 ---
 # <a name="use-ansible-to-create-a-linux-virtual-machine-in-azure"></a>Použití Ansible k vytvoření virtuálního počítače s Linuxem v Azure
 Ansible umožňuje pomocí deklarativního jazyka automatizovat vytváření, konfiguraci a nasazování prostředků Azure prostřednictvím *playbooků* Ansible. Jednotlivé části tohoto článku ukazují, jak můžou vypadat jednotlivé části playbooku Ansible pro vytváření a konfiguraci různých aspektů virtuálního počítače s Linuxem. [Kompletní playbook Ansible](#complete-sample-ansible-playbook) je uvedený na konci tohoto článku.
@@ -22,19 +22,7 @@ Ansible umožňuje pomocí deklarativního jazyka automatizovat vytváření, ko
 
 - **Předplatné Azure** – Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-- **Nakonfigurujte Azure Cloud Shell** nebo **Nainstalujte a nakonfigurujte Ansible na virtuálním počítači s Linuxem**.
-
-  **Konfigurace služby Azure Cloud Shell**
-
-  1. **Konfigurace služby Azure Cloud Shell** – Pokud se službou Azure Cloud Shell teprve začínáte, v článku [Rychlý start pro Bash ve službě Azure Cloud Shell](/azure/cloud-shell/quickstart) se dozvíte, jak spustit a nakonfigurovat Cloud Shell. 
-
-  **-- nebo --**
-
-  **Instalace a konfigurace Ansible na virtuálním počítači s Linuxem**
-
-  1. **Instalace Ansible** –Nainstalujte Ansible na [podporovanou platformu Linux](/azure/virtual-machines/linux/ansible-install-configure#install-ansible-on-an-azure-linux-virtual-machine).
-
-  1. **Konfigurace Ansible** - [Vytvoření přihlašovacích údajů Azure a konfigurace Ansible](/azure/virtual-machines/linux/ansible-install-configure#create-azure-credentials)
+- [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)]
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 Ansible potřebuje skupinu prostředků, ve které jsou nasazené vaše prostředky. Následující část ukázkového playbooku Ansible vytvoří skupinu prostředků `myResourceGroup` v umístění `eastus`:

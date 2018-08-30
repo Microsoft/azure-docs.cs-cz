@@ -1,5 +1,5 @@
 ---
-title: Rozhraní API a nástroje služby Azure Batch pro vývojáře | Microsoft Docs
+title: Rozhraní API a nástroje služby Azure Batch pro vývojáře | Dokumentace Microsoftu
 description: Přečtěte si o dostupných rozhraních API a nástrojích pro vývoj řešení pomocí služby Azure Batch.
 services: batch
 author: dlepow
@@ -8,12 +8,12 @@ ms.service: batch
 ms.topic: get-started-article
 ms.date: 05/15/2018
 ms.author: danlep
-ms.openlocfilehash: 1e7ec091bb2e4ceee84b9451456b1e5b386dc648
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 3f2551fbc91b91cdc5f7d6e764c5345ddbd18544
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173924"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43121980"
 ---
 # <a name="overview-of-batch-apis-and-tools"></a>Přehled rozhraní API a nástrojů služby Batch
 
@@ -83,7 +83,7 @@ Tady je několik dalších nástrojů, které můžou být užitečné při sest
 
 
 [azure_storage]: https://azure.microsoft.com/services/storage/
-[api_java]: /java/api/overview/azure/batch/clientlibrary:
+[api_java]: /java/api/overview/azure/batch
 [api_java_mgmt]: /java/api/overview/azure/batch/managementapi
 [api_java_jar]: http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-batch%22
 [api_java_mgmt_jar]: http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-mgmt-batch%22

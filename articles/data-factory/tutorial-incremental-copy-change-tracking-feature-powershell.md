@@ -10,15 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
-ms.openlocfilehash: 8003f76c9483c06fbc7f594e98c3cd0e6fc8acf7
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 246b423e69fa8fb73db45f44fa17c1bc65407681
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "41920993"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43090721"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Přírůstkové kopírování dat z Azure SQL Database do Azure Blob Storage s využitím informací sledování změn 
 V tomto kurzu vytvoříte datovou továrnu Azure s kanálem, který načítá rozdílová data na základě **sledování změn** ve zdrojové databázi Azure SQL do úložiště objektů blob Azure.  

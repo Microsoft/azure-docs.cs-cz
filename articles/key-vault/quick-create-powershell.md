@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 05/10/2018
+ms.date: 08/28/2018
 ms.author: barclayn
-ms.openlocfilehash: 381cda9072e1433048611628c692fa72ede3dceb
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 50448691fb136278cf7fdf3687ffb3b13fbb54ca
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42023725"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122259"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-powershell"></a>Rychlý start: Nastavení a načtení tajného klíče ze služby Azure Key Vault pomocí PowerShellu
 
@@ -31,7 +31,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použít modul Azure PowerShell verze 5.1.1 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Login-AzureRmAccount` pro vytvoření připojení k Azure.
 
-```azurepowershell
+```azurepowershell-interactive
 Login-AzureRmAccount
 ```
 
@@ -39,7 +39,7 @@ Login-AzureRmAccount
 
 Vytvořte skupinu prostředků Azure pomocí příkazu [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). Skupina prostředků je logický kontejner, ve kterém se nasazují a spravují prostředky Azure. 
 
-```azurepowershell
+```azurepowershell-interactive
 New-AzureRmResourceGroup -Name ContosoResourceGroup -Location EastUS
 ```
 
@@ -53,7 +53,7 @@ Přestože v tomto rychlém startu jako název služby Key Vault používáme �
 - **Název skupiny prostředků:** ContosoResourceGroup
 - **Umístění:** Východní USA
 
-```azurepowershell
+```azurepowershell-interactive
 New-AzureRmKeyVault -VaultName 'Contoso-Vault2' -ResourceGroupName 'ContosoResourceGroup' -Location 'East US'
 ```
 
@@ -72,19 +72,19 @@ Pokud chcete do trezoru přidat tajný klíč, stačí provést několik kroků.
 
 Nejprve převeďte hodnotu Pa$$w0rd na zabezpečený řetězec zadáním:
 
-```azurepowershell
+```azurepowershell-interactive
 $secretvalue = ConvertTo-SecureString 'Pa$$w0rd' -AsPlainText -Force
 ```
 
 Pak zadáním následujících příkazů PowerShellu vytvořte ve službě Key Vault tajný klíč **ExamplePassword** s hodnotou **Pa$$w0rd**:
 
-```azurepowershell
+```azurepowershell-interactive
 $secret = Set-AzureKeyVaultSecret -VaultName 'ContosoKeyVault' -Name 'ExamplePassword' -SecretValue $secretvalue
 ```
 
 Pokud chcete zobrazit hodnotu v tajném kódu jako prostý text:
 
-```azurepowershell
+```azurepowershell-interactive
 (Get-AzureKeyVaultSecret -vaultName "Contosokeyvault" -name "ExamplePassword").SecretValueText
 ```
 
@@ -96,7 +96,7 @@ Právě jste vytvořili službu Key Vault, uložili jste tajný klíč a načetl
 
 Pokud už je nepotřebujete, můžete k odebrání skupiny prostředků, služby Key Vault a všech souvisejících prostředků použít příkaz [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup).
 
-```azurepowershell
+```azurepowershell-interactive
 Remove-AzureRmResourceGroup -Name ContosoResourceGroup
 ```
 

@@ -1,5 +1,5 @@
 ---
-title: Přehled služby Microsoft Azure Data Box Disk | Microsoft Docs
+title: Microsoft Azure Data Box Disk – přehled | Microsoft Docs
 description: Tento článek popisuje službu Azure Data Box Disk, což je cloudové řešení, které umožňuje přenášet velké objemy dat do Azure.
 services: databox
 documentationcenter: NA
@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: overview
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 07/17/2018
+ms.date: 08/28/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand what Data Box Disk is and how it works so I can use it to import on-premises data into Azure.
-ms.openlocfilehash: 22211f52f6b9a16f785cacb9364ebe5b74617453
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: f2e1a59584507b52d0a834af1869e3e9f2db5f07
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126622"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43127360"
 ---
 # <a name="what-is-azure-data-box-disk-preview"></a>Co je Azure Data Box Disk? (Preview)
 
@@ -96,7 +96,7 @@ Další informace najdete v článku, který se věnuje [zabezpečení a ochran�
 | Datové rozhraní                                          | USB   |
 | Zabezpečení                                                | Předběžné šifrování pomocí nástroje BitLocker a zabezpečené aktualizace <br> Disky chráněné klíčem <br> Data šifrovaná za všech okolností  |
 | Rychlost přenosu dat                                      | Až 430 MB/s v závislosti na velikosti souboru      |
-|Správa                                               | Azure Portal |
+|Správa                                               | portál Azure |
 
 
 ## <a name="region-availability"></a>Dostupnost v oblastech
@@ -106,11 +106,13 @@ Po dobu platnosti verze Preview může služba Data Box Disk přenášet data do
 
 |Oblast Azure  |Oblast Azure  |
 |---------|---------|
-|Západní střed USA     |Střed USA – sever         |        
-|Západní USA 2     | USA – východ          |     
-|USA – západ     | USA – východ 2           |      
-|Střed USA – jih   | Západní Evropa       |         
-|USA – střed     | Severní Evropa |
+|Západní střed USA     |USA – východ        |        
+|Západní USA 2     |USA – východ 2          |     
+|USA – západ     | Západní Evropa        |      
+|Střed USA – jih   |Severní Evropa     |         
+|USA – střed     |Kanada – východ|
+|Střed USA – sever  |Kanada – střed    |
+
 
 
 

@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: sample
 ms.date: 04/05/2018
 ms.author: sngun
-ms.openlocfilehash: 19e152b8cb8f18a616af647b31a4f35998f47858
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 2b88bd3c86d520b10c27746319f807d2f6208bfa
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798215"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43048171"
 ---
 # <a name="how-to-use-azure-table-storage-or-the-azure-cosmos-db-table-api-from-nodejs"></a>Jak používat službu Azure Table Storage nebo rozhraní Table API služby Azure Cosmos DB z Node.js
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -69,7 +69,7 @@ Modul Azure načte informace potřebné pro připojení k účtu služby Azure S
 var tableSvc = azure.createTableService('myaccount', 'myaccesskey');
 ```
 
-## <a name="add-an-azure-comsos-db-connection"></a>Přidání připojení ke službě Azure Cosmos DB
+## <a name="add-an-azure-cosmos-db-connection"></a>Přidání připojení ke službě Azure Cosmos DB
 Pokud chcete přidat připojení ke službě Azure Cosmos DB, vytvořte objekt **TableService** a zadejte název, primární klíč a koncový bod vašeho účtu. Tyto hodnoty můžete zkopírovat z části **Nastavení** > **Připojovací řetězec** na webu Azure Portal pro váš účet služby Cosmos DB. Příklad:
 
 ```nodejs

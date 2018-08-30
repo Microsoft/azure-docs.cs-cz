@@ -9,15 +9,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: douglasl
-ms.openlocfilehash: 4a96fae7d6af8f37bcdf1fe13761caef471df7d2
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 94269056a7bf0a89c3d1b2f4968ad9ff90abbc82
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37085687"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43106640"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Transformace dat ve službě Azure Virtual Network pomocí aktivity Hivu v Azure Data Factory
 V tomto kurzu použijete Azure PowerShell k vytvoření kanálu datové továrny, který transformuje data pomocí aktivity Hivu v clusteru HDInsight, který je ve službě Azure Virtual Network. V tomto kurzu provedete následující kroky:

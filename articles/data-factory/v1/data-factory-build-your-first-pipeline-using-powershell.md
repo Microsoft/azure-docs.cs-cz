@@ -1,5 +1,5 @@
 ---
-title: Sestavení prvního objektu pro vytváření dat (PowerShell) | Microsoft Docs
+title: Sestavení prvního objektu pro vytváření dat (PowerShell) | Dokumentace Microsoftu
 description: V tomto kurzu vytvoříte pomocí prostředí Azure PowerShell ukázkový kanál služby Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -11,16 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: d8e4108e4c79a0920d7ff193e4751e1c71191488
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: f3c68fefc5cff2eafc969d11353e78eac8980e7f
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37050399"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43096344"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-powershell"></a>Kurz: Sestavení prvního objektu pro vytváření dat Azure pomocí prostředí Azure PowerShell
 > [!div class="op_single_selector"]
@@ -348,7 +348,7 @@ V tomto kroku budete pomocí prostředí Azure PowerShell monitorovat, co se dě
     ```PowerShell
     Get-AzureRmDataFactorySlice $df -DatasetName AzureBlobOutput -StartDateTime 2017-07-01
     ```
-    Všimněte si, že hodnota StartDateTime, kterou tady určíte, je stejná jako počáteční čas uvedený v kódu JSON kanálu. Zde je ukázkový výstup:
+    Všimněte si, že hodnota StartDateTime, kterou tady určíte, je stejná jako počáteční čas uvedený v kódu JSON kanálu. Tady je ukázkový výstup:
 
     ```PowerShell
     ResourceGroupName : ADFTutorialResourceGroup
@@ -368,7 +368,7 @@ V tomto kroku budete pomocí prostředí Azure PowerShell monitorovat, co se dě
     Get-AzureRmDataFactoryRun $df -DatasetName AzureBlobOutput -StartDateTime 2017-07-01
     ```
 
-    Zde je ukázkový výstup: 
+    Tady je ukázkový výstup: 
 
     ```PowerShell
     Id                  : 0f6334f2-d56c-4d48-b427-d4f0fb4ef883_635268096000000000_635292288000000000_AzureBlobOutput

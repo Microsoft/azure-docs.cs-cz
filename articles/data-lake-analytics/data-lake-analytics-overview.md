@@ -4,18 +4,17 @@ description: Díky službě Data Lake Analytics můžete podpořit své podniká
 services: data-lake-analytics
 author: saveenr
 ms.author: saveenr
-manager: kfile
-editor: jasonwhowell
+ms.reviewer: jasonwhowell
 ms.assetid: 1e1d443a-48a2-47fb-bc00-bf88274222de
 ms.service: data-lake-analytics
 ms.topic: overview
 ms.date: 06/23/2017
-ms.openlocfilehash: f5425abc484d30f07ce29d6b7b6ec36dad79b651
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a0e4878987d55b57587fe949d3bdaa8921599a14
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34623617"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43053347"
 ---
 # <a name="what-is-azure-data-lake-analytics"></a>Co je Azure Data Lake Analytics?
 
@@ -39,7 +38,7 @@ Služba Data Lake Analytics využívá vaše stávající investice do IT pro ú
 
 ### <a name="affordable-and-cost-effective"></a>Cenová dostupnost a nákladová efektivita
 
-Služba Data Lake Analytics je nákladově efektivní řešení pro spouštění úloh s velkým objemem dat. Platíte za jednotlivé úlohy, kdy se zpracovávají data. Není potřeba žádný hardware, licence ani smlouvy o podpoře pro konkrétní službu. Při spuštění a dokončení úlohy systém automaticky vertikálně navyšuje a snižuje kapacitu, takže nikdy neplatíte za víc, než potřebujete. [Další informace o kontrole nákladů a úsporách](https://1drv.ms/f/s!AvdZLquGMt47h213Hg3rhl-Tym1c).
+Služba Data Lake Analytics je nákladově efektivní řešení pro spouštění úloh s velkým objemem dat. Platíte za jednotlivé úlohy, kdy se zpracovávají data. Není potřeba žádný hardware, licence ani smlouvy o podpoře pro konkrétní službu. Při spuštění a dokončení úlohy systém automaticky vertikálně navyšuje a snižuje kapacitu, takže nikdy neplatíte za víc, než potřebujete. [Další informace o kontrole nákladů a úsporách](https://aka.ms/adlasavemoney).
     
 ### <a name="works-with-all-your-azure-data"></a>Možnost práce se všemi daty Azure
   

@@ -7,13 +7,13 @@ author: tomarcher
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 08/21/2018
-ms.openlocfilehash: de692b29902145e44a055680d662c16ed90c56c2
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.date: 08/23/2018
+ms.openlocfilehash: f7dbc124781992ada9c3538cf415b836d8764064
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617171"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42810816"
 ---
 # <a name="create-and-configure-azure-kubernetes-service-clusters-in-azure-using-ansible"></a>Vytváření a konfigurace clusterů Azure Kubernetes Service v Azure pomocí Ansible
 Ansible umožňuje automatizovat nasazování a konfiguraci prostředků ve vašem prostředí. Pomocí Ansible můžete spravovat službu Azure Kubernetes Service (AKS). V tomto článku se dozvíte, jak pomocí Ansible vytvořit a nakonfigurovat cluster Azure Kubernetes Service.
@@ -22,19 +22,7 @@ Ansible umožňuje automatizovat nasazování a konfiguraci prostředků ve vaš
 - **Předplatné Azure** – Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
 - **Instanční objekt Azure** – Při [vytváření instančního objektu](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#create-the-service-principal) si poznamenejte následující hodnoty: **appId**, **displayName**, **password** a **tenant**.
 
-- **Nakonfigurujte Azure Cloud Shell** nebo **Nainstalujte a nakonfigurujte Ansible na virtuálním počítači s Linuxem**.
-
-  **Konfigurace služby Azure Cloud Shell**
-
-  1. **Konfigurace služby Azure Cloud Shell** – Pokud se službou Azure Cloud Shell teprve začínáte, v článku [Rychlý start pro Bash ve službě Azure Cloud Shell](/azure/cloud-shell/quickstart) se dozvíte, jak spustit a nakonfigurovat Cloud Shell. 
-
-  **-- nebo --**
-
-  **Instalace a konfigurace Ansible na virtuálním počítači s Linuxem**
-
-  1. **Instalace Ansible** –Nainstalujte Ansible na [podporovanou platformu Linux](/azure/virtual-machines/linux/ansible-install-configure#install-ansible-on-an-azure-linux-virtual-machine).
-
-  1. **Konfigurace Ansible** - [Vytvoření přihlašovacích údajů Azure a konfigurace Ansible](/azure/virtual-machines/linux/ansible-install-configure#create-azure-credentials)
+- [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
 
 > [!Note]
 > Ke spuštění následujících ukázkových playbooků v tomto kurzu se vyžaduje Ansible 2.6. 

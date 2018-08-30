@@ -4,17 +4,17 @@ description: V tomto kurzu nasadíte Azure Machine Learning jako modul na hrani�
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 06/25/2018
+ms.date: 08/22/2018
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: c13cd495f7802f14937321134a975b7a00c791ab
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: db22b8ddeaa7fc8fd4d8f7a8b3b3d8b4bc143974
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "41919743"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42746395"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Kurz: Nasazení Azure Machine Learning jako modulu IoT Edge (Preview)
 
@@ -61,7 +61,7 @@ Prostředky pro vývoj:
 
 K zakázání identifikace procesů na vašem zařízení IoT Edge budete muset v části **connect** konfigurace procesu démon IoT Edge zadat IP adresu a port pro **workload_uri** a **management_uri**.
 
-Nejdřív zjistěte IP adresu. Do příkazového řádku zadejte `ifconfig` a zkopírujte IP adresu rozhraní **docker0**.
+Nejdřív zjistěte IP adresu. Do příkazového řádku zadejte `ipconfig` a zkopírujte IP adresu rozhraní **docker0**.
 
 Upravte konfigurační soubor procesu démon IoT Edge:
 

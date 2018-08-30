@@ -10,15 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: dotnet
-ms.topic: hero-article
+ms.topic: quickstart
 ms.date: 03/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 3d1d77e585ae8d608a8f9a4e3de0943315d897af
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: a7916a434552cbcb999f1e69c7a5bc2419f517fb
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41920837"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43094338"
 ---
 # <a name="create-a-data-factory-and-pipeline-using-net-sdk"></a>Vytvoření datové továrny a kanálu s využitím .NET SDK
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -32,67 +32,7 @@ Tento rychlý start popisuje použití sady .NET SDK k vytvoření datové tová
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="prerequisites"></a>Požadavky
-
-### <a name="azure-subscription"></a>Předplatné Azure
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
-
-### <a name="azure-roles"></a>Role Azure
-Pro vytvoření instancí Data Factory musí být uživatelský účet, který použijete pro přihlášení k Azure, členem rolí **přispěvatel** nebo **vlastník** nebo **správcem** předplatného Azure. Na webu Azure Portal klikněte na **uživatelské jméno** v pravém horním rohu a vyberte **Oprávnění**. Zobrazí se oprávnění, která v příslušném předplatném máte. Pokud máte přístup k několika předplatným, vyberte odpovídající předplatné. Ukázku pokynů pro přidání uživatele k roli najdete v článku věnovaném [přidání rolí](../billing/billing-add-change-azure-subscription-administrator.md).
-
-### <a name="azure-storage-account"></a>Účet služby Azure Storage
-V tomto rychlém startu použijete účet služby Azure Storage (konkrétně služby Blob Storage) pro obecné účely jako **zdrojové** i **cílové úložiště dat**. Pokud nemáte účet úložiště Azure pro obecné účely, přečtěte si téma popisující [Vytvoření účtu úložiště](../storage/common/storage-quickstart-create-account.md). 
-
-#### <a name="get-storage-account-name-and-account-key"></a>Získání názvu a klíče účtu úložiště
-V tomto rychlém startu použijete název a klíč svého účtu úložiště Azure. Následující postup předvádí kroky k získání názvu a klíče vašeho účtu úložiště. 
-
-1. Spusťte webový prohlížeč a přejděte na [Azure Portal](https://portal.azure.com). Přihlaste se pomocí svého uživatelského jména a hesla Azure. 
-2. V nabídce vlevo klikněte na **Další služby >**, použijte filtr s klíčovým slovem **úložiště** a vyberte **Účty úložiště**.
-
-    ![Vyhledání účtu úložiště](media/quickstart-create-data-factory-dot-net/search-storage-account.png)
-3. V seznamu účtů úložiště vyfiltrujte váš účet úložiště (pokud je to potřeba) a pak vyberte **váš účet úložiště**. 
-4. Na stránce **Účet úložiště** vyberte v nabídce **Přístupové klíče**.
-
-    ![Získání názvu a klíče účtu úložiště](media/quickstart-create-data-factory-dot-net/storage-account-name-key.png)
-5. Zkopírujte do schránky hodnoty z polí **Název účtu úložiště** a **klíč1**. Vložte je do Poznámkového bloku nebo jiného editoru a uložte je.  
-
-#### <a name="create-input-folder-and-files"></a>Vytvoření vstupní složky a souborů
-V této části vytvoříte ve svém úložišti objektů blob v Azure kontejner objektů blob s názvem **adftutorial**. Potom v kontejneru vytvoříte složku **input** a nahrajete do ní ukázkový soubor. 
-
-1. Na stránce **Účet úložiště** přepněte na **Přehled** a potom klikněte na **Objekty blob**. 
-
-    ![Výběr možnosti Objekty blob](media/quickstart-create-data-factory-dot-net/select-blobs.png)
-2. Na stránce **Blob service** klikněte na panelu nástrojů na **+ Kontejner**. 
-
-    ![Tlačítko pro přidání kontejneru](media/quickstart-create-data-factory-dot-net/add-container-button.png)    
-3. V dialogovém okně **Nový kontejner** jako název zadejte **adftutorial** a klikněte na **OK**. 
-
-    ![Zadání názvu kontejneru](media/quickstart-create-data-factory-dot-net/new-container-dialog.png)
-4. V seznamu kontejnerů klikněte na **adftutorial**. 
-
-    ![Výběr kontejneru](media/quickstart-create-data-factory-dot-net/select-adftutorial-container.png)
-1. Na stránce **Kontejner** klikněte na panelu nástrojů na **Nahrát**.  
-
-    ![Tlačítko Nahrát](media/quickstart-create-data-factory-dot-net/upload-toolbar-button.png)
-6. Na stránce **Nahrát objekt blob** klikněte na **Upřesnit**.
-
-    ![Kliknutí na odkaz Upřesnit](media/quickstart-create-data-factory-dot-net/upload-blob-advanced.png)
-7. Spusťte **Poznámkový blok** a vytvořte soubor nazvaný **emp.txt** s následujícím obsahem: Uložte ho do složky **c:\ADFv2QuickStartPSH**. Pokud složka **ADFv2QuickStartPSH** neexistuje, vytvořte ji.
-    
-    ```
-    John, Doe
-    Jane, Doe
-    ```    
-8. Na webu Azure Portal na stránce **Nahrát objekt blob** vyberte **emp.txt** v poli **Soubory**. 
-9. Jako hodnotu pole **Nahrát do složky** zadejte **input**. 
-
-    ![Nastavení pro nahrání objektu blob](media/quickstart-create-data-factory-dot-net/upload-blob-settings.png)    
-10. Potvrďte, že je nastavená složka **input** a soubor **emp.txt** a klikněte na **Nahrát**.
-11. Měli byste vidět soubor **emp.txt** a stav nahrávání v seznamu. 
-12. Zavřete okno **Nahrát objekt blob** kliknutím na **X** v rohu. 
-
-    ![Zavření okna Nahrát objekt blob](media/quickstart-create-data-factory-dot-net/close-upload-blob.png)
-1. Stránku **kontejneru** nechte otevřenou. Použijete ji k ověření výstupu na konci tohoto rychlého startu.
+[!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)] 
 
 ### <a name="visual-studio"></a>Visual Studio
 Názorný postup v tomto článku využívá Visual Studio 2017. Můžete také použít Visual Studio 2013 nebo 2015.
@@ -100,7 +40,7 @@ Názorný postup v tomto článku využívá Visual Studio 2017. Můžete také 
 ### <a name="azure-net-sdk"></a>Azure .NET SDK
 Stáhněte sadu [Azure .NET SDK](http://azure.microsoft.com/downloads/) a nainstalujte ji do svého počítače.
 
-### <a name="create-an-application-in-azure-active-directory"></a>Vytvoření aplikace v Azure Active Directory
+## <a name="create-an-application-in-azure-active-directory"></a>Vytvoření aplikace v Azure Active Directory
 Postupujte podle pokynů v jednotlivých částech v [tomto článku](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application) a proveďte následující úlohy: 
 
 1. **Vytvořte aplikaci Azure Active Directory**. V Azure Active Directory vytvořte aplikaci reprezentující aplikaci .NET, kterou vytváříte v tomto kurzu. Jako přihlašovací adresu URL můžete poskytnout fiktivní URL, jak ukazuje článek (`https://contoso.org/exampleapp`).

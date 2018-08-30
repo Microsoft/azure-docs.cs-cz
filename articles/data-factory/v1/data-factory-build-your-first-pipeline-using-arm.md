@@ -1,5 +1,5 @@
 ---
-title: Sestavení prvního objektu pro vytváření dat (šablona Resource Manageru) | Microsoft Docs
+title: Sestavení prvního objektu pro vytváření dat (šablona Resource Manageru) | Dokumentace Microsoftu
 description: V tomto kurzu vytvoříte ukázkový kanál služby Azure Data Factory pomocí šablony Azure Resource Manageru.
 services: data-factory
 documentationcenter: ''
@@ -11,16 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 172de59561892f0f17fc1f90016cc95495ceb2cb
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: a04e91cea4ce1670fcc0a7be2d7591d5856b738f
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37051303"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43106858"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-resource-manager-template"></a>Kurz: Sestavení prvního objektu pro vytváření dat Azure pomocí šablony Azure Resource Manageru
 > [!div class="op_single_selector"]

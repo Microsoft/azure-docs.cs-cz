@@ -10,18 +10,18 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: overview
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 1b0838bb3d4fa1f47d906294ce42c318d1f4a0cd
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 0cdf10f4898ba103f9b6f65179300a10c9e33cdf
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38623548"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43087167"
 ---
-# <a name="introduction-to-azure-data-factory"></a>Úvod do Azure Data Factory 
+# <a name="introduction-to-azure-data-factory"></a>Úvod do služby Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Verze 1](data-factory-introduction.md)
 > * [Verze 2 (aktuální verze)](../introduction.md)
@@ -114,7 +114,7 @@ Například propojená služba Azure Storage určuje připojovací řetězec pro
 
 Propojené služby slouží ve službě Data Factory ke dvěma účelům:
 
-* Představují *úložiště dat*, k nimž mimo jiné patří například místní databáze SQL Serveru, databáze Oracle, sdílená složka nebo účet úložiště objektů blob Azure. Seznam podporovaných úložišť dat najdete v oddílu [Aktivity přesunu dat](#data-movement-activities).
+* Představují *úložiště dat*, k nimž mimo jiné patří například místní databáze SQL Serveru, databáze Oracle, sdílená složka nebo účet úložiště objektů blob v Azure. Seznam podporovaných úložišť dat najdete v oddílu [Aktivity přesunu dat](#data-movement-activities).
 
 * Představují *výpočetní prostředek*, který může hostovat provádění aktivity. Například aktivita HDInsightHive se spouští na clusteru HDInsight Hadoop. Seznam podporovaných výpočetních prostředí najdete v části [Aktivity transformace dat](#data-transformation-activities).
 
@@ -134,7 +134,7 @@ Předpokládejme například, že vaše výpočetní prostředí, jako je cluste
 ## <a name="get-started-with-creating-a-pipeline"></a>Začínáme s vytvořením kanálu
 Datové kanály ve službě Azure Data Factory můžete vytvořit pomocí některého z těchto nástrojů nebo rozhraní API: 
 
-- Azure Portal
+- portál Azure
 - Visual Studio
 - PowerShell
 - .NET API

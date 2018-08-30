@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: ba17c59169d00a8333bb9eb1c7bb0c1a56aaba83
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: dc37a9f514069f49f6188caf2e22c24494d2a272
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37033413"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43185292"
 ---
 # <a name="azure-data-lake-storage-gen1-documentation"></a>Dokumentace ke službě Azure Data Lake Storage Gen1
 
@@ -181,7 +181,7 @@ Pokud se chcete o verzi Preview služby Data Lake Storage Gen2 dozvědět víc, 
                 <div class="card">
                     <div class="cardText">
                         <h3>Příkazový řádek</h3>
-                        <p><a href="/powershell/resourcemanager/azurerm.datalakestore/v3.1.0/azurerm.datalakestore">PowerShell</a></p>
+                        <p><a href="/powershell/module/azurerm.datalakestore">PowerShell</a></p>
                         <p><a href="/cli/azure/dls">Azure CLI 2.0</a></p>
                     </div>
                 </div>

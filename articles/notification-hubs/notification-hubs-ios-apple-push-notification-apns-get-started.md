@@ -16,14 +16,15 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 083b0c956055ab5b54a4af2eec57f096613cbe65
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 8fb5db0f788bde6ff3fb943bb170a48994e46ef3
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38681515"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918530"
 ---
 # <a name="tutorial-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>Kurz: Zasílání nabízených oznámení aplikacím pro iOS službou Azure Notification Hubs
+
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
 V tomto kurzu se dozvíte, jak používat Azure Notification Hubs k zasílání nabízených oznámení aplikaci pro iOS. Vytvoříte prázdnou aplikaci pro iOS, která přijímá nabízená oznámení [služby Apple Push Notification (APNs)](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html#//apple_ref/doc/uid/TP40008194-CH8-SW1). 
@@ -75,16 +76,17 @@ V této části vytvoříte centrum oznámení a nakonfigurujete ověřování s
 Právě jste své centrum oznámení nakonfigurovali pro práci se službou APNS. Zároveň máte připojovací řetězce, pomocí kterých můžete svou aplikaci zaregistrovat pro odesílání nabízených oznámení.
 
 ## <a name="connect-your-ios-app-to-notification-hubs"></a>Připojte aplikaci iOS k centru oznámení
+
 1. V Xcode vytvořte nový projekt iOS a vyberte šablonu **Jediné zobrazení aplikace**.
-   
+
     ![Xcode – jediné zobrazení aplikace][8]
-    
+
 2. Když nastavujete možnosti pro nový projekt, nezapomeňte použít stejný **Název produktu** a **Identifikátor organizace**, který jste použili při nastavení identifikátoru sady na portálu pro vývojáře Apple.
-   
+
     ![Xcode – možnosti projektu][11]
-    
+
 3. V části Navigátor projektu klikněte na název vašeho projektu, klikněte na kartu **Obecné** a vyhledejte **Podepisování**. Nezapomeňte vybrat odpovídající Tým pro váš účet vývojáře Apple. XCode by na základě vašeho identifikátoru sady mělo automaticky stáhnout profil zřizování, který jste vytvořili dříve.
-   
+
     Pokud nevidíte nový profil zřizování, který jste vytvořili v Xcode, pokuste se aktualizovat profily pro podpisové identity. Klikněte na tlačítko **Xcode** na panelu nabídek, klikněte na tlačítko **Předvolby**, klikněte na kartu **Účet**, klikněte na tlačítko **Zobrazit podrobnosti**, klikněte na podpisovou identitu a pak klikněte na tlačítko Aktualizovat v pravém dolním rohu.
 
     ![Xcode – profil zřizování][9]
@@ -92,99 +94,102 @@ Právě jste své centrum oznámení nakonfigurovali pro práci se službou APNS
 4. Vyberte kartu **Možnosti** a nezapomeňte povolit Nabízená oznámení.
 
     ![Xcode – možnosti nabízení][12]
-   
+
 5. Stáhněte soubor rozhraní [Windows Azure Messaging Framework] a rozbalte ho. V Xcode klikněte pravým tlačítkem na projekt a klikněte na možnost **Přidat soubory do** a přidejte složku **WindowsAzureMessaging.framework** do projektu Xcode. Vyberte **Možnosti**, ujistěte se, že je vybraná možnost **Kopírovat položky v případě potřeby**, a pak klikněte na **Přidat**.
 
     ![Rozbalte Azure SDK][10]
 
 6. Do projektu **HubInfo.h** přidejte nový soubor hlaviček. V tomto souboru jsou konstanty vašeho centra oznámení. Přidejte následující definice a nahraďte zástupné symboly literálu řetězce ve vašem *názvu centra* a *DefaultListenSharedAccessSignature*, který jste si předtím poznamenali.
 
-    ```obj-c
-        #ifndef HubInfo_h
-        #define HubInfo_h
-   
-            #define HUBNAME @"<Enter the name of your hub>"
-            #define HUBLISTENACCESS @"<Enter your DefaultListenSharedAccess connection string"
-   
-        #endif /* HubInfo_h */
+    ```objc
+    #ifndef HubInfo_h
+    #define HubInfo_h
+
+        #define HUBNAME @"<Enter the name of your hub>"
+        #define HUBLISTENACCESS @"<Enter your DefaultListenSharedAccess connection string"
+
+    #endif /* HubInfo_h */
     ```
-    
+
 7. Otevřete váš soubor **AppDelegate.h** a přidejte následující direktivy importu:
 
-    ```obj-c
-        #import <WindowsAzureMessaging/WindowsAzureMessaging.h>
-        #import <UserNotifications/UserNotifications.h> 
-        #import "HubInfo.h"
+    ```objc
+    #import <WindowsAzureMessaging/WindowsAzureMessaging.h>
+    #import <UserNotifications/UserNotifications.h> 
+    #import "HubInfo.h"
     ```
 8. Ve vašem **souboru AppDelegate.m** přidejte následující kód do metody **didFinishLaunchingWithOptions** v závislosti na vaší verzi iOS. Tento kód zaregistruje popisovač vašeho zařízení do APN:
 
-    ```obj-c
-        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeSound |
-            UIUserNotificationTypeAlert | UIUserNotificationTypeBadge categories:nil];
-   
-        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
-        [[UIApplication sharedApplication] registerForRemoteNotifications];
+    ```objc
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeSound |
+        UIUserNotificationTypeAlert | UIUserNotificationTypeBadge categories:nil];
+
+    [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+    [[UIApplication sharedApplication] registerForRemoteNotifications];
     ```
-   
+
 9. Do stejného souboru přidejte následující metody:
 
-    ```obj-c
-         - (void) application:(UIApplication *) application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *) deviceToken {
-           SBNotificationHub* hub = [[SBNotificationHub alloc] initWithConnectionString:HUBLISTENACCESS
-                                        notificationHubPath:HUBNAME];
-   
-            [hub registerNativeWithDeviceToken:deviceToken tags:nil completion:^(NSError* error) {
-               if (error != nil) {
-                   NSLog(@"Error registering for notifications: %@", error);
-                }
-                else {
-                   [self MessageBox:@"Registration Status" message:@"Registered"];
-              }
-          }];
-         }
-   
-        -(void)MessageBox:(NSString *) title message:(NSString *)messageText
-        {
-         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:messageText delegate:self
-                cancelButtonTitle:@"OK" otherButtonTitles: nil];
-            [alert show];
+    ```objc
+        - (void) application:(UIApplication *) application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *) deviceToken {
+        SBNotificationHub* hub = [[SBNotificationHub alloc] initWithConnectionString:HUBLISTENACCESS
+                                    notificationHubPath:HUBNAME];
+
+        [hub registerNativeWithDeviceToken:deviceToken tags:nil completion:^(NSError* error) {
+            if (error != nil) {
+                NSLog(@"Error registering for notifications: %@", error);
+            }
+            else {
+                [self MessageBox:@"Registration Status" message:@"Registered"];
+            }
+        }];
         }
+
+    -(void)MessageBox:(NSString *) title message:(NSString *)messageText
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:messageText delegate:self
+            cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alert show];
+    }
     ```
 
     Tento kód se připojí k centru oznámení pomocí informací o připojení zadaných do souboru HubInfo.h. Poté přiřadí token zařízení do centra oznámení tak, aby centrum oznámení mohlo odesílat oznámení.
 
 10. Do stejného souboru přidejte následující metodu pro zobrazení **UIAlert**, pokud bylo přijato oznámení, že je aplikace aktivní:
 
-    ```obj-c
-            - (void)application:(UIApplication *)application didReceiveRemoteNotification: (NSDictionary *)userInfo {
-               NSLog(@"%@", userInfo);
-               [self MessageBox:@"Notification" message:[[userInfo objectForKey:@"aps"] valueForKey:@"alert"]];
-           }
+    ```objc
+    - (void)application:(UIApplication *)application didReceiveRemoteNotification: (NSDictionary *)userInfo {
+        NSLog(@"%@", userInfo);
+        [self MessageBox:@"Notification" message:[[userInfo objectForKey:@"aps"] valueForKey:@"alert"]];
+    }
     ```
 
 11. Ověřte, zda nedochází k žádným chybám tak, že sestavíte a spustíte aplikaci na vašem zařízení.
 
 ## <a name="send-test-push-notifications"></a>Odešlete nabízená oznámení
+
 Příjem oznámení ve vaší aplikaci můžete otestovat pomocí možnosti *Testovací odeslání* na webu [Azure Portal]. Zařízení se odešle testovací nabízené oznámení.
 
 ![Azure Portal – Testovací odeslání][30]
 
 [!INCLUDE [notification-hubs-sending-notifications-from-the-portal](../../includes/notification-hubs-sending-notifications-from-the-portal.md)]
 
-
 ## <a name="verify-that-your-app-receives-push-notifications"></a>Ověření, že aplikace přijímá nabízená oznámení
+
 Chcete-li otestovat nabízená oznámení na iOS, musíte aplikaci nasadit do fyzického zařízení iOS. Nabízená oznámení Apple nelze odeslat pomocí simulátoru iOS.
 
 1. Spusťte aplikaci a ověřte, zda byla registrace úspěšná a stiskněte klávesu **OK**.
-   
+
     ![Test registrace nabízených oznámení aplikace iOS][33]
-2. V dalším kroku odešlete testovací nabízené oznámení z webu [Azure Portal] podle popisu v předchozí části. 
+
+2. V dalším kroku odešlete testovací nabízené oznámení z webu [Azure Portal] podle popisu v předchozí části.
 
 3. Nabízená odeslání se zašlou na všechna zařízení, která jsou registrovaná pro příjem oznámení z konkrétní centra oznámení.
-   
+
     ![Test příjmu nabízených oznámení aplikace iOS][35]
 
 ## <a name="next-steps"></a>Další kroky
+
 V tomto příkladu jste vysílali nabízená oznámení pro všechna vaše registrovaná zařízení iOS. Pokud se chcete naučit zasílat nabízená oznámení určitým zařízením s iOSem, pokračujte následujícím kurzem: 
 
 > [!div class="nextstepaction"]

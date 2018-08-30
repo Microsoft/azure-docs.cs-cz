@@ -10,16 +10,16 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 08/13/2018
-ms.openlocfilehash: 9f4ff8684576d90f1958a307d6ab876f0e2515fb
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.date: 08/24/2018
+ms.openlocfilehash: 0cb4a5169036fc0a24a5fc5c86d232bb587a6684
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "40099372"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42886289"
 ---
 # <a name="migrate-sql-server-to-azure-sql-database-offline-using-dms"></a>Offline migrace SQL Serveru do služby Azure SQL Database pomocí DMS
-Pomocí služby Azure Database Migration Service můžete migrovat databáze z místní instance SQL Serveru do služby [Azure SQL Database](https://docs.microsoft.com/en-us/azure/sql-database/). V tomto kurzu pomocí služby Azure Database Migration Service provedete migraci databáze **Adventureworks2012** obnovené do místní instance SQL Serveru 2016 (nebo novější) do služby Azure SQL Database.
+Pomocí služby Azure Database Migration Service můžete migrovat databáze z místní instance SQL Serveru do služby [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/). V tomto kurzu pomocí služby Azure Database Migration Service provedete migraci databáze **Adventureworks2012** obnovené do místní instance SQL Serveru 2016 (nebo novější) do služby Azure SQL Database.
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
@@ -215,7 +215,7 @@ Po vytvoření služby ji vyhledejte na webu Azure Portal, otevřete ji a pak vy
     ![Shrnutí migrace](media\tutorial-sql-server-to-azure-sql\dms-run-migration2.png)
 
 ## <a name="run-the-migration"></a>Spuštění migrace
-1.  Vyberte **Spustit migraci**.
+- Vyberte **Spustit migraci**.
 
     Zobrazí se okno aktivity migrace a **Stav** aktivity bude **Probíhající**.
 

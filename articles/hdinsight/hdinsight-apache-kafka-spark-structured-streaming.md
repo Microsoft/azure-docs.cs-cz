@@ -3,18 +3,18 @@ title: 'Kurz: Strukturované streamování Apache Sparku s využitím systému K
 description: Zjistěte, jak pomocí streamování Apache Sparku přenášet data do nebo ze systému Apache Kafka. V tomto kurzu budete streamovat data pomocí poznámkového bloku Jupyter ze Sparku ve službě HDInsight.
 services: hdinsight
 author: jasonwhowell
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 05/08/2018
 ms.author: jasonh
-ms.openlocfilehash: 47879350c56b9e8b943e1bff61359727746b697d
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 11169e45d5fbdc5e51b81c06d814524a7b09c614
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39598296"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43108285"
 ---
 # <a name="tutorial-use-spark-structured-streaming-with-kafka-on-hdinsight"></a>Kurz: Použití strukturovaného streamování Sparku se systémem Kafka ve službě HDInsight
 

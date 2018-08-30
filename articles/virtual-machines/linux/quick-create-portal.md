@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/03/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 03d4ad081a788299bab563ca6b956edc347732da
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: f659c424f7d5e705343c113d2ba0971164ca622a
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37447954"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43108802"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>Rychlý start: Vytvoření virtuálního počítače s Linuxem na webu Azure Portal
 
@@ -53,7 +53,7 @@ Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
 
 3. Zadejte název virtuálního počítače, například *myVM*, jako typ disku ponechte *SSD* a zadejte uživatelské jméno, například *azureuser*.
 
-4. . Jako **Typ ověřování** vyberte **Veřejný klíč SSH** a pak do textového pole vložte svůj veřejný klíč. Nezapomeňte ve veřejném klíči odebrat počáteční a koncové prázdné znaky.
+4. Jako **Typ ověřování** vyberte **Veřejný klíč SSH** a pak do textového pole vložte svůj veřejný klíč. Nezapomeňte ve veřejném klíči odebrat počáteční a koncové prázdné znaky.
 
     ![Zadání základních informací o virtuálním počítači v okně portálu](./media/quick-create-portal/create-vm-portal-basic-blade.png)
 

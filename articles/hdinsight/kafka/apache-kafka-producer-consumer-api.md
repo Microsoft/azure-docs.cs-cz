@@ -4,17 +4,17 @@ description: Zjistěte, jak používat rozhraní Apache Kafka Producer and Consu
 services: hdinsight
 author: jasonwhowell
 ms.author: jasonh
-editor: jasonwhowell
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 04/16/2018
-ms.openlocfilehash: 8b20b2aa75c3872df1082ef1059000d80a2dd472
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: c52f64c2508870bf061e144229cf26ab269c343b
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621092"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43049232"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Kurz: Použití rozhraní Apache Kafka Producer and Consumer API
 
