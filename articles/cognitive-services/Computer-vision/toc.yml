@@ -6,101 +6,91 @@ items:
   - name: Co je počítačové zpracování obrazu?
     href: Home.md
   expanded: true
-- name: Rychlá zprovoznění pro rozhraní API
+- name: Šablony Rychlý start
   items:
-  - name: Souhrn
-    href: QuickStarts/quickstart-summary.md
-  - name: C#
-    items:
-    - name: Analýza obrázku
-      href: QuickStarts/CSharp-analyze.md
-    - name: Vytvoření miniatury
-      href: QuickStarts/CSharp-thumb.md
-    - name: Extrakce tištěného textu
-      href: QuickStarts/CSharp-print-text.md
-    - name: Extrakce rukou psaného textu
-      href: QuickStarts/CSharp-hand-text.md
-  - name: cURL
+  - name: Pomocí rozhraní REST API
     items:
     - name: Analýza vzdáleného obrázku
-      href: QuickStarts/curl-analyze.md
+      items:
+      - name: cURL
+        href: QuickStarts/curl-analyze.md
+      - name: Přejít
+        href: QuickStarts/go-analyze.md
+      - name: Java
+        href: QuickStarts/java-analyze.md
+      - name: JavaScript
+        href: QuickStarts/javascript-analyze.md
+      - name: Node.js
+        href: QuickStarts/node-analyze.md
+      - name: PHP
+        href: QuickStarts/php-analyze.md
+      - name: Python
+        href: QuickStarts/python-analyze.md
+      - name: Ruby
+        href: QuickStarts/ruby-analyze.md
     - name: Analýza místního obrázku
-      href: QuickStarts/curl-disk.md
+      items:
+      - name: C#
+        href: QuickStarts/CSharp-analyze.md
+      - name: Python
+        href: QuickStarts/python-disk.md
     - name: Vytvoření miniatury
-      href: QuickStarts/curl-thumb.md
+      items:
+      - name: C#
+        href: QuickStarts/CSharp-thumb.md
+      - name: cURL
+        href: QuickStarts/curl-thumb.md
+      - name: Přejít
+        href: QuickStarts/go-thumb.md
+      - name: Java
+        href: QuickStarts/java-thumb.md
+      - name: JavaScript
+        href: QuickStarts/javascript-thumb.md
+      - name: Node.js
+        href: QuickStarts/node-thumb.md
+      - name: PHP
+        href: QuickStarts/php-thumb.md
+      - name: Python
+        href: QuickStarts/python-thumb.md
+      - name: Ruby
+        href: QuickStarts/ruby-thumb.md
     - name: Extrakce tištěného textu
-      href: QuickStarts/curl-print-text.md
-  - name: Přejít
-    items:
-    - name: Analýza obrázku
-      href: QuickStarts/go-analyze.md
-    - name: Vytvoření miniatury
-      href: QuickStarts/go-thumb.md
-    - name: Extrakce tištěného textu
-      href: QuickStarts/go-print-text.md
-  - name: Java
-    items:
-    - name: Analýza obrázku
-      href: QuickStarts/java-analyze.md
-    - name: Vytvoření miniatury
-      href: QuickStarts/java-thumb.md
-    - name: Extrakce tištěného textu
-      href: QuickStarts/java-print-text.md
+      items:
+      - name: C#
+        href: QuickStarts/CSharp-print-text.md
+      - name: cURL
+        href: QuickStarts/curl-print-text.md
+      - name: Přejít
+        href: QuickStarts/go-print-text.md
+      - name: Java
+        href: QuickStarts/java-print-text.md
+      - name: JavaScript
+        href: QuickStarts/javascript-print-text.md
+      - name: Node.js
+        href: QuickStarts/node-print-text.md
+      - name: PHP
+        href: QuickStarts/php-print-text.md
+      - name: Python
+        href: QuickStarts/python-print-text.md
+      - name: Ruby
+        href: QuickStarts/ruby-print-text.md
     - name: Extrakce rukou psaného textu
-      href: QuickStarts/java-hand-text.md
-  - name: JavaScript
-    items:
-    - name: Analýza obrázku
-      href: QuickStarts/javascript-analyze.md
-    - name: Vytvoření miniatury
-      href: QuickStarts/javascript-thumb.md
-    - name: Extrakce tištěného textu
-      href: QuickStarts/javascript-print-text.md
-    - name: Extrakce rukou psaného textu
-      href: QuickStarts/javascript-hand-text.md
-  - name: Node.js
-    items:
-    - name: Analýza obrázku
-      href: QuickStarts/node-analyze.md
-    - name: Vytvoření miniatury
-      href: QuickStarts/node-thumb.md
-    - name: Extrakce tištěného textu
-      href: QuickStarts/node-print-text.md
-  - name: PHP
-    items:
-    - name: Analýza obrázku
-      href: QuickStarts/php-analyze.md
+      items:
+      - name: C#
+        href: QuickStarts/CSharp-hand-text.md
+      - name: Java
+        href: QuickStarts/java-hand-text.md
+      - name: JavaScript
+        href: QuickStarts/javascript-hand-text.md
+      - name: Python
+        href: QuickStarts/python-hand-text.md
     - name: Použití doménového modelu
-      href: QuickStarts/php-domain.md
-    - name: Vytvoření miniatury
-      href: QuickStarts/php-thumb.md
-    - name: Extrakce tištěného textu
-      href: QuickStarts/php-print-text.md
-  - name: Python
-    items:
-    - name: Analýza vzdáleného obrázku
-      href: QuickStarts/python-analyze.md
-    - name: Analýza místního obrázku
-      href: QuickStarts/python-disk.md
-    - name: Použití doménového modelu
-      href: QuickStarts/python-domain.md
-    - name: Vytvoření miniatury
-      href: QuickStarts/python-thumb.md
-    - name: Extrakce tištěného textu
-      href: QuickStarts/python-print-text.md
-    - name: Extrakce rukou psaného textu
-      href: QuickStarts/python-hand-text.md
-  - name: Ruby
-    items:
-    - name: Analýza obrázku
-      href: QuickStarts/ruby-analyze.md
-    - name: Vytvoření miniatury
-      href: QuickStarts/ruby-thumb.md
-    - name: Extrakce tištěného textu
-      href: QuickStarts/ruby-print-text.md
-- name: Rychlá zprovoznění pro SDK
-  items:
-  - name: C#
+      items:
+      - name: PHP
+        href: QuickStarts/php-domain.md
+      - name: Python
+        href: QuickStarts/python-domain.md
+  - name: Pomocí sady .NET SDK
     items:
     - name: Analýza obrázku
       href: quickstarts-sdk/csharp-analyze-sdk.md
@@ -172,9 +162,9 @@ items:
     href: https://azure.microsoft.com/global-infrastructure/services/
   - name: Taxonomie kategorií
     href: Category-Taxonomy.md
-ms.openlocfilehash: 9fc95708365458dcebcf40a759db3f8267fa0c96
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: b432d958b5ce8f31f6f4487d986f2c793a782e2d
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43086747"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43246119"
