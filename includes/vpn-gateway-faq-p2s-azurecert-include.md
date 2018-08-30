@@ -9,10 +9,10 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 97d33bfcc8251b10ba121b7fb013800904450563
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 08/24/2018
 ms.locfileid: "30197072"
 ---
 [!INCLUDE [P2S FAQ All](vpn-gateway-faq-p2s-all-include.md)]
@@ -21,23 +21,23 @@ ms.locfileid: "30197072"
 
 Ano. Dříve bylo možné používat pouze kořenové certifikáty podepsané svým držitelem. I nyní je možné nahrát 20 kořenových certifikátů.
 
-### <a name="what-tools-can-i-use-to-create-certificates"></a>Jaké nástroje můžete použít k vytvoření certifikátů?
+### <a name="what-tools-can-i-use-to-create-certificates"></a>Jaké nástroje se dají použít k vytvoření certifikátů?
 
-Můžete použít řešení infrastruktury veřejných KLÍČŮ organizace (interní infrastruktury veřejných KLÍČŮ), Azure PowerShell, MakeCert a OpenSSL.
+Můžete využít vaše podnikové řešení infrastruktury veřejných klíčů (vaše interní PKI), Azure PowerShell, MakeCert a OpenSSL.
 
-### <a name="certsettings"></a>Jsou nějaké pokyny pro nastavení certifikátu a parametry?
+### <a name="certsettings"></a>Existují nějaké pokyny pro parametry a nastavení certifikátů?
 
-* **Interní řešení infrastruktury veřejných KLÍČŮ nebo podnikové infrastruktury veřejných KLÍČŮ:** najdete v části postup [vygenerujete certifikáty](../articles/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md#generatecert).
+* **Interní / podnikové řešení PKI:** Projděte si kroky pro [vytvoření certifikátů](../articles/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md#generatecert).
 
-* **Azure PowerShell:** najdete v článku [prostředí Azure PowerShell](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md) najdete v článku kroky.
+* **Azure PowerShell:** Příslušné kroky najdete v článku pro [Azure PowerShell](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md).
 
-* **MakeCert:** najdete v článku [MakeCert](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-makecert.md) najdete v článku kroky.
+* **MakeCert:** Příslušné kroky najdete v článku pro [MakeCert](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-makecert.md).
 
 * **OpenSSL:** 
 
-    * Při exportu certifikátů, ujistěte se, zda je kořenový certifikát převést do formátu Base64.
+    * Při exportu certifikátů nezapomeňte převést kořenový certifikát na Base64.
 
-    * Pro certifikát klienta:
+    * Pro klientský certifikát:
 
-      * Při vytváření privátního klíče, zadejte délku jako 4096.
-      * Při vytváření certifikátu pro *-rozšíření* parametr, zadejte *usr_cert*.
+      * Při vytváření privátního klíče zadejte délku 4096.
+      * Při vytváření certifikátu jako parametr *-extensions* zadejte *usr_cert*.

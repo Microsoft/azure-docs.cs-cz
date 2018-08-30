@@ -1,0 +1,41 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 03a96770462e66c897b93ae0790838a9c8f1bd9b
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43130618"
+documentType: LandingData
+title: Dokumentace ke správě zařízení Azure AD
+metadata:
+  document_id: 
+  title: Dokumentace ke správě zařízení Azure AD – kurzy, šablony Rychlý start, koncepce, reference | Microsoft Docs
+  description: Zjistěte, jak nakonfigurovat a otestovat aktivní správu zařízení v Azure.
+  services: active-directory
+  ms.component: devices
+  author: MarkusVi
+  manager: mtillman
+  ms.service: active-directory
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 08/14/2018
+  ms.author: markvi
+abstract:
+  description: Prostřednictvím zařízení uživatelé získávají přístup k vašim firemním prostředkům. Pokud jako správce IT chcete chránit firemní prostředky, chcete mít nad těmito zařízeními kontrolu. Umožňuje vám zajistit, aby uživatelé přistupovali k vašim prostředkům ze zařízení, která splňují vaše standardy zabezpečení a dodržování předpisů.<br>Správa zařízení je také základem pro scénáře podmíněného přístupu na základě zařízení. Pomocí podmíněného přístupu na základě zařízení můžete zajistit, že přístup k prostředkům ve vašem prostředí je možný jenom se spravovanými zařízeními.
+sections:
+- title: Podrobné kurzy
+  items:
+  - type: paragraph
+    text: Další informace o integraci místních zařízení připojených k AD s Azure AD
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: ./media/index/i_security-management.png
+      text: Spravované domény
+      href: hybrid-azuread-join-managed-domains.md
+    - image:
+        src: ./media/index/i_security-management.png
+      text: Federované domény
+      href: hybrid-azuread-join-federated-domains.md

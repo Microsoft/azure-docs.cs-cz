@@ -1,0 +1,99 @@
+items:
+- name: Dokumentace k Privileged Identity Managementu
+- name: Přehled
+  items:
+  - name: Co je Azure AD PIM?
+    href: pim-configure.md
+- name: Koncepty
+  items:
+  - name: Požadavky na předplatné
+    href: subscription-requirements.md
+  - name: Role adresáře, které může spravovat
+    href: pim-roles.md
+  - name: Zabezpečení privilegovaného přístupu
+    href: ../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json
+  - name: Přehledové řídicí panely
+    href: pim-resource-roles-overview-dashboards.md
+  - name: E-mailová oznámení
+    href: pim-email-notifications.md
+  - name: Typy přiřazení
+    href: pim-resource-roles-eligible-visibility.md
+  - name: Průvodce zabezpečením
+    href: pim-security-wizard.md
+- name: Návody
+  items:
+  - name: Zahájení práce s využitím PIM
+    href: pim-getting-started.md
+  - name: Aktivace rolí
+    items:
+    - name: Aktivace mých rolí adresáře
+      href: pim-how-to-activate-role.md
+    - name: Aktivace mých rolí prostředku
+      href: pim-resource-roles-activate-your-roles.md
+  - name: Konfigurace PIM
+    items:
+    - name: Zjišťování prostředků Azure
+      href: pim-resource-roles-discover-resources.md
+    - name: Udělení přístupu ke správě PIM ostatním
+      href: pim-how-to-give-access-to-pim.md
+    - name: Povolení správy předplatného
+      href: pim-resource-roles-enable-subscription-management.md
+  - name: Správa rolí adresáře
+    items:
+    - name: Přiřazení rolí
+      href: pim-how-to-add-role-to-user.md
+    - name: Konfigurace nastavení role
+      href: pim-how-to-change-default-settings.md
+    - name: Vyžadování MFA
+      href: pim-how-to-require-mfa.md
+    - name: Konfigurace upozornění
+      href: pim-how-to-configure-security-alerts.md
+    - name: Schvalování žádostí
+      href: azure-ad-pim-approval-workflow.md
+    - name: Zobrazení historie auditů
+      href: pim-how-to-use-audit-log.md
+  - name: Správa rolí prostředků
+    items:
+    - name: Zobrazení toho, kdo má přístup
+      href: azure-pim-resource-rbac.md
+    - name: Přiřazení rolí
+      href: pim-resource-roles-assign-roles.md
+    - name: Konfigurace nastavení role
+      href: pim-resource-roles-configure-role-settings.md
+    - name: Vyžadování MFA
+      href: pim-resource-roles-require-mfa.md
+    - name: Konfigurace upozornění
+      href: pim-resource-roles-configure-alerts.md
+    - name: Schvalování žádostí
+      href: pim-resource-roles-approval-workflow.md
+    - name: Rozšíření nebo obnovení rolí
+      href: pim-resource-roles-renew-extend.md
+    - name: Zobrazení historie auditů
+      href: pim-resource-roles-use-the-audit-log.md
+    - name: Použití vlastních rolí
+      href: pim-resource-roles-custom-role-policy.md
+  - name: Kontrola přístupu
+    items:
+    - name: Role adresáře
+      items:
+      - name: Kontrola mých rolí adresáře
+        href: pim-how-to-perform-security-review.md
+      - name: Zahájení kontroly přístupu
+        href: pim-how-to-start-security-review.md
+      - name: Dokončení kontroly přístupu
+        href: pim-how-to-complete-review.md
+    - name: Role prostředků
+      items:
+      - name: Kontrola mých rolí prostředku
+        href: pim-resource-roles-perform-access-review.md
+      - name: Zahájení kontroly přístupu
+        href: pim-resource-roles-start-access-review.md
+      - name: Dokončení kontroly přístupu
+        href: pim-resource-roles-complete-access-review.md
+  expanded: true
+ms.openlocfilehash: 7a8fafb4782a02da5b1fbe189cba8cadf7c22bfe
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43191261"

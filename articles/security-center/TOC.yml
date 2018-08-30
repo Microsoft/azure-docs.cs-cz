@@ -57,8 +57,10 @@ items:
     href: security-center-monitoring.md
     items:
     - name: Zabezpečení aplikací a výpočetních funkcí
-      href: security-center-virtual-machine-recommendations.md
+      href: security-center-virtual-machine-protection.md
       items:
+      - name: Doporučení pro virtuální počítače
+        href: security-center-virtual-machine-recommendations.md
       - name: Použít šifrování disku
         href: security-center-apply-disk-encryption.md
       - name: Nainstalovat aktualizace systému
@@ -143,6 +145,8 @@ items:
       href: security-center-custom-alert.md
     - name: Ověřování výstrah
       href: security-center-alert-validation.md
+    - name: Skóre spolehlivosti výstrah
+      href: security-center-confidence-score.md
     - name: Mapa analýzy hrozeb
       href: security-center-threat-intel.md
     - name: Šetření
@@ -183,10 +187,6 @@ items:
     href: security-center-faq.md
   - name: Podporované platformy
     href: security-center-os-coverage.md
-  - name: Migrace platformy
-    href: security-center-platform-migration.md
-  - name: Migrace platformy – nejčastější dotazy
-    href: security-center-platform-migration-faq.md
   - name: Plánování a provoz
     href: security-center-planning-and-operations-guide.md
   - name: Zabezpečení Azure
@@ -207,9 +207,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=security-center
   - name: Regionální dostupnost
     href: https://azure.microsoft.com/regions/services/
-ms.openlocfilehash: c382c8e4d17352d7f87e82fe9a03a4c2e30880b8
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 62f713d5e0412eef2cb4dbb176e355371cbc924a
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42810170"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126398"
