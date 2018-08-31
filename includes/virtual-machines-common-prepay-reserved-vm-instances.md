@@ -4,12 +4,12 @@ ms.author: yashar
 ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 08-07-2018
-ms.openlocfilehash: 764470bbf47c18a2ec66dc91d433f8dd14b99a8f
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 6be00937a6645fbdd266ac0b1aa1ce95ecc6c3d9
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43040328"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301876"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances"></a>Předplatit si virtuální počítače se službou Azure Reserved VM Instances
 
@@ -34,7 +34,7 @@ Rezervované instance virtuálních počítačů jsou dostupné pro většinu ve
 - Potlačené základní virtuální počítače není získejte slevy na rezervaci.
 - Následující virtuální počítač řady Nezískávat slevy na rezervaci: řady A-series, Av2-series a G-series.
 - Virtuální počítače ve verzi Preview: nejsou k dispozici pro nákup rezervace všechny řady virtuálních počítačů nebo velikost, která je ve verzi preview.
-- Cloudy: rezervace nejsou dostupné ke koupi v oblastech Azure US Government, Německo nebo Čína.
+- Cloudy: Rezervace nejsou dostupné ke koupi v oblastech Azure US Government, Německo nebo Čína.
 - Nedostatečná kvóta: rezervace, který je v oboru pro jedno předplatné musí mít kvóty virtuálních procesorů dostupných v předplatném pro nové rezervovaných Instancí. Například pokud cílové předplatné má kvótu virtuálních procesorů 10 pro řady D-Series, pak nelze koupíte rezervace pro 11 Standard_D1 instancí. Kontrola kvóty pro rezervace zahrnují virtuální počítače už nasazená v předplatném. Například pokud předplatné má kvótu virtuálních procesorů 10 pro řady D-Series a má dvě instance standard_D1 nasazený, pak můžete koupit rezervaci pro 10 standard_D1 instancí v tomto předplatném. 
 - Omezení kapacity: ve výjimečných případech, omezeních nákup rezervace nový dílčí velikostí virtuálních počítačů z důvodu nízká kapacita v oblasti Azure.
 
@@ -70,7 +70,7 @@ Sleva za rezervaci se automaticky použije na počet spuštěných virtuálních
 
 Další informace o správě rezervaci, najdete v článku [spravovat Azure rezervace](../articles/billing/billing-manage-reserved-vm-instance.md).
 
-Další informace o Azure rezervace, naleznete v následujících článcích:
+Další informace o rezervacích Azure, najdete v následujících článcích:
 
 - [Co jsou Azure rezervace?](../articles/billing/billing-save-compute-costs-reservations.md)
 - [Správa rezervací v Azure](../articles/billing/billing-manage-reserved-vm-instance.md)
