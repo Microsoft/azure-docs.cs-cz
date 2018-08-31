@@ -72,16 +72,18 @@ items:
       items:
       - name: Běžné otázky pro replikaci z VMware do Azure
         href: vmware-azure-common-questions.md
-      - name: Systém podpory replikace z VMware/fyzických prostředků do Azure
+      - name: Matice podpory
         href: vmware-physical-azure-support-matrix.md
       - name: Architektura replikace z VMware do Azure
         href: vmware-azure-architecture.md
       - name: Architektura replikace z fyzických prostředků do Azure
         href: physical-azure-architecture.md
-      - name: Podpora více tenantů pro replikaci VMware do Azure
-        href: vmware-azure-multi-tenant-overview.md
-      - name: Možnosti umístění navrácení služeb po obnovení
+      - name: Informace o zotavení po havárii
+        href: vmware-azure-about-disaster-recovery.md
+      - name: Informace o možnostech umístění navrácení služeb po obnovení
         href: concepts-types-of-failback.md
+      - name: Informace o podpoře více tenantů pro VMware
+        href: vmware-azure-multi-tenant-overview.md
     - name: Replikace do sekundární lokality
       items:
       - name: Systém podpory replikace z VMware/fyzických prostředků do sekundární lokality
@@ -388,9 +390,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: Aktualizace služeb
     href: https://azure.microsoft.com/updates/?product=site-recovery
-ms.openlocfilehash: f0469d554b25565411bb8c484f3d3937bb9a87f6
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 63d404406e3b33d4022974246a227cad1e6535a6
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43126066"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43285102"

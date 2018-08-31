@@ -89,6 +89,8 @@ items:
     items:
     - name: Vytvoření Event Hubs s podporou Apache Kafka
       href: event-hubs-create-kafka-enabled.md
+    - name: Zpracování událostí Apache Kafka pro Event Hubs s využitím Stream Analytics
+      href: event-hubs-kafka-stream-analytics.md
   - name: Dostupná rozhraní API
     href: event-hubs-api-overview.md
     items:
@@ -174,9 +176,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-eventhub
   - name: Videa
     href: https://azure.microsoft.com/documentation/videos/index/?services=event-hubs
-ms.openlocfilehash: 4717ec9db2aaf904fe639b6b2d3add1b8602d96f
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: 5ccd15ccdfe25ed44c5002da5a1a9360aba6e5ca
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43144017"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43305629"
