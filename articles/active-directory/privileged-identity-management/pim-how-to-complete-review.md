@@ -1,6 +1,6 @@
 ---
-title: Dokončení kontroly přístupu | Dokumentace Microsoftu
-description: Po spuštění kontroly přístupu v Azure AD Privileged Identity Management, přečtěte si, jak dokončit a zobrazit výsledky
+title: Dokončení kontroly přístupu pro role adresáře Azure AD v PIM | Dokumentace Microsoftu
+description: Další informace o dokončení kontroly přístupu pro role adresáře Azure AD v Azure AD Privileged Identity Management (PIM) a zobrazit výsledky
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,14 +13,14 @@ ms.component: pim
 ms.date: 06/06/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 3b4135368c2222a08b155c851b384244774ce246
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 3955f4bf9b579ae40424c2650f9d3b4c2ac4f030
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622526"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43188582"
 ---
-# <a name="how-to-complete-an-access-review-in-azure-ad-privileged-identity-management"></a>Dokončení kontroly přístupu v Azure AD Privileged Identity Management
+# <a name="complete-an-access-review-for-azure-ad-directory-roles-in-pim"></a>Dokončení kontroly přístupu pro role adresáře Azure AD v PIM
 Správci privilegovaných rolí jednou zkontrolovat privilegovaný přístup [se spustila kontrola přístupu](pim-how-to-start-security-review.md). Azure AD Privileged Identity Management (PIM) se automaticky pošle e-mail vyzývá uživatele, aby zkontrolujte svůj přístup. Pokud uživatel nezískaly v e-mailu, můžete jim poslat pokyny [jak k provádění kontroly přístupu](pim-how-to-perform-security-review.md).
 
 Po období kontroly přístupu je nad nebo dokončení jejich svým přezkoumat všechny uživatele, postupujte podle kroků v tomto článku můžete spravovat revize a zobrazit výsledky.
@@ -53,4 +53,6 @@ Pokud si nejste zájem o další revizi, odstraňte ho. **Odstranit** tlačítko
 > Nebudou vám upozornění, než dojde k odstranění, proto buďte Opravdu chcete odstranit tuto revizi. 
 
 ## <a name="next-steps"></a>Další postup
-[!INCLUDE [active-directory-privileged-identity-management-toc](../../../includes/active-directory-privileged-identity-management-toc.md)]
+
+- [Zahájení kontroly přístupu pro role adresáře Azure AD v PIM](pim-how-to-start-security-review.md)
+- [Provádění kontroly přístupu sady Moje role adresáře Azure AD v PIM](pim-how-to-perform-security-review.md)

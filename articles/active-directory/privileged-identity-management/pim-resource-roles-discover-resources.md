@@ -1,6 +1,6 @@
 ---
-title: Zjišťovat a spravovat prostředky Azure s použitím Privileged Identity Management | Dokumentace Microsoftu
-description: Popisuje, jak chránit prostředky Azure pomocí PIM.
+title: Vyhledejte prostředky Azure ke správě v PIM | Dokumentace Microsoftu
+description: Zjistěte, jak zjistit prostředky Azure pro správu v Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.component: pim
 ms.date: 03/30/2018
 ms.author: rolyon
-ms.openlocfilehash: f4b6fafe40fe00492bac7bd6c28268321d4516db
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
-ms.translationtype: MT
+ms.openlocfilehash: b5d48b3f854afaa79574e0ec13cff91f60396ac6
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43104350"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190654"
 ---
-# <a name="discover-and-manage-azure-resources-by-using-privileged-identity-management"></a>Zjišťovat a spravovat prostředky Azure s použitím Privileged Identity Management
+# <a name="discover-azure-resources-to-manage-in-pim"></a>Vyhledejte prostředky Azure ke správě v PIM
 
 Zjistěte, jak zjišťovat a spravovat prostředky Azure, když použijete v Azure Active Directory (Azure AD) Privileged Identity Management (PIM). Tyto informace mohou být užitečné pro organizace, které už používají k ochraně prostředků správce PIM a vlastníkům předplatného, kteří chtějí zabezpečit prostředky v produkčním prostředí.
 
@@ -64,5 +64,5 @@ Vybrané prostředky se teď spravují pomocí PIM. Zavřít zjišťování obra
 
 ## <a name="next-steps"></a>Další postup
 
-- [Konfigurace nastavení role](pim-resource-roles-configure-role-settings.md)
-- [Přiřazení rolí v PIM](pim-resource-roles-assign-roles.md)
+- [Konfigurace nastavení role prostředků Azure v PIM](pim-resource-roles-configure-role-settings.md)
+- [Přiřazení role prostředků Azure v PIM](pim-resource-roles-assign-roles.md)

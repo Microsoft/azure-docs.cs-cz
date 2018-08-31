@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/24/2018
+ms.date: 08/29/2018
 ms.author: mstewart
-ms.openlocfilehash: 4fb0cf61d88a9a3d44091e49f501ef7af0f213d4
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
-ms.translationtype: MT
+ms.openlocfilehash: d248a97235ead134f29e468aaafcd04211590e02
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42887076"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247486"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Požadavky Azure Disk Encryption 
  Tento článek, požadované součásti služby Azure Disk Encryption, vysvětluje položky, které musí být na místě, abyste mohli používat Azure Disk Encryption. Azure Disk Encryption je integrovaná s [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/) ke správě šifrovacích klíčů. Můžete použít [prostředí Azure PowerShell](/powershell/azure/overview), [rozhraní příkazového řádku Azure](/cli/azure/), nebo [webu Azure portal](https://portal.azure.com) ke konfiguraci Azure Disk Encryption.
@@ -74,20 +74,18 @@ Příklad příkazy, které je možné připojit datové disky a vytvořte nezby
         - Instalace modulu PowerShellGet, prostředí Azure PowerShell a načtení modulu AzureRM. 
     - [Instalace a konfigurace Azure Powershellu v systémech macOS a Linux](/powershell/azure/install-azurermps-maclinux).
         -  Instalace Powershellu Core, Azure Powershellu pro .NET Core a načtení modulu AzureRM.Netcore.
-2. Nainstalujte [modul Powershellu pro Azure Active Directory](/powershell/azure/active-directory/install-adv2#installing-the-azure-ad-module). 
+
+2. Ověření nainstalovanou verzí modulu AzureRM. V případě potřeby [aktualizace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps#update-the-azure-powershell-module).
+    -  Verze modulu AzureRM musí být 6.0.0 nebo novější.
+    - Pomocí nejnovější verze modulu AzureRM se doporučuje.
 
      ```powershell
-     Install-Module AzureAD
+     Get-Module AzureRM -ListAvailable | Select-Object -Property Name,Version,Path
      ```
 
-3. Ověřte nainstalovaných verzí modulů.
-      ```powershell
-      Get-Module AzureRM -ListAvailable | Select-Object -Property Name,Version,Path
-      Get-Module AzureAD -ListAvailable | Select-Object -Property Name,Version,Path
-      ```
-4. Přihlaste se k Azure s využitím [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) rutiny.
+3. Přihlaste se k Azure s využitím [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) rutiny.
      
-     ```powershell
+     ```azurepowershell-interactive
      Connect-AzureRmAccount
      # For specific instances of Azure, use the -Environment parameter.
      Connect-AzureRmAccount –Environment (Get-AzureRmEnvironment –Name AzureUSGovernment)
@@ -99,13 +97,7 @@ Příklad příkazy, které je možné připojit datové disky a vytvořte nezby
      Set-AzureRmContext -SubscriptionId "xxxx-xxxx-xxxx-xxxx"
      ```
 
-5.  Připojení k Azure AD [Connect-AzureAD](/powershell/module/azuread/connect-azuread).
-     
-     ```powershell
-     Connect-AzureAD
-     ```
-
-6. Kontrola [Začínáme s Azure Powershellem](/powershell/azure/get-started-azureps) a [AzureAD](/powershell/module/azuread), v případě potřeby.
+4.  V případě potřeby zkontrolujte [Začínáme s Azure Powershellem](/powershell/azure/get-started-azureps).
 
 ## <a name="bkmk_CLI"></a> Instalace rozhraní příkazového řádku Azure pro použití v místním počítači (volitelné)
 

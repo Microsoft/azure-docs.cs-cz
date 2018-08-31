@@ -1,6 +1,6 @@
 ---
-title: E-mailová oznámení v Azure AD PIM | Dokumentace Microsoftu
-description: Popisuje e-mailových oznámení v Azure AD Privileged Identity Management (PIM)
+title: E-mailová oznámení v PIM – Azure | Dokumentace Microsoftu
+description: Popisuje e-mailových oznámení v Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,14 +15,14 @@ ms.date: 07/24/2018
 ms.author: rolyon
 ms.reviewer: hanki
 ms.custom: pim
-ms.openlocfilehash: 7943b4fb8c2027b50ce04c30d21f1b0a58f98ace
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 1a1635e0ba16bdc0fa6dc90aa0e1a417f43e04ac
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621578"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190172"
 ---
-# <a name="email-notifications-in-azure-ad-pim"></a>E-mailových oznámení v Azure AD PIM
+# <a name="email-notifications-in-pim"></a>E-mailových oznámení v PIM
 
 Po události kláves se generují v Azure AD Privileged Identity Management (PIM), e-mailová oznámení se odesílají na příslušné správce nebo uživatele. Například PIM odešle e-mailů pro následující události:
 
@@ -74,5 +74,5 @@ Dříve Pokud má uživatel přiřazenou privilegovanou roli, e-mailu vypadal n�
 
 ## <a name="next-steps"></a>Další postup
 
-- [Jak spravovat nastavení aktivace rolí v Azure AD PIM](pim-how-to-change-default-settings.md)
-- [Schválení v Azure AD PIM](azure-ad-pim-approval-workflow.md)
+- [Konfigurace nastavení role adresáře Azure AD v PIM](pim-how-to-change-default-settings.md)
+- [Schválit nebo zamítnout žádosti pro role adresáře Azure AD v PIM](azure-ad-pim-approval-workflow.md)

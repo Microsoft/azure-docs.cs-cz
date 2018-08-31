@@ -1,6 +1,6 @@
 ---
-title: Správa výstrah zabezpečení pro prostředky Azure s použitím Privileged Identity Management | Dokumentace Microsoftu
-description: Popisuje výstrahy zabezpečení PIM.
+title: Konfigurace výstrah zabezpečení pro role prostředků Azure v PIM | Dokumentace Microsoftu
+description: Zjistěte, jak konfigurovat výstrahy zabezpečení pro role prostředků Azure v Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,14 +14,14 @@ ms.component: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 46b19866ec3f276c8337cf9501b779701377d0a5
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 33bd13421b0c1574475516da942abe4e8c71ed52
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39620412"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43188828"
 ---
-# <a name="manage-security-alerts-for-azure-resources-by-using-privileged-identity-management"></a>Správa výstrah zabezpečení pro prostředky Azure s použitím Privileged Identity Management
+# <a name="configure-security-alerts-for-azure-resource-roles-in-pim"></a>Konfigurace výstrah zabezpečení pro role prostředků Azure v PIM
 Privileged Identity Management (PIM) pro prostředky Azure generuje výstrahy, když je aktivita podezřelého nebo nebezpečné ve vašem prostředí. Když se aktivuje upozornění, zobrazí na stránky s upozorněními. 
 
 ![Stránky s upozorněními](media/azure-pim-resource-rbac/RBAC-alerts-home.png)
@@ -50,3 +50,8 @@ Ze stránky s upozorněními, přejděte na **nastavení**.
 
 Upravte nastavení na jednotlivých výstrah pro práci s vaším prostředím a cíle zabezpečení.
 ![Vlastní nastavení](media/azure-pim-resource-rbac/rbac-alert-settings.png)
+
+## <a name="next-steps"></a>Další postup
+
+- [Vyžadovat vícefaktorové ověřování pro role prostředků Azure v PIM](pim-resource-roles-require-mfa.md)
+- [Konfigurace výstrah zabezpečení pro role prostředků Azure v PIM](pim-resource-roles-configure-alerts.md)

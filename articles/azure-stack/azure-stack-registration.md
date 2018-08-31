@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/13/2018
+ms.date: 08/24/2018
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: e2411a91174fd0b52227b4cfe8783c8c74c4039e
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 58c8568da0a818f87a5bb3d6966d2d4a6c977fd9
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42055641"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247819"
 ---
 # <a name="register-azure-stack-with-azure"></a>Registrace Azure Stack s Azure
 
@@ -84,13 +84,12 @@ Nasazení Azure Stack může být *připojené* nebo *odpojení*.
 
  - **Připojení**  
  Připojení znamená, že jste nasadili Azure Stack, tak, aby se může připojit k Internetu a do Azure. Buď je Azure Active Directory (Azure AD) nebo Active Directory Federation Services (AD FS) pro úložiště identit. U připojených nasazení, můžete si vybrat z dva modely fakturace: platit jako využití nebo na základě kapacity.
-    - [Zaregistrovat Azure s využitím propojené služby Azure Stack **platit jako využití** model fakturace](#register-a-connected-azure-stack-with-azure-using-the-pay-as-you-use-billing-model)
-    - [Zaregistrovat Azure s využitím propojené služby Azure Stack **kapacity** model fakturace](#register-a-connected-azure-stack-with-azure-using-the-capacity-billing-model)
+    - [Zaregistrovat Azure s využitím propojené služby Azure Stack **platit jako využití** model fakturace](#register-connected-with-pay-as-you-go-billing)
+    - [Zaregistrovat Azure s využitím propojené služby Azure Stack **kapacity** model fakturace](#register-connected-with-capacity-billing)
 
  - **Odpojení**  
  S odpojené od možnost nasazení v Azure, můžete nasadit a používat Azure Stack bez připojení k Internetu. Odpojené nasazení jste ale omezeni na úložiště identity služby AD FS a model fakturace založená na kapacitě.
-    - [Registrace odpojeného pomocí služby Azure Stack **kapacity** model fakturace ](#register-a-disconnected-Azure-Stack-using-the-capacity-billing-model
-)
+    - [Registrace odpojeného pomocí služby Azure Stack **kapacity** model fakturace ](#register-disconnected-with-capacity-billing)
 
 ## <a name="register-connected-with-pay-as-you-go-billing"></a>Registrace připojených s průběžnými platbami fakturace
 
@@ -218,7 +217,7 @@ Pokud při registraci služby Azure Stack v odpojeném prostředí (bez připoje
 
    ```Powershell
    $FilePathForRegistrationToken = $env:SystemDrive\RegistrationToken.txt
-   $RegistrationToken = Get-AzsRegistrationToken -PrivilegedEndpointCredential -EnableUsageReporting False $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel Capacity -AgreementNumber '<EA agreement number>' -TokenOutputFilePath $FilePathForRegistrationToken
+   $RegistrationToken = Get-AzsRegistrationToken -PrivilegedEndpointCredential -UsageReportingEnabled:$False $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel Capacity -AgreementNumber '<EA agreement number>' -TokenOutputFilePath $FilePathForRegistrationToken
    ```
    Další informace o rutině Get-AzsRegistrationToken najdete v tématu [Reference k registraci](#registration-reference).
 
@@ -358,7 +357,7 @@ Jste nyní zcela neregistrovaná v odpojeném scénáři a nutné opakovat kroky
 
 ### <a name="disable-or-enable-usage-reporting"></a>Zakázání nebo povolení generování sestav o využívání
 
-Pro prostředí Azure Stack, které používají model fakturace kapacity vypnout používání vytváření sestav pomocí **EnableUsageReporting** buď pomocí parametru **Set-AzsRegistration** nebo  **Get-AzsRegistrationToken** rutiny. Azure Stack sestavy metriky využití ve výchozím nastavení. Operátory se používá kapacity nebo podpora odpojené prostředí se musí si vypnout generování sestav o využívání.
+Pro prostředí Azure Stack, které používají model fakturace kapacity vypnout používání vytváření sestav pomocí **UsageReportingEnabled** buď pomocí parametru **Set-AzsRegistration** nebo  **Get-AzsRegistrationToken** rutiny. Azure Stack sestavy metriky využití ve výchozím nastavení. Operátory se používá kapacity nebo podpora odpojené prostředí se musí si vypnout generování sestav o využívání.
 
 #### <a name="with-a-connected-azure-stack"></a>Pomocí připojené služby Azure Stack
 
@@ -378,7 +377,7 @@ Pro prostředí Azure Stack, které používají model fakturace kapacity vypnou
 
    ```Powershell
    $FilePathForRegistrationToken = $env:SystemDrive\RegistrationToken.txt
-   $RegistrationToken = Get-AzsRegistrationToken -PrivilegedEndpointCredential -EnableUsageReporting False
+   $RegistrationToken = Get-AzsRegistrationToken -PrivilegedEndpointCredential -UsageReportingEnabled:$False
    $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel Capacity -AgreementNumber '<EA agreement number>' -TokenOutputFilePath $FilePathForRegistrationToken
    ```
 

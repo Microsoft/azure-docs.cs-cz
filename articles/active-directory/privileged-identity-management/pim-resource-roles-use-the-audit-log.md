@@ -1,6 +1,6 @@
 ---
-title: Auditovat role prostředků pro prostředky Azure s použitím Privileged Identity Management | Dokumentace Microsoftu
-description: Vysvětluje, jak získat přehled o aktivitu všech rolí daný prostředek.
+title: Zobrazení historie auditů pro role prostředků Azure v PIM | Dokumentace Microsoftu
+description: Zjistěte, jak zobrazit historie auditů pro role prostředků Azure v Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,14 +14,14 @@ ms.component: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 8f328a609d696886ed452589d3cdfb5f45aec62a
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: c0536423e9640f78149b612ec66b0a07cdcf24bb
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621279"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189307"
 ---
-# <a name="audit-resource-roles-for-azure-resources-by-using-privileged-identity-management"></a>Auditovat role prostředků pro prostředky Azure s použitím Privileged Identity Management 
+# <a name="view-audit-history-for-azure-resource-roles-in-pim"></a>Zobrazení historie auditů pro role prostředků Azure v PIM
 
 Audit prostředků poskytuje přehled všech aktivit role pro prostředek. Můžete filtrovat informace pomocí předdefinované datové nebo vlastní rozsah.
 ![Informace o filtru](media/azure-pim-resource-rbac/rbac-resource-audit.png)
@@ -31,7 +31,7 @@ Audit prostředků také poskytuje rychlý přístup k podrobnosti o aktivitě u
 
 ![Další podrobnosti o aktivitě](media/azure-pim-resource-rbac/rbac-audit-activity-details.png)
 
-# <a name="my-audit"></a>Můj audit
+## <a name="my-audit"></a>Můj audit
 
 Můj audit poskytuje přehled aktivit osobní role uživatele. Můžete filtrovat informace pomocí předdefinované datové nebo vlastní rozsah.
 ![Aktivita osobní role](media/azure-pim-resource-rbac/my-audit-time.png)
@@ -46,3 +46,6 @@ Výběrem konkrétní role aktivace zobrazíte podrobnosti o aktivaci role a odp
 
 ![Vyberte aktivace role](media/azure-pim-resource-rbac/rbac-user-resource-activity.png)
 
+## <a name="next-steps"></a>Další postup
+
+- [Zobrazení historie auditů pro role adresáře Azure AD v PIM](pim-how-to-use-audit-log.md)

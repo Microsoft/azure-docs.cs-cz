@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/28/2018
+ms.date: 08/29/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ea96898e36080096c91285f3ff7621f84bf81edf
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: e0d92cc52b34e1e04f13e03ec2196d13961fb7de
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42055038"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247932"
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení Update Management v Azure
 
@@ -35,6 +35,8 @@ Následující diagram znázorňuje konceptuální zobrazení chování a toku d
 
 ![Proces správy aktualizací](media/automation-update-management/update-mgmt-updateworkflow.png)
 
+Správa aktualizací umožňuje nativně připojit počítače v několika předplatných ve stejném tenantovi. Ke správě počítačů v jiném tenantovi, musíte připojit jako [počítače mimo Azure](automation-onboard-solutions-from-automation-account.md#onboard-a-non-azure-machine).
+
 Jakmile počítač provede kontrolu kompatibility aktualizací, agent předává informace hromadné ke službě Azure Log Analytics. Na počítači s Windows se kontrola dodržování předpisů ve výchozím nastavení provádí každých 12 hodin.
 
 Mimo plán kontrol dodržování předpisů pro aktualizace, zahájí se kontrola v rámci 15 minut v případě restartování agenta MMA, před instalací aktualizací a po instalaci aktualizace.
@@ -48,7 +50,7 @@ Pro počítač s Linuxem se kontrola dodržování předpisů ve výchozím nast
 
 Na počítače, které vyžadují aktualizace softwaru, můžete tyto aktualizace nasadit a nainstalovat tak, že vytvoříte plánované nasazení. Aktualizace klasifikované jako *volitelné* nejsou zahrnuté do oboru nasazení pro počítače s Windows. Pouze požadované aktualizace jsou součástí rozsahu nasazení. 
 
-Plánované nasazení definuje, které cílové počítače obdrží použitelné aktualizace, buď tak, že počítače explicitně zadáte, nebo tak, že vyberete [skupinu počítačů](../log-analytics/log-analytics-computer-groups.md) , který je založen na prohledávání protokolů konkrétní sady počítačů. Zadáte také plán pro schválení a vyhrazení určitou dobu, během které se můžou aktualizace instalovat. 
+Plánované nasazení definuje, které cílové počítače obdrží použitelné aktualizace, buď tak, že počítače explicitně zadáte, nebo tak, že vyberete [skupinu počítačů](../log-analytics/log-analytics-computer-groups.md) , který je založen na prohledávání protokolů konkrétní sady počítačů. Zadáte také plán pro schválení a vyhrazení určitou dobu, během které se můžou aktualizace instalovat.
 
 Aktualizace se instalují podle runbooků ve službě Azure Automation. Nelze zobrazit tyto sady runbook a runbook nevyžadují žádnou konfiguraci. Při vytvoření nasazení aktualizace nasazení aktualizace vytvoří plán, který se spustí hlavní runbook aktualizace v zadanou dobu pro zahrnuté počítače. Hlavní runbook spouští podřízený runbook na každém agentovi provést instalaci požadovaných aktualizací.
 
@@ -220,7 +222,7 @@ Chcete-li vytvořit nové nasazení aktualizace, vyberte **naplánovat nasazení
 |Aktualizace k vyloučení|Zadejte aktualizace k vyloučení. Pro Windows zadejte KB bez předpony "KB". Pro Linux zadejte název balíčku nebo použít zástupný znak.  |
 |Nastavení plánu|Vyberte čas spuštění a vyberte buď jednou nebo opakovaně pro opakování|
 | Časové období údržby |Počet minut pro aktualizace. Hodnota nemůže být menší než 30 minut a maximálně 6 hodin |
-| Restartovat ovládacího prvku| Ohraničujícím zpracování restartování počítače.</br>Dostupné možnosti jsou:</br>Restartování v případě potřeby (výchozí)</br>Vždy restartovat</br>Nikdy restartování</br>Pouze restartovat – nebude instalace aktualizace|
+| Restartovat ovládacího prvku| Určuje, jak by měl být zpracována restartování počítače. Dostupné možnosti jsou:</br>Restartovat v případě potřeby (výchozí)</br>Vždy restartovat</br>Nikdy nerestartovat</br>Pouze restartovat – nenainstalují se aktualizace|
 
 ## <a name="update-classifications"></a>Klasifikace aktualizací
 
@@ -310,7 +312,7 @@ Update
 
 #### <a name="single-azure-vm-assessment-queries-linux"></a>Posouzení dotazy jeden virtuální počítač Azure (Linux)
 
-Pro některé distribuce Linuxu, je [endianitou](https://en.wikipedia.org/wiki/Endianness) neshoda s VMUUID hodnotu, která pochází z Azure Resource Manageru a co je uložená ve službě Log Analytics. Následující dotaz vyhledává shoda s buď ukládání významných bajtů. Nahraďte hodnoty VMUUID formát big-endian a little endian formát čísla GUID správně vrátit výsledky. Můžete najít VMUUID, který se má použít spuštěním následujícího dotazu v Log Analytics: `Update | where Computer == "<machine name>"
+U některých distribucích systému Linux existuje [endianitou](https://en.wikipedia.org/wiki/Endianness) neshoda s VMUUID hodnotu, která pochází z Azure Resource Manageru a co je uložená ve službě Log Analytics. Následující dotaz vyhledává shoda s buď ukládání významných bajtů. Nahraďte hodnoty VMUUID formát big-endian a little endian formát čísla GUID správně vrátit výsledky. Můžete najít VMUUID, který se má použít spuštěním následujícího dotazu v Log Analytics: `Update | where Computer == "<machine name>"
 | summarize by Computer, VMUUID`
 
 ##### <a name="missing-updates-summary"></a>Chybějící aktualizace souhrnu
@@ -510,7 +512,7 @@ Protože Update Management se provede aktualizace rozšíření v cloudu, někte
 
 Update Management však stále hlásit tohoto počítače, jako je nedodržují předpisy, protože obsahuje další informace o příslušné aktualizace.
 
-Nasazení aktualizací podle klasifikace aktualizací nefunguje na CentOS úprav. Pro SUSE vyberete *pouze* jiné aktualizace klasifikace může vést k některé zabezpečení aktualizuje také nainstalované Pokud aktualizace zabezpečení související s zypperu (Správce balíčků) nebo jeho závislosti jsou požadovány nejprve. Jedná se omezení zypperu. V některých případech je může být nutné znovu spustit nasazení aktualizace, chcete-li ověřit pomocí protokolu aktualizace.
+Nasazení aktualizací podle klasifikace aktualizací nefunguje na CentOS úprav. Pro SUSE vyberete *pouze* jiné aktualizace klasifikace může vést k některé zabezpečení aktualizuje také nainstalované Pokud aktualizace zabezpečení související s zypperu (Správce balíčků) nebo jeho závislosti jsou požadovány nejprve. Jedná se omezení zypperu. V některých případech může být potřeba znovu spustit nasazení aktualizace, ověření zkontrolujte protokol aktualizace.
 
 ## <a name="troubleshoot"></a>Řešení potíží
 

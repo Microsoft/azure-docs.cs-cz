@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/20/2018
+ms.date: 08/29/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e06db4e356de6a4572721d1652d6a2666e7cfefc
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 231a9876c7a84953a7d9a88b761a1da9475d1f48
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42055458"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43248137"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Správa aktualizací pro několik počítačů
 
@@ -154,10 +154,10 @@ V **nové nasazení aktualizací** podokně zadejte následující informace:
 
    |Možnost|Popis|
    |---|---|
-   |Restartování v případě potřeby| **(Výchozí)**  v případě potřeby restartování je intitated Pokud umožňuje časové období údržby.|
+   |Restartování v případě potřeby| **(Výchozí)**  v případě potřeby je zahájeno restartování, pokud umožňuje časové období údržby.|
    |Vždy restartovat|Bez ohledu na to, zda je požadována je zahájeno restartování. |
-   |Nikdy restartování|Bez ohledu na to pokud restartování je vyžadována, restartování jsou surpressed.|
-   |Pouze restartovat – nebude instalace aktualizace|Tato možnost bude ignorovat instalaci aktualizací a pouze zahájí restartovat počítač.|
+   |Nikdy nerestartovat|Bez ohledu na to jsou Pokud restartování se vyžaduje, potlačit restartování počítače.|
+   |Pouze restartovat – nenainstalují se aktualizace|Tato možnost bude ignorovat instalaci aktualizací a pouze zahájí restartovat počítač.|
 
 Jakmile dokončíte konfiguraci plánu, vyberte **vytvořit** se vrátit na řídicí panel stavu. **Naplánované** tabulky zobrazí plán nasazení, který jste vytvořili.
 

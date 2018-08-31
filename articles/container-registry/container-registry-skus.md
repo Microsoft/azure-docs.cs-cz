@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
-ms.date: 03/15/2018
+ms.date: 08/28/2018
 ms.author: marsma
-ms.openlocfilehash: 5d9001bce4f835e4b9b82ba1c30d09f74eebd1d2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
-ms.translationtype: MT
+ms.openlocfilehash: 5c10c961519614d1560f27c41ba57237085261ba
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39442747"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190404"
 ---
 # <a name="azure-container-registry-skus"></a>Skladové položky registru kontejnerů Azure
 
@@ -24,13 +24,11 @@ Azure Container Registry (ACR) je k dispozici v několika úrovních služeb, oz
 | **Basic** | Ano | Vstupní bod optimalizovaný z hlediska nákladů pro vývojáře, kteří se seznamují se službou Azure Container Registry. Registry úrovně Basic mají stejné programové funkce jako úrovně Standard a Premium (integrace ověřování pomocí Azure Active Directory, odstraňování imagí a webhooky), ale platí pro ně omezení z hlediska velikosti a využití. |
 | **Standard** | Ano | Standardními registry nabízí stejné funkce jako Basic má omezení větší úložiště a propustnost bitové kopie. Registry úrovně Standard by měly vyhovovat požadavkům většiny produkčních scénářů. |
 | **Premium** | Ano | Registry úrovně Premium poskytují vyšší limity na omezení, jako jsou úložiště a souběžné operace povolení scénářů s vysokými objemy. Kromě vyšší kapacitou propustnosti image Premium přidává funkce, jako jsou [geografickou replikaci] [ container-registry-geo-replication] pro správu jednoho registru napříč několika oblastmi, uchovávat registr blízko sítě u každého nasazení. |
-| Classic | Ne | Povolené skladové položky registru Classic počáteční verzi služby Azure Container Registry v Azure. Registry Classic se zálohují na účet úložiště Azure se vytvoří v rámci vašeho předplatného, což omezí možnosti pro službu ACR a poskytují vyšší úrovně možnosti, jako je například vyšší propustnost a geografická replikace. Kvůli omezené možnosti plánujeme přestat používat klasické SKU v budoucnu. |
+| Klasické<sup>1</sup> | Ne | Tato skladová položka povolena počáteční verzi služby Azure Container Registry v Azure. Registry Classic se zálohují na účet úložiště Azure se vytvoří v rámci vašeho předplatného, což omezí možnosti pro službu ACR a poskytují vyšší úrovně možnosti, jako je například vyšší propustnost a geografická replikace. |
+
+<sup>1</sup> Classic SKU bude **zastaralé** v **. března 2019**. Použití úrovně Basic, Standard nebo Premium pro všechny nové registry kontejnerů.
 
 Když zvolíte že vyšší skladovou Položku poskytuje větší výkon a škálování, ale všechny spravované skladové položky nabízejí stejné programové funkce. S více úrovní služeb můžete začít s Basic pak převod na Standard a Premium jako zvýšení využití vašeho registru.
-
-> [!NOTE]
-> Z důvodu plánovaného vyřazení skladová položka registru Classic doporučujeme že použít Basic, Standard nebo Premium pro všechny nové Registry. Informace o převodu stávajících registru Classic najdete v tématu [Upgrade registru Classic][container-registry-upgrade].
->
 
 ## <a name="managed-vs-unmanaged"></a>Spravované nebo nespravované
 
@@ -41,6 +39,9 @@ Basic, Standard a SKU úrovně Premium se souhrnně nazývají *spravované* reg
 Spravované registry výhody z úložiště image kompletně spravované službou Azure. To znamená, že účet úložiště, která ukládá váš obrázky se nezobrazí v rámci vašeho předplatného Azure. Existuje více výhod získaných pomocí jedné z spravovaný registr SKU, popsané hlouběji v [úložiště image kontejneru ve službě Azure Container Registry][container-registry-storage]. Tento článek se zaměřuje na spravovaný registr skladové položky a jejich funkce.
 
 ### <a name="unmanaged-classic"></a>Nespravované (Classic)
+
+> [!IMPORTANT]
+> Klasické SKU je zastaralé a budou k dispozici od března 2019. Použijte pro všechny nové registry úrovně Basic, Standard nebo Premium.
 
 Registry Classic jsou "nespravovaného" v tom smyslu, že účet úložiště, která zálohuje registru Classic se nachází v rámci *vaše* předplatného Azure. V důsledku toho můžete zodpovídají za správu účtu úložiště, ve kterém jsou uložené vaše Image kontejneru. Pomocí nespravovaných registrů, nemůžete přepínat mezi skladové položky podle vašich aktuálních potřeb (jiné než [upgrade] [ container-registry-upgrade] na spravovaný registr), a (například nejsou k dispozici několik funkcí spravované registry odstranění image kontejneru, [geografickou replikaci][container-registry-geo-replication], a [webhooky][container-registry-webhook]).
 

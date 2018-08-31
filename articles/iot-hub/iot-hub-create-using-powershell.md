@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 08/24/2018
+ms.date: 08/29/2018
 ms.author: robinsh
-ms.openlocfilehash: f9903781a998db8192e3958ae386b7420f56fd31
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 7ecd35ba33d2860ba052aa27286c69985c2f7dd9
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43045622"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190226"
 ---
 # <a name="create-an-iot-hub-using-the-new-azurermiothub-cmdlet"></a>Vytvoření IoT hubu pomocí rutiny New-AzureRmIotHub
 
@@ -42,7 +42,7 @@ Potřebujete skupinu prostředků pro nasazení služby IoT hub. Můžete použ�
 
 Chcete-li vytvořit skupinu prostředků pro službu IoT hub, použijte [New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/AzureRM.Resources/New-AzureRmResourceGroup) příkazu. Tento příklad vytvoří skupinu prostředků s názvem **MyIoTRG1** v **USA – východ** oblasti:
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroup -Name MyIoTRG1 -Location "East US"
 ```
 
@@ -50,7 +50,7 @@ New-AzureRmResourceGroup -Name MyIoTRG1 -Location "East US"
 
 K vytvoření služby IoT hub ve skupině prostředků, kterou jste vytvořili v předchozím kroku, použijte [New-AzureRmIotHub](https://docs.microsoft.com/powershell/module/AzureRM.IotHub/New-AzureRmIotHub) příkazu. Tento příklad vytvoří **S1** centrum s názvem **MyTestIoTHub** v **USA – východ** oblasti:
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmIotHub `
     -ResourceGroupName MyIoTRG1 `
     -Name MyTestIoTHub `
@@ -64,15 +64,15 @@ Název služby IoT hub, musí být globálně jedinečný.
 
 IoT hub můžete vytvořit seznam v předplatném pomocí [Get-AzureRmIotHub](https://docs.microsoft.com/powershell/module/AzureRM.IotHub/Get-AzureRmIotHub) příkaz:
 
-```powershell
+```azurepowershell-interactive
 Get-AzureRmIotHub
 ```
 
-Tento příklad ukazuje S1 Standard služby IoT Hub, že kterou jste vytvořili v předchozím kroku. 
+Tento příklad ukazuje S1 Standard služby IoT Hub, že kterou jste vytvořili v předchozím kroku.
 
 Můžete odstranit pomocí centra IoT [odebrat AzureRmIotHub](https://docs.microsoft.com/powershell/module/azurerm.iothub/remove-azurermiothub) příkaz:
 
-```powershell
+```azurepowershell-interactive
 Remove-AzureRmIotHub `
     -ResourceGroupName MyIoTRG1 `
     -Name MyTestIoTHub
@@ -80,7 +80,7 @@ Remove-AzureRmIotHub `
 
 Alternativně můžete odebrat skupinu prostředků a všechny prostředky obsahuje pomocí [Remove-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/AzureRM.Resources/Remove-AzureRmResourceGroup) příkaz:
 
-```powershell
+```azurepowershell-interactive
 Remove-AzureRmResourceGroup -Name MyIoTRG1
 ```
 

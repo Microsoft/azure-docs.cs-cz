@@ -1,6 +1,6 @@
 ---
-title: Nasazení OpenShift původ v Azure | Microsoft Docs
-description: Nasaďte OpenShift původ v Azure.
+title: Nasazení OKD v Azure | Dokumentace Microsoftu
+description: Nasazení OKD v Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldw
@@ -15,25 +15,25 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: ''
 ms.author: haroldw
-ms.openlocfilehash: f7a668f30d7acb1ea14fe9fd8921066d40a6669b
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 0d3a9f05802bef7d6dfc99fcfae6668044f214c8
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
-ms.locfileid: "29123115"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190300"
 ---
-# <a name="deploy-openshift-origin-in-azure"></a>Nasazení OpenShift původ v Azure
+# <a name="deploy-okd-in-azure"></a>Nasazení OKD v Azure
 
-Můžete použít jednu ze dvou způsobů nasazení OpenShift původ v Azure:
+Můžete použít jednu ze dvou způsobů nasazení OKD (dříve OpenShift Origin) v Azure:
 
-- Můžete ručně nasadit všechny součásti potřebnou infrastrukturu Azure a postupujte podle počátek OpenShift [dokumentaci](https://docs.openshift.org/3.6/welcome/index.html).
-- Můžete také použít existující [šablony Resource Manageru](https://github.com/Microsoft/openshift-origin) , zjednodušuje nasazení clusteru OpenShift původu.
+- Můžete ručně nasadit všechny součásti potřebné infrastruktury Azure a postupujte podle OKD [dokumentaci](https://docs.okd.io/3.10/welcome/index.html).
+- Můžete také použít existující [šablony Resource Manageru](https://github.com/Microsoft/openshift-origin) , která zjednodušuje nasazení OKD clusteru.
 
-## <a name="deploy-by-using-the-openshift-origin-template"></a>Nasazení pomocí šablony OpenShift původu
+## <a name="deploy-by-using-the-okd-template"></a>Nasazení pomocí šablony OKD
 
-Použití `appId` hodnotu z objektu služby, kterou jste dříve vytvořili pro `aadClientId` parametr.
+Použití `appId` hodnotu z instančního objektu, který jste vytvořili dříve pro `aadClientId` parametru.
 
-Následující příklad vytvoří soubor parametrů s názvem azuredeploy.parameters.json se všechny požadované vstupy.
+Následující příklad vytvoří soubor parametrů s názvem azuredeploy.parameters.json se všechny vstupy.
 
 ```json
 {
@@ -99,9 +99,9 @@ Následující příklad vytvoří soubor parametrů s názvem azuredeploy.param
 
 
 > [!NOTE] 
-> Tento příkaz vyžaduje rozhraní příkazového řádku Azure 2.0.8 nebo novější. Verze rozhraní příkazového řádku s můžete ověřit `az --version` příkaz. K aktualizaci verze rozhraní příkazového řádku, najdete v části [nainstalovat Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+> Následující příkaz vyžaduje Azure CLI 2.0.8 nebo novější. Verzi rozhraní příkazového řádku pomocí můžete ověřit `az --version` příkazu. Pokud chcete aktualizovat verzi rozhraní příkazového řádku, naleznete v tématu [instalace Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-Následující příklad nasadí do skupiny prostředků s názvem myResourceGroup, s názvem nasazení myOpenShiftCluster OpenShift clusteru a všechny související prostředky. Šablona se odkazuje přímo z úložiště GitHub pomocí místní parametry soubor s názvem azuredeploy.parameters.json.
+Následující příklad nasadí do skupinu prostředků myResourceGroup, s názvem nasazení myOpenShiftCluster OKD cluster a všechny související prostředky. Šablona se odkazuje přímo z úložiště GitHub s použitím místní parametry souboru s názvem azuredeploy.parameters.json.
 
 ```azurecli 
 az group deployment create -g myResourceGroup --name myOpenShiftCluster \
@@ -109,7 +109,7 @@ az group deployment create -g myResourceGroup --name myOpenShiftCluster \
       --parameters @./azuredeploy.parameters.json
 ```
 
-Nasazení trvá alespoň 25 minut na dokončení, v závislosti na celkový počet uzlů, které jsou nasazeny. Adresa URL konzoly OpenShift a název DNS hlavní výtisků OpenShift na terminálu po dokončení nasazení.
+Nasazení trvá aspoň 25 minut na dokončení, v závislosti na celkový počet nasazených uzlů. Adresa URL konzoly OKD a název DNS hlavního vytiskne OpenShift do terminálu po dokončení nasazení.
 
 ```json
 {
@@ -118,9 +118,9 @@ Nasazení trvá alespoň 25 minut na dokončení, v závislosti na celkový poč
 }
 ```
 
-## <a name="connect-to-the-openshift-cluster"></a>Připojte se ke clusteru OpenShift
+## <a name="connect-to-the-okd-cluster"></a>Připojte se ke clusteru OKD
 
-Po dokončení nasazení připojit ke konzole OpenShift s prohlížeči pomocí `OpenShift Console Uri`. Můžete alternativně připojí k hlavní OpenShift pomocí následujícího příkazu:
+Až se nasazení dokončí, připojení ke konzole OKD v prohlížeči pomocí `OpenShift Console Uri`. Alternativně můžete připojit k hlavnímu serveru OKD pomocí následujícího příkazu:
 
 ```bash
 $ ssh -p 2200 clusteradmin@myopenshiftmaster.cloudapp.azure.com
@@ -128,7 +128,7 @@ $ ssh -p 2200 clusteradmin@myopenshiftmaster.cloudapp.azure.com
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Použití [odstranění skupiny az](/cli/azure/group#az_group_delete) příkaz, který má-li odebrat skupinu prostředků, OpenShift clusteru a všechny související prostředky, když jste už nepotřebují.
+Použití [odstranění skupiny az](/cli/azure/group#az_group_delete) příkazu k odebrání skupiny prostředků, clusteru OpenShift a všechny související prostředky, pokud jste už nepotřebujete.
 
 ```azurecli 
 az group delete --name myResourceGroup
@@ -137,5 +137,5 @@ az group delete --name myResourceGroup
 ## <a name="next-steps"></a>Další postup
 
 - [Úlohy po nasazení](./openshift-post-deployment.md)
-- [Řešení potíží s OpenShift nasazení](./openshift-troubleshooting.md)
-- [Začínáme s OpenShiftem Origin](https://docs.openshift.org/latest/getting_started/index.html)
+- [Řešení potíží s nasazení Openshiftu](./openshift-troubleshooting.md)
+- [Začínáme s OKD](https://docs.okd.io/latest/getting_started/index.html)

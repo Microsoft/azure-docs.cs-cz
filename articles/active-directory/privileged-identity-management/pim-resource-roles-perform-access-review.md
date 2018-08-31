@@ -1,6 +1,6 @@
 ---
-title: Provádění kontroly přístupu v Privileged Identity Management pro prostředky Azure | Dokumentace Microsoftu
-description: Tento dokument popisuje, jak k provádění kontroly přístupu v PIM pro prostředky Azure, podle role prostředků.
+title: Provádění kontroly přístupu sady Moje role prostředků Azure v PIM | Dokumentace Microsoftu
+description: Zjistěte, jak k provádění kontroly přístupu z role prostředků Azure v Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,14 +15,14 @@ ms.component: pim
 ms.date: 03/30/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 336ad1d7eff8eee0f2370e206eb98f20b4efb45b
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: a96a1de7828797f1124280fca95a3358210b55b7
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39617220"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189714"
 ---
-# <a name="perform-an-access-review-in-pim-according-to-resource-role"></a>Provádění kontroly přístupu v PIM, podle role prostředků
+# <a name="perform-an-access-review-of-my-azure-resource-roles-in-pim"></a>Provádění kontroly přístupu sady Moje role prostředků Azure v PIM
 Privileged Identity Management (PIM) pro prostředky Azure zjednodušuje, jak podniky správy privilegovaného přístupu k prostředkům v Azure. 
 
 Pokud máte přiřazenou roli správce privilegovaných rolí správce ve vaší organizaci může vás vyzve k pravidelně potvrzení pro vaše úloha stále potřebovat danou roli. Může se zobrazit e-mailu, který obsahuje odkaz, nebo můžete přejít přímo na [webu Azure portal](https://portal.azure.com). Postupujte podle kroků v tomto článku provádět svým přezkoumat přiřazených rolí.
@@ -50,3 +50,7 @@ Postupujte podle těchto kroků můžete najít a dokončení kontroly přístup
 4. Zvolte buď **schválit** nebo **Odepřít**. V **poskytují pole důvod**, možná budete muset zahrnout důvod svého rozhodnutí.
 
    ![Přezkoumání snímku obrazovky podrobností stránky](media/azure-pim-resource-rbac/rbac-access-review-choice.png)
+
+## <a name="next-steps"></a>Další postup
+
+- [Provádění kontroly přístupu sady Moje role adresáře Azure AD v PIM](pim-how-to-perform-security-review.md)

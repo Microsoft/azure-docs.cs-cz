@@ -1,6 +1,6 @@
 ---
-title: Oprávněné přiřazení a viditelnost prostředků Azure v Privileged Identity Management | Dokumentace Microsoftu
-description: Popisuje, jak přiřazovat členy jako oprávněné pro role prostředků při použití PIM.
+title: Oprávněné přiřazení a viditelnost prostředku v PIM – Azure | Dokumentace Microsoftu
+description: Popisuje, jak přiřazovat členy jako oprávněné pro role prostředků Azure v Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,14 +15,14 @@ ms.component: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 336453c1ef6ef8d0295d00f31afc6a5e7e42e8b6
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 3551c3231a94f8a844d26a713cbf171ca7653815
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621544"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189210"
 ---
-# <a name="eligible-assignments-and-resource-visibility-with-privileged-identity-management"></a>Oprávněné přiřazení a viditelnost prostředku s Privileged Identity Management
+# <a name="eligible-assignments-and-resource-visibility-in-pim"></a>Oprávněné přiřazení a viditelnost prostředku v PIM
 
 Privileged Identity Management (PIM) pro role prostředků Azure poskytuje vylepšené zabezpečení pro organizace, které mají důležité prostředky Azure. Správci prostředků můžete přiřazovat členy jako oprávněné pro role prostředků PIM. Další informace o typech různých přiřazení a stavy přiřazení pro role prostředků Azure v následujících částech. 
 
@@ -70,4 +70,4 @@ Při prohlížení členství, který je uveden v **aktivních rolí**, můžete
 
 ## <a name="next-steps"></a>Další postup
 
-[Přiřadit role v Privileged Identity Manager](pim-resource-roles-assign-roles.md)
+- [Přiřazení role prostředků Azure v PIM](pim-resource-roles-assign-roles.md)

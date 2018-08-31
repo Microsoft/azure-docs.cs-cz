@@ -1,6 +1,6 @@
 ---
-title: Jak udělit přístup k Privileged Identity Management – Azure | Dokumentace Microsoftu
-description: Zjistěte, jak přidat role pro uživatele s rozšířením Azure Active Directory Privileged Identity Management, tak můžou spravovat PIM.
+title: Udělení přístupu na jiné správce ke správě PIM – Azure | Dokumentace Microsoftu
+description: Zjistěte, jak udělit přístup k jiné správy pro správu Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,14 +13,14 @@ ms.component: pim
 ms.date: 06/06/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: ade3939057669e7f9979001db4376fe61c2f4ad9
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
-ms.translationtype: MT
+ms.openlocfilehash: d6b2d9f43ce9bb86f4557c92887689c83beb49fa
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39623064"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189551"
 ---
-# <a name="giving-access-to-manage-azure-ad-privileged-identity-management"></a>Poskytuje přístup ke správě Azure AD Privileged Identity Management
+# <a name="grant-access-to-other-administrators-to-manage-pim"></a>Udělení přístupu na jiné správce ke správě PIM
 Globální správce, který umožňuje Azure AD Privileged Identity Management (PIM) pro organizaci automaticky získat přiřazení rolí a přístupu k PIM. Nikdo jiný získá oprávnění k zápisu ve výchozím nastavení, i když, včetně další globální správce. Jiné globální správci, správci zabezpečení a čtenáři zabezpečení mají přístup jen pro čtení k Azure AD PIM. K poskytnutí přístupu k PIM, můžete přiřadit na prvního uživatele ostatním uživatelům **správce privilegovaných rolí** role.
 
 > [!NOTE]
@@ -54,4 +54,5 @@ Před odebráním uživatele z role správce privilegovaných rolí, vždy ujist
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>Další postup
-[!INCLUDE [active-directory-privileged-identity-management-toc](../../../includes/active-directory-privileged-identity-management-toc.md)]
+
+- [Povolení správy předplatného ve vašem tenantovi](pim-resource-roles-enable-subscription-management.md)

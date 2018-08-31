@@ -8,12 +8,12 @@ ms.date: 6/20/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f54001c26938ea508111542b930b189342303633
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: f8ac885444c0ba52802024be9a78dfc0737e2673
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186858"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247679"
 ---
 # <a name="create-a-linux-iot-edge-device-that-acts-as-a-transparent-gateway"></a>Vytvoření zařízení Linux IoT Edge, který funguje jako transparentní brána
 
@@ -80,9 +80,9 @@ Následující kroky vás provedou procesem vytváření certifikátů a jejich 
    >[!NOTE]
    > **Ne** použít název, který je stejný jako název hostitele DNS této brány. To způsobí, že certifikát klienta pro tyto certifikáty k selhání.
 
-      ```cmd
-      ./certGen.sh create_edge_device_certificate "<gateway device name>"
-      ```
+   ```cmd
+   ./certGen.sh create_edge_device_certificate "<gateway device name>"
+   ```
 
    Výstupy provádění skriptu jsou následující klíče a certifikáty:
    * `$WRKDIR/certs/new-edge-device.*`
@@ -101,18 +101,24 @@ Z certifikátu certifikační Autority vlastníka, zprostředkující certifiká
    * Certifikát certifikační Autority zařízení –  `$WRKDIR/certs/new-edge-device-full-chain.cert.pem`
    * Privátní klíč certifikační Autority zařízení – `$WRKDIR/private/new-edge-device.key.pem`
    * Vlastník CA- `$WRKDIR/certs/azure-iot-test-only.root.ca.cert.pem`
+   
+2. Otevřete konfigurační soubor IoT Edge. Soubor je chráněný, a proto možná budete muset pro přístup použít zvýšená oprávnění.
+   
+   ```bash
+   sudo nano /etc/iotedge/config.yaml
+   ```
 
-2.  Nastavte `certificate` vlastností v umístění souborů certifikát a klíč souboru yaml zabezpečení démon konfigurace k cestě.
+3.  Nastavte `certificate` vlastnosti v Iot Edge démon konfiguračním yaml souboru do cesty umístění souborů certifikátu a klíče.
 
-```yaml
-certificates:
-  device_ca_cert: "$CERTDIR/certs/new-edge-device-full-chain.cert.pem"
-  device_ca_pk: "$CERTDIR/private/new-edge-device.key.pem"
-  trusted_ca_certs: "$CERTDIR/certs/azure-iot-test-only.root.ca.cert.pem"
-```
+   ```yaml
+   certificates:
+     device_ca_cert: "$CERTDIR/certs/new-edge-device-full-chain.cert.pem"
+     device_ca_pk: "$CERTDIR/private/new-edge-device.key.pem"
+     trusted_ca_certs: "$CERTDIR/certs/azure-iot-test-only.root.ca.cert.pem"
+   ```
 
 ## <a name="deploy-edgehub-to-the-gateway"></a>Nasazení EdgeHub do brány
-Jednou z klíčových možností služby Azure IoT Edge je schopnost nasazovat moduly do zařízení IoT Edge z cloudu. Tato část obsahuje, můžete vytvořit zdánlivě prázdný nasazení; Centrum Edge se ale automatcially přidat pro všechna nasazení, i když nejsou žádné další moduly, které jsou k dispozici. Centrum Edge se pouze modul, který je potřeba na hraniční zařízení ho sloužit jako transparentní brána tak vytváření prázdného nasazení je dostatečná. 
+Jednou z klíčových možností služby Azure IoT Edge je schopnost nasazovat moduly do zařízení IoT Edge z cloudu. Tato část obsahuje, můžete vytvořit zdánlivě prázdný nasazení; Centrum Edge se ale automaticky přidá pro všechna nasazení i v případě, že nejsou žádné další moduly, které jsou k dispozici. Centrum Edge se pouze modul, který je potřeba na hraniční zařízení ho sloužit jako transparentní brána tak vytváření prázdného nasazení je dostatečná. 
 1. Na webu Azure Portal přejděte do svého centra IoT.
 2. Přejděte na **IoT Edge** a vyberte zařízení IoT Edge, který chcete použít jako bránu.
 3. Vyberte **Nastavit moduly**.

@@ -1,6 +1,6 @@
 ---
-title: Rozšíření a zkontrolovat role v prostředcích Azure s použitím Privileged Identity Management | Dokumentace Microsoftu
-description: Tento dokument popisuje, jak rozšířit a obnovení role prostředků Azure pro prostředky PIM.
+title: Rozšíření nebo obnovení role prostředků Azure v PIM | Dokumentace Microsoftu
+description: Zjistěte, jak rozšíření nebo obnovení role prostředků Azure v Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,14 +15,14 @@ ms.component: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 7eb30f895214ff7d5a1607fc7e477d3d876a6fc1
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 2c85c5bbbd4c152113108e0fdb717d23f85f9fde
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39617519"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189646"
 ---
-# <a name="extend-and-review-roles-in-azure-resources-by-using-privileged-identity-management"></a>Rozšíření a zkontrolovat role v prostředcích Azure s použitím Privileged Identity Management
+# <a name="extend-or-renew-azure-resource-roles-in-pim"></a>Rozšíření nebo obnovení role prostředků Azure v PIM
 
 Privileged Identity Management (PIM) pro prostředky Azure, zavádí nové ovládací prvky pro správu přístupu a přiřazení životní cyklus pro prostředky Azure. Správci mohou přiřadit členství pomocí vlastnosti počáteční a koncové datum a čas. Když se blíží konec přiřazení PIM odešle e-mailová oznámení k ovlivnění uživatelé nebo skupiny. Rovněž odesílá e-mailová oznámení pro správce prostředků k zajištění, že se udržuje odpovídající přístup. Přiřazení může být obnovena a zůstávají viditelné vypršela platnost po dobu až 30 dnů, i když není rozšířené přístup.
 
@@ -113,7 +113,7 @@ Po odeslání žádosti jsou správci prostředků upozorněni na čekající ž
 
 Správci prostředků mohou přistupovat k žádost o obnovení z odkazu v e-mailových oznámení nebo přístupu k PIM z webu Azure portal a výběrem **schvalovat žádosti o** v levém podokně.
 
-![Schválit žádosti](media/azure-pim-resource-rbac/aadpim_rbac_extend_admin_approve_grid.png)
+![Schvalování žádostí](media/azure-pim-resource-rbac/aadpim_rbac_extend_admin_approve_grid.png)
 
 Pokud správce vybere **schválit** nebo **Odepřít**, jsou uvedeny podrobnosti požadavku spolu s polem zadávat odůvodnění pro protokoly auditu.
 
@@ -131,8 +131,5 @@ Chcete-li zobrazit seznam všech skončila přiřazení rolí **členy** obrazov
 
 ## <a name="next-steps"></a>Další postup
 
-[K aktivaci vyžadovat schválení](pim-resource-roles-approval-workflow.md)
-
-[Aktivovat roli](pim-resource-roles-use-the-audit-log.md)
-
-
+- [Schválit nebo zamítnout žádosti pro role prostředků Azure v PIM](pim-resource-roles-approval-workflow.md)
+- [Konfigurace nastavení role prostředků Azure v PIM](pim-resource-roles-configure-role-settings.md)

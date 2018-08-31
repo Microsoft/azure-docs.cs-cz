@@ -1,6 +1,6 @@
 ---
-title: Průvodce zabezpečení Azure AD Privileged Identity Management
-description: Při prvním použití rozšíření Azure Active Directory Privileged Identity Management, zobrazí se Průvodce zabezpečením. Tento článek popisuje postup při použití průvodce.
+title: Průvodce zabezpečením v PIM – Azure | Dokumentace Microsoftu
+description: Popisuje zabezpečení průvodce, který se zobrazí při prvním použití Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,14 +13,14 @@ ms.component: pim
 ms.date: 02/27/2017
 ms.author: rolyon
 ms.custom: pim ; H1Hack27Feb2017
-ms.openlocfilehash: 19eb2b36b217dc67fabcc3c2c4721fb13b2224ec
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 178a4c5e978075f2a59b22a1cccf462138527964
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39617002"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189075"
 ---
-# <a name="using-the-security-wizard-in-azure-ad-privileged-identity-management"></a>Pomocí Průvodce zabezpečení v Azure AD Privileged Identity Management 
+# <a name="security-wizard-in-pim"></a>Průvodce zabezpečením v PIM
 Pokud jste první, kdo ke spuštění Azure Privileged Identity Management (PIM) pro vaši organizaci, zobrazí se průvodce. Průvodce vám pomůže pochopit bezpečnostní rizika privilegované identity a jak používat PIM ke snížení rizika. Není nutné měnit stávající přiřazení rolí v průvodci, pokud chcete to udělat později.
 
 ## <a name="what-to-expect"></a>Co můžete očekávat
@@ -40,5 +40,7 @@ Po provedení změny, průvodce se už zobrazí. Při příštím vy nebo jiný 
 * Pokud chcete poskytnout přístup ke správě PIM více uživatelů, další informace najdete v [jak udělit přístup ke správě v PIM](pim-how-to-give-access-to-pim.md).
 
 ## <a name="next-steps"></a>Další postup
-[!INCLUDE [active-directory-privileged-identity-management-toc](../../../includes/active-directory-privileged-identity-management-toc.md)]
 
+- [Začněte používat PIM](pim-getting-started.md)
+- [Přiřazení role adresáře Azure AD v PIM](pim-how-to-add-role-to-user.md)
+- [Udělení přístupu na jiné správce ke správě PIM](pim-how-to-give-access-to-pim.md)

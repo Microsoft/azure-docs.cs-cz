@@ -1,6 +1,6 @@
 ---
-title: Privileged Identity Management pro prostředky Azure – povolení správy předplatného | Dokumentace Microsoftu
-description: Zjistěte, jak globální správci můžou spravovat předplatná v tenantovi.
+title: Povolení správy předplatného ve vašem tenantovi – Azure | Dokumentace Microsoftu
+description: Zjistěte, jak k povolení správy předplatného povolit ve vašem tenantovi, při použití Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,12 +14,12 @@ ms.component: pim
 ms.date: 03/27/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: d7a9c0090d3bfaaf1161b6255c4c0b659c77d692
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 89bb6fd48c58b7672b7a2251a172cc169093d368
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39620276"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189991"
 ---
 # <a name="enable-subscription-management-in-your-tenant"></a>Povolení správy předplatného ve vašem tenantovi
 
@@ -79,14 +79,5 @@ Teď, když máte oprávněnými přiřazeními pro důležité předplatná ve 
 
 ## <a name="next-steps"></a>Další postup
 
-[Zjišťování prostředků](pim-resource-roles-discover-resources.md)
-
-[Konfigurace nastavení role](pim-resource-roles-configure-role-settings.md)
-
-
-
-
-
-
-
-
+- [Vyhledejte prostředky Azure ke správě v PIM](pim-resource-roles-discover-resources.md)
+- [Konfigurace nastavení role prostředků Azure v PIM](pim-resource-roles-configure-role-settings.md)

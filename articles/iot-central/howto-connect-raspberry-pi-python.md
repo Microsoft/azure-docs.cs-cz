@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: a3d6ad9f2f442481908bc02252fcc8ab1a74419e
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: aa2d8f50d8fb4ba356af20a290976b8b32601ebf
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205584"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43188787"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-python"></a>Připojte Raspberry Pi do aplikace Azure IoT Central (Python)
 
@@ -53,9 +53,9 @@ Následující kroky popisují, jak stáhnout a nakonfigurovat ukázkové aplika
 * Reaguje na změny provedené v Azure IoT Central nastavení.
 
 > [!NOTE]
-> Další informace týkající se ukázky Raspberry Pi Pythonu najdete v tématu [Readme](https://github.com/Microsoft/microsoft-iot-central-firmware/blob/master/RaspberryPi/README.md) soubor na Githubu.
+> Další informace týkající se ukázky Raspberry Pi Pythonu najdete v tématu [Readme](https://github.com/Azure/iot-central-firmware/blob/master/RaspberryPi/README.md) soubor na Githubu.
 
-1. Použít webový prohlížeč v Raspberry Pi desktopu přejděte [verzí firmwaru Azure IoT Central](https://github.com/Microsoft/microsoft-iot-central-firmware/releases) stránky.
+1. Použít webový prohlížeč v Raspberry Pi desktopu přejděte [verzí firmwaru Azure IoT Central](https://github.com/Azure/iot-central-firmware/releases) stránky.
 
 1. Stáhněte si soubor zip, který obsahuje nejnovější firmware na vaší domovské složky na Raspberry Pi. Název souboru vypadá jako `RaspberryPi-IoTCentral-X.X.X.zip`.
 

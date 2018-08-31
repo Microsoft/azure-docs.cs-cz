@@ -1,6 +1,6 @@
 ---
-title: Text sloučení kognitivní vyhledávání odborností (Azure Search) | Microsoft Docs
-description: Sloučí text z kolekce pole do jednoho pole konsolidované. Pomocí této kognitivní znalostí v obohacení kanál služby Azure Search.
+title: Text sloučení kognitivního vyhledávání dovedností (Azure Search) | Dokumentace Microsoftu
+description: Sloučení textu z kolekce polí do jednoho konsolidované pole. Pomocí této kognitivních dovedností v rozšíření kanálu služby Azure Search.
 services: search
 manager: pablocas
 author: luiscabrer
@@ -10,32 +10,32 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: ba779ebcbc791f9caa60948feeb38b88a23ef379
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d90a9f8bd32924eef6533e602957aa1704cfdae9
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34640658"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190469"
 ---
-#    <a name="text-merge-cognitive-skill"></a>Text sloučení kognitivní dovedností
+#    <a name="text-merge-cognitive-skill"></a>Kognitivní dovednosti sloučení textu
 
-**Text sloučení** odborností konsoliduje text z kolekce pole do jednoho pole. 
+**Sloučení textu** dovednosti konsoliduje text z kolekce polí do jednoho pole. 
 
 ## <a name="odatatype"></a>@odata.type  
-Microsoft.Skills.Util.TextMerger
+Microsoft.Skills.Text.MergeSkill
 
 ## <a name="skill-parameters"></a>Parametry dovedností
 
-Parametry jsou malá a velká písmena.
+Parametry rozlišují malá a velká písmena.
 
 | Název parametru     | Popis |
 |--------------------|-------------|
-| insertPreTag  | Řetězec má být vložen před každou vložení. Výchozí hodnota je `" "`. Vynechat prostor, nastavte hodnotu na `""`.  |
-| insertPostTag | Řetězec, které mají být zahrnuty po každé vložení. Výchozí hodnota je `" "`. Vynechat prostor, nastavte hodnotu na `""`.  |
+| insertPreTag  | Řetězec, které se mají zahrnout před každou vložení. Výchozí hodnota je `" "`. Pokud chcete vynechat, nechte pole, nastavte hodnotu na `""`.  |
+| insertPostTag | Řetězce mají být zahrnuty po každé vložení. Výchozí hodnota je `" "`. Pokud chcete vynechat, nechte pole, nastavte hodnotu na `""`.  |
 
 
-##  <a name="sample-input"></a>Ukázka vstup
-Dokument JSON poskytuje použitelné vstup pro tento odborností může být:
+##  <a name="sample-input"></a>Ukázkový vstup
+Dokument JSON poskytuje použitelné vstup pro tuto dovednost může být:
 
 ```json
 {
@@ -54,7 +54,7 @@ Dokument JSON poskytuje použitelné vstup pro tento odborností může být:
 ```
 
 ##  <a name="sample-output"></a>Ukázkový výstup
-Tento příklad ukazuje výstup předchozí vstupu, za předpokladu, který *insertPreTag* je nastaven na `" "`, a *insertPostTag* je nastaven na `""`. 
+Tento příklad ukazuje výstup předchozího vstup předpokladu, že *insertPreTag* je nastavena na `" "`, a *insertPostTag* je nastavena na `""`. 
 
 ```json
 {
@@ -70,11 +70,11 @@ Tento příklad ukazuje výstup předchozí vstupu, za předpokladu, který *ins
 }
 ```
 
-## <a name="extended-sample-skillset-definition"></a>Definice skillset rozšířené ukázka
+## <a name="extended-sample-skillset-definition"></a>Rozšířené ukázková definice dovedností
 
-Běžný scénář pro pomocí možnosti sloučení textu je sloučit textovou reprezentaci bitových kopií (text ze znalostí rozpoznávání znaků nebo popisek bitové kopie) do pole obsahu dokumentu. 
+Běžný scénář použití sloučení textu je sloučit textovou reprezentaci řetězce obrázků (text ze OCR dovedností nebo popisek image) do pole obsahu dokumentu. 
 
-Následující příklad skillset rozbalte text z Image vložené v dokumentu pomocí dovedností rozpoznávání znaků. V dalším kroku vytvoří *merged_text* pole tak, aby obsahovala původní i OCRed text z každé bitové kopie. 
+Následující příklad dovednosti používá dovednosti optické rozpoznávání znaků k extrakci textu z imagí vloží do dokumentu. V dalším kroku se vytvoří *merged_text* pole tak, aby obsahovala původní i OCRed text z každé image. 
 
 ```json
 {
@@ -101,7 +101,7 @@ Následující příklad skillset rozbalte text z Image vložené v dokumentu po
         ]
     },
     {
-      "@odata.type": "#Microsoft.Skills.Util.TextMerger",
+      "@odata.type": "#Microsoft.Skills.Text.MergeSkill",
       "description": "Create merged_text, which includes all the textual representation of each image inserted at the right location in the content field.",
       "context": "/document",
       "insertPreTag": " ",
@@ -126,7 +126,7 @@ Následující příklad skillset rozbalte text z Image vložené v dokumentu po
   ]
 }
 ```
-Výše uvedený příklad předpokládá, že pole normalized-bitové kopie existuje. Chcete-li získat pole normalized-bitové kopie, nastavte *imageAction* konfigurace v indexeru definici *generateNormalizedImages* jak je uvedeno níže:
+Výše uvedený příklad předpokládá, že existuje pole normalized bitové kopie. Chcete-li získat pole normalized imagí, nastavte *imageAction* konfigurace definice indexeru pro *generateNormalizedImages* jak je znázorněno níže:
 
 ```json
 {  
@@ -143,5 +143,5 @@ Výše uvedený příklad předpokládá, že pole normalized-bitové kopie exis
 ## <a name="see-also"></a>Další informace najdete v tématech
 
 + [Předdefinované dovednosti](cognitive-search-predefined-skills.md)
-+ [Jak definovat skillset](cognitive-search-defining-skillset.md)
-+ [Vytvoření Indexer (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
++ [Definování dovedností](cognitive-search-defining-skillset.md)
++ [Vytvoření indexeru (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)

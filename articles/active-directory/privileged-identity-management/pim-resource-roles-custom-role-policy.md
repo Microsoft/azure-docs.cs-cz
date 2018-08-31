@@ -1,6 +1,6 @@
 ---
-title: Použití vlastních rolí pro Privileged Identity Management nastavení cíle pro prostředky Azure | Dokumentace Microsoftu
-description: Popisuje způsob použití vlastních rolí pro prostředky Azure pomocí služby PIM.
+title: Použití vlastních rolí pro prostředky Azure v PIM | Dokumentace Microsoftu
+description: Další informace o použití vlastních rolí pro prostředky Azure v Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.component: pim
 ms.date: 03/30/2018
 ms.author: rolyon
-ms.openlocfilehash: 03091b50eb4fb368ae0277344317b261991c4bd1
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: b01e785ac85c71b2982561e8b5e118775750fc69
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622683"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189869"
 ---
-# <a name="use-custom-roles-to-target-privileged-identity-management-settings"></a>Použití vlastních rolí pro Privileged Identity Management nastavení cíle
+# <a name="use-custom-roles-for-azure-resources-in-pim"></a>Použití vlastních rolí pro prostředky Azure v PIM
 
 Můžete potřebovat k aplikování nastavení striktní Privileged Identity Management (PIM) pro některé členy role, poskytují větší volnost pro ostatní. Představte si třeba situaci, ve kterém vaše organizace zaměstná několik smlouvy associates, které pomáhají při vývoji aplikace, který se spustí v rámci předplatného Azure.
 
@@ -49,4 +49,5 @@ Nakonec [přiřazení rolí](pim-resource-roles-assign-roles.md) do odlišné sk
 
 ## <a name="next-steps"></a>Další postup
 
-[Zkontrolujte na vlastníky těchto předplatných a přístup](pim-resource-roles-perform-access-review.md)
+- [Konfigurace nastavení role prostředků Azure v PIM](pim-resource-roles-configure-role-settings.md)
+- [Vlastní role v Azure](../../role-based-access-control/custom-roles.md)

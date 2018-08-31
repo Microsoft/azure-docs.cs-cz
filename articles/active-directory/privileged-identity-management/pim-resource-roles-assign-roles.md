@@ -1,6 +1,6 @@
 ---
-title: Přiřazení rolí pro prostředky Azure s použitím Privileged Identity Management | Dokumentace Microsoftu
-description: Popisuje, jak přiřadit role v PIM.
+title: Přiřazení role prostředků Azure v PIM | Dokumentace Microsoftu
+description: Zjistěte, jak přiřadit role prostředků Azure v Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,14 +14,25 @@ ms.component: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 52320fe160fc1df2997dd419b406fce24f43b786
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 7019a6f97a9590d3b652584015f3077f4ed075af
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622972"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43188916"
 ---
-# <a name="assign-roles-for-azure-resources-by-using-privileged-identity-management"></a>Přiřazení rolí pro prostředky Azure s použitím Privileged Identity Management
+# <a name="assign-azure-resource-roles-in-pim"></a>Přiřazení role prostředků Azure v PIM
+
+Azure AD PIM můžete spravovat role integrované prostředků Azure, jakož i vlastní role, včetně (ale nikoli výhradně):
+
+- Vlastník
+- Správce přístupu uživatelů
+- Přispěvatel
+- Správce zabezpečení
+- Správce zabezpečení a další
+
+>[!NOTE]
+Uživatele nebo členy skupiny přiřadit role vlastník nebo správce přístupu uživatelů a globální správci, který povolení správy předplatného ve službě Azure AD jsou správci prostředků. Tyto správce může přiřadit role, konfigurace nastavení role a kontrolovat přístup pomocí PIM pro prostředky Azure. Zobrazí se seznam [předdefinované role pro prostředky Azure](../../role-based-access-control/built-in-roles.md).
 
 ## <a name="assign-roles"></a>Přiřazení rolí
 
@@ -76,3 +87,8 @@ Pokud máte roli čekající na aktivaci, zobrazí se banner s oznámením v hor
 Chcete-li upravit existující přiřazení ze zobrazení podrobností uživatele nebo skupiny, vyberte **změnit nastavení** z panelu akcí. Změnit typ přiřazení k **pouze v čase** nebo **přímé**.
 
 ![Podokno "Podrobnosti o uživateli" s "Nastavení" tlačítko](media/azure-pim-resource-rbac/rbac-assign-role-manage.png)
+
+## <a name="next-steps"></a>Další postup
+
+- [Konfigurace nastavení role prostředků Azure v PIM](pim-resource-roles-configure-role-settings.md)
+- [Přiřazení role adresáře Azure AD v PIM](pim-how-to-add-role-to-user.md)

@@ -1,24 +1,24 @@
 ---
 title: Připojení k Azure SQL Data Warehouse | Dokumentace Microsoftu
-description: Připojení k Azure SQL Data Warehouse.
+description: Připojte se ke službě Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: kavithaj
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: b2aff8379667191017830bf441ee101e773d2dfc
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 0b2d8cec03c54ebd5bd780a2524da61d718a9673
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31596166"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247854"
 ---
 # <a name="connect-to-azure-sql-data-warehouse"></a>Připojení k Azure SQL Data Warehouse
-Připojení k Azure SQL Data Warehouse.
+Připojte se ke službě Azure SQL Data Warehouse.
 
 ## <a name="find-your-server-name"></a>Vyhledání názvu serveru
 Název serveru v následujícím příkladu je samplesvr.database.windows.net. Plně kvalifikovaný název serveru zjistíte následujícím způsobem:
@@ -31,7 +31,7 @@ Název serveru v následujícím příkladu je samplesvr.database.windows.net. P
     ![Úplný název serveru][1]
 
 ## <a name="supported-drivers-and-connection-strings"></a>Podporované ovladače a připojovací řetězce
-Azure SQL Data Warehouse podporuje [ADO.NET][ADO.NET], [ODBC][ODBC], [PHP][PHP] a [JDBC][JDBC]. Najít na nejnovější verzi a dokumentace, klikněte na jednu z předchozí ovladače. Chcete-li automaticky generovat připojovací řetězec pro ovladač, který používáte z portálu Azure, klikněte na **zobrazit databázové připojovací řetězce** z předchozího příkladu. Následuje několik příkladů toho, jak připojovací řetězce vypadají pro jednotlivé ovladače.
+Azure SQL Data Warehouse podporuje [ADO.NET][ADO.NET], [ODBC][ODBC], [PHP][PHP] a [JDBC][JDBC]. Nejnovější verzi a dokumentaci najdete na některou z předchozích ovladačů. Chcete-li automaticky vygenerovat připojovací řetězec pro ovladač, který používáte z portálu Azure portal, klikněte na **zobrazit databázové připojovací řetězce** z předchozího příkladu. Následuje několik příkladů toho, jak připojovací řetězce vypadají pro jednotlivé ovladače.
 
 > [!NOTE]
 > Zvažte nastavení časového limitu připojení na 300 sekund, pokud chcete, aby vaše připojení přestálo krátká období nedostupnosti.

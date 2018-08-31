@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/18/2018
+ms.date: 08/28/2018
 ms.author: celested
 ms.custom: aaddev
-ms.reviewer: luleon
-ms.openlocfilehash: 90b8a9bd45d2c6a8551e3af84a5bfa915f4c3cea
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.reviewer: celested
+ms.openlocfilehash: c9db5169a978875cf639f6c534ce7920909c896e
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39592199"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43188236"
 ---
 # <a name="integrating-applications-with-azure-active-directory"></a>Integrace aplikací s Azure Active Directory
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -112,7 +112,7 @@ Kromě toho předtím, než klient může získat přístup k webové rozhraní 
 - Delegovaná oprávnění: Klientská aplikace potřebuje přístup k webovému rozhraní API jako přihlášený uživatel, ale přístup omezen vybrané oprávnění. Tento typ oprávnění lze udělit uživatelem, pokud oprávnění vyžaduje souhlas správce. 
 
   > [!NOTE]
-  > Přidání delegovaná oprávnění k aplikaci neuděluje automaticky souhlas pro uživatele v rámci tenanta. Uživatelé musí ručně udělit souhlas pro přidání delegovaná oprávnění za běhu, pokud správce klikne **udělit oprávnění** tlačítko **požadovaná oprávnění** část stránka aplikace na webu Azure Portal. 
+  > Přidání delegovaná oprávnění k aplikaci neuděluje automaticky souhlas pro uživatele v rámci tenanta. Uživatelé musí ručně souhlas pro přidání delegovaná oprávnění za běhu, pokud správce udělí svůj souhlas jménem všech uživatelů.
 
 #### <a name="to-add-application-credentials-or-permissions-to-access-web-apis"></a>Chcete-li přidat přihlašovací údaje aplikací nebo oprávnění pro přístup k webovým rozhraním API
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
@@ -121,13 +121,15 @@ Kromě toho předtím, než klient může získat přístup k webové rozhraní 
 
    ![Aktualizovat registraci aplikace.](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration.png)
 
-4. Budete přesměrováni na hlavní registrační stránku aplikace, což otevře **nastavení** stránky pro aplikaci. Chcete-li přidat tajný klíč pro přihlašovací údaje vaší webové aplikace:
+4. Budete přesměrováni na hlavní registrační stránku aplikace, což otevře **nastavení** stránky pro aplikaci. Přidání přihlašovacích údajů pro vaši webovou aplikaci:
   - Klikněte na tlačítko **klíče** části na **nastavení** stránky. 
-  - Přidáte popis pro váš klíč.
-  - Vyberte jeden nebo dva roky trvání.
-  - Klikněte na **Uložit**. Krajní pravý sloupec bude obsahovat hodnotu, po uložení změn konfigurace. **Nezapomeňte si zkopírovat klíč** pro použití v kódu aplikace klienta, protože není k dispozici po opuštění této stránky.
-
-  ![Aktualizace registrace aplikace – klíče](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-settings-keys.png)
+  - Přidání certifikátu:
+    - Vyberte **odeslat veřejný klíč**.
+    - Vyberte soubor, který chcete nahrát. Musí být jedním z následujících typů souboru: .cer, .pem, .crt.
+  - Přidání hesla:
+    - Přidáte popis pro váš klíč.
+    - Vyberte dobu trvání.
+    - Klikněte na **Uložit**. Krajní pravý sloupec bude obsahovat hodnotu, po uložení změn konfigurace. **Nezapomeňte si zkopírovat klíč** pro použití v kódu aplikace klienta, protože není k dispozici po opuštění této stránky.
 
 5. Chcete-li přidat oprávnění pro přístup k prostředku rozhraní API z klienta
   - Klikněte na tlačítko **požadovaná oprávnění** části na **nastavení** stránky. 
@@ -141,11 +143,6 @@ Kromě toho předtím, než klient může získat přístup k webové rozhraní 
   ![Aktualizace registrace aplikace – oprávnění oprávnění](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-settings-permissions-perms.png)
 
 6. Až budete hotovi, klikněte na tlačítko **vyberte** tlačítko **povolit přístup z** stránky, pak bude **provádí** tlačítko **přístup přes rozhraní API přidat** stránky. Budete přesměrováni **požadovaná oprávnění** stránku, kde nový prostředek se přidá do seznamu rozhraní API.
-
-  > [!NOTE]
-  > Kliknutím **provádí** tlačítko také automaticky nastaví oprávnění pro vaši aplikaci ve vašem adresáři na základě oprávnění k ostatním aplikacím, které jste nakonfigurovali. Tato oprávnění aplikací můžete zobrazit pomocí aplikace **nastavení** stránky.
-  > 
-  > 
 
 ### <a name="configuring-a-resource-application-to-expose-web-apis"></a>Konfigurace aplikace prostředků k vystavení webové rozhraní API
 

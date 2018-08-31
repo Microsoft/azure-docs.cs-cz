@@ -1,201 +1,210 @@
+items:
 - name: Základy Azure IoT
   href: ../iot-fundamentals/index.yml
 - name: Dokumentace k Azure IoT Edge
   href: index.yml
 - name: Přehled
   items:
-    - name: Informace o Azure IoT Edge
-      href: about-iot-edge.md
+  - name: Informace o Azure IoT Edge
+    href: about-iot-edge.md
 - name: Šablony Rychlý start
-  expanded: true
   items:
-    - name: Nasazení kódu do zařízení s Linuxem
-      href: quickstart-linux.md
-    - name: Nasazení kódu do zařízení s Windows
-      href: quickstart.md
+  - name: Nasazení kódu do zařízení s Linuxem
+    href: quickstart-linux.md
+  - name: Nasazení kódu do zařízení s Windows
+    href: quickstart.md
+  expanded: true
 - name: Kurzy
   items:
-    - name: Zjištění přehledů na hraničních zařízeních
+  - name: Zjištění přehledů na hraničních zařízeních
+    items:
+    - name: Filtrování dat s využitím Azure Functions
+      href: tutorial-deploy-function.md
+    - name: Zjištění průměrů s využitím ASA
+      href: tutorial-deploy-stream-analytics.md
+    - name: Hodnocení dat s využitím Azure ML
+      href: tutorial-deploy-machine-learning.md
+    - name: Filtrování dat pomocí vlastního kódu
       items:
-        - name: Filtrování dat s využitím Azure Functions
-          href: tutorial-deploy-function.md
-        - name: Zjištění průměrů s využitím ASA
-          href: tutorial-deploy-stream-analytics.md
-        - name: Hodnocení dat s využitím Azure ML
-          href: tutorial-deploy-machine-learning.md
-        - name: Filtrování dat pomocí vlastního kódu
-          items:
-            - name: 'C#'
-              href: tutorial-csharp-module.md
-            - name: Python
-              href: tutorial-python-module.md
-            - name: Node.js
-              href: tutorial-node-module.md
-            - name: C
-              href: tutorial-c-module.md
-    - name: Místní ukládání dat s využitím SQL
-      href: tutorial-store-data-sql-server.md
+      - name: C#
+        href: tutorial-csharp-module.md
+      - name: Python
+        href: tutorial-python-module.md
+      - name: Node.js
+        href: tutorial-node-module.md
+      - name: Java
+        href: tutorial-java-module.md
+      - name: C
+        href: tutorial-c-module.md
+  - name: Místní ukládání dat s využitím SQL
+    href: tutorial-store-data-sql-server.md
 - name: Koncepty
   items:
-    - name: Modul runtime IoT Edge
-      href: iot-edge-runtime.md
-    - name: Moduly IoT Edge
-      href: iot-edge-modules.md
-      items:
-        - name: Vývoj
-          href: module-development.md
-        - name: Složení
-          href: module-composition.md
-        - name: Agent Edge a vlastnosti centra
-          href: module-edgeagent-edgehub.md
-    - name: Nasazení
-      href: module-deployment-monitoring.md
-    - name: Zařízení IoT Edge jako brána
-      href: iot-edge-as-gateway.md
-    - name: Zabezpečení
-      href: security.md
-      items:
-        - name: Správce zabezpečení IoT Edge
-          href: iot-edge-security-manager.md
-    - name: Podpora platformy
-      href: support.md
-    - name: Glosář IoT Edge
-      href: iot-edge-glossary.md
+  - name: Modul runtime IoT Edge
+    href: iot-edge-runtime.md
+  - name: Moduly IoT Edge
+    href: iot-edge-modules.md
+    items:
+    - name: Vývoj
+      href: module-development.md
+    - name: Složení
+      href: module-composition.md
+    - name: Agent Edge a vlastnosti centra
+      href: module-edgeagent-edgehub.md
+  - name: Nasazení
+    href: module-deployment-monitoring.md
+  - name: Zařízení IoT Edge jako brána
+    href: iot-edge-as-gateway.md
+  - name: Zabezpečení
+    href: security.md
+    items:
+    - name: Správce zabezpečení IoT Edge
+      href: iot-edge-security-manager.md
+  - name: Podpora platformy
+    href: support.md
+  - name: Glosář IoT Edge
+    href: iot-edge-glossary.md
 - name: Návody
   items:
-    - name: Registrace hraničního zařízení
-      items:
-        - name: portál Azure
-          href: how-to-register-device-portal.md
-        - name: Azure CLI
-          href: how-to-register-device-cli.md
-        - name: Visual Studio Code
-          href: how-to-register-device-vscode.md
-    - name: Instalace modulu runtime IoT Edge
-      items:
-        - name: Linux X64
-          href: how-to-install-iot-edge-linux.md
-        - name: Linux ARM32
-          href: how-to-install-iot-edge-linux-arm.md
-        - name: Windows s kontejnery Windows
-          href: how-to-install-iot-edge-windows-with-windows.md
-        - name: Windows s kontejnery Linuxu
-          href: how-to-install-iot-edge-windows-with-linux.md
-        - name: IoT Core
-          href: how-to-install-iot-core.md
-    - name: Automatické zřizování s využitím DPS
-      items:
-        - name: Linux
-          href: how-to-auto-provision-simulated-device-linux.md
-        - name: Windows
-          href: how-to-auto-provision-simulated-device-windows.md
-    - name: Vývoj a ladění modulů
-      items:
-        - name: 'C#'
-          href: how-to-develop-csharp-module.md
-        - name: Node.js
-          href: how-to-develop-node-module.md
-        - name: C
-          href: how-to-develop-c-module.md
-        - name: Azure Functions
-          href: how-to-develop-csharp-function.md
-        - name: Vývoj několika modulů
-          href: how-to-develop-multiple-modules-vscode.md
-        - name: Ladění několika modulů
-          href: how-to-debug-multiple-modules-vscode.md
-    - name: Nasazení modulů
-      items:
-        - name: portál Azure
-          href: how-to-deploy-modules-portal.md
-        - name: Azure CLI
-          href: how-to-deploy-modules-cli.md
-        - name: Visual Studio Code
-          href: how-to-deploy-modules-vscode.md
-    - name: Škálované nasazení a monitorování
-      items:
-        - name: portál Azure
-          href: how-to-deploy-monitor.md
-        - name: Azure CLI
-          href: how-to-deploy-monitor-cli.md
-    - name: Použití hraničních zařízení jako bran
-      items:
-        - name: Transparentní brána (Linux)
-          href: how-to-create-transparent-gateway-linux.md
-        - name: Transparentní brána (Windows)
-          href: how-to-create-transparent-gateway-windows.md
-        - name: Protokolová brána Modbus
-          href: deploy-modbus-gateway.md
-    - name: CI/CD ve VSTS
-      href: how-to-ci-cd.md
-    - name: Řešení potíží
-      href: troubleshoot.md
+  - name: Registrace hraničního zařízení
+    items:
+    - name: portál Azure
+      href: how-to-register-device-portal.md
+    - name: Azure CLI
+      href: how-to-register-device-cli.md
+    - name: Visual Studio Code
+      href: how-to-register-device-vscode.md
+  - name: Instalace modulu runtime IoT Edge
+    items:
+    - name: Linux X64
+      href: how-to-install-iot-edge-linux.md
+    - name: Linux ARM32
+      href: how-to-install-iot-edge-linux-arm.md
+    - name: Windows s kontejnery Windows
+      href: how-to-install-iot-edge-windows-with-windows.md
+    - name: Windows s kontejnery Linuxu
+      href: how-to-install-iot-edge-windows-with-linux.md
+    - name: IoT Core
+      href: how-to-install-iot-core.md
+  - name: Automatické zřizování s využitím DPS
+    items:
+    - name: Linux
+      href: how-to-auto-provision-simulated-device-linux.md
+    - name: Windows
+      href: how-to-auto-provision-simulated-device-windows.md
+  - name: Vývoj a ladění modulů
+    items:
+    - name: C#
+      href: how-to-develop-csharp-module.md
+    - name: Node.js
+      href: how-to-develop-node-module.md
+    - name: C
+      href: how-to-develop-c-module.md
+    - name: Azure Functions
+      href: how-to-develop-csharp-function.md
+    - name: Vývoj několika modulů
+      href: how-to-develop-multiple-modules-vscode.md
+    - name: Ladění několika modulů
+      href: how-to-debug-multiple-modules-vscode.md
+  - name: Nasazení modulů
+    items:
+    - name: portál Azure
+      href: how-to-deploy-modules-portal.md
+    - name: Azure CLI
+      href: how-to-deploy-modules-cli.md
+    - name: Visual Studio Code
+      href: how-to-deploy-modules-vscode.md
+  - name: Škálované nasazení a monitorování
+    items:
+    - name: portál Azure
+      href: how-to-deploy-monitor.md
+    - name: Azure CLI
+      href: how-to-deploy-monitor-cli.md
+  - name: Použití hraničních zařízení jako bran
+    items:
+    - name: Transparentní brána (Linux)
+      href: how-to-create-transparent-gateway-linux.md
+    - name: Transparentní brána (Windows)
+      href: how-to-create-transparent-gateway-windows.md
+    - name: Protokolová brána Modbus
+      href: deploy-modbus-gateway.md
+  - name: CI/CD ve VSTS
+    href: how-to-ci-cd.md
+  - name: Řešení potíží
+    href: troubleshoot.md
 - name: Související
   items:
-    - name: Řešení
-      items:
-        - name: Akcelerátory řešení IoT
-          href: /azure/iot-suite
-        - name: IoT Central
-          href: 'https://docs.microsoft.com/microsoft-iot-central/'
-    - name: Služby platformy
-      items:
-        - name: IoT Hub
-          href: /azure/iot-hub
-        - name: Služba IoT Hub Device Provisioning
-          href: /azure/iot-dps
-        - name: Maps
-          href: /azure/azure-maps
-        - name: Sady SDK pro služby
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
-        - name: Time Series Insights
-          href: /azure/time-series-insights
-    - name: Edge
-      items:
-        - name: IoT Edge
-          href: /azure/iot-edge
-        - name: Sady SDK pro zařízení IoT
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+  - name: Řešení
+    items:
+    - name: Akcelerátory řešení IoT
+      href: /azure/iot-suite
+    - name: IoT Central
+      href: https://docs.microsoft.com/microsoft-iot-central/
+  - name: Služby platformy
+    items:
+    - name: IoT Hub
+      href: /azure/iot-hub
+    - name: Služba IoT Hub Device Provisioning
+      href: /azure/iot-dps
+    - name: Maps
+      href: /azure/azure-maps
+    - name: Sady SDK pro služby
+      href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
+    - name: Time Series Insights
+      href: /azure/time-series-insights
+  - name: Edge
+    items:
+    - name: IoT Edge
+      href: /azure/iot-edge
+    - name: Sady SDK pro zařízení IoT
+      href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
 - name: Zdroje a prostředky
   items:
-    - name: 'Ukázky Azure IoT pro C# (.NET)'
-      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/'
-    - name: Ukázky Azure IoT pro Node.js
-      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-node/'
-    - name: Ukázky Azure IoT pro jazyk Java
-      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-java/'
-    - name: Ukázky Azure IoT pro Python
-      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-python/'
-    - name: Ukázky Azure IoT pro platformu iOS
-      href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-ios/'
-    - name: Katalog zařízení Azure Certified for IoT
-      href: 'https://catalog.azureiotsuite.com/'
-    - name: Centrum pro vývojáře Azure IoT
-      href: 'https://azure.microsoft.com/develop/iot/'
-    - name: Plány Azure do budoucna
-      href: 'https://azure.microsoft.com/roadmap/?category=iot'
-    - name: Azure IoT Edge pro VS Code
-      href: 'https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge'
-    - name: Azure IoT Toolkit pro VS Code
-      href: 'https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit'
-    - name: Nástroj DeviceExplorer
-      href: 'https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer'
-    - name: Nástroj iothub-diagnostics
-      href: 'https://github.com/Azure/iothub-diagnostics'
-    - name: Nástroj iothub-explorer
-      href: 'https://github.com/Azure/iothub-explorer'
-    - name: Postup výuky
-      href: 'https://azure.microsoft.com/documentation/learning-paths/iot-hub/'
-    - name: Fórum MSDN
-      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=iotedge'
-    - name: Ceny
-      href: 'https://azure.microsoft.com/pricing/details/iot-hub/'
-    - name: Cenová kalkulačka
-      href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Aktualizace služeb
-      href: 'https://azure.microsoft.com/updates/?product=iot-hub'
-    - name: Stack Overflow
-      href: 'http://stackoverflow.com/questions/tagged/azure-iot-hub'
-    - name: Technické případové studie
-      href: 'https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured'
-    - name: Videa
-      href: 'https://azure.microsoft.com/documentation/videos/index/?services=iot-hub'
+  - name: Ukázky Azure IoT pro C# (.NET)
+    href: https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/
+  - name: Ukázky Azure IoT pro Node.js
+    href: https://azure.microsoft.com/resources/samples/azure-iot-samples-node/
+  - name: Ukázky Azure IoT pro jazyk Java
+    href: https://azure.microsoft.com/resources/samples/azure-iot-samples-java/
+  - name: Ukázky Azure IoT pro Python
+    href: https://azure.microsoft.com/resources/samples/azure-iot-samples-python/
+  - name: Ukázky Azure IoT pro platformu iOS
+    href: https://azure.microsoft.com/resources/samples/azure-iot-samples-ios/
+  - name: Katalog zařízení Azure Certified for IoT
+    href: https://catalog.azureiotsuite.com/
+  - name: Centrum pro vývojáře Azure IoT
+    href: https://azure.microsoft.com/develop/iot/
+  - name: Plány Azure do budoucna
+    href: https://azure.microsoft.com/roadmap/?category=iot
+  - name: Azure IoT Edge pro VS Code
+    href: https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge
+  - name: Azure IoT Toolkit pro VS Code
+    href: https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit
+  - name: Nástroj DeviceExplorer
+    href: https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer
+  - name: Nástroj iothub-diagnostics
+    href: https://github.com/Azure/iothub-diagnostics
+  - name: Nástroj iothub-explorer
+    href: https://github.com/Azure/iothub-explorer
+  - name: Postup výuky
+    href: https://azure.microsoft.com/documentation/learning-paths/iot-hub/
+  - name: Fórum MSDN
+    href: https://social.msdn.microsoft.com/Forums/azure/home?forum=iotedge
+  - name: Ceny
+    href: https://azure.microsoft.com/pricing/details/iot-hub/
+  - name: Cenová kalkulačka
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: Aktualizace služeb
+    href: https://azure.microsoft.com/updates/?product=iot-hub
+  - name: Stack Overflow
+    href: http://stackoverflow.com/questions/tagged/azure-iot-hub
+  - name: Technické případové studie
+    href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
+  - name: Videa
+    href: https://azure.microsoft.com/documentation/videos/index/?services=iot-hub
+ms.openlocfilehash: dae4d9eb378329ae499bd4fab48668b0e94f8f48
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43300449"

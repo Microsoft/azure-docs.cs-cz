@@ -1,6 +1,6 @@
 ---
-title: Aktivovat role prostředků Azure s použitím Privileged Identity Management | Dokumentace Microsoftu
-description: Popisuje, jak aktivovat role v PIM.
+title: Aktivovat Moje role prostředků Azure v PIM | Dokumentace Microsoftu
+description: Zjistěte, jak aktivovat role prostředků Azure v Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,14 +14,14 @@ ms.component: pim
 ms.date: 08/21/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 2a5c192f231bdc75d04c78cd94838a3f341dc925
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 234c1d71f0ec17d15a4dd589e3db92fd9bf68df2
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43111054"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189485"
 ---
-# <a name="activate-roles-for-azure-resources-by-using-privileged-identity-management"></a>Aktivovat role prostředků Azure s použitím Privileged Identity Management
+# <a name="activate-my-azure-resource-roles-in-pim"></a>Aktivovat Moje role prostředků Azure v PIM
 Privileged Identity Management (PIM) zavádí nové prostředí ve aktivace role prostředků Azure. Oprávněné role členy můžete naplánovat aktivace pro budoucí datum a čas. Může také vybrat dobu trvání konkrétní aktivace v rámci maximální (ve Správci nakonfigurované je). Další informace najdete v tématu [postup aktivace nebo deaktivace role v Azure AD Privileged Identity Management](pim-how-to-activate-role.md).
 
 ## <a name="activate-a-role"></a>Aktivovat roli
@@ -64,3 +64,7 @@ Ze stránky hledání najdete podřízený prostředek, který je potřeba sprav
 Vyberte **Moje role** v levém podokně a vyberte vhodnou roli aktivovat. Typ přiřazení je **zděděné** protože byla role přiřazená na předplatné, nikoli na skupinu prostředků.
 
 ![Seznam přiřazení oprávněné role se zvýrazněným typem přiřazení](media/azure-pim-resource-rbac/my-roles-02.png)
+
+## <a name="next-steps"></a>Další postup
+
+- [Aktivovat Moje role adresáře Azure AD v PIM](pim-how-to-activate-role.md)

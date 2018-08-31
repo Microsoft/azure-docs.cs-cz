@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/15/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: e97bab36a9a1a18cab1d45abfa451139323b2320
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 532df20a7639f42d8ba1c840a5fd19f0ad0e4042
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42059421"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43246329"
 ---
 # <a name="create-log-searches-in-azure-log-analytics-using-the-log-search-portal"></a>Vytváření prohledávání protokolů v Azure Log Analytics pomocí portálu pro prohledávání protokolů
 
@@ -38,9 +38,8 @@ Začněte otevřením portálu pro prohledávání protokolů.
 
 1. Otevřete web Azure Portal.
 2. Přejděte do Log Analytics a vyberte svůj pracovní prostor.
-3. Vyberte **prohledávání protokolů**.
+3. Vyberte **Protokoly**.
 
-![Tlačítko prohledávání protokolů](media/log-analytics-log-search-log-search-portal/log-search-button.png)
 
 ## <a name="create-a-simple-search"></a>Vytvoření jednoduchého hledání
 Nejrychlejší způsob načtení nějakých dat, se kterými můžeme pracovat, je použít tento jednoduchý dotaz, který vrátí všechny záznamy v tabulce.  Pokud ke svému pracovnímu prostoru máte připojené nějaké klienty Windows nebo Linuxu, budete mít data v tabulce Event (Windows) nebo Syslog (Linux).

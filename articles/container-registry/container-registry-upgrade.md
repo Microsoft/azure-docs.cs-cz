@@ -6,22 +6,26 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
-ms.date: 03/15/2018
+ms.date: 08/28/2018
 ms.author: marsma
-ms.openlocfilehash: 562bd8da54605986e95d8105782ce7ebb9b359ea
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 7a377c607639f5c044e689b11380e9778f9c72c8
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39432384"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189017"
 ---
 # <a name="upgrade-a-classic-container-registry"></a>Upgrade registru Classic kontejneru
 
-Azure Container Registry (ACR) je k dispozici na několika úrovních služby [označované jako skladové položky](container-registry-skus.md). Počáteční verze služby ACR nabízí jednotné SKU Classic, který chybí několik funkcí, které přináší Basic, Standard a SKU úrovně Premium (dále jen souhrnně označované jako *spravované* Registry). Tento článek podrobně popisuje, jak migrovat nespravované registru Classic k jednomu z spravovanými skladovými položkami tak, aby můžete využít své rozšířené funkce set.
+Azure Container Registry (ACR) je k dispozici na několika úrovních služby [označované jako skladové položky](container-registry-skus.md). Počáteční verze služby ACR nabízí jednotné SKU Classic, který chybí několik funkcí, které přináší Basic, Standard a SKU úrovně Premium (dále jen souhrnně označované jako *spravované* Registry).
+
+Klasické SKU je zastaralé a budou k dispozici od března 2019. Tento článek podrobně popisuje, jak migrovat nespravované registru Classic k jednomu z spravovanými skladovými položkami tak, aby můžete využít své rozšířené funkce set.
 
 ## <a name="why-upgrade"></a>Proč upgradovat?
 
-Kvůli omezené možnosti registry Classic nespravované doporučujeme, abyste že všechny registry Classic se neupgradovali na Basic, Standard nebo Premium spravované Registry. Tyto vyšší úrovně SKU hlouběji integrovat registru do funkce Azure.
+Registru Classic se skladová položka **zastaralé**a nebude k dispozici z **. března 2019**. Všechny existující registry Classic by měl být upgrade před březnem 2019.
+
+Z důvodu plánovaného vyřazení a omezené možnosti registry Classic nespravované všechny registry Classic se neupgradovali na Basic, Standard nebo Premium spravované Registry. Tyto vyšší úrovně SKU hlouběji integrovat registru do funkce Azure.
 
 Spravované registry poskytují:
 
@@ -30,7 +34,7 @@ Spravované registry poskytují:
 * [Geografická replikace](container-registry-geo-replication.md)
 * [Webhooky](container-registry-webhook.md)
 
-Co je nejdůležitější registru Classic závisí na účet úložiště, Azure automaticky zřídí ve vašem předplatném Azure při vytváření registru. Naopak Basic, Standard a Premium SKU využít výhod Azure [pokročilé funkce úložiště](container-registry-storage.md) transparentně zpracovává úložiště imagí za vás. Samostatný účet úložiště není vytvořena ve svém vlastním předplatném.
+Registru Classic závisí na účet úložiště, Azure automaticky zřídí ve vašem předplatném Azure při vytváření registru. Naopak Basic, Standard a Premium SKU využít výhod Azure [pokročilé funkce úložiště](container-registry-storage.md) transparentně zpracovává úložiště imagí za vás. Samostatný účet úložiště není vytvořena ve svém vlastním předplatném.
 
 Spravovaný registr úložiště poskytuje následující výhody:
 

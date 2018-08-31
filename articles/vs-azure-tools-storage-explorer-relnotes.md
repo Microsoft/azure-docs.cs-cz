@@ -14,26 +14,26 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: ac2787f69651e950ffb6b786280ba7f11f4fa8e0
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: e3efb19010f36a6ef1fa0a191695a0e2c9f39d19
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43127956"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190517"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Zpráva k vydání verze Microsoft Azure Storage Explorer
 
-Tento článek obsahuje poznámky k verzi 1.2.0 Průzkumníka služby Azure Storage, stejně jako zpráva k vydání verze pro předchozí verze.
+Tento článek obsahuje poznámky k verzi Azure Storage Explorer 1.4.1, stejně jako zpráva k vydání verze pro předchozí verze.
 
 [Microsoft Azure Storage Explorer](./vs-azure-tools-storage-manage-with-storage-explorer.md) je samostatná aplikace, která umožňuje jednoduchá práci s daty Azure Storage ve Windows, macOS a Linuxu.
 
 ## <a name="version-141"></a>Verze 1.4.1
 08/28/2018
 
-### <a name="download-azure-storage-explorer-130"></a>Stáhněte si Průzkumníka služby Azure Storage 1.3.0
-- [Průzkumník služby Azure Storage 1.3.0 pro Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [Průzkumník služby Azure Storage 1.3.0 pro Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [Průzkumník služby Azure Storage 1.3.0 pro Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
+### <a name="download-azure-storage-explorer-141"></a>Stáhněte si Průzkumníka služby Azure Storage 1.4.1
+- [Průzkumník služby Azure Storage 1.4.1 pro Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [Průzkumník služby Azure Storage 1.4.1 pro Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [Průzkumník služby Azure Storage 1.4.1 pro Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
 
 ### <a name="hotfixes"></a>Opravy hotfix
 * Při prvním spuštění se nepodařilo vygenerovat klíč používaný k šifrování citlivých dat Průzkumníka služby Storage. To způsobí problémy při použití rychlého přístupu a připojení prostředků. [#535](https://github.com/Microsoft/AzureStorageExplorer/issues/535)

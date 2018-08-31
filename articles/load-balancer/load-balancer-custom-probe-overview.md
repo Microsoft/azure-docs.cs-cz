@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/10/2018
+ms.date: 08/28/2018
 ms.author: kumud
-ms.openlocfilehash: 91c7d16296653aea2381793f2e52f2b33b831185
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 5ceddb1bcd6ce89f7014e034b56c873f02cc2007
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42058331"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190729"
 ---
 # <a name="load-balancer-health-probes"></a>Sondy stavu nástroje pro vyrovnávání zatížení
 
@@ -181,7 +181,12 @@ Pokud selžou i všechny testy v rámci všech instancí ve fondu back-endu, st�
 
 ## <a name="probesource"></a>Zdrojová IP adresa pro zjišťování
 
-Z dané IP adresy 168.63.129.16 jako jejich zdroje mají původ sondy stavu všechny nástroje pro vyrovnávání zatížení.  Když použijete vlastní IP adresy do virtuální sítě Azure, tuto IP adresu zdroje sondy stavu je musí být jedinečný, protože je globálně vyhrazené pro Microsoft.  Tato adresa je stejná ve všech oblastech a nemění. To by neměly být zahrnuté bezpečnostní riziko protože pouze interní platformy Azure mají možnost paketů z této IP adresy. 
+Nástroj pro vyrovnávání zatížení používá distribuované zjišťování služby pro jeho vnitřní stavů modelu. Každého hostitele, kde jsou umístěné virtuální počítače mohou být naprogramovány na generování sondy stavu služby podle konfigurace zákazníka. Provoz sondy stavu je přímo mezi součást infrastruktury, která generuje sondu stavu a zákazníkem virtuálních počítačů. Z dané IP adresy 168.63.129.16 jako jejich zdroje mají původ sondy stavu všechny nástroje pro vyrovnávání zatížení.  Když použijete vlastní IP adresy do virtuální sítě Azure, tuto IP adresu zdroje sondy stavu je musí být jedinečný, protože je globálně vyhrazené pro Microsoft.  Tato adresa je stejná ve všech oblastech a nemění. To by neměly být zahrnuté bezpečnostní riziko protože pouze interní platformy Azure mají možnost paketů z této IP adresy. 
+
+Tuto IP adresu kromě sondy stavu nástroje pro vyrovnávání zatížení, použijte následující operace:
+
+- Povolí agenta virtuálního počítače pro komunikaci s platformou, který signalizuje, že je ve stavu "Připraveno"
+- Umožňuje komunikaci s virtuálním serverem DNS k překladu názvů filtrovaná pro zákazníky, kteří nemá definován vlastní servery DNS.  Toto filtrování se zajistí, že zákazníci můžou jenom překládat názvy hostitelů jejich nasazení.
 
 Pro sondy stavu služby Vyrovnávání zatížení k označení instance, můžete **musí** povolit tuto IP adresu v Azure [skupiny zabezpečení](../virtual-network/security-overview.md) a zásady brány firewall na místní.
 

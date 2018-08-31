@@ -1,6 +1,6 @@
 ---
-title: Postup konfigurace výstrah zabezpečení | Dokumentace Microsoftu
-description: Zjistěte, jak konfigurovat výstrahy zabezpečení u rozšíření Azure Privileged Identity Management.
+title: Konfigurace výstrah zabezpečení pro role adresáře Azure AD v PIM | Dokumentace Microsoftu
+description: Zjistěte, jak konfigurovat výstrahy zabezpečení pro role adresáře Azure AD v Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,14 +13,14 @@ ms.component: pim
 ms.date: 06/06/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 8df9bc7c332a83e9761ea71dddfbfbfaa3ae5154
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: fc39b6ad2dd63d45995b76011f4ebbe0228b4c2d
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622149"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190387"
 ---
-# <a name="how-to-configure-security-alerts-in-azure-ad-privileged-identity-management"></a>Postup konfigurace výstrah zabezpečení ve službě Azure AD Privileged Identity Management
+# <a name="configure-security-alerts-for-azure-ad-directory-roles-in-pim"></a>Konfigurace výstrah zabezpečení pro role adresáře Azure AD v PIM
 ## <a name="security-alerts"></a>Výstrahy zabezpečení
 Azure Privileged Identity Management (PIM) generuje výstrahy, když je aktivita podezřelého nebo nebezpečné ve vašem prostředí. Když se aktivuje upozornění, zobrazí na řídicím panelu PIM. Vyberte výstrahu, pokud chcete zobrazit sestavu obsahující seznam uživatelů nebo rolí, které aktivuje výstrahu.
 
@@ -65,4 +65,6 @@ Tato výstraha se aktivuje, pokud uživatel přejde určitou dobu bez aktivace r
 * **Počet dnů**: Zadejte počet dnů od 0 do 100, který uživatel přejít bez aktivace role.
 
 ## <a name="next-steps"></a>Další postup
-[!INCLUDE [active-directory-privileged-identity-management-toc](../../../includes/active-directory-privileged-identity-management-toc.md)]
+
+- [Konfigurace nastavení role adresáře Azure AD v PIM](pim-how-to-change-default-settings.md)
+- [Vyžadovat vícefaktorové ověřování pro role adresáře Azure AD v PIM](pim-how-to-require-mfa.md)

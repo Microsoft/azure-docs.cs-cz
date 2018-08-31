@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: yizhon
-ms.openlocfilehash: cf3c80424c4626b62317bda537f9491cafc8198c
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 02d9a326f0209bacca17a9617374105fcbf5ed6a
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "40043712"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189761"
 ---
 # <a name="azure-iot-sdks-platform-support"></a>Podpora platformy sady SDK Azure IoT
 
@@ -24,7 +24,7 @@ Společnost Microsoft podporuje různé operační systémy/platformy/rozhraní 
     - Poskytuje průvodce instalací nebo balíčky, pokud je k dispozici
     - Plnou podporu na Githubu
 
-Kromě toho obsahuje seznam partnerů nabízejících přenáší naší sady SDK jazyka C k více platforem a udržuje vrstva abstrakce platformy (PAL).  [Azure IoT katalog zařízení Certified for](https://catalog.azureiotsolutions.com/) také funkce seznam platforem operačních systémů různých sadách SDK byly testovány s.  Kromě toho se sadami SDK služby také pravidelně vytvářejte na těchto platformách, s omezenou testování a podporu:
+Kromě toho obsahuje seznam partnerů nabízejících přenáší naší sady SDK jazyka C k více platforem a udržuje vrstva abstrakce platformy (PAL).  [Azure IoT katalog zařízení Certified for](https://catalog.azureiotsolutions.com/) také funkce seznam platforem operačních systémů různých sadách SDK byly testovány s.  Sady SDK také pravidelně vytvářejte na těchto platformách, s omezenou testování a podporu:
 - MBED2
 - Arduino
 - Windows CE 2013 (přestat používat v října 2018)
@@ -76,14 +76,15 @@ Kromě toho obsahuje seznam partnerů nabízejících přenáší naší sady SD
 | Windows Server 2016 | X64  | Java 8       |
 
 ## <a name="partner-supported-platforms"></a>Podpora partnerů platformy
+Můžou zákazníci rozšířit Naše podpora platformy přenesením konkrétně sady SDK Azure IoT C, vytváří se vrstva abstrakce platformy (PAL) sady SDK.  Microsoft spolupracuje s partnery nabízí rozšířenou podporu.  Seznam partnerů nabízejících má přenést C SDK k více platforem a udržování přístupovém seznamu publikace.
 | Partner             | Zařízení                            | Odkaz                     | Podpora |
 |---------------------|------------------------------------|--------------------------|---------|
+| Espressif           | ESP32 <br/> ESP8266                              | [ESP azure](https://github.com/espressif/esp-azure)                | [GitHub](https://github.com/espressif/esp-azure)  
 | Qualcomm            | Qualcomm MDM9206 LTE IoT Modem     | [Qualcomm LTE pro IoT SDK](https://developer.qualcomm.com/software/lte-iot-sdk) | [Fórum](https://developer.qualcomm.com/forums/software/lte-iot-sdk)   |
-| ST Microelectronics | STM32L4 řady STM32F4 řady      | [X-DATOVÉ KRYCHLE CLOUD](https://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32cube-expansion-packages/x-cube-cloud.html)             | [Podpora](https://www.st.com/content/st_com/en/support/support-home.html) |
-|                     | STM32F7 řady                     | [X-DATOVÉ KRYCHLE AZURE](https://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32cube-expansion-packages/x-cube-azure.html)             |         |
-|                     | Sada zjišťování STM32L4 pro uzel IoT | [P-NUCLEO AZURE](https://www.st.com/content/st_com/en/products/evaluation-tools/solution-evaluation-tools/communication-and-connectivity-solution-eval-boards/p-nucleo-azure1.html)          |         |
-|                     |                                    | [FP CLD AZURE](https://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32-ode-function-pack-sw/fp-cld-azure1.html)            |         |
-| Espressif           | ESP32                              | [ESP azure](https://github.com/espressif/esp-azure)                | [GitHub](https://github.com/espressif/esp-azure)  |
+| ST Microelectronics | STM32L4 řady <br/> STM32F4 řady <br/>  STM32F7 řady <br/>  Sada zjišťování STM32L4 pro uzel IoT    | [X-DATOVÉ KRYCHLE CLOUD](https://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32cube-expansion-packages/x-cube-cloud.html) <br/> [X-DATOVÉ KRYCHLE AZURE](https://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32cube-expansion-packages/x-cube-azure.html) <br/> [P-NUCLEO AZURE](https://www.st.com/content/st_com/en/products/evaluation-tools/solution-evaluation-tools/communication-and-connectivity-solution-eval-boards/p-nucleo-azure1.html) <br/> [FP CLD AZURE](https://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32-ode-function-pack-sw/fp-cld-azure1.html)            | [Podpora](https://www.st.com/content/st_com/en/support/support-home.html)
+| Texas Instruments   | CC3220SF Launchpad <br/> CC3220S Launchpad <br/> MSP432E4 Launchpad      | [Modul plug-in Azure IoT pro SimpleLink](https://github.com/TexasInstruments/azure-iot-pal-simplelink) | [Fórum TI E2E](https://e2e.ti.com) <br/> [Fórum TI E2E pro CC3220](https://e2e.ti.com/support/wireless_connectivity/simplelink_wifi_cc31xx_cc32xx/) <br/> [Fórum TI E2E pro MSP432E4](https://e2e.ti.com/support/microcontrollers/msp430/) |
+
+
 
 ## <a name="next-steps"></a>Další postup
 - [Sady SDK pro zařízení a služby](iot-hub-devguide-sdks.md)

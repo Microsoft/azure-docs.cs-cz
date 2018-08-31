@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/09/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 5f2674aeb83fbb7679d9d0c2574a93484a352e9d
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 180f1a39b92dd699fa114cb98a5842b0ab0dc89a
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "40161972"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190534"
 ---
 # <a name="create-a-data-pipeline-with-the-data-collector-api"></a>Vytvoření datového kanálu pomocí rozhraní API kolekce dat
 
@@ -42,7 +42,7 @@ Používáme classic ETL typ logiky navrhnout našeho kanálu. Architektura bude
 
 Tento článek se nevztahuje na tom, jak vytvořit data nebo [nahrajte ho do účtu služby Azure Blob Storage](../storage/blobs/storage-upload-process-images.md). Místo toho vybíráme tok poté, co je do objektu blob nahraje nový soubor. Z tohoto:
 
-1. Proces zjistí, že nová data se odeslal.  Naše Ukázka používá používá [aplikace logiky Azure](../logic-apps/logic-apps-overview.md), který má k dispozici triggeru pro rozpoznávání nových dat odesílaných do objektu blob.
+1. Proces zjistí, že nová data se odeslal.  Naše Ukázka používá [aplikace logiky Azure](../logic-apps/logic-apps-overview.md), který má k dispozici triggeru pro rozpoznávání nových dat odesílaných do objektu blob.
 
 2. Procesor těmito novými daty čte a převede do formátu JSON, formát vyžadované Log Analytics.  V tomto příkladu vytvoříme s využitím [funkce Azure Functions](../azure-functions/functions-overview.md) jako jednoduché, nákladově efektivní způsob, jak provádění kódu pro zpracování. Funkce je vydáno ve stejné aplikaci logiky, kterou jste použili ke zjištění a nová data.
 

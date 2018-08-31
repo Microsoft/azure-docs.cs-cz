@@ -1,6 +1,6 @@
 ---
-title: Role v Azure AD Privileged Identity Management | Dokumentace Microsoftu
-description: Zjistěte, jaké role se používají pro privilegované identity pomocí rozšíření Azure Privileged Identity Management.
+title: Role adresáře Azure AD můžete spravovat v PIM | Dokumentace Microsoftu
+description: Popisuje role adresáře Azure AD, které můžete spravovat v Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,14 +13,14 @@ ms.component: pim
 ms.date: 07/23/2018
 ms.author: rolyon
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
-ms.openlocfilehash: f8045d70ab4926cdc0e28a9a2290685c4f11205a
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: c8870e4da63dc52d5926bdfd5f7c9b3218e5f53a
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618559"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43188982"
 ---
-# <a name="directory-roles-you-can-manage-using-azure-ad-pim"></a>Role adresáře, které můžete spravovat pomocí Azure AD PIM
+# <a name="azure-ad-directory-roles-you-can-manage-in-pim"></a>Role adresáře Azure AD, která spravujete v PIM
 <!-- **PLACEHOLDER: Need description of how this works. Azure PIM uses roles from MSODS objects.**-->
 
 Přiřadit uživatele ve vaší organizaci pro různé role pro správu ve službě Azure AD. Tato přiřazení rolí řídit, jaké úkoly, jako je například přidávání nebo odebírání uživatelů nebo změna nastavení služby, uživatelé budou moct provádět v Azure AD, Office 365 a další Microsoft Online Services a propojené aplikace.  
@@ -86,5 +86,7 @@ Přístup k Microsoft Online Services může vyžadovat uživateli také přiřa
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>Další postup
-[!INCLUDE [active-directory-privileged-identity-management-toc](../../../includes/active-directory-privileged-identity-management-toc.md)]
+
+- [Začněte používat PIM](pim-getting-started.md)
+- [Přiřazení role adresáře Azure AD v PIM](pim-how-to-add-role-to-user.md)
 

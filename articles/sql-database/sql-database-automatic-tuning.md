@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: v-daljep
 ms.reviewer: carlrab
-ms.openlocfilehash: 9ad36d37fef4c1ee05e31098b145b0264b6440ca
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 38b59c28096b23a22b216158d9e945a2881a4f41
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43126436"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189254"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Automatické ladění ve službě Azure SQL Database
 
@@ -64,7 +64,7 @@ Přehled funkce automatické optimalizace funguje a typické scénáře využit�
 
 Možnosti automatického ladění ve službě Azure SQL Database k dispozici jsou:
  1. **Vytvoření indexu** -identifikuje indexy, které může zlepšit výkon vaší úlohy, vytvoří indexy a automaticky ověřuje, že se zvýšil výkon dotazů.
- 2. **DROP INDEX** -identifikuje každý den redundantní a duplicitních indexů a indexy, které nebyly použity po dlouhou dobu (> 90 dnů). Všimněte si, že tato možnost není kompatibilní s aplikací s použitím pomocné parametry přepnutí a index oddílu.
+ 2. **DROP INDEX** -redundantní a duplicitní indexy identifikuje každý den, s výjimkou jedinečných indexů a indexy, které nebyly použity po dlouhou dobu (> 90 dnů). Všimněte si, že tato možnost není kompatibilní s aplikací s použitím pomocné parametry přepnutí a index oddílu.
  3. **VYNUCENÍ POSLEDNÍHO dobrého plánu** -identifikuje dotazů SQL pomocí plán provádění, která je nižší než předchozí dobrým plánem a dotazy s posledního známého dobrého plánu místo nižším plánu.
 
 Automatické ladění identifikuje **CREATE INDEX**, **DROP INDEX**, a **platnost poslední dobré plánování** doporučení, která můžete optimalizovat výkon své databáze a zobrazí je v [Webu azure portal](sql-database-advisor-portal.md)a zpřístupňuje je prostřednictvím [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) a [rozhraní REST API](https://docs.microsoft.com/rest/api/sql/serverautomatictuning).

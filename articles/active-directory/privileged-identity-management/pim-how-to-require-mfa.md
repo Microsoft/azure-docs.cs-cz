@@ -1,6 +1,6 @@
 ---
-title: Jak vyžadovat vícefaktorové ověřování | Dokumentace Microsoftu
-description: Zjistěte, jak vyžadovat vícefaktorové ověřování (MFA) pro privilegované identity pomocí rozšíření Azure Active Directory Privileged Identity Management.
+title: Vyžadovat vícefaktorové ověřování pro role adresáře Azure AD v PIM | Dokumentace Microsoftu
+description: Zjistěte, jak vyžadovat vícefaktorové ověřování (MFA) pro role adresáře Azure AD v Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,14 +13,14 @@ ms.component: pim
 ms.date: 06/06/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 8e1c0fa212b31c05fcc4559f9f8d42b627f0da0e
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 9777a7d2ed07ea2edf4bea661a5065c808de9f2b
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622843"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43188349"
 ---
-# <a name="how-to-require-mfa-in-azure-ad-privileged-identity-management"></a>Jak vyžadovat vícefaktorové ověřování ve službě Azure AD Privileged Identity Management
+# <a name="require-multi-factor-authentication-for-azure-ad-directory-roles-in-pim"></a>Vyžadovat vícefaktorové ověřování pro role adresáře Azure AD v PIM
 Doporučujeme vyžadovat vícefaktorové ověřování (MFA) pro všechny vaše správce. Tím se snižuje riziko útoků kvůli ohrožení zabezpečení hesla.
 
 Může vyžadovat, aby uživatelé dokončit ověřovacím testem MFA při přihlášení. Tento blogový příspěvek [vícefaktorové ověřování pro Office 365 a Azure MFA](https://blogs.technet.microsoft.com/ad/2014/02/11/mfa-for-office-365-and-mfa-for-azure/) porovná, co je součástí předplatných Office a Azure, pomocí funkce obsažené v nabídce Microsoft Azure Multi-Factor Authentication.
@@ -46,5 +46,6 @@ Případně pokud se uživatelé ověřují místně může mít zprostředkovat
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>Další postup
-[!INCLUDE [active-directory-privileged-identity-management-toc](../../../includes/active-directory-privileged-identity-management-toc.md)]
 
+- [Konfigurace nastavení role adresáře Azure AD v PIM](pim-how-to-change-default-settings.md)
+- [Konfigurace výstrah zabezpečení pro role adresáře Azure AD v PIM](pim-how-to-configure-security-alerts.md)

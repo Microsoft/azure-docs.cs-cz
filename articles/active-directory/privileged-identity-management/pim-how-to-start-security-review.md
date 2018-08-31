@@ -1,6 +1,6 @@
 ---
-title: Zahájení kontroly přístupu | Dokumentace Microsoftu
-description: Informace o vytvoření kontroly přístupu pro privilegované identity s aplikací Azure Privileged Identity Management.
+title: Zahájení kontroly přístupu pro role adresáře Azure AD v PIM | Dokumentace Microsoftu
+description: Zjistěte, jak spustit revizi přístupu pro pro role adresáře Azure AD v Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,17 +13,17 @@ ms.component: pim
 ms.date: 06/21/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 0c6c1d48d0a78781528b08b3c1d1e9438bf865ee
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: a431a0a0000cc8b0838bbe05c703cc548c8977c5
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39617349"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189398"
 ---
-# <a name="how-to-start-an-access-review-in-azure-ad-privileged-identity-management"></a>Zahájení kontroly přístupu v Azure AD Privileged Identity Management
+# <a name="start-an-access-review-for-azure-ad-directory-roles-in-pim"></a>Zahájení kontroly přístupu pro role adresáře Azure AD v PIM
 Přiřazení rolí stát "zastaralých", když uživatelé privilegovaný přístup, které už nepotřebují. Pokud chcete snížit riziko spojené s tyto zastaralé role přiřazení privilegovaných rolí by správci nebo globální správci pravidelně vytvářet kontroly přístupu požádat správce ke kontrole role, které mají uživatelé. Tento dokument popisuje kroky pro spuštění kontroly přístupu v Azure AD Privileged Identity Management (PIM).
 
-## <a name="start-an-access-review"></a>Spustit revizi přístupu
+## <a name="start-an-access-review"></a>Zahájení kontroly přístupu
 > [!NOTE]
 > Pokud jste nepřidali aplikaci PIM do řídicího panelu na webu Azure Portal, podívejte se na postup v [Začínáme se službou Azure Privileged Identity Management](pim-getting-started.md)
 > 
@@ -77,5 +77,8 @@ Průběh můžete sledovat, jak se revidující dokončení své recenze na ří
 Až skončí období kontroly, můžete jim Připomeňte dokončení jejich kontroly nebo zastavte kontrolu již v rané fázi z část kontroly přístupu.
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## <a name="pim-table-of-contents"></a>PIM obsahy
-[!INCLUDE [active-directory-privileged-identity-management-toc](../../../includes/active-directory-privileged-identity-management-toc.md)]
+## <a name="next-steps"></a>Další postup
+
+- [Dokončení kontroly přístupu pro role adresáře Azure AD v PIM](pim-how-to-complete-review.md)
+- [Provádění kontroly přístupu sady Moje role adresáře Azure AD v PIM](pim-how-to-perform-security-review.md)
+- [Zahájení kontroly přístupu pro role prostředků Azure v PIM](pim-resource-roles-start-access-review.md)

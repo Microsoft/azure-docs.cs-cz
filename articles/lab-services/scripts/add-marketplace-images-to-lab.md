@@ -1,6 +1,6 @@
 ---
-title: 'Skript prostředí PowerShell: Přidat image pořízenou prostřednictvím marketplace do testovacího prostředí v Azure DevTest Labs | Microsoft Docs'
-description: Tento skript prostředí PowerShell přidá do testovacího prostředí v Azure DevTest Labs image pořízenou prostřednictvím marketplace.
+title: 'Skript prostředí PowerShell: Přidání marketplace image do testovacího prostředí ve službě Azure DevTest Labs | Dokumentace Microsoftu'
+description: Tento skript Powershellu přidá marketplace image do testovacího prostředí ve službě Azure DevTest Labs.
 services: lab-services
 author: spelluru
 manager: ''
@@ -12,21 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 9a65237b3eba6c9878d73148f0143f20dd60dd79
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a3a007bf19a28e6f361837856f83a191a761ef9b
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34636544"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247410"
 ---
-# <a name="use-powershell-to-add-a-marketplace-image-to-a-lab-in-azure-devtest-labs"></a>Přidání image pořízenou prostřednictvím marketplace do testovacího prostředí v Azure DevTest Labs pomocí prostředí PowerShell
+# <a name="use-powershell-to-add-a-marketplace-image-to-a-lab-in-azure-devtest-labs"></a>Použití Powershellu k přidání do testovacího prostředí ve službě Azure DevTest Labs imagí marketplace
 
-Tento ukázkový skript prostředí PowerShell přidá do testovacího prostředí v Azure DevTest Labs image pořízenou prostřednictvím marketplace. 
+Tento ukázkový skript Powershellu přidá marketplace image do testovacího prostředí ve službě Azure DevTest Labs. 
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 ## <a name="prerequisites"></a>Požadavky
-* **Testovacího prostředí**. Skript, musíte mít existující testovacího prostředí. 
+* **Testovací prostředí**. Skript je potřeba mít existující testovací prostředí. 
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -38,13 +38,13 @@ Tento skript používá následující příkazy:
 
 | Příkaz | Poznámky |
 |---|---|
-| [Find-AzureRmResource](/module/azurerm.resources/find-azurermresource) | Vyhledá prostředky v závislosti na zadaných parametrů. |
+| [Find-AzureRmResource](/powershell/module/azurerm.resources/find-azurermresource) | Vyhledá prostředky podle zadaných parametrů. |
 | [Get-AzureRmResource](/powershell/module/azurerm.resources/get-azurermresource) | Získá prostředky. |
-| [Set-AzureRmResource](/powershell/module/azurerm.resources/set-azurermresource) | Upravuje prostředku. |
+| [Set-AzureRmResource](/powershell/module/azurerm.resources/set-azurermresource) | Upraví prostředek. |
 | [New-AzureRmResource](/powershell/module/azurerm.resources/new-azurermresource) | Vytvořte prostředek. |
 
 ## <a name="next-steps"></a>Další postup
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/).
 
-Další ukázky skriptu prostředí PowerShell služby testovacího prostředí Azure lze nalézt v [Azure PowerShell služby Lab ukázky](../samples-powershell.md).
+Další ukázkové skripty Azure Lab Services Powershellu najdete v [ukázky Azure Lab Services Powershellu](../samples-powershell.md).

@@ -1,202 +1,184 @@
 ---
 title: Zůstat přihlášeni v Azure Active Directory B2C | Dokumentace Microsoftu
-description: Téma ukazuje, jak nastavit "zachovat zůstat přihlášeni".
+description: Zjistěte, jak nastavit si zachovat mě podepsán v (políčko zůstat Přihlášeni) v Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/05/2016
+ms.date: 08/27/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 6bad6e1f2b204f76b075652a9d3f27367a8de49f
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 6d58a62ef70cb5bacb44a3a9832516a30fc91ffa
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441313"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43248055"
 ---
-# <a name="azure-active-directory-b2c-enable-keep-me-signed-in-kmsi"></a>Azure Active Directory B2C: Povolte "neodhlašovat (políčko zůstat Přihlášeni).  
+# <a name="enable-keep-me-signed-in-kmsi-in-azure-active-directory-b2c"></a>Povolení možnosti zůstat přihlášeni v (políčko zůstat Přihlášeni) v Azure Active Directory B2C
+
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure AD B2C teď umožňuje vašich webových a nativních aplikací k povolení funkcí "Neodhlašovat (políčko zůstat Přihlášeni)". Tato funkce uděluje přístup k vrácení uživatelé aplikaci bez zobrazení výzvy znovu zadat uživatelské jméno a heslo. Když se uživatel odhlásí, je tento přístup odvolat. 
+Můžete povolit funkci zachovat mě podepsán v (políčko zůstat Přihlášeni) pro vaše webové a nativní aplikace v Azure Active Directory (Azure AD) B2C. Tato funkce uděluje přístup k vrácení uživatelé aplikaci bez zobrazení výzvy zadejte své uživatelské jméno a heslo. Tento přístup je odvolat při odhlášení uživatele. 
 
-Nedoporučujeme tuto možnost na veřejné počítače kontroly uživatelů. 
+Uživatelé neměli byste povolit tuto možnost na veřejné počítače. 
 
-![obrázek](images/kmsi.PNG)
-
+![Povolení možnosti zůstat přihlášeni](./media/active-directory-b2c-reference-kmsi-custom/kmsi.PNG)
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tenanta služby Azure AD B2C nakonfigurované tak, aby místní účty přihlášení-registrace/přihlášení, jak je popsáno v [Začínáme](active-directory-b2c-get-started-custom.md).
+Tenanta služby Azure AD B2C, který je nakonfigurovaný pro místní účet povolit, zaregistrujte se a přihlaste se. Pokud nemáte tenanta, můžete vytvořit pomocí postupu v [kurz: vytvoření tenanta Azure Active Directory B2C](tutorial-create-tenant.md).
 
-## <a name="how-to-enable-kmsi"></a>Jak povolit políčko zůstat Přihlášeni
+## <a name="add-a-content-definition-element"></a>Přidat definici obsahu elementu 
 
-Proveďte následující změny v zásadách zabezpečení framework rozšíření.
+V části **BuildingBlocks** element příponu souboru, přidejte **ContentDefinitions** elementu. 
 
-## <a name="adding-a-content-definition-element"></a>Přidání elementu definice obsahu 
+1. V části **ContentDefinitions** elementu, přidejte **ContentDefinition** element s identifikátorem `api.signuporsigninwithkmsi`.
+2. V části **ContentDefinition** prvku, přidejte **LoadUri**, **RecoveryUri**, a **parametr** elementy. `urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0` Hodnotu **parametr** element je srozumitelné identifikátor počítače, který se zobrazí zaškrtávací políčko políčko zůstat Přihlášeni v přihlašovací stránky. Tato hodnota nesmí být změněna. 
 
-`BuildingBlocks` Uzlu souboru rozšíření musí obsahovat `ContentDefinitions` elementu. 
+    ```XML
+    <BuildingBlocks>
+      <ContentDefinitions>
+        <ContentDefinition Id="api.signuporsigninwithkmsi">
+          <LoadUri>~/tenant/default/unified.cshtml</LoadUri>
+          <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
+          <DataUri>urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0</DataUri>
+          <Metadata>
+            <Item Key="DisplayName">Signin and Signup</Item>
+          </Metadata>
+        </ContentDefinition>
+      </ContentDefinitions>
+    </BuildingBlocks>                       
+    ```
 
-1. V `ContentDefinitions` části, definovat novou `ContentDefinition` s ID `api.signuporsigninwithkmsi`.
-2. Vaše nová `ContentDefinition` musí obsahovat `LoadUri`, `RecoveryUri` a `DataUri` následujícím způsobem.
-3. Parametr`urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0` srozumitelné identifikátor počítače, který se zobrazí zaškrtávací políčko políčko zůstat Přihlášeni v přihlašovací stránky. Ujistěte se prosím, že nemusíte tuto hodnotu změnit. 
+## <a name="add-a-sign-in-claims-provider-for-a-local-account"></a>Přidat zprostředkovatele deklarací identity přihlášení pro místní účet  
 
-```XML
-  <BuildingBlocks>
-    <ContentDefinitions>
-      <ContentDefinition Id="api.signuporsigninwithkmsi">
-        <LoadUri>~/tenant/default/unified.cshtml</LoadUri>
-        <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
-        <DataUri>urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0</DataUri>
-        <Metadata>
-          <Item Key="DisplayName">Signin and Signup</Item>
-        </Metadata>
-      </ContentDefinition>
-    </ContentDefinitions>
-  </BuildingBlocks>                       
-```
+Můžete definovat přihlášení místním účtem jako zprostředkovatele deklarací identity pomocí **ClaimsProvider** prvku v souboru rozšíření zásady:
 
+1. Otevřít *TrustFrameworkExtensions.xml* souboru z pracovního adresáře. 
+2. Najít **ClaimsProviders** elementu. Pokud neexistuje, přidejte jej pod kořenovým elementem. [Starter pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip) zahrnuje poskytovatele deklarací identity přihlášení místní účet. 
+3. Přidat **ClaimsProvider** křížkem **DisplayName** a **technický profil** jak je znázorněno v následujícím příkladu:
 
+    ```XML
+    <ClaimsProviders>
+      <ClaimsProvider>
+        <DisplayName>Local Account SignIn</DisplayName>
+        <TechnicalProfiles>
+          <TechnicalProfile Id="login-NonInteractive">
+            <Metadata>
+              <Item Key="client_id">ProxyIdentityExperienceFrameworkAppId</Item>
+              <Item Key="IdTokenAudience">IdentityExperienceFrameworkAppId</Item>
+            </Metadata>
+            <InputClaims>
+              <InputClaim ClaimTypeReferenceId="client_id" DefaultValue="ProxyIdentityExperienceFrameworkAppID" />
+              <InputClaim ClaimTypeReferenceId="resource_id" PartnerClaimType="resource" DefaultValue="IdentityExperienceFrameworkAppID" />
+            </InputClaims>
+          </TechnicalProfile>
+        </TechnicalProfiles>
+      </ClaimsProvider>
+    </ClaimsProviders>
+    ```
 
-## <a name="add-a--local-account-sign-in-claims-provider"></a>Přidat zprostředkovatele deklarací identity přihlášení místním účtem 
+### <a name="add-the-application-identifiers-to-your-custom-policy"></a>Přidání identifikátorů aplikací do vlastní zásady
 
-Můžete definovat přihlášení místním účtem jako zprostředkovatele deklarací identity, aby `<ClaimsProvider>` uzel v souboru rozšíření zásady:
+Přidat identifikátory aplikace *TrustFrameworkExtensions.xml* souboru.
 
-1. Otevřete soubor rozšíření (TrustFrameworkExtensions.xml) z pracovního adresáře. 
-2. Najít `<ClaimsProviders>` oddílu. Pokud neexistuje, přidejte ho do kořenového uzlu.
-3. Úvodní balíček z [Začínáme](active-directory-b2c-get-started-custom.md) součástí zprostředkovatele deklarací identity přihlášení místním účtem. 
-4. Pokud ne, přidejte novou `<ClaimsProvider>` uzel následujícím způsobem:
+1. V *TrustFrameworkExtensions.xml* souboru, vyhledejte **technický profil** element s identifikátor `login-NonInteractive` a **technický profil** element s identifikátor typu `login-NonInteractive-PasswordChange` a nahradit všechny hodnoty `IdentityExperienceFrameworkAppId` s identifikátorem aplikace architekturu rozhraní identit aplikace, jak je popsáno v [Začínáme](active-directory-b2c-get-started-custom.md).
 
-```XML
-<ClaimsProviders>
-    <ClaimsProvider>
-      <DisplayName>Local Account SignIn</DisplayName>
-      <TechnicalProfiles>
-         <TechnicalProfile Id="login-NonInteractive">
-           <Metadata>
-            <Item Key="client_id">ProxyIdentityExperienceFrameworkAppId</Item>
-            <Item Key="IdTokenAudience">IdentityExperienceFrameworkAppId</Item>
-           </Metadata>
-            <InputClaim ClaimTypeReferenceId="client_id" DefaultValue="ProxyIdentityExperienceFrameworkAppID" />
-            <InputClaim ClaimTypeReferenceId="resource_id" PartnerClaimType="resource" DefaultValue="IdentityExperienceFrameworkAppID" />
-           </InputClaims>
-        </TechnicalProfile>
-      </TechnicalProfiles>
-    </ClaimsProvider>
- </ClaimsProviders>
-```
+    ```
+    <Item Key="client_id">8322dedc-cbf4-43bc-8bb6-141d16f0f489</Item>
+    ```
 
-### <a name="add-the-application-ids-to-your-custom-policy"></a>ID aplikace přidat do vlastní zásady
+2. Nahraďte všechny hodnoty `ProxyIdentityExperienceFrameworkAppId` s identifikátorem aplikace architekturu rozhraní identit Proxy aplikace, jak je popsáno v [Začínáme](active-directory-b2c-get-started-custom.md).
+3. Uložte soubor rozšíření.
 
-Přidejte do souboru rozšíření ID aplikace (`TrustFrameworkExtensions.xml`):
+## <a name="create-a-kmsi-enabled-user-journey"></a>Vytvořit cestu povoleného uživatele políčko zůstat Přihlášeni
 
-1. V souboru rozšíření (TrustFrameworkExtensions.xml) najděte prvek `<TechnicalProfile Id="login-NonInteractive">` a `<TechnicalProfile Id="login-NonInteractive-PasswordChange">`
+Přidáte zprostředkovatele deklarací identity přihlášení pro místní účet do vaší cesty uživatele. 
 
-2. Nahraďte všechny výskyty `IdentityExperienceFrameworkAppId` s ID aplikace, architekturu rozhraní identit aplikace, jak je popsáno v [Začínáme](active-directory-b2c-get-started-custom.md). Zde naleznete příklad:
+1. Otevřete soubor základní zásady. Například *TrustFrameworkBase.xml*.
+2. Najít **Userjourney** elementu a zkopírujte celý obsah **UserJourney** element, který používá identifikátor `SignUpOrSignIn`.
+3. Otevřete soubor rozšíření. Například *TrustFrameworkExtensions.xml* a najít **Userjourney** elementu. Pokud element neexistuje, přidejte jeden.
+4. Vložit celé **UserJourney** element, který jste zkopírovali jako podřízený objekt **Userjourney** elementu.
+5. Změňte hodnotu identifikátoru pro cestu nového uživatele. Například, `SignUpOrSignInWithKmsi`.
+6. A konečně, změňte hodnotu vlastnosti v prvním kroku Orchestrace **ContentDefinitionReferenceId** k `api.signuporsigninwithkmsi`. Nastavení této hodnoty umožňuje zaškrtávací políčko v cestě uživatele. 
+7. Uložte a odešlete soubor rozšíření a ujistěte se, že všechny ověření úspěšné.
 
-   ```
-   <Item Key="client_id">8322dedc-cbf4-43bc-8bb6-141d16f0f489</Item>
-   ```
+    ```XML
+    <UserJourneys>
+      <UserJourney Id="SignUpOrSignInWithKmsi">
+        <OrchestrationSteps>
+          <OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsigninwithkmsi">
+            <ClaimsProviderSelections>
+              <ClaimsProviderSelection ValidationClaimsExchangeId="LocalAccountSigninEmailExchange" />
+            </ClaimsProviderSelections>
+            <ClaimsExchanges>
+              <ClaimsExchange Id="LocalAccountSigninEmailExchange" TechnicalProfileReferenceId="SelfAsserted-LocalAccountSignin-Email" />
+            </ClaimsExchanges>
+          </OrchestrationStep>
+          <OrchestrationStep Order="2" Type="ClaimsExchange">
+            <Preconditions>
+              <Precondition Type="ClaimsExist" ExecuteActionsIf="true">
+                <Value>objectId</Value>
+                <Action>SkipThisOrchestrationStep</Action>
+              </Precondition>
+            </Preconditions>
+            <ClaimsExchanges>
+              <ClaimsExchange Id="SignUpWithLogonEmailExchange" TechnicalProfileReferenceId="LocalAccountSignUpWithLogonEmail" />
+            </ClaimsExchanges>
+          </OrchestrationStep>
+          <!-- This step reads any user attributes that we may not have received when in the token. -->
+          <OrchestrationStep Order="3" Type="ClaimsExchange">
+            <ClaimsExchanges>
+              <ClaimsExchange Id="AADUserReadWithObjectId" TechnicalProfileReferenceId="AAD-UserReadUsingObjectId" />
+            </ClaimsExchanges>
+          </OrchestrationStep>
+          <OrchestrationStep Order="4" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
+        </OrchestrationSteps>
+        <ClientDefinition ReferenceId="DefaultWeb" />
+      </UserJourney>
+    </UserJourneys>
+    ```
 
-3. Nahraďte všechny výskyty `ProxyIdentityExperienceFrameworkAppId` s ID aplikace, architekturu rozhraní identit Proxy aplikace, jak je popsáno v [Začínáme](active-directory-b2c-get-started-custom.md).
+## <a name="create-a-relying-party-file"></a>Vytvořit soubor předávající strany
 
-4. Uložte soubor rozšíření.
+Aktualizujte předávající stranu soubor, který iniciuje cesty uživatele, který jste vytvořili.
 
-## <a name="create-a-kmsi-in-enabled-user-journey"></a>Vytvoření políčko zůstat Přihlášeni na cestě povoleného uživatele
+1. Vytvořte kopii *SignUpOrSignIn.xml* souborů ve vašem pracovním adresáři a přejmenujte jej. Například *SignUpOrSignInWithKmsi.xml*.
+2. Otevřete nový soubor a aktualizace **PolicyId** atribut pro **TrustFrameworkPolicy** s jedinečnou hodnotu. Toto je název zásady. Například, `SignUpOrSignInWithKmsi`.
+3. Změnit **ReferenceId** atribut pro **DefaultUserJourney** element tak, aby odpovídaly identifikátor nové cesty uživatele, který jste vytvořili. Například, `SignUpOrSignInWithKmsi`.
 
-Teď musíte přidat poskytovatele deklarací identity přihlášení místním účtem vaší cesty uživatele. 
+    Políčko zůstat Přihlášeni je nakonfigurovaný nástrojem **UserJourneyBehaviors** elementu. **KeepAliveInDays** atribut určuje, jak dlouho zůstane přihlášený uživatel. V následujícím příkladu, políčko zůstat Přihlášeni relace automaticky vyprší po `7` dnů bez ohledu na to, kolikrát uživatel provádí bezobslužné ověření. Nastavení **KeepAliveInDays** hodnota, která se `0` vypne funkce políčko zůstat Přihlášeni. Ve výchozím nastavení, tato hodnota je `0`. Pokud hodnota **sessionexpirytype pro** je `Rolling`, je políčko zůstat Přihlášeni relace prodloužena `7` dnů pokaždé, když uživatel provádí bezobslužné ověření.  Pokud `Rolling` je vybrána, byste měli mít počet dní, minimální. 
 
-1. Otevřete soubor základní zásady (například TrustFrameworkBase.xml).
-2. Najít `<UserJourneys>` elementu a zkopírujte celý `<UserJourney>` uzel, který zahrnuje `Id="SignUpOrSignIn"`.
-3. Otevřete soubor rozšíření (například TrustFrameworkExtensions.xml) a vyhledejte `<UserJourneys>` elementu. Pokud element neexistuje, přidejte jeden.
-4. Vložit celé `<UserJourney>` uzel, který jste zkopírovali jako podřízený objekt `<UserJourneys>` elementu.
-5. Přejmenovat ID nové cesty uživatele (například přejmenovat jako `SignUpOrSignInWithKmsi`).
-6. Nakonec v `OrchestrationStep 1` změnit `ContentDefinitionReferenceId` k `api.signuporsigninwithkmsi` , definované v předchozích krocích. To umožňuje zaškrtávací políčko v cestě uživatele. 
-7. Dokončení úpravy souboru rozšíření. Uložte a odešlete tento soubor. Ujistěte se, že všechny ověření úspěšné.
+    Hodnota **SessionExpiryInSeconds** představuje čas vypršení platnosti relace jednotného přihlašování. To se používá interně službou Azure AD B2C ke kontrole, jestli je platnost relace pro políčko zůstat Přihlášeni, nebo ne. Hodnota **KeepAliveInDays** určuje platnost vyprší, Max-Age hodnotu souboru cookie jednotného přihlašování ve webovém prohlížeči. Na rozdíl od **SessionExpiryInSeconds**, **KeepAliveInDays** umožňuje zabránit uzavřený vymazání souboru cookie prohlížeče. Uživatel může bez upozornění přihlásit jenom v případě, že existuje soubor cookie relace jednotného přihlašování, které řídí **KeepAliveInDays**a je nevypršela, která řídí **SessionExpiryInSeconds**. Doporučuje se, že nastavíte hodnotu **SessionExpiryInSeconds** být ekvivalentní doba **KeepAliveInDays** během několika sekund, jak je znázorněno v následujícím příkladu.
 
-```XML
-<UserJourneys>
-    <UserJourney Id="SignUpOrSignInWithKmsi">
-      <OrchestrationSteps>
-        <OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsigninwithkmsi">
-          <ClaimsProviderSelections>
-            <ClaimsProviderSelection ValidationClaimsExchangeId="LocalAccountSigninEmailExchange" />
-          </ClaimsProviderSelections>
-          <ClaimsExchanges>
-            <ClaimsExchange Id="LocalAccountSigninEmailExchange" TechnicalProfileReferenceId="SelfAsserted-LocalAccountSignin-Email" />
-          </ClaimsExchanges>
-        </OrchestrationStep>
-        <OrchestrationStep Order="2" Type="ClaimsExchange">
-          <Preconditions>
-            <Precondition Type="ClaimsExist" ExecuteActionsIf="true">
-              <Value>objectId</Value>
-              <Action>SkipThisOrchestrationStep</Action>
-            </Precondition>
-          </Preconditions>
-          <ClaimsExchanges>
-            <ClaimsExchange Id="SignUpWithLogonEmailExchange" TechnicalProfileReferenceId="LocalAccountSignUpWithLogonEmail" />
-          </ClaimsExchanges>
-        </OrchestrationStep>
-        <!-- This step reads any user attributes that we may not have received when in the token. -->
-        <OrchestrationStep Order="3" Type="ClaimsExchange">
-          <ClaimsExchanges>
-            <ClaimsExchange Id="AADUserReadWithObjectId" TechnicalProfileReferenceId="AAD-UserReadUsingObjectId" />
-          </ClaimsExchanges>
-        </OrchestrationStep>
-        <OrchestrationStep Order="4" Type="SendClaims" CpimIssuerTechnicalProfileReferenceId="JwtIssuer" />
-      </OrchestrationSteps>
-      <ClientDefinition ReferenceId="DefaultWeb" />
-    </UserJourney>
-  </UserJourneys>
-```
+    ```XML
+    <RelyingParty>
+      <DefaultUserJourney ReferenceId="SignUpOrSignInWithKmsi" />
+      <UserJourneyBehaviors>
+        <SingleSignOn Scope="Tenant" KeepAliveInDays="7" />
+        <SessionExpiryType>Absolute</SessionExpiryType>
+        <SessionExpiryInSeconds>604800</SessionExpiryInSeconds>
+      </UserJourneyBehaviors>
+      <TechnicalProfile Id="PolicyProfile">
+        <DisplayName>PolicyProfile</DisplayName>
+        <Protocol Name="OpenIdConnect" />
+        <OutputClaims>
+          <OutputClaim ClaimTypeReferenceId="displayName" />
+          <OutputClaim ClaimTypeReferenceId="givenName" />
+          <OutputClaim ClaimTypeReferenceId="surname" />
+          <OutputClaim ClaimTypeReferenceId="email" />
+          <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
+        </OutputClaims>
+        <SubjectNamingInfo ClaimType="sub" />
+      </TechnicalProfile>
+    </RelyingParty>
+    ```
 
-## <a name="create-a-relying-party-rp-file"></a>Vytvořit soubor předávající stranu
-
-V dalším kroku aktualizujte předávající stranu soubor, který iniciuje cesty uživatele, který jste vytvořili:
-
-1. Vytvořte kopii SignUpOrSignIn.xml ve svém pracovním adresáři. Přejmenujte (například SignUpOrSignInWithKmsi.xml).
-
-2. Otevřete nový soubor a aktualizace `PolicyId` atributu `<TrustFrameworkPolicy>` s jedinečnou hodnotu. Toto je název zásady (například SignUpOrSignInWithKmsi).
-
-3. Upravit `ReferenceId` atribut `<DefaultUserJourney>` tak, aby odpovídaly `Id` nové cesty uživatele, který jste vytvořili (například SignUpOrSignInWithKmsi).
-
-4. Políčko zůstat Přihlášeni je nakonfigurovaný v `UserJourneyBehaviors`. 
-
-5. **`KeepAliveInDays`** Určuje, jak dlouho zůstane přihlášený uživatel. V následujícím příkladu políčko zůstat Přihlášeni relace automaticky vyprší 14 dnů bez ohledu na to, kolikrát uživatel provádí bezobslužné ověření.
-
-   Nastavení `KeepAliveInDays` hodnota 0 vypne funkce políčko zůstat Přihlášeni. Ve výchozím nastavení tato hodnota je 0
-
-6. Pokud **`SessionExpiryType`** je *Hromadná*, pak políčko zůstat Přihlášeni relace je rozšířená 14 dny pokaždé, když uživatel provádí bezobslužné ověření.  Pokud *Hromadná* je vybraný, doporučujeme udržovat počet dní, minimální. 
-
-       <RelyingParty>
-       <DefaultUserJourney ReferenceId="SignUpOrSignInWithKmsi" />
-       <UserJourneyBehaviors>
-         <SingleSignOn Scope="Tenant" KeepAliveInDays="14" />
-         <SessionExpiryType>Absolute</SessionExpiryType>
-         <SessionExpiryInSeconds>1200</SessionExpiryInSeconds>
-       </UserJourneyBehaviors>
-       <TechnicalProfile Id="PolicyProfile">
-         <DisplayName>PolicyProfile</DisplayName>
-         <Protocol Name="OpenIdConnect" />
-         <OutputClaims>
-           <OutputClaim ClaimTypeReferenceId="displayName" />
-           <OutputClaim ClaimTypeReferenceId="givenName" />
-           <OutputClaim ClaimTypeReferenceId="surname" />
-           <OutputClaim ClaimTypeReferenceId="email" />
-           <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
-         </OutputClaims>
-         <SubjectNamingInfo ClaimType="sub" />
-       </TechnicalProfile>
-       </RelyingParty>
-
-7. Uložte změny a pak nahrajte soubor.
-
-8. Vlastní zásady, které jste nahráli, otestovat na webu Azure Portal, přejděte na okno zásad a pak klikněte na tlačítko **spustit nyní**.
-
-
-## <a name="link-to-sample-policy"></a>Odkaz na ukázkové zásady
+4. Uložte změny a pak nahrajte soubor.
+5. Vlastní zásady, které jste nahráli, otestovat na webu Azure Portal, přejděte na stránku zásad a pak vyberte **spustit nyní**.
 
 Můžete najít ukázkové zásady [tady](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/keep%20me%20signed%20in).
 

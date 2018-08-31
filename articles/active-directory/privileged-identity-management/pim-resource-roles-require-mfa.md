@@ -1,6 +1,6 @@
 ---
-title: Vynutit ověřování Azure Multi-Factor Authentication v prostředcích Azure s použitím Privileged Identity Management | Dokumentace Microsoftu
-description: Tento dokument popisuje, jak povolit vícefaktorové ověřování pro prostředky PIM.
+title: Vyžadovat vícefaktorové ověřování pro role prostředků Azure v PIM | Dokumentace Microsoftu
+description: Zjistěte, jak vyžadovat vícefaktorové ověřování (MFA) pro role prostředků Azure v Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,14 +15,14 @@ ms.component: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 42c93a107c7ed58d6f7412b61627dccaf9076bb7
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 171d79856cf67dae9573dd1076c2ae4617cf86d1
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39617866"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190564"
 ---
-# <a name="enforce-azure-multi-factor-authentication-in-azure-resources-by-using-privileged-identity-management"></a>Vynutit ověřování Azure Multi-Factor Authentication v prostředcích Azure s použitím Privileged Identity Management
+# <a name="require-multi-factor-authentication-for-azure-resource-roles-in-pim"></a>Vyžadovat vícefaktorové ověřování pro role prostředků Azure v PIM
 
 Privileged Identity Management (PIM) pro role prostředků Azure umožňuje správci prostředků a správci identit k ochraně důležitých infrastruktury Azure s nástroji membership časově omezenou a přístup k just-in-time. Kromě toho poskytuje PIM volitelné vynucení ověřování Azure Multi-Factor Authentication pro dva různé scénáře.
 
@@ -59,9 +59,7 @@ Ze stejné role nastavení obrazovku s podrobnostmi, zaškrtněte políčko **vy
 
 ## <a name="next-steps"></a>Další postup
 
-[K aktivaci vyžadovat schválení](pim-resource-roles-approval-workflow.md)
-
-[Použití protokolu auditu](pim-resource-roles-use-the-audit-log.md)
-
+- [Konfigurace nastavení role prostředků Azure v PIM](pim-resource-roles-configure-role-settings.md)
+- [Konfigurace výstrah zabezpečení pro role prostředků Azure v PIM](pim-resource-roles-configure-alerts.md)
 
 

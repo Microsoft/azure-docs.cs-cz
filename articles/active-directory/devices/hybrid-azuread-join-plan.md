@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 808914dddcaefa4795264d3904e26ef6200f483e
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 12d3b358be8bb90b63e5e7310123f8ae7093994c
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43087306"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190268"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Jak naplánovat vaši implementaci připojení k hybridní službě Azure Active Directory
 
@@ -126,7 +126,7 @@ Pokud vaše prostředí obsahuje spravované domény, podporuje připojení k hy
 
 - Předat prostřednictvím ověřování (PTA) pomocí bezproblémového jednotného přihlašování (SSO) 
 
-- Heslo má synchronizace (PHS) s využitím bezproblémové jednotné přihlašování (SSO) 
+- Synchronizace hodnot Hash hesel (PHS) pomocí bezproblémového jednotného přihlašování (SSO) 
 
 Počínaje verzí 1.1.819.0, Azure AD Connect poskytuje průvodce ke konfiguraci připojení k hybridní službě Azure AD. Průvodce umožňuje výrazně zjednodušuje proces konfigurace. Další informace naleznete v tématu:
 

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: fdbe88492d6260d19955b39ac8eaf6cfb9dba130
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: 4e23b70c8dc5fdacfd609fb4664a78293b9e2362
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43144542"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247641"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>Vysvětlení registru identit ve službě IoT hub
 
@@ -85,9 +85,9 @@ Data zařízení, která ukládá daného řešení IoT, závisí na konkrétní
 
 ## <a name="device-heartbeat"></a>Prezenční signál zařízení
 
-Registr identit služby IoT Hub obsahuje pole s názvem **connectionState**. Použít pouze **connectionState** pole při vývoji a ladění. Řešení IoT by neměl dotaz na pole v době běhu. Například není dotaz **connectionState** pole, které chcete zkontrolovat, jestli je zařízení připojené před odesláním zprávy typu cloud zařízení nebo zprávu SMS.
+Registr identit služby IoT Hub obsahuje pole s názvem **connectionState**. Použít pouze **connectionState** pole při vývoji a ladění. Řešení IoT by neměl dotaz na pole v době běhu. Například není dotaz **connectionState** pole, které chcete zkontrolovat, jestli je zařízení připojené před odesláním zprávy typu cloud zařízení nebo zprávu SMS. Doporučujeme vám, že se přihlásíte k odběru [ **odpojení zařízení** události](https://docs.microsoft.com/azure/iot-hub/iot-hub-event-grid#event-types) na služby Event Grid výstrahy a monitorování stavu připojení zařízení. Použijte tento [kurzu](https://docs.microsoft.com/azure/event-grid/publish-iot-hub-events-to-logic-apps) se naučíte integrovat události ze služby IoT Hub v řešení IoT.
 
-Pokud je potřeba vědět, pokud je zařízení připojené, měli byste implementovat řešení IoT *prezenčního signálu vzor*.
+Pokud je potřeba vědět, pokud je zařízení připojené, můžete implementovat řešení IoT *prezenčního signálu vzor*.
 Ve vzoru prezenčního signálu zařízení odesílá zprávy typu zařízení cloud alespoň jednou každých pevné množství času (například alespoň jednou za hodinu). Proto i v případě, že zařízení nemá žádná data k odeslání, stále odešle prázdnou zprávu typu zařízení cloud (obvykle s vlastností, který ji identifikuje jako prezenční signál). Na straně služby řešení udržuje mapu s poslední prezenční signál pro každé zařízení. Pokud řešení neobdrží zprávu prezenčního signálu v očekávaném čase ze zařízení, předpokládá, že dojde k problému se zařízením.
 
 Složitější implementace by mohla obsahovat informace z [monitorování operací] [ lnk-devguide-opmon] identifikovat zařízení, která se pokouší o připojení nebo komunikaci ale služeb při selhání. Pokud implementujete vzor prezenčního signálu, nezapomeňte zaškrtnout [IoT Hub kvóty a omezení][lnk-quotas].

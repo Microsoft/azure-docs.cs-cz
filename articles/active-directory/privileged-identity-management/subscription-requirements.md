@@ -1,6 +1,6 @@
 ---
-title: Privileged Identity Management předplatná – Azure | Dokumentace Microsoftu
-description: Vysvětluje, předplatné a licenční požadavky pro správu a použití ve vašem tenantovi Azure AD Privileged Identity Management
+title: Požadavky na předplatné používat PIM – Azure | Dokumentace Microsoftu
+description: Popisuje odběr a licenční požadavky na používání Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,14 +16,14 @@ ms.component: pim
 ms.date: 06/01/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: dbe4efa57a7c4c31b2bdca84665eef8179564a8f
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 1554895dcba0c09a3a2e19c284a1cd6f0416cfe1
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617065"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190606"
 ---
-# <a name="azure-active-directory-privileged-identity-management-subscription-requirements"></a>Požadavky na předplatné Azure Active Directory Privileged Identity Management
+# <a name="subscription-requirements-to-use-pim"></a>Požadavky na předplatné používat PIM
 
 Azure AD Privileged Identity Management je k dispozici jako součást v edici Premium P2 služby Azure AD. Další informace o jiných funkcích P2 a jejím srovnání s Premium P1, naleznete v tématu [edice Azure Active Directory](../active-directory-editions.md).
 
@@ -61,5 +61,5 @@ Když vyprší platnost Azure AD Premium P2 předplatné nebo předplatné EMS E
 
 ## <a name="next-steps"></a>Další postup
 
-- [Začínáme s Azure AD Privileged Identity Management](pim-getting-started.md)
-- [Role ve službě Azure AD Privileged Identity Management](pim-roles.md)
+- [Začněte používat PIM](pim-getting-started.md)
+- [Role adresáře Azure AD, která spravujete v PIM](pim-roles.md)

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: yzheng
 ms.component: common
-ms.openlocfilehash: a3208152ddf198d00c0a158e466c9d024c17b4d6
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: af32ea826f8150284c242fb6d1013924945aee97
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528439"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247778"
 ---
 # <a name="managing-the-azure-blob-storage-lifecycle-preview"></a>Správa životního cyklu úložiště objektů Blob v Azure (Preview)
 
@@ -37,7 +37,7 @@ Zásady správy životního cyklu jsou k dispozici obě obecné účely v2 (GPv2
 Funkce správy životního cyklu je zdarma ve verzi preview. Zákazníkům se poplatky účtují náklady běžném provozu [výpis objektů blob](https://docs.microsoft.com/rest/api/storageservices/list-blobs) a [Set Blob Tier](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) volání rozhraní API. Zobrazit [ceny za objekty Blob bloku](https://azure.microsoft.com/pricing/details/storage/blobs/) Další informace o cenách.
 
 ## <a name="register-for-preview"></a>Zaregistrujte se ve verzi preview 
-K registraci ve verzi public preview, musíte odeslat žádost o registraci této funkce do vašeho předplatného. Po schválení vaší žádosti (během pár dnů), budou mít všechny stávající i nové účtu GPv2 nebo úložiště objektů Blob v oblastech západní USA 2 a západní USA – střed je povolena funkce. Během období preview se podporuje jenom objekty blob bloku. Stejně jako u většiny momentálně ve verzi Preview tato funkce by neměl být používat pro produkční úlohy dokud nedosáhne obecné dostupnosti.
+K registraci ve verzi public preview, musíte odeslat žádost o registraci této funkce do vašeho předplatného. Po schválení vaší žádosti (během pár dnů), všechny stávající i nové účty GPv2 nebo Blob Storage účet v západní části USA 2, západní USA, střed USA a západní Evropa budou mít povolenou funkci. Během období preview se podporuje jenom objekty blob bloku. Stejně jako u většiny momentálně ve verzi Preview tato funkce by neměl být používat pro produkční úlohy dokud nedosáhne obecné dostupnosti.
 
 Odeslat žádost, spusťte následující příkazy prostředí PowerShell nebo rozhraní příkazového řádku.
 

@@ -1,33 +1,33 @@
 ---
-title: Analyzovat vaše úlohy – Azure SQL Data Warehouse | Microsoft Docs
-description: Techniky pro analýzu spustit dotaz pro stanovení priorit pro úlohy v Azure SQL Data Warehouse.
+title: Analýza úloh – Azure SQL Data Warehouse | Dokumentace Microsoftu
+description: Techniky pro stanovení priority dotazů pro vaše úlohy ve službě Azure SQL Data Warehouse analýzu.
 services: sql-data-warehouse
 author: kevinvngo
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 6b0d39b81b72615a9522e95558a59007b10bf109
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 4ce84e9714b580bcc243285dc1da5ae24a27e8e5
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31795353"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43248089"
 ---
-# <a name="analyze-your-workload-in-azure-sql-data-warehouse"></a>Analyzovat vaše úlohy v Azure SQL Data Warehouse
-Techniky pro analýzu spustit dotaz pro stanovení priorit pro úlohy v Azure SQL Data Warehouse.
+# <a name="analyze-your-workload-in-azure-sql-data-warehouse"></a>Analýza úloh ve službě Azure SQL Data Warehouse
+Techniky pro stanovení priority dotazů pro vaše úlohy ve službě Azure SQL Data Warehouse analýzu.
 
 ## <a name="workload-groups"></a>Skupiny úloh 
-SQL Data Warehouse implementuje třídy prostředků pomocí skupiny úloh. Existují celkem osm skupiny úloh, které ovládání chování třídy prostředků pomocí různých velikostí DWU. Pro všechny DWU SQL Data Warehouse používá jenom čtyři skupiny osm úloh. Tento přístup má smysl, protože každé skupiny úlohy je přiřazen k jedné ze čtyř tříd prostředků: smallrc, mediumrc, largerc, nebo xlargerc. Význam pochopení skupiny úloh je, že některé z těchto skupin úloh jsou nastaveny na vyšší *důležitosti*. Důležitost se používá pro procesoru plánování. Dotazy spustit s vysokou důležitostí získat třikrát více cyklů procesoru než dotazy spustit s střední důležitostí. Proto souběžnosti slotu mapování taky určit Priorita procesoru. Pokud je dotaz spotřebovává 16 nebo víc sloty, běží jako vysokou důležitostí.
+SQL Data Warehouse implementuje třídy prostředků pomocí skupiny úloh. Existují celkem osm skupiny úloh, které řídí chování třídy prostředků v různých velikostí DWU. Pro všechny DWU SQL Data Warehouse používá pouze čtyři skupiny osm úloh. Tento přístup smysl vzhledem k tomu, že každá skupina úloh je přiřazena k jedné ze čtyř tříd prostředků: smallrc mediumrc, largerc, nebo xlargerc. Důležitost Principy skupin úloh je, že některé z těchto skupin úloh jsou nastaveny na vyšší *význam*. Důležitost se používá pro procesor plánování. Dotazy spouštět s vysokou důležitostí získat třikrát více cykly procesoru než dotazy spouštět se střední důležitostí. Proto souběžnosti slotu mapování také určit, priorita procesoru. Když dotaz využívá 16 nebo víc sloty, poběží brána jako vysokou důležitostí.
 
-Následující tabulka uvádí důležitosti mapování pro každou skupinu úloh.
+Následující tabulka uvádí mapování důležitosti pro každou skupinu úloh.
 
-### <a name="workload-group-mappings-to-concurrency-slots-and-importance"></a>Mapování skupin úloh souběžnosti sloty a význam
+### <a name="workload-group-mappings-to-concurrency-slots-and-importance"></a>Mapování skupin úloh a význam slotů souběžnosti
 
-| Skupiny úloh | Mapování slotu souběžnosti | MB / distribuční (pružnost) | MB / distribuční (výpočetní) | Mapování důležitostí |
+| Skupiny úloh | Mapování slotu souběžnosti | MB / distribuce (Elasticitu) | MB / distribuce (Compute) | Důležitost mapování |
 |:---------------:|:------------------------:|:------------------------------:|:---------------------------:|:------------------:|
 | SloDWGroupC00   | 1                        |    100                         | 250                         | Střednědobé používání             |
 | SloDWGroupC01   | 2                        |    200                         | 500                         | Střednědobé používání             |
@@ -39,11 +39,10 @@ Následující tabulka uvádí důležitosti mapování pro každou skupinu úlo
 | SloDWGroupC07   | 128                      | 12,800                         | 32,000                      | Vysoký               |
 | SloDWGroupC08   | 256                      | 25,600                         | 64,000                      | Vysoký               |
 
-<!-- where are the allocation and consumption of concurrency slots charts? -->
-**Přidělení a využití souběžnosti přihrádky** graf znázorňuje DW500 používá 1, 4, 8 nebo 16 souběžnosti sloty pro smallrc, mediumrc, largerc a xlargerc, v uvedeném pořadí. Najít význam pro každou třídu prostředků, můžete vyhledat tyto hodnoty v předchozí tabulce.
+<!-- where are the allocation and consumption of concurrency slots charts? --> **Přidělení a využití množství slotů souběžnosti** graf ukazuje DW500 používá 1, 4, 8 nebo 16 souběžnosti sloty pro smallrc, mediumrc, largerc nebo xlargerc, v uvedeném pořadí. K vyhledání důležitosti pro každou třídu prostředků, můžete vyhledat tyto hodnoty v předchozím grafu.
 
-### <a name="dw500-mapping-of-resource-classes-to-importance"></a>DW500 mapování třídy prostředků na význam
-| Třída prostředků | Skupina úlohy | Použít sloty souběžnosti | MB / distribuce | Důležitost |
+### <a name="dw500-mapping-of-resource-classes-to-importance"></a>DW500 mapování třídy prostředků na důležitosti
+| Třída prostředků | Skupinu úloh | Použít slotů souběžnosti | MB / distribuce | Důležitost |
 |:-------------- |:-------------- |:----------------------:|:-----------------:|:---------- |
 | smallrc        | SloDWGroupC00  | 1                      | 100               | Střednědobé používání     |
 | mediumrc       | SloDWGroupC02  | 4                      | 400               | Střednědobé používání     |
@@ -59,7 +58,7 @@ Následující tabulka uvádí důležitosti mapování pro každou skupinu úlo
 | staticrc80     | SloDWGroupC03  | 16                     | 1,600             | Vysoký       |
 
 ## <a name="view-workload-groups"></a>Zobrazení skupiny úloh
-Následující dotaz zobrazí podrobnosti o přidělování prostředků paměti z pohledu správce zdrojů. To je užitečné pro analýzu aktivní a historického využití skupin zatížení při řešení potíží.
+Následující dotaz zobrazí podrobnosti o přidělování prostředků paměti z pohledu správce zdrojů. To je užitečné pro analýzu aktivní a historické využití skupiny úloh, při řešení potíží.
 
 ```sql
 WITH rg
@@ -107,8 +106,8 @@ ORDER BY
 ;
 ```
 
-## <a name="queued-query-detection-and-other-dmvs"></a>Detekce ve frontě dotazů a jiné zobrazení dynamické správy
-Můžete použít `sys.dm_pdw_exec_requests` DMV k identifikaci dotazy, které jsou čekajících ve frontě souběžnosti. Dotazy čekání slot souběžnosti mít stav **pozastaveno**.
+## <a name="queued-query-detection-and-other-dmvs"></a>Zjišťování ve frontě dotazů a dalších zobrazení dynamické správy
+Můžete použít `sys.dm_pdw_exec_requests` a identifikovat dotazy, které čekají na přiřazení ve frontě souběžnosti. Čekání pro sloty souběžnosti dotazy jsou ve stavu **pozastaveno**.
 
 ```sql
 SELECT  r.[request_id]                           AS Request_ID
@@ -121,7 +120,7 @@ FROM    sys.dm_pdw_exec_requests r
 ;
 ```
 
-Role správy úloh lze zobrazit pomocí `sys.database_principals`.
+Role pro správu úloh lze zobrazit pomocí `sys.database_principals`.
 
 ```sql
 SELECT  ro.[name]           AS [db_role_name]
@@ -131,7 +130,7 @@ AND     ro.[is_fixed_role]  = 0
 ;
 ```
 
-Následující dotaz uvádí role, které každý uživatel je přiřazen k.
+Následující dotaz ukazuje, jaké role je přiřazená každému uživateli.
 
 ```sql
 SELECT  r.name AS role_principal_name
@@ -143,14 +142,14 @@ WHERE   r.name IN ('mediumrc','largerc','xlargerc')
 ;
 ```
 
-SQL Data Warehouse má následující počkejte typy:
+SQL Data Warehouse má následující typy čekání:
 
-* **LocalQueriesConcurrencyResourceType**: dotazy, které se nacházejí mimo rozhraní slotu souběžnosti. DMV dotazy a systému funkce, jako `SELECT @@VERSION` jsou příklady místní dotazů.
-* **UserConcurrencyResourceType**: dotazy, které se nacházejí v rozhraní framework slotu souběžnosti. Dotazy pro koncového uživatele tabulky představují příklady, které byste použili tento typ prostředku.
-* **DmsConcurrencyResourceType**: počká vyplývající z operace přesunu dat.
-* **BackupConcurrencyResourceType**: Tento čekání označuje, že se záloha databáze. Maximální hodnota pro tento typ prostředku je 1. Pokud více záloh být požadovány ve stejnou dobu, jiné fronty.
+* **LocalQueriesConcurrencyResourceType**: dotazy, které se nacházejí mimo rámec slotu souběžnosti. Dotazy na zobrazení dynamické správy a systémové funkce, jako například `SELECT @@VERSION` jsou příklady místní dotazů.
+* **UserConcurrencyResourceType**: dotazy, které se nacházejí uvnitř rozhraní concurrency slot. Dotazy na tabulky s koncovým uživatelem představují příklady, které byste použili tento typ prostředku.
+* **DmsConcurrencyResourceType**: plynoucí z operace přesunu dat čeká.
+* **BackupConcurrencyResourceType**: Tato čekací označuje, že databáze je právě zálohován. Maximální hodnota pro tento typ prostředku je 1. Pokud více záloh je požadována ve stejnou dobu, jiné fronty.
 
-`sys.dm_pdw_waits` DMV lze použít na prostředcích, které se čeká na žádost.
+`sys.dm_pdw_waits` Zobrazení dynamické správy je možné zobrazit žádost čeká na prostředky.
 
 ```sql
 SELECT  w.[wait_id]
@@ -187,7 +186,7 @@ WHERE    w.[session_id] <> SESSION_ID()
 ;
 ```
 
-`sys.dm_pdw_resource_waits` DMV zobrazuje pouze prostředků čeká spotřebovávají daný dotaz. Doba čekání prostředků pouze měří doba čekání na prostředky, které mají být poskytovány a doba čekání signál, což je čas potřebný pro základní servery SQL při plánování dotaz na procesor.
+`sys.dm_pdw_resource_waits` DMV zobrazuje pouze ta čeká prostředků používané daný dotaz. Doba čekání prostředků pouze měří čas čekání na prostředky, které mají být poskytnuty, na rozdíl od doba čekání signál, který je čas potřebný pro základní SQL servery, které chcete naplánovat dotaz na CPU.
 
 ```sql
 SELECT  [session_id]
@@ -205,7 +204,7 @@ FROM    sys.dm_pdw_resource_waits
 WHERE    [session_id] <> SESSION_ID()
 ;
 ```
-Můžete také `sys.dm_pdw_resource_waits` DMV vypočítat, kolik sloty souběžnosti byla udělena.
+Můžete také použít `sys.dm_pdw_resource_waits` DMV vypočítat počet slotů souběžnosti byl udělen.
 
 ```sql
 SELECT  SUM([concurrency_slots_used]) as total_granted_slots 
@@ -216,7 +215,7 @@ AND     [session_id]     <> session_id()
 ;
 ```
 
-`sys.dm_pdw_wait_stats` DMV lze použít pro analýzu Historický trend čeká.
+`sys.dm_pdw_wait_stats` Zobrazení dynamické správy lze použít k analýze historických trendů čeká.
 
 ```sql
 SELECT   w.[pdw_node_id]
@@ -231,6 +230,6 @@ FROM    sys.dm_pdw_wait_stats w
 ```
 
 ## <a name="next-steps"></a>Další postup
-Další informace o správě uživatelů a zabezpečení najdete v tématu [zabezpečení databáze v SQL Data Warehouse](sql-data-warehouse-overview-manage-security.md). Další informace o tom, jak větší třídy prostředků můžete zlepšení kvality indexu columnstore clusteru, najdete v části [nové sestavení indexů ke zlepšení kvality segment](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality).
+Další informace o správě uživatelů a zabezpečení najdete v tématu [zabezpečit databázi ve službě SQL Data Warehouse](sql-data-warehouse-overview-manage-security.md). Další informace o tom, jak větší třídy prostředků může zlepšit kvalitu indexu columnstore clusteru, najdete v části [nové sestavení indexů ke zlepšení kvality segmentů](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality).
 
 

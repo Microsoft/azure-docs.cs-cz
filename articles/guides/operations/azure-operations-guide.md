@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 08/24/2018
 ms.author: mibender
-ms.openlocfilehash: 2934c2323b056bfb5e556e7d688704ed20882bca
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 06365e4397075d18150095f7e77367f457e3308c
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124446"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190421"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Začínáme pro operátory Azure IT
 
@@ -173,7 +173,7 @@ Prostředí Azure PowerShell je sada modulů, které poskytují rutiny pro sprá
 
 #### <a name="azure-command-line-interface"></a>rozhraní příkazového řádku Azure
 
-Rozhraní příkazového řádku Azure je nástroj, který můžete použít k vytvoření, správě a odebrat prostředky Azure z příkazového řádku. Azure CLI je k dispozici pro Linux, Mac OS X a Windows. Další informace a technické podrobnosti najdete v tématu [instalace rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli.md).
+Rozhraní příkazového řádku Azure je nástroj, který můžete použít k vytvoření, správě a odebrat prostředky Azure z příkazového řádku. Azure CLI je k dispozici pro Linux, Mac OS X a Windows. Další informace a technické podrobnosti najdete v tématu [instalace rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli).
 
 #### <a name="rest-apis"></a>Rozhraní REST API
 
@@ -499,5 +499,5 @@ Zabezpečení virtuální sítě Azure může pomoct s použitím skupiny zabezp
 
 ## <a name="next-steps"></a>Další postup
 
-- [Vytvoření virtuálního počítače Windows](/virtual-machines/windows/quick-create-portal.md)
+- [Vytvoření virtuálního počítače Windows](../../virtual-machines/windows/quick-create-portal.md)
 - [Vytvoření virtuálního počítače s Linuxem](../../virtual-machines/linux/quick-create-portal.md)

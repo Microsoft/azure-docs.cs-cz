@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/22/2018
 ms.author: raynew
-ms.openlocfilehash: 23cf9430f82be860cb9acbfac42163f9243b2d0f
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: a734999f0fa473b5f1ee8ed55c4b73950566490d
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42059072"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43188769"
 ---
 # <a name="protect-sql-server-using-sql-server-disaster-recovery-and-azure-site-recovery"></a>Ochrana systému SQL Server pomocí zotavení po havárii pro SQL Server a Azure Site Recovery
 
@@ -83,7 +83,6 @@ Tato tabulka shrnuje našimi doporučeními k integraci technologiemi BCDR SQL s
 
 * V místním nasazení systému SQL Server, spuštěna podporovaná verze systému SQL Server. Obvykle budete také potřebovat služby Active Directory pro SQL server.
 * Požadavky na scénář, které chcete nasadit. Další informace o požadavcích na podporu pro [replikaci do Azure](site-recovery-support-matrix-to-azure.md) a [místní](site-recovery-support-matrix.md), a [požadavky na nasazení](site-recovery-prereq.md).
-* Chcete-li nastavit obnovení v Azure, spusťte [vyhodnocení připravenosti na virtuální počítač Azure](http://www.microsoft.com/download/details.aspx?id=40898) nástroj na virtuálních počítačích systému SQL Server, abyste měli jistotu, že jsou kompatibilní s Azure a služby Site Recovery.
 
 ## <a name="set-up-active-directory"></a>Nastavení služby Active Directory
 
