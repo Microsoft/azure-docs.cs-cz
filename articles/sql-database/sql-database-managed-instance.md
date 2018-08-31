@@ -9,14 +9,14 @@ ms.service: sql-database
 ms.subservice: managed-instance
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 08/14/2018
+ms.date: 08/30/2018
 ms.author: bonova
-ms.openlocfilehash: 2c6cdcd5d8d50a54a87e3dabd2aa09eccc646738
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 2e1fd7c87931f804433708b6ac30a5960e6006ae
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42060115"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287659"
 ---
 # <a name="what-is-a-managed-instance-preview"></a>Co je Managed Instance (preview)?
 
@@ -71,7 +71,7 @@ Managed Instance je k dispozici ve dvou úrovních služeb:
 - **Obecné účely**: určená pro aplikace s typické výkon a latenci vstupně-výstupních operací.
 - **Důležité obchodní informace**: určená pro aplikace s nízkou latenci vstupně-výstupní operace a minimální dopad základní údržbových operací u zatížení.
 
-Obě úrovně služeb 99,99 % dostupnost a vám umožní nezávisle na sobě vyberte velikost úložiště a výpočetní kapacitu. 
+Obě úrovně služeb 99,99 % dostupnost a vám umožní nezávisle na sobě vyberte velikost úložiště a výpočetní kapacitu. Další informace o architektura pro vysokou dostupnost služby Azure SQL Database najdete v tématu [vysokou dostupnost a Azure SQL Database](sql-database-high-availability.md).
 
 > [!IMPORTANT]
 > Změna vaší úrovně služby z obecné na důležité obchodní informace a naopak se nepodporuje ve verzi Public Preview. Pokud chcete migrovat vaše databáze v úrovních různé služby, můžete vytvořit novou instanci, obnovení databází pomocí bodu v čase z původní instance a potom vyřaďte původní instanci, pokud už není potřeba. 
@@ -97,7 +97,7 @@ Následující seznam popisuje klíčové vlastnosti vrstvy služby s obecné ú
 | Počet datových souborů (řádků) na databázi | Několik | 
 | Počet souborů protokolu (LOG) na databázi | 1 | 
 | Spravované automatizované zálohování | Ano |
-| OVĚŘENÍ STAVU | Na základě vzdálené úložiště a [Azure Service Fabric](../service-fabric/service-fabric-overview.md) |
+| OVĚŘENÍ STAVU | Data uložená ve službě Azure Storage a [Azure Service Fabric](../service-fabric/service-fabric-overview.md) |
 | Integrovanou instanci a databázi sledování a metriky | Ano |
 | Software automatické opravy | Ano |
 | Připojení typu VNet - nasazení Azure Resource Manageru | Ano |
@@ -131,7 +131,7 @@ Následující seznam popisuje klíčové vlastnosti pro důležité obchodní i
 | Počet datových souborů (řádků) na databázi | Několik | 
 | Počet souborů protokolu (LOG) na databázi | 1 | 
 | Spravované automatizované zálohování | Ano |
-| OVĚŘENÍ STAVU | Na základě [skupin dostupnosti Always On](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) a [Azure Service Fabric](../service-fabric/service-fabric-overview.md) |
+| OVĚŘENÍ STAVU | Data uložená v místní SSD a použití [skupin dostupnosti Always On](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) a [Azure Service Fabric](../service-fabric/service-fabric-overview.md) |
 | Integrovanou instanci a databázi sledování a metriky | Ano |
 | Software automatické opravy | Ano |
 | Připojení typu VNet - nasazení Azure Resource Manageru | Ano |
