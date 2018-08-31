@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: raynew
-ms.openlocfilehash: 7ffcf5e3c7e6f0cb3d344b7d148b6024e8469eff
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 092f0844854c13898fd7f07ce9b7ddea98ff01ed
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39263005"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286269"
 ---
 # <a name="assessment-calculations"></a>Výpočty hodnocení
 
@@ -40,7 +40,7 @@ Azure Migrate posuzuje následující vlastnosti místní virtuální počítač
 --- | --- | ---
 **Typ spuštění** | Azure podporuje virtuální počítače s typem spuštění BIOS a není rozhraní UEFI. | Podmíněně připraveno, pokud typ spouštění je UEFI.
 **Počet jader** | Počet jader na počítačích musí být větší nebo menší než maximální počet jader (32) pro virtuální počítač Azure nepodporuje.<br/><br/> Pokud není k dispozici historie výkonu, Azure Migrate bere v úvahu jader využívaných pro porovnání. Pokud je v nastavení posouzení Zadaný faktor komfortu, počet jader využívaných se vynásobí faktor komfortu.<br/><br/> Pokud neexistuje žádná historie výkonu, Azure Migrate použije přidělená jádra, bez použití faktor komfortu. | Připraveno, pokud je menší než nebo rovna omezení.
-**Paměť** | Velikost paměti počítače musí být větší nebo menší než maximální velikost paměti (3892 GB na Azure M series Standard_M128m&nbsp;<sup>2</sup>) povolený pro virtuální počítač Azure. [Další informace](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-memory.md#m-series).<br/><br/> Pokud není k dispozici historie výkonu, Azure Migrate bere v úvahu využívaných paměť pro porovnání. Pokud je zadaný faktor komfortu, využívaných paměti se násobí hodnotou faktor komfortu.<br/><br/> Pokud neexistuje žádná historie přidělená paměť použijete, bez použití faktor komfortu.<br/><br/> | Pokud v mezích limitů připraven.
+**Paměť** | Velikost paměti počítače musí být větší nebo menší než maximální velikost paměti (3892 GB na Azure M series Standard_M128m&nbsp;<sup>2</sup>) povolený pro virtuální počítač Azure. [Další informace](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes).<br/><br/> Pokud není k dispozici historie výkonu, Azure Migrate bere v úvahu využívaných paměť pro porovnání. Pokud je zadaný faktor komfortu, využívaných paměti se násobí hodnotou faktor komfortu.<br/><br/> Pokud neexistuje žádná historie přidělená paměť použijete, bez použití faktor komfortu.<br/><br/> | Pokud v mezích limitů připraven.
 **Disk úložiště** | Přidělená velikost disku musí mít 4 TB (4096 GB) nebo méně.<br/><br/> Počet disků připojených k počítači musí být 65 nebo méně, včetně disk s operačním systémem. | Pokud v mezích limitů připraven.
 **Sítě** | Počítač musí mít 32 nebo méně síťových adaptérů připojený k němu. | Pokud v mezích limitů připraven.
 
@@ -107,7 +107,7 @@ Pro určení velikosti na základě výkonu začíná Azure Migrate disky připo
 Pokud je kritérium určení velikosti *jako v místním nastavení velikosti*, Azure Migrate nebere v úvahu historie výkonu virtuálních počítačů a disků a přiděluje skladovou Položku virtuálního počítače v Azure na základě velikosti přidělené místní. Podobně jako pro určení velikosti disku, vyhledá úložiště typ určený ve vlastnostech posouzení (Standard nebo Premium) a odpovídajícím způsobem doporučuje typ disku. Výchozí typ úložiště je prémiové disky.
 
 ### <a name="confidence-rating"></a>Hodnocení spolehlivosti
-Každý posouzení na základě výkonu ve službě Azure Migrate se přidruží hodnocení spolehlivosti v rozsahu od 1 do 5 hvězdiček (1 hvězdička znamená nejnižší a 5 hvězdiček nejvyšší spolehlivost). Hodnocení spolehlivosti se k posouzení přiřadí na základě dostupnosti datových bodů potřebných pro výpočet posouzení. Hodnocení spolehlivosti posouzení pomáhá odhadnout spolehlivost doporučení velikostí poskytovaných službou Azure Migrate. Hodnocení spolehlivosti se nevztahuje na jako místních posouzení.
+Ke každému posouzení na základě výkonu ve službě Azure Migrate se přidruží hodnocení spolehlivosti v rozsahu od jedné do pěti hvězdiček (jedna hvězdička znamená nejnižší a pět hvězdiček nejvyšší spolehlivost). Hodnocení spolehlivosti se k posouzení přiřadí na základě dostupnosti datových bodů potřebných pro výpočet posouzení. Hodnocení spolehlivosti posouzení pomáhá odhadnout spolehlivost doporučení velikostí poskytovaných službou Azure Migrate. Hodnocení spolehlivosti se netýká místních posouzení.
 
 K určení velikosti na základě výkonu potřebuje Azure Migrate data o využití procesoru a paměti virtuálního počítače. Pro každý disk připojený k virtuálnímu počítači navíc potřebuje IOPS a propustnost disku. Podobně u každého síťového adaptéru připojeného k virtuálnímu počítači potřebuje Azure Migrate k určení velikosti na základě výkonu informace o síťových vstupech a výstupech. Pokud některá z výše uvedených čísel o využití nejsou v systému vCenter Server k dispozici, doporučení velikosti provedené službou Azure Migrate nemusí být spolehlivé. Tady je poskytnuté hodnocení spolehlivosti posouzení v závislosti na procentu dostupných datových bodů:
 

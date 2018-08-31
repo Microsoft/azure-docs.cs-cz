@@ -3,24 +3,24 @@ title: Omezení kapacity – Azure SQL Data Warehouse | Dokumentace Microsoftu
 description: Maximální hodnoty povolené pro různé komponenty služby Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: sachinpMSFT
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
 ms.date: 07/26/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: df3220936673e508e0fa01a283270e1b4ca4753c
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 7c6445624b2c03497c881b0c34bac8256fa28a98
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283431"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43302039"
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>Limity kapacity SQL Data Warehouse
 Maximální hodnoty povolené pro různé komponenty služby Azure SQL Data Warehouse.
 
-## <a name="workload-management"></a>Správa zatížení
+## <a name="workload-management"></a>Správa úloh
 | Kategorie | Popis | Maximum |
 |:--- |:--- |:--- |
 | [Jednotky datového skladu (DWU)](what-is-a-data-warehouse-unit-dwu-cdwu.md) |Maximální počet DWU pro jeden SQL Data Warehouse | Gen1: DW6000<br></br>Gen2: DW30000c |
@@ -39,7 +39,7 @@ Maximální hodnoty povolené pro různé komponenty služby Azure SQL Data Ware
 | Table |Sloupce na tabulku |1024 sloupců |
 | Table |Bajtů na sloupec |Závislé na sloupci [datový typ](sql-data-warehouse-tables-data-types.md). Limit je 8000 pro datové typy char, 4000 pro nvarchar, nebo 2 GB pro maximální počet datových typů. |
 | Table |Řádek, definovaná velikost v bajtech |8 060 bajtů<br/><br/>Počet bajtů na každém řádku se počítá stejným způsobem, jako je komprese stránky pro SQL Server. Jako je SQL Server, SQL Data Warehouse podporuje úložiště řádek přetečení, což umožňuje **sloupců s proměnnou délkou** doručí mimo řádek. Když řádky s proměnnou délkou jsou vložena mimo řádek, uloží se pouze 24 bajtů kořenové hlavního záznamu. Další informace najdete v tématu [přetečení řádek dat překročení velikosti 8 KB](https://msdn.microsoft.com/library/ms186981.aspx). |
-| Table |Oddíly na tabulku |15,000<br/><br/>Pro vysoký výkon, doporučujeme minimalizovat počet oddílů musí při zároveň podporovat vaše obchodní požadavky. Roste počet oddílů, nároků na operace jazyka DDL (Data Definition) a manipulace dat jazyka (DML) roste a způsobí pomalejší výkon. |
+| Table |Oddíly na tabulku |15 000<br/><br/>Pro vysoký výkon, doporučujeme minimalizovat počet oddílů musí při zároveň podporovat vaše obchodní požadavky. Roste počet oddílů, nároků na operace jazyka DDL (Data Definition) a manipulace dat jazyka (DML) roste a způsobí pomalejší výkon. |
 | Table |Znaky za hodnoty hranice oddílu. |4000 |
 | Index |V clusteru bez indexů na tabulku. |50<br/><br/>Platí pro pouze rowstore tabulky. |
 | Index |Clusterované indexy na tabulku. |1<br><br/>Platí pro tabulky rowstore a columnstore. |

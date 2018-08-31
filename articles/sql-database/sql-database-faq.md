@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: reference
 ms.topic: conceptual
-ms.date: 08/27/2018
+ms.date: 08/29/2018
 ms.author: carlrab
-ms.openlocfilehash: 7f784689e8437d92cf4fc4974983d3ae1455f11b
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: a7837ac6af82b5c67ea5779340aedc16cb78d156
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43091820"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286328"
 ---
 # <a name="sql-database-faq"></a>SQL Database – Nejčastější dotazy
 
@@ -22,8 +22,10 @@ ms.locfileid: "43091820"
 Je aktuální verze služby SQL Database V12. Verze 11 verze je vyřazený.
 
 ## <a name="what-is-the-sla-for-sql-database"></a>Co je smlouva SLA pro službu SQL Database?
-Garantujeme 99,99 % času, můžete mít k dispozici připojení mezi Microsoft Azure SQL Database a naší internetovou bránou bez ohledu na vaší úrovni služby. Další informace najdete v tématu [SLA](http://azure.microsoft.com/support/legal/sla/).
+Garantujeme 99,99 % času, můžete mít k dispozici připojení mezi Microsoft Azure SQL Database a naší internetovou bránou bez ohledu na vaší úrovni služby. 0,01 % je vyhrazené pro převzetí služeb při selhání, opravy a upgrady. Další informace najdete v tématu [SLA](http://azure.microsoft.com/support/legal/sla/). Informace o architektuře dostupnost služby Azure SQL Database najdete v tématu [vysokou dostupnost a Azure SQL Database](sql-database-high-availability.md). 
 
+## <a name="can-i-control-when-patching-downtime-occurs"></a>Můžete řídit při použití dílčích oprav výpadek nastane
+Ne. Dopad opravy není obecně souborům Pokud jste [použít logiku opakování](sql-database-develop-overview.md#resiliency) ve vaší aplikaci.
 ## <a name="what-is-the-new-vcore-based-purchasing-model-for-azure-sql-database"></a>Co je nového založený na virtuálních jádrech nákupní model pro službu Azure SQL Database?
 
 Nový nákupní model doplňuje stávající model založený na DTU. Model založený na virtuálních jádrech je účelem je poskytnout zákazníkům flexibilitu, kontrolu, transparentnost a jednoduchý způsob převodu místních požadavků na zatížení do cloudu. Také umožňuje zákazníkům škálovat své výpočetní prostředky a úložiště prostředků na základě jejich potřebám provádění úloh. Izolovaná databáze a elastický fond možnosti použití modelu virt. jader jsou také nárok až na 30 procent spoření s [zvýhodněné hybridní využití Azure pro SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md). Zobrazit [nákupní model založený na DTU](sql-database-service-tiers-dtu.md) a [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md) Další informace. 

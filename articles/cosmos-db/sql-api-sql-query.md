@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: laviswa
-ms.openlocfilehash: 26928e36b09ef0dfe5576a8a8039ffac2dd3fb4a
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: a3a1f376c36004851d6e64f2fa037bebfc24665b
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42054256"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287754"
 ---
 # <a name="query-azure-cosmos-db-data-with-sql-queries"></a>Dotazování na data služby Azure Cosmos DB pomocí dotazů SQL
 
@@ -27,17 +27,7 @@ Microsoft Azure Cosmos DB podporuje dotazování dokumentů pomocí jazyka SQL (
 
 * Azure Cosmos DB používá model programování v jazyce JavaScript jako základ pro dotazovací jazyk. Rozhraní SQL API je integrován do systému typů v jazyce JavaScript, vyhodnocení výrazu a volání funkce. Tento naopak poskytuje přirozený programovací model pro projekce relačních, hierarchických navigaci mezi dokumenty JSON, vlastní spojení, prostorových dotazů a volání uživatelem definované funkce (UDF) vytvořené zcela v JavaScriptu, kromě jiných funkcí. 
 
-Tento článek vás provede Příklady dotazů SQL pomocí jednoduchého dokumentů JSON. Další informace o syntaxi jazyka SQL služby Azure Cosmos DB najdete v tématu [referenční příručka syntaxe SQL](sql-api-sql-query-reference.md) článku. Můžete také začít Zhlédnutím následujícího videa, která zobrazení služby Azure Cosmos DB je možnostmi dotazování a ukazuje, online [Query Playground](http://www.documentdb.com/sql/demo).
-
-> [!VIDEO https://www.youtube.com/embed/1LqUQRpHfFI]
->
->
-
-Další pokročilé techniky dotazování je ukázán v následujícím videu:
-
-> [!VIDEO https://www.youtube.com/embed/kASU9NOIR90]
->
->
+Tento článek vás provede Příklady dotazů SQL pomocí jednoduchého dokumentů JSON. Další informace o syntaxi jazyka SQL služby Azure Cosmos DB najdete v tématu [referenční příručka syntaxe SQL](sql-api-sql-query-reference.md) článku. 
 
 ## <a id="GettingStarted"></a>Začínáme s příkazy jazyka SQL
 Vytvoříme dvě jednoduché dokumenty JSON a dotazovat data. Vezměte v úvahu dva dokumenty JSON o rodiny, vložte tyto dokumenty JSON do kolekce a následně dotazovat data. Tady máme jednoduchý JSON dokumentů pro rodinu a Wakefieldů rodiny, rodiče, podřízené položky (a jejich mazlíčků), adresu a informace o registraci. Dokument obsahuje řetězce, čísla, logické hodnoty, pole a vnořené vlastnosti. 

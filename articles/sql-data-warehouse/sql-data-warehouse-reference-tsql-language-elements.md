@@ -1,63 +1,64 @@
 ---
-title: Elementy jazyka T-SQL - Azure SQL Data Warehouse | Microsoft Docs
-description: Odkazy na dokumentaci pro příkazů T-SQL v Azure SQL Data Warehouse podporovány.
+title: Elementy jazyka T-SQL – Azure SQL Data Warehouse | Dokumentace Microsoftu
+description: Odkazy na dokumentaci pro příkazy jazyka T-SQL podporované ve službě Azure SQL Data Warehouse.
 services: sql-data-warehouse
-author: ckarst
-manager: craigg-msft
+author: twounder
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
-ms.date: 04/17/2018
-ms.author: cakarst
+ms.date: 06/13/2018
+ms.author: mausher
 ms.reviewer: igorstan
-ms.openlocfilehash: bd7665798e5bf26c0e538deb713ef9696c84338c
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: d40861650f479f8ef840c5150b2153f461871331
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43307755"
 ---
-# <a name="t-sql-language-elements-supported-in-azure-sql-data-warehouse"></a>Elementy jazyka T-SQL v Azure SQL Data Warehouse podporované
-Odkazy na dokumentaci pro elementy jazyka T-SQL v Azure SQL Data Warehouse podporovány.
+# <a name="t-sql-language-elements-supported-in-azure-sql-data-warehouse"></a>Elementy jazyka T-SQL podporované ve službě Azure SQL Data Warehouse
+Odkazy na dokumentaci pro elementy jazyka T-SQL podporované ve službě Azure SQL Data Warehouse.
 
-## <a name="core-elements"></a>Základní prvky
-* [Syntaxe konvence](/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)
-* [objekt pravidla pojmenování](https://msdn.microsoft.com/library/ms175874.aspx)
-* [vyhrazená slova](https://msdn.microsoft.com/library/ms189822.aspx)
+## <a name="core-elements"></a>Základní elementy
+* [Konvencí syntaxe](/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)
+* [pravidla pojmenování objektu](https://msdn.microsoft.com/library/ms175874.aspx)
+* [vyhrazená klíčová slova](https://msdn.microsoft.com/library/ms189822.aspx)
 * [kolace](https://msdn.microsoft.com/library/ff848763.aspx)
 * [Komentáře](https://msdn.microsoft.com/library/ms181627.aspx)
 * [Konstanty](https://msdn.microsoft.com/library/ms179899.aspx)
-* [Datové typy](https://msdn.microsoft.com/library/ms187752.aspx)
+* [datové typy](https://msdn.microsoft.com/library/ms187752.aspx)
 * [SPUŠTĚNÍ](https://msdn.microsoft.com/library/ms188332.aspx)
 * [Výrazy](https://msdn.microsoft.com/library/ms190286.aspx)
-* [PŘÍKAZ KILL](https://msdn.microsoft.com/library/ms173730.aspx)
-* [Alternativní řešení vlastnost IDENTITY](https://msdn.microsoft.com/library/ms186775.aspx)
+* [UKONČIT](https://msdn.microsoft.com/library/ms173730.aspx)
+* [Alternativní řešení vlastnosti IDENTITY](https://msdn.microsoft.com/library/ms186775.aspx)
 * [TISK](https://msdn.microsoft.com/library/ms176047.aspx)
 * [POUŽITÍ](https://msdn.microsoft.com/library/ms188366.aspx)
 
-## <a name="batches-control-of-flow-and-variables"></a>Dávky, tok řízení a proměnné
-* [ZAČNĚTE... END](https://msdn.microsoft.com/library/ms190487.aspx)
-* [ROZDĚLIT](https://msdn.microsoft.com/library/ms181271.aspx)
+## <a name="batches-control-of-flow-and-variables"></a>Listy, toku řízení a proměnné
+* [ZAHÁJENÍ... UKONČENÍ](https://msdn.microsoft.com/library/ms190487.aspx)
+* [KONEC](https://msdn.microsoft.com/library/ms181271.aspx)
 * [DEKLARACE @local_variable](https://msdn.microsoft.com/library/ms188927.aspx)
 * [IF...ELSE](https://msdn.microsoft.com/library/ms182717.aspx)
 * [RAISERROR](https://msdn.microsoft.com/library/ms178592.aspx)
 * [SET@local_variable](https://msdn.microsoft.com/library/ms189484.aspx)
-* [THROW](https://msdn.microsoft.com/library/ee677615.aspx)
+* [VYVOLÁNÍ VÝJIMKY](https://msdn.microsoft.com/library/ee677615.aspx)
 * [TRY... CATCH](https://msdn.microsoft.com/library/ms175976.aspx)
-* [CHVÍLI](https://msdn.microsoft.com/library/ms178642.aspx)
+* [WHILE](https://msdn.microsoft.com/library/ms178642.aspx)
 
 ## <a name="operators"></a>Operátory
 * [+ (Přidat)](https://msdn.microsoft.com/library/ms178565.aspx)
-* [+ (Zřetězení)](https://msdn.microsoft.com/library/ms177561.aspx)
-* [-(Záporné hodnoty)](https://msdn.microsoft.com/library/ms189480.aspx)
-* [-(Odečtena)](https://msdn.microsoft.com/library/ms189518.aspx)
-* [* (Násobení)](https://msdn.microsoft.com/library/ms176019.aspx)
+* [+ (Zřetězení řetězců)](https://msdn.microsoft.com/library/ms177561.aspx)
+* [-(Záporné)](https://msdn.microsoft.com/library/ms189480.aspx)
+* [-(Odečte)](https://msdn.microsoft.com/library/ms189518.aspx)
+* [* (Vynásobit)](https://msdn.microsoft.com/library/ms176019.aspx)
 * [/ (Dělení)](https://msdn.microsoft.com/library/ms175009.aspx)
 * [Modulo](https://msdn.microsoft.com/library/ms190279.aspx)
 
 ## <a name="wildcard-characters-to-match"></a>Zástupné znaky tak, aby odpovídaly
-* [= (Je rovno)](https://msdn.microsoft.com/library/ms175118.aspx)
+* [= (Rovná se)](https://msdn.microsoft.com/library/ms175118.aspx)
 * [> (Větší než)](https://msdn.microsoft.com/library/ms178590.aspx)
-* [< (Méně než)](https://msdn.microsoft.com/library/ms179873.aspx)
+* [< (Menší než)](https://msdn.microsoft.com/library/ms179873.aspx)
 * [> = (výborné než nebo rovno)](https://msdn.microsoft.com/library/ms181567.aspx)
 * [< = (je menší než nebo rovno)](https://msdn.microsoft.com/library/ms174978.aspx)
 * [<> (Nerovná se)](https://msdn.microsoft.com/library/ms176020.aspx)
@@ -65,22 +66,22 @@ Odkazy na dokumentaci pro elementy jazyka T-SQL v Azure SQL Data Warehouse podpo
 * [A](https://msdn.microsoft.com/library/ms188372.aspx)
 * [MEZI](https://msdn.microsoft.com/library/ms187922.aspx)
 * [EXISTUJE](https://msdn.microsoft.com/library/ms188336.aspx)
-* [V](https://msdn.microsoft.com/library/ms177682.aspx)
+* [INDIE](https://msdn.microsoft.com/library/ms177682.aspx)
 * [IS [NOT] NULL](https://msdn.microsoft.com/library/ms188795.aspx)
-* [JAKO](https://msdn.microsoft.com/library/ms179859.aspx)
-* [NENÍ](https://msdn.microsoft.com/library/ms189455.aspx)
+* [STEJNĚ JAKO](https://msdn.microsoft.com/library/ms179859.aspx)
+* [NOT](https://msdn.microsoft.com/library/ms189455.aspx)
 * [OR](https://msdn.microsoft.com/library/ms188361.aspx)
 
 ### <a name="bitwise-operators"></a>Bitové operátory
-* [& (Bitové operace AND)](https://msdn.microsoft.com/library/ms174965.aspx)
-* [| (Bitová hodnota OR)](https://msdn.microsoft.com/library/ms186714.aspx)
-* [^ (Bitový exkluzivní OR)](https://msdn.microsoft.com/library/ms190277.aspx)
+* [& (Bitový operátor AND)](https://msdn.microsoft.com/library/ms174965.aspx)
+* [| (Bitový OR)](https://msdn.microsoft.com/library/ms186714.aspx)
+* [^ (Bitový exkluzivní operátor OR)](https://msdn.microsoft.com/library/ms190277.aspx)
 * [~ (Bitový operátor NOT)](https://msdn.microsoft.com/library/ms173468.aspx)
-* [^ = (Bitový exkluzivní nebo je ROVNO)](https://msdn.microsoft.com/library/cc627413.aspx)
-* [| = (Bitová hodnota OR rovná)](https://msdn.microsoft.com/library/cc627409.aspx)
-* [& = (bitové operace AND ROVNO)](https://msdn.microsoft.com/library/cc627427.aspx)
+* [^ = (Bitový exkluzivní OR rovná se)](https://msdn.microsoft.com/library/cc627413.aspx)
+* [| = (Rovná se bitový operátor OR)](https://msdn.microsoft.com/library/cc627409.aspx)
+* [& = (rovná se bitové operace AND)](https://msdn.microsoft.com/library/cc627427.aspx)
 
-## <a name="functions"></a>Funkce
+## <a name="functions"></a>Functions
 * [@@DATEFIRST](https://msdn.microsoft.com/library/ms187766.aspx)
 * [@@ERROR](https://msdn.microsoft.com/library/ms188790.aspx)
 * [@@LANGUAGE](https://msdn.microsoft.com/library/ms177557.aspx)
@@ -96,9 +97,9 @@ Odkazy na dokumentaci pro elementy jazyka T-SQL v Azure SQL Data Warehouse podpo
 * [BINARY_CHECKSUM](https://msdn.microsoft.com/library/ms173784.aspx)
 * [PŘÍPAD](https://msdn.microsoft.com/library/ms181765.aspx)
 * [PŘETYPOVÁNÍ a převést](https://msdn.microsoft.com/library/ms187928.aspx)
-* [MEZNÍ HODNOTY](https://msdn.microsoft.com/library/ms189818.aspx)
-* [CHAR –](https://msdn.microsoft.com/library/ms187323.aspx)
-* [FUNKCE CHARINDEX](https://msdn.microsoft.com/library/ms186323.aspx)
+* [HORNÍ MEZ](https://msdn.microsoft.com/library/ms189818.aspx)
+* [CHAR](https://msdn.microsoft.com/library/ms187323.aspx)
+* [CHARINDEX](https://msdn.microsoft.com/library/ms186323.aspx)
 * [KONTROLNÍ SOUČET](https://msdn.microsoft.com/library/ms189788.aspx)
 * [SLOUČENÍ](https://msdn.microsoft.com/library/ms190349.aspx)
 * [COL_NAME](https://msdn.microsoft.com/library/ms174974.aspx)
@@ -112,12 +113,12 @@ Odkazy na dokumentaci pro elementy jazyka T-SQL v Azure SQL Data Warehouse podpo
 * [CURRENT_TIMESTAMP](https://msdn.microsoft.com/library/ms188751.aspx)
 * [CURRENT_USER](https://msdn.microsoft.com/library/ms176050.aspx)
 * [DATABASEPROPERTYEX](https://msdn.microsoft.com/library/ms186823.aspx)
-* [DÉLKA_DAT](https://msdn.microsoft.com/library/ms173486.aspx)
+* [VLASTNOST DATALENGTH](https://msdn.microsoft.com/library/ms173486.aspx)
 * [FUNKCE DATEADD](https://msdn.microsoft.com/library/ms186819.aspx)
-* [FUNKCE DATEDIFF](https://msdn.microsoft.com/library/ms189794.aspx)
+* [DATEDIFF](https://msdn.microsoft.com/library/ms189794.aspx)
 * [DATEFROMPARTS](https://msdn.microsoft.com/library/hh213228.aspx)
-* [FUNKCE DATENAME](https://msdn.microsoft.com/library/ms174395.aspx)
-* [DATEPART](https://msdn.microsoft.com/library/ms174420.aspx)
+* [DATENAME](https://msdn.microsoft.com/library/ms174395.aspx)
+* [TYP DATEPART](https://msdn.microsoft.com/library/ms174420.aspx)
 * [DATETIME2FROMPARTS](https://msdn.microsoft.com/library/hh213312.aspx)
 * [DATETIMEFROMPARTS](https://msdn.microsoft.com/library/hh213233.aspx)
 * [DATETIMEOFFSETFROMPARTS](https://msdn.microsoft.com/library/hh231077.aspx)
@@ -135,7 +136,7 @@ Odkazy na dokumentaci pro elementy jazyka T-SQL v Azure SQL Data Warehouse podpo
 * [ERROR_STATE](https://msdn.microsoft.com/library/ms180031.aspx)
 * [EXP](https://msdn.microsoft.com/library/ms179857.aspx)
 * [FIRST_VALUE](https://msdn.microsoft.com/library/hh213018.aspx)
-* [FLOOR](https://msdn.microsoft.com/library/ms178531.aspx)
+* [DOLNÍ MEZ](https://msdn.microsoft.com/library/ms178531.aspx)
 * [GETDATE](https://msdn.microsoft.com/library/ms188383.aspx)
 * [GETUTCDATE](https://msdn.microsoft.com/library/ms178635.aspx)
 * [HAS_DBACCESS](https://msdn.microsoft.com/library/ms187718.aspx)
@@ -144,37 +145,37 @@ Odkazy na dokumentaci pro elementy jazyka T-SQL v Azure SQL Data Warehouse podpo
 * [ISDATE](https://msdn.microsoft.com/library/ms187347.aspx)
 * [ISNULL](https://msdn.microsoft.com/library/ms184325.aspx)
 * [ISNUMERIC](https://msdn.microsoft.com/library/ms186272.aspx)
-* [FUNKCE LAG](https://msdn.microsoft.com/library/hh231256.aspx)
+* [PRODLEVA](https://msdn.microsoft.com/library/hh231256.aspx)
 * [LAST_VALUE](https://msdn.microsoft.com/library/hh231517.aspx)
-* [VÉST](https://msdn.microsoft.com/library/hh213125.aspx)
+* [ZÁJEMCE](https://msdn.microsoft.com/library/hh213125.aspx)
 * [LEFT](https://msdn.microsoft.com/library/ms177601.aspx)
-* [LEN](https://msdn.microsoft.com/library/ms190329.aspx)
+* [DÉLKA](https://msdn.microsoft.com/library/ms190329.aspx)
 * [LOG](https://msdn.microsoft.com/library/ms190319.aspx)
 * [LOG10](https://msdn.microsoft.com/library/ms175121.aspx)
 * [NIŽŠÍ](https://msdn.microsoft.com/library/ms174400.aspx)
 * [LTRIM](https://msdn.microsoft.com/library/ms177827.aspx)
 * [MAX](https://msdn.microsoft.com/library/ms187751.aspx)
-* [MIN.](https://msdn.microsoft.com/library/ms179916.aspx)
+* [MIN](https://msdn.microsoft.com/library/ms179916.aspx)
 * [MĚSÍC](https://msdn.microsoft.com/library/ms187813.aspx)
 * [NCHAR](https://msdn.microsoft.com/library/ms182673.aspx)
-* [NTILE](https://msdn.microsoft.com/library/ms175126.aspx)
+* [NTILE POVOLEN](https://msdn.microsoft.com/library/ms175126.aspx)
 * [FUNKCI NULLIF](https://msdn.microsoft.com/library/ms177562.aspx)
 * [OBJECT_ID](https://msdn.microsoft.com/library/ms190328.aspx)
 * [OBJECT_NAME](https://msdn.microsoft.com/library/ms186301.aspx)
 * [OBJECTPROPERTY](https://msdn.microsoft.com/library/ms176105.aspx)
 * [OIBJECTPROPERTYEX](https://msdn.microsoft.com/library/ms188390.aspx)
-* [Skalární funkce ODBCS](https://msdn.microsoft.com/library/bb630290.aspx)
-* [Klauzuli OVER](https://msdn.microsoft.com/library/ms189461.aspx)
+* [ODBCS skalární funkce](https://msdn.microsoft.com/library/bb630290.aspx)
+* [Klauzule OVER](https://msdn.microsoft.com/library/ms189461.aspx)
 * [PARSENAME](https://msdn.microsoft.com/library/ms188006.aspx)
-* [FUNKCE PATINDEX](https://msdn.microsoft.com/library/ms188395.aspx)
+* [PATINDEX](https://msdn.microsoft.com/library/ms188395.aspx)
 * [PERCENTILE_CONT](https://msdn.microsoft.com/library/hh231473.aspx)
 * [PERCENTILE_DISC](https://msdn.microsoft.com/library/hh231327.aspx)
 * [PERCENT_RANK](https://msdn.microsoft.com/library/hh213573.aspx)
 * [PI](https://msdn.microsoft.com/library/ms189512.aspx)
 * [NAPÁJENÍ](https://msdn.microsoft.com/library/ms174276.aspx)
 * [QUOTENAME](https://msdn.microsoft.com/library/ms176114.aspx)
-* [RADIÁNECH](https://msdn.microsoft.com/library/ms189742.aspx)
-* [RAND –](https://msdn.microsoft.com/library/ms177610.aspx)
+* [RADIANS](https://msdn.microsoft.com/library/ms189742.aspx)
+* [RAND](https://msdn.microsoft.com/library/ms177610.aspx)
 * [POŘADÍ](https://msdn.microsoft.com/library/ms176102.aspx)
 * [NAHRADIT](https://msdn.microsoft.com/library/ms186862.aspx)
 * [REPLIKACE](https://msdn.microsoft.com/library/ms174383.aspx)
@@ -194,12 +195,12 @@ Odkazy na dokumentaci pro elementy jazyka T-SQL v Azure SQL Data Warehouse podpo
 * [MÍSTO](https://msdn.microsoft.com/library/ms187950.aspx)
 * [SQL_VARIANT_PROPERTY](https://msdn.microsoft.com/library/ms178550.aspx)
 * [SQRT](https://msdn.microsoft.com/library/ms176108.aspx)
-* [HRANATÉ](https://msdn.microsoft.com/library/ms173569.aspx)
+* [ČTVEREC](https://msdn.microsoft.com/library/ms173569.aspx)
 * [STATS_DATE](https://msdn.microsoft.com/library/ms190330.aspx)
 * [STDEV](https://msdn.microsoft.com/library/ms190474.aspx)
 * [STDEVP](https://msdn.microsoft.com/library/ms176080.aspx)
 * [STR](https://msdn.microsoft.com/library/ms189527.aspx)
-* [VLASTNÍ POLOŽKY](https://msdn.microsoft.com/library/ms188043.aspx)
+* [VĚCI](https://msdn.microsoft.com/library/ms188043.aspx)
 * [DÍLČÍ ŘETĚZEC](https://msdn.microsoft.com/library/ms187748.aspx)
 * [SOUČET](https://msdn.microsoft.com/library/ms187810.aspx)
 * [SUSER_SNAME](https://msdn.microsoft.com/library/ms174427.aspx)
@@ -220,14 +221,14 @@ Odkazy na dokumentaci pro elementy jazyka T-SQL v Azure SQL Data Warehouse podpo
 * [UŽIVATEL](https://msdn.microsoft.com/library/ms186738.aspx)
 * [UŽIVATELSKÉ_JMÉNO](https://msdn.microsoft.com/library/ms188014.aspx)
 * [VAR](https://msdn.microsoft.com/library/ms186290.aspx)
-* [VARP](https://msdn.microsoft.com/library/ms188735.aspx)
+* [VAR](https://msdn.microsoft.com/library/ms188735.aspx)
 * [ROK](https://msdn.microsoft.com/library/ms186313.aspx)
 * [XACT_STATE](https://msdn.microsoft.com/library/ms189797.aspx)
 
 ## <a name="transactions"></a>Transakce
 * [Transakce](https://msdn.microsoft.com/library/mt204031.aspx)
 
-## <a name="diagnostic-sessions"></a>Diagnostické relací
+## <a name="diagnostic-sessions"></a>Relace diagnostiky
 * [VYTVOŘENÍ RELACE DIAGNOSTIKY](https://msdn.microsoft.com/library/mt204029.aspx)
 
 ## <a name="procedures"></a>Procedury
@@ -253,28 +254,28 @@ Odkazy na dokumentaci pro elementy jazyka T-SQL v Azure SQL Data Warehouse podpo
 * [sp_tables](https://msdn.microsoft.com/library/ms186250.aspx)
 * [sp_unprepare](https://msdn.microsoft.com/library/ff848735.aspx)
 
-## <a name="set-statements"></a>SET – příkazy
+## <a name="set-statements"></a>Příkazy SET
 * [SADA ANSI_DEFAULTS](https://msdn.microsoft.com/library/ms188340.aspx)
 * [SADA ANSI_NULL_DFLT_OFF](https://msdn.microsoft.com/library/ms187356.aspx)
 * [SADA ANSI_NULL_DFLT_ON](https://msdn.microsoft.com/library/ms187375.aspx)
 * [SET ANSI_NULLS](https://msdn.microsoft.com/library/ms188048.aspx)
-* [PARAMETRU ANSI_PADDING SADY](https://msdn.microsoft.com/library/ms187403.aspx)
+* [NASTAVENÍ PARAMETRU ANSI_PADDING](https://msdn.microsoft.com/library/ms187403.aspx)
 * [SADA ANSI_WARNINGS](https://msdn.microsoft.com/library/ms190368.aspx)
 * [SADA ARITHABORT](https://msdn.microsoft.com/library/ms190306.aspx)
 * [SADA ARITHIGNORE](https://msdn.microsoft.com/library/ms184341.aspx)
 * [SADA CONCAT_NULL_YIELDS_NULL](https://msdn.microsoft.com/library/ms176056.aspx)
 * [PŘÍKAZ SET DATEFIRST](https://msdn.microsoft.com/library/ms181598.aspx)
-* [PARAMETR SET DATEFORMAT](https://msdn.microsoft.com/library/ms189491.aspx)
+* [PARAMETR DATEFORMAT SET](https://msdn.microsoft.com/library/ms189491.aspx)
 * [SET FMTONLY](https://msdn.microsoft.com/library/ms173839.aspx)
 * [SADA IMPLICIT_TRANSACITONS](https://msdn.microsoft.com/library/ms187807.aspx)
 * [SADA LOCK_TIMEOUT](https://msdn.microsoft.com/library/ms189470.aspx)
 * [SADA NUMBERIC_ROUNDABORT](https://msdn.microsoft.com/library/ms188791.aspx)
 * [SADA QUOTED_IDENTIFIER](https://msdn.microsoft.com/library/ms174393.aspx)
 * [SET ROWCOUNT](https://msdn.microsoft.com/library/ms188774.aspx)
-* [VELIKOST TEXTU SADY](https://msdn.microsoft.com/library/ms186238.aspx)
+* [SET TEXTSIZE](https://msdn.microsoft.com/library/ms186238.aspx)
 * [NASTAVTE ÚROVEŇ IZOLACE TRANSAKCE](https://msdn.microsoft.com/library/ms173763.aspx)
 * [SADA XACT_ABORT](https://msdn.microsoft.com/library/ms188792.aspx)
 
 ## <a name="next-steps"></a>Další postup
-Další informace najdete v části [příkazů T-SQL v Azure SQL Data Warehouse](sql-data-warehouse-reference-tsql-statements.md), a [systémová zobrazení v Azure SQL Data Warehouse](sql-data-warehouse-reference-tsql-system-views.md).
+Další informace najdete v části [příkazy jazyka T-SQL ve službě Azure SQL Data Warehouse](sql-data-warehouse-reference-tsql-statements.md), a [systémová zobrazení ve službě Azure SQL Data Warehouse](sql-data-warehouse-reference-tsql-system-views.md).
 

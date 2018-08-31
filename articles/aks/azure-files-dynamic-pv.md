@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: iainfou
-ms.openlocfilehash: ea77244d4b2e078c5eda716e94a97291350228f5
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: dfc9171f54effe3da7a0f13695ab233d561357d4
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42054835"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43285681"
 ---
 # <a name="persistent-volumes-with-azure-files"></a>Trvalé svazků se soubory Azure
 
@@ -73,7 +73,7 @@ kubectl apply -f azure-file-sc.yaml
 
 AKS clustery pomocí Kubernetes řízení přístupu na základě rolí (RBAC) k omezení akcí, které lze provést. *Role* definovat oprávnění udělit, a *vazby* platí pro požadovaného uživatele. Tato přiřazení můžete použít k daném oboru názvů nebo přes celý cluster. Další informace najdete v tématu [pomocí RBAC se podařilo Autorizovat][kubernetes-rbac].
 
-Povolit platformu Azure k vytvoření prostředků úložiště, vytvořte *clusterrole* a *clusterrolebinding*. Vytvořte soubor s názvem `azure-pvc-roles.yaml` a zkopírujte do následující kód YAML:
+Povolit platformu Azure k vytvoření prostředků úložiště, vytvořte *ClusterRole* a *ClusterRoleBinding*. Vytvořte soubor s názvem `azure-pvc-roles.yaml` a zkopírujte do následující kód YAML:
 
 ```yaml
 ---

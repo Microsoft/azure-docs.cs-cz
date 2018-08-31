@@ -3,19 +3,19 @@ title: Obnovení služby Azure SQL Data Warehouse (PowerShell) | Dokumentace Mic
 description: Úlohy prostředí PowerShell pro obnovení Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: kevinvngo
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: dbf86bfc82706586dfb438b167d13b32b6a4b968
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: fde06a9c7c0f0b225840c3b5a49d00fbfbcf33d9
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42057476"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43306262"
 ---
 # <a name="restore-an-azure-sql-data-warehouse-powershell"></a>Obnovení služby Azure SQL Data Warehouse (PowerShell)
 > [!div class="op_single_selector"]

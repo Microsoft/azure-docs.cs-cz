@@ -3,19 +3,19 @@ title: 'Kurz: Načtení dat do služby Azure SQL Data Warehouse | Microsoft Docs
 description: Kurz používá Azure Portal a SQL Server Management Studio k načtení databáze datového skladu WideWorldImportersDW z veřejného úložiště objektů blob v Azure do služby Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: ckarst
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 0b28bb07006ed58a82af80afe42fe472d4878971
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 57803d6b83b71e65064c4ec701ed5b7e7607321f
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32195358"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286929"
 ---
 # <a name="tutorial-load-data-to-azure-sql-data-warehouse"></a>Kurz: Načtení dat do služby Azure SQL Data Warehouse
 
@@ -41,7 +41,7 @@ Než začnete s tímto kurzem, stáhněte a nainstalujte nejnovější verzi apl
 
 ## <a name="log-in-to-the-azure-portal"></a>Přihlášení k portálu Azure Portal
 
-Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-blank-sql-data-warehouse"></a>Vytvoření prázdného datového skladu SQL
 
@@ -133,7 +133,7 @@ Pomocí této IP adresy se teď můžete připojit k serveru SQL a jeho datovým
 
 Na webu Azure Portal získejte plně kvalifikovaný název vašeho serveru SQL. Tento plně kvalifikovaný název použijete později při připojování k serveru.
 
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. V nabídce vlevo vyberte **SQL Database** a na stránce **Databáze SQL** klikněte na vaši databázi. 
 3. V podokně **Základy** na stránce webu Azure Portal pro vaši databázi vyhledejte a potom zkopírujte **Název serveru**. V tomto příkladu je plně kvalifikovaný název mynewserver-20171113.database.windows.net. 
 
@@ -1107,7 +1107,7 @@ Pomocí tohoto postupu podle potřeby vyčistěte prostředky.
 
 5. Pokud chcete odebrat skupinu prostředků, klikněte na **SampleRG** a pak klikněte na **Odstranit skupinu prostředků**.
 
-## <a name="next-steps"></a>Další kroky 
+## <a name="next-steps"></a>Další postup 
 V tomto kurzu jste se naučili vytvořit datový sklad a uživatele pro načítání dat. Vytvořili jste externí tabulky pro definici struktury dat uložených v Azure Storage Blob a pak jste pomocí příkazu PolyBase CREATE TABLE AS SELECT načetli data do svého datového skladu. 
 
 Provedli jste tyto akce:

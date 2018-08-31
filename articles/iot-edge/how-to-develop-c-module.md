@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 07/20/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 9fc067c46828079f7369683b5edec682747cd5c7
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 65495893d93fddd6d8e13ae80720e002ac7d8efa
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39391448"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43307484"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-c-modules-for-azure-iot-edge"></a>Použití Visual Studio Code pro vývoj a ladění modulů jazyka C pro Azure IoT Edge
 
@@ -29,7 +29,7 @@ Tento článek předpokládá, že používáte počítač nebo virtuální poč
 Vzhledem k tomu tento článek používá Visual Studio Code jako hlavní vývojový nástroj, nainstalujte VS Code. Pak přidejte potřebnými rozšířeními:
 * [Visual Studio Code](https://code.visualstudio.com/) 
 * [Rozšíření Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) 
-* [Rozšíření jazyka C/C++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools) pro Visual Studio Code.
+* [Rozšíření C/C++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools) pro Visual Studio Code.
 * [Rozšíření docker](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)
 
 Jak vytvořit modul, je třeba Dockeru k vytvoření bitové kopie modulu a container registry k uložení bitové kopie modulu:
@@ -85,7 +85,7 @@ Ve složce každého modulu existuje několik souborů Docker pro typy jiný kon
 
     ![Přidat *** .debug na název obrázku](./media/how-to-develop-c-module/image-debug.png)
 
-2. Nahraďte CreateOptions field modul Node.js v **deployment.template.json** níže obsah a uložte tento soubor: 
+2. Nahraďte CreateOptions field modulu jazyka C v **deployment.template.json** níže obsah a uložte tento soubor: 
     
     ```json
     "createOptions": "{\"HostConfig\": {\"Privileged\": true}}"
@@ -93,7 +93,7 @@ Ve složce každého modulu existuje několik souborů Docker pro typy jiný kon
 
 2. V paletu příkazů VS Code, zadejte a spusťte příkaz **hrany: řešení IoT Edge sestavení**.
 3. Vyberte `deployment.template.json` soubor pro vaše řešení z palety příkazů. 
-4. V Azure IoT Hub Device Explorer klikněte pravým tlačítkem na ID zařízení IoT Edge Potom vyberte **vytvoření nasazení pro zařízení IoT Edge**. 
+4. V Azure IoT Hub Device Explorer klikněte pravým tlačítkem na ID zařízení IoT Edge Potom vyberte **vytvoření nasazení pro jedno zařízení**. 
 5. Otevřít vaše řešení **config** složky. Vyberte `deployment.json` souboru. Zvolte **vyberte Manifest nasazení Edge**. 
 
 Zobrazí se vám nasazení s ID nasazení, v terminálu VS Code integrované se úspěšně vytvořil.
@@ -113,7 +113,7 @@ VS Code uchovává informace o konfiguraci v ladění `launch.json` soubor umís
 
 4. V zobrazení pro ladění pro VS Code zobrazí se vám proměnné na levém panelu. 
 
-Předchozí příklad ukazuje, jak ladit moduly C IoT Edge v kontejnerech. Přidá vystavené porty ve vaší CreateOptions field kontejner modulu. Po dokončení ladění modulů Node.js, doporučujeme že odebrat tyto vystavené porty pro moduly IoT Edge připravené pro produkční prostředí.
+Předchozí příklad ukazuje, jak ladit moduly C IoT Edge v kontejnerech. Přidá vystavené porty ve vaší CreateOptions field kontejner modulu. Po dokončení ladění modulů C, doporučujeme že odebrat tyto vystavené porty pro moduly IoT Edge připravené pro produkční prostředí.
 
 ## <a name="next-steps"></a>Další postup
 

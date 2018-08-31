@@ -10,49 +10,81 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.component: pim
-ms.date: 06/06/2017
+ms.date: 08/29/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: d6b2d9f43ce9bb86f4557c92887689c83beb49fa
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
-ms.translationtype: HT
+ms.openlocfilehash: 9d5fce5a80ac1f281fdbe6afe7f9a97816807ccc
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189551"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287083"
 ---
 # <a name="grant-access-to-other-administrators-to-manage-pim"></a>Udělení přístupu na jiné správce ke správě PIM
-Globální správce, který umožňuje Azure AD Privileged Identity Management (PIM) pro organizaci automaticky získat přiřazení rolí a přístupu k PIM. Nikdo jiný získá oprávnění k zápisu ve výchozím nastavení, i když, včetně další globální správce. Jiné globální správci, správci zabezpečení a čtenáři zabezpečení mají přístup jen pro čtení k Azure AD PIM. K poskytnutí přístupu k PIM, můžete přiřadit na prvního uživatele ostatním uživatelům **správce privilegovaných rolí** role.
+
+Globální správce, který umožňuje Azure AD Privileged Identity Management (PIM) pro organizaci automaticky získat přiřazení rolí a přístupu k PIM. Nikdo jiný získá oprávnění k zápisu ve výchozím nastavení, i když, včetně další globální správce. Jiné globální správci, správci zabezpečení a čtenáři zabezpečení mají přístup jen pro čtení k PIM. K udělení přístupu k PIM, můžete přiřadit na prvního uživatele ostatním uživatelům **správce privilegovaných rolí** role.
 
 > [!NOTE]
-> Správa Azure AD PIM vyžaduje Azure MFA. Protože účty Microsoft nelze zaregistrovat pro Azure MFA, nemůže uživatel, který se přihlásí pomocí účtu Microsoft k Azure AD PIM.
-> 
-> 
+> Správa PIM vyžaduje Azure MFA. Protože účty Microsoft nelze zaregistrovat pro Azure MFA, nemůže uživatel, který se přihlásí pomocí účtu Microsoft k PIM.
 
 Ujistěte se, že jsou vždy alespoň dva uživatelé v roli správce privilegovaných rolí, v případě, že jeden uživatel je uzamčen nebo se odstranil jeho účet.
 
-## <a name="give-another-user-access-to-manage-pim"></a>Jiný uživatel přístup ke správě PIM
-1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) a vyberte **Azure AD Privileged Identity Management** aplikace na řídicím panelu.
-2. Vyberte **spravovat privilegované role** > **správce privilegovaných rolí** > **přidat**.
-   
-    ![Přidat správce privilegovaných rolí – snímek obrazovky](./media/pim-how-to-give-access-to-pim/PIM_add_PRA.png)
-3. V okně Přidat spravovaných uživatelů je již kroku 1 dokončena. Vyberte krok 2, **vybraným uživatelům** a vyhledejte uživatele, které chcete přidat.
-   
-    ![Vyberte uživatele – snímek obrazovky](./media/pim-how-to-give-access-to-pim/PIM_select_users.png)
-4. Vyberte uživatele ze seznamu výsledků a klikněte na tlačítko **provádí**.
-5. Klikněte na tlačítko **OK** uložte svůj výběr. Uživatel, kterého jste vybrali se zobrazí v seznamu Správce privilegovaných rolí.
-   
-   * Pokaždé, když přiřadíte novou roli uživatele, jsou automaticky nastavené jako oprávněné aktivaci této role. Pokud chcete, aby se daly trvalé v roli, klikněte na uživatele v seznamu. Vyberte **nastavit jako trvalé** v nabídce uživatelské informace.
-6. Poslat uživateli odkaz [Začínáme se službou Azure AD Privileged Identity Management](pim-getting-started.md).
+## <a name="grant-access-to-manage-pim"></a>Udělit přístup ke správě PIM
 
-## <a name="remove-another-users-access-rights-for-managing-pim"></a>Odeberte jiné uživatelská přístupová práva pro správu PIM
-Před odebráním uživatele z role správce privilegovaných rolí, vždy ujistěte se, že bude stále být přiřazené dva uživatele.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-1. Na řídicím panelu PIM, klikněte na roli **správce privilegovaných rolí**.  Zobrazí se seznam uživatelů aktuálně v této roli.
-2. Kliknutím na uživatele v seznamu uživatelů.
-3. Klikněte na **odebrat**.  Zobrazí se potvrzovací zpráva.
-4. Klikněte na tlačítko **Ano** k odebrání uživatele z role.
+1. Otevřít **Azure AD Privileged Identity Management**.
 
-<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
+1. Klikněte na tlačítko **role adresáře Azure AD**.
+
+1. Klikněte na tlačítko **role**.
+
+    ![Role adresáře PIM Azure AD - role](./media/pim-how-to-give-access-to-pim/pim-directory-roles-roles.png)
+
+1. Klikněte na tlačítko **správce privilegovaných rolí** role a otevřete stránku členy.
+
+    ![Správce privilegovaných rolí – členy](./media/pim-how-to-give-access-to-pim/pim-pra-members.png)
+
+1. Klikněte na tlačítko **přidat člena** a otevřete tak podokno Přidat spravované členy.
+
+1. Klikněte na tlačítko **výběr členů** a otevřete tak podokno výběr členů.
+
+    ![Správce privilegovaných rolí – výběr členů](./media/pim-how-to-give-access-to-pim/pim-pra-select-members.png)
+
+1. Vyberte člena a potom klikněte na tlačítko **vyberte**.
+
+1. Klikněte na tlačítko **OK** provést člen nárok **správce privilegovaných rolí** role.
+
+    Při přiřazení nové role někomu v PIM, se automaticky nakonfiguruje jako **oprávněné** aktivaci této role.
+
+1. Chcete-li člen trvalé, klikněte na uživatele v seznamu členů správce privilegovaných rolí.
+
+1. Klikněte na tlačítko **Další** a potom **trvalé** na trvalé přiřazení.
+
+    ![Správce privilegovaných rolí – trvalé](./media/pim-how-to-give-access-to-pim/pim-pra-make-permanent.png)
+
+1. Poslat uživateli odkaz [začít používat PIM](pim-getting-started.md).
+
+## <a name="remove-access-to-manage-pim"></a>Odebrat přístup ke správě PIM
+
+Před odebráním uživatele z role správce privilegovaných rolí, vždy ujistěte se, že nadále bude alespoň dva uživatele přiřadit k ní.
+
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+
+1. Otevřít **Azure AD Privileged Identity Management**.
+
+1. Klikněte na tlačítko **role adresáře Azure AD**.
+
+1. Klikněte na tlačítko **role**.
+
+1. Klikněte na tlačítko **správce privilegovaných rolí** role a otevřete stránku členy.
+
+1. Přidat značku zaškrtnutí vedle uživatele, kterou chcete odebrat a pak klikněte na tlačítko **člena odebrat**.
+
+    ![Správce privilegovaných rolí - odebrat člena](./media/pim-how-to-give-access-to-pim/pim-pra-remove-member.png)
+
+1. Ve zprávě, která se zobrazí dotaz, pokud chcete odebrání člena z role, klikněte na tlačítko **Ano**.
+
 ## <a name="next-steps"></a>Další postup
 
-- [Povolení správy předplatného ve vašem tenantovi](pim-resource-roles-enable-subscription-management.md)
+- [Začněte používat PIM](pim-getting-started.md)

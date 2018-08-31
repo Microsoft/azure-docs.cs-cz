@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: e53f1e62b9265d2eec2f49537cc05c865e1436f3
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 3170ee1b48aa332a8730ba835396761ca5ef44c7
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37902958"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287321"
 ---
 # <a name="working-with-the-change-feed-support-in-azure-cosmos-db"></a>Práce s změnu podpora kanálu ve službě Azure Cosmos DB
 
@@ -31,12 +31,6 @@ ms.locfileid: "37902958"
 
 > [!NOTE]
 > Podpora kanálu změn se poskytuje pro všechny datové modely a kontejnerů ve službě Azure Cosmos DB. Kanál změn, ale je pro čtení pomocí nástroje SQL client a položky serializuje do formátu JSON. Z důvodu formátování JSON MongoDB klientů bude docházet k neshodě mezi dokumenty ve formátu BSON a JSON ve formátu kanálu změn.
-
-V následujícím videu Azure Cosmos DB programový manažer Andrew Liu ukazuje, jak kanálu změn databáze Azure Cosmos DB funguje.
-
-> [!VIDEO https://www.youtube.com/embed/mFnxoxeXlaU]
->
->
 
 ## <a name="how-does-change-feed-work"></a>Jak změnit informační kanál k práci?
 
@@ -510,7 +504,7 @@ Knihovna Java ke čtení kanálu změn je k dispozici v [úložiště Github](ht
 
 Formát _etag je interní a by neměl jsou na ní závislé (ne analyzuje) vzhledem k tomu, že můžete kdykoli změnit.
 _ts je vytvoření nebo úprava časové razítko. Můžete použít _ts chronologickém porovnání.
-je _lsn je id dávky, která se přidá pouze pro kanál změn, představuje id transakce z úložiště... Stejné _lsn může mít mnoho dokumenty.
+id dávky, která se přidá pouze pro kanál změn je _lsn, představuje id transakce z úložiště... Stejné _lsn může mít mnoho dokumenty.
 Ještě jedna věc si uvědomit, značku ETag na FeedResponse se liší od _etag, který se zobrazí v dokumentu. _etag je interní identifikátor a používá se souběžností, obsahuje informace o verzi dokumentu a značka ETag pro pořadí úloh informačního kanálu.
 
 ### <a name="does-reading-change-feed-add-any-additional-cost-"></a>Nepřidává žádné další poplatky čtení kanálu změn?

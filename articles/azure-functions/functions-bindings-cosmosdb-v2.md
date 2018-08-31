@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: 3fc00400590582d21590aadc9741cf0eaf048240
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 919ccdc1a3623a0bb52dbf287b7868fc1929d16e
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047210"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43288315"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x-preview"></a>Vazby Azure Cosmos DB pro službu Azure Functions 2.x (Preview)
 
@@ -1078,7 +1078,7 @@ Tady je *function.json* souboru:
       "direction": "out"
     },
     {
-      "type": "documentDB",
+      "type": "cosmosDB",
       "name": "toDoItem",
       "databaseName": "ToDoItems",
       "collectionName": "Items",

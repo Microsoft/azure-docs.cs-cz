@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/27/2018
 ms.author: barclayn
-ms.openlocfilehash: 9466f4178047a4927684a1fcfd80f661ea4aa7a5
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 523746153aa39f50d5c54c97a4f74352de04c27f
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43127698"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43288034"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Postup generování a přenos chráněných pomocí HSM klíčů pro Azure Key Vault
 
@@ -491,7 +491,7 @@ Pomocí USB Flash disku nebo jiného přenosného úložiště zkopírujte výst
 
 ## <a name="step-5-transfer-your-key-to-azure-key-vault"></a>Krok 5: Přenos klíče do služby Azure Key Vault
 
-Pro tento závěrečný krok na pracovní stanici připojené k Internetu, použijte [Add-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/add-azurermkeyvaultkey) rutinu k odeslání balíčku pro přenos klíče, který jste zkopírovali z odpojené pracovní stanice do modulu hardwarového zabezpečení Azure Key Vault:
+Pro tento závěrečný krok na pracovní stanici připojené k Internetu, použijte [Add-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/add-add-azurekeyvaultkey) rutinu k odeslání balíčku pro přenos klíče, který jste zkopírovali z odpojené pracovní stanice do modulu hardwarového zabezpečení Azure Key Vault:
 
    ```powershell
         Add-AzureKeyVaultKey -VaultName 'ContosoKeyVaultHSM' -Name 'ContosoFirstHSMkey' -KeyFilePath 'c:\KeyTransferPackage-ContosoFirstHSMkey.byok' -Destination 'HSM'

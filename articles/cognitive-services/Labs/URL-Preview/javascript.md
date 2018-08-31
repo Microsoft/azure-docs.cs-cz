@@ -1,6 +1,6 @@
 ---
-title: Rychlý start JavaScript pro náhled adresy URL projektu - kognitivní služby Microsoft | Microsoft Docs
-description: Ukázka skriptu rychle začít pomocí rozhraní API služby Bing adresu URL náhledu v kognitivní služby společnosti Microsoft na platformě Azure.
+title: Rychlý start jazyka JavaScript pro náhled adresy URL projektu – Microsoft Cognitive Services | Dokumentace Microsoftu
+description: Ukázkový skript rychle začít pomocí rozhraní API Bingu pro náhled adresy URL ve službě Microsoft Cognitive Services v Azure.
 services: cognitive-services
 author: mikedodaro
 ms.service: cognitive-services
@@ -8,27 +8,27 @@ ms.technology: project-url-preview
 ms.topic: article
 ms.date: 03/16/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 9041a88a292fb2dabead69195ebc3074e2ecf486
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: dda6f7c105dfbadc3c22f0c008aa8759fe12fa03
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343245"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301348"
 ---
 # <a name="url-preview-in-javascript"></a>Náhled adresy URL v jazyce JavaScript 
 
-Následující jednostránkové aplikace používá JavaScript pro vytvoření náhledu adresu URL pro web SwiftKey: https://swiftkey.com/en. 
+Následující jednostránková aplikace používá JavaScript vytvořit náhled adresy URL pro web SwiftKey: https://swiftkey.com/en. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Získat přístupový klíč pro bezplatné zkušební verze [kognitivní Labs služby](https://aka.ms/answersearchsubscription)
+Získání přístupového klíče pro bezplatnou zkušební verzi [Cognitive Services Labs](https://labs.cognitive.microsoft.com/en-us/project-url-preview)
 
 ## <a name="code-scenario"></a>Scénář kódu
-Následující příklad javascript obsahuje objekt vstupní textové pole, kde uživatel zadá adresu URL pro náhled.  Když uživatel klikne **Preview** tlačítko onclick metoda směrování k `getPreview` kde kód generuje webový požadavek na **UrlPreview** koncový bod.
+Následující příklad jazyka javascript obsahuje textové pole vstupního objektu, ve kterém uživatel zadá adresu URL ve verzi preview.  Pokud uživatel klikne **ve verzi Preview** trasy metoda onclick na tlačítko `getPreview` kde kód generuje webovou žádost k **UrlPreview** koncový bod.
 
-Kód vytvoří *XMLHttpRequest*, přidá *Ocp-Apim-Subscription-Key* záhlaví a klíč a odešle žádost.  Přidá asynchronní obslužnou rutinu pro zpracování odpovědi.
+Kód vytvoří *XMLHttpRequest*, přidá *Ocp-Apim-Subscription-Key* záhlaví a klíč a odešle žádost.  Přidá obslužnou rutinu události pro asynchronní zpracování odpovědi.
 
-Pokud odpověď se vrátí úspěšně, obslužná rutina přiřadí text JSON odpovědi na `demo` odstavce na stránce. Další prvky odpovědi jsou nastaveny v následujících odstavcích pro zobrazení.
+Pokud odpověď vrátí úspěšně, obslužná rutina přiřadí text JSON odpovědi `demo` odstavce na stránce. Další prvky odpovědi jsou nastaveny na následujících odstavcích pro zobrazení.
 
 **Nezpracovaná odpověď JSON**
 
@@ -46,19 +46,19 @@ Pokud odpověď se vrátí úspěšně, obslužná rutina přiřadí text JSON o
 
 ````
 
-**Spuštěné demo**
+**Spuštění ukázky**
 
-![Příklad JavaScript Url Preview](./media/java-script-demo.png)
+![Náhled adresy Url JavaScript příklad](./media/java-script-demo.png)
 
 ## <a name="running-the-application"></a>Spouštění aplikace.
 
 Ke spuštění aplikace:
 
-1. Nahraďte `YOUR-SUBSCRIPTION-KEY` hodnotu s platnou přístupový klíč pro vaše předplatné.
+1. Nahraďte `YOUR-SUBSCRIPTION-KEY` hodnotu s platný přístupový klíč pro vaše předplatné.
 2. Uložte do souboru s příponou .html HTML a skript.
 3. Spusťte webovou stránku v prohlížeči.
-4. Použít existující adresu URL nebo do textového pole zadejte jiné.
-5. Klikněte **Preview** tlačítko.
+4. Použijte stávající adresy URL nebo zadejte jiný do textového pole.
+5. Klikněte na tlačítko **ve verzi Preview** tlačítko.
 
 **Zdrojový kód:**
 
@@ -128,6 +128,6 @@ Ke spuštění aplikace:
 
 ## <a name="next-steps"></a>Další postup
 - [Rychlý start C#](csharp.md)
-- [Rychlý start Java](java-quickstart.md)
-- [Rychlé spuštění uzlu](node-quickstart.md)
-- [Rychlý start Python](python-quickstart.md)
+- [Rychlý start pro Javu](java-quickstart.md)
+- [Rychlý start uzlu](node-quickstart.md)
+- [Rychlý start Pythonu](python-quickstart.md)

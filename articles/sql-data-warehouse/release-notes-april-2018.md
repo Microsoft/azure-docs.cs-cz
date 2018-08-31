@@ -3,19 +3,19 @@ title: Azure SQL Data Warehouse zpráva k vydání verze. dubna 2018 | Dokumenta
 description: Zpráva k vydání verze pro Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: twounder
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
 ms.date: 07/23/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: aabda90deb9634ef456f1006bccb69375f63fc97
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: f1a3b99d40435bf2b7e33f81a43372f304fbb856
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39323989"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286999"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-april-2018"></a>Co je nového ve službě Azure SQL Data Warehouse? Duben 2018
 Azure SQL Data Warehouse neustále obdrží vylepšení. Tento článek popisuje nové funkce a změny, které byly zavedeny v dubnu 2018.

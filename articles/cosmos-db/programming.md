@@ -10,24 +10,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: andrl
-ms.openlocfilehash: 6296eb423f24762ed32a21ef40852dc1a9dd8f36
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 8377b13014e2f97518bbc779ee809aaa10d6eb45
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42056845"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287440"
 ---
 # <a name="azure-cosmos-db-server-side-programming-stored-procedures-database-triggers-and-udfs"></a>Programování na straně serveru služby Azure Cosmos DB: uložené procedury, aktivační události databáze a uživatelem definovanými funkcemi
 
 Zjistěte, jak služby Azure Cosmos DB integrovaný jazyk, transakční provádění jazyka JavaScript a umožňuje vývojářům psát **uložených procedur komponentami TableAdapter**, **triggery**, a **uživatelem definované funkce (UDF)**  nativně v [ECMAScript 2015](http://www.ecma-international.org/ecma-262/6.0/) jazyka JavaScript. Integrace JavaScriptu umožňuje psát logiku programu, který může být dodána a spustit přímo v databázi oddílů pro úložiště. 
 
-Doporučujeme začít následujícím videem, kde Andrew Liu poskytuje úvod do služby Azure Cosmos DB na straně serveru databáze programovací model. 
-
-> [!VIDEO https://www.youtube.com/embed/s0cXdHNlVI0]
->
-> 
-
-Pak se vraťte k tomuto článku, kde se dozvíte odpovědi na následující otázky:  
+V tomto článku se dozvíte odpovědi na následující otázky:  
 
 * Jak se píše uložené procedury, aktivační události nebo pomocí jazyka JavaScript UDF?
 * Jak služby Cosmos DB zajistit kyseliny?

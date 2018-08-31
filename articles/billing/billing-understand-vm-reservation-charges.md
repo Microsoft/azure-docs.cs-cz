@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
 ms.author: yashar
-ms.openlocfilehash: bce4e05cbc4ecc8a44f2929eecbeee4093d39652
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: de4a771672b45f930385c2c923b3935c65b6c045
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628354"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301642"
 ---
 # <a name="understand-how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>Vysvětlení použití slevy na rezervaci Azure pro virtuální počítače
 
@@ -47,7 +47,7 @@ Následující tabulka ukazuje náklady na virtuální počítač po nákupu rez
 3. Pro hodinu 2 a 3 hodiny obě instance spustila za 1 hodinu. Jedna instance se bude vztahovat rezervaci a druhý se účtují sazbami průběžných plateb.
 4. 4 hodiny je spuštěna instance 1 0,5 hodiny a spuštění instance 2 za 1 hodinu. Instance 1 je plně pokryta rezervace a které pokrývá 0,5 hodiny instance 2. Kurz s průběžnými platbami vám budeme účtovat zbývající 0,5 hodiny.
 
-K pochopení a zobrazení aplikace Azure rezervace na fakturaci využití sestav, naleznete v tématu [porozumět používání rezervace](https://go.microsoft.com/fwlink/?linkid=862757).
+K pochopení a zobrazení aplikace vaše rezervace Azure na fakturaci využití sestav, naleznete v tématu [porozumět používání rezervace](https://go.microsoft.com/fwlink/?linkid=862757).
 
 ## <a name="application-of-reservation-discount-to-windows-vms"></a>Aplikace sleva za rezervaci k virtuálním počítačům s Windows
 
@@ -55,12 +55,12 @@ Pokud máte spuštěnou instancí virtuálních počítačů Windows, se má rez
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o rezervacích, naleznete v následujících článcích:
+Další informace o rezervacích Azure, najdete v následujících článcích:
 
 - [Co jsou Azure rezervace?](billing-save-compute-costs-reservations.md)
 - [Předplatit si virtuální počítače se službou Azure Reserved VM Instances](../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [Předem za výpočetní prostředky, SQL Database s Azure SQL Database vyhrazené kapacity](../sql-database/sql-database-reserved-capacity.md)
-- [Správa Azure rezervace](billing-manage-reserved-vm-instance.md)
+- [Správa rezervací Azure](billing-manage-reserved-vm-instance.md)
 - [Vysvětlení využití rezervace pro vaše předplatné s průběžnými platbami](billing-understand-reserved-instance-usage.md)
 - [Vysvětlení využití rezervaci u prováděcí smlouvy Enterprise](billing-understand-reserved-instance-usage-ea.md)
 - [Vysvětlení využití rezervace pro předplatná CSP](https://docs.microsoft.com/partner-center/azure-reservations)

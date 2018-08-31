@@ -11,21 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: govindk
-ms.openlocfilehash: 3c5629dc1ad87456583f5a713f16e696bc9b7b1e
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: e4bc8af7533b3d18f9e04f431d6c9f97e0982ae5
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37858659"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286665"
 ---
 # <a name="monitoring-and-debugging-with-metrics-in-azure-cosmos-db"></a>Monitorování a ladění s využitím metrik ve službě Azure Cosmos DB
 
 Azure Cosmos DB poskytuje metriky pro výkon, úložiště, konzistencí, dostupností a latencí. [Webu Azure portal](https://portal.azure.com) poskytuje souhrnný náhled na tyto metriky; pro podrobnější metriky, jak Klientská sada SDK a [diagnostické protokoly](./logging.md) jsou k dispozici.
-
-Získejte přehled o nové metriky a další najít aktivních oddílů v databázi, podívejte se na následující video Azure Friday:
-
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Azure-Cosmos-DB-Get-the-Most-Out-of-Provisioned-Throughput/player]
-> 
 
 Tento článek vás provede běžné případy použití a použití metrik služby Azure Cosmos DB k analýze a ladění těchto problémů. Metriky shromažďovaných každých pět minut a se uchovávají po dobu sedmi dní.
 

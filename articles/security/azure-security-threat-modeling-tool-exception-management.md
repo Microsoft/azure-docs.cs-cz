@@ -1,32 +1,32 @@
 ---
-title: Výjimka Management - nástroj Microsoft Threat modelování – Azure | Microsoft Docs
-description: způsoby zmírnění hrozeb, které jsou zveřejněné v nástroji pro modelování hrozeb
+title: Výjimka Management – nástroj pro modelování hrozeb Microsoftu – Azure | Dokumentace Microsoftu
+description: zmírnění rizik pro hrozby v nástroj pro modelování hrozeb
 services: security
 documentationcenter: na
-author: RodSan
-manager: RodSan
-editor: RodSan
+author: jegeib
+manager: jegeib
+editor: jegeib
 ms.assetid: na
 ms.service: security
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2017
-ms.author: rodsan
-ms.openlocfilehash: 3fae9390b41d12361b820e2c37601283b37bc302
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.date: 02/07/2017
+ms.author: jegeib
+ms.openlocfilehash: ce748be7f11d440e656e4af5cdd3cee3bbc9e313
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37031708"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43302145"
 ---
-# <a name="security-frame-exception-management--mitigations"></a>Zabezpečení rámce: Správa výjimek | Způsoby zmírnění rizik 
-| Produktům a službám | Článek |
+# <a name="security-frame-exception-management--mitigations"></a>Zabezpečení Frame: Správa výjimek | Zmírnění rizik 
+| Produkt nebo službu | Článek |
 | --------------- | ------- |
 | **WCF** | <ul><li>[WCF – nezahrnujte serviceDebug uzlu v konfiguračním souboru](#servicedebug)</li><li>[WCF – nezahrnujte serviceMetadata uzlu v konfiguračním souboru](#servicemetadata)</li></ul> |
-| **Webové rozhraní API** | <ul><li>[Zajistit, že je v rozhraní ASP.NET Web API správné zpracování výjimek ](#exception)</li></ul> |
-| **Webové aplikace** | <ul><li>[Podrobné informace o zabezpečení v chybových zprávách, neuvádějí ](#messages)</li><li>[Implementace výchozí chyba zpracování stránky ](#default)</li><li>[Nastavte metodu nasazení prodejní ve službě IIS](#deployment)</li><li>[Výjimky má bezpečně selhat.](#fail)</li></ul> |
+| **Webové rozhraní API** | <ul><li>[Ujistěte se, že se provádí zpracování správné výjimek v rozhraní ASP.NET Web API ](#exception)</li></ul> |
+| **Webové aplikace** | <ul><li>[Nezveřejňujte podrobné informace o zabezpečení v chybové zprávy ](#messages)</li><li>[Implementace zpracování stránky výchozí chyb ](#default)</li><li>[Nastavit na prodejní ve službě IIS metoda nasazení](#deployment)</li><li>[Výjimky by selhat bezpečně](#fail)</li></ul> |
 
 ## <a id="servicedebug"></a>WCF – nezahrnujte serviceDebug uzlu v konfiguračním souboru
 
@@ -34,10 +34,10 @@ ms.locfileid: "37031708"
 | ----------------------- | ------------ |
 | **Komponenta**               | WCF | 
 | **SDL fáze**               | Sestavení |  
-| **Použít technologie** | Obecné, NET Framework 3 |
+| **Použitelných technologiích** | Obecná rozhraní NET Framework 3 |
 | **Atributy**              | neuvedeno  |
 | **Odkazy**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [obohacení království](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_debug_information) |
-| **Kroky** | Ke zveřejnění informace o ladění lze nakonfigurovat komunikaci Framework služby Windows (WCF). Ladění informace nesmí použít v produkčním prostředí. `<serviceDebug>` Značky definuje, zda je povolena funkce informace o ladění služby WCF. Pokud třídu includeExceptionDetailInFaults atributu je nastavena na hodnotu true, informace o výjimce z aplikace, bude vrácen klientům. Útočníci můžou využít další informace, které získají z ladění výstupu připojit útoků, které cílí na rozhraní, databázi nebo jiným prostředkům, které používá aplikace. |
+| **Kroky** | Služby Windows Communication Framework (WCF) můžete nakonfigurovat ke zveřejnění informací o ladění. Ladit informace neměli používat v produkčním prostředí. `<serviceDebug>` Značky definuje, zda je povoleno funkce informace ladění služby WCF. Pokud includeExceptionDetailInFaults atributu je nastavena na hodnotu true, informace o výjimce z aplikace se vrátí do klientů. Útočníci mohou využívat další informace, které získávají z k útokům cílené na rozhraní framework, databáze nebo další prostředky, které aplikace používá výstup ladění. |
 
 ### <a name="example"></a>Příklad:
 Zahrnuje následující konfigurační soubor `<serviceDebug>` značky: 
@@ -50,7 +50,7 @@ Zahrnuje následující konfigurační soubor `<serviceDebug>` značky:
 <serviceDebug includeExceptionDetailInFaults=""True"" httpHelpPageEnabled=""True""/> 
 ... 
 ```
-Zakažte ladicí informace ve službě. Toho lze dosáhnout odebráním `<serviceDebug>` značky z konfiguračního souboru aplikace. 
+Zakážete informace o ladění ve službě. Toho můžete docílit tak, že odeberete `<serviceDebug>` značky z konfiguračního souboru aplikace. 
 
 ## <a id="servicemetadata"></a>WCF – nezahrnujte serviceMetadata uzlu v konfiguračním souboru
 
@@ -58,24 +58,24 @@ Zakažte ladicí informace ve službě. Toho lze dosáhnout odebráním `<servic
 | ----------------------- | ------------ |
 | **Komponenta**               | WCF | 
 | **SDL fáze**               | Sestavení |  
-| **Použít technologie** | Obecné |
-| **Atributy**              | Obecné, NET Framework 3 |
+| **Použitelných technologiích** | Obecné |
+| **Atributy**              | Obecná rozhraní NET Framework 3 |
 | **Odkazy**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [obohacení království](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_service_enumeration) |
-| **Kroky** | Útočníkům cenné přehled o tom, jak mohou využívat služby můžete poskytnout veřejně odhalení informací o služby. `<serviceMetadata>` Značky povolí funkci publikování metadat. Metadata služby můžou obsahovat citlivé informace, které by neměl být veřejně přístupná. Minimálně povolíte jenom důvěryhodným uživatelům přístup k metadatům a ujistěte se, že nebude vystavena, víc informací. Ještě lepší zcela zakážete možnost publikování metadat. Nebude obsahovat bezpečné konfigurace WCF `<serviceMetadata>` značky. |
+| **Kroky** | Útočníkům cenné přehled o tom, jak mohou využívat služby můžete poskytnout veřejně odhalení informací o službě. `<serviceMetadata>` Značky povolí funkci publikování metadat. Metadata služby může obsahovat citlivé informace, které by neměly být veřejně přístupná. Minimálně Povolit jenom důvěryhodným uživatelům přístup k metadatům a ujistěte se, že se nevystaví nepotřebné informace. Ještě lepší zcela zakážete publikování metadat. Nesmí obsahovat bezpečné konfigurace WCF `<serviceMetadata>` značky. |
 
-## <a id="exception"></a>Zajistit, že je v rozhraní ASP.NET Web API správné zpracování výjimek
+## <a id="exception"></a>Ujistěte se, že se provádí zpracování správné výjimek v rozhraní ASP.NET Web API
 
 | Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Web API | 
 | **SDL fáze**               | Sestavení |  
-| **Použít technologie** | MVC 5, MVC 6 |
+| **Použitelných technologiích** | MVC 5, MVC 6 |
 | **Atributy**              | neuvedeno  |
-| **Odkazy**              | [Zpracování výjimek v rozhraní ASP.NET Web API](http://www.asp.net/web-api/overview/error-handling/exception-handling), [modelu ověřování v rozhraní ASP.NET Web API](http://www.asp.net/web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api) |
-| **Kroky** | Ve výchozím nastavení jsou nejvíce nezachycená výjimek v rozhraní ASP.NET Web API přeložit na odpovědi HTTP se stavovým kódem `500, Internal Server Error`|
+| **Odkazy**              | [Zpracování výjimek v rozhraní ASP.NET Web API](http://www.asp.net/web-api/overview/error-handling/exception-handling), [Model ověřování v rozhraní ASP.NET Web API](http://www.asp.net/web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api) |
+| **Kroky** | Ve výchozím nastavení většina nezachycených výjimek v rozhraní ASP.NET Web API jsou přeloženy do odpovědi HTTP se stavovým kódem `500, Internal Server Error`|
 
 ### <a name="example"></a>Příklad:
-K řízení vrátil rozhraní API, kód stavu `HttpResponseException` je možné, jak je uvedeno níže: 
+K řízení vrácená rozhraním API, kód stavu `HttpResponseException` je možné, jak je znázorněno níže: 
 ```csharp
 public Product GetProduct(int id)
 {
@@ -89,7 +89,7 @@ public Product GetProduct(int id)
 ```
 
 ### <a name="example"></a>Příklad:
-Pro další ovládací prvek v odpovědi výjimka `HttpResponseMessage` třídu lze použít, jak je uvedeno níže: 
+Pro další ovládací prvek na výjimky odpovědi `HttpResponseMessage` třídu lze použít, jak je znázorněno níže: 
 ```csharp
 public Product GetProduct(int id)
 {
@@ -106,10 +106,10 @@ public Product GetProduct(int id)
     return item;
 }
 ```
-K zachycení neošetřených výjimek, které nejsou typu `HttpResponseException`, lze použít filtry výjimek. Filtry výjimek implementovat `System.Web.Http.Filters.IExceptionFilter` rozhraní. Nejjednodušší způsob, jak zápis filtru výjimek je odvozena od `System.Web.Http.Filters.ExceptionFilterAttribute` třídy a přepsat metodu OnException. 
+Pokud chcete zachytávat neošetřené výjimky, které nejsou typu `HttpResponseException`, lze použít filtry výjimek. Filtry výjimek implementovat `System.Web.Http.Filters.IExceptionFilter` rozhraní. Nejjednodušší způsob, jak zápis filtru výjimek je odvozena z `System.Web.Http.Filters.ExceptionFilterAttribute` třídy a přepsat metodu OnException. 
 
 ### <a name="example"></a>Příklad:
-Tady je filtr, který převádí `NotImplementedException` výjimky do stavového kódu protokolu HTTP `501, Not Implemented`: 
+Tady je filtr, který převede `NotImplementedException` výjimky na stavový kód HTTP `501, Not Implemented`: 
 ```csharp
 namespace ProductStore.Filters
 {
@@ -133,11 +133,11 @@ namespace ProductStore.Filters
 
 Existuje několik způsobů, jak zaregistrovat filtr výjimek webového rozhraní API:
 - Akce
-- Adaptérem
-- globálně
+- Adaptér
+- Globálně
 
 ### <a name="example"></a>Příklad:
-Pokud chcete použít filtr na určité akce, přidejte filtr jako atribut na akci: 
+Použít filtr pro určité akce, přidejte filtr jako atribut na akci: 
 ```csharp
 public class ProductsController : ApiController
 {
@@ -149,7 +149,7 @@ public class ProductsController : ApiController
 }
 ```
 ### <a name="example"></a>Příklad:
-Filtr pro všechny akce, které použijete na `controller`, přidejte filtr jako atributu `controller` – třída: 
+Použijte filtr na všechny akce na `controller`, přidejte filtr jako atribut, který má `controller` třídy: 
 
 ```csharp
 [NotImplExceptionFilter]
@@ -160,14 +160,14 @@ public class ProductsController : ApiController
 ```
 
 ### <a name="example"></a>Příklad:
-Pokud chcete použít filtr globálně na všechny řadiče webového rozhraní API, přidá instanci filtr, který má `GlobalConfiguration.Configuration.Filters` kolekce. Filtry výjimek v této kolekci platí pro všechny akce kontroleru webového rozhraní API. 
+Chcete-li použít filtr globálně na všechny řadiče webové rozhraní API, přidejte instance filtru, který `GlobalConfiguration.Configuration.Filters` kolekce. Filtry výjimek v této kolekci platí pro všechny akce kontroleru webového rozhraní API. 
 ```csharp
 GlobalConfiguration.Configuration.Filters.Add(
     new ProductStore.NotImplExceptionFilterAttribute());
 ```
 
 ### <a name="example"></a>Příklad:
-Pro ověření modelu stav modelu, který lze předat CreateErrorResponse metoda, jak je uvedeno níže: 
+Pro ověření modelu stav modelu, který lze předat CreateErrorResponse způsob, jak je znázorněno níže: 
 ```csharp
 public HttpResponseMessage PostProduct(Product item)
 {
@@ -179,51 +179,51 @@ public HttpResponseMessage PostProduct(Product item)
 }
 ```
 
-Zkontrolujte na odkazy v části odkazy na další podrobnosti o výjimečných zpracování a ověření modelu v rozhraní ASP.Net Web API 
+Zkontrolujte odkazy v části odkazy na další podrobnosti o zpracování výjimek a ověření modelu v rozhraní ASP.Net Web API 
 
-## <a id="messages"></a>Podrobné informace o zabezpečení v chybových zprávách, neuvádějí
+## <a id="messages"></a>Nezveřejňujte podrobné informace o zabezpečení v chybové zprávy
 
 | Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
-| **Použít technologie** | Obecné |
+| **Použitelných technologiích** | Obecné |
 | **Atributy**              | neuvedeno  |
 | **Odkazy**              | neuvedeno  |
-| **Kroky** | <p>Obecné chybové zprávy jsou poskytovány přímo na uživatele bez včetně dat citlivé aplikaci. Příklady citlivých dat:</p><ul><li>Názvy serverů</li><li>Připojovací řetězce</li><li>Uživatelská jména</li><li>Hesla</li><li>Postupy SQL</li><li>Podrobnosti o selhání dynamické SQL</li><li>Trasování zásobníku a řádky kódu</li><li>Proměnné uložené v paměti</li><li>Umístění jednotky a složky</li><li>Body instalace aplikací</li><li>Nastavení konfigurace hostitele</li><li>Další podrobnosti o interní aplikace</li></ul><p>Zachycení všech chyb v aplikaci a poskytuje obecné chybové zprávy, jakož i povolení vlastní chyby v rámci služby IIS vám pomůže zabránili odhalení informací. Databáze systému SQL Server a .NET zpracování výjimek, mezi jiné chybě zpracování architektury, jsou obzvláště podrobné a uživatel se zlými úmysly profilace aplikace velmi užitečné. Ne přímo zobrazit obsah třídy odvozené od třídy výjimky .NET a zajistěte, abyste měli správné zpracování výjimek, aby neočekávanou výjimku není vyvolána nechtěně přímo na uživatele.</p><ul><li>Zadejte obecné chybové zprávy přímo na uživatele, který abstraktní tokeny konkrétní podrobnosti najít přímo v výjimky nebo chybové zprávě</li><li>Nezobrazovat obsah třídy výjimky .NET přímo na uživatele</li><li>Depeše všechny chybové zprávy a podle potřeby informovat uživatele na základě obecnou chybovou zprávu odeslat klientovi aplikace</li><li>Nevystavujte obsah třídy výjimek, přímo na uživatele, zejména vrácená hodnota z `.ToString()`, nebo hodnoty vlastností zpráv nebo trasování zásobníku. Bezpečně protokolu tyto informace a zobrazit více neškodné zprávu pro uživatele</li></ul>|
+| **Kroky** | <p>Obecné chybové zprávy jsou k dispozici uživateli bez zahrnutí aplikace citlivá data. Příklady citlivá data:</p><ul><li>Názvy serverů</li><li>Připojovací řetězce</li><li>Uživatelská jména</li><li>Hesla</li><li>Postupy SQL</li><li>Podrobnosti o neúspěšných dynamické SQL</li><li>Trasování zásobníku a řádky kódu</li><li>Proměnné uložené v paměti</li><li>Umístění jednotky a složky</li><li>Body instalace aplikace</li><li>Konfigurace nastavení hostitele</li><li>Další podrobnosti o interní aplikace</li></ul><p>Zachycení všech chyb v rámci aplikace a poskytuje obecné chybové zprávy a také při povolování vlastních chyb v rámci služby IIS vám pomůže zabránili odhalení informací. Databáze systému SQL Server a .NET zpracování výjimek, mimo jiné architektury, pro zpracování chyb jsou obzvláště podrobné a velmi užitečné ke uživatel se zlými úmysly profilování vaší aplikace. Ne přímo zobrazení obsahu třídu odvozenou z třídy výjimek .NET a zkontrolujte, že máte správné zpracování vyjímek tak, aby Neočekávaná výjimka není vyvolána neúmyslně přímo na uživatele.</p><ul><li>Zadejte obecné chybové zprávy přímo na uživatele, který abstraktní tokeny konkrétní podrobnosti, které jsou součástí výjimky nebo chybové zprávy</li><li>Nezobrazovat uživateli obsah výjimky třída rozhraní .NET</li><li>Zachytávat všechny chybové zprávy a v případě potřeby informovat uživatele prostřednictvím obecné chybové zprávy zasílané klientovi aplikace</li><li>Nezveřejňujte obsah třída výjimky přímo na uživatele, zejména návratovou hodnotu z `.ToString()`, nebo hodnoty vlastností zpráv nebo trasování zásobníku. Bezpečně tyto informace protokolu a zobrazit více neškodného zprávu pro uživatele</li></ul>|
 
-## <a id="default"></a>Implementace výchozí chyba zpracování stránky
+## <a id="default"></a>Implementace zpracování stránky výchozí chyb
 
 | Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
-| **Použít technologie** | Obecné |
+| **Použitelných technologiích** | Obecné |
 | **Atributy**              | neuvedeno  |
-| **Odkazy**              | [Upravit dialogové okno nastavení stránky ASP.NET chyby](https://technet.microsoft.com/library/dd569096(WS.10).aspx) |
-| **Kroky** | <p>Pokud aplikace ASP.NET nezdaří a dojde HTTP/1.x 500 Vnitřní chyba serveru nebo konfigurace funkcí (například filtrování požadavků) zabraňuje zobrazení stránky, se budou generovat chybovou zprávu. Můžou správci rozhodnout, zda aplikace by měla pro klienta, podrobných chybových zpráv klientovi nebo podrobné chybové zprávy na localhost jenom zobrazit přátelskou zprávou. <customErrors> v souboru web.config má tři režimy:</p><ul><li>**Na:** Určuje, že jsou povoleny vlastní chyby. Pokud není zadán žádný atribut defaultRedirect, uživatelé uvidí Obecná chyba. Vlastní chyby jsou zobrazeny ke vzdáleným klientům a na místního hostitele</li><li>**Vypnutí:** Určuje, že vlastní chyby jsou vypnuté. Podrobné chyby technologie ASP.NET se zobrazí ke vzdáleným klientům a místního hostitele</li><li>**RemoteOnly:** Určuje, že vlastní chyby jsou zobrazeny pouze ke vzdáleným klientům, a že ASP.NET chyby jsou zobrazeny na místního hostitele. Toto je výchozí hodnota</li></ul><p>Otevřete `web.config` souboru aplikace nebo webu a zkontrolujte, zda má značky buď `<customErrors mode="RemoteOnly" />` nebo `<customErrors mode="On" />` definované.</p>|
+| **Odkazy**              | [Upravit dialogové okno nastavení stránek ASP.NET chyba](https://technet.microsoft.com/library/dd569096(WS.10).aspx) |
+| **Kroky** | <p>Když aplikace ASP.NET se nezdaří a způsobí, že o HTTP/1.x 500 interní chybu serveru nebo konfigurace funkcí (jako je například filtrování požadavků) zabraňuje zobrazení stránky, bude vygenerována chybová zpráva. Správci mohou zvolit, jestli aplikace pro klienta, Podrobná chybová zpráva do klienta nebo podrobné chybové zprávy na místního hostitele pouze zobrazeno přátelskou zprávou. <customErrors> Značky v souboru web.config má tří režimů:</p><ul><li>**Na:** Určuje, že jsou povolené vlastní chyby. Pokud není zadán žádný atribut defaultRedirect, uživatelé uvidí Obecná chyba. Vzdálení klienti a místního hostitele, zobrazují se vlastní chyby</li><li>**Vypnuto:** Určuje, že je zakázáno vlastních chyb. Podrobné chyby technologie ASP.NET jsou uvedeny ke vzdáleným klientům a na místního hostitele</li><li>**RemoteOnly:** Určuje, že vlastní chyby jsou zobrazeny pouze vzdáleným klientům a že technologie ASP.NET chyby jsou zobrazeny na místního hostitele. Toto je výchozí hodnota</li></ul><p>Otevřít `web.config` soubor aplikace nebo webu a zkontrolujte, zda má značka buď `<customErrors mode="RemoteOnly" />` nebo `<customErrors mode="On" />` definované.</p>|
 
-## <a id="deployment"></a>Nastavte metodu nasazení prodejní ve službě IIS
+## <a id="deployment"></a>Nastavit na prodejní ve službě IIS metoda nasazení
 
 | Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Nasazení |  
-| **Použít technologie** | Obecné |
+| **Použitelných technologiích** | Obecné |
 | **Atributy**              | neuvedeno  |
-| **Odkazy**              | [nasazení – Element (schéma nastavení ASP.NET)](https://msdn.microsoft.com/library/ms228298(VS.80).aspx) |
-| **Kroky** | <p>`<deployment retail>` Přepínač je určená pro produkční servery služby IIS. Tento přepínač slouží k zajištění se spouští s nejmenšími možnými úniků informace o zabezpečení a nejlepší možný výkon zakázáním schopnost aplikace generovat výstup trasování na stránce, zakázání možnost zobrazit podrobné chybové zprávy, které aplikace koncoví uživatelé a zakázáním přepínač ladění.</p><p>Často, přepínače a možnosti, které jsou zaměřené na vývojáře, například se nezdařilo žádosti o trasování a ladění, jsou povolené během vývoje aktivní. Doporučuje se, že metoda nasazení na žádném serveru pro produkční být nastavená na prodejní. otevření souboru machine.config a ujistěte se, že `<deployment retail="true" />` zůstane nastavený na hodnotu true.</p>|
+| **Odkazy**              | [nasazení – Element (schéma nastavení technologie ASP.NET)](https://msdn.microsoft.com/library/ms228298(VS.80).aspx) |
+| **Kroky** | <p>`<deployment retail>` Přepínač je určen pro provozní servery služby IIS. Tento přepínač se používá ke spuštění s nejmenšími možnými úniků informace o zabezpečení a nejlepší možný výkon tím, že zakážete schopnost aplikace generovat výstup trasování na stránce, zakázat možnost zobrazit podrobné chybové zprávy, které aplikace koncoví uživatelé a zakázat ladění přepínače.</p><p>Častým, přepínače a možnosti, které jsou zaměřené na vývojáře, jako je nepovedlo požádat o trasování a ladění, se povolují při aktivním vývoji. Doporučuje se, že na prodejní nastavit metodu nasazení na libovolném serveru produkčního prostředí. Otevřete soubor machine.config a ujistěte se, že `<deployment retail="true" />` zůstane nastavený na hodnotu true.</p>|
 
-## <a id="fail"></a>Výjimky má bezpečně selhat.
+## <a id="fail"></a>Výjimky by selhat bezpečně
 
 | Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
-| **Použít technologie** | Obecné |
+| **Použitelných technologiích** | Obecné |
 | **Atributy**              | neuvedeno  |
-| **Odkazy**              | [Bezpečně nezdaří](https://www.owasp.org/index.php/Fail_securely) |
-| **Kroky** | Aplikace má bezpečně selhat. Libovolné metody, která vrací logickou hodnotu, podle které určité rozhoduje, měli pečlivě vytvořit bloku výjimky. Existuje mnoho logické chyby kvůli které problémy se zabezpečením nárůstu v při neuváženě zápisu bloku výjimky.|
+| **Odkazy**              | [Bezpečně selhání](https://www.owasp.org/index.php/Fail_securely) |
+| **Kroky** | Aplikace by selhat bezpečně. Jakoukoli metodu, která vrací logickou hodnotu, podle které určité se rozhodne, měli pečlivě vytvořili bloku výjimky. Existuje mnoho logických chyb kvůli které problémy se zabezpečením nárůst v při neuváženě zápisu bloku výjimky.|
 
 ### <a name="example"></a>Příklad:
 ```csharp
@@ -266,4 +266,4 @@ Zkontrolujte na odkazy v části odkazy na další podrobnosti o výjimečných 
             }
         }
 ```
-Výše metoda vždy vrátí hodnotu True, pokud dojde k výjimce. Pokud koncový uživatel poskytuje poškozená adresa URL, která respektuje prohlížeče, ale `Uri()` konstruktor není to vyvolá výjimku a napadené budete přesměrováni na adresu URL platná, ale poškozený. 
+Výše uvedené metoda vždy vrátí hodnotu True, pokud dojde k výjimce. Pokud koncový uživatel poskytne poškozenou adresu URL, který respektuje prohlížeče, ale `Uri()` nemá konstruktor, to vyvolá výjimku a napadeným budete přesměrováni na adresu URL platný, ale poškozené. 

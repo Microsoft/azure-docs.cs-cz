@@ -1,37 +1,37 @@
 ---
-title: Použití zobrazení T-SQL v Azure SQL Data Warehouse | Microsoft Docs
-description: Tipy pro používání zobrazení T-SQL v Azure SQL Data Warehouse na vývoj řešení.
+title: Pomocí zobrazení jazyka T-SQL ve službě Azure SQL Data Warehouse | Dokumentace Microsoftu
+description: Tipy pro používání zobrazení jazyka T-SQL ve službě Azure SQL Data Warehouse pro vývoj řešení.
 services: sql-data-warehouse
 author: ronortloff
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 28280a067e7008c20361e0a0041c81ba84e7f74c
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 796a549c3a01c235422667dc63b729244b1917bf
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31525991"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43306499"
 ---
-# <a name="views-in-azure-sql-data-warehouse"></a>Zobrazení v Azure SQL Data Warehouse
-Tipy pro používání zobrazení T-SQL v Azure SQL Data Warehouse na vývoj řešení. 
+# <a name="views-in-azure-sql-data-warehouse"></a>Zobrazení ve službě Azure SQL Data Warehouse
+Tipy pro používání zobrazení jazyka T-SQL ve službě Azure SQL Data Warehouse pro vývoj řešení. 
 
 ## <a name="why-use-views"></a>Proč používat zobrazení?
-Zobrazení lze mnoha různými způsoby ke zlepšení kvality vašeho řešení.  V tomto článku klade důraz několik příkladů, jak zlepšit komunikaci oddělení řešení pomocí zobrazení a také omezení, které je potřeba zvážit.
+Zobrazení lze použít různými způsoby a zlepšovat tak kvalitu vašeho řešení.  Tento článek se soustředí na několik příkladů toho, jak rozšířit vaše řešení s zobrazení, jakož i omezení, které je potřeba považovat za.
 
 > [!NOTE]
-> Syntaxe pro příkaz CREATE VIEW není popsané v tomto článku. Další informace najdete v tématu [vytvořit zobrazení](/sql/t-sql/statements/create-view-transact-sql) dokumentaci.
+> Syntaxe pro příkaz CREATE VIEW není popsané v tomto článku. Další informace najdete v tématu [příkaz CREATE VIEW](/sql/t-sql/statements/create-view-transact-sql) dokumentaci.
 > 
 > 
 
 ## <a name="architectural-abstraction"></a>Abstrakce architektury
-Běžný vzor aplikací je znovu vytvořit pomocí vytvoření tabulky AS vyberte funkce CTAS () a potom objektem přejmenování vzor, zatímco načítání dat tabulky.
+Běžným aplikačním postupem je vytvořit znovu vytvořit TABLE AS SELECT (CTAS) následované objekt přejmenování vzor při načítání dat pomocí tabulek.
 
-Následující příklad přidá nové datum záznamy do dimenze kalendářního data. Všimněte si, jak je nové tabulky, DimDate_New, nejprve vytvořit a pak přejmenovat nahradit původní verzi v tabulce.
+Následující příklad přidá nové datum záznamy do dimenze kalendářního data. Všimněte si, jak je nová tabulka DimDate_New, vytvoření a potom přejmenovat k nahrazení původní verze v tabulce.
 
 ```sql
 CREATE TABLE dbo.DimDate_New
@@ -51,19 +51,19 @@ RENAME OBJECT DimDate_New TO DimDate;
 
 ```
 
-Tento přístup může však způsobit tabulky zobrazování a ztrácejí ze zobrazení uživatele, jakož i "tabulka neexistuje" chybové zprávy. Zobrazení umožňuje uživatelům konzistentní prezentační vrstvou a přitom se základní objekty jsou přejmenovat. Tím, že poskytuje přístup k datům prostřednictvím zobrazení, uživatelé nemusí viditelnost na základní tabulky. Tato vrstva nabízí konzistentní uživatelské prostředí, zatímco zajistíte, že datový sklad Designer můžete rozvíjet datový model. Bude možné vyvíjí základní tabulky znamená, že Designer můžete použít funkce CTAS maximalizovat výkon během procesu načítání data.   
+Tento přístup však může vést k tabulkám, zobrazování a zmizení ze zobrazení uživatele, jakož i "tabulka neexistuje" chybové zprávy. Zobrazení je možné uživatelům poskytnout konzistentní prezentační vrstvy, zatímco objekty jsou přejmenovány. Poskytuje přístup k datům prostřednictvím zobrazení a uživatelé nepotřebují viditelnost na základní tabulky. Tato vrstva poskytuje konzistentní uživatelské prostředí, zatímco služba zajistí, že datový sklad Návrháři můžete rozvíjet datového modelu. Možnost vyvíjet podkladové tabulky znamená, že návrháře můžete použít CTAS pro zajištění maximálního výkonu během procesu načítání dat.   
 
 ## <a name="performance-optimization"></a>Optimalizace výkonu
-Zobrazení, můžete použít také k vynucení výkonu optimalizované spojení mezi tabulkami. Například jako součást kritérií pro spojující minimalizovat přesun dat zobrazení začlenit redundantní distribučního klíče. Další výhodou zobrazení může být vynutit spojující pomocný parametr nebo specifického dotazu. Použití zobrazení tímto způsobem zaručuje, že vždy spojení optimální způsobem vyloučení uživatelé pamatovat správné konstrukce pro jejich spojení.
+Zobrazení můžete také využít k vynucení optimalizováno pro výkon spojení mezi tabulkami. Třeba spojovací kritéria pro minimalizaci přesun dat v rámci zobrazení začlenit redundantní distribučního klíče. Další výhodou zobrazení může být k vynucení konkrétní dotaz nebo spojovacího pomocný parametr. Použití zobrazení tímto způsobem zaručuje, že optimální způsobem vyloučení uživatelé pamatovat správné konstrukce pro jejich spojení se vždy provádějí spojení.
 
 ## <a name="limitations"></a>Omezení
-Zobrazení v SQL Data Warehouse se ukládají jako obsahují pouze metadata. V důsledku toho nejsou k dispozici následující možnosti:
+Zobrazení v SQL Data Warehouse se ukládají jako pouze metadata. V důsledku toho nejsou k dispozici následující možnosti:
 
 * Neexistuje žádná vazba možnost schématu
 * Základní tabulky nelze aktualizovat prostřednictvím zobrazení
-* Zobrazení nelze vytvořit přes dočasných tabulek
-* Neexistuje žádná podpora pro ROZBALENÍ nebo NOEXPAND pomocné parametry
-* Nejsou žádná indexované zobrazení v SQL Data Warehouse
+* Zobrazení nelze vytvořit přes dočasné tabulky
+* Neexistuje žádná podpora pro ROZBALENÍ / NOEXPAND pomocné parametry
+* Nejsou žádné indexované zobrazení ve službě SQL Data Warehouse
 
 ## <a name="next-steps"></a>Další postup
 Další tipy pro vývoj najdete v části [Přehled vývoje SQL Data Warehouse](sql-data-warehouse-overview-develop.md).

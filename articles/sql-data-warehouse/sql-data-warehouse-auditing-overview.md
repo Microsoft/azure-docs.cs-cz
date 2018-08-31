@@ -3,19 +3,19 @@ title: Auditování ve službě Azure SQL Data Warehouse | Dokumentace Microsoft
 description: Další informace o auditování a jak nastavit auditování ve službě Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: kavithaj
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
 ms.date: 04/11/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 3630d4d694452f2c619e707d1e2e58f1bfe71c0e
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: c894fed56393e1504f54999e57bba6f9ffed27a7
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37858948"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43288250"
 ---
 # <a name="auditing-in-azure-sql-data-warehouse"></a>Auditování ve službě Azure SQL Data Warehouse
 
@@ -62,7 +62,7 @@ Zásady auditu serveru platí pro **všechny stávající a nově vytvořené da
 
 Následující část popisuje konfigurace auditování pomocí webu Azure portal.
 
-1. Přejděte na [portál Azure](https://portal.azure.com).
+1. Přejděte na [Azure Portal](https://portal.azure.com).
 2. Přejděte **systému SQL server** , kterou chcete auditu (důležité, ujistěte se, že si prohlížíte SQL serveru, ne konkrétní databáze/datový Sklad). V **zabezpečení** nabídce vyberte možnost **auditování a detekce hrozeb**.
 
     ![Navigační podokno][6]

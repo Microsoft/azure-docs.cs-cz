@@ -1,41 +1,41 @@
 ---
-title: Azure SQL Data Warehouse – architektura MPP | Microsoft Docs
-description: Zjistěte, jak Azure SQL Data Warehouse kombinuje (MPP) massively parallel processing s Azure storage zajistit vysoký výkon a škálovatelnost.
+title: Azure SQL Data Warehouse – architektura MPP | Dokumentace Microsoftu
+description: Zjistěte, jak Azure SQL Data Warehouse kombinuje paralelního zpracování (MPP) s Azure storage k dosažení vysokého výkonu a škálovatelnosti.
 services: sql-data-warehouse
 author: ronortloff
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: design
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: e8fef156f4b78c9f7241c9eb9623e061f5a31fe7
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 34b908ef79b0a2479c420675272f7d3f3bf0ff15
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31799273"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286788"
 ---
-# <a name="azure-sql-data-warehouse---massively-parallel-processing-mpp-architecture"></a>Azure SQL Data Warehouse - masivně paralelní zpracování architektura (MPP)
-Zjistěte, jak Azure SQL Data Warehouse kombinuje (MPP) massively parallel processing s Azure storage zajistit vysoký výkon a škálovatelnost. 
+# <a name="azure-sql-data-warehouse---massively-parallel-processing-mpp-architecture"></a>Azure SQL Data Warehouse – výkonné paralelní zpracování (MPP) architektury
+Zjistěte, jak Azure SQL Data Warehouse kombinuje paralelního zpracování (MPP) s Azure storage k dosažení vysokého výkonu a škálovatelnosti. 
 
 ## <a name="mpp-architecture-components"></a>Komponenty architektury MPP
-SQL Data Warehouse využívá horizontální navýšení kapacity architektura distribuovat výpočetní zpracování dat mezi několika uzly. Jednotka škálování je abstrakcí výpočetní výkon, který se označuje jako jednotek datových skladů. SQL Data Warehouse odděluje výpočetní z úložiště, které umožňuje umožňuje škálovat výpočetní nezávisle na data ve vašem systému.
+SQL Data Warehouse využívá s horizontálním navýšením kapacity architektura distribuovat výpočetní zpracování dat napříč více uzly. Jednotka škálování je abstrakcí výpočetní výkon, který se označuje jako jednotka datového skladu. SQL Data Warehouse odděluje výpočetní ze služby storage, který umožňuje škálovat výpočetní nezávisle na data ve vašem systému.
 
 ![Architektura služby SQL Data Warehouse](media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
 
-SQL Data Warehouse používá architekturu založenou na uzlu. Aplikace připojit a vydávat příkazy T-SQL řídicí uzel, který je jediný bod položky pro datový sklad. Řídicí uzel spustí MPP modul, který optimalizuje dotazy pro paralelní zpracování a pak předá operations výpočetních uzlů k práci a současně. Výpočetní uzly ukládání dat všech uživatelů ve službě Azure Storage a spouští paralelní dotazy. Služba přesun dat (DMS) je služba interní úrovni systému, která přesouvá data mezi uzly podle potřeby spouštět dotazy paralelně a vrátíte se přesné výsledky. 
+SQL Data Warehouse používá architekturu založenou na uzlu. Aplikace připojit a vydávat příkazy T-SQL, řídicí uzel, který je jediný bod vstupu pro datový sklad. Řídicí uzel spustí MPP modul, který optimalizuje dotazy pro paralelní zpracování a operace předá výpočetní uzly, aby mohly pracovat paralelně. Výpočetní uzly ukládání dat všech uživatelů ve službě Azure Storage a spouštění paralelních dotazů. Služba pohyb dat (DMS) je interní služby na úrovni systému, který přesouvá data mezi uzly podle potřeby ke spouštění dotazů paralelně a vrátit přesné výsledky. 
 
 Díky oddělenému úložišti a výpočetním prostředkům může SQL Data Warehouse:
 
-* Velikost nezávisle výpočetního výkonu bez ohledu na požadavky na ukládání.
+* Velikost nezávisle na sobě výpočetní výkon bez ohledu na vaše potřeby při ukládání.
 * Zvětšovat a zmenšovat výpočetní výkon bez přesouvání dat
-* Pozastavit výpočetní kapacitu a nechat beze změn, data, takže platíte jenom pro úložiště.
+* Pozastavit výpočetní kapacitu a ponechání dat beze změny, takže platíte jenom za úložiště.
 * Obnovit výpočetní kapacitu za provozu
 
 ### <a name="azure-storage"></a>Úložiště Azure
-SQL Data Warehouse používá úložiště Azure k zabezpečení dat uživatele.  Vzhledem k tomu, že vaše data uložena a spravuje úložiště Azure, SQL Data Warehouse samostatně poplatky za spotřeby vašeho úložiště. Samotná data je horizontálně dělené do **distribuce** za účelem optimalizace výkonu systému. Můžete zvolit, které vzor horizontálního dělení slouží k distribuci dat, když definujete v tabulce. SQL Data Warehouse podporuje tyto vzory horizontálního dělení:
+SQL Data Warehouse využívá úložiště Azure k bezpečnost vašich dat uživatele.  Vzhledem k tomu, že se vaše data ukládají a spravovaných službou Azure storage, SQL Data Warehouse samostatně poplatky za spotřebu úložiště. Vlastní data se horizontálně dělené do **distribuce** za účelem optimalizace výkonu v systému. Můžete zvolit, které model horizontálního dělení na slouží k distribuci dat při definování tabulky. SQL Data Warehouse podporuje tyto vzory horizontálního dělení:
 
 * Hodnota hash
 * Kruhové dotazování.
@@ -43,48 +43,48 @@ SQL Data Warehouse používá úložiště Azure k zabezpečení dat uživatele.
 
 ### <a name="control-node"></a>Řídicí uzel
 
-Řídicí uzel je mozku datového skladu. Jde o prvek front-end, který komunikuje se všemi aplikacemi a připojeními. Modul MPP běží na uzlu řízení optimalizace a koordinovat paralelní dotazy. Při odesílání dotazu T-SQL do SQL Data Warehouse řídicí uzel ho transformuje na dotazy, které spouštění každý distribuční paralelně.
+Řídicí uzel je brain datového skladu. Jde o prvek front-end, který komunikuje se všemi aplikacemi a připojeními. Modul MPP běží na uzlu ovládacího prvku k optimalizaci a koordinovat paralelních dotazů. Když odešlete dotaz T-SQL do služby SQL Data Warehouse, řídicí uzel ho transformuje na dotazy, které spustily každé distribuci paralelně.
 
 ### <a name="compute-nodes"></a>Výpočetní uzly
 
-Výpočetní uzly poskytují výpočetní výkon. Distribuce mapování na výpočetní uzly pro zpracování. Jako platíte víc zdrojích výpočtů, SQL Data Warehouse znovu mapuje distribuce na dostupné výpočetní uzly. Počet výpočetní uzly v rozmezí od 1 do 60 a je určen podle úrovně služby pro datový sklad.
+Výpočetní uzly poskytují výpočetní výkon. Distribuce namapovat na výpočetních uzlech pro zpracování. Protože platíte za další výpočetní prostředky, SQL Data Warehouse znovu mapuje distribucí do výpočetních uzlů k dispozici. Počet výpočetních uzlů v rozmezí od 1 do 60 a je určen podle úrovně služeb pro datový sklad.
 
-Každý výpočetní uzel má ID uzlu, který je viditelný v zobrazeních systému. Zobrazí se ID výpočetního uzlu tak, že vyhledá node_id sloupec v systémových zobrazeních, jejichž názvy začínají řetězcem sys.pdw_nodes. Seznam těchto systémových zobrazení najdete v tématu [MPP systémová zobrazení](sql-data-warehouse-reference-tsql-statements.md).
+Každý výpočetní uzel má ID uzlu, který je viditelný v zobrazeních systému. Tím, že hledají sloupci $node_id v systémových zobrazeních, jejichž názvy začínají řetězcem sys.pdw_nodes uvidíte ID výpočetního uzlu. Seznam těchto zobrazení systému najdete v tématu [MPP systémová zobrazení](sql-data-warehouse-reference-tsql-statements.md).
 
 ### <a name="data-movement-service"></a>Služba pro přesun dat
-Služby přesun dat (DMS) je technologie přenosu dat, která koordinuje přesun dat mezi výpočetní uzly. Některé dotazy vyžadují přesun dat zajistit paralelní dotazy přesné výsledky. Při přesunu dat je potřeba, DMS zajistí, že přejdete do správného umístění správná data. 
+Přesun dat Service (DMS) je technologie přenosu dat, která koordinuje přesun dat mezi jednotlivými výpočetními uzly. Některé dotazy vyžadují přesunu dat pro zajištění přesných výsledků vrátí paralelní dotazy. Při přesunu dat je potřeba, DMS zajišťuje že ta správná data načte do správného umístění. 
 
 ## <a name="distributions"></a>Distribuce
 
-Distribuce je základní jednotkou úložiště a zpracování paralelní dotazy kterých běží na distribuovaných datech. Při spuštění dotazu SQL Data Warehouse práce je rozdělena na 60 menší dotazy, které spustit souběžně. Každý dotaz na 60 menší spouští v jednom z distribuce data. Každý výpočetní uzel spravuje jeden nebo více 60 distribuce. Datový sklad s maximální výpočetní prostředky má jeden distribuční na výpočetním uzlu. Datový sklad s minimální výpočetní prostředky má všechny distribuce na jednu výpočetním uzlu.  
+Rozdělení je základní jednotkou úložiště a zpracování paralelních dotazů, ve kterých běží na distribuovaných datech. Při spuštění dotazu SQL Data Warehouse je práce rozdělena do 60 menších dotazů, které běží paralelně. Každý dotaz na 60 menší běží na jednom z distribuce data. Každý výpočetní uzel spravuje jeden nebo více 60 distribucí. Datový sklad s maximální výpočetních prostředků má k jednomu distribučnímu na výpočetním uzlu. Datový sklad s minimální výpočetních prostředků má distribuce na jeden výpočetní uzel.  
 
-## <a name="hash-distributed-tables"></a>Distribuovat algoritmu hash tabulky
-Zatřiďovací tabulku distribuované může poskytnout nejvyšší výkon dotazů pro spojování a agregaci pro velké tabulky. 
+## <a name="hash-distributed-tables"></a>Hodnoty hash distribuované tabulky
+Distribuovaná zatřiďovací tabulka dokáže poskytovat nejvyšší výkon dotazů pro spojování a agregaci pro velké tabulky. 
 
-Sdílení dat do tabulky distribuovat algoritmu hash SQL Data Warehouse používá funkce hash nepodmíněně přiřadit k jednomu distribučnímu každý řádek. V definici tabulky jednoho ze sloupců je určený jako distribuční sloupce. Funkce hash používá hodnoty ve sloupci distribuční přiřadit distribuční každý řádek.
+Sdílení dat do tabulky hash distribuované SQL Data Warehouse používá funkce hash pro každý řádek nedeterministicky přidělí k jednomu distribučnímu. V definici tabulky některý ze sloupců je určený jako sloupec distribuce. Funkce hash používá hodnoty ve sloupci distribuce přiřadit každý řádek k distribuci.
 
-Následující diagram znázorňuje, jak získá úplnou (tabulka distribuované) uložené jako tabulku distribuovat algoritmu hash. 
+Následující diagram znázorňuje, jak úplné (tabulka nedistribuovaná) se uloží jako tabulka hash distribuován. 
 
-![Tabulka distribuované](media/sql-data-warehouse-distributed-data/hash-distributed-table.png "distribuované tabulky")  
+![Distribuované tabulky](media/sql-data-warehouse-distributed-data/hash-distributed-table.png "distribuované tabulky")  
 
-* Každý řádek patří do jednoho distribučního.  
-* Algoritmus hash deterministický přiřadí do jednoho distribučního každý řádek.  
-* Počet řádků tabulky na distribuční se liší, jak je znázorněno pomocí různých velikostí tabulek.
+* Každý řádek patří k jednomu distribučnímu.  
+* Deterministické hashovací algoritmus přiřadí k jednomu distribučnímu každý řádek.  
+* Počet řádků tabulky na distribuci se liší podle různých velikostí tabulky.
 
-Existují důležité informace o výkonu pro výběr distribuční sloupce, například odlišnosti, zkosení dat a typy dotazů, které běží na systému.
+Některé aspekty výkonu pro výběr distribučního sloupce, jako je například odlišnosti Nerovnoměrná distribuce dat a typy dotazů, které běží na systému.
 
-## <a name="round-robin-distributed-tables"></a>Distribuované tabulky pomocí kruhového dotazování
-Tabulka kruhového dotazování je nejjednodušší tabulku, kterou chcete vytvořit a nabízí vysoký výkon, když se použije jako pracovní tabulky, pro zatížení.
+## <a name="round-robin-distributed-tables"></a>Kruhové dotazování distribuované tabulky
+Kruhové dotazování tabulky je nejjednodušší tabulky vytvořte a poskytuje rychlý výkon při použití jako pracovní tabulky pro načtení.
 
-Distribuované tabulku kruhového dotazování rovnoměrně distribuuje data v tabulce, ale bez jakékoli další optimalizace. Distribuce nejprve vybrán náhodně a pak vyrovnávací paměti řádků jsou přiřazeny k distribuce postupně. Je rychlý načíst data do tabulky pomocí kruhového dotazování, ale výkonu dotazu může být často lepší s tabulkami distribuovat algoritmu hash. Spojení na kruhového dotazování tabulky vyžadují promísení dat a to bude vyžadovat čas navíc.
+Distribuované tabulky kruhové dotazování rovnoměrně distribuuje data v tabulce, ale bez jakékoli další optimalizace. Rozdělení je nejprve vybrán náhodně a pak vyrovnávací paměti řádků jsou přiřazeny k rozdělení postupně. Je snadné k načtení dat do kruhové dotazování tabulky, ale výkon dotazů může být často vám dá víc tabulek provádět distribuci hodnot hash. Spojení tabulek kruhového vyžadují promísení dat, a to bude vyžadovat čas navíc.
 
 
 ## <a name="replicated-tables"></a>Replikované tabulky
-Replikované tabulky poskytuje nejrychlejší výkon dotazů pro malé tabulky.
+Replikované tabulky. poskytuje nejrychlejší výkon dotazů pro malé tabulky.
 
-Tabulka, která se replikují ukládá do mezipaměti úplnou kopii v tabulce na každém výpočetním uzlu. V důsledku toho replikace tabulku eliminuje nutnost k přenosu dat mezi výpočetní uzly před spojení nebo agregace. Replikované tabulky jsou využité nejlépe s malé tabulky. Dodatečné úložiště se vyžaduje a neexistují další režie, které je při zápisu dat, které činit velké tabulky nepraktické.  
+Tabulka, která se replikuje ukládá do mezipaměti úplnou kopii tabulky na jednotlivých výpočetních uzlech. V důsledku toho replikuje tabulku eliminuje nutnost provádět přenos dat mezi výpočetní uzly před spojení nebo agregace. Replikované tabulky jsou nejlépe využít s malé tabulky. Dodatečné úložiště je povinný a existují další režie, které se účtují při zápis dat, což mohlo způsobit nepoužitelnost velké tabulky nepraktické.  
 
-Následující diagram znázorňuje replikované tabulky. Pro SQL Data Warehouse je replikované tabulky do mezipaměti, první distribuce na každém výpočetním uzlu.  
+Následující diagram znázorňuje replikované tabulky. Pro službu SQL Data Warehouse je do mezipaměti replikované tabulky na první distribuci na jednotlivých výpočetních uzlech.  
 
 ![Replikované tabulky](media/sql-data-warehouse-distributed-data/replicated-table.png "replikované tabulky") 
 

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/17/2018
 ms.author: nberdy
-ms.openlocfilehash: 0b84d7b0e7bbd2021ea4d3e3e804c739be59b48a
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 4d55c152bdc938d943c90a3e51af37b45f6a8eb5
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186875"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301392"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Pochopení a vyvolání přímých metod ze služby IoT Hub
 IoT Hub vám umožňuje vyvolání přímých metod v zařízení z cloudu. Přímé metody představují požadavek odpověď interakce se zařízením podobný volání protokolu HTTP, úspěch nebo selhání okamžitě (po uživatelem zadaný časový). Tento přístup je užitečný pro scénáře, ve kterém se liší v závislosti na tom, jestli je zařízení schopné reagovat kurzu okamžitý zásah.
@@ -105,7 +105,7 @@ Back endové aplikace obdrží odpověď, která zahrnuje:
     Obě `status` a `body` poskytovanému zařízením a použít k reakci kód stavu zařízení vlastní a/nebo popis.
 
 ### <a name="method-invocation-for-iot-edge-modules"></a>Volání metody pro moduly IoT Edge
-Vyvolání přímých metod pomocí modulu ID je podporován v jazyce C# ve verzi preview SDK (k dispozici [tady](https://www.nuget.org/packages/Microsoft.Azure.Devices/1.16.0-preview-004)).
+Vyvolání přímých metod pomocí modulu ID je podporována v C# SDK (k dispozici [tady](https://www.nuget.org/packages/Microsoft.Azure.Devices/)).
 
 Pro tento účel použít `ServiceClient.InvokeDeviceMethodAsync()` metoda a předejte jí `deviceId` a `moduleId` jako parametry.
 

@@ -1,38 +1,38 @@
 ---
-title: Použití služby Azure Stream Analytics s SQL Data Warehouse | Microsoft Docs
-description: Tipy pro používání Azure Stream Analytics s datovým skladem SQL Azure pro vývoj řešení.
+title: Pomocí Azure Stream Analytics s využitím SQL Data Warehouse | Dokumentace Microsoftu
+description: Tipy pro používání Azure Stream Analytics s využitím Azure SQL Data Warehouse pro vývoj řešení.
 services: sql-data-warehouse
 author: kavithaj
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 76cbbddca70d3bc8091dbea383213446adac533e
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 6e9a6e9c7407939ea9e76cad569e870d578b37f9
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31600304"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43307357"
 ---
-# <a name="use-azure-stream-analytics-with-sql-data-warehouse"></a>Použití služby Azure Stream Analytics s SQL Data Warehouse
-Azure Stream Analytics je plně spravovaná služba poskytuje nízkou latencí, vysoce dostupných, škálovatelných komplexní zpracování událostí přes streamování dat v cloudu. Seznámíte se základy načtením [Úvod do služby Azure Stream Analytics][Introduction to Azure Stream Analytics]. Můžete pak zjistíte, jak vytvořit-komplexní řešení pomocí služby Stream Analytics podle [začít používat Azure Stream Analytics] [ Get started using Azure Stream Analytics] kurzu.
+# <a name="use-azure-stream-analytics-with-sql-data-warehouse"></a>Pomocí Azure Stream Analytics s využitím SQL Data Warehouse
+Azure Stream Analytics je plně spravovaná služba poskytuje nízkou latenci, vysoce dostupná a škálovatelná komplexní zpracování událostí přes streamovaných dat v cloudu. Seznámíte se základy načtením [Úvod do služby Azure Stream Analytics][Introduction to Azure Stream Analytics]. Můžete pak zjistěte, jak vytvořit-ucelené řešení Stream Analytics pomocí následujících [začít používat Azure Stream Analytics] [ Get started using Azure Stream Analytics] kurzu.
 
-V tomto článku se dozvíte, jak používat databázi Azure SQL Data Warehouse jako výstupní jímku pro datový proud Analytics úlohy.
+V tomto článku se dozvíte, jak používat databázi Azure SQL Data Warehouse jako výstupní jímku pro úlohy Stream Analytics.
 
 ## <a name="prerequisites"></a>Požadavky
-Nejprve spusťte pomocí následujících kroků v [začít používat Azure Stream Analytics] [ Get started using Azure Stream Analytics] kurzu.  
+Nejprve spusťte následující kroky v [začít používat Azure Stream Analytics] [ Get started using Azure Stream Analytics] kurzu.  
 
 1. Vytvoření centra událostí vstup
-2. Nakonfigurujte a spusťte aplikaci generátor událostí
-3. Zřídit úloha Stream Analytics
+2. Nakonfigurujte a spusťte aplikaci generátoru událostí
+3. Vytvořit úlohu Stream Analytics
 4. Zadejte vstup úlohy a dotaz
 
-Pak vytvořte databázi Azure SQL Data Warehouse
+Vytvořte databázi Azure SQL Data Warehouse
 
-## <a name="specify-job-output-azure-sql-data-warehouse-database"></a>Zadejte výstup úlohy: databáze Azure SQL Data Warehouse
+## <a name="specify-job-output-azure-sql-data-warehouse-database"></a>Zadejte výstup úlohy: databázi Azure SQL Data Warehouse
 ### <a name="step-1"></a>Krok 1
 V úloze Stream Analytics klikněte na tlačítko **výstup** z horní části stránky a pak klikněte na tlačítko **přidat výstup**.
 
@@ -46,10 +46,10 @@ Na další stránce zadejte následující hodnoty:
 
 * *Výstup Alias*: Zadejte popisný název pro tento výstup úlohy.
 * *Předplatné*:
-  * Pokud vaše databáze SQL Data Warehouse je ve stejném předplatném jako úlohu služby Stream Analytics, vyberte použít databázi SQL z aktuálního předplatného.
-  * Pokud vaše databáze je v jiném předplatném, vyberte použít SQL Database z jiné předplatné.
+  * Pokud vaši databázi SQL Data Warehouse je ve stejném předplatném jako úloha Stream Analytics, vyberte z aktuálního předplatného použijte SQL Database.
+  * Pokud vaše databáze je v jiném předplatném, vyberte použít databázi SQL z jiného předplatného.
 * *Databáze*: Zadejte název cílové databáze.
-* *Název serveru*: Zadejte název serveru pro databázi, který jste právě určili. Na portálu Azure můžete použít k vyhledání to.
+* *Název serveru*: Zadejte název serveru pro databázi, které jste zadali. Na webu Azure portal můžete použít ten zjistíte.
 
 ![][server-name]
 
@@ -60,11 +60,11 @@ Na další stránce zadejte následující hodnoty:
 ![][add-database]
 
 ### <a name="step-4"></a>Krok 4
-Klikněte na tlačítko zaškrtnutí chcete přidat tento výstup úlohy a ověřte, zda Stream Analytics můžete úspěšně připojit k databázi.
+Klikněte na tlačítko se symbolem zaškrtnutí, chcete-li přidat tento výstup úlohy a ověřte, jestli Stream Analytics můžete úspěšně připojit k databázi.
 
 ![][test-connection]
 
-Pokud je připojení k databázi úspěšná, zobrazí se oznámení v dolní části portálu. Kliknutí na tlačítko Testovat připojení v dolní části, abyste otestovali připojení k databázi.
+Při připojení k databázi úspěšný, zobrazí se oznámení v dolní části portálu. Můžete kliknout na Test připojení v dolní části a otestujte připojení k databázi.
 
 ## <a name="next-steps"></a>Další postup
 Přehled integrace najdete v tématu [Přehled integrace SQL Data Warehouse][SQL Data Warehouse integration overview].

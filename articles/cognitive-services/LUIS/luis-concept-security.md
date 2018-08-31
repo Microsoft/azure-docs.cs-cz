@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: diberry
-ms.openlocfilehash: fe0ee7d575e69c883ad7f980477e86fbd004778e
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: fddffbcabba753e9ef214f924d5ff2cee38427a5
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397239"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301689"
 ---
 # <a name="authoring-and-endpoint-user-access"></a>Vytváření a koncového bodu přístupu uživatelů
 Vytváření přístup je k dispozici pro vlastníky a spolupracovníky. Privátní aplikaci je k dispozici pro vlastníky a spolupracovníci přístup koncového bodu. Veřejné aplikace koncový bod přístup je k dispozici pro všechny uživatele, který má svůj vlastní účet služby LUIS a má ID veřejné aplikace. 
@@ -60,7 +60,7 @@ Konfigurace aplikace jako **veřejné** na **nastavení** stránky aplikace. Jak
 Uživatel, který není vlastníkem nebo spolupracovník, můžete pouze přistupovat veřejné aplikace v případě, že zadané ID aplikace. Služba LUIS nemá veřejnou _trhu_ nebo jiný způsob, jak vyhledat aplikace z veřejného app.  
 
 ## <a name="microsoft-user-accounts"></a>Uživatelské účty Microsoft
-Autoři a spolupracovníky můžete přidat klíče k LUIS na stránce publikovat. Uživatelský účet Microsoft, který vytvoří klíč LUIS na webu Azure Portal, musí vlastník aplikace nebo spolupracovníka aplikace. 
+Autoři a spolupracovníky můžete přidat klíče k LUIS na stránce publikovat. Uživatelský účet Microsoft, který vytvoří klíč LUIS na webu Azure Portal musí být vlastníkem aplikace nebo spolupracovníka aplikace. 
 
 Zobrazit [uživatel tenanta Azure Active Directory](luis-how-to-collaborate.md#azure-active-directory-tenant-user) získat další informace o uživatelských účtů Active Directory. 
 

@@ -1,30 +1,30 @@
 ---
-title: Dočasné tabulky v SQL Data Warehouse | Microsoft Docs
-description: Základní pokyny pro používání dočasných tabulek a označuje se zásadami relace úrovni dočasných tabulek.
+title: Dočasné tabulky v SQL Data Warehouse | Dokumentace Microsoftu
+description: Základní pokyny k používání dočasné tabulky a vybraná vystoupení zásady relace úrovni dočasné tabulky.
 services: sql-data-warehouse
 author: ronortloff
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: a3e06a4074bc7b5cd8612162a624718107a50656
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: f8eb401d8bc4f348be3c84390d3422571bebe444
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31518395"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43307321"
 ---
 # <a name="temporary-tables-in-sql-data-warehouse"></a>Dočasné tabulky v SQL Data Warehouse
-Tento článek obsahuje základní pokyny pro používání dočasných tabulek a zvýrazní se zásadami relace úrovni dočasných tabulek. Pomocí informací v tomto článku vám může pomoct rozčlenění kódu, vylepšení – opětovné použití a usnadnění údržby kódu na moduly.
+Tento článek obsahuje základní pokyny k používání dočasné tabulky a zvýrazní zásady relace úrovni dočasné tabulky. Pomocí informací v tomto článku vám může pomoct modularizaci vašeho kódu, vylepšení opětovné použití a snadnost údržby kódu.
 
 ## <a name="what-are-temporary-tables"></a>Jaké jsou dočasné tabulky?
-Dočasné tabulky jsou užitečné při zpracování dat – zejména při transformace, které jsou přechodné mezilehlých výsledků. V SQL Data Warehouse existovat dočasné tabulky na úrovni relace.  Jsou viditelné pro relace, ve kterém byly vytvořeny a jsou automaticky zrušeny při odhlášení této relaci.  Dočasné tabulky nabízejí výhody výkonu, protože jejich výsledky se zapisují na místní místo vzdálené úložiště.  Dočasné tabulky jsou v Azure SQL Data Warehouse poněkud liší od Azure SQL Database, jako jsou dostupné z kdekoli v této relaci, včetně uvnitř i mimo ni uložené procedury.
+Dočasné tabulky jsou užitečné při zpracování dat – zejména při transformaci, kde jsou přechodné mezilehlých výsledků. Ve službě SQL Data Warehouse dočasné tabulky existují na úrovni relace.  Jsou viditelné pouze do relace, ve kterém byly vytvořeny a jsou automaticky zrušeny při odhlášení relace.  Dočasné tabulky nabízejí zvýšení výkonu, protože jejich výsledky se zapisují na místní místo vzdálené úložiště.  Dočasné tabulky jsou ve službě Azure SQL Data Warehouse trochu liší od Azure SQL Database, jak k nim může přistupovat kdekoli uvnitř relace, včetně uvnitř i mimo uloženou proceduru.
 
-## <a name="create-a-temporary-table"></a>Vytvořit dočasnou tabulku.
-Dočasné tabulky se vytváří pomocí prefixu názvem tabulky `#`.  Příklad:
+## <a name="create-a-temporary-table"></a>Vytvořte dočasnou tabulku
+Dočasné tabulky vytvářejí prefixu názvem vaší tabulky `#`.  Příklad:
 
 ```sql
 CREATE TABLE #stats_ddl
@@ -44,7 +44,7 @@ WITH
 )
 ```
 
-Dočasné tabulky můžete také vytvořit s `CTAS` pomocí přesně stejný přístup:
+Dočasné tabulky lze vytvořit také pomocí `CTAS` pomocí přesně stejný přístup:
 
 ```sql
 CREATE TABLE #stats_ddl
@@ -98,12 +98,12 @@ FROM    t1
 ``` 
 
 > [!NOTE]
-> `CTAS` je výkonný příkazu a má výhodu, probíhá efektivní v jeho použití místa protokolu transakcí. 
+> `CTAS` příkaz pro výkonné a má výhodu současného jsou efektivní v jeho použití místo v protokolu transakcí. 
 > 
 > 
 
-## <a name="dropping-temporary-tables"></a>Vyřazení dočasných tabulek
-Když je vytvořena nová relace, musí existovat žádné dočasné tabulky.  Ale pokud jsou volání stejné uložené procedury, která vytvoří dočasný se stejným názvem, aby vaše `CREATE TABLE` příkazy jsou úspěšné kontrolu jednoduché předběžné existence s `DROP` lze použít jako v následujícím příkladu:
+## <a name="dropping-temporary-tables"></a>Rušení dočasné tabulky
+Když se vytvoří novou relaci, by měla existovat žádné dočasné tabulky.  Ale pokud voláte stejné uloženou proceduru, která vytvoří dočasnou se stejným názvem, aby vaše `CREATE TABLE` příkazy jsou úspěšné jednoduchého vyhledání před existenci s `DROP` lze použít jako v následujícím příkladu:
 
 ```sql
 IF OBJECT_ID('tempdb..#stats_ddl') IS NOT NULL
@@ -112,14 +112,14 @@ BEGIN
 END
 ```
 
-Pro kódování konzistence, je vhodné použít tento vzor pro tabulky a dočasných tabulek.  Je také vhodné použít `DROP TABLE` odebrat dočasných tabulek po dokončení s nimi ve vašem kódu.  V uložené proceduře vývoje je běžné zjistit že příkazů drop sdruženy na konci postup Ujistěte se, že jsou tyto objekty vyčistit.
+Pro kódování konzistence, je vhodné pro tento model se používá pro tabulky a dočasné tabulky.  Je také vhodné použít `DROP TABLE` odebrat dočasné tabulky po dokončení s nimi ve vašem kódu.  Při vývoji uložené procedury je běžné vidět, že příkazů drop spojeny dohromady na konci postupu zajistěte, aby že tyto objekty vyčistily.
 
 ```sql
 DROP TABLE #stats_ddl
 ```
 
 ## <a name="modularizing-code"></a>Modularizing kódu
-Vzhledem k tomu, že dočasných tabulek se zobrazí kdekoli v relaci uživatele, můžete to zneužití můžete rozčlenění moduly kódu aplikace.  Například následující uložené procedury generuje DDL a aktualizujte všechny statistiky v databázi tak, že název statistiky.
+Protože dočasné tabulky lze zobrazit kdekoli v relaci uživatele, to je někdo zneužije umožňují modularizaci kódu aplikace.  Například generuje následující uložené procedury DDL aktualizovat všechny statistiky z databáze podle názvu statistiky.
 
 ```sql
 CREATE PROCEDURE    [dbo].[prc_sqldw_update_stats]
@@ -193,7 +193,7 @@ FROM    t1
 GO
 ```
 
-V této fázi je jedinou akcí, došlo k vytvoření uložené procedury, že generatess do dočasné tabulky #stats_ddl s příkazy DDL.  Tuto uloženou proceduru zahodí #stats_ddl, pokud již existuje a zda že neselže, je-li spustit více než jednou v rámci relace.  Ale vzhledem k tomu, že neexistuje žádné `DROP TABLE` na konci uložené procedury, při dokončení uložené procedury, zůstanou vytvořené tabulky tak, aby ho mohou číst mimo uložené procedury.  V SQL Data Warehouse na rozdíl od jiných databází systému SQL Server, je možné použít dočasnou tabulku mimo procedury, která ji vytvořila.  Je možné dočasných tabulek SQL Data Warehouse **kdekoli** uvnitř relace. To může vést k další modulární a spravovat kód jako v následujícím příkladu:
+V této fázi je jedinou akcí, došlo k vytvoření uložené procedury této generatess dočasnou tabulku #stats_ddl s příkazy jazyka DDL.  Tuto uloženou proceduru #stats_ddl zahodí, pokud chcete zajistit, aby že neselže, je-li spustit více než jednou v rámci relace již existuje.  Ale protože neexistuje žádný `DROP TABLE` na konci uložené procedury, po dokončení uložené procedury, ponechá vytvořenou tabulku tak, aby je může přečíst mimo uloženou proceduru.  Ve službě SQL Data Warehouse na rozdíl od jiných databází systému SQL Server, je možné použít v dočasné tabulce mimo proces, který byl vytvořen.  SQL Data Warehouse dočasné tabulky je možné **kdekoli** uvnitř relace. To může vést k další modulární a dají se spravovat kód jako v následujícím příkladu:
 
 ```sql
 EXEC [dbo].[prc_sqldw_update_stats] @update_type = 1, @sample_pct = NULL;
@@ -214,9 +214,9 @@ END
 DROP TABLE #stats_ddl;
 ```
 
-## <a name="temporary-table-limitations"></a>Dočasné tabulky omezení
-SQL Data Warehouse zavádí několik omezení při implementaci dočasných tabulek.  V současné době pouze relace vymezená dočasných tabulek jsou podporovány.  Globální dočasné tabulky nejsou podporovány.  Kromě toho zobrazení nelze vytvořit v dočasných tabulkách.
+## <a name="temporary-table-limitations"></a>Omezení dočasné tabulky
+SQL Data Warehouse zavádí několik omezení při implementaci dočasné tabulky.  V současné době pouze relace s vymezeným oborem dočasných tabulek se podporují.  Globální dočasné tabulky nejsou podporovány.  Kromě toho nelze vytvořit zobrazení v dočasných tabulkách.
 
 ## <a name="next-steps"></a>Další postup
-Další informace o vývoji tabulky najdete v tématu [tabulky přehled](sql-data-warehouse-tables-overview.md).
+Další informace o vývoji tabulky, najdete v článku [Přehled tabulek](sql-data-warehouse-tables-overview.md).
 

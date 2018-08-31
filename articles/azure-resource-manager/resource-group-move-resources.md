@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/22/2018
+ms.date: 08/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7ddab3717626df14f491662849d01cb85658791c
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 160e2a277c82470df7d9ced2899699dae8d4ef01
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617286"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43302124"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Přesunutí prostředků do nové skupiny prostředků nebo předplatného
 
@@ -57,7 +57,7 @@ Před přesunutím prostředku je nutné provést několik důležitých kroků.
   * [Přenos vlastnictví předplatného služby Azure na jiný účet](../billing/billing-subscription-transfer.md)
   * [Přiřazení nebo přidání předplatného Azure do služby Azure Active Directory](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
-2. Služba musí umožňovat operaci přesouvání prostředků. Tento článek uvádí, které služby umožňují přesunutí prostředků a služeb, které není umožňují přesunutí prostředků.
+2. Služba musí umožňovat operaci přesouvání prostředků. Viz níže uvedené části v tomto článku [služby umožňují přesunutí prostředků](#services-that-can-be-moved) a které [není služby umožňují přesunutí prostředků](#services-that-cannot-be-moved).
 3. Cílové předplatné musí být registrováno pro poskytovatele přesouvaného prostředku. Pokud ne, zobrazí chybová zpráva oznamující, že **předplatné není zaregistrované pro typ prostředku**. K problému může dojít, pokud přesouváte prostředek do nového předplatného, ale toto předplatné nebylo pro příslušný typ prostředku nikdy použito.
 
   Pokud používáte PowerShell, použijte následující příkazy získat stav registrace:

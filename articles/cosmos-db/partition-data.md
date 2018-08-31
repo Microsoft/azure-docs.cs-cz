@@ -10,21 +10,16 @@ ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: andrl
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c9c1379cd457dcba37246985058b01e85633f968
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 3cc2794105eff196c3e1db02d664a89c9b37e318
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42058327"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286981"
 ---
 # <a name="partition-and-scale-in-azure-cosmos-db"></a>Dělení a škálování ve službě Azure Cosmos DB
 
 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) je globálně distribuovaná a vícemodelová databázová služba navržená tak, aby vám pomohou dosáhnout rychlého, předvídatelného výkonu. Spolu s vaší aplikací škáluje se bez problémů. Tento článek obsahuje přehled, jak modely dělení funguje pro všechna data ve službě Azure Cosmos DB. Také popisuje, jak nakonfigurovat službu Azure Cosmos DB kontejnerů a efektivní škálování vašich aplikací.
-
-Dělení a klíče oddílů jsou popsané v tomto videu:
-
-> [!VIDEO https://www.youtube.com/embed/SS6WrQ-HJ30]
-> 
 
 ## <a name="partitioning-in-azure-cosmos-db"></a>Dělení ve službě Azure Cosmos DB
 Azure Cosmos DB poskytuje kontejnery pro ukládání dat s názvem kolekce (pro dokumenty), grafy nebo tabulky. Kontejnery jsou logické prostředky, které můžou využívat jeden nebo více fyzických oddílů nebo serverů. Počet oddílů je určena na základě velikosti úložiště služby Azure Cosmos DB a propustnosti zřízené pro kontejner nebo sadu kontejnerů. 

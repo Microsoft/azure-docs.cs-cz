@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
 ms.author: manshuk
-ms.openlocfilehash: 5ce0103315f297996ed3f3bd88b5e53558e22e14
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 334271139b791ab60f2bc89ae695ba9bf06b7d12
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628228"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301016"
 ---
 # <a name="understand-azure-reservation-usage-for-your-enterprise-enrollment"></a>Vysvětlení využití rezervace Azure u prováděcí smlouvy Enterprise
 
@@ -81,12 +81,12 @@ Využití Azure rezervace se také zobrazí v části Souhrn využití webu Ente
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o Azure rezervace, naleznete v následujících článcích:
+Další informace o rezervacích Azure, najdete v následujících článcích:
 
 - [Co jsou Azure rezervace?](billing-save-compute-costs-reservations.md)
 - [Předplatit si virtuální počítače se službou Azure Reserved VM Instances](../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [Předem za výpočetní prostředky, SQL Database s Azure SQL Database vyhrazené kapacity](../sql-database/sql-database-reserved-capacity.md) 
-- [Správa Azure rezervace](billing-manage-reserved-vm-instance.md)
+- [Správa rezervací Azure](billing-manage-reserved-vm-instance.md)
 - [Vysvětlení, jak se sleva za rezervaci použije](billing-understand-vm-reservation-charges.md)
 - [Vysvětlení využití rezervace pro vaše předplatné s průběžnými platbami](billing-understand-reserved-instance-usage.md)
 - [Náklady na software Windows, které nejsou součástí rezervace](billing-reserved-instance-windows-software-costs.md)

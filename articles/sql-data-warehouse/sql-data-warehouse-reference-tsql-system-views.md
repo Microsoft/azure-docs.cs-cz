@@ -1,23 +1,24 @@
 ---
-title: Zobrazení systému – Azure SQL Data Warehouse | Microsoft Docs
-description: Odkazy na dokumentaci pro systémová zobrazení, které jsou podporovány v Azure SQL Data Warehouse.
+title: Zobrazení systému – Azure SQL Data Warehouse | Dokumentace Microsoftu
+description: Obsahuje odkazy na dokumentaci k zobrazení systému podporované ve službě Azure SQL Data Warehouse.
 services: sql-data-warehouse
-author: kevinvngo
-manager: craigg-msft
+author: twounder
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 04/17/2018
-ms.author: kevin
+ms.date: 06/13/2018
+ms.author: twounder
 ms.reviewer: igorstan
-ms.openlocfilehash: a0e75bc9b7cfa6827794f8d4256bddc3807f17d1
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: d76e21e37266a1b17f90fe7ce41438b9361c6e31
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43312452"
 ---
-# <a name="system-views-supported-in-azure-sql-data-warehouse"></a>Systémová zobrazení, které jsou podporovány v Azure SQL Data Warehouse
-Odkazy na dokumentaci pro příkazů T-SQL v Azure SQL Data Warehouse podporovány.
+# <a name="system-views-supported-in-azure-sql-data-warehouse"></a>Systémová zobrazení, které jsou podporované ve službě Azure SQL Data Warehouse
+Odkazy na dokumentaci pro příkazy jazyka T-SQL podporované ve službě Azure SQL Data Warehouse.
 
 ## <a name="sql-data-warehouse-catalog-views"></a>Zobrazení katalogu SQL Data Warehouse
 * [sys.pdw_column_distribution_properties](http://msdn.microsoft.com/library/mt204022.aspx)
@@ -37,7 +38,7 @@ Odkazy na dokumentaci pro příkazů T-SQL v Azure SQL Data Warehouse podporová
 * [sys.pdw_table_distribution_properties](http://msdn.microsoft.com/library/mt203896.aspx)
 * [sys.pdw_table_mappings](http://msdn.microsoft.com/library/mt203876.aspx)
 
-## <a name="sql-data-warehouse-dynamic-management-views-dmvs"></a>Zobrazení dynamické správy SQL Data Warehouse (zobrazení dynamické správy)
+## <a name="sql-data-warehouse-dynamic-management-views-dmvs"></a>Zobrazení dynamické správy SQL Data Warehouse (DMV)
 * [sys.dm_pdw_dms_cores](http://msdn.microsoft.com/library/mt203911.aspx)
 * [sys.dm_pdw_dms_external_work](https://msdn.microsoft.com/library/mt204024.aspx)
 * [sys.dm_pdw_dms_workers](http://msdn.microsoft.com/library/mt203878.aspx)
@@ -57,8 +58,8 @@ Odkazy na dokumentaci pro příkazů T-SQL v Azure SQL Data Warehouse podporová
 * [sys.dm_pdw_wait_stats](http://msdn.microsoft.com/library/mt203909.aspx)
 * [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql)
 
-## <a name="sql-server-dmvs-applicable-to-sql-data-warehouse"></a>SQL Server zobrazení dynamické správy pro datový sklad SQL
-Následující zobrazení dynamické správy se dají použít pro SQL Data Warehouse, ale je třeba spustit prostřednictvím připojení ke **hlavní** databáze.
+## <a name="sql-server-dmvs-applicable-to-sql-data-warehouse"></a>SQL Server zobrazení dynamické správy pro SQL Data Warehouse
+Následující zobrazení dynamické správy se dají použít pro SQL Data Warehouse, ale musí být provedeny propojíte **hlavní** databáze.
 
 * [sys.database_service_objectives](https://msdn.microsoft.com/library/mt712619.aspx)
 * [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx)
@@ -130,17 +131,17 @@ Následující zobrazení dynamické správy se dají použít pro SQL Data Ware
 * [sys.types](http://msdn.microsoft.com/library/ms188021.aspx)
 * [sys.views](http://msdn.microsoft.com/library/ms190334.aspx)
 
-## <a name="sql-server-dmvs-available-in-sql-data-warehouse"></a>SQL Server zobrazení dynamické správy k dispozici v SQL Data Warehouse
-SQL Data Warehouse zpřístupňuje řadu zobrazení dynamické správy SQL Server (zobrazení dynamické správy). Tato zobrazení, když je dotazován v SQL Data Warehouse se hlásí stav databáze SQL, které jsou spuštěné v distribucí.
+## <a name="sql-server-dmvs-available-in-sql-data-warehouse"></a>SQL Server zobrazení dynamické správy k dispozici ve službě SQL Data Warehouse
+SQL Data Warehouse poskytuje mnoho zobrazení dynamické správy SQL Server (DMV). Tato zobrazení, když ve službě SQL Data Warehouse se hlásí stav databáze SQL spuštěné v distribuce.
 
-SQL Data Warehouse a Analytics Platform System Parallel Data Warehouse (PDW) používat stejné zobrazení systému. Každý DMV má sloupec s názvem pdw_node_id, což je identifikátor pro výpočetním uzlu. 
+SQL Data Warehouse a systém Analytics Platform System Parallel Data Warehouse (PDW) pomocí stejného zobrazení systému. Každé zobrazení dynamické správy má sloupec s názvem pdw_node_id, což není identifikátor pro výpočetní uzly. 
 
 > [!NOTE]
-> Chcete-li použít tato zobrazení, vložte 'pdw_nodes_' do názvu, jak je znázorněno v následující tabulce:
+> Pomocí těchto zobrazení, vložte "pdw_nodes_" do názvu, jak je znázorněno v následující tabulce:
 > 
 > 
 
-| Název DMV v SQL Data Warehouse | Článek Transact-SQL služby SQL Server|
+| Název zobrazení dynamické správy ve službě SQL Data Warehouse | Článek příkazů jazyka Transact-SQL služby SQL Server|
 |:--- |:--- |
 | sys.dm_pdw_nodes_db_column_store_row_group_physical_stats | [sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql)| 
 | sys.dm_pdw_nodes_db_column_store_row_group_operational_stats | [sys.dm_db_column_store_row_group_operational_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-operational-stats-transact-sql)| 
@@ -166,7 +167,7 @@ SQL Data Warehouse a Analytics Platform System Parallel Data Warehouse (PDW) pou
 | sys.dm_pdw_nodes_os_child_instances |[sys.dm_os_child_instances](http://msdn.microsoft.com/library/ms165698.aspx) |
 | sys.dm_pdw_nodes_os_cluster_nodes |[sys.dm_os_cluster_nodes](http://msdn.microsoft.com/library/ms187341.aspx) |
 | sys.dm_pdw_nodes_os_dispatcher_pools |[sys.dm_os_dispatcher_pools](http://msdn.microsoft.com/library/bb630336.aspx) |
-| sys.dm_pdw_nodes_os_dispatchers |Dokumentace Transact-SQL není k dispozici. |
+| sys.dm_pdw_nodes_os_dispatchers |Dokumentace ke službě jazyka Transact-SQL není k dispozici. |
 | sys.dm_pdw_nodes_os_hosts |[sys.dm_os_hosts](http://msdn.microsoft.com/library/ms187800.aspx) |
 | sys.dm_pdw_nodes_os_latch_stats |[sys.dm_os_latch_stats](http://msdn.microsoft.com/library/ms175066.aspx) |
 | sys.dm_pdw_nodes_os_memory_brokers |[sys.dm_os_memory_brokers](http://msdn.microsoft.com/library/bb522548.aspx) |
@@ -175,7 +176,7 @@ SQL Data Warehouse a Analytics Platform System Parallel Data Warehouse (PDW) pou
 | sys.dm_pdw_nodes_os_memory_cache_entries |[sys.dm_os_memory_cache_entries](http://msdn.microsoft.com/library/ms189488.aspx) |
 | sys.dm_pdw_nodes_os_memory_cache_hash_tables |[sys.dm_os_memory_cache_hash_tables](http://msdn.microsoft.com/library/ms182388.aspx) |
 | sys.dm_pdw_nodes_os_memory_clerks |[sys.dm_os_memory_clerks](http://msdn.microsoft.com/library/ms175019.aspx) |
-| sys.dm_pdw_nodes_os_memory_node_access_stats |Dokumentace Transact-SQL není k dispozici. |
+| sys.dm_pdw_nodes_os_memory_node_access_stats |Dokumentace ke službě jazyka Transact-SQL není k dispozici. |
 | sys.dm_pdw_nodes_os_memory_nodes |[sys.dm_os_memory_nodes](http://msdn.microsoft.com/library/bb510622.aspx) |
 | sys.dm_pdw_nodes_os_memory_objects |[sys.dm_os_memory_objects](https://msdn.microsoft.com/library/ms179875.aspx) |
 | sys.dm_pdw_nodes_os_memory_pools |[sys.dm_os_memory_pools](http://msdn.microsoft.com/library/ms175022.aspx) |
@@ -183,7 +184,7 @@ SQL Data Warehouse a Analytics Platform System Parallel Data Warehouse (PDW) pou
 | sys.dm_pdw_nodes_os_performance_counters |[sys.dm_os_performance_counters](http://msdn.microsoft.com/library/ms187743.aspx) |
 | sys.dm_pdw_nodes_os_process_memory |[sys.dm_os_process_memory](http://msdn.microsoft.com/library/bb510747.aspx) |
 | sys.dm_pdw_nodes_os_schedulers |[sys.dm_os_schedulers](http://msdn.microsoft.com/library/ms177526.aspx) |
-| sys.dm_pdw_nodes_os_spinlock_stats |Dokumentace Transact-SQL není k dispozici. |
+| sys.dm_pdw_nodes_os_spinlock_stats |Dokumentace ke službě jazyka Transact-SQL není k dispozici. |
 | sys.dm_pdw_nodes_os_sys_info |[sys.dm_os_sys_info](http://msdn.microsoft.com/library/ms175048.aspx) |
 | sys.dm_pdw_nodes_os_sys_memory |[sys.dm_os_memory_nodes](http://msdn.microsoft.com/library/bb510622.aspx) |
 | sys.dm_pdw_nodes_os_tasks |[sys.dm_os_tasks](http://msdn.microsoft.com/library/ms174963.aspx) |
@@ -204,8 +205,8 @@ SQL Data Warehouse a Analytics Platform System Parallel Data Warehouse (PDW) pou
 | sys.dm_pdw_nodes_tran_session_transactions |[sys.dm_tran_session_transactions](http://msdn.microsoft.com/library/ms188739.aspx) |
 | sys.dm_pdw_nodes_tran_top_version_generators |[sys.dm_tran_top_version_generators](http://msdn.microsoft.com/library/ms188778.aspx) |
 
-## <a name="sql-server-2016-polybase-dmvs-available-in-sql-data-warehouse"></a>SQL Server 2016 PolyBase zobrazení dynamické správy k dispozici v SQL Data Warehouse
-Následující zobrazení dynamické správy se dají použít pro SQL Data Warehouse, ale je třeba spustit prostřednictvím připojení ke **hlavní** databáze.
+## <a name="sql-server-2016-polybase-dmvs-available-in-sql-data-warehouse"></a>SQL Server 2016 PolyBase zobrazení dynamické správy k dispozici ve službě SQL Data Warehouse
+Následující zobrazení dynamické správy se dají použít pro SQL Data Warehouse, ale musí být provedeny propojíte **hlavní** databáze.
 
 * [sys.dm_exec_compute_node_errors](http://msdn.microsoft.com/library/mt146380.aspx)
 * [sys.dm_exec_compute_node_status](http://msdn.microsoft.com/library/mt146382.aspx)
@@ -223,11 +224,11 @@ Následující zobrazení dynamické správy se dají použít pro SQL Data Ware
 * [SLOUPCE](http://msdn.microsoft.com/library/ms188348.aspx)
 * [PARAMETRY](http://msdn.microsoft.com/library/ms173796.aspx)
 * [RUTINY](https://msdn.microsoft.com/library/ms188757.aspx)
-* [SCHÉMATA](https://msdn.microsoft.com/library/ms182642.aspx)
+* [SCHÉMAT](https://msdn.microsoft.com/library/ms182642.aspx)
 * [TABULKY](http://msdn.microsoft.com/library/ms186224.aspx)
 * [VIEW_COLUMN_USAGE](https://msdn.microsoft.com/library/ms190492.aspx)
 * [VIEW_TABLE_USAGE](https://msdn.microsoft.com/library/ms173869.aspx)
 * [ZOBRAZENÍ](http://msdn.microsoft.com/library/ms181381.aspx)
 
 ## <a name="next-steps"></a>Další postup
-Další informace najdete v části [příkazů T-SQL v Azure SQL Data Warehouse](sql-data-warehouse-reference-tsql-statements.md), a [elementů jazyka T-SQL v Azure SQL Data Warehouse](sql-data-warehouse-reference-tsql-language-elements.md).
+Další informace najdete v části [příkazy jazyka T-SQL ve službě Azure SQL Data Warehouse](sql-data-warehouse-reference-tsql-statements.md), a [elementy jazyka T-SQL ve službě Azure SQL Data Warehouse](sql-data-warehouse-reference-tsql-language-elements.md).

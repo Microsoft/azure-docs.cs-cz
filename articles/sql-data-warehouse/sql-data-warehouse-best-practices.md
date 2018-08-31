@@ -3,22 +3,22 @@ title: Osvědčené postupy pro službu Azure SQL Data Warehouse | Dokumentace M
 description: Doporučení a osvědčené postupy, které byste měli znát, když budete vyvíjet řešení pro službu Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: ronortloff
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
 ms.date: 04/18/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: c39adbfbb85173f7ac3fa129e7551efab6ddefd6
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 81fd5ea082fe05c9908b2eb0689aba9a4fe4e789
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31798688"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43307128"
 ---
 # <a name="best-practices-for-azure-sql-data-warehouse"></a>Osvědčené postupy pro službu Azure SQL Data Warehouse
-Tento článek je kolekce osvědčených postupů můžete zajistit optimální výkon z Azure SQL Data Warehouse.  Některé koncepty v tomto článku jsou základní a snadno se vysvětlují, další koncepty jsou pokročilejší a v tomto článku se jich jenom lehce dotýkáme.  Účelem tohoto článku je poskytnout vám základní pokyny a zvýšit povědomí o důležitých oblastech, na které byste se měli zaměřit, když budete sestavovat svůj datový sklad.  Každá část vám představí nějaký koncept a odkáže vás na podrobnější články, které se danému konceptu věnují více do hloubky.
+Tento článek je kolekce doporučené postupy vám pomohou dosáhnout optimálního výkonu služby Azure SQL Data Warehouse.  Některé koncepty v tomto článku jsou základní a snadno se vysvětlují, další koncepty jsou pokročilejší a v tomto článku se jich jenom lehce dotýkáme.  Účelem tohoto článku je poskytnout vám základní pokyny a zvýšit povědomí o důležitých oblastech, na které byste se měli zaměřit, když budete sestavovat svůj datový sklad.  Každá část vám představí nějaký koncept a odkáže vás na podrobnější články, které se danému konceptu věnují více do hloubky.
 
 Pokud se službou Azure SQL Data Warehouse teprve začínáte, nenechte se tímto článkem zahltit.  Témata jsou uspořádaná především podle důležitosti.  Pokud se zpočátku zaměříte na prvních pár konceptů, bude vám to úplně stačit.  Až budete o službě SQL Data Warehouse vědět víc a budete si jistější, vraťte se a prozkoumejte pár dalších konceptů.  Nebude to trvat dlouho a všechno začne dávat smysl.
 
@@ -49,7 +49,7 @@ Přestože lze PolyBase (také označovanou jako externí tabulky) považovat za
 Viz také [Průvodce používáním funkce PolyBase][Guide for using PolyBase].
 
 ## <a name="hash-distribute-large-tables"></a>Distribuujte velké tabulky pomocí hodnot hash
-Ve výchozím nastavení jsou tabulky distribuované metodou kruhového dotazování.  To umožňuje uživatelům jednoduše začít vyvářet tabulky, aniž by se museli rozhodovat, jakým způsobem se mají jejich tabulky distribuovat.  Výkon tabulek kruhového dotazování může být pro některé úlohy dostatečný, ale ve většině případů bude lépe fungovat výběr distribučního sloupce.  Nejběžnějším příkladem, kdy tabulka distribuovaná podle sloupce zdaleka překoná tabulku kruhového dotazování, je spojení dvou velkých tabulek faktů.  Například pokud máte tabulku objednávek, která se distribuuje podle sloupce id_objednavky a tabulku transakcí, která se také distribuuje podle sloupce id_objednavky, a provedete spojení tabulky objednávek s tabulkou transakcí podle sloupce id_objednavky, z dotazu se stane předávací dotaz, to znamená, že eliminujeme operace přesunu dat.  Méně kroků znamená rychlejší dotaz.  Méně přesunů dat také přispívá ke zrychlení dotazů.  Toto vysvětlení pouze scratches povrchu. Při načítání distribuované tabulky se ujistěte, že příchozí data nejsou seřazená podle distribučního klíče, zpomalilo by to načítání.  Níže najdete odkazy na mnohem podrobnější informace o tom, jak výběr distribučního sloupce může zvýšit výkon, a jak nadefinovat distribuovanou tabulku v klauzuli WITH příkazu CREATE TABLES.
+Ve výchozím nastavení jsou tabulky distribuované metodou kruhového dotazování.  To umožňuje uživatelům jednoduše začít vyvářet tabulky, aniž by se museli rozhodovat, jakým způsobem se mají jejich tabulky distribuovat.  Výkon tabulek kruhového dotazování může být pro některé úlohy dostatečný, ale ve většině případů bude lépe fungovat výběr distribučního sloupce.  Nejběžnějším příkladem, kdy tabulka distribuovaná podle sloupce zdaleka překoná tabulku kruhového dotazování, je spojení dvou velkých tabulek faktů.  Například pokud máte tabulku objednávek, která se distribuuje podle sloupce id_objednavky a tabulku transakcí, která se také distribuuje podle sloupce id_objednavky, a provedete spojení tabulky objednávek s tabulkou transakcí podle sloupce id_objednavky, z dotazu se stane předávací dotaz, to znamená, že eliminujeme operace přesunu dat.  Méně kroků znamená rychlejší dotaz.  Méně přesunů dat také přispívá ke zrychlení dotazů.  Pouze ji zjednodušené toto vysvětlení. Při načítání distribuované tabulky se ujistěte, že příchozí data nejsou seřazená podle distribučního klíče, zpomalilo by to načítání.  Níže najdete odkazy na mnohem podrobnější informace o tom, jak výběr distribučního sloupce může zvýšit výkon, a jak nadefinovat distribuovanou tabulku v klauzuli WITH příkazu CREATE TABLES.
 
 Viz také [Přehled tabulek][Table overview], [Distribuce tabulky][Table distribution], [Výběr distribuce tabulky][Selecting table distribution], [CREATE TABLE][CREATE TABLE], [CREATE TABLE AS SELECT][CREATE TABLE AS SELECT].
 
@@ -74,7 +74,7 @@ Když dočasně umisťujete data ve službě SQL Data Warehouse, možná zjistí
 Viz také [Dočasné tabulky][Temporary tables], [CREATE TABLE][CREATE TABLE], [CREATE TABLE AS SELECT][CREATE TABLE AS SELECT].
 
 ## <a name="optimize-clustered-columnstore-tables"></a>Optimalizujte clusterované tabulky columnstore
-Clusterované indexy columnstore jsou jedním z nejefektivnějších způsobů ukládání dat ve službě SQL Data Warehouse.  Vy výchozím nastavení se tabulky ve službě SQL Data Warehouse vytváří jako clusterované columnstore.  Pokud chcete dosáhnout co nejlepšího výkonu dotazů na tabulky columnstore, je důležité mít kvalitní segmenty.  Když se řádky zapisují do tabulek columnstore při zatížení paměti, může tím utrpět kvalita segmentů columnstore.  Kvalitu segmentů lze změřit podle počtu řádků v komprimované skupině řádků.  V části [Příčiny nekvalitních indexů columnstore][Causes of poor columnstore index quality] v článku [Indexy tabulky][Table indexes] najdete podrobné pokyny k zjišťování a zlepšování kvality segmentů clusterovaných tabulek columnstore.  Protože segmenty vysoce kvalitní columnstore jsou důležité, je vhodné použít ID, které jsou ve třídě střední a velké prostředků pro načítání dat uživatele. Pomocí nižší [datového skladu jednotky](what-is-a-data-warehouse-unit-dwu-cdwu.md) znamená, kterou chcete přiřadit větší Třída prostředků pro vaše uživatele načítání.
+Clusterované indexy columnstore jsou jedním z nejefektivnějších způsobů ukládání dat ve službě SQL Data Warehouse.  Vy výchozím nastavení se tabulky ve službě SQL Data Warehouse vytváří jako clusterované columnstore.  Pokud chcete dosáhnout co nejlepšího výkonu dotazů na tabulky columnstore, je důležité mít kvalitní segmenty.  Když se řádky zapisují do tabulek columnstore při zatížení paměti, může tím utrpět kvalita segmentů columnstore.  Kvalitu segmentů lze změřit podle počtu řádků v komprimované skupině řádků.  V části [Příčiny nekvalitních indexů columnstore][Causes of poor columnstore index quality] v článku [Indexy tabulky][Table indexes] najdete podrobné pokyny k zjišťování a zlepšování kvality segmentů clusterovaných tabulek columnstore.  Protože columnstore vysoce kvalitní segmenty, které jsou důležité, je vhodné použít ID, které jsou v střední nebo velké třídy prostředků pro načítání dat uživatele. Použití nižší [jednotkách datového skladu](what-is-a-data-warehouse-unit-dwu-cdwu.md) znamená, že chcete přiřadit větší třídu prostředků do vašeho uživatele načítání.
 
 Protože tabulky columnstore zpravidla nebudou vkládat data do komprimovaného segmentu columnstore, dokud v něm nebude více než 1 milion řádků na tabulku, a každá tabulka služby SQL Data Warehouse je rozdělená na 60 tabulek, obecně platí, že tabulky columnstore nepřináší dotazům žádné výhody, pokud tabulka nemá alespoň 60 milionů řádků.  Pro tabulky s méně než 60 miliony řádků může být použití indexu columnstore zbytečné.  Ale také to nemusí vadit.  Kromě toho, pokud svá data dělíte, pamatujte na to, že každý oddíl musí mít alespoň 1 milion řádků, abyste využili výhod clusterovaného indexu columnstore.  Pokud má tabulka 100 oddílů, bude muset mít alespoň 6 miliard řádků, abyste využili výhod clusterovaného úložiště sloupců (60 distribucí × 100 oddílů × 1 milion řádků).  Pokud vaše tabulka v tomto příkladu neobsahuje 6 miliard řádků, buď snižte počet oddílů, nebo místo ní zvažte použití tabulky haldy.  Můžete také experimentovat, abyste zjistili, jestli pomocí tabulky haldy se sekundárními indexy dosáhnete lepšího výkonu než s tabulkou columnstore.
 
@@ -100,7 +100,7 @@ Viz také [Monitorování úloh pomocí zobrazení dynamických zpráv][Monitor 
 ## <a name="other-resources"></a>Další prostředky
 Přečtěte si také článek [Řešení potíží][Troubleshooting], ve kterém najdete běžné problémy a jejich řešení.
 
-Pokud jste v tomto článku nenašli, co jste hledali, zkuste použít „Hledání dokumentů“ v levé části této stránky k vyhledávání ve všech dokumentech služby Azure SQL Data Warehouse.  [Fóru služby Azure SQL Data Warehouse] [ Azure SQL Data Warehouse MSDN Forum] je místo, můžete klást otázky ostatním uživatelům a skupinu produktu pro SQL datového skladu.  Toto fórum aktivně sledujeme, abychom zajistili, že vaši otázku zodpoví další uživatel nebo někdo z nás.  Pokud dáváte přednost pokládání otázek na Stack Overflow, máme také [Fórum pro Azure SQL Data Warehouse na Stack Overflow][Azure SQL Data Warehouse Stack Overflow Forum].
+Pokud jste v tomto článku nenašli, co jste hledali, zkuste použít „Hledání dokumentů“ v levé části této stránky k vyhledávání ve všech dokumentech služby Azure SQL Data Warehouse.  [Fórum pro Azure SQL Data Warehouse] [ Azure SQL Data Warehouse MSDN Forum] je místo, kde můžete pokládat otázky ostatním uživatelům a do skupiny produktů SQL Data Warehouse.  Toto fórum aktivně sledujeme, abychom zajistili, že vaši otázku zodpoví další uživatel nebo někdo z nás.  Pokud dáváte přednost pokládání otázek na Stack Overflow, máme také [Fórum pro Azure SQL Data Warehouse na Stack Overflow][Azure SQL Data Warehouse Stack Overflow Forum].
 
 Nakonec můžete použít stránku [Zpětná vazba k službě Azure SQL Data Warehouse][Azure SQL Data Warehouse Feedback] k podání žádostí o funkce.  Přidáním vlastních žádostí nebo hlasováním pro ostatní žádosti nám pomůžete určit prioritu funkcí.
 

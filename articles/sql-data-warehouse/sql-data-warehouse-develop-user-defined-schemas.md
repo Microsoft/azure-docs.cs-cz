@@ -1,58 +1,58 @@
 ---
-title: Použití vlastní schémata v SQL Data Warehouse | Microsoft Docs
-description: Tipy pro používání schémata uživatelem definované T-SQL v Azure SQL Data Warehouse pro vývoj řešení.
+title: Pomocí schémat definovaných uživateli ve službě SQL Data Warehouse | Dokumentace Microsoftu
+description: Tipy pro používání schémat definovaných uživateli T-SQL ve službě Azure SQL Data Warehouse pro vývoj řešení.
 services: sql-data-warehouse
 author: ronortloff
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: c18e6d34416390ae7e93b69b28d508a540f7b1ab
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: d46f41e75538fae230219068d3530b7181564ac0
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31522703"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43302637"
 ---
-# <a name="using-user-defined-schemas-in-sql-data-warehouse"></a>Použití vlastní schémata v SQL Data Warehouse
-Tipy pro používání schémata uživatelem definované T-SQL v Azure SQL Data Warehouse pro vývoj řešení.
+# <a name="using-user-defined-schemas-in-sql-data-warehouse"></a>Pomocí schémat definovaných uživateli ve službě SQL Data Warehouse
+Tipy pro používání schémat definovaných uživateli T-SQL ve službě Azure SQL Data Warehouse pro vývoj řešení.
 
-## <a name="schemas-for-application-boundaries"></a>Schémata pro hranice aplikace
+## <a name="schemas-for-application-boundaries"></a>Schémata pro hranice aplikační
 
-Samostatné databáze tradičních datových skladů často používají k vytvoření hranice aplikace na základě zatížení, domény nebo zabezpečení. Tradiční datového skladu SQL serveru může například obsahovat pracovní databáze, databáze datového skladu a některé databáze datového tržiště. V této topologii každou databázi funguje jako hranice zabezpečení v architektuře a zatížení.
+Tradičních datových skladů často používají samostatné databáze na vytváření hranic aplikace na základě pracovního vytížení, domény nebo zabezpečení. Tradiční datový sklad SQL serveru může například obsahovat pracovní databáze, databáze datového skladu a některé databáze datového tržiště. V této topologii každou databázi funguje jako úlohu a hranice zabezpečení v architektuře.
 
-Naopak SQL Data Warehouse spouští úlohy celého datového skladu v rámci jedné databáze. Mezi databáze nejsou povoleny spojení. Proto SQL Data Warehouse očekává, že všechny tabulky použité ve skladu ukládaly v rámci jedné databáze.
+Naopak spouští úlohy celého datového skladu v rámci jedné databáze SQL Data Warehouse. Pro různé databáze nejsou povoleny spojení. Proto SQL Data Warehouse očekává, že všechny tabulky používané v mají být uloženy v rámci jedné databáze datového skladu.
 
 > [!NOTE]
-> SQL Data Warehouse nepodporuje křížové databázové dotazy jakéhokoli druhu. V důsledku toho datového skladu implementace, které využívají tento vzor bude nutné upravit.
+> SQL Data Warehouse nepodporuje dotazy napříč databázemi jakéhokoli druhu. V důsledku toho dat skladu implementace, které využívají tento model bude nutné upravit.
 > 
 > 
 
 ## <a name="recommendations"></a>Doporučení
-Toto jsou doporučení pro konsolidaci úlohy, zabezpečení, domény a funkční hranice pomocí uživatelsky definované schémata
+Tady najdete doporučení pro konsolidaci úlohy, zabezpečení, domény a funkční hranice pomocí uživatelem definované schémat
 
-1. Použít jednu databázi SQL Data Warehouse ke spuštění úlohy celého datového skladu
-2. Konsolidovat svého stávajícího prostředí datového skladu použít jednu databázi SQL Data Warehouse
-3. Využívání **uživatelem definované schémata** zajistit hranic dřív implementovaná pomocí databáze.
+1. Použijte jednu databázi SQL Data Warehouse ke spuštění vaší úlohy celého datového skladu
+2. Konsolidace vašeho stávajícího prostředí datového skladu použít jednu databázi SQL Data Warehouse
+3. Využijte **schémat definovaných uživateli** stanovit hranici dřív implementovaná pomocí databáze.
 
-Pokud nebyly použity uživatelem definované schémata dříve máte čistou projektem. Jednoduše použijte původní název databáze jako základ pro váš vlastní schémata v databázi SQL Data Warehouse.
+Pokud nebyly použity schémat definovaných uživateli dříve měli mít čisté břidlicová. Jednoduše použijte starý název databáze jako základ pro váš schémat definovaných uživateli v databázi SQL Data Warehouse.
 
 Pokud již byl použit schémata máte několik možností:
 
-1. Odebrat starší verze schématu názvy a začít pracovat
-2. Zachovat starší verze schématu názvy předem čekající starší verze schématu název, který má název tabulky
-3. Zachovat starší verze schématu názvy implementací zobrazení tabulky v schémat, která je navíc k opětovnému vytvoření původní struktura schématu.
+1. Odebrat názvy starší verze schématu a začněte od začátku
+2. Zachovat starší verze schématu názvy předem čeká na starší verze schématu název, který má název tabulky
+3. Zachovat starší verze schématu názvy implementací zobrazení tabulku ve schématu navíc k opětovnému vytvoření původní struktura schématu.
 
 > [!NOTE]
-> Možnost 3 může na první kontroly jevit jako nejvíce přitažlivými možnost. Ďábla je však v podrobností. Zobrazení se čtou jenom v SQL Data Warehouse. Všechny změny dat nebo tabulky by bylo potřeba provést u základní tabulky. Možnost 3 také zavádí vrstvu zobrazení do systému. Můžete chtít poskytnout to některé další myšlenku, pokud používáte zobrazení ve vaší architektury již.
+> Na první kontrola se může zdát možnost 3 jako možnost s nejvíce přitažlivými. Je však ďábla zařazená do podrobností. Zobrazení jsou číst pouze ve službě SQL Data Warehouse. Všechny úpravy dat nebo tabulky by musel být provedeny v základní tabulce. Možnost 3 také zavádí úroveň zobrazení do vašeho systému. Můžete chtít poskytnout to uvažujete další, pokud používáte zobrazení ve vaší architektuře již.
 > 
 > 
 
 ### <a name="examples"></a>Příklady:
-Implementovat vlastní schémata podle názvy databází
+Implementace schémat definovaných uživateli na základě názvů databáze
 
 ```sql
 CREATE SCHEMA [stg]; -- stg previously database name for staging database
@@ -70,7 +70,7 @@ CREATE TABLE [edw].[customer] -- create data warehouse tables in the edw schema
 );
 ```
 
-Zachovat starší verze schématu názvy předem čekající je k názvu tabulky. Použijte schémata hranice zatížení.
+Zachovat starší verze schématu názvy předem čekající je název tabulky. Použijte schémata hranice pracovního vytížení.
 
 ```sql
 CREATE SCHEMA [stg]; -- stg defines the staging boundary
@@ -88,7 +88,7 @@ CREATE TABLE [edw].[dim_customer] --pre-pend the old schema name to the table an
 );
 ```
 
-Zachovat starší verze schématu názvy pomocí zobrazení
+Zachovat starší verze schématu názvů pomocí zobrazení
 
 ```sql
 CREATE SCHEMA [stg]; -- stg defines the staging boundary
@@ -116,10 +116,10 @@ FROM    [edw].customer
 ```
 
 > [!NOTE]
-> Všechny změny ve schématu strategii pro databázi potřebuje kontrolu modelu zabezpečení. V mnoha případech je možné zjednodušit přiřazením oprávnění na úrovni schématu modelu zabezpečení. Pokud jsou požadována oprávnění podrobnější můžete použít role databáze.
+> Všechny změny ve schématu strategii potřebuje kontrolu model zabezpečení pro databázi. V mnoha případech je možné zjednodušila model zabezpečení pomocí přiřazení oprávnění na úrovni schématu. Pokud potřebujete podrobnější oprávnění můžete použít databázové role.
 > 
 > 
 
 ## <a name="next-steps"></a>Další postup
-Další tipy pro vývoj, najdete v části [přehled vývoje](sql-data-warehouse-overview-develop.md).
+Další tipy pro vývoj najdete v části [přehled vývoje](sql-data-warehouse-overview-develop.md).
 

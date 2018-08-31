@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2018
 ms.author: mstewart
-ms.openlocfilehash: d248a97235ead134f29e468aaafcd04211590e02
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
-ms.translationtype: HT
+ms.openlocfilehash: 859b4adb1b74d294d08f23c8ca570f53d56f539f
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247486"
+ms.locfileid: "43307340"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Požadavky Azure Disk Encryption 
  Tento článek, požadované součásti služby Azure Disk Encryption, vysvětluje položky, které musí být na místě, abyste mohli používat Azure Disk Encryption. Azure Disk Encryption je integrovaná s [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/) ke správě šifrovacích klíčů. Můžete použít [prostředí Azure PowerShell](/powershell/azure/overview), [rozhraní příkazového řádku Azure](/cli/azure/), nebo [webu Azure portal](https://portal.azure.com) ke konfiguraci Azure Disk Encryption.
@@ -47,7 +47,7 @@ Azure Disk Encryption je podporována v následujících operačních systémech
     - Azure Disk Encryption proces přesune informace připojení mimo /etc/fstab a do jeho vlastní konfigurační soubor jako součást procesu šifrování. Není možné dospod vidět, že položka chybí /etc/fstab po data šifrování jednotky dokončí.
     -  Po restartování počítače bude trvat dobu procesu Azure Disk Encryption pro připojení nově šifrovanými disky. Bude okamžitě k dispozici po restartu. Proces potřebuje čas ke spuštění, odemčení a pak připojte šifrované jednotky, teprve pak ji bude k dispozici pro jiné procesy pro přístup k. Tento proces může trvat déle než minutu po restartování počítače v závislosti na charakteristikách systému.
 
-Příklad příkazy, které je možné připojit datové disky a vytvořte nezbytné/etc/fstab položky lze nalézt v [řádky 197 205 tohoto souboru skriptu](https://github.com/ejarvi/ade-cli-getting-started/blob/master/validate.sh#L197-L205). 
+Příklad příkazy, které je možné připojit datové disky a vytvořte nezbytné/etc/fstab položky lze nalézt v [řádky 244 248 tohoto souboru skriptu](https://github.com/ejarvi/ade-cli-getting-started/blob/master/validate.sh#L244-L248). 
 
 
 ## <a name="bkmk_GPO"></a> Sítě a zásad skupiny

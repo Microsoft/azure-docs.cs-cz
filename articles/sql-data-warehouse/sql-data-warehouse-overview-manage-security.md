@@ -1,23 +1,23 @@
 ---
-title: Zabezpečení databáze v SQL Data Warehouse | Microsoft Docs
-description: Tipy pro zabezpečení databáze v Azure SQL Data Warehouse na vývoj řešení.
+title: Zabezpečit databázi ve službě SQL Data Warehouse | Dokumentace Microsoftu
+description: Tipy pro vývoj řešení pro zabezpečení databáze ve službě Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: kavithaj
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: c42b065a307d5e10882c621191318a667e78795c
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 8abb40b0c1a5b9cd3f8d1e23124090c00e8cfadb
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31524889"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43302535"
 ---
-# <a name="secure-a-database-in-sql-data-warehouse"></a>Zabezpečení databáze v SQL Data Warehouse
+# <a name="secure-a-database-in-sql-data-warehouse"></a>Zabezpečit databázi ve službě SQL Data Warehouse
 > [!div class="op_single_selector"]
 > * [Přehled zabezpečení](sql-data-warehouse-overview-manage-security.md)
 > * [Ověřování](sql-data-warehouse-authentication.md)
@@ -26,25 +26,25 @@ ms.locfileid: "31524889"
 > 
 > 
 
-Tento článek vás provede základy zabezpečení databáze Azure SQL Data Warehouse. Konkrétně, získá tento článek jste začali s prostředky pro omezení přístupu, ochrany dat a monitorování aktivit v databázi.
+Tento článek vás provede základy zabezpečení databáze Azure SQL Data Warehouse. Konkrétně tento článek vám pomůže začít s prostředky pro omezení přístupu, ochranu dat a monitorování aktivit u databáze.
 
 ## <a name="connection-security"></a>Zabezpečení připojení
 Zabezpečení připojení spočívá v použití pravidel brány firewall a šifrovaného připojení k omezení a zabezpečení připojení k databázi.
 
-Server i databáze používají pravidla brány firewall k zamítnutí pokusů o připojení z IP adres, které nejsou výslovně povolené. Povolit připojení z vaší aplikace nebo klientský počítač veřejnou IP adresu, musíte nejprve vytvořit pravidlo brány firewall na úrovni serveru pomocí portálu Azure, rozhraní API REST nebo PowerShell. Doporučujeme co nejvíce omezit rozsah IP adres povolených v serverové bráně firewall.  Pro přístup k Azure SQL Data Warehouse z místního počítače, zkontrolujte, zda že v bráně firewall na vaší sítí a místním počítači umožňuje odchozí komunikaci na portu TCP 1433.  
+Server i databáze používají pravidla brány firewall k zamítnutí pokusů o připojení z IP adres, které nejsou výslovně povolené. Povolit připojení z vaší aplikace nebo veřejnou IP adresu klientského počítače, musíte nejprve vytvořit pravidlo brány firewall na úrovni serveru pomocí webu Azure portal, rozhraní REST API nebo PowerShell. Doporučujeme co nejvíce omezit rozsah IP adres povolených v serverové bráně firewall.  Pro přístup k Azure SQL Data Warehouse ze svého místního počítače, ujistěte se, že brána firewall na vaší síti i místní počítač umožňují odchozí komunikaci na portu TCP 1433.  
 
-SQL Data Warehouse používá pravidla brány firewall na úrovni serveru. Pravidla brány firewall na úrovni databáze nepodporuje. Další informace najdete v tématu [brány firewall databáze Azure SQL Database][Azure SQL Database firewall], [příkaz sp_set_firewall_rule][sp_set_firewall_rule].
+SQL Data Warehouse používá pravidla brány firewall na úrovni serveru. Pravidla brány firewall na úrovni databáze nepodporuje. Další informace najdete v tématu [brány firewall Azure SQL Database][Azure SQL Database firewall], [sp_set_firewall_rule][sp_set_firewall_rule].
 
 Ve výchozím nastavení jsou šifrované připojení k SQL Data Warehouse.  Změny nastavení připojení můžete zakázat šifrování se ignorují.
 
 ## <a name="authentication"></a>Authentication
-Ověřování se týká způsobu, jakým prokážete svou identitu při připojování k databázi. SQL Data Warehouse aktuálně podporuje ověřování systému SQL Server pomocí uživatelského jména a hesla a službou Azure Active Directory. 
+Ověřování se týká způsobu, jakým prokážete svou identitu při připojování k databázi. SQL Data Warehouse v současné době podporuje ověřování systému SQL Server pomocí uživatelského jména a hesla a službou Azure Active Directory. 
 
-Když jste vytvářeli logický server databáze, zadali jste uživatelské jméno a heslo účtu „server admin“. Pomocí těchto přihlašovacích údajů, můžete ověřovat pro všechny databáze na tomto serveru jako vlastníka databáze, nebo "dbo" pomocí ověřování systému SQL Server.
+Když jste vytvářeli logický server databáze, zadali jste uživatelské jméno a heslo účtu „server admin“. Pomocí těchto přihlašovacích údajů, můžete ověřovat k jakékoli databázi na daném serveru jako vlastník databáze neboli "dbo" pomocí ověřování systému SQL Server.
 
-Však jako osvědčený postup, by měl uživatele ve vaší organizaci použít jiný účet k ověření. Tímto způsobem můžete omezit oprávnění udělená aplikaci a snížení rizika škodlivých aktivit, v případě, že kód aplikace bude zranitelný vůči útoku Injektáž SQL. 
+Ale jako osvědčený postup, musí uživatelé ve vaší organizaci použít jiný účet k ověření. Tímto způsobem můžete omezit oprávnění udělená aplikaci a snížíte riziko škodlivých aktivit v případě, že váš kód aplikace je zranitelný vůči útoku prostřednictvím injektáže SQL. 
 
-Chcete-li vytvořit uživatele ověřeného SQL Server, připojte se ke **hlavní** databáze na serveru s vaše přihlašovací jméno správce serveru a vytvořte nové přihlašovací údaje serveru.  Kromě toho je vhodné vytvořit uživateli v hlavní databázi pro uživatele Azure SQL Data Warehouse. Vytváření uživatele v předloze umožňuje uživateli přihlásit se pomocí nástroje, například aplikace SSMS bez zadání názvu databáze.  Také to umožňuje, aby uživatelé používali Průzkumník objektů pokud chcete zobrazit všechny databáze na serveru SQL server.
+Chcete-li vytvořit uživatele ověření serveru SQL, připojte se k **hlavní** databáze na serveru se vaše přihlašovací jméno správce serveru a vytvořte nové přihlašovací údaje serveru.  Kromě toho je vhodné vytvořit uživatele v hlavní databázi uživatelů Azure SQL Data Warehouse. Vytvoření uživatele v hlavní větvi umožňuje uživateli přihlášení pomocí nástrojů, jako je SSMS bez zadání názvu databáze.  Umožňuje také jejich použití Průzkumníku objektů chcete-li zobrazit všechny databáze na SQL serveru.
 
 ```sql
 -- Connect to master database and create a login
@@ -52,17 +52,17 @@ CREATE LOGIN ApplicationLogin WITH PASSWORD = 'Str0ng_password';
 CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 ```
 
-Připojte se k vaší **databázi SQL Data Warehouse** s vaše přihlašovací jméno správce serveru a vytvořte uživatele databáze založené na přihlášení server, který jste vytvořili.
+Poté se připojte k vaší **databázi SQL Data Warehouse** se vaše přihlašovací jméno správce serveru a vytvořte uživatele databáze na základě přihlášení serveru jste vytvořili.
 
 ```sql
 -- Connect to SQL DW database and create a database user
 CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 ```
 
-Pokud chcete udělit uživatelské oprávnění k provedení další operace, jako je vytvoření přihlášení nebo vytvoření nových databází, přiřaďte uživatele do `Loginmanager` a `dbmanager` role v hlavní databázi. Další informace o těchto dalších rolí a ověřování k databázi SQL, najdete v části [Správa databází a přihlašovacích údajů ve službě Azure SQL Database][Managing databases and logins in Azure SQL Database].  Další informace najdete v tématu [připojení k SQL Data Warehouse pomocí pomocí Azure ověřování služby Active Directory][Connecting to SQL Data Warehouse By Using Azure Active Directory Authentication].
+Uživatel oprávnění k provedení další operace, jako je vytváření přihlašovacích účtů nebo vytvoření nových databází, přiřaďte mu uživateli `Loginmanager` a `dbmanager` role v hlavní databázi. Další informace o těchto dalších rolí a ověřování do služby SQL Database najdete v tématu [Správa databází a přihlášení ve službě Azure SQL Database][Managing databases and logins in Azure SQL Database].  Další informace najdete v tématu [připojení k SQL Data Warehouse pomocí Active Directory ověřování služby Azure][Connecting to SQL Data Warehouse By Using Azure Active Directory Authentication].
 
 ## <a name="authorization"></a>Autorizace
-Autorizace odkazuje na co můžete dělat v databázi Azure SQL Data Warehouse. Autorizace oprávnění určuje členství v rolích a oprávnění. Doporučený postup je udělit uživatelům co nejmenší možná oprávnění. Ke správě rolí, můžete použít následující uložené procedury:
+Autorizace určuje, co můžete dělat v databázi Azure SQL Data Warehouse. Povolení oprávnění určuje oprávnění a členství v rolích. Doporučený postup je udělit uživatelům co nejmenší možná oprávnění. Ke správě rolí, můžete použít následující uložené procedury:
 
 ```sql
 EXEC sp_addrolemember 'db_datareader', 'ApplicationUser'; -- allows ApplicationUser to read data
@@ -71,29 +71,29 @@ EXEC sp_addrolemember 'db_datawriter', 'ApplicationUser'; -- allows ApplicationU
 
 Účet správce serveru, který používáte k připojení, je členem skupiny db_owner. Tato skupina může s databází provádět všechny operace. Tento účet uložte kvůli nasazení upgradovaných schémat a dalším možnostem správy. Použijte účet „ApplicationUser“, který má omezenější oprávnění a umožňuje připojit se z aplikace k databázi s nejnižšími oprávněními, jaké aplikace potřebuje.
 
-Způsoby dál omezit, co dělat s Azure SQL Data Warehouse uživatele:
+Způsoby jak ještě více omezit, co může uživatel provádět v rámci Azure SQL Data Warehouse:
 
-* Podrobné [oprávnění] [ Permissions] umožňují řízení operací, které můžete u jednotlivých sloupců tabulky, zobrazení, schémata, postupy a další objekty v databázi. Pomocí oprávnění na podrobné úrovni mít většina řízení a přidělte minimální oprávnění, které jsou nezbytné. 
-* [Rolí databáze] [ Database roles] jiného, než db_datareader a db_datawriter lze použít k vytvoření výkonnější aplikace uživatelské účty nebo méně výkonná účty pro správu. Předdefinované pevné databázové role poskytují snadný způsob, jak udělit oprávnění, ale může mít za následek přidělení více oprávnění, než je potřeba.
-* [Uložené procedury] [ Stored procedures] umožňují omezit akce, které můžete provést na databázi.
+* Detailní [oprávnění] [ Permissions] vám umožní operace, které můžete s jednotlivými sloupci, tabulkami, zobrazeními ovládacího prvku, schémata, postupy a dalších objektů v databázi. Většina ovládací prvek a přidělili minimální oprávnění potřebná pomocí přesnějších oprávnění. 
+* [Databázové role] [ Database roles] jiné než db_datareader a db_datawriter lze použít k vytvoření uživatelských účtů aplikace s větším nebo menším. Integrované pevné databázové role poskytují snadný způsob, jak udělit oprávnění, ale může vést k poskytování více oprávnění než je potřeba.
+* [Uložené procedury] [ Stored procedures] slouží k omezení akcí, které můžete provést na databázi.
 
-Následující příklad uděluje přístup pro čtení na uživatelem definované schéma.
+Následující příklad uděluje oprávnění ke čtení pro uživatelem definované schéma.
 ```sql
 --CREATE SCHEMA Test
 GRANT SELECT ON SCHEMA::Test to ApplicationUser
 ```
 
-Správa databází a logické servery z portálu Azure nebo pomocí rozhraní API služby Azure Resource Manager řídí přiřazení rolí portálu uživatelského účtu. Další informace najdete v tématu [řízení přístupu na základě rolí na portálu Azure][Role-based access control in Azure portal].
+Správa databází a logických serverů na webu Azure Portal nebo pomocí rozhraní API Azure Resource Manageru se řídí rolemi uživatelský účet na portálu společnosti. Další informace najdete v tématu [řízení přístupu na základě rolí na webu Azure portal][Role-based access control in Azure portal].
 
 ## <a name="encryption"></a>Šifrování
-Azure SQL Data Warehouse transparentní dat šifrování (TDE) pomáhá chránit před ohrožením škodlivých aktivit pomocí šifrování a dešifrování dat v klidovém stavu.  Při šifrování databáze, přidružených záloh a souborů protokolů transakci jsou šifrované bez nutnosti změny aplikace. Šifrování TDE zašifruje úložiště celé databáze pomocí symetrický klíč s názvem šifrovací klíč databáze. 
+Azure SQL Data Warehouse transparentní šifrování dat (TDE) pomáhá chránit před hrozbou škodlivých aktivit pomocí šifrování a dešifrování dat v klidovém stavu.  Pokud chcete databázi zašifrovat, přidružené zálohy a soubory transakčních protokolů jsou šifrované nevyžaduje žádné změny vašich aplikací. Transparentní šifrování dat šifruje úložiště celou databázi pomocí symetrický klíč s názvem šifrovací klíč databáze. 
 
-V databázi SQL šifrovací klíč databáze je chráněn certifikát integrovaného serveru. Certifikát integrovaného serveru je jedinečný pro každý server databáze SQL. Microsoft automaticky otočí tyto certifikáty alespoň jednou za 90 dní. Šifrovacího algoritmu používaného funkcí SQL Data Warehouse je AES 256. Obecný popis TDE, najdete v části [transparentní šifrování dat][Transparent Data Encryption].
+Ve službě SQL Database šifrovací klíč databáze je chráněno certifikátem integrovaného serveru. Certifikát integrovaného serveru je jedinečný pro každý server SQL Database. Microsoft automaticky otočí tyto certifikáty nejméně každých 90 dní. Šifrovací algoritmus používaný serverem SQL Data Warehouse je AES-256. Obecný popis transparentní šifrování dat, naleznete v tématu [transparentního šifrování dat][Transparent Data Encryption].
 
-Můžete šifrovat databázi pomocí [portál Azure] [ Encryption with Portal] nebo [T-SQL][Encryption with TSQL].
+Můžete šifrovat vaší databáze pomocí [webu Azure portal] [ Encryption with Portal] nebo [T-SQL][Encryption with TSQL].
 
 ## <a name="next-steps"></a>Další postup
-Podrobnosti a příklady o připojení k SQL Data Warehouse pomocí různých protokolů, najdete v tématu [připojit k SQL Data Warehouse][Connect to SQL Data Warehouse].
+Podrobnosti a příklady o připojení ke službě SQL Data Warehouse pomocí různých protokolů, najdete v tématu [připojení k SQL Data Warehouse][Connect to SQL Data Warehouse].
 
 <!--Image references-->
 

@@ -17,12 +17,12 @@ ms.workload: na
 ms.date: 02/02/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 05c88c8938580666ce99f7cae46dc69cda3c3776
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: a57d5f8d857a8cfcdc81e86650466aec740f41e3
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344694"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286805"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategie pro testování kódu ve službě Azure Functions
 
@@ -34,9 +34,9 @@ Toto téma popisuje různé způsoby testování funkcí, včetně použití ná
 + Funkce aktivované pomocí časovače
 + Testování aplikace nebo rozhraní framework
 
-Všechny tyto metody testování použijte funkci triggeru HTTP, který přijímá vstup prostřednictvím parametru řetězce dotazu nebo textu požadavku. Vytvořit tuto funkci v první části.
+Všechny tyto metody testování použijte funkci triggeru HTTP, který přijímá vstup prostřednictvím parametru řetězce dotazu nebo textu požadavku. Můžete vytvořit tuto funkci pomocí webu Azure portal v první části.
 
-## <a name="create-a-function-for-testing"></a>Vytvoření funkce pro testování
+## <a name="create-a-simple-function-for-testing-using-the-azure-portal"></a>Vytvořit jednoduchou funkci pro testování s využitím webu Azure portal
 Pro většinu tohoto kurzu používáme mírně upravenou verzi šablony funkce HttpTrigger JavaScript, která je dostupná při vytváření funkce. Pokud potřebujete pomoc při vytváření funkce, přečtěte si [kurzu](functions-create-first-azure-function.md). Zvolte **HttpTrigger – JavaScript** šablony při vytváření funkce test v [Azure Portal].
 
 Výchozí šablona funkce je v podstatě funkci "hello world", která se vrátí zpět z požadavku text nebo dotazu řetězcový parametr, název `name=<your name>`.  Aktualizujeme kód, který umožňuje také jako obsah JSON v textu požadavku zadejte název a adresu. Funkce pak vrátí tyto zpět klientovi, pokud je k dispozici.   

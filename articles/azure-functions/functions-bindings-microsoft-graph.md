@@ -1,6 +1,6 @@
 ---
-title: Microsoft Graph vazby pro Azure Functions
-description: Pochopit, jak používat Microsoft Graph triggerů a vazeb v Azure Functions.
+title: Vazeb Microsoft Graphu, Azure functions
+description: Naučte se používat Microsoft Graphu triggerů a vazeb ve službě Azure Functions.
 services: functions
 author: mattchenderson
 manager: cfowler
@@ -11,73 +11,73 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 12/20/2017
 ms.author: mahender
-ms.openlocfilehash: af748f234a27ed9b37ac50438d7497fd680bc193
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 06ee959d7b38f21684280a35cf770fdcc590b102
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37085568"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287983"
 ---
-# <a name="microsoft-graph-bindings-for-azure-functions"></a>Microsoft Graph vazby pro Azure Functions
+# <a name="microsoft-graph-bindings-for-azure-functions"></a>Vazeb Microsoft Graphu, Azure functions
 
-Tento článek vysvětluje postup konfigurace a práce s Microsoft Graph triggerů a vazeb v Azure Functions. Pomocí těchto, můžete použít funkce Azure pro práci s daty, přehledy a události z [Microsoft Graph](https://graph.microsoft.io).
+Tento článek vysvětluje postup konfigurace a práce s Microsoft Graphem triggerů a vazeb ve službě Azure Functions. Pomocí těchto, můžete použít pro práci s daty, insights a události z Azure Functions [Microsoft Graphu](https://graph.microsoft.io).
 
 Rozšíření Microsoft Graph poskytuje následující vazby:
-- [Token ověření vstupu vazby](#token-input) umožňuje pracovat s žádné Microsoft Graph API.
-- [Tabulky aplikace Excel vstupní vazby](#excel-input) umožňuje číst data z Excelu.
-- [Tabulky aplikace Excel výstup vazby](#excel-output) umožňuje upravovat data z Excelu.
-- A [OneDrive souboru vstupní vazby](#onedrive-input) umožňuje číst soubory z Onedrivu.
-- A [OneDrive souboru výstup vazby](#onedrive-output) umožňuje zápis do souborů na Onedrivu.
-- [Zprávy Outlooku výstup vazby](#outlook-output) umožní vám odesílat e-mailu prostřednictvím aplikace Outlook.
-- Kolekce [Microsoft Graph webhooku triggerů a vazeb](#webhooks) umožňuje reagování na události z Microsoft Graph.
+- [Ověřovací token vstupní vazby](#token-input) umožňuje pracovat s jakékoli rozhraní Microsoft Graph API.
+- [Excelovou tabulku vstupní vazby](#excel-input) umožňuje číst data z Excelu.
+- [Excelové tabulce Výstupní vazby](#excel-output) umožňuje upravovat data aplikace Excel.
+- A [soubor na Onedrivu vstupní vazby](#onedrive-input) umožňuje čtení souborů z Onedrivu.
+- A [soubor na Onedrivu výstupní vazby](#onedrive-output) umožňuje zápis do souborů ve Onedrivu.
+- [Zprávy Outlooku výstupní vazby](#outlook-output) umožňuje odeslat e-mailu prostřednictvím Outlooku.
+- Kolekce [triggerů webhooků Microsoft Graph a vazby](#webhooks) umožňuje reagovat na události z Microsoft Graphu.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 > [!Note]
-> Microsoft Graph vazby jsou aktuálně ve verzi preview pro Azure Functions verze 2.x. Některé funkce nejsou podporovány ve verzi funkce 1.x.
+> Vazeb Microsoft Graphu jsou aktuálně ve verzi preview pro Azure Functions verze 2.x. Nejsou podporované ve verzi Functions 1.x.
 
 ## <a name="packages"></a>Balíčky
 
-Ověření tokenu Vstupní vazba je součástí [Microsoft.Azure.WebJobs.Extensions.AuthTokens](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.AuthTokens/) balíček NuGet. Jiné Microsoft Graph vazby jsou součástí [Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph/) balíčku. Zdrojový kód pro balíčky je v [azure funkce microsoftgraph rozšíření](https://github.com/Azure/azure-functions-microsoftgraph-extension/) úložiště GitHub.
+Ověření tokenu Vstupní vazba je součástí [Microsoft.Azure.WebJobs.Extensions.AuthTokens](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.AuthTokens/) balíček NuGet. Jsou k dispozici v jiných vazeb Microsoft Graphu [Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MicrosoftGraph/) balíčku. Zdrojový kód pro balíčky se [azure-functions-microsoftgraph-extension](https://github.com/Azure/azure-functions-microsoftgraph-extension/) úložiště GitHub.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
 ## <a name="setting-up-the-extensions"></a>Nastavení rozšíření
 
-Microsoft Graph vazby jsou k dispozici prostřednictvím _vazby rozšíření_. Vazba rozšíření jsou volitelné součásti modulu runtime Azure Functions. V této části ukazuje, jak nastavit Microsoft Graph a ověření tokenu rozšíření.
+Jsou dostupné prostřednictvím Microsoft Graphu vazby _vazby rozšíření_. Rozšíření vazby jsou volitelné součásti modulu runtime Azure Functions. Tato část ukazuje, jak nastavit rozšíření ověřování tokenu a Microsoft Graph.
 
 ### <a name="enabling-functions-20-preview"></a>Povolení funkce 2.0 preview
 
-Vazba rozšíření jsou dostupné pouze pro 2.0 funkce Azure preview. 
+Rozšíření vazby jsou k dispozici pouze pro Azure Functions 2.0 ve verzi preview. 
 
-Informace o tom, jak nastavit aplikaci funkce používat verzi preview 2.0 Functions runtime najdete v tématu [jak mít verze modulu runtime Azure Functions](set-runtime-version.md).
+Informace o tom, jak nastavit aplikaci function app používat verzi preview 2.0 modul runtime služby Functions najdete v tématu [způsobu cílení verze modulu runtime Azure Functions](set-runtime-version.md).
 
-### <a name="installing-the-extension"></a>Instalaci rozšíření
+### <a name="installing-the-extension"></a>Instalace rozšíření
 
-Chcete-li nainstalovat rozšíření na portálu Azure, přejděte na šablonu nebo vazbu na ni odkazuje. Vytvoření nové funkce a v obrazovku pro výběr šablony, zvolte scénář "Microsoft Graph". Vyberte jednu z šablony tento scénář. Alternativně můžete přejděte na kartu "Integrací" existující funkce a vyberte jednu z vazby popsaná v tomto článku.
+Chcete-li nainstalovat rozšíření z webu Azure portal, přejděte na šablonu nebo vazby, která na něj odkazuje. Vytvoření nové funkce a v obrazovce pro výběr v šabloně, zvolte scénář "Microsoft Graphu". V tomto scénáři vyberte některou ze šablon. Alternativně můžete přejít na kartu "Integrace" existující funkce a vyberte jednu z vazby popsaná v tomto článku.
 
-V obou případech se zobrazí upozornění, která určuje příponu k instalaci. Klikněte na tlačítko **nainstalovat** získat rozšíření. Každé rozšíření stačí nainstalovat jednou pro každé aplikaci funkce. 
+V obou případech se zobrazí upozornění, která určuje příponu k instalaci. Klikněte na tlačítko **nainstalovat** získat rozšíření. Každé rozšíření musí jen se dá nainstalovat jednou za aplikace function app. 
 
 > [!Note] 
-> Proces instalace v portálu může trvat až 10 minut na plánu spotřeby.
+> Proces instalace na portálu může trvat až 10 minut, než v plánu consumption.
 
-Pokud používáte Visual Studio, můžete získat rozšíření nainstalováním [balíčky NuGet, které jsou uvedeny výše v tomto článku](#packages).
+Pokud používáte Visual Studio, můžete získat rozšíření nainstalováním [balíčky NuGet, které jsou uvedeny dříve v tomto článku](#packages).
 
 ### <a name="configuring-authentication--authorization"></a>Konfigurace ověřování / autorizace
 
-Vazby uvedených v tomto článku vyžadují identity má být použit. To umožňuje Microsoft Graph vynutit oprávnění a auditovat interakce. Identita může být uživatel přístup k aplikaci nebo vlastní aplikace. Při konfiguraci tuto identitu, nastavit [aplikace služby ověřování / autorizace](https://docs.microsoft.com/azure/app-service/app-service-authentication-overview) službou Azure Active Directory. Musíte se také s žádostí o oprávnění všech prostředků, které vyžadují funkcí.
+Vazby uvedených v tomto článku vyžadují identitou, který se má použít. To umožňuje Microsoft Graphu vynutit oprávnění a auditovat jejich interakce. Identita může být uživatele, kteří používají vaše aplikace nebo vlastní aplikace. Pokud chcete nakonfigurovat tuto identitu, nastavení [ověřování pomocí služby App Service / autorizace](https://docs.microsoft.com/azure/app-service/app-service-authentication-overview) službou Azure Active Directory. Je také potřeba žádná oprávnění, které vyžadují vaše funkce.
 
 > [!Note] 
-> Rozšíření Microsoft Graph podporuje jenom ověřování Azure AD. Uživatelé se muset přihlásit pomocí pracovního nebo školního účtu.
+> Rozšíření Microsoft Graphu podporuje jenom ověřování Azure AD. Uživatelé budou muset přihlásit pomocí pracovního nebo školního účtu.
 
-Pokud používáte portál Azure, se zobrazí upozornění níže výzvu k instalaci rozšíření. Toto upozornění vás vyzve, abyste konfigurace aplikace služby ověřování / autorizace a žádost o všechna oprávnění, šablony nebo vazba vyžaduje. Klikněte na tlačítko **konfigurovat Azure AD teď** nebo **teď přidejte oprávnění** podle potřeby.
+Pokud používáte na webu Azure portal, zobrazí se vám upozornění níže výzvu k instalaci rozšíření. Toto upozornění zobrazí výzvu ke konfiguraci ověřování pomocí služby App Service / autorizace a žádost o oprávnění na šablonu nebo vazba vyžaduje. Klikněte na tlačítko **konfiguraci Azure AD teď** nebo **přidat oprávnění** podle potřeby.
 
 
 
 <a name="token-input"></a>
 ## <a name="auth-token"></a>Ověřovací token
 
-Ověření tokenu vstupní vazby získá token Azure AD pro daný prostředek a poskytuje ji jako řetězec v kódu. Prostředek může být libovolná, pro který má oprávnění aplikace. 
+Ověření tokenu Vstupní vazba získá token Azure AD pro daný prostředek a poskytuje kódu jako řetězec. Prostředek může být pro který má oprávnění aplikace. 
 
 Tato část obsahuje následující témata:
 
@@ -86,18 +86,18 @@ Tato část obsahuje následující témata:
 * [Konfigurace](#auth-token---configuration)
 * [Využití](#auth-token---usage)
 
-### <a name="auth-token---example"></a>Token auth – příklad
+### <a name="auth-token---example"></a>Ověřovací token – příklad
 
-Podívejte se na konkrétní jazyk příklad:
+Podívejte se na příklad specifické pro jazyk:
 
 * [C# skript (.csx)](#auth-token---c-script-example)
 * [JavaScript](#auth-token---javascript-example)
 
-#### <a name="auth-token---c-script-example"></a>Token auth – příklad skriptu jazyka C#
+#### <a name="auth-token---c-script-example"></a>Ověřovací token – příklad skriptu jazyka C#
 
-Následující příklad získá informace o profilu uživatele.
+Následující příklad získá informace o uživatelském profilu.
 
-*Function.json* soubor definuje aktivační procedury HTTP pomocí tokenu vstupní vazby:
+*Function.json* soubor definuje aktivační událost HTTP s využitím token vstupní vazby:
 
 ```json
 {
@@ -124,7 +124,7 @@ Následující příklad získá informace o profilu uživatele.
 }
 ```
 
-Kód skriptu jazyka C# na základě tokenu pro volání protokolu HTTP pro Microsoft Graph a vrátí výsledek:
+Kód skriptu jazyka C# na základě tokenu pro volání HTTP pro Microsoft Graph a vrátí výsledek:
 
 ```csharp
 using System.Net; 
@@ -139,11 +139,11 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, string
 }
 ```
 
-#### <a name="auth-token---javascript-example"></a>Token auth – příklad v jazyce JavaScript
+#### <a name="auth-token---javascript-example"></a>Ověřovací token – příklad v jazyce JavaScript
 
-Následující příklad získá informace o profilu uživatele.
+Následující příklad získá informace o uživatelském profilu.
 
-*Function.json* soubor definuje aktivační procedury HTTP pomocí tokenu vstupní vazby:
+*Function.json* soubor definuje aktivační událost HTTP s využitím token vstupní vazby:
 
 ```json
 {
@@ -170,7 +170,7 @@ Následující příklad získá informace o profilu uživatele.
 }
 ```
 
-Kód jazyka JavaScript na základě tokenu pro volání protokolu HTTP pro Microsoft Graph a vrátí výsledek.
+Kód jazyka JavaScript na základě tokenu pro volání HTTP pro Microsoft Graph a vrátí výsledek.
 
 ```js
 const rp = require('request-promise');
@@ -202,28 +202,28 @@ module.exports = function (context, req) {
 };
 ```
 
-### <a name="auth-token---attributes"></a>Token auth – atributy
+### <a name="auth-token---attributes"></a>Ověřovací token – atributy
 
-V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte [tokenu](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/TokenBinding/TokenAttribute.cs) atribut.
+V [knihoven tříd C#](functions-dotnet-class-library.md), použijte [Token](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/TokenBinding/TokenAttribute.cs) atribut.
 
-### <a name="auth-token---configuration"></a>Token auth – konfigurace
+### <a name="auth-token---configuration"></a>Ověřovací token – konfigurace
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.json* souboru a `Token` atribut.
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**Jméno**||Požadovaná proměnná používá v kódu funkce pro ověření tokenu. V tématu [pomocí tokenu ověření vstupu vazba z kódu](#token-input-code).|
-|**type**||Vyžaduje - musí být nastavena na `token`.|
-|**direction**||Vyžaduje - musí být nastavena na `in`.|
-|**Identity**|**Identita**|Požadovaná identity, která se použije k provedení akce. Může být jedna z následujících hodnot:<ul><li><code>userFromRequest</code> -Jedinými platnými s [Aktivace protokolu HTTP]. Použije identitu volajícího uživatele.</li><li><code>userFromId</code> -Použije identitu dříve přihlášeného uživatele se zadaným ID. Najdete v článku <code>userId</code> vlastnost.</li><li><code>userFromToken</code> -Použije identitu reprezentována zadaný token. Najdete v článku <code>userToken</code> vlastnost.</li><li><code>clientCredentials</code> -Použije identitu aplikace funkce.</li></ul>|
-|**userId**|**ID uživatele**  |V případě potřeby a pouze v případě _identity_ je nastaven na `userFromId`. ID objektu zabezpečení uživatele přidružené k dříve přihlášeného uživatele.|
-|**userToken**|**UserToken**|V případě potřeby a pouze v případě _identity_ je nastaven na `userFromToken`. Token platný pro funkce aplikace. |
-|**Prostředek**|**Prostředek**|Požadovaná adresu URL prostředku Azure AD, pro které je požadováno token.|
+|**Jméno**||Požadovaná: název této proměnné v kódu funkce pro ověřovací token. Zobrazit [používá token pro ověření vstupní vazby z kódu](#token-input-code).|
+|**type**||Povinné – musí být nastavena na `token`.|
+|**direction**||Povinné – musí být nastavena na `in`.|
+|**Identita**|**Identita**|Požadovaná: Identita, která se použije k provedení akce. Může být jedna z následujících hodnot:<ul><li><code>userFromRequest</code> -Jediné platné s [HTTP trigger]. Použije identitu volajícího uživatele.</li><li><code>userFromId</code> -Použije identitu dříve přihlášeného uživatele se zadaným ID. Zobrazit <code>userId</code> vlastnost.</li><li><code>userFromToken</code> -Použije identitu reprezentována zadaného tokenu. Zobrazit <code>userToken</code> vlastnost.</li><li><code>clientCredentials</code> -Použije identitu aplikace function App.</li></ul>|
+|**userId**|**ID uživatele**  |Potřebné pokud a pouze v případě _identity_ je nastavena na `userFromId`. ID objektu zabezpečení uživatele přidružené k dříve přihlášenému uživateli.|
+|**userToken**|**UserToken**|Potřebné pokud a pouze v případě _identity_ je nastavena na `userFromToken`. Token platný pro danou aplikaci funkcí. |
+|**Prostředek**|**prostředek**|Povinné – adresy URL prostředků Azure AD, pro který je žádá token.|
 
 <a name="token-input-code"></a>
-### <a name="auth-token---usage"></a>Token auth – použití
+### <a name="auth-token---usage"></a>Ověřovací token - využití
 
-Vazba, samotné nevyžaduje žádné oprávnění Azure AD, ale v závislosti na tom, jak se používá token, budete muset požádat o další oprávnění. Zkontrolujte požadavky na prostředku, který chcete s tímto tokenem přístupu.
+Vazba samotné nevyžaduje žádná oprávnění Azure AD, ale v závislosti na tom, jak se používá token, budete muset požádat o další oprávnění. Zkontrolujte požadavky na prostředku, který chcete s tímto tokenem přístupu.
 
 Token se vždy zobrazí kód jako řetězec.
 
@@ -233,7 +233,7 @@ Token se vždy zobrazí kód jako řetězec.
 <a name="excel-input"></a>
 ## <a name="excel-input"></a>Vstupní aplikace Excel
 
-Vazba vstupní tabulky aplikace Excel přečte obsah tabulky aplikace Excel uložených na Onedrivu.
+Vstupní vazby tabulky aplikace Excel přečte obsah Excelové tabulky uložené na OneDrive.
 
 Tato část obsahuje následující témata:
 
@@ -242,16 +242,16 @@ Tato část obsahuje následující témata:
 * [Konfigurace](#excel-input---configuration)
 * [Využití](#excel-input---usage)
 
-### <a name="excel-input---example"></a>V aplikaci Excel (vstup) – příklad
+### <a name="excel-input---example"></a>Aplikace Excel (vstup) – příklad
 
-Podívejte se na konkrétní jazyk příklad:
+Podívejte se na příklad specifické pro jazyk:
 
 * [C# skript (.csx)](#excel-input---c-script-example)
 * [JavaScript](#excel-input---javascript-example)
 
-#### <a name="excel-input---c-script-example"></a>Excel vstup – příklad skriptu jazyka C#
+#### <a name="excel-input---c-script-example"></a>Vstup - Excelový ukázkový skript jazyka C#
 
-Následující *function.json* soubor definuje aktivační procedury HTTP s vazbou vstupní aplikace Excel:
+Následující *function.json* soubor definuje aktivační událost HTTP s využitím vstupní vazby Excelu:
 
 ```json
 {
@@ -280,7 +280,7 @@ Následující *function.json* soubor definuje aktivační procedury HTTP s vazb
 }
 ```
 
-Následující kód skriptu jazyka C# načte obsah zadané tabulky a vrátí je pro uživatele:
+Následující kód skriptu jazyka C# načte obsah zadané tabulky a vrátí uživateli:
 
 ```csharp
 using System.Net;
@@ -293,9 +293,9 @@ public static IActionResult Run(HttpRequest req, string[][] excelTableData, Trac
 }
 ```
 
-#### <a name="excel-input---javascript-example"></a>Excel vstup – příklad v jazyce JavaScript
+#### <a name="excel-input---javascript-example"></a>Excel vstupní – příklad v jazyce JavaScript
 
-Následující *function.json* soubor definuje aktivační procedury HTTP s vazbou vstupní aplikace Excel:
+Následující *function.json* soubor definuje aktivační událost HTTP s využitím vstupní vazby Excelu:
 
 ```json
 {
@@ -324,7 +324,7 @@ Následující *function.json* soubor definuje aktivační procedury HTTP s vazb
 }
 ```
 
-Následující kód v JavaScriptu přečte obsah zadané tabulky a vrátí je pro uživatele.
+Následující kód jazyka JavaScript načte obsah zadané tabulky a vrátí uživateli.
 
 ```js
 module.exports = function (context, req) {
@@ -335,38 +335,38 @@ module.exports = function (context, req) {
 };
 ```
 
-### <a name="excel-input---attributes"></a>Excel vstup – atributy
+### <a name="excel-input---attributes"></a>Excel vstupní – atributy
 
-V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte [Excel](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/ExcelAttribute.cs) atribut.
+V [knihoven tříd C#](functions-dotnet-class-library.md), použijte [Excel](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/ExcelAttribute.cs) atribut.
 
-### <a name="excel-input---configuration"></a>V aplikaci Excel (vstup) – konfigurace
+### <a name="excel-input---configuration"></a>Aplikace Excel (vstup) – konfigurace
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.json* souboru a `Excel` atribut.
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**Jméno**||Požadovaná proměnná používá v kódu funkce pro tabulky aplikace Excel. V tématu [pomocí tabulky aplikace Excel Vstupní vazba z kódu](#excel-input-code).|
-|**type**||Vyžaduje - musí být nastavena na `excel`.|
-|**direction**||Vyžaduje - musí být nastavena na `in`.|
-|**Identity**|**Identita**|Požadovaná identity, která se použije k provedení akce. Může být jedna z následujících hodnot:<ul><li><code>userFromRequest</code> -Jedinými platnými s [Aktivace protokolu HTTP]. Použije identitu volajícího uživatele.</li><li><code>userFromId</code> -Použije identitu dříve přihlášeného uživatele se zadaným ID. Najdete v článku <code>userId</code> vlastnost.</li><li><code>userFromToken</code> -Použije identitu reprezentována zadaný token. Najdete v článku <code>userToken</code> vlastnost.</li><li><code>clientCredentials</code> -Použije identitu aplikace funkce.</li></ul>|
-|**userId**|**ID uživatele**  |V případě potřeby a pouze v případě _identity_ je nastaven na `userFromId`. ID objektu zabezpečení uživatele přidružené k dříve přihlášeného uživatele.|
-|**userToken**|**UserToken**|V případě potřeby a pouze v případě _identity_ je nastaven na `userFromToken`. Token platný pro funkce aplikace. |
-|**Cesta**|**Cesta**|Požadovaná cesta k sešitu aplikace Excel na OneDrive.|
+|**Jméno**||Požadovaná: název této proměnné v kódu funkce pro Excelové tabulky. Zobrazit [pomocí Excelové tabulky. vstupní vazby z kódu](#excel-input-code).|
+|**type**||Povinné – musí být nastavena na `excel`.|
+|**direction**||Povinné – musí být nastavena na `in`.|
+|**Identita**|**Identita**|Požadovaná: Identita, která se použije k provedení akce. Může být jedna z následujících hodnot:<ul><li><code>userFromRequest</code> -Jediné platné s [HTTP trigger]. Použije identitu volajícího uživatele.</li><li><code>userFromId</code> -Použije identitu dříve přihlášeného uživatele se zadaným ID. Zobrazit <code>userId</code> vlastnost.</li><li><code>userFromToken</code> -Použije identitu reprezentována zadaného tokenu. Zobrazit <code>userToken</code> vlastnost.</li><li><code>clientCredentials</code> -Použije identitu aplikace function App.</li></ul>|
+|**userId**|**ID uživatele**  |Potřebné pokud a pouze v případě _identity_ je nastavena na `userFromId`. ID objektu zabezpečení uživatele přidružené k dříve přihlášenému uživateli.|
+|**userToken**|**UserToken**|Potřebné pokud a pouze v případě _identity_ je nastavena na `userFromToken`. Token platný pro danou aplikaci funkcí. |
+|**Cesta**|**Cesta**|Požadovaná: cesta k Excelovému sešitu ve Onedrivu.|
 |**worksheetName**|**WorksheetName**|List, ve kterém se nachází tabulka.|
-|**tableName**|**TableName**|Název tabulky. Pokud není zadaný, použije se obsah listu.|
+|**tableName**|**TableName**|Název tabulky. Pokud není zadán, použije se obsah listu.|
 
 <a name="excel-input-code"></a>
 ### <a name="excel-input---usage"></a>Excel vstup - využití
 
-Tuto vazbu, musí mít následující oprávnění Azure AD:
+Tato vazba vyžaduje následující oprávnění Azure AD:
 |Prostředek|Oprávnění|
 |--------|--------|
 |Microsoft Graph|Umožňuje získat oprávnění ke čtení souborů uživatelů.|
 
-Vazba zveřejňuje následující typy, které mají funkce .NET:
-- řetězec [] –]
+Vazba zveřejňuje následující typy funkcí .NET:
+- [String []]
 - Microsoft.Graph.WorkbookTable
-- Typy vlastních objektů (pomocí vazby modelu strukturální)
+- Vlastní objekt typů (pomocí vazby modelu struktury)
 
 
 
@@ -380,7 +380,7 @@ Vazba zveřejňuje následující typy, které mají funkce .NET:
 <a name="excel-output"></a>
 ## <a name="excel-output"></a>Výstup aplikace Excel
 
-Aplikace Excel výstup vazby změní obsah tabulky aplikace Excel uložených na Onedrivu.
+V aplikaci Excel výstupní vazbu upraví obsah Excelové tabulky uložené na OneDrive.
 
 Tato část obsahuje následující témata:
 
@@ -389,18 +389,18 @@ Tato část obsahuje následující témata:
 * [Konfigurace](#excel-output---configuration)
 * [Využití](#excel-output---usage)
 
-### <a name="excel-output---example"></a>V aplikaci Excel výstup – příklad
+### <a name="excel-output---example"></a>Aplikace Excel výstup – příklad
 
-Podívejte se na konkrétní jazyk příklad:
+Podívejte se na příklad specifické pro jazyk:
 
 * [C# skript (.csx)](#excel-output---c-script-example)
 * [JavaScript](#excel-output---javascript-example)
 
-#### <a name="excel-output---c-script-example"></a>Excel výstupní – příklad skriptu jazyka C#
+#### <a name="excel-output---c-script-example"></a>Výstup – Excelový ukázkový skript jazyka C#
 
-Následující příklad přidá řádky s tabulkou aplikace Excel.
+Následující příklad přidá řádků do Excelové tabulky.
 
-*Function.json* soubor definuje aktivační procedury HTTP pomocí aplikace Excel výstup vazby:
+*Function.json* soubor definuje aktivační událost HTTP pomocí aplikace Excel výstupní vazby:
 
 ```json
 {
@@ -430,7 +430,7 @@ Následující příklad přidá řádky s tabulkou aplikace Excel.
 }
 ```
 
-Kód skriptu jazyka C# přidá nový řádek v tabulce (předpokládá, že jeden sloupec) na základě žádostí ze řetězec dotazu:
+Kód skriptu jazyka C# přidá nový řádek do tabulky (předpokládá se, že jedním sloupcem) na základě vstupu z řetězce dotazu:
 
 ```csharp
 using System.Net;
@@ -449,11 +449,11 @@ public static async Task Run(HttpRequest req, IAsyncCollector<object> newExcelRo
 }
 ```
 
-#### <a name="excel-output---javascript-example"></a>Excel výstupní – příklad v jazyce JavaScript
+#### <a name="excel-output---javascript-example"></a>Excel výstup – příklad v jazyce JavaScript
 
-Následující příklad přidá řádky s tabulkou aplikace Excel.
+Následující příklad přidá řádků do Excelové tabulky.
 
-*Function.json* soubor definuje aktivační procedury HTTP pomocí aplikace Excel výstup vazby:
+*Function.json* soubor definuje aktivační událost HTTP pomocí aplikace Excel výstupní vazby:
 
 ```json
 {
@@ -483,7 +483,7 @@ Následující příklad přidá řádky s tabulkou aplikace Excel.
 }
 ```
 
-Následující kód v JavaScriptu přidá nový řádek do tabulky (předpokládá, že jeden sloupec) založených na vstupu z řetězce dotazu.
+Následující kód jazyka JavaScript přidá nový řádek do tabulky (předpokládá se, že jedním sloupcem) na základě vstupu z řetězce dotazu.
 
 ```js
 module.exports = function (context, req) {
@@ -495,49 +495,49 @@ module.exports = function (context, req) {
 };
 ```
 
-### <a name="excel-output---attributes"></a>Excel výstupní – atributy
+### <a name="excel-output---attributes"></a>Excel výstup – atributy
 
-V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte [Excel](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/ExcelAttribute.cs) atribut.
+V [knihoven tříd C#](functions-dotnet-class-library.md), použijte [Excel](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/ExcelAttribute.cs) atribut.
 
-### <a name="excel-output---configuration"></a>V aplikaci Excel výstup - konfigurace
+### <a name="excel-output---configuration"></a>Aplikace Excel výstup – konfigurace
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.json* souboru a `Excel` atribut.
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**Jméno**||Požadovaná proměnná používá v kódu funkce pro ověření tokenu. V tématu [pomocí tabulky aplikace Excel výstup vazba z kódu](#excel-output-code).|
-|**type**||Vyžaduje - musí být nastavena na `excel`.|
-|**direction**||Vyžaduje - musí být nastavena na `out`.|
-|**Identity**|**Identita**|Požadovaná identity, která se použije k provedení akce. Může být jedna z následujících hodnot:<ul><li><code>userFromRequest</code> -Jedinými platnými s [Aktivace protokolu HTTP]. Použije identitu volajícího uživatele.</li><li><code>userFromId</code> -Použije identitu dříve přihlášeného uživatele se zadaným ID. Najdete v článku <code>userId</code> vlastnost.</li><li><code>userFromToken</code> -Použije identitu reprezentována zadaný token. Najdete v článku <code>userToken</code> vlastnost.</li><li><code>clientCredentials</code> -Použije identitu aplikace funkce.</li></ul>|
-|**ID uživatele** |**userId** |V případě potřeby a pouze v případě _identity_ je nastaven na `userFromId`. ID objektu zabezpečení uživatele přidružené k dříve přihlášeného uživatele.|
-|**userToken**|**UserToken**|V případě potřeby a pouze v případě _identity_ je nastaven na `userFromToken`. Token platný pro funkce aplikace. |
-|**Cesta**|**Cesta**|Požadovaná cesta k sešitu aplikace Excel na OneDrive.|
+|**Jméno**||Požadovaná: název této proměnné v kódu funkce pro ověřovací token. Zobrazit [pomocí Excelové tabulky Výstupní vazbu z kódu](#excel-output-code).|
+|**type**||Povinné – musí být nastavena na `excel`.|
+|**direction**||Povinné – musí být nastavena na `out`.|
+|**Identita**|**Identita**|Požadovaná: Identita, která se použije k provedení akce. Může být jedna z následujících hodnot:<ul><li><code>userFromRequest</code> -Jediné platné s [HTTP trigger]. Použije identitu volajícího uživatele.</li><li><code>userFromId</code> -Použije identitu dříve přihlášeného uživatele se zadaným ID. Zobrazit <code>userId</code> vlastnost.</li><li><code>userFromToken</code> -Použije identitu reprezentována zadaného tokenu. Zobrazit <code>userToken</code> vlastnost.</li><li><code>clientCredentials</code> -Použije identitu aplikace function App.</li></ul>|
+|**ID uživatele** |**userId** |Potřebné pokud a pouze v případě _identity_ je nastavena na `userFromId`. ID objektu zabezpečení uživatele přidružené k dříve přihlášenému uživateli.|
+|**userToken**|**UserToken**|Potřebné pokud a pouze v případě _identity_ je nastavena na `userFromToken`. Token platný pro danou aplikaci funkcí. |
+|**Cesta**|**Cesta**|Požadovaná: cesta k Excelovému sešitu ve Onedrivu.|
 |**worksheetName**|**WorksheetName**|List, ve kterém se nachází tabulka.|
-|**tableName**|**TableName**|Název tabulky. Pokud není zadaný, použije se obsah listu.|
-|**updateType**|**UpdateType**|Požadovaná typ změny, aby se do tabulky. Může být jedna z následujících hodnot:<ul><li><code>update</code> -Nahradí obsah tabulky ve Onedrivu.</li><li><code>append</code> -Přidá datové části na konec tabulky OneDrive vytvořením nové řádky.</li></ul>|
+|**tableName**|**TableName**|Název tabulky. Pokud není zadán, použije se obsah listu.|
+|**updateType**|**UpdateType**|Požadovaná: typ změny, která se provede v tabulce. Může být jedna z následujících hodnot:<ul><li><code>update</code> -Nahradí obsah tabulky na Onedrivu.</li><li><code>append</code> -Přidá datová část na konec tabulky na Onedrivu vytvořením nových řádků.</li></ul>|
 
 <a name="excel-output-code"></a>
-### <a name="excel-output---usage"></a>Výstup - Excel využití
+### <a name="excel-output---usage"></a>Výstup – Excel využití
 
-Tuto vazbu, musí mít následující oprávnění Azure AD:
+Tato vazba vyžaduje následující oprávnění Azure AD:
 |Prostředek|Oprávnění|
 |--------|--------|
 |Microsoft Graph|Úplný přístup k souborům uživatele|
 
-Vazba zveřejňuje následující typy, které mají funkce .NET:
-- řetězec [] –]
+Vazba zveřejňuje následující typy funkcí .NET:
+- [String []]
 - Newtonsoft.Json.Linq.JObject
 - Microsoft.Graph.WorkbookTable
-- Typy vlastních objektů (pomocí vazby modelu strukturální)
+- Vlastní objekt typů (pomocí vazby modelu struktury)
 
 
 
 
 
 <a name="onedrive-input"></a>
-## <a name="file-input"></a>Vstupní soubor
+## <a name="file-input"></a>Vstupního souboru
 
-Vazba vstupní soubor OneDrive přečte obsah souboru uložených na Onedrivu.
+Vstupní vazba soubor na Onedrivu přečte obsah souboru uloženém na Onedrivu.
 
 Tato část obsahuje následující témata:
 
@@ -548,16 +548,16 @@ Tato část obsahuje následující témata:
 
 ### <a name="file-input---example"></a>Soubor (vstup) – příklad
 
-Podívejte se na konkrétní jazyk příklad:
+Podívejte se na příklad specifické pro jazyk:
 
 * [C# skript (.csx)](#file-input---c-script-example)
 * [JavaScript](#file-input---javascript-example)
 
-#### <a name="file-input---c-script-example"></a>Soubor vstup – příklad skriptu jazyka C#
+#### <a name="file-input---c-script-example"></a>Vstup - soubor skriptu příklad jazyka C#
 
-Následující příklad načte soubor, který je uložený na OneDrive.
+Následující příklad načte soubor, který je uložený na Onedrivu.
 
-*Function.json* soubor definuje aktivační procedury HTTP s následující vazbou vstupní soubor OneDrive:
+*Function.json* soubor definuje aktivační událost HTTP s využitím vstupní vazby souborů OneDrive:
 
 ```json
 {
@@ -585,7 +585,7 @@ Následující příklad načte soubor, který je uložený na OneDrive.
 }
 ```
 
-Kód skriptu jazyka C# načte soubor zadaný v řetězci dotazu a jeho délka protokoly:
+Kód skriptu jazyka C# přečte soubor zadaný v řetězci dotazu a protokoly jeho délka:
 
 ```csharp
 using System.Net;
@@ -596,11 +596,11 @@ public static void Run(HttpRequestMessage req, Stream myOneDriveFile, TraceWrite
 }
 ```
 
-#### <a name="file-input---javascript-example"></a>Soubor vstup – příklad v jazyce JavaScript
+#### <a name="file-input---javascript-example"></a>Soubor vstupní – příklad v jazyce JavaScript
 
-Následující příklad načte soubor, který je uložený na OneDrive.
+Následující příklad načte soubor, který je uložený na Onedrivu.
 
-*Function.json* soubor definuje aktivační procedury HTTP s následující vazbou vstupní soubor OneDrive:
+*Function.json* soubor definuje aktivační událost HTTP s využitím vstupní vazby souborů OneDrive:
 
 ```json
 {
@@ -628,7 +628,7 @@ Následující příklad načte soubor, který je uložený na OneDrive.
 }
 ```
 
-Následující kód v JavaScriptu načte soubor zadaný v řetězci dotazu a vrátí jeho délka.
+Následující kód jazyka JavaScript přečte soubor zadaný v řetězci dotazu a vrátí jeho délka.
 
 ```js
 module.exports = function (context, req) {
@@ -639,9 +639,9 @@ module.exports = function (context, req) {
 };
 ```
 
-### <a name="file-input---attributes"></a>Soubor vstup – atributy
+### <a name="file-input---attributes"></a>Soubor vstupní – atributy
 
-V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte [OneDrive](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/OneDriveAttribute.cs) atribut.
+V [knihoven tříd C#](functions-dotnet-class-library.md), použijte [Onedrivu](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/OneDriveAttribute.cs) atribut.
 
 ### <a name="file-input---configuration"></a>Soubor (vstup) – konfigurace
 
@@ -649,23 +649,23 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**Jméno**||Požadovaná proměnná používá v kódu funkce pro soubor. V tématu [pomocí souboru OneDrive Vstupní vazba z kódu](#onedrive-input-code).|
-|**type**||Vyžaduje - musí být nastavena na `onedrive`.|
-|**direction**||Vyžaduje - musí být nastavena na `in`.|
-|**Identity**|**Identita**|Požadovaná identity, která se použije k provedení akce. Může být jedna z následujících hodnot:<ul><li><code>userFromRequest</code> -Jedinými platnými s [Aktivace protokolu HTTP]. Použije identitu volajícího uživatele.</li><li><code>userFromId</code> -Použije identitu dříve přihlášeného uživatele se zadaným ID. Najdete v článku <code>userId</code> vlastnost.</li><li><code>userFromToken</code> -Použije identitu reprezentována zadaný token. Najdete v článku <code>userToken</code> vlastnost.</li><li><code>clientCredentials</code> -Použije identitu aplikace funkce.</li></ul>|
-|**userId**|**ID uživatele**  |V případě potřeby a pouze v případě _identity_ je nastaven na `userFromId`. ID objektu zabezpečení uživatele přidružené k dříve přihlášeného uživatele.|
-|**userToken**|**UserToken**|V případě potřeby a pouze v případě _identity_ je nastaven na `userFromToken`. Token platný pro funkce aplikace. |
-|**Cesta**|**Cesta**|Požadovaná cesta k souboru na OneDrive.|
+|**Jméno**||Požadovaná: název této proměnné v kódu funkce pro soubor. Zobrazit [pomocí souboru Onedrivu vstupní vazby z kódu](#onedrive-input-code).|
+|**type**||Povinné – musí být nastavena na `onedrive`.|
+|**direction**||Povinné – musí být nastavena na `in`.|
+|**Identita**|**Identita**|Požadovaná: Identita, která se použije k provedení akce. Může být jedna z následujících hodnot:<ul><li><code>userFromRequest</code> -Jediné platné s [HTTP trigger]. Použije identitu volajícího uživatele.</li><li><code>userFromId</code> -Použije identitu dříve přihlášeného uživatele se zadaným ID. Zobrazit <code>userId</code> vlastnost.</li><li><code>userFromToken</code> -Použije identitu reprezentována zadaného tokenu. Zobrazit <code>userToken</code> vlastnost.</li><li><code>clientCredentials</code> -Použije identitu aplikace function App.</li></ul>|
+|**userId**|**ID uživatele**  |Potřebné pokud a pouze v případě _identity_ je nastavena na `userFromId`. ID objektu zabezpečení uživatele přidružené k dříve přihlášenému uživateli.|
+|**userToken**|**UserToken**|Potřebné pokud a pouze v případě _identity_ je nastavena na `userFromToken`. Token platný pro danou aplikaci funkcí. |
+|**Cesta**|**Cesta**|Požadovaná: cesta k souboru ve Onedrivu.|
 
 <a name="onedrive-input-code"></a>
-### <a name="file-input---usage"></a>Soubor vstup - využití
+### <a name="file-input---usage"></a>Soubor vstupní – využití
 
-Tuto vazbu, musí mít následující oprávnění Azure AD:
+Tato vazba vyžaduje následující oprávnění Azure AD:
 |Prostředek|Oprávnění|
 |--------|--------|
 |Microsoft Graph|Umožňuje získat oprávnění ke čtení souborů uživatelů.|
 
-Vazba zveřejňuje následující typy, které mají funkce .NET:
+Vazba zveřejňuje následující typy funkcí .NET:
 - Byte
 - Stream
 - řetězec
@@ -679,7 +679,7 @@ Vazba zveřejňuje následující typy, které mají funkce .NET:
 <a name="onedrive-output"></a>
 ## <a name="file-output"></a>Výstupní soubor
 
-Soubor OneDrive výstup vazby změní obsah souboru uložených na Onedrivu.
+Soubor Onedrivu výstupní vazbu upraví obsah souboru uloženém na Onedrivu.
 
 Tato část obsahuje následující témata:
 
@@ -688,18 +688,18 @@ Tato část obsahuje následující témata:
 * [Konfigurace](#file-output---configuration)
 * [Využití](#file-output---usage)
 
-### <a name="file-output---example"></a>Soubor výstupu – příklad
+### <a name="file-output---example"></a>Soubor výstup – příklad
 
-Podívejte se na konkrétní jazyk příklad:
+Podívejte se na příklad specifické pro jazyk:
 
 * [C# skript (.csx)](#file-output---c-script-example)
 * [JavaScript](#file-output---javascript-example)
 
-#### <a name="file-output---c-script-example"></a>Obsah souboru – příklad skriptu jazyka C#
+#### <a name="file-output---c-script-example"></a>Soubor výstupu – příklad skriptu jazyka C#
 
-V následujícím příkladu se zapíše do souboru, který je uložený na OneDrive.
+V následujícím příkladu se zapíše do souboru, který je uložený na Onedrivu.
 
-*Function.json* soubor definuje aktivační procedury HTTP s OneDrive výstup vazby:
+*Function.json* soubor definuje aktivační událost HTTP s Onedrivu výstupní vazby:
 
 ```json
 {
@@ -727,7 +727,7 @@ V následujícím příkladu se zapíše do souboru, který je uložený na OneD
 }
 ```
 
-Kód skriptu jazyka C# načte text z řetězce dotazu a zapíše ho do textového souboru (FunctionsTest.txt definovaným v předchozím příkladu) v kořenovém adresáři volajícího onedrivu:
+Kód skriptu jazyka C# získá text z řetězce dotazu a zapíše jej do textového souboru (FunctionsTest.txt definované v předchozím příkladu) v kořenové složce Onedrivu volající:
 
 ```csharp
 using System.Net;
@@ -743,11 +743,11 @@ public static async Task Run(HttpRequest req, TraceWriter log, Stream myOneDrive
 }
 ```
 
-#### <a name="file-output---javascript-example"></a>Obsah souboru – příklad v jazyce JavaScript
+#### <a name="file-output---javascript-example"></a>Soubor výstupu – příklad v jazyce JavaScript
 
-V následujícím příkladu se zapíše do souboru, který je uložený na OneDrive.
+V následujícím příkladu se zapíše do souboru, který je uložený na Onedrivu.
 
-*Function.json* soubor definuje aktivační procedury HTTP s OneDrive výstup vazby:
+*Function.json* soubor definuje aktivační událost HTTP s Onedrivu výstupní vazby:
 
 ```json
 {
@@ -775,7 +775,7 @@ V následujícím příkladu se zapíše do souboru, který je uložený na OneD
 }
 ```
 
-Kód jazyka JavaScript načte text z řetězce dotazu a zapíše ho do textového souboru (FunctionsTest.txt jak je definována v konfiguračním výše) v kořenovém adresáři volajícího onedrivu.
+Kód jazyka JavaScript získá text z řetězce dotazu a zapisuje je do textového souboru (FunctionsTest.txt definované v konfiguraci výše) v kořenové složce Onedrivu volajícího.
 
 ```js
 module.exports = function (context, req) {
@@ -784,33 +784,33 @@ module.exports = function (context, req) {
 };
 ```
 
-### <a name="file-output---attributes"></a>Obsah souboru – atributy
+### <a name="file-output---attributes"></a>Soubor výstupu – atributy
 
-V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte [OneDrive](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/OneDriveAttribute.cs) atribut.
+V [knihoven tříd C#](functions-dotnet-class-library.md), použijte [Onedrivu](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/OneDriveAttribute.cs) atribut.
 
-### <a name="file-output---configuration"></a>Soubor výstupu - konfigurace
+### <a name="file-output---configuration"></a>Soubor výstup – konfigurace
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.json* souboru a `OneDrive` atribut.
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**Jméno**||Požadovaná proměnná používá v kódu funkce pro soubor. V tématu [pomocí souboru OneDrive výstup vazba z kódu](#onedrive-output-code).|
-|**type**||Vyžaduje - musí být nastavena na `onedrive`.|
-|**direction**||Vyžaduje - musí být nastavena na `out`.|
-|**Identity**|**Identita**|Požadovaná identity, která se použije k provedení akce. Může být jedna z následujících hodnot:<ul><li><code>userFromRequest</code> -Jedinými platnými s [Aktivace protokolu HTTP]. Použije identitu volajícího uživatele.</li><li><code>userFromId</code> -Použije identitu dříve přihlášeného uživatele se zadaným ID. Najdete v článku <code>userId</code> vlastnost.</li><li><code>userFromToken</code> -Použije identitu reprezentována zadaný token. Najdete v článku <code>userToken</code> vlastnost.</li><li><code>clientCredentials</code> -Použije identitu aplikace funkce.</li></ul>|
-|**ID uživatele** |**userId** |V případě potřeby a pouze v případě _identity_ je nastaven na `userFromId`. ID objektu zabezpečení uživatele přidružené k dříve přihlášeného uživatele.|
-|**userToken**|**UserToken**|V případě potřeby a pouze v případě _identity_ je nastaven na `userFromToken`. Token platný pro funkce aplikace. |
-|**Cesta**|**Cesta**|Požadovaná cesta k souboru na OneDrive.|
+|**Jméno**||Požadovaná: název této proměnné v kódu funkce pro soubor. Zobrazit [pomocí souboru Onedrivu výstupní vazbu z kódu](#onedrive-output-code).|
+|**type**||Povinné – musí být nastavena na `onedrive`.|
+|**direction**||Povinné – musí být nastavena na `out`.|
+|**Identita**|**Identita**|Požadovaná: Identita, která se použije k provedení akce. Může být jedna z následujících hodnot:<ul><li><code>userFromRequest</code> -Jediné platné s [HTTP trigger]. Použije identitu volajícího uživatele.</li><li><code>userFromId</code> -Použije identitu dříve přihlášeného uživatele se zadaným ID. Zobrazit <code>userId</code> vlastnost.</li><li><code>userFromToken</code> -Použije identitu reprezentována zadaného tokenu. Zobrazit <code>userToken</code> vlastnost.</li><li><code>clientCredentials</code> -Použije identitu aplikace function App.</li></ul>|
+|**ID uživatele** |**userId** |Potřebné pokud a pouze v případě _identity_ je nastavena na `userFromId`. ID objektu zabezpečení uživatele přidružené k dříve přihlášenému uživateli.|
+|**userToken**|**UserToken**|Potřebné pokud a pouze v případě _identity_ je nastavena na `userFromToken`. Token platný pro danou aplikaci funkcí. |
+|**Cesta**|**Cesta**|Požadovaná: cesta k souboru ve Onedrivu.|
 
 <a name="onedrive-output-code"></a>
-#### <a name="file-output---usage"></a>Obsah souboru - využití
+#### <a name="file-output---usage"></a>Soubor výstupu – využití
 
-Tuto vazbu, musí mít následující oprávnění Azure AD:
+Tato vazba vyžaduje následující oprávnění Azure AD:
 |Prostředek|Oprávnění|
 |--------|--------|
 |Microsoft Graph|Úplný přístup k souborům uživatele|
 
-Vazba zveřejňuje následující typy, které mají funkce .NET:
+Vazba zveřejňuje následující typy funkcí .NET:
 - Byte
 - Stream
 - řetězec
@@ -823,7 +823,7 @@ Vazba zveřejňuje následující typy, které mají funkce .NET:
 <a name="outlook-output"></a>
 ## <a name="outlook-output"></a>Výstup aplikace Outlook
 
-Zprávy Outlooku Výstupní vazba zasílá e-mailovou zprávu prostřednictvím aplikace Outlook.
+Zprávy Outlooku výstupní vazbu odešle e-mailovou zprávu prostřednictvím aplikace Outlook.
 
 Tato část obsahuje následující témata:
 
@@ -834,16 +834,16 @@ Tato část obsahuje následující témata:
 
 ### <a name="outlook-output---example"></a>Výstup aplikace Outlook – příklad
 
-Podívejte se na konkrétní jazyk příklad:
+Podívejte se na příklad specifické pro jazyk:
 
 * [C# skript (.csx)](#outlook-output---c-script-example)
 * [JavaScript](#outlook-output---javascript-example)
 
-#### <a name="outlook-output---c-script-example"></a>Outlook výstupní – příklad skriptu jazyka C#
+#### <a name="outlook-output---c-script-example"></a>Aplikace Outlook výstup – příklad skriptu jazyka C#
 
-Následující příklad odešle e-mailu prostřednictvím aplikace Outlook.
+V následujícím příkladu se odešle e-mailu prostřednictvím Outlooku.
 
-*Function.json* soubor definuje aktivační procedury HTTP pomocí aplikace Outlook zpráva výstup vazby:
+*Function.json* soubor definuje aktivační událost HTTP s aplikace Outlook zpráva výstupní vazby:
 
 ```json
 {
@@ -864,7 +864,7 @@ Následující příklad odešle e-mailu prostřednictvím aplikace Outlook.
 }
 ```
 
-Kód skriptu jazyka C# odešle poštu volající příjemce určeného v řetězci dotazu:
+Kód skriptu jazyka C# odešle e-mailu od volajícího příjemci zadaná v řetězci dotazu:
 
 ```csharp
 using System.Net;
@@ -893,11 +893,11 @@ public class Recipient {
 }
 ```
 
-#### <a name="outlook-output---javascript-example"></a>Outlook výstupní – příklad v jazyce JavaScript
+#### <a name="outlook-output---javascript-example"></a>Aplikace Outlook výstup – příklad v jazyce JavaScript
 
-Následující příklad odešle e-mailu prostřednictvím aplikace Outlook.
+V následujícím příkladu se odešle e-mailu prostřednictvím Outlooku.
 
-*Function.json* soubor definuje aktivační procedury HTTP pomocí aplikace Outlook zpráva výstup vazby:
+*Function.json* soubor definuje aktivační událost HTTP s aplikace Outlook zpráva výstupní vazby:
 
 ```json
 {
@@ -918,7 +918,7 @@ Následující příklad odešle e-mailu prostřednictvím aplikace Outlook.
 }
 ```
 
-Kód jazyka JavaScript odešle poštu volající příjemce určeného v řetězci dotazu:
+Kód jazyka JavaScript odešle e-mailu od volajícího příjemci zadaná v řetězci dotazu:
 
 ```js
 module.exports = function (context, req) {
@@ -933,36 +933,36 @@ module.exports = function (context, req) {
 };
 ```
 
-### <a name="outlook-output---attributes"></a>Outlook výstupní – atributy
+### <a name="outlook-output---attributes"></a>Aplikace Outlook výstup – atributy
 
-V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte [Outlook](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/OutlookAttribute.cs) atribut.
+V [knihoven tříd C#](functions-dotnet-class-library.md), použijte [Outlook](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/OutlookAttribute.cs) atribut.
 
-### <a name="outlook-output---configuration"></a>Výstup aplikace Outlook - konfigurace
+### <a name="outlook-output---configuration"></a>Výstup aplikace Outlook – konfigurace
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.json* souboru a `Outlook` atribut.
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**Jméno**||Požadovaná proměnná používá v kódu funkce pro e-mailovou zprávu. V tématu [pomocí zprávy Outlooku výstup vazba z kódu](#outlook-output-code).|
-|**type**||Vyžaduje - musí být nastavena na `outlook`.|
-|**direction**||Vyžaduje - musí být nastavena na `out`.|
-|**Identity**|**Identita**|Požadovaná identity, která se použije k provedení akce. Může být jedna z následujících hodnot:<ul><li><code>userFromRequest</code> -Jedinými platnými s [Aktivace protokolu HTTP]. Použije identitu volajícího uživatele.</li><li><code>userFromId</code> -Použije identitu dříve přihlášeného uživatele se zadaným ID. Najdete v článku <code>userId</code> vlastnost.</li><li><code>userFromToken</code> -Použije identitu reprezentována zadaný token. Najdete v článku <code>userToken</code> vlastnost.</li><li><code>clientCredentials</code> -Použije identitu aplikace funkce.</li></ul>|
-|**userId**|**ID uživatele**  |V případě potřeby a pouze v případě _identity_ je nastaven na `userFromId`. ID objektu zabezpečení uživatele přidružené k dříve přihlášeného uživatele.|
-|**userToken**|**UserToken**|V případě potřeby a pouze v případě _identity_ je nastaven na `userFromToken`. Token platný pro funkce aplikace. |
+|**Jméno**||Požadovaná: název této proměnné v kódu funkce pro e-mailovou zprávu. Zobrazit [pomocí zprávy Outlooku výstupní vazbu z kódu](#outlook-output-code).|
+|**type**||Povinné – musí být nastavena na `outlook`.|
+|**direction**||Povinné – musí být nastavena na `out`.|
+|**Identita**|**Identita**|Požadovaná: Identita, která se použije k provedení akce. Může být jedna z následujících hodnot:<ul><li><code>userFromRequest</code> -Jediné platné s [HTTP trigger]. Použije identitu volajícího uživatele.</li><li><code>userFromId</code> -Použije identitu dříve přihlášeného uživatele se zadaným ID. Zobrazit <code>userId</code> vlastnost.</li><li><code>userFromToken</code> -Použije identitu reprezentována zadaného tokenu. Zobrazit <code>userToken</code> vlastnost.</li><li><code>clientCredentials</code> -Použije identitu aplikace function App.</li></ul>|
+|**userId**|**ID uživatele**  |Potřebné pokud a pouze v případě _identity_ je nastavena na `userFromId`. ID objektu zabezpečení uživatele přidružené k dříve přihlášenému uživateli.|
+|**userToken**|**UserToken**|Potřebné pokud a pouze v případě _identity_ je nastavena na `userFromToken`. Token platný pro danou aplikaci funkcí. |
 
 <a name="outlook-output-code"></a>
-### <a name="outlook-output---usage"></a>Výstup - Outlook využití
+### <a name="outlook-output---usage"></a>Aplikace Outlook výstup – využití
 
-Tuto vazbu, musí mít následující oprávnění Azure AD:
+Tato vazba vyžaduje následující oprávnění Azure AD:
 |Prostředek|Oprávnění|
 |--------|--------|
 |Microsoft Graph|Odesílat poštu jménem uživatele|
 
-Vazba zveřejňuje následující typy, které mají funkce .NET:
+Vazba zveřejňuje následující typy funkcí .NET:
 - Microsoft.Graph.Message
 - Newtonsoft.Json.Linq.JObject
 - řetězec
-- Typy vlastních objektů (pomocí vazby modelu strukturální)
+- Vlastní objekt typů (pomocí vazby modelu struktury)
 
 
 
@@ -971,22 +971,22 @@ Vazba zveřejňuje následující typy, které mají funkce .NET:
 
 ## <a name="webhooks"></a>Webhooky
 
-Webhooky umožňují reagování na události v aplikaci Microsoft Graph. Pro podporu webhooků, jsou funkce potřebné k vytvoření, aktualizace a reagovat na _webhooku odběry_. Dokončení webhooku řešení vyžaduje kombinaci následující vazby:
-- A [aktivační události webhooku Microsoft Graph](#webhook-trigger) umožňuje reagovat na příchozí webhooku.
-- A [webhooku předplatného Microsoft Graph vstupní vazby](#webhook-input) umožňuje seznamu existující odběry a můžete je aktualizovat.
-- A [webhooku předplatného Microsoft Graph výstup vazby](#webhook-output) umožňuje vytvořit nebo odstranit odběry webhooku.
+Webhooky umožňují reagovat na události v Microsoft Graphu. Pro podporu webhooky, jsou funkce potřebné k vytvoření, aktualizace a reagovat na _odběrů webhooků_. Webhook kompletní řešení vyžaduje kombinaci následující vazby:
+- A [trigger webhooku Microsoft Graph](#webhook-trigger) umožňuje reagovat na příchozí webhooku.
+- A [odběr webhooku Microsoft Graph vstupní vazby](#webhook-input) umožňuje seznam stávajících předplatných a obnovit je.
+- A [odběr webhooku Microsoft Graph výstupní vazby](#webhook-output) umožňuje vytvořit nebo odstranit odběry webhooků.
 
-Vazby sami nevyžadují žádné oprávnění Azure AD, ale budete muset požádat o oprávnění, které jsou relevantní pro typ prostředku, který chcete reagovat na. Seznam, které jsou potřeba oprávnění pro každý typ prostředku, naleznete v části [předplatné oprávnění](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/subscription_post_subscriptions).
+Vazby sami se nevyžaduje žádná oprávnění Azure AD, ale budete muset požádat o oprávnění, které jsou relevantní pro typ prostředku, který chcete reagovat na ně. Seznam, které jsou potřeba oprávnění pro jednotlivé typy prostředků najdete v tématu [oprávnění pro předplatné](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/subscription_post_subscriptions).
 
-Další informace o webhooky najdete v tématu [práce s webhooky v aplikaci Microsoft Graph].
-
-
+Další informace o webhooků najdete v tématu [práce s webhooky v aplikaci Microsoft Graph].
 
 
 
-## <a name="webhook-trigger"></a>Aktivační události Webhooku
 
-Aktivační události webhooku Microsoft Graph umožňuje funkce, která se reagovat na příchozí webhooku z Microsoft Graph. Každá instance této aktivační události může reagovat na některý typ prostředku Microsoft Graph.
+
+## <a name="webhook-trigger"></a>Trigger Webhooku
+
+Trigger webhooku Microsoft Graph umožňuje funkci reagovat na příchozí webhooku z Microsoft Graphu. Každá instance této aktivační události může reagovat na jeden typ prostředku Microsoft Graphu.
 
 Tato část obsahuje následující témata:
 
@@ -995,18 +995,18 @@ Tato část obsahuje následující témata:
 * [Konfigurace](#webhook-trigger---configuration)
 * [Využití](#webhook-trigger---usage)
 
-### <a name="webhook-trigger---example"></a>Aktivační události Webhooku – příklad
+### <a name="webhook-trigger---example"></a>Trigger Webhooku – příklad
 
-Podívejte se na konkrétní jazyk příklad:
+Podívejte se na příklad specifické pro jazyk:
 
 * [C# skript (.csx)](#webhook-trigger---c-script-example)
 * [JavaScript](#webhook-trigger---javascript-example)
 
-#### <a name="webhook-trigger---c-script-example"></a>Aktivační události Webhooku – příklad skriptu jazyka C#
+#### <a name="webhook-trigger---c-script-example"></a>Trigger Webhooku – příklad skriptu jazyka C#
 
-Následující příklad zpracovává webhooky pro příchozí zprávy Outlooku. Použít můžete aktivovat webhook, jehož [vytvořit odběr](#webhook-output---example), a můžete [aktualizovat předplatné](#webhook-subscription-refresh) chcete zabránit vypršení platnosti.
+V následujícím příkladu zpracovává webhooky pro Outlookové zprávy příchozí. Použít můžete aktivovat webhook [vytvoření odběru](#webhook-output---example), a můžete je [aktualizovat předplatné](#webhook-subscription-refresh) jak zabránit vypršení platnosti.
 
-*Function.json* soubor definuje aktivační události webhooku:
+*Function.json* soubor definuje aktivační událost webhooku:
 
 ```json
 {
@@ -1022,7 +1022,7 @@ Následující příklad zpracovává webhooky pro příchozí zprávy Outlooku.
 }
 ```
 
-Kód skriptu jazyka C# reaguje na příchozí e-mailových zpráv a protokoly text těchto poslal příjemce a obsahuje "Azure Functions" v předmětu:
+Kód skriptu jazyka C# reaguje na příchozí e-mailové zprávy a protokoly odesílaných příjemce a obsahující "Funkce Azure" v předmětu text:
 
 ```csharp
 #r "Microsoft.Graph"
@@ -1040,11 +1040,11 @@ public static async Task Run(Message msg, TraceWriter log)
 }
 ```
 
-#### <a name="webhook-trigger---javascript-example"></a>Aktivační události Webhooku – příklad v jazyce JavaScript
+#### <a name="webhook-trigger---javascript-example"></a>Trigger Webhooku – příklad v jazyce JavaScript
 
-Následující příklad zpracovává webhooky pro příchozí zprávy Outlooku. Použít můžete aktivovat webhook, jehož [vytvořit odběr](#webhook-output---example), a můžete [aktualizovat předplatné](#webhook-subscription-refresh) chcete zabránit vypršení platnosti.
+V následujícím příkladu zpracovává webhooky pro Outlookové zprávy příchozí. Použít můžete aktivovat webhook [vytvoření odběru](#webhook-output---example), a můžete je [aktualizovat předplatné](#webhook-subscription-refresh) jak zabránit vypršení platnosti.
 
-*Function.json* soubor definuje aktivační události webhooku:
+*Function.json* soubor definuje aktivační událost webhooku:
 
 ```json
 {
@@ -1060,7 +1060,7 @@ Následující příklad zpracovává webhooky pro příchozí zprávy Outlooku.
 }
 ```
 
-Kód jazyka JavaScript reaguje na příchozí e-mailových zpráv a protokoly text těchto poslal příjemce a obsahuje "Azure Functions" v předmětu:
+Kód jazyka JavaScript reaguje na příchozí e-mailové zprávy a protokoly odesílaných příjemce a obsahující "Funkce Azure" v předmětu text:
 
 ```js
 module.exports = function (context) {
@@ -1074,29 +1074,29 @@ module.exports = function (context) {
 };
 ```
 
-### <a name="webhook-trigger---attributes"></a>Aktivační události Webhooku – atributy
+### <a name="webhook-trigger---attributes"></a>Trigger Webhooku – atributy
 
-V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte [GraphWebHookTrigger](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebHookTriggerAttribute.cs) atribut.
+V [knihoven tříd C#](functions-dotnet-class-library.md), použijte [GraphWebHookTrigger](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebHookTriggerAttribute.cs) atribut.
 
-### <a name="webhook-trigger---configuration"></a>Aktivační události Webhooku - konfigurace
+### <a name="webhook-trigger---configuration"></a>Trigger Webhooku – konfigurace
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.json* souboru a `GraphWebHookTrigger` atribut.
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**Jméno**||Požadovaná proměnná používá v kódu funkce pro e-mailovou zprávu. V tématu [pomocí zprávy Outlooku výstup vazba z kódu](#outlook-output-code).|
-|**type**||Vyžaduje - musí být nastavena na `graphWebhook`.|
-|**direction**||Vyžaduje - musí být nastavena na `trigger`.|
-|**Typ prostředku**|**Typ prostředku**|Požadovaná prostředků grafu, pro kterou má tato funkce Odpovědět na webhooky. Může být jedna z následujících hodnot:<ul><li><code>#Microsoft.Graph.Message</code> -změny provedené v aplikaci Outlook zprávy.</li><li><code>#Microsoft.Graph.DriveItem</code> -změny provedené v OneDrive kořenové položky.</li><li><code>#Microsoft.Graph.Contact</code> -změny provedené v osobních kontaktů v aplikaci Outlook.</li><li><code>#Microsoft.Graph.Event</code> -změny položky kalendáře aplikace Outlook.</li></ul>|
+|**Jméno**||Požadovaná: název této proměnné v kódu funkce pro e-mailovou zprávu. Zobrazit [pomocí zprávy Outlooku výstupní vazbu z kódu](#outlook-output-code).|
+|**type**||Povinné – musí být nastavena na `graphWebhook`.|
+|**direction**||Povinné – musí být nastavena na `trigger`.|
+|**Typ prostředku**|**Typ prostředku**|Požadovaná: prostředek grafu, pro které tato funkce měla reagovat na webhooky. Může být jedna z následujících hodnot:<ul><li><code>#Microsoft.Graph.Message</code> -změny pro Outlookové zprávy.</li><li><code>#Microsoft.Graph.DriveItem</code> -změny provedené u položek kořenové OneDrive.</li><li><code>#Microsoft.Graph.Contact</code> -změny provedené v osobní kontakty v Outlooku.</li><li><code>#Microsoft.Graph.Event</code> -změny provedené u položek kalendáře aplikace Outlook.</li></ul>|
 
 > [!Note]
-> Funkce aplikace může mít pouze jednu funkci, která je registrována danou `resourceType` hodnotu.
+> Aplikace function app může mít jenom jednu funkci, která je registrována danou `resourceType` hodnotu.
 
-### <a name="webhook-trigger---usage"></a>Aktivační události Webhooku - využití
+### <a name="webhook-trigger---usage"></a>Trigger Webhooku – využití
 
-Vazba zveřejňuje následující typy, které mají funkce .NET:
-- Microsoft Graph SDK typy relevantní pro typ prostředku, jako například `Microsoft.Graph.Message` nebo `Microsoft.Graph.DriveItem`.
-- Typy vlastních objektů (pomocí vazby modelu strukturální)
+Vazba zveřejňuje následující typy funkcí .NET:
+- Sada SDK Microsoft Graphu typy relevantní pro typ prostředku, jako `Microsoft.Graph.Message` nebo `Microsoft.Graph.DriveItem`.
+- Vlastní objekt typů (pomocí vazby modelu struktury)
 
 
 
@@ -1104,7 +1104,7 @@ Vazba zveřejňuje následující typy, které mají funkce .NET:
 <a name="webhook-input"></a>
 ## <a name="webhook-input"></a>Vstup Webhooku
 
-Vstupní vazba webhooku Microsoft Graph umožňuje načíst seznam předplatných spravuje této funkce aplikace. Vazby čte z funkce aplikace úložiště, takže se nemusí odpovídat odběr vytvořené z mimo aplikaci.
+Vstupní vazby webhooku Microsoft Graph umožňuje načíst seznam předplatných, které spravuje této aplikace function app. Vazby načítá z úložiště aplikace funkce, takže nereflektuje další předplatná vytvořená z mimo aplikaci.
 
 Tato část obsahuje následující témata:
 
@@ -1113,18 +1113,18 @@ Tato část obsahuje následující témata:
 * [Konfigurace](#webhook-input---configuration)
 * [Využití](#webhook-input---usage)
 
-### <a name="webhook-input---example"></a>Webhooku (vstup) – příklad
+### <a name="webhook-input---example"></a>Vstup Webhook – příklad
 
-Podívejte se na konkrétní jazyk příklad:
+Podívejte se na příklad specifické pro jazyk:
 
 * [C# skript (.csx)](#webhook-input---c-script-example)
 * [JavaScript](#webhook-input---javascript-example)
 
-#### <a name="webhook-input---c-script-example"></a>Webhooku vstup – příklad skriptu jazyka C#
+#### <a name="webhook-input---c-script-example"></a>Webhook zadejte – příklad skriptu jazyka C#
 
-V následujícím příkladu získá všechna předplatná pro volání uživatele a je odstraní.
+Následující příklad získá všechna předplatná pro volajícího uživatele a je odstraní.
 
-*Function.json* soubor definuje aktivační procedury HTTP vstupní vazbou předplatného a předplatné výstup, vazby, které používá akci odstranění:
+*Function.json* soubor definuje aktivační událost HTTP s využitím vstupní vazby předplatného a předplatné výstupní vazby, která používá akci odstranění:
 
 ```json
 {
@@ -1157,7 +1157,7 @@ V následujícím příkladu získá všechna předplatná pro volání uživate
 }
 ```
 
-Kód skriptu jazyka C# získá předplatná a je odstraní:
+Kód skriptu jazyka C# získá předplatná a jejich odstraní:
 
 ```csharp
 using System.Net;
@@ -1173,11 +1173,11 @@ public static async Task Run(HttpRequest req, string[] existingSubscriptions, IA
 }
 ```
 
-#### <a name="webhook-input---javascript-example"></a>Webhooku vstup – příklad v jazyce JavaScript
+#### <a name="webhook-input---javascript-example"></a>Webhook zadejte – příklad v jazyce JavaScript
 
-V následujícím příkladu získá všechna předplatná pro volání uživatele a je odstraní.
+Následující příklad získá všechna předplatná pro volajícího uživatele a je odstraní.
 
-*Function.json* soubor definuje aktivační procedury HTTP vstupní vazbou předplatného a předplatné výstup, vazby, které používá akci odstranění:
+*Function.json* soubor definuje aktivační událost HTTP s využitím vstupní vazby předplatného a předplatné výstupní vazby, která používá akci odstranění:
 
 ```json
 {
@@ -1210,7 +1210,7 @@ V následujícím příkladu získá všechna předplatná pro volání uživate
 }
 ```
 
-Kód jazyka JavaScript získá předplatná a je odstraní:
+Kód jazyka JavaScript získá předplatná a jejich odstraní:
 
 ```js
 module.exports = function (context, req) {
@@ -1225,28 +1225,28 @@ module.exports = function (context, req) {
 };
 ```
 
-### <a name="webhook-input---attributes"></a>Webhooku vstup – atributy
+### <a name="webhook-input---attributes"></a>Webhook zadejte – atributy
 
-V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte [GraphWebHookSubscription](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebHookSubscriptionAttribute.cs) atribut.
+V [knihoven tříd C#](functions-dotnet-class-library.md), použijte [GraphWebHookSubscription](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebHookSubscriptionAttribute.cs) atribut.
 
-### <a name="webhook-input---configuration"></a>Webhooku (vstup) – konfigurace
+### <a name="webhook-input---configuration"></a>Webhook (vstup) – konfigurace
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.json* souboru a `GraphWebHookSubscription` atribut.
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**Jméno**||Požadovaná proměnná používá v kódu funkce pro e-mailovou zprávu. V tématu [pomocí zprávy Outlooku výstup vazba z kódu](#outlook-output-code).|
-|**type**||Vyžaduje - musí být nastavena na `graphWebhookSubscription`.|
-|**direction**||Vyžaduje - musí být nastavena na `in`.|
-|**Filtr**|**Filtr**| Pokud nastavena na `userFromRequest`, pak vazby pouze načte odběry vlastněných uživatelem volání (platný pouze s [Aktivace protokolu HTTP]).| 
+|**Jméno**||Požadovaná: název této proměnné v kódu funkce pro e-mailovou zprávu. Zobrazit [pomocí zprávy Outlooku výstupní vazbu z kódu](#outlook-output-code).|
+|**type**||Povinné – musí být nastavena na `graphWebhookSubscription`.|
+|**direction**||Povinné – musí být nastavena na `in`.|
+|**Filtr**|**Filtr**| Pokud hodnotu `userFromRequest`, pak vazba bude načítat jen předplatná ve vlastnictví volajícího uživatele (platné jen spolu s [HTTP trigger]).| 
 
-### <a name="webhook-input---usage"></a>Vstup - Webhooku využití
+### <a name="webhook-input---usage"></a>Webhook vstup - využití
 
-Vazba zveřejňuje následující typy, které mají funkce .NET:
-- Řetězec]
-- Typ pole vlastních objektů
+Vazba zveřejňuje následující typy funkcí .NET:
+- řetězec]
+- Vlastní objekt typu pole
 - Newtonsoft.Json.Linq.JObject[]
-- [Microsoft.Graph.Subscription]
+- [] Microsoft.Graph.Subscription
 
 
 
@@ -1254,7 +1254,7 @@ Vazba zveřejňuje následující typy, které mají funkce .NET:
 
 ## <a name="webhook-output"></a>Výstup Webhooku
 
-Předplatné webhooku výstup vazba umožňuje vytvořit, odstranit a aktualizovat webhook odběry v aplikaci Microsoft Graph.
+Odběr webhooku výstupní vazbu umožňuje vytvářet, odstraňovat a aktualizovat odběry webhooků v Microsoft Graphu.
 
 Tato část obsahuje následující témata:
 
@@ -1263,18 +1263,18 @@ Tato část obsahuje následující témata:
 * [Konfigurace](#webhook-output---configuration)
 * [Využití](#webhook-output---usage)
 
-### <a name="webhook-output---example"></a>Výstup Webhooku – příklad
+### <a name="webhook-output---example"></a>Výstup Webhook – příklad
 
-Podívejte se na konkrétní jazyk příklad:
+Podívejte se na příklad specifické pro jazyk:
 
 * [C# skript (.csx)](#webhook-output---c-script-example)
 * [JavaScript](#webhook-output---javascript-example)
 
-#### <a name="webhook-output---c-script-example"></a>Výstup - Webhooku příklad skriptu jazyka C#
+#### <a name="webhook-output---c-script-example"></a>Webhook výstup – příklad skriptu jazyka C#
 
-Následující příklad vytvoří odběr. Můžete [aktualizovat předplatné](#webhook-subscription-refresh) chcete zabránit vypršení platnosti.
+Následující příklad vytvoří odběr. Je možné [aktualizovat předplatné](#webhook-subscription-refresh) jak zabránit vypršení platnosti.
 
-*Function.json* soubor definuje aktivační procedury HTTP s výkonem předplatné vazby pomocí akce vytvořit:
+*Function.json* soubor definuje aktivační událost HTTP s předplatné výstupní vazby pomocí akce vytvoření:
 
 ```json
 {
@@ -1305,7 +1305,7 @@ Následující příklad vytvoří odběr. Můžete [aktualizovat předplatné](
 }
 ```
 
-Kód skriptu jazyka C# zaregistruje webhook, jehož oznámí této funkce aplikace při volání uživatel obdrží zprávu aplikace Outlook:
+Kód skriptu jazyka C# registruje webhook, který tuto aplikaci function app vás upozorní, když obdrží zprávy Outlooku volajícího uživatele:
 
 ```csharp
 using System;
@@ -1319,11 +1319,11 @@ public static HttpResponseMessage run(HttpRequestMessage req, out string clientS
 }
 ```
 
-#### <a name="webhook-output---javascript-example"></a>Výstup - Webhooku příklad v jazyce JavaScript
+#### <a name="webhook-output---javascript-example"></a>Webhook výstup – příklad v jazyce JavaScript
 
-Následující příklad vytvoří odběr. Můžete [aktualizovat předplatné](#webhook-subscription-refresh) chcete zabránit vypršení platnosti.
+Následující příklad vytvoří odběr. Je možné [aktualizovat předplatné](#webhook-subscription-refresh) jak zabránit vypršení platnosti.
 
-*Function.json* soubor definuje aktivační procedury HTTP s výkonem předplatné vazby pomocí akce vytvořit:
+*Function.json* soubor definuje aktivační událost HTTP s předplatné výstupní vazby pomocí akce vytvoření:
 
 ```json
 {
@@ -1354,7 +1354,7 @@ Následující příklad vytvoří odběr. Můžete [aktualizovat předplatné](
 }
 ```
 
-Kód jazyka JavaScript zaregistruje webhook, jehož oznámí této funkce aplikace při volání uživatel obdrží zprávu aplikace Outlook:
+Kód jazyka JavaScript registruje webhook, který tuto aplikaci function app vás upozorní, když obdrží zprávy Outlooku volajícího uživatele:
 
 ```js
 const uuidv4 = require('uuid/v4');
@@ -1365,29 +1365,29 @@ module.exports = function (context, req) {
 };
 ```
 
-### <a name="webhook-output---attributes"></a>Webhooku výstup – atributy
+### <a name="webhook-output---attributes"></a>Webhook výstup – atributy
 
-V [knihovny tříd jazyka C#](functions-dotnet-class-library.md), použijte [GraphWebHookSubscription](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebHookSubscriptionAttribute.cs) atribut.
+V [knihoven tříd C#](functions-dotnet-class-library.md), použijte [GraphWebHookSubscription](https://github.com/Azure/azure-functions-microsoftgraph-extension/blob/master/src/MicrosoftGraphBinding/Bindings/GraphWebHookSubscriptionAttribute.cs) atribut.
 
-### <a name="webhook-output---configuration"></a>Výstup Webhooku – konfigurace
+### <a name="webhook-output---configuration"></a>Výstup Webhook – konfigurace
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.json* souboru a `GraphWebHookSubscription` atribut.
 
 |Vlastnost Function.JSON | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**Jméno**||Požadovaná proměnná používá v kódu funkce pro e-mailovou zprávu. V tématu [pomocí zprávy Outlooku výstup vazba z kódu](#outlook-output-code).|
-|**type**||Vyžaduje - musí být nastavena na `graphWebhookSubscription`.|
-|**direction**||Vyžaduje - musí být nastavena na `out`.|
-|**Identity**|**Identita**|Požadovaná identity, která se použije k provedení akce. Může být jedna z následujících hodnot:<ul><li><code>userFromRequest</code> -Jedinými platnými s [Aktivace protokolu HTTP]. Použije identitu volajícího uživatele.</li><li><code>userFromId</code> -Použije identitu dříve přihlášeného uživatele se zadaným ID. Najdete v článku <code>userId</code> vlastnost.</li><li><code>userFromToken</code> -Použije identitu reprezentována zadaný token. Najdete v článku <code>userToken</code> vlastnost.</li><li><code>clientCredentials</code> -Použije identitu aplikace funkce.</li></ul>|
-|**userId**|**ID uživatele**  |V případě potřeby a pouze v případě _identity_ je nastaven na `userFromId`. ID objektu zabezpečení uživatele přidružené k dříve přihlášeného uživatele.|
-|**userToken**|**UserToken**|V případě potřeby a pouze v případě _identity_ je nastaven na `userFromToken`. Token platný pro funkce aplikace. |
-|**Akce**|**Akce**|Požadováno – určuje má provést akce vazby. Může být jedna z následujících hodnot:<ul><li><code>create</code> -Zaregistruje nové předplatné.</li><li><code>delete</code> -Odstraní určený odběr.</li><li><code>refresh</code> -Aktualizuje určený odběr Zabraňte vypršení platnosti.</li></ul>|
-|**subscriptionResource**|**SubscriptionResource**|V případě potřeby a pouze v případě _akce_ je nastaven na `create`. Určuje prostředek Microsoft Graph, které se budou monitorovat změny. V tématu [práce s webhooky v aplikaci Microsoft Graph]. |
-|**changeType**|**ChangeType –**|V případě potřeby a pouze v případě _akce_ je nastaven na `create`. Určuje typ změny v odebírané prostředek, který vyvolá oznámení. Podporované hodnoty jsou: `created`, `updated`, `deleted`. Více hodnot lze spojovat pomocí seznam oddělený čárkami.|
+|**Jméno**||Požadovaná: název této proměnné v kódu funkce pro e-mailovou zprávu. Zobrazit [pomocí zprávy Outlooku výstupní vazbu z kódu](#outlook-output-code).|
+|**type**||Povinné – musí být nastavena na `graphWebhookSubscription`.|
+|**direction**||Povinné – musí být nastavena na `out`.|
+|**Identita**|**Identita**|Požadovaná: Identita, která se použije k provedení akce. Může být jedna z následujících hodnot:<ul><li><code>userFromRequest</code> -Jediné platné s [HTTP trigger]. Použije identitu volajícího uživatele.</li><li><code>userFromId</code> -Použije identitu dříve přihlášeného uživatele se zadaným ID. Zobrazit <code>userId</code> vlastnost.</li><li><code>userFromToken</code> -Použije identitu reprezentována zadaného tokenu. Zobrazit <code>userToken</code> vlastnost.</li><li><code>clientCredentials</code> -Použije identitu aplikace function App.</li></ul>|
+|**userId**|**ID uživatele**  |Potřebné pokud a pouze v případě _identity_ je nastavena na `userFromId`. ID objektu zabezpečení uživatele přidružené k dříve přihlášenému uživateli.|
+|**userToken**|**UserToken**|Potřebné pokud a pouze v případě _identity_ je nastavena na `userFromToken`. Token platný pro danou aplikaci funkcí. |
+|**Akce**|**Akce**|Nepožadováno – Určuje, by měl provádět akce vazby. Může být jedna z následujících hodnot:<ul><li><code>create</code> -Zaregistruje nový odběr.</li><li><code>delete</code> -Odstraní zadaný odběr.</li><li><code>refresh</code> -Aktualizuje zadaný odběr zabránit vypršení platnosti.</li></ul>|
+|**subscriptionResource**|**SubscriptionResource**|Potřebné pokud a pouze tehdy, pokud _akce_ je nastavena na `create`. Určuje prostředek Microsoft Graphu, který bude monitorovat změny. Zobrazit [práce s webhooky v aplikaci Microsoft Graph]. |
+|**changeType**|**ChangeType**|Potřebné pokud a pouze tehdy, pokud _akce_ je nastavena na `create`. Označuje typ změny v zaregistrovaném prostředku, který vyvolá oznámení. Podporované hodnoty jsou: `created`, `updated`, `deleted`. Více hodnot lze spojovat pomocí seznam oddělený čárkami.|
 
-### <a name="webhook-output---usage"></a>Výstup - Webhooku využití
+### <a name="webhook-output---usage"></a>Webhook výstup – využití
 
-Vazba zveřejňuje následující typy, které mají funkce .NET:
+Vazba zveřejňuje následující typy funkcí .NET:
 - řetězec
 - Microsoft.Graph.Subscription
 
@@ -1395,30 +1395,30 @@ Vazba zveřejňuje následující typy, které mají funkce .NET:
 
 
 <a name="webhook-examples"></a>
-## <a name="webhook-subscription-refresh"></a>Aktualizace předplatného Webhooku
+## <a name="webhook-subscription-refresh"></a>Aktualizaci odběru Webhooku
 
-Aktualizace odběrů dvěma způsoby:
+Chcete-li aktualizovat předplatná dvěma způsoby:
 
-- Pomocí identity aplikace řešit všechny odběry. To bude vyžadovat souhlas ze Správce Azure Active Directory. Tímto lze ve všech jazycích, které podporuje Azure Functions.
-- Použít identitu přidruženou každé předplatné pomocí ruční vytvoření vazby každé ID uživatele. To bude vyžadovat některé vlastní kód k provedení vazby. Můžete použít pouze pomocí funkce .NET.
+- Pomocí identity aplikace se všechna předplatná. To bude vyžadovat souhlas ze Správce služby Azure Active Directory. To je možné Azure Functions podporuje všechny jazyky.
+- Použít identitu přidruženou každé předplatné ručně vazbou každé ID uživatele. To vyžaduje vlastní kód k provedení vazby. To jde použít jenom funkce .NET.
 
-Tato část obsahuje příklad pro každou z těchto postupů:
+Tato část obsahuje příklad pro každou z těchto přístupů:
 
-* [Příklad identity aplikace](#webhook-subscription-refresh---app-identity-example)
+* [Příklad aplikace identity](#webhook-subscription-refresh---app-identity-example)
 * [Příklad identity uživatele](#webhook-subscription-refresh---user-identity-example)
 
-### <a name="webhook-subscription-refresh---app-identity-example"></a>Aktualizace předplatného Webhooku – příklad identity aplikace
+### <a name="webhook-subscription-refresh---app-identity-example"></a>Odběr Webhooku aktualizace – příklad aplikace identity
 
-Podívejte se na konkrétní jazyk příklad:
+Podívejte se na příklad specifické pro jazyk:
 
 * [C# skript (.csx)](#app-identity-refresh---c-script-example)
 * [JavaScript](#app-identity-refresh---javascript-example)
 
 ### <a name="app-identity-refresh---c-script-example"></a>Aktualizace identity aplikace – příklad skriptu jazyka C#
 
-Následující příklad použije identitu aplikace aktualizovat předplatné.
+Identita aplikace aktualizovat předplatné v následujícím příkladu.
 
-*Function.json* definuje aktivační událost časovače s předplatným vstupní vazby a předplatné výstupní vazby:
+*Function.json* definuje časovacího triggeru s předplatným vstupní vazby a předplatné výstupní vazby:
 
 ```json
 {
@@ -1446,7 +1446,7 @@ Následující příklad použije identitu aplikace aktualizovat předplatné.
 }
 ```
 
-Kód skriptu jazyka C# aktualizuje odběry:
+Kód skriptu jazyka C# aktualizuje předplatná:
 
 ```csharp
 using System;
@@ -1466,9 +1466,9 @@ public static void Run(TimerInfo myTimer, string[] existingSubscriptions, IColle
 
 ### <a name="app-identity-refresh---c-script-example"></a>Aktualizace identity aplikace – příklad skriptu jazyka C#
 
-Následující příklad použije identitu aplikace aktualizovat předplatné.
+Identita aplikace aktualizovat předplatné v následujícím příkladu.
 
-*Function.json* definuje aktivační událost časovače s předplatným vstupní vazby a předplatné výstupní vazby:
+*Function.json* definuje časovacího triggeru s předplatným vstupní vazby a předplatné výstupní vazby:
 
 ```json
 {
@@ -1496,7 +1496,7 @@ Následující příklad použije identitu aplikace aktualizovat předplatné.
 }
 ```
 
-Kód jazyka JavaScript aktualizuje odběry:
+Kód jazyka JavaScript se aktualizuje předplatná:
 
 ```js
 // This template uses application permissions and requires consent from an Azure Active Directory admin.
@@ -1506,19 +1506,19 @@ module.exports = function (context) {
     const existing = context.bindings.existingSubscriptions;
     var toRefresh = [];
     for (var i = 0; i < existing.length; i++) {
-        context.log(`Deleting subscription ${existing[i]}`);
-        todelete.push(existing[i]);
+        context.log(`Refreshing subscription ${existing[i]}`);
+        toRefresh.push(existing[i]);
     }
     context.bindings.subscriptionsToRefresh = toRefresh;
     context.done();
 };
 ```
 
-### <a name="webhook-subscription-refresh---user-identity-example"></a>Aktualizace předplatného Webhooku – příklad identity uživatele
+### <a name="webhook-subscription-refresh---user-identity-example"></a>Odběr Webhooku aktualizace – příklad identity uživatele
 
-Následující příklad používá k aktualizaci předplatné identity uživatele.
+Následující příklad používá identitu uživatele se aktualizovat předplatné.
 
-*Function.json* souboru definuje aktivační událost časovače a odkládat údaje předplatného vstupní vazby kód funkce:
+*Function.json* soubor definuje časovacího triggeru a odloží předplatné vstupní vazby za účelem kód funkce:
 
 ```json
 {
@@ -1574,7 +1574,7 @@ public class UserSubscription {
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Další informace o Azure functions triggerů a vazeb](functions-triggers-bindings.md)
+> [Další informace o aktivačních událostech Azure functions a vazby](functions-triggers-bindings.md)
 
-[Aktivace protokolu HTTP]: functions-bindings-http-webhook.md
+[HTTP trigger]: functions-bindings-http-webhook.md
 [práce s webhooky v aplikaci Microsoft Graph]: https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/webhooks

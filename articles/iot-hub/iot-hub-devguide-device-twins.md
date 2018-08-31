@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: elioda
-ms.openlocfilehash: e94b023275f3992bea9595195688eebf42f0f229
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: b5e0a0caacab2413b640c58575673e555eeb76a4
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186784"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43288274"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Principy a použití dvojčat zařízení ve službě IoT Hub
 
@@ -254,7 +254,7 @@ Ohlášené vlastnosti, značky a požadované vlastnosti jsou objekty JSON s n�
     }
     ```
 
-* Všechny hodnoty řetězec může obsahovat nejvýše 4 KB délku.
+* Všechny hodnoty řetězec může obsahovat nejvýše délce 512 bajtů.
 
 ## <a name="device-twin-size"></a>Velikost dvojčete zařízení
 IoT Hub vynucuje omezení velikosti 8KB na všech příslušných celkové hodnoty `tags`, `properties/desired`, a `properties/reported`, s výjimkou prvků jen pro čtení.
@@ -354,6 +354,7 @@ Vyzkoušet si některé koncepty popsané v tomto článku, najdete v následuj�
 
 * [Jak používat dvojče zařízení][lnk-twin-tutorial]
 * [Jak používat vlastnosti dvojčat zařízení][lnk-twin-properties]
+* [Správa zařízení pomocí sady Azure IoT Toolkit pro VS Code][lnk-twin-vscode]
 
 <!-- links and images -->
 
@@ -377,6 +378,7 @@ Vyzkoušet si některé koncepty popsané v tomto článku, najdete v následuj�
 [lnk-devguide-jobs]: iot-hub-devguide-jobs.md
 [lnk-twin-tutorial]: iot-hub-node-node-twin-getstarted.md
 [lnk-twin-properties]: tutorial-device-twins.md
+[lnk-twin-vscode]: iot-hub-device-management-iot-toolkit.md
 [lnk-twin-metadata]: iot-hub-devguide-device-twins.md#device-twin-metadata
 [lnk-concurrency]: iot-hub-devguide-device-twins.md#optimistic-concurrency
 [lnk-reconnection]: iot-hub-devguide-device-twins.md#device-reconnection-flow

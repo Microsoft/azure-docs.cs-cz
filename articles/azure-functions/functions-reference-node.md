@@ -16,12 +16,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/04/2018
 ms.author: glenga
-ms.openlocfilehash: 1a4b970b07514619b2d81a0483546ac64d07927f
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 6099a818651cf75a75159f43748720b3eb01e4de
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005471"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287817"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Příručka pro vývojáře Azure Functions JavaScript
 
@@ -30,27 +30,28 @@ Prostředí jazyka JavaScript pro službu Azure Functions umožňuje snadno expo
 Tento článek předpokládá, že jste už čtete [referenční informace pro vývojáře Azure Functions](functions-reference.md).
 
 ## <a name="exporting-a-function"></a>Funkce exportu
-Všechny funkce jazyka JavaScript, musíte exportovat jeden `function` prostřednictvím `module.exports` pro modul runtime vyhledat funkci a spustit ho. Tato funkce musí vždy zahrnovat `context` objektu.
+Každá funkce JavaScript, musíte exportovat jeden `function` prostřednictvím `module.exports` pro modul runtime vyhledat funkci a spustit ho. Tuto funkci nutné vždy provést `context` objekt jako první parametr.
 
 ```javascript
-// You must include a context, but other arguments are optional
-module.exports = function(context) {
-    // Additional inputs can be accessed by the arguments property
-    if(arguments.length === 4) {
-        context.log('This function has 4 inputs');
-    }
-};
-// or you can include additional inputs in your arguments
+// You must include a context, other arguments are optional
 module.exports = function(context, myTrigger, myInput, myOtherInput) {
     // function logic goes here :)
+    context.done();
+};
+// You can also use 'arguments' to dynamically handle inputs
+module.exports = function(context) {
+    context.log('Number of inputs: ' + arguments.length);
+    // Iterates through trigger and input binding data
+    for (i = 1; i < arguments.length; i++){
+        context.log(arguments[i]);
+    }
+    context.done();
 };
 ```
 
-Vazby `direction === "in"` se předají jako argumenty funkce, což znamená, že můžete použít [ `arguments` ](https://msdn.microsoft.com/library/87dw3w1k.aspx) dynamicky zpracovat nové vstupů (například pomocí `arguments.length` k iteraci přes všechny vstupy). Tato funkce je vhodné, pokud máte pouze aktivační událost a žádné další vstupy, protože můžete předvídatelně přistupovat k datům aktivační události bez odkazování na vaše `context` objektu.
+Trigger a vstupní vazby (vazby `direction === "in"`) lze předat jako parametry funkce. Jsou předávány do funkce ve stejném pořadí, ve kterém jsou definovány v *function.json*. Můžete dynamicky zpracovávat vstupy pomocí jazyka JavaScript [ `arguments` ](https://msdn.microsoft.com/library/87dw3w1k.aspx) objektu. Pokud máte například `function(context, a, b)` a změňte ho na `function(context, a)`, stále můžete získat hodnotu `b` v kódu funkce rekapitulací `arguments[2]`.
 
-Argumenty jsou vždy předají do funkce v pořadí, ve kterém se objevují v *function.json*, i když je nechcete zadat v příkazu exporty. Pokud máte například `function(context, a, b)` a změňte ho na `function(context, a)`, stále můžete získat hodnotu `b` v kódu funkce rekapitulací `arguments[2]`.
-
-Všechny vazby, bez ohledu na směru, jsou také předají `context` objektu (viz následující skript). 
+Všechny vazby, bez ohledu na směru, jsou také předají `context` pomocí `context.bindings` vlastnost.
 
 ## <a name="context-object"></a>objekt kontextu
 Modul runtime používá `context` objekt k předávání dat do a z vaší funkce a umožnit vám komunikovat s modulem runtime.
@@ -61,6 +62,7 @@ Modul runtime používá `context` objekt k předávání dat do a z vaší funk
 // You must include a context, but other arguments are optional
 module.exports = function(context) {
     // function logic goes here :)
+    context.done();
 };
 ```
 
@@ -96,7 +98,7 @@ context.done([err],[propertyBag])
 
 Informuje o modulu runtime, který váš kód bylo dokončeno. Pokud používá funkce `async function` deklarace (k dispozici prostřednictvím uzlu 8 + funkce verze 2.x), není potřeba použít `context.done()`. `context.done` Zpětného volání je implicitně volána.
 
-Pokud funkce není asynchronní funkci **musí volat `context.done` ** informovat modul runtime dokončení vaší funkce. Provedení příkazu vyprší časový limit, pokud není nalezena.
+Pokud funkce není asynchronní funkci **musí volat `context.done`**  informovat modul runtime dokončení vaší funkce. Provedení příkazu vyprší časový limit, pokud není nalezena.
 
 `context.done` Metoda umožňuje předat zpět oba uživatelem definované chybové modul runtime a kontejner objektů vlastností, které přepsat vlastnosti na `context.bindings` objektu.
 

@@ -1,5 +1,5 @@
 ---
-title: Získejte pomoc se sadou přístupu a použití na portálu Moje aplikace v Azure Active Directory | Dokumentace Microsoftu
+title: Získejte pomoc se sadou přístup a používání portálu MyApps ve službě Azure Active Directory | Dokumentace Microsoftu
 description: Získejte pomoc s přihlašováním k a provádět běžné úkoly na přístupovém panelu.
 services: active-directory
 author: eross-msft
@@ -12,18 +12,18 @@ ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: lizross
 ms.reviewer: japere
-ms.openlocfilehash: a6ac780625f6a109797cbdab78dc555e21e18bee
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 5503681b051066f6601be97bda246128763e7bc7
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39343606"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43306406"
 ---
-# <a name="troubleshoot-issues-with-accessing-and-using-the-my-apps-portal"></a>Řešení potíží s přístupem k a na portálu Moje aplikace
+# <a name="troubleshoot-issues-with-accessing-and-using-the-myapps-portal"></a>Řešení potíží s přístupem k a používání portálu MyApps
 
-Pokud se setkáte s problémy s přihlašováním k nebo na portálu Moje aplikace, vyzkoušejte tyto tipy pro řešení potíží než požádáte o pomoc helpdesk nebo správce.
+Pokud je máte problémy s přihlašováním k nebo pomocí portálu MyApps, zkuste tyto tipy pro řešení potíží než požádáte o pomoc helpdesk nebo správce.
 
-## <a name="i-am-having-trouble-signing-into-the-my-apps-portal"></a>Mám potíže s přihlášením na portálu Moje aplikace
+## <a name="i-am-having-trouble-signing-into-the-myapps-portal"></a>Mám potíže při přihlašování k portálu MyApps
 
 Vyzkoušejte tyto Obecné tipy:
 
@@ -45,7 +45,7 @@ Můžete resetovat heslo nebo odemknout svůj účet bez nutnosti mluvit s někd
 
 ## <a name="i-am-having-trouble-installing-the-my-apps-secure-sign-in-extension"></a>Mám potíže s instalací rozšíření Moje aplikace zabezpečené přihlášení
 
-Na portálu Moje aplikace vyžaduje prohlížeč, který podporuje JavaScript a má povolený šablon stylů CSS. Pokud použijete heslo aplikace založené na jednotné přihlašování, doprovodné rozšíření musí být nainstalována také. Toto rozšíření se automaticky stáhne při spuštění aplikace, který je nakonfigurovaný pro heslo aplikace založené na jednotné přihlašování.
+Na portálu MyApps vyžaduje prohlížeč, který podporuje JavaScript a má povolený šablon stylů CSS. Pokud použijete heslo aplikace založené na jednotné přihlašování, doprovodné rozšíření musí být nainstalována také. Toto rozšíření se automaticky stáhne při spuštění aplikace, který je nakonfigurovaný pro heslo aplikace založené na jednotné přihlašování.
 
 Zaškrtněte, pokud chcete zajistit, že jsou splňuje následující požadavky na prohlížeč:
 
@@ -63,8 +63,8 @@ Rozšíření můžete také stáhnout přímo z následujících webů:
 Pokud máte nainstalované rozšíření a i nadále dochází k problémům, zkuste následující:
 
 - Zkontrolujte nastavení rozšíření prohlížeče a ujistěte se, že ho povolíte.
-- Restartujte prohlížeč a přihlaste se k portálu Moje aplikace.
-- Vymazat soubory cookie prohlížeče a přihlaste se k portálu Moje aplikace.
+- Restartujte prohlížeč a přihlaste se k portálu MyApps.
+- Vymazat soubory cookie prohlížeče a přihlaste se k portálu MyApps.
 - Přístup k nástroji Diagnostika a podrobné pokyny ke konfiguraci rozšíření pro aplikaci Internet Explorer, naleznete v tématu [řešení potíží s rozšířením Panel přístupu pro aplikaci Internet Explorer](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-troubleshooting).
 
 ## <a name="use-the-my-apps-secure-sign-in-extension"></a>Použití Moje aplikace zabezpečené přihlašování rozšíření
@@ -85,7 +85,7 @@ Pokud máte nainstalované rozšíření a i nadále dochází k problémům, zk
 * Chcete-li spustit aplikaci z rozšíření, postupujte takto:
    1. Po instalaci rozšíření, přihlaste se k němu tak, že vyberete **Přihlaste se k Začínáme**.
    2. Vyberte ikonu rozšíření a otevřete nabídku.
-   3. Vyhledejte aplikaci, která je dostupná na portálu Moje aplikace.
+   3. Vyhledejte aplikaci, která je dostupná na portálu MyApps.
    4. V seznamu výsledků hledání vyberte aplikaci.  
        Poslední tři aplikace využili jste se zobrazují v **naposledy použité** zástupce seznamu.
 

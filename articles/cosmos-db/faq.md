@@ -10,21 +10,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: sngun
-ms.openlocfilehash: 053e72ce81f69b267c72ded572e8912a1a09d2e6
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: a8d9704c48801b98800abb71769ba0954e727848
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39579693"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43190452"
 ---
 # <a name="azure-cosmos-db-faq"></a>Nejčastější dotazy k Azure Cosmos DB
 ## <a name="azure-cosmos-db-fundamentals"></a>Základy služby Azure Cosmos DB
-### <a name="what-is-azure-cosmos-db"></a>Co je Azure Cosmos DB?
-Azure Cosmos DB je globálně replikovaného a vícemodelová databázová služba, která nabízí bohaté dotazování na data bez schémat, pomáhá zajišťovat Konfigurovatelný a spolehlivý výkon a umožňuje rychlý vývoj. To je vše dosáhnout pomocí spravovaná platforma, která je založená na výkonem a dosahem Microsoft Azure. 
-
-Azure Cosmos DB je to pravé řešení pro webové, mobilní a herní zařízení, a aplikace IoT předvídatelná propustnost, vysokou dostupnost, nízkou latenci a daty bez schématu modelu jsou klíčové požadavky. Poskytuje flexibilitu schémat a bohaté indexování a zahrnuje podporu transakcí několika dokumentů s integrovaným JavaScriptem. 
-
-Další otázky k databázi, odpovědi a pokyny pro nasazení a používání této služby, najdete v článku [stránky dokumentace ke službě Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/).
 
 ### <a name="what-happened-to-the-documentdb-api"></a>Co se stalo s rozhraním API DocumentDB?
 
@@ -84,8 +78,8 @@ Pokud řešíte problém s účtem, podejte prostřednictvím webu Azure Portal 
 
 Další otázky, můžete odeslat do týmu na [ askcosmosdb@microsoft.com ](mailto:askcosmosdb@microsoft.com); však není alias technické podpory. 
 
-<a id="try-cosmos-db"></a>
-## <a name="try-azure-cosmos-db-subscriptions"></a>Vyzkoušejte Azure Cosmos DB předplatná
+
+## <a id="try-cosmos-db"></a>Vyzkoušejte Azure Cosmos DB předplatná
 
 Je můžete nyní Užijte si časově omezené služby Azure Cosmos DB bez předplatného, zdarma a závazky. Chcete-li si zaregistrovat předplatné vyzkoušejte Azure Cosmos DB, přejděte na [vyzkoušejte si Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/). Toto předplatné je oddělená od [bezplatnou zkušební verzi Azure](https://azure.microsoft.com/free/)a je možné kromě bezplatnou zkušební verzi Azure nebo Azure placené předplatné. 
 
@@ -124,7 +118,7 @@ Kontejner a zřizování úrovně propustnosti databáze jsou samostatné nabíd
 
 Nyní můžete vytvořit kolekce s propustností klíče oddílu pomocí [CreatePartitionedCollection](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/CollectionManagement/Program.cs#L118) metoda sady .net SDK nebo pomocí [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/cosmosdb/collection?view=azure-cli-latest#az-cosmosdb-collection-create). Vytvoření pevné kolekce pomocí webu Azure portal taková není podporován.  
 
-## <a name="develop-against-the-sql-api"></a>Vývoj s využitím rozhraní SQL API
+## <a name="sql-api"></a>SQL API
 
 ### <a name="how-do-i-start-developing-against-the-sql-api"></a>Jak můžu začít vyvíjet s využitím rozhraní SQL API?
 Nejprve musí přihlásit k odběru služeb Azure. Po registraci předplatného Azure můžete ke svému předplatnému Azure přidat kontejner rozhraní SQL API. Pokyny k přidání účtu služby Azure Cosmos DB najdete v tématu [vytvoření účtu databáze Azure Cosmos DB](create-sql-api-dotnet.md#create-account). 
@@ -195,7 +189,7 @@ Toto je omezení jazyka JavaScript. JavaScript používá dvojité přesnosti s 
 Vytváření oprávnění s použitím ResourceTokens je povolené na úrovni kontejneru a jeho následníky (jako jsou dokumenty, přílohy). To znamená, že při pokusu o vytvoření oprávnění v databázi nebo úrovni účtu není aktuálně povoleno.
 
 
-## <a name="develop-against-the-api-for-mongodb"></a>Vývoj s využitím rozhraní API pro MongoDB
+## <a name="mongodb-api"></a>Rozhraní MongoDB API
 ### <a name="what-is-the-azure-cosmos-db-api-for-mongodb"></a>Co je Azure Cosmos DB API pro MongoDB?
 Azure Cosmos DB API pro MongoDB je vrstvu kompatibility, která umožňuje aplikacím snadno a transparentně komunikovat s nativní databázový stroj služby Azure Cosmos DB s použitím existujícího, – podporované komunitou rozhraní MongoDB API Apache a ovladače. Vývojáři můžou nyní využívat existujícího řetězce nástrojů MongoDB a dovednosti k vytváření aplikací, které využívají služby Azure Cosmos DB. Vývojáři těžit z jedinečných funkcích služby Azure Cosmos DB, mezi které patří automatické indexování, zálohovací údržby, finančně zajištěnými smlouvami o úrovni (SLA) a tak dále.
 
@@ -215,7 +209,7 @@ Kromě běžné kódy chyb MongoDB rozhraní MongoDB API má svůj vlastní konk
 | TooManyRequests     | 16500 | Celkový počet spotřebovaných jednotek žádostí překročilo četnost zřízené jednotky žádosti pro kolekci a se omezila. | Zvažte možnost škálování propustnosti přiřazené ke kontejneru nebo sadu kontejnerů Azure portal nebo opakuje akci. |
 | ExceededMemoryLimit | 16501 | Jako víceklientská služba operace překročil přidělení paměti klienta. | Redukujte obor operaci prostřednictvím více omezující kritéria dotazu nebo se obraťte na podporu – od [webu Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). <br><br>Příklad:  *&nbsp; &nbsp; &nbsp; &nbsp;db.getCollection('users').aggregate ([<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{$match: {name: "Andy"}}, <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{$sort: {stáří: -1} }<br>&nbsp;&nbsp;&nbsp;&nbsp;])*) |
 
-## <a name="develop-with-the-table-api"></a>Vývoj s využitím rozhraní Table API
+## <a id="table"></a>Rozhraní Table API
 
 ### <a name="how-can-i-use-the-table-api-offering"></a>Použití nabídky Table API 
 Azure Cosmos DB Table API je k dispozici v [webu Azure portal][azure-portal]. Nejprve musí přihlásit k odběru služeb Azure. Poté, co jste se zaregistrovali, můžete ke svému předplatnému Azure přidat účet Azure Cosmos DB Table API a pak přidejte tabulek ke svému účtu. 
@@ -446,7 +440,7 @@ Azure Table storage a Azure Cosmos DB Table API používat stejné sady SDK, tak
 ### <a name="why-do-i-get-throttled-when-i-try-to-create-lot-of-tables-one-after-another-in-the-table-api"></a>Proč můžu získat omezit při pokusu vytvořit mnoho tabulek jeden po druhém do rozhraní Table API?
 Azure Cosmos DB je systém, který poskytuje latence, propustnosti, dostupnosti a záruky konzistence na základě smlouvy SLA. Protože je zřízená systému, vyhrazuje prostředky k zajištění těchto požadavků. Rychlý kurz vytvoření tabulek je zjištěna a omezuje. Doporučujeme podívat se na kurz vytváření tabulek a snížit na méně než 5 za minutu. Mějte na paměti, že rozhraní API tabulky je zřízené systému. V okamžiku, zřídíte začnete dál za něj platit. 
 
-## <a name="develop-against-the-graph-api"></a>Vývoj s využitím rozhraní Graph API
+## <a name="graph-api"></a>Graph API
 ### <a name="how-can-i-apply-the-functionality-of-graph-api-to-azure-cosmos-db"></a>Jak do služby Azure Cosmos DB můžete použít funkci rozhraní Graph API?
 Knihovna rozšíření můžete použít funkci rozhraní Graph API. Tato knihovna je volána grafy Microsoft Azure a je k dispozici na [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Graphs). 
 
@@ -456,8 +450,8 @@ Ano, plánujeme v budoucnu přidat další mechanismy pro dotaz.
 ### <a name="how-can-i-use-the-new-graph-api-offering"></a>Použití nové nabídky rozhraní Graph API 
 Pokud chcete začít, proveďte [rozhraní Graph API](../cosmos-db/create-graph-dotnet.md) článku rychlého zprovoznění.
 
-<a id="cassandra"></a> 
-## <a name="develop-with-the-apache-cassandra-api-preview"></a>Vývoj s využitím rozhraní Apache Cassandra API (preview)
+
+## <a id="cassandra"></a> Rozhraní Cassandra API
 
 ### <a name="what-is-the-protocol-version-supported-in-the-private-preview-is-there-a-plan-to-support-other-protocols"></a>Co je verze protokolu, které jsou podporované ve verzi private preview? Existuje plán pro podporu dalších protokolů?
 Rozhraní Apache Cassandra API pro službu Azure Cosmos DB podporuje dnes CQL verze 4. Pokud máte nějakou zpětnou vazbu o podpoře dalších protokolů, dejte nám vědět prostřednictvím [názorů na webu uservoice](https://feedback.azure.com/forums/263030-azure-cosmos-db) nebo pošlete e-mail na [ askcosmosdbcassandra@microsoft.com ](mailto:askcosmosdbcassandra@microsoft.com). 

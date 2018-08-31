@@ -1,31 +1,31 @@
 ---
-title: 'Kurz: Spravovat výpočetní s Azure Functions v Azure SQL Data Warehouse | Microsoft Docs'
+title: 'Kurz: Správa výpočetních služeb s využitím Azure Functions ve službě Azure SQL Data Warehouse | Dokumentace Microsoftu'
 description: Použití funkcí Azure ke správě výpočetního výkonu datového skladu.
 services: sql-data-warehouse
 author: kavithaj
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: consume
 ms.date: 04/27/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 48428ef329de4719a25afd20c21ac102bba540a8
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2f366718a11f715b0c91a556eb3b0f216424b82c
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32188442"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287897"
 ---
-# <a name="use-azure-functions-to-manage-compute-resources-in-azure-sql-data-warehouse"></a>Funkce Azure použijte ke správě výpočetní prostředky v Azure SQL Data Warehouse
+# <a name="use-azure-functions-to-manage-compute-resources-in-azure-sql-data-warehouse"></a>Pomocí služby Azure Functions spravovat výpočetní prostředky ve službě Azure SQL Data Warehouse
 
-Tento kurz používá funkce Azure ke správě výpočetních prostředků pro datový sklad v Azure SQL Data Warehouse.
+Tento kurz používá Azure Functions spravovat výpočetní prostředky pro datový sklad v Azure SQL Data Warehouse.
 
 Abyste mohli používat aplikaci Azure Function App se službou SQL Data Warehouse, musíte ve stejném předplatném jako instanci datového skladu vytvořit [účet instančního objektu](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal) s přístupem Přispěvatel. 
 
-## <a name="deploy-timer-based-scaling-with-an-azure-resource-manager-template"></a>Nasazení na základě časovače škálování pomocí šablony Azure Resource Manager
+## <a name="deploy-timer-based-scaling-with-an-azure-resource-manager-template"></a>Nasazení na základě časovače škálování pomocí šablony Azure Resource Manageru
 
-Pokud chcete nasadit šablonu, potřebujete následující informace:
+Pokud chcete nasadit šablonu, budete potřebovat následující informace:
 
 - Název skupiny prostředků, ve které je vaše instance SQL Data Warehouse
 - Název logického serveru, na kterém je vaše instance SQL Data Warehouse
@@ -35,25 +35,25 @@ Pokud chcete nasadit šablonu, potřebujete následující informace:
 - ID aplikace instančního objektu
 - Tajný klíč instančního objektu
 
-Jakmile máte předchozí informace o nasazení této šablony:
+Jakmile budete mít výše uvedených informací, nasaďte tuto šablonu:
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwTimerScaler%2Fazuredeploy.json" target="_blank">
 <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
 </a>
 
-Jakmile nasadíte šablony, byste měli najít tři nové prostředky: bezplatným plánem Azure App Service, plán na základě spotřeby aplikaci funkce a účet úložiště, která zpracovává protokolování a operace fronty. Pokračujte a přečtěte si další části, ve kterých se dozvíte, jak upravit nasazené funkce, aby vyhovovaly vašim požadavkům.
+Po nasazení šablony, by měl mít tři nové prostředky: bezplatný plán Azure App Service, plán aplikace Function App založený na spotřebě a účet úložiště, která zpracovává protokolování a frontu operací. Pokračujte a přečtěte si další části, ve kterých se dozvíte, jak upravit nasazené funkce, aby vyhovovaly vašim požadavkům.
 
-## <a name="change-the-compute-level"></a>Změnit úroveň výpočetní
+## <a name="change-the-compute-level"></a>Změna výpočetní úrovně
 
 1. Přejděte do své služby Function App. Pokud jste nasadili šablonu s výchozími hodnotami, měla by tato služba mít název *DWOperations*. Po otevření vaší aplikace Function App byste si měli všimnout, že do vaší služby Function App je nasazených pět funkcí. 
 
    ![Funkce nasazené s šablonou](media/manage-compute-with-azure-functions/five-functions.png)
 
-2. Vyberte *DWScaleDownTrigger* nebo *DWScaleUpTrigger* podle toho, jestli chcete změnit čas vertikálního navýšení nebo snížení kapacity. V rozevírací nabídce vyberte integrací.
+2. Vyberte *DWScaleDownTrigger* nebo *DWScaleUpTrigger* podle toho, jestli chcete změnit čas vertikálního navýšení nebo snížení kapacity. V rozevírací nabídce vyberte integrace.
 
    ![Výběr možnosti Integrace pro funkci](media/manage-compute-with-azure-functions/select-integrate.png)
 
-3. Momentálně by zobrazená hodnota měla být *%ScaleDownTime%* nebo *%ScaleUpTime%*. Tyto hodnoty označují, že je plán založený na hodnotách definovaných ve vašem [Nastavení aplikace][Application Settings]. Teď můžete ignorovat tuto hodnotu a změnit plán upřednostňovaný čas podle dalších krocích.
+3. Momentálně by zobrazená hodnota měla být *%ScaleDownTime%* nebo *%ScaleUpTime%*. Tyto hodnoty označují, že je plán založený na hodnotách definovaných ve vašem [Nastavení aplikace][Application Settings]. Prozatím můžete ignorovat tuto hodnotu a plán změnit na preferovaný čas podle dalších kroků.
 
 4. V oblasti plánu přidejte libovolný čas v podobě výrazu CRON, který odráží, jak často chcete vertikálně navyšovat kapacitu služby SQL Data Warehouse. 
 
@@ -64,10 +64,10 @@ Jakmile nasadíte šablony, byste měli najít tři nové prostředky: bezplatn�
   {second} {minute} {hour} {day} {month} {day-of-week}
   ```
 
-  Například *"0 30 9 ** 1-5"* by odráželo aktivační událost každý den v týdnu v 9:30:00. Další informace najdete v [příkladech plánů][schedule examples] služby Azure Functions.
+  Například *"0 30 9 ** 1-5"* by odpovídala triggeru Každý všední den v 9:30:00. Další informace najdete v [příkladech plánů][schedule examples] služby Azure Functions.
 
 
-## <a name="change-the-time-of-the-scale-operation"></a>Změňte čas operace škálování
+## <a name="change-the-time-of-the-scale-operation"></a>Změnit čas operace škálování
 
 1. Přejděte do své služby Function App. Pokud jste nasadili šablonu s výchozími hodnotami, měla by tato služba mít název *DWOperations*. Po otevření vaší aplikace Function App byste si měli všimnout, že do vaší služby Function App je nasazených pět funkcí. 
 
@@ -75,7 +75,7 @@ Jakmile nasadíte šablony, byste měli najít tři nové prostředky: bezplatn�
 
    ![Změna výpočetní úrovně triggeru funkce](media/manage-compute-with-azure-functions/index-js.png)
 
-3. Změňte hodnotu *ServiceLevelObjective* na požadovanou úroveň a klikněte na Uložit. Tato hodnota je výpočetní úroveň, která bude škálovat podle plánu definovaný v oddílu integrací vaší instance datového skladu.
+3. Změňte hodnotu *ServiceLevelObjective* na požadovanou úroveň a klikněte na Uložit. Tato hodnota je výpočetní úroveň, kterou instanci datového skladu bude škálovat podle plánu definovaného v části integrace.
 
 ## <a name="use-pause-or-resume-instead-of-scale"></a>Použití pozastavení nebo obnovení místo škálování 
 
@@ -92,14 +92,14 @@ Aktuálně jsou ve výchozím nastavení zapnuté funkce *DWScaleDownTrigger* a 
 3. Přejděte na karty *Integrace* příslušných triggerů a změňte jejich plán.
 
    > [!NOTE]
-   > Funkční rozdíl mezi škálování aktivační události a aktivačních událostí pozastavení nebo obnovení je zprávu, která je odeslána do fronty. Další informace najdete v tématu [přidat novou funkci aktivační událost][Add a new trigger function].
+   > Funkční rozdíl mezi škálování aktivační události a triggery pozastavit/obnovit je zpráva odeslaná do fronty. Další informace najdete v tématu [přidat nové funkce triggeru][Add a new trigger function].
 
 
 ## <a name="add-a-new-trigger-function"></a>Přidání nové funkce triggeru
 
-Aktuálně jsou součástí šablony pouze dvě škálovací funkce. Pomocí těchto funkcí v průběhu dne, je možné pouze škálovat dolů jednou a až jednou. K podrobnějšímu řízení, jako je například škálování několikrát za den nebo s jiným chováním škálování na víkendy je nutné přidat další aktivační události.
+Aktuálně jsou součástí šablony pouze dvě škálovací funkce. Pomocí těchto funkcí v průběhu dne, můžete pouze škálovat dolů jednou a jednou. Pro podrobnější řízení, jako je například škálování několikrát denně nebo mít jiné chování škálování o víkendech budete muset přidat další trigger.
 
-1. Vytvořte novou prázdnou funkci. Vyberte *+* tlačítko téměř vaši polohu funkce Zobrazit v podokně funkce šablony.
+1. Vytvořte novou prázdnou funkci. Vyberte *+* tlačítko vedle umístění funkce zobrazíte tak podokno šablony funkce.
 
    ![Vytvoření nové funkce](media/manage-compute-with-azure-functions/create-new-function.png)
 
@@ -115,7 +115,7 @@ Aktuálně jsou součástí šablony pouze dvě škálovací funkce. Pomocí tě
 
    ![Zkopírování obsahu souboru index.js](media/manage-compute-with-azure-functions/index-js.png)
 
-5. Nastavte vaše proměnná operace požadovaného chování takto:
+5. Nastavte proměnnou operation na požadované chování následujícím způsobem:
 
    ```javascript
    // Resume the data warehouse instance
@@ -138,7 +138,7 @@ Aktuálně jsou součástí šablony pouze dvě škálovací funkce. Pomocí tě
 
 ## <a name="complex-scheduling"></a>Složité plánování
 
-V této části ukážeme stručně co je nutné získat složitější plánování pozastavení, obnovení a škálování.
+Tato část ukazuje co je potřeba k dosažení složitějšího plánování možností pozastavení, obnovení a možnosti škálování.
 
 ### <a name="example-1"></a>Příklad 1:
 
@@ -151,7 +151,7 @@ Každodenní vertikální navýšení kapacity v 8:00 na úroveň DW600 a vertik
 
 ### <a name="example-2"></a>Příklad 2: 
 
-Denní škálování nahoru v 8: 00 do DW1000, snižovat jednou k DW600 ve 4 a snižovat na 22: 00 do DW200.
+Každodenní vertikální navýšení kapacity v 8: 00 na úroveň dw1000, jedno vertikální snížení kapacity na úroveň DW600 v 16: 00 a vertikální snížení v 22: 00 na úroveň DW200.
 
 | Funkce  | Plán     | Operace                                |
 | :-------- | :----------- | :--------------------------------------- |

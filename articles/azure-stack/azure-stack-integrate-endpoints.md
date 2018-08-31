@@ -6,16 +6,16 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 08/02/2018
+ms.date: 08/30/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
 keywords: ''
-ms.openlocfilehash: c5d0bc6a0e7e885f61ba28be0575697b03fece09
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 4aaba753a8d61d60cb053a4aa164b5be0a3c50fa
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42917138"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43307604"
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Azure Stack – integrace datových center – publikování koncových bodů
 Azure Stack nastaví virtuálních IP adres (VIP) pro jeho infrastrukturu role. Tyto virtuální IP adresy se přidělují z fondu veřejných IP adres. Každý virtuální IP adresy je zabezpečený pomocí seznam řízení přístupu (ACL) ve vrstvě softwarově definované sítě. Seznamy ACL se taky používají napříč fyzické přepínače (tory a BMC) k další posílení zabezpečení řešení. Položka DNS se vytvoří pro každý koncový bod v zóně DNS o externí zadaný v době nasazení.
@@ -27,7 +27,7 @@ Následující diagram architektury ukazuje různé síťové vrstvy a seznamy A
 
 ## <a name="ports-and-protocols-inbound"></a>Porty a protokoly (příchozí)
 
-Sada infrastrukturu virtuálních IP adres jsou požadovány pro publikování koncových bodů služby Azure Stack k externím sítím. *Koncový bod (VIP)* tabulka ukazuje, každý koncový bod, požadovaný port a protokol. Najdete v dokumentaci poskytovatele nasazení konkrétní prostředek pro koncové body, které vyžadují poskytovatelů dalších prostředků, jako je například poskytovatele prostředků SQL.
+Sada infrastrukturu virtuálních IP adres je vyžadován pro publikování koncových bodů služby Azure Stack k externím sítím. *Koncový bod (VIP)* tabulka ukazuje, každý koncový bod, požadovaný port a protokol. Najdete v dokumentaci poskytovatele nasazení konkrétní prostředek pro koncové body, které vyžadují poskytovatelů dalších prostředků, jako je například poskytovatele prostředků SQL.
 
 Interní infrastrukturu virtuálních IP adres nejsou uvedené, protože nejsou požadovány pro publikování Azure Stack.
 
@@ -71,12 +71,13 @@ Azure Stack podporuje pouze transparentní proxy servery. V nasazení tam, kde t
 |Opravy a aktualizace|https://&#42;.azureedge.net|HTTPS|443|
 |Registrace|https://management.azure.com|HTTPS|443|
 |Využití|https://&#42;.microsoftazurestack.com<br>https://*.trafficmanager.NET|HTTPS|443|
-|Program Windows Defender|. wdcp.microsoft.com<br>. wdcpalt.microsoft.com<br>*. updates.microsoft.com<br>*. download.microsoft.com<br>https://msdl.microsoft.com/download/symbols<br>http://www.microsoft.com/pkiops/crl<br>http://www.microsoft.com/pkiops/certs<br>http://crl.microsoft.com/pki/crl/products<br>http://www.microsoft.com/pki/certs<br>https://secure.aadcdn.microsoftonline-p.com<br>|HTTPS|80<br>443|
+|Windows Defender|. wdcp.microsoft.com<br>. wdcpalt.microsoft.com<br>*. updates.microsoft.com<br>*. download.microsoft.com<br>https://msdl.microsoft.com/download/symbols<br>http://www.microsoft.com/pkiops/crl<br>http://www.microsoft.com/pkiops/certs<br>http://crl.microsoft.com/pki/crl/products<br>http://www.microsoft.com/pki/certs<br>https://secure.aadcdn.microsoftonline-p.com<br>|HTTPS|80<br>443|
 |NTP|     |UDP|123|
 |DNS|     |TCP<br>UDP|53|
 |     |     |     |     |
 
-
+> [!Note]  
+> Odchozí adresy URL jsou vyrovnávání zatížení pomocí Azure traffic Manageru k zajištění nejlepší možné připojení zeměpisné umístění. Pomocí adresy URL s vyrovnáváním zatížení, Microsoft můžete aktualizovat a změnit koncových bodů back-end bez dopadu na zákazníky. Společnost Microsoft neposkytuje seznam IP adres pro adresy URL na skupinu s vyrovnáváním zatížení. Měli byste použít zařízení, která podporuje filtrování podle adresy URL, nikoli podle IP.
 
 ## <a name="next-steps"></a>Další postup
 

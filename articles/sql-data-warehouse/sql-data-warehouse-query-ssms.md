@@ -1,21 +1,21 @@
 ---
-title: Připojení k Azure SQL Data Warehouse - SSMS | Microsoft Docs
-description: SQL Server Management Studio (SSMS) použijte k připojení a dotazování Azure SQL Data Warehouse.
+title: Připojení k Azure SQL Data Warehouse – SSMS | Dokumentace Microsoftu
+description: Připojení a dotazování Azure SQL Data Warehouse pomocí SQL Server Management Studio (SSMS).
 services: sql-data-warehouse
 author: kavithaj
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: f4b960115da3d30d355768498ae95270acaef49b
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6079c3064699da38fad20468517eb97d6ab107f8
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32182370"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43307196"
 ---
 # <a name="connect-to-sql-data-warehouse-with-sql-server-management-studio-ssms"></a>Připojení k SQL Data Warehouse pomocí SQL Server Management Studio (SSMS)
 > [!div class="op_single_selector"]
@@ -27,18 +27,18 @@ ms.locfileid: "32182370"
 > 
 > 
 
-SQL Server Management Studio (SSMS) použijte k připojení a dotazování Azure SQL Data Warehouse. 
+Připojení a dotazování Azure SQL Data Warehouse pomocí SQL Server Management Studio (SSMS). 
 
 ## <a name="prerequisites"></a>Požadavky
 Chcete-li použít tento kurz, potřebujete:
 
 * Existující SQL Data Warehouse. Pokud chcete jeden vytvořit, podívejte se na téma [Vytvoření SQL Data Warehouse][Create a SQL Data Warehouse].
-* SQL Server Management Studio (SSMS) nainstalována. [Instalace aplikace SSMS] [ Install SSMS] zdarma, pokud ještě nemáte ho.
+* SQL Server Management Studio (SSMS) nainstalovaný. [Instalace aplikace SSMS] [ Install SSMS] zdarma, pokud ještě nemáte ho.
 * Plně kvalifikovaný název serveru SQL. Ten zjistíte v části [Připojení k SQL Data Warehouse][Connect to SQL Data Warehouse].
 
 ## <a name="1-connect-to-your-sql-data-warehouse"></a>1. Připojení k vaší službě SQL Data Warehouse
 1. Otevřete aplikaci SSMS.
-2. Otevřete Průzkumník objektů. Chcete-li to provést, vyberte **soubor** > **připojit Průzkumník objektů**.
+2. Otevřete Průzkumník objektů. Chcete-li to provést, vyberte **souboru** > **připojit Průzkumník objektů**.
    
     ![Průzkumník objektů systému SQL Server][1]
 3. Vyplňte pole v okně pro připojení k serveru.

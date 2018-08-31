@@ -3,25 +3,27 @@ title: Upgrade na nejnovější generace služby Azure SQL Data Warehouse | Doku
 description: Upgradujte na nejnovější generace architektury Azure hardware a úložiště Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: kevinvngo
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
 ms.date: 08/22/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 1e2993e1f4d28fd5d281ea510121686d3bc37a8c
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: b7765182a89e08a2b2b8fcdbdfed82c64893fc27
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746958"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43306976"
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>Optimalizace výkonu díky upgradu SQL Data Warehouse
 Upgradujte na nejnovější generace architektury Azure hardware a úložiště Azure SQL Data Warehouse.
 
 ## <a name="why-upgrade"></a>Proč upgradovat?
 Nově můžete bez problémů upgradovat na úroveň SQL Data Warehouse – Compute optimalizované Gen2 na webu Azure Portal. Pokud máte datový sklad – Compute optimalizované Gen1 vrstvy, upgrade se doporučuje. Díky upgradu, můžete použít nejnovější generace hardwaru Azure a rozšířená architektura úložiště. Můžete využít výhod vyšší výkon, vyšší škálovatelnost a neomezené sloupcové úložiště. 
+
+> [!VIDEO https://www.youtube.com/embed/9B2F0gLoyss]
 
 ## <a name="applies-to"></a>Platí pro
 Tento upgrade se vztahuje na – Compute optimalizované Gen1 úroveň datových skladů.

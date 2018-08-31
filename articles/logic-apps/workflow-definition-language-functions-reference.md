@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 08/15/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 78e991fcac87d59ed7b84180192899ddbdf330f2
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 8a2e06d2e6cf3e470d4e0909e5559ac0411292fd
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43105635"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43307109"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Functions – reference pro jazyk pro definování pracovních postupů v Azure Logic Apps
 
@@ -80,7 +80,7 @@ Pro práci s řetězci, můžete použít tyto funkce řetězce a také někter�
 | [endsWith](../logic-apps/workflow-definition-language-functions-reference.md#endswith) | Zkontrolujte, jestli řetězec končí zadaným podřetězcem. | 
 | [identifikátor GUID](../logic-apps/workflow-definition-language-functions-reference.md#guid) | Vygeneruje globálně jedinečný identifikátor (GUID) jako řetězec. | 
 | [indexOf](../logic-apps/workflow-definition-language-functions-reference.md#indexof) | Vrátí počáteční pozici pro dílčí řetězec. | 
-| [lastIndexOf](../logic-apps/workflow-definition-language-functions-reference.md#lastindexof) | Vrátí poslední pozice podřetězce. | 
+| [lastIndexOf](../logic-apps/workflow-definition-language-functions-reference.md#lastindexof) | Vrátí počáteční pozici posledního výskytu podřetězce. | 
 | [nahradit](../logic-apps/workflow-definition-language-functions-reference.md#replace) | Nahraďte podřetězce pomocí zadaného řetězce a vrátit řetězec aktualizované. | 
 | [split](../logic-apps/workflow-definition-language-functions-reference.md#split) | Vrátí pole, které obsahuje všechny znaky z řetězce a odděluje jednotlivé znaky s konkrétní oddělovací znak. | 
 | [startsWith](../logic-apps/workflow-definition-language-functions-reference.md#startswith) | Zkontrolujte, jestli řetězec začíná na konkrétní dílčí řetězec. | 
@@ -2123,7 +2123,7 @@ indexOf('<text>', '<searchText>')
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*Hodnota indexu*>| Integer | Počáteční pozice nebo index hodnotu pro zadaný dílčí řetězec. <p>Pokud není nalezen řetězec, vrátí číslo -1. </br>Pokud je řetězec prázdný, vrátí číslo 0. | 
+| <*Hodnota indexu*>| Integer | Počáteční pozice nebo index hodnotu pro zadaný dílčí řetězec. <p>Pokud není nalezen řetězec, vrátí číslo -1. | 
 |||| 
 
 *Příklad* 
@@ -2387,7 +2387,7 @@ A vrátí tyto výsledky:
 
 ### <a name="lastindexof"></a>lastIndexOf
 
-Vrátí hodnotu koncové pozice nebo indexu pro dílčí řetězec. Tato funkce není velká a malá písmena a indexy začínají číslem 0.
+Vrátí počáteční pozici nebo hodnotu indexu posledního výskytu podřetězce. Tato funkce není velká a malá písmena a indexy začínají číslem 0.
 
 ```
 lastIndexOf('<text>', '<searchText>')
@@ -2401,18 +2401,18 @@ lastIndexOf('<text>', '<searchText>')
 
 | Návratová hodnota | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| <*Hodnota indexu ukončení*> | Integer | Koncová pozice nebo index Hodnota zadaným podřetězcem. <p>Pokud není nalezen řetězec, vrátí číslo -1. </br>Pokud je řetězec prázdný, vrátí číslo 0. | 
+| <*Hodnota indexu ukončení*> | Integer | Počáteční pozice nebo index hodnota posledního výskytu zadané dílčí řetězec. <p>Pokud není nalezen řetězec, vrátí číslo -1. | 
 |||| 
 
 *Příklad* 
 
-Tento příklad vyhledá poslední hodnotu indexu pro podřetězec "world" v řetězci "hello world":
+Tento příklad vyhledá na počáteční hodnotu index posledního výskytu podřetězce "world" v řetězci "hello world":
 
 ```
 lastIndexOf('hello world', 'world')
 ```
 
-A vrátí výsledek: `10`
+A vrátí výsledek: `6`
 
 <a name="length"></a>
 

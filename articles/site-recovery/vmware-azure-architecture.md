@@ -3,14 +3,14 @@ title: Z VMware do Azure replikace architektura v Azure Site Recovery | Dokument
 description: Tento článek obsahuje přehled komponent a architektury používané při replikaci místních virtuálních počítačů VMware do Azure pomocí Azure Site Recovery
 author: rayne-wiselman
 ms.service: site-recovery
-ms.date: 07/06/2018
+ms.date: 08/29/2018
 ms.author: raynew
-ms.openlocfilehash: 48adf61dc0f1796b820e1e14ca509d4618c6256b
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 4a97c44226d875a08f81a6306fc9ddd4ee29c409
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920562"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43288137"
 ---
 # <a name="vmware-to-azure-replication-architecture"></a>Z VMware do Azure replikace architektury
 
@@ -32,22 +32,7 @@ Následující tabulka a obrázek poskytuje souhrnný přehled komponenty použ�
 
 ![Komponenty](./media/vmware-azure-architecture/arch-enhanced.png)
 
-## <a name="configuration-steps"></a>Postup konfigurace
 
-Obecných kroků pro nastavení VMware na zotavení po havárii Azure nebo migrace jsou následující:
-
-1. **Nastavení Azure komponent**. Potřebujete účet Azure s příslušným oprávněním, účet úložiště Azure, službě Azure virtual network a trezor služby Recovery Services. [Další informace](tutorial-prepare-azure.md).
-2. **Nastavit místní**. Mezi ně patří vytvoření účtu na serveru VMware tak, aby Site Recovery může automaticky zjistit virtuální počítače k replikaci, nastavíte účet, který je možné nainstalovat službu mobility na virtuální počítače, které chcete replikovat a ověření této servery VMware a virtuální počítače v souladu s požadavky. Také v případě potřeby můžete připravit pro připojení k těmto virtuálním počítačům Azure po převzetí služeb při selhání. Site Recovery replikuje data virtuálního počítače do účtu služby Azure storage a vytvoří virtuální počítače Azure s využitím dat při spuštění převzetí služeb při selhání do Azure. [Další informace](vmware-azure-tutorial-prepare-on-premises.md).
-3. **Nastavení replikace**. Můžete zvolit, zda chcete replikovat. Nakonfigurujete zdrojové prostředí replikace nastavením VMware jednomu místnímu virtuálnímu počítači (konfigurační server), na kterém běží všechny místní komponenty Site Recovery, které potřebujete. Po dokončení instalace je zaregistrovat počítače konfigurace serveru v trezoru služby Recovery Services. Potom vyberte nastavení cíle. [Další informace](vmware-azure-tutorial.md).
-4. **Vytvoření zásady replikace**. Vytvoříte zásady replikace, která určuje, jak by měla probíhat replikace. 
-    - **Prahová hodnota cíle bodu obnovení**: Tato nastavení monitorování stavu, pokud replikace není v zadané době, výstrahu (a volitelně e-mailu) vydává. Například pokud nastavená prahová hodnota cíle bodu obnovení na 30 minut, a problém brání replikace provádění po dobu 30 minut, je vygenerována událost. Toto nastavení nemá vliv na replikaci. Průběžné replikace a body obnovení jsou vytvářeny každých pár minut
-    - **Uchování**: uchovávání informací Určuje, jak dlouho se body obnovení bodu obnovení se uchovávají v Azure. Zadejte hodnotu mezi 0 a 24 hodin pro premium storage, nebo až 72 hodin pro úložiště úrovně standard. Můžete převzít služby do nejnovějšího bodu obnovení, nebo do uloženého bodu Pokud nastavíte hodnotu vyšší než nula. Po interval uchovávání dat jsou vymazány body obnovení.
-    - **Snímky konzistentní při selhání**: ve výchozím nastavení, Site Recovery pořizuje snímky konzistentní při selhání a vytvoří body obnovení s nimi každých několik minut. Bod obnovení je konzistentní, pokud jsou všechny komponenty vzájemně propojených dat zápisu pořadí konzistentní s havárií, jako kdyby byly v okamžiku vytvoření bodu obnovení. Abyste lépe pochopili, imagine po výpadku napájení nebo podobná událost stav dat na pevném disku počítače. Bod obnovení konzistentní při selhání je obvykle stačí, pokud vaše aplikace je navržen pro zotavení z chyb bez nekonzistencím dat.
-    - **Snímky konzistentní s**: Pokud tuto hodnotu není nula, služby Mobility spuštěné na virtuálním počítači pokusí vygenerovat snímky konzistentní vzhledem k systému souborů a body obnovení. Po dokončení počáteční replikace se pořídí první snímek. Potom snímky se pořídí na frekvenci, kterou zadáte. Vytvoření bodu obnovení je konzistentní s aplikací, pokud kromě toho, že pořadí zápisu žádosti konzistentní vzhledem k aplikacím, spuštěné dokončení všech operací a vyprázdní vyrovnávací paměti na disk (uvedení aplikace). Body obnovení konzistentní se doporučují pro databázové aplikace, jako je SQL, Oracle nebo Exchange. Pokud snímek konzistentní při selhání je dostačující, můžete tato hodnota nastavena na hodnotu 0.  
-    - **Konzistence více virtuálních počítačů**: Volitelně můžete vytvořit replikační skupinu. Když povolíte replikaci, bude možné shromažďovat virtuálních počítačů do této skupiny. Virtuální počítače ve skupině replikace seskupit replikace a mít sdílené body obnovení konzistentní při selhání a konzistentní při převzetí služeb při selhání. Tuto možnost by měla používejte opatrně, protože může ovlivnit výkon úloh, jako třeba na víc počítačů se dají shromáždit snímky. Udělat jen tehdy, pokud virtuální počítače běží stejné zatížení a musí být konzistentní vzhledem k aplikacím a virtuální počítače mají podobné churns. Můžete přidat až 8 virtuálních počítačů do skupiny. 
-5. **Povolení replikace virtuálních počítačů**. A konečně povolíte replikaci pro virtuální počítače VMware v místním. Pokud jste vytvořili účet, který chcete nainstalovat službu Mobility a zadat, že Site Recovery proveďte nabízenou instalaci, pak služby Mobility se nainstaluje na každý virtuální počítač, pro kterou můžete povolit replikaci. [Další informace](vmware-azure-tutorial.md#enable-replication). Pokud vytvoříte skupiny replikace pro zajištění konzistence více virtuálních počítačů, můžete přidat virtuální počítače do této skupiny.
-6. **Testovací převzetí služeb při selhání**. Poté, co všechno je nastavené, můžete provést testovací převzetí služeb ke kontrole, jestli virtuální počítače převzetí služeb při selhání do Azure podle očekávání. [Další informace](tutorial-dr-drill-azure.md).
-7. **Převzetí služeb při selhání**. Pokud právě migrace virtuálních počítačů do Azure – spuštění úplné převzetí služeb při selhání, který chcete. Pokud při nastavování zotavení po havárii, můžete spustit úplné převzetí služeb při selhání pro potřeby. Pro úplné havárii můžete po převzetí služeb při selhání do Azure, předat zpět do vaší místní lokalitě jako a je k dispozici. [Další informace](vmware-azure-tutorial-failover-failback.md).
 
 ## <a name="replication-process"></a>Proces replikace
 

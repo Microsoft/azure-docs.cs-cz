@@ -1,19 +1,18 @@
 ---
 title: Řešení potíží s disky připojené k virtuálním počítačům Azure | Dokumentace Microsoftu
-description: Služba Azure Blob Storage je navržená k ukládání velkých objemů nestrukturovaných dat objektů, jako jsou textová nebo binární data. Vaše aplikace můžou k objektům ve službě Blob Storage přistupovat z PowerShellu nebo Azure CLI, z kódu prostřednictvím klientských knihoven pro Azure Storage nebo přes REST.
+description: Obsahuje odkazy na materiály pro virtuální počítač Azure virtuálních pevných disků (VHD) pro řešení potíží.
 services: storage
 author: genlin
 ms.service: storage
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: genli
-ms.component: disks
-ms.openlocfilehash: 0dbd89c28d18d64908d92cd38d8bd1cf3138fd5c
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 81db3a819c28aab8f4b644a940eeb5e6c5ecf3d6
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397963"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43307168"
 ---
 # <a name="troubleshoot-disks-attached-to-azure-vms"></a>Řešení potíží s disky připojené k virtuálním počítačům Azure 
 

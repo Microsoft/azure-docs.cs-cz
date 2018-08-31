@@ -1,5 +1,5 @@
 ---
-title: Náklady na software pro Windows Azure rezervace | Dokumentace Microsoftu
+title: Náklady na software rezervace Windows Azure | Dokumentace Microsoftu
 description: Zjistěte, jaké měření softwaru Windows nejsou zahrnuty v nákladů na rezervované Instance virtuálních počítačů Azure.
 services: billing
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/09/2018
 ms.author: manshuk
-ms.openlocfilehash: 8ff2d126fd491ddc40f6223b6d4ec1fc4505b8fb
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: ec4869ed5c4d823a8144ba430ebb29c65c2abc13
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630107"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43302062"
 ---
-# <a name="windows-software-costs-not-included-with-azure-reservations"></a>Náklady na software Windows, které nejsou součástí Azure rezervace
+# <a name="windows-software-costs-not-included-with-azure-reserved-vm-instances"></a>Náklady na software Windows, které nejsou součástí Azure Reserved VM Instances
 
 Pokud nemáte Azure Hybrid Use Benefit na vaší rezervované instance virtuálních počítačů, pak bude vám účtována měření softwaru Windows uvedené v následující části.
 
@@ -53,11 +53,11 @@ Pokud nemáte Azure Hybrid Use Benefit na vaší rezervované instance virtuáln
 Náklady na každý z těchto měřičů můžete získat pomocí Azure RateCard API. Informace o tom, jak získat sazby pro azure měřičů najdete v tématu [získání informací o cenách a metadat pro prostředky používané v rámci předplatného Azure](https://msdn.microsoft.com/library/azure/mt219004).
 
 ## <a name="next-steps"></a>Další postup
-Další informace o Azure rezervace, naleznete v následujících článcích:
+Další informace o rezervacích Azure, najdete v následujících článcích:
 
 - [Co jsou Azure rezervace?](billing-save-compute-costs-reservations.md)
 - [Předplatit si virtuální počítače se službou Azure Reserved VM Instances](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Správa rezervací v Azure](billing-manage-reserved-vm-instance.md)
+- [Správa rezervací Azure](billing-manage-reserved-vm-instance.md)
 - [Vysvětlení, jak se sleva za rezervaci použije](billing-understand-vm-reservation-charges.md)
 - [Vysvětlení využití rezervace pro vaše předplatné s průběžnými platbami](billing-understand-reserved-instance-usage.md)
 - [Vysvětlení využití rezervaci u prováděcí smlouvy Enterprise](billing-understand-reserved-instance-usage-ea.md)

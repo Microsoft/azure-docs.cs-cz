@@ -6,19 +6,19 @@ author: jovanpop-msft
 manager: craigg
 ms.service: sql-database
 ms.topic: conceptual
-ms.date: 08/15/2018
+ms.date: 08/29/2018
 ms.author: jovanpop
 ms.reviewer: carlrab, sashan
-ms.openlocfilehash: 329af89e52af6f3599e2d86e6ac6d28b8b63f333
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.openlocfilehash: f056bfa33e2a43af60357d6bf50a0b9cd8d7f254
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42059122"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286293"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Vysoká dostupnost a Azure SQL Database
 
-Azure SQL Database je vysoce dostupné databáze platforma jako služba, která zaručuje, že je vaše databáze a spuštěné 99,99 % času, ale nemusíme se starat o údržbu a výpadky. Toto je plně spravovaný proces databázový stroj SQL serveru hostované v cloudu Azure, který zajistí, že databáze systému SQL Server je vždy upgradovat nebo opravit bez ovlivnění vašich úloh. Azure SQL Database můžete rychle obnovit i v těch nejdůležitějších okolností zajistit, že vaše data budou vždy k dispozici.
+Azure SQL Database je vysoce dostupné databáze platforma jako služba, která zaručuje, že je vaše databáze a spuštěné 99,99 % času, ale nemusíme se starat o údržbu a výpadky. Toto je plně spravovaný proces databázový stroj SQL serveru hostované v cloudu Azure, který zajistí, že databáze systému SQL Server je vždy upgradovat nebo opravit bez ovlivnění vašich úloh. Když instance je opravit nebo převezme služby při selhání, výpadek není obecně souborům Pokud jste [použít logiku opakování](sql-database-develop-overview.md#resiliency) ve vaší aplikaci. Pokud čas k dokončení převzetí služeb při selhání je delší než 60 sekund, by měla otevřít případ podpory. Azure SQL Database můžete rychle obnovit i v těch nejdůležitějších okolností zajistit, že vaše data budou vždy k dispozici.
 
 Platforma Azure plně spravuje každou databází SQL Azure a garantuje ke ztrátě dat a vysoké procento dostupnosti údajů. Použití dílčích oprav, zálohování, replikace, detekce chyb, základní potenciální hardwaru, selhání softwaru nebo sítě, opravy chyb nasazení, převzetí služeb při selhání, upgrade databáze a další úlohy údržby automaticky postará Azure. Systému SQL Server technici implementovali nejznámějších postupy zajistit, že všechny operace údržby jsou dokončeny za méně než 0,01 % dobu životnosti vaší databáze. Tato architektura je navržená tak, aby potvrzených dat se nikdy ztraceny a aby byly provedeny operace údržby bez ovlivnění pracovního vytížení. Neexistují žádné časová období údržby nebo prostoje, které by měl vyžadují, abyste k zastavení úlohy a databáze je upgradovat nebo udržovat. Integrovaná vysoká dostupnost ve službě Azure SQL Database zaručuje, že databáze nebude nikdy jediným bodem selhání v softwarové architektuře.
 

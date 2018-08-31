@@ -1,6 +1,6 @@
 ---
-title: Co je na přístupovém panelu ve službě Azure Active Directory? | Dokumenty Microsoft
-description: Další informace o použití odchylky na přístupovém panelu (webový prohlížeč, aplikace pro Android, aplikace pro iPhone a iPad) pro přístup k aplikacím SaaS.
+title: Co je portálu MyApps ve službě Azure Active Directory? | Dokumenty Microsoft
+description: Další informace o použití změn na portálu MyApps (webový prohlížeč, aplikace pro Android, aplikace pro iPhone a iPad) pro přístup k aplikacím SaaS.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -12,20 +12,20 @@ ms.topic: conceptual
 ms.date: 05/11/18
 ms.author: lizross
 ms.reviewer: asteen
-ms.openlocfilehash: f69830deb4d2c74b5fe1c85ad8c9452097dd2a1e
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: e382f53678806aa3442151703277c3a57bb30830
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42055450"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43302273"
 ---
-# <a name="what-is-the-access-panel"></a>Co je na přístupovém panelu?
+# <a name="what-is-the-myapps-portal"></a>Co je na portálu MyApps?
 
-Přístupový panel je webový portál. Pokud máte pracovní nebo školní účet v Azure Active Directory (Azure AD), můžete k zobrazení a spuštění cloudových aplikací, které správce Azure AD udělil přístup k přístupovému panelu. Můžete také použít samoobslužné skupiny a možnosti správy aplikací přes přístupový panel.
+Pokud máte svůj pracovní nebo školní účet v Azure Active Directory (Azure AD), můžete zobrazit a spustit cloudových aplikací, které správce Azure AD udělil přístup k Moje aplikace webový portál. Můžete také použít samoobslužné skupiny a možnosti správy aplikací prostřednictvím portálu MyApps.
 
-Přístupový panel je nezávisle na webu Azure portal. Nevyžaduje, abyste měli předplatné Azure.
+Na portálu MyApps je nezávislá na webu Azure portal. Nevyžaduje, abyste měli předplatné Azure.
 
-![Přístupový panel][1] pomocí přístupového panelu můžete upravit některé z nastavení profilu a udělejte toto:
+![Portálu MyApps][1] s použitím portálu MyApps, můžete upravit některé z nastavení profilu a udělejte toto:
 
 - Změňte heslo přidružené k pracovnímu nebo školnímu účtu.
 
@@ -39,12 +39,9 @@ Přístupový panel je nezávisle na webu Azure portal. Nevyžaduje, abyste měl
 
 - Správa samoobslužných skupin. Správci mohou vytvořit a spravovat skupiny zabezpečení a požádat o členství ve skupinách zabezpečení ve službě Azure AD. Další informace najdete v tématu [Samoobslužná správa skupin uživatelů ve službě Azure AD](../users-groups-roles/groups-self-service-management.md) a [spravovat skupiny](../fundamentals/active-directory-manage-groups.md).
 
+## <a name="access-the-myapps-portal"></a>Přístup k portálu MyApps
 
-
-
-## <a name="access-the-access-panel"></a>Přístupový panel
-
-Dostanete tak, že přejdete na přístupovém panelu `http://myapps.microsoft.com`.
+Dostanete tak, že přejdete na portálu MyApps `http://myapps.microsoft.com`.
 
 Pokud máte vlastní značka nakonfigurovaná pro přihlašovací stránku, můžete načíst branding přidáním domény vaší organizace na adresu URL (například `http://myapps.microsoft.com/<your domain>.com`).
 
@@ -54,7 +51,7 @@ Distribuujte adresy URL pro všechny uživatele, kteří přihlašovat do aplika
 
 ## <a name="authentication"></a>Authentication
 
-Pokud chcete dostat na přístupovém panelu, musíte být ověřeni pomocí pracovního nebo školního účtu ve službě Azure AD. Mohou být ověřeni pro Azure AD přímo. Případně pokud organizace má nakonfigurovanou federace pomocí služby Active Directory Federation Services (AD FS) nebo jiné technologie, vám může být ověřen pomocí systému Windows Server Active Directory.
+K dosažení portálu MyApps, musíte být ověřeni pomocí pracovního nebo školního účtu ve službě Azure AD. Mohou být ověřeni pro Azure AD přímo. Případně pokud organizace má nakonfigurovanou federace pomocí služby Active Directory Federation Services (AD FS) nebo jiné technologie, vám může být ověřen pomocí systému Windows Server Active Directory.
 
 Pokud máte předplatné Azure nebo Office 365 a používáte na webu Azure portal nebo aplikace Office 365, můžete zobrazit seznam aplikací bez opakovaného přihlášení. Pokud nejste ověřeni, zobrazí se výzva k přihlášení pomocí uživatelského jména a hesla pro váš účet ve službě Azure AD. Pokud vaše organizace má nakonfigurovanou federace, zadáním uživatelského jména je dostačující.
 
@@ -62,12 +59,12 @@ Když jste ověřeni, můžete pracovat s aplikacemi, které správce má integr
 
 ## <a name="web-browser-requirements"></a>Požadavky na webový prohlížeč
 
-Minimálně na přístupovém panelu vyžaduje prohlížeč, který podporuje JavaScript a má povolený šablon stylů CSS. Být přihlášení k aplikacím prostřednictvím založené na heslech jednotné přihlašování (SSO), musí mít rozšíření přístupového panelu nainstalovaný ve vašem prohlížeči. Rozšíření se automaticky stáhne při výběru, který je nakonfigurovaný pro jednotné přihlašování pomocí hesla aplikace.
+Minimálně na portálu MyApps vyžaduje prohlížeč, který podporuje JavaScript a má povolený šablon stylů CSS. Být přihlášení k aplikacím prostřednictvím založené na heslech jednotné přihlašování (SSO), musíte mít nainstalované ve vašem prohlížeči rozšíření portálu MyApps. Rozšíření se automaticky stáhne při výběru, který je nakonfigurovaný pro jednotné přihlašování pomocí hesla aplikace.
 
 Instalační program je specifické pro architekturu. Pokud kliknete odkaz ke stažení, získají instalační program pro architekturu operačního systému, které jsou aktuálně spuštěné na. Pokud jste správce nasazení aplikací, ujistěte se, navštivte odkaz ke stažení z 64bitové a 32bitové zařízení, abyste získali oba instalační programy.
 
 
-Rozšíření přístupového panelu je momentálně dostupná pro:
+Rozšíření portálu MyApps je aktuálně k dispozici pro:
 - **Edge**: Windows 10 Anniversary Edition nebo novější. 
 - **Chrome**: ve Windows 7 nebo novější a v systému MacOS X nebo novější.
 - **Firefox 26.0 nebo novější**: ve Windows XP SP2 nebo novější a Mac OS X 10.6 nebo novější.
@@ -77,7 +74,7 @@ Rozšíření přístupového panelu je momentálně dostupná pro:
 Pro přihlášení k založené na heslech jednotného přihlašování, je nutné použít příponu. Po instalaci rozšíření můžete přihlásit k jeho povolení dalších funkcí tak, že vyberete **Přihlaste se k Začínáme**. 
 
 - Přihlaste se k aplikaci přímo s použitím aplikace **přihlašovací adresa URL**. Pokud používáte adresu URL aplikace, rozšíření akci rozpozná a dá vám možnost přihlašování z rozšíření.
-- Některé z vašich aplikací na přístupovém panelu můžete spustit pomocí *rychlého vyhledávání* funkce rozšíření. 
+- Některé z vašich aplikací z portálu MyApps můžete spustit pomocí *rychlého vyhledávání* funkce rozšíření. 
 - Rozšíření se zobrazí poslední tři aplikace, které jste spustili v **naposledy použité** oddílu.
 - Můžete použít interní firemní adresy URL při vzdálené prostřednictvím [Proxy aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-get-started)
 
@@ -111,7 +108,7 @@ Použití interní firemní adresy URL při vzdálené pomocí rozšíření, po
 Tým služby Azure Active Directory publikuje Moje aplikace z mobilní aplikace. Při instalaci aplikace se můžete přihlásit založené na heslech jednotného přihlašování k aplikacím v iOS a androidem.
 
 > [!NOTE]
-> Můžete přihlásit k aplikacím, které podporují federace s Azure AD (včetně Salesforce, Google Apps, Dropbox, Box, Concur, Workday, Office 365 a více než 70 ostatní) na prakticky libovolného webového prohlížeče na libovolném zařízení a bez nutnosti modul plug-in nebo mobilní aplikace. K použití v mobilních zařízení, druhý [přístup k panelu prostředí](https://myapps.microsoft.com/) také nevyžadují Moje aplikace z mobilní aplikace.
+> Můžete přihlásit k aplikacím, které podporují federace s Azure AD (včetně Salesforce, Google Apps, Dropbox, Box, Concur, Workday, Office 365 a více než 70 ostatní) na prakticky libovolného webového prohlížeče na libovolném zařízení a bez nutnosti modul plug-in nebo mobilní aplikace. K použití v mobilních zařízení, druhý [prostředí portálu MyApps](https://myapps.microsoft.com/) také nevyžadují Moje aplikace z mobilní aplikace.
 >
 >
 
@@ -145,22 +142,22 @@ Intune Managed Browser je k dispozici na [Apple App Store](https://itunes.apple.
 
 ## <a name="tips-for-testing-the-user-experience"></a>Tipy pro testování uživatelského rozhraní
 
-Pokud jste správcem Azure a jste přihlášení k webu Azure portal pomocí účtu v adresáři, budete automaticky přihlášení k přístupovému panelu jako aktuálního účtu. Tento náhled zobrazuje všechny aplikace, které jsou vám přiřazeny.
+Pokud jste správcem Azure a jste přihlášení k webu Azure portal pomocí účtu v adresáři, budete automaticky přihlášení k portálu MyApps jako aktuálního účtu. Tento náhled zobrazuje všechny aplikace, které jsou vám přiřazeny.
 
 Testování v *různých* uživatelského účtu, postupujte takto:
 
-1. V pravém horním rohu webu Azure portal nebo na přístupovém panelu, vyberte **Odhlásit**. 
-2. Přejděte [přístupového panelu](http://myapps.microsoft.com).
+1. V pravém horním rohu webu Azure portal nebo portálu MyApps, vyberte **Odhlásit**. 
+2. Přejděte [portálu MyApps](http://myapps.microsoft.com).
 3. Na stránce přihlášení zadejte uživatelské jméno a heslo pro účet ve vašem adresáři, který chcete testovat.
 
 
 ## <a name="starting-applications"></a>Spouštění aplikací
 
-Tato část popisuje několik typů aplikací, které se mohou objevit na přístupovém panelu.
+Tato část popisuje několik typů aplikací, které se mohou objevit na portálu MyApps.
 
 ### <a name="office-365-applications"></a>Aplikace Office 365
 
-Pokud vaše organizace používá Office 365 aplikací a máte licenci, aplikace Office 365 zobrazovat na přístupovém panelu.
+Pokud vaše organizace používá Office 365 aplikací a máte licenci, aplikace Office 365 se objeví na portálu MyApps.
 
 Při výběru dlaždice aplikací pro aplikace Office 365, je přesměrován do aplikace a automaticky přihlášeni.
 
@@ -174,7 +171,7 @@ Při výběru dlaždice pro aplikace, jsou přesměrovány a automaticky přihl�
 
 Správce můžete přidat aplikace v sekci Active Directory na webu Azure portal s režimem jednotné přihlašování nastavit na **založené na heslech Single Sign-On**. Všichni uživatelé v adresáři vidí všechny aplikace, které jsou nakonfigurované v tomto režimu.
 
-Při prvním vyberte dlaždici aplikace, zobrazí se výzva k instalaci modulu plug-in jednotné přihlašování heslem pro aplikaci Internet Explorer nebo Chrome. Instalace může vyžadovat restartování ve webovém prohlížeči. Po návratu na přístupovém panelu a znovu vyberte dlaždici aplikace, zobrazí se výzva pro uživatelské jméno a heslo pro aplikaci. Po zadání uživatelského jména a hesla, přihlašovací údaje jsou bezpečně uložená a propojený s vaším účtem ve službě Azure AD.
+Při prvním vyberte dlaždici aplikace, zobrazí se výzva k instalaci modulu plug-in jednotné přihlašování heslem pro aplikaci Internet Explorer nebo Chrome. Instalace může vyžadovat restartování ve webovém prohlížeči. Vraťte se do portálu MyApps a znovu vyberete dlaždici aplikace, zobrazí se výzva pro uživatelské jméno a heslo pro aplikaci. Po zadání uživatelského jména a hesla, přihlašovací údaje jsou bezpečně uložená a propojený s vaším účtem ve službě Azure AD.
 
 Při příštím vyberete dlaždici aplikace, budete automaticky přihlášení k aplikaci.  
 
@@ -194,7 +191,7 @@ Správce můžete přidat aplikace v sekci Active Directory na webu Azure portal
 
 Při prvním vyberte dlaždici aplikace, zobrazí se výzva k instalaci modulu plug-in jednotné přihlašování heslem pro aplikaci Internet Explorer nebo Chrome. Instalace může vyžadovat restartování ve webovém prohlížeči.  
 
-Po návratu na přístupovém panelu a znovu vyberte dlaždici aplikace, budete automaticky přihlášení k aplikaci.
+Vraťte se do portálu MyApps a znovu vyberete dlaždici aplikace, budete automaticky přihlášení k aplikaci.
 
 Některé aplikace mohou vyžadovat změnu hesla při prvním přihlášení. Pokud se vaše přihlašovací údaje změnily v cílové aplikaci třetí strany, je nutné také aktualizovat přihlašovací údaje, které jsou uložené ve službě Azure AD. 
 
@@ -206,9 +203,9 @@ Pokud chcete aktualizovat svoje přihlašovací údaje, postupujte takto:
 
 ### <a name="application-with-existing-sso-solutions"></a>Aplikace se stávajícími řešeními jednotného přihlašování
 
-Konfigurace jednotného přihlašování pro aplikaci, na webu Azure portal nabízí třetí možnost volat existující jednotné přihlašování. Tato možnost umožňuje správcům vytvořit odkaz na aplikaci a umístěte ho na panel přístupu pro vybraného uživatele.
+Konfigurace jednotného přihlašování pro aplikaci, na webu Azure portal nabízí třetí možnost volat existující jednotné přihlašování. Tato možnost umožňuje správcům vytvořit odkaz na aplikaci a umístěte ji na portálu MyApps pro vybraného uživatele.
 
-Například pokud aplikace je nakonfigurovaná k ověřování uživatelů pomocí služby AD FS 2.0, správce použít možnost existující Single Sign-On pro vytvoření odkazu na něj na přístupovém panelu. Když se dostanete na odkaz, ověření prostřednictvím služby AD FS 2.0 nebo jakýkoli existující jednotného přihlašování k řešení, které poskytuje aplikace.
+Například pokud aplikace je nakonfigurovaná k ověřování uživatelů pomocí služby AD FS 2.0, správce použít možnost existující Single Sign-On pro vytvoření odkazu na ni na portálu MyApps. Když se dostanete na odkaz, ověření prostřednictvím služby AD FS 2.0 nebo jakýkoli existující jednotného přihlašování k řešení, které poskytuje aplikace.
 
 
 ## <a name="next-steps"></a>Další postup

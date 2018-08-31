@@ -11,12 +11,12 @@ ms.topic: article
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
 manager: douge
-ms.openlocfilehash: 001d58aa22d4fc52acebfc88ba07d2467c1be08e
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 3f45d8059cd4af5dbab64fef798b61e439a5f2fc
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42054221"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286870"
 ---
 # <a name="troubleshooting-guide"></a>Průvodce odstraňováním potíží
 
@@ -106,6 +106,16 @@ Pokud azds.exe není nainstalovaná nebo správně nakonfigurovaný, může se z
     ```cmd
     az aks use-dev-spaces -n <cluster-name> -g <resource-group>
     ```
+
+## <a name="warning-dockerfile-could-not-be-generated-due-to-unsupported-language"></a>Upozornění "soubor Dockerfile se nepodařilo vygenerovat z důvodu nepodporovaný jazyk.
+Azure Dev prostory poskytuje nativní podporu pro C# nebo Node.js. Při spuštění *azds prep* do adresáře, který obsahuje kód napsaný v jednom z těchto jazyků, prostory vývoj Azure automaticky vytvoří odpovídající soubor Dockerfile za vás.
+
+Stále můžete Azure Dev prostory pomocí kódu napsaného v jiných jazycích, ale budete muset vytvořit soubor Dockerfile před spuštěním příkazu *azds nahoru* poprvé.
+
+### <a name="try"></a>Zkuste:
+Pokud vaše aplikace je napsán v jazyce, že Azure Dev prostory nenabízí nativní podporu, bude nutné zadat příslušný soubor Dockerfile pro sestavení image kontejneru, spouštění kódu. Docker nabízí [seznam osvědčených postupů pro psaní soubory Dockerfile](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/) a také [odkaz na soubor Dockerfile](https://docs.docker.com/engine/reference/builder/) , který vám s tím pomůže.
+
+Jakmile budete mít odpovídající soubor Dockerfile v místě, abyste mohli pokračovat spuštění *azds nahoru* ke spuštění aplikace v Azure Dev mezery.
 
 ## <a name="error-upstream-connect-error-or-disconnectreset-before-headers"></a>Chyba "upstream Chyba připojení nebo odpojení/reset před záhlaví"
 Při pokusu o přístup ke službě, může se zobrazit tato chyba. Například když přejdete na adresu URL služby v prohlížeči. 

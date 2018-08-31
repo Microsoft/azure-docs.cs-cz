@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/08/2018
 ms.author: carlrab
-ms.openlocfilehash: 1d1cad4b614eb35be9235a721368db8048be050a
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: fcb7f2c1bb3e1653b9f8112abc0effaddc45fa54
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39634031"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43306465"
 ---
 # <a name="prepay-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Předem za výpočetní prostředky, SQL Database s Azure SQL Database vyhrazené kapacity
 
@@ -65,10 +65,11 @@ Sleva za rezervaci – VCORE úrovně se automaticky použije na počet instanc�
 
 Další informace o pro správu databáze SQL vyhrazený rezervaci kapacity najdete v tématu [Správa služby SQL Database rezervované kapacity](../billing/billing-manage-reserved-vm-instance.md).
 
-Další informace o Azure rezervace, naleznete v následujících článcích:
+Další informace o rezervacích Azure, najdete v následujících článcích:
 
 - [Co jsou Azure rezervace?](../billing/billing-save-compute-costs-reservations.md)
-- [Správa Azure rezervace](../billing/billing-manage-reserved-vm-instance.md)
+- [Správa rezervací Azure](../billing/billing-manage-reserved-vm-instance.md)
+- [Vysvětlení, že slevách na využití platformy Azure rezervace](../billing/billing-understand-reservation-charges.md)
 - [Vysvětlení využití rezervace pro vaše předplatné s průběžnými platbami](../billing/billing-understand-reserved-instance-usage.md)
 - [Vysvětlení využití rezervaci u prováděcí smlouvy Enterprise](../billing/billing-understand-reserved-instance-usage-ea.md)
 - [Rezervace Azure v programu Partnerské centrum Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/azure-reservations)

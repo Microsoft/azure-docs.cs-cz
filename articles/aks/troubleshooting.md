@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 614930fb11e65404416e604c94351e2754b8e941
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 9f082c5f198ebd7123058bd250d3fef55494d553
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40190061"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287535"
 ---
 # <a name="aks-troubleshooting"></a>Řešení potíží s AKS
 Pokud vytvoříte nebo clustery správce AKS, někdy můžete setkat s problémy. Tento článek podrobně popisuje některé běžné problémy a postup řešení potíží.
@@ -24,16 +24,16 @@ Pokud vytvoříte nebo clustery správce AKS, někdy můžete setkat s problémy
 
 ### <a name="i-am-getting-a-quota-exceeded-error-during-create-or-upgrade-what-should-i-do"></a>Chyby překročení kvóty dochází při vytvoření nebo aktualizace. Co bych měl/a dělat? 
 
-Budete muset požádat o jader [zde](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)
+Budete muset požádat o jader [tady](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
 
 ### <a name="what-is-the-max-pods-per-node-setting-for-aks"></a>Jaký je maximální počet podů na uzel pro AKS?
 
 Maximální počet podů na uzel nastavené na 30 ve výchozím nastavení při nasazení clusteru AKS na portálu Azure portal.
 Maximální počet podů na uzel jsou nastaveny na hodnotu 110 ve výchozím nastavení, pokud nasadíte cluster AKS v Azure CLI. (Ujistěte se, že používáte nejnovější verzi Azure CLI). Toto výchozí nastavení lze změnit pomocí – maximální počet-uzly-za-pod příznak v az aks create příkaz.
 
-### <a name="i-am-getting--insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>Vyskytla se chyba "insufficientSubnetSize" při nasazování clusteru AKS pomocí rozšířeného sítě. Co bych měl/a dělat?
+### <a name="i-am-getting-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>Vyskytla se chyba "insufficientSubnetSize" při nasazování clusteru AKS pomocí rozšířeného sítě. Co bych měl/a dělat?
 
-Ve vybrané pro práci v síti během AKS vytváří možnost vlastní virtuální sítě se používá Azure CNI pro správu IP adres. Počet uzlů v clusteru AKS může být kdekoli v rozmezí 1 a 100. Na základě 2) nad podsíť musí být větší než součinu počtu používaných uzlů a maximální počet podů na velikost podsítě uzlu velikost > počet uzlů v clusteru * maximálního počtu podů na jeden uzel
+Ve vybrané pro práci v síti během AKS vytváří možnost vlastní virtuální sítě se používá Azure CNI pro správu IP adres. Počet uzlů v clusteru AKS může být kdekoli v rozmezí 1 a 100. Na základě 2) nad podsíť musí být větší než součinu počtu používaných uzlů a maximální počet podů na velikost podsítě uzlu velikost > počet uzlů v clusteru * maximálního počtu podů na jeden uzel.
 
 ### <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>Moje pod se zasekla v automatickém režimu "CrashLoopBackOff". Co bych měl/a dělat?
 

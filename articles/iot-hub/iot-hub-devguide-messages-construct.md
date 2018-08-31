@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dobett
-ms.openlocfilehash: a1296565384e60117d883a1f1407362482ba1a3e
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 7c08848698f07d64bbbff429682c18525659f7bf
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125009"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286513"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>Vytvoření a čtení zpráv IoT Hubu
 
@@ -23,7 +23,7 @@ IoT Hub pro podporu bezproblémovou spolupráci mezi protokoly, definuje společ
 
 [Zpráv služby IoT Hub] [ lnk-messaging] se skládá ze:
 
-* Sada *vlastnosti systému*. Vlastnosti, které služby IoT Hub interpretuje nebo nastaví. Tato sada je předem.
+* Sada předem *vlastnosti systému* jak je uvedeno níže.
 * Sada *vlastnosti aplikace*. Slovník vlastnosti řetězce, které můžete definovat aplikaci a přístup, aniž byste museli deserializaci textu zprávy. IoT Hub nikdy upravuje tyto vlastnosti.
 * Neprůhledný binární tělo.
 
@@ -36,20 +36,20 @@ Další informace o tom, jak kódování a dekódování zprávy odesílané pom
 
 V následující tabulce jsou uvedeny sadu vlastností systému v zpráv ve službě IoT Hub.
 
-| Vlastnost | Popis |
-| --- | --- |
-| ID zprávy |Nastavit uživatele identifikátor pro zprávu použitou pro požadavek odpověď vzory. Formát: Malá a velká písmena řetězec (až 128 znaků) alfanumerických znaků ASCII 7 bitů + `{'-', ':',’.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`. |
-| Pořadové číslo |Číslo (jedinečný za každou frontu zařízení) ve službě IoT Hub přiřazená každé zprávy typu cloud zařízení. |
-| Akce |Určení v [typu Cloud-zařízení] [ lnk-c2d] zprávy. |
-| ExpiryTimeUtc |Datum a čas vypršení platnosti zpráv. |
-| EnqueuedTime |Datum a čas [typu Cloud-zařízení] [ lnk-c2d] byla přijata zpráva ve službě IoT Hub. |
-| CorrelationId |Vlastnost řetězce v odpovědi, který obvykle obsahuje ID zprávy požadavku ve vzorech pro požadavek odpověď. |
-| UserId |ID používané k určení počátku zprávy. Při generování zpráv ve službě IoT Hub, je nastavena na `{iot hub name}`. |
-| Potvrzení |Generátor zprávy zpětné vazby. Tato vlastnost se používá v zprávy typu cloud zařízení do služby IoT Hub ke generování zpráv se zpětnou vazbou v důsledku spotřeby zprávy požadavku zařízení. Možné hodnoty: **žádný** (výchozí): je vygenerována žádná zpráva zpětnou vazbu, **kladné**: Pokud zpráva byla dokončena, zobrazí se zpráva zpětnou vazbu **negativní**: přijímat zpráva zpětnou vazbu, pokud vypršela platnost zprávy (nebo bylo dosaženo maximální počet doručení) bez dokončení zařízení, nebo **úplné**: kladné a záporné. Další informace najdete v tématu [zprávy zpětné vazby][lnk-feedback]. |
-| ConnectionDeviceId |ID nastavit na zprávy typu zařízení cloud ve službě IoT Hub. Obsahuje **deviceId** zařízení, který zprávu odeslal. |
-| ConnectionDeviceGenerationId |ID nastavit na zprávy typu zařízení cloud ve službě IoT Hub. Obsahuje **generationId** (jak je uvedeno [vlastnosti identity zařízení][lnk-device-properties]) zařízení, který zprávu odeslal. |
-| ConnectionAuthMethod |Metoda ověřování nastavena na zprávy typu zařízení cloud ve službě IoT Hub. Tato vlastnost obsahuje informace o metodu ověřování používanou k ověření zařízení posílání zprávy. Další informace najdete v tématu [zařízení do cloudu, ochranu proti falšování identity][lnk-antispoofing]. |
-| CreationTimeUtc | Datum a čas byla zpráva vytvořena na zařízení. Zařízení musí tuto hodnotu nastavit explicitně. |
+| Vlastnost | Popis | Je uživatel nastavit? |
+| --- | --- | --- |
+| ID zprávy |Nastavit uživatele identifikátor pro zprávu použitou pro požadavek odpověď vzory. Formát: Malá a velká písmena řetězec (až 128 znaků) alfanumerických znaků ASCII 7 bitů + `{'-', ':',’.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`. | Ano |
+| Pořadové číslo |Číslo (jedinečný za každou frontu zařízení) ve službě IoT Hub přiřazená každé zprávy typu cloud zařízení. | Ne pro C2D zprávy. v opačném případě Ano. |
+| Akce |Určení v [typu Cloud-zařízení] [ lnk-c2d] zprávy. | Ne pro C2D zprávy. v opačném případě Ano. |
+| ExpiryTimeUtc |Datum a čas vypršení platnosti zpráv. | Ano |
+| EnqueuedTime |Datum a čas [typu Cloud-zařízení] [ lnk-c2d] byla přijata zpráva ve službě IoT Hub. | Ne pro C2D zprávy. v opačném případě Ano. |
+| CorrelationId |Vlastnost řetězce v odpovědi, který obvykle obsahuje ID zprávy požadavku ve vzorech pro požadavek odpověď. | Ano |
+| UserId |ID používané k určení počátku zprávy. Při generování zpráv ve službě IoT Hub, je nastavena na `{iot hub name}`. | Ne |
+| Potvrzení |Generátor zprávy zpětné vazby. Tato vlastnost se používá v zprávy typu cloud zařízení do služby IoT Hub ke generování zpráv se zpětnou vazbou v důsledku spotřeby zprávy požadavku zařízení. Možné hodnoty: **žádný** (výchozí): je vygenerována žádná zpráva zpětnou vazbu, **kladné**: Pokud zpráva byla dokončena, zobrazí se zpráva zpětnou vazbu **negativní**: přijímat zpráva zpětnou vazbu, pokud vypršela platnost zprávy (nebo bylo dosaženo maximální počet doručení) bez dokončení zařízení, nebo **úplné**: kladné a záporné. Další informace najdete v tématu [zprávy zpětné vazby][lnk-feedback]. | Ano |
+| ConnectionDeviceId |ID nastavit na zprávy typu zařízení cloud ve službě IoT Hub. Obsahuje **deviceId** zařízení, který zprávu odeslal. | Ne pro D2C zprávy. v opačném případě Ano. |
+| ConnectionDeviceGenerationId |ID nastavit na zprávy typu zařízení cloud ve službě IoT Hub. Obsahuje **generationId** (jak je uvedeno [vlastnosti identity zařízení][lnk-device-properties]) zařízení, který zprávu odeslal. | Ne pro D2C zprávy. v opačném případě Ano. |
+| ConnectionAuthMethod |Metoda ověřování nastavena na zprávy typu zařízení cloud ve službě IoT Hub. Tato vlastnost obsahuje informace o metodu ověřování používanou k ověření zařízení posílání zprávy. Další informace najdete v tématu [zařízení do cloudu, ochranu proti falšování identity][lnk-antispoofing]. | Ne pro D2C zprávy. v opačném případě Ano. |
+| CreationTimeUtc | Datum a čas byla zpráva vytvořena na zařízení. Zařízení musí tuto hodnotu nastavit explicitně. | Ano |
 
 ## <a name="message-size"></a>Velikost zpráv
 

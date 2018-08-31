@@ -12,12 +12,12 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 86cc98721681750617e374679c38ad29cf5a2362
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 836f426be950e33031ff74276218d1ba59f1f2f7
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42057190"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43300909"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>Správa hesel aplikací pro dvoustupňové ověřování.
 
@@ -38,11 +38,46 @@ Při používání hesel aplikací, je důležité pamatovat:
 
 Heslo aplikace už zadaný při počátečním dvoustupňovém ověření registrace. Pokud potřebujete více než jednoho hesla, můžete vytvořit další hesla podle způsobu, jakým používáte dvoustupňové ověřování:
 
-- **Použít dvoustupňové ověření pomocí účtu Microsoft Azure.** Vytvářet a odstraňovat pomocí hesla aplikace [webu Azure portal](https://portal.azure.com). Další informace najdete v tématu [hesla aplikací a dvoustupňové ověřování](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-two-step-verification) článku.
+- **Dvoustupňové ověřování pomocí pracovního nebo školního účtu a portálu MyApps.** Vytvoření a odstranění hesla aplikace, postupujte podle pokynů v [vytvoření a odstranění hesla aplikace pomocí portálu MyApps](#create-and-delete-app-passwords-using-the-myapps-portal) části tohoto článku. Další informace o portálu MyApps a jak ji používat, naleznete v tématu [co je v Azure Active Directory portálu MyApps?](active-directory-saas-access-panel-introduction.md).
 
-- **Použít dvoustupňové ověření pomocí osobního účtu Microsoft.** Vytvářet a odstraňovat pomocí hesla aplikace [Základy zabezpečení](https://account.microsoft.com/account/) stránku s vaším účtem Microsoft. Další informace najdete v tématu [hesla aplikací a dvoustupňové ověřování](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-two-step-verification) článku.
+- **Dvoustupňové ověřování pomocí svůj pracovní nebo školní účet a portálu služeb Office 365.** Vytvoření a odstranění hesla aplikace, postupujte podle pokynů v [vytvoření a odstranění hesla aplikace pomocí portálu služeb Office 365](#create-and-delete-app-passwords-using-the-office-365-portal) části tohoto článku.
 
-- **Dvoustupňové ověřování pomocí svůj pracovní nebo školní účet a aplikace Office 365.** Vytvoření a odstranění hesla aplikace, postupujte podle pokynů v [vytvoření a odstranění hesla aplikace pomocí portálu služeb Office 365](#create-and-delete-app-passwords-using-the-office-365-portal) části tohoto článku.
+- **Použít dvoustupňové ověření pomocí osobního účtu Microsoft.** Vytvářet a odstraňovat pomocí hesla aplikace [Základy zabezpečení](https://account.microsoft.com/account/) stránku se svým osobním účtem Microsoft. Další informace najdete v tématu [hesla aplikací a dvoustupňové ověřování](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-two-step-verification) článku.
+
+## <a name="create-and-delete-app-passwords-using-the-myapps-portal"></a>Vytvářet a odstraňovat na portálu MyApps hesla aplikací
+Můžete vytvářet a odstraňovat hesla aplikací prostřednictvím portálu MyApps.
+
+### <a name="to-create-an-app-password-using-the-myapps-portal"></a>Chcete-li vytvořit heslo aplikace pomocí portálu MyApps
+
+1. Přihlaste se k [ https://myapps.microsoft.com ](https://myapps.microsoft.com).
+
+2. Vyberte své jméno v pravém horním rohu a vyberte **profilu**.
+
+3. Vyberte **dalšího ověření zabezpečení**.
+
+   ![Vyberte další bezpečnostní ověření – snímek obrazovky](./media/multi-factor-authentication-end-user-app-passwords/myapps1.png)
+
+4. Vyberte **hesla aplikací**.
+
+   ![Vyberte hesel aplikací – snímek obrazovky](./media/multi-factor-authentication-end-user-app-passwords/apppass2.png)
+
+5. Klikněte na možnost **Vytvořit**.
+
+6. Zadejte název hesla aplikace a pak vyberte **Další**.
+
+7. Kopírovat heslo aplikace do schránky a vložte ho do vaší aplikace.
+   
+    ![Vytvořit heslo aplikace](./media/multi-factor-authentication-end-user-app-passwords/create2.png)
+
+### <a name="to-delete-an-app-password-using-the-myapps-portal"></a>Chcete-li odstranit heslo aplikace pomocí portálu MyApps
+
+1. Přejděte na svůj profil a potom vyberte **dalšího ověření zabezpečení**.
+
+2. Vyberte **hesla aplikací**a pak vyberte **odstranit** vedle heslo aplikace, kterou chcete odstranit.
+
+   ![Odstranit heslo aplikace.](./media/multi-factor-authentication-end-user-app-passwords/delete1.png)
+
+3. Vyberte **Ano** pro potvrzení, kterou chcete odstranit heslo a pak vyberte **Zavřít**.
 
 ## <a name="create-and-delete-app-passwords-using-the-office-365-portal"></a>Vytvoření a odstranění hesla aplikace pomocí portálu služeb Office 365
 
@@ -77,46 +112,6 @@ Pokud používáte dvoustupňové ověřování s svůj pracovní nebo školní 
     Heslo aplikace se úspěšně odstranil.
 
 5. Postupujte podle kroků pro vytvoření heslo aplikace. Chcete-li vytvořit nové heslo aplikace.
-
-## <a name="manage-app-passwords-in-the-azure-portal"></a>Správa hesel aplikací na webu Azure Portal
-
-Pokud používáte dvoustupňové ověřování s Azure, budete chtít vytvořit hesla aplikací na webu Azure portal.
-
-## <a name="manage-app-passwords-with-the-myapps-portal"></a>Správa hesel aplikací pomocí portálu MyApps
-
-Můžete také vytvářet a odstraňovat hesla aplikací na portálu Moje aplikace.
-
-### <a name="to-create-an-app-password-using-the-my-apps-portal"></a>Chcete-li vytvořit heslo aplikace na portálu Moje aplikace
-
-1. Přihlaste se k [ https://myapps.microsoft.com ](https://myapps.microsoft.com).
-
-2. Vyberte své jméno v pravém horním rohu a vyberte **profilu**.
-
-3. Vyberte **dalšího ověření zabezpečení**.
-
-   ![Vyberte další bezpečnostní ověření – snímek obrazovky](./media/multi-factor-authentication-end-user-app-passwords/myapps1.png)
-
-4. Vyberte **hesla aplikací**.
-
-   ![Vyberte hesel aplikací – snímek obrazovky](./media/multi-factor-authentication-end-user-app-passwords/apppass2.png)
-
-5. Klikněte na možnost **Vytvořit**.
-
-6. Zadejte název hesla aplikace a pak vyberte **Další**.
-
-7. Kopírovat heslo aplikace do schránky a vložte ho do vaší aplikace.
-   
-    ![Vytvořit heslo aplikace](./media/multi-factor-authentication-end-user-app-passwords/create2.png)
-
-### <a name="to-delete-an-app-password-using-the-my-apps-portal"></a>Chcete-li odstranit heslo aplikace na portálu Moje aplikace
-
-1. Přejděte na svůj profil a potom vyberte **dalšího ověření zabezpečení**.
-
-2. Vyberte **hesla aplikací**a pak vyberte **odstranit** vedle heslo aplikace, kterou chcete odstranit.
-
-   ![Odstranit heslo aplikace.](./media/multi-factor-authentication-end-user-app-passwords/delete1.png)
-
-3. Vyberte **Ano** pro potvrzení, kterou chcete odstranit heslo a pak vyberte **Zavřít**.
 
 ## <a name="if-your-app-passwords-arent-working-properly"></a>Pokud vaše hesla aplikací nejsou správně funguje.
 

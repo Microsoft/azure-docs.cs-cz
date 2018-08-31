@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 06/26/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 78e952b5b1eedc1757cfe636eb13e411044dce54
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: fbf8a0302ae8414f49a055ab260a52222425ab7c
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42055033"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287190"
 ---
 # <a name="develop-and-debug-nodejs-modules-with-azure-iot-edge-for-visual-studio-code"></a>Vývoj a ladění modulů Node.js s použitím Azure IoT Edge pro Visual Studio Code
 
@@ -92,7 +92,7 @@ V každé složky modulu existuje několik souborů Docker pro jiný kontejner t
 
 2. Paleta příkazů VS Code, zadejte a spusťte příkaz **Azure IoT Edge: řešení IoT Edge sestavení**.
 3. Vyberte `deployment.template.json` soubor pro vaše řešení z palety příkazů. 
-4. V Průzkumníku zařízení centra IoT Azure, klikněte pravým tlačítkem na ID zařízení IoT Edge a pak vyberte **vytvoření nasazení pro zařízení IoT Edge**. 
+4. V Průzkumníku zařízení centra IoT Azure, klikněte pravým tlačítkem na ID zařízení IoT Edge a pak vyberte **vytvoření nasazení pro jedno zařízení**. 
 5. Otevřít **config** složky vašeho řešení, vyberte `deployment.json` souboru. Klikněte na **Select Edge Deployment Manifest** (Vybrat manifest nasazení Edge). 
 
 Pak uvidíte, že je úspěšně vytvořeno s nasazením, které ID v nástroji VS Code integrované terminálu.

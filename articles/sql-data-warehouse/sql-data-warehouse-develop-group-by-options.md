@@ -1,37 +1,37 @@
 ---
-title: Skupiny pomocí možnosti v Azure SQL Data Warehouse | Microsoft Docs
-description: Tipy pro implementaci skupiny pomocí možnosti v Azure SQL Data Warehouse na vývoj řešení.
+title: Skupiny pomocí možnosti v Azure SQL Data Warehouse | Dokumentace Microsoftu
+description: Tipy pro implementaci skupinu podle možnosti ve službě Azure SQL Data Warehouse pro vývoj řešení.
 services: sql-data-warehouse
 author: ronortloff
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 0548983df23b158385783ac777b23268b5ac7d01
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 1f5723bd160abc164779062f213762751e5875c8
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31526042"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43303374"
 ---
-# <a name="group-by-options-in-sql-data-warehouse"></a>Seskupit podle možností v SQL Data Warehouse
-Tipy pro implementaci skupiny pomocí možnosti v Azure SQL Data Warehouse na vývoj řešení.
+# <a name="group-by-options-in-sql-data-warehouse"></a>Seskupit podle možnosti ve službě SQL Data Warehouse
+Tipy pro implementaci skupinu podle možnosti ve službě Azure SQL Data Warehouse pro vývoj řešení.
 
 ## <a name="what-does-group-by-do"></a>GROUP BY k čemu slouží?
 
-[GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql) klauzule T-SQL agreguje data souhrnu sadu řádků. GROUP BY obsahuje některé možnosti, které SQL Data Warehouse nepodporuje. Tyto možnosti mají alternativní řešení.
+[Group](/sql/t-sql/queries/select-group-by-transact-sql) klauzule T-SQL agreguje data do souhrnu sady řádků. GROUP BY obsahuje některé možnosti, které SQL Data Warehouse nepodporuje. Tyto možnosti mají alternativní řešení.
 
 Tyto možnosti jsou
 
-* GROUP BY se ZAHRNUTÍM
+* Klauzule GROUP BY souhrn
 * GROUPING SETS
 * Klauzule GROUP BY datové KRYCHLE
 
-## <a name="rollup-and-grouping-sets-options"></a>Souhrn a seskupení nastaví možnosti
-Nejjednodušší možnost je UNION ALL místo toho chcete použít k provedení kumulativní z nespoléhá se na explicitní syntaxe. Výsledkem je přesně stejný
+## <a name="rollup-and-grouping-sets-options"></a>Rollup a grouping sets možnosti
+Je nejjednodušší možnost UNION ALL místo toho použít k provedení této kumulativní nespoléhat se na explicitní syntaxe. Výsledkem je přesně tatáž
 
 Následující příklad pomocí příkazu GROUP BY s souhrn možností:
 ```sql
@@ -47,13 +47,13 @@ GROUP BY ROLLUP (
 ;
 ```
 
-Pomocí KUMULATIVNÍ požadavky v předchozím příkladu agregace následující:
+Pomocí souhrnné požadavků v předchozím příkladu následující agregace:
 
-* Zemí a oblastí
+* Země a oblasti
 * Země
 * Celkový součet
 
-Pokud chcete nahradit KUMULATIVNÍ a vrátí stejné výsledky, můžete použít UNION ALL a explicitně zadáte požadované agregace:
+Nahraďte KUMULATIVNÍ a vrátí stejné výsledky, můžete použít UNION ALL a explicitně určit požadovanou agregaci:
 
 ```sql
 SELECT [SalesTerritoryCountry]
@@ -80,14 +80,14 @@ FROM  dbo.factInternetSales s
 JOIN  dbo.DimSalesTerritory t     ON s.SalesTerritoryKey       = t.SalesTerritoryKey;
 ```
 
-Pokud chcete nahradit GROUPING SETS, ukázka princip platí. Potřebujete vytvořit UNION ALL oddíly pro úrovně agregace, které chcete zobrazit.
+Nahradit GROUPING SETS, ukázkové zásady platí. Potřebujete vytvořit unií všechny oddíly úrovních agregace, které chcete zobrazit.
 
 ## <a name="cube-options"></a>Možnosti datové krychle
-Je možné vytvořit SKUPINU podle s datovou KRYCHLI UNION ALL přístup. Problém je, že kód může být pracné a nepraktické. Toto riziko lze snížit, můžete použít tento pokročilejší přístup.
+Je možné vytvořit SKUPINU podle s datovou KRYCHLI UNION ALL přístup. Problém je, že kód může být náročné a nepraktické. Pokud chcete tento problém zmírnit, můžete použít toto rozšířené přístup.
 
-Použijeme v předchozím příkladu.
+Použijeme výše uvedený příklad.
 
-Prvním krokem je definování 'datové krychle, která definuje všechny úrovně agregace, který chcete vytvořit. Je důležité si poznamenejte CROSS JOIN dvě odvozené tabulky. Tím se vytvoří všechny úrovně pro nás. Zbytek kód skutečně existuje pro formátování.
+Prvním krokem je definování "datové krychle", který definuje všechny úrovně seskupení, který chcete vytvořit. Je důležité si poznamenejte křížové spojení dvou odvozených tabulek. Tím se vygeneruje všechny úrovně pro nás. Zbývající část kódu je ve skutečnosti pro formátování.
 
 ```sql
 CREATE TABLE #Cube
@@ -118,11 +118,11 @@ SELECT Cols
 FROM GrpCube;
 ```
 
-Na obrázku výsledky funkce CTAS:
+Následuje ukázka výsledky příkazu CTAS:
 
-![Seskupit podle datové krychle](media/sql-data-warehouse-develop-group-by-options/sql-data-warehouse-develop-group-by-cube.png)
+![Seskupit datové krychle](media/sql-data-warehouse-develop-group-by-options/sql-data-warehouse-develop-group-by-cube.png)
 
-Druhým krokem je zadání cílové tabulku pro ukládání dočasné výsledky:
+Druhým krokem je určit cílovou tabulku pro ukládání dočasné výsledků:
 
 ```sql
 DECLARE
@@ -145,7 +145,7 @@ WITH
 ;
 ```
 
-Třetí krok je smyčku naší datové krychle sloupců provádění agregace. Budou spuštěny jednou pro každý řádek v dočasné tabulce #Cube a ukládání výsledků do dočasné tabulky #Results dotazu
+Je třetí krok k vytvoření smyčky přes naše datová krychle sloupců provádí agregaci. Dotaz se spustí jednou pro každý řádek v dočasné tabulce #Cube a ukládání výsledků do dočasné tabulky #Results
 
 ```sql
 SET @nbr =(SELECT MAX(Seq) FROM #Cube);
@@ -178,8 +178,8 @@ ORDER BY 1,2,3
 ;
 ```
 
-Kód rozdělení do oddílů a generování opakování konstrukce, kód se změní na správu a udržovatelný.
+Kód rozdělení do oddílů a generování uvozuje konstruktor cyklu, kód stane spravovatelné a udržovatelný.
 
 ## <a name="next-steps"></a>Další postup
-Další tipy pro vývoj, najdete v části [přehled vývoje](sql-data-warehouse-overview-develop.md).
+Další tipy pro vývoj najdete v části [přehled vývoje](sql-data-warehouse-overview-develop.md).
 

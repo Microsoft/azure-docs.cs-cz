@@ -3,19 +3,19 @@ title: Rutiny Powershellu pro Azure SQL Data Warehouse
 description: Najdete hlavní rutiny Powershellu pro Azure SQL Data Warehouse, včetně postupu pozastavit a obnovit databázi.
 services: sql-data-warehouse
 author: kevinvngo
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 82e635f58ab559480b55df6cee8e966c8d32bf01
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 222bc8ee15fdc8802dacd5a5b74cfd84961aa397
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42060741"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43300749"
 ---
 # <a name="powershell-cmdlets-and-rest-apis-for-sql-data-warehouse"></a>Rutiny prostředí PowerShell a rozhraní REST API pro službu SQL Data Warehouse
 Mnoho úkolů správy SQL Data Warehouse je možné spravovat pomocí rutin Azure Powershellu nebo rozhraní REST API.  Níže je několik příkladů toho, jak používat příkazy Powershellu k automatizaci běžných úkolů ve službě SQL Data Warehouse.  Některé dobré příklady REST, najdete v článku [spravovat škálovatelnost s využitím REST][Manage scalability with REST].

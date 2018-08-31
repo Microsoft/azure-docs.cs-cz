@@ -12,45 +12,65 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: pim
-ms.date: 04/28/2017
+ms.date: 08/29/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 7bf1e437e97fdb4d929af23bd7b2a9abb49268df
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
-ms.translationtype: HT
+ms.openlocfilehash: bc60c0dbe6c609a08907feb243fe514badfe3e4e
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189154"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43288071"
 ---
 # <a name="approve-or-deny-requests-for-azure-ad-directory-roles-in-pim"></a>Schválit nebo zamítnout žádosti pro role adresáře Azure AD v PIM
 
-Privileged Identity Management můžete konfigurovat role, které vyžadují schválení pro aktivaci a zvolte jednu nebo více uživatelů nebo skupin jako delegovaný schvalovatele.
+S Azure AD Privileged Identity Management (PIM) můžete nakonfigurovat role, které vyžadují schválení pro aktivaci a zvolte jednu nebo více uživatelů nebo skupin jako delegovaný schvalovatele.
 
-## <a name="view-pending-approvals-requests"></a>Zobrazení čekajících na schválení (požadavků)
+## <a name="view-pending-requests"></a>Zobrazit čekající žádosti
 
-Jako delegovaný schvalovatel obdržíte e-mailová oznámení, když je požadavek čekající na vaše schválení. Chcete-li zobrazit tyto požadavky na portálu PIM, z řídicího panelu (v nové navigace) vyberte v levém navigačním panelu kartu "Čekající na vyřízení žádosti o schválení".
+Jako delegovaný schvalovatel obdržíte e-mailová oznámení, když je požadavek čekající na vaše schválení. Zobrazí se tyto žádosti čekající na vyřízení v PIM.
 
-![](media/azure-ad-pim-approval-workflow/image023.png)
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-Tady se zobrazí seznam žádostí o schválení:
+1. Otevřít **Azure AD Privileged Identity Management**.
 
-![](media/azure-ad-pim-approval-workflow/image024.png)
+1. Klikněte na tlačítko **role adresáře Azure AD**.
 
-## <a name="approve-or-deny-requests-for-role-elevation-single-andor-bulk"></a>Schválit nebo odmítnout žádosti o zvýšení oprávnění role (jeden nebo hromadně)
+1. Klikněte na tlačítko **schvalovat žádosti o**.
 
-Vyberte žádosti, na které chcete schválit nebo zamítnout a klikněte na tlačítko na panelu akcí, která odpovídá vaší rozhodnutí:
+    ![Role adresáře PIM Azure AD - role](./media/azure-ad-pim-approval-workflow/pim-directory-roles-approve-requests.png)
 
-![](media/azure-ad-pim-approval-workflow/image025.png)
+    Zobrazí se vám seznam žádosti čekající na vaše schválení.
 
-## <a name="provide-justification-for-my-approvaldenial"></a>Uveďte její odůvodnění moje schválení nebo odmítnutí
+## <a name="approve-requests"></a>Schvalování žádostí
 
-Otevře se nové okno Schválit nebo zamítnout žádosti více najednou. Zadejte odůvodnění pro své rozhodnutí, a klikněte na tlačítko Schválit (nebo zakázat) v dolní části nebo v okně:
+1. Vyberte žádosti, které chcete schválit a potom klikněte na tlačítko **schválit** otevřete schválit vybrané žádosti podokně.
 
-![](media/azure-ad-pim-approval-workflow/image029.png)
+    ![Seznam požadavků schválit PIM](./media/azure-ad-pim-approval-workflow/pim-approve-requests-list.png)
 
-Po dokončení zpracování žádosti o symbolu stavu bude odrážet provedené rozhodnutí (v tomto příkladu rozhodnutí je schválit):
+1. V **důvod pro schválení** zadejte důvod.
 
-![](media/azure-ad-pim-approval-workflow/image031.png)
+    ![PIM schválit vybrané žádosti](./media/azure-ad-pim-approval-workflow/pim-approve-selected-requests.png)
+
+1. Klikněte na tlačítko **schválit**.
+
+    Symbol stavu aktualizuje vaše schválení.
+
+    ![PIM schválit vybrané žádosti](./media/azure-ad-pim-approval-workflow/pim-approve-status.png)
+
+## <a name="deny-requests"></a>Zamítnout žádosti
+
+1. Vyberte žádosti, které chcete zamítnout a pak klikněte na tlačítko **Odepřít** otevřete odepřít vybrané žádosti podokně.
+
+    ![Seznam požadavků schválit PIM](./media/azure-ad-pim-approval-workflow/pim-deny-requests-list.png)
+
+1. V **důvod pro zamítnutí** zadejte důvod.
+
+    ![PIM zamítnout vybrané žádosti](./media/azure-ad-pim-approval-workflow/pim-deny-selected-requests.png)
+
+1. Klikněte na tlačítko **Odepřít**.
+
+    Symbol stavu aktualizuje vaše odmítnutí.
 
 ## <a name="next-steps"></a>Další postup
 

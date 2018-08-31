@@ -1,6 +1,6 @@
 ---
-title: 'Synchronizace Azure AD Connect: Změna výchozí konfigurace | Microsoft Docs'
-description: Obsahuje doporučené postupy pro změnu výchozí konfigurace synchronizace služby Azure AD Connect.
+title: 'Synchronizace Azure AD Connect: změnu výchozí konfigurace | Dokumentace Microsoftu'
+description: Poskytuje osvědčené postupy pro změnu výchozí konfigurace synchronizace služby Azure AD Connect.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -12,63 +12,66 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 08/29/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2c2fc3bcba4b685fba36683f89c0b6ad877dbb1d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0668eb33fe33b062c941ec4f2bff47c5ed77fb51
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34595134"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287880"
 ---
 # <a name="azure-ad-connect-sync-best-practices-for-changing-the-default-configuration"></a>Synchronizace Azure AD Connect: osvědčené postupy pro změnu výchozí konfigurace
-Účelem tohoto tématu je k popisu podporované a nepodporované změny synchronizace Azure AD Connect.
+Účelem tohoto tématu je k popisu změn podporované a nepodporované synchronizace Azure AD Connect.
 
-Konfigurace vytvořené Azure AD Connect funguje tak, jak je"pro většinu prostředí, které se synchronizují místní služby Active Directory s Azure AD. V některých případech je potřeba použít některé změny v konfiguraci, kterou chcete splňují konkrétní požadavky nebo požadavky.
+Konfigurace služby Azure AD Connect vytvořil funguje "tak jak jsou" pro většinu prostředí, které se synchronizují v místní službě Active Directory s Azure AD. V některých případech je potřeba použít některé změny na konfiguraci, kterou chcete splňují konkrétní požadavky nebo požadavky.
 
 ## <a name="changes-to-the-service-account"></a>Změny účtu služby
-Synchronizace Azure AD Connect je spuštěna pod účtem služby, který je vytvořený pomocí Průvodce instalací. Tento účet služby obsahuje šifrovací klíče do databáze používá synchronizaci. Bude vytvořen pomocí 127 znaků dlouhé heslo a heslo je nastaveno na nevyprší platnost.
+Synchronizace Azure AD Connect je spuštěná pod účtem služby vytvořené pomocí Průvodce instalací. Tento účet služby obsahuje šifrovací klíče do databáze používá synchronizaci. Je vytvořen s maximálně 127 znaků dlouhé heslo a heslo je nastavená na nevyprší platnost.
 
-* Je **nepodporované** změnit nebo resetování hesla účtu služby. Díky tomu zničí šifrovacích klíčů a služba nemůže získat přístup k databázi a není možné spustit.
+* Je **nepodporované** změnit nebo resetování hesla účtu služby. To odstraní šifrovací klíče a službu není možné získat přístup k databázi a není možné spustit.
 
-## <a name="changes-to-the-scheduler"></a>Změny plánovače
-Od verze ze sestavení 1.1 (leden 2016) můžete nakonfigurovat [Plánovač](active-directory-aadconnectsync-feature-scheduler.md) tak, aby měl cyklus synchronizace jiný než výchozí 30 minut.
+## <a name="changes-to-the-scheduler"></a>Změny v Plánovači
+Od vydání z buildu 1.1 (únor 2016) můžete nakonfigurovat [Plánovač](active-directory-aadconnectsync-feature-scheduler.md) mít cyklus synchronizace jiné než výchozí 30 minut.
 
 ## <a name="changes-to-synchronization-rules"></a>Změny synchronizační pravidla
-Průvodce instalací nabízí konfiguraci, která by měla fungovat pro nejběžnějších scénářů. V případě, že potřebujete provést změny konfigurace, je třeba provést tyto pravidla, která ještě podporovanou konfiguraci.
-
-* Můžete [změnit toky atributů](active-directory-aadconnectsync-change-the-configuration.md#other-common-attribute-flow-changes) Pokud toky přímé atributů výchozí nejsou vhodné pro vaši organizaci.
-* Pokud chcete [není toku atribut](active-directory-aadconnectsync-change-the-configuration.md#do-not-flow-an-attribute) a odeberte všechny existující atribut hodnoty ve službě Azure AD, je třeba vytvořit pravidlo pro tento scénář.
-* [Zakázat pravidlo synchronizace nežádoucí](#disable-an-unwanted-sync-rule) místo odstranění. Během upgradu se znovu vytvoří pravidlo odstraněné.
-* K [změnit pravidlo out-of-box](#change-an-out-of-box-rule), měli byste vytvořit kopii původní pravidlo a zakázat pravidlo out-of-box. Editor pravidla synchronizace vyzve a vám pomůže.
-* Exportujte vaše vlastní synchronizační pravidla pomocí editoru pravidla synchronizace. Editor vám poskytne Powershellový skript, který vám pomůže snadno je znovu vytvořit ve scénáři zotavení po havárii.
+Průvodce instalací nabízí konfiguraci, která by měla fungovat pro nejběžnější scénáře. V případě, že budete muset provést změny v konfiguraci, je třeba dodržovat tato pravidla i nadále mít podporovanou konfiguraci.
 
 > [!WARNING]
-> Out-of-box synchronizační pravidla mají kryptografický otisk. Pokud změníte tato pravidla, je už odpovídající kryptografický otisk. Můžete mít problémy s v budoucnu, pokud se pokusíte použít novou verzi služby Azure AD Connect. Pouze změnit způsob, jakým je popsaný v tomto článku.
+> Pokud provedete změny výchozích pravidel synchronizace pak tyto změny budou přepsány při příštím spuštění služby Azure AD Connect se aktualizuje, výsledkem je neočekávaný a pravděpodobně synchronizace nežádoucí výsledky.
 
-### <a name="disable-an-unwanted-sync-rule"></a>Zakázat pravidlo nežádoucí synchronizace
-Neodstraňujte pravidlo synchronizace out-of-box. Pak se znovu vytvoří při další upgradu.
+* Je možné [změnit toky atributů](active-directory-aadconnectsync-change-the-configuration.md#other-common-attribute-flow-changes) Pokud výchozí toky s přímým přístupem atributů nejsou vhodné pro vaši organizaci.
+* Pokud chcete [není toku atributu](active-directory-aadconnectsync-change-the-configuration.md#do-not-flow-an-attribute) a odeberte všechny existující atributy hodnoty ve službě Azure AD, pak je potřeba vytvořit pravidlo pro tento scénář.
+* [Zakázat pravidlo synchronizace nežádoucí](#disable-an-unwanted-sync-rule) místo jeho odstranění. Během upgradu se znovu vytvoří pravidlo odstraněno.
+* K [změnit pravidlo out-of-box](#change-an-out-of-box-rule), měli byste vytvořit kopii původní pravidlo a zakázat pravidlo out-of-box. Editor pravidel synchronizace výzvy a pomůže vám.
+* Exportujte vaše vlastní synchronizační pravidla pomocí Editor pravidel synchronizace. Editor vám poskytne skript prostředí PowerShell, které vám umožní snadno je znovu vytvořit ve scénáři zotavení po havárii.
 
-V některých případech se vytváří Průvodce instalací konfigurace, která nepracuje v topologii. Například pokud máte doménovou strukturu prostředků účtu, ale jste rozšířili schéma v doménové struktuře účtu se schématem systému Exchange, pravidla pro Exchange vytvoří se pro účet doménové struktury a doménové struktury prostředku. V takovém případě je nutné zakázat pravidlo synchronizace pro Exchange.
+> [!WARNING]
+> Out-of-box synchronizační pravidla mají kryptografického otisku. Pokud změníte tato pravidla, je už odpovídající kryptografický otisk. V budoucnu, když se pokusíte použít nová verze služby Azure AD Connect, mohou mít problémy. Proveďte změny jen tak, jak je popsáno v tomto článku.
+
+### <a name="disable-an-unwanted-sync-rule"></a>Zakázání nežádoucí pravidla synchronizace
+Neodstraňujte pravidlo synchronizace out-of-box. Se znovu vytvoří při další upgradu.
+
+V některých případech se Průvodce instalací vytvořil konfiguraci, která nefunguje u vaší topologii. Například pokud máte doménovou strukturu prostředků účtu, ale jste rozšířili schéma v doménové struktuře účtu se schématem systému Exchange, potom pravidla pro Exchange jsou vytvořeny pro účet doménové struktury a doménové struktury prostředku. V takovém případě musíte postup při zakázání pravidla synchronizace pro server Exchange.
 
 ![Zakázané synchronizační pravidlo](./media/active-directory-aadconnectsync-best-practices-changing-default-configuration/exchangedisabledrule.png)
 
-Na obrázku výše Průvodce instalací zjistil zadáno staré schéma Exchange 2003 v doménové struktuře účtu. Toto rozšíření schématu bylo přidáno před doménové struktury prostředku byla zavedená v prostředí společnosti Fabrikam. K zajištění, že jsou synchronizovány žádné atributy od původního implementace systému Exchange, pravidlo synchronizace je třeba zakázat jak je vidět.
+Na obrázku výše Průvodce instalací našla staré schématu Exchange 2003 v doménové struktuře účtu. Toto rozšíření schématu byl přidán předtím, než doménové struktury prostředku byl zaveden ve společnosti Fabrikam prostředí. K zajištění, že žádné atributy od implementace rozhraní staré Exchange jsou synchronizovány, pravidlo synchronizace je třeba zakázat jak je znázorněno.
 
-### <a name="change-an-out-of-box-rule"></a>Změnit pravidlo out-of-box
-Měli byste změnit pravidlo out-of-box je pouze když potřebujete změnit pravidlo spojení. Pokud potřebujete změnit tok atributů, měli vytvořit synchronizační pravidlo s vyšší prioritou než pravidla out-of-box. Pouze pravidla potřebujete prakticky klonování je pravidlo **v ze služby Active Directory - připojení uživatele k**. Můžete přepsat všechna pravidla s pravidlem vyšší prioritu.
+### <a name="change-an-out-of-box-rule"></a>Změňte pravidlo out-of-box
+Měli byste změnit pravidlo out-of-box se pouze pokud potřebujete změnit pravidla spojení. Pokud potřebujete změnit tok atributů, by měl vytvořit synchronizační pravidlo s vyšší prioritou než pravidla out-of-box. Toto pravidlo je pouze pravidlo prakticky muset naklonovat **v ze služby AD - uživatel připojit**. Všechna pravidla s vyšší prioritou pravidlo můžete přepsat.
 
-Pokud potřebujete provést změny pravidlo out-of-box, vytvořit kopii pravidlo out-of-box a zakázat původní pravidlo. Proveďte změny klonovaného pravidle. Editor pravidla synchronizace vám pomáhá s těchto kroků. Když otevřete pravidlo out-of-box, se zobrazí toto dialogové okno:  
+Pokud potřebujete provést změny pravidlo out-of-box, vytvořte kopii pravidlo out-of-box a původní pravidlo zakázat. Proveďte změny do naklonovaného pravidla. Editor pravidel synchronizace vám pomáhá s těmito kroky. Když otevřete pravidlo out-of-box, zobrazí se toto dialogové okno:  
 ![Upozornění z pravidla pole](./media/active-directory-aadconnectsync-best-practices-changing-default-configuration/warningoutofboxrule.png)
 
-Vyberte **Ano** vytvoření kopie pravidla. Pak je otevřené klonovaného pravidle.  
-![Klonovaný pravidlo](./media/active-directory-aadconnectsync-best-practices-changing-default-configuration/clonedrule.png)
+Vyberte **Ano** vytvořit kopii tohoto pravidla. Pak otevření naklonované pravidlo.  
+![Naklonované pravidlo](./media/active-directory-aadconnectsync-best-practices-changing-default-configuration/clonedrule.png)
 
-Na tomto klonovaného pravidle proveďte potřebné změny oboru, spojení a transformace.
+Na toto pravidlo naklonované proveďte potřebné změny do oboru, spojení a transformace.
 
 ## <a name="next-steps"></a>Další postup
 **Témata s přehledem**
 
-* [Synchronizace Azure AD Connect: pochopení a přizpůsobení synchronizace](active-directory-aadconnectsync-whatis.md)
+* [Synchronizace Azure AD Connect: Principy a přizpůsobení synchronizace](active-directory-aadconnectsync-whatis.md)
 * [Integrování místních identit do služby Azure Active Directory](active-directory-aadconnect.md)

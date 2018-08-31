@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/25/2017
 ms.author: jdial
-ms.openlocfilehash: b43c082b5c4925fee2b1145956a2847e7f30bb11
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 63407382762a814ded4529caa109d76e987c9505
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42057210"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286440"
 ---
 # <a name="read-nsg-flow-logs"></a>Čtení protokolů toku NSG
 
 Zjistěte, jak ke čtení záznamů protokolů toku NSG pomocí Powershellu.
 
-Protokoly toků NSG se ukládají v účtu úložiště v [objekty BLOB bloku](/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs.md#about-block-blobs). Objekty BLOB bloku jsou tvořené menší bloky. Každý protokol je oddělená objektu blob, který je generován každou hodinu. Nové protokoly se generují každou hodinu, protokoly jsou aktualizovány pomocí nové položky pomocí nejnovějších dat každých několik minut. V tomto článku se dozvíte, jak číst části protokolů toku.
+Protokoly toků NSG se ukládají v účtu úložiště v [objekty BLOB bloku](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs). Objekty BLOB bloku jsou tvořené menší bloky. Každý protokol je oddělená objektu blob, který je generován každou hodinu. Nové protokoly se generují každou hodinu, protokoly jsou aktualizovány pomocí nové položky pomocí nejnovějších dat každých několik minut. V tomto článku se dozvíte, jak číst části protokolů toku.
 
 ## <a name="scenario"></a>Scénář
 

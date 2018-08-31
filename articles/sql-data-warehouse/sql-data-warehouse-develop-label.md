@@ -1,28 +1,28 @@
 ---
-title: Pomocí popisků na nástrojích dotazy v SQL Data Warehouse | Microsoft Docs
-description: Tipy pro používání popisky na nástrojích dotazy v Azure SQL Data Warehouse na vývoj řešení.
+title: Používání popisků do nástroje dotazů v SQL Data Warehouse | Dokumentace Microsoftu
+description: Tipy pro používání popisků do nástroje dotazů ve službě Azure SQL Data Warehouse pro vývoj řešení.
 services: sql-data-warehouse
 author: ronortloff
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 22737faa146d83f1f31489125dee4146c7d11ac1
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 959fddfd24041a245f80b048eca4bef3cd612905
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31524240"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301142"
 ---
-# <a name="using-labels-to-instrument-queries-in-azure-sql-data-warehouse"></a>Použití popisků na nástrojích dotazy v Azure SQL Data Warehouse
-Tipy pro používání popisky na nástrojích dotazy v Azure SQL Data Warehouse na vývoj řešení.
+# <a name="using-labels-to-instrument-queries-in-azure-sql-data-warehouse"></a>Použití popisků k instrumentaci dotazů ve službě Azure SQL Data Warehouse
+Tipy pro používání popisků do nástroje dotazů ve službě Azure SQL Data Warehouse pro vývoj řešení.
 
 
-## <a name="what-are-labels"></a>Jaké jsou popisky?
-SQL Data Warehouse podporuje koncept názvem popisky dotazu. Před přechodem do jakékoli hloubku, podíváme se na příklad:
+## <a name="what-are-labels"></a>Co jsou popisky?
+SQL Data Warehouse podporuje koncept volá dotaz popisky. Před přechodem do libovolné hloubky, Pojďme se podívat na příklad:
 
 ```sql
 SELECT *
@@ -31,9 +31,9 @@ OPTION (LABEL = 'My Query Label')
 ;
 ```
 
-Poslední řádek značky řetězec popisek Moje dotazu pro dotaz. Tato značka je zvláště užitečné, protože popisek dotaz může prostřednictvím zobrazení dynamické správy. Dotazování pro popisky poskytuje mechanismus pro vyhledání problém dotazy a pomáhá identifikovat průběh prostřednictvím ELT spustit.
+Poslední řádek značky řetězec popisek složky dotazu, který má dotaz. Tato značka je zvláště užitečné, protože popisek je dotaz může prostřednictvím zobrazení dynamické správy. Dotazování na popisky poskytuje mechanismus pro vyhledání problémových dotazů a pomáhají identifikovat probíhá prostřednictvím ELT spustit.
 
-Dobrý zásady vytváření názvů skutečně pomáhá. Například popisek počínaje projektu, postup, příkaz nebo komentář pomáhá k jednoznačné identifikaci dotaz mezi všechny kód ve správě zdrojového kódu.
+Pomůžete dobré zásady vytváření názvů. Například spuštění popisek s PROJEKTEM, PROCEDURY, příkaz nebo KOMENTÁŘE pomáhají k jednoznačné identifikaci dotazu mezi všechny kódu ve správě zdrojového kódu.
 
 Následující dotaz používá zobrazení dynamické správy Pokud chcete vyhledávat podle popisku.
 
@@ -45,11 +45,11 @@ WHERE   r.[label] = 'My Query Label'
 ```
 
 > [!NOTE]
-> Je nutné uvést hranaté závorky a dvojité uvozovky kolem popisek word při dotazování. Popisek je vyhrazené slovo a způsobuje chybu, když není oddělené. 
+> Je nutné umístit hranaté závorky nebo dvojité uvozovky kolem popisek word při dotazování. Popisek je vyhrazené slovo a způsobí chybu, pokud není s oddělovači. 
 > 
 > 
 
 ## <a name="next-steps"></a>Další postup
-Další tipy pro vývoj, najdete v části [přehled vývoje](sql-data-warehouse-overview-develop.md).
+Další tipy pro vývoj najdete v části [přehled vývoje](sql-data-warehouse-overview-develop.md).
 
 

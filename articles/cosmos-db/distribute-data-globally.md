@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: dec981ad750a49646916dbef40a4cc632ab71da2
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 19e47e0dba1a89ea32f42ef0bafc26f8c59b4ad7
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856636"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43288298"
 ---
 # <a name="how-to-distribute-data-globally-with-azure-cosmos-db"></a>Globální distribuce dat pomocí služby Azure Cosmos DB
 Azure je všudypřítomná – to globální stopu napříč více než 50 geografických oblastí a pokus se neustále rozšiřuje. Globální přítomnost služeb jeden diferencované možnosti, které Azure nabízí svým vývojářům se schopnost vytvářet, nasazovat a spravovat snadno globálně distribuované aplikace. 
@@ -34,11 +34,6 @@ Tento článek poskytuje přehled o možnosti globální distribuce služby Azur
 
 ## <a id="EnableGlobalDistribution"></a>Povolením globální distribuce na klíč
 Azure Cosmos DB poskytuje následující funkce, které vám umožní snadno vytvářet globálně distribuované aplikace. Tyto možnosti jsou dostupné prostřednictvím založenou na poskytovateli prostředků Azure Cosmos DB [rozhraní REST API](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/) a také na webu Azure portal.
-
-Podívejte se na následující video a zjistěte funkce globální distribuce na klíč ve službě Azure Cosmos DB v akci.
-
-> [!VIDEO https://www.youtube.com/embed/1D06yjTVxt8]
->
 
 ### <a id="RegionalPresence"></a>Všudypřítomná místní přítomnost 
 Azure je neustále rostoucí jeho přítomnost zeměpisné přenesením [nové oblasti](https://azure.microsoft.com/regions/) online. Azure Cosmos DB je klasifikován tak *podkladovou službu* v Azure a je k dispozici ve všech nových oblastech Azure ve výchozím nastavení. To umožňuje přidružit geografické oblasti účtu databáze Azure Cosmos DB, poté, co Azure otevře nové oblasti pro firmy.

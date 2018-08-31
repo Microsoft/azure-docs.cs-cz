@@ -1,6 +1,6 @@
 ---
-title: Udělení oprávnění ke mnoho aplikací pro přístup Azure trezoru klíčů | Microsoft Docs
-description: Zjistěte, jak chcete udělit oprávnění k mnoha aplikace pro přístup k trezoru klíčů
+title: Udělení oprávnění k velkému počtu aplikací pro přístup k trezoru klíčů Azure | Dokumentace Microsoftu
+description: Zjistěte, jak udělit oprávnění k velkému počtu aplikací pro přístup k trezoru klíčů
 services: key-vault
 documentationcenter: ''
 author: amitbapat
@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2016
 ms.author: ambapat
-ms.openlocfilehash: ddeaf184138bd48d324799ddb45248b0a0ee8eeb
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 14e6e8bb723eb236f8fb315454b8697a3bd947ef
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30174967"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286423"
 ---
-# <a name="grant-permission-to-many-applications-to-access-a-key-vault"></a>Udělit oprávnění k mnoha aplikace pro přístup k trezoru klíčů
+# <a name="grant-permission-to-many-applications-to-access-a-key-vault"></a>Udělit oprávnění k velkému počtu aplikací pro přístup k trezoru klíčů
 
-## <a name="q-i-have-several-over-16-applications-that-need-to-access-a-key-vault-since-key-vault-only-allows-16-access-control-entries-how-can-i-achieve-that"></a>Otázka: je nutné několik (více než 16) aplikace, které potřebují přístup k trezoru klíčů. Vzhledem k tomu, že Key Vault umožňuje jenom 16 položek řízení přístupu, co mám dělat?
+## <a name="q-i-have-several-applications-that-need-to-access-a-key-vault-how-can-i-give-these-applications-up-to-1024-access-to-key-vault"></a>Otázka: Mám několik aplikací, které potřebují přístup k trezoru klíčů, jak můžete mi poskytnout tyto aplikace (až 1 024) přístup do služby Key Vault?
 
-Zásada řízení přístupu Key Vault podporuje pouze 16 položky. Ale můžete vytvořit skupiny zabezpečení služby Azure Active Directory. Přidejte všechny objekty přidružené služby do této skupiny zabezpečení a pak udělují přístup k této skupině zabezpečení Key Vault.
+Zásady řízení přístupu k trezoru klíčů podporuje až 1 024 položky. Ale můžete vytvořit skupiny zabezpečení služby Azure Active Directory. Přidejte všechny přidružené instanční objekty do této skupiny zabezpečení a potom jim udělit přístup k této skupině zabezpečení do služby Key Vault.
 
 Tady jsou požadavky:
 * [Instalace modulu Azure Active Directory V2 PowerShell](https://www.powershellgallery.com/packages/AzureAD).
 * [Nainstalujte prostředí Azure PowerShell](/powershell/azure/overview).
-* Pokud chcete spustit následující příkazy, potřebujete oprávnění k vytvoření nebo úpravě skupin v klientovi služby Azure Active Directory. Pokud nemáte oprávnění, budete muset obraťte se na správce služby Azure Active Directory.
+* Spustit následující příkazy, budete potřebovat oprávnění k vytvoření nebo úpravě skupiny v tenantovi Azure Active Directory. Pokud nemáte příslušná oprávnění, budete muset kontaktovat svého správce Azure Active Directory.
 
 Nyní spusťte následující příkazy v prostředí PowerShell.
 
@@ -53,8 +53,8 @@ Set-AzureRmKeyVaultAccessPolicy –VaultName ContosoVault –ObjectId $aadGroup.
 # Of course you can adjust the permissions as required 
 ```
 
-Pokud potřebujete udělit jinou sadu oprávnění pro skupinu aplikací, vytvořte samostatnou skupinu zabezpečení služby Azure Active Directory pro tyto aplikace.
+Pokud je potřeba udělit jinou sadu oprávnění pro skupinu aplikací, vytvořte samostatnou skupinu zabezpečení Azure Active Directory pro takové aplikace.
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o tom, jak [zabezpečit váš trezor klíčů](key-vault-secure-your-key-vault.md).
+Další informace o tom, jak [zabezpečení trezoru klíčů](key-vault-secure-your-key-vault.md).

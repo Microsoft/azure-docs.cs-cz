@@ -10,20 +10,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: ramkris
-ms.openlocfilehash: 57ad621006a79148aaa6e9435d6ede446539c648
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: e7ed0049e64a7740063f2fab7bdfddff38d45ed9
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714749"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287706"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Urychlení analýzy velkých objemů dat pomocí Apache Sparku do konektoru služby Azure Cosmos DB
  
 Apache Spark pro konektor služby Azure Cosmos DB umožňuje službě Azure Cosmos DB být vstup nebo výstup úlohy Apache Spark. Připojení [Spark](http://spark.apache.org/) k [služby Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) se řešení rychlé tempo data science problémů. Služby Azure Cosmos DB můžete použít k rychlému zachovat a dotazování na data. Tento konektor efektivně využívá nativní indexy spravované služby Azure Cosmos DB. Indexy, které povolí aktualizovatelné sloupce při provádění důkladné predikátu filtrování rychle se měnících globálně distribuovaných dat a analýzy. Tento typ dat musí být v rozsahu Internet of Things (IoT) pro datové vědy a analýzy scénáře.
-
-Další informace o konektoru v tomto videu:
-
-> [!VIDEO https://channel9.msdn.com/Events/Connect/2017/T135/player] 
 
 ## <a name="connector-components"></a>Součásti konektoru
 

@@ -7,14 +7,14 @@ manager: carmonm
 keywords: zálohování virtuálních počítačů, zálohování virtuálních počítačů
 ms.service: backup
 ms.topic: conceptual
-ms.date: 7/31/2018
+ms.date: 8/29/2018
 ms.author: markgal
-ms.openlocfilehash: 438c1130486fe1ba2ee484ae01655a2fb115de27
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 9e2ef16cffb044409b6f7f8e7785010097bcda87
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390751"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286648"
 ---
 # <a name="plan-your-vm-backup-infrastructure-in-azure"></a>Plánování infrastruktury zálohování virtuálních počítačů v Azure
 Tento článek obsahuje výkonu a prostředků návrhy vám pomohou při plánování infrastruktury zálohování virtuálních počítačů. Také definuje klíčové aspekty služby Backup; Tyto aspekty může být důležité při určování architektury, plánování kapacity a plánování. Pokud jste [připravit vaše prostředí](backup-azure-arm-vms-prepare.md), plánování je dalším krokem, než začnete [k zálohování virtuálních počítačů](backup-azure-arm-vms.md). Pokud potřebujete další informace o virtuálních počítačích Azure, přečtěte si [dokumentace k virtuálním počítačům](https://azure.microsoft.com/documentation/services/virtual-machines/). 
@@ -50,17 +50,18 @@ Azure Backup trvá úplné zálohování VSS na virtuálních počítačích s W
 ```
 
 #### <a name="linux-vms"></a>Virtuální počítače s Linuxem
-Azure Backup poskytuje skriptovací rozhraní framework. K zajištění konzistence aplikace při zálohování virtuálních počítačů s Linuxem, vytvořte vlastní skripty před a po skripty, které řídí pracovního postupu zálohování a prostředí. Azure Backup vyvolá předzálohovací skript před pořizování snímku virtuálního počítače a vyvolá pozálohovací skript po dokončení úlohy snímku virtuálního počítače. Další podrobnosti najdete v tématu [žádosti konzistentní vzhledem k aplikacím pomocí předsnímkových a posnímkových skriptů zálohy virtuálních počítačů](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent).
+
+Azure Backup poskytuje skriptovací rozhraní pro řízení pracovního postupu zálohování a prostředí. K zajištění konzistentní zálohování virtuálních počítačů s Linuxem použijte skriptovací rozhraní framework vytvářet skripty před a pozálohovacích skriptů. Vyvolání předzálohovací skript před pořizování snímku virtuálního počítače a pak vyvolejte pozálohovací skript po dokončení úlohy snímku virtuálního počítače. Další informace najdete v článku [Aplikačně konzistentní zálohování virtuálních počítačů s Linuxem](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent).
+
 > [!NOTE]
 > Azure Backup vyvolá pouze zákazník napsané předběžné a pozálohovacích skriptů. Pokud se předzálohovací skript a pozálohovacích skriptů proběhl úspěšně, Azure Backup označí bod obnovení jako aplikace konzistentní vzhledem k aplikacím. Zákazník ale nakonec odpovědné za konzistence aplikací při použití vlastních skriptů.
 >
 
-
-Tato tabulka popisuje typy konzistence a podmínky, které se objeví pod během virtuálního počítače Azure zálohovat a obnovovat postupy.
+Následující tabulka popisuje typy konzistence a podmínky, které se objeví.
 
 | Konzistence | Na základě VSS | Vysvětlení a podrobnosti |
 | --- | --- | --- |
-| Konzistentnost aplikací |Ano pro Windows|Konzistentnost aplikací je ideální pro úlohy, protože zajišťuje, že:<ol><li> Virtuální počítač *se spustí*. <li>Je *žádné poškození*. <li>Je *bez ztráty*.<li> Data jsou konzistentní s aplikací, která používá data, zahrnující aplikace v době zálohování--pomocí služby VSS nebo předzálohovacího nebo pozálohovacího skriptu.</ol> <li>*Virtuální počítače s Windows*-nejvíce Microsoft úlohy mají zapisovače služby VSS, které akce specifické pro úlohy související s konzistenci dat provést. Microsoft SQL Server má například zapisovač stínové kopie svazku, který zajistí, že zápisy do souboru protokolu transakcí a databáze jsou provedeny správně. Zálohování virtuálního počítače Windows Azure vytvořit bod obnovení konzistentní, rozšíření zálohování musí vyvolat pracovní postup služby VSS a dokončete ho, než pořizování snímku virtuálního počítače. Pro snímek virtuálního počítače Azure chcete být přesné musíte dokončit také zapisovače VSS všech aplikací virtuálního počítače Azure. (Další informace [Základy služby Stínová kopie svazku](http://blogs.technet.com/b/josebda/archive/2007/10/10/the-basics-of-the-volume-shadow-copy-service-vss.aspx) a ponořte se hlouběji do podrobností o [jak to funguje](https://technet.microsoft.com/library/cc785914%28v=ws.10%29.aspx)). </li> <li> *Virtuální počítače s Linuxem*– zákazníci mohou spouštět [vlastních předsnímkových a posnímkových skriptů k zajištění konzistence aplikace](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent). </li> |
+| Konzistentnost aplikací |Ano pro Windows|Konzistentnost aplikací je ideální pro úlohy, protože zajišťuje, že:<ol><li> Virtuální počítač *se spustí*. <li>Je *žádné poškození*. <li>Je *bez ztráty*.<li> Data jsou konzistentní s aplikací, která používá data, zahrnující aplikace v době zálohování--pomocí služby VSS nebo předzálohovacího nebo pozálohovacího skriptu.</ol> <li>*Virtuální počítače s Windows*-nejvíce Microsoft úlohy mají zapisovače služby VSS, které jsou spuštěny akce specifické pro úlohy související s konzistence dat. Například SQL Server VSS writer zajišťuje zápisy do souboru protokolu transakcí a databáze, jsou provedeny správně. Pro zálohy virtuálních počítačů IaaS Windows Pokud chcete vytvořit bod obnovení konzistentní s aplikací, rozšíření zálohování musíte vyvolat pracovní postup služby VSS a dokončete ho, než pořizování snímku virtuálního počítače. Pro snímek virtuálního počítače Azure chcete být přesné musíte dokončit také zapisovače VSS všech aplikací virtuálního počítače Azure. (Další informace [Základy služby Stínová kopie svazku](http://blogs.technet.com/b/josebda/archive/2007/10/10/the-basics-of-the-volume-shadow-copy-service-vss.aspx) a ponořte se hlouběji do podrobností o [jak to funguje](https://technet.microsoft.com/library/cc785914%28v=ws.10%29.aspx)). </li> <li> *Virtuální počítače s Linuxem*– zákazníci mohou spouštět [vlastních předsnímkových a posnímkových skriptů k zajištění konzistence aplikace](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent). </li> |
 | Systém souborů konzistence |Ano – pro počítače se systémem Windows |Existují dva scénáře, kde může být bod obnovení *-konzistentní se systémem souborů*:<ul><li>Zálohování virtuálních počítačů s Linuxem v Azure, bez předprodukční script/po script nebo pokud předprodukční script/po script se nezdařilo. <li>VSS selhání během zálohování pro virtuální počítače s Windows v Azure.</li></ul> V obou těchto případech je nejlepší, které lze provést Ujistěte se, že: <ol><li> Virtuální počítač *se spustí*. <li>Je *žádné poškození*.<li>Je *bez ztráty*.</ol> Je potřeba implementovat vlastní mechanismus "Opravit" na obnovená data aplikace. |
 | Konzistenci při selhání. |Ne |Tato situace je ekvivalentní k virtuálnímu počítači dochází k "selhání" (prostřednictvím obnovitelně nebo pevné reset). Konzistenci při chybě obvykle dochází, když virtuální počítač Azure je vypínání v době zálohování. Bod obnovení konzistentní při selhání poskytuje žádné záruky, konzistenci dat na střední úložiště – buď z hlediska operačního systému nebo aplikace. Pouze data, která již existuje na disku v době zálohování je zaznamenat a zálohovat. <br/> <br/> Když neexistují žádné záruky, obvykle, následovaný kontroly disku boty operačního systému, postupu, jako je nástroj chkdsk a opravte případné chyby poškození. Žádná data v paměti nebo zápisů, které nebyly převedeny na disku se ztratí. Aplikace se obvykle řídí s vlastní mechanismus ověřování v případě, že vrácení změn dat je potřeba udělat. <br><br>Jako příklad Jestliže transakčního protokolu obsahuje položky, není k dispozici v databázi, databázový software vrácena zpět, dokud se data konzistentní vzhledem k aplikacím. Když data se pak rozdělí mezi víc virtuálních disků (jako jsou rozložené svazky), poskytuje bod obnovení konzistentní při selhání žádné záruky správnost data. |
 
@@ -104,19 +105,22 @@ Operace obnovení se skládá ze dvou hlavních úloh: kopírování dat do úč
 * Čas – kopírování dat se kopírují Data z úložiště do účtu úložiště zákazníka. Obnovit doba závisí na vstupně-výstupních operací a propustnosti služby Azure Backup získává v účtu úložiště vybraného zákazníka. Ke snížení doby kopírování během procesu obnovení, vyberte účet úložiště s jinými aplikace zápisy a čtení není načtený.
 
 ## <a name="best-practices"></a>Osvědčené postupy
-Doporučujeme následující tyto postupy při konfiguraci zálohování pro virtuální počítače s nespravovanými disky:
 
-> [!Note]
-> Následující postupy, které doporučují, změna nebo spravovat účty úložiště, se vztahují pouze na virtuální počítače s nespravovanými disky. Pokud používáte spravované disky, Azure bude starat o všechny činnosti správy týkající se úložiště.
-> 
+Doporučujeme následující tyto postupy při konfiguraci zálohování pro všechny virtuální počítače:
 
-* Není naplánovat víc než 10 klasické virtuální počítače ze stejné cloudové službě k vytvoření zálohy ve stejnou dobu. Pokud chcete zálohovat několik virtuálních počítačů ze stejné cloudové službě, odstupňování časů zahájení zálohování o hodinu.
-* Neplánujte více než 100 virtuálních počítačů z jediného trezoru zálohování ve stejnou dobu. 
+* Není naplánovat zálohování pro více než 10 klasické virtuální počítače ze stejné cloudové službě, ve stejnou dobu. Pokud chcete zálohovat několik virtuálních počítačů ze stejné cloudové službě, odstupňování časů zahájení zálohování o hodinu.
+* Není naplánovat zálohování pro více než 100 virtuálních počítačů z jednoho trezoru ve stejnou dobu.
 * Plánování zálohování virtuálního počítače během hodin mimo špičku. Služba Backup díky tomu používá vstupně-výstupních operací pro přenos dat z účtu úložiště uživatele do trezoru.
-* Ujistěte se, že je zásada na virtuálních počítačích rozloženy jiný účet úložiště. Více než 20, doporučujeme chránit celkový počet disků z jednoho účtu úložiště ve stejném plánu zálohování. Pokud máte větší než 20 disků v účtu úložiště, rozložení těchto virtuálních počítačů mezi více zásad, chcete-li získat požadované vstupně-výstupních operací ve fázi převodu z procesu zálohování.
-* Neobnovujte virtuálního počítače běžící v Premium storage do stejného účtu úložiště. Pokud proces operace obnovení se shoduje se operace zálohování, snižuje IOPS k dispozici pro zálohování.
-* Pro zálohování virtuálních počítačů úrovně Premium na zásobník záloh virtuálních počítačů V1 se doporučuje přidělit jenom 50 % celkový úložný prostor účet tak, aby služba Azure Backup můžete zkopírovat snímek do úložiště účtu a přenos dat z tohoto umístění zkopírovaného v účtu úložiště do trezoru.
 * Ujistěte se, že virtuální počítače s Linuxem pro zálohování povolené, máte Python verze 2.7 nebo novější.
+
+### <a name="best-practices-for-vms-with-unmanaged-disks"></a>Osvědčené postupy pro virtuální počítače s nespravovanými disky
+
+Následující doporučení platí pouze pro virtuální počítače s využitím nespravovaných disků. Pokud vaše virtuální počítače používají spravované disky, služba Backup zpracovává všechny činnosti správy úložiště.
+
+* Ujistěte se, že chcete použít zásady zálohování pro virtuální počítače, které jsou rozděleny mezi více účtů úložiště. Více než 20 celkový počet disků z jednoho účtu úložiště by měla být chráněna stejný plán zálohování. Pokud máte větší než 20 disků v účtu úložiště, rozložení těchto virtuálních počítačů mezi více zásad, chcete-li získat požadované vstupně-výstupních operací ve fázi převodu z procesu zálohování.
+* Neobnovujte virtuálního počítače běžící v Premium storage do stejného účtu úložiště. Pokud proces operace obnovení se shoduje se operace zálohování, snižuje IOPS k dispozici pro zálohování.
+* Pro zálohování virtuálních počítačů úrovně Premium na zásobník záloh virtuálních počítačů V1 měli byste přidělit jenom 50 % celkový úložný prostor účet tak, aby služba Backup můžete zkopírování snímku do účtu úložiště a přenosu dat z účtu úložiště do trezoru.
+
 
 ## <a name="data-encryption"></a>Šifrování dat
 Azure Backup nešifruje data jako součást procesu zálohování. Můžete ale šifrování dat v rámci virtuálního počítače a bez problémů zálohování chráněných dat (Další informace o [zálohování šifrovaných dat](backup-azure-vms-encryption.md)).

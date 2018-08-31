@@ -6,21 +6,21 @@ author: CarlRabeler
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 08/27/2018
+ms.date: 08/30/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: 3d0eca6e1c680dd703f4dceac6abcb70144bac37
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 8266d9e3530969154ac9c8c877badda9f8b4fed3
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124993"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43307268"
 ---
 # <a name="choosing-a-vcore-service-tier-compute-memory-storage-and-io-resources"></a>Výběr úrovně služeb vCore, výpočty, paměť, úložiště a vstupně-VÝSTUPNÍCH prostředků
 
 Nákupní model založený na virtuálních jádrech umožňuje nezávisle na sobě škálovat výpočetní prostředky a prostředky úložiště, odpovídají zajištění místního výkonu a optimalizovat cena. Umožňuje také můžete vybrat generaci:
 - Až 24 logické procesory generace 4 - podle Intel E5-2673 v3 (Haswell) 2,4 GHz, vCore = 1 PP (fyzických jader), 7 GB na jádro, připojené SSD
-- Až 80 logické procesory generace 5 - podle Intel E5-2673 v4 (Broadwell) 2,3 GHz procesorech, vCore = 1 LP (hyper vlákno), 5.5. GB na jádro, rychlé eNVM SSD
+- Až 80 logické procesory generace 5 - podle Intel E5-2673 v4 (Broadwell) 2,3 GHz procesorech, vCore = 1 LP (hyper vlákno), 5.1. GB na jádro, rychlé eNVM SSD
 
 modelu virt. jader také umožňuje používat [zvýhodněné hybridní využití Azure pro SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md) získat úspory nákladů.
 
@@ -34,7 +34,7 @@ Následující tabulka vám pomůže pochopit rozdíly mezi těmito dvěma vrstv
 |---|---|---|
 |Nejvhodnější pro|Většinu obchodních úloh. Nabídky rozpočtu orientovaný vybalancovaných a škálovatelných výpočetních možností a možností ukládání.|Podnikové aplikace s vysokými nároky na V/V. Nabízí nejvyšší odolnost proti selhání s využitím několika izolovaných replik.|
 |Compute|Gen4: vCore 1 až 24<br/>Gen5: vCore 1 až 80|Gen4: vCore 1 až 24<br/>Gen5: vCore 1 až 80|
-|Memory (Paměť)|Gen4: 7 GB na jádro<br>Gen5: 5.5 GB na jádro | Gen4: 7 GB na jádro<br>Gen5: 5.5 GB na jádro |
+|Memory (Paměť)|Gen4: 7 GB na jádro<br>Gen5: 5.1 GB na jádro | Gen4: 7 GB na jádro<br>Gen5: 5.1 GB na jádro |
 |Úložiště|[Vzdálené úložiště úrovně Premium](../virtual-machines/windows/premium-storage.md),<br/>Izolované databáze: 5 GB až 4 TB<br/>Spravovanou instanci: 32 GB až 8 TB |Místní úložiště SSD<br/>Izolované databáze: 5 GB až 1 TB<br/>Spravovanou instanci: 32 GB až 4 TB |
 |Vstupně-výstupní propustnost (přibližné)|Izolované databáze: 500 IOPS na vCore s 7000 maximální IOPS</br>Spravovanou instanci: Závisí na [velikost souboru](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)|5000 IOPS na jádro s 200000 maximální IOPS|
 |Dostupnost|1 repliky, žádné škálování pro čtení|3 repliky, 1 [repliky pro čtení škálování](sql-database-read-scale-out.md),<br/>Zóna redundantní HA|

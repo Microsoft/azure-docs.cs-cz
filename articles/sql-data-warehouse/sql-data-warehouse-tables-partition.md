@@ -1,47 +1,47 @@
 ---
-title: Vytváření oddílů tabulky v Azure SQL Data Warehouse | Microsoft Docs
-description: Doporučení a příklady pro použití v Azure SQL Data Warehouse tabulku oddílů.
+title: Dělení tabulky ve službě Azure SQL Data Warehouse | Dokumentace Microsoftu
+description: Doporučení a příklady použití oddíly tabulky ve službě Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: ronortloff
-manager: craigg-msft
+manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: ada55950ee36222e70809e2ef423c63612cd61ed
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 04e489e6b6841f1038830d0b160e88111be8d838
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31526773"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301956"
 ---
-# <a name="partitioning-tables-in-sql-data-warehouse"></a>Vytváření oddílů tabulky v SQL Data Warehouse
-Doporučení a příklady pro použití v Azure SQL Data Warehouse tabulku oddílů.
+# <a name="partitioning-tables-in-sql-data-warehouse"></a>Dělení tabulek v SQL Data Warehouse
+Doporučení a příklady použití oddíly tabulky ve službě Azure SQL Data Warehouse.
 
-## <a name="what-are-table-partitions"></a>Jaké jsou oddílů tabulky?
-Tabulka oddílů umožňují data rozdělíte do menší skupiny data. Ve většině případů se na sloupec kalendářních vytvoří tabulku oddílů. Vytváření oddílů je podporován u všech typů tabulek SQL Data Warehouse; včetně clusterových columnstore, clusterovaný index a haldy. Vytváření oddílů je podporováno také na všechny typy distribučních, včetně hodnoty hash nebo kruhové dotazování distribuován.  
+## <a name="what-are-table-partitions"></a>Jaké jsou oddíly tabulky?
+Oddíly tabulky umožňují rozdělit do menších skupin dat vaše data. Ve většině případů jsou oddíly tabulky vytvořit u sloupce datum. Vytváření oddílů se podporuje na všech typech tabulka SQL Data Warehouse; jako Clusterované columnstore, clusterovaný index a haldy. Dělení je také podporována na všech typech distribuce, včetně hodnot hash nebo distribuované metodou kruhového.  
 
-Vytváření oddílů využívat data výkonu údržby a dotazů. Jestli výhody oba, nebo pouze jeden, je závislá na tom, jak načíst data a zda na stejný sloupec lze použít pro obě účely, protože vytváření oddílů je možné provést pouze na jeden sloupec.
+Dělení můžete využívat data údržbu a výkonu dotazování umožňujícímu. Určuje, zda jeho výhody plynou oba, nebo pouze jedna je závislé na tom, jak načíst data a zda stejný sloupec lze použít pro oba účely, protože dělení lze provést pouze na jeden sloupec.
 
-### <a name="benefits-to-loads"></a>Výhody zatížení
-Hlavní výhoda vytváření oddílů v SQL Data Warehouse je ke zlepšení efektivity a výkon načítání dat pomocí odstranění oddílu, přepínání a slučování. Ve většině případů jsou data rozdělena na sloupec data, která úzce souvisí pořadí, ve kterém je načíst data do databáze. Jednou z výhod použití oddíly pro zachování dat největší ho předcházení protokolování transakcí. Když jednoduše vkládání, aktualizaci nebo odstranění dat může být nejjednodušší způsob, s malým množstvím myšlenku a úsilí, pomocí dělení během procesu vaše zatížení může podstatně zlepšit výkon.
+### <a name="benefits-to-loads"></a>Výhody pro načtení
+Hlavní výhodou dělení ve službě SQL Data Warehouse je zvýšení efektivity a výkon při načítání dat pomocí odstranění oddílů, přepínání a sloučení. Ve většině případů se data rozdělená na sloupec data, která je úzce vázané na pořadí, ve kterém je načtení dat do databáze. Jednou z výhod používání oddílů zachovat data největší ho předcházení protokolování transakcí. Jednoduše vkládání, aktualizaci nebo odstranění dat mohou být nejjednodušší, s trochou myšlenek a úsilí, použití dělení během procesu načtení může výrazně zlepšit výkon.
 
-Přepnutí oddílu umožňuje rychle odeberte nebo nahraďte oddíl tabulky.  Tabulka faktů prodeje například může obsahovat jen data po dobu posledních 36 měsíců. Na konci každého měsíce se odstraní nejstarší měsíc prodejních dat z tabulky.  Tato data může odstranit pomocí příkazu delete k odstranění dat nejstarší měsíc. Ale odstraňování velké množství dat řádek po řádku příkazem delete může trvat příliš dlouho, stejně jako vytvořit riziko velké transakcí, které trvat dlouhou dobu vrátit zpět, pokud dojde k chybě. Více optimální metodu je vyřadit nejstarší oddílu data. Kde odstranění jednotlivých řádků může trvat hodiny, odstraňování celý oddíl může trvat sekund.
+Přepínání oddílů je možné rychle odeberte nebo nahraďte oddíl tabulky.  Například tabulku faktů sales může obsahovat jen data po dobu posledních 36 měsíců. Na konci každého měsíce se odstraní nejstarší měsíc prodejních dat z tabulky.  Tato data můžou odstranit pomocí příkazu delete odstraníte data po nejstarší měsíc. Ale odstranění velký objem dat řádek po řádku pomocí příkazu delete může trvat příliš dlouho, jakož i riziko možného velké transakce, které trvat dlouhou dobu vrátit zpět, pokud se něco nepovede. Více optimální přístup je odstranit nejstarší oddíl data. Pokud odstranění jednotlivých řádků může trvat hodiny, odstraňuje se celý oddíl může trvat sekund.
 
 ### <a name="benefits-to-queries"></a>Výhody pro dotazy
-Vytváření oddílů můžete použít také pro zlepšení výkonu dotazů. Dotaz, který použije filtr na oddílů data můžete omezit prohledávání pouze opravňující oddíly. Tato metoda filtrování můžete vyhnout prohledání úplnou tabulky a kontrolovat pouze podmnožinu dat menší. Se zavedením Clusterované indexy columnstore jsou méně výhodné predikátem odstranění výkonnostních výhod, ale v některých případech může být výhoda dotazy. Například pokud tabulka faktů prodeje jsou rozděleny do 36 měsíců pomocí pole Datum prodeje a potom se dotazuje tento filtr na datum prodej můžete přeskočit hledání v oddíly, které neodpovídají filtru.
+Dělení můžete použít také ke zlepšení výkonu dotazů. Dotaz, který aplikuje filtr dělená data můžete omezit kontrola pouze oprávněným oddíly. Tato metoda filtrování se můžete vyhnout ke skenování celé tabulky a prohledávat pouze podmnožinu dat menší. Se zavedením Clusterované indexy columnstore přinese zlepšení výkonu odstranění predikátu jsou méně užitečné, ale v některých případech může být výhoda pro dotazy. Například pokud tabulce faktů sales rozdělená na 36 měsíců pomocí pole prodejní data, dotazuje filtr na datu, prodej přeskočit hledání v oddílech, které neodpovídají filtr.
 
-## <a name="sizing-partitions"></a>Změna velikosti oddíly
-Při vytváření oddílů lze použít ke zlepšení výkonu některých scénářích, vytváření tabulku s **příliš mnoho** oddíly může narušit výkonnost za určitých okolností.  Tyto problémy jsou především pro Clusterované tabulky columnstore. Pro dělení být užitečné, je důležité pochopit, kdy použít vytváření oddílů a počet oddílů pro vytvoření. Není pevný rychlé pravidlo, kolik oddíly jsou příliš mnoho, závisí na vaše data a oddíly, kolik je načítání současně. Úspěšné schéma rozdělení oddílů má obvykle desítkami na stovky oddíly, není tisíců.
+## <a name="sizing-partitions"></a>Nastavení velikosti oddíly
+I když je dělení můžete použít ke zlepšení výkonu některých scénářích, vytvoření tabulky s **příliš mnoho** oddílů může snížit výkon za určitých okolností.  Tyto problémy jsou především clusterovaných tabulek columnstore. Pro rozdělení do oddílů, bude vhodné, je důležité pochopit, kdy použít dělení a počet oddílů, chcete-li vytvořit. Neexistuje žádné pevné pravidlo rychlé, kolik oddíly jsou příliš mnoho, závisí na vaše data a oddíly, kolik je načítání současně. Úspěšné schéma rozdělení oddílů má obvykle desítky ke stovkám oddíly, ne tisíců.
 
-Při vytváření oddílů v **Clusterové columnstore** tabulky, je důležité zvážit, kolik řádků patří každý oddíl. Pro optimální komprese a výkon Clusterované tabulky columnstore je potřeba minimálně 1 milionu řádků na distribuce a oddíl. Před vytvořením oddíly, SQL Data Warehouse každá tabulka již rozdělí na 60 distribuované databáze. Všechny oddíly přidat do tabulky je kromě distribuce vytvořen na pozadí. V tomto příkladu, pokud tabulka faktů prodeje obsažené 36 měsíční oddíly a vzhledem k tomu, že SQL Data Warehouse je 60 distribuce, pak tabulky faktů prodeje by měl obsahovat 60 milionu řádků měsíčně nebo 2.1 miliardy řádků při zaplnění všechny měsíce. Pokud tabulka obsahuje méně než minimální doporučený počet řádků na jeden oddíl, zvažte použití méně oddíly chcete-li zvýšit počet řádků na jeden oddíl. Další informace najdete v tématu [indexování](sql-data-warehouse-tables-index.md) článek, který obsahuje dotazy, které můžete vyhodnotit kvalitu indexy columnstore clusteru.
+Při vytváření oddílů na **Clusterované columnstore** tabulky, je důležité vzít v úvahu, kolik řádků patří do jednotlivých oddílů. Pro optimální komprese a výkonu clusterovaných tabulek columnstore je potřeba minimálně 1 milion řádků na distribuci a oddílu. Před vytvořením oddíly, SQL Data Warehouse již rozdělí každou tabulku na 60 distribuované databáze. Žádné dělení přidá do tabulky je kromě distribuce vytvořeny na pozadí. Podle tohoto příkladu, pokud v tabulce faktů sales obsažené 36 měsíční oddíly a vzhledem k tomu, že SQL Data Warehouse má 60 distribucí, pak v tabulce faktů sales by měl obsahovat 60 milionů řádků za měsíc, nebo 2.1 miliard řádků po zaplnění všech měsíců. Pokud tabulka obsahuje méně než minimální doporučený počet řádků na oddíl, zvažte použití menší počet oddílů zvýšit počet řádků na oddíl. Další informace najdete v tématu [indexování](sql-data-warehouse-tables-index.md) článek, který obsahuje dotazy, které můžete posouzení jakosti indexů columnstore clusteru.
 
 ## <a name="syntax-differences-from-sql-server"></a>Rozdílů v syntaxi z SQL serveru
-SQL Data Warehouse zavádí způsob, jak definovat oddíly, které je jednodušší než SQL Server. Vytváření oddílů funkce a schémata nejsou použity v SQL Data Warehouse, jako jsou v systému SQL Server. Místo toho, které musíte udělat je identifikaci oddílů sloupce a body hranic. Syntaxe vytváření oddílů se mírně liší v systému SQL Server, se základními koncepty jsou stejné. SQL Server a SQL Data Warehouse podporují jeden sloupec oddílu na jednu tabulku, která může být pohyboval oddílu. Další informace o oddílech najdete v tématu [rozdělena na oddíly tabulky a indexy](/sql/relational-databases/partitions/partitioned-tables-and-indexes).
+SQL Data Warehouse představuje způsob, jak definovat oddílů, který je jednodušší než SQL Server. Rozdělení funkcí a schémata nejsou použity ve službě SQL Data Warehouse, jako jsou v systému SQL Server. Všechno, co musíte udělat místo toho je identifikovat rozdělené sloupce a hranice body. Syntaxe dělení může být mírně liší od SQL serveru, základní koncepty stále platí. SQL Server a SQL Data Warehouse podporuje jeden sloupec oddílu jednu tabulku, která může být rozsah oddílu. Další informace o dělení najdete v tématu [dělené tabulky a indexy](/sql/relational-databases/partitions/partitioned-tables-and-indexes).
 
-Následující příklad používá [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) příkaz, který má tabulka FactInternetSales na sloupci OrderDateKey oddílu:
+V následujícím příkladu [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse) příkaz k rozdělení tabulky FactInternetSales na sloupci OrderDateKey:
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales]
@@ -67,13 +67,13 @@ WITH
 ;
 ```
 
-## <a name="migrating-partitioning-from-sql-server"></a>Migrace, vytváření oddílů v systému SQL Server
-Pokud chcete migrovat definice oddíl systému SQL Server do SQL Data Warehouse jednoduše:
+## <a name="migrating-partitioning-from-sql-server"></a>Migrace dělení z SQL serveru
+Definice oddílu serveru SQL Server jednoduše migrovat do služby SQL Data Warehouse:
 
-- Odstranění serveru SQL Server [schéma oddílu](/sql/t-sql/statements/create-partition-scheme-transact-sql).
-- Přidat [oddílu funkce](/sql/t-sql/statements/create-partition-function-transact-sql) definici tak, aby vaše CREATE TABLE.
+- Odstranit SQL Server [schéma oddílu](/sql/t-sql/statements/create-partition-scheme-transact-sql).
+- Přidat [oddílů](/sql/t-sql/statements/create-partition-function-transact-sql) definice do vytvoření tabulky.
 
-Pokud migrujete dělenou tabulku z instance systému SQL Server, následující příkaz SQL můžete zjistit počet řádků, že v každém oddílu. Uvědomte si, že pokud se v SQL Data Warehouse používá stejnou členitost rozdělení, počet řádků na jeden oddíl faktor 60 snižuje.  
+Pokud migrujete dělenou tabulku ze instance systému SQL Server, následující příkaz SQL vám umožňují zjistit počet řádků, které v jednotlivých oddílech. Uvědomte si, že pokud stejnou členitost dělení se používá v SQL Data Warehouse, počet řádků na oddíl násobkem 60 snižuje.  
 
 ```sql
 -- Partition information for a SQL Server Database
@@ -109,10 +109,10 @@ GROUP BY    s.[name]
 ;
 ```
 
-## <a name="workload-management"></a>Správa zatížení
-Jeden aspekt konečné okolnosti na vaše rozhodnutí oddílu tabulky je [úlohy správy](resource-classes-for-workload-management.md). Úlohy správy v SQL Data Warehouse je primárně správy paměti a souběžnosti. V SQL Data Warehouse je maximální paměť přidělená pro každý distribuční během provádění dotazu se řídí třídy prostředků. V ideálním případě jsou s ohledem na dalších faktorech, jako je potřebnou velikost paměti pro vytváření Clusterované indexy columnstore dimenzované oddílů. Clusterovaný benefit indexy columnstore výrazně při jejich přidělení více paměti. Tedy chcete zajistit, že nové vytvoření oddílu indexu není nedostatek paměti. Při přechodu z výchozí role, smallrc, jeden z jiných rolí, například largerc lze dosáhnout zvýšení množství paměti k dispozici pro dotaz.
+## <a name="workload-management"></a>Správa úloh
+Je jedním z faktorů konečné zvážit vaše rozhodnutí oddíl tabulky [správu úloh](resource-classes-for-workload-management.md). Správa úloh ve službě SQL Data Warehouse je primárně správu paměti a souběžnosti. Ve službě SQL Data Warehouse je maximální paměť přidělená pro jednotlivé distribuce při provádění dotazu se řídí třídy prostředků. V ideálním případě jsou oddíly velikostí s ohledem na dalších faktorů, jako je vytváření Clusterované indexy columnstore potřebnou velikost paměti. Výhoda indexů columnstore clusteru výrazně při přidělování paměti. Proto budete chtít zajistit, že opětovné sestavení oddílu indexu není nedostatek paměti. Zvýšení množství paměti k dispozici pro dotaz můžete dosáhnout při přechodu z výchozí role smallrc, do jednoho z jiných rolí, jako je například largerc.
 
-Informace o přidělení paměti na jeden distribuční je k dispozici pomocí dotazu na zobrazení dynamické správy Správce zdrojů. Ve skutečnosti vaší přidělení paměti je menší než výsledky následující dotaz. Tento dotaz však poskytuje úroveň pokyny, které můžete použít, když vaše oddíly pro operace správy dat pro definování velikosti. Pokuste se vyhnout, změna velikosti vašeho oddíly nad rámec poskytovaný třída velmi velké prostředků přidělení paměti. Pokud vaše oddíly růst nad rámec tohoto obrázku, spuštěním riziko přetížení paměti, což pak vede k menší optimální komprese.
+Informace o přidělení paměti na distribuci je k dispozici pomocí dotazu na zobrazení dynamické správy Správce zdrojů. Ve skutečnosti vaše přidělení paměti je menší než výsledky následující dotaz. Tento dotaz však poskytuje úroveň pokyny, které můžete použít při nastavování velikosti oddílů pro operace správy data. Snažte se vyhnout třídění oddílů nad rámec přidělení paměti poskytovaný třídou velmi velké skupiny prostředků. Pokud oddíly nárůst na tomto obrázku, vystavujete se riziku tlaku na paměť, což zase vede k méně optimální komprese.
 
 ```sql
 SELECT  rp.[name]                                AS [pool_name]
@@ -130,15 +130,15 @@ AND     rp.[name]    = 'SloDWPool'
 ;
 ```
 
-## <a name="partition-switching"></a>Přepnutí oddílu
-SQL Data Warehouse podporuje oddílu rozdělení, sloučení a přepínání. Každá z těchto funkcí je spouštěných pomocí [příkaz ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql) příkaz.
+## <a name="partition-switching"></a>Přepínání oddílů
+SQL Data Warehouse podporuje rozdělení, sloučení a přepínání oddílů. Každá z těchto funkcí provádí pomocí [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql) příkazu.
 
-Přepnout oddíly mezi dvěma tabulkami, musíte zajistit, že oddíly zarovnat na jejich odpovídající hranice a jestli se shodují definice tabulky. Jako zkontrolujte, že omezení nejsou k dispozici pro vynucení rozsahu hodnot v tabulce, zdrojová tabulka musí obsahovat stejné hranice oddílů jako cílová tabulka. Pokud hranice oddílů pak nejsou stejné, pak přepínače oddílu selžou, protože metadata oddílu nebudou synchronizovány.
+Pokud chcete přepnout oddílů mezi dvěma tabulkami, musíte zajistit, že v jejich příslušných hranic zarovnat oddíly a, odpovídají definici tabulky. Jako zkontrolujte omezení nejsou k dispozici k vynucení rozsahu hodnot v tabulce, zdrojová tabulka musí obsahovat stejné hranice oddílu jako cílovou tabulku. Pokud hranice oddílů pak nejsou stejné, pak přepnutí oddílu selže, protože metadata oddílu se nebudou synchronizovat.
 
 ### <a name="how-to-split-a-partition-that-contains-data"></a>Jak rozdělit oddíl, který obsahuje data
-Nejúčinnější metodou rozdělit oddíl, který už obsahuje data je použití `CTAS` příkaz. Pokud je tabulka oddílů Clusterové columnstore, pak oddíl tabulky musí být prázdný předtím, než je možné rozdělit.
+Nejefektivnější metoda rozdělit oddíl, který již obsahuje data, je použít `CTAS` příkazu. Pokud Clusterované columnstore se dělené tabulky pak tabulku oddílů musí být prázdný předtím, než je možné rozdělit.
 
-Následující příklad vytvoří tabulku oddílů columnstore. Vloží jeden řádek na každý oddíl:
+Následující příklad vytvoří tabulku oddílů columnstore. Jeden řádek vloží do jednotlivých oddílů:
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales]
@@ -172,11 +172,11 @@ CREATE STATISTICS Stat_dbo_FactInternetSales_OrderDateKey ON dbo.FactInternetSal
 ```
 
 > [!NOTE]
-> Vytvořením objektu statistiky je přesnější metadat tabulky. Pokud vynecháte statistiky, SQL Data Warehouse použije výchozí hodnoty. Podrobnosti o statistiky, přečtěte si [statistiky](sql-data-warehouse-tables-statistics.md).
+> Vytvořením objektu statistiky metadat tabulky je přesnější. Pokud vynecháte statistiky, SQL Data Warehouse použije výchozí hodnoty. Podrobnosti o statistiky, najdete v tématu [statistiky](sql-data-warehouse-tables-statistics.md).
 > 
 > 
 
-Následující dotaz vyhledá počet řádků pomocí `sys.partitions` katalogu zobrazení:
+Následující dotaz hledá počet řádků s použitím `sys.partitions` katalogu zobrazení:
 
 ```sql
 SELECT  QUOTENAME(s.[name])+'.'+QUOTENAME(t.[name]) as Table_name
@@ -193,15 +193,15 @@ WHERE t.[name] = 'FactInternetSales'
 ;
 ```
 
-Toto rozdělení příkaz obdrží chybovou zprávu:
+Následující příkaz rozdělení obdrží chybovou zprávu:
 
 ```sql
 ALTER TABLE FactInternetSales SPLIT RANGE (20010101);
 ```
 
-Msg 35346, úroveň 15, State 1, řádek 44 ROZDĚLIT klauzule příkazu ALTER partition se nezdařila, protože oddíl není prázdný. V lze rozdělit jen prázdné oddíly, když existuje columnstore index v tabulce. Zvažte zakázání index columnstore před spuštěním příkazu ALTER PARTITION příkazu a pak znovu sestavit columnstore index po dokončení příkazu ALTER PARTITION.
+Msg – 35346, úroveň 15, State 1, řádek ROZDĚLIT 44 klauzule příkazu ALTER PARTITION se nezdařila, protože oddíl není prázdný. V lze rozdělit jen prázdné oddíly, při v tabulce existuje columnstore index. Vezměte v úvahu zakázat index columnstore před spuštěním příkazu ALTER PARTITION a pak znovu sestavit columnstore index po dokončení příkazu ALTER PARTITION.
 
-Můžete však použít `CTAS` vytvořit novou tabulku pro všechna data.
+Můžete však použít `CTAS` vytvořit novou tabulku pro data.
 
 ```sql
 CREATE TABLE dbo.FactInternetSales_20000101
@@ -219,7 +219,7 @@ WHERE   1=2
 ;
 ```
 
-Jako hranice oddílů jsou v souladu, přepínač je povolená. Zdrojová tabulka to bude nechte prázdný oddílu, který může následně rozdělit.
+Jak jsou zarovnány hranice oddílů, je povolený přepínač. Zdrojová tabulka to bude nechte prázdný oddíl, který můžete následně rozdělit.
 
 ```sql
 ALTER TABLE FactInternetSales SWITCH PARTITION 2 TO  FactInternetSales_20000101 PARTITION 2;
@@ -227,7 +227,7 @@ ALTER TABLE FactInternetSales SWITCH PARTITION 2 TO  FactInternetSales_20000101 
 ALTER TABLE FactInternetSales SPLIT RANGE (20010101);
 ```
 
-Vše, co je ponechán je zarovnání dat na nové hranice oddílů pomocí `CTAS`a potom přepnout data zpět do hlavní tabulka.
+Vše, co zbývá, je zarovnání dat do nové hranice oddílů pomocí `CTAS`a potom přepněte zpět do hlavní data.
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_20000101_20010101]
@@ -248,16 +248,16 @@ AND     [OrderDateKey] <  20010101
 ALTER TABLE dbo.FactInternetSales_20000101_20010101 SWITCH PARTITION 2 TO dbo.FactInternetSales PARTITION 2;
 ```
 
-Po dokončení přesunu dat, je vhodné aktualizovat statistiku v cílové tabulce. Aktualizuje statistické údaje zajistí, že statistiku přesně odrážel novou rozdělení dat v jejich příslušné oddíly.
+Po dokončení přesunu dat, je vhodné aktualizace statistik v cílové tabulce. Aktualizaci statistiky zajišťuje že statistiky přesně odrážet nové rozdělení dat do jejich odpovídajících oddílů.
 
 ```sql
 UPDATE STATISTICS [dbo].[FactInternetSales];
 ```
 
-### <a name="table-partitioning-source-control"></a>Tabulka dělení zdrojového kódu
-Aby se zabránilo vaše definice tabulky z **koroze** v systému správy zdrojů, je vhodné vzít v úvahu následující postup:
+### <a name="table-partitioning-source-control"></a>Tabulka dělení správy zdrojového kódu
+Aby se zabránilo vaší definice tabulky z **koroze** v systému správy zdrojů, můžete chtít zvážit následující postup:
 
-1. Vytvořit tabulku jako tabulku oddílů, ale žádné hodnoty pro oddíl
+1. Vytvoření tabulky jako dělenou tabulku, ale žádné hodnoty oddílu
 
     ```sql
     CREATE TABLE [dbo].[FactInternetSales]
@@ -279,7 +279,7 @@ Aby se zabránilo vaše definice tabulky z **koroze** v systému správy zdrojů
     ;
     ```
 
-1. `SPLIT` v tabulce v rámci procesu nasazení:
+1. `SPLIT` v tabulce jako součást procesu nasazení:
 
     ```sql
      -- Create a table containing the partition boundaries
@@ -331,8 +331,8 @@ Aby se zabránilo vaše definice tabulky z **koroze** v systému správy zdrojů
     DROP TABLE #partitions;
     ```
 
-S tímto přístupem zůstane statické kód ve správě zdrojového kódu a dělení hodnoty hranic mohou být dynamické; vyvíjející se k skladu v čase.
+S tímto přístupem zůstane statické kódu ve správě zdrojového kódu a mohou být dynamický; dělení hodnoty hranice vývoj s datového skladu v čase.
 
 ## <a name="next-steps"></a>Další postup
-Další informace o vývoji tabulky, najdete v článcích na [tabulky přehled](sql-data-warehouse-tables-overview.md).
+Další informace o vývoji tabulky, najdete v článcích na [Přehled tabulek](sql-data-warehouse-tables-overview.md).
 
