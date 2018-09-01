@@ -123,10 +123,6 @@
 #### [Použití certifikátů](reports-monitoring/tutorial-access-api-with-certificates.md)
 
 ## [Správa hesel](authentication/concept-sspr-howitworks.md)
-### Dokumenty uživatele
-#### [Resetování nebo změna hesla](user-help/active-directory-passwords-update-your-own-password.md)
-#### [Registrace samoobslužného resetování hesla](user-help/active-directory-passwords-reset-register.md)
-
 
 ## Správa aplikací
 ### [Přehled](manage-apps/what-is-application-management.md)
@@ -338,10 +334,6 @@
 ### [Načtení výsledků kontroly přístupu](active-directory-azure-ad-controls-retrieve-access-review.md)
 
 ## Zabezpečení identit
-### Ověřování pomocí certifikátů
-#### [Android](active-directory-certificate-based-authentication-android.md)
-#### [iOS](active-directory-certificate-based-authentication-ios.md)
-#### [Začínáme](active-directory-certificate-based-authentication-get-started.md)
 
 ### Azure AD Identity Protection
 #### [Přehled](identity-protection/overview.md)
