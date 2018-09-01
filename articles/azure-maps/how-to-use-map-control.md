@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 228d2d3331b510a0f07dbd3ca278715466d747af
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 619dda44b5ad74ba1dcb62cfb3318687aa6ec4d5
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38988887"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43340131"
 ---
 # <a name="how-to-use-the-azure-maps-map-control"></a>Jak používat mapový ovládací prvek Azure Maps
 Knihovna Javascript na straně klienta mapový ovládací prvek umožňuje vykreslit mapy a vložené funkce Azure Maps do vašich webových nebo mobilních aplikací. 
@@ -62,4 +62,4 @@ Mapě můžete vložit na webové stránce pomocí knihovny Javascript na stran�
 Tento článek vám ukázali, jak vytvořit základní mapu klíčem Azure Maps. Další příklady kódu pro přidání do vaše mapy najdete v následujících článcích: 
 
 * [Vytvoření mapy](map-create.md)
-* [Přidání špendlíku](map-add-pin.md)
+* [Vyberte styl mapy](choose-map-style.md)

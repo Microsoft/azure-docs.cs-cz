@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 84b1ad2ecd2c027c7d8a105579059ceb957f41c6
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: e1949c32833bb1d5e6603a6f5e36e22dc58e8cec
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37928994"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43336924"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-linkedin-account-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení s účtem LinkedIn pomocí Azure Active Directory B2C
 
@@ -28,7 +28,7 @@ Použít účet LinkedIn jako zprostředkovatele identity v Azure Active Directo
 3. Zadejte **název společnosti**, **název_aplikace**, **popis aplikace**, **Logo aplikace**, **využívání aplikací** , **Adresu URL webu**, **e-mailová adresa**, a **Telefon do zaměstnání**.
 4. Souhlas s **LinkedIn API Terms of Use** a klikněte na tlačítko **odeslat**.
 5. Zkopírujte hodnoty **ID klienta** a **tajný kód klienta**. Najdete je v části **ověřovací klíče**. Budete potřebovat oba poskytovatelé konfigurace LinkedIn jako zprostředkovatele identity ve vašem tenantovi. **Tajný kód klienta** je důležitým bezpečnostním pověřením.
-6. Zadejte `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` v **oprávnění adresy URL pro přesměrování**. Nahraďte **{klient}** s názvem vašeho tenanta (například contoso.onmicrosoft.com). Vyberte **přidat**a potom klikněte na tlačítko **aktualizace**.
+6. Zadejte `https://{tenant}.b2clogin.com/te/{tenant}.onmicrosoft.com/oauth2/authresp` v **oprávnění adresy URL pro přesměrování**. Nahraďte **{klient}** s názvem vašeho tenanta (například contosob2c). Vyberte **přidat**a potom klikněte na tlačítko **aktualizace**.
 
 ## <a name="configure-a-linkedin-account-as-an-identity-provider"></a>Nakonfigurujte účet LinkedIn jako zprostředkovatele identity
 

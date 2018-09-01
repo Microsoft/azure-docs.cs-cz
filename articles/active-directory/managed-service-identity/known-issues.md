@@ -1,6 +1,6 @@
 ---
-title: Nejčastější dotazy a známé problémy s Identity spravované služby (MSI) pro Azure Active Directory
-description: Známé problémy s identita spravované služby pro Azure Active Directory.
+title: Nejčastější dotazy a známé problémy s spravovaných identit pro prostředky Azure
+description: Známé problémy s spravovaných identit pro prostředky Azure.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -15,49 +15,49 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/12/2017
 ms.author: daveba
-ms.openlocfilehash: c48d03b6e8a3d850d02d2c36c35915f8214b00e8
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 72f705e130dc60559651c9478052416294bc31a4
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39035808"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344650"
 ---
-# <a name="faqs-and-known-issues-with-managed-service-identity-msi-for-azure-active-directory"></a>Nejčastější dotazy a známé problémy s Identity spravované služby (MSI) pro Azure Active Directory
+# <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Nejčastější dotazy a známé problémy s spravovaných identit pro prostředky Azure
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
 ## <a name="frequently-asked-questions-faqs"></a>Nejčastější dotazy
 
-### <a name="does-msi-work-with-azure-cloud-services"></a>Funguje s Azure Cloud Services MSI?
+### <a name="does-managed-identities-for-azure-resources-work-with-azure-cloud-services"></a>Funguje spravovaných identit pro prostředky Azure s Azure Cloud Services?
 
-Ne, nejsou žádné plány pro podporu MSI ve službě Azure Cloud Services.
+Ne, nejsou žádné plány pro podporu spravovaných identit pro prostředky Azure ve službě Azure Cloud Services.
 
-### <a name="does-msi-work-with-the-active-directory-authentication-library-adal-or-the-microsoft-authentication-library-msal"></a>Funguje s Active Directory Authentication Library (ADAL) nebo Microsoft Authentication Library (MSAL) MSI?
+### <a name="does-managed-identities-for-azure-resources-work-with-the-active-directory-authentication-library-adal-or-the-microsoft-authentication-library-msal"></a>Funguje s Active Directory Authentication Library (ADAL) nebo Microsoft Authentication Library (MSAL) spravovaných identit pro prostředky Azure?
 
-Ne, MSI není zatím integrované s ADAL nebo MSAL. Podrobnosti o získávání tokenu MSI pomocí koncového bodu MSI REST najdete v tématu [použití Azure VM Identity spravované služby (MSI) pro získání tokenu](how-to-use-vm-token.md).
+Ne, spravované identity pro prostředky Azure zatím není sadou ADAL nebo MSAL integrované. Podrobnosti o získání tokenu pro spravované identity pro prostředky Azure pomocí koncového bodu REST, naleznete v tématu [použití spravované identity pro prostředky Azure na Virtuálním počítači Azure získat přístupový token ](how-to-use-vm-token.md).
 
-### <a name="what-is-the-security-boundary-of-a-managed-service-identity"></a>Co je hranice zabezpečení Identita spravované služby?
+### <a name="what-is-the-security-boundary-of-managed-identities-for-azure-resources"></a>Co je hranice zabezpečení spravovaných identit pro prostředky Azure?
 
-Hranice zabezpečení identity je prostředek, ke kterému je připojený. Například hranice zabezpečení pro virtuální počítač MSI, je virtuální počítač. Jakýkoli kód spuštěn na tomto virtuálním počítači, je možné volat koncový bod MSI a požádat o tokeny. Je podobné prostředí s další prostředky, které podporují MSI.
+Hranice zabezpečení identity je prostředek, ke kterému je připojený. Například hranice zabezpečení pro virtuální počítač se spravovaným identitám pro prostředky Azure povolena, je virtuální počítač. Jakýkoli kód spuštěn na tomto virtuálním počítači, je možné volat koncový bod a žádosti o tokeny spravovaných identit pro prostředky Azure. Je podobné prostředí s další prostředky, které podporují spravované identity pro prostředky Azure.
 
-### <a name="should-i-use-the-msi-vm-imds-endpoint-or-the-msi-vm-extension-endpoint"></a>Můžu použít koncový bod IMDS MSI virtuálního počítače nebo koncový bod rozšíření MSI virtuálního počítače?
+### <a name="should-i-use-the-managed-identities-for-azure-resources-vm-imds-endpoint-or-the-vm-extension-endpoint"></a>Použít spravované identity pro koncový bod virtuálního počítače IMDS prostředků Azure nebo koncového bodu virtuálního počítače rozšíření?
 
-Pokud používáte MSI virtuálních počítačů, doporučujeme pomocí MSI IMDS koncového bodu. Služba Azure Instance Metadata je koncový bod REST, která je přístupná pro všechny virtuální počítače IaaS vytvořené prostřednictvím Azure Resource Manageru. Zde jsou některé z výhod pomocí MSI přes IMDS:
+Při použití spravované identity pro prostředky Azure s virtuálními počítači, doporučujeme pomocí spravované identity pro koncový bod IMDS prostředků Azure. Služba Azure Instance Metadata je koncový bod REST, která je přístupná pro všechny virtuální počítače IaaS vytvořené prostřednictvím Azure Resource Manageru. Mezi výhody použití spravované identity pro prostředky Azure prostřednictvím IMDS patří:
 
-1. Všechny operační systémy podporované IaaS s nástrojem Azure můžete použít MSI přes IMDS. 
-2. Už nemusíte instalovat rozšíření na vašem virtuálním počítači povolit MSI. 
-3. Certifikáty používané službou MSI už nejsou k dispozici ve virtuálním počítači. 
+1. Všechny operační systémy podporované IaaS s nástrojem Azure můžete použít spravovaných identit pro prostředky Azure prostřednictvím IMDS. 
+2. Už nebude potřeba nainstalovat rozšíření na vašem virtuálním počítači povolit spravovaných identit pro prostředky Azure. 
+3. Certifikáty používané službou spravovaných identit pro prostředky Azure, už nejsou k dispozici ve virtuálním počítači. 
 4. Koncový bod IMDS je dobře známé nesměrovatelných IP adresu, k dispozici pouze z v rámci virtuálního počítače. 
 
-Rozšíření MSI virtuálního počítače je stále k dispozici pro použití dnes; ale v budoucnu jsme se ve výchozím nastavení pomocí IMDS koncového bodu. Rozšíření MSI virtuálního počítače se spustí na plánu vyřazení brzy. 
+Spravované identity pro prostředky Azure, které je stále k dispozici pro použití dnes; rozšíření virtuálního počítače ale v budoucnu jsme se ve výchozím nastavení pomocí IMDS koncového bodu. Spravované identity pro prostředky Azure, které rozšíření virtuálního počítače se spustí na zastarání plánování brzy. 
 
-Další informace o službě Metada Instance Azure, najdete v části [IMDS dokumentace](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
+Další informace o Azure Instance Metadata Service, najdete v části [IMDS dokumentace](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
 
 ### <a name="what-are-the-supported-linux-distributions"></a>Jaké jsou podporované distribuce systému Linux?
 
-Všechny Linuxových distribucí, které podporuje Azure IaaS je možné pomocí MSI přes koncový bod IMDS. 
+Všechny Linuxových distribucí, které podporuje Azure IaaS je možné pomocí spravované identity pro prostředky Azure prostřednictvím IMDS koncového bodu. 
 
-Poznámka: Rozšíření MSI virtuálního počítače se podporuje pouze následující distribucí systému Linux:
+Poznámka: Spravované identity pro prostředky Azure rozšíření virtuálního počítače podporuje pouze následující distribucí systému Linux:
 - CoreOS Stable
 - CentOS 7.1
 - Red Hat 7.2
@@ -66,9 +66,9 @@ Poznámka: Rozšíření MSI virtuálního počítače se podporuje pouze násle
 
 Ostatní Linuxové distribuce nejsou aktuálně podporovány a rozšíření může selhat v nepodporované distribucích.
 
-Toto rozšíření funguje na CentOS 6.9. Nicméně z důvodu nedostatku systémové podpory v 6.9 rozšíření nespustí automaticky restartování Pokud došlo k chybě nebo zastavená. Restartuje po restartování virtuálního počítače. Rozšíření restartovat ručně, najdete v článku [jak je restartovat rozšíření MSI?](#how-do-you-restart-the-msi-extension)
+Toto rozšíření funguje na CentOS 6.9. Nicméně z důvodu nedostatku systémové podpory v 6.9 rozšíření nespustí automaticky restartování Pokud došlo k chybě nebo zastavená. Restartuje po restartování virtuálního počítače. Rozšíření restartovat ručně, najdete v článku [jak je restartovat spravované identity pro rozšíření prostředků Azure?](#how-do-you-restart-the-managed-identities-for-Azure-resources-extension)
 
-### <a name="how-do-you-restart-the-msi-extension"></a>Jak restartujete rozšíření MSI
+### <a name="how-do-you-restart-the-managed-identities-for-azure-resources-extension"></a>Jak je restartovat spravované identity pro rozšíření prostředků Azure?
 V některých verzích systému Linux a Windows Pokud rozšíření zastaví, následující rutiny můžou sloužit k ho restartovat ručně:
 
 ```powershell
@@ -81,31 +81,31 @@ Kde:
 
 ## <a name="known-issues"></a>Známé problémy
 
-### <a name="automation-script-fails-when-attempting-schema-export-for-msi-extension"></a>"Automatizační skript" selhání při pokusu o export schématu pro rozšíření MSI
+### <a name="automation-script-fails-when-attempting-schema-export-for-managed-identities-for-azure-resources-extension"></a>"Automatizační skript" selhání při pokusu o export schématu pro spravované identity pro rozšíření prostředků Azure
 
-Pokud identita spravované služby je povoleno na virtuálním počítači, se zobrazí následující chyba při pokusu o použití funkce "Skript automatizace" pro virtuální počítač nebo jeho skupina prostředků:
+Pokud spravovaných identit pro prostředky Azure je povoleno na virtuálním počítači, se zobrazí následující chyba při pokusu o použití funkce "Skript automatizace" pro virtuální počítač nebo jeho skupina prostředků:
 
-![Automatizační skript exportu došlo k chybě MSI](../managed-service-identity/media/msi-known-issues/automation-script-export-error.png)
+![Chyba při exportování spravovaných identit pro prostředky Azure automatizační skript](../managed-service-identity/media/msi-known-issues/automation-script-export-error.png)
 
-Rozšíření virtuálního počítače identitu spravované služby aktuálně nepodporuje možnost exportu schématem pro šablonu skupiny prostředků. V důsledku toho vygenerovanou šablonu nezobrazuje parametry konfigurace se povolit identitu spravované služby u daného prostředku. Tyto části můžete přidat ručně podle příkladů v [konfigurace virtuálních počítačů spravovaná identita služby s použitím šablony](qs-configure-template-windows-vm.md).
+Spravované identity pro rozšíření virtuálního počítače prostředků Azure v současné době nepodporuje možnost exportu schématem pro šablonu skupiny prostředků. Kvůli tomu že vygenerovaná šablona nezobrazuje parametry konfigurace, umožňuje spravovaným identitám pro prostředky Azure pro prostředek. Tyto části můžete přidat ručně podle příkladů v [konfigurace spravovaných identit pro prostředky Azure na Virtuálním počítači Azure pomocí šablony](qs-configure-template-windows-vm.md).
 
-Když funkce exportu schématu je k dispozici pro rozšíření MSI virtuálního počítače, objeví se v [export skupiny prostředků, obsahující rozšíření virtuálních počítačů](../../virtual-machines/extensions/export-templates.md#supported-virtual-machine-extensions).
+Když funkce exportu schématu je k dispozici pro spravované identity pro rozšíření virtuálního počítače Azure prostředky, objeví se v [export skupiny prostředků, obsahující rozšíření virtuálních počítačů](../../virtual-machines/extensions/export-templates.md#supported-virtual-machine-extensions).
 
 ### <a name="configuration-blade-does-not-appear-in-the-azure-portal"></a>Na webu Azure Portal se nezobrazí okno Konfigurace
 
-Pokud v okně Konfigurace virtuálního počítače není na vašem virtuálním počítači, pak MSI nebylo povoleno na portálu ve vaší oblasti ještě.  Zkuste to znovu později.  Můžete také povolit MSI pro virtuální počítač pomocí [PowerShell](qs-configure-powershell-windows-vm.md) nebo [rozhraní příkazového řádku Azure](qs-configure-cli-windows-vm.md).
+Pokud v okně Konfigurace virtuálního počítače není na vašem virtuálním počítači, pak spravovaných identit pro prostředky Azure není povolená na portálu ve vaší oblasti ještě.  Zkuste to znovu později.  Můžete také povolit spravovaných identit pro prostředky Azure pro virtuální počítač pomocí [PowerShell](qs-configure-powershell-windows-vm.md) nebo [rozhraní příkazového řádku Azure](qs-configure-cli-windows-vm.md).
 
 ### <a name="cannot-assign-access-to-virtual-machines-in-the-access-control-iam-blade"></a>Nelze přiřadit přístup k virtuálním počítačům v okně řízení přístupu (IAM)
 
-Pokud **virtuálního počítače** nezobrazí na portálu Azure portal jako volba pro **přiřadit přístup k** v **řízení přístupu (IAM)** > **přidat oprávnění**, pak se identita spravované služby na portálu ve vaší oblasti ještě nepovolil. Zkuste to znovu později.  Identita spravované služby pro přiřazení role můžete vybrat tak, že pro instanční objekt služby MSI.  Zadejte název virtuálního počítače v **vyberte** pole a objektu zabezpečení se zobrazí ve výsledcích hledání.
+Pokud **virtuálního počítače** nezobrazí na portálu Azure portal jako volba pro **přiřadit přístup k** v **řízení přístupu (IAM)** > **přidat oprávnění**, pak spravovaných identit pro prostředky Azure na portálu ve vaší oblasti ještě nepovolil. Zkuste to znovu později.  Stále můžete vybrat identitu pro přiřazení role virtuálního počítače tak, že spravovaných identit pro prostředky Azure instanční objekt služby.  Zadejte název virtuálního počítače v **vyberte** pole a objektu zabezpečení se zobrazí ve výsledcích hledání.
 
 ### <a name="vm-fails-to-start-after-being-moved-from-resource-group-or-subscription"></a>Virtuální počítač se nepodaří spustit po přesunutí ze skupiny prostředků nebo předplatného
 
-Při přesunutí virtuálního počítače v běžícím stavu, pokračuje se spustí během přechodu. Ale po přesunutí, pokud je virtuální počítač zastavit, restartovat, dojde k selhání spuštění. Tento problém nastane, protože virtuální počítač není aktualizace odkazu na identitu MSI a přejděte do původní skupiny prostředků i nadále.
+Při přesunutí virtuálního počítače v běžícím stavu, pokračuje se spustí během přechodu. Ale po přesunutí, pokud je virtuální počítač zastavit, restartovat, dojde k selhání spuštění. Tento problém nastane, protože virtuální počítač není aktualizace odkazu na spravované identity pro identitu prostředků Azure a přejděte do původní skupiny prostředků i nadále.
 
 **Alternativní řešení** 
  
-Aktualizace na virtuálním počítači aktivujte, takže ho můžete získat správné hodnoty pro soubor MSI. Můžete provést změnu vlastnosti virtuálního počítače aktualizovat odkaz na identitu MSI. Například můžete nastavit hodnotu nové značky na virtuálním počítači pomocí následujícího příkazu:
+Aktualizace na virtuálním počítači aktivujte, takže ho můžete získat správné hodnoty pro spravované identity pro prostředky Azure. Můžete provést změnu vlastnosti virtuálního počítače aktualizovat odkaz na spravované identity pro identitu prostředků Azure. Například můžete nastavit hodnotu nové značky na virtuálním počítači pomocí následujícího příkazu:
 
 ```azurecli-interactive
  az  vm update -n <VM Name> -g <Resource Group> --set tags.fixVM=1
@@ -113,7 +113,7 @@ Aktualizace na virtuálním počítači aktivujte, takže ho můžete získat sp
  
 Tento příkaz nastaví nová značka "fixVM" s hodnotou 1 na virtuálním počítači. 
  
-Nastavením této vlastnosti virtuálního počítače aktualizuje správný identifikátor URI prostředku MSI a pak by měl být schopni spustit virtuální počítač. 
+Nastavením této vlastnosti virtuálního počítače aktualizuje správné spravovaných identit pro identifikátor URI prostředku prostředků Azure a pak by měl být schopni spustit virtuální počítač. 
  
 Po spuštění virtuálního počítače značku je možné odebrat pomocí následující příkaz:
 
@@ -121,16 +121,16 @@ Po spuštění virtuálního počítače značku je možné odebrat pomocí nás
 az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
 ```
 
-## <a name="known-issues-with-user-assigned-identities"></a>Známé problémy s přiřazené identity uživatele
+## <a name="known-issues-with-user-assigned-identities"></a>Známé problémy s uživatelsky přiřazené identity
 
-- Přiřazení Identity přiřazené uživateli jsou pouze dostupné pro virtuální počítač a VMSS. Důležité: Přiřazení Identity přiřazené uživatele se změní v nadcházejících měsících.
-- Duplicitní přiřazené identity uživatelů u stejného počítače/škálovací sady, způsobí, že VM/VMSS selhání. Jedná se o identitách, které jsou přidány s jinou velikostí písmen. například MyUserAssignedIdentity a myuserassignedidentity. 
+- přiřazení uživatelsky přiřazené Identity jsou dostupné jenom pro virtuální počítač a VMSS. Důležité: uživatelsky přiřazené Identity přiřazení se změní v nadcházejících měsících.
+- Duplicitní uživatelsky přiřazené identity na stejný počítač nebo škálovací sada způsobí, že VM/VMSS selhání. Jedná se o identitách, které jsou přidány s jinou velikostí písmen. například MyUserAssignedIdentity a myuserassignedidentity. 
 - Zřizování rozšíření virtuálního počítače k virtuálnímu počítači může selhat z důvodu chyby vyhledávání DNS. Restartujte virtuální počítač a zkuste to znovu. 
-- Přidání identity přiřazené uživateli 'neexistuje' způsobí, že virtuální počítač selže. 
-- Vytvoření uživatele identity se speciálními znaky (třeba podtržítko) v názvu přiřazené, se nepodporuje.
-- Názvy identity přiřazené uživateli jsou omezeny na 24 znaků pro komplexní scénáře. Přiřazení se nezdaří přiřazeno identit uživatelů s názvy delší než 24 znaků.
-- Pokud používáte rozšíření virtuálního počítače spravovanou identitu, je podporovaný limit 32 spravovaných identit přiřazených uživateli. Bez přípon spravovanou identitu virtuálního počítače je podporovaný limit 512.  
-- Po přidání druhého uživatele přiřazení identity clientID nemusí být k dispozici na žádosti o tokeny pro rozšíření virtuálního počítače. Jako omezení rizik restartujte rozšíření MSI virtuálního počítače pomocí následujících příkazů prostředí bash dvě:
+- Přidání 'neexistuje' uživatelsky přiřazené identity způsobí, že virtuální počítač selže. 
+- Vytváření uživatelsky přiřazené identity se speciálními znaky (třeba podtržítko) v názvu, se nepodporuje.
+- názvy uživatelsky přiřazené identity jsou omezeny na 24 znaků pro komplexní scénáře. přiřazení se nezdaří uživatelsky přiřazené identity s názvy delší než 24 znaků.
+- Pokud používáte rozšíření virtuálního počítače spravovanou identitu, je podporovaný limit 32 spravované uživatelsky přiřazené identity. Bez přípon spravovanou identitu virtuálního počítače je podporovaný limit 512.  
+- Při přidávání druhý uživatelsky přiřazené identity, clientID nemusí být k dispozici pro žádosti o tokeny pro rozšíření virtuálního počítače. Jako omezení rizik restartujte spravovaných identit pro prostředky Azure rozšíření virtuálního počítače pomocí následujících příkazů prostředí bash dvě:
  - `sudo bash -c "/var/lib/waagent/Microsoft.ManagedIdentity.ManagedIdentityExtensionForLinux-1.0.0.8/msi-extension-handler disable"`
  - `sudo bash -c "/var/lib/waagent/Microsoft.ManagedIdentity.ManagedIdentityExtensionForLinux-1.0.0.8/msi-extension-handler enable"`
-- Pokud má virtuální počítač identity přiřazené uživateli, ale žádné identitu přiřazenou systémem, uživatelské rozhraní vám portál zobrazí MSI jako zakázané. Pokud chcete povolit identitu přiřazenou systémem, pomocí šablony Azure Resource Manageru, Azure CLI nebo sady SDK.
+- Pokud má virtuální počítač uživatelsky přiřazené identity, ale žádné přiřazené systému identit, spravovat na portálu, který se zobrazí uživatelské rozhraní identit pro prostředky Azure jako zakázané. Povolit systém přiřadil identity, použijte šablonu Azure Resource Manageru, Azure CLI nebo sady SDK.

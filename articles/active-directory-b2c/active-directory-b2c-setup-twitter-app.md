@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/09/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: bf5ae39d83fd021775fbd18cf23d2e6b9078e748
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 6d8e9245e95c08aad69cd05f338b6260e554469b
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37927892"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43337786"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-twitter-account-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení pomocí účtu Twitteru pomocí Azure Active Directory B2C
 
@@ -26,7 +26,7 @@ Použití účtu na Twitteru jako zprostředkovatele identity v Azure Active Dir
 1. Přihlaste se k [Twitteru aplikace](https://apps.twitter.com/) pomocí svých přihlašovacích údajů Twitter.
 2. Vyberte **vytvořte novou aplikaci**.
 3. Zadejte **název**, **popis**, a **webu**.
-4. Zadejte `https://login.microsoftonline.com/te/{tenant}/{policyId}/oauth1/authresp` v **adresy URL zpětného volání**. Nahraďte **{klient}** s názvem vašeho tenanta (například contosob2c.onmicrosoft.com) a **{policyId}** se svým ID zásad (například b2c_1_policy). Měli byste přidat adresu URL zpětného volání pro všechny zásady, které se pomocí účtu sítě Twitter. Ujistěte se, že používáte `b2clogin.com` místo ` login.microsoftonline.com` Pokud používáte ho ve vaší aplikaci.
+4. Zadejte `https://{tenant}.b2clogin.com/te/{tenant}.onmicrosoft.com/{policyId}/oauth1/authresp` v **adresy URL zpětného volání**. Nahraďte **{klient}** s názvem vašeho tenanta (například contosob2c) a **{policyId}** se svým ID zásad (například b2c_1_policy). Měli byste přidat adresu URL zpětného volání pro všechny zásady, které se pomocí účtu sítě Twitter. 
 5. Souhlas **smlouva k vývojářským** a vyberte **vytvoření aplikace Twitter**.
 7. Vyberte **klíče a přístupové tokeny** kartu.
 8. Zkopírujte hodnotu **uživatelský klíč** a **uživatelský tajný klíč**. Je nutné jejich konfigurace účtu na Twitteru jako zprostředkovatele identity ve vašem tenantovi.

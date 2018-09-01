@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/27/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 70d3a19b715052fe658102929a1c29cf3db2d595
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: e09ad89f3225af9de40781fafc022c8326f80619
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37443714"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43338634"
 ---
 # <a name="azure-active-directory-b2c-sign-in-using-azure-ad-accounts-through-a-built-in-policy"></a>Azure Active Directory B2C: Přihlaste se pomocí účtů služby Azure AD prostřednictvím předdefinovaných zásad
 
@@ -37,13 +37,13 @@ Povolit přihlášení pro uživatele z konkrétní organizace služby Azure AD,
 1. Vyberte **Registrace nové aplikace**.
 1. Zadejte název pro vaši aplikaci (například `Azure AD B2C App`).
 1. Jako typ aplikace vyberte položku **Webová aplikace / webové rozhraní API**.
-1. Pro **přihlašovací adresa URL**, zadejte následující adresu URL, kde `yourtenant` se nahradí názvem vašeho tenanta Azure AD B2C (`fabrikamb2c.onmicrosoft.com`):
+1. Pro **přihlašovací adresa URL**, zadejte následující adresu URL, kde `yourtenant` se nahradí názvem vašeho tenanta Azure AD B2C (`fabrikamb2c`):
 
     >[!NOTE]
     >Hodnota pro "yourtenant" musí být malými písmeny v **přihlašovací adresa URL**.
 
     ```Console
-    https://login.microsoftonline.com/te/yourtenant.onmicrosoft.com/oauth2/authresp
+    https://yourtenant.b2clogin.com/te/yourtenant.onmicrosoft.com/oauth2/authresp
     ```
 
 1. Uložení ID aplikace, kterou použijete v další části jako ID klienta.

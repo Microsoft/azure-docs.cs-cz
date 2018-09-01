@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 19b7f708d43907ac45450a64f988b2a517293511
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: f076a906ba38e6c8e8c9530baba1607553b41ea6
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446703"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43338324"
 ---
 # <a name="azure-active-directory-b2c-add-google-as-an-oauth2-identity-provider-using-custom-policies"></a>Azure Active Directory B2C: Přidání Google + jako zprostředkovatele identity OAuth2 pomocí vlastních zásad
 
@@ -78,7 +78,7 @@ Pokud chcete používat Google + jako zprostředkovatele identity v Azure Active
 
     ![Google + – výběr typu aplikace](media/active-directory-b2c-custom-setup-goog-idp/goog-web-app.png)
 
-13.  Zadejte **název** pro vaši aplikaci, zadejte `https://login.microsoftonline.com` v **oprávnění JavaScript zdroje** pole, a `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` v **identifikátory URI pro přesměrování autorizovaní** pole. Nahraďte **{klient}** s názvem vašeho tenanta (například contosob2c.onmicrosoft.com). **{Klient}** hodnota je velká a malá písmena. Klikněte na možnost **Vytvořit**.
+13.  Zadejte **název** pro vaši aplikaci, zadejte `https://{tenant}.b2clogin.com` v **oprávnění JavaScript zdroje** pole, a `https://{tenant}.b2clogin.com/te/{tenant}.onmicrosoft.com/oauth2/authresp` v **identifikátory URI pro přesměrování autorizovaní** pole. Nahraďte **{klient}** s názvem vašeho tenanta (například contosob2c). **{Klient}** hodnota je velká a malá písmena. Klikněte na možnost **Vytvořit**.
 
     ![Google +. - zadat oprávnění JavaScript zdroje a identifikátory URI pro přesměrování](media/active-directory-b2c-custom-setup-goog-idp/goog-create-client-id.png)
 

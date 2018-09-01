@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/29/2018
 ms.topic: conceptual
-ms.openlocfilehash: 5c05f2617025d5cb4f1328f04c8d71049e1efcc7
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: a983c7307308534140ab8999593ac4c8c6992a42
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284771"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43338502"
 ---
 # <a name="implement-the-device-model-behavior"></a>Implementace chování modelu zařízení
 
@@ -41,7 +41,7 @@ Tento článek popisuje jak definovat chování modelu vlastní simulované zař
 > * Definujte, jak Simulovaná zařízení reaguje na volání metody v řešení vzdáleného monitorování
 > * Ladění skriptů
 
-Teď, když jste zjistili, jak můžete určit chování Simulovaná zařízení, navrhované dalším krokem je další způsob [vytvoření simulovaného zařízení](iot-accelerators-remote-monitoring-test.md).
+Teď, když jste zjistili, jak můžete určit chování Simulovaná zařízení, navrhované dalším krokem je další způsob [vytvoření simulovaného zařízení](iot-accelerators-remote-monitoring-create-simulated-device.md).
 
 Další informace pro vývojáře o řešení vzdáleného monitorování najdete v tématu:
 

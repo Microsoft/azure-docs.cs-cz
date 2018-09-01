@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 08/24/2018
 ms.author: mahender,cephalin
-ms.openlocfilehash: 9b4e86e719998c5f19a70734480356bcb98b8d2f
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 46f8602583329a0516edb9af59e53754ca349555
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42888096"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43336800"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Ověřování a autorizace v prostředí Azure App Service
 
@@ -135,7 +135,7 @@ S touto možností nemusíte psát jakýkoli kód ověřování ve vaší aplika
 
 Tato možnost není **povolit anonymní požadavky**. Tato možnost zapne ověřování a autorizace ve službě App Service, ale odloží rozhodování o autorizaci ke kódu aplikace. U ověřených požadavků služby App Service také předá informace o ověřování v hlavičkách protokolu HTTP. 
 
-Tato možnost poskytuje větší flexibilitu při zpracování anonymních požadavků. Například umožňuje [k dispozici více možností přihlášení](app-service-authentication-how-to.md#configure-multiple-sign-in-options) vašim uživatelům. Ale budete muset psát kód. 
+Tato možnost poskytuje větší flexibilitu při zpracování anonymních požadavků. Například umožňuje [k dispozici více zprostředkovatelů přihlášení](app-service-authentication-how-to.md#use-multiple-sign-in-providers) vašim uživatelům. Ale musíte napsat kód. 
 
 ## <a name="more-resources"></a>Další zdroje informací
 

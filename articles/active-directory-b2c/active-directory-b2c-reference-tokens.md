@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 46e4956aa145aa082de86191ede4adaf9a43fca9
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: 5ff4ddee3d8af15caf082be56a51b1aa0d36f02a
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39309022"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43339973"
 ---
 # <a name="azure-ad-b2c-token-reference"></a>Azure AD B2C: Referenci tokenu
 
@@ -34,7 +34,7 @@ Další důležité informace o zabezpečení na nosné tokeny, naleznete v tém
 
 Mnohé z tokenů, které problémy s Azure AD B2C jsou implementovány jako webové tokeny JSON (Jwt). Token JWT je compact, adresa URL typově bezpečný způsob přenosu informací mezi dvěma stranami. Tokeny Jwt obsahují informace, označované jako deklarace identity. Toto jsou kontrolní výrazy s informací o nositele a předmětem token. Deklarace identity v tokeny Jwt jsou objekty JSON, které jsou zakódovány a serializovat pro přenos. Protože tokeny Jwt vydaného Azure AD B2C jsou podepsané, nikoli však šifrován, můžete snadno kontrolovat obsah token JWT pro ladění. K dispozici několik nástrojů, které můžete udělat, včetně [jwt.ms](https://jwt.ms). Další informace o tokeny Jwt [JWT specifikace](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html).
 
-### <a name="id-tokens"></a>Tokeny typu ID
+### <a name="id-tokens"></a>Tokeny ID
 
 ID tokenu je forma token zabezpečení, který vaše aplikace obdrží z Azure AD B2C `/authorize` a `/token` koncových bodů. ID tokeny jsou reprezentovány ve formě [tokeny Jwt](#types-of-tokens), a které obsahují deklarace identity, které můžete použít k identifikaci uživatelů ve vaší aplikaci. Když jsou tokeny typu ID získaných z `/authorize` koncového bodu, se provádí pomocí [implicitní tok](active-directory-b2c-reference-spa.md), což se často používá pro uživatele, na které se přihlašujete do jazyka javasript na základě webové aplikace. Když jsou tokeny typu ID získaných z `/token` koncového bodu, se provádí pomocí [toku kódu](active-directory-b2c-reference-oidc.md), který udržuje token skryté z prohlížeče. To umožňuje token, který má být odeslány bezpečně v požadavcích HTTP pro komunikaci mezi dvě komponenty stejné aplikace nebo služby. Deklarace identity v tokenu ID můžete použít podle svých potřeb. Běžně se používají k zobrazení informací o účtu nebo je rozhodnutí o řízení přístupu v aplikaci.  
 
@@ -73,7 +73,7 @@ Všimněte si, že deklarace identity v tokenech ID nebudou zobrazeny v libovoln
 | Název | Deklarovat | Příklad hodnoty | Popis |
 | --- | --- | --- | --- |
 | Cílová skupina |`aud` |`90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` |Deklaraci identity cílové skupiny identifikuje zamýšlený příjemce tokenu. Pro Azure AD B2C cílová skupina je ID aplikace vaší aplikace, protože přiřazené vaší aplikaci v portálu pro registraci aplikace. Vaše aplikace by měl ověřit tuto hodnotu a odmítnout token, pokud neodpovídá. Cílové skupiny je synonymní s prostředkem. |
-| Vystavitel |`iss` |`https://login.microsoftonline.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` |Tato deklarace identity označuje službu tokenů zabezpečení (STS), který vytvoří a vrátí token. Také určuje adresář Azure AD, ve kterém byl uživatel ověřený. Vaše aplikace by měla ověření vystavitele deklarace identity k zajištění, že token pochází z koncového bodu Azure Active Directory v2.0. |
+| Vystavitel |`iss` |`https://{tenantname}.b2clogin.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` |Tato deklarace identity označuje službu tokenů zabezpečení (STS), který vytvoří a vrátí token. Také určuje adresář Azure AD, ve kterém byl uživatel ověřený. Vaše aplikace by měla ověření vystavitele deklarace identity k zajištění, že token pochází z koncového bodu Azure Active Directory v2.0. |
 | Vystaveno |`iat` |`1438535543` |Tato deklarace identity je čas, kdy byl vydán token, v unixovém čase. |
 | Čas vypršení platnosti |`exp` |`1438539443` |Čas vypršení platnosti, které deklarace identity je doba, jakou token, který se stane neplatným, vyjádřena v unixovém čase. Vaše aplikace by pomocí této deklarace identity k ověření platnosti dobu životnosti tokenu. |
 | Neplatný před |`nbf` |`1438535543` |Tato deklarace identity je doba, jakou bude token platný, zastoupené v unixovém čase. To je obvykle stejná jako čas, kdy byl token vydán. Vaše aplikace by pomocí této deklarace identity k ověření platnosti dobu životnosti tokenu. |
@@ -120,7 +120,7 @@ V každém okamžiku Azure AD se můžete přihlásit token pomocí některého 
 Azure AD B2C má koncový bod metadat OpenID Connect. To umožňuje aplikacím načítat informace o Azure AD B2C v době běhu. Tyto informace zahrnují koncových bodů, obsah tokenu a tokenu podpisových klíčů. Váš adresář B2C obsahuje dokument metadat JSON pro jednotlivé zásady. Například dokument metadat pro `b2c_1_sign_in` zásad v `fabrikamb2c.onmicrosoft.com` se nachází na:
 
 ```
-https://login.microsoftonline.com/fabrikamb2c.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=b2c_1_sign_in
+https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=b2c_1_sign_in
 ```
 
 `fabrikamb2c.onmicrosoft.com` je adresář B2C používá k ověření uživatele, a `b2c_1_sign_in` jsou zásady použité k získání tokenu. Chcete-li zjistit, jaké zásady se použil k podepsání token (a kde lze načíst metadata), máte dvě možnosti. Nejprve je součástí názvu zásady `acr` deklarací identity v tokenu. Deklarace mimo tělo tokenů JWT můžete analyzovat podle base-64 dekódování text a deserializaci řetězec JSON, který výsledky. `acr` Deklarací identity bude název zásady, která byla použita k vydání tokenu.  Další možností je určený ke kódování zásady v hodnotě `state` parametr vydávat žádosti, a pak ji k určení, jaké zásady se použil dekódovat. Některé z metod je platný.
@@ -128,7 +128,7 @@ https://login.microsoftonline.com/fabrikamb2c.onmicrosoft.com/v2.0/.well-known/o
 Dokument metadat je objekt JSON, který obsahuje několik užitečné údaje. Patří mezi ně umístění koncových bodů potřebná k provedení ověřování OpenID Connect. Zahrnují taky, že `jwks_uri`, což dává umístění sady veřejných klíčů, které se používají k podepisování tokenů. Umístění je k dispozici zde, že je nejvhodnější se dynamicky načíst umístění pomocí dokument metadat a analýze si `jwks_uri`:
 
 ```
-https://login.microsoftonline.com/fabrikamb2c.onmicrosoft.com/discovery/v2.0/keys?p=b2c_1_sign_in
+https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/discovery/v2.0/keys?p=b2c_1_sign_in
 ```
 
 Dokument JSON umístěný na této adrese URL obsahuje všechny údaje o veřejném klíči používá v určitém okamžiku. Vaše aplikace může používat `kid` deklarací identity v hlavičce tokenů JWT můžete vybrat v dokumentu JSON, který se používá k podepsání konkrétní token veřejného klíče. Ověření podpisu je pak můžete provádět pomocí správný veřejný klíč a označený algoritmus.
@@ -150,7 +150,7 @@ Ještě své znalosti v oblasti jsou k dispozici následující životností tok
 
 | Podpisový | Doba života | Popis |
 | --- | --- | --- |
-| Tokeny typu ID |Jedna hodina |Tokeny typu ID jsou obvykle platné hodiny. Webové aplikace můžete udržovat svůj vlastní relace s uživateli (doporučeno) tohoto životního cyklu. Můžete také na celý život jiné relaci. Jestli vaše aplikace musí získat nové ID tokenu, jednoduše je potřeba vytvořit novou žádost o přihlášení do služby Azure AD. Pokud má uživatel platné prohlížeče relace s Azure AD, tento uživatel nemusí muset znovu zadat přihlašovací údaje. |
+| Tokeny ID |Jedna hodina |Tokeny typu ID jsou obvykle platné hodiny. Webové aplikace můžete udržovat svůj vlastní relace s uživateli (doporučeno) tohoto životního cyklu. Můžete také na celý život jiné relaci. Jestli vaše aplikace musí získat nové ID tokenu, jednoduše je potřeba vytvořit novou žádost o přihlášení do služby Azure AD. Pokud má uživatel platné prohlížeče relace s Azure AD, tento uživatel nemusí muset znovu zadat přihlašovací údaje. |
 | Obnovovacích tokenů |Až do 14 dnů |Jedno aktualizační token je platný pro maximálně 14 dnů. Token obnovení však mohou stát neplatnými kdykoli z několika důvodů. Vaše aplikace by měla pokračovat se pokouší použít obnovovací token, dokud žádost selže, nebo aplikace nahradí nový token obnovení. Obnovovací token se také mohou stát neplatnými, pokud od poslední zadání přihlašovacích údajů uplynulo 90 dnů. |
 | Autorizační kódy |Pět minut |Autorizační kódy jsou záměrně krátkodobou. Se musí uplatnit okamžitě pro přístupové tokeny, tokeny typu ID nebo obnovovací tokeny při příjmu. |
 

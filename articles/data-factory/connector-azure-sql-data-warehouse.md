@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 3c447a37b1dfbdac2c6e2a4eaa61d0e0e08a2176
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: f444c75fb7a7bcd96a508fed337dfc32adccf665
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42442235"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43339011"
 ---
 #  <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Kopírování dat do nebo z Azure SQL Data Warehouse pomocí Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
@@ -401,13 +401,14 @@ SQL Data Warehouse PolyBase přímo podporuje objektů Blob v Azure a Azure Data
 Pokud požadavky nejsou splněny, Azure Data Factory zkontroluje nastavení a automaticky přejde zpět k hromadné vložení mechanismus pro přesun dat.
 
 1. **Zdroj propojená služba** je typ úložiště objektů Blob v Azure (**službě Azure BLOB Storage**/**AzureStorage**) ověření pomocí klíče účtu nebo Azure Data Lake Úložiště Gen1 (**AzureDataLakeStore**) s ověřování instančních objektů.
-1. **Vstupní datová sada** typ je **AzureBlob** nebo **AzureDataLakeStoreFile**. Typ formátu podle `type` vlastnosti je **OrcFormat**, **ParquetFormat**, nebo **TextFormat**, s následující konfigurací:
+2. **Vstupní datová sada** typ je **AzureBlob** nebo **AzureDataLakeStoreFile**. Typ formátu podle `type` vlastnosti je **OrcFormat**, **ParquetFormat**, nebo **TextFormat**, s následující konfigurací:
 
-   1. `rowDelimiter` musí být **\n**.
-   1. `nullValue` je buď nastavit na **prázdný řetězec** ("") nebo jako výchozí, vlevo a `treatEmptyAsNull` není nastaven na hodnotu false.
-   1. `encodingName` je nastavena na **utf-8**, což je výchozí hodnota.
-   1. `escapeChar`, `quoteChar` a `skipLineCount` nejsou zadány. Podpora technologie PolyBase přeskočit řádek záhlaví, které se dají konfigurovat jako `firstRowAsHeader` ve službě ADF.
-   1. `compression` může být **bez komprese**, **GZip**, nebo **Deflate**.
+   1. `fileName` neobsahuje filtr zástupných znaků.
+   2. `rowDelimiter` musí být **\n**.
+   3. `nullValue` je buď nastavit na **prázdný řetězec** ("") nebo jako výchozí, vlevo a `treatEmptyAsNull` není nastaven na hodnotu false.
+   4. `encodingName` je nastavena na **utf-8**, což je výchozí hodnota.
+   5. `escapeChar`, `quoteChar` a `skipLineCount` nejsou zadány. Podpora technologie PolyBase přeskočit řádek záhlaví, které se dají konfigurovat jako `firstRowAsHeader` ve službě ADF.
+   6. `compression` může být **bez komprese**, **GZip**, nebo **Deflate**.
 
     ```json
     "typeProperties": {

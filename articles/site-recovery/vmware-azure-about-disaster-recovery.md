@@ -3,14 +3,16 @@ title: Informace o zotavení po havárii virtuálních počítačů VMware do Az
 description: Tento článek poskytuje přehled o zotavení po havárii virtuálních počítačů VMware do Azure pomocí služby Azure Site Recovery.
 author: rayne-wiselman
 ms.service: site-recovery
+ms.topic: conceptual
+services: site-recovery
 ms.date: 08/29/2018
 ms.author: raynew
-ms.openlocfilehash: 22036ff6141b5892a8ba100893d3037f51e19af5
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 105ad94b442790c82af0f6b9533f195d93c5cd1d
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43288700"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43339145"
 ---
 # <a name="about-disaster-recovery-of-vmware-vms-to-azure"></a>Informace o zotavení po havárii virtuálních počítačů VMware do Azure
 

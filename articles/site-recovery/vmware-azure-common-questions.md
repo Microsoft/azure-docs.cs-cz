@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.date: 07/19/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: e8d30ae6cde7c787f1aa950506e0eb74bac0c12d
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: fe20cae4c316462e3af3f0a5e7e6052f6ba5719d
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238804"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344419"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Časté otázky – VMware pro replikaci Azure
 
@@ -45,7 +45,7 @@ Pokud si nejste správce předplatného, máte oprávnění replikace, které po
 
 
 
-## <a name="on-premises"></a>Lokálně 
+## <a name="on-premises"></a>Lokálně
 
 ### <a name="what-do-i-need-on-premises"></a>K čemu potřebuji místní?
 Na místním potřebujete součásti Site Recovery nainstalovaná na jeden virtuální počítač VMware. Budete potřebovat infrastrukturu VMware s minimálně jednoho hostitele ESXi, a doporučujeme použít vCenter server. Kromě toho budete potřebovat jeden nebo více virtuálních počítačů VMware pro replikaci. [Další informace](vmware-azure-architecture.md) o replikaci z VMware do Azure architektury.
@@ -72,7 +72,7 @@ Ano, je možné replikovat virtuální počítače Azure ExpressRoute. Site Reco
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>Proč se můžu replikovat přes síť VPN?
 
-Při replikaci do Azure, provoz replikace dosáhne veřejné koncové body účtu úložiště Azure, proto vám můžou replikovat jenom přes veřejný internet s ExpressRoute (veřejný partnerský vztah) a VPN nebude fungovat. 
+Při replikaci do Azure, provoz replikace dosáhne veřejné koncové body účtu úložiště Azure, proto vám můžou replikovat jenom přes veřejný internet s ExpressRoute (veřejný partnerský vztah) a VPN nebude fungovat.
 
 
 
@@ -90,7 +90,7 @@ Rozšířená nebo zřetězená replikace není podporována. Žádost o tuto fu
 Toto není podporováno. Žádost o tuto funkci [fóru pro zpětnou vazbu](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from).
 
 ### <a name="can-i-exclude-disks"></a>Vyloučení disků
-Ano, můžete vyloučit disky z replikace. 
+Ano, můžete vyloučit disky z replikace.
 
 ### <a name="can-i-replicate-vms-with-dynamic-disks"></a>Můžete replikovat virtuální počítače s dynamickými disky?
 Dynamické disky se dají replikovat. Disk s operačním systémem musí být základní disk.
@@ -105,7 +105,7 @@ Pro replikaci VMware do Azure můžete upravit velikost disku. Pokud chcete při
 ## <a name="configuration-server"></a>Konfigurační server
 
 ### <a name="what-does-the-configuration-server-do"></a>Co dělá konfiguračního serveru?
-Konfigurační server běží v místním součásti Site Recovery, včetně: 
+Konfigurační server běží v místním součásti Site Recovery, včetně:
 - Konfigurační server koordinuje komunikaci mezi místním a Azure a spravuje replikaci dat.
 - Procesový server, který funguje jako replikační brána. Přijímá data replikace; optimalizuje je pomocí ukládání do mezipaměti, komprese a šifrování. a odešle ho do úložiště Azure., že procesový server na virtuálních počítačích, které chcete replikovat a provádí automatické zjišťování virtuálních počítačů VMware v místním také nainstaluje službu Mobility.
 - Hlavní cílový server zpracovává replikační data během navrácení služeb po obnovení z Azure.
@@ -118,13 +118,13 @@ Potřebujete jeden vysoce dostupný místní VMware virtuálního počítače pr
 Zkontrolujte [požadavky](vmware-azure-deploy-configuration-server.md#prerequisites).
 
 ### <a name="can-i-manually-set-up-the-configuration-server-instead-of-using-a-template"></a>Můžete ručně nastavit konfigurační server, namísto použití šablony?
-Doporučujeme používat nejnovější verzi šablony OVF pro [vytvoření virtuálního počítače konfiguračního serveru](vmware-azure-deploy-configuration-server.md). Pokud z nějakého důvodu nemůžete, například nemáte přístup k serveru VMware, můžete si [stáhnout soubor sjednocené instalace](physical-azure-set-up-source.md) z portálu, a spusťte na virtuálním počítači. 
+Doporučujeme používat nejnovější verzi šablony OVF pro [vytvoření virtuálního počítače konfiguračního serveru](vmware-azure-deploy-configuration-server.md). Pokud z nějakého důvodu nemůžete, například nemáte přístup k serveru VMware, můžete si [stáhnout soubor sjednocené instalace](physical-azure-set-up-source.md) z portálu, a spusťte na virtuálním počítači.
 
 ### <a name="can-a-configuration-server-replicate-to-more-than-one-region"></a>Konfigurační server možná replikace do více než jedné oblasti?
 Ne. K tomu potřeba nastavit konfigurační server v jednotlivých oblastech.
 
 ### <a name="can-i-host-a-configuration-server-in-azure"></a>Můžete hostovat konfigurační server v Azure?
-Při nejbližším virtuálnímu počítači Azure s konfiguračního serveru potřebuje komunikovat s virtuálními počítači a na místní infrastrukturu VMware. Režie pravděpodobně není přijatelné.
+Při nejbližším virtuálnímu počítači Azure s konfiguračního serveru potřebuje komunikovat s virtuálními počítači a na místní infrastrukturu VMware. Může přidat latenci a mít vliv na probíhající replikaci.
 
 
 ### <a name="where-can-i-get-the-latest-version-of-the-configuration-server-template"></a>Kde lze získat nejnovější verzi šablona konfiguračního serveru?
@@ -132,6 +132,9 @@ Stáhněte si nejnovější verzi z [Microsoft Download Center](https://aka.ms/a
 
 ### <a name="how-do-i-update-the-configuration-server"></a>Jak můžu aktualizovat konfigurační server?
 Instalaci kumulativní aktualizace. Můžete najít informace o nejnovější aktualizaci v [aktualizace wikistránka](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx).
+
+### <a name="should-i-backup-the-deployed-configuration-server"></a>Můžu zálohovat nasazené konfiguračního serveru?
+Doporučujeme pravidelných naplánovaných záloh konfiguračního serveru. Úspěšné navrácení služeb po obnovení se při navrácení služeb obnoví virtuální počítač musí existovat v databázi konfigurací serveru a konfiguračního serveru musí být spuštěn a v připojeném stavu. Další informace o běžných úloh správy serveru konfigurace [tady](vmware-azure-manage-configuration-server.md).
 
 ## <a name="mobility-service"></a>Služba Mobility
 
@@ -191,7 +194,7 @@ Ano, pokud převzetí služeb při selhání do Azure, můžete navrátit služb
 
 ### <a name="why-do-i-need-a-vpn-or-expressroute-to-fail-back"></a>Proč potřebuji síť VPN nebo ExpressRoute k navrácení služeb po obnovení?
 
-Když převezmete služby zpět z Azure, se kopírují data z Azure zpět na vaše místní virtuální počítač a soukromý přístup je povinný. 
+Když převezmete služby zpět z Azure, se kopírují data z Azure zpět na vaše místní virtuální počítač a soukromý přístup je povinný.
 
 
 

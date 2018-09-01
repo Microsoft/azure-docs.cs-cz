@@ -13,18 +13,20 @@ ms.component: pim
 ms.date: 08/27/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 20a704a0d5b61134a61b5cbf02a1c71dbc7039e1
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 8af304d28be9b0884a50d60911d901818b514752
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189333"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43338903"
 ---
 # <a name="configure-azure-ad-directory-role-settings-in-pim"></a>Konfigurace nastavení role adresáře Azure AD v PIM
 
 Správce privilegovaných rolí, odkud můžete přizpůsobit Azure AD Privileged Identity Management (PIM) ve své organizaci, včetně změnou prostředí pro uživatele, který je aktivaci přiřazení oprávněné role.
 
 ## <a name="open-role-settings"></a>Otevřete nastavení role
+
+Postupujte podle těchto kroků a otevřete nastavení pro role adresáře Azure AD.
 
 1. Otevřít **Azure AD Privileged Identity Management**.
 
@@ -44,19 +46,19 @@ Správce privilegovaných rolí, odkud můžete přizpůsobit Azure AD Privilege
 
 ## <a name="activations"></a>Aktivace
 
-**Aktivací** je posuvník stále zapnutý maximální dobu v hodinách, které role zůstane aktivní, než vyprší její platnost. Tato hodnota může být v rozmezí 1 až 72 hodin.
+Použití **aktivací** posuvník nastavit maximální dobu v hodinách, že role zůstane aktivní, než vyprší její platnost. Tato hodnota může být v rozmezí 1 až 72 hodin.
 
 ## <a name="notifications"></a>Oznámení
 
-**Oznámení** přepínač umožňuje vybrat, zda systém odesílá e-maily k potvrzení, že se aktivovat roli správce. To může být užitečné pro zjišťování nezákonných nebo neoprávněné aktivace.
+Použití **oznámení** přepínač k určení, zda systém odesílá e-maily k potvrzení, že se aktivovat roli správce. To může být užitečné pro zjišťování nezákonných nebo neoprávněné aktivace.
 
 ## <a name="incidentrequest-ticket"></a>Lístek incidentu nebo žádosti
 
-**Lístek incidentu nebo žádosti** přepínač umožňuje vybrat, jestli se vyžaduje oprávněné správce zahrnovat číslo lístku, pokud se aktivovat svoje role. To může být užitečné, když provádíte auditování přístupu k roli.
+Použití **lístek incidentu nebo žádosti** přepínač k určení, jestli se vyžaduje oprávněné správce zahrnovat číslo lístku, pokud se aktivovat svoje role. To může být užitečné, když provádíte auditování přístupu k roli.
 
 ## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
-**Ověřování službou Multi-Factor Authentication** přepínač umožňuje vybrat, jestli se má vyžadovat, aby uživatelé ověřit svoji identitu pomocí MFA, před aktivací jejich role. Mají pouze k ověření tohoto jednou na relaci, není vždy, když se aktivovat roli. Existují dva tipy, jak vzít v úvahu při povolení vícefaktorového ověřování:
+Použití **ověřování službou Multi-Factor Authentication** přepínač k určení, jestli se má vyžadovat, aby uživatelé ověřit svoji identitu pomocí MFA, před aktivací jejich role. Mají pouze k ověření tohoto jednou na relaci, není vždy, když se aktivovat roli. Existují dva tipy, jak vzít v úvahu při povolení vícefaktorového ověřování:
 
 * Uživatelé, kteří mají účty Microsoft pro jejich e-mailové adresy (obvykle @outlook.com, ale ne vždy) nejde zaregistrovat pro Azure MFA. Pokud chcete přiřazení rolí uživatelům s účty Microsoft, by měl daly trvalých správců nebo zakázání MFA pro danou roli.
 * Vícefaktorové ověřování pro vysoce privilegované role nelze zakázat pro službu Azure AD a Office 365. Toto je funkce bezpečný přístup z více, protože pracovníci v těchto rolích by měly být pečlivě chráněné:  
@@ -84,9 +86,9 @@ Další informace o použití vícefaktorového ověřování pomocí služby PI
 
 ## <a name="require-approval"></a>Vyžadovat schválení
 
-**Vyžadovat schválení** přepínač umožňuje vybrat, jestli se má vyžadovat schválení pro aktivaci této role.
+Pokud chcete k aktivaci role vyžadovat schválení, postupujte podle těchto kroků.
 
-1. Pokud nastavíte přepínač na **povoleno**, v podokně rozšiřuje možnosti vybrat schvalovatele.
+1. Nastavte **vyžadovat schválení** přepnout na **povoleno**. V podokně rozšíří možnosti vybrat schvalovatele.
 
     ![Role adresáře Azure AD – nastavení – vyžadovat schválení](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval.png)
 
@@ -107,5 +109,6 @@ Další informace o použití vícefaktorového ověřování pomocí služby PI
 
 ## <a name="next-steps"></a>Další postup
 
+- [Přiřazení role adresáře Azure AD v PIM](pim-how-to-add-role-to-user.md)
 - [Vyžadovat vícefaktorové ověřování pro role adresáře Azure AD v PIM](pim-how-to-require-mfa.md)
 - [Konfigurace výstrah zabezpečení pro role adresáře Azure AD v PIM](pim-how-to-configure-security-alerts.md)

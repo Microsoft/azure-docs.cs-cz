@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/29/2018
 ms.topic: conceptual
-ms.openlocfilehash: b68550bce1f4e3fbe3845c21598720083c8e384c
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 43edbc653ddbd55aab5e722071de1f2cf4bcd1c4
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39285694"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344512"
 ---
 # <a name="implement-the-device-model-behavior"></a>Implementace chování modelu zařízení
 
@@ -41,6 +41,6 @@ Tento článek popisuje jak definovat chování modelu vlastní simulované zař
 > * Definujte, jak Simulovaná zařízení reaguje na volání metody ze služby IoT hub, který je připojený k
 > * Ladění skriptů
 
-Teď, když jste zjistili, jak můžete určit chování Simulovaná zařízení, navrhované dalším krokem je další způsob [vytvoření simulovaného zařízení](iot-accelerators-remote-monitoring-test.md).
+Teď, když jste zjistili, jak můžete určit chování Simulovaná zařízení, navrhované dalším krokem je další způsob [vytvoření simulovaného zařízení](iot-accelerators-device-simulation-create-simulated-device.md).
 
 Další informace pro vývojáře o řešení pro simulaci zařízení, najdete v článku [referenční příručka pro vývojáře](https://github.com/Azure/device-simulation-dotnet/wiki/Simulation-Service-Developer-Reference-Guide).

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/18/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a628e28e9e6bd603fb2a3789c3281bc2181c91fe
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 2283f55be1a17ec95c73878d42d3acf4d0503e07
+ms.sourcegitcommit: e45b2aa85063d33853560ec4bc867f230c1c18ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42056795"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43371368"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Účty a oprávnění
 
@@ -42,7 +42,7 @@ Kromě tyto tři účty používají ke spouštění služby Azure AD Connect bu
 - **Účet správce podnikové sítě AD DS**: použitý k instalaci Azure AD Connect
 - **Účet Azure AD globálního správce**: použít k vytvoření účtu Azure AD Connector a nakonfigurovat služby Azure AD.
 
-- **Účet SQL SA (volitelné)**: použili k vytvoření databáze ADSync při použití plnou verzi systému SQL Server.  Tento Server SQL může být místní nebo vzdálené instalace služby Azure AD Connect.  Tento účet může být stejný účet jako správce podnikové sítě.  Zřizování může databáze nyní možné provádět vzdáleně správce SQL a následně je nainstalován Správce služby Azure AD Connect s oprávněními vlastníka databáze.  Informace o najdete v článku [instalace služby Azure AD Connect pomocí oprávnění delegovaného správce SQL]()
+- **Účet SQL SA (volitelné)**: použili k vytvoření databáze ADSync při použití plnou verzi systému SQL Server.  Tento Server SQL může být místní nebo vzdálené instalace služby Azure AD Connect.  Tento účet může být stejný účet jako správce podnikové sítě.  Zřizování může databáze nyní možné provádět vzdáleně správce SQL a následně je nainstalován Správce služby Azure AD Connect s oprávněními vlastníka databáze.  Informace o najdete v článku [instalace služby Azure AD Connect pomocí oprávnění delegovaného správce SQL](active-directory-aadconnect-sql-delegation.md)
 
 ## <a name="installing-azure-ad-connect"></a>Instaluje se služba Azure AD Connect.
 Průvodce instalací Azure AD Connect poskytuje dvě různé cesty:

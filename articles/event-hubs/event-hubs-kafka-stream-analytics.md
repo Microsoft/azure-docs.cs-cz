@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2018
 ms.author: spelluru
-ms.openlocfilehash: e1903167911c07b968bae63714584f352bbca182
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: a066d2a55f6949eea316eaf0a2956500667a996f
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307802"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43340267"
 ---
 # <a name="process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Zpracování událostí Apache Kafka pro Event Hubs s využitím Stream Analytics 
 Tento článek popisuje, jak Streamovat data do služby Event Hubs povolené Kafka a zpracovat je s Azure Stream Analytics. Provede vás provede následujícími kroky: 
@@ -83,6 +83,7 @@ Teď můžete ze svých aplikací používajících protokol Kafka streamovat ud
     sasl.mechanism=PLAIN
     sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$ConnectionString" password="{CONNECTION STRING for EVENT HUB NAMESPACE}";
     ```
+
 5. Přejděte do `azure-event-hubs/samples/kafka/quickstart/producer/src/main/java/com/example/app`a otevřete **TestDataReporter.java** soubor v editoru podle vašeho výběru. 
 6. Okomentujte následující řádek kódu:
 

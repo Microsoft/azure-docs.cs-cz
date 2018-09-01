@@ -3,7 +3,7 @@ title: Spravovat využití a fakturace pro Azure Stack jako poskytovatele cloudo
 description: Procházení prostřednictvím registrace Azure Stack jako Cloud Provider (CSP) a přidání zákazníků pro účely fakturace.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: brenduns
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2018
+ms.date: 08/30/2018
 ms.author: brenduns
 ms.reviewer: alfredo
-ms.openlocfilehash: 66bab9f4b5099099039aa0f60cd86ef23e73cd1f
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 9bb4a4ea81f2dc0fb11e2f7cae1b9d02b0edfdde
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715681"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43341431"
 ---
 # <a name="manage-usage-and-billing-for-azure-stack-as-a-cloud-service-provider"></a>Spravovat využití a fakturace pro Azure Stack jako poskytovatele cloudových služeb 
 
@@ -58,7 +58,7 @@ Cloudová předplatná poskytovatele služeb (CSP) jsou upřednostňované volbo
 
 ## <a name="register-azure-stack"></a>Registrace Azure Stack
 
-K registraci pomocí služby Azure Stack, najdete v článku [registrace Azure Stack s vaším předplatným Azure](azure-stack-registration.md).
+Registraci Azure Stack v Azure použijte CSPSS předplatné vytvořili uvedenými informacemi v předchozí části. Další informace najdete v tématu [registrace Azure Stack s vaším předplatným Azure](azure-stack-registration.md).
 
 ## <a name="add-end-customer"></a>Přidání koncového zákazníka
 

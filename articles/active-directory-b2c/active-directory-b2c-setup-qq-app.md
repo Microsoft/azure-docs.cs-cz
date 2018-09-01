@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/09/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 82668446f139a5a003c33178e2d415a9314c61bc
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 11bb5bf132103bed9e154a12c0e628177ca6a57a
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37952173"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344920"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-qq-account-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení s účtem QQ pomocí Azure Active Directory B2C
 
@@ -40,7 +40,7 @@ Použít účet QQ jako zprostředkovatele identity v Azure Active Directory (Az
 1. Přejděte do [ (Nastavení)https://connect.qq.com/index.html](https://connect.qq.com/index.html) (Integrace a služby).
 2. Vyberte**应用管理**(Správa aplikací).
 5. Vyberte**创建应用**(Vytvoření aplikace) a zadejte požadované informace.
-7. Zadejte `https://login.microsoftonline.com/te/{tenant_name}/oauth2/authresp` v**授权回调域**(adresu URL zpětného volání). Například pokud vaše `tenant_name` je contoso.onmicrosoft.com, nastavte adresu URL bude `https://login.microsoftonline.com/te/contoso.onmicrosoft.com/oauth2/authresp`.
+7. Zadejte `https://{tenant_name}.b2clogin.com/te/{tenant_name}.onmicrosoft.com/oauth2/authresp` v**授权回调域**(adresu URL zpětného volání). Například pokud vaše `tenant_name` je contoso, nastavte adresu URL bude `https://contoso.b2clogin.com/te/contoso.onmicrosoft.com/oauth2/authresp`.
 8. Vyberte**创建应用**(vytvořit aplikaci).
 9. Na stránce potvrzení vyberte**应用管理**(Správa aplikací) se vrátíte na stránku řízení aplikací.
 10. Vyberte**查看**(Zobrazit) vedle aplikace, které jste vytvořili.

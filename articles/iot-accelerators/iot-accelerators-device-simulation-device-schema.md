@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/29/2018
 ms.topic: conceptual
-ms.openlocfilehash: a27624d4c7a0bde4b33aefe8d05881b743ce397d
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: b325873819caff139727ec15d6aecd2d4be89c9e
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39285697"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43338151"
 ---
 # <a name="understand-the-device-model-schema"></a>Pochopení schématu modelu zařízení
 
@@ -24,7 +24,7 @@ Tento článek popisuje schématu modelu zařízení, která určuje funkce a ch
 V následujících článcích se vztahují k aktuální článku:
 
 * [Implementace chování modelu zařízení](iot-accelerators-device-simulation-device-behavior.md) popisuje soubory jazyka JavaScript, použijte k implementaci chování simulovaných zařízení.
-* [Vytvoření nového simulovaného zařízení](iot-accelerators-remote-monitoring-test.md) vloží všechno dohromady a ukazuje, jak nasadit nový typ simulovaného zařízení do řešení.
+* [Vytvoření nového simulovaného zařízení](iot-accelerators-device-simulation-create-simulated-device.md) vloží všechno dohromady a ukazuje, jak nasadit nový typ simulovaného zařízení do řešení.
 
 V tomto článku získáte informace o těchto tématech:
 

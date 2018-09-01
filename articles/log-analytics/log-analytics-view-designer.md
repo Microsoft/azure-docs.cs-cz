@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 77c7d9a549b10a56faaf6226062d0e6212ce19c0
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 362d19c489dfa0eda33036052ac9626414ef0933
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42061313"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43340732"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-log-analytics"></a>Vytváření vlastních zobrazení pomocí návrháře zobrazení v Log Analytics
 Pomocí návrháře zobrazení v [Azure Log Analytics](log-analytics-overview.md), řadu vlastních zobrazení můžete vytvořit na webu Azure Portal, který může pomoci vám vizualizovat data ve vašem pracovním prostoru Log Analytics. Tento článek obsahuje přehled nástroje Návrhář zobrazení a postupy pro vytváření a úpravu vlastní zobrazení.
@@ -58,7 +58,7 @@ Tyto možnosti jsou popsány v následující tabulce:
 | Analýzy | Otevře [portálu pro pokročilou analýzu](log-analytics-log-search-portals.md) k analýze dat pomocí dotazů na protokoly. |
 | Upravit       | Otevře se zobrazení v Návrháři zobrazení k úpravě jeho obsah a konfiguraci.  |
 | Klon      | Vytvoří nové zobrazení a otevře v zobrazení návrhu. Název nového zobrazení je stejný jako původní název, ale s *kopírování* připojí k němu. |
-| Rozsah dat | Nastavte filtr rozsahu data a času pro data, která je zahrnutá v zobrazení. |
+| Rozsah dat | Nastavte filtr rozsahu data a času pro data, která je zahrnutá v zobrazení. Tento rozsah je použit před všechny rozsahy kalendářních dat nastavit v dotazech v zobrazení.  |
 | +          | Definujte vlastní filtr, který je definován pro zobrazení. |
 
 

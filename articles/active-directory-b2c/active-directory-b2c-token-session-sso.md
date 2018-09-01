@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 35210a8e93b8437ea4d8c3b5f002c81c549d3afe
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 061e2257200b6d660a421a86c540f43597112c5e
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444815"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43337881"
 ---
 # <a name="azure-active-directory-b2c-token-session-and-single-sign-on-configuration"></a>Azure Active Directory B2C: Token, relace a konfigurace jednotného přihlašování
 
@@ -64,13 +64,13 @@ Těchto několik případů použití, které můžete povolit pomocí těchto v
     > 
     > 
 
-## <a name="token-compatibility-settings"></a>Nastavení kompatibility tokenů
+## <a name="token-compatibility-settings"></a>Nastavení kompatibility tokenu
 
 Jsme provedli změny formátování důležité deklarací identity v tokenech zabezpečení, protože ho vygeneroval Azure AD B2C. To bylo provedeno vylepšení našich podpory standardního protokolu a pro lepší interoperabilitě s knihovnami identity třetí strany. Však pokud chcete vyhnout přerušení existující aplikace, jsme vytvořili, tak, aby zákazníci k vyjádření výslovného souhlasu podle potřeby následující vlastnosti:
 
 * **Deklarace identity vystavitele (iss)**: Určuje tenanta Azure AD B2C, která token vydala.
-  * `https://login.microsoftonline.com/{B2C tenant GUID}/v2.0/`: Toto je výchozí hodnota.
-  * `https://login.microsoftonline.com/tfp/{B2C tenant GUID}/{Policy ID}/v2.0/`: Tato hodnota zahrnuje ID tenanta B2C a zásady používané v požadavku na token. Pokud vaše aplikace nebo knihovna musí Azure AD B2C má být zajištěn soulad [zjišťování OpenID Connect 1.0 specifikace](http://openid.net/specs/openid-connect-discovery-1_0.html), používejte tuto hodnotu.
+  * `https://<domain>/{B2C tenant GUID}/v2.0/`: Toto je výchozí hodnota.
+  * `https://<domain>/tfp/{B2C tenant GUID}/{Policy ID}/v2.0/`: Tato hodnota zahrnuje ID tenanta B2C a zásady používané v požadavku na token. Pokud vaše aplikace nebo knihovna musí Azure AD B2C má být zajištěn soulad [zjišťování OpenID Connect 1.0 specifikace](http://openid.net/specs/openid-connect-discovery-1_0.html), používejte tuto hodnotu.
 * **Deklarace identity subjektu (sub)**: Určuje, entity, například uživatel, pro kterou token vyhodnocuje informace.
   * **ID objektu**: Jedná se o výchozí hodnotu. Naplní ID objektu uživatele v adresáři do `sub` deklarací identity v tokenu.
   * **Nepodporuje**: to je k dispozici pouze z důvodů zpětné kompatibility, a doporučujeme vám, že přejdete na **ObjectID** Jakmile máte možnost.

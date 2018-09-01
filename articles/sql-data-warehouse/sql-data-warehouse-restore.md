@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 08/29/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: cf96e153c07211fe176839e713935adcf6b9dbe1
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 31b137cca55b1dd249368ba5e287496582152c9f
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306958"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382656"
 ---
 # <a name="restoring-azure-sql-data-warehouse"></a>Obnovení Azure SQL Data Warehouse 
 V tomto článku se dozvíte, jak provést následující kroky:
@@ -25,6 +25,10 @@ V tomto článku se dozvíte, jak provést následující kroky:
 - Obnovit z odstraněné databáze
 - Obnovit z geografické zálohy
 - Vytvoření kopie vašeho datového skladu z bodu obnovení definovaný uživatelem
+
+> [!NOTE]
+> Od 8/27 mezi servery obnovení byl zakázán z důvodu známého regrese. Aktivně pracujeme na opravě v naší nejvyšší prioritou. Omlouváme se za nepříjemnosti. Do té doby můžete využít vaše [geografické zálohování](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-restore#restore-from-an-azure-geographical-region) obnovit napříč servery.  
+>
 
 ## <a name="before-you-begin"></a>Než začnete
 **Ověřte kapacitu jednotek DTU.** Každý datový sklad SQL je hostitelem SQL serveru (např. myserver.database.windows.net), který má výchozí kvóty DTU.  Předtím, než bude možné obnovit datový sklad SQL, ověřte, že serveru SQL server má dostatek zbývající kvóta DTU databáze obnovena. Pokud chcete zjistit, jak chcete-li vypočítat potřebné DTU, nebo požádat o další DTU, přečtěte si téma [žádost o změnu kvóty DTU][Request a DTU quota change].

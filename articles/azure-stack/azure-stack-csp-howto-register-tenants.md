@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: brenduns
 ms.reviewer: alfredo
-ms.openlocfilehash: d5f775761def1c06063cd02b4141c5de2a752cce
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: d3fc3ef6c5fdcf5a87c691c73169ef2bec95805e
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39089906"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382684"
 ---
 # <a name="add-tenant-for-usage-and-billing-to-azure-stack"></a>Přidání tenanta pro využití a fakturaci ke službě Azure Stack
 
@@ -91,5 +91,5 @@ Jakmile přidáte nového zákazníka ke službě Azure Stack nebo tenantovi zá
 ## <a name="next-steps"></a>Další postup
 
  - Pokud se spouštějí v procesu registrace, projděte chybové zprávy, najdete v článku [chybových zpráv registrace klienta](azure-stack-csp-ref-infrastructure.md#usage-and-billing-error-codes).
- - Další informace o tom, jak načíst informace o využití prostředků ze služby Azure Stack, najdete v článku [využití a fakturace ve službě Azure Stack](/azure-stack-billing-and-chargeback.md).
+ - Další informace o tom, jak načíst informace o využití prostředků ze služby Azure Stack, najdete v článku [využití a fakturace ve službě Azure Stack](azure-stack-billing-and-chargeback.md).
  - Pokud chcete zkontrolovat, jak koncového zákazníka může přidat, jako zprostředkovatel kryptografických služeb, jako správce pro své služby Azure Stack, tenanta naleznete v tématu [povolit poskytovatele cloudové služby ke správě vašich předplatných Azure Stack](user\azure-stack-csp-enable-billing-usage-tracking.md).

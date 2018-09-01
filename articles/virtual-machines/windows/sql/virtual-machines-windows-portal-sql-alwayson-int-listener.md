@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/16/2017
 ms.author: mikeray
-ms.openlocfilehash: 7ef26dc5fa7676ca590d56978c735bf4a195440b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: e87b58ecd72291365f9eba70c807e3018c02ae07
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38698046"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382735"
 ---
 # <a name="configure-a-load-balancer-for-an-always-on-availability-group-in-azure"></a>Konfigurace nástroje pro vyrovnávání zatížení pro skupinu dostupnosti AlwaysOn v Azure
 Tento článek vysvětluje, jak vytvořit nástroj pro vyrovnávání zatížení pro skupinu dostupnosti AlwaysOn SQL serveru ve službě Azure virtual machines, které jsou spuštěny pomocí Azure Resource Manageru. Skupině dostupnosti vyžaduje nástroj pro vyrovnávání zatížení, pokud jsou instance systému SQL Server na virtuálních počítačích Azure. Nástroje pro vyrovnávání zatížení ukládá IP adresu pro naslouchací proces skupiny dostupnosti. V případě skupiny dostupnosti pokrývá více oblastí, musí každá oblast nástroj pro vyrovnávání zatížení.
@@ -298,6 +298,8 @@ Pokud skupinu dostupnosti se účastní distribuované skupiny dostupnosti, nás
    |**Plovoucí IP adresa (přímá odpověď ze serveru vrácené)** | Povoleno
 
 Tento postup opakujte pro nástroj pro vyrovnávání zatížení na další, které jsou součástí skupiny dostupnosti distribuované skupiny dostupnosti.
+
+Pokud jste omezení přístupu se skupinou zabezpečení sítě Azure, zajistěte, aby pravidla povolit zahrnují adres back-end IP adresy virtuálního počítače SQL serveru a nástroje pro vyrovnávání zatížení plovoucí IP adres pro naslouchacího procesu AG a IP adresu clusteru core Pokud je k dispozici.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2018
 ms.author: cephalin
-ms.openlocfilehash: 78487061dd49c057e8f569fd2ccdaa6408443fd2
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 40fdd22bdbb3fc0676688430069d58c0422a7ca2
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42885866"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382112"
 ---
 # <a name="security-in-azure-app-service-and-azure-functions"></a>Zabezpečení v Azure App Service a Azure Functions
 
@@ -29,7 +29,7 @@ Komponenty platformy služby App Service, včetně virtuálních počítačů Az
 
 - Prostředky aplikace jsou [zabezpečené](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox) z prostředků Azure ostatních zákazníků.
 - [Instance virtuálních počítačů a softwaru runtime se pravidelně aktualizují](app-service-patch-os-runtime.md) slabiny adresu nově zjištěno. 
-- Komunikace tajných kódů (například připojovací řetězce) mezi vaší aplikací a dalších prostředků Azure (například [SQL Database](/services/sql-database/)) zůstává v rámci Azure a není pro různé všechna ohraničení sítě. Tajné kódy se vždy šifrují, pokud uložená.
+- Komunikace tajných kódů (například připojovací řetězce) mezi vaší aplikací a dalších prostředků Azure (například [SQL Database](https://azure.microsoft.com/services/sql-database/)) zůstává v rámci Azure a není pro různé všechna ohraničení sítě. Tajné kódy se vždy šifrují, pokud uložená.
 - Veškerá komunikace přes připojení služby App Service funkce, jako [hybridní připojení](app-service-hybrid-connections.md), je zašifrovaný. 
 - Připojení pomocí nástroje pro vzdálenou správu, jako je Azure PowerShell, rozhraní příkazového řádku Azure, sady SDK služby Azure, rozhraní REST API, všechny šifrovaná.
 - 24 hodin před internetovými útoky management chrání infrastruktury a platformy před malwarem, distributed denial of service (DDoS), man-in-the-middle typu MITM () a dalšími hrozbami.
@@ -84,7 +84,7 @@ Ve všech těchto případech služba App Service poskytuje způsob, jak můžet
 
 ### <a name="azure-resources"></a>Prostředky Azure
 
-Když vaše aplikace se připojí k prostředky Azure, jako například [SQL Database](/services/sql-database/) a [služby Azure Storage](/azure/storage/), připojení zůstane v rámci Azure a není pro různé všechna ohraničení sítě. Ale připojení prochází sdílené sítě v systému Azure, proto vždy ujistěte se, že se šifrují vaše připojení. 
+Když vaše aplikace se připojí k prostředky Azure, jako například [SQL Database](https://azure.microsoft.com/services/sql-database/) a [služby Azure Storage](/azure/storage/), připojení zůstane v rámci Azure a není pro různé všechna ohraničení sítě. Ale připojení prochází sdílené sítě v systému Azure, proto vždy ujistěte se, že se šifrují vaše připojení. 
 
 Pokud je vaše aplikace hostovaná v [App Service environment](environment/intro.md), měli byste [připojení k podporované služby Azure s využitím koncové body služeb virtuální sítě](../virtual-network/virtual-network-service-endpoints-overview.md).
 
@@ -117,4 +117,4 @@ S výjimkou **izolované** cenovou úroveň, u všech úrovní aplikace můžete
 - Slouží k interní aplikaci pomocí interní nástroj pro vyrovnávání zatížení (ILB), který umožňuje přístup jenom v rámci vaší virtuální sítě Azure. ILB má IP adresu z vaší privátní podsítě, která poskytuje celkový počet izolace aplikací z Internetu.
 - [Pomocí ILB za bránou firewall webových aplikací (WAF)](environment/integrate-with-application-gateway.md). WAF nabízí ochranu podnikové úrovni pro vaše veřejné webové aplikace, například DDoS protection, identifikátor URI filtrování a prevence prostřednictvím injektáže SQL.
 
-Další informace najdete v tématu [Úvod do služby Azure App Service Environment](environment/intro.md).
+Další informace najdete v tématu [Úvod do služby Azure App Service Environment](environment/intro.md). 

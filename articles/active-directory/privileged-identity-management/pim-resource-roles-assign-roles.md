@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: pim
-ms.date: 04/02/2018
+ms.date: 08/30/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 7019a6f97a9590d3b652584015f3077f4ed075af
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: b84addf4c45e39e68dd22f6369553d397794f6b0
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43188916"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43340508"
 ---
 # <a name="assign-azure-resource-roles-in-pim"></a>Přiřazení role prostředků Azure v PIM
 
@@ -34,59 +34,95 @@ Azure AD PIM můžete spravovat role integrované prostředků Azure, jakož i v
 >[!NOTE]
 Uživatele nebo členy skupiny přiřadit role vlastník nebo správce přístupu uživatelů a globální správci, který povolení správy předplatného ve službě Azure AD jsou správci prostředků. Tyto správce může přiřadit role, konfigurace nastavení role a kontrolovat přístup pomocí PIM pro prostředky Azure. Zobrazí se seznam [předdefinované role pro prostředky Azure](../../role-based-access-control/built-in-roles.md).
 
-## <a name="assign-roles"></a>Přiřazení rolí
+## <a name="assign-a-role"></a>Přiřazení role
 
-Přiřadit uživatele nebo skupiny k roli při zobrazení **role** podokně, vyberte roli a pak vyberte **přidat uživatele**. 
+Následujícím postupem nastavit uživatele jako oprávněné pro roli prostředků Azure.
 
-![Podokno "Role" tlačítko "Přidat uživatele"](media/azure-pim-resource-rbac/rbac-assign-roles-1.png)
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) jako uživatel, který je členem skupiny [správce privilegovaných rolí](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) role.
 
-Můžete také vybrat **přidat uživatele** z **členy** podokně.
+    Informace o tom, jak udělit jiný přístup správce ke správě PIM, naleznete v tématu [udělit přístup na jiné správce ke správě PIM](pim-how-to-give-access-to-pim.md).
 
-!["Členy" podokno s tlačítko "Přidat uživatele"](media/azure-pim-resource-rbac/rbac-assign-roles-2.png)
+1. Otevřít **Azure AD Privileged Identity Management**.
 
+    Pokud jste nezahájili PIM na portálu Azure portal ještě, přejděte na [začít používat PIM](pim-getting-started.md).
 
-Pokud přidáváte uživatele nebo skupiny z **členy** podokně, budete muset: 
+1. Klikněte na tlačítko **prostředky Azure**.
 
-1. Zvolte roli z **vybrat roli** podokno, abyste mohli vybrat uživatele nebo skupinu.
+1. Použití **filtr prostředků** filtrovat seznam spravovaných prostředků.
 
-   !["Vybrat roli" podokno](media/azure-pim-resource-rbac/rbac-assign-roles-select-role.png)
+    ![Seznam prostředků Azure pro správu](./media/pim-resource-roles-assign-roles/resources-list.png)
 
-2. Zvolte uživatele nebo skupiny z adresáře.
+1. Klikněte na prostředek, který chcete spravovat, například předplatné nebo skupinu pro správu.
 
-3. Z rozevírací nabídky vyberte typ odpovídající přiřazení: 
+1. V části Správa, klikněte na tlačítko **role** zobrazíte seznam rolí pro prostředky Azure.
 
-   - **Za běhu**: poskytuje členům uživatele nebo skupinu oprávnění, ale není trvalý přístup k roli během zadaného období nebo odkládat donekonečna (Pokud je nakonfigurovaný v nastavení role). 
-   - **Přímé**: nevyžaduje, aby uživatel nebo skupina členy aktivovat přiřazení role (označuje se jako trvalý přístup). Doporučujeme používat přímého přiřazení pro krátkodobé použití, ve kterém nesmí být nutný přístup k po dokončení úkolu. Příklady se posune na volání a časově závislé aktivity.
+    ![Role prostředků Azure](./media/pim-resource-roles-assign-roles/resources-roles.png)
 
-4. Pokud má být přiřazení trvalé (trvalá způsobilost pro přiřazení v čase, nebo trvale aktivní pro přímého přiřazení), zaškrtněte políčko níže **typ přiřazení** pole.
+1. Klikněte na tlačítko **přidat člena** a otevřete tak podokno nové přiřazení.
 
-   ![Podokno "Nastavení členství" s "přiřazení zadejte" a související zaškrtávacího políčka](media/azure-pim-resource-rbac/rbac-assign-roles-settings.png)
+1. Klikněte na tlačítko **vybrat roli** a otevřete tak podokno role Select.
 
-   >[!NOTE]
-   >Zaškrtávací políčko může neupravitelných, pokud jiný správce má zadanou přiřazení maximální doba trvání pro každý typ přiřazení v nastavení role.
+    ![Nové přiřazení podokno](./media/pim-resource-roles-assign-roles/resources-select-role.png)
 
-   Chcete-li určit dobu trvání konkrétní přiřazení, zrušte zaškrtnutí políčka a upravit počáteční a koncové datum a čas polí.
+1. Klikněte na roli, kterou chcete přiřadit a potom klikněte na tlačítko **vyberte**.
 
-   ![Podokno "Nastavení členství" s polí pro počáteční datum, čas zahájení, koncové datum a čas ukončení](media/azure-pim-resource-rbac/rbac-assign-roles-duration.png)
+    Vyberte člena nebo skupinu podokně otevře.
 
+1. Klikněte na člena nebo skupinu, kterou chcete přiřadit k roli a potom klikněte na **vyberte**.
 
-## <a name="manage-role-assignments"></a>Správa přiřazení rolí
+    ![Vyberte člena nebo skupiny podokno](./media/pim-resource-roles-assign-roles/resources-select-member-or-group.png)
 
-Správci můžou Spravovat přiřazení rolí tak, že vyberete buď **role** nebo **členy** v levém podokně. Výběr **role** umožňuje správcům k určení rozsahu jejich úlohy správy pro konkrétní role. Výběr **členy** zobrazí všechny uživatele a skupiny přiřazení rolí pro prostředek.
+    Otevře se podokno nastavení členství.
 
-!["Role"](media/azure-pim-resource-rbac/rbac-assign-roles-roles.png)
+1. V **typ přiřazení** seznamu vyberte **oprávněné** nebo **aktivní**.
 
-!["Členy" podokno](media/azure-pim-resource-rbac/rbac-assign-roles-members.png)
+    ![Podokno nastavení členství ve skupinách](./media/pim-resource-roles-assign-roles/resources-membership-settings-type.png)
 
->[!NOTE]
-Pokud máte roli čekající na aktivaci, zobrazí se banner s oznámením v horní části podokna při zobrazení členství.
+    PIM pro prostředky Azure poskytuje dva typy různých přiřazení:
 
+    - **Oprávněné** přiřazení vyžadovat členem role provádět akci, kterou chcete použít roli. Akce může zahrnovat provedení kontroly ověřování službou Multi-Factor Authentication (MFA), poskytuje obchodní odůvodnění, nebo z určených schvalovatelů odesílání žádostí o schválení.
 
-## <a name="modify-existing-assignments"></a>Upravte existující přiřazení
+    - **Aktivní** přiřazení nevyžadují člen podnikat žádné kroky, chcete-li použít roli. Členové přiřazeno jako aktivní mají oprávnění přiřazená k roli za všech okolností.
 
-Chcete-li upravit existující přiřazení ze zobrazení podrobností uživatele nebo skupiny, vyberte **změnit nastavení** z panelu akcí. Změnit typ přiřazení k **pouze v čase** nebo **přímé**.
+1. Pokud má být trvalé přiřazení (trvalá způsobilost nebo při trvalém přiřazení), vyberte **trvale** zaškrtávací políčko.
 
-![Podokno "Podrobnosti o uživateli" s "Nastavení" tlačítko](media/azure-pim-resource-rbac/rbac-assign-role-manage.png)
+    V závislosti na nastavení role zaškrtněte políčko neobjeví, nebo může neupravitelných.
+
+1. Chcete-li určit dobu trvání konkrétní přiřazení, zrušte zaškrtnutí políčka a upravit počáteční a koncové datum a čas polí.
+
+    ![Členství v nastavení - datum a čas](./media/pim-resource-roles-assign-roles/resources-membership-settings-date.png)
+
+1. Jakmile budete hotovi, klikněte na **Hotovo**.
+
+    ![Nové přiřazení – přidat](./media/pim-resource-roles-assign-roles/resources-new-assignment-add.png)
+
+1. Chcete-li vytvořit nové přiřazení role, klikněte na tlačítko **přidat**. Zobrazí se oznámení o stavu.
+
+    ![Nové přiřazení – oznámení](./media/pim-resource-roles-assign-roles/resources-new-assignment-notification.png)
+
+## <a name="update-or-remove-an-existing-role-assignment"></a>Aktualizace nebo odebrání stávající přiřazení rolí
+
+Postupujte podle těchto kroků k aktualizaci nebo odebrání stávající přiřazení rolí.
+
+1. Otevřít **Azure AD Privileged Identity Management**.
+
+1. Klikněte na tlačítko **prostředky Azure**.
+
+1. Klikněte na prostředek, který chcete spravovat, například předplatné nebo skupinu pro správu.
+
+1. V části Správa, klikněte na tlačítko **role** zobrazíte seznam rolí pro prostředky Azure.
+
+    ![Role prostředků Azure – vybrat roli](./media/pim-resource-roles-assign-roles/resources-update-select-role.png)
+
+1. Klikněte na roli, kterou chcete aktualizovat nebo odebrat.
+
+1. Najít přiřazení role na **oprávněných rolí** nebo **aktivních rolí** karty.
+
+    ![Aktualizace nebo odebrání přiřazení role](./media/pim-resource-roles-assign-roles/resources-update-remove.png)
+
+1. Klikněte na tlačítko **aktualizovat** nebo **odebrat** k aktualizaci nebo odebrání přiřazení role.
+
+    Informace o rozšíření přiřazení rolí, najdete v části [rozšířit nebo obnovení role prostředků Azure v PIM](pim-resource-roles-renew-extend.md).
 
 ## <a name="next-steps"></a>Další postup
 

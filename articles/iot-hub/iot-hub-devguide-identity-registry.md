@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 01/29/2018
+ms.date: 08/29/2018
 ms.author: dobett
-ms.openlocfilehash: 4e23b70c8dc5fdacfd609fb4664a78293b9e2362
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 78956c8e9d9248708ec326fc07d46f48e51e0f83
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247641"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43341256"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>Vysvětlení registru identit ve službě IoT hub
 
@@ -85,12 +85,12 @@ Data zařízení, která ukládá daného řešení IoT, závisí na konkrétní
 
 ## <a name="device-heartbeat"></a>Prezenční signál zařízení
 
-Registr identit služby IoT Hub obsahuje pole s názvem **connectionState**. Použít pouze **connectionState** pole při vývoji a ladění. Řešení IoT by neměl dotaz na pole v době běhu. Například není dotaz **connectionState** pole, které chcete zkontrolovat, jestli je zařízení připojené před odesláním zprávy typu cloud zařízení nebo zprávu SMS. Doporučujeme vám, že se přihlásíte k odběru [ **odpojení zařízení** události](https://docs.microsoft.com/azure/iot-hub/iot-hub-event-grid#event-types) na služby Event Grid výstrahy a monitorování stavu připojení zařízení. Použijte tento [kurzu](https://docs.microsoft.com/azure/event-grid/publish-iot-hub-events-to-logic-apps) se naučíte integrovat události ze služby IoT Hub v řešení IoT.
+Registr identit služby IoT Hub obsahuje pole s názvem **connectionState**. Použít pouze **connectionState** pole při vývoji a ladění. Řešení IoT by neměl dotaz na pole v době běhu. Například není dotaz **connectionState** pole, které chcete zkontrolovat, jestli je zařízení připojené před odesláním zprávy typu cloud zařízení nebo zprávu SMS. Doporučujeme vám, že se přihlásíte k odběru [ **odpojení zařízení** události] [ lnk-devguide-evgrid-evtype] na služby Event Grid výstrahy a monitorování stavu připojení zařízení. Použijte tento [kurzu] [ lnk-howto-evgrid-connstate] se naučíte integrovat zařízení připojené a odpojené zařízení události ze služby IoT Hub v řešení IoT.
 
 Pokud je potřeba vědět, pokud je zařízení připojené, můžete implementovat řešení IoT *prezenčního signálu vzor*.
 Ve vzoru prezenčního signálu zařízení odesílá zprávy typu zařízení cloud alespoň jednou každých pevné množství času (například alespoň jednou za hodinu). Proto i v případě, že zařízení nemá žádná data k odeslání, stále odešle prázdnou zprávu typu zařízení cloud (obvykle s vlastností, který ji identifikuje jako prezenční signál). Na straně služby řešení udržuje mapu s poslední prezenční signál pro každé zařízení. Pokud řešení neobdrží zprávu prezenčního signálu v očekávaném čase ze zařízení, předpokládá, že dojde k problému se zařízením.
 
-Složitější implementace by mohla obsahovat informace z [monitorování operací] [ lnk-devguide-opmon] identifikovat zařízení, která se pokouší o připojení nebo komunikaci ale služeb při selhání. Pokud implementujete vzor prezenčního signálu, nezapomeňte zaškrtnout [IoT Hub kvóty a omezení][lnk-quotas].
+Složitější implementace by mohla obsahovat informace z [Azure Monitor] [ lnk-AM] a [Azure Resource Health] [ lnk-ARH] k identifikaci zařízení, která se pokoušíte připojit nebo komunikaci ale neúspěšné, zkontrolujte [monitorování s diagnostikou] [ lnk-devguide-mon] průvodce. Pokud implementujete vzor prezenčního signálu, nezapomeňte zaškrtnout [IoT Hub kvóty a omezení][lnk-quotas].
 
 > [!NOTE]
 > Pokud řešení IoT používá stav připojení výhradně k určení, zda chcete odesílat zprávy typu cloud zařízení a zprávy nejsou vysílat velké sady zařízení, zvažte použití jednodušší *krátký čas vypršení platnosti* vzor. Tento model dosáhne stejného výsledku jako uchovávat registr stavu připojení zařízení pomocí vzoru prezenčního signálu při zachování efektivnější. Pokud jste požádali o zprávy potvrzení, můžete služby IoT Hub informovat vás o tom, která zařízení jsou schopných přijímat zprávy, které nejsou.
@@ -256,7 +256,7 @@ Prozkoumat pomocí IoT Hub Device Provisioning Service umožňuje plně automati
 [lnk-rfc7232]: https://tools.ietf.org/html/rfc7232
 [lnk-bulk-identity]: iot-hub-bulk-identity-mgmt.md
 [lnk-export]: iot-hub-devguide-identity-registry.md#import-and-export-device-identities
-[lnk-devguide-opmon]: iot-hub-operations-monitoring.md
+[lnk-devguide-mon]: iot-hub-monitor-resource-health.md
 
 [lnk-devguide-security]: iot-hub-devguide-security.md
 [lnk-devguide-device-twins]: iot-hub-devguide-device-twins.md
@@ -265,3 +265,8 @@ Prozkoumat pomocí IoT Hub Device Provisioning Service umožňuje plně automati
 
 [lnk-getstarted-tutorial]: quickstart-send-telemetry-dotnet.md
 [lnk-dps]: https://azure.microsoft.com/documentation/services/iot-dps
+
+[lnk-AM]: ../monitoring-and-diagnostics/index.yml
+[lnk-ARH]: ../service-health/resource-health-overview.md
+[lnk-devguide-evgrid-evtype]: iot-hub-event-grid.md#event-types
+[lnk-howto-evgrid-connstate]: iot-hub-how-to-order-connection-state-events.md

@@ -1,6 +1,6 @@
 ---
-title: Rozšíření nebo obnovení role prostředků Azure v PIM | Dokumentace Microsoftu
-description: Zjistěte, jak rozšíření nebo obnovení role prostředků Azure v Azure AD Privileged Identity Management (PIM).
+title: Rozšíření nebo obnovení přiřazení role prostředků Azure v PIM | Dokumentace Microsoftu
+description: Zjistěte, jak rozšířit nebo prodlužovat platnost přiřazení role prostředků Azure v Azure AD Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,14 +15,14 @@ ms.component: pim
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 2c85c5bbbd4c152113108e0fdb717d23f85f9fde
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 3294bddea867e061d01e8dc72f4e47f3238b6c4d
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189646"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344081"
 ---
-# <a name="extend-or-renew-azure-resource-roles-in-pim"></a>Rozšíření nebo obnovení role prostředků Azure v PIM
+# <a name="extend-or-renew-azure-resource-role-assignments-in-pim"></a>Rozšíření nebo obnovení přiřazení role prostředků Azure v PIM
 
 Privileged Identity Management (PIM) pro prostředky Azure, zavádí nové ovládací prvky pro správu přístupu a přiřazení životní cyklus pro prostředky Azure. Správci mohou přiřadit členství pomocí vlastnosti počáteční a koncové datum a čas. Když se blíží konec přiřazení PIM odešle e-mailová oznámení k ovlivnění uživatelé nebo skupiny. Rovněž odesílá e-mailová oznámení pro správce prostředků k zajištění, že se udržuje odpovídající přístup. Přiřazení může být obnovena a zůstávají viditelné vypršela platnost po dobu až 30 dnů, i když není rozšířené přístup.
 

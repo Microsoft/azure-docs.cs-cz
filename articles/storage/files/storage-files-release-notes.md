@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: article
-ms.date: 08/21/2018
+ms.date: 08/30/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 3cd178333ee0d8d92db08fb08cbd02b05112f58b
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: cc1b89ff94b4d4dc0b191512b110521d5fa05a7a
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42445018"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344362"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Poznámky k verzi pro agenta Azure File Sync
 Synchronizace souborů Azure umožňuje centralizovat sdílené složky organizace ve službě Soubory Azure bez ztráty flexibility, výkonu a kompatibility místního souborového serveru. Vaše instalace Windows Serveru se transformují na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS). Můžete mít libovolný počet mezipamětí po celém světě.
@@ -27,16 +27,16 @@ Agent Synchronizace souborů Azure podporuje následující verze:
 |----|----------------------|--------------|------------------|
 | Kumulativní aktualizace ze srpna | 3.2.0.0 | 15. srpna 2018 | Podporované (doporučená verze) |
 | Obecná dostupnost | 3.1.0.0 | 19. července 2018 | Podporováno |
-| S kumulativní aktualizací z června | 3.0.13.0 | 29. června 2018 | Agent verze vyprší 4. září 2018 |
-| Aktualizace 2 | 3.0.12.0 | 22. května 2018 | Agent verze vyprší 4. září 2018 |
-| Kumulativní aktualizace dne | 2.3.0.0 | 8. května 2018 | Agent verze vyprší 4. září 2018 |
-| Kumulativní aktualizace. března | 2.2.0.0 | 12. března 2018 | Agent verze vyprší 4. září 2018 |
-| Kumulativní aktualizace. února | 2.1.0.0 | 28. února 2018 | Agent verze vyprší 4. září 2018 |
-| Aktualizace 1 | 2.0.11.0 | 8. února 2018 | Agent verze vyprší 4. září 2018 |
-| Od kumulativní aktualizace | 1.4.0.0 | 8. ledna 2018 | Agent verze vyprší 4. září 2018 |
-| S kumulativní aktualizací z listopadu | 1.3.0.0 | 30. listopadu 2017 | Agent verze vyprší 4. září 2018 |
-| Říjen kumulativní aktualizace | 1.2.0.0 | 31. října 2017 | Agent verze vyprší 4. září 2018 |
-| Počáteční verze Preview | 1.1.0.0 | 26. září 2017 | Agent verze vyprší 4. září 2018 |
+| S kumulativní aktualizací z června | 3.0.13.0 | 29. června 2018 | Verze agenta vyprší platnost 1. října 2018 |
+| Aktualizace 2 | 3.0.12.0 | 22. května 2018 | Verze agenta vyprší platnost 1. října 2018 |
+| Kumulativní aktualizace dne | 2.3.0.0 | 8. května 2018 | Verze agenta vyprší platnost 1. října 2018 |
+| Kumulativní aktualizace. března | 2.2.0.0 | 12. března 2018 | Verze agenta vyprší platnost 1. října 2018 |
+| Kumulativní aktualizace. února | 2.1.0.0 | 28. února 2018 | Verze agenta vyprší platnost 1. října 2018 |
+| Aktualizace 1 | 2.0.11.0 | 8. února 2018 | Verze agenta vyprší platnost 1. října 2018 |
+| Od kumulativní aktualizace | 1.4.0.0 | 8. ledna 2018 | Verze agenta vyprší platnost 1. října 2018 |
+| S kumulativní aktualizací z listopadu | 1.3.0.0 | 30. listopadu 2017 | Verze agenta vyprší platnost 1. října 2018 |
+| Říjen kumulativní aktualizace | 1.2.0.0 | 31. října 2017 | Verze agenta vyprší platnost 1. října 2018 |
+| Počáteční verze Preview | 1.1.0.0 | 26. září 2017 | Verze agenta vyprší platnost 1. října 2018 |
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Zásady aktualizace agenta Synchronizace souborů Azure
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
@@ -49,6 +49,9 @@ Tato verze zahrnuje následující opravy:
 
 ## <a name="agent-version-3100"></a>Verze agenta 3.1.0.0
 Následující poznámky k verzi platí pro verze 3.1.0.0 agenta Azure File Sync (vydané 19. července 2018).
+
+### <a name="evaluation-tool"></a>Nástroj pro vyhodnocení
+Před nasazením Azure File Sync, byste měli předem zvážit, jestli je kompatibilní s nástrojem pro vyhodnocení Azure File Sync systémem. Tento nástroj je AzureRM powershellu, který kontroluje potenciální problémy s systému souborů a datové sady, jako jsou nepodporované znaky nebo Nepodporovaná verze operačního systému. Pokyny pro instalaci a použití, naleznete v tématu [nástroj pro vyhodnocení](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-planning#evaluation-tool) části v Průvodci plánem. 
 
 ### <a name="agent-installation-and-server-configuration"></a>Instalace agenta a konfigurace serveru
 Další informace o tom, jak nainstalovat a nakonfigurovat agenta Azure File Sync se systémem Windows Server najdete v tématu [plánování nasazení služby Azure File Sync](storage-sync-files-planning.md) a [postup nasazení služby Azure File Sync](storage-sync-files-deployment-guide.md).

@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 07/20/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 65495893d93fddd6d8e13ae80720e002ac7d8efa
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 5732f6986750dfee49084e2744052bb54e3a8139
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307484"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382563"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-c-modules-for-azure-iot-edge"></a>Použití Visual Studio Code pro vývoj a ladění modulů jazyka C pro Azure IoT Edge
 
@@ -35,9 +35,7 @@ Vzhledem k tomu tento článek používá Visual Studio Code jako hlavní vývoj
 Jak vytvořit modul, je třeba Dockeru k vytvoření bitové kopie modulu a container registry k uložení bitové kopie modulu:
 * [Docker Community Edition](https://docs.docker.com/install/) na vývojovém počítači. 
 * [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) nebo [Docker Hubu](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
-
-   > [!TIP]
-   > Prototypu a místo registru cloudu pro účely testování můžete použít místní registru Dockeru. 
+   * Prototypu a místo registru cloudu pro účely testování můžete použít místní registru Dockeru. 
 
 K otestování modulu do zařízení, potřebujete aktivní služby IoT hub s alespoň jedno zařízení IoT Edge. Pokud chcete použít počítač jako zařízení IoT Edge, postupujte podle kroků v tomto rychlém startu pro [Windows](quickstart.md) nebo [Linux](quickstart-linux.md). 
 
@@ -46,16 +44,24 @@ K otestování modulu do zařízení, potřebujete aktivní služby IoT hub s al
 Podle následujících kroků vytvořte modul IoT Edge založené na Azure IoT C SDK pomocí Visual Studio Code a rozšíření Azure IoT Edge. Nejprve vytvořte řešení a pak vytvořte první modulu v tomto řešení. Každé řešení může obsahovat více než jeden modul. 
 
 1. Ve Visual Studio Code, vyberte **zobrazení** > **integrovaný terminál**.
-3. Vyberte **zobrazení** > **příkaz palety**. 
-4. V paletu příkazů zadejte a spusťte příkaz **Azure IoT Edge: nové řešení IoT Edge**.
+
+2. Vyberte **zobrazení** > **příkaz palety**. 
+
+3. V paletu příkazů zadejte a spusťte příkaz **Azure IoT Edge: nové řešení IoT Edge**.
 
    ![Spustit nové řešení IoT Edge](./media/how-to-develop-csharp-module/new-solution.png)
 
-5. Přejděte do složky, ve kterém chcete vytvořit nové řešení. Zvolte **vyberte složku**. 
-6. Zadejte název pro vaše řešení. 
-7. Vyberte **modulu C** jako šablona pro první modul v rámci řešení.
-8. Zadejte název modulu. Zvolte název, který je jedinečný v rámci vašeho registru kontejneru. 
-9. Zadejte název modulu úložiště imagí. VS Code autopopulates modulu název s **localhost:5000**. Nahraďte ho vlastním registru informace. Pokud používáte místní registru Dockeru pro testování, pak **localhost** je v pořádku. Pokud používáte Azure Container Registry, potom pomocí serveru přihlášení z nastavení svého registru. Přihlašovací server vypadá  **\<název registru\>. azurecr.io**.
+4. Přejděte do složky, ve kterém chcete vytvořit nové řešení. Zvolte **vyberte složku**. 
+
+5. Zadejte název pro vaše řešení. 
+
+6. Vyberte **modulu C** jako šablona pro první modul v rámci řešení.
+
+7. Zadejte název modulu. Zvolte název, který je jedinečný v rámci vašeho registru kontejneru. 
+
+8. Zadejte název modulu úložiště imagí. VS Code autopopulates modulu název s **localhost:5000**. Nahraďte ho vlastním registru informace. Pokud používáte místní registru Dockeru pro testování, pak **localhost** je v pořádku. Pokud používáte Azure Container Registry, potom pomocí serveru přihlášení z nastavení svého registru. Přihlašovací server vypadá  **\<název registru\>. azurecr.io**. V řetězci nahraďte pouze část localhost, název vašeho modulu neodstraňujte. 
+
+   ![Zadání úložiště imagí Dockeru](./media/how-to-develop-c-module/repository.png)
 
 VS Code přebírá informace k dispozici, vytvoří řešení IoT Edge a nahraje je v novém okně.
 
@@ -73,7 +79,7 @@ Existují čtyři položky v rámci řešení:
 
 ## <a name="develop-your-module"></a>Vývoj modulu
 
-Výchozí modul kód jazyka C, který je součástí řešení se nachází v **moduly** > **\<název modulu\>** > **main.c** . V modulu a soubor deployment.template.json nastaveny tak, aby mohli sestavit řešení, ji nasdílet do vašeho registru kontejneru a nasazení do zařízení pro začátek testování bez zásahu do jakéhokoli kódu. Modul je určený pro jednoduše trvat, než vstupní zdroj (v tomto případě tempSensor modulu, která simuluje data) a zřetězit ho do služby IoT Hub. 
+Výchozí modul kód jazyka C, který je součástí řešení se nachází v **moduly** > [název vašeho modulu] > **main.c**. V modulu a soubor deployment.template.json nastaveny tak, aby mohli sestavit řešení, ji nasdílet do vašeho registru kontejneru a nasazení do zařízení pro začátek testování bez zásahu do jakéhokoli kódu. Modul je určený pro jednoduše trvat, než vstupní zdroj (v tomto případě tempSensor modulu, která simuluje data) a zřetězit ho do služby IoT Hub. 
 
 Jakmile budete připraveni k přizpůsobení šablony jazyka C s vlastním kódem, použijte [sady SDK služby Azure IoT Hub](../iot-hub/iot-hub-devguide-sdks.md) vytvářet moduly, které řeší klíč musí pro řešení IoT, jako je zabezpečení, Správa zařízení a spolehlivost. 
 

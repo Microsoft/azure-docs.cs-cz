@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: cephalin
-ms.openlocfilehash: 191d42f43e500c7f8041a02aeba2fbcb7dfd5379
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 629a76ab5610625e14780d7b5c57d3979c2224c9
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226522"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344166"
 ---
 # <a name="customize-authentication-and-authorization-in-azure-app-service"></a>Přizpůsobení ověřování a autorizace ve službě Azure App Service
 
@@ -34,9 +34,9 @@ Abyste mohli rychle začít, najdete v jednom z následujících kurzů:
 * [Konfigurace aplikace pro použití přihlášení k účtu Microsoft](app-service-mobile-how-to-configure-microsoft-authentication.md)
 * [Konfigurace aplikace pro použití přihlášení k Twitteru](app-service-mobile-how-to-configure-twitter-authentication.md)
 
-## <a name="configure-multiple-sign-in-options"></a>Konfigurace více možností přihlášení
+## <a name="use-multiple-sign-in-providers"></a>Použití více poskytovatelů přihlášení
 
-Konfigurace portálu nenabízí klíč způsob, jak k dispozici několik možností přihlašování pro vaše uživatele (například Facebook a Twitter). Však není pro přidání funkce do vaší webové aplikace. Kroky jsou uvedeny následovně:
+Konfigurace portálu nenabízí klíč způsob, jak k dispozici více zprostředkovatelů přihlašování pro vaše uživatele (například Facebook a Twitter). Však není pro přidání funkce do vaší webové aplikace. Kroky jsou uvedeny následovně:
 
 V první **ověřování / autorizace** stránce na webu Azure Portal, nakonfigurujte všechny zprostředkovatele identity, které chcete povolit.
 
@@ -58,6 +58,50 @@ Chcete-li přesměrovat uživatele po-přihlášení se změnami na vlastní adr
 
 ```HTML
 <a href="/.auth/login/<provider>?post_login_redirect_url=/Home/Index">Log in</a>
+```
+
+## <a name="sign-out-of-a-session"></a>Odhlaste se z relace
+
+Uživatelé mohou spustit odesláním odhlášení `GET` požadavek na aplikaci `/.auth/logout` koncového bodu. `GET` Požadavek provede následující akce:
+
+- Vymaže soubory cookie pro ověřování z aktuální relace.
+- Odstraní aktuální uživatel tokeny z úložiště tokenů.
+- Pro Azure Active Directory a Google provede serverové odhlašování zprostředkovatele identity.
+
+Tady je jednoduchý odhlašování odkaz na webové stránce:
+
+```HTML
+<a href="/.auth/logout">Sign out</a>
+```
+
+Ve výchozím nastavení úspěšném odhlášení přesměruje klienta na adresu URL `/.auth/logout/done`. Na stránce post-sign-out přesměrování můžete změnit tak, že přidáte `post_logout_redirect_uri` parametr dotazu. Příklad:
+
+```
+GET /.auth/logout?post_logout_redirect_uri=/index.html
+```
+
+Doporučujeme vám [kódování](https://wikipedia.org/wiki/Percent-encoding) hodnotu `post_logout_redirect_uri`.
+
+Při používání plně kvalifikovaných adres URL, adresa URL musí být hostované ve stejné doméně nebo nakonfigurovat jako adresu URL povolené externí přesměrování pro aplikaci. V následujícím příkladu, a přesměrujte `https://myexternalurl.com` , který není hostované ve stejné doméně:
+
+```
+GET /.auth/logout?post_logout_redirect_uri=https%3A%2F%2Fmyexternalurl.com
+```
+
+Spuštěním následujícího příkazu [Azure Cloud Shell](../cloud-shell/quickstart.md):
+
+```azurecli-interactive
+az webapp auth update --name <app_name> --resource-group <group_name> --allowed-external-redirect-urls "https://myexternalurl.com"
+```
+
+## <a name="preserve-url-fragments"></a>Zachovat fragmenty adresy URL
+
+Po přihlášení k aplikaci, obvykle chtějí přesměrovat do stejné části na stejné stránce, jako například `/wiki/Main_Page#SectionZ`. Ale protože [URL fragmenty](https://wikipedia.org/wiki/Fragment_identifier) (například `#SectionZ`) se nikdy neodesílá do serveru, nejsou zachovány ve výchozím nastavení po přihlášení OAuth dokončí a přesměruje zpátky do vaší aplikace. Uživatelé pak získat neoptimální prostředí, když je budou potřebovat znovu přejděte do požadovaného ukotvení. Toto omezení se vztahuje na všechna řešení pro ověřování na straně serveru.
+
+Při ověřování služby App Service můžete zachovat URL fragmenty napříč přihlášení OAuth. K tomu, nastavit aplikaci názvem `WEBSITE_AUTH_PRESERVE_URL_FRAGMENT` k `true`. Můžete to provést [webu Azure portal](https://portal.azure.com), nebo jednoduše spuštěním následujícího příkazu [Azure Cloud Shell](../cloud-shell/quickstart.md):
+
+```azurecli-interactive
+az webapp config appsettings set --name <app_name> --resource-group <group_name> --settings WEBSITE_AUTH_PRESERVE_URL_FRAGMENT="true"
 ```
 
 ## <a name="access-user-claims"></a>Deklarace identity uživatele přístup

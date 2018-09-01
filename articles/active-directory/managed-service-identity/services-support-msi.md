@@ -1,6 +1,6 @@
 ---
-title: Služby Azure, které podporují spravované Identity služby
-description: Seznam služeb, které podporují identita spravované služby a ověřování Azure AD
+title: Služby Azure, které podporují spravované identity pro prostředky Azure
+description: Seznam služeb, které podporují spravované identity pro prostředky Azure a ověřování Azure AD
 services: active-directory
 author: daveba
 ms.author: daveba
@@ -9,22 +9,22 @@ ms.topic: conceptual
 ms.service: active-directory
 ms.component: msi
 manager: mtillman
-ms.openlocfilehash: d738abc225e2148460012d9fe200131882b1e698
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 4f7e672aa75d8344f0c4ae35ff2f573d1f48a0ea
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306163"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43337143"
 ---
-# <a name="services-that-support-managed-service-identity"></a>Služby, které podporují identita spravované služby 
+# <a name="services-that-support-managed-identities-for-azure-resources"></a>Služby, které podporují spravované identity pro prostředky Azure
 
-Identita spravované služby poskytuje služby Azure se automaticky spravované identity v Azure Active Directory. Pomocí spravované identity, můžete ověřit u jakékoli služby, který podporuje ověřování Azure AD bez nutnosti přihlašovací údaje ve vašem kódu. Připravujeme k integraci ověřování Identity spravované služby a služby Azure AD v Azure. Zkontrolujte back často aktualizací.
+Spravované identity pro prostředky Azure poskytuje služby Azure se automaticky spravované identity v Azure Active Directory. Pomocí spravované identity, můžete ověřit u jakékoli služby, který podporuje ověřování Azure AD bez nutnosti přihlašovací údaje ve vašem kódu. Připravujeme k integrační spravovaných identit pro prostředky Azure a ověřování Azure AD v Azure. Zkontrolujte back často aktualizací.
 
-## <a name="azure-services-that-support-managed-service-identity"></a>Služby Azure, které podporují spravované Identity služby
+## <a name="azure-services-that-support-managed-identities-for-azure-resources"></a>Služby Azure, které podporují spravované identity pro prostředky Azure
 
-Následující služby Azure podporují identita spravované služby.
+Následující služby Azure podporují spravované identity pro prostředky Azure:
 
-| Služba | Stav přiřazenou systémem | Uživatel přiřazený stav| Konfigurace | Získání tokenu |
+| Služba | Systém přiřadil stav | uživatel přiřazen stav| Konfigurace | Získání tokenu |
 | ------- | ------ | ---- | --------- | ----------- |
 | Azure Virtual Machines | Preview | Preview | [Azure Portal](qs-configure-portal-windows-vm.md)<br>[PowerShell](qs-configure-powershell-windows-vm.md)<br>[Azure CLI](qs-configure-cli-windows-vm.md)<br>[Šablony Azure Resource Manageru](qs-configure-template-windows-vm.md)<br>[REST](qs-configure-rest-vm.md) | [REST](how-to-use-vm-token.md#get-a-token-using-http)<br>[.NET](how-to-use-vm-token.md#get-a-token-using-c)<br>[Bash nebo nástroj Curl](how-to-use-vm-token.md#get-a-token-using-curl)<br>[Go](how-to-use-vm-token.md#get-a-token-using-go)<br>[PowerShell](how-to-use-vm-token.md#get-a-token-using-azure-powershell) |
 | Virtual Machine Scale Sets | Preview | Preview | [Azure Portal](qs-configure-portal-windows-vmss.md)<br>[PowerShell](qs-configure-powershell-windows-vmss.md)<br>[Azure CLI](qs-configure-cli-windows-vmss.md)<br>[Šablony Azure Resource Manageru](qs-configure-template-windows-vmss.md)<br>[REST](qs-configure-rest-vmss.md) | [REST](how-to-use-vm-token.md#get-a-token-using-http)<br>[.NET](how-to-use-vm-token.md#get-a-token-using-c)<br>[Bash nebo nástroj Curl](how-to-use-vm-token.md#get-a-token-using-curl)<br>[Go](how-to-use-vm-token.md#get-a-token-using-go)<br>[PowerShell](how-to-use-vm-token.md#get-a-token-using-azure-powershell)
@@ -36,7 +36,7 @@ Následující služby Azure podporují identita spravované služby.
 
 ## <a name="azure-services-that-support-azure-ad-authentication"></a>Podpora služby Azure AD ověření služby Azure
 
-Tyto služby podporují ověřování Azure AD a prošel testováním s využitím klientské služby, které používají identitu spravované služby.
+Tyto služby podporují ověřování Azure AD a prošel testováním s využitím klientské služby, které používají spravované identity pro prostředky Azure.
 
 | Služba | ID prostředku | Status | Datum | Přiřazení přístupu |
 | ------- | ----------- | ------ | ---- | ------------- |

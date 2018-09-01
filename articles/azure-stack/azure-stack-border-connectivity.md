@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2018
+ms.date: 08/30/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.openlocfilehash: 260c58ad9099a4532c8a6558cfcf5c13f0fc8d52
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 39edcb97f062693d11fd5c0ce332c206ebd4b54a
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39282004"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43343549"
 ---
 # <a name="border-connectivity"></a>Připojení k ohraničení 
 Plánování integrace sítě je důležitá povinná součást pro úspěšné nasazení Azure Stack integrované systémy, provoz a správu. Plánování připojení ohraničení začíná výběru, jestli se mají použít s dynamickým směrováním pomocí protokolu border gateway protocol (BGP). To vyžaduje přiřazení 16bitové číslo autonomního systému protokolu BGP (veřejné nebo soukromé) nebo pomocí statické směrování, kde výchozí statické trasy je přiřazená zařízení ohraničení.
@@ -31,7 +31,7 @@ Plánování integrace sítě je důležitá povinná součást pro úspěšné 
 ## <a name="bgp-routing"></a>Směrování protokolu BGP
 Pomocí o dynamický směrovací protokol, jako je protokol BGP zaručuje, že váš systém je vždy vědom změn v síti a usnadňuje správu. 
 
-Jak je znázorněno v následujícím diagramu, reklamní privátní IP adresy místo v přepínači TOR je omezen pomocí seznam předpon. Předpona seznamy zakazuje privátní podsítě IP a jeho použití jako mapu trasy pro připojení mezi TOR a ohraničení.
+Jak je znázorněno v následujícím diagramu, reklamní privátní IP adresy místo v přepínači TOR je omezen pomocí seznam předpon. Seznam předpon definuje privátní podsítě IP a jeho použití jako mapu trasy pro připojení mezi TOR a ohraničení.
 
 Nástroje pro vyrovnávání zatížení softwaru (SLB), spuštěné v Azure stacku řešení partnerský vztah TOR zařízení, takže ho můžete dynamicky inzerovat virtuální IP adresy.
 
@@ -44,13 +44,19 @@ Statické směrování vyžaduje další konfiguraci pro zařízení ohraničen�
 
 K integraci Azure Stack do vašeho síťového prostředí pomocí statické směrování, musí být připojené všechny čtyři fyzické propojení mezi ohraničením a zařízení sítě TOR a vysoké dostupnosti nelze zaručit kvůli funguje jak statické směrování.
 
-Hraniční zařízení musí mít nakonfigurovanou statické trasy ukazující na zařízení TOR P2P pro provoz směřující na externí síti nebo veřejné virtuální IP adresy a síťové infrastruktury. Statické trasy do sítě BMC vyžaduje pro nasazení. Zákazníci můžou rozhodnout pro statické trasy ponechte ohraničení pro přístup k některé prostředky, které se nacházejí v síti BMC.  Přidání statické trasy do *přepínač infrastruktury* a *přepnout správu* sítí je volitelné.
+Hraniční zařízení musí mít nakonfigurovanou odkazující na zařízení TOR P2P pro provoz směrovaný do statické trasy *externí* síti nebo veřejné virtuální IP adresy a *infrastruktury* sítě. Bude vyžadovat statické trasy do *BMC* a *externí* sítě pro nasazení. Operátory můžete nechat statické trasy v ohraničení pro přístup k prostředkům správy, které se nacházejí na *BMC* sítě. Přidání statické trasy do *přepínač infrastruktury* a *přepnout správu* sítí je volitelné.
 
 Zařízení TOR součástí nakonfigurované statické výchozí trasa odesílá veškerý provoz do zařízení ohraničení. Jedinou výjimkou provoz do výchozí pravidlo je privátní prostoru, který se zablokoval použít seznam řízení přístupu na TOR u připojení ohraničení.
 
 Statické směrování platí jenom pro odchozí připojení mezi přepínače TOR a ohraničení. Dynamické směrování protokolu BGP se používá v racku, protože je to důležitý nástroj SLB a další součásti a nemůže být zakázána nebo odebrat.
 
 ![Statické směrování](media/azure-stack-border-connectivity/static-routing.png)
+
+<sup>\*</sup> Po nasazení je volitelný sítě řadiče pro správu desky.
+
+<sup>\*\*</sup> Síťové přepínače infrastruktury je nepovinný – celé sítě mohou být součástí sítě ke správě přepínače.
+
+<sup>\*\*\*</sup> Ke správě přepínače sítě je povinný a mohou být přidány odděleně od přepínače infrastruktury sítě.
 
 ## <a name="transparent-proxy"></a>Transparentní proxy server
 Pokud vaše datové centrum vyžaduje veškerý provoz směrem k použití proxy serveru, musíte nakonfigurovat *transparentní proxy server* zpracovat veškerý provoz z rack, aby to zvládnul souladu se zásadami, oddělení provozu mezi zónami ve vaší síti.

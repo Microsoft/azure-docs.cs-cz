@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: a7d62531492695be6ec148c3bf7b9786b2a428cf
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: d5b01566f672309837f738e185820a0f13eda1c1
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247391"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382250"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Plánování nasazení Synchronizace souborů Azure
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
@@ -112,7 +112,7 @@ Chcete-li zobrazit výsledky ve sdíleném svazku clusteru:
 ```
 
 ### <a name="system-requirements"></a>Systémové požadavky
-- Serveru se systémem Windows Server 2012 R2 nebo Windows serveru 2016 
+- Serveru se systémem Windows Server 2012 R2 nebo Windows serveru 2016:
 
     | Verze | Podporované skladové položky | Možnosti podporovaného nasazení |
     |---------|----------------|------------------------------|
@@ -121,15 +121,15 @@ Chcete-li zobrazit výsledky ve sdíleném svazku clusteru:
 
     Budoucí verze Windows serveru se přidají při jejich vydání. Starší verze Windows mohou být přidány na základě zpětné vazby uživatelů.
 
-- Server s minimálně 2GB paměti
+    > [!Important]  
+    > Doporučujeme všechny servery, které používáte s Azure File Sync aktuální s nejnovějšími aktualizacemi ze služby Windows Update. 
+
+- Server s minimálně 2 GB paměti.
 
     > [!Important]  
-    > Pokud server běží na virtuálním počítači s povolenou dynamickou paměť, musí být virtuální počítač nakonfigurovaný s minimální hodnotě 2 048 MB paměti.
+    > Pokud na serveru běží na virtuálním počítači s povolenou dynamickou paměť, musí být virtuální počítač nakonfigurovaný s minimální MiB 2048 paměti.
     
-- Místně připojený svazek naformátovaný systémem souborů NTFS
-
-> [!Important]  
-> Doporučujeme všechny servery, které používáte s Azure File Sync aktuální s nejnovějšími aktualizacemi ze služby Windows Update. 
+- Místně připojený svazek naformátovaný systémem souborů NTFS.
 
 ### <a name="file-system-features"></a>Funkce systému souborů
 | Funkce | Podpora stavu | Poznámky |

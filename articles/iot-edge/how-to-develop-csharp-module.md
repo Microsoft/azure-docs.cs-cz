@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 06/27/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: e78a2c3492ebab2ac9f23f607e5bcaa0481003d9
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: a4d6d7bfe259e8616a51100162594315a5d37546
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43287794"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382423"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-c-modules-for-azure-iot-edge"></a>Použití Visual Studio Code pro vývoj a ladění modulů jazyka C# pro Azure IoT Edge
 
@@ -36,9 +36,7 @@ Jak vytvořit modul, třeba .NET k vytváření složce projektu Dockeru k vytvo
 * [.NET Core 2.1 SDK](https://www.microsoft.com/net/download).
 * [Docker Community Edition](https://docs.docker.com/install/) na vývojovém počítači. 
 * [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) nebo [Docker Hubu](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
-
-   > [!TIP]
-   > Prototypu a místo registru cloudu pro účely testování můžete použít místní registru Dockeru. 
+   * Prototypu a místo registru cloudu pro účely testování můžete použít místní registru Dockeru. 
 
 K otestování modulu do zařízení, potřebujete aktivní služby IoT hub s alespoň jedno zařízení IoT Edge. Pokud chcete použít počítač jako zařízení IoT Edge, postupujte podle kroků v tomto rychlém startu pro [Windows](quickstart.md) nebo [Linux](quickstart-linux.md). 
 
@@ -56,7 +54,9 @@ Podle následujících kroků vytvořte modul IoT Edge založené na rozhraní .
 6. Zadejte název pro vaše řešení. 
 7. Vyberte **modulu jazyka C#** jako šablona pro první modul v rámci řešení.
 8. Zadejte název modulu. Zvolte název, který je jedinečný v rámci vašeho registru kontejneru. 
-9. Zadejte název modulu úložiště imagí. VS Code autopopulates modulu název s **localhost:5000**. Nahraďte ho vlastním registru informace. Pokud používáte místní registru Dockeru pro testování, pak **localhost** je v pořádku. Pokud používáte Azure Container Registry, potom pomocí serveru přihlášení z nastavení svého registru. Přihlašovací server vypadá  **\<název registru\>. azurecr.io**.
+9. Zadejte název modulu úložiště imagí. VS Code autopopulates modulu název s **localhost:5000**. Nahraďte ho vlastním registru informace. Pokud používáte místní registru Dockeru pro testování, pak **localhost** je v pořádku. Pokud používáte Azure Container Registry, potom pomocí serveru přihlášení z nastavení svého registru. Přihlašovací server vypadá  **\<název registru\>. azurecr.io**. V řetězci nahraďte pouze část localhost, název vašeho modulu neodstraňujte.
+
+   ![Zadání úložiště imagí Dockeru](./media/how-to-develop-csharp-module/repository.png)
 
 VS Code přebírá informace k dispozici, vytvoří řešení IoT Edge a nahraje je v novém okně.
 
@@ -74,7 +74,7 @@ Existují čtyři položky v rámci řešení:
 
 ## <a name="develop-your-module"></a>Vývoj modulu
 
-Výchozí funkce Azure Functions se kód, který je součástí řešení nachází v **moduly** > **\<název modulu\>**   >   **Soubor program.cs**. V modulu a soubor deployment.template.json nastaveny tak, aby mohli sestavit řešení, ji nasdílet do vašeho registru kontejneru a nasazení do zařízení pro začátek testování bez zásahu do jakéhokoli kódu. Modul je určený pro jednoduše trvat, než vstupní zdroj (v tomto případě tempSensor modulu, která simuluje data) a zřetězit ho do služby IoT Hub. 
+Výchozí funkce Azure Functions se kód, který je součástí řešení nachází v **moduly** > [název vašeho modulu] > **Program.cs**. V modulu a soubor deployment.template.json nastaveny tak, aby mohli sestavit řešení, ji nasdílet do vašeho registru kontejneru a nasazení do zařízení pro začátek testování bez zásahu do jakéhokoli kódu. Modul je určený pro jednoduše trvat, než vstupní zdroj (v tomto případě tempSensor modulu, která simuluje data) a zřetězit ho do služby IoT Hub. 
 
 Jakmile budete připraveni k přizpůsobení šablony jazyka C# s vlastním kódem, použijte [sady SDK služby Azure IoT Hub](../iot-hub/iot-hub-devguide-sdks.md) vytvářet moduly, které řeší klíč musí pro řešení IoT, jako je zabezpečení, Správa zařízení a spolehlivost. 
 

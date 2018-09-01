@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 18f921fb718aeb7ae4add2836fbb6ffabd66668f
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 1a37a37dbed3b5ef9733f1105444529b4d255bcf
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445054"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43336777"
 ---
 # <a name="azure-active-directory-b2c-a-helper-tool-used-to-demonstrate-the-page-user-interface-ui-customization-feature"></a>Azure Active Directory B2C: Pomocným nástrojem pro použitá k předvedení funkci přizpůsobení stránky uživatelského rozhraní (UI)
 Tento článek, který je k [hlavní článek přizpůsobení uživatelského rozhraní](active-directory-b2c-reference-ui-customization.md) v Azure Active Directory (Azure AD) B2C. Následující kroky popisují, jak vykonávat funkci přizpůsobení uživatelského rozhraní stránky s použitím ukázky kódu HTML a CSS obsah, který nabízíme.
@@ -74,7 +74,7 @@ Můžete stáhnout [soubory nástroje a ukázky pomocné rutiny služby Azure Bl
 git clone https://github.com/azureadquickstarts/b2c-azureblobstorage-client
 ```
 
-Toto úložiště obsahuje `sample_templates\wingtip` adresáře, který obsahuje příklad HTML, CSS a obrázků. Pro tyto šablony k odkazování účtu služby Azure Blob Storage budete muset upravit soubory HTML. Otevřít `unified.html` a `selfasserted.html` a nahraďte všechny výskyty `https://localhost` adresou URL vlastní kontejner, který jste si poznamenali v předchozím kroku. Musíte použít absolutní cesta souborů HTML, protože v takovém případě bude obsluhovat HTML pomocí Azure AD v rámci domény `https://login.microsoftonline.com`.
+Toto úložiště obsahuje `sample_templates\wingtip` adresáře, který obsahuje příklad HTML, CSS a obrázků. Pro tyto šablony k odkazování účtu služby Azure Blob Storage budete muset upravit soubory HTML. Otevřít `unified.html` a `selfasserted.html` a nahraďte všechny výskyty `https://localhost` adresou URL vlastní kontejner, který jste si poznamenali v předchozím kroku. Musíte použít absolutní cesta souborů HTML, protože v takovém případě bude obsluhovat HTML pomocí Azure AD v rámci domény `tenantname.b2clogin.com`.
 
 ### <a name="upload-the-sample-files"></a>Nahrání ukázkových souborů
 Ve stejném úložišti, rozbalte `B2CAzureStorageClient.zip` a spustit `B2CAzureStorageClient.exe` soubor. Tento program bude jednoduše nahrát všechny soubory v adresáři, který zadáte do svého účtu úložiště a povolení CORS přístup k těmto souborům. Pokud jste postupovali podle výše uvedených kroků, soubory HTML a CSS nyní odkazuje na svůj účet úložiště. Všimněte si, že název účtu úložiště je část, která předchází `blob.core.windows.net`; například `contoso`. Můžete ověřit, že obsah je nahraná správně tak, že zkusíte přístup `https://{storage-account-name}.blob.core.windows.net/{container-name}/wingtip/unified.html` v prohlížeči. Použít také [ http://test-cors.org/ ](http://test-cors.org/) abyste měli jistotu, že obsah je teď zapnuté CORS. (Vyhledejte "XHR stav: 200" ve výsledcích.)

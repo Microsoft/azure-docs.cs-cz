@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/22/2017
 ms.author: mikeray
-ms.openlocfilehash: 11aecd9b2bc1bc1521a0e27fc3cd06fe7426a26d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: b4641c847db817df905f056847a26d003ac25fd1
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38307982"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43381791"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Nakonfigurujte jeden nebo více Always On naslouchacích procesů skupin dostupnosti - Resource Manageru
 Toto téma ukazuje, jak:
@@ -42,6 +42,8 @@ Související témata:
 
 ## <a name="configure-the-windows-firewall"></a>Konfigurace brány Windows Firewall
 Konfigurace Windows Firewall a povolit přístup k SQL serveru. Pravidla brány firewall umožňují připojení TCP ke portů používá instanci systému SQL Server a naslouchacího procesu kontroly. Podrobné pokyny najdete v tématu [konfigurovat bránu Windows Firewall pro přístup k databázovému stroji](http://msdn.microsoft.com/library/ms175043.aspx#Anchor_1). Vytvořte příchozí pravidlo pro port SQL serveru a portu sondy.
+
+Pokud jste omezení přístupu se skupinou zabezpečení sítě Azure, zajistěte, aby pravidla povolit zahrnují adres back-end IP adresy virtuálního počítače SQL serveru a nástroje pro vyrovnávání zatížení plovoucí IP adres pro naslouchacího procesu AG a IP adresu clusteru core Pokud je k dispozici.
 
 ## <a name="example-script-create-an-internal-load-balancer-with-powershell"></a>Ukázkový skript: Vytvoření interního nástroje pomocí prostředí PowerShell
 > [!NOTE]
@@ -195,6 +197,7 @@ Všimněte si, že následující pokyny pro naslouchací proces skupiny dostupn
 
 * Se interní nástroj pro vyrovnávání zatížení můžete přístup jenom k naslouchací proces z v rámci stejné virtuální síti.
 
+* Pokud jste omezení přístupu se skupinou zabezpečení sítě Azure, zajistěte, aby pravidla povolit zahrnují adres back-end IP adresy virtuálního počítače SQL serveru a nástroje pro vyrovnávání zatížení plovoucí IP adres pro naslouchacího procesu AG a IP adresu clusteru core Pokud je k dispozici.
 
 ## <a name="for-more-information"></a>Další informace
 Další informace najdete v tématu [skupiny dostupnosti nakonfigurujte Always On na virtuálním počítači Azure ručně](virtual-machines-windows-portal-sql-availability-group-tutorial.md).

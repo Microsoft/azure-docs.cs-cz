@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e25103d2fcbfc70be7f96f5c0e5fa6abe13fe393
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 36fad697758273246d567dfa1010f0e6bfc68939
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446737"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344558"
 ---
 # <a name="azure-active-directory-b2c-get-started-with-custom-policies"></a>Azure Active Directory B2C: Začínáme s vlastními zásadami
 
@@ -77,7 +77,7 @@ Azure AD B2C, musíte zaregistrovat dva další aplikace, které se používají
 4. Vyberte **Registrace nové aplikace**.
    * Pro **název**, použijte `IdentityExperienceFramework`.
    * Pro **typ aplikace**, použijte **webové aplikace nebo rozhraní API**.
-   * Pro **přihlašovací adresa URL**, použijte `https://login.microsoftonline.com/yourtenant.onmicrosoft.com`, kde `yourtenant` je název domény tenanta Azure AD B2C.
+   * Pro **přihlašovací adresa URL**, použijte `https://yourtenant.b2clogin.com/yourtenant.onmicrosoft.com`, kde `yourtenant` je název domény tenanta Azure AD B2C.
 5. Vyberte **Vytvořit**.
 6. Jakmile ho vytvoříte, vyberte nově vytvořenou aplikaci **IdentityExperienceFramework**.<br>
    * Vyberte **vlastnosti**.<br>
@@ -89,14 +89,14 @@ Azure AD B2C, musíte zaregistrovat dva další aplikace, které se používají
 1. Vyberte **Registrace nové aplikace**.
    * Pro **název**, použijte `ProxyIdentityExperienceFramework`.
    * Pro **typ aplikace**, použijte **nativní**.
-   * Pro **identifikátor URI pro přesměrování**, použijte `https://login.microsoftonline.com/yourtenant.onmicrosoft.com`, kde `yourtenant` je váš tenant Azure AD B2C.
+   * Pro **identifikátor URI pro přesměrování**, použijte `https://yourtenant.b2clogin.com/yourtenant.onmicrosoft.com`, kde `yourtenant` je váš tenant Azure AD B2C.
 1. Vyberte **Vytvořit**.
 1. Po jeho vytvoření, vyberte aplikaci, kterou **ProxyIdentityExperienceFramework**.<br>
    * Vyberte **vlastnosti**. <br>
    * Zkopírujte ID aplikace a uložit pro pozdější použití.
 1. Vyberte **požadovaná oprávnění**.
 1. Vyberte **Přidat**.
-1. Vyberte **vyberte rozhraní API**.
+1. Vyberte **Výběr rozhraní API**.
 1. Hledat název IdentityExperienceFramework. Vyberte **IdentityExperienceFramework** výsledky a pak klikněte na **vyberte**.
 1. Zaškrtněte políčko vedle položky **přístup IdentityExperienceFramework**a potom klikněte na tlačítko **vyberte**.
 1. Vyberte **Done** (Hotovo).

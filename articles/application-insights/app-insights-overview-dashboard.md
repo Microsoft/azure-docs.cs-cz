@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 08/31/2018
 ms.author: mbullwin
-ms.openlocfilehash: cf7c151121ddf8b2dc57d5db66a62f4d46e463de
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 313be519662570debdd7c78a43bbfe7c27e63296
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970968"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344626"
 ---
 # <a name="application-insights-overview-dashboard"></a>Application Insights přehled řídicího panelu
 
@@ -50,7 +50,7 @@ Pro přístup k řídicím panelu vyberte výchozí _řídicí panel aplikací_ 
 
 Pokud je to poprvé přístup k řídicím panelu, spustí se výchozí zobrazení:
 
-![Zobrazení řídicího panelu](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-06.png)
+![Zobrazení řídicího panelu](.\media\app-insights-overview-dashboard\0001-dashboard.png)
 
 Pokud se vám líbí, můžete ponechat výchozí zobrazení. Nebo můžete také přidat a odstranit z řídicího panelu aby co nejlépe vyhovovaly potřebám vašeho týmu.
 

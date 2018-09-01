@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
 ms.author: yashesvi
-ms.openlocfilehash: 2283a12845a3b334e29e3f48cbadb99ad508e459
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: c530fdca9d5fe499df680211a741bfd9950bb1fe
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301577"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382146"
 ---
-# <a name="manage-reservations-for-resources-in-azure"></a>Správa rezervací na prostředky v Azure
+# <a name="manage-reservations-for-azure-resources"></a>Správa rezervací pro prostředky Azure
 
 Po nákupu rezervace Azure, budete muset použít rezervace do jiného předplatného, změnit, kdo může spravovat rezervace nebo změnit obor rezervace. Můžete také rozdělit rezervace do dvou rezervace použít některé z instancí, které jste si zakoupili do jiného předplatného.
 
@@ -60,7 +60,7 @@ Delegovat správu přístupu k rezervaci:
 
 ## <a name="split-a-single-reservation-into-two-reservations"></a>Rozdělit jeden rezervace do dvou rezervace
 
- Po nákupu více než jednu instanci prostředků v rámci rezervace, můžete přiřadit instancí v rámci této rezervaci do různých předplatných. Všechny instance ve výchozím nastavení, mají jeden rozsah – buď jedno předplatné nebo sdílet. Například zakoupili 10 virtuální počítače Standard D2 a zadaný obor na odběr A. Teď můžete změnit obor 7 rezervací na předplatné A a zbývajících 3 k předplatnému služby serveru B. rozdělení rezervace umožňuje distribuci instancí detailní oboru správy. Přidělení pro předplatná můžete zjednodušit zvolením sdíleném oboru. Ale pro účely náklady na správu nebo plánování rozpočtu, můžete přidělit množství na konkrétní předplatné.
+ Po nákupu více než jednu instanci prostředků v rámci rezervace, můžete přiřadit instancí v rámci této rezervaci do různých předplatných. Všechny instance ve výchozím nastavení, mají jeden rozsah – buď jedno předplatné nebo sdílet. Například zakoupili 10 rezervované instance a zadaný obor na odběr A. Teď můžete změnit obor 7 rezervací na předplatné A a zbývajících 3 k předplatnému služby serveru B. rozdělení rezervace umožňuje distribuci instancí detailní oboru správy. Přidělení pro předplatná můžete zjednodušit zvolením sdíleném oboru. Ale pro účely náklady na správu nebo plánování rozpočtu, můžete přidělit množství na konkrétní předplatné.
 
  Můžete rozdělit rezervace do dvou rezervace ale Powershellu, rozhraní příkazového řádku, nebo prostřednictvím rozhraní API.
 
@@ -86,6 +86,7 @@ Delegovat správu přístupu k rezervaci:
     Split-AzureRmReservation -ReservationOrderId a08160d4-ce6b-4295-bf52-b90a5d4c96a0 -ReservationId b8be062a-fb0a-46c1-808a-5a844714965a -Quantity 3,2
     ```
 4. Spuštěním následujícího příkazu můžete aktualizovat obor:
+
     ```powershell
     Update-AzureRmReservation -ReservationOrderId a08160d4-ce6b-4295-bf52-b90a5d4c96a0 -ReservationId 5257501b-d3e8-449d-a1ab-4879b1863aca -AppliedScopeType Single -AppliedScope /subscriptions/15bb3be0-76d5-491c-8078-61fe3468d414
     ```
@@ -113,7 +114,9 @@ Další informace o rezervacích Azure, najdete v následujících článcích:
 - [Co jsou Azure rezervace?](billing-save-compute-costs-reservations.md)
 - [Předplatit si virtuální počítače se službou Azure Reserved VM Instances](../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [Předem za výpočetní prostředky, SQL Database s Azure SQL Database vyhrazené kapacity](../sql-database/sql-database-reserved-capacity.md)
+- [Předplatíte plány softwaru SUSE z Azure rezervací](../virtual-machines/linux/prepay-suse-software-charges.md)
 - [Vysvětlení, používání sleva za rezervaci virtuálních počítačů](billing-understand-vm-reservation-charges.md)
+- [Vysvětlení, jak se použije slevu plán softwaru SUSE Linux Enterprise](../billing/billing-understand-suse-reservation-charges.md)
 - [Vysvětlení, jak se používají jiné slevy na rezervaci](billing-understand-reservation-charges.md)
 - [Vysvětlení využití rezervace pro vaše předplatné s průběžnými platbami](billing-understand-reserved-instance-usage.md)
 - [Vysvětlení využití rezervaci u prováděcí smlouvy Enterprise](billing-understand-reserved-instance-usage-ea.md)

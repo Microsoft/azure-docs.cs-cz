@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/23/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 786f0dfd0cf3cf2e9ab0d16e26811fabd6bfc17c
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 28679ef07c2625908f7b08f808ff49c48ddb625b
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37440942"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43339864"
 ---
 # <a name="azure-active-directory-b2c-add-twitter-as-an-oauth1-identity-provider-by-using-custom-policies"></a>Azure Active Directory B2C: Přidání Twitteru jako zprostředkovatele identity OAuth1 pomocí vlastních zásad
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -36,9 +36,9 @@ Chcete-li použít Twitteru jako zprostředkovatele identity v Azure Active Dire
  
     a. Typ **název** a **popis** pro novou aplikaci. 
 
-    b. V **webu** vložte **https://login.microsoftonline.com**. 
+    b. V **webu** vložte **https://{tenant}.b2clogin.com**. Kde **{klient}** je název vašeho klienta (například https://contosob2c.b2clogin.com).
 
-    c. 4. Pro **adresu URL zpětného volání**, zadejte `https://login.microsoftonline.com/te/{tenant}/{policyId}/oauth1/authresp`. Nezapomeňte nahradit **{klient}** s názvem vašeho tenanta (například contosob2c.onmicrosoft.com) a **{policyId}** se svým id zásad (například b2c_1_policy).  **Zpětné volání adresy URL musí být v všechna písmena malá.** Měli byste přidat adresu URL zpětného volání pro všechny zásady, které používají přihlášení Twitter. Ujistěte se, že používáte `b2clogin.com` místo ` login.microsoftonline.com` Pokud používáte ho ve vaší aplikaci.
+    c. 4. Pro **adresu URL zpětného volání**, zadejte `https://{tenant}.b2clogin.com/te/{tenant}.onmicrosoft.com/{policyId}/oauth1/authresp`. Nezapomeňte nahradit **{klient}** s názvem vašeho tenanta (například contosob2c) a **{policyId}** se svým id zásad (například b2c_1_policy).  **Zpětné volání adresy URL musí být v všechna písmena malá.** Měli byste přidat adresu URL zpětného volání pro všechny zásady, které používají přihlášení Twitter. Ujistěte se, že používáte `b2clogin.com` místo ` login.microsoftonline.com` Pokud používáte ho ve vaší aplikaci.
 
     d. V dolní části stránky, přečtěte si a přijměte podmínky a pak vyberte **vytvoření aplikace Twitter**.
 

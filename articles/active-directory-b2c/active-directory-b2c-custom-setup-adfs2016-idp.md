@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: a81baae553bbf9c58d42372e25e90cd7588f2952
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 4380d21eded3f97e3b3107e78c9544a09d1b0bb2
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445071"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43338526"
 ---
 # <a name="azure-active-directory-b2c-add-adfs-as-a-saml-identity-provider-using-custom-policies"></a>Azure Active Directory B2C: Přidání služby AD FS jako zprostředkovatele identity SAML pomocí vlastních zásad
 
@@ -57,10 +57,10 @@ Přidat nový vztah důvěryhodnosti předávající strany pomocí modulu snap-
     ![Zadejte zobrazovaný název a poznámky](media/active-directory-b2c-custom-setup-adfs2016-idp/aadb2c-ief-setup-adfs2016-idp-rp-4.png)
 6.  Volitelné. Pokud máte volitelné token šifrovací certifikát, pak na **konfigurace certifikátu** klikněte na **Procházet** vyhledejte soubor certifikátu, a potom klikněte na **Další**.
     ![Konfigurace certifikátu](media/active-directory-b2c-custom-setup-adfs2016-idp/aadb2c-ief-setup-adfs2016-idp-rp-5.png)
-7.  Na **konfigurace adresy URL** stránky, vyberte **povolit podporu protokolu SAML 2.0 WebSSO** zaškrtávací políčko. V části **URL služby SAML 2.0 SSO předávající strany**, zadejte adresu URL koncového bodu služby zabezpečení kontrolního výrazu SAML (Markup Language) pro tento vztah důvěryhodnosti předávající strany a klikněte na **Další**.  Pro **URL služby SAML 2.0 SSO předávající strany**, vložte `https://login.microsoftonline.com/te/{tenant}.onmicrosoft.com/{policy}`. Nahraďte názvem vašeho tenanta (například contosob2c.onmicrosoft.com) {klient} a {zásad} nahraďte názvem zásady pro rozšíření (například B2C_1A_TrustFrameworkExtensions).
+7.  Na **konfigurace adresy URL** stránky, vyberte **povolit podporu protokolu SAML 2.0 WebSSO** zaškrtávací políčko. V části **URL služby SAML 2.0 SSO předávající strany**, zadejte adresu URL koncového bodu služby zabezpečení kontrolního výrazu SAML (Markup Language) pro tento vztah důvěryhodnosti předávající strany a klikněte na **Další**.  Pro **URL služby SAML 2.0 SSO předávající strany**, vložte `https://(tenant}.b2clogin.com/te/{tenant}.onmicrosoft.com/{policy}`. Nahraďte názvem vašeho tenanta (například contosob2c) {klient} a {zásad} nahraďte názvem zásady pro rozšíření (například B2C_1A_TrustFrameworkExtensions).
     > [!IMPORTANT]
     >Název zásad je ten, který signup_or_signin zásad zdědí v tomto případě je: `B2C_1A_TrustFrameworkExtensions`.
-    >Adresa URL může být například: https://login.microsoftonline.com/te/ **contosob2c**.onmicrosoft.com/**B2C_1A_TrustFrameworkBase**.
+    >Adresa URL může být například: https://**contosob2c**.b2clogin.com/te/**contosob2c**.onmicrosoft.com/**B2C_1A_TrustFrameworkBase**.
 
     ![Předávající strana adresa URL služby SAML 2.0 SSO](media/active-directory-b2c-custom-setup-adfs2016-idp/aadb2c-ief-setup-adfs2016-idp-rp-6.png)
 8. Na **konfigurovat identifikátory** stránky, zadejte stejnou adresu URL jako v předchozím kroku, klikněte na tlačítko **přidat** je přidat do seznamu, a pak klikněte na **Další**.

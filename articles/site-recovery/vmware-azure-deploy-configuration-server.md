@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 7bbcaa82b1072b8cbdea015195a8da03ceb3a25f
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 02dc4657f6c594242d12e3eca270a3549b77bf02
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056755"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43337754"
 ---
 # <a name="deploy-a-configuration-server"></a>Nasazení konfiguračního serveru
 
@@ -81,7 +81,7 @@ Pokud chcete přidat další síťový adaptér ke konfiguračnímu serveru, př
 
 1. V inventáři konzole vSphere Client klikněte pravým tlačítkem na virtuální počítač a vyberte **Edit Settings** (Upravit nastavení).
 2. V části **Hardware** vyberte **Add** (Přidat) > **Ethernet Adapter** (Adaptér sítě Ethernet). Pak vyberte **Další**.
-3. Vyberte typ adaptéru a síť. 
+3. Vyberte typ adaptéru a síť.
 4. Chcete-li připojit virtuální síťové karty, pokud je zapnutý virtuální počítač, vyberte **připojit na zapnutí**. Potom vyberte **Další** > **Dokončit** > **OK**.
 
 ## <a name="register-the-configuration-server-with-azure-site-recovery-services"></a>Registrace konfiguračního serveru pomocí služby Azure Site Recovery
@@ -102,7 +102,7 @@ Pokud chcete přidat další síťový adaptér ke konfiguračnímu serveru, př
 
     > [!NOTE]
     > Po registraci, neexistuje žádný flexibilitu, chcete-li změnit trezor služby recovery services.
-    
+
 3. V **nainstalovat software třetí strany**,
 
     |Scénář   |Postup  |
@@ -144,6 +144,10 @@ Pokud chcete přidat další síťový adaptér ke konfiguračnímu serveru, př
 ## <a name="upgrade-the-configuration-server"></a>Upgradujte konfigurační server
 
 Konfigurační server upgradovat na nejnovější verzi, přečtěte si uvedeného postupu [zde](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)
+
+## <a name="manage-the-configuration-server"></a>Správa konfiguračního serveru
+
+Vyhnout se přerušením v probíhající replikaci, ujistěte se, že IP adresa konfiguračního serveru nezmění po registraci konfiguračního serveru k trezoru. Další informace o běžných úloh správy serveru konfigurace [tady](vmware-azure-manage-configuration-server.md).
 
 ## <a name="troubleshoot-deployment-issues"></a>Řešení problémů při nasazování
 

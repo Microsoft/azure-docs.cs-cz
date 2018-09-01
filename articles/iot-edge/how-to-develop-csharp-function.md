@@ -8,12 +8,12 @@ ms.date: 06/26/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: bf2d1af66cc3ecc35dafe3bcd43bf10399d71641
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 4b4f9bd1c7390d64a0db08b55bfb777498a10cb0
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39346711"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382701"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-azure-functions-for-azure-iot-edge"></a>Použití Visual Studio Code pro vývoj a ladění Azure functions pro Azure IoT Edge
 
@@ -33,12 +33,11 @@ Tento článek používá jako hlavní vývojový nástroj Visual Studio Code. I
 * [Rozšíření docker](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)
 
 Jak vytvořit modul, třeba .NET k vytváření složce projektu Dockeru k vytvoření bitové kopie modulu a container registry k uložení bitové kopie modulu:
+
 * [.NET core 2.1 SDK](https://www.microsoft.com/net/download)
 * [Docker Community Edition](https://docs.docker.com/install/) na vývojovém počítači 
 * [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) nebo [Docker Hubu](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
-
-   > [!TIP]
-   > Prototypu a místo registru cloudu pro účely testování můžete použít místní registru Dockeru. 
+   * Prototypu a místo registru cloudu pro účely testování můžete použít místní registru Dockeru. 
 
 K otestování modulu do zařízení, potřebujete aktivní služby IoT hub s alespoň jedno zařízení IoT Edge. Pokud chcete použít počítač jako zařízení IoT Edge, postupujte podle kroků v tomto rychlém startu pro [Windows](quickstart.md) nebo [Linux](quickstart-linux.md). 
 
@@ -56,7 +55,9 @@ Proveďte tyto kroky k vytvoření řešení IoT Edge, který má funkce modulu 
 6. Zadejte název pro vaše řešení. 
 7. Zvolte **Azure Functions – C#** jako šablona pro první modul v rámci řešení.
 8. Zadejte název modulu. Zvolte název, který je jedinečný v rámci vašeho registru kontejneru. 
-9. Zadejte úložiště imagí pro modul. VS Code autopopulates modulu název s **localhost:5000**. Nahraďte ho vlastním registru informace. Pokud používáte místní registru Dockeru pro testování, pak **localhost** je v pořádku. Pokud používáte Azure Container Registry, potom pomocí serveru přihlášení z nastavení svého registru. Přihlašovací server vypadá  **\<název registru\>. azurecr.io**.
+9. Zadejte úložiště imagí pro modul. VS Code autopopulates modulu název s **localhost:5000**. Nahraďte ho vlastním registru informace. Pokud používáte místní registru Dockeru pro testování, pak **localhost** je v pořádku. Pokud používáte Azure Container Registry, potom pomocí serveru přihlášení z nastavení svého registru. Přihlašovací server vypadá  **\<název registru\>. azurecr.io**. V řetězci nahraďte pouze část localhost, název vašeho modulu neodstraňujte.
+
+   ![Zadání úložiště imagí Dockeru](./media/how-to-develop-csharp-function/repository.png)
 
 VS Code přebírá informace k dispozici, vytvoří se projekt Azure Functions hraničních zařízeních IoT řešení a pak načte v novém okně.
 
@@ -73,7 +74,7 @@ Existují čtyři položky v rámci řešení:
 
 ## <a name="develop-your-module"></a>Vývoj modulu
 
-Výchozí funkce Azure Functions se kód, který je součástí řešení nachází v **moduly** > **\<název modulu\>**   >   **EdgeHubTrigger-Csharp** > **run.csx**. V modulu a soubor deployment.template.json nastaveny tak, aby mohli sestavit řešení, ji nasdílet do vašeho registru kontejneru a nasazení do zařízení pro začátek testování bez zásahu do jakéhokoli kódu. Modul je určený pro jednoduše trvat, než vstupní zdroj (v tomto případě tempSensor modulu, která simuluje data) a zřetězit ho do služby IoT Hub. 
+Výchozí funkce Azure Functions se kód, který je součástí řešení nachází v **moduly** > [název vašeho modulu] > **EdgeHubTrigger-Csharp** > **run.csx** . V modulu a soubor deployment.template.json nastaveny tak, aby mohli sestavit řešení, ji nasdílet do vašeho registru kontejneru a nasazení do zařízení pro začátek testování bez zásahu do jakéhokoli kódu. Modul je určený pro jednoduše trvat, než vstupní zdroj (v tomto případě tempSensor modulu, která simuluje data) a zřetězit ho do služby IoT Hub. 
 
 Jakmile budete připraveni k přizpůsobení šablony funkce Azure Functions s vlastním kódem, použijte [sady SDK služby Azure IoT Hub](../iot-hub/iot-hub-devguide-sdks.md) vytvářet moduly, které řeší klíč musí pro řešení IoT, jako je zabezpečení, Správa zařízení a spolehlivost. 
 
@@ -85,7 +86,7 @@ Jakmile budete připraveni k přizpůsobení šablony funkce Azure Functions s v
 2. Znovu sestavte řešení. V nástroji VS Code paletu příkazů, zadejte a spusťte příkaz **Azure IoT Edge: řešení IoT Edge sestavení**.
 3. V Průzkumníku zařízení centra IoT Azure, klikněte pravým tlačítkem na ID zařízení IoT Edge a pak vyberte **vytvoření nasazení pro hraniční zařízení**. Vyberte `deployment.json` soubor `config` složky. Zobrazí se vám nasazení s ID nasazení, v terminálu VS Code integrované se úspěšně vytvořil.
 
-Kontrola stavu kontejneru v Průzkumníku VS Code Dockeru nebo spuštěním `docker images` příkazu v terminálu.
+Kontrola stavu kontejneru v Průzkumníku VS Code Dockeru nebo spuštěním `docker ps` příkazu v terminálu.
 
 ## <a name="start-debugging-c-functions-in-vs-code"></a>Spuštění ladění funkcí jazyka C# ve VS Code
 1. VS Code uchovává informace o konfiguraci v ladění `launch.json` soubor umístěný ve `.vscode` složky v pracovním prostoru. To `launch.json` soubor byl vygenerován při vytvoření nového řešení IoT Edge. Aktualizuje pokaždé, když přidáte nový modul, který podporuje ladění. Přejděte do zobrazení ladění. Vyberte odpovídající konfigurační soubor ladění. Název možnosti ladění by měl být podobný **ModuleName vzdálené ladění (.NET Core)**.

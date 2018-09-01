@@ -11,78 +11,110 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: pim
-ms.date: 04/02/2018
+ms.date: 08/30/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 901eb5ef43ddb2840ed7a3d83fc08f2f05849461
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 9ad4965ccd86f88a61b5f6fb8f540d76e472ea69
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189731"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43345291"
 ---
 # <a name="configure-azure-resource-role-settings-in-pim"></a>Konfigurace nastavení role prostředků Azure v PIM
 
-Při konfiguraci nastavení role definovat výchozí nastavení, které se použijí pro přiřazení v prostředí Privileged Identity Management (PIM). Chcete-li definovat toto nastavení pro váš prostředek, vyberte **nastavení Role** kartu v levém podokně. Chcete-li zobrazit aktuální možnosti můžete také vybrat tlačítko Nastavení role z panelu akcí (v libovolnou roli).
+Při konfiguraci nastavení role prostředků Azure, můžete definovat výchozí nastavení, které se použijí na přiřazení role prostředků Azure v Azure AD Privileged Identity Management (PIM). Použijte následující postupy ke konfiguraci pracovního postupu schvalování a určit, kdo může schválit nebo zamítnout žádosti.
 
-## <a name="overview"></a>Přehled
+## <a name="open-role-settings"></a>Otevřete nastavení role
 
-S schvalovací pracovní postup v Privileged Identity Management (PIM) pro role prostředků Azure můžete správci dále chránit nebo omezit přístup k důležitým prostředkům. To znamená správci můžou k aktivaci vyžadovat schválení přiřazení rolí. 
+Postupujte podle těchto kroků a otevřete nastavení pro roli prostředků Azure.
 
-Koncept hierarchii prostředků je jedinečné pro role prostředků Azure. Díky této hierarchii mohou dědičnosti přiřazení rolí z nadřazeného objektu prostředku směrem dolů na všechny podřízené prostředky v rámci nadřazeného kontejneru. 
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) jako uživatel, který je členem skupiny [správce privilegovaných rolí](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) role.
 
-Příklad: Bob, správce prostředků, používá PIM přiřadit Alice jako oprávněného člena do role vlastník předplatného Contoso. Alice je tohoto přiřazení oprávnění vlastníka u všech kontejnerů skupiny prostředků v rámci předplatného Contoso. Alice je také vhodné vlastníkem všech prostředků (jako jsou virtuální počítače) v rámci jednotlivých skupin prostředků předplatného. 
+1. Otevřít **Azure AD Privileged Identity Management**.
 
-Předpokládejme, existují tři skupiny prostředků v předplatném Contoso: Fabrikam testu, vývojáře Fabrikam a Fabrikam Prod. Každá z těchto skupin prostředků obsahuje jeden virtuální počítač.
+1. Klikněte na tlačítko **prostředky Azure**.
 
-Nastavení PIM jsou nakonfigurována pro každou roli prostředku. Na rozdíl od přiřazení tato nastavení nejsou děděna a platí výhradně pro role prostředků. [Další informace o viditelnosti prostředku a oprávněnými přiřazeními](pim-resource-roles-eligible-visibility.md).
+1. Klikněte na prostředek, který chcete spravovat, například předplatné nebo skupinu pro správu.
 
-Pokračování příkladu s: Bob používá PIM tak, aby vyžadovala všem členům v roli vlastník žádosti o schválení předplatného Contoso aktivovat. Pomáhá chránit prostředky ve skupině prostředků výrobní společnosti Fabrikam, Bob také vyžaduje schválení pro členy role vlastníka tohoto prostředku. Role vlastník ve společnosti Fabrikam testování a vývoj Fabrikam nevyžadují schválení pro aktivaci.
+    ![Seznam prostředků Azure pro správu](./media/pim-resource-roles-configure-role-settings/resources-list.png)
 
-Když Alice žádosti o aktivaci její roli vlastníka předplatného Contoso, approver musí schválit nebo zamítnout svůj požadavek předtím, než uživatel v roli aktivní. Pokud se rozhodne Alice [oboru její aktivace](pim-resource-roles-activate-your-roles.md#apply-just-enough-administration-practices) do skupiny prostředků výrobní společnost Fabrikam musí Schvalte nebo zamítněte tuto žádost příliš schvalovatele. Ale pokud se Alice rozhodne k určení rozsahu jednoho nebo obou Fabrikam nebo vývojáře Fabrikam její aktivace, schválení není potřeba.
+1. Klikněte na tlačítko **nastavení Role**.
 
-Pracovní postup schválení nemusí být nezbytné pro všechny členy role. Představte si třeba situaci, kde vaše organizace zaměstná několik smlouvy přidruží k vývoji aplikace, která se spustí v rámci předplatného Azure. Jako správce prostředků chcete zaměstnance, kteří mají mít oprávněného přístupu bez vyžadovaným schválením, ale přidruží kontraktu musí žádost o schválení. Konfigurace pracovního postupu schvalování pro pouze kontraktu associates, můžete vytvořit vlastní role se stejnými oprávněními jako role přiřazená na zaměstnance. Může vyžadovat schválení pro aktivaci této vlastní role. [Další informace o vlastních rolích](pim-resource-roles-custom-role-policy.md).
+    ![Nastavení role](./media/pim-resource-roles-configure-role-settings/resources-role-settings.png)
 
-Ke konfiguraci pracovního postupu schvalování a určit, který můžete schválit nebo odmítnout požadavky, použijte následující postupy.
+1. Klikněte na roli, jehož nastavení chcete konfigurovat.
+
+    ![Podrobnosti nastavení role](./media/pim-resource-roles-configure-role-settings/resources-role-setting-details.png)
+
+1. Klikněte na tlačítko **upravit** a otevřete tak podokno nastavení Role.
+
+    ![Upravit nastavení rolí](./media/pim-resource-roles-configure-role-settings/resources-role-settings-edit.png)
+
+    V podokně nastavení Role pro každou roli existuje několik nastavení, která můžete konfigurovat.
+
+## <a name="assignment-duration"></a>Doba trvání přiřazení
+
+Můžete vybrat ze dvou možností doba trvání přiřazení pro každý typ přiřazení (oprávněných a aktivních), při konfiguraci nastavení pro roli. Tyto možnosti se výchozí maximální doba, kdy je člen přiřazeny k roli v PIM.
+
+Můžete zvolit jednu z těchto **oprávněné** možnosti doba trvání přiřazení:
+
+| | |
+| --- | --- |
+| **Povolit trvalé oprávněné přiřazení** | Správci prostředků můžete přiřadit trvalé oprávněné členství. |
+| **Platnost oprávněných přiřazení po** | Správci prostředků můžete nutné, aby všechny oprávněné přiřazení zadaný počáteční a koncové datum. |
+
+A můžete zvolit jednu z těchto **aktivní** možnosti doba trvání přiřazení:
+
+| | |
+| --- | --- |
+| **Povolit trvalé aktivní přiřazení** | Správci prostředků můžete přiřadit trvalé aktivními členy. |
+| **Platnost aktivních přiřazení po** | Správci prostředků můžete nutné, aby všechny aktivní přiřazení zadaný počáteční a koncové datum. |
+
+> [!NOTE] 
+> Všechna přiřazení, které mají zadaného koncového data můžete obnovit ve Správci prostředků. Navíc členy můžete zahájit samoobslužných žádostí do [rozšíření nebo obnovení přiřazení rolí](pim-resource-roles-renew-extend.md).
+
+## <a name="require-multi-factor-authentication"></a>Vyžadovat vícefaktorové ověřování
+
+PIM umožňuje volitelné vynucování Azure Multi-Factor Authentication (MFA) pro dva různé scénáře.
+
+### <a name="require-multi-factor-authentication-on-active-assignment"></a>Při aktivním přiřazení vyžadovat vícefaktorové ověřování
+
+V některých případech můžete chtít přiřadit člena k roli na krátkou dobu (jeden den, například). V takovém případě nepotřebují přiřazených členů na žádost o aktivaci. V tomto scénáři nelze PIM vynucení vícefaktorového ověřování, když člen používá přiřazení role, protože je již aktivní v roli od okamžiku, kdy jsou přiřazeny.
+
+Tak, aby byl správce prostředků splnění přiřazení kdo, Řekněme, že jsou, můžete vynutit vícefaktorové ověřování při aktivním přiřazení tak, že zkontrolujete **při aktivním přiřazení vyžadovat Vícefaktorové ověřování** pole.
+
+### <a name="require-multi-factor-authentication-on-activation"></a>Vyžadovat Multi-Factor Authentication při aktivaci
+
+Může vyžadovat oprávněné členy role ke spuštění MFA, před aktivací. Tento proces zajišťuje, že uživatel, který žádá o tom, že se aktivace, který říká, že jsou s jistotou přiměřené. Vynucování této možnosti chrání důležité prostředky v situacích, pokud uživatelský účet může být ohrožený.
+
+Tak, aby vyžadovala oprávněného člena prováděný aktivace MFA, zkontrolujte, **vyžadovat Vícefaktorové ověřování při aktivaci** pole.
+
+## <a name="activation-maximum-duration"></a>Maximální doba trvání aktivace
+
+Použití **maximální doba trvání aktivace** posuvník nastavit maximální dobu v hodinách, že role zůstane aktivní, než vyprší její platnost. Tato hodnota může být v rozmezí 1 až 24 hodin.
+
+## <a name="require-justification"></a>Vyžadovat odůvodnění
+
+Můžete vyžadovat, aby členové zadejte odůvodnění na aktivní přiřazení nebo při aktivaci. Chcete-li vyžadovat odůvodnění, zkontrolujte **při aktivním přiřazení vyžadovat odůvodnění** pole nebo **při aktivaci vyžadovat odůvodnění** pole.
 
 ## <a name="require-approval-to-activate"></a>K aktivaci vyžadovat schválení
 
-1. Přejděte do PIM na portálu Azure portal a vyberte prostředek ze seznamu.
+Pokud chcete k aktivaci role vyžadovat schválení, postupujte podle těchto kroků.
 
-   !["Azure resources" podokno s vybraný prostředek](media/azure-pim-resource-rbac/aadpim_manage_azure_resource_some_there.png)
+1. Zkontrolujte, **k aktivaci vyžadovat schválení** zaškrtávací políčko.
 
-2. V levém podokně vyberte **nastavení Role**.
+1. Klikněte na tlačítko **vybrat schvalovatele** a otevřete tak podokno členů nebo skupin Select.
 
-3. Vyhledejte a vyberte roli a pak vyberte **upravit** ke změně nastavení.
+    ![Vyberte člena nebo skupinu.](./media/pim-resource-roles-configure-role-settings/resources-role-settings-select-approvers.png)
 
-   ![Tlačítko "Upravit" pro roli operátora](media/azure-pim-resource-rbac/aadpim_rbac_role_settings_view_settings.png)
+1. Vyberte alespoň jeden člen nebo skupinu a potom klikněte na tlačítko **vyberte**. Můžete přidat libovolnou kombinaci členové a skupiny. Musíte vybrat aspoň jeden schvalovatel. Neexistují žádné výchozí schvalovatele.
 
-4. V **aktivace** vyberte **k aktivaci vyžadovat schválení** zaškrtávací políčko.
+    Vyberte požadované možnosti se zobrazí v seznamu vybraných schvalovatelů.
 
-   ![Část "Aktivace" nastavení role](media/azure-pim-resource-rbac/aadpim_rbac_settings_require_approval_checkbox.png)
-
-## <a name="specify-approvers"></a>Zadat schvalovatele
-
-Klikněte na tlačítko **vybrat schvalovatele** otevřít **vyberte uživatele nebo skupiny** podokně.
-
->[!NOTE]
->Musíte vybrat aspoň jeden uživatel nebo skupina se aktualizovat nastavení. Neexistují žádné výchozí schvalovatele.
-
-Správci prostředků můžete přidat libovolnou kombinací uživatelů a skupin do seznamu schvalovatele. 
-
-!["Vybrat uživatele nebo skupinu" podokno s uživatelem vybraného](media/azure-pim-resource-rbac/aadpim_rbac_role_settings_select_approvers.png)
-
-## <a name="request-approval-to-activate"></a>Žádost o schválení pro aktivaci
-
-Odesílání žádostí o schválení nemá žádný vliv na postup, který člen musí postupovat při aktivaci. [Projděte si postup, chcete-li aktivovat roli](pim-resource-roles-activate-your-roles.md).
-
-Pokud člen požadovaný aktivace role, která vyžaduje schválení a role se už nevyžaduje, můžete zrušit člen žádosti v PIM.
-
-Pokud chcete zrušit, přejděte do PIM a vyberte **Moje žádosti**. Vyhledat žádosti a vyberte **zrušit**.
-
-![Podokno "Požadavky"](media/azure-pim-resource-rbac/aadpim_rbac_role_approval_request_pending.png)
+1. Po zadání všech vašich nastavení role, klikněte na tlačítko **aktualizace** uložte provedené změny.
 
 ## <a name="next-steps"></a>Další postup
 
-- [Vyžadovat vícefaktorové ověřování pro role prostředků Azure v PIM](pim-resource-roles-require-mfa.md)
+- [Přiřazení role prostředků Azure v PIM](pim-resource-roles-assign-roles.md)
 - [Konfigurace výstrah zabezpečení pro role prostředků Azure v PIM](pim-resource-roles-configure-alerts.md)

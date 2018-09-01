@@ -11,14 +11,14 @@ ms.component: data-science-vm
 ms.workload: data-services
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2017
+ms.date: 08/30/2018
 ms.author: gokuma
-ms.openlocfilehash: f0fe2bde039cd209514d0cbc4842b20cd4b5fb99
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: b01ef3701ffb46da57c52e5fe73828ec4252b074
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42444038"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344756"
 ---
 # <a name="provision-the-windows-data-science-virtual-machine-on-azure"></a>Zřídit Windows virtuální počítač pro datové vědy v Azure
 Microsoft Data virtuálního počítače VĚDY je image virtuálního počítače (VM) Windows Azure. Má předinstalované a nakonfigurovanou řadu nástrojů, které se používají pro analýzu dat a strojové učení. Tyto nástroje jsou zahrnuty:
@@ -66,7 +66,7 @@ Chcete-li vytvořit virtuální počítač Microsoft datové vědy, musíte mít
 ## <a name="create-your-microsoft-data-science-virtual-machine"></a>Vytvoření virtuálního počítače s Microsoft Data Science
 K vytvoření instance z Microsoft virtuální počítač pro datové vědy, postupujte podle těchto kroků:
 
-1. Přejděte na virtuální počítač [webu Azure portal](https://portal.azure.com/#create/microsoft-ads.windows-data-science-vmwindows2016).
+1. Přejděte na virtuální počítač [webu Azure portal](https://portal.azure.com/#create/microsoft-dsvm.dsvm-windowsserver-2016). Můžete být vyzváni k přihlášení ke svému účtu Azure, pokud ještě nejste přihlášeni.
 1. Vyberte **vytvořit** tlačítko v dolní části mají být provedeny do průvodce.
 
   ![Konfigurace data vědy vm](./media/provision-vm/configure-data-science-virtual-machine.png) 

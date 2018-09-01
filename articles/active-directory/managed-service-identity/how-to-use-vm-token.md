@@ -1,6 +1,6 @@
 ---
-title: Použití Azure VM identita spravované služby k získání přístupového tokenu
-description: Podrobné pokyny a příklady použití MSI virtuálního počítače Azure k získání OAuth přístupový token.
+title: Použití spravované identity pro prostředky Azure na virtuálním počítači k získání přístupového tokenu
+description: Podrobné pokyny a příklady použití spravované identity pro prostředky Azure na virtuálních počítačích k získání přístupového tokenu OAuth.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: daveba
-ms.openlocfilehash: 42ac1cc7dd50f46ada263089437740e680928e70
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 6bb2fa30d79093eab2259cc8234115cfcd1fd1c3
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39596048"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43339326"
 ---
-# <a name="how-to-use-an-azure-vm-managed-service-identity-msi-for-token-acquisition"></a>Použití Azure VM Identity spravované služby (MSI) pro získání tokenu 
+# <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Jak získat přístupový token pomocí spravované identity pro prostředky Azure na Virtuálním počítači Azure 
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]  
 
-Identita spravované služby poskytuje služby Azure se automaticky spravované identity v Azure Active Directory. Tuto identitu můžete použít k ověření na libovolnou službu, která podporuje ověřování Azure AD, aniž by bylo přihlašovací údaje ve vašem kódu. 
+Spravované identity pro prostředky Azure poskytuje služby Azure se automaticky spravované identity v Azure Active Directory. Tuto identitu můžete použít k ověření na libovolnou službu, která podporuje ověřování Azure AD, aniž by bylo přihlašovací údaje ve vašem kódu. 
 
 Tento článek obsahuje příklady různých kódu a skriptů pro získání tokenu, jakož i pokyny důležitá témata, jako je zpracování vypršení platnosti tokenu a chyby protokolu HTTP. 
 
@@ -37,25 +37,25 @@ Pokud máte v plánu pomocí prostředí Azure PowerShell příklady v tomto čl
 
 
 > [!IMPORTANT]
-> - Všechny ukázky kódu či skript v tomto článku předpokládá, že klient je spuštěný na virtuálním počítači se identita spravované služby. Pomocí funkce "Připojení" virtuálního počítače na webu Azure Portal, se vzdáleně připojit k virtuálnímu počítači. Podrobnosti o povolení MSI virtuálního počítače najdete v tématu [nakonfigurovat virtuálním počítači Identity spravované služby (MSI) pomocí webu Azure portal](qs-configure-portal-windows-vm.md), nebo jeden z variant článků (pomocí Powershellu, rozhraní příkazového řádku, šablonu nebo pomocí sady Azure SDK). 
+> - Všechny ukázky kódu či skript v tomto článku předpokládá, že klient je spuštěný na virtuálním počítači pomocí spravované identity pro prostředky Azure. Pomocí funkce "Připojit" virtuální počítač na webu Azure Portal, se vzdáleně připojit k virtuálnímu počítači. Podrobnosti o povolení spravovaných identit pro prostředky Azure na virtuálním počítači, naleznete v tématu [konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači pomocí webu Azure portal](qs-configure-portal-windows-vm.md), nebo jeden z variant článků (pomocí Powershellu, rozhraní příkazového řádku, šablonu nebo Azure SADA SDK). 
 
 > [!IMPORTANT]
-> - Hranice zabezpečení Identita spravované služby je prostředek, který se používá na. Všechny kód/skripty spuštěné na virtuálním počítači můžete vyžádat a získání tokenů pro všechny Identity spravované služby v něm k dispozici. 
+> - Zabezpečení hranic spravovaných identit pro prostředky Azure, je prostředek, který se používá na. Všechny kód/skripty spuštěné na virtuálním počítači můžete vyžádat a získání tokenů pro všechny spravované identity k dispozici na něm. 
 
 ## <a name="overview"></a>Přehled
 
-Klientská aplikace může požadovat identita spravované služby [přístupový token jenom pro aplikace](../develop/developer-glossary.md#access-token) pro přístup k danému prostředku. Token je [podle instančního objektu MSI](overview.md#how-does-it-work). V důsledku toho není nutné pro klienta k registraci k získání přístupového tokenu v rámci své vlastní instančního objektu. Token, který je vhodný pro použití jako nosný token v [vyžadující přihlašovací údaje pro klienta volání služba služba](../develop/v1-oauth2-client-creds-grant-flow.md).
+Klientská aplikace může požadovat spravovaných identit pro prostředky Azure [přístupový token jenom pro aplikace](../develop/developer-glossary.md#access-token) pro přístup k danému prostředku. Token je [podle spravovaných identit pro instanční objekt služby Azure prostředky](overview.md#how-does-it-work). V důsledku toho není nutné pro klienta k registraci k získání přístupového tokenu v rámci své vlastní instančního objektu. Token, který je vhodný pro použití jako nosný token v [vyžadující přihlašovací údaje pro klienta volání služba služba](../develop/v1-oauth2-client-creds-grant-flow.md).
 
 |  |  |
 | -------------- | -------------------- |
-| [Získání tokenu pomocí protokolu HTTP](#get-a-token-using-http) | Podrobnosti protokolu pro koncový bod tokenu MSI |
+| [Získání tokenu pomocí protokolu HTTP](#get-a-token-using-http) | Koncový bod token podrobnosti protokolu pro spravované identity pro prostředky Azure |
 | [Získání tokenu pomocí knihovnu Microsoft.Azure.Services.appauthentication přistupovat pro .NET](#get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net) | Příklad použití knihovnu Microsoft.Azure.Services.appauthentication přistupovat z klienta .NET
-| [Získání tokenu pomocí jazyka C#](#get-a-token-using-c) | Příklad použití koncového bodu MSI REST z klientů jazyka C# |
-| [Získání tokenu pomocí jazyka Go](#get-a-token-using-go) | Příklad použití koncového bodu MSI REST z klienta Go |
-| [Získání tokenu pomocí Azure Powershellu](#get-a-token-using-azure-powershell) | Příklad použití koncového bodu MSI REST z klienta prostředí PowerShell |
-| [Získání tokenu pomocí CURL](#get-a-token-using-curl) | Příklad použití koncového bodu MSI REST z prostředí Bash nebo nástroj CURL klienta |
+| [Získání tokenu pomocí jazyka C#](#get-a-token-using-c) | Příklad použití spravované identity pro koncový bod REST prostředků Azure z klientů jazyka C# |
+| [Získání tokenu pomocí jazyka Go](#get-a-token-using-go) | Příklad použití spravované identity pro koncový bod REST prostředků Azure z Go klienta |
+| [Získání tokenu pomocí Azure Powershellu](#get-a-token-using-azure-powershell) | Příklad použití spravované identity pro koncový bod REST prostředků Azure z prostředí PowerShell klienta |
+| [Získání tokenu pomocí CURL](#get-a-token-using-curl) | Příklad použití spravované identity pro koncový bod REST prostředků Azure z prostředí Bash nebo nástroj CURL klienta |
 | [Zpracování, ukládání tokenu do mezipaměti](#handling-token-caching) | Pokyny pro zpracování platnost přístupové tokeny |
-| [Zpracování chyb](#error-handling) | Pokyny pro zpracování chyb HTTP vrácená z koncového bodu tokenu MSI |
+| [Zpracování chyb](#error-handling) | Pokyny pro zpracování chyb HTTP vrácená ze spravovaných identit pro koncový bod tokenu prostředků Azure |
 | [ID prostředků služeb Azure](#resource-ids-for-azure-services) | Získání ID prostředků pro podporované služby Azure |
 
 ## <a name="get-a-token-using-http"></a>Získání tokenu pomocí protokolu HTTP 
@@ -71,14 +71,14 @@ GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-0
 | Element | Popis |
 | ------- | ----------- |
 | `GET` | Příkaz HTTP, což znamená, že má k načtení dat z koncového bodu. V takovém případě OAuth přístupový token. | 
-| `http://169.254.169.254/metadata/identity/oauth2/token` | Koncový bod MSI pro služba Instance Metadata. |
+| `http://169.254.169.254/metadata/identity/oauth2/token` | Spravované identity pro koncový bod prostředků Azure pro služba Instance Metadata. |
 | `api-version`  | Parametr řetězce dotazu, která verze rozhraní API pro koncový bod IMDS. Použijte prosím verzi rozhraní API `2018-02-01` nebo vyšší. |
 | `resource` | Parametr řetězce dotazu, určující identifikátor URI ID aplikace z cílového prostředku. Zobrazí se také v `aud` deklarace identity (cílová skupina) vydaného tokenu. V tomto příkladu žádá token pro přístup k Azure Resource Manageru, který má být identifikátor URI ID aplikace z https://management.azure.com/. |
-| `Metadata` | Pole hlavičky požadavku HTTP, vyžaduje Instalační služby MSI jako zmírnění proti útoku Server na straně požadavek proti padělání (SSRF). Tato hodnota musí být nastavená na "true", malými písmeny. |
-| `object_id` | (Volitelné) Parametr řetězce dotazu, která object_id spravovanou identitu, kterou byste chtěli token pro. Povinné, pokud má virtuální počítač více spravovaných identit přiřazených uživateli.|
-| `client_id` | (Volitelné) Parametr řetězce dotazu, která client_id spravovanou identitu, kterou byste chtěli token. Povinné, pokud má virtuální počítač více spravovaných identit přiřazených uživateli.|
+| `Metadata` | Pole hlavičky požadavku HTTP, vyžaduje spravované identity pro prostředky Azure jako zmírnění proti útoku Server na straně požadavek proti padělání (SSRF). Tato hodnota musí být nastavená na "true", malými písmeny. |
+| `object_id` | (Volitelné) Parametr řetězce dotazu, která object_id spravovanou identitu, kterou byste chtěli token pro. Povinné, pokud se váš virtuální počítač má několik spravovaných uživatelsky přiřazené identity.|
+| `client_id` | (Volitelné) Parametr řetězce dotazu, která client_id spravovanou identitu, kterou byste chtěli token. Povinné, pokud se váš virtuální počítač má několik spravovaných uživatelsky přiřazené identity.|
 
-Ukázková žádost pomocí koncového bodu Identity spravované služby (MSI) virtuálního počítače rozšíření *(Chcete-li být zastaralé)*:
+Ukázková žádost pomocí spravované identity pro prostředky Azure koncového bodu virtuálního počítače rozšíření *(Chcete-li být zastaralé)*:
 
 ```
 GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.com%2F HTTP/1.1
@@ -88,11 +88,11 @@ Metadata: true
 | Element | Popis |
 | ------- | ----------- |
 | `GET` | Příkaz HTTP, což znamená, že má k načtení dat z koncového bodu. V takovém případě OAuth přístupový token. | 
-| `http://localhost:50342/oauth2/token` | MSI koncový bod, ve kterém 50342 je výchozím portem a je možné konfigurovat. |
+| `http://localhost:50342/oauth2/token` | Spravované identity pro koncový bod prostředků Azure, ve kterém 50342 je výchozím portem a je možné konfigurovat. |
 | `resource` | Parametr řetězce dotazu, určující identifikátor URI ID aplikace z cílového prostředku. Zobrazí se také v `aud` deklarace identity (cílová skupina) vydaného tokenu. V tomto příkladu žádá token pro přístup k Azure Resource Manageru, který má být identifikátor URI ID aplikace z https://management.azure.com/. |
-| `Metadata` | Pole hlavičky požadavku HTTP, vyžaduje Instalační služby MSI jako zmírnění proti útoku Server na straně požadavek proti padělání (SSRF). Tato hodnota musí být nastavená na "true", malými písmeny.|
-| `object_id` | (Volitelné) Parametr řetězce dotazu, která object_id spravovanou identitu, kterou byste chtěli token pro. Povinné, pokud má virtuální počítač více spravovaných identit přiřazených uživateli.|
-| `client_id` | (Volitelné) Parametr řetězce dotazu, která client_id spravovanou identitu, kterou byste chtěli token. Povinné, pokud má virtuální počítač více spravovaných identit přiřazených uživateli.|
+| `Metadata` | Pole hlavičky požadavku HTTP, vyžaduje spravované identity pro prostředky Azure jako zmírnění proti útoku Server na straně požadavek proti padělání (SSRF). Tato hodnota musí být nastavená na "true", malými písmeny.|
+| `object_id` | (Volitelné) Parametr řetězce dotazu, která object_id spravovanou identitu, kterou byste chtěli token pro. Povinné, pokud se váš virtuální počítač má několik spravovaných uživatelsky přiřazené identity.|
+| `client_id` | (Volitelné) Parametr řetězce dotazu, která client_id spravovanou identitu, kterou byste chtěli token. Povinné, pokud se váš virtuální počítač má několik spravovaných uživatelsky přiřazené identity.|
 
 
 Ukázkové odpovědi:
@@ -114,7 +114,7 @@ Content-Type: application/json
 | Element | Popis |
 | ------- | ----------- |
 | `access_token` | Požadovaný přístupový token. Při volání rozhraní REST API zabezpečeným token, který je součástí `Authorization` pole hlavičky požadavku jako token "nosiče", umožňuje rozhraní API za účelem ověření volající. | 
-| `refresh_token` | Není používána MSI. |
+| `refresh_token` | Není možné použít pomocí spravované identity u prostředků Azure. |
 | `expires_in` | Počet sekund, po které přístupový token je stále platné, před vypršením platnosti v době vydání. Čas vystavení lze nalézt v tokenu `iat` deklarací identity. |
 | `expires_on` | Interval timespan, když vyprší platnost přístupového tokenu. Datum je vyjádřena jako počet sekund od "1970-01-01T0:0:0Z UTC" (odpovídá tokenu `exp` deklarace identity). |
 | `not_before` | Interval timespan, když přístupový token se projeví a jdou přijmout. Datum je vyjádřena jako počet sekund od "1970-01-01T0:0:0Z UTC" (odpovídá tokenu `nbf` deklarace identity). |
@@ -123,7 +123,7 @@ Content-Type: application/json
 
 ## <a name="get-a-token-using-the-microsoftazureservicesappauthentication-library-for-net"></a>Získání tokenu pomocí knihovnu Microsoft.Azure.Services.appauthentication přistupovat pro .NET
 
-Pro aplikace .NET a funkce je nejjednodušší způsob, jak pracovat s využitím identity spravované služby prostřednictvím balíčku Microsoft.Azure.Services.appauthentication přistupovat. Tato knihovna také umožňuje testovat kód místně na svém vývojovém počítači, pomocí uživatelského účtu z aplikace Visual Studio [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure?view=azure-cli-latest), nebo integrované ověřování Active Directory. Další informace o možnostech místní vývoj pomocí této knihovny naleznete v tématu [odkaz Microsoft.Azure.Services.appauthentication přistupovat]. V této části se dozvíte, jak začít pracovat s knihovnou ve vašem kódu.
+Pro aplikace .NET a funkce je nejjednodušší způsob, jak pracovat s spravovaných identit pro prostředky Azure prostřednictvím balíčku Microsoft.Azure.Services.appauthentication přistupovat. Tato knihovna také umožňuje testovat kód místně na svém vývojovém počítači, pomocí uživatelského účtu z aplikace Visual Studio [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure?view=azure-cli-latest), nebo integrované ověřování Active Directory. Další informace o možnostech místní vývoj pomocí této knihovny naleznete v tématu [odkaz Microsoft.Azure.Services.appauthentication přistupovat]. V této části se dozvíte, jak začít pracovat s knihovnou ve vašem kódu.
 
 1. Přidat odkazy [Microsoft.Azure.Services.appauthentication přistupovat](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) a [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) balíčky NuGet pro vaši aplikaci.
 
@@ -139,7 +139,7 @@ Pro aplikace .NET a funkce je nejjednodušší způsob, jak pracovat s využití
     var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
     ```
     
-Další informace o Microsoft.Azure.Services.appauthentication přistupovat a zpřístupňuje operací, najdete v článku [Microsoft.Azure.Services.appauthentication přistupovat odkaz](/azure/key-vault/service-to-service-authentication) a [služby App Service a trezor klíčů s využitím MSI .NET Ukázka](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet).
+Další informace o Microsoft.Azure.Services.appauthentication přistupovat a zpřístupňuje operací, najdete v článku [Microsoft.Azure.Services.appauthentication přistupovat odkaz](/azure/key-vault/service-to-service-authentication) a [spravované služby App Service a trezor klíčů s identity pro prostředky Azure .NET ukázku](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet).
 
 ## <a name="get-a-token-using-c"></a>Získání tokenu pomocí jazyka C#
 
@@ -150,7 +150,7 @@ using System.IO;
 using System.Net;
 using System.Web.Script.Serialization; 
 
-// Build request to acquire MSI token
+// Build request to acquire managed identities for Azure resources token
 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.azure.com/");
 request.Headers["Metadata"] = "true";
 request.Method = "GET";
@@ -199,7 +199,7 @@ type responseJson struct {
 
 func main() {
     
-    // Create HTTP request for MSI token to access Azure Resource Manager
+    // Create HTTP request for a managed services for Azure resources token to access Azure Resource Manager
     var msi_endpoint *url.URL
     msi_endpoint, err := url.Parse("http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01")
     if err != nil {
@@ -216,7 +216,7 @@ func main() {
     }
     req.Header.Add("Metadata", "true")
 
-    // Call MSI /token endpoint
+    // Call managed services for Azure resources token endpoint
     client := &http.Client{}
     resp, err := client.Do(req) 
     if err != nil{
@@ -254,7 +254,7 @@ func main() {
 
 ## <a name="get-a-token-using-azure-powershell"></a>Získání tokenu pomocí Azure Powershellu
 
-Následující příklad ukazuje, jak použít koncový bod MSI REST z klienta Powershellu:
+Následující příklad ukazuje způsob použití spravované identity pro koncový bod REST prostředků Azure z prostředí PowerShell klienta:
 
 1. Získání přístupového tokenu.
 2. Použití přístupového tokenu pro volání rozhraní REST API Azure Resource Manageru a získat informace o virtuálním počítači. Nezapomeňte nahraďte ID předplatného, název skupiny prostředků a název virtuálního počítače pro `<SUBSCRIPTION-ID>`, `<RESOURCE-GROUP>`, a `<VM-NAME>`v uvedeném pořadí.
@@ -265,12 +265,12 @@ Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?ap
 
 Příklad toho, jak analyzovat přístupový token z odpovědi:
 ```azurepowershell
-# Get an access token for the MSI
+# Get an access token for managed identities for Azure resources
 $response = Invoke-WebRequest -Uri http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F `
                               -Headers @{Metadata="true"}
 $content =$response.Content | ConvertFrom-Json
 $access_token = $content.access_token
-echo "The MSI access token is $access_token"
+echo "The managed identities for Azure resources access token is $access_token"
 
 # Use the access token to get resource information for the VM
 $vmInfoRest = (Invoke-WebRequest -Uri https://management.azure.com/subscriptions/<SUBSCRIPTION-ID>/resourceGroups/<RESOURCE-GROUP>/providers/Microsoft.Compute/virtualMachines/<VM-NAME>?api-version=2017-12-01 -Method GET -ContentType "application/json" -Headers @{ Authorization ="Bearer $access_token"}).content
@@ -291,27 +291,27 @@ Příklad toho, jak analyzovat přístupový token z odpovědi:
 ```bash
 response=$(curl 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F' -H Metadata:true -s)
 access_token=$(echo $response | python -c 'import sys, json; print (json.load(sys.stdin)["access_token"])')
-echo The MSI access token is $access_token
+echo The managed identities for Azure resources access token is $access_token
 ```
 
 ## <a name="token-caching"></a>Ukládání tokenu do mezipaměti
 
-I když podsystém Identity spravované služby (MSI) používá (rozšíření virtuálního počítače IMDS/MSI) mezipaměti ukládat tokeny, doporučujeme také implementovat ukládání tokenu do mezipaměti ve vašem kódu. V důsledku toho by měl Příprava pro scénáře, ve kterém prostředek označuje, že platnost tokenu vypršela. 
+Při spravované identity používá podsystému prostředky Azure (IMDS/spravovaných identit pro prostředky Azure rozšíření virtuálního počítače) ukládat do mezipaměti tokenů, doporučujeme také implementovat ukládání tokenu do mezipaměti ve vašem kódu. V důsledku toho by měl Příprava pro scénáře, ve kterém prostředek označuje, že platnost tokenu vypršela. 
 
 Pouze výsledky volání na přenosu do služby Azure AD při:
-- z důvodu žádný token v mezipaměti subsystému MSI dojde k neúspěšnému přístupu do mezipaměti
+- z důvodu žádný token ve spravovaných identit pro prostředky Azure subsystému mezipaměti dojde k neúspěšnému přístupu do mezipaměti
 - platnost tokenu v mezipaměti
 
 ## <a name="error-handling"></a>Zpracování chyb
 
-Identita spravované služby koncového bodu signály chyb 4xx a 5xx chyby prostřednictvím pole Kód stavu zprávy hlavičku HTTP odpovědi:
+Spravované identity pro koncový bod prostředků Azure signály chyb 4xx a 5xx chyby prostřednictvím pole Stav kód záhlaví zprávy odpovědi HTTP:
 
 | Stavový kód | Důvod chyby | Způsob zpracování |
 | ----------- | ------------ | ------------- |
 | 404 Nenalezeno. | Aktualizuje se koncový bod IMDS. | Zkuste to znovu s Expontential omezení rychlosti. Najdete v níže uvedeném doprovodném materiálu. |
 | 429 příliš mnoho požadavků. |  Dosáhli jste limitu IMDS omezení. | Opakování pomocí exponenciálního omezení rychlosti. Najdete v níže uvedeném doprovodném materiálu. |
 | v požadavku došlo k chybě 4xx. | Nejméně jeden z parametrů žádosti bylo nesprávné. | Neprovádějte opakování.  Zkontrolujte podrobnosti o chybě pro další informace.  4xx chyby jsou chyby v době návrhu.|
-| 5xx přechodná chyba služby. | MSI subsystémů nebo Azure Active Directory vrátila o přechodnou chybu. | Je bezpečně opakovat po čekání alespoň 1 sekunda.  Pokud budete operaci opakovat příliš rychle nebo příliš často, může vrátit chybu omezení frekvence (429) IMDS a/nebo Azure AD.|
+| 5xx přechodná chyba služby. | Spravované identity subsystémů prostředků Azure nebo Azure Active Directory vrátila o přechodnou chybu. | Je bezpečně opakovat po čekání alespoň 1 sekunda.  Pokud budete operaci opakovat příliš rychle nebo příliš často, může vrátit chybu omezení frekvence (429) IMDS a/nebo Azure AD.|
 | timeout | Aktualizuje se koncový bod IMDS. | Zkuste to znovu s Expontential omezení rychlosti. Najdete v níže uvedeném doprovodném materiálu. |
 
 Pokud dojde k chybě, obsahuje odpovídající textu odpovědi HTTP JSON se podrobnosti o chybě:
@@ -331,11 +331,11 @@ Tato část popisuje možné chybové odpovědi. Objekt "200 OK" stav je úspě�
 | 400 – Chybný požadavek | bad_request_102 | Není zadána hlavička požadovaná metadata | Buď `Metadata` pole hlavičky požadavku v požadavku chybí nebo je v nesprávném formátu. Hodnota musí být zadán jako `true`, malými písmeny. Naleznete v části "ukázkový požadavek" v [předchozí ZBÝVAJÍCÍ části](#rest) příklad.|
 | 401 Neautorizováno | unknown_source | Neznámý zdroj  *\<identifikátoru URI\>* | Ověřte, že váš požadavek HTTP GET identifikátoru URI je správný. `scheme:host/resource-path` Část musí být zadán jako `http://localhost:50342/oauth2/token`. Naleznete v části "ukázkový požadavek" v [předchozí ZBÝVAJÍCÍ části](#rest) příklad.|
 |           | invalid_request | Požadavku chybí povinný parametr, obsahuje neplatnou hodnotu parametru, obsahuje více než jednou. parametr nebo jinak je poškozený. |  |
-|           | unauthorized_client | Klient není oprávněný žádat přístupový token pomocí této metody. | Způsobeno žádosti, která nebyla použití místní zpětné smyčky pro volání rozšíření, nebo na virtuálním počítači, na kterém není instalační služba MSI správně nakonfigurovaný. Zobrazit [nakonfigurovat virtuálním počítači Identity spravované služby (MSI) pomocí webu Azure portal](qs-configure-portal-windows-vm.md) Pokud potřebujete pomoc s konfigurací virtuálního počítače. |
+|           | unauthorized_client | Klient není oprávněný žádat přístupový token pomocí této metody. | Způsobeno žádosti, která nebyla použití místní zpětné smyčky pro volání rozšíření, nebo na virtuálním počítači, na kterém není spravovaným identitám pro prostředky Azure, které jsou nakonfigurované správně. Zobrazit [konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači pomocí webu Azure portal](qs-configure-portal-windows-vm.md) Pokud potřebujete pomoc s konfigurací virtuálního počítače. |
 |           | ACCESS_DENIED | Vlastník prostředku nebo autorizační server tuto žádost odmítl. |  |
 |           | unsupported_response_type | Autorizační server nepodporuje získání přístupového tokenu pomocí této metody. |  |
 |           | invalid_scope | Požadovaný rozsah je neplatný, neznámý nebo poškozený. |  |
-| Chyba 500 interní server | Neznámé | Nepovedlo se získat token ze služby Active directory. Podrobnosti najdete v protokolech  *\<cesta k souboru\>* | Ověřte, že instalační služby MSI je povoleno na virtuálním počítači. Zobrazit [nakonfigurovat virtuálním počítači Identity spravované služby (MSI) pomocí webu Azure portal](qs-configure-portal-windows-vm.md) Pokud potřebujete pomoc s konfigurací virtuálního počítače.<br><br>Dál ověřte, že váš požadavek HTTP GET identifikátoru URI je správný, zejména zadaná v řetězci dotazu identifikátoru URI prostředku. Naleznete v části "ukázkový požadavek" v [předchozí ZBÝVAJÍCÍ části](#rest) příklad, nebo [služby Azure, že podpora Azure AD ověřování](services-support-msi.md) seznam služeb a jejich odpovídající ID prostředků.
+| Chyba 500 interní server | Neznámé | Nepovedlo se získat token ze služby Active directory. Podrobnosti najdete v protokolech  *\<cesta k souboru\>* | Ověřte, že spravovaných identit pro prostředky Azure je povoleno na virtuálním počítači. Zobrazit [konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači pomocí webu Azure portal](qs-configure-portal-windows-vm.md) Pokud potřebujete pomoc s konfigurací virtuálního počítače.<br><br>Dál ověřte, že váš požadavek HTTP GET identifikátoru URI je správný, zejména zadaná v řetězci dotazu identifikátoru URI prostředku. Naleznete v části "ukázkový požadavek" v [předchozí ZBÝVAJÍCÍ části](#rest) příklad, nebo [služby Azure, že podpora Azure AD ověřování](services-support-msi.md) seznam služeb a jejich odpovídající ID prostředků.
 
 ## <a name="retry-guidance"></a>Pokyny pro opakování 
 
@@ -351,14 +351,12 @@ Zkuste to znovu doporučujeme následující strategie:
 
 ## <a name="resource-ids-for-azure-services"></a>ID prostředků služeb Azure
 
-Zobrazit [, že podpora Azure AD ověřování služby Azure](services-support-msi.md) seznam prostředků, které podporují služby Azure AD a prošel testováním s využitím MSI a jejich odpovídající ID prostředků.
+Zobrazit [, že podpora Azure AD ověřování služby Azure](services-support-msi.md) seznam prostředků, které podporují služby Azure AD a prošel testováním s využitím spravované identity pro prostředky Azure a jejich odpovídající ID prostředků.
 
 
-## <a name="related-content"></a>Související obsah
+## <a name="next-steps"></a>Další postup
 
-- Povolení MSI ve Virtuálním počítači Azure, najdete v článku [nakonfigurovat virtuálním počítači Identity spravované služby (MSI) pomocí webu Azure portal](qs-configure-portal-windows-vm.md).
-
-Pomocí následujícího oddílu pro komentáře na svůj názor a Pomozte nám vylepšit a obrazce náš obsah.
+- Povolit spravovaným identitám pro prostředky Azure na Virtuálním počítači Azure, najdete v článku [konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači pomocí webu Azure portal](qs-configure-portal-windows-vm.md).
 
 
 

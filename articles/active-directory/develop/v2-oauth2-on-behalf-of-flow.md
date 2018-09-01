@@ -17,12 +17,12 @@ ms.date: 06/06/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b0f8568dd67dd292ccca3972a402a110cd4a46fb
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: da13b7b7b9bd39692db422a315383e0f12aae453
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39581275"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344872"
 ---
 # <a name="azure-active-directory-v20-and-oauth-20-on-behalf-of-flow"></a>Azure Active Directory v2.0 a tok OAuth 2.0 On-Behalf-Of
 On-Behalf-Of OAuth 2.0, kterou flow slouží případ použití, kde aplikace vyvolá služby/webové rozhraní API, které pak je potřeba volat jiné služby nebo webové rozhraní API. Cílem je rozšíření delegovaný uživatel identit a oprávnění pomocí řetězce požadavku. Pro služby střední vrstvy, aby ověřených požadavků pro příjem dat služby je potřeba zabezpečit přístupového tokenu z Azure Active Directory (Azure AD) jménem uživatele.
@@ -40,7 +40,7 @@ Předpokládejme, že uživatel byl ověřen na aplikace s využitím [toku udě
 
 Jaké kroky musí provést tvoří tok On-Behalf-Of a jsou vysvětleny díky pomoci následující diagram.
 
-![OAuth 2.0 On-Behalf-Of toku](/media/v1-oauth2-on-behalf-of-flow/active-directory-protocols-oauth-on-behalf-of-flow.png)
+![OAuth 2.0 On-Behalf-Of toku](./media/v1-oauth2-on-behalf-of-flow/active-directory-protocols-oauth-on-behalf-of-flow.png)
 
 
 1. Klientská aplikace odešle požadavek rozhraní API A s tokenem A (pomocí `aud` deklarace identity a rozhraní API).

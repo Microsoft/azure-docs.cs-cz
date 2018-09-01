@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 06/26/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: fbf8a0302ae8414f49a055ab260a52222425ab7c
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 6976314929ac2e0e099e8c2f07da32970bc57509
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43287190"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382503"
 ---
 # <a name="develop-and-debug-nodejs-modules-with-azure-iot-edge-for-visual-studio-code"></a>Vývoj a ladění modulů Node.js s použitím Azure IoT Edge pro Visual Studio Code
 
@@ -35,9 +35,7 @@ Jak vytvořit modul, je třeba Node.js, který obsahuje sestavení složce proje
 * [Node.js](https://nodejs.org)
 * [Docker](https://docs.docker.com/engine/installation/)
 * [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) nebo [Docker Hubu](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
-
-   >[!TIP]
-   >Místního registru Docker můžete použít k prototypu a testování, namísto registru cloudu. 
+   * Místního registru Docker můžete použít k prototypu a testování, namísto registru cloudu. 
 
 K otestování modulu do zařízení, potřebujete aktivní služby IoT hub s alespoň jedno zařízení IoT Edge. Pokud chcete použít počítač jako zařízení IoT Edge, lze provést podle pokynů v kurzech pro [Windows](quickstart.md) nebo [Linux](quickstart-linux.md). 
 
@@ -60,7 +58,9 @@ Následující kroky ukazují, jak vytvořit modul IoT Edge založené na Node.j
 6. Zadejte název pro vaše řešení. 
 7. Zvolte **modul Node.js** jako šablona pro první modul v rámci řešení.
 8. Zadejte název modulu. Zvolte název, který je jedinečný v rámci vašeho registru kontejneru. 
-9. Zadejte úložiště imagí pro modul. VS Code autopopulates modulu pojmenovat, abyste měli pouze nahradit **localhost:5000** nahraďte svými vlastními informacemi registru. Pokud používáte místní registru Dockeru pro testování, pak místního hostitele je v pořádku. Pokud používáte Azure Container Registry, potom pomocí serveru přihlášení z nastavení svého registru. Přihlašovací server vypadá  **\<název registru\>. azurecr.io**.
+9. Zadejte úložiště imagí pro modul. VS Code autopopulates modulu pojmenovat, abyste měli pouze nahradit **localhost:5000** nahraďte svými vlastními informacemi registru. Pokud používáte místní registru Dockeru pro testování, pak místního hostitele je v pořádku. Pokud používáte Azure Container Registry, potom pomocí serveru přihlášení z nastavení svého registru. Přihlašovací server vypadá  **\<název registru\>. azurecr.io**. V řetězci nahraďte pouze část localhost, název vašeho modulu neodstraňujte.
+
+   ![Zadání úložiště imagí Dockeru](./media/how-to-develop-node-module/repository.png)
 
 VS Code přebírá informace k dispozici, vytvoří řešení IoT Edge a pak ho načte v novém okně.
 
@@ -76,7 +76,7 @@ V řešení máte tři položky:
 
 ## <a name="develop-your-module"></a>Vývoj modulu
 
-Výchozí kód Node.js, která se dodává s řešením je umístěn v **moduly** > **\<název modulu\>** > **app.js** . V modulu a soubor deployment.template.json nastaveny tak, aby mohli sestavit řešení, ji nasdílet do vašeho registru kontejneru a nasazení do zařízení pro začátek testování bez zásahu do jakéhokoli kódu. Modul je určený pro jednoduše trvat, než vstupní zdroj (v tomto případě tempSensor modulu, která simuluje data) a zřetězit ho do služby IoT Hub. 
+Výchozí kód Node.js, která se dodává s řešením je umístěn v **moduly** > [název vašeho modulu] > **app.js**. V modulu a soubor deployment.template.json nastaveny tak, aby mohli sestavit řešení, ji nasdílet do vašeho registru kontejneru a nasazení do zařízení pro začátek testování bez zásahu do jakéhokoli kódu. Modul je určený pro jednoduše trvat, než vstupní zdroj (v tomto případě tempSensor modulu, která simuluje data) a zřetězit ho do služby IoT Hub. 
 
 Jakmile budete připraveni k přizpůsobení šablony Node.js s vlastním kódem, použijte [sady SDK služby Azure IoT Hub](../iot-hub/iot-hub-devguide-sdks.md) vytvářet moduly, které řeší klíč musí pro řešení IoT, jako je zabezpečení, Správa zařízení a spolehlivost. 
 

@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 8/17/2017
 ms.author: ghogen
-ms.openlocfilehash: e4a72729cfe69a810e0eec0a0ac6ddb87a468932
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 4b14fa44f484735f2a5efee4d631a6f48e6a8bf6
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42060112"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382632"
 ---
 # <a name="configuring-and-using-the-storage-emulator-with-visual-studio"></a>Konfigurace a použití emulátoru úložiště pomocí sady Visual Studio
 [!INCLUDE [storage-try-azure-tools](../includes/storage-try-azure-tools.md)]
@@ -33,7 +33,7 @@ Podrobné informace na emulátor úložiště, včetně požadavky na systém a 
 > 
 
 ## <a name="configuring-a-connection-string-for-the-storage-emulator"></a>Konfigurace připojovací řetězec pro emulátor úložiště
-Pro přístup k emulátoru úložiště z kódu v rámci role, můžete nakonfigurovat připojovací řetězec, který odkazuje na emulátor úložiště a, který lze později změnit tak, aby odkazoval na účet úložiště Azure. Připojovací řetězec je nastavení konfigurace, který může číst vaši roli v době běhu pro připojení k účtu úložiště. Další informace o tom, jak vytvořit připojovací řetězce, naleznete v tématu [konfigurace aplikace Azure](https://msdn.microsoft.com/library/azure/2da5d6ce-f74d-45a9-bf6b-b3a60c5ef74e#BK_SettingsPage).
+Pro přístup k emulátoru úložiště z kódu v rámci role, můžete nakonfigurovat připojovací řetězec, který odkazuje na emulátor úložiště a, který lze později změnit tak, aby odkazoval na účet úložiště Azure. Připojovací řetězec je nastavení konfigurace, který může číst vaši roli v době běhu pro připojení k účtu úložiště. Další informace o tom, jak vytvořit připojovací řetězce, naleznete v tématu [připojovacích řetězců Azure Storage konfigurace](/azure/storage/common/storage-configure-connection-string).
 
 > [!NOTE]
 > Může vrátit odkaz na účet emulátoru úložiště v kódu s použitím **DevelopmentStorageAccount** vlastnost. Tento přístup funguje správně, pokud chcete získat přístup z vašeho kódu na emulátor úložiště, ale pokud máte v plánu můžete publikovat svoji aplikaci do Azure, budete muset vytvořit připojovací řetězec pro přístup k účtu služby Azure storage a upravte kód Refaktorovat pro použití tohoto připojení řetězec před publikováním. Pokud chcete přepnout mezi emulátor účet úložiště a účtu služby Azure storage často, bude tento proces zjednodušit připojovací řetězec.

@@ -15,12 +15,12 @@ ms.component: report-monitor
 ms.date: 05/07/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: c1f5b88dc8cd6d7f8ff1cd1269d4791d5654e133
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 7e2dd4c50a1d6995302c5a2a6f9b4877253d0a41
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42060091"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382276"
 ---
 # <a name="get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Získání dat pomocí rozhraní API pro generování sestav Azure Active Directory s certifikáty
 
@@ -38,7 +38,7 @@ To zahrnuje následující kroky:
 
 1. Nejprve se ujistěte, že jste dokončili [požadavky pro přístup k API pro vytváření sestav Azure Active Directory](howto-configure-prerequisites-for-reporting-api.md). 
 
-2. Stáhněte a nainstalujte Azure AD Powershell verze 2, postupujte podle pokynů v [Powershellu pro Azure Active Directory](https://github.com/Azure/azure-docs-powershell-azuread/blob/master/Azure AD Cmdlets/AzureAD/index.md)
+2. Stáhněte a nainstalujte Azure AD Powershell V2, postupujte podle pokynů v [(Azure Active Directory PowerShell https://github.com/Azure/azure-docs-powershell-azuread/blob/master/docs-conceptual/azureadps-2.0/install-adv2.md)
 
 3. Nainstalujte MSCloudIDUtils z [PowerShellGallery - MSCloudIdUtils](https://www.powershellgallery.com/packages/MSCloudIdUtils/). Tento modul poskytuje několik rutin nástrojů, jako jsou:
     - Knihovny ADAL, které jsou potřebné pro ověřování

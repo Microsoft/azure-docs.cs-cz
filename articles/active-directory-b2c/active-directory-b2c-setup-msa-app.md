@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/05/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 16e4dbac4c8146b048d4d9b76544677a6111e2a5
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 338c2a197cb50091c3b272e0ce590341ffda1d7f
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37900825"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43341079"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-microsoft-account-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení pomocí účtu Microsoft pomocí Azure Active Directory B2C
 
@@ -28,7 +28,7 @@ Pokud chcete použít účet Microsoft jako zprostředkovatele identity v Azure 
 3. Zadejte **název** pro vaši aplikaci a klikněte na **vytvořit**.
 4. Na stránce pro registraci, zkopírujte hodnotu **Id aplikace**. Použijte ke konfiguraci účtu Microsoft jako zprostředkovatele identity ve vašem tenantovi.
 5. Vyberte **přidat platformy**a potom a tlačítko **webové**.
-6. Zadejte `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` v **Přesměrovaly**. Nahraďte **{klient}** s názvem vašeho tenanta (například contosob2c.onmicrosoft.com).
+6. Zadejte `https://{tenant}.b2clogin.com/te/{tenant}.onmicrosoft.com/oauth2/authresp` v **Přesměrovaly**. Nahraďte **{klient}** s názvem vašeho tenanta (například contosob2c).
 7. Vyberte **generovat nové heslo** pod **tajných klíčů aplikací**. Kopírovat nové heslo, zobrazí na obrazovce. Když je potřebujete a nakonfigurujte účet Microsoft jako zprostředkovatele identity ve vašem tenantovi. Toto heslo je důležitým bezpečnostním pověřením.
 
 ## <a name="configure-a-microsoft-account-as-an-identity-provider"></a>Nakonfigurujte účet Microsoft jako zprostředkovatele identity

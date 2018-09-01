@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/27/2018
+ms.date: 08/31/2018
 ms.author: jingwang
-ms.openlocfilehash: 735b152f55a9309e5d5dd85dac64a607de6417b0
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: d500bc9c910858341d7fdacb4d85bffc8be215e1
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42443965"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43338758"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Kopírování dat do nebo z Azure Data Lake Storage Gen1 pomocí služby Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -77,8 +77,8 @@ Pokud chcete používat ověřování instančních objektů, entity aplikaci za
 
 >[!IMPORTANT]
 > Ujistěte se, že udělíte hlavní správné oprávnění služby v Azure Data Lake Store:
->- **Jako zdroj**, v Průzkumníku dat -> přístup, přidělit nejméně **číst + provést** oprávnění k seznamu a zkopírujte soubory ve složce/podsložek, nebo **čtení** zkopírovat jeden soubor; a zvolit oprávnění Přidat do **tato složka a všechny děti** pro rekurzivní a přidat jako **přístupová oprávnění a výchozí položka oprávnění**. Žádné požadavky na řízení přístupu na úrovni účtu (IAM).
->- **Jako jímku**, v Průzkumníku dat -> přístup, přidělit nejméně **zapisovat + provést** oprávnění k vytváření podřízených položek ve složce a zvolte možnost pro přidání do **tato složka a všechny děti** pro rekurzivní a přidat jako **přístupová oprávnění a výchozí položka oprávnění**. Pokud používáte prostředí Azure IR kopírování (zdroj a jímka mají v cloudu), řízení přístupu (IAM), udělit alespoň **čtečky** role, aby bylo možné umožnit detekci Data Lake Store oblasti služby Data Factory. Pokud chcete se vyhnout této role IAM explicitně [vytvořit prostředí Azure IR](create-azure-integration-runtime.md#create-azure-ir) umístěním systému Data Lake Store a přidružení ve Data Lake Store propojenou službu, jako v následujícím příkladu.
+>- **Jako zdroj**, v Průzkumníku dat -> přístup, přidělit nejméně **číst + provést** oprávnění k seznamu a zkopírujte soubory ve složce/podsložek, nebo **čtení** zkopírovat jeden soubor; a zvolit oprávnění Přidat do **tato složka a všechny podřízené objekty** pro rekurzivní a přidat jako **přístupová oprávnění a výchozí položka oprávnění**. Žádné požadavky na řízení přístupu na úrovni účtu (IAM).
+>- **Jako jímku**, v Průzkumníku dat -> přístup, přidělit nejméně **zapisovat + provést** oprávnění k vytváření podřízených položek ve složce a zvolte možnost pro přidání do **tato složka a všechny podřízené objekty** pro rekurzivní a Přidat jako **přístupová oprávnění a výchozí položka oprávnění**. Pokud používáte prostředí Azure IR kopírování (zdroj a jímka mají v cloudu), řízení přístupu (IAM), udělit alespoň **čtečky** role, aby bylo možné umožnit detekci Data Lake Store oblasti služby Data Factory. Pokud chcete se vyhnout této role IAM explicitně [vytvořit prostředí Azure IR](create-azure-integration-runtime.md#create-azure-ir) umístěním systému Data Lake Store a přidružení ve Data Lake Store propojenou službu, jako v následujícím příkladu.
 
 Podporovány jsou následující vlastnosti:
 
@@ -125,8 +125,8 @@ Použití ověřování identita spravované služby:
 
 >[!IMPORTANT]
 > Ujistěte se, že udělíte data factory služby identity správné oprávnění v Azure Data Lake Store:
->- **Jako zdroj**, v Průzkumníku dat -> přístup, přidělit nejméně **číst + provést** oprávnění k seznamu a zkopírujte soubory ve složce/podsložek, nebo **čtení** zkopírovat jeden soubor; a zvolit oprávnění Přidat do **tato složka a všechny děti** pro rekurzivní a přidat jako **přístupová oprávnění a výchozí položka oprávnění**. Žádné požadavky na řízení přístupu na úrovni účtu (IAM).
->- **Jako jímku**, v Průzkumníku dat -> přístup, přidělit nejméně **zapisovat + provést** oprávnění k vytváření podřízených položek ve složce a zvolte možnost pro přidání do **tato složka a všechny děti** pro rekurzivní a přidat jako **přístupová oprávnění a výchozí položka oprávnění**. Pokud používáte prostředí Azure IR kopírování (zdroj a jímka mají v cloudu), řízení přístupu (IAM), udělit alespoň **čtečky** role, aby bylo možné umožnit detekci Data Lake Store oblasti služby Data Factory. Pokud chcete se vyhnout této role IAM explicitně [vytvořit prostředí Azure IR](create-azure-integration-runtime.md#create-azure-ir) umístěním systému Data Lake Store a přidružení ve Data Lake Store propojenou službu, jako v následujícím příkladu.
+>- **Jako zdroj**, v Průzkumníku dat -> přístup, přidělit nejméně **číst + provést** oprávnění k seznamu a zkopírujte soubory ve složce/podsložek, nebo **čtení** zkopírovat jeden soubor; a zvolit oprávnění Přidat do **tato složka a všechny podřízené objekty** pro rekurzivní a přidat jako **přístupová oprávnění a výchozí položka oprávnění**. Žádné požadavky na řízení přístupu na úrovni účtu (IAM).
+>- **Jako jímku**, v Průzkumníku dat -> přístup, přidělit nejméně **zapisovat + provést** oprávnění k vytváření podřízených položek ve složce a zvolte možnost pro přidání do **tato složka a všechny podřízené objekty** pro rekurzivní a Přidat jako **přístupová oprávnění a výchozí položka oprávnění**. Pokud používáte prostředí Azure IR kopírování (zdroj a jímka mají v cloudu), řízení přístupu (IAM), udělit alespoň **čtečky** role, aby bylo možné umožnit detekci Data Lake Store oblasti služby Data Factory. Pokud chcete se vyhnout této role IAM explicitně [vytvořit prostředí Azure IR](create-azure-integration-runtime.md#create-azure-ir) umístěním systému Data Lake Store a přidružení ve Data Lake Store propojenou službu, jako v následujícím příkladu.
 
 Ve službě Azure Data Factory není nutné zadávat jakékoli vlastnosti kromě obecné informace o Data Lake Store v propojené službě.
 
