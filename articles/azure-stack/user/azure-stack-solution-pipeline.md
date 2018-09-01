@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 06/08/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 3fcede7f813e97885d8fc3d7e0bc04776f2d0d12
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 5fbce0c20e66eec0e7d7023344051fcf302af677
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39582133"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382608"
 ---
 # <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>Kurz: nasazení aplikace do Azure a Azure Stack
 
@@ -108,7 +108,10 @@ Následující kroky popisují, co je potřeba nakonfigurovat ověřování:
 
 ### <a name="create-a-service-principal"></a>Vytvoření instančního objektu
 
-Odkazovat [vytvoření instančního objektu](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications) pokyny k vytvoření instančního objektu a klikněte na tlačítko **webové aplikace nebo rozhraní API** pro typ aplikace.
+Odkazovat [vytvoření instančního objektu](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications) pokyny k vytvoření instančního objektu a klikněte na tlačítko **webové aplikace nebo rozhraní API** pro typ aplikace nebo [použijte tento skript Powershellu](https://github.com/Microsoft/vsts-rm-extensions/blob/master/TaskModules/powershell/Azure/SPNCreation.ps1#L5)vysvětlených [tady](https://docs.microsoft.com/en-us/vsts/pipelines/library/connect-to-azure?view=vsts#create-an-azure-resource-manager-service-connection-with-an-existing-service-principal).
+
+ > [!Note]
+ > Pokud použijete skript k vytvoření koncového bodu Azure stacku Azure Resource Manageru, musíte předat `-azureStackManagementURL` a `-environmentName` parametry, které je https://management.local.azurestack.external/ a *AzureStack*.
 
 ### <a name="create-an-access-key"></a>Vytvořit přístupový klíč
 
@@ -186,7 +189,7 @@ Nastavit obor na úrovni předplatného, skupinu prostředků nebo prostředek. 
 
 7. Vyberte **Uložit** k dokončení přiřazení role. Zobrazí se vaše aplikace v seznamu Uživatelé přiřazení k roli pro tento obor.
 
-### <a name="role-based-access-control"></a>Řízení přístupu na základě rolí
+### <a name="role-based-access-control"></a>Řízení přístupu na základě role
 
 Azure na základě rolí řízení přístupu (RBAC) poskytuje propracovanou správu přístupu pro Azure. Pomocí RBAC můžete řídit úroveň přístupu, který uživatelé potřebují ke své práci. Další informace o řízení přístupu na základě rolí najdete v tématu [spravovat přístup k prostředkům předplatného Azure](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal?toc=%252fazure%252factive-directory%252ftoc.json).
 
@@ -261,7 +264,19 @@ Tím, že vytvoříte koncové body, Visual Studio Online (VSTO) build aplikace 
 9. V **přidávat uživatele a skupiny**, zadejte uživatelské jméno a vyberte uživatele ze seznamu uživatelů.
 10. Vyberte **uložit změny**.
 
-Teď, když existuje informace o koncovém bodu VSTS pro připojení služby Azure Stack je připravený k použití. Agent sestavení ve službě Azure Stack získá pokyny z VSTS, a pak agenta přenáší informace o koncovém bodu pro komunikaci s Azure Stackem.
+## <a name="create-azure-stack-endpoint"></a>Vytvoření koncového bodu služby Azure Stack
+
+Zkontrolujte [to](https://docs.microsoft.com/en-us/vsts/pipelines/library/connect-to-azure?view=vsts#create-an-azure-resource-manager-service-connection-with-an-existing-service-principal) dokumentaci k vytvoření připojení služby pomocí existující službu objektu zabezpečení a použijte následující mapování:
+
+- Prostředí: AzureStack
+- Adresa URL prostředí: Něco jako `https://management.local.azurestack.external`
+- ID předplatného: ID předplatného uživatele ze služby Azure Stack
+- Název předplatného: Název předplatného uživatele ze služby Azure Stack
+- ID klienta instančního objektu: ID objektu zabezpečení z [to](https://docs.microsoft.com/en-us/azure/azure-stack/user/azure-stack-solution-pipeline#create-a-service-principal) části v tomto článku.
+- Klíč objektu služby: klíč ze stejného článku (nebo heslo, pokud jste použili skriptu).
+- ID tenanta: ID tenanta jste získali [tady](https://docs.microsoft.com/en-us/azure/azure-stack/user/azure-stack-solution-pipeline#get-the-tenant-id).
+
+Teď, když je vytvořen koncový bod, VSTS pro připojení služby Azure Stack je připravený k použití. Agent sestavení ve službě Azure Stack získá pokyny z VSTS, a pak agenta přenáší informace o koncovém bodu pro komunikaci s Azure Stackem.
 
 ![Agent sestavení](media\azure-stack-solution-hybrid-pipeline\016_save_changes.png)
 
@@ -332,7 +347,7 @@ Vytvoření definice vydané verze je posledním krokem v aplikaci procesu sesta
 
 4. Na **přidání artefaktu**, z **zdroj (definice sestavení)** rozevírací nabídky vyberte aplikaci sestavení cloudu Azure.
 
-    ![Přidání artefaktu](media\azure-stack-solution-hybrid-pipeline\103.png)
+    ![Přidat artefakt](media\azure-stack-solution-hybrid-pipeline\103.png)
 
 5. Na **kanálu** kartu, vyberte možnost **1 fáze**, **1 úloha** propojit **zobrazit úlohy prostředí**.
 
@@ -368,7 +383,7 @@ Vytvoření definice vydané verze je posledním krokem v aplikaci procesu sesta
 
 13. Na **vyberte šablonu**, přidat jiné prostředí. Vyberte si **nasazení služby Azure App Service** a pak vyberte **použít**.
 
-    ![Vyberte šablonu](media\azure-stack-solution-hybrid-pipeline\112.png)
+    ![Vybrat šablonu](media\azure-stack-solution-hybrid-pipeline\112.png)
 
 14. Zadejte "Azure Stack" jako **název prostředí**.
 

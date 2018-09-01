@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/14/2018
 ms.author: brenduns
-ms.openlocfilehash: e9e474fe4a32bb99673fba2a88f28a3161f23362
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 6380936766bb0f3848811be305783c274867b0fc
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42139356"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43381863"
 ---
 # <a name="vpn-gateway-configuration-settings-for-azure-stack"></a>Konfigurace nastavení služby VPN gateway pro Azure Stack
 
@@ -27,7 +27,7 @@ ms.locfileid: "42139356"
 
 Brána VPN je typem brány virtuální sítě, která odesílá šifrovaný síťový provoz mezi vaší virtuální sítí ve službě Azure Stack a vzdálenou bránu VPN. Vzdálené brány VPN může být v Azure, zařízení ve vašem datovém centru nebo v jiné lokalitě.  Pokud je síťové připojení mezi dva koncové body, můžete navázat zabezpečené připojení VPN typu Site-to-Site (S2S) mezi těmito dvěma sítěmi.
 
-Připojení brány VPN se spoléhá na konfiguraci více zdrojů, z nichž každý obsahuje konfigurovatelné nastavení. Části v tomto článku popisují prostředky a nastavení, které se týkají brány sítě VPN pro virtuální sítě vytvořené v modelu nasazení Resource Manageru. Můžete najít popisy a diagramy topologie pro každé připojení řešení [informace o VPN Gateway pro Azure Stack](azure-stack-vpn-gateway-about-vpn-gateways.md).
+Připojení brány VPN se spoléhá na konfiguraci více zdrojů, z nichž každý obsahuje konfigurovatelné nastavení. Tento článek popisuje prostředky a nastavení, které se týkají brány sítě VPN pro virtuální síť, kterou vytvoříte v modelu nasazení Resource Manager. Můžete najít popisy a diagramy topologie pro každé připojení řešení [informace o VPN Gateway pro Azure Stack](azure-stack-vpn-gateway-about-vpn-gateways.md).
 
 ## <a name="vpn-gateway-settings"></a>Nastavení služby VPN gateway
 
@@ -67,7 +67,7 @@ Podobně Azure Stack nepodporuje změnu velikosti z podporovaných starší verz
 
 Pokud použijete k vytvoření brány virtuální sítě Resource Manageru na portálu Azure Stack, můžete pomocí rozevíracího seznamu vyberte SKU brány. Možnosti, které máte na výběr odpovídají typ brány a typ sítě VPN, kterou jste vybrali.
 
-#### <a name="powershell"></a>PowerShell
+#### <a name="powershell"></a>Prostředí Power Shell
 
 Následující příklad Powershellu Určuje, **- GatewaySku** jako VpnGw1.
 
@@ -100,7 +100,7 @@ Při vytváření brány virtuální sítě pro konfiguraci brány VPN, musíte 
 >
 > Kromě toho Azure Stack nepodporuje používání selektory provozu na základě zásad pro brány podle postupu v tuto chvíli, protože vlastní konfigurace zásad IPSec/IKE nejsou podporovány.
 
-* **PolicyBased**: sítě VPN založené na zásadách šifrují pakety a směrují je do tunelových propojení IPsec na základě zásad IPsec nakonfigurovaných pomocí kombinace předpon adres mezi vaší místní sítí a virtuální sítě Azure Stack. Zásady nebo selektor provozu, je obvykle definováno jako přístupový seznam v konfiguraci zařízení VPN.
+* **PolicyBased**: sítě VPN založené na zásadách šifrují pakety a směrují je do tunelových propojení IPsec na základě zásad IPsec nakonfigurovaných pomocí kombinace předpon adres mezi vaší místní sítí a virtuální sítě Azure Stack. Zásady nebo selektor provozu, je obvykle přístupový seznam v konfiguraci zařízení VPN.
 
   >[!NOTE]
   >PolicyBased se nepodporuje v Azure, ale ne ve službě Azure Stack.
@@ -121,9 +121,9 @@ V následující tabulce jsou uvedeny požadavky pro brány VPN Gateway.
 
 | |Brány sítě VPN PolicyBased Basic | Brána VPN typu RouteBased Basic | Brána VPN typu RouteBased Standard | RouteBased vysoce výkonná brána sítě VPN|
 |--|--|--|--|--|
-| **Připojení Site-to-Site (S2S připojení)** | Nepodporuje se | Konfigurace VPN typu RouteBased | Konfigurace VPN typu RouteBased | Konfigurace VPN typu RouteBased |
-| **Metoda ověřování**  | Nepodporuje se | Předsdílený klíč pro připojení S2S  | Předsdílený klíč pro připojení S2S  | Předsdílený klíč pro připojení S2S  |   
-| **Maximální počet připojení S2S**  | Nepodporuje se | 10 | 10| 5|
+| **Připojení Site-to-Site (S2S připojení)** | Není podporováno | Konfigurace VPN typu RouteBased | Konfigurace VPN typu RouteBased | Konfigurace VPN typu RouteBased |
+| **Metoda ověřování**  | Není podporováno | Předsdílený klíč pro připojení S2S  | Předsdílený klíč pro připojení S2S  | Předsdílený klíč pro připojení S2S  |   
+| **Maximální počet připojení S2S**  | Není podporováno | 10 | 10| 5|
 |**Podpora aktivního směrování (BGP)** | Nepodporuje se | Nepodporuje se | Podporováno | Podporováno |
 
 ### <a name="gateway-subnet"></a>Podsíť brány
@@ -163,7 +163,7 @@ V některých případech budete muset upravit nastavení místní síťové br�
 
 ## <a name="ipsecike-parameters"></a>Parametry protokolu IPsec/IKE
 
-Při nastavování připojení VPN ve službě Azure Stack, musíte nakonfigurovat na obou koncích připojení.  Při konfiguraci připojení VPN mezi Azure Stack a hardwarové zařízení, jako je přepínač nebo směrovač, který funguje jako brána VPN, zařízení může vás požádat o další nastavení.
+Při nastavování připojení VPN ve službě Azure Stack, musíte nakonfigurovat na obou koncích připojení.  Při konfiguraci připojení VPN mezi Azure Stack a hardwarové zařízení, jako je přepínač nebo směrovač, který funguje jako brána VPN, zařízení může výzvu k zadání dalších nastavení.
 
 Na rozdíl od Azure, která podporuje několik nabídek jako iniciátor i respondér, Azure Stack podporuje jenom jednu nabídku.
 
@@ -173,7 +173,7 @@ Na rozdíl od Azure, která podporuje několik nabídek jako iniciátor i respon
 |-|-|
 | Verze IKE           | IKEv2 |
 |Skupina Diffie-Hellman   | Skupina 2 (1 024 bitů) |
-| Metoda ověřování | Předsdílený klíč |
+| Metoda ověření | Předsdílený klíč |
 |Algoritmy šifrování a hash | AES256, SHA256 |
 |Životnost SA (čas)     | 28 800 sekund|
 
@@ -184,14 +184,12 @@ Na rozdíl od Azure, která podporuje několik nabídek jako iniciátor i respon
 |Verze IKE |IKEv2 |
 |Šifrování a hash algoritmy (šifrování)     | GCMAES256|
 |Šifrování a hash algoritmy (ověřování) | GCMAES256|
-|Životnost SA (čas)  | 27 000 sekund<sup>viz poznámka 1</sup> |
-|Životnost SA (bajty) | 33,553,408<sup>viz poznámka 2</sup>     |
-|Metoda Perfect Forward Secrecy (PFS) |Žádný<sup>viz poznámku 3</sup> |
+|Životnost SA (čas)  | 27 000 sekund  |
+|Životnost SA (bajty) | 33,553,408     |
+|Metoda Perfect Forward Secrecy (PFS) |Žádný<sup>viz poznámka 1</sup> |
 |Detekce mrtvých partnerských zařízení | Podporováno|  
 
-* *Poznámka 1:* starší než verze 1803 Azure Stack používá hodnotu 14 400 fakturovatelných po celou dobu životnosti SA (čas).
-* *Poznámka 2:* starší než verze 1803 Azure Stack používá hodnotu 819,200 po celou dobu životnosti SA (bajty).
-* *Poznámka: 3:* starší než verze 1807, používá Azure Stack hodnotu PFS2048 pro ideální Forward Secrecy (PFS).
+* *Poznámka 1:* starší než verze 1807, používá Azure Stack hodnotu PFS2048 pro ideální Forward Secrecy (PFS).
 
 ## <a name="next-steps"></a>Další postup
 
