@@ -5,25 +5,26 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 06/05/2018
+ms.date: 07/30/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 9a17f34333503436d3da340670abdde154e45ef6
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.openlocfilehash: f2d7aba05fc01c5a4dcdb123f25242c4e4a72578
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38727522"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "43426420"
 ---
-Od 1. července 2018 se začíná rušit podpora protokolu TLS 1.0 a 1.1 ve službě Azure VPN Gateway. Služba VPN Gateway bude podporovat pouze protokol TLS 1.2. Pokud chcete pro své klienty Point-to-Site s Windows 7 a Windows 8 využívající protokol TLS zachovat podporu a možnosti připojení protokolu TLS, doporučujeme nainstalovat následující aktualizace:
+>[!NOTE]
+>Od 1. července 2018 se začíná rušit podpora protokolu TLS 1.0 a 1.1 ve službě Azure VPN Gateway. Služba VPN Gateway bude podporovat pouze protokol TLS 1.2. Kvůli zachování podpory najdete v článku [aktualizace povolení podpory pro TLS1.2](#tls1).
 
-• [Aktualizace pro implementaci protokolu EAP od Microsoftu umožňující použití protokolu TLS](https://support.microsoft.com/help/2977292/microsoft-security-advisory-update-for-microsoft-eap-implementation-th)
-
-• [Aktualizace pro povolení protokolů TLS 1.1 a TLS 1.2 jako výchozích zabezpečených protokolů ve službě WinHTTP](https://support.microsoft.com/help/3140245/update-to-enable-tls-1-1-and-tls-1-2-as-a-default-secure-protocols-in)
-
-1. července 2018 se také přestanou používat následující starší verze algoritmů pro protokol TLS:
+Kromě toho tyto starší verze algoritmy se také přestanou používat TLS na 1. červencem 2018:
 
 * RC4 (Rivest Cipher 4)
 * DES (Data Encryption Algorithm)
 * 3DES (Triple Data Encryption Algorithm)
 * MD5 (Message Digest 5)
+
+### <a name="tls1"></a>Jak povolit podporu protokolu TLS 1.2 ve Windows 7 a Windows 8.1?
+
+[!INCLUDE [tls 1.2](vpn-gateway-tls-include.md)]

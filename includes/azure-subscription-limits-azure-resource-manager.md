@@ -5,15 +5,15 @@ services: billing
 author: rothja
 ms.service: billing
 ms.topic: include
-ms.date: 07/02/2018
+ms.date: 08/22/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: f47654d056a26f5a58b1ccc2c200f774bee1f19f
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 08cd67e86666cdc9c9fc1b0f4ef98cf3ea7a156c
+ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37348197"
+ms.lasthandoff: 08/22/2018
+ms.locfileid: "43435584"
 ---
 | Prostředek | Výchozí omezení | Maximální omezení |
 | --- | --- | --- |
@@ -31,6 +31,7 @@ ms.locfileid: "37348197"
 | Jedinečné výpočty značek na předplatné<sup>3</sup> | 10 000 | 10 000 |
 | [Cloudové služby](../articles/cloud-services/cloud-services-choose-me.md) na předplatné |Neuvedeno<sup>4</sup> |Neuvedeno<sup>4</sup> |
 | [Skupiny vztahů](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) na předplatné |Neuvedeno<sup>4</sup> |Neuvedeno<sup>4</sup> |
+| [Nasazení na úrovni předplatného](../articles/azure-resource-manager/deploy-to-subscription.md) podle umístění | 800 | 800 |
 
 <sup>1</sup> Výchozí omezení se liší podle typu kategorie nabídky, jako je bezplatná zkušební verze nebo průběžné platby, a řadě, jako je Dv2, F, G atd.
 

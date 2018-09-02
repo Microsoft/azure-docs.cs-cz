@@ -1,6 +1,6 @@
 | Prostředek | Výchozí omezení | Poznámka |
 | --- | --- | --- |
-| Application Gateway |50 na předplatné | Maximální 100 |
+| Application Gateway |50 na předplatné | Maximální 1000 |
 | IP konfigurace front-endu |2 |1 veřejný a 1 privátní |
 | Porty front-endu |20 | |
 | Fondy adres back-endu |20 | |
