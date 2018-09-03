@@ -1,16 +1,16 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: d3be19c67027746ddb73cf2cd9b4545584fd3ce0
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: ccc508b8dbfb990639abe24efa2822ff27f2f910
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39389777"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43341560"
 documentType: LandingData
-title: Dokumentace k funkci Identita spravované služby Azure Active Directory
+title: Dokumentace ke spravovaným identitám Azure AD pro prostředky Azure
 metadata:
   document_id: 
-  title: Dokumentace k funkci Identita spravované služby Azure Active Directory
-  description: Naučte se využívat funkci Identita spravované služby (MSI) k zabezpečenému ověřování pro cloudové služby Azure, aniž byste ve zdrojovém kódu museli mít přihlašovací údaje.
+  title: Dokumentace ke spravovaným identitám Azure AD pro prostředky Azure
+  description: Naučte se využívat spravované identity pro prostředky Azure k zabezpečenému ověřování pro cloudové služby Azure, aniž byste ve zdrojovém kódu museli mít přihlašovací údaje.
   services: active-directory
   ms.component: msi
   author: daveba
@@ -22,21 +22,21 @@ metadata:
   ms.date: 03/16/2018
   ms.author: daveba
 abstract:
-  description: Identita spravované služby (MSI) poskytuje službám Azure automaticky spravovanou identitu v Azure Active Directory (Azure AD). Tuto identitu můžete použít k ověření pro jakoukoli službu, která podporuje ověřování Azure AD, aniž byste ve vašem kódu museli mít přihlašovací údaje.  Naučte se prostřednictvím našich šablon Rychlý start a kurzů vytvářet a spravovat identity spravované služby.
+  description: Spravované identity pro prostředky Azure poskytují službám Azure automaticky spravovanou identitu v Azure Active Directory (Azure AD). Tuto identitu můžete použít k ověření pro jakoukoli službu, která podporuje ověřování Azure AD, aniž byste ve vašem kódu museli mít přihlašovací údaje.  Naučte se prostřednictvím našich šablon Rychlý start a kurzů vytvářet a spravovat spravované identity pro prostředky Azure.
   aside:
     image:
       alt: 
       height: 112
       src: media/index/video-thumb-landing-page.png
       width: 200
-    title: Seznámení s funkcí Identita spravované služby
+    title: Úvod ke spravovaným identitám pro prostředky Azure
     href: https://www.youtube.com/embed/bBi1bll2928
     width: 200
 sections:
 - title: Zprovoznění během 5 minut
   items:
   - type: paragraph
-    text: Naučte se využívat funkci Identita spravované služby (MSI) pro přístup k rozhraní API Azure Resource Manageru
+    text: Naučte se využívat spravované identity pro prostředky Azure pro přístup k rozhraní API Azure Resource Manageru
   - type: list
     style: unordered
     items:
@@ -45,7 +45,7 @@ sections:
 - title: Podrobné kurzy
   items:
   - type: paragraph
-    text: Naučte se využívat funkci Identita spravované služby (MSI) pro bezpečný přístup k prostředkům Azure
+    text: Naučte se využívat spravované identity pro prostředky Azure pro zabezpečený přístup k prostředkům Azure
   - type: paragraph
     text: Virtuální počítač nebo škálovací sada virtuálních počítačů s Windows
   - type: list
