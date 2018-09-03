@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: daveba
 ms.custom: include file
-ms.openlocfilehash: 3004e2e4db12b7b5beb7ab024562d4e285c99a50
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: b63d7f4be1d94d19819564a231fd7792203146e1
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40238440"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43340391"
 ---
 |  |
 |--|
-|Identita spravované služby je funkcí služby Azure Active Directory. Každá ze [služeb Azure, které podporují identitu spravované služby](/azure/active-directory/managed-service-identity/services-support-msi), se řídí vlastní časovou osou. Než začnete, nezapomeňte zkontrolovat stav [dostupnosti](/azure/active-directory/managed-service-identity/services-support-msi) spravovaných identit pro váš prostředek a [známé problémy](/azure/active-directory/managed-service-identity/known-issues).|
+|Spravované identity pro prostředky Azure jsou funkcí služby Azure Active Directory. Každá ze [služeb Azure, které podporují spravované identity pro prostředky Azure](/azure/active-directory/managed-service-identity/services-support-msi), se řídí vlastní časovou osou. Než začnete, nezapomeňte zkontrolovat stav [dostupnosti](/azure/active-directory/managed-service-identity/services-support-msi) spravovaných identit pro váš prostředek a [známé problémy](/azure/active-directory/managed-service-identity/known-issues).|
 |  |

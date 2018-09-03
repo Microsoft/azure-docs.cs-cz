@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: f45bb3b47209bd6b02cea49c23b0a59ad75fc2e2
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: d9008956d3a5542d71438ee13050a3951230e101
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42057526"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43338803"
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Zřízení virtuálního počítače pro datové vědy pro Linux (Ubuntu)
 
@@ -81,13 +81,14 @@ Než vytvoříte virtuální počítač pro datové vědy pro Linux, musíte mí
 ## <a name="create-your-data-science-virtual-machine-for-linux"></a>Vytvořit váš virtuální počítač pro datové vědy pro Linux
 Tady jsou kroky pro vytvoření instance z virtuální počítač pro datové vědy pro Linux:
 
-1. Přejděte na virtuální počítač [webu Azure portal](https://portal.azure.com/#create/microsoft-ads.linux-data-science-vm-ubuntulinuxdsvmubuntu).
+1. Přejděte na virtuální počítač [webu Azure portal](https://portal.azure.com/#create/microsoft-dsvm.linux-data-science-vm-ubuntulinuxdsvmubuntu). Můžete být vyzváni k přihlášení ke svému účtu Azure, pokud ještě nejste přihlášeni. 
 1. Klikněte na tlačítko **vytvořit** (dole) a zobrazte si průvodce.![ Konfigurace data vědy vm](./media/dsvm-ubuntu-intro/configure-data-science-virtual-machine.png)
 1. Vstupy pro každý z kroků v průvodci (uvedené na pravé straně na předchozím obrázku) použitý k vytvoření virtuálního počítače Microsoft datové vědy v následujících částech. Tady jsou vstupy potřebné ke konfiguraci každý z těchto kroků:
    
    a. **Základy**:
    
    * **Název**: název serveru datové vědy vytváříte.
+   * **Typ disku virtuálního počítače**: Zvolte **Premium SSD** Pokud dáváte přednost jednotky SSD (Solid-State Drive). Jinak klikněte na tlačítko **standardní HDD**. 
    * **Uživatelské jméno**: první účet přihlásit ID.
    * **Heslo**: první heslo účtu (veřejný klíč SSH můžete použít namísto hesla).
    * **Předplatné**: Pokud máte více předplatných, vyberte ten, ve které je vytvořené a fakturuje počítač. Musíte mít oprávnění vytváření prostředků pro toto předplatné.
@@ -96,23 +97,17 @@ Tady jsou kroky pro vytvoření instance z virtuální počítač pro datové v�
    
    b. **Velikost**:
    
-   * Vyberte jeden z typů serveru, které splňuje požadavek na funkční a náklady na omezení. Vyberte **zobrazení všech** zobrazíte další možnosti velikostí virtuálních počítačů. Vyberte síťový adaptér nebo virtuálního počítače ND třídy pro školení GPU. [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/) stránka obsahuje seznam oblastí s grafickými procesory.
+   * Vyberte jeden z typů serveru, které splňuje požadavek na funkční a náklady na omezení. Vyberte síťový adaptér nebo virtuálního počítače ND třídy pro instance virtuálních počítačů založený na GPU. [Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/) stránka obsahuje seznam oblastí s grafickými procesory.
    
    c. **Nastavení**:
    
-   * **Typ disku**: Zvolte **Premium** Pokud dáváte přednost jednotky SSD (Solid-State Drive). Jinak klikněte na tlačítko **standardní**. Virtuální počítače GPU vyžadovat standardní disk.
-   * **Účet úložiště**: můžete vytvořit nový účet úložiště Azure v rámci vašeho předplatného nebo použijte stávající ve stejném umístění, který byl vybrán na **Základy** kroku v průvodci.
-   * **Další parametry**: ve většině případů stačí použít výchozí hodnoty. Vzít v úvahu jiné než výchozí hodnoty, najeďte myší na informační odkaz nápovědy pro konkrétní pole.
+   * Ve většině případů můžete použít jenom výchozí hodnoty. Vzít v úvahu jiné než výchozí hodnoty, najeďte myší na informační odkaz nápovědy pro konkrétní pole.
    
    d. **Souhrn**:
    
-   * Ověřte správnost všech informací, které jste zadali.
+   * Ověřte správnost všech informací, které jste zadali. Pomocí odkazu uvedeného na podmínky použití. Virtuální počítač nemá žádné další poplatky za výpočetní prostředky pro velikost serveru, kterou jste zvolili v **velikost** kroku. Zřizování spusťte kliknutím na **vytvořit**. 
    
-   e. **Koupit**:
-   
-   * Zřizování spusťte kliknutím na **koupit**. Pomocí odkazu uvedeného na podmínky transakce. Virtuální počítač nemá žádné další poplatky za výpočetní prostředky pro velikost serveru, kterou jste zvolili v **velikost** kroku.
-
-Zřizování zabere přibližně 5 až 10 minut. Stav zřizování se zobrazí na portálu Azure portal.
+Zřizování by měla trvat asi 5 minut. Stav zřizování se zobrazí na portálu Azure portal.
 
 ## <a name="how-to-access-the-data-science-virtual-machine-for-linux"></a>Jak získat přístup k virtuální počítač pro datové vědy pro Linux
 
@@ -434,6 +429,6 @@ Zde je, jak můžete pokračovat v učení a zkoumání:
 
 * [Vědecké zpracování dat na virtuální počítač pro datové vědy pro Linux](linux-dsvm-walkthrough.md) návodu se dozvíte, jak provést několik běžných úloh datové vědy Data Science virtuálního počítače s Linuxem zřízené tady. 
 * Prozkoumejte různé nástrojů pro datové vědy pro datovou vědu virtuální počítač a vyzkoušejte si nástroje popsané v tomto článku. Můžete také spustit *dsvm. více informací* na prostředí v rámci virtuálního počítače pro základní informace a odkazy na další informace o těchto nástrojích, nainstalovaný na virtuálním počítači.  
-* Další informace o vytváření analytická řešení začátku do konce systematicky pomocí [vědecké zpracování týmových dat](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
-* Přejděte [galerii Cortana Analytics](http://gallery.cortanaanalytics.com) pro machine learning a datové analýzy ukázky, které používají Cortana Analytics Suite.
+* Další informace o vytváření analytická řešení začátku do konce systematicky pomocí [vědecké zpracování týmových dat](http://aka.ms/tdsp).
+* Přejděte [galerii Azure AI](https://gallery.azure.ai/) pro machine learning a datové analýzy ukázek, které využívají služby Azure AI.
 

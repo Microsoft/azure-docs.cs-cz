@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: df5b2ecce2a5c9d7c263ee0acc3a49b859b93f7f
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 8bc04ba7c97447cdcc6eb07798e5f5b21e285de7
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39346116"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344705"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vms"></a>Správa konfiguračního serveru pro virtuální počítače VMware
 
@@ -24,7 +24,7 @@ Nastavíte místní konfigurační server, když použijete [Azure Site Recovery
 Konfigurační server je možné otevřít následujícím způsobem:
     - Přihlaste se k virtuálnímu počítači, na kterém je nasazená a spustit Azure Site Recovery Configuration Manageru ze zástupce na ploše.
     - Alternativně můžete přístup ke konfigurační server vzdáleně z **https://*ConfigurationServerName*/:44315 /**. Přihlaste se pomocí přihlašovacích údajů správce.
-   
+
 ### <a name="modify-vmware-server-settings"></a>Úprava nastavení serveru VMware
 
 1. Chcete-li přiřadit jinému serveru VMware s konfiguračním serverem, po přihlášení, vyberte **přidat vCenter serveru nebo serveru vSphere ESXi**.
@@ -80,103 +80,113 @@ Pokud je potřeba, můžete znovu zaregistrujte konfigurační server ve stejné
       Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber – ProxyUserName domain\username -ProxyPassword $pwd
    ```
 
-      >[!NOTE] 
+      >[!NOTE]
       >Za účelem **o přijetí změn nejnovější certifikáty** z konfiguračního serveru pro horizontální navýšení kapacity procesového serveru spusťte příkaz *"< Drive\Microsoft instalace Azure Recovery\agent\cdpcli.exe lokality >"--registermt*
 
   8. Nakonec spuštěním následujícího příkazu restartujte obengine.
   ```
           net stop obengine
           net start obengine
+  ```
+## <a name="upgrade-the-configuration-server"></a>Upgradujte konfigurační server
 
-## Upgrade the configuration server
+Spuštění kumulativní aktualizace se aktualizovat konfigurační server. Aktualizace můžete použít pro až N-4 verze. Příklad:
 
-You run update rollups to update the configuration server. Updates can be applied for up to N-4 versions. For example:
+- Pokud spustíte 9.7, 9.8, 9.9 nebo 9.10, můžete upgradovat přímo na 9.11.
+- Pokud chcete provést upgrade 9.11 spustíte 9,6 nebo starší, musíte nejprve upgradovat na verzi 9.7. před 9.11.
 
-- If you run 9.7, 9.8, 9.9, or 9.10, you can upgrade directly to 9.11.
-- If you run 9.6 or earlier and you want to upgrade to 9.11, you must first upgrade to version 9.7. before 9.11.
+Odkazy na kumulativní aktualizace pro upgrade pro všechny verze konfiguračního serveru jsou k dispozici v [aktualizace wikistránka](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx).
 
-Links to update rollups for upgrading to all versions of the configuration server are available in the [wiki updates page](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx).
+Upgrade serveru následujícím způsobem:
 
-Upgrade the server as follows:
+1. V trezoru, přejděte na **spravovat** > **infrastruktura Site Recovery** > **konfigurační servery**.
+2. Pokud je k dispozici aktualizace, odkaz se zobrazí v **verze agenta** > sloupce.
+    ![Aktualizace](./media/vmware-azure-manage-configuration-server/update2.png)
+3. Stáhněte si instalační soubor aktualizace ke konfiguračnímu serveru.
 
-1. In the vault, go to **Manage** > **Site Recovery Infrastructure** > **Configuration Servers**.
-2. If an update is available, a link appears in the **Agent Version** > column.
-    ![Update](./media/vmware-azure-manage-configuration-server/update2.png)
-3. Download the update installer file to the configuration server.
+    ![Aktualizace](./media/vmware-azure-manage-configuration-server/update1.png)
 
-    ![Update](./media/vmware-azure-manage-configuration-server/update1.png)
+4. Dvakrát klikněte na panel spusťte instalační program.
+5. Instalační program zjistí aktuální verze, která běží na počítači. Klikněte na tlačítko **Ano** spusťte upgrade.
+6. Po dokončení upgradu ověřuje se konfigurace serveru.
 
-4. Double-click to run the installer.
-5. The installer detects the current version running on the machine. Click **Yes** to start the upgrade.
-6. When the upgrade completes the server configuration validates.
+    ![Aktualizace](./media/vmware-azure-manage-configuration-server/update3.png)
 
-    ![Update](./media/vmware-azure-manage-configuration-server/update3.png)
-    
-7. Click **Finish** to close the installer.
+7. Klikněte na tlačítko **Dokončit** zavřete Instalační služby.
 
-## Delete or unregister a configuration server
+## <a name="delete-or-unregister-a-configuration-server"></a>Odstranění nebo zrušení registrace konfiguračního serveru
 
-1. [Disable protection](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure) for all VMs under the configuration server.
-2. [Disassociate](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy) and [delete](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy) all replication policies from the configuration server.
-3. [Delete](vmware-azure-manage-vcenter.md#delete-a-vcenter-server) all vCenter servers/vSphere hosts that are associated with the configuration server.
-4. In the vault, open **Site Recovery Infrastructure** > **Configuration Servers**.
-5. Select the configuration server that you want to remove. Then, on the **Details** page, select **Delete**.
+1. [Zakažte ochranu](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure) pro všechny virtuální počítače v rámci konfigurace serveru.
+2. [Zrušit přidružení](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy) a [odstranit](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy) všechny zásady replikace z konfiguračního serveru.
+3. [Odstranit](vmware-azure-manage-vcenter.md#delete-a-vcenter-server) všichni hostitelé vCenter servery pro/vSphere, které jsou spojeny s konfiguračním serverem.
+4. V trezoru, otevřete **infrastruktura Site Recovery** > **konfigurační servery**.
+5. Vyberte konfigurační server, který chcete odebrat. Potom na **podrobnosti** stránce **odstranit**.
 
-    ![Delete configuration server](./media/vmware-azure-manage-configuration-server/delete-configuration-server.png)
-   
+    ![Odstranění konfiguračního serveru](./media/vmware-azure-manage-configuration-server/delete-configuration-server.png)
 
-### Delete with PowerShell
 
-You can optionally delete the configuration server by using PowerShell.
+### <a name="delete-with-powershell"></a>Odstranit pomocí Powershellu
 
-1. [Install](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.4.0) the Azure PowerShell module.
-2. Sign in to your Azure account by using this command:
-    
+Volitelně můžete odstranit konfigurační server pomocí prostředí PowerShell.
+
+1. [Nainstalujte](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.4.0) modulu Azure PowerShell.
+2. Přihlaste se ke svému účtu Azure pomocí tohoto příkazu:
+
     `Connect-AzureRmAccount`
-3. Select the vault subscription.
+3. Vyberte předplatné trezoru.
 
      `Get-AzureRmSubscription –SubscriptionName <your subscription name> | Select-AzureRmSubscription`
-3.  Set the vault context.
-    
+3.  Nastavte kontext trezoru.
+
     ```
-    $vault = get-AzureRmRecoveryServicesVault – název <name of your vault> Set AzureRmSiteRecoveryVaultSettings - ARSVault $vault
+    $vault = Get-AzureRmRecoveryServicesVault -Name <name of your vault>
+    Set-AzureRmSiteRecoveryVaultSettings -ARSVault $vault
     ```
-4. Retrieve the configuration server.
+4. Načtení konfiguračního serveru.
 
     `$fabric = Get-AzureRmSiteRecoveryFabric -FriendlyName <name of your configuration server>`
-6. Delete the configuration server.
+6. Odstraňte konfigurační server.
 
     `Remove-AzureRmSiteRecoveryFabric -Fabric $fabric [-Force] `
 
 > [!NOTE]
-> You can use the **-Force** option in Remove-AzureRmSiteRecoveryFabric for forced deletion of the configuration server.
- 
-## Generate configuration server Passphrase
+> Můžete použít **– platnost** možnost odebrat AzureRmSiteRecoveryFabric pro Vynucené odstranění konfiguračního serveru.
 
-1. Sign in to your configuration server, and then open a command prompt window as an administrator.
-2. To change the directory to the bin folder, execute the command **cd %ProgramData%\ASR\home\svsystems\bin**
-3. To generate the passphrase file, execute **genpassphrase.exe -v > MobSvc.passphrase**.
-4. Your passphrase will be stored in the file located at **%ProgramData%\ASR\home\svsystems\bin\MobSvc.passphrase**.
+## <a name="generate-configuration-server-passphrase"></a>Vygenerovat heslo konfiguračního serveru
 
-## Renew SSL certificates
+1. Přihlaste se ke konfiguračnímu serveru a pak otevřete okno příkazového řádku jako správce.
+2. Chcete-li změnit adresář do složky bin, spusťte příkaz **cd %ProgramData%\ASR\home\svsystems\bin**
+3. Ke generování souboru s heslem, spusťte **genpassphrase.exe - v > MobSvc.passphrase**.
+4. Vaše heslo se uloží do souboru v umístění **%ProgramData%\ASR\home\svsystems\bin\MobSvc.passphrase**.
 
-The configuration server has an inbuilt web server, which orchestrates activities of the Mobility Service, process servers, and master target servers connected to it. The web server uses an SSL certificate to authenticate clients. The certificate expires after three years and can be renewed at any time.
+## <a name="renew-ssl-certificates"></a>Prodloužit platnost certifikátů SSL
 
-### Check expiry
+Konfigurační server má integrované webový server, která orchestruje činnosti služby Mobility, procesových serverů a hlavní cílové servery, které jsou k němu připojená. Webový server používá certifikát SSL k ověřování klientů. Certifikát vyprší po uplynutí tří let a jde ji obnovit v každém okamžiku.
 
-For configuration server deployments before May 2016, certificate expiry was set to one year. If you have a certificate that is going to expire, the following occurs:
+### <a name="check-expiry"></a>Kontrola vypršení platnosti
 
-- When the expiry date is two months or less, the service starts sending notifications in the portal, and by email (if you subscribed to Site Recovery notifications).
-- A notification banner appears on the vault resource page. For more information, select the banner.
-- If you see an **Upgrade Now** button, it indicates that some components in your environment haven't been upgraded to 9.4.xxxx.x or higher versions. Upgrade the components before you renew the certificate. You can't renew on older versions.
+Pro nasazení serveru konfigurace před. května 2016 vypršení platnosti certifikátu byla nastavená na jeden rok. Pokud máte certifikát, který vyprší, se stane toto:
 
-### Renew the certificate
+- Pokud datum vypršení platnosti je po dobu dvou měsíců nebo méně, spuštění služby odesílání oznámení z portálu a e-mailem (je-li připojila ke Site Recovery oznámení).
+- Na stránce prostředků trezoru se zobrazí banner s oznámením. Další informace vyberte informační zprávu.
+- Pokud se zobrazí **upgradovat** tlačítko, znamená to, že některé součásti ve vašem prostředí nebyly aktualizovány na verzi 9.4.xxxx.x nebo vyšší verze. Tyto součásti Upgradujte před obnovováním certifikátu. Nejde obnovit ke starším verzím.
 
-1. In the vault, open **Site Recovery Infrastructure** > **Configuration Server**. Select the required configuration server.
-2. The expiry date appears under **Configuration Server health**.
-3. Select **Renew Certificates**. 
+### <a name="renew-the-certificate"></a>Obnovení certifikátu
 
+1. V trezoru, otevřete **infrastruktura Site Recovery** > **konfigurační Server**. Vyberte požadované konfigurační server.
+2. Datum vypršení platnosti se zobrazí v části **stav konfigurace serveru**.
+3. Vyberte **prodloužit platnost certifikátů**.
 
-## Next steps
+## <a name="update-windows-licence"></a>Update Windows licence
 
-Review the tutorials for setting up disaster recovery of [VMware VMs](vmware-azure-tutorial.md) to Azure.
+Licence pomocí šablony OVF k dispozici je zkušební licenci, která je platná po dobu 180 dnů. Pro použití bez přerušení je nutné aktivovat Windows s licencí opatřené.
+
+## <a name="failback-requirements"></a>Požadavky na navrácení služeb po obnovení
+
+Během operace opětovného zapnutí ochrany a navrácení služeb po obnovení musí být místní konfigurační server spuštěn a v připojeném stavu. Pro úspěšné navrácení služeb po obnovení musí existovat virtuální počítač se při navrácení služeb obnoví databázi konfiguračního serveru.
+
+Ujistěte se, že provedete pravidelných naplánovaných záloh konfiguračního serveru. Pokud dojde k havárii a dojde ke ztrátě konfigurační server, musíte obnovit ze záložní kopie konfigurační server a zkontrolujte, zda obnovené konfigurační server má stejnou IP adresu, pomocí kterého se zaregistrují do trezoru. Navrácení služeb po obnovení nebude fungovat, pokud se používá jinou IP adresu pro obnovený konfigurační server.
+
+## <a name="next-steps"></a>Další postup
+
+Přečtěte si podrobné pokyny pro nastavení zotavení po havárii [virtuálních počítačů VMware](vmware-azure-tutorial.md) do Azure.
