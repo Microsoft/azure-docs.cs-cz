@@ -6,15 +6,15 @@ author: zjalexander
 ms.service: automation
 ms.component: update-management
 ms.topic: tutorial
-ms.date: 02/28/2018
+ms.date: 08/29/2018
 ms.author: zachal
 ms.custom: mvc
-ms.openlocfilehash: 4d5222889d5e840bd03bf77a56584dac48bb740c
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 8458aaee9f8d328d959fb47fb3e32af176d545b1
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41924764"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247364"
 ---
 # <a name="manage-windows-updates-by-using-azure-automation"></a>Správa aktualizací pro Windows pomocí služby Azure Automation
 
@@ -82,9 +82,19 @@ Kliknutím kamkoli jinam na aktualizaci otevřete podokno **Prohledávání prot
 
 ## <a name="configure-alerts"></a>Konfigurace upozornění
 
-V tomto kroku nastavíte upozornění, které vás bude informovat o úspěšném nasazení aktualizací. Upozornění, které vytvoříte, je založené na dotazu Log Analytics. Můžete napsat vlastní dotaz pro další upozornění, která budou pokrývat řadu různých scénářů. Na webu Azure Portal přejděte do části **Monitorování** a pak vyberte **Vytvořit upozornění**. 
+V tomto kroku zjistíte, jak nastavit upozornění, které vás bude informovat o úspěšném nasazení aktualizací prostřednictvím dotazu Log Analytics nebo sledování neúspěšných nasazení v hlavním runbooku pro řešení Update Management.
 
-Na stránce **Vytvořit pravidlo** v části **1. Definujte podmínku upozornění** vyberte **Vybrat cíl**. V části **Filtrovat podle typu prostředku** vyberte **Log Analytics**. Vyberte váš pracovní prostor Log Analytics a pak vyberte **Hotovo**.
+### <a name="alert-conditions"></a>Podmínky upozornění
+
+Pro každý typ upozornění je potřeba definovat různé podmínky upozornění.
+
+#### <a name="log-analytics-query-alert"></a>Upozornění dotazu Log Analytics
+
+V případě úspěšných nasazení můžete vytvořit upozornění na základě dotazu Log Analytics. V případě neúspěšných nasazení můžete podle kroků v části [Upozornění runbooku](#runbook-alert) nastavit upozornění na selhání hlavního runbooku, který orchestruje nasazení aktualizací. Můžete napsat vlastní dotaz pro další upozornění, která budou pokrývat řadu různých scénářů.
+
+Na webu Azure Portal přejděte do části **Monitorování** a pak vyberte **Vytvořit upozornění**.
+
+V části **1. Definujte podmínku upozornění** klikněte na **Vybrat cíl**. V části **Filtrovat podle typu prostředku** vyberte **Log Analytics**. Vyberte váš pracovní prostor Log Analytics a pak vyberte **Hotovo**.
 
 ![Vytvoření upozornění](./media/automation-tutorial-update-management/create-alert.png)
 
@@ -104,7 +114,21 @@ V části **Logika upozornění** jako **Prahová hodnota** zadejte **1**. Jakmi
 
 ![Konfigurace logiky signálů](./media/automation-tutorial-update-management/signal-logic.png)
 
-V části **2. Definujte podrobnosti upozornění** zadejte název a popis upozornění. Vzhledem k tomu, že je upozornění určené pro úspěšné spuštění, nastavte **Závažnost** na **Informativní (záv. 2)**.
+#### <a name="runbook-alert"></a>Upozornění runbooku
+
+V případě neúspěšných nasazení musíte upozorňovat na selhání hlavního spuštění. Na webu Azure Portal přejděte do části **Monitorování** a vyberte **Vytvořit upozornění**.
+
+V části **1. Definujte podmínku upozornění** klikněte na **Vybrat cíl**. V části **Filtrovat podle typu prostředku** vyberte **Účty Automation**. Vyberte svůj účet Automation a pak vyberte **Hotovo**.
+
+V části **Název runbooku** klikněte na symbol **\+** a jako vlastní název zadejte **Patch-MicrosoftOMSComputers**. V části **Stav** zvolte **Neúspěch** nebo klikněte na symbol **\+** a zadejte **Neúspěch**.
+
+![Konfigurace logiky signálů pro runbooky](./media/automation-tutorial-update-management/signal-logic-runbook.png)
+
+V části **Logika upozornění** jako **Prahová hodnota** zadejte **1**. Jakmile budete hotovi, vyberte **Hotovo**.
+
+### <a name="alert-details"></a>Podrobnosti upozornění
+
+V části **2. Definujte podrobnosti upozornění** zadejte název a popis upozornění. Nastavte **Závažnost** na **Informativní (záv. 2)** pro úspěšné spuštění a **Informativní (záv. 1)** pro neúspěšné spuštění.
 
 ![Konfigurace logiky signálů](./media/automation-tutorial-update-management/define-alert-details.png)
 
@@ -134,7 +158,7 @@ V části **Nové nasazení aktualizací** zadejte následující informace:
 
 * **Operační systém:** Vyberte cílový operační systém pro nasazení aktualizací.
 
-* **Počítače k aktualizaci:** Vyberte uložené hledání, importovanou skupinu nebo vyberte jednotlivé počítače z rozevírací nabídky. Pokud zvolíte možnost **Počítače**, ve sloupci **PŘIPRAVENOST AGENTA AKTUALIZACE** se zobrazí připravenost počítačů. Informace o různých způsobech vytváření skupin počítačů v Log Analytics najdete v tématu [Skupiny počítačů v Log Analytics](../log-analytics/log-analytics-computer-groups.md).
+* **Počítače k aktualizaci:** Vyberte uložené hledání, importovanou skupinu nebo vyberte jednotlivé počítače z rozevírací nabídky. Pokud zvolíte možnost **Počítače**, ve sloupci **PŘIPRAVENOST AGENTA AKTUALIZACE** se zobrazí připravenost počítačů. Další informace o různých způsobech vytváření skupin počítačů v Log Analytics najdete v tématu [Skupiny počítačů v Log Analytics](../log-analytics/log-analytics-computer-groups.md).
 
 * **Klasifikace aktualizací:** Vyberte typy softwaru, které se zahrnou do nasazení aktualizací. Pro účely tohoto kurzu nechte vybrané všechny typy.
 

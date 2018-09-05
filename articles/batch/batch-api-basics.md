@@ -12,15 +12,15 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-compute
-ms.date: 04/06/2018
+ms.date: 08/22/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d404e3a300a953ccc1cfb691cbde6f6d7ee54b26
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: f1c933c9dcb3e3e2c2cb267073386d4b9c4e2022
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216304"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42746014"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Vývoj rozsáhlých paralelních výpočetních řešení pomocí služby Batch
 
@@ -288,7 +288,7 @@ Pokud na výpočetním uzlu selže spouštěcí úkol, je stav tohoto uzlu aktua
 Pokud přidáváte nebo aktualizujete spouštěcí úkol pro už existující fond, musíte restartovat jeho výpočetní uzly, aby se na nich spouštěcí úkol provedl.
 
 >[!NOTE]
-> Celková velikost spouštěcího úkolu nesmí přesahovat 32768 znaků, včetně souborů prostředků a proměnných prostředí. K zajištění, že spouštěcí úkol splňuje tento požadavek, můžete použít jednu ze dvou následujících metod:
+> Batch omezuje celkovou velikost spouštěcího úkolu, což zahrnuje soubory prostředků i proměnné prostředí. Pokud potřebujete zmenšit velikost spouštěcího úkolu, můžete použít jednu ze dvou následujících metod:
 >
 > 1. K distribuci aplikací nebo dat napříč všemi uzly ve fondu Batch můžete použít balíčky aplikací. Další informace o balíčcích aplikací najdete v tématu [Nasazení aplikací do výpočetních uzlů pomocí balíčků aplikací služby Batch](batch-application-packages.md).
 > 2. Můžete ručně vytvořit komprimovaný archiv obsahující vaše soubory aplikací. Tento komprimovaný archiv potom uložte do služby Azure Storage jako objekt blob. Zadejte tento komprimovaný archiv jako soubor prostředků pro spouštěcí úkol. Před spuštěním příkazového řádku pro spouštěcí úkol rozbalte archiv z příkazového řádku. 

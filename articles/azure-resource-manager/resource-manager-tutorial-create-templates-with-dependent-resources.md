@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 07/20/2018
+ms.date: 08/27/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: bd559cb9f0140706a4b9735c642367e03616a14d
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 7509ed46ba07cd8250f82f8eb258d18e3f4a1ee6
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39188161"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43107101"
 ---
 # <a name="tutorial-create-azure-resource-manager-templates-with-dependent-resources"></a>Kurz: Vytváření šablon Azure Resource Manageru se závislými prostředky
 
@@ -56,12 +56,27 @@ K dokončení tohoto článku potřebujete:
 
 ## <a name="explore-the-template"></a>Prozkoumání šablony
 
+Při zkoumání šablony v této části zkuste zodpovědět tyto otázky:
+
+- Kolik prostředků Azure se v této šabloně definuje?
+- Jedním z prostředků je účet úložiště Azure.  Vypadá jeho definice jako ta, kterou jsme použili v posledním kurzu?
+- Najdete referenční informace k šablonám pro prostředky definované v této šabloně?
+- Najdete závislosti těchto prostředků?
+
 1. V nástroji Visual Studio Code sbalte elementy tak, abyste viděli jenom elementy první úrovně a u položky **resources** elementy druhé úrovně:
 
     ![Šablony Azure Resource Manageru ve Visual Studio Code](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code.png)
 
     Šablona definuje pět prostředků.
-2. Rozbalte čtvrtý element:
+2. Rozbalte první prostředek. Jedná se o účet úložiště. Jeho definice by měla být stejná jako ta, kterou jsme použili na začátku posledního kurzu.
+
+    ![Šablony Azure Resource Manageru ve Visual Studio Code – definice účtu úložiště](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-storage-account-definition.png)
+
+3. Rozbalte druhý prostředek. Typ tohoto prostředku je **Microsoft.Network/publicIPAddresses**. Pokud chcete najít referenční informace k šablonám, přejděte na stránku s [referenčními informacemi k šablonám](https://docs.microsoft.com/azure/templates/) a do pole **Filtrovat podle názvu** zadejte **veřejná IP adresa** nebo **veřejné IP adresy**. Porovnejte definici prostředku s referenčními informacemi k šablonám.
+
+    ![Šablony Azure Resource Manageru ve Visual Studio Code – definice veřejné IP adresy](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-public-ip-address-definition.png)
+4. Zopakujte poslední krok a vyhledejte referenční informace k šablonám pro ostatní prostředky definované v této šabloně.  Porovnejte definice prostředků s referenčními informacemi.
+5. Rozbalte čtvrtý prostředek:
 
     ![Šablony Azure Resource Manageru ve Visual Studio Code – dependson](./media/resource-manager-tutorial-create-templates-with-dependent-resources/resource-manager-template-visual-studio-code-dependson.png)
 
@@ -70,7 +85,7 @@ K dokončení tohoto článku potřebujete:
     * publicIPAddress
     * virtualNetwork
 
-3. Rozbalte pátý element. Tento prostředek je virtuální počítač. Ten závisí na dvou dalších prostředcích:
+6. Rozbalte pátý prostředek. Tento prostředek je virtuální počítač. Ten závisí na dvou dalších prostředcích:
 
     * storageAccount
     * networkInterface

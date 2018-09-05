@@ -10,12 +10,12 @@ ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 03/20/2018
-ms.openlocfilehash: b34fd81532e27960d0dd92f172790aee3cd82ca5
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 002ec2f99e488af76654c2391416e4b90e16e4c0
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34639414"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43050223"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-in-the-azure-portal"></a>Rychlý start: Vytvoření serveru Azure Database for PostgreSQL na webu Azure Portal
 
@@ -85,6 +85,10 @@ Azure Database for PostgreSQL vytváří bránu firewall na úrovni serveru. Ta 
     AllowAllIps | 0.0.0.0 | 255.255.255.255
 
      ![Nastavení pravidel brány firewall](./media/quickstart-create-database-portal/5-firewall-2.png)
+     
+      > [!NOTE]
+      > Pro produkční instance byste měli pravidla brány firewall nastavit tak, aby umožňovala příjem příchozích požadavků pouze ze známých IP adres.  Tato nastavení slouží pouze pro účely tohoto příkladu.
+      >
 
 4. Na horním panelu nástrojů na stránce **Zabezpečení připojení** vyberte **Uložit**. Než budete pokračovat, počkejte na zobrazení oznámení o úspěšném dokončení aktualizace zabezpečení připojení.
 

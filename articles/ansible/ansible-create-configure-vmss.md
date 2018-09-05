@@ -1,47 +1,41 @@
 ---
-title: Vytvoření škálovací sady virtuálních počítačů v Azure pomocí Ansible
-description: Zjistěte, jak použít Ansible k vytvoření a konfigurace virtuálního počítače škálovací sady v Azure
+title: Vytváření škálovacích sad virtuálních počítačů v Azure pomocí Ansible
+description: Zjistěte, jak pomocí Ansible vytvořit a nakonfigurovat škálovací sadu virtuálních počítačů v Azure.
 ms.service: ansible
-keywords: ansible, azure, devops, bash, playbooku, virtuálních počítačů, škálovací sadu virtuálních počítačů, vmss
+keywords: ansible, azure, devops, bash, playbook, virtual machine, virtual machine scale set, vmss
 author: tomarcher
-manager: jpconnock
-editor: na
-ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.date: 07/11/2018
+manager: jeconnoc
 ms.author: tarcher
-ms.openlocfilehash: 5f915f7b1b425a3bd6e5d62eb70bb3f633b7eda8
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
-ms.translationtype: MT
+ms.topic: tutorial
+ms.date: 08/24/2018
+ms.openlocfilehash: f3b08c41d3bf083c7cca5897cee11a1a4b9c9092
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39009004"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918571"
 ---
-# <a name="create-virtual-machine-scale-sets-in-azure-using-ansible"></a>Vytvoření škálovací sady virtuálních počítačů v Azure pomocí Ansible
-Ansible umožňuje automatizovat nasazení a konfiguraci prostředků ve vašem prostředí. Ansible můžete použít ke správě škálovací sady virtuálních počítačů (VMSS) v Azure, stejně jako spravujete libovolné prostředky Azure. Tento článek ukazuje, jak použít Ansible k vytvoření a horizontální navýšení kapacity škálovací sady virtuálních počítačů. 
+# <a name="create-virtual-machine-scale-sets-in-azure-using-ansible"></a>Vytváření škálovacích sad virtuálních počítačů v Azure pomocí Ansible
+Ansible umožňuje automatizovat nasazování a konfiguraci prostředků ve vašem prostředí. Pomocí Ansible můžete spravovat škálovací sadu virtuálních počítačů v Azure stejně jako jakékoli jiné prostředky Azure. V tomto článku se dozvíte, jak pomocí Ansible vytvořit škálovací sadu virtuálních počítačů a horizontálně navýšit její kapacitu. 
 
 ## <a name="prerequisites"></a>Požadavky
-- **Předplatné Azure** – Pokud nemáte předplatné Azure, vytvořte [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) předtím, než začnete.
-- **Konfigurace Ansible** - [Azure vytvořit přihlašovací údaje a konfigurace Ansible](../virtual-machines/linux/ansible-install-configure.md#create-azure-credentials)
-- **Ansible a moduly sady Azure Python SDK** 
-  - [CentOS 7.4](../virtual-machines/linux/ansible-install-configure.md#centos-74)
-  - [Ubuntu 16.04 LTS](../virtual-machines/linux/ansible-install-configure.md#ubuntu-1604-lts)
-  - [SLES 12 SP2](../virtual-machines/linux/ansible-install-configure.md#sles-12-sp2)
+- **Předplatné Azure** – Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
+- [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
 
 > [!Note]
-> Ansible 2.6 je potřeba spustit následující playbooky ukázka v tomto kurzu. 
+> Ke spuštění následujících ukázkových playbooků v tomto kurzu se vyžaduje Ansible 2.6. 
 
-## <a name="create-a-vmss"></a>Vytvoření VMSS
-Tato část představuje ukázkové playbook Ansible, který definuje následující prostředky:
-- **Skupina prostředků** do kterého všechny vaše prostředky se nasadí
-- **Virtuální síť** v adresní prostor 10.0.0.0/16
-- **Podsíť** v rámci virtuální sítě
-- **Veřejná IP adresa** tohoto wllows můžete získat přístup k prostředkům v síti Internet
-- **Skupina zabezpečení sítě** , která řídí tok síťový provoz a škálovací sady virtuálních počítačů
-- **Nástroj pro vyrovnávání zatížení** , který distribuuje provoz mezi sadu definovaných virtuálních počítačů pomocí pravidla nástroje pro vyrovnávání zatížení
-- **Škálovací sada virtuálních počítačů** , který používá všechny vytvořené prostředky
+## <a name="create-a-vmss"></a>Vytvoření škálovací sady virtuálních počítačů
+Tato část představuje ukázkový playbook Ansible, který definuje následující prostředky:
+- **Skupina prostředků**, do které se nasadí všechny vaše prostředky
+- **Virtuální síť** v adresním prostoru 10.0.0.0/16.
+- **Podsíť** v této virtuální síti.
+- **Veřejná IP adresa**, která vám umožní přistupovat k prostředkům přes internet.
+- **Skupina zabezpečení sítě**, která řídí tok síťového provozu do a ze škálovací sady virtuálních počítačů.
+- **Nástroj pro vyrovnávání zatížení**, který s využitím pravidel nástroje pro vyrovnávání zatížení distribuuje provoz mezi sadu definovaných virtuálních počítačů.
+- **Škálovací sada virtuálních počítačů**, která všechny vytvořené prostředky využívá.
 
-Zadejte vlastní heslo *admin_password* hodnotu.
+Místo hodnoty *admin_password* zadejte vlastní heslo správce.
 
   ```yaml
   - hosts: localhost
@@ -137,15 +131,15 @@ Zadejte vlastní heslo *admin_password* hodnotu.
               caching: ReadOnly
   ```
 
-Chcete-li vytvořit prostředí virtuálního počítače škálovací sady pomocí Ansible, uložit předchozí playbook jako `vmss-create.yml`, nebo [stáhnout ukázkový playbook Ansible](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss/vmss-create.yml).
+Pokud chcete vytvořit prostředí škálovací sady virtuálních počítačů pomocí Ansible, uložte předchozí playbook jako `vmss-create.yml` nebo si [stáhněte ukázkový playbook Ansible](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss/vmss-create.yml).
 
-Chcete-li spustit Ansible playbook, použijte **ansible playbook** takto:
+Playbook Ansible spustíte pomocí příkazu **ansible-playbook** následujícím způsobem:
 
   ```bash
   ansible-playbook vmss-create.yml
   ```
 
-Po spuštění playbooku, výstup podobný následující příklad ukazuje, že virtuální počítač škálovací sada se úspěšně vytvořil:
+Po spuštění playbooku se zobrazí podobný výstup jako v následujícím příkladu, který ukazuje úspěšné vytvoření škálovací sady virtuálních počítačů:
 
   ```bash
   PLAY [localhost] ***********************************************************
@@ -179,14 +173,14 @@ Po spuštění playbooku, výstup podobný následující příklad ukazuje, že
 
   ```
 
-## <a name="scale-out-a-vmss"></a>Horizontální navýšení kapacity VMSS
-Škálovací sady vytvořené virtuální počítač má dvě instance. Když přejdete do virtuálního počítače škálovací sady na webu Azure Portal, uvidíte **Standard_DS1_v2 (2 instance)**. Můžete také použít [Azure Cloud Shell](https://shell.azure.com/) spuštěním následujícího příkazu ve službě Cloud Shell:
+## <a name="scale-out-a-vmss"></a>Horizontální navýšení kapacity škálovací sady virtuálních počítačů
+Vytvořená škálovací sada virtuálních počítačů obsahuje dvě instance. Pokud přejdete ke škálovací sadě virtuálních počítačů na webu Azure Portal, zobrazí se **Standard_DS1_v2 (2 instance)**. Můžete použít také [Azure Cloud Shell](https://shell.azure.com/), a to spuštěním následujícího příkazu ve službě Cloud Shell:
 
   ```azurecli-interactive
   az vmss show -n myVMSS -g myResourceGroup --query '{"capacity":sku.capacity}' 
   ```
 
-Výstup by měl vypadat přibližně takto:
+Zobrazí se podobný výsledek jako v následujícím výstupu:
 
   ```bash
   {
@@ -194,7 +188,7 @@ Výstup by měl vypadat přibližně takto:
   }
   ```
 
-Teď můžeme škálovat z dvě instance na tři instance. Následující kód playbook Ansible načte informace o škálování virtuálního počítače a změní jeho kapacity ze dvou na tři. 
+Teď provedeme škálování ze dvou na tři instance. Následující kód playbooku Ansible načte informace o škálovací sadě virtuálních počítačů a změní její kapacitu ze dvou na tři instance. 
 
   ```yaml
   - hosts: localhost
@@ -221,7 +215,7 @@ Teď můžeme škálovat z dvě instance na tři instance. Následující kód p
         azure_rm_virtualmachine_scaleset: "{{ body }}"
   ```
 
-Chcete-li horizontální navýšení kapacity škálovací sady virtuálních počítačů, které jste vytvořili, uložit předchozí playbook jako `vmss-scale-out.yml` nebo [stáhnout ukázkový playbook Ansible](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss/vmss-scale-out.yml)). 
+Pokud chcete horizontálně navýšit kapacitu škálovací sady virtuálních počítačů, kterou jste vytvořili, uložte předchozí playbook jako `vmss-scale-out.yml` nebo si [stáhněte ukázkový playbook Ansible](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss/vmss-scale-out.yml). 
 
 Následující příkaz spustí playbook:
 
@@ -229,7 +223,7 @@ Následující příkaz spustí playbook:
   ansible-playbook vmss-scale-out.yml
   ```
 
-Výstup spuštění Ansible playbook ukazuje, že škálovací sadu virtuálních počítačů úspěšně horizontálním navýšení kapacity:
+Výstup spuštění playbooku Ansible ukazuje úspěšné horizontální navýšení kapacity škálovací sady virtuálních počítačů:
 
   ```bash
   PLAY [localhost] **********************************************************
@@ -265,13 +259,13 @@ Výstup spuštění Ansible playbook ukazuje, že škálovací sadu virtuálníc
   localhost                  : ok=5    changed=1    unreachable=0    failed=0
   ```
 
-Pokud přejděte do škálovací sady virtuálních počítačů, které jste nakonfigurovali na webu Azure Portal, uvidíte **Standard_DS1_v2 (3 instancí)**. Můžete si taky ověřit změny s [Azure Cloud Shell](https://shell.azure.com/) spuštěním následujícího příkazu:
+Pokud přejdete ke škálovací sadě virtuálních počítačů, kterou jste nakonfigurovali, na webu Azure Portal, zobrazí se **Standard_DS1_v2 (3 instance)**. Změnu můžete ověřit také pomocí služby [Azure Cloud Shell](https://shell.azure.com/), a to spuštěním následujícího příkazu:
 
   ```azurecli-interactive
   az vmss show -n myVMSS -g myResourceGroup --query '{"capacity":sku.capacity}' 
   ```
 
-Výsledky spuštění příkazu ve službě Cloud Shell ukazuje, že nyní existují tři instance. 
+Výsledek spuštění příkazu ve službě Cloud Shell ukazuje, že teď existují tři instance. 
 
   ```bash
   {
@@ -279,6 +273,6 @@ Výsledky spuštění příkazu ve službě Cloud Shell ukazuje, že nyní exist
   }
   ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"] 
-> [Playbook Ansible vzorku pro VMSS](https://github.com/Azure-Samples/ansible-playbooks/tree/master/vmss)
+> [Ukázkový playbook Ansible pro škálovací sadu virtuálních počítačů](https://github.com/Azure-Samples/ansible-playbooks/tree/master/vmss)

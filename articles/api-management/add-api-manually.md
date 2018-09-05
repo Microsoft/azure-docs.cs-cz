@@ -3,7 +3,7 @@ title: Ruční přidání rozhraní API pomocí portálu Azure Portal | Microsof
 description: V tomto kurzu se dozvíte, jak ručně přidat rozhraní API pomocí API Managementu (APIM).
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: mikebudzynski
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -11,16 +11,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/22/2017
+ms.date: 08/27/2018
 ms.author: apimpm
-ms.openlocfilehash: ef7cfa0f30eaaa426c312b21ce0a73aa4409d2ec
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 35b4777c7de4db1f8514b24e7b1e4d11775d0ca0
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38307444"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247898"
 ---
-# <a name="add-an-api-manually"></a>Ruční přidání rozhraní API 
+# <a name="add-an-api-manually"></a>Ruční přidání rozhraní API
 
 Kroky v tomto článku ukazují, jak pomocí portálu Azure Portal ručně přidat rozhraní API do instance API Managementu (APIM). Vytvořit prázdné rozhraní API a definovat ho ručně můžete třeba tehdy, když chcete napodobit rozhraní API. Podrobnosti o napodobení rozhraní API najdete v článku [Napodobení odpovědí API](mock-api-responses.md).
 
@@ -54,17 +54,16 @@ Projděte si následující rychlý start: [Vytvoření instance služby Azure A
     |**Produkty**|*Unlimited* |Publikujte rozhraní API jeho přidružením k produktu. Pokud chcete, aby bylo rozhraní API publikované a k dispozici pro vývojáře, přidejte ho k produktu. Můžete to udělat při vytváření rozhraní API nebo nastavit později.<br/><br/>Produkty jsou sdruženími jednoho nebo více rozhraní API. Můžete zahrnout několik rozhraní API a nabídnout je vývojářům prostřednictvím portálu pro vývojáře. <br/>Vývojáři se nejprve musí přihlásit k odběru produktu, a teprve pak získají přístup k rozhraní API. Po přihlášení k odběru získají klíč předplatného, který je možné použít pro jakékoli rozhraní API v příslušném produktu. Pokud jste vytvořili instanci služby APIM, již jste správcem, takže jste ve výchozím nastavení přihlášeni k odběru všech produktů.<br/><br/> Ve výchozím nastavení každá instance služby API Management obsahuje dva ukázkové produkty: **Starter** a **Unlimited**.| 
 5. Vyberte **Vytvořit**.
 
-V tuto chvíli nemáte v APIM žádné operace, které se mapují na operace v rozhraní API back-endu. Pokud budete volat operaci, která je prezentovaná prostřednictvím back-endu, ale ne prostřednictvím APIM, může nastat chyba **404**. 
+V tuto chvíli nemáte v APIM žádné operace, které se mapují na operace v rozhraní API back-endu. Pokud budete volat operaci, která je prezentovaná prostřednictvím back-endu, ale ne prostřednictvím APIM, může nastat chyba **404**.
 
 >[!NOTE] 
 > Ve výchozím nastavení při přidání rozhraní API platí, že i když je připojené k některé back-endové službě, APIM nebude prezentovat žádné operace, dokud je nepřidáte do seznamu povolených. Operaci back-endové služby přidáte do seznamu povolených tak, že vytvoříte operaci APIM, která se namapuje na back-endovou operaci.
->
 
 ## <a name="add-and-test-an-operation"></a>Přidání a otestování operace
 
 V této části se dozvíte, jak přidat operaci „/get“, aby se namapovala na back-endovou operaci „http://httpbin.org/get“.
 
-### <a name="add-the-operation"></a>Přidání operace
+### <a name="add-an-operation"></a>Přidání operace
 
 1. Vyberte rozhraní API, které jste vytvořili v předchozím kroku.
 2. Klikněte na **+ Přidat operaci**.
@@ -72,7 +71,7 @@ V této části se dozvíte, jak přidat operaci „/get“, aby se namapovala n
 4. Jako **Zobrazovaný název** zadejte „*FetchData*“.
 5. Vyberte **Uložit**.
 
-### <a name="test-the-operation"></a>Otestování operace
+### <a name="test-an-operation"></a>Test operace
 
 Otestujte operaci na portálu Azure Portal. Případně ji můžete otestovat na **Portálu pro vývojáře**.
 

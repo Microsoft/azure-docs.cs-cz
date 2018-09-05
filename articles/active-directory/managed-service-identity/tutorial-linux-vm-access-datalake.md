@@ -14,23 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 6854b0a6c72b44bcd3f778e0c46cb109b34ce826
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 4a9d147d1605f4efa638ff258df2667b6b95230e
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258826"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42885154"
 ---
 # <a name="tutorial-use-managed-service-identity-for-a-linux-vm-to-access-azure-data-lake-store"></a>Kurz: Použití identity spravované služby (MSI) na virtuálním počítači s Linuxem pro přístup k Azure Data Lake Store
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-V tomto kurzu si ukážeme, jak používat identitu spravované služby (MSI) na virtuálním počítači s Linuxem pro přístup ke službě Azure Data Lake Store. Azure automaticky spravuje identity vytvořené prostřednictvím identity spravované služby. Identita spravovaných služeb slouží k ověření přístupu ke službám, které podporují ověřování Azure Active Directory (Azure AD) bez nutnosti vložení přihlašovacích údajů do kódu. 
+V tomto kurzu se dozvíte, jak pomocí identity přiřazené systémem pro virtuální počítač s Linuxem získat přístup ke službě Azure Data Lake Store. Azure automaticky spravuje identity vytvořené prostřednictvím identity spravované služby. Identita spravovaných služeb slouží k ověření přístupu ke službám, které podporují ověřování Azure Active Directory (Azure AD) bez nutnosti vložení přihlašovacích údajů do kódu. 
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Povolit identitu spravované služby na virtuálním počítači s Linuxem. 
 > * Udělit přístup virtuálnímu počítači k Azure Data Lake Store.
 > * Získat přístupový token pomocí identity virtuálního počítače a použít ho pro přístup ke službě Azure Data Lake Store.
 
@@ -40,33 +39,11 @@ V tomto kurzu se naučíte:
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+- [Přihlášení k webu Azure Portal](https://portal.azure.com)
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+- [Vytvoření virtuálního počítače s Linuxem](/azure/virtual-machines/linux/quick-create-portal)
 
-## <a name="create-a-linux-virtual-machine-in-a-new-resource-group"></a>Vytvoření virtuálního počítače s Linuxem v nové skupině prostředků
-
-V tomto kurzu vytvoříme nový virtuální počítač s Linuxem. MSI také můžete povolit na stávajícím virtuálním počítači.
-
-1. V levém horním rohu webu Azure Portal vyberte tlačítko **Nový**.
-2. Vyberte **Compute** a potom vyberte **Ubuntu Server 16.04 LTS**.
-3. Zadejte informace o virtuálním počítači. V poli **Typ ověřování** vyberte **Veřejný klíč SSH** nebo **Heslo**. Vytvořené přihlašovací údaje umožňují přihlásit se k virtuálnímu počítači.
-
-   ![Podokno základních údajů při vytvoření virtuálního počítače](media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
-
-4. V seznamu **Předplatné** vyberte předplatné virtuálního počítače.
-5. Pokud chcete vybrat novou skupinu prostředků, ve které chcete vytvořit virtuální počítač, vyberte **Skupina prostředků** > **Vytvořit nový**. Jakmile budete hotovi, vyberte **OK**.
-6. Vyberte velikost virtuálního počítače. Pokud chcete zobrazit další velikosti, vyberte **Zobrazit všechny** nebo změňte filtr **Podporovaný typ disku**. V podokně nastavení nechte výchozí hodnoty a vyberte **OK**.
-
-## <a name="enable-managed-service-identity-on-your-vm"></a>Povolení identity spravované služby na virtuálním počítači
-
-Identita spravované služby virtuálního počítače umožňuje získat z Azure AD přístupové tokeny, aniž byste museli vkládat do kódu přihlašovací údaje. Když na virtuálním počítači povolíte MSI, stanou se dvě věci: virtuální počítač se zaregistruje v Azure Active Directory, aby se vytvořila jeho spravovaná identita, a tato identita se nakonfiguruje na virtuálním počítači.
-
-1. V poli **Virtuální počítač** vyberte virtuální počítač, na kterém chcete povolit identitu spravované služby.
-2. V levém podokně vyberte **Konfigurace**.
-3. Zobrazí se **Identita spravované služby**. Zaregistrujte a povolte identitu spravované služby výběrem možnosti **Ano**. Pokud chcete MSI zakázat, vyberte **Ne**.
-   ![Výběr možnosti Zaregistrovat do Azure Active Directory](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
-4. Vyberte **Uložit**.
+- [Povolení identity přiřazené systémem pro váš virtuální počítač](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm#enable-system-assigned-identity-on-an-existing-vm)
 
 ## <a name="grant-your-vm-access-to-azure-data-lake-store"></a>Udělení přístupu virtuálnímu počítači k Azure Data Lake Store
 

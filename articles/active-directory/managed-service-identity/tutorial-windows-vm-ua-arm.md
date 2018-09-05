@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/10/2018
 ms.author: daveba
-ms.openlocfilehash: db4d423a09b6b37fd0ba88d466319cb5da4fdedf
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 30eb40967b2fd8a6b5e18cf0074a68fb24fd0744
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "41917938"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42886378"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-service-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>Kurz: Použití uživatelem přiřazené identity spravované služby na virtuálním počítači s Windows k přístupu k Azure Resource Manageru
 
@@ -30,7 +30,6 @@ Tento kurz vysvětluje, jak vytvořit identitu přiřazenou uživatelem, přiřa
 Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Vytvoření virtuálního počítače s Windows 
 > * Vytvoření identity přiřazené uživatelem
 > * Přiřazení identity přiřazené uživatelem k virtuálnímu počítači s Windows
 > * Udělení přístupu identitě přiřazené uživatelem ke skupině prostředků v Azure Resource Manageru 
@@ -39,8 +38,14 @@ Získáte informace o těchto tématech:
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud Identitu spravované služby neznáte, projděte si část [Přehled](overview.md). **Nezapomeňte si prostudovat [rozdíly mezi systémovými a uživatelem přiřazenými identitami](overview.md#how-does-it-work)**.
-- Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
+[!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
+
+[!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
+
+- [Přihlášení k webu Azure Portal](https://portal.azure.com)
+
+- [Vytvoření virtuálního počítače s Windows](/azure/virtual-machines/windows/quick-create-portal)
+
 - K provedení kroků v tomto kurzu potřebných k vytvoření prostředku a správě rolí potřebuje váš účet oprávnění vlastníka v odpovídajícím oboru (vaše předplatné nebo skupina prostředků). Pokud potřebujete pomoc s přiřazením role, přečtěte si téma [Použití řízení přístupu na základě role ke správě přístupu k prostředkům předplatného Azure](/azure/role-based-access-control/role-assignments-portal).
 - Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použít modul Azure PowerShell verze 5.7.0 nebo novější. Verzi zjistíte spuštěním příkazu ` Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). 
 - Pokud používáte PowerShell místně, je potřeba provést také následující: 
@@ -48,37 +53,6 @@ Získáte informace o těchto tématech:
     - Nainstalujte [nejnovější verzi modulu PowerShellGet](/powershell/gallery/installing-psget#for-systems-with-powershell-50-or-newer-you-can-install-the-latest-powershellget).
     - Spuštěním rutiny `Install-Module -Name PowerShellGet -AllowPrerelease` získejte předběžnou verzi modulu `PowerShellGet` (po spuštění tohoto příkazu možná budete muset pomocí příkazu `Exit` ukončit aktuální relaci PowerShellu, aby se modul `AzureRM.ManagedServiceIdentity` nainstaloval).
     - Spuštěním rutiny `Install-Module -Name AzureRM.ManagedServiceIdentity -AllowPrerelease` nainstalujte předběžnou verzi modulu `AzureRM.ManagedServiceIdentity`, který umožňuje provádět operace s identitou přiřazenou uživatelem v tomto článku.
-
-## <a name="create-resource-group"></a>Vytvoření skupiny prostředků
-
-V následujícím příkladu se vytvoří skupina prostředků *myResourceGroupVM* v oblasti *EastUS*.
-
-```azurepowershell-interactive
-New-AzureRmResourceGroup -ResourceGroupName "myResourceGroupVM" -Location "EastUS"
-```
-
-## <a name="create-virtual-machine"></a>Vytvoření virtuálního počítače
-
-Po vytvoření skupiny prostředků vytvořte virtuální počítač s Windows.
-
-Uživatelské jméno a heslo potřebné pro účet správce na virtuálním počítači můžete nastavit pomocí příkazu [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential):
-
-```azurepowershell-interactive
-$cred = Get-Credential
-```
-Vytvořte virtuální počítač pomocí příkazu [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm).
-
-```azurepowershell-interactive
-New-AzureRmVm `
-    -ResourceGroupName "myResourceGroupVM" `
-    -Name "myVM" `
-    -Location "East US" `
-    -VirtualNetworkName "myVnet" `
-    -SubnetName "mySubnet" `
-    -SecurityGroupName "myNetworkSecurityGroup" `
-    -PublicIpAddressName "myPublicIpAddress" `
-    -Credential $cred
-```
 
 ## <a name="create-a-user-assigned-identity"></a>Vytvoření identity přiřazené uživatelem
 

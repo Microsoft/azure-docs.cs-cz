@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET
 ms.workload: tbd
 ms.date: 06/13/2018
 ms.author: wesmc
-ms.openlocfilehash: 4c34bd10768ab7acf4700b29386d3a71532490db
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: cf47b2d6bd17fa5a9f7cbe98ab7db2799f6e8287
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38674848"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42916296"
 ---
 # <a name="quickstart-create-a-chat-room-with-signalr-service"></a>Rychlý start: Vytvoření chatovací místnosti s využitím služby SignalR
 
@@ -93,15 +93,20 @@ V této části do svého projektu přidáte [nástroj Secret Manager](https://d
 
         dotnet restore
 
-3. Do nástroje Secret Manager přidejte tajný kód *Azure__SignalR__ConnectionString*. Tento tajný kód představuje hierarchickou konfigurační hodnotou a dvojtečka (:) nemusí fungovat na všech platformách. Dvojité podtržítko (__), které tento tajný kód používá, podporují všechny platformy.  Tento tajný kód bude obsahovat připojovací řetězec pro přístup k vašemu prostředku služby SignalR. *Azure__SignalR__ConnectionString* je výchozí konfigurační klíč, který služba SignalR hledá za účelem navázání připojení. Nahraďte hodnotu v následujícím příkazu připojovacím řetězcem pro váš prostředek služby SignalR.
+3. Do nástroje Secret Manager přidejte tajný kód *Azure:SignalR:ConnectionString*. 
+
+    Tento tajný kód bude obsahovat připojovací řetězec pro přístup k vašemu prostředku služby SignalR. *Azure:SignalR:ConnectionString* je výchozí konfigurační klíč, který služba SignalR hledá za účelem navázání připojení. Nahraďte hodnotu v následujícím příkazu připojovacím řetězcem pro váš prostředek služby SignalR.
 
     Tento příkaz se musí spustit ve stejném adresáři jako soubor *.csproj*.
 
     ```
-    dotnet user-secrets set Azure__SignalR__ConnectionString "Endpoint=<Your endpoint>;AccessKey=<Your access key>;"    
+    dotnet user-secrets set Azure:SignalR:ConnectionString "Endpoint=<Your endpoint>;AccessKey=<Your access key>;"    
     ```
 
     Nástroj Secret Manager se použije pouze k testování webové aplikace, zatímco je hostovaná v místním prostředí. V některém dalším kurzu nasadíte webovou chatovací aplikaci do Azure. Po nasazení webové aplikace do Azure použijete místo nástroje Secret Manager k uložení připojovacího řetězce nastavení aplikace.
+
+    K tomuto tajnému klíči se přistupuje pomocí konfiguračního rozhraní API. Dvojtečka (:) v názvu konfigurace funguje s konfiguračním rozhraním API na všech podporovaných platformách, viz [Konfigurace podle prostředí](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0#configuration-by-environment). 
+
 
 4. Otevřete soubor *Startup.cs* a aktualizujte metodu `ConfigureServices` tak, aby používala službu Azure SignalR, a to zavoláním metody `services.AddSignalR().AddAzureSignalR()`:
 
@@ -113,7 +118,7 @@ V této části do svého projektu přidáte [nástroj Secret Manager](https://d
     }
     ```
 
-    Vzhledem k tomu, že do metody `AddAzureSignalR()` nepředáváte žádný parametr, použije tento kód jako připojovací řetězec prostředku služby SignalR výchozí konfigurační klíč *Azure__SignalR__ConnectionString*.
+    Vzhledem k tomu, že do metody `AddAzureSignalR()` nepředáváte žádný parametr, použije tento kód jako připojovací řetězec prostředku služby SignalR výchozí konfigurační klíč *Azure:SignalR:ConnectionString*.
 
 5. V souboru *Startup.cs* aktualizujte také metodu `Configure` nahrazením volání metody `app.UseStaticFiles()` následujícím kódem a uložte soubor.
 

@@ -1,120 +1,113 @@
 ---
-title: Nasazení do Azure Kubernetes Service (AKS) pomocí Jenkinse a vzor modrozelené nasazení
-description: Zjistěte, jak nasadit do Azure Kubernetes Service (AKS) pomocí Jenkinse a vzor modrozelené nasazení.
-services: app-service\web
-documentationcenter: ''
+title: Nasazení do služby Azure Kubernetes Service (AKS) s využitím Jenkinse a vzoru modrého/zeleného nasazení
+description: Zjistěte, jak provést nasazení do služby Azure Kubernetes Service (AKS) s využitím Jenkinse a vzoru modrého/zeleného nasazení.
+ms.service: jenkins
+keywords: jenkins, azure, devops, kubernetes, k8s, aks, blue green deployment, continuous delivery, cd
 author: tomarcher
-manager: jpconnock
-editor: ''
-ms.assetid: ''
-ms.service: multiple
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: web
-ms.date: 07/23/2018
+manager: jeconnoc
 ms.author: tarcher
-ms.custom: jenkins
-ms.openlocfilehash: 384681ae0ba212b485022ac81743528f96075ec8
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
-ms.translationtype: MT
+ms.topic: tutorial
+ms.date: 07/23/2018
+ms.openlocfilehash: d3d3ed8aaac16bc0a8cf817f4972ed3b771ed8d0
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39716453"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43093550"
 ---
-# <a name="deploy-to-azure-kubernetes-service-aks-by-using-jenkins-and-the-bluegreen-deployment-pattern"></a>Nasazení do Azure Kubernetes Service (AKS) pomocí Jenkinse a vzor modrozelené nasazení
+# <a name="deploy-to-azure-kubernetes-service-aks-by-using-jenkins-and-the-bluegreen-deployment-pattern"></a>Nasazení do služby Azure Kubernetes Service (AKS) s využitím Jenkinse a vzoru modrého/zeleného nasazení
 
-Azure Kubernetes Service (AKS) spravuje hostované prostředí Kubernetes, tak rychle a snadno nasazovat a spravovat kontejnerizované aplikace. Není nutné znalosti týkající se Orchestrace kontejnerů. AKS také odstraní starosti související s probíhajícími operacemi a údržbou, zřizování, upgradování a škálování prostředků na vyžádání. Není nutné pozvedněte své aplikace do offline režimu. Další informace o službě AKS najdete v tématu [dokumentaci ke službě AKS](/azure/aks/).
+Azure Kubernetes Service (AKS) spravuje hostované prostředí Kubernetes a umožňuje tak rychle a snadno nasazovat a spravovat kontejnerizované aplikace. Nepotřebujete k tomu žádné znalosti orchestrace kontejnerů. AKS zároveň eliminuje režii spojenou s probíhajícími operacemi a údržbou díky zřizování, upgradování a škálování prostředků na vyžádání. Nemusíte přitom odpojovat své aplikace. Další informace o AKS najdete v [dokumentaci k AKS](/azure/aks/).
 
-Modrozelené nasazení je vzorek Azure DevOps, průběžné doručování, ponechává stávající (modrou) verzi za provozu, nasadí novou (zelená). Obvykle tento model využívá ke směrování zvýšení provozu do zeleného nasazení služby Vyrovnávání zatížení. Pokud monitorování zjistí incident, je možné přesměrovat provoz na modrého nasazení, který je stále spuštěn. Další informace o průběžné doručování, naleznete v tématu [co je průběžné doručování](/azure/devops/what-is-continuous-delivery).
+Modré/zelené nasazení je vzor průběžného doručování Azure DevOps, který spoléhá na zachování živé stávající (modré) verze, zatímco probíhá nasazení nové (zelené) verze. V tomto vzoru se obvykle využívá vyrovnávání zatížení ke směrování stále většího objemu provozu do zeleného nasazení. Pokud se při monitorování zjistí incident, je možné provoz přesměrovat do modrého nasazení, které je stále aktivní. Další informace o průběžném doručování najdete v tématu [Co je průběžné doručování](/azure/devops/what-is-continuous-delivery).
 
-V tomto kurzu se dozvíte, jak provádět následující úlohy:
+V tomto kurzu zjistíte, jak provést následující úlohy:
 
 > [!div class="checklist"]
-> * Další informace o vzoru modrozelené nasazení
+> * Získání informací o vzoru modrého/zeleného nasazení
 > * Vytvoření spravovaného clusteru Kubernetes
-> * Spustit ukázkový skript pro konfiguraci clusteru Kubernetes
+> * Spuštění ukázkového skriptu pro konfiguraci clusteru Kubernetes
 > * Ruční konfigurace clusteru Kubernetes
 > * Vytvoření a spuštění úlohy Jenkinse
 
 ## <a name="prerequisites"></a>Požadavky
-- [Účet GitHub](https://github.com) : je nutné si účet GitHub a naklonujte ukázkové úložiště.
-- [Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) : použití rozhraní příkazového řádku Azure CLI 2.0 k vytvoření clusteru Kubernetes.
-- [Chocolatey](https://chocolatey.org): Správce balíčků použijete k instalaci kubectl.
-- [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/): rozhraní příkazového řádku můžete použít pro spuštění příkazů pro clustery Kubernetes.
-- [jq](https://stedolan.github.io/jq/download/): jednoduchý a příkazového řádku procesor JSON.
+- [Účet GitHub:](https://github.com) Účet GitHub potřebujete k naklonování ukázkového úložiště.
+- [Azure CLI 2.0:](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) Pomocí Azure CLI 2.0 vytvoříte cluster Kubernetes.
+- [Chocolatey:](https://chocolatey.org) Správce balíčků, pomocí kterého nainstalujete kubectl.
+- [kubectl:](https://kubernetes.io/docs/tasks/tools/install-kubectl/) Rozhraní příkazového řádku, pomocí kterého můžete spouštět příkazy pro clustery Kubernetes.
+- [jq:](https://stedolan.github.io/jq/download/) Jednoduchý procesor JSON v příkazovém řádku.
 
-## <a name="clone-the-sample-app-from-github"></a>Naklonujte ukázkovou aplikaci z Githubu
+## <a name="clone-the-sample-app-from-github"></a>Naklonování ukázkové aplikace z GitHubu
 
-V úložišti Microsoft na webu GitHub najdete ukázkovou aplikaci, která ukazuje, jak pomocí Jenkinse a vzor modrozelené nasazení do AKS. V této části vytvořit fork tohoto úložiště ve vaší Githubu a naklonujte aplikaci do místního systému.
+V úložišti Microsoftu na GitHubu najdete ukázkovou aplikaci, která ukazuje nasazení do AKS s využitím Jenkinse a vzoru modrého/zeleného nasazení. V této části vytvoříte fork tohoto úložiště ve svém účtu GitHub a naklonujete aplikaci do místního systému.
 
-1. Přejděte do úložiště GitHub pro [todo-app-java-typu azure](https://github.com/microsoft/todo-app-java-on-azure.git) ukázkovou aplikaci.
+1. Přejděte do úložiště GitHub s ukázkovou aplikací [todo-app-java-on-azure](https://github.com/microsoft/todo-app-java-on-azure.git).
 
-    ![Snímek obrazovky s ukázkovou aplikaci v úložišti GitHub Microsoftu](./media/jenkins-aks-blue-green-deployment/github-sample-msft.png)
+    ![Snímek obrazovky s ukázkovou aplikací v úložišti Microsoftu na GitHubu](./media/jenkins-aks-blue-green-deployment/github-sample-msft.png)
 
-1. Vytvořit fork úložiště tak, že vyberete **Forku** v pravém horním rohu stránky a postupujte podle pokynů a vytvořit fork úložiště ve vašem účtu GitHub.
+1. Vytvořte fork úložiště tak, že v pravém horním rohu stránky vyberete **Fork** (Vytvořit fork) a podle zobrazených pokynů vytvoříte fork úložiště ve svém účtu GitHub.
 
-    ![Možnost snímek obrazovky z Githubu do forku](./media/jenkins-aks-blue-green-deployment/github-sample-msft-fork.png)
+    ![Snímek obrazovky GitHubu s možností vytvořit fork](./media/jenkins-aks-blue-green-deployment/github-sample-msft-fork.png)
 
-1. Poté, co můžete vytvořit fork úložiště, uvidíte, že název účtu se změní na název svého účtu a označuje poznámku, od kdy byl Rozvětvená úložiště (Microsoft).
+1. Po vytvoření forku úložiště uvidíte, že se název účtu změní na název vašeho účtu, a poznámku, která značí, ze kterého úložiště se fork vytvořil (Microsoft).
 
-    ![Název účtu GitHub snímek obrazovky a Poznámka](./media/jenkins-aks-blue-green-deployment/github-sample-msft-forked.png)
+    ![Snímek obrazovky s názvem účtu GitHub a poznámkou](./media/jenkins-aks-blue-green-deployment/github-sample-msft-forked.png)
 
-1. Vyberte **klonovat nebo stáhnout**.
+1. Vyberte **Clone or download** (Naklonovat nebo stáhnout).
 
-    ![Snímek obrazovky z Githubu možnost klonovat nebo stáhnout úložiště](./media/jenkins-aks-blue-green-deployment/github-sample-clone.png)
+    ![Snímek obrazovky GitHubu s možností naklonovat nebo stáhnout úložiště](./media/jenkins-aks-blue-green-deployment/github-sample-clone.png)
 
-1. V **klonování pomocí protokolu HTTPS** okna, vyberte **kopírování** ikonu.
+1. V okně **Clone with HTTPS** (Naklonovat pomocí HTTPS) vyberte ikonu **kopírování**.
 
-    ![Snímek obrazovky z Githubu možnost zkopírovat adresu URL klonování do schránky.](./media/jenkins-aks-blue-green-deployment/github-sample-copy.png)
+    ![Snímek obrazovky GitHubu s možností zkopírovat adresu URL klonu do schránky](./media/jenkins-aks-blue-green-deployment/github-sample-copy.png)
 
-1. Otevřete terminál nebo okno Git Bash.
+1. Otevřete okno terminálu nebo prostředí Git Bash.
 
-1. Přejděte do požadovaného umístění, kam chcete uložit místní kopii (klonovat) úložiště.
+1. Přejděte do požadovaného adresáře, kam chcete uložit místní kopii (klon) úložiště.
 
-1. Použití `git clone` příkazu, naklonujte adresu URL, které jste zkopírovali dříve.
+1. Pomocí příkazu `git clone` naklonujte adresu URL, kterou jste si zkopírovali dříve.
 
-    ![Snímek obrazovky z Git Bashe příkaz git clone](./media/jenkins-aks-blue-green-deployment/git-clone-command.png)
+    ![Snímek obrazovky prostředí Git Bash s příkazem git clone](./media/jenkins-aks-blue-green-deployment/git-clone-command.png)
 
-1. Stiskněte klávesu Enter pro spuštění procesu klonování.
+1. Stisknutím klávesy Enter spusťte proces klonování.
 
-    ![Snímek obrazovky z Git Bashe výsledky příkazu klonu gitu](./media/jenkins-aks-blue-green-deployment/git-clone-results.png)
+    ![Snímek obrazovky prostředí Git Bash s výsledkem příkazu git clone](./media/jenkins-aks-blue-green-deployment/git-clone-results.png)
 
-1. Přejděte do nově vytvořeného adresáře, který obsahuje klonování zdroje aplikace.
+1. Přejděte do nově vytvořeného adresáře, který obsahuje klon zdroje aplikace.
 
 ## <a name="create-and-configure-a-managed-kubernetes-cluster"></a>Vytvoření a konfigurace spravovaného clusteru Kubernetes
 
 V této části provedete následující kroky:
 
-- Pomocí rozhraní příkazového řádku Azure CLI 2.0 k vytvoření spravovaného clusteru Kubernetes.
-- Zjistěte, jak vytvořit cluster, buď pomocí instalačního skriptu, nebo ručně.
-- Vytvoření instance služby Azure Container Registry.
+- Pomocí Azure CLI 2.0 vytvoříte spravovaný cluster Kubernetes.
+- Zjistíte, jak pomocí instalačního skriptu nebo ručně nastavit cluster.
+- Vytvoříte instanci služby Azure Container Registry.
 
 > [!NOTE]   
-> AKS je aktuálně ve verzi preview. Informace o povolení verze preview pro vaše předplatné Azure, najdete v části [rychlý start: nasazení clusteru Azure Kubernetes Service (AKS)](/azure/aks/kubernetes-walkthrough#enabling-aks-preview-for-your-azure-subscription).
+> AKS je v současné době ve verzi Preview. Informace o povolení verze Preview pro vaše předplatné Azure najdete v článku [Rychlý start: Nasazení clusteru Azure Kubernetes Service (AKS)](/azure/aks/kubernetes-walkthrough#enabling-aks-preview-for-your-azure-subscription).
 
-### <a name="use-the-azure-cli-20-to-create-a-managed-kubernetes-cluster"></a>Použití rozhraní příkazového řádku Azure CLI 2.0 k vytvoření spravovaného clusteru Kubernetes
-Chcete-li vytvořit spravovaný cluster Kubernetes pomocí [příkazového řádku Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), ujistěte se, že používáte Azure CLI verze 2.0.25 nebo novější.
+### <a name="use-the-azure-cli-20-to-create-a-managed-kubernetes-cluster"></a>Vytvoření spravovaného clusteru Kubernetes pomocí Azure CLI 2.0
+Pokud chcete vytvořit spravovaný cluster Kubernetes pomocí [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), ujistěte se, že používáte Azure CLI verze 2.0.25 nebo novější.
 
-1. Přihlaste se ke svému účtu Azure. Jakmile zadáte následující příkaz, obdržíte pokyny, které vysvětlují, jak dokončit přihlášení. 
+1. Přihlaste se ke svému účtu Azure. Po zadání následujícího příkazu se zobrazí pokyny vysvětlující, jak přihlášení dokončit. 
     
     ```bash
     az login
     ```
 
-1. Při spuštění `az login` příkaz v předchozím kroku, zobrazí se seznam všech předplatných Azure (společně s ID předplatného). V tomto kroku nastavíte výchozí předplatné Azure. Nahradit &lt;your-subscription-id > zástupný prvek s ID požadovaného předplatného Azure. 
+1. Po spuštění příkazu `az login` v předchozím kroku se zobrazí seznam všech vašich předplatných Azure (společně s jejich ID předplatného). V tomto kroku nastavíte výchozí předplatné Azure. Zástupný text &lt;your-subscription-id> nahraďte za ID požadovaného předplatného Azure. 
 
     ```bash
     az account set -s <your-subscription-id>
     ```
 
-1. Vytvořte skupinu prostředků. Nahraďte &lt;your--název skupiny prostředků > název nové skupiny prostředků, a nahraďte zástupný symbol &lt;vaše umístění > umístěním. Příkaz `az account list-locations` zobrazí všech umístěních Azure. Během AKS ve verzi preview jsou k dispozici všechny umístění. Pokud zadáte umístění, které v tuto chvíli není platný, chybová zpráva obsahuje seznam dostupných umístění.
+1. Vytvořte skupinu prostředků. Zástupný text &lt;your-resource-group-name> nahraďte názvem vaší nové skupiny prostředků a zástupný text &lt;your-location> nahraďte umístěním. Příkaz `az account list-locations` zobrazí všechna umístění Azure. V AKS verze Preview nejsou k dispozici všechna umístění. Pokud zadáte umístění, které aktuálně není platné, zobrazí se chybová zpráva se seznamem dostupných umístění.
 
     ```bash
     az group create -n <your-resource-group-name> -l <your-location>
     ```
 
-1. Vytvoření clusteru Kubernetes. Nahraďte &lt;your--název skupiny prostředků > s názvem skupiny prostředků vytvořené v předchozím kroku a nahraďte &lt;your kubernetes název clusteru-> s názvem nového clusteru. (Tento proces může trvat několik minut.)
+1. Vytvořte cluster Kubernetes. Nahraďte &lt;your-resource-group-name> názvem skupiny prostředků vytvořené v předchozím kroku a &lt;your-kubernetes-cluster-name> názvem nového clusteru. (Dokončení tohoto procesu můžete trvat i několik minut.)
 
     ```bash
     az aks create -g <your-resource-group-name> -n <your-kubernetes-cluster-name> --generate-ssh-keys --node-count 2
@@ -122,17 +115,17 @@ Chcete-li vytvořit spravovaný cluster Kubernetes pomocí [příkazového řád
 
 ### <a name="set-up-the-kubernetes-cluster"></a>Nastavení clusteru Kubernetes
 
-Můžete nastavit modrozelené nasazení ve službě AKS ručně nebo pomocí nastavení klonovat skript uvedený v ukázce výše. V této části můžete zjistit, jak provést obojí.
+Modré/zelené nasazení můžete v AKS nastavit ručně nebo pomocí instalačního skriptu, který je součástí dříve naklonované ukázky. V této části zjistíte, jak provést obojí.
 
-#### <a name="set-up-the-kubernetes-cluster-via-the-sample-setup-script"></a>Nastavení clusteru Kubernetes pomocí instalačního skriptu vzorku
-1. Upravit **deploy/aks/setup/setup.sh** souboru nahraďte následující zástupné symboly příslušnými hodnotami pro vaše prostředí: 
+#### <a name="set-up-the-kubernetes-cluster-via-the-sample-setup-script"></a>Nastavení clusteru Kubernetes přes ukázkový instalační skript
+1. Upravte soubor **deploy/aks/setup/setup.sh** a nahraďte následující zástupné texty odpovídajícími hodnotami pro vaše prostředí: 
 
-    - **&lt;your--název skupiny prostředků >**
-    - **&lt;vaše kubernetes název clusteru->**
-    - **&lt;vaše umístění >**
-    - **&lt;your--přípony názvu dns >**
+    - **&lt;your-resource-group-name>** – Název vaší skupiny prostředků
+    - **&lt;your-kubernetes-cluster-name>** – Název vašeho clusteru Kubernetes
+    - **&lt;your-location>** – Vaše umístění
+    - **&lt;your-dns-name-suffix>** – Vaše předpona názvu DNS
 
-    ![Snímek obrazovky setup.sh skript v prostředí bash, se zvýrazněným několik zástupných symbolů](./media/jenkins-aks-blue-green-deployment/edit-setup-script.png)
+    ![Snímek obrazovky prostředí Bash se skriptem s několika zvýrazněnými zástupnými texty](./media/jenkins-aks-blue-green-deployment/edit-setup-script.png)
 
 1. Spusťte instalační skript.
 
@@ -140,16 +133,16 @@ Můžete nastavit modrozelené nasazení ve službě AKS ručně nebo pomocí na
     sh setup.sh
     ```
 
-#### <a name="set-up-a-kubernetes-cluster-manually"></a>Ručně nastavit Kubernetes cluster 
-1. Stáhněte konfiguraci Kubernetes do složky vašeho profilu.
+#### <a name="set-up-a-kubernetes-cluster-manually"></a>Ruční nastavení clusteru Kubernetes 
+1. Do složky svého profilu si stáhněte konfiguraci Kubernetes.
 
     ```bash
     az aks get-credentials -g <your-resource-group-name> -n <your-kubernetes-cluster-name> --admin
     ```
 
-1. Změnit adresář, který má **nasazení/aks/nastavení** adresáře. 
+1. Přejděte do adresáře **deploy/aks/setup**. 
 
-1. Spusťte následující příkaz **kubectl** příkazy k nastavení služby pro veřejný koncový bod a dva koncové body testu.
+1. Spusťte následující příkazy **kubectl**, které nastaví služby pro veřejný koncový bod a dva testovací koncové body.
 
     ```bash
     kubectl apply -f  service-green.yml
@@ -157,25 +150,25 @@ Můžete nastavit modrozelené nasazení ve službě AKS ručně nebo pomocí na
     kubectl apply -f  test-endpoint-green.yml
     ```
 
-1. Aktualizace názvu DNS pro veřejnost a koncových bodů testu. Při vytváření clusteru Kubernetes, můžete také vytvořit [další skupinu](https://github.com/Azure/AKS/issues/3), s vzor pojmenování spočívající v **MC_&lt;your--název skupiny prostředků >_ &lt; vaše kubernetes název clusteru->_&lt;vaše umístění >**.
+1. Aktualizujte název DNS pro veřejný a testovací koncové body. Při vytváření clusteru Kubernetes můžete vytvořit také [další skupinu prostředků](https://github.com/Azure/AKS/issues/3) s názvem podle následujícího vzoru: **MC_&lt;název_vaší_skupiny_prostředků>_&lt;název_vašeho_clusteru_Kubernetes>_&lt;vaše_umístění>**.
 
-    Vyhledání veřejné IP adresy ve skupině prostředků.
+    Vyhledejte veřejné IP adresy ve skupině prostředků.
 
-    ![Snímek obrazovky veřejné IP adresy ve stejné skupině prostředků](./media/jenkins-aks-blue-green-deployment/publicip.png)
+    ![Snímek obrazovky s veřejnými IP adresami ve skupině prostředků](./media/jenkins-aks-blue-green-deployment/publicip.png)
 
-    Pro každou službu najdete externí IP adresu spuštěním následujícího příkazu:
+    Externí IP adresy pro jednotlivé služby zjistíte spuštěním následujícího příkazu:
     
     ```bash
     kubectl get service todoapp-service
     ```
     
-    Aktualizace názvu DNS pro příslušnou IP adresou pomocí následujícího příkazu:
+    Pomocí následujícího příkazu aktualizujte název DNS pro odpovídající IP adresu:
 
     ```bash
     az network public-ip update --dns-name aks-todoapp --ids /subscriptions/<your-subscription-id>/resourceGroups/MC_<resourcegroup>_<aks>_<location>/providers/Microsoft.Network/publicIPAddresses/kubernetes-<ip-address>
     ```
 
-    Opakujte volání pro `todoapp-test-blue` a `todoapp-test-green`:
+    Zopakujte volání `todoapp-test-blue` a `todoapp-test-green`:
 
     ```bash
     az network public-ip update --dns-name todoapp-blue --ids /subscriptions/<your-subscription-id>/resourceGroups/MC_<resourcegroup>_<aks>_<location>/providers/Microsoft.Network/publicIPAddresses/kubernetes-<ip-address>
@@ -183,62 +176,62 @@ Můžete nastavit modrozelené nasazení ve službě AKS ručně nebo pomocí na
     az network public-ip update --dns-name todoapp-green --ids /subscriptions/<your-subscription-id>/resourceGroups/MC_<resourcegroup>_<aks>_<location>/providers/Microsoft.Network/publicIPAddresses/kubernetes-<ip-address>
     ```
 
-    Název DNS musí být jedinečný v rámci vašeho předplatného. Chcete-li tuto jedinečnost zajistili, můžete použít `<your-dns-name-suffix>`.
+    Název DNS musí být jedinečný v rámci vašeho předplatného. K zajištění této jedinečnosti můžete použít `<your-dns-name-suffix>`.
 
-### <a name="create-an-instance-of-container-registry"></a>Vytvořte instanci ve službě Container Registry
+### <a name="create-an-instance-of-container-registry"></a>Vytvoření instance služby Container Registry
 
-1. Spustit `az acr create` příkaz pro vytvoření instance z registru kontejneru. V další části, můžete pak použít `login server` jako adresa URL registru Dockeru.
+1. Spuštěním příkazu `az acr create` vytvořte instanci služby Container Registry. V další části pak můžete použít `login server` jako adresu URL registru Dockeru.
 
     ```bash
     az acr create -n <your-registry-name> -g <your-resource-group-name>
     ```
 
-1. Spustit `az acr credential` příkazu můžete zobrazit svoje přihlašovací údaje registru kontejneru. Všimněte si registru Dockeru uživatelské jméno a heslo, protože je budete potřebovat v další části.
+1. Spuštěním příkazu `az acr credential` zobrazte své přihlašovací údaje ke službě Container Registry. Poznamenejte si uživatelské jméno a heslo k registru Dockeru, protože je budete potřebovat v další části.
 
     ```bash
     az acr credential show -n <your-registry-name>
     ```
 
-## <a name="prepare-the-jenkins-server"></a>Příprava serveru Jenkins
+## <a name="prepare-the-jenkins-server"></a>Příprava serveru Jenkinse
 
-V této části naleznete v tématu Postup přípravy serveru Jenkins a spusťte sestavení, který je v pořádku pro testování. Nicméně, abyste používali [agenta virtuálního počítače Azure](https://plugins.jenkins.io/azure-vm-agents) nebo [agentů kontejneru Azure](https://plugins.jenkins.io/azure-container-agents) abyste mohli spustit agenta v Azure pro spouštění buildů. Další informace najdete v článku Jenkinse na [bezpečnostních důsledcích stavíme na hlavní](https://wiki.jenkins.io/display/JENKINS/Security+implication+of+building+on+master).
+V této části se dozvíte, jak připravit server Jenkinse na spuštění sestavení. Pro účely testování je to dostačující. Pro spouštění vlastních sestavení byste však měli pomocí [agenta virtuálního počítače Azure](https://plugins.jenkins.io/azure-vm-agents) nebo [agenta kontejneru Azure](https://plugins.jenkins.io/azure-container-agents) aktivovat agenta v Azure. Další informace najdete v článku o Jenkinsu věnovaném [bezpečnostním důsledkům sestavování na hlavním serveru](https://wiki.jenkins.io/display/JENKINS/Security+implication+of+building+on+master).
 
-1. Nasazení [hlavního serveru Jenkinse v Azure](https://aka.ms/jenkins-on-azure).
+1. Nasaďte [hlavní server Jenkinse do Azure](https://aka.ms/jenkins-on-azure).
 
-1. Připojení k serveru pomocí protokolu SSH a nainstalovat nástroje sestavení na serveru, kde jste spustili sestavení.
+1. Přes SSH se připojte k serveru, na kterém spustíte své sestavení, a nainstalujte na něm nástroje pro sestavování.
    
    ```bash
    sudo apt-get install git maven 
    ```
    
-1. [Nainstalujte Docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce). Ujistěte se, že uživatel `jenkins` má oprávnění ke spuštění `docker` příkazy.
+1. [Nainstalujte Docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce). Zajistěte, aby uživatel `jenkins` měl oprávnění ke spouštění příkazů `docker`.
 
-1. [Instalace kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/).
+1. [Nainstalujte kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/).
 
-1. [Stáhněte si jq](https://stedolan.github.io/jq/download/).
+1. [Stáhněte jq](https://stedolan.github.io/jq/download/).
 
-1. Nainstalujte jq pomocí následujícího příkazu:
+1. Pomocí následujícího příkazu nainstalujte jq:
 
    ```bash
    sudo apt-get install jq
    ```
    
-1. Nainstalujte moduly plug-in jenkins provedením následujících kroků v řídicím panelu Jenkinse:
+1. Nainstalujte moduly plug-in do Jenkinse provedením následujících kroků na řídicím panelu Jenkinse:
 
-    1. Vyberte **Jenkins Správa > Správa modulů plug-in > k dispozici**.
+    1. Vyberte **Manage Jenkins -> Manage Plugins -> Available** (Správa Jenkinse -> Správa modulů plug-in -> K dispozici).
     1. Vyhledejte a nainstalujte modul plug-in služby Azure Container Service.
 
-1. Přidáte přihlašovací údaje ke správě prostředků v Azure. Pokud nemáte modul plug-in, nainstalujte **přihlašovacích údajů Azure** modulu plug-in.
+1. Přidejte přihlašovací údaje pro správu prostředků v Azure. Pokud ho ještě nemáte, nainstalujte modul plug-in **Azure Credentials**.
 
-1. Přidat svoje přihlašovací údaje instančního objektu Azure jako typ **Microsoft Azure Service Principal**.
+1. Přidejte své přihlašovací údaje instančního objektu Azure jako typ **Microsoft Azure Service Principal** (Instanční objekt Microsoft Azure).
 
-1. Přidat Azure Docker registru jména a hesla (získaný v části "Vytvoření instance kontejneru registru") jako typ **uživatelské jméno s heslem**.
+1. Přidejte své uživatelské jméno a heslo k registru Azure Docker (získali jste je v části Vytvoření instance služby Container Registry) jako typ **Username with password** (Uživatelské jméno s heslem).
 
-## <a name="edit-the-jenkinsfile"></a>Upravit souboru Jenkinsfile
+## <a name="edit-the-jenkinsfile"></a>Úprava souboru Jenkinsfile
 
-1. Přejděte ve vlastním úložišti `/deploy/aks/`a otevřete `Jenkinsfile`.
+1. Ve vlastním úložišti přejděte do adresáře `/deploy/aks/` a otevřete soubor `Jenkinsfile`.
 
-2. Aktualizace souboru následujícím způsobem:
+2. Aktualizujte soubor následujícím způsobem:
 
     ```groovy
     def servicePrincipalId = '<your-service-principal>'
@@ -252,43 +245,43 @@ V této části naleznete v tématu Postup přípravy serveru Jenkins a spusťte
     def dockerRegistry = '<your-acr-name>.azurecr.io'
     ```
     
-    Aktualizace ID přihlašovacích údajů registru kontejneru:
+    Aktualizujte ID přihlašovacích údajů ke službě Container Registry:
     
     ```groovy
     def dockerCredentialId = '<your-acr-credential-id>'
     ```
 
 ## <a name="create-the-job"></a>Vytvoření úlohy
-1. Přidat novou úlohu v typu **kanálu**.
+1. Přidejte novou úlohu typu **Pipeline** (Kanál).
 
-1. Vyberte **kanálu** > **definice** > **kanálu skriptu ze Správce řízení služeb**.
+1. Vyberte **Pipeline** > **Definition** > **Pipeline script from SCM** (Kanál -> Definice -> Skript kanálu z SCM).
 
-1. Zadejte adresu URL správce řízení služeb úložiště se vaše &lt;vaše úložiště Rozvětvená >.
+1. Místo &lt;your-forked-repo> zadejte adresu URL úložiště SCM.
 
-1. Zadejte cesta ke skriptu jako `deploy/aks/Jenkinsfile`.
+1. Zadejte cestu ke skriptu `deploy/aks/Jenkinsfile`.
 
 ## <a name="run-the-job"></a>Spuštění úlohy
 
-1. Ověřte, že váš projekt spustit úspěšně v místním prostředí. Tady je způsob: [spuštění projektu v místním počítači](https://github.com/Microsoft/todo-app-java-on-azure/blob/master/README.md#run-it).
+1. Ověřte, že můžete projekt úspěšně spustit v místním prostředí. Postup najdete tady: [Spuštění projektu na místním počítači](https://github.com/Microsoft/todo-app-java-on-azure/blob/master/README.md#run-it).
 
-1. Spustíte úlohu Jenkins. Při prvním spuštění úlohy Jenkins nasadí aplikaci seznamu úkolů modré prostředí, což je výchozí prostředí neaktivní. 
+1. Spusťte úlohu Jenkinse. Při prvním spuštění úlohy Jenkins nasadí aplikaci seznamu úkolů do modrého prostředí, což je výchozí neaktivní prostředí. 
 
-1. Pokud chcete ověřit, že se úloha spustila, přejdete k těmto adresám URL:
+1. Pokud chcete ověřit, že se úloha spustila, přejděte na následující adresy URL:
     - Veřejný koncový bod: `http://aks-todoapp<your-dns-name-suffix>.<your-location>.cloudapp.azure.com`
-    - Modré koncový bod- `http://aks-todoapp-blue<your-dns-name-suffix>.<your-location>.cloudapp.azure.com`
-    - Zelená koncový bod- `http://aks-todoapp-green<your-dns-name-suffix>.<your-location>.cloudapp.azure.com`
+    - Modrý koncový bod: `http://aks-todoapp-blue<your-dns-name-suffix>.<your-location>.cloudapp.azure.com`
+    - Zelený koncový bod: `http://aks-todoapp-green<your-dns-name-suffix>.<your-location>.cloudapp.azure.com`
 
-Veřejná a modré test koncové body mají stejnou aktualizaci zelené koncový bod se zobrazí výchozí obrázek tomcat. 
+Veřejný a modrý testovací koncový bod mají stejnou aktualizaci, zatímco zelený koncový bod zobrazuje výchozí obrázek serveru Tomcat. 
 
-Při spuštění sestavení více než jednou, procházení nasazení modrá a zelená. Jinými slovy Pokud aktuální prostředí je modrá, nasadí úlohu a testy zelené prostředí. Poté pokud jsou dobré testy, úloha aktualizuje veřejný koncový bod aplikace můžete provoz směrovat na zelené prostředí.
+Pokud sestavení spustíte vícekrát, bude cyklicky probíhat v modrém a zeleném nasazení. Jinými slovy, pokud je aktuální prostředí modré, úloha se nasadí a otestuje v zeleném prostředí. Pokud testy dopadnou dobře, úloha pak aktualizuje veřejný koncový bod aplikace tak, aby směroval provoz do zeleného prostředí.
 
 ## <a name="additional-information"></a>Další informace
 
-Další informace o nasazení nulovými výpadky, najdete v tomto [šablonu pro rychlý Start](https://github.com/Azure/azure-quickstart-templates/tree/master/301-jenkins-aks-zero-downtime-deployment). 
+Další informace o nasazení bez výpadků najdete v této [šabloně pro rychlý start](https://github.com/Azure/azure-quickstart-templates/tree/master/301-jenkins-aks-zero-downtime-deployment). 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud už nepotřebujete prostředky, které jste vytvořili v tomto kurzu, můžete je odstranit.
+Pokud už prostředky vytvořené v tomto kurzu nepotřebujete, můžete je odstranit.
 
 ```bash
 az group delete -y --no-wait -n <your-resource-group-name>
@@ -298,9 +291,9 @@ az group delete -y --no-wait -n <your-resource-group-name>
 
 Pokud v modulech plug-in Jenkinse narazíte na nějaké chyby, založte problém na stránce [Jenkins JIRA](https://issues.jenkins-ci.org/) pro konkrétní komponentu.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste zjistili, jak k nasazení do AKS pomocí Jenkinse a vzor modrozelené nasazení. Další informace o poskytovateli služeb Azure Jenkins najdete v tématu Jenkinse na webu Azure.
+V tomto kurzu jste zjistili, jak provést nasazení do AKS s využitím Jenkinse a vzoru modrého/zeleného nasazení. Další informace o poskytovateli Azure Jenkins najdete na webu Jenkins v Azure.
 
 > [!div class="nextstepaction"]
 > [Jenkins v Azure](/azure/jenkins/)

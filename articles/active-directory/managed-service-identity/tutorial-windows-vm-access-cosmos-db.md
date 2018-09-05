@@ -14,21 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/10/2018
 ms.author: daveba
-ms.openlocfilehash: 05b31dffbe51dcbcd76c13a17f6ecc640b63569b
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 5f7a0f2bd6820ce65490ae9241dac519fb635da2
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248964"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42885454"
 ---
 # <a name="tutorial-use-a-windows-vm-managed-service-identity-to-access-azure-cosmos-db"></a>Kurz: Použití identity spravované služby virtuálního počítače s Windows k přístupu k Azure Cosmos DB
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-V tomto kurzu se dozvíte, jak vytvořit a používat identitu spravované služby na virtuálním počítači s Windows k přístupu ke službě Cosmos DB. Získáte informace o těchto tématech:
+V tomto kurzu se dozvíte, jak pomocí identity přiřazené systémem pro virtuální počítač s Windows získat přístup ke službě Cosmos DB. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Vytvoření virtuálního počítače s Windows s povolenou identitou spravované služby 
 > * Vytvoření účtu služby Cosmos DB
 > * Udělení přístupu k přístupovým klíčům účtu Cosmos DB identitě spravované služby na virtuálním počítači s Windows
 > * Získání přístupového tokenu pomocí identity spravované služby na virtuálním počítači s Windows a jeho použití k volání Azure Resource Manageru
@@ -40,33 +39,11 @@ V tomto kurzu se dozvíte, jak vytvořit a používat identitu spravované služ
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
+- [Přihlášení k webu Azure Portal](https://portal.azure.com)
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+- [Vytvoření virtuálního počítače s Windows](/azure/virtual-machines/windows/quick-create-portal)
 
-Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
-
-## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>Vytvoření virtuálního počítače s Windows v nové skupině prostředků
-
-V tomto kurzu vytvoříme nový virtuální počítač s Windows.  Identitu spravované služby můžete povolit taky na existujícím virtuálním počítači.
-
-1. Klikněte na tlačítko **Vytvořit prostředek** v levém horním rohu webu Azure Portal.
-2. Vyberte **Compute** a potom vyberte **Windows Server 2016 Datacenter**. 
-3. Zadejte informace o virtuálním počítači. Vytvořené **Uživatelské jméno** a **Heslo** použijete při přihlášení k virtuálnímu počítači.
-4. V rozevíracím seznamu zvolte pro virtuální počítač správné **předplatné**.
-5. Pokud chcete vybrat novou **skupinu prostředků**, ve které se má virtuální počítač vytvořit, zvolte **Vytvořit novou**. Jakmile budete hotovi, klikněte na **OK**.
-6. Vyberte velikost virtuálního počítače. Pokud chcete zobrazit další velikosti, vyberte **Zobrazit všechny** nebo změňte filtr **Podporovaný typ disku**. Na stránce Nastavení ponechte výchozí nastavení a klikněte na **OK**.
-
-   ![Text k alternativnímu obrázku](media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
-
-## <a name="enable-managed-service-identity-on-your-vm"></a>Povolení identity spravované služby na virtuálním počítači 
-
-Identita spravované služby virtuálního počítače umožňuje získat z Azure AD přístupové tokeny, aniž byste museli vkládat do kódu přihlašovací údaje. Po povolení spravované identity na virtuálním počítači prostřednictvím webu Azure Portal automaticky dojde ke dvěma věcem: virtuální počítač se zaregistruje v Azure AD, aby se vytvořila jeho spravovaná identita, a tato identita se na něm nakonfiguruje.
-
-1. V poli **Virtuální počítač** vyberte virtuální počítač, na kterém chcete povolit identitu spravované služby.  
-2. Na navigačním panelu vlevo klikněte na **Konfigurace**. 
-3. Zobrazí se **Identita spravované služby**. Pokud chcete identitu spravované služby zaregistrovat a povolit, vyberte **Ano**. Pokud ji chcete zakázat, zvolte Ne. 
-4. Nezapomeňte konfiguraci uložit kliknutím na **Uložit**.  
-   ![Alternativní text k obrázku](media/msi-tutorial-linux-vm-access-arm/msi-linux-extension.png)
+- [Povolení identity přiřazené systémem pro váš virtuální počítač](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm#enable-system-assigned-identity-on-an-existing-vm)
 
 ## <a name="create-a-cosmos-db-account"></a>Vytvoření účtu služby Cosmos DB 
 

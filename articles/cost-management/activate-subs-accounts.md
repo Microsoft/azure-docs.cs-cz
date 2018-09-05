@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 06/07/2018
+ms.date: 08/29/2018
 ms.topic: quickstart
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 4a5e613169bf3173b7585b49803fc7ac7f5186ce
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: ec56f9fdf21459857c8115222da921b6681a3ac5
+ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35297967"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43247232"
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-azure-cost-management"></a>Aktivace účtů a předplatných Azure pomocí Azure Cost Managementu
 
@@ -73,7 +73,7 @@ Když přidáte účet nebo aktualizujete předplatné, povolíte službě Azure
 4. V dialogu pro přidání nového účtu nebo úpravu předplatného klikněte na **Save** (Uložit) nebo na **Next** (Další). Budete přesměrováni na Azure Portal.
 5. Přihlaste se k portálu. Kliknutím na **Accept** (Přijmout) udělíte kolektoru služby Azure Cost Management přístup k vašemu účtu Azure.
 
-    Budete přesměrováni na stránku pro správu účtů služby Azure Cost Management a vaše předplatné se aktualizuje se stavem účtu **active** (aktivní). Ve sloupci Resource Manager (Správce prostředků) by se mělo zobrazit zelené zatržítko.
+    Budete přesměrováni na stránku pro správu účtů služby Azure Cost Management a vaše předplatné se aktualizuje se stavem účtu **active** (aktivní). Ve sloupci Resource Manager (Správce prostředku) by se mělo zobrazit zelené zatržítko.
 
     Pokud u některých předplatných zelené zatržítko nevidíte, znamená to, že nemáte oprávnění vytvářet pro ně aplikaci čtečky (CloudynCollector). Je potřeba, aby tento proces zopakoval uživatel, který má k těmto předplatným vyšší oprávnění.
 
@@ -103,7 +103,7 @@ Než budete moct vygenerovat klíč rozhraní API smlouvy Azure Enterprise k nas
 
 Také může být potřeba, abyste udělili oprávnění _zobrazovat poplatky_ v rozhraní API pro fakturaci správcům oddělení, vlastníkům účtů a podnikovým správcům.
 
-Službu Cost Management může povolit jenom správce služeb Azure. Oprávnění spolusprávce k tomu nestačí. Tento požadavek můžete nicméně obejít. Požádejte správce Azure Active Directory o udělení oprávnění k autorizaci aplikace **CloudynAzureCollector** skriptem PowerShellu. Níže uvedený skript udělí oprávnění k registraci aplikace **CloudynAzureCollector** instančního objektu služby Azure Active Directory.
+Službu Cost Management může povolit jenom správce služeb Azure. Oprávnění spolusprávce k tomu nestačí. Tento požadavek můžete nicméně obejít. Požádejte správce Azure Active Directory o udělení oprávnění k autorizaci aplikace **CloudynAzureCollector** skriptem PowerShellu. Níže uvedený skript udělí oprávnění k registraci aplikace **CloudynAzureCollector** instančního objektu služby Azure Active Directory. Po úspěšném spuštění se na konci operace zobrazí v prohlížeči adresa URL http://localhost:8080/CloudynJava.
 
 ```
 #THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

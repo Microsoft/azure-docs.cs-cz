@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 7a3e91e8f928f6e7e2df7a26f52bd44b3b3a81b2
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 70b7af1701c13e6a5d7644f04e4502f76ef7743a
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618950"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43187841"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-web-app-in-azure"></a>Kurz: Vytvoření webové aplikace Node.js využívající MongoDB v Azure
 
@@ -117,6 +117,9 @@ Ukázková aplikace MEAN.js ukládá data uživatelů v databázi. Pokud úspě
 Vyberte **Admin > Manage Articles** (Správa > Správa článků) a přidejte několik článků.
 
 Node.js můžete kdykoli zastavit stisknutím `Ctrl+C` v terminálu. 
+
+> [!NOTE]
+> [Rychlý start pro Node.js](app-service-web-get-started-nodejs.md) uvádí potřebu mít v kořenovém adresáři aplikace soubor web.config. V tomto kurzu však tento soubor web.config automaticky vygeneruje služba App Service, když místo nasazení souboru ZIP nasadíte své soubory pomocí [místního nasazení Gitu](app-service-deploy-local-git.md). 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

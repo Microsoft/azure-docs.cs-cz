@@ -1,5 +1,5 @@
 ---
-title: Řešení potíží se změnami na virtuálním počítači Azure | Microsoft Docs
+title: Řešení potíží se změnami na virtuálním počítači Azure | Dokumentace Microsoftu
 description: Potíže se změnami na virtuálním počítači Azure můžete řešit pomocí řešení Change Tracking.
 services: automation
 ms.service: automation
@@ -7,16 +7,16 @@ ms.component: change-inventory-management
 keywords: change, tracking, automation
 author: jennyhunter-msft
 ms.author: jehunte
-ms.date: 02/28/2018
+ms.date: 08/27/2018
 ms.topic: tutorial
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 4d62e8e4cb778e60b39e502f09ce0aafca9b5212
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: fd94fd234067f63eab424c7f757d4adf842e7b46
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866813"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43120581"
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>Řešení potíží se změnami ve vašem prostředí
 
@@ -112,7 +112,8 @@ V okně **Konfigurace pracovního prostoru** přidejte klíče registru systému
 |Povoleno     | Určuje, jestli se nastavení používá.        |
 |Název položky     | Popisný název souboru, který se má sledovat        |
 |Skupina     | Název skupiny pro logické seskupení souborů        |
-|Zadat cestu     | Cesta, ve které se má soubor hledat. Například: c:\temp\myfile.txt       |
+|Zadat cestu     | Cesta, ve které se má soubor hledat, například: c:\temp\\\*.txt.<br>Můžete použít také proměnnou prostředí, například %winDir%\System32\\\*.*.         |
+|Rekurze     | Určuje, jestli se při hledání položky, která se má sledovat, používá rekurze.        |
 |Nahrát obsah souboru pro všechna nastavení| Zapne nebo vypne u sledovaných změn nahrávání obsahu souboru. Dostupné možnosti: **True** nebo **False**.|
 
 ### <a name="add-a-linux-file"></a>Přidání souboru Linuxu
@@ -133,7 +134,7 @@ V okně **Konfigurace pracovního prostoru** přidejte klíče registru systému
 |Odkazy     | Toto nastavení určuje, jak se při procházení adresářů zpracovávají symbolické odkazy.<br> **Ignorovat** – Ignoruje symbolické odkazy a nezahrnuje odkazované soubory ani adresáře.<br>**Sledovat** – Během rekurze sleduje symbolické odkazy a zahrnuje i odkazované soubory a adresáře.<br>**Spravovat** – Sleduje symbolické odkazy a umožňuje zpracování vráceného obsahu.      |
 |Nahrát obsah souboru pro všechna nastavení| Zapne nebo vypne u sledovaných změn nahrávání obsahu souboru. Dostupné možnosti: **True** nebo **False**.|
 
-   > [!NOTE]   
+   > [!NOTE]
    > Možnost Spravovat se nedoporučuje. Načítání obsahu souborů se nepodporuje.
 
 ## <a name="enable-activity-log-connection"></a>Povolení připojení protokolu aktivit

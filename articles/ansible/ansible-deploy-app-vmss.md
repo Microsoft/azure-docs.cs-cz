@@ -1,45 +1,39 @@
 ---
-title: Nasazení aplikací do škálovací sady virtuálních počítačů v Azure pomocí Ansible
-description: Zjistěte, jak použít Ansible k konfigurace škálovací sady virtuálních počítačů a nasazení aplikace na virtuální počítač škálovací sady v Azure
+title: Nasazování aplikací do škálovacích sad virtuálních počítačů v Azure pomocí Ansible
+description: Zjistěte, jak pomocí Ansible nakonfigurovat škálovací sadu virtuálních počítačů v Azure a nasadit do ní aplikace.
 ms.service: ansible
-keywords: ansible, azure, devops, bash, playbooku, virtuálních počítačů, škálovací sadu virtuálních počítačů, vmss
+keywords: ansible, azure, devops, bash, playbook, virtual machine, virtual machine scale set, vmss
 author: tomarcher
-manager: jpconnock
-editor: na
-ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.date: 07/11/2018
+manager: jeconnoc
 ms.author: tarcher
-ms.openlocfilehash: b9c8058606e13c0db4908530e98cddb69d2caf50
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
-ms.translationtype: MT
+ms.topic: tutorial
+ms.date: 08/24/2018
+ms.openlocfilehash: 762c14b5b6e30f6410a8d572d69651c803f079c2
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008850"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42918082"
 ---
-# <a name="deploy-applications-to-virtual-machine-scale-sets-in-azure-using-ansible"></a>Nasazení aplikací do škálovací sady virtuálních počítačů v Azure pomocí Ansible
-Ansible umožňuje automatizovat nasazení a konfiguraci prostředků ve vašem prostředí. Ansible můžete použít k nasazení aplikací do Azure. V tomto článku se dozvíte, jak nasadit aplikace v Javě do škálovací sady virtuálních počítačů Azure (VMSS).  
+# <a name="deploy-applications-to-virtual-machine-scale-sets-in-azure-using-ansible"></a>Nasazování aplikací do škálovacích sad virtuálních počítačů v Azure pomocí Ansible
+Ansible umožňuje automatizovat nasazování a konfiguraci prostředků ve vašem prostředí. Pomocí Ansible můžete nasadit své aplikace do Azure. V tomto článku se dozvíte, jak do škálovací sady virtuálních počítačů (VMSS) Azure nasadit aplikaci v Javě.  
 
 ## <a name="prerequisites"></a>Požadavky
-- **Předplatné Azure** – Pokud nemáte předplatné Azure, vytvořte [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) předtím, než začnete.
-- **Konfigurace Ansible** - [Azure vytvořit přihlašovací údaje a konfigurace Ansible](../virtual-machines/linux/ansible-install-configure.md#create-azure-credentials)
-- **Ansible a moduly sady Azure Python SDK** 
-  - [CentOS 7.4](../virtual-machines/linux/ansible-install-configure.md#centos-74)
-  - [Ubuntu 16.04 LTS](../virtual-machines/linux/ansible-install-configure.md#ubuntu-1604-lts)
-  - [SLES 12 SP2](../virtual-machines/linux/ansible-install-configure.md#sles-12-sp2)
-- **Škálovací sada virtuálních počítačů** – Pokud ještě nemáte škálovací sadu virtuálních počítačů nastavena, můžete [vytvoření virtuálního počítače škálovací sady pomocí Ansible](ansible-create-configure-vmss.md). 
-- **Git** - [git](https://git-scm.com) se používá ke stahování ukázku Java použité v tomto kurzu.
-- **Java SE Development Kit (JDK)** – The JDK slouží k vytvoření ukázkového projektu jazyka Java.
-- **Nástroje Apache Maven sestavení** – [nástroje Apache Maven sestavení](https://maven.apache.org/download.cgi) slouží k vytvoření ukázkového projektu jazyka Java.
+- **Předplatné Azure** – Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
+- [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
+- **Škálovací sada virtuálních počítačů** – Pokud ještě škálovací sadu virtuálních počítačů nemáte, můžete si [vytvořit škálovací sadu virtuálních počítačů pomocí Ansible](ansible-create-configure-vmss.md). 
+- **git** - [git](https://git-scm.com) se použije ke stažení ukázky v Javě použité v tomto kurzu.
+- **Java SE Development Kit (JDK)** – Sada JDK se použije k sestavení ukázkového projektu v Javě.
+- **Nástroje pro sestavování Apache Maven** – [Nástroje pro sestavování Apache Maven](https://maven.apache.org/download.cgi) se použijí k sestavení ukázkového projektu v Javě.
 
 > [!Note]
-> Ansible 2.6 je potřeba spustit následující playbooky ukázka v tomto kurzu. 
+> Ke spuštění následujících ukázkových playbooků v tomto kurzu se vyžaduje Ansible 2.6. 
 
 ## <a name="get-host-information"></a>Získání informací o hostiteli
 
-Tato část ukazuje, jak použít Ansible k načtení informací o hostiteli pro skupinu virtuálních počítačů Azure. Níže je playbook Ansible vzorku. Kód získá veřejné IP adresy a nástroje pro vyrovnávání zatížení v rámci zadané skupině prostředků a vytvoří skupinu hostitelů s názvem **saclesethosts** v inventáři. 
+Tato část ukazuje, jak pomocí Ansible načíst informace o hostiteli skupiny virtuálních počítačů Azure. Níže je ukázkový playbook Ansible. Tento kód získá veřejné IP adresy a nástroj pro vyrovnávání zatížení v zadané skupině prostředků a v inventáři vytvoří skupinu hostitelů **scalesethosts**. 
 
-Uložte následující ukázkové scénáře jako `get-hosts-tasks.yml`: 
+Uložte následující ukázkový playbook jako `get-hosts-tasks.yml`: 
 
   ```yaml
   - name: Get facts for all Public IPs within a resource groups
@@ -65,9 +59,9 @@ Uložte následující ukázkové scénáře jako `get-hosts-tasks.yml`:
       - "{{ output.ansible_facts.azure_loadbalancers[0].properties.inboundNatRules }}"
   ```
 
-## <a name="prepare-an-application-for-deployment"></a>Příprava aplikace pro nasazení  
+## <a name="prepare-an-application-for-deployment"></a>Příprava aplikace na nasazení  
 
-V této části pomocí gitu naklonujte ukázkový projekt v Javě z Githubu a sestavte projekt. Uložte následující playbook jako `app.yml`:
+V této části pomocí gitu naklonujete z GitHubu ukázkový projekt v Javě a sestavíte ho. Uložte následující ukázkový playbook jako `app.yml`:
 
   ```yaml
   - hosts: localhost
@@ -85,13 +79,13 @@ V této části pomocí gitu naklonujte ukázkový projekt v Javě z Githubu a s
       shell: mvn package chdir="{{ workspace }}/complete"
   ```
 
-Pomocí následujícího příkazu spusťte playbook Ansible vzorku:
+Pomocí následujícího příkazu spusťte ukázkový playbook Ansible:
 
   ```bash
   ansible-playbook app.yml
   ```
 
-Ve výstupu z příkazu ansible playbook nezobrazí si podobná následující, kde uvidíte, že vytvořeno ukázkovou aplikaci naklonovali z Githubu:
+Zobrazí se podobný výstup příkazu ansible-playbook jako v následujícím příkladu, kde vidíte, že příkaz sestavil ukázkovou aplikaci naklonovanou z GitHubu:
 
   ```bash
   PLAY [localhost] **********************************************************
@@ -110,11 +104,11 @@ Ve výstupu z příkazu ansible playbook nezobrazí si podobná následující, 
 
   ```
 
-## <a name="deploy-the-application-to-vmss"></a>Nasaďte aplikaci na VMSS
+## <a name="deploy-the-application-to-vmss"></a>Nasazení aplikace do VMSS
 
-V následující části v Ansible playbook nainstaluje prostředí JRE (Java Runtime Environment) pro skupinu hostitelů s názvem **saclesethosts**a nasadí aplikaci v Javě do skupiny hostitelů s názvem **saclesethosts**: 
+Playbook Ansible v následující části nainstaluje Java Runtime Environment ve skupině hostitelů **scalesethosts** a nasadí aplikaci v Javě do skupiny hostitelů **scalesethosts**: 
 
-(Změnit `admin_password` vlastní heslo.)
+(Hodnotu `admin_password` změňte na své heslo.)
 
   ```yaml
   - hosts: localhost
@@ -153,25 +147,25 @@ V následující části v Ansible playbook nainstaluje prostředí JRE (Java Ru
       poll: 0
   ```
 
-Můžete uložit předchozí playbook Ansible ukázka jako `vmss-setup-deploy.yml`, nebo [Stáhnout příručku celé ukázkové](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss). 
+Předchozí ukázkový playbook Ansible můžete uložit jako `vmss-setup-deploy.yml` nebo si můžete [stáhnout úplný ukázkový playbook](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss). 
 
-Použít ssh typ připojení s hesly, je nutné nainstalovat sshpass program. 
-  - Ubunto 16.04, spusťte příkaz `apt-get install sshpass`.
-  - CentOS 7.4, spusťte příkaz `yum install sshpass`.
+Pokud chcete použít typ připojení SSH s hesly, musíte nainstalovat program sshpass. 
+  - V případě Ubuntu 16.04 spusťte příkaz `apt-get install sshpass`.
+  - V případě CentOS 7.4 spusťte příkaz `yum install sshpass`.
 
-Může se zobrazit chyba typu **pomocí hesla SSH místo klíče není možné, protože je povolená kontrola klíč hostitele a sshpass to nepodporuje.  Otisk prstu tohoto hostitele přidáte do vašeho souboru known_hosts ke správě tohoto hostitele.** Pokud se zobrazí tato chyba, můžete zakázat kontrolu tak, že přidáte následující řádek buď klíč hostitele `/etc/ansible/ansible.cfg` souboru nebo `~/.ansible.cfg` souboru:
+Možná se zobrazí chyba jako **Není možné použít heslo SSH místo klíče, protože je povolená kontrola klíče hostitele a sshpass tuto funkci nepodporuje. Pokud chcete tohoto hostitele spravovat, přidejte otisk tohoto hostitele do souboru known_hosts.** Pokud se zobrazí tato chyba, můžete kontrolu klíče hostitele zakázat přidáním následujícího řádku do souboru `/etc/ansible/ansible.cfg` nebo `~/.ansible.cfg`:
   ```bash
   [defaults]
   host_key_checking = False
   ```
 
-Spuštění playbooku pomocí následujícího příkazu:
+Pomocí následujícího příkazu spusťte playbook:
 
   ```bash
   ansible-playbook vmss-setup-deploy.yml
   ```
 
-Výstup z příkazu ansible playbook označuje, že byla nainstalována ukázkové aplikace v Javě do skupiny hostitelů škálovací sadu virtuálních počítačů:
+Výstup spuštění příkazu ansible-playbook značí, že se ukázková aplikace v Javě nainstalovala do skupiny hostitelů škálovací sady virtuálních počítačů:
 
   ```bash
   PLAY [localhost] **********************************************************
@@ -208,10 +202,10 @@ Výstup z příkazu ansible playbook označuje, že byla nainstalována ukázkov
   localhost                  : ok=4    changed=1    unreachable=0    failed=0
   ```
 
-Blahopřání! Aplikace je nyní spuštěna v Azure. Teď můžete přejít na adresu URL z nástroje pro vyrovnávání zatížení pro škálovací sadu virtuálních počítačů:
+Blahopřejeme! Vaše aplikace je teď spuštěná v Azure. Teď můžete přejít na adresu URL nástroje pro vyrovnávání zatížení vaší škálovací sady virtuálních počítačů:
 
-![Aplikace Java spuštěná ve virtuálním počítači škálovací sady v Azure.](media/ansible-deploy-app-vmss/ansible-deploy-app-vmss.png)
+![Aplikace v Javě spuštěná ve škálovací sadě virtuálních počítačů v Azure](media/ansible-deploy-app-vmss/ansible-deploy-app-vmss.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"] 
-> [Playbook Ansible vzorku pro VMSS](https://github.com/Azure-Samples/ansible-playbooks/tree/master/vmss)
+> [Ukázkový playbook Ansible pro škálovací sadu virtuálních počítačů](https://github.com/Azure-Samples/ansible-playbooks/tree/master/vmss)

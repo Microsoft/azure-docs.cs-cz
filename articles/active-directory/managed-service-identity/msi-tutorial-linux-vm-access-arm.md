@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/22/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: d1e4d8dd7201935ef1dbdc83224f905c812f9cca
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 98be87d62861295536a75201ff93e809c9ba120b
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39447471"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42886848"
 ---
 # <a name="tutorial-use-a-user-assigned-identity-on-a-linux-vm-to-access-azure-resource-manager"></a>Kurz: Použití identity přiřazené uživatelem na virtuálním počítači s Linuxem pro přístup k Azure Resource Manageru
 
@@ -40,29 +40,15 @@ Získáte informace o těchto tématech:
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud Identitu spravované služby neznáte, projděte si část [Přehled](overview.md). **Nezapomeňte si prostudovat [rozdíly mezi systémovými a uživatelem přiřazenými identitami](overview.md#how-does-it-work)**.
-- Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
-- K provedení kroků v tomto kurzu potřebných k vytvoření prostředku a správě rolí potřebuje váš účet oprávnění vlastníka v odpovídajícím oboru (vaše předplatné nebo skupina prostředků). Pokud potřebujete pomoc s přiřazením role, přečtěte si téma [Použití řízení přístupu na základě role ke správě přístupu k prostředkům předplatného Azure](/azure/role-based-access-control/role-assignments-portal).
+[!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
+
+[!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
+
+[Přihlášení k webu Azure Portal](https://portal.azure.com)
+
+[Vytvoření virtuálního počítače s Linuxem](/azure/virtual-machines/linux/quick-create-portal)
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku místně, musíte mít rozhraní příkazového řádku Azure ve verzi 2.0.4 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI 2.0]( /cli/azure/install-azure-cli).
-
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
-
-Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
-
-## <a name="create-a-linux-virtual-machine-in-a-new-resource-group"></a>Vytvoření virtuálního počítače s Linuxem v nové skupině prostředků
-
-V tomto kurzu nejprve vytvoříte nový virtuální počítač s Linuxem. Můžete použít také existující virtuální počítač.
-
-1. V levém horním rohu webu Azure Portal klikněte na **Vytvořit prostředek**.
-2. Vyberte **Compute** a potom vyberte **Ubuntu Server 16.04 LTS**.
-3. Zadejte informace o virtuálním počítači. V poli **Typ ověřování** vyberte **Veřejný klíč SSH** nebo **Heslo**. Vytvořené přihlašovací údaje umožňují přihlásit se k virtuálnímu počítači.
-
-    ![Vytvoření virtuálního počítače s Linuxem](media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
-
-4. V rozevíracím seznamu zvolte pro virtuální počítač **Předplatné**.
-5. Pokud chcete vybrat novou **skupinu prostředků**, ve které chcete vytvořit virtuální počítač, zvolte **Vytvořit novou**. Jakmile budete hotovi, klikněte na **OK**.
-6. Vyberte velikost virtuálního počítače. Pokud chcete zobrazit další velikosti, vyberte **Zobrazit všechny** nebo změňte filtr Podporovaný typ disku. V okně Nastavení ponechte výchozí nastavení a klikněte na **OK**.
 
 ## <a name="create-a-user-assigned-identity"></a>Vytvoření identity přiřazené uživatelem
 

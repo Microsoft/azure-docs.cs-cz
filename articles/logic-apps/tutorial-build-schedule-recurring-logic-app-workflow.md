@@ -1,28 +1,23 @@
 ---
-title: Vytvoření automatizovaných pracovních postupů prostřednictvím Scheduleru – Azure Logic Apps | Microsoft Docs
-description: Tento kurz ukazuje, jak ve službě Azure Logic Apps vytvořit opakované automatizované pracovní postupy s využitím Scheduleru
-author: ecfan
-manager: jeconnoc
-editor: ''
+title: Vytváření automatizovaných pracovních postupů založených na plánu – Azure Logic Apps | Microsoft Docs
+description: Kurz – Vytvoření automatizovaného pracovního postupu opakujícího se na základě plánu pomocí Azure Logic Apps
 services: logic-apps
-documentationcenter: ''
-ms.assetid: ''
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
-ms.author: LADocs; estfan
-ms.openlocfilehash: 84779d3e56b089c34e6556368008d794e634d535
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 43f826414ae7f279c23f6e9e2e39d4d21267e158
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35300765"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124014"
 ---
-# <a name="check-traffic-with-a-scheduler-based-logic-app"></a>Kontrola dopravní situace s využitím aplikace logiky založené na Scheduleru
+# <a name="check-traffic-with-a-schedule-based-logic-app"></a>Kontrola provozu s využitím aplikace logiky založené na plánu
 
 Služba Azure Logic Apps umožňuje automatizovat naplánované pracovní postupy spouštěné podle plánu. Tento kurz ukazuje, jak můžete pomocí triggeru ve Scheduleru sestavit [aplikaci logiky](../logic-apps/logic-apps-overview.md), která se spustí každý pracovní den ráno a zkontroluje dobu trvání cesty mezi dvěma místy se zohledněním dopravní situace. Pokud doba překročí určitou hranici, odešle aplikace logiky e-mail s dobou cesty a časem navíc potřebným k dosažení cíle cesty.
 

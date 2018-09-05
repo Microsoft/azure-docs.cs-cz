@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/10/2018
+ms.date: 08/28/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 7f382e3b6e70aadf8c6a090a3d5c049f6b5c0337
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 6fcc7823a7e2f2f1e280622a1fa05d4417a71546
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39010357"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43143478"
 ---
 # <a name="tutorial-unpack-connect-and-unlock-azure-data-box-disk"></a>Kurz: Rozbalení, připojení a odemknutí Azure Data Box Disku
 
@@ -41,7 +41,9 @@ Než začnete, ujistěte se, že:
 3. Máte hostitelský počítač, na který můžete nainstalovat odemykací nástroj Data Box Disku. Hostitelský počítač musí splňovat tyto požadavky:
     - Musí na něm běžet [podporovaný operační systém](data-box-disk-system-requirements.md).
     - Musí na něm být [nainstalované prostředí Windows PowerShell 4](https://www.microsoft.com/download/details.aspx?id=40855).
-    - Musí na něm být [nainstalované rozhraní .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653).
+    - Musí na něm být [nainstalované rozhraní .NET Framework 4.5.1](https://www.microsoft.com/download/details.aspx?id=30653).
+    - Musí na něm být [povolený nástroj BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-how-to-deploy-on-windows-server).
+    - Musí na něm být [nainstalované rozhraní Windows Management Framework 4](https://www.microsoft.com/en-us/download/details.aspx?id=40855). 
 
 ## <a name="unpack-your-disks"></a>Rozbalení vašich disků
 

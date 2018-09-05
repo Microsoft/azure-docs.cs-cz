@@ -9,12 +9,12 @@ ms.date: 05/22/2018
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: 42f0781de5412310ecb5326f0384268aba9c53dd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 81d538c0324f8fa89a7ce86ceaf2b0a2a76b4d51
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34651357"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43120680"
 ---
 # <a name="tutorial-update-inventory-using-cli-and-topicssubscriptions"></a>Kurz: Aktualizace zásob pomocí rozhraní CLI a témat/odběrů
 
@@ -50,11 +50,11 @@ Pokud se rozhodnete nainstalovat a místně používat rozhraní příkazového 
 
 Každý [odběr tématu](service-bus-messaging-overview.md#topics) může přijímat kopie všech zpráv. Témata jsou co do protokolu a sémantiky plně kompatibilní s frontami služby Service Bus. Témata služby Service Bus podporují širokou škálu pravidel pro výběr s podmínkami filtrů, včetně volitelných akcí, kterými se nastavují nebo upravují vlastnosti zprávy. Při každé shodě s pravidlem se vytvoří zpráva. Další informace o pravidlech, filtrech a akcích získáte pomocí tohoto [odkazu](topic-filters.md).
 
-## <a name="log-in-to-azure"></a>Přihlášení k Azure
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Po instalaci rozhraní příkazového řádku otevřete příkazový řádek a pomocí následujících příkazů se přihlaste k Azure. Tyto kroky nejsou nutné, pokud používáte cloudové prostředí:
 
-1. Pokud používáte místní rozhraní Azure CLI, využijte k přihlášení do Azure následující příkaz: Tento krok přihlášení není potřeba, pokud tyto příkazy spouštíte ve službě Cloud Shell:
+1. Pokud používáte místní rozhraní Azure CLI, přihlaste se k Azure spuštěním následujícího příkazu. Tento krok přihlášení není potřeba, pokud tyto příkazy spouštíte ve službě Cloud Shell:
 
    ```azurecli-interactive
    az login
@@ -126,7 +126,7 @@ Po dokončení všech příkazů zkopírujte vybraný připojovací řetězec a 
 
 ## <a name="create-filter-rules-on-subscriptions"></a>Vytvoření pravidel filtrů u odběrů
 
-Pokud zřídíte obor názvů a téma s odběry a máte potřebná pověření, můžete u odběrů vytvořit pravidla filtrů a poté odesílat a přijímat zprávy. Kód si můžete zkontrolovat v [této složce s ukázkami na GitHubu](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/quickstarts-and-tutorials/tutorial-topics-subscriptions-filters-java/src/main/java/com/microsoft/azure/).
+Pokud zřídíte obor názvů a téma s odběry a máte potřebná pověření, můžete u odběrů vytvořit pravidla filtrů a poté odesílat a přijímat zprávy. Kód můžete zkontrolovat v [této složce s ukázkami na GitHubu](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/quickstarts-and-tutorials/tutorial-topics-subscriptions-filters-java/src/main/java/com/microsoft/azure/).
 
 ## <a name="send-and-receive-messages"></a>Odesílání a příjem zpráv
 

@@ -4,17 +4,17 @@ description: V tomto kurzu nasadíte funkci Azure Functions jako modul na hrani�
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 08/10/2018
+ms.date: 08/22/2018
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 426d9fd81a0cd856378be3bb4f430f310bee53eb
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: cf973899a6f56010c47588bdd506418a3d9a7cd8
+ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "41919490"
+ms.lasthandoff: 08/23/2018
+ms.locfileid: "42744038"
 ---
 # <a name="tutorial-deploy-azure-functions-as-iot-edge-modules-preview"></a>Kurz: Nasazení funkcí Azure Functions jako modulů IoT Edge (Preview)
 
@@ -170,7 +170,7 @@ V předchozí části jste vytvořili řešení IoT Edge a do modulu **CSharpFun
 
 V této části dvakrát zadáte přihlašovací údaje pro váš registr kontejneru. Jako první je zadáte pro místní přihlášení z vývojového počítače, aby editor Visual Studio Code mohl odesílat image do vašeho registru. Pak je zadáte v souboru **.env** vašeho řešení IoT Edge a tím udělíte vašemu zařízení IoT Edge oprávnění ke stahování imagí z registru. 
 
-1. Výběrem **View** (Zobrazit) > **Integrated Terminal** (Integrovaný terminál) otevřete integrovaný terminál VS Code. 
+1. Výběrem **View** (Zobrazit) > **Terminal** (Terminál) otevřete integrovaný terminál VS Code. 
 
 1. Přihlaste se k registru kontejneru zadáním následujícího příkazu v integrovaném terminálu. Potom můžete odeslat image modulu do služby Azure Container Registry: 
      
@@ -219,7 +219,7 @@ K nasazení modulu funkce na zařízení IoT Edge můžete použít web Azure Po
 
 5. V průzkumníku VS Code rozbalte oddíl **Azure IoT Hub Devices** (Zařízení Azure IoT Hub). 
 
-6. Klikněte pravým tlačítkem na název vašeho zařízení IoT Edge a pak vyberte **Create Deployment for IoT Edge device** (Vytvořit nasazení pro zařízení IoT Edge). 
+6. Klikněte pravým tlačítkem na název vašeho zařízení IoT Edge a pak vyberte **Create Deployment for single device** (Vytvořit nasazení pro jedno zařízení). 
 
 7. Přejděte do složky řešení, která obsahuje modul **CSharpFunction**. Otevřete složku config, vyberte soubor deployment.json a pak zvolte **Select Edge Deployment Manifest** (Vybrat manifest nasazení Edge).
 

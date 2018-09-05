@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 07/19/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: d94f8d38ef771bd5ab03f4d3cef25233c33e7546
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 6759568a678394f7cec4ac9f0bdd99d8ed1db9de
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39282613"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42886786"
 ---
 # <a name="tutorial-detect-issues-with-devices-connected-to-your-monitoring-solution"></a>Kurz: Detekce problémů se zařízeními připojenými k řešení monitorování
 
@@ -112,11 +112,23 @@ Pokud chcete provést změnu existujícího pravidla, vyberte ho v seznamu pravi
 
 ## <a name="disable-a-rule"></a>Zákaz pravidla
 
-Pokud chcete pravidlo dočasně vypnout, můžete ho zakázat v seznamu pravidel. Zvolte pravidlo, které chcete zakázat, a pak zvolte **Zakázat**. **Stav** pravidla v seznamu se změní a bude značit, že je teď pravidlo zakázané. Stejným postupem můžete znovu povolit pravidlo, které jste předtím zakázali.
+Pokud chcete pravidlo dočasně vypnout, můžete ho zakázat v seznamu pravidel. Vyberte pravidlo, které chcete zakázat, a pak zvolte **Zakázat**. **Stav** pravidla v seznamu se změní a bude značit, že je teď pravidlo zakázané. Stejným postupem můžete znovu povolit pravidlo, které jste předtím zakázali.
 
 [![Zákaz pravidla](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdisable-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdisable-expanded.png#lightbox)
 
 Pokud v seznamu vyberete několik pravidel, můžete povolit a zakázat několik pravidel najednou.
+
+## <a name="delete-a-rule"></a>Odstranění pravidla
+
+Pokud chcete trvale odstranit pravidlo, můžete ho odstranit ze seznamu pravidel. Vyberte pravidlo, které chcete odstranit, a pak zvolte **Odstranit**.
+
+[![Odstranění pravidla](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdelete-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdelete-expanded.png#lightbox)
+
+Jakmile potvrdíte, že chcete pravidlo odstranit, budete mít možnost odstranit všechna upozornění související s tímto pravidlem na stránce **Údržba**.
+
+[![Odstranění pravidla](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdeletetidy-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsdeletetidy-expanded.png#lightbox)
+
+Najednou můžete odstranit pouze jedno pravidlo.
 
 [!INCLUDE [iot-accelerators-tutorial-cleanup](../../includes/iot-accelerators-tutorial-cleanup.md)]
 

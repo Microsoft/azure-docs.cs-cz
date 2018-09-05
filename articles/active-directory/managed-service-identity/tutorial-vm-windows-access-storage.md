@@ -14,22 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/12/2018
 ms.author: daveba
-ms.openlocfilehash: e001907b9df77eff1455043a3fd7ce5533838fcc
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 0781bf3fe9806c2c8aaa911433c4d6eddcafe04c
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056170"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42885489"
 ---
 # <a name="tutorial-use-a-windows-vm-managed-identity-to-access-azure-storage"></a>Kurz: Použití spravované identity na virtuálním počítači s Windows pro přístup k Azure Storage
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-V tomto kurzu si ukážeme, jak povolit spravovanou identitu na virtuálním počítači s Windows a pak ji použít pro přístup k Azure Storage.  Získáte informace o těchto tématech:
+V tomto kurzu se dozvíte, jak pomocí identity přiřazené systémem pro virtuální počítač s Windows získat přístup ke službě Azure Storage. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Vytvoření virtuálního počítače s Windows v nové skupině prostředků 
-> * Povolení spravované identity na virtuálním počítači s Windows
 > * Vytvoření kontejneru objektů blob v účtu úložiště
 > * Udělení spravovaným identitám na virtuálních počítačích s Windows přístup k účtu úložiště 
 > * Získání a použití přístupu k volání Azure Storage 
@@ -43,31 +41,11 @@ V tomto kurzu si ukážeme, jak povolit spravovanou identitu na virtuálním po�
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+- [Přihlášení k webu Azure Portal](https://portal.azure.com)
 
-Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
+- [Vytvoření virtuálního počítače s Windows](/azure/virtual-machines/windows/quick-create-portal)
 
-## <a name="create-a-windows-virtual-machine-in-a-new-resource-group"></a>Vytvoření virtuálního počítače s Windows v nové skupině prostředků
-
-V této části vytvoříte virtuální počítač s Windows, kterému později udělíte spravovanou identitu.
-
-1.  V levém horním rohu na webu Azure Portal klikněte na tlačítko pro **vytvoření nové služby**.
-2.  Vyberte **Compute** a potom vyberte **Windows Server 2016 Datacenter**. 
-3.  Zadejte informace o virtuálním počítači. Vytvořené **Uživatelské jméno** a **Heslo** použijete při přihlášení k virtuálnímu počítači.
-4.  V rozevíracím seznamu zvolte pro virtuální počítač správné **předplatné**.
-5.  Pokud chcete vybrat novou **skupinu prostředků**, ve které chcete vytvořit virtuální počítač, zvolte **Vytvořit novou**. Jakmile budete hotovi, klikněte na **OK**.
-6.  Vyberte velikost virtuálního počítače. Pokud chcete zobrazit další velikosti, vyberte **Zobrazit všechny** nebo změňte filtr **Podporovaný typ disku**. V okně Nastavení ponechte výchozí nastavení a klikněte na **OK**.
-
-    ![Text k alternativnímu obrázku](media/msi-tutorial-windows-vm-access-arm/msi-windows-vm.png)
-
-## <a name="enable-managed-identity-on-your-vm"></a>Povolení spravované identity na virtuálním počítači
-
-Spravovaná identita virtuálního počítače umožňuje získat z Azure AD přístupové tokeny bez nutnosti vložení přihlašovacích údajů do kódu. Po povolení spravované identity na virtuálním počítači na webu Azure Portal se stanou dvě věci: virtuální počítač se zaregistruje v Azure AD, aby se vytvořila jeho spravovaná identita, a tato identita se nakonfiguruje na virtuálním počítači. 
-
-1. Přejděte ke skupině prostředků nového virtuálního počítače a vyberte virtuální počítač, který jste vytvořili v předchozím kroku.
-2. V kategorii **Nastavení** klikněte na **Konfigurace**.
-3. Pokud chcete spravovanou identitu povolit, vyberte **Ano**.
-4. Klikněte na **Uložit**, aby se konfigurace použila. 
+- [Povolení identity přiřazené systémem pro váš virtuální počítač](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm#enable-system-assigned-identity-on-an-existing-vm)
 
 ## <a name="create-a-storage-account"></a>vytvořit účet úložiště 
 

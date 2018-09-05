@@ -10,16 +10,16 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/28/2017
 ms.author: sngun
-ms.openlocfilehash: e4e783d131c4ceee9315b3442ee504e662157d8c
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 905815259707116759e0b980690fac108ab81c7b
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856803"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43186826"
 ---
-# <a name="import-data-for-use-with-the-azure-cosmos-db-table-api"></a>Import dat pro použití s rozhraním Table API služby Azure Cosmos DB
+# <a name="migrate-your-data-to-azure-cosmos-db-table-api-account"></a>Migrace dat do účtu rozhraní Table API služby Azure Cosmos DB
 
-Tento kurz obsahuje pokyny k importování dat pro použití s rozhraním [Table API](table-introduction.md) služby Azure Cosmos DB. Pokud máte data uložená ve službě Azure Table Storage, můžete k importu dat použít nástroj pro migraci dat nebo AzCopy. Pokud máte data uložená v účtu rozhraní Table API služby Azure Cosmos DB (Preview), musíte k migraci dat použít nástroj pro migraci dat. Po naimportování dat budete moct využívat prémiové možnosti, které Azure Cosmos DB nabízí, jako je globální distribuce na klíč, vyhrazená propustnost, latence v řádu milisekund na 99. percentilu, garantovaná vysoká dostupnost a automatické sekundární indexování.
+Tento kurz obsahuje pokyny k importování dat pro použití s rozhraním [Table API](table-introduction.md) služby Azure Cosmos DB. Pokud máte data uložená ve službě Azure Table Storage, můžete k importu dat do rozhraní Table API služby Azure Cosmos DB použít nástroj pro migraci dat nebo AzCopy. Pokud máte data uložená v účtu rozhraní Table API služby Azure Cosmos DB (Preview), musíte k migraci dat použít nástroj pro migraci dat. 
 
 Tento kurz se zabývá následujícími úkony:
 
@@ -39,11 +39,11 @@ Nástroj příkazového řádku pro migraci dat Azure Cosmos DB (dt.exe) je mož
 Pokud chcete provést migraci tabulkových dat, proveďte následující úlohy:
 
 1. Stáhněte si nástroj pro migraci z [GitHubu](https://github.com/azure/azure-documentdb-datamigrationtool).
-2. Spusťte `dt.exe` s použitím argumentů příkazového řádku pro váš scénář.
+2. Spusťte `dt.exe` s použitím argumentů příkazového řádku pro váš scénář. `dt.exe` přijímá příkaz v následujícím formátu:
 
-dt.exe přijímá příkaz v následujícím formátu:
-
+   ```bash
     dt.exe [/<option>:<value>] /s:<source-name> [/s.<source-option>:<value>] /t:<target-name> [/t.<target-option>:<value>] 
+```
 
 Možnosti příkazu jsou:
 
@@ -105,7 +105,7 @@ Tady je ukázka příkazového řádku pro import z rozhraní Table API Preview 
 dt /s:AzureTable /s.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Table API preview account name>;AccountKey=<Table API preview account key>;TableEndpoint=https://<Account Name>.documents.azure.com; /s.Table:<Table name> /t:TableAPIBulk /t.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Cosmos DB account name>;AccountKey=<Azure Cosmos DB account key>;TableEndpoint=https://<Account name>.table.cosmosdb.azure.com:443 /t.TableName:<Table name> /t.Overwrite
 ```
 
-## <a name="azcopy-command"></a>Příkaz AzCopy
+## <a name="migrate-data-by-using-azcopy"></a>Migrace dat pomocí AzCopy
 
 Druhou možností, jak migrovat data ze služby Azure Table Storage do rozhraní Table API služby Azure Cosmos DB, je použít nástroj příkazového řádku AzCopy. Pokud chcete použít AzCopy, je potřeba nejprve data exportovat, jak je popsáno v části [Export dat ze služby Table Storage](../storage/common/storage-use-azcopy.md#export-data-from-table-storage), a pak data importovat do služby Azure Cosmos DB, jak je popsáno v části [Rozhraní Table API služby Azure Cosmos DB](../storage/common/storage-use-azcopy.md#import-data-into-table-storage).
 

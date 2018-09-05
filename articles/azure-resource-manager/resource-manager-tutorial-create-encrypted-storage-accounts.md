@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 07/20/2018
+ms.date: 08/27/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7c78636a210ae90c5bfe1d0bfd35e4e05633f5cd
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 57d5f7039831c9fd617926f20f3ff001b22ef314
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39188195"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43097881"
 ---
 # <a name="tutorial-create-an-azure-resource-manager-template-for-deploying-an-encrypted-storage-account"></a>Kurz: Vytvoření šablony Azure Resource Manageru pro nasazení šifrovaného účtu úložiště
 
@@ -30,9 +30,7 @@ Tento kurz se zabývá následujícími úkony:
 
 > [!div class="checklist"]
 > * Otevření šablony pro rychlý start
-> * Vysvětlení formátu šablony
-> * Použití parametrů v šabloně
-> * Použití proměnných v šabloně
+> * Vysvětlení šablony
 > * Úprava šablony
 > * Nasazení šablony
 
@@ -101,7 +99,7 @@ Proměnné umožňují vytvářet hodnoty, které se dají používat v celé š
 Tato šablona definuje jednu proměnnou *storageAccountName*. V definici se používají dvě funkce šablon:
 
 - **concat()**: provádí zřetězení řetězců. Další informace najdete v popisu funkce [concat](./resource-group-template-functions-string.md#concat).
-- **uniqueString()**: vytvoří deterministický řetězec hash na základě hodnot zadaných jako parametry. Každý účet Azure Storage musí mít na celé platformě Azure jedinečný název. Tato funkce poskytuje jedinečný řetězec. Další řetězcové funkce najdete v článku [Řetězcové funkce](./resource-group-template-functions-string.md).
+- **uniqueString()**: vytvoří deterministický řetězec hash na základě hodnot zadaných jako parametry. Každý účet úložiště Azure musí mít na celé platformě Azure jedinečný název. Tato funkce poskytuje jedinečný řetězec. Další řetězcové funkce najdete v článku [Řetězcové funkce](./resource-group-template-functions-string.md).
 
 Použití proměnné definované v šabloně:
 
@@ -111,10 +109,10 @@ Použití proměnné definované v šabloně:
 
 ## <a name="edit-the-template"></a>Úprava šablony
 
-K vyhledání konfigurace šifrování účtu úložiště můžete použít odkaz na šablonu účtu Azure Storage.
+Cílem tohoto kurzu je definovat šablonu pro vytvoření šifrovaného účtu úložiště.  Ukázková šablona vytvoří pouze základní nešifrovaný účet úložiště. K vyhledání konfigurace šifrování můžete použít odkaz na šablonu účtu Azure Storage.
 
 1. Přejděte na článek o [šablonách Azure](https://docs.microsoft.com/azure/templates/).
-2. V obsahu vlevo vyberte **Reference (Odkazy)**->**Storage (Úložiště)**->**Storage Accounts (Účty úložiště)**. Na této stránce najdete informace o tom, jak definovat údaje účtu úložiště.
+2. V obsahu vlevo vyberte **Reference (Odkazy)**->**Storage (Úložiště)**->**Storage Accounts (Účty úložiště)**. Můžete také zadat **storage** do pole **Filtrovat podle názvu**.  Na této stránce najdete schéma pro definování informací o účtu úložiště.
 3. Projděte si informace týkající se šifrování.  
 4. Do elementu properties v definici prostředku účtu úložiště přidejte následující kód JSON:
 
@@ -130,59 +128,17 @@ K vyhledání konfigurace šifrování účtu úložiště můžete použít odk
     ```
     Tato část povolí šifrovací funkci služby Blob Storage.
 
-Element resources nakonec vypadá takto:
+Ve Visual Studio Code upravte šablonu tak, aby výsledný element resources vypadal následovně:
 
 ![Šablona Resource Manageru – element resources šifrovaného účtu úložiště](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-encrypted-storage-resources.png)
 
 ## <a name="deploy-the-template"></a>Nasazení šablony
 
-Šablony můžete nasadit mnoha způsoby.  V tomto kurzu použijete Cloud Shell z webu Azure Portal. Cloud Shell podporuje jak Azure CLI, tak i Azure PowerShell. V pokynech v tomto článku se používá CLI.
+Informace o procesu nasazení najdete v části [Nasazení šablony](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#deploy-the-template) v rychlém startu pro Visual Studio Code.
 
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
-2. V pravém horním rohu vyberte **Cloud Shell**, jak je znázorněno na tomto obrázku:
+Následující snímek obrazovky ukazuje příkaz rozhraní příkazového řádku pro zobrazení nově vytvořeného účtu úložiště, který značí povolení šifrování pro úložiště objektů blob.
 
-    ![Cloud Shell na portálu Azure Portal](./media/resource-manager-tutorial-create-encrypted-storage-accounts/azure-portal-cloud-shell.png)
-
-3. Vyberte šipku dolů a potom zvolte **Bash**, pokud ještě tato možnost není vybraná. V tomto kurzu použijete Azure CLI.
-
-    ![CLI v Cloud Shellu na portálu Azure Portal](./media/resource-manager-tutorial-create-encrypted-storage-accounts/azure-portal-cloud-shell-choose-cli.png)
-4. Vyberte **Restartovat** a prostředí restartujte.
-5. Vyberte **Nahrát nebo stáhnout soubory** a potom vyberte **Nahrát**.
-
-    ![Nahrání souboru v Cloud Shellu na portálu Azure Portal](./media/resource-manager-tutorial-create-encrypted-storage-accounts/azure-portal-cloud-shell-upload-file.png)
-6. Vyberte soubor, který jste si v rámci tohoto kurzu uložili. Výchozí název je **azuredeploy.json**.
-7. V Cloud Shellu spusťte příkaz **ls** a ověřte, že se soubor nahrál úspěšně. Obsah šablony můžete ověřit také pomocí příkazu **cat**.
-
-    ![Zobrazení souboru v Cloud Shellu na portálu Azure Portal](./media/resource-manager-tutorial-create-encrypted-storage-accounts/azure-portal-cloud-shell-list-file.png)
-8. V Cloud Shellu spusťte následující příkazy:
-
-    ```cli
-    az group create --name <ResourceGroupName> --location <AzureLocation>
-
-    az group deployment create --name <DeploymentName> --resource-group <ResourceGroupName> --template-file azuredeploy.json
-    ```
-    Tady je snímek obrazovky s ukázkovým nasazením:
-
-    ![Šablona nasazení v Cloud Shellu na portálu Azure Portal](./media/resource-manager-tutorial-create-encrypted-storage-accounts/azure-portal-cloud-shell-deploy-template.png)
-
-    Na snímku obrazovky jsou použity tyto hodnoty:
-
-    * **&lt;ResourceGroupName>**: myresourcegroup0719. Tento parametr je použit na dvou místech.  Nezapomeňte použít stejnou hodnotu.
-    * **&lt;AzureLocation>**: eastus2
-    * **&lt;DeployName>**: mydeployment0719
-    * **&lt;TemplateFile>**: azuredeploy.json
-
-    Ve výstupu na snímku obrazovky má účet úložiště název *fhqbfslikdqdsstandardsa*. 
-
-9. Spuštěním následujícího powershellového příkazu zobrazíte nově vytvořený účet úložiště:
-
-    ```cli
-    az storage account show --resource-group <ResourceGroupName> --name <StorageAccountName>
-    ```
-
-    Zobrazí se výstup podobný následujícímu snímku obrazovky, který znamená, že se pro úložiště objektů blob povolilo šifrování.
-
-    ![Šablona Resource Manageru – šifrovaný účet úložiště](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-encrypted-storage-account.png)
+![Azure Resource Manager – šifrovaný účet úložiště](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-encrypted-storage-account.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -195,7 +151,7 @@ Pokud už nasazené prostředky Azure nepotřebujete, vyčistěte je odstraněn�
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se dozvěděli, jak přizpůsobit existující šablonu pomocí odkazu na šablonu. Šablona použitá v tomto kurzu obsahuje jenom jeden prostředek Azure.  V dalším kurzu se zaměříte na vývoj šablony s více prostředky.  Některé prostředky mají závislé prostředky.
+V tomto kurzu jste se dozvěděli, jak přizpůsobit existující šablonu pomocí odkazu na šablonu. Šablona použitá v tomto kurzu obsahuje jenom jeden prostředek Azure.  V dalším kurzu se zaměříte na vývoj šablony s více prostředky. Některé prostředky mají závislé prostředky.
 
 > [!div class="nextstepaction"]
 > [Vytvoření několika prostředků](./resource-manager-tutorial-create-templates-with-dependent-resources.md)

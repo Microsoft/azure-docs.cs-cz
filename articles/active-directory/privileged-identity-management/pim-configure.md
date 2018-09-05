@@ -1,6 +1,6 @@
 ---
-title: Konfigurace služby Azure AD Privileged Identity Management | Microsoft Docs
-description: Téma, které popisuje, co je Azure AD Privileged Identity Management a jak pomocí PIM zlepšit zabezpečení cloudu
+title: Co je Azure AD Privileged Identity Management? | Microsoft Docs
+description: Tento článek obsahuje přehled služby Azure Active Directory Privileged Identity Management (PIM).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,12 +13,12 @@ ms.topic: overview
 ms.date: 03/07/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 8ac1dad9413d9e2710722127c2e837223a5b6f7f
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: ff4e5322ac9ccc0bbfd0706ca9f4863670bbf1b5
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618848"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43186207"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Co je Azure AD Privileged Identity Management?
 
@@ -51,6 +51,35 @@ V Azure AD může Azure AD Privileged Identity Management spravovat uživatele p
 ## <a name="just-in-time-administrator-access"></a>Přístup správce za běhu
 
 V minulosti jste mohli uživatele přiřadit k roli správce přes web Azure Portal, portály jiných online služeb Microsoftu nebo rutiny Azure AD ve Windows PowerShellu. Takový uživatel se pak stane **trvalým správcem**, který je v přiřazené roli pořád aktivní. Azure AD Privileged Identity Management zavádí koncept **oprávněného správce**. Oprávnění správci by měli být uživatelé, kteří čas od času potřebují privilegovaný přístup, ale ne každý den po celý den. Dokud uživatel nepotřebuje přístup, je tato role neaktivní. Jakmile uživatel bude přístup potřebovat, dokončí proces aktivace a na předem určenou dobu se stane aktivním správcem. Stále více organizací volí tento přístup za účelem omezení nebo eliminace trvalého přístupu správců u privilegovaných rolí.
+
+
+## <a name="terminology"></a>Terminologie
+
+*Oprávněný uživatel role* – Oprávněný uživatel role je uživatel ve vaší organizaci, který se přiřadil jako oprávněný k roli Azure AD (role vyžaduje aktivaci).
+
+*Delegovaný schvalovatel* – Delegovaný schvalovatel je jeden nebo několik uživatelů nebo skupin v Azure AD zodpovědných za schvalování žádostí o aktivaci rolí.
+
+## <a name="scenarios"></a>Scénáře
+
+Privileged Identity Management podporuje následující scénáře:
+
+**Jako správce privilegovaných rolí můžete:**
+
+- Povolit schvalování pro konkrétní role
+- Určit schvalovatele (uživatele nebo skupiny) pro schvalování žádostí
+- Zobrazit historii žádostí a schválení pro všechny privilegované role
+
+**Jako vyhrazený schvalovatel můžete:**
+
+- Zobrazit žádosti čekající na schválení
+- Schvalovat nebo zamítat žádosti o zvýšení oprávnění role (jednotně nebo hromadně)
+- Uvést odůvodnění schválení nebo zamítnutí 
+
+**Jako oprávněný uživatel role můžete:**
+
+- Požádat o aktivaci role, která vyžaduje schválení
+- Zobrazit stav vaší žádosti o aktivaci
+- Dokončit požadovanou úlohu v Azure AD, pokud se aktivace schválí
 
 ## <a name="enable-privileged-identity-management-for-your-directory"></a>Povolení služby Privileged Identity Management pro adresář
 
@@ -157,4 +186,6 @@ Pokud vaše organizace předplatné Azure AD Premium P2 neprodlouží nebo vypr�
 
 ## <a name="next-steps"></a>Další kroky
 
-[!INCLUDE [active-directory-privileged-identity-management-toc](../../../includes/active-directory-privileged-identity-management-toc.md)]
+- [Požadavky na předplatné pro použití PIM](subscription-requirements.md)
+- [Role adresáře Azure AD, které může spravovat v PIM](pim-roles.md)
+- [Zabezpečení privilegovaného přístupu pro hybridní a cloudová nasazení v Azure AD](../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)

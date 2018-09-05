@@ -13,14 +13,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 07/17/2018
+ms.date: 08/28/2018
 ms.author: alkohli
-ms.openlocfilehash: 5288e9900c75eae7601b84f7366edf9ac739d5da
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 931b3fd4730ed9ca3a901b423d6c804dfa7e5305
+ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125799"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43143538"
 ---
 # <a name="what-is-azure-data-box-disk-preview"></a>Co je Azure Data Box Disk? (Preview)
 
@@ -60,10 +60,10 @@ A.  Pokud chcete získat disky Azure Data Box Disk, nejprve si zaregistrujte [Da
 A. Při 5 discích, kdy každý má velikost 8 TB (7 TB využitelné kapacity), je maximální využitelná kapacita 35 TB. V jedné instanci je tedy možné přenést 35 TB dat.  Pro přenos většího objemu dat je nutné objednat další disky.
 
 ### <a name="q-how-can-i-check-if-data-box-disks-are-available-in-my-region"></a>Otázka: Jak zjistím, jestli jsou disky Data Box Disk dostupné v mojí oblasti? 
-A.  Disky Data Box Disk jsou během období Preview dostupné v USA a ve všech zemích Evropské unie.  
+A.  Data Box Disky jsou během období Preview dostupné v USA, Kanadě a ve všech zemích Evropské unie.  
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>Otázka: Ve kterých oblastech lze data ukládat pomocí disků Data Box Disk?
-A. Data Box Disk ve verzi Preview se podporuje ve všech oblastech USA a v oblastech Západní Evropa a Severní Evropa. Podporované jsou jenom oblasti veřejného cloudu Azure. Azure Government ani jiné suverénní cloudy nejsou podporované.
+A. Data Box Disk ve verzi Preview se podporuje ve všech oblastech USA, v Kanadě a v oblastech Západní Evropa a Severní Evropa. Podporované jsou jenom oblasti veřejného cloudu Azure. Azure Government ani jiné suverénní cloudy nejsou podporované.
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues--with-data-box-disks"></a>Otázka: Na koho se mám obrátit, když narazím na nějaké problémy s disky Data Box Disk?
 A. Pokud narazíte na nějaké problémy s disky Data Box Disk, obraťte se prosím na [podporu pro disky Data Box Disk](mailto:expresspodsupport@microsoft.com).

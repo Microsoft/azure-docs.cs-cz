@@ -1,25 +1,25 @@
 ---
-title: Přehled Jenkinse a Azure | Microsoft Docs
+title: Přehled Jenkinse a Azure
 description: Hostujte automatizační server Jenkinse pro sestavování a nasazování v Azure a rozšiřte své kanály průběžné integrace a nasazování (CI/CD) s využitím výpočetních prostředků a prostředků úložiště Azure.
-ms.topic: overview
-ms.author: tarcher
+ms.service: jenkins
+keywords: jenkins, azure, devops, overview
 author: tomarcher
-manager: jpconnock
-ms.service: devops
-ms.custom: jenkins
+manager: jeconnoc
+ms.author: tarcher
+ms.topic: overview
 ms.date: 07/25/2018
-ms.openlocfilehash: ecb4ea7aee005cb539910b2cb25f0b84de7ba510
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: cb4082046e57ac16abd6cdef3d5779525e7cfc82
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39281551"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43105525"
 ---
 # <a name="azure-and-jenkins"></a>Azure a Jenkins
 
 [Jenkins](https://jenkins.io/) je oblíbený open-source automatizační server, který se používá k nastavení průběžné integrace a doručování (CI/CD) pro softwarové projekty. Nasazení Jenkinse můžete hostovat v Azure nebo můžete rozšířit stávající konfiguraci Jenkinse s využitím prostředků Azure. K dispozici jsou také moduly plug-in Jenkinse pro zjednodušení průběžné integrace a doručování (CI/CD) vašich aplikací do Azure.
 
-Tento článek je úvodem do používání Azure s Jenkinsem a podrobně popisuje základní funkce Azure dostupné pro uživatele Jenkinse. Pokud chcete začít s vlastním serverem Jenkinse v Azure, přečtěte si náš [rychlý start](install-jenkins-solution-template.md).
+Tento článek je úvodem do používání Azure s Jenkinsem a podrobně popisuje základní funkce Azure dostupné pro uživatele Jenkinse. Další informace o začátcích s vlastním serverem Jenkinse v Azure najdete v tématu [Vytvoření serveru Jenkinse v Azure](install-jenkins-solution-template.md).
 
 ## <a name="host-your-jenkins-servers-in-azure"></a>Hostování serverů Jenkinse v Azure
 

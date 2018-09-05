@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 07/06/2018
+ms.date: 08/24/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: ee38fe542ca6e2e4e1f8e09b54717d4390b453d0
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 48714d71edcf54726eb362c7f56950a1350fd52b
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37922653"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42885321"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Migrace virtuálních počítačů služby Amazon Web Services (AWS) do Azure
 
@@ -33,10 +33,12 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="prerequisites"></a>Požadavky
 - Ověřte, že na virtuálních počítačích, které chcete migrovat, běží podporovaná verze operačního systému. Podporované verze: 
-    - Windows Server 2016
-    - Red Hat Enterprise Linux 6.7 (pouze virtualizované instance HVM) a musí mít jedině ovladače Citrix PV nebo AWS PV. Instance s ovladači Red Hat PV **nejsou** podporované.
-
-- Na každý virtuální počítač, který chcete replikovat, bude nutné nainstalovat službu Mobility. 
+  - Windows Server 2016 
+  - Windows Server 2012 R2
+  - Windows Server 2012 
+  - 64bitová verze systému Windows Server 2008 R2 SP1 nebo novější
+  - Red Hat Enterprise Linux 6.7 (pouze virtualizované instance HVM) s ovladačem Citrix PV nebo AWS PV. Instance s ovladači RedHat PV *nejsou* podporované.
+ - Na každý virtuální počítač, který chcete replikovat, bude nutné nainstalovat službu Mobility. 
 
     > [!IMPORTANT]
     > Služba Site Recovery tuto službu nainstaluje automaticky, když u virtuálního počítače zapnete replikaci. U automatické instalace musíte připravit účet na instancích EC2, který služba Site Recovery použije k získání přístupu k virtuálnímu počítači. Můžete použít účet domény nebo místní účet. 
@@ -123,7 +125,7 @@ Na stránce **Připravit zdroj** vyberte **+ Konfigurační server**.
 
     1. Na stránce **Before You Begin** (Než začnete) vyberte **Install the configuration server and process server** (Nainstalovat konfigurační server a procesový server) a potom vyberte **Next** (Další).
     2. Na stránce **Third-Party Software License** (Licence k softwaru jiného výrobce) vyberte **I accept the third-party license agreement** (Přijímám licenční smlouvu třetí strany) a potom vyberte **Next** (Další).
-    3. Na stránce **registrace** vyberte **Browse** (Procházet) a potom přejděte do umístění se souborem registračního klíče trezoru. Vyberte **Next** (Další).
+    3. Na stránce **registrace** vyberte **Browse** (Procházet) a potom přejděte do umístění se souborem registračního klíče trezoru. Vyberte **Další**.
     4. Na stránce **Internet Settings** (Nastavení internetu) vyberte **Connect to Azure Site Recovery without a proxy server** (Připojit k Azure Site Recovery bez proxy serveru) a pak vyberte **Next** (Další).
     5. Na stránce **Prerequisites Check**(Kontrola předpokladů) provede program kontrolu několika položek. Po dokončení vyberte **Next** (Další).
     6. Na stránce **MySQL Configuration** (Konfigurace MySQL) zadejte požadovaná hesla a potom vyberte **Next** (Další).
@@ -165,7 +167,7 @@ Po dokončení všech pěti kroků v části **Příprava infrastruktury** vyber
 
 Povolte replikaci pro všechny virtuální počítače, které chcete migrovat. Když je replikace povolená, služba Site Recovery automaticky nainstaluje službu Mobility.
 
-1. Přejděte na [portál Azure](htts://portal.azure.com).
+1. Přejděte na [Azure Portal](htts://portal.azure.com).
 1. Na stránce svého trezoru v části **Začínáme** vyberte **Site Recovery**.
 2. V části **Pro místní počítače a virtuální počítače Azure** vyberte **Krok 1: Replikace aplikace**. Na stránkách průvodce zadejte následující informace. Po zadání údajů na každé stránce zvolte **OK**.
     - 1: Konfigurace zdroje

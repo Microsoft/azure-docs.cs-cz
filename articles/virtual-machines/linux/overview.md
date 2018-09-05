@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 11/29/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: d2e4a014a0f7bb7f94885528abc930d2b243318b
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 1ac55b728a29ff1bb8129087da5992ffe5f23df9
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30911314"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42820309"
 ---
 # <a name="azure-and-linux"></a>Azure a Linux
 Microsoft Azure je rostoucí kolekce integrovaných veřejných cloudových služeb včetně analýz, virtuálních počítačů, databází, mobilních a síťových služeb, úložiště a webu &mdash; je tak ideální pro hostování vašich řešení.  Microsoft Azure poskytuje škálovatelnou výpočetní platformu, s kterou můžete platit jenom za to, co používáte a když to potřebujete – nemusíte tak investovat do hardwaru místně ve své firmě.  Platforma Azure dokáže flexibilně reagovat na vaše potřeby. Můžete tak libovolně škálovat kapacitu (vertikálně i horizontálně) pro svá řešení podle požadavků svých klientů.
@@ -28,12 +28,12 @@ Microsoft Azure je rostoucí kolekce integrovaných veřejných cloudových slu�
 Pokud už znáte různé funkce Amazon AWS, můžete prozkoumat [dokument věnovaný mapování definic](https://azure.microsoft.com/campaigns/azure-vs-aws/mapping/) Azure oproti AWS.
 
 ## <a name="regions"></a>Oblasti
-Prostředky Microsoft Azure jsou distribuované mezi několik geografických oblastí po celém světě.  „Oblast“ představuje několik datacenter v jedné zeměpisné oblasti. Azure má v současnosti (k listopadu 2017) 36 obecně dostupných oblastí po celém světě a dalších 6 oblastí je oznámených. Aktualizovaný seznam stávajících a nově oznámených oblastí najdete na následující stránce:
+Prostředky Microsoft Azure jsou distribuované mezi několik geografických oblastí po celém světě.  „Oblast“ představuje několik datacenter v jedné zeměpisné oblasti. Azure má v současnosti (k srpnu 2018) 42 obecně dostupných oblastí po celém světě a dalších 12 oblastí je oznámených – to je více globálních oblastí než nabízí jakýkoli jiný poskytovatel cloudu. Aktualizovaný seznam stávajících a nově oznámených oblastí najdete na následující stránce:
 
 * [Oblasti Azure](https://azure.microsoft.com/regions/)
 
 ## <a name="availability"></a>Dostupnost
-Platforma Azure oznámila špičkovou smlouvu o úrovni služeb (SLA) s 99,9% dostupností pro samostatné instance virtuálních počítačů za předpokladu, že virtuální počítač nasadíte se službou Storage úrovně Premium pro všechny disky.  Aby se na vaše nasazení vztahovala standardní záruka 99,95% dostupnosti virtuálního počítače podle smlouvy SLA, stále je nutné nasadit alespoň dva virtuální počítače, které vaši úlohu spouští v rámci skupiny dostupnosti. Skupina dostupnosti zajistí, že vaše virtuální počítače jsou distribuované mezi několik domén selhání v datacentrech Azure a také nasazené na hostitele s různými časovými obdobími údržby. Úplná smlouva [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) vysvětluje garantovanou dostupnost Azure jako celku.
+Platforma Azure oznámila špičkovou smlouvu o úrovni služeb (SLA) s 99,9% dostupností pro samostatné instance virtuálních počítačů za předpokladu, že virtuální počítač nasadíte se službou Premium Storage pro všechny disky.  Aby se na vaše nasazení vztahovala standardní záruka 99,95% dostupnosti virtuálního počítače podle smlouvy SLA, stále je nutné nasadit alespoň dva virtuální počítače, které vaši úlohu spouští v rámci skupiny dostupnosti. Skupina dostupnosti zajistí, že vaše virtuální počítače jsou distribuované mezi několik domén selhání v datacentrech Azure a také nasazené na hostitele s různými časovými obdobími údržby. Úplná smlouva [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) vysvětluje garantovanou dostupnost Azure jako celku.
 
 ## <a name="managed-disks"></a>Managed Disks
 
@@ -59,7 +59,7 @@ K dosažení správné kultury DevOps musí být veškerá infrastruktura tvoře
 * [Šablony Azure](create-ssh-secured-vm-from-template.md)
 * [Azure VMAccess](using-vmaccess-extension.md)
 
-Azure postupně zavádí podporu nástroje [cloud-init](http://cloud-init.io/) ve většině distribucí Linuxu, které ho podporují.  Aktuálně se s povoleným nástrojem cloud-init ve výchozím nastavení nasazují virtuální počítače s Ubuntu od firmy Canonical.  RHEL od Red Hatu, CentOS i Fedora podporují cloud-init, ale v imagích Azure, které udržuje RedHat, není aktuálně nástroj cloud-init nainstalovaný.  Pokud chcete používat cloud-init v operačních systémech rodiny RedHat, musíte vytvořit vlastní image s nainstalovaným nástrojem cloud-init.
+Azure postupně zavádí podporu nástroje [cloud-init](http://cloud-init.io/) ve většině distribucí Linuxu, které ho podporují.  Aktuálně se s povoleným nástrojem cloud-init ve výchozím nastavení nasazují virtuální počítače s Ubuntu od firmy Canonical.  RHEL od Red Hatu, CentOS i Fedora podporují cloud-init, ale v imagích Azure, které udržuje Red Hat, není aktuálně nástroj cloud-init nainstalovaný.  Pokud chcete používat cloud-init v operačních systémech rodiny Red Hat, musíte vytvořit vlastní image s nainstalovaným nástrojem cloud-init.
 
 * [Použití cloud-init na virtuálních počítačích Azure s Linuxem](using-cloud-init.md)
 
@@ -73,7 +73,7 @@ Microsoft úzce spolupracuje s partnery na zajištění aktualizace a optimaliza
 
 * Linux v Azure – [Schválené distribuce](endorsed-distros.md)
 * SUSE – [Azure Marketplace – SUSE Linux Enterprise Server](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=%27SUSE%27)
-* RedHat – [Azure Marketplace – RedHat Enterprise Linux 7.2](https://azure.microsoft.com/marketplace/partners/redhat/redhatenterpriselinux72/)
+* Red Hat – [Azure Marketplace – Red Hat Enterprise Linux 7.2](https://azure.microsoft.com/marketplace/partners/redhat/redhatenterpriselinux72/)
 * Canonical – [Azure Marketplace – Ubuntu Server 16.04 LTS](https://azure.microsoft.com/marketplace/partners/canonical/ubuntuserver1604lts/)
 * Debian –[Azure Marketplace – Debian 8 „Jessie“](https://azure.microsoft.com/marketplace/partners/credativ/debian8/)
 * FreeBSD – [Azure Marketplace – FreeBSD 10.3](https://azure.microsoft.com/marketplace/partners/microsoft/freebsd103/)
@@ -121,7 +121,7 @@ Virtuální počítač je teď spuštěný v Azure a vy jste připraveni se k n�
 * [Otevření portů k virtuálnímu počítači s Linuxem v Azure](nsg-quickstart.md)
 * [Vytvoření plně kvalifikovaného názvu domény (FQDN) na webu Azure Portal](portal-create-fqdn.md)
 
-## <a name="containers"></a>Kontejnery
+## <a name="containers"></a>Containers
 * [Virtuální počítače a kontejnery v Azure](containers.md)
 * [Úvod do služby Azure Container Service](../../container-service/container-service-intro.md)
 * [Nasazení clusteru Azure Container Service](../../container-service/dcos-swarm/container-service-deployment.md)

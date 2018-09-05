@@ -1,26 +1,21 @@
 ---
 title: Vytvoření pracovních postupů schvalování pro zpracování požadavků na seznam adresátů – Azure Logic Apps | Microsoft Docs
-description: V tomto kurzu se dozvíte, jak vytvořit automatizované pracovní postupy schvalování pro zpracování přihlašování do seznamu adresátů pomocí Azure Logic Apps.
-author: ecfan
-manager: jeconnoc
-editor: ''
+description: Kurz – Vytváření automatizovaných pracovních postupů schvalování pro zpracování odběru seznamu adresátů pomocí Azure Logic Apps
 services: logic-apps
-documentationcenter: ''
-ms.assetid: ''
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
-ms.author: LADocs; estfan
-ms.openlocfilehash: e31be6ac24b7b194ab77856cb7376f9431a79f24
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 4ac5861dabbc473099886b4f099824cde60f38b9
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35300670"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43122865"
 ---
 # <a name="manage-mailing-list-requests-with-a-logic-app"></a>Správa požadavků na seznam adresátů s využitím aplikace logiky
 

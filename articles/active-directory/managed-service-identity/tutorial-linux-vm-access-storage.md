@@ -14,23 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/09/2018
 ms.author: daveba
-ms.openlocfilehash: d4daccfdcb2bc11831e960aa20533e32801db946
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 5117444b6312d96f87f9e1edf8ce26d0360417ef
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049333"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42885747"
 ---
 # <a name="tutorial-use-a-linux-vms-managed-identity-to-access-azure-storage"></a>Kurz: Použití spravované identity virtuálního počítače s Linuxem pro přístup k Azure Storage 
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-
-V tomto kurzu se dozvíte, jak vytvořit spravovanou identitu virtuálního počítače s Linuxem a použít ji pro přístup ke službě Azure Storage. Získáte informace o těchto tématech:
+V tomto kurzu se dozvíte, jak pomocí identity přiřazené systémem pro virtuální počítač s Linuxem získat přístup ke službě Azure Storage. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
-> * Vytvoření virtuálního počítače s Linuxem v nové skupině prostředků
-> * Povolení spravované identity na virtuálním počítači s Linuxem
+> * vytvořit účet úložiště
 > * Vytvoření kontejneru objektů blob v účtu úložiště
 > * Udělení přístupu spravované identitě virtuálního počítače s Linuxem ke kontejneru Azure Storage
 > * Získání přístupového tokenu a jeho použití k volání Azure Storage
@@ -40,41 +38,20 @@ V tomto kurzu se dozvíte, jak vytvořit spravovanou identitu virtuálního poč
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com) před tím, než budete pokračovat.
+[!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
-[!INCLUDE [msi-tut-prereqs](~/includes/active-directory-msi-tut-prereqs.md)]
+[!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
+
+- [Přihlášení k webu Azure Portal](https://portal.azure.com)
+
+- [Vytvoření virtuálního počítače s Linuxem](/azure/virtual-machines/linux/quick-create-portal)
+
+- [Povolení identity přiřazené systémem pro váš virtuální počítač](/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm#enable-system-assigned-identity-on-an-existing-vm)
 
 Ukázkové skripty rozhraní příkazového řádku v tomto kurzu můžete spustit dvěma způsoby:
 
 - Použijte [Azure Cloud Shell](~/articles/cloud-shell/overview.md) buď přímo z webu Azure Portal, nebo přes tlačítko **Vyzkoušet** umístěné v pravém horním rohu každého bloku kódu.
 - Pokud upřednostňujete práci v místní konzole rozhraní příkazového řádku, [nainstalujte nejnovější verzi CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.23 nebo novější).
-
-## <a name="sign-in-to-azure"></a>Přihlášení k Azure
-
-Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
-
-## <a name="create-a-linux-virtual-machine-in-a-new-resource-group"></a>Vytvoření virtuálního počítače s Linuxem v nové skupině prostředků
-
-V této části vytvoříte virtuální počítač s Linuxem, kterému později udělíte spravovanou identitu.
-
-1. V levém horním rohu webu Azure Portal vyberte tlačítko **Nový**.
-2. Vyberte **Compute** a potom vyberte **Ubuntu Server 16.04 LTS**.
-3. Zadejte informace o virtuálním počítači. V poli **Typ ověřování** vyberte **Veřejný klíč SSH** nebo **Heslo**. Vytvořené přihlašovací údaje umožňují přihlásit se k virtuálnímu počítači.
-
-   ![Podokno základních údajů při vytvoření virtuálního počítače](media/msi-tutorial-linux-vm-access-arm/msi-linux-vm.png)
-
-4. V seznamu **Předplatné** vyberte předplatné virtuálního počítače.
-5. Pokud chcete vybrat novou skupinu prostředků, ve které chcete vytvořit virtuální počítač, vyberte **Skupina prostředků** > **Vytvořit nový**. Jakmile budete hotovi, vyberte **OK**.
-6. Vyberte velikost virtuálního počítače. Pokud chcete zobrazit další velikosti, vyberte **Zobrazit všechny** nebo změňte filtr **Podporovaný typ disku**. V podokně nastavení nechte výchozí hodnoty a vyberte **OK**.
-
-## <a name="enable-managed-identity-on-your-vm"></a>Povolení spravované identity na virtuálním počítači
-
-Spravovaná identita virtuálního počítače umožňuje získat z Azure AD přístupové tokeny bez nutnosti vložení přihlašovacích údajů do kódu. Po povolení spravované identity na virtuálním počítači na webu Azure Portal se stanou dvě věci: virtuální počítač se zaregistruje v Azure AD, aby se vytvořila jeho spravovaná identita, a tato identita se nakonfiguruje na virtuálním počítači.
-
-1. Přejděte ke skupině prostředků nového virtuálního počítače a vyberte virtuální počítač, který jste vytvořili v předchozím kroku.
-2. V kategorii **Nastavení** klikněte na **Konfigurace**.
-3. Pokud chcete spravovanou identitu povolit, vyberte **Ano**.
-4. Klikněte na **Uložit**, aby se konfigurace použila. 
 
 ## <a name="create-a-storage-account"></a>vytvořit účet úložiště 
 

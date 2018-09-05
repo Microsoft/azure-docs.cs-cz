@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 06/21/2018
+ms.date: 08/27/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 07768dbc8beb7a851d442e9e0c3e7538bf12b766
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: ae2d312feb0fcefab85bcbbd2db7ac46c328213f
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36937933"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43104978"
 ---
 # <a name="what-is-azure-analysis-services"></a>Co je služba Azure Analysis Services?
 
@@ -79,23 +79,23 @@ Služba Azure Analysis Services je podporována ve všech zemích/oblastech po c
 |Oblast  | Podporované plány | Repliky dotazů (pouze plány Standard) |
 |---------|---------|:---------:|
 |Brazílie – jih     |    B1, B2, S0, S1, S2, S4, D1     |     1    |
-|Střední Kanada    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
-|Východ USA     |     B1, B2, S0, S1, S2, S4, D1    |    1     |
-|Východní USA 2     |     B1, B2, S0, S1, S2, S4, S8\*, S9\*, D1     |    7     |
+|Kanada – střed    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
+|USA – východ     |     B1, B2, S0, S1, S2, S4, D1    |    1     |
+|Východní USA 2     |     B1, B2, S0, S1, S2, S4, D1  <br>S8, S9   |    7<br>1    |
 |Střed USA – sever     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
-|Střed USA     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
+|USA – střed     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |Střed USA – jih     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |Západní střed USA   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
-|Západní USA     |    B1, B2, S0, S1, S2, S4, S8\*, S9\*, D1     |    7     |
-|Západní USA 2    |    B1, B2, S0, S1, S2, S4, S8\*, S9\*, D1     |    3     |
+|USA – západ     |    B1, B2, S0, S1, S2, S4, D1  <br>S8, S9   |    7<br>2  |
+|Západní USA 2    |    B1, B2, S0, S1, S2, S4, D1   <br>S8, S9  |    3<br>1     |
 
 ### <a name="europe"></a>Evropa
 
 |Oblast  | Podporované plány | Repliky dotazů (pouze plány Standard) |
 |---------|---------|:---------:|
 |Severní Evropa     |    B1, B2, S0, S1, S2, S4, D1      |    7     |
-|Spojené království – jih   |    B1, B2, S0, S1, S2, S4, D1      |     1    |
-|Západní Evropa     |    B1, B2, S0, S1, S2, S4, S8\*, S9\*, D1      |    7     |
+|Velká Británie – jih   |    B1, B2, S0, S1, S2, S4, D1      |     1    |
+|Západní Evropa     |    B1, B2, S0, S1, S2, S4, D1   <br>S8, S9    |    7<br>1     |
 
 ### <a name="asia-pacific"></a>Asie a Tichomoří 
 
@@ -103,10 +103,8 @@ Služba Azure Analysis Services je podporována ve všech zemích/oblastech po c
 |---------|---------|:---------:|
 |Austrálie – jihovýchod     | B1, B2, S0, S1, S2, S4, D1       |    1     |
 |Japonsko – východ  |   B1, B2, S0, S1, S2, S4, D1       |    1     |
-|Jihovýchodní Asie     |     B1, B2, S0, S1, S2, S4, S8\*, S9\*, D1     |   1      |
+|Jihovýchodní Asie     |     B1, B2, S0, S1, S2, S4, S8, S9, D1     |   1      |
 |Indie – západ     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
-
-\* Plány S8 a S9 na úrovni Standard podporují jednu repliku dotazu.
 
 ## <a name="scale-to-your-needs"></a>Škálování podle vašich potřeb
 

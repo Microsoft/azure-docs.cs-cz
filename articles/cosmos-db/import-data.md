@@ -12,18 +12,19 @@ ms.topic: tutorial
 ms.date: 03/30/2018
 ms.author: dech
 ms.custom: mvc
-ms.openlocfilehash: 43092a12535ed18a5c91f924e3fdf72ad6d47d7b
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: ea8bb1db53deaa546f4174ddc04d9a270aa96d9a
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "41919748"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43187779"
 ---
-# <a name="azure-cosmos-db-data-migration-tool"></a>Azure Cosmos DB: Nástroj pro migraci dat
+# <a name="use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>Migrace dat do služby Azure Cosmos DB pomocí nástroje pro migraci dat 
 
 Tento kurz obsahuje pokyny k použití nástroje pro migraci dat Azure Cosmos DB, který dokáže importovat data z různých zdrojů do kolekcí a tabulek Azure Cosmos DB. Můžete importovat ze souborů JSON, CSV, SQL, MongoDB, služby Azure Table Storage, Amazon DynamoDB a dokonce i z kolekcí rozhraní SQL API služby Azure Cosmos DB a pro použití se službou Azure Cosmos DB tato data migrujete do kolekcí a tabulek. Nástroj pro migraci dat můžete použít také při migraci z kolekce s jedním oddílem do kolekce s více oddíly pro rozhraní SQL API.
 
 Jaké rozhraní API budete se službou Azure Cosmos DB používat? 
+
 * **[SQL API](documentdb-introduction.md)** – Při importu dat můžete využít jakoukoli z možností zdroje, které nástroj pro migraci dat poskytuje.
 * **[Table API](table-introduction.md)** – K importu dat můžete využít nástroj pro migraci dat nebo AzCopy. Další informace najdete v tématu [Import dat pro použití s rozhraním Table API služby Azure Cosmos DB](table-import.md).
 * **[MongoDB API](mongodb-introduction.md)** – Nástroj pro migraci dat v současné době nepodporuje rozhraní MongoDB API služby Azure Cosmos DB jako zdroj ani jako cíl. Pokud chcete migrovat data do nebo z kolekcí rozhraní MongoDB API ve službě Azure Cosmos DB, přečtěte si pokyny v tématu [Azure Cosmos DB: Migrace dat pro rozhraní MongoDB API](mongodb-migrate.md). Nástroj pro migraci dat můžete stále použít k exportu dat z MongoDB do kolekcí rozhraní SQL API služby Azure Cosmos DB pro použití s rozhraním SQL API. 
@@ -77,8 +78,8 @@ Po instalaci nástroje je čas importovat data. Jaký druh dat chcete importovat
 * [Objekt blob](#BlobImport)
 * [Kolekce Azure Cosmos DB](#SQLSource)
 * [HBase](#HBaseSource)
-* [Hromadný import Azure Cosmos DB](#SQLBulkImport)
-* [Sekvenční import záznamů Azure Cosmos DB](#DocumentDSeqTarget)
+* [Hromadný import Azure Cosmos DB](#SQLBulkTarget)
+* [Sekvenční import záznamů Azure Cosmos DB](#SQLSeqTarget)
 
 
 ## <a id="JSON"></a>Import souborů JSON

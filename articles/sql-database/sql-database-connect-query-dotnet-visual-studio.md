@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: ceb7d64ddd1923cdd22428df6cbc86676b685b4f
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 1e56d3160e42e3f722f3f9ccb8a6de82ac3bfb83
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42147089"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43186054"
 ---
 # <a name="use-net-c-with-visual-studio-to-connect-and-query-an-azure-sql-database"></a>Použití .NET (jazyk C#) a sady Visual Studio k připojení k databázi SQL Azure a jejímu dotazování
 
@@ -55,7 +55,7 @@ Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následují
 3. Vyberte **Konzolová aplikace** a jako název projektu zadejte *sqltest*.
 4. Kliknutím na **OK** vytvořte nový projekt a otevřete ho v sadě Visual Studio.
 4. V Průzkumníku řešení klikněte pravým tlačítkem na **sqltest** a klikněte na **Správa balíčků NuGet**. 
-5. V části **Procházet** vyhledejte a po nalezení vyberte ```System.Data.SqlClient```.
+5. Na kartě **Procházet** vyhledejte a po nalezení vyberte ```System.Data.SqlClient```.
 6. Na stránce **System.Data.SqlClient** klikněte na **Nainstalovat**.
 7. Po dokončení instalace zkontrolujte změny a potom kliknutím na **OK** zavřete okno **Náhled**. 
 8. Pokud se zobrazí okno **Souhlas s podmínkami licence**, klikněte na **Souhlasím**.

@@ -11,16 +11,16 @@ ms.topic: tutorial
 ms.date: 11/15/2017
 ms.author: govindk
 ms.custom: mvc
-ms.openlocfilehash: b53328875f2242faba369dea0df655bc78117009
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 55a6fec1b6ac018b4b24c0d27dcfdd5812455800
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "41918179"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43189672"
 ---
-# <a name="azure-cosmos-db-import-cassandra-data"></a>Azure Cosmos DB: Import dat Cassandra
+# <a name="migrate-your-data-to-azure-cosmos-db-cassandra-api-account"></a>Migrace dat do účtu rozhraní API Cassandra služby Azure Cosmos DB
 
-Tento kurz obsahuje pokyny pro import dat Cassandra do Azure Cosmos DB s využitím příkazu COPY jazyka CQL (Cassandra Query Language). 
+Tento kurz obsahuje pokyny pro import dat Cassandra do služby Azure Cosmos DB s využitím příkazu COPY jazyka CQL (Cassandra Query Language). 
 
 Tento kurz se zabývá následujícími úkony:
 
@@ -31,11 +31,13 @@ Tento kurz se zabývá následujícími úkony:
 
 # <a name="prerequisites"></a>Požadavky
 
-* Instalace [Apache Cassandra](http://cassandra.apache.org/download/) a ověření, že je k dispozici *cqlsh*
-* Zvýšená propustnost: Doba trvání migrace dat závisí na propustnosti, kterou pro tabulky zřídíte. V případě rozsáhlejších migrací dat nezapomeňte propustnost zvýšit. Po dokončení migrace propustnost snižte, abyste dosáhli nižších nákladů. Další informace o zvýšení propustnosti na webu [Azure Portal](https://portal.azure.com) najdete v tématu věnovaném [nastavení propustnosti pro kontejnery Azure Cosmos DB](set-throughput.md).
+* Instalace [Apache Cassandra](http://cassandra.apache.org/download/) a ověření, že je k dispozici *cqlsh*  
+
+* Zvýšená propustnost: Doba trvání migrace dat závisí na propustnosti, kterou pro tabulky zřídíte. V případě rozsáhlejších migrací dat nezapomeňte propustnost zvýšit. Po dokončení migrace propustnost snižte, abyste dosáhli nižších nákladů. Další informace o zvýšení propustnosti na webu [Azure Portal](https://portal.azure.com) najdete v tématu věnovaném [nastavení propustnosti pro kontejnery Azure Cosmos DB](set-throughput.md).  
+
 * Povolený protokol SSL: Azure Cosmos DB má striktní bezpečnostní požadavky a standardy. Při práci se svým účtem nezapomeňte povolit SSL. Když použijete CQL s protokolem SSH, máte možnost zadat informace SSL. 
 
-## <a name="find-your-connection-string"></a>Vyhledání připojovacího řetězce
+## <a name="get-your-connection-string"></a>Získání připojovacího řetězce
 
 1. Úplně vlevo na webu [Azure Portal](https://portal.azure.com) klikněte na **Azure Cosmos DB**.
 
@@ -45,14 +47,14 @@ Tento kurz se zabývá následujícími úkony:
 
     ![Stránka připojovacího řetězce](./media/cassandra-import-data/keys.png)
 
-## <a name="use-cqlsh-copy"></a>Použití příkazu cqlsh COPY
+## <a name="migrate-data-by-using-cqlsh-copy"></a>Migrace dat pomocí příkazu cqlsh COPY
 
 Při importu dat Cassandra do Azure Cosmos DB pro použití s rozhraním API Cassandra použijte následující pokyny:
 
 1. Přihlaste se k cqhsh pomocí připojovacích informací z portálu.
 2. Pomocí [příkazu CQL COPY](http://cassandra.apache.org/doc/latest/tools/cqlsh.html#cqlsh) zkopírujte místní data do koncového bodu rozhraní API Apache Cassandra. Ujistěte se, zdroj a cíl jsou ve stejném datovém centru, abyste minimalizovali případné problémy s latencí.
 
-### <a name="guide-for-moving-data-with-cqlsh"></a>Pokyny pro přesun dat s využitím cqlsh
+### <a name="steps-to-move-data-with-cqlsh"></a>Postup přesunu dat pomocí cqlsh
 
 1. Předem vytvořte a škálujte tabulku:
     * Ve výchozím nastavení Azure Cosmos DB zřídí novou tabulku rozhraní API Cassandra s 1 000 jednotek žádostí za sekundu (RU/s) (při vytvoření na základě CQL se zřídí s 400 RU/s). Před zahájením migrace pomocí cqlsh, předem vytvoříte všechny tabulky z prostředí [Azure Portal](https://portal.azure.com) nebo cqlsh. 
@@ -80,11 +82,11 @@ Při importu dat Cassandra do Azure Cosmos DB pro použití s rozhraním API Cas
 
 5. Spusťte finální příkaz pro migraci. Spuštění tohoto příkazu se předpokládá, jste spustili cqlsh s využitím informací připojovacího řetězce.
 
-   ```
+   ```bash
    COPY exampleks.tablename FROM filefolderx/*.csv 
    ```
 
-## <a name="use-spark-to-import-data"></a>Použití Sparku pro import dat
+## <a name="migrate-data-by-using-spark"></a>Migrace dat pomocí Sparku
 
 Pro data umístěná v existujícím clusteru ve virtuálních počítačích Azure představuje import dat pomocí Sparku také jednu z možných variant. Vyžaduje, aby byl Spark nastavený jako prostředník pro jednorázový nebo pravidelný příjem dat. 
 

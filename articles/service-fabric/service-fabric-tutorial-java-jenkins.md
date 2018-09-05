@@ -12,15 +12,15 @@ ms.devlang: java
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/26/2018
+ms.date: 08/27/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 925a1af53438e21282e65418edc9ea365ad6a653
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b8c114ec3fe9b27d0318bf11a8b1fa8e3ce5f1c3
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39432435"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43124976"
 ---
 # <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>Kurz: Konfigurace prostředí Jenkins pro povolení CI/CD pro aplikaci Java na platformě Service Fabric
 
@@ -53,10 +53,10 @@ Jenkinse můžete nastavit uvnitř clusteru Service Fabric nebo mimo něj. Násl
 
 1. Stáhněte si image kontejneru s Jenkinsem pro Service Fabric: ``docker pull rapatchi/jenkins:v10``. Tato image je součástí instalace modulu plug-in Jenkinse pro Service Fabric.
 
-1. Spusťte image kontejneru s připojeným umístěním, kde se na místním počítači nacházejí vaše certifikáty.
+1. Spusťte image kontejneru s umístěním, kde jsou na připojeném místním počítači uložené vaše certifikáty Azure.
 
     ```bash
-    docker run -itd -p 8080:8080 -v /Users/suhuruli/Documents/Work/Samples/service-fabric-java-quickstart/AzureCluster:/tmp/myCerts rapatchi/jenkins:v10
+    docker run -itd -p 8080:8080 -v /service-fabric-java-quickstart/AzureCluster rapatchi/jenkins:v10
     ```
 
 1. Získejte ID instance image kontejneru. Pomocí příkazu ``docker ps –a`` můžete vypsat všechny kontejnery Dockeru.
@@ -86,7 +86,7 @@ Jenkinse můžete nastavit uvnitř clusteru Service Fabric nebo mimo něj. Násl
 
 1. Nejprve vytvořte úložiště, které můžete použít k hostování projektu Voting na GitHubu, pokud žádné nemáte. Ve zbývající části tohoto kurzu má úložiště název **dev_test**.
 
-1. Na řídicím panelu Jenkinse vytvořte **novou položku**.
+1. Na řídicím panelu Jenkinse na adrese ``http://<HOST-IP>:8080`` vytvořte **novou položku**.
 
 1. Zadejte název položky (třeba **MyJob**). Vyberte **free-style project** (volný styl projektu) a klikněte na **OK**.
 
@@ -123,6 +123,8 @@ Jenkinse můžete nastavit uvnitř clusteru Service Fabric nebo mimo něj. Násl
     > [!NOTE]
     > Zde uvedený cluster může být stejný jako cluster, který hostuje aplikaci Jenkins typu kontejner, pokud k nasazení image kontejneru Jenkins používáte Service Fabric.
     >
+
+1. Klikněte na **Uložit**.
 
 ## <a name="update-your-existing-application"></a>Aktualizace existující aplikace
 

@@ -3,18 +3,18 @@ title: Vyhledávání s využitím Azure Maps | Microsoft Docs
 description: Vyhledání okolního bodu zájmu s využitím Azure Maps
 author: dsk-2015
 ms.author: dkshir
-ms.date: 05/07/2018
+ms.date: 08/23/2018
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: ffc4b7625a6c43f8e2801313c61f14c785a3ec5f
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: e30d84c70f786a5bea25073c70a29b63c9a00ae9
+ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38988870"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42917658"
 ---
 # <a name="search-nearby-points-of-interest-using-azure-maps"></a>Hledání okolních bodů zájmu s využitím Azure Maps
 
@@ -81,8 +81,9 @@ Rozhraní API pro mapové ovládací prvky je praktická klientská knihovna, kt
         <meta name="viewport" content="width=device-width, user-scalable=no" />
         <title>Map Search</title>
 
-        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=1.0" type="text/css" />
-        <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=1.0"></script>
+        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=1" type="text/css" /> 
+        <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=1"></script> 
+        <script src="https://atlas.microsoft.com/sdk/js/atlas-service.min.js?api-version=1"></script> 
 
         <style>
             html,
@@ -131,10 +132,12 @@ Rozhraní API pro mapové ovládací prvky je praktická klientská knihovna, kt
 
 ## <a name="add-search-capabilities"></a>Přidání možností vyhledávání
 
-Tato část ukazuje, jak pomocí rozhraní API vyhledávací služby Maps vyhledat na mapě bod zájmu. Jedná se o rozhraní RESTful API navržené pro vývojáře, kterým umožňuje hledat adresy, body zájmu a další geografické informace. Služba Search přiřazuje k zadané adrese informace o zeměpisné délce a šířce. 
+Tato část ukazuje, jak pomocí rozhraní API vyhledávací služby Maps vyhledat na mapě bod zájmu. Jedná se o rozhraní RESTful API navržené pro vývojáře, kterým umožňuje hledat adresy, body zájmu a další geografické informace. Služba Search přiřazuje k zadané adrese informace o zeměpisné délce a šířce. **Modul služeb** popsaný dál slouží k vyhledání polohy pomocí rozhraní API Maps Search.
 
-1. Přidejte do své mapy novou vrstvu, na které se zobrazí výsledky hledání. Přidejte následující kód JavaScriptu do bloku *script* za kód, který inicializuje mapu. 
+### <a name="service-module"></a>Modul služeb
 
+1. Přidejte do své mapy novou vrstvu, na které se zobrazí výsledky hledání. Přidejte následující kód JavaScriptu do bloku skriptu za kód, který inicializuje mapu. 
+    
     ```JavaScript
     // Initialize the pin layer for search results to the map
     var searchLayerName = "search-results";
@@ -145,69 +148,50 @@ Tato část ukazuje, jak pomocí rozhraní API vyhledávací služby Maps vyhled
     });
     ```
 
-2. Vytvořte požadavek [XMLHttpRequest](https://xhr.spec.whatwg.org/) a přidejte obslužnou rutinu události, která bude parsovat odpověď JSON odeslanou vyhledávací službou Maps. Tento fragment kódu vytvoří obslužnou rutinu události, která pro každé umístění vrácené v proměnné `searchPins` shromáždí informace o adresách, názvech a zeměpisné délce a šířce. Nakonec přidá tuto kolekci bodů polohy do ovládacího prvku `map` jako špendlíky. 
+2. Pokud chcete vytvořit instanci služby klienta, přidejte do bloku skriptu za kód, který inicializuje mapu, následující kód JavaScriptu.
 
     ```JavaScript
-    // Perform a request to the search service and create a pin on the map for each result
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        var searchPins = [];
-
-        if (this.readyState === 4 && this.status === 200) {
-            var response = JSON.parse(this.responseText);
-
-            var poiResults = response.results.filter((result) => { return result.type === "POI" }) || [];
-
-            searchPins = poiResults.map((poiResult) => {
-                var poiPosition = [poiResult.position.lon, poiResult.position.lat];
-                return new atlas.data.Feature(new atlas.data.Point(poiPosition), {
-                    name: poiResult.poi.name,
-                    address: poiResult.address.freeformAddress,
-                    position: poiResult.position.lat + ", " + poiResult.position.lon
-                });
-            });
-
-            map.addPins(searchPins, {
-                name: searchLayerName
-            });
-
-            var lons = searchPins.map((pin) => { return pin.geometry.coordinates[0] });
-            var lats = searchPins.map((pin) => { return pin.geometry.coordinates[1] });
-
-            var swLon = Math.min.apply(null, lons);
-            var swLat = Math.min.apply(null, lats);
-            var neLon = Math.max.apply(null, lons);
-            var neLat = Math.max.apply(null, lats);
-
-            map.setCameraBounds({
-                bounds: [swLon, swLat, neLon, neLat],
-                padding: 50
-            });
-        }
-    };
+    var client = new atlas.service.Client(subscriptionKey);
     ```
 
-3. Přidejte do bloku *script* následující kód, který sestaví dotaz a odešle požadavek XMLHttpRequest do vyhledávací služby Maps:
+3. Přidejte následující blok skriptu k sestavení dotazu. Používá službu Fuzzy Search, což je základní rozhraní API služby Search Service. Služba Fuzzy Search zpracovává většinu přibližných vstupů, například kombinaci  tokenů adresy a bodu zájmu (POI). Vyhledá nejbližší čerpací stanice v zadaném okruhu. Odpověď se pak parsuje do formátu GeoJSON a převede do podoby bodů, které se přidají do mapy jako špendlíky. Poslední část skriptu přidá meze fotoaparátu pro mapu pomocí vlastnosti [setCameraBounds](https://docs.microsoft.com/javascript/api/azure-maps-control/models.cameraboundsoptions?view=azure-iot-typescript-latest) mapy.
 
     ```JavaScript
-    var url = "https://atlas.microsoft.com/search/fuzzy/json?";
-    url += "api-version=1.0";
-    url += "&query=gasoline%20station";
-    url += "&subscription-key=" + MapsAccountKey;
-    url += "&lat=47.6292";
-    url += "&lon=-122.2337";
-    url += "&radius=100000";
-
-    xhttp.open("GET", url, true);
-    xhttp.send();
-    ``` 
-    Tento fragment kódu používá základní rozhraní API služby Search Service pro vyhledávání s názvem **Fuzzy Search**. Zpracovává většinu částečných shod vstupů, včetně jakékoli kombinace adres nebo tokenů bodů zájmu (POI). Vyhledá nejbližší **čerpací stanice** v zadaném okruhu od zadaných souřadnic zeměpisné délky a šířky. Pomocí primárního klíče vašeho účtu, který jste zadali dříve do ukázkového souboru, provede volání Maps. Pro nalezené polohy vrátí výsledky jako páry zeměpisné šířky a délky. 
-    
+    client.search.getSearchFuzzy("gasoline station", {
+     lat: 47.6292,
+     lon: -122.2337,
+     radius: 100000
+    }).then(response => {
+       // Parse the response into GeoJSON 
+       var geojsonResponse = new atlas.service.geojson.GeoJsonSearchResponse(response); 
+ 
+       // Create the point features that will be added to the map as pins 
+       var searchPins = geojsonResponse.getGeoJsonResults().features.map(poiResult => { 
+           var poiPosition = [poiResult.properties.position.lon, poiResult.properties.position.lat]; 
+           return new atlas.data.Feature(new atlas.data.Point(poiPosition), { 
+                name: poiResult.properties.poi.name, 
+                address: poiResult.properties.address.freeformAddress, 
+                position: poiPosition[1] + ", " + poiPosition[0] 
+           }); 
+       }); 
+ 
+       // Add pins to the map for each POI 
+       map.addPins(searchPins, { 
+           name: searchLayerName 
+       }); 
+ 
+       // Set the camera bounds 
+       map.setCameraBounds({ 
+           bounds: geojsonResponse.getGeoJsonResults().bbox, 
+           padding: 50 
+       ); 
+    }); 
+    ```
 4. Uložte soubor **MapSearch.html** a aktualizujte prohlížeč. Teď by se měla zobrazit mapa, v jejímž středu je Seattle a modré špendlíky označují umístění čerpacích stanic v příslušné oblasti. 
 
    ![Zobrazení mapy s výsledky hledání](./media/tutorial-search-location/pins-map.png)
 
-5. Pokud chcete zobrazit nezpracovaná data, která mapa vykresluje, můžete do svého prohlížeče zadat požadavek XMLHTTPRequest, který jste vytvořili v souboru. Nahraďte \<your account key\> svým primárním klíčem. 
+5. Můžete zobrazit nezpracovaná data, která mapa vykresluje, zadáním následujícího požadavku HTTP v prohlížeči. Nahraďte \<your account key\> svým primárním klíčem. 
 
    ```http
    https://atlas.microsoft.com/search/fuzzy/json?api-version=1.0&query=gasoline%20station&subscription-key=<your account key>&lat=47.6292&lon=-122.2337&radius=100000
@@ -237,7 +221,7 @@ Mapa, kterou jsme vytvořili, zatím z výsledků hledání používá pouze dat
         popupContentElement.appendChild(popupAddressElement);
 
         var popupPositionElement = document.createElement("div");
-        popupPositionElement.innerText = e.features[0].properties.name;
+        popupPositionElement.innerText = e.features[0].properties.position;
         popupContentElement.appendChild(popupPositionElement);
 
         popup.setPopupOptions({

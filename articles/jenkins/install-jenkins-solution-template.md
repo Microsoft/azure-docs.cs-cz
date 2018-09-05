@@ -1,19 +1,19 @@
 ---
 title: Vytvoření serveru Jenkins v Azure
 description: Instalace Jenkinse na virtuálním počítači Azure s Linuxem ze šablony řešení Jenkins a sestavení ukázkové aplikace v Javě.
-ms.topic: quickstart
-ms.author: tarcher
+ms.service: jenkins
+keywords: jenkins, azure, devops, portal, virtual machine, solution template
 author: tomarcher
-manager: jpconnock
-ms.service: devops
-ms.custom: jenkins
-ms.date: 07/31/2018
-ms.openlocfilehash: af1082d9b7b350f1845d6c8e22108b9238a40f28
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+manager: jeconnoc
+ms.author: tarcher
+ms.topic: quickstart
+ms.date: 6/7/2017
+ms.openlocfilehash: 92a0583ad01c4dc9263988f6ef48c95c380c9289
+ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390424"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43086570"
 ---
 # <a name="create-a-jenkins-server-on-an-azure-linux-vm-from-the-azure-portal"></a>Vytvoření serveru Jenkins na virtuálním počítači Azure s Linuxem pomocí webu Azure Portal
 
@@ -75,7 +75,7 @@ Vyberte kartu **Build** (Sestavení) a pak vyberte **Add build step** (Přidat k
 
 ![Použití obálky Gradle k sestavení](./media/install-jenkins-solution-template/jenkins-job-gradle-config.png) 
 
-Vyberte **Advanced...** (Upřesnit...) a pak zadejte `complete` do pole **Root Build script** (Kořenový skript sestavení). Vyberte **Uložit**.
+Vyberte **Advanced** (Upřesnit) a pak zadejte `complete` do pole **Root Build script** (Kořenový skript sestavení). Vyberte **Uložit**.
 
 ![Nastavení upřesňujících nastavení v kroku sestavení obálky Gradle](./media/install-jenkins-solution-template/jenkins-job-gradle-advances.png) 
 
