@@ -1,9 +1,9 @@
 ---
-title: Fronty nedoručených zpráv služby Service Bus | Microsoft Docs
+title: Fronty nedoručených zpráv služby Service Bus | Dokumentace Microsoftu
 description: Přehled fronty nedoručených zpráv Azure Service Bus
 services: service-bus-messaging
 documentationcenter: .net
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: 68b2aa38-dba7-491a-9c26-0289bc15d397
@@ -13,78 +13,78 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/31/2018
-ms.author: sethm
-ms.openlocfilehash: a82d70e7bf776bf470d14e7f061774ccbb136316
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.author: spelluru
+ms.openlocfilehash: fcdda123ff63c0d350945d3e4929d2a39a38fcb3
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/01/2018
-ms.locfileid: "28925658"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43699864"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>Přehled fronty nedoručených zpráv služby Service Bus
 
-Fronty Azure Service Bus a odběry tématu poskytují sekundární dílčí fronty, názvem *frontu nedoručených zpráv* (DLQ se). Frontu nedoručených zpráv nemusí být explicitně vytvořen a nelze odstranit nebo jinak spravované nezávislé hlavní entity.
+Fronty Azure Service Bus a odběrů tématu poskytují sekundární dílčí fronty, s názvem *fronty nedoručených zpráv* (DLQ). Fronty nedoručených zpráv nemusí být explicitně vytvořeny a nelze odstranit nebo jinak spravovat nezávisle na hlavní entity.
 
-Tento článek popisuje fronty nedoručených zpráv ve sběrnici Service Bus. Hodně diskuse je zobrazená ve [Ukázka fronty nedoručených zpráv](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/DeadletterQueue) na Githubu.
+Tento článek popisuje fronty nedoručených zpráv ve službě Service Bus. Velká část diskuse je znázorněn ve [Ukázka fronty nedoručených zpráv](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/DeadletterQueue) na Githubu.
  
-## <a name="the-dead-letter-queue"></a>Frontu nedoručených zpráv
+## <a name="the-dead-letter-queue"></a>Fronty nedoručených zpráv
 
-Účelem frontu nedoručených zpráv je pro uložení zpráv, které nelze doručit do libovolné receiver nebo zprávy, které nebylo možné zpracovat. Zprávy můžete pak odebrán z DLQ se a prověřovány. Aplikace může pomocí operátoru opravit problémy a znovu odeslat zprávu protokolu skutečnost, že došlo k chybě a proveďte opravné akce. 
+Účelem fronty nedoručených zpráv je pro uložení zpráv, které nelze doručit žádnému příjemci nebo zprávy, které nebylo možné zpracovat. Zprávy můžete pak odebrána z DLQ a prozkoumat. Aplikace může s pomocí operátoru opravit problémy a znovu odeslat zprávu protokolu skutečnost, že došlo k chybě a provést opravné akce. 
 
-Z rozhraní API a protokol perspektivy DLQ se je ve většině případů podobně jako jakékoli jiné frontě s tím rozdílem, že zprávy lze odeslat pouze prostřednictvím nedoručených zpráv operace nadřazená entita. Kromě toho není dodržen time to live, a nemůžete nedoručených zpráv ze DLQ se. Frontu nedoručených zpráv plně podporuje funkce Náhled zámku doručení a transakční operace.
+Z hlediska rozhraní API a protokol DLQ je ve většině případů podobně jako jakékoli jiné frontě, s tím rozdílem, že zprávy lze předat vždy pouze prostřednictvím operace onta nedoručených zpráv nadřazené entity. Kromě toho není dodržena time-to-live, a nemůžete zobrazí se zpráva DLQ nedoručených zpráv. Fronty nedoručených zpráv plně podporuje transakční operace a doručování neboli peek-lock.
 
-Všimněte si, že žádné automatické čištění DLQ se. Zprávy zůstávají v DLQ se, dokud je explicitně načíst z DLQ se a volání [Complete()](/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync) na nedoručených zpráv.
+Všimněte si, že neexistuje žádné automatické čištění DLQ se. Zprávy zůstávají ve DLQ, dokud je explicitně načíst z DLQ a volání [Complete()](/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync) na nedoručených zpráv.
 
-## <a name="moving-messages-to-the-dlq"></a>Přesunutí zprávy a pokuste se DLQ se
+## <a name="moving-messages-to-the-dlq"></a>Přesun zpráv DLQ
 
-Existuje několik aktivit v Service Bus, které způsobí zprávy a pokuste se získat nabídnutých do DLQ se z v rámci samotné modul zasílání zpráv. Aplikace můžete také explicitně přesunout zprávy DLQ se. 
+Existuje několik aktivit ve službě Service Bus, které způsobují zprávy k získání nahrány do DLQ z v rámci samotný modul pro zasílání zpráv. Aplikace můžete také explicitně přesunout zprávy DLQ se. 
 
-Získá během pohybu zprostředkovatelem zprávy, dvě vlastnosti jsou přidány do zprávy jako zprostředkovatel volá jeho vnitřní verzi [nedoručených zpráv](/dotnet/api/microsoft.azure.servicebus.queueclient.deadletterasync) na zprávu: `DeadLetterReason` a `DeadLetterErrorDescription`.
+Získá zprávu přesunu zprostředkovatelem, dvě vlastnosti jsou přidány do zprávy jako zprostředkovatel volá jeho vnitřní verzi [nedoručených zpráv](/dotnet/api/microsoft.azure.servicebus.queueclient.deadletterasync) metodu na zpráva: `DeadLetterReason` a `DeadLetterErrorDescription`.
 
-Aplikace můžete definovat vlastní kódy pro `DeadLetterReason` vlastnost, ale systém nastaví následující hodnoty.
+Aplikace můžete definovat vlastní kódy `DeadLetterReason` vlastnost, ale systém nastaví následující hodnoty.
 
 | Podmínka | DeadLetterReason | DeadLetterErrorDescription |
 | --- | --- | --- |
 | Vždy |HeaderSizeExceeded |Byla překročena kvóta velikosti pro tento datový proud. |
 | ! TopicDescription.<br />EnableFilteringMessagesBeforePublishing a SubscriptionDescription.<br />EnableDeadLetteringOnFilterEvaluationExceptions |exception.GetType().Name |došlo k výjimce. Zpráva |
-| EnableDeadLetteringOnMessageExpiration |TTLExpiredException |Zpráva vypršela platnost a byl mrtvých lettered. |
-| SubscriptionDescription.RequiresSession |Id relace má hodnotu null. |Relace povoleno entity neumožňuje zprávu, jejíž identifikátor relace má hodnotu null. |
+| EnableDeadLetteringOnMessageExpiration |TTLExpiredException |Zpráva vypršení platnosti a bylo dead lettered. |
+| SubscriptionDescription.RequiresSession |Id relace má hodnotu null. |Povolené relace entity nepovoluje zpráva, jejíž identifikátor relace má hodnotu null. |
 | ! fronty nedoručených zpráv |MaxTransferHopCountExceeded |Null |
-| Aplikace explicitní mrtvých písmem. |Zadaná aplikace |Zadaná aplikace |
+| Aplikace explicitní dead písmem. |Zadaná aplikace |Zadaná aplikace |
 
 ## <a name="exceeding-maxdeliverycount"></a>Překročení MaxDeliveryCount
 
-Fronty a odběry mají [QueueDescription.MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount) a [SubscriptionDescription.MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.maxdeliverycount) vlastnost; Výchozí hodnota je 10. Vždy, když byla doručena zpráva pod zámek ([ReceiveMode.PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode)), ale byl buď explicitně opuštění nebo zámek vypršela platnost, zprávy [BrokeredMessage.DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) je zvýší. Když [DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) překračuje [MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount), zpráva bude přesunuta do DLQ se, určení `MaxDeliveryCountExceeded` kód důvodu.
+Fronty a předplatná [QueueDescription.MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount) a [SubscriptionDescription.MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.maxdeliverycount) vlastnost; Výchozí hodnota je 10. Vždy, když byla zpráva doručena pod zámkem ([ReceiveMode.PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode)), ale byla buď explicitně opuštěna nebo vypršela platnost zámku, zprávy [BrokeredMessage.DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) je zvýší. Když [DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) překračuje [MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount), zpráva bude přesunuta do DLQ, určení `MaxDeliveryCountExceeded` kód důvodu.
 
-Toto chování se nedá zakázat, ale můžete nastavit [MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount) pro velmi velký počet.
+Toto chování nelze zakázat, ale můžete nastavit [MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount) na velmi velké množství.
 
-## <a name="exceeding-timetolive"></a>Exceeding TimeToLive
+## <a name="exceeding-timetolive"></a>Překročení TimeToLive
 
-Když [QueueDescription.EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription#Microsoft_ServiceBus_Messaging_QueueDescription_EnableDeadLetteringOnMessageExpiration) nebo [SubscriptionDescription.EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription#Microsoft_ServiceBus_Messaging_SubscriptionDescription_EnableDeadLetteringOnMessageExpiration) je nastavena na **true** (výchozí hodnota je **false**), kterým vyprší platnost všechny zprávy přesunou do DLQ se, určení `TTLExpiredException` kód důvodu.
+Když [QueueDescription.EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription#Microsoft_ServiceBus_Messaging_QueueDescription_EnableDeadLetteringOnMessageExpiration) nebo [SubscriptionDescription.EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription#Microsoft_ServiceBus_Messaging_SubscriptionDescription_EnableDeadLetteringOnMessageExpiration) je nastavena na **true** (výchozí hodnota je **false**), u nichž vyprší platnost všech zpráv se přesouvají na DLQ, určení `TTLExpiredException` kód důvodu.
 
-Upozorňujeme, že zprávy s vypršenou platností pouze vyprázdní a přesunuta do DLQ se, když je alespoň jeden příjemce active stahování z hlavní fronty nebo předplatného; Toto chování je záměrné.
+Upozorňujeme, že jsou zprávy s vypršenou platností pouze odstraněna a přesunout do DLQ se při přijímání změn z hlavní fronty nebo odběru; aspoň jednoho aktivního příjemce. Toto chování je záměrné.
 
-## <a name="errors-while-processing-subscription-rules"></a>Při zpracování pravidel odběru došlo k chybám
+## <a name="errors-while-processing-subscription-rules"></a>Chyby při zpracování pravidel odběru
 
-Když [SubscriptionDescription.EnableDeadLetteringOnFilterEvaluationExceptions](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription#Microsoft_ServiceBus_Messaging_SubscriptionDescription_EnableDeadLetteringOnFilterEvaluationExceptions) vlastnost je povolená pro předplatné, všechny chyby, ke kterým dojde během předplatného SQL filtru pravidlo provádí zachyceny v DLQ se podél problematické zpráva.
+Když [SubscriptionDescription.EnableDeadLetteringOnFilterEvaluationExceptions](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription#Microsoft_ServiceBus_Messaging_SubscriptionDescription_EnableDeadLetteringOnFilterEvaluationExceptions) vlastnost je povolena pro předplatné, všechny chyby, ke kterým spustí pravidlo filtru SQL předplatného jsou zachyceny v DLQ podél chybná zpráva.
 
-## <a name="application-level-dead-lettering"></a>Zpráv lettering úrovni aplikace
+## <a name="application-level-dead-lettering"></a>Aplikace úrovně dead-lettering
 
-Kromě zpráv lettering funkce poskytované systémem aplikace používat DLQ se tak, aby explicitně zamítal nepřijatelné zprávy. To může zahrnovat zprávy, které nelze správně zpracovat z důvodu jakéhokoli druhu systémový problém, zprávy, které mají poškozených datových částí nebo zprávy, které se ověření nezdaří, pokud se používá schéma některé zprávy úroveň zabezpečení.
+Kromě dead-lettering funkcí poskytovaných systémem aplikace můžete DLQ se explicitně odmítnutí nepřijatelné zpráv. To může zahrnovat zprávy, které nelze správně zpracovat z důvodu jakýkoli druh systémovým potížím, zprávy, které obsahují poškozené datové části nebo zprávy, které jejich ověření nebude možné při použití některých schéma zabezpečení na úrovni zprávy.
 
-## <a name="dead-lettering-in-forwardto-or-sendvia-scenarios"></a>Zpráv lettering ve scénářích ForwardTo nebo SendVia
+## <a name="dead-lettering-in-forwardto-or-sendvia-scenarios"></a>Dead-lettering ve scénářích ForwardTo nebo SendVia
 
-Zprávy o budou odesílány do fronty nedoručených zpráv přenosu za následujících podmínek:
+Zprávy se odešlou do fronty nedoručených zpráv přenosu za následujících podmínek:
 
-- Zpráva projdou více než 3 fronty a témata, která jsou [zřetězen dohromady](service-bus-auto-forwarding.md).
-- Cílová fronta nebo téma je deaktivované nebo odstraněné.
+- Zpráva prochází více než 3 front nebo témat, které jsou [zřetězit](service-bus-auto-forwarding.md).
+- Cílová fronta nebo téma se zakázala nebo odstranila.
 - Cílová fronta nebo téma překračuje velikost maximální entity.
 
-Chcete-li získat tyto zprávy lettered zpráv, můžete vytvořit příjemce pomocí [FormatTransferDeadletterPath](/dotnet/api/microsoft.azure.servicebus.entitynamehelper.formattransferdeadletterpath) metody nástrojů.
+K načtení těchto zprávách dead lettered, můžete vytvořit pomocí příjemce [FormatTransferDeadletterPath](/dotnet/api/microsoft.azure.servicebus.entitynamehelper.formattransferdeadletterpath) metody nástrojů.
 
 ## <a name="example"></a>Příklad:
 
-Následující fragment kódu vytvoří příjemce zprávy. Ve smyčce receive pro hlavní frontu, kód načte zprávu s [Receive(TimeSpan.Zero)](/dotnet/api/microsoft.servicebus.messaging.messagereceiver#Microsoft_ServiceBus_Messaging_MessageReceiver_Receive_System_TimeSpan_), s dotazem, broker okamžitě vrátit jakékoli zprávy snadno dostupné, nebo pro návrat s žádný výsledek. Pokud kód přijme nějakou zprávu, je v okamžitě opustí ho, které se zvýší `DeliveryCount`. Jakmile systém přesune DLQ se zpráva, je hlavní fronta prázdná a ukončení smyčky jako [ReceiveAsync](/dotnet/api/microsoft.servicebus.messaging.messagereceiver#Microsoft_ServiceBus_Messaging_MessageReceiver_ReceiveAsync_System_TimeSpan_) vrátí **null**.
+Následující fragment kódu vytvoří příjemce zprávy. Ve smyčce příjmu pro hlavní frontou, kód načte zprávu s [Receive(TimeSpan.Zero)](/dotnet/api/microsoft.servicebus.messaging.messagereceiver#Microsoft_ServiceBus_Messaging_MessageReceiver_Receive_System_TimeSpan_), která žádá zprostředkovatele okamžitě vrátit všechny zprávy snadno k dispozici, nebo budou vráceny s žádný výsledek. Pokud kód obdrží zprávu, okamžitě zruší ho, které zvýší `DeliveryCount`. Jakmile systém přesune zprávu do DLQ, hlavní fronta je prázdná a opakování ve smyčce ukončeno, jako [ReceiveAsync](/dotnet/api/microsoft.servicebus.messaging.messagereceiver#Microsoft_ServiceBus_Messaging_MessageReceiver_ReceiveAsync_System_TimeSpan_) vrátí **null**.
 
 ```csharp
 var receiver = await receiverFactory.CreateMessageReceiverAsync(queueName, ReceiveMode.PeekLock);
@@ -105,8 +105,8 @@ while(true)
 
 ## <a name="next-steps"></a>Další postup
 
-Najdete v následujících článcích pro další informace o fronty Service Bus:
+Naleznete v následujících článcích pro další informace o fronty služby Service Bus:
 
 * [Začínáme s frontami služby Service Bus](service-bus-dotnet-get-started-with-queues.md)
-* [Azure Service Bus a fronty fronty porovnání](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
+* [Fronty Azure a služby Service Bus fronty porovnání](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
 

@@ -1,6 +1,6 @@
 ---
-title: Nasazení aplikace Azure Service Fabric | Microsoft Docs
-description: Postup nasazení a odebrat aplikace v Service Fabric pomocí prostředí PowerShell.
+title: Nasazení aplikace Azure Service Fabric | Dokumentace Microsoftu
+description: Jak nasadit a odebrat aplikace v Service Fabric pomocí Powershellu.
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: 0fa7bd1135c099f853b9a3bb66661c0a57a0f7eb
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: d38ec87fb634e1809959b85f0382935e8a78bf3b
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34271412"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697160"
 ---
-# <a name="deploy-and-remove-applications-using-powershell"></a>Nasazení a odebírat aplikace pomocí prostředí PowerShell
+# <a name="deploy-and-remove-applications-using-powershell"></a>Nasazení a odebírat aplikace pomocí Powershellu
 > [!div class="op_single_selector"]
 > * [Resource Manager](service-fabric-application-arm-resource.md)
 > * [PowerShell](service-fabric-deploy-remove-applications.md)
@@ -30,48 +30,48 @@ ms.locfileid: "34271412"
 
 <br/>
 
-Jednou [typu aplikaci vytvořen balíček][10], je připraven k nasazení do clusteru služby Azure Service Fabric. Nasazení zahrnuje následující tři kroky:
+Jednou [je zabalená aplikace typu][10], byl připraven k nasazení do clusteru Azure Service Fabric. Nasazení zahrnuje následující tři kroky:
 
-1. Nahrání balíčku aplikace do úložiště bitové kopie.
-2. Registrace typu aplikace s relativní cestou úložiště bitové kopie.
-3. Vytvořte instanci aplikace.
+1. Nahrání balíčku aplikace do úložiště imagí.
+2. Zaregistrujte typ aplikace se relativní cesta k obrázku úložiště.
+3. Vytvoření instance aplikace.
 
-Jakmile nasazené aplikace se už nevyžaduje, můžete odstranit instanci aplikace a její typ aplikace. Chcete-li úplně odebrat z clusteru zahrnuje následující kroky:
+Jakmile nasazené aplikace se už nevyžaduje, můžete odstranit instance aplikace a její typ aplikace. K úplnému odebrání aplikace z clusteru zahrnuje následující kroky:
 
-1. Odebrat (nebo odstranit) spuštěné instance aplikace.
-2. Zrušení registrace typu aplikace, pokud ji už nepotřebujete.
-3. Odebrání balíčku aplikace z úložiště bitových kopií.
+1. Odebrání (nebo odstranění) spuštěnou instanci aplikace.
+2. Zrušte registraci typu aplikace, pokud ho už nepotřebují.
+3. Odeberte balíček aplikace z úložiště imagí.
 
-Pokud používáte Visual Studio pro nasazování a ladění aplikací na místní vývojový cluster, všechny předchozí kroky jsou zpracovávány automaticky pomocí skriptu prostředí PowerShell.  Tento skript se nachází v *skripty* složku projekt aplikace. Tento článek obsahuje pozadí na co skriptu je to proto, že můžete provádět stejné operace mimo Visual Studio. 
+Pokud používáte sadu Visual Studio pro nasazování a ladění aplikací ve vašem místním vývojovém clusteru, všechny předchozí kroky jsou automaticky zpracovány pomocí skriptu prostředí PowerShell.  Tento skript se nachází v *skripty* složky projektu aplikace. Tento článek obsahuje pozadí co skript dělá, takže můžete provádět stejné operace mimo sadu Visual Studio. 
 
-Jiný způsob, jak nasadit aplikaci je pomocí externí zřizování. Balíček aplikace může být [zabalené jako `sfpkg` ](service-fabric-package-apps.md#create-an-sfpkg) a nahranému v externím obchodu. V tomto případě není třeba nahrávání do úložiště bitové kopie. Nasazení třeba takto:
+Dalším způsobem, jak nasadit aplikaci je pomocí externí zřizování. Balíček aplikace může být [zabalené jako `sfpkg` ](service-fabric-package-apps.md#create-an-sfpkg) a nahráli do externího úložiště. V takovém případě není nutná nahrávání do úložiště imagí. Nasazení vyžaduje následující kroky:
 
-1. Nahrát `sfpkg` k externím obchodu. Externí úložiště může být jakékoli úložiště, který zveřejňuje koncový bod REST protokolu http nebo https.
-2. Registrace typu aplikace pomocí externí identifikátor URI stažení a informace o typu aplikace.
-2. Vytvořte instanci aplikace.
+1. Nahrát `sfpkg` k externím úložišti. Externí úložiště může být jakékoli úložiště, který zpřístupňuje koncový bod REST http nebo https.
+2. Zaregistrujte typ aplikace pomocí externí identifikátor URI stažení a informace o typu aplikace.
+2. Vytvoření instance aplikace.
 
-Pro čištění odeberte instancemi aplikace a zrušení registrace typu aplikace. Protože balíček nebyl zkopírován do úložiště bitové kopie, neexistuje žádný dočasné umístění pro vyčištění. Zřizování z externího úložiště je dostupné od verze 6.1 Service Fabric.
+Pro čištění odeberte instancemi aplikace a zrušte registraci typu aplikace. Protože balíček nebyl zkopírován do úložiště imagí, neexistuje žádný dočasného umístění pro vyčištění. Zřizování z externího úložiště je k dispozici od verze Service Fabric verze 6.1.
 
 >[!NOTE]
 > Visual Studio v současné době nepodporuje externí zřizování.
 
  
 ## <a name="connect-to-the-cluster"></a>Připojení ke clusteru
-Než spustíte všechny příkazy prostředí PowerShell v tomto článku, vždy spustit pomocí [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) se připojit ke clusteru Service Fabric. Pro připojení k místní vývojový cluster, spusťte následující:
+Předtím, než spustíte všechny příkazy Powershellu v tomto článku, vždy spustit pomocí [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) pro připojení ke clusteru Service Fabric. Pro připojení k místním vývojovém clusteru, spusťte následující příkaz:
 
 ```powershell
 PS C:\>Connect-ServiceFabricCluster
 ```
 
-Příklady připojující vzdáleného clusteru nebo clusteru zabezpečené pomocí Azure Active Directory, X509 certifikáty nebo služby Windows Active Directory najdete v tématu [připojení ke clusteru zabezpečené](service-fabric-connect-to-secure-cluster.md).
+Pro příklady připojení ke vzdálené cluster nebo cluster zabezpečený pomocí Azure Active Directory, X509 certifikáty, nebo si zobrazte Windows Active Directory [připojit k zabezpečenému clusteru](service-fabric-connect-to-secure-cluster.md).
 
 ## <a name="upload-the-application-package"></a>Nahrání balíčku aplikace
-Nahrávání balíčku aplikace vloží ho do umístění, která je přístupná pomocí interní komponenty Service Fabric.
-Pokud chcete ověřit balíček aplikace místně, použijte [Test ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) rutiny.
+Nahrává se balíček aplikace vloží do umístění, které je přístupné pro interní komponenty Service Fabric.
+Pokud chcete ověřit balíček aplikace místně, použijte [testovací ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) rutiny.
 
-[Kopie ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) příkaz odesílá balíček aplikace do úložiště bitových kopií clusteru.
+[Kopírování ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) příkaz odešle balíček aplikace do úložiště imagí clusteru.
 
-Předpokládejme, že sestavení a balíček aplikace s názvem *Moje_aplikace* ve Visual Studiu 2015. Ve výchozím nastavení je název typu aplikace uvedené v ApplicationManifest.xml "MyApplicationType".  Balíček aplikace, která obsahuje manifest nezbytné aplikace, služby manifesty a balíčků kódu/config/data, se nachází v *C:\Users\<uživatelské jméno\>\Documents\Visual Studio 2015\Projects\ MyApplication\MyApplication\pkg\Debug*. 
+Předpokládejme, že sestavit a zabalit aplikaci s názvem *MyApplication* v sadě Visual Studio 2015. Ve výchozím nastavení je název typu aplikace uvedené v souboru ApplicationManifest.xml "MyApplicationType".  Balíček aplikace, který obsahuje manifest nezbytné aplikace, manifesty služby a balíčků kódu/config/dat, se nachází v *C:\Users\<uživatelské jméno\>\Documents\Visual Studio 2015\Projects\ MyApplication\MyApplication\pkg\Debug*. 
 
 Následující příkaz vypíše obsah balíčku aplikace:
 
@@ -103,13 +103,13 @@ C:\USERS\USER\DOCUMENTS\VISUAL STUDIO 2015\PROJECTS\MYAPPLICATION\MYAPPLICATION\
             Settings.xml
 ```
 
-Pokud balíček aplikace je velký nebo má mnoho souborů, můžete [je komprimovat](service-fabric-package-apps.md#compress-a-package). Komprese snižuje velikost a počet souborů.
-Vedlejším účinkem je to registrace a zrušení registrace typu aplikace je rychlejší. Čas odeslání může být pomalejší aktuálně, zvláště pokud zahrnete čas komprimovat balíčku. 
+Pokud balíček aplikace je velký nebo má mnoho souborů, můžete si [je komprimovat](service-fabric-package-apps.md#compress-a-package). Komprese snižuje velikost a počet souborů.
+Vedlejším účinkem je to registrace a zrušení registrace typu aplikace jsou rychlejší. Čas odeslání může být pomalejší v současné době zejména v případě, že zahrnují čas, aby se komprimoval balíček. 
 
-Pokud chcete komprimovat balíček, použijte stejný [kopie ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) příkaz. Komprese stačí samostatné z nahrávání, pomocí `SkipCopy` příznak nebo společně s operace odesílání. Použití komprese na zkomprimovaného balíčku je žádná operace.
-Chcete-li dekomprimovat zkomprimovaného balíčku, použijte stejný [kopie ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) s `UncompressPackage` přepínače.
+Aby se komprimoval balíček, použijte stejný [kopírování ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) příkazu. Komprese je možné samostatné od nahrávání, díky použití `SkipCopy` příznak, nebo spolu s časový limit operace odeslání. Použití kompresi u zkomprimovaného balíčku je no-op.
+Dekomprimovat zkomprimovaného balíčku, použijte stejný [kopírování ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) příkazů `UncompressPackage` přepnout.
 
-Následující rutiny komprimaci balíček bez kopírování do úložiště bitové kopie. Nyní zahrnuje komprimované soubory pro balíček `Code` a `Config` balíčky. Aplikace a služby manifestech nejsou ZIP, protože jsou potřebné pro mnoho interní operace (jako je balíček sdílení, aplikace zadejte název a verze extrakce pro určité ověření). Pomocí formátu ZIP manifesty by proveďte, tyto operace neefektivní.
+Následující rutina komprimuje balíček bez kopírování do úložiště imagí. Balíček nyní obsahuje soubory ZIP `Code` a `Config` balíčky. Manifesty služby a aplikace nejsou ZIP, protože jsou potřeba pro mnoho interní operace (jako je balíček sdílení, aplikace typu názvem a verzí extrakce pro určité ověření). Zipování manifesty s žádným tyto operace neefektivní.
 
 ```
 PS C:\> Copy-ServiceFabricApplicationPackage -ApplicationPackagePath $path -CompressPackage -SkipCopy
@@ -125,10 +125,10 @@ C:\USERS\USER\DOCUMENTS\VISUAL STUDIO 2015\PROJECTS\MYAPPLICATION\MYAPPLICATION\
        ServiceManifest.xml
 ```
 
-Pro velkých balíčků aplikací komprese trvá určitou dobu. Nejlepších výsledků dosáhnete pomocí rychlé jednotky SSD. Časy komprese a velikost zkomprimovaného balíčku se také liší podle obsah balíčku.
-Zde je například komprese statistiku pro některé balíčky, které vykazují počáteční a velikost zkomprimovaného balíčku s časem komprese.
+U velkých balíčků aplikací komprese trvá určitou dobu. Nejlepších výsledků dosáhnete použijte rychlé jednotku SSD. Časy komprese a velikost zkomprimovaného balíčku také liší v závislosti na obsahu balíčku.
+Například tady je statistika komprese pro některé balíčky, které zobrazují počáteční a velikost zkomprimovaného balíčku s časem compression.
 
-|Počáteční velikost (MB)|Počet souborů|Komprese čas|Zkomprimovaného balíčku velikost (MB)|
+|Počáteční velikost (MB)|Počet souborů|Čas komprese|Komprimovaný balíček velikost (MB)|
 |----------------:|---------:|---------------:|---------------------------:|
 |100|100|00:00:03.3547592|60|
 |512|100|00:00:16.3850303|307|
@@ -136,66 +136,66 @@ Zde je například komprese statistiku pro některé balíčky, které vykazují
 |2 048|1000|00:01:04.3775554|1231|
 |5012|100|00:02:45.2951288|3074|
 
-Jakmile je komprimovaný balíček, může být nahrán do jeden nebo více clusterů Service Fabric, podle potřeby. Tento mechanismus nasazení je stejný pro komprimované a nekomprimované balíčky. Komprimované balíčky jsou uloženy jako takový v úložišti clusteru bitové kopie. Balíčky jsou nekomprimovaným na uzlu před spuštěním aplikace.
+Po balíčku je komprimován, může být nahrán do jednoho nebo více clusterů Service Fabric, podle potřeby. Mechanismus pro nasazení je stejný pro komprimované a nekomprimované balíčky. Komprimované balíčky v důsledku ukládají do úložiště imagí clusteru. Balíčky jsou nekomprimovaný na uzlu před spuštěním aplikace.
 
 
-Následujícím příkladu se uloží balíček do úložiště bitové kopie do složky s názvem "MyApplicationV1":
+Následující příklad nahraje do složky s názvem "MyApplicationV1" balíček do úložiště imagí:
 
 ```powershell
 PS C:\> Copy-ServiceFabricApplicationPackage -ApplicationPackagePath $path -ApplicationPackagePathInImageStore MyApplicationV1 -TimeoutSec 1800
 ```
 
-Pokud nezadáte *- ApplicationPackagePathInImageStore* parametr, balíček aplikace se zkopíruje do složky "Debug" v úložišti bitové kopie.
+Pokud nezadáte *- ApplicationPackagePathInImageStore* parametr, balíček aplikace je zkopírován do složky "Ladění" v úložišti imagí.
 
 >[!NOTE]
->**Kopírování ServiceFabricApplicationPackage** automaticky zjistí připojovací řetězec úložiště příslušné bitové kopie, pokud je relace prostředí PowerShell připojené ke clusteru Service Fabric. Pro Service Fabric verze starší než 5.6 **- parametr ImageStoreConnectionString** je třeba explicitně zadat argument.
+>**Kopírování ServiceFabricApplicationPackage** automaticky zjišťovat připojovací řetězec úložiště odpovídající image, pokud relace prostředí PowerShell je připojené ke clusteru Service Fabric. Pro Service Fabric verze starší než 5.6 **- ImageStoreConnectionString** argument musí být explicitně zadat.
 >
 >```powershell
 >PS C:\> Copy-ServiceFabricApplicationPackage -ApplicationPackagePath $path -ApplicationPackagePathInImageStore MyApplicationV1 -ImageStoreConnectionString (Get-ImageStoreConnectionStringFromClusterManifest(Get-ServiceFabricClusterManifest)) -TimeoutSec 1800
 >```
 >
->**Get-ImageStoreConnectionStringFromClusterManifest** rutiny, která je součástí modulu Service Fabric SDK PowerShell, se použije k získání připojovacího řetězce úložiště bitové kopie.  Chcete-li importovat modul SDK, spusťte:
+>**Get-ImageStoreConnectionStringFromClusterManifest** rutiny, která je součástí modulu Powershellu pro Service Fabric SDK, se používá k získání připojovacího řetězce úložiště bitové kopie.  Pokud chcete importovat modul SDK, spusťte:
 >
 >```powershell
 >Import-Module "$ENV:ProgramFiles\Microsoft SDKs\Service Fabric\Tools\PSModule\ServiceFabricSDK\ServiceFabricSDK.psm1"
 >```
 >
->V tématu [pochopit připojovací řetězec úložiště bitové kopie](service-fabric-image-store-connection-string.md) doplňující informace o úložiště image store a bitové kopie připojovací řetězec uložit.
+>Zobrazit [pochopit připojovací řetězec úložiště image](service-fabric-image-store-connection-string.md) doplňující informace o úložiště image store a image uložit připojovací řetězec.
 >
 >
 >
 
-Čas potřebný k nahrání balíčku se liší v závislosti na několika faktorech. Některé tyto faktory jsou počet souborů v balíčku, balíčku velikosti a velikosti souborů. Rychlost sítě mezi zdrojovým počítačem a cluster Service Fabric se zároveň ovlivňuje čas odeslání. Výchozí hodnota časového limitu pro [kopie ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) je 30 minut.
-V závislosti na popisuje faktory možná budete muset zvýšit časový limit. Pokud jsou komprese balíček ve volání kopie, musíte také vzít v úvahu dobu komprese.
+Čas potřebný k nahrání balíčku se liší v závislosti na několika faktorech. Některé z těchto faktorů jsou počet souborů v balíčku, velikost balíčku a velikosti souborů. Rychlost sítě mezi zdrojovým počítačem a cluster Service Fabric také má vliv na dobu nahrávání. Výchozí hodnota časového limitu pro [kopírování ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) je 30 minut.
+Závisí to na faktorech popsaných bude pravděpodobně nutné zvýšit časový limit. Pokud jsou komprese balíček ve volání kopie, musíte také vzít v úvahu dobu komprese.
 
 
 
 ## <a name="register-the-application-package"></a>Registrace balíčku aplikace
-Typ aplikace a verze deklarované v manifestu aplikace k dispozici pro použití při registraci balíčku aplikace. Systém přečte nahraný v předchozím kroku balíček, ověří balíčku, zpracuje obsah balíčku a zkopíruje zpracovaná balíček do umístění interní systému.  
+Typ aplikace a verze deklarované v manifestu aplikace, které jsou k dispozici pro použití při registraci balíčku aplikace. Systém přečte balíček nahráli v předchozím kroku, ověří balíček, zpracuje obsah balíčku a zkopíruje zpracovaných balíček do umístění interního systému.  
 
-Spustit [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) rutiny registrace typu aplikace v clusteru a zpřístupní ji pro nasazení:
+Spustit [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) rutiny zaregistrujte typ aplikace v clusteru a zpřístupní ji pro nasazení:
 
-### <a name="register-the-application-package-copied-to-image-store"></a>Registrace balíčku aplikace zkopírovat do úložiště bitové kopie
-Pokud balíček jste dříve zkopírovali do úložiště bitové kopie, registrace operaci určuje relativní cestu v úložišti bitové kopie.
+### <a name="register-the-application-package-copied-to-image-store"></a>Registrace balíčku aplikace, které jsou zkopírovány do úložiště imagí
+Když balíček jste dříve zkopírovali do úložiště imagí, operace registrace určuje relativní cestu v úložišti imagí.
 
 ```powershell
 PS C:\> Register-ServiceFabricApplicationType -ApplicationPathInImageStore MyApplicationV1
 Register application type succeeded
 ```
 
-"MyApplicationV1" je složka, v úložišti bitové kopie, kde se nachází balíček aplikace. Typ aplikace s názvem "MyApplicationType" a verzí "1.0.0" (jak se nacházejí v manifestu aplikace) je nyní zaregistrovaná v clusteru.
+"MyApplicationV1" je složka, v úložišti imagí, kde se nachází balíček aplikace. Typ aplikace s názvem "MyApplicationType" a verzí "1.0.0" (obojí se nacházejí v manifestu aplikace) je teď zaregistrované v clusteru.
 
-### <a name="register-the-application-package-copied-to-an-external-store"></a>Registrace balíčku aplikace zkopírovat do externího úložiště
-Od verze Service Fabric verze 6.1, zřídit podporuje stažení balíčku z externího úložiště. Stahování URI představuje cestu k [ `sfpkg` balíčku aplikace](service-fabric-package-apps.md#create-an-sfpkg) odkud balíčku aplikace si můžete stáhnout pomocí protokolů HTTP nebo HTTPS. Balíček musí mít předtím nahrála do tohoto externího umístění. Identifikátor URI musí umožňovat přístup pro čtení, takže Service Fabric můžete stáhnout soubor. `sfpkg` Souboru musí mít příponu ".sfpkg". Operaci zřizování by měla obsahovat informace o typu aplikace, jak se nachází v manifestu aplikace.
+### <a name="register-the-application-package-copied-to-an-external-store"></a>Registrace balíčku aplikace, které jsou zkopírovány do externího úložiště
+Spouští se s platformou Service Fabric verze 6.1, zřídíte podporuje stahování balíčku z externího úložiště. Stahování identifikátor URI představuje cestu k [ `sfpkg` balíčku aplikace](service-fabric-package-apps.md#create-an-sfpkg) odkud balíček aplikace si můžete stáhnout pomocí protokolů HTTP nebo HTTPS. Balíček musí mít byl dříve odeslán do tohoto externího umístění. Identifikátor URI musí povolit přístup pro čtení, takže Service Fabric můžete stáhnout soubor. `sfpkg` Souboru musí mít příponu ".sfpkg". Operace zřízení by měla obsahovat informace o typu aplikace, jak se nachází v manifestu aplikace.
 
 ```
 PS C:\> Register-ServiceFabricApplicationType -ApplicationPackageDownloadUri "https://sftestresources.blob.core.windows.net:443/sfpkgholder/MyAppPackage.sfpkg" -ApplicationTypeName MyApp -ApplicationTypeVersion V1 -Async
 ```
 
-[Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) příkaz vrátí jenom po systém úspěšně zaregistrovala balíčku aplikace. Jak dlouho trvá registrace závisí na velikosti a obsah balíčku aplikace. V případě potřeby **- TimeoutSec** parametr lze zadat delší časový limit (výchozí hodnota časového limitu je 60 sekund).
+[Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) příkaz vrátí jenom po systém úspěšně zaregistrovala balíčku aplikace. Jak dlouho trvá registrace závisí na velikosti a obsah balíčku aplikace. V případě potřeby **- TimeoutSec** parametr lze použít k zadání delšího časového limitu (výchozí hodnota časového limitu je 60 sekund).
 
-Pokud máte velké aplikací, balíčků nebo pokud dochází k vypršení časových limitů, použijte **- asynchronní** parametr. Příkaz vrátí hodnotu, pokud clusteru přijme příkaz registrace. Operaci registrace pokračuje podle potřeby.
-[Get-ServiceFabricApplicationType](/powershell/module/servicefabric/get-servicefabricapplicationtype?view=azureservicefabricps) příkaz vypíše verze typů aplikace a jejich stav registrace. Tento příkaz slouží k určení, kdy se provádí registraci.
+Pokud máte velké aplikaci zabalit, nebo pokud dochází k vypršení časového limitu, použijte **- asynchronní** parametru. Příkaz vrátí hodnotu, pokud cluster přijme příkaz pro registraci. Operace registrace pokračuje podle potřeby.
+[Get-ServiceFabricApplicationType](/powershell/module/servicefabric/get-servicefabricapplicationtype?view=azureservicefabricps) příkaz vypíše verze typů aplikací a jejich stav registrace. Tento příkaz slouží k určení, kdy se provádí registraci.
 
 ```powershell
 PS C:\> Get-ServiceFabricApplicationType
@@ -206,15 +206,15 @@ Status                 : Available
 DefaultParameters      : { "Stateless1_InstanceCount" = "-1" }
 ```
 
-## <a name="remove-an-application-package-from-the-image-store"></a>Balíček aplikace odebrat z úložiště bitových kopií
-Pokud balíček byl zkopírován do úložiště bitové kopie, byste měli odebrat ji z dočasné umístění po úspěšném zaregistrování aplikace. Odstranění balíčky aplikací z úložiště image store uvolnit systémové prostředky. Udržování balíčků nepoužívané aplikace využívá diskového úložiště a vede k problémům s výkonem aplikace.
+## <a name="remove-an-application-package-from-the-image-store"></a>Odeberte balíček aplikace z úložiště imagí
+Pokud balíček byl zkopírován do úložiště imagí, by měly odebrat z dočasného umístění po úspěšné registraci aplikace. Odstranění balíčků aplikací z úložiště image store uvolnit systémové prostředky. Udržování balíčky nepoužívané aplikace využívá diskové úložiště a vede k problémům s výkonem aplikací.
 
 ```powershell
 PS C:\>Remove-ServiceFabricApplicationPackage -ApplicationPackagePathInImageStore MyApplicationV1
 ```
 
 ## <a name="create-the-application"></a>Vytvoření aplikace
-Můžete vytvořit instanci aplikace z libovolné verze typu aplikace, který byl úspěšně zaregistrován pomocí [New-ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) rutiny. Název každé aplikace musí začínat *"fabric:"* scheme a musí být jedinečný pro každou instanci aplikace. Žádné výchozí služby definované v manifestu aplikace cílového typu aplikace jsou také vytvářeny.
+Můžete vytvořit instanci aplikace z libovolnou verzi typu aplikace, který byl úspěšně zaregistrován pomocí [New-ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) rutiny. Název každé aplikace musí začínat *"prostředků infrastruktury:"* schéma a musí být jedinečná pro každou instanci aplikace. Žádné výchozí služby definované v manifestu aplikace typ cílové aplikace se také vytvoří.
 
 ```powershell
 PS C:\> New-ServiceFabricApplication fabric:/MyApp MyApplicationType 1.0.0
@@ -224,9 +224,9 @@ ApplicationTypeName    : MyApplicationType
 ApplicationTypeVersion : 1.0.0
 ApplicationParameters  : {}
 ```
-Pro danou verzi typu zaregistrovanou aplikaci lze vytvořit více instancí aplikace. Každá instance aplikace spouští v izolaci, s vlastní pracovní adresář a proces.
+Několik instancí aplikace lze vytvořit danou verzi typu registrované aplikaci. Každá instance aplikace běží izolovaně, s vlastní pracovní adresář a proces.
 
-Pokud chcete zobrazit, které s názvem aplikace a služby běží v clusteru, spusťte [Get-ServiceFabricApplication](/powershell/servicefabric/vlatest/get-servicefabricapplication) a [Get-ServiceFabricService](/powershell/module/servicefabric/get-servicefabricservice?view=azureservicefabricps) rutiny:
+Pokud chcete zobrazit, které s názvem aplikace a služby jsou spuštěny v clusteru, spusťte [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication) a [Get-ServiceFabricService](/powershell/module/servicefabric/get-servicefabricservice?view=azureservicefabricps) rutiny:
 
 ```powershell
 PS C:\> Get-ServiceFabricApplication  
@@ -250,10 +250,10 @@ HealthState            : Ok
 ```
 
 ## <a name="remove-an-application"></a>Odebrání aplikace
-Instance aplikace už je potřeba, trvale odstraníte ho pomocí názvu [odebrat ServiceFabricApplication](/powershell/module/servicefabric/remove-servicefabricapplication?view=azureservicefabricps) rutiny. [Odebrat ServiceFabricApplication](/powershell/module/servicefabric/remove-servicefabricapplication?view=azureservicefabricps) automaticky odstraní všechny služby, které patří do aplikace také a trvale odebrat všechny služby stavu. 
+Když instance aplikace už je nepotřebujete, můžete trvale odebrat ji pomocí názvu [odebrat ServiceFabricApplication](/powershell/module/servicefabric/remove-servicefabricapplication?view=azureservicefabricps) rutiny. [Odebrat ServiceFabricApplication](/powershell/module/servicefabric/remove-servicefabricapplication?view=azureservicefabricps) automaticky odstraní všechny služby, které patří k aplikaci stejně, trvale odebrat všechny služby stavu. 
 
 > [!WARNING]
-> Tato operace se nedá vrátit a nelze ji obnovit stav aplikace.
+> Tato operace je nevratná a nedá se obnovit stav aplikace.
 
 ```powershell
 PS C:\> Remove-ServiceFabricApplication fabric:/MyApp
@@ -266,8 +266,8 @@ Remove application instance succeeded
 PS C:\> Get-ServiceFabricApplication
 ```
 
-## <a name="unregister-an-application-type"></a>Typ aplikace se zrušit registraci
-Pokud konkrétní verzi typ aplikace se už nepotřebuje, by měl zrušení registrace typu aplikace pomocí [Unregister-ServiceFabricApplicationType](/powershell/module/servicefabric/unregister-servicefabricapplicationtype?view=azureservicefabricps) rutiny. Rušení registrace aplikace nepoužívá typy uvolní prostor úložiště používá úložiště bitových kopií a to odebráním souborů typu aplikace. Rušení registrace aplikace typu neodebere balíček aplikace, které jsou zkopírovány do dočasného umístění úložiště bitové kopie, pokud byl použit kopírování do úložiště bitové kopie. Typ aplikace může být registrace, dokud u ní jsou vytvořeny žádné aplikace a žádné čekající na vyřízení aplikace upgrady na něj odkazují.
+## <a name="unregister-an-application-type"></a>Zrušte registraci typu aplikace
+Pokud konkrétní verzi typu aplikace je už nepotřebujete, měli byste zrušit registraci typu aplikace pomocí [Unregister-ServiceFabricApplicationType](/powershell/module/servicefabric/unregister-servicefabricapplicationtype?view=azureservicefabricps) rutiny. Zrušení registrace typů nepoužívané aplikace uvolní prostor úložiště využitý úložiště image store to odebráním souborů typu aplikace. Rušení registrace aplikace typu neodebere zkopírován do dočasného umístění úložiště bitové kopie balíčku aplikace, pokud byl použit kopírování do úložiště imagí. Typ aplikace lze zrušit registraci instance žádné aplikace se vytvářejí pomocí jej a pokud ne čekající aplikace upgrady na něj odkazují.
 
 Spustit [Get-ServiceFabricApplicationType](/powershell/module/servicefabric/get-servicefabricapplicationtype?view=azureservicefabricps) zobrazíte typy aplikací, které jsou aktuálně registrované v clusteru:
 
@@ -280,27 +280,27 @@ Status                 : Available
 DefaultParameters      : { "Stateless1_InstanceCount" = "-1" }
 ```
 
-Spustit [Unregister-ServiceFabricApplicationType](/powershell/module/servicefabric/unregister-servicefabricapplicationtype?view=azureservicefabricps) se zrušit registraci typu konkrétní aplikaci:
+Spustit [Unregister-ServiceFabricApplicationType](/powershell/module/servicefabric/unregister-servicefabricapplicationtype?view=azureservicefabricps) ke zrušení registrace konkrétní typ aplikace:
 
 ```powershell
 PS C:\> Unregister-ServiceFabricApplicationType MyApplicationType 1.0.0
 ```
 
 ## <a name="troubleshooting"></a>Řešení potíží
-### <a name="copy-servicefabricapplicationpackage-asks-for-an-imagestoreconnectionstring"></a>Kopírování ServiceFabricApplicationPackage požádá o parametr ImageStoreConnectionString
-Prostředí Service Fabric SDK byste již měli mít správný výchozí hodnoty nastavení. Ale v případě potřeby parametr ImageStoreConnectionString pro všechny příkazy musí odpovídat hodnotě používající cluster Service Fabric. Parametr ImageStoreConnectionString můžete najít v manifestu clusteru pomocí [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest?view=azureservicefabricps) a příkazy Get-ImageStoreConnectionStringFromClusterManifest:
+### <a name="copy-servicefabricapplicationpackage-asks-for-an-imagestoreconnectionstring"></a>Kopírování ServiceFabricApplicationPackage vyzve k zadání ImageStoreConnectionString
+Sada Service Fabric SDK prostředí byste už měli mít správné nastavení výchozí hodnoty. Ale v případě potřeby ImageStoreConnectionString pro všechny příkazy by měl odpovídat hodnotě, která používá cluster Service Fabric. V manifestu clusteru, můžete najít ImageStoreConnectionString načten pomocí možnosti [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest?view=azureservicefabricps) a Get-ImageStoreConnectionStringFromClusterManifest příkazy:
 
 ```powershell
 PS C:\> Get-ImageStoreConnectionStringFromClusterManifest(Get-ServiceFabricClusterManifest)
 ```
 
-**Get-ImageStoreConnectionStringFromClusterManifest** rutiny, která je součástí modulu Service Fabric SDK PowerShell, se použije k získání připojovacího řetězce úložiště bitové kopie.  Chcete-li importovat modul SDK, spusťte:
+**Get-ImageStoreConnectionStringFromClusterManifest** rutiny, která je součástí modulu Powershellu pro Service Fabric SDK, se používá k získání připojovacího řetězce úložiště bitové kopie.  Pokud chcete importovat modul SDK, spusťte:
 
 ```powershell
 Import-Module "$ENV:ProgramFiles\Microsoft SDKs\Service Fabric\Tools\PSModule\ServiceFabricSDK\ServiceFabricSDK.psm1"
 ```
 
-V manifestu clusteru se nachází parametr ImageStoreConnectionString:
+ImageStoreConnectionString se nachází v manifestu clusteru:
 
 ```xml
 <ClusterManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Name="Server-Default-SingleNode" Version="1.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
@@ -314,21 +314,21 @@ V manifestu clusteru se nachází parametr ImageStoreConnectionString:
     [...]
 ```
 
-V tématu [pochopit připojovací řetězec úložiště bitové kopie](service-fabric-image-store-connection-string.md) doplňující informace o úložiště image store a bitové kopie připojovací řetězec uložit.
+Zobrazit [pochopit připojovací řetězec úložiště image](service-fabric-image-store-connection-string.md) doplňující informace o úložiště image store a image uložit připojovací řetězec.
 
 ### <a name="deploy-large-application-package"></a>Nasazení balíčku velké aplikace
-Problém: [kopie ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) časového limitu pro balíček rozsáhlé aplikace (pořadí GB).
-Vyzkoušejte:
-- Zadat delší časový limit pro [kopie ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) příkazu s `TimeoutSec` parametr. Ve výchozím nastavení je časový limit 30 minut.
-- Zkontrolujte síťové připojení mezi zdrojovým počítačem a clusteru. Pokud připojení je pomalý, zvažte použití na počítači s lepší síťové připojení.
-Pokud klientský počítač je v jiné oblasti než clusteru, zvažte použití klientský počítač v oblasti blíže nebo stejné jako cluster.
-- Zkontrolujte, pokud jste nedosáhli externí omezení. Například pokud je úložiště image store je nakonfigurovaná pro použití úložiště azure, nahrávání může být omezena.
+Problém: [kopírování ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) vyprší časový limit pro velké aplikace balíčku (pořadí GB).
+Zkuste:
+- Zadejte většího časového limitu pro [kopírování ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) příkazů, `TimeoutSec` parametru. Ve výchozím nastavení je časový limit 30 minut.
+- Zkontrolujte síťové připojení mezi zdrojovým počítačem a clusteru. Pokud je pomalé připojení, zvažte použití na počítači s lepší síťové připojení.
+Pokud klientský počítač je v jiné oblasti než cluster, zvažte použití klientského počítače v oblasti blíže nebo stejný jako cluster.
+- Zkontrolujte, jestli nenarážíte externí omezení šířky pásma. Například pokud je úložiště image store je konfigurován pro použití služby azure storage, může omezení nahrávání.
 
-Problém: Nahrávání balíček úspěšně dokončit, ale [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) vyprší časový limit. Vyzkoušejte:
-- [Komprimovat balíček](service-fabric-package-apps.md#compress-a-package) před kopírování do úložiště bitové kopie.
-Komprese snižuje velikost a počet souborů, který pak dále snižuje objem provozu a fungovat této Service Fabric musí provést. Operace odesílání může být pomalejší (obzvláště pokud zahrnete komprese čas), ale registrace a zrušení registrace typu aplikace je rychlejší.
-- Zadat delší časový limit pro [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) s `TimeoutSec` parametr.
-- Zadejte `Async` přepínač pro [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps). Příkaz vrátí, když clusteru přijme příkaz a registrace typu aplikace asynchronně. Z tohoto důvodu je nutné v tomto případě specifikovat vyšší vypršení časového limitu. [Get-ServiceFabricApplicationType](/powershell/module/servicefabric/get-servicefabricapplicationtype?view=azureservicefabricps) příkaz vypíše všechny verze typů byl úspěšně zaregistrován aplikace a jejich stav registrace. Tento příkaz slouží k určení, kdy se provádí registraci.
+Problém: Nahrání balíčku se nedokončil úspěšně, ale [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) vyprší časový limit. Zkuste:
+- [Komprimovat balíček](service-fabric-package-apps.md#compress-a-package) před zkopírováním do úložiště imagí.
+Komprese snižuje velikost a počet souborů, která zase omezuje objem přenosů a pracovat v daných prostředcích služby musíte provést. Časový limit operace odeslání může být pomalejší (zejména pokud zahrnete komprese čas), ale jsou rychlejší registrace a zrušení registrace typu aplikace.
+- Zadejte většího časového limitu pro [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) s `TimeoutSec` parametru.
+- Zadejte `Async` přepnout [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps). Příkaz vrátí, když přijme příkaz clusteru a registraci typu aplikace asynchronně. Z tohoto důvodu není nutné zadat v tomto případě vyšší vypršení časového limitu. [Get-ServiceFabricApplicationType](/powershell/module/servicefabric/get-servicefabricapplicationtype?view=azureservicefabricps) příkaz vypíše všechny verze typu aplikace byl úspěšně zaregistrován a jejich stav registrace. Tento příkaz slouží k určení, kdy se provádí registraci.
 
 ```powershell
 PS C:\> Get-ServiceFabricApplicationType
@@ -339,13 +339,13 @@ Status                 : Available
 DefaultParameters      : { "Stateless1_InstanceCount" = "-1" }
 ```
 
-### <a name="deploy-application-package-with-many-files"></a>Nasazení balíčku aplikace s mnoho souborů
-Problém: [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) časového limitu pro balíček aplikace s mnoha souborech (pořadí tisíc).
-Vyzkoušejte:
-- [Komprimovat balíček](service-fabric-package-apps.md#compress-a-package) před kopírování do úložiště bitové kopie. Komprese snižuje počet souborů.
-- Zadat delší časový limit pro [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) s `TimeoutSec` parametr.
-- Zadejte `Async` přepínač pro [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps). Příkaz vrátí, když clusteru přijme příkaz a registrace typu aplikace asynchronně.
-Z tohoto důvodu je nutné v tomto případě specifikovat vyšší vypršení časového limitu. [Get-ServiceFabricApplicationType](/powershell/module/servicefabric/get-servicefabricapplicationtype?view=azureservicefabricps) příkaz vypíše všechny verze typů byl úspěšně zaregistrován aplikace a jejich stav registrace. Tento příkaz slouží k určení, kdy se provádí registraci.
+### <a name="deploy-application-package-with-many-files"></a>Nasazení balíčku aplikace s velkým množstvím souborů
+Problém: [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) vyprší časový limit pro balíček aplikace s velkým množstvím souborů (pořadí tisíc).
+Zkuste:
+- [Komprimovat balíček](service-fabric-package-apps.md#compress-a-package) před zkopírováním do úložiště imagí. Komprese snižuje počet souborů.
+- Zadejte většího časového limitu pro [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) s `TimeoutSec` parametru.
+- Zadejte `Async` přepnout [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps). Příkaz vrátí, když přijme příkaz clusteru a registraci typu aplikace asynchronně.
+Z tohoto důvodu není nutné zadat v tomto případě vyšší vypršení časového limitu. [Get-ServiceFabricApplicationType](/powershell/module/servicefabric/get-servicefabricapplicationtype?view=azureservicefabricps) příkaz vypíše všechny verze typu aplikace byl úspěšně zaregistrován a jejich stav registrace. Tento příkaz slouží k určení, kdy se provádí registraci.
 
 ```powershell
 PS C:\> Get-ServiceFabricApplicationType
@@ -363,9 +363,9 @@ DefaultParameters      : { "Stateless1_InstanceCount" = "-1" }
 
 [Úvod stavu Service Fabric](service-fabric-health-introduction.md)
 
-[Diagnostika a řešení služby Service Fabric](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
+[Diagnostika a řešení potíží služby Service Fabric](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 
-[Model aplikace v Service Fabric](service-fabric-application-model.md)
+[Modelování aplikace v Service Fabric](service-fabric-application-model.md)
 
 <!--Link references--In actual articles, you only need a single period before the slash-->
 [10]: service-fabric-package-apps.md

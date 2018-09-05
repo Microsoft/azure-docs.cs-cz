@@ -1,6 +1,6 @@
 ---
-title: Konfigurace místních kodérů při vytvářejí proudy s více přenosovými rychlostmi pomocí Azure Media Services | Microsoft Docs
-description: Toto téma uvádí místními kodéry, které můžete použít k zachycení živé události a odesílat živý datový proud jednou přenosovou rychlostí do AMS kanálů, (které jsou kódování v reálném čase povolit) pro další zpracování. Téma obsahuje odkazy na návodů, které ukazují, jak nakonfigurovat uvedené kodérů.
+title: Konfigurace místních kodérů při použití služby Azure Media Services k vytvoření datových proudů s více přenosovými rychlostmi | Dokumentace Microsoftu
+description: Toto téma obsahuje seznam s místními kodéry, které můžete použít k živé události zaznamenávat a odesílat živý datový proud s jednou přenosovou rychlostí do AMS kanálů, (, které jsou živé kódování, povolené) pro další zpracování. Téma obsahuje odkazy na kurzy, které ukazují, jak nakonfigurovat uvedené kodérů.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,30 +14,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: juliako
-ms.openlocfilehash: 129364c4ee5924413ed0bccb81d53b905f13d208
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: b1166c34f1a0ce3f3e9be932eb6d7fb9d76389ec
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788169"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43665753"
 ---
-# <a name="how-to-configure-on-premises-encoders-when-using-azure-media-services-to-create-multi-bitrate-streams"></a>Postup konfigurace místních kodérů při vytvářejí proudy s více přenosovými rychlostmi pomocí Azure Media Services
-Toto téma uvádí místními kodéry, které můžete použít k zachycení živé události a odesílat živý datový proud jednou přenosovou rychlostí do AMS kanálů, (které jsou kódování v reálném čase povolit) pro další zpracování. V tématu taky obsahuje odkazy na návodů, které ukazují, jak nakonfigurovat uvedené kodérů.
+# <a name="how-to-configure-on-premises-encoders-when-using-azure-media-services-to-create-multi-bitrate-streams"></a>Konfigurace místních kodérů při použití služby Azure Media Services k vytvoření datových proudů s více přenosovými rychlostmi
+Toto téma obsahuje seznam s místními kodéry, které můžete použít k živé události zaznamenávat a odesílat živý datový proud s jednou přenosovou rychlostí do AMS kanálů, (, které jsou živé kódování, povolené) pro další zpracování. Téma obsahuje také odkazy na kurzy, které ukazují, jak nakonfigurovat uvedené kodérů.
 
-## <a name="elemental-live"></a>Elemental za provozu
-Informace o tom, jak nakonfigurovat [elementární Live](http://www.elementaltechnologies.com/products/elemental-live) najdete v části ke odesílat živý datový proud s jednou přenosovou rychlostí do kanálu AMS [konfigurace elementární Live](media-services-configure-elemental-live-encoder.md).
-
-## <a name="flash-media-live-encoder"></a>Flash Media Encoder za provozu
-Informace o tom, jak nakonfigurovat [Flash Live kodér médií](http://www.adobe.com/products/flash-media-encoder.html) najdete v části encoder (FMLE) k odeslání živý datový proud s jednou přenosovou rychlostí do kanálu AMS [konfigurace FMLE](media-services-configure-fmle-live-encoder.md).
+## <a name="flash-media-live-encoder"></a>Flash Media Live Encoder
+Informace o tom, jak nakonfigurovat [Flash Media Live Encoder](http://www.adobe.com/products/flash-media-encoder.html) naleznete v tématu encoder (FMLE) odesílat živý datový proud s jednou přenosovou rychlostí do kanálu AMS [konfigurace FMLE](media-services-configure-fmle-live-encoder.md).
 
 ## <a name="haivision-kb-encoder"></a>Kodér Haivision KB
-Informace o tom, jak nakonfigurovat [Haivision KB kodér](https://www.haivision.com/products/kb-series/) najdete v části ke odesílat živý datový proud s jednou přenosovou rychlostí do kanálu AMS [konfigurace kodér KB Haivision](media-services-configure-kb-live-encoder.md).
+Informace o tom, jak nakonfigurovat [kodér Haivision KB](https://www.haivision.com/products/kb-series/) naleznete v tématu kodér odesílat živý datový proud s jednou přenosovou rychlostí do kanálu AMS [konfigurace kodér Haivision KB](media-services-configure-kb-live-encoder.md).
 
-## <a name="telestream-wirecast"></a>Kodér Telestream Wirecast
-Informace o tom, jak nakonfigurovat [Telestream Wirecast](http://www.telestream.net/wirecast/overview.htm) najdete v části ke odesílat živý datový proud s jednou přenosovou rychlostí do kanálu AMS [konfigurace Wirecast](media-services-configure-wirecast-live-encoder.md).
+## <a name="telestream-wirecast"></a>Telestream Wirecast
+Informace o tom, jak nakonfigurovat [Telestream Wirecast](http://www.telestream.net/wirecast/overview.htm) naleznete v tématu kodér odesílat živý datový proud s jednou přenosovou rychlostí do kanálu AMS [konfigurace Wirecast](media-services-configure-wirecast-live-encoder.md).
 
-## <a name="newtek-tricaster"></a>NewTek čase
-Informace o tom, jak nakonfigurovat [čase](http://newtek.com/products/tricaster-40.html) najdete v části ke odesílat živý datový proud s jednou přenosovou rychlostí do kanálu AMS [konfigurace čase](media-services-configure-tricaster-live-encoder.md).
+## <a name="newtek-tricaster"></a>Kodér NewTek TriCaster
+Informace o tom, jak nakonfigurovat [Tricaster](http://newtek.com/products/tricaster-40.html) naleznete v tématu kodér odesílat živý datový proud s jednou přenosovou rychlostí do kanálu AMS [konfigurace Tricaster](media-services-configure-tricaster-live-encoder.md).
+
+## <a name="elemental-live"></a>Elemental Live
+Další informace najdete v tématu [Elemental Live](http://www.elementaltechnologies.com/products/elemental-live).
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -46,5 +46,5 @@ Informace o tom, jak nakonfigurovat [čase](http://newtek.com/products/tricaster
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Další informace najdete v tématech
-[Živé streamování využívající Azure Media Services k vytvářejí proudy s více přenosovými rychlostmi](media-services-manage-live-encoder-enabled-channels.md).
+[Živé streamování využívající službu Azure Media Services k vytvoření datových proudů s více přenosovými rychlostmi](media-services-manage-live-encoder-enabled-channels.md).
 

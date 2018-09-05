@@ -5,17 +5,17 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 09/01/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: c2d0f14bca2b9ab062c61407479ab45a0104ff0a
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 0408b26e687dd31c408dbccc68f56e8198016c8f
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39716259"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43664784"
 ---
 # <a name="deploy-cloud-based-azure-multi-factor-authentication"></a>Nasazení cloudového ověřování Azure Multi-Factor Authentication
 
@@ -23,8 +23,8 @@ Začínáme se službou Azure Multi-Factor Authentication (Azure MFA) je jednodu
 
 Než začnete, ujistěte se, že jsou splněné následující požadavky:
 
-* Účet globálního správce ve vašem tenantovi Azure AD. Pokud potřebujete pomoc při dokončení tohoto kroku, najdete v našem článku [Začínáme s Azure AD](../get-started-azure-ad.md)
-* Správné licence přiřazené uživatelům. Pokud potřebujete další informace najdete v tématu [jak získat Azure Multi-Factor Authentication](concept-mfa-licensing.md)
+* Účet globálního správce ve vašem tenantovi Azure AD. Pokud potřebujete pomoc při dokončení tohoto kroku, najdete v našem článku [Začínáme s Azure AD](../get-started-azure-ad.md).
+* Správné licence přiřazené uživatelům. Pokud potřebujete další informace najdete v tématu [jak získat Azure Multi-Factor Authentication](concept-mfa-licensing.md).
 
 ## <a name="choose-how-to-enable"></a>Zvolte, jak povolit
 
@@ -32,7 +32,7 @@ Než začnete, ujistěte se, že jsou splněné následující požadavky:
 
 Povolená služba Azure AD Identity Protection - Tato metoda používá zásady rizik služby Azure AD Identity Protection a vyžadovat dvoustupňové ověřování jen podle rizika přihlašování pro všechny cloudové aplikace. Tato metoda vyžaduje licencování Azure Active Directory P2. Další informace o této metody můžete najít v [Azure Active Directory Identity Protection](../identity-protection/overview.md#risky-sign-ins).
 
-Povolené tak, že změníte uživatele stav - Toto je tradiční metody pro vyžadováním dvoustupňového ověřování. Funguje to i Azure MFA v cloudu a Azure MFA serveru. Pomocí této metody vyžaduje, aby uživatelé dvoustupňové ověřování **pokaždé, když** přihlásit a přepisuje zásady podmíněného přístupu. Další informace o této metody můžete najít v [vyžadování dvoustupňového ověřování pro uživatele](howto-mfa-userstates.md)
+Povolené tak, že změníte uživatele stav - Toto je tradiční metody pro vyžadováním dvoustupňového ověřování. Funguje to i Azure MFA v cloudu a Azure MFA serveru. Pomocí této metody vyžaduje, aby uživatelé dvoustupňové ověřování **pokaždé, když** přihlásit a přepisuje zásady podmíněného přístupu. Další informace o této metody můžete najít v [vyžadování dvoustupňového ověřování pro uživatele](howto-mfa-userstates.md).
 
 > [!Note]
 > Další informace o licencí a cenách najdete na [Azure AD](https://azure.microsoft.com/pricing/details/active-directory/

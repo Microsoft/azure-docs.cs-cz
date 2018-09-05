@@ -1,9 +1,9 @@
 ---
-title: Auto předávání entity pro zasílání zpráv Azure Service Bus | Microsoft Docs
-description: Jak řetězu fronty Service Bus nebo předplatné do jiné fronty nebo téma.
+title: Automatickým přeposíláním entity pro zasílání zpráv Azure Service Bus | Dokumentace Microsoftu
+description: Jak řetězit frontu služby Service Bus nebo předplatné do jiné fronty nebo tématu.
 services: service-bus-messaging
 documentationcenter: na
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: f7060778-3421-402c-97c7-735dbf6a61e8
@@ -13,21 +13,21 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/22/2018
-ms.author: sethm
-ms.openlocfilehash: be23d919b0c96d6c9b96ee328d1b18ad978a9dcc
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.author: spelluru
+ms.openlocfilehash: 563fa6f38bb5baffb9a4ae86f944b7597d325d30
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/24/2018
-ms.locfileid: "29558088"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43698991"
 ---
-# <a name="chaining-service-bus-entities-with-auto-forwarding"></a>Řetězení entit služby Service Bus s automatické přesměrování
+# <a name="chaining-service-bus-entities-with-auto-forwarding"></a>Řetězení entit služby Service Bus s automatickým přeposíláním
 
-Service Bus *automatické přesměrování* funkce vám umožní řetězit k fronty nebo předplatné do jiné fronty nebo téma, které je součástí stejného oboru názvů. Pokud je povoleno automatické přesměrování, Service Bus automaticky odebere zprávy, které jsou umístěny v první fronty nebo předplatné (zdroj) a umístí je do druhé fronta nebo téma (cíl). Všimněte si, že je stále možné odeslat zprávu do cílové entity přímo. Navíc není možné zřetězit dílčí fronta, jako je například fronty nedoručených zpráv, do jiné fronty nebo téma.
+Service Bus *automatickým přeposíláním* funkce vám umožní řetězit k fronty nebo odběru do jiné fronty nebo tématu, který je součástí stejný obor názvů. Pokud je automatické přeposílání povoleno, Service Bus automaticky odebere zprávy, které jsou umístěné v první frontě nebo odběru (zdroj) a vloží je do druhé fronty nebo tématu (cíl). Všimněte si, že je stále možné přímo odeslání zprávy do cílové entity. Kromě toho není možné zřetězit dílčí, jako jsou fronty nedoručených zpráv, do jiné fronty nebo tématu.
 
-## <a name="using-auto-forwarding"></a>Pomocí automatické přesměrování
+## <a name="using-auto-forwarding"></a>Pomocí automatickým přeposíláním
 
-Můžete povolit automatické přesměrování nastavením [QueueDescription.ForwardTo] [ QueueDescription.ForwardTo] nebo [SubscriptionDescription.ForwardTo] [ SubscriptionDescription.ForwardTo] vlastnosti [QueueDescription] [ QueueDescription] nebo [SubscriptionDescription] [ SubscriptionDescription] objekty pro zdroj, jako v Následující příklad:
+Můžete povolit automatickým přeposíláním nastavením [QueueDescription.ForwardTo] [ QueueDescription.ForwardTo] nebo [SubscriptionDescription.ForwardTo] [ SubscriptionDescription.ForwardTo] vlastnosti [QueueDescription] [ QueueDescription] nebo [SubscriptionDescription] [ SubscriptionDescription] objekty pro zdroj, stejně jako Následující příklad:
 
 ```csharp
 SubscriptionDescription srcSubscription = new SubscriptionDescription (srcTopic, srcSubscriptionName);
@@ -35,37 +35,37 @@ srcSubscription.ForwardTo = destTopic;
 namespaceManager.CreateSubscription(srcSubscription));
 ```
 
-Cílová entita musí existovat v době, kdy se vytvoří zdrojové entity. Pokud Cílová entita neexistuje, vrátí se Service Bus výjimku, pokud se zobrazí výzva k vytvoření zdrojové entitě.
+Cílová entita musí existovat v době, kdy se vytvoří zdrojové entity. Pokud Cílová entita neexistuje, vrátí služby Service Bus výjimku, když se zobrazí výzva k vytvoření zdrojové entity.
 
-Automatické přesměrování můžete škálovat jednotlivé tématu. Omezení služby Service Bus [počet předplatných na dané téma](service-bus-quotas.md) na 2 000. Další odběry zvládne vytvořením témata druhé úrovně. I když Service Bus omezení nejsou vázány na počet odběrů, přidání druhou úroveň témata může zvýšit celkovou propustnost téma.
+Automatickým přeposíláním můžete horizontálně navýšit kapacitu jednotlivých tématu. Omezení služby Service Bus [počet předplatných na dané téma](service-bus-quotas.md) do 2000. Další předplatná můžete přizpůsobit tak, že vytvoříte témata druhé úrovně. I v případě, že Service Bus omezení nejsou vázány na počet předplatných, přidává druhou úroveň témata zlepšují celkovou propustnost vašeho tématu.
 
-![Scénáře automatické přesměrování][0]
+![Scénář automatickým přeposíláním][0]
 
-Můžete taky automaticky předávání oddělit odesílatelé zpráv z příjemců. Představte si třeba ERP systém, který se skládá ze tří modulů: pořadí zpracování, Správa inventáře a řízení vztahů se zákazníky. Každý z těchto modulů generuje zprávy, které jsou zařazených do fronty do příslušné téma. Alice a Bob jsou obchodní zástupce, kteří se chtějí všechny zprávy, které se vztahují ke svým zákazníkům. Aby se tyto zprávy Alice a Bob vytvořit osobní fronty a odběru na každém ERP témat, která automaticky předávat všechny zprávy do jejich fronty.
+Můžete také použít automatickým přeposíláním oddělit odesílatelé zpráv od příjemce. Představte si třeba ERP systémem, který se skládá ze tří modulů: pořadí zpracování, řízení zásob a řízení vztahů se zákazníky. Každý z těchto modulů generuje zprávy, které jsou ve frontě do příslušné téma. Alice a Bob jsou obchodní zástupci, které zajímá všechny zprávy, které se vztahují na zákazníky. Pro příjem těchto zpráv, Alice a Bob vytvořit osobní fronty a předplatné na každé z témat ERP, které automaticky předávat všechny zprávy do jejich fronty.
 
-![Scénáře automatické přesměrování][1]
+![Scénář automatickým přeposíláním][1]
 
-Pokud Alice přejde na dovolenou, svůj osobní fronty, nikoli tématu ERP, zaplní. V tomto scénáři protože obchodním zástupcem neobdržel všechny zprávy žádné témat ERP někdy dosáhnout kvóty.
+Pokud Alice přejde na dovolenou, své osobní fronty, nikoli tématu ERP, zaplní. V tomto scénáři protože obchodní zástupce nedostal žádné zprávy, žádná témata ERP někdy dosažení kvóty.
 
-## <a name="auto-forwarding-considerations"></a>Důležité informace o automatické přesměrování
+## <a name="auto-forwarding-considerations"></a>Důležité informace o automatickým přeposíláním
 
-Pokud Cílová entita shromažďuje příliš mnoho zpráv a překročí kvótu nebo Cílová entita je zakázaná, přidá zdrojové entitě zprávy na jeho [frontu nedoručených zpráv](service-bus-dead-letter-queues.md) dokud není místa v cílovém (nebo entita je znovu povolit). Tyto zprávy se nadále za provozu do fronty nedoručených zpráv, takže se musí explicitně zobrazí a jejich zpracování z fronty nedoručených zpráv.
+Pokud Cílová entita nahromadí příliš velkého počtu zpráv a překračuje kvótu nebo Cílová entita je zakázaná, zdrojové entitě přidá zprávy, které mají jeho [fronty nedoručených zpráv](service-bus-dead-letter-queues.md) až do místa v cílovém umístění (nebo entitu nebude znovu povoleno). Tyto zprávy se nadále live ve frontě nedoručených zpráv, takže se musí explicitně zobrazí a jejich zpracování z fronty nedoručených zpráv.
 
-Pokud řetězení společně jednotlivých témata získat složené téma se mnoho odběrů, doporučuje se, že máte středně velkým počtem odběry tématu první úrovně a mnoho odběrů na témata druhé úrovně. Například téma první úrovně se 20 odběry, každý z nich zřetězené téma druhé úrovně se 200 odběry, umožňuje vyšší propustnost než první úrovně téma se 200 odběry, každý zřetězené do tématu druhé úrovně s 20 odběry.
+Při zřetězení jednotlivá témata k získání složené téma s mnoha předplatnými, doporučuje se, že máte střední počet odběrů na téma na první úrovni a mnoha předplatná na témata druhé úrovně. Například téma první úrovně 20 předplatná, každý z nich připojený k tématu druhé úrovně se 200 odběry, umožňuje vyšší propustnost než tématu první úrovně se 200 odběry, každý připojený k tématu druhé úrovně se 20 odběry.
 
-Service Bus bills jednu operaci pro každý přesměrovaná zpráva. Například odesílání zprávy do tématu s 20 odběry, každý z nich nakonfigurovat tak, aby automaticky předání zprávy do jiné fronty nebo téma, se fakturuje jako 21 operace Pokud všechny odběry první úrovně obdrží kopii zprávy.
+Service Bus se účtuje jedna operace pro každou přesměrovaná zpráva. Například odeslání zprávy do tématu s 20 předplatnými, každý z nich nakonfigurovat tak, aby auto-forward zprávy do jiné fronty nebo tématu, se účtuje jako 21 operace Pokud všechna předplatná na první úrovni obdrží kopii zprávy.
 
-Chcete-li vytvořit odběr, který je zřetězené do jiné fronty nebo téma, musí mít Tvůrce odběru **spravovat** oprávnění na zdrojovém i cílovém entity. Odesílání zpráv do tématu zdroj vyžaduje pouze **odeslat** oprávnění k tématu zdroje.
+Jak vytvoříte odběr, který je zřetězené do jiné fronty nebo tématu, musíte mít Tvůrce odběru **spravovat** oprávnění pro zdrojové i cílové entity. Odesílání zpráv do tématu zdroje vyžaduje pouze **odeslat** oprávnění k danému tématu zdroje.
 
 ## <a name="next-steps"></a>Další postup
 
-Podrobné informace o automatické přesměrování najdete v těchto tématech:
+Podrobné informace o automatickým přeposíláním najdete v následujících tématech:
 
 * [ForwardTo][QueueDescription.ForwardTo]
 * [QueueDescription][QueueDescription]
 * [SubscriptionDescription][SubscriptionDescription]
 
-Další informace o vylepšení výkonu služby Service Bus, najdete v části 
+Další informace o vylepšení výkonu služby Service Bus, najdete v článku 
 
 * [Osvědčené postupy pro zlepšení výkonu pomocí zasílání zpráv Service Bus](service-bus-performance-improvements.md)
 * [Segmentované entity zasílání zpráv][Partitioned messaging entities].

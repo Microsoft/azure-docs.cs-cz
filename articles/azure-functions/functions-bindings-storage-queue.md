@@ -4,7 +4,7 @@ description: Pochopit, jak použít aktivační událost Azure Queue storage a v
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: cfowler
+manager: jeconnoc
 editor: ''
 tags: ''
 keywords: Azure functions, funkce, zpracování událostí, dynamické výpočty, architektura bez serveru
@@ -13,15 +13,15 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 10/23/2017
+ms.date: 09/03/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: b2a8e4b5310f1b5d6a13e9d23efff1751410e171
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 996a53751d6b8c6dd06084da371badb0c31d367f
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43287642"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43667515"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure Queue storage vazby pro službu Azure Functions
 
@@ -39,9 +39,9 @@ Vazby front úložiště jsou součástí [Microsoft.Azure.WebJobs](http://www.n
 
 ## <a name="packages---functions-2x"></a>Balíčky – funkce 2.x
 
-Vazby front úložiště jsou součástí [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) balíčku NuGet, verze 3.x. Zdrojový kód pro tento balíček je v [sadu sdk azure webjobs](https://github.com/Azure/azure-webjobs-sdk/tree/master/src/Microsoft.Azure.WebJobs.Storage/Queue) úložiště GitHub.
+Vazby front úložiště jsou součástí [Microsoft.Azure.WebJobs.Extensions.Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) balíčku NuGet, verze 3.x. Zdrojový kód pro tento balíček je v [sadu sdk azure webjobs](https://github.com/Azure/azure-webjobs-sdk/tree/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Queues) úložiště GitHub.
 
-[!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
+[!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
 ## <a name="trigger"></a>Trigger
 

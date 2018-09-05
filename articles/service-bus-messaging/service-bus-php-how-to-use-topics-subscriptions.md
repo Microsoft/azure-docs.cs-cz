@@ -3,7 +3,7 @@ title: Jak používat témata služby Service Bus pomocí PHP | Dokumentace Micr
 description: Zjistěte, jak používat témata služby Service Bus pomocí PHP v Azure.
 services: service-bus-messaging
 documentationcenter: php
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: faaa4bbd-f6ef-42ff-aca7-fc4353976449
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
 ms.date: 10/06/2017
-ms.author: sethm
-ms.openlocfilehash: 4763b172375668213372e6f4f8fc87431c430e53
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.author: spelluru
+ms.openlocfilehash: 9901b485b97ecde2de889796fc682db3ee30c544
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38561316"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43701391"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-php"></a>Jak používat témata a odběry Service Bus pomocí PHP
 

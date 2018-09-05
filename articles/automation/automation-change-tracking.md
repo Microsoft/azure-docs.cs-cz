@@ -6,16 +6,16 @@ ms.service: automation
 ms.component: change-inventory-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 08/27/2018
+ms.date: 08/31/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8066612db20d1569920835a67d84b27d1b852e6e
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 0707726ec86b0a0c69d1ec752ebd6761327f3f0f
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128122"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43669479"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Sledování změn ve vašem prostředí pomocí řešení Change Tracking
 
@@ -27,8 +27,7 @@ Změny nainstalovaného softwaru, služby Windows, Windows registru a souborů a
 
 Pro agenta Windows se oficiálně podporuje následující verze operačního systému Windows:
 
-* Windows Server 2008 Service Pack 1 (SP1) nebo novější
-* Windows 7 SP1 a novější.
+* Windows Server 2008 R2 nebo novější
 
 ## <a name="supported-linux-operating-systems"></a>Podporované operační systémy a Linux
 
@@ -47,8 +46,8 @@ Následující Linuxových distribucích se oficiálně podporuje. Agenta pro Li
 Pokud chcete začít, sledování změn, je potřeba povolit řešení Change Tracking a Inventory pro svůj účet Automation.
 
 1. Na webu Azure Portal přejděte na svůj účet služby Automation
-1. Vyberte **Change Tracking** pod **konfigurace**.
-1. Vyberte existující pracovní prostor Log analytics nebo **vytvořit nový pracovní prostor** a klikněte na tlačítko **povolit**.
+2. Vyberte **Change Tracking** pod **konfigurace**.
+3. Vyberte existující pracovní prostor Log analytics nebo **vytvořit nový pracovní prostor** a klikněte na tlačítko **povolit**.
 
 To umožňuje řešení pro svůj účet automation. Řešení může trvat až 15 minut na povolit. Modrý banner vás upozorní, když bude řešení povoleno. Přejděte zpět **řešení Change Tracking** stránky pro správu řešení.
 

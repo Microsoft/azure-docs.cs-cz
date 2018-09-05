@@ -4,14 +4,14 @@ description: Nejčastější dotazy k Azure Migrate adresy
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/10/2018
+ms.date: 09/03/2018
 ms.author: snehaa
-ms.openlocfilehash: 3f035f38b1ad68e9e39d151ffad3fc650a0a1d80
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: ce9dc4aab26b99bbb1e9f24f018354b8c91f66f4
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37952745"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43699960"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate – nejčastější dotazy (FAQ)
 
@@ -114,7 +114,7 @@ Aktuálně neexistuje žádná integrace. Na. Šablony pro soubory OVA ve služb
 
 ### <a name="i-changed-my-machine-size-can-i-rerun-the-assessment"></a>Můžu změnit svoji velikost počítače. Můžete znovu spustit posouzení?
 
-Pokud změníte nastavení na virtuálním počítači, kterou chcete posoudit, aktivační události zjišťování znovu pomocí zařízení kolektoru. V zařízení, použijte **spustit shromažďování znovu** možnost to udělat. Po dokončení kolekce, vyberte **přepočítat** možnost pro posouzení na portálu, zobrazíte výsledky posouzení aktualizované.
+Pokud změníte nastavení na virtuálním počítači, kterou chcete posoudit, aktivační události zjišťování znovu pomocí zařízení kolektoru. V zařízení, použijte **spustit shromažďování znovu** možnost to udělat. Jakmile se shromažďování dokončí, vyberte možnost **Přepočítat** pro posouzení na portálu. Zobrazíte tak aktualizované výsledky posouzení.
 
 ### <a name="how-can-i-discover-a-multi-tenant-environment-in-azure-migrate"></a>Jak lze zjistit prostředí s více tenanty ve službě Azure Migrate?
 
@@ -123,6 +123,12 @@ Pokud máte prostředí, které se sdílejí napříč tenanty a nechcete ke zji
 ### <a name="how-many-virtual-machines-can-be-discovered-in-a-single-migration-project"></a>Kolik virtuálních počítačů se dají zjistit ve jedna migrace projektu?
 
 Je možné vyhledat 1 500 virtuálních počítačů v jedné migrace projektu. Pokud máte další počítače ve vašem místním prostředí [Další](how-to-scale-assessment.md) o způsob, jak můžete zjišťovat velký prostředí ve službě Azure Migrate.
+
+### <a name="does-azure-migrate-support-enterprise-agreement-ea-based-cost-estimation"></a>Odhad nákladů podpory Azure Migrate na základě smlouvy Enterprise (EA)?
+
+Azure Migrate aktuálně nepodporuje odhad nákladů pro [nabídky Enterprise Agreement](https://azure.microsoft.com/offers/enterprise-agreement-support/). Alternativním řešením je zadat jako nabídky a ručně určení procento slevy (platí pro předplatné) v poli "Slevy" vlastnosti posouzení s průběžnými platbami.
+
+  ![Sleva](./media/resources-faq/discount.png)
 
 ## <a name="dependency-visualization"></a>Vizualizace závislostí
 

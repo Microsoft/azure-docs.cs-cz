@@ -1,9 +1,9 @@
 ---
-title: Kurz pro Azure předávání přes Service Bus WCF | Microsoft Docs
-description: Vytvoření aplikace klienta a služby pomocí přenosového WCF.
+title: Kurz služby Azure Service Bus WCF Relay | Dokumentace Microsoftu
+description: Vytvoření aplikace klienta a služby pomocí WCF Relay.
 services: service-bus-relay
 documentationcenter: na
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: 53dfd236-97f1-4778-b376-be91aa14b842
@@ -13,19 +13,19 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
-ms.author: sethm
-ms.openlocfilehash: 82e26571c88460436e6ca5ee70323cd680c82bdc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: spelluru
+ms.openlocfilehash: 0833a7ec71a0aea66f8ebfdfff81d88925019309
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34642304"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43701861"
 ---
-# <a name="azure-wcf-relay-tutorial"></a>Kurz pro Azure předávání WCF
+# <a name="azure-wcf-relay-tutorial"></a>Kurz pro Azure WCF Relay
 
-Tento kurz popisuje, jak sestavit jednoduchý klient WCF předávání aplikace a služby pomocí předávání přes Azure. Podobný kurz, který používá [zasílání zpráv Service Bus](../service-bus-messaging/service-bus-messaging-overview.md), najdete v části [začít pracovat s fronty Service Bus](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md).
+Tento kurz popisuje, jak vytvořit jednoduchý klienta WCF Relay, aplikace a služby pomocí Azure Relay. Podobný kurz, který používá [zasílání zpráv Service Bus](../service-bus-messaging/service-bus-messaging-overview.md), naleznete v tématu [Začínáme s frontami služby Service Bus](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md).
 
-Absolvování tohoto kurzu pochopíte kroky, které jsou potřeba k vytvoření aplikace klienta a služby WCF předávání. Stejně jako jejich původní protějšky WCF je služba konstrukce, která vystavuje jeden nebo více koncových bodů, každý z nich vystavuje jednu nebo víc operací služeb. Koncový bod služby specifikuje adresu, kde se dá služba najít, vazbu, která obsahuje informaci, že klient musí komunikovat se službou, a kontrakt, který definuje funkci, kterou služba klientovi poskytuje. Hlavní rozdíl mezi WCF a předávací WCF je, že koncový bod vystavený v cloudu, a ne místně na vašem počítači.
+Absolvování tohoto kurzu pochopíte kroky, které jsou potřeba pro vytvoření aplikace klienta a služby WCF Relay. Stejně jako jejich protějšky původní WCF je služba konstrukci, která poskytuje jeden nebo více koncových bodů, každý z nich vystavuje jednu nebo víc operací služeb. Koncový bod služby specifikuje adresu, kde se dá služba najít, vazbu, která obsahuje informaci, že klient musí komunikovat se službou, a kontrakt, který definuje funkci, kterou služba klientovi poskytuje. Hlavní rozdíl mezi WCF a WCF Relay je, že je koncový bod vystavený v cloudu, a ne místně na vašem počítači.
 
 Po dokončení řady témat v tomto kurzu budete mít funkční službu a klienta, který může vyvolat operace této služby. První téma popisuje, jak vytvořit účet. V dalších krocích se popisuje, jak definovat službu, která používá kontrakt, jak tuto službu implementovat a jak službu konfigurovat pomocí kódu. Taky se v nich popisuje, jak hostovat a spustit službu. Vytvořená služba se hostuje sama a klient a služba běží na stejném počítači. Službu můžete konfigurovat pomocí kódu nebo konfiguračního souboru.
 
@@ -40,22 +40,22 @@ K absolvování tohoto kurzu potřebujete:
 
 ## <a name="create-a-service-namespace"></a>Vytvoření oboru názvů služby
 
-Prvním krokem je vytvoření oboru názvů a získat [sdíleného přístupového podpisu (SAS)](../service-bus-messaging/service-bus-sas.md) klíč. Obor názvů aplikaci poskytuje hranice pro každou aplikaci vystavenou přes službu předávání. Systém automaticky vygeneruje SAS klíč při vytvoření oboru názvů služby. Kombinace oboru názvů služby a klíče SAS poskytuje pověření, kterým Azure k ověření přístupu k aplikaci. Pokud chcete vytvořit obor názvů Relay, postupujte podle [těchto pokynů](relay-create-namespace-portal.md).
+Prvním krokem je vytvoření oboru názvů a získat [sdíleného přístupového podpisu (SAS)](../service-bus-messaging/service-bus-sas.md) klíč. Obor názvů aplikaci poskytuje hranice pro každou aplikaci vystavenou přes službu relay. Systém automaticky vygeneruje SAS klíč při vytvoření oboru názvů služby. Kombinace oboru názvů služby a klíče SAS poskytuje přihlašovací údaje pro Azure k ověření přístupu k aplikaci. Pokud chcete vytvořit obor názvů Relay, postupujte podle [těchto pokynů](relay-create-namespace-portal.md).
 
 ## <a name="define-a-wcf-service-contract"></a>Definování kontraktu služby WCF
 
 Kontrakt služby specifikuje, jaké operace (termín webových služeb pro metody nebo funkce) služba podporuje. Kontrakty se vytvoří definováním základního rozhraní C++, C# nebo Visual Basic. Každá metoda v rozhraní odpovídá konkrétní operaci služby. Na každé rozhraní musí mít aplikovaný atribut [ServiceContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicecontractattribute.aspx) a na každou operace musí byt aplikovaný atribut [OperationContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.operationcontractattribute.aspx). Pokud metoda v rozhraní, které má atribut [ServiceContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.servicecontractattribute.aspx), nemá atribut [OperationContractAttribute](https://msdn.microsoft.com/library/system.servicemodel.operationcontractattribute.aspx), taková metoda se nevystaví. Kód k těmto úlohám najdete v příkladu za postupem. Podrobnější diskuzi o kontraktech a službách najdete v dokumentaci WCF v části [Návrh a implementace služeb](https://msdn.microsoft.com/library/ms729746.aspx).
 
-### <a name="create-a-relay-contract-with-an-interface"></a>Vytvoření kontraktu předávání s rozhraním
+### <a name="create-a-relay-contract-with-an-interface"></a>Vytvoření kontraktu relay s rozhraní
 
 1. Otevřete Visual Studio jako správce tak, že v nabídce **Start** kliknete na program pravým tlačítkem a vyberete možnost **Spustit jako správce**.
-2. Vytvořte nový projekt konzolové aplikace. Klikněte na nabídku **Soubor** a vyberte možnost **Nový**, a pak klikněte na **Projekt**. V dialogu **Nový projekt** klikněte na **Visual C#** (pokud se **Visual C#** nezobrazí, podívejte se do části **Jiné jazyky**). Klikněte **konzolovou aplikaci (rozhraní .NET Framework)** šablony a pojmenujte ji **EchoService**. Projekt vytvoříte kliknutím na **OK**.
+2. Vytvořte nový projekt konzolové aplikace. Klikněte na nabídku **Soubor** a vyberte možnost **Nový**, a pak klikněte na **Projekt**. V dialogu **Nový projekt** klikněte na **Visual C#** (pokud se **Visual C#** nezobrazí, podívejte se do části **Jiné jazyky**). Klikněte na tlačítko **Konzolová aplikace (.NET Framework)** šablony a pojmenujte ho **EchoService**. Projekt vytvoříte kliknutím na **OK**.
 
     ![][2]
 
 3. Nainstalujte balíček Service Bus NuGet. Tento balíček automaticky přidá reference na knihovny Service Bus a WCF **System.ServiceModel**. [System.ServiceModel](https://msdn.microsoft.com/library/system.servicemodel.aspx) je obor názvů, který vám umožňuje programový přístup k základním funkcím WCF. Service Bus používá mnoho objektů a atributů WCF k definování kontraktů služby.
 
-    V Průzkumníku řešení klikněte pravým tlačítkem na projekt a pak klikněte na tlačítko **spravovat balíčky NuGet...** . Klikněte na kartu **Procházet** a pak vyhledejte **WindowsAzure.ServiceBus**. Zkontrolujte, že je v části **Verze** označený název projektu. Klikněte na **Instalovat** a přijměte podmínky použití.
+    V Průzkumníku řešení klikněte pravým tlačítkem myši na projekt a potom klikněte na tlačítko **spravovat balíčky NuGet...** . Klikněte na kartu **Procházet** a pak vyhledejte **WindowsAzure.ServiceBus**. Zkontrolujte, že je v části **Verze** označený název projektu. Klikněte na **Instalovat** a přijměte podmínky použití.
 
     ![][3]
 4. V Průzkumníku řešení poklikejte na soubor Program.cs a pokud ještě není otevřený, otevře se v editoru Visual Studio.
@@ -68,10 +68,10 @@ Kontrakt služby specifikuje, jaké operace (termín webových služeb pro metod
 6. Změňte název oboru názvů z výchozího názvu **EchoService** na **Microsoft.ServiceBus.Samples**.
 
    > [!IMPORTANT]
-   > Tento kurz používá obor názvů C# **Microsoft.ServiceBus.Samples**, které je obor názvů kontraktu základě spravovaný typ, který se používá v konfiguračním souboru v [konfigurace klienta WCF](#configure-the-wcf-client) krok. Při sestavování této ukázky můžete specifikovat jakýkoli obor názvů, který chcete – tento kurz ale bude fungovat jen tehdy, když odpovídajícím způsobem v konfiguračním souboru aplikace upravíte obor názvů kontraktu a služby. Obor názvů specifikovaný v souboru App.config musí být stejný jako obor názvů zadaný ve vašich souborech C#.
+   > Tento kurz používá obor názvů C# **Microsoft.ServiceBus.Samples**, které je obor názvů kontraktu podle typu, který se používá v konfiguračním souboru v spravované [konfigurace klienta WCF](#configure-the-wcf-client) krok. Při sestavování této ukázky můžete specifikovat jakýkoli obor názvů, který chcete – tento kurz ale bude fungovat jen tehdy, když odpovídajícím způsobem v konfiguračním souboru aplikace upravíte obor názvů kontraktu a služby. Obor názvů specifikovaný v souboru App.config musí být stejný jako obor názvů zadaný ve vašich souborech C#.
    >
    >
-7. Přímo po `Microsoft.ServiceBus.Samples` deklaraci oboru názvů, ale v rámci oboru názvů definujte nové rozhraní s názvem `IEchoContract` a použít `ServiceContractAttribute` atribut rozhraní s hodnotou oboru názvů `http://samples.microsoft.com/ServiceModel/Relay/`. Hodnota oboru názvů se liší od oboru názvů, které používáte v celém svém kódu. Místo toho se obor názvů používá jako jedinečný identifikátor pro tento kontrakt. Když explicitně zadáte obor názvů, zabráníte tím přidání výchozí hodnoty oboru názvů do názvu kontraktu. Vložte následující kód po deklaraci oboru názvů:
+7. Přímo po `Microsoft.ServiceBus.Samples` deklarace oboru názvů, ale v rámci oboru názvů definujte nové rozhraní s názvem `IEchoContract` a použít `ServiceContractAttribute` atribut rozhraní s hodnotou oboru názvů `http://samples.microsoft.com/ServiceModel/Relay/`. Hodnota oboru názvů se liší od oboru názvů, které používáte v celém svém kódu. Místo toho se obor názvů používá jako jedinečný identifikátor pro tento kontrakt. Když explicitně zadáte obor názvů, zabráníte tím přidání výchozí hodnoty oboru názvů do názvu kontraktu. Po deklaraci oboru názvů, vložte následující kód:
 
     ```csharp
     [ServiceContract(Name = "IEchoContract", Namespace = "http://samples.microsoft.com/ServiceModel/Relay/")]
@@ -84,7 +84,7 @@ Kontrakt služby specifikuje, jaké operace (termín webových služeb pro metod
    > Obor názvů kontraktu služby obvykle obsahuje schéma pojmenování s informacemi o verzi. Informace o verzi, které jsou v oboru názvů kontraktu služby, službám umožňuje službám izolovat výrazné změny pomocí definice nové služby s novým oborem názvů, která bude vystavená na novém koncovém bodu. Tímto způsobem můžete dál používat starého kontraktu služby bez nutnosti ho aktualizovat klienty. Informace o verzi může mít podobu data nebo čísla sestavení. Další informace najdete v článku o [Správa verzí služeb](http://go.microsoft.com/fwlink/?LinkID=180498). Pro účely tohoto kurzu nebude mít schéma pojmenování oboru názvů kontraktu služby žádné informace o verzi.
    >
    >
-8. V rámci `IEchoContract` rozhraní, deklarujte metodu pro jednu operaci `IEchoContract` kontrakt vystaví v rozhraní a aplikujte `OperationContractAttribute` atribut metodu, kterou chcete vystavit v rámci veřejného kontraktu WCF předávání, následujícím způsobem:
+8. V rámci `IEchoContract` rozhraní, deklarujte metodu pro jednu operaci `IEchoContract` kontrakt vystaví v rozhraní a použít `OperationContractAttribute` atribut do metody, kterou chcete vystavit v rámci veřejného kontraktu WCF Relay, následujícím způsobem:
 
     ```csharp
     [OperationContract]
@@ -101,7 +101,7 @@ Kontrakt služby specifikuje, jaké operace (termín webových služeb pro metod
 
 ### <a name="example"></a>Příklad:
 
-Následující kód ukazuje základní rozhraní, které definuje kontrakt předávání WCF.
+Následující kód ukazuje základní rozhraní, který definuje kontrakt WCF Relay.
 
 ```csharp
 using System;
@@ -131,7 +131,7 @@ Když je teď vytvořené rozhraní, můžete ho implementovat.
 
 ## <a name="implement-the-wcf-contract"></a>Implementace kontraktu WCF
 
-Vytvoření Azure předávání vyžaduje, abyste nejdřív vytvořili kontrakt, který se definuje pomocí rozhraní. Další informace o vytváření rozhraní najdete v předchozím kroku. Dalším krokem je implementace rozhraní. K tomu patří vytvoření třídy s názvem `EchoService`, která implementuje uživatelsky definované rozhraní `IEchoContract`. Po implementaci rozhraní nakonfigurujete rozhraní pomocí souboru App.config. Konfigurační soubor obsahuje nezbytné informace pro aplikaci, například název služby, název kontraktu a typ protokolu, který se používá ke komunikaci se službou předávání. Kód použitý k těmto úlohám najdete v příkladu za postupem. Obecnější diskuzi o způsobu implementace kontraktu služby najdete v dokumentaci WCF [Implementace kontraktů služby](https://msdn.microsoft.com/library/ms733764.aspx).
+Vytvoření Azure relay vyžaduje, abyste nejdřív vytvořili kontrakt, který se definuje pomocí rozhraní. Další informace o vytváření rozhraní najdete v předchozím kroku. Dalším krokem je implementace rozhraní. K tomu patří vytvoření třídy s názvem `EchoService`, která implementuje uživatelsky definované rozhraní `IEchoContract`. Po implementaci rozhraní nakonfigurujete rozhraní pomocí souboru App.config. Konfigurační soubor obsahuje informace potřebné pro aplikaci, jako je název služby, název kontraktu a typ protokolu, který se používá ke komunikaci se službou relay. Kód použitý k těmto úlohám najdete v příkladu za postupem. Obecnější diskuzi o způsobu implementace kontraktu služby najdete v dokumentaci WCF [Implementace kontraktů služby](https://msdn.microsoft.com/library/ms733764.aspx).
 
 1. Vytvořte novou třídu s názvem `EchoService` přímo po definování rozhraní `IEchoContract`. Třída `EchoService` implementuje rozhraní `IEchoContract`.
 
@@ -163,10 +163,10 @@ Vytvoření Azure předávání vyžaduje, abyste nejdřív vytvořili kontrakt,
 
 ### <a name="define-the-configuration-for-the-service-host"></a>Definice konfigurace hostitele služby
 
-1. Konfigurační soubor je velmi podobný konfiguračnímu souboru WCF. Obsahuje název služby, koncový bod (to znamená, umístění, které Azure předávání vystaví pro klienty a hostiteli pro komunikaci mezi sebou) a vazbu (typ protokolu používaný pro komunikaci). Hlavní rozdíl je v tom, že nakonfigurovaný koncový bod služby odkazuje na vazbu [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding), která není součástí architektury .NET Framework. [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) je jedna z vazeb definovaných službou.
+1. Konfigurační soubor je velmi podobný konfiguračnímu souboru WCF. Obsahuje název služby, koncový bod (to znamená, umístění, které Azure Relay vystaví pro klienty a hostitele ke komunikaci mezi sebou) a vazbu (typ protokolu používaný pro komunikaci). Hlavní rozdíl je v tom, že nakonfigurovaný koncový bod služby odkazuje na vazbu [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding), která není součástí architektury .NET Framework. [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) je jedna z vazeb definovaných prostředím služby.
 2. V **Průzkumníku řešení** poklikejte na soubor App.config a otevře se v editoru Visual Studio.
 3. V elementu `<appSettings>` nahraďte zástupné texty názvem svého oboru názvů a klíčem SAS, který jste zkopírovali v jednom z předchozích kroků.
-4. Ve značkách `<system.serviceModel>` přidejte element `<services>`. V jednom konfiguračním souboru můžete definovat více aplikacích s předáváním. V tomto kurzu se ale definuje jen jedna.
+4. Ve značkách `<system.serviceModel>` přidejte element `<services>`. Můžete definovat více aplikacích s předáváním v jednom konfiguračním souboru. V tomto kurzu se ale definuje jen jedna.
 
     ```xml
     <?xmlversion="1.0"encoding="utf-8"?>
@@ -190,7 +190,7 @@ Vytvoření Azure předávání vyžaduje, abyste nejdřív vytvořili kontrakt,
     <endpoint contract="Microsoft.ServiceBus.Samples.IEchoContract" binding="netTcpRelayBinding"/>
     ```
 
-    Koncový bod definuje, kde bude klient hledat hostitelskou aplikaci. Kurz později použije tento krok k vytvoření adresu URI, která plně vystavuje hostitele přes předávání přes Azure. Vazba deklaruje, že se používá TCP jako protokol pro komunikaci se službou předávání přes.
+    Koncový bod definuje, kde bude klient hledat hostitelskou aplikaci. Tento kurz později použije tento krok vytvořit identifikátor URI, která plně vystavuje hostitele přes Azure Relay. Vazba deklaruje, že ke komunikaci se službou relay používáme protokol TCP jako protokol.
 7. V nabídce **Sestavení** klikněte na **Sestavit řešení** a zkontrolujte přesnost své práce.
 
 ### <a name="example"></a>Příklad:
@@ -231,11 +231,11 @@ Následující kód ukazuje základní formát souboru App.config přidruženéh
 </configuration>
 ```
 
-## <a name="host-and-run-a-basic-web-service-to-register-with-the-relay-service"></a>Hostování a spuštění základní webové služby pro registraci ve službě předávání
+## <a name="host-and-run-a-basic-web-service-to-register-with-the-relay-service"></a>Hostování a spuštění základní webové služby pro registraci ve službě relay
 
-Tento krok popisuje, jak spustit služby předávání přes Azure.
+Tento krok popisuje, jak spouštět služby Azure Relay.
 
-### <a name="create-the-relay-credentials"></a>Vytvořit přihlašovací údaje předávání
+### <a name="create-the-relay-credentials"></a>Vytvořte přihlašovací údaje relay
 
 1. V `Main()` vytvořte dvě proměnné, do kterých se uloží obor názvů a klíč SAS načtené z okna konzoly.
 
@@ -256,7 +256,7 @@ Tento krok popisuje, jak spustit služby předávání přes Azure.
 
 ### <a name="create-a-base-address-for-the-service"></a>Vytvoření bázové adresy pro službu
 
-Po kódu, které jste přidali v posledním kroku, vytvořte `Uri` instance pro bázovou adresu služby. Toto URI specifikuje schéma Service Bus, obor názvů a cestu rozhraní služby.
+Po kódu přidaném v předchozím kroku, vytvořte `Uri` instance pro bázovou adresu služby. Toto URI specifikuje schéma Service Bus, obor názvů a cestu rozhraní služby.
 
 ```csharp
 Uri address = ServiceBusEnvironment.CreateServiceUri("sb", serviceNamespace, "EchoService");
@@ -274,7 +274,7 @@ V tomto kurzu je URI `sb://putServiceNamespaceHere.windows.net/EchoService`.
     ServiceBusEnvironment.SystemConnectivity.Mode = ConnectivityMode.AutoDetect;
     ```
 
-    Režim připojení popisuje, protokol, služba se používá ke komunikaci se službou předávání přes; pomocí protokolu HTTP nebo TCP. Pomocí výchozího nastavení `AutoDetect`, služba se pokusí připojit k předávání přes Azure přes TCP, pokud je k dispozici a HTTP, pokud TCP není k dispozici. Všimněte si, že tu je rozdíl oproti protokolu, který služba specifikuje pro komunikaci klienta. Jeho protokol se určuje podle požité vazby. Například můžete použít službu [BasicHttpRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.basichttprelaybinding.aspx) vazba, která určuje, že její koncový bod s klienty komunikuje přes HTTP. Že stejné služba by mohla specifikovat **ConnectivityMode.AutoDetect** tak, aby služba komunikuje s Azure předávání přes protokol TCP.
+    Režim připojení popisuje protokol služba používá ke komunikaci se službou relay; pomocí protokolu HTTP nebo TCP. Pomocí výchozího nastavení `AutoDetect`, se služba pokusí připojit k Azure Relay přes TCP, pokud je k dispozici a HTTP, pokud TCP není k dispozici. Všimněte si, že tu je rozdíl oproti protokolu, který služba specifikuje pro komunikaci klienta. Jeho protokol se určuje podle požité vazby. Například můžete použít službu [BasicHttpRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.basichttprelaybinding.aspx) vazba, která určuje, že její koncový bod s klienty komunikuje přes HTTP. Aby mohli zadat stejnou službu **ConnectivityMode.AutoDetect** tak, aby služba komunikovala s Azure Relay přes TCP.
 2. Vytvořte hostitele služby pomocí URI, které jste předtím vytvořili v této části.
 
     ```csharp
@@ -294,7 +294,7 @@ V tomto kurzu je URI `sb://putServiceNamespaceHere.windows.net/EchoService`.
     IEndpointBehavior serviceRegistrySettings = new ServiceRegistrySettings(DiscoveryType.Public);
     ```
 
-    Tento krok informuje předávací služba, která vaše aplikace dá veřejně najít tak, že prověří ATOM kanálu pro váš projekt. Pokud **DiscoveryType** nastavíte na **private**, služba by pro klienta pořád byla dostupná. Službu však nebude se ale při prohledávání oboru názvů předávání. Místo toho by klient musel předem znát cestu ke koncovému bodu.
+    Tento krok informuje o tom, který vaše aplikace může dá veřejně najít tím, že kontroluje informační kanál pro váš projekt ATOM služby relay. Pokud **DiscoveryType** nastavíte na **private**, služba by pro klienta pořád byla dostupná. Služba však nezobrazí při hledání obor názvů služby Relay. Místo toho by klient musel předem znát cestu ke koncovému bodu.
 5. Použijte pověření služby na koncové body služby definované v souboru App.config:
 
     ```csharp
@@ -330,7 +330,7 @@ V tomto kurzu je URI `sb://putServiceNamespaceHere.windows.net/EchoService`.
 
 ### <a name="example"></a>Příklad:
 
-Kódu dokončené služby by měl vypadat takto. Kód obsahuje kontrakt a implementaci služby z předchozích kroků tohoto kurzu a hostuje službu v konzolové aplikaci.
+Váš kód dokončené služby by měl vypadat následovně. Kód obsahuje kontrakt a implementaci služby z předchozích kroků tohoto kurzu a hostuje službu v konzolové aplikaci.
 
 ```csharp
 using System;
@@ -408,17 +408,17 @@ namespace Microsoft.ServiceBus.Samples
 
 ## <a name="create-a-wcf-client-for-the-service-contract"></a>Vytvoření klienta WCF pro kontrakt služby
 
-Dalším krokem je vytvoření klientskou aplikaci a definování kontraktu služby, který implementujete v pozdějších krocích. Všimněte si, že hodně těchto kroků připomíná kroky k vytvoření služby: definování kontraktu, upravení App.config souboru, pomocí přihlašovacích údajů k připojení ke službě předávání a tak dále. Kód použitý k těmto úlohám najdete v příkladu za postupem.
+Dalším krokem je vytvoření klientské aplikace a definování kontraktu služby, který implementujete v pozdějších krocích. Všimněte si, že hodně těchto kroků připomíná kroky k vytvoření služby: definování kontraktu, upravení App.config soubor, pomocí přihlašovacích údajů pro připojení ke službě relay a tak dále. Kód použitý k těmto úlohám najdete v příkladu za postupem.
 
 1. Vytvořte pro klienta nový projekt v aktuálním řešení ve Visual Studiu, a to tímto postupem:
 
    1. V Průzkumníku řešení ve stejném řešení, které obsahuje službu, klikněte pravým tlačítkem na aktuální řešení (nikoli projekt) a klikněte na **Přidat**. Pak klikněte na **Nový projekt**.
-   2. V **přidat nový projekt** dialogové okno, klikněte na tlačítko **Visual C#** (Pokud **Visual C#** nezobrazí, podívejte se do části **jiné jazyky**), vyberte **Konzolovou aplikaci (rozhraní .NET Framework)** šablony a pojmenujte ji **EchoClient**.
+   2. V **přidat nový projekt** dialogové okno, klikněte na tlačítko **Visual C#** (Pokud **Visual C#** nezobrazí, podívejte se do části **jiné jazyky**), vyberte **Konzolová aplikace (.NET Framework)** šablony a pojmenujte ho **EchoClient**.
    3. Klikněte na **OK**.
       <br />
 2. V Průzkumníku řešení poklikejte na soubor Program.cs v projektu **EchoClient** a pokud ještě není otevřený, otevře se v editoru Visual Studio.
 3. Změňte název oboru názvů z výchozího názvu `EchoClient` na `Microsoft.ServiceBus.Samples`.
-4. Nainstalujte [balíček Service Bus NuGet](https://www.nuget.org/packages/WindowsAzure.ServiceBus): v Průzkumníku řešení klikněte pravým tlačítkem myši **EchoClient** projektu a pak klikněte na **spravovat balíčky NuGet**. Klikněte na kartu **Procházet** a potom najděte `Microsoft Azure Service Bus`. Klikněte na **Instalovat** a přijměte podmínky použití.
+4. Nainstalovat [balíček NuGet služby Service Bus](https://www.nuget.org/packages/WindowsAzure.ServiceBus): v Průzkumníku řešení klikněte pravým tlačítkem myši **EchoClient** projektu a pak klikněte na **spravovat balíčky NuGet**. Klikněte na kartu **Procházet** a potom najděte `Microsoft Azure Service Bus`. Klikněte na **Instalovat** a přijměte podmínky použití.
 
     ![][3]
 5. V souboru Program.cs přidejte příkaz `using` pro obor názvů [System.ServiceModel](https://msdn.microsoft.com/library/system.servicemodel.aspx).
@@ -498,8 +498,8 @@ V tomto kroku vytvoříte soubor App.config pro základní klientskou aplikaci, 
                     binding="netTcpRelayBinding"/>
     ```
 
-    Tento krok definuje název koncového bodu, kontrakt definovaný ve službě a fakt, že klientská aplikace používá TCP ke komunikaci s předávání přes Azure. Název koncového bodu se použije v následujícím kroku k propojení této konfigurace koncového bodu s URI služby.
-5. Klikněte na tlačítko **soubor**, pak klikněte na tlačítko **Uložit vše**.
+    Tento krok definuje název koncového bodu, kontrakt definovaný ve službě a fakt, že klientská aplikace používá TCP ke komunikaci s Azure Relay. Název koncového bodu se použije v následujícím kroku k propojení této konfigurace koncového bodu s URI služby.
+5. Klikněte na tlačítko **souboru**, pak klikněte na tlačítko **Uložit vše**.
 
 ## <a name="example"></a>Příklad:
 
@@ -524,8 +524,8 @@ Následující kód ukazuje soubor App.config pro klienta Echo.
 </configuration>
 ```
 
-## <a name="implement-the-wcf-client"></a>Implementace klienta WCF
-V tomto kroku implementujete základní klientskou aplikaci, která bude mít přístup ke službě, kterou jste vytvořili v jednom z předchozích kroků tohoto kurzu. Podobně jako u služby, klient provádí spoustu stejných operací jako pro přístup k předávání přes Azure:
+## <a name="implement-the-wcf-client"></a>Implementace klienta WFG
+V tomto kroku implementujete základní klientskou aplikaci, která bude mít přístup ke službě, kterou jste vytvořili v jednom z předchozích kroků tohoto kurzu. Podobně jako služba klient provádí spoustu stejných operací jako přístup k Azure Relay:
 
 1. Nastaví režim připojení.
 2. Vytvoří URI, které vyhledá hostitelskou službu.
@@ -535,7 +535,7 @@ V tomto kroku implementujete základní klientskou aplikaci, která bude mít p�
 6. Provádí úlohy specifické pro aplikace.
 7. Ukončí připojení.
 
-Jedním z hlavních rozdílů je ale, že klientská aplikace používá kanál, který se připojit ke službě předávání, zatímco služba používá volání **ServiceHost**. Kód použitý k těmto úlohám najdete v příkladu za postupem.
+Jedním z hlavních rozdílů je ale, že klientská aplikace používá kanál pro připojení ke službě relay, zatímco služba používá volání **ServiceHost**. Kód použitý k těmto úlohám najdete v příkladu za postupem.
 
 ### <a name="implement-a-client-application"></a>Implementace klientské aplikace
 1. Nastavte režim připojení na **AutoDetect**. Do metody `Main()` aplikace **EchoClient** přidejte následující kód.
@@ -551,7 +551,7 @@ Jedním z hlavních rozdílů je ale, že klientská aplikace používá kanál,
     Console.Write("Your SAS Key: ");
     string sasKey = Console.ReadLine();
     ```
-3. Vytvořte identifikátor URI, který definuje umístění hostitele ve vašem projektu předávání.
+3. Vytvořte identifikátor URI, který definuje umístění hostitele ve vašem projektu Relay.
 
     ```csharp
     Uri serviceUri = ServiceBusEnvironment.CreateServiceUri("sb", serviceNamespace, "EchoService");
@@ -609,7 +609,7 @@ Jedním z hlavních rozdílů je ale, že klientská aplikace používá kanál,
 
 ## <a name="example"></a>Příklad:
 
-Dokončený kód by měly vypadat následovně, jak vytvořit klientskou aplikaci, jak volat operace služby a jak zavřít klienta po volání operace je dokončena.
+Dokončený kód by měl vypadat následovně, zobrazuje, jak vytvořit klientskou aplikaci, jak volat operace služby a jak zavřít klienta po volání operace byla dokončena.
 
 ```csharp
 using System;
@@ -715,13 +715,13 @@ namespace Microsoft.ServiceBus.Samples
 
 ## <a name="next-steps"></a>Další postup
 
-Tento kurz vám ukázal, jak vytvářet klientem předávání přes Azure aplikace a služby pomocí možnosti WCF předávání přes Service Bus. Podobný kurz, který používá [zasílání zpráv Service Bus](../service-bus-messaging/service-bus-messaging-overview.md), najdete v části [začít pracovat s fronty Service Bus](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md).
+Tento kurz vám ukázal, jak vytvořit klienta Azure Relay, aplikace a služby pomocí funkce služby Service Bus WCF Relay. Podobný kurz, který používá [zasílání zpráv Service Bus](../service-bus-messaging/service-bus-messaging-overview.md), naleznete v tématu [Začínáme s frontami služby Service Bus](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md).
 
-Další informace o předávání přes Azure, naleznete v následujících tématech.
+Další informace o Azure Relay, najdete v následujících tématech.
 
 * [Přehled architektury služby Azure Service Bus](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md#relays)
 * [Přehled služby Azure Relay](relay-what-is-it.md)
-* [Jak používat předávání služby WCF s rozhraním .NET](relay-wcf-dotnet-get-started.md)
+* [Jak používat službu WCF relay v .NET](relay-wcf-dotnet-get-started.md)
 
 [2]: ./media/service-bus-relay-tutorial/create-console-app.png
 [3]: ./media/service-bus-relay-tutorial/install-nuget.png

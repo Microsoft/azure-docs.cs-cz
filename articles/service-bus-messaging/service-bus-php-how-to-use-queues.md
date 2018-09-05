@@ -3,7 +3,7 @@ title: Jak používat fronty služby Service Bus pomocí PHP | Dokumentace Micro
 description: Naučte se používat fronty Service Bus v Azure. Ukázky kódu napsané v jazyce PHP.
 services: service-bus-messaging
 documentationcenter: php
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: e29c829b-44c5-4350-8f2e-39e0c380a9f2
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
 ms.date: 08/10/2017
-ms.author: sethm
-ms.openlocfilehash: b2bf67ac6943c80e5bf6ae94eca346fe964f95e6
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.author: spelluru
+ms.openlocfilehash: 4c299e06f7cf1df29cd6790df8a005ee694db3b5
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42055039"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43700760"
 ---
 # <a name="how-to-use-service-bus-queues-with-php"></a>Jak používat fronty služby Service Bus pomocí PHP
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]

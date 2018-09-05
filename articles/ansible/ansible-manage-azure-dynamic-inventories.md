@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.date: 08/09/2018
 ms.topic: article
-ms.openlocfilehash: 9de620c5e6a1698b70f25f91a744829548ad5af6
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: 1b8c1ba80b4c69f36e8304cbe978452a359ac911
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382327"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43698073"
 ---
 # <a name="use-ansible-to-manage-your-azure-dynamic-inventories"></a>Správa dynamického inventáře vaše Azure pomocí Ansible
 Ansible je možné načítat informace o inventáři z různých zdrojů (včetně cloudových zdrojů, jako je Azure) do *dynamický inventář*. V tomto článku budete používat [Azure Cloud Shell](./ansible-run-playbook-in-cloudshell.md) ke konfiguraci dynamického inventáře Ansible Azure, ve kterém vytvoříte dva virtuální počítače, označit jednu z těchto virtuálních počítačů a na označené virtuální počítače nainstalujete server Nginx.
@@ -136,27 +136,27 @@ ansible-inventory-test-vm1 | SUCCESS => {
 
 1. Vložte následující kód do nově vytvořeného `nginx.yml` souboru:
 
-```yml
----
-- name: Install and start Nginx on an Azure virtual machine
-  hosts: azure
-  become: yes
-  tasks:
-  - name: install nginx
-    apt: pkg=nginx state=installed
-    notify:
-    - start nginx
+    ```yml
+    ---
+    - name: Install and start Nginx on an Azure virtual machine
+    hosts: azure
+    become: yes
+    tasks:
+    - name: install nginx
+      apt: pkg=nginx state=installed
+      notify:
+      - start nginx
 
-  handlers:
-  - name: start nginx
-    service: name=nginx state=started
-```
+    handlers:
+    - name: start nginx
+      service: name=nginx state=started
+    ```
 
 1. Spustit `nginx.yml` playbook:
 
-  ```azurecli-interactive
-  ansible-playbook -i azure_rm.py nginx.yml
-  ```
+    ```azurecli-interactive
+    ansible-playbook -i azure_rm.py nginx.yml
+    ```
 
 1. Po spuštění playbooku uvidíte výsledky podobné následující výstup:
 

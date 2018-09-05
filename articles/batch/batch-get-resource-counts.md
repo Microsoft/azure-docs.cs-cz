@@ -6,18 +6,18 @@ author: dlepow
 manager: jeconnoc
 ms.service: batch
 ms.topic: article
-ms.date: 06/29/2018
+ms.date: 08/23/2018
 ms.author: danlep
-ms.openlocfilehash: f4bad3d7058e82a246afce9502d275c7d485cb88
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 0ef3cc373b3b87bbd1dde5682fbc076e6b77d6a0
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39009172"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43698379"
 ---
 # <a name="monitor-batch-solutions-by-counting-tasks-and-nodes-by-state"></a>Monitorování řešení Batch podle počtu úloh a uzel podle stavu
 
-Ke sledování a správě velkých řešeních Azure Batch, potřebujete přesný počet prostředků v různých stavech. Azure Batch poskytuje efektivní operace k získání těchto počtů pro službu Batch *úlohy* a *výpočetních uzlů*. Pomocí těchto operací místo může trvat delší dobu volání rozhraní API vrací podrobné informace o rozsáhlých kolekcí úkolů nebo uzly.
+Ke sledování a správě velkých řešeních Azure Batch, potřebujete přesný počet prostředků v různých stavech. Azure Batch poskytuje efektivní operace k získání těchto počtů pro službu Batch *úlohy* a *výpočetních uzlů*. Tyto operace použijte místo může trvat delší dobu seznamové dotazy, které vrací podrobné informace o rozsáhlých kolekcí úkolů nebo uzly.
 
 * [Získání úloh se počítá] [ rest_get_task_counts] získá souhrnný počet, aktivní, běžících a dokončených úloh v rámci úlohy a úkolů, které bylo úspěšné nebo neúspěšné. 
 
@@ -49,19 +49,15 @@ Console.WriteLine("Task count in preparing or running state: {0}", taskCounts.Ru
 Console.WriteLine("Task count in completed state: {0}", taskCounts.Completed);
 Console.WriteLine("Succeeded task count: {0}", taskCounts.Succeeded);
 Console.WriteLine("Failed task count: {0}", taskCounts.Failed);
-Console.WriteLine("ValidationStatus: {0}", taskCounts.ValidationStatus);
 ```
 
 Chcete-li získat počet úloh pro úlohu můžete použít podobný vzorec pro REST a ostatní podporované jazyky. 
- 
 
-### <a name="consistency-checking-for-task-counts"></a>Pro počet úloh kontroly konzistence
+### <a name="counts-for-large-numbers-of-tasks"></a>Počty pro velký počet úkolů
 
-Batch poskytuje další ověřování pro počty stavu úlohy pomocí provádí kontroly konzistence s více komponent systému. V nepravděpodobném případě, že kontrola konzistence zjistí chyby opravuje Batch výsledek operace získání úloh se počítá na základě výsledků kontroly konzistence.
+Operaci získat vrátí úkol vrátí počet stavů úkolů v systému v bodě v čase. Pokud vaše úloha má velký počet úkolů, můžete počet vrácených získat počty úloh prodleva stavy skutečné úlohy podle až po několik sekund. Batch zajišťuje konečnou konzistenci mezi počty úloh získat výsledky a stavy skutečné úlohy (které se můžete dotazovat přes rozhraní API seznamu úkolů). Nicméně pokud má vaše úloha velmi velký počet úkolů (> 200 000), doporučujeme použít rozhraní API seznamu úkolů a [filtrovaného dotazu](batch-efficient-list-queries.md) místo toho, která poskytuje další aktuální informace. 
 
-`validationStatus` Vlastnost v odpovědi označuje, jestli Batch provést kontrolu konzistence. V případě služby Batch není zaškrtnuté, stav počítat skutečná státy v systému, pak bude `validationStatus` je nastavena na `unvalidated`. Z důvodů výkonu Batch nelze provést kontrolu konzistence Pokud úloha obsahuje více než 200 000 úloh, proto `validationStatus` je nastavena na `unvalidated` v tomto případě. (Počet úkolů není nutně nesprávné v tomto případě je nepravděpodobné, že by i ke ztrátě omezenými daty.) 
-
-Když úloha změní stav, zpracovává agregačního kanálu změn během několika sekund. Operaci získat počty úloh odráží počty aktualizovaná úloha během tohoto období. Ale pokud agregačního kanálu výpadky změnu stavu úkolu, tato změna není registrované až do další ověření pass. Během této doby počty úloh může být nepřesná z důvodu chybějící události, ale jsou opravené v průchodu další ověření.
+Verze rozhraní API služby batch, před 2018-08-01.7.0 rovněž vracejí `validationStatus` v odezvě získat počty úloh. Tato vlastnost určuje, zda Batch zarezervovat že počty stavu konzistence se stavy v rozhraní API seznamu úkolů. Hodnota `validated` značí pouze, Batch Kontrola konzistence alespoň jednou pro úlohu. Hodnota `validationStatus` vlastnost neindikuje, zda jsou počty, které vrací získat počty úloh aktuálně aktuální.
 
 ## <a name="node-state-counts"></a>Počty stavů uzlu
 

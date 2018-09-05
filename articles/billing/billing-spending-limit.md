@@ -1,6 +1,6 @@
 ---
-title: Pochopení Azure útrat | Microsoft Docs
-description: Popisuje, jak funguje Azure útrat a jak ho odebrat
+title: Vysvětlení limitu útraty Azure | Dokumentace Microsoftu
+description: Popisuje, jak funguje limit útraty Azure a jeho odstranění
 services: ''
 documentationcenter: ''
 author: genlin
@@ -12,47 +12,46 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/11/2018
+ms.date: 06/15/2018
 ms.author: genli
-ms.openlocfilehash: 6049e3614b63bfabee6721dcaa83008eb3306493
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 448622f0406eb709c8d94d60722edb4ef00f42de
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34069978"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43669937"
 ---
-# <a name="understand-azure-spending-limit-and-how-to-remove-it"></a>Pochopení omezení a jak ho odebrat útraty u Azure
+# <a name="understand-azure-spending-limit-and-how-to-remove-it"></a>Vysvětlení limitu útraty Azure a jeho odstranění
 
-Aby se zabránilo výdaje po dobu vaší platební útrat v Azure existuje. Všechny nové zákazníci, kteří si zaregistrovat k vyzkoušení nebo nabídky, které zahrnuje kredity přes několik měsíců mají limit útraty ve výchozím nastavení zapnuto. Limit útraty je $0. Nelze změnit. Tento limit útraty není dostupný pro typy předplatného, jako jsou předplatná s průběžnými platbami a plány závazků. Najdete v článku [úplný seznam Azure nabízí a dostupnost limit útraty](https://azure.microsoft.com/support/legal/offer-details/).
+Aby se zabránilo za požadovaná částka v Azure limit útraty existuje. Všem novým zákazníkům, kteří se zaregistrují k vyzkoušení nebo nabídky, které zahrnují kredit na několik měsíců mají limit útraty ve výchozím nastavení zapnutá. Limit útraty je hodnotou 0 USD. Nelze změnit. Tento limit útraty není dostupný pro typy předplatného, jako jsou předplatná s průběžnými platbami a plány závazků. Zobrazit [úplný seznam nabídek Azure a dostupnost limitu útraty](https://azure.microsoft.com/support/legal/offer-details/).
 
-**Hledáte fakturace výstrahy?** V tématu [nastavit fakturace nebo platební výstrahy pro předplatná Azure](billing-set-up-alerts.md).
+**Hledáte upozornění fakturace?** Zobrazit [nastavení upozornění fakturace ani kredit nad rámec pro předplatná Azure](billing-set-up-alerts.md).
 
 ## <a name="what-happens-when-i-reach-the-spending-limit"></a>Co se stane, když se dosáhne limitu útraty?
 
-Při použití výsledky v poplatky, které vyčerpat měsíční množství součástí vašeho předplatného, jsou zakázané služby, které jste nasadili pro zbytek této fakturačního období. 
+Při použití výsledky v poplatky, které vyčerpání měsíčních součástí vašeho předplatného, jsou zakázané služby, které jste nasadili pro zbytek daném fakturačním období. 
 
-Například když věnujete se kredit součástí vašeho předplatného, cloudové služby, které jste nasadili se odeberou z výroby a virtuální počítače Azure se zastaví a zrušte přidělené. Data v účtech úložiště a databáze jsou k dispozici v režimu jen pro čtení.
+Například když strávíte veškerý kredit součástí vašeho předplatného, cloudové služby, které jste nasadili, budou odebrány z produkčního prostředí a virtuální počítače Azure se zastaví a zrušit přidělení. Data v účtech úložišť a databází jsou dostupné v režimu jen pro čtení.
 
-Na začátku další fakturační období, pokud vaše předplatné nabídka zahrnuje kredity přes několik měsíců, vaše předplatné by být funkce automaticky znovu povolena. Pak můžete znovu nasadit cloudové služby a mají plný přístup ke své účty úložiště a databáze.
+Na začátku dalšího fakturačního období, pokud vaše předplatné nabídka zahrnuje kredit na několik měsíců, vaše předplatné se znovu aktivuje, automaticky. Můžete znovu nasadit své cloudové služby a úplný přístup k účtům úložišť a databázím.
 
-Můžeme zasílat e-mailová oznámení, když dosáhl limitu útraty pro předplatné. Přihlaste se k [centra účtů](https://account.windowsazure.com/Subscriptions), a zobrazit oznámení o předplatných, které bylo dosaženo limitu útraty.
+Při dosažení limitu útraty pro vaše předplatné se nám poslat e-mailová oznámení. Přihlaste se k [centra pro účty](https://account.windowsazure.com/Subscriptions), a najdete upozornění pro všechna předplatná, u kterých bylo dosaženo limitu útraty.
 
-Pokud máte bezplatnou zkušební verzi a dosažení limitu útraty, můžete [upgradovat na průběžné platby](billing-upgrade-azure-subscription.md) limit útraty odebrat a mít předplatné automaticky znovu povolena.
+Pokud máte bezplatnou zkušební verzi a dosáhne limitu útraty, můžete si [upgradovat na průběžné platby](billing-upgrade-azure-subscription.md) odebrání limitu útraty a předplatné automaticky znovu povolena.
 
 <a id="remove"></a>
 
-## <a name="remove-the-spending-limit-in-account-center"></a>Odeberte limit útraty v centru účtů
+## <a name="remove-the-spending-limit-in-account-center"></a>Odebrat limit útraty v centru účtů
 
-Limit útraty můžete odebrat kdykoli za předpokladu, že je k vašemu předplatnému přidružen platný způsob platby. Nabídky, které mají platební přes několik měsíců můžete také znovu povolit limit útraty na začátku vaší další fakturačního období.
+Limit útraty můžete odebrat kdykoli za předpokladu, že je k vašemu předplatnému přidružen platný způsob platby. U nabídek s kreditem na několik měsíců můžete také znovu povolit limit útraty na začátku dalšího fakturačního období.
 
 Pokud chcete odebrat limit útraty, postupujte takto:
 
-1. Přihlaste se k [centra účtů](https://account.windowsazure.com/Subscriptions).
-1. Vyberte předplatné.
-. Pokud předplatné je zakázané kvůli dosažení limit útraty, klikněte na toto oznámení: "Předplatné dosáhla limitu útraty a byl zakázán nabíhat poplatky." Jinak, klikněte na tlačítko **odebrat útrat** v **stav PŘEDPLATNÉHO** oblasti.
+1. Přihlaste se k [centra pro účty](https://account.windowsazure.com/Subscriptions).
+1. Vyberte předplatné. Pokud předplatné je zakázané z důvodu dosažení limitu útraty, klikněte na toto oznámení: "Předplatné dosáhlo limitu útraty a byla zakázána, aby vám nezačaly nabíhat poplatky." V opačném případě klikněte na tlačítko **odebrat limit útraty** v **stav PŘEDPLATNÉHO** oblasti.
 1. Vyberte vhodnou možnost.
 
-![Vyberete možnost pro odebrání útrat](./media/billing-spending-limit/remove-spending-limit.PNG)
+![Vyberete možnost pro odebrání limitu útraty](./media/billing-spending-limit/remove-spending-limit.PNG)
 
 |Možnost|Efekt|
 |-------|-----|
@@ -61,32 +60,32 @@ Pokud chcete odebrat limit útraty, postupujte takto:
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
-### <a name="why-would-i-want-to-remove-the-spending-limit"></a>Proč by se limit útraty odebrat?
+### <a name="why-would-i-want-to-remove-the-spending-limit"></a>Proč byste měli odebrat limit útraty?
 
-Limit útraty může zabránit vám v nasazení nebo pomocí určitých třetích stran a služby společnosti Microsoft. Tady jsou scénáře, kdy byste měli limit útraty pro svoje předplatné odebrat.
+Limit útraty vám může bránit v nasazení nebo použití některých třetích stran a služby Microsoftu. Tady jsou scénáře, kdy byste měli limit útraty pro svoje předplatné odebrat.
 
-* Chcete nasadit image Microsoftu, třeba Oracle, a služby, jako je Visual Studio Team Services. V tomto scénáři způsobí, že je delší než limit útraty téměř okamžitě a způsobí, že vaše předplatné se zakáže.
+* Chcete nasadit image Microsoftu, třeba Oracle, a služby, jako je Visual Studio Team Services. V tomto scénáři způsobí, že překročíte limit útraty téměř okamžitě a způsobí, že vaše předplatné se deaktivuje.
 * Používáte ale služby, které nejde přerušit.
-* Nechcete ztratit nastavení služeb a prostředků, jako jsou virtuální IP adresy. Tato nastavení jsou ztraceny, když jsou navrátit služby a prostředky.
+* Nechcete ztratit nastavení služeb a prostředků, jako jsou virtuální IP adresy. Tato nastavení jsou ztraceny po zrušení přidělení služeb a prostředků.
 
-### <a name="how-do-i-turn-on-the-spending-limit-after-removing-it"></a>Jak se zapíná limit útraty po odebrání?
+### <a name="how-do-i-turn-on-the-spending-limit-after-removing-it"></a>Jak zapnout po odebrání limitu útraty?
 
-Tato funkce je dostupná jenom v případě, že limit útraty byla odebrána po neomezenou dobu. Změňte ho chcete zapnout automaticky při spuštění další fakturačního období.
+Tato funkce je dostupná pouze v případě, že byla odebrána limit útraty neomezeně dlouho. Změňte ho chcete zapnout automaticky na začátku dalšího fakturačního období.
 
-1. Přihlaste se k [centra účtů](https://account.windowsazure.com/Subscriptions).
-1. Klikněte na tlačítko žlutý informační zpráva, chcete-li změnit možnosti limit útraty.
-1. Zvolte **zapnout útrat v další fakturační období \<počáteční datum fakturační období\>**
+1. Přihlaste se k [centra pro účty](https://account.windowsazure.com/Subscriptions).
+1. Klikněte na tlačítko žlutý pruh, chcete-li změnit možnost limit útraty.
+1. Zvolte **zapnout v dalším fakturačním obdobím limit útraty \<počáteční datum fakturačního období\>**
 
-### <a name="how-do-i-set-a-custom-spending-limit"></a>Jak lze nastavit vlastní limitu útraty a automaticky?
+### <a name="how-do-i-set-a-custom-spending-limit"></a>Jak nastavit vlastní limitu útraty?
 
-Nemáme vlastní tráví omezení ještě dnes. Ale můžete se rozhodnout v [použít fakturace výstrahy na ovládací prvek vaší tráví](billing-set-up-alerts.md).
+Nemáme vlastní omezení výdajů ještě dnes. Však mohou přihlásit a [používat upozornění fakturace na ovládací prvek vaše věnovat](billing-set-up-alerts.md).
 
-### <a name="does-the-spending-limit-prevent-all-charges-from-azure"></a>Limit útraty zabránit všechny poplatky z Azure?
+### <a name="does-the-spending-limit-prevent-all-charges-from-azure"></a>Nebrání limit útraty všechny poplatky z Azure?
 
-[Některé externí služby v Azure Marketplace publikovat](billing-understand-your-azure-marketplace-charges.md) nelze použít s vaší kreditů předplatného a může způsobit samostatné poplatky, i když je nastaven limit útraty. Mezi příklady patří licence Visual Studio, Azure Active Directory premium, plánům podpory a většina značky služby třetích stran. Při zřizování nové externí služby se zobrazí varování, vám oznamuje, že služby se účtují samostatně:
+[Některé externí služby publikovaných na webu Azure Marketplace](billing-understand-your-azure-marketplace-charges.md) nelze použít s kreditů předplatného a můžete samostatně účtovat poplatky i v případě, že svůj limit útraty nastavený. Mezi příklady patří licence Visual Studio, Azure Active Directory premium, plány podpory a většina služeb jiných třetích stran. Při zřizování nové externí služby se zobrazí upozornění, že služby se účtují samostatně:
 
 ![Marketplace zakoupit upozornění](./media/billing-understand-your-azure-marketplace-charges/marketplace-warning.PNG)
 
 ## <a name="need-help-contact-support"></a>Potřebujete pomoct? Kontaktování podpory
 
-Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) získat rychle vyřešit problém.
+Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému.

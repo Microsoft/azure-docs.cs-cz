@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 25af61ce51828691d08210f4089afa0cf56b9846
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 46c99011a22f855f6faf53e03169b2d1e4c6ce85
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39257839"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43669003"
 ---
 # <a name="how-it-works-azure-multi-factor-authentication"></a>Jak to funguje: ověřování Azure Multi-Factor Authentication
 
@@ -39,11 +39,14 @@ Ověřování službou Multi-Factor Authentication je součástí následující
 * **Multi-Factor Authentication pro Office 365** -podmnožinu funkcí Azure Multi-Factor Authentication jsou k dispozici jako součást vašeho předplatného. Další informace o vícefaktorové ověřování pro Office 365, najdete v článku [plánování ověřování službou Multi-Factor Authentication pro Office 365 nasazení](https://support.office.com/article/plan-for-multi-factor-authentication-for-office-365-deployments-043807b2-21db-4d5c-b430-c8a6dee0e6ba).
 * **Azure Active Directory globální správci** -podmnožinu funkcí Azure Multi-Factor Authentication jsou k dispozici jako prostředek k ochraně účty globálních správců.
 
+> [!NOTE]
+> Noví zákazníci už koupit Azure Multi-Factor Authentication jako samostatná nabízí efektivní dne 1. května 2018. Ověřování službou Multi-Factor Authentication bude i nadále k dispozici funkce v licence Azure AD Premium.
+
 ### <a name="auth-provider-or-mfa-license"></a>Zprostředkovatel vícefaktorového ověřování nebo vícefaktorové ověřování licencí
 
-Pokud už máte Azure AD Premium nebo sadu licenci, která obsahuje Azure AD Premium, už máte Azure MFA. Vaše organizace není nutné žádné další rozšířit funkci dvoustupňové ověření pro všechny uživatele. Potřebujete pouze přiřadit licenci uživateli, a pak můžete zapnout vícefaktorové ověřování.
+Pokud už máte Azure AD Premium nebo jiné sady licence obsahující Azure AD Premium, už máte Azure MFA. Vaše organizace není nutné žádné další rozšířit funkci dvoustupňové ověření pro všechny uživatele. Potřebujete pouze přiřadit licenci uživateli, a pak můžete zapnout vícefaktorové ověřování.
 
-Pokud nemáte licence, které patří Azure MFA, nebo nemáte dostatek licencí pro pokrytí všech uživatelů, můžete vytvořit [zprostředkovatel vícefaktorového ověřování MFA](concept-mfa-authprovider.md) rozšířit všechny možnosti služby MFA pro uživatele, kteří je potřebují. 
+Pokud nemáte licence, které patří Azure MFA, nebo nemáte dostatek licencí pro pokrytí všech uživatelů, můžete vytvořit [zprostředkovatel vícefaktorového ověřování MFA](concept-mfa-authprovider.md) rozšířit všechny možnosti služby MFA pro uživatele, kteří je potřebují.
 
 > [!IMPORTANT]
 > Pokud nemáte k dispozici dostatek licencí pro vaše uživatele, můžete vytvořit poskytovatele Multi-Factor Auth jednotlivých uživatelů k pokrytí zbytku organizace. Nevytvářejte poskytovatele služby Multi-Factor Auth na ověřování. Pokud tak učiníte, můžou být nakonec platíte za ověření požadavků od uživatelů, které už máte licence.

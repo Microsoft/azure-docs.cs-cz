@@ -3,18 +3,18 @@ title: Zobrazení výsledků hledání s Azure Maps | Dokumentace Microsoftu
 description: Jak provést žádost o vyhledávání pomocí map Azure a zobrazení výsledků na mapě jazyka Javascript
 author: jingjing-z
 ms.author: jinzh
-ms.date: 08/26/2018
+ms.date: 08/31/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 31ff57f8a933ac17c6dfaa1a1fb0cf2bab0b6557
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 7d4eb5f9be4a6bcefe4b544d3f97a9b9391c0d81
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43345267"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43665773"
 ---
 # <a name="show-search-results-on-the-map"></a>Na mapě zobrazit výsledky hledání
 
@@ -27,7 +27,7 @@ Tento článek popisuje, jak na mapě zobrazit výsledky hledání a vyhledejte 
 
 Ve výše uvedeném kódu první blok kódu vytvoří objekt map a vytvoří instanci služby klienta. Můžete zobrazit [Vytvořte mapu](./map-create.md) pokyny.
 
-Druhý blok kódu používá vyhledávání přibližných shod [mapy přibližných shod API služby Azure Search](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) pro hledání bodů zájmu. Vyhledávání přibližných shod rozhraní API mohou zpracovat libovolnou kombinaci přibližných shod vstupů. Odpověď od služby vyhledávání přibližných shod se pak Parsuje do formátu GeoJSON a PIN kódů se přidávají do mapy pro body zájmu na mapě zobrazit. 
+Druhý blok kódu používá vyhledávání přibližných shod [mapy přibližných shod API služby Azure Search](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) pro hledání bodů zájmu. Vyhledávání přibližných shod rozhraní API mohou zpracovat libovolnou kombinaci přibližných shod vstupů. Odpověď od služby vyhledávání přibližných shod se pak Parsuje do pomocí formátu GeoJSON [getGeoJsonSearchResponse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.geojson.geojsonsearchresponse?view=azure-iot-typescript-latest#geojsonsearchresponse) metody. Zadané kódy PIN se poté přidají ke mapu, aby zobrazovala body zájmu na mapě.
 
 Poslední blok kódu pomocí mapy přidá fotoaparátu mezí mapy [setCameraBounds](https://docs.microsoft.com/javascript/api/azure-maps-control/models.cameraboundsoptions?view=azure-iot-typescript-latest) vlastnost.
 

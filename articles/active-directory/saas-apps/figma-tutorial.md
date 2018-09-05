@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2018
 ms.author: jeedes
-ms.openlocfilehash: c8613697481f642066bf1d5d5db7be3af81a6529
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 4094de1a1c17e844d96ac789bb4bc1655fdc1546
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307781"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43669239"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-figma"></a>Kurz: Integrace Azure Active Directory se službou Figma
 
@@ -38,10 +38,10 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 Konfigurace integrace Azure AD s Figma, potřebujete následující položky:
 
 - Předplatné Azure AD
-- Figma jednotného přihlašování povolená předplatného
+- Figma [jednotného přihlašování povolená předplatného](https://www.figma.com/pricing/)
 
 > [!NOTE]
-> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
+> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí. Nové zákazníky a aktivní předplatitelé Figma Professional týmu kontaktovat Figma k [své předplatné upgradovat](https://www.figma.com/pricing/) na úroveň Figma organizace.
 
 Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
 
@@ -81,15 +81,14 @@ Konfigurace integrace Figma do služby Azure AD, budete muset přidat Figma z Ga
 
 V této části Konfigurace a testování Azure AD jednotné přihlašování pomocí Figma podle testovacího uživatele nazývá "Britta Simon".
 
-Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšky v Figma je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a související uživatelské v Figma potřeba navázat.
+Azure AD pro jednotné přihlašování pro práci, musí být propojená na Figma.  Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Figma, proveďte následující kroky:
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Figma, které potřebujete k dokončení následujících stavebních bloků:
-
-1. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-2. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele Figma](#create-a-figma-test-user)**  – Pokud chcete mít protějšek Britta Simon Figma, který je propojený s Azure AD reprezentace uživatele.
-4. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-5. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+1. [**Obraťte se na tým podpory Figma** ](mailto:support@figma.com?subject=SAML+Config) zahájit konfiguraci SAML pro vaši organizaci a získat ORG_SAML_CONFIG_ID.
+2. **[Konfigurovat Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+3. **[Vytvořit testovacího uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+4. **[Vytvoření zkušebního uživatele Figma](#create-a-figma-test-user)**  – Pokud chcete mít protějšek Britta Simon Figma, který je propojený s Azure AD reprezentace uživatele.
+5. **[Přiřadit uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+6. **[Otestovat jednotné přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
@@ -120,7 +119,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://www.figma.com/saml/<ORG_SAML_CONFIG_ID>/start`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte skutečné identifikátor, adresa URL odpovědi a přihlašovací adresa URL. Kontakt [tým podpory Figma klienta]( mailto:services-404040@figma.com) k získání těchto hodnot.
+    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte skutečné identifikátor, adresa URL odpovědi a přihlašovací adresa URL. Kontakt [tým podpory Figma](mailto:support@figma.com?subject=SAML+Config) k získání těchto hodnot.
 
 5. Na **podpisový certifikát SAML** klikněte na tlačítko Kopírovat zkopírujte **adresa Url federačních metadat aplikace** a vložte ho do poznámkového bloku.
 
@@ -130,7 +129,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/figma-tutorial/tutorial_general_400.png)
 
-7. Ke konfiguraci jednotného přihlašování na **Figma** straně, je nutné odeslat **adresa Url federačních metadat aplikace** k [tým podpory Figma]( mailto:services-404040@figma.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+7. Pokud chcete nakonfigurovat jednotné přihlašování na straně Figma, vyplňte tento formulář: [ https://goo.gl/forms/XkRB1z5ed4eVUzXn2 ](https://goo.gl/forms/XkRB1z5ed4eVUzXn2). Bude přijímat vaše **adresa Url federačních metadat aplikace** z kroku 5.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
@@ -167,9 +166,6 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 ### <a name="create-a-figma-test-user"></a>Vytvoření zkušebního uživatele Figma
 
 Cílem této části je vytvořte uživatele Britta Simon v Figma. Figma podporuje just-in-time zřizování, který je ve výchozím nastavení povolená. Neexistuje žádná položka akce pro vás v této části. Nový uživatel se vytvoří během pokusu o přístup k Figma, pokud ještě neexistuje.
-
-> [!Note]
-> Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory Figma]( mailto:services-404040@figma.com).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 

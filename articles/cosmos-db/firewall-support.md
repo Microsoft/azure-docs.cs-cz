@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/30/2018
 ms.author: govindk
-ms.openlocfilehash: 6d1daededcf8f0efdc6a3a5649aa830110192fef
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: b21debdd6baa0a6587318ad861a821840ec6879c
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43381836"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666693"
 ---
 # <a name="azure-cosmos-db-firewall-support"></a>Podpora brány firewall služby Azure Cosmos DB
 Zabezpečení dat uložených v účtu databáze Azure Cosmos DB, Azure Cosmos DB poskytuje podporu pro tajného kódu na základě [modelu autorizace](https://msdn.microsoft.com/library/azure/dn783368.aspx) , který využívá ověřovací kód zprávy silné Hash-based (metoda HMAC). Nyní kromě tajného kódu autorizace na základě modelu služby Azure Cosmos DB podporuje zásady řízení přístupu na základě IP adresy pro podporu brány firewall pro příchozí řízené. Tento model je podobný pravidla brány firewall tradiční databázový systém a poskytuje další úroveň zabezpečení, které účet databáze Azure Cosmos DB. V tomto modelu teď můžete nakonfigurovat k účtu databáze Azure Cosmos DB k vyla přístupná jen v schválenou sadu počítačů nebo cloudových služeb. Přístup k prostředkům služby Azure Cosmos DB z těchto schválených sad počítače a služby se stále vyžadují volající předložit platný autorizační token.
@@ -58,7 +58,7 @@ Přístup k webu Azure portal je ve výchozím nastavení povolena, když změn�
 
 ## <a name="connections-from-global-azure-datacenters-or-azure-paas-services"></a>Připojení z datových center Global Azure nebo služby Azure PaaS
 
-"Služby azure PaaS, jako je Azure Stream analytics, Azure atd. funkce se používají ve spojení s Azure Cosmos DB. Pokud chcete umožnit aplikacím z jiných služeb Azure PaaS pro připojení k vašim prostředkům služby Azure Cosmos DB, musíte povolit nastavení brány firewall. Pokud chcete povolit toto nastavení brány firewall, přidejte do seznamu povolených IP adres IP adresa-0.0.0.0. Ip adresa-0.0.0.0 znamená, že připojení ze všech rozsahu IP adres datacentra Azure jsou povolené pro připojení k vašim prostředkům služby Azure Cosmos DB."
+Služby Azure PaaS, jako je Azure Stream analytics, Azure atd. funkce se používají ve spojení s Azure Cosmos DB. Pokud chcete umožnit aplikacím z jiných služeb Azure PaaS pro připojení k vašim prostředkům služby Azure Cosmos DB, musíte povolit nastavení brány firewall. Pokud chcete povolit toto nastavení brány firewall, přidejte do seznamu povolených IP adres IP adresa-0.0.0.0. 0.0.0.0 omezuje připojení k účtu Azure Cosmos DB z rozsahu IP adres datacentra Azure. Toto nastavení neumožňuje přístup pro jakékoli jiné rozsahy IP adres k účtu Azure Cosmos DB.
 
 > [!IMPORTANT]
 > Touto možností se brána firewall nakonfiguruje tak, aby povolovala všechna připojení z Azure, včetně připojení z předplatných ostatních zákazníků. Když vyberete tuto možnost, ujistěte se, že vaše přihlašovací a uživatelská oprávnění omezují přístup pouze na autorizované uživatele.

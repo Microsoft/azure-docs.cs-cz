@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/30/2018
+ms.date: 09/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 160e2a277c82470df7d9ced2899699dae8d4ef01
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 429a10988fdc19863cfd6809a8d73757d33349c9
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43302124"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43702303"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Přesunutí prostředků do nové skupiny prostředků nebo předplatného
 
@@ -122,10 +122,9 @@ Služby, které umožňují přesun na novou skupinu prostředků a předplatné
 * Azure Maps
 * Azure Relay
 * Azure Stack – registrace
-* Azure Migrate
 * Batch
 * BizTalk Services
-* Služba Bot
+* Bot Service
 * CDN
 * Cloudové služby - viz [omezení klasického nasazení](#classic-deployment-limitations)
 * Cognitive Services
@@ -141,7 +140,7 @@ Služby, které umožňují přesun na novou skupinu prostředků a předplatné
 * Event Grid
 * Event Hubs
 * Clustery HDInsight – viz [omezení HDInsight](#hdinsight-limitations)
-* IOT Central
+* Iot Central
 * IoT Huby
 * Key Vault
 * Nástroje pro vyrovnávání zatížení – viz [omezení nástroje pro vyrovnávání zatížení](#lb-limitations)
@@ -188,6 +187,7 @@ Služby, které aktuálně nepovolí přesunutí prostředku jsou:
 * Azure Database for PostgreSQL
 * Azure Database Migration
 * Azure Databricks
+* Azure Migrate
 * Batch AI
 * Certifikáty – certifikáty App Service je možné přesunout, ale mají odeslané certifikáty [omezení](#app-service-limitations).
 * Container Instances
@@ -237,8 +237,6 @@ Při přesunu virtuální síť, musíte také přesunout její závislé prost�
 Pokud chcete přesunout partnerské virtuální síti, musíte nejprve zakázat, partnerský vztah virtuální sítě. Jakmile zakázaná, můžete přesunout virtuální sítě. Po přesunutí znovu povolte partnerský vztah virtuální sítě.
 
 Virtuální síť nelze přesunout do jiného předplatného, pokud virtuální síť obsahuje podsítě pomocí navigačních odkazů. Například pokud prostředek služby Redis Cache se nasazuje do podsítě, má této podsíti navigační odkaz prostředku.
-
-Virtuální síť nelze přesunout do jiného předplatného, pokud virtuální síť obsahuje vlastní server DNS. Pokud chcete přesunout virtuální sítě, nastavte ji na server DNS výchozí (poskytováno Azure). Po přesunutí změna konfigurace vlastního serveru DNS.
 
 ## <a name="app-service-limitations"></a>Omezení služby App Service
 

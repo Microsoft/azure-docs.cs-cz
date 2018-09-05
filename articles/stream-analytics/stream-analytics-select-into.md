@@ -1,6 +1,6 @@
 ---
-title: Ladění Azure Stream Analytics dotazy pomocí SELECT INTO
-description: Tento článek popisuje, jak má zkusit střední dotaz na data v úloze Azure Stream Analytics pomocí příkazů SELECT INTO v syntaxi dotazu.
+title: Ladění dotazů Azure Stream Analytics s využitím SELECT INTO
+description: Tento článek popisuje, jak ukázková uprostřed dotaz na data v úloze Azure Stream Analytics pomocí příkazů SELECT INTO v syntaxi dotazu.
 services: stream-analytics
 author: jseb225
 ms.author: jeanb
@@ -9,38 +9,38 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/20/2017
-ms.openlocfilehash: ccaa6203e4bfe52758e26416646f9152ac5378ea
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: b056d4c29464451d3dc0ef62437f934535820489
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30907951"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697988"
 ---
-# <a name="debug-queries-by-using-select-into-statements"></a>Ladění dotazy pomocí příkazů SELECT INTO
+# <a name="debug-queries-by-using-select-into-statements"></a>Ladění dotazů pomocí příkazů SELECT INTO
 
-Při zpracování dat v reálném čase zároveň budete vědět, co data vypadá uprostřed dotazu může být užitečné. Protože vstupů nebo kroky úlohu služby Azure Stream Analytics lze číst vícekrát, můžete napsat doplňující příkazy SELECT INTO. Díky tomu výstupy mezilehlá data do úložiště a umožňuje vám zkontrolujte správnost dat, stejně jako *sledovat proměnné* provést při ladění programu.
+Při zpracování dat v reálném čase vědět, co vypadá uprostřed dotazu může být užitečné. Protože vstupy nebo kroky úlohy Azure Stream Analytics může číst více než jednou, můžete napsat další příkazy SELECT INTO. Uděláte výstupů dočasných dat do služby storage a umožňuje zkontrolovat správnost dat, stejně jako *sledovat proměnné* udělat při ladění programu.
 
-## <a name="use-select-into-to-check-the-data-stream"></a>Pomocí SELECT INTO zkontrolujte datový proud
+## <a name="use-select-into-to-check-the-data-stream"></a>Použijte příkaz SELECT INTO ke kontrole datový proud
 
-Následující příklad dotazu v úloze služby Azure Stream Analytics má jeden datový proud vstup, dvěma vstupy referenční data a výstup do úložiště tabulek Azure. Dotaz propojuje dat z centra událostí a odkaz na dva objekty BLOB se získat informace o názvu a kategorie:
+Následující příklad dotazu v úloze Azure Stream Analytics je zadání jednoho datového proudu, dvě referenční datové výstupy a výstup do služby Azure Table Storage. Dotaz spojuje data z centra událostí a dvě referenční přes bloby až po získání informací o názvů a kategorie:
 
-![Příklad SELECT INTO dotazu](./media/stream-analytics-select-into/stream-analytics-select-into-query1.png)
+![Dotaz SELECT INTO](./media/stream-analytics-select-into/stream-analytics-select-into-query1.png)
 
-Všimněte si, že úloha je spuštěná, ale žádné události se vytváří ve výstupu. Na **monitorování** dlaždici zobrazeny zde, uvidíte, že vstup je generovala data, ale nevíte, který krok **připojení** způsobila všechny události, které chcete vyřadit.
+Všimněte si, že je úloha spuštěná, ale žádné události jsou vytvořených ve výstupu. Na **monitorování** dlaždice zobrazené, uvidíte, že vstup je vytváření dat, ale si nejste jisti, který krok **připojte se k** způsobil všechny události zavěšení.
 
-![Na dlaždici monitorování](./media/stream-analytics-select-into/stream-analytics-select-into-monitor.png)
+![Dlaždice monitorování](./media/stream-analytics-select-into/stream-analytics-select-into-monitor.png)
  
-V takovém případě můžete přidat několik navíc příkazech SELECT INTO se "přihlásit" mezilehlých výsledků spojení a data, která je načtený ze vstupu.
+V takovém případě můžete přidat několik dalších příkazech SELECT INTO "přihlásit" mezilehlé výsledky spojení a data, která je načtený ze vstupu.
 
-V tomto příkladu jsme přidali dvě nové "dočasné výstupy." Může se jednat žádné podřízený, které se vám líbí. Tady používáme Azure Storage jako příklad:
+V tomto příkladu jsme přidali dvě nové "dočasné výstupy." Mohou být libovolné jímky, kolikrát chcete. Tady používáme jako příklad služby Azure Storage:
 
-![Přidání další příkazy SELECT INTO](./media/stream-analytics-select-into/stream-analytics-select-into-outputs.png)
+![Přidání dalších příkazech SELECT INTO](./media/stream-analytics-select-into/stream-analytics-select-into-outputs.png)
 
-Pak je možné znovu vytvořit dotaz takto:
+Potom můžete přepište dotaz následujícím způsobem:
 
-![Přepsaná dotaz SELECT INTO](./media/stream-analytics-select-into/stream-analytics-select-into-query2.png)
+![Přepsaný dotaz SELECT INTO](./media/stream-analytics-select-into/stream-analytics-select-into-query2.png)
 
-Nyní znovu spustit úlohu a nechat ji spustit několik minut. Potom budete dotazovat temp1 a temp2 s cloudu Průzkumníka Visual Studio k vytvoření následujících tabulek:
+Nyní spusťte znovu úlohu a nechat běžet několik minut. Potom zadejte dotaz temp1 a temp2 pomocí Průzkumníka cloudu Visual Studio k vytvoření následujících tabulek:
 
 **Tabulka temp1**
 ![SELECT INTO temp1 tabulky](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-1.png)
@@ -48,28 +48,28 @@ Nyní znovu spustit úlohu a nechat ji spustit několik minut. Potom budete dota
 **Tabulka temp2**
 ![SELECT INTO temp2 tabulky](./media/stream-analytics-select-into/stream-analytics-select-into-temp-table-2.png)
 
-Jak vidíte, temp1 a temp2 mají data, a název sloupce je v temp2 správně zadána. Ale protože ve výstupu stále neexistuje žádná data, je něco špatně:
+Jak je vidět, temp1 a temp2 mají data a název sloupce je v temp2 správně zadána. Ale protože ve výstupu ještě neexistuje žádná data, něco se nepovedlo:
 
-![Vyberte do tabulky output1 bez dat](./media/stream-analytics-select-into/stream-analytics-select-into-out-table-1.png)
+![Příkaz SELECT INTO tabulky output1 bez dat](./media/stream-analytics-select-into/stream-analytics-select-into-out-table-1.png)
 
 Vzorkování dat, můžete si být téměř jisti, že problém s druhou spojení. Můžete stáhnout z objektu blob referenčních dat a podívejte se:
 
-![SELECT INTO ref tabulky](./media/stream-analytics-select-into/stream-analytics-select-into-ref-table-1.png)
+![Příkaz SELECT INTO Referenční tabulka](./media/stream-analytics-select-into/stream-analytics-select-into-ref-table-1.png)
 
-Jak vidíte, se liší od formát formát identifikátoru GUID v těchto datech odkaz [sloupec v temp2 z]. To je důvod, proč data nebyla doručení output1 podle očekávání.
+Jak je vidět, se liší od formátu formát čísla GUID v této referenční data [sloupec v temp2 z]. To je důvod, proč data nebyla doručení output1 podle očekávání.
 
-Můžete opravit formát dat, nahrajte ho odkazovat na objekt blob a potom akci opakujte:
+Můžete opravit formát dat, nahrajte ho odkazovat na objekt blob, a zkuste to znovu:
 
-![Vyberte do dočasné tabulky](./media/stream-analytics-select-into/stream-analytics-select-into-ref-table-2.png)
+![Příkaz SELECT INTO dočasné tabulky](./media/stream-analytics-select-into/stream-analytics-select-into-ref-table-2.png)
 
-Tento čas data ve výstupu je naformátován a vyplní podle očekávání.
+Tentokrát, data ve výstupu jsou ve formátu a vyplní podle očekávání.
 
-![SELECT INTO poslední tabulky](./media/stream-analytics-select-into/stream-analytics-select-into-final-table.png)
+![Příkaz SELECT INTO konečné tabulky](./media/stream-analytics-select-into/stream-analytics-select-into-final-table.png)
 
 
 ## <a name="get-help"></a>Podpora
 
-Pro další pomoc, vyzkoušejte naše [fórum Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
+Potřebujete další pomoc, vyzkoušejte naše [fóru Azure Stream Analytics](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Další postup
 

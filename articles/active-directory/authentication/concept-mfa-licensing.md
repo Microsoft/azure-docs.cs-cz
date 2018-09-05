@@ -5,17 +5,17 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 09/01/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 8ecb2008b85bb6a7ac35b5f95deaf0fb321ce155
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: e5915157c1ff2c1f58779e5c3b1d784241464b32
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42060757"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43669042"
 ---
 # <a name="how-to-get-azure-multi-factor-authentication"></a>Jak získat Azure Multi-Factor Authentication
 
@@ -32,7 +32,10 @@ Následující tabulka popisuje rozdíly mezi tři verze služby Multi-Factor au
 | --- | --- |
 | Služba Multi-Factor Authentication (vícefaktorové ověřování) pro Office 365 |Tato verze funguje výhradně s aplikacemi Office 365 a spravuje se z portálu Office 365. Správci můžou [svázat prostředky služeb Office 365 s dvoustupňovým ověřováním](https://support.office.com/article/Set-up-multi-factor-authentication-for-Office-365-users-8f0454b2-f51a-4d9c-bcde-2c48e41621c6). Tato verze je součástí předplatného Office 365. |
 | Ověřování službou Multi-Factor Authentication pro správce Azure AD | Uživatelé s rolí globální správce Azure AD v tenantů Azure AD můžete zapnout dvoustupňové ověřování bez dalších poplatků.|
-| Azure Multi-Factor Authentication | Často označuje jako "úplné" verze, ověřování Azure Multi-Factor Authentication nabízí nejkomplexnější sadu funkcí. Poskytuje dodatečné konfigurační možnosti přes [webu Azure portal](https://portal.azure.com)rozšířená tvorba sestav a podpora pro celou řadu v místním i cloudovým aplikacím. Azure Multi-Factor Authentication je součástí [plánů Azure Active Directory Premium](https://www.microsoft.com/cloud-platform/azure-active-directory-features)a je možné nasadit v cloudu nebo místně. |
+| Azure Multi-Factor Authentication | Často označuje jako "úplné" verze, ověřování Azure Multi-Factor Authentication nabízí nejkomplexnější sadu funkcí. Poskytuje dodatečné konfigurační možnosti přes [webu Azure portal](https://portal.azure.com)rozšířená tvorba sestav a podpora pro celou řadu v místním i cloudovým aplikacím. Azure Multi-Factor Authentication je funkce [Azure Active Directory Premium](https://www.microsoft.com/cloud-platform/azure-active-directory-features)a je možné nasadit v cloudu nebo místně. |
+
+> [!NOTE]
+> Noví zákazníci už koupit Azure Multi-Factor Authentication jako samostatná nabízí efektivní dne 1. května 2018. Ověřování službou Multi-Factor Authentication bude i nadále k dispozici funkce v licence Azure AD Premium.
 
 ## <a name="feature-comparison-of-versions"></a>Funkce porovnání verzí
 
@@ -77,9 +80,12 @@ Pokud použijete tuto možnost, měli byste vytvořit poskytovatele Azure Multi-
 
 ### <a name="option-2---mfa-consumption-based-model"></a>Možnost 2 – model založený na spotřebě MFA
 
+> [!NOTE]
+> Může vytvořit už nebude platit 1. září 2018 nové zprostředkovatelé vícefaktorového ověřování. Existující zprostředkovatelé vícefaktorového ověřování nadále používat a aktualizovat. Ověřování službou Multi-Factor Authentication bude i nadále k dispozici funkce v licence Azure AD Premium.
+
 Vytvořte poskytovatele Azure Multi-Factor Authentication v rámci předplatného Azure. Azure MFA poskytovatelé jsou prostředky Azure, které se budou účtovat na vrub smlouvy Enterprise, peněžního závazku Azure nebo platební karty jako všechny ostatní prostředky Azure. Tito poskytovatelé lze vytvořit pouze v předplatných úplné Azure, mimo jiné předplatná Azure, které mají 0 USD limit útraty. Omezený odběry se vytvoří při aktivaci licencí, jako jsou možnosti 1.
 
-Při použití poskytovatele Azure Multi-Factor Authentication, existují dva modely využití k dispozici prostřednictvím předplatného Azure, které se účtují: 
+Při použití poskytovatele Azure Multi-Factor Authentication, existují dva modely využití k dispozici prostřednictvím předplatného Azure, které se účtují:
 
 1. **Per Enabled User** – pro podniky, které chcete povolit dvoustupňové ověřování pro pevně daný počet zaměstnanců, kteří potřebují pravidelně ověřování. Fakturace po uživatelích vychází z počtu uživatelů s povoleným vícefaktorovým Ověřováním ve vašem tenantovi Azure AD a Azure MFA serveru. Když uživatelé budou povolené pro vícefaktorové ověřování v Azure AD a Azure MFA serverem a je povolená synchronizace domény (Azure AD Connect), pak se řadí větší sadu uživatelů. Pokud domény synchronizace není povolená, pak se řadí součet všech uživatelů s povoleným vícefaktorovým Ověřováním ve službě Azure AD a Azure MFA serveru. Fakturace se účtuje pomocí poměrného přepočítání a který ohlásil systému obchodování každý den.
 
@@ -93,7 +99,7 @@ Při použití poskytovatele Azure Multi-Factor Authentication, existují dva mo
   > [!NOTE]
   > Příklad fakturace 3: v současné době služba Azure MFA přijala 3,105 žádosti o dvoustupňové ověření. Vaše předplatné Azure účtuje 310.5 sady ověřování.
 
-Je důležité si uvědomit, že může mít licence Azure MFA, ale pořád účtují pro konfiguraci založenou na skutečné spotřebě. Pokud nastavíte zprostředkovatele Azure MFA na ověřování, fakturovaného pro každý požadavek dvoustupňové ověření, včetně těch, které provádí uživatelé, kteří mají licence. Pokud nastavíte zprostředkovatele Azure MFA na uživatele v doméně, který není přidružený k vašemu tenantovi Azure AD vám účtuje za povoleného uživatele i v případě, že uživatelé mají licence na Azure AD.
+Je důležité si uvědomit, že může mít licence, ale stále bude fakturována částka pro konfiguraci založenou na skutečné spotřebě. Pokud nastavíte zprostředkovatele Azure MFA na ověřování, fakturovaného pro každý požadavek dvoustupňové ověření, včetně těch, které provádí uživatelé, kteří mají licence. Pokud nastavíte zprostředkovatele Azure MFA na uživatele v doméně, který není přidružený k vašemu tenantovi Azure AD vám účtuje za povoleného uživatele i v případě, že uživatelé mají licence na Azure AD.
 
 ## <a name="next-steps"></a>Další postup
 

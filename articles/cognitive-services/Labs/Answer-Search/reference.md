@@ -9,12 +9,12 @@ ms.technology: project-answer-search
 ms.topic: article
 ms.date: 04/13/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: a12761c2d913cd7ffaa2cbc2cd42576c6bc96434
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 28a73918b50d7b13248fe5b6a17f2c95287a1ba4
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866980"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666284"
 ---
 # <a name="project-answer-search-v7-reference"></a>Odkaz na projekt hledání odpovědí v7
 
@@ -111,7 +111,7 @@ Definuje chyby, ke které došlo k chybě.
 |<a name="error-message" />Zpráva|Popis chyby.|Řetězec|  
 |<a name="error-moredetails" />moreDetails|Popis, který poskytuje další informace o této chybě.|Řetězec|  
 |<a name="error-parameter" />Parametr|Parametr dotazu v žádosti, která způsobila chybu.|Řetězec|  
-|<a name="error-subcode" />podřízeného|Kód chyby: identifikující chybu. Například pokud `code` je InvalidRequest, `subCode` může být ParameterInvalid nebo ParameterInvalidValue. |Řetězec|  
+|<a name="error-subcode" />Podřízeného|Kód chyby: identifikující chybu. Například pokud `code` je InvalidRequest, `subCode` může být ParameterInvalid nebo ParameterInvalidValue. |Řetězec|  
 |<a name="error-value" />Hodnota|Hodnota parametru dotazu, která nebyla platná.|Řetězec|  
   
 
@@ -121,7 +121,7 @@ Objekt nejvyšší úrovně, který obsahuje odpověď, pokud požadavek selže.
 |Název|Hodnota|Typ|  
 |----------|-----------|----------|  
 |_typ|Pomocný parametr typu.|Řetězec|  
-|<a name="errors" />chyby|Seznam chyb, které popisují důvody, proč žádost selhala.|[Chyba](#error)]|  
+|<a name="errors" />Chyby|Seznam chyb, které popisují důvody, proč žádost selhala.|[Chyba](#error)|  
 
   
   

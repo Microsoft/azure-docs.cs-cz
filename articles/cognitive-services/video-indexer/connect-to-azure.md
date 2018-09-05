@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 08/05/2018
 ms.author: juliako
-ms.openlocfilehash: 64a38ba617a1cc5fe1fdb3473e3cb88a49d89bb0
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: df9d3f40b28f5b030f3d7e7a63b1b3e77caedb6c
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42744747"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43700803"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Vytvoření připojení k Azure účet služby Video Indexer
 
@@ -52,7 +52,7 @@ Tento článek ukazuje, jak vytvořit účet služby Video Indexer, který je pr
 
 ## <a name="connect-to-azure"></a>Připojení k Azure
 
-1. Přihlaste se pomocí tohoto uživatele a klikněte na **připojit se k Azure** tlačítka:
+1. Přihlaste se k [ https://www.videoindexer.ai/ ](https://www.videoindexer.ai/) a klikněte na **připojit se k Azure** tlačítka:
 
     ![Připojení k Azure](./media/create-account/connect-to-azure.png)
 
@@ -69,9 +69,21 @@ Tento článek ukazuje, jak vytvořit účet služby Video Indexer, který je pr
     * Chcete-li použít existující účet Media Services, vyberte **používat stávající prostředek**. Ze seznamu účtů vyberte svůj účet.
 
         Stejné oblasti jako váš účet služby Video Indexer musí mít váš účet Media Services. Chcete-li minimalizovat dobu trvání indexování a Nízká propustnost, upravte typ a počet rezervovaných jednotek, aby **10 rezervovaných jednotek S3** ve vašem účtu Media Services.
-    * Chcete-li ručně konfigurovat připojení, klikněte na tlačítko **přepněte na ruční konfigurace** propojit a zadejte potřebné informace:
+    * Chcete-li ručně konfigurovat připojení, klikněte na tlačítko **přepněte na ruční konfigurace**. 
+    
+        Můžete chtít ručně konfigurovat připojení, pokud z nějakého důvodu nepodaří možnost automatického dokončení, nebo pokud vaše nastavení a konfigurace se liší od běžné případy, nebo chcete mít kompletní přehled a kontrolu nad nastavení. 
+        
+        V **připojení Video Indexer s předplatným Azure**, zadejte následující informace.
 
-    ![Video Indexer připojení k Azure](./media/create-account/connect-vi-to-azure-subscription-2.png)
+        |Nastavení|Popis|
+        |---|---|
+        |Oblast účtu video Indexer|Název oblasti účtu Video Indexer. Pro lepší výkon a nižší náklady důrazně doporučujeme zadat název oblasti, kde se nachází na prostředek služby Azure Media Services a účet služby Azure Storage. |
+        |Tenant Azure Active Directory (AAD)|Název tenanta Azure AD, například "contoso.onmicrosoft.com". Informace o tenantovi můžete získat z webu Azure portal. Umístěte ukazatel myši přes jméno přihlášeného uživatele v horním pravém rohu.|
+        |ID předplatného|Předplatné Azure, ve kterém by měl vytvoří toto připojení. ID předplatného můžete získat z webu Azure portal. Klikněte na **všechny služby** v levém panelu a vyhledejte "předplatné". Vyberte, **předplatná** a pak vyberte požadovaného ID z seznam vašich předplatných.|
+        |Skupina prostředků Azure název|Název pro novou skupinu prostředků, ve kterém chcete vytvořit připojení.|
+        |Název prostředku Azure|Název prostředku Azure Media Services.|
+        |ID aplikace|ID aplikace Azure AD s oprávněními pro zadaný účet Media Services. Další informace najdete v tématu [použití ověřování instančních objektů](../../media-services/previous/media-services-portal-get-started-with-aad.md#service-principal-authentication).|
+        |Klíč aplikace|Další informace najdete v tématu [použití ověřování instančních objektů](../../media-services/previous/media-services-portal-get-started-with-aad.md#service-principal-authentication).|
 
 5. Jakmile budete hotovi, zvolte **připojit**. Tato operace může trvat až několik minut. 
 

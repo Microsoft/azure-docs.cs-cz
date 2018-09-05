@@ -1,9 +1,9 @@
 ---
-title: Nastavení portu Azure předávání | Microsoft Docs
-description: Údaje o předávání přes Azure hodnoty portů.
+title: Nastavení portu služby Azure Relay | Dokumentace Microsoftu
+description: Podrobnosti o Azure Relay hodnoty portu.
 services: service-bus-relay
 documentationcenter: na
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,21 +13,21 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/26/2018
-ms.author: sethm
-ms.openlocfilehash: 56688b6941d58c0ecc8d0ff4ba3c8a8392e71496
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.author: spelluru
+ms.openlocfilehash: 3ef08cfc94a029f97250578e9b0366a18770c809
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37029369"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43696732"
 ---
-# <a name="azure-relay-port-settings"></a>Nastavení portu Azure předávání
+# <a name="azure-relay-port-settings"></a>Nastavení portu služby Azure Relay
 
-Následující tabulka popisuje požadované konfigurace pro hodnoty portů pro předávání přes Azure.
+Následující tabulka popisuje požadované konfigurace pro hodnoty portů pro Azure Relay.
 
 ## <a name="hybrid-connections"></a>Hybridní připojení
 
-Hybridní připojení používá na portu 443 s protokolem SSL jako podkladový přenosový mechanismus, který používá **HTTPS** pouze. 
+Hybridní připojení používá objekty Websocket na portu 443 s protokolem SSL jako podkladový přenosový mechanismus, který používá **HTTPS** pouze. 
 
 ## <a name="wcf-relays"></a>Přenosy WCF
   
@@ -39,7 +39,7 @@ Hybridní připojení používá na portu 443 s protokolem SSL jako podkladový 
 |[Třída NetEventRelayBinding](/dotnet/api/microsoft.servicebus.neteventrelaybinding) (klient)|Ano|9351/HTTPS|  
 |" |Ne|9350/HTTP|  
 |[Třída NetEventRelayBinding](/dotnet/api/microsoft.servicebus.neteventrelaybinding) (služba)|Buď|9351/HTTP|  
-|[Třída NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) (klienta nebo služba)|Buď|5671/9352/HTTP (9352/9353 Pokud používáte hybridní)|  
+|[Třída NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) (klienta nebo služby)|Buď|9352 a 5671/HTTP (9352/9353 používáte hybridní)|  
 |[Třída NetOnewayRelayBinding](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) (klient)|Ano|9351/HTTPS|  
 |" |Ne|9350/HTTP|  
 |[Třída NetOnewayRelayBinding](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) (služba)|Buď|9351/HTTP|  
@@ -51,6 +51,6 @@ Hybridní připojení používá na portu 443 s protokolem SSL jako podkladový 
 |[Třída WS2007HttpRelayBinding](/dotnet/api/microsoft.servicebus.ws2007httprelaybinding) (služba)|Buď|9351/HTTP|
 
 ## <a name="next-steps"></a>Další postup
-Další informace o předávání přes Azure, najdete pomocí těchto odkazů:
+Další informace o Azure Relay, najdete pomocí těchto odkazů:
 * [Co je Azure Relay?](relay-what-is-it.md)
 * [Přenos – nejčastější dotazy](relay-faq.md)

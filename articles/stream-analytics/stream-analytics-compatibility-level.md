@@ -1,6 +1,6 @@
 ---
-title: Pochopení úroveň kompatibility pro úlohy Azure Stream Analytics
-description: Zjistěte, jak nastavit úroveň kompatibility pro úlohu služby Azure Stream Analytics a hlavní změny v nejnovější úroveň kompatibility
+title: Vysvětlení úroveň kompatibility pro úlohy Azure Stream Analytics
+description: Zjistěte, jak nastavit úroveň kompatibility pro úlohy Azure Stream Analytics a hlavní změny v nejnovější úroveň kompatibility
 services: stream-analytics
 author: jasonwhowell
 ms.author: jasonh
@@ -8,65 +8,65 @@ manager: kfile
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/03/2018
-ms.openlocfilehash: 32e73918b2dd98822d42d74002b705ff730145d9
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 136b21f026d208c09b50dfa8601de692e518774e
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30902968"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43699106"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Úroveň kompatibility pro úlohy Azure Stream Analytics
  
-Úroveň kompatibility odkazuje na konkrétní verzi chování služby Azure Stream Analytics. Azure Stream Analytics je spravovaná služba, s aktualizacemi regulární funkce a vylepšení výkonu. Obvykle jsou automaticky provedeny aktualizace k dispozici koncovým uživatelům. Některé nové funkce, ale může zavést hlavní změny takové jako změny v chování nástroje stávající úloze, změny v procesech použití dat z těchto úloh atd. Úroveň kompatibility se používá k reprezentování hlavní změny zavedené v Stream Analytics. Hlavní změny se vždy zavedly s novou úroveň kompatibility. 
+Úroveň kompatibility odkazuje na chování specifické pro verzi služby Azure Stream Analytics. Azure Stream Analytics je spravovaná služba, se aktualizace regulární funkcí a vylepšení výkonu. Obvykle jsou automaticky provedeny aktualizace k dispozici koncovým uživatelům. Některé nové funkce, může však zavést zásadní změny těchto jako změnu v chování existující úlohy, změňte procesy využívající data z těchto úloh atd. Úroveň kompatibility se používá k reprezentování zásadní změny zavedené ve službě Stream Analytics. Důležité změny jsou vždy zavedená s novou úrovní kompatibility. 
 
-Úroveň kompatibility zajišťuje, že stávající úlohy spouštět bez jakékoli chyby. Při vytváření nové úlohy Stream Analytics, je vhodné vytvořit pomocí nejnovější úroveň kompatibility, která je pro vás k dispozici. 
+Úroveň kompatibility zajišťuje, že stávající úlohy spustit bez jakékoli neúspěchy. Při vytváření nové úlohy Stream Analytics, je osvědčeným postupem je vytvoření s použitím nejnovější úroveň kompatibility, který je k dispozici. 
  
 ## <a name="set-a-compatibility-level"></a>Nastavit úroveň kompatibility 
 
-Úroveň kompatibility řídí chování za běhu úlohy stream analytics. Můžete nastavit úroveň kompatibility pro úlohu služby Stream Analytics pomocí portálu nebo pomocí [vytvořit úlohu volání rozhraní API REST](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-job). Azure Stream Analytics teď podporuje dva kompatibility úrovně-"1.0" a "1.1". Úroveň kompatibility je standardně nastavena na "1.0", která byla představena při obecné dostupnosti Azure Stream Analytics. Chcete-li aktualizovat výchozí hodnota, přejděte na vaše stávající úlohy služby Stream Analytics > vyberte **úroveň kompatibility** možnost v **konfigurace** části a změňte hodnotu. 
+Úroveň kompatibility řídí chování za běhu úlohy stream analytics. Můžete nastavit úroveň kompatibility pro úlohu Stream Analytics pomocí portálu nebo pomocí [vytvořit úlohu volání rozhraní REST API](https://docs.microsoft.com/rest/api/streamanalytics/stream-analytics-job). Azure Stream Analytics v současné době podporuje dva kompatibility úrovně – "1.0" a "1.1". Ve výchozím nastavení je úroveň kompatibility nastavena na "1.0", která byla zavedena v období všeobecné dostupnosti služby Azure Stream Analytics. Pokud chcete aktualizovat výchozí hodnotu, přejděte do vaší existující úlohy Stream Analytics > vyberte **úroveň kompatibility** možnost **konfigurovat** části a změňte hodnotu. 
 
-Zajistěte, aby zastavit úlohu před aktualizací úroveň kompatibility. Úroveň kompatibility nelze aktualizovat, pokud vaše úlohy je v běžícím stavu. 
+Ujistěte se, že zastavení úlohy před aktualizací úroveň kompatibility. Úroveň kompatibility nelze aktualizovat, pokud vaše úloha není ve spuštěném stavu. 
 
 ![Úroveň kompatibility portálu](media\stream-analytics-compatibility-level/image1.png)
 
  
-Když aktualizujete úroveň kompatibility, ověří kompilátoru T-SQL úlohy se syntaxí, která odpovídá úroveň kompatibility vybrané. 
+Při aktualizaci úrovní kompatibility T-SQL compiler ověří úlohy pomocí syntaxe, která odpovídá úroveň kompatibility vybrané. 
 
 ## <a name="major-changes-in-the-latest-compatibility-level-11"></a>Hlavní změny v nejnovější úroveň kompatibility (1.1)
 
-V úroveň kompatibility 1.1 byly zavedeny následující hlavní změny:
+V úrovni kompatibility 1.1 byly zavedeny následující hlavní změny:
 
-* **Formát Service Bus XML**  
+* **Formát XML služby Service Bus**  
 
-  * **předchozí verze:** Azure Stream Analytics používá DataContractSerializer, takže obsah zprávy zahrnuty značky XML. Příklad:
+  * **předchozí verze:** Azure Stream Analytics používá DataContractSerializer, takže obsah zprávy zahrnout tagů XML. Příklad:
     
-   @\u0006string\b3http://schemas.microsoft.com/2003/10/Serialization/\u0001 {"SensorId": "1", "teploty": 64\}\u0001 
+   @\u0006string\b3http://schemas.microsoft.com/2003/10/Serialization/\u0001{ "SensorId": "1", "teploty": 64\}\u0001 
 
-  * **aktuální verze:** obsahu zprávy obsahuje datový proud přímo s žádné další značky. Příklad:
+  * **aktuální verze:** obsah zprávy obsahuje datovým proudem přímo s žádné další značky. Příklad:
   
    {"SensorId": "1", "teploty": 64} 
  
-* **Zachování rozlišování pro názvy polí**  
+* **Zachování rozlišování názvů polí**  
 
-  * **předchozí verze:** na malá písmena při zpracování modulu Azure Stream Analytics se změnily názvy polí. 
+  * **předchozí verze:** názvy polí byly změněny na malá písmena, když modul Azure Stream Analytics zpracovává. 
 
-  * **aktuální verze:** rozlišování je trvalá pro názvy polí, když se zpracovávají modulem Azure Stream Analytics. 
+  * **aktuální verze:** rozlišování se ukládají pro názvy polí při jejich zpracování pomocí modulu Azure Stream Analytics. 
 
   > [!NOTE] 
-  > Zachování rozlišování ještě není k dispozici pro datový proud analytické úlohy, které jsou hostované pomocí prostředí hraniční. Názvy všech polí v důsledku toho se převedou na malá písmena, pokud vaše úlohy je hostována na okraj. 
+  > Zachování rozlišování ještě není k dispozici pro Stream analytických úloh, které jsou hostované pomocí hraničním prostředí. Názvy všech polí v důsledku toho jsou převedeny na malá písmena, pokud vaše úloha je hostovaná na hraničních zařízeních. 
 
 * **FloatNaNDeserializationDisabled**  
 
-  * **předchozí verze:** příkazu CREATE TABLE není filtrování událostí s NaN (není a-Number. Například Infinity, - Infinity) ve sloupci FLOAT typu, protože jsou mimo rozsah zdokumentovaných pro tato čísla.
+  * **předchozí verze:** příkazu CREATE TABLE není filtrovat události s NaN (Not a Number. Například nekonečno, - nekonečno) ve sloupci PLOVOUCÍ typ, protože jsou mimo rozsah zdokumentovaných pro tato čísla.
 
-  * **aktuální verze:** CREATE TABLE umožňuje zadat silné schématu. Modul služby Stream Analytics ověří, že data vyhovuje toto schéma. V tomto modelu příkaz můžete filtrovat události s hodnoty NaN. 
+  * **aktuální verze:** CREATE TABLE umožňuje zadat silné schématu. Modul Stream Analytics ověří, že toto schéma odpovídá data. V tomto modelu můžete příkaz Filtrovat události s hodnoty NaN. 
 
 * **Zakážete automatické přetypování nahoru pro řetězce data a času ve formátu JSON.**  
 
-  * **předchozí verze:** analyzátor JSON by automaticky přetypování nahoru řetězec zadejte hodnoty s informacemi o datum/čas/zóny na typ DateTime a pak ho převést na UTC. To mělo za následek ztrátu informace o časovém pásmu.
+  * **předchozí verze:** by JSON analyzátor upcast automaticky řetězec hodnoty Datum/čas/pásmo informace, které data a času typu a převeďte jej na UTC. To bylo způsobeno dojde ke ztrátě informace o časovém pásmu.
 
-  * **aktuální verze:** neexistuje žádné další automaticky přetypování nahoru řetězcových hodnot s informacemi o datum/čas/zóny na typ DateTime. V důsledku toho se ukládají informace o časovém pásmu. 
+  * **aktuální verze:** neexistuje žádné další automaticky upcast řetězcových hodnot s informacemi o datum/čas/pásmo na typ DateTime. V důsledku toho se ukládají informace o časovém pásmu. 
 
 ## <a name="next-steps"></a>Další postup
-* [Průvodce řešením potíží pro Azure Stream Analytics](stream-analytics-troubleshooting-guide.md)
-* [Okna stavu prostředků analýzy datového proudu](stream-analytics-resource-health.md)
+* [Průvodce odstraňováním potíží pro Azure Stream Analytics](stream-analytics-troubleshooting-guide.md)
+* [Okno Stream Analytics Resource health](stream-analytics-resource-health.md)

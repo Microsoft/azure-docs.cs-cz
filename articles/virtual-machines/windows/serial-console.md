@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: ddd30729aa2bcb616efab814dc4046d2817c64fa
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 725f52e55795025671036095f209fd92636a4d9c
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128673"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43701495"
 ---
 # <a name="virtual-machine-serial-console-preview"></a>Virtuální počítač sériová konzola (preview) 
 
@@ -39,7 +39,7 @@ Dokumentaci konzoly sériového portu pro virtuální počítače s Linuxem [kli
 * Virtuální počítač musí mít [Diagnostika spouštění](boot-diagnostics.md) povoleno 
 
     ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-diagnostics-settings.png)
-    
+
 * Účet, pomocí konzoly sériového portu, musí mít [role Přispěvatel](../../role-based-access-control/built-in-roles.md) pro virtuální počítač a [Diagnostika spouštění](boot-diagnostics.md) účtu úložiště. 
 * Virtuální počítač, u kterého jste přístup k pracovnímu konzoly sériového portu musí mít také účet založené na heslech. Můžete si ho vytvořit pomocí [resetovat heslo](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) funkce rozšíření přístupu virtuálních počítačů – snímek najdete níže.
 
@@ -77,7 +77,7 @@ Pokud potřebná SAC lze povolit v režimu offline
 
 Pokud [SAC] (https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) není povoleno konzole sériového portu se nezobrazí SAC řádku. V některých případech může zobrazit informace o stavu virtuálních počítačů nebo je prázdný.  
 
-### <a name="enabling-boot-menu-to-show-in-the-serial-console"></a>Povolení spouštěcí nabídky pro zobrazení v konzole sériového portu 
+## <a name="enabling-boot-menu-to-show-in-the-serial-console"></a>Povolení spouštěcí nabídky pro zobrazení v konzole sériového portu 
 
 Pokud je potřeba povolit Windows spouštěcí zavaděč zobrazí výzvu k zobrazení v konzole sériového portu následující další možnosti můžete přidat do spouštěcí zavaděč Windows.
 
@@ -149,6 +149,15 @@ Pokud je uživatel připojený k sériové konzoly a jiný uživatel úspěšně
 >[!CAUTION] 
 To znamená, že uživatel, který odpojí nebude odhlášeni! Schopnost Vynutit odhlášení při odpojení (prostřednictvím SIGHUP nebo mechanismus podobný) je stále v se plánuje. Pro Windows je automatické vypršení časového limitu povolené v SAC, ale pro Linux můžete nakonfigurovat nastavení terminálu vypršení časového limitu. 
 
+## <a name="common-scenarios-for-accessing-serial-console"></a>Časté scénáře pro přístup ke konzole sériového portu 
+Scénář          | Akce v konzole sériového portu                
+:------------------|:-----------------------------------------
+Pravidla brány firewall na nesprávný | Přístup k sériové konzoly a opravte Windows pravidla brány firewall. 
+Poškození systému souborů a vrácení | Přístup ke konzole sériového portu a obnovení systému souborů. 
+Problémy s konfigurací protokolu RDP | Přístup ke konzole sériového portu a změňte nastavení. Přejděte [RDP dokumentaci](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-allow-access) začít.
+Uzamknutí sítě v systému| Konzoly sériového portu přístup prostřednictvím portálu pro správu systému. Některé příkazy sítě jsou uvedeny v [sériové konzoly příkazového řádku a Powershellu dokumentaci](./serial-console-cmd-ps-commands.md). 
+Interakce s zaváděcího programu pro spouštění | Přístup BCD prostřednictvím konzoly sériového portu. Přejděte na [povolení spouštěcí nabídky pro zobrazení v konzole sériového portu](#enabling-boot-menu-to-show-in-the-serial-console) začít. 
+
 ## <a name="using-serial-console-for-nmi-calls-in-windows-vms"></a>Použití konzoly sériového portu pro NMI volání ve virtuálních počítačích Windows
 Maskable přerušení (NMI) slouží k vytvoření signál, který nebude ignorovat softwaru na virtuálním počítači. V minulosti NMIs se používají ke sledování hardwarových problémů v systémech, které vyžaduje konkrétní odezvy.  Dnes, programátoři a správce systému často používají NMI jako mechanismus pro ladění nebo řešení potíží s systémy, které jsou zablokovaná.
 
@@ -158,6 +167,14 @@ Konzole sériového portu je možné odeslat NMI na virtuálním počítači Azu
 
 Informace o konfiguraci Windows vytvořit výpis stavu systému, když dostane NMI najdete v tématu: [jak vygenerovat soubor s výpisem paměti kompletní selhání nebo soubor s výpisem paměti jádra s použitím NMI v systému Windows](https://support.microsoft.com/en-us/help/927069/how-to-generate-a-complete-crash-dump-file-or-a-kernel-crash-dump-file)
 
+## <a name="accessibility"></a>Přístupnost
+Klíče se pro Azure konzoly sériového portu se usnadnění přístupu. Za tímto účelem jsme zajistíte, že je přístupný pro ty, které mají vizuál a poškozením sluchu, jakož i uživatelů, kteří nebudou moct používat myš konzole sériového portu.
+
+### <a name="keyboard-navigation"></a>Procházení pomocí klávesnice
+Použití `tab` kláves na klávesnici pro navigaci v konzole sériového portu rozhraní na webu Azure portal. Vaše poloha budou zvýrazněny na obrazovce. Pokud chcete nechat fokus z okna konzoly sériového portu, stiskněte klávesu `Ctrl + F6` na klávesnici.
+
+### <a name="use-serial-console-with-a-screen-reader"></a>Použití konzoly sériového portu se čtečkou obrazovky
+Konzola sériového portu se dodává s integrované podpoře čtečky obrazovky. Navigace pomocí čtečky obrazovky zapnuté vám umožní alternativní text pro aktuálně vybrané tlačítko nahlas číst čtečka obrazovky.
 
 ## <a name="errors"></a>Chyby
 Většina chyb jsou přechodné povahy a opakováním tyto adresy připojení. Následující tabulka uvádí seznam chyb a způsoby zmírnění rizik

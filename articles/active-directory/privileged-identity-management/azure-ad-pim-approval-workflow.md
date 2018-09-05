@@ -15,20 +15,20 @@ ms.component: pim
 ms.date: 08/29/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: bc60c0dbe6c609a08907feb243fe514badfe3e4e
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 9402824540f965cb89aa00791d093bd87712a89a
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43288071"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43665838"
 ---
 # <a name="approve-or-deny-requests-for-azure-ad-directory-roles-in-pim"></a>Schválit nebo zamítnout žádosti pro role adresáře Azure AD v PIM
 
-S Azure AD Privileged Identity Management (PIM) můžete nakonfigurovat role, které vyžadují schválení pro aktivaci a zvolte jednu nebo více uživatelů nebo skupin jako delegovaný schvalovatele.
+S Azure AD Privileged Identity Management (PIM) můžete nakonfigurovat role, které vyžadují schválení pro aktivaci a zvolte jednu nebo více uživatelů nebo skupin jako delegovaný schvalovatele. Postupujte podle kroků v tomto článku pro schválení nebo zamítnutí žádosti pro role adresáře Azure AD.
 
 ## <a name="view-pending-requests"></a>Zobrazit čekající žádosti
 
-Jako delegovaný schvalovatel obdržíte e-mailová oznámení, když je požadavek čekající na vaše schválení. Zobrazí se tyto žádosti čekající na vyřízení v PIM.
+Jako delegovaný schvalovatel obdržíte e-mailové oznámení, když požadavek pro role adresáře Azure AD čeká na schválení. Zobrazí se tyto žádosti čekající na vyřízení v PIM.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
@@ -74,5 +74,5 @@ Jako delegovaný schvalovatel obdržíte e-mailová oznámení, když je požada
 
 ## <a name="next-steps"></a>Další postup
 
-- [Schválit nebo zamítnout žádosti pro role prostředků Azure v PIM](pim-resource-roles-approval-workflow.md)
 - [E-mailových oznámení v PIM](pim-email-notifications.md)
+- [Schválit nebo zamítnout žádosti pro role prostředků Azure v PIM](pim-resource-roles-approval-workflow.md)

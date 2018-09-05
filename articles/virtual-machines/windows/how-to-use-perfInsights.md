@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 16d023a2f3abf0feb1f1c0478edb3de7a157d5a4
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: 1f3a24cebe5061f7e3ca3897692b068531780431
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42054624"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43668117"
 ---
 # <a name="how-to-use-perfinsights"></a>Použití PerfInsights
 
@@ -68,7 +68,7 @@ Tento scénář spuštěn [nástroje Diskspd](https://github.com/Microsoft/disks
 
 Tento scénář spustí [čítač výkonu](https://msdn.microsoft.com/library/windows/desktop/aa373083(v=vs.85).aspx) trasování pomocí čítače, které jsou uvedeny v souboru RuleEngineConfig.json. Pokud virtuální počítač je identifikován jako server, na kterém běží SQL Server, je spustit trasování čítače výkonu. Dělá to pomocí čítače, které se nacházejí v souboru RuleEngineConfig.json. Tento scénář také zahrnuje diagnostická data výkonu.
 
-### <a name="azure-files-analysis"></a>Služba soubory Azure Analysis
+### <a name="azure-files-analysis"></a>Azure analysis soubory
 
 Tento scénář spustí zachycení čítače výkonu speciální spolu s trasování v síti. Zachytávání zahrnuje všechny čítače zprávy bloku SMB (Server) klienta sdílené složky. Tady jsou některé klíčové klienta sdílená složka čítače výkonu SMB, které jsou součástí zachytávání:
 
@@ -104,7 +104,7 @@ Informace o virtuální počítač Windows, disků nebo konfigurace fondů úlo�
 
 |Data shromážděná                              |  |  | Scénáře výkonu |  |  | |
 |----------------------------------|----------------------------|------------------------------------|--------------------------|--------------------------------|----------------------|----------------------|
-|                               | Rychlý výkon analýzy | Srovnávací testy | Analýza výkonu | Služba soubory Azure Analysis | Analýza výkonu Upřesnit |
+|                               | Rychlý výkon analýzy | Srovnávací testy | Analýza výkonu | Azure analysis soubory | Analýza výkonu Upřesnit |
 | Informace z protokolů událostí       | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
 | Systémové informace                | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
 | Mapování svazku                        | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
@@ -171,9 +171,9 @@ Diskspd vstupně-výstupních operací úloh testy (Disk s operačním systémem
 
 #### <a name="possible-problems-when-you-run-the-tool-on-production-vms"></a>Možné problémy při spuštění nástroje na produkčních virtuálních počítačů
 
--  Pro srovnávací testy scénář nebo scénáře "analýzu výkonu pokročilé", který je nakonfigurován pro použití nástroje Xperf nebo nástroje Diskspd nástroj může nepříznivě ovlivnit výkon virtuálního počítače. Tyto scénáře neměli spouštět v produkčním prostředí.
+-  Pro srovnávací testy scénář nebo scénáře "Pokročilé analýzy výkonu", který je nakonfigurován pro použití nástroje Xperf nebo nástroje Diskspd nástroj může nepříznivě ovlivnit výkon virtuálního počítače. Tyto scénáře neměli spouštět v produkčním prostředí.
 
--  Pro srovnávací testy scénář nebo scénáře "analýzy výkonu pokročilé", nakonfigurovaný tak, aby používali nástroj Diskspd Ujistěte se, že žádné další aktivitu na pozadí dochází ke kolizím s vstupně-výstupní úlohy.
+-  Pro srovnávací testy scénář nebo scénáře "Pokročilé analýzy výkonu", který je nakonfigurován pro použití nástroje Diskspd Ujistěte se, že žádné další aktivitu na pozadí dochází ke kolizím s vstupně-výstupní úlohy.
 
 -  Ve výchozím nastavení používá nástroj pro shromažďování dat disk dočasného úložiště. Při trasování zůstane povolena po delší dobu, objem shromážděných dat můžou být relevantní. To může snížit dostupnost místo na dočasném disku a proto může ovlivnit jakékoli aplikace, která závisí na této jednotce.
 
@@ -245,11 +245,11 @@ Chcete-li spustit nástroj PerfInsights, postupujte takto:
     >
     >Pokud doba trvání **/d** není zadán, PerfInsights vás vyzve k reprodukci problému při spuštění vmslow azurefiles a pokročilé scénáře. 
 
-Po dokončení trasování nebo operace se zobrazí ve stejné složce jako PerfInsights nový soubor. Název souboru je **CollectedData\_rrrr MM-dd\_hh mm ss fff.zip.** Můžete odeslat tento soubor v agentovi podporu pro analýzu nebo otevřete sestavu v souboru zip a zkontrolujte výsledky a doporučení.
+Po dokončení trasování nebo operace se zobrazí ve stejné složce jako PerfInsights nový soubor. Název souboru je **PerformanceDiagnostics\_rrrr MM-dd\_hh mm ss fff.zip.** Můžete odeslat tento soubor v agentovi podporu pro analýzu nebo otevřete sestavu v souboru zip a zkontrolujte výsledky a doporučení.
 
 ## <a name="review-the-diagnostics-report"></a>Zkontrolujte sestavu diagnostiky
 
-V rámci **CollectedData\_rrrr MM-dd\_hh mm ss fff.zip** soubor, můžete najít zprávu ve formátu HTML s podrobnostmi o zjištění PerfInsights. Chcete-li zkontrolovat sestavy, rozbalte **CollectedData\_rrrr MM-dd\_hh mm ss fff.zip** souboru a pak otevřete **PerfInsights Report.html** souboru.
+V rámci **PerformanceDiagnostics\_rrrr MM-dd\_hh mm ss fff.zip** soubor, můžete najít zprávu ve formátu HTML s podrobnostmi o zjištění PerfInsights. Chcete-li zkontrolovat sestavy, rozbalte **PerformanceDiagnostics\_rrrr MM-dd\_hh mm ss fff.zip** souboru a pak otevřete **PerfInsights Report.html** souboru.
 
 Vyberte **zjištění** kartu.
 
@@ -314,4 +314,4 @@ Následující snímek obrazovky ukazuje podobný co se může zobrazit zpráva:
 
 Postupujte podle pokynů ve zprávě pro přístup k pracovnímu prostoru přenos souboru. Za účelem zvýšení zabezpečení budete muset změnit heslo při prvním použití.
 
-Po přihlášení se vás bude dialogové okno pro nahrání **CollectedData\_rrrr MM-dd\_hh mm ss fff.zip** souboru, která byla shromážděna PerfInsights.
+Po přihlášení se vás bude dialogové okno pro nahrání **PerformanceDiagnostics\_rrrr MM-dd\_hh mm ss fff.zip** souboru, která byla shromážděna PerfInsights.

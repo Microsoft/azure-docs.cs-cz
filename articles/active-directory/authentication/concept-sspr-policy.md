@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 8396db3a45c2b6f2c88a9fd6bbf0b8e5a7df4efb
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 404be287d2e6ac693e0942c84f630f4e067127f3
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39162044"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666748"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Zásady hesel a omezení v Azure Active Directory
 
@@ -23,7 +23,7 @@ Tento článek popisuje zásady pro hesla a požadavky na složitost spojené s 
 
 ## <a name="administrator-reset-policy-differences"></a>Správce resetovat zásady rozdíly
 
-**Microsoft vynucuje silné výchozí *dvě brány* zásady pro libovolnou roli Správce služby Azure pro resetování hesla** tento polciy může být jiné než ta, kterou jste definovali pro vaše uživatele a nedá se změnit. Vždy byste měli otestovat funkci resetování hesla jako uživatel bez jakékoli role Správce služby Azure, které jsou přiřazeny.
+**Microsoft vynucuje silné výchozí *dvě brány* zásady pro libovolnou roli Správce služby Azure pro resetování hesla** tato zásada může být jiné než ta, kterou jste definovali pro vaše uživatele a nedá se změnit. Vždy byste měli otestovat funkci resetování hesla jako uživatel bez jakékoli role Správce služby Azure, které jsou přiřazeny.
 
 Pomocí zásad brány dvě **správci nemají možnost použít bezpečnostní otázky**.
 
@@ -76,7 +76,7 @@ Zásada jedna brána vyžaduje jednu část ověření dat, jako jsou e-mailovou
 
 ## <a name="userprincipalname-policies-that-apply-to-all-user-accounts"></a>UserPrincipalName zásady, které platí pro všechny uživatelské účty
 
-Každý uživatelský účet, který je potřeba se přihlásit ke službě Azure AD musí mít hodnotu atributu jedinečného uživatelského hlavní název (UPN) přidružené k účtu. V následující tabulce jsou podrobněji popsány dále zásad, které platí pro obě místní služby Active Directory uživatelské účty, které jsou synchronizovány do cloudu a uživatelské účty jenom cloudu:
+Každý uživatelský účet, který je potřeba se přihlásit ke službě Azure AD musí mít hodnotu atributu jedinečného uživatelského hlavní název (UPN) přidružené k účtu. Následující tabulka popisuje zásady, které platí i v místním Active Directory uživatelské účty, které jsou synchronizovány do cloudu a uživatelské účty jenom cloudu:
 
 | Vlastnost | Požadavky na atribut UserPrincipalName |
 | --- | --- |

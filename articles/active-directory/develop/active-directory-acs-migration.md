@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 11/14/2017
 ms.author: celested
 ms.reviewer: hirsin, dastrock
-ms.openlocfilehash: 803dd69aed91f6e33c354d01d3f5419597d98de9
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 41c7de3039634f262efedc1bb3de1b39dda4593a
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39115880"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43698056"
 ---
 # <a name="migrate-from-the-azure-access-control-service"></a>Migrace ze služby Azure Access Control service
 
@@ -106,7 +106,7 @@ SharePoint 2013, 2016, a Sharepointu Online zákazníci využili dlouho ACS pro 
 
 | Funkce | Doprovodné materiály |
 | ------- | -------- |
-| Ověřování uživatelů ze služby Azure AD | Dříve Azure AD nepodporuje tokeny SAML 1.1 vyžaduje SharePoint pro ověřování a služby ACS se použil jako formátuje zprostředkovatele, který vytvořil token služby SharePoint s aktualizací s využitím Azure AD. Teď můžete [připojení služby SharePoint přímo do služby Azure AD pomocí zásad vystavování tokenů](https://docs.microsoft.com/Office365/Enterprise/using-azure-ad-for-sharepoint-server-authentication). |
+| Ověřování uživatelů ze služby Azure AD | Dříve Azure AD nepodporuje tokeny SAML 1.1 vyžaduje SharePoint pro ověřování a služby ACS se použil jako formátuje zprostředkovatele, který vytvořil token služby SharePoint s aktualizací s využitím Azure AD. Teď můžete [připojit přímo k Azure AD pomocí služby Azure AD App Gallery SharePoint na místní aplikace SharePoint](https://docs.microsoft.com/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial). |
 | [Aplikace ověřování a ověřování na serveru v SharePoint v místním prostředí](https://technet.microsoft.com/library/jj219571(v=office.16).aspx) | Není ovlivněna vyřazení ACS; nejsou nutné žádné změny. | 
 | [Vztah důvěryhodnosti s nízkou autorizace Sharepointových doplňků (Zprostředkovatel hostovaný a hostované služby SharePoint)](https://docs.microsoft.com/sharepoint/dev/sp-add-ins/three-authorization-systems-for-sharepoint-add-ins) | Není ovlivněna vyřazení ACS; nejsou nutné žádné změny. |
 | [Vyhledávání hybridní cloudové služby SharePoint](https://blogs.msdn.microsoft.com/spses/2015/09/15/cloud-hybrid-search-service-application/) | Není ovlivněna vyřazení ACS; nejsou nutné žádné změny. |

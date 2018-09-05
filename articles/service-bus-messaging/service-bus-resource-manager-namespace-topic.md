@@ -3,7 +3,7 @@ title: Vytvoření odběru tématu obor názvů služby Azure Service Bus pomoc�
 description: Vytvoření oboru názvů služby Service Bus s tématem a předplatným pomocí šablony Azure Resource Manageru
 services: service-bus-messaging
 documentationcenter: .net
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: d3d55200-5c60-4b5f-822d-59974cafff0e
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 04/11/2018
-ms.author: sethm
-ms.openlocfilehash: ee9990cb9a112dffe1a7c2980315146c2a1d7ca5
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.author: spelluru
+ms.openlocfilehash: b5512186913eb59be2b89ce8b8bb9fb881f59cd8
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38452344"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43699817"
 ---
 # <a name="create-a-service-bus-namespace-with-topic-and-subscription-using-an-azure-resource-manager-template"></a>Vytvoření oboru názvů služby Service Bus s tématem a předplatným pomocí šablony Azure Resource Manageru
 

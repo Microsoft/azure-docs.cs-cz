@@ -1,6 +1,6 @@
 ---
-title: Detekce duplicitních zpráv Azure Service Bus | Microsoft Docs
-description: Zjistit duplicitní sběrnice zpráv
+title: Detekce duplicitních zpráv ve službě Azure Service Bus | Dokumentace Microsoftu
+description: Zjišťování duplicitních zpráv služby Service Bus
 services: service-bus-messaging
 documentationcenter: ''
 author: clemensv
@@ -12,47 +12,47 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2018
-ms.author: sethm
-ms.openlocfilehash: efc5608d4812edbb3f477dffbc2b495b331bd787
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.author: spelluru
+ms.openlocfilehash: 7402fcf01078ea3934d1b6794a9190947fe339c2
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2018
-ms.locfileid: "28198549"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43696621"
 ---
-# <a name="duplicate-detection"></a>Detekce duplicitních
+# <a name="duplicate-detection"></a>Vyhledávání duplicit
 
-Pokud aplikace zaznamená ihned po závažné chybě odešle zprávu a instance restartovat aplikace chybnou informací dochází k závěru, že doručení předchozí zpráv neuskutečnilo, následné odesílání způsobí, že tato zpráva se objeví v systému dvakrát.
+Pokud aplikace zjistí závažná chyba ihned po odešle zprávu a instance aplikace restartovala chybně domnívá, že předchozí zprávu doručování nedošlo k, následné odeslat způsobí, že stejná zpráva se zobrazí v systému dvakrát.
 
-Je také možné pro chybu na úrovni klienta nebo sítě proběhnout chvíli dříve, a pro odeslané zprávy, která se potvrdí do fronty, s potvrzení nebylo úspěšně vrácen do klienta. Tento scénář zanechává klienta nejistých dotázán na výsledek operaci odeslání.
+Je také možné chyby na úrovni klienta nebo síti dojde k chvíli předtím a odeslané zprávy, která potvrdí do fronty se potvrzení úspěšně vrácen do klienta. Tento scénář ponechá klienta v výsledek operace odeslání.
 
-Detekce duplicitních trvá nejistých mimo těchto situacích povolením odesílatele znovu odeslat stejnou zprávu a fronta nebo téma zahodí všechny duplicitní kopie.
+Zjišťování duplicit přebírá nejisté z těchto situací tím, že odesílatel znovu odeslat stejné zprávy a fronty nebo tématu zahodí všechny duplicitní kopie.
 
-Povolení detekce duplicitních pomáhá udržovat přehled o řízené aplikací *MessageId* všech zpráv odeslaných do fronty nebo téma během zadaného časového období. Pokud žádné nové zprávy dělal *MessageId* který již byl zaprotokolován během časový interval, zprávy hlášení jako přijato (operaci odeslání úspěšné), ale nově odeslaná zpráva je okamžitě ignorována a vyřadit. Žádné další části zprávy jinak než *MessageId* jsou považovány za.
+Když se povolí zjišťování duplicit pomáhá udržovat přehled o řízené aplikací *MessageId* všech zpráv odeslaných do fronty nebo tématu během zadaného časového intervalu. Pokud žádné nové zprávy provádění *MessageId* , která již byla zaznamenána během časového intervalu, zpráva se oznámilo, přijato (úspěšné operaci odeslání), ale nově odeslané zprávě okamžitě ignorována a vyřadit. Žádné jiné části zprávy jiné než *MessageId* jsou považovány za.
 
-Řízení aplikace identifikátoru je důležité, protože pouze to, že umožňuje, aby aplikace ke svázání *MessageId* na obchodní proces kontext, ze kterého je možné předvídatelně zrekonstruovat podstatné v případě selhání.
+Řízení aplikací v identifikátoru je nezbytné, protože pouze to, že umožňuje, aby aplikace a jejich zapojení *MessageId* k obchodním procesu kontextu, ze kterého ho můžete předvídatelně znovu vytvořena v případě selhání.
 
-Pro obchodní proces, v níž jsou odesílány více zpráv v průběhu zpracování kontextu některých aplikací *MessageId* může být složené identifikátoru kontextu úrovni aplikace, jako je například číslo objednávky a předmět zprávy; například **12345.2017/platby**.
+Pro obchodní proces, ve kterém jsou odesílány více zpráv v průběhu zpracování některých kontext aplikace *MessageId* může být složené identifikátor kontextu úrovni aplikace, jako je například čísla nákupních objednávek a předmět zprávy. například **12345.2017/platební**.
 
-*MessageId* může být vždy některé identifikátor GUID, ale ukotvení identifikátor, který obchodní proces vypočítá předvídatelný opakovatelnosti, která se požaduje efektivně využívat funkce vyhledávání duplicit.
+*MessageId* může vždy být některé identifikátor GUID, ale ukotvení identifikátor obchodního procesu poskytuje předvídatelný opakovatelnosti, který je požadován pro efektivní využití funkce vyhledávání duplicit.
 
 ## <a name="enable-duplicate-detection"></a>Povolit vyhledávání duplicit
 
-Na portálu, je zapnutá funkce během vytváření entit s **povolení detekce duplicitních** zaškrtávací políčko, které ve výchozím nastavení. Nastavení pro vytvoření nová témata je ekvivalentní.
+Na portálu, tato funkce je zapnutá během vytváření entit s **povolit vyhledávání duplicit** zaškrtávací políčko, které je ve výchozím nastavení vypnuté. Je ekvivalentní nastavení pro vytvoření nových témat.
 
 ![][1]
 
-Prostřednictvím kódu programu, nastavte příznak s [QueueDescription.requiresDuplicateDetection](/dotnet/api/microsoft.servicebus.messaging.queuedescription.requiresduplicatedetection#Microsoft_ServiceBus_Messaging_QueueDescription_RequiresDuplicateDetection) vlastnost plného rozhraní .NET API. Pomocí rozhraní API služby Správce prostředků Azure, je hodnota nastavená s [queueProperties.requiresDuplicateDetection](/azure/templates/microsoft.servicebus/namespaces/queues#property-values) vlastnost.
+Prostřednictvím kódu programu, nastavte příznak s [QueueDescription.requiresDuplicateDetection](/dotnet/api/microsoft.servicebus.messaging.queuedescription.requiresduplicatedetection#Microsoft_ServiceBus_Messaging_QueueDescription_RequiresDuplicateDetection) vlastnost na úplné rozhraní .NET API. Pomocí rozhraní API Azure Resource Manageru, je hodnota nastavena s [queueProperties.requiresDuplicateDetection](/azure/templates/microsoft.servicebus/namespaces/queues#property-values) vlastnost.
 
-Historie čas detekce duplicitních výchozí nastavení je 30 sekund pro fronty a témata, přičemž maximální hodnota je 7 dní. Můžete změnit toto nastavení v okně vlastností frontu a téma na portálu Azure.
+Historie vyhledávání duplicit čas výchozí hodnota je 30 sekund u front a témat, přičemž maximální hodnota 7 dní. Můžete změnit toto nastavení v okně Vlastnosti frontu a téma na webu Azure Portal.
 
 ![][2]
 
-Prostřednictvím kódu programu, můžete nakonfigurovat velikost okna detekci duplikátů, během kterého se zachovají identifikátory zpráv, [QueueDescription.DuplicateDetectionHistoryTimeWindow](/dotnet/api/microsoft.servicebus.messaging.queuedescription.duplicatedetectionhistorytimewindow#Microsoft_ServiceBus_Messaging_QueueDescription_DuplicateDetectionHistoryTimeWindow) vlastnost s úplné rozhraní API rozhraní .NET Framework . Pomocí rozhraní API služby Správce prostředků Azure, je hodnota nastavená s [queueProperties.duplicateDetectionHistoryTimeWindow](/azure/templates/microsoft.servicebus/namespaces/queues#property-values) vlastnost.
+Prostřednictvím kódu programu, můžete nakonfigurovat velikost okna zjišťování duplicit, během kterého se zachovají identifikátory zpráv, pomocí [QueueDescription.DuplicateDetectionHistoryTimeWindow](/dotnet/api/microsoft.servicebus.messaging.queuedescription.duplicatedetectionhistorytimewindow#Microsoft_ServiceBus_Messaging_QueueDescription_DuplicateDetectionHistoryTimeWindow) vlastnost s úplné rozhraní .NET Framework API . Pomocí rozhraní API Azure Resource Manageru, je hodnota nastavena s [queueProperties.duplicateDetectionHistoryTimeWindow](/azure/templates/microsoft.servicebus/namespaces/queues#property-values) vlastnost.
 
-Všimněte si, že povolení detekce duplicitních a velikosti okna přímo vliv propustnost fronty (a téma), protože všechny zaznamenané ID zprávy musí být porovnání identifikátor nově odeslané zprávy.
+Všimněte si, že povolení zjišťování duplicit a velikost okna přímo mít dopad na propustnost fronty (a téma), protože všechny zaznamenané ID zprávy musí být hledána identifikátor nově odeslané zprávy.
 
-Zachování okno malé znamená, že musí být méně identifikátory zpráv uchována a matched a propustnost je dopad na menší. Pro vysoké propustnosti entity, které vyžadují detekci duplikátů byste měli mít okno co nejmenší.
+Udržování okno malé znamená, že méně identifikátory zpráv musí být zachovány a odpovídající a propustnost je ovlivněný menší. Vysoká propustnost entit, které vyžadují vyhledávání duplicit byste měli mít v okně co nejmenší.
 
 ## <a name="next-steps"></a>Další postup
 

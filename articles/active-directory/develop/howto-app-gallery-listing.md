@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/14/2018
+ms.date: 08/31/2018
 ms.author: celested
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev
-ms.openlocfilehash: 8c9d1ee51acdfff188e0d6483f723fbb08e17bd5
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: e5db7b9bed674011c2922f026c301172f347f53f
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39601952"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666304"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Uvedení aplikace v galerii aplikací služby Azure Active Directory
 
@@ -45,11 +45,23 @@ Azure Active Directory (Azure AD) je služba identit v cloudu. [Galerie aplikac�
 
 *  Zákazníci, kteří používají SCIM můžete použít zřizování pro stejnou aplikaci.
 
-##  <a name="prerequisites-implement-federation-protocol"></a>Požadavky: Protokol federation implementujte
+## <a name="prerequisites"></a>Požadavky
+
+- Pro aplikace federativní (Open ID a SAML/WS-Fed) musí aplikace podporovat model SaaS pro dostat na seznam v galerii Azure AD. Podnikové aplikace Galerie by měl podporovat konfigurací s víc zákazníků a nikoli konkrétního zákazníka.
+
+- Pro Open ID Connect, by měla být aplikace s více klienty a [rozhraní Azure AD pro udělování souhlasu](quickstart-v1-integrate-apps-with-azure-ad.md#overview-of-the-consent-framework) by měla být správně implementována pro aplikaci. Uživatel můžete poslat žádost o přihlášení na společný koncový bod tak, aby každý zákazník se může poskytnout souhlas pro aplikaci. Můžete řídit přístup uživatelů na základě ID tenanta a hlavním názvem uživatele přijata v tokenu.
+
+- Pro SAML 2.0 a WS-Fed vaše aplikace potřebuje mít možnost provádět integraci jednotného přihlašování SAML/WS-Fed v režimu SP nebo zprostředkovatele identity. Ujistěte se prosím, že to funguje správně před odesláním požadavku.
+
+- Pro jednotné přihlašování heslem Ujistěte se prosím, že vaše aplikace podporuje ověřování formuláře tak, aby ukládání hesel do trezoru můžete udělat plnit jednotné přihlašování podle očekávání.
+
+- Pro uživatele automatické zřizování požadavky aplikace by měly být uvedeny v galerii se jednotné přihlašování povolenou funkci pomocí kteréhokoli z protokolu federace je popsáno výše. Můžete požádat pro jednotné přihlašování a zřizování společně na portálu, pokud je ještě nejsou uvedená uživatelů.
+
+##  <a name="implementing-sso-using-federation-protocol"></a>Implementaci jednotného přihlašování pomocí protokolu federace
 
 Pro zobrazení seznamu aplikace v galerii aplikací Azure AD, musíte nejprve implementovat jedno z následujících protokolů federace podporuje Azure AD a souhlasím s podmínkami Galerie aplikací Azure AD a podmínky. Přečtěte si podmínky a ujednání Galerie aplikací Azure AD z [tady](https://azure.microsoft.com/en-us/support/legal/active-directory-app-gallery-terms/).
 
-*   **OpenID Connect**: Vytvořte víceklientskou aplikaci ve službě Azure AD a implementaci [rozhraní Azure AD pro udělování souhlasu](quickstart-v1-integrate-apps-with-azure-ad.md#overview-of-the-consent-framework) pro vaši aplikaci. Odesílejte žádost o přihlášení na společný koncový bod tak, aby každý zákazník se může poskytnout souhlas pro aplikaci. Můžete řídit přístup uživatelů na základě ID tenanta a hlavním názvem uživatele přijata v tokenu. K integraci vaší aplikace s Azure AD, postupujte [vývojářů pokyny](authentication-scenarios.md).
+*   **OpenID Connect**: K integraci vaší aplikace s Azure AD pomocí protokolu Open ID Connect, postupujte [vývojářů pokyny](authentication-scenarios.md).
 
     ![Časová osa uvedení aplikace v galerii s OpenID Connect](./media/howto-app-gallery-listing/openid.png)
 
@@ -57,21 +69,23 @@ Pro zobrazení seznamu aplikace v galerii aplikací Azure AD, musíte nejprve im
 
     * Pokud máte problémy týkající se přístup, obraťte se [týmu Integrace jednotného přihlašování k Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). 
 
-*   **Protokol SAML 2.0** nebo **WS-Fed**: vaše aplikace potřebuje mít možnost provádět integraci jednotného přihlašování SAML/WS-Fed v režimu SP nebo zprostředkovatele identity. Pokud vaše aplikace podporuje SAML 2.0, můžete ji integrovat přímo s tenantem Azure AD s použitím [pokynů a přidejte vlastní aplikaci](../active-directory-saas-custom-apps.md).
+*   **Protokol SAML 2.0** nebo **WS-Fed**: Pokud vaše aplikace podporuje SAML 2.0, můžete ji integrovat přímo s tenantem Azure AD s použitím [pokynů a přidejte vlastní aplikaci](../active-directory-saas-custom-apps.md).
 
     ![Časová osa uvedení aplikace SAML 2.0 nebo WS-Fed do Galerie](./media/howto-app-gallery-listing/saml.png)
 
     * Pokud chcete přidat aplikace do seznamu v galerii pomocí **SAML 2.0** nebo **WS-Fed**vyberte **SAMl 2.0 a WS-Fed** jak je uvedeno výše.
 
-    * Pokud máte problémy týkající se přístup, obraťte se [týmu Integrace jednotného přihlašování k Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). 
-
-*   **Heslem jednotného přihlašování**: vytvoření webové aplikace, který má přihlašovací stránku HTML konfigurace [založené na heslech jednotného přihlašování](../manage-apps/what-is-single-sign-on.md). Jednotné přihlašování založené na heslech, také označuje jako heslo vaulting, umožňuje spravovat přístup uživatelů a hesel do webové aplikace, které nepodporují federace identit. Je také užitečné pro scénáře, ve kterých několik uživatelé potřebují sdílet jeden účet, jako například účtům sociálních médií aplikace vaší organizace.
-
-    ![Časová osa uvedení jednotného přihlašování heslo aplikace do Galerie](./media/howto-app-gallery-listing/passwordsso.png)
-
-    * Pokud chcete přidat aplikace do seznamu v galerii pomocí jednotného přihlašování k heslo, vyberte **jednotné přihlašování heslem** jak je uvedeno výše.
-
     * Pokud máte problémy týkající se přístup, obraťte se [týmu Integrace jednotného přihlašování k Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
+
+## <a name="implementing-sso-using-password-sso"></a>Implementaci jednotného přihlašování pomocí hesla jednotného přihlašování
+
+Vytvoření webové aplikace, který má přihlašovací stránku HTML konfigurace [založené na heslech jednotného přihlašování](../manage-apps/what-is-single-sign-on.md). Jednotné přihlašování založené na heslech, také označuje jako heslo vaulting, umožňuje spravovat přístup uživatelů a hesel do webové aplikace, které nepodporují federace identit. Je také užitečné pro scénáře, ve kterých několik uživatelé potřebují sdílet jeden účet, jako například účtům sociálních médií aplikace vaší organizace.
+
+![Časová osa uvedení jednotného přihlašování heslo aplikace do Galerie](./media/howto-app-gallery-listing/passwordsso.png)
+
+* Pokud chcete přidat aplikace do seznamu v galerii pomocí jednotného přihlašování k heslo, vyberte **jednotné přihlašování heslem** jak je uvedeno výše.
+
+* Pokud máte problémy týkající se přístup, obraťte se [týmu Integrace jednotného přihlašování k Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
 ##  <a name="updateremove-existing-listing"></a>Aktualizace nebo odebrání existující seznam
 
@@ -80,7 +94,7 @@ Aktualizujte nebo odeberte existující aplikace v galerii aplikací Azure AD, m
 * Vyberte příslušnou možnost obrázku níže
 
     ![Časová osa uvedení aplikace saml do Galerie](./media/howto-app-gallery-listing/updateorremove.png)
-    
+
     * Pokud chcete aktualizovat existující aplikaci, vyberte **aktualizovat existující aplikace výpis**.
 
     * Pokud chcete odebrat existující aplikaci z Galerie Azure AD, vyberte **odebrat existující seznam aplikací**

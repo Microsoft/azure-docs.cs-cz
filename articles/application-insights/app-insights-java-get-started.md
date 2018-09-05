@@ -1,5 +1,5 @@
 ---
-title: Analýzy webové aplikace Java pomocí Azure Application Insights | Microsoft Docs
+title: Analýzy webové aplikace Java pomocí Azure Application Insights | Dokumentace Microsoftu
 description: 'Sledování výkonu webových aplikací Java pomocí Application Insights '
 services: application-insights
 documentationcenter: java
@@ -10,21 +10,22 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: a1212befd1cc6aaf74bc596459aa5be1ef689813
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
-ms.translationtype: HT
+ms.openlocfilehash: 89f486a00f80ba4b9f4c9f38a0637e88e5bf1ad6
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43703658"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Začínáme s Application Insights ve webovém projektu Java
 
 
 [Application Insights](https://azure.microsoft.com/services/application-insights/) představují rozšiřitelnou analytickou službu, která webovým vývojářům pomůže pochopit výkon a využití živých aplikací. Použijte ji k [zjištění a diagnostice výjimek a problémů s výkonem](app-insights-detect-triage-diagnose.md) a [napište kód][api] pro sledování, co uživatelé s vaší aplikací dělají.
 
-![ukázková data](./media/app-insights-java-get-started/5-results.png)
+![Snímek obrazovky Přehled ukázkových dat.](./media/app-insights-java-get-started/overview-graphs.png)
 
 Application Insights podporuje aplikace v Javě spuštěné v systému Linux, Unix nebo Windows.
 
@@ -34,6 +35,8 @@ Budete potřebovat:
 * Předplatné [Microsoft Azure](https://azure.microsoft.com/).
 
 *Pokud máte webovou aplikaci, která je už v provozu, můžete použít alternativní postup [přidání sady SDK za běhu na webovém serveru](app-insights-java-live.md). S touto alternativou se vyhnete opětovnému sestavování kódu, ale nebudete mít možnost napsat kód ke sledování činnosti uživatelů.*
+
+Pokud dáváte přednost rozhraní Spring, zkuste [nakonfigurovat aplikaci Spring Boot Initializer, abyste mohli použít příručku ke službě Application Insights](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights).
 
 ## <a name="1-get-an-application-insights-instrumentation-key"></a>1. Získejte klíč instrumentace Application Insights
 1. Přihlaste se na web [Microsoft Azure Portal](https://portal.azure.com).
@@ -219,7 +222,9 @@ package devCamp.WebApp.configurations;
     }
 ```
 
-[!NOTE] Pokud používáte Spring Boot 1.3.8 nebo starší, nahraďte FilterRegistrationBean řádkem uvedeným níže.
+> [!NOTE]
+> Pokud používáte Spring Boot 1.3.8 nebo starší, nahraďte FilterRegistrationBean řádkem uvedeným níže.
+
 ```Java
     import org.springframework.boot.context.embedded.FilterRegistrationBean;
 ```
@@ -433,7 +438,7 @@ Získáte tabulky s dobami odezvy a navíc e-mailová oznámení, pokud váš we
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Monitorování volání závislostí](app-insights-java-agent.md)
 * [Monitorování čítačů výkonu Unix](app-insights-java-collectd.md)
 * Přidejte [na svoje webové stránky monitorování](app-insights-javascript.md) a sledujte dobu načítání stránek, volání AJAX nebo výjimky prohlížeče.

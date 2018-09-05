@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/04/2016
 ms.author: cephalin
-ms.openlocfilehash: 4959e4e3a0692837a7775eaf813a8fcff925312d
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 6729c87dcc9a85e2e3ccb6b4822213d38e2ba6f7
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918012"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666110"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Přehled služby Azure App Service místní mezipaměti
 
@@ -44,13 +44,15 @@ Funkce Azure App Service místní mezipaměti obsahuje webové role zobrazení o
 * Jsou to imunní upgrady plánované nebo neplánované výpadky a jakékoli jiné poruchy pomocí služby Azure Storage, ke kterým dochází na serverech, které slouží jako sdílené složky obsahu.
 * Mají menšímu počtu restartování aplikace kvůli změnám sdílenou složku úložiště.
 
-## <a name="how-local-cache-changes-the-behavior-of-app-service"></a>Jak se mění místní mezipaměť chování služby App Service
-* Místní mezipaměť je kopie složky /site a /siteextensions webové aplikace. Vytvoří se v místní instanci virtuálního počítače při spuštění webové aplikace. Velikost v místní mezipaměti za webové aplikace je omezena na 300 MB ve výchozím nastavení, ale jeho může zvýšit až 2 GB.
-* Místní mezipaměť je pro čtení i zápis. Po přesune virtuální počítače webové aplikace nebo získá restartování je však zahodí všechny změny. Nepoužívejte pro aplikace, které obsahují důležitá data v úložišti obsahu místní mezipaměti.
-* Webové aplikace může dál zapisovat soubory protokolů a diagnostických dat, stejně jako aktuálně. Soubory protokolů a dat, ale ukládají místně na virtuálním počítači. Poté budou zkopírovány přes pravidelně do sdíleného úložiště obsahu. Kopírovat do sdíleného úložiště obsahu je nejlepší úsilí – zápisu zpětných by mohly být ztraceny z důvodu k náhlým chybovému ukončení instance virtuálního počítače.
-* Dojde ke změně v této struktuře složek LogFiles a dat pro webové aplikace, které používají místní mezipaměti. V úložišti LogFiles Data složky a, které následují vzor pojmenování spočívající v "Jedinečný identifikátor" + časové razítko teď nejsou podsložky. Jednotlivé podsložky odpovídá instance virtuálního počítače, kde běží webové aplikace, nebo byla spuštěna.  
-* Publikování změn do webové aplikace prostřednictvím libovolného mechanismu publikování budete publikovat do odolného úložiště sdíleného obsahu. Aktualizovat místní mezipaměť webové aplikace, je potřeba restartovat. Chcete-li bezproblémový životní cyklus, naleznete v tématu informace dále v tomto článku.
-* D:\Home odkazuje na místní mezipaměti. D:\Local dál odkazovat na dočasné úložiště specifické pro virtuální počítače.
+## <a name="how-the-local-cache-changes-the-behavior-of-app-service"></a>Jak se mění místní mezipaměť chování služby App Service
+* _D:\home_ odkazuje na místní mezipaměti, která se vytvoří při spuštění aplikace na instanci virtuálního počítače. _D:\Local_ pokračuje tak, aby odkazoval do dočasného úložiště specifické pro virtuální počítače.
+* Místní mezipaměť obsahuje jednorázový kopii _/lokality_ a _/siteextensions_ složky sdíleného úložiště obsahu v _D:\home\site_ a _D:\home\ siteextensions_v uvedeném pořadí. Soubory se zkopírují do místní mezipaměti při spuštění aplikace. Velikost dvě složky pro každou aplikaci je omezený na 300 MB ve výchozím nastavení, ale můžete to zvýšit až 2 GB.
+* Místní mezipaměť je pro čtení i zápis. Po aplikaci přesune virtuální počítače nebo získá restartování je však zahodí všechny změny. Nepoužívejte pro aplikace, které obsahují důležitá data v úložišti obsahu místní mezipaměti.
+* _D:\home\LogFiles_ a _D:\home\Data_ obsahovat soubory protokolů a dat aplikací. Dvě podsložky jsou uložené místně v instancích virtuálních počítačů a pravidelně se zkopírují do sdíleného úložiště obsahu. Aplikace můžete zachovat soubory protokolů a dat podle jejich zápis do těchto složek. Kopírovat do sdíleného úložiště obsahu je však best effort, takže je možné pro soubory protokolů a dat dojít ke ztrátě z důvodu selhání i s náhlými instance virtuálního počítače.
+* [Streamování protokolů](web-sites-enable-diagnostic-log.md#streamlogs) je ovlivněna best effort kopírování. Může sledovat až minutu trvající zpoždění v proudu protokolů.
+* Do sdíleného úložiště obsahu, dojde ke změně ve struktuře složek _LogFiles_ a _Data_ složky pro aplikace, které používají místní mezipaměti. V nich, které následují vzor pojmenování spočívající v "Jedinečný identifikátor" + časové razítko nyní existují podsložky. Jednotlivé podsložky odpovídá instance virtuálního počítače, ve kterém aplikace běží, nebo byla spuštěna.
+* V jiných složkách _D:\home_ zůstanou v místní mezipaměti a nejsou zkopírovány do sdíleného úložiště obsahu.
+* Nasazení aplikace pomocí libovolné podporované metody publikuje přímo do odolného úložiště sdíleného obsahu. Chcete-li aktualizovat _D:\home\site_ a _D:\home\siteextensions_ složek v místní mezipaměti, aplikace je potřeba restartovat. Chcete-li bezproblémový životní cyklus, naleznete v tématu informace dále v tomto článku.
 * Zobrazení obsahu výchozího webu SCM pokračuje se, že sdíleného úložiště obsahu.
 
 ## <a name="enable-local-cache-in-app-service"></a>Povolit místní mezipaměti ve službě App Service

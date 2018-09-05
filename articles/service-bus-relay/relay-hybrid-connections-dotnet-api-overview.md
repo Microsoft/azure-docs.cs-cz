@@ -1,9 +1,9 @@
 ---
-title: Přehled Azure předávání přes standardní API technologie .NET | Microsoft Docs
-description: Přehled služby Azure API standardní předávání přes rozhraní .NET
+title: Přehled služby Azure Relay standardní rozhraní API .NET | Dokumentace Microsoftu
+description: Přehled služby Azure Relay .NET API úrovně Standard
 services: service-bus-relay
 documentationcenter: na
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: b1da9ac1-811b-4df7-a22c-ccd013405c40
@@ -13,21 +13,21 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2018
-ms.author: sethm
-ms.openlocfilehash: aa1863a44f00ae17f63b02c7c247b2c9fd9925f6
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.author: spelluru
+ms.openlocfilehash: a6a1706c8d1e849fd1bb4309c46063dd3f9439c1
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2018
-ms.locfileid: "28016429"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43700136"
 ---
-# <a name="azure-relay-hybrid-connections-net-standard-api-overview"></a>Přehled služby Azure předávání hybridní připojení .NET standardní API
+# <a name="azure-relay-hybrid-connections-net-standard-api-overview"></a>Přehled služby Azure Relay Hybrid připojení .NET Standard API
 
-Tento článek je uveden přehled Azure předávání hybridní připojení .NET standardní klíče [rozhraní API klienta](/dotnet/api/microsoft.azure.relay).
+Tento článek obsahuje souhrn některých klíč Azure Relay Hybrid připojení .NET Standard [klientských rozhraní API](/dotnet/api/microsoft.azure.relay).
   
-## <a name="relay-connection-string-builder-class"></a>Třída předávání Tvůrce připojovacích řetězců
+## <a name="relay-connection-string-builder-class"></a>Třídy přenosu Tvůrce připojovacích řetězců
 
-[RelayConnectionStringBuilder] [ RelayConnectionStringBuilder] třída formáty připojovací řetězce, které jsou specifické pro předávání hybridní připojení. Můžete ho se ověřit formát připojovací řetězec, nebo vytvořit připojovací řetězec od začátku. Najdete příklad následující kód:
+[RelayConnectionStringBuilder] [ RelayConnectionStringBuilder] třídy formáty připojovací řetězce, které jsou specifické pro Relay Hybrid Connections. Slouží k ověření formátu připojovacího řetězce nebo chcete vytvořit připojovací řetězec od začátku. Viz následující kód například:
 
 ```csharp
 var endpoint = "[Relay namespace]";
@@ -44,7 +44,7 @@ var connectionStringBuilder = new RelayConnectionStringBuilder()
 };
 ```
 
-Připojovací řetězec můžete předat také přímo na `RelayConnectionStringBuilder` metoda. Tato operace umožňuje ověřte, zda je připojovací řetězec v platném formátu. Pokud některý z parametrů jsou neplatné, vygeneruje konstruktoru `ArgumentException`.
+Můžete také předat připojovací řetězec přímo `RelayConnectionStringBuilder` metody. Tato operace umožňuje ověřte, zda je připojovací řetězec v platném formátu. Pokud některý z parametrů jsou neplatné, vygeneruje konstruktor `ArgumentException`.
 
 ```csharp
 var myConnectionString = "[RelayConnectionString]";
@@ -61,15 +61,15 @@ catch (ArgumentException ae)
 }
 ```
 
-## <a name="hybrid-connection-stream"></a>Hybridní připojení datového proudu
+## <a name="hybrid-connection-stream"></a>Datový proud hybridní připojení
 
-[HybridConnectionStream] [ HCStream] třída je primární objekt použitý k odesílat a přijímat data z Azure předávání koncový bod, zda pracujete [HybridConnectionClient] [ HCClient], nebo [HybridConnectionListener][HCListener].
+[HybridConnectionStream] [ HCStream] třída je primární objekt použitý k odesílání a příjem dat z koncového bodu Azure Relay, ať už pracujete [HybridConnectionClient] [ HCClient], nebo [HybridConnectionListener][HCListener].
 
-### <a name="getting-a-hybrid-connection-stream"></a>Získávání datový proud s hybridní připojení
+### <a name="getting-a-hybrid-connection-stream"></a>Získání datového proudu hybridní připojení
 
 #### <a name="listener"></a>Naslouchací proces
 
-Použití [HybridConnectionListener] [ HCListener] objekt, můžete získat `HybridConnectionStream` objektu následujícím způsobem:
+Použití [HybridConnectionListener] [ HCListener] objektu, můžete získat `HybridConnectionStream` objektu následujícím způsobem:
 
 ```csharp
 // Use the RelayConnectionStringBuilder to get a valid connection string
@@ -82,7 +82,7 @@ var hybridConnectionStream = await listener.AcceptConnectionAsync();
 
 #### <a name="client"></a>Klient
 
-Použití [HybridConnectionClient] [ HCClient] objekt, můžete získat `HybridConnectionStream` objektu následujícím způsobem:
+Použití [HybridConnectionClient] [ HCClient] objektu, můžete získat `HybridConnectionStream` objektu následujícím způsobem:
 
 ```csharp
 // Use the RelayConnectionStringBuilder to get a valid connection string
@@ -91,11 +91,11 @@ var client = new HybridConnectionClient(csb.ToString());
 var hybridConnectionStream = await client.CreateConnectionAsync();
 ```
 
-### <a name="receiving-data"></a>Přijetí dat
+### <a name="receiving-data"></a>Příjem dat
 
-[HybridConnectionStream] [ HCStream] třída umožňuje obousměrnou komunikaci. Ve většině případů nepřetržitě obdržíte z datového proudu. Text při čtení z datového proudu, můžete také použít [StreamReader](https://msdn.microsoft.com/library/system.io.streamreader(v=vs.110).aspx) objekt, který umožňuje jednodušší analýza dat. Například můžete číst data jako text, nikoli jako `byte[]`.
+[HybridConnectionStream] [ HCStream] třída umožňuje obousměrnou komunikaci. Ve většině případů se průběžně zobrazí z datového proudu. Při čtení textu z datového proudu, můžete také použít [StreamReader](https://msdn.microsoft.com/library/system.io.streamreader(v=vs.110).aspx) objektu, který umožňuje jednodušší analýzu data. Například může číst data jako text, nikoli jako `byte[]`.
 
-Následující kód čte jednotlivé řádky textu z datového proudu, dokud se požaduje zrušení:
+Následující kód načte jednotlivé řádky textu z datového proudu, dokud je požadováno zrušení:
 
 ```csharp
 // Create a CancellationToken, so that we can cancel the while loop
@@ -118,16 +118,16 @@ while (!cancellationToken.IsCancellationRequested)
 }
 ```
 
-### <a name="sending-data"></a>Odeslání dat
+### <a name="sending-data"></a>Odesílání dat
 
-Jakmile máte připojení bylo vytvořeno, můžete odeslat zprávu na předávání přes koncový bod. Protože objekt připojení dědí [datového proudu](https://msdn.microsoft.com/library/system.io.stream(v=vs.110).aspx), odesílat data podle `byte[]`. Následující příklad ukazuje, jak to udělat:
+Jakmile se připojení naváže, můžete odeslat zprávu do koncového bodu propojení. Protože objekt připojení dědí [Stream](https://msdn.microsoft.com/library/system.io.stream(v=vs.110).aspx), poslat data jako `byte[]`. Následující příklad ukazuje, jak to udělat:
 
 ```csharp
 var data = Encoding.UTF8.GetBytes("hello");
 await clientConnection.WriteAsync(data, 0, data.Length);
 ```
 
-Ale pokud chcete odeslat text přímo, aniž by museli zakódujte řetězec pokaždé, když, můžete zabalit `hybridConnectionStream` objektu s [StreamWriter](https://msdn.microsoft.com/library/system.io.streamwriter(v=vs.110).aspx) objektu.
+Ale pokud chcete odeslat text přímo, aniž by bylo nutné kódovat řetězec pokaždé, když, můžete zalomit `hybridConnectionStream` objektu [StreamWriter](https://msdn.microsoft.com/library/system.io.streamwriter(v=vs.110).aspx) objektu.
 
 ```csharp
 // The StreamWriter object only needs to be created once
@@ -137,7 +137,7 @@ await textWriter.WriteLineAsync("hello");
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o předávání přes Azure, najdete pomocí těchto odkazů:
+Další informace o Azure Relay, najdete pomocí těchto odkazů:
 
 * [Odkaz na Microsoft.Azure.Relay](/dotnet/api/microsoft.azure.relay)
 * [Co je Azure Relay?](relay-what-is-it.md)

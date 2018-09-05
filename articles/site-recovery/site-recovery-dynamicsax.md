@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: asgang
-ms.openlocfilehash: 931cc628dccc77a026791b27a7a8159b37c585d4
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: eb6f7d9b34e00ce1efd8c871439c2504e5f550d5
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37919559"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43669438"
 ---
 # <a name="replicate-a-multitier-dynamics-ax-application-by-using-azure-site-recovery"></a>Pomocí Azure Site Recovery replikovat vícevrstvé aplikace Dynamics AX
 
@@ -99,7 +99,7 @@ Virtuální počítač v replikované položky, které chcete nakonfigurovat nas
 
 * Pokud používáte statické IP adresy, zadejte IP adresu, která má virtuální počítač trvat, než se **cílová IP adresa** textového pole.
 
-    ![Nastavení sítě ](./media/site-recovery-dynamics-ax/vmpropertiesaos1.png).
+    ![Nastavení sítě ](./media/site-recovery-dynamics-ax/vmpropertiesaos1.png)
 
 
 ### <a name="5-create-a-recovery-plan"></a>5. Vytvoření plánu obnovení
@@ -168,7 +168,7 @@ Další informace o provádění testovací převzetí služeb při selhání na
 
 Další informace převzetí služeb při selhání, naleznete v tématu [převzetí služeb při selhání v Site Recovery](site-recovery-failover.md).
 
-### <a name="perform-a-failback"></a>Provádění navrácení služeb po obnovení
+### <a name="perform-a-failback"></a>Navrácení služeb po obnovení
 
 Požadavky na konkrétní k systému SQL Server během navrácení služeb po obnovení najdete v [aplikace s využitím SQL serveru a Azure Site Recovery replikovat](site-recovery-sql.md).
 

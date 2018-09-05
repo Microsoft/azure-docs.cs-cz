@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 4d37aba665fd9b6de89f683ce2785a14b1b6f60b
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: c6f074b84b099f6ea5023967fdae7e44d5e9d545
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412011"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666380"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>Stát vydavatelem cloudové Tržiště
 
@@ -29,7 +29,7 @@ Tento článek se týká registrace jako vydavatele na webu marketplace cloudu. 
 |  | Krok registrace | Doba trvání | Podrobnosti |  
 |:--- |:--- |:--- |:--- |  
 | 1 | Registrace v programu Microsoft Partner Network | 15 min | [Registrace v programu Microsoft Partner Network](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher#1-register-in-microsoft-partner-network) |  
-| 2 | Vytvoření účtu Microsoft <ul>(požadovaných pro Azure Marketplace transact nabídek; doporučuje pro ostatní uživatele)</ul> | 15 minut | [Vytvoření ID Microsoftu](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher#2-create-a-microsoft-account) |  
+| 2 | Vytvoření účtu Microsoft <ul>(požadovaných pro Azure Marketplace transact nabídek; doporučuje pro ostatní uživatele)</ul> | 15 min | [Vytvoření ID Microsoftu](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher#2-create-a-microsoft-account) |  
 | 3 | Odeslat marketplace registrační formulář | 15 min | [Odeslání formulář nominace na marketplace](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher#3-submit-the-marketplace-registration-form) |  
 | 4 |  Přihlaste se k portálu Cloud Partner | 1 – 3 dny | [Přihlaste se k portálu Cloud Partner](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher#4-sign-into-cloud-partner-portal) |  
 | 5 | Registrace v Microsoft Developer Center (Centrum pro vývojáře) (pro Azure Marketplace transact nabídky) | 5 až 10 dnů | [Registrace na webu Dev Center](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher#5-register-in-dev-center-for-transact-publishing-option-only) |  
@@ -48,7 +48,7 @@ Po registraci, zaznamenejte ID Microsoft Partner Network pro vaši organizaci. H
 ---  
 
 ## <a name="2-create-a-microsoft-account"></a>2. Vytvoření účtu Microsoft  
-| 15 minut |  
+| 15 min |  
 Účet Microsoft, například *@outlook.com nebo @live.com*, se používá pro přístup k mnoha Microsoft zařízení a služeb. Je vyžadována pro transact nabídky Azure Marketplace, a doporučujeme jeho použití pro všechny vydavatele cloudu. Další informace o výhodách a používá účet Microsoft [tuto stránku](https://account.microsoft.com/account/). Osobní účet Microsoft budete používat pro přístup na portál Cloud Partner, nabízí platforma pro publikování, který budete používat k vytváření a správě vašeho webu marketplace. 
 
 [! [Důležité] nezapomeňte prosím, že účet Microsoft spojený s pracovní e-mailu vám neumožní přístup k portálu.
@@ -64,7 +64,7 @@ Po registraci, zaznamenejte ID Microsoft Partner Network pro vaši organizaci. H
 ---  
 
 ## <a name="3-submit-the-marketplace-registration-form"></a>3. Odeslat marketplace registrační formulář  
-| 15 minut |  
+| 15 min |  
 Dokončete tento článek [registrační formulář](https://azuremarketplace.microsoft.com/en-us/sell/signup) se stát vydavatelem na webu marketplace. Informací v tomto formuláři se použije k vytvoření vydavatelského účtu na portálu Cloud Partner, což vám umožní vytvářet, publikovat a spravovat nabídky na webu marketplace.
 
 Zobrazí se výzva k uveďte následující informace:
@@ -74,7 +74,8 @@ Zobrazí se výzva k uveďte následující informace:
 
 ---  
 ## <a name="4-sign-into-cloud-partner-portal"></a>4. Přihlaste se k portálu Cloud Partner
-| 1 – 3 dny | Náš Onboardingový tým Marketplace bude kontrola a ověření marketplace registrace podrobné informace uvedené v kroku 3. Po schválení obdržíte Uvítacího e-mailu se přihlašovací údaje k účtu a pokyny k přihlášení ke službě [portál partnerů cloudu](https://cloudpartner.azure.com).
+| 1 – 3 dny | <br>
+Náš Onboardingový tým Marketplace bude kontrola a ověření marketplace registrace podrobné informace uvedené v kroku 3. Po schválení obdržíte Uvítacího e-mailu se přihlašovací údaje k účtu a pokyny k přihlášení ke službě [portál partnerů cloudu](https://cloudpartner.azure.com).
 
 Budete používat [portál partnerů cloudu](https://cloudpartner.azure.com) k vytvoření, publikovat a spravovat nabídky na webu marketplace. Po schválení uvítací e-mail obdržíte, můžete okamžitě přihlásit [portál partnerů cloudu](https://cloudpartner.azure.com) pomocí svého účtu Microsoft k další technické informace o publikování na webu marketplace a vytváření vaší nabídky. 
 *   Další informace o používání portál Cloud Partner [přejděte na Začínáme článek v další části](https://cloudpartner.azure.com/#documentation/getting-started-with-the-cloud-partner-portal). Musíte být přihlášeni na portál Cloud Partner pro přístup k tyto podrobnosti.

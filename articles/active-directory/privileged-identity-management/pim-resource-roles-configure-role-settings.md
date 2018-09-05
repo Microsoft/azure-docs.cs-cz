@@ -14,12 +14,12 @@ ms.component: pim
 ms.date: 08/30/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 9ad4965ccd86f88a61b5f6fb8f540d76e472ea69
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: a4aecd276df8e5453f0c35d6290bbe8a8d156ffa
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43345291"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43669359"
 ---
 # <a name="configure-azure-resource-role-settings-in-pim"></a>Konfigurace nastavení role prostředků Azure v PIM
 
@@ -89,6 +89,8 @@ Tak, aby byl správce prostředků splnění přiřazení kdo, Řekněme, že js
 Může vyžadovat oprávněné členy role ke spuštění MFA, před aktivací. Tento proces zajišťuje, že uživatel, který žádá o tom, že se aktivace, který říká, že jsou s jistotou přiměřené. Vynucování této možnosti chrání důležité prostředky v situacích, pokud uživatelský účet může být ohrožený.
 
 Tak, aby vyžadovala oprávněného člena prováděný aktivace MFA, zkontrolujte, **vyžadovat Vícefaktorové ověřování při aktivaci** pole.
+
+Další informace najdete v tématu [vícefaktorové ověřování (MFA) a PIM](pim-how-to-require-mfa.md).
 
 ## <a name="activation-maximum-duration"></a>Maximální doba trvání aktivace
 

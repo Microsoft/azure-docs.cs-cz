@@ -1,62 +1,68 @@
 ---
-title: Prostředí PowerShell pro koncové body služby virtuální sítě a pravidla v SQL | Microsoft Docs
-description: Poskytuje skriptů prostředí PowerShell k vytváření a správě koncových bodů virtuální služby pro vaši databázi SQL Azure.
+title: Prostředí PowerShell pro koncové body služeb virtuální sítě a pravidla v Azure SQL | Dokumentace Microsoftu
+description: Poskytuje skripty prostředí PowerShell k vytváření a správě koncových bodů služby virtuální pro Azure SQL Database a SQL Data Warehouse.
 services: sql-database
-author: MightyPen
+author: DhruvMsft
 manager: craigg
 ms.service: sql-database
+ms.prod_service: sql-database, sql-data-warehouse
 ms.custom: VNet Service endpoints
 ms.topic: conceptual
-ms.date: 02/05/2018
-ms.reviewer: genemi
+ms.date: 06/14/2018
+ms.reviewer: genemi, carlrab
 ms.author: dmalik
-ms.openlocfilehash: 503aef620679c9bf3f65cd7f463ba604c6b9e451
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 364dd2709c9000aae082976f3ec28396f92850da
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34649512"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43669876"
 ---
-# <a name="use-powershell-to-create-a-virtual-service-endpoint-and-rule-for-azure-sql-database"></a>Pomocí prostředí PowerShell vytvořit koncový bod služby virtuální a pravidla pro databázi SQL Azure
+# <a name="use-powershell-to-create-a-virtual-service-endpoint-and-rule-for-azure-sql-database-and-sql-data-warehouse"></a>Použití Powershellu k vytvoření koncového bodu služby virtuální a pravidla pro Azure SQL Database a SQL Data Warehouse
+
+Azure [SQL Database](sql-database-technical-overview.md) a [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) podporu koncových bodů služby virtuální. 
+
+> [!NOTE]
+> Toto téma se týká k Azure SQL serveru a databází SQL Database a SQL Data Warehouse, které jsou vytvořené na serveru Azure SQL. Pro zjednodušení se SQL Database používá k označení SQL Database i SQL Data Warehouse.
 
 Tento článek obsahuje a vysvětluje Powershellový skript, který provede následující akce:
 
-1. Vytvoří Microsoft Azure *koncový bod služby virtuální* na podsíť.
-2. Přidá do brány firewall serveru Azure SQL Database, chcete-li vytvořit koncový bod *pravidlo virtuální sítě*.
+1. Microsoft Azure vytvoří *koncový bod služby virtuální* na vaší podsítě.
+2. Přidá koncový bod do brány firewall vašeho serveru Azure SQL Database, chcete-li vytvořit *pravidlo virtuální sítě*.
 
-Vaše motivace pro vytvoření pravidla jsou vysvětlené v: [koncové body virtuální služby pro databázi SQL Azure][sql-db-vnet-service-endpoint-rule-overview-735r].
+Vaše podněty pro vytvoření pravidla jsou vysvětlené v: [koncové body služby virtuální pro službu Azure SQL Database][sql-db-vnet-service-endpoint-rule-overview-735r].
 
 > [!TIP]
-> Pokud potřebujete k vyhodnocení nebo přidat koncový bod služby virtuální *název typu* pro databázi SQL do dané podsítě, můžete přeskočit na našem více [přímé skript prostředí PowerShell](#a-verify-subnet-is-endpoint-ps-100).
+> Pokud všechno, co potřebujete k vyhodnocení nebo přidat koncový bod služby virtuální *název typu* pro službu SQL Database pro vaši podsíť, můžete přeskočit přímo na naše více [přímé skript prostředí PowerShell](#a-verify-subnet-is-endpoint-ps-100).
 
 #### <a name="major-cmdlets"></a>Hlavní rutiny
 
-V tomto článku klade důraz rutinu s názvem **New-AzureRmSqlServerVirtualNetworkRule**, které koncový bod podsíť přidá do seznamu řízení přístupu (ACL) vašeho serveru Azure SQL Database, čímž vytvoření pravidla.
+V tomto článku klade důraz rutinu s názvem **New-AzureRmSqlServerVirtualNetworkRule**, přidává koncový bod podsítě do seznamu řízení přístupu (ACL) vašeho serveru Azure SQL Database, a tím vytváření pravidla.
 
-V následujícím seznamu jsou pořadí jiné *hlavní* rutin, které je třeba spustit Příprava pro nastavení volání **New-AzureRmSqlServerVirtualNetworkRule**. V tomto článku, dojde k těchto volání v [skriptu 3 "virtuální sítě pravidlo"](#a-script-30):
+Následující seznam obsahuje řadu dalších *hlavní* rutiny, které je nutné spustit Příprava volání **New-AzureRmSqlServerVirtualNetworkRule**. V tomto článku se tato volání probíhá [skript 3 "pravidlo virtuální sítě"](#a-script-30):
 
-1. [Nové AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig): vytvoří objekt podsítě.
+1. [Nový-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig): vytvoří objekt podsítě.
 
-2. [Nový-AzureRmVirtualNetwork](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermvirtualnetwork): vytvoří virtuální síť, předá podsíť.
+2. [Nový-AzureRmVirtualNetwork](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermvirtualnetwork): vytvoří virtuální síť, že mu poskytneme podsíť.
 
-3. [Set-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/Set-AzureRmVirtualNetworkSubnetConfig): přiřadí koncového bodu služby virtuální podsíť.
+3. [Set-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/Set-AzureRmVirtualNetworkSubnetConfig): přiřadí koncového bodu služby virtuální podsítě.
 
-4. [Set-AzureRmVirtualNetwork](https://docs.microsoft.com/powershell/module/azurerm.network/Set-AzureRmVirtualNetwork): potrvají aktualizace provedené k virtuální síti.
+4. [Set-AzureRmVirtualNetwork](https://docs.microsoft.com/powershell/module/azurerm.network/Set-AzureRmVirtualNetwork): nevyřeší aktualizace provedené k virtuální síti.
 
-5. [Nové AzureRmSqlServerVirtualNetworkRule](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqlservervirtualnetworkrule): po podsíť je koncový bod, přidá podsíť jako pravidlo pro virtuální sítě, do seznamu ACL serveru Azure SQL Database.
-    - Nabízí parametr **- IgnoreMissingVnetServiceEndpoint**, počáteční v Azure RM modulu PowerShell verze 5.1.1.
+5. [Nový-AzureRmSqlServerVirtualNetworkRule](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqlservervirtualnetworkrule): po vaší podsítě je koncový bod, přidá vaší podsítě jako pravidlo virtuální sítě do seznamu ACL vašeho serveru Azure SQL Database.
+    - Nabízí parametr **- IgnoreMissingVnetServiceEndpoint**začíná v modulu Azure RM Powershellu verze 5.1.1.
 
-#### <a name="prerequisites-for-running-powershell"></a>Požadavky pro spuštění prostředí PowerShell
+#### <a name="prerequisites-for-running-powershell"></a>Požadavky pro spuštění Powershellu
 
-- Můžete již přihlášení do Azure, například prostřednictvím [portál Azure][http-azure-portal-link-ref-477t].
+- Můžete už přihlášení do Azure, jako například prostřednictvím [webu Azure portal][http-azure-portal-link-ref-477t].
 - Již můžete spustit skripty prostředí PowerShell.
 
 > [!NOTE]
-> Ujistěte se, že jsou koncové body služby povolena pro virtuální síť nebo podsíť, kterou chcete přidat na Server, v opačném případě, že vytvoření pravidla brány Firewall virtuální sítě se nezdaří.
+> Ujistěte se prosím, že jsou zapnuté koncových bodů služby pro virtuální síť/podsíť, kterou chcete přidat k vašemu serveru v opačném případě, že vytvoření pravidla brány Firewall virtuální sítě se nezdaří.
 
-#### <a name="one-script-divided-into-four-chunks"></a>Jeden skript rozdělená do čtyř bloků
+#### <a name="one-script-divided-into-four-chunks"></a>Jeden skript rozdělit do čtyř bloků dat
 
-Naše ukázkový skript prostředí PowerShell je rozdělené do posloupnost menší skripty. Rozdělení usnadňuje učení a poskytuje flexibilitu. V jejich uvedené pořadí musí být spuštěny skripty. Pokud nemáte čas teď spustit skripty, zobrazí se výstup naše skutečné testovací po skriptu 4.
+Náš ukázkový skript Powershellu se dělí posloupnost menší skripty. Rozdělení usnadňuje učení a poskytuje flexibilitu. Skripty musí být spuštěn v jejich uvedeném pořadí. Pokud nemáte čas na spouštění skriptů, náš skutečný test výstupu se zobrazí po skriptu 4.
 
 
 
@@ -67,12 +73,12 @@ Naše ukázkový skript prostředí PowerShell je rozdělené do posloupnost men
 
 ## <a name="script-1-variables"></a>Skript 1: proměnné
 
-Tato první skript prostředí PowerShell přiřadí hodnoty proměnné. Následné skriptů závisí na těchto proměnných.
+Tento první skript prostředí PowerShell přiřadí hodnoty proměnné. Následující skripty závisí na těchto proměnných.
 
 > [!IMPORTANT]
-> Před spuštěním tohoto skriptu můžete upravit hodnoty, pokud chcete. Například pokud už máte skupinu prostředků, můžete upravit název skupiny prostředků jako přiřazenou hodnotu.
+> Před spuštěním tohoto skriptu můžete upravit hodnoty, pokud chcete, můžete. Pokud již máte skupinu prostředků, můžete chtít upravit název skupiny prostředků jako hodnota.
 >
->  Do skriptu by měl být upraven název odběru.
+>  Do skriptu by měl být upraven název vašeho odběru.
 
 #### <a name="powershell-script-1-source-code"></a>Zdrojový kód skriptu 1 prostředí PowerShell
 
@@ -120,10 +126,10 @@ Write-Host 'Completed script 1, the "Variables".';
 
 ## <a name="script-2-prerequisites"></a>Skript 2: požadavky
 
-Tento skript připraví pro další skript, kde je akce koncový bod. Tento skript vytvoří za vás následující uvedené položky, ale pouze, pokud dosud neexistují. Skript 2 můžete přeskočit, pokud jste si jistí, že již existují tyto položky:
+Připraví tento skript pro další skript, kde je tato akce koncový bod. Tento skript vytvoří za vás následující uvedené položky, ale pouze pokud ještě neexistují. Skript 2 můžete přeskočit, pokud jste si jistí, že už tyto položky:
 
 - Skupina prostředků Azure
-- Server Azure SQL Database
+- Server služby Azure SQL Database
 
 #### <a name="powershell-script-2-source-code"></a>Zdrojový kód skriptu 2 prostředí PowerShell
 
@@ -216,7 +222,7 @@ Write-Host 'Completed script 2, the "Prerequisites".';
 
 ## <a name="script-3-create-an-endpoint-and-a-rule"></a>Skript 3: Vytvoření koncového bodu a pravidla
 
-Tento skript vytvoří virtuální síť s podsítí. Poté přiřadí skript **Microsoft.Sql** typ koncového bodu do dané podsítě. Nakonec skript přidá do seznamu řízení přístupu (ACL) server služby SQL Database a vytvoření pravidla podsíť.
+Tento skript vytvoří virtuální síť s podsítí. Potom tento skript přiřadí **Microsoft.Sql** typ koncového bodu pro vaši podsíť. Nakonec skript přidá vaší podsítě do seznamu řízení přístupu (ACL) serveru služby SQL Database a vytvoření pravidla.
 
 #### <a name="powershell-script-3-source-code"></a>Zdrojový kód skriptu 3 prostředí PowerShell
 
@@ -305,11 +311,11 @@ Write-Host 'Completed script 3, the "Virtual-Netowrk-Rule".';
 
 <a name="a-script-40" />
 
-## <a name="script-4-clean-up"></a>Skriptu 4: Vyčištění
+## <a name="script-4-clean-up"></a>Skript 4: Čisticí
 
-Tento poslední skript odstraní prostředky, které předchozí skripty vytvořené pro ukázky. Skript však požádá o potvrzení před odstraní následující:
+Tento poslední skript odstraní prostředky, které předchozí skripty vytvořené pro ukázky. Ale skript vyzve k zadání potvrzení před odstraní následující:
 
-- Server Azure SQL Database
+- Server služby Azure SQL Database
 - Skupina prostředků Azure
 
 Skript 4 můžete spustit kdykoli po dokončení skriptu 1.
@@ -391,9 +397,9 @@ Write-Host 'Completed script 4, the "Clean-Up".';
 
 <a name="a-actual-output" />
 
-## <a name="actual-output-from-scripts-1-through-4"></a>Aktuální výstup z skriptů 1 až 4
+## <a name="actual-output-from-scripts-1-through-4"></a>Aktuální výstup ze skriptů 1 až 4
 
-Výstup z našich testu se zobrazí v dalším kroku ve zkráceném formátu. Výstup může být užitečné v případě, že nechcete ve skutečnosti nyní spouštět skripty prostředí PowerShell.
+Výstup z našich testů se zobrazí v dalším kroku ve zkráceném formátu. Výstup může být užitečný v případě, že nechcete skutečně nyní spouštět skripty prostředí PowerShell.
 
 ```
 [C:\WINDOWS\system32\]
@@ -485,7 +491,7 @@ True
 Completed script 4, the "Clean-Up".
 ```
 
-Toto je konec naše hlavní skript prostředí PowerShell.
+Toto je konec naší hlavní skript prostředí PowerShell.
 
 
 
@@ -493,31 +499,31 @@ Toto je konec naše hlavní skript prostředí PowerShell.
 
 <a name="a-verify-subnet-is-endpoint-ps-100" />
 
-## <a name="verify-your-subnet-is-an-endpoint"></a>Ověřte, že podsíť je koncový bod
+## <a name="verify-your-subnet-is-an-endpoint"></a>Ověřte, že vaše podsíť je koncový bod
 
-Můžete mít podsíť, která již byla přiřazena **Microsoft.Sql** název typu, což znamená, je již koncového bodu služby virtuální. Můžete použít [portál Azure] [ http-azure-portal-link-ref-477t] k vytvoření pravidla, virtuální sítě z koncového bodu.
+Můžete mít podsíť, která již byla přiřazena **Microsoft.Sql** název typu, což znamená, je již koncového bodu služby virtuální. Můžete použít [webu Azure portal] [ http-azure-portal-link-ref-477t] k vytvoření pravidla virtuální sítě z koncového bodu.
 
-Nebo může být jistí, jestli má podsíť **Microsoft.Sql** název typu. Můžete spustit následující skript prostředí PowerShell pro tyto akce:
+Nebo, můžete být jisti, jestli má vaše podsíť **Microsoft.Sql** název typu. Můžete spustit následující skript Powershellu pro provedení těchto akcí:
 
-1. Zjistit, zda má podsíť **Microsoft.Sql** název typu.
-2. Volitelně můžete přiřadíte název typu chybí-li ji.
-    - Skript vyzve k zadání *potvrďte*, než se vztahuje typ chybí název.
+1. Zjistit, jestli má vaše podsíť **Microsoft.Sql** název typu.
+2. Volitelně můžete přiřadíte název typu, pokud je zcela chybět.
+    - Skript vyzve k *potvrďte*, než použije typ chybí název.
 
 #### <a name="phases-of-the-script"></a>Fáze skriptu
 
 Zde jsou uvedeny jednotlivé fáze skriptu prostředí PowerShell:
 
-1. PŘIHLASTE se k účtu Azure, potřeba pouze jednou za PS relace.  Přiřazení proměnné.
-2. Vyhledávání pro vaši virtuální síť a potom pro podsíť.
-3. Podsíť je označené jako **Microsoft.Sql** typ koncového bodu serveru?
-4. Přidat koncový bod Service virtuálního názvu typu **Microsoft.Sql**, na podsíť.
+1. PŘIHLASTE se ke svému účtu Azure potřeba jenom jednou za Vstupte do relace PSSession.  Přiřaďte proměnné.
+2. Hledat pro vaši virtuální síť a pak pro vaši podsíť.
+3. Je vaše podsíť označené jako **Microsoft.Sql** typ koncového bodu serveru?
+4. Přidat koncový bod služby virtuální názvu typu **Microsoft.Sql**, na vaší podsítě.
 
 > [!IMPORTANT]
-> Před spuštěním tohoto skriptu, je nutné upravit hodnot přiřazených $proměnné v horní části skriptu.
+> Před spuštěním tohoto skriptu je nutné upravit hodnoty přiřazené k $– proměnné, v horní části skriptu.
 
-#### <a name="direct-powershell-source-code"></a>Přímé prostředí PowerShell zdrojového kódu
+#### <a name="direct-powershell-source-code"></a>Přímé zdrojový kód Powershellu
 
-Toto prostředí PowerShell skriptu neaktualizuje nic, pokud odpověď ano, pokud se zobrazí výzvu k potvrzení. Tento skript můžete přidat název typu **Microsoft.Sql** do dané podsítě. Ale skript pokusí přidat pouze v případě, že podsíť chybí název typu.
+Toto prostředí PowerShell skriptu neaktualizuje nic, Pokud odpovíte Ano, pokud se zobrazí výzvu k potvrzení. Skript můžete přidat název typu **Microsoft.Sql** pro vaši podsíť. Ale jenom v případě, že vaše podsíť chybí název typu se pokusí přidat skript.
 
 ```powershell
 ### 1. LOG into to your Azure account, needed only once per PS session.  Assign variables.
@@ -613,7 +619,7 @@ for ($nn=0; $nn -lt $vnet.Subnets.Count; $nn++)
 
 #### <a name="actual-output"></a>Aktuální výstup
 
-Následující blok zobrazí naše skutečné zpětnou vazbu (s kosmetické úprav).
+Následující blok zobrazuje náš skutečný zpětné vazby (pomocí kosmetické změny).
 
 ```powershell
 <# Our output example (with cosmetic edits), when the subnet was already tagged:

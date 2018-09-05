@@ -7,12 +7,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: nolach
-ms.openlocfilehash: 84493ae83515c0458bf5b9e9cf44603300a8b4f7
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 1f9facf94b8068b98aa49c49ece7070a83db0686
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284883"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43665081"
 ---
 # <a name="creating-custom-voice-fonts"></a>Vytvoření vlastního hlasového písma
 
@@ -22,7 +22,6 @@ K vytvoření hlasového písma, provedete studio nahrávání a nahrát přidru
 
 Můžete začít s menším objemem dat pro testování konceptu. Ale čím více dat zadáte, čím více přirozený a professional zvuky svůj hlas.
 
-Přizpůsobení hlasu je k dispozici pro Americkou angličtinu (en US) a Španělsko čínština (zh-CN).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -45,6 +44,9 @@ Potřebujete účet Azure a předplatné služby řeči. [Vytvořte si ho](https
      ![Přidat předplatné](media/custom-voice/add-subscription.png)
 
 Jste připraveni začít!
+
+> [!IMPORTANT]
+> Během fáze ve verzi private preview odběry musí být povolené použití vlastní hlasové funkce. Postupujte podle pokynů na stránce získat vaše předplatné povolený.
 
 ## <a name="prepare-recordings-and-transcripts"></a>Příprava záznamy a přepisy
 
@@ -69,8 +71,6 @@ Zvukové soubory potřeba se připravit následujícím způsobem. Další form�
 | Formát archivu| ZIP      |
 | Maximální velikost archivu|200 MB|
 
-Umístí do jedné složce bez jeho podadresářích sadu zvukové soubory a nastavit jako jeden soubor archivu ZIP celý balíček.
-
 > [!NOTE]
 > Soubory wave s vzorkovací frekvenci nižší než 16 000 Hz budou odmítnuty. V případech, kde soubor zip obsahuje ve vlnách. s jinou vzorkovací frekvence budou importovány pouze ty rovná nebo je vyšší než 16 000 Hz.
 > Na portálu aktuálně importuje ZIP archivuje až 200 MB. Však může být nahrát několik archivů. Maximální počet povolený datové sady je že 10 ZIP soubory bezplatné předplatné uživatelů a 50 pro standardní předplatné uživatele.
@@ -90,7 +90,7 @@ Příklad:
 Systém vlastní hlasové normalizuje záznamy o studiu převod textu na malé a odebráním nadbytečné interpunkce. Je důležité, že záznamy o studiu jsou 100 % přesností na odpovídající zvukové záznamy.
 
 > [!TIP]
-> Při vývoji produkčních převod textu na řeč hlasů, vyberte projevy (nebo skripty) vzhledem k tomu zapsané ve fonetické pokrytí a efektivitu.
+> Při vývoji produkčních převod textu na řeč hlasů, vyberte projevy (nebo skripty) vzhledem k tomu zapsané ve fonetické pokrytí a efektivitu. Máte potíže při načítání výsledků požadujete? [Obraťte se na tým vlastní hlasové](mailto:tts@microsoft.com) najít najdete další informace o s námi na více instancí.
 
 ## <a name="upload-your-datasets"></a>Nahrání datových sad
 
@@ -102,8 +102,6 @@ Po přípravě archivu zvukový soubor a záznamy o studiu, odešle je prostřed
 1. Přihlaste se k portálu.
 
 2. Zvolte **Data** v části vlastní hlasové na hlavní stránce. 
-
-    ![Moje projekty](media/custom-voice/my-projects.png)
 
     Zobrazí se tabulka Moje hlasová Data. Není prázdná, pokud jste ještě nepřidali žádné datové sady hlasu.
 
@@ -224,13 +222,20 @@ Když je úspěšně nahlášen stav nasazení, se zobrazí v tabulce mé nasaze
 Online testování koncového bodu je také k dispozici prostřednictvím portálu pro vlastní hlasové. Chcete-li otestovat váš koncový bod, zvolte **testování koncových bodů** z rozevírací nabídky vlastní hlasové. Koncový bod testování stránky se zobrazí. Zvolte nasazené vlastní hlasové a zadejte text, který má být španělským (prostý text nebo formátu SSML) do textového pole.
 
 > [!NOTE] 
-> Při použití SSML, `<voice>` značky musí být zadán název jste zadali vlastní hlasové při jeho vytváření.
+> Při použití SSML, `<voice>` značky musí být zadán název jste zadali vlastní hlasové při jeho vytváření. Pokud publikujete prostý text, je vždy použito vlastní hlasové.
 
 Klikněte na tlačítko **Přehrát** potěšit text, kterým se mluví ve vaší vlastní hlasové písmo.
 
 ![Testování koncového bodu](media/custom-voice/endpoint-testing.png)
 
 Vlastní koncový bod je funkčně stejný jako standardní koncový bod pro převod textu na řeč požadavky. Zobrazit [rozhraní REST API](rest-apis.md) Další informace.
+
+## <a name="language-support"></a>Podpora jazyků
+
+Přizpůsobení hlasu je k dispozici pro Americkou angličtinu (en US), Španělsko čínština (zh-CN) a italština (it-IT).
+
+> [!NOTE]
+> Školení italsky začíná u datové sady projevy 2 000 +. Čínština – angličtina dvojjazyčné modely jsou také podporovány s datovou sadou projevy 2 000 +.
 
 ## <a name="next-steps"></a>Další postup
 

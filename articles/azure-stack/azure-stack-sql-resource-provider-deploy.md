@@ -11,17 +11,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2018
+ms.date: 09/04/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: d33ca1a4ab08ab25855f8b3992157ad3d086a180
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: c9efaeed05856f830a4f0cf699cb35ebc21966c1
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42058028"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43700706"
 ---
 # <a name="deploy-the-sql-server-resource-provider-on-azure-stack"></a>Nasazení poskytovatele prostředků SQL serveru ve službě Azure Stack
+
 Používání poskytovatele prostředků Azure Stack SQL serveru k vystavení databáze SQL jako služba Azure Stack. Poskytovatele prostředků SQL běží jako služba na virtuálním počítači (VM) systému Windows Server 2016 Server Core.
 
 ## <a name="prerequisites"></a>Požadavky
@@ -30,13 +31,12 @@ Existuje několik předpokladů, které musí být splněné před nasazením po
 
 - Pokud jste tak již neučinili, [registrace Azure Stack](azure-stack-registration.md) s Azure, takže si můžete stáhnout položky Azure marketplace.
 - Je nutné nainstalovat moduly Azure a Azure Stack Powershellu v systému, kde budete spouštět tuto instalaci. Tento systém musí být bitovou kopii systému Windows 10 nebo Windows Server 2016 s nejnovější verzí modulu .NET runtime. Zobrazit [instalace Powershellu pro Azure Stack](.\azure-stack-powershell-install.md).
-- Přidejte požadované jádra serveru systému Windows virtuální počítač na webu Marketplace služby Azure Stack stažením **systému Windows Server 2016 Datacenter - jádra serveru** bitové kopie. 
-- Stáhnout poskytovatele prostředků SQL binární a pak spusťte Self-Extractor extrahujte obsah do dočasného adresáře. Poskytovatel prostředků má minimální odpovídající Azure Stack sestavení. Ujistěte se, stáhněte si správnou binární soubor pro verzi služby Azure Stack, kterou používáte:
+- Přidejte požadované jádra serveru systému Windows virtuální počítač na webu Marketplace služby Azure Stack stažením **systému Windows Server 2016 Datacenter - jádra serveru** bitové kopie.
+- Stáhnout poskytovatele prostředků SQL binární a pak spusťte Self-Extractor extrahujte obsah do dočasného adresáře. Poskytovatel prostředků má minimální odpovídající Azure Stack sestavení.
 
-    |Verze služby Azure Stack|Verze poskytovatele prostředků SQL|
+    |Minimální verze služby Azure Stack|Verze poskytovatele prostředků SQL|
     |-----|-----|
-    |Verzi 1804 (1.0.180513.1)|[SQL RP verze 1.1.24.0](https://aka.ms/azurestacksqlrp1804)
-    |Verzi 1802 (1.0.180302.1)|[SQL RP verze 1.1.18.0](https://aka.ms/azurestacksqlrp1802)|
+    |Verzi 1804 (1.0.180513.1)|[SQL RP verze 1.1.24.0](https://aka.ms/azurestacksqlrp)
     |     |     |
 
 - Ujistěte se, že jsou splněné požadavky na integraci datacenter:
@@ -45,7 +45,7 @@ Existuje několik předpokladů, které musí být splněné před nasazením po
     |-----|-----|
     |Podmíněné předávání DNS je nastavena správně.|[Integrace datových center Azure Stack – DNS](azure-stack-integrate-dns.md)|
     |Jsou otevřené příchozí porty pro poskytovatele prostředků.|[Azure Stack – integrace datových center – publikování koncových bodů](azure-stack-integrate-endpoints.md#ports-and-protocols-inbound)|
-    |Subjekt certifikátu PKI a po síti SAN jsou správně nastavené.|[Požadavky nasazení Azure Stack povinné infrastruktury veřejných KLÍČŮ](azure-stack-pki-certs.md#mandatory-certificates)<br>[Požadavky nasazení certifikátu PaaS Azure Stack](azure-stack-pki-certs.md#optional-paas-certificates)|
+    |Subjekt certifikátu PKI a po síti SAN jsou správně nastavené.|[Požadavky nasazení Azure Stack povinné infrastruktury veřejných KLÍČŮ](azure-stack-pki-certs.md#mandatory-certificates)[požadavky certifikátu PaaS nasazení Azure Stack](azure-stack-pki-certs.md#optional-paas-certificates)|
     |     |     |
 
 ### <a name="certificates"></a>Certifikáty
@@ -80,6 +80,7 @@ Můžete zadat následující parametry z příkazového řádku. Pokud ne, nebo
 | **AzCredential** | Přihlašovací údaje pro účet správce služby Azure Stack. Použijte stejné přihlašovací údaje, které jste použili k nasazení Azure Stack. | _Vyžaduje_ |
 | **VMLocalCredential** | Přihlašovací údaje pro účet místního správce poskytovatele prostředků SQL virtuálního počítače. | _Vyžaduje_ |
 | **PrivilegedEndpoint** | IP adresa nebo název DNS privileged koncového bodu. |  _Vyžaduje_ |
+| **AzureEnvironment** | Prostředí azure účet správce služby, které jste použili k nasazení Azure Stack. Povinné, pokud se nejedná o služby AD FS. Názvy prostředí podporované jsou **AzureCloud**, **AzureUSGovernment**, nebo pokud používáte Azure Active Directory Čína, **AzureChinaCloud**. | AzureCloud |
 | **DependencyFilesLocalPath** | Pro integrované systémy pouze váš soubor PFX certifikátu musí být umístěna v tomto adresáři. Volitelně můžete zkopírovat jeden balíček Windows Update MSU tady. | _Volitelné_ (_povinné_ pro integrované systémy) |
 | **DefaultSSLCertificatePassword** | Heslo pro certifikát PFX. | _Vyžaduje_ |
 | **MaxRetryCount** | Počet pokusů, které chcete opakovat každé operace, pokud dojde k selhání.| 2 |

@@ -10,12 +10,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: carlrab
-ms.openlocfilehash: a6d6a7639d3db0cc7d194ca9fae126ad9a2cc3ba
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 0b1eda89d2baaa54b17d8a7c73a2e9c987f0f8eb
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413650"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43665981"
 ---
 # <a name="choose-a-cloud-sql-server-option-azure-sql-paas-database-or-sql-server-on-azure-vms-iaas"></a>Volba cloudového řešení systému SQL Server: Azure SQL (PaaS) Database nebo SQL Server na virtuálních počítačích Azure (IaaS)
 
@@ -28,9 +28,9 @@ V Azure, můžete mít svoje úlohy systému SQL Server běží v prostředí in
       > [!NOTE]
       > Obsahující jednoho a ve fondu databází Azure SQL Database nabízí většinu funkcí s rozsahem databáze systému SQL Server.
 
-      Následující obrázek znázorňuje tyto možnosti nasazení:
+      Následující obrázek ukazuje tyto možnosti nasazení:
 
-      ![Možnosti nasazení](./media/sql-database-technical-overview/deployment-options.png) 
+      ![možnosti nasazení](./media/sql-database-technical-overview/deployment-options.png) 
   - Můžete nasadit [Azure SQL Database Managed instance (preview)](sql-database-managed-instance.md). 
 
       > [!NOTE]
@@ -133,7 +133,7 @@ Pro **SQL Database**, poskytuje Microsoft smlouvu SLA zajišťující 99,99 % do
 Pro **SQL Server běžící na virtuálních počítačích Azure** poskytuje Microsoft smlouvu SLA s dostupností 99,95 %, která se vztahuje pouze na virtuální počítač. Tato smlouva SLA nepokrývá procesy (například SQL Server) běžící na virtuálním počítači a vyžaduje, abyste v rámci skupiny dostupnosti hostovali minimálně dvě instance virtuálních počítačů. Nejnovější informace najdete v tématu věnovaném smlouvám [SLA k virtuálním počítačům](https://azure.microsoft.com/support/legal/sla/virtual-machines/). Databáze vysoké dostupnosti (HA) v rámci virtuálních počítačů, musíte nakonfigurovat jednu z možností podporovaných vysokou dostupnost v systému SQL Server, jako [skupin dostupnosti Always On](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server). Používání podporované možnosti vysoké dostupnosti neposkytuje další SLA, ale umožňuje dosáhnout více než 99.99% dostupnosti databáze.
 
 ### <a name="market"></a>Čas přesunout do Azure
-**Logické servery SQL Database, elastických fondů a izolované databáze** je má to pravé řešení pro cloudové aplikace, když je nejdůležitější produktivitu vývojářů a rychlou dobu uvedení na trh noew řešení. V případě programových funkcí podobných DBA jde o ideální řešení pro cloudové architekty a vývojáře, protože snižuje potřebu správy příslušného operačního systému a databáze. 
+**Logické servery SQL Database, elastických fondů a izolované databáze** je má to pravé řešení pro cloudové aplikace, když je nejdůležitější produktivitu vývojářů a rychlou dobu uvedení na trh nová řešení. V případě programových funkcí podobných DBA jde o ideální řešení pro cloudové architekty a vývojáře, protože snižuje potřebu správy příslušného operačního systému a databáze. 
 
 **SQL Database Managed Instance** výrazně zjednodušuje migraci stávajících aplikací do Azure SQL Database, můžete převést databázi do režimu migrované aplikace rychle uvedla na trh v Azure.
 

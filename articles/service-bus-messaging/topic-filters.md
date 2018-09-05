@@ -1,6 +1,6 @@
 ---
-title: Filtry tématu Azure Service Bus | Microsoft Docs
-description: Filtrovat témata Azure Service Bus
+title: Filtry témat Azure Service Bus | Dokumentace Microsoftu
+description: Filtrovat témat Azure Service Bus
 services: service-bus-messaging
 documentationcenter: ''
 author: clemensv
@@ -12,45 +12,45 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
-ms.author: sethm
-ms.openlocfilehash: 305c017bd49f233c10479e2c33ec8db72cae3aa7
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.author: spelluru
+ms.openlocfilehash: a1616150ebf696654bc0ca9a79d39c3877c363d9
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2018
-ms.locfileid: "28198864"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43699382"
 ---
-# <a name="topic-filters-and-actions"></a>Téma filtry a akce
+# <a name="topic-filters-and-actions"></a>Akce a filtry témat
 
-Odběratelé můžete definovat zprávy, které chtějí dostávat téma. Tyto zprávy jsou uvedeny ve formě jednoho nebo více pravidel s názvem odběru. Každé pravidlo obsahuje podmínku, která vybere konkrétní zprávy a akce, která označí vybrané zprávy. Pro každý odpovídající pravidlo podmínku vytvoří odběr kopie zprávy, která může být jinak poznámky. pro každý odpovídající pravidlo.
+Odběratelé mohou definovat zprávy, které chtějí z tématu přijímat. Tyto zprávy jsou určeny ve formě jednoho nebo více pravidel s názvem předplatného. Každé pravidlo obsahuje podmínku, která vybere konkrétní zprávy a akci, která označí vybrané zprávy. Pro každou odpovídající podmínku pravidla odběr vytvoří kopii zprávy, která může pro každé odpovídající pravidlo obsahovat jiné poznámky.
 
-Každé předplatné nově vytvořené téma má pravidlo počáteční výchozí předplatné. Pokud nezadáte explicitně podmínku filtrování pro pravidlo, je použitý filtr **true** filtr, který umožňuje všechny zprávy, aby byl vybrán do předplatného. Výchozí pravidlo nemá žádnou akci přidružené poznámky.
+Každé předplatné nově vytvořené téma má pravidlo počáteční výchozí předplatné. Pokud nechcete zadat explicitně podmínka pro pravidlo, je použitý filtr **true** filtr, který umožňuje výběr do předplatného, všechny zprávy. Výchozí pravidlo nemá žádné přidružené anotaci akce.
 
-Service Bus podporuje tři filtr podmínek:
+Service Bus podporuje tři podmínky filtru:
 
--   *Logická hodnota filtry* – **TrueFilter** a **FalseFilter** buď způsobit, že všechny nově příchozí zprávy (**true**), nebo žádná které zprávy (**false**) Chcete-li být vybraná pro odběr.
+-   *Logické filtry* – **TrueFilter** a **FalseFilter** buď způsobit, že všechny příchozí zprávy (**true**) nebo žádné příchozí zprávy (**false**) má být vybrán pro předplatné.
 
--   *Filtry SQL* – **SqlFilter** obsahuje podobné jazyku SQL podmíněným výrazem, který se vyhodnotí v zprostředkovatele před uživatelem definované vlastnosti a vlastnosti systému příchozí zprávy. Všechny vlastnosti systému musí obsahovat předponu `sys.` podmíněného výrazu. [Podmnožina jazyk SQL pro filtr podmínek](service-bus-messaging-sql-filter.md) testy existence vlastnosti (EXISTS), stejně jako-hodnoty null (není NULL), logické není/AND nebo OR, relační operátory, jednoduché aritmetické číselné a jednoduchý text vzor odpovídající pomocí jako.
+-   *Filtry SQL* – **SqlFilter** obsahuje podmíněný výraz podobném SQL, který je vyhodnocen v broker před uživatelem definované vlastnosti a vlastnosti systému příchozí zprávy. Musí předcházet všem systémovým vlastnostem `sys.` v podmíněných výrazech. [Podmnožina jazyka SQL pro podmínky filtru](service-bus-messaging-sql-filter.md) testy existence vlastnosti (EXISTS) i-hodnoty null (je NULL), logický NOT/AND nebo OR, relační operátory, jednoduché Číselná aritmetika a jednoduchý textový model spárování s jako.
 
--   *Korelace filtry* – **CorrelationFilter** obsahuje sadu podmínek, které se shodují na jeden nebo více vlastností příchozích zpráv uživatele a systémové. Se běžně používá k porovnání **CorrelationId** vlastnost, ale aplikace můžete také zvolit odpovídající **ContentType**, **popisek**,  **MessageId**, **ReplyTo**, **ReplyToSessionId**, **SessionId**, **k**a všechny uživatelem definované Vlastnosti. Odpovídající položka existuje po rovna hodnotě zadaných ve filtru korelace které zprávu hodnotu vlastnosti. Řetězec výrazy porovnání je malá a velká písmena. Při zadávání více vlastností shoda, musí odpovídat všechny podmínky, filtr je kombinuje jako logické a podmínku, což znamená pro filtr tak, aby odpovídaly.
+-   *Korelační filtry* – **CorrelationFilter** obsahuje sadu podmínek, které jsou porovnány s nejméně jeden z vlastnosti uživatele a systémové opravovány zprávy. Běžné použití je tak, aby odpovídala **CorrelationId** vlastnost, ale aplikace můžete také zvolit odpovídající **ContentType**, **popisek**,  **ID zprávy**, **ReplyTo**, **ReplyToSessionId**, **SessionId**, **k**a jakýkoli definovaný uživatelem Vlastnosti. Odpovídající položka existuje při opravovány message s hodnotou pro vlastnost je rovna hodnotě zadané v korelační filtr. Pro řetězcové výrazy porovnání je velká a malá písmena. Při zadávání více vlastností shoda, filtr kombinuje je jako logická podmínka a, to znamená pro filtr tak, aby odpovídaly, všechny podmínky musí odpovídat.
 
-Všechny filtry vyhodnocení vlastnosti zprávy. Filtry nelze vyhodnotit tělo zprávy.
+Všechny filtry vyhodnocení vlastnosti zprávy. Filtry se nedá vyhodnotit tělo zprávy.
 
-Pravidla složitějších filtrů vyžadují kapacity zpracování. Použití pravidla filtru SQL na konkrétní výsledkem nižší celkovou propustnost zpráv na úrovni předplatného, tématu a obor názvů. Kdykoli je to možné, aplikace by měl vybrat korelace filtry přes SQL jako filtry, vzhledem k tomu, že jsou mnohem efektivnější ve zpracování a proto mít menší dopad na propustnost.
+Komplexní filtrovací pravidla, která vyžadují kapacitu zpracování. Zejména použití pravidel filtru SQL za následek nižší celkovou propustnost zpráv na úrovni předplatného, tématu a obor názvů. Kdykoli je to možné, aplikace by měl vybrat korelační filtry více než podobném SQL filtrů, protože jsou mnohem výkonnější při zpracování a proto mít menší dopad na propustnost.
 
 ## <a name="actions"></a>Akce
 
-S podmínkami filtru SQL a pouze s těmi můžete definovat akci, která může opatřit poznámkami zprávu pomocí přidání, odebrání nebo výměna vlastností a jejich hodnot. Akce [používá výraz SQL jako](service-bus-messaging-sql-filter.md) , volně leans na syntaxe příkazu aktualizace SQL. Akce se provádí na zprávu po mu odpovídala a předtím, než je vybrané zprávy do tématu. Změny vlastnosti zprávy jsou privátní na zprávu zkopírují do předplatného.
+Podmínky filtru SQL a pouze s těmi můžete definovat akce, která může opatřit poznámkami zprávy pomocí přidání, odebrání nebo výměna vlastností a jejich hodnot. Akce [používá výraz podobném SQL](service-bus-messaging-sql-filter.md) , volně leans na syntaxe příkazu SQL UPDATE. Akce se provádí na zprávu po mu odpovídala, a před zprávy do tématu. Změny vlastnosti zprávy jsou privátní pro zpráva zkopírována do předplatného.
 
-## <a name="usage-patterns"></a>Vzorce používání
+## <a name="usage-patterns"></a>Vzory využití
 
-Nejjednodušším scénáři využití pro téma je, že každé předplatné získá kopii každá zpráva odeslaná do tématu, které umožňuje všesměrového vysílání vzor.
+Nejjednodušší scénář využití tématu je, že každé předplatné získá kopii každá zpráva odeslaná do tématu, který umožňuje vzoru všesměrového vysílání.
 
-Filtry a akce Povolit dva další skupiny schémat: vytváření oddílů a směrování.
+Filtry a akcí povolit dvě další skupiny vzory: vytváření oddílů a směrování.
 
-Vytváření oddílů používá filtry distribuci zprávy přes několik existující odběry témat předvídatelný a vzájemně se vylučuje způsobem. Rozdělení vzor se používá, pokud je systém škálovat na více systémů pro zpracování mnoho různých kontextů v funkčně identické přihrádky, že každý obsahovat podmnožinu celkového dat; například zákazníka informace o profilu. Vydavatel s oddíly, odešle zprávu do tématu bez nutnosti znalostí dělení modelu. Zpráva je pak přesunuta do správné předplatné, ze kterého se dá pak načíst oddílu zpráva obslužnou rutinou.
+Dělení používá filtry k distribuci zpráv do více stávajícím předplatným tématu způsobem zajišťuje předvídatelný a vzájemně vylučují. Dělení model se používá, když je systém škálované zpracování mnoho různých kontextech v funkčně stejný jako oddíly, že každý obsahovat podmnožinu celkového dat; například profil informace o zákaznících. Vydavatel s dělením, odešle zprávy do tématu nevyžaduje žádnou znalost dělení modelu. Zprávu je poté přesunut do správné předplatné, ze kterého se pak dá načíst pomocí obslužné rutiny zpráv oddíl.
 
-Směrování používá filtry distribuci zprávy přes odběry témat předvídatelný způsobem, ale nemusí být výhradní. Ve spojení s [automatické přesměrování](service-bus-auto-forwarding.md) funkce, grafech tématu filtry lze použít k vytvoření komplexní směrování v rámci oboru názvů Service Bus pro distribuci zprávy v oblasti Azure. Pomocí funkce Azure nebo Azure Logic Apps, který funguje jako most mezi Azure Service Bus obory názvů můžete vytvářet složité globální topologie s přímá integrace do obchodních aplikací.
+Směrování používá filtry k distribuci zpráv do tématu předplatná předvídatelným způsobem, ale ne nutně exkluzivní. Ve spojení s [automatické přesměrování](service-bus-auto-forwarding.md) funkce, grafy tématu filtry je možné vytvořit komplexní směrování v rámci oboru názvů služby Service Bus pro distribuce zpráv v rámci oblasti Azure. S Azure Functions nebo Azure Logic Apps, který funguje jako most mezi obory názvů služby Azure Service Bus můžete vytvářet složité globální topologie díky přímé integraci do obchodních aplikací.
 
 ## <a name="next-steps"></a>Další postup
 

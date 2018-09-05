@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: dfca26f36287cfd856beb98edeb2b2362f36bc4b
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: b54a302c022a8af84c1964c13ffadc52b45c4ca4
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37858802"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43696815"
 ---
 # <a name="azure-cosmos-db-serverless-database-computing-using-azure-functions"></a>Azure Cosmos DB: Databáze bez serveru výpočetní prostředí s využitím Azure Functions
 
@@ -31,7 +31,7 @@ Azure Cosmos DB a Azure Functions umožňuje integrovat vaše databáze a aplika
 * Vytvořit vazbu funkce do kontejneru Azure Cosmos DB pomocí **výstupní vazby**. Po dokončení funkce výstupních vazeb zapisovat data do kontejneru.
 
 > [!NOTE]
-> V současnosti aktivační události Azure Cosmos DB a vstupní a výstupní vazby fungují jenom s účty SQL API a Graph API.
+> Aktivační událost Azure Cosmos DB, vstupní vazby a výstupní vazby pracovat v tuto chvíli pouze rozhraní SQL API a rozhraní Gremlin API účty.
 
 Následující diagram znázorňuje jednotlivé vlastnosti produktu tyto tři integrace: 
 
@@ -82,7 +82,7 @@ Následující obrázky znázorňují kódu na webu Azure Portal pro tento scén
 
 ### <a name="gaming-use-case---azure-cosmos-db-trigger-and-output-binding"></a>Herní příklad použití – aktivační událost Azure Cosmos DB a výstupní vazby
 
-V hry, při vytvoření nového uživatele můžete vyhledat jiných uživatelů, kteří je možné, že pomocí [Azure Cosmos DB Graph API](graph-introduction.md). Pak můžou zapisovat výsledky [Azure Cosmos DB SQL database] k němu měli snadný přístup.
+V hry, při vytvoření nového uživatele můžete vyhledat jiných uživatelů, kteří je možné, že pomocí [Gremlin API služby Azure Cosmos DB](graph-introduction.md). Pak můžou zapisovat výsledky [Azure Cosmos DB SQL database] k němu měli snadný přístup.
 
 **Implementace:** použít aktivační událost Azure Cosmos DB a výstupní vazby
 

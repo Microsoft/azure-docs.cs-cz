@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 02dc4657f6c594242d12e3eca270a3549b77bf02
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: bd456e0f881f606f36f2b4d80e704ce138f7db0f
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43337754"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666428"
 ---
 # <a name="deploy-a-configuration-server"></a>Nasazení konfiguračního serveru
 
@@ -42,7 +42,7 @@ Požadavky na velikost pro konfigurační server závisí na potenciální četn
 | 12 virtuálních procesorů (2 sockets * 6 jader \@ 2,5 GHz) |18 GB |600 GB |500 GB až 1 TB |Replikace počítačů 100 150. |
 | 16 virtuálních procesorů (2 sockets * 8 jader \@ 2,5 GHz) |32 GB |1 TB |1 TB na 2 TB |Replikace počítačů 150 až 200. |
 
-Pokud replikujete více než jeden virtuální počítač VMware, přečtěte si [důležité informace o plánování kapacity](/site-recovery-plan-capacity-vmware.md). Spustit [nástroj Plánovač nasazení](site-recovery-deployment-planner.md) pro replikaci VMWare.
+Pokud replikujete více než jeden virtuální počítač VMware, přečtěte si [důležité informace o plánování kapacity](https://docs.microsoft.com/azure/site-recovery/site-recovery-plan-capacity-vmware). Spustit [nástroj Plánovač nasazení](site-recovery-deployment-planner.md) pro replikaci VMWare.
 
 ## <a name="download-the-template"></a>Stažení šablony
 

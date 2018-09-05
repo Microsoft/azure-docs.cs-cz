@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: 41246e434f8adade65f39b3471417888f62d7528
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 4a5ca4879f81533e3617ca9dfe9cdf8afcf2965b
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42058666"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43700167"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Vytvoření první aplikace Service Fabric typu kontejner v systému Windows
 > [!div class="op_single_selector"]
@@ -27,6 +27,9 @@ ms.locfileid: "42058666"
 > * [Linux](service-fabric-get-started-containers-linux.md)
 
 Spuštění existující aplikace v kontejneru Windows v clusteru Service Fabric nevyžaduje žádné změny aplikace. Tento článek vás provede vytvořením image Dockeru obsahující webovou aplikaci Python [Flask](http://flask.pocoo.org/) a jejím nasazením do clusteru Service Fabric. Kontejnerizovanou aplikaci budete také sdílet prostřednictvím služby [Azure Container Registry](/azure/container-registry/). Tento článek předpokládá základní znalost Dockeru. Informace o Dockeru najdete v článku [Docker Overview](https://docs.docker.com/engine/understanding-docker/) (Přehled Dockeru).
+
+> [!NOTE]
+> Tento článek se týká prostředí pro vývoj Windows.  Modulu runtime clusteru Service Fabric a modul runtime Docker musí běžet na stejném operačním systému.  Nelze spouštění kontejnerů Windows v clusteru s Linuxem.
 
 ## <a name="prerequisites"></a>Požadavky
 * Vývojový počítač s:

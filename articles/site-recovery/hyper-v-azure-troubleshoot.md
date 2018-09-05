@@ -9,30 +9,30 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: rayne
-ms.openlocfilehash: 95941b3f9333273c11208c56a63c62d5d37a9386
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: d5282e5954aa50ce67d6341b194177a89bdbe6cc
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213550"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666397"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Řešení potíží s technologií Hyper-V do Azure replikace a převzetí služeb při selhání
 
-Tento článek popisuje běžné problémy, které se mohou vyskytnout při replikaci místních virtuálních počítačů Hyper-V do Azure, pomocí [Azure Site Recovery](site-recovery-overview.md).
+Tento článek popisuje běžné problémy, které se můžete setkat při replikaci místních virtuálních počítačů Hyper-V do Azure, pomocí [Azure Site Recovery](site-recovery-overview.md).
 
 ## <a name="enable-protection-issues"></a>Povolit potíže s ochranou
 
-Pokud narazíte na problémy při povolení ochrany pro virtuální počítače Hyper-V, zkontrolujte následující:
+Pokud máte problémy při povolení ochrany pro virtuální počítače Hyper-V, zkontrolujte následující doporučení:
 
-1. Zkontrolujte, jestli hostitelé Hyper-V a virtuální počítače v souladu se všemi [požadavky a předpoklady](hyper-v-azure-support-matrix.md).
+1. Zkontrolujte, že hostitelé Hyper-V a virtuální počítače splňují všechny [požadavky a předpoklady](hyper-v-azure-support-matrix.md).
 2. Pokud jsou servery Hyper-V umístěni v cloudech System Center Virtual Machine Manager (VMM), ověřte, že jste připravili [serveru VMM](hyper-v-prepare-on-premises-tutorial.md#prepare-vmm-optional).
 3. Zkontrolujte, jestli je spuštěná služba Správa virtuálních počítačů Hyper-V na hostitelích Hyper-V.
-4. Zkontrolovat problémy, které se zobrazují v Hyper-V-VMMS\Admin protokolu na virtuálním počítači. Tento protokol se nachází v **protokoly aplikací a služeb** > **Microsoft** > **Windows**.
+4. Zkontrolovat problémy, které se zobrazují v Hyper-V-VMMS\Admin přihlášení k virtuálnímu počítači. Tento protokol se nachází v **protokoly aplikací a služeb** > **Microsoft** > **Windows**.
 5. Na virtuálním počítači hosta ověřte, že rozhraní WMI povolené a přístupné.
   - [Další informace o](https://blogs.technet.microsoft.com/askperf/2007/06/22/basic-wmi-testing/) základní testování služby WMI.
   - [Řešení potíží s](https://aka.ms/WMiTshooting) rozhraní WMI.
   - [Řešení potíží s ](https://technet.microsoft.com/library/ff406382.aspx#H22) problémy s WMI skripty a službami.
-5. Na virtuálním počítači hosta Ujistěte se, že je spuštěna nejnovější verzi integrační služby.
+6. Na virtuálním počítači hosta Ujistěte se, že je spuštěna nejnovější verzi integrační služby.
     - [Zkontrolujte](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services) , že máte nejnovější verzi.
     - [Zachovat](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date) nejnovější integrační služby.
     
@@ -54,8 +54,8 @@ Pokud narazíte na problémy při povolení ochrany pro virtuální počítače 
     - Pokud replikujete pomocí nástroje VMM v prostředí, zkontrolujte, že běží tyto služby:
         - Na hostiteli Hyper-V zkontrolujte, že jsou spuštěná služba Správa virtuálních počítačů, Microsoft Azure Recovery Services Agent a služby hostitele zprostředkovatele rozhraní WMI.
         - Na serveru VMM Ujistěte se, že je spuštěna služba System Center Virtual Machine Manager.
-4. Zkontrolujte připojení mezi serverem Hyper-V a Azure. Chcete-li to provést, otevřete Správce úloh na hostiteli Hyper-V. Na **výkonu** klikněte na tlačítko **Monitor otevřít zdroj**. Na **sítě** kartu > **postupy se síťovou aktivitou**, zkontrolujte, zda cbengine.exe aktivně odesílá velké objemy dat (MB).
-5. Zkontrolujte, zda hostitelé Hyper-V může připojit k URL objektu blob úložiště Azure. Chcete-li to provést, vyberte a zkontrolujte **cbengine.exe**. Zobrazení **připojení TCP** k ověření připojení z hostitele do objektu blob Azure storage.
+4. Zkontrolujte připojení mezi serverem Hyper-V a Azure. Aby se ověřilo připojení, otevřete Správce úloh na hostiteli Hyper-V. Na **výkonu** klikněte na tlačítko **Monitor otevřít zdroj**. Na **sítě** kartu > **zpracování pomocí síťové aktivity**, zkontrolujte, zda cbengine.exe aktivně odesílá velké objemy dat (MB).
+5. Zkontrolujte, zda hostitelé Hyper-V může připojit k URL objektu blob úložiště Azure. Chcete-li zkontrolovat, zda hostitele můžete připojit, vyberte a zkontrolujte **cbengine.exe**. Zobrazení **připojení TCP** k ověření připojení z hostitele do objektu blob Azure storage.
 6. Problémy s výkonem, zkontrolujte, jak je popsáno níže.
     
 ### <a name="performance-issues"></a>Problémy s výkonem
@@ -92,7 +92,7 @@ Konzistentní vzhledem k snímku je bodu v čase snímek dat aplikací ve virtu�
 
 1. Zkontrolujte, že je nainstalované a spuštěné nejnovější integrační služby.  Zkontrolujte, jestli jsou aktualizace dostupné spuštěním následujícího příkazu Powershellu řádku se zvýšenými oprávněními na hostiteli Hyper-V: **get-vm | vyberte název, stav, IntegrationServicesState**.
 2. Zkontrolujte, zda jsou služby VSS běží a je v pořádku:
-    - Provedete to tak, přihlaste se virtuálním počítači hosta. Pak otevřete příkazový řádek správce a spusťte následující příkazy ke kontrole, jestli jsou všechny zapisovače VSS jsou v pořádku.
+    - Ke kontrole služby, přihlaste se na virtuálním počítači hosta. Pak otevřete příkazový řádek správce a spusťte následující příkazy ke kontrole, jestli jsou všechny zapisovače VSS jsou v pořádku.
         - **Vssadmin list writers**
         - **Vssadmin list shadows**
         - **Seznam poskytovatelů vssadmin**
@@ -108,10 +108,10 @@ Konzistentní vzhledem k snímku je bodu v čase snímek dat aplikací ve virtu�
     ![Dynamický disk](media/hyper-v-azure-troubleshoot/dynamic-disk.png)
     
 4. Zkontrolujte, že není nutné disk iSCSI připojené k virtuálnímu počítači. Toto není podporováno.
-5. Zkontrolujte, zda je povolena služba zálohování. Ověřte to **nastavení technologie Hyper-V** > **integrační služby**.
+5. Zkontrolujte, zda je povolena služba zálohování. Ověřte, zda je povolena v **nastavení technologie Hyper-V** > **integrační služby**.
 6. Zkontrolujte, zda nedochází ke konfliktům s aplikacemi pro pořizování snímků VSS. Může dojít, pokud více aplikací se pokoušíte pořizování snímků VSS ve stejný čas konflikty. Pokud například zálohování aplikace je pořizování snímků VSS plánu ve vašich zásadách replikace Site Recovery k vytvoření snímku.   
 7. Zaškrtněte, pokud virtuální počítač dochází k vysoké výpovědí:
-    - Můžete měřit denní četnost změn dat u virtuálních počítačů hosta pomocí čítačů výkonu na hostiteli Hyper-V. Chcete-li to provést, povolte následující čítač. Aggregrate ukázku této hodnoty na discích virtuálních počítačů po dobu 5 – 15 minut, chcete-li získat četnost změn virtuálním počítači.
+    - Můžete měřit denní četnost změn dat u virtuálních počítačů hosta pomocí čítačů výkonu na hostiteli Hyper-V. Pokud chcete změřit četnost změn dat, povolte následující čítač. Aggregrate ukázku této hodnoty na discích virtuálních počítačů po dobu 5 – 15 minut, chcete-li získat četnost změn virtuálním počítači.
         - Kategorie: "zařízení virtuálního úložiště technologie Hyper-V"
         - Čítač: "zapsané bajty za sekundu"</br>
         - Tato data četnost změn dat zvyšuje nebo zůstat na vysoké úrovni, v závislosti na jejich vytížení virtuálního počítače nebo jeho aplikace je.
@@ -138,7 +138,7 @@ Konzistentní vzhledem k snímku je bodu v čase snímek dat aplikací ve virtu�
 **Kód chyby:** | **Zpráva** | **Podrobnosti**
 --- | --- | ---
 **0x800700EA.** | "Hyper-V se nepodařilo vytvořit sadu snímků VSS pro virtuální počítač: k dispozici další data. (0x800700EA). Nastavte generování snímků služby VSS může selhat, pokud probíhá operace zálohování.<br/><br/> Operace replikace pro virtuální počítač se nepovedlo: je k dispozici další data. " | Zkontrolujte, jestli váš virtuální počítač má povoleno dynamického disku. Toto není podporováno.
-**0x80070032** | "Se nepodařilo připojit k virtuálnímu počítači Hyper-V svazek stínové kopie žadatel <. / VMname > protože verze neodpovídá verzi očekává technologie Hyper-V | Zaškrtněte, pokud jsou nainstalované nejnovější aktualizace Windows.<br/><br/> [Upgrade](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services.md#keep-integration-services-up-to-date) na nejnovější verzi integrační služby.
+**0x80070032** | "Se nepodařilo připojit k virtuálnímu počítači Hyper-V svazek stínové kopie žadatel <. / VMname > protože verze neodpovídá verzi očekává technologie Hyper-V | Zaškrtněte, pokud jsou nainstalované nejnovější aktualizace Windows.<br/><br/> [Upgrade](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-integration-services#keep-integration-services-up-to-date) na nejnovější verzi integrační služby.
 
 
 
@@ -146,7 +146,7 @@ Konzistentní vzhledem k snímku je bodu v čase snímek dat aplikací ve virtu�
 
 Všechny události replikace Hyper-V jsou zaznamenána do protokolu Hyper-V-VMMS\Admin umístěné v **protokoly aplikací a služeb** > **Microsoft** > **Windows**. Kromě toho můžete povolit analytický protokol pro službu Správa virtuálních počítačů Hyper-V, následujícím způsobem:
 
-1. Ujistěte se, protokoly ladění a zobrazitelné v prohlížeči událostí. Chcete-li to provést v prohlížeči událostí, klikněte na tlačítko **zobrazení** > **zobrazit protokoly ladění a analýzu.**. Analytický protokol se zobrazí v části **Hyper-V-VMMS**.
+1. Ujistěte se, protokoly ladění a zobrazitelné v prohlížeči událostí. Protokoly dostupné v Event Vieweru, klikněte opakovaně na **zobrazení** > **zobrazit protokoly ladění a analýzu.**. Analytický protokol se zobrazí v části **Hyper-V-VMMS**.
 2. V **akce** podokně klikněte na tlačítko **povolit protokol**. 
 
     ![Povolení protokolu](media/hyper-v-azure-troubleshoot/enable-log.png)

@@ -1,6 +1,6 @@
 ---
-title: Konfigurace kodér Haivision KB k odeslání živý datový proud s jednou přenosovou rychlostí do Azure | Microsoft Docs
-description: Toto téma ukazuje, jak nakonfigurovat za provozu kodér Haivision KB k odeslání datový proud s jednou přenosovou rychlostí do AMS kanály, které jsou povolené kódování v reálném čase.
+title: Konfigurovat kodér Haivision KB odesílat živý datový proud s jednou přenosovou rychlostí do Azure | Dokumentace Microsoftu
+description: Toto téma ukazuje, jak nakonfigurovat živé kodér Haivision KB k odesílání datového proudu s jednou přenosovou rychlostí do AMS kanály, které jsou povolené kódování v reálném čase.
 services: media-services
 documentationcenter: ''
 author: dbgeorge
@@ -14,97 +14,96 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: juliako;dbgeorge
-ms.openlocfilehash: 25077cd9338a2764c6dff9e755812033685f6641
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: a36e12080cbbcb1a98bf786a6634959362cb52a7
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788785"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666445"
 ---
-# <a name="use-the-haivision-kb-live-encoder-to-send-a-single-bitrate-live-stream"></a>Pomocí kodéru za provozu Haivision KB odesílat živý datový proud s jednou přenosovou rychlostí
+# <a name="use-the-haivision-kb-live-encoder-to-send-a-single-bitrate-live-stream"></a>Použití živého kodér Haivision KB odesílat živý datový proud s jednou přenosovou rychlostí
 > [!div class="op_single_selector"]
-> * [Elemental za provozu](media-services-configure-elemental-live-encoder.md)
 > * [FMLE](media-services-configure-fmle-live-encoder.md)
 > * [Haivision](media-services-configure-kb-live-encoder.md)
-> * [čase](media-services-configure-tricaster-live-encoder.md)
-> * [wirecast](media-services-configure-wirecast-live-encoder.md)
+> * [Tricaster](media-services-configure-tricaster-live-encoder.md)
+> * [Wirecast](media-services-configure-wirecast-live-encoder.md)
 
-Toto téma ukazuje, jak nakonfigurovat [za provozu kodér Havision KB](https://www.haivision.com/products/kb-series/) ke odesílat datový proud s jednou přenosovou rychlostí do AMS kanály, které jsou povolené kódování v reálném čase. Další informace najdete v článku o [práci s kanály, které mají povolené kódování v reálném čase pomocí služby Azure Media Services](media-services-manage-live-encoder-enabled-channels.md).
+Toto téma ukazuje, jak nakonfigurovat [kodér služby live Encoding Havision KB](https://www.haivision.com/products/kb-series/) kodér Odeslat datový proud s jednou přenosovou rychlostí do AMS kanály, které jsou povolené kódování v reálném čase. Další informace najdete v článku o [práci s kanály, které mají povolené kódování v reálném čase pomocí služby Azure Media Services](media-services-manage-live-encoder-enabled-channels.md).
 
-Tento kurz ukazuje, jak spravovat Azure Media Services (AMS) s nástrojem Azure Media Services Explorer (AMSE). Tento nástroj lze spustit pouze na počítačích s Windows. Pokud jste na Mac nebo Linux, použijte portál Azure k vytvoření [kanály](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) a [programy](media-services-portal-creating-live-encoder-enabled-channel.md).
+Tento kurz ukazuje, jak spravovat Azure Media Services (AMS) s nástrojem Azure Media Services Explorer (AMSE). Tento nástroj lze spustit pouze na počítač s Windows. Pokud jste v systému Mac nebo Linux, pomocí webu Azure portal k vytvoření [kanály](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) a [programy](media-services-portal-creating-live-encoder-enabled-channel.md).
 
 ## <a name="prerequisites"></a>Požadavky
-*   Přístup k kodér Haivision KB, systémem SW 5.01 nebo vyšší, nebo vyšší.
+*   Přístup k kodér Haivision KB, Jihozápadní 5.01 nebo vyšší, s nebo vyšší.
 * [Vytvoření účtu Azure Media Services](media-services-portal-create-account.md)
 * Ujistěte se, je koncový bod streamování, spuštěná. Další informace najdete v tématu [spravovat koncové body streamování v účtu Media Services](media-services-portal-manage-streaming-endpoints.md)
 * Nainstalujte nejnovější verzi [AMSE](https://github.com/Azure/Azure-Media-Services-Explorer) nástroj.
 * Spusťte nástroj a připojte se ke svému účtu AMS.
 
 ## <a name="tips"></a>Tipy
-* Pokud je to možné, použijte standardní kabelové internetové připojení.
-* Obvykle při určování nároky na šířku pásma je dvakrát streamování přenosových rychlostí. Přestože není povinný požadavek, pomáhá omezit účinek zahlcení sítě.
-* Při použití kodérů založeného na softwaru, zavřete se všechny nepotřebné programy.
+* Kdykoli je to možné, použijte standardní kabelové internetové připojení.
+* Základním pravidlem při určování požadavků na šířku pásma, je dvakrát streamování přenosových rychlostí. Protože toto není povinné požadavek, pomáhá zmírnit dopad zahlcení sítě.
+* Při použití softwarových kodérů uzavřete všechny nepotřebné programy.
 
 ## <a name="create-a-channel"></a>Vytvoření kanálu
-1. V nástroj AMSE, přejděte na **živé** kartě a klikněte pravým tlačítkem myši v oblasti kanálu. Vyberte **vytvořit kanál...** v nabídce.
+1. Nástroj AMSE, přejděte na **Live** kartu a klikněte pravým tlačítkem v rámci oblasti kanálu. Vyberte **vytvořit kanál...** v nabídce.
 [Haivision](./media/media-services-configure-kb-live-encoder/channel.png)
-2. Zadejte název kanálu, pole popisu je volitelné. V části Nastavení kanál, vyberte **standardní** pro Live Encoding možnost s protokolem vstup nastavena na **RTMP**. Všechna ostatní nastavení jako je můžete nechat. Zajistěte, aby **nyní spustit nový kanál** je vybrána.
+2. Zadejte název kanálu, do pole Popis je volitelný. V části nastavení kanálu, vyberte **standardní** pro možnost Live Encoding s protokolem vstupu, nastavte na **RTMP**. Všechna ostatní nastavení je můžete nechat. Ujistěte se, že **spustit nový kanál** zaškrtnuto.
 3. Klikněte na tlačítko **vytvořit kanál**.
 [Haivision](./media/media-services-configure-kb-live-encoder/livechannel.png)
 
 > [!NOTE]
-> Kanál může trvat až 20 minut před spuštěním.
+> Kanál může trvat až 20 minut.
 
-## <a name="configure-the-haivision-kb-encoder"></a>Konfigurace kodér Haivision KB
-V tomto kurzu se používají následující nastavení výstup. Zbývající část tohoto oddílu popisuje kroky konfigurace podrobněji.
+## <a name="configure-the-haivision-kb-encoder"></a>Konfigurovat kodér Haivision KB
+V tomto kurzu se používají následující nastavení výstupu. Zbytek tohoto oddílu popisuje jednotlivé kroky konfigurace v podrobněji.
 
 Video:
--   Kodeků: H.264
--   Profil: Vysoká (úroveň 4.0)
--   Přenosovou rychlostí: 5000 kb/s
--   Klíčový snímek: 2 sekund (60 sekund)
--   Míra s rámečkem: 30
+-   Kodek: H.264
+-   Profil: Vysoce (úroveň 4.0)
+-   S přenosovou rychlostí: 5000 kB /
+-   Klíčový snímek: 2 sekundy (60 sekund)
+-   Frekvence snímků: 30
 
 Zvuk:
--   Kodeků: AAC (LC)
--   Přenosovou rychlostí: 192 kb /
+-   Kodek: AAC (LC –)
+-   S přenosovou rychlostí: 192 kb /
 -   Vzorkovací frekvence: 44,1 kHz
 
-## <a name="configuration-steps"></a>Kroky konfigurace
+## <a name="configuration-steps"></a>Postup konfigurace
 1.  Přihlaste se k uživatelské rozhraní Haivision KB.
-2.  Klikněte na **tlačítko nabídky** v kanálu řídicí centrum a vyberte **kanálu přidat**  
+2.  Klikněte na **tlačítko nabídky** v control centeru kanálu a vyberte **přidat kanálu**  
     ![Snímek 2017-08-14 na 9.15.09 obrazovky AM.png](./media/media-services-configure-kb-live-encoder/step2.png)
 3.  Typ **název kanálu** v názvu pole a klikněte na tlačítko Další.  
     ![Snímek 2017-08-14 na 9.19.07 obrazovky AM.png](./media/media-services-configure-kb-live-encoder/step3.png)
 4.  Vyberte **kanál vstupní zdroj** z **vstupní zdroj** rozevíracího seznamu a klikněte na tlačítko Další.
     ![Snímek 2017-08-14 na 9.20.44 obrazovky AM.png](./media/media-services-configure-kb-live-encoder/step4.png)
-5.  Z **kodér šablony** rozevíracího seznamu vyberte **H264 720 AAC 192** a klikněte na tlačítko Další.
+5.  Z **šablony Encoder** rozevíracího seznamu zvolte **H264 – 720-AAC-192** a klikněte na tlačítko Další.
     ![Snímek 2017-08-14 na 9.23.15 obrazovky AM.png](./media/media-services-configure-kb-live-encoder/step5.png)
-6.  Z **vyberte nový výstupní** rozevíracího seznamu vyberte **RTMP** a klikněte na tlačítko Další.  
+6.  Z **vyberte nový výstup** rozevíracího seznamu zvolte **RTMP** a klikněte na tlačítko Další.  
     ![Snímek 2017-08-14 na 9.27.51 obrazovky AM.png](./media/media-services-configure-kb-live-encoder/step6.png)
-7.  Z **výstup kanál** okně naplnit informace o Azure datového proudu. Vložení **RTMP** odkaz z instalačního programu Počáteční kanál v **Server** oblasti. V **název výstupu** oblasti zadejte název kanálu. V oblasti šablony názvu datového proudu pomocí šablony RTMPStreamName_ % video_bitrate % název datového proudu.
+7.  Z **výstupní kanál** okně naplnit informace o Azure stream. Vložit **RTMP** odkaz z nastavení počáteční kanál ve **Server** oblasti. V **název výstupního** oblasti zadejte název kanálu. V oblasti Stream název šablony použijte šablonu RTMPStreamName_ % video_bitrate % název datového proudu.
     ![Snímek 2017-08-14 na 9.33.17 obrazovky AM.png](./media/media-services-configure-kb-live-encoder/step7.png)
-8.  Klikněte na tlačítko Další a pak kliknete na Hotovo.
-9.  Klikněte **tlačítko Přehrát** zahájíte kodér kanál.  
+8.  Klikněte na tlačítko Další a pak klikněte na Hotovo.
+9.  Klikněte na tlačítko **tlačítko Přehrát** spuštění kanálu kodér.  
     ![Haivision KB.png](./media/media-services-configure-kb-live-encoder/step9.png)
 
-## <a name="test-playback"></a>Přehrávání testu
-Přejděte na nástroj AMSE a klikněte pravým tlačítkem na kanál, který má být testována. V nabídce najeďte myší na přehrávání ve verzi Preview a vyberte pomocí Azure Media Player.
+## <a name="test-playback"></a>Přehrávání testů
+Přejděte na nástroj AMSE a klikněte pravým tlačítkem na kanál, který má být testována. Z nabídky najeďte myší přehrávání na verzi Preview a vyberte pomocí Azure Media Playeru.
 
 Pokud datový proud se zobrazí v přehrávači, pak kodér správně nakonfigurovaný pro připojení k AMS.
 
-Je-li k chybě, kanál je třeba obnovit a upravit nastavení kodéru. Najdete v článku řešení problémů s pokyny.
+Pokud k chybě, kanál je potřeba resetovat a upravit nastavení kodéru. Najdete v článku řešení problémů s pokyny.
 
-## <a name="create-a-program"></a>Vytvořit program
-1.  Po potvrzení kanálu přehrávání vytvořte program. Na kartě za provozu v nástroj AMSE klikněte pravým tlačítkem myši v oblasti program a vybrat vytvořit nový Program.
+## <a name="create-a-program"></a>Vytvoření programu
+1.  Jakmile přehrávání kanálu je potvrzen, vytvořte program. Na kartě živé nástroj AMSE klikněte pravým tlačítkem v rámci oblasti program a zvolte Vytvořit nový Program.
 [Haivision](./media/media-services-configure-kb-live-encoder/program.png)
-1.  Název programu a v případě potřeby upravte délka archivačního okna (s výchozím nastavením na čtyři hodiny). Můžete také určit umístění úložiště nebo ponechte jako výchozí.
-2.  Políčko spuštění Program nyní.
-3.  Kliknutím na vytvořit Program.
-4.  Jakmile program běží, potvrďte přehrávání kliknutím pravým tlačítkem na program a přejdete na přehrání programech a pak vyberete s Azure Media Player.
-5.  Po potvrzení znovu klikněte program pravým tlačítkem a vyberte Kopírovat výstup adresy URL do schránky (nebo načtení těchto informací z informace o programu a možnost nastavení v nabídce).
+1.  Zadejte název programu a v případě potřeby upravte délka okna archivu, (kde je použit výchozí čtyři hodiny). Můžete také určit umístění úložiště nebo ponechte jako výchozí.
+2.  Políčko počáteční Program nyní.
+3.  Klikněte na vytvořit Program.
+4.  Jakmile program běží, potvrďte přehrávání kliknutím pravým tlačítkem myši program a přejdete k přehrávání programech a následným výběrem pomocí Azure Media Playeru.
+5.  Až potvrdí, klikněte pravým tlačítkem na program znovu a vyberte Kopírovat výstupní adresy URL do schránky (nebo tyto informace načíst informace o programu a možnosti nastavení v nabídce).
 
-Datový proud je nyní připravena vložených v přehrávač, nebo distribuovány do cílovou skupinu pro zobrazení za provozu.
+Datový proud je teď připravený k součástí přehrávač nebo distribuované na cílovou skupinou pro živé zobrazení.
 
 > [!NOTE]
-> Vytváření programu trvá kratší dobu, než vytvoření kanálu.
+> Vytvoření programu trvá méně času než vytváření kanálů.

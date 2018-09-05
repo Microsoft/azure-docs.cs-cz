@@ -3,7 +3,7 @@ title: Azure Service Bus s .NET a AMQP 1.0 | Dokumentace Microsoftu
 description: Pomocí služby Azure Service Bus z .NET pomocí AMQP
 services: service-bus-messaging
 documentationcenter: na
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: 332bcb13-e287-4715-99ee-3d7d97396487
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/16/2018
-ms.author: sethm
-ms.openlocfilehash: 0013301a33dabc9739eed45a1b801c33b791abb9
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.author: spelluru
+ms.openlocfilehash: ad789b7a65fd12abb2a6e92c7c8896677de80cec
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42055647"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43702234"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>Použití služby Service Bus z .NET pomocí protokolu AMQP 1.0
 

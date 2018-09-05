@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.component: common
-ms.openlocfilehash: 3c6adc3f27e49facec124401f03a036269b7c7a9
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: e87b791dda03521def32ca7473336d7d37644773
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39524443"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666015"
 ---
 # <a name="creating-an-import-job-for-the-azure-importexport-service"></a>Vytvoření úlohy importu pro službu Azure Import/Export
 
@@ -57,7 +57,7 @@ Příprava jednotky zahrnuje:
 
 ## <a name="obtaining-your-shipping-location"></a>Získání vaše dodací umístění
 
-Před vytvoření úlohy importu, je potřeba získat přenosů název umístění a adresa voláním [seznamu umístění](/rest/api/storageimportexport/listlocations) operace. `List Locations` Vrátí seznam umístění a jejich poštovních adres. Můžete vybrat umístění ze seznamu vrácených a dodávat pevných disků na tuto adresu. Můžete také použít `Get Location` operaci získat přímo dodací adresu pro konkrétní lokalitu.
+Před vytvoření úlohy importu, je potřeba získat přenosů název umístění a adresa voláním [seznamu umístění](https://docs.microsoft.com/rest/api/storageimportexport/locations/list) operace. `List Locations` Vrátí seznam umístění a jejich poštovních adres. Můžete vybrat umístění ze seznamu vrácených a dodávat pevných disků na tuto adresu. Můžete také použít `Get Location` operaci získat přímo dodací adresu pro konkrétní lokalitu.
 
  Podle následujících pokynů k získání umístění dopravě:
 

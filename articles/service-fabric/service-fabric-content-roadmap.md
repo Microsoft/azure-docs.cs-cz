@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: ryanwi
-ms.openlocfilehash: 644089cea4dccc79e67b9117187b553eb4616d9f
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: d4b27feab5c1bb5913d2ba26f7f43aca9a899aa0
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818210"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697665"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Proto chcete se dozvědět o službě Service Fabric?
 Azure Service Fabric je platforma distribuovaných systémů usnadňující balení, nasazování a spravování škálovatelných a spolehlivých mikroslužeb.  Service Fabric má velký plochy, ale a existuje mnoho dalších informací.  Tento článek poskytuje stručný Service Fabric a popisuje základní koncepty programovacích modelů životního cyklu aplikací, testování, clustery a sledování stavu. Čtení [přehled](service-fabric-overview.md) a [co jsou mikroslužby?](service-fabric-overview-microservices.md) úvod a jak Service Fabric umožňuje vytvářet mikroslužby. Tento článek obsahuje úplný seznam obsahu, ale propojit pro přehled a získávání Začínáme články pro každou oblast Service Fabric. 
@@ -104,7 +104,7 @@ A [spustitelný soubor typu Host](service-fabric-guest-executables-introduction.
 ## <a name="application-lifecycle"></a>Životní cyklus aplikace
 Podle jiných platforem, aplikace v Service Fabric obvykle prochází následující fáze: návrh, vývoj, testování, nasazení, upgrade, údržbu a odebírání. Service Fabric poskytuje prvotřídní podporu pro celou aplikaci životního cyklu cloudových aplikací, od vývoje až po nasazení, každodenní správu a údržbu na případné vyřazení z provozu. Model služby umožňuje několik různých rolí se účastnit životního cyklu aplikací nezávisle na sobě. [Životní cyklus aplikace Service Fabric](service-fabric-application-lifecycle.md) obsahuje základní informace o rozhraní API a jak se používají v různých rolích v průběhu fáze životního cyklu aplikací Service Fabric. 
 
-Životní cyklus celá aplikace je možné spravovat pomocí [rutin prostředí PowerShell](/powershell/module/ServiceFabric/), [příkazy rozhraní příkazového řádku](service-fabric-sfctl.md), [rozhraní API jazyka C#](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient), [rozhraní Java API](/java/api/system.fabric._application_management_client), a [ Rozhraní REST API](/rest/api/servicefabric/). Můžete také nastavit průběžné integrace a nasazování kanálů pomocí nástroje, jako [Visual Studio Team Services](service-fabric-set-up-continuous-integration.md) nebo [Jenkins](service-fabric-cicd-your-linux-applications-with-jenkins.md).
+Životní cyklus celá aplikace je možné spravovat pomocí [rutin prostředí PowerShell](/powershell/module/ServiceFabric/), [příkazy rozhraní příkazového řádku](service-fabric-sfctl.md), [rozhraní API jazyka C#](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient), [rozhraní Java API](/java/api/system.fabric), a [ Rozhraní REST API](/rest/api/servicefabric/). Můžete také nastavit průběžné integrace a nasazování kanálů pomocí nástroje, jako [Visual Studio Team Services](service-fabric-set-up-continuous-integration.md) nebo [Jenkins](service-fabric-cicd-your-linux-applications-with-jenkins.md).
 
 Následující video Microsoft Virtual Academy popisuje, jak spravovat životní cyklus vaší aplikace: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=My3Ka56yC_6106218965">
 <img src="./media/service-fabric-content-roadmap/AppLifecycleVid.png" WIDTH="360" HEIGHT="244">
@@ -185,7 +185,7 @@ Komponenty Service Fabric hned po spuštění sestavy stavu všech entit v clust
 
 Service Fabric poskytuje několik způsobů [zobrazení sestav health](service-fabric-view-entities-aggregated-health.md) agregovat v health store:
 * [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) nebo jiné nástroje pro vizualizaci.
-* Dotazy na stav (prostřednictvím [PowerShell](/powershell/module/ServiceFabric/), [rozhraní příkazového řádku](service-fabric-sfctl.md), [rozhraní API FabricClient C#](/dotnet/api/system.fabric.fabricclient.healthclient) a [rozhraní API FabricClient Java](/java/api/system.fabric._health_client), nebo [REST Rozhraní API](/rest/api/servicefabric)).
+* Dotazy na stav (prostřednictvím [PowerShell](/powershell/module/ServiceFabric/), [rozhraní příkazového řádku](service-fabric-sfctl.md), [rozhraní API FabricClient C#](/dotnet/api/system.fabric.fabricclient.healthclient) a [rozhraní API FabricClient Java](/java/api/system.fabric), nebo [REST Rozhraní API](/rest/api/servicefabric)).
 * Obecné dotazy to návratový seznam entit, které mají stav jako jedna z vlastností (prostřednictvím prostředí PowerShell, rozhraní příkazového řádku, rozhraní API nebo REST).
 
 Následující video Microsoft Virtual Academy popisuje model stavu Service Fabric a jak se používá: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tevZw56yC_1906218965">

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: jasonh
-ms.openlocfilehash: b8a177ad2bbd463d2dcb94a01ff2a29a95d86693
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 567bac8a12a841eed2df1467b94a2a91c86ff7b4
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43105279"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666147"
 ---
 # <a name="tutorial-create-on-demand-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Kurz: Vytvoření clusterů Hadoop na vyžádání v HDInsight pomocí Azure Data Factory
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -37,9 +37,9 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Azure PowerShell Pokyny najdete v tématu [nainstalovat a nakonfigurovat Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.7.0).
+- Azure PowerShell Pokyny najdete v tématu [nainstalovat a nakonfigurovat Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.7.0).
 
-* Instanční objekt Azure Active Directory. Jakmile vytvoříte instanční objekt služby, je potřeba načíst **ID aplikace** a **ověřovací klíč** podle pokynů v odkazovaném článku. Tyto hodnoty budete potřebovat později v tomto kurzu. Také se ujistěte, že instanční objekt služby je členem skupiny *Přispěvatel* pro dané předplatné nebo skupinu prostředků, ve kterém se cluster vytvoří. Pokyny k načtení požadované hodnoty a přiřazení správných rolí najdete v tématu [vytvoření instančního objektu služby Azure Active Directory](../azure-resource-manager/resource-group-create-service-principal-portal.md).
+- Instanční objekt Azure Active Directory. Jakmile vytvoříte instanční objekt služby, je potřeba načíst **ID aplikace** a **ověřovací klíč** podle pokynů v odkazovaném článku. Tyto hodnoty budete potřebovat později v tomto kurzu. Také se ujistěte, že instanční objekt služby je členem skupiny *Přispěvatel* pro dané předplatné nebo skupinu prostředků, ve kterém se cluster vytvoří. Pokyny k načtení požadované hodnoty a přiřazení správných rolí najdete v tématu [vytvoření instančního objektu služby Azure Active Directory](../azure-resource-manager/resource-group-create-service-principal-portal.md).
 
 ## <a name="create-an-azure-storage-account"></a>Vytvoření účtu úložiště Azure
 
@@ -148,18 +148,18 @@ Write-host "`nScript completed" -ForegroundColor Green
 
 Ve službě Azure Data Factory služby data factory může mít jeden nebo více datových kanálů. Datový kanál má jednu nebo víc aktivit. Existují dva typy aktivit:
 
-* [Aktivity přesunu dat](../data-factory/copy-activity-overview.md) -použít aktivity přesunu dat pro přesun dat ze zdrojového úložiště dat do cílového úložiště dat.
-* [Aktivity transformace dat](../data-factory/transform-data.md). Transformovat a zpracovávat data pomocí aktivity transformace dat. Aktivita HDInsight Hive je jedním z aktivity transformace podporovaných službou Data Factory. V tomto kurzu použijete aktivitu Hive transformace.
+- [Aktivity přesunu dat](../data-factory/copy-activity-overview.md) -použít aktivity přesunu dat pro přesun dat ze zdrojového úložiště dat do cílového úložiště dat.
+- [Aktivity transformace dat](../data-factory/transform-data.md). Transformovat a zpracovávat data pomocí aktivity transformace dat. Aktivita HDInsight Hive je jedním z aktivity transformace podporovaných službou Data Factory. V tomto kurzu použijete aktivitu Hive transformace.
 
 V tomto článku nakonfigurujete aktivitu Hive k vytvoření clusteru HDInsight Hadoop na vyžádání. Při spuštění aktivity pro zpracování dat, stane se toto:
 
 1. Pro vás just-in-time zpracování řezu se automaticky vytvoří cluster HDInsight Hadoop. 
 
 1. Vstupní data zpracovává spouští skript HiveQL v clusteru. V tomto kurzu se skript HiveQL spojená s aktivitou hivu provede následující akce:
-
-    * Používá existující tabulku (*hivesampletable*) k vytvoření další tabulky **HiveSampleOut**.
-    * Naplní **HiveSampleOut** tabulky obsahující pouze konkrétní sloupce z původní *hivesampletable*.
-
+    
+    - Používá existující tabulku (*hivesampletable*) k vytvoření další tabulky **HiveSampleOut**.
+    - Naplní **HiveSampleOut** tabulky obsahující pouze konkrétní sloupce z původní *hivesampletable*.
+    
 1. Po dokončení zpracování a cluster nakonfigurovaného množství času (nastavení timeToLive) nečinnosti se odstraní cluster HDInsight Hadoop. Pokud další datový řez je k dispozici pro zpracování se v tuto chvíli nečinná timeToLive, stejný cluster se používá ke zpracování řezu.  
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
@@ -265,16 +265,16 @@ V této části vytvoříte dvě propojené služby v rámci vaší datové tov�
     ![Zadejte podrobnosti o clusteru HDInsight pro kanál](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-hive-activity-select-hdinsight-linked-service.png "HDInsight poskytují podrobnosti o clusteru pro kanál")
 
 1. Vyberte **skript** kartě a proveďte následující kroky:
-
-    a. Pro **propojenou službu skript**vyberte **HDIStorageLinkedService**. Tato hodnota je na propojenou službu storage, kterou jste vytvořili dříve.
-
-    b. Pro **cesta k souboru**vyberte **procházet úložiště** a přejděte do umístění, kde je k dispozici ukázkový skript Hive. Pokud jste dříve spustili skript prostředí PowerShell, toto umístění by mělo být `adfgetstarted/hivescripts/hivescript.hql`.
-
-    ![Zadejte podrobnosti skriptu Hive pro kanál](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-path.png "Hive zadejte podrobnosti o skriptu pro kanál")
-
-    c. V části **Upřesnit** > **parametry**vyberte **automaticky vyplnit ze skriptu**. Tato možnost hledá žádné parametry ve skriptu Hive, které vyžadují hodnoty v době běhu. Skript, který používáte (**hivescript.hql**) má **výstup** parametru. Zadejte hodnotu ve formátu `wasb://<Container>@<StorageAccount>.blob.core.windows.net/outputfolder/` tak, aby odkazovala na existující složku ve službě Azure Storage. V této cestě se rozlišují velká a malá písmena. Toto je cesta, kam se má uložit výstup skriptu.
-
-    ![Zadejte parametry skriptu Hive](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-parameters.png "zadat parametry pro skript Hive")
+    
+    1. Pro **propojenou službu skript**vyberte **HDIStorageLinkedService**. Tato hodnota je na propojenou službu storage, kterou jste vytvořili dříve.
+    
+    1. Pro **cesta k souboru**vyberte **procházet úložiště** a přejděte do umístění, kde je k dispozici ukázkový skript Hive. Pokud jste dříve spustili skript prostředí PowerShell, toto umístění by mělo být `adfgetstarted/hivescripts/hivescript.hql`.
+    
+        ![Zadejte podrobnosti skriptu Hive pro kanál](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-path.png "Hive zadejte podrobnosti o skriptu pro kanál")
+    
+    1. V části **Upřesnit** > **parametry**vyberte **automaticky vyplnit ze skriptu**. Tato možnost hledá žádné parametry ve skriptu Hive, které vyžadují hodnoty v době běhu. Skript, který používáte (**hivescript.hql**) má **výstup** parametru. Zadejte hodnotu ve formátu `wasb://<Container>@<StorageAccount>.blob.core.windows.net/outputfolder/` tak, aby odkazovala na existující složku ve službě Azure Storage. V této cestě se rozlišují velká a malá písmena. Toto je cesta, kam se má uložit výstup skriptu.
+    
+        ![Zadejte parametry skriptu Hive](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-provide-script-parameters.png "zadat parametry pro skript Hive")
 
 1. Vyberte **ověřit** ověření kanálu. Výběrem tlačítka **>>** (šipka doprava) zavřete okno ověřování.
 

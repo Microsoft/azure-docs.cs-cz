@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: d4ca44268740f48702594d9c87aa568d4f8eecb6
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: e74ee48f0adc0d8ba0d2ea91b5d82415601f9405
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43122401"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43702414"
 ---
 # <a name="virtual-machine-serial-console-preview"></a>Virtuální počítač sériová konzola (preview) 
 
@@ -38,7 +38,7 @@ Pro dokumentaci ke konzole sériového portu pro virtuální počítače s Windo
 * Virtuální počítač musí mít [Diagnostika spouštění](boot-diagnostics.md) povoleny – snímek najdete níže.
 
     ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-diagnostics-settings.png)
-    
+
 * Musíte mít účet Azure, pomocí konzoly sériového portu [role Přispěvatel](../../role-based-access-control/built-in-roles.md) pro virtuální počítač a [Diagnostika spouštění](boot-diagnostics.md) účtu úložiště. 
 * Virtuální počítač, u kterého jste přístup k pracovnímu konzoly sériového portu musí mít také účet založené na heslech. Můžete si ho vytvořit pomocí [resetovat heslo](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) funkce rozšíření přístupu virtuálních počítačů – snímek najdete níže.
 
@@ -124,14 +124,14 @@ To znamená, že uživatel, který odpojí nebude odhlášeni! Schopnost Vynutit
 Funkce konzoly sériového portu lze deaktivovat pro konkrétní virtuální počítače tím, že zakážete nastavení diagnostiky spouštění Virtuálního počítače.
 
 ## <a name="common-scenarios-for-accessing-serial-console"></a>Časté scénáře pro přístup ke konzole sériového portu 
-Scénář          | Akce v konzole sériového portu                |  Použitelnost operačního systému 
-:------------------|:-----------------------------------------|:------------------
-Poškozený soubor FSTAB | `Enter` klíč si pokračovat a opravte soubor fstab pomocí textového editoru. Budete muset být v jednouživatelském režimu to. Zobrazit [k vyřešení potíží se souborem fstab](https://support.microsoft.com/help/3206699/azure-linux-vm-cannot-start-because-of-fstab-errors) a [pomocí konzoly sériového portu pro přístup k GRUB a Jednouživatelský režim](serial-console-grub-single-user-mode.md) začít. | Linux 
-Pravidla brány firewall na nesprávný | Přístup ke konzole sériového portu a opravte iptables nebo pravidla brány firewall na Windows. | Linux/Windows 
-Poškození systému souborů a vrácení | Přístup ke konzole sériového portu a obnovení systému souborů. | Linux/Windows 
-Problémy s konfigurací SSH nebo RDP | Přístup ke konzole sériového portu a změňte nastavení. | Linux/Windows 
-Uzamknutí sítě v systému| Konzoly sériového portu přístup prostřednictvím portálu pro správu systému. | Linux/Windows 
-Interakce s zaváděcího programu pro spouštění | Přístup GRUB/BCD prostřednictvím konzoly sériového portu. Přejděte na [pomocí konzoly sériového portu pro přístup k GRUB a Jednouživatelský režim](serial-console-grub-single-user-mode.md) začít. | Linux/Windows 
+Scénář          | Akce v konzole sériového portu                
+:------------------|:-----------------------------------------
+Poškozený soubor FSTAB | `Enter` klíč si pokračovat a opravte soubor fstab pomocí textového editoru. Budete muset být v jednouživatelském režimu to. Zobrazit [k vyřešení potíží se souborem fstab](https://support.microsoft.com/help/3206699/azure-linux-vm-cannot-start-because-of-fstab-errors) a [pomocí konzoly sériového portu pro přístup k GRUB a Jednouživatelský režim](serial-console-grub-single-user-mode.md) začít.
+Pravidla brány firewall na nesprávný | Přístup ke konzole sériového portu a iptables vyřešit. 
+Poškození systému souborů a vrácení | Přístup ke konzole sériového portu a obnovení systému souborů. 
+Problémy s konfigurací SSH nebo RDP | Přístup ke konzole sériového portu a změňte nastavení. 
+Uzamknutí sítě v systému| Konzoly sériového portu přístup prostřednictvím portálu pro správu systému. 
+Interakce s zaváděcího programu pro spouštění | GRUB přístup prostřednictvím konzoly sériového portu. Přejděte na [pomocí konzoly sériového portu pro přístup k GRUB a Jednouživatelský režim](serial-console-grub-single-user-mode.md) začít. 
 
 ## <a name="access-serial-console-for-linux"></a>Konzoly sériového portu přístup pro Linux
 Aby konzoly sériového portu, aby správně fungoval hostovaného operačního systému nastavené pro čtení a zápis zpráv konzoly sériového portu. Většina [Linuxových distribucí doporučených pro Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) mají ve výchozím nastavení nakonfigurované konzoly sériového portu. Jednoduše kliknutím v části konzoly sériového portu, na webu Azure Portal bude poskytovat přístup ke konzole. 
@@ -145,6 +145,15 @@ CoreOS      | CoreOS imagí dostupných v Azure mají přístup ke konzole ve v�
 SUSE        | Novější imagí SLES dostupných v Azure máte přístup ke konzole ve výchozím nastavení povolená. Pokud používáte starší verze SLES (10 nebo pod) v Azure, postupujte [článku znalostní BÁZE](https://www.novell.com/support/kb/doc.php?id=3456486) umožňující konzoly sériového portu. 
 Oracle Linux        | Linuxové Image Oracle v Azure k dispozici máte přístup ke konzole ve výchozím nastavení povolená.
 Vlastní Linuxové Image     | Pokud chcete povolit konzoly sériového portu pro vaši vlastní image virtuálního počítače s Linuxem, povolte přístup ke konzole v /etc/inittab spouštět ttyS0 terminálu. Tady je příklad, který to přidejte do souboru inittab: `S0:12345:respawn:/sbin/agetty -L 115200 console vt102`. Další informace o správně vytváření vlastních imagí najdete v části [vytvoření a nahrání VHD s Linuxem v Azure](https://aka.ms/createuploadvhd).
+
+## <a name="accessibility"></a>Přístupnost
+Klíče se pro Azure konzoly sériového portu se usnadnění přístupu. Za tímto účelem jsme zajistíte, že je přístupný pro ty, které mají vizuál a poškozením sluchu, jakož i uživatelů, kteří nebudou moct používat myš konzole sériového portu.
+
+### <a name="keyboard-navigation"></a>Procházení pomocí klávesnice
+Použití `tab` kláves na klávesnici pro navigaci v konzole sériového portu rozhraní na webu Azure portal. Vaše poloha budou zvýrazněny na obrazovce. Pokud chcete nechat fokus z okna konzoly sériového portu, stiskněte klávesu `Ctrl + F6` na klávesnici.
+
+### <a name="use-serial-console-with-a-screen-reader"></a>Použití konzoly sériového portu se čtečkou obrazovky
+Konzola sériového portu se dodává s integrované podpoře čtečky obrazovky. Navigace pomocí čtečky obrazovky zapnuté vám umožní alternativní text pro aktuálně vybrané tlačítko nahlas číst čtečka obrazovky.
 
 ## <a name="errors"></a>Chyby
 Většina chyb jsou přechodné ze své podstaty a opakování pokusu o připojení konzoly sériového portu často tyto adresy. Následující tabulka uvádí seznam chyb a způsoby zmírnění rizik

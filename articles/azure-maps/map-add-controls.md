@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: b31b709f08c8e8ab4a04a1b70daa48b02f33d32e
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 435c6545b69b4457c3e1035fb8125399d4c9c23a
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43345053"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666127"
 ---
 # <a name="add-map-controls-to-azure-maps"></a>Přidání ovládacích prvků mapa ke službě Azure Maps
 
-Tento článek ukazuje, jak přidat ovládací prvky Mapa k mapě. Také se dozvíte, jak vytvořit mapu s všechny ovládací prvky a styl ovládacího prvku pro výběr.
+Tento článek ukazuje, jak přidat ovládací prvky Mapa k mapě. Se také dozvíte, jak vytvořit mapu s všechny ovládací prvky a [výběr stylu](https://docs.microsoft.com/azure/azure-maps/choose-map-style#adding-the-style-picker).
 
 ## <a name="add-zoom-control"></a>Přidejte ovládací prvek lupy
 

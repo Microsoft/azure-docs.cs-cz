@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: mareat
-ms.openlocfilehash: 87d7c39a9340a82813f4df971c03a10be56e8f94
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: db3b08ae8092661e6ffa0f2dd7e460f341a8d013
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42054258"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666055"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>Správa a analyzovat protokoly toků skupin zabezpečení sítě v Azure s využitím Network Watcheru a Graylogu
 
@@ -32,7 +32,7 @@ Může mít víc skupin zabezpečení sítě v síti s povoleno protokolování 
 
 Protokoly toků skupin zabezpečení sítě jsou povolené používat Network Watcher. Tok protokolů toku v do Azure blob storage. Modul plug-in se používá k připojení a zpracování protokolů toku z úložiště objektů blob a odeslat je do Graylogu. Jakmile se protokoly toku se ukládají v Graylogu, mohou být analyzovat a vizualizovat do přizpůsobené řídicí panely.
 
-![Graylog pracovní postup]](./media/network-watcher-analyze-nsg-flow-logs-graylog/workflow.png)
+![Pracovní postup Graylogu](./media/network-watcher-analyze-nsg-flow-logs-graylog/workflow.png)
 
 ## <a name="installation-steps"></a>Postup instalace
 

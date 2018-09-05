@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 9d95f6edcb6f4e24e4a19fd6537ed1a5be9564ee
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 38a8366a586b032c3b11cbef8ee5f01ad2b822a5
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43046821"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43702397"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Správa služby ML clusteru v Azure HDInsight
 
@@ -68,7 +68,7 @@ Následující snímek obrazovky ukazuje výstupy.
 
 ![Souběžný uživatel 3](./media/r-server-hdinsight-manage/concurrent-users-2.png)
 
-Po zobrazení výzvy „Aktuální heslo protokolu Kerberos:“ ji ignorujte stisknutím klávesy **Enter**. Možnost `-m` v příkazu `useradd` označuje, že systém pro uživatele vytvoří domovskou složku, kterou vyžaduje komunitní verze RStudia.
+Po zobrazení výzvy k "aktuální heslo protokolu Kerberos:", stačí stisknout kombinaci kláves **Enter** ignorujte. Možnost `-m` v příkazu `useradd` označuje, že systém pro uživatele vytvoří domovskou složku, kterou vyžaduje komunitní verze RStudia.
 
 ### <a name="step-3-use-rstudio-community-version-with-the-user-created"></a>Krok 3: Použití komunitní verze RStudia s vytvořeným uživatelem
 

@@ -11,41 +11,74 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: pim
-ms.date: 04/02/2018
+ms.date: 08/31/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: e5cda31af5ac95e7ebe2b858b1d7355ea3f2a6bb
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: c661f2662f48c5aaece142cb4a2223ab8a6d0853
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189800"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666587"
 ---
 # <a name="approve-or-deny-requests-for-azure-resource-roles-in-pim"></a>Schválit nebo zamítnout žádosti pro role prostředků Azure v PIM
 
-Chcete-li schválit nebo odmítnout žádost, musí být členem seznamu schvalovatele. 
+S Azure AD Privileged Identity Management (PIM) můžete nakonfigurovat role, které vyžadují schválení pro aktivaci a zvolte jednu nebo více uživatelů nebo skupin jako delegovaný schvalovatele. Postupujte podle kroků v tomto článku pro schválení nebo zamítnutí žádosti pro role prostředků Azure.
 
-1. V PIM, vyberte **schvalovat žádosti o** z karty v nabídce vlevo a vyhledejte požadavku.
+## <a name="view-pending-requests"></a>Zobrazit čekající žádosti
 
-   ![Podokno "Schvalovat žádosti o"](media/azure-pim-resource-rbac/aadpim_rbac_approve_requests_list.png)
+Jako delegovaný schvalovatel obdržíte e-mailové oznámení, když požadavek pro role prostředků Azure čeká na schválení. Zobrazí se tyto žádosti čekající na vyřízení v PIM.
 
-2. Vyberte žádosti, uveďte její odůvodnění pro rozhodnutí a vyberte **schválit** nebo **Odepřít**. Pak vyřeší požadavek.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-   ![Vybrané žádosti s podrobnými informacemi](media/azure-pim-resource-rbac/aadpim_rbac_approve_request_approved.png)
+1. Otevřít **Azure AD Privileged Identity Management**.
+
+1. Klikněte na tlačítko **schvalovat žádosti o**.
+
+    ![Prostředky Azure – schválit žádosti](./media/pim-resource-roles-approval-workflow/resources-approve-requests.png)
+
+    V **žádosti o aktivace rolí** části, zobrazí se vám seznam žádosti čekající na vaše schválení.
+
+## <a name="approve-requests"></a>Schvalování žádostí
+
+1. Vyhledejte a klikněte na žádost, kterou chcete schválit. Otevře se podokno schválení.
+
+    ![Schválit žádosti podokno](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png)
+
+1. V **odůvodnění** zadejte důvod.
+
+1. Klikněte na tlačítko **schválit**.
+
+    Oznámení se zobrazí vaše schválení.
+
+    ![Schvalte oznámení](./media/pim-resource-roles-approval-workflow/resources-approve-notification.png)
+
+## <a name="deny-requests"></a>Zamítnout žádosti
+
+1. Vyhledejte a klikněte na tlačítko, které chcete zamítnout žádost. Otevře se podokno schválení.
+
+    ![Schválit žádosti podokno](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png)
+
+1. V **odůvodnění** zadejte důvod.
+
+1. Klikněte na tlačítko **Odepřít**.
+
+    Oznámení se zobrazí s vaší odmítnutí.
 
 ## <a name="workflow-notifications"></a>Oznámení pro pracovní postupy
 
-Tady jsou některé údaje o oznámení pracovního postupu:
+Zde jsou některé informace o oznámeních pracovního postupu:
 
 - Všichni členové schvalovatel seznamu se zobrazí oznámení e-mailem žádost o roli čeká na kontrolu. E-mailová oznámení zahrnují přímý odkaz na žádost, ve kterém můžete schvalující schválit nebo zamítnout.
-- Požadavky jsou vyřešeny prvního člena seznamu, který potvrdí nebo odmítne. 
-- Když schvalující odpoví na žádost, se zobrazí všechny členy seznamu schvalovatel oznámení akce. 
-- Správci prostředků se zobrazí oznámení, když schváleného člena stane aktivní v jejich role. 
+- Požadavky jsou vyřešeny prvního člena seznamu, který potvrdí nebo odmítne.
+- Když schvalující odpoví na žádost, se zobrazí všechny členy seznamu schvalovatel oznámení akce.
+- Správci prostředků se zobrazí oznámení, když schváleného člena stane aktivní v jejich role.
 
 >[!Note]
 >Správce prostředků, který se řídí zásadou, že by neměl být aktivní schváleného člena odebrat přiřazení active role v PIM. Přestože správci prostředků nejsou dostávají oznámení o čekajících žádostí Pokud nejsou členy seznamu schvalovatele, mohou zobrazit a zrušit čekající žádosti o pro všechny uživatele tak, že zobrazení čekající žádosti v PIM. 
 
 ## <a name="next-steps"></a>Další postup
 
-- [Schválit nebo zamítnout žádosti pro role adresáře Azure AD v PIM](azure-ad-pim-approval-workflow.md)
+- [Rozšíření nebo obnovení role prostředků Azure v PIM](pim-resource-roles-renew-extend.md)
 - [E-mailových oznámení v PIM](pim-email-notifications.md)
+- [Schválit nebo zamítnout žádosti pro role adresáře Azure AD v PIM](azure-ad-pim-approval-workflow.md)

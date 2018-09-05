@@ -1,5 +1,5 @@
 ---
-title: Dělení rozhraní Graph API | Dokumentace Microsoftu
+title: Gremlin API dělení | Dokumentace Microsoftu
 description: Zjistěte, jak můžete graf oddílů ve službě Azure Cosmos DB.
 services: cosmos-db
 author: luisbosquez
@@ -10,16 +10,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/28/2018
 ms.author: lbosq
-ms.openlocfilehash: 202c575a917cfb24436d86881e5368b61f216d42
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 7290687c62b0a500aef80bd8786df4cc1ece8ed4
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37861635"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43698974"
 ---
 # <a name="using-a-partitioned-graph-in-azure-cosmos-db"></a>Použití dělené grafu ve službě Azure Cosmos DB
 
-Jednou z klíčových funkcí rozhraní Graph API ve službě Azure Cosmos DB je schopnost zpracování rozsáhlých grafů prostřednictvím vodorovné škálovatelnost. Tento proces můžete dosáhnout [rozdělení funkcí ve službě Azure Cosmos DB](partition-data.md#how-does-partitioning-work), ujistěte se, která pomocí kontejnerů, které je možné nezávisle škálovat z hlediska úložiště a propustnosti. Azure Cosmos DB podporuje následující typy kontejnerů na všechna rozhraní API:
+Jednou z klíčových funkcí rozhraní Gremlin API ve službě Azure Cosmos DB je schopnost zpracování rozsáhlých grafů prostřednictvím vodorovné škálovatelnost. Tento proces můžete dosáhnout [rozdělení funkcí ve službě Azure Cosmos DB](partition-data.md#how-does-partitioning-work), ujistěte se, která pomocí kontejnerů, které je možné nezávisle škálovat z hlediska úložiště a propustnosti. Azure Cosmos DB podporuje následující typy kontejnerů na všechna rozhraní API:
 
 - **Pevný kontejner**: těchto kontejnerů můžete uložit graf databáze až 10 GB velikosti s délkou maximálně 10 000 jednotek žádostí za sekundu přiřazen. Vytvořte kontejner pevnou není nutné zadat vlastnost klíče oddílu v datech.
 
@@ -31,7 +31,7 @@ V tomto dokumentu specifika na jak dělí databáze grafů najdete společně s 
 
 Toto jsou podrobnosti, které je třeba porozumět při vytváření oddílů grafu kontejneru:
 - **Nastavení dělení bude nutné** Pokud kontejner má mít více než 10 GB a/nebo pokud přidělení více než 10 000 jednotek žádostí za sekundu (RU/s) se bude vyžadovat.
-- **Vrcholů a hran jsou ukládány jako dokumenty JSON** v back endu kontejneru Azure Cosmos DB Graph API.
+- **Vrcholů a hran jsou ukládány jako dokumenty JSON** v back endu kontejneru Gremlin API služby Azure Cosmos DB.
 - **Klíč oddílu vyžadovat vrcholy**. Tento klíč určí, do kterého oddílu se uloží vrchol pomocí algoritmu hash. Název tohoto klíče oddílu je řetězec jednoslovnou bez mezery ani speciální znaky a je definován při vytváření nového kontejneru pomocí formátu `/partitioning-key-name` na portálu.
 - **Okraje se uloží s jejich zdrojový vrchol**. Jinými slovy pro každý vrchol svůj klíč oddílu budou definovat kam se má uložit spolu s jeho odchozí okraje. To se provádí při použití, aby dotazy napříč oddíly `out()` kardinalitu v dotazy na grafy.
 - **Dotazy na grafy musí určovat klíč oddílu**. Pokud chcete využívat všech výhod horizontální dělení ve službě Azure Cosmos DB, musí být zadaný klíč oddílu, když je vybraný jeden vrchol, kdykoli to bude možné. Tady jsou dotazy pro výběr jednoho nebo více vrcholy v dělené grafu:
@@ -69,8 +69,8 @@ Toto jsou pokyny, které byste měli dodržet, aby nejúčinnější výkon a š
 - **Optimalizace dotazů k získání dat v rámci hranic oddílů, pokud je to možné**. Optimální strategie dělení by mělo být zarovnáno na dotazování vzory. Dotazy, které získávají data z jednoho oddílu poskytují nejlepší možný výkon.
 
 ## <a name="next-steps"></a>Další postup
-V tomto článku se poskytla Přehled konceptů a osvědčené postupy pro dělení pomocí Azure Cosmos DB Graph API. 
+V tomto článku se poskytla Přehled konceptů a osvědčené postupy pro dělení s Gremlin API Azure Cosmos DB. 
 
 * Další informace o [dělení a škálování ve službě Azure Cosmos DB](partition-data.md).
-* Další informace o [podpora Gremlin v rozhraní Graph API](gremlin-support.md).
-* Další informace o [Úvod k rozhraní Graph API](graph-introduction.md).
+* Další informace o [podpora Gremlin v rozhraní Gremlin API](gremlin-support.md).
+* Další informace o [Úvod do Gremlin API](graph-introduction.md).

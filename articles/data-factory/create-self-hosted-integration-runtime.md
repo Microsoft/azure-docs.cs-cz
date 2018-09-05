@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: e708ae741c6835395e8eb35f6835c2d8c7002780
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: af7d4253b4e631295f8c04c96601e932595af9c1
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43044726"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697760"
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>Jak vytvořit a nakonfigurovat modul Integration Runtime
 Integration Runtime (IR) je výpočetní infrastruktura, službou Azure Data Factory používá k poskytování možnosti integrace dat v různých síťových prostředích. Podrobnosti o prostředí IR najdete v tématu [přehled modulu Runtime integrace](concepts-integration-runtime.md).
@@ -219,7 +219,7 @@ Na **podnikovou bránu firewall** úrovně, třeba konfiguraci následujících 
 
 Názvy domén | Porty | Popis
 ------------ | ----- | ------------
-*.servicebus.windows.net | 443, 80 | Slouží ke komunikaci s back-end služba pro přesun dat
+*.servicebus.windows.net | 443 | Slouží ke komunikaci s back-end služba pro přesun dat
 *.core.windows.net | 443 | Použít pro kopírování připravený pomocí objektů Blob v Azure (Pokud je nakonfigurovaná)
 *.frontend.clouddatahub.net | 443 | Slouží ke komunikaci s back-end služba pro přesun dat
 download.microsoft.com | 443 | Použít pro stažení aktualizace

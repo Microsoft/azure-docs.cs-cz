@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.component: common
-ms.openlocfilehash: 889cedf555c8a9a86cc8a2101f27cafcb48376df
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 0066ec20c68d70fac9a6529f8f5b85855d6c5349
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523151"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666820"
 ---
 # <a name="creating-an-export-job-for-the-azure-importexport-service"></a>Vytvoření úlohy exportu pro službu Azure Import/Export
 Vytvoření úlohy exportu pro službu Microsoft Azure Import/Export pomocí rozhraní REST API zahrnuje následující kroky:
@@ -48,7 +48,7 @@ Vytvoření úlohy exportu pro službu Microsoft Azure Import/Export pomocí roz
  Další informace o zadávání objekty BLOB k exportu, najdete v článku [úlohy umístit](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) operace.
 
 ## <a name="obtaining-your-shipping-location"></a>Získání vaše dodací umístění
-Před vytvoření úlohy exportu, je potřeba získat přenosů název umístění a adresa voláním [získat umístění](https://portal.azure.com) nebo [seznamu umístění](/rest/api/storageimportexport/listlocations) operace. `List Locations` Vrátí seznam umístění a jejich poštovních adres. Můžete vybrat umístění ze seznamu vrácených a dodávat pevných disků na tuto adresu. Můžete také použít `Get Location` operaci získat přímo dodací adresu pro konkrétní lokalitu.
+Před vytvoření úlohy exportu, je potřeba získat přenosů název umístění a adresa voláním [získat umístění](https://portal.azure.com) nebo [seznamu umístění](https://docs.microsoft.com/rest/api/storageimportexport/locations/list) operace. `List Locations` Vrátí seznam umístění a jejich poštovních adres. Můžete vybrat umístění ze seznamu vrácených a dodávat pevných disků na tuto adresu. Můžete také použít `Get Location` operaci získat přímo dodací adresu pro konkrétní lokalitu.
 
 Podle následujících pokynů k získání umístění dopravě:
 

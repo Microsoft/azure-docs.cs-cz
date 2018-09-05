@@ -1,6 +1,6 @@
 ---
-title: Použití rozhraní API vyhledávací anomálií s Javascript - kognitivní služby Microsoft | Microsoft Docs
-description: Get informace a ukázky kódu můžete rychle začít, vyhledávací anomálií pomocí jazyka Javascript v kognitivní služby.
+title: Jak používat rozhraní API pro vyhledávač anomálií s použitím jazyka Javascript – Microsoft Cognitive Services | Dokumentace Microsoftu
+description: Získat informace a ukázky kódu můžete rychle začít používat vyhledávač anomálií na jazyce Javascript ve službě Cognitive Services.
 services: cognitive-services
 author: chliang
 manager: bix
@@ -9,37 +9,39 @@ ms.technology: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: 105da0219efd7bf7c9a105a018dda7ea5b084cfd
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 048647f1657a5674bcb508b20b7c57a8a6ed5ed9
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343017"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43665018"
 ---
-# <a name="use-the-anomaly-finder-api-with-javascript"></a>Použít vyhledávací anomálií rozhraní API v jazyce Javascript
+# <a name="use-the-anomaly-finder-api-with-javascript"></a>Vyhledávač anomálií rozhraní API pomocí jazyka Javascript
 
-Tento článek obsahuje informace a ukázky kódu, které vám pomohou rychle začít, pomocí rozhraní API detekce anomálií Javascript k provedení úlohy získání výsledek detekce anomálií data časové řady.
+Tento článek obsahuje informace a ukázky kódu, které vám pomohou rychle začít používat rozhraní API pro detekci anomálií JavaScript zde slouží k provádění úloh získat výsledek detekce anomálií dat časových řad.
 
 ## <a name="prerequisites"></a>Požadavky
 
 [!INCLUDE [GetSubscriptionKey](../includes/get-subscription-key.md)]
 
-## <a name="getting-anomaly-points-with-anomaly-detection-api-using-javascript"></a>Získání bodů anomálií s rozhraním API detekce anomálií pomocí jazyka Javascript
+## <a name="getting-anomaly-points-with-anomaly-detection-api-using-javascript"></a>Získání bodů anomálií pomocí rozhraní API pro detekci anomálií pomocí jazyka Javascript
 
 [!INCLUDE [DataContract](../includes/datacontract.md)]
 
-### <a name="example-of-time-series-data"></a>Příklad data časové řady
+### <a name="example-of-time-series-data"></a>Příklad dat časových řad
 
-Následuje příklad času řadu datových bodů: [!INCLUDE [Request](../includes/request.md)]
+V příkladu času datových bodů řady vypadá takto:
+
+[!INCLUDE [Request](../includes/request.md)]
 
 ### <a name="analyze-data-and-get-anomaly-points-javascript-example"></a>Analýza dat a získat body anomálií příklad v jazyce Javascript
 
-Takto vypadají kroky v příkladu.
+Kroky v příkladu jsou následující.
 
 1. Vytvořte nový soubor HTML.
-2. Soubor HTML nahraďte následujícím kódem.
-3. Nahraďte `[YOUR_SUBSCRIPTION_KEY]` hodnotu s klíč platné předplatné.
-4. Nahraďte data v requestTextArea s datovými body.
+2. Nahraďte soubor HTML s následujícím kódem.
+3. Nahraďte `[YOUR_SUBSCRIPTION_KEY]` hodnotu klíčem platné předplatné.
+4. Nahraďte data v requestTextArea datových bodů.
 5. Otevřete soubor HTML ve webovém prohlížeči a klikněte na tlačítko `Anomaly Detection` tlačítko.
 
 ```Javascript
@@ -304,7 +306,7 @@ Takto vypadají kroky v příkladu.
 
 ### <a name="example-response"></a>Příklad odpovědi
 
-Úspěšná odpověď se vrátí ve formátu JSON. Ukázková odpověď je následující.
+Úspěšná odpověď se vrátí ve formátu JSON. Ukázková odpověď vypadá takto.
 [!INCLUDE [Response](../includes/response.md)]
 
 ## <a name="next-steps"></a>Další postup

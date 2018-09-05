@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: 426d7b15cd4a98d958ed02329f40becdfb177ceb
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: ea4d33b569ae0932d6091869c4825cf2b5e69664
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39259275"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697709"
 ---
 # <a name="get-started-with-azure-stream-analytics-to-process-data-from-iot-devices"></a>Začínáme se zpracováním dat ze zařízení IoT pomocí služby Azure Stream Analytics
 V tomto kurzu se naučíte vytvořit logiku zpracování datového proudu ke shromáždění dat ze zařízení s platformou IoT (Internet věcí). Na skutečném případu použití platformy IoT si budete moci prohlédnout postup rychlého a ekonomického sestavení potřebného řešení.
@@ -87,7 +87,7 @@ Nejjednodušším typem dotazu je průchozí dotaz, který archivuje veškerá v
     ![Výsledky testu](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-07.png)
 
 ### <a name="query-filter-the-data-based-on-a-condition"></a>Dotaz: Filtrování dat na základě podmínky
-Nyní si vyzkoušíte filtrování výsledků na základě podmínky. Cílem je zobrazit výsledky pouze pro události přicházející ze zařízení SensorA. Dotaz je umístěný v souboru Filtering.txt.
+Nyní si vyzkoušíte filtrování výsledků na základě podmínky. Rádi bychom se zobrazit výsledky pouze pro události, které pocházejí z "sensorA." Dotaz je umístěný v souboru Filtering.txt.
 
 ![Filtrování datového proudu](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-08.png)
 

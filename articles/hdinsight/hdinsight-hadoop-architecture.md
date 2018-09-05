@@ -3,22 +3,22 @@ title: Architektura Hadoop – Azure HDInsight
 description: Popisuje Hadoop ukládání a zpracování v clusterech HDInsight.
 services: hdinsight
 author: ashishthaps
+ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.author: ashishth
-ms.openlocfilehash: 039a16e7c33a1b3c09c91103c372553e282b6028
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: f22cb6a56e0ef81e3d7799b38e33113f8b175457
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43108261"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43699426"
 ---
 # <a name="hadoop-architecture-in-hdinsight"></a>Architektura Hadoop ve službě HDInsight
 
-Hadoop zahrnuje dvě klíčové složky, Vysoká hustota File System (HDFS), poskytující úložiště a ještě další Resource Negotiator (YARN), která poskytuje zpracování. S úložnou a výpočetní kapacitu stane umožňující spouštění programů MapReduce k provedení požadované zpracování dat clusteru.
+Hadoop zahrnuje dva základní součásti: soubor systému HDFS (Hadoop Distributed), která poskytuje úložiště a ještě další Resource Negotiator (YARN), která poskytuje zpracování. S úložištěm a možnosti zpracování bude schopný spustit programů MapReduce k provedení požadované zpracování dat clusteru.
 
 > [!NOTE]
 > HDFS není obvykle nasazený v clusteru HDInsight k poskytování úložiště. Vrstva rozhraní HDFS kompatibilního místo toho používá komponenty Hadoop. Funkce skutečného úložiště poskytuje Azure Storage nebo Azure Data Lake Store. Pro Hadoop spuštění v clusteru HDInsight úlohy mapreduce je možné spustit jako kdyby byly k dispozici HDFS a proto nevyžadují žádné změny pro podporu jejich požadavky na úložiště. V systému Hadoop v HDInsight je zajištěný vnějším zdrojem úložiště, ale YARN zpracování zůstane základní součást. Další informace najdete v tématu [Úvod do služby Azure HDInsight](hadoop/apache-hadoop-introduction.md).
@@ -32,19 +32,19 @@ YARN řídí a orchestruje zpracování dat v Hadoopu. YARN má dvě základní 
 * ResourceManager 
 * NodeManager
 
-ResourceManager uděluje clusteru výpočetní prostředky, které aplikace, jako je úloh MapReduce. ResourceManager uděluje tyto prostředky jako kontejnery, ve kterém každý kontejner se skládá z přidělení jader procesoru a paměti RAM. Pokud jste kombinovat všem prostředkům dostupným v clusteru a potom je v blocích o daný počet jader a paměti, každý blok prostředků je kontejner. Každý uzel v clusteru má kapacitu pro počet kontejnerů, a proto cluster má pevný limit počtu kontejnerů, které jsou k dispozici. Plnění zdroje v kontejneru je možné konfigurovat. 
+ResourceManager uděluje clusteru výpočetní prostředky, které aplikace, jako je úloh MapReduce. ResourceManager uděluje tyto prostředky jako kontejnery, ve kterém každý kontejner se skládá z přidělení jader procesoru a paměti RAM. Pokud kombinovat všem prostředkům dostupným v clusteru a poté distribuován jader a paměti v blocích, každý blok prostředků je kontejner. Každý uzel v clusteru má kapacitu pro počet kontejnerů, proto cluster má pevný limit počtu kontejnerů, které jsou k dispozici. Plnění zdroje v kontejneru je možné konfigurovat. 
 
 Když MapReduce aplikace běží na clusteru, ResourceManager poskytuje aplikaci kontejnery, ve kterém chcete spustit. ResourceManager sleduje stav spouštění aplikací, kapacita clusteru k dispozici a sleduje aplikací při jejich dokončování a uvolněte své prostředky. 
 
-ResourceManager poběží i v procesu webového serveru, který poskytuje webové uživatelské rozhraní, které lze použít k monitorování stavu aplikace. 
+ResourceManager poběží i v procesu webového serveru, který poskytuje webové uživatelské rozhraní pro monitorování stavu aplikace.
 
-Když uživatel odešle aplikace MapReduce, která běží na clusteru, aplikace se odešle do Správce prostředků. Pak ResourceManager přiděluje kontejner uzlech NodeManager k dispozici. Uzly NodeManager jsou, kde ve skutečnosti spustí aplikaci. První kontejner přidělené spustí zvláštní aplikace volá se, ApplicationMaster. Tato ApplicationMaster zodpovídá za získávají se prostředky v podobě dalších kontejnerů potřebných ke spuštění odeslanou aplikaci. ApplicationMaster zkontroluje v jednotlivých fázích aplikace (mapy fáze a fáze snížit) a faktory v tom, kolik dat je potřeba zpracovat. Pak požadavky ApplicationMaster (*vyjedná*) prostředků ze Správce prostředků jménem aplikace. ResourceManager zase uděluje prostředky z NodeManagers v clusteru ApplicationMaster pro jeho použití v provádění aplikace. 
+Když uživatel odešle aplikace MapReduce, která běží na clusteru, aplikace se odešle do Správce prostředků. Pak ResourceManager přiděluje kontejner uzlech NodeManager k dispozici. Uzly NodeManager jsou, kde ve skutečnosti spustí aplikaci. První kontejner přidělené spustí zvláštní aplikace volá se, ApplicationMaster. Tato ApplicationMaster zodpovídá za získávají se prostředky v podobě dalších kontejnerů potřebných ke spuštění odeslanou aplikaci. ApplicationMaster zkontroluje v jednotlivých fázích aplikaci, jako je mapa fáze a snížit fáze a faktory v tom, kolik dat je potřeba zpracovat. Pak požadavky ApplicationMaster (*vyjedná*) prostředků ze Správce prostředků jménem aplikace. ResourceManager zase uděluje prostředky z NodeManagers v clusteru ApplicationMaster pro jeho použití v provádění aplikace. 
 
 NodeManagers spouštět úlohy, které tvoří aplikace, pak zprávy jejich průběhu a stavu zpět ApplicationMaster. ApplicationMaster zase hlásí stav aplikace zpět do Správce prostředků. ResourceManager vrátí klientovi žádné výsledky.
 
 ## <a name="yarn-on-hdinsight"></a>YARN v HDInsight
 
-Všechny typy clusterů HDInsight nasadit YARN. Správce prostředků se nasazuje pro zajištění vysoké dostupnosti s primárním a sekundárním instancí, kterého spouští v uvedeném pořadí na první a druhý hlavní uzly v clusteru. Současně je aktivní jenom jednu instanci ResourceManager. Instance NodeManager provozovat dostupných pracovních uzlů v clusteru.
+Všechny typy clusterů HDInsight nasadit YARN. Správce prostředků se nasazuje pro zajištění vysoké dostupnosti s primární a sekundární instanci, která se spustí na prvním a druhém hlavní uzly v rámci clusteru názvů. Současně je aktivní jenom jednu instanci ResourceManager. Instance NodeManager provozovat dostupných pracovních uzlů v clusteru.
 
 ![YARN v HDInsight](./media/hdinsight-hadoop-architecture/yarn-on-hdinsight.png)
 

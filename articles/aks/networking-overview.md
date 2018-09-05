@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 08/08/2018
+ms.date: 08/31/2018
 ms.author: marsma
-ms.openlocfilehash: 051402a319e1dc26145b5a1602a4caeffa7fba19
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: e78be76d68cf75cf9d59f5b5dff86c65524275a9
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42445503"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697234"
 ---
 # <a name="network-configuration-in-azure-kubernetes-service-aks"></a>Konfigurace sítě ve službě Azure Kubernetes Service (AKS)
 
@@ -47,7 +47,7 @@ Rozšířeného sítě poskytují následující výhody:
 
 ## <a name="advanced-networking-prerequisites"></a>Pokročilé síťové požadavky
 
-* Virtuální síť pro AKS cluster musí umožňovat odchozí připojení k Internetu.
+* Virtuální síť pro AKS cluster, musíte povolit odchozí připojení k Internetu.
 * Nevytvářejte více než jeden cluster AKS ve stejné podsíti.
 * Nesmíte používat AKS clustery `169.254.0.0/16`, `172.30.0.0/16`, nebo `172.31.0.0/16` pro Kubernetes service rozsah adres.
 * Instanční objekt používané clusterem AKS musí mít minimálně [Přispěvatel sítě](../role-based-access-control/built-in-roles.md#network-contributor) oprávnění na podsítě v rámci vaší virtuální sítě. Pokud chcete definovat [vlastní roli](../role-based-access-control/custom-roles.md) nemusíte používat předdefinovaná role Přispěvatel sítě, se vyžadují následující oprávnění:
@@ -58,49 +58,56 @@ Rozšířeného sítě poskytují následující výhody:
 
 Clusterech nakonfigurovaných s rozšířeného sítě vyžadovat další plánování. Velikost vaší virtuální sítě a podsítě musí podle počtu podů, které máte v úmyslu spustit i z počtu uzlů clusteru.
 
-IP adresy pro tyto pody a uzly clusteru se přidělují Zadaná podsíť virtuální sítě. Každý uzel je nakonfigurovaný pomocí primární IP adresu, která je IP adresa uzlu a 30 dalších IP adres předem nakonfiguroval Azure CNI, které jsou přiřazeny podů naplánované k uzlu. Při horizontálním navýšením kapacity vašeho clusteru má každý uzel podobně nakonfigurovanou IP adresu z podsítě.
+IP adresy pro uzly clusteru a podů přidělují v zadané podsíti ve virtuální síti. Každý uzel je nakonfigurovaný pomocí primární IP adresu, která je IP adresa uzlu a 30 dalších IP adres předem nakonfiguroval Azure CNI, které jsou přiřazeny podů naplánované k uzlu. Při horizontálním navýšením kapacity vašeho clusteru má každý uzel podobně nakonfigurovanou IP adresu z podsítě.
 
 Plán IP adres pro AKS cluster se skládá z virtuální sítě, alespoň jednu podsíť pro uzly a podů a rozsah adres služby Kubernetes.
 
 | Rozsah adres / Azure resource | Omezení a změna velikosti |
 | --------- | ------------- |
-| Virtuální síť | Virtuální síť Azure můžou být velké až /8 ale může mít 16 000 nakonfigurovat jenom IP adresy. |
+| Virtuální síť | Virtuální síť Azure můžou být velké až /8, ale je omezená na 65 536 nakonfigurovaných IP adres. |
 | Podsíť | Musí být dostatečně velký, aby uzly, podů a všechny Kubernetes a Azure prostředky, které může být zřízené ve vašem clusteru. Například pokud nasadíte interní Azure Load Balancer, jeho front-endových IP adres se přidělují z podsítě clusteru, není veřejné IP adresy. <p/>Chcete-li vypočítat *minimální* velikost podsítě: `(number of nodes) + (number of nodes * pods per node)` <p/>Příklad pro cluster s 50 uzly: `(50) + (50 * 30) = 1,550` (/ 21, nebo větší) |
-| Rozsah adres služby Kubernetes | Tento rozsah by neměly používat libovolný prvek sítě na nebo připojené k této virtuální síti. Adresa služby CIDR musí být menší než /12. |
+| Rozsah adres služby Kubernetes | Tento rozsah by neměly používat libovolný prvek sítě na nebo připojení k této virtuální síti. Adresa služby CIDR musí být menší než /12. |
 | IP adresa služby Kubernetes DNS | IP adresu v rámci rozhraní Kubernetes služby rozsah adres, který bude používat zjišťování služby cluster (kube-dns). |
 | Adresa mostu docker | IP adresa (v notaci CIDR) použít jako Docker bridge IP adresu na uzlech. Výchozí 172.17.0.1/16. |
 
-Každá virtuální síť zřízených pro použití s modulem plug-in Azure CNI je omezené na **16 000 konfigurované IP adresy**.
-
 ## <a name="maximum-pods-per-node"></a>Maximální podů na jeden uzel
 
-Výchozí maximální počet podů na jeden uzel v clusteru AKS se pohybuje mezi základní a rozšířené sítě a metody nasazení clusteru.
+Výchozí maximální počet podů na jeden uzel v clusteru AKS se pohybuje mezi Basic a rozšířeného sítě a metody nasazení clusteru.
 
 ### <a name="default-maximum"></a>Výchozí maximální
 
-* Základní síť: **110 podů na jeden uzel**
-* Rozšířeného sítě **30 podů na jeden uzel**
+Jedná se o *výchozí* maxima při nasazení AKS clusteru bez zadání maximálního počtu podů v době nasazení:
 
-### <a name="configure-maximum"></a>Nakonfigurujte maximální
+| Metoda nasazení | Basic | Rozšířený | Možnost konfigurace během nasazení |
+| -- | :--: | :--: | -- |
+| Azure CLI | 110 | 30 | Ano |
+| Šablona Resource Manageru | 110 | 30 | Ano |
+| Portál | 110 | 30 | Ne |
 
-V závislosti na způsobu nasazení budete moci změnit maximální počet podů na jeden uzel v clusteru AKS.
+### <a name="configure-maximum---new-clusters"></a>Nakonfigurujte maximální - nových clusterů
+
+Chcete-li určit jiný maximální počet podů na uzel při nasazování clusteru AKS:
 
 * **Azure CLI**: Zadejte `--max-pods` argument při nasazování clusteru s [az aks vytvořit] [ az-aks-create] příkazu.
 * **Šablony Resource Manageru**: Zadejte `maxPods` vlastnost [ManagedClusterAgentPoolProfile] objektu při nasazování clusteru pomocí šablony Resource Manageru.
 * **Azure portal**: nelze změnit maximální počet podů na jeden uzel, při nasazování clusteru pomocí webu Azure portal. Rozšířeného sítě clustery jsou omezená na 30 podů podle počtu uzlů po nasazení na webu Azure Portal.
 
+### <a name="configure-maximum---existing-clusters"></a>Nakonfigurujte maximální - stávajících clusterů
+
+Nelze změnit maximální podů na jeden uzel v existujícím clusteru AKS. Číslo můžete upravit pouze v případě, že počáteční nasazení clusteru.
+
 ## <a name="deployment-parameters"></a>Parametry nasazení
 
 Při vytváření clusteru AKS následující parametry se dají konfigurovat pro rozšířeného sítě:
 
-**Virtuální síť**: virtuální síť, do které chcete nasadit Kubernetes cluster. Pokud chcete vytvořit novou virtuální síť pro cluster, vyberte *vytvořit nový* a postupujte podle pokynů *vytvořit virtuální síť* oddílu. Virtuální síť je omezena na 16 000 nakonfigurovaných IP adres.
+**Virtuální síť**: virtuální sítě, do které chcete nasadit Kubernetes cluster. Pokud chcete vytvořit novou virtuální síť pro cluster, vyberte *vytvořit nový* a postupujte podle pokynů *vytvořit virtuální síť* oddílu. Informace o omezení a kvóty pro virtuální síť Azure, najdete v tématu [předplatného Azure a limity, kvóty a omezení](../azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits).
 
-**Podsíť**: podsítě v rámci virtuální sítě, ve které chcete nasadit cluster. Pokud chcete vytvořit novou podsíť ve virtuální síti pro váš cluster, vyberte *vytvořit nový* a postupujte podle pokynů *vytvořit podsíť* části.
+**Podsíť**: podsíť ve virtuální síti, ve které chcete nasadit cluster. Pokud chcete vytvořit novou podsíť ve virtuální síti pro váš cluster, vyberte *vytvořit nový* a postupujte podle pokynů *vytvořit podsíť* části.
 
 **Rozsah adres služby Kubernetes**: Toto je sada virtuálních IP adres, který přiřazuje Kubernetes [služby] [ services] ve vašem clusteru. Můžete použít libovolný rozsah privátních adres, který splňuje následující požadavky:
 
-* Nesmí být v rozsahu adres virtuální sítě IP clusteru
-* Se nesmí překrývat s jiných které partnerský vztah virtuální sítě clusteru virtuálních sítí
+* Nesmí být v rozsahu IP adres virtuální sítě clusteru
+* Se nesmí překrývat s jinými virtuálními sítěmi, které vytvoří partnerskou virtuální síť s clustery
 * Se nesmí překrývat s každé místní IP adresy
 * Nesmí být v rozsahu `169.254.0.0/16`, `172.30.0.0/16`, nebo `172.31.0.0/16`
 
@@ -108,7 +115,7 @@ I když je technicky možné určit rozsah adres služby v rámci stejné virtu�
 
 **IP adresa služby Kubernetes DNS**: IP adresa pro službu DNS clusteru. Tato adresa musí být v rámci *rozsah adres služby Kubernetes*.
 
-**Adresa mostu docker**: IP adresa a síťová maska přiřadit mostu Docker. Tato IP adresa nesmí být v rozsahu adres virtuální sítě IP clusteru.
+**Adresa mostu docker**: IP adresa a síťová maska přiřadit mostu Docker. Tato IP adresa nesmí být v rámci rozsahu IP adres virtuální sítě ve vašem clusteru.
 
 ## <a name="configure-networking---cli"></a>Konfigurace sítě – rozhraní příkazového řádku
 
@@ -150,13 +157,15 @@ Platí následující dotazy a odpovědi k **Upřesnit** konfiguraci sítě.
 
   Ano, pokud nasadíte cluster pomocí šablony Resource Manageru nebo rozhraní příkazového řádku Azure. Zobrazit [maximální počet podů na uzel](#maximum-pods-per-node).
 
+  Nelze změnit maximální počet podů na jeden uzel v existujícím clusteru.
+
 * *Jak nakonfigurovat další vlastnosti pro podsíť, která jsem vytvořil při vytváření clusteru AKS Například koncových bodů služby.*
 
-  Úplný seznam vlastností pro virtuální síť a podsítě, které jste vytvořili při vytváření clusteru AKS můžete nakonfigurovat na stránce standardní konfigurace virtuální sítě na webu Azure Portal.
+  Úplný seznam vlastností pro virtuální síť a podsítě, které jste vytvořili při vytváření clusteru AKS můžete nakonfigurovat na stránce konfigurace standardní virtuální sítě na webu Azure Portal.
 
-* *Můžete použít jiné podsíti v rámci virtuální sítě clusteru pro* **rozsah adres služby Kubernetes**?
+* *Můžete použít jiné podsíti v rámci virtuální sítě pro tento cluster* **rozsah adres služby Kubernetes**?
 
-  Není doporučeno, ale tato konfigurace je možné. Rozsah adres služby je sada virtuální IP adresy (VIP), který přiřazuje služby v clusteru Kubernetes. Sítě Azure nemá žádný vhled do rozsahu IP služby clusteru Kubernetes. Z důvodu nedostatku vhled do rozsahu adres služby clusteru je možné později vytvořit novou podsíť v clusteru virtuální sítě, která se překrývá s rozsahem adres služby. Pokud dojde k takové překrývají, Kubernetes přiřadit služby integrační balíček, který je již používán jiným prostředkem v podsíti, způsobit nepředvídatelné chování nebo selhání. Tím zajistíte, že používáte rozsah adres mimo virtuální síť clusteru, se můžete vyhnout toto riziko překrývají.
+  Není doporučeno, ale tato konfigurace je možné. Rozsah adres služby je sada virtuální IP adresy (VIP), který přiřazuje služby v clusteru Kubernetes. Sítě Azure nemá žádný vhled do rozsahu IP služby clusteru Kubernetes. Z důvodu nedostatku vhled do rozsahu adres služby clusteru je možné později vytvořit novou podsíť ve virtuální síti clusteru, který se překrývá s rozsahem adres služby. Pokud dojde k takové překrývají, Kubernetes přiřadit služby integrační balíček, který je již používán jiným prostředkem v podsíti, způsobit nepředvídatelné chování nebo selhání. Tím zajistíte, že používáte rozsah adres mimo virtuální síť clusteru, se můžete vyhnout toto riziko překrývají.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -1,7 +1,7 @@
 ---
-title: Azure Cosmos DB PDF dotazu podvést listy | Microsoft Docs
-description: Tisknutelná PDF cheaty listy, které vám pomůže používat SQL Azure Cosmos DB, MongoDB, graf a tabulka rozhraní API pro dotazování na data
-keywords: tahák SQL, sql podvést list pdf, dotaz sql – tahák
+title: Azure Cosmos DB PDF dotazu Stručná Nápověda | Dokumentace Microsoftu
+description: Tisknutelný PDF stručnou, které vám pomůže používat SQL, MongoDB, Graph a Table API služby Azure Cosmos DB k dotazování na data
+keywords: tahák pro SQL, sql stručný přehled stylů pdf, tahák pro dotazy sql
 services: cosmos-db
 author: SnehaGunda
 manager: kfile
@@ -10,35 +10,35 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: sngun
-ms.openlocfilehash: 10ee398bce30b82d1e199a12cd471ae52d4fae21
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 432f61adaf736180a720aa23a7275e96fed4c733
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34614114"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43696927"
 ---
-# <a name="azure-cosmos-db-query-cheat-sheets"></a>Azure Cosmos DB dotazu podvést listy
+# <a name="azure-cosmos-db-query-cheat-sheets"></a>Azure Cosmos DB dotazu Stručná Nápověda
 
-**Azure Cosmos DB dotazu podvést listy** vám pomohou rychle zápisu dotazy na data pomocí zobrazení běžných dotazů databáze, operace, funkce a operátory v snadný tisk PDF referenční tabulky. Listy nástroje podvést zahrnovat referenční informace k rozhraní API pro SQL, rozhraní API MongoDB, rozhraní API tabulky a Gremlin/Graph API. 
+**Stručná Nápověda dotazování služby Azure Cosmos DB** vám pomohou rychle zápis dotazů pro vaše data tím, že zobrazuje běžné dotazy na databázi, operations, funkce a operátory ve snadný tisk PDF referenční seznamy. Stručný přehled stylů patří referenční informace k rozhraní SQL API, rozhraní MongoDB API, rozhraní Table API a rozhraní Gremlin API. 
 
-Vyberte z Letter nebo velikost A3 stahování. 
+Vyberte si z Letter nebo velikost A3 stahování. 
 
-## <a name="letter-sized-cheat-sheets"></a>Velké písmeno podvést listy
+## <a name="letter-sized-cheat-sheets"></a>Stručná Nápověda velké písmeno
 
-Stažení [Azure Cosmos DB velké písmeno dotazu podvést listy](http://go.microsoft.com/fwlink/?LinkId=623215) Pokud budete pro tisk na papír písmeno velikosti (šířka 8,5 "x 11").
+Stáhněte si [Stručná Nápověda velké písmeno dotazu služby Azure Cosmos DB](http://go.microsoft.com/fwlink/?LinkId=623215) Pokud budete pro tisk na papír velikosti písmeno (šířka 8,5 "x 11").
 
-![Azure Cosmos DB dotazu podvést listy - nastavenou velikostí písmeno s dotazy SQL API, JavaScript, MongoDB API, rozhraní Graph API a rozhraní API tabulky a funkce](./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-letter.png)
+![Azure Cosmos DB dotazu Stručná Nápověda-nastavovanou písmeno s dotazy rozhraní SQL API, JavaScript, rozhraní MongoDB API, Gremlin API a rozhraní Table API a funkce](./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-letter.png)
 
-## <a name="oversized-cheat-sheets"></a>Příliš velký podvést listy
-Stažení [velikost Azure Cosmos DB A3 dotazu podvést listy](https://go.microsoft.com/fwlink/?linkid=870413) Pokud se chystáte tisk pomocí zapisovače nebo ve velkém měřítku tiskárny na papír velikosti A3 (11,7 "x 16.5").
+## <a name="oversized-cheat-sheets"></a>Stručná Nápověda příliš velký
+Stáhněte si [Stručná Nápověda Azure Cosmos DB A3 velikosti dotazu](https://go.microsoft.com/fwlink/?linkid=870413) Pokud se chystáte tisk na papír velikosti A3 (11,7 "x 16.5") pomocí zapisovače nebo ve velkém měřítku tiskárny.
 
-![Listy podvést dotazu Azure Cosmos DB - A3 velikosti, s dotazy SQL API, JavaScript, MongoDB API, rozhraní Graph API a rozhraní API tabulky a funkce](./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-a3.png)
+![Azure Cosmos DB dotazu Stručná Nápověda - A3 – velikost, dotazy rozhraní SQL API, JavaScript, rozhraní MongoDB API, Gremlin API a rozhraní Table API a funkce](./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-a3.png)
 
 ## <a name="next-steps"></a>Další postup
-Zápis dotazů další pomoc naleznete v následujících článcích:
-* Dotazy SQL API najdete v části [dotazování pomocí rozhraní SQL API](tutorial-query-sql-api.md), [dotazy SQL pro Azure Cosmos DB](sql-api-sql-query.md), a [reference syntaxe SQL](sql-api-sql-query-reference.md)
-* Dotazy MongoDB, najdete v části [dotazování pomocí rozhraní API MongoDB](tutorial-query-mongodb.md) a [MongoDB API podpora pro funkce MongoDB a syntaxe](mongodb-feature-support.md)
-* Dotazy na rozhraní Graph API, najdete v části [dotazování pomocí rozhraní Graph API](tutorial-query-graph.md) a [podpory Azure Cosmos DB Gremlin grafu](gremlin-support.md)
-* Dotazů na rozhraní API tabulky, najdete v části [dotazování pomocí rozhraní API tabulky](tutorial-query-table.md)
+Další pomoc při psaní dotazů najdete v následujících článcích:
+* Rozhraní SQL API dotazy, naleznete v tématu [dotazy pomocí rozhraní SQL API](tutorial-query-sql-api.md), [dotazů SQL pro službu Azure Cosmos DB](sql-api-sql-query.md), a [referenční příručka syntaxe SQL](sql-api-sql-query-reference.md)
+* MongoDB dotazy, naleznete v tématu [dotazy pomocí rozhraní MongoDB API](tutorial-query-mongodb.md) a [podpora rozhraní API MongoDB pro funkce a syntaxi MongoDB](mongodb-feature-support.md)
+* Rozhraní Gremlin API dotazy, naleznete v tématu [dotazy pomocí rozhraní Gremlin API](tutorial-query-graph.md) a [podpoře služby graph Azure Cosmos DB Gremlin](gremlin-support.md)
+* Rozhraní Table API dotazy, naleznete v tématu [dotazování pomocí rozhraní Table API](tutorial-query-table.md)
 
 

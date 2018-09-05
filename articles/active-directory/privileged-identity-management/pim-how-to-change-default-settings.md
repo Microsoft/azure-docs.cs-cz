@@ -13,12 +13,12 @@ ms.component: pim
 ms.date: 08/27/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 8af304d28be9b0884a50d60911d901818b514752
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 2d7226f18eb922eaba3c8184656560c33202ef56
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43338903"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43665430"
 ---
 # <a name="configure-azure-ad-directory-role-settings-in-pim"></a>Konfigurace nastavení role adresáře Azure AD v PIM
 
@@ -82,7 +82,7 @@ Použití **ověřování službou Multi-Factor Authentication** přepínač k u
   * Správce Skypu pro firmy  
   * Správce uživatelských účtů  
 
-Další informace o použití vícefaktorového ověřování pomocí služby PIM, naleznete v tématu [vyžadovat vícefaktorové ověřování pro role adresáře Azure AD v PIM](pim-how-to-require-mfa.md).
+Další informace najdete v tématu [vícefaktorové ověřování (MFA) a PIM](pim-how-to-require-mfa.md).
 
 ## <a name="require-approval"></a>Vyžadovat schválení
 
@@ -110,5 +110,4 @@ Pokud chcete k aktivaci role vyžadovat schválení, postupujte podle těchto kr
 ## <a name="next-steps"></a>Další postup
 
 - [Přiřazení role adresáře Azure AD v PIM](pim-how-to-add-role-to-user.md)
-- [Vyžadovat vícefaktorové ověřování pro role adresáře Azure AD v PIM](pim-how-to-require-mfa.md)
 - [Konfigurace výstrah zabezpečení pro role adresáře Azure AD v PIM](pim-how-to-configure-security-alerts.md)

@@ -8,43 +8,43 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 7/25/2018
 ms.author: saurse
-ms.openlocfilehash: e7a63167285c06fdfe632e7d45d9fddd3cca7842
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 2c8978cfba8fc56d4dbc565cb3a91c75d9d54679
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248518"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43700191"
 ---
 # <a name="troubleshoot-microsoft-azure-recovery-services-mars-agent-issues"></a>Řešení potíží s agentem Microsoft Azure Recovery Services (MARS)
 ## <a name="recommended-steps"></a>Doporučené kroky
 Přečtěte si tento článek pro vyřešení chyb během konfigurace, registraci, zálohování a obnovení pomocí agenta MARS.
 
 ## <a name="invalid-vault-credentials-provided-the-file-is-either-corrupted-or-does-not-have-the-latest-credentials-associated-with-recovery-service"></a>Neplatné zadané přihlašovací údaje trezoru. Soubor je poškozený nebo nemá mít nejnovější přihlašovací údaje přidružené ke službě obnovení.
-| Detaily chyby | Možné příčiny | Doporučené akce |
+| Podrobnosti o chybě | Možné příčiny | Doporučené akce |
 | ---     | ---     | ---    |
 | **Chyba** </br> *Zadané neplatné přihlašovací údaje trezoru. Soubor je poškozený nebo nemá mít nejnovější přihlašovací údaje přidružené ke službě obnovení. (ID: 34513)* | <ul><li> Přihlašovací údaje trezoru jsou neplatné (to znamená, že byly staženy víc než 48 hodin, než čas registrace).<li>MARS Agent se nemůže stahovat soubory do svého adresáře Windows Temp. <li>Přihlašovací údaje trezoru jsou v umístění v síti. <li>Protokol TLS 1.0 je zakázaný.<li> Nakonfigurovaný proxy server blokuje připojení. <br> |  <ul><li>Stáhněte si nové přihlašovací údaje trezoru.<li>Přejděte na **Možnosti Internetu** > **zabezpečení** > **Internet**. V dalším kroku vyberte **vlastní úroveň**a posuňte, dokud se nezobrazí stahování části souboru. Potom vyberte **povolit**.<li>Budete také muset přidejte web do [Důvěryhodné servery](https://docs.microsoft.com/azure/backup/backup-try-azure-backup-in-10-mins#network-and-connectivity-requirements).<li>Změňte nastavení pro použití proxy serveru. Zadejte proxy server podrobnosti. <li> Datum a čas dodržovat váš počítač.<li>Přejděte na C:/Windows/Temp a zkontrolujte, zda jsou více než 60 000 nebo než 65 000 vývojáři soubory s příponou TMP. Pokud existuje, odstraňte tyto soubory.<li>Můžete ověřit balíček SDP běží na serveru. Pokud obdržíte chybu s informacemi o tom, že stahování souborů nejsou povoleny, je pravděpodobné, že existuje velký počet souborů v adresáři C:/Windows/Temp.<li>Ujistěte se, že máte nainstalované rozhraní .NET framework 4.6.2. <li>Pokud jste zakázali protokol TLS 1.0 z důvodu dodržování PCI, podívejte se na to [stránka o řešení problémů](https://support.microsoft.com/help/4022913). <li>Pokud máte antivirový software nainstalovaný na serveru, vylučte z antivirová kontrola následující soubory: <ul><li>CBengine.exe<li>CSC.exe, který má vztah k rozhraní .NET Framework. Existuje CSC.exe pro každou verzi rozhraní .NET, který je nainstalován na serveru. Vylučte soubory CSC.exe, které jsou vázané na všechny verze rozhraní .NET framework na příslušném serveru. <li>Dočasné umístění složky nebo mezipaměť. <br>*Výchozí umístění pro odkládací složce nebo cestu k umístění mezipaměti je C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.
 
 ## <a name="the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup"></a>Agent služby Microsoft Azure Recovery se nepodařilo připojit ke službě Microsoft Azure Backup
 
-| Detaily chyby | Možné příčiny | Doporučené akce |
+| Podrobnosti o chybě | Možné příčiny | Doporučené akce |
 | ---     | ---     | ---    |
 | **Chyba** </br><ol><li>*Agent služby Microsoft Azure Recovery se nepodařilo připojit ke službě Microsoft Azure Backup. (ID: 100050) Zkontrolujte nastavení sítě a ujistěte se, že se můžete připojit k Internetu*<li>*Vyžadováno ověřování proxy serveru (407)* |Blokuje připojení proxy server. |  <ul><li>Přejděte do **Možnosti Internetu** > **zabezpečení** > **Internet**. Potom vyberte **vlastní úroveň** a posuňte, dokud se nezobrazí stahování části souboru. Vyberte **Povolit**.<li>Budete také muset přidejte web do [Důvěryhodné servery](https://docs.microsoft.com/azure/backup/backup-try-azure-backup-in-10-mins#network-and-connectivity-requirements).<li>Změňte nastavení pro použití proxy serveru. Zadejte proxy server podrobnosti. <li>Pokud máte antivirový software nainstalovaný na serveru, vylučte následující soubory z antivirová kontrola. <ul><li>CBEngine.exe (namísto dpmra.exe).<li>CSC.exe (související s rozhraní .NET Framework). Existuje CSC.exe pro každou verzi rozhraní .NET, který je nainstalován na serveru. Vylučte soubory CSC.exe, které jsou vázané na všechny verze rozhraní .NET framework na příslušném serveru. <li>Dočasné umístění složky nebo mezipaměť. <br>*Výchozí umístění pro odkládací složce nebo cestu k umístění mezipaměti je C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.
 
 ## <a name="failed-to-set-the-encryption-key-for-secure-backups"></a>Nepovedlo se nastavit šifrovací klíč pro bezpečné zálohy
 
-| Detaily chyby | Možné příčiny | Doporučené akce |
+| Podrobnosti o chybě | Možné příčiny | Doporučené akce |
 | ---     | ---     | ---    |      
 | **Chyba** </br>*Nepovedlo se nastavit šifrovací klíč pro bezpečné zálohy aktivace nebylo zcela úspěšné, ale šifrovací heslo se uložila do následujícího souboru*. |<li>Server je již zaregistrován jiný trezor.<li>Během konfigurace byla poškozena heslo| Zrušit registraci serveru v trezoru a znovu zaregistrujte novou heslu.
 
 ## <a name="the-activation-did-not-complete-successfully-the-current-operation-failed-due-to-an-internal-service-error-0x1fc07"></a>Aktivace nebyla úspěšně dokončena. Aktuální operace selhala kvůli vnitřní chybě služby [0x1FC07]
 
-| Detaily chyby | Možné příčiny | Doporučené akce |
+| Podrobnosti o chybě | Možné příčiny | Doporučené akce |
 |---------|---------|---------|
 |**Chyba** </br><ol>*Aktivace nebyla úspěšně dokončena. Aktuální operace selhala kvůli vnitřní chybě služby [0x1FC07]. Po nějaké době zkuste operaci zopakovat. Pokud se problém nevyřeší, kontaktujte prosím podporu Microsoftu*     | <li> Odkládací složka se nachází na svazku, který nemá dostatek místa. <li> Pomocnou složku byl přesunut nesprávně do jiného umístění. <li> Chybí soubor OnlineBackup.KEK.         | <li>Upgrade na [nejnovější verzi](http://aka.ms/azurebackup_agent) agenta MARS.<li>Přesuňte pomocné umístění složky nebo mezipaměti na svazek s volné místo odpovídající 5 až 10 % celkové velikosti dat zálohy. Správně přesuňte umístění mezipaměti, použijte postup v [dotazy týkající se Azure Backup Agent](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#backup).<li> Ujistěte se, že soubor OnlineBackup.KEK je k dispozici. <br>*Výchozí umístění pro odkládací složce nebo cestu k umístění mezipaměti je C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.        |
 
 ## <a name="error-34506-the-encryption-passphrase-stored-on-this-computer-is-not-correctly-configured"></a>Došlo k chybě 34506. Šifrovací heslo uložené na tomto počítači není správně nakonfigurovaný.
 
-| Detaily chyby | Možné příčiny | Doporučené akce |
+| Podrobnosti o chybě | Možné příčiny | Doporučené akce |
 |---------|---------|---------|
 |**Chyba** </br><ol>*Došlo k chybě 34506. Šifrovací heslo uložené na tomto počítači není správně nakonfigurovaný*.    | <li> Odkládací složka se nachází na svazku, který nemá dostatek místa. <li> Pomocnou složku byl přesunut nesprávně do jiného umístění. <li> Chybí soubor OnlineBackup.KEK.        | <li>Upgrade na [nejnovější verzi](http://aka.ms/azurebackup_agent) agenta MARS.<li>Přesuňte pomocnou složku nebo umístění mezipaměti na svazek s volné místo odpovídající 5 – 10 % celkové velikosti dat zálohy. Správně přesuňte umístění mezipaměti, použijte postup v [dotazy týkající se Azure Backup Agent](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#backup).<li> Ujistěte se, že soubor OnlineBackup.KEK je k dispozici. <br>*Výchozí umístění pro odkládací složce nebo cestu k umístění mezipaměti je C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.         |
 
@@ -66,7 +66,10 @@ Proveďte následující kroky při plánovaných záloh není se aktivují auto
 <li>Dvakrát klikněte na panel úkolů: Microsoft-OnlineBackup"a přejděte na kartu"Triggery".
 <li>Zkontrolujte, že "Status" úlohu je nastavená na "Povoleno". V opačném případě klikněte na možnost "Upravit" a vyberte zaškrtávací políčko "Povoleno"
 <li>Přejděte *možnosti zabezpečení* část *Obecné* kartu
-<li>Ujistěte se, že uživatelský účet vybrané ke spuštění úkolu je buď *systému* nebo skupiny místní správci na serveru > [!TIP] doporučuje se server restartuje po provedení výše uvedené kroky a ujistěte se, která změní provedené konzistentní
+<li>Ujistěte se, že uživatelský účet vybrané ke spuštění úkolu je buď *systému* nebo skupiny místní správci na serveru
+
+> [!TIP]
+> Doporučuje se server restartuje po provedení výše uvedené kroky a ujistěte se, že změny jsou konzistentní
 
 
 ## <a name="troubleshooting-restore-issues"></a>Odstraňování problémů obnovení

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: v-daljep
 ms.reviewer: carlrab
-ms.openlocfilehash: 7df4033a378ce3b37a99ed0335200e7f71696594
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 67432c8751cd8809649d41195957a7d68b392074
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528642"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43665595"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Vyhledání a použití doporučení k výkonu
 
@@ -114,7 +114,7 @@ Vyberte jakékoli doporučení a pak klikněte na tlačítko **zobrazit skript**
 *Indexy, které jsou spouštěny ručně nejsou monitorované a ověřené pro dopad na výkon pomocí služby* proto vám doporučujeme monitorovat tyto indexy po vytvoření ověřit jejich poskytnout zvýšení výkonu a upravit nebo odstranit v případě potřeby. Podrobnosti o vytváření indexů najdete v tématu [vytvoření indexu (Transact-SQL)](https://msdn.microsoft.com/library/ms188783.aspx).
 
 ### <a name="canceling-recommendations"></a>Ruší se doporučení
-Doporučení, která jsou v **čekající**, **ověření**, nebo **úspěch** stav může být zrušen. Doporučení se stavem **zpracování** nelze zrušit.
+Doporučení, která jsou v **čekající**, **ověřování**, nebo **úspěch** stav může být zrušen. Doporučení se stavem **zpracování** nelze zrušit.
 
 1. Výběru doporučení v **ladění historie** oblasti, otevřete **podrobnosti** stránky.
 2. Klikněte na tlačítko **zrušit** přerušit proces zavádění doporučení.
@@ -126,7 +126,7 @@ Použití doporučení nemusí dojít okamžitě. Portál poskytuje podrobné in
 |:--- |:--- |
 | Čekající na vyřízení |Použití doporučení příkaz byla přijata a je naplánováno na vykonání. |
 | Provádění |Doporučení se zavádí. |
-| Ověřování |Doporučení se úspěšně zavedlo a služba je měření výhody. |
+| Ověřování platnosti |Doporučení se úspěšně zavedlo a služba je měření výhody. |
 | Úspěch |Doporučení se úspěšně zavedlo a měří výhody. |
 | Chyba |Při zavádění doporučení se stala chyba. Může jít o přechodný problém, případně schéma změňte na tabulky a skript už není platný. |
 | Probíhá vrácení |Doporučení se použil, ale bylo považováno za nenáročných a je automaticky vrací k uloženému. |

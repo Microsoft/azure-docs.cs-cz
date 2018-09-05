@@ -13,12 +13,12 @@ ms.component: pim
 ms.date: 07/23/2018
 ms.author: rolyon
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
-ms.openlocfilehash: c8870e4da63dc52d5926bdfd5f7c9b3218e5f53a
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: fc45cde1a5f0f287274302541ac0115569e2239d
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43188982"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666332"
 ---
 # <a name="azure-ad-directory-roles-you-can-manage-in-pim"></a>Role adresáře Azure AD, která spravujete v PIM
 <!-- **PLACEHOLDER: Need description of how this works. Azure PIM uses roles from MSODS objects.**-->
@@ -76,13 +76,36 @@ Přístup k webu Azure portal vyžaduje že uživatel být správce služeb nebo
 Přístup k Microsoft Online Services může vyžadovat uživateli také přiřadí licence mohli otevřít portál služby nebo provádět úlohy správy.
 
 ## <a name="assign-a-license-to-a-user-in-azure-ad"></a>Přiřazení licence pro uživatele ve službě Azure AD
-1. Přihlaste se k [webu Azure portal](http://portal.azure.com) pomocí účtu globálního správce nebo spolusprávce účtu.
-3. Výběr možnosti Azure AD a adresáře, který chcete pracovat s a že má licence s ním spojená.
-4. Vyberte **licence** na levé straně. Zobrazí se seznam dostupných licencí.
-5. Vyberte licenční plán, který obsahuje licence, které chcete distribuovat.
-6. Vyberte **přiřadit uživatele**.
-7. Vyberte uživatele, který chcete přiřadit licenci k.
-8. Klikněte na tlačítko **přiřadit** tlačítko.  Uživatel může přihlásit k Azure.
+
+1. Přihlaste se k [webu Azure portal](http://portal.azure.com) pomocí účtu globálního správce nebo Spolusprávce účtu.
+
+1. Vyberte adresář Azure AD, kterou chcete pracovat, který má licence s ním spojená.
+
+1. V levém navigačním panelu klikněte na tlačítko **Azure Active Directory**.
+
+1. Klikněte na tlačítko **licence**. Zobrazí se seznam dostupných licencí.
+
+    ![Licence Azure Active Directory](./media/pim-roles/licenses-overview.png)
+
+1. Klikněte na vaše **produktu**.
+
+1. Klikněte na licenční plán, který obsahuje licence, které chcete distribuovat.
+
+    ![Licence produktů](./media/pim-roles/licenses-products.png)
+
+1. Klikněte na tlačítko **přiřadit** a otevřete tak podokno přiřadit licence.
+
+    ![Licencovaní uživatelé](./media/pim-roles/licenses-licensed-users.png)
+
+1. Vyberte uživatele nebo skupiny, kterou chcete přiřadit licenci k.
+
+    ![Přiřadit licenci](./media/pim-roles/licenses-assign-license.png)
+
+1. Klikněte na tlačítko **možnosti přiřazení** konfigurace možností přiřazení.
+
+    ![Možnosti přiřazení](./media/pim-roles/licenses-assignment-options.png)
+
+1. Klikněte na tlačítko **přiřadit** přiřadit licence. Uživatel nyní má licence.
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>Další postup

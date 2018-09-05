@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 08/10/2018
 ms.author: routlaw
-ms.openlocfilehash: d895258a4c8a38d00932d81600dc8633d7d70112
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: bbc1c3426b52e71db84a988b39a1d76ac24b6168
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42058330"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697007"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Příručka pro vývojáře Azure Functions Java
 
@@ -93,7 +93,7 @@ s odpovídajícím `function.json`:
 
 Služba Azure Functions podporuje použití knihovny třetích stran. Ve výchozím nastavení, zadané všechny závislosti ve vašem projektu `pom.xml` souboru budou automaticky seskupeny během `mvn package` cíle. Pro knihovny není stanoveno, v závislosti `pom.xml` souboru, umístit je do `lib` adresáře v kořenovém adresáři funkce. Závislosti umístěné v `lib` adresáře se přidají do třídy zavaděč systému v době běhu.
 
-## <a name="data-types"></a>Typy dat
+## <a name="data-type-support"></a>Podpora typ dat
 
 Můžete použít všechny datové typy v jazyce Java pro vstupní a výstupní data, včetně nativních typů; Přizpůsobit typy jazyka Java a specializované Azure typy definované v `azure-functions-java-library` balíčku. Azure Functions, které modul runtime pokusí převést vstupní přijatých do typ požadovaný ve vašem kódu.
 
@@ -243,7 +243,7 @@ public class MyClass {
 
 Pracovat prostřednictvím prostředí pro spouštění Azure Functions `ExecutionContext` definované v objektu `azure-functions-java-library` balíčku. Použít `ExecutionContext` objektu, který chcete použít volání informace a informace o modulu runtime functions ve vašem kódu.
 
-### <a name="logging"></a>Protokolování
+### <a name="custom-logging"></a>Vlastní protokolování
 
 Přístup k protokolovači modul runtime Functions je k dispozici prostřednictvím `ExecutionContext` objektu. Tento protokolovač se váže na Azure monitor a umožňuje příznak upozornění a chyb zjištěných při provádění funkce.
 
@@ -263,6 +263,29 @@ public class Function {
     }
 }
 ```
+
+## <a name="view-logs-and-trace"></a>Zobrazit protokoly a trasování
+
+Můžete použít rozhraní příkazového řádku Azure pro datový proud Java standardní navýšení kapacity a protokolování chyb, jakož i další protokolování aplikací. Nejprve nakonfigurujte aplikaci funkce pro zápis protokolování aplikací pomocí Azure CLI:
+
+```azurecli-interactive
+az webapp log config --name functionname --resource-group myResourceGroup --application-logging true
+```
+
+Streamování uložit výstup protokolování pro aplikaci Function app pomocí Azure CLI, otevřete nový příkazový řádek, prostředí Bash nebo relaci Terminálové služby a zadejte následující příkaz:
+
+```azurecli-interactive
+az webapp log tail --name webappname --resource-group myResourceGroup
+```
+[Az webapp log tail](/cli/azure/webapp/log) příkaz má možnosti filtrování výstupu pomocí `--provider` možnost. 
+
+Stáhnete soubory protokolů jako jednoho souboru ZIP pomocí Azure CLI, otevřete nový příkazový řádek, prostředí Bash nebo relaci Terminálové služby a zadejte následující příkaz:
+
+```azurecli-interactive
+az webapp log download --resource-group resourcegroupname --name functionappname
+```
+
+Musí mít povolené systému souborů přihlášení na webu Azure Portal nebo rozhraní příkazového řádku Azure před spuštěním tohoto příkazu.
 
 ## <a name="environment-variables"></a>Proměnné prostředí
 
@@ -288,9 +311,12 @@ Každý klíč / hodnota v mapování `values` mapa bude k dispozici za běhu ja
 S vaším kódem teď v závislosti na tyto proměnné prostředí se můžete přihlásit na webu Azure portal nastavit stejný klíč / hodnota dvojice v vaše nastavení aplikace function app, tak, aby váš kód funguje ekvivalentně při testování místně a při nasazení do Azure.
 
 ## <a name="next-steps"></a>Další postup
-Další informace najdete v následujících materiálech:
+
+Další informace o vývoji pro Azure funkce v Javě najdete v článku na následujících odkazech:
 
 * [Osvědčené postupy pro službu Azure Functions](functions-best-practices.md)
 * [Referenční informace pro vývojáře Azure Functions](functions-reference.md)
 * [Azure Functions aktivačními událostmi a vazbami](functions-triggers-bindings.md)
+- Místní vývoj a ladění pomocí [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions), [IntelliJ](functions-create-maven-intellij.md), a [Eclipse](functions-create-maven-eclipse.md). 
 * [Vzdálené ladění v Javě v Azure Functions ve Visual Studiu Code](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud)
+* [Modul plug-in maven pro Azure Functions](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-functions-maven-plugin/README.md) – zjednodušení vytváření funkce až `azure-functions:add` cíle a připravit pracovní adresář pro [nasazení souboru ZIP](deployment-zip-push.md).

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/22/2017
-ms.openlocfilehash: 61ee84ccfccfa49ff2e106e7036d072c1b21ca03
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 4da97d708f8db2dcee406645a0eee409fa111012
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/04/2018
-ms.locfileid: "34652538"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43696798"
 ---
 # <a name="scale-an-azure-stream-analytics-job-to-increase-throughput"></a>Škálovat úlohy Azure Stream Analytics pro zvýšení prostupnosti
 Tento článek ukazuje, jak ladit dotazu Stream Analytics pro zvýšení propustnosti pro úlohy Stream Analytics. Následující příručky můžete použít ke škálování úlohy zpracování větší zátěže a využijte výhod více systémových prostředků (například větší šířku pásma, další prostředky procesoru, větší množství paměti).
@@ -70,7 +70,7 @@ Pro případy, kde je cenově výhodnější ke zpracování dat z více tenant�
 2.  Pokud používáte Event Hub, snížení počtu vstupního oddílu na nejnižší možná hodnota 2.
 3.  Spusťte dotaz s 6 SU. Očekávané zatížení pro každý poddotaz přidáte libovolný počet takových poddotazy nejvíce, dokud úloha dosahuje limity prostředků systému. Odkazovat na [případ 1](#case-1--your-query-is-inherently-fully-parallelizable-across-input-partitions) příznaků, pokud k tomu dojde.
 4.  Jakmile dosahujete poddotaz hranicí výše, začněte přidávat poddotazu na nové úlohy. Počet úloh ke spuštění jako funkce počtu nezávislých dotazů, které by měl být poměrně lineární, za předpokladu, že nemáte žádné zatížení zkosení. Potom můžete prognózy kolik 6 SU úlohy budete muset spustit jako funkce počtu klientů, které chcete pro obsluhu.
-5.  Při použití metody join referenční data pomocí těchto dotazů, měli byste sjednocení, které vstupy dohromady, před spojením s stejný referenční data, pak oddělit události v případě potřeby. Jinak každý referenční data spojení udržuje kopie referenčních dat v paměti, pravděpodobně pěnicí si využití paměti zbytečně.
+5.  Při použití metody join referenční data pomocí těchto dotazů, union vstupy dohromady před spojením s stejný referenční data. Pak oddělit události v případě potřeby. Jinak každý referenční data spojení udržuje kopie referenčních dat v paměti, pravděpodobně pěnicí si využití paměti zbytečně.
 
 > [!Note] 
 > Kolik klientů pro umístění v jednotlivých úlohách?

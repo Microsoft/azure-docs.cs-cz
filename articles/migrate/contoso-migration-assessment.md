@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/26/2018
 ms.author: raynew
-ms.openlocfilehash: 96f9617e8cabbad1919625fb717940443978b007
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 43dfd8e23d02ed1258de2ba0c0bb97dd7cdb66e6
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43046272"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43667886"
 ---
 # <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Migrace Contoso: posouzení vhodnosti místních úloh pro migraci do Azure
 
@@ -285,13 +285,13 @@ Před nasazením virtuálního počítače, Contoso kontroluje, zda je soubor OV
     **Příklad** 
     
     ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3. Vygenerovaná hodnota hash by měla odpovídat následujícímu nastavení (verze 1.0.9.12):
+3. Vygenerovaná hodnota hash by měla odpovídat následujícímu nastavení (verze 1.0.9.14):
 
-    algoritmus | Hodnota hash
+    **Algoritmus** | **Hodnota hash**
     --- | ---
-    MD5 | d0363e5d1b377a8eb08843cf034ac28a
-    SHA1 | df4a0ada64bfa59c37acf521d15dcabe7f3f716b
-    SHA256 | f677b6c255e3d4d529315a31b5947edfe46f45e4eb4dbc8019d68d1d1b337c2e
+    MD5 | 6d8446c0eeba3de3ecc9bc3713f9c8bd
+    SHA1 | e9f5bdfdd1a746c11910ed917511b5d91b9f939f
+    SHA256 | 7f7636d0959379502dfbda19b8e3f47f3a4744ee9453fc9ce548e6682a66f13c
 
 ### <a name="create-the-collector-appliance"></a>Vytvoření zařízení kolektoru
 

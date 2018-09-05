@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2018
+ms.date: 09/04/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 2f5661ddac16a3024335bd633623f7ada2fc5870
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 6d6ee22bd1691f1af6956330b3299a1483c588f7
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42058328"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43696634"
 ---
 # <a name="deploy-the-mysql-resource-provider-on-azure-stack"></a>Nasazení poskytovatele prostředků MySQL ve službě Azure Stack
 
@@ -38,21 +38,20 @@ Existuje několik předpokladů, které musí být splněné před nasazením po
   >[!NOTE]
   >Chcete-li nasadit poskytovatele MySQL na systém, který nemá přístup k Internetu, zkopírujte [mysql-connector-net-6.10.5.msi](https://dev.mysql.com/get/Downloads/Connector-Net/mysql-connector-net-6.10.5.msi) soubor na místní cestu. Zadejte název cesty pomocí **DependencyFilesLocalPath** parametru.
 
-* Poskytovatel prostředků má minimální odpovídající Azure Stack sestavení. Ujistěte se, stáhněte si správnou binární soubor pro verzi služby Azure Stack, kterou používáte:
+* Poskytovatel prostředků má minimální odpovídající Azure Stack sestavení.
 
-    | Verze služby Azure Stack | Verze poskytovatele prostředků MySQL|
+    | Minimální verze služby Azure Stack | Verze poskytovatele prostředků MySQL|
     | --- | --- |
     | Verzi 1804 (1.0.180513.1)|[Poskytovatele prostředků MySQL verze 1.1.24.0](https://aka.ms/azurestackmysqlrp1804) |
-    | Verzi 1802 (1.0.180302.1) | [Poskytovatele prostředků MySQL verze 1.1.18.0](https://aka.ms/azurestackmysqlrp1802)|
     |     |     |
 
-- Ujistěte se, že jsou splněné požadavky na integraci datacenter:
+* Ujistěte se, že jsou splněné požadavky na integraci datacenter:
 
     |Požadavek|Referenční informace|
     |-----|-----|
     |Podmíněné předávání DNS je nastavena správně.|[Integrace datových center Azure Stack – DNS](azure-stack-integrate-dns.md)|
     |Jsou otevřené příchozí porty pro poskytovatele prostředků.|[Azure Stack – integrace datových center – publikování koncových bodů](azure-stack-integrate-endpoints.md#ports-and-protocols-inbound)|
-    |Subjekt certifikátu PKI a po síti SAN jsou správně nastavené.|[Požadavky nasazení Azure Stack povinné infrastruktury veřejných KLÍČŮ](azure-stack-pki-certs.md#mandatory-certificates)<br>[Požadavky nasazení certifikátu PaaS Azure Stack](azure-stack-pki-certs.md#optional-paas-certificates)|
+    |Subjekt certifikátu PKI a po síti SAN jsou správně nastavené.|[Požadavky nasazení Azure Stack povinné infrastruktury veřejných KLÍČŮ](azure-stack-pki-certs.md#mandatory-certificates)[požadavky certifikátu PaaS nasazení Azure Stack](azure-stack-pki-certs.md#optional-paas-certificates)|
     |     |     |
 
 ### <a name="certificates"></a>Certifikáty
@@ -87,6 +86,7 @@ Můžete zadat tyto parametry z příkazového řádku. Pokud ne, nebo pokud lib
 | **AzCredential** | Přihlašovací údaje pro účet správce služby Azure Stack. Použijte stejné přihlašovací údaje, které jste použili k nasazení Azure Stack. | _Vyžaduje_ |
 | **VMLocalCredential** | Přihlašovací údaje pro účet místního správce poskytovatele prostředků MySQL virtuálního počítače. | _Vyžaduje_ |
 | **PrivilegedEndpoint** | IP adresa nebo název DNS privileged koncového bodu. |  _Vyžaduje_ |
+| **AzureEnvironment** | Prostředí azure účet správce služby, které jste použili k nasazení Azure Stack. Povinné, pokud se nejedná o služby AD FS. Názvy prostředí podporované jsou **AzureCloud**, **AzureUSGovernment**, nebo pokud používáte Azure Active Directory Čína, **AzureChinaCloud**. | AzureCloud |
 | **DependencyFilesLocalPath** | Pro integrované systémy pouze váš soubor PFX certifikátu musí být umístěna v tomto adresáři. Odpojené enviroments, stáhněte si [mysql-connector-net-6.10.5.msi](https://dev.mysql.com/get/Downloads/Connector-Net/mysql-connector-net-6.10.5.msi) do tohoto adresáře. Volitelně můžete zkopírovat jeden balíček Windows Update MSU tady. | _Volitelné_ (_povinné_ pro integrované systémy nebo odpojených prostředích) |
 | **DefaultSSLCertificatePassword** | Heslo pro certifikát PFX. | _Vyžaduje_ |
 | **MaxRetryCount** | Počet pokusů, které chcete opakovat každé operace, pokud dojde k selhání.| 2 |

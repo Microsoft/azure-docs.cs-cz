@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 10/27/2016
 ms.author: sumuth
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: f078cad95d39c18a8391bc32100d08accc53c37c
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: f145e879dab4484d647cf8ea21582958df0f0cd4
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215199"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43665718"
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>Nejčastější dotazy k databázím ClearDB MySQL ve službě Azure App Service
 Tyto nejčastější dotazy odpovědi na běžné dotazy týkající se použití a nakupování databází ClearDB MySQL pro Azure Web Apps.
@@ -41,7 +41,7 @@ ClearDB MySQL, který je hostitelem služby je a spravuje MySQL infrastruktury z
 ## <a name="do-i-need-a-credit-card-for-the-web-app--mysql-template-in-the-azure-marketplace"></a>Potřebuji platební kartu pro webová aplikace a MySQL šablony na webu Azure Marketplace?
 To závisí na typu vašeho předplatného, který používáte. Tady jsou některé běžně používané předplatné:
 
-* [Průběžné platby](/offers/ms-azr-0003p/): vyžaduje platební karta a při nákupu placené databáze MySQL se účtuje vaší platební karty.
+* [Průběžné platby](https://azure.microsoft.com/offers/ms-azr-0003p/): vyžaduje platební karta a při nákupu placené databáze MySQL se účtuje vaší platební karty.
 * [Bezplatná zkušební verze](https://azure.microsoft.com/pricing/free-trial/): zahrnuje kredity pro použití s Microsoft Azure services, ale neumožňuje nákup materiály třetích stran. K nákupu služeb třetích stran nebo placené databázi MySQL, budete muset použít platební kartu povolené předplatné. Pro webové aplikace můžete vytvořit bezplatný ClearDB MySQL database.
 * [Předplatné MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/) a **MSDN pro vývoj testování průběžných plateb**: podobně jako v případě bezplatné zkušební verze předplatného MSDN vyžaduje, abyste platební kartu zakoupit placené řešení MySQL od ClearDB.
 * [Smlouvy Enterprise (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/): zákazníky se smlouvou EA se účtují podle příslušné smlouvy EA čtvrtletně pro všechny své nákupy na Azure Marketplace (třetí strany) na samostatné, konsolidované faktury. Bude se vám účtovat mimo peněžní závazek pro nákupy na marketplace. Mějte prosím na paměti, že v tuto chvíli není Azure Store dostupný pro zákazníky, které jsou zaregistrované v Ázerbájdžán, Chorvatsko, Norsko a Portoriko. 
@@ -109,5 +109,5 @@ Správce registrací EA Azure můžete spravovat přístup k webu Azure Marketpl
 Kontakt [Enterprise zákaznickou podporu](http://aka.ms/AzureEntSupport) s ohledem na fakturaci podle jejich registraci smlouvy Enterprise. Tým podpory portál EA se odpověď na vaši otázku nebo váš problém vyřešit.
 
 ## <a name="more-information"></a>Další informace
-[Nejčastější dotazy k Azure Marketplace](/marketplace/faq/)
+[Nejčastější dotazy k Azure Marketplace](https://azure.microsoft.com/marketplace/faq/)
 

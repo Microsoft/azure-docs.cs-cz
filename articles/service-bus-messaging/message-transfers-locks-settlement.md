@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus zprávu přenosy, zámků a vyrovnání | Microsoft Docs
-description: Přehled přenosu zpráv Service Bus a vyrovnání operací
+title: Azure Service Bus přenosy zpráv, zámky a vyrovnání | Dokumentace Microsoftu
+description: Přehled předávání zpráv služby Service Bus a vyrovnání operací
 services: service-bus-messaging
 documentationcenter: ''
 author: clemensv
@@ -12,37 +12,37 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2018
-ms.author: sethm
-ms.openlocfilehash: 4789da3c84d52b2615bf4250a36093a74154e1d4
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.author: spelluru
+ms.openlocfilehash: d4f387d484fe895d8b6c5196c3a5527947ee3925
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/29/2018
-ms.locfileid: "28199028"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43702057"
 ---
-# <a name="message-transfers-locks-and-settlement"></a>Přenosy, zámky a vyrovnání zpráv
+# <a name="message-transfers-locks-and-settlement"></a>Přenosy zpráv, zámky a vyrovnání
 
-Centrální funkce zprostředkovatele zpráv, jako je Service Bus je přijímala zprávy do fronty nebo téma a uložení je k dispozici novější. *Odeslat* je termín, který se běžně používá pro přenos zpráv do zprostředkovatele zpráv. *Přijímat* je termín, často používá pro přenos zpráv pro stahování klienta.
+Centrální funkce zprostředkovatele zpráv, jako je například Service Bus je uložení je dostupné pro pozdější načtení a přijímat zprávy do fronty nebo tématu. *Odeslat* je termín, který se obvykle používá pro přenos zpráv do zprostředkovatele zpráv. *Přijímat* je termín běžně používá pro přenos zpráv načítání klientovi.
 
-Když klient odešle zprávu, obvykle chce vědět, zda zpráva byla správně převede na a přijata zprostředkovatelem, nebo jestli se stala nějaká chyba. Tato kladné a záporné potvrzení vyrovná klienta a zprostředkovatele pochopení týkající se stavu přenos zprávy a je proto označovány jako *vyrovnání*.
+Když klient odešle zprávu, obvykle chce vědět, jestli zpráva byla správně přenos a přijal zprostředkovatele nebo zda došlo k nějaké chyby. Toto potvrzení kladné nebo záporné vyrovná zprostředkovatel vysvětlení týkající se stavu přenos zprávy a klienta a je proto označovány jako *vyrovnání*.
 
-Podobně, pokud zprostředkovatel přenáší zprávy ke klientovi, zprostředkovatele a klienta chcete vytvořit představu o tom, zda zpráva byla úspěšně zpracována a proto může být odebrán nebo jestli doručení zpráv na zpracování se nezdařilo a proto zpráva může být nutné znovu doručit.
+Podobně, pokud zprostředkovatele přenáší zprávy do klienta, zprostředkovatel a klient má k vytvoření a pochopení Určuje, zda zpráva se úspěšně zpracovala a proto je možné odebrat, nebo zda doručováním zpráv nebo zpracování se nezdařilo a proto zpráva může být nutné znovu doručit.
 
 ## <a name="settling-send-operations"></a>Vyrovnání operace odesílání
 
-Pomocí kteréhokoli z podporovaných klientů rozhraní API služby Service Bus, odesílání se operace do služby Service Bus vždy explicitně vyrovnávají, což znamená, že operace rozhraní API čeká na výsledek přijetí ze služby Service Bus příchod a pak dokončí operaci odeslání.
+Pomocí kteréhokoli z podporovaných klientů rozhraní API služby Service Bus, odesílat provoz do služby Service Bus vždy explicitně usadí, což znamená, že operace rozhraní API čeká na výsledek přijetí ze služby Service Bus můžete přejít a pak dokončí operaci odeslání.
 
-Pokud zpráva je odmítnut Service Bus, obsahuje zamítnutí označení chyb a textu pomocí "-id sledování" uvnitř této. Zamítnutí také obsahuje informace o tom, jestli můžete operaci opakovat jakékoli předpokladu úspěch. Tyto informace se v klientovi převedena na výjimku a vyvolá volajícímu operaci odeslání. Pokud zpráva byla přijata, bezobslužně dokončení operace.
+Pokud se ve službě Service Bus zprávu, odmítnutí obsahuje označení chyb a textu s "-id sledování" uvnitř této služby. Odmítnutí obsahuje také informace o Určuje, zda můžete operaci opakovat s jakékoli předpokladem úspěchu. Tyto informace v klientovi, je převedena na výjimku a umocněné na volající operace odeslání. Pokud byla přijata zpráva tiše dokončení operace.
 
-Při použití protokolu AMQP, což je protokol výhradní pro .NET Standard klienta a klient Java a [tedy možnost pro klienta rozhraní .NET Framework](service-bus-amqp-dotnet.md), jsou zřetězena přenosu zpráv a vyrovnání a úplně asynchronní, a doporučujeme použít asynchronní programování variant rozhraní API modelu.
+Při použití protokolu AMQP, což je exkluzivní protokol pro .NET Standard klienta a klientskou sadou Java a [což je možnost pro rozhraní .NET Framework client](service-bus-amqp-dotnet.md), jsou zřetězena zpráva převodů a vyrovnání a zcela asynchronní, a doporučuje se, že používáte varianty asynchronní rozhraní API programovacího modelu.
 
-Odesílatele můžete vložit několik zpráv v drátové síti rychle za sebou aniž byste museli čekat na každou zprávu potvrzení, jako by se jinak mohly případ protokol SBMP nebo s HTTP 1.1. Tyto operace asynchronní odesílání dokončit, protože odpovídající zprávy jsou přijatá a uložená na dělené entity nebo po operaci poslat překrývají různých entit. Dokončených může také dojít mimo pořadí původní odeslání.
+Odesílatel, můžou vložit několik zpráv na lince rychle po sobě aniž byste museli čekat pro každou zprávu potvrzení, protože jinak by tomu bylo u protokolu SBMP nebo pomocí protokolu HTTP 1.1. Tyto operace asynchronního odeslání dokončit, protože přijaty a uložené na dělené entity příslušné zprávy nebo při odesílání operace do překrytí různé entity. Dokončení může také dojít mimo původní pořadí odeslání.
 
-Strategie pro zpracování výsledku operace odesílání může mít vliv na výkon okamžité a důležité pro vaši aplikaci. Příklady v této části jsou napsané v C# a použít ekvivalentně pro Java Futures.
+Strategie pro zpracování výsledku operace odesílání může mít dopad na výkon okamžité zásadní a významné pro vaši aplikaci. Příklady v této části jsou napsané v C# a požádat ekvivalentně Java Futures.
 
-Pokud aplikace vytváří shluky zpráv, zde znázorněný s prostý smyčky a byly kde čekají na dokončení každé odeslání operace před odesláním další zprávy synchronní nebo asynchronní rozhraní API tvarů agentem, odesílání zpráv 10 pouze dokončena po 10 sekvenční úplné zpátečních cest k vyrovnání.
+Pokud aplikace vytvoří nárůstům zprávy, zde znázorněný s prostý smyčky a byly await pro čekání na dokončení každého odeslat operaci před odesláním další zprávy, která je synchronní nebo asynchronní rozhraní API tvary nabídne, odesílání zpráv 10 pouze dokončí za 10 sekvenční úplné zpátečních cest k vyrovnání.
 
-S předpokládané 70 milisekundu TCP vzdálenost umožňujícím zpětnou transformaci latence z místního serveru k Service Bus a poskytnete jenom 10 ms pro Service Bus přijmout a uložte každou zprávu následující zacyklení zabírají nejméně 8 sekund, ne počítání dobu přenosu datová část nebo potenciální trasy zahlcení důsledky:
+Pomocí předpokládá, že 70 milisekund TCP vzdálenost umožňujícím zpětnou transformaci latence z místní lokality do služby Service Bus a poskytuje jenom 10 ms pro Service Bus přijmout a uložit každou zprávu následující smyčka zabírá aspoň 8 sekund mimo dobu přenosu datové části nebo potenciální účinky zahlcení trasy:
 
 ```csharp
 for (int i = 0; i < 100; i++)
@@ -52,9 +52,9 @@ for (int i = 0; i < 100; i++)
 }
 ```
 
-Pokud se aplikace spustí 10 operace asynchronní odesílání bezprostředně za sebou a jejich odpovídajících dokončení čeká samostatně, doba odezvy pro těchto 10 operace odesílání se překrývá. 10 zprávy jsou přeneseny bezprostředně za sebou, potenciálně i sdílení rámce TCP a celková doba trvání přenos do značné míry závisí na související se sítí čas potřebný k získání zprávy přenést do zprostředkovatele.
+Pokud se aplikace spustí 10 operací asynchronního odeslání bezprostředně za sebou a čeká na dokončení jejich odpovídajících samostatně, doby odezvy pro těchto 10 operace odeslání se překrývá. 10 zpráv se přenáší bezprostředně za sebou, potenciálně i sdílení TCP snímků a celková doba trvání přenos do značné míry závisí na související se sítí čas potřebný k získání zpráv přenosu do zprostředkovatele.
 
-Odhad stejné jako u předchozí smyčky, celkový čas provádění překryté pro následující zacyklení může zůstat dobře v části sekundu:
+Odhad stejné jako u předchozí smyčky, celkové doby provádění překrývající následující smyčky může zůstat dobře v části jedné sekundy:
 
 ```csharp
 var tasks = new List<Task>();
@@ -65,9 +65,9 @@ for (int i = 0; i < 100; i++)
 await Task.WhenAll(tasks.ToArray());
 ```
 
-Je důležité si uvědomit, že všechny modely asynchronní programování pomocí určitou formu na základě paměti, skrytý pracovní fronty, který obsahuje čekající operace. Když [SendAsync](/dotnet/api/microsoft.azure.servicebus.queueclient.sendasync#Microsoft_Azure_ServiceBus_QueueClient_SendAsync_Microsoft_Azure_ServiceBus_Message_) (C#) nebo **odeslat** vrátit (Java), odesílání úloh je zařazen do fronty v této pracovní fronty, ale gesto protokol zahájí pouze po zapnout úkolu spuštění. Pro kód, který se obvykle push shluky zprávy a kde spolehlivost obavu potřeba dát pozor, jsou příliš mnoho zpráv put "v cestě" najednou, protože všechny odeslané zprávy zabírají paměť, dokud věcně přenášená byla pozastavena.
+Je důležité si uvědomit, že všechny asynchronní programovací modely použít nějaký způsob založených na paměti, skrytá pracovní fronty, která obsahuje čekající operace. Když [SendAsync](/dotnet/api/microsoft.azure.servicebus.queueclient.sendasync#Microsoft_Azure_ServiceBus_QueueClient_SendAsync_Microsoft_Azure_ServiceBus_Message_) (C#) nebo **odeslat** return (Java), odesílání úloh je ve frontě v této fronty pracovních položek, ale protokol gesta začíná pouze po zapnutí úkolu pro spuštění. Pro kód, který obvykle tak, aby nabízel nárůstem zprávy a kde spolehlivost je důležité zajistit je třeba, že jsou příliš mnoho zprávy vložit "za pochodu" najednou, protože všechny odesílané zprávy se paměť až věcně poslána byla pozastavena.
 
-Semaforů, jak je znázorněno v následující fragment kódu v jazyce C#, jsou synchronizace objekty, které povolit takové úrovni aplikace omezení v případě potřeby. Toto použití semafor umožňuje maximálně 10 zpráv, které mají být v cestě najednou. Jeden z 10 zámky. k dispozici semafor provedena před odesílání a jeho vydání dokončení odesílání. 11 předávání smyčky počká, dokud alespoň jeden z předchozího odešle byla dokončena a potom zpřístupní její uzamčení:
+Semafory, jak je znázorněno v následujícím fragmentu kódu v jazyce C#, jsou objekty synchronizace, které umožňují takové omezení úrovni aplikace v případě potřeby. Toto použití semafor umožňuje maximálně 10 zpráv za pochodu najednou. Jeden 10 uzamčení k dispozici pro spolupráci se před odesílání a uvolní se, jak dokončení odesílání. 11 průchodu smyčky počká, dokud alespoň jeden z předchozího odešle byla dokončena a potom zpřístupní platnost zámku:
 
 ```csharp
 var semaphore = new SemaphoreSlim(10);
@@ -82,7 +82,7 @@ for (int i = 0; i < 100; i++)
 await Task.WhenAll(tasks.ToArray());
 ```
 
-Aplikace by měla **nikdy** zahájení operace asynchronní odesílání způsobem "fire a zapomněli" bez načítání výsledek operace. Díky tomu můžete načíst fronty úloh interní a neviditelná až vyčerpání paměti a zabránit aplikaci v zjišťování odesílání chyb:
+Aplikace by **nikdy** zahájení operace asynchronního odeslání způsobem "vypal a zapomeň" bez načtení výsledek operace. To můžete načíst interní a neviditelná, úlohy fronty až do vyčerpání paměti a zabránit aplikaci v odhalování chyb odesílání:
 
 ```csharp
 for (int i = 0; i < 100; i++)
@@ -92,35 +92,35 @@ for (int i = 0; i < 100; i++)
 }
 ```
 
-U klientů nižší úrovně AMQP Service Bus přijme také "předem vyrovnané" přenosů. Předem vyrovnané přenosu je ještě efektivněji a zapomněli operaci, pro který výsledek v obou případech není hlášena zpět klientovi a zpráva se považuje za vyrovnané při odeslání. Nedostatek zpětnou vazbu klientovi také znamená, že je k dispozici pro diagnostiku, což znamená, že tento režim není způsobilá o pomoc prostřednictvím podpory Azure žádná řešitelné data.
+U klientů nižší úrovně AMQP přijímá také služby Service Bus "předem vyrovnané" přenosy. Předem vyrovnané přenosu je fire a zapomenout operace, pro kterou výsledek v obou případech není hlášeny zpět do klienta a zpráva se považuje za vyrovnané při odeslání. Chybějící zpětnou vazbu, která klient také znamená, že nejsou žádná data potřebná k dispozici pro diagnostiku, což znamená, že tento režim nesplňuje o pomoc prostřednictvím podpory Azure.
 
-## <a name="settling-receive-operations"></a>Operace vyrovnání příjmu.
+## <a name="settling-receive-operations"></a>Vyrovnání operace příjmu
 
-Pro příjem operace, rozhraní API služby Service Bus klientů povolte dvou různých režimech explicitní: *přijetí a odstranění* a *funkce Náhled zámku*.
+Pro operace příjmu, rozhraní API služby Service Bus klientům povolit dvou různých režimech explicitní: *přijmout a odstranit* a *neboli Peek-Lock*.
 
-[Přijetí a odstranění](/dotnet/api/microsoft.servicebus.messaging.receivemode) režimu informuje zprostředkovatele vzít v úvahu všechny zprávy odešle přijímající klientovi jako vyrovnané při zpracování odeslaných. To znamená, že zpráva považuje za spotřebované co nejrychleji zprostředkovatel má umístí jej do sítě. Pokud se přenos zpráv nezdaří, dojde ke ztrátě zprávy.
+[Přijmout a odstranit](/dotnet/api/microsoft.servicebus.messaging.receivemode) režimu říká zprostředkovatele vzít v úvahu všechny zprávy, odešle klientovi přijímající jako vyrovnané při odeslání. To znamená, že zprávy se považuje za spotřebované jako zprostředkovatel má umístěny na lince. Pokud přenos zpráv selže, dojde ke ztrátě zprávy.
 
-Vzhůru tento režim je, že příjemce není třeba provádět další akce na zprávu, není také zpomalit tím, že pro výsledek vyrovnání. Pokud data obsažená v jednotlivých zpráv nízkou hodnotu nebo jsou pouze pro velmi krátké době smysluplný, tento režim je vhodná volba.
+Vzhůru tento režim je, že příjemce není potřeba provádět další akce na zprávy a také není způsobenému čekáte na výsledek řešení. Pokud data obsažená v jednotlivých zpráv s nízkou hodnotou a/nebo jsou pouze smysl pro velmi krátké době, tento režim je vhodná volba.
 
-[Funkce Náhled zámku](/dotnet/api/microsoft.servicebus.messaging.receivemode) režimu informuje zprostředkovatele, aby přijímající klient chce explicitně vyrovnat přijatých zpráv. Zpráva je k dispozici pro příjemce ke zpracování, zatímco uchovávat v části výhradní zámek v rámci služby, aby příjemci, které konkurence mezi nelze zobrazit. Doba trvání zámku původně definovanou na úrovni fronty nebo předplatné a je možné rozšířit pomocí vlastnícího zámek, prostřednictvím klienta [RenewLock](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_RenewLockAsync_System_String_) operaci.
+[Neboli Peek-Lock](/dotnet/api/microsoft.servicebus.messaging.receivemode) režimu určuje zprostředkovatele, přijímající klienta chce explicitně vyrovnat přijaté zprávy. Zprávu je k dispozici pro příjemce a jejich zpracování, dokud držen pod výhradní zámek ve službě, aby ostatní, konkurenčních příjemců nemůže zobrazit. Doba trvání zámku je zpočátku definované na úrovni fronty nebo odběru a je možné rozšířit pomocí klienta, prostřednictvím vlastnící zámek, [RenewLock](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_RenewLockAsync_System_String_) operace.
 
-Pokud zprávu uzamčen, ostatní klienti přijímající ze stejné fronty nebo předplatné můžete provádět zámky a načítat další zprávy k dispozici není v části active zámku. Až bude zámek ve zprávě explicitně vydaná nebo když vyprší platnost zámek, zpráva se zobrazí zpět nebo blízko před pořadí načtení pro opakované dodání.
+Pokud se zpráva uzamkne, ostatní klienti přijímající ze stejné fronty nebo odběru můžete provádět na zámků a načíst další dostupné zprávy není pod aktivní zámku. Pokud je explicitně uvolněn zámek u zprávy, nebo když vyprší platnost zámku, zobrazí zpráva s zpět na nebo blízko ní přední pořadí načítání pro opakované dodání.
 
-Pokud zpráva opakovaně vydání příjemci nebo umožňují zámek uplynout pro definovaný počet ([maxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount#Microsoft_ServiceBus_Messaging_QueueDescription_MaxDeliveryCount)), automaticky odebrána z fronty nebo předplatné a umístí do přidruženého zprávy frontu nedoručených zpráv.
+Když příjemci opakovaně vydal zprávu nebo umožňují zámek uplynout pro definovaný počet ([maxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount#Microsoft_ServiceBus_Messaging_QueueDescription_MaxDeliveryCount)), automaticky odebrány z fronty nebo odběru a umístí do přidruženého zprávy fronty nedoručených zpráv.
 
-Přijímající klient zahájí vyrovnání přijaté zprávy s kladné potvrzení při volání [Complete](/dotnet/api/microsoft.servicebus.messaging.queueclient.complete#Microsoft_ServiceBus_Messaging_QueueClient_Complete_System_Guid_) na úrovni rozhraní API. To znamená pro zprostředkovatele, že zpráva byla úspěšně zpracována a zpráva je odebrána z fronty nebo předplatné. Odpovědi zprostředkovatele k příjemce vyrovnání záměr odpovědi, která určuje, zda může být provedeno vyrovnání.
+Přijímající klienta iniciuje vyrovnání přijatou zprávu s kladné potvrzení při volání [Complete](/dotnet/api/microsoft.servicebus.messaging.queueclient.complete#Microsoft_ServiceBus_Messaging_QueueClient_Complete_System_Guid_) na úrovni rozhraní API. To znamená do zprostředkovatele, zpráva se úspěšně zpracovala a zpráva je odebrána z fronty nebo odběru. Odpověď zprostředkovatele na záměr vyrovnání příjemce odpověď, která označuje, zda může být provedena vyrovnání.
 
-Pokud přijímající klient nepodaří zpracovat zprávu, ale chce, aby se zpráva, která má být víckrát, můžete pro zprávu, která se neuvolní a odemčený okamžitě voláním explicitně požádat [Abandon](/dotnet/api/microsoft.servicebus.messaging.queueclient.abandon) nebo nemusí provádět žádnou akci a nechat uplynout zámek.
+Při přijímání klienta se nepodaří zpracovat zprávu, ale chce, aby se zpráva, která má být víckrát, můžete explicitně požádat o zpráva, která má být všeobecně dostupné a odemčený okamžitě voláním [opustit](/dotnet/api/microsoft.servicebus.messaging.queueclient.abandon) nebo nemusí provádět žádnou akci a nechat uplynout zámek.
 
-Pokud přijímající klient nepodaří zprávu zpracovat a ví, že redelivering zprávy a opakováním operace nepomůže, ho odmítnout zprávy, která přesune ho do fronty nedoručených zpráv voláním [nedoručených zpráv](/dotnet/api/microsoft.servicebus.messaging.queueclient.deadletter), což také Umožňuje nastavení vlastní vlastnost včetně důvod kód, který se dá načíst pomocí zpráv z fronty nedoručených zpráv.
+Pokud přijímající klient nepodaří zprávu zpracovat a ví, že redelivering zprávy a opakováním operace nepomůže, může zamítnout zprávy, které přesouvá ji do fronty nedoručených zpráv voláním [nedoručených zpráv](/dotnet/api/microsoft.servicebus.messaging.queueclient.deadletter), což také Umožňuje nastavit vlastní vlastnosti, včetně důvodu kód, který je možné načíst zprávy z fronty nedoručených zpráv.
 
 Zvláštním případem vyrovnání je odložení, která je popsána v věnovaný samostatný článek.
 
-**Complete** nebo **nedoručených zpráv** operace a taky **RenewLock** operace mohou selhat kvůli problémům se sítí, pokud vypršela platnost udržovaných zámek, nebo existuje jiné podmínky straně služby, které brání vyrovnání. V jednom z posledních případech službu odešle záporné potvrzení této povrchy jako výjimku v klientech rozhraní API. Pokud z důvodu je porušený síťového připojení, zámek je vyřazeno, protože sběrnice nepodporuje obnovení existující AMQP odkazy na jiné připojení.
+**Complete** nebo **nedoručených zpráv** operace také **RenewLock** operací může selhat kvůli problémům se sítí, pokud vlastněnou zámku již vypršela, nebo existují jiné podmínky straně služby, které brání v řešení. V jednom z posledních případech služba odesílá negativní potvrzení tohoto zařízení Surface jako výjimku v klientech rozhraní API. Pokud z důvodu je přerušené síťové připojení, zámek se zahodí od služby Service Bus nepodporuje obnovení existující AMQP odkazy na jiné připojení.
 
-Pokud **Complete** selže, které dochází obvykle na konci velmi zpracování zpráv a v některých případech po minutách práce zpracování má přijímající aplikace můžete rozhodnout, jestli zachovává stav práce a ignoruje stejné zprávy při doručení podruhé, nebo zda tosses na výsledek pracovní a opakuje jako zprávu, která je víckrát.
+Pokud **Complete** selže, což spadá obvykle na konci velmi zpracování zpráv a v některých případech po minutách práce zpracování přijímající aplikace můžete rozhodnout, zda zachovává stav práce a ignoruje stejné zprávy při doručení podruhé, nebo zda tosses si výsledek práce a zopakují. jako zprávu, která je víckrát.
 
-Typické mechanizmus pro identifikaci dodávky duplicitní zpráva se kontrolou zpráva id, které můžete a musí být nastavena odesílatele, aby jedinečnou hodnotu, může být v souladu s identifikátorem z původní procesu. Plánovač úloh by pravděpodobně nastaví id zprávy na identifikátor úkol, který se pokouší přiřadit k pracovnímu procesu se daný pracovní proces a pracovní proces by druhého výskytu přiřazení úlohy ignorovat, pokud tuto úlohu je už hotové.
+Typické mechanismus pro identifikaci duplicitních zpráv doručení je tak, že zkontrolujete – id zprávy, které dokáže a nastavte odesílatel na jedinečnou hodnotu, může být zarovnána s identifikátorem z původní procesu. Plánovač úloh by pravděpodobně nastaví id zprávy na identifikátor úlohy, které se pokouší přiřadit k pracovnímu procesu s danou pracovních procesů a pracovní proces by druhým výskytem přiřazení úlohy ignorovat, pokud se tato úloha se už dokončilo.
 
 ## <a name="next-steps"></a>Další postup
 

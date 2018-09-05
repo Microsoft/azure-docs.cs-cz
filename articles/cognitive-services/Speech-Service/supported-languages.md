@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 04/28/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 7e2634db33d760207e9190b9955bd1f2ead179be
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: de9abac2839341e1744a694daaaa0befdff4e7fa
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123150"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43668576"
 ---
 # <a name="supported-languages-for-speech-service"></a>Podporované jazyky pro Speech service
 
@@ -39,7 +39,7 @@ Rozpoznávání řeči Microsoft rozhraní API podporuje následující jazyky.
 
 ## <a name="text-to-speech"></a>Převod textu na řeč
 
-**Převod textu na řeč** API nabízí následující hlasů, z nichž každý podporuje konkrétní jazyku a dialektu, identifikovat podle národního prostředí.
+Rozhraní API syntézu řeči nabízí následující hlasů, z nichž každý podporuje konkrétní jazyku a dialektu, identifikovat podle národního prostředí.
 
 Národní prostředí | Jazyk | Pohlaví | Název mapování služby
 -------|----------|---------|--------------------
@@ -128,13 +128,16 @@ zh-TW | Čínština (Tchaj-wan)|Žena | "Microsoft serveru řeči Text na řeč 
 
 ### <a name="customization"></a>Přizpůsobení
 
-Vlastní **převod textu na řeč** hlasová písma podporovat angličtinu (en US) a čínština (zh-CN).
+Přizpůsobení hlasu je k dispozici pro Americkou angličtinu (en US), Španělsko čínština (zh-CN) a italština (it-IT).
+
+> [!NOTE]
+> Školení italsky začíná u datové sady projevy 2 000 +. Čínština – angličtina dvojjazyčné modely jsou podporovány také počáteční datovou sadu 2 000 + projevy.
 
 ## <a name="speech-translation"></a>Překlad řeči
 
 **Překlad řeči** rozhraní API podporuje různé jazyky pro překlad řeči řeči a rozpoznávání řeči na text. Zdrojový jazyk musí být vždy v následující tabulce řeči, jazyka. Dostupné jazyky cílové závisí na tom, zda cílový překlad řeči nebo text.
 
-Můžete získat seznam jazyků, buď prostřednictvím kódu programu nebo pomocí koncového bodu rozhraní REST API jazyků. V seznamu jsou uvedeny každý kód jazyka, jakož i název jazyka v angličtině, nebo v jakýkoli jiný podporovaný jazyk. Tento seznam se aktualizuje pomocí služby Microsoft Translator pokaždé, když bude k dispozici nový jazyk.
+Můžete získat seznam jazyků programově pomocí rozhraní REST API jazyků koncový bod. V seznamu jsou uvedeny každý kód jazyka, jakož i název jazyka v angličtině, nebo v jakýkoli jiný podporovaný jazyk. Tento seznam se aktualizuje pomocí služby Microsoft Translator pokaždé, když bude k dispozici nový jazyk.
 
 ### <a name="speech-languages"></a>Jazyků pro řeč
 
