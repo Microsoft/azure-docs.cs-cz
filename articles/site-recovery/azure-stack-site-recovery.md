@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: site-recovery
 ms.date: 08/30/2018
 ms.author: raynew
-ms.openlocfilehash: ab25e15c450dd60bf0833201517bab3d5c6ea569
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: c71f683355a09c8ba2381db406eeb1ccabdb7afa
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43345051"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697692"
 ---
 # <a name="replicate-azure-stack-vms-to-azure-preview"></a>Replikace virtuálních počítačů Azure stacku pro Azure (preview)
 
@@ -78,7 +78,7 @@ Zde je, co je potřeba nastavit tento scénář.
 
 ### <a name="prerequisites-for-the-configuration-server"></a>Požadavky na konfiguračním serveru
 
-[!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-and-scaleout-process-server-requirements.md)]
+[!INCLUDE [site-recovery-config-server-reqs-physical](../../includes/site-recovery-config-server-reqs-physical.md)]
 
 
  

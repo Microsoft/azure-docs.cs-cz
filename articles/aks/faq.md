@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: iainfou
-ms.openlocfilehash: b910b6cdf55ae7c2a220543bdb555d8e9bff59a0
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: f4bc7724c0bc288ab269d1b3ec054bd1a6ba26e3
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42058689"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43701190"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Nejčastější dotazy o Azure Kubernetes Service (AKS)
 
@@ -58,7 +58,7 @@ Pokud jste vytvořili prostředky pro použití s vaším clusterem AKS, jako je
 
 ## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-mc-resource-group"></a>Můžete upravit značky a dalších vlastností AKS prostředky ve skupině prostředků MC_ *?
 
-Úprava a odstranění značek a dalších vlastností prostředků v rámci *MC_** skupina prostředků může vést k neočekávaným výsledkům, například škálování a upgradu chyby. Úprava prostředků v rámci *MC_** v AKS cluster, přestane fungovat cíle na úrovni služby.
+Úprava a odstranění značky Azure vytvořilo a dalších vlastností prostředků v rámci *MC_** skupina prostředků může vést k neočekávaným výsledkům, například škálování a upgradu chyby. Podporuje se vytvářet a upravovat další vlastní značky, například přiřadit obchodní jednotky nebo nákladů centra. Úprava prostředků v rámci *MC_** v AKS cluster, přestane fungovat cíle na úrovni služby.
 
 ## <a name="what-kubernetes-admission-controllers-does-aks-support-can-admission-controllers-be-added-or-removed"></a>Jaké řadiče jejich příchodu Kubernetes AKS podporuje? Můžete jejich příchodu řadiče přidat nebo odebrat?
 

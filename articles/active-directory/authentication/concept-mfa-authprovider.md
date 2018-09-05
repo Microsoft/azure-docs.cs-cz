@@ -5,25 +5,28 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 09/01/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 4a6ce07bfe641d9efdbe0eac841bb4f27f468b34
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: b601a3d23b23faa16925881a54e2ceba85c800f8
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39161460"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43669061"
 ---
 # <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>Kdy použít poskytovatele Azure Multi-Factor Authentication
 
 Dvoustupňové ověřování je k dispozici ve výchozím nastavení pro globální správce, kteří mají uživatele služeb Azure Active Directory a Office 365. Pokud ale budete chtít využívat výhod [pokročilých funkcí](howto-mfa-mfasettings.md) měli byste si zakoupit plnou verzi Azure Multi-Factor Authentication (MFA).
 
-Poskytovatel ověřování Azure Multi-Factor Auth umožňuje využít výhod funkcí poskytovaných plnou verzí Azure MFA. Je pro uživatele, kteří **nemají licence prostřednictvím Azure MFA, Azure AD Premium nebo sady, které zahrnují Azure AD Premium nebo Azure MFA**. Azure MFA a Azure AD Premium zahrnují plnou verzi Azure MFA ve výchozím nastavení.
+Poskytovatele Azure Multi-Factor Auth umožňuje využít výhod funkcí poskytovaných službou Azure Multi-Factor Authentication pro uživatele, kteří **nemají licence**. 
 
 Pokud máte licence, které pokrývají všechny uživatele ve vaší organizaci, pak nepotřebujete poskytovatele Azure Multi-Factor auth. Vytvoření poskytovatele ověřování Azure Multi-Factor Authentication, pouze v případě, že budete taky muset zadat dvoustupňové ověřování pro uživatele, kteří nemají licence.
+
+> [!NOTE]
+> Může vytvořit už nebude platit 1. září 2018 nové zprostředkovatelé vícefaktorového ověřování. Existující zprostředkovatelé vícefaktorového ověřování nadále používat a aktualizovat. Ověřování službou Multi-Factor Authentication bude i nadále k dispozici funkce v licence Azure AD Premium.
 
 ## <a name="caveats-related-to-the-azure-mfa-sdk"></a>Upozornění související s Azure MFA SDK
 
@@ -62,7 +65,7 @@ Pomocí následujícího postupu vytvoříte poskytovatele služby Azure Multi-F
 
 Po vytvoření poskytovatele MFA není možné změnit model použití (na povoleného uživatele nebo na ověření). Můžete však poskytovatele MFA odstranit a potom vytvořit nového s jiným modelem použití.
 
-Pokud je aktuální poskytovatel Multi-Factor Auth přidružený k adresáři Azure AD (označovaný také jako tenant Azure AD), můžete poskytovatele MFA bezpečně odstranit a vytvořit nového, který je propojený se stejným tenantem Azure AD. Případně pokud jste zakoupili dostatek MFA, Azure AD Premium nebo sady, které zahrnují licence Azure AD Premium nebo Azure MFA pro pokrytí všech uživatelů s povoleným vícefaktorovým Ověřováním, můžete můžete poskytovatele MFA odstranit úplně.
+Pokud je aktuální poskytovatel Multi-Factor Auth přidružený k adresáři Azure AD (označovaný také jako tenant Azure AD), můžete poskytovatele MFA bezpečně odstranit a vytvořit nového, který je propojený se stejným tenantem Azure AD. Případně pokud jste zakoupili dostatek licencí pro pokrytí všech uživatelů s povoleným vícefaktorovým Ověřováním, můžete můžete poskytovatele MFA odstranit úplně.
 
 Pokud poskytovatel MFA není propojený s tenantem Azure AD nebo pokud propojujete poskytovatele MFA s jiným tenantem Azure AD, uživatelská nastavení a možnosti konfigurace se nepřenesou. Je také potřeba znovu aktivovat stávající Azure MFA Servery pomocí přihlašovacích údajů pro aktivaci vygenerovaných prostřednictvím nového poskytovatele MFA. Opětovná aktivace MFA serverů za účelem jejich propojení s novým poskytovatelem MFA nemá vliv, telefonního hovoru a textové zprávy ověřování, ale oznámení mobilní aplikace přestanou fungovat pro všechny uživatele do opětovné aktivace mobilní aplikace.
 

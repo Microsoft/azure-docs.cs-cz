@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 06/27/2018
+ms.date: 08/30/2018
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: 5c2088ab39e32c049ce867698e84efba759c9a87
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 7f16f53af7d1c2f46c5c61974601833fafc8f828
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37447332"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43698770"
 ---
 # <a name="make-a-virtual-machine-image-available-in-azure-stack"></a>Zpřístupnit image virtuálního počítače ve službě Azure Stack
 
@@ -37,7 +37,7 @@ Image musí být možné odkazovat identifikátor URI úložiště objektů blob
 
 1. [Nahrání image virtuálního počítače Windows Azure pro nasazení Resource Manager](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/) nebo image Linuxu, postupujte podle pokynů v tématu [nasaďte Linuxové virtuální počítače v Azure stacku](azure-stack-linux.md). Před nahráním image, je důležité vzít v úvahu následující faktory:
 
-   - Podporuje Azure Stack pevné disky s pevným formátem. Pevný formát logický disk lineárně v rámci souboru, struktur, takže posun disku o X je uložen v objektu blob s posunem X. Malé zápatí na konci objektu blob popisuje vlastnosti virtuálního pevného disku. Pokud chcete potvrdit, pokud je oprava disku, použijte [Get-VHD](https://docs.microsoft.com/powershell/module/hyper-v/get-vhd?view=win10-ps) příkaz prostředí PowerShell.  
+   - Azure Stack jenom podporuje generování jedno (1) virtuální počítač ve virtuální pevný disk pevný disk naformátovat. Oprava format struktury logický disk lineárně v rámci souboru, takže posun disku o X je uložen v objektu blob s posunem X. Malé zápatí na konci objektu blob popisuje vlastnosti virtuálního pevného disku. Pokud chcete potvrdit, pokud je oprava disku, použijte [Get-VHD](https://docs.microsoft.com/powershell/module/hyper-v/get-vhd?view=win10-ps) příkaz prostředí PowerShell.  
 
     > [!IMPORTANT]
     >  Azure Stack nepodporuje dynamického disku VHD. Změna velikosti dynamický disk, který je připojen k virtuálnímu počítači ponechá virtuální počítač ve stavu selhání. Chcete-li tento problém zmírnit, odstraňte virtuální počítač bez odstranění disku Virtuálního počítače, objekt blob VHD v účtu úložiště. Převést virtuální pevný disk z dynamický disk na pevný disk a znovu vytvořte virtuální počítač.
@@ -48,7 +48,7 @@ Image musí být možné odkazovat identifikátor URI úložiště objektů blob
 
    * Poznamenejte si úložiště objektů blob v identifikátoru URI, kde jste tuto image odeslat. Identifikátor URI objektu blob úložiště má následující formát: *&lt;storageAccount&gt;/&lt;blobContainer&gt;/&lt;targetVHDName&gt;* VHD.
 
-   * Pokud chcete zpřístupnit tento objekt blob anonymně, přejděte na kontejner objektů blob v účtu úložiště kde virtuálního pevného disku image virtuálního počítače na server nebyl nahrán. Vyberte **Blob**a pak vyberte **zásady přístupu**. Volitelně můžete místo toho vygenerovat sdílený přístupový podpis kontejneru a zahrnout ho jako součást identifikátor URI objektu blob.
+   * Pokud chcete zpřístupnit tento objekt blob anonymně, přejděte na kontejner objektů blob v účtu úložiště kde virtuálního pevného disku image virtuálního počítače na server nebyl nahrán. Vyberte **Blob**a pak vyberte **zásady přístupu**. Volitelně můžete místo toho vygenerovat sdílený přístupový podpis kontejneru a zahrnout ho jako součást identifikátor URI objektu blob. Tento krok zajistí, že se že objekt blob je možné použít pro přidání tohoto jako obrázek. Pokud se objekt blob není dostupné anonymně, image virtuálního počítače bude vytvořena ve stavu selhání.
 
    ![Přejít na objektech blob na účtu úložiště](./media/azure-stack-add-vm-image/image1.png)
 
@@ -102,7 +102,7 @@ Image musí být možné odkazovat identifikátor URI úložiště objektů blob
   - **sku**  
     Příklad: `14.04.3-LTS`  
     Název segmentu skladovou Položku Image virtuálního počítače, který uživatelé použít, když nasadí image virtuálního počítače. Příkladem je **Datacenter2016**. V tomto poli nezahrnují mezera nebo speciální znaky.  
-  - **verze**  
+  - **Verze**  
     Příklad: `1.0.0`  
     Verze Image virtuálního počítače, který uživatelé použít, když nasadí image virtuálního počítače. Tato verze je ve formátu  *\#.\#. \#*. Příkladem je **1.0.0**. V tomto poli nezahrnují mezera nebo speciální znaky.  
   - **osType**  
@@ -206,7 +206,7 @@ Pokud už nepotřebujete image virtuálního počítače, který jste nahráli, 
   - **sku**  
     Příklad: `14.04.3-LTS`  
     Název segmentu skladovou Položku Image virtuálního počítače, který uživatelé použít, když nasadí image virtuálního počítače. Příkladem je **Datacenter2016**. V tomto poli nezahrnují mezera nebo speciální znaky.  
-  - **verze**  
+  - **Verze**  
     Příklad: `1.0.0`  
     Verze Image virtuálního počítače, který uživatelé použít, když nasadí image virtuálního počítače. Tato verze je ve formátu  *\#.\#. \#*. Příkladem je **1.0.0**. V tomto poli nezahrnují mezera nebo speciální znaky.  
     
