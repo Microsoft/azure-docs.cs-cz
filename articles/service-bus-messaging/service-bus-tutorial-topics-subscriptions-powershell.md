@@ -9,12 +9,12 @@ ms.date: 05/22/2018
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: 05c30504eb9b4440694f78ee979d4b25f30f65dc
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 6246e951cb9b1e0b4dac656fef6acf8027e79271
+ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237960"
+ms.lasthandoff: 08/28/2018
+ms.locfileid: "43126547"
 ---
 # <a name="tutorial-update-inventory-using-powershell-and-topicssubscriptions"></a>Kurz: Aktualizace zásob pomocí prostředí PowerShell a témat/odběrů
 
@@ -32,7 +32,7 @@ V tomto kurzu se naučíte:
 
 V tomto scénáři pracujeme s příkladem aktualizace sortimentu zásob pro několik prodejen. Každá prodejna nebo sada prodejen v našem příkladu přijímá zprávy s pokyny, jak konkrétně má aktualizovat sortiment. Tento kurz vysvětluje, jak tento scénář využívající odběry a filtry implementujete. Nejprve vytvoříte téma se třemi odběry, přidáte pravidla a filtry a potom z tématu a odběrů odešlete zprávy a přijmete je.
 
-![fronta](./media/service-bus-quickstart-powershell/quick-start-queue.png)
+![téma](./media/service-bus-tutorial-topics-subscriptions-powershell/about-service-bus-topic.png)
 
 Pokud ještě nemáte předplatné Azure, vytvořte si nejprve [bezplatný účet][].
 
@@ -47,7 +47,7 @@ Tento kurz vyžaduje použití nejnovější verze Azure PowerShellu. Pokud Powe
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="log-in-to-azure"></a>Přihlášení k Azure
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Pomocí následujících příkazů se přihlaste k Azure. Tyto kroky nejsou potřebné, pokud příkazy PowerShellu spouštíte ve službě Cloud Shell: 
 
@@ -72,7 +72,7 @@ Pomocí následujících příkazů se přihlaste k Azure. Tyto kroky nejsou pot
 
 ## <a name="provision-resources"></a>Zřízení prostředků
 
-Po přihlášení do Azure pomocí následujících příkazů zřiďte prostředky služby Service Bus. Nezapomeňte všechny zástupné symboly nahradit příslušnými hodnotami:
+Po přihlášení k Azure pomocí následujících příkazů zřiďte prostředky služby Service Bus. Nezapomeňte všechny zástupné symboly nahradit příslušnými hodnotami:
 
 ```azurepowershell-interactive
 # Create a resource group 

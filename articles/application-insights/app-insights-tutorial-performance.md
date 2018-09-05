@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 8489992303425cc00c15994b55ade958d77549e4
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 4ce4c9e2479c8d570766169ce5094dcc2b4bc511
+ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
-ms.locfileid: "29969130"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42812867"
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Vyhledání a diagnostika problémů s výkonem pomocí Azure Application Insights
 
@@ -53,27 +53,20 @@ Application Insights shromažďuje podrobnosti o výkonu různých operací ve v
 
     ![Panel Výkon](media/app-insights-tutorial-performance/performance-blade.png)
 
-3. Graf aktuálně ukazuje průměrnou dobu trvání všech operací v průběhu času.  Připnutím na graf přidejte operace, které vás zajímají.  Ukazuje se, že by bylo vhodné prošetřit několik vrcholů.  Proveďte další izolaci zúžením časového okna grafu.
+3. Graf aktuálně ukazuje průměrnou dobu trvání vybraných operací v průběhu času. Pokud chcete najít problémy s výkonem, můžete přepnout na 95. percentil. Připnutím na graf přidejte operace, které vás zajímají.  Ukazuje se, že by bylo vhodné prošetřit několik vrcholů.  Proveďte další izolaci zúžením časového okna grafu.
 
     ![Připnutí operací](media/app-insights-tutorial-performance/pin-operations.png)
 
-4.  Kliknutím na operaci zobrazíte na pravé straně její panel Výkon. Ten zobrazuje distribuci doby trvání různých požadavků.  Uživatelé si obvykle všimnou pomalého výkonu po přibližně půl sekundě, takže zužte okno na požadavky trvající déle než 500 milisekund.  
+4.  Panel Výkon na pravé straně ukazuje distribuci doby trvání různých požadavků pro vybranou operaci.  Zmenšete časové okno tak, aby začínalo přibližně na 95. percentilu. Na kartě přehledu Nejčastější 3 závislosti můžete na první pohled zjistit, že na pomalé transakce mají pravděpodobně vliv externí závislosti.  Kliknutím na tlačítko s počtem ukázek zobrazíte seznam ukázek. Pak můžete vybrat libovolnou ukázku a zobrazit podrobnosti o transakci.
 
     ![Distribuce doby trvání](media/app-insights-tutorial-performance/duration-distribution.png)
 
-5.  V tomto příkladu vidíte, že zpracování velkého počtu požadavků trvá déle než sekundu. Podrobnosti o této operaci můžete zobrazit kliknutím na **Podrobnosti o operaci**.
+5.  Na první pohled vidíte, na celkovou dobu trvání transakce má největší vliv volání tabulky Azure Fabrikamaccount. Také vidíte, že výjimka způsobila jeho selhání. Kliknutím na libovolnou položku v seznamu můžete na pravé straně zobrazit její podrobnosti. [Další informace o prostředí pro diagnostiku transakcí](app-insights-transaction-diagnostics.md)
 
     ![Podrobnosti o operaci](media/app-insights-tutorial-performance/operation-details.png)
+    
 
-    > [!NOTE]
-    Povolte [prostředí ve verzi Preview](app-insights-previews.md) Unified details: E2E Transaction Diagnostics (Sjednocené podrobnosti: Diagnostika transakcí E2E) a zobrazte veškerou související telemetrii na straně serveru, jako jsou požadavky, závislosti, výjimky, trasování, události atd., v jednom zobrazení na celou obrazovku. 
-
-    S povolenou verzí Preview můžete zobrazit čas strávený ve volání závislostí i případné chyby nebo výjimky v jednotném prostředí. V případě transakcí mezi komponentami vám graf Gantt společně s podoknem podrobností může pomoct rychle diagnostikovat komponentu, závislost nebo výjimku, která je původní příčinou. Můžete rozbalit dolní část a zobrazit časový průběh jakéhokoli trasování nebo událostí shromážděných pro vybranou operaci komponenty. [Další informace o novém prostředí](app-insights-transaction-diagnostics.md)  
-
-    ![Diagnostika transakcí](media/app-insights-tutorial-performance/e2e-transaction-preview.png)
-
-
-6.  Informace, které jste zatím shromáždili, pouze potvrzují pomalý výkon, ale téměř nijak nepomáhají dostat se k původní příčině.  **Profiler** vám s tím pomůže díky zobrazení skutečného kódu spuštěného pro příslušnou operaci a času, který zabraly jednotlivé kroky. Vzhledem k tomu, že se profiler spouští pravidelně, některé operace nemusejí mít trasování.  V průběhu času by trasování mělo mít více operací.  Pokud chcete pro operaci spustit profiler, klikněte na **Trasování Profileru**.
+6.  **Profiler** pomáhá s podrobnější diagnostikou na úrovni kódu díky zobrazení skutečného kódu spuštěného pro příslušnou operaci a času, který zabraly jednotlivé kroky. Vzhledem k tomu, že se profiler spouští pravidelně, některé operace nemusejí mít trasování.  V průběhu času by trasování mělo mít více operací.  Pokud chcete pro operaci spustit profiler, klikněte na **Trasování Profileru**.
 5.  Trasování zobrazí pro každou operaci jednotlivé události, takže můžete diagnostikovat původní příčinu v průběhu celé operace.  Klikněte na jeden z horních příkladů s nejdelší dobou trvání.
 6.  Kliknutím na **Zobrazit kritickou cestu** zvýrazněte konkrétní cestu událostí, které se nejvíce podílejí na celkové době trvání operace.  V tomto příkladu vidíte, že nejpomalejší volání pochází z metody *FabrikamFiberAzureStorage.GetStorageTableData*. Částí, která trvá nejdéle, je metoda *CloudTable.CreateIfNotExist*. Pokud se tento řádek kódu provádí při každém volání funkce, budou se spotřebovávat zbytečná síťová volání a prostředky procesoru. Nejlepším způsobem, jak kód opravit, je vložit tento řádek do některé metody po spuštění, která se provede pouze jednou. 
 
