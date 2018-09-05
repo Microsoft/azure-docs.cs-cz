@@ -1,24 +1,24 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: b741e9fd30119aaeb5248ae3fae906a70cb163e4
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: fe78cdfefb8062d3d576937afd133905e1787a8d
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43144824"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43698797"
 documentType: LandingData
 title: Dokumentace ke službě Azure Service Bus Relay
 metadata:
   title: Dokumentace ke službě Azure Service Bus Relay
   meta.description: Learn how the Azure Relay service work in a hybrid cloud and on-premises environment, complete with how to, Tutorials, videos, API references, and more.
   services: service-bus-relay
-  author: sethmanheim
-  manager: timlt
+  author: spelluru
+  manager: femila
   ms.service: service-bus-relay
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 08/21/2018
-  ms.author: sethm
+  ms.author: spelluru
 abstract:
   description: Služba Azure Relay podporuje hybridní aplikace mezi místními a cloudovými prostředími v rámci podnikové sítě a veřejného cloudu, a to bez nutnosti otevřít připojení brány firewall nebo provést výraznější změny v infrastruktuře podnikové sítě.
 sections:

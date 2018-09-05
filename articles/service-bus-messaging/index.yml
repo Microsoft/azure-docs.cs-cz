@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: 00484fd11d1bf7a25b5e6cd8029366794e44c16c
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43695291"
 documentType: LandingData
 title: Dokumentace k zasílání zpráv služby Azure Service Bus
 metadata:
@@ -6,20 +12,14 @@ metadata:
   title: Dokumentace k zasílání zpráv služby Azure Service Bus – kurzy, šablony Rychlý start, reference k rozhraní API
   meta.description: Learn how to set up messaging that connects applications and services across on-premises and cloud environments.
   services: service-bus-messaging
-  author: sethmanheim
-  manager: timlt
+  author: spelluru
+  manager: femila
   ms.service: service-bus-messaging
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 05/16/2018
-  ms.author: sethm
-  ms.openlocfilehash: 7746b2259f4c4c411e52d236f9734825355750d5
-  ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-  ms.translationtype: HT
-  ms.contentlocale: cs-CZ
-  ms.lasthandoff: 06/01/2018
-  ms.locfileid: "34648425"
+  ms.author: spelluru
 abstract:
   description: Azure Service Bus je víceklientská cloudová služba pro zasílání zpráv, která odesílá informace mezi aplikacemi a službami. Asynchronní operace umožňují flexibilní zprostředkované zasílání zpráv a také strukturované zasílání zpráv typu FIFO (first-in-first-out) a funkce pro publikování a přihlášení k odběru.
   aside:
@@ -41,7 +41,7 @@ sections:
     items:
     - image:
         src: /azure/service-bus-messaging/media/index/portal.svg
-      text: Azure Portal
+      text: portál Azure
       href: /azure/service-bus-messaging/service-bus-quickstart-portal?branch=release-mvc-service-bus
     - image:
         src: /azure/service-bus-messaging/media/index/cli.svg
