@@ -1,14 +1,14 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 9f537ee8fe646a024fb191901b3669b4b5d60d6b
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 11541b0af13de17b20c1be516184d094b1be0961
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43086665"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43667067"
 documentType: LandingData
-title: Ansible v dokumentaci k Azure
+title: Dokumentace k Ansible v Azure
 metadata:
-  title: Ansible v dokumentaci k Azure – kurzy, ukázky, odkazy a prostředky
+  title: Dokumentace k Ansible v Azure – kurzy, ukázky, odkazy a zdroje informací
   description: Zjistěte, jak použít Ansible k automatizaci zřizování cloudu, správě konfigurací a nasazování aplikací.
   ms.service: ansible
   keywords: ansible, azure, devops, tutorials, samples, reference

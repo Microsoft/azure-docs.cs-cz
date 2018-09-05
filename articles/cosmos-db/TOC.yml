@@ -37,7 +37,7 @@ items:
       href: create-mongodb-golang.md
   - name: Gremlin
     items:
-    - name: Použití konzoly Gremlin
+    - name: Konzola Gremlin
       href: create-graph-gremlin-console.md
     - name: .NET
       href: create-graph-dotnet.md
@@ -78,6 +78,9 @@ items:
     href: distribute-data-globally.md
   - name: Propustnost
     href: request-units.md
+    items:
+    - name: Zjištění a nastavení propustnosti
+      href: set-throughput.md
   - name: Dělení
     href: partition-data.md
   - name: Indexování
@@ -86,11 +89,11 @@ items:
     href: consistency-levels.md
   - name: S několika hlavními databázemi
     href: multi-region-writers.md
+    items:
+    - name: Nastavení s několika hlavními databázemi
+      href: multi-master-workaround.md
   - name: Změna kanálu
     href: change-feed.md
-    items:
-    - name: Změna kanálu pro řešení elektronického obchodování
-      href: changefeed-ecommerce-solution.md
   - name: Hodnota TTL (Time to Live)
     href: time-to-live.md
   - name: Jedinečné klíče
@@ -104,18 +107,16 @@ items:
       href: secure-access-to-data.md
     - name: Podpora brány firewall
       href: firewall-support.md
-    - name: Nastavení koncového bodu služby virtuální sítě
+    - name: Nastavení koncového bodu virtuální sítě
       href: vnet-service-endpoint.md
-    - name: Key Vault pro ukládání tajných kódů
+    - name: Podpora trezoru klíčů
       href: access-secrets-from-keyvault.md
 - name: Rozhraní API s více modely
   items:
   - name: Dokumentace k rozhraní SQL API
     items:
     - name: Přehled
-      items:
-      - name: Informace o rozhraní SQL API
-        href: sql-api-introduction.md
+      href: sql-api-introduction.md
     - name: Kurzy
       items:
       - name: 1. Vytvoření účtu
@@ -172,22 +173,16 @@ items:
         href: powershell-samples.md
       - name: Azure CLI
         href: cli-samples.md
-    - name: Koncepty
-      items:
-      - name: Modelování dat dokumentů
-        href: modeling-data.md
     - name: Návody
       items:
-      - name: Použití Bulk Executoru – knihovna .NET
+      - name: Bulk Executor – knihovna .NET
         href: bulk-executor-dot-net.md
-      - name: Použití Bulk Executoru – knihovna Java
+      - name: Bulk Executor – knihovna Java
         href: bulk-executor-java.md
       - name: Psaní dotazů SQL
         href: sql-api-sql-query.md
       - name: Ladění výkonu dotazů
         href: sql-api-sql-query-metrics.md
-      - name: Dělení dat SQL
-        href: sql-api-partition-data.md
       - name: Typy dat
         items:
         - name: DateTime
@@ -220,16 +215,11 @@ items:
         href: /rest/api/cosmos-db-resource-provider/
       - name: Syntaxe jazyka SQL
         href: sql-api-sql-query-reference.md
-    - name: Zdroje a prostředky
-      items:
-      - name: SQL Playground
-        href: https://aka.ms/cosmos-db-playground
   - name: Dokumentace k rozhraní MongoDB API
     items:
     - name: Přehled
+      href: mongodb-introduction.md
       items:
-      - name: Informace o rozhraní MongoDB API
-        href: mongodb-introduction.md
       - name: Podpora MongoDB
         href: mongodb-feature-support.md
     - name: Kurzy
@@ -276,16 +266,11 @@ items:
         href: mongodb-time-to-live.md
       - name: Správa indexování dat
         href: mongodb-indexing.md
-    - name: Zdroje a prostředky
-      items:
-      - name: Rozšíření editoru Visual Studio Code
-        href: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb
   - name: Dokumentace k rozhraní Gremlin API
     items:
     - name: Přehled
+      href: graph-introduction.md
       items:
-      - name: Informace o rozhraní Gremlin API
-        href: graph-introduction.md
       - name: Podpora Gremlin
         href: gremlin-support.md
     - name: Kurzy
@@ -296,14 +281,10 @@ items:
       items:
       - name: Import dat grafu
         href: bulk-executor-graph-dotnet.md
-      - name: Dělení dat v grafu
-        href: graph-partitioning.md
   - name: Dokumentace k rozhraní Cassandra API
     items:
     - name: Přehled
-      items:
-      - name: Informace o rozhraní Cassandra API
-        href: cassandra-introduction.md
+      href: cassandra-introduction.md
     - name: Kurzy
       items:
       - name: 1. Vytvoření účtu
@@ -313,9 +294,7 @@ items:
   - name: Dokumentace k rozhraní Table API
     items:
     - name: Přehled
-      items:
-      - name: Informace o rozhraní Table API
-        href: table-introduction.md
+      href: table-introduction.md
     - name: Kurzy
       items:
       - name: 1. Vytvoření účtu
@@ -373,10 +352,8 @@ items:
       href: storage-explorer.md
     - name: Správa s využitím Průzkumníka dat
       href: data-explorer.md
-    - name: Správa klíčů a úrovní konzistence
+    - name: Správa vašeho účtu
       href: manage-account.md
-    - name: Zjištění a nastavení propustnosti
-      href: set-throughput.md
   - name: Protokolování
     items:
     - name: Protokolování diagnostiky
@@ -407,6 +384,14 @@ items:
       href: performance-tips-async-java.md
     - name: Test výkonu – ukázková aplikace
       href: performance-testing.md
+  - name: Osvědčené postupy
+    items:
+    - name: Modelování dat dokumentů
+      href: modeling-data.md
+    - name: Dělení dat SQL
+      href: sql-api-partition-data.md
+    - name: Dělení dat v grafu
+      href: graph-partitioning.md
   - name: Velký objem dat a analýzy
     items:
     - name: Architektura lambda
@@ -415,9 +400,11 @@ items:
       href: spark-connector.md
     - name: Spark, Kafka a Azure Cosmos DB
       href: https://docs.microsoft.com/azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb?toc=/azure/cosmos-db/toc.json
+    - name: Změna kanálu pro řešení elektronického obchodování
+      href: changefeed-ecommerce-solution.md
   - name: Integrace s ostatními službami Azure
     items:
-    - name: Nasazení webu pomocí služby Azure App Service
+    - name: Azure App Service
       href: create-website.md
     - name: Indexer Azure Search
       href: https://docs.microsoft.com/azure/search/search-howto-index-cosmosdb?toc=/azure/cosmos-db/toc.json
@@ -427,7 +414,7 @@ items:
         href: serverless-computing-database.md
       - name: Vazby Azure Functions
         href: https://docs.microsoft.com/azure/azure-functions/functions-bindings-cosmosdb?toc=/azure/cosmos-db/toc.json
-    - name: Přesun dat pomocí služby Azure Data Factory
+    - name: Azure Data Factory
       href: https://docs.microsoft.com/azure/data-factory/connector-azure-cosmos-db?toc=/azure/cosmos-db/toc.json
     - name: Azure Stream Analytics
       href: ../stream-analytics/stream-analytics-define-outputs.md#azure-cosmos-db
@@ -449,8 +436,6 @@ items:
     href: regional-failover.md
   - name: Uložené procedury, triggery a systémy souborů UDF
     href: programming.md
-  - name: Nastavení s několika hlavními databázemi
-    href: multi-master-workaround.md
   - name: Informace o knihovně Bulk Executoru
     href: bulk-executor-overview.md
   - name: Nákladově efektivní čtení a zápisy
@@ -459,8 +444,8 @@ items:
   items:
   - name: Tahák pro dotazy
     href: query-cheat-sheet.md
-  - name: 20 dnů tipů
-    href: 20-days-of-tips.md
+  - name: SQL Playground
+    href: https://aka.ms/cosmos-db-playground
   - name: Nejčastější dotazy
     href: faq.md
   - name: Dokumenty white paper
@@ -478,9 +463,9 @@ items:
     href: http://research.microsoft.com/apps/pubs/default.aspx?id=206913
   - name: Aplikace sociálních médií
     href: social-media-apps.md
-ms.openlocfilehash: 882b7d69a8282beb2fcbbce0ed788810210236ca
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 8837d9bc6cf492a146d96d917d9157e51bffa0f5
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43184891"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43695978"

@@ -1,5 +1,5 @@
 items:
-- name: Terraform v dokumentaci Azure
+- name: Dokumentace k Terraformu v Azure
   href: index.yml
 - name: Přehled
   items:
@@ -16,23 +16,33 @@ items:
   expanded: true
 - name: Kurzy
   items:
-  - name: Vytvoření clusteru Kubernetes s AKS a Terraformem
-    href: terraform-create-k8s-cluster-with-tf-and-aks.md
-  - name: Terraform a sloty nasazení zprostředkovatele Azure
-    href: terraform-slot-walkthru.md
-  - name: Vytvoření virtuálního počítače Terraform s povolenou službou MSI
-    href: terraform-vm-msi.md
-  - name: Vytvoření clusteru virtuálních počítačů s využitím modulů Terraformu
-    href: terraform-create-vm-cluster-module.md
-  - name: Vytvoření clusteru virtuálních počítačů pomocí Terraformu a HCL
-    href: terraform-create-vm-cluster-with-infrastructure.md
-  - name: Zřízení škálovací sady virtuálních počítačů s infrastrukturou
-    href: terraform-create-vm-scaleset-network-disks-hcl.md
-  - name: Zřízení škálovací sady virtuálních počítačů z vlastní image Packeru
-    href: terraform-create-vm-scaleset-network-disks-using-packer-hcl.md
+  - name: App Service
+    items:
+    - name: Terraform a sloty nasazení zprostředkovatele Azure
+      href: terraform-slot-walkthru.md
+  - name: Containers
+    items:
+    - name: Vytvoření clusteru Kubernetes s AKS a Terraformem
+      href: terraform-create-k8s-cluster-with-tf-and-aks.md
+  - name: Infrastruktura
+    items:
+    - name: Vytvoření virtuálního počítače Terraform s povolenou službou MSI
+      href: terraform-vm-msi.md
+    - name: Vytvoření clusteru virtuálních počítačů s využitím modulů Terraformu
+      href: terraform-create-vm-cluster-module.md
+    - name: Vytvoření clusteru virtuálních počítačů pomocí Terraformu a HCL
+      href: terraform-create-vm-cluster-with-infrastructure.md
+    - name: Zřízení škálovací sady virtuálních počítačů s infrastrukturou
+      href: terraform-create-vm-scaleset-network-disks-hcl.md
+    - name: Zřízení škálovací sady virtuálních počítačů z vlastní image Packeru
+      href: terraform-create-vm-scaleset-network-disks-using-packer-hcl.md
+  - name: Nástroje
+    items:
+    - name: Instalace rozšíření Terraform editoru Visual Studio Code
+      href: terraform-vscode-extension.md
 - name: Koncepty
   items:
-  - name: Integrace služby Cloud Shell
+  - name: Integrace Azure Cloud Shellu
     href: terraform-cloud-shell.md
 - name: Ukázky
   items:
@@ -44,17 +54,15 @@ items:
     href: https://registry.terraform.io/modules/Azure
   - name: Reference k Terraformu
     href: http://aka.ms/terraform
-  - name: Rozšíření editoru VS Code Azure Terraformu
-    href: terraform-vscode-extension.md
 - name: Zdroje a prostředky
   items:
   - name: Azure a Terraform
     href: https://azure.microsoft.com/solutions/devops/terraform/
   - name: Plány Azure do budoucna
     href: https://azure.microsoft.com/roadmap/
-ms.openlocfilehash: 349348f2230005831c1ad68eb7f48dfaa8f4b78c
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: e6c4637618d794f96db8ed9ca8eb063a62f704a1
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "41927604"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43663532"

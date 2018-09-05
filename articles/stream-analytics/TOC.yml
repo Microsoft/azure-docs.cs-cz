@@ -1,185 +1,194 @@
+items:
 - name: Dokumentace ke službě Stream Analytics
   href: index.yml
 - name: Přehled
   items:
-    - name: Co je služba Stream Analytics?
-      href: stream-analytics-introduction.md
+  - name: Co je služba Stream Analytics?
+    href: stream-analytics-introduction.md
 - name: Šablony Rychlý start
   items:
-    - name: Vytvoření úlohy – Azure Portal
-      href: stream-analytics-quick-create-portal.md
-    - name: Vytvoření úlohy – PowerShell
-      href: stream-analytics-quick-create-powershell.md
-    - name: Vytvoření úlohy – Visual Studio
-      href: stream-analytics-quick-create-vs.md
+  - name: Vytvoření úlohy – Azure Portal
+    href: stream-analytics-quick-create-portal.md
+  - name: Vytvoření úlohy – PowerShell
+    href: stream-analytics-quick-create-powershell.md
+  - name: Vytvoření úlohy – Visual Studio
+    href: stream-analytics-quick-create-vs.md
 - name: Kurzy
   items:
-    - name: 1. Vytvoření a správa úlohy
-      href: stream-analytics-manage-job.md
-    - name: 2. Spuštění Azure Functions
-      href: stream-analytics-with-azure-functions.md
-    - name: 3. Spuštění UDF JavaScriptu
-      href: stream-analytics-javascript-user-defined-functions.md
-    - name: 4. Nasazení s využitím CI/CD ve VSTS
-      href: stream-analytics-tools-visual-studio-cicd-vsts.md
+  - name: 1. Vytvoření a správa úlohy
+    href: stream-analytics-manage-job.md
+  - name: 2. Spuštění Azure Functions
+    href: stream-analytics-with-azure-functions.md
+  - name: 3. Spuštění UDF JavaScriptu
+    href: stream-analytics-javascript-user-defined-functions.md
+  - name: 4. Nasazení s využitím CI/CD ve VSTS
+    href: stream-analytics-tools-visual-studio-cicd-vsts.md
 - name: Ukázky
   items:
-    - name: Ukázky kódů
-      href: 'https://azure.microsoft.com/resources/samples/?service=stream-analytics'
+  - name: Ukázky kódů
+    href: https://azure.microsoft.com/resources/samples/?service=stream-analytics
 - name: Koncepty
   items:
-    - name: Vstupní typy pro úlohu
-      href: stream-analytics-add-inputs.md
-      items:
-        - name: Streamování datových výstupů
-          href: stream-analytics-define-inputs.md
-        - name: Referenční datové výstupy
-          href: stream-analytics-use-reference-data.md
-    - name: Výstupní typy pro úlohu
-      href: stream-analytics-define-outputs.md
-      items:
-        - name: Výstup do Cosmos DB
-          href: stream-analytics-documentdb-output.md
-    - name: Funkce okna
-      href: stream-analytics-window-functions.md
-    - name: Úroveň kompatibility
-      href: stream-analytics-compatibility-level.md
-    - name: Běžné vzory dotazů
-      href: stream-analytics-stream-analytics-query-patterns.md
-    - name: Parsování dat JSON a AVRO
-      href: stream-analytics-parsing-json.md
-    - name: Důležité informace o řazení událostí
-      href: stream-analytics-out-of-order-and-late-events.md
-    - name: Kontrolní bod a opětovného přehrání
-      href: stream-analytics-concepts-checkpoint-replay.md
-    - name: Chybové zásady
-      href: output-error-policy.md
+  - name: Vstupní typy pro úlohu
+    href: stream-analytics-add-inputs.md
+    items:
+    - name: Streamování datových výstupů
+      href: stream-analytics-define-inputs.md
+    - name: Referenční datové výstupy
+      href: stream-analytics-use-reference-data.md
+  - name: Výstupní typy pro úlohu
+    href: stream-analytics-define-outputs.md
+    items:
+    - name: Výstup do Cosmos DB
+      href: stream-analytics-documentdb-output.md
+  - name: Funkce okna
+    href: stream-analytics-window-functions.md
+  - name: Geoprostorové funkce
+    href: stream-analytics-geospatial-functions.md
+  - name: Úroveň kompatibility
+    href: stream-analytics-compatibility-level.md
+  - name: Běžné vzory dotazů
+    href: stream-analytics-stream-analytics-query-patterns.md
+  - name: Parsování dat JSON a AVRO
+    href: stream-analytics-parsing-json.md
+  - name: Důležité informace o řazení událostí
+    href: stream-analytics-out-of-order-and-late-events.md
+  - name: Kontrolní bod a opětovného přehrání
+    href: stream-analytics-concepts-checkpoint-replay.md
+  - name: Chybové zásady
+    href: output-error-policy.md
 - name: Návody
   items:
-    - name: Spravovat
+  - name: Spravovat
+    items:
+    - name: Aktualizace přihlašovacích údajů
+      href: stream-analytics-login-credentials-inputs-outputs.md
+    - name: Konfigurace upozornění
+      href: stream-analytics-set-up-alerts.md
+    - name: Testování úlohy
+      href: stream-analytics-test-query.md
+    - name: Zobrazení výsledků na řídicím panelu
+      href: stream-analytics-power-bi-dashboard.md
+    - name: Vyčištění úlohy
+      href: stream-analytics-clean-up-your-job.md
+    - name: Párování úloh z důvodů spolehlivosti
+      href: stream-analytics-job-reliability.md
+  - name: Vytváření řešení
+    items:
+    - name: Analýza subjektivního hodnocení na Twitteru
+      href: stream-analytics-twitter-sentiment-analysis-trends.md
+    - name: Zjišťování možných podvodů v reálném čase
+      href: stream-analytics-real-time-fraud-detection.md
+    - name: Spouštění úloh ve službě IoT Edge
+      href: stream-analytics-edge.md
+    - name: Analýza dat snímačů z mýtných bran
+      href: stream-analytics-build-an-iot-solution-using-stream-analytics.md
+    - name: Spuštění UDA JavaScriptu
+      href: stream-analytics-javascript-user-defined-aggregates.md
+    - name: Vysokofrekvenční obchodování
+      href: stream-analytics-high-frequency-trading.md
+    - name: Zpracování streamovaných dat IoT
+      href: stream-analytics-get-started-with-azure-stream-analytics-to-process-data-from-iot-devices.md
+    - name: Pravidla na základě prahových hodnot
+      href: stream-analytics-threshold-based-rules.md
+  - name: Monitorování
+    items:
+    - name: Monitorování úloh – Azure Portal
+      href: stream-analytics-monitoring.md
+    - name: Monitorování úloh – PowerShell
+      href: stream-analytics-monitor-and-manage-jobs-use-powershell.md
+    - name: Monitorování úloh – Azure .Net SDK
+      href: stream-analytics-monitor-jobs.md
+    - name: Monitorování úloh – Visual Studio
+      href: stream-analytics-monitor-jobs-use-vs.md
+  - name: Měřítko
+    items:
+    - name: Škálování využitím s jednotek streamování
+      href: stream-analytics-streaming-unit-consumption.md
+    - name: Škálování s využitím paralelizace dotazů
+      href: stream-analytics-parallelization.md
       items:
-        - name: Aktualizace přihlašovacích údajů
-          href: stream-analytics-login-credentials-inputs-outputs.md
-        - name: Konfigurace upozornění
-          href: stream-analytics-set-up-alerts.md
-        - name: Testování úlohy
-          href: stream-analytics-test-query.md
-        - name: Zobrazení výsledků na řídicím panelu
-          href: stream-analytics-power-bi-dashboard.md
-        - name: Vyčištění úlohy
-          href: stream-analytics-clean-up-your-job.md
-        - name: Párování úloh z důvodů spolehlivosti
-          href: stream-analytics-job-reliability.md
-    - name: Vytváření řešení
-      items:
-        - name: Analýza subjektivního hodnocení na Twitteru
-          href: stream-analytics-twitter-sentiment-analysis-trends.md
-        - name: Zjišťování možných podvodů v reálném čase
-          href: stream-analytics-real-time-fraud-detection.md
-        - name: Spouštění úloh ve službě IoT Edge
-          href: stream-analytics-edge.md
-        - name: Analýza dat snímačů z mýtných bran
-          href: stream-analytics-build-an-iot-solution-using-stream-analytics.md
-        - name: Spuštění UDA JavaScriptu
-          href: stream-analytics-javascript-user-defined-aggregates.md
-        - name: Vysokofrekvenční obchodování
-          href: stream-analytics-high-frequency-trading.md
-        - name: Zpracování streamovaných dat IoT
-          href: stream-analytics-get-started-with-azure-stream-analytics-to-process-data-from-iot-devices.md
-        - name: Pravidla na základě prahových hodnot
-          href: stream-analytics-threshold-based-rules.md
-    - name: Monitorování
-      items:
-        - name: Monitorování úloh – Azure Portal
-          href: stream-analytics-monitoring.md
-        - name: Monitorování úloh – PowerShell
-          href: stream-analytics-monitor-and-manage-jobs-use-powershell.md
-        - name: Monitorování úloh – Azure .Net SDK
-          href: stream-analytics-monitor-jobs.md
-        - name: Monitorování úloh – Visual Studio
-          href: stream-analytics-monitor-jobs-use-vs.md
-    - name: Měřítko
-      items:
-        - name: Škálování využitím s jednotek streamování
-          href: stream-analytics-streaming-unit-consumption.md
-        - name: Škálování s využitím paralelizace dotazů
-          href: stream-analytics-parallelization.md
-          items:
-            - name: Zvýšení prostupnosti
-              href: stream-analytics-scale-jobs.md
-        - name: Škálování s využitím funkcí ML
-          href: stream-analytics-scale-with-machine-learning-functions.md
-    - name: Automatizace
-      items:
-        - name: Pomocí sady .NET SDK
-          href: stream-analytics-dotnet-management-sdk.md
-        - name: Použití Azure Powershell
-          href: 'https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick'
-    - name: Nástroje sady Visual Studio
-      items:
-        - name: Instalace nástrojů
-          href: stream-analytics-tools-for-visual-studio-install.md
-        - name: Místní testování úlohy
-          href: stream-analytics-vs-tools-local-run.md
-        - name: Zobrazení úloh v sadě Visual Studio
-          href: stream-analytics-vs-tools.md
-        - name: Vývoj hraniční úlohy
-          href: stream-analytics-tools-for-visual-studio-edge-jobs.md
-        - name: Nastavení kanálu CI/CD
-          href: stream-analytics-tools-for-visual-studio-cicd.md
-    - name: Řešení potíží
-      items:
-        - name: Postup při řešení potíží
-          href: stream-analytics-troubleshooting-guide.md
-        - name: Běžné problémy
-          href: stream-analytics-common-troubleshooting-issues.md
-        - name: Diagram úloh
-          href: stream-analytics-job-diagram-with-metrics.md
-        - name: Diagnostické protokoly
-          href: stream-analytics-job-diagnostic-logs.md
-        - name: Příkaz SELECT INTO
-          href: stream-analytics-select-into.md
-        - name: Přijímače centra událostí
-          href: stream-analytics-event-hub-consumer-groups.md
-    - name: Integrace se strojovým učením
-      items:
-        - name: Analýza subjektivního hodnocení s využitím modelů ML
-          href: stream-analytics-machine-learning-integration-tutorial.md
-        - name: Detekce anomálií
-          href: stream-analytics-machine-learning-anomaly-detection.md
-        - name: Použití rozhraní REST API
-          href: stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md
+      - name: Zvýšení prostupnosti
+        href: stream-analytics-scale-jobs.md
+    - name: Škálování s využitím funkcí ML
+      href: stream-analytics-scale-with-machine-learning-functions.md
+  - name: Automatizace
+    items:
+    - name: Pomocí sady .NET SDK
+      href: stream-analytics-dotnet-management-sdk.md
+    - name: Použití Azure Powershell
+      href: https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick
+  - name: Nástroje sady Visual Studio
+    items:
+    - name: Instalace nástrojů
+      href: stream-analytics-tools-for-visual-studio-install.md
+    - name: Místní testování úlohy
+      href: stream-analytics-vs-tools-local-run.md
+    - name: Zobrazení úloh v sadě Visual Studio
+      href: stream-analytics-vs-tools.md
+    - name: Vývoj hraniční úlohy
+      href: stream-analytics-tools-for-visual-studio-edge-jobs.md
+    - name: Nastavení kanálu CI/CD
+      href: stream-analytics-tools-for-visual-studio-cicd.md
+  - name: Řešení potíží
+    items:
+    - name: Postup při řešení potíží
+      href: stream-analytics-troubleshooting-guide.md
+    - name: Běžné problémy
+      href: stream-analytics-common-troubleshooting-issues.md
+    - name: Diagram úloh
+      href: stream-analytics-job-diagram-with-metrics.md
+    - name: Diagnostické protokoly
+      href: stream-analytics-job-diagnostic-logs.md
+    - name: Příkaz SELECT INTO
+      href: stream-analytics-select-into.md
+    - name: Přijímače centra událostí
+      href: stream-analytics-event-hub-consumer-groups.md
+  - name: Integrace se strojovým učením
+    items:
+    - name: Analýza subjektivního hodnocení s využitím modelů ML
+      href: stream-analytics-machine-learning-integration-tutorial.md
+    - name: Detekce anomálií
+      href: stream-analytics-machine-learning-anomaly-detection.md
+    - name: Použití rozhraní REST API
+      href: stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md
 - name: Referenční informace
   items:
-    - name: Azure PowerShell
-      href: /powershell/module/azurerm.streamanalytics
-    - name: Dotazovací jazyk
-      href: 'https://msdn.microsoft.com/library/azure/dn834998'
-    - name: .NET
-      href: /dotnet/api/microsoft.azure.management.streamanalytics
-    - name: REST
-      href: /rest/api/streamanalytics
+  - name: Azure PowerShell
+    href: /powershell/module/azurerm.streamanalytics
+  - name: Dotazovací jazyk
+    href: https://msdn.microsoft.com/library/azure/dn834998
+  - name: .NET
+    href: /dotnet/api/microsoft.azure.management.streamanalytics
+  - name: REST
+    href: /rest/api/streamanalytics
 - name: Zdroje a prostředky
   items:
-    - name: Plány Azure do budoucna
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: Blog
-      href: 'http://blogs.msdn.com/b/streamanalytics/'
-    - name: Fórum pro názory
-      href: 'http://feedback.azure.com/forums/270577-azure-stream-analytics'
-    - name: Fórum
-      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics'
-    - name: Ceny
-      href: 'https://azure.microsoft.com/pricing/details/stream-analytics/'
-    - name: Cenová kalkulačka
-      href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Aktualizace služeb
-      href: 'https://azure.microsoft.com/updates/?product=stream-analytics'
-    - name: Stack Overflow
-      href: 'http://stackoverflow.com/questions/tagged/azure-stream-analytics'
-    - name: Videa
-      href: 'https://azure.microsoft.com/resources/videos/index/?services=stream-analytics&sort=newest'
-    - name: Zákaznické případové studie
-      href: 'https://azure.microsoft.com/case-studies/?service=stream-analytics'
-    - name: Dokument white paper – Zpracování událostí v reálném čase
-      href: stream-analytics-real-time-event-processing-reference-architecture.md
+  - name: Plány Azure do budoucna
+    href: https://azure.microsoft.com/roadmap/
+  - name: Blog
+    href: http://blogs.msdn.com/b/streamanalytics/
+  - name: Fórum pro názory
+    href: http://feedback.azure.com/forums/270577-azure-stream-analytics
+  - name: Fórum
+    href: https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics
+  - name: Ceny
+    href: https://azure.microsoft.com/pricing/details/stream-analytics/
+  - name: Cenová kalkulačka
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: Aktualizace služeb
+    href: https://azure.microsoft.com/updates/?product=stream-analytics
+  - name: Stack Overflow
+    href: http://stackoverflow.com/questions/tagged/azure-stream-analytics
+  - name: Videa
+    href: https://azure.microsoft.com/resources/videos/index/?services=stream-analytics&sort=newest
+  - name: Zákaznické případové studie
+    href: https://azure.microsoft.com/case-studies/?service=stream-analytics
+  - name: Dokument white paper – Zpracování událostí v reálném čase
+    href: stream-analytics-real-time-event-processing-reference-architecture.md
+ms.openlocfilehash: 6598121e8405a60c64490fda179c22f34ac86455
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43695316"

@@ -85,6 +85,10 @@ items:
     href: event-hubs-go-get-started-send.md
   - name: Příjem událostí pomocí jazyka Go
     href: event-hubs-go-get-started-receive-eph.md
+  - name: Odesílání událostí pomocí Pythonu
+    href: event-hubs-python-get-started-send.md
+  - name: Příjem událostí pomocí Pythonu
+    href: event-hubs-python-get-started-receive.md
   - name: Event Hubs pro Apache Kafka
     items:
     - name: Vytvoření Event Hubs s podporou Apache Kafka
@@ -176,9 +180,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-eventhub
   - name: Videa
     href: https://azure.microsoft.com/documentation/videos/index/?services=event-hubs
-ms.openlocfilehash: 5ccd15ccdfe25ed44c5002da5a1a9360aba6e5ca
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 525274c16fbb1320d52a7e96b222021eee841155
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43305629"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43701878"

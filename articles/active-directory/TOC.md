@@ -103,6 +103,7 @@
 #### [Směrování protokolů aktivit do centra událostí Azure](reports-monitoring/quickstart-azure-monitor-stream-logs-to-event-hub.md)
 #### [Archivace protokolů aktivit do účtu úložiště Azure](reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md)
 #### [Integrace protokolů aktivit s využitím Splunku pomocí Azure Monitoru](reports-monitoring/tutorial-integrate-activity-logs-with-splunk.md)
+#### [Integrace protokolů aktivit s využitím SumoLogicu pomocí Azure Monitoru](reports-monitoring/howto-integrate-activity-logs-with-sumologic.md)
 
 ### Referenční informace
 #### [Uchování](reports-monitoring/reference-reports-data-retention.md)
@@ -332,6 +333,8 @@
 ### [Správa přístupu uživatelů pomocí kontrol](active-directory-azure-ad-controls-manage-user-access-with-access-reviews.md)
 ### [Správa programů a ovládacích prvků](active-directory-azure-ad-controls-manage-programs-controls.md)
 ### [Načtení výsledků kontroly přístupu](active-directory-azure-ad-controls-retrieve-access-review.md)
+
+## [Podmínky použití](active-directory-tou.md)
 
 ## Zabezpečení identit
 

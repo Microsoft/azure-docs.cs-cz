@@ -37,6 +37,20 @@ items:
       href: active-directory-b2c-tutorials-spa-webapi.md
 - name: Ukázky
   href: code-samples.md
+- name: Koncepty
+  items:
+  - name: Typy aplikací
+    href: active-directory-b2c-apps.md
+  - name: Protokoly pro ověřování
+    href: active-directory-b2c-reference-protocols.md
+  - name: OAuth 2.0
+    href: active-directory-b2c-reference-oauth-code.md
+  - name: OpenId Connect
+    href: active-directory-b2c-reference-oidc.md
+  - name: Tokeny
+    href: active-directory-b2c-reference-tokens.md
+  - name: Uživatelské účty
+    href: user-overview.md
 - name: Návody
   items:
   - name: Registrace vaší aplikace
@@ -45,8 +59,6 @@ items:
     href: active-directory-b2c-reference-policies.md
   - name: Mobilní a desktopové aplikace
     items:
-    - name: Přehled
-      href: active-directory-b2c-reference-oauth-code.md
     - name: iOS
       items:
       - name: iOS Swift s využitím MSAL
@@ -67,8 +79,6 @@ items:
       href: configure-ropc.md
   - name: Webové aplikace
     items:
-    - name: Přehled
-      href: active-directory-b2c-reference-oidc.md
     - name: ASP.NET
       href: active-directory-b2c-devquickstarts-web-dotnet-susi.md
     - name: Jádro ASP.NET
@@ -238,14 +248,6 @@ items:
     items:
     - name: Ukázky kódů
       href: https://azure.microsoft.com/resources/samples/?service=active-directory-b2c
-    - name: Glosář
-      items:
-      - name: Typy aplikací
-        href: active-directory-b2c-apps.md
-      - name: Protokoly pro ověřování
-        href: active-directory-b2c-reference-protocols.md
-      - name: Tokeny
-        href: active-directory-b2c-reference-tokens.md
     - name: Rezidence dat a dostupnost oblastí
       href: active-directory-b2c-reference-tenant-type.md
     - name: Povolení fakturace
@@ -276,9 +278,9 @@ items:
     href: active-directory-b2c-support.md
   - name: Videa
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c
-ms.openlocfilehash: 6a0a90627abaf94b004f07ad22fc1156396829ec
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 9d9e448d37a8780fe24fd6a72f8fdf0d412f2066
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41927605"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43663896"

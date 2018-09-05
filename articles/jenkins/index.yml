@@ -1,14 +1,14 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 6502db6c9f19799298e4442a5b0e29e1d09b1a63
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: cd539e1ba1b740155a22960645c3947d7c4d8176
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43086526"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666521"
 documentType: LandingData
 title: Jenkins v Azure
 metadata:
-  title: Jenkins v dokumentaci k Azure – kurzy, ukázky, odkazy a prostředky
+  title: Dokumentace k Jenkinsu v Azure – kurzy, ukázky, odkazy a zdroje informací
   description: Nasazení a integrace Jenkinse s Azure
   ms.service: jenkins
   keywords: jenkins, azure, devops, tutorials, samples, reference
