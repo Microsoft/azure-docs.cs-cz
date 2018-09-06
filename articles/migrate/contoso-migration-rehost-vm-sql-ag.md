@@ -6,18 +6,18 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/28/2018
+ms.date: 09/05/2018
 ms.author: raynew
-ms.openlocfilehash: 18cbbef3a12816a509191795cf22b33ba93d046c
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: f744b9bacfb43b5cf4ba81e19d8e543561bcec61
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128550"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43842749"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-on-azure-vms-and-sql-server-alwayson-availability-group"></a>Migrace Contoso: Změna hostitele aplikace v místním na virtuálních počítačích Azure a skupiny dostupnosti AlwaysOn SQL serveru
 
-Tento článek ukazuje, jak společnosti Contoso ke kolizi SmartHotel aplikace v Azure. Contoso migruje front-endové aplikace virtuálního počítače na Virtuálním počítači Azure a databáze aplikace Azure SQL Server VM spuštěného v clusteru převzetí služeb při selhání Windows serveru s gGroups dostupnosti AlwaysOn pro SQL Server.
+Tento článek ukazuje, jak společnosti Contoso ke kolizi SmartHotel360 aplikace v Azure. Contoso migruje front-endové aplikace virtuálního počítače na Virtuálním počítači Azure a databáze aplikace Azure SQL Server VM spuštěného v clusteru převzetí služeb při selhání Windows serveru s gGroups dostupnosti AlwaysOn pro SQL Server.
 
 Tento dokument je jednou z řady článků, které ukazují, jak fiktivní společnosti Contoso migraci místních prostředků do cloudu Microsoft Azure. Obsahuje základní informace a scénáře, které znázorňují nastavování infrastruktury migrace, posuzování migrace místních prostředků a spouštění různé druhy migrace. Scénáře jejich složitost v. Přidáme další články v čase.
 
@@ -25,20 +25,20 @@ Tento dokument je jednou z řady článků, které ukazují, jak fiktivní spole
 --- | --- | ---
 [Článek 1: Přehled](contoso-migration-overview.md) | Přehled řady článku, strategie migrace společnosti Contoso a ukázkové aplikace, které se používají v řadě. | K dispozici.
 [Článek 2: Nasazení infrastruktury Azure](contoso-migration-infrastructure.md) | Contoso připraví svoji místní infrastrukturu a jeho infrastruktury Azure pro migraci. Pro všechny články týkající se migrace z této série se používá stejnou infrastrukturu. | K dispozici.
-[Článek 3: Posouzení místních prostředků pro migraci do Azure](contoso-migration-assessment.md)  | Contoso spuštění posouzení jeho místní SmartHotel aplikaci běžící ve VMware. Contoso vyhodnocuje aplikací virtuálních počítačů pomocí služby Azure Migrate a databáze aplikace SQL Server pomocí Data Migration Assistant. | K dispozici.
-[Článek 4: Změna hostitele aplikace na virtuálním počítači Azure a SQL Database, spravované Instance](contoso-migration-rehost-vm-sql-managed-instance.md) | Contoso běží lift and shift migrace do Azure pro své místní SmartHotel aplikaci. Contoso migruje aplikace front-endového virtuálního počítače pomocí [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview). Contoso migraci databáze aplikace do Azure SQL Database Managed Instance pomocí [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview). | K dispozici.  
-[Článek 5: Změna hostitele aplikace na virtuálních počítačích Azure](contoso-migration-rehost-vm.md) | Contoso migruje svou aplikaci SmartHotel virtuální počítače na virtuální počítače Azure pomocí služby Site Recovery. | K dispozici.
-Článek 6: Změna hostitele aplikace na virtuálních počítačích Azure a ve skupině dostupnosti AlwaysOn systému SQL Server | Contoso migruje SmartHotel aplikace. Společnost Contoso využívá Site Recovery k migraci virtuálních počítačů aplikace. Jak migrovat databázi aplikace do clusteru SQL serveru, který je chráněn skupiny dostupnosti AlwaysOn využívá službu Database Migration Service. | V tomto článku
+[Článek 3: Posouzení místních prostředků pro migraci do Azure](contoso-migration-assessment.md)  | Contoso spuštění posouzení své místní aplikace SmartHotel360 běžící ve VMware. Contoso vyhodnocuje aplikací virtuálních počítačů pomocí služby Azure Migrate a databáze aplikace SQL Server pomocí Data Migration Assistant. | K dispozici.
+[Článek 4: Změna hostitele aplikace na virtuálním počítači Azure a SQL Database, spravované Instance](contoso-migration-rehost-vm-sql-managed-instance.md) | Contoso běží lift and shift migrace do Azure pro své místní aplikace SmartHotel360. Contoso migruje aplikace front-endového virtuálního počítače pomocí [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview). Contoso migraci databáze aplikace do Azure SQL Database Managed Instance pomocí [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview). | K dispozici.   
+[Článek 5: Změna hostitele aplikace na virtuálních počítačích Azure](contoso-migration-rehost-vm.md) | Contoso migruje jeho aplikace SmartHotel360 virtuální počítače na virtuální počítače Azure pomocí služby Site Recovery. | K dispozici.
+Článek 6: Změna hostitele aplikace na virtuálních počítačích Azure a ve skupině dostupnosti AlwaysOn systému SQL Server | Contoso migruje aplikace SmartHotel360. Společnost Contoso využívá Site Recovery k migraci virtuálních počítačů aplikace. Jak migrovat databázi aplikace do clusteru SQL serveru, který je chráněn skupiny dostupnosti AlwaysOn využívá službu Database Migration Service. | V tomto článku
 [Článek 7: Změna hostitele aplikace na virtuálních počítačích Azure s Linuxem](contoso-migration-rehost-linux-vm.md) | Contoso dokončení migrace lift and shift aplikace osTicket Linux do virtuálních počítačů Azure pomocí Azure Site Recovery | K dispozici.
 [Článek 8: Změna hostitele Linuxovou aplikaci na virtuálních počítačích Azure a Azure serveru MySQL](contoso-migration-rehost-linux-vm-mysql.md) | Contoso migruje Linuxovou aplikaci osTicket k virtuálním počítačům Azure pomocí Azure Site Recovery a migraci databáze aplikace na instanci serveru Azure MySQL pomocí aplikace MySQL Workbench. | K dispozici.
-[Článek 9: Refaktorujte aplikace na Azure Web Apps a Azure SQL database](contoso-migration-refactor-web-app-sql.md) | Contoso migruje SmartHotel aplikace do webové aplikace Azure a migraci databáze aplikace do instance serveru SQL Azure pomocí Pomocníka s migrací databáze | K dispozici.
+[Článek 9: Refaktorujte aplikace na Azure Web Apps a Azure SQL database](contoso-migration-refactor-web-app-sql.md) | Contoso migruje aplikace SmartHotel360 do webové aplikace Azure a migraci databáze aplikace do instance serveru SQL Azure pomocí Pomocníka s migrací databáze | K dispozici.
 [Článek 10: Refaktorujte Linuxovou aplikaci na Azure Web Apps a Azure MySQL](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso migruje osTicket své Linuxové aplikace do webové aplikace Azure v několika oblastech Azure pomocí Azure Traffic Manageru, integrovaná se službou GitHub pro průběžné doručování. Contoso migraci databáze aplikace do Azure Database for MySQL – instance. | K dispozici. 
 [Článek 11: Refaktorovat TFS na VSTS](contoso-migration-tfs-vsts.md) | Contoso migruje své místní nasazení serveru Team Foundation Server pro Visual Studio Team Services v Azure. | K dispozici.
-[Článek 12: Úprava architektury aplikace na kontejnery služby Azure a Azure SQL Database](contoso-migration-rearchitect-container-sql.md) | Contoso migruje jeho SmartHotel aplikace do Azure. Potom rearchitects webové vrstvy aplikace jako kontejner Windows se spuštěnou v Azure Service Fabric a databázi Azure SQL Database. | K dispozici.
-[Článek 13: Znovu sestavte aplikaci v Azure](contoso-migration-rebuild.md) | Contoso replikujícím svou aplikaci SmartHotel pomocí celé řady funkcí Azure a služeb, včetně služby Azure App Service, Azure Kubernetes Service (AKS), Azure Functions, Azure Cognitive Services a Azure Cosmos DB. | K dispozici.
+[Článek 12: Úprava architektury aplikace na kontejnery služby Azure a Azure SQL Database](contoso-migration-rearchitect-container-sql.md) | Contoso jeho aplikace SmartHotel360 migraci do Azure. Potom rearchitects webové vrstvy aplikace jako kontejner Windows se spuštěnou v Azure Service Fabric a databázi Azure SQL Database. | K dispozici.
+[Článek 13: Znovu sestavte aplikaci v Azure](contoso-migration-rebuild.md) | Contoso replikujícím jeho aplikace SmartHotel360 pomocí celé řady funkcí Azure a služeb, včetně služby Azure App Service, Azure Kubernetes Service (AKS), Azure Functions, Azure Cognitive Services a Azure Cosmos DB. | K dispozici.
 
 
-V tomto článku se migruje Contoso dvouvrstvé aplikace Windows .NET SmartHotel běžící na virtuálních počítačích VMware do Azure. Pokud chcete používat tuto aplikaci, se poskytuje jako open source a můžete ji stáhnout [Githubu](https://github.com/Microsoft/SmartHotel360).
+V tomto článku se migruje Contoso dvouvrstvé aplikace SmartHotel360 Windows .NET běžící na virtuálních počítačích VMware do Azure. Pokud chcete používat tuto aplikaci, se poskytuje jako open source a můžete ji stáhnout [Githubu](https://github.com/Microsoft/SmartHotel360).
 
 ## <a name="business-drivers"></a>Obchodní faktory
 
@@ -261,7 +261,7 @@ Správce společnosti Contoso teď můžete povolit Always On:
 
 2. Restartu služby se změny projevily.
 
-Contoso s povolit AlwaysOn, můžete nastavit skupiny dostupnosti AlwaysOn, který bude chránit databázi SmartHotel.
+Contoso s povolit AlwaysOn, můžete nastavit skupiny dostupnosti AlwaysOn, který bude chránit databázi SmartHotel360.
 
 **Potřebujete další pomoc?**
 
@@ -342,7 +342,7 @@ Správce společnosti Contoso tyto wmm nastavit takto:
 
 1.  Contoso už vytvořili síť/podsíť, můžete použít pro Site Recovery při jejich [nasadili infrastrukturu Azure](contoso-migration-rehost-vm-sql-ag.md).
 
-    - Aplikace SmartHotel je produkční aplikace a WEBVM se budou migrovat do Azure produkční sítě (VNET-PROD-EUS2) v primární oblasti východní USA 2.
+    - Aplikace SmartHotel360 je výrobní aplikace a WEBVM se budou migrovat do Azure produkční sítě (VNET-PROD-EUS2) v primární oblasti východní USA 2.
     - WEBVM bude umístěna ve skupině prostředků ContosoRG, který se používá pro produkční prostředky, a v produkčním prostředí podsítě (PROD-FE – EUS2).
 
 2. Správce společnosti Contoso vytvořit účet úložiště Azure (contosovmsacc20180528) v primární oblasti.
@@ -539,7 +539,7 @@ Správce společnosti Contoso nyní můžete spustit replikaci WebVM.
 
 ## <a name="step-7-install-the-database-migration-assistant-dma"></a>Krok 7: Instalace Pomocníka s migrací databáze (DMA)
 
-Správce společnosti Contoso provede migraci databáze SmartHotel do virtuálního počítače Azure **SQLAOG1** pomocí DMA. Nastavené DMA následujícím způsobem:
+Správce společnosti Contoso provede migraci databáze SmartHotel360 do virtuálního počítače Azure **SQLAOG1** pomocí DMA. Nastavené DMA následujícím způsobem:
 
 1. Stažení nástroje [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=53595) k virtuálnímu počítači v místním SQL serveru (**SQLVM**).
 2. Na virtuálním počítači, spusťte instalační program (DownloadMigrationAssistant.msi).
@@ -577,7 +577,7 @@ S databází aplikace běžící na **SQLAOG1**, Contoso správci teď mohou chr
 ### <a name="create-an-alwayson-availability-group"></a>Vytvořit skupinu dostupnosti AlwaysOn
 
 1. V SQL Management Studio, klikněte pravým tlačítkem na **vždy na vysokou dostupnost** spustit **Průvodce novou skupinou dostupnosti**.
-2. V **zadat možnosti**, jejich název skupiny dostupnosti **SHAOG**. V **vybrat databáze**, vyberou SmartHotel databáze.
+2. V **zadat možnosti**, jejich název skupiny dostupnosti **SHAOG**. V **vybrat databáze**, výběrem databáze SmartHotel360.
 
     ![Skupiny dostupnosti AlwaysOn](media/contoso-migration-rehost-vm-sql-ag/aog-1.png)
 
@@ -675,7 +675,7 @@ Správce společnosti Contoso jako poslední krok v procesu migrace, aktualizova
 
 ## <a name="clean-up-after-migration"></a>Vyčištění po migraci
 
-Po dokončení migrace SmartHotel aplikace běží na Virtuálním počítači Azure a SmartHotel databáze nachází v clusteru Azure SQL.
+Po dokončení migrace aplikace SmartHotel360 běží na Virtuálním počítači Azure a SmartHotel360 databáze nachází v clusteru Azure SQL.
 
 Nyní Contoso potřebuje k dokončení těchto kroků vyčištění:  
 
@@ -695,7 +695,7 @@ Bezpečnostní tým Contoso kontroly WEBVM virtuální počítače Azure, SQLAOG
 
 - Tým kontroly skupiny zabezpečení sítě (Nsg) pro řízení přístupu k virtuálnímu počítači. Skupiny zabezpečení sítě se používají k zajištění, že lze předat pouze provoz povolený pro aplikaci.
 - Tým bude považovat za zabezpečení dat na disku pomocí Azure Disk Encryption a trezor klíčů.
-- Tým by měl vyhodnotit transparentní šifrování dat (TDE) a pak ji povolit na databázi SmartHotel běžící na nové AOG SQL. [Další informace](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-2017).
+- Tým by měl vyhodnotit transparentní šifrování dat (TDE) a pak ji povolit na databázi SmartHotel360 běží na nové AOG SQL. [Další informace](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-2017).
 
 [Přečtěte si další](https://docs.microsoft.com/azure/security/azure-security-best-practices-vms#vm-authentication-and-access-control) o postupech zabezpečení pro virtuální počítače.
 
@@ -716,7 +716,7 @@ Bezpečnostní tým Contoso kontroly WEBVM virtuální počítače Azure, SQLAOG
 
 ## <a name="conclusion"></a>Závěr
 
-V tomto článku Contoso rehosted SmartHotel aplikace v Azure do Azure pomocí služby Site Recovery migrací aplikace front-endový virtuální počítač. Contoso migrovat databázi aplikace do clusteru systému SQL Server zřízenou ve službě Azure a chráněné ve skupině dostupnosti AlwaysOn systému SQL Server.
+V tomto článku Contoso rehosted SmartHotel360 aplikace v Azure do Azure pomocí služby Site Recovery migrací aplikace front-endový virtuální počítač. Contoso migrovat databázi aplikace do clusteru systému SQL Server zřízenou ve službě Azure a chráněné ve skupině dostupnosti AlwaysOn systému SQL Server.
 
 ## <a name="next-steps"></a>Další postup
 

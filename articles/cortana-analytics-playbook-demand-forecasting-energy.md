@@ -1,189 +1,190 @@
 ---
-title: Cortana Intelligence řešení šablony scénářem pro vyžádání prognózy energie | Microsoft Docs
-description: Šablona řešení s Microsoft Cortana Intelligence, který pomáhá prognózy vyžádání pro firmu nástroj energie.
-services: cortana-analytics
+title: Cortana Intelligence řešení šablony Playbook pro prognózování poptávky po energii | Dokumentace Microsoftu
+description: Šablona řešení s Microsoft Cortana Intelligence, která pomáhá prognózy poptávky pro firmu energii utility.
+services: machine-learning
 documentationcenter: ''
 author: ilanr9
-manager: ilanr9
+manager: cgronlun
 editor: yijichen
 ms.assetid: 8855dbb9-8543-45b9-b4c6-aa743a04d547
-ms.service: cortana-analytics
+ms.service: machine-learning
+ms.subservice: team-data-science-process
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2016
-ms.author: ilanr9;yijichen;garye
-ms.openlocfilehash: 275e387878900154660d044b26ff5ac03a17a65a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: yijichen
+ms.openlocfilehash: 6a879faa88cc6cdf586f2c12283bcb6f0263bf57
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23846427"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43842567"
 ---
-# <a name="cortana-intelligence-solution-template-playbook-for-demand-forecasting-of-energy"></a>Cortana Intelligence řešení šablony scénářem pro vyžádání prognózy energie
+# <a name="cortana-intelligence-solution-template-playbook-for-demand-forecasting-of-energy"></a>Cortana Intelligence řešení šablony Playbook pro prognózování poptávky po energii
 ## <a name="executive-summary"></a>Shrnutí
-V posledních několika letech mít sloučené Internet věcí (IoT), alternativních zdrojů energie a velké objemy dat k vytvoření velká možností v doméně, nástroje a energie. Ve stejnou dobu nástroje a celý energie sektoru viděli spotřeba vyrovnání se spotřebiteli náročných lepší způsoby řízení jejich použití energie. Proto nástroj a inteligentní mřížky společností jsou v velmi potřebné inovacemi. Zajistěte a obnovení sami. Kromě toho mnoho power a nástroj mřížky se stávají zastaralé a velmi nákladný k zajištění údržby a spravovat. Během posledního roku tým pracuje na několika oznámeních podporujících zapojení uživatelů v rámci domény energie. Během těchto oznámeních podporujících zapojení uživatelů jsme narazili mnoha případech, ve kterých byla vyhledávání nezávislí dodavatelé softwaru (nezávislí výrobci softwaru) nebo nástroje do prognózy pro budoucí spotřeby energie. Tyto prognózy hraje důležitou roli v jejich aktuálním a budoucím obchodním a staly základ pro různé případy použití. Mezi ně patří krátkodobých a dlouhodobých power zatížení prognózy, obchodování, Vyrovnávání zatížení, optimalizace mřížky atd. Velké objemy dat a pokročilé analýzy (AA) metody například Machine Learning (ML) jsou klíče předpokladů pro vytvoření přesné a spolehlivé prognózy.  
+V posledních několika let Internet of Things (IoT), alternativních zdrojů energie a velké objemy dat mají sloučeny pro tvorbu obrovské příležitosti v doméně nástroj a energie. Ve stejnou dobu nástroj a celý energetickém sektoru viděli spotřeby sloučení navýšení kapacity s vysokými nároky na lepší způsoby, jak řídit využití energie příjemci. Proto nástroj a inteligentní mřížky společností jsou v skvělé potřeba inovovat a obnovení sami. Navíc mnoho napájení a nástroj mřížky se stávají zastaralé a udržovat a spravovat velmi nákladné. Během posledního roku tým pracuje na celé řadě engagements v rámci domény energie. Během těchto výstav a došlo k mnoha případech, ve kterých byly hledání nezávislí výrobci softwaru (nezávislým výrobcům softwaru) nebo nástroje do Prognózování pro budoucí energii. Tyto předpovědi hraje důležitou roli v jejich současným i budoucím obchodním a staly základ pro různé případy použití. Patří mezi ně předpověď zatížení krátkodobé a dlouhodobé napájení, obchodování, Vyrovnávání zatížení, mřížky optimalizace atd. Velké objemy dat a pokročilé analýzy (AA) metody, jako je Machine Learning (ML) jsou klíčových předpokladů pro vytvoření spolehlivé a přesné prognózy.  
 
-V této scénářem sestavili jsme firmy a analytické pokyny potřebné pro úspěšné vývoj a nasazení spotřeby energie prognózy řešení. Tyto navrhované pokyny vám mohou pomoci nástroje, datových vědců a techniky data v zřízení plně operationalized založené na cloudu, prognózy vyžádání řešení. Pro společnosti, kteří jsou právě spouští jejich velkých objemů dat a cesty pokročilou analýzu můžete toto řešení představují počáteční počáteční hodnoty v jejich dlouhodobou strategii inteligentní mřížky.
+V tomto playbook jsme připravili firmy a analytické pokyny potřebné pro úspěšný vývoj a nasazení poptávku po energii prognózy řešení. Tyto navržené pokyny vám mohou pomoci nástroje, odborníci přes data a datovými architekty při vytváření řešení plně zprovozněné založené na cloudu, Prognózování poptávky. Pro společnosti, kteří zrovna začínáte jejich velké objemy dat a pokročilé analýzy cesty toto řešení může představovat počátečních v jejich dlouhodobou strategii inteligentní mřížky.
 
 > [!TIP]
-> Si můžete stáhnout diagram, který poskytuje přehled architektury této šablony [Cortana Intelligence řešení šablony architektura pro vytváření prognóz vyžádání energie](cortana-analytics-architecture-demand-forecasting-energy.md).  
+> Stáhněte si diagram, který obsahuje základní informace o architektuře této šablony, najdete v článku [architekturu šablony řešení Cortana Intelligence pro prognózování poptávky po energii](cortana-analytics-architecture-demand-forecasting-energy.md).  
 > 
 > 
 
 ## <a name="overview"></a>Přehled
-Tento dokument popisuje business, data a technické aspekty pomocí Cortana Intelligence a v konkrétní Azure Machine Learning (AML) pro provádění a nasazení řešení prognózy energie. Dokument se skládá ze tří hlavních částí:  
+Tento dokument popisuje firmy, data a technické aspekty využívající Cortana Intelligence a v konkrétní Azure Machine Learning (AML) pro implementaci a nasazení řešení Prognózování energie. Dokument se skládá ze tří hlavních částí:  
 
 1. Principy podniku  
 2. Pochopení dat  
 3. Technická implementace
 
-**Obchodní principy** část popisuje aspekt obchodní jeden je potřeba pochopit a vezměte v úvahu před uskutečněním rozhodnutí o investice. Vysvětluje, jak kvalifikaci obchodního problému po ruce zajistit prediktivní analýzy a strojové učení se skutečně efektivní a použít. Další dokument vysvětluje základy strojové učení a jak se používají k řešení problémů prognózy energie. Ho popisuje požadavky a kritéria kvalifikace případu použití. Některé ukázkové použijte případy a případ obchodní scénáře jsou také uvedeny.
+**Obchodní vysvětlení** popisuje část aspekty business jeden je potřeba pochopit a vzít v úvahu před rozhodování o investici. Vysvětluje, jak zařadit obchodní problém aktuální a ověřte, machine learning a prediktivní analýzy jsou skutečně efektivní a použitelný. Další dokument vysvětluje základy strojového učení a jak se používá k řešení problémů Prognózování energie. Poskytuje přehled o požadavcích a kritéria kvalifikace případu použití. Některé ukázky použít případy a obchodní případ scénáře jsou také k dispozici.
 
-Data jsou hlavní složkou pro všechny strojového učení řešení. **Pochopení dat** tento dokument popisuje některé důležité aspekty data. Popisuje ho druh data, která je potřebná pro prognózy energie, požadavky na kvalitu dat a jaké zdroje dat je obvykle neexistuje. Také popisují, jak nezpracovaných dat slouží k přípravě funkce dat, které ve skutečnosti jednotky pro modelování část.
+Data jsou hlavní složkou pro jakékoli řešení strojového učení. **Pochopení dat** část tohoto dokumentu popisuje některé důležité aspekty data. Poskytuje přehled o druh dat, která je potřebná pro vytváření prognóz energie, požadavky na kvalitu dat a k jakým zdrojům dat obvykle existují. Také vysvětlují, jak se nezpracovaná data slouží k přípravě dat funkce, které skutečně jednotka části modelování.
 
-Třetí části dokumentu se vztahuje **technickou implementaci** aspekt řešení. Funkce inženýrství a modelování jsou jádrem procesu vědecké účely dat a jsou proto se podrobněji některé. Pokrývá koncept webové služby, které jsou důležité vehicle pro nasazení cloudu řešení prediktivní analýzy. Můžeme také popisují typický Architektura řešení operationalized začátku do konce.
+Třetí části dokumentu se vztahuje **technickou implementaci** aspekt řešení. Vytváření funkcí a modelování jsou základem vědecké zpracování dat a jsou proto jsou podrobně popsány v některé. Popisuje pojem webové služby, které jsou důležité prostředkem pro nasazení řešení prediktivní analýzy v cloudu. Můžeme také popisují typickou architekturu řešení zprovozněné začátku do konce.
 
-Kromě toho dokument obsahuje referenční materiál, který můžete použít k získání dalších pochopení domény a technologie.
+Dokument navíc obsahuje referenční materiál, který vám umožní získat další znalosti domény a technologie.
 
-Je důležité si uvědomit, že jsme nemáte v úmyslu tak, aby pokrývalo v tomto dokumentu hlubší procesu vědecké účely dat, jejich matematické a technické aspekty. Tyto podrobnosti naleznete v [dokumentace Azure ML](http://azure.microsoft.com/services/machine-learning/) a [blogy](http://blogs.microsoft.com/blog/tag/azure-machine-learning/).
+Je důležité si uvědomit, že neplánujeme zahrnují v tomto dokumentu hlubší vědecké zpracování dat, jejich matematické a technické aspekty. Tyto podrobnosti můžete najít v [dokumentace ke službě Azure ML](http://azure.microsoft.com/services/machine-learning/) a [blogy](http://blogs.microsoft.com/blog/tag/azure-machine-learning/).
 
-### <a name="target-audience"></a>Cílové skupiny
-Cílovou skupinu tohoto dokumentu je obchodních a technických pracovníky, kteří by chtěli získají informace a řešení a jak jsou použity konkrétně v rámci domény prognózy energie na základě Principy Machine Learning.
+### <a name="target-audience"></a>Cílová skupina
+Cílová skupina pro tento dokument se obchodní a technické pracovníky, kteří by chtěli získat znalosti, a porozumění strojového učení na základě řešeními a jak jsou použity konkrétně v rámci domény Prognózování energie.
 
-Datových vědců mohou také těžit z čtení tohoto dokumentu lépe porozuměli nejvyšší úrovni procesu, který řídí nasazení energie prognózy řešení. V tomto kontextu je lze také funkční stanovíte a výchozí bod pro další podrobné a rozšířené materiálů.
+Odborníci přes data mohou také těžit z čtení tento dokument, abyste lépe porozuměli základní proces, který řídí nasazení řešení Prognózování energie. V tomto kontextu se můžete také použije k navázání dobrá směrný plán a výchozí bod pro další podrobné a rozšířené materiálu.
 
-### <a name="industry-trends"></a>Oborových trendů
-V posledních několika letech mít sloučené IoT, alternativních zdrojů energie a velké objemy dat k vytvoření velká možností v prostoru nástroj a energie. Ve stejnou dobu nástroje a sektory celý energie viděli spotřeba vyrovnání se spotřebiteli náročných lepší způsoby řízení jejich použití energie.
+### <a name="industry-trends"></a>Oborové trendy
+V posledních několika let mají velké objemy dat, IoT a alternativních zdrojů energie sloučeny pro tvorbu obrovské příležitosti v prostoru nástroje a energie. Ve stejnou dobu nástroj a sektory celý energie viděli spotřeby sloučení navýšení kapacity s vysokými nároky na lepší způsoby, jak řídit využití energie příjemci.
 
-Mnoho nástroj a inteligentní energetické společnosti mají byla průkopnické [inteligentní mřížky](https://en.wikipedia.org/wiki/Smart_grid) nasazení počet použití případů, které pomocí dat vygenerovaných sadami mřížky. Mnoho případy použití základem vlastností vlastní výroby elektřiny: nemůže být nashromáždila, ani z produkce uložené jako inventáře. Ano co se vytvářejí se musí použít. Nástroje, které chcete ke zvýšení účinnosti muset prognózy spotřebu jednoduše vzhledem k tomu, který vám poskytne větší schopnost **vyvážit nabídce a poptávce**, proto prevence ztráty energie **snížit skleníkového plynu emisí**a řídit náklady.
+Mnoho nástrojů a inteligentní energetickým společnostem byla průkopnický mít [inteligentní mřížky](https://en.wikipedia.org/wiki/Smart_grid) nasazením počet použití případů, které usnadňují používání dat vygenerovaných vašimi mřížky. Mnoho případy použití točí kolem základní vlastnosti výroby elektrické energie: nemůže být sbírají ani jste si poznamenali uložené jako inventáře. To co je vytvořen musí být použita. Nástroje, které chcete se stát efektivnější potřebovat k předvídání spotřeby energie jednoduše vzhledem k tomu, který vám poskytne větší možnost **vyvážit nabídka a poptávka**, zamezuje tak energie ztráty **snížit skleníkových plynu emise**a řízení nákladů.
 
-Při posuzování nákladů, je dalším důležitým aspektem, který je cena. Nové schopnosti obchodu power mezi nástroje začnou ve velmi potřebné **předpovídat budoucí vyžádání a budoucí ceny elektřiny**. To může pomoct určit jejich svazky výrobní společnosti.
+Když mluvíme o nákladech, je další důležitý aspekt, což je cena. Nové možnosti pro využití výkonu mezi nástroje v skvělých věcí a potřebovali si dali **předpovídat budoucí poptávku a budoucí ceny elektřiny**. To může pomoct určit jejich svazky výrobní společnosti.
 
-Používáme je slovo 'inteligentní', jsme naleznete ve skutečnosti mřížky, které můžete informace a pak proveďte předpovědi. Ho můžete odhadnout sezónní změny energie a také **předvídáte dočasného přetížení situacích a automaticky ji upravit**. Ve vzdáleně regulační spotřeba (pomocí tato inteligentní měřidla), lze provádět lokalizované přetížení situacích. **Nejprve predikci a pak funguje**, mřížky umožňuje efektivněji v čase.
+Pokud použijeme slovo "inteligentní", ve skutečnosti označujeme mřížky, můžete další informace a pak proveďte předpovědi. To předvídat sezónními změnami v spotřeby stejně jako **přijetím dočasné přetížení a automaticky pro něj nastavit**. Ve vzdálené řízení spotřeby (s pomocí těchto inteligentních měřičů), může být zpracována lokalizované přetížení. **Nejprve předpověď a pak funguje**, mřížky umožňuje efektivněji v čase.
 
-Pro zbytek tohoto dokumentu se zaměříme na konkrétní řadu případy použití, které se týkají prognózy z budoucí krátkodobé i dlouhodobé na energii na vyžádání. Jsme několik měsíců pracovaly v těchto oblastech a dostalo některé znalosti a dovednosti, která umožňují nám nepřineslo výsledky úrovni oboru. Jiné případy použití se budeme také v dokumentu v blízké budoucnosti.
+Pro zbývající část tohoto dokumentu se zaměříme na konkrétní řady případů použití, které se týkají předvídání budoucí krátkodobé a dlouhodobé poptávku po energii. Byla práce v těchto oblastech na několik měsíců jsme získali nějaké znalosti a dovednosti, díky kterým můžou můžeme vytvářet výsledky na podnikové úrovni odvětví. Dalších případů použití se bude vztahovat i v dokumentu v blízké budoucnosti.
 
 ## <a name="business-understanding"></a>Obchodní vysvětlení
-### <a name="business-goals"></a>Obchodních cílů
-**Energie ukázku** cílem je ukázka typické prediktivní analýzy a strojového učení řešení, které můžete nasadit ve velmi krátkého časového rámce. Konkrétně je naše aktuální aktivní, aby jeho obchodní hodnotu mohli rychle uvědomili si a využít při povolení energie vyžádání prognózy řešení. Informace v této playbook může pomoct zákaznické splníte následující cíle:
+### <a name="business-goals"></a>Obchodní cíle
+**Energie ukázka** cílem je předvést typické prediktivní analýzy a machine learningu řešení, které je možné nasadit v krátkém časovém rámci. Konkrétně je naše aktuální aktivní tak, aby jeho obchodní hodnotu můžete rychle realizovat a využít při povolování řešení prognózy poptávky energie. Informace v tomto playbook může pomoci zákazníka provádění následujících cílů:
 
-* Krátkého času na hodnotu machine learning na základě řešení
-* Umožňuje rozšířit pilotní nasazení použít případ na jiné případy použití nebo širší obor podle jejich obchodních potřeb
-* Rychle získat Cortana Intelligence Suite znalostní báze produktů
+* Krátkého formátu času na hodnotu strojového učení na základě řešení
+* Schopnost rozšiřovat pilotní nasazení mít velikost dalších případů použití nebo širším rozsahem podle svých obchodních potřeb
+* Rychle získat znalostní bázi produktů Cortana Intelligence Suite
 
-Pomocí těchto cílů na paměti Toto playbook cílem je doručení obchodních a technických znalostí, která vám pomůže při dosažení těchto cílů.
+S těmito cíli v úvahu zaměřuje playbook v poskytování obchodních a technických znalostí, které vám pomůže při dosažení těchto cílů.
 
-### <a name="power-load-and-demand-forecasting"></a>Napájení zatížení a vyžádání prognózy
-V rámci odvětví energie může být mnoha způsoby, které poptávky prognózy lze kritické obchodní problémy vyřešit. Ve skutečnosti vyžádání prognózy lze považovat za základem pro mnoho případy použití jader v odvětví. Obecně platí, jsme zvážit dva typy předpovědi energetické poptávky: krátkodobé i dlouhodobé. Každé z nich může sloužit k jinému účelu a využívat jiný přístup. Hlavní rozdíl mezi nimi je prognózy horizontu, znamená časové rozmezí do budoucna, pro kterou jsme by prognózy.
+### <a name="power-load-and-demand-forecasting"></a>Napájecí zátěž a Prognózování poptávky
+V energetickém sektoru může být mnoho způsobů, které poptávky Prognózování pomáhá při řešení kritických obchodních problémů. Ve skutečnosti Prognózování poptávky po lze považovat za základem pro mnoho základní případy použití v tomto odvětví. Obecně platí, budeme přemýšlet o dva druhy prognózy poptávky energie: krátkodobé a dlouhodobé. Každý z nich může sloužit k jinému účelu a využívat jiný přístup. Hlavní rozdíl mezi nimi je prognóz horizontu, to znamená časové rozmezí, do budoucna, u kterého jsme by prognózy.
 
-#### <a name="short-term-load-forecasting"></a>Krátkodobých termín zatížení prognózy
-V kontextu spotřeby energie krátké termín načíst prognózy (STLF) je definován jako agregované zatížení, která je naplánované v blízké budoucnosti na různých částí mřížky (nebo mřížku jako celek). V tomto kontextu krátkodobou je definován časový horizont v rozsahu 1 hodina na 24 hodin. V některých případech je také horizon 48 hodin možné. Proto STLF je velmi běžné provozní použití případ mřížky. Tady jsou některé příklady STLF řízené případů použití:
+#### <a name="short-term-load-forecasting"></a>Krátká období zatížení Prognózování
+V rámci kontextu poptávku po energii krátká období načíst Prognózování (STLF) je definován jako agregované zatížení, která je naplánované v blízké budoucnosti na různé části mřížce (nebo jako celek). V tomto kontextu je krátkodobá definován jako časový horizont v rozsahu 1 hodina 24 hodin. V některých případech také je možné horizont 48 hodin Proto je velmi běžné v případě provozních pomocí mřížky STLF. Tady je několik příkladů STLF řízené případy použití:
 
-* Nabídce a poptávce vyrovnávání
-* Podpora obchodním napájení
-* Provádění trhu (nastavení napájení cena)
-* Provozní optimalizace mřížky
-* [Odpověď na vyžádání](https://en.wikipedia.org/wiki/Demand_response)
-* Ve špičkách vyžádání prognózy
-* Vyžádání straně správy
-* Vyrovnávání zatížení a přetížení prevence
-* Dlouhodobé zatížení prognózy
-* Selhání a anomálií detekce
-* Curtailment/vyrovnávání ve špičce 
+* Nabídka a poptávka vyrovnávání
+* Podpora Power obchodování
+* Provádění trh (nastavení napájení cena)
+* Optimalizace provozní mřížky
+* [Poptávka reaguje](https://en.wikipedia.org/wiki/Demand_response)
+* Ve špičce poptávky
+* Správa na straně poptávky
+* Vyrovnávání zatížení a přetížení ochrany před únikem informací
+* Dlouhodobé Prognózování zatížení
+* Selhání a detekce anomálií
+* Ve špičce curtailment/vyrovnání 
 
-STLF model jsou většinou založené na nejbližší minulosti (posledního dne nebo týdne) datům o spotřebě a používání naplánované teploty jako důležité předpověď. Získávání přesných teploty prognózy pro příští hodiny a až na 24 hodin se stává stále menší výzvu nyní dnů. Tyto modely jsou méně citlivou sezónní vzory nebo dlouhodobé trendy spotřeby.
+STLF model jsou většinou založený na téměř minulosti (posledního dne nebo týdne) data o spotřebě a použití naplánované teploty jako důležité údaje. Získání přesných teploty prognózy příští hodinu a až 24 hodin se mění na méně náročné nyní dnů. Tyto modely jsou méně citlivé na sezónní vzorů nebo dlouhodobé trendy spotřeby energie.
 
-SLTF řešení jsou také k vygenerování velkému počtu volání předpovědi (žádosti o službu) pravděpodobně vzhledem k tomu, že jsou právě vyvolány hodinu a v některých případech i s vyšší frekvence. Také je velmi běžné zobrazíte implantaci, kde každé jednotlivé transformovny nebo transformer je reprezentována jako samostatné model a proto se ještě větší objem požadavků předpovědi.
+SLTF řešení můžou také generovat velkému počtu prediktivních volání (žádostí o službu) vzhledem k tomu, že jsou vyvolání po hodinách a v některých případech i s vyšší frekvencí. Je také velmi běžné zobrazíte implantaci, kde každé jednotlivé transformovny nebo transformer je vyjádřena jako samostatný model a proto jsou ještě větší objem požadavků předpovědi.
 
-#### <a name="long-term-load-forecasting"></a>Dlouhodobé zatížení prognózy
-Cílem z dlouho termín zatížení prognózy (LTLF) je prognózy power vyžádání s časový horizont od 1 týden do více měsíců (a v některých případech pro počet roků). Tento rozsah horizon je ve většině případů platí pro plánování a investice případy použití.
+#### <a name="long-term-load-forecasting"></a>Dlouhodobé Prognózování zatížení
+Cílem z dlouhé termín zatížení Prognózování (LTLF) je předpovídá poptávku power s časový horizont od 1 týden na několik měsíců (a v některých případech pro řadu let). Tento rozsah horizontu je ve většině případů platí pro plánování a případy použití investice.
 
-Pro dlouhodobou scénáře je důležité mít vysoké kvality dat, které pokrývá rozpětí několik let (minimální 3 roky). Tyto modely obvykle extrahovat sezónnosti vzory z historických dat a nutné používat externí predicators například jako počasí a klimatem vzory.
+Pro dlouhodobou scénáře je důležité mít vysoce kvalitní data, které pokrývá rozsah za několik let (minimální 3 roky). Tyto modely se obvykle extrahovat sezónnosti vzorů z historických dat a použití externí predicators například jako počasí a klimatických vzory.
 
-Je důležité, aby se vyjasnilo, že čím delší je prognózy horizon, tím méně přesná Prognóza může být. Je proto důležité vytvořit některé intervaly spolehlivosti společně s skutečné prognózu, která by umožnilo člověka zohlednit možné variace do proces plánování.
+Je důležité, aby se vyjasnilo, že čím delší je prognóz chystané, tím méně přesné prognózy může být. Je proto potřeba vytvořit některé intervalu spolehlivosti spolu s skutečné předpovědí, která by umožňovala lidí se faktorovat možné změnu na proces plánování.
 
-Vzhledem k tomu, že tento scénář spotřeby pro LTLF je většinou plánování, očekáváme mnohem nižší předpovědi svazky (ve srovnání se STLF). Jsme by obvykle najdete v těchto předpovědi vkládat do vizualizace nástroje, například aplikace Excel nebo PowerBI a volání ručně uživatelem.
+Protože scénáře spotřeby LTLF je většinou plánování, můžete Očekáváme, že mnohem nižší předpovědi svazky (porovnání s STLF). By obvykle najdete v těchto předpovědí součástí vizualizačních nástrojů, jako je Excel nebo Power BI jsme ji vyvolat ručně uživatelem.
 
-### <a name="short-term-vs-long-term-prediction"></a>Krátký termín vs. Dlouhodobé předpovědi
-Následující tabulka porovnává STLF a LTLF v ohledem na nejdůležitější atributy:
+### <a name="short-term-vs-long-term-prediction"></a>Krátká období vs. Dlouhodobé Predikcí
+Následující tabulka porovnává STLF a LTLF z hlediska vašich nejdůležitějších atributy:
 
-| Atribut | Krátkodobá zatížení prognózy | Dlouhodobé zatížení prognózy |
+| Atribut | Zatížení krátkodobou předpověď | Dlouhodobé předpověď zatížení |
 | --- | --- | --- |
-| Prognózy Horizon |Z 1 hodinu 48 hodin |Od 1 do 6 měsíců nebo více |
-| Členitost dat |Každou hodinu |Hodinové nebo denní |
-| Typické scénáře použití |<ul><li>/ Poptávky vyrovnávání</li><li>Vyberte hodinu prognózy</li><li>Odpověď na vyžádání</li></ul> |<ul><li>Dlouhodobé plánování</li><li>Plánování prostředky mřížky</li><li>Plánování prostředků</li></ul> |
-| Typické prognostické |<ul><li>Dne nebo týdne</li><li>Hodiny dne</li><li>Hodinové teploty</li></ul> |<ul><li>Měsíc roku</li><li>Den v měsíci</li><li>Dlouhodobé teploty a klimatem</li></ul> |
-| Rozsah historických dat |Data za dvě až tři roky |Data za pět až 10 let |
-| Typické přesnost |MAPE * 5 % nebo nižší |MAPE * 25 % nebo nižší |
+| Prognózy Horizon |Od 1 hodiny do 48 hodin |Od 1 do 6 měsíců |
+| Členitost dat |Každou hodinu |Každou hodinu nebo každý den |
+| Typické případy použití |<ul><li>/ Poptávky vyrovnávání</li><li>Vyberte hodinu Prognózování</li><li>Poptávka reaguje</li></ul> |<ul><li>Dlouhodobé plánování</li><li>Plánování prostředků mřížky</li><li>Plánování prostředků</li></ul> |
+| Typické prediktory |<ul><li>Dne nebo týdne</li><li>hodiny dne</li><li>Hodinové teploty</li></ul> |<ul><li>Měsíc roku</li><li>Den v měsíci</li><li>Dlouhodobé teploty a klimatu</li></ul> |
+| Rozsah historických dat |Data za dvě až tři roky |Za 5 až 10 let dat. |
+| Typické přesnost |MAPE * 5 % nebo nižším |MAPE * 25 % nebo nižším |
 | Prognózy frekvence |Vytváří každou hodinu nebo každých 24 hodin |Vytváří jednou měsíčně, čtvrtletně nebo ročně |
 
-\*[MAPE](https://en.wikipedia.org/wiki/Mean_absolute_percentage_error) – znamenat průměrnou procentuální chyby
+\*[MAPE](https://en.wikipedia.org/wiki/Mean_absolute_percentage_error) – znamenat průměrné procento chyb
 
-Jak je vidět z této tabulky, je velmi důležité k rozlišení mezi krátkodobém a dlouhodobém prognózy scénáře, protože se jedná představují různých obchodních potřeb a může mít jiné nasazení a vzorce používání.
+Jak je vidět z této tabulky, je velmi důležité rozlišovat mezi krátkodobém a dlouhodobém horizontu Prognózování scénáře, jako ty představují potřebám různých firem a mohou mít různé nasazení a jejich vzorce spotřeby.
 
-### <a name="example-use-case-1-esmart-systems--overload-optimization"></a>Příklad použití případ 1: eSmart systémy – přetížení optimalizace
-Důležité role [inteligentní mřížky](https://en.wikipedia.org/wiki/Smart_grid) je dynamicky a neustále optimalizovat a upravit změna vzorce používání. Spotřebu může být ovlivněno krátkodobé změny, které jsou způsobeny hlavně kolísání teploty (*například*, další power se používá pro podmínku letecké nebo vytápění). Ve stejnou dobu spotřebu je ovlivněny také dlouhodobých trendů. Ty mohou obsahovat sezónnosti účinky, státní svátky, dlouhodobé růstu spotřeby a i hospodářského faktorech, například příjemce index, cena těžba ropy a HDP.
+### <a name="example-use-case-1-esmart-systems--overload-optimization"></a>Příklad použití případ 1: eSmart systémy – optimalizace přetížení
+Důležité role [inteligentní mřížky](https://en.wikipedia.org/wiki/Smart_grid) je dynamicky a průběžně optimalizace a optimalizace pro změnu vzorce spotřeby. Spotřeba energie může mít dopad na krátkodobou změnou hlavně způsobených fluktuace teploty (*třeba*, vyšší výkon se používá pro podmínku air nebo vytápění). Ve stejnou dobu spotřebu energie ovlivňuje také dlouhodobé trendy. Ty mohou obsahovat sezónnosti efekty, státních svátků v USA, dlouhodobé růstu využití a dokonce ekonomické faktorů, jako je index příjemce, cena ropy a HDP.
 
-V takovém případě použijte [eSmart](http://www.esmartsystems.com/) chtěli nasadit cloudové řešení, která umožňuje predikci tendenci situace přetížení na jakékoli dané transformovny mřížky. Konkrétně eSmart chtěli identifikovat trakčních, které jsou pravděpodobně přetížení během následující hodiny, takže okamžitý zásah, může přesměrováni na vyhnout nebo je tato situace vyřešit.
+V tomto případě se [eSmart](http://www.esmartsystems.com/) kterých chcete nasadit cloudové řešení, která umožňuje předpověď tendence situace přetížení na jakékoli dané transformovny mřížky. Zejména eSmart chtěli identifikovat Rozvodny, které jsou pravděpodobně přetížení během následující hodiny, takže lze provést okamžitou akci k zamezení nebo řešení této situace.
 
-Přesný a rychlé provádění předpovědi vyžaduje implementaci tři prediktivní modely:
+Přesný a rychlé provádění předpovědi vyžaduje implementaci ze tří prediktivní modelů:
 
-* Dlouho model termín, který umožňuje prognózy spotřeby energie na každý transformovny během další několik týdnů či měsíců
-* Krátkodobá model, který umožňuje předpovědi přetížení situace na danou transformovny během příští hodiny
-* Model teploty, který poskytuje prognózy z teploty budoucí přes více scénářů
+* Dlouhá období model, který umožňuje předvídání spotřeby energie v každé transformovny během další několik týdnů či měsíců
+* Krátkodobá model, který umožňuje předpovědi přetížení situace na daný transformovny během příští hodina
+* Model teploty, který poskytuje předpovědi budoucích teploty přes různé scénáře
 
-Cílem dlouhodobé modelu je pořadí trakčních podle jejich tendenci přetížení (vzhledem ke své přenosu kapacita napájení) během další týden nebo měsíc. To umožňuje vytvoření krátké seznam trakčních, které by slouží jako vstup pro krátkodobou předpověď. Teplotní je důležité předpověď pro dlouhodobé model, je zapotřebí neustále vytvářet prognózy více scénář teploty a kanálu je jako vstup do dlouhodobé modelu. Krátkodobá prognózy je pak volána k předpovědi, které transformovny je pravděpodobně přetížení přes do příští hodiny.
+Cíl dlouhodobé modelu má pořadí Rozvodny podle jejich tendence k přetížení (vzhledem k jejich přenos kapacita napájení) během další týden nebo měsíc. To umožňuje vytváření krátký seznam Rozvodny, které bude sloužit jako vstup pro krátkodobou předpověď. Teplota je důležité údaje pro dlouhodobé model, je potřeba neustále vytvářejí prognózy teplota několika scénáři a jejich vstupu jako vstup do dlouhodobého modelu. Potom je volána krátkodobou předpověď předpovědět, které transformovny je pravděpodobně přetížení přes do příští hodiny.
 
-Modely krátkodobé a dlouhodobé nasazených jednotlivě na každém transformovny. Proto praktické spuštění těchto modelů vyžaduje rozsáhlé orchestration. K získání vyšší přesnost předpovědi v krátkodobém horizontu, podrobnější modelu jsou vyhrazené pro každou hodinu dne. Všechny tyto modely jsou vykonány každou hodinu a dokončí provádění během několika minut, aby bylo dost času reagovat a přijmout preventivní opatření, v případě potřeby. Tato kolekce modelů je pořád aktuální pomocí pravidelné retraining nejnovější data.
+Modely krátkodobé a dlouhodobé se nasazují samostatně za každý transformovny. Proto praktické provádění těchto modelů vyžaduje rozsáhlou Orchestrace. Získat vyšší přesnost předpovědi v krátkodobém horizontu podrobnější modelu je vyhrazen pro každou hodinu dne. Tyto modely jsou spouštěny každou hodinu a dokončí provádění během několika minut, aby bylo dost času reagovat a přijmout preventivní opatření v případě potřeby. Tato kolekce modelů je pořád aktuální pomocí pravidelné retraining nejnovější data.
 
-Další informace o tento případ použití naleznete [zde](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18945).
+Můžete najít další informace o tento případ použití [tady](https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=18945).
 
 #### <a name="use-case-qualification-criteria--prerequisites"></a>Použít kritéria případu kvalifikace – požadavky
-Hlavní sílu Cortana Intelligence je výkonné možnosti zavádět a škálovat machine learning zaměřená na řešení v oblasti. Je navržen pro podporu tisíc předpovědi, které jsou spouštěny souběžně. Může automaticky škálovat podle měnících vzor spotřeby. Proto je fokus na řešení na přesnost a výpočetní výkon. Například nástroj společnosti má zájem generovala přesné energie vyžádání prognózy do příští hodiny a pro každou hodinu dne. Na druhé straně jsme zájem o méně odpovídání na otázku, proč je vyžádání předpovědět, které ho je (přímo pro model se postará o,).
+Hlavní sílu Cortana Intelligence je v jeho výkonné schopnost nasadit a škálovat na střed řešení strojového učení. Je navržen pro podporu tisíc predikcí, které jsou spuštěny souběžně. Může automaticky škálovat podle měnící vzor spotřeby. Zaměření řešení, tedy na přesnost a výpočetní výkon. Například je nástroj společnosti zájem o vytváření poptávky po energii přesné prognózy do příští hodiny a pro každou hodinu dne. Na druhé straně nás zajímají méně odpovídání na otázku, proč poptávky očekává se, že je potřeba jako ji (samotného modelu se postará o který).
 
-Proto je důležité si uvědomit, že všechny případy použití a obchodní efektivně vyřešení problémů pomocí machine learning.
+Proto je důležité si uvědomit, že všechny případy použití a obchodní problémy můžete efektivně vyřešit pomocí služby machine learning.
 
-Cortana Intelligence a machine learningu může být velice efektivní v řešení daného obchodního problému, když se splní následující kritéria:
+Cortana Intelligence a machine learning může být velmi efektivní při řešení daného obchodních problémů, když se splní následující kritéria:
 
-* Je obchodního problému v dolním **prediktivní** ve své podstatě. V příkladu případu použití prediktivní je nástroj společnost, která se má odhadnout power zatížení daného transformovny během příští hodiny. Analýza a řazení ovladače historických poptávky na druhé straně by **popisný** ve své podstatě a proto méně použitelné.
-* Je zřejmé **cestu akce** mají být provedeny, jakmile je k dispozici předpovědi. Například predikci přetížení na transformovny během příští hodiny můžete aktivovat proaktivní akce snižuje zatížení, který je přidružený tento transformovny a proto potenciálně brání přetížení.
-* Představuje případ použití **typický typ problému** tak, že když vyřešeny ho můžete připravit přechod případy použití pro jiné podobné řešení.
-* Můžete nastavit zákazník **kvantitativní a kvalitativní cíle** k předvedení implementace úspěšné řešení. Dobrý kvantitativní cíl pro energie vyžádání prognózy by být například prahovou hodnotu požadovanou přesnost (*například*, je povoleno až 5 % došlo k chybě) nebo pokud predikci transformovny přetížení pak přesnost (počet pozitivních true) a pro vyvolání (rozsah true pozitivních) by měla být s danou prahovou hodnotu. Těchto cílů by měl být odvozen od zákazníka obchodních cílů.
-* Je zřejmé **scénáře integrace** s pracovním postupem obchodní společnosti. Například Prognóza zatížení transformovny lze integrovat do Centrum ovládacího prvku mřížky tak, aby přetížení prevence aktivity.
-* Zákazník má připraven k použití **dat s dostatečnou kvality** pro podporu případ použití (v další části, další informace naleznete v **Data Quality**, z této playbook).
-* Architektura vyhoví zaměřená na data v cloudu zákazníka nebo **cloudové machine learning**, včetně Azure ML a další součásti Cortana Intelligence Suite.
-* Zákazník je ochotná navázat **tok dat koncová** tohoto pracoviště doručování dat do cloudu průběžně a je ochotná **zprovoznit** řešení.
-* Zákazník je připraven k **vyhradit prostředky** kdo bude mít aktivně zapojení během počáteční pilotní implementace tak, aby znalosti a vlastnictví řešení lze přesunout do zákazníka po úspěšném dokončení.
-* Zákazník zdroj by měl být **zkušený data professional**, pokud možno vědecký pracovník data.
+* Je obchodního problému v dolním **prediktivní** ze své podstaty. Případu příklad prediktivní použití je společnost nástroj, který chcete předpovědět napájecí zátěž na daný transformovny během následující hodiny. Na druhé straně, analýze a hodnocení ovladače historických vyžádání by **popisný** ze své podstaty a proto méně použitelné.
+* Je zřejmé **cestu akce** mají být provedeny, když do predikce. je k dispozici. Například předpověď přetížení na transformovny během následující hodiny můžete aktivovat proaktivní akce snížení zatížení, který je přidružený k této transformovny a potenciálně zamezuje tak přetížení.
+* Představuje případu použití **typický typ problému** tak, aby při vyřešit ho pave způsob, jakým případy použití pro jiné podobné řešení.
+* Můžete nastavit zákazník **kvantitativní a kvalitativní cíle** k předvedení implementací úspěšné řešení. Například by dobré kvantitativní cíl pro prognózu poptávky energie prahová hodnota požadovaná přesnost (*např*, je povolená až 5 % došlo k chybě) nebo pokud předpověď transformovny přetížení pak přesnosti (počet pravdivě pozitivní) a odvolání (rozsah pravdivě pozitivní) by měla být vyšší než dané prahové hodnoty. Tyto cíle by měl být odvozen od zákazníka obchodních cílů.
+* Je zřejmé **scénáře integrace** s pracovní postup společnosti vaší společnosti. Předpověď zatížení transformovny například je možné integrovat do control centeru mřížky umožňující přetížení aktivity ochrany před únikem informací.
+* Zákazník má připraven k použití **data s dostatečnou kvality** pro podporu případ použití (zobrazit více v další části **kvality dat**, z playbook).
+* Architektura poskytuje výkonný zaměřenou na data v cloudu zákazníka nebo **založené na cloudu strojového učení**, včetně Azure ML a dalších součástí Cortana Intelligence Suite.
+* Je zákazník chce vytvořit **tok, který koncového data** tohoto zařízení doručování dat do cloudu průběžně a je ochotná **zprovoznění** řešení.
+* Zákazník je připraven k **vyhradit prostředky** kdo bude mít aktivně zabývám během počáteční implementace pilotního nasazení tak, aby znalostní báze a vlastnictví řešení lze přenést do zákazníků po úspěšném dokončení.
+* By měl být prostředku zákazníka **zkušený data professional**, pokud možno mezi odborníky přes data.
 
-Kvalifikace případu použití podle výše uvedená kritéria může výrazně zlepšit úspěšnost případu použití a vytvořit funkční beachhead pro implementaci případy budoucí použití.
+Kvalifikace případu použití podle výše uvedených kritérií můžete výrazně zlepšit míru úspěšných případu použití a vytvořit funkční útok typu beachhead pro implementaci případy budoucí použití.
 
-### <a name="cloud-based-solutions"></a>Řešení založená na cloudu
-Cortana Intelligence Suite v Azure je integrované prostředí, který se nachází v cloudu. Nasazení řešení pokročilou analýzu v cloudovém prostředí obsahuje, že významné výhody pro firmy a ve stejnou dobu může to znamenat velkou změnu pro společnosti, že stále použít místní IT řešeními. V rámci odvětví energie není jasný trend postupné migrace operací do cloudu. Tento trend souvisí společně s vývojem inteligentní mřížky jak je popsáno výše, v **odvětví trendy**. Jak tato scénářem se zaměřuje na cloudové řešení v doméně energie, je důležité popisují výhody a další důležité informace o nasazení řešení založená na cloudu.
+### <a name="cloud-based-solutions"></a>Cloudová řešení
+Cortana Intelligence Suite v Azure je integrované prostředí, které se nacházejí v cloudu. Nasazení řešení pokročilých analýz v cloudovém prostředí obsahuje značné výhody pro firmy a v době, může to znamenat velkou změnu pro společnosti, že stále použít místní IT řešení. V energetickém sektoru je jasné trend postupné migrace operací do cloudu. Tento trend přejde ruku v ruce spolu s vývoj inteligentních mřížky jak je popsáno výše, v **trendů odvětví**. Jak tento playbook se zaměřuje na cloudové řešení v doméně energie, je potřeba popisují výhody a další důležité informace o nasazení řešení založené na cloudu.
 
-Možná největších výhod cloudové řešení jsou náklady. Jako řešení využívá součástí nasazení cloudu, neexistuje žádný předem náklady a náklady na spotřebu (náklady z zboží prodané) komponenty s ním spojená. To znamená, že není nutné investovat do hardwaru, softwaru a údržby IT, a proto je podstatně snížit riziko firmy.
+Možná největší výhodou cloudové řešení je náklady. Jako řešení využívá cloud nasazuje komponenty neexistuje žádné pořizovací náklady ani COGS (cena prodaného zboží) komponenta náklady spojené s ním. To znamená, že není nutné investovat do hardwaru, softwaru a údržbu IT, a proto není podstatné omezení objemu obchodní riziko.
 
-Další důležité výhodou je strukturu průběžnými platbami náklady cloudové řešení. Servery založené na cloudu pro computing nebo úložiště můžete nasadit a škálovat na základě právě podle potřeby. To představuje výhod efektivitu nákladů na cloudové řešení.
+Další důležitou výhodou je strukturu nákladů s průběžnými platbami cloudových řešení. Servery založené na cloudu pro výpočty a úložiště je možné nasadit a škálovat na základě právě podle potřeby. Reprezentuje efektivitu nákladů výhod cloudové řešení.
 
-Nakonec je pro Investujete do IT údržby nebo vývoj budoucí infrastruktury, jako to vše je součástí Cloudová nabídka není nutné. Rozsahu Cortana Intelligence Suite zahrnuje nejvhodnější třída služby a jeho silniční mapu udržuje vyvíjející se. Nové funkce, součásti a možnosti jsou neustále zavedené a momentální.
+A konečně není nutné pro investic do IT údržby nebo budoucí infrastruktury, vývoje, jak to vše je součástí nabídky založené na cloudu. Rozsahu Cortana Intelligence Suite zahrnuje nejlepší služby třídy a udržuje svůj Znovunačtení vyvíjejí. Nové funkce, komponenty a funkce jsou neustále zavlečení a vyvíjejí.
 
-Pro společnosti, který je právě spouští jeho přechodu do cloudu důrazně doporučujeme provést postupný přístup implementací mapě cloudu migrace. Věříme, že pro nástroje a společnosti v doméně energie, případy použití, které jsou popsané v této playbook reprezentuje příležitost vynikající pro pilotní nasazení řešení prediktivní analýzy v cloudu.
+Pro společnosti, který právě spouští jeho přechodu do cloudu vám důrazně doporučujeme provést postupného díky implementaci cloudových migrace přehled toho. Věříme, že nástroje a společností ve službě domény energie, případy použití, které jsou popsané v tomto playbook představují vynikající příležitost pro pilotní nasazení řešení prediktivní analýzy v cloudu.
 
-#### <a name="business-case-justification-considerations"></a>Aspekty obchodní případu při zarovnání do bloku
-V mnoha případech může být zákazník zájem o provedení obchodního oprávnění pro danou použití případ, ve kterém jsou cloudové řešení a Machine Learning důležité součásti. Na rozdíl od v případě místních řešení, v případě cloudové řešení je minimální komponentu předem náklady a většina elementů náklady jsou přidruženy skutečném využití. Pokud jde o nasazení energie prognózy řešení na webu Cortana Intelligence Suite, více služeb lze integrovat s struktura single běžné náklady. Například databáze (*například*, SQL Azure) lze použít k uložení nezpracovaná data a pak pro samotný předpovídá Azure ML se používá k hostování služby prognózy. V tomto příkladu můžou zahrnovat strukturu náklady na úložiště a transakčních komponent.
+#### <a name="business-case-justification-considerations"></a>Důležité informace o obchodních případů odůvodnění
+V mnoha případech může být zákazník zájem obchodní odůvodnění pro danou použití případ, ve kterém cloudové řešení a Machine Learning jsou důležitou součástí. Na rozdíl od místního řešení, v případě cloudové řešení komponenta počátečních nákladů je minimální a většinu prvků nákladů jsou spojeny s aktuálním využití. Při rozhodování o nasazení řešení v sadě Cortana Intelligence Suite Prognózování energie, několik služeb, které je možné integrovat s jednu společnou strukturu nákladů. Například databáze (*třeba*, SQL Azure) slouží k ukládání nezpracovaných dat a pak pro skutečný předpovědi s Azure ML se používá k hostování prognóz služeb. V tomto příkladu může obsahovat struktura náklady na úložiště a transakčních komponent.
 
-Na druhé straně jeden měli rozumět obchodní hodnotu operačního vyžádání energie prognózy (krátkodobého nebo dlouhodobého hlediska). Ve skutečnosti je důležité si uvědomit obchodní hodnotu každé prognózy operace. Například přesně prognózy power zatížení dobu následujících 24 hodin můžete zabránit nadbytečné produkce nebo může zabránit přetížení v mřížce a to je možné kvantifikovat z hlediska finanční úspor na každý den.
+Na druhé straně jedna by měl mít dostatečné povědomí o obchodní hodnoty jazyka provoz poptávku po energii Prognózování (krátkodobého nebo dlouhodobého hlediska). Ve skutečnosti je důležité si uvědomit obchodní hodnotu každé prognózy operace. Například přesné Prognózování napájecí zátěž dobu následujících 24 hodin může zabránit nadbytečné produkce nebo může pomoct zabránit přetížení mřížky a to může být vyjadřuje z hlediska finanční úspora každý den.
 
-Základní vzorec pro výpočet finanční výhodou vyžádání prognózy řešení by: ![základní vzorec pro výpočet finanční výhodou vyžádání prognózy řešení](media/cortana-analytics-playbook-demand-forecasting-energy/financial-benefit-formula.png)
+Základní vzorce pro výpočet finanční výhody vyžádání prognózy řešením může být: ![základního vzorce pro výpočet finanční výhody vyžádání prognózy řešení](media/cortana-analytics-playbook-demand-forecasting-energy/financial-benefit-formula.png)
 
-Vzhledem k tomu, že Cortana Intelligence Suite poskytuje průběžnými platbami cenový model, není nutné pro komponentu pevné náklady na tento vzorec by docházelo. Tento vzorec, lze vypočítat na základě denně, měsíční nebo roční.
+Protože Cortana Intelligence Suite poskytuje cenového modelu s průběžnými platbami, není nutné pro něj hradit fixní částku součásti na tento vzorec. Tento vzorec může vypočítat každý den, měsíční nebo roční.
 
-Aktuální Cortana Intelligence Suite a Azure ML cenových plánů najdete [zde](http://azure.microsoft.com/pricing/details/machine-learning/).
+Aktuální Cortana Intelligence Suite a Azure ML cenových plánech najdete [tady](http://azure.microsoft.com/pricing/details/machine-learning/).
 
-### <a name="solution-development-process"></a>Proces vývoj řešení
-Vývoj cyklus vyžádání energie prognózy, řešení obvykle zahrnuje 4 fází, všechny z nich uděláme použít cloudové technologie a služby v rámci Cortana Intelligence Suite.
+### <a name="solution-development-process"></a>Proces vývoje řešení
+Vývojový cyklus poptávku po energii prognóz řešení obvykle zahrnuje 4 fází, které bychom použít cloudové technologie a služby v sadě Cortana Intelligence Suite.
 
 To je znázorněno v následujícím diagramu:
 
@@ -191,214 +192,214 @@ To je znázorněno v následujícím diagramu:
 
 Následující odstavce popisuje tento proces krok 4:
 
-1. **Shromažďování dat** – všechny pokročilé analýzy na základě řešení využívá data (najdete v části **pochopení dat**). Konkrétně pokud jde o prediktivní analýzy a vytváření prognóz, spoléháme na probíhající, dynamické tok dat. V případě energie vyžádání prognózy, tato data můžete použít jako zdroj přímo z inteligentní měřidla nebo již agregovat na místní databázi. Také spoléháme na jiné externí zdroje dat, jako je například počasí a teploty. Tento probíhající tok dat je nutné orchestrovat, naplánovat a uložit. [Azure Data Factory](http://azure.microsoft.com/services/data-factory/) (ADF) je naše hlavní centrem k provedení této úlohy.
-2. **Modelování** – pro přesné a spolehlivé energie prognózy jeden musí vyvíjet (train) a udržovat skvělé model, díky použijete historických dat a extrahuje smysluplný a prediktivní vzorů v datech. Oblasti Learning počítače (ML) má byl narůstá s více pokročilé algoritmy pravidelně vyvíjených. Azure ML Studio nabízí skvělý uživatelské prostředí, která pomáhá využívat nejpokročilejší algoritmy ML v rámci dokončení pracovní postup. Tento pracovní postup je znázorněna v intuitivní vývojový diagram a zahrnuje data přípravy, funkce extrakce, modelování a vyhodnocení modelu. Uživatel může pro vyžádání obsahu v stovky různých modely, které jsou zahrnuté v tomto prostředí. Na konci této fáze vědecký pracovník dat bude mít pracovní model, který je plně vyhodnotí a připravena k nasazení.
+1. **Shromažďování dat** – všechny pokročilé řešení pro analýzu na základě závisí na datech (naleznete v tématu **pochopení dat**). Konkrétně pokud jde o prediktivní analýzy a prognózy, spoléháme na probíhající, dynamické tok dat. V případě energie Prognózování poptávky, tato data můžete použít jako zdroj přímo z inteligentních měřičů, nebo již agregovat v databázi v místním prostředí. Spoléháme se také na dalších externích zdrojů dat, třeba o počasí a teploty. Tento probíhající tok dat nutné orchestrované, naplánovat a uložit. [Azure Data Factory](http://azure.microsoft.com/services/data-factory/) (ADF) je náš hlavní centrem k provedení této úlohy.
+2. **Modelování** – pro prognózy přesným a spolehlivým energie, jeden musí vývoj (regrese) a skvělé modelu, který umožňuje použít historických dat a extrahuje smysluplné a prediktivní vzory v datech udržovat. V oblasti nástroje Machine Learning (ML) se rychle rozrůstá pokročilé algoritmy pravidelně vyvíjených. Azure ML Studio poskytuje skvělé uživatelské prostředí, které pomáhá využívat nejpokročilejší algoritmů ML v úplný pracovní postup. Tento pracovní postup je znázorněn v intuitivním vývojový diagram a zahrnuje přípravy dat, funkce extrakce, modelování a vyhodnocení modelu. Uživatel pracovat stovky různých modelů, které jsou zahrnuty v tomto prostředí. Na konci této fáze mezi odborníky přes data budou mít funkční modelu, který plně Vyhodnocená a připravený k nasazení.
    
-   Následující obrázek je obrázek typické pracovního postupu:
+   Následující diagram není moc ilustraci obvyklý pracovní postup:
    
    ![Modelování pracovního postupu](media/cortana-analytics-playbook-demand-forecasting-energy/modeling-workflow.png)
-3. **Nasazení** – s modelem pracovní ručně, dalším krokem je nasazení. Zde je model převeden na webová služba, která vystavuje rozhraní RESTful API, která se může souběžně vyvolat z různých spotřeba klientů na Internetu. Azure ML poskytuje jednoduchý způsob nasazení model přímo z nástroje Azure ML Studio jediným kliknutím na tlačítko. Pod pokličkou se stane celý proces nasazení. Toto řešení může automaticky škálovat podle požadované spotřeby.
-4. **Spotřeba** – v této fázi se ve skutečnosti uděláme modelu prognózy lze použít k vytvoření předpovědi. Spotřeby můžete vycházejí z aplikace uživatele (*například*, řídicí panel) nebo přímo z operačního systému, jako/poptávky vyrovnávání systému nebo řešení optimalizace mřížky. Několik případů použití může vycházejí z jeden model.
+3. **Nasazení** – podpoříte modelem funkční spolupráce, dalším krokem je nasazení. Tady modelu je převést na webovou službu, která zveřejňuje rozhraní RESTful API, který lze vyvolat souběžně přes Internet z různých klientů spotřeby. Služba Azure ML poskytuje jednoduchý způsob nasazení modelu přímo z Azure ML Studio jediným kliknutím na tlačítko. Celý proces nasazení se stane pod pokličkou. Toto řešení může automaticky škálovat podle požadované využití.
+4. **Spotřeba** – v této fázi se ve skutečnosti Usnadňujeme modelu prognózy lze použít k vytvoření predikcí. Využití můžete řídit z aplikace v jazyce uživatele (*třeba*, řídicího panelu) nebo přímo z operačního systému, jako/poptávky vyrovnávání systému nebo řešení pro optimalizaci mřížky. Mohou být řízeny více případů použití, z jednoho modelu.
 
 ## <a name="data-understanding"></a>Pochopení dat
-Po pokrývajících aspekty obchodní (najdete v části **obchodní principy**) vytváření prognóz řešení poptávky energie, jsme jste připraveni popisují část dat. Řešení prediktivní analýzy spoléhá na spolehlivé data. U prognózy vyžádání energie, spoléháme na historické spotřeby data pomocí různých úrovní členitosti. Historických dat se používá jako suroviny. Určitým pečlivě analýzy, ve kterém se data vědecký pracovník identifikovat prognostické (také označované jako funkce), které můžou být přepnuté do modelu, který nakonec vygeneruje požadované prognózy.
+Po pokrývající důležité obchodní informace (viz **obchodní vysvětlení**) řešení Prognózování poptávky energie, jsme připraveni teď můžete projednávat část dat. Libovolné řešení prediktivní analýzy závisí na datech spolehlivé. Pro energie Prognózování poptávky, spoléháme na historické spotřeby dat pomocí různých úrovní členitosti. Historická data se používá jako suroviny. Projdou pečlivé analýzy, ve kterém bude mezi odborníky přes data identifikovat prediktory (označované také jako funkce), které můžou být přepnuté do modelu, který bude nakonec Generovat požadované prognózy.
 
-Ve zbývající části této části jsme se popisují různé postupy a požadavky pro pochopení dat a zajištění do použitelného formátu.
+Ve zbytku této části článků popíšeme různé krocích a důležité informace pro pochopení dat a jak přenést do použitelného formátu.
 
-### <a name="the-model-development-cycle"></a>Cyklu vývoje modelu
-Vytváření dobrý prognózy modely vyžaduje některé pečlivě přípravu a plánování. Rozdělení procesu modelování do více kroků a zaměřené na jednom kroku současně může výrazně zlepšit výsledek celý proces.
+### <a name="the-model-development-cycle"></a>Vývojový cyklus modelu
+Vytváření dobré Prognózování modely vyžaduje určitou přípravu opatrní a plánování. Výsledek celý proces může výrazně zlepšit rozdělení do několika kroků procesu modelování a zaměřuje se na krok v čase.
 
-Následující diagram znázorňuje, jak může proces modelování rozdělit do více kroků:
+Následující diagram znázorňuje, jak může proces modelování rozdělené do několika kroků:
 
-![Cyklu vývoje modelu](media/cortana-analytics-playbook-demand-forecasting-energy/model-development-cycle.png)
+![Model vývojového cyklu](media/cortana-analytics-playbook-demand-forecasting-energy/model-development-cycle.png)
 
-Jak je vidět, že tento cyklus se skládá z šesti kroků:
+Jak je vidět, že cyklus se skládá z šesti kroků:
 
-* Formulování problém
-* Přijímání dat a zkoumání dat
-* Příprava dat a funkce inženýrství
+* Formulaci problému
+* Příjem dat a zkoumání dat
+* Příprava dat a vytváření funkcí
 * Modelování
 * Vyhodnocení modelu
 * Vývoj
 
-Ve zbývající části této části jsme se popisují jednotlivé kroky a položky, které je třeba zvážit při každém kroku.
+Ve zbytku této části jsme se popisují jednotlivé kroky a aspekty ke zvážení v každém kroku.
 
-### <a name="problem-formulation"></a>Formulování problém
-Zvážit jsme problém formulování jako nejdůležitější krok, který jeden nemusí provádět před jejich implementací řešení prediktivní analýzy. Zde jsme by transformace obchodního problému a rozložit na konkrétní prvky, které lze vyřešit pomocí data a modelování techniky. Je dobrým zvykem formulovali problém jako sada otázek, na které má odpovědět. Zde jsou některé možné otázky, které nejsou k dispozici v rámci oboru prognózy na energii na vyžádání:
+### <a name="problem-formulation"></a>Formulaci problému
+Považujeme formulaci problému jako nejdůležitější krok jeden se musí provést ještě před jejich implementací jakékoli řešení prediktivní analýzy. Zde by transformujeme obchodního problému a rozložit na konkrétní prvky, které lze vyřešit pomocí data a modelování techniky. Je vhodné formuluje problém jako sadu otázek, na které jsme chtěli odpověď. Tady jsou některé možné dotazy, které mohou být použitelné v rámci oboru Prognózování poptávky po energii:
 
-* Co je očekávané zatížení na jednotlivých transformovny v další hodinu nebo den?
-* V průběhu dne všimnete Moje mřížky poptávky ve špičce?
-* Jak pravděpodobně je můj mřížky pro udržení zatížení ve špičce očekávané?
-* Kolik energie měl stanice power generovat během každou hodinu dne?
+* Co je očekávané zatížení na jednotlivých transformovny další hodinu nebo den?
+* V které denní doby dojde Moje mřížky poptávku ve špičce?
+* Jak pravděpodobné je Moje mřížky pro udržení zatížení očekávané maximální vytížení?
+* Kolik power má stanice power generovat během každou hodinu dne?
 
-Formulování tyto otázky umožňuje zaměřit se na získávání správná data a implementace řešení, které je plně v souladu s obchodního problému po ruce. Kromě toho jsme pak můžete nastavit některé klíčové metriky, které nám k vyhodnocení výkonu modelu umožňují. Například jak přesná Prognóza měli a jaký je rozsah chybu, která se bude stále přijatelné podle firmy?
+Formulování tyto otázky vám umožňuje soustředit na získávání ta správná data a implementaci řešení, která je plně v souladu s obchodní problém aktuální. Kromě toho jsme pak můžete nastavit některé klíčové metriky, které umožňují nám k vyhodnocení výkonu modelu. Například jak přesné prognózy by a jaký je rozsah chybu, která bude stále přijatelné podnikání?
 
 ### <a name="data-sources"></a>Zdroje dat
-Moderní inteligentní mřížky shromažďuje data z různých částí a komponent mřížky. Tato data představuje různé aspekty operaci a využití power mřížky. V rámci oboru vyžádání energie prognózy jsme jsou omezení diskuzi na zdroje dat, které odráží skutečný vyžádání spotřeby. Jeden zdroj důležité spotřeby energie, jsou inteligentní měřidla. Nástroje po celém světě rychle nasazujete inteligentní měřidla pro jejich příjemce. Inteligentní měřidla zaznamenávat skutečné spotřebu energie a neustále předávání tato data zpět do nástroje společnosti. Data se shromažďuje a odesílá zpět v pevných intervalech, od každých 5 minut až 1 hodina. Pokročilejší inteligentní měřidla lze naprogramovat vzdálené řízení a vyvážit skutečné spotřebě v rámci domácnost. Inteligentní měření dat je poměrně spolehlivé a obsahuje časové razítko. Tím je důležité složky pro vyžádání prognózy. Měření dat, se dají agregovat (sečtené) na různých úrovních v rámci topologie mřížky: transformer, transformovny, oblast, *atd*. Jsme pak můžete vybrat úroveň požadované agregace pro něj vytvořit model prognózy. Například pokud společnost nástroj chtěli předpovídat budoucí zatížení na jednotlivých jeho mřížky trakčních pak všechny měřidla data může být agregován pro každé jednotlivé transformovny a použít jako vstup pro model prognózy. Označujeme jako zdroj interních datových inteligentní měřidla.
+Moderní inteligentní mřížky shromažďuje data z různých částí a součástí do mřížky. Tato data představuje různé aspekty operace a využití power mřížky. V rámci oboru prognózy poptávky pro energiích jsme se omezení diskuse o datových zdrojů, které odrážejí využití skutečné poptávce. Důležitým zdrojem spotřeby energie jsou inteligentních měřičů. Nástroje na celém světě jsou rychlé nasazení inteligentních měřičů pro zákazníky. Inteligentní měřiče zaznamenávat skutečné spotřeby a neustále předávání těchto dat zpět do nástroje společnosti. Data se shromažďují a odeslána zpět v pevně zadaném intervalu od každých 5 minut na 1 hodinu. Pokročilejší inteligentních měřičů, mohou být naprogramovány vzdáleně řídit a vyvážit skutečného využití, které v rámci domácnost. Inteligentní měřiče dat je poměrně spolehlivé a obsahuje časové razítko. Díky tomu se důležité složka pro prognózy poptávky. Měření dat se dají agregovat (sečtené) na různých úrovních v rámci topologie mřížky: transformer, transformovny, oblast, *atd*. My potom si vyberte úroveň požadovaná agregace k sestavení modelu prognózy lze pro něj. Například pokud společnost nástroje k předvídání budoucí zatížení na všech jeho Rozvodny mřížky pak všechny měřiče dat může být zobrazují se pro každé jednotlivé transformovny a používá jako vstup pro model Prognózování. Označujeme jako zdroj dat interní inteligentních měřičů.
 
-Vyžádání prognózy spolehlivé energie bude také závisí na jiných externích zdrojů dat. Jeden důležitý faktor, který má vliv na spotřebu energie je počasí, nebo přesněji teploty. Historická data zobrazují silné korelace mezi mimo teploty a spotřebu energie. Během aktivního letní dnů spotřebitelům při použití jejich klimatizace a během jedná o zimní zapnutí systémů vytápění. Klíč je proto spolehlivý zdroj historických teplot v umístění v mřížce. Kromě toho také spoléháme na přesná prognóza z teploty jako nástroj pro odhad spotřeby energie.
+Prognóza poptávky spolehlivé energii také spoléhat na jiných externích datových zdrojů. Důležitým faktorem, který má vliv na spotřebu energie je počasí, nebo přesněji teploty. Historická data zobrazují silnou korelaci mezi mimo teploty a spotřebu energie. Během výměně léto dnů spotřebitelům pomocí jejich klimatizace a během zimní zapnutí vytápění. Klíč je proto o spolehlivý zdroj historických teploty v umístění mřížky. Kromě toho jsme také využívají přesná předpověď teploty jako prediktorem spotřebu energie.
 
-Další externích zdrojů dat. může také pomoci při vytváření modelů prognózy na energii na vyžádání. Ty mohou obsahovat dlouhodobé klimatem změny, ekonomické indexy (*například*, HDP) a další. V tomto dokumentu jsme nebude obsahovat tyto ostatních zdrojů.
+Další externím zdrojům dat může také pomoct s vytvářením modelů prognózy poptávky energie. Ty můžou zahrnovat dlouhodobém horizontu změny klimatu, ekonomické indexy (*třeba*, HDP) a další. V tomto dokumentu jsme nebude obsahovat tyto další zdroje dat.
 
-### <a name="data-structure"></a>Datové struktury
-Po identifikaci požadované datových zdrojů, bychom rádi Ujistěte se, že nezpracovaných dat, které se shromáždily zahrnuje funkce správná data. K sestavení modelu prognózy spolehlivé vyžádání, by potřebujeme zajistit, že data shromážděná obsahuje datové prvky, které může pomoci předpovídat budoucí poptávky. Tady jsou některé základní požadavky týkající se dat strukturu (schéma) nezpracovaná data.
+### <a name="data-structure"></a>Struktura dat
+Poté, co identifikujete zdroje požadovaná data, rádi bychom Ujistěte se, že nezpracovaná data, která byla shromážděna zahrnuje funkce správná data. Pokud chcete sestavit model prognózy poptávky spolehlivé, by potřebujeme Ujistěte se, že zahrnuje data shromážděná datové prvky, které vám mohou pomoci předvídání budoucí poptávky. Tady jsou některé základní požadavky týkající se dat strukturu (schéma) nezpracovaná data.
 
-Nezpracovaná data se skládá z řádků a sloupců. Každé měření je reprezentován jako jednoho řádku dat. Každý řádek dat obsahuje více sloupců (také označované jako funkce nebo polí).
+Nezpracovaná data se skládá z řádků a sloupců. Míry je vyjádřena jako jeden řádek dat. Každý řádek dat obsahuje více sloupců (označované také jako funkce nebo pole).
 
-1. **Časové razítko** – pole časového razítka představuje skutečný čas, kdy byla zaznamenána měření. Ho by měly splňovat jeden z běžných formátů data a času. Datum a čas částí by měly být zahrnuty. Ve většině případů není třeba dobu, aby se zaznamenávaly do druhé úrovně podrobností. Je důležité určete časové pásmo, ve kterém se zaznamená data.
-2. **Měřicí ID** – v tomto poli identifikuje měřidla nebo měření zařízení. Je kategorií proměnné a může být kombinací číslic a znaků.
-3. **Hodnota spotřeby** – jedná se o skutečné spotřebě v dané datum a čas. Spotřeby můžete měřená v kWh (kilowatt-hour) nebo jakékoliv preferované jednotky. Je důležité si uvědomit, že Měrná jednotka musí zůstat konzistentní napříč všech měření v datech. V některých případech může být spotřeba dodán více než 3 power fáze. V takovém případě by potřebujeme ke shromažďování všech fázích nezávislé spotřeby.
-4. **Teplotní** – teplota je obvykle shromážděné z nezávislé zdroje. Ale musí být kompatibilní s datům o spotřebě. Měl by obsahovat časovým razítkem jak bylo popsáno výše, který vám umožní, aby mohla být synchronizována s daty o skutečné spotřebě. Hodnota teploty lze zadat v stupňů c nebo Fahrenheita ale musí zůstat konzistentní napříč všech měření.
-5. **Umístění –** pole umístění obvykle souvisí s na místě, kde jsou shromážděná data teploty. Může být reprezentován jako poštovní směrovací číslo nebo ve formátu zeměpisnou šířku a délku (lat nebo long).
+1. **Časové razítko** – pole časového razítka představuje skutečný čas, kdy se přihlášení měření. Ji by měl v souladu s jedním z běžných formátů data a času. Datum a čas částí by měly být zahrnuty. Ve většině případů není nutné dobu mají být zaznamenány do druhé úrovni členitosti. Je důležité zadat časové pásmo, ve které je zaznamenaná data.
+2. **ID měřiče** – toto pole označuje měřič nebo měření zařízení. Proměnná zařazené do kategorií a může být kombinací číslic a znaků.
+3. **Hodnota spotřeby** – to je skutečného využití, které v daném data a času. Spotřeba se měří v kWh (kilowatt-hour) nebo jakýkoli jiný preferovaný jednotky. Je důležité si uvědomit, že Měrná jednotka musí být konzistentní vzhledem k aplikacím napříč všechny hodnoty v datech. V některých případech může být spotřeby zadán více než 3 fáze napájení. V takovém případě by potřebujeme ke shromažďování všech fázích nezávislé spotřeby.
+4. **Teplota** – teplota se obvykle shromažďují z nezávislé zdroje. Nicméně by měl být kompatibilní s daty využití. Měl by obsahovat časové razítko výše popsaným způsobem, který vám umožní, aby mohla být synchronizována s daty skutečného využití, které. Teplotní hodnota mohou být zadány ve stupních Celsia nebo Fahrenheita však by mělo zůstat konzistentní napříč všechny měření.
+5. **Umístění –** pole umístění obvykle souvisí s místem, kde jsou shromážděná data o teplotě. Může být reprezentována jako poštovní směrovací číslo nebo ve formátu (lat/dlouhé) zeměpisné šířky a délky.
 
-V následujících tabulkách jsou uvedeny příklady dobrý využívání a teploty formát dat:
+V následujících tabulkách jsou uvedeny příklady dobré spotřeby a teploty formát dat:
 
-| **Datum** | **Čas** | **ID měření** | **Fáze 1** | **Fáze 2** | **Fáze 3** |
+| **Datum** | **čas** | **ID měřiče** | **Fáze 1** | **Fáze 2** | **Fáze 3** |
 | --- | --- | --- | --- | --- | --- |
 | 7/1/2015 |10:00:00 |ABC1234 |7.0 |2.1 |5.3 |
 | 7/1/2015 |10:00:01 |ABC1234 |7.1 |2.2 |4.3 |
 | 7/1/2015 |10:00:02 |ABC1234 |6.0 |2.1 |4.0 |
 
-| **Datum** | **Čas** | **Umístění** | **Teplotní** |
+| **Datum** | **čas** | **Umístění** | **teplota** |
 | --- | --- | --- | --- |
 | 7/1/2015 |10:00:00 |11242 |24.4 |
 | 7/1/2015 |10:00:01 |11242 |24.4 |
 | 7/1/2015 |10:00:02 |11242 |24.5 |
 
-Jak je vidět výše, tento příklad obsahuje 3 různé hodnoty pro používání přidružené fáze 3 napájení. Všimněte si také, zda jsou odděleny pole data a času, ale mohou také být sdruženy do jednoho sloupce. V takovém případě je sloupec umístění reprezentované ve formátu zip kódu 5 číslic a teploty ve formátu stupeň c.
+Jak je vidět výše, tento příklad zahrnuje 3 různé hodnoty pro spotřebu spojené s 3 fáze napájení. Všimněte si také, že datum a čas, pole se oddělují, ale mohou také být kombinovány do jednoho sloupce. V tomto případě představuje sloupci umístění ve formátu 5 číslic PSČ a teploty ve formátu stupně Celsia.
 
 ### <a name="data-format"></a>Formát dat
-Cortana Intelligence Suite může podporovat nejběžnější formáty dat sdíleného svazku clusteru, TSV, formát JSON, *atd*. Je důležité, že formát dat zůstává konzistentní pro celý životní cyklus projektu.
+Cortana Intelligence Suite může podporovat nejběžnějších formátů dat jako CSV, TSV, JSON, *atd*. Je důležité, že formát dat zůstane konzistentní pro celý životní cyklus projektu.
 
 ### <a name="data-ingestion"></a>Přijímání dat
-Vzhledem k tomu, že na energii na vyžádání prognózy je neustále a často předpovědět, jsme musíte zajistit, že je nezpracovaných dat předávaných prostřednictvím procesu přijímání dat plnou a spolehlivé. Proces přijímání musí zaručit, že nezpracovaných dat je k dispozici pro proces prognózy v požadované době. Která znamená, že četnost přijímání dat musí být větší než četnost prognózy.
+Protože energie prognóza poptávky je neustále a často předpovědět, jsme musíte zajistit, že nezpracovaná data se přenášejí prostřednictvím procesu ingestování dat solid a spolehlivé. Zpracování příjmu musí zaručit, že nezpracovaná data jsou k dispozici pro proces Prognózování v požadované době. To znamená, že frekvence ingestování dat musí být větší než frekvence prognóz.
 
-Například: Pokud naše vyžádání prognózy řešení by vygeneroval novou prognózu v 8:00 AM každý den, pak je potřeba zajistit, že všechny data, která jsou shromážděná během posledních 24 hodin byla plně požity do tohoto bodu a má i obsahují poslední hodiny  data.
+Příklad: Pokud naše řešení Prognózování poptávky vygeneruje nový předpovědi v 8:00 hodin denně, potřebujeme zajistit, že všechna data, která byla shromážděna během posledních 24 hodin se ingestují plně do tohoto bodu a musíme ještě obsahovat poslední hodiny  data.
 
-Aby bylo možné dosáhnout, Cortana Intelligence Suite nabízí různé způsoby, jak podporují procesu přijímání spolehlivé data. To v popsané dál **nasazení** část tohoto dokumentu.
+Aby bylo možné dosáhnout, Cortana Intelligence Suite nabízí různé způsoby, jak proces ingestování spolehlivé data. To dál probereme v **nasazení** část tohoto dokumentu.
 
-### <a name="data-quality"></a>Kvality dat.
-Nezpracovaná datovém zdroji, které jsou nutné k provádění spolehlivé a přesné vyžádání prognózy musí splňovat kritéria kvality některé základní data. Pokročilé statistické metody lze kompenzovat některé možné data quality problém, ale potřebujeme ještě Ujistěte se, že jsme se při překročení prahové hodnoty některé základní data quality při příjem nová data. Zde je několik aspekty týkající se kvality nezpracovaná data:
+### <a name="data-quality"></a>Kvalita dat
+Zdroj nezpracovaných dat, která je požadována pro provádění Prognózování poptávky spolehlivé a přesné, musí splňovat kritéria kvality některé základní data. Pokročilé statistické metody lze jako kompenzaci za některý problém kvality dat, ale stále potřebujeme zajistit, že jsme jsou při ingestování nových dat překročení prahové hodnoty některých základních dat kvality. Tady je několik důležitých informací týkající se kvality nezpracovaná data:
 
-* **Chybí hodnota** – vztahuje situaci při konkrétní měření nebyla shromážděna. Základní požadavek je, že chybí hodnota rychlost, jakou by neměla být větší než 10 % pro jakékoli dané časové období. V případě, že jedna hodnota je chybějící by měl být indikován pomocí předem definované hodnoty (například: '9999') a zda není '0', který může být hodnota je neplatná.
-* **Přesnost měření** – se skutečnou hodnotou spotřeby nebo teploty by měl být přesně zaznamenán. Nesprávné měření způsobí nepřesné prognózy. Chyba měření obvykle by mělo být menší než 1 % relativní vůči hodnotě true.
-* **Čas měření** – je potřeba, časové razítko skutečné dat shromážděných nesmí lišit o více než 10 sekund vzhledem k true době vlastní měření.
-* **Synchronizace** – Pokud se používají více zdrojů dat (*například*, využívání a teploty) jsme Ujistěte se, že neexistují žádné synchronizaci času problémy mezi nimi. To znamená, že je časový rozdíl mezi shromážděné časové razítko ze všech dva nezávislé datových zdrojů by nemělo přesáhnout více než 10 sekund.
-* **Latence** – jak je popsáno výše, v **přijímání dat**, jsme jsou závislé na spolehlivé datového toku a přijímání procesu. K řízení, které jsme musí zajistit, aby jsme kontrolu nad latence data. To je zadán jako časový rozdíl mezi časem, která byla provedena vlastní měření a čas, kdy byla načtena do úložiště Cortana Intelligence Suite a je připravený k použití. Pro krátkodobou zatížení prognózy nízkou celkovou latenci nesmí být větší než 30 minut. Pro dlouhodobé zatížení prognózy nízkou celkovou latenci nesmí být větší než 1 den.
+* **Chybí hodnota** – to se vztahuje na situaci po konkrétní měření nebyl shromážděn. Základním požadavkem je, že chybí hodnota frekvence nesmí být větší než 10 % pro jakékoli dané časové období. V případě, že jedna hodnota je chybějící by měl být označeny pomocí předdefinované hodnoty (například: "9999.) a nikoli"0", který může být platná hodnota.
+* **Přesnost měření** – skutečnou hodnotu spotřeby nebo teploty by měly být zaznamenány přesně. Nesprávné rozměry způsobí nepřesné prognózy. Chyba měření obvykle by mělo být menší než 1 % vzhledem k hodnotu true.
+* **Čas měření** – je vyžadován, časové razítko data shromážděna nesmí lišit o více než 10 sekund vzhledem k true čas skutečné měření.
+* **Synchronizace** – když jsou používány více zdrojů dat (*třeba*, spotřebě a teploty) jsme musíte zajistit, že neexistují žádné synchronizaci času problémy mezi nimi. To znamená, že časový rozdíl mezi shromážděné časové razítko z jakékoli dva nezávislé datové zdroje nesmí být delší než více než 10 sekund.
+* **Latence** – jak je popsáno výše, v **Ingestování**, jsme jsou závislé na spolehlivý datový tok a příjmu procesu. Pro ovládací prvek, který jsme musíte zajistit, že latence dat kontrolou. Tento parametr je zadán jako časový rozdíl mezi časem, který byla pořízen skutečné měření a čas, kdy byla načtena do úložiště Cortana Intelligence Suite a je připravená k použití. Pro krátkodobé načtení Prognózování celkovou latenci nesmí být delší než 30 minut. Pro dlouhodobé zatížení Prognózování celkovou latenci nesmí být větší než 1 den.
 
-### <a name="data-preparation-and-feature-engineering"></a>Příprava dat a funkce inženýrství
-Po nezpracovaná data byla požity. (viz **přijímání dat**) a byla bezpečně uložené, je připravena k provedení. Fázi přípravy dat je v podstatě trvá nezpracovaná data a převádění (transformace, změna tvaru) do formuláře pro fázi modelování. Jednoduché operace, například pomocí sloupci nezpracovaná data, jako je s jeho skutečná hodnota měřená, standardizované hodnoty, složitějších operací, jako který může zahrnovat [čas obložení](https://en.wikipedia.org/wiki/Lag_operator)a další. Nově vytvořené datové sloupce, které se označují jako funkce data a proces generování to se označuje jako funkce inženýrství. Na konci tohoto procesu nám nové sady dat, který byl získán z nezpracovaná data a lze použít pro modelování. Kromě toho musí fázi přípravy dat postará o chybějící hodnoty (viz **Data Quality**) a kompenzovat je. V některých případech by také musíme normalizaci data a ujistěte se, že všechny hodnoty jsou zobrazeny ve stejné měřítko.
+### <a name="data-preparation-and-feature-engineering"></a>Příprava dat a vytváření funkcí
+Jakmile se ingestují nezpracovaná data (naleznete v tématu **Ingestování**) a jestli se bezpečně uložena, je připraven ke zpracování. Fáze přípravy dat je v podstatě trvá nezpracovaných dat a převodu (transformaci, provést explicitní přeformování) ji do formuláře pro fázi modelování. Který může obsahovat jednoduché operace, jako je třeba použití sloupci nezpracovaná data jsou s jeho skutečné naměřenou hodnotu, standardizované hodnoty, složitějších operací, jako [čas obložení](https://en.wikipedia.org/wiki/Lag_operator)a další. Nově vytvořené datové sloupce se označují jako funkce data a tyto proces se označuje jako vytváření funkcí. Na konci tohoto procesu měli jsme nové datové sady, který byl získán z nezpracovaných dat a slouží pro modelování. Kromě toho je potřeba fáze Příprava dat postará o chybějících hodnot (naleznete v tématu **kvality dat**) a jako kompenzaci za ně. V některých případech by také potřebujeme k normalizaci dat k zajištění, že všechny hodnoty jsou reprezentovány ve stejném měřítku.
 
-V této části jsme některé běžné funkce dat, které jsou součástí energii seznamu prognózy vyžádání modelů.
+V této části uvádíme některé běžné funkce data, které jsou součástí energie prognózy poptávky modely.
 
-**Čas řízené funkce:** tyto funkce jsou odvozeny od data datum/časové razítko. Tyto jsou extrahovat a převést do kategorií funkcí, jako je:
+**Čas řízené funkce:** tyto funkce jsou odvozeny z data datum a časové razítko. Ty se extrahují a převést do kategorií funkcí, jako jsou:
 
-* Čas dne – to je hodina dne, který přebírá hodnoty od 0 do 23
-* Den v týdnu – to představuje den v týdnu a přijímá hodnoty od 1 (neděle) na 7 (sobota)
-* Den v měsíci – to představuje skutečný datum a může obsahovat hodnoty od 1 do 31
-* Měsíc roku – to představuje měsíc a přijímá hodnoty od 1 (leden) do 12 (prosinec)
-* Víkendu – Toto je funkce binární hodnotu, která přijímá hodnoty 0 pro dny v týdnu nebo 1 pro víkendu
-* Svátek - Toto je funkce binární hodnotu, která přijímá hodnoty 0 pro regulární den nebo 1 pro svátek
-* Podmínky Fourierova – Fourierova podmínky jsou váhu, které jsou odvozeny od časové razítko a slouží k zaznamenání sezónnosti (cykly) v datech. Vzhledem k tomu, že jsme může mít několik ročních období v našich dat potřebujeme více Fourierova podmínky. Vyžádání hodnoty může mít například roční, týdenní a denní období nebo cykly které bude mít za následek 3 Fourierova podmínky.
+* Čas denní – to je hodina dne, který má hodnoty od 0 do 23
+* Den v týdnu – to představuje den v týdnu a má hodnoty od 1 (neděle) do 7 (sobota)
+* Den měsíce – to představuje aktuální datum a může přijmout hodnoty od 1 do 31.
+* Měsíc roku – to představuje měsíc a má hodnoty od 1 (leden) do 12 (prosinec)
+* Víkendu – Toto je binární hodnotu funkce, která přebírá hodnoty 0 pro víkendové dny v týdnu nebo 1
+* Sváteční – Toto je binární hodnotu funkce, která přebírá hodnotu 0 pro pravidelné den nebo 1 pro svátek
+* Podmínky Fourierova – Fourierova podmínky jsou váhy, které jsou odvozeny z časové razítko a slouží k zaznamenávání sezónnosti (cykly) v datech. Protože jsme v našich datech pravděpodobně více sezóny potřebujeme Fourierova podmínek. Roční, týdenní a denní období/cykly následkem toho 3 Fourierova podmínek může mít třeba, hodnoty poptávky.
 
-**Funkce nezávislé měření:** nezávislé funkce zahrnují všechny datové prvky, které jsme chtěli používat jako prognostické v našem modelu. Tady jsou vyloučeny závislé funkci, která by musíme předpovědi.
+**Funkce nezávislého měřicího:** nezávislé funkce zahrnují všechny datové prvky, které jsme chtěli použít jako prediktory v náš model. Tady jsme vyloučit závislé funkce, která by potřebujeme k předpovědi.
 
-* Funkce opoždění – jedná se o čas zapuštěno hodnoty aktuální. Funkce opoždění 1 například bude obsahovat hodnotu vyžádání do předchozí hodiny (za předpokladu, že po hodinách data) relativně k aktuální časové razítko. Jsme podobně přidat prodleva 2, 3, funkce lag *atd*. Skutečné kombinace prodleva funkce, které se používají určuje během fáze modelování hodnocení výsledků modelu.
-* Dlouhodobé trendů – tato funkce představuje lineární růst v vyžádání mezi let.
+* Funkce Lag – jedná se o dobu posunuta hodnoty skutečné poptávce. Funkce lag 1 například bude obsahovat hodnota požadavku do předchozí hodiny (za předpokladu, že data po hodinách) vzhledem k aktuální časové razítko. Podobně, jsme můžete přidat prodleva 2, 3, prodleva *atd*. Vyhodnocení výsledků modelu stanovuje během fáze modelování skutečné kombinací prodleva funkce, které se používají.
+* Dlouhodobé populární – tato funkce představuje lineární nárůstu poptávky mezi roky.
 
-**Závislé funkce:** závislé funkce je sloupec dat, který rádi bychom znali našeho modelu předpovědi. S [počítač učení se supervizí](https://en.wikipedia.org/wiki/Supervised_learning), musíme nejprve cvičení modelu s použitím funkce závislé (která je také označována jako popisky). To umožňuje modelu další vzory v data související s funkci závislé. Požadavků na energii prognózy obvykle chcete předpovídat aktuální, a proto jsme proč ji používat jako závislé funkce.
+**Závislé funkce:** závislé funkce je datový sloupec, který rádi bychom náš model k predikci. S [pod dohledem strojového učení](https://en.wikipedia.org/wiki/Supervised_learning), musíme nejprve trénování modelu s použitím závislé součásti (která se také označuje jako popisky). Díky tomu model další vzory v datech přidružené závislé funkce. V odhadovat poptávku po energii obvykle chcete předpovídat skutečné poptávce a proto jsme by použít jako závislé funkce.
 
-**Zpracování chybějící hodnoty:** fázi přípravy dat, musíme určit nejlepší strategii pro zpracování chybějící hodnoty. To se většinou provádí pomocí různé statistické [data imputace metody](https://en.wikipedia.org/wiki/Imputation_\(statistics\)). V případě energie vyžádání prognózy jsme obvykle dává chybějící hodnoty pomocí klouzavého průměru z předchozí dostupné datových bodů.
+**Manipulace s chybějící hodnoty:** během fáze přípravy dat, musíme určit nejlepší strategii pro zpracování chybějící hodnoty. To se většinou provádí pomocí různých statistických [metody imputace dat](https://en.wikipedia.org/wiki/Imputation_\(statistics\)). V případě energie Prognózování poptávky, jsme obvykle dává chybějící hodnoty pomocí klouzavý průměr z předchozí dostupných datových bodů.
 
-**Data normalizaci:** normalizace dat je jiný typ transformace, který se používá k zajištění všech číselná data, jako je například vyžádání prognózy podobné škálování. To obvykle pomáhá zlepšit přesnost a přesnosti modelu. Jsme by obvykle k tomu vydělením skutečná hodnota rozsahu data.
-Původní hodnotu to bude škálovat do menší oblast, obvykle mezi -1 a 1.
+**Normalizace data:** normalizaci dat je jiný typ transformace, který se používá k zajištění všech číselná data, jako je prognóza poptávky podobné škálování. To obvykle pomáhá zlepšit přesnost modelu a přesnosti. By obvykle děláme to vydělí rozsah dat skutečnou hodnotu.
+To se snížit na původní hodnotu do má menší rozsah, obvykle mezi -1 a 1.
 
 ## <a name="modeling"></a>Modelování
-Fáze modelování je, kde probíhá převod dat do modelu. V základní tohoto procesu existuje pokročilé algoritmy, které kontrola historických dat (Cvičná data), rozbalte vzory a sestavení modelu. Tento model můžete později použít k předvídání na nová data, který nebyl použit k vytvoření modelu.
+Fáze modelování je, kde probíhá převod data do modelu. V jádru služby existuje tento proces pokročilé algoritmy, které kontrola historická data (trénovacích dat), extrakce vzory a sestavení modelu. Tento model je možné později k předpovědi na nová data, která nebyla použita k sestavení modelu.
 
-Jakmile model spolehlivé práci jsme ho pak může použít k skóre pro nová data, která je strukturovaná zahrnout požadované funkce (X). Proces vyhodnocování budou používat trvalé modelu (objekt z fázi školení) a předvídání Cílová proměnná, který je označený jako Ŷ.
+Jakmile budeme mít funkční spolehlivé modelu jsme ho pak může použít ke stanovení skóre pro nová data, která je strukturována tak, aby zahrnout požadované součásti (X). Použít trvalý modelu (objekt z fáze školení) a předvídání Cílová proměnná, která označuje symbolem Ŷ způsobí, že proces hodnocení.
 
-### <a name="demand-forecasting-modeling-techniques"></a>Vyžádání prognózy modelování techniky
-V případě vyžádání prognózy, provedeme pomocí historických dat, který je seřazené podle času. Obecně označujeme data, která zahrnuje časové dimenze jako [časové řady](https://en.wikipedia.org/wiki/Time_series). Cílem v časové řady modelování je nalezení čas související trendy, sezónnosti, auto korelace (korelace v čase) a formulovali v modelu.
+### <a name="demand-forecasting-modeling-techniques"></a>Modelování techniky Prognózování poptávky
+V případě uděláme Prognózování poptávky pomocí historických dat, který je seřazen podle času. Obecně označujeme data, která obsahuje časovou dimenzi jako [časové řady](https://en.wikipedia.org/wiki/Time_series). Cílem v čase řady modelování je nalezení čas související trendy, sezónnost, automatické korelace (korelace v čase) a dává do modelu.
 
-V posledních letech pokročilé algoritmy bylo vyvinuto zohlednit časové řady prognózy a zvyšte tak přesnost předpovědi. Stručně probereme několik z nich zde.
+V posledních letech pokročilých algoritmů byly vyvinuty tak, aby vyhovovaly prognózy časových řad a zvyšte přesnost předpovědi. Stručně několik z nich tady probereme.
 
 > [!NOTE]
-> V této části není určena pro použití jako machine learning a předpovídat přehled, ale spíše jako krátký přehled modelování techniky, které se běžně používají pro vyžádání prognózy. Další informace a vzdělávací materiály o časové řady prognózy, důrazně doporučujeme příručce online [vytváření prognóz: Principy a postup](https://www.otexts.org/book/fpp).
+> Tento oddíl není určena pro použití jako strojové učení a Prognózování přehled, ale spíše jako krátký dotazník modelování techniky, které se obvykle používají pro prognózování poptávky. Další informace a vzdělávací materiály o prognózy časových řad, důrazně doporučujeme online knihy [Prognózování: zásady a přístup k](https://www.otexts.org/book/fpp).
 > 
 > 
 
-#### <a name="ma-moving-averagehttpswwwotextsorgfpp62"></a>[**MA (klouzavého průměru)**](https://www.otexts.org/fpp/6/2)
-Klouzavý průměr je jedním z první analytické techniky, které již byly použity pro předpověď časové řady a je stále jedním z nejčastěji nejčastěji používané techniky k dnešnímu dni. Je také základem pro pokročilejší prognózy techniky. S klouzavý průměr jsme jsou prognózy další datového bodu jako průměr prostřednictvím tisíc nejnovější bodů, kde K označuje pořadí klouzavého průměru.
+#### <a name="ma-moving-averagehttpswwwotextsorgfpp62"></a>[**MA (klouzavý průměr)**](https://www.otexts.org/fpp/6/2)
+Klouzavý průměr je jedním z první analytické techniky, které již byly použity pro prognózy časových řad a je to stále jedním z nejčastěji používaných technik k dnešnímu dni. Je také základem pro pokročilejší Prognózování techniky. S klouzavý průměr jsme se Prognózování další datový bod zprůměrováním přes K nejnovější body, ve kterém K označuje pořadí klouzavý průměr.
 
-Přesunutí průměrná technika má za následek vyhlazování prognózy a nemusí proto zpracovat dobře velké volatility v datech.
+Klouzavý průměr postup má za následek vyhlazování prognózy a nemusí proto zpracovat i velké volatility v datech.
 
-#### <a name="ets-exponential-smoothinghttpswwwotextsorgfpp75"></a>[**ETS (exponenciální vyrovnání)**](https://www.otexts.org/fpp/7/5)
-Exponenciální vyhlazování (ETS) je rodina různé metody, které používají váženým průměrem poslední datové body k předvídání další datového bodu. Cílem je, a přiřadit vyšší váhou novější hodnoty postupně snížit tento váha pro starší měřené hodnoty. Existuje několik různých metod s této rodině, některé z nich zahrnout zpracování sezónnosti v datech, jako [Holt Winters sezónní metoda](https://www.otexts.org/fpp/7/5).
+#### <a name="ets-exponential-smoothinghttpswwwotextsorgfpp75"></a>[**ETS (exponenciální vyhlazování)**](https://www.otexts.org/fpp/7/5)
+Exponenciální vyhlazování (ETS) je řada různých metod, které používají vážený průměr poslední datových bodů, aby bylo možné předpovědět další datový bod. Cílem je přiřaďte vyšší váhu na novější hodnoty a postupně klesat tento váha pro starší měřené hodnoty. Existuje několik různých metod s Tato řada, některé z nich patří například zpracování sezónnost v datech [sezónní metoda Holt-Winters](https://www.otexts.org/fpp/7/5).
 
 Některé z těchto metod také zvážit sezónnosti data.
 
-#### <a name="arima-auto-regression-integrated-moving-averagehttpswwwotextsorgfpp8"></a>[**ARIMA (automatické regrese integrovaný klouzavý průměr)**](https://www.otexts.org/fpp/8)
-Automatické regrese integrované přesunutí průměrná (ARIMA) je jiné rodiny metod, které se běžně používá pro předpověď časové řady. Auto-regression metody prakticky kombinuje s klouzavý průměr. Chcete-li výpočetní další bod datum metody Automatické regrese použijte regrese modely provedením předchozích časových řad hodnoty. Metody ARIMA platí také rozdílové metody, které obsahují výpočet rozdílu mezi datovými body a jejich namísto původní hodnoty měřených použití. Nakonec ARIMA také využívá přesunutí průměrná techniky, které jsou popsané výše. Kombinace všechny tyto metody v různé způsoby, kterými je co vytvoří řadu metody ARIMA.
+#### <a name="arima-auto-regression-integrated-moving-averagehttpswwwotextsorgfpp8"></a>[**ARIMA (regrese automaticky integrovaný pohyblivý průměr)**](https://www.otexts.org/fpp/8)
+Automatické regrese integrované přesun průměr (ARIMA) je jiné řady metod, které se běžně používá pro předpovědi časové řady. Prakticky kombinuje metody Automatické regrese s klouzavý průměr. Auto-regression metody používají regresních modelů provedením předchozích časových řad hodnoty k výpočtu dalšího bodu datum. Metody ARIMA platí také rozdílové metody, které zahrnují výpočet rozdílu mezi datovými body a jejich namísto původní naměřenou hodnotu použití. Nakonec ARIMA také využívá technik klouzavý průměr, které jsou popsané výše. Kombinace všechny tyto metody v různých způsobů, jak je, co vytvoří rodinu metody ARIMA.
 
-ETS a ARIMA se často používá dnes pro prognózy vyžádání energie a mnoho dalších prognózy problémů. V mnoha případech se zkombinují společně k poskytování velmi přesné výsledky.
+ETS a ARIMA se často používají ještě dnes k Prognózování poptávky po energii a mnoho dalších problémů prognóz. V mnoha případech jsou zkombinované dohromady a poskytovat velmi přesné výsledky.
 
-**Obecné vícenásobná regrese** modely regrese může být nejdůležitější modelování přístup v rámci domény strojového učení a statistiky. V kontextu časové řady použijeme regresní předpovídat budoucí hodnoty (*například*, poptávky). V regrese jsme trvat lineární kombinaci prognostické a další váhu těchto prognostické (také označované koeficientem) během procesu školení. Cílem je vytvořit regresní přímky, který bude prognózy naše předpovězené hodnoty. Regrese metody jsou vhodné, když Cílová proměnná je číselné a proto také vyhovuje prognózy časové řady. Je širokou škálu regrese metody včetně velmi jednoduché regrese modely, jako například [lineární regrese](https://en.wikipedia.org/wiki/Linear_regression) a další pokročilé těch, které jsou například rozhodovací stromy, [doménových struktur náhodných](https://en.wikipedia.org/wiki/Random_forest), [Neural Sítě](https://en.wikipedia.org/wiki/Artificial_neural_network)a Boosted Decision Trees.
+**Obecné vícenásobná regrese** regresních modelů může být nejdůležitější přístup k modelování v rámci domény strojového učení a statistické údaje. V souvislosti s časovými řadami použijeme regresní předpovídat budoucí hodnoty (*třeba*, poptávky). V regrese jsme trvat lineární kombinaci prediktory a další váhu těchto prediktory (také označované jako koeficienty) v průběhu školení. Cílem je vytvořit řádek regrese, který bude předpovídat naše předpovězené hodnoty. Regrese metody jsou vhodné, když Cílová proměnná jsou číselná a proto také odpovídá prognózy časových řad. Široké škály metod regrese včetně velmi jednoduché regresních modelů, jako je [lineární regrese](https://en.wikipedia.org/wiki/Linear_regression) a další pokročilé těch, jako je například rozhodovacích stromů [doménových struktur Random](https://en.wikipedia.org/wiki/Random_forest), [Neural Sítě](https://en.wikipedia.org/wiki/Artificial_neural_network)a vylepšené rozhodovací stromy.
 
-Vytváření energie vyžádání prognózy jako problém regrese nám poskytuje značnou flexibilitu při výběru naší datové funkce, které mohou být kombinovány z aktuální požadavek časových řad dat a vnějším faktorům, jako je například teploty. Další informace o vybrané funkce, které jsou popsané v Engineering funkce (najdete v části **Příprava dat a funkce Engineering**) části této scénářem.
+Vytváření poptávku po energii Prognózování jako regresní problém nám poskytuje značnou flexibilitu při výběru naší datové funkce, které mohou být kombinovány z dat časových řad skutečné poptávce a vnějším faktorům, jako je například teploty. Další informace o vybrané funkce jsou popsány v technické funkce (naleznete v tématu **přípravy dat a funkce Engineering**) části playbook.
 
-Z našich zkušeností s provádění a nasazení na energii na vyžádání prognózy pilotního zjistili jsme, že mohou vyvolávat nejlepších výsledků dosáhnete pokročilých regrese modely, které jsou k dispozici v Azure ML a jsme použít z nich.
+Z našich zkušeností v implementaci a nasazení pilotní prognózy poptávky energie zjistili jsme, že nejlepší výsledky mají tendenci pokročilé regresní modely, které jsou k dispozici v Azure ML a Usnadňujeme jejich použití.
 
 ## <a name="model-evaluation"></a>Vyhodnocení modelu
-Vyhodnocení modelu má zásadní roli v rámci **cyklu vývoje modelu**. V tomto kroku podíváme do ověřování modelu a jeho výkon s skutečných dat. Během kroku modelování použijeme pro trénování modelu součástí všechna dostupná data. Během fáze hodnocení jsme trvat zbytek dat pro otestování modelu. Prakticky znamená, že jsme se napájení modelu nová data, která má se změnili a obsahuje stejné funkce jako školení datovou sadu. Však během procesu ověření používáme modelu předpovědi Cílová proměnná, nikoli poskytují dostupné Cílová proměnná. Často označujeme jako model vyhodnocování tohoto procesu. Pak jsme použije true cílové hodnoty a porovnejte je s předpokládaných těm, které jsou. Cílem je měřit a minimalizovat chyba předpovědi, znamená rozdíl mezi jsou předpovědi a hodnota true. Kvantifikace měření chyb je klíč, protože jsme chtěli doladit modelu a ověření, zda je ve skutečnosti snížení chyba. Doladění modelu lze provést úpravou modelu parametry, které řídí proces learning nebo přidáním nebo odebráním data funkce (označuje jako [parametry oblouku](https://channel9.msdn.com/Blogs/Azure/Data-Science-Series-Building-an-Optimal-Model-With-Parameter-Sweep)). Prakticky to znamená, že může potřebujeme k iteraci mezi funkce technikům, modelování a modelu zkušební fáze několikrát, dokud jsme snižte chyba na požadované úrovni.
+Vyhodnocení modelu mají důležitou roli v rámci **modelu vývojový cyklus**. V tomto kroku podíváme do ověření modelu a jeho výkon s daty v reálném životě. Během kroku modelování používáme část dostupných dat pro trénování modelu. Během zkušební fáze pořídíme zbývající data pro otestování modelu. Prakticky, znamená to, že jsme se tak nová data modelu, která byla změnili a obsahuje stejné funkce jako trénovací datové sady. Ale během procesu ověření používáme model pro předpověď Cílová proměnná, spíše než poskytují k dispozici Cílová proměnná. Často označujeme jako model bodování tento proces. Potom jsme použije true cílové hodnoty a jejich porovnání s predikované výsledky. Cílem je minimalizovat chyba předpovědi, to znamená rozdíl mezi předpovědí a hodnotu true a měření. Kvantifikace měření chyb je klíč, protože jsme chtěli vyladění modelu a ověření, jestli se ve skutečnosti snižuje chyby. Dolaďování modelu můžete udělat tak, že upravíte parametry modelu, které řídí studijní postup nebo přidáním nebo odebráním funkcí dat (označované jako [úklidu parametrů](https://channel9.msdn.com/Blogs/Azure/Data-Science-Series-Building-an-Optimal-Model-With-Parameter-Sweep)). Prakticky, která znamená, že jsme může mezi vytváření funkcí, modelování, iterovat a model fáze hodnocení více než jednou, dokud nedojde ke snížení chyby na požadované úrovni.
 
-Je důležité zvýraznění, že chyba předpovědi nebude nikdy nulové se nikdy model, který lze přesně odhadnout každý výsledek. Je však určitého rozsahu chyby, která je akceptovatelná podle firmy. Během procesu ověření bychom rádi zajistěte, aby naše chyba předpovědi modelu na úrovni nebo lepší než úroveň tolerance firmy. Proto je důležité nastavit úroveň přípustné chyby na začátku cyklu během **problém formulování** fáze.
+Je důležité, že chyba predikcí se nikdy nesmí být nulové důraz je nikdy model, který může předpovídat naprosto každý výsledek. Je však závažnost chyby, která je akceptovatelná podle podnikání. Během procesu ověření bychom rádi zajistěte, aby byla naše chyba předpovědi modelu na úrovni nebo lepší než úroveň tolerance firmy. Proto je důležité nastavit úroveň přípustná chyba na začátku cyklu během **formulaci problému** fáze.
 
-### <a name="typical-evaluation-techniques"></a>Techniky typické vyhodnocení
-Existují různé způsoby, ve které předpovědi chyba měří a kvantifikovány. V této části se zaměříme diskuzi na vyhodnocení techniky, které jsou relevantní pro časovou řadu a specifické pro vyžádání energie prognózy.
+### <a name="typical-evaluation-techniques"></a>Techniky hodnocení za typické
+Existují různé způsoby, které predikce chyba měří a kvantifikovat. V této části se zaměříme diskuse o techniky hodnocení za relevantní na časové řady a specifické pro odhadovat poptávku po energii.
 
 #### <a name="mapehttpsenwikipediaorgwikimeanabsolutepercentageerror"></a>[**MAPE**](https://en.wikipedia.org/wiki/Mean_absolute_percentage_error)
-MAPE znamená znamenat absolutní chyba procento. S MAPE jsme jsou computing rozdíl mezi každou naplánované bodu a skutečnou hodnotou tohoto bodu. Potom jsme vyčíslení chyba jednotlivých bodů pomocí výpočtu poměru rozdíl vzhledem k aktuální hodnotu. V posledním kroku průměrná jsme tyto hodnoty. Matematický vzorec použitý pro MAPE je následující:
+MAPE jsou zahrnovaného znamenat absolutní chyba procento. S MAPE jsme se výpočetní rozdíl mezi každé naplánované bodu a skutečnou hodnotu tohoto bodu. Potom jsme vyčíslení chyba na bod výpočtem podíl rozdíl vzhledem k aktuální hodnotu. V posledním kroku jsme průměr těchto hodnot. Matematické vzorce pro MAPE je následující:
 
 ![Vzorec MAPE](media/cortana-analytics-playbook-demand-forecasting-energy/mape-formula.png)
-*kde A<sub>t</sub> je skutečná hodnota F<sub>t</sub> je předpovězené hodnoty a n je prognózy horizont.*
+*kde A<sub>t</sub> je skutečná hodnota F<sub>t</sub> předpovězenou a n je prognózy obzoru.*
 
 ## <a name="deployment"></a>Nasazení
-Jakmile jsme nailed dolů fázi modelování a ověření výkonu modelu jsme připravení přejít do fáze nasazení. V tomto kontextu znamená nasazení, umožňující klientovi využívat modelu spuštěním skutečné předpovědi na něm ve velkém měřítku. Koncept nasazení je klíč v Azure ML, protože naše hlavním cílem je neustále vyvolání předpovědi oproti právě z dat získat podrobnější informace o. Fáze nasazení je část, kde jsme povolit model, který se má používat při velkém měřítku.
+Jakmile jsme nailed dolů fáze modelování a ověření výkonu modelu jsme připraveni přejít do fáze nasazení. V tomto kontextu znamená nasazení umožňuje zákazníkům využívat model spuštěním skutečné předpovědí na něm ve velkém měřítku. Koncept nasazení je klíč v Azure ML, protože naším hlavním cílem je neustále vyvolat předpovědí na rozdíl od jenom z dat získat podrobnější informace o. Fáze nasazení je ta část, kde jsme povolili modelu, který se má využít ve velkém měřítku.
 
-V kontextu prognózy vyžádání energie naše cílem je vyvolání nepřetržitý a pravidelné prognózy a zajistit, že je k dispozici pro model čerstvá data a že prognózy data se odesílají zpět do klienta náročná.
+V rámci kontextu prognóza poptávky energie naše cílem je vyvolat nepřetržitý a pravidelných předpovědí přitom zajistit, že je k dispozici pro model čerstvá data a že předpokládaných data se odesílají zpět do klienta náročné.
 
 ### <a name="web-services-deployment"></a>Nasazení webové služby
-Hlavní nasadit stavební blok v Azure ML je webová služba. Toto je co nejúčinnější způsob, jak povolit spotřeba prediktivního modelu v cloudu. Webové služby zapouzdří modelu a zabalí s [dosáhl standardu RESTful](http://www.restapitutorial.com/) rozhraní API (Application Programming Interface). Rozhraní API slouží jako součást žádný kód klienta, jak je znázorněno v následujícím diagramu.
+Hlavní nasaditelný stavebního bloku v Azure ML je webová služba. Toto je nejúčinnější způsob, jak povolit spotřebu prediktivního modelu v cloudu. Webová služba zapouzdřuje modelu a zabalí jej s [RESTful](http://www.restapitutorial.com/) rozhraní API (Application Programming Interface). Rozhraní API můžete použít jako součást jakýkoli kód klienta, jak je znázorněno v následujícím diagramu.
 
-![Jsme nasazení služby a spotřeba](media/cortana-analytics-playbook-demand-forecasting-energy/web-service-deployment-and-consumption.png)
+![Jsme nasazení služby a využití](media/cortana-analytics-playbook-demand-forecasting-energy/web-service-deployment-and-consumption.png)
 
-Jak je vidět, webové služby je nasazen v cloudu Cortana Intelligence Suite a mohou být vyvolány pomocí jeho zveřejněné koncový bod REST API. Jiný typ klientů v různých doménách, můžete současně vyvolat služby pomocí rozhraní Web API. Pro podporu tisíce souběžných volání můžete škálovat také webovou službu.
+Jak je vidět, webové služby je nasazený v Cortana Intelligence Suite cloudu a mohou být vyvolány pomocí vystavených koncový bod REST API. Různých typů klientů napříč různými doménami, můžete současně vyvolat službu prostřednictvím webového rozhraní API. Webovou službu můžete taky škálovat, aby podporoval tisíce souběžných volání.
 
-### <a name="a-typical-solution-architecture"></a>Architektura typické řešení
-Při nasazování vyžádání energie prognózy řešení, jsme zajímá nasazení koncová řešení, které překročí předpovědi webové služby a usnadňuje celého datového toku. V době jsme vyvolání novou prognózu by potřebujeme zajistit, že je model dodáni s funkcemi aktuální data. Která znamená, že nově shromážděných nezpracovaná data je neustále požity, zpracování a transformovat na požadovaná sada ve model byl vytvořený funkcí. Ve stejnou dobu bychom rádi zpřístupnit pro element end, které využívají klienti dat prognózy. Příklad datového toku cyklus (nebo datovém kanálu) je znázorněno v následujícím diagramu:
+### <a name="a-typical-solution-architecture"></a>Architektura typického řešení
+Při nasazování řešení Prognózování poptávky po energii nás zajímají nasazení, který jde nad rámec webovou službu pro předpovědi a zajišťuje kompletní tok dat. kompletní řešení. V době jsme vyvolání nové prognózy by potřebujeme Ujistěte se, že se model zobrazí s funkcemi aktuální data. Která znamená, že nově shromážděných nezpracovaných dat je neustále ingestuje, zpracování a transformuje na požadované funkce nastavit v modelu byla vytvořena. Ve stejnou dobu rádi bychom zpřístupnění dat prognózy end využívání klientů. Například data cyklu tok (nebo datový kanál) je znázorněn v následujícím diagramu:
 
-![Tok dat koncová prognózy spotřeby energie](media/cortana-analytics-playbook-demand-forecasting-energy/energy-demand-forecase-end-data-flow.png)
+![Kompletní datový tok odhadovat poptávku po energii](media/cortana-analytics-playbook-demand-forecasting-energy/energy-demand-forecase-end-data-flow.png)
 
-Toto jsou kroky, které provést v rámci prognózy cyklu na energii na vyžádání:
+Toto jsou kroky, které se provedou v rámci cyklu prognózy poptávky energie:
 
-1. Miliony měřidla nasazené data jsou neustále generování spotřebě energie v reálném čase.
-2. Tato data se shromažďují a nahrál do úložiště v cloudu (*například*, objektů Blob v Azure).
-3. Před zpracováním, nezpracovaná data se shromažďují na místní úrovni nebo transformovny podle definice firmy.
-4. Funkce zpracování (viz **Příprava dat a zpracování funkce**) pak proběhne a vytváří data, která je vyžadována pro model cvičení nebo vyhodnocování – funkce sady dat je uložená v databázi (*např*, SQL Azure).
-5. Je volána službu znovu školení pro znovu trénování modelu prognózy lze – je trvalé tuto aktualizovanou verzi modelu, takže lze vyhodnocování webovou službou.
-6. Vyhodnocování webová služba je vyvolána podle plánu, který nejlépe odpovídá na požadovanou četnost prognózy.
-7. Prognózy data jsou uložena v databázi, která byla přístupná pomocí klienta spotřeba end.
-8. Spotřeba klient načte prognózy, použije ji zpět do mřížky a využívá v souladu s případ vyžaduje použití.
+1. Miliony měřiče nasazených dat neustále generují data o spotřebě energie v reálném čase.
+2. Tato data se shromažďují a uloženy v cloudovém úložišti (*třeba*, objektů Blob v Azure).
+3. Před zpracováním, nezpracovaných dat je agregován transformovny nebo oblasti definované podnikání.
+4. Zpracování funkce (naleznete v tématu **přípravy dat a zpracování funkce**) pak probíhá a vytvoří modelovat data, která se vyžaduje pro trénování a vyhodnocování – jsou funkce set data uložená v databázi (*třeba*, SQL Azure).
+5. Je vyvolána znovu školicí služby pro znovu trénování modelu prognózy lze – je trvalé tuto aktualizovanou verzi modelu, takže mohou využívat hodnoticí webové služby.
+6. Hodnoticí webové služby se vyvolá podle plánu, která odpovídá požadovanou četnost prognózy.
+7. Předpokládané data uložená v databázi, který je přístupný koncový spotřeby klienta.
+8. Využití klienta načte předpovědí, použije ji zpět do mřížky a využívá v souladu s případ vyžaduje použití.
 
-Je důležité si uvědomit, že tento celý cyklus je zcela automatizovat a spouští podle plánu. Celý orchestraci tento cyklus dat lze provést pomocí nástrojů, jako [Azure Data Factory](http://azure.microsoft.com/services/data-factory/).
+Je důležité si uvědomit, že tento celý cyklus je plně automatizovaná a spouští podle plánu. Celý Orchestrace tento cyklus dat můžete udělat pomocí nástrojů, jako [Azure Data Factory](http://azure.microsoft.com/services/data-factory/).
 
-### <a name="end-to-end-deployment-architecture"></a>Architektura a provést tak kompletní nasazení
-Abyste mohli nasadit prakticky do energie vyžádání prognózy řešení na webu Cortana Intelligence, potřebujeme zajistit, že požadované součásti jsou vytvořeno a správně nakonfigurován.
+### <a name="end-to-end-deployment-architecture"></a>Architektura komplexní nasazení
+Aby bylo možné prakticky nasadit řešení prognózy poptávky energie v Cortana Intelligence, musíme Ujistěte se, že požadované součásti jsou vytvářena a správně nakonfigurovaný.
 
-Následující diagram znázorňuje typické Cortana Intelligence na základě architektury, který implementuje a orchestruje cyklus toku dat, které je popsáno výše:
+Následující diagram znázorňuje typickou architekturu Cortana Intelligence na základě, který implementuje a orchestruje cyklu toku dat, který je popsán výše:
 
-![Architektura a provést tak kompletní nasazení](media/cortana-analytics-playbook-demand-forecasting-energy/architecture.png)
+![Architektura komplexní nasazení](media/cortana-analytics-playbook-demand-forecasting-energy/architecture.png)
 
-Další informace o jednotlivých komponent a celý architektura naleznete šablona řešení energie.
+Další informace o jednotlivých komponent a celkovou architekturu najdete šablonu řešení energie.
 

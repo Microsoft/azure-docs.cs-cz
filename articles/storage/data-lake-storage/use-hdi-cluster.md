@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: ee169f008cc5d6b95d2ddadc68e63673372e2dc5
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 3869d83ada1cbe0b234694b6acae88b6f68fc2dd
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301829"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782273"
 ---
 # <a name="use-azure-data-lake-storage-gen2-preview-with-azure-hdinsight-clusters"></a>Použití Azure Data Lake Storage Gen2 Preview s využitím clusterů Azure HDInsight
 
@@ -170,7 +170,7 @@ Když chcete vytvořit kontejner, použijte následující příkaz:
 
 Schéma identifikátoru URI pro přístup k souborům ve službě Azure Storage ze služby HDInsight je:
 
-    abfs[s]://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.widows.net/<PATH>
+    abfs[s]://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.windows.net/<PATH>
 
 Schéma identifikátoru URI poskytuje nezašifrovaný přístup (s *abfs:* předpony) a zašifrovaný přístup SSL (s *abfss*). Doporučujeme používat *abfss* kdykoli je to možné, i v případě, že přístup k datům, umístěným uvnitř stejné oblasti v Azure.
 
@@ -179,7 +179,7 @@ Schéma identifikátoru URI poskytuje nezašifrovaný přístup (s *abfs:* před
 
     Pokud hodnoty &lt;FILE_SYSTEM_NAME&gt; ani &lt;ACCOUNT_NAME&gt; jste zadali, se používá výchozí systém souborů. Pro soubory ve výchozím systému souborů můžete použít relativní cestu nebo absolutní cestu. Například *hadoop-mapreduce-examples.jar* soubor, který se dodává s clustery HDInsight lze odkazovat pomocí jedné z následujících cest:
     
-        abfs://myfilesystempath@myaccount.dfs.core.widows.net/example/jars/hadoop-mapreduce-examples.jar
+        abfs://myfilesystempath@myaccount.dfs.core.windows.net/example/jars/hadoop-mapreduce-examples.jar
         abfs:///example/jars/hadoop-mapreduce-examples.jar
         /example/jars/hadoop-mapreduce-examples.jar
 
