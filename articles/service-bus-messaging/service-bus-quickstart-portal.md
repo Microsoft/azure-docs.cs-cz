@@ -2,20 +2,20 @@
 title: Rychlý start – Odesílání a přijímání zpráv Azure Service Bus pomocí webu Azure Portal | Microsoft Docs
 description: V tomto rychlém startu se naučíte odesílat a přijímat zprávy Service Bus pomocí webu Azure Portal.
 services: service-bus-messaging
-author: sethmanheim
+author: spelluru
 manager: timlt
 ms.service: service-bus-messaging
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 05/22/2018
-ms.author: sethm
-ms.openlocfilehash: 3f8979687747453354f60eda15d73b20b2c745a0
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.author: spelluru
+ms.openlocfilehash: 05c19b2b602e8541a21d5be508e0346c63714544
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867201"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43700425"
 ---
 # <a name="quickstart-send-and-receive-messages-using-the-azure-portal-and-net"></a>Rychlý start: Odesílání a přijímání zpráv pomocí webu Azure Portal a architektury .NET
 

@@ -54,7 +54,7 @@ PP = Public Preview
 | Podporuje pravidla synchronizace FIM a konektory pro zřizování do místních systémů. | | | |● |● |
 
  
-& #42; Aktuálně jsou dostupné dvě podporované možnosti.  Jsou to tyto: 
+&#42; Aktuálně jsou dostupné dvě podporované možnosti.  Jsou to tyto: 
 
    1. Můžete použít obecný konektor LDAP a povolit ho mimo Azure AD Connect.  Tato operace je složitá a vyžaduje partnera pro onboarding a smlouvu Premier Support.  Tato možnost umožňuje pracovat s jednotlivými adresáři LDAP i s několika adresáři současně. 
 

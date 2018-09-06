@@ -2,19 +2,19 @@
 title: Kurz – Aktualizace sortimentu zásob v maloobchodě s využitím kanálů pro publikování/odběr a filtrů témat v prostředí Azure PowerShell | Microsoft Docs
 description: V tomto kurzu se naučíte, jak odesílat a přijímat zprávy z tématu a odběru a jak přidávat a používat pravidla filtrů pomocí prostředí Azure PowerShell
 services: service-bus-messaging
-author: sethmanheim
+author: spelluru
 manager: timlt
-ms.author: sethm
+ms.author: spelluru
 ms.date: 05/22/2018
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: 6246e951cb9b1e0b4dac656fef6acf8027e79271
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 14f3fe81ab613f05154365b832d860808c3184bf
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43126547"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43702183"
 ---
 # <a name="tutorial-update-inventory-using-powershell-and-topicssubscriptions"></a>Kurz: Aktualizace zásob pomocí prostředí PowerShell a témat/odběrů
 

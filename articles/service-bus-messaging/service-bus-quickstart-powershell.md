@@ -2,20 +2,20 @@
 title: Rychlý start – Odesílání a přijímání zpráv Azure Service Bus | Microsoft Docs
 description: V tomto rychlém startu se naučíte odesílat a přijímat zprávy Service Bus pomocí PowerShellu a klientské knihovny .NET Standard.
 services: service-bus-messaging
-author: sethmanheim
+author: spelluru
 manager: timlt
 ms.service: service-bus-messaging
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 05/22/2018
-ms.author: sethm
-ms.openlocfilehash: b22bf2acc83f46eda1aa74981377e66261d13394
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: spelluru
+ms.openlocfilehash: 5652069e7a81f54936a41ddb563b49fe6131e7e0
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660505"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43696832"
 ---
 # <a name="quickstart-send-and-receive-messages-using-azure-powershell-and-net"></a>Rychlý start: Odesílání a přijímání zpráv pomocí PowerShellu a knihovny .NET
 
