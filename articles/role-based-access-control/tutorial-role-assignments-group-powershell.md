@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 06/11/2018
 ms.author: rolyon
-ms.openlocfilehash: 5012ce22204c3ac32b22fe2cd842ce1300b426f8
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 8bb06493683dabb92dfe75f371f96db14a7951b3
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36295809"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43300999"
 ---
 # <a name="tutorial-grant-access-for-a-group-using-rbac-and-azure-powershell"></a>Kurz: Udělení přístupu pro skupinu pomocí RBAC a Azure PowerShellu
 
@@ -122,7 +122,7 @@ Pokud chcete udělit přístup pro skupinu, pomocí příkazu [New-AzureRmRoleAs
     $groupId = "11111111-1111-1111-1111-111111111111"
     ```
 
-1. Získejte ID vašeho předplatného pomocí příkazu [Get-AzureRmSubscription](/powershell/module/azurerm.resources/get-azurermsubscription).
+1. Získejte ID vašeho předplatného pomocí příkazu [Get-AzureRmSubscription](/powershell/module/azurerm.profile/get-azurermsubscription).
 
     ```azurepowershell
     Get-AzureRmSubscription

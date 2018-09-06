@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 05/10/2018
 ms.author: barclayn
-ms.openlocfilehash: fcf3c7d47e43adc94d2de933430f16d64ec987a2
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 3f3adb1230d6ca6b3a7e616a0beed15d66895124
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "41919890"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43282993"
 ---
 # <a name="get-started-with-azure-key-vault"></a>Začínáme s Azure Key Vault
 Tento článek vám pomůže začít s Azure Key Vault pomocí PowerShellu a provede vás těmito aktivitami:
@@ -34,7 +34,7 @@ Pokyny pro rozhraní příkazového řádku pro různé platformy najdete v [tom
 ## <a name="requirements"></a>Požadavky
 Než budete v tomto článku pokračovat dál, potvrďte, že máte:
 
-- **Předplatné Azure**. Pokud žádné nemáte, můžete si zaregistrovat [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/)
+- **Předplatné Azure**. Pokud žádné nemáte, můžete si zaregistrovat [bezplatný účet](https://azure.microsoft.com/en-us/free/)
 - **Azure PowerShell**, **minimálně verze 1.1.0**. Chcete-li nainstalovat Azure PowerShell a přidružit ho ke svému předplatnému Azure, prohlédněte si téma [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview). Pokud jste již Azure PowerShell nainstalovali, ale neznáte jeho verzi, z konzoly Azure PowerShell zadejte `(Get-Module azure -ListAvailable).Version`. Máte-li nainstalovaný Azure PowerShell ve verzi 0.9.1 až 0.9.8, stále můžete tento kurz použít, pouze s menšími změnami. Například musíte použít příkaz `Switch-AzureMode AzureResourceManager` a zároveň se změnily některé příkazy Azure Key Vault. Seznam rutin Key Vault pro verze 0.9.1 až 0.9.8 naleznete v tématu [Rutiny Azure Key Vault](/powershell/module/azurerm.keyvault/#key_vault).
 - **Aplikaci, kterou je možné nakonfigurovat tak, aby používala Key Vault**. Vzorová aplikace je k dispozici ve službě [Microsoft Download Center](http://www.microsoft.com/download/details.aspx?id=45343). Pokyny naleznete v souvisejícím souboru **Readme**.
 

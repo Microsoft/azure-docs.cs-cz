@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: c4f1b63e2d564f0480508c3ec5a5a24c76ea6bc4
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 7ae235ea52c5c505e535cc3fad2306167d349ee9
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "41919113"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782256"
 ---
 # <a name="azure-container-service-tutorial---manage-dcos"></a>Kurz Azure Container Service – Správa DC/OS
 
@@ -238,7 +238,7 @@ Po přechodu na tuto adresu se vrátí výchozí web NGINX.
 
 ## <a name="scale-dcos-cluster"></a>Škálování clusteru DC/OS
 
-V předchozím příkladu se aplikace škálovala na několik instancí. Infrastruktura DC/OS se také dá škálovat, aby poskytovala více nebo méně výpočetní kapacity. Používá se k tomu příkaz [az acs scale](). 
+V předchozím příkladu se aplikace škálovala na několik instancí. Infrastruktura DC/OS se také dá škálovat, aby poskytovala více nebo méně výpočetní kapacity. Používá se k tomu příkaz [az acs scale](/cli/azure/acs#az-acs-scale). 
 
 Ke zjištění aktuálního počtu agentů DC/OS použijte příkaz [az acs show](/cli/azure/acs#az-acs-show).
 

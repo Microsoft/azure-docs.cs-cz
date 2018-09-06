@@ -3,7 +3,7 @@ title: Co je Azure SignalR | Microsoft Docs
 description: Přehled služby Azure SignalR
 services: signalr
 documentationcenter: ''
-author: wesmc7777
+author: sffamily
 manager: cfowler
 editor: ''
 ms.service: signalr
@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: overview
 ms.workload: tbd
 ms.date: 04/17/2018
-ms.author: wesmc
-ms.openlocfilehash: bc144fb1d7db9251871e7e181b012417a32de7e6
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.author: zhshang
+ms.openlocfilehash: c574a3dd26b36b656cc931a0801cbf0ef23cf362
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33868105"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43668237"
 ---
 # <a name="what-is-azure-signalr-service"></a>Co je služba Azure SignalR
 

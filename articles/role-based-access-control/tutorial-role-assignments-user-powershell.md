@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 06/11/2018
 ms.author: rolyon
-ms.openlocfilehash: 4eeae864721040bda18409b48abf5d33b81ca609
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: cac585b36c3b5969a18c941215b623443850cd4c
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36295894"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301724"
 ---
 # <a name="tutorial-grant-access-for-a-user-using-rbac-and-azure-powershell"></a>Kurz: Udělení přístupu pro uživatele pomocí RBAC a Azure PowerShellu
 
@@ -109,7 +109,7 @@ Skupinu prostředků použijeme k ukázce, jak přiřadit roli v oboru skupiny p
 
 Pokud chcete udělit přístup pro uživatele, pomocí příkazu [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) mu přiřaďte roli. Musíte zadat objekt zabezpečení, definici role a obor.
 
-1. Získejte ID vašeho předplatného pomocí příkazu [Get-AzureRmSubscription](/powershell/module/azurerm.resources/get-azurermsubscription).
+1. Získejte ID vašeho předplatného pomocí příkazu [Get-AzureRmSubscription](/powershell/module/azurerm.profile/get-azurermsubscription).
 
     ```azurepowershell
     Get-AzureRmSubscription

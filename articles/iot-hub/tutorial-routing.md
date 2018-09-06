@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 6e421aa630dc121589dece789e2e0d7f9a56bbe6
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: a52ab4ff65312088e65d56006b6f99a7470b88f6
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434835"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43287246"
 ---
 # <a name="tutorial-configure-message-routing-with-iot-hub"></a>Kurz: Konfigurace směrování zpráv s Azure IoT Hub
 
@@ -184,7 +184,7 @@ az iot hub device-identity show --device-id $iotDeviceName \
 
 ### <a name="powershell-instructions"></a>Pokyny pro PowerShell
 
-Nejjednodušší způsob, jak použít tento skript, je otevřít [PowerShell ISE](/powershell/scripting/core-powershell/ise/introducing-the-windows-powershell-ise.md), zkopírovat skript do schránky a pak ho celý vložit do okna skriptu. Potom můžete změnit hodnoty pro názvy prostředků (pokud chcete) a spustit celý skript. 
+Nejjednodušší způsob, jak použít tento skript, je otevřít [PowerShell ISE](https://docs.microsoft.com/powershell/scripting/core-powershell/ise/introducing-the-windows-powershell-ise?view=powershell-6), zkopírovat skript do schránky a pak ho celý vložit do okna skriptu. Potom můžete změnit hodnoty pro názvy prostředků (pokud chcete) a spustit celý skript. 
 
 ```azurepowershell-interactive
 # Log into Azure account.
@@ -587,14 +587,14 @@ Přihlaste se ke svému účtu [Power BI](https://powerbi.microsoft.com/). Přej
 
 ### <a name="clean-up-resources-using-azure-cli"></a>Vyčištění prostředků pomocí Azure CLI
 
-Chcete-li odebrat skupinu prostředků, použijte příkaz [az group delete](https://docs.microsoft.com/en-us/cli/azure/group?view=azure-cli-latest#az-group-delete).
+Chcete-li odebrat skupinu prostředků, použijte příkaz [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete).
 
 ```azurecli-interactive
 az group delete --name $resourceGroup
 ```
 ### <a name="clean-up-resources-using-powershell"></a>Vyčištění prostředků pomocí PowerShell
 
-K odebrání skupiny prostředků použijte příkaz [Remove-AzureRmResourceGroup](https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/remove-azurermresourcegroup). Proměnná $resourceGroup byla nastavena na **ContosoIoTRG1** na začátku tohoto kurzu.
+K odebrání skupiny prostředků použijte příkaz [Remove-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/remove-azurermresourcegroup). Proměnná $resourceGroup byla nastavena na **ContosoIoTRG1** na začátku tohoto kurzu.
 
 ```azurepowershell-interactive
 Remove-AzureRmResourceGroup -Name $resourceGroup

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/30/2018
 ms.author: dobett
-ms.openlocfilehash: 8c7acbe12c6bfed2066f6edb4ef7358b2180aeb3
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 7d5f2246eec20144a30e0abbc31038bdf04ab2b0
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39212931"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43339272"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-the-telemetry-from-the-hub-with-a-back-end-application-python"></a>Rychlý start: Odesílání telemetrických dat ze zařízení do centra IoT a čtení telemetrických dat z centra pomocí back-endové aplikace (Python)
 
@@ -127,7 +127,7 @@ Nástroj příkazového řádku `iothub-explorer` se připojí ke koncovému bod
 V jiném okně terminálu spusťte následující příkazy, ve kterých `{your hub service connection string}` nahradíte připojovacím řetězcem služby, který jste si předtím poznamenali:
 
 ```cmd/sh
-iothub-explorer monitor-events MyPythonDevice --login {your hub service connection string}
+iothub-explorer monitor-events MyPythonDevice --login "{your hub service connection string}"
 ```
 
 Následující snímek obrazovky ukazuje výstup, zatímco nástroj přijímá telemetrická data odeslaná simulovaným zařízením do centra:

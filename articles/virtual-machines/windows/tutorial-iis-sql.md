@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: f9fea933dd664955a0bc6f47db775fbc469fd684
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: f8f91a4c039e07b636395ab953b8031d5ffe9958
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38719397"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43343502"
 ---
 # <a name="tutorial-install-the-sql47iis47net-stack-in-a-windows-vm-with-azure-powershell"></a>Kurz: Instalace stacku SQL&#47;IIS&#47;.NET na virtuální počítač s Windows pomocí Azure PowerShellu
 
@@ -116,7 +116,7 @@ New-AzureRmVm `
     -OpenPorts 3389,1401 
 ```
 
-Pomocí rutiny [Set-AzureRmVMSqlServerExtension](/powershell/module/azurerm.compute/set-azurermvmsqlserverextension) přidejte na virtuální počítač SQL [rozšíření SQL Serveru](/sql/virtual-machines-windows-sql-server-agent-extension.md).
+Pomocí rutiny [Set-AzureRmVMSqlServerExtension](/powershell/module/azurerm.compute/set-azurermvmsqlserverextension) přidejte na virtuální počítač SQL [rozšíření SQL Serveru](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension).
 
 ```azurepowershell-interactive
 Set-AzureRmVMSqlServerExtension `

@@ -2,19 +2,18 @@
 title: Přístup k datům v Azure Data Lake Storage Gen2 Preview v Azure Databricks pomocí Sparku | Microsoft Docs
 description: Naučte se spouštět dotazy Sparku v clusteru Azure Databricks, abyste měli přístup k datům v účtu úložiště Azure Data Lake Storage Gen2.
 services: hdinsight,storage
-tags: azure-portal
 author: dineshm
 ms.component: data-lake-storage-gen2
 ms.service: storage
 ms.topic: tutorial
 ms.date: 6/27/2018
 ms.author: dineshm
-ms.openlocfilehash: 83e6b6817f33cb19c3839a94a8919f3516576d68
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 7d951a959da28187a5971ee218f2bd921d331727
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42886574"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43301794"
 ---
 # <a name="tutorial-access-azure-data-lake-storage-gen2-preview-data-with-azure-databricks-using-spark"></a>Kurz: Přístup k datům v Azure Data Lake Storage Gen2 Preview v Azure Databricks pomocí Sparku
 

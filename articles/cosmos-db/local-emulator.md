@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/20/2018
 ms.author: danoble
-ms.openlocfilehash: 368caa063ea0487923af8a29f67aa73cae7ed75e
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 355f80479ba7c6d6399bb25f7ba1511c6b18599b
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37952888"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43285223"
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>Použití emulátoru služby Azure Cosmos DB pro místní vývoj a testování
 
@@ -51,12 +51,6 @@ Tento článek se zabývá následujícími úkony:
 > * Spuštění emulátoru v aplikaci Docker for Windows
 > * Shromažďování trasovacích souborů
 > * Řešení potíží
-
-Doporučujeme začít zhlédnutím následujícího videa, ve kterém Kirill Gavrylyuk vysvětluje, jak začít s emulátorem služby Azure Cosmos DB. Ve videu je emulátor označován jako emulátor DocumentDB, ale samotný nástroj byl od doby nahrávání videa přejmenován na emulátor služby Azure Cosmos DB. Všechny informace ve videu jsou stále platné i pro emulátor služby Azure Cosmos DB. 
-
-> [!VIDEO https://channel9.msdn.com/Events/Connect/2016/192/player]
-> 
-> 
 
 ## <a name="how-the-emulator-works"></a>Jak emulátor funguje
 

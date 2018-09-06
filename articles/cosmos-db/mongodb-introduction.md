@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 02/12/2018
 ms.author: sclyon
-ms.openlocfilehash: 3a5978603ae57a6975b76a0736dc4e2d1f133d30
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: b0fba3cee298e55702629815da4649d9af315b25
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42022664"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43283022"
 ---
 # <a name="introduction-to-azure-cosmos-db-mongodb-api"></a>Úvod do Azure Cosmos DB: rozhraní MongoDB API
 
@@ -49,11 +49,6 @@ Databáze Azure Cosmos DB lze použít jako úložiště dat aplikací psaných 
 **Automatické indexování:** Azure Cosmos DB standardně automaticky indexuje všechny vlastnosti v dokumentech v databázi MongoDB a neočekává ani nevyžaduje žádné schéma nebo vytváření sekundárních indexů. Schopnost jedinečného indexu navíc umožňuje omezení jedinečnosti jakýchkoli polí dokumentů, které už jsou automaticky indexované ve službě Azure Cosmos DB.
 
 **Podniková úroveň:** Azure Cosmos DB podporuje více místních replik a garantuje tak 99,99% dostupnost a ochranu dat v případě místních a oblastních selhání. Azure Cosmos DB má [osvědčení pro dodržování předpisů](https://www.microsoft.com/trustcenter) a funkce zabezpečení na podnikové úrovni. 
-
-Více vám v tomto videu řekne Aleksey Savateyev, Senior Program Manager služby Azure Cosmos DB.
-
-> [!VIDEO https://channel9.msdn.com/Events/Connect/2017/T136/player]
-> 
 
 ## <a name="how-to-get-started"></a>Jak začít
 

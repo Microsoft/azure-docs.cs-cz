@@ -3,7 +3,7 @@ title: Ukázkový skript Azure CLI – Vytvoření služby SignalR s využitím 
 description: Ukázkový skript Azure CLI – Vytvoření služby SignalR s využitím služby App Service
 services: signalr
 documentationcenter: signalr
-author: wesmc7777
+author: sffamily
 manager: cfowler
 editor: ''
 tags: azure-service-management
@@ -13,14 +13,14 @@ ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: signalr
 ms.date: 04/20/2018
-ms.author: wesmc
+ms.author: zhshang
 ms.custom: mvc
-ms.openlocfilehash: 0532cb81c766c2d039b978ab4ba79c812915bbc0
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 70b81eada9c71594b3c5223b825f0a6db8ed7ef1
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "41918441"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43664190"
 ---
 # <a name="create-a-signalr-service-with-an-app-service"></a>Vytvoření služby SignalR s využitím služby App Service
 

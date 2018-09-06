@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/14/2018
 ms.author: yushwang
 ms.custom: mvc
-ms.openlocfilehash: 0f10384e7e21d65b3a16869a10f8294b9643c74c
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: b1435773f8d05f9cc730e5745c1a916d9b74321f
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38705679"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43340589"
 ---
 # <a name="create-and-manage-vpn-gateway-with-the-azure-powershell-module"></a>Vytvoření a správa brány VPN pomocí modulu Azure PowerShell
 
@@ -145,7 +145,7 @@ Další informace najdete v tématu [Resetování brány VPN](vpn-gateway-resetg
 
 ## <a name="get-the-gateway-public-ip-address"></a>Získání veřejné IP adresy brány
 
-Pokud znáte název veřejné IP adresy, můžete pomocí příkazu [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/Reset-AzureRmPublicIpAddress) zobrazit veřejnou IP adresu přiřazenou k bráně.
+Pokud znáte název veřejné IP adresy, můžete pomocí příkazu [Get-AzureRmPublicIpAddress](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermpublicipaddress?view=azurermps-6.8.1) zobrazit veřejnou IP adresu přiřazenou k bráně.
 
 ```azurepowershell-interactive
 $myGwIp = Get-AzureRmPublicIpAddress -Name $GwIP1 -ResourceGroup $RG1

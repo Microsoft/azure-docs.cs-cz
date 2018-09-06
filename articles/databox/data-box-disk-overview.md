@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: overview
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/28/2018
+ms.date: 09/04/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand what Data Box Disk is and how it works so I can use it to import on-premises data into Azure.
-ms.openlocfilehash: f2e1a59584507b52d0a834af1869e3e9f2db5f07
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: b1beb0e9a5a0435bdf298eddbefc230b2f95ed0a
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43127360"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43698498"
 ---
 # <a name="what-is-azure-data-box-disk-preview"></a>Co je Azure Data Box Disk? (Preview)
 
@@ -106,14 +106,14 @@ Po dobu platnosti verze Preview může služba Data Box Disk přenášet data do
 
 |Oblast Azure  |Oblast Azure  |
 |---------|---------|
-|Západní střed USA     |USA – východ        |        
-|Západní USA 2     |USA – východ 2          |     
+|Západní střed USA     |Kanada – střed       |        
+|Západní USA 2     |Kanada – východ         |     
 |USA – západ     | Západní Evropa        |      
 |Střed USA – jih   |Severní Evropa     |         
-|USA – střed     |Kanada – východ|
-|Střed USA – sever  |Kanada – střed    |
-
-
+|USA – střed     |Austrálie – východ|
+|Střed USA – sever  |Austrálie – jihovýchod   |
+|USA – východ      |Austrálie – střed |
+|USA – východ 2     |Austrálie – střed 2|
 
 
 ## <a name="pricing"></a>Ceny

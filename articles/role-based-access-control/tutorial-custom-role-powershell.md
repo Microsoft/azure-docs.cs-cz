@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 06/12/2018
 ms.author: rolyon
-ms.openlocfilehash: 2b3bd55fd2ed9f392611fcb32b0ebd0f5c6b5e09
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 1e3043a6053625f8363e9035e59b53275714a827
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36322521"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43300605"
 ---
 # <a name="tutorial-create-a-custom-role-using-azure-powershell"></a>Kurz: Vytvoření vlastní role pomocí Azure PowerShellu
 
@@ -99,7 +99,7 @@ Nejjednodušší způsob, jak vytvořit vlastní roli, je začít s předdefinov
     
 1. Upravte soubor JSON a do vlastnosti `Actions` přidejte operaci `"Microsoft.Support/*"`. Nezapomeňte vložit čárku za operaci čtení. Tato akce umožní uživateli vytvářet lístky podpory.
 
-1. Získejte ID vašeho předplatného pomocí příkazu [Get-AzureRmSubscription](/powershell/module/azurerm.resources/get-azurermsubscription).
+1. Získejte ID vašeho předplatného pomocí příkazu [Get-AzureRmSubscription](/powershell/module/azurerm.profile/get-azurermsubscription).
 
     ```azurepowershell
     Get-AzureRmSubscription

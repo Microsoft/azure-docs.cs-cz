@@ -3,7 +3,7 @@ title: Rychlý start k používání služby Azure SignalR | Microsoft Docs
 description: Rychlý start popisující použití služby Azure SignalR k vytvoření chatovací místnosti s využitím aplikací ASP.NET Core MVC.
 services: signalr
 documentationcenter: ''
-author: wesmc7777
+author: sffamily
 manager: cfowler
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: quickstart
 ms.tgt_pltfrm: ASP.NET
 ms.workload: tbd
 ms.date: 06/13/2018
-ms.author: wesmc
-ms.openlocfilehash: cf47b2d6bd17fa5a9f7cbe98ab7db2799f6e8287
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.author: zhshang
+ms.openlocfilehash: 398ba001bfe9c8b2dd77b66535f5cb4aaf5f6270
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42916296"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43667344"
 ---
 # <a name="quickstart-create-a-chat-room-with-signalr-service"></a>Rychlý start: Vytvoření chatovací místnosti s využitím služby SignalR
 

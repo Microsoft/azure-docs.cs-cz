@@ -3,7 +3,7 @@ title: Přehled integrace služby Azure Service Bus do služby Event Grid | Micr
 description: Popis integrace zasílání zpráv služby Service Bus a služby Event Grid
 services: service-bus-messaging
 documentationcenter: .net
-author: ChristianWolf42
+author: spelluru
 manager: timlt
 editor: ''
 ms.assetid: f99766cb-8f4b-4baf-b061-4b1e2ae570e4
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: get-started-article
 ms.date: 02/15/2018
-ms.author: chwolf
-ms.openlocfilehash: fbea3d4b6bb82ac002550434d737f27c441d439e
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.author: spelluru
+ms.openlocfilehash: 2b6f46c10603e54f0f77a635b3233073aadac0cd
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32187102"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43700119"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Přehled integrace služby Azure Service Bus do služby Event Grid
 
