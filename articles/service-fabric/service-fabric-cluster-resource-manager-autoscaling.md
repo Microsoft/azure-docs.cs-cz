@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/17/2018
 ms.author: miradic
-ms.openlocfilehash: a742ac79f1152816621312e2ebc59598772ba127
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 55feb64f06c2d67f85f230cb92e84dfe8fd3ada2
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990617"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782385"
 ---
 # <a name="introduction-to-auto-scaling"></a>Úvod k automatickému škálování
 Automatické škálování je další schopností Service Fabric dynamické škálování služeb na základě zatížení, které služby se hlásí, nebo na základě jejich využití prostředků. Automatické škálování poskytuje skvělé pružnost a umožňuje zřízení dalších instancí nebo oddíly služby na vyžádání. Celý automatické škálování zpracování je automatické a transparentní, a po nastavení zásad pro službu není nutné pro ruční operace škálování na úrovni služby. Automatické škálování je možné zapnout na buď při vytváření služby, nebo kdykoli při aktualizaci.
@@ -47,7 +47,7 @@ Existují dva mechanismy, které jsou aktuálně podporovány pro automatické �
 První typ aktivační události je na základě zatížení instancí v oddílu bezstavové služby. Metrika zatížení jsou nejprve vyhlazené získat zatížení pro každou instanci oddílu, a pak jsou tyto hodnoty průměrovaný napříč všemi instancemi oddílu. Existují tři faktory, které určují, kdy se škálovat službu:
 
 * _Nižší prahová hodnota načtení_ je hodnota, která určuje, kdy bude služba **horizontálně**. Pokud je průměrné zatížení všech instancí oddílů je nižší než tato hodnota, bude v škálovat službu.
-* _Horní prahová hodnota zatížení_ je hodnota, která určuje, kdy bude služba **škálované**. Pokud je průměrné zatížení všech instancí oddílu je nižší než tato hodnota, bude služba horizontálním navýšení kapacity.
+* _Horní prahová hodnota zatížení_ je hodnota, která určuje, kdy bude služba **škálované**. Pokud je průměrné zatížení všech instancí oddílu je vyšší než tato hodnota, bude služba horizontálním navýšení kapacity.
 * _Interval škálování_ Určuje, jak často budou trigger kontrolovat. Po zaškrtnutí aktivační událost, pokud škálování je potřeba mechanismu, který se použije. Podle potřeby škálování není, bude provedena žádná akce. V obou případech se aktivační událost nebude znovu zkontrolovat vypršení platnosti interval škálování znovu.
 
 Tato aktivační událost lze použít pouze s bezstavové služby (bezstavové kontejnery a služby Service Fabric). V případě, když služba obsahuje několik oddílů, trigger se vyhodnocuje pro každý oddíl samostatně a každý oddíl bude mít zadané mechanismus nezávisle na sobě použít. Proto v tomto případě je možné, že některé z oddílů služby se škálovat, některé bude možné horizontálně snížit a některé nebude možné škálovat na všech ve stejnou dobu, na základě jejich zatížení.

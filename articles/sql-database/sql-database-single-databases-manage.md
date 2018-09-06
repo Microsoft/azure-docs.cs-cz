@@ -10,12 +10,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: carlrab
-ms.openlocfilehash: a94c3a4c4b8ffb22b1d75ca064bd3e48a2e50141
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 483ac248619a6d8a0f403592b1b4e55ad5e973da
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005674"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841854"
 ---
 # <a name="create-and-manage-logical-servers-and-single-databases-in-azure-sql-database"></a>Vytvoření a správa izolovaných databází ve službě Azure SQL Database a logické servery 
 
@@ -156,10 +156,7 @@ K vytváření a správě serveru Azure SQL, databází a bran firewall, použij
 |[Servery – aktualizace](/rest/api/sql/servers/update)|Aktualizuje existující server.|
 |[Databáze – vytvořit nebo aktualizovat](/rest/api/sql/databases/createorupdate)|Vytvoří novou databázi nebo aktualizuje existující databázi.|
 |[Databáze - Get](/rest/api/sql/databases/get)|Získá databázi.|
-|[Získat databáze – elastický fond](/rest/api/sql/databases/getbyelasticpool)|Získá databáze v elastickém fondu.|
-|[Získat doporučený fond Elastických databází –](/rest/api/sql/databases/getbyrecommendedelasticpool)|Získá databázi uvnitř recommented elastického fondu.|
 |[Databáze – seznam podle elastického fondu](/rest/api/sql/databases/listbyelasticpool)|Vrátí seznam databází v elastickém fondu.|
-|[Databáze – seznam podle doporučených elastického fondu](/rest/api/sql/databases/listbyrecommendedelasticpool)|Vrátí seznam hodnot uvnitř doporučený fond elastických databází.|
 |[Databáze – seznam serverem](/rest/api/sql/databases/listbyserver)|Vrátí seznam databází na serveru.|
 |[Databáze – aktualizace](/rest/api/sql/databases/update)|Aktualizuje existující databázi.|
 |[Pravidla – brány firewall vytvořit nebo aktualizovat](/rest/api/sql/firewallrules/createorupdate)|Vytvoří nebo aktualizuje pravidla brány firewall.|

@@ -7,14 +7,14 @@ author: juliako
 manager: erikre
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 08/05/2018
+ms.date: 09/05/2018
 ms.author: juliako
-ms.openlocfilehash: df9d3f40b28f5b030f3d7e7a63b1b3e77caedb6c
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: c598fdae40b4552e1d4dc29b8558d82d0830160a
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700803"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841827"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Vytvoření připojení k Azure účet služby Video Indexer
 
@@ -80,8 +80,8 @@ Tento článek ukazuje, jak vytvořit účet služby Video Indexer, který je pr
         |Oblast účtu video Indexer|Název oblasti účtu Video Indexer. Pro lepší výkon a nižší náklady důrazně doporučujeme zadat název oblasti, kde se nachází na prostředek služby Azure Media Services a účet služby Azure Storage. |
         |Tenant Azure Active Directory (AAD)|Název tenanta Azure AD, například "contoso.onmicrosoft.com". Informace o tenantovi můžete získat z webu Azure portal. Umístěte ukazatel myši přes jméno přihlášeného uživatele v horním pravém rohu.|
         |ID předplatného|Předplatné Azure, ve kterém by měl vytvoří toto připojení. ID předplatného můžete získat z webu Azure portal. Klikněte na **všechny služby** v levém panelu a vyhledejte "předplatné". Vyberte, **předplatná** a pak vyberte požadovaného ID z seznam vašich předplatných.|
-        |Skupina prostředků Azure název|Název pro novou skupinu prostředků, ve kterém chcete vytvořit připojení.|
-        |Název prostředku Azure|Název prostředku Azure Media Services.|
+        |Název skupiny prostředků Azure Media Services|Název pro skupinu prostředků, ve kterém k účtu Media Services existuje.|
+        |Název mediální služby prostředků|Název prostředku Azure Media Services.|
         |ID aplikace|ID aplikace Azure AD s oprávněními pro zadaný účet Media Services. Další informace najdete v tématu [použití ověřování instančních objektů](../../media-services/previous/media-services-portal-get-started-with-aad.md#service-principal-authentication).|
         |Klíč aplikace|Další informace najdete v tématu [použití ověřování instančních objektů](../../media-services/previous/media-services-portal-get-started-with-aad.md#service-principal-authentication).|
 

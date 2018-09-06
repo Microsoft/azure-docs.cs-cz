@@ -1,6 +1,6 @@
 ---
-title: Visual vyhledávání rychlé spuštění uzlu SDK | Microsoft Docs
-description: Instalace Visual vyhledávání SDK uzlu konzolové aplikace.
+title: Rychlý start Node SDK pro vizuální vyhledávání | Dokumentace Microsoftu
+description: Nastavení pro vizuální vyhledávání uzel sady SDK konzolové aplikace.
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: mikedodaro
@@ -10,32 +10,32 @@ ms.component: bing-web-search
 ms.topic: article
 ms.date: 05/18/2018
 ms.author: v-gedod
-ms.openlocfilehash: 51797f4b674224b4348f3f51518a5b087fd2329a
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: bb245f9eab0f367a0e1b69af88352c54132ea29d
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36961905"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782436"
 ---
-# <a name="visual-search-sdk-node-quickstart"></a>Rychlé spuštění uzlu SDK Visual vyhledávání
+# <a name="visual-search-sdk-node-quickstart"></a>Rychlý start Node SDK pro vizuální vyhledávání
 
-Sada SDK Bing Visual hledání používá funkci rozhraní REST API pro webové žádosti a analýza výsledků.
-[Zdrojový kód pro uzel Visual vyhledávání SDK ukázky](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/visualSearch.js) je k dispozici v centru Git.
+Visual SDK vyhledávání Bing používá funkce rozhraní REST API pro webové požadavky a výsledky analýzy.
+[Zdrojový kód pro ukázky uzlu Visual Search SDK](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/visualSearch.js) je k dispozici v centru Git.
 
-Kód scénáře jsou popsané do těchto oblastí:
-* [Visual vyhledávání klienta](#client)
-* [Dokončení konzolové aplikace](#complete)
+Kód scénáře jsou popsané v následujících položkách:
+* [Vizuální vyhledávání klienta](#client)
+* [Kompletní konzolové aplikace](#complete)
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Klíč rozhraní API kognitivní služby je vyžadovaný k ověření volání sady SDK. Zaregistrujte si [bezplatné zkušební verze klíč]((https://azure.microsoft.com/try/cognitive-services/?api=search-api-v7)). Zkušební klíč je vhodný pro sedm dní s jedno volání za sekundu. Pro produkčních scénářích [koupit přístupový klíč](https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7). Viz také [informace o cenách](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/visual/).
+* Klíč rozhraní API služeb Cognitive Services se vyžaduje k ověření volání sady SDK. Zaregistrovat [bezplatné zkušební verze klíče](https://azure.microsoft.com/try/cognitive-services/?api=search-api-v7). Zkušební verze klíče je po dobu sedmi dní pomocí jednoho volání za sekundu. Pro produkční scénáře [koupit přístupový klíč](https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7). Viz také [informace o cenách](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/visual/).
 
-## <a name="application-dependencies"></a>Závislosti aplikací
+## <a name="application-dependencies"></a>Závislosti aplikace
 
 * Spusťte `npm install Microsoft.Azure.CognitiveServices.Search.VisualSearch`.
 
 <a name="client"></a>
-## <a name="visual-search-client"></a>Visual vyhledávání klienta
+## <a name="visual-search-client"></a>Vizuální vyhledávání klienta
 Chcete-li vytvořit instanci `VisualSearchAPI` klienta, přidání direktivy using:
 ```
 const Search = require('azure-cognitiveservices-visualsearch');
@@ -49,7 +49,7 @@ let credentials = new CognitiveServicesCredentials(keyVar);
 let visualSearchApiClient = new Search.VisualSearchAPIClient(credentials);
 
 ```
-Pomocí klienta pro vyhledávání bitové kopie:
+Pomocí klienta pro vyhledávání obrázků:
 ```
 let fileStream = fs.createReadStream('../Data/image.jpg');
 let visualSearchRequest = JSON.stringify({});
@@ -97,9 +97,9 @@ else {
 
 ```
 <a name="complete"></a>
-## <a name="complete-console-application"></a>Dokončení konzolové aplikace
+## <a name="complete-console-application"></a>Kompletní konzolové aplikace
 
-Následující konzolové aplikace spustí předchozí kód, další scénáře a analyzuje výsledky:
+Následující konzolovou aplikaci spustí předchozí kód, další scénáře a analyzuje výsledky:
 ```
 /*
  * Copyright (c) Microsoft Corporation. All rights reserved.
@@ -328,4 +328,4 @@ exports.sample = sample;
 
 ## <a name="next-steps"></a>Další postup
 
-[Ukázky kognitivní Services .NET SDK](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7).
+[Ukázky služby cognitive Services .NET SDK](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7).

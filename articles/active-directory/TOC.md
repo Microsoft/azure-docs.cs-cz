@@ -84,7 +84,6 @@
 
 ## [Správa skupin a členů](fundamentals/active-directory-manage-groups.md)
 ### [Správa skupin](fundamentals/active-directory-groups-create-azure-portal.md)
-### [Obnovení odstraněné skupiny Office 365](fundamentals/active-directory-groups-restore-azure-portal.md)
 ### [Správa nastavení skupin](fundamentals/active-directory-groups-settings-azure-portal.md)
 ## [Správa sestav](reports-monitoring/overview-reports.md)
 ### [Aktivita přihlášení](reports-monitoring/concept-sign-ins.md)

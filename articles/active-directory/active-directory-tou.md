@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.component: compliance
 ms.date: 09/04/2018
 ms.author: rolyon
-ms.openlocfilehash: 0171cd3e3a39d1fe70e7c97b618d854857a1c376
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: fbed0f5fb213a18f4450ee3aa96c3b8485b16e8b
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/05/2018
-ms.locfileid: "43695519"
+ms.locfileid: "43781322"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Funkce Azure Active Directory Terms of Use
 Azure AD Terms of Use poskytuje organizacím jednoduchý způsob předkládání informací koncovým uživatelům. Toto předkládání zajistí, že se uživatelům zobrazí příslušná právní omezení pro zákonné požadavky nebo požadavky dodržování předpisů. Tento článek popisuje, jak začít s funkcí Azure AD Terms of Use.
@@ -223,7 +223,7 @@ Odpověď: v současné době nelze aktualizovat existující podmínky použit�
 Odpověď: soubor PDF se vykreslí ve výchozím nastavení ve formátu JPEG, takže hypertextové odkazy nejsou po kliknutí. Uživatelé mají možnost vybrat si **máte problémy se zobrazením? Kliknutím sem**, který vykreslí PDF nativně kde hypertextové odkazy jsou podporovány.
 
 **Otázka: Podporují se podmínky použití ve více jazycích?**</br>
-Odpověď: Ano. Aktuálně jsou dostupné více než 100 různých jazyků, které správce může nakonfigurovat pro jeden podmínky použití.
+Odpověď: Ano. Aktuálně nejsou 108 různé jazyky, které správce může nakonfigurovat pro jeden podmínky použití.
 
 **Otázka: Kdy se podmínky použití aktivují?**</br>
 Odpověď: Podmínky použití se aktivují během přihlašování.

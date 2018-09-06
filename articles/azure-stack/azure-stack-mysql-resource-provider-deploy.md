@@ -11,19 +11,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/04/2018
+ms.date: 09/05/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 6d6ee22bd1691f1af6956330b3299a1483c588f7
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 722df244135d045e18b9f2d0dd88066ba00b7d49
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696634"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841875"
 ---
 # <a name="deploy-the-mysql-resource-provider-on-azure-stack"></a>Nasazení poskytovatele prostředků MySQL ve službě Azure Stack
 
 Používání poskytovatele prostředků MySQL Server vystavit databází MySQL jako služby Azure Stack. Poskytovatele prostředků MySQL běží jako služba na virtuálním počítači (VM) systému Windows Server 2016 Server Core.
+
+> [!IMPORTANT]
+> Vytvoření položek na serverech, daný hostitel SQL nebo MySQL se podporuje jenom poskytovatele prostředků. Neodpovídající stavu může dojít položky vytvořené na hostitelském serveru, které nebyly vytvořeny pomocí zprostředkovatele prostředků.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -150,6 +153,7 @@ Po dokončení skriptu instalace poskytovatele prostředků, aktualizujte svůj 
 2. Vyberte **skupiny prostředků**
 3. Vyberte **systému.\< umístění\>.mysqladapter** skupinu prostředků.
 4. Na stránce Souhrn pro skupinu prostředků přehled měla by existovat žádná selhání nasazení.
+5. Nakonec vyberte **virtuálních počítačů** v portálu pro správu k ověření poskytovatele prostředků MySQL virtuální počítač byl úspěšně vytvořen a běží.
 
 ## <a name="next-steps"></a>Další postup
 

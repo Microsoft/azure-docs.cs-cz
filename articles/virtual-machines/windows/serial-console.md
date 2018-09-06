@@ -14,17 +14,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: 725f52e55795025671036095f209fd92636a4d9c
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 4e93e455e309771ed3e33382ee49cdc144036fb1
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/05/2018
-ms.locfileid: "43701495"
+ms.locfileid: "43782409"
 ---
 # <a name="virtual-machine-serial-console-preview"></a>Virtuální počítač sériová konzola (preview) 
 
 
-Konzole sériového portu virtuálního počítače v Azure poskytuje přístup ke konzole založený na textu pro virtuální počítače s Linuxem a Windows. Toto sériové připojení je COM1 sériového portu virtuálního počítače a poskytuje přístup k virtuálnímu počítači a nesouvisí se síť virtuálních počítačů / provozní stav systému. Přístup ke konzole sériového portu pro virtuální počítač můžete provést jenom prostřednictvím portálu Azure portal momentálně a povolený jenom pro ty, kteří mají Přispěvatel virtuálních počítačů nebo vyšší přístup k virtuálnímu počítači. 
+Konzole sériového portu virtuálního počítače v Azure poskytuje přístup ke konzole založený na textu pro virtuální počítače s Windows. Toto sériové připojení je COM1 sériového portu virtuálního počítače, poskytování přístupu k virtuálnímu počítači, který je nezávislý na síti nebo stav operačního systému virtuálního počítače. Přístup ke konzole sériového portu pro virtuální počítač momentálně můžete pouze to udělat pomocí webu Azure portal a je povolená jenom pro uživatele, kteří mají Přispěvatel virtuálních počítačů nebo vyšší než přístup k virtuálnímu počítači. 
 
 Dokumentaci konzoly sériového portu pro virtuální počítače s Linuxem [kliknutím sem](../linux/serial-console.md).
 
@@ -46,7 +46,7 @@ Dokumentaci konzoly sériového portu pro virtuální počítače s Linuxem [kli
     ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-reset-password.png)
 
 ## <a name="get-started-with-serial-console"></a>Začínáme s konzoly sériového portu
-Konzola sériového portu pro virtuální počítače je k dispozici pouze prostřednictvím [webu Azure portal](https://portal.azure.com). Níže je uvedený postup pro přístup ke konzole sériového portu pro virtuální počítače prostřednictvím portálu 
+Konzola sériového portu pro virtuální počítače je k dispozici pouze prostřednictvím [webu Azure portal](https://portal.azure.com). Níže je uvedený postup pro přístup ke konzole sériového portu pro virtuální počítače prostřednictvím portálu.
 
   1. Otevřete na webu Azure portal
   2. V nabídce vlevo vyberte virtuální počítače.
@@ -55,8 +55,8 @@ Konzola sériového portu pro virtuální počítače je k dispozici pouze prost
 
 ![](../media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect.gif)
 
-## <a name="configure-serial-console-for-windows"></a>Konfigurace konzoly sériového portu pro Windows 
-Novější Image Windows serveru v Azure budou mít [Speciální konzoly pro správu](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) (SAC) ve výchozím nastavení povolená. SAC je podporováno ve verzích Windows na serveru, ale není k dispozici ve verzích klienta (například Windows 10, Windows 8 nebo Windows 7). Povolit konzoly sériového portu pro virtuální počítače Windows vytvořené s použitím Feb2018 nebo nižší bitové kopie použijte následující kroky: 
+## <a name="enable-serial-console-in-custom-or-older-images"></a>Povolit konzoly sériového portu v obrázcích vlastní nebo starší
+Novější Image Windows serveru v Azure budou mít [Speciální konzoly pro správu](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) (SAC) ve výchozím nastavení povolená. SAC je podporováno ve verzích Windows na serveru, ale není k dispozici ve verzích klienta (například Windows 10, Windows 8 nebo Windows 7). Pokud chcete povolit konzoly sériového portu pro virtuální počítače s Windows, které jsou vytvořeny před únorem 2018, použijte následující kroky: 
 
 1. Připojte se k virtuálnímu počítači přes vzdálenou plochu Windows
 2. Z příkazového řádku pro správu spusťte následující příkazy 
@@ -73,13 +73,13 @@ Pokud potřebná SAC lze povolit v režimu offline
 * `bcdedit /store <mountedvolume>\boot\bcd /ems {default} on`
 * `bcdedit /store <mountedvolume>\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200`
 
-### <a name="how-do-i-know-if-sac-is-enabled-or-not"></a>Jak poznám, jestli je nebo není povolený SAC 
+### <a name="how-do-i-know-if-sac-is-enabled"></a>Jak poznám, jestli je povolené SAC?
 
-Pokud [SAC] (https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) není povoleno konzole sériového portu se nezobrazí SAC řádku. V některých případech může zobrazit informace o stavu virtuálních počítačů nebo je prázdný.  
+Pokud [SAC] (https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) není povoleno konzole sériového portu se nezobrazí SAC řádku. V některých případech se zobrazí informace o stavu virtuálního počítače a v ostatních případech bude prázdné.  
 
-## <a name="enabling-boot-menu-to-show-in-the-serial-console"></a>Povolení spouštěcí nabídky pro zobrazení v konzole sériového portu 
+## <a name="enable-the-windows-boot-menu-in-serial-console"></a>Povolit spouštěcí nabídky Windows v konzole sériového portu 
 
-Pokud je potřeba povolit Windows spouštěcí zavaděč zobrazí výzvu k zobrazení v konzole sériového portu následující další možnosti můžete přidat do spouštěcí zavaděč Windows.
+Pokud je potřeba povolit Windows spouštěcí zavaděč zobrazí výzvu k zobrazení v konzole sériového portu, přidáte následující další možnosti pro konfigurační data spouštění. Zobrazit [nástroje bcdedit](https://docs.microsoft.com/windows-hardware/drivers/devtest/bcdedit--set) další podrobnosti
 
 1. Připojte se k virtuálnímu počítači přes vzdálenou plochu Windows
 2. Z příkazového řádku pro správu spusťte následující příkazy 
@@ -88,8 +88,14 @@ Pokud je potřeba povolit Windows spouštěcí zavaděč zobrazí výzvu k zobra
 * `bcdedit /set {bootmgr} bootems yes`
 3. Restartování systému pro spouštěcí nabídky, aby byl povolen
 
-> [!NOTE] 
-> Na tento bod podpora pro funkce klíče není povolená, pokud vyžadujete rozšířené možnosti spuštění pomocí nástroje bcdedit/set {aktuální} onetimeadvancedoptions na, prohlédněte si [nástroje bcdedit](https://docs.microsoft.com/windows-hardware/drivers/devtest/bcdedit--set) další podrobnosti
+## <a name="use-serial-console-for-nmi-calls-in-windows-vms"></a>Použití konzoly sériového portu pro volání NMI ve virtuálních počítačích Windows
+Maskable přerušení (NMI) slouží k vytvoření signál, který nebude ignorovat softwaru na virtuálním počítači. V minulosti NMIs se používají ke sledování hardwarových problémů v systémech, které vyžaduje konkrétní odezvy.  Dnes, programátoři a správce systému často používají NMI jako mechanismus pro ladění nebo řešení potíží s systémy, které jsou zablokovaná.
+
+Konzole sériového portu je možné odeslat NMI na virtuálním počítači Azure pomocí klávesnice ikony na příkazovém řádku je uvedeno níže. Jakmile se doručí NMI, konfigurace virtuálního počítače bude řídit, jak systém reaguje. Windows by šlo o chybách a vytvořit výpis paměti při příjmu NMI.
+
+![](../media/virtual-machines-serial-console/virtual-machine-windows-serial-console-nmi.png) <br>
+
+Informace o konfiguraci Windows vytvořit výpis stavu systému, když dostane NMI najdete v tématu: [jak vygenerovat soubor s výpisem paměti kompletní selhání nebo soubor s výpisem paměti jádra s použitím NMI v systému Windows](https://support.microsoft.com/en-us/help/927069/how-to-generate-a-complete-crash-dump-file-or-a-kernel-crash-dump-file)
 
 ## <a name="disable-serial-console"></a>Zakázat konzoly sériového portu
 Všechna předplatná mají ve výchozím přístupem ke konzole sériového portu pro všechny virtuální počítače. Konzola sériového portu na úrovni předplatného nebo na úrovni virtuálního počítače můžete kdykoli deaktivovat.
@@ -157,15 +163,6 @@ Poškození systému souborů a vrácení | Přístup ke konzole sériového por
 Problémy s konfigurací protokolu RDP | Přístup ke konzole sériového portu a změňte nastavení. Přejděte [RDP dokumentaci](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-allow-access) začít.
 Uzamknutí sítě v systému| Konzoly sériového portu přístup prostřednictvím portálu pro správu systému. Některé příkazy sítě jsou uvedeny v [sériové konzoly příkazového řádku a Powershellu dokumentaci](./serial-console-cmd-ps-commands.md). 
 Interakce s zaváděcího programu pro spouštění | Přístup BCD prostřednictvím konzoly sériového portu. Přejděte na [povolení spouštěcí nabídky pro zobrazení v konzole sériového portu](#enabling-boot-menu-to-show-in-the-serial-console) začít. 
-
-## <a name="using-serial-console-for-nmi-calls-in-windows-vms"></a>Použití konzoly sériového portu pro NMI volání ve virtuálních počítačích Windows
-Maskable přerušení (NMI) slouží k vytvoření signál, který nebude ignorovat softwaru na virtuálním počítači. V minulosti NMIs se používají ke sledování hardwarových problémů v systémech, které vyžaduje konkrétní odezvy.  Dnes, programátoři a správce systému často používají NMI jako mechanismus pro ladění nebo řešení potíží s systémy, které jsou zablokovaná.
-
-Konzole sériového portu je možné odeslat NMI na virtuálním počítači Azure pomocí klávesnice ikony na příkazovém řádku je uvedeno níže. Jakmile se doručí NMI, konfigurace virtuálního počítače bude řídit, jak reagovat systém. Windows by šlo o chybách a vytvořit výpis paměti při příjmu NMI.
-
-![](../media/virtual-machines-serial-console/virtual-machine-windows-serial-console-nmi.png) <br>
-
-Informace o konfiguraci Windows vytvořit výpis stavu systému, když dostane NMI najdete v tématu: [jak vygenerovat soubor s výpisem paměti kompletní selhání nebo soubor s výpisem paměti jádra s použitím NMI v systému Windows](https://support.microsoft.com/en-us/help/927069/how-to-generate-a-complete-crash-dump-file-or-a-kernel-crash-dump-file)
 
 ## <a name="accessibility"></a>Přístupnost
 Klíče se pro Azure konzoly sériového portu se usnadnění přístupu. Za tímto účelem jsme zajistíte, že je přístupný pro ty, které mají vizuál a poškozením sluchu, jakož i uživatelů, kteří nebudou moct používat myš konzole sériového portu.

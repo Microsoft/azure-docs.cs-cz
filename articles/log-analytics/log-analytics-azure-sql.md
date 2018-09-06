@@ -15,22 +15,22 @@ ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: v-daljep
 ms.component: na
-ms.openlocfilehash: 47069f0af7409d87cb2d4fbbbce9dda0b1c2056e
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 82845f475857f9a911febd496e86eb2a60f69c25
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42886556"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782222"
 ---
 # <a name="monitor-azure-sql-databases-using-azure-sql-analytics-preview"></a>Monitorování databází Azure SQL Database pomocí Azure SQL Analytics (Preview)
 
 ![Azure SQL Analytics symbol](./media/log-analytics-azure-sql/azure-sql-symbol.png)
 
-Azure SQL Analytics je Cloudová řešení pro monitorování výkonu databáze SQL Azure ve velkém měřítku napříč více elastických fondů a předplatná pro monitorování. Shromažďuje a vizualizuje důležité metriky výkonu databáze SQL Azure s integrovanými inteligentními funkcemi pro řešení potíží s nejvyšší výkon. 
+Azure SQL Analytics je Cloudová řešení pro monitorování výkonu databází Azure SQL Database, elastických fondů a spravovaných instancí ve velkém měřítku a napříč několika předplatnými monitorování. Shromažďuje a vizualizuje důležité metriky výkonu databáze SQL Azure s integrovanými inteligentními funkcemi pro řešení potíží s výkonem.
 
-Pomocí metrik, která shromáždíte pomocí řešení můžete vytvořit vlastní pravidla monitorování a výstrah. Toto řešení vám umožní identifikovat problémy v každé vrstvě vaším zásobníkem aplikace. K dispozici data o vašich databází Azure SQL a elastických fondů v jeden pracovní prostor Log Analytics pomocí Azure diagnostických metrik společně se zobrazeními Log Analytics. Log Analytics umožňuje shromažďovat, korelovat a vizualizovat strukturovanými i nestrukturovanými daty.
+Pomocí metrik, která shromáždíte pomocí řešení můžete vytvořit vlastní pravidla monitorování a výstrah. Toto řešení vám umožní identifikovat problémy v každé vrstvě vaším zásobníkem aplikace. Prezentovat data o všech Azure SQL databáze, elastické fondy a databáze spravované instance v jeden pracovní prostor Log Analytics pomocí Azure diagnostických metrik společně se zobrazeními Log Analytics. Log Analytics umožňuje shromažďovat, korelovat a vizualizovat strukturovanými i nestrukturovanými daty.
 
-Toto řešení ve verzi preview v současné době podporuje až 150 000 databází Azure SQL Database a 5 000 Elastických fondech SQL za jednotlivé pracovní prostory.
+Toto řešení ve verzi preview v současné době podporuje až 200 000 databází Azure SQL Database a 5 000 Elastických fondech SQL za jednotlivé pracovní prostory.
 
 Praktické přehled o použití řešení Azure SQL Analytics a typické scénáře využití najdete v části vložené video:
 
@@ -39,9 +39,9 @@ Praktické přehled o použití řešení Azure SQL Analytics a typické scéná
 
 ## <a name="connected-sources"></a>Připojené zdroje
 
-Azure SQL Analytics je cloud určený pro monitorování řešení podpůrné vysílání datového proudu telemetrická data diagnostiky pro Azure SQL Database a elastické fondy. Jak se připojit ke službě Log Analytics nepoužívá agentů, řešení nepodporuje připojení s Windows, Linux nebo SCOM prostředky, najdete v následující tabulce kompatibility.
+Azure SQL Analytics je cloud určený pro monitorování pouze řešení podpůrné vysílání datového proudu telemetrická data diagnostiky pro Azure SQL Database, elastické fondy a spravovaných instancí. Jak se připojit ke službě Log Analytics nepoužívá agentů, řešení nepodporuje sledování na místních SQL serverech nebo virtuálních počítačů, najdete v následující tabulce kompatibility.
 
-| Připojený zdroj | Podpora | Popis |
+| Připojený zdroj | Podporováno | Popis |
 | --- | --- | --- |
 | **[Diagnostika Azure](log-analytics-azure-storage.md)** | **Ano** | Azure data metrik a protokolů se odesílají do Log Analytics přímo v Azure. |
 | [Účet služby Azure Storage](log-analytics-azure-storage.md) | Ne | Log Analytics nemá číst data z účtu úložiště. |

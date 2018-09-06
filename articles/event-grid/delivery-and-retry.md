@@ -5,14 +5,14 @@ services: event-grid
 author: tfitzmac
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 08/08/2018
+ms.date: 09/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: b34386a7b416d6f7d8b008a9cb5ef142948a370f
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 2a9ff23e5182c8cb7c91ad93e368f61f258c84f8
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005391"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841588"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Doručování zpráv Event Grid a zkuste to znovu 
 
@@ -35,19 +35,20 @@ Následující kódy odpovědi HTTP označuje, že událost má úspěšně doru
 
 ### <a name="failure-codes"></a>Kód selhání
 
-Následující kódy odpovědi HTTP označuje, že pokus o doručení událostí se nezdařilo. 
+Následující kódy odpovědi HTTP označuje, že pokus o doručení událostí se nezdařilo.
 
 - 400 – Chybný požadavek
 - 401 Neautorizováno
 - 404 – Nenalezeno
 - 408 časový limit žádosti
+- Entita 413 požadavku je moc velká
 - Identifikátor URI 414 příliš dlouhý
 - 429 příliš mnoho požadavků
 - 500 – Interní chyba serveru
 - 503 – Nedostupná služba
 - 504 – Časový limit brány
 
-Pokud služby Event Grid přijme chybu, která určuje koncový bod je dočasně nedostupná nebo budoucí žádosti může proběhnout úspěšně, se pokusí znovu k odeslání události. Pokud služby Event Grid se zobrazí chyba, která určuje nikdy uspějí doručování a [nakonfigurovaný koncový bod onta nedoručených zpráv](manage-event-delivery.md), odesílá události do koncového bodu onta nedoručených zpráv. 
+Pokud máte [nakonfigurovaný koncový bod onta nedoručených zpráv](manage-event-delivery.md) a Event Grid přijme buď 400 nebo 413 kód odpovědi, služby Event Grid okamžitě odesílá události do koncového bodu onta nedoručených zpráv. V opačném případě služby Event Grid zopakuje pokus o všech chyb.
 
 ## <a name="retry-intervals-and-duration"></a>Intervaly opakování a dobu trvání
 

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 08/14/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2060239b27ef05c34ea6f5b388b4c4086a44a826
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 037c2714d146bd59b30573df874794342d743e03
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42054627"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782228"
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Podřízené runbooky ve službě Azure Automation
 
@@ -72,7 +72,9 @@ Pokud nechcete, aby nadřízený runbook zablokuje na čekání, můžete vyvola
 
 Parametry pro podřízený runbook spuštěný pomocí rutiny se poskytují jako zatřiďovací tabulka, jak je popsáno v [parametry Runbooku](automation-starting-a-runbook.md#runbook-parameters). Je možné jenom jednoduché datové typy. Pokud má runbook parametr komplexního datového typu, pak ho musí být volaný jako přiřazený.
 
-Pokud při vyvolání podřízené runbooky může dojít ke ztrátě práce s několika předplatnými kontext předplatného. Chcete-li mít jistotu, že kontext předplatného je předán do podřízené runbooky, přidejte `DefaultProfile` parametr rutiny a předání kontextu do něj.
+Kontext předplatného může být ztraceny po vyvolání podřízené runbooky jako samostatné úlohy. V pořadí pro podřízený runbook k vyvolání rutiny Azure RM pro požadované předplatné Azure podřízené sady runbook musí ověřovat pro toto předplatné nezávisle na nadřazený runbook.
+
+Pokud úlohy v rámci stejného účtu Automation pracovat s více předplatnými, když se vybere předplatné jedna úloha může změnit kontext aktuálně vybraném předplatném pro jiné úlohy, která obvykle není žádoucí. Pokud se chcete vyhnout tomuto problému, uložit výsledek `Select-AzureRmSubscription` vyvolání rutiny a předejte jí to do objektu `DefaultProfile` parametr všechny následné Azure RM rutiny u volání rozbočovače. Tento model je nutné konzistentně použít na všechny runbooky, které běží v rámci tohoto účtu Automation.
 
 ### <a name="example"></a>Příklad:
 

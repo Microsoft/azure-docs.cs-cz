@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/29/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 89343f3e4ec91dd32b24cdea6632cecd855cc6f8
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: bbd250e9ee987403d670b2605fdb8deda8c19092
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523219"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782042"
 ---
 # <a name="use-azure-files-with-linux"></a>Použití služby soubory Azure s Linuxem
 Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure je možné připojit v Linuxových distribucích pomocí [klient SMB jádra](https://wiki.samba.org/index.php/LinuxCIFS). Tento článek ukazuje dva způsoby připojení sdílené složky Azure: na vyžádání pomocí `mount` příkazů a na spouštění tak, že vytvoříte položku v `/etc/fstab`.
@@ -107,7 +107,7 @@ Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cl
 3. **Vytvořte soubor přihlašovacích údajů ukládat uživatelské jméno (název účtu úložiště) a heslo (klíč účtu úložiště) pro sdílenou složku.** Nezapomeňte nahradit `<storage-account-name>` a `<storage-account-key>` odpovídajícími informacemi pro vaše prostředí. 
 
     ```bash
-    if [ -d "/etc/smbcredentials" ]; then
+    if [ ! -d "/etc/smbcredentials" ]; then
         sudo mkdir /etc/smbcredentials
     fi
 

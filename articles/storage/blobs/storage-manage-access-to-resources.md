@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: tamram
-ms.openlocfilehash: 7270ec7c5129352b0e801808e5c7720e5021ac9d
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: bf7dabc1c3765d86e7a0f87acaa6f06a68d3d530
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398814"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782004"
 ---
 # <a name="manage-anonymous-read-access-to-containers-and-blobs"></a>Správa anonymního přístupu pro čtení ke kontejnerům a objektům blob
 Můžete povolit anonymní, veřejný přístup pro čtení kontejneru a jeho objekty BLOB v úložišti objektů Blob v Azure. Díky tomu můžete udělit přístup jen pro čtení k těmto prostředkům bez sdílení klíč účtu a bez nutnosti sdíleného přístupového podpisu (SAS).
@@ -39,7 +39,7 @@ Nastavení kontejneru oprávnění můžete použít následující:
 Nastavení kontejneru oprávnění ve [webu Azure portal](https://portal.azure.com), postupujte podle těchto kroků:
 
 1. Otevřete váš **účtu úložiště** okno na portálu. Váš účet úložiště můžete najít tak, že vyberete **účty úložiště** v okně portálu hlavní nabídky.
-1. V části **služby BLOB SERVICE** v okně s nabídkou vyberte **kontejnery**.
+1. V části **služby BLOB SERVICE** v okně s nabídkou vyberte **objekty BLOB**.
 1. Klikněte pravým tlačítkem na řádek kontejneru, nebo vyberte tři tečky a otevřete kontejneru **kontextovou nabídku**.
 1. Vyberte **zásada přístupu** v místní nabídce.
 1. Vyberte **získat přístup k typu** z rozevírací nabídky.

@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 09/05/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: e057d7a649397083240e9f67080808a3057c7f50
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: d3bfe2c472d48a68bd818ac06874db136528b470
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42055246"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43840265"
 ---
 # <a name="post-asdk-installation-configuration-tasks"></a>Po dokončení instalace ASDK úlohy konfigurace
 
@@ -140,16 +140,6 @@ Testy trvat několik minut. Pokud byla instalace úspěšná, zobrazí výstup v
 ![test-azurestack](media/asdk-post-deploy/test-azurestack.png)
 
 Pokud došlo k chybě, použijte postup řešení potíží zobrazíte nápovědu.
-
-## <a name="activate-the-administrator-and-tenant-portals"></a>Aktivace portálů správce a tenanta
-Po nasazení, které používají službu Azure AD je nutné aktivovat i Azure Stack správce a tenanta portály. Tato aktivace vyjádří souhlas poskytuje správná oprávnění (uvedené na stránce souhlas) pro všechny uživatele adresáře portálu Azure Stack a Azure Resource Manageru.
-
-- U portálu správce, přejděte na https://adminportal.local.azurestack.external/guest/signup, přečtěte si informace a pak klikněte na tlačítko **přijmout**. Po přijetí, můžete přidat správce služby, kteří nejsou také správci tenanta adresáře.
-
-- Portál pro klienty, přejděte do https://portal.local.azurestack.external/guest/signup, přečtěte si informace a pak klikněte na tlačítko **přijmout**. Po přijetí, můžete uživatele v adresáři přihlásit na portál pro klienty. 
-
-> [!NOTE] 
-> Pokud nemáte aktivaci portály, pouze adresáře správce přihlásit a používat na portálech. Pokud jiný uživatel přihlásí, zobrazí se chyba s oznámením, že správce nebyla udělena oprávnění ostatním uživatelům. Když správce nepatří do požadovaného adresáře služby Azure Stack je zaregistrovaná a nativně, musí být adresář služby Azure Stack připojeno k aktivační adrese URL. Například pokud Azure Stack je zaregistrovaná a může fabrikam.onmicrosoft.com a uživatele s rolí správce je admin@contoso.com, přejděte na https://portal.local.azurestack.external/guest/signup/fabrikam.onmicrosoft.com aktivovat na portálu. 
 
 ## <a name="reset-the-password-expiration-policy"></a>Resetovat zásady vypršení platnosti hesla 
 Pokud chcete mít jistotu, že heslo pro hostitele development kit platnost pasu nevyprší před vám zkušební období skončí, postupujte podle těchto kroků po nasazení ASDK.

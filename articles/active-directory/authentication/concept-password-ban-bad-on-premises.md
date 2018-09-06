@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: ff349c480ca14b4242fb7597751b4eb6acb0ee78
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 286f8e560ec653ed4f4f1cad5a2ae27b940f8d15
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42058348"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43781776"
 ---
 # <a name="preview-enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>Ve verzi Preview: Vynucení ochrany hesla Azure AD pro Windows Server Active Directory
 
@@ -39,6 +39,7 @@ Existují tři softwarové komponenty, které tvoří ochrana hesel Azure AD:
 * Všechny počítače, kde jsou nainstalovány součásti ochrany hesla Azure AD, včetně řadičů domény musí běžet Windows Server 2012 nebo novější.
 * Všechny počítače, kde jsou nainstalovány součásti ochrany hesla Azure AD, včetně řadičů domény musí mít Universal C runtime nainstalovaný. Nejlépe to provádí plně opravy počítače prostřednictvím služby Windows Update. V opačném případě může být vhodné balíček aktualizací specifické pro operační systém nainstalovaný – viz [aktualizace pro Universal C Runtime ve službě Windows](https://support.microsoft.com/help/2999226/update-for-universal-c-runtime-in-windows)
 * Připojení k síti musí existovat mezi aspoň jeden řadič domény v každé doméně a alespoň jeden server, který hostuje službu Azure AD ochrany heslo proxy serveru.
+* Libovolný řadič domény služby Active Directory, která využívá funkce ochrany hesla musí být nainstalován agent řadiče domény.
 * Libovolné doméně Active Directory, který je spuštěn řadič domény služby softwaru agenta musíte použít DFSR k replikování adresáře sysvol.
 * Účet globálního správce k registraci serveru proxy služby Azure AD hesla ochrany službou Azure AD.
 * Účet s oprávněním správce domény služby Active Directory v kořenové doméně doménové struktury.
@@ -66,7 +67,9 @@ Existují dva instalační programy požadovaných k ochraně heslem služby Azu
 * Neexistuje žádný minimální domény služby Active Directory nebo doménové struktuře funkční úrovni (DFL\FFL) požadavek.
 * Software nevytváří ani vyžadovat některé účty domén služby Active Directory, které chrání.
 * Za cenu, že zásady pro hesla bude vynucováno tak, kde je nainstalovaný agent řadič domény je podporováno přírůstkové nasazení.
+* Doporučujeme nainstalovat agenta řadiče domény na všechny řadiče domény k zajištění ochrany vynucení hesla. 
 * Ochrana hesel Azure AD není modul aplikace v reálném čase zásad. Může docházet k prodlevám v době mezi změna konfigurace zásad hesel a čas dosáhne a vynucování na všechny řadiče domény.
+
 
 ## <a name="next-steps"></a>Další postup
 

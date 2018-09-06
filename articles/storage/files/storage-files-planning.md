@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: b4905c8bcf3c14c7f1dfa752a930f57ccbfd8fd7
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 19adbbfc456303b471251c28cd984d1676786b19
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818482"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43783147"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Plánování nasazení služby Soubory Azure
 [Služba soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes standardní protokol SMB. Protože soubory Azure je plně spravovaná, jeho nasazení v produkčních scénářích je mnohem jednodušší než nasazení a Správa souborového serveru nebo zařízení NAS. Tento článek se zabývá témata, které je třeba zvážit při nasazování sdílené složky Azure pro použití v produkčním prostředí v rámci vaší organizace.
@@ -41,7 +41,7 @@ ms.locfileid: "42818482"
 Soubory Azure nabízí dva, integrované a pohodlný přístup k datům přistupovat ke svým datům můžete použít samostatně nebo v kombinaci s kolegy a metod:
 
 1. **Přímý přístup do cloudu**: je možné připojit sdílenou složku Any Azure [Windows](storage-how-to-use-files-windows.md), [macOS](storage-how-to-use-files-mac.md), a/nebo [Linux](storage-how-to-use-files-linux.md) s odvětví standardní zprávy bloku SMB (Server) protokolu nebo prostřednictvím souborového rozhraní REST API. Přes protokol SMB čtení a zápis do souborů ve sdílené složce se provádějí přímo na sdílenou složku v Azure. Připojte virtuální počítač v Azure, klient SMB v operačním systému musí podporovat alespoň SMB 2.1. Připojit v místním prostředí, například na pracovní stanici uživatele, klient SMB podporuje pracovní stanici musí podporovat alespoň protokolu SMB 3.0 (pomocí šifrování). Kromě protokolu SMB nové aplikace nebo služby může přímo ke sdílené složce přistupovat přes REST soubor, který poskytuje snadný a škálovatelný aplikační programovací rozhraní pro vývoj softwaru.
-2. **Azure File Sync** (preview): sdílené složky je možné pomocí služby Azure File Sync replikovat na servery Windows místně nebo v Azure. Uživatelé by přístup ke sdílené složce pomocí Windows serveru, jako prostřednictvím do sdílené složky SMB nebo NFS. To je užitečné pro scénáře, ve kterých by se data budou přistupovat a upravit daleko od datového centra Azure, jako například v případě scénáře firemní pobočky. Data může replikovat mezi několik koncových bodů Windows Server, například mezi několik poboček. Nakonec dat může být rozvrstvena do služby soubory Azure tak, že všechna data jsou stále přístupné prostřednictvím serveru, ale Server nemá úplná kopie dat. Místo toho je bezproblémově navrátit data při otevření vaší uživatelem.
+2. **Azure File Sync**: sdílené složky je možné pomocí služby Azure File Sync replikovat na servery Windows místně nebo v Azure. Uživatelé by přístup ke sdílené složce pomocí Windows serveru, jako prostřednictvím do sdílené složky SMB nebo NFS. To je užitečné pro scénáře, ve kterých by se data budou přistupovat a upravit daleko od datového centra Azure, jako například v případě scénáře firemní pobočky. Data může replikovat mezi několik koncových bodů Windows Server, například mezi několik poboček. Nakonec dat může být rozvrstvena do služby soubory Azure tak, že všechna data jsou stále přístupné prostřednictvím serveru, ale Server nemá úplná kopie dat. Místo toho je bezproblémově navrátit data při otevření vaší uživatelem.
 
 Následující tabulka ukazuje, jak uživatelé a aplikace můžete získat přístup k vaší sdílené složky Azure:
 

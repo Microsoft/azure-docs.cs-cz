@@ -1,6 +1,6 @@
 ---
-title: Nejčastější dotazy (FAQ) o službě Azure Search | Microsoft Docs
-description: Získejte odpovědi na časté otázky týkající se služby vyhledávání Microsoft Azure
+title: Nejčastější dotazy (FAQ) o službě Azure Search | Dokumentace Microsoftu
+description: Získejte odpovědi na běžné dotazy týkající se služby Microsoft Azure Search
 author: HeidiSteen
 manager: cgronlun
 services: search
@@ -8,87 +8,93 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 08/03/2017
 ms.author: heidist
-ms.openlocfilehash: d731faffe1b2448670a5fafa0278ff8c7fb21722
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 1491fdb0f208100619e569f9a74d5e697a0065a6
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31792728"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841673"
 ---
-# <a name="azure-search---frequently-asked-questions-faq"></a>Služba Azure Search – nejčastější dotazy (FAQ)
+# <a name="azure-search---frequently-asked-questions-faq"></a>Azure Search – nejčastější dotazy (FAQ)
 
- Odpovědi na nejčastější dotazy o konceptech, kód a scénáře související s Azure Search.
+ Najděte odpovědi na nejčastější dotazy o konceptech, kód a scénáře týkající se Azure Search.
 
 ## <a name="platform"></a>Platforma
 
-### <a name="how-is-azure-search-different-from-full-text-search-in-my-dbms"></a>Jak se liší od fulltextového vyhledávání v mé databázového systému Azure Search?
+### <a name="how-is-azure-search-different-from-full-text-search-in-my-dbms"></a>Čím se liší od fulltextové vyhledávání v mé DBMS Azure Search?
 
-Služba Azure Search podporuje více zdrojů dat, [lingvistické analýzy pro mnoho jazyků](https://docs.microsoft.com/rest/api/searchservice/language-support), [vlastní analýza dat vstupy zajímavé a neobvyklé](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search), hledání rank ovládacích prvků prostřednictvím [vyhodnocování profily](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)a činnost koncového uživatele funkce jako je například typeahead, počtu zvýraznění a Fasetové navigace. Zahrnuje také další funkce, například synonyma a plnohodnotný dotazovací syntaxe, ale těch, které nejsou obvykle rozlišení funkce.
+Služba Azure Search podporuje více zdrojů dat, [pro řadu jazyků pro jazykovou analýzu](https://docs.microsoft.com/rest/api/searchservice/language-support), [vlastní analýza datových výstupů zajímavé a neobvyklé](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search), Hledat pořadí ovládacích prvků prostřednictvím [bodování profily](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)a funkce činnost koncového uživatele, jako je typeahead, zvýrazňování shod a fasetová navigace. Zahrnuje také další funkce, jako je například synonym a bohaté možnosti dotazů syntaxe, ale ty nejsou obecně odlišení těchto funkcí.
 
 ### <a name="what-is-the-difference-between-azure-search-and-elasticsearch"></a>Jaký je rozdíl mezi Azure Search a Elasticsearch?
 
-Při porovnávání technologie vyhledávání, zákazníci často požádejte pro konkrétní na tom, jak Azure Search porovná s Elasticsearch. Zákazníci, kteří zvolte Azure Search přes Elasticsearch pro jejich vyhledávání projekty aplikací obvykle provést, protože jsme provedli úlohu klíčů snazší nebo potřebují integraci s jinými technologiemi společnosti Microsoft:
+Při porovnávání vyhledávací technologie, zákazníci často požádat o specifikách různých na tom, jak si stojí Azure Search pomocí Elasticsearch. Zákazníci, kteří se rozhodnou Azure Search v Elasticsearch pro jejich hledání projektů aplikace obvykle provést, protože My jsme usnadnili klíčové úlohy nebo které potřebují integrovanou integrace s dalšími technologiemi Microsoftu:
 
-+ Služba Azure Search je plně spravovaná Cloudová služba se 99,9 % Smlouvy o úrovni služeb (SLA) při zřizování s dostatečnou redundance (2 repliky pro čtení, 3 repliky pro čtení i zápis).
-+ Společnosti Microsoft [přirozeného jazyka procesory](https://docs.microsoft.com/rest/api/searchservice/language-support) nabízejí lingvistické analysis hrany.  
++ Služba Azure Search je plně spravovaná Cloudová služba s 99,9 % Smlouvy o úrovni služeb (SLA), když zřízené dostatečná redundance (2 repliky pro čtení, 3 repliky pro čtení a zápis).
++ Společnosti Microsoft [přirozeného jazyka procesorů](https://docs.microsoft.com/rest/api/searchservice/language-support) nabízejí špičkových pro jazykovou analýzu.  
 + [Azure Search indexery](search-indexer-overview.md) může procházet celou řadu zdrojů dat Azure pro počáteční a přírůstkové indexování.
-+ Pokud budete potřebovat rychlou odezvu na kolísání dotaz nebo indexování svazky, můžete použít [ovládací prvky posuvníku](search-manage.md#scale-up-or-down) ve službě Azure portálu nebo spuštění [skript prostředí PowerShell](search-manage-powershell.md), obcházení horizontálního oddílu správu přímo.  
-+ [Vyhodnocování a ladění funkcí](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) poskytují způsob pro ovlivňující vyhledávání rank skóre nad rámec co může poskytnout samostatně na vyhledávací web.
++ Pokud potřebujete rychlou odpověď na kolísání v dotazu nebo indexování svazků, můžete použít [ovládacích prvků posuvník](search-manage.md#scale-up-or-down) v Azure portal nebo spuštění [skript prostředí PowerShell](search-manage-powershell.md), přímo bez použití správy horizontálních oddílů.  
++ [Vyhodnocení funkce a optimalizace](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) poskytuje prostředky pro vliv na vyhledávání pořadí skóre nad rámec co může poskytnout pouze vyhledávací web.
 
-### <a name="can-i-pause-azure-search-service-and-stop-billing"></a>Můžete pozastavit službu Azure Search a zastavit fakturace?
+### <a name="can-i-pause-azure-search-service-and-stop-billing"></a>Můžete pozastavit službu Azure Search a zastavit fakturaci?
 
-Nelze pozastavit službu. Úložiště a výpočetní prostředky se přidělují pro výhradní použití při vytváření služby. Není možné k uvolnění a získat tyto prostředky na vyžádání.
+Službu nelze pozastavit. Úložiště a výpočetní prostředky se přidělují pro výhradní použití při vytváření služby. Není možné uvolnit a získat tyto prostředky na vyžádání.
 
 ## <a name="indexing-operations"></a>Operace indexování
 
-### <a name="backup-and-restore-or-download-and-move-indexes-or-index-snapshots"></a>Indexy zálohování a obnovení (nebo stahování a přesunutí) nebo snímky index?
+### <a name="backup-and-restore-or-download-and-move-indexes-or-index-snapshots"></a>Indexy zálohování a obnovení (nebo ke stažení a přesunutí) nebo snímky index?
 
-Můžete sice [získat definice indexu](https://docs.microsoft.com/rest/api/searchservice/get-index) kdykoli, není žádný index extrakce, snímku nebo funkce zálohování – obnovení pro stahování *naplní* index běží v cloudu na místní systém, nebo ani ji přesunout do jiné služby Azure Search.
+Můžete sice [získat definici indexu](https://docs.microsoft.com/rest/api/searchservice/get-index) kdykoli, neexistuje žádný index extrakce, snímku nebo funkci obnovení zálohování pro stahování *vyplní* index do místního systému, které běží v cloudu nebo přesunutím do jiné služby Azure Search.
 
-Indexy jsou vytvořené a naplněny z kód, který můžete zapisovat a spustit pouze v Azure Search v cloudu. Zákazníci, kteří chcete přejít na jiné službě indexu obvykle upravit svůj kód používat nový koncový bod a znovu spusťte indexování. Pokud chcete mít možnost k pořízení snímku nebo zálohování index, přetypovat hlas [User Voice](https://feedback.azure.com/forums/263029-azure-search/suggestions/8021610-backup-snapshot-of-index).
+Indexy jsou vytvořena a naplněna kód, který napíšete a spustit pouze v Azure Search v cloudu. Obvykle zákazníky, kteří chtějí přesunout do jiné služby index udělat tak, že upravíte jejich kód pro použití nového koncového bodu a pak znovu spusťte indexování. Pokud chcete mít možnost pro vytvoření snímku nebo zálohování indexu, přetypování hlas [User Voice](https://feedback.azure.com/forums/263029-azure-search/suggestions/8021610-backup-snapshot-of-index).
 
-### <a name="can-i-index-from-sql-database-replicas-applies-to-azure-sql-database-indexershttpsdocsmicrosoftcomazuresearchsearch-howto-connecting-azure-sql-database-to-azure-search-using-indexers"></a>Mohu indexovat z repliky databáze SQL (platí pro [Azure SQL Database indexery](https://docs.microsoft.com/azure/search/search-howto-connecting-azure-sql-database-to-azure-search-using-indexers))
+### <a name="can-i-restore-my-index-or-service-once-it-is-deleted"></a>Můžete po odstranění obnovit své index nebo služby?
 
-Neexistují žádná omezení na stránce použít primární nebo sekundární repliky jako zdroj dat, při vytváření indexu od začátku. Aktualizovat index s přírůstkové aktualizace (podle změněné záznamy) ale vyžaduje primární repliky. Tento požadavek pochází z databáze SQL, které záruky změňte sledování na pouze primární repliky. Pokud se pokusíte pomocí sekundární repliky pro úlohu obnovení indexu, není zaručeno, kterou získáte všechna data.
+Ne, nemůžete obnovit indexy nebo služby. Při odstranění indexu Azure Search, operace je konečné, prostředek index nelze obnovit. Při odstranění služby Azure Search se trvale odstraní všechny indexy ve službě. Navíc pokud odstraníte skupinu prostředků Azure, která obsahuje jednu nebo více služeb Azure Search, všechny služby se trvale odstraní.  
+
+Obnovení prostředky, jako jsou indexy, indexery, zdroje dat a dovednosti vyžaduje, můžete obnovit z kódu. V případě indexů musí přeindexování data z externích zdrojů. Z tohoto důvodu důrazně doporučujeme, abyste zachovali hlavní kopie nebo zálohu pro původní data v úložišti dat, jako je například Azure SQL Database nebo Cosmos DB.
+
+### <a name="can-i-index-from-sql-database-replicas-applies-to-azure-sql-database-indexershttpsdocsmicrosoftcomazuresearchsearch-howto-connecting-azure-sql-database-to-azure-search-using-indexers"></a>Můžete mi indexu z repliky databáze SQL (platí pro [indexování Azure SQL Database](https://docs.microsoft.com/azure/search/search-howto-connecting-azure-sql-database-to-azure-search-using-indexers))
+
+Neexistují žádná omezení týkající se použití primární nebo sekundární repliky jako zdroj dat, při vytváření indexu úplně od začátku. Aktualizace indexu s přírůstkovou aktualizací (podle změněné záznamy) ale vyžaduje primární repliku. Tento požadavek pochází z SQL Database, která garantuje změňte sledování na pouze primární repliky. Pokud se pokusíte pomocí sekundární repliky úloh aktualizace indexu, není zaručeno, které získáte všechna data.
 
 ## <a name="search-operations"></a>Operace hledání
 
-### <a name="can-i-search-across-multiple-indexes"></a>Můžete najít napříč více indexů?
+### <a name="can-i-search-across-multiple-indexes"></a>Můžete prohledávat více indexů?
 
-Ne, tato operace není podporována. Hledání je vždy vymezeno na jeden index.
+Ne, tato operace není podporována. Hledání je vždy s rozsahem jednoho indexu.
 
-### <a name="can-i-restrict-search-corpus-access-by-user-identity"></a>Můžete omezit vyhledávání svátek přístup podle identity uživatele?
+### <a name="can-i-restrict-search-corpus-access-by-user-identity"></a>Můžete omezit přístup souhrnu hledání podle identity uživatele?
 
-Můžete implementovat [filtrů zabezpečení](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search) s `search.in()` filtru. Vytvoří filtr s [služby pro identitu, například Azure Active Directory(AAD)](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search-with-aad) oříznout výsledky vyhledávání na základě definované členství ve skupině uživatelů.
+Můžete implementovat [filtry zabezpečení](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search) s `search.in()` filtru. Filtr lze kombinovat s [služby správy identit, jako je Azure Active prodloužil platnost](https://docs.microsoft.com/azure/search/search-security-trimming-for-azure-search-with-aad) oříznout výsledky hledání na základě definované členství ve skupině uživatelů.
 
-### <a name="why-are-there-zero-matches-on-terms-i-know-to-be-valid"></a>Proč existují nula odpovídá na podmínky, které lze zjistit, aby byl platný?
+### <a name="why-are-there-zero-matches-on-terms-i-know-to-be-valid"></a>Proč existují nula odpovídá na podmínky, které znáte, platit?
 
-Nejběžnější případ není zároveň budete vědět, že každý typ dotazu podporuje chování různých vyhledávání a úrovně lingvistické analýzy. Fulltextové vyhledávání, který je převládá zatížení, zahrnuje analytické fáze jazyka, která dělí podmínky dolů kořenové forms. Tento aspekt analýza dotazu vrhá širší net přes odpovídající položky, protože tokenizovaná termín odpovídá větší počet variant.
+Nejběžnější případ není vědět, že každý typ dotazu podporuje různé vyhledávací chování a úrovně lingvistické analýzy. Fulltextové vyhledávání, což je převládající pracovního vytížení, zahrnuje fázi analýzy jazyka, který porušuje podmínky dolů kořenové formuláře. Tento aspekt analýze dotazu širší net přetypování nad možných shod, protože tokenizovaná termín shoduje s větší množství variant.
 
-Zástupný znak, přibližné a dotazy regulární výraz, ale nejsou analyzovat jako regulární termín nebo frázi dotazy a může vést k odvolání nízký, pokud dotaz neodpovídá analyzovaných formuláře aplikace word v indexu vyhledávání. Další informace o dotazu analýzy a analýzy, najdete v tématu [dotaz architektura](https://docs.microsoft.com/azure/search/search-lucene-query-architecture).
+Zástupný znak, přibližných shod a dotazy na regulární výraz, ale neanalyzují jako regulární dotazy termín nebo frázi a může způsobit špatné odvolání, pokud dotaz se neshoduje s analyzované formě slovo v indexu vyhledávání. Další informace o analýze dotazu a analýzy, najdete v tématu [dotazování architektura](https://docs.microsoft.com/azure/search/search-lucene-query-architecture).
 
-### <a name="my-wildcard-searches-are-slow"></a>Moje vyhledávání pomocí zástupných znaků jsou pomalé.
+### <a name="my-wildcard-searches-are-slow"></a>Vyhledávání se zástupnými znaky jsou pomalé.
 
-Většina dotazů vyhledávání se zástupnými znaky, jako předpona, přibližné a regex, jsou přepsaná interně s odpovídajícím podmínky v indexu vyhledávání. Další zpracování skenování indexu vyhledávání přidá do latence. Další, široké vyhledávání dotazuje, jako je třeba `a*` , který se pravděpodobně třeba přepsat s mnoha podmínek může být velmi pomalé. Vyhledávání pomocí zástupných znaků původce, zvažte možnost definování [vlastní analyzátor](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search).
+Většina zástupný znak vyhledávacích dotazů, stejně jako předpona přibližných shod a regulárního výrazu, jsou zapsány interně s odpovídajícími podmínky v indexu vyhledávání. Tato další zpracování skenování indexu vyhledávání přidá na latenci. Další různé vyhledávací dotazy, jako je třeba `a*` například, která jsou tak pravděpodobnou příčinou, aby se povolilo mnoho podmínek může být velmi pomalé. Výkonné vyhledávání pomocí zástupných znaků, zvažte možnost definice [vlastní analyzátor](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search).
 
-### <a name="why-is-the-search-rank-a-constant-or-equal-score-of-10-for-every-hit"></a>Proč je pořadí hledání konstantní nebo rovna skóre 1.0 pro každý podle?
+### <a name="why-is-the-search-rank-a-constant-or-equal-score-of-10-for-every-hit"></a>Proč je pořadí hledání konstantní nebo rovna skóre 1.0 pro každý položek?
 
-Ve výchozím nastavení, jsou hodnoceny na základě výsledků vyhledávání [statistické vlastnosti odpovídajících podmínky](search-lucene-query-architecture.md#stage-4-scoring)a seřazené sady nejvyšších po nejnižší ve výsledku. Ale některé typy (zástupný znak, předpony, regulární výraz) dotazů vždy přispívat konstantní skóre na celkové skóre dokumentu. Toto chování je záměrné. Vyhledávání systému Azure vynucuje konstantní skóre umožňující odpovídá nalezen prostřednictvím rozšíření dotazu mají být zahrnuty ve výsledcích, aniž by to ovlivnilo hodnocení.
+Ve výchozím nastavení, jsou hodnocené podle výsledků hledání [statistické vlastnosti odpovídající podmínky](search-lucene-query-architecture.md#stage-4-scoring)a seřazené sady nejvyšších po nejnižší ve výsledku. Nicméně některé typy (zástupný znak, předpony, regulární výraz) dotazů vždy měli přispívat konstantní score celkové skóre dokumentu. Toto chování je záměrné. Azure Search vynucuje konstantní score umožňující nalezených položek prostřednictvím rozšíření dotazu mají být zahrnuty ve výsledcích, aniž by to ovlivnilo hodnocení.
 
-Předpokládejme například, že vytváří odpovídá na "prohlídka", "tourettes" a "tourmaline" vstup "prohlídka *" v hledání pomocí zástupných znaků. Vzhledem k povaze těchto výsledků, neexistuje žádný způsob, jak to bude přiměřeně infer – které podmínky jsou cenné více než jiné. Z tohoto důvodu jsme ignorovat termín frekvence, při vyhodnocování výsledky v dotazech typy zástupný znak, předpony a regulární výraz. Výsledky hledání podle částečné vstup, se získají skóre konstantní předejdete odchylka směrem potenciálně neočekávané odpovídá.
+Předpokládejme například, že vytváří odpovídajících položek na "prohlídky", "tourettes" a "tourmaline" vstup "tour *" v hledání pomocí zástupných znaků. Vzhledem k povaze tyto výsledky, neexistuje žádný způsob, jak rozumně odvodit podmínky, které jsou větší hodnotu než jiné. Z tohoto důvodu jsme ignorovat termín frekvence, při vyhodnocování výsledky v dotazech typy zástupných znaků, předpony a regulární výraz. Na základě částečné zadání výsledky hledání jsou uvedeny konstantní score, aby Posun směrem k potenciálně neočekávané shody.
 
 ## <a name="design-patterns"></a>Způsoby návrhu
 
-### <a name="what-is-the-best-approach-for-implementing-localized-search"></a>Co je nejlepší metodou pro implementaci lokalizované hledání?
+### <a name="what-is-the-best-approach-for-implementing-localized-search"></a>Co je nejlepším řešením pro vyhledávání lokalizovaných?
 
-Většina zákazníků zvolte vyhrazené pole v kolekci, pokud jde o podpoře různá národní prostředí (jazyky) ve stejném indexu. Pole specifické pro národní prostředí umožňují přiřadit odpovídající analyzátor. Například přiřazování Microsoft francouzština Analyzer pole obsahující francouzštině řetězce. Zjednodušuje také filtrování. Pokud víte, že dotaz se zahájí na stránce fr-fr, může omezit výsledky vyhledávání na toto pole. Nebo vytvořte [vyhodnocování profil](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) poskytnout další relativní váhu pole. Služba Azure Search podporuje přes [50 analyzátory jazyka](https://docs.microsoft.com/azure/search/search-language-support) lze vybírat.
+Většina zákazníků zvolte vyhrazených polí v kolekci, pokud jde o podporuje různá národní prostředí (jazyky) ve stejném indexu. Pole specifické pro národní prostředí umožňují přiřadit odpovídající analyzátor. Například přiřazování analyzátoru francouzštiny Microsoft pole obsahující francouzské řetězce. Taky usnadňují filtrování. Pokud víte, že dotaz je zahájeno na stránce fr-fr, můžete omezit rozsah výsledků vyhledávání na toto pole. Nebo vytvořte [bodovací profil](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) poskytnout další relativní váhu pole. Služba Azure Search podporuje víc než [50 jazykové analyzátory](https://docs.microsoft.com/azure/search/search-language-support) lze vybírat.
 
 ## <a name="next-steps"></a>Další postup
 
-Je váš dotaz o chybějící funkce nebo funkce? V žádosti o funkci [webu User Voice](https://feedback.azure.com/forums/263029-azure-search).
+Je vaše otázky týkající se chybějící funkce nebo funkce? Na žádost o funkci [webu User Voice](https://feedback.azure.com/forums/263029-azure-search).
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
  [StackOverflow: Služba Azure Search](https://stackoverflow.com/questions/tagged/azure-search)   
- [Jak úplné textové vyhledávání funguje ve službě Azure Search](search-lucene-query-architecture.md)  
+ [Jak funguje fulltextové vyhledávání ve službě Azure Search](search-lucene-query-architecture.md)  
  [Co je Azure Search?](search-what-is-azure-search.md)

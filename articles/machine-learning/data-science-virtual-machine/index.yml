@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: fd2a030d3529857b5a68aeaf28494e76d416e6fd
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43781035"
 documentType: LandingData
 title: Dokumentace k virtuálním počítačům Azure pro datové vědy
 metadata:
@@ -14,12 +20,6 @@ metadata:
   ms.topic: landing-page
   ms.date: 01/18/2018
   ms.author: gokuma
-  ms.openlocfilehash: 2378c8bcca2ac97c6045a9e573192087d03b4b61
-  ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-  ms.translationtype: HT
-  ms.contentlocale: cs-CZ
-  ms.lasthandoff: 04/19/2018
-  ms.locfileid: "31590781"
 abstract:
   description: Virtuální počítače pro datové vědy a hloubkové učení jsou přizpůsobené image virtuálních počítačů v Azure jsou vybavené nástroji pro datové vědy, které slouží k sestavování inteligentních aplikací pro rozšířené analýzy.
 sections:
@@ -41,8 +41,8 @@ sections:
     style: ordered
     items:
     - html: <a href="provision-vm">Zřízení virtuálního počítače pro datové vědy s Windows</a>
-    - html: <a href="vm-do-ten-thing">Použití virtuálního počítače pro datové vědy s Windows</a>
-    - html: <a href:"linux-dsvm-intro">Zřízení virtuálního počítače pro datové vědy se systémem Linux CentOS</a>
+    - html: <a href="vm-do-ten-things">Použití virtuálního počítače pro datové vědy s Windows</a>
+    - html: <a href="linux-dsvm-intro">Zřízení virtuálního počítače pro datové vědy se systémem Linux CentOS</a>
     - html: <a href="dsvm-ubuntu-intro">Zřízení virtuálního počítače pro datové vědy se systémem Linux Ubuntu</a>
     - html: <a href="linux-dsvm-walkthrough">Použití virtuálního počítače pro datové vědy s Linuxem</a>
 - title: Další technologie Azure Machine Learning

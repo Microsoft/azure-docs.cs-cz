@@ -11,16 +11,24 @@ ms.topic: article
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
 manager: douge
-ms.openlocfilehash: 3f45d8059cd4af5dbab64fef798b61e439a5f2fc
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: b66e43c0f40f184bfb2c62327f5742346ff8b187
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43286870"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841605"
 ---
 # <a name="troubleshooting-guide"></a>Průvodce odstraňováním potíží
 
 Tato příručka obsahuje informace o běžných problémů, možná bude při používání Azure Dev mezery.
+
+## <a name="enabling-detailed-logging"></a>Povolení podrobného protokolování
+
+Aby bylo možné řešení problémů s efektivněji, může být užitečné vytvořit podrobnější protokoly ke kontrole.
+
+Pro rozšíření sady Visual Studio, můžete to provést nastavením `MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` proměnné prostředí na hodnotu 1. Je potřeba restartovat Visual Studio pro proměnné prostředí se projeví. Po povolení podrobných protokolů se zapíšou do vaší `%TEMP%\Microsoft.VisualStudio.Azure.DevSpaces.Tools` adresáře.
+
+V rozhraní příkazového řádku, můžete pomocí výstupní informace během provádění příkazu `--verbose` přepnout.
 
 ## <a name="error-failed-to-create-azure-dev-spaces-controller"></a>Chyba "nepovedlo se vytvořit Azure Dev prostory kontroleru.
 

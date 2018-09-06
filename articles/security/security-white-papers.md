@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 8/17/2018
 ms.author: tomsh
-ms.openlocfilehash: 933d0f60b902ae2cb0abcde2ca39a58e59457c6b
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: cc922762f84b3a0658d503c4bfa6eb0079173e4e
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42058350"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841543"
 ---
 # <a name="azure-security-white-papers"></a>Azure Security dokumenty white paper
 | | |
@@ -30,7 +30,8 @@ ms.locfileid: "42058350"
 |[Protokolování a auditování Azure](azure-log-audit.md)|Poskytuje úvod pro generování, shromažďování a analýze protokolů zabezpečení ze služeb hostovaných v Azure. Tyto protokoly můžete získat informace o zabezpečení vašeho nasazení Azure. |
 |[Zabezpečení sítě Azure](abstract-azure-network-security.md)|Vás seznámí s širokou škálu kontrolních mechanismů sítě, která můžete konfigurovat k vylepšení zabezpečení řešení, které nasazují v Azure. Kontrolní mechanismy zabezpečení sítě určených pro zákazníky je aktivní.|
 |[Služba Azure Functions a zabezpečení platformy bez serveru](https://gallery.technet.microsoft.com/Azure-Functions-and-c6449f8d/file/202175/1/Microsoft%20Serverless%20Platform.pdf)|Dokument white paper ke stažení, popisuje výhody architektury bez serverů poskytuje důležité informace o zabezpečení a jejich zmírnění v rámci Azure. |
-|[Provozní zabezpečení Azure](azure-operational-security.md)|Poskytuje podrobný přehled provozního zabezpečení určených pro zákazníky technologie a služby, které jsou k dispozici v Azure.|
+|[Zabezpečení kontejneru ve službě Microsoft Azure](abstract-container-security-microsoft-azure.md)|Popisuje, kontejnery, nasazování kontejnerů a správy a služeb pro nativní platformy. Také popisuje problémy se zabezpečením modulu runtime, které vznikají s využitím kontejnerů na platformě Azure. |
+|[Provozní zabezpečení Azure](abstract-azure-operational-security.md)|Poskytuje podrobný přehled provozního zabezpečení určených pro zákazníky technologie a služby, které jsou k dispozici v Azure.|
 |[Technické možnosti zabezpečení Azure](azure-security-technical-capabilities.md)|Zaměřuje se na funkce zabezpečení, podpora služby Azure Storage, Azure SQL Database, modelu virtuálního počítače Azure a nástroje a infrastruktury, které spravují všechno.|
 |[Příručka zabezpečení Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-security-guide?toc=%2fazure%2fsecurity%2ftoc.json) |Poskytuje přehled všech funkcí zabezpečení, které lze použít s Azure Storage. Popisuje zabezpečení roviny správy, zabezpečení roviny dat, šifrování v klidovém stavu, šifrování v letu a analýza úložiště.|
 |[Klasifikace dat podle připravenosti na cloud](https://gallery.technet.microsoft.com/Data-Classification-for-51252f03/file/172083/1/Data%20Classification%20for%20Cloud%20Readiness%20(2017-04-11).pdf)  |Tento dokument ke stažení představuje základní informace o klasifikaci dat a její hodnotu v kontextu cloud computingu. Organizace hodnocení cloud computingu pro budoucí použití nebo organizace aktuálně využívají cloudové služby a hledají způsoby, jak optimalizovat data správy se využívat většinu z této dokumentace.|

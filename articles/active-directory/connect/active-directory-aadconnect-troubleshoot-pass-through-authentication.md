@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 09/24/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 99f877a0002e9a631bcfdabdbea51fcf2ca1a2c1
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 890c28601315a63e34c286289cd7378830afa9ba
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626588"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782041"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Řešení potíží s Azure Active Directory předávací ověřování
 
@@ -97,7 +97,7 @@ Ověřte, že používáte cloudový účet globálního správce pro všechny s
 
 Pokud máte ve svém tenantovi povoleno předávací ověřování a odinstalaci služby Azure AD Connect, zobrazuje se následující upozornění: "uživatelé nebudou moct přihlásit ke službě Azure AD bez dalších předávací ověřování agenti nainstalovaní na ostatní servery."
 
-Ujistěte se, že vaše instalace [vysoce dostupné](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability) před odinstalováním vyhnuli narušení funkčnosti přihlášení uživatele Azure AD Connect.
+Ujistěte se, že vaše instalace [s vysokou dostupností](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability) před odinstalováním vyhnuli narušení funkčnosti přihlášení uživatele Azure AD Connect.
 
 ## <a name="issues-with-enabling-the-feature"></a>Potíže s povolením této funkce
 
@@ -129,7 +129,7 @@ Pro podrobné analýzy povolte protokol "Relace". Při spuštění ověřovacíh
 
 ### <a name="detailed-trace-logs"></a>Podrobné trasování protokolů
 
-Chcete-li vyřešit neúspěšných přihlášení uživatele, vyhledejte protokoly trasování v **%ProgramData%\Microsoft\Azure AD Connect Agent\Trace ověřování\\**. Tyto protokoly obsahovat důvodů proč konkrétního uživatele přihlášení se nezdařilo, pomocí funkce předávací ověřování. Tyto chyby jsou také namapován na důvody selhání přihlášení, ukázaný v předchozím [tabulky](#sign-in-failure-reasons-on-the-Azure-portal). Tady je příklad položky protokolu:
+Chcete-li vyřešit neúspěšných přihlášení uživatele, vyhledejte protokoly trasování v **%ProgramData%\Microsoft\Azure AD Connect Agent\Trace ověřování\\**. Tyto protokoly obsahovat důvodů proč konkrétního uživatele přihlášení se nezdařilo, pomocí funkce předávací ověřování. Tyto chyby jsou také namapován na důvody selhání přihlášení, je znázorněno v předchozí tabulce důvodů selhání přihlášení. Tady je příklad položky protokolu:
 
 ```
     AzureADConnectAuthenticationAgentService.exe Error: 0 : Passthrough Authentication request failed. RequestId: 'df63f4a4-68b9-44ae-8d81-6ad2d844d84e'. Reason: '1328'.

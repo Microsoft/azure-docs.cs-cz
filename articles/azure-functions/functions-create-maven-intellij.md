@@ -14,12 +14,12 @@ ms.workload: na
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 5e265543e2ce5feeed095d89cdb47ede9817bad1
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 317d8bf40ef152e5b7dae6406be29330feaaa8d3
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40002674"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43842466"
 ---
 # <a name="create-your-first-function-with-java-and-intellij-preview"></a>Vytvoření první funkce pomocí Javy a IntelliJ (Preview)
 
@@ -80,11 +80,11 @@ Chcete-li spustit hostitele funkce v režimu ladění, přidejte **- DenableDebu
 mvn azure-functions:run -DenableDebug
 ```
 
-Chcete-li ladit v IntelliJ, v **spustit** nabídky vyberte možnost **upravit konfigurace**. Klikněte na tlačítko ** + ** přidáte **vzdálené**. Vyplňte **název** a **nastavení**a potom klikněte na tlačítko **OK** uložte konfiguraci. Po dokončení instalace, klikněte na tlačítko **ladění** "Your Vzdálená konfigurace Name" nebo stiskněte klávesu **Shift + F9** pro spuštění ladění.
+Chcete-li ladit v IntelliJ, v **spustit** nabídky vyberte možnost **upravit konfigurace**. Klikněte na tlačítko **+** přidáte **vzdálené**. Vyplňte **název** a **nastavení**a potom klikněte na tlačítko **OK** uložte konfiguraci. Po dokončení instalace, klikněte na tlačítko **ladění** "Your Vzdálená konfigurace Name" nebo stiskněte klávesu **Shift + F9** pro spuštění ladění.
 
 ![Ladění funkcí ve IntelliJ](media/functions-create-first-java-intellij/debug-configuration-intellij.PNG)
 
-Po dokončení ukončete ladicí program a spuštěnému procesu. Jenom jednu funkci hostitel může být aktivní a v chodu místně na chvíli.
+Po dokončení ukončete ladicí program a spuštěnému procesu. Jenom jednu funkci hostitel může být aktivní a v chodu místně v čase.
 
 ## <a name="deploy-the-function-to-azure"></a>Nasazení funkce do Azure
 

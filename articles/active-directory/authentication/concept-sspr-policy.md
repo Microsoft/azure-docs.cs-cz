@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 404be287d2e6ac693e0942c84f630f4e067127f3
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 8ec0947d041dc0d4f5423a48a443ab2dd86949e2
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666748"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782531"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Zásady hesel a omezení v Azure Active Directory
 
@@ -80,7 +80,7 @@ Každý uživatelský účet, který je potřeba se přihlásit ke službě Azur
 
 | Vlastnost | Požadavky na atribut UserPrincipalName |
 | --- | --- |
-| Povolený počet znaků |<ul> <li>A – Z</li> <li>a - z</li><li>0 – 9</li> <li> . - \_ ! \# ^ \~</li></ul> |
+| Povolený počet znaků |<ul> <li>A – Z</li> <li>a - z</li><li>0 – 9</li> <li> \. - \_ ! \# ^ \~</li></ul> |
 | Znaky nejsou povoleny |<ul> <li>Žádné "\@ \" znak, který není oddělení uživatelského jména z domény.</li> <li>Nesmí obsahovat znak tečky "." bezprostředně předcházející "\@ \" symbol</li></ul> |
 | Omezení délky |<ul> <li>Celková délka nesmí přesáhnout 113 znaků</li><li>Může obsahovat až 64 znaků před "\@ \" symbol</li><li>Může být až 48 znaků po "\@ \" symbol</li></ul> |
 

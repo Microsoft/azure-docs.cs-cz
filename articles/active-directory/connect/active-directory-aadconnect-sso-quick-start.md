@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/01/2018
+ms.date: 09/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4710e30ad38485f47c115ac2e0e914e91c96d582
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 8cab491a874094ee195f12ba6fe7f19a87f09ef2
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522177"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841943"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory bezproblémové jednotné přihlašování: rychlý start
 
@@ -42,6 +42,9 @@ Ujistěte se, že jsou splněné následující požadavky:
     >Azure AD Connect verze 1.1.557.0, 1.1.558.0, 1.1.561.0 a 1.1.614.0 máte problém související se synchronizace hodnot hash hesel. Pokud jste _není_ používat synchronizaci hodnot hash hesel ve spojení se předávací ověřování, přečtěte si [poznámky k verzi Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#116470) Další informace.
 
 * **Použití podporované topologie služby Azure AD Connect**: Ujistěte se, že používáte jednu z Azure AD Connect podporované topologie popsané [tady](active-directory-aadconnect-topologies.md).
+
+    >[!NOTE]
+    >Bezproblémové jednotné přihlašování podporuje několik doménových struktur AD, zda existují AD vztah důvěryhodnosti mezi nimi či nikoli.
 
 * **Nastavit přihlašovací údaje správce domény**: musíte mít přihlašovací údaje správce domény pro každé služby Active Directory doménové struktury, které:
     * Synchronizovat s Azure AD prostřednictvím služby Azure AD Connect.
@@ -180,7 +183,7 @@ Mozilla Firefox nebude automaticky používat ověřování protokolem Kerberos.
 
 #### <a name="safari-macos"></a>Safari (macOS)
 
-Ujistěte se, že počítač s macOS připojený ke službě AD. Pokyny pro připojení AD, najdete v článku [osvědčené postupy pro OS X integraci se službou Active Directory](http://www.isaca.org/Groups/Professional-English/identity-management/GroupDocuments/Integrating-OS-X-with-Active-Directory.pdf).
+Ujistěte se, že počítač s macOS připojený ke službě AD. Pokyny pro připojení k AD zařízení s macOS je mimo rámec tohoto článku.
 
 #### <a name="google-chrome-all-platforms"></a>Google Chrome (všechny platformy)
 

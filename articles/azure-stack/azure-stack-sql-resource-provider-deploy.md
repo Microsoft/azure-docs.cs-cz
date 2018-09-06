@@ -11,19 +11,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/04/2018
+ms.date: 09/05/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: c9efaeed05856f830a4f0cf699cb35ebc21966c1
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 08ab76e587c4e2c8b8afe9cb27e9df59a5924475
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700706"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43842036"
 ---
 # <a name="deploy-the-sql-server-resource-provider-on-azure-stack"></a>Nasazení poskytovatele prostředků SQL serveru ve službě Azure Stack
 
 Používání poskytovatele prostředků Azure Stack SQL serveru k vystavení databáze SQL jako služba Azure Stack. Poskytovatele prostředků SQL běží jako služba na virtuálním počítači (VM) systému Windows Server 2016 Server Core.
+
+> [!IMPORTANT]
+> Vytvoření položek na serverech, daný hostitel SQL nebo MySQL se podporuje jenom poskytovatele prostředků. Neodpovídající stavu může dojít položky vytvořené na hostitelském serveru, které nebyly vytvořeny pomocí zprostředkovatele prostředků.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -144,8 +147,8 @@ Můžete použít následující postup ověření úspěšném nasazení poskyt
 2. Vyberte **skupiny prostředků**.
 3. Vyberte **systému.\< umístění\>.sqladapter** skupinu prostředků.
 4. Na stránce Souhrn pro skupinu prostředků přehled měla by existovat žádná selhání nasazení.
-
       ![Ověření nasazení poskytovatele prostředků SQL](./media/azure-stack-sql-rp-deploy/sqlrp-verify.png)
+5. Nakonec vyberte **virtuálních počítačů** v portálu pro správu k ověření poskytovatele prostředků SQL virtuální počítač byl úspěšně vytvořen a běží.
 
 ## <a name="next-steps"></a>Další postup
 

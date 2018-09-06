@@ -1,45 +1,45 @@
 ---
-title: Poznámky Ruby rychlý úvodní kurz pro Azure kognitivní služby, analýza textu rozhraní API | Microsoft Docs
-description: Get informace a ukázky kódu můžete rychle začít používat rozhraní API Analytics Text v kognitivní služby společnosti Microsoft na platformě Azure.
+title: Ruby rychlý start pro Azure Cognitive Services Text Analytics API | Dokumentace Microsoftu
+description: Získat informace a ukázky kódu můžete rychle začít používat rozhraní API pro analýzu textu ve službě Microsoft Cognitive Services v Azure.
 services: cognitive-services
 documentationcenter: ''
 author: ashmaka
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: article
-ms.date: 05/02/2018
+ms.date: 08/30/2018
 ms.author: ashmaka
-ms.openlocfilehash: 7563a967ed23f98d8626092d58b5a0f5d4d1834c
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 75c6476e86ee4a742e32ae0e7ffd27842f591843
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342789"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841724"
 ---
-# <a name="quickstart-for-text-analytics-api-with-ruby"></a>Rychlý start pro Analýza textu rozhraní API pomocí Ruby 
+# <a name="quickstart-for-text-analytics-api-with-ruby"></a>Rychlý start pro rozhraní Text Analytics API pomocí Ruby 
 <a name="HOLTop"></a>
 
-Tento článek ukazuje, jak k [zjistit jazyk](#Detect), [analyzovat postojích](#SentimentAnalysis), [extrahovat klíče frází](#KeyPhraseExtraction), a [identifikovat propojených entit](#Entities) pomocí [rozhraní API Analytics Text](//go.microsoft.com/fwlink/?LinkID=759711) s Ruby.
+Tento článek vám ukáže, jak k [rozpoznání jazyka](#Detect), [analýza sentimentu](#SentimentAnalysis), [extrakce klíčových frází](#KeyPhraseExtraction), a [identifikovat propojených entit](#Entities) pomocí [rozhraní Text Analytics API](//go.microsoft.com/fwlink/?LinkID=759711) pomocí Ruby.
 
-Odkazovat [definice rozhraní API](//go.microsoft.com/fwlink/?LinkID=759346) pro technická dokumentace k rozhraní API.
+Odkazovat [definice rozhraní API](//go.microsoft.com/fwlink/?LinkID=759346) technickou dokumentaci pro rozhraní API.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Musíte mít [kognitivní rozhraní API služby účet](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s **Text Analytics API**. Můžete použít **úroveň free pro 5 000 transakce za měsíc** dokončete tento rychlý start.
+Musíte mít [účet rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s **rozhraní Text Analytics API**. Můžete použít **bezplatná úroveň 5 000 transakcí za měsíc** k dokončení tohoto rychlého startu.
 
-Je také nutné mít [koncový bod a přístupový klíč](../How-tos/text-analytics-how-to-access-key.md) který byl vygenerován pro vás při přihlašování nahoru. 
+Je také nutné mít [koncový bod a přístupový klíč](../How-tos/text-analytics-how-to-access-key.md) , která byla vygenerována během přihlašování nahoru. 
 
 <a name="Detect"></a>
 
 ## <a name="detect-language"></a>Zjištění jazyka
 
-Rozhraní API jazyka detekce zjistí jazyk textového dokumentu, pomocí [metoda zjistit jazyk](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7).
+Rozhraní API pro detekci jazyk zjistí jazyk textu dokumentu, pomocí [rozpoznat jazyk metoda](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7).
 
-1. Vytvoření nového projektu poznámky Ruby v vaše oblíbená rozhraní IDE.
-2. Přidejte kód níže uvedenou.
+1. Vytvoření nového projektu Ruby v oblíbeném prostředí IDE.
+2. Přidejte níže uvedený kód.
 3. Nahraďte `accessKey` hodnotu s přístupový klíč platný pro vaše předplatné.
-4. Nahraďte umístění v `uri` (aktuálně `westus`) pro danou oblast registraci aplikace.
-5. Spusťte program.
+4. Nahraďte umístění v `uri` (aktuálně `westus`) do oblasti registrovanou službu.
+5. Spuštění programu.
 
 ```ruby
 require 'net/https'
@@ -51,7 +51,7 @@ require 'json'
 # **********************************************
 
 # Replace the accessKey string value with your valid access key.
-accessKey = 'enter key here'
+accessKey = 'ENTER KEY HERE'
 
 # Replace or verify the region.
 #
@@ -62,9 +62,9 @@ accessKey = 'enter key here'
 # NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
 # a free trial access key, you should not need to change this region.
 uri = 'https://westus.api.cognitive.microsoft.com'
-path = '/text/analytics/v2.0/languages'
+path = '/text/analytics/v2.0/'
 
-uri = URI(uri + path)
+uri = URI(uri + path + 'languages')
 
 documents = { 'documents': [
     { 'id' => '1', 'text' => 'This is a document written in English.' },
@@ -86,7 +86,7 @@ end
 puts JSON::pretty_generate (JSON (response.body))
 ```
 
-**Jazyk detekce odpovědi**
+**Odpověď detekce jazyka**
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 
@@ -136,38 +136,12 @@ puts JSON::pretty_generate (JSON (response.body))
 
 ## <a name="analyze-sentiment"></a>Analýza mínění
 
-Rozhraní API Analysis postojích detexts postojích sadu záznamů text, pomocí [postojích metoda](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9). Následující příklad skóre dva dokumenty, jeden v angličtině a druhý ve španělštině.
+Rozhraní API pro analýzu mínění detexts mínění sadu záznamů text, použití [mínění metoda](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9). Následující příklad stanoví skóre dva dokumenty, jednu v angličtině a druhý ve španělštině.
 
-1. Vytvoření nového projektu poznámky Ruby v vaše oblíbená rozhraní IDE.
-2. Přidejte kód níže uvedenou.
-3. Nahraďte `accessKey` hodnotu s přístupový klíč platný pro vaše předplatné.
-4. Nahraďte umístění v `uri` (aktuálně `westus`) pro danou oblast registraci aplikace.
-5. Spusťte program.
+Přidejte následující kód do kódu z [předchozí části](#Detect).
 
 ```ruby
-require 'net/https'
-require 'uri'
-require 'json'
-
-# **********************************************
-# *** Update or verify the following values. ***
-# **********************************************
-
-# Replace the accessKey string value with your valid access key.
-accessKey = 'enter key here'
-
-# Replace or verify the region.
-#
-# You must use the same region in your REST API call as you used to obtain your access keys.
-# For example, if you obtained your access keys from the westus region, replace 
-# "westcentralus" in the URI below with "westus".
-#
-# NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
-# a free trial access key, you should not need to change this region.
-uri = 'https://westus.api.cognitive.microsoft.com'
-path = '/text/analytics/v2.0/sentiment'
-
-uri = URI(uri + path)
+uri = URI(uri + path + 'sentiment')
 
 documents = { 'documents': [
     { 'id' => '1', 'language' => 'en', 'text' => 'I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable.' },
@@ -188,7 +162,7 @@ end
 puts JSON::pretty_generate (JSON (response.body))
 ```
 
-**Postojích analýzy odpovědi**
+**Odpověď analýzy mínění**
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 
@@ -212,39 +186,12 @@ puts JSON::pretty_generate (JSON (response.body))
 
 ## <a name="extract-key-phrases"></a>Extrakce klíčových frází
 
-Rozhraní API extrakce frázi klíč extrahuje frází klíč z textového dokumentu, pomocí [klíč frází metoda](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6). Následující příklad extrahuje klíče frází pro angličtinu a slovenštinu dokumenty.
+Rozhraní API Key frázi extrakci extrahuje klíčových frází z textu dokumentu, pomocí [klíčových frází metoda](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6). Následující příklad extrahuje klíčových frází pro angličtinu a slovenštinu dokumenty.
 
-1. Vytvoření nového projektu poznámky Ruby v vaše oblíbená rozhraní IDE.
-2. Přidejte kód níže uvedenou.
-3. Nahraďte `accessKey` hodnotu s přístupový klíč platný pro vaše předplatné.
-4. Nahraďte umístění v `uri` (aktuálně `westus`) pro danou oblast registraci aplikace.
-5. Spusťte program.
-
+Přidejte následující kód do kódu z [předchozí části](#SentimentAnalysis).
 
 ```ruby
-require 'net/https'
-require 'uri'
-require 'json'
-
-# **********************************************
-# *** Update or verify the following values. ***
-# **********************************************
-
-# Replace the accessKey string value with your valid access key.
-accessKey = 'enter key here'
-
-# Replace or verify the region.
-#
-# You must use the same region in your REST API call as you used to obtain your access keys.
-# For example, if you obtained your access keys from the westus region, replace 
-# "westcentralus" in the URI below with "westus".
-#
-# NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
-# a free trial access key, you should not need to change this region.
-uri = 'https://westus.api.cognitive.microsoft.com'
-path = '/text/analytics/v2.0/keyPhrases'
-
-uri = URI(uri + path)
+uri = URI(uri + path + 'keyPhrases')
 
 documents = { 'documents': [
     { 'id' => '1', 'language' => 'en', 'text' => 'I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable.' },
@@ -266,7 +213,7 @@ end
 puts JSON::pretty_generate (JSON (response.body))
 ```
 
-**Klíče frázi extrakce odpovědi**
+**Odpověď extrakce klíčových frází**
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 
@@ -307,41 +254,14 @@ puts JSON::pretty_generate (JSON (response.body))
 ```
 <a name="Entities"></a>
 
-## <a name="identify-linked-entities"></a>Identifikovat propojených entit
+## <a name="identify-linked-entities"></a>Identifikujte propojených entit
 
-Rozhraní API propojení entita identifikuje dobře známé entity v textového dokumentu, pomocí [Entity propojení metoda](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634). Následující příklad určuje entity pro angličtinu dokumenty.
+Rozhraní Entity Linking API identifikuje dobře známé entity v textu dokumentu, pomocí [propojování entit metoda](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634). Následující příklad určuje entity pro anglickou dokumenty.
 
-1. Vytvoření nového projektu poznámky Ruby v vaše oblíbená rozhraní IDE.
-2. Přidejte kód níže uvedenou.
-3. Nahraďte `accessKey` hodnotu s přístupový klíč platný pro vaše předplatné.
-4. Nahraďte umístění v `uri` (aktuálně `westus`) pro danou oblast registraci aplikace.
-5. Spusťte program.
-
+Přidejte následující kód do kódu z [předchozí části](#KeyPhraseExtraction).
 
 ```ruby
-require 'net/https'
-require 'uri'
-require 'json'
-
-# **********************************************
-# *** Update or verify the following values. ***
-# **********************************************
-
-# Replace the accessKey string value with your valid access key.
-accessKey = 'enter key here'
-
-# Replace or verify the region.
-#
-# You must use the same region in your REST API call as you used to obtain your access keys.
-# For example, if you obtained your access keys from the westus region, replace 
-# "westcentralus" in the URI below with "westus".
-#
-# NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
-# a free trial access key, you should not need to change this region.
-uri = 'https://westus.api.cognitive.microsoft.com'
-path = '/text/analytics/v2.0/entities'
-
-uri = URI(uri + path)
+uri = URI(uri + path + 'entities')
 
 documents = { 'documents': [
     { 'id' => '1', 'language' => 'en', 'text' => 'I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable.' },
@@ -362,7 +282,7 @@ end
 puts JSON::pretty_generate (JSON (response.body))
 ```
 
-**Odpověď serveru linking entity**
+**Propojení odpovědi entity**
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 
@@ -429,9 +349,9 @@ puts JSON::pretty_generate (JSON (response.body))
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Analýza textu pomocí Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
+> [Analýza textu s využitím Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
 
 ## <a name="see-also"></a>Další informace najdete v tématech 
 
  [Přehled analýzy textu](../overview.md)  
- [Nejčastější dotazy (FAQ)](../text-analytics-resource-faq.md)
+ [Nejčastější dotazy](../text-analytics-resource-faq.md)

@@ -1,7 +1,7 @@
 ---
-title: Integrovat QnA Maker a LEOŠ - kognitivní služby Microsoft | Microsoft Docs
+title: Integrace nástroje QnA Maker a LUIS – Microsoft Cognitive Services | Dokumentace Microsoftu
 titleSuffix: Azure
-description: podrobný kurz k integraci QnA Maker a LEOŠ
+description: podrobný návod k integraci nástroje QnA Maker a LUIS
 services: cognitive-services
 author: nstulasi
 manager: sangitap
@@ -10,42 +10,42 @@ ms.component: QnAMaker
 ms.topic: article
 ms.date: 04/21/2018
 ms.author: saneppal
-ms.openlocfilehash: 0a0eeb3815b793ed81f60b2b239bc459e5574788
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 18eae69867dc9774f63b11c762b22df4595bdce6
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343274"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43781743"
 ---
-# <a name="integrate-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>Integrovat QnA Maker a LEOŠ distribuovat znalostní báze
-S růstem znalostní báze QnA Maker velký, bude obtížné ji jako jediný monolitický a není potřeba rozdělit do menších logických bloků znalostní bázi knowledge base.
+# <a name="integrate-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>Integrace nástroje QnA Maker a LUIS distribuovat znalostní báze
+Jak QnA Maker znalostní báze případu dostatečného růstu, bude obtížné spravovat jako jeden monolitické nastavit a je potřeba rozdělit do menších logické bloků ve znalostní bázi.
 
-I když je přehledné v QnA Maker vytvořit více znalostních bází, budete potřebovat některé logiku směrovat příchozí dotaz na odpovídající znalostní bázi knowledge base. To provedete pomocí LEOŠ.
+I když je jednoduché vytvářet více znalostních bází v nástroje QnA Maker, budete potřebovat nějaké logiky směrovat příchozí dotaz do odpovídající znalostní báze. Můžete to provést s využitím služby LUIS.
 
 ## <a name="architecture"></a>Architektura
 
-![Architektura Leoš QnA Maker](../media/qnamaker-tutorials-qna-luis/qnamaker-luis-architecture.PNG)
+![Architektura služby luis QnA Maker](../media/qnamaker-tutorials-qna-luis/qnamaker-luis-architecture.PNG)
 
-Ve výše uvedené scénáře QnA Maker nejdřív získá záměr příchozí dotaz z modelu LEOŠ a potom použít ke směrování do správné QnA Maker znalostní báze.
+Ve výše popsaném scénáři QnA Maker nejprve získá záměr příchozí dotaz z modelu LUIS a použije ji směrovat do znalostní báze správný nástroj QnA Maker.
 
 ## <a name="prerequisites"></a>Požadavky
-- Přihlaste se k [LEOŠ](https://www.luis.ai/) portál a [vytvořit aplikaci](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/create-new-app).
-- [Přidat tříd Intent](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/add-intents) podle váš scénář.
-- [Train](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-how-to-train) a [publikování](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/publishapp) LEOŠ aplikace.
-- Přihlaste se k [QnA Maker](https://qnamaker.ai) a [vytvářet]() základny podle váš scénář.
-- [Test]() a [publikování]() znalostních bází.
+- Přihlaste se k [LUIS](https://www.luis.ai/) portál a [vytvořit aplikaci](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/create-new-app).
+- [Přidání záměrů](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/add-intents) podle váš scénář.
+- [Trénování](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-how-to-train) a [publikovat](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/publishapp) aplikace LUIS.
+- Přihlaste se k [QnA Maker](https://qnamaker.ai) a [vytvořit](https://www.qnamaker.ai/Create) znalostních bází v závislosti na vašem scénáři.
+- Otestujeme a publikujeme a znalostních bází.
 
-## <a name="qna-maker--luis-bot"></a>QnA Maker + LEOŠ robota
-1. Nejprve vytvořte robota webové aplikace pomocí šablony LEOŠ, propojit s LEOŠ aplikaci, kterou jste vytvořili výše a upravovat záměry. Podrobné kroky najdete v části [zde](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-csharp-tutorial-build-bot-framework-sample).
+## <a name="qna-maker--luis-bot"></a>Nástroj QnA Maker + LUIS Bot
+1. První vytváření robotů webové aplikace pomocí šablony služby LUIS, ho propojit s aplikaci LUIS, kterou jste vytvořili výše a úprava příkazů. Podrobný postup najdete [tady](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-csharp-tutorial-build-bot-framework-sample).
 
-2. Přidejte závislosti do horní části souboru, s další závislosti:
+2. Přidáte závislosti do horní části souboru s další závislosti:
 
     ```
     using RestSharp;
     using System.Collections.Generic;
     using Newtonsoft.Json;
     ```
-3. Přidat níže třídu pro volání služby QnA Maker:
+3. Přidat následující třídy pro volání služby QnA Maker:
 
     ```
         /// <summary>
@@ -121,11 +121,11 @@ Ve výše uvedené scénáře QnA Maker nejdřív získá záměr příchozí do
         /* END - QnA Maker Response Class */
     ```
 
-3. Přejděte na https://qnamaker.ai -> – Moje znalostních bází -> zobrazení kód, odpovídající znalostní báze. Získáte následující informace:
+3. Přejděte na https://qnamaker.ai -> Moje znalostních bází -> Zobrazit kód odpovídající znalostní báze. Získáte následující informace:
 
     ![Požadavek QnA Maker HTTP](../media/qnamaker-tutorials-qna-luis/qnamaker-http-request.png)
 
-4. Pro každou znalostních bází vytvořit instanci třídy QnAMakerService:
+4. Vytvoření instance třídy QnAMakerService pro každou znalostních bází:
     ```
             // Instantiate the knowledge bases
             public QnAMakerService hrQnAService = new QnAMakerService("https://hrkb.azurewebsites.net", "<HR knowledge base id>", "<HR endpoint key>");
@@ -133,7 +133,7 @@ Ve výše uvedené scénáře QnA Maker nejdřív získá záměr příchozí do
             public QnAMakerService financeQnAService = new QnAMakerService("https://financekb.azurewebsites.net", "<Finance knowledge base id>", "<Finance endpoint key>");
     ```
 
-5. Volání znalostní báze odpovídající pro záměr.
+5. Znalostní báze odpovídající volání pro záměr.
     ```
             // HR Intent
             [LuisIntent("HR")]
@@ -160,21 +160,21 @@ Ve výše uvedené scénáře QnA Maker nejdřív získá záměr příchozí do
             }
     ```
 
-## <a name="build-the-bot"></a>Sestavení robota
+## <a name="build-the-bot"></a>Sestavit robota
 1. V editoru kódu, klikněte pravým tlačítkem na `build.cmd` a vyberte **spustit z konzoly**.
 
     ![spustit z konzoly](../media/qnamaker-tutorials-qna-luis/run-from-console.png)
 
-2. Zobrazení kódu se nahradí okno terminálu zobrazující průběh a výsledky sestavení.
+2. Zobrazení kódu se nahradí okno terminálu znázorňující průběh a výsledky sestavení.
 
-    ![konzole sestavení](../media/qnamaker-tutorials-qna-luis/console-build.png)
+    ![sestavení konzoly](../media/qnamaker-tutorials-qna-luis/console-build.png)
 
-## <a name="test-the-bot"></a>Testovací robota
-Na portálu Azure vyberte **testů ve webové Chat** k testování robota. Typ zprávy z různých tříd Intent se získat odpověď z odpovídající znalostní bázi knowledge base.
+## <a name="test-the-bot"></a>Testování robota
+Na webu Azure Portal, vyberte **testování ve Web Chat** otestovat robota. Typ zprávy z různých záměrů pro získání odpovědi z odpovídající znalostní báze.
 
-![test webu chatu](../media/qnamaker-tutorials-qna-luis/qnamaker-web-chat.png)
+![Webový test chatu](../media/qnamaker-tutorials-qna-luis/qnamaker-web-chat.png)
 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Vytvoření plánu kontinuity obchodních pro QnA Maker](../How-To/business-continuity-plan.md)
+> [Vytvořit plán obchodní kontinuity podnikových procesů pro nástroj QnA Maker](../How-To/business-continuity-plan.md)

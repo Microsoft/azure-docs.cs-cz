@@ -7,12 +7,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: nolach
-ms.openlocfilehash: 1f9facf94b8068b98aa49c49ece7070a83db0686
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 35572f046b3702deba56e86819b8ad0cd7ae6e9b
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43665081"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43842462"
 ---
 # <a name="creating-custom-voice-fonts"></a>Vytvoření vlastního hlasového písma
 
@@ -31,13 +31,11 @@ Potřebujete účet Azure a předplatné služby řeči. [Vytvořte si ho](https
 
 1. Přihlaste se k [vlastní hlasové portál](https://customvoice.ai) pomocí stejného účtu Microsoft, používá k aplikování pro přístup.
 
-2. Přejdete na "Předplatné" pod názvem vašeho účtu v pravém horním rohu.
+2. Přejdete na "všechna předplatná pod názvem vašeho účtu v pravém horním rohu.
 
     ![Předplatná](media/custom-voice/subscriptions.png)
 
 3. Na stránce "Předplatné" zvolte připojit existující předplatné.
-
-     ![Připojit stávající předplatné](media/custom-voice/connect-existing-sub.png)
 
 4. Vložte váš klíč předplatného do tabulky, jak je znázorněno níže. Každé předplatné má dva klíče a můžete použít některou z nich.
 
@@ -122,7 +120,7 @@ Po přípravě archivu zvukový soubor a záznamy o studiu, odešle je prostřed
 > [!NOTE]
 > Uživatelé bezplatné předplatné můžete nahrát dvě datové sady v čase. Předplatné standard sady mohou uživatelé odeslat pět datových sad současně. Pokud limit překročíte, počkejte aspoň jeden z datových sad dokončení importování, a zkuste to znovu.
 
-Po dokončení nahrávání se zobrazí znovu tabulce Moje hlasová Data. Měli byste vidět položku, která odpovídá k vaší datové sadě právě nahráli. 
+Po dokončení nahrávání se zobrazí znovu tabulce Moje hlasová Data. Měli byste vidět položku, která odpovídá k vaší datové sadě právě nahráli.
 
 Datové sady se automaticky ověří po odeslání. Ověření dat obsahuje řadu kontrol zvukové soubory, chcete-li ověřit jejich formát souboru, velikost a vzorkovací frekvenci. Kontroly soubory určené k transkripci ověřte formát souboru a provést některé normalizace text. Projevy se převede pomocí rozpoznávání řeči a výsledný text je ve srovnání s přepisu, které jste zadali.
 
@@ -189,17 +187,11 @@ Včetně zobrazeného stavu odráží proces převodu vaše datová sada hlasov�
 
 ## <a name="test-your-voice-font"></a>Testování hlasového písma
 
-Jakmile hlasového písma je úspěšně sestavená, takže ji můžete otestovat před nasazením pro použití. Klikněte na tlačítko **Test** ve sloupci operace. Testovací stránka se zobrazí pro vybrané hlasového písma. Je tabulka prázdná, pokud ještě neodeslali jste žádné požadavky testu pro hlasu.
-
-![Moje hlasová písma, část 2](media/custom-voice/my-voice-fonts2.png)
+Jakmile hlasového písma je úspěšně sestavená, takže ji můžete otestovat před nasazením pro použití. Klikněte na tlačítko **Test** ve sloupci operace tabulky Moje hlasová písma. Testovací stránka se zobrazí pro vybrané hlasového písma. Je tabulka prázdná, pokud ještě neodeslali jste žádné požadavky testu pro hlasu.
 
 Klikněte na tlačítko **Test s textem** tlačítko pod názvem tabulky k zobrazení místní nabídky pro odesílání žádostí text. Můžete odeslat požadavek testu jako prostý text nebo SSML. Maximální velikost vstupu je 1 024 znaků, včetně všech značek pro požadavek SSML. Jazyk textu musí být stejný jako jazyk hlasového písma.
 
-![Hlasové písmo testování](media/custom-voice/voice-font-testing.png)
-
 Jakmile vyplníte textové pole a potvrzení vstupní režim, kliknutím na tlačítko **Ano** odeslat žádost o test a vrátíte se k testovací stránce. Tabulka teď obsahuje položku, která odpovídá novou žádost a ve sloupci nyní známý stav. Může trvat několik minut tak, aby odpovídaly řeči. Sloupec Stav na čtení byl úspěšný, si můžete stáhnout textové zadání ( `.txt` soubor) a výstupní zvuková ( `.wav` soubor) a audition ten kvality.
-
-![Hlasové písmo testování, část 2](media/custom-voice/voice-font-testing2.png)
 
 ## <a name="create-and-use-a-custom-endpoint"></a>Vytvoření a použití vlastního koncového bodu
 

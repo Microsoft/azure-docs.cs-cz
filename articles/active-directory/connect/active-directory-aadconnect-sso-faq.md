@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/07/2018
+ms.date: 09/04/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 29ed96044ceaa914db3f8b7090a1be5f65827e54
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 5f654ce8730af1e66e0186d7087aa130b00afd2b
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627470"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782104"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory bezproblémové jednotné přihlašování: Nejčastější dotazy
 
@@ -84,12 +84,11 @@ Proveďte tyto kroky na místním serveru, kde je spuštěn nástroj Azure AD Co
 
 ### <a name="step-1-get-list-of-ad-forests-where-seamless-sso-has-been-enabled"></a>Krok 1. Načíst seznam doménových struktur AD, ve kterém bylo povoleno bezproblémového jednotného přihlašování
 
-1. Nejprve stáhnout a nainstalovat [Microsoft Online Services přihlášení pomocníka](http://go.microsoft.com/fwlink/?LinkID=286152).
-2. Pak si stáhnout a nainstalovat [64bitová verze modulu Azure Active Directory pro prostředí Windows PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0).
-3. Přejděte do složky `%programfiles%\Microsoft Azure Active Directory Connect`.
-4. Naimportujte modul Powershellu bezproblémové jednotné přihlašování pomocí tohoto příkazu: `Import-Module .\AzureADSSO.psd1`.
-5. Spusťte PowerShell jako správce. V prostředí PowerShell, zavolejte `New-AzureADSSOAuthenticationContext`. Tento příkaz by vám měl dát automaticky otevíraného okna zadejte přihlašovací údaje globálního správce vašeho tenanta.
-6. Volání `Get-AzureADSSOStatus`. Tento příkaz poskytuje seznam doménových struktur AD (pohled na seznamu "Domény") na které tato funkce povolená.
+1. Nejprve stáhnout a nainstalovat [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview).
+2. Přejděte do složky `%programfiles%\Microsoft Azure Active Directory Connect`.
+3. Naimportujte modul Powershellu bezproblémové jednotné přihlašování pomocí tohoto příkazu: `Import-Module .\AzureADSSO.psd1`.
+4. Spusťte PowerShell jako správce. V prostředí PowerShell, zavolejte `New-AzureADSSOAuthenticationContext`. Tento příkaz by vám měl dát automaticky otevíraného okna zadejte přihlašovací údaje globálního správce vašeho tenanta.
+5. Volání `Get-AzureADSSOStatus`. Tento příkaz poskytuje seznam doménových struktur AD (pohled na seznamu "Domény") na které tato funkce povolená.
 
 ### <a name="step-2-update-the-kerberos-decryption-key-on-each-ad-forest-that-it-was-set-it-up-on"></a>Krok 2. Aktualizovat dešifrovací klíč protokolu Kerberos v každé doménové struktuře AD, který ho se ho nastavit na
 
@@ -123,26 +122,24 @@ Dokončete proces vyčištění proveďte kroky 2 a 3 na na místním serveru, k
 
 Provedením následujících kroků na místní server, kde je spuštěn nástroj Azure AD Connect:
 
-1. Nejprve stáhnout a nainstalovat [Microsoft Online Services přihlášení pomocníka](http://go.microsoft.com/fwlink/?LinkID=286152).
-2. Pak si stáhnout a nainstalovat [64bitová verze modulu Azure Active Directory pro prostředí Windows PowerShell](http://go.microsoft.com/fwlink/p/?linkid=236297).
-3. Přejděte do složky `%programfiles%\Microsoft Azure Active Directory Connect`.
-4. Naimportujte modul Powershellu bezproblémové jednotné přihlašování pomocí tohoto příkazu: `Import-Module .\AzureADSSO.psd1`.
-5. Spusťte PowerShell jako správce. V prostředí PowerShell, zavolejte `New-AzureADSSOAuthenticationContext`. Tento příkaz by vám měl dát automaticky otevíraného okna zadejte přihlašovací údaje globálního správce vašeho tenanta.
-6. Volání `Enable-AzureADSSO -Enable $false`.
+1. Nejprve stáhnout a nainstalovat [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview).
+2. Přejděte do složky `%programfiles%\Microsoft Azure Active Directory Connect`.
+3. Naimportujte modul Powershellu bezproblémové jednotné přihlašování pomocí tohoto příkazu: `Import-Module .\AzureADSSO.psd1`.
+4. Spusťte PowerShell jako správce. V prostředí PowerShell, zavolejte `New-AzureADSSOAuthenticationContext`. Tento příkaz by vám měl dát automaticky otevíraného okna zadejte přihlašovací údaje globálního správce vašeho tenanta.
+5. Volání `Enable-AzureADSSO -Enable $false`.
 
 >[!IMPORTANT]
 >Zakázání bezproblémového jednotného přihlašování pomocí Powershellu nedojde ke změně stavu ve službě Azure AD Connect. Bezproblémové jednotné přihlašování se zobrazí jako povolené v **změnit přihlášení uživatele** stránky.
 
 ### <a name="step-2-get-list-of-ad-forests-where-seamless-sso-has-been-enabled"></a>Krok 2. Načíst seznam doménových struktur AD, ve kterém bylo povoleno bezproblémového jednotného přihlašování
 
-Pokud jste zakázali bezproblémového jednotného přihlašování pomocí služby Azure AD Connect, postupujte podle kroků 1 až 5 níže. Pokud jste zakázali bezproblémového jednotného přihlašování, místo toho pomocí Powershellu, přejděte ke kroku 6 níže.
+Pokud jste zakázali bezproblémového jednotného přihlašování pomocí služby Azure AD Connect, postupujte podle úloh 1 až 4 níže. Pokud jste zakázali bezproblémového jednotného přihlašování pomocí Powershellu místo toho, přejděte k úloha 5 níže.
 
-1. Nejprve stáhnout a nainstalovat [Microsoft Online Services přihlášení pomocníka](http://go.microsoft.com/fwlink/?LinkID=286152).
-2. Pak si stáhnout a nainstalovat [64bitová verze modulu Azure Active Directory pro prostředí Windows PowerShell](http://go.microsoft.com/fwlink/p/?linkid=236297).
-3. Přejděte do složky `%programfiles%\Microsoft Azure Active Directory Connect`.
-4. Naimportujte modul Powershellu bezproblémové jednotné přihlašování pomocí tohoto příkazu: `Import-Module .\AzureADSSO.psd1`.
-5. Spusťte PowerShell jako správce. V prostředí PowerShell, zavolejte `New-AzureADSSOAuthenticationContext`. Tento příkaz by vám měl dát automaticky otevíraného okna zadejte přihlašovací údaje globálního správce vašeho tenanta.
-6. Volání `Get-AzureADSSOStatus`. Tento příkaz poskytuje seznam doménových struktur AD (pohled na seznamu "Domény") na které tato funkce povolená.
+1. Nejprve stáhnout a nainstalovat [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview).
+2. Přejděte do složky `%programfiles%\Microsoft Azure Active Directory Connect`.
+3. Naimportujte modul Powershellu bezproblémové jednotné přihlašování pomocí tohoto příkazu: `Import-Module .\AzureADSSO.psd1`.
+4. Spusťte PowerShell jako správce. V prostředí PowerShell, zavolejte `New-AzureADSSOAuthenticationContext`. Tento příkaz by vám měl dát automaticky otevíraného okna zadejte přihlašovací údaje globálního správce vašeho tenanta.
+5. Volání `Get-AzureADSSOStatus`. Tento příkaz poskytuje seznam doménových struktur AD (pohled na seznamu "Domény") na které tato funkce povolená.
 
 ### <a name="step-3-manually-delete-the-azureadssoacct-computer-account-from-each-ad-forest-that-you-see-listed"></a>Krok 3. Odstraňte ručně `AZUREADSSOACCT` účet počítače v každé doménové struktuře AD, které vidíte uvedený.
 

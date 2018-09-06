@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 429a10988fdc19863cfd6809a8d73757d33349c9
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 35bd895636bcedf0fd3fad073819d238c7850326
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702303"
+ms.locfileid: "43783334"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Přesunutí prostředků do nové skupiny prostředků nebo předplatného
 
@@ -57,8 +57,7 @@ Před přesunutím prostředku je nutné provést několik důležitých kroků.
   * [Přenos vlastnictví předplatného služby Azure na jiný účet](../billing/billing-subscription-transfer.md)
   * [Přiřazení nebo přidání předplatného Azure do služby Azure Active Directory](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
-2. Služba musí umožňovat operaci přesouvání prostředků. Viz níže uvedené části v tomto článku [služby umožňují přesunutí prostředků](#services-that-can-be-moved) a které [není služby umožňují přesunutí prostředků](#services-that-cannot-be-moved).
-3. Cílové předplatné musí být registrováno pro poskytovatele přesouvaného prostředku. Pokud ne, zobrazí chybová zpráva oznamující, že **předplatné není zaregistrované pro typ prostředku**. K problému může dojít, pokud přesouváte prostředek do nového předplatného, ale toto předplatné nebylo pro příslušný typ prostředku nikdy použito.
+1. Cílové předplatné musí být registrováno pro poskytovatele přesouvaného prostředku. Pokud ne, zobrazí chybová zpráva oznamující, že **předplatné není zaregistrované pro typ prostředku**. K problému může dojít, pokud přesouváte prostředek do nového předplatného, ale toto předplatné nebylo pro příslušný typ prostředku nikdy použito.
 
   Pokud používáte PowerShell, použijte následující příkazy získat stav registrace:
 
@@ -86,14 +85,16 @@ Před přesunutím prostředku je nutné provést několik důležitých kroků.
   az provider register --namespace Microsoft.Batch
   ```
 
-4. Účet přesunutí prostředků musí mít alespoň následující oprávnění:
+1. Účet přesunutí prostředků musí mít alespoň následující oprávnění:
 
    * **Microsoft.Resources/subscriptions/resourceGroups/moveResources/action** na zdrojovou skupinu prostředků.
    * **Microsoft.Resources/subscriptions/resourceGroups/write** na cílová skupina prostředků.
 
-5. Před přesunutím prostředků, zkontrolujte kvóty předplatného pro předplatné, které přesouváte prostředky, které. Přesunutí prostředků znamená, že předplatné překročí maximum, budete muset zkontrolovat, jestli můžete požádat o zvýšení kvóty. Seznam omezení a tom, jak požádat o zvýšení najdete v tématu [předplatného Azure a limity, kvóty a omezení](../azure-subscription-service-limits.md).
+1. Před přesunutím prostředků, zkontrolujte kvóty předplatného pro předplatné, které přesouváte prostředky, které. Přesunutí prostředků znamená, že předplatné překročí maximum, budete muset zkontrolovat, jestli můžete požádat o zvýšení kvóty. Seznam omezení a tom, jak požádat o zvýšení najdete v tématu [předplatného Azure a limity, kvóty a omezení](../azure-subscription-service-limits.md).
 
-5. Pokud je to možné, přerušení velké přesune do operací přesunu samostatných. Resource Manager okamžitě nezdaří pokusy o přesunutí více než 800 prostředků v rámci jedné operace. Ale přesun prostředků menší než 800 selhat také podle vypršení časového limitu.
+1. Pokud je to možné, přerušení velké přesune do operací přesunu samostatných. Resource Manager okamžitě nezdaří pokusy o přesunutí více než 800 prostředků v rámci jedné operace. Ale přesun prostředků menší než 800 selhat také podle vypršení časového limitu.
+
+1. Služba musí umožňovat operaci přesouvání prostředků. Chcete-li zjistit, zda bude přesunutí úspěšné, [ověřit vaši žádost o přesunutí](#validate-move). Viz níže uvedené části v tomto článku [služby umožňují přesunutí prostředků](#services-that-can-be-moved) a které [není služby umožňují přesunutí prostředků](#services-that-cannot-be-moved).
 
 ## <a name="when-to-call-support"></a>Kdy se má zavolat na podporu
 
@@ -106,6 +107,59 @@ Kontakt [podporují](https://portal.azure.com/#blade/Microsoft_Azure_Support/Hel
 
 * Prostředky přesunout do nového účtu Azure (a tenanta Azure Active Directory) a potřebujete pomoc s pokyny uvedenými v předchozí části.
 * Přesouvání klasických prostředků, ale máte potíže s omezeními.
+
+## <a name="validate-move"></a>Ověří přesun
+
+[Ověření operace přesunu](/rest/api/resources/resources/validatemoveresources) umožňuje testovat váš scénář přesunu bez skutečně přesouvání prostředků. Pomocí této operace můžete zjistit, pokud bude úspěšné přesunutí. K provedení této operace, je nutné:
+
+* Název zdrojové skupiny prostředků
+* ID prostředku cílová skupina prostředků
+* ID prostředku každého prostředku přesunout
+* [přístupový token](/rest/api/azure/#acquire-an-access-token) pro váš účet
+
+Odeslání žádosti o následující:
+
+```
+POST https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<source-group>/validateMoveResources?api-version=2018-02-01
+Authorization: Bearer <access-token>
+Content-type: application/json
+```
+
+S hlavní část žádosti:
+
+```json
+{
+ "resources": ['<resource-id-1>', '<resource-id-2>'],
+ "targetResourceGroup": "/subscriptions/<subscription-id>/resourceGroups/<target-group>"
+}
+```
+
+Pokud je požadavek správně naformátován, operace vrátí:
+
+```
+Response Code: 202
+cache-control: no-cache
+pragma: no-cache
+expires: -1
+location: https://management.azure.com/subscriptions/<subscription-id>/operationresults/<operation-id>?api-version=2018-02-01
+retry-after: 15
+...
+```
+
+202 stavový kód označuje byla přijata žádost o ověření, ale ještě nebyl určen, pokud bude úspěšné operaci přesunutí. `location` Hodnota obsahuje adresu URL, kterou lze použít ke kontrole stavu dlouhotrvající operace.  
+
+Pokud chcete zkontrolovat stav, odešlete požadavek na následující:
+
+```
+GET <location-url>
+Authorization: Bearer <access-token>
+```
+
+Během operace je stále spuštěna, můžete nadále přijímat 202 stavový kód. Počkejte, počet sekund, které jsou uvedené v `retry-after` hodnotu než to zkusíte znovu. Pokud operace přesunu ověří úspěšně, obdržíte 204 stavový kód. Pokud selže ověření přesunu, obdržíte chybovou zprávu, jako například:
+
+```json
+{"error":{"code":"ResourceMoveProviderValidationFailed","message":"<message>"...}}
+```
 
 ## <a name="services-that-can-be-moved"></a>Služby, které je možné přesunout
 

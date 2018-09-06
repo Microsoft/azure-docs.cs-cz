@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: cd843f1826ad65098a7c0f6d30383113ccd28f6a
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 97953779f1132d89c7ad07abdb4e08c0f476f4b9
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306435"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841809"
 ---
-# <a name="security-frame-session-management--articles"></a>Zabezpečení Frame: Správa relací | Články 
+# <a name="security-frame-session-management"></a>Zabezpečení rámce: Správa relací
 | Produkt nebo službu | Článek |
 | --------------- | ------- |
 | **Azure AD**    | <ul><li>[Implementace správné odhlašování pomocí knihovny ADAL metod při použití služby Azure AD](#logout-adal)</li></ul> |
@@ -380,36 +380,42 @@ void Page_Init (object sender, EventArgs e) {
 | **Kroky** | Časový limit relace představuje událost, ke kterým dochází, když uživatel neprovede žádnou akci na webové stránce během intervalu (definované webový server). Událost na straně serveru a změnit stav relace uživatele na "neplatný" (například "nepoužívá už") a dáte pokyn, aby webový server ke zničení ho (odstranění všech dat obsažených do něj). Následující příklad kódu nastaví atribut časového limitu relace na 15 minut v souboru Web.config.|
 
 ### <a name="example"></a>Příklad:
-"" Kód XML <configuration> < system.web > <sessionState mode="InProc" cookieless="true" timeout="15" /> < /system.web > </configuration>
+```XML 
+<configuration>
+  <system.web>
+    <sessionState mode="InProc" cookieless="true" timeout="15" />
+  </system.web>
+</configuration>
 ```
 
-## <a id="threat-detection"></a>Enable Threat detection on Azure SQL
-```
-
-| Titul                   | Podrobnosti      |
-| ----------------------- | ------------ |
-| **Komponenta**               | Webová aplikace | 
-| **SDL fáze**               | Sestavení |  
-| **Použitelných technologiích** | Webové formuláře |
-| **Atributy**              | neuvedeno  |
-| **Odkazy**              | [Element formuláře pro ověřování (schéma nastavení technologie ASP.NET)](https://msdn.microsoft.com/library/1d3t3c61(v=vs.100).aspx) |
-| **Kroky** | Nastavit časový limit souboru cookie ověřovací lístek do 15 minut|
-
-### <a name="example"></a>Příklad:
-"" Kód XML <forms  name=".ASPXAUTH" loginUrl="login.aspx"  defaultUrl="default.aspx" protection="All" timeout="15" path="/" requireSSL="true" slidingExpiration="true"/>
-</forms>
+## <a id="threat-detection"></a>Povolit detekci hrozeb v Azure SQL
 ```
 
 | Title                   | Details      |
 | ----------------------- | ------------ |
 | **Component**               | Web Application | 
 | **SDL Phase**               | Build |  
-| **Applicable Technologies** | Web Forms, MVC5 |
-| **Attributes**              | EnvironmentType - OnPrem |
-| **References**              | [asdeqa](https://skf.azurewebsites.net/Mitigations/Details/wefr) |
-| **Steps** | When the web application is Relying Party and ADFS is the STS, the lifetime of the authentication cookies - FedAuth tokens - can be set by the following configuration in web.config:|
+| **Applicable Technologies** | Web Forms |
+| **Attributes**              | N/A  |
+| **References**              | [forms Element for authentication (ASP.NET Settings Schema)](https://msdn.microsoft.com/library/1d3t3c61(v=vs.100).aspx) |
+| **Steps** | Set the Forms Authentication Ticket cookie timeout to 15 minutes|
 
 ### Example
+```XML
+<forms  name=".ASPXAUTH" loginUrl="login.aspx"  defaultUrl="default.aspx" protection="All" timeout="15" path="/" requireSSL="true" slidingExpiration="true"/>
+</forms>
+```
+
+| Titul                   | Podrobnosti      |
+| ----------------------- | ------------ |
+| **Komponenta**               | Webová aplikace | 
+| **SDL fáze**               | Sestavení |  
+| **Použitelných technologiích** | Webové formuláře, MVC5 |
+| **Atributy**              | EnvironmentType - místního prostředí |
+| **Odkazy**              | [asdeqa](https://skf.azurewebsites.net/Mitigations/Details/wefr) |
+| **Kroky** | Když je služba tokenů zabezpečení AD FS, předávající strana je webová aplikace dobu života souboru cookie ověřování - FedAuth tokeny – můžete nastavit následující konfigurace v souboru web.config:|
+
+### <a name="example"></a>Příklad:
 ```XML
   <system.identityModel.services>
     <federationConfiguration>

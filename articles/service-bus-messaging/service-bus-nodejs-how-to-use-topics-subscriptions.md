@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: spelluru
-ms.openlocfilehash: fbb43d07296ca573f0c4cb9f1e10e005633ade06
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: daabf711e923e1c4ff3132c5e4765bdbff206948
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700092"
+ms.locfileid: "43782907"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs"></a>Postup použití služby Service Bus témata a odběry s využitím Node.js
 
@@ -95,7 +95,7 @@ serviceBusService.createTopicIfNotExists('MyTopic',function(error){
 });
 ```
 
-`createServiceBusService` Metoda také podporuje další možnosti, které vám umožní přepsat výchozí nastavení téma například time to live zprávy nebo téma maximální velikost. 
+`createTopicIfNotExists` Metoda také podporuje další možnosti, které vám umožní přepsat výchozí nastavení téma například time to live zprávy nebo téma maximální velikost. 
 
 Následující příklad nastaví maximální počet témat velikosti 5 GB s časem TTL délce jedné minuty:
 
@@ -235,12 +235,12 @@ var rule={
 }
 ```
 
-Když je teď odeslána zpráva `MyTopic`, bude doručena příjemcům `AllMessages` odběru tématu a selektivně příjemcům `HighMessages` a `LowMessages` odběry tématu (v závislosti na obsah zprávy).
+Když je teď odeslána zpráva `MyTopic`, se doručí do příjemcům `AllMessages` odběru tématu a selektivně příjemcům `HighMessages` a `LowMessages` odběry tématu (v závislosti na obsah zprávy).
 
 ## <a name="how-to-send-messages-to-a-topic"></a>Postup odesílání zpráv do tématu
 Odeslat zprávu do tématu služby Service Bus, vaše aplikace musí používat `sendTopicMessage` metodu **ServiceBusService** objektu.
 Zprávy odeslané do témat Service Bus jsou **BrokeredMessage** objekty.
-**BrokeredMessage** objekty mají sadu standardních vlastností (jako například `Label` a `TimeToLive`), slovník používaný pro udržení vlastních vlastností specifické pro aplikace a tělo s daty řetězec. Aplikace může tělo zprávy nastavit předáním řetězcové hodnoty `sendTopicMessage` a veškeré požadované standardní vlastnosti vyplněn prostředkem výchozí hodnoty.
+**BrokeredMessage** objekty mají sadu standardních vlastností (jako například `Label` a `TimeToLive`), slovník používaný pro udržení vlastních vlastností specifické pro aplikace a tělo s daty řetězec. Aplikace může tělo zprávy nastavit předáním řetězcové hodnoty `sendTopicMessage` a veškeré požadované standardní vlastnosti jsou vyplněn výchozí hodnoty.
 
 Následující příklad ukazuje, jak odeslat pět zkušebních zpráv do `MyTopic`. `messagenumber` Hodnota vlastnosti každé zprávy se liší v iteraci smyčky (to určuje, které odběry ji přijmou):
 
@@ -268,7 +268,7 @@ Témata Service Bus podporují maximální velikost zprávy 256 KB [na úrovni S
 ## <a name="receive-messages-from-a-subscription"></a>Příjem zpráv z odběru
 Přijme zprávy z odběru pomocí `receiveSubscriptionMessage` metodu **ServiceBusService** objektu. Ve výchozím nastavení zprávy odstraněny z předplatného, jako jsou načteny. Však lze nastavit volitelný parametr `isPeekLock` k **true** číst (Náhled) a uzamčení zprávy bez odstranění z předplatného.
 
-Výchozí chování pro čtení a odstranění zprávy jako součást operace receive je nejjednodušší model a funguje nejlépe v situacích, ve kterých aplikace může tolerovat možnost, zprávy v případě selhání. Informace o tom toto chování, vezměte v úvahu scénář, ve kterém spotřebitel požadavek na přijetí a poté dojde k chybě před její zpracování. Vzhledem k tomu, že Service Bus se už ale zprávu označila jako spotřebovávanou, pak když aplikace znovu spustí a začne znovu přijímat zprávy, ji budou pravděpodobně nenalezlo zprávu, která se spotřebovala před pádem vynechá.
+Výchozí chování pro čtení a odstranění zprávy jako součást operace receive je nejjednodušší model a funguje nejlépe v situacích, ve kterých aplikace může tolerovat možnost, zprávy v případě selhání. Informace o tom toto chování, vezměte v úvahu scénář, ve kterém spotřebitel požadavek na přijetí a poté dojde k chybě před její zpracování. Vzhledem k tomu, že Service Bus označil zprávu jako spotřebovávanou, pak když aplikace znovu spustí a začne znovu přijímat zprávy, byl vynechán zprávu, která se spotřebovala před pádem vynechá.
 
 Pokud `isPeekLock` parametr je nastaven na **true**, receive stane dvoufázová operaci, která umožňuje to podporuje aplikace, které nemůžou tolerovat chybějících zpráv. Když Service Bus přijme požadavek, najde zprávu, chcete-li využívají, uzamkne ji ostatní uživatelé z dešifrujete proti a vrátí ji do aplikace.
 Poté, co aplikace zpracovává zprávu (nebo spolehlivě uloží pro pozdější zpracování), dokončení druhé fáze přijetí voláním **deleteMessage** metoda a předá zpráva, kterou chcete odstranit jako parametr. **DeleteMessage** metoda označí zprávu jako spotřebovanou a odstraní ji z odběru.

@@ -11,12 +11,12 @@ ms.date: 08/01/2018
 ms.author: ninarn
 ms.topic: conceptual
 ms.reviewer: carlrab
-ms.openlocfilehash: 96ea965ac383ae449afffa62c5e9950c6fd4e4da
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: cbfbe02926907ca3ca5b6c13932c8b67862c8456
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39411929"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43842019"
 ---
 # <a name="create-and-manage-elastic-pools-in-azure-sql-database"></a>Vytvoření a správa elastických fondů Azure SQL Database
 
@@ -104,17 +104,11 @@ Můžete vytvářet a spravovat databázi SQL elastické fondy a databáze ve fo
 |[Elastické fondy – Get](/rest/api/sql/elasticpools/get)|Získá elastického fondu.|
 |[Elastické fondy – seznam serverem](/rest/api/sql/elasticpools/listbyserver)|Vrátí seznam hodnot elastické fondy na serveru.|
 |[Elastické fondy – aktualizace](/rest/api/sql/elasticpools/update)|Aktualizace existujícího elastického fondu.|
-|[Doporučené elastické fondy – Get](/rest/api/sql/recommendedelasticpools/get)|Získá doporučené elastického fondu.|
-|[Doporučené elastické fondy – seznam serverem](/rest/api/sql/recommendedelasticpools/listbyserver)|Vrátí doporučené elastické fondy.|
-|[Doporučené elastické fondy – seznam metrik](/rest/api/sql/recommendedelasticpools/listmetrics)|Vrátí doporučuje metriky elastického fondu.|
 |[Aktivity elastického fondu](/rest/api/sql/elasticpoolactivities)|Vrátí aktivity elastického fondu.|
 |[Elastický fond v činnosti databáze](/rest/api/sql/elasticpooldatabaseactivities)|Vrátí aktivity u databází v elastickém fondu.|
 |[Databáze – vytvořit nebo aktualizovat](/rest/api/sql/databases/createorupdate)|Vytvoří novou databázi nebo aktualizuje existující databázi.|
 |[Databáze - Get](/rest/api/sql/databases/get)|Získá databázi.|
-|[Získat databáze – elastický fond](/rest/api/sql/databases/getbyelasticpool)|Získá databáze v elastickém fondu.|
-|[Získat doporučený fond Elastických databází –](/rest/api/sql/databases/getbyrecommendedelasticpool)|Získá uvnitř doporučený fond elastické databáze.|
 |[Databáze – seznam podle elastického fondu](/rest/api/sql/databases/listbyelasticpool)|Vrátí seznam databází v elastickém fondu.|
-|[Databáze – seznam podle doporučených elastického fondu](/rest/api/sql/databases/listbyrecommendedelasticpool)|Vrátí seznam hodnot uvnitř doporučený fond elastických databází.|
 |[Databáze – seznam serverem](/rest/api/sql/databases/listbyserver)|Vrátí seznam databází na serveru.|
 |[Databáze – aktualizace](/rest/api/sql/databases/update)|Aktualizuje existující databázi.|
 

@@ -8,12 +8,12 @@ ms.service: sql-database
 ms.topic: article
 ms.date: 06/14/2018
 ms.author: jaredmoo
-ms.openlocfilehash: ca21355c836a58591bbbd09874d0c5d0b5c17435
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: ae5dafcebd50ecd22309a7771b0edf01a97fd7a7
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126421"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43842597"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Použití příkazů jazyka Transact-SQL (T-SQL) k vytvoření a správa Elastických úloh databáze
 
@@ -184,7 +184,13 @@ Například skupinu pro všechny výsledky z společně provedení stejné úloh
 
 ## <a name="monitor-database-performance"></a>Monitorování výkonu databáze
 
-Následující příklad vytvoří novou úlohu ke shromažďování dat výkonu z několika databází.  
+Následující příklad vytvoří novou úlohu ke shromažďování dat výkonu z několika databází.
+
+Ve výchozím nastavení bude vypadat agent úlohy k vytvoření této tabulky můžete ukládat výsledky vrácené v. Díky tomu přihlašovací jméno přidružené k pověření použité pro přihlašovací údaje, které výstup muset mít dostatečná oprávnění k provedení této. Pokud chcete ručně vytvořit tabulku předem je potřeba mít následující vlastnosti:
+1. Sloupce se správným názvem a datové typy pro sadu výsledků dotazu.
+2. Další sloupec pro internal_execution_id s datovým typem uniqueidentifier.
+3. Neclusterovaný index s názvem "IX_<TableName>_Internal_Execution_ID" ve sloupci internal_execution_id.
+
 Připojte se k [ *databáze úloh* ](elastic-jobs-overview.md#job-database) a spusťte následující příkazy:
 
 ```sql

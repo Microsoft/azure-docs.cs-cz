@@ -11,12 +11,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 04/15/2018
 ms.author: ghogen
-ms.openlocfilehash: 5b3cea87e7762e492432722c54a1a8aaa342b84a
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: d2ab34b3737ec00e4adc464f6d2255203fb6ae08
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42059415"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43840615"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Přidání služby Key Vault do vaší webové aplikace pomocí připojených služeb sady Visual Studio
 
@@ -74,6 +74,10 @@ Teď můžete přistupovat tajné klíče v kódu. Další postup se liší v z�
 
 ## <a name="access-your-secrets-in-code-aspnet-core-projects"></a>Přístup k vaší tajných kódů v kódu (projekty ASP.NET Core)
 
+Připojení ke službě Key Vault je nastavený při spuštění třídou, která implementuje [Microsoft.AspNetCore.Hosting.IHostingStartup](/dotnet/api/microsoft.aspnetcore.hosting.ihostingstartup?view=aspnetcore-2.1) pomocí způsob, jak rozšíření chování při spuštění, který je popsaný v [vylepšení aplikace z externího sestavení v ASP.NET Core s IHostingStartup](/aspnet/core/fundamentals/host/platform-specific-configuration). Třída při spuštění používá dvou proměnných prostředí, které obsahují informace o připojení služby Key Vault: ASPNETCORE_HOSTINGSTARTUP__KEYVAULT__CONFIGURATIONENABLED nastavena na hodnotu true a ASPNETCORE_HOSTINGSTARTUP__KEYVAULT__CONFIGURATIONVAULT, nastavte na klíč Adresa URL trezoru. Tyto jsou přidány do souboru launchsettings.json při spuštění **přidat připojenou službu** procesu.
+
+Pro přístup k vaší tajných kódů:
+
 1. V sadě Visual Studio v projektu ASP.NET Core teď můžete odkazovat těchto tajných kódů pomocí těchto výrazů v kódu:
  
    ```csharp
@@ -99,6 +103,10 @@ Teď můžete přistupovat tajné klíče v kódu. Další postup se liší v z�
 1. Sestavení a spuštění webové aplikace, přejděte na stránku o a zobrazit hodnotu "tajné".
 
 ## <a name="access-your-secrets-in-code-aspnet-471-projects"></a>Přístup k vaší tajných kódů v kódu (ASP.NET 4.7.1 projektů)
+
+Připojení ke službě Key Vault nastavuje třídu ConfigurationBuilder pomocí informace, které se přidal do souboru web.config, když se pustíte do **přidat připojenou službu** procesu.
+
+Pro přístup k vaší tajných kódů:
 
 1. Upravte soubor web.config následujícím způsobem. Klíče jsou zástupné symboly, které budou nahrazeny AzureKeyVault ConfigurationBuilder s hodnotami tajných klíčů ve službě Key Vault.
 

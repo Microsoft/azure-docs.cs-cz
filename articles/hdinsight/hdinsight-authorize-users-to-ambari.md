@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/26/2017
 ms.author: maxluk
-ms.openlocfilehash: 7734848035eeab3c38a57b9999f8cda77f6a4e24
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: f1aa80ec9df8faee4cf5ea98910e28cfc11a7920
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43107152"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782123"
 ---
 # <a name="authorize-users-for-ambari-views"></a>Autorizace uživatelů pro zobrazení Ambari
 
@@ -116,7 +116,7 @@ Zobrazení seznamu poskytuje funkce pro rychlé úpravy do dvou kategorií: uži
 
     ![Role zobrazení seznamu – Uživatelé](./media/hdinsight-authorize-users-to-ambari/roles-list-view-users.png)
 
-* Skupiny kategorií v zobrazení seznamu zobrazuje všechny skupiny a role přiřazených ke každé skupině. V našem příkladu seznam skupin se synchronizují ze služby Azure AD skupiny zadané v **přístupová skupina uživatelů** vlastnost nastavení domény clusteru. Zobrazit [vytvořit cluster HDInsight připojený k doméně](/domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-a-domain-joined-hdinsight-cluster).
+* Skupiny kategorií v zobrazení seznamu zobrazuje všechny skupiny a role přiřazených ke každé skupině. V našem příkladu seznam skupin se synchronizují ze služby Azure AD skupiny zadané v **přístupová skupina uživatelů** vlastnost nastavení domény clusteru. Zobrazit [vytvořit cluster HDInsight připojený k doméně](./domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-a-domain-joined-hdinsight-cluster).
 
     ![Role zobrazení seznamu – skupiny](./media/hdinsight-authorize-users-to-ambari/roles-list-view-groups.png)
 

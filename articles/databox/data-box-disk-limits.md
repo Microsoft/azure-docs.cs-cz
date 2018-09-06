@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 07/12/2018
+ms.date: 09/04/2018
 ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: 358f81498d8caad7c0a67519bbb776efa153249f
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 3b26c5f9a6d75725fb102d89192e77988b295dea
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42054826"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782021"
 ---
 # <a name="azure-data-box-disk-limits-preview"></a>Omezení pro Azure Data Box Disk (Preview)
 
@@ -33,7 +33,7 @@ Jak nasadit a provozovat řešení Microsoft Azure Data Box Disk vezměte v úva
 
 ## <a name="data-box-service-limits"></a>Omezení služby data Box
 
- - Služba data Box je dostupná jenom v USA a EU ve všech oblastech Azure pro veřejný cloud Azure.
+ - Služba data Box je dostupná jenom v USA, Evropa, Kanadě a Austrálii ve všech oblastech Azure pro veřejný cloud Azure.
  - Data Box Disk podporuje jeden účet úložiště.
 
 ## <a name="data-box-disk-performance"></a>Data Box Disk výkonu
@@ -77,8 +77,8 @@ Tady jsou velikosti Azure objekty, které je možné zapisovat. Ujistěte se, ž
 
 | Typ objektu Azure | Výchozí omezení                                             |
 |-------------------|-----------------------------------------------------------|
-| Objekt Blob bloku        | ~ 8 TB                                                 |
-| Objekt Blob stránky         | 1 TB <br> (Každý soubor odeslat ve formátu objektů Blob stránky musí být zarovnaná 512 bajtů (integrální více), jinak se odeslání nezdaří. <br> VHD a VHDX jsou 512 bajtů zarovnána.) |
+| Objekt blob bloku        | ~ 8 TB                                                 |
+| Objekt blob stránky         | 1 TB <br> (Každý soubor odeslat ve formátu objektů Blob stránky musí být zarovnaná 512 bajtů (integrální více), jinak se odeslání nezdaří. <br> VHD a VHDX jsou 512 bajtů zarovnána.) |
 
 
 ## <a name="azure-block-blob-and-page-blob-naming-conventions"></a>Objekt blob bloku Azure a zásady vytváření názvů objektů blob stránky

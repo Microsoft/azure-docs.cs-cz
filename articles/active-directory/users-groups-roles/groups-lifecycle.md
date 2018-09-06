@@ -14,12 +14,12 @@ ms.date: 03/09/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 656577211a992432366033326362c9892f7ba6ef
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 29a53101bff8c384d01f952c4498e09d9d970ee3
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37861639"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841730"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Konfigurace zásad vypršení platnosti pro skupiny Office 365
 
@@ -43,9 +43,9 @@ Role | Oprávnění
 Globální správce nebo správce uživatelských účtů | Můžete vytvořit, číst, aktualizovat nebo odstranit nastavení zásad vypršení platnosti skupin Office 365<br>Můžete obnovit jakékoli skupiny Office 365
 Uživatel | Můžete obnovit skupinu Office 365, které vlastní<br>Můžete obnovit skupinu Office 365, které vlastní<br>Může číst nastavení zásad vypršení platnosti
 
-Další informace o oprávnění k obnovení odstraněné skupiny, najdete v části [obnovení odstraněné skupiny Office 365 ve službě Azure Active Directory](../fundamentals/active-directory-groups-restore-azure-portal.md).
+Další informace o oprávnění k obnovení odstraněné skupiny, najdete v části [obnovení odstraněné skupiny Office 365 ve službě Azure Active Directory](groups-restore-deleted.md).
 
-## <a name="set-group-expiration"></a>Nastavit vypršení platnosti skupiny
+## <a name="set-group-expiration"></a>Nastavení vypršení platnosti skupiny
 
 1. Otevřít [centrum pro správu Azure AD](https://aad.portal.azure.com) pomocí účtu, který je globálním správcem ve vašem tenantovi Azure AD.
 
@@ -71,7 +71,7 @@ Když vyprší platnost skupiny, skupina se odstranila jeden den po datu vyprše
 
 ![E-mailové oznámení odstranění skupiny](./media/groups-lifecycle/deletion-notification.png)
 
-Skupiny je možné obnovit do 30 dní od jeho odstranění tak, že vyberete **obnovení skupiny** nebo pomocí rutin prostředí PowerShell, jak je popsáno v [obnovení odstraněné skupiny Office 365 ve službě Azure Active Directory](../fundamentals/active-directory-groups-restore-azure-portal.md).
+Skupiny je možné obnovit do 30 dní od jeho odstranění tak, že vyberete **obnovení skupiny** nebo pomocí rutin prostředí PowerShell, jak je popsáno v [obnovení odstraněné skupiny Office 365 ve službě Azure Active Directory](groups-restore-deleted.md).
     
 Pokud na skupinu, kterou jste obnovení obsahuje dokumenty, Sharepointových webech nebo další trvalé objekty, může trvat až 24 hodin plně obnovit skupiny a její obsah.
 
@@ -146,8 +146,8 @@ Následující rutiny slouží ke konfiguraci zásad podrobněji. Další inform
 ## <a name="next-steps"></a>Další postup
 Tyto články poskytují další informace o skupinách Azure AD.
 
-* [Zobrazit existující skupiny](../fundamentals/active-directory-groups-view-azure-portal.md)
+* [Zobrazení existujících skupin](../fundamentals/active-directory-groups-view-azure-portal.md)
 * [Správa nastavení skupiny](../fundamentals/active-directory-groups-settings-azure-portal.md)
-* [Spravovat členy skupiny](../fundamentals/active-directory-groups-members-azure-portal.md)
+* [Správa členů skupiny](../fundamentals/active-directory-groups-members-azure-portal.md)
 * [Správa členství ve skupině](../fundamentals/active-directory-groups-membership-azure-portal.md)
-* [Správa dynamické pravidel pro uživatele ve skupině](groups-dynamic-membership.md)
+* [Správa dynamických pravidel pro uživatele ve skupině](groups-dynamic-membership.md)

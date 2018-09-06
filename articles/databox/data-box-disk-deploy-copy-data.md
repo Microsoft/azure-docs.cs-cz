@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/12/2018
+ms.date: 09/05/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: b0769ba70f495728df5c38b43bae4059b27de88b
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: f25d0b3522658d5fcd4b34110cb03b624dd9e7b1
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39010816"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841501"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>Kurz: Kopírování dat na Azure Data Box Disk a jejich ověření
 
@@ -76,8 +76,8 @@ Pokud chcete připojit počítač k Data Box Disku a zkopírovat z něj data, pr
     
     |Parametry/možnosti  |Popis |
     |--------------------|------------|
-    |<Source>            | Určuje cestu ke zdrojovému adresáři.        |
-    |<Destination>       | Určuje cestu k cílovému adresáři.        |
+    |Zdroj            | Určuje cestu ke zdrojovému adresáři.        |
+    |Cíl       | Určuje cestu k cílovému adresáři.        |
     |/E                  | Zkopíruje podadresáře včetně prázdných adresářů. |
     |/MT[:N]             | Vytvoří vícevláknové kopie s N vlákny, kde N je celé číslo mezi 1 a 128. <br>Výchozí hodnota N je 8.        |
     |/R: <N>             | Určuje počet opakovaných pokusů při neúspěšném kopírování. Výchozí hodnota N je 1 000 000 (jeden milion opakování).        |
@@ -181,7 +181,7 @@ Pokud chcete ověřit integritu dat, proveďte následující kroky.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste se dozvěděli o tématech spojených s Azure Data Box Diskem, například:
+V tomto kurzu jste se dozvěděli o tématech spojených s Azure Data Box Diskem, například jste se naučili:
 
 > [!div class="checklist"]
 > * Kopírování dat na Data Box Disk

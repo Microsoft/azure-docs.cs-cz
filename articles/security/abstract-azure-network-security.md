@@ -3,15 +3,15 @@ title: Zabezpečení sítě Azure abstraktní
 description: Abstrakce pro dokument white paper zabezpečení sítě Azure.
 author: TomShinder
 ms.author: TomSh
-ms.date: 08/8/2018
+ms.date: 08/08/2018
 ms.topic: article
 ms.service: security
-ms.openlocfilehash: 53d834d24f546517f8067e71b3ae487712170b99
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: f40006b4213becbd65ff2eebe8a098ca00b40180
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39716770"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43840201"
 ---
 # <a name="azure-network-security"></a>Zabezpečení sítě Azure
 ## <a name="abstract"></a>Abstraktní

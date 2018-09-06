@@ -1,0 +1,65 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: d3e8a597362925ad2f7a87a7373cfe1aeb2591ff
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43783626"
+documentType: LandingData
+title: Dokumentace k Privileged Identity Managementu
+metadata:
+  document_id: 
+  title: Dokumentace ke službě Azure AD Privileged Identity Management (PIM) | Microsoft Docs
+  description: Přečtěte si víc o použití služby Azure Active Directory (Azure AD) Privileged Identity Management (PIM) pro omezení stávajícího přístupu správců k privilegovaným rolím, zjištění, kdo má přístup, a kontrolu privilegovaného přístupu.
+  services: active-directory
+  author: rolyon
+  manager: mtillman
+  ms.service: active-directory
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 09/04/2018
+  ms.author: rolyon
+abstract:
+  description: Azure Active Directory (Azure AD) Privileged Identity Management (PIM) umožňuje omezit stávající přístup správců k privilegovaným rolím, zjišťovat, kdo má přístup, a kontrolovat privilegovaný přístup.
+sections:
+- title: Návody pro oprávněné uživatele a uživatele s aktivními rolemi
+  items:
+  - type: table
+    style: dataMatrix
+    columns:
+    - image:
+        src: media/index/Azure Active Directory_COLOR.svg
+      title: Role adresáře Azure AD
+    - image:
+        src: media/index/Cubes.svg
+      title: Prostředky Azure
+    rows:
+    - title: Aktivace mých rolí
+      values:
+      - href: /azure/active-directory/privileged-identity-management/pim-how-to-activate-role
+      - href: /azure/active-directory/privileged-identity-management/pim-resource-roles-activate-your-roles
+- title: Návody pro správce
+  items:
+  - type: table
+    style: dataMatrix
+    columns:
+    - image:
+        src: media/index/Azure Active Directory_COLOR.svg
+      title: Role adresáře Azure AD
+    - image:
+        src: media/index/Cubes.svg
+      title: Prostředky Azure
+    rows:
+    - title: Přiřazení rolí
+      values:
+      - href: /azure/active-directory/privileged-identity-management/pim-how-to-add-role-to-user
+      - href: /azure/active-directory/privileged-identity-management/pim-resource-roles-assign-roles
+    - title: Schvalování žádostí
+      values:
+      - href: /azure/active-directory/privileged-identity-management/azure-ad-pim-approval-workflow
+      - href: /azure/active-directory/privileged-identity-management/pim-resource-roles-approval-workflow
+    - title: Konfigurace nastavení role
+      values:
+      - href: /azure/active-directory/privileged-identity-management/pim-how-to-change-default-settings
+      - href: /azure/active-directory/privileged-identity-management/pim-resource-roles-configure-role-settings

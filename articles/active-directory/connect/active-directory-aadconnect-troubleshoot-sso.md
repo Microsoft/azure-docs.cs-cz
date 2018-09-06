@@ -9,15 +9,15 @@ ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
-ms.date: 07/26/2018
+ms.date: 09/04/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: def1bbd52e05666f380ab9d5a9295366798d5ae0
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 029ba1c936862ef5c5f774dc683c4746e157c4aa
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626919"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43781931"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Řešení potíží s Azure Active Directory bezproblémové jednotné přihlašování
 
@@ -34,7 +34,7 @@ Tento článek vám pomůže najít řešení potíží s informace o běžných
 - Bezproblémové jednotné přihlašování v aplikaci Internet Explorer nebude fungovat, pokud je zapnuté rozšířené chráněný režim.
 - Bezproblémové jednotné přihlašování nefunguje pro mobilní prohlížeče na zařízení s iOS a Android.
 - Pokud je uživatel součástí příliš mnoho skupin ve službě Active Directory, lístku Kerberos uživatele budou pravděpodobně příliš velký pro zpracování, a to způsobí, že bezproblémového jednotného přihlašování k selhání. Požadavky služby Azure AD HTTPS může obsahovat záhlaví a maximální velikost 50 KB; Lístky protokolu Kerberos musí být menší než toto omezení tak, aby vyhovovaly jiné artefakty Azure AD (obvykle 2 – 5 KB) jako jsou soubory cookie. Naše doporučení je omezit uživatele členství ve skupinách a zkuste to znovu.
-- Pokud se synchronizace 30 nebo více doménovými strukturami Active Directory, nelze povolit bezproblémového jednotného přihlašování pomocí služby Azure AD Connect. Jako alternativní řešení můžete [ručně povolit](#manual-reset-of-azure-ad-seamless-sso) funkci ve vašem tenantovi.
+- Pokud se synchronizace 30 nebo více doménovými strukturami Active Directory, nelze povolit bezproblémového jednotného přihlašování pomocí služby Azure AD Connect. Jako alternativní řešení můžete [ručně povolit](#manual-reset-of-the-feature) funkci ve vašem tenantovi.
 - Přidat adresu URL služby Azure AD (https://autologon.microsoftazuread-sso.com) do zóny důvěryhodných serverů místo zóny místního intranetu *blokuje uživatele z přihlášení*.
 - Zákaz použití **RC4_HMAC_MD5** typ šifrování pro protokol Kerberos v nastavení služby Active Directory přeruší bezproblémového jednotného přihlašování. V nástroji Editor správy zásad skupiny Ujistěte se, že hodnota zásad pro **RC4_HMAC_MD5** pod **konfigurace počítače -> Nastavení Windows -> Nastavení zabezpečení -> Místní zásady -> Možnosti zabezpečení – > "Zabezpečení sítě: konfigurovat typy šifrování povolené pro protokol Kerberos"** je "povoleno".
 
@@ -106,10 +106,9 @@ Pokud se vám nepomohly řešení potíží, můžete ručně obnovit funkci ve 
 
 ### <a name="step-1-import-the-seamless-sso-powershell-module"></a>Krok 1: Naimportujte modul Powershellu bezproblémové jednotné přihlašování
 
-1. Stáhněte a nainstalujte [Microsoft Online Services přihlášení pomocníka](http://go.microsoft.com/fwlink/?LinkID=286152).
-2. Stáhněte a nainstalujte [64bitová verze modulu Azure Active Directory pro prostředí Windows PowerShell](http://go.microsoft.com/fwlink/p/?linkid=236297).
-3. Přejděte `%programfiles%\Microsoft Azure Active Directory Connect` složky.
-4. Naimportujte modul Powershellu bezproblémové jednotné přihlašování pomocí tohoto příkazu: `Import-Module .\AzureADSSO.psd1`.
+1. Nejprve stáhnout a nainstalovat [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview).
+2. Přejděte `%programfiles%\Microsoft Azure Active Directory Connect` složky.
+3. Naimportujte modul Powershellu bezproblémové jednotné přihlašování pomocí tohoto příkazu: `Import-Module .\AzureADSSO.psd1`.
 
 ### <a name="step-2-get-the-list-of-active-directory-forests-on-which-seamless-sso-has-been-enabled"></a>Krok 2: Získání seznamu doménových struktur služby Active Directory, na kterých se povolila bezproblémového jednotného přihlašování
 
@@ -129,8 +128,10 @@ Pokud se vám nepomohly řešení potíží, můžete ručně obnovit funkci ve 
 ### <a name="step-4-enable-seamless-sso-for-each-active-directory-forest"></a>Krok 4: Povolení bezproblémového jednotného přihlašování pro každou doménovou strukturu služby Active Directory
 
 1. Volání `Enable-AzureADSSOForest`. Po zobrazení výzvy zadejte přihlašovací údaje správce domény pro určené doménové struktuře služby Active Directory.
+
    >[!NOTE]
    >Používáme zadané v uživatele hlavní názvy (UPN) uživatelské jméno správce domény (johndoe@contoso.com) formát nebo kvalifikovaný účtu sam formát názvu domény (contoso\janmacek nebo contoso.com\johndoe), se najít odpovídající doménovou strukturu AD. Pokud používáte účtu sam kvalifikovaný název domény, používáme doména uživatelské jméno pro [vyhledejte řadič domény ze správce domény s DNS](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx). Pokud místo toho použít hlavní název uživatele jsme [přeložit na účtu sam kvalifikovaný název domény](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa) před vyhledání vhodné řadiče domény.
+
 2. Opakujte předchozí krok pro každou doménovou strukturu služby Active Directory, ve které chcete nastavit tuto funkci.
 
 ### <a name="step-5-enable-the-feature-on-your-tenant"></a>Krok 5. Povolení této funkce na tenantovi

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 05/21/2018
+ms.date: 09/05/2018
 ms.author: roiyz
-ms.openlocfilehash: 58827e8abd6394b1c9359ecbabbee37193a34706
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 858c586151c8a0dd5378794a5057c22a423c43cf
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414290"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782735"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>Log Analytics rozšíření virtuálního počítače pro Linux
 
@@ -36,18 +36,24 @@ Rozšíření agenta Log Analytics je možné spouštět proti těmto Linuxovýc
 
 | Distribuce | Verze |
 |---|---|
-| CentOS Linux | 5, 6 a 7 (x86/x64) |
-| Oracle Linux | 5, 6 a 7 (x86/x64) |
-| Red Hat Enterprise Linux Server | 5, 6 a 7 (x86/x64) |
-| Debian GNU/Linux | 6, 7, 8 a 9 (x86/x64) |
-| Ubuntu | 12.04 LTS, 14.04 LTS, 16.04 LTS (x86/x64) |
-| SUSE Linux Enterprise Server | 11 a 12 (x86/x64) |
+| CentOS Linux | 6 a 7 (x86/x64) |
+| Amazon Linux | 2017.09 | 
+| Oracle Linux | 6 a 7 (x86/x64) |
+| Red Hat Enterprise Linux Server | 6 a 7 (x86/x64) |
+| Debian GNU/Linux | 8 a 9 (x86/x64) |
+| Ubuntu | 14.04 LTS, 16.04 LTS a 18.04 LTS (x86/x64) |
+| SUSE Linux Enterprise Server | 12 (x86/x64) |
+
+>[!NOTE]
+>OpenSSL nižší než verze 1.x se nepodporuje na libovolné platformě a verze 1.10 je podporován pouze na platformách x86_64 (64 bitů).  
+>
 
 ### <a name="agent-and-vm-extension-version"></a>Verze agenta a rozšíření virtuálního počítače
 Následující tabulka obsahuje mapování verzi rozšíření virtuálního počítače Log Analytics a agenta Log Analytics sady pro každou vydanou verzí. Odkaz na poznámky k verzi sady agenta Log Analytics je součástí. Poznámky k verzi obsahují informace o opravy a nové funkce, které jsou k dispozici pro daného agenta verze.  
 
 | Verze rozšíření log Analytics virtuálního počítače s Linuxem | Verze sady prostředků log Analytics agenta | 
 |--------------------------------|--------------------------|
+| 1.7.7 | [1.6.1-3](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.6.1.3)| 
 | 1.6.42.0 | [1.6.0-42](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.6.0-42)| 
 | 1.4.60.2 | [1.4.4-210](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_GA_v1.4.4-210)| 
 | 1.4.59.1 | [1.4.3-174](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_GA_v1.4.3-174)|
@@ -84,7 +90,7 @@ Následující kód JSON ukazuje schéma pro rozšíření agenta Log Analytics.
   "properties": {
     "publisher": "Microsoft.EnterpriseCloud.Monitoring",
     "type": "OmsAgentForLinux",
-    "typeHandlerVersion": "1.6",
+    "typeHandlerVersion": "1.7",
     "settings": {
       "workspaceId": "myWorkspaceId"
     },
@@ -102,7 +108,7 @@ Následující kód JSON ukazuje schéma pro rozšíření agenta Log Analytics.
 | apiVersion | 2015-06-15 |
 | vydavatele | Microsoft.EnterpriseCloud.Monitoring |
 | type | OmsAgentForLinux |
-| typeHandlerVersion | 1.6 |
+| typeHandlerVersion | 1.7 |
 | ID pracovního prostoru (např.) | 6f680a37-00c6-41c7-a93f-1437e3462574 |
 | workspaceKey (např.) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI+rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ== |
 
@@ -127,7 +133,7 @@ V následujícím příkladu se předpokládá, že rozšíření virtuálního 
   "properties": {
     "publisher": "Microsoft.EnterpriseCloud.Monitoring",
     "type": "OmsAgentForLinux",
-    "typeHandlerVersion": "1.6",
+    "typeHandlerVersion": "1.7",
     "settings": {
       "workspaceId": "myWorkspaceId"
     },
@@ -152,7 +158,7 @@ Při vkládání rozšíření JSON v kořenovém adresáři šablony, název pr
   "properties": {
     "publisher": "Microsoft.EnterpriseCloud.Monitoring",
     "type": "OmsAgentForLinux",
-    "typeHandlerVersion": "1.6",
+    "typeHandlerVersion": "1.7",
     "settings": {
       "workspaceId": "myWorkspaceId"
     },
@@ -173,7 +179,7 @@ az vm extension set \
   --vm-name myVM \
   --name OmsAgentForLinux \
   --publisher Microsoft.EnterpriseCloud.Monitoring \
-  --version 1.6 --protected-settings '{"workspaceKey": "omskey"}' \
+  --version 1.7 --protected-settings '{"workspaceKey": "omskey"}' \
   --settings '{"workspaceId": "omsid"}'
 ```
 
@@ -200,12 +206,11 @@ Rozšíření provádění výstup je zaznamenán do následujícího souboru:
 | 9 | Povolit volá předčasně ukončen. | [Aktualizace agenta Azure Linux](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent) nejnovější dostupnou verzi. |
 | 10 | Virtuální počítač je už připojený k pracovnímu prostoru Log Analytics | Připojení virtuálního počítače do pracovního prostoru, určená ve schématu rozšíření, stopOnMultipleConnections nastavena na hodnotu false v nastavení veřejné nebo odeberte tuto vlastnost. Tento virtuální počítač se fakturují za každý pracovní prostor po připojení. |
 | 11 | Neplatná konfigurace rozšíření k dispozici | Postupujte podle předchozích ukázkách nastavit všechny hodnoty vlastností nezbytné pro nasazení. |
-| 12 | Správce balíčků dpkg je uzamčen. | Ujistěte se, že všechny dpkg operace update v počítači dokončení a zkuste to znovu. |
 | 17 | Selhání instalace balíčku OMS | 
 | 19 | Selhání instalace balíčku (OMI) | 
 | 20 | Selhání instalace balíčku SCX |
 | 51 | Toto rozšíření nepodporuje operační systém Virtuálního počítače | |
-| 55 | Nelze se připojit ke službě Microsoft Operations Management Suite | Zkontrolujte, že systém má přístup k Internetu nebo že byl poskytnut správný proxy server HTTP. Kromě toho zkontrolujte správnost ID pracovního prostoru. |
+| 55 | Nejde se připojit ke službě OMS nebo chybějící požadované balíčky nebo dpkg balíček správce uzamčeno| Zkontrolujte, že systém má přístup k Internetu nebo že byl poskytnut správný proxy server HTTP. Kromě toho zkontrolujte správnost ID pracovního prostoru a ověřte, zda jsou nainstalované nástroje curl a cíl. |
 
 Další informace o odstraňování potíží najdete na [Průvodce odstraňováním potíží OMS Agent pro Linux](../../log-analytics/log-analytics-azure-vmext-troubleshoot.md).
 

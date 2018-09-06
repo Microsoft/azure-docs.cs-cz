@@ -1,25 +1,24 @@
 ---
 title: Instalace místní brány dat – Azure Logic Apps | Dokumentace Microsoftu
-description: Jak si stáhnout a nainstalovat na místní bránu dat z aplikací logiky přistupujete k datům v místním prostředí
+description: Předtím, než jste měli přístup k datům v místní instalaci Azure Logic Apps, stáhněte a nainstalujte na místní bránu dat
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
+ms.reviewer: yshoukry, LADocs
 ms.topic: article
 ms.date: 07/20/2018
-ms.reviewer: yshoukry, LADocs
-ms.suite: integration
-ms.openlocfilehash: 616e3d81d577fd30e65117ec15c65250d3b3e27e
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: d4fbbcb81433876e4c57763b8a90b3ff1168a699
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503644"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43842443"
 ---
-# <a name="install-the-on-premises-data-gateway-for-azure-logic-apps"></a>Instalace místní brány dat pro Azure Logic Apps
+# <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Instalace místní brány dat pro Azure Logic Apps
 
-Předtím, než aplikace logiky můžete připojit k místním zdrojům dat, stáhněte a nainstalujte na místní bránu dat na místním počítači. Brána funguje jako most poskytující rychlý datové přenosy a šifrování mezi zdroje dat v místním prostředí (ne v cloudu) a logic apps. Tento článek popisuje, jak můžete stáhnout, nainstalovat a nastavit na místní bránu dat. 
+Před připojením k místním zdrojům dat z Azure Logic Apps, stáhněte a nainstalujte na místní bránu dat na místním počítači. Brána funguje jako most poskytující rychlý datové přenosy a šifrování mezi zdroje dat v místním prostředí (ne v cloudu) a logic apps. Tento článek popisuje, jak můžete stáhnout, nainstalovat a nastavit na místní bránu dat. 
 
 Můžete použít stejnou instalaci brány s ostatními službami, jako je například Power BI, Microsoft Flow, PowerApps a Azure Analysis Services. Další informace o [jak brána dat funguje](#gateway-cloud-service).
 
@@ -52,7 +51,11 @@ Informace o tom, jak použít bránu s ostatními službami, najdete v těchto �
 
 ## <a name="prerequisites"></a>Požadavky
 
-* A [pracovního nebo školního účtu](../active-directory/fundamentals/sign-up-organization.md) , který má [předplatného Azure](https://docs.microsoft.com/azure/architecture/cloud-adoption-guide/adoption-intro/subscription-explainer). Během instalace brány přihlášení k tomuto účtu tak instalaci brány můžete přidružit k vašemu předplatnému Azure. Později také použít stejný účet při vytváření prostředku Azure pro vaši instalaci brány na webu Azure Portal. Pokud nemáte ještě předplatné Azure <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrovat si bezplatný účet Azure</a>.
+* A [pracovního nebo školního účtu](../active-directory/fundamentals/sign-up-organization.md) , který má [předplatného Azure](https://docs.microsoft.com/azure/architecture/cloud-adoption-guide/adoption-intro/subscription-explainer) 
+
+  Během instalace brány přihlášení k tomuto účtu tak instalaci brány můžete přidružit k vašemu předplatnému Azure. 
+  Později také použít stejný účet při vytváření prostředku Azure pro vaši instalaci brány na webu Azure Portal. 
+  Pokud nemáte ještě předplatné Azure <a href="https://azure.microsoft.com/free/" target="_blank">zaregistrovat si bezplatný účet Azure</a>.
 
 * Tady jsou požadavky pro místní počítač:
 
@@ -72,8 +75,7 @@ Informace o tom, jak použít bránu s ostatními službami, najdete v těchto �
     > [!TIP]
     > Abyste minimalizovali latenci, můžete bránu instalujete jak nejblíže ke zdroji dat nebo na stejném počítači, za předpokladu, že máte oprávnění.
 
-  * Bránu nainstalovat na počítač, který *nebude* vypnout, přejděte do režimu spánku nebo připojení k Internetu. Za těchto podmínek nemůže fungovat brány. 
-  Výkon brány může také snížit v bezdrátové síti.
+  * Bránu nainstalovat na počítač, který je připojený k Internetu, vždy zapnutá a *nebude* přejít do režimu spánku. Jinak brána nemůže fungovat. Kromě toho může trpět výkon bezdrátové sítě.
 
   * Během instalace, můžete pouze přihlásit se [pracovního nebo školního účtu](../active-directory/sign-up-organization.md) , který je spravován pomocí služby Azure Active Directory (Azure AD) a účet Microsoft. 
   Také, ujistěte se, že tento účet není Azure B2B účtu (Host). 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: de597424c1be01e651068b7900acbece822610b1
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: d64233883d2dd6fb174c55467fcfcd276b452775
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008371"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782986"
 ---
 # <a name="azure-instance-metadata-service"></a>Služby Azure Instance Metadata
 
@@ -37,10 +37,10 @@ Služba je k dispozici v obecně dostupné oblasti Azure. Ne všechny verze rozh
 
 Oblasti                                        | Dostupnost?                                 | Podporované verze
 -----------------------------------------------|-----------------------------------------------|-----------------
-[Všechny obecně dostupné globálními oblastmi Azure](https://azure.microsoft.com/regions/)     | Obecně dostupná   | 2017-04-02 2017-08-01, 2017-12-01, 2018-02-01
-[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Obecně dostupná | 2017-04-02,2017-08-01
-[Azure (Čína)](https://www.azure.cn/)                                                           | Obecně dostupná | 2017-04-02,2017-08-01
-[Služba Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)                    | Obecně dostupná | 2017-04-02,2017-08-01
+[Všechny obecně dostupné globálními oblastmi Azure](https://azure.microsoft.com/regions/)     | Obecná dostupnost   | 2017-04-02 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02
+[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Obecná dostupnost | 2017-04-02 2017-08-01, 2017-12-01, 2018-02-01
+[Azure (Čína)](https://www.azure.cn/)                                                           | Obecná dostupnost | 2017-04-02 2017-08-01, 2017-12-01, 2018-02-01
+[Služba Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)                    | Obecná dostupnost | 2017-04-02 2017-08-01, 2017-12-01, 2018-02-01
 
 V této tabulce aktualizuje, když jsou k dispozici aktualizace služby, a nebo nové podporované verze jsou k dispozici
 
@@ -49,7 +49,7 @@ Vyzkoušet služba Instance Metadata, vytvoření virtuálního počítače z [A
 ## <a name="usage"></a>Využití
 
 ### <a name="versioning"></a>Správa verzí
-Služba Instance Metadata se systémovou správou verzí. Verze jsou povinné a je aktuální verze na Global Azure `2017-12-01`. Aktuální podporované verze jsou (2017-04-02, 2017-08-01,2017-12-01)
+Služba Instance Metadata se systémovou správou verzí. Verze jsou povinné a je aktuální verze na Global Azure `2018-04-02`. Aktuální podporované verze jsou (2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02)
 
 > [!NOTE] 
 > Předchozí verze preview naplánované události, které jsou podporované jako verze api-version {nejnovější}. Tento formát se už nepodporuje a v budoucnu budou zastaralé.
@@ -299,6 +299,8 @@ subscriptionId | Předplatné Azure pro virtuální počítač | 2017-08-01
 tags | [Značky](../../azure-resource-manager/resource-group-using-tags.md) pro váš virtuální počítač  | 2017-08-01
 resourceGroupName | [Skupina prostředků](../../azure-resource-manager/resource-group-overview.md) pro váš virtuální počítač | 2017-08-01
 placementGroupId | [Skupiny umístění](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) sady škálování vašeho virtuálního počítače | 2017-08-01
+plán | [Plán] (https://docs.microsoft.com/en-us/rest/api/compute/virtualmachines/createorupdate#plan) pro virtuální počítač v něm je Imagí Azure Marketplace, obsahuje název, produktu a vydavatel | 2017-04-02
+publicKeys | Kolekce veřejného klíče [https://docs.microsoft.com/en-us/rest/api/compute/virtualmachines/createorupdate#sshpublickey] přiřazená k virtuálnímu počítači a cesty | 2017-04-02
 vmScaleSetName | [Název škálovací sady virtuálního počítače](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) sady škálování vašeho virtuálního počítače | 2017-12-01
 zóna | [Zóna dostupnosti](../../availability-zones/az-overview.md) vašeho virtuálního počítače | 2017-12-01 
 IPv4/privateIpAddress | Místní adresa IPv4 z virtuálního počítače | 2017-04-02
@@ -379,6 +381,39 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-vers
 }
 ```
 
+
+### <a name="getting-azure-environment-where-the-vm-is-running"></a>Získávání prostředí Azure, ve kterém je virtuální počítač spuštěný. 
+
+Azure má různé soverign cloudů, jako je [Azure Government](https://azure.microsoft.com/overview/clouds/government/) , někdy potřebujete do prostředí Azure pro některé rozhodování modulu runtime. Následující příklad zobrazí, jak toho dosáhnout
+
+**Požadavek**
+
+```
+  $metadataResponse = Invoke-WebRequest "http://169.254.169.254/metadata/instance/compute?api-version=2018-02-01" -H @{"Metadata"="true"} -UseBasicParsing
+  $metadata = ConvertFrom-Json ($metadataResponse.Content)
+ 
+  $endpointsResponse = Invoke-WebRequest "https://management.azure.com/metadata/endpoints?api-version=2017-12-01" -UseBasicParsing
+  $endpoints = ConvertFrom-Json ($endpointsResponse.Content)
+ 
+  foreach ($cloud in $endpoints.cloudEndpoint.PSObject.Properties) {
+    $matchingLocation = $cloud.Value.locations | Where-Object {$_ -match $metadata.location}
+    if ($matchingLocation) {
+      $cloudName = $cloud.name
+      break
+    }
+  }
+ 
+  $environment = "Unknown"
+  switch ($cloudName) {
+    "public" { $environment = "AzureCloud"}
+    "usGovCloud" { $environment = "AzureUSGovernment"}
+    "chinaCloud" { $environment = "AzureChinaCloud"}
+    "germanCloud" { $environment = "AzureGermanCloud"}
+  }
+ 
+  Write-Host $environment
+```
+
 ### <a name="examples-of-calling-metadata-service-using-different-languages-inside-the-vm"></a>Příklady volání metadat služby používající různé jazyky ve virtuálním počítači 
 
 Jazyk | Příklad: 
@@ -404,7 +439,7 @@ Puppet | https://github.com/keirans/azuremetadata
    * Služba Instance Metadata aktuálně podporuje pouze instance vytvořené pomocí Azure Resource Manageru. V budoucnu podpora pro virtuální počítače pro cloudové služby, mohou být přidány.
 3. Jsem vytvořil Můj virtuální počítač prostřednictvím Azure Resource Manageru delší zpět. Proč mi viz výpočetních informací o metadatech?
    * Pro všechny virtuální počítače vytvořené po. září 2016, přidejte [značka](../../azure-resource-manager/resource-group-using-tags.md) testováním schopností compute metadat. Pro starší virtuální počítače (vytvořené před. září 2016) přidávat nebo odebírat disky rozšíření nebo data do virtuálního počítače k aktualizaci metadat.
-4. Mi nezobrazují všechna data pro novou verzi 2017-08-01
+4. Mi nezobrazují všechna data pro novou verzi
    * Pro všechny virtuální počítače vytvořené po. září 2016, přidejte [značka](../../azure-resource-manager/resource-group-using-tags.md) testováním schopností compute metadat. Pro starší virtuální počítače (vytvořené před. září 2016) přidávat nebo odebírat disky rozšíření nebo data do virtuálního počítače k aktualizaci metadat.
 5. Proč se zobrazuje chyba `500 Internal Server Error`?
    * Zkuste odeslat žádost podle exponenciální regrese systému. Pokud se problém nevyřeší, obraťte se na podporu Azure.
@@ -414,6 +449,10 @@ Puppet | https://github.com/keirans/azuremetadata
    * Ano je dostupná pro nastavení instance Škálovací metadat služby. 
 8. Jak získat podporu pro službu?
    * Jak získat podporu pro službu, vytvořte problém podpory na webu Azure portal pro virtuální počítač, pokud nejste schopni získat odpověď metadat za dlouhá opakování 
+9. Můžu získat žádosti vypršel časový limit pro moje volání službu?
+   * Volání metadata se musí provádět z primární IP adresy přiřazené síťové karty virtuálního počítače, kromě toho v případě, že jste změnili trasy existuje musí být trasu pro adresu 169.254.0.0/16 mimo síťovou kartou.
+10. Můžu aktualizovat Mé značky v sadě škálování virtuálních počítačů ale nejsou zobrazeny v instancích na rozdíl od virtuálních počítačů?
+   * Aktuálně pro ScaleSets značky zobrazit pouze k virtuálnímu počítači na restartování nebo obnovení z Image/nebo změnit disk na instanci. 
 
    ![Podpora metadat instance](./media/instance-metadata-service/InstanceMetadata-support.png)
     

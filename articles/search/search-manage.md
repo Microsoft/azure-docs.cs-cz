@@ -7,14 +7,14 @@ tags: azure-portal
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 11/09/2017
+ms.date: 08/28/2018
 ms.author: heidist
-ms.openlocfilehash: 6e751715146d0dfa5c89ae8c2e8cb23d8337432f
-ms.sourcegitcommit: e45b2aa85063d33853560ec4bc867f230c1c18ce
+ms.openlocfilehash: fb09e12a5122f6e6671e55c5b5623afdd6b35c29
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43371223"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43842285"
 ---
 # <a name="service-administration-for-azure-search-in-the-azure-portal"></a>Správa služby Azure Search na webu Azure Portal
 > [!div class="op_single_selector"]
@@ -23,16 +23,16 @@ ms.locfileid: "43371223"
 > * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
 > * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
 
-Azure Search je plně spravované cloudové vyhledávací služby používá pro sestavení bohaté možnosti vyhledávání do vlastních aplikací. Tento článek se týká *Správa služby* úlohy, které můžete provádět v [webu Azure portal](https://portal.azure.com) pro vyhledávací službu, která jste zřídili. *Správa služby* je nenáročná záměrné, omezené na následující úlohy:
+Azure Search je plně spravované cloudové vyhledávací služby používá pro sestavení bohaté možnosti vyhledávání do vlastních aplikací. Tento článek popisuje úkoly pro správu služby, které můžete provádět v [webu Azure portal](https://portal.azure.com) pro vyhledávací službu, která jste zřídili. Správa služby je nenáročná záměrné, omezené jenom na následující úlohy:
 
-* Spravovat a zabezpečit přístup k *klíče api Key* používá pro čtení nebo zápis do vaší služby.
+* Správa přístupu k *klíče api Key* používá pro čtení nebo zápis do vaší služby.
 * Upravte kapacitu služby změnou rozdělení oddílů a replik.
 * Monitorovat využití prostředků relativně k maximálními limity vaší úrovně služby.
 
 Všimněte si, že *upgradovat* není uvedena jako úlohu správy. Protože prostředky se přidělují, když je služba zřízená, přechod na jinou úroveň vyžaduje novou službu. Podrobnosti najdete v tématu [vytvoření služby Azure Search](search-create-service-portal.md).
 
 > [!Tip]
-> Hledáte nápovědu o tom, jak analyzovat výkon vyhledávání provoz nebo dotaz? Získejte přehled o množství dotazů, které uživatelé podmínky hledání, a jak úspěšné výsledky hledání jsou zákazníci potřebnými pro konkrétní dokumenty v indexu. Pokyny najdete v tématu [prohledání analýzy provozu pro službu Azure Search](search-traffic-analytics.md), [monitorovat metriky využití a dotaz](search-monitor-usage.md), a [výkon a optimalizace](search-performance-optimization.md).
+> Hledáte nápovědu o tom, jak analyzovat výkon vyhledávání provoz nebo dotaz? Můžete sledovat množství dotazů, které uživatelé podmínky hledání a jak úspěšné hledání, které jsou výsledky v hlavních zákazníků na konkrétní dokumenty v indexu. Další informace najdete v tématu [prohledání analýzy provozu pro službu Azure Search](search-traffic-analytics.md), [monitorovat metriky využití a dotaz](search-monitor-usage.md), a [výkon a optimalizace](search-performance-optimization.md).
 
 <a id="admin-rights"></a>
 
@@ -66,11 +66,11 @@ Pomocí rozhraní REST API služby Search, můžete získat počet v dokumentech
 
 ## <a name="disaster-recovery-and-service-outages"></a>Výpadky obnovení a služby po havárii
 
-I když jsme můžete zachránit vaše data, Azure Search neposkytuje rychlé převzetí služeb při selhání služby, pokud dojde k výpadku na úrovni centra clusteru nebo data. Pokud cluster selže v datovém centru, provozní tým rozpozná a práce je, aby obnovení služby. Výpadek nastane během obnovení služby. Můžete požádat o kredity ke kompenzaci spojeným s nedostupností služby za [smlouva o úrovni služeb (SLA)](https://azure.microsoft.com/support/legal/sla/search/v1_0/). 
+I když jsme můžete zachránit vaše data, Azure Search neposkytuje rychlé převzetí služeb při selhání služby, pokud dojde k výpadku na úrovni centra clusteru nebo data. Pokud cluster selže v datovém centru, provozní tým rozpozná a práce je, aby obnovení služby. Výpadek nastane během obnovení služby, ale můžete požádat o kredity ke kompenzaci spojeným s nedostupností služby za [smlouva o úrovni služeb (SLA)](https://azure.microsoft.com/support/legal/sla/search/v1_0/). 
 
 Pokud byly služby nepřetržitě se vyžaduje při katastrofických selhání mimo ovládací prvek od Microsoftu, může [zřídit další službu](search-create-service-portal.md) v různých oblastech a implementovat strategii geografické replikace k zajištění indexy jsou plně redundantní napříč všemi službami.
 
-Zákazníci, kteří používají [indexery](search-indexer-overview.md) vyplnit a aktualizovat indexy zvládne zotavení po havárii pomocí indexerů konkrétní geografické využívat stejný zdroj dat. Dvě služby v různých oblastech, každé spuštění indexeru, by mohla indexu ze stejného zdroje dat k dosažení geografickou redundancí. Pokud se indexování ze zdroje dat, které jsou geograficky redundantní, mějte na paměti, že indexerů Azure Search lze provést pouze v přírůstkové indexování z primární repliky. V případě převzetí služeb při selhání nezapomeňte znovu přejděte indexer na novou primární repliku. 
+Zákazníci, kteří používají [indexery](search-indexer-overview.md) vyplnit a aktualizovat indexy zvládne zotavení po havárii pomocí indexerů konkrétní geografické využívat stejný zdroj dat. Dvě služby v různých oblastech, každé spuštění indexeru, by mohla indexu stejného zdroje dat k dosažení geografickou redundancí. Pokud se indexování ze zdroje dat, které jsou geograficky redundantní, mějte na paměti, že indexerů Azure Search lze provést pouze v přírůstkové indexování z primární repliky. V případě převzetí služeb při selhání nezapomeňte znovu přejděte indexer na novou primární repliku. 
 
 Pokud je velmi riskantní používat indexery, můžete využít kódu aplikace za účelem nabízených objektů a dat do služby různé vyhledávací paralelně. Další informace najdete v tématu [výkon a optimalizace do služby Azure Search](search-performance-optimization.md).
 
@@ -78,7 +78,7 @@ Pokud je velmi riskantní používat indexery, můžete využít kódu aplikace 
 
 Protože Azure Search je řešení primární datové úložiště, neposkytujeme formální mechanismus pro samoobslužné služby zálohování a obnovení. Pokud omylem odstraníte indexu, je kódu aplikace, která je vhodná k vytváření a naplňování indexu, de facto stane možnost obnovení. 
 
-Opětovné sestavení indexu, by odstranit (za předpokladu, že existuje), znovu vytvořte index ve službě a znovu načíst načtením dat z primárního datového úložiště. Alternativně můžete kontaktovat na zákaznickou podporu o vyřazení indexů Pokud dojde k oblastnímu výpadku.
+Opětovné sestavení indexu, by odstranit (za předpokladu, že existuje), znovu vytvořte index ve službě a znovu načíst načtením dat z primárního datového úložiště.
 
 
 <a id="scale"></a>
@@ -103,12 +103,10 @@ Většina aplikací service má integrovanou potřebu další repliky spíše ne
 Na úrovni Standard se přidají oddíly v násobcích 12 (konkrétně, 1, 2, 3, 4, 6 nebo 12). To je horizontální dělení. Index se vytvoří v 12 horizontální oddíly, které lze vše uložit na 1 oddílu nebo rovnoměrně rozdělí na 2, 3, 4, 6 nebo 12 oddílů (jeden horizontální oddíl na oddíl).
 
 ### <a name="remove-replicas"></a>Odebrat repliky
-Po období vysoké dotazu svazků můžete snížit repliky po načtení dotazu hledání mají normalizované (například po sváteční prodeje jsou přes).
-
-Chcete-li to provést, nastavte posuvník repliky zpět na nižší číslo. Nejsou žádné další kroky z vaší strany. Snížit počet replik ztratí virtuální počítače v datovém centru. Na méně než virtuální počítače před virtuálním se teď spustí dotaz a data operace příjmu. Minimální omezení je jedna replika.
+Po období vysoké dotazu svazků můžete pomocí posuvníku ke snížení repliky po načtení dotazu hledání mají normalizované (například po sváteční prodeje jsou přes). Nejsou žádné další kroky z vaší strany. Snížit počet replik ztratí virtuální počítače v datovém centru. Na méně než virtuální počítače před virtuálním se teď spustí dotaz a data operace příjmu. Požadavek na minimální je jedna replika.
 
 ### <a name="remove-partitions"></a>Odebrat oddíly
-Rozdíl od odebrání repliky, který vyžaduje žádná práce navíc z vaší strany, může mít některé pracovní postup, pokud používáte další úložiště, než je možné snížit. Například pokud vaše řešení používá tři oddíly, downsizing na jeden nebo dva oddíly dojde k chybě pokud nového prostoru úložiště je menší než požadovaný. Jak byste asi očekávali, jsou vaše volby odstranění indexů nebo dokumentů v indexu přidružené k uvolnit nějaké místo nebo zachovat aktuální konfiguraci.
+Rozdíl od odebrání repliky, který vyžaduje žádná práce navíc z vaší strany, může mít některé pracovní postup, pokud používáte další úložiště, než je možné snížit. Například pokud vaše řešení používá tři oddíly, downsizing na jeden nebo dva oddíly dojde k chybě pokud nového prostoru úložiště je menší než se požaduje pro hostování vašeho indexu. Jak byste asi očekávali, jsou vaše volby odstranění indexů nebo dokumentů v indexu přidružené k uvolnit nějaké místo nebo zachovat aktuální konfiguraci.
 
 Neexistuje žádná metoda zjišťování, který říká, které horizontální oddíly indexu jsou uložené na konkrétní oddíly. Každý oddíl poskytuje přibližně 25 GB v úložišti, budete muset snížit úložiště o velikosti, která může být obslouženo počet oddílů, ke kterým máte. Pokud chcete vrátit do jednoho oddílu, všemi horizontálními oddíly 12 muset přizpůsobit.
 

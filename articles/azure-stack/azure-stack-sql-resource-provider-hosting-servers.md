@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/10/2018
+ms.date: 09/05/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: de2e1defeff9ab2dd78bdf019009b62955f73b88
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 4dfeff0e22a541a39a59c37c869af41a7e444fa6
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970547"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43842494"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>Přidání hostitelské servery pro poskytovatele prostředků SQL
 
@@ -78,15 +78,15 @@ Chcete-li přidat samostatný server hostingu, který je už nastavený, postupu
 
 1. Přihlaste se k portálu Azure Stack – operátor jako správce služeb.
 
-2. Vyberte **Procházet** &gt; **prostředky pro správu** &gt; **hostitelské servery SQL**.
+2. Vyberte **všechny služby** &gt; **prostředky pro správu** &gt; **servery hostující SQL**.
 
    ![Hostování servery SQL](./media/azure-stack-sql-rp-deploy/sqlhostingservers.png)
 
-   V části **servery hostující SQL**, poskytovatele prostředků SQL se můžete připojit k instance systému SQL Server, které bude sloužit jako back-endu poskytovatele prostředků.
+   V části **servery hostující SQL**, poskytovatele prostředků SQL se můžete připojit k instance systému SQL Server, který bude sloužit jako back-endu poskytovatele prostředků.
 
-   ![Řídicí panel adaptéru pro SQL](./media/azure-stack-sql-rp-deploy/sqladapterdashboard.png)
+   ![Řídicí panel adaptéru pro SQL](./media/azure-stack-sql-rp-deploy/sqlrp-hostingserver.png)
 
-3. Na **přidat SQL Server pro hostování**, zadejte podrobnosti připojení pro vaši instanci SQL serveru.
+3. Klikněte na tlačítko **přidat** a pak zadejte podrobnosti o připojení pro vaši instanci SQL serveru na **přidat SQL Server pro hostování** okno.
 
    ![Přidat SQL, který je hostitelem serveru](./media/azure-stack-sql-rp-deploy/sqlrp-newhostingserver.png)
 

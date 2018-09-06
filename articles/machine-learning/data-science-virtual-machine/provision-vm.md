@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2018
 ms.author: gokuma
-ms.openlocfilehash: b01ef3701ffb46da57c52e5fe73828ec4252b074
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 8131122f78f743d04e332bfc8dfeba87a8c34236
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43344756"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782650"
 ---
 # <a name="provision-the-windows-data-science-virtual-machine-on-azure"></a>Zřídit Windows virtuální počítač pro datové vědy v Azure
 Microsoft Data virtuálního počítače VĚDY je image virtuálního počítače (VM) Windows Azure. Má předinstalované a nakonfigurovanou řadu nástrojů, které se používají pro analýzu dat a strojové učení. Tyto nástroje jsou zahrnuty:
@@ -126,7 +126,7 @@ Pro vývoj s použitím jazyka Python distribuce Anaconda Python 2.7 i 3.6 nains
 > 
 > 
 
-Anaconda Python 3.6 je nainstalované v **C:\Anaconda**. Anaconda Python 2.7 je nainstalované v **c:\Anaconda\envs\python2**. Podrobné pokyny najdete v článku [dokumentace k PTVS](/visualstudio/python/installing-python-interpreters.md). 
+Anaconda Python 3.6 je nainstalované v **C:\Anaconda**. Anaconda Python 2.7 je nainstalované v **c:\Anaconda\envs\python2**. Podrobné pokyny najdete v článku [dokumentace k PTVS](https://docs.microsoft.com/visualstudio/python/installing-python-interpreters). 
 
 ### <a name="the-jupyter-notebook"></a>Poznámkový blok Jupyter
 Anaconda distribuce také součástí Poznámkový blok Jupyter, prostředí pro sdílení kódu a analýzy. Python 2.7 Python 3.x, PySpark, Julia a R jádrech je předem nakonfigurovány aplikace Jupyter Notebook server. Spusťte Jupyter server a spustit prohlížeč pro přístup k poznámkovému bloku server i tam ikony na ploše nazývá **Poznámkový blok Jupyter**. 

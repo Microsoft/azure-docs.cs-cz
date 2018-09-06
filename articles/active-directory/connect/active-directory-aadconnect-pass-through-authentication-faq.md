@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/23/2018
+ms.date: 09/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 8b5f62daf2b43453aadb0373171bc98f96494688
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 58a33b2d3f06deab4f31c76e04d45f8bd0bbba4c
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215063"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841956"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory předávací ověřování: Nejčastější dotazy
 
@@ -48,7 +48,7 @@ Ano. Předávací ověřování podporuje `Alternate ID` jako uživatelské jmé
 
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>Synchronizaci hodnot hash hesel fungují jako záložní předávací ověřování?
 
-Ne. Předávací ověřování _nemá_ automatické převzetí služeb při selhání pro synchronizaci hodnot hash hesel. Funguje pouze jako záložní pro [scénáře, které předávací ověřování nepodporuje Dnes](active-directory-aadconnect-pass-through-authentication-current-limitations.md#unsupported-scenarios). Aby se zabránilo neúspěšných přihlášení uživatele, měli byste nakonfigurovat předávací ověřování pro [vysoké dostupnosti](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability).
+Ne. Předávací ověřování _nemá_ automatické převzetí služeb při selhání pro synchronizaci hodnot hash hesel. Aby se zabránilo neúspěšných přihlášení uživatele, měli byste nakonfigurovat předávací ověřování pro [vysoké dostupnosti](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability).
 
 ## <a name="can-i-install-an-azure-ad-application-proxymanage-appsapplication-proxymd-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>Je možné nainstalovat [Proxy aplikací Azure AD](../manage-apps/application-proxy.md) konektor na stejném serveru jako Agent předávací ověřování?
 
@@ -56,17 +56,17 @@ Ano. Přejmenované verze předávací ověřování agenta, verze 1.5.193.0 neb
 
 ## <a name="what-versions-of-azure-ad-connect-and-pass-through-authentication-agent-do-you-need"></a>Jaké verze služby Azure AD Connect a předávací ověřování agenta je potřeba?
 
-Tato funkce fungovala, musíte verze 1.1.486.0 nebo později pro Azure AD Connect a 1.5.58.0 nebo novější pro předávací ověřování agenta. Veškerý software nainstalujte na servery s Windows serverem 2012 R2 nebo novější.
+Tato funkce fungovala, musíte verze 1.1.750.0 nebo později pro Azure AD Connect a 1.5.193.0 nebo novější pro předávací ověřování agenta. Veškerý software nainstalujte na servery s Windows serverem 2012 R2 nebo novější.
 
 ## <a name="what-happens-if-my-users-password-has-expired-and-they-try-to-sign-in-by-using-pass-through-authentication"></a>Co se stane, pokud vypršela platnost hesla pro daného uživatele a zkuste se přihlásit pomocí předávacího ověřování?
 
-Pokud jste nakonfigurovali [zpětný zápis hesla](../user-help/active-directory-passwords-update-your-own-password.md) pro konkrétního uživatele, a pokud se uživatel přihlásí pomocí předávacího ověřování, můžete změnit nebo resetování hesel. Hesel, zapíšou se zpět do místní služby Active Directory podle očekávání.
+Pokud jste nakonfigurovali [zpětný zápis hesla](../authentication/concept-sspr-writeback.md) pro konkrétního uživatele, a pokud se uživatel přihlásí pomocí předávacího ověřování, můžete změnit nebo resetování hesel. Hesel, zapíšou se zpět do místní služby Active Directory podle očekávání.
 
 Pokud jste nenakonfigurovali zpětný zápis hesla pro konkrétního uživatele, nebo pokud uživatel nemá platnou Azure AD licenci přiřazenou, uživatel nemůže aktualizovat své heslo služby v cloudu. Nemohou aktualizovat heslo, i v případě, že vypršela platnost jejich hesla. Uživateli se místo toho zobrazí tato zpráva: "vaše organizace nepovoluje aktualizaci hesla na tomto webu. Aktualizovat způsobem doporučeným ve vaší organizaci, nebo požádejte správce, pokud potřebujete pomoc." Uživatel nebo správce musí resetovat své heslo v místní službě Active Directory.
 
 ## <a name="how-does-pass-through-authentication-protect-you-against-brute-force-password-attacks"></a>Jak předávací ověřování chrání vás před útoky na hesla hrubou silou?
 
-Čtení [předávacího ověřování Azure Active Directory: inteligentním uzamčením](../authentication/howto-password-smart-lockout.md) Další informace.
+[Přečtěte si informace o inteligentním uzamčením](../authentication/howto-password-smart-lockout.md).
 
 ## <a name="what-do-pass-through-authentication-agents-communicate-over-ports-80-and-443"></a>Co předávací ověřování agenti začnou komunikovat přes porty 80 a 443?
 
@@ -82,7 +82,7 @@ Ano. Pokud Proxy Auto-Discovery WPAD (Web) je povoleno v místním prostředí, 
 
 ## <a name="can-i-install-two-or-more-pass-through-authentication-agents-on-the-same-server"></a>Můžete nainstalovat dvě nebo více agentů předávací ověřování na stejný server?
 
-Ne, můžete jenom nainstalovat jeden ověřovací Agent nebyl předávací na jednom serveru. Pokud chcete nakonfigurovat předávací ověřování pro zajištění vysoké dostupnosti, postupujte podle pokynů v [předávacího ověřování Azure Active Directory: rychlý start](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability).
+Ne, můžete jenom nainstalovat jeden ověřovací Agent nebyl předávací na jednom serveru. Pokud chcete nakonfigurovat předávací ověřování pro zajištění vysoké dostupnosti, [postupujte podle zde uvedených pokynů](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability).
 
 ## <a name="how-do-i-remove-a-pass-through-authentication-agent"></a>Jak odstranit agenta předávací ověřování?
 
@@ -116,6 +116,10 @@ Pro většinu zákazníků dvě nebo tři agenti ověřování celkem jsou dosta
 ## <a name="can-i-install-the-first-pass-through-authentication-agent-on-a-server-other-than-the-one-that-runs-azure-ad-connect"></a>Můžete nainstalovat první předávací ověřování agenta na jiném serveru než ten, který spouští služby Azure AD Connect?
 
 Ne, tento scénář je _není_ podporována.
+
+## <a name="why-do-i-need-a-cloud-only-global-administrator-account-to-enable-pass-through-authentication"></a>Proč potřebuji výhradně cloudový účet globálního správce pro povolit předávací ověřování
+
+Doporučuje povolení nebo zakázání předávacího ověřování s využitím výhradně cloudový účet globálního správce. Další informace o [přidání výhradně cloudový účet globálního správce](../active-directory-users-create-azure-portal.md). Teď už takto se zajistí, že nezůstanete zamknutí mimo vašeho tenanta.
 
 ## <a name="how-can-i-disable-pass-through-authentication"></a>Jak zakázat předávací ověřování?
 
