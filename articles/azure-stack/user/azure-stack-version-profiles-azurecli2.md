@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/15/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: f57a7f1cc255f9c4553384a7568beee1c2ed1752
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: af7c0f9d7e02e4a3074f2fddbdf8a6e0ab52d423
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42054227"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44024320"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-20-in-azure-stack"></a>Použití profilů verzí API pomocí Azure CLI 2.0 ve službě Azure Stack
 
@@ -94,7 +94,7 @@ $subjectEntry = [string]::Format("# Subject: {0}", $root.Subject)
 $labelEntry   = [string]::Format("# Label: {0}", $root.Subject.Split('=')[-1])
 $serialEntry  = [string]::Format("# Serial: {0}", $root.GetSerialNumberString().ToLower())
 $md5Entry     = [string]::Format("# MD5 Fingerprint: {0}", $md5Hash)
-$sha1Entry    = [string]::Format("# SHA1 Finterprint: {0}", $sha1Hash)
+$sha1Entry    = [string]::Format("# SHA1 Fingerprint: {0}", $sha1Hash)
 $sha256Entry  = [string]::Format("# SHA256 Fingerprint: {0}", $sha256Hash)
 $certText = (Get-Content -Path $pemFile -Raw).ToString().Replace("`r`n","`n")
 

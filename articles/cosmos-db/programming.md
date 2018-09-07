@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: andrl
-ms.openlocfilehash: 8377b13014e2f97518bbc779ee809aaa10d6eb45
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 3c18478fb2996178ee0b75870ce63dfc79ad4c4c
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43287440"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054719"
 ---
 # <a name="azure-cosmos-db-server-side-programming-stored-procedures-database-triggers-and-udfs"></a>Programování na straně serveru služby Azure Cosmos DB: uložené procedury, aktivační události databáze a uživatelem definovanými funkcemi
 

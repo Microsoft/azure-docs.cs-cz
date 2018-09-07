@@ -1,6 +1,6 @@
 ---
-title: Stav spravovat v Azure Service Fabric mikroslužeb | Dokumentace Microsoftu
-description: Jak definovat a spravovat stav služby v Service Fabric
+title: Správa stavu služby Azure Service Fabric | Dokumentace Microsoftu
+description: Zjistěte, jak definovat a spravovat služby stav služby Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: masnider
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: eaa38e864da2525b640fa101ecc807f89de8eeaf
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 48345be959bb9bebf7c30fa71de91b7881863d66
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39072193"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054953"
 ---
 # <a name="service-state"></a>Stav služby
 **Služba stavu** odkazuje v paměti nebo na data na disku, které vyžaduje služba pro funkce. Zahrnuje, třeba datových struktur a členské proměnné, které Služba čte a zapisuje do práce. V závislosti na tom, jak je navržený službu může také obsahovat soubory nebo jiné prostředky, které jsou uložené na disku. Například soubory byste použili databázi k ukládání dat a transakční protokoly.

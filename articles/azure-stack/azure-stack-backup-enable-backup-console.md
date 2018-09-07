@@ -12,14 +12,14 @@ ms.workload: naS
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/16/2018
+ms.date: 09/05/2018
 ms.author: jeffgilb
-ms.openlocfilehash: 6231ee760902618afedf64443690be0b02c4d0eb
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 1373e98b8edac81ebdb15aaf36d8bbfc910029fe
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42055247"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44026181"
 ---
 # <a name="enable-backup-for-azure-stack-from-the-administration-portal"></a>Povolení zálohování pro Azure Stack z portálu pro správu
 Povolte službu Backup infrastruktury prostřednictvím portálu pro správu Azure stacku vytvářet zálohy. Tyto zálohy lze použít k obnovení svého prostředí pomocí cloudu obnovení v případě [závažnému selhání](.\azure-stack-backup-recover-data.md). Účelem zotavení cloudu je zajistit, že uživatelé a operátoři může přihlásit zpátky na portálu po dokončení obnovení. Uživatelé budou mít svá předplatná obnovit včetně oprávnění k přístupu na základě rolí a rolí, původní plány, nabídky a dříve definované výpočetní prostředky, úložiště a síťové kvóty.
@@ -36,7 +36,7 @@ Pro zálohování a obnovení prostředky IaaS a PaaS odděleně od procesů zá
 ## <a name="enable-or-reconfigure-backup"></a>Povolit nebo změnit konfiguraci zálohování
 
 1. Otevřít [portál pro správu služby Azure Stack](azure-stack-manage-portals.md).
-2. Vyberte **další služby** > **infrastruktura zálohování**. Zvolte **konfigurace** v **infrastruktura zálohování** okno.
+2. Vyberte **všechny služby**a potom v části **správu** vyberte kategorii **infrastruktura zálohování**. Zvolte **konfigurace** v **infrastruktura zálohování** okno.
 3. Zadejte cestu k **umístění úložiště zálohy**. Použijte řetězec konvenci UNC (Universal Naming) pro cestu ke sdílené složce hostované na samostatném zařízení. Řetězec ve formátu UNC Určuje umístění prostředků, jako jsou sdílené soubory nebo zařízení. Pro službu můžete použít IP adresu. K zajištění dostupnosti zálohovaných dat po havárii, zařízení by měla být v samostatném umístění.
 
     > [!Note]  

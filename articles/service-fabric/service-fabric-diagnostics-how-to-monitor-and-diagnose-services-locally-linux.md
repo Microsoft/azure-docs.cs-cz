@@ -1,6 +1,6 @@
 ---
-title: Ladění Azure mikroslužeb v systému Linux | Microsoft Docs
-description: Zjistěte, jak sledovat a diagnostikovat vaše služby vytvořené pomocí Microsoft Azure Service Fabric na místním vývojovém počítači.
+title: Ladění Azure Service Fabric aplikace v Linuxu | Dokumentace Microsoftu
+description: Zjistěte, jak monitorovat a diagnostikovat služby Service Fabric na místním vývojovém počítači Linux.
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 563f9d73d5a8d56e834c36d03aed75812ec123ba
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 5aeb87538968304d3eaf73873d4c4c762c07329c
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212701"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44051370"
 ---
-# <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>Monitorování a Diagnostika služby v instalačním programu pro vývoj místním počítači
+# <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>Monitorování a Diagnostika služeb v nastavení vývojového místního počítače
 
 
 > [!div class="op_single_selector"]
@@ -30,14 +30,14 @@ ms.locfileid: "34212701"
 >
 >
 
-Monitorování, zjišťování, Diagnostika a řešení potíží s povolit pro služby, chcete-li pokračovat s minimálním dopadem na činnost koncového uživatele. Monitorovací a diagnostické jsou kritické v skutečné nasazené produkční prostředí. Přijetí model podobně jako při vývoji služeb zajišťuje, že diagnostické kanálu funguje, když přesunete do provozního prostředí. Service Fabric usnadňuje vývojářům implementovat diagnostiky, které může bezproblémově fungovat v jednom počítači místní vývoj nastavení a nastavení clusteru skutečné produkční služby.
+Monitorování, zjišťování, Diagnostika a řešení potíží s povolit pro služby, abyste mohli pokračovat s minimálním dopadem na uživatelské prostředí. Monitorování a Diagnostika jsou kritické skutečný nasazené produkčního prostředí. Přijetím modelu podobně jako při vývoji služeb zajišťuje, že kanál diagnostiku funguje při přesunutí do produkčního prostředí. Service Fabric umožňuje vývojářům služby k implementaci diagnostiku, která můžete bez problémů fungují s jeden počítač místního vývojového nastavení i nastavení skutečné produkční cluster.
 
 
-## <a name="debugging-service-fabric-java-applications"></a>Ladění aplikací Service Fabric Java
+## <a name="debugging-service-fabric-java-applications"></a>Ladění aplikací Service Fabric v Javě
 
-Pro aplikace Java [více rozhraní protokolování](http://en.wikipedia.org/wiki/Java_logging_framework) jsou k dispozici. Vzhledem k tomu `java.util.logging` je výchozí možností s prostředí JRE, používá se také pro [příklady v githubu kódu](http://github.com/Azure-Samples/service-fabric-java-getting-started).  Následující diskusi vysvětluje postup konfigurace `java.util.logging` framework.
+Pro aplikace v Javě [více rozhraní protokolování](http://en.wikipedia.org/wiki/Java_logging_framework) jsou k dispozici. Protože `java.util.logging` je výchozí možnost, pomocí prostředí JRE, se také používá pro [příklady v githubu kódu](http://github.com/Azure-Samples/service-fabric-java-getting-started).  Následující diskuse vysvětluje postup konfigurace `java.util.logging` rozhraní framework.
 
-Pomocí java.util.logging je paměti, výstupní datové proudy, soubory konzoly nebo sockets přesměrovat protokolů aplikace. Pro každou z těchto možností existují výchozí obslužné rutiny už zadané v rozhraní framework. Můžete vytvořit `app.properties` soubor pro konfiguraci obslužné rutiny souborů pro vaši aplikaci pro přesměrování všechny protokoly do místního souboru.
+Pomocí java.util.logging můžete přesměrovat protokolů aplikace, paměti, výstupní datové proudy, soubory konzoly nebo sokety. Pro každou z těchto možností jsou obsaženy v rámci výchozích obslužných rutin. Můžete vytvořit `app.properties` souboru nakonfigurujte popisovač souboru pro vaši aplikaci do místního souboru přesměrovat všechny protokoly.
 
 Následující fragment kódu obsahuje příklad konfigurace:
 
@@ -51,34 +51,34 @@ java.util.logging.FileHandler.count = 10
 java.util.logging.FileHandler.pattern = /tmp/servicefabric/logs/mysfapp%u.%g.log             
 ```
 
-Složka na kterou odkazuje `app.properties` soubor musí existovat. Po `app.properties` soubor je vytvořen, musíte také upravit skript vstupního bodu, `entrypoint.sh` v `<applicationfolder>/<servicePkg>/Code/` složky se nastavit vlastnost `java.util.logging.config.file` k `app.propertes` souboru. Položka by měl vypadat podobně jako následující fragment kódu:
+Složka na které odkazují `app.properties` soubor musí existovat. Po `app.properties` se vytvoří soubor, budete muset také upravit váš skript vstupního bodu `entrypoint.sh` v `<applicationfolder>/<servicePkg>/Code/` složku, kterou chcete nastavit vlastnost `java.util.logging.config.file` k `app.propertes` souboru. Ji by měl vypadat jako následující fragment kódu:
 
 ```sh
 java -Djava.library.path=$LD_LIBRARY_PATH -Djava.util.logging.config.file=<path to app.properties> -jar <service name>.jar
 ```
 
 
-Tato konfigurace, které jsou výsledkem protokoly shromažďovaných rotační způsobem v `/tmp/servicefabric/logs/`. Soubor protokolu v tomto případě je názvem mysfapp%u.%g.log kde:
-* **%u** je jedinečné číslo a vyřešte konflikty mezi současně spuštěných procesů Java.
+Tuto konfiguraci výsledky v protokolech shromažďovaných otáčení způsobem v `/tmp/servicefabric/logs/`. Soubor protokolu v tomto případě je pojmenován mysfapp%u.%g.log kde:
+* **%u** je jedinečné číslo řešení konfliktů mezi souběžných procesů Java.
 * **%g** je číslo generace k rozlišení mezi otáčení protokoly.
 
-Ve výchozím nastavení je pokud žádná obslužná rutina je explicitně nakonfigurován, zaregistrován obslužná rutina konzoly. V procesu syslog pod /var/log/syslog jeden můžete zobrazit protokoly.
+Ve výchozím nastavení je-li explicitně nastavená žádná obslužná rutina, registrována obslužná rutina konzoly. V protokolu syslog v rámci /var/log/syslog jeden můžete zobrazit protokoly.
 
 Další informace najdete v tématu [příklady v githubu kódu](http://github.com/Azure-Samples/service-fabric-java-getting-started).  
 
 
-## <a name="debugging-service-fabric-c-applications"></a>Ladění aplikací Service Fabric C#
+## <a name="debugging-service-fabric-c-applications"></a>Ladění aplikace Service Fabric C#
 
 
-Více rozhraní jsou k dispozici pro trasování CoreCLR aplikace v systému Linux. Další informace najdete v tématu [Githubu: protokolování](http:/github.com/aspnet/logging).  Vzhledem k tomu, že je dobře známé pro C# vývojáře, EventSource se tento článek používá EventSource pro trasování v CoreCLR ukázky v systému Linux.
+Jsou k dispozici pro trasování CoreCLR aplikace v Linuxu více rozhraní. Další informace najdete v tématu [Githubu: protokolování](http:/github.com/aspnet/logging).  Protože EventSource je dobře známé pro C# vývojáři, "EventSource tomto článku se používá pro trasování v CoreCLR ukázky v Linuxu.
 
-Prvním krokem je na System.Diagnostics.Tracing, aby vaše protokoly může zapsat do paměti, výstupní datové proudy nebo soubory konzoly.  Pro protokolování použití EventSource, přidejte do souboru project.json následující projektu:
+Prvním krokem je zahrnout System.Diagnostics.Tracing tak, aby vaše protokoly můžete zapisovat do paměti, výstupní datové proudy nebo soubory konzoly.  Pro protokolování událostí EventSource, přidejte do vašeho souboru project.json následující projekt:
 
 ```
     "System.Diagnostics.StackTrace": "4.0.1"
 ```
 
-Vlastní EventListener můžete použít k naslouchání událostí služby a pak je správně přesměrovat na trasovací soubory. Následující fragment kódu ukazuje implementaci Ukázka protokolování pomocí EventSource a vlastní EventListener:
+Vlastní naslouchacího procesu událostí můžete použít k naslouchání události služby a potom je odpovídajícím způsobem přesměrovat na trasovací soubory. Následující fragment kódu ukazuje ukázková implementace protokolování pomocí EventSource a vlastní naslouchacího procesu událostí:
 
 
 ```csharp
@@ -131,16 +131,16 @@ Vlastní EventListener můžete použít k naslouchání událostí služby a pa
 ```
 
 
-Výstupy protokoly do souboru v předchozím fragmentu `/tmp/MyServiceLog.txt`. Tento název souboru musí být správně aktualizován. V případě, že chcete přesměrovat protokoly do konzoly, použijte následující fragment kódu v třídě přizpůsobené EventListener:
+Vypíše protokoluje události do souboru v předchozím fragmentu kódu `/tmp/MyServiceLog.txt`. Tento název souboru musí být správně aktualizována. V případě, že chcete přesměrovat protokoly do konzoly, použijte následující fragment kódu ve své vlastní třídě naslouchacího procesu událostí:
 
 ```csharp
 public static TextWriter Out = Console.Out;
 ```
 
-Ukázky v [C# – ukázky](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started) pomocí EventSource a vlastní EventListener protokolovat události do souboru.
+Ukázky v [ukázky jazyka C#](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started) použít EventSource a vlastní naslouchacího procesu událostí do protokolu událostí do souboru.
 
 
 
 ## <a name="next-steps"></a>Další postup
-Stejný kód trasování přidané do vaší aplikace funguje taky s diagnostikou vaší aplikace v clusteru služby Azure. Podívejte se na tyto články, které popisují různé možnosti pro nástroje a popisují, jak je nastavit.
-* [Postup shromažďování protokolů pomocí Azure Diagnostics](service-fabric-diagnostics-how-to-setup-lad.md)
+Stejný kód trasování do své aplikace přidali funguje taky s diagnostikou aplikace do clusteru Azure. Prohlédněte si tyto články, které popisují různé možnosti pro nástroje a popisují, jak je nastavit.
+* [Shromažďování protokolů pomocí Azure Diagnostics](service-fabric-diagnostics-how-to-setup-lad.md)

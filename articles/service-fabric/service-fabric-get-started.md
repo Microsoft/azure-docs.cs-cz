@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2018
 ms.author: ryanwi
-ms.openlocfilehash: 48e04d3bdd783d1dc04ac5cc77c4183ef5f87865
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: ac6d3a23e3afcc3a4c17798db7f63d846b123fba
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818435"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44022109"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Příprava vývojového prostředí ve Windows
 > [!div class="op_single_selector"]
@@ -70,6 +70,9 @@ Aktuální verze jsou:
 * Visual Studio 2017 15.7 obsahuje Service Fabric Tools for Visual Studio 2.3.10710.1 
 
 Seznam podporovaných verzí najdete v tématu [Podpora pro Service Fabric](service-fabric-support.md)
+
+> [!NOTE]
+> Upgraduje se jeden počítač pro aplikaci nebo clusteru se nepodporují clustery (OneBox); Odstranění clusteru OneBox a znovu jej vytvořte, pokud je potřeba provést inovaci clusteru nebo jakýchkoli problémů provádí upgrade aplikace. 
 
 ## <a name="enable-powershell-script-execution"></a>Povolení spouštění skriptů prostředí PowerShell
 Platforma Service Fabric používá skripty prostředí Windows PowerShell k vytvoření místního vývojového clusteru a k nasazení aplikací ze sady Visual Studio. Systém Windows ve výchozím nastavení spouštění těchto skriptů blokuje. Pokud je chcete povolit, musíte upravit zásady spouštění prostředí PowerShell. Otevřete prostředí PowerShell jako správce a zadejte tento příkaz:

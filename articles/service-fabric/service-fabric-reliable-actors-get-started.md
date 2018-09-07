@@ -1,6 +1,6 @@
 ---
-title: Vytvoření vaší první na základě objektu actor Azure mikroslužbu v jazyce C# | Microsoft Docs
-description: Tento kurz vás provede kroky při vytváření, ladění a nasazení jednoduchého službu založenou na objektu actor pomocí Service Fabric Reliable Actors.
+title: Vytvoření služby objektu actor založené na platformě Azure Service Fabric | Dokumentace Microsoftu
+description: Zjistěte, jak vytvářet, ladit a nasadit první službu založenou na objektu actor v C# s použitím Service Fabric Reliable Actors.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,55 +14,55 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/16/2018
 ms.author: vturecek
-ms.openlocfilehash: 32d3fa09c863c47753267e97e7c4730dff869887
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 4ff896902c1a92c244c3bcd147c3daeeb9e49c77
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34211401"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054744"
 ---
 # <a name="getting-started-with-reliable-actors"></a>Začínáme s Reliable Actors
 > [!div class="op_single_selector"]
 > * [C# v systému Windows](service-fabric-reliable-actors-get-started.md)
 > * [Java v Linuxu](service-fabric-reliable-actors-get-started-java.md)
 
-Tento článek vás provede vytváření a ladění jednoduchou aplikaci spolehlivé objektu Actor v sadě Visual Studio. Další informace o Reliable Actors najdete v tématu [Úvod do Service Fabric Reliable Actors](service-fabric-reliable-actors-introduction.md).
+Tento článek vás provede vytvořením a ladění jednoduché aplikace Reliable Actors v sadě Visual Studio. Další informace o Reliable Actors, naleznete v tématu [Úvod do Service Fabric Reliable Actors](service-fabric-reliable-actors-introduction.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než začnete, ujistěte se, abyste měli Service Fabric vývojového prostředí, včetně Visual Studio, nastavit na vašem počítači. Podrobnosti najdete v tématu [postup nastavení vývojového prostředí](service-fabric-get-started.md).
+Než začnete, ujistěte se, že máte vývojového prostředí Service Fabric, včetně sady Visual Studio na svém počítači. Podrobnosti najdete v tématu [jak nastavit vývojové prostředí](service-fabric-get-started.md).
 
-## <a name="create-a-new-project-in-visual-studio"></a>Vytvořte nový projekt v sadě Visual Studio
+## <a name="create-a-new-project-in-visual-studio"></a>Vytvoření nového projektu v sadě Visual Studio
 
-Spusťte sadu Visual Studio 2015 nebo novější jako správce a pak vytvořte nové **aplikace Service Fabric** projektu:
+Spusťte sadu Visual Studio 2015 nebo vyšší jako správce a pak vytvořte nový **aplikace Service Fabric** projektu:
 
-![Service Fabric nástrojů pro Visual Studio – nový projekt][1]
+![Service Fabric tools pro Visual Studio – nový projekt][1]
 
-V dialogovém okně Další zvolte **služby objektu Actor** pod **základní rozhraní .net 2.0** a zadejte název pro službu.
+V dalším dialogovém okně zvolte **služba objektu Actor** pod **.Net Core 2.0** a zadejte název pro službu.
 
-![Šablony projektů Service Fabric][5]
+![Šablony projektu Service Fabric][5]
 
-Vytvořený projekt ukazuje následující strukturou:
+Vytvořený projekt zobrazuje následující strukturu:
 
 ![Struktura projektu Service Fabric][2]
 
-## <a name="examine-the-solution"></a>Zkontrolujte řešení
+## <a name="examine-the-solution"></a>Prozkoumat řešení
 
-Řešení obsahuje tří projektů:
+Řešení obsahuje tři projekty:
 
-* **Projekt aplikace (Moje_aplikace)**. Tento projekt balíčky všechny společně služby pro nasazení. Obsahuje *ApplicationManifest.xml* a skriptů prostředí PowerShell pro správu aplikace.
+* **Projekt aplikace (MyApplication)**. Tento projekt balíčky všechny služby najednou pro nasazení. Obsahuje *ApplicationManifest.xml* a skriptů prostředí PowerShell pro správu aplikace.
 
-* **Rozhraní projektu (HelloWorld.Interfaces)**. Tento projekt obsahuje definici rozhraní objektu actor. Rozhraní objektu actor lze definovat v jakékoli projektu s libovolným názvem.  Rozhraní definuje kontrakt objektu actor, který sdílí objektu actor implementace a volání objektu actor klienty.  Protože projekty klienta může na něm závisí, obvykle má smysl definovat v sestavení, které jsou oddělené od objektu actor implementace.
+* **Projekt rozhraní (HelloWorld.Interfaces)**. Tento projekt obsahuje definici rozhraní pro objekt actor. Rozhraní objektu actor lze definovat v každém projektu s názvem.  Rozhraní definuje kontrakt objektu actor sdílený mezi implementací objektu actor a klienty objekt actor volají.  Protože klientské projekty mohou na něm závisí, je obvykle vhodné jej definovat na sestavení, která je oddělená od implementace objektu actor.
 
-* **Projekt služby objektu actor (HelloWorld)**. Tento projekt definuje služba Service Fabric, která bude hostitelem objektu actor. Obsahuje implementace objektu actor, *HellowWorld.cs*. Implementace objektu actor je třída, která je odvozena ze základního typu `Actor` a implementuje rozhraní definované v *MyActor.Interfaces* projektu. Třídu objektu actor musí také implementovat konstruktor, který přijímá `ActorService` instance a `ActorId` a předává je základní `Actor` třídy.
+* **Projekt služby objektu actor (HelloWorld)**. Tento projekt definuje službu Service Fabric, který bude hostovat objekt actor. Obsahuje implementace objektu actor, *HellowWorld.cs*. Implementace objektu actor je třída, která se odvozuje od základního typu `Actor` a implementuje rozhraní definované v *MyActor.Interfaces* projektu. Třídu objektu actor musí také implementovat konstruktor, který přijímá `ActorService` instance a `ActorId` a předává je do základní `Actor` třídy.
     
-    Tento projekt obsahuje také *Program.cs*, čímž registruje třídy objektu actor s použitím modulu runtime Service Fabric `ActorRuntime.RegisterActorAsync<T>()`. `HelloWorld` Třída je již zaregistrován. Jakékoli další objektu actor implementace k projektu nepřidají musí být zaregistrovaná taky v `Main()` metoda.
+    Tento projekt obsahuje také *Program.cs*, který zaregistruje třídy actor pomocí modulu runtime Service Fabric `ActorRuntime.RegisterActorAsync<T>()`. `HelloWorld` Třída je již registrována. Jakékoli další objekt actor implementace přidány do projektu musí být zaregistrovaný také ve `Main()` metody.
 
-## <a name="customize-the-helloworld-actor"></a>Přizpůsobení objektu actor HelloWorld
+## <a name="customize-the-helloworld-actor"></a>Přizpůsobení HelloWorld objektu actor
 
-Definuje některé metody v šabloně projektů `IHelloWorld` rozhraní a je v implementuje `HelloWorld` objektu actor implementace.  Tyto metody nahraďte, aby služby objektu actor vrátí jednoduchým řetězcem "Hello World".
+Definuje některé metody v šabloně projektů `IHelloWorld` rozhraní a je v implementuje `HelloWorld` implementace objektu actor.  Nahraďte tyto metody tak, aby služba objektu actor jednoduchým řetězcem "Hello World".
 
-V *HelloWorld.Interfaces* v projektu *IHelloWorld.cs* souboru, nahraďte definici rozhraní takto:
+V *HelloWorld.Interfaces* v projektu *IHelloWorld.cs* souboru, nahraďte definici rozhraní následujícím způsobem:
 
 ```csharp
 public interface IHelloWorld : IActor
@@ -71,7 +71,7 @@ public interface IHelloWorld : IActor
 }
 ```
 
-V **HelloWorld** projektu v **HelloWorld.cs**, nahraďte definici celou třídu následujícím způsobem:
+V **HelloWorld** projektu v **HelloWorld.cs**, nahraďte definici celá třída následujícím způsobem:
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -89,36 +89,36 @@ internal class HelloWorld : Actor, IHelloWorld
 }
 ```
 
-Stiskněte klávesu **Ctrl-Shift-B** se projekt sestavil a zajistěte, aby vše zkompiluje.
+Stisknutím klávesy **Ctrl-Shift-B** se projekt sestavil a ujistěte se, že všechno, co zkompiluje.
 
 ## <a name="add-a-client"></a>Přidání klienta
 
-Vytvořte jednoduché konzolové aplikace pro volání služby objektu actor.
+Vytvořte jednoduchou konzolovou aplikaci k volání služby objektu actor.
 
 1. Klikněte pravým tlačítkem na řešení v Průzkumníku řešení > **přidat** > **nový projekt...** .
 
-2. V části **.NET Core** typy projektů, zvolte **konzolové aplikace (.NET Core)**.  Název projektu *ActorClient*.
+2. V části **.NET Core** typy projektů, zvolte **Konzolová aplikace (.NET Core)**.  Pojmenujte projekt *ActorClient*.
     
-    ![Přidat dialogové okno Nový projekt][6]    
+    ![Přidání dialogového okna Nový projekt][6]    
     
     > [!NOTE]
-    > Konzolové aplikace není typu aplikace, které se obvykle používají jako klient v Service Fabric, ale umožňuje vhodné například pro ladění a testování pomocí místní cluster Service Fabric.
+    > Konzolová aplikace není typu aplikace, které obvykle použijete jako klient v Service Fabric, ale je vhodné například pro ladění a testování s využitím místního clusteru Service Fabric.
 
-3. Konzolové aplikace musí být 64bitové aplikaci k zachování kompatibility s rozhraní projektu a další závislosti.  V Průzkumníku řešení klikněte pravým tlačítkem myši **ActorClient** projektu a pak klikněte na **vlastnosti**.  Na **sestavení** nastavte **Cílová platforma** k **x64**.
+3. Konzolová aplikace musí být 64bitové aplikaci k udržovat kompatibilitu s projekty rozhraní a další závislosti.  V Průzkumníku řešení klikněte pravým tlačítkem myši **ActorClient** projektu a pak klikněte na tlačítko **vlastnosti**.  Na **sestavení** kartu, nastavte **Cílová platforma** k **x64**.
     
     ![Vlastnosti sestavení][8]
 
-4. Projektu klienta vyžaduje balíček NuGet spolehlivé aktéři.  Klikněte na **Nástroje**  >  **Správce balíčků NuGet**  >  **Konzola správce balíčků**.  V konzole Správce balíčků zadejte následující příkaz:
+4. Klientský projekt vyžaduje balíček NuGet reliable actors.  Klikněte na **Nástroje**  >  **Správce balíčků NuGet**  >  **Konzola správce balíčků**.  V konzole Správce balíčků zadejte následující příkaz:
     
     ```powershell
     Install-Package Microsoft.ServiceFabric.Actors -IncludePrerelease -ProjectName ActorClient
     ```
 
-    Balíček NuGet a všechny jeho závislé součásti jsou nainstalovány v ActorClient projektu.
+    Balíček NuGet a všechny jeho závislosti jsou nainstalovány v projektu ActorClient.
 
-5. Projektu klienta taky vyžaduje odkaz na projekt rozhraní.  V projektu ActorClient, klikněte pravým tlačítkem na **závislosti** a pak klikněte na tlačítko **přidat odkaz...** .  Vyberte **projekty > řešení** (Pokud není vybrána) a klikněte na zaškrtávací políčko vedle osové **HelloWorld.Interfaces**.  Klikněte na **OK**.
+5. Klientský projekt také vyžaduje odkaz na projekt rozhraní.  V projektu ActorClient klikněte pravým tlačítkem na **závislosti** a potom klikněte na tlačítko **přidat odkaz...** .  Vyberte **projektů > řešení** (Pokud není již vybrána) a potom zaškrtněte políčko vedle položky **HelloWorld.Interfaces**.  Klikněte na **OK**.
     
-    ![Přidat odkaz na dialogové okno][7]
+    ![Přidat odkaz na – dialogové okno][7]
 
 6. V projektu ActorClient nahradit celý obsah *Program.cs* následujícím kódem:
     
@@ -144,21 +144,21 @@ Vytvořte jednoduché konzolové aplikace pro volání služby objektu actor.
     }
     ```
 
-## <a name="running-and-debugging"></a>Spuštění a ladění
+## <a name="running-and-debugging"></a>Spouštění a ladění
 
-Stiskněte klávesu **F5** k vytvoření, nasazení a místní spuštění aplikace v clusteru vývoj Service Fabric.  Během procesu nasazení můžete sledovat průběh v **výstup** okno.
+Stisknutím klávesy **F5** Pokud chcete sestavit, nasadit a spustit aplikaci místně v vývojový cluster Service Fabric.  Během procesu nasazení můžete zobrazit průběh na **výstup** okna.
 
-![Service Fabric ladicích výstup – okno][3]
+![Service Fabric ladění okna výstup][3]
 
-Výstup obsahuje textu, *aplikace je připravena*, je možné otestovat pomocí ActorClient aplikace.  V Průzkumníku řešení klikněte pravým tlačítkem na **ActorClient** projektu a pak klikněte na **ladění** > **spustit novou instanci**.  Aplikace příkazového řádku by měl zobrazit výstup služby objektu actor.
+Pokud výstup obsahuje text, *aplikace je připravena*, je možné k otestování služby pomocí ActorClient aplikace.  V Průzkumníku řešení klikněte pravým tlačítkem myši na **ActorClient** projektu a pak klikněte na **ladění** > **zahájit novou instanci**.  Aplikace příkazového řádku by se zobrazit výstup služby actor.
 
-![výstup aplikace][9]
+![Výstup aplikace][9]
 
 > [!TIP]
-> Modul runtime Service Fabric aktéři vysílá některé [události a čítače výkonu související s metody objektu actor](service-fabric-reliable-actors-diagnostics.md#actor-method-events-and-performance-counters). Jsou užitečné v Diagnostika a sledování výkonu.
+> Modul runtime Service Fabric Actors vysílá některé [událostí a čítačů výkonu související s metody objektu actor](service-fabric-reliable-actors-diagnostics.md#actor-method-events-and-performance-counters). Jsou užitečné pro diagnostiku a sledování výkonu.
 
 ## <a name="next-steps"></a>Další postup
-Další informace o [jak Reliable Actors pomocí platformy Service Fabric](service-fabric-reliable-actors-platform.md).
+Další informace o [jak objekty Reliable Actors využívají platformu Service Fabric](service-fabric-reliable-actors-platform.md).
 
 
 [1]: ./media/service-fabric-reliable-actors-get-started/reliable-actors-newproject.PNG

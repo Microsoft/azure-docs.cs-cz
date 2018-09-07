@@ -7,14 +7,14 @@ manager: mbaldwin
 ms.service: key-vault
 ms.topic: article
 ms.workload: identity
-ms.date: 10/12/2017
+ms.date: 09/05/2018
 ms.author: bryanla
-ms.openlocfilehash: d8554d235fdfeb5b192ddf1268e60b7bc32aabe7
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: b4522d9eb2e9af782918f021c79bbcb155c5c383
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42059075"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44053617"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Příručka pro vývojáře Azure Key Vault
 
@@ -53,11 +53,9 @@ Prostředky ve zmíněné videa:
 
 ## <a name="creating-and-managing-key-vaults"></a>Vytváření a správa trezorů klíčů
 
-Azure Key Vault nabízí možnost bezpečného ukládání přihlašovacích údajů a dalších klíčů a tajných kódů, ale váš kód se musí ověřit ve službě Key Vault, aby je mohl načíst. Identita spravované služby (MSI) usnadňuje řešení tohoto problému tím, že poskytuje službám Azure automaticky spravovanou identitu v Azure Active Directory (Azure AD). Tuto identitu můžete použít k ověření pro jakoukoli službu, která podporuje ověřování Azure AD, včetně služby Key Vault, aniž byste ve vašem kódu museli mít přihlašovací údaje. 
+Azure Key Vault nabízí možnost bezpečného ukládání přihlašovacích údajů a dalších klíčů a tajných kódů, ale váš kód se musí ověřit ve službě Key Vault, aby je mohl načíst. Spravované identity pro prostředky Azure díky řešení tohoto problému jednodušší tím, že automaticky spravovanou identitu služby Azure ve službě Azure Active Directory (Azure AD). Tuto identitu můžete použít k ověření pro jakoukoli službu, která podporuje ověřování Azure AD, včetně služby Key Vault, aniž byste ve vašem kódu museli mít přihlašovací údaje. 
 
-Další informace o MSI najdete v tématu [Identity spravované služby (MSI) pro prostředky Azure](https://docs.microsoft.com/azure/active-directory/msi-overview).
-
-Další informace o práci s AAD najdete v tématu [integrace aplikací s Azure Active Directory](/azure/active-directory/develop/active-directory-integrating-applications).
+Další informace o spravovaných identit pro prostředky Azure, najdete v části [přehled spravovaných identit](../active-directory/managed-identities-azure-resources/overview.md). Další informace o práci s AAD najdete v tématu [integrace aplikací s Azure Active Directory](/azure/active-directory/develop/active-directory-integrating-applications).
 
 Před zahájením práce s klíče, tajné kódy a certifikáty v trezoru klíčů, můžete vytvářet a spravovat váš trezor klíčů pomocí rozhraní příkazového řádku, PowerShell, šablon Resource Manageru nebo REST, jak je popsáno v následujících článcích:
 
@@ -110,14 +108,14 @@ V Node.js jsou samostatné rozhraní API pro správu služby Key Vault a objekt 
 ### <a name="quick-start-guides"></a>Úvodní příručky
 
 - [Vytvoření služby Key Vault](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)
-- [Začínáme se službou Key Vault v Node.js](https://azure.microsoft.com/resources/samples/key-vault-node-getting-started/)
+- [Začínáme se službou Key Vault v Node.js](https://github.com/Azure-Samples/key-vault-node-getting-started)
 
 ### <a name="code-examples"></a>Příklady kódu
 
 Kompletní příklady použití služby Key Vault s aplikací naleznete v tématu:
 
-- [Ukázky kódu pro Azure Key Vault](http://www.microsoft.com/download/details.aspx?id=45343) – ukázková aplikace .NET *HelloKeyVault* a tu je ukázka služby Azure web. 
-- [Použití Azure Key Vault z webové aplikace](key-vault-use-from-web-application.md) -kurzu vám pomůžou získat informace tom, jak používat Azure Key Vault z webové aplikace v Azure. 
+- [Ukázky kódu pro Azure Key Vault](https://azure.microsoft.com/resources/samples/?service=key-vault) – ukázky kódu pro Azure Key Vault. 
+- [Použití Azure Key Vault z webové aplikace](quick-create-net.md) -kurzu vám pomůžou získat informace tom, jak používat Azure Key Vault z webové aplikace v Azure. 
 
 ## <a name="how-tos"></a>Postupy
 

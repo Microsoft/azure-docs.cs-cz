@@ -10,20 +10,25 @@ ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: andrl
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3cc2794105eff196c3e1db02d664a89c9b37e318
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: d53106efa4e3761a497e67181546c8ec09fd880c
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43286981"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44055501"
 ---
 # <a name="partition-and-scale-in-azure-cosmos-db"></a>Dělení a škálování ve službě Azure Cosmos DB
 
 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) je globálně distribuovaná a vícemodelová databázová služba navržená tak, aby vám pomohou dosáhnout rychlého, předvídatelného výkonu. Spolu s vaší aplikací škáluje se bez problémů. Tento článek obsahuje přehled, jak modely dělení funguje pro všechna data ve službě Azure Cosmos DB. Také popisuje, jak nakonfigurovat službu Azure Cosmos DB kontejnerů a efektivní škálování vašich aplikací.
 
+Azure Cosmos DB podporuje následující typy kontejnerů na všechna rozhraní API:
+
+- **Pevný kontejner**: těchto kontejnerů můžete uložit graf databáze až 10 GB velikosti s délkou maximálně 10 000 jednotek žádostí za sekundu přiřazen. Vytvořte kontejner pevnou není nutné zadat vlastnost klíče oddílu v datech.
+
+- **Neomezený kontejner**: těchto kontejnerů může automaticky škálovat na uložení grafu nad limit 10 GB až horizontální dělení. Každý oddíl uloží 10 GB a data budou automaticky vyváženy podle **klíč zadaný oddíl**, které budou požadovaný parametr při používání neomezeného kontejneru. Tento typ kontejneru můžete uložit data prakticky neomezené velikosti a můžete povolit až 100 000 jednotek žádostí za sekundu, nebo více [kontaktovat podporu](https://aka.ms/cosmosdbfeedback?subject=Cosmos%20DB%20More%20Throughput%20Request).
+
 ## <a name="partitioning-in-azure-cosmos-db"></a>Dělení ve službě Azure Cosmos DB
 Azure Cosmos DB poskytuje kontejnery pro ukládání dat s názvem kolekce (pro dokumenty), grafy nebo tabulky. Kontejnery jsou logické prostředky, které můžou využívat jeden nebo více fyzických oddílů nebo serverů. Počet oddílů je určena na základě velikosti úložiště služby Azure Cosmos DB a propustnosti zřízené pro kontejner nebo sadu kontejnerů. 
-
 
 ### <a name="physical-partition"></a>Fyzický oddíl
 
@@ -72,7 +77,7 @@ Pokud fyzický oddíl dosáhne svého limitu úložiště a data v oddílu mají
 Zvolit klíč oddílu tak, aby:
 
 * Distribuce úložiště je i přes všechny klíče.  
-* Svazek rozdělení požadavků k danému bodu v čase je i přes všechny klíče.  
+* Zvolte klíč oddílu, který bude rovnoměrně distribuovat data napříč oddíly.
 
   Je vhodné zkontrolovat, jak vaše data jsou distribuovaná napříč oddíly. Zkontrolujte distribuci dat na portálu přejděte ke svému účtu Azure Cosmos DB a klikněte na **metriky** v **monitorování** a potom klikněte na **úložiště** kartu pro zobrazení jak vaše data jsou rozdělená mezi různé fyzické oddíly.
 
@@ -80,13 +85,13 @@ Zvolit klíč oddílu tak, aby:
 
   Levý obrázek nahoře ukazuje výsledek klíč chybný oddílu a na správné obrázku výše vidíte výsledek, pokud byla zvolena vhodným klíčem oddílu. Levého obrázku vidíte, že se data rovnoměrně distribuovaná napříč oddíly. Je nutné snažit se zvolit klíč oddílu, který distribuuje data tak, aby vypadala podobně jako na obrázku vpravo.
 
-* Dotazy, které jsou vyvolány s vysokou souběžnosti můžete efektivně směrovat včetně klíče oddílu v predikátu filtru.  
+* Optimalizace dotazů k získání dat v rámci hranic oddílů, pokud je to možné. Optimální strategie dělení by mělo být zarovnáno na dotazování vzory. Dotazy, které získávají data z jednoho oddílu poskytují nejlepší možný výkon. Dotazy, které jsou vyvolány s vysokou souběžnosti můžete efektivně směrovat včetně klíče oddílu v predikátu filtru.  
+
 * Volba klíče oddílu s vyšší Kardinalita je obecně upřednostňované – dokončila se obvykle poskytuje lepší distribuci a škálovatelnost. Například můžete být tvořen syntetické klíč řetězení hodnot z více vlastností pro zvýšení Kardinalita.  
 
 Když zvolit klíč oddílu s nad aspekty, není nutné se starat o počet oddílů nebo jakou propustnost je přidělena na fyzický oddíl, protože Azure Cosmos DB škálovat počet fyzických oddílů, a také můžete škálovat jednotlivé oddíly podle potřeby.
 
-<a name="prerequisites"></a>
-## <a name="prerequisites-for-partitioning"></a>Předpoklady pro dělení
+## <a name="prerequisites"></a>Předpoklady pro dělení
 
 Kontejnery služby Azure Cosmos DB je možné vytvořit, jak je stanoveno nebo neomezené na webu Azure Portal. Kontejnery s pevnou velikostí mají omezení maximální velikosti 10 GB a propustnosti 10 000 RU/s. Pokud chcete vytvořit kontejner jako neomezený, je nutné zadat klíč oddílu a minimální propustnost 1 000 RU/s. Kontejnery služby Azure Cosmos DB může také nakonfigurovat tak, aby sdílet propustnosti mezi sadu kontejnerů, ve kterých musí každý kontejner určením oddílu klíče a můžete rozšiřovat neomezený počet. Toto jsou požadavky ke zvážení pro dělení a škálování:
 
@@ -98,16 +103,49 @@ Kontejnery služby Azure Cosmos DB je možné vytvořit, jak je stanoveno nebo n
 
 Pokud jste vytvořili **Fixed** kontejneru bez oddílu klíč nebo propustnost menší než 1 000 RU/s, kontejner není automatického škálování. Chcete-li migrovat data z pevný kontejner do neomezeného kontejneru, budete muset použít [nástroj pro migraci dat](import-data.md) nebo [knihovna Change Feed](change-feed.md). 
 
-## <a name="partitioning-and-provisioned-throughput"></a>Vytváření oddílů a zřízené propustnosti
-Azure Cosmos DB je navržená pro předvídatelný výkon. Při vytváření kontejneru nebo sadu kontejnerů, které si vyhradíte propustnosti z hlediska  *[jednotek žádostí](request-units.md) (RU) za sekundu*. Každý požadavek díky RU poplatek, který je úměrný množství systémových prostředků, jako je využití procesoru, paměti a vstupně-výstupních operací, používané operaci. Čtení 1 KB dokumentu s konzistence typu relace využívá 1 RU. Čtení je 1 RU bez ohledu na počet položek uložených nebo počet souběžných požadavků spuštěné ve stejnou dobu. Větší položek vyžaduje vyšší rezervovaných jednotek v závislosti na velikosti. Pokud znáte velikost entity a počtu čtení, které potřebujete pro podporu pro vaši aplikaci, můžete zřídit přesné množství propustnosti pro potřeby vaší aplikace. 
+## <a name="PartitionedGraph"></a>Požadavky pro dělené grafu
 
-> [!NOTE]
-> Plné využití propustnosti zřízené pro kontejner nebo sadu kontejnerů, musíte zvolit klíč oddílu, který umožňuje rovnoměrně distribuovat napříč všemi hodnotami klíče oddílu odlišné požadavky.
-> 
-> 
+Při vytváření kontejneru graf oddílů vezměte v úvahu následující podrobnosti:
 
-<a name="designing-for-partitioning"></a>
-## <a name="create-partition-key"></a>Vytvoření klíče oddílu 
+- **Nastavení dělení je nezbytné** Pokud kontejner má mít více než 10 GB a/nebo pokud přidělení více než 10 000 jednotek žádostí za sekundu (RU/s) se bude vyžadovat.
+
+- **Vrcholů a hran jsou ukládány jako dokumenty JSON** v back-end Azure Cosmos DB Gremlin API.
+
+- **Klíč oddílu vyžadovat vrcholy**. Tento klíč určuje oddíl, který se používá k ukládání vrcholu a tento proces používá algoritmus hash. Název tohoto klíče oddílu je řetězec jednoslovnou bez mezery ani speciální znaky a je definován při vytváření nového kontejneru pomocí formátu `/partitioning-key-name`.
+
+- **Okraje se ukládají s jejich zdrojový vrchol**. Jinými slovy pro každý vrchol svůj klíč oddílu definuje kde jsou uložené vrcholu a hrany, které její odchozí. To se provádí při použití, aby dotazy napříč oddíly `out()` kardinalitu v dotazy na grafy.
+
+- **Dotazy na grafy musí určovat klíč oddílu**. Pokud chcete využívat všech výhod horizontální dělení ve službě Azure Cosmos DB, kdykoli to bude možné grafu dotazů by měly zahrnovat klíč oddílu. Třeba když jeden vrchol je vybrána. Následující příklad dotazy ukazují, jak zahrnovat klíč oddílu, při výběru jednoho nebo více vrcholy v dělené grafu:
+
+    - Výběr vrcholů podle ID, potom **použít `.has()` krok pro určení této vlastnosti klíče oddílu**: 
+    
+        ```
+        g.V('vertex_id').has('partitionKey', 'partitionKey_value')
+        ```
+    
+    - Výběr vrcholů podle **zadání řazené kolekce členů, včetně hodnoty klíče oddílu a ID**: 
+    
+        ```
+        g.V(['partitionKey_value', 'vertex_id'])
+        ```
+        
+    - Výběr vrcholu zadáním **pole řazených kolekcí členů, které obsahují hodnoty klíče oddílu a ID**:
+    
+        ```
+        g.V(['partitionKey_value0', 'verted_id0'], ['partitionKey_value1', 'vertex_id1'], ...)
+        ```
+        
+    - Vyberte sadu vrcholů podle **určení seznamu hodnot klíče oddílu**: 
+    
+        ```
+        g.V('vertex_id0', 'vertex_id1', 'vertex_id2', …).has('partitionKey', within('partitionKey_value0', 'partitionKey_value01', 'partitionKey_value02', …)
+        ```
+
+* **Vždycky zadat hodnotu klíče oddílu při dotazování na vrcholu**. Získávání vrcholu ze známých oddílu je nejúčinnější způsob, jak z hlediska výkonu.
+
+* **Použít odchozí směr při dotazování hrany** vždy, když je to možné. Okraje se ukládají s jejich zdroj vrcholy v odchozím směru. To znamená, že při dat a dotazy jsou navržené v tomto modelu v paměti, minimalizuje se pravděpodobnost nutnosti uchýlit se k dotazy napříč oddíly.
+
+## <a name="designing-for-partitioning"></a> Vytvoření klíče oddílu 
 Na webu Azure portal nebo Azure CLI slouží k vytvoření kontejnerů a umožňují škálování do kdykoli. Tato část ukazuje, jak vytvořit kontejnery a zadejte zřízenou propustnost a oddíl klíče pomocí každé rozhraní API.
 
 
@@ -225,8 +263,7 @@ Jednou z možností je nastavit na /deviceId nebo /date partitionKey. Pokud chce
 
 V reálném čase scénáře mohou obsahovat tisíce dokumenty, takže byste měli definovat logiku na straně klienta pro řetězení hodnot do syntetické klíče, vložte syntetické klíč dokumenty a použilo ji k určení klíče oddílu.
 
-<a name="designing-for-scale"></a>
-## <a name="design-for-scale"></a>Návrh pro zajištění škálování
+## <a name="designing-for-scale"></a> Návrh pro zajištění škálování
 Efektivně škálovat s využitím služby Azure Cosmos DB, budete muset vybrat vhodným klíčem oddílu při vytváření vašeho kontejneru. Existují dva hlavní faktory pro výběr vhodným klíčem oddílu:
 
 * **Dotazování hranice a transakce**. Zvoleného klíče oddílu by měl zajistit rovnováhu mezi nutnost používat transakce proti požadavku entity distribuovat napříč více klíčů oddílů pro zajištění škálovatelné řešení. Na jeden extreme stejným klíčem oddílu můžete nastavit pro všechny položky, ale tato možnost může omezit škálovatelnost řešení. V jiných extreme můžete přiřadit jedinečného klíče oddílu pro každou položku. Tato volba je vysoce škálovatelné, ale to zabrání pomocí transakce mezi dokumenty pomocí uložené procedury a triggery. Klíčem oddílu ideální vám umožní použít efektivní dotazy a má dostatek kardinalitu Ujistěte se, že je škálovatelné řešení. 

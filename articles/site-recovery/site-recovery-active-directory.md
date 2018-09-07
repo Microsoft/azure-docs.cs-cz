@@ -9,18 +9,18 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: manayar
-ms.openlocfilehash: 3a2ad35a5382394a6886ed14dcc4f659762f2833
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 28ea6c58eed110cfb57f3feaa6b828289bd20e64
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39172234"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054542"
 ---
 # <a name="use-azure-site-recovery-to-protect-active-directory-and-dns"></a>Ochrana služby Active Directory a DNS pomocí Azure Site Recovery
 
 Podnikové aplikace, jako je SharePoint, Dynamics AX a SAP závisí na Active Directory a infrastruktury služby DNS správně fungovat. Při nastavování zotavení po havárii pro aplikace, často potřebujete k obnovení služby Active Directory a DNS před obnovením další součásti aplikace, abyste zajistili funkčnost správné aplikace.
 
-Můžete použít [Site Recovery](site-recovery-overview.md) vytvořit plán obnovení po havárii pro službu Active Directory. Pokud dojde k přerušení, můžete zahájit převzetí služeb při selhání. Můžete mít služby Active Directory si zprovoznit během pár minut. Pokud jste nasadili služby Active Directory pro několik aplikací v primární lokalitě, například pro Sharepointu a SAP, můžete převzít služby při selhání lokality dokončeno. Nejprve můžete převzít služby Active Directory pomocí webu pro zotavení. Potom převzetí služeb při selhání jiných aplikací, pomocí plánů obnovení specifické pro aplikaci.
+Můžete použít [Site Recovery](site-recovery-overview.md) vytvořit plán obnovení po havárii pro službu Active Directory. Pokud dojde k přerušení, můžete zahájit převzetí služeb při selhání. Můžete mít služby Active Directory si zprovoznit během pár minut. Pokud jste nasadili služby Active Directory pro několik aplikací v primární lokalitě, například pro Sharepointu a SAP, můžete převzít služby při selhání lokality dokončeno. Nejprve můžete převzít služby Active Directory pomocí služby Site Recovery. Potom převzetí služeb při selhání jiných aplikací, pomocí plánů obnovení specifické pro aplikaci.
 
 Tento článek vysvětluje, jak vytvořit řešení zotavení po havárii pro službu Active Directory. Zahrnují požadavky a pokyny k převzetí služeb při selhání. Byste měli vědět, jak služby Active Directory a Site Recovery, než začnete.
 

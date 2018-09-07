@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.author: govindk
-ms.openlocfilehash: 613c61d9b881b7d736a50cadbf313c1f9aac57c9
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: a2c52844e09daf42418b4e548f7185e31dcf4ae9
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42054821"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44053529"
 ---
 # <a name="automatic-online-backup-and-restore-with-azure-cosmos-db"></a>Automatické online zálohování a obnovení pomocí služby Azure Cosmos DB
 Azure Cosmos DB automaticky provede zálohování vašich dat v pravidelných intervalech. Automatické zálohy jsou prováděny bez vlivu na výkon nebo dostupnost databázových operací. Všechny zálohy jsou uloženy odděleně v jiné službě úložiště a tyto zálohy jsou globálně replikuje odolnosti proti místní havárií. Automatické zálohování jsou určené pro scénáře, pokud omylem odstraníte kontejneru Cosmos DB a později vyžadují obnovení dat nebo řešení zotavení po havárii.  

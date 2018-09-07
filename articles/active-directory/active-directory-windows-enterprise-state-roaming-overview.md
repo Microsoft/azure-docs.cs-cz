@@ -16,15 +16,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: markvi
-ms.openlocfilehash: c1332679af57a4994f4337e241845a87bf16b341
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 25daca5d1654e97684098c0f1a394b126e4e5391
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42054233"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44023802"
 ---
 # <a name="enterprise-state-roaming-overview"></a>Přehled služby Enterprise State Roaming
-S Windows 10 [Azure Active Directory (Azure AD)](fundamentals/active-directory-whatis.md) uživatelé získají možnost bezpečně synchronizaci svých uživatelských nastavení a nastavení data aplikací do cloudu. Enterprise State Roaming uživatelům poskytuje jednotné prostředí v jejich zařízeních Windows a snižuje čas potřebný ke konfiguraci nových zařízení. Enterprise State Roaming funguje podobně jako standardní [synchronizace nastavení příjemce](http://windows.microsoft.com/windows-8/sync-settings-pcs) , která byla poprvé zavedena v systému Windows 8. Enterprise State Roaming dál nabízí:
+S Windows 10 [Azure Active Directory (Azure AD)](fundamentals/active-directory-whatis.md) uživatelé získají možnost bezpečně synchronizaci svých uživatelských nastavení a nastavení data aplikací do cloudu. Enterprise State Roaming uživatelům poskytuje jednotné prostředí v jejich zařízeních Windows a snižuje čas potřebný ke konfiguraci nových zařízení. Enterprise State Roaming funguje podobně jako standardní [synchronizace nastavení příjemce](https://go.microsoft.com/fwlink/?linkid=2015135) , která byla poprvé zavedena v systému Windows 8. Enterprise State Roaming dál nabízí:
 
 * **Oddělení podnikové a uživatelských dat** – organizace mají kontrolu nad jejich dat a neexistuje žádná kombinování firemních dat v cloudovém účtu příjemce nebo uživatelských dat v účtu služby enterprise cloud.
 * **Zvýšené zabezpečení** – Data budou automaticky šifrována před opuštěním zařízení s Windows 10 uživatele pomocí Azure Rights Management (Azure RMS) a data zůstanou šifrovaná v klidovém stavu uložených v cloudu. Veškerý obsah zůstává zašifrovaný v klidovém stavu uložených v cloudu, s výjimkou obory názvů, jako jsou názvy nastavení a aplikace Windows.  

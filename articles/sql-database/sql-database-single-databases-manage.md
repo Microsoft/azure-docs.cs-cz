@@ -8,14 +8,14 @@ ms.service: sql-database
 ms.subservice: single-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 08/01/2018
+ms.date: 09/07/2018
 ms.author: carlrab
-ms.openlocfilehash: 483ac248619a6d8a0f403592b1b4e55ad5e973da
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 20039c32ed7bb740ba5d1185d195d7590cff39e2
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841854"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44051251"
 ---
 # <a name="create-and-manage-logical-servers-and-single-databases-in-azure-sql-database"></a>Vytvoření a správa izolovaných databází ve službě Azure SQL Database a logické servery 
 
@@ -38,7 +38,7 @@ K vytvoření databáze Azure SQL pomocí [webu Azure portal](https://portal.azu
 > [!IMPORTANT]
 > Další informace o výběru cenová úroveň pro vaši databázi, naleznete v tématu [nákupní model založený na DTU](sql-database-service-tiers-dtu.md) a [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md).
 
-Vytvoření Managed Instance najdete v tématu [vytvoříte Managed Instance](sql-database-managed-instance-create-tutorial-portal.md)
+Vytvoření Managed Instance najdete v tématu [vytvoříte Managed Instance](sql-database-managed-instance-get-started.md)
 
 ### <a name="manage-an-existing-sql-server"></a>Správa existujícího serveru SQL
 
@@ -85,7 +85,7 @@ K vytváření a správě serveru Azure SQL, databáze a brány firewall pomocí
 K vytváření a správě serveru Azure SQL, databáze a brány firewall s [rozhraní příkazového řádku Azure](/cli/azure), použijte následující [databáze SQL Azure CLI](/cli/azure/sql/db) příkazy. Rozhraní příkazového řádku můžete spustit v prohlížeči pomocí [Cloud Shellu](/azure/cloud-shell/overview) nebo [nainstalovat](/cli/azure/install-azure-cli) v systémech macOS, Linux nebo Windows. Vytváření a správa elastických fondů najdete v tématu [elastické fondy](sql-database-elastic-pool.md).
 
 > [!TIP]
-> Rychlý start Azure CLI najdete v části [vytvoření izolované databáze Azure SQL pomocí Azure CLI](sql-database-get-started-cli.md). Příklad skripty rozhraní příkazového řádku Azure, najdete v části [pomocí rozhraní příkazového řádku k vytvoření izolované databáze Azure SQL a konfigurace pravidla brány firewall](scripts/sql-database-create-and-configure-database-cli.md) a [pomocí rozhraní příkazového řádku pro monitorování a škálování izolované databáze SQL](scripts/sql-database-monitor-and-scale-database-cli.md).
+> Rychlý start Azure CLI najdete v části [vytvoření izolované databáze Azure SQL pomocí Azure CLI](sql-database-cli-samples.md). Příklad skripty rozhraní příkazového řádku Azure, najdete v části [pomocí rozhraní příkazového řádku k vytvoření izolované databáze Azure SQL a konfigurace pravidla brány firewall](scripts/sql-database-create-and-configure-database-cli.md) a [pomocí rozhraní příkazového řádku pro monitorování a škálování izolované databáze SQL](scripts/sql-database-monitor-and-scale-database-cli.md).
 >
 
 | Rutina | Popis |

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/22/2018
 ms.author: shlo
-ms.openlocfilehash: 1023eadbf4b799cd8b0c761c1689b9249cee450a
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: d0f36551fb06e04b50af464bac6953dda64c6202
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42616840"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054144"
 ---
 # <a name="alert-and-monitor-data-factories-using-azure-monitor"></a>Výstrahy a monitorování datové továrny pomocí Azure monitoru
 Cloudové aplikace jsou složité s řadu pohyblivých částí. Monitorování poskytuje data k zajištění, že systém zůstane vaší aplikace v provozu a spuštěná v dobrém stavu. Také pomáhá stave vypnout potenciální problémy a řešení potíží s poslední těch, které jsou. Kromě toho můžete data monitorování získat podrobný přehled o vaší aplikaci. Tyto znalosti můžete dozvíte, jak zlepšit výkon aplikace nebo udržovatelnosti nebo automatizaci akcí, které by jinak vyžadují ruční zásah.
@@ -392,7 +392,7 @@ ADFV2 generuje následující metriky
 |----------------------|---------------------------------|----------|----------------------|-------------------------------------------------------|
 | PipelineSucceededRun | Úspěšné metriky spuštění kanálu | Počet    | Celkem                | Celkový počet kanálů úspěšných běhů v rámci minut časového období |
 | PipelineFailedRuns   | Se nezdařilo metrika spuštění kanálu    | Počet    | Celkem                | Celkový počet kanálů neúspěšných běhů v rámci minut časového období    |
-| ActiviySucceededRuns | Úspěšné běhy metriky aktivity | Počet    | Celkem                | Spuštění bylo úspěšné. Celkový počet aktivit v rámci minut časového období  |
+| ActivitySucceededRuns | Úspěšné běhy metriky aktivity | Počet    | Celkem                | Spuštění bylo úspěšné. Celkový počet aktivit v rámci minut časového období  |
 | ActivityFailedRuns   | Metriky aktivity spuštění se nezdařilo    | Počet    | Celkem                | Celková aktivita neúspěšných běhů v rámci minut časového období     |
 | TriggerSucceededRuns | Aktivační událost metriky spuštění bylo úspěšné  | Počet    | Celkem                | Celkový počet aktivační událost spouští v rámci minut časového období bylo úspěšné.   |
 | TriggerFailedRuns    | Se nezdařilo metrika spuštění aktivační události     | Počet    | Celkem                | Celkový počet aktivační událost spouští v rámci minut časového období se nezdařilo      |

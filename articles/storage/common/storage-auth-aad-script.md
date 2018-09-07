@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: abd4a3b21ede2ddbdede2ec133938d412d5d4c8d
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 56e7467443cb91f73a6b48f318d576345000a0e0
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43248161"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44023093"
 ---
 # <a name="use-an-azure-ad-identity-to-access-azure-storage-with-cli-or-powershell-preview"></a>Pomocí identity Azure AD pro přístup k Azure Storage s využitím rozhraní příkazového řádku nebo Powershellu (Preview)
 
-Azure Storage poskytuje rozšíření ve verzi preview pro Azure CLI a Powershellu, které vám umožní přihlásit a spuštění příkazů skriptu v rámci Azure Active Directory (Azure AD) identity. Identity Azure AD může být uživatele, skupinu nebo instanční objekt služby aplikace nebo může se jednat [se identita spravované služby](../../active-directory/managed-service-identity/overview.md). Můžete přiřadit oprávnění pro přístup k prostředkům úložiště do identity Azure AD prostřednictvím řízení přístupu na základě role (RBAC). Další informace o rolích RBAC ve službě Azure Storage najdete v tématu [Správa přístupových práv k datům služby Azure Storage pomocí RBAC (Preview)](storage-auth-aad-rbac.md).
+Azure Storage poskytuje rozšíření ve verzi preview pro Azure CLI a Powershellu, které vám umožní přihlásit a spuštění příkazů skriptu v rámci Azure Active Directory (Azure AD) identity. Identity Azure AD může být uživatele, skupinu nebo instanční objekt služby aplikace nebo může se jednat [se identita spravované služby](../../active-directory/managed-identities-azure-resources/overview.md). Můžete přiřadit oprávnění pro přístup k prostředkům úložiště do identity Azure AD prostřednictvím řízení přístupu na základě role (RBAC). Další informace o rolích RBAC ve službě Azure Storage najdete v tématu [Správa přístupových práv k datům služby Azure Storage pomocí RBAC (Preview)](storage-auth-aad-rbac.md).
 
 Po přihlášení k Azure CLI nebo Powershellu s Azure AD identity, je vrácena přístupového tokenu pro přístup k Azure Storage v rámci této identity. Tento token se pak automaticky použije pomocí Powershellu nebo rozhraní příkazového řádku k autorizaci operace využívající službu Azure Storage. Pro podporované operace je už nebude potřeba předat klíč k účtu nebo token SAS pomocí příkazu.
 

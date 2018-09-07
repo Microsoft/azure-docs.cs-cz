@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 08/16/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: be3fd304e04a66e6564141b6a20efea88cf62553
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 75b7ecac465fa12b1e19ca409d1535d89c755801
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42055250"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44021883"
 ---
 # <a name="manage-access-rights-to-azure-storage-data-with-rbac-preview"></a>Správa přístupových práv k datům služby Azure Storage pomocí RBAC (Preview)
 
 Azure Active Directory (Azure AD) autorizuje přístupová práva k zabezpečeným prostředkům prostřednictvím [řízení přístupu na základě role (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview). Azure Storage definuje sadu předdefinované role RBAC, které zahrnuje společné sady oprávnění pro přístup k kontejnery nebo fronty. Když roli RBAC se přiřadí identity Azure AD, že identita je udělen přístup k těmto prostředkům podle zadaného oboru. Přístup se dají vymezit na úrovni předplatného, skupinu prostředků, účet úložiště nebo kontejner nebo fronty. Můžete přiřadit přístupová práva pro prostředky služby Azure Storage pomocí webu Azure portal, nástrojů příkazového řádku Azure a rozhraní API pro správu Azure. 
 
-Identity Azure AD může být uživatele, skupinu nebo instanční objekt služby aplikace nebo může být *se identita spravované služby*. Objekt zabezpečení může být uživatele, skupinu nebo instanční objekt služby aplikace. A [se identita spravované služby](../../active-directory/managed-service-identity/overview.md) je automaticky spravované identity používá k ověření z aplikace běžící v Azure virtuální počítače, aplikace function App, škálovací sady virtuálních počítačů a dalších. Přehled identity ve službě Azure AD najdete v tématu [řešení identit Azure pochopit](https://docs.microsoft.com/azure/active-directory/understand-azure-identity-solutions).
+Identity Azure AD může být uživatele, skupinu nebo instanční objekt služby aplikace nebo může být *se identita spravované služby*. Objekt zabezpečení může být uživatele, skupinu nebo instanční objekt služby aplikace. A [se identita spravované služby](../../active-directory/managed-identities-azure-resources/overview.md) je automaticky spravované identity používá k ověření z aplikace běžící v Azure virtuální počítače, aplikace function App, škálovací sady virtuálních počítačů a dalších. Přehled identity ve službě Azure AD najdete v tématu [řešení identit Azure pochopit](https://docs.microsoft.com/azure/active-directory/understand-azure-identity-solutions).
 
 ## <a name="rbac-roles-for-azure-storage"></a>Role RBAC pro Azure Storage
 

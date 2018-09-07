@@ -1,5 +1,6 @@
 ---
-title: Principy spolupráce aplikace služby LUIS – Azure | Dokumentace Microsoftu
+title: Spolupráce aplikace služby LUIS – Language Understanding
+titleSuffix: Azure Cognitive Services
 description: Služba LUIS aplikace vyžadují jednoho vlastníka a spolupracovníky volitelné.
 services: cognitive-services
 author: diberry
@@ -9,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: diberry
-ms.openlocfilehash: fe5e35c2dcb08cdff9d92142558cf8d7ec81c36c
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: fd4955cb2d7ea76e8d0fd6c60027740b64bd8b24
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399567"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44026243"
 ---
 # <a name="collaborating"></a>Spolupráce
 
@@ -41,7 +42,7 @@ Pokud chcete sdílet více aplikací s spolupracovníky, každé aplikaci, kter�
 ## <a name="managing-multiple-authors"></a>Správa více uživatelů
 [LUIS](luis-reference-regions.md#luis-website) webu nenabízí aktuálně vytváření úroveň transakce. Můžete povolit autoři pracovat na nezávislé verze ze základní verze. Dvě různé metody jsou popsány v následujících částech.
 
-### <a name="manage-multiple-versions-inside-the-same-app"></a>Spravovat více verzí uvnitř stejné aplikace
+## <a name="manage-multiple-versions-inside-the-same-app"></a>Spravovat více verzí uvnitř stejné aplikace
 Začněte tím, že [klonování](luis-how-to-manage-versions.md#clone-a-version), od základní verze, pro jednotlivé autory. 
 
 Jednotlivé autory změní svou vlastní verzi aplikace. Jakmile jednotlivé autory s modelem spokojeni, exportujte soubory JSON nové verze.  
@@ -50,7 +51,7 @@ Exportované aplikace jsou soubory ve formátu JSON, které je možné porovnat 
 
 Tato metoda umožňuje mít jeden aktivní verze, jedna fáze a jednu publikovanou verzi. Můžete porovnat výsledky v podokně interaktivní testování ve všech třech verzích.
 
-### <a name="manage-multiple-versions-as-apps"></a>Spravovat více verzí jako aplikace
+## <a name="manage-multiple-versions-as-apps"></a>Spravovat více verzí jako aplikace
 [Export](luis-how-to-manage-versions.md#export-version) základní verze. Jednotlivé autory importuje verze. Osoba, která importuje aplikace je vlastníkem verze. Když se provádí úpravy aplikace a export verze. 
 
 Exportované aplikace jsou soubory ve formátu JSON, které můžete ve srovnání s exportem základní změny. Kombinovat soubory, které chcete vytvořit jeden soubor JSON s novou verzi. Změnit **versionId** vlastností ve formátu JSON místo nové sloučené verze. Tuto verzi naimportujte do původní aplikace.

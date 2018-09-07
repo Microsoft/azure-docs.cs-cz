@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: markvi
-ms.openlocfilehash: 9a06ff345d1bf91efd1abff9960a1a6f9a681dce
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 40e67dfd4ffa427ac47198e88994762a4a45cc94
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223663"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44023347"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Referenční informace k nastavení roamingu pro Windows 10
 Následuje úplný seznam všech nastavení, které budou s roamingem nebo zálohování ve Windows 10. 
@@ -44,10 +44,11 @@ Následující nastavení skupiny jsou k dispozici pro koncovým uživatelům po
 
 * Motiv: na pozadí plochy, dlaždici uživatele, umístění hlavního panelu, atd. 
 * Nastavení aplikace Internet Explorer: procházení historie zadané adresy URL, Oblíbené položky, atd. 
-* Hesla: [schránku na pověření Windows](https://technet.microsoft.com/library/jj554668.aspx), včetně profilů sítě Wi-Fi 
+* Hesla: Správce přihlašovacích údajů Windows, včetně profilů sítě Wi-Fi 
 * Jazykové předvolby: slovníku, nastavení jazyka systému 
 * Usnadnění přístupu: Program Předčítání, klávesnice na obrazovce, Lupa 
 * Další nastavení Windows: viz podrobnosti o nastavení Windows
+* Okraj nastavení prohlížeče: Oblíbené položky Microsoft Edge, seznamu a další nastavení
 
 ![](./media/active-directory-enterprise-state-roaming/active-directory-enterprise-state-roaming-syncyoursettings.png)
 
@@ -73,20 +74,20 @@ Nastavení, která není roaming nebo synchronizace nebude patřit do skupiny.
 | **Data aplikací**: jednotlivými aplikacemi můžete synchronizovat data |synchronizace zálohování |synchronizace zálohování |Interní |
 | **Seznam aplikací**: seznam nainstalovaných aplikací |X |zálohování |Ostatní |
 | **Bluetooth**: všechna nastavení Bluetooth |X |X | |
-| **Příkazový řádek**: "Výchozí" nastavení příkazového řádku |Synchronizace |X | |
+| **Příkazový řádek**: "Výchozí" nastavení příkazového řádku |Synchronizace |X |Interní |
 | **Přihlašovací údaje**: přihlašovacích údajů schránky |Synchronizace |Synchronizace |heslo |
-| **Datum, čas a oblasti**: Automatický čas (Internet čas synchronizace) |Synchronizace |Synchronizace |Jazyk |
-| **Datum, čas a oblasti**: 24 hodin |Synchronizace |X |Jazyk |
-| **Datum, čas a oblasti**: datum a čas |Synchronizace |X |Jazyk |
-| **Datum, čas a oblasti**: časové pásmo | |X |Jazyk |
-| **Datum, čas a oblasti**: letní čas |Synchronizace |X |Jazyk |
-| **Datum, čas a oblasti**: země/oblast |Synchronizace |X |Jazyk |
-| **Datum, čas a oblasti**: první den v týdnu |Synchronizace |X |Jazyk |
-| **Datum, čas a oblasti**: oblast formát (národní prostředí) |Synchronizace |X |Jazyk |
-| **Datum, čas a oblasti**: krátké datum |Synchronizace |X |Jazyk |
-| **Datum, čas a oblasti**: louhý formát data |Synchronizace |X |Jazyk |
-| **Datum, čas a oblasti**: krátkého formátu času |Synchronizace |X |Jazyk |
-| **Datum, čas a oblasti**: dlouhý čas |Synchronizace |X |Jazyk |
+| **Datum, čas a oblasti**: Automatický čas (Internet čas synchronizace) |Synchronizace |Synchronizace |jazyk |
+| **Datum, čas a oblasti**: 24 hodin |Synchronizace |X |jazyk |
+| **Datum, čas a oblasti**: datum a čas |Synchronizace |X |jazyk |
+| **Datum, čas a oblasti**: časové pásmo | |X |jazyk |
+| **Datum, čas a oblasti**: letní čas |Synchronizace |X |jazyk |
+| **Datum, čas a oblasti**: země/oblast |Synchronizace |X |jazyk |
+| **Datum, čas a oblasti**: první den v týdnu |Synchronizace |X |jazyk |
+| **Datum, čas a oblasti**: oblast formát (národní prostředí) |Synchronizace |X |jazyk |
+| **Datum, čas a oblasti**: krátké datum |Synchronizace |X |jazyk |
+| **Datum, čas a oblasti**: louhý formát data |Synchronizace |X |jazyk |
+| **Datum, čas a oblasti**: krátkého formátu času |Synchronizace |X |jazyk |
+| **Datum, čas a oblasti**: dlouhý čas |Synchronizace |X |jazyk |
 | **Přizpůsobení plochy**: motiv plochy (na pozadí, systémovou barvou, výchozí systémové zvuky, spořič obrazovky) |Synchronizace |X |Motiv |
 | **Přizpůsobení plochy**: prezentace tapety |Synchronizace |X |Motiv |
 | **Přizpůsobení plochy**: nastavení hlavního panelu (pozice, automatického schovávání atd.) |Synchronizace |X |Motiv |

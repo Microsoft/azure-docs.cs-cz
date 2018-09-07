@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: 131ba3dfb8bd8ad8be893e26fcc22c5a0e65f145
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 010556dae1649754df5199fb81c10efcf4c5a226
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39431636"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44049996"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Připojení ke službě Azure Cosmos DB pomocí nástroje pro analýzu BI pomocí ovladače ODBC
 
@@ -173,7 +173,7 @@ Můžete definovat a vytvořit zobrazení jako součást procesu vzorkování. T
 
 Vytvoření zobrazení pro vaše data v **Editor schémat** okno v **definice zobrazení** sloupce, klikněte na tlačítko **přidat** na řádek odběru vzorků. Pak v **definice zobrazení** okno, postupujte takto:
 1. Klikněte na tlačítko **nový**, zadejte název zobrazení, například EmployeesfromSeattleView a potom klikněte na tlačítko **OK**.
-1. V **upravit zobrazení** okno, zadejte dotaz služby Azure Cosmos DB. Dotaz SQL služby Azure Cosmos DB, musí se jednat třeba`SELECT c.City, c.EmployeeName, c.Level, c.Age, c.Gender, c.Manager FROM c WHERE c.City = “Seattle”`a potom klikněte na tlačítko **OK**.
+1. V **upravit zobrazení** okno, zadejte dotaz služby Azure Cosmos DB. Dotaz SQL služby Azure Cosmos DB, musí se jednat třeba`SELECT c.City, c.EmployeeName, c.Level, c.Age, c.Gender, c.Manager FROM c WHERE c.City = "Seattle"`a potom klikněte na tlačítko **OK**.
 
 Chcete, můžete vytvořit mnoha zobrazení. Po dokončení definování zobrazení, můžete pak Vzorkovat data. 
 

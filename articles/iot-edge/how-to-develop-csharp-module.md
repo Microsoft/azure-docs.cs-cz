@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 09/04/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: b1c6209c4d589093d7a29cd8a883d3e5d4ca12f9
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: a66a17a0f8daed5f61753dd7c20ed5d9987c0b15
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782298"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44053896"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-c-modules-for-azure-iot-edge"></a>Použití Visual Studio Code pro vývoj a ladění modulů jazyka C# pro Azure IoT Edge
 
@@ -44,7 +44,7 @@ Nastavit místní vývojové prostředí, chcete-li ladit, spouštět a testovat
    pip install --upgrade iotedgehubdev
    ```
 
-K otestování modulu do zařízení, potřebujete aktivní služby IoT hub s alespoň jedno zařízení IoT Edge. Pokud chcete použít počítač jako zařízení IoT Edge, postupujte podle kroků v tomto rychlém startu pro [Windows](quickstart.md) nebo [Linux](quickstart-linux.md). 
+K otestování modulu do zařízení, potřebujete aktivní služby IoT hub s alespoň jeden ID zařízení IoT Edge vytvořili. Pokud spustíte proces démon IoT Edge na vývojovém počítači, můžete potřebovat zastavit EdgeHub a EdgeAgent teprve potom přejděte k dalšímu kroku. 
 
 ## <a name="create-a-new-solution-with-c-module"></a>Vytvoření nového řešení pomocí modulu jazyka C#
 
@@ -111,9 +111,6 @@ Modul IoT Edge C#.Net Core je aplikace. A závisí na C# zařízení sady SDK Az
     dotnet build
     ```
 
-   > [!TIP]
-   > Můžete také použít [PostMan](https://www.getpostman.com/) nebo jiné nástroje rozhraní API pro odesílání zpráv prostřednictvím místo `curl`.
-
 2. Přejděte na adresu `program.cs`. Přidejte zarážku v tomto souboru.
 
 3. Přejděte do zobrazení ladění VS Code. Vyberte konfiguraci ladění **ModuleName místní ladění (.NET Core)**. 
@@ -136,7 +133,7 @@ Modul IoT Edge C#.Net Core je aplikace. A závisí na C# zařízení sady SDK Az
 
     ![Proměnné Watch](media/how-to-develop-csharp-module/single-module-variables.png)
 
-7. Chcete-li ukončit relaci ladění, klikněte na tlačítko Zastavit nebo stisknutím klávesy **Shift + F5**. Paleta příkazů VS Code, zadejte a vyberte **Azure IoT Edge: zastavení IoT Edge simulátor**.
+7. Chcete-li ukončit relaci ladění, klikněte na tlačítko Zastavit nebo stisknutím klávesy **Shift + F5**. Paleta příkazů VS Code, zadejte a vyberte **Azure IoT Edge: zastavení IoT Edge simulátor** zastavit a vyčistit simulátoru.
 
 ## <a name="build-module-container-for-debugging-and-debug-in-attach-mode"></a>Vytvořit kontejner modulu pro ladění a ladění v připojení režimu
 

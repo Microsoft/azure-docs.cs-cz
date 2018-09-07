@@ -1,5 +1,5 @@
 ---
-title: Použít certifikát SSL nahrané v kódu aplikace v Azure App Service | Microsoft Docs
+title: Použití nahraného certifikátu SSL v kódu aplikace ve službě Azure App Service | Dokumentace Microsoftu
 description: ''
 services: app-service\web
 documentationcenter: ''
@@ -13,55 +13,55 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: cephalin
-ms.openlocfilehash: 6800bf766deb2044d400f92dbe370fa15bdd5f00
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: 87c9cd5955dda1a379733e5ad48d58f8361f0e6b
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/01/2017
-ms.locfileid: "26047697"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44051472"
 ---
-# <a name="use-an-ssl-certificate-in-your-application-code-in-azure-app-service"></a>Použít certifikát SSL v kódu aplikace v Azure App Service
+# <a name="use-an-ssl-certificate-in-your-application-code-in-azure-app-service"></a>Použití certifikátu SSL v kódu aplikace ve službě Azure App Service
 
-Tento postup ukazuje, jak použít jeden z certifikátů SSL jste nahráli nebo importovat aplikaci aplikační služby v kódu aplikace. Příkladem případ použití je, že vaše aplikace přístup k externí služba, která vyžaduje ověřování pomocí certifikátu. 
+Tato příručka ukazuje, jak chcete použít jeden z certifikátů SSL, můžete mít nahráli nebo importovali aplikace app Service v kódu aplikace. Příklad případem použití je, že vaše aplikace přistupuje k externí služby, která vyžaduje ověření certifikátu. 
 
-Tento přístup k používání certifikátů SSL ve vašem kódu využívá SSL funkce ve službě App Service, která vyžaduje, aby vaše aplikace se v **základní** vrstvy nebo vyšší. Alternativou je zahrnout soubor certifikátu v adresáři vaší aplikace a načíst přímo (viz [alternativní: zatížení certifikát jako soubor](#file)). Však tato alternativní neumožňuje skrýt privátní klíč v certifikátu z kódu aplikace nebo vývojář. Kromě toho pokud kód aplikace v úložišti otevřeným zdrojem, udržování certifikát s privátním klíčem do úložiště není možné.
+Tento přístup k používání certifikátů SSL v kódu využívá protokol SSL funkcí ve službě App Service, která vyžaduje, aby vaše aplikace v **základní** vrstvy nebo vyšší. Alternativou je zahrnout soubor certifikátu do adresáře aplikace a jejich načtení přímo (viz [alternativní: zatížení certifikát jako soubor](#file)). Nicméně tato alternativa neumožňuje skrýt privátní klíč v certifikátu od kódu aplikace nebo vývojáře. Kromě toho pokud kód aplikace je v úložišti opensourcových, udržování certifikát s privátním klíčem do úložiště není možné.
 
-Když necháte App Service spravovat své certifikáty protokolu SSL, můžete spravovat certifikáty a kódu aplikace samostatně a chrání citlivá data.
+Pokud umožníte spravovat své certifikáty SSL služby App Service můžete samostatně spravovat certifikáty a kódu aplikace a chránit citlivá data.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li provést tento postup průvodce:
+K dokončení této příručce s postupy:
 
-- [Vytvořit aplikaci služby App Service](/azure/app-service/)
-- [Mapování názvu DNS na vaší webové aplikace](app-service-web-tutorial-custom-domain.md)
-- [Nahrát na server certifikát SSL](app-service-web-tutorial-custom-ssl.md) nebo [importovat certifikát App Service](web-sites-purchase-ssl-web-site.md) do vaší webové aplikace
+- [Vytvořit aplikaci App Service](/azure/app-service/)
+- [Namapovat na svou webovou aplikaci vlastní název DNS](app-service-web-tutorial-custom-domain.md)
+- [Nahrát certifikát SSL](app-service-web-tutorial-custom-ssl.md) nebo [importovat certifikát App Service](web-sites-purchase-ssl-web-site.md) do vaší webové aplikace
 
 
-## <a name="load-your-certificates"></a>Načtení certifikátů
+## <a name="load-your-certificates"></a>Načíst certifikáty
 
-Pokud chcete používat certifikát, který je nahrán do nebo importovat do služby App Service, nejprve usnadňují kódu aplikace. Můžete to provést pomocí `WEBSITE_LOAD_CERTIFICATES` nastavení aplikace.
+Pokud chcete použít certifikát, který je odeslán do nebo importovat do služby App Service, nejprve usnadňují kódu aplikace. To provedete `WEBSITE_LOAD_CERTIFICATES` nastavení aplikace.
 
-V <a href="https://portal.azure.com" target="_blank">portál Azure</a>, otevřete stránku své webové aplikace.
+V <a href="https://portal.azure.com" target="_blank">webu Azure portal</a>, otevřete stránce vaší webové aplikace.
 
-V levém navigačním panelu, klikněte na tlačítko **certifikáty SSL**.
+V levém navigačním panelu klikněte na tlačítko **certifikáty SSL**.
 
-![Nahrát certifikát](./media/app-service-web-tutorial-custom-ssl/certificate-uploaded.png)
+![Nahraný certifikát](./media/app-service-web-tutorial-custom-ssl/certificate-uploaded.png)
 
-Zde se zobrazují všechny své nahrávat a importované certifikáty protokolu SSL pro tuto webovou aplikaci s jejich kryptografické otisky. Zkopírujte kryptografický otisk certifikátu, který chcete použít.
+Všechny nahrané a importované certifikáty SSL pro tuto webovou aplikaci se tady zobrazí s jejich kryptografické otisky. Zkopírujte kryptografický otisk certifikátu, který chcete použít.
 
-V levém navigačním panelu, klikněte na tlačítko **nastavení aplikace**.
+V levém navigačním panelu klikněte na tlačítko **nastavení aplikace**.
 
-Přidat aplikaci názvem `WEBSITE_LOAD_CERTIFICATES` a jeho hodnotu nastavte kryptografický otisk certifikátu. Chcete-li zpřístupnit více certifikátů, použijte hodnot oddělených čárkami kryptografický otisk. Chcete-li všechny certifikáty dostupné, nastavte hodnotu na `*`. 
+Přidání aplikace názvem `WEBSITE_LOAD_CERTIFICATES` a nastavte jej na hodnotu kryptografického otisku certifikátu. Zpřístupnit více certifikátů použijte hodnoty oddělené čárkami kryptografický otisk. Zpřístupnit všechny certifikáty, nastavte hodnotu na `*`. Poznamenejte si, který to umístí certifikát do `CurrentUser\My` ukládat.
 
 ![Konfigurace nastavení aplikace](./media/app-service-web-ssl-cert-load/configure-app-setting.png)
 
-Po dokončení klikněte na tlačítko **Uložit**.
+Až budete hotovi, klikněte na tlačítko **Uložit**.
 
-Nakonfigurovaný certifikát je teď připravená k použití podle vašeho kódu.
+Nakonfigurovaný certifikát je teď připravená k použití ve vašem kódu.
 
-## <a name="use-certificate-in-c-code"></a>Použít certifikát v kódu jazyka C#
+## <a name="use-certificate-in-c-code"></a>Použití certifikátu v kódu jazyka C#
 
-Po váš certifikát je dostupné, můžete zobrazit jeho v C# – kód kryptografický otisk certifikátu. Následující kód načte certifikát s kryptografickým otiskem `E661583E8FABEF4C0BEF694CBC41C28FB81CD870`.
+Jakmile váš certifikát není přístupný, budete přístup v kódu jazyka C# pomocí kryptografického otisku certifikátu. Následující kód načte certifikát s kryptografickým otiskem `E661583E8FABEF4C0BEF694CBC41C28FB81CD870`.
 
 ```csharp
 using System;
@@ -87,11 +87,11 @@ certStore.Close();
 ```
 
 <a name="file"></a>
-## <a name="alternative-load-certificate-as-a-file"></a>Alternativní: načtení certifikátu jako soubor
+## <a name="alternative-load-certificate-as-a-file"></a>Ve zkratce: Načíst certifikát jako soubor
 
-Tato část uvádí, jak a načíst soubor certifikátu, který je v adresáři vaší aplikace. 
+Tato část ukazuje, jak a načtení souboru certifikátu, který je v adresáři vaší aplikace. 
 
-Následující příklad jazyka C# načte certifikát nazvaný `mycert.pfx` z `certs` adresář úložiště vaší aplikace.
+Následující příklad jazyka C# načte certifikát nazvaný `mycert.pfx` z `certs` adresáři úložiště vaší aplikace.
 
 ```csharp
 using System;

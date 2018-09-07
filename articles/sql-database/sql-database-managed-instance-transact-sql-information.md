@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 0813/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: f05f6f785ec8466fc6d0ae2c94c975312ef37fa2
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: 57c6b52df3e8f6c47eb794cda4b47bfa2d7de374
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42058333"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44051234"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Rozdíly ve službě Azure SQL Database Managed Instance T-SQL z SQL serveru 
 
@@ -425,4 +425,4 @@ Může existovat pouze jedna databáze profil e-mailu a musí být volána `Azur
 
 - Podrobnosti o Managed Instance najdete v tématu [co je Managed Instance?](sql-database-managed-instance.md)
 - Pro funkce a seznam porovnání, naleznete v tématu [běžné funkce SQL](sql-database-features.md).
-- Kurz ukazuje, jak vytvořit nový Managed Instance, najdete v tématu [vytvoření Managed Instance](sql-database-managed-instance-create-tutorial-portal.md).
+- Kurz ukazuje, jak vytvořit nový Managed Instance, najdete v tématu [vytvoření Managed Instance](sql-database-managed-instance-get-started.md).

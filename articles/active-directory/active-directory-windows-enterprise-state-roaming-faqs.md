@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: markvi
-ms.openlocfilehash: e6cb83eb6aaaea38686c63d0f3f70738efa4bcff
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 39d3913013d9528405191c5f052a943f1869048a
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630752"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44026852"
 ---
 # <a name="settings-and-data-roaming-faq"></a>Nejčastější dotazy k nastavení a datovému roamingu
 Tento článek obsahuje odpovědi na některé otázky, které správce IT může mít informace o nastavení a synchronizace dat aplikace.
@@ -35,12 +35,12 @@ Tento článek obsahuje odpovědi na některé otázky, které správce IT můž
 * *Hesla*, včetně Internet hesla, profilů sítě Wi-Fi a další.
 * *Jazykové předvolby*, což zahrnuje nastavení pro rozložení klávesnice, jazyk systému, datum a čas a další.
 * *Snadné získat přístup k funkcím*, jako je například motiv s vysokým kontrastem a program Předčítání, Lupa.
-* *Další nastavení Windows*, jako je například nastavení příkazového řádku a seznam aplikací.
+* *Další nastavení Windows*, jako je například nastavení myši.
 
 **Data aplikací**: Universal Windows apps můžete zapisovat do složky cestovního nastavení data a všechny data zapsaná do této složky se budou automaticky synchronizovat. Záleží jen na jednotlivé aplikace pro vývojáře k návrhu aplikace, abyste mohli využít tuto funkci. Další podrobnosti o tom, jak vývoj aplikace pro Universal Windows, který používá roaming, najdete v článku [API úložiště appdata](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx) a [roaming blog pro vývojáře aplikací Windows 8](http://blogs.msdn.com/b/windowsappdev/archive/2012/07/17/roaming-your-app-data.aspx).
 
 ## <a name="what-account-is-used-for-settings-sync"></a>Který účet se používá pro synchronizaci nastavení?
-Synchronizace nastavení v systému Windows 8 a Windows 8.1, vždy používá účty zákazníků Microsoftu. Podnikoví uživatelé měli možnost připojení k účtu v doméně služby Active Directory k získání přístupu k synchronizaci nastavení účtu Microsoft. Ve Windows 10 připojené to účet Microsoft, že funkce je nahrazen účtu primárního/sekundárního framework.
+Synchronizace nastavení ve Windows 8.1, vždy používá účty zákazníků Microsoftu. Podnikoví uživatelé měli možnost připojení k účtu v doméně služby Active Directory k získání přístupu k synchronizaci nastavení účtu Microsoft. Ve Windows 10 připojené to účet Microsoft, že funkce je nahrazen účtu primárního/sekundárního framework.
 
 Primární účet je definován jako účet použitý k přihlášení k Windows. To může být účet Microsoft, účet služby Azure Active Directory (Azure AD), účet místní služby Active Directory nebo místní účet. Kromě primárního účtu uživatele Windows 10 přidat jeden nebo více účtů sekundárního cloudu do svého zařízení. Sekundární účet je obvykle účet Microsoft, účet Azure AD nebo jiného účtu třeba z Gmailu nebo Facebook. Tyto sekundární účty poskytují přístup k další služby, jako je jednotné přihlašování a Windows Store, ale nejsou schopná běží na ní takové nastavení synchronizace.
 
@@ -59,7 +59,7 @@ Pokud vlastník aplikace nelze identifikovat, zpřístupní se primární účet
 >
 
 ## <a name="how-do-i-upgrade-from-microsoft-account-settings-sync-in-windows-8-to-azure-ad-settings-sync-in-windows-10"></a>Jak můžu upgradovat z synchronizaci nastavení účtu Microsoft ve Windows 8 do služby Azure AD sync nastavení ve Windows 10?
-Pokud jsou připojeny k doméně služby Active Directory, systémem Windows 8 nebo Windows 8.1 připojených účtem Microsoft, budou synchronizovat nastavení prostřednictvím účtu Microsoft. Po upgradu na Windows 10, budete i nadále synchronizovat nastavení uživatele přes účet Microsoft, jako je uživatel připojený k doméně a doméně služby Active Directory s Azure AD nepřipojuje.
+Pokud jsou připojeny k doméně služby Active Directory s Windows 8.1 připojený účet Microsoft, budou synchronizovat nastavení prostřednictvím účtu Microsoft. Po upgradu na Windows 10, budete i nadále synchronizovat nastavení uživatele přes účet Microsoft, jako je uživatel připojený k doméně a doméně služby Active Directory s Azure AD nepřipojuje.
 
 Pokud místní domény služby Active Directory s Azure AD connect, zařízení se pokusí o synchronizaci nastavení pomocí připojeném účtu služby Azure AD. Pokud správce Azure AD neumožňuje Enterprise State Roaming, vaše připojení účtu služby Azure AD se zastaví, synchronizovat nastavení. Pokud jste uživatelem systému Windows 10 a přihlaste se pomocí identity Azure AD, se spustí, synchronizovat nastavení systému windows, poté, co váš správce povolí synchronizaci nastavení přes Azure AD.
 
@@ -94,7 +94,7 @@ Správci mohou nakonfigurovat UE-V do roaming dat aplikací klasické pracovní 
 Microsoft může v budoucnu, prozkoumat způsoby, jak provést UE-V, které jsou hluboce integrovány do Windows a rozšiřují UE-V do roaming nastavení prostřednictvím cloudové služby Azure AD.
 
 ## <a name="can-i-store-synced-settings-and-data-on-premises"></a>Můžete ukládat synchronizovaná nastavení a data v místním prostředí?
-Enterprise State Roaming ukládá všechna synchronizovaná data v cloudu Azure. UE-V nabízí místní cestovní řešení.
+Enterprise State Roaming ukládá všechna synchronizovaná data v cloudu Microsoftu. UE-V nabízí místní cestovní řešení.
 
 ## <a name="who-owns-the-data-thats-being-roamed"></a>Kdo vlastní data, která je přenosné?
 Podniky vlastní data s roamingem prostřednictvím Enterprise State Roaming. Data se ukládají v datovém centru Azure. Všechna data se šifrují přenášená i neaktivní uložená v cloudu pomocí služby Azure Rights Management z Azure Information Protection. Toto je vylepšení v porovnání s synchronizace nastavení založené na účtu Microsoft, který šifruje jenom určité citlivých dat jako jsou přihlašovací údaje uživatele, před opuštěním zařízení.

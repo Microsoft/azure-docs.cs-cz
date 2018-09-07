@@ -3,17 +3,16 @@ title: Upgradovat registr kontejnerů Classic Azure
 description: Využijte výhod rozbalených sadě funkcí Basic, Standard a Premium spravované registry kontejnerů díky upgradu nespravované Classic registru kontejneru.
 services: container-registry
 author: mmacy
-manager: jeconnoc
 ms.service: container-registry
 ms.topic: article
 ms.date: 08/28/2018
 ms.author: marsma
-ms.openlocfilehash: 7a377c607639f5c044e689b11380e9778f9c72c8
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 951866c1c74cb14536ea341d80c06e0fcfe0e4fe
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189017"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44025584"
 ---
 # <a name="upgrade-a-classic-container-registry"></a>Upgrade registru Classic kontejneru
 
@@ -23,7 +22,7 @@ Klasické SKU je zastaralé a budou k dispozici od března 2019. Tento článek 
 
 ## <a name="why-upgrade"></a>Proč upgradovat?
 
-Registru Classic se skladová položka **zastaralé**a nebude k dispozici z **. března 2019**. Všechny existující registry Classic by měl být upgrade před březnem 2019.
+Registru Classic se skladová položka **zastaralé**a nebude k dispozici z **. března 2019**. Všechny existující registry Classic by měl upgradovat před březnem 2019.
 
 Z důvodu plánovaného vyřazení a omezené možnosti registry Classic nespravované všechny registry Classic se neupgradovali na Basic, Standard nebo Premium spravované Registry. Tyto vyšší úrovně SKU hlouběji integrovat registru do funkce Azure.
 

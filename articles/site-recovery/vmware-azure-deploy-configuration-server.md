@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: bd456e0f881f606f36f2b4d80e704ce138f7db0f
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 4222214705c42fe09d90d77faa7be63cc2a13206
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666428"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44025272"
 ---
 # <a name="deploy-a-configuration-server"></a>Nasazení konfiguračního serveru
 
@@ -42,7 +42,7 @@ Požadavky na velikost pro konfigurační server závisí na potenciální četn
 | 12 virtuálních procesorů (2 sockets * 6 jader \@ 2,5 GHz) |18 GB |600 GB |500 GB až 1 TB |Replikace počítačů 100 150. |
 | 16 virtuálních procesorů (2 sockets * 8 jader \@ 2,5 GHz) |32 GB |1 TB |1 TB na 2 TB |Replikace počítačů 150 až 200. |
 
-Pokud replikujete více než jeden virtuální počítač VMware, přečtěte si [důležité informace o plánování kapacity](https://docs.microsoft.com/azure/site-recovery/site-recovery-plan-capacity-vmware). Spustit [nástroj Plánovač nasazení](site-recovery-deployment-planner.md) pro replikaci VMWare.
+Pokud replikujete více než jeden virtuální počítač VMware, přečtěte si [důležité informace o plánování kapacity](site-recovery-plan-capacity-vmware.md). Spustit [nástroj Plánovač nasazení](site-recovery-deployment-planner.md) pro replikaci VMWare.
 
 ## <a name="download-the-template"></a>Stažení šablony
 
@@ -119,9 +119,9 @@ Pokud chcete přidat další síťový adaptér ke konfiguračnímu serveru, př
 
 ## <a name="faq"></a>Nejčastější dotazy
 
-1. Můžete použít virtuální počítač, kde je nainstalován konfigurační server pro různé účely?
+1. Můžete použít virtuální počítač, ve kterém je nainstalován konfigurační server pro různé účely?
 
-    **Ne**, doporučujeme použít virtuální počítač pro jediným účelem konfiguračního serveru. Postupujte podle všechny specifikace podle [předchozí části](vmware-azure-deploy-configuration-server.md#Prerequisites) pro efektivní správu zotavení po havárii.
+    **Ne**, doporučujeme použít virtuální počítač pro jediným účelem konfiguračního serveru. Ujistěte se, postupujte podle požadavků uvedených v [požadavky](#prerequisites) pro efektivní správu zotavení po havárii.
 2. Můžete přepnout v úložišti už zaregistrovaný na konfiguračním serveru pomocí nově vytvořeného trezoru?
 
     **Ne**, jakmile se trezor zaregistrován u konfiguračního serveru, nejde změnit.
@@ -130,10 +130,10 @@ Pokud chcete přidat další síťový adaptér ke konfiguračnímu serveru, př
     **Ano**, lze použít stejný konfigurační server pro replikaci fyzických a virtuálních počítačů. Nicméně by bylo možné provést fyzický počítač zpět jenom pro virtuální počítač VMware.
 4. Jaký je účel konfigurační server a kde se používá?
 
-    Přečtěte si naše architektura Azure Site Recovery [tady](vmware-azure-architecture.md) získat další informace o konfiguračním serveru a jeho funkcí poskytujete.
+    Odkazovat na [replikaci z VMware do Azure replikace architektura](vmware-azure-architecture.md) získat další informace o konfiguračním serveru a jeho funkcí poskytujete.
 5. Kde najdete nejnovější verzi konfiguračního serveru?
 
-    Přečtěte si článek na kroky pro upgrade konfiguračního serveru [prostřednictvím portálu](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server). Můžete ji také přímo stáhnout [Microsoft Download Center](https://aka.ms/asrconfigurationserver).
+    Kroky pro upgrade konfiguračního serveru pomocí portálu, najdete v části [upgradujte konfigurační server](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server). Můžete ji také přímo stáhnout [Microsoft Download Center](https://aka.ms/asrconfigurationserver).
 6. Kde lze stáhnout přístupové heslo pro konfigurační server?
 
     Odkazovat na [v tomto článku](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase) stáhnout přístupové heslo.
@@ -143,7 +143,7 @@ Pokud chcete přidat další síťový adaptér ke konfiguračnímu serveru, př
 
 ## <a name="upgrade-the-configuration-server"></a>Upgradujte konfigurační server
 
-Konfigurační server upgradovat na nejnovější verzi, přečtěte si uvedeného postupu [zde](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)
+Konfigurační server upgradovat na nejnovější verzi, postupujte podle těchto [kroky](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server).
 
 ## <a name="manage-the-configuration-server"></a>Správa konfiguračního serveru
 

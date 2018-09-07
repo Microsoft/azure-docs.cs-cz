@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/02/2018
+ms.date: 09/05/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: bccc2dcad8e326cd29cfe031a95a7c2d0cf5ec7f
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: aacf99afef344564d028e78892091c6618c7d495
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38302308"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44026685"
 ---
 # <a name="add-hosting-servers-for-the-mysql-resource-provider"></a>Přidání hostitelské servery pro poskytovatele prostředků MySQL
 
@@ -32,8 +32,8 @@ Verze MySQL 5.6, 5.7 a 8.0, lze pro hostitelské servery. Poskytovatele prostře
 Ujistěte se, že máte přihlašovací údaje pro účet s oprávněními správce systému. Přidání hostitelského serveru, postupujte podle těchto kroků:
 
 1. Přihlaste se k portálu Azure Stack operátor jako správce služby.
-2. Vyberte **další služby**.
-3. Vyberte **prostředky pro správu** > **hostitelské servery MySQL** > **+ přidat**. Tím se otevře **přidat Server pro hostování MySQL** dialogového okna, je znázorněno na následujícím snímku obrazovky.
+2. Vyberte **Všechny služby**.
+3. V části **prostředky pro správu** vyberte kategorii **hostování servery MySQL** > **+ přidat**. Tím se otevře **přidat Server pro hostování MySQL** dialogového okna, je znázorněno na následujícím snímku obrazovky.
 
    ![Konfigurace serveru pro hostování](./media/azure-stack-mysql-rp-deploy/mysql-add-hosting-server-2.png)
 

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 46c99011a22f855f6faf53e03169b2d1e4c6ce85
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: a79c09df7d5fec5884a6810b82b7c174042a4c93
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669003"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054559"
 ---
 # <a name="how-it-works-azure-multi-factor-authentication"></a>Jak to funguje: ověřování Azure Multi-Factor Authentication
 
@@ -35,7 +35,7 @@ Ověřování službou Multi-Factor Authentication je součástí následující
 
 * **Licence Azure Active Directory Premium** -plně vybavené použití služby Azure Multi-Factor Authentication (Cloud) nebo ověřování Azure Multi-Factor Authentication Server (místní).
    * **Služba Azure MFA (Cloud)** - **tato možnost je doporučený pro nová nasazení**. Azure MFA v cloudu vyžaduje žádnou místní infrastrukturu a je možné s uživateli federované nebo jenom pro cloud.
-   * **Azure MFA Server** – Pokud vaše organizace potřebuje ke správě prvky přidružené infrastruktury a je nasazena služba AD FS ve vašem prostředí místní tímto způsobem může být možnost.
+   * **Azure MFA Server** – Pokud vaše organizace potřebuje ke správě prvky přidružené infrastruktury a nasazena služba AD FS ve vašem místním prostředí tímto způsobem může být možnost.
 * **Multi-Factor Authentication pro Office 365** -podmnožinu funkcí Azure Multi-Factor Authentication jsou k dispozici jako součást vašeho předplatného. Další informace o vícefaktorové ověřování pro Office 365, najdete v článku [plánování ověřování službou Multi-Factor Authentication pro Office 365 nasazení](https://support.office.com/article/plan-for-multi-factor-authentication-for-office-365-deployments-043807b2-21db-4d5c-b430-c8a6dee0e6ba).
 * **Azure Active Directory globální správci** -podmnožinu funkcí Azure Multi-Factor Authentication jsou k dispozici jako prostředek k ochraně účty globálních správců.
 

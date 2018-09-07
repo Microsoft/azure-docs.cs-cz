@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: markvi
-ms.openlocfilehash: bb2210619e481189fc88ca3bb6b8044a8f5d7e14
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: aa14563966e028716d8e18c3228f026af983561f
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39262944"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44024105"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>Povolení služby Enterprise State Roaming v Azure Active Directory
 Enterprise State Roaming je k dispozici pro všechny organizace s Azure AD Premium nebo Enterprise Mobility + Security (EMS) licence. Další informace o tom, jak získat předplatné Azure AD, najdete v článku [stránce produktu Azure AD](https://azure.microsoft.com/services/active-directory).
@@ -32,16 +32,17 @@ Když povolíte Enterprise State Roaming, vaše organizace je automaticky uděle
 
 1. Přihlaste se k [centrum pro správu Azure AD](https://aad.portal.azure.com/).
 
-2. Vyberte **Azure Active Directory** &gt; **zařízení** &gt; **nastavení zařízení**.
+2. Vyberte **Azure Active Directory** &gt; **zařízení** &gt; **Enterprise State Roaming**.
 
 3. Vyberte **uživatelé můžou synchronizovat nastavení a data aplikací na zařízeních**. Další informace najdete v tématu [jak nakonfigurovat nastavení zařízení](https://docs.microsoft.com/azure/active-directory/device-management-azure-portal).
   
   ![Obrázek nastavení zařízení s názvem uživatelé můžou synchronizovat nastavení a data aplikací na zařízeních](./media/active-directory-windows-enterprise-state-roaming-enable/device-settings.png)
   
-Pro zařízení s Windows 10 k používání služby Enterprise State Roaming zařízení musí ověřit pomocí identity Azure AD. Pro zařízení, která jsou připojená k Azure AD je primární přihlašovací identitu uživatele svoji identitu služby Azure AD, takže není nutná žádná další konfigurace. Zařízení, která používají místní služby Active Directory, musí správce IT [připojení zařízení připojených k doméně do Azure AD pro Windows 10 dojde](active-directory-azureadjoin-devices-group-policy.md).
+Pro zařízení s Windows 10 k používání služby Enterprise State Roaming zařízení musí ověřit pomocí identity Azure AD. Pro zařízení, která jsou připojená k Azure AD je primární přihlašovací identitu uživatele svoji identitu služby Azure AD, takže není nutná žádná další konfigurace. Zařízení, která používají místní služby Active Directory, musí správce IT [zařízení připojená k hybridní službě Azure Active Directory konfigurovat](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-manual-steps). 
 
 ## <a name="data-storage"></a>Úložiště dat
 Enterprise State Roaming dat je hostovaná v jednom nebo více [oblastí Azure](https://azure.microsoft.com/regions/) , že nejlepší bylo v souladu s země/oblast hodnotu nastavenou v instanci Azure Active Directory. Enterprise State Roaming data jsou rozdělená podle tři hlavní geografických oblastech: Severní Amerika, EMEA a APAC. Enterprise State Roaming dat pro tenanta se nachází na místně geografické oblasti a není replikován napříč oblastmi.  Příklad:
+
 Země/oblast hodnoty | má konání svá data
 ---------------------|-------------------------
 EMEA země, třeba "France" nebo "Zambie" | jeden nebo oblastí Azure v Evropě 
@@ -69,7 +70,7 @@ Postupujte podle těchto kroků pro zobrazení zprávy o stavu synchronizace za�
   ![Obrázek zařízení synchronizace úložiště se sloupcovou strukturou dat](./media/active-directory-windows-enterprise-state-roaming-enable/device-status-row.png)
 
 ## <a name="data-retention"></a>Uchovávání dat
-Data synchronizovat do Azure s využitím Enterprise State Roaming se uchovávají, dokud je ručně neodstraníte nebo dokud dotyčný dat je určena jako zastaralé. 
+Data synchronizují do cloudu Microsoftu pomocí Enterprise State Roaming se uchovávají, dokud je ručně neodstraníte nebo dokud dotyčný dat je určena jako zastaralé. 
 
 ### <a name="explicit-deletion"></a>Explicitní odstranění
 Explicitní odstranění je, když Azure správce odstraní uživatele nebo adresář nebo jinak požadavků explicitně, že data se odstraní.
@@ -79,14 +80,14 @@ Explicitní odstranění je, když Azure správce odstraní uživatele nebo adre
 * **V žádosti o odstranění**: Pokud chce správce služby Azure AD ručně odstranit data nebo data nastavení konkrétního uživatele, Správce může lístek pomocí [podpory Azure](https://azure.microsoft.com/support/). 
 
 ### <a name="stale-data-deletion"></a>Odstranění zastaralých dat
-Data, která se nepřistupovalo po dobu jednoho roku ("uchovávání doba"), bude zacházeno jako zastaralé a budou odstraněny z Azure. Doba uchovávání se může změnit, ale nesmí být dřívější než 90 dní. Zastaralá data může být konkrétní sadu nastavení Windows/aplikace nebo všechna nastavení pro uživatele. Příklad:
+Data, která se nepřistupovalo po dobu jednoho roku ("uchovávání doba"), bude zacházeno jako zastaralé a můžou se odstranit z cloudu Microsoftu. Doba uchovávání se může změnit, ale nesmí být dřívější než 90 dní. Zastaralá data může být konkrétní sadu nastavení Windows/aplikace nebo všechna nastavení pro uživatele. Příklad:
 
 * Pokud se žádná zařízení získat přístup ke kolekci konkrétní nastavení (například aplikace se odebere ze zařízení nebo skupinu nastavení, jako je například "Motiv" je zakázaná pro všechny uživatele zařízení), pak tuto kolekci zastarávají po uplynutí doby uchování a může dojít k odstranění . 
 * Pokud uživatele po vypnutí nastavení synchronizace ve všech jeho zařízeních, pak žádná data nastavení budou mít přístup, a všechna nastavení data pro tohoto uživatele se stane zastaralou a po dobu uchování, můžou se odstranit. 
 * Pokud správce Azure AD directory vypne Enterprise State Roaming pro celý adresář, pak všichni uživatelé adresáře se zastaví, synchronizovat nastavení a všechna nastavení data pro všechny uživatele budou zastaralá a můžou se odstranit po uplynutí doby uchování. 
 
 ### <a name="deleted-data-recovery"></a>Obnovení odstraněných dat
-Zásady uchovávání dat se nedá konfigurovat. Jakmile se data se trvale odstraní, se nedá vrátit zpátky. Však nastavení data se odstraní pouze z Azure, ne ze zařízení koncového uživatele. Pokud žádné zařízení znovu připojí později služby Enterprise State Roaming, jsou nastavení znovu synchronizovat a uložená v Azure.
+Zásady uchovávání dat se nedá konfigurovat. Jakmile se data se trvale odstraní, se nedá vrátit zpátky. Však nastavení data se odstraní pouze z cloudu Microsoftu, ne ze zařízení koncového uživatele. Pokud žádné zařízení znovu připojí později služby Enterprise State Roaming, jsou nastavení znovu synchronizované a uložená v cloudu Microsoftu.
 
 ## <a name="related-topics"></a>Související témata
 * [Přehled Enterprise State Roaming](active-directory-windows-enterprise-state-roaming-overview.md)

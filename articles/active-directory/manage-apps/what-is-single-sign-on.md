@@ -14,12 +14,12 @@ ms.date: 07/16/2018
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: it-pro
-ms.openlocfilehash: 1a7ecbe42857e522785d5919d46b783feae4caeb
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 1ac15ce8f8abf2b30b42f02b300a17448f86fc40
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39494121"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44052764"
 ---
 # <a name="what-is-application-access-and-single-sign-on-with-azure-active-directory"></a>Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?
 Jednotné přihlašování znamená možnost přistupovat ke všem aplikacím a prostředkům, které je potřeba udělat firmy, tak, že stačí, když pomocí jediného uživatelského účtu. Jakmile se přihlásíte, dostanete všechny aplikace, které potřebujete, aniž byste museli znovu ověřovat (třeba zadávat heslo) podruhé.
@@ -46,7 +46,7 @@ Azure AD podporuje tři různé způsoby, přihlaste se k aplikacím:
 
 * **Federované jednotné přihlašování** umožňuje aplikacím pro přesměrování do služby Azure AD pro ověřování uživatelů místo vás vyzve k zadání vlastní heslo. Federované jednotné přihlašování se podporuje pro aplikace, které podporují protokoly, například SAML 2.0, WS-Federation nebo OpenID Connect a bohaté možnosti režim jednotného přihlašování.
 * **Založené na heslech jednotného přihlašování** umožňuje zabezpečené uložení hesel aplikace a opakované přehrání pomocí rozšíření webového prohlížeče nebo mobilní aplikace. Založené na heslech jednotného přihlašování využívá existující proces poskytovaný aplikací, ale umožňuje správcům spravovat hesla a nevyžaduje, aby uživatel heslo znal.
-* **Existující jednotné přihlašování** Azure AD a využít všechny existující jednotné přihlašování, který už dřív představovala nastavit pro aplikace, ale umožňuje tyto aplikace propojit s portály panel přístupu k Office 365 nebo Azure AD a také umožňuje další vytváření sestav v Azure AD, když existuje spuštění aplikace.
+* **Propojené jednotného přihlašování** Azure AD a využít všechny existující jednotné přihlašování, který už dřív představovala nastavit pro aplikace, ale umožňuje tyto aplikace propojit s portály panel přístupu k Office 365 nebo Azure AD a také umožňuje další vytváření sestav v Azure AD, když existuje spuštění aplikace.
 
 Jakmile uživatel byl ověřen s aplikací, potřebují také mít záznam účtu zřízené na úrovni aplikace, které řekne aplikaci, ve kterém jsou oprávnění a úroveň přístupu uvnitř aplikace. Zřizování tento záznam účtu můžete buď automaticky provedou, nebo to může nastat, ručně správcem před uživateli se nabídnou přístup pomocí jednotného přihlašování.
 
@@ -79,10 +79,10 @@ Pro jednotné přihlašování založené na heslech může být koncového uži
 * Chrome – Ve Windows 7 nebo novější a v systému MacOS X nebo novější
 * Firefox 26.0 nebo později – na Windows XP SP2 nebo novější a v systému Mac OS X 10,6 nebo novější
 
-### <a name="existing-single-sign-on"></a>Existující jednotné přihlašování
-Při konfiguraci jednotného přihlašování pro aplikaci, na webu Azure portal nabízí třetí možnost z "existující Single Sign-On". Tato možnost jednoduše umožňuje správcům vytvořit odkaz na aplikaci a umístěte ho na panel přístupu pro vybraného uživatele.
+### <a name="linked-single-sign-on"></a>Propojené jednotného přihlašování
+Při konfiguraci jednotného přihlašování pro aplikaci, na webu Azure portal nabízí třetí možnost z "propojené Single Sign-On". Tato možnost jednoduše umožňuje správcům vytvořit odkaz na aplikaci a umístěte ho na panel přístupu pro vybraného uživatele.
 
-Například pokud je aplikace, která je nakonfigurovaná k ověřování uživatelů pomocí služby Active Directory Federation Services 2.0, správce použít možnost "existující Single Sign-On" pro vytvoření odkazu na něj na přístupovém panelu. Když uživatelé přejdou na odkaz, musí ověřit pomocí Active Directory Federation Services 2.0 nebo jakýkoli existující jednotné přihlašování řešení poskytuje aplikace.
+Například pokud je aplikace, která je nakonfigurovaná k ověřování uživatelů pomocí služby Active Directory Federation Services 2.0, správce použít možnost "propojené Single Sign-On" pro vytvoření odkazu na něj na přístupovém panelu. Když uživatelé přejdou na odkaz, musí ověřit pomocí Active Directory Federation Services 2.0 nebo jakýkoli existující jednotné přihlašování řešení poskytuje aplikace.
 
 ### <a name="user-provisioning"></a>Zřizování uživatelů
 Pro výběr aplikace Azure AD umožňuje zřizování automatizované uživatelských účtů v aplikacích SaaS třetí strany z webu Azure portal a jeho rušení pomocí údajů systému Windows Server Active Directory nebo Azure AD identity. Pokud má uživatel oprávnění ve službě Azure AD pro jednu z těchto aplikací, účet můžete automaticky se vytvoří v cílové aplikaci SaaS (zřízená).
@@ -172,7 +172,7 @@ Nejvíce federovaným aplikacím, které podporují protokol SAML 2.0, WS-Federa
 ![](./media/what-is-single-sign-on/workdaymobile.png)
 
 ### <a name="direct-sign-on-links-for-federated-password-based-or-existing-apps"></a>Přímé odkazy přihlašování pro federované, založené na heslech nebo existující aplikace
-Azure AD podporuje také přímý jednotné přihlašování – odkazy na jednotlivých aplikací, které podporují založené na heslech jednotného přihlašování, existující jednotné přihlašování a jakoukoli formu federované jednotné přihlašování.
+Azure AD podporuje také přímý jednotné přihlašování odkazy na jednotlivých aplikací, které podporují založené na heslech jednotného přihlašování, propojené jednotného přihlašování a jakoukoli formu federované jednotné přihlašování.
 
 Tyto odkazy jsou specificky vytvořený adresy URL, které odesílají uživatele prostřednictvím přihlášení procesu služby Azure AD pro danou aplikaci bez nutnosti spuštění uživatele ze služby Azure AD je přístup k panelu nebo v Office 365. Tyto adresy jednotné přihlašování najdete v části řídicího panelu kartu všechny předem integrované aplikace v sekci Active Directory na webu Azure portal, jak je znázorněno v následujícím snímku obrazovky.
 

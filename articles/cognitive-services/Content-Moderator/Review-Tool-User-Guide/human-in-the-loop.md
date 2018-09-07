@@ -1,6 +1,6 @@
 ---
-title: Asistované počítač obsahu přerušování a lidské recenze v obsahu moderátora | Microsoft Docs
-description: Jak počítače a člověka společně poskytují nejlepší výsledky pro obsahu přerušování
+title: Moderování obsahu s podporou počítače a recenze prováděné lidmi v Content Moderator | Dokumentace Microsoftu
+description: Jak počítače a lidí společně poskytují nejlepší výsledky pro moderování obsahu
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
@@ -9,25 +9,25 @@ ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: article
 ms.author: sajagtap
-ms.openlocfilehash: da657404e4cb8b86d67f56084a6f5a261bad4de2
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 1c08b30c0e59aac21d24f75d88530ba51b67d6b4
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342421"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44023929"
 ---
 # <a name="human-in-the-loop"></a>Lidské v the smyčky
 
-Bude docházet k dosažení nejlepších výsledků při člověka a počítače spolupracují na obsahu přerušování. Počítače efektivně posílení lidské recenze, kde je jistota předpovědi je třeba s asistencí nebo zmírněna v reálném světě kontextu. Výsledkem je proces hybridního obsahu přerušování, který provádí lépe než pokud člověka nebo počítače pracovali samostatně.
+Nejlepší výsledky získáte, když lidí a počítačů pracovat společně na moderování obsahu. Počítače efektivně rozšiřovat recenze prováděné lidmi, kde má predikce s asistencí nebo korigovat v kontextu reálného světa. Výsledkem je hybridní proces moderování obsahu, který vrací lepší výsledky než pokud lidí nebo počítače pracovali samostatně.
 
-## <a name="how-the-review-tool-helps"></a>Jak nástroj Kontrola pomáhá ##
+## <a name="how-the-review-tool-helps"></a>Jak vám pomůže nástroj pro recenze ##
 
-Nástroj lidského zkontrolujte při použití ve spojení s přerušování s asistencí počítač rozhraní API umožňuje provést tyto důležité úkoly ve vztahu k obsahu přerušování životního cyklu.
+Nástroj pro recenze při použití ve spojení s moderování s podporou počítače rozhraní API můžete provádět tyto důležité úlohy ve vztahu k moderování obsahu životního cyklu.
 
-1. Automatizaci tvorby lidským recenze z základní výsledků přerušování rozhraní API
-2. Jeden nástroj (kontrolní nástroje a rozhraní API) použijte k střední více formátů (text, image a video - už brzy)
-3. Přiřadit nebo eskalovat obsahu recenze do více týmů zkontrolujte uspořádané podle obsahu úrovni kategorie nebo prostředí.
-4. Použít výchozí pracovních nebo definovat vlastní pracovní postupy s flexibilní pravidla a bez psaní jakéhokoli kódu.
-5. Přidejte lidského zkontrolujte všechny rozhraní API nebo obchodní procesy ve jednoduše konektor.
-6. Použijte výchozí konektory a zkontrolovat výsledky z Microsoft PhotoDNA, analýza textu a vzhled rozhraní API.
-7. Získáte klíčové metriky výkonu pro vaše obsahu přerušování procesy.
+1. Automatizace vytvoření recenze prováděné lidmi ve výsledcích základní rozhraní API pro moderování
+2. Pomocí jednoho nástroje (nástroj pro kontrolu a rozhraní API), obscénnost více formátů (text, image a video)
+3. Přiřazení nebo eskalovat obsahu kontroly, aby mohla více týmů revize uspořádané podle kategorie nebo role experience systému úroveň obsahu.
+4. Použít výchozí pracovní postupy nebo můžete definovat vlastní pracovní postupy s pravidly flexibilní a bez nutnosti psaní jakéhokoli kódu.
+5. Přidat recenze rozhraní API nebo obchodních procesů jednoduše vytvořením konektoru.
+6. Použijte výchozí konektorů ke kontrole výsledky z Microsoft PhotoDNA, analýzu textu a rozhraní API pro rozpoznávání tváře.
+7. Získejte klíčové metriky výkonu na vašich procesů moderování obsahu.

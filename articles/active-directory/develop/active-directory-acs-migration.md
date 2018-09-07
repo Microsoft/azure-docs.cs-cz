@@ -13,20 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/14/2017
+ms.date: 09/06/2018
 ms.author: celested
-ms.reviewer: hirsin, dastrock
-ms.openlocfilehash: 41c7de3039634f262efedc1bb3de1b39dda4593a
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.reviewer: jlu, annaba, hirsin
+ms.openlocfilehash: 3120bf36c32a8be42f325ef584bfc8a2c5cd04df
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43698056"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44055290"
 ---
 # <a name="migrate-from-the-azure-access-control-service"></a>Migrace ze služby Azure Access Control service
 
-Azure Access Control, služba Azure Active Directory (Azure AD), se vyřadí dne 7. května 2018. Aplikací a služeb, které používají řízení přístupu musí být plně migrovat na jiný mechanismus ověřování té. Tento článek popisuje doporučení pro stávající zákazníky, plánujete přestat používat vaše užívání řízení přístupu. Pokud nepoužíváte aktuálně řízení přístupu, není nutné provádět žádnou akci.
-
+Microsoft Azure Access Control Service (ACS), služba Azure Active Directory (Azure AD), se vyřadí dne 7. května 2018. Aplikací a služeb, které používají řízení přístupu musí být plně migrovat na jiný mechanismus ověřování té. Tento článek popisuje doporučení pro stávající zákazníky, plánujete přestat používat vaše užívání řízení přístupu. Pokud nepoužíváte aktuálně řízení přístupu, není nutné provádět žádnou akci.
 
 ## <a name="overview"></a>Přehled
 
@@ -73,7 +72,6 @@ Tady je plán pro ukončení podpory pro řízení přístupu na komponenty:
 - **2. dubnem 2018**: na portálu Azure classic portal byl zcela vyřazen z provozu, což znamená, Správa oboru názvů řízení přístupu už nejsou k dispozici prostřednictvím libovolnou adresu URL. V tuto chvíli nelze zakázat nebo povolit, odstranit nebo výčet obory názvů řízení přístupu. Ale na portálu pro správu řízení přístupu budou plně funkční a v `https://\<namespace\>.accesscontrol.windows.net`. Fungovat normálně dál všech ostatních součástí řízení přístupu.
 - **7. listopadu 2018**: řízení přístupu na všechny komponenty jsou trvale vypnout. To zahrnuje na portálu pro správu řízení přístupu, služba správy, služba tokenů zabezpečení a stroj pravidel transformace token. V tomto okamžiku všechny požadavky odeslané na řízení přístupu (umístěný ve \<obor názvů\>. accesscontrol.windows.net) selžou. Měli jste migrovali všechny existující aplikace a služby na jiné technologie dobře před tímto časem.
 
-
 ## <a name="migration-strategies"></a>Strategie migrace
 
 Následující části popisují základní doporučení pro migraci ze řízení přístupu na jiné technologie Microsoftu.
@@ -98,7 +96,6 @@ Každé cloudové službě Microsoftu, které přijímá tokeny, které jsou vyd
 <!-- Retail federation services are moving, customers don't need to move -->
 <!-- Azure StorSimple: TODO -->
 <!-- Azure SiteRecovery: TODO -->
-
 
 ### <a name="sharepoint-customers"></a>Zákazníci služby SharePoint
 
@@ -175,26 +172,14 @@ Integrace s Azure AD pomocí WS-Federation nebo technologie WIF, doporučujeme t
 - Získáte úplnou flexibilitu přizpůsobení tokenu Azure AD. Můžete přizpůsobit deklarace identity, které jsou vydány službou Azure AD tak, aby odpovídaly deklarace identity, které jsou vydány službou Access Control. To zahrnuje zejména uživatelské ID nebo název identifikátoru deklarace identity. Nadále získávat konzistentní uživatelské identifikátory pro vaše uživatele po změně technologie, zkontrolujte, zda uživatelské ID vydán Azure AD odpovídají vydávaných službou Access Control.
 - Můžete nakonfigurovat certifikát pro podpis tokenu, která jsou specifická pro vaši aplikaci a s životností, který určujete vy.
 
-<!--
-
-Possible nameIdentifiers from Access Control (via AAD or AD FS):
-- AD FS - Whatever AD FS is configured to send (email, UPN, employeeID, what have you)
-- Default from AAD using App Registrations, or Custom Apps before ClaimsIssuance policy: subject/persistent ID
-- Default from AAD using Custom apps nowadays: UPN
-- Kusto can't tell us distribution, it's redacted
-
--->
-
 > [!NOTE]
 > Tento přístup vyžaduje licenci Azure AD Premium. Pokud jste zákazníkem Access Control a potřebujete licenci úrovně premium pro nastavení jednotného přihlašování pro aplikace, kontaktujte nás. Jsme rádi poskytovat vývojářské licence k použití.
 
 Alternativním přístupem, je splnění [tento vzorový kód](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation), což dává mírně odlišné pokyny pro nastavení WS-Federation. Tento vzorový kód nebude používat technologie WIF, ale místo toho middleware OWIN technologie ASP.NET 4.5. Pokyny pro registraci aplikace však platí pro aplikace pomocí technologie WIF a nevyžadují licenci Azure AD Premium. 
 
-Pokud zvolíte tuto metodu, musíte pochopit [výměna podpisových klíčů ve službě Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-signing-key-rollover). Tento přístup používá globální podpisový klíč pro vydávání tokenů Azure AD. Ve výchozím nastavení technologie WIF neaktualizuje automaticky podpisové klíče. Když Azure AD otočí globální podpisového klíče, musí být připraveni přijmout změny vaší implementace technologie WIF.
+Pokud zvolíte tuto metodu, musíte pochopit [výměna podpisových klíčů ve službě Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-signing-key-rollover). Tento přístup používá globální podpisový klíč pro vydávání tokenů Azure AD. Ve výchozím nastavení technologie WIF neaktualizuje automaticky podpisové klíče. Když Azure AD otočí globální podpisového klíče, musí být připraveni přijmout změny vaší implementace technologie WIF. Další informace najdete v tématu [důležité informace o podepisování výměny klíčů ve službě Azure AD](https://msdn.microsoft.com/en-us/library/azure/dn641920.aspx).
 
 Pokud můžete integrovat se službou Azure AD prostřednictvím protokoly OpenID Connect nebo OAuth, doporučujeme, abyste to. Máme k dispozici rozsáhlou dokumentaci a pokyny o tom, jak integrovat Azure AD do webové aplikace k dispozici v našich [Příručka pro vývojáře Azure AD](https://aka.ms/aaddev).
-
-<!-- TODO: If customers ask about authZ, let's put a blurb on role claims here -->
 
 #### <a name="migrate-to-azure-active-directory-b2c"></a>Migrace do Azure Active Directory B2C
 
@@ -237,7 +222,6 @@ Pokud se rozhodnete, že Azure AD B2C je nejlepšího způsobu migrace vašich a
 - [Vlastní zásady služby Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview-custom)
 - [Ceny za Azure AD B2C](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
 
-
 #### <a name="migrate-to-ping-identity-or-auth0"></a>Migrace na Ping Identity nebo Auth0
 
 V některých případech můžete zjistit, Azure AD a Azure AD B2C nejsou dostatečná k nahrazení řízení přístupu ve vašich webových aplikacích bez provedení změn hlavní kód. Některé běžné příklady můžou zahrnovat:
@@ -249,8 +233,6 @@ V některých případech můžete zjistit, Azure AD a Azure AD B2C nejsou dosta
 - Víceklientské webové aplikace, které můžete centrálně spravovat federace na mnoho poskytovatelů jiná identita služby ACS
 
 V těchto případech můžete chtít zvažte migraci vaší webové aplikace na jinou cloudovou službu ověřování. Doporučujeme, abyste zkoumání následující možnosti. Každá z těchto možností nabídky Možnosti podobný řízení přístupu:
-
-
 
 |     |     | 
 | --- | --- |

@@ -7,20 +7,20 @@ manager: femila
 editor: ''
 ms.service: azure-stack
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 09/05/2018
 ms.author: brenduns
 ms.reviewer: kivenkat
-ms.openlocfilehash: 4e77e187d969af7ea2a12754b18d4a218daceed6
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 3fbc3047688fed877280ca2d0f079ddea66bceb8
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39411902"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44024727"
 ---
 # <a name="make-virtual-machine-scale-sets-available-in-azure-stack"></a>Zpřístupnit Škálovací sady virtuálních počítačů ve službě Azure Stack
 
 *Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
-
+  
 Škálovací sady virtuálních počítačů jsou výpočetní prostředek Azure Stack. Můžete využít k nasazení a správě sady identických virtuálních počítačů. Všechny virtuální počítače nakonfigurované stejně, nevyžadují škálovací sady virtuálních počítačů předem zřizování. Je snazší zajistit rozsáhlé služby zaměřené na vysoký výpočetní výkon, velké objemy dat a kontejnerizované úlohy.
 
 Tento článek vás provede procesem vytvoření škálovací sady dostupné v Tržišti Azure Stack. Po dokončení tohoto postupu můžete přidat uživatele škálovacích sad virtuálních počítačů pro svá předplatná.
@@ -36,9 +36,31 @@ Ve službě Azure Stack nepodporují škálovací sady virtuálních počítač�
 - **Na webu Marketplace**  
     Registrace Azure Stack s globální Azure a umožňuje dostupnost položky na webu Marketplace. Postupujte podle pokynů v [registrace Azure Stack s využitím Azure](azure-stack-registration.md).
 - **Image operačního systému**  
-    Pokud jste nepřidali image operačního systému na Azure Marketplace zásobníku, přečtěte si téma [přidat položku marketplace služby Azure Stack od Azure](asdk/asdk-marketplace-item.md).
+  Před vytvořením škálovací sady virtuálních počítačů (VMSS), je nutné stáhnout Image virtuálních počítačů pro použití v VMSS z [Azure Stack Marketplace](azure-stack-download-azure-marketplace-item.md). Bitové kopie musí být již existovat předtím, než uživatel může vytvořit nové VMSS. 
 
-## <a name="add-the-virtual-machine-scale-set"></a>Přidat Škálovací sadu virtuálních počítačů
+
+## <a name="use-the-azure-stack-portal"></a>Použití portálu Azure Stack 
+
+>[!NOTE]  
+> Informace v této části platí, pokud používáte verzi služby Azure Stack 1808 nebo novější. Pokud je vaše verze 1807 nebo starší, přečtěte si téma [přidat Škálovací sady virtuálních počítačů (před. 1808)](#add-the-virtual-machine-scale-set-(prior-to-version-1808)).
+
+1. Přihlaste se k portálu Azure Stack. Přejděte ke **všechny služby** > **škálovací sady virtuálních počítačů**a potom v části *COMPUTE*vyberte **škálovacích sad virtuálních počítačů**. 
+   ![Vyberte virtuální počítač škálovací sady](media/azure-stack-compute-add-scalesets/all-services.png)
+
+2. Vyberte vytvořit ***škálovací sady virtuálních počítačů***.
+   ![Vytvoření škálovací sady virtuálních počítačů](media/azure-stack-compute-add-scalesets/create-scale-set.png)
+
+3. Vyplňte pole prázdné, zvolte z rozevírací seznamy pro *image disku operačního systému*, *předplatné*, a *velikost Instance*. Vyberte **Ano** pro *použít spravované disky*. Potom vyberte **Create** (Vytvořit).
+    ![Nakonfigurování a vytvoření](media/azure-stack-compute-add-scalesets/create.png)
+
+4. Chcete-li zobrazit vašeho nového virtuálního počítače škálovací sadu, přejděte na **všechny prostředky**, vyhledejte název virtuálního počítače škálovací sady a pak vyberte jeho jméno do hledání. 
+   ![Zobrazit škálovací sady](media/azure-stack-compute-add-scalesets/search.png)
+
+
+
+## <a name="add-the-virtual-machine-scale-set-prior-to-version-1808"></a>Přidat Škálovací sady virtuálních počítačů (před verzí. 1808)
+>[!NOTE]  
+> Informace v této části platí, pokud používáte verzi služby Azure Stack před. 1808. Pokud používáte verzi 1808 nebo novější, přečtěte si téma [pomocí portálu Azure Stack](#use-the-azure-stack-portal).
 
 1. Otevřete Azure Marketplace zásobníku a připojte se k Azure. Vyberte **Marketplace správu**> **+ přidat z Azure**.
 
@@ -56,7 +78,7 @@ Když vytvoříte škálovací sadu virtuálních počítačů, mohou uživatel�
 
    Když *verze* je nastaven jako **nejnovější** v *imageReference* část šablony pro změnu velikosti nastavit, vertikálně navýšit kapacitu operace týkající se použití škálovací sadě na nejnovější dostupnou verzi image pro škálovací sady instancí. Po dokončení vertikálního navýšení můžete odstranit starší instance sady škálování virtuálních počítačů.  (Hodnoty *vydavatele*, *nabízejí*, a *sku* zůstanou beze změny). 
 
-   Následuje příklad určení *nejnovější*:  
+   Následující příklad JSON Určuje *nejnovější*:  
 
     ```Json  
     "imageReference": {
@@ -81,6 +103,17 @@ Když vytvoříte škálovací sadu virtuálních počítačů, mohou uživatel�
     Pokud si stáhnete obrázek z novější verze (která se změní na dostupnou verzi), nelze škálovat škálovací sady. Jedná se o účel jako verze image zadané v šabloně škálovací sady, musí být k dispozici.  
 
 Další informace najdete v tématu [disky operačního systému a image](.\user\azure-stack-compute-overview.md#operating-system-disks-and-images).  
+
+
+## <a name="scale-a-virtual-machine-scale-set"></a>Škálování škálovací sady virtuálních počítačů
+Můžete změnit velikost *škálovací sadu virtuálních počítačů* větší nebo menší.  
+
+1. Na portálu vyberte svou škálovací sadu a pak vyberte **škálování**.
+2. Nastavte novou úroveň škálování pro tuto škálovací sadu virtuálních počítačů pomocí panelu snímku a pak vyberte **Uložit**.
+     ![Škálovací sady](media/azure-stack-compute-add-scalesets/scale.png)
+
+
+
 
 
 ## <a name="remove-a-virtual-machine-scale-set"></a>Odstranit Škálovací sadu virtuálních počítačů

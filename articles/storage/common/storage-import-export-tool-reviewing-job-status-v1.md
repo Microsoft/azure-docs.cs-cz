@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 01/26/2017
 ms.author: muralikk
 ms.component: common
-ms.openlocfilehash: 51a73a4466f3460beead0ce03ddbf011a0b9cc3b
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: c5b9d1993c9e90411c7b05d9874721a159275f22
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39527657"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44021824"
 ---
 # <a name="reviewing-azure-importexport-job-status-with-copy-log-files"></a>Kontrola stavu úlohy Azure Import/Export s použitím kopií souborů protokolu
-Když služba Microsoft Azure Import/Export zpracovává disky přidružené k importu nebo exportu úloze, zapíše kopírování souborů protokolu do účtu úložiště do nebo ze kterého jsou importu nebo exportu objektů BLOB. Soubor protokolu obsahuje podrobný stav o jednotlivých souborech, které se importovaná nebo exportovaná. Když odešlete dotaz na stav dokončené úlohy; vrátí se adresa URL pro každý soubor protokolu kopírování Zobrazit [Get Job](/rest/api/storageservices/Get-Job3) Další informace.  
+Když služba Microsoft Azure Import/Export zpracovává disky přidružené k importu nebo exportu úloze, zapíše kopírování souborů protokolu do účtu úložiště do nebo ze kterého jsou importu nebo exportu objektů BLOB. Soubor protokolu obsahuje podrobný stav o jednotlivých souborech, které se importovaná nebo exportovaná. Když odešlete dotaz na stav dokončené úlohy; vrátí se adresa URL pro každý soubor protokolu kopírování Zobrazit [Get Job](https://docs.microsoft.com/rest/api/storageimportexport/Jobs/Get) Další informace.  
 
 ## <a name="example-urls"></a>Příklad adresy URL
 

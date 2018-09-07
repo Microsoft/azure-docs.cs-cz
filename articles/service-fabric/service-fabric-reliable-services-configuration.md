@@ -1,5 +1,5 @@
 ---
-title: Konfigurace reliable mikroslužeb Azure | Dokumentace Microsoftu
+title: Konfigurace Azure Service Fabric Reliable Services | Dokumentace Microsoftu
 description: Další informace o konfiguraci stavovém modelu Reliable Services v Azure Service Fabric.
 services: Service-Fabric
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/02/2017
 ms.author: sumukhs
-ms.openlocfilehash: f2af7c65d42cbbec28fd511be18c72a6cd3c3d0c
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: ee8010fbbadc011e04d6d43599d671a1f926bb5f
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39249015"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44049652"
 ---
 # <a name="configure-stateful-reliable-services"></a>Konfigurace stavového modelu reliable services
 Existují dvě sady nastavení konfigurace pro služby reliable services. Jedna sada je globální pro všechny služby reliable services v clusteru, zatímco je další sada specifická pro konkrétní službu reliable.

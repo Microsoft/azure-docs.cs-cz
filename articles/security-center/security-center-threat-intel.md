@@ -3,7 +3,7 @@ title: Analýza hrozeb v Azure Security Center | Dokumentace Microsoftu
 description: Zjistěte, jak používat možnosti analýzy hrozeb v Azure Security Center k identifikaci potenciálních hrozeb na virtuálních počítačích a počítačích.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: mbaldwin
 editor: ''
 ms.assetid: a771a3a1-2925-46ca-8e27-6f6a0746f58b
@@ -12,60 +12,62 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/10/2018
-ms.author: terrylan
-ms.openlocfilehash: 8f1c6aa2e691a11e8920db8ca8bfdef5b8eb61b9
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.date: 09/3/2018
+ms.author: rkarlin
+ms.openlocfilehash: 34474892d35c2c0bc299bbc4a2fb6507ffb24ee9
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434186"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44022216"
 ---
-# <a name="threat-intelligence-in-azure-security-center"></a>Analýza hrozeb v Azure Security Center
-Tento článek vám pomůže s používáním analýzy hrozeb v Azure Security Center k vyřešení problémů souvisejících se zabezpečením.
+# <a name="security-alerts-map-azure-security-center"></a>Výstrahy zabezpečení mapování Azure Security Center
+Tento článek vám umožní použít mapu výstrahy zabezpečení Azure Security Center a mapa analýzy hrozeb založený na událostech zabezpečení pro řešení potíží s související se zabezpečením.
 
-## <a name="what-is-threat-intelligence"></a>Co je analýza hrozeb?
-Pomocí možnosti analýzy hrozeb, která je dostupná ve službě Security Center, můžou správci IT identifikovat bezpečnostní hrozby pro prostředí. Například můžou určit, jestli je konkrétní počítač součástí botnetu. Z počítačů se můžou stát uzly v botnetu, když útočníci neoprávněně nainstalují malware, který tajně připojí počítač k řídicímu serveru. Analýza hrozeb dokáže identifikovat také potenciální hrozby přicházející z alternativních komunikačních kanálů, jako je například dark web.
+## <a name="how-the-security-alerts-map-works"></a>Jak se mapují výstrahy zabezpečení funguje
+Security Center zajišťuje, že jste s mapu, která vám pomůže identifikovat bezpečnostní hrozby pro prostředí. Můžete například určit, jestli je konkrétní počítač součástí botnetu, a tam, kde je hrozby přicházející z. Počítače se můžou stát uzly v botnetu, když útočníci neoprávněně nainstalují malware, který tajně komunikuje s příkazy a ovládání, které spravují botnetu. 
 
-Služba Security Center k sestavení této analýzy hrozeb používá data přicházející z několika zdrojů v rámci Microsoftu. Služba Security Center tato data používá k identifikaci potenciálních hrozeb pro vaše prostředí. Podokno **Analýza hrozeb** se skládá ze tří hlavních možností:
+Pokud chcete vytvořit toto mapování, Security Center používá data přicházející z několika zdrojů v rámci Microsoft. Security Center tato data používá k mapování potenciálních hrozeb pro vaše prostředí. 
 
-- Zjištěné typy hrozeb
-- Původ hrozeb
-- Mapa analýzy hrozeb
-
-
-## <a name="when-should-you-use-threat-intelligence"></a>Kdy byste měli použít analýzu hrozeb?
 Jedním z kroků [procesu reakce na incidenty zabezpečení](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide#incident-response) je identifikace závažnosti napadených systémů. V této fázi byste měli provést následující úlohy:
 
 - Určit povahu útoku.
-- Určit, odkud útok přišel.
+- Určete místo původu útoku.
 - Určit záměr útoku. Směřoval útok na vaši organizaci za účelem získání konkrétních informací, nebo se jednalo o náhodný útok?
 - Identifikovat napadené systémy.
 - Identifikujte soubory, ke kterým byl získán přístup, a závažnost takových souborů.
 
-S těmito úlohami vám můžou pomoct informace analýzy hrozeb ve službě Security Center.
+Mapování výstrah zabezpečení ve službě Security Center můžete pomoct s těmito úkoly.
 
-## <a name="access-the-threat-intelligence"></a>Přístup k analýze hrozeb
-Pokud chcete vizualizovat aktuální analýzu hrozeb pro vaše prostředí, musíte nejprve vybrat pracovní prostor, kde se nacházejí vaše informace. Pokud nemáte více pracovních prostorů, vynecháte selektor pracovního prostoru a přejdete přímo na řídicí panel **Analýza hrozeb**. Přístup k řídicímu panelu:
+## <a name="access-the-security-alerts-map"></a>Přístup k mapě výstrahy zabezpečení
+Pokud chcete vizualizovat aktuální hrozby na vašem prostředí, spusťte nástroj Mapa upozornění zabezpečení:
+
+1. Otevřete řídicí panel **Security Center**.
+2. V levém podokně v části **ochrana před internetovými útoky** vyberte **mapy výstrahy zabezpečení**. Otevře se na mapě.
+3. Chcete-li získat další informace o výstraze a přijímat nápravných kroků, klikněte na upozornění tečku na mapě a postupujte podle pokynů. 
+ 
+Mapa upozornění zabezpečení je založená na výstrahy. Tyto výstrahy jsou založené na aktivitách komunikace pro síť, ve které byla přidružena IP adresu, která byla úspěšně, jestli je IP adresa známá rizikové IP adresy (například známé cryptominer) nebo IP adresu, která není rozpoznána dříve jako rizikovou. Na mapě poskytuje výstrahy v rámci žádné předplatné, které jste vybrali dříve v Azure. 
+
+Upozornění na mapě se zobrazují podle zeměpisného umístění, kde jsou zjištěny jako pocházející z, a jsou barevně odlišeny podle závažnosti. 
+ 
+## <a name="viewing-the-event-based-threat-intelligence-dashboard"></a>Zobrazení založeného na událostech řídicímu panelu analýzy hrozeb
+Chcete-li zobrazit mapa analýzy hrozeb na základě zabezpečení nezpracovaných událostí, můžete podle následujícího postupu. Toto mapování se zobrazí pouze události, které se týkají IP adresu, která se považuje za rizikové, například IP adresu známé botnety.
 
 1. Otevřete řídicí panel **Security Center**.
 
-1. V levém podokně v části **ochrana před internetovými útoky** vyberte **hrozeb**. Otevře se mapy.
+1. V levém podokně v části **ochrana před internetovými útoky** vyberte **mapy výstrahy zabezpečení**. Otevře se na mapě.
+2. V pravém horním rohu, klikněte na tlačítko **přejít do mapy událostí zabezpečení**.
+3. Vyberte pracovní prostor, pro které chcete zobrazit řídicí panel.
+4. V horní části stránky na mapě, vyberte **zobrazit classic hrozeb**. **Hrozeb** otevře se řídicí panel.
 
-    ![Mapa analýzy hrozeb](./media/security-center-threat-intel/security-center-threat-intel.png)
-
-1. V horní části stránky na mapě, vyberte **zobrazit classic hrozeb**. **Hrozeb** otevře se řídicí panel.
-
-    ![Řídicí panel Analýza hrozeb](./media/security-center-threat-intel/security-center-threat-intel-fig1.png)
-
-    > [!NOTE]
-    > Pokud se ve sloupci úplně vpravo zobrazí **UPGRADUJTE PLÁN**, tento pracovní prostor používá bezplatné předplatné. Upgradujte na úroveň Standard, abyste mohli tuto funkci používat. Pokud se ve sloupci úplně vpravo zobrazí **VYŽADUJE AKTUALIZACI**, aktualizujte [Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview), abyste mohli tuto funkci používat. Další informace o cenovém plánu najdete v článku o cenách Azure Security Center.
-    >
-1. Pokud máte k prozkoumání více než jeden pracovní prostor, určete prioritu prozkoumání podle sloupce **Škodlivá IP adresa**. Zobrazuje se v něm aktuální počet škodlivých IP adres v tomto pracovním prostoru. Vyberte pracovní prostor, který chcete použít, a pak se zobrazí řídicí panel **Analýza hrozeb**.
+   > [!NOTE]
+   > Pokud se ve sloupci úplně vpravo zobrazí **UPGRADUJTE PLÁN**, tento pracovní prostor používá bezplatné předplatné. Upgradujte na úroveň Standard, abyste mohli tuto funkci používat. Pokud se ve sloupci úplně vpravo zobrazí **VYŽADUJE AKTUALIZACI**, aktualizujte [Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview), abyste mohli tuto funkci používat. Další informace o cenovém plánu najdete v článku o cenách Azure Security Center.
+   >
+5. Pokud máte k prozkoumání více než jeden pracovní prostor, určete prioritu prozkoumání podle sloupce **Škodlivá IP adresa**. Zobrazuje se v něm aktuální počet škodlivých IP adres v tomto pracovním prostoru. Vyberte pracovní prostor, který chcete použít, a pak se zobrazí řídicí panel **Analýza hrozeb**.
 
     ![Informace Analýzy hrozeb](./media/security-center-threat-intel/security-center-threat-intel-fig5.png)
 
-1. Řídicí panel je rozdělen na čtyři dlaždice:
+6. Řídicí panel je rozdělen na čtyři dlaždice:
 
     a.  **Typy hrozeb**. Obsahuje souhrn typů hrozeb detekovaných ve vybraném pracovním prostoru.
 

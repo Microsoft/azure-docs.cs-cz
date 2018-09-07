@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/27/2018
+ms.date: 09/06/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: afbe3ff2e6be4e03f8de8ac2490922c3ec788733
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: b5bcd12d3ead3fa99f80355e02a068246d7bcfa8
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43091376"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44052802"
 ---
 # <a name="azure-stack-1807-update"></a>Aktualizace služby Azure Stack 1807
 
@@ -143,7 +143,7 @@ Další informace o těchto ohrožení zabezpečení, klikněte na výše uveden
   > - Atom: https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom ...
 
 
-- Před zahájením instalace aktualizace 1807, spusťte [testovací AzureStack](azure-stack-diagnostic-test.md) ověřte stav služby Azure Stack a vyřešte všechny provozní problémy najít. Také aktivní výstrahy můžete zkontrolovat a vyřešit všechny, které vyžadují nějakou akci.
+- Před instalací této aktualizace, spusťte [testovací AzureStack](azure-stack-diagnostic-test.md) ověřit stav služby Azure Stack a vyřešte všechny provozní problémy zjištěné, včetně všech upozornění a chyby. Také aktivní výstrahy můžete zkontrolovat a vyřešit všechny, které vyžadují nějakou akci.
 
 ### <a name="known-issues-with-the-update-process"></a>Známé problémy s proces aktualizace
 

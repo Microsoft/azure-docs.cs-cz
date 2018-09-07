@@ -1,6 +1,6 @@
 ---
-title: Přidejte vzor šablon v aplikacích LUIS | Dokumentace Microsoftu
-titleSuffix: Azure
+title: Přidání šablon vzor, a nikoli další projevy v aplikace LUIS
+titleSuffix: Azure Cognitive Services
 description: Zjistěte, jak přidat vzor šablon v aplikacích Language Understanding (LUIS) zvyšte přesnost předpovědi.
 services: cognitive-services
 author: diberry
@@ -8,14 +8,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.technology: luis
 ms.topic: article
-ms.date: 06/08/2018
+ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 8926ce48a8426aa667787f7bbe104e27e1a68669
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 0fc7c0d0cafef1bdb8d33c6ebfaa672c55101ee5
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124680"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44049734"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>Jak přidat vzorce, a zvyšte přesnost předpovědi
 Po aplikaci LUIS obdrží koncový bod projevy, použijte [koncept](luis-concept-patterns.md) vzorů zvyšte přesnost předpovědi pro projevy, které se zjistí vzor v pořadí slov a požadované aplikace word. Vzory používání [entity](luis-concept-entity-types.md) a jejich rolí k extrakci dat pomocí specifického vzoru syntaxe. 

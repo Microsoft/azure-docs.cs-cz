@@ -1,6 +1,6 @@
 ---
-title: Azure obsahu moderátora - Text přerušování | Microsoft Docs
-description: Použijte přerušování text pro možné nežádoucí text, osobní údaje, a vlastní seznamy podmínek.
+title: Azure Content Moderator – moderování textu | Dokumentace Microsoftu
+description: Moderování textu pomocí možné nežádoucího textu, identifikovatelné osobní údaje, a vlastní seznamy termínů.
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
@@ -9,31 +9,31 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 01/30/2018
 ms.author: sajagtap
-ms.openlocfilehash: 6924807a64cec074d9688eaad158bb9bb638f6bb
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: b2edaa145650ea3c9fe3c0e9fd5e496ec7d30b99
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37085755"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44025477"
 ---
 # <a name="text-moderation"></a>Moderování textu
 
-Použít moderátora obsah s asistencí počítač text přerušování a [lidské zkontrolujte](Review-Tool-User-Guide/human-in-the-loop.md) funkce pro střední textového obsahu.
+Použít moderování textu s podporou počítače Content Moderator a [recenze prováděné lidmi](Review-Tool-User-Guide/human-in-the-loop.md) možnosti Moderovat obsah textu.
 
-Můžete blokovat, schválit nebo zkontrolujte obsah na základě zásad a prahové hodnoty. Použijte k posílení lidské přerušování prostředí, kde partnery, zaměstnanci a spotřebitelé generovat textového obsahu. Mezi ně patří, chatovací místnosti, diskusní vývěsky, chatbots, elektronické obchodování katalogů a dokumenty. 
+Můžete blokovat, schválit nebo zkontrolovat obsah na základě prahových hodnot a zásad. Použijte ho k rozšiřují lidské moderování prostředí, kde partnerům, zaměstnancům a spotřebitelé generují textový obsah. Patří mezi ně chatovací místnosti, diskusní vývěsky, chatovacích, katalogů elektronického obchodování a dokumenty. 
 
 Odpověď služby obsahuje následující informace:
 
-- Vulgárnost: na základě podmínek odpovídající pomocí seznam předdefinovaných znevažujícího podmínek v různých jazycích
-- Klasifikace: klasifikace s asistencí počítače do tří kategorií
+- Vulgárních výrazů: výraz na základě vzorů s předdefinovaného seznamu neslušná podmínky v různých jazycích
+- Klasifikace: klasifikace s podporou počítače do tří kategorií
 - Identifikovatelné osobní údaje (PII)
-- Automaticky opravit text
+- Automaticky opravila text
 - Původní text
 - Jazyk
 
-## <a name="profanity"></a>Vulgárnost
+## <a name="profanity"></a>Vulgárních výrazů
 
-Pokud rozhraní API zjistí znevažujícího podmínek v některém z [podporované jazyky](Text-Moderation-API-Languages.md), tyto podmínky jsou zahrnuty v odpovědi. Odpověď obsahuje také jejich umístění (`Index`) v původní text. `ListId` Následující ukázka JSON odkazuje na podmínky pro najít v [vlastní termín seznamy](try-terms-list-api.md) Pokud je k dispozici.
+Pokud rozhraní API zjistí neslušná podmínek v některém z [podporované jazyky](Text-Moderation-API-Languages.md), tyto podmínky jsou zahrnuty v odpovědi. Odpověď obsahuje také jejich umístění (`Index`) v původní text. `ListId` v následujícím příkladu JSON odkazuje na podmínky můžete najít v [seznamy termínů vlastní](try-terms-list-api.md) Pokud je k dispozici.
 
     "Terms": [
     {
@@ -44,15 +44,15 @@ Pokud rozhraní API zjistí znevažujícího podmínek v některém z [podporova
     }
 
 > [!NOTE]
-> Pro **jazyk** parametr přiřadit `eng` nebo hodnotu nevyplňujte najdete v části asistované počítač **klasifikace** odpovědi (funkce ve verzi preview). **Tato funkce podporuje pouze Angličtina**.
+> Pro **jazyk** parametr, přiřaďte `eng` nebo toto podokno nechat prázdné najdete v článku s počítače **klasifikace** odpovědí (funkce preview). **Tato funkce podporuje pouze angličtinu**.
 >
-> Pro **vulgárnost podmínky** detekce, použijte [kód ISO 639 3](http://www-01.sil.org/iso639-3/codes.asp) z podporovaných jazyků uvedených v tomto článku, nebo hodnotu nevyplňujte.
+> Pro **vulgárních výrazů podmínek** detekce, použijte [kód ISO 639-3](http://www-01.sil.org/iso639-3/codes.asp) podporovaných jazyků uvedených v tomto článku, nebo nechte prázdné.
 
 ## <a name="classification"></a>Klasifikace
 
-Obsahu moderátora je s asistencí počítač **funkce klasifikace textových** podporuje **pouze v angličtině,**, a pomáhá zjišťovat potenciálně nežádoucí obsah. Označení obsahu lze vyhodnotit jako nevhodný v závislosti na kontextu. To přenese tak pravděpodobnost každou kategorii a může doporučujeme lidského kontrolu. Funkce modulu trained model používá k identifikaci možných urážlivé, derogační nebo diskriminační jazyk. To zahrnuje slang, zkrácené slova, urážlivé a záměrně překlepu slova ke kontrole. 
+Content Moderator uživatele s podporou počítače **funkce klasifikace textu** podporuje **jen v angličtině**, a pomáhá zjišťovat potenciálně nežádoucí obsah. Označené příznakem obsah může vyhodnoceny jako nevhodný v závislosti na kontextu. Přenáší pravděpodobnost, že každá kategorie a může doporučit kontrolu člověkem. Funkce používá k identifikaci možných urážlivý nebo uráží diskriminační jazyk trénovaného modelu. To zahrnuje slang, zkrácený slova, urážlivé a záměrně chybně napsaná slova ke kontrole. 
 
-Následující extract v JSON extract ukazuje příklad výstupu:
+Následující výpis v JSON extract ukazuje příklad výstupu:
 
     "Classification": {
         "ReviewRecommended": true,
@@ -69,24 +69,24 @@ Následující extract v JSON extract ukazuje příklad výstupu:
 
 ### <a name="explanation"></a>Vysvětlení
 
-- `Category1` označuje potenciální přítomnost jazyk, který může být považováno za zřejmý explicitní nebo pro dospělé v určitých situacích.
-- `Category2` označuje potenciální přítomnost jazyk, který může být považováno za zřejmý sugestivní nebo vyspělá v určitých situacích.
-- `Category3` označuje potenciální přítomnost jazyk, který může být považováno za urážlivé v určitých situacích.
-- `Score` je mezi 0 a 1. Čím více bodů, tím vyšší modelu je predikci, můžou být příslušné kategorii. Tato verze preview spoléhá na statistické model, místo ručně programové výstupy. Doporučujeme, abyste testování s vlastním obsahem určit, jakým způsobem bude každou kategorii zarovnán vašim požadavkům.
-- `ReviewRecommended` je PRAVDA nebo NEPRAVDA v závislosti na interní skóre prahové hodnoty. Zákazníci by měli zhodnotit, jestli se má použít tuto hodnotu nebo rozhodněte o vlastní prahové hodnoty na základě jejich obsahu zásad.
+- `Category1` označuje potenciální přítomnost jazyk, který se dá považovat za sexuálně explicitní nebo pro dospělé v určitých situacích.
+- `Category2` označuje potenciální přítomnost jazyk, který se dá považovat za sexuálně sugestivní nebo až po zralé v určitých situacích.
+- `Category3` označuje potenciální přítomnost jazyk, který se dá považovat za urážlivé v určitých situacích.
+- `Score` je mezi 0 a 1. Čím více bodů vyšší model je predikce kategorii lze použít. Tato funkce závisí na statistických modelů a nikoli ručně kódovaný výsledků. Doporučujeme ve Visual Basicu s vlastní obsah k určení, jak každou kategorii odpovídá vašim požadavkům.
+- `ReviewRecommended` je PRAVDA nebo NEPRAVDA v závislosti na interní skóre prahové hodnoty. Zákazníci by měli zhodnotit, zda chcete použít tuto hodnotu nebo při rozhodování o vlastní prahové hodnoty na základě jejich obsahu zásad.
 
 ## <a name="personally-identifiable-information-pii"></a>Identifikovatelné osobní údaje (PII)
 
-Funkci PII zjistí potenciální přítomnost tyto informace:
+Funkce identifikovatelné osobní údaje zjistí potenciální přítomnost tyto informace:
 
 - E-mailová adresa
 - Poštovní adresa USA
 - IP adresa
 - Telefonní číslo USA
 - Spojené království telefonní číslo
-- Číslo sociálního pojištění (SSN)
+- Sociálního pojištění USA (SSN)
 
-Následující příklad ukazuje ukázková odpověď:
+Následující příklad ukazuje ukázkové odpovědi:
 
     "PII": {
         "Email": [{
@@ -136,20 +136,20 @@ Následující příklad ukazuje ukázková odpověď:
 
 ## <a name="auto-correction"></a>Automatické opravy
 
-Předpokládejme, že je vstupního textu ('lzay' a 'f0x' jsou úmyslně):
+Předpokládejme, že se vstupní text ("lzay" a "f0x" jsou záměr):
 
     The qu!ck brown f0x jumps over the lzay dog.
 
-Pokud je požádat o automatické opravy, odpověď obsahuje opravené verzi text:
+Když požadujete třeba automatické opravy, odpověď obsahuje opravenou verzi text:
 
     The quick brown fox jumps over the lazy dog.
 
-## <a name="creating-and-managing-your-custom-lists-of-terms"></a>Vytváření a správě vlastních seznamů, které podmínek
+## <a name="creating-and-managing-your-custom-lists-of-terms"></a>Vytváření a správě vlastních seznamů podmínek
 
-Při výchozím seznamu pro globální podmínek dobře funguje pro většinou, můžete na obrazovce s výrazy, které jsou specifické pro vaše obchodní potřeby. Můžete například filtrovat žádné konkurenční brand názvy z příspěvcích uživatelé.
+Zatímco výchozí, globální seznam termínů dobře funguje pro většinu případů, můžete chtít obrazovky s výrazy, které jsou specifické pro vaše obchodní potřeby. Můžete například vyfiltrovat všechny konkurenční názvy z příspěvků uživateli.
 
 > [!NOTE]
-> Maximální limit je **5 termín uvádí** s každou seznamu **není delší než 10 000 podmínky**.
+> Je maximální limit **5 termín uvádí** s každou seznamu **není delší než 10 000 podmínky**.
 >
 
 Následující příklad ukazuje odpovídající ID seznamu:
@@ -162,8 +162,8 @@ Následující příklad ukazuje odpovídající ID seznamu:
         "Term": "crap"
     }
 
-Poskytuje obsahu moderátora [rozhraní API seznamu termín](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f) s operacemi sady pro správu vlastní termín uvádí. Začínat [termín uvádí rozhraní API konzoly](try-terms-list-api.md) a používat ukázky kódu rozhraní REST API. Také si přečtěte [rychlý start termín uvádí .NET](term-lists-quickstart-dotnet.md) Pokud jste obeznámeni s Visual Studio a C#.
+Content Moderator poskytuje [rozhraní API seznam termínů](https://westus.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f) s operacemi správy vlastní termín seznamy. Začněte [výraz obsahuje rozhraní API konzoly](try-terms-list-api.md) a používat rozhraní REST API ukázky kódu. Podívejte se také [rychlý úvod k .NET obsahuje seznam termínů](term-lists-quickstart-dotnet.md) Pokud jste se seznámili s Visual Studio a C#.
 
 ## <a name="next-steps"></a>Další postup
 
-Vyzkoušejte [Text přerušování rozhraní API konzoly](try-text-api.md) a používat ukázky kódu rozhraní REST API. Také si přečtěte [Text přerušování .NET rychlý Start](text-moderation-quickstart-dotnet.md) Pokud jste obeznámeni s Visual Studio a C#.
+Testovací verze [konzole rozhraní API pro moderování textu](try-text-api.md) a používat rozhraní REST API ukázky kódu. Podívejte se také [rychlý úvod k .NET pro moderování textu](text-moderation-quickstart-dotnet.md) Pokud jste obeznámeni s Visual Studio a C#.

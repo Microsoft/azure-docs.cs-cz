@@ -11,22 +11,22 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2018
+ms.date: 09/06/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: bff0140d173fc3393ac56ec3d709c3c067842a2a
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 9287eb0925556d382410f95caf16a9ca478ca2da
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42055634"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054413"
 ---
 # <a name="add-a-kubernetes-cluster-to-the-azure-stack-marketplace"></a>Přidání clusteru Kubernetes do Tržiště Azure Stack
 
 *Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
 > [!note]  
-> Kubernetes služby Kubernetes v Azure (AKS) ve službě Azure Stack je ve verzi private preview. Požádat o přístup k položce Kubernetes Marketplace nutná k provádění pokynů v tomto článku [odeslat požadavek na získání přístupu](https://aka.ms/azsk8).
+> Modul AKS (služby Azure Kubernetes Service) ve službě Azure Stack je ve verzi private preview. Požádat o přístup k položce Kubernetes Marketplace nutná k provádění pokynů v tomto článku [odeslat požadavek na získání přístupu](https://aka.ms/azsk8).
 
 Kubernetes Cluster jako položky Marketplace nabízí svým uživatelům. Vaši uživatelé můžou nasazovat Kubernetes v rámci jediné koordinované operace.
 
@@ -66,7 +66,7 @@ Přidejte následující image Ubuntu Server na webu Marketplace:
 
 1. Přihlaste se k [portál pro správu](https://adminportal.local.azurestack.external).
 
-1. Vyberte **další služby** > **Marketplace správu**.
+1. Vyberte **všechny služby**a potom v části **správu** vyberte **Marketplace správu**.
 
 1. Vyberte **+ přidat z Azure**.
 
@@ -89,7 +89,7 @@ Přidání clusteru Kubernetes z Marketplace:
 
 1. Otevřít [portál pro správu](https://adminportal.local.azurestack.external).
 
-1. Vyberte **další služby** > **Marketplace správu**.
+1. Vyberte **všechny služby** a potom v části **správu** vyberte **Marketplace správu**.
 
 1. Vyberte **+ přidat z Azure**.
 
@@ -110,7 +110,7 @@ Přidání clusteru Kubernetes z Marketplace:
 
 1. Otevřít [portál pro správu](https://adminportal.local.azurestack.external).
 
-1. Vyberte **další služby** > **Marketplace správu**.
+1. Vyberte **A; služby** a potom v části **správu** vyberte **Marketplace správu**.
 
 1. Vyberte **+ přidat z Azure**.
 

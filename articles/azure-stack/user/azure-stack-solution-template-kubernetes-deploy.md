@@ -11,22 +11,22 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/27/2018
+ms.date: 09/06/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 67e82a4809253123e15305b5f2ecd8cc5f7ee4ed
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 5df8104907e30337cdf47e5a9489ffdb50451a94
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43046846"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44055212"
 ---
 # <a name="deploy-a-kubernetes-cluster-to-azure-stack"></a>Nasazení clusteru Kubernetes do služby Azure Stack
 
 *Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
 > [!Note]  
-> Kubernetes služby Kubernetes v Azure (AKS) ve službě Azure Stack je ve verzi private preview. Operátor Azure stacku bude muset požádat o přístup k položce Kubernetes Marketplace nutná k provádění pokynů v tomto článku.
+> Modul AKS (služby Azure Kubernetes Service) ve službě Azure Stack je ve verzi private preview. Operátor Azure stacku bude muset požádat o přístup k položce Kubernetes Marketplace nutná k provádění pokynů v tomto článku.
 
 Následujícím článku se podíváme na pomocí šablony Azure Resource Manageru řešení k nasazení a zřizování prostředků pro Kubernetes v rámci jediné koordinované operace. Budete potřebovat získat požadované informace o instalaci Azure Stack, generovat šablony a pak nasadit do cloudu.
 

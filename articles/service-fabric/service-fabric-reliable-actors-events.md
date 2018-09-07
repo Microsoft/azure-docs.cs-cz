@@ -1,6 +1,6 @@
 ---
-title: Události v na základě objektu actor Azure mikroslužeb | Microsoft Docs
-description: Úvod do události pro Service Fabric Reliable Actors.
+title: Události v Azure Service Fabric actors na základě objektů actor | Dokumentace Microsoftu
+description: Úvod do událostí pro Service Fabric Reliable Actors.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/06/2017
 ms.author: amanbha
-ms.openlocfilehash: ed920c8d4ff7254b19c6eef8f5961593bb56bacf
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: c228821383a1bfedf380f97e3411fdacc322a6f9
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207073"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054474"
 ---
 # <a name="actor-events"></a>Události objektu actor
-Události objektu actor poskytují způsob, jak odeslat oznámení best effort z objektu actor pro klienty. Události objektu actor navržených pro komunikaci objektu actor klienta a by se neměla používat pro komunikaci objektu actor actor.
+Objekt actor události poskytují způsob, jak odesílat oznámení best effort z objektu actor pro klienty. Události objektu actor jsou navrženy pro komunikaci objektu actor klienta a nemělo používat pro komunikaci objektu actor actor.
 
 Následující fragmenty kódu ukazují, jak pomocí objektu actor události ve vaší aplikaci.
 
-Definujte rozhraní, které popisuje události, které zveřejnil objektu actor. Toto rozhraní musí být odvozen od `IActorEvents` rozhraní. Argumenty metody musí být [kontraktů dat serializovatelný](service-fabric-reliable-actors-notes-on-actor-type-serialization.md). Metody musí vracet typ void, jako událost oznámení jsou jednou z možností a usilovně.
+Definujte rozhraní, které popisuje události publikuje objekt actor. Toto rozhraní musí být odvozen od `IActorEvents` rozhraní. Argumenty metody musí být [kontraktů dat serializovatelný](service-fabric-reliable-actors-notes-on-actor-type-serialization.md). Metody musí vracet typ void, jako událost oznámení jsou jedním ze způsobů a nejlepší úsilí.
 
 ```csharp
 public interface IGameEvents : IActorEvents
@@ -40,7 +40,7 @@ public interface GameEvents implements ActorEvents
     void gameScoreUpdated(UUID gameId, String currentScore);
 }
 ```
-Události, které zveřejnil objektu actor v objektu actor rozhraní deklarujte.
+Deklarování událostí publikovat podle objektu actor v rozhraní objektu actor.
 
 ```csharp
 public interface IGameActor : IActor, IActorEventPublisher<IGameEvents>
@@ -58,7 +58,7 @@ public interface GameActor extends Actor, ActorEventPublisherE<GameEvents>
     CompletableFuture<String> getGameScore();
 }
 ```
-Na straně klienta Implementujte obslužné rutiny události.
+Na straně klienta implementujte obslužnou rutinu události.
 
 ```csharp
 class GameEventsHandler : IGameEvents
@@ -79,7 +79,7 @@ class GameEventsHandler implements GameEvents {
 }
 ```
 
-Na klientovi vytvoření proxy server k objektu actor, který publikuje události a přihlásit se k události.
+Na straně klienta vytvořit proxy pro objekt actor, který publikuje události a přihlášení k odběru jeho událostí.
 
 ```csharp
 var proxy = ActorProxy.Create<IGameActor>(
@@ -94,9 +94,9 @@ GameActor actorProxy = ActorProxyBase.create<GameActor>(GameActor.class, new Act
 return ActorProxyEventUtility.subscribeAsync(actorProxy, new GameEventsHandler());
 ```
 
-V případě převzetí služeb při selhání objektu actor může převzetí služeb při selhání jiným procesem nebo uzel. Proxy objektu actor spravuje aktivní odběry a automaticky je odběratel znovu. Můžete řídit interval opakovaného předplatné prostřednictvím `ActorProxyEventExtensions.SubscribeAsync<TEvent>` rozhraní API. Chcete-li odhlásit, použijte `ActorProxyEventExtensions.UnsubscribeAsync<TEvent>` rozhraní API.
+V případě převzetí služeb při selhání objekt actor mohou převzetí služeb při selhání na jiný proces nebo uzel. Objekt actor proxy spravuje aktivní odběry a automaticky je znovu přihlásí. Můžete řídit interval opakovaného předplatného prostřednictvím `ActorProxyEventExtensions.SubscribeAsync<TEvent>` rozhraní API. Chcete-li zrušit odběr, použijte `ActorProxyEventExtensions.UnsubscribeAsync<TEvent>` rozhraní API.
 
-V objektu actor publikujte události při jejich provádění. Pokud existují odběratele, kteří mají událost, modul runtime aktéři je odešle oznámení.
+Na objekt actor publikujte události při jejich provádění. Pokud existují Odběratelé událostí, modul runtime Actors je odešle oznámení.
 
 ```csharp
 var ev = GetEvent<IGameEvents>();
@@ -110,8 +110,8 @@ event.gameScoreUpdated(Id.getUUIDId(), score);
 
 ## <a name="next-steps"></a>Další postup
 * [Vícenásobný přístup objektu actor](service-fabric-reliable-actors-reentrancy.md)
-* [Objektu actor Diagnostika a sledování výkonu](service-fabric-reliable-actors-diagnostics.md)
+* [Monitorování výkonu a Diagnostika objektů actor](service-fabric-reliable-actors-diagnostics.md)
 * [Referenční dokumentace rozhraní API objektu actor](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [C# ukázkový kód](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [Ukázka v jazyce C# kód](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [C# .NET Core ukázkový kód](https://github.com/Azure-Samples/service-fabric-dotnet-core-getting-started)
 * [Java ukázkový kód](http://github.com/Azure-Samples/service-fabric-java-getting-started)

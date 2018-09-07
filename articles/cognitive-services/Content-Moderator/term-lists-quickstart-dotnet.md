@@ -1,6 +1,6 @@
 ---
-title: Střední s seznamy vlastní termín v obsahu moderátora Azure | Microsoft Docs
-description: Střední s vlastní termín seznamů pomocí sady Azure obsahu moderátora SDK pro .NET.
+title: Střední se seznamy vlastní termín v Azure Content Moderator | Dokumentace Microsoftu
+description: Střední vlastní pojmem seznamů pomocí Azure Content Moderator SDK pro .NET.
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
@@ -9,47 +9,47 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: sajagtap
-ms.openlocfilehash: 6da72ad070d9c3a6be38e24626dff77b52fed852
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 2ae080518a9ad78552a8ec173e7f4d70085c7a6b
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342519"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44022636"
 ---
-# <a name="moderate-with-custom-term-lists-in-net"></a>Střední s seznamy vlastní termín v rozhraní .NET
+# <a name="moderate-with-custom-term-lists-in-net"></a>Střední se seznamy vlastní termín v .NET
 
-Pro většinu obsahu přerušování potřeb stačí výchozí globální seznam termínů v moderátora obsahu Azure. Nicméně budete muset obrazovky podmínek, které jsou specifické pro vaši organizaci. Například můžete chtít názvy konkurence značek hodnocení. 
+Výchozí globální seznam termínů v Azure Content Moderator je dostačující pro potřeby z hlediska většina obsahu moderování. Ale můžete potřebovat obrazovky pro podmínky, které jsou specifické pro vaši organizaci. Například můžete chtít konkurence názvy značek pro další kontrolu. 
 
-Obsahu moderátora SDK pro rozhraní .NET můžete použít k vytvoření vlastních seznamů podmínky pro použití s rozhraní API přerušování Text.
+Můžete použít [Content Moderator SDK pro .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) vytvořit vlastní seznamy termínů pro použití s rozhraním API pro moderování textu.
 
 > [!NOTE]
-> Maximální limit je **5 termín uvádí** s každou seznamu **není delší než 10 000 podmínky**.
+> Je maximální limit **5 termín uvádí** s každou seznamu **není delší než 10 000 podmínky**.
 >
 
-Tento článek obsahuje informace a ukázky kódu, které vám pomůžou začít používat sadu SDK obsahu moderátora pro technologii .NET:
-- Vytvoří seznam.
-- Přidáte do seznamu podmínek.
-- Obrazovky podmínky s výrazy v seznamu.
-- Podmínky odstraňte ze seznamu.
+Tento článek obsahuje informace a ukázky kódu, které vám pomůžou začít používat Content Moderator SDK pro .NET po:
+- Vytvoření seznamu.
+- Přidání podmínky do seznamu.
+- Obrazovka podmínky s výrazy v seznamu.
+- Odstraňte podmínky ze seznamu.
 - Odstranění seznamu.
 - Upravte informace o seznamu.
-- Aktualizujte index, aby se změny provedené v seznamu jsou zahrnuté v nové prohledání.
+- Aktualizujte index tak, aby se změny provedené v seznamu jsou součástí nové skenování.
 
 Tento článek předpokládá, že jste již obeznámeni s Visual Studio a C#.
 
-## <a name="sign-up-for-content-moderator-services"></a>Zaregistrujte si obsahu moderátora služby
+## <a name="sign-up-for-content-moderator-services"></a>Zaregistrovat do služby Content Moderator
 
-Před použitím služby obsahu moderátora přes rozhraní REST API nebo sady SDK, je nutné klíč předplatného.
+Než budete moct použít služby Content Moderator přes rozhraní REST API nebo sady SDK, je nutné klíč předplatného.
 
-Na řídicím panelu obsahu moderátora můžete najít svůj klíč předplatného v **nastavení** > **pověření** > **rozhraní API**  >  **Zkušební Ocp-Apim-Subscription-Key**. Další informace najdete v tématu [přehled](overview.md).
+Na řídicím panelu Content Moderator, můžete najít váš klíč předplatného v **nastavení** > **pověření** > **API**  >  **Zkušební Ocp-Apim-Subscription-Key**. Další informace najdete v tématu [přehled](overview.md).
 
 ## <a name="create-your-visual-studio-project"></a>Vytvoření projektu sady Visual Studio
 
-1. Přidejte nový **konzolovou aplikaci (rozhraní .NET Framework)** projekt pro vaše řešení.
+1. Přidat nový **Konzolová aplikace (.NET Framework)** do svého řešení projekt.
 
-1. Název projektu **TermLists**. Vyberte tento projekt jako jeden počáteční projekt pro řešení.
+1. Pojmenujte projekt **TermLists**. Vyberte tento projekt jako jeden spouštěný projekt pro řešení.
 
-1. Přidat odkaz na **ModeratorHelper** sestavení, které jste vytvořili v projektu [obsahu moderátora klienta pomocná rychlý Start](content-moderator-helper-quickstart-dotnet.md).
+1. Přidejte odkaz na **ModeratorHelper** sestavení, který jste vytvořili v projektu [rychlý start pomocné rutiny klienta Content Moderator](content-moderator-helper-quickstart-dotnet.md).
 
 ### <a name="install-required-packages"></a>Instalace požadovaných balíčků
 
@@ -60,9 +60,9 @@ Nainstalujte následující balíčky NuGet pro projekt TermLists:
 - Microsoft.Rest.ClientRuntime.Azure
 - Newtonsoft.Json
 
-### <a name="update-the-programs-using-statements"></a>Aktualizace programu je pomocí příkazů
+### <a name="update-the-programs-using-statements"></a>Aktualizace programu v nástrojích příkazy
 
-Upravit program je pomocí příkazů.
+Upravit program v nástrojích příkazy.
 
     using System;
     using System.Threading;
@@ -72,7 +72,7 @@ Upravit program je pomocí příkazů.
 
 ### <a name="add-private-properties"></a>Přidáním vlastních vlastností
 
-Přidejte následující soukromé vlastnosti do oboru názvů TermLists, třídy Program.
+Přidejte následující soukromé vlastnosti do oboru názvů TermLists, třídu programu.
 
     /// <summary>
     /// The language of the terms in the term lists.
@@ -91,16 +91,16 @@ Přidejte následující soukromé vlastnosti do oboru názvů TermLists, tříd
     /// </summary>
     private const double latencyDelay = 0.5;
 
-## <a name="create-a-term-list"></a>Vytvoří seznam podmínek
+## <a name="create-a-term-list"></a>Vytvoření seznamu termínů
 
-Vytvoří seznam podmínek s **ContentModeratorClient.ListManagementTermLists.Create**. První parametr **vytvořit** je řetězec, který obsahuje typ MIME, které by se měly "application/json". Další informace najdete v tématu [referenční dokumentace rozhraní API](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f). Druhý parametr je **textu** objekt, který obsahuje název a popis seznamu nové období.
+Vytvořit seznam termínů s **ContentModeratorClient.ListManagementTermLists.Create**. První parametr **vytvořit** je řetězec, který obsahuje typ MIME, které by se měly "application/json". Další informace najdete v tématu [reference k rozhraní API](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f67f). Je druhý parametr **tělo** objekt, který obsahuje název a popis seznamu nový termín.
 
-Přidejte následující definici metody do oboru názvů TermLists, třídy Program.
+Přidejte následující definici metody do oboru názvů TermLists, třídu programu.
 
 > [!NOTE]
-> Klíč obsahu moderátora služby má požadavky na druhý omezení četnosti (RPS) a pokud limit překročíte, vyvolá výjimku s kódem 429 chyby, sady SDK. 
+> Klíč služby Content Moderator má požadavků za druhé omezení četnosti (předávajících stran) a při překročení limitu, vyvolá výjimku s kódem chyby 429, sady SDK. 
 >
-> Úroveň free klíč může mít jeden RPS rychlost.
+> Klíč úroveň free má omezení četnosti jeden RPS.
 
     /// <summary>
     /// Creates a new term list.
@@ -126,11 +126,11 @@ Přidejte následující definici metody do oboru názvů TermLists, třídy Pro
         }
     }
 
-## <a name="update-term-list-name-and-description"></a>Aktualizace termín seznamu název a popis
+## <a name="update-term-list-name-and-description"></a>Aktualizovat název termínu seznam a popis
 
-Aktualizovat informace o seznamu období s **ContentModeratorClient.ListManagementTermLists.Update**. První parametr **aktualizace** je ID termín seznamu. Druhý parametr je typ MIME, které by se měly "application/json". Další informace najdete v tématu [referenční dokumentace rozhraní API](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f685). Třetí parametr není **textu** objekt, který obsahuje nový název a popis.
+Aktualizovat informace o seznamu termín s **ContentModeratorClient.ListManagementTermLists.Update**. První parametr **aktualizace** je termín seznamu. Druhý parametr je typ MIME, které by se měly "application/json". Další informace najdete v tématu [reference k rozhraní API](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf755e3f9b070c105bd2c2/operations/57cf755e3f9b070868a1f685). Třetí parametr je **tělo** objektu, který obsahuje nový název a popis.
 
-Přidejte následující definici metody do oboru názvů TermLists, třídy Program.
+Přidejte následující definici metody do oboru názvů TermLists, třídu programu.
 
     /// <summary>
     /// Update the information for the indicated term list.
@@ -147,9 +147,9 @@ Přidejte následující definici metody do oboru názvů TermLists, třídy Pro
         Thread.Sleep(throttleRate);
     }
 
-## <a name="add-a-term-to-a-term-list"></a>Přidat do seznamu termín termín
+## <a name="add-a-term-to-a-term-list"></a>Přidat podmínku do seznamu termín
 
-Přidejte následující definici metody do oboru názvů TermLists, třídy Program.
+Přidejte následující definici metody do oboru názvů TermLists, třídu programu.
 
     /// <summary>
     /// Add a term to the indicated term list.
@@ -164,9 +164,9 @@ Přidejte následující definici metody do oboru názvů TermLists, třídy Pro
         Thread.Sleep(throttleRate);
     }
 
-## <a name="get-all-terms-in-a-term-list"></a>Získat všechny podmínky v seznamu termín
+## <a name="get-all-terms-in-a-term-list"></a>Získat všechny podmínky v seznamu termínů
 
-Přidejte následující definici metody do oboru názvů TermLists, třídy Program.
+Přidejte následující definici metody do oboru názvů TermLists, třídu programu.
 
     /// <summary>
     /// Get all terms in the indicated term list.
@@ -185,13 +185,13 @@ Přidejte následující definici metody do oboru názvů TermLists, třídy Pro
         Thread.Sleep(throttleRate);
     }
 
-## <a name="add-code-to-refresh-the-search-index"></a>Přidání kódu k aktualizaci indexu vyhledávání
+## <a name="add-code-to-refresh-the-search-index"></a>Přidejte kód k aktualizaci indexu vyhledávání
 
-Když provedete změny v seznamu termín, můžete obnovit jeho index vyhledávání změny, které mají být zahrnuty při příštím použití seznamu termín na obrazovce text. Toto je podobná jak vyhledávacího webu na ploše (Pokud je povoleno) nebo vyhledávací web průběžně aktualizuje její index zahrnout nových souborů nebo stránky.
+Po provedení změn na seznam termínů, obnovíte jeho index vyhledávání pro změny, které mají být zahrnuty při příštím použití seznamu termín na obrazovce text. To se podobá jak vyhledávacího webu na ploše (je-li povoleno) nebo webového vyhledávacího webu průběžně aktualizuje jeho index nových souborů nebo stránky.
 
-Aktualizovat index vyhledávání seznamu termín s **ContentModeratorClient.ListManagementTermLists.RefreshIndexMethod**.
+Aktualizovat seznam termínů vyhledávací index s **ContentModeratorClient.ListManagementTermLists.RefreshIndexMethod**.
 
-Přidejte následující definici metody do oboru názvů TermLists, třídy Program.
+Přidejte následující definici metody do oboru názvů TermLists, třídu programu.
 
     /// <summary>
     /// Refresh the search index for the indicated term list.
@@ -205,22 +205,22 @@ Přidejte následující definici metody do oboru názvů TermLists, třídy Pro
         Thread.Sleep((int)(latencyDelay * 60 * 1000));
     }
 
-## <a name="screen-text-using-a-term-list"></a>Obrazovka textu s použitím seznam podmínek
+## <a name="screen-text-using-a-term-list"></a>Text obrazovky pomocí seznamu termínů
 
-Obrazovky textu s použitím termín seznam s **ContentModeratorClient.TextModeration.ScreenText**, které mají následující parametry.
+Obrazovky textu s použitím seznam termínů **ContentModeratorClient.TextModeration.ScreenText**, které mají následující parametry.
 
-- Jazyk podmínky v seznamu podmínek.
-- Typ MIME, který může být "text/html", "text/xml", "text/markdownu" nebo "text/plain".
+- Jazyk podmínky v seznamu termín.
+- Typ MIME, což může být "text/html", "text/xml", "text/markdown" nebo "text/plain".
 - Text na obrazovku.
-- Logická hodnota. Nastavte pole na **true** k automatické opravy textu před jeho blokování.
-- Logická hodnota. Nastavte pole na **true** ke zjištění osobních identifikovatelných informací (PII) v textu.
-- ID termín seznamu.
+- Logická hodnota. Nastavte pole na **true** do textu před jeho blokování automatické opravy.
+- Logická hodnota. Nastavte pole na **true** zjistit osobní údaje (PII) v textu.
+- ID seznamu termín
 
-Další informace najdete v tématu [referenční dokumentace rozhraní API](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f).
+Další informace najdete v tématu [reference k rozhraní API](https://westus2.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f).
 
-**ScreenText** vrátí **obrazovky** objekt, který má **podmínky** vlastnost, která uvádí všechny podmínky tohoto obsahu moderátora v prověřování zjištěn. Všimněte si, že pokud moderátora obsahu se nepodařilo rozpoznat podmínek během blokování, **podmínky** vlastnost má hodnotu **null**.
+**ScreenText** vrátí **obrazovky** objektu, který má **podmínky** vlastnost, která obsahuje všechny podmínky této Content Moderator v prověřování zjištěna. Všimněte si, že pokud Content Moderator nezjistili žádné podmínky během blokování, **podmínky** vlastnost má hodnotu **null**.
 
-Přidejte následující definici metody do oboru názvů TermLists, třídy Program.
+Přidejte následující definici metody do oboru názvů TermLists, třídu programu.
 
     /// <summary>
     /// Screen the indicated text for terms in the indicated term list.
@@ -248,15 +248,15 @@ Přidejte následující definici metody do oboru názvů TermLists, třídy Pro
 
 ## <a name="delete-terms-and-lists"></a>Odstranit podmínky a seznamy
 
-Odstraněním termín nebo seznamu je jednoduchá. Použití sady SDK k provádění následujících úloh:
+Odstraňuje se termín nebo seznamu je jednoduché. Sady SDK můžete provádět následující úlohy:
 
 - Odstraňte termín. (**ContentModeratorClient.ListManagementTerm.DeleteTerm**)
 - Odstraňte všechny podmínky v seznamu bez odstranění seznamu. (**ContentModeratorClient.ListManagementTerm.DeleteAllTerms**)
 - Odstraňte seznam a veškerý jeho obsah. (**ContentModeratorClient.ListManagementTermLists.Delete**)
 
-### <a name="delete-a-term"></a>Odstranit termín
+### <a name="delete-a-term"></a>Odstranit podmínku
 
-Přidejte následující definici metody do oboru názvů TermLists, třídy Program.
+Přidejte následující definici metody do oboru názvů TermLists, třídu programu.
 
     /// <summary>
     /// Delete a term from the indicated term list.
@@ -271,9 +271,9 @@ Přidejte následující definici metody do oboru názvů TermLists, třídy Pro
         Thread.Sleep(throttleRate);
     }
 
-### <a name="delete-all-terms-in-a-term-list"></a>Odstranit všechny podmínky v seznamu termín
+### <a name="delete-all-terms-in-a-term-list"></a>Odstranit všechny podmínky v seznamu termínů
 
-Přidejte následující definici metody do oboru názvů TermLists, třídy Program.
+Přidejte následující definici metody do oboru názvů TermLists, třídu programu.
 
     /// <summary>
     /// Delete all terms from the indicated term list.
@@ -287,9 +287,9 @@ Přidejte následující definici metody do oboru názvů TermLists, třídy Pro
         Thread.Sleep(throttleRate);
     }
 
-### <a name="delete-a-term-list"></a>Odstranit seznam podmínek
+### <a name="delete-a-term-list"></a>Odstranění seznamu termín
 
-Přidejte následující definici metody do oboru názvů TermLists, třídy Program.
+Přidejte následující definici metody do oboru názvů TermLists, třídu programu.
 
     /// <summary>
     /// Delete the indicated term list.
@@ -303,9 +303,9 @@ Přidejte následující definici metody do oboru názvů TermLists, třídy Pro
         Thread.Sleep(throttleRate);
     }
 
-## <a name="putting-it-all-together"></a>Třeba umisťovat všechny společně
+## <a name="putting-it-all-together"></a>Vložení všechno dohromady
 
-Přidat **hlavní** definici metody do oboru názvů TermLists, třídy Program. Nakonec zavřete třídy Program a TermLists obor názvů.
+Přidat **hlavní** definici metody do oboru názvů TermLists, třídu programu. A konečně zavřete třídu Program a TermLists oboru názvů.
 
     static void Main(string[] args)
     {
@@ -341,9 +341,9 @@ Přidat **hlavní** definici metody do oboru názvů TermLists, třídy Program.
         }
     }
 
-## <a name="run-the-application-to-see-the-output"></a>Spusťte aplikaci zobrazíte výstup
+## <a name="run-the-application-to-see-the-output"></a>Spusťte aplikaci chcete zobrazit výstup
 
-Výstup bude na následující řádky, ale data se může lišit.
+Výstup bude na následující řádky, ale data se můžou lišit.
 
     Creating term list.
     Term list created. ID: 252.
@@ -375,4 +375,4 @@ Výstup bude na následující řádky, ale data se může lišit.
     
 ## <a name="next-steps"></a>Další postup
 
-[Stáhněte si řešení sady Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) v tomto a dalších – elementy QuickStart obsahu moderátora pro platformu .NET a začít na svoji integraci.
+Získejte [Content Moderator sady .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) a [řešení sady Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) pro tuto a další rychlé starty Content Moderator pro platformu .NET a začít používat svoji integraci.

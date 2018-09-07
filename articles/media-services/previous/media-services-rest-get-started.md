@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/13/2018
 ms.author: juliako
-ms.openlocfilehash: 757ba9e999bfbb46be96e653e7939d91bdf67679
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 015b8570e9cbb06a33107de7a8cb9ae00d60cacb
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43287121"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44053984"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>Začínáme s doručováním obsahu na vyžádání pomocí REST
 [!INCLUDE [media-services-selector-get-started](../../../includes/media-services-selector-get-started.md)]
@@ -54,7 +54,7 @@ Tyto úlohy jsou uvedeny v tomto rychlém startu.
 >[!NOTE]
 >Je stanovený limit 1 000 000 různých zásad AMS (třeba zásady lokátoru nebo ContentKeyAuthorizationPolicy). Pokud vždycky používáte stejné dny / přístupová oprávnění, například zásady pro lokátory, které mají zůstat na místě po dlouhou dobu (zásady bez odesílání), použijte stejné ID zásad. Další informace najdete v [tomto](media-services-dotnet-manage-entities.md#limit-access-policies) článku.
 
-Podrobnosti o entitách AMS REST použité v tomto článku najdete v tématu [Reference k rozhraní API REST Azure Media Services](https://docs.microsoft.com/en-us/rest/api/media/services/azure-media-services-rest-api-reference). Viz také [konceptech Azure Media Services](media-services-concepts.md).
+Podrobnosti o entitách AMS REST použité v tomto článku najdete v tématu [Reference k rozhraní API REST Azure Media Services](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference). Viz také [konceptech Azure Media Services](media-services-concepts.md).
 
 >[!NOTE]
 >Při přístupu k entity ve službě Media Services, musíte nastavit specifická pole hlaviček a hodnoty v požadavcích HTTP. Další informace najdete v tématu [instalace pro vývoj pro Media Services REST API](media-services-rest-how-to-use.md).
@@ -405,7 +405,7 @@ V případě úspěchu se vrátí následující:
 
 ## <a id="encode"></a>Zdrojový soubor zakódovat do sady souborů MP4 s adaptivní přenosovou rychlostí
 
-Po ingestování, které je možné kódovat prostředky do Media Services, média, transmuxovat, označit a tak dále než ho se doručí do klientů. Tyto aktivity se plánují a spouštějí s několika instancemi role na pozadí, abyste měli zajištěný vysoký výkon a dostupnost. Tyto aktivity se nazývají úlohy a každá úloha se skládá z atomických úloh, které vykonávají samotnou práci na souboru prostředku (Další informace najdete v tématu [úlohy](https://docs.microsoft.com/en-us/rest/api/media/operations/job), [úloh](https://docs.microsoft.com/en-us/rest/api/media/operations/task) popisy).
+Po ingestování, které je možné kódovat prostředky do Media Services, média, transmuxovat, označit a tak dále než ho se doručí do klientů. Tyto aktivity se plánují a spouštějí s několika instancemi role na pozadí, abyste měli zajištěný vysoký výkon a dostupnost. Tyto aktivity se nazývají úlohy a každá úloha se skládá z atomických úloh, které vykonávají samotnou práci na souboru prostředku (Další informace najdete v tématu [úlohy](https://docs.microsoft.com/rest/api/media/operations/job), [úloh](https://docs.microsoft.com/rest/api/media/operations/task) popisy).
 
 Jak jsem už zmínili dřív, při práci se službou Azure Media Services je jedním nejběžnější scénářů doručování adaptivní přenosové rychlosti streamování vašim klientům. Služba Media Services umí dynamicky balit sady souborů MP4 do jedné z následujících formátů: HTTP Live Streaming (HLS), technologie Smooth Streaming, MPEG DASH.
 

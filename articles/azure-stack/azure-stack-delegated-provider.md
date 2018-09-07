@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/07/2018
+ms.date: 09/05/2018
 ms.author: brenduns
 ms.reviewer: alfredop
-ms.openlocfilehash: 112586d3ee5f49eab9adb72d41a210e2dd9828d8
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: b58118a3ed4fba5017e0eb630d822ec59f04aa16
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42059066"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44024772"
 ---
 # <a name="delegate-offers-in-azure-stack"></a>Delegování nabídek v Azure Stacku
 
@@ -128,7 +128,7 @@ Přihlaste se k portálu user portal jako delegované poskytovatele a potom vytv
 
 4. Veřejné delegované nabídky jsou nyní viditelné jenom prostřednictvím portálu pro delegovaný. Najít a změnit tuto adresu URL:
 
-    a.  Vyberte **Procházet** > **další služby** > **předplatná**. Vyberte předplatné delegované poskytovatele. Například **DPSubscription** > **vlastnosti**.
+    a.  Vyberte **Procházet** > **všechny služby**a potom v části **Obecné** vyberte **předplatná**. Vyberte předplatné delegované poskytovatele. Například **DPSubscription** > **vlastnosti**.
 
     b.  Na portálu zkopírujte adresu URL na samostatném umístění, jako je například Poznámkový blok.
 

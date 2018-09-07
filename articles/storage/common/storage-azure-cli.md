@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 06/02/2017
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: 12b383267cb90d9305043b52450572add0c1c202
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: d09505e4738243576dbde64fa6daba22d054bc8e
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39527486"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44053263"
 ---
 # <a name="using-the-azure-cli-20-with-azure-storage"></a>Použití Azure CLI 2.0 s Azure Storage
 
@@ -105,7 +105,7 @@ V dalším kroku budete spolupracujeme se skript malé prostředí, která vydá
 # A simple Azure Storage example script
 
 export AZURE_STORAGE_ACCOUNT=<storage_account_name>
-export AZURE_STORAGE_ACCESS_KEY=<storage_account_key>
+export AZURE_STORAGE_KEY=<storage_account_key>
 
 export container_name=<container_name>
 export blob_name=<blob_name>
@@ -210,7 +210,7 @@ Teď, když máte klíč, můžete definovat jako proměnné prostředí a náze
 
 ```azurecli
 export AZURE_STORAGE_ACCOUNT=<account_name>
-export AZURE_STORAGE_ACCESS_KEY=<key>
+export AZURE_STORAGE_KEY=<key>
 ```
 
 Dalším způsobem, jak nastavit výchozí účet úložiště je pomocí připojovacího řetězce. Nejprve získejte připojovací řetězec s `show-connection-string` příkaz:
@@ -228,7 +228,7 @@ export AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
 ```
 
 > [!NOTE]
-> Všechny příklady v následujících částech tohoto článku se předpokládá, že jste nastavili `AZURE_STORAGE_ACCOUNT` a `AZURE_STORAGE_ACCESS_KEY` proměnné prostředí.
+> Všechny příklady v následujících částech tohoto článku se předpokládá, že jste nastavili `AZURE_STORAGE_ACCOUNT` a `AZURE_STORAGE_KEY` proměnné prostředí.
 
 ## <a name="create-and-manage-blobs"></a>Vytvoření a Správa objektů BLOB
 Azure Blob storage je služba pro ukládání velkých objemů nestrukturovaných dat, jako jsou textová nebo binární data, ke kterým můžete přistupovat odkudkoli na světě prostřednictvím protokolu HTTP nebo HTTPS. V této části se předpokládá, že jste už obeznámení s koncepty úložiště objektů Blob v Azure. Podrobné informace najdete v tématu [Začínáme s Azure Blob storage pomocí .NET](../blobs/storage-dotnet-how-to-use-blobs.md) a [koncepty služby Blob Service](/rest/api/storageservices/blob-service-concepts).
@@ -257,6 +257,8 @@ az storage blob upload \
     --container-name <container_name> \
     --name <blob_name>
 ```
+
+Pokud chcete odeslat přímo do složky uvnitř kontejneru v účtu úložiště, nahraďte `--name <blob_name>` s `--name <folder/blob_name>`.
 
  Ve výchozím nastavení `blob upload` příkaz *.vhd soubory nahraje do objektů BLOB stránky, nebo objekty BLOB bloku, jinak. Chcete-li určit jiný typ při nahrání objektu blob, můžete použít `--type` argument--povolené hodnoty jsou `append`, `block`, a `page`.
 

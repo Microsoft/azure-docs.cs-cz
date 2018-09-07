@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/22/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: 6a2d067625e96aefdcb0197e1abb13b0c41fbe7f
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: edaff86531a9c40064d25a046bbbb70f48b75c84
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521434"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44027125"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Služba Azure Import/Export: Nejčastější dotazy 
 Níže jsou dotazy a odpovědi, které můžou mít při použití služby Azure Import/Export pro přenos dat do služby Azure storage. Otázky a odpovědi jsou uspořádané do těchto kategorií:
@@ -119,7 +119,7 @@ Při přípravě pevného disku pro úlohu importu, cíl určený DstBlobPathOrP
 Závisí. Při přípravě na jednotce, můžete určit, zda má se přepsat cílové soubory nebo ignorované pomocí pole v datové sadě souboru CSV se nazývá dispozice: < přejmenovat | no přepsat | přepsat >. Ve výchozím nastavení služby přejmenuje nové soubory místo přepsání existujících objektů BLOB nebo soubory.
 
 ### <a name="is-the-waimportexport-tool-compatible-with-32-bit-operating-systems"></a>Je nástroj WAImportExport kompatibilní s 32bitové operační systémy?
-Ne. Nástroj WAImportExport je kompatibilní jenom s operační systémy Windows 64-bit. Úplný seznam podporován operační systém, přejděte na [podporované operační systémy](). 
+Ne. Nástroj WAImportExport je kompatibilní jenom s operační systémy Windows 64-bit. Úplný seznam podporován operační systém, přejděte na [podporované operační systémy](https://docs.microsoft.com/azure/storage/common/storage-import-export-requirements). 
 
 
 ### <a name="what-is-the-maximum-block-blob-and-page-blob-size-supported-by-azure-importexport"></a>Jaký je maximální objektů Blob bloku a velikost objektu Blob stránky podporovány službou Azure Import/Export?

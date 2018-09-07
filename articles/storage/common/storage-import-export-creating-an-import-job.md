@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.component: common
-ms.openlocfilehash: e87b791dda03521def32ca7473336d7d37644773
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: c1effeba7e4b0750d5af3a5a82b755704379af68
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666015"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44021842"
 ---
 # <a name="creating-an-import-job-for-the-azure-importexport-service"></a>Vytvoření úlohy importu pro službu Azure Import/Export
 
@@ -97,7 +97,7 @@ Je nutné dodat jednotky na adresu, kterou jste získali v předchozím kroku a 
 >  Je nutné dodat jednotky přes službu podporované operátora, který bude zajišťovat sledovací číslo pro svůj balíček.
 
 ## <a name="updating-the-import-job-with-your-shipping-information"></a>Aktualizuje se úloha importu se vaše dodací informace
-Jakmile budete mít sledovací číslo, zavolejte [aktualizovat vlastnosti úlohy](/api/storageimportexport/jobs#Jobs_Update) operace, která aktualizuje přenosů název operátora, sledovací číslo pro úlohu a číslo účtu dopravce pro vrácení. Volitelně můžete zadat počet jednotek a datem přesouvání.
+Jakmile budete mít sledovací číslo, zavolejte [aktualizovat vlastnosti úlohy](https://docs.microsoft.com/rest/api/storageimportexport/Jobs/Update) operace, která aktualizuje přenosů název operátora, sledovací číslo pro úlohu a číslo účtu dopravce pro vrácení. Volitelně můžete zadat počet jednotek a datem přesouvání.
 
 [!INCLUDE [storage-import-export-delete-personal-info.md](../../../includes/storage-import-export-delete-personal-info.md)]
 

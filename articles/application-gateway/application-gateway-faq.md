@@ -7,14 +7,14 @@ manager: jpconnock
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 8/10/2018
+ms.date: 9/6/2018
 ms.author: victorh
-ms.openlocfilehash: 858427bfd2a9b4c40ddf7054e09d98bcf5c1a992
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: e180f0912bdb9145f3d36492fb9bcdcb551037f0
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42054416"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44022912"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Nejčastější dotazy k Application Gateway
 
@@ -84,7 +84,7 @@ Ne, služba Application Gateway nepodporuje statické veřejné IP adresy, ale n
 
 Ve službě Application Gateway se podporuje jenom jednu veřejnou IP adresu.
 
-**Q. Jak velké by měl vytvořit mou podsíť pro službu Application Gateway?**
+**Q. Jak velké by měl udělám mou podsíť pro službu Application Gateway?**
 
 Application Gateway využívá jednu privátní IP adresu na jednu instanci a jiné privátní IP adresu, pokud je nakonfigurovaný privátní front-endovou konfiguraci IP. Azure si vyhrazuje první čtyři a poslední IP adresu v každé podsíti pro interní použití.
 Například, pokud služba Application Gateway je nastavena na tři instance a žádné privátní front-endovou IP, pak je/29 nebo větší velikost podsítě je potřeba. V tomto případě Application Gateway používá tři IP adresy. Pokud máte tři instance a IP adresu pro privátní front-endovou konfiguraci protokolu IP, pak o velikosti/28 podsíť, velikost nebo vyšší je potřeba, protože čtyři IP adresy jsou povinné.
@@ -93,7 +93,7 @@ Například, pokud služba Application Gateway je nastavena na tři instance a �
 
 Ano, služba Application Gateway vloží záhlaví x předané u, x-forwarded-proto a x předané port do žádosti předané back-endu. Formát pro x předané – pro hlavičky je čárkou oddělený seznam IP: port. Platné hodnoty pro x-forwarded-proto jsou http nebo https. X předané port Určuje port, ve kterém bylo dosaženo žádost ve službě Application Gateway.
 
-Služba Application Gateway také vloží hlavičky X-původního hostitele, která obsahuje hlavičku původního hostitele, pomocí kterého Přišla žádost. Tato hlavička se užitečné v situacích, jako jsou integrace webu Azure, ve kterém se upraví hlavičku hostitele příchozího před provoz směruje do back-endu.
+Služba Application Gateway také vloží hlavičku X-původní-hostitele, která obsahuje hlavičku původního hostitele, pomocí kterého Přišla žádost. Tato hlavička se užitečné v situacích, jako jsou integrace webu Azure, ve kterém se upraví hlavičku hostitele příchozího před provoz směruje do back-endu.
 
 **Q. Jak dlouho trvá nasazení služby Application Gateway? My Application Gateway stále funguje při aktualizaci?**
 
@@ -211,8 +211,8 @@ Následující tabulka ukazuje průměrnou propustnost výkonu pro jednotlivé i
 
 | Průměrná velikost odpovědi back endové stránky | Krátkodobé používání | Střednědobé používání | Dlouhodobé používání |
 | --- | --- | --- | --- |
-| 6KB |7,5 Mb/s |13 Mb/s |50 Mb/s |
-| 100KB |35 Mb/s |100 Mb/s |200 Mb/s |
+| 6 KB |7,5 Mb/s |13 Mb/s |50 Mb/s |
+| 100 KB |35 Mb/s |100 Mb/s |200 Mb/s |
 
 > [!NOTE]
 > Tyto hodnoty jsou přibližné hodnoty propustnosti služby Application Gateway. Skutečná propustnost závisí na různých podrobnostech o prostředí, jako jsou například průměrná velikost stránky, umístění back-endových instancí a doba zpracování potřebná k doručení stránky. Přesné údaje o výkonu získáte, když spustíte vlastní testy. Tyto hodnoty slouží jenom jako vodítko při plánování kapacity.
@@ -333,7 +333,7 @@ WAF v současné době podporuje CRS [2.2.9](application-gateway-crs-rulegroups-
 
 **Q. WAF také podporuje před útoky DDoS ochrany před únikem informací?**
 
-Ne, WAF neposkytuje ochrany před únikem informací před útoky DDoS.
+Ano. Můžete povolit ochranu před útoky DDos na virtuální síť, ve kterém je nasazená Aplikační brána. To zajistí, že služba application gateway virtuálních IP adres je taky chránit pomocí služby Azure DDos Protection.
 
 ## <a name="diagnostics-and-logging"></a>Protokolování a Diagnostika
 

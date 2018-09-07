@@ -1,22 +1,23 @@
 ---
-title: Předem připravených entit v LUIS | Dokumentace Microsoftu
-description: Tento článek obsahuje seznam předem připravených entit, které jsou zahrnuty v Language Understanding Intelligent Services (LUIS).
+title: Předem připravených entit pro Language Understanding (LUIS)
+titleSuffix: Azure Cognitive Services
+description: Služba LUIS zahrnuje sadu předem připravených entit pro rozpoznávání běžných typů informací, jako jsou data, časy, čísla, měření a měny. Podpora předem připravených entit se liší podle jazykové verze vaší aplikace LUIS.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 02/15/2018
+ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 95ff173a843e7ad18ec396a1130b2e2b4035f656
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: f62c078a023d9ee7ca535cb5e02623df7a568e8a
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248233"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44052869"
 ---
-# <a name="prebuilt-entities"></a>Předem připravených entit
+# <a name="prebuilt-entities-to-recognize-common-data-types"></a>Předem připravených entit rozpoznat běžné typy dat
 
 Služba LUIS zahrnuje sadu předem připravených entit pro rozpoznávání běžných typů informací, jako jsou data, časy, čísla, měření a měny. Podpora předem připravených entit se liší podle jazykové verze vaší aplikace LUIS. Úplný seznam předem připravených entit, které podporuje služba LUIS, včetně podpory podle jazykové verze, najdete v článku [předem připravených entit odkaz](./luis-reference-prebuilt-entities.md).
 
@@ -28,7 +29,6 @@ Služba LUIS zahrnuje sadu předem připravených entit pro rozpoznávání bě�
 1. Otevřete aplikaci klepnutím na jeho název na **Moje aplikace** stránce a potom klikněte na tlačítko **entity** na levé straně. 
 2. Na **entity** klikněte na **spravovat předem připravených entit**.
 
-    ![Stránka entity – Správa předem připravených entit](./media/luis-use-prebuilt-entity/add-prebuilt-entity-button.png)
 3. V **přidání předem připravených entit** dialogovém okně klikněte na tlačítko předem připravených entit, které chcete přidat (například "datetimeV2"). Potom klikněte na **Uložit**.
 
     ![Přidat – dialogové okno předem připravených entit](./media/luis-use-prebuilt-entity/add-prebuilt-entity-dialog.png)
@@ -42,7 +42,7 @@ Předem připravených entit je obsažen ve vaší aplikaci, jeho předpovědi j
 
     ![utterance v prohlížeči obsahující číselnou entitu](./media/luis-use-prebuilt-entity/browser-query.png)
 
-Služba LUIS inteligentně poznáte čísla, která nejsou v nestandardním formuláře. Vyzkoušejte si různých číselných výrazů ve vašich projevy a zjistit, jaké vrací LUIS.
+Služba LUIS inteligentně poznáte čísla, která nejsou v podobě nestandardní. Vyzkoušejte si různých číselných výrazů ve vašich projevy a zjistit, jaké vrací LUIS.
 
 Následující příklad ukazuje služby luis, odpověď ve formátu JSON, který obsahuje řešení hodnota 24, utterance "z dvou tuctů".
 

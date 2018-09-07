@@ -1,6 +1,6 @@
 ---
-title: Azure obsahu moderátora – střední bitové kopie pomocí rozhraní .NET | Microsoft Docs
-description: Postup střední bitové kopie pomocí sady Azure obsahu moderátora SDK pro .NET
+title: Azure Content Moderator – moderování obrázků s využitím .NET | Dokumentace Microsoftu
+description: Jak moderování obrázků s využitím Azure Content Moderator SDK pro .NET
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
@@ -9,36 +9,36 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 01/04/2018
 ms.author: sajagtap
-ms.openlocfilehash: cc2329c233029a1ff6bd82da3d090c4e98a8bac8
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 4a73892d44b4ae92f08976c8f54771292bba3a1d
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342473"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44025512"
 ---
-# <a name="moderate-images-using-net"></a>Střední bitové kopie pomocí rozhraní .NET
+# <a name="moderate-images-using-net"></a>Moderování obrázků s využitím .NET
 
-Tento článek obsahuje informace a ukázky kódu, které vám pomůžou začít používat sadu SDK obsahu moderátora pro technologii .NET: 
-- Zkontrolujte bitovou kopii pro obsah pro dospělé nebo zájem
-- Zjistit a rozbalte text z obrázku
-- Detekovat tyto řezy v obrázku
+Tento článek obsahuje informace a ukázky kódu, které vám pomůžou začít používat [Content Moderator SDK pro .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) na: 
+- Zkontrolujte image pro dospělé nebo pikantního obsahu
+- Detekujte a extrahujte text z obrázku
+- Rozpoznávání tváří v obrázku
 
 Tento článek předpokládá, že jste již obeznámeni s Visual Studio a C#.
 
-## <a name="sign-up-for-content-moderator-services"></a>Zaregistrujte si obsahu moderátora služby
+## <a name="sign-up-for-content-moderator-services"></a>Zaregistrovat do služby Content Moderator
 
-Před použitím služby obsahu moderátora přes rozhraní REST API nebo sady SDK, je nutné klíč předplatného.
+Než budete moct použít služby Content Moderator přes rozhraní REST API nebo sady SDK, je nutné klíč předplatného.
 Odkazovat [rychlý Start](quick-start.md) se dozvíte, jak můžete získat klíč.
 
 ## <a name="create-your-visual-studio-project"></a>Vytvoření projektu sady Visual Studio
 
-1. Přidejte nový **konzolovou aplikaci (rozhraní .NET Framework)** projekt pro vaše řešení.
+1. Přidat nový **Konzolová aplikace (.NET Framework)** do svého řešení projekt.
 
-   V ukázkovém kódu, název projektu **ImageModeration**.
+   Ve vzorovém kódu, pojmenujte projekt **ImageModeration**.
 
-1. Vyberte tento projekt jako jeden počáteční projekt pro řešení.
+1. Vyberte tento projekt jako jeden spouštěný projekt pro řešení.
 
-1. Přidat odkaz na **ModeratorHelper** sestavení, které jste vytvořili v projektu [obsahu moderátora klienta pomocná rychlý Start](content-moderator-helper-quickstart-dotnet.md).
+1. Přidejte odkaz na **ModeratorHelper** sestavení, který jste vytvořili v projektu [rychlý start pomocné rutiny klienta Content Moderator](content-moderator-helper-quickstart-dotnet.md).
 
 ### <a name="install-required-packages"></a>Instalace požadovaných balíčků
 
@@ -48,9 +48,9 @@ Nainstalujte následující balíčky NuGet:
 - Microsoft.Rest.ClientRuntime
 - Newtonsoft.Json
 
-### <a name="update-the-programs-using-statements"></a>Aktualizace programu je pomocí příkazů
+### <a name="update-the-programs-using-statements"></a>Aktualizace programu v nástrojích příkazy
 
-Upravit program je pomocí příkazů.
+Upravit program v nástrojích příkazy.
 
     using Microsoft.CognitiveServices.ContentModerator;
     using Microsoft.CognitiveServices.ContentModerator.Models;
@@ -61,9 +61,9 @@ Upravit program je pomocí příkazů.
     using System.IO;
     using System.Threading;
 
-### <a name="initialize-application-specific-settings"></a>Inicializace nastavení pro konkrétní aplikace
+### <a name="initialize-application-specific-settings"></a>Inicializace nastavení specifické pro aplikaci
 
-Přidejte následující statické pole na **Program** – třída v souboru Program.cs.
+Přidejte následující statické pole na **Program** třída v souboru Program.cs.
 
     ///<summary>
     ///The name of the file that contains the image URLs to evaluate.
@@ -82,13 +82,13 @@ Přidejte následující statické pole na **Program** – třída v souboru Pro
 
 
 > [!NOTE]
-> Ukázka používá následující bitové kopie k vygenerování výstup pro tento rychlý start.
+> Ukázka používá následující obrázky generovat výstup pro tento rychlý start.
 > - https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg
 > - https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
 
-## <a name="store-the-analysis-results"></a>Uložte výsledky analýzy
+## <a name="store-the-analysis-results"></a>Store výsledky analýzy
 
-Přidejte následující třídy k **Program** třídy. Instance této třídy použijte k zaznamenání přerušování výsledky pro zkontrolovat bitové kopie.
+Přidejte následující třídy, která se **Program** třídy. Slouží k zaznamenání výsledky při moderování obrázků, přezkoumání instance této třídy.
 
     /// <summary>
     /// Contains the image moderation results for an image, 
@@ -117,14 +117,14 @@ Přidejte následující třídy k **Program** třídy. Instance této třídy p
         public FoundFaces FaceDetection;
     }
 
-## <a name="evaluate-an-individual-image"></a>Vyhodnocení jednotlivé bitové kopie
+## <a name="evaluate-an-individual-image"></a>Vyhodnocení jednotlivých obrázků
 
-Do třídy **Program** přidejte následující metodu. Tato metoda vyhodnotí jedné image a vrátí výsledky hodnocení.
+Do třídy **Program** přidejte následující metodu. Tato metoda jedné image vyhodnotí a vrátí výsledky hodnocení.
 
 > [!NOTE]
-> Klíč obsahu moderátora služby má požadavky na druhý omezení četnosti (RPS) a pokud limit překročíte, vyvolá výjimku s kódem 429 chyby, sady SDK. 
+> Klíč služby Content Moderator má požadavků za druhé omezení četnosti (předávajících stran) a při překročení limitu, vyvolá výjimku s kódem chyby 429, sady SDK. 
 >
-> Úroveň free klíč může mít jeden RPS rychlost.
+> Klíč úroveň free má omezení četnosti jeden RPS.
 
 
     /// <summary>
@@ -165,18 +165,18 @@ Do třídy **Program** přidejte následující metodu. Tato metoda vyhodnotí j
         return imageData;
     }
 
-**EvaluateUrlInput** metoda zabaluje rozhraní API REST přerušování bitové kopie.
-Vrácená hodnota obsahuje objekt vrácený volání rozhraní API.
+**EvaluateUrlInput** metoda tvoří obálku pro rozhraní REST API pro moderování obrázků.
+Návratová hodnota obsahuje objekt vrácený z volání rozhraní API.
 
-**OCRUrlInput** metoda je obálka pro REST API pro rozpoznávání znaků bitové kopie.
-Vrácená hodnota obsahuje objekt vrácený volání rozhraní API.
+**OCRUrlInput** metoda tvoří obálku pro rozhraní API REST OCR obrázků.
+Návratová hodnota obsahuje objekt vrácený z volání rozhraní API.
 
-**FindFacesUrlInput** metoda je obálku pro bitové kopie najít otočená REST API.
-Vrácená hodnota obsahuje objekt vrácený volání rozhraní API.
+**FindFacesUrlInput** metoda tvoří obálku pro Image najít čelí REST API.
+Návratová hodnota obsahuje objekt vrácený z volání rozhraní API.
 
-## <a name="process-the-image-urls-in-your-code"></a>Zpracování adresy URL bitové kopie v kódu
+## <a name="process-the-image-urls-in-your-code"></a>Zpracování adresy URL obrázků v kódu
 
-Přidejte následující kód, který **hlavní** metoda.
+Přidejte následující kód, který **hlavní** metody.
 
     // Create an object to store the image moderation results.
     List<EvaluationData> evaluationData = new List<EvaluationData>();
@@ -214,8 +214,8 @@ Přidejte následující kód, který **hlavní** metoda.
 Následující objekt JSON obsahuje výstup programu.
 
 > [!NOTE]
-> `isImageAdultClassified` představuje potenciální přítomnost bitové kopie, které lze považovat za zřejmý explicitní nebo pro dospělé v určitých situacích.
-> `isImageRacyClassified` představuje potenciální přítomnost bitové kopie, které lze považovat za zřejmý sugestivní nebo vyspělá v určitých situacích.
+> `isImageAdultClassified` představuje potenciální přítomnost bitové kopie, které lze považovat za sexuálně explicitní nebo pro dospělé v určitých situacích.
+> `isImageRacyClassified` představuje potenciální přítomnost bitové kopie, které lze považovat za sexuálně sugestivní nebo až po zralé v určitých situacích.
 >
 
     [
@@ -401,6 +401,6 @@ Následující objekt JSON obsahuje výstup programu.
     ]
 
 
-## <a name="next-steps---get-the-source-code"></a>Další kroky – Získejte zdrojový kód
+## <a name="next-steps---get-the-source-code"></a>Další kroky – získat zdrojový kód
 
-[Stáhněte si řešení sady Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) v tomto a dalších – elementy QuickStart obsahu moderátora pro platformu .NET a začít na svoji integraci.
+Získejte [Content Moderator sady .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) a [řešení sady Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) pro tuto a další rychlé starty Content Moderator pro platformu .NET a začít používat svoji integraci.

@@ -1,6 +1,6 @@
 ---
-title: Simulovat chyb v Azure mikroslužeb | Microsoft Docs
-description: Jak posílení zabezpečení vašich služeb proti selhání řádně a vynuceném.
+title: Simulace chyb v aplikacích Azure Service Fabric | Dokumentace Microsoftu
+description: Popisuje, jak posílit ochranu proti selhání bezproblémové a vynuceném vašich služeb.
 services: service-fabric
 documentationcenter: .net
 author: anmolah
@@ -14,25 +14,25 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/15/2017
 ms.author: anmola
-ms.openlocfilehash: dccd8eeeda1a41f23c9e3dd9896e0630e2a7a0a4
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 3c075ac9642c7d050fc45ce6164071c9c733326e
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34208892"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44051910"
 ---
 # <a name="simulate-failures-during-service-workloads"></a>Simulace chyb během zatížení služeb
-Scénáře testovatelnosti v Azure Service Fabric umožňují vývojářům není starat o práci s jednotlivých chyb. Existují scénáře, ale kde explicitní prokládání zatížení klienta a selhání může být potřeba. Prokládání zatížení klienta a chyb zajistí, že služba ve skutečnosti provádí některé akce v případě selhání. Udělená úroveň ovládací prvek, který poskytuje možnosti testování, může jít v přesné body spuštění úlohy. Tato indukční chyb v různých stavů v aplikaci můžete najít chyby a zlepšení kvality.
+Scénářů testovatelnosti v Azure Service Fabric umožňují vývojářům bez starostí o práci s jednotlivých chyb. Existují scénáře, ale pokud explicitní prokládání úlohy klientů a selhání může být potřeba. Prokládání klienta úloh a chyb zajistí, že služba ve skutečnosti provádí určitou akci při dojde k selhání. Udělená úroveň ovládací prvek, který poskytuje možnosti testování, může se jednat na přesné bodů provádění úlohy. Tato indukční chyb v různých stavech v aplikaci můžete vyhledat chyby a vylepšit kvalitu.
 
-## <a name="sample-custom-scenario"></a>Vlastní vzorový scénář
-Tento test ukazuje scénář, který interleaves obchodní zatížení s [selhání řádně a vynuceném](service-fabric-testability-actions.md#graceful-vs-ungraceful-fault-actions). K poruchám by měl být vyvolané uprostřed operací služby nebo výpočetní pro dosažení co nejlepších výsledků.
+## <a name="sample-custom-scenario"></a>Ukázkový scénář pro vlastní
+Tento test představuje scénář, který předřadí obchodní úlohy s [selhání bezproblémové a vynuceném](service-fabric-testability-actions.md#graceful-vs-ungraceful-fault-actions). Chyby by měl vyvolaných uprostřed operace služby nebo výpočetní prostředky pro dosažení co nejlepších výsledků.
 
-Příklad služby, který zveřejňuje čtyři úlohy projděme: A, B, C a D. každé odpovídá sadu pracovních postupů a může být výpočty, úložiště nebo jejich kombinace. Z důvodu zjednodušení jsme se abstraktní na zatížení v našem příkladu. Různé chyb, provést v tomto příkladu jsou:
+Projděme si příklad služby, která poskytuje čtyři úlohy: A, B, C a D. Každá odpovídající sadě pracovních postupů a může být výpočetní prostředky, úložiště nebo kombinace. Z důvodu zjednodušení jsme se abstraktní navýšení kapacity úloh v našem příkladu. Jsou různé chyby spuštění v tomto příkladu:
 
-* RestartNode: Vynuceném selhání simuluje restartování počítače.
-* RestartDeployedCodePackage: Vynuceném selhání simuluje proces hostitele služby dojde k chybě.
-* RemoveReplica: Řádné selhání simulace odebrání repliky.
-* Operace MovePrimary: Řádně selhání simuluje repliky přesune spouštěná nástrojem pro vyrovnávání zatížení Service Fabric.
+* RestartNode: Vynuceném selhání simulujte restartování počítače.
+* RestartDeployedCodePackage: Vynuceném selhání pro simulaci hostitelského procesu služby dojde k chybě.
+* RemoveReplica: Bezproblémové selhání pro simulaci odstranění repliky.
+* Operace MovePrimary: Řádné selhání pro simulaci repliky přesune aktivovaných pomocí služby Vyrovnávání zatížení Service Fabric.
 
 ```csharp
 // Add a reference to System.Fabric.Testability.dll and System.Fabric.dll.

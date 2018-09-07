@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: maheshu
-ms.openlocfilehash: 02b722feece5458a31e89e4041d51104b94e52c6
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 8747e597883d96756e676061bde04b920b13cadd
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505861"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44023201"
 ---
 # <a name="azure-active-directory-domain-services-frequently-asked-questions-faqs"></a>Azure Active Directory Domain Services: Nejčastější dotazy (FAQ)
 Tato stránka odpovědi na nejčastější dotazy týkající se Azure Active Directory Domain Services. Kontrolovat novinky.
@@ -96,6 +96,9 @@ Tato služba je součástí bezplatné zkušební verze pro Azure. Můžete si z
 
 ### <a name="can-i-pause-an-azure-ad-domain-services-managed-domain"></a>Můžete pozastavit spravované domény služby Azure AD Domain Services? 
 Ne. Jakmile povolíte spravované domény služby Azure AD Domain Services, je služba dostupná ve vámi zvolené virtuální síti, dokud je zakázat/odstranit spravovanou doménu. Neexistuje žádný způsob, jak službu pozastavit. Fakturace pokračuje po hodinách, dokud odstranit spravovanou doménu.
+
+### <a name="can-i-failover-azure-ad-domain-services-to-another-region-for-a-dr-event"></a>Je možné převzetí služeb při selhání do jiné oblasti pro zotavení po Havárii událostí Azure AD Domain Services?
+Ne.  Azure AD Domain Services aktuálně neposkytuje geograficky redundantní nasazení modelu. Je omezený na jednu virtuální síť v oblasti Azure. Pokud chcete využívat víc oblastí Azure, musíte spustit řadičů domény služby Active Directory na virtuálních počítačích Azure IaaS.  Najdete doprovodné materiály k architektuře [tady](https://docs.microsoft.com/azure/architecture/reference-architectures/identity/adds-extend-domain).
 
 ### <a name="can-i-get-azure-ad-domain-services-as-part-of-enterprise-mobility-suite-ems-do-i-need-azure-ad-premium-to-use-azure-ad-domain-services"></a>K dispozici v Azure AD Domain Services jako součást sady Enterprise Mobility Suite (EMS)? Je třeba Azure AD Premium k použití služby Azure AD Domain Services?
 Ne. Azure AD Domain Services je služba Azure s průběžnými platbami a není součástí EMS. Azure AD Domain Services je možné ve všech edicích služby Azure AD (Free, Basic a, Premium). Se účtují po hodinách účtujeme, v závislosti na využití.

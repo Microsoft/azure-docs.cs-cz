@@ -1,6 +1,6 @@
 ---
-title: Přihlašovací údaje v Azure obsahu moderátora | Microsoft Docs
-description: Správa obsahu moderátora pověření pro použití s rozhraní API.
+title: Přihlašovací údaje v Azure Content Moderator | Dokumentace Microsoftu
+description: Správa přihlašovacích údajů Content Moderator pro použití s rozhraním API.
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
@@ -9,77 +9,69 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 06/25/2017
 ms.author: sajagtap
-ms.openlocfilehash: 4531fa4c8bbb7bb9c1daeaaac6f9e7078dae250a
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6477879953dc2bb2c7503eb0b2d4b5effa7b6a11
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342410"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44024651"
 ---
 # <a name="manage-credentials"></a>Správa přihlašovacích údajů
 
-Vaše přihlašovací údaje obsahu moderátora vytvářejí v následujících umístěních:
+Vaše přihlašovací údaje Content Moderatoru se vytvoří v následujících umístěních:
 
 - [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator)
-- [Zkontrolujte nástroj obsahu moderátora](http://contentmoderator.cognitive.microsoft.com/)
+- [Nástroj pro recenze Content Moderatoru](http://contentmoderator.cognitive.microsoft.com/)
 
-Tento článek vysvětluje, kde je najít a jak se vztahují k sobě navzájem.
+Tento článek popisuje, kde je najít a jejich vzájemné vztahy mezi sebou.
 
-## <a name="the-azure-portal"></a>Portál Azure
+## <a name="the-azure-portal"></a>Azure Portal
 
-Na řídicím panelu Azure portálu vyberte svůj účet moderátora obsahu. V části **Správa prostředků**, vyberte **klíče**. Pokud chcete zkopírovat klíč, vyberte ikonu napravo od klíč.
+Na řídicím panelu Azure portal vyberte svůj účet Content Moderatoru. V části **správy prostředků**vyberte **klíče**. Zkopírování klíče, výběrem ikony napravo od klíč.
 
-![Obsahu moderátora klíče na portálu Azure](images/credentials-azure-portal-keys.PNG)
+![Content Moderator klíče na webu Azure Portal](images/credentials-azure-portal-keys.PNG)
 
-### <a name="how-to-use-your-azure-account-with-the-review-tool"></a>Postup použití účtu Azure pomocí nástroje Kontrola
-Kontrola rozhraní API používat klíč Azure, zkopírujte ID prostředku, který je uvedený na **vlastnosti** obrazovky na následujícím snímku obrazovky a zadejte na obrazovce nástroj zkontrolujte přihlašovací údaje **ID prostředku seznam povolených adres** polí, jak je znázorněno v následujícím **ID prostředku** části. 
-
-Pokud chcete použít klíč Azure k dispozici v rámci obsahu moderátora pracovních postupů, zadejte ho v **Ocp-Apim-Subscription-Key** pole **nastavení pracovních postupů** části, jak je znázorněno v následujícím  **Pracovní postupy** části.
+### <a name="use-the-azure-account-with-the-review-tool-and-review-api"></a>Účet Azure pomocí nástroje pro recenze a projděte si rozhraní API
+K použití příslušného klíče Azure pomocí rozhraní API pro kontrolu, zkopírujte ID prostředku na **vlastnosti** obrazovky na následujícím snímku obrazovky a zadejte ho na obrazovce přihlašovacích údajů pro nástroj pro recenze v **ID prostředků na seznamu povolených** pole, jak je znázorněno v následujícím **ID prostředku** oddílu. 
 
 > [!NOTE]
-> Jakmile je nahradit dvou místech ve nástroj Zkontrolujte klíč a ID prostředku ze svého předplatného Azure vaše **zkušební verze Ocp-Apim-Subscription-Key** zobrazí na přihlašovací údaje obrazovky se už nepoužívá, ale je vždy k dispozici.
-> Zkušební klíč omezeny pouze na maximální 5 000 transakce měsíčně v požadavků za sekundu (RPS) na 1.
+> Vaše předplatné Content Moderator oblasti by měl odpovídat oblasti tým kontroly, aby se rozpoznat váš tým a přístup k datům týmu. Například na obrázcích na této stránce **USA – západ** oblasti **(4)** obsahuje předplatné Content Moderator Azure a váš tým kontroly.
+>
+> Až nahradíte dvě místa v nástroj pro recenze klíč a ID prostředku z vašeho předplatného Azure, vaše **zkušební verze Ocp-Apim-Subscription-Key** zobrazuje na přihlašovací údaje obrazovky se už nepoužívá, ale je vždy k dispozici.
+> Klíče zkušební verze, jste omezeni maximální 5000 transakcí za měsíc na 1 žádost za sekundu (předávajících stran).
 
-![ID obsahu moderátora prostředků na portálu Azure](images/credentials-azure-portal-resourceid.PNG)
+![Content Moderator ID prostředku na webu Azure Portal](images/credentials-azure-portal-resourceid.PNG)
 
+### <a name="use-the-azure-account-with-the-workflows-in-the-review-tool"></a>Použít účet Azure s pracovními postupy v nástroj pro recenze
 
-## <a name="the-review-tool"></a>Zkontrolujte nástroj
+K použití příslušného klíče Azure k dispozici v rámci Content Moderator pracovních postupů, zadejte ho v **Ocp-Apim-Subscription-Key** pole **nastavení pracovního postupu** jak je znázorněno v následující části  **Pracovní postupy** oddílu. Klikněte **'+'** uložit vaše ID prostředku.
 
-Na kontrola nástroje na řídicí panel, **nastavení** vyberte **přihlašovací údaje**.
+![Content Moderator přihlašovacích údajů pracovního postupu v nástroj pro recenze](images/credentials-workflow.PNG)
 
-![Obsahu moderátora přihlašovacích údajů v nástroji Kontrola](images/credentials-trial-resource-workflow.PNG)
+## <a name="the-review-tool"></a>Nástroj pro recenze
 
-V následující části prozkoumá předchozí obrázek podrobněji:
+K revizi nástroj na řídicí panel, **nastavení** kartu, vyberte možnost **pověření**.
 
+![Content Moderator přihlašovací údaje v nástroj pro recenze](images/credentials-trial-resource-workflow.PNG)
+
+Následující oddíl se zabývá podrobněji na předchozím obrázku:
 
 ### <a name="api"></a>Rozhraní API
 
-První část seznamy vaše **zkontrolujte koncový bod rozhraní API**, **team ID**a **Ocp-Apim-Subscription-Key (klíč obsahu moderátora zkušební verze)** generované v rámci týmu revize vytvoření. Je použijte k volání všechny obsahu moderátora rozhraní API, včetně rozhraní API revize.
+V první části jsou uvedeny vaší **zkontrolujte koncový bod rozhraní API**, **ID tenanta**a **Ocp-Apim-Subscription-Key (Content Moderator zkušební klíč)** vygenerované v rámci vašeho týmu na revizi vytvoření. Je použijte k volání všechna rozhraní API Content Moderatoru, včetně rozhraní API pro kontrolu.
 
-Všimněte si také identifikátor vaší oblasti pro svůj koncový bod rozhraní API. Například **westus** oblast v "https://westus.api.cognitive.microsoft.com/contentmoderator/review/v1.0"
+Všimněte si také identifikátor vaší oblasti pro váš koncový bod rozhraní API. Například **westus** je oblast v "https://westus.api.cognitive.microsoft.com/contentmoderator/review/v1.0"
 
-![Klíč obsahu moderátora v nástroji Kontrola](images/credentials-trialkey.PNG)
-
+![Content Moderator klíče v nástroj pro recenze](images/credentials-trialkey.PNG)
 
 ### <a name="resource-id"></a>ID prostředku
 
-Druhá část spustí se jako prázdný s žádné ID prostředku. **Na používání vašeho předplatného Azure klíče s rozhraním API kontrolní, přejděte na obrazovce ID prostředků, jak je znázorněno dříve a zkopírujte jej do pole ukazuje**. Stiskněte tlačítko **'+'** uložit vaše ID prostředku.
-
-> [!NOTE]
-> Vaše předplatné obsahu moderátora oblast by měl odpovídat týmem zkontrolujte oblast pro něj rozpoznat váš tým a přístup k datům týmu. Například v bitové kopie na této stránce **západní USA** oblast **(4)** obsahuje předplatné Azure obsahu moderátora a váš tým revize.
-
-![ID obsahu moderátora prostředků v nástroji Kontrola](images/credentials-resourceids.PNG)
-
+Jsme probrali v této části [pomocí svého účtu Azure pomocí nástroje pro recenze a rozhraní API](credentials.md#how-to-use-your-azure-account-with-the-review-tool) oddílu. Toto pole je obvykle prázdné, pokud vaše Id prostředku Azure přidáte k tomuto poli jak je popsáno v předchozí části.
 
 ### <a name="workflows"></a>Pracovní postupy
 
-Třetí část obsahuje informace, používá pro spouštění pracovních postupů. Spustí se zobrazuje ve výchozím nastavení automaticky vygenerované zkušební klíč. 
-
-**Jej aktualizovat s klíč Azure při získání předplatného Azure**. Tato dvě pole Povolit použití seznamů termín a bitové kopie v operacích obrazovky textových a obrázkových vyhodnotit v uvedeném pořadí.
-
-![Obsahu přihlašovací údaje moderátora pracovního postupu v nástroji Kontrola](images/credentials-workflow.PNG)
-
+Tuto sadu polí v předchozí části jsme probrali v [spouštění pracovních postupů pomocí Azure key](credentials.md#use-the-azure-account-with-the-workflows-in-the-review-tool). Ve výchozím nastavení nástroj pro recenze pomocí klíče zkušební verze automaticky generované pro spouštění pracovních postupů a, který se zobrazuje na začátku. Dvě pole umožňují, které používají seznamy termínů a bitové kopie v operacích obrazovky textových a obrázkových vyhodnotit v uvedeném pořadí.
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o použití obsahu moderátora přihlašovací údaje v vaše [pracovních](workflows.md).
+* Další informace o použití Content Moderator přihlašovacím údajům vašeho [pracovních postupů](workflows.md).

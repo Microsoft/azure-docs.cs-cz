@@ -15,51 +15,55 @@ ms.workload: identity
 ms.date: 04/19/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 5e933406b266b8371019abf0f62365184d8900b3
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: c5d61da61f6ec98a1cac37ce9b12b28019ce2ae1
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "36205240"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44058382"
 ---
 ## <a name="set-up-your-project"></a>Nastavení projektu
 
-V této části vytvoříte nový projekt na ukazují, jak integrovat aplikace Windows Desktop .NET (XAML) s *přihlášení se společností Microsoft* tak, aby aplikace můžete dotazovat webovým rozhraním API, které vyžadují token.
+V této části vytvoříte nový projekt na ukazují, jak integrovat aplikace Windows Desktop .NET (XAML) s *ve službě Microsoft* tak, aby aplikace může dotazovat webové rozhraní API, která vyžaduje token.
 
-Aplikace, které vytvoříte v této příručce zobrazí tlačítko, které se používá k volání graf, oblast, kterou chcete zobrazit výsledky na obrazovce a odhlášení tlačítko.
+Aplikace, kterou vytvoříte v této příručce se zobrazí tlačítko, které se používá k volání grafu, oblast, kterou chcete zobrazit výsledky na obrazovce a tlačítkem pro odhlášení.
 
 > [!NOTE]
-> Místo toho stáhněte projekt Visual Studio Tato ukázka dávají přednost? [Stažení projektu](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/master.zip)a pokračujte [krok konfigurace](#register-your-application) ke konfiguraci ukázka kódu, než ho provést.
+> Stáhněte si tento ukázkový projekt sady Visual Studio místo toho raději? [Stáhnete projekt](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/master.zip)a pokračujte [potřeba provádět krok konfigurace](#register-your-application) konfigurace ukázkového kódu před spuštěním.
 >
 
-Pokud chcete vytvořit aplikaci, postupujte takto:
-1. V sadě Visual Studio, vyberte **soubor** > **nový** > **projektu**.
-2. V části **šablony**, vyberte **Visual C#**.
-3. Vyberte **aplikace WPF** nebo **aplikaci WPF**, v závislosti na verzi používáte verzi sady Visual Studio.
+Jak vytvořit aplikaci, postupujte takto:
+1. V sadě Visual Studio, vyberte **souboru** > **nový** > **projektu**.
+2. V části **šablony**vyberte **Visual C#**.
+3. Vyberte **aplikace WPF** nebo **aplikace WPF**, v závislosti na verzi verze sady Visual Studio, kterou používáte.
 
 ## <a name="add-msal-to-your-project"></a>Do projektu přidejte MSAL
 1. V sadě Visual Studio, vyberte **nástroje** > **Správce balíčků NuGet**> **Konzola správce balíčků**.
 2. V okně konzoly Správce balíčků vložte následující příkaz prostředí Azure PowerShell:
 
     ```powershell
-    Install-Package Microsoft.Identity.Client -Pre
+    Install-Package Microsoft.Identity.Client -Pre -Version 1.1.4-preview0002
     ```
 
     > [!NOTE] 
-    > Tento příkaz nainstaluje knihovny pro ověřování Microsoft. MSAL zpracovává získávání, ukládání do mezipaměti a aktualizaci uživatele tokeny, které se používají pro přístup k rozhraní API, které jsou chráněné službou Azure Active Directory v2.
+    > Tento příkaz nainstaluje knihovny Microsoft Authentication Library. Knihovna MSAL zpracovává načítání, ukládání do mezipaměti a aktualizaci tokeny uživatele, které se používají pro přístup k rozhraní API, která jsou chráněné službou Azure Active Directory v2.
     >
 
-## <a name="add-the-code-to-initialize-msal"></a>Přidat kód pro inicializaci MSAL
-V tomto kroku vytvoříte třídu pro zpracování interakci s MSAL, jako je například zpracování tokenů.
+    > [!NOTE]
+    > V tomto rychlém startu tak není, ale použijte nejnovější verzi MSAL.NET, ale pracujeme na jeho aktualizace
+    > 
 
-1. Otevřete *App.xaml.cs* souboru a poté přidejte odkaz na pro MSAL pro třídu:
+## <a name="add-the-code-to-initialize-msal"></a>Přidejte kód pro inicializaci MSAL
+V tomto kroku vytvoříte třídu pro zpracování interakci s MSAL, jako je zpracování tokenů.
+
+1. Otevřít *App.xaml.cs* soubor a přidejte odkaz na MSAL do třídy:
 
     ```csharp
     using Microsoft.Identity.Client;
     ```
 <!-- Workaround for Docs conversion bug -->
 
-2. Aktualizace třídy aplikace takto:
+2. Aktualizujte třídu aplikace takto:
 
     ```csharp
     public partial class App : Application
@@ -73,11 +77,11 @@ V tomto kroku vytvoříte třídu pro zpracování interakci s MSAL, jako je nap
     }
     ```
 
-## <a name="create-the-application-ui"></a>Vytvoření aplikace uživatelského rozhraní
+## <a name="create-the-application-ui"></a>Vytvoření uživatelského rozhraní aplikace
 
-Tato část uvádí, jak můžete aplikaci dotaz na chráněném serveru back-end, jako je například Microsoft Graph. 
+Tato část ukazuje, jak aplikace může dotazovat chráněného serveru back-end, jako je například Microsoft Graphu. 
 
-A *MainWindow.xaml* soubor by měl být automaticky vytvoří jako součást vaše šablona projektu. Umožňuje otevřít tento soubor a potom můžete nahradit vaší aplikace  *\<mřížky >* uzlu s následujícím kódem:
+A *souboru MainWindow.xaml* soubor by měl být automaticky vytvoří jako součást šablony projektu. Otevřete tento soubor a potom nahraďte vaší aplikace  *\<mřížky >* uzel s následujícím kódem:
 
 ```xml
 <Grid>

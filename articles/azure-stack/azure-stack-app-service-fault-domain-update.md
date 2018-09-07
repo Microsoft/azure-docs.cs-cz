@@ -12,14 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/29/2018
+ms.date: 09/05/2018
 ms.author: anwestg
-ms.openlocfilehash: 53766099f283f802482fe8e84144502d386b1d69
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: acadd1adec93d10d64712a2fbedb89e098998294
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39440147"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44025958"
 ---
 # <a name="how-to-redistribute-azure-app-service-on-azure-stack-across-fault-domains"></a>Jak distribuovat napříč doménami selhání služby Azure App Service ve službě Azure Stack
 
@@ -48,8 +48,8 @@ Opětovná distribuce škálovací sady nasadit pro poskytovatele prostředků A
 Horizontální navýšení kapacity škálovací sady, postupujte podle těchto kroků:
 
 1. Přihlaste se k portálu Azure Stack správce.
-1. Vyberte **další služby**.
-1. V části výpočty, vyberte **škálovací sady virtuálních počítačů**. Zobrazí se existující škálovací sady, které jsou nasazované jako součást nasazení služby App Service s informacemi o počtu instancí. Následující snímek obrazovky ukazuje příklad škálovací sady.
+1. Vyberte **Všechny služby**.
+2. V **COMPUTE** vyberte **škálovací sady virtuálních počítačů**. Zobrazí se existující škálovací sady, které jsou nasazované jako součást nasazení služby App Service s informacemi o počtu instancí. Následující snímek obrazovky ukazuje příklad škálovací sady.
 
       ![Azure App Service Škálovací sady uvedené v uživatelském prostředí virtuálního počítače Škálovací sady][1]
 

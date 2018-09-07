@@ -3,7 +3,7 @@ title: Připojení ke službě Azure Security Center úrovně Standard pro zvý�
 description: " Zjistěte, jak k připojení k Azure Security Center úrovně Standard pro rozšířené zabezpečení. "
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/10/2018
-ms.author: terrylan
-ms.openlocfilehash: a68c0ecc15f81efe6045f4c298b48f9809916297
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.date: 09/02/2018
+ms.author: rkarlin
+ms.openlocfilehash: 21ffab10b87925513a50198b5b0e66188ef15455
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38479457"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44024906"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>Připojení ke službě Azure Security Center úrovně Standard pro zvýšení zabezpečení
 Upgrade na Security Center úrovně Standard využívat správu rozšířené zabezpečení a ochrana před internetovými útoky pro vašimi hybridními cloudovými úlohami.  Můžete vyzkoušet zdarma po dobu 60 dnů Standard. Zobrazit Security Center [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/) Další informace.
@@ -40,59 +40,40 @@ Celý předplatného Azure můžete upgradovat na úroveň Standard, která děd
 >
 >
 
-## <a name="upgrade-an-azure-subscription"></a>Upgradovat předplatné Azure
-Všechna předplatná upgradu na úroveň Standard:
-1. V hlavní nabídce služby Security Center vyberte **Připojení k rozšířenému zabezpečení**.
-2. V části **připojení k rozšířenému zabezpečení**, Security Center seznam předplatných, které jsou způsobilé pro registraci. Můžete upgradovat všechny z uvedených předplatných tak, že vyberete **použít standardní plán**.
+## <a name="upgrade-an-azure-subscription-or-workspace"></a>Upgrade pracovního prostoru nebo předplatnému Azure
+Chcete-li upgradovat předplatné nebo si pracovní prostor na úroveň Standard:
+1. V hlavní nabídce služby Security Center, vyberte **Začínáme**.
+  ![Začínáme](./media/security-center-onboarding/get-started.png)
+2. V části **upgradovat**, Security Center seznam předplatných a pracovních prostorů, které jsou způsobilé pro registraci. 
+   - Můžete kliknout na rozbalovacího **použít platnost svojí zkušební verze** zobrazíte seznam všech předplatných a pracovních prostorů s jejich stavem zkušební nárok.
+   -    Předplatná a pracovní prostory, které nemají nárok zkušební verze můžete upgradovat.
+   -    Můžete vybrat vhodné pracovních prostorů a používat zkušební verzi předplatného.
+3.  Klikněte na tlačítko **zahájit zkušební období** ke spuštění vaší zkušební verze na vybrané odběry.
+  ![Vyberte předplatné](./media/security-center-onboarding/select-subscription.png)
 
-  ![Upgrade všech předplatných][1]
-
-Upgrade samostatného předplatného na úroveň Standard: můžete upgradovat předplatné z **připojování** tak, že vyberete **použít úroveň Standard**. Skupinu prostředků v rámci předplatného upgradu na úroveň Standard, vyberte předplatné:
-1. Vyberte předplatné.  **Zásady zabezpečení** poskytuje informace o skupině prostředků obsažených v rámci předplatného.
-2. Vyberte předplatné nebo skupinu prostředků.
-
-  ![Upgrade všech předplatných][2]
-
-3. Vyberte **standardní** upgrade z edice Free na Standard.
-4. Vyberte **Uložit**.
-
-> [!NOTE]
-> Upgradujte předplatné na úroveň Standard se zapnou [automatické zřizování](security-center-enable-data-collection.md) Pokud byla zakázaná. Doporučujeme, abyste automatické zřizování agentů monitorování.
->
->
-
-## <a name="upgrade-a-workspace"></a>Upgrade pracovního prostoru
-Použití Standard do pracovního prostoru se vztahuje na všechny prostředky vytváření sestav do pracovního prostoru.
-
-1. Vraťte se **připojování** okno.
-2. Vyberte pracovní prostor.
-
-  ![Upgrade pracovního prostoru][8]
-
-3. Vyberte **standardní** k upgradu.  
-4. Vyberte **Uložit**.
 
    > [!NOTE]
-   > Je scénář, ve kterém nemáte Free nebo Standard použitý pro váš pracovní prostor. Pokud vyberete Free, se použijí bezplatné funkce služby Security Center pro virtuální počítače Azure pouze. Bezplatné možnosti nejsou použity pro vaše počítače umístěné mimo Azure. Pokud vyberete Standard, funkce edice Standard platí pro všechny virtuální počítače Azure a mimo Azure počítačích odesílajících sestavy do pracovního prostoru. Doporučujeme použít standardní pro pokročilé zabezpečení pro Azure a prostředků mimo Azure.
+   > Funkce bezplatné služby Security Center se použijí pro virtuální počítače Azure pouze. Bezplatné možnosti nejsou použity pro vaše počítače umístěné mimo Azure. Pokud vyberete Standard, funkce edice Standard platí pro všechny virtuální počítače Azure a mimo Azure počítačích odesílajících sestavy do pracovního prostoru. Doporučujeme použít standardní pro pokročilé zabezpečení pro Azure a prostředků mimo Azure.
    >
    >
 
 ## <a name="onboard-non-azure-computers"></a>Připojení počítače mimo Azure
-Security Center může monitorovat stav zabezpečení počítačů mimo Azure, tyto prostředky je však nejprve potřeba připojit. Můžete přidat počítače umístěné mimo Azure z **připojování** okno nebo **Compute** okno. Projdeme obě metody.
+Security Center může monitorovat stav zabezpečení počítačů mimo Azure, tyto prostředky je však nejprve potřeba připojit. Můžete přidat počítače umístěné mimo Azure z **Začínáme** okno nebo **Compute** okno. Projdeme obě metody.
 
-### <a name="add-new-non-azure-computers-from-onboarding"></a>Přidat počítače umístěné mimo Azure z registrace
+### <a name="add-new-non-azure-computers-from-getting-started"></a>Přidat počítače umístěné mimo Azure z **Začínáme**
 
-1. Vraťte se na **připojování**.   
-2. Vyberte **chcete přidat počítače umístěné mimo Azure**.
+1. Vraťte se na **Začínáme**.   
+2. Vyberte **Začínáme** kartu.
 
-  ![Přidání počítače umístěného mimo Azure][3]
+  ![Mimo službu Azure](./media/security-center-onboarding/non-azure.png)
+
+3. Klikněte na tlačítko **konfigurovat** pod **přidat počítače umístěné mimo Azure**. Zobrazí se seznam vašich pracovních prostorů Log Analytics. Seznam obsahuje i výchozí pracovní prostor, který pro vás vytvořila služba Security Center při povolení automatického zřizování, pokud existuje. Vyberte tento pracovní prostor nebo jiný pracovní prostor, který chcete použít.
+
+  ![Přidání počítače umístěného mimo Azure][7]
 
 Pokud máte existující pracovní prostory, jsou uvedeny v části **přidat počítače umístěné mimo Azure**. Můžete přidat počítače do existujícího pracovního prostoru nebo vytvořte nový pracovní prostor. Pokud chcete vytvořit nový pracovní prostor, vyberte odkaz **přidat nový pracovní prostor**.
 
-Projdeme obě metody:
-
-- Vytvořte nový pracovní prostor a přidejte počítače
-- Vyberte existující pracovní prostor a přidat počítače
+### <a name="add-new-non-azure-computers-from-compute"></a>Přidat počítače umístěné mimo Azure z **Compute**
 
 **Vytvořte nový pracovní prostor a přidejte počítače**
 
@@ -134,9 +115,9 @@ V tomto článku jste zjistili, jak připojit Azure a prostředků mimo Azure, a
 <!--Image references-->
 [1]: ./media/security-center-onboarding/onboard.png
 [2]: ./media/security-center-onboarding/onboard-subscription.png
-[3]: ./media/security-center-onboarding/add-non-azure-resource.png
+[3]: ./media/security-center-onboarding/get-started.png
 [4]: ./media/security-center-onboarding/create-workspace.png
 [5]: ./media/security-center-onboarding/overview.png
 [6]: ./media/security-center-onboarding/compute-blade.png
-[7]: ./media/security-center-onboarding/add-non-azure-computer.png
+[7]: ./media/security-center-onboarding/add-computer.png
 [8]: ./media/security-center-onboarding/onboard-workspace.png

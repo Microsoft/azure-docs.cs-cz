@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 10/25/2017
 ms.author: cbrooks
 ms.component: common
-ms.openlocfilehash: 9eaaaaa4cc9be661cdc2ffde2b634e062c95a404
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 56c464b9fbc9fe5f2d9acd1a403333fd1c729113
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523253"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44023388"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurace virtuálních sítí a bran firewall Azure Storage
 Azure Storage poskytuje vrstvený model zabezpečení umožňuje zabezpečit vaše účty úložiště s konkrétní sadou povolených sítí.  Když jsou nakonfigurovaná pravidla sítě, můžete pouze aplikace z povolených sítí přístup k účtu úložiště.  Při volání z povolené sítě, aplikace dál vyžadují správnou autorizaci (platný přístupový klíč nebo SAS token) pro přístup k účtu úložiště.
 
 > [!IMPORTANT]
-> Zapnutí pravidla brány Firewall pro váš účet úložiště bude blokovat přístup na příchozí požadavky pro data, včetně od ostatních služeb Azure.  To zahrnuje pomocí portálu pro zápis protokolů, atd.  Pro zúčastněné služby můžete znovu povolit funkce prostřednictvím [výjimky](#Exceptions) níže v části.  Pro přístup k portálu je třeba provést z počítače v rámci důvěryhodné hranice (IP nebo virtuální síť), který jste nastavili.
+> Zapnutí pravidla brány Firewall pro váš účet úložiště bude blokovat přístup na příchozí požadavky pro data, včetně od ostatních služeb Azure.  To zahrnuje pomocí portálu pro zápis protokolů, atd.  Pro zúčastněné služby můžete znovu povolit funkce prostřednictvím [výjimky](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) níže v části.  Pro přístup k portálu je třeba provést z počítače v rámci důvěryhodné hranice (IP nebo virtuální síť), který jste nastavili.
 >
 
 ## <a name="scenarios"></a>Scénáře
@@ -35,7 +35,7 @@ Diskové přenosy virtuálního počítače (včetně připojení a odpojení op
 
 Klasické účty úložiště **nejsou** podporu brány firewall a virtuální sítě.
 
-Prostřednictvím vytváření výjimku, jak je uvedeno v se podporuje zálohování a obnovení virtuálních počítačů pomocí nespravované disky v účtech úložiště s pravidla sítě použitá [výjimky](/storage/common/storage-network-security#exceptions) části tohoto článku.  Výjimky brány firewall se nedají použít se službou Managed Disks, jako jsou již spravovány nástrojem Azure.
+Prostřednictvím vytváření výjimku, jak je uvedeno v se podporuje zálohování a obnovení virtuálních počítačů pomocí nespravované disky v účtech úložiště s pravidla sítě použitá [výjimky](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) části tohoto článku.  Výjimky brány firewall se nedají použít se službou Managed Disks, jako jsou již spravovány nástrojem Azure.
 
 ## <a name="change-the-default-network-access-rule"></a>Změnit výchozí pravidlo přístupu sítě
 Účty úložiště ve výchozím nastavení, přijímat připojení z klientů v síti.  Chcete-li omezit přístup k vybrané sítě, musíte nejdřív změnit výchozí akci.

@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 08/31/2018
+ms.date: 09/06/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 730b11fb5038e5d6c4f9b00fbc4eb07d673757f9
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: ecf56f3172ebeab54757d7cbd164b92ca1470ce5
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43840985"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44051166"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Horizontální navýšení kapacity Azure Analysis Services
 
@@ -27,7 +27,7 @@ S horizontální navýšení kapacity můžete vytvořit fond dotazů s až sedm
 
 Bez ohledu na počet replik dotazu, které máte ve fondu dotazů zpracování úloh nejsou distribuovány mezi replikami dotazu. Jeden server slouží jako server pro zpracování. Repliky dotazů sloužit pouze dotazy na modely synchronizovány mezi všech replik dotazu ve fondu dotazů. 
 
-Při horizontálním navýšení kapacity, nové repliky dotazů se postupně přidají do fondu dotazů. Může trvat až pět minut, než u nových prostředků repliky dotazů mají být zahrnuty do fondu dotazů; připraven přijmout připojení klienta a dotazy. Když všechny nové repliky dotazů nastavené a spuštěné, nová připojení klientů jsou vyrovnávat zatížení napříč všechny prostředky fondu dotazů. Existující připojení klienta se nezmění z prostředků, které jsou aktuálně připojené k.  Při horizontálním škálování v, jsou ukončeny všechny existující připojení klienta pro prostředek fondu dotaz, který má být odebrán z fondu dotazů. Bude přesměrován na zbývající prostředek fondu dotazů při škálování v operaci byla dokončena.
+Při horizontálním navýšení kapacity, nové repliky dotazů se postupně přidají do fondu dotazů. Může trvat až pět minut, než u nových prostředků repliky dotazů mají být zahrnuty do fondu dotazů; připraven přijmout připojení klienta a dotazy. Když všechny nové repliky dotazů nastavené a spuštěné, nová připojení klientů jsou vyrovnávat zatížení napříč všechny prostředky fondu dotazů. Existující připojení klienta se nezmění z prostředků, které jsou aktuálně připojené k.  Při horizontálním škálování v, jsou ukončeny všechny existující připojení klienta pro prostředek fondu dotaz, který má být odebrán z fondu dotazů. Bude přesměrován na zbývající prostředek fondu dotazů při škálování v operaci byla dokončena, to může trvat až pět minut.
 
 Během zpracování po dokončení operace zpracování modelů, je nutné provést synchronizaci mezi serverem pro zpracování a replikami dotazu. Při automatizaci operace zpracování, je potřeba nakonfigurovat operace synchronizace po úspěšném dokončení operace zpracování. Synchronizace lze ručně provést na portálu nebo pomocí Powershellu nebo rozhraní REST API. 
 

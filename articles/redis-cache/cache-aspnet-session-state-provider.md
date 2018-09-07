@@ -1,6 +1,6 @@
 ---
-title: Zprostředkovatel stavu relace ASP.NET mezipaměti | Microsoft Docs
-description: Informace o ukládání stavu relace ASP.NET pomocí Azure Redis Cache
+title: Zprostředkovatel stavu relací ASP.NET mezipaměti | Dokumentace Microsoftu
+description: Zjistěte, jak ukládání stavu relace ASP.NET pomocí Azure Redis Cache
 services: redis-cache
 documentationcenter: na
 author: wesmc7777
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 05/01/2017
 ms.author: wesmc
-ms.openlocfilehash: bb0c53433af8a679811f00bfff2efee94d211a24
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 047d23184ccf640dd6510faca9f508eef0dc50cb
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31518752"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44050809"
 ---
 # <a name="aspnet-session-state-provider-for-azure-redis-cache"></a>Zprostředkovatel stavu relací ASP.NET pro Azure Redis Cache
-Azure Redis Cache poskytuje poskytovatele stavu relace, který můžete použít k uložení vaší relace stavu v paměti s Redis Cache místo databázi systému SQL Server. Pokud chcete používat ukládání do mezipaměti poskytovatele stavu relace, nejdřív nakonfigurovat mezipaměť a pak nakonfigurujte aplikace ASP.NET pro mezipaměť pomocí balíčku Redis Cache relace stavu NuGet.
+Azure Redis Cache poskytuje zprostředkovatel stavu relací, které můžete použít k uložení vaší relace stavu in-memory s Redis Cache místo databáze systému SQL Server. Použití ukládání do mezipaměti zprostředkovatel stavu relací, nejprve nakonfigurovat mezipaměť a pak nakonfigurujte aplikaci technologie ASP.NET pro mezipaměť pomocí balíčku Redis Cache relace stavu NuGet.
 
-Je často není praktické v reálných cloudové aplikace předejdete ukládání určitou formu stavu pro uživatelské relace, ale některé přístupy vliv na výkon a škálovatelnost více než jiné. Pokud máte k uložení stavu, je nejlepším řešením zachovat malé množství stavu a ukládat v souborech cookie. Pokud se nejedná o to vhodné, další nejlepším řešením je používání stavu relace ASP.NET s poskytovatelem pro distribuované, v paměti mezipaměti. Nejhorší řešení z hlediska škálovatelnosti a výkonu, je použít databázi založenou na poskytovatele stavu relace. Toto téma obsahuje informace o použití poskytovatele stavu relace ASP.NET pro Azure Redis Cache. Informace o dalších možnostech stavu relace najdete v tématu [možnosti stavu relace ASP.NET](#aspnet-session-state-options).
+Je často nepraktické ve skutečných cloudových aplikací, aby ukládání nějakou formu stav uživatelských relací, ale některé přístupy, vliv na výkon a škálovatelnost více než jiné. Pokud máte k uložení stavu, nejlepším řešením je zachovat malé množství stavu a uloží je v souborech cookie. Pokud to není proveditelné, další nejlepším řešením je používání stavu relace ASP.NET u poskytovatele pro distribuované mezipaměti v paměti. Nejhorší řešení z pohledu škálovatelnosti a výkonu je pro použití jiné databáze zajišťuje zprostředkovatel stavu relací. Toto téma obsahuje informace o použití zprostředkovatel stavu relací ASP.NET pro Azure Redis Cache. Informace o dalších možnostech stavu relace najdete v tématu [parametry stavu relace ASP.NET](#aspnet-session-state-options).
 
 ## <a name="store-aspnet-session-state-in-the-cache"></a>Uložení stavu relace ASP.NET v mezipaměti
-Chcete-li konfigurovat klientskou aplikaci v sadě Visual Studio pomocí balíčku Redis Cache relace stavu NuGet, klikněte na tlačítko **Správce balíčků NuGet**, **Konzola správce balíčků** z **nástroje** nabídky.
+Chcete-li konfigurovat klientskou aplikaci v sadě Visual Studio pomocí balíčku Redis Cache relace stavu NuGet, klikněte na tlačítko **Správce balíčků NuGet**, **Konzola správce balíčků** z **nástroje**nabídky.
 
 V okně `Package Manager Console` spusťte následující příkaz.
     
@@ -36,60 +36,71 @@ Install-Package Microsoft.Web.RedisSessionStateProvider
 ```
 
 > [!IMPORTANT]
-> Pokud používáte funkci clustering z úrovně premium, musíte použít [RedisSessionStateProvider](https://www.nuget.org/packages/Microsoft.Web.RedisSessionStateProvider) 2.0.1 nebo vyšší nebo výjimku, je vyvolána. Přesun na 2.0.1 nebo novější je narušující změně; Další informace najdete v tématu [v2.0.0 nejnovější podrobností o změně](https://github.com/Azure/aspnet-redis-providers/wiki/v2.0.0-Breaking-Change-Details). Během této aktualizace článku je aktuální verzi tohoto balíčku 2.2.3.
+> Pokud používáte funkci clusteringu z úrovně premium, je nutné použít [RedisSessionStateProvider](https://www.nuget.org/packages/Microsoft.Web.RedisSessionStateProvider) 2.0.1 nebo vyšší nebo výjimka je vyvolána výjimka. Přechod na 2.0.1 nebo vyšší je zásadní změnu; Další informace najdete v tématu [v2.0.0 nejnovější podrobnosti o změnách](https://github.com/Azure/aspnet-redis-providers/wiki/v2.0.0-Breaking-Change-Details). Během této aktualizace článku je aktuální verze tohoto balíčku 2.2.3.
 > 
 > 
 
-Balíček Redis NuGet poskytovatele stavu relace má závislost na StackExchange.Redis.StrongName balíčku. Pokud balíček StackExchange.Redis.StrongName se nenachází ve vašem projektu, je nainstalovaná.
+Balíček Redis NuGet zprostředkovatele stavu relace má závislost na balíčku StackExchange.Redis.StrongName. Pokud balíček StackExchange.Redis.StrongName není k dispozici ve vašem projektu, je nainstalována.
 
 >[!NOTE]
->Kromě StackExchange.Redis.StrongName balíčku silným názvem vzrůstá také jiný silným názvem verze StackExchange.Redis. Pokud váš projekt používá StackExchange.Redis verze jiný silným názvem, že je nutné odinstalovat, v opačném případě můžete získat konflikty pojmenování ve vašem projektu. Další informace o těchto balíčcích najdete v tématu [.NET konfigurace klientů mezipaměti](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients).
+>Kromě StackExchange.Redis.StrongName balíček silným názvem je také verze bez silným názvem StackExchange.Redis. Pokud váš projekt používá verzi StackExchange.Redis bez silným názvem, že musíte provést odinstalaci, v opačném případě můžete získat konflikty pojmenování ve vašem projektu. Další informace týkající se těchto balíčků naleznete v tématu [.NET konfigurace klientů mezipaměti](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients).
 >
 >
 
-Balíček NuGet se stáhne a přidá požadované odkazy na sestavení a přidá do souboru web.config v následující části. Tato část obsahuje požadovanou konfiguraci pro aplikace ASP.NET pomocí poskytovatele stavu relace mezipaměti Redis.
+Balíček NuGet stáhne a přidá odkazy na požadovaná sestavení a přidá do souboru web.config následující části. Tato část obsahuje požadované konfigurace pro aplikace ASP.NET použije poskytovatele stavu relace mezipaměti Redis.
 
 ```xml
 <sessionState mode="Custom" customProvider="MySessionStateStore">
-    <providers>
+  <providers>
+    <!-- Either use 'connectionString' OR 'settingsClassName' and 'settingsMethodName' OR use 'host','port','accessKey','ssl','connectionTimeoutInMilliseconds' and 'operationTimeoutInMilliseconds'. -->
+    <!-- 'throwOnError','retryTimeoutInMilliseconds','databaseId' and 'applicationName' can be used with both options. -->
     <!--
-    <add name="MySessionStateStore"
-           host = "127.0.0.1" [String]
+      <add name="MySessionStateStore" 
+        host = "127.0.0.1" [String]
         port = "" [number]
         accessKey = "" [String]
         ssl = "false" [true|false]
         throwOnError = "true" [true|false]
-        retryTimeoutInMilliseconds = "0" [number]
+        retryTimeoutInMilliseconds = "5000" [number]
         databaseId = "0" [number]
         applicationName = "" [String]
         connectionTimeoutInMilliseconds = "5000" [number]
-        operationTimeoutInMilliseconds = "5000" [number]
-    />
+        operationTimeoutInMilliseconds = "1000" [number]
+        connectionString = "<Valid StackExchange.Redis connection string>" [String]
+        settingsClassName = "<Assembly qualified class name that contains settings method specified below. Which basically return 'connectionString' value>" [String]
+        settingsMethodName = "<Settings method should be defined in settingsClass. It should be public, static, does not take any parameters and should have a return type of 'String', which is basically 'connectionString' value.>" [String]
+        loggingClassName = "<Assembly qualified class name that contains logging method specified below>" [String]
+        loggingMethodName = "<Logging method should be defined in loggingClass. It should be public, static, does not take any parameters and should have a return type of System.IO.TextWriter.>" [String]
+        redisSerializerType = "<Assembly qualified class name that implements Microsoft.Web.Redis.ISerializer>" [String]
+      />
     -->
-    <add name="MySessionStateStore" type="Microsoft.Web.Redis.RedisSessionStateProvider" host="127.0.0.1" accessKey="" ssl="false"/>
-    </providers>
+    <add name="MySessionStateStore" type="Microsoft.Web.Redis.RedisSessionStateProvider"
+         host=""
+         accessKey=""
+         ssl="true" />
 </sessionState>
 ```
 
-V komentáři části poskytuje příklad atributů a ukázkové nastavení pro každý atribut.
+Komentářem část poskytuje příklad atributů a nastavení vzorku pro každý atribut.
 
-Nakonfigurovat atributy s hodnotami v okně vaší mezipaměti na portálu Microsoft Azure a podle potřeby nakonfigurujte další hodnoty. Pokyny pro přístup k vlastnosti mezipaměti najdete v části [konfigurace nastavení mezipaměti Redis](cache-configure.md#configure-redis-cache-settings).
+Nakonfigurovat atributy s hodnotami z okna vaší mezipaměti na webu Microsoft Azure Portal a podle potřeby nakonfigurujte další hodnoty. Pokyny pro přístup k vlastnosti vaší mezipaměti, naleznete v tématu [konfigurace nastavení mezipaměti Redis](cache-configure.md#configure-redis-cache-settings).
 
-* **hostitele** – zadejte váš koncový bod mezipaměti.
-* **port** – použít port bez SSL nebo vaše port SSL, v závislosti na nastavení ssl.
+* **Hostitel** – zadejte koncový bod mezipaměti.
+* **port** – použít port bez SSL nebo port protokolu SSL, v závislosti na nastavení ssl.
 * **accessKey** – použít primární nebo sekundární klíč pro mezipaměť.
-* **SSL** – hodnota true, pokud chcete zabezpečit komunikaci mezipaměti nebo klienta pomocí protokolu ssl; jinak hodnota false. Nezapomeňte zadat správný port.
-  * Port bez SSL je ve výchozím nastavení pro nové mezipaměti zakázán. Zadejte hodnotu PRAVDA pro toto nastavení pro použití portu SSL. Další informace o povolení portu bez SSL najdete v tématu [přístupové porty](cache-configure.md#access-ports) tématu [konfigurace mezipaměti](cache-configure.md) tématu.
-* **throwOnError** – hodnota true, pokud chcete, aby výjimku, která je vyvolána, pokud existuje je selhání, nebo hodnotu NEPRAVDA, pokud chcete, aby selhání Bezobslužná operace. Selhání můžete zkontrolovat zaškrtnutím statickou vlastnost Microsoft.Web.Redis.RedisSessionStateProvider.LastException. Výchozí hodnota je true.
-* **retryTimeoutInMilliseconds** – operací, které selžou jsou opakovat během tohoto intervalu, zadaný v milisekundách. Po 20 milisekundách dojde k první opakování, a pak realizován v každou sekundu do vypršení platnosti retryTimeoutInMilliseconds interval opakování. Okamžitě po této době je operaci opakovat poslední jednou. Pokud se přesto nezdaří, je volajícího, v závislosti na nastavení throwOnError zpět vyvolána výjimka. Výchozí hodnota je 0 znamená bez opakování.
-* **hodnotu databaseId** – Určuje databázi, kterou chcete použít pro výstupní data do mezipaměti. Pokud není zadáno, je použita výchozí hodnota 0.
-* **applicationName** – klíče jsou uložené v redis jako `{<Application Name>_<Session ID>}_Data`. Toto schéma pojmenování umožňuje více aplikacím sdílet stejnou instanci Redis. Tento parametr je volitelný a pokud nezadáte, je použita výchozí hodnota.
-* **connectionTimeoutInMilliseconds** – toto nastavení umožňuje potlačit connectTimeout nastavení klienta StackExchange.Redis. Pokud není zadaný, použije se výchozí nastavení connectTimeout 5000. Další informace najdete v tématu [konfigurační model StackExchange.Redis](http://go.microsoft.com/fwlink/?LinkId=398705).
-* **operationTimeoutInMilliseconds** – toto nastavení umožňuje potlačit syncTimeout nastavení klienta StackExchange.Redis. Pokud není zadaný, použije se výchozí nastavení syncTimeout 1000. Další informace najdete v tématu [konfigurační model StackExchange.Redis](http://go.microsoft.com/fwlink/?LinkId=398705).
+* **SSL** – hodnota true, pokud chcete pro zabezpečení komunikace klient/mezipaměti pomocí protokolu ssl; jinak hodnota false. Nezapomeňte zadat správný port.
+  * Port bez SSL je ve výchozím nastavení pro nové mezipaměti zakázán. Zadejte hodnotu PRAVDA pro toto nastavení pro použití portu SSL. Další informace o povolení portu bez SSL, najdete v článku [přístupové porty](cache-configure.md#access-ports) tématu [konfigurace mezipaměti](cache-configure.md) tématu.
+* **throwOnError** – hodnota true, pokud chcete, aby výjimky vyvolána, pokud je selhání, nebo false, pokud chcete, aby selhání Bezobslužná operace. Selhání můžete zkontrolovat tak, že zkontrolujete vlastnost Microsoft.Web.Redis.RedisSessionStateProvider.LastException statické. Výchozí hodnota je true.
+* **retryTimeoutInMilliseconds** – operací, které selžou se zopakují během tohoto intervalu zadává v milisekundách. Po 20 MS dojde k prvním opakováním a pak probíhají každou sekundu do vypršení platnosti retryTimeoutInMilliseconds interval opakování. Okamžitě po uplynutí tohoto intervalu je operaci opakovat poslední jednou. Pokud i nadále nezdaří, je volajícímu, v závislosti na nastavení throwOnError zpět vyvolána výjimka. Výchozí hodnota je 0, což znamená, že žádné opakování.
+* **ID databáze** – Určuje databázi, kterou chcete použít pro mezipaměť výstupní data. Pokud není zadán, je použita výchozí hodnota 0.
+* **applicationName** – klíče jsou uložené v redis jako `{<Application Name>_<Session ID>}_Data`. Toto schéma pojmenování umožňuje více aplikacím sdílet stejný instance Redis. Tento parametr je nepovinný a pokud nezadáte ji použije se výchozí hodnota.
+* **connectionTimeoutInMilliseconds** – toto nastavení umožňuje potlačit connectTimeout nastavení klienta StackExchange.Redis. Pokud není zadán, se používá ve výchozím nastavení connectTimeout 5000. Další informace najdete v tématu [konfigurační model StackExchange.Redis](http://go.microsoft.com/fwlink/?LinkId=398705).
+* **operationTimeoutInMilliseconds** – toto nastavení umožňuje potlačit syncTimeout nastavení klienta StackExchange.Redis. Pokud není zadán, se používá ve výchozím nastavení syncTimeout 1000. Další informace najdete v tématu [konfigurační model StackExchange.Redis](http://go.microsoft.com/fwlink/?LinkId=398705).
+* **redisSerializerType** – toto nastavení umožňuje určit vlastní serializace relace obsah odeslaný do Redisu. Zadaný typ musí implementovat `Microsoft.Web.Redis.ISerializer` a musí deklarovat konstruktor public bez parametrů. Ve výchozím nastavení `System.Runtime.Serialization.Formatters.Binary.BinaryFormatter` se používá.
 
-Další informace o těchto vlastnostech najdete v tématu v původní blogovém příspěvku na [uvedení ASP.NET poskytovatele stavu relace pro Redis](http://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx).
+Další informace o těchto vlastnostech najdete v tématu původní blogovém příspěvku o na [oznamujeme zprostředkovatel stavu relací ASP.NET pro Redis](http://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx).
 
-Nezapomeňte si komentář standardní InProc relace stavu zprostředkovatele oddíl v souboru web.config.
+Nezapomeňte okomentovat standardní InProc relace stav poskytovatele oddílu v souboru web.config.
 
 ```xml
 <!-- <sessionState mode="InProc"
@@ -104,20 +115,20 @@ Nezapomeňte si komentář standardní InProc relace stavu zprostředkovatele od
 </sessionState> -->
 ```
 
-Jakmile jsou tyto kroky provést, vaše aplikace nakonfigurována pro použití poskytovatele stavu relace mezipaměti Redis. Použijete-li stav relace v aplikaci, je uložený v instanci služby Azure Redis Cache.
+Jakmile jsou tyto kroky provést, vaše aplikace nakonfigurována pro použití zprostředkovatel stavu relací mezipaměti Redis. Při používání stavu relace ve vaší aplikaci, uloží se do instance služby Azure Redis Cache.
 
 > [!IMPORTANT]
-> Data uložená v mezipaměti musí být serializovatelný, na rozdíl od data, která mohou být uloženy ve výchozím stavu relace ASP.NET v paměti zprostředkovatele. Při poskytovatele stavu relace pro Redis se používá, se ujistěte, že jsou Serializovatelné typy dat, které jsou uložené ve stavu relace.
+> Data uložená v mezipaměti musí být serializovatelný, na rozdíl od data, která mohou být uloženy ve výchozím stavu relace ASP.NET v paměti zprostředkovatele. Při zprostředkovatel stavu relací pro Redis se používá, se ujistěte, že datové typy, které ukládají stav relací jsou serializovatelné.
 > 
 > 
 
-## <a name="aspnet-session-state-options"></a>Možnosti stavu relace ASP.NET
-* V zprostředkovatel stavu relace paměti – tohoto zprostředkovatele ukládá stav relace v paměti. Výhodou používání tohoto zprostředkovatele je, že se že jedná o jednoduchým a rychlým. Pokud používáte ve zprostředkovateli paměti vzhledem k tomu, že není distribuovaná, ale nemůže škálování vašich webových aplikací.
-* Zprostředkovatel stavu relace serveru SQL – tohoto zprostředkovatele ukládá stav relace v systému Sql Server. Tohoto zprostředkovatele použijte, pokud chcete uložit do trvalého úložiště stavu relace. Je možné škálovat vaší webové aplikace, ale ve webové aplikaci pomocí Sql serveru pro relaci má dopad na výkon. Můžete také použít tohoto zprostředkovatele s [OLTP v paměti konfigurace](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2017/11/28/asp-net-session-state-with-sql-server-in-memory-oltp/) účelem zlepšení výkonu.
-* Distribuované v paměti poskytovatele stavu relace například Redis Cache poskytovatele stavu relace – tohoto zprostředkovatele nabízí to nejlepší z obou světů. Webové aplikace může mít jednoduché, rychlé a škálovatelné poskytovatele stavu relace. Protože tento zprostředkovatel ukládá stav relace do mezipaměti, aplikace musí vzít v potaz všechny vlastnosti, které jsou spojené při posuzování do distribuované v paměti mezipaměti, jako je například selhání přechodný síťový. Osvědčené postupy týkající se použití mezipaměti najdete v části [ukládání do mezipaměti pokyny](../best-practices-caching.md) z Microsoft Patterns & postupy [Azure cloudové aplikace návrhu a implementace pokyny](https://github.com/mspnp/azure-guidance).
+## <a name="aspnet-session-state-options"></a>Parametry stavu relace ASP.NET
+* Zprostředkovatele stavu relace paměti – tohoto zprostředkovatele ukládat stavy relací v paměti. Výhodou používání tohoto poskytovatele je, že je snadné a rychlé. Ale už nebude možné škálovat svoje aplikace, pokud používáte ve zprostředkovateli paměti, protože není distribuován.
+* Zprostředkovatel stavu relací SQL Server – tohoto zprostředkovatele ukládá stav relace v systému Sql Server. Pokud chcete k ukládání stavu relace do odolného úložiště, používání tohoto poskytovatele. Je možné škálovat webové aplikace, ale ve webové aplikaci pomocí Sql serveru pro relaci má dopad na výkon. Můžete použít také s tohoto zprostředkovatele [konfigurace OLTP v paměti](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2017/11/28/asp-net-session-state-with-sql-server-in-memory-oltp/) jí pomohou zlepšit výkon.
+* Distribuované v paměti zprostředkovatel stavu relací například Redis Cache zprostředkovatel stavu relací – tohoto zprostředkovatele nabízí to nejlepší z obou světů. Webové aplikace může mít jednoduché, rychlé a škálovatelné zprostředkovatel stavu relací. Vzhledem k tomu, že tento zprostředkovatel je ukládá stav relace v mezipaměti, musí aplikace vzít v potaz všechny charakteristiky související upozorňovat distribuované v mezipaměti, jako je například přechodných síťových chyb. Osvědčené postupy k používání mezipaměti, naleznete v tématu [ukládání do mezipaměti](../best-practices-caching.md) z Microsoft Patterns a postupy [návrh aplikace cloudu Azure a pokyny k implementaci](https://github.com/mspnp/azure-guidance).
 
-Další informace o stavu relace a ostatní osvědčené postupy najdete v tématu [webové vývoj osvědčených postupů (vytváření reálných cloudových aplikací s Azure)](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices).
+Další informace o stavu relace a doporučené postupy najdete v tématu [osvědčené postupy při vývoji webové (sestavování skutečných cloudových aplikací s Azure)](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices).
 
 ## <a name="next-steps"></a>Další postup
-Podívejte se [poskytovatel výstupní mezipaměti technologie ASP.NET pro Azure Redis Cache](cache-aspnet-output-cache-provider.md).
+Podívejte se [zprostředkovateli výstupní mezipaměti ASP.NET pro Azure Redis Cache](cache-aspnet-output-cache-provider.md).
 

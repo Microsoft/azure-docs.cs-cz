@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: 1db7219beead4d7ee228baff4c802c105419ba1c
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 248ec73b09c25c162c5bdc77ceb18e610d604b77
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39524599"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44052169"
 ---
 # <a name="azure-storage-scalability-and-performance-targets"></a>Škálovatelnost a výkonnostní cíle Azure Storage
 ## <a name="overview"></a>Přehled
@@ -46,6 +46,8 @@ Další informace o škálování a výkonnostní cíle pro soubory Azure a Azur
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 
 ### <a name="azure-file-sync-scale-targets"></a>Azure File Sync měřítko cíle
+Pomocí služby Azure File Sync jsme jste se pokusili co nejvíc návrhu pro neomezené využití, ale to není vždy možné. Následující tabulka označuje hranice naše testování a cíle, které jsou ve skutečnosti pevných limitů:
+
 [!INCLUDE [storage-sync-files-scale-targets](../../../includes/storage-sync-files-scale-targets.md)]
 
 ## <a name="azure-queue-storage-scale-targets"></a>Azure Queue storage škálování cíle

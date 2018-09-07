@@ -1,6 +1,6 @@
 ---
-title: Střední pomocí vlastní image seznamů v obsahu moderátora Azure | Microsoft Docs
-description: Střední s vlastní image seznamů pomocí sady Azure obsahu moderátora SDK pro .NET.
+title: Střední s vlastním seznamem obrázků v Azure Content Moderator | Dokumentace Microsoftu
+description: Střední s použitím vlastní image seznamů pomocí Azure Content Moderator SDK pro .NET.
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
@@ -9,47 +9,47 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 01/04/2018
 ms.author: sajagtap
-ms.openlocfilehash: c953df88f878b4f05c9a9f3099aea77f3ff48a92
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 040962077def18d373d6e187d4b0b220889ed133
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342522"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44023997"
 ---
-# <a name="moderate-with-custom-image-lists-in-net"></a>Střední pomocí vlastní image seznamů v rozhraní .NET
+# <a name="moderate-with-custom-image-lists-in-net"></a>Střední s vlastním seznamem obrázků v .NET
 
-Tento článek obsahuje informace a ukázky kódu, které vám pomůžou začít používat sadu SDK obsahu moderátora pro technologii .NET:
-- Vytvoří seznam vlastní image
+Tento článek obsahuje informace a ukázky kódu, které vám pomůžou začít používat [Content Moderator SDK pro .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) na:
+- Vytvoření vlastní image list
 - Přidání a odebrání obrázků ze seznamu
-- Načtení ID všechny Image v seznamu
-- Načíst a aktualizovat metadata seznamu
-- Aktualizovat index seznamů vyhledávání
-- Bitové kopie obrazovky proti bitové kopie v seznamu
-- Odstraňte všechny Image, ze seznamu
-- Odstranit vlastní seznamu
+- Získání ID všechny Image v seznamu
+- Načítají a aktualizují metadata seznamu
+- Aktualizovat seznam indexu vyhledávání
+- Obrázky obrazovky s obrázky v seznamu
+- Odstranit všechny bitové kopie ze seznamu
+- Odstranit vlastní seznam
 
 > [!NOTE]
-> Maximální limit je **5 obrázku seznamy** s každou seznamu **není delší než 10 000 image**.
+> Je maximální limit **seznamy obrázků 5** s každou seznamu **není delší než 10 000 obrázků**.
 >
 
-Konzolové aplikace pro tento rychlý start simuluje některé úlohy, které můžete provádět pomocí rozhraní API seznamu obrázků.
+Konzolovou aplikaci pro účely tohoto rychlého simuluje některé úlohy, které můžete provádět pomocí rozhraní API seznamu obrázků.
 
 Tento článek předpokládá, že jste již obeznámeni s Visual Studio a C#.
 
-## <a name="sign-up-for-content-moderator-services"></a>Zaregistrujte si obsahu moderátora služby
+## <a name="sign-up-for-content-moderator-services"></a>Zaregistrovat do služby Content Moderator
 
-Před použitím služby obsahu moderátora přes rozhraní REST API nebo sady SDK, je nutné klíč předplatného.
+Než budete moct použít služby Content Moderator přes rozhraní REST API nebo sady SDK, je nutné klíč předplatného.
 Odkazovat [rychlý Start](quick-start.md) se dozvíte, jak můžete získat klíč.
 
 ## <a name="create-your-visual-studio-project"></a>Vytvoření projektu sady Visual Studio
 
-1. Přidejte nový **konzolovou aplikaci (rozhraní .NET Framework)** projekt pro vaše řešení.
+1. Přidat nový **Konzolová aplikace (.NET Framework)** do svého řešení projekt.
 
-   V ukázkovém kódu, název projektu **ImageLists**.
+   Ve vzorovém kódu, pojmenujte projekt **ImageLists**.
 
-1. Vyberte tento projekt jako jeden počáteční projekt pro řešení.
+1. Vyberte tento projekt jako jeden spouštěný projekt pro řešení.
 
-1. Přidat odkaz na **ModeratorHelper** sestavení, které jste vytvořili v projektu [obsahu moderátora klienta pomocná rychlý Start](content-moderator-helper-quickstart-dotnet.md).
+1. Přidejte odkaz na **ModeratorHelper** sestavení, který jste vytvořili v projektu [rychlý start pomocné rutiny klienta Content Moderator](content-moderator-helper-quickstart-dotnet.md).
 
 ### <a name="install-required-packages"></a>Instalace požadovaných balíčků
 
@@ -59,9 +59,9 @@ Nainstalujte následující balíčky NuGet:
 - Microsoft.Rest.ClientRuntime
 - Newtonsoft.Json
 
-### <a name="update-the-programs-using-statements"></a>Aktualizace programu je pomocí příkazů
+### <a name="update-the-programs-using-statements"></a>Aktualizace programu v nástrojích příkazy
 
-Upravit program je pomocí příkazů.
+Upravit program v nástrojích příkazy.
 
     using Microsoft.CognitiveServices.ContentModerator;
     using Microsoft.CognitiveServices.ContentModerator.Models;
@@ -73,9 +73,9 @@ Upravit program je pomocí příkazů.
     using System.Threading;
 
 
-### <a name="initialize-application-specific-settings"></a>Inicializace nastavení pro konkrétní aplikace
+### <a name="initialize-application-specific-settings"></a>Inicializace nastavení specifické pro aplikaci
 
-Přidejte následující třídy a statických polí, která mají **Program** – třída v souboru Program.cs.
+Přidejte následující třídy a statická pole na **Program** třída v souboru Program.cs.
 
     /// <summary>
     /// The minimum amount of time, im milliseconds, to wait between calls
@@ -197,12 +197,12 @@ Přidejte následující třídy a statických polí, která mají **Program** �
    
 
 > [!NOTE]
-> Klíč obsahu moderátora služby má požadavky na druhý omezení četnosti (RPS) a pokud limit překročíte, vyvolá výjimku s kódem 429 chyby, sady SDK. 
+> Klíč služby Content Moderator má požadavků za druhé omezení četnosti (předávajících stran) a při překročení limitu, vyvolá výjimku s kódem chyby 429, sady SDK. 
 >
-> Úroveň free klíč může mít jeden RPS rychlost.
+> Klíč úroveň free má omezení četnosti jeden RPS.
 
 
-## <a name="create-a-method-to-write-messages-to-the-log-file"></a>Vytvoření metody pro zápis zpráv do souboru protokolu
+## <a name="create-a-method-to-write-messages-to-the-log-file"></a>Vytvořte metodu k zápisu zprávy do souboru protokolu
 
 Do třídy **Program** přidejte následující metodu. 
 
@@ -221,7 +221,7 @@ Do třídy **Program** přidejte následující metodu.
         }
     }
 
-## <a name="create-a-method-to-create-the-custom-list"></a>Vytvořit metodu pro vytvoření seznamu vlastní
+## <a name="create-a-method-to-create-the-custom-list"></a>Vytvořit metodu pro vytvoření vlastního seznamu
 
 Do třídy **Program** přidejte následující metodu. 
 
@@ -248,11 +248,11 @@ Do třídy **Program** přidejte následující metodu.
         return result;
     }
 
-## <a name="create-a-method-to-add-a-collection-of-images-to-the-list"></a>Vytvoření metody přidání kolekce bitových kopií do seznamu
+## <a name="create-a-method-to-add-a-collection-of-images-to-the-list"></a>Vytvoření metody přidání kolekce imagí do seznamu
 
 Do třídy **Program** přidejte následující metodu.
 
-Tento rychlý start není ukazují, jak použít značky pro obrázky v seznamu. 
+V tomto rychlém startu není ukazují, jak použít značky na obrázky v seznamu. 
 
     /// <summary>
     /// Adds images to an image list.
@@ -292,7 +292,7 @@ Tento rychlý start není ukazují, jak použít značky pro obrázky v seznamu.
         }
     }
 
-## <a name="create-a-method-to-remove-images-from-the-list"></a>Vytvoření metody odebrat ze seznamu obrázků
+## <a name="create-a-method-to-remove-images-from-the-list"></a>Vytvořte metodu k odebírání obrázků ze seznamu
 
 Do třídy **Program** přidejte následující metodu. 
 
@@ -327,7 +327,7 @@ Do třídy **Program** přidejte následující metodu.
         }
     }
 
-## <a name="create-a-method-to-get-all-of-the-content-ids-for-images-in-the-list"></a>Vytvořit metodu k získání veškerý obsah ID pro bitové kopie v seznamu
+## <a name="create-a-method-to-get-all-of-the-content-ids-for-images-in-the-list"></a>Vytvořte metodu k získání veškerý obsah ID pro obrázky v seznamu
 
 Do třídy **Program** přidejte následující metodu. 
 
@@ -352,7 +352,7 @@ Do třídy **Program** přidejte následující metodu.
         return result;
     }
 
-## <a name="create-a-method-to-update-the-details-of-the-list"></a>Vytvoření metody aktualizovat podrobnosti o seznamu
+## <a name="create-a-method-to-update-the-details-of-the-list"></a>Vytvořit metodu aktualizovat podrobnosti seznamu
 
 Do třídy **Program** přidejte následující metodu. 
 
@@ -380,7 +380,7 @@ Do třídy **Program** přidejte následující metodu.
         return result;
     }
 
-## <a name="create-a-method-to-retrieve-the-details-of-the-list"></a>Vytvořit metodu pro načtení podrobností o seznamu
+## <a name="create-a-method-to-retrieve-the-details-of-the-list"></a>Vytvořte metodu k načtení podrobností v seznamu
 
 Do třídy **Program** přidejte následující metodu.
 
@@ -405,11 +405,11 @@ Do třídy **Program** přidejte následující metodu.
         return result;
     }
 
-## <a name="create-a-method-to-refresh-the-search-index-of-the-list"></a>Vytvoření metody k aktualizaci indexu vyhledávání seznamu
+## <a name="create-a-method-to-refresh-the-search-index-of-the-list"></a>Vytvořit metodu aktualizace indexu vyhledávání seznamu
 
 Do třídy **Program** přidejte následující metodu.
 
-Kdykoli aktualizovat seznam, budete muset aktualizovat index vyhledávání před použitím bitové kopie obrazovky v seznamu.
+Kdykoli aktualizovat seznam, bude nutné aktualizovat index vyhledávání před použitím seznamu do bitové kopie obrazovky.
 
     /// <summary>
     /// Refreshes the search index for an image list.
@@ -432,7 +432,7 @@ Kdykoli aktualizovat seznam, budete muset aktualizovat index vyhledávání pře
         return result;
     }
 
-## <a name="create-a-method-to-match-images-against-the-list"></a>Vytvoření metody tak, aby odpovídaly Image podle seznamu
+## <a name="create-a-method-to-match-images-against-the-list"></a>Vytvořit metodu tak, aby odpovídala bitové kopie na seznamu
 
 Do třídy **Program** přidejte následující metodu. 
 
@@ -460,7 +460,7 @@ Do třídy **Program** přidejte následující metodu.
         }
     }
 
-## <a name="create-a-method-to-delete-all-images-from-the-list"></a>Vytvoření metody, které chcete odstranit všechny Image ze seznamu
+## <a name="create-a-method-to-delete-all-images-from-the-list"></a>Vytvořte metodu k odstranění všech imagí ze seznamu
 
 Do třídy **Program** přidejte následující metodu. 
 
@@ -482,7 +482,7 @@ Do třídy **Program** přidejte následující metodu.
         WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
     }
 
-## <a name="create-a-method-to-delete-the-list"></a>Vytvoření metody odstranit seznam
+## <a name="create-a-method-to-delete-the-list"></a>Vytvořte metodu k odstranění seznamu
 
 Do třídy **Program** přidejte následující metodu. 
 
@@ -527,11 +527,11 @@ Do třídy **Program** přidejte následující metodu.
         return result;
     }
 
-## <a name="add-code-to-simulate-the-use-of-an-image-list"></a>Přidejte kód, aby simuloval použití seznamu obrázků
+## <a name="add-code-to-simulate-the-use-of-an-image-list"></a>Přidejte kód pro simulaci použití seznamu obrázků
 
-Přidejte následující kód, který **hlavní** metoda.
+Přidejte následující kód, který **hlavní** metody.
 
-Tento kód simuluje mnoho operací, které můžete provést v definování a správy seznamu, a také pomocí seznamu a zobrazení na obrazovce. Funkce protokolování umožňují zobrazit objekty odpovědi generované volání sady SDK ke službě moderátora obsahu.
+Tento kód simuluje mnoho operací, které by provádět v definování a správa seznamu, jakož i pomocí seznamu do bitové kopie obrazovky. Funkce protokolování umožňují zobrazit objekty odpovědi generovaných volání sady SDK ke službě Content Moderatoru.
 
     // Create the text writer to use for logging, and cache a static reference to it.
     using (StreamWriter outputWriter = new StreamWriter(OutputFile))
@@ -601,8 +601,8 @@ Tento kód simuluje mnoho operací, které můžete provést v definování a sp
 
 ## <a name="run-the-program-and-review-the-output"></a>Spusťte program a prohlédněte si výstup
 
-Seznam ID a bitovou kopii obsahu že ID se liší pokaždé, když provedete spuštění aplikace.
-Soubor protokolu se zapisují program má následující výstup:
+ID seznamu a obsahu že se liší ID image pokaždé, když spustíte aplikaci.
+Soubor protokolu autorem program má následující výstup:
 
     Creating list MyList.
     Response:
@@ -1021,4 +1021,4 @@ Soubor protokolu se zapisují program má následující výstup:
 
 ## <a name="next-steps"></a>Další postup
 
-[Stáhněte si řešení sady Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) v tomto a dalších – elementy QuickStart obsahu moderátora pro platformu .NET a začít na svoji integraci.
+Získejte [Content Moderator sady .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) a [řešení sady Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) pro tuto a další rychlé starty Content Moderator pro platformu .NET a začít používat svoji integraci.

@@ -12,12 +12,12 @@ ms.date: 08/16/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 ms.topic: conceptual
-ms.openlocfilehash: 54917c6548c7f0bfacad6408732c5619e6346683
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 56a1e7038515a64f1dfe3fda639213bcfcde63d6
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "40177595"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44053427"
 ---
 # <a name="azure-sql-database-managed-instance-connectivity-architecture"></a>Azure SQL Database Managed Instance architektura připojení 
 
@@ -73,7 +73,7 @@ Nasazení a správu služeb se připojit k Managed Instance pomocí veřejného 
 - Přehled najdete v tématu [co je Managed Instance](sql-database-managed-instance.md) 
 - Další informace o konfiguraci virtuální sítě najdete v tématu [Managed Instance konfigurace virtuální sítě](sql-database-managed-instance-vnet-configuration.md). 
 - Pro rychlý start zjistit, jak vytvořit spravovanou instanci: 
-  - z [webu Azure Portal](sql-database-managed-instance-create-tutorial-portal.md) 
+  - Z [webu Azure portal](sql-database-managed-instance-get-started.md) 
   - pomocí [prostředí PowerShell](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/) 
   - pomocí [šablony Azure Resource Manageru](https://azure.microsoft.com/resources/templates/101-sqlmi-new-vnet/) 
   - pomocí [šablony Azure Resource Manageru (jumpbox pomocí SSMS zahrnuté)](https://portal.azure.com/) 

@@ -9,16 +9,16 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: sajagtap
-ms.openlocfilehash: fe321d08a44e7f843228668908c8b2c4ff3a3c32
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 808ee3637d67ff4874c5d4837d5c53cbe7b18680
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "41988468"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44024586"
 ---
 # <a name="create-video-reviews-using-net"></a>Vytvoření videa kontroly pomocí .NET
 
-Tento článek obsahuje informace a ukázky kódu, které vám pomohou rychle začít používat Content Moderator SDK pomocí jazyka C# pro:
+Tento článek obsahuje informace a ukázky kódu, které vám pomohou rychle začít používat [Content Moderator SDK pomocí jazyka C#](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) na:
 
 - Vytváření video kontroly pro lidských moderátorů
 - Přidat snímky shrnutí
@@ -32,11 +32,22 @@ Tento článek předpokládá, že máte [který video (viz rychlý start)](vide
 
 Tento článek také předpokládá, že jste již obeznámeni s Visual Studio a C#.
 
-### <a name="sign-up-for-content-moderator-services"></a>Zaregistrovat do služby Content Moderator
+## <a name="sign-up-for-content-moderator"></a>Zaregistrujte si Content Moderatoru
 
 Než budete moct použít služby Content Moderator přes rozhraní REST API nebo sady SDK, je nutné klíč předplatného.
+Odkazovat [rychlý Start](quick-start.md) se dozvíte, jak můžete získat klíč.
 
-Na řídicím panelu Content Moderator, můžete najít váš klíč předplatného v **nastavení** > **pověření** > **API**  >  **Zkušební Ocp-Apim-Subscription-Key**. Další informace najdete v tématu [přehled](overview.md).
+## <a name="sign-up-for-a-review-tool-account-if-not-completed-in-the-previous-step"></a>Zaregistrovat účet nástroj pro kontrolu, pokud nebyla dokončena v předchozím kroku
+
+Pokud jste získali Content Moderator z webu Azure portal, také [zaregistrujte si účet nástroj pro revize](https://contentmoderator.cognitive.microsoft.com/) a vytvořte tým kontroly. Budete potřebovat Id týmu a nástroje pro recenze pro volání rozhraní API přezkoumání a spuštění úlohy a zobrazíte recenzí v nástroj pro recenze.
+
+## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>Ujistěte se, že svůj klíč rozhraní API můžete volat rozhraní API pro kontrolu pro vytvoření revize
+
+Po dokončení předchozích kroků, můžete uvíznout dva klíče Content Moderator Pokud jste spustili z webu Azure portal. 
+
+Pokud máte v plánu používat klíč rozhraní API poskytuje Azure ve vaší ukázce sady SDK, postupujte podle pokynů uvedených v [klíče služby Azure pomocí rozhraní API pro kontrolu](review-tool-user-guide/credentials.md#use-the-azure-account-with-the-review-tool-and-review-api) oddílu, aby vaše aplikace volat rozhraní API pro kontrolu a vytvořit revize.
+
+Pokud používáte bezplatné zkušební verze klíč vygenerovaný pomocí nástroje pro recenze, váš účet nástroj pro revize již ví o klíči a proto nejsou požadované žádné další kroky.
 
 ### <a name="prepare-your-video-and-the-video-frames-for-review"></a>Připravit vaše video a snímky videí k revizi
 
@@ -536,8 +547,8 @@ A konečně uvidíte videa kontrolu v Content Moderatoru Zkontrolujte nástroj �
 
 ## <a name="next-steps"></a>Další postup
 
+Získejte [Content Moderator sady .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) a [řešení sady Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) pro tuto a další rychlé starty Content Moderator pro .NET.
+
 Zjistěte, jak přidat [přepisu moderování](video-transcript-moderation-review-tutorial-dotnet.md) videa kontrolou. 
 
 Podívejte se na podrobný kurz o tom, jak vyvíjet [dokončení moderování videa řešení](video-transcript-moderation-review-tutorial-dotnet.md).
-
-[Stáhněte si řešení sady Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) pro tuto a další rychlé starty Content Moderator pro .NET.

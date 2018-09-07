@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
 ms.author: yashesvi
-ms.openlocfilehash: c530fdca9d5fe499df680211a741bfd9950bb1fe
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: 3e5316ac0ca20c58a0960818d3151c238927df0d
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382146"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054593"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Správa rezervací pro prostředky Azure
 
@@ -91,9 +91,17 @@ Delegovat správu přístupu k rezervaci:
     Update-AzureRmReservation -ReservationOrderId a08160d4-ce6b-4295-bf52-b90a5d4c96a0 -ReservationId 5257501b-d3e8-449d-a1ab-4879b1863aca -AppliedScopeType Single -AppliedScope /subscriptions/15bb3be0-76d5-491c-8078-61fe3468d414
     ```
 
+## <a name="cancellations-and-exchanges"></a>Zrušení a výměny
+
+V závislosti na typu rezervace budete moci zrušit nebo si vyměňovat rezervaci. Další informace najdete v tématu zrušení a výměna oddílů v následujících tématech:
+
+- [Předplatit si virtuální počítače se službou Azure Reserved VM Instances](..//virtual-machines/windows/prepay-reserved-vm-instances.md#cancellations-and-exchanges)
+- [Předplatíte plány softwaru SUSE z Azure rezervací](../virtual-machines/linux/prepay-suse-software-charges.md#cancellation-and-exchanges-not-allowed)
+- [Předem za výpočetní prostředky, SQL Database s Azure SQL Database vyhrazené kapacity](../sql-database/sql-database-reserved-capacity.md#cancellations-and-exchanges)
+
 ## <a name="change-optimize-setting-for-reserved-vm-instances"></a>Změna optimalizovat nastavení Reserved VM Instances
 
- Při nákupu rezervované Instance virtuálního počítače, zvolte velikost flexibilita instancí nebo Priorita kapacity. Flexibilita instancí velikost platí sleva za rezervaci pro ostatní virtuální počítače ve stejné [skupině velikostí virtuálních počítačů](https://aka.ms/RIVMGroups). Priorita kapacity rezervuje kapacitu datacentra pro vaše nasazení. Tato možnost nabízí máte ještě větší jistotu budete moct spustit instance virtuálních počítačů, když je potřebujete.
+ Při nákupu rezervované Instance virtuálního počítače, zvolte velikost flexibilita instancí nebo Priorita kapacity. Flexibilita instancí velikost platí sleva za rezervaci pro ostatní virtuální počítače ve stejné [skupině velikostí virtuálních počítačů](https://aka.ms/RIVMGroups). Priorita kapacity upřednostňuje kapacitu datacentra pro vaše nasazení. Tato možnost nabízí máte ještě větší jistotu budete moct spustit instance virtuálních počítačů, když je potřebujete.
 
 Ve výchozím nastavení Pokud obor rezervace sdílí, je velikost flexibilita instancí na. Není nastaveno jako prioritní kapacitu datového centra pro nasazení virtuálních počítačů.
 

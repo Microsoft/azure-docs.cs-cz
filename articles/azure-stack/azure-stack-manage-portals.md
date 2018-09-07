@@ -1,6 +1,6 @@
 ---
-title: Pomocí portálu správce v zásobníku Azure | Microsoft Docs
-description: Jako operátor zásobník Azure zjistěte, jak pomocí portálu správce.
+title: Použití portálu správce ve službě Azure Stack | Dokumentace Microsoftu
+description: Jako operátory Azure stacku zjistěte, jak pomocí portálu správce.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -12,77 +12,77 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 09/05/2018
 ms.author: mabrigg
-ms.openlocfilehash: 673b1144fe927e0619f5f8638d7e8ce9a181f48c
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: cea59d061dadfa3e10330cbce7b6005a286524cc
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248516"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44024162"
 ---
-# <a name="using-the-administrator-portal-in-azure-stack"></a>Pomocí portálu správce v Azure zásobníku
+# <a name="using-the-administrator-portal-in-azure-stack"></a>Použití portálu správce ve službě Azure Stack
 
-*Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
+*Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
-Existují dva portály v zásobníku Azure; Správce portálu a portálu user portal (někdy označovány jako *klienta* portálu.) Jako operátor zásobník Azure můžete na portálu správce pro každodenní správu a operace Azure zásobníku.
+Existují dva portály ve službě Azure Stack; na portálu správce a na portálu user portal (někdy označovány jako *tenanta* portálu.) Jako operátory Azure stacku můžete použít portál správce pro každodenní správu a operace služby Azure Stack.
 
 ## <a name="access-the-administrator-portal"></a>Přístup k portálu správce
 
-Pro prostředí pro vývoj kit, musíte nejprve se ujistěte, že můžete [připojit k hostiteli development kit](azure-stack-connect-azure-stack.md) prostřednictvím připojení ke vzdálené ploše nebo virtuální privátní sítě (VPN).
+Pro vývojové prostředí sady, budete muset nejprve se ujistěte, že můžete [připojení k hostiteli development kit](azure-stack-connect-azure-stack.md) prostřednictvím připojení ke vzdálené ploše nebo virtuální privátní sítě (VPN).
 
-Pro přístup k portálu správce, přejděte na adresu URL portálu a přihlášení pomocí přihlašovacích údajů Azure zásobníku operátor. Pro integrovaný systém na portálu, které se liší podle adresy URL na základě název oblasti a externí plně kvalifikovaný název domény (FQDN) vašeho nasazení Azure zásobníku.
+Pro přístup k portálu správce, přejděte na adresu URL portálu a přihlášení pomocí přihlašovacích údajů operátory Azure stacku. Pro integrovaný systém portálu, k němuž adresy URL se liší podle oblasti názvu a externí plně kvalifikovaný název domény (FQDN) vašeho nasazení Azure Stack.
 
-| Prostředí | Adresa URL portálu správce |   
+| Prostředí | Adresa URL portálu pro správce |   
 | -- | -- | 
-| Development kit| https://adminportal.local.azurestack.external  |
-| Integrované systémy | https://adminportal.&lt; *oblast*&gt;.&lt; *Plně kvalifikovaný název domény*&gt; | 
+| Vývojová sada| https://adminportal.local.azurestack.external  |
+| Integrované systémy | https://adminportal.&lt; *oblasti*&gt;.&lt; *Plně kvalifikovaný název domény*&gt; | 
 | | |
 
- ![Portál správce](media/azure-stack-manage-portals/image1.png)
+ ![Na portálu správce](media/azure-stack-manage-portals/admin-portal.png)
 
-Na portálu správce může provádět akce, jako:
+Na portálu správce můžete dělat něco jako například:
 
-* Správa infrastruktury (včetně stavu systému, aktualizace, kapacity atd.)
+* Správa infrastruktury (včetně stavu systému, kapacity, aktualizace atd.)
 * Naplnění webu Marketplace
-* Vytvořte odběr pro uživatele
-* Vytvoření plánu a nabídky
+* Vytváření odběrů pro uživatele
+* Vytvořit plány a nabídky
 
-**Rychlý úvodní kurz** dlaždice obsahuje odkazy na online dokumentaci pro běžné úkoly.
+**Rychlý úvodní kurz** dlaždice obsahuje odkazy na online dokumentaci pro nejběžnější úkoly.
 
-I když má operátor můžete vytvářet prostředky jako virtuální počítače, virtuální sítě a účty úložiště na portálu správce, měli byste [přihlásit k portálu user portal](user/azure-stack-use-portal.md) při vytváření a testování prostředky.
+I když má operátor může vytvářet prostředky, jako je například virtuální počítače, virtuální sítě a účty úložišť na portálu pro správce, měli byste [přihlásit k portálu user portal](user/azure-stack-use-portal.md) vytvořit a otestovat prostředky.
 
 >[!NOTE]
->**Vytvoření virtuálního počítače** má odkaz na dlaždici rychlý úvodní kurz, můžete vytvořit virtuální počítač na portálu správce, ale to je určené jenom k ověření zásobníku Azure po prvním nasazení.
+>**Vytvoření virtuálního počítače** má odkaz na dlaždici kurz rychlý start můžete vytvořit virtuální počítač na portálu pro správce, ale to je určené jenom k ověření služby Azure Stack po prvním nasazení.
 
-## <a name="understand-subscription-behavior"></a>Porozumět chování předplatného
+## <a name="understand-subscription-behavior"></a>Pochopte chování předplatného
 
-Je jenom jedno předplatné, které jsou k dispozici pro použití z portálu správce. Toto předplatné je *výchozí předplatné zprostředkovatele*. Nemůžete přidat žádné jiné předplatné a použít ji v portálu správce.
+Existuje pouze jedno předplatné, které jsou k dispozici pro použití z portálu správce. Toto předplatné je *výchozí předplatné poskytovatele*. Nelze přidat další předplatná a jejich použití v portálu správce.
 
-Jako operátor zásobník Azure můžete přidat předplatné pro uživatele (včetně sebe) z portálu správce. Uživatelé (včetně sebe) můžete přístup a použít tyto odběry z **uživatele** portálu. Portál user portal však neposkytuje přístup k některé z možností pro správu nebo provozní portálu správce.
+Jako operátory Azure stacku můžete přidat předplatná pro vaše uživatele (včetně sami) z portálu správce. Může přistupovat a používat tato předplatná z uživatelé (včetně sami) **uživatele** portálu. Portál user portal však neposkytuje přístup k některé z možností administrativních nebo provozních portálu správce.
 
-Portály uživatelů a správců jsou zajišťované samostatné instance nástroje Azure Resource Manager. Z důvodu toto oddělení Resource Manager odběry nepřecházejí portálů. Například pokud vás, jakožto Obsluha zásobník Azure přihlásit k portálu user portal, můžete přístup k *výchozí předplatné zprostředkovatele*. I když nemáte přístup k žádné funkce správy, můžete vytvářet odběry pro sebe z nabídky veřejné. Tak dlouho, dokud jste přihlášení k portálu user portal jsou považovány za uživatele klienta.
+Portály správce a uživatele se zálohují na samostatných instancí služby Azure Resource Manageru. Z důvodu toto oddělení Resource Manageru předplatná nepřecházejí portálů. Například pokud, jako operátory Azure stacku, přihlášení k portálu user portal, nelze získat přístup *výchozí předplatné poskytovatele*. I když nemáte přístup pro všechny funkce správy, můžete vytvořit předplatná sami z veřejné dostupným nabídkám. Tak dlouho, dokud jste přihlášení k portálu user portal se považují za tenanta uživatele.
 
   >[!NOTE]
-  >Ve vývojovém prostředí sady Pokud uživatel patří do stejného adresáře klienta jako operátor zásobník Azure mohou nejsou blokovány v přihlášení k portálu správce. Však nemají přístup k některé z funkce správy. Z portálu správce, budou také nelze přidat předplatná nebo přístup poskytuje, které jsou k dispozici na ně v portálu user portal.
+  >Ve vývojovém prostředí sady Pokud uživatel patří do stejného adresáře tenanta jako operátory Azure stacku mu nejsou zablokovat přihlášení k portálu správce. Ale že nemůžete použít žádnou z funkce správy. Z portálu správce se také, nelze přidat předplatná nebo přístup nabídky, která jsou k dispozici na portálu user portal.
 
-## <a name="administrator-portal-tips"></a>Tipy pro správce portálu
+## <a name="administrator-portal-tips"></a>Tipy k portálu správce
 
-### <a name="customize-the-dashboard"></a>Přizpůsobit řídicí panel
+### <a name="customize-the-dashboard"></a>Přizpůsobení řídicího panelu
 
-Řídicí panel obsahuje sadu výchozích dlaždic. Můžete vybrat **úprava řídicího panelu** změnit výchozí řídicí panely, nebo vyberte **novým řídicím panelem** přidat vlastní řídicí panel. Dlaždice můžete snadno přidat na řídicí panel. Například můžete vybrat **nový**, klikněte pravým tlačítkem na **nabízí + plány**a potom vyberte **připnout na řídicí panel**.
+Řídicí panel obsahuje sadu výchozích dlaždic. Můžete vybrat **upravit řídicí panel** změnit výchozí řídicí panel, nebo vyberte **nový řídicí panel** přidáte vlastní řídicí panel. Dlaždice můžete snadno přidat na řídicí panel. Například můžete vybrat **nový**, klikněte pravým tlačítkem na **nabízí + plány**a pak vyberte **připnout na řídicí panel**.
 
 ### <a name="quick-access-to-online-documentation"></a>Rychlý přístup k online dokumentaci
 
-Pro přístup k dokumentaci operátor zásobník Azure, naleznete v nápovědě a podporují ikonu (otazník) v pravém horním rohu portálu správce. Přesuňte kurzor na ikonu a vyberte **Nápověda a podpora**.
+Pro přístup k dokumentace operátora k Azure Stack, použijte nápovědu a podporu ikonu (otazník) v pravém horním rohu portálu správce. Přesuňte ukazatel myši na ikonu a pak vyberte **Nápověda a podpora**.
 
 ### <a name="quick-access-to-help-and-support"></a>Rychlý přístup k nápovědě a podpoře
 
-Pokud v pravém horním rohu portálu správce, vyberte ikonu nápovědy a podpory (otazník) a potom vyberte **nová žádost o podporu**, nastat jedna následující výsledky:
+Pokud vyberte ikonu nápovědy a podpory (otazník) v pravém horním rohu portálu správce a pak vyberte **nová žádost o podporu**, jedna z následujících výsledků:
 
-- Pokud používáte integrovaný systém, otevře tato akce lokality, kde můžete přímo otevřít lístek podpory s Microsoft podporu služby zákazníkům (CSS). Odkazovat na [kde získat podporu](azure-stack-manage-basics.md#where-to-get-support) pochopit, kdy by měli přejít prostřednictvím podpory společnosti Microsoft nebo podporu dodavatele hardwaru výrobce (OEM).
-- Pokud používáte sadě pro vývoj, otevře tato akce webu fóra Azure zásobníku přímo. Tato fóra jsou pravidelně sledovat. Protože development kit je prostředí pro testování, neexistuje oficiální podpora nabízeným přes Microsoft CSS.
+- Pokud používáte integrovaný systém, tato akce otevře web, kde můžete přímo otevřít lístek podpory s Microsoft podporu služby zákazníkům (CSS). Odkazovat na [získání podpory](azure-stack-manage-basics.md#where-to-get-support) pochopit, kdy byste se měli zúčastnit prostřednictvím podpory Microsoftu nebo prostřednictvím podpory výrobce OEM (OEM) dodavatele hardwaru.
+- Pokud používáte development kit, tato akce otevře web fór Azure Stack přímo. Tato fóra jsou pravidelně monitorované. Vývojová sada je prostředí pro testování, neexistuje žádné oficiální podpora dostupná prostřednictvím Microsoft CSS.
 
 ## <a name="next-steps"></a>Další postup
 
-- [Oblast správy v Azure zásobníku](azure-stack-region-management.md)
+- [Správa oblastí ve službě Azure Stack](azure-stack-region-management.md)

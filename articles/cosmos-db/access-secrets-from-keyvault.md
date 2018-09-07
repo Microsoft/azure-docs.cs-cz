@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: rafats
-ms.openlocfilehash: 11aac0ab4476494f74453ca64a1b77964197adaa
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: b090c1593b49bec4f51fea8d498860e8af8b2f4b
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42748045"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44053080"
 ---
 # <a name="use-key-vault-to-store-and-access-azure-cosmos-db-keys"></a>Použití služby Key Vault k ukládání a přístupové klíče služby Azure Cosmos DB
 
@@ -56,7 +56,7 @@ Následující kroky jsou nutné pro ukládání a čtení přístupové klíče
 
 ## <a name="create-an-azure-web-application"></a>Vytvoření webové aplikace Azure
 
-1. Vytvoření webové aplikace Azure nebo si můžete stáhnout aplikaci [úložiště GitHub](https://github.com/rsarosh/CosmosDB-KeyVault). Je to jednoduché aplikace MVC.  
+1. Vytvoření webové aplikace Azure nebo si můžete stáhnout aplikaci [úložiště GitHub](https://github.com/Azure/azure-cosmosdb-dotnet/tree/master/Demo/keyvaultdemo). Je to jednoduché aplikace MVC.  
 
 2. Stažených aplikací rozzipují a otevřou **HomeController.cs** souboru. Aktualizace tajného kódu ID v následující řádek:
 
@@ -87,11 +87,9 @@ Nyní Pokud aplikaci spouštíte, si můžete přečíst tajného klíče ze slu
 
 ![Aplikace nasazená s tajným klíčem](./media/access-secrets-from-keyvault/app-deployed-with-access.png)
  
-Podobně můžete přidat uživatele pro přístup ke klíči trezoru. Budete muset přidat sebe do služby Key Vault kliknutím na "Zásady přístupu" a zadejte všechna oprávnění budete potřebovat ke spuštění aplikace ze sady Visual studio. Pokud tato aplikace běží na ploše, bude zpracování trvat vaši identitu.
+Podobně můžete přidat uživatele pro přístup ke klíči trezoru. Budete muset přidat sebe do služby Key Vault tak, že vyberete **zásady přístupu** a potom jim udělit všechna oprávnění, která budete potřebovat ke spuštění aplikace ze sady Visual studio. Pokud tato aplikace běží na ploše, bude zpracování trvat vaši identitu.
 
 ## <a name="next-steps"></a>Další postup
 
 * Konfigurace brány firewall služby Azure Cosmos DB najdete v tématu [podpora brány firewall](firewall-support.md) článku.
 * Pokud chcete nakonfigurovat koncový bod služby virtuální sítě, naleznete v tématu [zabezpečení přístupu pomocí koncového bodu služby virtuální sítě](vnet-service-endpoint.md) článku.
-
-

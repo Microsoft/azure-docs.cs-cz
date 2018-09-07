@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: elioda
-ms.openlocfilehash: 7704e08246798108aa251c19a4ab0c3baaaad570
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: f6959e0fec77ff046e4db86bad30502259775a49
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42059406"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44022835"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>Dotazovací jazyk služby IoT Hub pro dvojčata zařízení a modul, úlohy a směrování zpráv
 
@@ -165,7 +165,7 @@ Při dotazování u dvojčaty modulů je podobný dotaz na dvojčata zařízení
 SELECT * FROM devices.modules
 ```
 
-Nepovolit jsme spojení mezi zařízeními a devices.modules kolekce. Pokud chcete dotazování dvojčat modulů napříč zařízeními, můžete to na základě značek. Tento dotaz vrátí všechny dvojčaty modulů napříč všemi zařízeními se stavem prohledávání:
+Nepovolit jsme spojení mezi zařízeními a devices.modules kolekce. Pokud chcete dotaz dvojčaty modulů napříč zařízeními, můžete to udělat na základě značek. Tento dotaz vrátí všechny dvojčaty modulů napříč všemi zařízeními se stavem prohledávání:
 
 ```sql
 Select * from devices.modules where properties.reported.status = 'scanning'
@@ -552,7 +552,7 @@ Jsou podporovány následující operátory:
 | --- | --- |
 | Aritmetické operace |+, -, *, /, % |
 | Logické |A, NEBO NE |
-| Porovnání |=, !=, <, >, <=, >=, <> |
+| porovnání |=, !=, <, >, <=, >=, <> |
 
 ### <a name="functions"></a>Functions
 Při dotazování na dvojčata a úlohy, které jediný podporovaný je funkce:

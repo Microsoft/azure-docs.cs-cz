@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2018
 ms.author: sujayt
-ms.openlocfilehash: 32bdf1080aa6e7c5884747eeecad3f42c7334c3a
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: c3852f4055b5afe84aaa233c50f50732f98537a2
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42444822"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44022888"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Matice podpory pro které se replikují z jedné oblasti Azure do jiné
 
@@ -38,8 +38,8 @@ Tento článek shrnuje podporované konfigurace a komponenty při replikaci a ob
 --- | --- | ---
 **Přesun trezoru mezi skupinami prostředků** | Nepodporuje se<br/><br/> Trezoru služby Recovery services nelze přesouvat mezi skupinami prostředků.
 **Přesunout výpočetní síťi prostředků mezi skupinami prostředků** | Nepodporuje se.<br/><br/> Při přesunutí virtuálního počítače nebo přidružené komponent, jako jsou úložiště nebo sítě po replikuje, musíte zakázat replikaci a znovu povolit replikaci pro virtuální počítač.
-**Replikace virtuálních počítačů Azure z jednoho předplatného do druhého pro zotavení po havárii** | Podporováno ve stejném tenantovi Azure Active Directory.
-**Migrace virtuálních počítačů mezi předplatnými** | Nepodporuje se.
+**Replikace virtuálních počítačů Azure z jednoho předplatného do druhého pro zotavení po havárii** | Podporováno ve stejném tenantovi Azure Active Directory pro virtuální počítače "Modelu nasazení Resource manager". Nepodporuje se pro virtuální počítače v modelu nasazení Classic.
+**Migrace virtuálních počítačů napříč oblastmi v rámci podporovaných geografických clusterů (v rámci a napříč předplatnými)** | Podporováno ve stejném tenantovi Azure Active Directory pro virtuální počítače "Modelu nasazení Resource manager". Nepodporuje se pro virtuální počítače v modelu nasazení Classic.
 **Migrace virtuálních počítačů ve stejné oblasti** | Nepodporuje se.
 
 
@@ -147,6 +147,7 @@ Přidání disku do replikovaný virtuální počítač | Nepodporuje se. Potře
 --- | --- | ---
 Velikost | Libovolná velikost virtuálních počítačů Azure s nejméně 2 jádra procesoru a 1 GB paměti RAM | Odkazovat na [velikosti virtuálních počítačů Azure](../virtual-machines/windows/sizes.md)
 Skupiny dostupnosti | Podporováno | Pokud použijete výchozí možnost 'Povolit replikaci' kroku portálu, skupinu dostupnosti je automaticky vytvořená v závislosti na konfiguraci zdrojové oblasti. Můžete změnit cíl dostupnosti v "replikovaná položka > Nastavení > výpočty a síť > dostupnosti" kdykoli.
+Zóny dostupnosti | Nepodporuje se | Virtuální počítače nasazené v zónách dostupnosti nejsou aktuálně podporovány.
 Hybridní použití výhody (HUB) virtuálních počítačů | Podporováno | Pokud zdrojový virtuální počítač má licence HUB povolený, testovací převzetí služeb při selhání nebo převzetí služeb při selhání virtuálního počítače také používá licence ROZBOČOVAČE.
 Škálovací sady virtuálních počítačů | Nepodporuje se |
 Publikování Microsoft Azure Image z Galerie- | Podporováno | Podporované jako virtuální počítač běží na podporovaném operačním systému službou Site Recovery

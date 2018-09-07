@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 12/15/2017
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: f0de2f8700bef83b5a8a9303e90c97aab29722a3
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 66e974e80fa6f5e002b1f54584ea48e22a7b13ce
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42058025"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44053183"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Latence generování sestav Azure Active Directory.
 
@@ -39,10 +39,10 @@ Existují dvě oblasti vytváření sestav aktivit:
 
 V následující tabulce jsou uvedeny informace o latenci pro sestavy aktivit.
 
-| Sestava | Latence (P95) |Latence (P99)|
+| Sestava | Latence (95 %) |Latenci (99 %)|
 | :-- | --- | --- | 
-| Protokoly auditu | 2 minut.  | 5 minut.  |
-| Přihlášení | 2 minut.  | 5 minut. |
+| Protokoly auditu | 2 minuty  | 5 minut  |
+| Přihlášení | 2 minuty  | 5 minut |
 
 
 

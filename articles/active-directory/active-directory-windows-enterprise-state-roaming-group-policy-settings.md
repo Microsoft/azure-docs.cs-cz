@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: markvi
-ms.openlocfilehash: 9db0fa29f6af0053d45f9f0238b52ac34fdb464a
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: f1bbbecf1f40b110614b3da9874d5d2c560f9e58
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223257"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44024631"
 ---
 # <a name="group-policy-and-mdm-settings"></a>Nastavení zásad skupiny a MDM
 Použijte tyto zásady skupiny a nastavení správy mobilních zařízení jenom na zařízeních vlastněných společností, protože tyto zásady platí pro celé zařízení uživatele. Zásady MDM zakázání synchronizace nastavení pro osobní použití, zařízení ve vlastnictví uživatele bude mít negativní vliv na použití těchto zařízení. Kromě toho další uživatelské účty na zařízení také ovlivňuje zásady.
@@ -30,7 +30,7 @@ Podnikům, které chcete spravovat cestovní pro osobní zařízení (nespravova
 Následující tabulky popisují nastavení zásad, která je k dispozici.
 
 ## <a name="mdm-settings"></a>Nastavení MDM
-Nastavení zásad MDM platí pro Windows 10 a Windows 10 Mobile.  Podpora Windows 10 Mobile je dostupná jenom pro účet Microsoft na základě roaming prostřednictvím účtu OneDrive.  Najdete "Zařízení a koncových bodů" části Podrobnosti o jaká zařízení se podporují pro synchronizaci Azure AD na základě.
+Nastavení zásad MDM platí pro Windows 10 a Windows 10 Mobile.  Podpora Windows 10 Mobile je dostupná jenom pro účet Microsoft na základě roaming prostřednictvím účtu OneDrive.  Najdete [zařízení a koncových bodů](active-directory-windows-enterprise-state-roaming-windows-settings-reference.md) podrobnosti o jaká zařízení se podporují pro synchronizaci Azure AD na základě.
 
 | Název | Popis |
 | --- | --- |

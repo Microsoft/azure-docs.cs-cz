@@ -1,5 +1,6 @@
 ---
-title: Trénování a testování vaší aplikace LUIS – Azure | Dokumentace Microsoftu
+title: Otestujte aplikaci LUIS uvnitř portálu LUIS
+titleSuffix: Azure Cognitive Services
 description: Language Understanding (LUIS) umožňuje neustále pracovat na aplikaci zpřesnit jej a zvýšit jeho umožňující porozumět jazyku.
 services: cognitive-services
 author: diberry
@@ -7,18 +8,18 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 925b96b61de876d40105c89556fd6dcb600d1b1a
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: f697e55e095baf113b7e622c4e7447b78444d4ac
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223646"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054737"
 ---
 # <a name="test-your-luis-app"></a>Testování aplikace LUIS
 <a name="train-your-app"></a>
-[Školení](luis-how-to-train.md) a [testování](luis-concept-test.md) aplikace je iterativní proces. Po školení aplikace LUIS, otestujte ho s ukázka projevy a zjistěte, jestli jsou správně rozpoznány záměry a entity. Pokud ne, proveďte aktualizace znovu na aplikaci LUIS, trénování a testování. 
+[Testování](luis-concept-test.md) aplikace je iterativní proces. Po školení aplikace LUIS, otestujte ho s ukázka projevy a zjistěte, jestli jsou správně rozpoznány záměry a entity. Pokud ne, proveďte aktualizace znovu na aplikaci LUIS, trénování a testování. 
 
 <!-- anchors for H2 name changes -->
 <a name="test-your-app"></a>

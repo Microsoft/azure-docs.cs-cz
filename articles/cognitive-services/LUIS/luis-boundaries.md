@@ -1,7 +1,7 @@
 ---
-title: Language Understanding (LUIS) hranice | Dokumentace Microsoftu
-titleSuffix: Azure
-description: Tento článek obsahuje známé omezení LUIS.
+title: Hranice a omezení pro Language Understanding (LUIS)
+titleSuffix: Azure Cognitive Services
+description: Tento článek obsahuje známé omezení z Azure Cognitive Services LUIS (Language Understanding). Služba LUIS má několik oblasti hranic. Model hranic řídí záměrů, entit a funkcí v LUIS. Limity kvót podle typu klíče. Kombinace kláves řídí LUIS webu.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 07/31/2018
 ms.author: diberry
-ms.openlocfilehash: 0a75c113f619aa70ba6c504f07afc8dc8a35b694
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: b867d2c6c2bd586e0844d4ad149ac4a73399ed7b
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399827"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44023230"
 ---
 # <a name="luis-boundaries"></a>Služba LUIS hranice
 Služba LUIS má několik oblasti hranic. První je [modelu hranice](#model-boundaries), který určuje záměrů, entit a funkcí v LUIS. Druhá oblast je [kvóty](#key-limits) podle typu klíče. Je třetí oblasti hranic [klávesové kombinace](#keyboard-controls) pro řízení webu LUIS. Je čtvrtý oblast [mapování oblasti world](luis-reference-regions.md) mezi LUIS vytváření webu a LUIS [koncový bod](luis-glossary.md#endpoint) rozhraní API. 

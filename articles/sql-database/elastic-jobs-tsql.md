@@ -8,12 +8,12 @@ ms.service: sql-database
 ms.topic: article
 ms.date: 06/14/2018
 ms.author: jaredmoo
-ms.openlocfilehash: ae5dafcebd50ecd22309a7771b0edf01a97fd7a7
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: d524f7756c8dd394d8651839a1f6426c512d6a73
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/06/2018
-ms.locfileid: "43842597"
+ms.locfileid: "44023524"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Použití příkazů jazyka Transact-SQL (T-SQL) k vytvoření a správa Elastických úloh databáze
 
@@ -482,7 +482,7 @@ sp_add_job se musí spouštět z databáze agenta úloh při vytvoření úlohy 
 Po přidání úloha spustila sp_add_job, sp_add_jobstep je možné přidat kroky, které provádějí činnosti úlohy. Číslo úlohy počáteční verze je 0, což se zvýší na 1 při prvním krokem je přidání.
 
 #### <a name="permissions"></a>Oprávnění
-Ve výchozím nastavení, členové role pevného serveru správce sysadmin systému tuto uloženou proceduru mohou spustit. Omezit přístup jenom uživatel moct monitorovat úlohy, můžete udělit uživatele, aby byla součástí následující role databáze v databáze agenta úloh při vytvoření agenta úlohy:
+Ve výchozím nastavení, členové role pevného serveru správce sysadmin systému tuto uloženou proceduru mohou spustit. Omezí uživatelům stačí být schopen monitorovat úlohy, můžete udělit uživatele, aby byla součástí následující role databáze v databáze agenta úloh při vytvoření agenta úlohy:
 
 - jobs_reader
 
@@ -544,7 +544,7 @@ Datum, které úlohy můžete zastavit provádění. schedule_end_time DATETIME2
 Po přidání úloha spustila sp_add_job, sp_add_jobstep je možné přidat kroky, které provádějí činnosti úlohy. Číslo úlohy počáteční verze je 0, což se zvýší na 1 při prvním krokem je přidání.
 
 #### <a name="permissions"></a>Oprávnění
-Ve výchozím nastavení, členové role pevného serveru správce sysadmin systému tuto uloženou proceduru mohou spustit. Omezit přístup jenom uživatel moct monitorovat úlohy, můžete udělit uživatele, aby byla součástí následující role databáze v databáze agenta úloh při vytvoření agenta úlohy:
+Ve výchozím nastavení, členové role pevného serveru správce sysadmin systému tuto uloženou proceduru mohou spustit. Omezí uživatelům stačí být schopen monitorovat úlohy, můžete udělit uživatele, aby byla součástí následující role databáze v databáze agenta úloh při vytvoření agenta úlohy:
 - jobs_reader
 
 Podrobnosti o oprávněních pracovníci v těchto rolích najdete v části oprávnění v tomto dokumentu. Jenom členové skupiny sysadmin můžete upravit vlastnosti úlohy, které vlastní jiní uživatelé tuto uloženou proceduru.
@@ -576,7 +576,7 @@ Určuje, jestli se má odstranit, pokud úloha nemá žádné spuštění v prů
 Historie úlohy automaticky odstraní při odstranění úlohy.
 
 #### <a name="permissions"></a>Oprávnění
-Ve výchozím nastavení, členové role pevného serveru správce sysadmin systému tuto uloženou proceduru mohou spustit. Omezit přístup jenom uživatel moct monitorovat úlohy, můžete udělit uživatele, aby byla součástí následující role databáze v databáze agenta úloh při vytvoření agenta úlohy:
+Ve výchozím nastavení, členové role pevného serveru správce sysadmin systému tuto uloženou proceduru mohou spustit. Omezí uživatelům stačí být schopen monitorovat úlohy, můžete udělit uživatele, aby byla součástí následující role databáze v databáze agenta úloh při vytvoření agenta úlohy:
 - jobs_reader
 
 Podrobnosti o oprávněních pracovníci v těchto rolích najdete v části oprávnění v tomto dokumentu. Jenom členové skupiny sysadmin můžete upravit vlastnosti úlohy, které vlastní jiní uživatelé tuto uloženou proceduru.
@@ -701,7 +701,7 @@ Maximální úroveň paralelismus za elastický fond. Pokud sadu a pak krok úlo
 Po úspěšném sp_add_jobstep se zvýší, aktuální číslo verze úlohy. Při příštím spuštění úlohy se použije na novou verzi. Pokud úloha právě probíhá, tohoto spuštění nebude obsahovat nový krok.
 
 #### <a name="permissions"></a>Oprávnění
-Ve výchozím nastavení, členové role pevného serveru správce sysadmin systému tuto uloženou proceduru mohou spustit. Omezit přístup jenom uživatel moct monitorovat úlohy, můžete udělit uživatele, aby byla součástí následující role databáze v databáze agenta úloh při vytvoření agenta úlohy:  
+Ve výchozím nastavení, členové role pevného serveru správce sysadmin systému tuto uloženou proceduru mohou spustit. Omezí uživatelům stačí být schopen monitorovat úlohy, můžete udělit uživatele, aby byla součástí následující role databáze v databáze agenta úloh při vytvoření agenta úlohy:  
 
 - jobs_reader
 
@@ -825,7 +825,7 @@ Maximální úroveň paralelismus za elastický fond. Pokud sadu a pak krok úlo
 Tyto zásady neovlivní žádné v průběhu provádění úlohy. Po úspěšném sp_update_jobstep se zvýší číslo verze úlohy. Při příštím spuštění úlohy se použije na novou verzi.
 
 #### <a name="permissions"></a>Oprávnění
-Ve výchozím nastavení, členové role pevného serveru správce sysadmin systému tuto uloženou proceduru mohou spustit. Omezit přístup jenom uživatel moct monitorovat úlohy, můžete udělit uživatele, aby byla součástí následující role databáze v databáze agenta úloh při vytvoření agenta úlohy:
+Ve výchozím nastavení, členové role pevného serveru správce sysadmin systému tuto uloženou proceduru mohou spustit. Omezí uživatelům stačí být schopen monitorovat úlohy, můžete udělit uživatele, aby byla součástí následující role databáze v databáze agenta úloh při vytvoření agenta úlohy:
 
 - jobs_reader
 
@@ -870,7 +870,7 @@ Tyto zásady neovlivní žádné v průběhu provádění úlohy. Po úspěšné
 Další kroky úlohy budou automaticky označuje k vyplnění mezer doleva o krok odstraněné úlohy.
  
 #### <a name="permissions"></a>Oprávnění
-Ve výchozím nastavení, členové role pevného serveru správce sysadmin systému tuto uloženou proceduru mohou spustit. Omezit přístup jenom uživatel moct monitorovat úlohy, můžete udělit uživatele, aby byla součástí následující role databáze v databáze agenta úloh při vytvoření agenta úlohy:
+Ve výchozím nastavení, členové role pevného serveru správce sysadmin systému tuto uloženou proceduru mohou spustit. Omezí uživatelům stačí být schopen monitorovat úlohy, můžete udělit uživatele, aby byla součástí následující role databáze v databáze agenta úloh při vytvoření agenta úlohy:
 - jobs_reader
 
 Podrobnosti o oprávněních pracovníci v těchto rolích najdete v části oprávnění v tomto dokumentu. Jenom členové skupiny sysadmin můžete upravit vlastnosti úlohy, které vlastní jiní uživatelé tuto uloženou proceduru.
@@ -906,7 +906,7 @@ Výstupní parametr, který se přiřadí id spuštění úlohy. job_version je 
 Žádné.
  
 #### <a name="permissions"></a>Oprávnění
-Ve výchozím nastavení, členové role pevného serveru správce sysadmin systému tuto uloženou proceduru mohou spustit. Omezit přístup jenom uživatel moct monitorovat úlohy, můžete udělit uživatele, aby byla součástí následující role databáze v databáze agenta úloh při vytvoření agenta úlohy:
+Ve výchozím nastavení, členové role pevného serveru správce sysadmin systému tuto uloženou proceduru mohou spustit. Omezí uživatelům stačí být schopen monitorovat úlohy, můžete udělit uživatele, aby byla součástí následující role databáze v databáze agenta úloh při vytvoření agenta úlohy:
 - jobs_reader
 
 Podrobnosti o oprávněních pracovníci v těchto rolích najdete v části oprávnění v tomto dokumentu. Jenom členové skupiny sysadmin můžete upravit vlastnosti úlohy, které vlastní jiní uživatelé tuto uloženou proceduru.
@@ -934,7 +934,7 @@ Identifikační číslo provádění úlohy zastavení. job_execution_id je uniq
 Žádné.
  
 #### <a name="permissions"></a>Oprávnění
-Ve výchozím nastavení, členové role pevného serveru správce sysadmin systému tuto uloženou proceduru mohou spustit. Omezit přístup jenom uživatel moct monitorovat úlohy, můžete udělit uživatele, aby byla součástí následující role databáze v databáze agenta úloh při vytvoření agenta úlohy:
+Ve výchozím nastavení, členové role pevného serveru správce sysadmin systému tuto uloženou proceduru mohou spustit. Omezí uživatelům stačí být schopen monitorovat úlohy, můžete udělit uživatele, aby byla součástí následující role databáze v databáze agenta úloh při vytvoření agenta úlohy:
 - jobs_reader
 
 Podrobnosti o oprávněních pracovníci v těchto rolích najdete v části oprávnění v tomto dokumentu. Jenom členové skupiny sysadmin můžete upravit vlastnosti úlohy, které vlastní jiní uživatelé tuto uloženou proceduru.
@@ -966,7 +966,7 @@ Název cílové skupiny, chcete-li vytvořit. target_group_name je nvarchar(128)
 Cílové skupiny poskytují snadný způsob, jak cílit na úlohu v kolekci databází.
 
 #### <a name="permissions"></a>Oprávnění
-Ve výchozím nastavení, členové role pevného serveru správce sysadmin systému tuto uloženou proceduru mohou spustit. Omezit přístup jenom uživatel moct monitorovat úlohy, můžete udělit uživatele, aby byla součástí následující role databáze v databáze agenta úloh při vytvoření agenta úlohy:
+Ve výchozím nastavení, členové role pevného serveru správce sysadmin systému tuto uloženou proceduru mohou spustit. Omezí uživatelům stačí být schopen monitorovat úlohy, můžete udělit uživatele, aby byla součástí následující role databáze v databáze agenta úloh při vytvoření agenta úlohy:
 - jobs_reader
 
 Podrobnosti o oprávněních pracovníci v těchto rolích najdete v části oprávnění v tomto dokumentu. Jenom členové skupiny sysadmin můžete upravit vlastnosti úlohy, které vlastní jiní uživatelé tuto uloženou proceduru.
@@ -994,7 +994,7 @@ Název cílové skupiny odstraňte. target_group_name je nvarchar(128) bez vých
 Žádné.
 
 #### <a name="permissions"></a>Oprávnění
-Ve výchozím nastavení, členové role pevného serveru správce sysadmin systému tuto uloženou proceduru mohou spustit. Omezit přístup jenom uživatel moct monitorovat úlohy, můžete udělit uživatele, aby byla součástí následující role databáze v databáze agenta úloh při vytvoření agenta úlohy:
+Ve výchozím nastavení, členové role pevného serveru správce sysadmin systému tuto uloženou proceduru mohou spustit. Omezí uživatelům stačí být schopen monitorovat úlohy, můžete udělit uživatele, aby byla součástí následující role databáze v databáze agenta úloh při vytvoření agenta úlohy:
 - jobs_reader
 
 Podrobnosti o oprávněních pracovníci v těchto rolích najdete v části oprávnění v tomto dokumentu. Jenom členové skupiny sysadmin můžete upravit vlastnosti úlohy, které vlastní jiní uživatelé tuto uloženou proceduru.
@@ -1050,7 +1050,7 @@ Návratové hodnoty kód 0 (úspěch) nebo 1 (chyba)
 Úloha se spustí na všechny databáze na daném serveru nebo v době provádění, když elastický fond nebo logického serveru elastický fond je součástí cílové skupiny.
 
 #### <a name="permissions"></a>Oprávnění
-Ve výchozím nastavení, členové role pevného serveru správce sysadmin systému tuto uloženou proceduru mohou spustit. Omezit přístup jenom uživatel moct monitorovat úlohy, můžete udělit uživatele, aby byla součástí následující role databáze v databáze agenta úloh při vytvoření agenta úlohy:
+Ve výchozím nastavení, členové role pevného serveru správce sysadmin systému tuto uloženou proceduru mohou spustit. Omezí uživatelům stačí být schopen monitorovat úlohy, můžete udělit uživatele, aby byla součástí následující role databáze v databáze agenta úloh při vytvoření agenta úlohy:
 - jobs_reader
 
 Podrobnosti o oprávněních pracovníci v těchto rolích najdete v části oprávnění v tomto dokumentu. Jenom členové skupiny sysadmin můžete upravit vlastnosti úlohy, které vlastní jiní uživatelé tuto uloženou proceduru.
@@ -1115,7 +1115,7 @@ Název cílové skupiny, ze kterého chcete odebrat člena cílové skupiny. tar
 Cílové skupiny poskytují snadný způsob, jak cílit na úlohu v kolekci databází.
 
 #### <a name="permissions"></a>Oprávnění
-Ve výchozím nastavení, členové role pevného serveru správce sysadmin systému tuto uloženou proceduru mohou spustit. Omezit přístup jenom uživatel moct monitorovat úlohy, můžete udělit uživatele, aby byla součástí následující role databáze v databáze agenta úloh při vytvoření agenta úlohy:
+Ve výchozím nastavení, členové role pevného serveru správce sysadmin systému tuto uloženou proceduru mohou spustit. Omezí uživatelům stačí být schopen monitorovat úlohy, můžete udělit uživatele, aby byla součástí následující role databáze v databáze agenta úloh při vytvoření agenta úlohy:
 - jobs_reader
 
 Podrobnosti o oprávněních pracovníci v těchto rolích najdete v části oprávnění v tomto dokumentu. Jenom členové skupiny sysadmin můžete upravit vlastnosti úlohy, které vlastní jiní uživatelé tuto uloženou proceduru.
@@ -1166,7 +1166,7 @@ Název úlohy, pro kterou chcete odstranit záznamy historie. hodnotu job_name j
 0 (úspěch) nebo 1 (chyba) poznámky cílové skupiny poskytují snadný způsob, jak cílit na úlohu v kolekci databází.
 
 #### <a name="permissions"></a>Oprávnění
-Ve výchozím nastavení, členové role pevného serveru správce sysadmin systému tuto uloženou proceduru mohou spustit. Omezit přístup jenom uživatel moct monitorovat úlohy, můžete udělit uživatele, aby byla součástí následující role databáze v databáze agenta úloh při vytvoření agenta úlohy:
+Ve výchozím nastavení, členové role pevného serveru správce sysadmin systému tuto uloženou proceduru mohou spustit. Omezí uživatelům stačí být schopen monitorovat úlohy, můžete udělit uživatele, aby byla součástí následující role databáze v databáze agenta úloh při vytvoření agenta úlohy:
 - jobs_reader
 
 Podrobnosti o oprávněních pracovníci v těchto rolích najdete v části oprávnění v tomto dokumentu. Jenom členové skupiny sysadmin můžete upravit vlastnosti úlohy, které vlastní jiní uživatelé tuto uloženou proceduru.
@@ -1336,7 +1336,7 @@ Zobrazuje všechny členy všechny cílové skupiny.
 
 ## <a name="resources"></a>Zdroje a prostředky
 
- - ![Ikona odkaz tématu](https://docs.microsoft.com/sql/database-engine/configure-windows/media/topic-link.gif "ikonu odkazu tématu") [konvencí syntaxe Transact-SQL](/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql.md)  
+ - ![Ikona odkaz tématu](https://docs.microsoft.com/sql/database-engine/configure-windows/media/topic-link.gif "ikonu odkazu tématu") [konvencí syntaxe Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)  
 
 
 ## <a name="next-steps"></a>Další postup

@@ -1,5 +1,6 @@
 ---
-title: Zobrazit využití LUIS ze služby Azure Cloud Shell | Dokumentace Microsoftu
+title: Azure Cloud Shell dat využití pro LUIS
+titleSuffix: Azure Cognitive Services
 description: Další informace o získání informací o využití ve službě Azure Cloud Shell pro LUIS.
 services: cognitive-services
 author: diberry
@@ -7,16 +8,16 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/08/2017
+ms.date: 09/06/2017
 ms.author: diberry
-ms.openlocfilehash: f9d3a489328263bd300d60935bfde2f0dfc0245c
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 95bd1e83b4a0ed08850862ec4f4addb3353a9481
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224037"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44052961"
 ---
-# <a name="manage-luis-service-from-azure-cloud-shell"></a>Správa služby LUIS ze služby Azure Cloud Shell
+# <a name="usage-data-for-luis-service-from-azure-cloud-shell"></a>Data o využití pro službu LUIS ze služby Azure Cloud Shell
 Na webu Azure portal umožňuje pomocí rutin prostředí PowerShell pro práci s prostředky služby LUIS. 
 
 Tyto rutiny umožňují [vytvořit](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/new-azurermcognitiveservicesaccount?view=azurermps-6.0.0) předplatného služby LUIS, získáte informace o předplatném, včetně [využití](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/get-azurermcognitiveservicesaccountusage?view=azurermps-6.0.0), a [odebrat](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/remove-azurermcognitiveservicesaccount?view=azurermps-6.0.0) předplatné. 

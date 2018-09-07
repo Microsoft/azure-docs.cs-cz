@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: rimman
-ms.openlocfilehash: 4911a302bf9055948827a72f2e631663b8be741e
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: faca70ccc1b96a8cefd65a941abde579ce54a616
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39265532"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44050217"
 ---
 # <a name="multi-master-at-global-scale-with-azure-cosmos-db"></a>Více hlavních databází v globálním měřítku s využitím Azure Cosmos DB 
  

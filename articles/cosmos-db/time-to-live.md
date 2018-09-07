@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/29/2017
 ms.author: sngun
-ms.openlocfilehash: 020f9c8753b2b91b3336b304a1c92590f62be003
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 2cae74224a9d59939175ac7e43d4d6b183ca3933
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42060542"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44050733"
 ---
 # <a name="expire-data-in-azure-cosmos-db-collections-automatically-with-time-to-live"></a>Vypršení platnosti dat v kolekcích Azure Cosmos DB automaticky s časem TTL
 Aplikace můžete vytvářet a ukládat velké objemy dat. Některé z těchto dat, jako jsou počítače, generovány události data, protokoly a uživatelské relace, které informace jsou užitečné pouze omezené dobu. Jakmile se data změní přebytečné podle potřeb aplikace je bezpečný pro vyprázdnění dat a snížení požadavkům na ukládání aplikace.

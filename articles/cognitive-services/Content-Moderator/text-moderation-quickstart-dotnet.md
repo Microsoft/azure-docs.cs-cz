@@ -9,16 +9,16 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 01/04/2018
 ms.author: sajagtap
-ms.openlocfilehash: 7320286e186d7e6ba4041d3ed52f19e573b4d7e3
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 87ed816077d2c742223a0350851cdf2f0c5653f6
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39049877"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44023034"
 ---
 # <a name="moderate-text-using-net"></a>Moderování textu s použitím .NET
 
-Tento článek obsahuje informace a ukázky kódu, které vám pomůžou začít používat Content Moderator SDK pro .NET po:
+Tento článek obsahuje informace a ukázky kódu, které vám pomůžou začít používat [Content Moderator SDK pro .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) na:
 - Detekovat vulgární výrazy v textu pomocí filtrování podle termínu
 - Použití modelů na základě machine learningu k [klasifikovat text](text-moderation-api.md#classification) do tří kategorií.
 - Například USA a UK telefonní čísla, e-mailové adresy a USA poštovní adresy rozpoznat identifikovatelné osobní údaje (PII).
@@ -211,4 +211,4 @@ Ukázkový výstup programu, jak jsou zapsány do souboru protokolu je:
 
 ## <a name="next-steps"></a>Další postup
 
-[Stáhněte si řešení sady Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) pro tuto a další rychlé starty Content Moderator pro platformu .NET a začít používat svoji integraci.
+Získejte [Content Moderator sady .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) a [řešení sady Visual Studio](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) pro tuto a další rychlé starty Content Moderator pro platformu .NET a začít používat svoji integraci.

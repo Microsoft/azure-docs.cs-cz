@@ -11,20 +11,159 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/27/2018
-ms.author: brenduns
+ms.date: 09/05/2018
+git ms.author: brenduns
 ms.reviewer: misainat
-ms.openlocfilehash: 6016d6fd4dcae699efba49667676373a6586e723
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: fe6be5a041b87af2323c7978c5371e326b3cd3d6
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43101641"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44051268"
 ---
 # <a name="azure-stack-development-kit-release-notes"></a>Zpráva k vydání verze Azure Stack Development Kit  
-Tyto poznámky k verzi obsahují informace o vylepšení, oprav a známé problémy v Azure Stack Development Kit. Pokud si nejste jistí, kterou verzi používáte, můžete si [použití portálu ke kontrole](.\.\azure-stack-updates.md#determine-the-current-version).
+Tento článek obsahuje informace o vylepšení, oprav a známé problémy v Azure Stack Development Kit. Pokud si nejste jistí, kterou verzi používáte, můžete si [použití portálu ke kontrole](.\.\azure-stack-updates.md#determine-the-current-version).
 
 > Udržujte si s tím, co se přihlásíte k odběru je novinkou ASDK [ ![RSS](./media/asdk-release-notes/feed-icon-14x14.png)](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#) [kanálu](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#).
+
+## <a name="build-11808097"></a>Sestavení 1.1808.0.97
+
+### <a name="new-features"></a>Nové funkce
+Toto sestavení obsahuje následující vylepšení a oprav pro Azure Stack.  
+
+- <!-- 2682594   | ASDK  -->   **Všechna prostředí Azure Stack teď použijte formát časového pásma koordinovaný univerzální čas (UTC).**  Všechny protokoly dat a související informace nyní zobrazuje ve formátu UTC. 
+
+- <!-- 2437250  | IS  ASDK --> **Spravované disky se podporují.** Teď můžete použít Managed Disks v Azure stacku virtuální počítače a škálovací sady virtuálních počítačů. Další informace najdete v tématu [Azure Stack Managed Disks: rozdíly a aspekty](/azure/azure-stack/user/azure-stack-managed-disk-considerations).
+ 
+- <!-- 2563799  | IS  ASDK -->  **Azure Monitor**. Jako je Azure Monitor v Azure Azure Monitor ve službě Azure Stack poskytuje základní infrastruktura metriky a protokoly pro většina služeb. Další informace najdete v tématu [Azure Monitor ve službě Azure Stack](/azure/azure-stack/user/azure-stack-metrics-azure-data).
+
+- <!-- ASDK --> **Položky galerie pro Škálovací sady virtuálních počítačů jsou teď integrované**.  Škálovací sada virtuálních počítačů položky galerie jsou teď k dispozici na portálech uživatele a správce bez nutnosti si je stáhnout. 
+
+- <!-- IS, ASDK --> **Škálovací sada virtuálních počítačů škálování**.  Můžete použít portál pro [škálování Škálovací sady virtuálních počítačů](/azure/azure-stack/azure-stack-compute-add-scalesets.md#scale-a-virtual-machine-scale-set) (VMSS).   
+
+- <!-- 2489570 | IS ASDK--> **Podpora pro vlastní konfigurace zásad IPSec/IKE** pro [bran VPN Gateway ve službě Azure Stack](/azure/azure-stack/azure-stack-vpn-gateway-about-vpn-gateways).
+
+
+### <a name="fixed-issues"></a>Opravené problémy
+- <!-- IS ASDK--> Opravili jsme problém pro vytvoření dostupnosti na portálu, což vedlo sada domény selhání a aktualizační doména 1.
+
+- <!-- IS ASDK --> Nastavení škálování škálovací sady virtuálních počítačů jsou teď dostupné na portálu.  
+
+- <!-- 2494144- IS, ASDK --> Nyní je vyřešen problém, který zabránil některé velikosti virtuálních počítačů řady F-series povolí při výběru velikosti virtuálního počítače pro nasazení. 
+
+- <!-- IS, ASDK --> Vylepšení výkonu při vytváření virtuálních počítačů a další optimalizované pomocí základního úložiště.
+
+- **Různé opravy** výkonu, stability, zabezpečení a operační systém, který se používá ve službě Azure Stack
+
+
+### <a name="changes"></a>Změny
+- <!-- 1697698  | IS, ASDK --> *Kurzy rychlý Start* v na řídicím panelu portálu teď odkaz na související články v online dokumentaci k Azure Stack.
+
+- <!-- 2515955   | IS ,ASDK--> *Všechny služby* nahradí *další služby* na portálech správce a uživatele Azure stacku. Teď můžete použít *všechny služby* jako alternativu k navigaci na portálech Azure Stack stejným způsobem jako v Azure Portal.
+
+- <!--  TBD – IS, ASDK --> *Základní A* velikostí virtuálních počítačů byly ukončeny pro [vytvoření škálovací sady virtuálních počítačů](.\.\azure-stack-compute-add-scalesets.md) (VMSS) prostřednictvím portálu. Pokud chcete vytvořit VMSS se tato velikost, pomocí Powershellu nebo šablony. 
+
+### <a name="known-issues"></a>Známé problémy
+
+#### <a name="portal"></a>Portál  
+-  <!--  2873083 - IS ASDK --> Při použití na portálu vytvořit škálovací sadu virtuálních počítačů (VMSS), nastavte *velikost instance* rozevírací seznam nenačte správně při použití aplikace Internet Explorer. Chcete-li tento problém vyřešit, použijte jiný prohlížeč při použití portálu k vytvoření VMSS.  
+
+- <!-- TBD  ASDK --> Výchozí časové pásmo pro všechna nasazení Azure Stack jsou nyní nastavení koordinovaný univerzální čas (UTC). Časové pásmo můžete vybrat při instalaci Azure Stack, ale automaticky přejde na čas UTC jako výchozí během instalace.
+
+- <!-- 2931230 – IS  ASDK --> Plány, které jsou přidány na předplatné uživatele jako doplňkový plán nelze odstranit, i když odebrat plán ze předplatné uživatele. Plán zůstane, dokud se také odstraní předplatné, které odkazují na doplňkový plán. 
+
+- <!--2760466 – IS  ASDK --> Při instalaci nového prostředí Azure Stack, na kterém běží tato verze, upozornění, která informuje o *vyžadována aktivace* se nemusí zobrazit. [Aktivace](.\.\azure-stack-registration.md) se vyžaduje, abyste mohli používat marketplace syndikace. 
+
+- <!-- TBD - IS ASDK --> Dva typy pro správu předplatného, které byly [představený poprvé ve verzi 1804](.\.\azure-stack-update-1804.md#new-features) by se neměly. Typy předplatného jsou **měření předplatné**, a **využití předplatného**. Tyto typy předplatného jsou **měření předplatné**, a **využití předplatného**. Tyto typy předplatného jsou viditelné v novým prostředím Azure Stack od verze 1804, ale ještě nejsou připravené k použití. By měla dál používat **předplatné poskytovatele. výchozí** typu.
+
+- <!-- TBD -  IS ASDK --> Odstraňuje se předplatné uživatele za následek osamocené prostředky. Jako alternativní řešení nejprve odstranit prostředky uživatele nebo celou skupinu prostředků a pak odstraňte předplatná uživatelů.
+
+- <!-- TBD -  IS ASDK --> Nelze zobrazit oprávnění k předplatnému pomocí na portálech Azure Stack. Jako alternativní řešení pomocí prostředí PowerShell mohl ověřit oprávnění.
+
+
+
+#### <a name="health-and-monitoring"></a>Monitorování stavu a
+- <!-- 1264761 - IS ASDK -->  Může se zobrazit upozornění *stavu řadiče* komponenta, která mají následující podrobnosti:  
+
+   Upozornění #1:
+   - Název: Infrastrukturu role není v pořádku
+   - ZÁVAŽNOST: upozornění
+   - KOMPONENTY: Kontroler stavu
+   - Popis: Kontroler stavu prezenčního signálu skener není k dispozici. To může mít vliv sestav o stavu a metriky.  
+
+  Upozornění #2:
+   - Název: Infrastrukturu role není v pořádku
+   - ZÁVAŽNOST: upozornění
+   - KOMPONENTY: Kontroler stavu
+   - Popis: Stav řadiče skener selhání není k dispozici. To může mít vliv sestav o stavu a metriky.
+
+  Obě výstrahy můžete bezpečně ignorovat a bude automaticky ukončena v čase.  
+
+- <!-- 2368581 - IS. ASDK --> Operátory Azure stacku, pokud se zobrazí upozornění na nedostatek paměti a virtuální počítače klientů selhání nasazení *Chyba při vytváření virtuálních počítačů Fabric*, je možné, že toto razítko Azure Stack je nedostatek dostupné paměti. Použití [Azure Stack Capacity Planner](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) nejlépe pochopit dostupné kapacity pro vaše úlohy.
+
+
+#### <a name="compute"></a>Compute  
+- <!-- 2869209 – IS, ASDK --> Při použití [ **přidat AzsPlatformImage** rutiny](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0), je nutné použít **- OsUri** parametr jako identifikátor URI, kde je odeslána na disk účtu úložiště. Pokud používáte místní cesta na disku, rutina selže s následující chybou: *dlouho běžící operace se nezdařila se stavem "Failed"*. 
+
+- <!--  2966665 – IS, ASDK --> Připojení SSD spravovaných disků úrovně premium velikosti spravovaného disku virtuální počítače (DS, DSv2, Fs, Fs_V2) selže s chybou: *nepovedlo se aktualizovat disky pro virtuální počítač 'vmname' Chyba: Požadovaná operace nejde provést, protože typ účtu úložiště. Premium_LRS' není podporována pro velikost virtuálního počítače "Standard_DS/Ds_V2/FS/Fs_v2)*
+
+   Chcete-li tento problém obejít, použijte *Standard_LRS* datových disků místo *Premium_LRS disky*. Použití *Standard_LRS* datových disků nedojde ke změně vstupně-výstupních operací nebo fakturační náklady.  
+
+- <!--  2795678 – IS, ASDK --> Při použití portálu k vytvoření virtuálních počítačů (VM) o velikosti virtuálních počítačů úrovně premium (DS, Ds_v2, služby FS, FSv2) virtuální počítač se vytvoří v účtu úložiště úrovně standard. Vytvoření účtu úložiště úrovně standard neovlivňuje funkčně vstupně-výstupních operací, nebo fakturace. 
+
+   Můžete bezpečně ignorovat upozornění, že: *jste se rozhodli použít standardní disk o velikosti, která podporuje prémiové disky. To může mít vliv na výkon operačního systému a nedoporučuje se používat. Zvažte raději použití storage úrovně premium (SSD).*
+
+- <!-- 2967447 - IS, ASDK --> Škálovací sada virtuálních počítačů (VMSS) vytvořte prostředí založené na CentOS 7.2 poskytuje jako možnost pro nasazení. Vzhledem k tomu, že obrázek není k dispozici ve službě Azure Stack, vyberte jiný operační systém pro vaše nasazení nebo pomocí šablony ARM zadáním jiné image CentOS, který byl stažen před jejich nasazením na Marketplace operátorem.
+
+- <!-- TBD -  IS ASDK --> Nastavení škálování pro škálovací sady virtuálních počítačů nejsou k dispozici na portálu. Jako alternativní řešení můžete použít [prostředí Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set). Z důvodu rozdíly mezi verzemi prostředí PowerShell, je nutné použít `-Name` parametr namísto `-VMScaleSetName`.
+
+- <!-- TBD -  IS ASDK --> Při vytváření virtuálních počítačů na portálu user portal Azure Stack na portálu zobrazuje nesprávný počet datových disků, které můžete připojit virtuální počítač řady D series. Všechny podporované řady D series virtuálních počítačů může obsahovat libovolný počet datových disků jako konfiguraci Azure.
+
+- <!-- TBD -  IS ASDK --> Selhání vytvoření image virtuálního počítače neúspěšné položky, který se nedá odstranit, mohou být přidány do okna výpočetní Image virtuálního počítače.
+
+  Jako alternativní řešení vytvořte nové image virtuálního počítače s fiktivní virtuálního pevného disku, který je možné vytvářet přes Hyper-V (nový virtuální pevný disk-C:\dummy.vhd cesta-oprava SizeBytes – 1 GB). Tento proces by měla vyřešit problém, který zabraňuje odstranění položky. Pak 15 minut po vytvoření fiktivní image můžete úspěšně ho odstranit.
+
+  Potom můžete opakovat stahování image virtuálního počítače, která původně selhala.
+
+- <!-- TBD -  IS ASDK --> Pokud zřizování rozšíření na nasazení virtuálního počítače trvá příliš dlouho, uživatelé měli nechat zřizování vypršení časového limitu namísto pokusu o zastavení procesu uvolnění nebo odstranění virtuálního počítače.  
+
+- <!-- 1662991 - IS ASDK --> Diagnostika virtuálních počítačů Linux není podporována ve službě Azure Stack. Při nasazení virtuálního počítače s Linuxem s povolenou diagnostikou virtuálního počítače, nasazení se nezdaří. Nasazení se také nezdaří, pokud povolíte základní metriky virtuálního počítače s Linuxem prostřednictvím nastavení diagnostiky.
+
+- <!-- 2724961- IS ASDK --> Když se zaregistrujete **Microsoft.Insight** poskytovatele prostředků v nastavení předplatného a vytvoření virtuálního počítače s Windows pomocí hostovaného operačního systému diagnostických povolena, graf procento využití procesoru na stránce Přehled virtuálního počítače nebudou moci zobrazit data metrik.
+ 
+  Graf procento využití procesoru pro virtuální počítač, najdete **metriky** blade a zobrazit všechny podporované Windows virtuálního počítače hosta metriky.
+
+ 
+
+#### <a name="networking"></a>Sítě
+- <!-- 1766332 - IS, ASDK --> V části **sítě**, vyberete-li **vytvořit bránu VPN** nastavit připojení k síti VPN, **založenou na zásadách** je uveden jako typ sítě VPN. Nevybírejte tuto možnost. Pouze **trasy na základě** možnost je podporovaná ve službě Azure Stack.
+
+- <!-- 1902460 -  IS ASDK --> Azure Stack podporuje jediný *bránu místní sítě* na IP adresu. To platí ve všech předplatných tenanta. Po vytvoření první místní síťové brány připojení, následné pokusech o vytvoření prostředku brány místní sítě pomocí stejné IP adresy jsou zablokované.
+
+- <!-- 16309153 -  IS ASDK --> Ve virtuální síti, který byl vytvořen s nastavením serveru DNS *automatické*, změna vlastní selhání serveru DNS. Aktualizované nastavení nenasdílí do virtuálních počítačů v dané virtuální síti.
+
+- <!-- 2702741 -  IS ASDK --> Chcete-li být zachována po zastavte a Navraťte vydání není zaručena veřejné IP adresy, které jsou nasazeny pomocí metody dynamického přidělení.
+
+- <!-- 2529607 - IS ASDK --> Během Azure Stack *tajný klíč otočení*, je období, ve kterém veřejné IP adresy nedostupné přibližně 2 až 5 minut.
+
+-   <!-- 2664148 - IS ASDK --> Ve scénářích, kde tenanta je přístup ke své virtuální počítače s použitím tunelu S2S VPN kterými se mohou setkat scénář, kde pokusy o připojení selhat, pokud místní podsítě byl přidán do místní síťové brány po již vytvořit bránu. 
+
+
+<!--  #### SQL and MySQL  -->
+
+
+#### <a name="app-service"></a>App Service
+- <!-- 2352906 - IS ASDK --> Uživatelé musí registrovat poskytovatele prostředků úložiště, dřív, než vytvoří jejich první funkce Azure v rámci předplatného.
+
+- <!-- TBD - IS ASDK --> Aby bylo možné horizontální navýšení kapacity infrastruktury (pracovních procesů, správy, role front-endu), musíte použít PowerShell, jak je popsáno v poznámkách k verzi pro výpočetní prostředky.  
+
+
+#### <a name="usage"></a>Využití  
+- <!-- TBD -  IS ASDK --> Data o využití veřejné IP adresy využití měřičů zobrazuje stejné *EventDateTime* hodnotu pro každý záznam místo *TimeDate* razítko, které ukazuje, kdy se záznam vytvořil. V současné době nelze pomocí těchto dat pro monitorování přesné použití veřejné IP adresy.
+
+<!-- #### Identity -->
+
+
 
 
 ## <a name="build-11807076"></a>Sestavení 1.1807.0.76
@@ -140,7 +279,7 @@ Toto sestavení obsahuje následující vylepšení a oprav pro Azure Stack.
 
 - <!-- 2368581 - IS. ASDK --> Operátory Azure stacku, pokud se zobrazí upozornění na nedostatek paměti a virtuální počítače klientů selhání nasazení *Chyba při vytváření virtuálních počítačů Fabric*, je možné, že toto razítko Azure Stack je nedostatek dostupné paměti. Použití [Azure Stack Capacity Planner](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) nejlépe pochopit dostupné kapacity pro vaše úlohy.
 
-- <!-- TBD - IS. ASDK --> Při spuštění rutiny Test-AzureStack v koncovém bodě oprávnění (období), vygeneruje zprávu UPOZORNIT ERCS virtuálního počítače. Můžete nadále používat ASDK. 
+- <!-- TBD - IS. ASDK --> Při spuštění rutiny Test-AzureStack v koncovém bodě oprávnění (období), testu vygeneruje zprávu UPOZORNIT/selhání pro virtuální počítač ERCS. Můžete nadále používat ASDK.
 
 #### <a name="compute"></a>Compute
 - <!-- 2494144 - IS, ASDK --> Když vyberete velikost virtuálního počítače pro nasazení virtuálního počítače, některé velikosti virtuálních počítačů řady F-Series se nezobrazí jako součást modulu pro výběr velikost při vytváření virtuálního počítače. Tyto velikosti virtuálních počítačů se nezobrazí v selektoru: *F8s_v2*, *F16s_v2*, *F32s_v2*, a *F64s_v2*.  
@@ -226,7 +365,7 @@ Toto sestavení obsahuje následující vylepšení a oprav pro Azure Stack.
 
 - <!-- 2297790 - IS, ASDK --> **Azure Stack je teď zahrnuje *Syslog* klienta** jako *funkce ve verzi preview*. Tento klient umožňuje předávání protokolů auditu a zabezpečení spojených s infrastrukturou Azure Stack na Syslog serveru nebo zabezpečení událostí (SIEM) software pro správu, která je externí do služby Azure Stack. Klient protokolu Syslog v současné době podporuje pouze neověřenými připojeními UDP přes výchozí port 514. Datová část každé zprávy Syslog formátována v Common Event Format (CEF).
 
-  Chcete-li nakonfigurovat klienta Syslog, použijte **Set-SyslogServer** rutiny v privilegovaných koncový bod.
+  Chcete-li nakonfigurovat klienta Syslog, použijte **Set-SyslogServer** rutinu na privilegované koncový bod.
 
   V této verzi preview může se zobrazit následující tři výstrahy. Při zápisu ve službě Azure Stack, tyto výstrahy obsahují *popisy* a *nápravy* pokyny.
   - Název: Integrita kódu. vypnuto  
@@ -304,7 +443,7 @@ Toto sestavení obsahuje následující vylepšení a oprav pro Azure Stack.
 
   V této verzi služby Azure Stack můžete toto upozornění aktivovat nesprávně. Pokud nasazení úspěšně tenantské virtuální počítače, můžete ignorovat toto upozornění. 
   
-  Upozornění #3 nezavře automaticky. Pokud zavřít tuto výstrahu vytvoří Azure Stack stejná výstraha do 15 minut.  
+  Automaticky zavřít upozornění #3. Pokud zavřít tuto výstrahu vytvoří Azure Stack stejná výstraha do 15 minut.  
 
 - <!-- 2368581 - IS. ASDK --> Operátory Azure stacku, pokud se zobrazí upozornění na nedostatek paměti a virtuální počítače klientů selhání nasazení *Chyba při vytváření virtuálních počítačů Fabric*, je možné, že toto razítko Azure Stack je nedostatek dostupné paměti. Použití [Azure Stack Capacity Planner](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) nejlépe pochopit dostupné kapacity pro vaše úlohy.
 
@@ -383,144 +522,4 @@ Toto sestavení obsahuje následující vylepšení a oprav pro Azure Stack.
 - <!-- TBD -  IS ASDK --> Data o využití veřejné IP adresy využití měřičů zobrazuje stejné *EventDateTime* hodnotu pro každý záznam místo *TimeDate* razítko, které ukazuje, kdy se záznam vytvořil. V současné době nelze pomocí těchto dat pro monitorování přesné použití veřejné IP adresy.
 
 <!-- #### Identity -->
-
-
-## <a name="build-201805131"></a>Sestavení 20180513.1
-
-### <a name="new-features"></a>Nové funkce
-Toto sestavení obsahuje následující vylepšení a oprav pro Azure Stack.  
-
-- <!-- 1759172 - IS, ASDK --> **Nový správce předplatných**. S 1804 existují dva nové typy předplatného k dispozici na portálu. Tyto nové typy předplatného jsou pomocí nové instalace služby Azure Stack od verze 1804 kromě předplatné poskytovatele. výchozí a viditelné. *Nepoužívejte tyto nové typy předplatného s touto verzí služby Azure Stack*. <!-- We will announce the availability to use these subscription types in with a future update. -->
-
-  Tyto nové typy předplatného jsou viditelné, ale součástí větší změny pro zabezpečení předplatné poskytovatele. výchozí a aby bylo snazší nasadit sdílené prostředky, jako je hostitelem SQL servery.
-
-  Jsou nyní k dispozici předplatné tři typy:  
-  - Výchozí předplatné poskytovatele: nadále používat tento typ předplatného.
-  - Monitorování míry využívání předplatného: *nepoužívejte tento typ předplatného.*
-  - Využití předplatného: *nepoužívejte tento typ předplatného*
-
-### <a name="fixed-issues"></a>Opravené problémy
-- <!-- IS, ASDK -->  V portálu pro správu máte již aktualizovat aktualizovat dlaždici předtím, než se zobrazí informace.
-
-- <!-- 2050709 - IS, ASDK -->  Teď můžete na portálu pro správu k úpravě metrik úložiště pro službu Blob service, služba Table service a služba front.
-
-- <!-- IS, ASDK --> V části **sítě**, po kliknutí na **připojení** nastavit připojení k síti VPN, **Site-to-site (IPsec)** je teď k dispozici jenom možnost.
-
-- **Různé opravy** výkonu, stability, zabezpečení a operační systém, který se používá ve službě Azure Stack
-
-<!-- ### Changes  -->
-### <a name="additional-releases-timed-with-this-update"></a>Další verze vypršel časový limit v této aktualizaci  
-Následující jsou teď k dispozici, ale které nevyžadují aktualizaci Azure Stack 1804.
-- **Aktualizace pro Microsoft Azure Stack System Center Operations Manageru sada sledování**. Nová verze (1.0.3.0) Microsoft System Center Operations Manager monitorování Pack pro službu Azure Stack je k dispozici pro [Stáhnout](https://www.microsoft.com/download/details.aspx?id=55184). S touto verzí můžete použít instanční objekty při přidání připojené nasazení Azure stacku. Tato verze obsahuje taky prostředí správy aktualizací, které vám umožní převzít nápravné akce přímo z nástroje Operations Manager. Existují také nové řídicí panely, které zobrazení poskytovatelů prostředků a jednotek škálování, škálování jednotek uzlů.
-
-- **Nové Azure Stack verze prostředí PowerShell správce 1.3.0**.  Azure Stack Powershellu 1.3.0 je teď dostupná k instalaci. Tato verze obsahuje příkazy pro všechny poskytovatele prostředků správce ke správě služby Azure Stack.  V této verzi se přestanou nějaký obsah z Githubu nástroje Azure Stack [úložiště](https://github.com/Azure/AzureStack-Tools).
-
-   Podrobné informace o instalaci, postupujte [pokyny](.\.\azure-stack-powershell-install.md) nebo [pomáhají](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.3.0) obsahu pro Azure Stack modul 1.3.0.
-
-- **Počáteční verze Reference k rozhraní API Rest Azure Stack**. [Reference k rozhraní API pro všechny poskytovatele prostředků Azure stacku správu](https://docs.microsoft.com/rest/api/azure-stack/) je publikováno.
-
-### <a name="known-issues"></a>Známé problémy
-
-#### <a name="portal"></a>Portál
-- <!-- TBD - IS ASDK --> Možnost [otevřete novou žádost o podporu z rozevíracího seznamu](.\.\azure-stack-manage-portals.md#quick-access-to-help-and-support) z v rámci správce portálu není k dispozici. Místo toho použijte následující odkaz:     
-    - Pro Azure Stack Development Kit, použijte https://aka.ms/azurestackforum.    
-
-- <!-- 2403291 - IS ASDK --> Nemusí mít užívání vodorovný posuvník v dolní části portály správce a uživatele. Pokud nemůžete použít vodorovný posuvník, left pomocí popisu cesty přejít na předchozí okno na portálu tak, že vyberete název okna je chcete zobrazit v seznamu s popisem cesty v horní části portálu.
-  ![Navigace s popisem cesty](media/asdk-release-notes/breadcrumb.png)
-
-- <!-- TBD -  IS ASDK --> Odstraňuje se předplatné uživatele za následek osamocené prostředky. Jako alternativní řešení nejprve odstranit prostředky uživatele nebo celou skupinu prostředků a pak odstraňte předplatná uživatelů.
-
-- <!-- TBD -  IS ASDK --> Nelze zobrazit oprávnění k předplatnému pomocí na portálech Azure Stack. Jako alternativní řešení pomocí prostředí PowerShell mohl ověřit oprávnění.
-
--   <!-- TBD -  IS ASDK --> V portálu pro správu může se zobrazit Kritická výstraha pro součást Microsoft.Update.Admin. Název výstrahy, popis a nápravu všech zobrazit jako:  
-    - *Chyba: chybí šablona pro FaultType ResourceProviderTimeout.*
-
-    Toto upozornění můžete ignorovat.
-
-#### <a name="health-and-monitoring"></a>Monitorování stavu a
-- <!-- 1264761 - IS ASDK -->  Může se zobrazit upozornění *stavu řadiče* komponenta, která mají následující podrobnosti:  
-
-   Upozornění #1:
-   - Název: Infrastrukturu role není v pořádku
-   - ZÁVAŽNOST: upozornění
-   - KOMPONENTY: Kontroler stavu
-   - Popis: Kontroler stavu prezenčního signálu skener není k dispozici. To může mít vliv sestav o stavu a metriky.  
-
-  Upozornění #2:
-   - Název: Infrastrukturu role není v pořádku
-   - ZÁVAŽNOST: upozornění
-   - KOMPONENTY: Kontroler stavu
-   - Popis: Stav řadiče skener selhání není k dispozici. To může mít vliv sestav o stavu a metriky.
-
-  Obě výstrahy můžete bezpečně ignorovat. Zavře se automaticky v čase.  
-
-#### <a name="marketplace"></a>Marketplace
-- Uživatele můžete přejít na kompletní nabídku marketplace bez předplatného a vidí správce různé věci, třeba plány a nabídky. Tyto položky jsou pro uživatele nefunkční.
-
-#### <a name="compute"></a>Compute
-- <!-- TBD -  IS ASDK --> Nastavení škálování pro škálovací sady virtuálních počítačů nejsou k dispozici na portálu. Jako alternativní řešení můžete použít [prostředí Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set). Z důvodu rozdíly mezi verzemi prostředí PowerShell, je nutné použít `-Name` parametr namísto `-VMScaleSetName`.
-
-- <!-- TBD -  IS ASDK --> Při vytváření virtuálních počítačů na portálu user portal Azure Stack na portálu zobrazuje nesprávný počet datových disků, které můžete připojit k DS-series virtuálních počítačů. Virtuálních počítačů řady DS může obsahovat libovolný počet datových disků jako konfiguraci Azure.
-
-- <!-- TBD -  IS ASDK --> Selhání vytvoření image virtuálního počítače neúspěšné položky, který se nedá odstranit, mohou být přidány do okna výpočetní Image virtuálního počítače.
-
-  Jako alternativní řešení vytvořte nové image virtuálního počítače s fiktivní virtuálního pevného disku, který je možné vytvářet přes Hyper-V (nový virtuální pevný disk-C:\dummy.vhd cesta-oprava SizeBytes – 1 GB). Tento proces by měla vyřešit problém, který zabraňuje odstranění položky. Pak 15 minut po vytvoření fiktivní image můžete úspěšně ho odstranit.
-
-  Potom můžete opakovat stahování image virtuálního počítače, která původně selhala.
-
-- <!-- TBD -  IS ASDK --> Pokud zřizování rozšíření na nasazení virtuálního počítače trvá příliš dlouho, uživatelé měli nechat zřizování vypršení časového limitu namísto pokusu o zastavení procesu uvolnění nebo odstranění virtuálního počítače.  
-
-- <!-- 1662991 - IS ASDK --> Diagnostika virtuálních počítačů Linux není podporována ve službě Azure Stack. Při nasazení virtuálního počítače s Linuxem s povolenou diagnostikou virtuálního počítače, nasazení se nezdaří. Nasazení se také nezdaří, pokud povolíte základní metriky virtuálního počítače s Linuxem prostřednictvím nastavení diagnostiky.
-
-#### <a name="networking"></a>Sítě
-- <!-- 1766332 - IS, ASDK --> V části **sítě**, vyberete-li **vytvořit bránu VPN** nastavit připojení k síti VPN, **založenou na zásadách** je uveden jako typ sítě VPN. Nevybírejte tuto možnost. Pouze **trasy na základě** možnost je podporovaná ve službě Azure Stack.
-
-- <!-- 2388980 -  IS ASDK --> Po vytvoření virtuálního počítače a přidružené k veřejné IP adresy, nelze zrušit přidružení tohoto virtuálního počítače z této IP adresy. Zrušení přidružení zdánlivě fungovat, ale zůstane spojená s původní virtuální počítač dříve přiřazenou veřejnou IP adresu.
-
-  V současné době používaly pouze nové veřejné IP adresy pro nové virtuální počítače, které vytvoříte.
-
-  K tomuto chování dochází i v případě, že znovu přiřadit IP adresu do nového virtuálního počítače (obvykle označované jako *prohození virtuálních IP adres*). Všechny budoucí pokusy o připojení přes tuto IP adresu výsledkem připojení původního virtuálního počítače a ne do nové.
-
-- <!-- 2292271 - IS ASDK --> Při zvýšení maximální kvóty pro sítě prostředek, který je součástí nabídky a plán, který je přidružený k předplatnému klienta služby, nové omezení neplatí pro toto předplatné. Nový limit se však nevztahují na nových předplatných, které jsou vytvořeny po zvýšení této kvóty.
-
-  Chcete-li tento problém vyřešit, použijte doplňkový plán na zvýšení této kvóty sítě při v plánu je už přidružený k předplatnému. Další informace najdete v tématu Jak [zpřístupnit doplňkový plán](.\.\azure-stack-subscribe-plan-provision-vm.md#to-make-an-add-on-plan-available).
-
-- <!-- 2304134 IS ASDK --> Nelze odstranit odběr, který má prostředky zóny DNS nebo prostředky směrovací tabulku s ním spojená. Chcete-li úspěšně odstranit předplatné, musíte nejprve odstranit zónu DNS a směrovací tabulky prostředků z předplatného tenanta.
-
-
-- <!-- 1902460 -  IS ASDK --> Azure Stack podporuje jediný *bránu místní sítě* na IP adresu. To platí ve všech předplatných tenanta. Po vytvoření první místní síťové brány připojení, následné pokusech o vytvoření prostředku brány místní sítě pomocí stejné IP adresy jsou zablokované.
-
-- <!-- 16309153 -  IS ASDK --> Ve virtuální síti, který byl vytvořen s nastavením serveru DNS *automatické*, změna vlastní selhání serveru DNS. Aktualizované nastavení nenasdílí do virtuálních počítačů v dané virtuální síti.
-
-- <!-- TBD -  IS ASDK --> Azure Stack nepodporuje přidávání další síťová rozhraní k instanci virtuálního počítače po nasazení virtuálního počítače. Pokud virtuální počítač vyžaduje více než jedno síťové rozhraní, musí být definován v době nasazení.
-
-
-#### <a name="sql-and-mysql"></a>SQL a MySQL
-- <!-- TBD - ASDK --> Databáze hostování servery musí být vyhrazená pro použití podle prostředku zprostředkovatele a uživatelského zatížení. Nelze použít instanci, která se používá v jakékoli další příjemce, včetně služeb App Services.
-
-- <!-- IS, ASDK --> Speciální znaky, mezery a tečky, včetně nepodporuje **řady** název při vytváření SKU pro poskytovatele prostředků SQL nebo MySQL.
-
-#### <a name="app-service"></a>App Service
-- <!-- TBD -  IS ASDK --> Uživatelé musí registrovat poskytovatele prostředků úložiště, dřív, než vytvoří jejich první funkce Azure v rámci předplatného.
-
-- <!-- TBD -  IS ASDK --> Aby bylo možné horizontální navýšení kapacity infrastruktury (pracovních procesů, správy, role front-endu), musíte použít PowerShell, jak je popsáno v poznámkách k verzi pro výpočetní prostředky.
-
-#### <a name="usage"></a>Využití  
-- <!-- TBD -  IS ASDK --> Data o využití veřejné IP adresy využití měřičů zobrazuje stejné *EventDateTime* hodnotu pro každý záznam místo *TimeDate* razítko, které ukazuje, kdy se záznam vytvořil. V současné době nelze pomocí těchto dat pro monitorování přesné použití veřejné IP adresy.
-
-<!--
-#### Identity
--->
-
-
-
-#### <a name="downloading-azure-stack-tools-from-github"></a>Stažení nástroje pro Azure Stack z Githubu
-- Při použití *invoke-webrequest* rutina prostředí PowerShell pro stažení služby Azure Stack nástroje z Githubu, zobrazí chybová zpráva:     
-    -  *Invoke-webrequest: požadavek byl přerušen: Nelze vytvořit zabezpečený kanál SSL/TLS.*     
-
-  K této chybě dochází z důvodu poslední vyřazení Githubu podporu protokolu Tlsv1 a Tlsv1.1 kryptografických standardů (výchozí nastavení pro prostředí PowerShell). Další informace najdete v tématu [slabé kryptografické standardy odebrání oznámení](https://githubengineering.com/crypto-removal-notice/).
-
-<!-- #### Identity -->
-
-
 

@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/07/2018
+ms.date: 09/05/2018
 ms.author: brenduns
 ms.reviewer: harik
-ms.openlocfilehash: a76cf1394dc2c4900b370b52f3479dc03d1d8afe
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: f74a4ad0507f1c1f029befff88d733ffa719a763
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42058326"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44023507"
 ---
 # <a name="azure-stack-servicing-policy"></a>Údržba zásad služby Azure Stack
 Tento článek popisuje údržby zásady pro integrované systémy Azure Stack, a co musíte udělat, aby byl váš systém v podporovaném stavu. 
@@ -38,9 +38,10 @@ Existují dva typy balíčků aktualizací pro integrované systémy:
 Microsoft se očekává, že verze balíčků aktualizací softwaru v měsíčním tempo. Je však možné mít více nebo žádná verze aktualizace v daném měsíci. Výrobce OEM výrobci hardwaru vydávat jejich aktualizace na základě podle potřeby. 
 
 Vyhledejte si dokumentaci na tom, jak naplánovat a spravovat aktualizace a jak určit vaší aktuální verzí v [spravovat aktualizace přehled](azure-stack-updates.md). Informace o konkrétní aktualizaci včetně si ho stáhnout, naleznete v tématu poznámky k verzi pro, které aktualizace: 
+- [Aktualizace služby Azure Stack. 1808](azure-stack-update-1808.md)
 - [Aktualizace služby Azure Stack 1807](azure-stack-update-1807.md)
 - [Aktualizace služby Azure Stack 1805](azure-stack-update-1805.md)
-- [Aktualizace služby Azure Stack 1804](azure-stack-update-1804.md)
+
 
 ## <a name="hotfixes"></a>Opravy hotfix
 V některých případech společnost Microsoft poskytuje opravy hotfix pro Azure Stack, které řeší konkrétní problém, který je často preventivní nebo časovým počitadlem.  Každý opravy hotfix jsou vydány s odpovídající článek znalostní báze Microsoft s podrobnostmi o problému, příčině a řešení. 

@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 09/05/2018
 ms.author: mabrigg
-ms.openlocfilehash: 7eb82457d8c8d7e306dcbdac39510ce328cd925b
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 30cdb07f8e0d5481f34148b99fa86f2a1bb85e0b
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42054225"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44022192"
 ---
 # <a name="considerations-for-using-virtual-machines-in-azure-stack"></a>Důležité informace týkající se používání virtuálních počítačů ve službě Azure Stack
 
@@ -36,7 +36,7 @@ Virtuální počítače Azure Stack poskytují na vyžádání, škálovatelnýc
 | Kvóty virtuálních počítačů | [Kvóty](../../azure-subscription-service-limits.md#service-specific-limits) jsou nastavené microsoftem. | Správce cloudu Azure Stack musíte přiřadit kvóty, než nabízejí virtuální počítače na svoje uživatele. |
 | Rozšíření virtuálních počítačů |Azure podporuje širokou škálu rozšíření virtuálních počítačů. Další informace o dostupných rozšíření, naleznete [funkce a rozšíření virtuálních počítačů](../../virtual-machines/windows/extensions-features.md) článku.| Azure Stack podporuje podmnožinu rozšíření, které jsou k dispozici v Azure a rozšíření mají konkrétní verze. Správce cloudu Azure Stack může zvolit, jaká rozšíření, které budou k dispozici pro uživatele. Chcete-li zobrazit seznam rozšíření, která podporuje, najdete [rozšíření virtuálních počítačů](#virtual-machine-extensions) části tohoto článku. |
 | Síť virtuálních počítačů | Veřejné IP adresy přiřazené k tenantovi virtuální počítač jsou přístupné přes Internet.<br><br><br>Azure Virtual Machines má pevný název DNS | Veřejné IP adresy přiřazené k virtuálnímu počítači tenanta jsou přístupné pouze na prostředí Azure Stack Development Kit. Uživatel musí mít přístup k Azure Stack Development Kit prostřednictvím [RDP](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop) nebo [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) pro připojení k virtuálnímu počítači, který se vytvoří ve službě Azure Stack.<br><br>Virtuální počítače vytvořené v rámci konkrétní instanci služby Azure Stack mít název DNS na základě hodnoty, který je nakonfigurovaný pomocí Správce cloudu. |
-| Úložiště virtuálního počítače | Podporuje [spravované disky.](../../virtual-machines/windows/managed-disks-overview.md) | Spravované disky se zatím nepodporují ve službě Azure Stack. |
+| Úložiště virtuálního počítače | Podporuje [spravované disky.](../../virtual-machines/windows/managed-disks-overview.md) | Spravované disky jsou podporovány ve službě Azure Stack s verzí 1808 a novější. |
 | Verze rozhraní API | Azure má vždy nejnovější verze rozhraní API pro všechny součásti virtuálního počítače. | Azure Stack podporuje konkrétních služeb Azure a konkrétní verze rozhraní API pro tyto služby. Chcete-li zobrazit seznam podporovaných verzí rozhraní API, přečtěte si [verze rozhraní API](#api-versions) části tohoto článku. |
 |Skupinách dostupnosti virtuálních počítačů|Více domén selhání (2 nebo 3 oblasti)<br>Víc aktualizačních domén<br>Spravované podporu pro disky|Více domén selhání (2 nebo 3 oblasti)<br>Víc aktualizačních domén (až na 20)<br>Žádná podpora spravovaného disku|
 |Škálovací sady virtuálních počítačů|Nepodporuje automatické škálování|Automatické škálování není podporován.<br>Přidáte další instance škálovací sady s použitím webu portal, šablon Resource Manageru nebo prostředí PowerShell.

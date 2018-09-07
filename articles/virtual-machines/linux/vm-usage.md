@@ -15,15 +15,15 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 12/04/2017
 ms.author: memccror
-ms.openlocfilehash: fd93f1ad83f6627f27534eca17f91c9fe9b2cc9f
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: ab56ad07bd3da17f105bd09f2484173207d30015
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43667853"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44025060"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Principy používání virtuálních počítačů Azure
-Díky analýze dat využití Azure, může být získány výkonné consumption insights – přehledy, které umožňují lepší nákladů správy a přidělení v rámci vaší organizace. Tento dokument obsahuje podrobné informace o si podrobnosti o spotřebě Azure Compute. Podrobné informace o obecných využití Azure, přejděte na [vysvětlení vašeho vyúčtování](/billing/billing-understand-your-bill.md).
+Díky analýze dat využití Azure, může být získány výkonné consumption insights – přehledy, které umožňují lepší nákladů správy a přidělení v rámci vaší organizace. Tento dokument obsahuje podrobné informace o si podrobnosti o spotřebě Azure Compute. Podrobné informace o obecných využití Azure, přejděte na [vysvětlení vašeho vyúčtování](https://docs.microsoft.com/azure/billing/billing-understand-your-bill).
 
 ## <a name="download-your-usage-details"></a>Stáhněte si podrobnosti o využití
 Pokud chcete začít, [stáhnout podrobnosti o vašem používání](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-from-the-account-center-csv). Následující tabulka obsahuje definice a ukázkové hodnoty využití pro virtuální počítače nasazené prostřednictvím Azure Resource Manageru. Tento dokument neobsahuje podrobné informace pro virtuální počítače nasazené prostřednictvím našich Klasický model.
@@ -143,5 +143,6 @@ V modelu Classic se fakturace za prostředky agregují na úrovni Cloudovou slu�
 Storage úrovně Premium podporuje virtuální počítače se účtují za stejnou sazbu jako jiné úrovně než premium storage podporuje virtuální počítače. Liší se pouze tím náklady na úložiště. Přejděte [stránce s cenami za úložiště](https://azure.microsoft.com/pricing/details/storage/unmanaged-disks/) Další informace.
 
 ## <a name="next-steps"></a>Další postup
-Další informace o vaší podrobnosti o použití najdete v tématu [vysvětlení vašeho vyúčtování služeb Microsoft Azure.](/billing/billing-understand-your-bill.md)
+Další informace o vaší podrobnosti o použití najdete v tématu [vysvětlení vašeho vyúčtování služeb Microsoft Azure.](https://docs.microsoft.com/azure/billing/billing-understand-your-bill
+)
 

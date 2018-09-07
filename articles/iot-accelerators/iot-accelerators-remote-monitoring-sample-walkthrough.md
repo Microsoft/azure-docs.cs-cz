@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: dfe584532efeab1dbc0d2928b7afb0a6695a21ee
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 097eba4f5bcbb74d4158cc8d4135255d31e03ebd
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39184941"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44027006"
 ---
 # <a name="remote-monitoring-solution-accelerator-overview"></a>Přehled akcelerátorů řešení vzdáleného monitorování
 
@@ -42,9 +42,15 @@ Protože společnost Microsoft vydala první akcelerátory řešení se vyvinula
 
 Toto řešení zahrnuje následující součásti v části připojení k zařízení logickou architekturu:
 
-### <a name="simulated-devices"></a>Simulovaná zařízení
+### <a name="physical-devices"></a>Fyzická zařízení
 
-Toto řešení zahrnuje mikroslužeb, která umožňují Správa fondu s Simulovaná zařízení pro testování tohoto toku začátku do konce v řešení. Simulovaná zařízení:
+Připojení fyzických zařízení k řešení. Můžete implementovat chování simulovaných zařízení pomocí sady SDK pro zařízení Azure IoT.
+
+Můžete zřídit fyzické zařízení na řídicím panelu portálu řešení.
+
+### <a name="device-simulation-microservice"></a>Mikroslužby simulace zařízení
+
+Toto řešení zahrnuje [mikroslužeb simulace zařízení](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/device-simulation) , která umožňuje Správa fondu s Simulovaná zařízení z řídicího panelu řešení pro testování tohoto toku začátku do konce v řešení. Simulovaná zařízení:
 
 * Generování telemetrie zařízení cloud.
 * Reakce na volání metody typu cloud zařízení ze služby IoT Hub.
@@ -53,24 +59,24 @@ Mikroslužeb poskytuje koncový bod RESTful vám vytvoření, spuštění a zast
 
 Zřízení simulovaného zařízení na řídicím panelu portálu řešení.
 
-### <a name="physical-devices"></a>Fyzické zařízení
+### <a name="iot-hub"></a>IoT Hub
 
-Připojení fyzických zařízení k řešení. Můžete implementovat chování simulovaných zařízení pomocí sady SDK pro zařízení Azure IoT.
-
-Můžete zřídit fyzické zařízení na řídicím panelu portálu řešení.
-
-### <a name="iot-hub-and-the-iot-manager-microservice"></a>IoT Hub a správce mikroslužeb IoT
-
-[Služby IoT hub](../iot-hub/index.yml) přijímá data odesílaná ze zařízení do cloudu a zpřístupňuje `telemetry-agent` mikroslužeb.
+[Služby IoT hub](../iot-hub/index.yml) ingestuje telemetrická data odesílaná z fyzických a simulovaných zařízení do cloudu. IoT hub zpřístupní telemetrická data do služeb back-endu řešení IoT pro zpracování.
 
 Služba IoT Hub v řešení také:
 
-* Udržuje registr identit, které jsou uloženy identifikátory a ověřovací klíče všech zařízení, povolit připojení k portálu. Prostřednictvím registru identit můžete zařízení povolit nebo zakázat.
-* Jménem portálu řešení vyvolává metody v zařízeních.
+* Udržuje registr identit, které jsou uloženy identifikátory a ověřovací klíče všech zařízení, povolit připojení k portálu.
+* Vyvolá metody v zařízení jménem akcelerátor řešení.
 * Udržuje dvojčata zařízení pro všechna registrovaná zařízení. Dvojče zařízení ukládá hodnoty vlastností ohlášené zařízením. Dvojče zařízení také ukládá požadované vlastnosti nastavené na portálu řešení, aby si je zařízení při dalším připojení mohlo načíst.
 * Plánuje úlohy, které nastaví vlastnosti pro více zařízení, nebo vyvolává metody ve více zařízeních.
 
-Toto řešení zahrnuje `iot-manager` mikroslužeb pro zpracování interakce s centrem IoT, jako:
+## <a name="data-processing-and-analytics"></a>Zpracování a analýza dat
+
+Toto řešení zahrnuje následující součásti v zpracování dat a analýz součástí logickou architekturu:
+
+### <a name="iot-hub-manager-microservice"></a>Mikroslužby Správce služby IoT Hub
+
+Toto řešení zahrnuje [mikroslužeb Správce služby IoT Hub](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/iothub-manager) zpracování interakce s centrem IoT, jako:
 
 * Vytváření a správa zařízení IoT.
 * Správa dvojčata zařízení.
@@ -81,36 +87,45 @@ Tato služba také spouští služby IoT Hub dotazy se načíst zařízení, kte
 
 Mikroslužeb poskytuje koncový bod RESTful ke správě zařízení a dvojčata zařízení, vyvolání metod a spouštění dotazů služby IoT Hub.
 
-## <a name="data-processing-and-analytics"></a>Zpracování a analýza dat
+### <a name="telemetry-microservice"></a>Telemetrie mikroslužeb
 
-Toto řešení zahrnuje následující součásti v zpracování dat a analýz součástí logickou architekturu:
+[Telemetrie mikroslužeb](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/device-telemetry) poskytuje koncový bod RESTful pro čtení k telemetrii zařízení, operací CRUD u pravidla a přístup pro čtení a zápis pro definice upozornění ze služby storage.
 
-### <a name="device-telemetry"></a>Telemetrie zařízení
+### <a name="storage-adapter-microservice"></a>Mikroslužby adaptér úložiště
 
-Toto řešení zahrnuje dvě mikroslužeb pro zpracování telemetrie zařízení.
+[Mikroslužeb adaptér úložiště](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/storage-adapter) spravuje páry klíč hodnota, poskytuje abstrakci úložiště sémantikou služby a nabízí ten samý jednoduché rozhraní pro ukládání dat libovolný formát pomocí služby Azure Cosmos DB.
 
-[Agenta telemetrie](https://github.com/Azure/telemetry-agent-dotnet) mikroslužeb:
+Hodnoty jsou uspořádány do kolekce. Můžete pracovat na jednotlivé hodnoty nebo načítání změn celé kolekce. Komplexní datové struktury jsou serializovat klienty a spravovat jako datovou část prostého textu.
 
-* Telemetrická data se uloží ve službě Azure Cosmos DB.
-* Analyzuje datový proud telemetrie ze zařízení.
-* Generuje alarmy podle definovaných pravidel.
+Tato služba poskytuje koncový bod RESTful pro operace CRUD s páry klíč hodnota. Hodnoty
 
-Alarmy se ukládají ve službě Azure Cosmos DB.
+### <a name="cosmos-db"></a>Databáze Cosmos
 
-[Agenta telemetrie](https://github.com/Azure/telemetry-agent-dotnet) mikroslužeb umožňuje číst telemetrická data odesílaná ze zařízení na portálu řešení. Portál řešení také využívá tuto službu do:
+Standardní nasazení akcelerátoru řešení používá [služby Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/) jako jeho hlavní úložiště služby.
 
-* Definovat pravidla monitorování, jako je například prahové hodnoty, které aktivují upozornění
-* Načte seznam posledních alarmy.
+### <a name="azure-stream-analytics-manager-microservice"></a>Azure Stream Analytics správce mikroslužeb
 
-Koncový bod RESTful, poskytuje tato mikroslužeb použijte ke správě telemetrie, pravidel a alarmů.
+[Mikroslužeb Azure Stream Analytics správce](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/asa-manager) spravuje úlohy Azure Stream Analytics (ASA), včetně nastavení jejich konfigurace, spouštění a zastavování je a jejich stavu monitorování.
 
-### <a name="storage"></a>Úložiště
+Úlohy Azure Stream Analytics podporuje dvě referenční datové sady. Jeden datový soubor definuje pravidla a jeden definuje skupiny zařízení. Referenční data pravidla se generuje z informace spravuje mikroslužby telemetrická data. Správce mikroslužeb Azure Stream Analytics transformuje pravidla telemetrie na logiku zpracování datového proudu.
 
-[Adaptér úložiště](https://github.com/Azure/pcs-storage-adapter-dotnet) mikroslužba je adaptér před hlavní úložiště služba používaná pro akcelerátor řešení. Poskytuje jednoduché kolekce a úložiště klíč / hodnota.
+Referenční data pro skupiny zařízení slouží k identifikaci která skupina platná pravidla pro příchozí zprávy telemetrická data. Skupiny zařízení spravuje mikroslužby konfigurace a použití dotazů na dvojčata zařízení Azure IoT Hub.
 
-Standardní nasazení akcelerátoru řešení používá jako jeho hlavní úložiště služby Azure Cosmos DB.
+### <a name="azure-stream-analytics"></a>Azure Stream Analytics
 
-Databáze Azure Cosmos DB ukládá data v akcelerátoru řešení. **Adaptér úložiště** mikroslužeb funguje jako adaptér pro mikroslužby v řešení pro přístup ke službám úložiště.
+[Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/) je modul pro zpracování událostí, který umožňuje zkoumat velké objemy dat streamované ze zařízení.
+
+### <a name="configuration-microservice"></a>Konfigurace mikroslužeb
+
+[Konfigurace mikroslužeb](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/config) poskytuje koncový bod RESTful pro operací CRUD u skupiny zařízení, nastavení řešení a nastavení uživatele v akcelerátoru řešení. Funguje to mikroslužby adaptér úložiště se zachovat data konfigurace.
+
+### <a name="authentication-and-authorization-microservice"></a>Ověřování a autorizace mikroslužeb
+
+[Ověřování a autorizace mikroslužeb](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/auth) slouží ke správě uživatelů, oprávnění pro přístup k akcelerátoru řešení. Správa uživatelů lze provést pomocí všech poskytovatelů služeb identita, která podporuje [OpenId Connect](http://openid.net/connect/).
+
+### <a name="azure-active-directory"></a>Azure Active Directory
+
+Standardní nasazení akcelerátoru řešení používá [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) jako poskytovatele OpenID Connect. Azure Active Directory uchovává informace o uživateli a zajišťuje, že se certifikáty pro ověření tokenů JWT token podpisů. 
 
 ## <a name="presentation"></a>Prezentace
 
@@ -122,16 +137,16 @@ Toto řešení zahrnuje následující součásti v prezentaci součástí logic
 * Je stylem CSS.
 * Komunikuje s veřejný internetový mikroslužeb prostřednictvím volání AJAX.
 
-Uživatelské rozhraní zobrazí všechny funkce akcelerátor řešení a komunikuje s dalšími službami, jako:
+Uživatelské rozhraní zobrazí všechny funkce akcelerátoru řešení a komunikuje s další mikroslužeb, jako:
 
-* [Ověřování](https://github.com/Azure/pcs-auth-dotnet) mikroslužeb pro ochranu dat uživatele.
-* [Iothub-manager](https://github.com/Azure/iothub-manager-dotnet) mikroslužeb k zobrazení a správa zařízení IoT.
+* Ověřování a autorizace mikroslužeb pro ochranu dat uživatele.
+* Mikroslužby Správce služby IoT Hub k zobrazení a správa zařízení IoT.
 
-[Uživatelského rozhraní config](https://github.com/Azure/pcs-config-dotnet) mikroslužeb umožňuje ukládat a načítat nastavení konfigurace uživatelského rozhraní.
+Konfigurace mikroslužeb umožňuje ukládat a načítat nastavení konfigurace uživatelského rozhraní.
 
 ## <a name="next-steps"></a>Další postup
 
-Pokud chcete prozkoumat dokumentaci zdrojového kódu a pro vývojáře, začněte s jedním dva hlavní úložiště GitHub:
+Pokud chcete prozkoumat dokumentaci zdrojového kódu a pro vývojáře, začněte s jedním ze dvou úložišť GitHub:
 
 * [Akcelerátor řešení vzdálené monitorování s Azure IoT (.NET)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/).
 * [Akcelerátor řešení vzdálené monitorování s Azure IoT (Java)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java).

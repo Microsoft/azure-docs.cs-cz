@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2018
 ms.author: jainr
-ms.openlocfilehash: 4d95fc25ed6f2f2efec8313e5b208b3cccbb619f
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 6de1832dde1764b2655d4c34643d6a026e198f64
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38968787"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44052220"
 ---
 # <a name="devops-for-artificial-intelligence-ai-applications-creating-continuous-integration-pipeline-on-azure-using-docker-and-kubernetes"></a>DevOps pro aplikace s umělou inteligencí (AI): vytvoření kanálu průběžné integrace v Azure pomocí Dockeru a Kubernetes
 Aplikace AI jsou často dvěma datovými proudy práce, datovým vědcům sestavování modelů strojového učení a vývojáře aplikací, vytváření aplikace, která bude vystavená koncovým uživatelům využívat. V tomto článku jsme ukazují, jak implementovat průběžné integrace (CI) / průběžné doručování (CD) kanálů pro aplikaci AI. Aplikace AI je kombinací kódu aplikace, které jsou vložené s modelem které je předem vytrénované machine learning (ML). Pro účely tohoto článku jsme pretrained modelu načítají z účtu úložiště objektů blob v Azure privátní, může to být účet AWS S3. Pro článek budeme používat webovou aplikaci flask python jednoduché.
@@ -65,7 +65,7 @@ Architektura kanálu je uvedena níže.
 11. DNS server předává požadavek na nástroj pro vyrovnávání zatížení a odešle odpověď zpět uživateli.
 
 ## <a name="next-steps"></a>Další postup
-* Odkazovat [kurzu]((https://github.com/Azure/DevOps-For-AI-Apps/blob/master/Tutorial.md)) sledovat podrobnosti a implementovat vlastní kanál CI/CD pro vaši aplikaci.
+* Odkazovat [kurzu](https://github.com/Azure/DevOps-For-AI-Apps/blob/master/Tutorial.md) sledovat podrobnosti a implementovat vlastní kanál CI/CD pro vaši aplikaci.
 
 ## <a name="references"></a>Odkazy
 * [Vědecké zpracování týmových dat (TDSP)](https://aka.ms/tdsp)

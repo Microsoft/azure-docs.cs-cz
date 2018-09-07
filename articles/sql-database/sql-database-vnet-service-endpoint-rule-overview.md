@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/28/2018
 ms.reviewer: carlrab
 ms.author: dmalik
-ms.openlocfilehash: 223a8da0c3c940c57dfc58d9cc87a19ae45a64eb
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: 38806b3dbf47b21885ef704cfec8be3c491a66a0
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43143806"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44055382"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database-and-sql-data-warehouse"></a>Použití koncové body služeb virtuální sítě a pravidel pro Azure SQL Database a SQL Data Warehouse
 
@@ -184,7 +184,7 @@ Pokud se rozhodnete tuto funkci používat s účtem úložiště, který se pou
 PolyBase se běžně používá k načtení dat do Azure SQLDW z účtů úložiště. Pokud účet úložiště, které se načítají data z omezuje přístup jenom na sadu podsítí virtuální sítě, dojde k přerušení připojení technologie PolyBase k účtu. Existuje omezení rizik pro tento, a můžete kontaktovat podporu Microsoftu pro další informace.
 
 #### <a name="azure-sqldb-blob-auditing"></a>Objekt Blob Azure SQLDB auditování
-Auditování objektů BLOB nahraje protokoly auditu do účtu úložiště. Pokud tento účet úložiště používá funkce koncových bodů služby ECYKLACI dojde k přerušení připojení z Azure SQLDB do účtu úložiště.
+Auditování objektů BLOB nahraje protokoly auditu do účtu úložiště. Pokud tento účet úložiště používá funkce koncových bodů služby virtuální sítě dojde k přerušení připojení z Azure SQLDB do účtu úložiště.
 
 ## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>Přidání pravidla brány Firewall virtuální sítě k vašemu serveru neaktivuje na koncové body služby virtuální sítě
 
@@ -254,7 +254,7 @@ Podsíť, která je označena jako konkrétní koncový bod služby virtuální 
 
 ### <a name="azure-portal-steps"></a>Azure portal kroky
 
-1. Přihlaste se k [webu Azure portal][http-azure-portal-link-ref-477t].
+1. Přihlaste se na web [Azure Portal][http-azure-portal-link-ref-477t].
 
 2. Přejděte na portál a **SQL servery** &gt; **Brána Firewall / virtuální sítě**.
 

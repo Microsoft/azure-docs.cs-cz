@@ -1,6 +1,7 @@
 ---
-title: Vysvětlení datového úložiště v LUIS – Azure | Dokumentace Microsoftu
-description: Zjistěte, jak data uložená v Language Understanding (LUIS)
+title: Ukládání dat v LUIS – Language Understanding
+titleSuffix: Azure Cognitive Services
+description: Zjistěte, jak data uložená v Language Understanding (LUIS). Služba LUIS ukládá data šifrovaná v úložišti Azure dat. odpovídající oblast učená klíčem.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
@@ -9,14 +10,14 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: diberry
-ms.openlocfilehash: e4e289db0803a127bdbff5122095ae2125cdbb38
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: a34426efd998a5573277e9129b832f5167c5da5e
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226188"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44022375"
 ---
-# <a name="data-storage-and-removal"></a>Úložiště dat a odstranění
+# <a name="data-storage-and-removal-in-language-understanding-luis-cognitive-services"></a>Úložiště dat a odebírání ve službě Cognitive Services Language Understanding (LUIS)
 Služba LUIS ukládá data šifrovaná v úložišti Azure dat. odpovídající oblast učená klíčem. Tato data jsou ukládána po dobu 30 dnů. 
 
 ## <a name="export-and-delete-app"></a>Exportovat a odstranit aplikaci

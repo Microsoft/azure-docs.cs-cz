@@ -9,14 +9,14 @@ ms.service: sql-database
 ms.prod_service: sql-database, sql-data-warehouse
 ms.custom: security
 ms.topic: conceptual
-ms.date: 08/15/2018
+ms.date: 09/07/2018
 ms.author: carlrab
-ms.openlocfilehash: 7dbd2585628c64f5baf7df6083e38217d00953be
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 4abdbac44f4730d15c36d587190db1f95ea54d19
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42058340"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44050724"
 ---
 # <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>Řízení a udělování přístupu k databázi SQL Database a SQL Data Warehouse
 
@@ -49,7 +49,7 @@ Jako správce je možné nakonfigurovat jeden účet Azure Active Directory, a t
 - Můžete zobrazit `sys.sql_logins` systémové tabulky.
 
 ### <a name="configuring-the-firewall"></a>Konfigurace brány firewall
-Pokud je nakonfigurovaná brána firewall na úrovni serveru pro určitou IP adresu nebo rozsah IP adres, může se **správce SQL serveru** a **správce Azure Active Directory** připojit k hlavní databázi a všem uživatelským databázím. Počáteční bránu firewall na úrovni serveru je možné nakonfigurovat na webu [Azure Portal](sql-database-get-started-portal.md), pomocí prostředí [PowerShell](sql-database-get-started-powershell.md) nebo pomocí rozhraní [REST API](https://msdn.microsoft.com/library/azure/dn505712.aspx). Po vytvoření připojení můžete konfigurovat další pravidla brány firewall na úrovni serveru také pomocí jazyka [Transact-SQL](sql-database-configure-firewall-settings.md).
+Pokud je nakonfigurovaná brána firewall na úrovni serveru pro určitou IP adresu nebo rozsah IP adres, může se **správce SQL serveru** a **správce Azure Active Directory** připojit k hlavní databázi a všem uživatelským databázím. Počáteční bránu firewall na úrovni serveru je možné nakonfigurovat na webu [Azure Portal](sql-database-get-started-portal.md), pomocí prostředí [PowerShell](sql-database-powershell-samples.md) nebo pomocí rozhraní [REST API](https://msdn.microsoft.com/library/azure/dn505712.aspx). Po vytvoření připojení můžete konfigurovat další pravidla brány firewall na úrovni serveru také pomocí jazyka [Transact-SQL](sql-database-configure-firewall-settings.md).
 
 ### <a name="administrator-access-path"></a>Cesta pro přístup správce
 Pokud je brána firewall na úrovni serveru správně nakonfigurovaná, může se **správce SQL serveru** a **správce Azure Active Directory** připojit pomocí klientských nástrojů, jako jsou SQL Server Management Studio nebo SQL Server Data Tools. Jenom nejnovější nástroje poskytují všechny funkce a možnosti. Následující diagram znázorňuje typickou konfiguraci pro dva účty správce.

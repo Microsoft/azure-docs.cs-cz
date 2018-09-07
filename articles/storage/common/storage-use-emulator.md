@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/10/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: af2a3da788fd26387ccdcc36422ffa5b11893212
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 529612aeecfcea1d775c2f4359c5135ca3c6885e
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42888079"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44052539"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Použití emulátoru úložiště Azure pro vývoj a testování
 
@@ -68,7 +68,7 @@ Nástroj příkazového řádku emulátor úložiště můžete inicializovat em
 
   Můžete také použít následující příkaz, který přesměruje emulátor používat výchozí instanci SQL serveru:
 
-  `AzureStorageEmulator.exe init /server .\\`
+  `AzureStorageEmulator.exe init /server .`
 
   Nebo můžete použít následující příkaz, který znovu inicializuje databázi na instanci LocalDB výchozí:
 
@@ -93,10 +93,10 @@ Některé knihovny klienta úložiště Azure, jako je například knihovna pro 
 SAS token můžete vygenerovat také pomocí Azure Powershellu. Následující příklad generuje token SAS s úplnými oprávněními pro kontejner objektů blob:
 
 1. Instalace Azure Powershellu, pokud jste tak dosud neučinili (pomocí nejnovější verze prostředí Azure PowerShell se doporučuje rutiny). Pokyny k instalaci, naleznete v tématu [nainstalovat a nakonfigurovat Azure PowerShell](/powershell/azure/install-azurerm-ps).
-2. Otevřete prostředí Azure PowerShell a spuštěním následujících příkazů nahraďte `ACCOUNT_NAME` a `ACCOUNT_KEY==` se svými přihlašovacími údaji a `CONTAINER_NAME` s názvem podle svého výběru:
+2. Otevřete prostředí Azure PowerShell a spuštěním následujících příkazů nahraďte `CONTAINER_NAME` s názvem podle svého výběru:
 
 ```powershell
-$context = New-AzureStorageContext -StorageAccountName "ACCOUNT_NAME" -StorageAccountKey "ACCOUNT_KEY=="
+$context = New-AzureStorageContext -Local
 
 New-AzureStorageContainer CONTAINER_NAME -Permission Off -Context $context
 
@@ -108,7 +108,7 @@ New-AzureStorageContainerSASToken -Name CONTAINER_NAME -Permission rwdl -ExpiryT
 Výsledný sdíleného přístupového podpisu URI pro nový kontejner by měl vypadat přibližně:
 
 ```
-https://storageaccount.blob.core.windows.net/sascontainer?sv=2012-02-12&se=2015-07-08T00%3A12%3A08Z&sr=c&sp=wl&sig=t%2BbzU9%2B7ry4okULN9S0wst%2F8MCUhTjrHyV9rDNLSe8g%3Dsss
+http://127.0.0.1:10000/devstoreaccount1/sascontainer?sv=2012-02-12&se=2015-07-08T00%3A12%3A08Z&sr=c&sp=wl&sig=t%2BbzU9%2B7ry4okULN9S0wst%2F8MCUhTjrHyV9rDNLSe8g%3Dsss
 ```
 
 Sdílený přístupový podpis vytvořené v tomto příkladu je platný jeden den. Podpis uděluje plný přístup (čtení, zápisu, delete, list) pro objekty BLOB v kontejneru.

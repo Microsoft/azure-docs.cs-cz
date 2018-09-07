@@ -1,6 +1,6 @@
 ---
-title: Přidání projevů příklad v aplikacích LUIS | Dokumentace Microsoftu
-titleSuffix: Azure
+title: Přidání projevů příklad v aplikace LUIS
+titleSuffix: Azure Cognitive Services
 description: Informace o přidání projevů v aplikacích Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
@@ -8,14 +8,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: cf6fc131a1ae2ba0a77bdbeda942c9f85aadd189
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: eb859dfd2dca37415d074e8a0398be37fcc0a6b8
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226283"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44051762"
 ---
 # <a name="add-example-utterances-and-label-with-entities"></a>Přidejte příklad projevy a popisek s entitami
 

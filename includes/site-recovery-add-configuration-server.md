@@ -1,3 +1,21 @@
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: site-recovery
+author: rayne-wiselman
+manager: carmonm
+ms.service: site-recovery
+ms.topic: include
+ms.date: 09/06/2018
+ms.author: raynew
+ms.custom: include file
+ms.openlocfilehash: 2ca4916d48da6fe8a2c061056a1ea0fed9a78bb6
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44058369"
+---
 1. Spusťte instalační soubor sjednocené instalace.
 2. V **před zahájením**vyberte **nainstalovat konfigurační server a procesový server**.
 
@@ -21,10 +39,7 @@
 7. Na stránce **Konfigurace MySQL** vytvořte přihlašovací údaje pro přihlašování k nainstalované instanci serveru MySQL.
 
     ![MySQL](./media/site-recovery-add-configuration-server/combined-wiz6.png)
-8. Na stránce **Podrobnosti o prostředí** vyberte, zda se chystáte replikovat virtuální počítače VMware. Pokud se instalační program zkontroluje, že je nainstalované rozhraní PowerCLI 6.0.
-
-    ![MySQL](./media/site-recovery-add-configuration-server/combined-wiz7.png)
-
+8. V **podrobnosti o prostředí**, vyberte Ne, pokud provádíte replikaci virtuálních počítačů Azure Stack nebo fyzické servery. 
 9. Na stránce **Umístění instalace** vyberte, kam chcete nainstalovat binární soubory a ukládat mezipaměť. Vybraná jednotka musí mít minimálně 5 GB dostupného místa na disku, ale pro mezipaměť doporučujeme jednotku alespoň s 600 GB volného místa.
 
     ![Umístění instalace](./media/site-recovery-add-configuration-server/combined-wiz8.png)

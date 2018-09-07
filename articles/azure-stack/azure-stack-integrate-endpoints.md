@@ -6,18 +6,19 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 08/30/2018
+ms.date: 09/05/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
 keywords: ''
-ms.openlocfilehash: 4aaba753a8d61d60cb053a4aa164b5be0a3c50fa
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 26ee1c8f02a0a4e5aa5048a7a02929c448106ffd
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307604"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44024954"
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Azure Stack – integrace datových center – publikování koncových bodů
+
 Azure Stack nastaví virtuálních IP adres (VIP) pro jeho infrastrukturu role. Tyto virtuální IP adresy se přidělují z fondu veřejných IP adres. Každý virtuální IP adresy je zabezpečený pomocí seznam řízení přístupu (ACL) ve vrstvě softwarově definované sítě. Seznamy ACL se taky používají napříč fyzické přepínače (tory a BMC) k další posílení zabezpečení řešení. Položka DNS se vytvoří pro každý koncový bod v zóně DNS o externí zadaný v době nasazení.
 
 
@@ -39,12 +40,14 @@ Interní infrastrukturu virtuálních IP adres nejsou uvedené, protože nejsou 
 |---------|---------|---------|---------|
 |AD FS|služby AD FS.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*|HTTPS|443|
 |Portál (správce)|Adminportal.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*|HTTPS|443<br>12495<br>12499<br>12646<br>12647<br>12648<br>12649<br>12650<br>13001<br>13003<br>13010<br>13011<br>13012<br>13020<br>13021<br>13026<br>30015|
+|Adminhosting | *.adminhosting. \<oblast >. \<plně kvalifikovaný název domény > | HTTPS | 443 |
 |Azure Resource Manager (správce)|Adminmanagement.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*|HTTPS|443<br>30024|
 |Portál (uživatel)|Portál.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*|HTTPS|443<br>12495<br>12649<br>13001<br>13010<br>13011<br>13012<br>13020<br>13021<br>30015<br>13003|
 |Azure Resource Manageru (uživatel)|Správa.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*|HTTPS|443<br>30024|
 |Graph|graf.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*|HTTPS|443|
 |Seznam odvolaných certifikátů|Seznam CRL.*&lt;oblast >.&lt; plně kvalifikovaný název domény >*|HTTP|80|
 |DNS|&#42;.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*|TCP A UDP|53|
+|Hostování | * .hosting. \<oblast >. \<plně kvalifikovaný název domény > | HTTPS | 443 |
 |Key Vault (uživatel)|&#42;.Vault.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*|HTTPS|443|
 |Key Vault (správce)|&#42;.adminvault.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*|HTTPS|443|
 |Fronta úložiště|&#42;.queue.*&lt;region>.&lt;fqdn>*|HTTP<br>HTTPS|80<br>443|

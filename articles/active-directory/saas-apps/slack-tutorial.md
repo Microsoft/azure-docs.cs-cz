@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 8f79926d0d4729c6ad939bc604e9eb885dbe9f03
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b742f3eb9124093bcf0c3c912bbae0367cdcce56
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421237"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44053835"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-slack"></a>Kurz: Integrace Azure Active Directory se službou Slack
 
@@ -37,7 +37,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s Slack, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Slack jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Konfigurace integrace Slack do služby Azure AD, budete muset přidat Slack z Ga
 
 **Chcete-li přidat Slack z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
@@ -114,11 +114,8 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     a. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<companyname>.slack.com`
 
-    b. V **identifikátor** textového pole zadejte adresu URL: `https://slack.com`
+    b. V **identifikátor** textové pole, zaktualizujte příslušnou hodnotu přihlašovací adresa URL. Toto je vaše doména pracovního prostoru. Příklad: `https://contoso.slack.com`
 
-    > [!NOTE] 
-    > Hodnota není skutečný. Budete muset zaktualizujte příslušnou hodnotu skutečné přihlašovací adresa URL. Kontakt [tým podpory Slack](https://slack.com/help/contact) má být získána hodnota.
-     
 1. Slack aplikace očekává, že kontrolní výrazy SAML v určitém formátu. Nakonfigurujte následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnotami těchto atributů z "**atributy uživatele**" části na stránce aplikací pro integraci. Následující snímek obrazovky ukazuje příklad pro tuto.
     
     ![Konfigurace jednotného přihlašování](./media/slack-tutorial/tutorial_slack_attribute.png)

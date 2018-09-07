@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 2ea1c337b4193997039876a05e71fb0088d455b1
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 4df929e8a185a04aef5cb13f30c19b0db707e765
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37921490"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44021989"
 ---
 # <a name="support-matrix-for-replication-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>Matice podpory pro replikaci virtuálních počítačů VMware a fyzické servery do sekundární lokality
 
@@ -99,7 +99,7 @@ Přidání nebo odebrání horké disku | Ano
 Vyloučení disku | Ano 
 Více cest (MPIO) | neuvedeno 
 
-## <a name="vaults"></a>Trezory služby
+## <a name="vaults"></a>Trezory
 
 **Akce** | **Podporuje se** 
 --- | --- 
@@ -112,7 +112,7 @@ Služba Mobility koordinuje replikaci mezi místními servery VMware nebo fyzick
 
 **Aktualizace** | **Podrobnosti** 
 --- | --- 
-Aktualizace řešení Scout | [Další informace o a stáhnout](/vmware-physical-secondary-disaster-recovery.md#updates) nejnovější aktualizace Scout | Jsou kumulativní aktualizace Scout.
+Aktualizace řešení Scout | [Další informace o a stáhnout](vmware-physical-secondary-disaster-recovery.md#updates) nejnovější aktualizace Scout | Jsou kumulativní aktualizace Scout.
 Aktualizace součástí | Aktualizace Scout zahrnují aktualizace pro všechny součásti, včetně RX serveru, konfiguračního serveru, proces a hlavní cílové servery, servery vContinuum a zdrojových serverů, které chcete chránit.<br/><br/> [Další informace](vmware-physical-secondary-disaster-recovery.md#download-and-install-component-updates).
 
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/05/2018
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: 5a6dcddce3337989a7a34515570ac3277aa1edd5
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 52d0706177482e162d1f4bc038c967a4596fd3b3
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841926"
+ms.locfileid: "44024854"
 ---
 # <a name="register-azure-stack-with-azure"></a>Registrace Azure Stack s Azure
 
@@ -45,7 +45,7 @@ Předtím, než zaregistrujete, budete potřebovat následující na místě:
 
 Před zaregistrováním služby Azure Stack s Azure, musíte mít:
 
-- ID předplatného pro předplatné Azure. K získání ID, přihlaste se k Azure, klikněte na tlačítko **další služby** > **předplatná**, klikněte na předplatné, které chcete použít, a v části **Essentials** najdete ID předplatného.
+- ID předplatného pro předplatné Azure. K získání ID, přihlaste se k Azure, klikněte na tlačítko **všechny služby**. Potom v části **Obecné** vyberte **předplatná**, klikněte na předplatné, které chcete použít, a v části **Essentials** najdete ID předplatného.
 
   > [!Note]  
   > Německo Cloudová předplatná se momentálně nepodporují.
@@ -284,7 +284,7 @@ Volitelně můžete použít rutinu Get-obsah tak, aby odkazoval na soubor, kter
 Pomocí těchto kroků můžete ověřit, že Azure Stack je úspěšně zaregistrovaný s Azure.
 
 1. Přihlaste se ke službě Azure Stack [portálu správce](https://docs.microsoft.com/azure/azure-stack/azure-stack-manage-portals#access-the-administrator-portal): https&#58;/ / adminportal. *&lt;oblast >. &lt;plně kvalifikovaný název domény >*.
-2. Vyberte **další služby** > **Marketplace správu** > **z Azure**.
+2. Vyberte **všechny služby**a potom v části **správu** vyberte **Marketplace správu** > **přidat z Azure**.
 
 Pokud se zobrazí seznam položek, které jsou k dispozici od Azure (např. WordPress), s aktivací bylo úspěšné. V odpojených prostředích položky Azure marketplace v Tržišti Azure Stack neuvidíte.
 

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: af7d4253b4e631295f8c04c96601e932595af9c1
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: bb5e58c0cb06baabf76d7d0443e94b368549176f
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697760"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44051336"
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>Jak vytvořit a nakonfigurovat modul Integration Runtime
 Integration Runtime (IR) je výpočetní infrastruktura, službou Azure Data Factory používá k poskytování možnosti integrace dat v různých síťových prostředích. Podrobnosti o prostředí IR najdete v tématu [přehled modulu Runtime integrace](concepts-integration-runtime.md).
@@ -30,16 +30,16 @@ Toto téma představuje, jak můžete vytvořit a nakonfigurovat místním IR.
 1. Vytvoření místního prostředí integration runtime. Uživatelské rozhraní ADF můžete použít k vytváření v místním prostředí IR. Tady je příklad Powershellu:
 
     ```powershell
-    Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $resouceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
+    Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
     ```
 2. Stáhněte a nainstalujte místní prostředí integration runtime (v místním počítači).
 3. Načíst ověřovací klíč a registrace místního prostředí integration runtime s klíčem. Tady je příklad Powershellu:
 
     ```powershell
-    Get-AzureRmDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resouceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime.  
+    Get-AzureRmDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime.  
     ```
 
-## <a name="setting-up-self-hosted-ir-on-azure-vm-using-azure-resource-manager-template-automatation"></a>Nastavení místní prostředí IR na virtuálním počítači Azure pomocí šablony Azure Resource Manageru (automatation)
+## <a name="setting-up-self-hosted-ir-on-azure-vm-using-azure-resource-manager-template-automation"></a>Nastavení místní prostředí IR na virtuálním počítači Azure pomocí šablony Azure Resource Manageru (Automatizace)
 Můžete automatizovat instalace v místním prostředí IR na virtuálním počítači Azure pomocí [tuto šablonu Azure Resource Manageru](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vms-with-selfhost-integration-runtime). To poskytuje snadný způsob, jak máte plně funkční místní prostředí IR uvnitř virtuální sítě Azure s vysokou Avalaibility a škálovatelnost (za předpokladu, můžete nastavit počet uzlů na 2 nebo vyšší).
 
 ## <a name="command-flow-and-data-flow"></a>Příkaz toku a toku dat

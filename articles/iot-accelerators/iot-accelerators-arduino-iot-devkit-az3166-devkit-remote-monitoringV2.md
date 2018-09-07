@@ -9,12 +9,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: isacabe
-ms.openlocfilehash: 92ce85a3cc94702468a13348d3a41667498c68f5
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: d3175290c1a7fca5e35f4438392f29324868f1a3
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43187387"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054912"
 ---
 # <a name="connect-mxchip-iot-devkit-az3166-to-the-iot-remote-monitoring-solution-accelerator"></a>Připojení MXChip IoT DevKit AZ3166 se k akcelerátoru řešení vzdáleného monitorování IoT
 
@@ -27,64 +27,35 @@ V tomto kurzu se dozvíte, jak spustit ukázkovou aplikaci na váš DevKit odesl
 
 ## <a name="what-you-need"></a>Co potřebujete
 
-Dokončit [– Příručka Začínáme](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) na:
+Projděte si [– Příručka Začínáme](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) a **dokončit pouze v následujících částech**:
 
-* Mají vaše DevKit připojení k Wi-Fi
+* Připravte svůj hardware
+* Konfigurace Wi-Fi
+* Začněte používat DevKit
 * Příprava vývojového prostředí
 
 
-## <a name="open-the-remotemonitoring-sample"></a>Otevřete ukázku RemoteMonitoring
+## <a name="open-the-remotemonitoring-sample-in-vs-code"></a>Otevřete ukázku RemoteMonitoring ve VS Code
 
-1. Odpojte DevKit z vašeho počítače, pokud je připojený.
+1. Odpojte MXChip DevKit z vašeho počítače, pokud je připojený.
 
 2. Spusťte VS Code.
 
-3. Připojení DevKit k vašemu počítači. VS Code automaticky detekuje vaše DevKit a otevře na následujících stránkách:
-  * Úvodní stránka DevKit.
-  * Příklady Arduino: Praktické ukázky, které vám umožní začít DevKit.
+3. Připojení MXChip DevKit k vašemu počítači.
 
-4. Rozbalte na levé straně **ARDUINO příklady** vyhledejte **příklady MXCHIP AZ3166 > AzureIoT**a vyberte **RemoteMonitoringv2**. Otevře se nové okno VS Code s složky projektu do něj.
+4. Použití `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) otevřete paletu příkazů, zadejte **Arduino**a poté vyhledejte a vyberte **Arduino: Příklady**.
+
+ 5. Rozbalte na levé straně **ARDUINO příklady** vyhledejte **příklady MXCHIP AZ3166 > AzureIoT**a vyberte **RemoteMonitoringv2**. Otevře se nové okno VS Code s složky projektu do něj.
+
+  > [!NOTE]
+  > Pokud se vám nezobrazí **příklady MXCHIP**, použijte `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) otevřete paletu příkazů a typ **Arduino panel Správce**. Vyberte ho a pak vyhledejte **AZ3166** v rámci panelu správce. Pak by měl být opakováním kroku 5 výše a podívejte se na příklady.
 
   ![Otevřít projekt vzdáleného monitorování](./media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2/azure-iot-suite-arduino-examples.png)
-
 
   > [!NOTE]
   > Pokud máte náhodou zavřete podokno, můžete ho znovu otevřít. Použití `Ctrl+Shift+P` (macOS: `Cmd+Shift+P`) otevřete paletu příkazů, zadejte **Arduino**a poté vyhledejte a vyberte **Arduino: Příklady**.
 
-## <a name="add-a-new-physical-device"></a>Přidání nového fyzického zařízení
-
-Na portálu přejděte na **zařízení** a existuje, klikněte v **+ nové zařízení** tlačítko. 
-
-![Přidání nového zařízení](./media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2/azure-iot-suite-add-device.png)
-
-*Nový formulář zařízení* by mělo být vyplněno.
-1. Klikněte na tlačítko **fyzické** v *typ zařízení* oddílu.
-2. Definovat vlastní ID zařízení (třeba *MXChip* nebo *AZ3166*).
-3. Zvolte **automaticky vygenerovat klíče** v *ověřovací klíč* oddílu.
-4. Klikněte na tlačítko *použít* tlačítko.
-
-![Přidání nového formuláře zařízení](./media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2/azure-iot-suite-add-new-device-form.png)
-
-Počkejte, dokud na portálu se dokončí zřizování nového zařízení.
-
-![Zřízení nového zařízení ](./media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2/azure-iot-suite-add-device-provisioning.png)
-
-
-Konfigurace nové zařízení, pak se zobrazí.
-Kopírovat **připojovací řetězec** vygenerována.
-
-![Připojovací řetězec zařízení](./media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2/azure-iot-suite-new-device-connstring.png)
-
-
-Tento připojovací řetězec se používá v další části.
-
-
-
-
-
-## <a name="build-and-upload-the-device-code"></a>Vytvoření a nahrání kódu zařízení
-
-Přejděte zpět do Visual Studio Code: 
+## <a name="build-and-upload-the-device-code-to-your-mxchip"></a>Vytvoření a nahrávání zařízení kódu do vaší MXChip
 
 1. Použití `Ctrl+P` (macOS: `Cmd + P`) a typ **úloh konfiguračním připojení zařízení**.
 
@@ -94,7 +65,7 @@ Přejděte zpět do Visual Studio Code:
 
   ![Vložte připojovací řetězec](./media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2/iot-suite-task-config-device-conexion-choose-iot-hub-press-button-A.png)
 
-3. Terminálu někdy výzvu k zadání režim konfigurace. Uděláte to tak, podržte tlačítko A pak push a uvolněte tlačítko Obnovení nastavení a pak uvolněte tlačítko A. Na obrazovce se zobrazí DevKit ID a "Configuration".
+3. Terminálu někdy výzvu k zadání režim konfigurace. Chcete-li tak učinit, podržte **tlačítko A**, potom nasdílejte a verzi **tlačítko por resetování** a uvolněte tlačítko A. Na obrazovce se zobrazí DevKit ID a "Configuration".
 
   ![Obrazovka DevKit zařízení](./media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2/azure-iot-suite-devkit-screen.png)
 
@@ -103,22 +74,25 @@ Přejděte zpět do Visual Studio Code:
 
   ![Vyhledejte připojovací řetězec](./media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2/azure-iot-suite-connection-string-of-a-device.png)
 
+  Teď jste úspěšně připojení a ověřit zařízení MXChip IoT Hub. Pokud chcete zobrazit nové fyzické zařízení v nástroji VS Code část "Zařízení Azure IoT Hub", je nutné stáhnout [rozšíření Azure IoT Toolkit.](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) 
 
-Teď můžete vidět nové fyzické zařízení v části "Zařízení Azure IoT Hub" VS Code:
+  Teď můžete vidět nové fyzické zařízení v části "Zařízení Azure IoT Hub" VS Code:
 
-![Všimněte si, že nové zařízení centra IoT](./media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2/iot-suite-new-iot-hub-device.png)
+  ![Všimněte si, že nové zařízení centra IoT](./media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2/iot-suite-new-iot-hub-device.png)
+
+4. Nakonec odešlete RemoteMonitoringV2.ino kódu na vaše MxChip zahajte odesílání dat na akcelerátor řešení IoT. Použití `Ctrl + Shift + P` (macOS: `Cmd + Shift + P`) a typ **nahrát Arduino**. VS Code pak bude zahájeno odesílání kódu na vaše MXChip a upozorní vás po dokončení. 
 
 ## <a name="test-the-project"></a>Testování projektu
 
-Když spustíte ukázkovou aplikaci, DevKit odešle data ze senzorů přes Wi-Fi vaše akcelerátory řešení IoT. K zobrazení výsledku, postupujte podle těchto kroků:
+Když spustíte ukázkovou aplikaci, MXChip DevKit odešle data ze senzorů přes Wi-Fi vaše akcelerátory řešení IoT. K zobrazení výsledku, postupujte podle těchto kroků:
 
 1. Přejděte na akcelerátor řešení IoT a klikněte na tlačítko **řídicí panel**.
 
-2. V konzole akcelerátorů řešení IoT se zobrazí stav DevKit senzoru. 
+2. V konzole akcelerátorů řešení IoT se zobrazí stav MXChip DevKit senzoru. 
 
 ![Data ze senzorů v akcelerátory řešení IoT](./media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2/azure-iot-suite-dashboard.png)
 
-Pokud kliknete na název snímače (AZ3166) na kartě se otevře na pravé straně řídicího panelu, ve kterém uvidíte graf čip TPM MX senzorů v reálném čase.
+Pokud kliknete na název snímače (AZ3166) na kartě se otevře na pravé straně řídicího panelu, ve kterém uvidíte graf MXChip senzorů v reálném čase.
 
 
 ## <a name="send-a-c2d-message"></a>Odešlete zprávu C2D
@@ -127,7 +101,7 @@ Příklad kódu čipu MX publikuje tři metody, které se zobrazí v části zp�
 
 ![Čip TPM MX metody](./media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2/azure-iot-suite-methods.png)
 
-Můžete změnit barvu jednoho LED čip TPM MX pomocí metody "LedColor". To je, zaškrtněte políčko zařízení a klikněte na tlačítko plánu. 
+Můžete změnit barvu jednoho z indikátorů LED čip TPM MX pomocí metody "LedColor". To je, zaškrtněte políčko zařízení a klikněte na tlačítko plánu. 
 
 ![Čip TPM MX metody](./media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2/azure-iot-suite-schedule.png)
 
@@ -135,9 +109,9 @@ Zvolte metodu nazvanou ChangeColor v rozevíracím seznamu, kde všechny metody 
 
 ![Čip TPM MX rozevíracího seznamu](./media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2/iot-suite-change-color.png)
 
-Za několik sekund, by měl váš fyzický čip TPM MX změnit barva RGB vedla (dole a tlačítko)
+Za několik sekund, by měl váš fyzický čip TPM MX Změna barvy RGB LED (dole a tlačítko)
 
-![Čip TPM vedly MX](./media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2/azure-iot-suite-devkit-led.png)
+![Čip TPM MX Indikátor](./media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2/azure-iot-suite-devkit-led.png)
 
 ## <a name="problems-and-feedback"></a>Problémy a zpětná vazba
 

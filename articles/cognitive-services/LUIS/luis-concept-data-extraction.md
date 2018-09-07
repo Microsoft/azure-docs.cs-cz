@@ -1,5 +1,6 @@
 ---
-title: Koncepce extrakce dat v LUIS – Azure | Dokumentace Microsoftu
+title: Koncepty extrakce dat v LUIS – Language Understanding
+titleSuffix: Azure Cognitive Services
 description: Zjistěte, jaká data může být extrahována z Language Understanding (LUIS)
 services: cognitive-services
 author: diberry
@@ -9,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: diberry
-ms.openlocfilehash: f57e7cb85e6d183a59b358e347d70d4d185868a7
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 40c7e0744825697779e6bd19a78d8d3512b5d63e
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39225678"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44023456"
 ---
 # <a name="data-extraction"></a>Extrakce dat
 Služba LUIS umožňuje získat informace z projevy přirozeného jazyka uživatele. Informace je extrahován tak, že jej lze použít program, aplikace nebo chatovací robot k akci.
@@ -104,7 +105,7 @@ Pokud chcete přidat předem připravených domén, záměru název označuje do
 }
 ```
     
-|Doména|Datový objekt|Typ dat|Umístění dat|Hodnota|
+|Domain (Doména)|Datový objekt|Typ dat|Umístění dat|Hodnota|
 |--|--|--|--|--|
 |Veřejné služby|Záměr|Řetězec|.intent záměry [0]|"<b>Nástroje</b>. ShowNext"|
 |Komunikace|Záměr|Řetězec|.intent záměry [1]|<b>Komunikace</b>. StartOver"|

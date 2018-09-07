@@ -1,5 +1,5 @@
 ---
-title: Správa pomocí metrik zatížení mikroslužeb Azure | Dokumentace Microsoftu
+title: Správa zatížení aplikace Azure Service Fabric pomocí metrik | Dokumentace Microsoftu
 description: Další informace o tom, jak konfigurovat a spravovat využívání prostředků služeb pomocí metrik v Service Fabric.
 services: service-fabric
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: e16f1ae28f2212d0cec61368a2fba946d48fd811
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 7a7d3ad59d743287e5fe13c52c6c6a1a115d53f3
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39006280"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44053308"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Správa spotřeby prostředků a zatížení v Service Fabric s metrikami
 *Metriky* jsou prostředky, které vaše služby péče o a které jsou k dispozici uzly v clusteru. Metriky je všechno, co potřebujete ke správě za účelem zlepšení nebo sledovat výkon vašich služeb. Například může sledovat využití paměti vědět, pokud je vaše služba přetížená. Další možností použití je zjistit, zda služba přesunout jinde kde paměti je že menší, aby bylo možné dosáhnout lepšího výkonu omezené.
@@ -33,7 +33,7 @@ Příkladem metriky jsou věci, jako je využití paměti, disku a využití pro
   - ReplicaCount - počet celkový počet replik stavových na uzlu
   - Počet – počet všech objektů služby (bezstavových a stavových) na uzel
 
-| Metrika | Instance Bezstavová zatížení | Stavová zatížení sekundární | Stavová zatížení primární | Váha |
+| Metrika | Instance Bezstavová zatížení | Stavová zatížení sekundární | Stavová zatížení primární | Hmotnost |
 | --- | --- | --- | --- | --- |
 | PrimaryCount |0 |0 |1 |Vysoký |
 | ReplicaCount |0 |1 |1 |Střednědobé používání |

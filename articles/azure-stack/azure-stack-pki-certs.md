@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/07/2018
+ms.date: 09/05/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 13bc82caf5e10f5b35df29d085349ec4c80628a2
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: d4322e5a7f9d587049e9225c3adde08d04325afc
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42917448"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44024300"
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Požadavky na certifikáty infrastruktury veřejných klíčů Azure Stack
 
@@ -76,6 +76,8 @@ Pro vaše nasazení [Oblast] a [externalfqdn] hodnoty musí odpovídat oblasti a
 | ACSQueue | * .queue. &lt;oblast >. &lt;plně kvalifikovaný název domény ><br>(Certifikát SSL typu Wildcard) | Queue Storage | fronty. &lt;oblast >. &lt;plně kvalifikovaný název domény > |
 | KeyVault | * .vault. &lt;oblast >. &lt;plně kvalifikovaný název domény ><br>(Certifikát SSL typu Wildcard) | Key Vault | trezor. &lt;oblast >. &lt;plně kvalifikovaný název domény > |
 | KeyVaultInternal | *.adminvault. &lt;oblast >. &lt;plně kvalifikovaný název domény ><br>(Certifikát SSL typu Wildcard) |  Interní služby Keyvault |  adminvault. &lt;oblast >. &lt;plně kvalifikovaný název domény > |
+| Hostitel Správce rozšíření | *.adminhosting. \<oblast >. \<plně kvalifikovaný název domény > (zástupné certifikáty SSL) | Hostitel Správce rozšíření | adminhosting. \<oblast >. \<plně kvalifikovaný název domény > |
+| Veřejná rozšiřující hostitele | * .hosting. \<oblast >. \<plně kvalifikovaný název domény > (zástupné certifikáty SSL) | Veřejná rozšiřující hostitele | hostování. \<oblast >. \<plně kvalifikovaný název domény > |
 
 Pokud provádíte nasazení Azure Stack pomocí režimu nasazení služby Azure AD, stačí pro žádosti o certifikáty uvedené v předchozí tabulce. Nicméně pokud provádíte nasazení Azure Stack pomocí režimu nasazení služby AD FS, musíte také požádat o certifikáty jsou popsané v následující tabulce:
 

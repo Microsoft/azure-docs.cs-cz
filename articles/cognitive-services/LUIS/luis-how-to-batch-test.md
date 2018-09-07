@@ -1,22 +1,23 @@
 ---
-title: Testování aplikace LUIS – Azure batch | Dokumentace Microsoftu
-description: Language Understanding (LUIS) testování služby batch použijte k vyhledání projevy s nesprávnou záměry a entity.
+title: Test služby batch s 1000 příklad projevy
+titleSuffix: Azure Cognitive Services
+description: Pomocí služby batch Language Understanding (LUIS) testování sad vyhledejte projevy s nesprávnou záměry a entity.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/14/2018
+ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 07c38aa5f66fc8c38392c5407449ec6911e80d47
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: e5820b7d65cb989411657670ae19ef1bdca2122d
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42888622"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054770"
 ---
-# <a name="batch-testing"></a>Dávkové testování
+# <a name="batch-testing-with-a-set-of-example-utterances"></a>Testování pomocí sady projevy příklad služby batch
  Testování služby batch je komplexní test na aktuální trénovaný model pro měření jejího výkonu v LUIS. 
 
 <a name="batch-testing"></a>
@@ -27,8 +28,6 @@ ms.locfileid: "42888622"
     ![Testování propojení služby batch](./media/luis-how-to-batch-test/batch-testing-link.png)
 
 2. Vyberte **datové sady importu**. **Nová datová sada Import** zobrazí se dialogové okno. Vyberte **zvolit soubor** a vyhledejte soubor JSON se správnými [formátu JSON](luis-concept-batch-test.md#batch-file-format) obsahující *více než 1 000* projevy k testování.
-
-    ![Importovat soubor datové sady](./media/luis-how-to-batch-test/batchtest-importset.png)
 
     Chyby importu jsou hlášeny v red oznamovací pruh v horní části stránky prohlížeče. Při importu obsahuje chyby, žádná datová sada se vytvoří. Další informace najdete v tématu [běžné chyby](luis-concept-batch-test.md#common-errors-importing-a-batch).
 

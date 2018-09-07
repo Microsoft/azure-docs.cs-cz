@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 08/30/2018
+ms.date: 09/05/2018
 ms.author: carlrab
-ms.openlocfilehash: 350e472a4c17ed878d8506b4093bcd44ad60f469
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: c1ea223bf00dea32fb150cf141be7b5ea3239215
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43288017"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44055416"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-a-single-database"></a>Založený na virtuálních jádrech zakoupení modelu omezení pro jednu databázi Azure SQL Database
 
@@ -44,7 +44,7 @@ Pro izolované databáze následující tabulky popisují prostředky dostupné 
 |Vstupně-výstupní latence (přibližné)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|
 |Maximální velikost dat (GB)|1024|1024|1536|3072|4 096|4 096|
 |Maximální velikost protokolu (GB)|307|307|461|922|1229|1229|
-|Velikost databáze TempDB (MB)|32|64|128|256|384|384|
+|Velikost databáze TempDB (GB)|32|64|128|256|384|384|
 |Cíl vstupně-výstupních operací (64 KB)|500|1000|2000|4000|7000|7000|
 |Maximální počet souběžných pracovních procesů (požadavků)|200|400|800|1600|3200|4800|
 |Maximální povolené relace|30000|30000|30000|30000|30000|30000|
@@ -66,7 +66,7 @@ Pro izolované databáze následující tabulky popisují prostředky dostupné 
 |Vstupně-výstupní latence (přibližné)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|5 – 7 ms (zápis)<br>5 až 10 ms (čtení)|
 |Maximální velikost dat (GB)|1024|1024|1536|3072|4 096|4 096|4 096|4 096|
 |Maximální velikost protokolu (GB)|307|307|461|614|1229|1229|1229|1229|
-|Velikost databáze TempDB (MB)|64|128|256|384|384|384|384|384|
+|Velikost databáze TempDB (GB)|64|128|256|384|384|384|384|384|
 |Cíl vstupně-výstupních operací (64 KB)|500|1000|2000|4000|6000|7000|7000|7000|
 |Maximální počet souběžných pracovních procesů (požadavků)|200|400|800|1600|2400|3200|4000|8000|
 |Maximální povolené relace|30000|30000|30000|30000|30000|30000|30000|30000|
@@ -89,7 +89,7 @@ Pro izolované databáze následující tabulky popisují prostředky dostupné 
 |Typ úložiště|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|Místní disk SSD|
 |Maximální velikost dat (GB)|1024|1024|1024|1024|1024|1024|
 |Maximální velikost protokolu (GB)|307|307|307|307|307|307|
-|Velikost databáze TempDB (MB)|32|64|128|256|384|384|
+|Velikost databáze TempDB (GB)|32|64|128|256|384|384|
 |Cíl vstupně-výstupních operací (64 KB)|5000|10000|20000|40000|80000|120000|
 |Vstupně-výstupní latence (přibližné)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|
 |Maximální počet souběžných pracovních procesů (požadavků)|200|400|800|1600|3200|4800|
@@ -112,7 +112,7 @@ Pro izolované databáze následující tabulky popisují prostředky dostupné 
 |Vstupně-výstupní latence (přibližné)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|
 |Maximální velikost dat (GB)|1024|1024|1024|1024|2 048|4 096|4 096|4 096|
 |Maximální velikost protokolu (GB)|307|307|307|307|614|1229|1229|1229|
-|Velikost databáze TempDB (MB)|64|128|256|384|384|384|384|384|
+|Velikost databáze TempDB (GB)|64|128|256|384|384|384|384|384|
 |Cíl vstupně-výstupních operací (64 KB)|5000|10000|20000|40000|60000|80000|100000|200000
 |Maximální počet souběžných pracovních procesů (požadavků)|200|400|800|1600|2400|3200|4000|8000|
 |Maximální povolené relace|30000|30000|30000|30000|30000|30000|30000|30000|
@@ -125,4 +125,5 @@ Pro izolované databáze následující tabulky popisují prostředky dostupné 
 ## <a name="next-steps"></a>Další postup
 
 - Zobrazit [nejčastější dotazy k SQL Database](sql-database-faq.md) odpovědi na nejčastější dotazy.
+- Zobrazit [limity prostředků přehled Azure SQL Database](sql-database-resource-limits.md) informace o omezeních na úrovni serveru a předplatné.
 - Informace o obecných omezeních Azure najdete v tématu [předplatného Azure a limity, kvóty a omezení](../azure-subscription-service-limits.md).

@@ -1,20 +1,21 @@
 ---
-title: Trénování služby LUIS aplikace – Azure | Dokumentace Microsoftu
-description: Language Understanding (LUIS) použijete k natrénování modelu.
+title: Trénování aplikace LUIS
+titleSuffix: Azure Cognitive Services
+description: Školení je proces Language Understanding (LUIS) aplikace lepší pochopení jeho přirozeného jazyka. Po aktualizacích na model, jako je například přidávání, úpravy, označování popisky a odstranění entit, záměry nebo projevy trénování aplikace LUIS.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/14/2018
+ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: e947df20141b0b9870f318f410488aea23bafcf5
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 42cff3dd8237598da5aa71ed1a4d6462c5b4c25d
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223180"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44049127"
 ---
 # <a name="train-your-luis-app"></a>Trénování aplikace LUIS
 
@@ -32,11 +33,7 @@ Pokud chcete začít iterativní proces, musíte nejprve trénování aplikace L
 
 2. Ve vaší aplikaci, vyberte **Train** v horním panelu. 
 
-    ![Tlačítko Train (Trénovat)](./media/luis-how-to-train/train-button.png)
-
 3. Po dokončení školení, zobrazí se zelená oznamovací pruh v horní části stránky prohlížeče.
-
-    ![Aplikace Test pro trénování a stránky](./media/luis-how-to-train/train-success.png)
 
 <!-- The following note refers to what might cause the error message "Training failed: FewLabels for model: <ModelName>" -->
 

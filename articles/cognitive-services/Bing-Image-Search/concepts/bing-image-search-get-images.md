@@ -1,6 +1,6 @@
 ---
-title: Získávání imagí z webu pomocí rozhraní API Bingu pro vyhledávání obrázků | Dokumentace Microsoftu
-description: Použití rozhraní API pro vyhledávání obrázků Bingu pro vyhledávání a určit prioritu relevantních obrázků získat z webu.
+title: Získat Image z webu pomocí rozhraní API Bingu pro vyhledávání obrázků | Dokumentace Microsoftu
+description: Pomocí rozhraní API Bingu pro vyhledávání obrázků vyhledat a získat určit prioritu relevantních obrázků z webu.
 services: cognitive-services
 author: aahill
 manager: cgronlun
@@ -10,16 +10,16 @@ ms.component: bing-image-search
 ms.topic: conceptual
 ms.date: 8/8/2018
 ms.author: aahi
-ms.openlocfilehash: c379cc2dfbe53f83e4d79500cd947879407c8d55
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 720318ab2be53c59c47e3399b1be5a55487840b7
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "40082600"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44053954"
 ---
-# <a name="getting-images-from-the-web-with-the-bing-image-search-api"></a>Získávání imagí z webu pomocí rozhraní API Bingu pro vyhledávání obrázků
+# <a name="get-images-from-the-web-with-the-bing-image-search-api"></a>Získat Image z webu pomocí rozhraní API Bingu pro vyhledávání obrázků
 
-Pomocí API REST pro vyhledávání obrázků Bingu, můžete získat Image z webu, která se vztahují na uživatele hledaný termín odesláním následujících požadavek GET:
+Při použití rozhraní API REST vyhledávání obrázků Bingu, můžete získat Image z webu, které souvisejí s hledaný termín odesláním následujících požadavek GET:
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=sailing+dinghies&mkt=en-us HTTP/1.1
@@ -35,7 +35,7 @@ Host: api.cognitive.microsoft.com
 > * Pokud je vaše prvním voláním některé z rozhraní API pro vyhledávání Bingu, neobsahují záhlaví ID klienta. Pokud jste dříve označované jako Bing rozhraní API, které vrátí ID klienta pro uživatele a zařízení kombinaci pouze zahrnovat ID klienta.
 > * Bitové kopie musí být zobrazena v pořadí poskytnutém v odpovědi.
 
-## <a name="getting-images-from-a-specific-web-domain"></a>Získání bitové kopie z konkrétní webové domény
+## <a name="get-images-from-a-specific-web-domain"></a>Získání bitové kopie z konkrétní webové domény
 
 Pokud chcete získat obrázky z konkrétní domény, použijte operátor dotazu [site:](http://msdn.microsoft.com/library/ff795613.aspx).
 
@@ -57,25 +57,25 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com  
 ```
 
-## <a name="filtering-images"></a>Filtrování obrázků
+## <a name="filter-images"></a>Filtrovat Image
 
- Ve výchozím nastavení rozhraní API pro vyhledávání obrázků vrátí všechny bitové kopie, které jsou relevantní pro dotaz. Pokud chcete filtrovat obrazy, které Bing vrátí (například vrátí pouze obrázky na pozadí transparant nebo specifická velikost), můžete použít tyto parametry dotazu:
+ Rozhraní API pro vyhledávání obrázků ve výchozím nastavení, vrátí všechny bitové kopie, které jsou relevantní pro dotaz. Pokud chcete filtrovat Image, které Bing vrátí (například vrátit pouze obrázky s průhledným pozadím nebo specifická velikost), použijte následující parametry dotazu:
 
-* [aspect](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#aspect) – filtrování obrázků podle poměru stran (například standardní nebo širokoúhlé obrázky)
-* [color](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#color) – filtrování obrázků podle dominantní barvy nebo černé a bílé
-* [freshness](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#freshness) – filtrování obrázků podle stáří (například obrázky zjištěné Bingem během posledního týdne)
-* [height](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#height), [width](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#width) – filtrování obrázků podle šířky a výšky
-* [imageContent](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imagecontent) – filtrování obrázků podle obsahu (například obrázky jen s lidským obličejem)
-* [imageType](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imagetype) – filtrování obrázků podle typu (například klipart, animovaný GIF nebo průhledné pozadí)
-* [license](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#license) – filtrování obrázků podle typu licence přidružené k příslušnému webu
-* [size](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#size) – filtrování obrázků podle velikosti (například malé obrázky do velikosti 200 × 200 pixelů)
+* [aspekt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#aspect)– filtrovat imagí podle poměru stran (například obrázky standardní nebo široké obrazovky).
+* [Barva](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#color)– filtrovat podle dominantní barvy nebo černá a bílá Image.
+* [aktuálnost](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#freshness)– filtrovat podle stáří (třeba imagí za poslední týden zjišťování pomocí Bingu) Image.
+* [Výška](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#height), [šířka](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#width)– filtrovat Image tak, že šířka a výška.
+* [imageContent](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imagecontent)– filtrovat podle obsahu (například obrázky, které zobrazují pouze pro rozpoznávání tváře osoby) bitové kopie.
+* [imageType](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imagetype)– filtrovat Image podle typu (například klipart, animovaných Gifů nebo průhledné pozadí).
+* [licence](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#license)– filtrovat podle typu licence přiřazené k lokalitě Image.
+* [velikost](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#size)– filtr imagí podle velikosti, jako je například malé obrázky až 200 x 200 pixelů.
 
 Pokud chcete získat obrázky z konkrétní domény, použijte operátor dotazu [site:](http://msdn.microsoft.com/library/ff795613.aspx).
 
-    > [!NOTE]
-    > Responses to queries using the `site:` operator may include adult content regardless of the [safeSearch](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#safesearch) setting. Only use `site:` if you are aware of the content on the domain.
+ > [!NOTE]
+ > Odpovědi na dotazy, které používají `site:` operátor může zahrnovat obsah pro dospělé bez ohledu [bezpečné hledání](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#safesearch) nastavení. Používejte pouze `site:` Pokud si nejste vědomi obsah v doméně.
 
-Následující příklad ukazuje, jak získat malé obrázky z webu ContosoSailing.com zjištěné Bingem během posledního týdne.  
+Následující příklad ukazuje, jak získat malé obrázky z ContosoSailing.com, které Bing zjištěno v minulém týdnu.  
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=sailing+dinghies+site:contososailing.com&size=small&freshness=week&mkt=en-us HTTP/1.1  
@@ -88,7 +88,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="bing-image-search-response-format"></a>Formát odpovědi Bingu pro vyhledávání obrázků
 
-Obsahuje zprávy s odpovědí ze služby Bing [Imagí](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#images) odpověď, která obsahuje seznam imagí, které služby Azure cognitive services, jestli se má být relevantní pro dotaz. Každý [Image](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#image) objekt v seznamu obsahuje následující informace o imagi: adresa URL, jeho velikost, rozměry, jeho formát kódování, adresu URL na miniaturu obrázku a dimenze na miniaturu.
+Obsahuje zprávy s odpovědí ze služby Bing [Imagí](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#images) odpověď, která obsahuje seznam imagí, které služby Cognitive Services, jestli se má být relevantní pro dotaz. Každý [Image](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#image) objekt v seznamu obsahuje následující informace o imagi: adresa URL, jeho velikost, rozměry, jeho formát kódování, adresu URL na miniaturu obrázku a dimenze na miniaturu.
 
 ```json
 {
@@ -117,7 +117,7 @@ Obsahuje zprávy s odpovědí ze služby Bing [Imagí](https://docs.microsoft.co
 },
 ```
 
-Když zavoláte rozhraní API Bingu pro vyhledávání obrázků, Bing vrátí seznam výsledků. Tento seznam je podmnožinou celkového počtu výsledků, které jsou pro dotaz relevantní. Pole `totalEstimatedMatches` v odpovědi obsahuje odhadovaný počet obrázků, které je možné zobrazit. Podrobnosti o procházení zbývajících obrázků najdete v tématu [Stránkování obrázků](../paging-images.md).
+Když zavoláte rozhraní API Bingu pro vyhledávání obrázků, Bing vrátí seznam výsledků. Tento seznam je podmnožinou celkového počtu výsledků, které jsou pro dotaz relevantní. Pole `totalEstimatedMatches` v odpovědi obsahuje odhadovaný počet obrázků, které je možné zobrazit. Podrobnosti o tom, jak stránky postupujte podle zbývajících kroků imagí najdete v tématu [stránkování Imagí](../paging-images.md).
 
 ## <a name="next-steps"></a>Další postup
 

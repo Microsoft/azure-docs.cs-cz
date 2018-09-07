@@ -1,5 +1,6 @@
 ---
-title: Koncepce data změnou v LUIS – Azure | Dokumentace Microsoftu
+title: Koncepty změnu dat v LUIS – Principy termínů
+titleSuffix: Azure Cognitive Services
 description: Zjistěte, jak lze změnit data před predikce v Language Understanding (LUIS)
 services: cognitive-services
 author: diberry
@@ -9,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/26/2018
 ms.author: diberry
-ms.openlocfilehash: d8421114bb5a7416ad2523fe9b0353f03f672619
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 2949f7afa5d04d9f7ea738ad6f7b9333bfaf958f
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223979"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44023013"
 ---
 # <a name="data-alterations"></a>Změny dat
 Služba LUIS poskytuje možnosti pro manipulaci s utterance před nebo během do predikce. 

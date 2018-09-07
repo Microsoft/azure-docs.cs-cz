@@ -11,12 +11,12 @@ ms.custom: managed instance
 ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: bonova
-ms.openlocfilehash: e152fa4bb439f1881dc9974bfdf1b3e8c77c434a
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 276d36562aece7101465752528f59008e1ee7607
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42057482"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44050319"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Migrace instance SQL serveru do Azure SQL Database Managed Instance
 
@@ -100,13 +100,13 @@ Následující tabulka obsahuje další informace týkající se metod, které m
 |Umístění zálohy do služby Azure Storage|Předchozí SQL 2012 SP1 kumulativní aktualizaci 2|Nahrajte soubor .bak přímo do služby Azure storage|
 ||2012 V AKTUALIZACI SP1 KUMULATIVNÍ AKTUALIZACI 2 - 2016|Přímé zálohování pomocí zastaralé [WITH CREDENTIAL](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql) syntaxe|
 ||2016 a vyšší|Přímé zálohování pomocí [pomocí pověření SAS](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url)|
-|Obnovení z Azure Storage do spravované Instance|[OBNOVENÍ z adresy URL pomocí pověření SAS](sql-database-managed-instance-restore-from-backup-tutorial.md)|
+|Obnovení z Azure Storage do spravované Instance|[OBNOVENÍ z adresy URL pomocí pověření SAS](sql-database-managed-instance-get-started-restore.md)|
 
 > [!IMPORTANT]
 > - Při migraci databáze chráněné [transparentním šifrováním dat](transparent-data-encryption-azure-sql.md) (TDE) do spravované instance Azure SQL pomocí nativní možnosti obnovení je třeba před obnovením databáze migrovat odpovídající certifikát z místního nebo IaaS systému SQL Server. Podrobné pokyny najdete v článku [cert TDE migrovat do Managed Instance](sql-database-managed-instance-migrate-tde-certificate.md)
 > - Obnovení databází systému se nepodporuje. Pokud chcete migrovat objekty na úrovni instance (uložené v databázi master a databázi msdb databáze), doporučujeme je skriptování a spouštění skriptů T-SQL v cílové instanci.
 
-Úplný kurz, který zahrnuje obnovení zálohy databáze do Managed Instance pomocí pověření SAS najdete v tématu [obnovit ze zálohy do spravované Instance](sql-database-managed-instance-restore-from-backup-tutorial.md).
+Rychlý start ukazuje, jak obnovit zálohu databáze do Managed Instance pomocí pověření SAS, naleznete v tématu [obnovit ze zálohy do spravované Instance](sql-database-managed-instance-get-started-restore.md).
 
 ## <a name="monitor-applications"></a>Monitorování aplikací
 

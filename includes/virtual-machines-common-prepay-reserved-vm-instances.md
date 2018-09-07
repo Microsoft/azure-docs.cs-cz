@@ -3,13 +3,13 @@ author: yashesvi
 ms.author: yashar
 ms.service: virtual-machines-windows
 ms.topic: include
-ms.date: 08-07-2018
-ms.openlocfilehash: 6be00937a6645fbdd266ac0b1aa1ce95ecc6c3d9
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.date: 09-05-2018
+ms.openlocfilehash: 75e493f6b2e47bf3323df9e52ad3a933a6efbead
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301876"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44058554"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances"></a>Předplatit si virtuální počítače se službou Azure Reserved VM Instances
 
@@ -50,9 +50,9 @@ Rezervované instance virtuálních počítačů jsou dostupné pro většinu ve
     |Název        |Název této rezervace.| 
     |Předplatné|Předplatné použité k úhradě rezervace. Způsob platby v rámci předplatného účtuje pořizovací náklady pro rezervaci. Musí se jednat o předplatné se smlouvou Enterprise (číslo nabídky: MS-AZR-0017P) nebo předplatné s průběžnými platbami (číslo nabídky: MS-AZR-0003P). V případě předplatného se smlouvou Enterprise se poplatky strhávají z peněžního zůstatku v rámci dané registrace nebo se účtují jako nadlimitní využití. V případě předplatného s průběžnými platbami se poplatky účtují na platební kartu nebo pomocí způsobu platby faktur určeného v předplatném.|    
     |Rozsah       |Obor pro rezervaci může vztahovat na jedno předplatné jeden nebo více odběrů (sdíleném oboru). Pokud vyberete: <ul><li>Jedno předplatné – sleva za rezervaci se používá pro virtuální počítače v tomto předplatném. </li><li>Na úrovni Shared – sleva za rezervaci se použijí pro virtuální počítače spuštěné v rámci všech předplatných v rámci kontextu vaší fakturace. Pro podnikové zákazníky sdílený obor je registraci a zahrnuje všechna předplatná (s výjimkou předplatná pro vývoj/testování) během registrace. Pro zákazníky s průběžnými platbami sdílený obor je Všechna předplatná s průběžnými platbami, vytváří správce účtu.</li></ul>|
-    |Umístění    |Oblast Azure, která je předmětem rezervace.|    
+    |Oblast    |Oblast Azure, která je předmětem rezervace.|    
     |Velikost virtuálního počítače     |Velikost instancí virtuálních počítačů.|
-    |Optimalizovat pro     |Flexibilita velikost instancí virtuálních počítačů platí sleva za rezervaci pro ostatní virtuální počítače ve stejné [skupině velikostí virtuálních počítačů](https://aka.ms/RIVMGroups). Priorita kapacity rezervuje kapacitu datacentra pro vaše nasazení. To nabízí máte ještě větší jistotu budete moct spustit instance virtuálních počítačů, když je potřebujete. Priorita kapacity je k dispozici, pouze pokud obor rezervace je jedno předplatné. |
+    |Optimalizovat pro     |Flexibilita velikost instancí virtuálních počítačů platí sleva za rezervaci pro ostatní virtuální počítače ve stejné [skupině velikostí virtuálních počítačů](https://aka.ms/RIVMGroups). Priorita kapacity upřednostňuje kapacitu datacentra pro vaše nasazení. To nabízí máte ještě větší jistotu budete moct spustit instance virtuálních počítačů, když je potřebujete. Priorita kapacity je k dispozici, pouze pokud obor rezervace je jedno předplatné. |
     |Označení        |Jeden nebo tři roky.|
     |Množství    |Počet instancí se zakoupených v rámci rezervace. Počet spuštěných instancí virtuálních počítačů, které můžete získat slevu fakturace je množství. Například pokud spustíte 10 Standard_D2 virtuálních počítačů v oblasti východní USA, potom zadáte množství jako 10 a maximalizovat pro všechny počítače spuštěný. |
 5. Můžete zobrazit náklady na rezervaci, když vyberete **vypočítat náklady**.
@@ -63,6 +63,12 @@ Rezervované instance virtuálních počítačů jsou dostupné pro většinu ve
 7. Vyberte **zobrazit tuto rezervaci** chcete podívat na stav vašeho nákupu.
 
     ![Snímek obrazovky po odeslání nákup rezervace](./media/virtual-machines-buy-compute-reservations/virtualmachines-reservedvmInstance-submit.png)
+
+## <a name="cancellations-and-exchanges"></a>Zrušení a výměny
+
+Pokud je potřeba zrušit vaší rezervace, může být 12 % poplatek za předčasné ukončení. Náhrady jsou založeny na nejnižší cenu ceny nákupu nebo aktuální cena rezervace. Náhrady jsou omezené na 50 000 dolarů za rok. Náhrady, který jste dostali se zbývající poměrný zůstatek minus poplatek za předčasné ukončení 12 %. Pokud chcete požádat o zrušení, přejděte na rezervaci v Azure portal a vyberte **náhrada** vytvořit žádost o podporu.
+
+Pokud potřebujete změnit vaší rezervace rezervovaných instancí virtuálních počítačů do jiné oblasti, skupiny velikost virtuálních počítačů nebo termín, můžete ji exchange pro jiné rezervace, který je roven nebo větší hodnotu. Počáteční datum termín pro novou rezervaci nepřenáší z výměně rezervace. Začíná při vytváření nového rezervace 1 nebo 3 roky. Žádost o exchange, přejděte na rezervaci na webu Azure Portal a vyberte **Exchange** vytvořit žádost o podporu.
 
 ## <a name="next-steps"></a>Další postup
 

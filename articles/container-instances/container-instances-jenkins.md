@@ -8,12 +8,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 08/31/2018
 ms.author: marsma
-ms.openlocfilehash: 6419753a48e1356b2d94592fca72cee1f848dcdb
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 9108d9e1b230fe2267f0195bd2c33c5a4c57d956
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390649"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44021936"
 ---
 # <a name="use-azure-container-instances-as-a-jenkins-build-agent"></a>Použití Azure Container Instances jako Jenkins agenta sestavení
 
@@ -48,7 +48,7 @@ Další informace o službě Azure Container Instances, naleznete v tématu [o s
 
    ![Další nastavení pro nasazení portálu Jenkinse](./media/container-instances-jenkins/jenkins-portal-02.png)
 
-4. Integrace instančního objektu služby, vyberte **Auto(MSI)** mít [identita spravované služby Azure] [ managed-service-identity] automaticky vytvořit identitu ověřování pro Jenkinse instance. Vyberte **ruční** poskytnout vlastní pověření instančního objektu.
+4. Integrace instančního objektu služby, vyberte **Auto(MSI)** mít [Azure Identity spravované služby] [spravovaných identity azure prostředků] automaticky vytvořit identitu ověřování pro instance Jenkinse. Vyberte **ruční** poskytnout vlastní pověření instančního objektu.
 
 5. Agenti cloud nakonfigurovat cloudové platformy pro úlohy sestavení Jenkinse. Pro účely tohoto článku, vyberte **ACI**. S agentem ACI cloudu Každá úloha sestavení Jenkinse běží v instanci kontejneru.
 
@@ -128,9 +128,9 @@ Chcete-li otestovat úlohu sestavení a podívejte se Azure Container Instances 
 
    ![Skupina prostředků se službou container instances odebrat](./media/container-instances-jenkins/jenkins-aci-none.png)
 
-## <a name="troubleshooting-the-jenkins-plugin"></a>Řešení potíží s modulu plug-in Jenkinse
+## <a name="troubleshooting-the-jenkins-plugin"></a>Řešení potíží s modulem plug-in Jenkinse
 
-Pokud narazíte na jakékoli chyby s moduly plug-in Jenkins, založte problém v [Jenkins JIRA](https://issues.jenkins-ci.org/) pro konkrétní komponentu.
+Pokud v modulech plug-in Jenkinse narazíte na nějaké chyby, založte problém na stránce [Jenkins JIRA](https://issues.jenkins-ci.org/) pro konkrétní komponentu.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 05/18/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 6ddae66ee6408a3cab905826cd0d7c0831607d33
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: e20e0c412206b2a35973b192ef911bb99ed7c210
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526381"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44021859"
 ---
 # <a name="authenticate-with-azure-ad-from-an-azure-managed-service-identity-preview"></a>Ověření ve službě Azure AD z Identity spravovaných služeb Azure (Preview)
 
-Azure Storage podporuje ověřování Azure Active Directory (Azure AD) s [identita spravované služby](../../active-directory/managed-service-identity/overview.md). Identita spravované služby (MSI) poskytuje automaticky spravovanou identitu ve službě Azure Active Directory (Azure AD). Použití MSI pro ověření do služby Azure Storage z aplikace běžící v Azure virtuální počítače, aplikace function App, škálovací sady virtuálních počítačů a dalších. Pomocí MSI a využívá širokých možností ověřování Azure AD, můžete zabránit ukládání přihlašovacích údajů s vašimi aplikacemi, které běží v cloudu.  
+Azure Storage podporuje ověřování Azure Active Directory (Azure AD) s [identita spravované služby](../../active-directory/managed-identities-azure-resources/overview.md). Identita spravované služby (MSI) poskytuje automaticky spravovanou identitu ve službě Azure Active Directory (Azure AD). Použití MSI pro ověření do služby Azure Storage z aplikace běžící v Azure virtuální počítače, aplikace function App, škálovací sady virtuálních počítačů a dalších. Pomocí MSI a využívá širokých možností ověřování Azure AD, můžete zabránit ukládání přihlašovacích údajů s vašimi aplikacemi, které běží v cloudu.  
 
 Chcete-li udělit oprávnění pro identitu spravované služby pro kontejnery úložiště nebo fronty, přiřaďte roli RBAC, včetně úložiště oprávnění k souboru MSI. Další informace o rolích RBAC v úložišti, najdete v části [Správa přístupových práv k datům úložiště pomocí RBAC (Preview)](storage-auth-aad-rbac.md). 
 
@@ -33,14 +33,14 @@ Tento článek ukazuje, jak ověření na Azure Storage s využitím MSI z virtu
 Než použití MSI pro ověření do služby Azure Storage z vašeho virtuálního počítače, musíte nejprve povolit MSI ve virtuálním počítači. Informace o povolení MSI, najdete v některém z těchto článků:
 
 - [Azure Portal](https://docs.microsoft.com/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm)
-- [Azure PowerShell](../../active-directory/managed-service-identity/qs-configure-powershell-windows-vm.md)
-- [Azure CLI](../../active-directory/managed-service-identity/qs-configure-cli-windows-vm.md)
-- [Šablona Azure Resource Manageru](../../active-directory/managed-service-identity/qs-configure-template-windows-vm.md)
-- [Sady Azure SDK](../../active-directory/managed-service-identity/qs-configure-sdk-windows-vm.md)
+- [Azure PowerShell](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
+- [Azure CLI](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
+- [Šablona Azure Resource Manageru](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
+- [Sady Azure SDK](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
 ## <a name="get-an-msi-access-token"></a>Získání tokenu přístupu MSI
 
-Abyste mohli ověřovat pomocí MSI, musí vaše aplikace nebo skript získání přístupového tokenu MSI. Další informace o tom, jak získat přístupový token, naleznete v tématu [použití Azure VM Identity spravované služby (MSI) pro získání tokenu](../../active-directory/managed-service-identity/how-to-use-vm-token.md).
+Abyste mohli ověřovat pomocí MSI, musí vaše aplikace nebo skript získání přístupového tokenu MSI. Další informace o tom, jak získat přístupový token, naleznete v tématu [použití Azure VM Identity spravované služby (MSI) pro získání tokenu](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md).
 
 ## <a name="net-code-example-create-a-block-blob"></a>Příklad kódu .NET: vytvoření objektu blob bloku
 

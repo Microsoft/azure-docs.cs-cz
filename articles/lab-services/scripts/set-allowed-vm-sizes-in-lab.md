@@ -1,6 +1,6 @@
 ---
-title: 'Skript prostředí PowerShell: Sada povolené velikosti virtuálních počítačů v testovacím služeb Azure | Microsoft Docs'
-description: Tento skript prostředí PowerShell nastaví povolené velikosti virtuálních počítačů v testovacím služeb Azure.
+title: 'Skript prostředí PowerShell: Sada povolené velikosti virtuálního počítače v Azure Lab Services | Dokumentace Microsoftu'
+description: Tento skript Powershellu nastaví povolené velikosti virtuálních počítačů v Azure Lab Services.
 services: lab-services
 author: spelluru
 manager: ''
@@ -12,21 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 159f175e7bb27b2d89001e1eba737c67adb89e50
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 559e74675a5d113584dca21979c20462c9cdf19c
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34638139"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054702"
 ---
-# <a name="use-powershell-to-set-allowed-vm-sizes-in-azure-lab-services"></a>Použití prostředí PowerShell k nastavení povolené velikosti virtuálních počítačů v testovacím služby Azure
+# <a name="use-powershell-to-set-allowed-vm-sizes-in-azure-lab-services"></a>Použití Powershellu k nastavení povolené velikosti virtuálního počítače v Azure Lab Services
 
-Tento ukázkový skript prostředí PowerShell nastaví velikosti povolené virtuálních počítačů (VM) v prostředí služby Azure.
+Tento ukázkový skript Powershellu nastaví povolené velikosti virtuálního počítače (VM) v Azure Lab Services.
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 ## <a name="prerequisites"></a>Požadavky
-* **Testovacího prostředí**. Skript, musíte mít existující testovacího prostředí. 
+* **Testovací prostředí**. Skript je potřeba mít existující testovací prostředí. 
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -38,13 +38,13 @@ Tento skript používá následující příkazy:
 
 | Příkaz | Poznámky |
 |---|---|
-| [Find-AzureRmResource](/module/azurerm.resources/find-azurermresource) | Vyhledá prostředky v závislosti na zadaných parametrů. |
+| [Find-AzureRmResource](/powershell/module/azurerm.resources/find-azurermresource) | Vyhledá prostředky podle zadaných parametrů. |
 | [Get-AzureRmResource](/powershell/module/azurerm.resources/get-azurermresource) | Získá prostředky. |
-| [Set-AzureRmResource](/powershell/module/azurerm.resources/set-azurermresource) | Upravuje prostředku. |
+| [Set-AzureRmResource](/powershell/module/azurerm.resources/set-azurermresource) | Upraví prostředek. |
 | [New-AzureRmResource](/powershell/module/azurerm.resources/new-azurermresource) | Vytvořte prostředek. |
 
 ## <a name="next-steps"></a>Další postup
 
 Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](https://docs.microsoft.com/powershell/).
 
-Další ukázky skriptu prostředí PowerShell služby testovacího prostředí Azure lze nalézt v [Azure PowerShell služby Lab ukázky](../samples-powershell.md).
+Další ukázkové skripty Azure Lab Services Powershellu najdete v [ukázky Azure Lab Services Powershellu](../samples-powershell.md).

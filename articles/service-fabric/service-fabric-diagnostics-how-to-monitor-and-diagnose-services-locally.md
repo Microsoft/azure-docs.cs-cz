@@ -1,6 +1,6 @@
 ---
-title: Ladění Azure mikroslužeb v systému Windows | Microsoft Docs
-description: Zjistěte, jak sledovat a diagnostikovat vaše služby vytvořené pomocí Microsoft Azure Service Fabric na místním vývojovém počítači.
+title: Ladění Azure Service Fabric aplikací ve Windows | Dokumentace Microsoftu
+description: Informace o monitorování a Diagnostika služeb napsané s využitím Microsoft Azure Service Fabric na místním vývojovém počítači.
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -14,57 +14,57 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: 93cf4985e94c0af480d9f4e2e38b792cffe4df6e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: b4c3bc21591e8472dc8d51309f7431cb5d4421fd
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34206177"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054165"
 ---
-# <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>Monitorování a Diagnostika služby v instalačním programu pro vývoj místním počítači
+# <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>Monitorování a Diagnostika služeb v nastavení vývojového místního počítače
 > [!div class="op_single_selector"]
 > * [Windows](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 > * [Linux](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md)
 > 
 > 
 
-Monitorování, zjišťování, Diagnostika a řešení potíží s povolit pro služby, chcete-li pokračovat s minimálním dopadem na činnost koncového uživatele. Při monitorování a Diagnostika jsou kritické v prostředí skutečné produkční nasazené, efektivitu bude záviset na přijetí podobné modelu během vývoje služby zajistěte, aby byl že při přesunutí instalace reálného asi nebudou fungovat. Service Fabric usnadňuje vývojářům implementovat diagnostiky, které může bezproblémově fungovat v jednom počítači místní vývoj nastavení a nastavení clusteru skutečné produkční služby.
+Monitorování, zjišťování, Diagnostika a řešení potíží s povolit pro služby, abyste mohli pokračovat s minimálním dopadem na uživatelské prostředí. Monitorování a Diagnostika jsou kritické skutečný nasazené produkčního prostředí, efektivitu bude záviset na přijetí modelu podobně jako při vývoji služeb Ujistěte se, že fungují při přesunutí instalace reálného světa. Service Fabric umožňuje vývojářům služby k implementaci diagnostiku, která můžete bez problémů fungují s jeden počítač místního vývojového nastavení i nastavení skutečné produkční cluster.
 
 ## <a name="event-tracing-for-windows"></a>Trasování událostí pro Windows
-[Trasování událostí pro systém Windows](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) je technologie doporučené pro trasování zpráv v Service Fabric. Jsou některé výhody použití trasování událostí pro Windows:
+[Trasování událostí pro Windows](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) je doporučené technologické pro trasovací zprávy v Service Fabric. Některé výhody použití trasování událostí pro Windows jsou:
 
-* **Trasování událostí pro Windows je rychlá.** Byla vytvořena jako trasování technologie, která má minimální dopad na dobu provádění kódu.
-* **Trasování událostí pro Windows funguje bezproblémově mezi místní vývojové prostředí a taky nastavení reálného clusteru.** To znamená, že nemáte přepsání trasování kódu, když budete chtít kód nasadit do clusteru s podporou skutečné.
-* **Service Fabric systému kód také používá trasování událostí pro Windows pro interní trasování.** To vám umožní zobrazit vaše trasování aplikací prokládaný. pomocí trasování systému Service Fabric. Také umožňuje snadno pochopit pořadí a vzájemné vztahy mezi kódu aplikace a události v základním systému.
-* **Není integrovanou podporu v nástroji Service Fabric Visual Studio zobrazovat události trasování událostí pro Windows.** Události trasování událostí se zobrazí v zobrazení diagnostických událostí sady Visual Studio, jakmile sady Visual Studio je správně nakonfigurován s Service Fabric. 
+* **Trasování událostí pro Windows je rychlá.** Byla vytvořena jako technologie trasování, který má minimální dopad na dobu spuštění kódu.
+* **Trasování událostí pro Windows bez problémů funguje napříč místní vývojové prostředí a také nastavení clusteru reálného světa.** To znamená, že nemusíte přepisovat kód vaší trasování, až budete připraveni k nasazení kódu do skutečným clusterem.
+* **Kód systému Service Fabric také používá trasování událostí pro Windows pro interní trasování.** To umožňuje zobrazit trasování vaší aplikace proloženy trasování systému Service Fabric. Také umožňuje snadněji pochopit, pořadí a vztahy mezi kódu aplikace a události v základního systému.
+* **Je integrovaná podpora v Service Fabric Visual Studio tools zobrazovat události trasování událostí pro Windows.** Události trasování událostí pro Windows se zobrazí v okně diagnostické události aplikace Visual Studio po sady Visual Studio je správně nakonfigurovaný s využitím Service Fabric. 
 
 ## <a name="view-service-fabric-system-events-in-visual-studio"></a>Zobrazit události systému Service Fabric v sadě Visual Studio
-Service Fabric vysílá události trasování událostí pro Windows, což vývojářům aplikací pochopit, co se děje v platformu. Pokud jste tak již neučinili, pokračujte a postupujte podle kroků v [vytvoření vaší první aplikace v sadě Visual Studio](service-fabric-create-your-first-application-in-visual-studio.md). Tyto informace vám pomohou aplikace spuštěná Diagnostika prohlížeči událostí zobrazuje trasovací zprávy.
+Service Fabric vysílá události trasování událostí pro Windows, což vývojářům aplikací umožňuje pochopit, co se děje na platformě. Pokud jste tak již neučinili, pokračujte a postupujte podle kroků v [vytvoření vaší první aplikace v sadě Visual Studio](service-fabric-create-your-first-application-in-visual-studio.md). Tyto informace vám pomohou aplikace pracovat s prohlížeč diagnostických událostí, zobrazení trasovacích zpráv.
 
-1. Pokud k diagnostice události okno nezobrazí automaticky, přejděte na **zobrazení** v sadě Visual Studio, zvolte **ostatní okna** a potom **prohlížeče diagnostických událostí**.
-2. Každá událost má standardní metadata informaci o uzlu, aplikace a služby, kterou událost pochází z. Můžete také filtrovat seznam událostí pomocí **filtrování událostí** pole v horní části okna události. Například můžete filtrovat podle **název uzlu** nebo **název služby.** A když se díváte na podrobnosti události, je také možné pozastavit pomocí **pozastavit** tlačítka v horní části okna události a pokračovat později, aniž by došlo ke ztrátě událostí.
+1. Pokud diagnostické události okno automaticky nezobrazuje, přejděte na **zobrazení** kartu v sadě Visual Studio, zvolte **ostatní Windows** a potom **prohlížeče diagnostických událostí**.
+2. Každou událost má standardní metadat informaci o uzlu, aplikace a služby, kterou událost pochází. Můžete také filtrovat seznam událostí s využitím **filtrovat události** pole v horní části okna událostí. Například můžete filtrovat podle **název uzlu** nebo **název služby.** A když se podíváte na podrobnosti o události, je také možné pozastavit pomocí **pozastavit** tlačítko v horní části okna událostí a později obnovit bez ztráty událostí.
    
-   ![Prohlížeč událostí diagnostiky Visual Studio](./media/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally/DiagEventsExamples2.png)
+   ![Prohlížeč událostí diagnostiky sady Visual Studio](./media/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally/DiagEventsExamples2.png)
 
-## <a name="add-your-own-custom-traces-to-the-application-code"></a>Přidání vlastního vlastní trasování do kódu aplikace
-Šablony projektů Service Fabric Visual Studio obsahovat ukázkový kód. Kód ukazuje, jak přidat vlastní aplikaci trasování ETW kódu, které se zobrazí v prohlížeči Visual Studio ETW společně systému trasování z Service Fabric. Výhodou této metody je, že metadata jsou automaticky přidány do trasování a Prohlížeč událostí diagnostické sady Visual Studio již byla konfigurována pro jejich zobrazení.
+## <a name="add-your-own-custom-traces-to-the-application-code"></a>Přidání vlastního trasování do kódu aplikace
+Šablony projektů Service Fabric Visual Studio obsahuje ukázkový kód. Kód ukazuje, jak přidat vlastní aplikaci kód trasování událostí pro Windows trasování, které se zobrazí v prohlížeči trasování událostí pro Windows Visual Studio spolu s trasování systému ze Service Fabric. Výhodou této metody je, že do trasování se automaticky přidají metadata a Prohlížeč událostí diagnostiky sady Visual Studio již byla konfigurována pro jejich zobrazení.
 
-Pro projekty vytvořené z **šablony služby** (bezstavové nebo stateful) také vyhledat `RunAsync` implementace:
+Pro projekty vytvořené z **šablon služeb** (Bezstavová nebo stavová) také vyhledat `RunAsync` implementace:
 
 1. Volání `ServiceEventSource.Current.ServiceMessage` v `RunAsync` metoda ukazuje příklad vlastního trasování událostí pro Windows trasování z kódu aplikace.
-2. V **ServiceEventSource.cs** souboru, zjistíte, přetížení pro `ServiceEventSource.ServiceMessage` metoda, která má být použit pro vysoká frekvence událostí z důvodů výkonu.
+2. V **ServiceEventSource.cs** souboru, bude najít přetížení pro `ServiceEventSource.ServiceMessage` metody, který se má použít pro vysokou frekvencí události z důvodů výkonu.
 
-Pro projekty vytvořené z **šablony objektu actor** (bezstavové nebo stateful):
+Pro projekty vytvořené z **šablony objektu actor** (Bezstavová nebo stavová):
 
-1. Otevřete **"ProjectName".cs** souboru kde *ProjectName* je název, který jste zvolili pro svůj projekt sady Visual Studio.  
-2. Najít kód `ActorEventSource.Current.ActorMessage(this, "Doing Work");` v *DoWorkAsync* metoda.  Toto je příklad vlastního trasování ETW zapsána z kódu aplikace.  
-3. V souboru **ActorEventSource.cs**, zjistíte, přetížení pro `ActorEventSource.ActorMessage` metoda, která má být použit pro vysoká frekvence událostí z důvodů výkonu.
+1. Otevřít **.cs "ProjectName"** souboru where *ProjectName* je název, který jste zvolili pro svůj projekt sady Visual Studio.  
+2. Kód, který `ActorEventSource.Current.ActorMessage(this, "Doing Work");` v *DoWorkAsync* metody.  Toto je příklad vlastního trasování událostí pro Windows trasování zapsat od kódu aplikace.  
+3. V souboru **ActorEventSource.cs**, zjistíte přetížení pro `ActorEventSource.ActorMessage` metody, který se má použít pro vysokou frekvencí události z důvodů výkonu.
 
-Po přidání vlastní trasování událostí pro Windows trasování do kódu služby, můžete vytvořit, nasadit a spusťte aplikaci znovu zobrazíte vaší událostí v prohlížeči diagnostických událostí. Pokud při ladění aplikace s **F5**, se automaticky otevře prohlížeč diagnostických událostí.
+Po přidání vlastního trasování událostí pro Windows do kódu služby, můžete vytvořit, nasadit a spustit aplikaci znovu, abyste viděli váš událostí v prohlížeči diagnostických událostí. Při ladění aplikace s **F5**, automaticky otevře prohlížeči diagnostických událostí.
 
 ## <a name="next-steps"></a>Další postup
-Stejný kód trasování, které jste přidali do vaší aplikace výše pro místní diagnostiky pracovat s nástroji, které můžete použít k zobrazení tyto události při spuštění aplikace v clusteru služby Azure. Podívejte se na tyto články, které popisují různé možnosti pro nástroje a popisují, jak je můžete nastavit tak.
+Stejný kód trasování, který jste přidali do vaší aplikace výše pro místní diagnostiky bude fungovat s nástroji, které můžete použít k zobrazení těchto událostí při spuštění aplikace v clusteru Azure. Prohlédněte si tyto články, které popisují různé možnosti pro nástroje a popisují, jak můžete nastavit jejich.
 
-* [Postup shromažďování protokolů pomocí Azure Diagnostics](service-fabric-diagnostics-how-to-setup-wad.md)
-* [Seskupení událostí a kolekce pomocí EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md)
+* [Shromažďování protokolů pomocí Azure Diagnostics](service-fabric-diagnostics-how-to-setup-wad.md)
+* [Agregace událostí a kolekce pomocí využitím EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md)
 

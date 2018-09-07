@@ -18,12 +18,12 @@ ms.date: 07/23/2018
 ms.author: markvi
 ms.reviewer: tanning
 ms.custom: it-pro
-ms.openlocfilehash: a80bec460fffcc7c7170204d541d578428980394
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: c7a2428e4e5e3b5af0e9e01514ba433707e6a3c8
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223945"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44022794"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Řešení potíží s Enterprise State Roaming nastavení v Azure Active Directory
 
@@ -71,7 +71,7 @@ Enterprise State Roaming vyžaduje zařízení k registraci v Azure AD. I když 
 **Potenciální problém**: **WamDefaultSet** a **AzureAdJoined** "Ne" mají hodnoty pole, zařízení je připojené k doméně a registrované v Azure AD i ne synchronizaci zařízení. Pokud je to zobrazeno, zařízení mohou muset počkat, než zásady a použít nebo ověřování pro zařízení se nezdařila při připojování ke službě Azure AD. Uživatel může mít počkat několik hodin pro zásadu použít. Při řešení potíží může zahrnovat odhlásit a znovu v opakování pokusu o automatickou registraci, nebo spouštění úloh v Plánovači úloh. V některých případech se systémem "*dsregcmd.exe /leave*" v okně příkazového řádku se zvýšenými oprávněními, restartování a opakovaným pokusem o registraci může pomoct s tímto problémem.
 
 
-**Potenciální problém**: pole pro **AzureAdSettingsUrl** je prázdný a není synchronizovaná zařízení. Uživatel může mít naposledy přihlásil k zařízení než Enterprise State Roaming bylo povoleno na portálu Azure Active Directory. Restartujte zařízení a jste přihlášení uživatele. Volitelně můžete na portálu, zkuste s správci IT zakázat a znovu povolit uživatele může synchronizovat nastavení a Data podnikových aplikací. Jednou obnovená, restartujte zařízení a jste přihlášení uživatele. Pokud to problém nevyřeší **AzureAdSettingsUrl** může být prázdný, v případě certifikát chybná zařízení. V takovém případě spuštění "*dsregcmd.exe /leave*" v okně příkazového řádku se zvýšenými oprávněními, restartování a opakovaným pokusem o registraci může pomoct s tímto problémem.
+**Potenciální problém**: pole pro **SettingsUrl** je prázdný a není synchronizovaná zařízení. Uživatel může mít naposledy přihlásil k zařízení než Enterprise State Roaming bylo povoleno na portálu Azure Active Directory. Restartujte zařízení a jste přihlášení uživatele. Volitelně můžete na portálu, zkuste s správci IT zakázat a znovu povolit uživatele může synchronizovat nastavení a Data podnikových aplikací. Jednou obnovená, restartujte zařízení a jste přihlášení uživatele. Pokud to problém nevyřeší **SettingsUrl** může být prázdný, v případě certifikát chybná zařízení. V takovém případě spuštění "*dsregcmd.exe /leave*" v okně příkazového řádku se zvýšenými oprávněními, restartování a opakovaným pokusem o registraci může pomoct s tímto problémem.
 
 ## <a name="enterprise-state-roaming-and-multi-factor-authentication"></a>Enterprise State Roaming a ověřování službou Multi-Factor Authentication 
 Za určitých podmínek Enterprise State Roaming může selhat synchronizaci dat, pokud je nakonfigurované ověřování Azure Multi-Factor Authentication. Další podrobnosti o těchto příznaků, naleznete v dokumentu podporu [KB3193683](https://support.microsoft.com/kb/3193683). 
@@ -81,7 +81,7 @@ Za určitých podmínek Enterprise State Roaming může selhat synchronizaci dat
 **Potenciální problém**: synchronizace mohou selhat, pokud správce nakonfiguruje zásady podmíněného přístupu ověřování Active Directory Federation Services službou Multi-Factor Authentication a vyprší platnost přístupového tokenu v zařízení. Zajistěte, aby přihlášení a odhlášení pomocí Microsoft Passport pro Work PIN nebo dokončí ověření služby Multi-Factor Authentication při přístupu k dalšími službami Azure, jako je Office 365.
 
 ### <a name="event-viewer"></a>Prohlížeč událostí
-Případě pokročilého odstraňování problémů, prohlížeče událostí umožňuje najít konkrétní chyby. Ty jsou popsány v následující tabulce. Události lze nalézt v prohlížeči událostí > protokoly aplikací a služeb > **Microsoft** > **Windows** > **SettingSync** a pro souvisejícím s identitou problémy se synchronizací **Microsoft** > **Windows** > **AAD**.
+Případě pokročilého odstraňování problémů, prohlížeče událostí umožňuje najít konkrétní chyby. Ty jsou popsány v následující tabulce. Události lze nalézt v prohlížeči událostí > protokoly aplikací a služeb > **Microsoft** > **Windows** > **SettingSync Azure** a souvisejícím s identitou problémy se synchronizací **Microsoft** > **Windows** > **AAD**.
 
 
 ## <a name="known-issues"></a>Známé problémy
@@ -174,14 +174,6 @@ V prohlížeči událostí pod protokoly AAD/Operational tato chyba může zobra
 
 **Doporučená akce**  
 Postupujte podle kroků uvedených [KB3196528](https://support.microsoft.com/kb/3196528).  
-
-
-
-## <a name="next-steps"></a>Další postup
-
-- Použití [fóru User Voice](https://social.technet.microsoft.com/Forums/windows/en-US/f51c856c-db92-4cf7-a497-720da21d7d31/enterprise-state-roaming) poskytnout zpětnou vazbu a zaslat návrhy na zlepšení Enterprise State Roaming.
-
-- Další informace najdete v tématu [Enterprise State Roaming přehled](active-directory-windows-enterprise-state-roaming-overview.md). 
 
 ## <a name="related-topics"></a>Související témata
 * [Cestovní přehled stavu Enterprise](active-directory-windows-enterprise-state-roaming-overview.md)
