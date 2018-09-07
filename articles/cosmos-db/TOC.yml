@@ -223,9 +223,8 @@ items:
     items:
     - name: Přehled
       href: mongodb-introduction.md
-      items:
-      - name: Podpora MongoDB
-        href: mongodb-feature-support.md
+    - name: Podpora MongoDB
+      href: mongodb-feature-support.md
     - name: Kurzy
       items:
       - name: 1. Vytvoření účtu
@@ -274,9 +273,8 @@ items:
     items:
     - name: Přehled
       href: graph-introduction.md
-      items:
-      - name: Podpora Gremlin
-        href: gremlin-support.md
+    - name: Podpora Gremlin
+      href: gremlin-support.md
     - name: Kurzy
       items:
       - name: 1. Dotazování dat
@@ -396,8 +394,6 @@ items:
       href: key-value-store-cost.md
     - name: Dělení dat SQL
       href: sql-api-partition-data.md
-    - name: Dělení dat v grafu
-      href: graph-partitioning.md
   - name: Integrace s ostatními službami Azure
     items:
     - name: Změna kanálu pro řešení elektronického obchodování
@@ -459,13 +455,11 @@ items:
   - name: Ceny
     href: https://azure.microsoft.com/pricing/details/cosmos-db/
   - name: Případy použití
-  - name: Vysvětlení konzistence dat pomocí baseballu
-    href: http://research.microsoft.com/apps/pubs/default.aspx?id=206913
   - name: Aplikace sociálních médií
     href: social-media-apps.md
-ms.openlocfilehash: afa2ccd0998ba78aa0f9e75bb87691ead8b96697
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 6f7d5290dd64b074a9933c8e10ccab2922355283
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43783252"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054117"

@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: e7a5c7f08b34c91512ad2bf5d9f3fcb82feb9e08
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44026092"
 documentType: LandingData
 title: Dokumentace ke službě Site Recovery
 metadata:
@@ -13,12 +19,6 @@ metadata:
   ms.topic: landing-page
   ms.date: 09/23/2017
   ms.author: carolz
-  ms.openlocfilehash: 0d66952b5f159ce92b8586f7beb71c25fe7c7b39
-  ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
-  ms.translationtype: HT
-  ms.contentlocale: cs-CZ
-  ms.lasthandoff: 01/10/2018
-  ms.locfileid: "27740073"
 abstract:
   description: Azure Site Recovery orchestruje a spravuje zotavení po havárii pro virtuální počítače Azure a místní virtuální počítače a fyzické servery. Prostřednictvím našich šablon Rychlý start a kurzů se naučíte, jak replikovat, převzít služby při selhání a navrátit služby po obnovení.
 sections:
@@ -31,7 +31,7 @@ sections:
     items:
     - image:
         src: /azure/site-recovery/media/index/portal.svg
-      text: Azure Portal
+      text: portál Azure
       href: /azure/site-recovery/azure-to-azure-quickstart
 - title: Podrobné kurzy
   items:
@@ -54,7 +54,7 @@ sections:
     - html: <a href="tutorial-prepare-on-premises-vmware">Příprava VMware v místním prostředí</a>
     - html: <a href="tutorial-vmware-to-azure">Nastavení zotavení po havárii</a>
     - html: <a href="tutorial-dr-drill-azure">Spuštění postupu zotavení po havárii</a>
-    - html: <a href="tutorial-vmware-to-azure-failover-failback">Spuštění převzetí služeb při selhání a navrácení služeb po obnovení</a>
+    - html: <a href="vmware-azure-tutorial-failover-failback">Spuštění převzetí služeb při selhání a navrácení služeb po obnovení</a>
   - type: text
     html: <h3>Hyper-V</h3>
   - type: list
@@ -73,13 +73,13 @@ sections:
     items:
     - html: <a href="tutorial-prepare-azure">Příprava Azure</a>
     - html: <a href="tutorial-migrate-on-premises-to-azure">Migrace místních počítačů</a> nebo <a href="tutorial-migrate-aws-to-azure">instancí AWS do Azure</a>
-- title: Odkaz
+- title: Referenční informace
   items:
   - type: list
     style: cards
     className: cardsD
     items:
     - title: Příkazový řádek
-      html: <p><a href="/powershell/module/azurerm.siterecovery/?view=azurermps-4.3.1">Azure PowerShell</a></p>
+      html: <p><a href="/powershell/module/azurerm.siterecovery>Azure PowerShell</a></p>
     - title: REST
       html: <p><a href="/rest/api/site-recovery/">Reference k rozhraní REST API</a></p>

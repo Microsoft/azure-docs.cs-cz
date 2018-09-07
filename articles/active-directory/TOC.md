@@ -49,7 +49,6 @@
 ### [Resetování uživatelského hesla](fundamentals/active-directory-users-reset-password-azure-portal.md)
 ### [Sdílení účtů](active-directory-sharing-accounts.md)
 ### [Přiřazení uživatelů k rolím správce](fundamentals/active-directory-users-assign-role-azure-portal.md)
-### [Obnovení odstraněného uživatele](fundamentals/active-directory-users-restore.md)
 ### [Přidání uživatelů typu host z jiného adresáře (B2B)](b2b/what-is-b2b.md)
 #### [Správci přidávají uživatele B2B](b2b/add-users-administrator.md)
 #### [Informační pracovníci přidávají uživatele B2B](b2b/add-users-information-worker.md)
@@ -163,7 +162,7 @@
 ##### [Bezobslužná instalace](manage-apps/application-proxy-register-connector-powershell.md)
 ##### [Vlastní domovská stránka](manage-apps/application-proxy-configure-custom-home-page.md)
 ##### [Převod vložených odkazů](manage-apps/application-proxy-configure-hard-coded-link-translation.md)
-##### [Zástupné znaky](active-directory-application-proxy-wildcard.md)
+##### [Zástupné znaky](manage-apps/application-proxy-wildcard.md)
 ##### [Odebrání osobních údajů](manage-apps/application-proxy-remove-personal-data.md)
 
 
@@ -172,7 +171,7 @@
 ##### [SharePoint](manage-apps/application-proxy-integrate-with-sharepoint-server.md)
 ##### [Microsoft Teams](manage-apps/application-proxy-integrate-with-teams.md)
 ##### [Tableau](manage-apps/application-proxy-integrate-with-tableau.md)
-##### [Qlik](active-directory-application-proxy-qlik.md)
+##### [Qlik](manage-apps/application-proxy-qlik.md)
 #### [PowerShell](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management) 
 
 #### [Řešení problémů](manage-apps/application-proxy-troubleshoot.md)

@@ -1,0 +1,79 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: ccc508b8dbfb990639abe24efa2822ff27f2f910
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44029386"
+documentType: LandingData
+title: Dokumentace ke spravovaným identitám Azure AD pro prostředky Azure
+metadata:
+  document_id: 
+  title: Dokumentace ke spravovaným identitám Azure AD pro prostředky Azure
+  description: Naučte se využívat spravované identity pro prostředky Azure k zabezpečenému ověřování pro cloudové služby Azure, aniž byste ve zdrojovém kódu museli mít přihlašovací údaje.
+  services: active-directory
+  ms.component: msi
+  author: daveba
+  manager: mtillman
+  ms.service: active-directory
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 03/16/2018
+  ms.author: daveba
+abstract:
+  description: Spravované identity pro prostředky Azure poskytují službám Azure automaticky spravovanou identitu v Azure Active Directory (Azure AD). Tuto identitu můžete použít k ověření pro jakoukoli službu, která podporuje ověřování Azure AD, aniž byste ve vašem kódu museli mít přihlašovací údaje.  Naučte se prostřednictvím našich šablon Rychlý start a kurzů vytvářet a spravovat spravované identity pro prostředky Azure.
+  aside:
+    image:
+      alt: 
+      height: 112
+      src: media/index/video-thumb-landing-page.png
+      width: 200
+    title: Úvod ke spravovaným identitám pro prostředky Azure
+    href: https://www.youtube.com/embed/bBi1bll2928
+    width: 200
+sections:
+- title: Zprovoznění během 5 minut
+  items:
+  - type: paragraph
+    text: Naučte se využívat spravované identity pro prostředky Azure pro přístup k rozhraní API Azure Resource Manageru
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/active-directory/managed-service-identity/tutorial-windows-vm-access-arm">Přístup k Azure Resource Manageru z virtuálního počítače Azure s Windows</a>
+    - html: <a href="/azure/active-directory/managed-service-identity/tutorial-linux-vm-access-arm">Přístup k Azure Resource Manageru z virtuálního počítače Azure s Linuxem</a>
+- title: Podrobné kurzy
+  items:
+  - type: paragraph
+    text: Naučte se využívat spravované identity pro prostředky Azure pro zabezpečený přístup k prostředkům Azure
+  - type: paragraph
+    text: Virtuální počítač nebo škálovací sada virtuálních počítačů s Windows
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/active-directory/managed-service-identity/tutorial-windows-vm-access-datalake">Přístup ke službě Azure Data Lake Store</a>
+    - html: <a href="/azure/active-directory/managed-service-identity/tutorial-windows-vm-access-storage">Přístup ke službě Azure Storage pomocí přístupové klávesy</a>
+    - html: <a href="/azure/active-directory/managed-service-identity/tutorial-windows-vm-access-sql">Přístup k Azure SQL</a>
+    - html: <a href="/azure/active-directory/managed-service-identity/tutorial-windows-vm-access-nonaad">Přístup ke službě Azure Key Vault</a>
+    - html: <a href="/azure/active-directory/managed-service-identity/tutorial-windows-vm-access-cosmos-db">Přístup ke službě Azure Cosmos DB</a>
+    - html: <a href="/azure/active-directory/managed-service-identity/tutorial-windows-vm-ua-arm">Přístup k Azure Resource Manageru s využitím uživatelsky přiřazené identity</a>
+  - type: paragraph
+    text: Virtuální počítač nebo škálovací sada virtuálních počítačů s Linuxem
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/active-directory/managed-service-identity/tutorial-linux-vm-access-datalake">Přístup ke službě Azure Data Lake Store</a>
+    - html: <a href="/azure/active-directory/managed-service-identity/tutorial-linux-vm-access-storage-access-key">Přístup ke službě Azure Storage pomocí přístupové klávesy</a>
+    - html: <a href="/azure/active-directory/managed-service-identity/tutorial-linux-vm-access-nonaad">Přístup ke službě Azure Key Vault</a>
+    - html: <a href="/azure/active-directory/managed-service-identity/tutorial-linux-vm-access-cosmos-db">Přístup ke službě Azure Cosmos DB</a>
+    - html: <a href="/azure/active-directory/managed-service-identity/msi-tutorial-linux-vm-access-arm">Přístup k Azure Resource Manageru s využitím uživatelsky přiřazené identity</a>
+- title: Referenční informace
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: Příkazový řádek
+      html: <p><a href="/powershell/module/azurerm.managedserviceidentity#managed_service_identity">Azure PowerShell</a></p><p><a href="/cli/azure/identity">Azure CLI</a></p>
+    - title: Jazyky
+      html: <p><a href="/dotnet/api/microsoft.azure.management.resourcemanager.fluent.authentication#azure-dotnet">.NET</a></p><p><a href="https://github.com/Azure/azure-libraries-for-java#ready-to-run-code-samples-for-virtual-machines">Java</a></p><p><a href="/javascript/api/ms-rest-azure">Node.js</a></p><p><a href="/python/api/azure.mgmt.msi">Python</a></p></p><a href="https://rubygems.org/gems/azure_mgmt_msi">Ruby</a></p></p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/msi/mgmt/2015-08-31-preview/msi">Go</a></p>
