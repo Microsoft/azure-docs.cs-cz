@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 0935867e835fe88568f1cdce1ea8dfcea14a451a
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 1d2f194eb6a2186fc1e8451a7022d26cd1013bb2
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669311"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44022392"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vms"></a>Správa konfiguračního serveru pro virtuální počítače VMware
 
@@ -88,7 +88,22 @@ Pokud je potřeba, můžete znovu zaregistrujte konfigurační server ve stejné
           net stop obengine
           net start obengine
   ```
-  
+
+## <a name="register-a-configuration-server-with-a-different-vault"></a>Registrace konfiguračního serveru pomocí jiného trezoru
+
+> [!WARNING]
+> Následující krok zruší přidružení konfiguračního serveru z aktuálního úložiště a zastaví se replikace všech chráněných virtuálních počítačů v rámci konfigurace serveru.
+
+1. Přihlaste se ke konfiguračnímu serveru.
+2. Otevřete okno příkazového prostředí PowerShell správce a spusťte následující příkaz:
+
+    ```
+    reg delete HKLM\Software\Microsoft\Azure Site Recovery\Registration
+    net stop dra
+    ```
+3. Spusťte portál pro zařízení prohlížeče konfigurační server pomocí zástupce na ploše.
+4. Proveďte kroky registrace, podobně jako na nový server konfigurace [registrace](vmware-azure-tutorial.md#register-the-configuration-server).
+
 ## <a name="upgrade-the-configuration-server"></a>Upgradujte konfigurační server
 
 Spuštění kumulativní aktualizace se aktualizovat konfigurační server. Aktualizace můžete použít pro až N-4 verze. Příklad:

@@ -8,14 +8,14 @@ manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 09/05/2018
 ms.author: sngun
-ms.openlocfilehash: 375990f095d3a6cbbbfa18db70466c274fd7e17b
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 2f18840802a39f03659792a4d5b33ad3a73c5961
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702591"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44051438"
 ---
 # <a name="azure-cosmos-db-faq"></a>Nejčastější dotazy k Azure Cosmos DB
 ## <a name="azure-cosmos-db-fundamentals"></a>Základy služby Azure Cosmos DB
@@ -441,15 +441,132 @@ Azure Table storage a Azure Cosmos DB Table API používat stejné sady SDK, tak
 Azure Cosmos DB je systém, který poskytuje latence, propustnosti, dostupnosti a záruky konzistence na základě smlouvy SLA. Protože je zřízená systému, vyhrazuje prostředky k zajištění těchto požadavků. Rychlý kurz vytvoření tabulek je zjištěna a omezuje. Doporučujeme podívat se na kurz vytváření tabulek a snížit na méně než 5 za minutu. Mějte na paměti, že rozhraní API tabulky je zřízené systému. V okamžiku, zřídíte začnete dál za něj platit. 
 
 ## <a name="gremlin-api"></a>Rozhraní Gremlin API
-### <a name="how-can-i-apply-the-functionality-of-gremlin-api-to-azure-cosmos-db"></a>Jak můžu použít funkci rozhraní Gremlin API do služby Azure Cosmos DB?
-Knihovna rozšíření můžete použít funkci rozhraní Gremlin API. Tato knihovna je volána grafy Microsoft Azure a je k dispozici na [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Graphs). 
 
-### <a name="it-looks-like-you-support-the-gremlin-graph-traversal-language-do-you-plan-to-add-more-forms-of-query"></a>Zdá se, podporu jazyka Gremlin procházení grafu. Plánujete přidat další formy dotaz?
-Ano, plánujeme v budoucnu přidat další mechanismy pro dotaz. 
+### <a name="for-cnet-development-should-i-use-the-microsoftazuregraphs-package-or-gremlinnet"></a>Pro jazyk C# / .NET development použití Gremlin.NET i balíček Microsoft.Azure.Graphs? 
 
-### <a name="how-can-i-use-the-new-gremlin-api-offering"></a>Použití nové nabídky rozhraní Gremlin API 
-Pokud chcete začít, proveďte [rozhraní Gremlin API](../cosmos-db/create-graph-dotnet.md) článku rychlého zprovoznění.
+Gremlin API služby Azure Cosmos DB využívá open source ovladače jako hlavní konektory pro službu. Proto doporučujeme použít [ovladače, které jsou podporovány Apache Tinkerpop](http://tinkerpop.apache.org/).
 
+### <a name="how-are-rus-charged-when-running-queries-on-a-graph-database"></a>Jak RU/s se účtují při spouštění dotazů v databázi grafu? 
+
+Graf objektů, vrcholů a hran, jsou reprezentovány jako dokumenty JSON do back-endu. Od jednoho dotazu Gremlin můžete změnit jeden nebo mnoho grafu objektů v čase, náklady spojené s ním isbe přímo souvisí s objekty, hrany, které se zpracovávají v dotazu. Toto je stejný proces, který používá službu Azure Cosmos DB pro jiná rozhraní API. Další informace najdete v tématu [jednotky žádostí ve službě Azure Cosmos DB](request-units.md).
+
+Poplatek za RU vychází z pracovní sady dat procházení a nastavte není výsledek. Například pokud dotaz má za cíl získat jeden vrchol kvůli tomu ale potřeba procházejí více jiných objektech na cestě, pak náklady bude vycházet všechny objekty grafu, které potřebuje pro výpočet vrcholů jeden výsledek.
+
+### <a name="whats-the-maximum-scale-that-a-graph-database-can-have-in-azure-cosmos-db-gremlin-api"></a>Jaký je maximální rozsah, který může mít databázi grafu v rozhraní Gremlin API služby Azure Cosmos DB? 
+
+Azure Cosmos DB využívá [horizontální dělení](partition-data.md) automaticky adresu zvýšení požadavky na úložiště a propustnost. Maximální propustnost a úložiště kapacitu úloh se určuje podle množství oddíly, které jsou spojené s danou kolekci. Rozhraní Gremlin API kolekce má ale konkrétní sadu pokynů k zajištění řádné výkon ve velkém měřítku. Další informace a doporučené postupy najdete v tématu [osvědčené postupy pro dělení](partition-data.md#best-practices-when-choosing-a-partition-key) dokumentu. 
+
+### <a name="how-can-i-protect-against-injection-attacks-using-gremlin-drivers"></a>Jak můžete chránit před útoky prostřednictvím injektáže pomocí Gremlin ovladače? 
+
+Nejvíce nativní ovladače Tinkerpop Gremlin povolí možnost zadat slovník parametrů pro spuštění dotazu. Toto je příklad toho, jak to udělat v [Gremlin.Net]() a [Gremlin-Javascript](https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started/blob/master/app.js).
+
+### <a name="why-am-i-getting-the-gremlin-query-compilation-error-unable-to-find-any-method-error"></a>Proč se zobrazuje "chybě kompilace dotazu Gremlin: nepovedlo se najít žádné metody" Chyba?
+
+Gremlin API služby Azure Cosmos DB implementuje podmnožinu funkce je definována v útoku na Gremlin. Podporované postup a další informace najdete v tématu [podpora Gremlin](gremlin-support.md) článku.
+
+Nejlepším alternativním řešením je znovu napsat požadovaných kroků konzoly Gremlin s podporované funkce, protože všech základních kroků konzoly Gremlin jsou podporovány službou Azure Cosmos DB.
+
+### <a name="why-am-i-getting-the-websocketexception-the-server-returned-status-code-200-when-status-code-101-was-expected-error"></a>Proč se zobrazuje "WebSocketException: server vrátil stavový kód"200", když byl očekáván stavový kód"101"" Chyba?
+
+Tato chyba je pravděpodobně vyvolána při nesprávné koncový bod se používá. Koncový bod, který generuje tato chyba má následujícímu vzoru:
+
+`https:// YOUR_DATABASE_ACCOUNT.documents.azure.com:443/` 
+
+Toto je koncový bod dokumenty pro vaši databázi grafu.  Použít na správný koncový bod je koncový bod Gremlin, který má následující formát: 
+
+`https://YOUR_DATABASE_ACCOUNT.gremlin.cosmosdb.azure.com:443/`
+
+### <a name="why-am-i-getting-the-requestrateistoolarge-error"></a>Proč se zobrazuje chyba "RequestRateIsTooLarge"?
+
+Tato chyba znamená, že alokovaných jednotek žádosti za sekundu nejsou dostatečná k obsluze dotazu. K této chybě obvykle dochází, když spustíte dotaz, který získá všechny vrcholy:
+
+```
+// Query example:
+g.V()
+```
+
+Tento dotaz se pokusí o načtení všech vrcholů v grafu. Proto náklady tohoto dotazu bude rovna hodnotě minimální počet vrcholů z hlediska RU. K vyřešení tohoto dotazu je třeba upravit nastavení RU/s.
+
+### <a name="why-do-my-gremlin-driver-connections-get-dropped-eventually"></a>Proč moje připojení ovladače Gremlin získáte nakonec?
+
+Připojení konzoly Gremlin se provádí prostřednictvím připojení soketu WebSocket. I když připojení pomocí protokolu WebSocket nemusí určitý čas TTL, Gremlin API služby Azure Cosmos DB bude ukončen nečinných připojení po 30 minutách nečinnosti. 
+
+### <a name="why-cant-i-use-fluent-api-calls-in-the-native-gremlin-drivers"></a>Proč nelze použít fluent volání rozhraní API v nativním ovladače Gremlin?
+
+Fluent volání rozhraní API ještě nepodporuje Gremlin API služby Azure Cosmos DB. Fluent volání rozhraní API vyžaduje vnitřní funkce formátování, která označuje jako podpora bajtového kódu, který není aktuálně podporovaná rozhraní Gremlin API služby Azure Cosmos DB. Z důvodu ze stejného důvodu nejnovější ovladače Gremlin-JavaScript také aktuálně nepodporuje. 
+
+### <a name="how-can-i-evaluate-the-efficiency-of-my-gremlin-queries"></a>Jak můžu posoudit efektivitu Moje dotazy Gremlin?
+
+**ExecutionProfile()** krok ve verzi preview je možné poskytnout analýzu plán provádění dotazu. Tento krok je potřeba přidat na konec objektu jakéhokoli dotazu Gremlin, jak je znázorněno v následujícím příkladu:
+
+**Příklad dotazu**
+
+```
+g.V('mary').out('knows').executionProfile()
+```
+
+**Příklad výstupu**
+
+```json
+[
+  {
+    "gremlin": "g.V('mary').out('knows').executionProfile()",
+    "totalTime": 8,
+    "metrics": [
+      {
+        "name": "GetVertices",
+        "time": 3,
+        "annotations": {
+          "percentTime": 37.5
+        },
+        "counts": {
+          "resultCount": 1
+        }
+      },
+      {
+        "name": "GetEdges",
+        "time": 5,
+        "annotations": {
+          "percentTime": 62.5
+        },
+        "counts": {
+          "resultCount": 0
+        },
+        "storeOps": [
+          {
+            "partitionsAccessed": 1,
+            "count": 0,
+            "size": 0,
+            "time": 0.6
+          }
+        ]
+      },
+      {
+        "name": "GetNeighborVertices",
+        "time": 0,
+        "annotations": {
+          "percentTime": 0
+        },
+        "counts": {
+          "resultCount": 0
+        }
+      },
+      {
+        "name": "ProjectOperator",
+        "time": 0,
+        "annotations": {
+          "percentTime": 0
+        },
+        "counts": {
+          "resultCount": 0
+        }
+      }
+    ]
+  }
+]
+```
+
+Výstup výše uvedeného profilu ukazuje, jak dlouho se neztrácí získání objektů vrcholu a hrany, jakož i velikost pracovní sady data. To se týká měření pevné ceny za dotazy na službu Azure Cosmos DB.
 
 ## <a id="cassandra"></a> Rozhraní Cassandra API
 

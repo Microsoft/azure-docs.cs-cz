@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/27/2018
 ms.author: aljo
-ms.openlocfilehash: ed904f7d4de9406e60de1652cefeb5bb84e5a1d8
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: cf8e9dff020e16efe4b37a2bfd66563211be3020
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43144034"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44055535"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Nastavení clusteru Service Fabric
 Tento článek popisuje, jak přizpůsobit různá nastavení prostředků infrastruktury pro cluster Service Fabric. Pro clustery hostovaných v Azure, můžete upravit pomocí nastavení [webu Azure portal](https://portal.azure.com) nebo s použitím šablony Azure Resource Manageru. Pro samostatné clustery upravit nastavení aktualizací ClusterConfig.json souborů a provádění upgradu na konfiguraci v clusteru. 
@@ -624,10 +624,13 @@ Tady je seznam prostředků infrastruktury nastavení, které můžete přizpůs
 ## <a name="security"></a>Zabezpečení
 | **Parametr** | **Povolené hodnoty** |**Zásady upgradu**| **Doprovodné materiály nebo krátký popis** |
 | --- | --- | --- | --- |
+|AADCertEndpointFormat|řetězec, výchozí hodnota je ""|Statická|AAD Cert formát koncového bodu, výchozí Azure Commercial zadané pro jiné než výchozí prostředí, jako je například Azure Government "https://login.microsoftonline.us/{0}/federationmetadata/2007-06/federationmetadata.xml" |
 |AADClientApplication|řetězec, výchozí hodnota je ""|Statická|Název nativní klientské aplikace nebo Identifikátor představující Fabric klientů |
 |AADClusterApplication|řetězec, výchozí hodnota je ""|Statická|Název aplikace webového rozhraní API nebo Identifikátor představující clusteru |
+|AADLoginEndpoint|řetězec, výchozí hodnota je ""|Statická|AAD koncový bod přihlašovacího účtu, výchozí Azure Commercial zadané pro jiné než výchozí prostředí, jako je například Azure Government "https://login.microsoftonline.us" |
 |AADTenantId|řetězec, výchozí hodnota je ""|Statická|ID tenanta (GUID) |
 |AdminClientCertThumbprints|řetězec, výchozí hodnota je ""|Dynamická|Kryptografické otisky certifikátů používaných klienty v roli správce. Je seznam čárkami oddělených názvů. |
+|AADTokenEndpointFormat|řetězec, výchozí hodnota je ""|Statická|AAD koncový bod tokenu, výchozí Azure Commercial zadané pro jiné než výchozí prostředí, jako je například Azure Government "https://login.microsoftonline.us/{0}" |
 |AdminClientClaims|řetězec, výchozí hodnota je ""|Dynamická|Všechny možné deklarací, od správce klientů; stejný formát jako ClientClaims; Tento seznam interně přidá do ClientClaims; proto není potřeba přidat také stejné položky ClientClaims. |
 |AdminClientIdentities|řetězec, výchozí hodnota je ""|Dynamická|Identity Windows fabric klientů v roli správce použít k autorizaci fabric privilegované operace. Je čárkami oddělený seznam; Každá položka je název účtu domény nebo název skupiny. Pro usnadnění práce; účet, který spouští fabric.exe se automaticky přiřadí role správce; Proto je seskupit ServiceFabricAdministrators. |
 |CertificateExpirySafetyMargin|Časový interval, výchozí hodnota je Common::TimeSpan::FromMinutes(43200)|Statická|Zadejte časový interval v sekundách. Bezpečný přístup z více rozpětí pro vypršení platnosti certifikátu; Sestava Stav certifikátu změní z OK upozornění při vypršení platnosti je blíže než to. Výchozí hodnota je 30 dní. |

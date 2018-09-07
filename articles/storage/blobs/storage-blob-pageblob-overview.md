@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: wielriac
 ms.component: blobs
-ms.openlocfilehash: a215771b0126e9048b7d9da4ed1d6073c8e960a4
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: dc15dcb9f7b342d2d5140199ecf34c1a4781fa25
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39265580"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44022684"
 ---
 # <a name="unique-features-of-azure-page-blobs"></a>Jedinečné funkce objektů BLOB stránky Azure
 
@@ -71,7 +71,7 @@ pageBlob.Resize(32 * OneGigabyteAsBytes);
 ```
 
 #### <a name="writing-pages-to-a-page-blob"></a>Vytvoření stránek pro objekt blob stránky
-Chcete-li zapsat stránky, použijte [CloudPageBlob.WritePages](/library/microsoft.windowsazure.storageclient.cloudpageblob.writepages.aspx) metody.  To umožňuje zapisovat sekvenční sadu stránek až 4MBs. Posun do musí začínat na hranici 512 bajtů (startingOffset % 512 == 0) a ukončí se na hranici 512 - 1.  Následující příklad kódu ukazuje, jak volat **WritePages** pro objekt blob:
+Chcete-li zapsat stránky, použijte [CloudPageBlob.WritePages](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.cloudpageblob.beginwritepages?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudPageBlob_BeginWritePages_System_IO_Stream_System_Int64_System_String_Microsoft_WindowsAzure_Storage_AccessCondition_Microsoft_WindowsAzure_Storage_Blob_BlobRequestOptions_Microsoft_WindowsAzure_Storage_OperationContext_System_AsyncCallback_System_Object_) metody.  To umožňuje zapisovat sekvenční sadu stránek až 4MBs. Posun do musí začínat na hranici 512 bajtů (startingOffset % 512 == 0) a ukončí se na hranici 512 - 1.  Následující příklad kódu ukazuje, jak volat **WritePages** pro objekt blob:
 
 ```csharp
 pageBlob.WritePages(dataStream, startingOffset); 
@@ -116,8 +116,6 @@ foreach (PageRange range in pageRanges)
 
 #### <a name="leasing-a-page-blob"></a>Zapůjčení objektu blob stránky
 Operace zapůjčení objektu Blob vytváří a spravuje zámek na objekt blob pro zápis a operace odstranění. Tato operace je užitečná v situacích, kde objekt blob stránky je přistupováno z několika klientů k zajištění, že pouze jednoho klienta může zapisovat do objektu blob v čase. Disky Azure, například využívá to zapůjčení mechanismus Ujistěte se, že disk spravuje jenom jeden virtuální počítač. Doba trvání uzamknutí může být 15 až 60 sekund, nebo může být nekonečné. Naleznete v dokumentaci k [tady](/rest/api/storageservices/lease-blob) další podrobnosti.
-
-> Pomocí následujícího odkazu zobrazíte [ukázky kódu](/resources/samples/?service=storage&term=blob&sort=0 ) pro mnoho dalších scénářů aplikace. 
 
 Kromě bohatá rozhraní API REST objekty BLOB stránky také nabízejí sdílený přístup, odolnost a zvýšené zabezpečení. Obsahuje tyto výhody podrobněji další odstavcích. 
 
