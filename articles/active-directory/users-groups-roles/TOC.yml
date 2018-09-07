@@ -86,7 +86,11 @@ items:
       href: /azure/active-directory/fundamentals/active-directory-groups-membership-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
     - name: Přidání skupinového přístupu k aplikacím SaaS
       href: groups-saasapps.md
-    - name: Obnovení odstraněných skupin
+    - name: Referenční informace k pojmenování skupin
+      href: groups-naming-policy.md
+    - name: Referenční informace k vypršení platnosti skupin
+      href: groups-lifecycle.md
+    - name: Obnovení odstraněných skupin nebo skupin, kterým vypršela platnost
       href: groups-restore-deleted.md
     - name: Správa nastavení skupin
       href: /azure/active-directory/fundamentals/active-directory-groups-settings-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
@@ -157,9 +161,9 @@ items:
     href: https://docs.microsoft.com/cli/azure/ad
   - name: Azure AD PowerShell pro Graph
     href: https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0
-ms.openlocfilehash: 5f0d4d668a2491ed884cd231171c1cec570e0d45
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 04819474768310ff88467f2461aafda3789754f5
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841294"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44050897"

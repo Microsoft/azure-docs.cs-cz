@@ -35,6 +35,8 @@ items:
   - name: Upgrade na pokročilé zabezpečení
     href: security-center-onboarding.md
   - name: Nastavení zásad zabezpečení
+    href: security-center-azure-policy.md
+  - name: Nastavení zásad zabezpečení
     href: security-center-policies-overview.md
     items:
     - name: Shromažďování dat
@@ -47,8 +49,6 @@ items:
       href: security-center-pricing.md
     - name: Konfigurace zabezpečení
       href: security-center-customize-os-security-config.md
-    - name: Zásady zabezpečení s využitím zásad Azure
-      href: security-center-azure-policy.md
     - name: Viditelnost v rámci celého tenanta
       href: security-center-management-groups.md
   - name: Implementace doporučení pro zabezpečení
@@ -207,9 +207,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=security-center
   - name: Regionální dostupnost
     href: https://azure.microsoft.com/regions/services/
-ms.openlocfilehash: 62f713d5e0412eef2cb4dbb176e355371cbc924a
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: dc9c41fa829e26e4f77a9ef8a2baad423f02ffca
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43126398"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44026356"

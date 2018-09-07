@@ -1,0 +1,67 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 0443553b72d414695ff96a4aeb2a9dd21531f1da
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44058037"
+documentType: LandingData
+title: Dokumentace ke službě Azure Batch AI (Preview)
+metadata:
+  title: Dokumentace ke službě Azure Batch AI (Preview)
+  meta.description: Azure Batch AI is a managed service to help data scientists and AI researchers train and test machine learning and AI models at scale in Azure - without having to manage complex infrastructure. Learn how to use Batch AI with our quickstarts, tutorials, and samples.
+  services: batch-ai
+  author: dlepow
+  manager: jeconnock
+  layout: LandingPage
+  ms.service: batch-ai
+  ms.topic: landing-page
+  ms.date: 08/16/2018
+  ms.author: danlep
+abstract:
+  description: Azure Batch AI je spravovaná služba umožňující odborníkům na data a výzkumníkům AI trénovat a testovat modely strojového učení a AI v Azure ve velkém měřítku, aniž by bylo potřeba spravovat složitou infrastrukturu. Naučte se používat Batch AI prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek.
+sections:
+- title: Zprovoznění během 5 minut
+  items:
+  - type: paragraph
+    text: Podívejte se, jak vytvořit první cluster Batch AI.
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: https://docs.microsoft.com/media/common/i_cligeneric.svg
+      text: Azure CLI
+      href: quickstart-create-cluster-cli.md
+    - image:
+        src: https://docs.microsoft.com/media/common/i_portal.svg
+      text: Azure Portal
+      href: quickstart-create-cluster-portal.md
+  - type: paragraph
+    text: Zjistěte, jak natrénovat váš první model hlubokého učení.
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: https://docs.microsoft.com/media/common/i_cligeneric.svg
+      text: Azure CLI
+      href: quickstart-tensorflow-training-cli.md
+- title: Podrobné kurzy
+  items:
+  - type: paragraph
+    text: Naučte se používat službu Batch AI k trénování modelů s různou architekturou.
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="tutorial-horovod-tensorflow.md">Distribuované trénování s využitím Horovodu</a>
+- title: Referenční informace
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: Příkazový řádek
+      html: <p><a href="https://docs.microsoft.com/en-us/cli/azure/batchai?view=azure-cli-latest">Azure CLI</a></p>
+    - title: Jazyky
+      html: <p><a href="https://docs.microsoft.com/en-us/dotnet/api/overview/azure/batchai?view=azure-dotnet">.NET</a></p><p><a href="https://docs.microsoft.com/en-us/java/api/overview/azure/batchai?view=azure-java-stable">Java</a></p><p><a href="https://docs.microsoft.com/en-us/javascript/api/overview/azure/batchai?view=azure-node-latest">Node.js</a></p><p><a href="https://docs.microsoft.com/en-us/python/api/overview/azure/batchai?view=azure-python">Python</a></p>
+    - title: REST
+      html: <p><a href="https://docs.microsoft.com/en-us/rest/api/batchai/">Reference k rozhraní REST API</a></p>

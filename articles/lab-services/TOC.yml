@@ -70,6 +70,8 @@ items:
       href: devtest-lab-get-started-with-lab-policies.md
     - name: Uložení tajných kódů ve službě Azure Key Vault
       href: devtest-lab-store-secrets-in-key-vault.md
+    - name: Testování aplikace v Azure
+      href: test-app-azure.md
     - name: Použití virtuálních počítačů v testovacím prostředí
       items:
       - name: Vytvoření virtuálních počítačů
@@ -192,9 +194,9 @@ items:
     href: https://azure.microsoft.com/documentation/videos/index/?services=devtest-lab
   - name: Ceny
     href: https://azure.microsoft.com/pricing/details/devtest-lab/
-ms.openlocfilehash: f6a260970e176c9ac4871da716162dca29aebaa8
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: a3e6dcc959474c79aeb06d05e7f722695471fd9f
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41927083"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44024444"

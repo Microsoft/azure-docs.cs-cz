@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: f83fd24605577a16257517d96208016bea95c0af
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: b00d2c68748372c644a0966d76d5adb8e430e2d5
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43184359"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44053597"
 documentType: LandingData
 title: Dokumentace k databázi Azure Cosmos
 metadata:
@@ -21,7 +21,7 @@ metadata:
   ms.date: 04/26/2018
   ms.author: sngun
 abstract:
-  description: Azure Cosmos DB je globálně distribuovaná databázová služba pro více modelů. Tyto Rychlé starty, kurzy a ukázky vám pomůžou s vývojem databází dokumentů, párů klíč-hodnota, širokých sloupců a grafů s použitím oblíbených rozhraní API a programovacích modelů. Potom se naučíte replikovat data do libovolného počtu oblastí Azure a škálovat propustnost nezávisle na úložišti s využitím výhod komplexních smluv SLA.
+  description: Azure Cosmos DB je globálně distribuovaná a databázová služba pro více modelů, která dokumentační databáze, databáze typu klíč-hodnota, databáze širokých sloupců a databáze grafů. Naučte se používat Azure Cosmos DB prostřednictvím našich šablon Rychlý start, kurzů a ukázek.
   aside:
     image:
       alt: 

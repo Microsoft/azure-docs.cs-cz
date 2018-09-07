@@ -1,43 +1,72 @@
+items:
 - name: Dokumentace ke službě Batch AI
-  href: index.md
+  href: index.yml
 - name: Přehled
   items:
-    - name: Co je Batch AI?
-      href: overview.md
-- name: Začínáme
-  expanded: true
+  - name: Co je Batch AI?
+    href: overview.md
+- name: Šablony Rychlý start
   items:
-    - name: Spuštění trénovací úlohy – CLI
-      href: quickstart-cli.md
-    - name: Spuštění trénovací úlohy – Python
-      href: quickstart-python.md
+  - name: Vytvoření clusteru – rozhraní příkazového řádku
+    href: quickstart-create-cluster-cli.md
+  - name: Vytvoření clusteru – portál
+    href: quickstart-create-cluster-portal.md
+  - name: Trénování modelu AI – rozhraní příkazového řádku
+    href: quickstart-tensorflow-training-cli.md
+  expanded: true
+- name: Kurzy
+  items:
+  - name: Distribuované trénování s využitím Horovodu
+    href: tutorial-horovod-tensorflow.md
+- name: Ukázky
+  items:
+  - name: Azure CLI
+    href: cli-samples.md
+- name: Koncepty
+  items:
+  - name: Prostředky služby Batch AI
+    href: resource-concepts.md
+  - name: Kvóty a omezení pro službu Batch AI
+    href: quota-limits.md
 - name: Návody
   items:
-    - name: Migrace na aktualizované rozhraní API
-      href: migrate-to-new-api.md
+  - name: Práce s clustery
+    href: clusters.md
+  - name: Použití služby Azure Storage
+    href: use-azure-storage.md
+  - name: Trénování modelu s využitím sady Python SDK
+    href: cntk-training-python.md
+  - name: Migrace na aktualizované rozhraní API
+    href: migrate-to-new-api.md
 - name: Referenční informace
   items:
-    - name: Azure CLI
-      href: /cli/azure/batchai
-    - name: .NET
-      href: /dotnet/api/overview/azure/batchai
-    - name: Java
-      href: /java/api/overview/azure/batchai
-    - name: Node.js
-      href: /javascript/api/overview/azure/batchai
-    - name: Python
-      href: /python/api/overview/azure/batchai
-    - name: REST
-      href: /rest/api/batchai
+  - name: Azure CLI
+    href: /cli/azure/batchai
+  - name: .NET
+    href: /dotnet/api/overview/azure/batchai
+  - name: Java
+    href: /java/api/overview/azure/batchai
+  - name: Node.js
+    href: /javascript/api/overview/azure/batchai
+  - name: Python
+    href: /python/api/overview/azure/batchai
+  - name: REST
+    href: /rest/api/batchai
 - name: Zdroje a prostředky
   items:
-    - name: Návody k trénování
-      href: 'https://github.com/Azure/BatchAI'
-    - name: Plány Azure do budoucna
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: Ceny
-      href: 'https://azure.microsoft.com/pricing/details/batch-ai'
-    - name: Cenová kalkulačka
-      href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Regionální dostupnost
-      href: 'https://azure.microsoft.com/regions/services/'
+  - name: Návody k trénování
+    href: https://github.com/Azure/BatchAI
+  - name: Plány Azure do budoucna
+    href: https://azure.microsoft.com/roadmap/
+  - name: Ceny
+    href: https://azure.microsoft.com/pricing/details/batch-ai
+  - name: Cenová kalkulačka
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: Regionální dostupnost
+    href: https://azure.microsoft.com/regions/services/
+ms.openlocfilehash: ad3ffb48dd035f189054c40c9c1a3466230ac11d
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44051686"
