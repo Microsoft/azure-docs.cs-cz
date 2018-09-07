@@ -14,12 +14,12 @@ ms.date: 08/31/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 384afb36f2a63fcbf290fa96ed15db2a1f469f55
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: c49f15ddde60513be47feb264da0e35f4e8b3a0d
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43337847"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44055569"
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Přiřazení rolí správce v Azure Active Directory
 
@@ -44,6 +44,8 @@ K dispozici jsou následující role správce:
 * **[Správce fakturace](#billing-administrator)**: může dělat nákupy, spravovat předplatná, spravovat lístky podpory a sledovat stav služeb.
 
 * **[Správce cloudové aplikace](#cloud-application-administrator)**: uživatelé v této roli mají stejná oprávnění jako role správce aplikace s výjimkou schopnost spravovat proxy aplikací. Tato role uděluje možnost vytvářet a spravovat všechny aspekty podnikové aplikace a registrace aplikací. Tato role také umožňuje udělovat souhlas delegovaná oprávnění a oprávnění aplikací bez Microsoft Graph a Azure AD Graph. Členové této role nebudou přidány jako vlastníky, při vytváření aplikace v kterémkoli nebo podnikové aplikace.
+
+* **[Správce cloudových zařízení](#cloud-device-administrator)**: uživatelé v této roli můžou povolit, zakázat a odstraňovat zařízení ve službě Azure AD a čtení klíče nástroje BitLocker systému Windows 10 (pokud existuje) na webu Azure Portal. Role nejsou udělena oprávnění ke správě jiných vlastností v zařízení.
 
 * **[Správce dodržování předpisů](#compliance-administrator)**: uživatelé s touto rolí mají oprávnění pro správu v Office 365 zabezpečení a dodržování předpisů System Center a centra pro správu Exchange. Další informace na [role správců Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
@@ -97,7 +99,7 @@ K dispozici jsou následující role správce:
 
 * **[Čtenář sestav](#reports-reader)**: uživatelé s touto rolí můžou zobrazit využití sestav, data a sestavy řídicího panelu v Centru pro správu Office 365 a kontext přijetí pack ve službě Power BI. Kromě toho role poskytuje přístup k přihlašování sestavy a aktivity ve službě Azure AD a dat vrácených Microsoft Graph API pro vytváření sestav. Uživatel přiřazený k roli Čtenář sestav můžete přistupovat pouze relevantní využití a metrik přijetí. Nemají žádná oprávnění správce ke konfiguraci nastavení nebo přístupu centra pro správu konkrétní produktu jako je Exchange. 
 
-* **[Správce zabezpečení](#security-administrator)**: uživatelé s touto rolí mají všechna oprávnění jen pro čtení v roli Čtenář zabezpečení, plus umožňuje spravovat konfiguraci služeb souvisejících se zabezpečením: Azure Active Directory Identity Protection, Azure Information Protection, Privileged Identity Management a Office 365 zabezpečení a dodržování předpisů. Další informace o oprávněních Office 365 je k dispozici na [oprávnění v centru dodržování předpisů a zabezpečení Office 365](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1).
+* **[Správce zabezpečení](#security-administrator)**: uživatelé s touto rolí mají všechna oprávnění jen pro čtení v roli Čtenář zabezpečení, plus umožňuje spravovat konfiguraci služeb souvisejících se zabezpečením: Azure Active Directory Identity Protection, Azure Information Protection a Office 365 Centru zabezpečení a dodržování předpisů. Další informace o oprávněních Office 365 je k dispozici na [oprávnění v centru dodržování předpisů a zabezpečení Office 365](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1).
   
   | V | Můžete provést |
   | --- | --- |
@@ -117,7 +119,7 @@ K dispozici jsou následující role správce:
 
 * **[Správce služeb Sharepointu](#sharepoint-service-administrator)**: uživatelé s touto rolí mají globální oprávnění v Microsoft SharePoint Online, pokud služba používá, a možnost spravovat lístky podpory a monitorovat stav služby. Další informace na [role správců Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
-* **[Skype pro firmy nebo správce služeb Lyncu](#lync-service-administrator)**: uživatelé s touto rolí mají globální oprávnění v rámci Microsoft Skype pro firmy, pokud služba používá, stejně jako správu Skype konkrétní atributy uživatele v Azure Active Adresář. Kromě toho tato role uděluje možnost spravovat lístky podpory a monitorovat stav služby. Další informace na [o Skype pro firmy roli správce](https://support.office.com/en-us/article/about-the-skype-for-business-admin-role-aeb35bda-93fc-49b1-ac2c-c74fbeb737b5).
+* **[Skype pro firmy nebo správce služeb Lyncu](#lync-service-administrator)**: uživatelé s touto rolí mají globální oprávnění v rámci Microsoft Skype pro firmy, pokud služba používá, stejně jako správu Skype konkrétní atributy uživatele v Azure Active Adresář. Kromě toho tato role uděluje možnost spravovat lístky podpory a monitorovat stav služby a k přístupu do týmů a Skype pro firmy centra pro správu. Účet musí mít také licenci pro týmy, nebo se nedal spustit rutiny prostředí PowerShell týmy. Další informace na [o Skype pro firmy roli správce](https://support.office.com/en-us/article/about-the-skype-for-business-admin-role-aeb35bda-93fc-49b1-ac2c-c74fbeb737b5) a týmy, které informace o licencích na [Skype pro firmy a Microsoft Teams doplněk licencování](https://docs.microsoft.com/en-us/skypeforbusiness/skype-for-business-and-microsoft-teams-add-on-licensing/skype-for-business-and-microsoft-teams-add-on-licensing)
 
   > [!NOTE]
   > V rozhraní Microsoft Graph API, Azure AD Graph API a Azure AD PowerShell tato role nazývá "Správce služeb Lyncu". Je "Skype pro firmy Správce služby" v [webu Azure portal](https://portal.azure.com/).
@@ -145,6 +147,7 @@ Tyto role se nesmí používat. Že byl zastaralý a z Azure AD v budoucnu odebe
 ## <a name="detailed-azure-active-directory-permissions"></a>Podrobné oprávnění služby Azure Active Directory
 Následující tabulky popisují konkrétní oprávnění v Azure Active Directory na každou roli. Některé role, jako je například globální správce, může mít další oprávnění v outide služby Microsoft Azure Active Directory.
 
+
 ### <a name="adhoc-license-administrator"></a>Správce ad hoc licencí
 Může vytvářet a spravovat všechny aspekty registrací aplikací a podnikových aplikací.
 
@@ -155,26 +158,26 @@ Může vytvářet a spravovat všechny aspekty registrací aplikací a podnikov�
 
 | **Akce** | **Popis** |
 | --- | --- |
-| Microsoft.aad.Directory/Domains/default/Read | Přečtěte si základní vlastnosti Domains v Azure Active Directory. |
+| Microsoft.aad.Directory/Domains/Basic/Read | Přečtěte si základní vlastnosti Domains v Azure Active Directory. |
 | microsoft.aad.directory/groups/appRoleAssignments/read | Umožňuje číst vlastnost groups.appRoleAssignments v Azure Active Directory. |
-| Microsoft.aad.Directory/groups/default/Read | Přečtěte si základní vlastnosti skupin v Azure Active Directory. |
+| Microsoft.aad.Directory/groups/Basic/Read | Přečtěte si základní vlastnosti skupin v Azure Active Directory. |
 | microsoft.aad.directory/groups/memberOf/read | Umožňuje číst vlastnost groups.memberOf v Azure Active Directory. |
 | Microsoft.aad.Directory/groups/Members/Read | Umožňuje číst vlastnost groups.members v Azure Active Directory. |
 | Microsoft.aad.Directory/groups/Owners/Read | Umožňuje číst vlastnost groups.owners v Azure Active Directory. |
 | Microsoft.aad.Directory/groups/Settings/Read | Umožňuje číst vlastnost groups.settings v Azure Active Directory. |
-| microsoft.aad.directory/oAuth2PermissionGrants/default/read | Přečtěte si základní vlastnosti v oAuth2PermissionGrants v Azure Active Directory. |
+| microsoft.aad.directory/oAuth2PermissionGrants/basic/read | Přečtěte si základní vlastnosti v oAuth2PermissionGrants v Azure Active Directory. |
 | microsoft.aad.directory/oAuth2PermissionGrants/update | Aktualizujte oAuth2PermissionGrants v Azure Active Directory. |
-| Microsoft.aad.Directory/Organization/default/Read | Přečtěte si základní vlastnosti v organizaci v Azure Active Directory. |
+| Microsoft.aad.Directory/Organization/Basic/Read | Přečtěte si základní vlastnosti v organizaci v Azure Active Directory. |
 | microsoft.aad.directory/organization/trustedCAsForPasswordlessAuth/read | Umožňuje číst vlastnost organization.trustedCAsForPasswordlessAuth ve službě Azure Active Directory. |
 | microsoft.aad.directory/users/assignLicense | Správa licencí pro uživatele v Azure Active Directory. |
 | microsoft.aad.directory/users/appRoleAssignments/read | Umožňuje číst vlastnost users.appRoleAssignments v Azure Active Directory. |
-| Microsoft.aad.Directory/Users/Default/Read | Přečtěte si základní vlastnosti pro uživatele v Azure Active Directory. |
+| Microsoft.aad.Directory/Users/Basic/Read | Přečtěte si základní vlastnosti pro uživatele v Azure Active Directory. |
 | microsoft.aad.directory/users/directReports/read | Umožňuje číst vlastnost users.directReports v Azure Active Directory. |
 | microsoft.aad.directory/users/invitedBy/read | Umožňuje číst vlastnost users.invitedBy v Azure Active Directory. |
 | microsoft.aad.directory/users/invitedUsers/read | Umožňuje číst vlastnost users.invitedUsers v Azure Active Directory. |
 | Microsoft.aad.Directory/Users/Manager/Read | Umožňuje číst vlastnost users.manager v Azure Active Directory. |
 | microsoft.aad.directory/users/memberOf/read | Umožňuje číst vlastnost users.memberOf v Azure Active Directory. |
-| microsoft.aad.directory/users/oAuth2PermissionGrants/default/read | Umožňuje číst vlastnost users.oAuth2PermissionGrants v Azure Active Directory. |
+| microsoft.aad.directory/users/oAuth2PermissionGrants/basic/read | Umožňuje číst vlastnost users.oAuth2PermissionGrants v Azure Active Directory. |
 | microsoft.aad.directory/users/ownedDevices/read | Umožňuje číst vlastnost users.ownedDevices v Azure Active Directory. |
 | microsoft.aad.directory/users/ownedObjects/read | Umožňuje číst vlastnost users.ownedObjects v Azure Active Directory. |
 | microsoft.aad.directory/users/registeredDevices/read | Umožňuje číst vlastnost users.registeredDevices v Azure Active Directory. |
@@ -189,24 +192,28 @@ Může vytvářet a spravovat všechny aspekty registrací aplikací a podnikov�
 
 | **Akce** | **Popis** |
 | --- | --- |
+| Microsoft.aad.Directory/Applications/audience/Update | Umožňuje aktualizujte vlastnost applications.audience ve službě Azure Active Directory. |
+| Microsoft.aad.Directory/Applications/Authentication/Update | Umožňuje aktualizujte vlastnost applications.authentication ve službě Azure Active Directory. |
+| Microsoft.aad.Directory/Applications/Basic/Update | Aktualizace základní vlastnosti na aplikace v Azure Active Directory. |
 | Microsoft.aad.Directory/Applications/Create | Vytváření aplikací v Azure Active Directory. |
-| Microsoft.aad.Directory/Applications/default/Update | Aktualizace základní vlastnosti na aplikace v Azure Active Directory. |
+| Microsoft.aad.Directory/Applications/credentials/Update | Umožňuje aktualizujte vlastnost applications.credentials ve službě Azure Active Directory. |
 | Microsoft.aad.Directory/Applications/DELETE | Umožňuje odstraňte applications v Azure Active Directory. |
 | Microsoft.aad.Directory/Applications/Owners/Update | Umožňuje aktualizujte vlastnost applications.owners v Azure Active Directory. |
+| Microsoft.aad.Directory/Applications/Permissions/Update | Umožňuje aktualizujte vlastnost applications.permissions ve službě Azure Active Directory. |
 | Microsoft.aad.Directory/Applications/Policies/Update | Umožňuje aktualizujte vlastnost applications.policies ve službě Azure Active Directory. |
 | microsoft.aad.directory/appRoleAssignments/create | Umožňuje vytvořte appRoleAssignments v Azure Active Directory. |
 | microsoft.aad.directory/appRoleAssignments/read | Přečtěte si appRoleAssignments v Azure Active Directory. |
 | microsoft.aad.directory/appRoleAssignments/update | Aktualizujte appRoleAssignments v Azure Active Directory. |
 | microsoft.aad.directory/appRoleAssignments/delete | Umožňuje odstraňte appRoleAssignments v Azure Active Directory. |
+| microsoft.aad.directory/policies/applicationConfiguration/basic/read | Umožňuje číst vlastnost policies.applicationConfiguration ve službě Azure Active Directory. |
+| microsoft.aad.directory/policies/applicationConfiguration/basic/update | Umožňuje aktualizujte vlastnost policies.applicationConfiguration ve službě Azure Active Directory. |
 | microsoft.aad.directory/policies/applicationConfiguration/create | Vytvoření zásad v Azure Active Directory. |
-| microsoft.aad.directory/policies/applicationConfiguration/default/read | Umožňuje číst vlastnost policies.applicationConfiguration ve službě Azure Active Directory. |
-| microsoft.aad.directory/policies/applicationConfiguration/default/update | Umožňuje aktualizujte vlastnost policies.applicationConfiguration ve službě Azure Active Directory. |
 | microsoft.aad.directory/policies/applicationConfiguration/delete | Umožňuje odstraňte policies v Azure Active Directory. |
 | microsoft.aad.directory/policies/applicationConfiguration/owners/read | Umožňuje číst vlastnost policies.applicationConfiguration ve službě Azure Active Directory. |
 | microsoft.aad.directory/policies/applicationConfiguration/owners/update | Umožňuje aktualizujte vlastnost policies.applicationConfiguration ve službě Azure Active Directory. |
 | microsoft.aad.directory/policies/applicationConfiguration/policyAppliedTo/read | Umožňuje číst vlastnost policies.applicationConfiguration ve službě Azure Active Directory. |
+| microsoft.aad.directory/servicePrincipals/basic/update | Aktualizace základní vlastnosti na servicePrincipals v Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/create | Umožňuje vytvořte servicePrincipals v Azure Active Directory. |
-| microsoft.aad.directory/servicePrincipals/default/update | Aktualizace základní vlastnosti na servicePrincipals v Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/delete | Umožňuje odstraňte servicePrincipals v Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/appRoleAssignedTo/update | Umožňuje aktualizujte vlastnost servicePrincipals.appRoleAssignedTo v Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/appRoleAssignments/update | Umožňuje aktualizujte vlastnost servicePrincipals.appRoleAssignments v Azure Active Directory. |
@@ -249,7 +256,7 @@ Může provádět běžné úkoly související s fakturací, třeba aktualizova
 
 | **Akce** | **Popis** |
 | --- | --- |
-| Microsoft.aad.Directory/Organization/default/Update | Aktualizujte základní vlastnosti v organizaci v Azure Active Directory. |
+| Microsoft.aad.Directory/Organization/Basic/Update | Aktualizujte základní vlastnosti v organizaci v Azure Active Directory. |
 | microsoft.aad.directory/organization/trustedCAsForPasswordlessAuth/update | Umožňuje aktualizujte vlastnost organization.trustedCAsForPasswordlessAuth ve službě Azure Active Directory. |
 | microsoft.azure.accessService/allEntities/allTasks | Spravujte všechny aspekty služby Azure Access. |
 | microsoft.azure.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat služby Azure Service Health. |
@@ -268,25 +275,29 @@ Může vytvářet a spravovat všechny aspekty registrací aplikací a podnikov�
 
 | **Akce** | **Popis** |
 | --- | --- |
+| Microsoft.aad.Directory/Applications/audience/Update | Umožňuje aktualizujte vlastnost applications.audience ve službě Azure Active Directory. |
+| Microsoft.aad.Directory/Applications/Authentication/Update | Umožňuje aktualizujte vlastnost applications.authentication ve službě Azure Active Directory. |
+| Microsoft.aad.Directory/Applications/Basic/Update | Aktualizace základní vlastnosti na aplikace v Azure Active Directory. |
 | Microsoft.aad.Directory/Applications/Create | Vytváření aplikací v Azure Active Directory. |
-| Microsoft.aad.Directory/Applications/default/Update | Aktualizace základní vlastnosti na aplikace v Azure Active Directory. |
+| Microsoft.aad.Directory/Applications/credentials/Update | Umožňuje aktualizujte vlastnost applications.credentials ve službě Azure Active Directory. |
 | Microsoft.aad.Directory/Applications/DELETE | Umožňuje odstraňte applications v Azure Active Directory. |
 | Microsoft.aad.Directory/Applications/Owners/Update | Umožňuje aktualizujte vlastnost applications.owners v Azure Active Directory. |
+| Microsoft.aad.Directory/Applications/Permissions/Update | Umožňuje aktualizujte vlastnost applications.permissions ve službě Azure Active Directory. |
 | Microsoft.aad.Directory/Applications/Policies/Update | Umožňuje aktualizujte vlastnost applications.policies ve službě Azure Active Directory. |
 | microsoft.aad.directory/appRoleAssignments/create | Umožňuje vytvořte appRoleAssignments v Azure Active Directory. |
 | microsoft.aad.directory/appRoleAssignments/update | Aktualizujte appRoleAssignments v Azure Active Directory. |
 | microsoft.aad.directory/appRoleAssignments/delete | Umožňuje odstraňte appRoleAssignments v Azure Active Directory. |
 | microsoft.aad.directory/policies/applicationConfiguration/create | Vytvoření zásad v Azure Active Directory. |
-| microsoft.aad.directory/policies/applicationConfiguration/default/read | Umožňuje číst vlastnost policies.applicationConfiguration ve službě Azure Active Directory. |
-| microsoft.aad.directory/policies/applicationConfiguration/default/update | Umožňuje aktualizujte vlastnost policies.applicationConfiguration ve službě Azure Active Directory. |
+| microsoft.aad.directory/policies/applicationConfiguration/basic/read | Umožňuje číst vlastnost policies.applicationConfiguration ve službě Azure Active Directory. |
+| microsoft.aad.directory/policies/applicationConfiguration/basic/update | Umožňuje aktualizujte vlastnost policies.applicationConfiguration ve službě Azure Active Directory. |
 | microsoft.aad.directory/policies/applicationConfiguration/delete | Umožňuje odstraňte policies v Azure Active Directory. |
 | microsoft.aad.directory/policies/applicationConfiguration/owners/read | Umožňuje číst vlastnost policies.applicationConfiguration ve službě Azure Active Directory. |
 | microsoft.aad.directory/policies/applicationConfiguration/owners/update | Umožňuje aktualizujte vlastnost policies.applicationConfiguration ve službě Azure Active Directory. |
 | microsoft.aad.directory/policies/applicationConfiguration/policyAppliedTo/read | Umožňuje číst vlastnost policies.applicationConfiguration ve službě Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/appRoleAssignedTo/update | Umožňuje aktualizujte vlastnost servicePrincipals.appRoleAssignedTo v Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/appRoleAssignments/update | Umožňuje aktualizujte vlastnost servicePrincipals.appRoleAssignments v Azure Active Directory. |
+| microsoft.aad.directory/servicePrincipals/basic/update | Aktualizace základní vlastnosti na servicePrincipals v Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/create | Umožňuje vytvořte servicePrincipals v Azure Active Directory. |
-| microsoft.aad.directory/servicePrincipals/default/update | Aktualizace základní vlastnosti na servicePrincipals v Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/delete | Umožňuje odstraňte servicePrincipals v Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/owners/update | Umožňuje aktualizujte vlastnost servicePrincipals.owners v Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/policies/update | Umožňuje aktualizujte vlastnost servicePrincipals.policies ve službě Azure Active Directory. |
@@ -296,6 +307,22 @@ Může vytvářet a spravovat všechny aspekty registrací aplikací a podnikov�
 | microsoft.azure.supportTickets/allEntities/allTasks | Vytvořit a spravovat lístky podpory Azure. |
 | Microsoft.Office365.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat stav služby Office 365. |
 | Microsoft.Office365.supportTickets/allEntities/allTasks | Umožňuje vytvářet a spravovat lístky podpory Office 365. |
+
+### <a name="cloud-device-administrator"></a>Správce cloudových zařízení
+Úplný přístup ke správě zařízení v Azure AD
+
+  > [!NOTE]
+  > Tato role dědí z role ke čtení adresáře další oprávnění.
+  >
+  >
+
+| **Akce** | **Popis** |
+| --- | --- |
+| Microsoft.aad.Directory/Devices/DELETE | Umožňuje odstraňte devices v Azure Active Directory. |
+| Microsoft.aad.Directory/Devices/Update | Umožňuje aktualizovat vlastnost accountEnabled na zařízení ve službě Azure Active Directory |
+| microsoft.aad.reports/allEntities/read | Umožňuje číst sestavy Azure AD. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat služby Azure Service Health. |
+| Microsoft.Office365.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat stav služby Office 365. |
 
 ### <a name="company-administrator"></a>Správce společnosti
 Může spravovat všechny aspekty služeb Azure AD a Microsoft, které používají identity Azure AD.
@@ -347,9 +374,9 @@ Může spravovat všechny aspekty služeb Azure AD a Microsoft, které používa
 | microsoft.azure.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat služby Azure Service Health. |
 | microsoft.azure.supportTickets/allEntities/allTasks | Vytvořit a spravovat lístky podpory Azure. |
 | microsoft.commerce.billing/allEntities/allTasks | Umožňuje spravovat všechny aspekty fakturace Office 365. |
+| microsoft.intune/allEntities/allTasks | Umožňuje spravovat všechny aspekty Intune. |
 | Microsoft.Office365.complianceManager/allEntities/allTasks | Spravovat všechny aspekty správce dodržování předpisů Office 365 |
 | Microsoft.Office365.Exchange/allEntities/allTasks | Umožňuje spravovat všechny aspekty Exchange Online. |
-| microsoft.intune/allEntities/allTasks | Umožňuje spravovat všechny aspekty Intune. |
 | Microsoft.Office365.lockbox/allEntities/allTasks | Spravovat všechny aspekty Lockboxu zákazníků Office 365 |
 | microsoft.powerApps.powerBI/allEntities/allTasks | Umožňuje spravovat všechny aspekty Power BI. |
 | Microsoft.Office365.protectionCenter/allEntities/allTasks | Spravujte všechny aspekty Centra ochrany Office 365. |
@@ -394,9 +421,9 @@ Může spravovat funkce podmíněného přístupu.
 
 | **Akce** | **Popis** |
 | --- | --- |
+| microsoft.aad.directory/policies/conditionalAccess/basic/read | Umožňuje číst vlastnost policies.conditionalAccess ve službě Azure Active Directory. |
+| microsoft.aad.directory/policies/conditionalAccess/basic/update | Umožňuje aktualizujte vlastnost policies.conditionalAccess ve službě Azure Active Directory. |
 | microsoft.aad.directory/policies/conditionalAccess/create | Vytvoření zásad v Azure Active Directory. |
-| microsoft.aad.directory/policies/conditionalAccess/default/read | Umožňuje číst vlastnost policies.conditionalAccess ve službě Azure Active Directory. |
-| microsoft.aad.directory/policies/conditionalAccess/default/update | Umožňuje aktualizujte vlastnost policies.conditionalAccess ve službě Azure Active Directory. |
 | microsoft.aad.directory/policies/conditionalAccess/delete | Umožňuje odstraňte policies v Azure Active Directory. |
 | microsoft.aad.directory/policies/conditionalAccess/owners/read | Umožňuje číst vlastnost policies.conditionalAccess ve službě Azure Active Directory. |
 | microsoft.aad.directory/policies/conditionalAccess/owners/update | Umožňuje aktualizujte vlastnost policies.conditionalAccess ve službě Azure Active Directory. |
@@ -452,8 +479,8 @@ Může schvalovat žádosti podpory Microsoftu o přístup k datům organizace z
 
 | **Akce** | **Popis** |
 | --- | --- |
-| microsoft.aad.directory/groupSettings/default/read | Přečtěte si základní vlastnosti na groupSettings ve službě Azure Active Directory. |
-| microsoft.aad.directory/groupSettingTemplates/default/read | Přečtěte si základní vlastnosti na groupSettingTemplates ve službě Azure Active Directory. |
+| microsoft.aad.directory/groupSettings/basic/read | Přečtěte si základní vlastnosti na groupSettings ve službě Azure Active Directory. |
+| microsoft.aad.directory/groupSettingTemplates/basic/read | Přečtěte si základní vlastnosti na groupSettingTemplates ve službě Azure Active Directory. |
 
 ### <a name="device-managers"></a>Správci zařízení
 Může schvalovat žádosti podpory Microsoftu o přístup k datům organizace zákazníka.
@@ -470,8 +497,8 @@ Může schvalovat žádosti podpory Microsoftu o přístup k datům organizace z
 
 | **Akce** | **Popis** |
 | --- | --- |
-| Microsoft.aad.Directory/Devices/default/Read | Přečtěte si základní vlastnosti v devices v Azure Active Directory. |
-| Microsoft.aad.Directory/Devices/default/Update | Aktualizace základní vlastnosti v devices v Azure Active Directory. |
+| Microsoft.aad.Directory/Devices/Basic/Read | Přečtěte si základní vlastnosti v devices v Azure Active Directory. |
+| Microsoft.aad.Directory/Devices/Basic/Update | Aktualizace základní vlastnosti v devices v Azure Active Directory. |
 | microsoft.aad.directory/devices/memberOf/read | Umožňuje číst vlastnost devices.memberOf v Azure Active Directory. |
 | microsoft.aad.directory/devices/registeredOwners/read | Umožňuje číst vlastnost devices.registeredOwners v Azure Active Directory. |
 | microsoft.aad.directory/devices/registeredOwners/update | Umožňuje aktualizujte vlastnost devices.registeredOwners v Azure Active Directory. |
@@ -488,49 +515,54 @@ Může číst informace o základní adresář. Pro udělení přístupu k aplik
 
 | **Akce** | **Popis** |
 | --- | --- |
-| microsoft.aad.directory/administrativeUnits/default/read | Přečtěte si základní vlastnosti administrativeunits v Azure Active Directory. |
+| microsoft.aad.directory/administrativeUnits/basic/read | Přečtěte si základní vlastnosti administrativeunits v Azure Active Directory. |
 | microsoft.aad.directory/administrativeUnits/members/read | Umožňuje číst vlastnost administrativeUnits.members v Azure Active Directory. |
-| Microsoft.aad.Directory/Applications/default/Read | Přečtěte si základní vlastnosti na aplikace v Azure Active Directory. |
+| Microsoft.aad.Directory/Applications/audience/Read | Umožňuje číst vlastnost applications.audience ve službě Azure Active Directory. |
+| Microsoft.aad.Directory/Applications/Authentication/Read | Umožňuje číst vlastnost applications.authentication ve službě Azure Active Directory. |
+| Microsoft.aad.Directory/Applications/Basic/Read | Přečtěte si základní vlastnosti na aplikace v Azure Active Directory. |
+| Microsoft.aad.Directory/Applications/credentials/Read | Umožňuje číst vlastnost applications.credentials ve službě Azure Active Directory. |
 | Microsoft.aad.Directory/Applications/Owners/Read | Umožňuje číst vlastnost applications.owners v Azure Active Directory. |
-| Microsoft.aad.Directory/Contacts/default/Read | Přečtěte si základní vlastnosti v contacts v Azure Active Directory. |
+| Microsoft.aad.Directory/Applications/Permissions/Read | Umožňuje číst vlastnost applications.permissions ve službě Azure Active Directory. |
+| Microsoft.aad.Directory/Applications/Policies/Read | Umožňuje číst vlastnost applications.policies ve službě Azure Active Directory. |
+| Microsoft.aad.Directory/Contacts/Basic/Read | Přečtěte si základní vlastnosti v contacts v Azure Active Directory. |
 | microsoft.aad.directory/contacts/memberOf/read | Umožňuje číst vlastnost contacts.memberOf v Azure Active Directory. |
-| Microsoft.aad.Directory/Contracts/default/Read | Přečtěte si základní vlastnosti o smlouvách ve službě Azure Active Directory. |
-| Microsoft.aad.Directory/Devices/default/Read | Přečtěte si základní vlastnosti v devices v Azure Active Directory. |
+| Microsoft.aad.Directory/Contracts/Basic/Read | Přečtěte si základní vlastnosti o smlouvách ve službě Azure Active Directory. |
+| Microsoft.aad.Directory/Devices/Basic/Read | Přečtěte si základní vlastnosti v devices v Azure Active Directory. |
 | microsoft.aad.directory/devices/memberOf/read | Umožňuje číst vlastnost devices.memberOf v Azure Active Directory. |
 | microsoft.aad.directory/devices/registeredOwners/read | Umožňuje číst vlastnost devices.registeredOwners v Azure Active Directory. |
 | microsoft.aad.directory/devices/registeredUsers/read | Umožňuje číst vlastnost devices.registeredUsers v Azure Active Directory. |
-| microsoft.aad.directory/directoryRoles/default/read | Přečtěte si základní vlastnosti na directoryRoles ve službě Azure Active Directory. |
+| microsoft.aad.directory/directoryRoles/basic/read | Přečtěte si základní vlastnosti na directoryRoles ve službě Azure Active Directory. |
 | microsoft.aad.directory/directoryRoles/eligibleMembers/read | Umožňuje číst vlastnost directoryRoles.eligibleMembers v Azure Active Directory. |
 | microsoft.aad.directory/directoryRoles/members/read | Umožňuje číst vlastnost directoryRoles.members v Azure Active Directory. |
-| Microsoft.aad.Directory/Domains/default/Read | Přečtěte si základní vlastnosti Domains v Azure Active Directory. |
+| Microsoft.aad.Directory/Domains/Basic/Read | Přečtěte si základní vlastnosti Domains v Azure Active Directory. |
 | microsoft.aad.directory/groups/appRoleAssignments/read | Umožňuje číst vlastnost groups.appRoleAssignments v Azure Active Directory. |
-| Microsoft.aad.Directory/groups/default/Read | Přečtěte si základní vlastnosti skupin v Azure Active Directory. |
+| Microsoft.aad.Directory/groups/Basic/Read | Přečtěte si základní vlastnosti skupin v Azure Active Directory. |
 | microsoft.aad.directory/groups/memberOf/read | Umožňuje číst vlastnost groups.memberOf v Azure Active Directory. |
 | Microsoft.aad.Directory/groups/Members/Read | Umožňuje číst vlastnost groups.members v Azure Active Directory. |
 | Microsoft.aad.Directory/groups/Owners/Read | Umožňuje číst vlastnost groups.owners v Azure Active Directory. |
 | Microsoft.aad.Directory/groups/Settings/Read | Umožňuje číst vlastnost groups.settings v Azure Active Directory. |
-| microsoft.aad.directory/groupSettings/default/read | Přečtěte si základní vlastnosti na groupSettings ve službě Azure Active Directory. |
-| microsoft.aad.directory/groupSettingTemplates/default/read | Přečtěte si základní vlastnosti na groupSettingTemplates ve službě Azure Active Directory. |
-| microsoft.aad.directory/oAuth2PermissionGrants/default/read | Přečtěte si základní vlastnosti v oAuth2PermissionGrants v Azure Active Directory. |
-| Microsoft.aad.Directory/Organization/default/Read | Přečtěte si základní vlastnosti v organizaci v Azure Active Directory. |
+| microsoft.aad.directory/groupSettings/basic/read | Přečtěte si základní vlastnosti na groupSettings ve službě Azure Active Directory. |
+| microsoft.aad.directory/groupSettingTemplates/basic/read | Přečtěte si základní vlastnosti na groupSettingTemplates ve službě Azure Active Directory. |
+| microsoft.aad.directory/oAuth2PermissionGrants/basic/read | Přečtěte si základní vlastnosti v oAuth2PermissionGrants v Azure Active Directory. |
+| Microsoft.aad.Directory/Organization/Basic/Read | Přečtěte si základní vlastnosti v organizaci v Azure Active Directory. |
 | microsoft.aad.directory/organization/trustedCAsForPasswordlessAuth/read | Umožňuje číst vlastnost organization.trustedCAsForPasswordlessAuth ve službě Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/appRoleAssignedTo/read | Umožňuje číst vlastnost servicePrincipals.appRoleAssignedTo v Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/appRoleAssignments/read | Umožňuje číst vlastnost servicePrincipals.appRoleAssignments v Azure Active Directory. |
-| microsoft.aad.directory/servicePrincipals/default/read | Přečtěte si základní vlastnosti na servicePrincipals v Azure Active Directory. |
+| microsoft.aad.directory/servicePrincipals/basic/read | Přečtěte si základní vlastnosti na servicePrincipals v Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/memberOf/read | Umožňuje číst vlastnost servicePrincipals.memberOf v Azure Active Directory. |
-| microsoft.aad.directory/servicePrincipals/oAuth2PermissionGrants/default/read | Umožňuje číst vlastnost servicePrincipals.oAuth2PermissionGrants v Azure Active Directory. |
+| microsoft.aad.directory/servicePrincipals/oAuth2PermissionGrants/basic/read | Umožňuje číst vlastnost servicePrincipals.oAuth2PermissionGrants v Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/ownedObjects/read | Umožňuje číst vlastnost servicePrincipals.ownedObjects v Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/owners/read | Umožňuje číst vlastnost servicePrincipals.owners v Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/policies/read | Umožňuje číst vlastnost servicePrincipals.policies ve službě Azure Active Directory. |
-| microsoft.aad.directory/subscribedSkus/default/read | Přečtěte si základní vlastnosti na subscribedSkus ve službě Azure Active Directory. |
+| microsoft.aad.directory/subscribedSkus/basic/read | Přečtěte si základní vlastnosti na subscribedSkus ve službě Azure Active Directory. |
 | microsoft.aad.directory/users/appRoleAssignments/read | Umožňuje číst vlastnost users.appRoleAssignments v Azure Active Directory. |
-| Microsoft.aad.Directory/Users/Default/Read | Přečtěte si základní vlastnosti pro uživatele v Azure Active Directory. |
+| Microsoft.aad.Directory/Users/Basic/Read | Přečtěte si základní vlastnosti pro uživatele v Azure Active Directory. |
 | microsoft.aad.directory/users/directReports/read | Umožňuje číst vlastnost users.directReports v Azure Active Directory. |
 | microsoft.aad.directory/users/invitedBy/read | Umožňuje číst vlastnost users.invitedBy v Azure Active Directory. |
 | microsoft.aad.directory/users/invitedUsers/read | Umožňuje číst vlastnost users.invitedUsers v Azure Active Directory. |
 | Microsoft.aad.Directory/Users/Manager/Read | Umožňuje číst vlastnost users.manager v Azure Active Directory. |
 | microsoft.aad.directory/users/memberOf/read | Umožňuje číst vlastnost users.memberOf v Azure Active Directory. |
-| microsoft.aad.directory/users/oAuth2PermissionGrants/default/read | Umožňuje číst vlastnost users.oAuth2PermissionGrants v Azure Active Directory. |
+| microsoft.aad.directory/users/oAuth2PermissionGrants/basic/read | Umožňuje číst vlastnost users.oAuth2PermissionGrants v Azure Active Directory. |
 | microsoft.aad.directory/users/ownedDevices/read | Umožňuje číst vlastnost users.ownedDevices v Azure Active Directory. |
 | microsoft.aad.directory/users/ownedObjects/read | Umožňuje číst vlastnost users.ownedObjects v Azure Active Directory. |
 | microsoft.aad.directory/users/registeredDevices/read | Umožňuje číst vlastnost users.registeredDevices v Azure Active Directory. |
@@ -548,8 +580,8 @@ Pouze používá služba Azure AD Connect.
 | microsoft.aad.directory/organization/dirSync/update | Umožňuje aktualizujte vlastnost organization.dirSync ve službě Azure Active Directory. |
 | Microsoft.aad.Directory/Policies/Create | Vytvoření zásad v Azure Active Directory. |
 | Microsoft.aad.Directory/Policies/DELETE | Umožňuje odstraňte policies v Azure Active Directory. |
-| Microsoft.aad.Directory/Policies/default/Read | Přečtěte si základní vlastnosti v policies v Azure Active Directory. |
-| Microsoft.aad.Directory/Policies/default/Update | Aktualizace základní vlastnosti v policies v Azure Active Directory. |
+| Microsoft.aad.Directory/Policies/Basic/Read | Přečtěte si základní vlastnosti v policies v Azure Active Directory. |
+| Microsoft.aad.Directory/Policies/Basic/Update | Aktualizace základní vlastnosti v policies v Azure Active Directory. |
 | Microsoft.aad.Directory/Policies/Owners/Read | Umožňuje číst vlastnost policies.owners v Azure Active Directory. |
 | Microsoft.aad.Directory/Policies/Owners/Update | Umožňuje aktualizujte vlastnost policies.owners v Azure Active Directory. |
 | microsoft.aad.directory/policies/policiesAppliedTo/read | Umožňuje číst vlastnost policies.policiesAppliedTo ve službě Azure Active Directory. |
@@ -557,11 +589,11 @@ Pouze používá služba Azure AD Connect.
 | microsoft.aad.directory/servicePrincipals/appRoleAssignedTo/update | Umožňuje aktualizujte vlastnost servicePrincipals.appRoleAssignedTo v Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/appRoleAssignments/read | Umožňuje číst vlastnost servicePrincipals.appRoleAssignments v Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/appRoleAssignments/update | Umožňuje aktualizujte vlastnost servicePrincipals.appRoleAssignments v Azure Active Directory. |
+| microsoft.aad.directory/servicePrincipals/basic/read | Přečtěte si základní vlastnosti na servicePrincipals v Azure Active Directory. |
+| microsoft.aad.directory/servicePrincipals/basic/update | Aktualizace základní vlastnosti na servicePrincipals v Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/create | Umožňuje vytvořte servicePrincipals v Azure Active Directory. |
-| microsoft.aad.directory/servicePrincipals/default/read | Přečtěte si základní vlastnosti na servicePrincipals v Azure Active Directory. |
-| microsoft.aad.directory/servicePrincipals/default/update | Aktualizace základní vlastnosti na servicePrincipals v Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/memberOf/read | Umožňuje číst vlastnost servicePrincipals.memberOf v Azure Active Directory. |
-| microsoft.aad.directory/servicePrincipals/oAuth2PermissionGrants/default/read | Umožňuje číst vlastnost servicePrincipals.oAuth2PermissionGrants v Azure Active Directory. |
+| microsoft.aad.directory/servicePrincipals/oAuth2PermissionGrants/basic/read | Umožňuje číst vlastnost servicePrincipals.oAuth2PermissionGrants v Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/owners/read | Umožňuje číst vlastnost servicePrincipals.owners v Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/owners/update | Umožňuje aktualizujte vlastnost servicePrincipals.owners v Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/ownedObjects/read | Umožňuje číst vlastnost servicePrincipals.ownedObjects v Azure Active Directory. |
@@ -582,16 +614,16 @@ Může číst a zapisovat informace základní adresář. Pro udělení přístu
 | Microsoft.aad.Directory/groups/Create | Vytváření skupin v Azure Active Directory. |
 | microsoft.aad.directory/groups/createAsOwner | Vytváření skupin v Azure Active Directory. Autor se přidá jako první vlastník a vytvořený objekt počítat do kvóty 250 vytvořených objektů autora. |
 | microsoft.aad.directory/groups/appRoleAssignments/update | Umožňuje aktualizujte vlastnost groups.appRoleAssignments v Azure Active Directory. |
-| Microsoft.aad.Directory/groups/default/Update | Aktualizace základní vlastnosti skupin v Azure Active Directory. |
+| Microsoft.aad.Directory/groups/Basic/Update | Aktualizace základní vlastnosti skupin v Azure Active Directory. |
 | Microsoft.aad.Directory/groups/Members/Update | Umožňuje aktualizujte vlastnost groups.members v Azure Active Directory. |
 | Microsoft.aad.Directory/groups/Owners/Update | Umožňuje aktualizujte vlastnost groups.owners v Azure Active Directory. |
 | Microsoft.aad.Directory/groups/Settings/Update | Umožňuje aktualizujte vlastnost groups.settings v Azure Active Directory. |
+| microsoft.aad.directory/groupSettings/basic/update | Aktualizace základní vlastnosti na groupSettings ve službě Azure Active Directory. |
 | microsoft.aad.directory/groupSettings/create | Vytvoření groupSettings ve službě Azure Active Directory. |
-| microsoft.aad.directory/groupSettings/default/update | Aktualizace základní vlastnosti na groupSettings ve službě Azure Active Directory. |
 | microsoft.aad.directory/groupSettings/delete | Odstraňte groupSettings ve službě Azure Active Directory. |
 | microsoft.aad.directory/users/appRoleAssignments/update | Umožňuje aktualizujte vlastnost users.appRoleAssignments v Azure Active Directory. |
 | microsoft.aad.directory/users/assignLicense | Správa licencí pro uživatele v Azure Active Directory. |
-| Microsoft.aad.Directory/Users/Default/Update | Aktualizace základní vlastnosti pro uživatele v Azure Active Directory. |
+| Microsoft.aad.Directory/Users/Basic/Update | Aktualizace základní vlastnosti pro uživatele v Azure Active Directory. |
 | microsoft.aad.directory/users/invalidateAllRefreshTokens | Umožňuje zneplatnit všechny obnovovací tokeny uživatele v Azure Active Directory. |
 | Microsoft.aad.Directory/Users/Manager/Update | Umožňuje aktualizujte vlastnost users.manager v Azure Active Directory. |
 | microsoft.aad.directory/users/userPrincipalName/update | Umožňuje aktualizujte vlastnost users.userPrincipalName ve službě Azure Active Directory. |
@@ -628,11 +660,16 @@ Výchozí role pro uživatele typu Host. Může číst informace o adresáři om
 
 | **Akce** | **Popis** |
 | --- | --- |
-| Microsoft.aad.Directory/Applications/default/Read | Přečtěte si základní vlastnosti na aplikace v Azure Active Directory. |
+| Microsoft.aad.Directory/Applications/audience/Read | Umožňuje číst vlastnost applications.audience ve službě Azure Active Directory. |
+| Microsoft.aad.Directory/Applications/Authentication/Read | Umožňuje číst vlastnost applications.authentication ve službě Azure Active Directory. |
+| Microsoft.aad.Directory/Applications/Basic/Read | Přečtěte si základní vlastnosti na aplikace v Azure Active Directory. |
+| Microsoft.aad.Directory/Applications/credentials/Read | Umožňuje číst vlastnost applications.credentials ve službě Azure Active Directory. |
 | Microsoft.aad.Directory/Applications/Owners/Read | Umožňuje číst vlastnost applications.owners v Azure Active Directory. |
-| Microsoft.aad.Directory/Domains/default/Read | Přečtěte si základní vlastnosti Domains v Azure Active Directory. |
+| Microsoft.aad.Directory/Applications/Permissions/Read | Umožňuje číst vlastnost applications.permissions ve službě Azure Active Directory. |
+| Microsoft.aad.Directory/Applications/Policies/Read | Umožňuje číst vlastnost applications.policies ve službě Azure Active Directory. |
+| Microsoft.aad.Directory/Domains/Basic/Read | Přečtěte si základní vlastnosti Domains v Azure Active Directory. |
 | microsoft.aad.directory/groups/appRoleAssignments/read | Umožňuje číst vlastnost groups.appRoleAssignments v Azure Active Directory. |
-| Microsoft.aad.Directory/groups/default/Read | Přečtěte si základní vlastnosti skupin v Azure Active Directory. |
+| Microsoft.aad.Directory/groups/Basic/Read | Přečtěte si základní vlastnosti skupin v Azure Active Directory. |
 | microsoft.aad.directory/groups/memberOf/read | Umožňuje číst vlastnost groups.memberOf v Azure Active Directory. |
 | Microsoft.aad.Directory/groups/Members/Read | Umožňuje číst vlastnost groups.members v Azure Active Directory. |
 | Microsoft.aad.Directory/groups/Owners/Read | Umožňuje číst vlastnost groups.owners v Azure Active Directory. |
@@ -640,23 +677,23 @@ Výchozí role pro uživatele typu Host. Může číst informace o adresáři om
 | microsoft.aad.directory/organization/basicProfile/read | Umožňuje číst základní informace o profilu organizace v Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/appRoleAssignedTo/read | Umožňuje číst vlastnost servicePrincipals.appRoleAssignedTo v Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/appRoleAssignments/read | Umožňuje číst vlastnost servicePrincipals.appRoleAssignments v Azure Active Directory. |
-| microsoft.aad.directory/servicePrincipals/default/read | Přečtěte si základní vlastnosti na servicePrincipals v Azure Active Directory. |
+| microsoft.aad.directory/servicePrincipals/basic/read | Přečtěte si základní vlastnosti na servicePrincipals v Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/memberOf/read | Umožňuje číst vlastnost servicePrincipals.memberOf v Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/members/read | Umožňuje číst vlastnost servicePrincipals.members ve službě Azure Active Directory. |
-| microsoft.aad.directory/servicePrincipals/oAuth2PermissionGrants/default/read | Umožňuje číst vlastnost servicePrincipals.oAuth2PermissionGrants v Azure Active Directory. |
+| microsoft.aad.directory/servicePrincipals/oAuth2PermissionGrants/basic/read | Umožňuje číst vlastnost servicePrincipals.oAuth2PermissionGrants v Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/owners/read | Umožňuje číst vlastnost servicePrincipals.owners v Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/ownedObjects/read | Umožňuje číst vlastnost servicePrincipals.ownedObjects v Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/policies/read | Umožňuje číst vlastnost servicePrincipals.policies ve službě Azure Active Directory. |
 | microsoft.aad.directory/users/basicProfile/read | Umožňuje číst vlastnost users.basicProfile v Azure Active Directory. |
 | microsoft.aad.directory/users/appRoleAssignments/read | Umožňuje číst vlastnost users.appRoleAssignments v Azure Active Directory. |
-| Microsoft.aad.Directory/Users/Default/Read | Přečtěte si základní vlastnosti pro uživatele v Azure Active Directory. |
+| Microsoft.aad.Directory/Users/Basic/Read | Přečtěte si základní vlastnosti pro uživatele v Azure Active Directory. |
 | microsoft.aad.directory/users/directReports/read | Umožňuje číst vlastnost users.directReports v Azure Active Directory. |
 | microsoft.aad.directory/users/eligibleMemberOf/read | Umožňuje číst vlastnost users.eligibleMemberOf ve službě Azure Active Directory. |
 | microsoft.aad.directory/users/invitedBy/read | Umožňuje číst vlastnost users.invitedBy v Azure Active Directory. |
 | microsoft.aad.directory/users/invitedUsers/read | Umožňuje číst vlastnost users.invitedUsers v Azure Active Directory. |
 | Microsoft.aad.Directory/Users/Manager/Read | Umožňuje číst vlastnost users.manager v Azure Active Directory. |
 | microsoft.aad.directory/users/memberOf/read | Umožňuje číst vlastnost users.memberOf v Azure Active Directory. |
-| microsoft.aad.directory/users/oAuth2PermissionGrants/default/read | Umožňuje číst vlastnost users.oAuth2PermissionGrants v Azure Active Directory. |
+| microsoft.aad.directory/users/oAuth2PermissionGrants/basic/read | Umožňuje číst vlastnost users.oAuth2PermissionGrants v Azure Active Directory. |
 | microsoft.aad.directory/users/ownedDevices/read | Umožňuje číst vlastnost users.ownedDevices v Azure Active Directory. |
 | microsoft.aad.directory/users/ownedObjects/read | Umožňuje číst vlastnost users.ownedObjects v Azure Active Directory. |
 | Microsoft.aad.Directory/Users/Password/Update | Aktualizace hesla pro všechny uživatele ve službě Azure Active Directory. Najdete v online dokumentaci pro více podrobností. |
@@ -675,14 +712,14 @@ Můžete pozvání hosta nezávisle na členy zvát hosty nastavení.
 | **Akce** | **Popis** |
 | --- | --- |
 | microsoft.aad.directory/users/appRoleAssignments/read | Umožňuje číst vlastnost users.appRoleAssignments v Azure Active Directory. |
-| Microsoft.aad.Directory/Users/Default/Read | Přečtěte si základní vlastnosti pro uživatele v Azure Active Directory. |
+| Microsoft.aad.Directory/Users/Basic/Read | Přečtěte si základní vlastnosti pro uživatele v Azure Active Directory. |
 | microsoft.aad.directory/users/directReports/read | Umožňuje číst vlastnost users.directReports v Azure Active Directory. |
 | microsoft.aad.directory/users/invitedBy/read | Umožňuje číst vlastnost users.invitedBy v Azure Active Directory. |
 | microsoft.aad.directory/users/inviteGuest | Umožňuje zvát hosty do Azure Active Directory. |
 | microsoft.aad.directory/users/invitedUsers/read | Umožňuje číst vlastnost users.invitedUsers v Azure Active Directory. |
 | Microsoft.aad.Directory/Users/Manager/Read | Umožňuje číst vlastnost users.manager v Azure Active Directory. |
 | microsoft.aad.directory/users/memberOf/read | Umožňuje číst vlastnost users.memberOf v Azure Active Directory. |
-| microsoft.aad.directory/users/oAuth2PermissionGrants/default/read | Umožňuje číst vlastnost users.oAuth2PermissionGrants v Azure Active Directory. |
+| microsoft.aad.directory/users/oAuth2PermissionGrants/basic/read | Umožňuje číst vlastnost users.oAuth2PermissionGrants v Azure Active Directory. |
 | microsoft.aad.directory/users/ownedDevices/read | Umožňuje číst vlastnost users.ownedDevices v Azure Active Directory. |
 | microsoft.aad.directory/users/ownedObjects/read | Umožňuje číst vlastnost users.ownedObjects v Azure Active Directory. |
 | microsoft.aad.directory/users/registeredDevices/read | Umožňuje číst vlastnost users.registeredDevices v Azure Active Directory. |
@@ -741,18 +778,18 @@ Může spravovat všechny aspekty produktu Intune.
 
 | **Akce** | **Popis** |
 | --- | --- |
+| Microsoft.aad.Directory/Contacts/Basic/Update | Aktualizace základní vlastnosti v contacts v Azure Active Directory. |
 | Microsoft.aad.Directory/Contacts/Create | Umožňuje vytvořte contacts v Azure Active Directory. |
-| Microsoft.aad.Directory/Contacts/default/Update | Aktualizace základní vlastnosti v contacts v Azure Active Directory. |
 | Microsoft.aad.Directory/Contacts/DELETE | Odstraňte contacts v Azure Active Directory. |
+| Microsoft.aad.Directory/Devices/Basic/Update | Aktualizace základní vlastnosti v devices v Azure Active Directory. |
 | Microsoft.aad.Directory/Devices/Create | Umožňuje vytvořte devices v Azure Active Directory. |
-| Microsoft.aad.Directory/Devices/default/Update | Aktualizace základní vlastnosti v devices v Azure Active Directory. |
 | Microsoft.aad.Directory/Devices/DELETE | Umožňuje odstraňte devices v Azure Active Directory. |
 | microsoft.aad.directory/devices/registeredOwners/update | Umožňuje aktualizujte vlastnost devices.registeredOwners v Azure Active Directory. |
 | microsoft.aad.directory/devices/registeredUsers/update | Umožňuje aktualizujte vlastnost devices.registeredUsers v Azure Active Directory. |
 | microsoft.aad.directory/groups/appRoleAssignments/update | Umožňuje aktualizujte vlastnost groups.appRoleAssignments v Azure Active Directory. |
+| Microsoft.aad.Directory/groups/Basic/Update | Aktualizace základní vlastnosti skupin v Azure Active Directory. |
 | Microsoft.aad.Directory/groups/Create | Vytváření skupin v Azure Active Directory. |
 | microsoft.aad.directory/groups/createAsOwner | Vytváření skupin v Azure Active Directory. Autor se přidá jako první vlastník a vytvořený objekt počítat do kvóty 250 vytvořených objektů autora. |
-| Microsoft.aad.Directory/groups/default/Update | Aktualizace základní vlastnosti skupin v Azure Active Directory. |
 | Microsoft.aad.Directory/groups/DELETE | Umožňuje odstraňte groups v Azure Active Directory. |
 | microsoft.aad.directory/groups/hiddenMembers/read | Umožňuje číst vlastnost groups.hiddenMembers v Azure Active Directory. |
 | Microsoft.aad.Directory/groups/Members/Update | Umožňuje aktualizujte vlastnost groups.members v Azure Active Directory. |
@@ -760,7 +797,7 @@ Může spravovat všechny aspekty produktu Intune.
 | Microsoft.aad.Directory/groups/Restore | Umožňuje obnovte groups v Azure Active Directory. |
 | Microsoft.aad.Directory/groups/Settings/Update | Umožňuje aktualizujte vlastnost groups.settings v Azure Active Directory. |
 | microsoft.aad.directory/users/appRoleAssignments/update | Umožňuje aktualizujte vlastnost users.appRoleAssignments v Azure Active Directory. |
-| Microsoft.aad.Directory/Users/Default/Update | Aktualizace základní vlastnosti pro uživatele v Azure Active Directory. |
+| Microsoft.aad.Directory/Users/Basic/Update | Aktualizace základní vlastnosti pro uživatele v Azure Active Directory. |
 | Microsoft.aad.Directory/Users/Manager/Update | Umožňuje aktualizujte vlastnost users.manager v Azure Active Directory. |
 | microsoft.azure.supportTickets/allEntities/allTasks | Vytvořit a spravovat lístky podpory Azure. |
 | microsoft.intune/allEntities/allTasks | Umožňuje spravovat všechny aspekty Intune. |
@@ -837,8 +874,8 @@ Nepoužívejte – nejsou určené pro obecné použití.
 
 | **Akce** | **Popis** |
 | --- | --- |
+| Microsoft.aad.Directory/Contacts/Basic/Update | Aktualizace základní vlastnosti v contacts v Azure Active Directory. |
 | Microsoft.aad.Directory/Contacts/Create | Umožňuje vytvořte contacts v Azure Active Directory. |
-| Microsoft.aad.Directory/Contacts/default/Update | Aktualizace základní vlastnosti v contacts v Azure Active Directory. |
 | Microsoft.aad.Directory/Contacts/DELETE | Odstraňte contacts v Azure Active Directory. |
 | Microsoft.aad.Directory/groups/Create | Vytváření skupin v Azure Active Directory. |
 | microsoft.aad.directory/groups/createAsOwner | Vytváření skupin v Azure Active Directory. Autor se přidá jako první vlastník a vytvořený objekt počítat do kvóty 250 vytvořených objektů autora. |
@@ -846,7 +883,7 @@ Nepoužívejte – nejsou určené pro obecné použití.
 | Microsoft.aad.Directory/groups/Owners/Update | Umožňuje aktualizujte vlastnost groups.owners v Azure Active Directory. |
 | microsoft.aad.directory/users/appRoleAssignments/update | Umožňuje aktualizujte vlastnost users.appRoleAssignments v Azure Active Directory. |
 | microsoft.aad.directory/users/assignLicense | Správa licencí pro uživatele v Azure Active Directory. |
-| Microsoft.aad.Directory/Users/Default/Update | Aktualizace základní vlastnosti pro uživatele v Azure Active Directory. |
+| Microsoft.aad.Directory/Users/Basic/Update | Aktualizace základní vlastnosti pro uživatele v Azure Active Directory. |
 | Microsoft.aad.Directory/Users/DELETE | Umožňuje odstraňte users v Azure Active Directory. |
 | microsoft.aad.directory/users/invalidateAllRefreshTokens | Umožňuje zneplatnit všechny obnovovací tokeny uživatele v Azure Active Directory. |
 | Microsoft.aad.Directory/Users/Manager/Update | Umožňuje aktualizujte vlastnost users.manager v Azure Active Directory. |
@@ -874,19 +911,19 @@ Nepoužívejte – nejsou určené pro obecné použití.
 
 | **Akce** | **Popis** |
 | --- | --- |
+| Microsoft.aad.Directory/Contacts/Basic/Update | Aktualizace základní vlastnosti v contacts v Azure Active Directory. |
 | Microsoft.aad.Directory/Contacts/Create | Umožňuje vytvořte contacts v Azure Active Directory. |
-| Microsoft.aad.Directory/Contacts/default/Update | Aktualizace základní vlastnosti v contacts v Azure Active Directory. |
 | Microsoft.aad.Directory/Contacts/DELETE | Odstraňte contacts v Azure Active Directory. |
 | microsoft.aad.directory/domains/allTasks | Vytvářet a odstraňovat domains a číst a aktualizovat standardní vlastnosti v Azure Active Directory. |
 | Microsoft.aad.Directory/groups/Create | Vytváření skupin v Azure Active Directory. |
 | Microsoft.aad.Directory/groups/DELETE | Umožňuje odstraňte groups v Azure Active Directory. |
 | Microsoft.aad.Directory/groups/Members/Update | Umožňuje aktualizujte vlastnost groups.members v Azure Active Directory. |
 | Microsoft.aad.Directory/groups/Restore | Umožňuje obnovte groups v Azure Active Directory. |
-| Microsoft.aad.Directory/Organization/default/Update | Aktualizujte základní vlastnosti v organizaci v Azure Active Directory. |
+| Microsoft.aad.Directory/Organization/Basic/Update | Aktualizujte základní vlastnosti v organizaci v Azure Active Directory. |
 | microsoft.aad.directory/organization/trustedCAsForPasswordlessAuth/update | Umožňuje aktualizujte vlastnost organization.trustedCAsForPasswordlessAuth ve službě Azure Active Directory. |
 | microsoft.aad.directory/users/appRoleAssignments/update | Umožňuje aktualizujte vlastnost users.appRoleAssignments v Azure Active Directory. |
 | microsoft.aad.directory/users/assignLicense | Správa licencí pro uživatele v Azure Active Directory. |
-| Microsoft.aad.Directory/Users/Default/Update | Aktualizace základní vlastnosti pro uživatele v Azure Active Directory. |
+| Microsoft.aad.Directory/Users/Basic/Update | Aktualizace základní vlastnosti pro uživatele v Azure Active Directory. |
 | Microsoft.aad.Directory/Users/DELETE | Umožňuje odstraňte users v Azure Active Directory. |
 | microsoft.aad.directory/users/invalidateAllRefreshTokens | Umožňuje zneplatnit všechny obnovovací tokeny uživatele v Azure Active Directory. |
 | Microsoft.aad.Directory/Users/Manager/Update | Umožňuje aktualizujte vlastnost users.manager v Azure Active Directory. |
@@ -975,8 +1012,8 @@ Může číst informace o zabezpečení a sestavy
 | **Akce** | **Popis** |
 | --- | --- |
 | Microsoft.aad.Directory/Applications/Policies/Update | Umožňuje aktualizujte vlastnost applications.policies ve službě Azure Active Directory. |
+| Microsoft.aad.Directory/Policies/Basic/Update | Aktualizace základní vlastnosti v policies v Azure Active Directory. |
 | Microsoft.aad.Directory/Policies/Create | Vytvoření zásad v Azure Active Directory. |
-| Microsoft.aad.Directory/Policies/default/Update | Aktualizace základní vlastnosti v policies v Azure Active Directory. |
 | Microsoft.aad.Directory/Policies/DELETE | Umožňuje odstraňte policies v Azure Active Directory. |
 | Microsoft.aad.Directory/Policies/Owners/Update | Umožňuje aktualizujte vlastnost policies.owners v Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/policies/update | Umožňuje aktualizujte vlastnost servicePrincipals.policies ve službě Azure Active Directory. |
@@ -990,7 +1027,7 @@ Může číst informace o zabezpečení a sestavy
 | Microsoft.Office365.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat stav služby Office 365. |
 
 ### <a name="security-reader"></a>Čtecí zařízení pro zabezpečení
-Může číst informace o zabezpečení a sestavy v Azure AD a Office 365.
+Může číst bezpečnostní údaje a sestavy v Azure AD a Office 365.
 
   > [!NOTE]
   > Tato role dědí z role ke čtení adresáře další oprávnění.
@@ -1067,13 +1104,13 @@ Může spravovat všechny aspekty uživatelů a skupin
 | microsoft.aad.directory/appRoleAssignments/create | Umožňuje vytvořte appRoleAssignments v Azure Active Directory. |
 | microsoft.aad.directory/appRoleAssignments/delete | Umožňuje odstraňte appRoleAssignments v Azure Active Directory. |
 | microsoft.aad.directory/appRoleAssignments/update | Aktualizujte appRoleAssignments v Azure Active Directory. |
+| Microsoft.aad.Directory/Contacts/Basic/Update | Aktualizace základní vlastnosti v contacts v Azure Active Directory. |
 | Microsoft.aad.Directory/Contacts/Create | Umožňuje vytvořte contacts v Azure Active Directory. |
-| Microsoft.aad.Directory/Contacts/default/Update | Aktualizace základní vlastnosti v contacts v Azure Active Directory. |
 | Microsoft.aad.Directory/Contacts/DELETE | Odstraňte contacts v Azure Active Directory. |
 | microsoft.aad.directory/groups/appRoleAssignments/update | Umožňuje aktualizujte vlastnost groups.appRoleAssignments v Azure Active Directory. |
+| Microsoft.aad.Directory/groups/Basic/Update | Aktualizace základní vlastnosti skupin v Azure Active Directory. |
 | Microsoft.aad.Directory/groups/Create | Vytváření skupin v Azure Active Directory. |
 | microsoft.aad.directory/groups/createAsOwner | Vytváření skupin v Azure Active Directory. Autor se přidá jako první vlastník a vytvořený objekt počítat do kvóty 250 vytvořených objektů autora. |
-| Microsoft.aad.Directory/groups/default/Update | Aktualizace základní vlastnosti skupin v Azure Active Directory. |
 | Microsoft.aad.Directory/groups/DELETE | Umožňuje odstraňte groups v Azure Active Directory. |
 | microsoft.aad.directory/groups/hiddenMembers/read | Umožňuje číst vlastnost groups.hiddenMembers v Azure Active Directory. |
 | Microsoft.aad.Directory/groups/Members/Update | Umožňuje aktualizujte vlastnost groups.members v Azure Active Directory. |
@@ -1082,8 +1119,8 @@ Může spravovat všechny aspekty uživatelů a skupin
 | Microsoft.aad.Directory/groups/Settings/Update | Umožňuje aktualizujte vlastnost groups.settings v Azure Active Directory. |
 | microsoft.aad.directory/users/appRoleAssignments/update | Umožňuje aktualizujte vlastnost users.appRoleAssignments v Azure Active Directory. |
 | microsoft.aad.directory/users/assignLicense | Správa licencí pro uživatele v Azure Active Directory. |
+| Microsoft.aad.Directory/Users/Basic/Update | Aktualizace základní vlastnosti pro uživatele v Azure Active Directory. |
 | Microsoft.aad.Directory/Users/Create | Vytvořte uživatele v Azure Active Directory. |
-| Microsoft.aad.Directory/Users/Default/Update | Aktualizace základní vlastnosti pro uživatele v Azure Active Directory. |
 | Microsoft.aad.Directory/Users/DELETE | Umožňuje odstraňte users v Azure Active Directory. |
 | microsoft.aad.directory/users/invalidateAllRefreshTokens | Umožňuje zneplatnit všechny obnovovací tokeny uživatele v Azure Active Directory. |
 | Microsoft.aad.Directory/Users/Manager/Update | Umožňuje aktualizujte vlastnost users.manager v Azure Active Directory. |
@@ -1107,34 +1144,38 @@ Výchozí role pro uživatele člena. Můžete všechny čtení a zápis omezeno
 | **Akce** | **Popis** |
 | --- | --- |
 | microsoft.aad.directory/applications/createAsOwner | Vytváření aplikací v Azure Active Directory. Autor se přidá jako první vlastník a vytvořený objekt počítat do kvóty 250 vytvořených objektů autora. |
+| Microsoft.aad.Directory/groups/Basic/Read | Přečtěte si základní vlastnosti skupin v Azure Active Directory. |
 | microsoft.aad.directory/groups/createAsOwner | Vytváření skupin v Azure Active Directory. Autor se přidá jako první vlastník a vytvořený objekt počítat do kvóty 250 vytvořených objektů autora. |
-| Microsoft.aad.Directory/groups/default/Read | Přečtěte si základní vlastnosti skupin v Azure Active Directory. |
 | microsoft.aad.directory/oAuth2PermissionGrants/create | Umožňuje vytvořte oAuth2PermissionGrants v Azure Active Directory. |
 | microsoft.aad.directory/oAuth2PermissionGrants/delete | Umožňuje odstraňte oAuth2PermissionGrants v Azure Active Directory. |
 | microsoft.aad.directory/oAuth2PermissionGrants/update | Aktualizujte oAuth2PermissionGrants v Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/createAsOwner | Umožňuje vytvořte servicePrincipals v Azure Active Directory. Autor se přidá jako první vlastník a vytvořený objekt počítat do kvóty 250 vytvořených objektů autora. |
 | microsoft.aad.directory/users/activateServicePlan | Activateserviceplan uživatelů v Azure Active Directory. |
 | microsoft.aad.directory/users/inviteGuest | Umožňuje zvát hosty do Azure Active Directory. |
+| Microsoft.aad.Directory/Applications/audience/Update | Umožňuje aktualizujte vlastnost applications.audience ve službě Azure Active Directory. |
+| Microsoft.aad.Directory/Applications/Authentication/Update | Umožňuje aktualizujte vlastnost applications.authentication ve službě Azure Active Directory. |
+| Microsoft.aad.Directory/Applications/Basic/Update | Aktualizace základní vlastnosti na aplikace v Azure Active Directory. |
+| Microsoft.aad.Directory/Applications/credentials/Update | Umožňuje aktualizujte vlastnost applications.credentials ve službě Azure Active Directory. |
 | Microsoft.aad.Directory/Applications/DELETE | Umožňuje odstraňte applications v Azure Active Directory. |
-| Microsoft.aad.Directory/Applications/Restore | Umožňuje obnovte applications v Azure Active Directory. |
-| Microsoft.aad.Directory/Applications/default/Update | Aktualizace základní vlastnosti na aplikace v Azure Active Directory. |
 | Microsoft.aad.Directory/Applications/Owners/Update | Umožňuje aktualizujte vlastnost applications.owners v Azure Active Directory. |
+| Microsoft.aad.Directory/Applications/Permissions/Update | Umožňuje aktualizujte vlastnost applications.permissions ve službě Azure Active Directory. |
 | Microsoft.aad.Directory/Applications/Policies/Update | Umožňuje aktualizujte vlastnost applications.policies ve službě Azure Active Directory. |
+| Microsoft.aad.Directory/Applications/Restore | Umožňuje obnovte applications v Azure Active Directory. |
 | Microsoft.aad.Directory/Devices/disable | Zakážete devices v Azure Active Directory. |
 | microsoft.aad.directory/groups/appRoleAssignments/update | Umožňuje aktualizujte vlastnost groups.appRoleAssignments v Azure Active Directory. |
+| Microsoft.aad.Directory/groups/Basic/Update | Aktualizace základní vlastnosti skupin v Azure Active Directory. |
 | Microsoft.aad.Directory/groups/DELETE | Umožňuje odstraňte groups v Azure Active Directory. |
-| Microsoft.aad.Directory/groups/default/Update | Aktualizace základní vlastnosti skupin v Azure Active Directory. |
 | microsoft.aad.directory/groups/dynamicMembershipRule/update | Umožňuje aktualizujte vlastnost groups.dynamicMembershipRule v Azure Active Directory. |
 | Microsoft.aad.Directory/groups/Members/Update | Umožňuje aktualizujte vlastnost groups.members v Azure Active Directory. |
 | Microsoft.aad.Directory/groups/Owners/Update | Umožňuje aktualizujte vlastnost groups.owners v Azure Active Directory. |
 | Microsoft.aad.Directory/groups/Restore | Umožňuje obnovte groups v Azure Active Directory. |
 | Microsoft.aad.Directory/groups/Settings/Update | Umožňuje aktualizujte vlastnost groups.settings v Azure Active Directory. |
+| Microsoft.aad.Directory/Policies/Basic/Update | Aktualizace základní vlastnosti v policies v Azure Active Directory. |
 | Microsoft.aad.Directory/Policies/DELETE | Umožňuje odstraňte policies v Azure Active Directory. |
-| Microsoft.aad.Directory/Policies/default/Update | Aktualizace základní vlastnosti v policies v Azure Active Directory. |
 | Microsoft.aad.Directory/Policies/Owners/Update | Umožňuje aktualizujte vlastnost policies.owners v Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/appRoleAssignedTo/update | Umožňuje aktualizujte vlastnost servicePrincipals.appRoleAssignedTo v Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/appRoleAssignments/update | Umožňuje aktualizujte vlastnost servicePrincipals.appRoleAssignments v Azure Active Directory. |
-| microsoft.aad.directory/servicePrincipals/default/update | Aktualizace základní vlastnosti na servicePrincipals v Azure Active Directory. |
+| microsoft.aad.directory/servicePrincipals/basic/update | Aktualizace základní vlastnosti na servicePrincipals v Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/delete | Umožňuje odstraňte servicePrincipals v Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/owners/update | Umožňuje aktualizujte vlastnost servicePrincipals.owners v Azure Active Directory. |
 | microsoft.aad.directory/servicePrincipals/policies/update | Umožňuje aktualizujte vlastnost servicePrincipals.policies ve službě Azure Active Directory. |
@@ -1143,6 +1184,7 @@ Výchozí role pro uživatele člena. Můžete všechny čtení a zápis omezeno
 | microsoft.aad.directory/users/basicProfile/update | Umožňuje aktualizujte vlastnost users.basicProfile v Azure Active Directory. |
 | Microsoft.aad.Directory/Users/Mobile/Update | Umožňuje aktualizujte vlastnost users.mobile ve službě Azure Active Directory. |
 | microsoft.aad.directory/users/searchableDeviceKey/update | Umožňuje aktualizujte vlastnost users.searchableDeviceKey ve službě Azure Active Directory. |
+
 
 ## <a name="next-steps"></a>Další postup
 

@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: fdc66da6ed7645d72ad43c885cc1491f56f5442b
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 274b6d84e5190c0275f8479e16ee5c7b935e3953
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43699674"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44026156"
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Kódování a testování Azure Functions místně
 
@@ -31,7 +31,7 @@ Způsob, ve kterém můžete vyvíjet funkce v místním počítači, závisí n
 |Prostředí                              |Jazyky         |Popis|
 |-----------------------------------------|------------|---|
 | [Příkazový řádek nebo terminálu](functions-run-local.md) | [C# (knihovna tříd)](functions-dotnet-class-library.md), [skript jazyka C# (.csx)](functions-reference-csharp.md), [jazyka JavaScript](functions-reference-node.md) | [Nástroje Azure Functions Core] poskytuje core runtime a šablony pro vytváření funkcí, která umožňuje místní vývoj. Verze 2.x podporuje vývoj pro Linux, MacOS a Windows. Všechna prostředí závisí na základní nástroje pro místní modul runtime služby Functions. |
-|[Visual Studio Code](https://code.visualstudio.com/tutorials/functions-extension/getting-started)| [Skript jazyka C# (.csx)](functions-reference-csharp.md), [jazyka JavaScript](functions-reference-node.md) | [Azure Functions rozšíření pro VS Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) přidá podporu funkcí VS Code. Vyžaduje základní nástroje. Podporuje vývoj pro Linux, MacOS a Windows, pokud používá verzi 2.x základní nástroje. Další informace najdete v tématu [nasadit do Azure pomocí služby Azure Functions](https://code.visualstudio.com/tutorials/functions-extension/getting-started).  |
+|[Visual Studio Code](functions-create-first-function-vs-code.md)| [C# (knihovna tříd)](functions-dotnet-class-library.md), [skript jazyka C# (.csx)](functions-reference-csharp.md), [jazyka JavaScript](functions-reference-node.md) | [Azure Functions rozšíření pro VS Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) přidá podporu funkcí VS Code. Vyžaduje základní nástroje. Podporuje vývoj pro Linux, MacOS a Windows, pokud používá verzi 2.x základní nástroje. Další informace najdete v tématu [vytvoření první funkce pomocí nástroje Visual Studio Code](functions-create-first-function-vs-code.md). |
 | [Visual Studio 2017](functions-develop-vs.md) | [C# (knihovna tříd)](functions-dotnet-class-library.md) | Nástroje Azure Functions jsou součástí **vývoj pro Azure** zatížení [Visual Studio 2017 verze 15.5](https://www.visualstudio.com/vs/) a novějších verzích. Umožňuje zkompilovat funkce v knihovně tříd a publikovat soubor .dll do Azure. Zahrnuje základní nástroje pro místní testování. Další informace najdete v tématu [vývoj Azure Functions pomocí sady Visual Studio](functions-develop-vs.md). |
 | [Maven](functions-create-first-java-maven.md) (různé) | [Java](functions-reference-java.md) | Se integruje s základní nástroje pro vývoj funkcí v Javě. Verze 2.x podporuje vývoj pro Linux, MacOS a Windows. Další informace najdete v tématu [vytvoření první funkce pomocí Javy a Mavenu](functions-create-first-java-maven.md). Také podporuje vývoj pomocí [Eclipse](functions-create-maven-eclipse.md) a [IntelliJ IDEA](functions-create-maven-intellij.md) |
 
