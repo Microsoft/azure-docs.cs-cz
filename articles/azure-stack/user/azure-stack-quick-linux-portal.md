@@ -7,16 +7,16 @@ author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.topic: quickstart
-ms.date: 08/15/2018
+ms.date: 09/05/2018
 ms.author: mabrigg
 ms.reviewer: ''
 ms.custom: mvc
-ms.openlocfilehash: c692bc461c116b4c0497c2378ae4e21e1b841c8f
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: e82c3de4461e2d663496cd4ae4a98c10e7819466
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42139297"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44025406"
 ---
 # <a name="quickstart-create-a-linux-server-virtual-machine-with-the-azure-stack-portal"></a>Rychlý start: vytvoření serveru virtuálního počítače s Linuxem pomocí portálu Azure Stack
 
@@ -27,6 +27,10 @@ Můžete vytvořit virtuální počítač Ubuntu Server 16.04 LTS pomocí portá
 * Připojení k virtuálnímu počítači pomocí vzdáleného klienta.
 * Nainstalujte webový server NGINX.
 * Vyčištění prostředků.
+
+> [!NOTE]  
+> Obrázky obrazovky v tomto článku jsou aktualizovány tak, aby odpovídaly změny zavedené s verzí Azure Stack. 1808. Přidá podporu pro použití. 1808 *spravované disky* kromě nespravované disky. Pokud používáte starší verzi, budou některé obrázky pro úkoly, jako je výběr disku liší od co se zobrazí v tomto článku.  
+
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -66,7 +70,9 @@ Přihlaste se k portálu Azure Stack. Adresa na portálu Azure Stack závisí, k
 1. Klikněte na tlačítko **vytvořit prostředek** v levém horním rohu portálu Azure Stack.
 
 2. Vyberte **Compute** a potom vyberte **Ubuntu Server 16.04 LTS**.
-3. Klikněte na možnost **Vytvořit**.
+   
+   ![Vyberte server pro Linux](media/azure-stack-quick-linux-portal/select.png)
+1. Klikněte na možnost **Vytvořit**.
 
 4. Zadejte informace o virtuálním počítači. Jako **Typ ověřování** vyberte **Veřejný klíč SSH**. Vložte veřejný klíč SSH, který jste uložili a klikněte na **OK**.
 
@@ -75,24 +81,28 @@ Přihlaste se k portálu Azure Stack. Adresa na portálu Azure Stack závisí, k
 
    ![Základní informace o panelu – Konfigurace virtuálního počítače](media/azure-stack-quick-linux-portal/linux-01.PNG)
 
-5. Vyberte **D1_V2** pro virtuální počítač.
+5. Vyberte **D1** pro virtuální počítač.
 
    ![Velikost panelu – vyberte velikost virtuálního počítače.](media/azure-stack-quick-linux-portal/linux-02.PNG)
 
-6. Na **nastavení** stránce, ponechte výchozí nastavení a klikněte na tlačítko **OK**.
+6. Na **nastavení** stránce, proveďte požadované změny výchozích hodnot.
+   
+    - Počínaje verzí Azure Stack. 1808, můžete nakonfigurovat **úložiště** kde je možné použít *spravované disky*. Starší než verze. 1808 lze použít pouze nespravované disky.    
+      ![Konfigurace úložiště pro spravované disky](media/azure-stack-quick-linux-portal/linux-03.PNG)
+    
+    Pokud vaše konfigurace jsou připravené, vyberte **OK** pokračujte.
 
-7. Na **Souhrn** klikněte na **OK** spusťte nasazení virtuálního počítače.
+7. Na **Souhrn** klikněte na **OK** spusťte nasazení virtuálního počítače.  
+   ![Nasazení](media/azure-stack-quick-linux-portal/deploy.png)
 
 ## <a name="connect-to-the-virtual-machine"></a>Připojení k virtuálnímu počítači
 
-1. Klikněte na tlačítko **připojit** na stránce virtuální počítač. Zobrazí se připojovací řetězec SSH, které potřebujete k připojení k virtuálnímu počítači.
-
-   ![Připojení virtuálního počítače](media/azure-stack-quick-linux-portal/linux-03.PNG)
+1. Klikněte na tlačítko **připojit** na stránce virtuální počítač. Zobrazí se připojovací řetězec SSH, které potřebujete k připojení k virtuálnímu počítači. 
 
 2. Otevřete PuTTY.
-3. Na **konfigurace PuTTY** obrazovky, kterou použijete **kategorie** okno posunout nahoru nebo dolů, aby. Přejděte dolů k položce **SSH**, rozbalte **SSH**a potom klikněte na tlačítko **Auth**. Klikněte na tlačítko **Procházet** a vyberte soubor privátního klíče, který jste uložili.
 
-   ![Vyberte PuTTY privátní klíč](media/azure-stack-quick-linux-portal/Putty03.PNG)
+3. Na **konfigurace PuTTY** obrazovky, kterou použijete **kategorie** okno posunout nahoru nebo dolů, aby. Přejděte dolů k položce **SSH**, rozbalte **SSH**a potom klikněte na tlačítko **Auth**. Klikněte na tlačítko **Procházet** a vyberte soubor privátního klíče, který jste uložili.
+   ![Připojení virtuálního počítače](media/azure-stack-quick-linux-portal/putty03.PNG)
 
 4. Posunout nahoru v **kategorie** okna a pak klikněte na tlačítko **relace**.
 5. V **název hostitele (nebo IP adresa)** okně vložte připojovací řetězec znázorňuje na portálu Azure Stack. V tomto příkladu je řetězec ```asadmin@192.168.102.34```.
@@ -136,7 +146,7 @@ NGINX nainstalovaný a port 80 otevřený ve vašem virtuálním počítači mů
 
 Otevřete webový prohlížeč a přejděte do ```http://<public IP address>```.
 
-![Úvodní stránku serveru NGINX webového serveru](media/azure-stack-quick-linux-portal/linux-04.PNG)
+![Úvodní stránku serveru NGINX webového serveru](media/azure-stack-quick-linux-portal/linux-05.PNG)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/15/2018
+ms.date: 09/05/2018
 ms.author: mabrigg
 ms.reviewer: jiahan
-ms.openlocfilehash: fc17ce0ebd13fb7e89405fcf4d6633551f340a27
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: bdf31c72fbcd8941161e6b9df0a490df7f6a16e0
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42139417"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44026514"
 ---
 # <a name="provision-virtual-machine-disk-storage-in-azure-stack"></a>Zřízení disku úložiště virtuálního počítače ve službě Azure Stack
 
@@ -30,9 +30,13 @@ Tento článek popisuje, jak zřídit disku úložiště virtuálního počíta�
 
 ## <a name="overview"></a>Přehled
 
-Azure Stack podporuje použití [nespravované disky](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds#unmanaged-disks) na virtuálních počítačích, jako operační systém (OS) a datového disku.
+Počínaje verzí. 1808, podporuje Azure Stack použít spravované disky a nespravované disky na virtuální počítače, jako operační systém (OS) a datového disku. Starší než verze. 1808 jsou podporovány pouze nespravované disky. 
 
-Pokud chcete použít nespravované disky, vytvořte [účtu úložiště](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account) k uložení disku. Disky, které vytvoříte, se označují jako disky virtuálních počítačů a ukládají v kontejnery v účtu úložiště.
+**[Spravované disky](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds#managed-disks)**  zjednodušit správu disků virtuálních počítačů Azure IaaS tím, že spravují účty úložiště přidružené k diskům virtuálních počítačů. Budete muset určit velikost disku je nutné, a Azure Stack vytváří a spravuje disk za vás.
+
+**[Nespravované disky](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds#unmanaged-disks)**, vyžaduje vytvořené [účtu úložiště](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account) k uložení disku. Disky, které vytvoříte, se označují jako disky virtuálních počítačů a ukládají v kontejnery v účtu úložiště.
+
+ 
 
 ### <a name="best-practice-guidelines"></a>Pravidla osvědčených postupů
 

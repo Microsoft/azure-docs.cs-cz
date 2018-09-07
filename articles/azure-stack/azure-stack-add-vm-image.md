@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 08/30/2018
+ms.date: 09/05/2018
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: 7f16f53af7d1c2f46c5c61974601833fafc8f828
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: ba4c53f03350995544eb95917102bd7123a077d2
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43698770"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44022760"
 ---
 # <a name="make-a-virtual-machine-image-available-in-azure-stack"></a>Zpřístupnit image virtuálního počítače ve službě Azure Stack
 
@@ -54,7 +54,7 @@ Image musí být možné odkazovat identifikátor URI úložiště objektů blob
 
    ![Sada objektů blob přístup k veřejné](./media/azure-stack-add-vm-image/image2.png)
 
-2. Přihlaste se ke službě Azure Stack jako operátor. V nabídce vyberte **další služby**. Vyberte **Compute** > **imagí virtuálních počítačů** > **přidat**.
+2. Přihlaste se ke službě Azure Stack jako operátor. V nabídce vyberte **všechny služby**. Potom v části **správu** vyberte kategorii **Compute** > **imagí virtuálních počítačů** > **přidat**.
 
 3. V části **přidat Image virtuálního počítače**, zadejte vydavatele, nabídky, SKU a verzi image virtuálního počítače. K imagi virtuálního počítače v šablonách Resource Manageru najdete v těchto segmentech název. Je nutné vybrat **osType** hodnota správně. Pro **OS identifikátor URI objektu Blob disku**, zadejte identifikátor URI objektu Blob, kde image se odeslala. Vyberte **vytvořit** můžete začít vytvářet Image virtuálního počítače.
 
@@ -115,7 +115,7 @@ Image musí být možné odkazovat identifikátor URI úložiště objektů blob
     Další informace najdete v tématu referenční informace prostředí PowerShell pro [přidat AzsPlatformimage](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage) rutiny a [New-DataDiskObject](https://docs.microsoft.com/powershell/module/Azs.Compute.Admin/New-DataDiskObject) rutiny.
 
 ## <a name="add-a-custom-vm-image-to-the-marketplace-by-using-powershell"></a>Přidání vlastní image virtuálního počítače na webu Marketplace pomocí Powershellu
-
+ 
 1. [Instalace Powershellu pro Azure Stack](azure-stack-powershell-install.md).
 
   ```PowerShell  

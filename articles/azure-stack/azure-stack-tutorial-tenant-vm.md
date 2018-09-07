@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/07/2018
+ms.date: 09/05/2018
 ms.author: jeffgilb
 ms.reviewer: ''
 ms.custom: mvc
-ms.openlocfilehash: 6bd722801202f5cdff2882c29895ae06fecbbcb8
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 09b9126125006fb70f5e2560f04b815b4a874405
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39425359"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44027295"
 ---
 # <a name="tutorial-make-virtual-machines-available-to-your-azure-stack-users"></a>Kurz: zpřístupníte virtuálních počítačů pro vaše uživatele Azure stacku
 
@@ -118,7 +118,7 @@ Teď, když jste vytvořili v rámci nabídky, takže ji můžete otestovat. Se 
 
    ![Vytvoření nabídky](media/azure-stack-subscribe-plan-provision-vm/image02.png)
 
-   c. Chcete-li zobrazit předplatné, vyberte **další služby**a pak vyberte **předplatná**. Vyberte své nové předplatné služby, které jsou součástí předplatného.
+   c. Chcete-li zobrazit předplatné, vyberte **všechny služby**a potom v části **Obecné** vyberte kategorii **předplatná**. Vyberte své nové předplatné služby, které jsou součástí předplatného.
 
    >[!NOTE]
    >Jakmile se přihlásíte k odběru nabídky, budete muset aktualizovat portálu, abyste zjistili, které služby jsou součástí nového předplatného.

@@ -6,15 +6,15 @@ author: sethmanheim
 manager: femila
 ms.service: azure-stack
 ms.topic: get-started-article
-ms.date: 08/15/2018
+ms.date: 09/05/2018
 ms.author: sethm
 ms.reviewer: kivenkat
-ms.openlocfilehash: d478ccd0895ad067657bce56469a3a61d4ea0e17
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 143e6c2856485e33022254abfcf0cf3806b30cef
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42139318"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44025769"
 ---
 # <a name="introduction-to-azure-stack-virtual-machines"></a>Úvod do virtuálních počítačů Azure Stack
 
@@ -99,7 +99,7 @@ Prostředky v následující tabulce se používají ve virtuálním počítači
 |Prostředek|Požaduje se|Popis|
 |---------|---------|---------|
 |Skupina prostředků|Ano|Virtuální počítač musí být součástí skupiny prostředků.|
-|Účet úložiště|Ano|Virtuální počítač potřebuje účet úložiště k ukládání svých virtuálních pevných disků.|
+|Účet úložiště|Ne|Virtuální počítač nemá nutné účet úložiště k ukládání svých virtuálních pevných disků, pokud využití služby Managed Disks. <br>Virtuální počítač potřebuje účet úložiště k ukládání svých virtuálních pevných disků, pokud používáte nespravované disky.|
 |Virtuální síť|Ano|Virtuální počítač musí být členem virtuální sítě.|
 |Veřejná IP adresa|Ne|Virtuální počítač může mít přiřazenou veřejnou IP adresu pro umožnění vzdáleného přístupu.|
 |Síťové rozhraní|Ano|Virtuální počítač potřebuje síťové rozhraní ke komunikaci v síti.|

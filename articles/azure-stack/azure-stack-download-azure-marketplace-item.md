@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/27/2018
+ms.date: 09/05/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 418b2f6b156853c1a2820271808bdba922d41a87
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 290b3daf73e323b3f5a7e1ef81299e72bf1c5f1d
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412895"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44024796"
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Stažení položek z marketplace z Azure do služby Azure Stack
 
@@ -151,7 +151,7 @@ Existují dvě části pro tento scénář:
 2. Použití portálu pro správu k odeslání balíčku pro položku marketplace (.azpkg soubor) do úložiště objektů Blob v Azure stacku. Nahrávání balíčku ji zpřístupní k Azure Stack, můžete později publikovat položky Azure Marketplace zásobníku.
 
    Nahrávání je potřeba mít účet storage s kontejnerem veřejně přístupná (viz požadavky pro tento scénář)   
-   1. V portálu pro správu služby Azure Stack, přejděte na **další služby** > **účty úložiště**.  
+   1. V portálu pro správu služby Azure Stack, přejděte na **všechny služby** a potom v části **DATA + úložiště** vyberte **účty úložiště**.  
    
    2. Vyberte účet úložiště z vašeho předplatného a pak v části **služby BLOB SERVICE**vyberte **kontejnery**.  
       ![Služby BLOB service](media/azure-stack-download-azure-marketplace-item/blob-service.png)  
@@ -198,7 +198,7 @@ Existují dvě části pro tento scénář:
      -GalleryItemUri "https://mystorageaccount.blob.local.azurestack.external/cont1/Microsoft.WindowsServer2016DatacenterServerCore-ARM.1.0.801.azpkg" `
      –Verbose
     ```
-5. Po publikování položky galerie můžete zobrazit z **další služby** > **Marketplace**.  Při stahování šablony řešení, ujistěte se, že přidáte všechny závislé image virtuálního pevného disku pro danou šablonu řešení.  
+5. Po publikování položky galerie, je tak, že přejdete do **všechny služby**. Části **Obecné** vyberte **Marketplace**.  Při stahování šablony řešení, ujistěte se, že přidáte všechny závislé image virtuálního pevného disku pro danou šablonu řešení.  
   ![Zobrazení marketplace](media/azure-stack-download-azure-marketplace-item/view-marketplace.png)  
 
 > [!NOTE]

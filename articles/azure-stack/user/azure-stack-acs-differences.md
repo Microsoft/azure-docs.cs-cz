@@ -11,23 +11,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/15/2018
+ms.date: 09/05/2018
 ms.author: mabrigg
 ms.reviwer: xiaofmao
-ms.openlocfilehash: 6c0c42763ec3d124850555500c3a322073af2479
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 89f6a0c1adaded724f159ffbf33aae98969ab9fe
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42139490"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44027165"
 ---
-# <a name="azure-stack-storage-differences-and-considerations"></a>Úložiště služby Azure stack: rozdíly a aspekty
+# <a name="azure-stack-storage-differences-and-considerations"></a>Úložiště Azure Stack: rozdíly a aspekty
 
 *Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
-Úložiště služby Azure stack je sada cloudových služeb úložiště ve službě Microsoft Azure Stack. Úložiště služby Azure stack nabízí objektů blob, tabulky, fronty a funkce správy účtu se sémantikou konzistentních s Azure.
+Úložiště Azure Stack je sada cloudových služeb úložiště ve službě Microsoft Azure Stack. Úložiště Azure Stack nabízí objektů blob, tabulky, fronty a funkce správy účtu se sémantikou konzistentních s Azure.
 
-Tento článek shrnuje známé rozdíly Azure Stack Storage ze služby Azure Storage. Také uvádí, co je třeba zvážit při nasazení Azure Stack. Další informace o nejvýraznějších rozdílů mezi globální Azure a Azure Stack, najdete v článku [klíče aspekty](azure-stack-considerations.md) tématu.
+Tento článek shrnuje známé rozdíly Azure Stack Storage ze služby Azure Storage. Také uvádí, co je třeba zvážit při nasazení Azure Stack. Další informace o nejvýraznějších rozdílů mezi globální Azure a Azure Stack, najdete v článku [klíče aspekty](azure-stack-considerations.md) článku.
 
 ## <a name="cheat-sheet-storage-differences"></a>Tahák: úložiště rozdíly
 
@@ -38,7 +38,7 @@ Tento článek shrnuje známé rozdíly Azure Stack Storage ze služby Azure Sto
 |Typ účtu úložiště|Účty pro obecné účely a Azure blob storage|Pro obecné účely pouze.
 |Možnosti replikace|Místně redundantní úložiště, geograficky redundantní úložiště, geograficky redundantní úložiště jen pro čtení a zónově redundantní úložiště|Místně redundantní úložiště.
 |Premium Storage|Plně podporované.|Je možné zřídit, ale bez omezení výkonu nebo záruk.
-|Managed Disks|Premium a standard podporována|Ještě není podporované.
+|Managed Disks|Premium a standard podporována|Podporovány, pokud používáte verzi 1808 nebo novější.
 |Název objektu blob|1 024 znaků (2 048 bajtů)|880 znaků (1,760 bajty)
 |Maximální velikost objektu blob bloku|4,75 TB (100 MB × 50 000 bloků)|4,75 TB (100 MB × 50 000 bloků) pro verzi 1802 update nebo novější verze. 50 000 × 4 MB (přibližně 195 GB) pro předchozí verze.
 |Kopie snímků objektů blob stránky|Zálohování Azure nespravovaných disků virtuálních počítačů připojený spuštěný virtuální počítač nepodporuje|Ještě není podporované.

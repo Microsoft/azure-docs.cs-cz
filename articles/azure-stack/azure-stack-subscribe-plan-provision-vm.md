@@ -1,6 +1,6 @@
 ---
-title: Přihlášení k odběru na nabídku v zásobníku Azure | Microsoft Docs
-description: Vytvořte odběr pro nabídky v Azure zásobníku
+title: Předplatit nabídky ve službě Azure Stack | Dokumentace Microsoftu
+description: Vytvořit odběry pro nabídky ve službě Azure Stack
 services: azure-stack
 documentationcenter: ''
 author: brenduns
@@ -12,90 +12,90 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/11/2018
+ms.date: 09/05/2018
 ms.author: brenduns
-ms.openlocfilehash: 9153649774a67533649fb62da83a3f50abd592da
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: b35e75d7cfcaa46da46d2edcb80fe37c112a66a3
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295206"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44025567"
 ---
-# <a name="create-subscriptions-to-offers-in-azure-stack"></a>Vytvoření odběrů nabídky v Azure zásobníku
+# <a name="create-subscriptions-to-offers-in-azure-stack"></a>Vytvářet předplatná na nabídky ve službě Azure Stack
 
-*Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
+*Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
-Po jste [vytvořit nabídku](azure-stack-create-offer.md), musí uživatelé před použitím ji předplatné v rámci této nabídky. Existují dva způsoby, uživatelé mohou získat předplatné na nabídku:
+Poté co [vytvořte nabídku](azure-stack-create-offer.md), uživatelé potřebují předplatné na tuto nabídku, aby mohli používat. Existují dva způsoby, že uživatelé můžou získat odběru do nabídky:
 
-- Jako operátor cloudu můžete vytvořit odběr pro uživatele z portálu pro správce. Odběry, které vytvoříte, může být pro veřejné a privátní nabídky.
-- Jako uživatel klienta můžete přihlásit na nabídku veřejného při použití portálu user portal.  
+- Jako operátor cloudu můžete vytvořit odběr pro uživatele v rámci portálu správce. Odběry, které vytvoříte, může být veřejné a soukromé nabídky.
+- Jako uživatel tenanta můžete k odběru nabídky na veřejné při použití portálu user portal.  
 
 ## <a name="create-a-subscription-as-a-cloud-operator"></a>Vytvoření odběru jako operátor cloudu
 
-Operátoři cloudu můžete použít k vytvoření odběru na nabídku pro uživatele portálu pro správu.  Můžete vytvářet odběry pro členy klientovi služby directory.  Když [víceklientský](azure-stack-enable-multitenancy.md) je povoleno, můžete také vytvářet odběry pro uživatele v klientech další adresář.
+Operátoři cloudu slouží k vytvoření předplatného na nabídku pro uživatele na portálu pro správu.  Můžete vytvářet předplatných pro členy vašeho vlastního tenanta adresáře.  Když [víceklientská](azure-stack-enable-multitenancy.md) je povolené, můžete také vytvářet odběry pro uživatele v tenantech další adresář.
 
-Pokud nechcete, aby klienti vytvářet své vlastní odběry, soukromá vaší nabídky a pak vytvořte odběry pro vaše klienty. Tento přístup je běžné při integraci s externí fakturace nebo systémů katalogu služby Azure zásobníku.
+Pokud nechcete, aby vaši klienti vytvářet své vlastní odběry, soukromá svoje nabídky a pak vytvořte odběry pro vaše klienty. Tento přístup je běžný při integraci s externím fakturace nebo systémů katalogu služby Azure Stack.
 
-Po vytvoření odběru pro uživatele, se můžete přihlásit k portálu user portal a najdete v článku jste předplatné nabídku.  
+Až vytvoříte odběr pro uživatele, se přihlaste k portálu user portal a zkontrolujte, se už zaregistrovali nabídku.  
 
-### <a name="to-create-a-subscription-for-a-user"></a>Vytvořit odběr pro uživatele
+### <a name="to-create-a-subscription-for-a-user"></a>Jak vytvoříte odběr pro uživatele
 
-1. V portálu pro správu, přejděte do **odběry uživatele.**
+1. V portálu pro správu, přejděte na **předplatná uživatelů.**
 2. Vyberte **Přidat**. V části **nové předplatné uživatele**, zadejte následující informace:  
 
-   - **Zobrazovaný název** – popisný název pro identifikaci předplatné, které se zobrazí jako *název odběru uživatele*.
-   - **Uživatel** – zadejte uživatel z tenanta služby k dispozici adresáře pro toto předplatné. Uživatelské jméno se zobrazí jako *vlastníka*.  Formát uživatelského jména, závisí na řešení identity. Příklad:
+   - **Zobrazovaný název** – popisný název pro identifikaci předplatné, které se zobrazí jako *název předplatného uživatele*.
+   - **Uživatel** – určení uživatele z tenanta k dispozici adresáře pro toto předplatné. Uživatelské jméno se zobrazí jako *vlastníka*.  Formát uživatelského jména závisí na vašem řešení identity. Příklad:
 
-     - **Azure AD:***&lt;uživatel1 > @&lt;contoso.onmicrosoft.com >* 
+     - **Azure AD:** `<user1>@<contoso.onmicrosoft.com>`
 
-     - **Službu AD FS:***&lt;uživatel1 > @&lt;azurestack.local >* 
+     - **SLUŽBA AD FS:** `<user1>@<azurestack.local>` 
 
-   - **Klienta Directory** – vyberte adresář klienta, pokud je uživatelský účet členem. Pokud jste nepovolili víceklientský, je k dispozici pouze vašeho místního adresáře klienta.
+   - **Adresář tenanta** – vyberte tenantu Active directory, pokud je uživatelský účet členem. Pokud jste ještě nepovolili více tenantů, je k dispozici pouze vašeho místního adresáře tenanta.
 
-3. Vyberte **nabízejí**. V části **nabízí**, zvolte **nabízejí** pro toto předplatné. Vzhledem k tomu, že vytváříte odběr pro uživatele, vyberte **privátní** usnadnění stavu.
+3. Vyberte **nabízejí**. V části **nabízí**, zvolte **nabízejí** pro toto předplatné. Vzhledem k tomu, že vytváříte předplatné pro uživatele, vyberte **privátní** jako stav usnadnění.
 
-4. Vyberte **vytvořit** vytvoření odběru. Zobrazí se nové předplatné v části **uživatele předplatné**. Uživatel se přihlásí k portálu user portal mohou zjistit podrobnosti o předplatném.
+4. Vyberte **vytvořit** vytvoření odběru. Zobrazí se vám nový odběr v rámci **předplatné uživatele**. Když uživatel přihlásí k portálu user portal mohou zobrazit podrobnosti o předplatném.
 
-### <a name="to-make-an-add-on-plan-available"></a>Chcete-li zpřístupnit plán rozšíření
+### <a name="to-make-an-add-on-plan-available"></a>Chcete-li zpřístupnit doplňkový plán
 
-Operátor cloudu můžete přidat plán rozšíření na dříve vytvořenou předplatné kdykoli:
+Operátor cloudu můžete přidat do dříve vytvořené předplatné kdykoli doplňkový plán:
 
-1. V portálu pro správu, vyberte **více služeb** > **uživatele odběry**. Vyberte odběr, který chcete změnit.
+1. V portálu pro správu, vyberte **všechny služby** a potom v části **prostředky pro správu** vyberte **předplatná uživatelů**. Vyberte předplatné, které chcete změnit.
 
 2. Vyberte **doplňky** a pak vyberte **+ přidat**.  
 
-3. V části **přidat plán**, vyberte plán, který chcete jako doplněk.
+3. V části **přidat plán**, vyberte požadovaného plánu jako doplněk.
 
 ## <a name="create-a-subscription-as-a-user"></a>Vytvoření odběru jako uživatel
 
-Jako uživatel můžete se přihlásit k portálu user portal k vyhledání a přihlásit se k veřejné nabídky a rozšíření plány pro váš adresář klienta (organizace).
+Jako uživatel můžete se přihlásit k portálu user portal k vyhledání a přihlášení k odběru nabídky veřejné a doplňkové plány pro vašeho tenanta adresáře (organizace).
 
 >[!NOTE]
->Pokud vaše prostředí zásobníku Azure podporuje [víceklientský](azure-stack-enable-multitenancy.md) můžete také odebírat nabídky z klienta vzdáleného adresáře.
+>Pokud vaše prostředí Azure Stack podporuje [víceklientská](azure-stack-enable-multitenancy.md) také k odběru nabídky z klienta vzdáleného adresáře.
 
-### <a name="to-subscribe-to-an-offer"></a>K odběru na nabídku
+### <a name="to-subscribe-to-an-offer"></a>K odběru nabídky
 
-1. [Přihlaste se](azure-stack-connect-azure-stack.md) k portálu user portal Azure zásobníku (https://portal.local.azurestack.external) a vyberte **získat předplatné**.
+1. [Přihlaste se](azure-stack-connect-azure-stack.md) k portálu user portal pro Azure Stack (https://portal.local.azurestack.external) a vyberte **pořiďte si předplatné**.
 
    ![Získat předplatné](media/azure-stack-subscribe-plan-provision-vm/image01.png)
   
-2. V části **získat předplatné**, zadejte popisný název odběru v **zobrazovaný název**. Vyberte **nabízejí** a v části **zvolte nabídku**, vyberte nabídku. Vyberte **vytvořit** vytvoření odběru.
+2. V části **pořiďte si předplatné**, zadejte popisný název předplatného v **zobrazovaný název**. Vyberte **nabízejí** a v části **zvolit nabídku**, vyberte nabídku. Vyberte **vytvořit** vytvoření odběru.
 
    ![Vytvoření nabídky](media/azure-stack-subscribe-plan-provision-vm/image02.png)
   
-3. Jakmile se přihlásíte k nabídku, aktualizujte portálu, abyste zjistili, služby, které jsou součástí nové předplatné.
-4. Chcete-li zobrazit předplatné, které jste vytvořili, vyberte **další služby** a pak vyberte **odběry**. Vyberte předplatné, které chcete zobrazit podrobnosti o předplatném.  
+3. Jakmile se přihlásíte k odběru nabídky, aktualizujte stránku portálu, abyste zjistili, které služby jsou součástí nového předplatného.
+4. Chcete-li zobrazovat předplatné, které jste vytvořili, vyberte **všechny služby** a potom v části **Obecné** vyberte kategorii **předplatná**. Vyberte předplatné zobrazíte podrobnosti o předplatném.  
 
-### <a name="to-subscribe-to-an-add-on-plan"></a>K odběru plánu rozšíření
+### <a name="to-subscribe-to-an-add-on-plan"></a>Přihlaste se k doplňkový plán odběru
 
-Pokud nabídku plán rozšíření, můžete přidat plán k vašemu předplatnému kdykoli.  
+Pokud nabídka má doplňkový plán, můžete přidat tento plán k vašemu předplatnému kdykoli.  
 
-1. V portálu pro uživatele, vyberte **další služby** > **odběry**a potom vyberte předplatné, že chcete změnit. Pokud nejsou k dispozici, všechny plány rozšíření **+ přidat plán** je aktivní a není dlaždici **rozšíření plány**.
+1. Na portálu user portal, vyberte **všechny služby**. Části **Obecné** vyberte kategorii **předplatná**a potom vyberte předplatné, který chcete změnit. Pokud jsou k dispozici žádné doplňkové plány **+ přidat plán** je aktivní a dlaždice pro **doplňkové plány**.
 
    >[!NOTE]
-   >Pokud **+ přidat plán** není aktivní, pak nejsou k dispozici žádné plány rozšíření nabídky přidružené k tomuto předplatnému.
+   >Pokud **+ přidat plán** není aktivní, pak nejsou k dispozici žádné doplňkové plány pro nabídku spojený s tímto předplatným.
 
-1. Vyberte **+ přidat plán** nebo **rozšíření plány** dlaždici. V části **rozšíření plány**, vyberte plán, který chcete přidat.
+1. Vyberte **+ přidat plán** nebo **doplňkové plány** dlaždici. V části **doplňkové plány**, vyberte plán, které chcete přidat.
 
 ## <a name="next-steps"></a>Další postup
 
