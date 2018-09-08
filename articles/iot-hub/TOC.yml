@@ -301,8 +301,6 @@ items:
         href: iot-hub-arduino-iot-devkit-az3166-door-monitor.md
     - name: Rozšířené scénáře IoT
       items:
-      - name: Správa zasílání zpráv cloudových zařízení s využitím iothub-exploreru
-        href: iot-hub-explorer-cloud-device-messaging.md
       - name: Správa zasílání zpráv cloudových zařízení s využitím Azure IoT Toolkit pro VS Code
         href: iot-hub-vscode-iot-toolkit-cloud-device-messaging.md
       - name: Uložení zpráv služby IoT Hub do Azure Blob Storage
@@ -315,8 +313,6 @@ items:
         href: iot-hub-weather-forecast-machine-learning.md
       - name: Správa zařízení s využitím sady Azure IoT Toolkit pro VS Code
         href: iot-hub-device-management-iot-toolkit.md
-      - name: Správa zařízení s využitím iothub-exploreru
-        href: iot-hub-device-management-iothub-explorer.md
       - name: Správa zařízení s využitím rozšíření IoT pro Azure CLI 2.0
         href: iot-hub-device-management-iot-extension-azure-cli-2-0.md
       - name: Vzdálené monitorování a oznámení s využitím Logic Apps
@@ -405,8 +401,6 @@ items:
     href: https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer
   - name: Nástroj iothub-diagnostics
     href: https://github.com/Azure/iothub-diagnostics
-  - name: Nástroj iothub-explorer
-    href: https://github.com/Azure/iothub-explorer
   - name: Postup výuky
     href: https://azure.microsoft.com/documentation/learning-paths/iot-hub/
   - name: Fórum MSDN
@@ -423,9 +417,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: Videa
     href: https://azure.microsoft.com/documentation/videos/index/?services=iot-hub
-ms.openlocfilehash: f9ec05dade065966d6ea1b3aa2a63598ca7c859c
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: 2e2057fc75b808bf5989d263ce561d3cec4b8e2c
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43143402"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44160979"
