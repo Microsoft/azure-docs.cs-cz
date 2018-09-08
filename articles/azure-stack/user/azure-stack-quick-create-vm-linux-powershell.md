@@ -1,6 +1,6 @@
 ---
-title: Vytvořit virtuální počítač s Linuxem pomocí prostředí PowerShell v zásobníku Azure | Microsoft Docs
-description: Vytvořte virtuální počítač s Linuxem pomocí prostředí PowerShell v zásobníku Azure.
+title: Vytvoření virtuálního počítače s Linuxem pomocí prostředí PowerShell ve službě Azure Stack | Dokumentace Microsoftu
+description: Vytvoření virtuálního počítače s Linuxem pomocí prostředí PowerShell ve službě Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -12,39 +12,41 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 04/24/2018
+ms.date: 09/07/2018
 ms.author: mabrigg
 ms.custom: mvc
-ms.openlocfilehash: 9d3c063dab11f31b10762e8399a1f11f2c28c3cd
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: bb356a8b485817daae803d14b30832e7b1322f29
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36226992"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44158904"
 ---
-# <a name="quickstart-create-a-linux-server-virtual-machine-by-using-powershell-in-azure-stack"></a>Rychlý úvod: Vytvořte virtuální počítač s Linuxem serveru pomocí prostředí PowerShell v Azure zásobníku
+# <a name="quickstart-create-a-linux-server-virtual-machine-by-using-powershell-in-azure-stack"></a>Rychlý start: Vytvoření virtuálního počítače s Linuxem serveru pomocí prostředí PowerShell ve službě Azure Stack
 
-*Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
+*Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
-Virtuální počítače s Ubuntu Server 16.04 LTS můžete vytvořit pomocí Azure PowerShell zásobníku. Postupujte podle kroků v tomto článku vytváření a používání virtuálního počítače.  Tento článek také poskytuje postup:
+Můžete vytvořit virtuální počítač Ubuntu Server 16.04 LTS pomocí Azure Stack Powershellu. Postupujte podle kroků v tomto článku, jak vytvořit a používat virtuální počítač.  Tento článek také obsahuje postup:
 
-* Připojte k virtuálnímu počítači pomocí vzdáleného klienta.
-* Instalace webového serveru se NGINX a zobrazit výchozí domovskou stránku.
-* Vyčistěte nepoužité zdroje.
+* Připojení k virtuálnímu počítači pomocí vzdáleného klienta.
+* Nainstalovat webový server NGINX a zobrazit výchozí domovskou stránku.
+* Vyčištění nevyužitých prostředků.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **Bitovou kopii systému Linux v zásobníku Azure marketplace**
+* **Image Linuxu v Tržišti Azure Stack**
 
-   Zásobník Azure marketplace neobsahuje bitovou kopii systému Linux ve výchozím nastavení. Získat operátor zásobník Azure zajistit **Ubuntu Server 16.04 LTS** bitové kopie je nutné. Operátor můžete použít postup popsaný v tématu [stáhnout položky marketplace z Azure do Azure zásobníku](../azure-stack-download-azure-marketplace-item.md) článku.
+   Tržiště Azure Stack neobsahuje image Linuxu ve výchozím nastavení. Získat Azure Stack operátor poskytnout **Ubuntu Server 16.04 LTS** image chcete použít. Operátor, který můžete použít postup popsaný v [stažení položek z marketplace z Azure do služby Azure Stack](../azure-stack-download-azure-marketplace-item.md) článku.
 
-* Azure zásobníku vyžaduje konkrétní verzi prostředí Azure PowerShell k vytváření a správě prostředků. Pokud nemáte nakonfigurován pro zásobník Azure PowerShell, přihlaste se k [development kit](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), nebo externí klienta se systémem Windows Pokud jste [připojení prostřednictvím VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) a postup [ Nainstalujte](azure-stack-powershell-install.md) a [konfigurace](azure-stack-powershell-configure-user.md) prostředí PowerShell.
+* Azure Stack vyžaduje určitou verzi prostředí Azure PowerShell k vytváření a správě prostředků. Pokud nemáte nakonfigurované pro službu Azure Stack Powershellu, postupujte podle kroků pro [nainstalovat](azure-stack-powershell-install.md) prostředí PowerShell.
 
-* Veřejný klíč SSH s id_rsa.pub název uložené v adresáři .ssh profil uživatele systému Windows. Podrobné informace o vytváření klíčů SSH naleznete v tématu [vytváření SSH klíčů v systému Windows](../../virtual-machines/linux/ssh-from-windows.md).
+* S Azure Stack Powershellu nastavit je potřeba připojení k prostředí Azure Stack. Pokyny naleznete v tématu [připojit ke službě Azure Stack pomocí prostředí PowerShell jako uživatel](azure-stack-powershell-configure-user.md).
+
+* Veřejný klíč SSH s názvem id_rsa.pub uložen v adresáři .ssh uživatelského profilu Windows. Podrobné informace o vytváření klíčů SSH najdete v tématu [vytváření klíčů SSH ve Windows](../../virtual-machines/linux/ssh-from-windows.md).
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Skupina prostředků je logický kontejner, kde můžete nasadit a spravovat prostředky Azure zásobníku. Z vaší development kit nebo zásobník Azure integrovaný systém spusťte následující blok kódu a vytvořte skupinu prostředků. Hodnoty se přiřazují pro všechny proměnné v tomto dokumentu, můžete použít tyto hodnoty, nebo přiřadit nové hodnoty.
+Skupina prostředků je logický kontejner, ve kterém můžete nasadit a spravovat prostředky služby Azure Stack. Vývojová sada nebo systém integrovat Azure Stack spusťte následující blok kódu a vytvořte skupinu prostředků. Pro všechny proměnné v tomto dokumentu jsou přiřazeny hodnoty, můžete použít tyto hodnoty nebo přiřazení nové hodnoty.
 
 ```powershell
 # Create variables to store the location and resource group names.
@@ -56,9 +58,9 @@ New-AzureRmResourceGroup `
   -Location $location
 ```
 
-## <a name="create-storage-resources"></a>Vytvořit prostředky úložiště
+## <a name="create-storage-resources"></a>Vytvoření prostředků úložiště
 
-Vytvoření účtu úložiště a pak vytvořte kontejner úložiště pro bitovou kopii Ubuntu Server 16.04 LTS.
+Vytvoření účtu úložiště a pak vytvořte kontejner úložiště pro image Ubuntu Server 16.04 LTS.
 
 ```powershell
 # Create variables to store the storage account name and the storage account SKU information
@@ -113,7 +115,7 @@ $pip = New-AzureRmPublicIpAddress `
 
 ### <a name="create-a-network-security-group-and-a-network-security-group-rule"></a>Vytvoření skupiny zabezpečení sítě a pravidla skupiny zabezpečení sítě
 
-Skupina zabezpečení sítě zabezpečí virtuálního počítače pomocí příchozí a odchozí pravidla. Vytvořte příchozí pravidlo pro port 3389, umožňuje příchozí připojení ke vzdálené ploše a příchozí pravidlo pro port 80 až povolit příchozí webový provoz.
+Skupina zabezpečení sítě zabezpečuje virtuální počítač pomocí příchozích a odchozích pravidel. Vytvořte příchozí pravidlo pro port 3389 povolovat příchozí připojení ke vzdálené ploše a příchozí pravidlo pro port 80 povolit příchozí webový provoz.
 
 ```powershell
 # Create variables to store the network security group and rules names.
@@ -154,7 +156,7 @@ $nic = New-AzureRmNetworkInterface `
 
 ## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
 
-Vytvořte konfiguraci virtuálního počítače. Tato konfigurace zahrnuje nastavení používané při nasazení virtuálního počítače. Příklad: přihlašovací údaje uživatele, velikosti a image virtuálního počítače.
+Vytvořte konfiguraci virtuálního počítače. Tato konfigurace zahrnuje nastavení používané při nasazení virtuálního počítače. Příklad: přihlašovací údaje uživatele, velikost a image virtuálního počítače.
 
 ```powershell
 # Define a credential object.
@@ -211,10 +213,10 @@ New-AzureRmVM `
   -VM $VirtualMachine
 ```
 
-## <a name="quick-create-virtual-machine---full-script"></a>Rychlé vytvoření virtuálního počítače – úplná skriptu
+## <a name="quick-create-virtual-machine---full-script"></a>Rychlé vytvoření virtuálního počítače – úplná skript
 
 > [!NOTE]
-> Je vyšší nebo nižší sloučit výše uvedeném kódu, ale heslo spíše než SSH klíče pro ověřování.
+> Je víc nebo míň výše uvedený kód sloučit, ale heslo spíše než SSH klíč pro ověřování.
 
 ```powershell
 ## Create a resource group
@@ -388,17 +390,17 @@ Po nasazení virtuálního počítače, nakonfigurujte připojení SSH pro virtu
 Get-AzureRmPublicIpAddress -ResourceGroupName myResourceGroup | Select IpAddress
 ```
 
-Z klientského systému pomocí protokolu SSH nainstalována použijte následující příkaz pro připojení k virtuálnímu počítači. Pokud pracujete v systému Windows, můžete použít [Putty](http://www.putty.org/) k vytvoření připojení.
+Z klienta systému s nainstalované SSH použijte následující příkaz pro připojení k virtuálnímu počítači. Pokud pracujete ve Windows, můžete použít [Putty](http://www.putty.org/) k vytvoření připojení.
 
 ```
 ssh <Public IP Address>
 ```
 
-Po zobrazení výzvy zadejte azureuser jako přihlášení uživatele. Pokud jste použili heslo při vytvoření klíče SSH, budete muset zadat heslo.
+Po zobrazení výzvy zadejte azureuser jako přihlášení uživatele. Pokud jste použili heslo při vytváření klíčů SSH, budete muset zadat heslo.
 
-## <a name="install-the-nginx-web-server"></a>Instalace webového serveru se NGINX
+## <a name="install-the-nginx-web-server"></a>Instalace webového serveru NGINX
 
-Pokud chcete aktualizovat balíček prostředků a nainstalovat nejnovější balíček NGINX, spusťte následující skript:
+Pokud chcete aktualizaci zdrojů balíčku a nainstalujete nejnovější balíček NGINX, spusťte následující skript:
 
 ```bash
 #!/bin/bash
@@ -412,13 +414,13 @@ apt-get -y install nginx
 
 ## <a name="view-the-nginx-welcome-page"></a>Zobrazení úvodní stránky serveru NGINX
 
-NGINX nainstalován, a port 80 otevřete na virtuálním počítači můžete přístup k webovému serveru, pomocí veřejnou IP adresu virtuálního počítače. Otevřete webový prohlížeč a přejděte do ```http://<public IP address>```.
+NGINX nainstalovaný a port 80 otevřený ve vašem virtuálním počítači můžete přístup k webovému serveru pomocí veřejné IP adresy virtuálního počítače. Otevřete webový prohlížeč a přejděte do ```http://<public IP address>```.
 
-![Úvodní stránka NGINX webového serveru](./media/azure-stack-quick-create-vm-linux-cli/nginx.png)
+![Úvodní stránku serveru NGINX webového serveru](./media/azure-stack-quick-create-vm-linux-cli/nginx.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Vyčistěte prostředky, které už nepotřebujete. Můžete použít [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup?view=azurermps-4.3.1) příkaz k odebrání těchto prostředků. Pokud chcete odstranit skupinu prostředků a všechny její prostředky, spusťte následující příkaz:
+Vyčistěte prostředky, které už nepotřebujete. Můžete použít [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup?view=azurermps-4.3.1) příkazu odeberte tyto prostředky. Pokud chcete odstranit skupinu prostředků a všechny její prostředky, spusťte následující příkaz:
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup
@@ -426,4 +428,4 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 
 ## <a name="next-steps"></a>Další postup
 
-V tento rychlý start jste nasadili základní virtuální počítač server Linux. Další informace o virtuálních počítačích Azure zásobníku, přejděte na [důležité informace pro virtuální počítače v Azure zásobníku](azure-stack-vm-considerations.md).
+V tomto rychlém startu jste nasadili základní virtuální počítač serveru Linux. Další informace o virtuálních počítačích Azure Stack, přejděte na [důležité informace týkající se virtuálních počítačů ve službě Azure Stack](azure-stack-vm-considerations.md).

@@ -13,16 +13,16 @@ ms.topic: quickstart
 ms.date: 07/24/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 90c18af0f846061c102f1daf1b84a332aaec1dc6
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 1e908a8cf5576ce3bc3d58d1ef6f29d596ebc58b
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40235297"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44158173"
 ---
 # <a name="validate-a-new-azure-stack-solution"></a>Ověření nové řešení Azure Stack
 
-[!INCLUDE[Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
+[!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
 Zjistěte, jak můžete pracovní postup řešení ověřování pro certifikaci nová řešení Azure Stack.
 

@@ -1,6 +1,6 @@
 ---
-title: Vytvoření virtuálního počítače s Windows pomocí prostředí PowerShell v zásobníku Azure | Microsoft Docs
-description: Vytvoření virtuálního počítače s Windows pomocí prostředí PowerShell v zásobníku Azure.
+title: Vytvoření virtuálního počítače s Windows pomocí prostředí PowerShell ve službě Azure Stack | Dokumentace Microsoftu
+description: Vytvoření virtuálního počítače s Windows pomocí prostředí PowerShell ve službě Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -12,38 +12,40 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 04/20/2018
+ms.date: 09/07/2018
 ms.author: mabrigg
 ms.custom: mvc
-ms.openlocfilehash: 9f5752a969ff6a191ec60e175494316aea4abcaf
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: aaeed9c86f340d2eda2524922c7af9a8285a1782
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32152115"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44162649"
 ---
-# <a name="quickstart-create-a-windows-server-virtual-machine-by-using-powershell-in-azure-stack"></a>Rychlý úvod: vytvoření virtuálního počítače Windows serveru pomocí prostředí PowerShell v Azure zásobníku
+# <a name="quickstart-create-a-windows-server-virtual-machine-by-using-powershell-in-azure-stack"></a>Rychlý start: vytvoření virtuálního počítače s Windows serverem pomocí prostředí PowerShell ve službě Azure Stack
 
-*Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
+*Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
-Virtuální počítač systému Windows Server 2016 můžete vytvořit pomocí Azure PowerShell zásobníku. Postupujte podle kroků v tomto článku vytváření a používání virtuálního počítače. Tento článek také poskytuje postup:
+Virtuální počítač Windows Server 2016 můžete vytvořit pomocí Azure Stack Powershellu. Postupujte podle kroků v tomto článku, jak vytvořit a používat virtuální počítač. Tento článek také obsahuje postup:
 
-* Připojte k virtuálnímu počítači pomocí vzdáleného klienta.
-* Nainstalovat webový server IIS a zobrazit výchozí domovskou stránku.
-* Vyčistěte vašich prostředků.
+* Připojení k virtuálnímu počítači pomocí vzdáleného klienta.
+* Instalace webového serveru služby IIS a zobrazit výchozí domovskou stránku.
+* Vyčištění prostředků.
 
 >[!NOTE]
- Můžete spustit kroků popsaných v tomto článku z Development Kit zásobník Azure nebo z externí klienta se systémem Windows, pokud se připojíte přes síť VPN.
+ Můžete použít postup popsaný v tomto článku z Azure Stack Development Kit, nebo z externího klienta se systémem Windows, pokud jste připojeni přes síť VPN.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Ujistěte se, že vaše operátor zásobník Azure přidal bitovou kopii "Windows Server 2016" do zásobníku Azure marketplace.
+* Ujistěte se, že operátor Azure stacku přidal **Windows serveru 2016** image na marketplace služby Azure Stack.
 
-* Azure zásobníku vyžaduje konkrétní verzi prostředí Azure PowerShell k vytváření a správě prostředků. Pokud nemáte nakonfigurován pro zásobník Azure PowerShell, postupujte podle kroků pro [nainstalovat](azure-stack-powershell-install.md) a [konfigurace](azure-stack-powershell-configure-user.md) prostředí PowerShell.
+* Azure Stack vyžaduje určitou verzi prostředí Azure PowerShell k vytváření a správě prostředků. Pokud nemáte nakonfigurované pro službu Azure Stack Powershellu, postupujte podle kroků pro [nainstalovat](azure-stack-powershell-install.md) prostředí PowerShell.
+
+* S Azure Stack Powershellu nastavit je potřeba připojení k prostředí Azure Stack. Pokyny naleznete v tématu [připojit ke službě Azure Stack pomocí prostředí PowerShell jako uživatel](azure-stack-powershell-configure-user.md).
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Skupina prostředků je logický kontejner, do které zásobník Azure jsou nasadit a spravovat prostředky. Z vaší development kit nebo zásobník Azure integrovaný systém spusťte následující blok kódu a vytvořte skupinu prostředků. Hodnoty se přiřazují pro všechny proměnné v tomto dokumentu, můžete použít tyto hodnoty, nebo přiřadit nové hodnoty.
+Skupina prostředků je logický kontejner, do které služby Azure Stack se nasazují a spravují prostředky. Vývojová sada nebo systém integrovat Azure Stack spusťte následující blok kódu a vytvořte skupinu prostředků. Pro všechny proměnné v tomto dokumentu jsou přiřazeny hodnoty, můžete použít tyto hodnoty nebo přiřazení nové hodnoty.
 
 ```powershell
 # Create variables to store the location and resource group names.
@@ -55,9 +57,9 @@ New-AzureRmResourceGroup `
   -Location $location
 ```
 
-## <a name="create-storage-resources"></a>Vytvořit prostředky úložiště
+## <a name="create-storage-resources"></a>Vytvoření prostředků úložiště
 
-Vytvořte účet úložiště a kontejner úložiště pro uložení bitové kopie systému Windows Server 2016.
+Vytvoření účtu úložiště a kontejner úložiště pro uložení image Windows serveru 2016.
 
 ```powershell
 # Create variables to store the storage account name and the storage account SKU information
@@ -111,7 +113,7 @@ $pip = New-AzureRmPublicIpAddress `
 
 ### <a name="create-a-network-security-group-and-a-network-security-group-rule"></a>Vytvoření skupiny zabezpečení sítě a pravidla skupiny zabezpečení sítě
 
-Skupina zabezpečení sítě zabezpečí virtuálního počítače pomocí příchozí a odchozí pravidla. Umožňuje vytvořit pravidlo pro příchozí pro port 3389, umožňuje příchozí připojení ke vzdálené ploše a příchozí pravidlo pro port 80 až povolit příchozí webový provoz.
+Skupina zabezpečení sítě zabezpečuje virtuální počítač pomocí příchozích a odchozích pravidel. Umožňuje vytvořit příchozí pravidlo pro port 3389 povolovat příchozí připojení ke vzdálené ploše a příchozí pravidlo pro port 80 povolit příchozí webový provoz.
 
 ```powershell
 # Create an inbound network security group rule for port 3389
@@ -214,14 +216,14 @@ New-AzureRmVM `
 
 ## <a name="connect-to-the-virtual-machine"></a>Připojení k virtuálnímu počítači
 
-Na vzdálený do virtuálního počítače, který jste vytvořili v předchozím kroku musíte její veřejnou IP adresu. Spusťte následující příkaz, který získat veřejnou IP adresu virtuálního počítače:
+Na vzdáleném připojení k virtuální počítač, který jste vytvořili v předchozím kroku musíte svou veřejnou IP adresu. Spuštěním následujícího příkazu získejte veřejnou IP adresu virtuálního počítače:
 
 ```powershell
 Get-AzureRmPublicIpAddress `
   -ResourceGroupName $ResourceGroupName | Select IpAddress
 ```
 
-Použijte následující příkaz pro vytvoření relace vzdálené plochy s virtuálním počítačem. IP adresu nahraďte veřejnou IP adresou vašeho virtuálního počítače. Po zobrazení výzvy zadejte uživatelské jméno a heslo, které jste použili při vytvoření virtuálního počítače.
+Pomocí následujícího příkazu vytvořte s virtuálním počítačem relaci vzdálené plochy. IP adresu nahraďte veřejnou IP adresou vašeho virtuálního počítače. Po zobrazení výzvy zadejte uživatelské jméno a heslo, které jste použili při vytváření virtuálního počítače.
 
 ```powershell
 mstsc /v <publicIpAddress>
@@ -237,13 +239,13 @@ Install-WindowsFeature -name Web-Server -IncludeManagementTools
 
 ## <a name="view-the-iis-welcome-page"></a>Zobrazení úvodní stránky služby IIS
 
-S nainstalovanou službou IIS a s portem 80 otevřete na vašem virtuálním počítači můžete zobrazit výchozí úvodní stránka IIS webový prohlížeč podle svého výběru. Použití *publicIpAddress* popsané v předchozí části přejděte výchozí stránky.
+S nainstalovanou službou IIS a s portem 80 otevřete na svém virtuálním počítači můžete zobrazit výchozí úvodní stránka IIS webovém prohlížeči podle svého výběru. Použití *publicIpAddress* popsanou v předchozí části pro návštěvu výchozí stránky.
 
 ![Výchozí web služby IIS](./media/azure-stack-quick-create-vm-windows-powershell/default-iis-website.png)
 
 ## <a name="delete-the-virtual-machine"></a>Odstranění virtuálního počítače
 
-Pokud již nepotřebujete, chcete-li odebrat skupinu prostředků, která obsahuje virtuální počítač a jeho souvisejících prostředků použijte následující příkaz:
+Pokud už nepotřebujete, použijte následující příkaz k odebrání skupiny prostředků, která obsahuje virtuální počítač a související prostředky:
 
 ```powershell
 Remove-AzureRmResourceGroup `
@@ -252,4 +254,4 @@ Remove-AzureRmResourceGroup `
 
 ## <a name="next-steps"></a>Další postup
 
-V tento rychlý start jste nasadili jednoduchého virtuálního počítače Windows. Další informace o virtuálních počítačích Azure zásobníku, nadále [důležité informace pro virtuální počítače v Azure zásobníku](azure-stack-vm-considerations.md).
+V tomto rychlém startu jste nasadili jednoduchý virtuální počítač Windows. Další informace o virtuálních počítačích Azure Stack, [důležité informace týkající se virtuálních počítačů ve službě Azure Stack](azure-stack-vm-considerations.md).
