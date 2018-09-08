@@ -4,24 +4,20 @@ description: Naučte se vyvíjet funkce pomocí jazyka JavaScript.
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: funkce azure, funkce, zpracování událostí, webhook, dynamické výpočty, architektura bez serverů
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: nodejs
 ms.topic: reference
-ms.tgt_pltfrm: multiple
-ms.workload: na
 ms.date: 03/04/2018
 ms.author: glenga
-ms.openlocfilehash: 6099a818651cf75a75159f43748720b3eb01e4de
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 36307c86332ac331e444d65ba27c044585379e68
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43287817"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44093393"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Příručka pro vývojáře Azure Functions JavaScript
 

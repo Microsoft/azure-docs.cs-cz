@@ -1,116 +1,112 @@
 ---
-title: Osvědčené postupy pro řešení Azure Functions | Microsoft Docs
-description: Přečtěte si informace osvědčené postupy a vzory pro Azure Functions.
+title: Osvědčené postupy pro službu Azure Functions | Dokumentace Microsoftu
+description: Přečtěte si osvědčené postupy a vzory pro Azure Functions.
 services: functions
 documentationcenter: na
 author: wesmc7777
-manager: cfowler
-editor: ''
-tags: ''
-keywords: řešení Azure functions, vzory, osvědčeným postupem, funkce, událostí zpracování, webhooků, dynamické výpočetní, bez serveru architektura
+manager: jeconnoc
+keywords: Služba Azure functions, vzorky, osvědčeným postupem, funkce, zpracování událostí, webhook, dynamické výpočty, architektura bez serveru
 ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
+ms.topic: conceptual
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8b11d4ab7188141b36b998e16429329c33f09cee
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9fe8b2cc09c7a08ab6d897a0fe1f1204d1903eca
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34599564"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44090859"
 ---
-# <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Optimalizace výkonu a spolehlivosti Azure functions
+# <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Optimalizace výkonu a spolehlivosti Azure Functions
 
-Tento článek obsahuje pokyny pro zvýšení výkonu a spolehlivosti vaše [bez serveru](https://azure.microsoft.com/overview/serverless-computing/) funkce aplikace. 
+Tento článek obsahuje pokyny ke zlepšení výkonu a spolehlivosti vašich [bez serveru](https://azure.microsoft.com/overview/serverless-computing/) aplikace function. 
 
-## <a name="general-best-practices"></a>Obecné doporučené postupy
+## <a name="general-best-practices"></a>Obecné osvědčené postupy
 
-Následují osvědčené postupy v tom, jak vytvořit a architektury vašich bez serveru řešení pomocí Azure Functions.
+Tady jsou osvědčené postupy v tom, jak vytvářet a navrhovat řešení bez serveru pomocí služby Azure Functions.
 
-### <a name="avoid-long-running-functions"></a>Vyhněte se dlouho běžící funkce
+### <a name="avoid-long-running-functions"></a>Vyhněte se dlouho trvající funkce
 
-Velké, dlouhotrvajících funkce může způsobit neočekávané vypršení časového limitu problémy. Funkce se může stát velké z důvodu velký počet závislostí Node.js. Import závislosti může také způsobit způsobit neočekávané vypršení časových limitů opakování zvýšené zátěže. Závislosti jsou načíst jak explicitně a implicitně. Jeden modul načteny kódu může načíst vlastní dalších modulů.  
+Velké, dlouhotrvající funkce může způsobit neočekávané vypršení časového limitu. Funkce může být velký kvůli velký počet závislostí Node.js. Import závislosti, může způsobit zvýšenou zátěž pokusů mít za následek neočekávané vypršení časového limitu. Závislosti se načtou i explicitně a implicitně. Jeden modul načítá váš kód může načíst vlastní dalších modulů.  
 
-Kdykoli je to možné, refactor velké funkce do menší funkce nastaví které pracují společně a rychle vrátit odpovědi. Například webhooku nebo funkce aktivace protokolu HTTP může vyžadovat odpověď potvrzení v určitých časovém limitu; je běžné, že webhooky vyžadují okamžitou reakci. Datová část aktivace protokolu HTTP můžete předat do fronty ke zpracování funkcí frontě aktivační události. Tento přístup umožňuje odložení samotnou práci a vrátí okamžitou reakci.
-
-
-### <a name="cross-function-communication"></a>Mezi funkce komunikace
-
-[Trvanlivý funkce](durable-functions-overview.md) a [Azure Logic Apps](../logic-apps/logic-apps-overview.md) využívají ke správě přechodů mezi stavy a komunikace mezi víc funkcí.
-
-Pokud nepoužíváte trvanlivý funkce nebo Logic Apps pro integraci s více funkcemi, je obecně doporučujeme používat fronty úložiště pro různé funkce komunikace.  Hlavním důvodem je, že jsou fronty úložiště levnější a výrazně usnadňují zřizování. 
-
-Jednotlivé zprávy ve frontě úložiště mají omezenou velikost na 64 KB. Pokud potřebujete předat větší zprávy mezi funkce, Azure Service Bus fronty může podporovat zpráva velikosti až 256 KB na vrstvě Standard a až 1 MB v úrovni Premium.
-
-Témata Service Bus jsou užitečné, pokud budete potřebovat filtrování před zpracováním zpráv.
-
-Centra událostí jsou užitečné pro podporu velkému komunikace.
+Pokaždé, když je to možné, refaktorace rozsáhlé funkce do menších funkce nastaví, které pracují společně a rychle vrátit odpovědi. Například webhookem nebo funkci triggeru HTTP může vyžadovat odpověď potvrzení v rámci určité časového limitu; je běžné, že webhooky vyžadují okamžitou reakci. Datová část triggeru HTTP můžete předat do fronty pro zpracování funkce pro aktivaci fronty. Tento přístup umožňuje pozdržet samotnou práci a vrátí okamžitou odezvu.
 
 
-### <a name="write-functions-to-be-stateless"></a>Zápis funkce bez zadání stavu 
+### <a name="cross-function-communication"></a>Různé komunikační – funkce
 
-Funkce by měla být bezstavové a idempotent, pokud je to možné. Přidružte žádné informace o stavu požadovaná data. Například pořadí zpracování by měla mít pravděpodobně přiřazený `state` člen. Funkce může zpracovat pořadí na základě tohoto stavu při současném zachování bezstavové funkce sám sebe. 
+[Odolná služba Functions](durable-functions-overview.md) a [Azure Logic Apps](../logic-apps/logic-apps-overview.md) jsou za účelem správy přechodů mezi stavy a komunikaci mezi více funkcí.
 
-Funkce Idempotent doporučují zejména s aktivační události časovače. Například pokud máte něco, co nezbytně nutné spouštět jednou denně, zapisovat tak může probíhat kdykoli během dne se stejné výsledky. Funkce můžete ukončit, i když není žádná práce pro určitý den. Také pokud předchozím spuštění se nepovedlo dokončit, příštím spuštění by měl vyzvedávat kde bylo přerušeno.
+Pokud nepoužíváte Durable Functions nebo Logic Apps můžete integrovat s více funkcí, je obecně osvědčeným postupem je použití front služby storage pro různé funkce komunikace.  Hlavním důvodem je, že front služby storage jsou levnější a mnohem snadněji zřizovat. 
+
+Jednotlivé zprávy ve frontě úložiště mají omezenou velikost na 64 KB. Pokud je potřeba předat větší zprávy mezi funkcemi, sběrnici Azure Service Bus fronty může použít pro podporu zpráva o velikosti až 256 KB na úrovni Standard a až 1 MB na úrovni Premium.
+
+Témata služby Service Bus jsou užitečné, pokud budete potřebovat filtrování před zpracováním zpráv.
+
+Služba Event hubs jsou užitečné pro podporu velký objem komunikace.
 
 
-### <a name="write-defensive-functions"></a>Napsat Obranným funkce
+### <a name="write-functions-to-be-stateless"></a>Zápis funkce jako bezstavové 
 
-Předpokládejme, že funkce může dojít k výjimce kdykoli. Návrh funkcí s možností pokračovat z předchozího bodu selhání při dalším spuštění. Vezměte v úvahu scénář, který vyžaduje následující akce:
+Funkce by měly být bezstavové a idempotentní, pokud je to možné. Přidružte žádné informace o stavu vyžaduje se svými daty. Například pořadí zpracování bude mít pravděpodobně přidružené `state` člena. Funkce může zpracovat objednávku založen na tento stav zůstává bezstavové samotné funkce. 
 
-1. Dotaz na 10 000 řádků v databáze.
-2. Vytvořit zprávu fronty pro každou z těchto řádků ke zpracování další dolů na řádku.
+Idempotentní funkce se doporučuje, zejména s aktivačními událostmi časovače. Například pokud máte něco, co naprosto nutné spouštět jednou denně, tak zapisovat může probíhat kdykoli během dne se stejné výsledky. Funkce můžete ukončit, pokud neexistuje žádná práce pro určitý den. Také pokud předchozí spuštění se nepovedlo dokončit, dalším spuštění by měl pokračovat tam, kde skončila.
+
+
+### <a name="write-defensive-functions"></a>Napsat obranné funkce
+
+Předpokládejme, že funkce setkat se výjimka v každém okamžiku. Návrh funkce s možností z předchozího bodu selhání pokračovat během dalšího provedení. Představte si třeba situaci, která vyžaduje následující akce:
+
+1. Dotaz na 10 000 řádků v databázi.
+2. Vytvoření zprávy fronty pro každou z těchto řádků, které mají zpracovávat další dolů na řádek.
  
-V závislosti na tom, jak složitá je systém, můžete mít: související se situací službami pro příjem dat chovají chybně výpadky sítě nebo kvóty omezuje dosáhlo maximálního atd. Všechny tyto může ovlivnit funkce kdykoli. Je třeba navrhnout funkcí abyste byli připraveni pro ni.
+V závislosti na tom, jak složitá je systém, bude pravděpodobně: chová nesprávně zapojené navazujících službách, výpadků sítě nebo kvóty omezuje dosáhlo a tak podobně. Všechny tyto může ovlivnit vaši funkci v každém okamžiku. Je potřeba navrhnout vaše funkce, abyste byli připraveni pro něj.
 
-Jak kódu reagovat Pokud dojde k selhání po vložení 5 000 těchto položek do fronty pro zpracování? Sledování položek v sadě, která po dokončení. Jinak může vložte je dalším. To může mít vážný dopad na pracovní postup. 
+Jak váš kód react Pokud dojde k selhání po vložení 5 000 položek do fronty pro zpracování? Sledování položek v sadě, který jste dokončili. V opačném případě může vložit je znovu při příštím. To může mít závažný dopad na pracovní postup. 
 
-Pokud již byla zpracována položka fronty, povolte funkce jako no-op.
+Pokud položka fronty již byla zpracována, umožňují vaší funkci no-op.
 
-Výhodou Obranným opatření již součástí, které použijete v platformě Azure Functions. Například v tématu **zpracování poškozených fronty zpráv** v dokumentaci k [fronty Azure Storage triggerů a vazeb](functions-bindings-storage-queue.md#trigger---poison-messages). 
+Využijte výhod obranné opatření již komponenty, které používáte na platformě Azure Functions. Viz například **zpracování nezpracovatelných zpráv** v dokumentaci k [fronty Azure Storage triggerů a vazeb](functions-bindings-storage-queue.md#trigger---poison-messages). 
 
-## <a name="scalability-best-practices"></a>Škálovatelnost osvědčené postupy
+## <a name="scalability-best-practices"></a>Osvědčené postupy škálovatelnost
 
-Existuje několik faktorů, což ovlivňuje, jak instancí aplikace funkce škálování. Podrobnosti jsou uvedeny v dokumentaci pro [funkce škálování](functions-scale.md).  Následují některé osvědčené postupy k zajištění optimální škálovatelnost aplikaci funkce.
+Existuje mnoho faktorů, které ovlivnit, jak škálovat instance vaší aplikace function App. Podrobnosti jsou uvedeny v dokumentaci pro [funkce škálování](functions-scale.md).  Tady jsou některé osvědčené postupy k zajištění optimální škálovatelnost aplikaci function app.
 
-### <a name="dont-mix-test-and-production-code-in-the-same-function-app"></a>Nekombinujte testovací a produkční kódu ve stejné aplikaci – funkce
+### <a name="dont-mix-test-and-production-code-in-the-same-function-app"></a>Nekombinujte testovací a produkční kód ve stejné aplikaci function app
 
-Funkce v rámci funkce aplikace sdílet prostředky. Například je sdílené paměti. Pokud používáte aplikaci funkce v produkčním prostředí, není funkcí spojených se testovací a prostředky do něj přidat. Může to způsobit neočekávané režii během provádění kódu produkční.
+Funkce v rámci aplikace function app sdílení prostředků. Například je paměť sdílená. Pokud používáte aplikaci function app v produkčním prostředí, nepřidávejte do ní související s funkcí a prostředků. Může to způsobit neočekávané režii během provádění kódu produkčního prostředí.
 
-Dávejte pozor, zatížení ve svých aplikacích funkce produkční. Paměť je průměrem každou funkci v aplikaci.
+Buďte opatrní načtete do svých aplikací funkce produkčního prostředí. Paměť je průměrovaný napříč každá funkce v aplikaci.
 
-Pokud máte sdílené sestavení odkazuje více funkcí rozhraní .net, můžete ji umístěte do běžné sdílené složky. Toto sestavení s podobně jako v následujícím příkladu příkaz odkazu, pokud pomocí jazyka C# skriptů (.csx): 
+Pokud máte sdílené sestavení odkazuje víc funkcí .net, vložte ho do běžné sdílené složky. Pokud používáte skripty jazyka C# (.csx), odkazovat na sestavení příkazem podobně jako v následujícím příkladu: 
 
     #r "..\Shared\MyAssembly.dll". 
 
-Jinak je snadno omylem nasadit více testovací verzí binární stejné s odlišným mezi funkce.
+V opačném případě je snadno omylem nasadit více testovací verzí stejného binárního souboru, které se chovají odlišně mezi funkcemi.
 
-Nepoužívejte podrobné protokolování v produkčním kódu. Má negativním dopadem na výkon.
+Nepoužívejte podrobné protokolování v produkčním kódu. Má vliv na výkon negativní.
 
-### <a name="use-async-code-but-avoid-blocking-calls"></a>Použít asynchronní kód, ale zabránění blokování volání
+### <a name="use-async-code-but-avoid-blocking-calls"></a>Použít asynchronní kód, ale Vyhněte se blokování volání
 
-Asynchronní programování je součástí osvědčeného postupu. Vždy-li však odkazující na `Result` vlastnost nebo volání `Wait` metodu `Task` instance. Tento přístup může vést k vyčerpání přístup z více vláken.
+Asynchronní programování je součástí osvědčeného. Nicméně vždy-li zabránit odkazování `Result` vlastností nebo volání `Wait` metodu na `Task` instance. Tento přístup může vést k vyčerpání vlákna.
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
-### <a name="receive-messages-in-batch-whenever-possible"></a>Příjem zpráv ve službě batch, kdykoli je to možné
+### <a name="receive-messages-in-batch-whenever-possible"></a>Příjem zpráv v dávce, kdykoli je to možné
 
-Některé aktivačních událostí jako centra událostí povolit příjem dávku zpráv v jednom volání.  Dávkování zpráv má mnohem lepší výkon.  Můžete nakonfigurovat velikost maximální dávky v `host.json` podle popisu v souboru [host.json referenční dokumentaci k nástroji](functions-host-json.md)
+Některé aktivačních událostí, jako je Centrum událostí povolit příjem dávku zpráv v jednom vyvolání.  Dávkování zpráv má mnohem lepší výkon.  Můžete nakonfigurovat velikost maximální dávky v `host.json` podle popisu v souboru [referenční dokumentace k host.json](functions-host-json.md)
 
-Pro funkce C# můžete změnit typ k poli silného typu.  Například místo z `EventData sensorEvent` může být podpis metody `EventData[] sensorEvent`.  Pro jiné jazyky budete potřebovat explicitně nastavit vlastnost Kardinalita ve vaší `function.json` k `many` Chcete-li povolit dávkování [jak je vidět tady](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10).
+Pro funkce C# můžete změnit typ na pole silného typu.  Například namísto z `EventData sensorEvent` podpis metody může být `EventData[] sensorEvent`.  Pro ostatní jazyky je potřeba explicitně nastavit vlastnost Kardinalita objektu ve vaší `function.json` k `many` Chcete-li povolit dávkování [jak je znázorněno zde](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10).
 
-### <a name="configure-host-behaviors-to-better-handle-concurrency"></a>Konfigurace chování hostitele pro lepší zpracování souběžnosti
+### <a name="configure-host-behaviors-to-better-handle-concurrency"></a>Konfigurace hostitele chování lépe poradí s souběžnosti
 
-`host.json` Souboru v aplikaci funkce umožňuje konfigurovat chování hostitele modulu runtime a aktivační události.  Kromě dávkování chování, můžete spravovat souběžnosti pro počet aktivační události.  Často úpravě hodnoty v těchto možností může pomoci každé instance škálování pro požadavky vyvolaná funkcí.
+`host.json` Souboru do aplikace function App umožňuje konfigurovat chování modulu runtime a aktivaci hostitele.  Kromě dávkování chování, můžete spravovat souběžného zpracování několika aktivačních událostí.  Často Úprava hodnoty v těchto možností může pomoct každé instance škálovací odpovídajícím způsobem pro požadavky vyvolané funkcí.
 
-Použít nastavení v souboru hostitelů mezi všechny funkce v aplikaci, v *jediné instance* funkce. Například pokud jste měli aplikaci funkce s 2 funkce protokolu HTTP a souběžných požadavků na 25, požadavek na buď triggeru protokolu HTTP bude započítávat sdílené 25 souběžných požadavků.  Pokud tuto aplikaci funkce škálovat na 10 instancí, 2 funkce by efektivně povolit 250 souběžných požadavků (10 instancí * 25 souběžných požadavků na každou instanci).
+Přes všechny funkce v aplikaci, v rámci použít nastavení v souboru hostitelů *jednu instanci* funkce. Například pokud jste měli aplikaci function app s 2 funkce protokolu HTTP a nastavte souběžných požadavků na 25, požadavek na buď triggeru HTTP bude započítávat sdílené 25 souběžných požadavků.  Pokud tuto aplikaci function app se škálovat na 10 instancí, 2 funkce umožní efektivně 250 souběžných požadavků (10 instancí * 25 souběžných požadavků na instanci).
 
-**Možnosti hostitele souběžnosti protokolu HTTP**
+**Možnosti hostitele HTTP souběžnosti**
 
 [!INCLUDE [functions-host-json-http](../../includes/functions-host-json-http.md)]
 
@@ -121,4 +117,4 @@ Můžete najít další možnosti konfigurace hostitele [v dokumentu konfigurace
 Další informace najdete v následujících materiálech:
 
 * [Správa připojení v Azure Functions](manage-connections.md)
-* [Osvědčené postupy služby Azure App Service](../app-service/app-service-best-practices.md)
+* [Osvědčené postupy pro Azure App Service](../app-service/app-service-best-practices.md)

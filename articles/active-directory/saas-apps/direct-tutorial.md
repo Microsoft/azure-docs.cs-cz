@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Integrace Azure Active Directory s přímým | Dokumentace Microsoftu'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Direct.
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a direct.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/16/2017
+ms.date: 09/06/2018
 ms.author: jeedes
-ms.openlocfilehash: e9003df88e8ed330e0344c63ee0516bc24a7eaad
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 7e693a721e5556970607fafd8ff187d3b06c913e
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39433897"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44092882"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-direct"></a>Kurz: Integrace Azure Active Directory s přímým
 
@@ -27,7 +27,7 @@ V tomto kurzu se dozvíte, jak integrovat přímo s Azure Active Directory (Azur
 
 Integrace přímo s Azure AD poskytuje následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup k přímé
+- Můžete řídit ve službě Azure AD, který má přístup ke směrování
 - Můžete povolit uživatelům, aby automaticky získat přihlášeného ke směrování (Single Sign-On) s jejich účty Azure AD
 - Můžete spravovat své účty na jediném místě – na webu Azure portal
 
@@ -35,9 +35,9 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s přímým, potřebujete následující položky:
+Konfigurace integrace Azure AD s přímým přístupem, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Přímým přístupem jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -49,50 +49,50 @@ Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučen
 - Pokud nemáte prostředí zkušební verzi Azure AD, můžete získat měsíční zkušební [tady](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+
+V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí.
+Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání přímo z Galerie
-1. Konfigurace a testování Azure AD jednotného přihlašování
+2. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-direct-from-the-gallery"></a>Přidání přímo z Galerie
-Konfigurace integrace s přímým přístupem do služby Azure AD, budete muset přidat z Galerie přímo na váš seznam spravovaných aplikací SaaS.
+
+Pokud chcete nakonfigurovat integraci s přímým přístupem do služby Azure AD, budete muset přidat na seznam spravovaných aplikací SaaS přímo z galerie.
 
 **Chcete-li přidat přímo z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-1. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
-    
-1. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
+
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Aplikace][3]
 
-1. Do vyhledávacího pole zadejte **přímé**.
-
-    ![Vytváří se testovací uživatele služby Azure AD](./media/direct-tutorial/tutorial_direct_search.png)
-
-1. Na panelu výsledků vyberte **přímé**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
+4. Do vyhledávacího pole zadejte **přímé**. Vyberte **přímé** z panel výsledků a pak vyberte **přidat** tlačítko pro přidání aplikace.
 
     ![Vytváří se testovací uživatele služby Azure AD](./media/direct-tutorial/tutorial_direct_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
-V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s přímým přístupem na základě testu uživatelem nazývá "Britta Simon."
+## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
 
-Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšky v Direct je pro uživatele ve službě Azure AD. Jinými slovy musí navázat vztah odkazu mezi uživatele služby Azure AD a související uživatelské přímo.
+V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s přímým podle testovacího uživatele nazývá "Britta Simon."
+
+Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšky v přímém je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele služby Azure AD a souvisejících uživatelem v s přímým přístupem musí být vytvořeno.
 
 V přímé, přiřaďte hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** a tím vytvoří vztah odkazu.
 
 Nakonfigurovat a otestovat Azure AD jednotné přihlašování s přímým, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-1. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-1. **[Vytváří se uživatel – přímý test](#creating-a-direct-test-user)**  – Pokud chcete mít protějšek Britta Simon přímo, který je propojený s Azure AD reprezentace uživatele.
-1. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-1. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
+2. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytváří se uživatel – přímý test](#creating-a-direct-test-user)**  – Pokud chcete mít protějšek Britta Simon přímo, který je propojený s Azure AD reprezentace uživatele.
+4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
@@ -104,37 +104,34 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace jednotného přihlašování][4]
 
-1. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
+2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
     ![Konfigurace jednotného přihlašování](./media/direct-tutorial/tutorial_direct_samlbase.png)
 
-1. Na **přímé domény a adresy URL** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu:
+3. Na **přímé domény a adresy URL** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu:
 
     ![Konfigurace jednotného přihlašování](./media/direct-tutorial/tutorial_direct_url.png)
 
     V **identifikátor** textového pole zadejte adresu URL: `https://direct4b.com/`
 
-1. Zkontrolujte **zobrazit pokročilé nastavení URL**, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
+4. Zkontrolujte **zobrazit pokročilé nastavení URL**, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
 
     ![Konfigurace jednotného přihlašování](./media/direct-tutorial/tutorial_direct_url1.png)
 
      V **přihlašovací adresa URL** textového pole zadejte adresu URL: `https://direct4b.com/sso` 
-    
-1. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
+
+5. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
 
     ![Konfigurace jednotného přihlašování](./media/direct-tutorial/tutorial_direct_certificate.png) 
 
-1. Klikněte na tlačítko **Uložit** tlačítko.
+6. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Konfigurace jednotného přihlašování](./media/direct-tutorial/tutorial_general_400.png)
 
-1. Ke konfiguraci jednotného přihlašování na **přímé** straně, je nutné odeslat na stažený **soubor XML s metadaty** k [přímou podporu týmu](https://direct4b.com/ja/support.html#inquiry). 
-
-> [!TIP]
-> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+7. Ke konfiguraci jednotného přihlašování na **přímé** straně, je nutné odeslat na stažený **soubor XML s metadaty** k [přímou podporu týmu](https://direct4b.com/ja/support.html#inquiry).
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
+
 Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
 ![Vytvoření uživatele Azure AD][100]
@@ -145,16 +142,16 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
     ![Vytváří se testovací uživatele služby Azure AD](./media/direct-tutorial/create_aaduser_01.png) 
 
-1. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
+2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
     ![Vytváří se testovací uživatele služby Azure AD](./media/direct-tutorial/create_aaduser_02.png) 
 
-1. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
- 
+3. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
+
     ![Vytváří se testovací uživatele služby Azure AD](./media/direct-tutorial/create_aaduser_03.png) 
 
-1. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
- 
+4. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
+
     ![Vytváří se testovací uživatele služby Azure AD](./media/direct-tutorial/create_aaduser_04.png) 
 
     a. V **název** textové pole, typ **BrittaSimon**.
@@ -164,41 +161,41 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
     c. Vyberte **zobrazit heslo** a zapište si hodnotu **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
- 
+
 ### <a name="creating-a-direct-test-user"></a>Vytváří se uživatel – přímý test
 
 V této části vytvořte uživatele Britta Simon přímo. Práce s [přímou podporu týmu](https://direct4b.com/ja/support.html#inquiry) přidat uživatele na platformě s přímým přístupem. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování. 
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části je povolit Britta Simon používat jednotné přihlašování Azure tím, že udělíte přístup k s přímým přístupem.
+V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu ke směrování.
 
 ![Přiřadit uživatele][200] 
 
-**Britta Simon přiřadit přímo, proveďte následující kroky:**
+**Přiřadit Britta Simon ke směrování, proveďte následující kroky:**
 
 1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-1. V seznamu aplikací vyberte **přímé**.
+2. V seznamu aplikací vyberte **přímé**.
 
     ![Konfigurace jednotného přihlašování](./media/direct-tutorial/tutorial_direct_app.png) 
 
-1. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
+3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
-1. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
+4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Přiřadit uživatele][203]
 
-1. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
+5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-1. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
+6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-1. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
-    
+7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
+
 ### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
 
 V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
@@ -207,12 +204,12 @@ V této části Testování služby Azure AD jednotné přihlašování – konf
 
     Po kliknutí **s přímým přístupem** dlaždici na přístupovém panelu, měli byste obdržet automaticky přihlášení k vaší **s přímým přístupem** aplikace.
 
-1. Pokud chcete otestovat v **SP iniciované režimu**:
-    
+2. Pokud chcete otestovat v **SP iniciované režimu**:
+
     a. Klikněte na **přímé** dlaždici na přístupovém panelu a budete přesměrováni na přihlašovací stránce aplikace.
 
     b. Zadejte vaše `subdomain` zobrazí textové pole a stiskněte by měl získat "次へ (Další)" a budete automaticky přihlášení k vaší **přímé** aplikace.
-    
+
 Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Další zdroje informací:
@@ -233,4 +230,3 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 [201]: ./media/direct-tutorial/tutorial_general_201.png
 [202]: ./media/direct-tutorial/tutorial_general_202.png
 [203]: ./media/direct-tutorial/tutorial_general_203.png
-

@@ -5,20 +5,17 @@ services: functions
 documentationcenter: na
 author: ggailey777
 manager: jeconnoc
-editor: ''
-tags: ''
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.workload: na
 ms.date: 08/22/2018
 ms.author: glenga
-ms.openlocfilehash: 2b9cc3618bf21eac268e3c25f08b80124d52e6af
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: a3c42dc0f90b16b14eca2c47608fb90238dd0f72
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669287"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44095466"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>Spouštění Azure Functions ze souboru balíčku
 

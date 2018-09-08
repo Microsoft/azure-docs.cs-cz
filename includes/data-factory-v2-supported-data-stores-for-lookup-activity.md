@@ -5,15 +5,15 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 06/28/2018
+ms.date: 09/07/2018
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 359f0ef4cd402b587f1ed2db9fa41141ab8dff1d
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: e344e018aaa6179d2f7cb9fbc503dc808e9607b9
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008531"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44168360"
 ---
 | Kategorie | Úložiště dat |
 |:--- |:--- |
@@ -67,13 +67,14 @@ ms.locfileid: "39008531"
 | &nbsp; |[Dynamics 365](../articles/data-factory/connector-dynamics-crm-office-365.md) |
 | &nbsp; |[Dynamics CRM](../articles/data-factory/connector-dynamics-crm-office-365.md) |
 | &nbsp; |[GE Historian](../articles/data-factory/connector-odbc.md#ge-historian-source) 
+| &nbsp; |[Google AdWords (Preview)](../articles/data-factory/connector-google-adwords.md) |
 | &nbsp; |[HubSpot (Preview)](../articles/data-factory/connector-hubspot.md) |
 | &nbsp; |[Jira (Preview)](../articles/data-factory/connector-jira.md) |
 | &nbsp; |[Magento (Preview)](../articles/data-factory/connector-magento.md) |
 | &nbsp; |[Marketo (Preview)](../articles/data-factory/connector-marketo.md) |
 | &nbsp; |[Oracle Eloqua (Preview)](../articles/data-factory/connector-oracle-eloqua.md) |
 | &nbsp; |[Oracle Responsys (Preview)](../articles/data-factory/connector-oracle-responsys.md) |
-| &nbsp; |[Paypal (Preview)](../articles/data-factory/connector-paypal.md) |
+| &nbsp; |[Oracle Cloud Service (Preview)](../articles/data-factory/connector-oracle-service-cloud.md) || &nbsp; |[Paypal (Preview)](../articles/data-factory/connector-paypal.md) |
 | &nbsp; |[QuickBooks (Preview)](../articles/data-factory/connector-quickbooks.md) |
 | &nbsp; |[Salesforce](../articles/data-factory/connector-salesforce.md) |
 | &nbsp; |[Cloud služeb Salesforce](../articles/data-factory/connector-salesforce.md) |

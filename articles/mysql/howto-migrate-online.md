@@ -1,6 +1,6 @@
 ---
-title: Minimální dobou výpadku migrace do Azure Database pro databázi MySQL
-description: Tento článek popisuje, jak provést minimální dobou výpadku migraci databáze MySQL do Azure databáze pro databázi MySQL pomocí služby Azure databáze migrace.
+title: Migrace s minimem výpadků ke službě Azure Database for MySQL
+description: Tento článek popisuje, jak provést migraci minimálními prostoji databáze MySQL do služby Azure Database for MySQL pomocí Azure Database Migration Service.
 services: mysql
 author: HJToland3
 ms.author: jtoland
@@ -9,23 +9,23 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 06/21/2018
-ms.openlocfilehash: ecbd35bd45bd11292bbe4a032329d704858d4c77
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 55d5cf97225508d6c7c490347cfe21ced832300e
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293917"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44091710"
 ---
-# <a name="minimal-downtime-migration-to-azure-database-for-mysql"></a>Minimální dobou výpadku migrace do Azure Database pro databázi MySQL
-Můžete provést migrací MySQL Azure Database pro databázi MySQL s minimálními výpadky pomocí nově přináší **průběžné synchronizace schopností** pro [služba migrace databáze Azure](https://aka.ms/get-dms) (DMS). Tato funkce omezí doba výpadku, který je spojené s prováděním.
+# <a name="minimal-downtime-migration-to-azure-database-for-mysql"></a>Migrace s minimem výpadků ke službě Azure Database for MySQL
+Můžete provést migraci MySQL do služby Azure Database for MySQL s minimálními prostoji pomocí nově zavedená **Průběžná synchronizace schopností** pro [Azure Database Migration Service](https://aka.ms/get-dms) (DMS). Tato funkce omezuje množství prostoje, které se účtují podle aplikace.
 
 ## <a name="overview"></a>Přehled
-Služba DMS provede počáteční zatížení místní databázi Azure pro databázi MySQL a pak nepřetržitě synchronizuje všechny nové transakce do Azure aplikace bez přerušení chodu. Po data zachytí na cíli Azure straně, zastavte aplikaci na chvíli stručný (minimální výpadek), počkat na poslední dávku dat (od času zastavte aplikaci, dokud nebude aplikace efektivně provést jakékoli nové přenosy dat k dispozici) pro zachycení až na cíli a aktualizujte připojovací řetězec tak, aby odkazoval na Azure. Jakmile budete hotovi, bude vaše aplikace za provozu v Azure!
+DMS provede počáteční načtení místní ke službě Azure Database for MySQL a potom průběžně synchronizuje všechny nové transakce do Azure během aplikace zůstane spuštěný. Po data vyrovnat na cílové straně Azure, zastavte aplikaci pro krátké chvíle (minimální výpadek), počkejte pro poslední dávku dat (od doby, dokud aplikace není dostupná efektivně provádět žádné nové přenosy dat se zastavit aplikaci) k zachycení až do cíle a pak aktualizujte připojovací řetězec tak, aby odkazoval do Azure. Až budete hotovi, vaše aplikace bude živě v Azure!
 
-![Průběžné synchronizace se službou Azure databáze migrace](./media/howto-migrate-online/ContinuousSync.png)
+![Průběžná synchronizace s Azure Database Migration Service](./media/howto-migrate-online/ContinuousSync.png)
 
-Migrace DMS MySQL zdrojů je aktuálně ve verzi preview. Pokud chcete vyzkoušet službu, kterou chcete migrovat úlohy MySQL, zaregistrujte si prostřednictvím Azure DMS [stránku s náhledem](https://aka.ms/dms-preview) vyjádřit váš zájem. Vaše zpětná vazba je neocenitelnou pomocí v dále zlepšit služby.
+- DMS migrace MySQL zdrojů je aktuálně ve verzi public preview. Pokud chcete vyzkoušet na služby migrace úloh MySQL, pokračujte na portálu. Vaše zpětná vazba je neocenitelný při řízení a usnadnit tak další vylepšení služby.
 
 ## <a name="next-steps"></a>Další postup
-- Zobrazit na video [jednoduše provést migraci databáze MySQL/PostgreSQL spravované služby aplikací pro Azure](https://medius.studios.ms/Embed/Video/THR2201?sid=THR2201), který obsahuje ukázku znázorňující způsob migrace aplikací MySQL do Azure Database pro databázi MySQL.
-- Zaregistrujte si omezené preview minimální dobou výpadku migrace MySQL do Azure Database pro databázi MySQL prostřednictvím Azure DMS [stránku s náhledem](https://aka.ms/dms-preview).
+- Zobrazení videa [snadnou migraci MySQL nebo PostgreSQL aplikace do Azure se spravovat služby](https://medius.studios.ms/Embed/Video/THR2201?sid=THR2201), která obsahuje ukázky, ukazuje, jak migrovat aplikace MySQL do služby Azure Database for MySQL.
+- [Migrace MySQL do služby Azure Database for MySQL online pomocí DMS] (https://docs.microsoft.com/azure/dms/tutorial-mysql-azure-mysql-online).

@@ -1,37 +1,35 @@
 ---
-title: Zpracování pokyny Azure funkce chyb | Microsoft Docs
-description: Obsahuje obecné pokyny pro zpracování chyb vzniklých v při spuštění funkce a odkazy na témata vazby konkrétních chyb.
+title: Chyba služby Azure Functions zpracování pokyny | Dokumentace Microsoftu
+description: Obsahuje obecné pokyny pro zpracování chyb, ke kterým dochází ve spuštění vašich funkcí a odkazy na témata chyby specifické pro vazbu.
 services: functions
 cloud: ''
 documentationcenter: ''
 author: ggailey777
-manager: cfowler
+manager: jeconnoc
 ms.assetid: ''
-ms.service: functions
-ms.workload: na
-ms.tgt_pltfrm: multiple
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/01/2018
 ms.author: glenga; cfowler
-ms.openlocfilehash: 82cdc62b3070811186583fdf1ce5e6ce421ebc34
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 5a8dae73c164b319b4c291685deff402f9798364
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
-ms.locfileid: "29118486"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44091830"
 ---
-# <a name="azure-functions-error-handling"></a>Zpracování chyb Azure funkce
+# <a name="azure-functions-error-handling"></a>Zpracování chyb Azure Functions
 
-Toto téma obsahuje obecné pokyny pro zpracování chyb vzniklých při spuštění funkcí. Obsahuje taky odkazy na témata, která popisují vazby konkrétních chyb, které mohou nastat. 
+Toto téma obsahuje obecné pokyny pro zpracování chyb, ke kterým dochází, když vaše funkce se mohou spouštět. Obsahuje také odkazy na témata popisující vazbu konkrétních chyb, které mohou nastat. 
 
-## <a name="handing-errors-in-functions"></a>Blokováním chyby ve funkcích
+## <a name="handing-errors-in-functions"></a>Zpracování chyb ve funkcích
 [!INCLUDE [bindings errors intro](../../includes/functions-bindings-errors-intro.md)]
 
  
-## <a name="binding-error-codes"></a>Kódy chyb vazby
+## <a name="binding-error-codes"></a>Kódy chyb vazeb
 
-Při integraci se službami Azure, můžete mít vyvolá chyby, které pocházejí z rozhraní API základní služby. Odkazy na chybu code dokumentaci pro tyto služby najdete v **výjimky a návratové kódy** části následující aktivační události a vazba referenční témata:
+Při integraci se službami Azure, můžete mít chyb, které vyvolala, které pocházejí z rozhraní API základní služby. Odkazy na chybu kódu dokumentaci pro tyto služby najdete v **výjimky a návratové kódy** najdete následující aktivační události a vazby referenční témata:
 
 + [Azure Cosmos DB](functions-bindings-cosmosdb.md#exceptions-and-return-codes)
 

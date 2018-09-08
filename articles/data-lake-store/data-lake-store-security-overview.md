@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 3b836859dd2af45e84d0f53db06d2c7ab2828253
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 4ecc94f4ab5e9091db1705e99d4a5df6abbaf350
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/07/2018
-ms.locfileid: "44057020"
+ms.locfileid: "44161080"
 ---
 # <a name="security-in-azure-data-lake-store"></a>Zabezpečení v Azure Data Lake Store
 Řada podniků se využívat analýzy velkých objemů dat pro obchodní přehledy, aby to pomohl ostatním inteligentní rozhodování. Organizace může mít složité a regulované prostředí s rostoucí počet odlišných uživatelů. Je důležité pro podnik, abyste měli jistotu, že životně důležitá podniková data uložená bezpečněji, se správnou úroveň přístupu k jednotlivým uživatelům. Azure Data Lake Store je účelem je pomoci splnit tyto požadavky na zabezpečení. V tomto článku najdete další informace o možnostech zabezpečení služby Data Lake Store, včetně:
@@ -80,7 +80,7 @@ Azure Data Lake Store chrání vaše data celého životního cyklu. Pro data p�
 
 Data Lake Store také zajišťuje šifrování dat, která jsou uložená v účtu. Můžete zvolit, aby se vaše data šifrovala, nebo zvolit možnost bez šifrování. Pokud se připojíte k šifrování, je před uložením na trvalé médium šifrovaná data uložená v Data Lake Store. V takovém případě se Data Lake Store automaticky šifruje data před uložením a dešifruje před načtením, takže všechno je dokonale transparentní klientovi přístupu k datům. Není žádná změna kódu, třeba šifrování/dešifrování dat na straně klienta.
 
-Pro správu klíčů Data Lake Store nabízí dva režimy pro správu vašich hlavních šifrovacích klíčů (MEK), které jsou požadovány pro dešifrování všechna data, která je uložena v Data Lake Store. Můžete buď nechat Data Lake Store správu hlavních šifrovacích klíčů pro vás nebo zachovejte vlastnictví hlavních šifrovacích klíčů pomocí svého účtu služby Azure Key Vault. Určení režimu správy klíčů při při vytváření účtu Data Lake Store. Další informace o tom, jak provést konfiguraci související se šifrováním, najdete v tématu [Začínáme s Azure Data Lake Storem pomocí webu Azure Portal](data-lake-store-get-started-portal.md).
+Pro správu klíčů Data Lake Store nabízí dva režimy pro správu vašich hlavních šifrovacích klíčů (MEK), které jsou požadovány pro dešifrování všechna data, která je uložena v Data Lake Store. Můžete buď nechat Data Lake Store správu hlavních šifrovacích klíčů pro vás nebo zachovejte vlastnictví hlavních šifrovacích klíčů pomocí svého účtu služby Azure Key Vault. Určení režimu správy klíčů při vytváření účtu Data Lake Store. Další informace o tom, jak provést konfiguraci související se šifrováním, najdete v tématu [Začínáme s Azure Data Lake Storem pomocí webu Azure Portal](data-lake-store-get-started-portal.md).
 
 ## <a name="activity-and-diagnostic-logs"></a>Aktivita a diagnostické protokoly
 Můžete použít aktivitu nebo diagnostické protokoly, v závislosti na tom, jestli hledáte v protokolech aktivit souvisejících se správou účtu nebo aktivit souvisejících s daty.

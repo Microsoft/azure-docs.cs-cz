@@ -4,23 +4,19 @@ description: Naučte se vyvíjet funkce Azure použitím skriptu jazyka C#.
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: funkce azure, funkce, zpracování událostí, webhook, dynamické výpočty, architektura bez serverů
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: dotnet
 ms.topic: reference
-ms.tgt_pltfrm: multiple
-ms.workload: na
 ms.date: 12/12/2017
 ms.author: glenga
-ms.openlocfilehash: 8206b4a0673c9744abf74e75a06d20e064475349
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 3bdb5bc2aa47a51cc95a4274fbf20ba5d0515130
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344269"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44094277"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Functions C# (.csx) pro vývojáře odkaz na skript
 

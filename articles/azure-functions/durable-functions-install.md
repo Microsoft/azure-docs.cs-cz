@@ -3,23 +3,19 @@ title: Instalace rozšíření Durable Functions a ukázky – Azure
 description: Zjistěte, jak nainstalovat rozšíření Durable Functions pro službu Azure Functions pro vývoj portálu nebo vývoj sady Visual Studio.
 services: functions
 author: cgillum
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: ''
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
+ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 12b5c013a0704eb2d3f7df58011571b902955c75
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 8c5f3114172a7d27685e7aee2972b43b9ebef4e9
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42059069"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44093002"
 ---
 # <a name="install-the-durable-functions-extension-and-samples-azure-functions"></a>Instalace rozšíření Durable Functions a ukázky (Azure Functions)
 

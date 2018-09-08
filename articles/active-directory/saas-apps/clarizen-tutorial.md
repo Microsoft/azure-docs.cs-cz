@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: jeedes
-ms.openlocfilehash: 510bf383848725f3864c40af02c2b309370237f0
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 855f147b0622ecc0831f2bc464e83d245af9e574
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39438082"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44158667"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clarizen"></a>Kurz: Integrace Azure Active Directory se službou Clarizen
 
@@ -39,7 +39,7 @@ Pokud chcete další informace o softwaru jako integraci služby (SaaS) aplikac�
 ## <a name="prerequisites"></a>Požadavky
 Konfigurace integrace Azure AD s Clarizen, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - Clarizen odběr, který je povolený pro jednotné přihlašování
 
 Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle následujících doporučení:
@@ -188,7 +188,7 @@ Na webu Azure Portal vytvořte testovacího uživatele Britta Simon.
 
 ### <a name="create-a-clarizen-test-user"></a>Vytvoření zkušebního uživatele Clarizen
 
-Cílem této části je vytvořte uživatele Britta Simon v Clarizen. Clarizen podporuje automatické zřizování uživatelů, což je ve výchozím nastavení povolená. Další podrobnosti můžete najít [tady](clarizen-provisioning-tutorial.md) o tom, jak nakonfigurovat automatické zřizování uživatelů.
+Cílem této části je vytvořte uživatele Britta Simon v Clarizen.
 
 **Pokud je potřeba ručně vytvořit uživatele, proveďte následující kroky:**
 
@@ -196,11 +196,11 @@ Pokud chcete povolit Azure AD uživatelům umožní přihlásit k Clarizen, je t
 
 1. Přihlaste se k webu společnosti Clarizen jako správce.
 
-1. Klikněte na tlačítko **lidé**.
+2. Klikněte na tlačítko **lidé**.
 
     ![Kliknutím na "Lidé"](./media/clarizen-tutorial/create_aaduser_001.png "osoby")
 
-1. Klikněte na tlačítko **pozvat uživatele**.
+3. Klikněte na tlačítko **pozvat uživatele**.
 
     ![Tlačítko "Pozvat uživatele"](./media/clarizen-tutorial/create_aaduser_002.png "pozvat uživatele")
 
@@ -242,7 +242,7 @@ Povolte Britta Simon používat jednotné přihlašování Azure tím, že uděl
 
 1. V **přidat přiřazení** dialogové okno, klikněte na tlačítko **přiřadit** tlačítko.
 
-### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
+### <a name="test-single-sign-on"></a>Test jednotného přihlašování
 Testování Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
 Po kliknutí na dlaždici Clarizen na přístupovém panelu, vám by měl být automaticky přihlášeni Clarizen aplikace.
@@ -251,7 +251,6 @@ Po kliknutí na dlaždici Clarizen na přístupovém panelu, vám by měl být a
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
-* [Konfigurace zřizování uživatelů](clarizen-provisioning-tutorial.md)
 
 <!--Image references-->
 

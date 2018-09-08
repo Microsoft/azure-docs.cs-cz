@@ -3,23 +3,19 @@ title: Rozhraní API protokolu HTTP v Durable Functions – Azure
 description: Zjistěte, jak implementovat rozhraní API HTTP v rozšíření Durable Functions pro službu Azure Functions.
 services: functions
 author: cgillum
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: ''
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
+ms.topic: conceptual
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 3c000e268c4c926991c3f1928f226065a436c6d2
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 3fa4f230f5e2d15e815c47792c3955aa93d29fc4
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "36264881"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44094735"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>Rozhraní API protokolu HTTP v Durable Functions (Azure Functions)
 
@@ -101,11 +97,11 @@ Několik částí zahrnují konkrétní rozhraní API HTTP nepodporuje rozšíř
 
 ### <a name="get-instance-status"></a>Získat stav instance
 
-Tady je příklad žádosti, která ukončí spuštěné instance a určí důvod z buggy:
+Získá stav instance zadaného Orchestrace.
 
 #### <a name="request"></a>Žádost
 
-Zjistěte, jak zpracovávat chyby
+Pro funkce 1.0 formát požadavku je následující:
 
 ```http
 GET /admin/extensions/DurableTaskExtension/instances/{instanceId}?taskHub={taskHub}&connection={connection}&code={systemKey}
@@ -201,7 +197,7 @@ Dotazovat můžete také stav všech instancí. Odeberte `instanceId` z požadav
 
 #### <a name="request"></a>Žádost
 
-Zjistěte, jak zpracovávat chyby
+Pro funkce 1.0 formát požadavku je následující:
 
 ```http
 GET /admin/extensions/DurableTaskExtension/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}
@@ -276,7 +272,7 @@ Odešle zprávu oznámení události ke spuštěné instanci Orchestrace.
 
 #### <a name="request"></a>Žádost
 
-Zjistěte, jak zpracovávat chyby
+Pro funkce 1.0 formát požadavku je následující:
 
 ```http
 POST /admin/extensions/DurableTaskExtension/instances/{instanceId}/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection={connection}&code={systemKey}
@@ -322,7 +318,7 @@ Ukončí běžící instanci Orchestrace.
 
 #### <a name="request"></a>Žádost
 
-Zjistěte, jak zpracovávat chyby
+Pro funkce 1.0 formát požadavku je následující:
 
 ```http
 DELETE /admin/extensions/DurableTaskExtension/instances/{instanceId}/terminate?reason={reason}&taskHub={taskHub}&connection={connection}&code={systemKey}

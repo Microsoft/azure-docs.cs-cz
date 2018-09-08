@@ -11,15 +11,15 @@ ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: ambapat
-ms.openlocfilehash: 6bb757fe072f0fc3ecbda5ae125aa2bf928479fb
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
-ms.translationtype: HT
+ms.openlocfilehash: 4d342efb88d3c6e560fe4d0a1c3629bf84548c73
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "41920679"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44157890"
 ---
 # <a name="access-azure-key-vault-behind-a-firewall"></a>Přístup ke službě Azure Key Vault za bránou firewall
 ### <a name="q-my-key-vault-client-application-needs-to-be-behind-a-firewall-what-ports-hosts-or-ip-addresses-should-i-open-to-enable-access-to-a-key-vault"></a>Otázka: Moje klientská aplikace trezoru klíčů musí být za bránou firewall. Které porty, hostitele nebo IP adresy je nutné otevřít, pokud chci umožnit přístup k trezoru klíčů?
@@ -63,6 +63,6 @@ Pro všechny operace správy objektů trezoru klíčů (klíče a tajné kódy) 
 ## <a name="ip-address-ranges"></a>Rozsahy IP adres
 Služba Key Vault používá jiné prostředky Azure, například infrastrukturu modelu PaaS. Proto není možné poskytnout konkrétní rozsah IP adres, který budou mít koncové body služby Key Vault v určitém čase. Pokud vaše brána firewall podporuje jenom rozsahy IP adres, přečtěte si dokument [Microsoft Azure Datacenter IP Ranges](https://www.microsoft.com/download/details.aspx?id=41653) (Rozsahy IP adres datového centra Microsoft Azure). Ověřování a identita (Azure Active Directory) je globální služba a může v případě selhání převzít služby v jiné oblasti nebo může bez předchozího upozornění dojít k přesunu provozu. V tomto scénáři by měly být všechny rozsahy IP adres uvedené v seznamu [IP adres pro ověřování a identitu](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity_ip) přidány do brány firewall.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Pokud máte dotazy ke službě Key Vault, navštivte [fóra služby Azure Key Vault](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault).
 

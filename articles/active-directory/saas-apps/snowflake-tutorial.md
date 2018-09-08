@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/29/2018
+ms.date: 09/07/2018
 ms.author: jeedes
-ms.openlocfilehash: 3ad3f42563878d829f900d5cddb0c6866d2deab5
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 247d18eb13f7bad10cbfd89891a80d2d1c6135c3
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307801"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44160539"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-snowflake"></a>Kurz: Integrace Azure Active Directory se službou Snowflake
 
@@ -39,6 +39,7 @@ Konfigurace integrace Azure AD s Snowflake, potřebujete následující položky
 
 - Předplatné Azure AD
 - Snowflake jednotného přihlašování povolená předplatného
+- Zákazníci, kteří nemají účet Snowflake a chcete vyzkoušet prostřednictvím Galerie aplikací Azure AD, najdete [to](https://trial.snowflake.net/?cloud=azure&utm_source=azure-marketplace&utm_medium=referral&utm_campaign=self-service-azure-mp) odkaz.
 
 > [!NOTE]
 > Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
@@ -103,22 +104,22 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
  
     ![Jednotné přihlašování – dialogové okno](./media/snowflake-tutorial/tutorial_snowflake_samlbase.png)
 
-3. Na **Snowflake domény a adresy URL** části, proveďte následující kroky, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu:
+3. Na **Snowflake domény a adresy URL** části, proveďte následující kroky:
 
     ![Snowflake domény a adresy URL jednotného přihlašování – informace](./media/snowflake-tutorial/tutorial_snowflake_url.png)
 
-    a. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<SNOWFLAKE-URL>`
+    a. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<SNOWFLAKE-URL>.snowflakecomputing.com`
 
-    b. V **adresy URL odpovědi** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<SNOWFLAKE-URL>/fed/login`
+    b. V **adresy URL odpovědi** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<SNOWFLAKE-URL>.snowflakecomputing.com/fed/login`
 
 4. Zkontrolujte **zobrazit pokročilé nastavení URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
 
     ![Snowflake domény a adresy URL jednotného přihlašování – informace](./media/snowflake-tutorial/tutorial_snowflake_url1.png)
 
-    V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<SNOWFLAKE-URL>`
+    V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<SNOWFLAKE-URL>.snowflakecomputing.com`
      
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte skutečné identifikátor, adresa URL odpovědi a přihlašovací adresa URL. Kontakt [tým podpory Snowflake klienta](https://support.snowflake.net/s/snowflake-support) k získání těchto hodnot. 
+    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte skutečné identifikátor, adresa URL odpovědi a přihlašovací adresa URL.
 
 5. Na **podpisový certifikát SAML** klikněte na tlačítko **certifikát (Base64)** a uložte soubor certifikátu v počítači.
 
@@ -132,7 +133,22 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace Snowflake](./media/snowflake-tutorial/tutorial_snowflake_configure.png) 
 
-8. Ke konfiguraci jednotného přihlašování na **Snowflake** straně, je nutné odeslat na stažený **certifikát (Base64)** a **SAML jednotné přihlašování – adresa URL služby** k [ Tým podpory Snowflake](https://support.snowflake.net/s/snowflake-support). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+8. V jiné okno webového prohlížeče, přihlaste se ke Snowflake jako správce zabezpečení.
+
+9. Spustit následující dotaz SQL na listu nastavením **certifikát** hodnota, která se **dowloaded certifikát** a **ssoUrl** k zkopírovaný **SAML jednotného přihlašování Adresa URL služby** ze služby Azure AD k hodnotě, jak je znázorněno níže.
+
+    ![Snowflake sql](./media/snowflake-tutorial/tutorial_snowflake_sql.png) 
+
+    ```
+    use role accountadmin;
+    alter account set saml_identity_provider = '{
+    "certificate": "<Paste the content of downloaded certificate from Azure portal>",
+    "ssoUrl":"<SAML single sign-on service URL value which you have copied from the Azure portal>",
+    "type":"custom",
+    "label":"AzureAD"
+    }';
+    alter account set sso_login_page = TRUE;
+    ```
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
@@ -168,7 +184,25 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
  
 ### <a name="create-a-snowflake-test-user"></a>Vytvoření zkušebního uživatele Snowflake
 
-V této části vytvořte uživatele Britta Simon v Snowflake. Práce s [tým podpory Snowflake](https://support.snowflake.net/s/snowflake-support) přidat uživatele na platformě Snowflake. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+Povolení služby Azure AD uživatelům přihlášení ke Snowflake, musí být poskytnuty do Snowflake. Zřizování v Snowflake, je ruční úlohy.
+
+**K poskytnutí uživatelského účtu, postupujte následovně:**
+
+1. Přihlaste se ke Snowflake jako správce zabezpečení.
+
+2. **Přepnout Role** k **ACCOUNTADMIN**, kliknutím na **profilu** v pravé horní části stránky.  
+
+    ![Správce Snowflake ](./media/snowflake-tutorial/tutorial_snowflake_accountadmin.png)
+
+3. Vytvoření uživatele spuštěním následující dotaz SQL, zajištění "Přihlašovací jméno" je nastavena na uživatelské jméno Azure AD na listu jak je znázorněno níže.
+
+    ![Snowflake adminsql ](./media/snowflake-tutorial/tutorial_snowflake_usersql.png)
+
+    ```
+
+    use role accountadmin;
+    CREATE USER britta_simon PASSWORD = '' LOGIN_NAME = 'BrittaSimon@contoso.com' DISPLAY_NAME = 'Britta Simon';
+    ```
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 

@@ -11,16 +11,16 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: abd2984574f80f03f276861782ff9ee51348d07e
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: f9a77c1f3fbce295a40db366619d7485d44efc4f
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39391373"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44162712"
 ---
 # <a name="manage-your-security-info-preview"></a>Spravovat svoje bezpečnostní údaje (preview)
 
-[!INCLUDE[preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
+[!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
 Vaše bezpečnostní údaje můžete použít pro přihlášení ke svému pracovnímu nebo školnímu účtu nebo si chcete resetovat heslo.
 
@@ -92,13 +92,13 @@ Tento článek pomůže vyřešit vaše bezpečnostní údaje, včetně dvoustup
 
 - Proveďte jeden z těchto články s postupy pro další informace o tom, jak nastavit vaše zařízení v oblasti zabezpečení informací:
 
-    - [Nastavení informací o zabezpečení pro použití ověřovací aplikaci](security-info-setup-auth-app.md)
+    - [Nastavení bezpečnostních údajů pro používání ověřovací aplikace](security-info-setup-auth-app.md)
 
-    - [Nastavení informací o zabezpečení pro použití telefonních hovorů](security-info-setup-phone-number.md)
+    - [Nastavení bezpečnostních údajů pro používání telefonních hovorů](security-info-setup-phone-number.md)
 
     - [Upravit informace o zabezpečení tak, aby pomocí textové zprávy](security-info-setup-text-msg.md)
 
-    - [Nastavení informací o zabezpečení pro použití e-mailu](security-info-setup-email.md)
+    - [Nastavení bezpečnostních údajů pro používání e-mailu](security-info-setup-email.md)
 
     - [Nastavte si bezpečnostní údaje použít bezpečnostní otázky](security-info-setup-questions.md)
 

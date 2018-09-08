@@ -5,15 +5,15 @@ services: storage
 author: jeffpatt24
 ms.service: storage
 ms.topic: article
-ms.date: 08/22/2018
+ms.date: 09/06/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 4434b67393d34c3418e44e82681a586c268a37e5
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 88c73b3c9fd3ffc0c323b9971e245e6f6d9695a0
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746992"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44095534"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Řešení problémů se Synchronizací souborů Azure
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě soubory Azure, při zachování flexibility, výkonu a kompatibility s místními souborového serveru. Azure File Sync transformuje serveru systému Windows na rychlou mezipaměť sdílené složky Azure. Můžete použít jakýkoli protokol dostupný ve Windows serveru pro přístup k datům místně, včetně SMB, NFS a FTPS. Můžete mít libovolný počet mezipamětí po celém světě potřebujete.
@@ -125,6 +125,16 @@ Set-AzureRmStorageSyncServerEndpoint `
     -CloudTiering true `
     -VolumeFreeSpacePercent 60
 ```
+<a id="server-endpoint-noactivity"></a>**Koncový bod serveru je ve stavu stavu "Žádná aktivita" nebo "Čeká na vyřízení" a stavu serveru v okně registrované servery je "Se zobrazí v režimu offline"**  
+
+Tomuto problému může dojít, pokud proces synchronizace monitorování úložiště není spuštěna nebo není schopen komunikovat se službou Azure File Sync kvůli proxy nebo brány firewall na serveru.
+
+Chcete-li vyřešit tento problém, proveďte následující kroky:
+
+1. Otevřete Správce úloh na serveru a ověřte, zda že je spuštěn proces synchronizace monitorování úložiště (AzureStorageSyncMonitor.exe). Pokud proces není spuštěn, nejprve zkuste restartovat server. Pokud restartování serveru problém nevyřeší, odinstalujte a znovu nainstalujte agenta Azure File Sync (Poznámka: nastavení serveru se zachovají i po odinstalování a přeinstalování agenta).
+2. Ověřte, zda je správně nakonfigurované nastavení brány Firewall a proxy serveru:
+    - Pokud je server za bránou firewall, ověřte, že je povolené odchozím portu 443. Pokud brána firewall omezuje provoz na konkrétní domény, zkontrolujte domén uvedené v bráně Firewall [dokumentaci](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-firewall-and-proxy#firewall) jsou k dispozici.
+    - Pokud je za proxy server, nakonfigurujte nastavení proxy celý počítač nebo konkrétní aplikace podle postupu v proxy serveru [dokumentaci](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-firewall-and-proxy#proxy).
 
 ## <a name="sync"></a>Sync
 <a id="afs-change-detection"></a>**Když jsem vytvořil soubor přímo v mé sdílené složky Azure přes protokol SMB nebo prostřednictvím portálu, jak dlouho trvá synchronizaci pro servery ve skupině synchronizace souboru?**  

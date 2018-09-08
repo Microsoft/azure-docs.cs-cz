@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: d140cbdb0548de869c7aab6ba5da281046a215f9
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: a235b85887e64e0a5ca35aae8f31734250a78bb5
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434108"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44160230"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xmatters-ondemand"></a>Kurz: Integrace Azure Active Directory se službou xMatters OnDemand.
 
@@ -37,7 +37,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s xMatters OnDemand, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - XMatters OnDemand jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Konfigurace integrace xMatters OnDemand do služby Azure AD, budete muset přida
 
 **Chcete-li přidat xMatters OnDemand z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
@@ -202,7 +202,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 
 ### <a name="creating-a-xmatters-ondemand-test-user"></a>Vytvoření zkušebního uživatele OnDemand xMatters
 
-Cílem této části je vytvořte uživatele Britta Simon v xMatters OnDemand. xMatters OnDemand podporuje automatické zřizování uživatelů, což je ve výchozím nastavení povolená. Další podrobnosti můžete najít [tady](xmatters-ondemand-provisioning-tutorial.md) o tom, jak nakonfigurovat automatické zřizování uživatelů.
+Cílem této části je vytvořte uživatele Britta Simon v xMatters OnDemand.
 
 **Pokud je potřeba ručně vytvořit uživatele, proveďte následující kroky:**
 
@@ -269,7 +269,6 @@ Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístu
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
-* [Konfigurace zřizování uživatelů](xmatters-ondemand-provisioning-tutorial.md)
 
 <!--Image references-->
 

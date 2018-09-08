@@ -8,18 +8,18 @@ manager: mbaldwin
 editor: ''
 ms.assetid: 8af12f1c-4dce-4212-8ac4-170d4313492d
 ms.service: security-center
-ms.topic: hero-article
+ms.topic: conceptual
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/03/2017
 ms.author: yurid
-ms.openlocfilehash: 8564dd8a86cab1229f31e77e072ddd4e776947e7
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
-ms.translationtype: HT
+ms.openlocfilehash: d398edb8e7c009e38265525fb1924acd8fa68d9c
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37029692"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44161250"
 ---
 # <a name="using-azure-security-center-for-an-incident-response"></a>Využití Azure Security Center při reakci na incidenty
 Mnoho organizací se naučí reagovat na incidenty zabezpečení teprve když se stanou obětí útoku. Kvůli snížení nákladů a minimalizaci škod je důležité mít hotový plán reakce na incidenty ještě před tím, než k útoku dojde. Azure Security Center můžete využít v různých fázích reakce na incidenty.
@@ -96,7 +96,7 @@ Sam od Judy obdržel případ a začíná s kontrolováním nápravných kroků,
 
 ![Životní cyklus reakce na incidenty](./media/security-center-incident-response/security-center-incident-response-fig6.png)
 
-### <a name="additional-resources"></a>Další zdroje
+### <a name="additional-resources"></a>Další zdroje informací:
 V případě společnosti, které při procesu šetření používají jeho řešení správy událostí a informací o zabezpečení (SIEM), může také [integrovat Security Center s vlastním řešením](security-center-integrating-alerts-with-log-integration.md). Můžete také integrovat protokoly auditu a události zabezpečení virtuálních počítačů Azure pomocí [nástroje pro integraci protokolů Azure](https://azure.microsoft.com/blog/introducing-hdinsight-integration-with-azure-log-analytics/). Při vyšetřování útoku můžete tyto informace použít ve spojení s informacemi, které poskytuje Security Center. Můžete také použít funkci [šetření](https://docs.microsoft.com/azure/security-center/security-center-investigation) ve službě Security Center, která vám pomůže určit původní příčinu incidentu.
 
 ## <a name="conclusion"></a>Závěr

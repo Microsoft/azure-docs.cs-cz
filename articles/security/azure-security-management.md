@@ -9,17 +9,17 @@ editor: TomSh
 ms.assetid: 2431feba-3364-4a63-8e66-858926061dd3
 ms.service: security
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: edfabf1f93c78cf29ff3561f437053df11e15bd5
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
-ms.translationtype: HT
+ms.openlocfilehash: 21ad417b9b3b8d0354333962c4e811d0eebba4e9
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857476"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44159329"
 ---
 # <a name="security-management-in-azure"></a>Správa zabezpečení v Azure
 Předplatitelé služby Azure mohou svoje cloudová prostředí spravovat z více zařízení. Můžou k tomu využívat pracovní stanice, počítače vývojářů a dokonce i privilegovaná zařízení koncových uživatelů, která mají oprávnění ke konkrétním úlohám. V některých případech se funkce správy provádějí prostřednictvím webových konzol, například [portálu Azure](https://azure.microsoft.com/features/azure-portal/). V ostatních případech můžou existovat přímá připojení k Azure z místních systémů prostřednictvím virtuálních privátních sítí (VPN), terminálových služeb, protokolů klientských aplikací nebo (v kódu) rozhraní API pro správu služby Azure (SMAPI). Kromě toho můžou být koncové body klienta buď připojené k doménám nebo izolované a nespravované, jako například tablety nebo smartphony.
@@ -220,7 +220,7 @@ Minimalizace počtu úloh, které můžou správci provádět na posílené prac
 ## <a name="summary"></a>Souhrn
 Používání konfigurace posílené pracovní stanice ke správě cloudových služeb Azure, služby Virtual Machines a aplikací vám může pomoct s omezením řady rizik a hrozeb, které vyplývají ze vzdálené správy kritické infrastruktury IT. Azure i Windows poskytují mechanismy, které můžete použít k ochraně a řízení komunikace, ověřování a chování klienta.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Následující prostředky vám poskytnou další obecné informace o Azure a souvisejících službách Microsoftu jako doplnění ke konkrétním položkám, na které odkazujeme v tomto dokumentu:
 
 * [Zabezpečení privilegovaného přístupu](https://technet.microsoft.com/library/mt631194.aspx) – technické podrobnosti o navrhování a vytváření zabezpečených pracovních stanic pro správu v prostředí Azure

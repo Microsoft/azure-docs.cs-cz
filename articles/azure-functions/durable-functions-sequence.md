@@ -3,23 +3,19 @@ title: Funkce řetězení v Durable Functions – Azure
 description: Zjistěte, jak ke spuštění ukázky Durable Functions, která postupně provede sekvenci funkce.
 services: functions
 author: cgillum
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: ''
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
+ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: a5b337e5318154e299f82b1102ca832303d752f7
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: ea8c275e5cc37f8c5ecd7c29491b7146669d00fb
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970050"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44092899"
 ---
 # <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Funkce řetězení v Durable Functions – ukázka Hello pořadí
 

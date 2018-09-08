@@ -1,35 +1,31 @@
 ---
-title: Stav vlastní orchestration v trvanlivý funkce – Azure
-description: Zjistěte, jak konfigurovat a používat vlastní orchestration stav pro odolná funkce.
+title: Stav vlastní Orchestrace v Durable Functions – Azure
+description: Zjistěte, jak nakonfigurovat a používat stav vlastní Orchestrace pro Durable Functions.
 services: functions
 author: kadimitr
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: ''
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
+ms.topic: conceptual
 ms.date: 04/24/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 840b96b9cfdb28ca1b17f54698677f4d491342c8
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: c8eb2be6836e11ddbaed81970024ea7200ea819d
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32310348"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44093087"
 ---
-# <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Stav vlastní orchestration trvanlivý funkcí (Azure Functions)
+# <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Stav vlastní Orchestrace v Durable Functions (Azure Functions)
 
-Stav vlastní orchestration umožňuje nastavit vlastní stav hodnotu funkce produktu orchestrator. Tento stav je k dispozici prostřednictvím rozhraní API HTTP GetStatus nebo `DurableOrchestrationClient.GetStatusAsync` rozhraní API.
+Stav vlastní Orchestrace umožňuje nastavit vlastní stav hodnotu funkce nástroje orchestrator. Tento stav se poskytuje prostřednictvím rozhraní API HTTP GetStatus nebo `DurableOrchestrationClient.GetStatusAsync` rozhraní API.
 
 ## <a name="sample-use-cases"></a>Ukázka případy použití 
 
 ### <a name="visualize-progress"></a>Vizualizace průběhu
 
-Klienty můžete dotazovat stav koncového bodu a zobrazení průběhu uživatelské rozhraní, které vizualizuje aktuální fázi provádění. Následující příklad ukazuje, průběh sdílení:
+Klienty můžete dotazovat stav koncového bodu a zobrazit průběh uživatelského rozhraní, které vizualizuje aktuální fáze spuštění. Následující příklad ukazuje průběh sdílení:
 
 ```csharp
 [FunctionName("E1_HelloSequence")]
@@ -56,7 +52,7 @@ public static string SayHello([ActivityTrigger] string name)
 }
 ```
 
-A pak klient obdrží výstup orchestration pouze tehdy, když `CustomStatus` je nastaveno na "Praha":
+A pak klienta se zobrazí výstup orchestraci pouze tehdy, když `CustomStatus` pole nastavena na "Londýn":
 
 ```csharp
 [FunctionName("HttpStart")]
@@ -89,9 +85,9 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
-### <a name="output-customization"></a>Přizpůsobení výstup 
+### <a name="output-customization"></a>Výstup vlastního nastavení 
 
-Jiné zajímavé scénář je vrácením vlastní výstup na základě jedinečných charakteristik nebo interakce segmentace uživatelů. S pomocí stavových vlastní orchestration zůstanou obecné kódu na straně klienta. Všechny hlavní změny proběhne na straně serveru, jak znázorňuje následující ukázka:
+Další zajímavé scénář je tak, že vrací vlastní výstup na základě jedinečných charakteristik nebo interakcí segmentace uživatelů. Díky pomoci stav vlastní Orchestrace zůstane obecný kód na straně klienta. Všechny hlavní úpravy dojde na straně serveru, jak je znázorněno v následujícím příkladu:
 
 ```csharp
 [FunctionName("CityRecommender")]
@@ -129,9 +125,9 @@ public static void Run(
 } 
 ```
 
-### <a name="instruction-specification"></a>Specifikace instrukcí 
+### <a name="instruction-specification"></a>Specifikace instrukce 
 
-Orchestrator můžete vytvořit jedinečný pokyny pro klienty pomocí vlastní stavu. Vlastní stav pokyny budou mapována na postup v kód orchestration:
+Orchestrator může poskytovat klientům prostřednictvím vlastního stavu jedinečný pokyny. Stav vlastní pokyny budou zmapována do kroků Orchestrace kódu:
 
 ```csharp
 [FunctionName("ReserveTicket")]
@@ -161,7 +157,7 @@ public static async Task<bool> Run(
 
 ## <a name="sample"></a>Ukázka
 
-V následující ukázce je vlastní stav nejprve;
+V následujícím příkladu je vlastní stav nastaven.
 
 ```csharp
 public static async Task SetStatusTest([OrchestrationTrigger] DurableOrchestrationContext ctx)
@@ -176,14 +172,14 @@ public static async Task SetStatusTest([OrchestrationTrigger] DurableOrchestrati
 }
 ```
 
-Je spuštěn orchestration, externích klientů můžete načíst tento vlastní stav:
+Je spuštěn orchestraci, můžete načíst externí klienti tento vlastní stav:
 
 ```http
 GET /admin/extensions/DurableTaskExtension/instances/instance123
 
 ```
 
-Klienti získají následující odpověď: 
+Klienti získáte odpovědi na následující: 
 
 ```http
 {
@@ -197,12 +193,12 @@ Klienti získají následující odpověď:
 ```
 
 > [!WARNING]
->  Datová část vlastní stav je omezena na 16 KB text JSON UTF-16, protože se musí být schopni nevešla sloupec Azure Table Storage. Vývojáři mohou pomocí externího úložiště, pokud potřebují větší datovou část.
+>  Datová část vlastní stav je omezena na 16 KB text JSON UTF-16, protože se musí být schopni vyplňoval sloupec Azure Table Storage. Vývojáři mohou pomocí externího úložiště, pokud budou potřebovat větší datovou část.
 
 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Další informace o rozhraní API HTTP trvanlivý funkcí](durable-functions-http-api.md)
+> [Další informace o rozhraní API protokolu HTTP v Durable Functions](durable-functions-http-api.md)
 
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 56e7467443cb91f73a6b48f318d576345000a0e0
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: b90050291a936027f66a76c14458e717b63c7257
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44023093"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44090723"
 ---
 # <a name="use-an-azure-ad-identity-to-access-azure-storage-with-cli-or-powershell-preview"></a>Pomocí identity Azure AD pro přístup k Azure Storage s využitím rozhraní příkazového řádku nebo Powershellu (Preview)
 
@@ -21,12 +21,7 @@ Azure Storage poskytuje rozšíření ve verzi preview pro Azure CLI a Powershel
 
 Po přihlášení k Azure CLI nebo Powershellu s Azure AD identity, je vrácena přístupového tokenu pro přístup k Azure Storage v rámci této identity. Tento token se pak automaticky použije pomocí Powershellu nebo rozhraní příkazového řádku k autorizaci operace využívající službu Azure Storage. Pro podporované operace je už nebude potřeba předat klíč k účtu nebo token SAS pomocí příkazu.
 
-> [!IMPORTANT]
-> V této verzi preview je určeno pouze pro nevýrobní prostředí. Produkční smlouvy o úrovni služeb (SLA) nebudou dostupné, dokud integrace Azure AD pro službu Azure Storage je deklarována jako obecně dostupné. Pokud se integrace služby Azure AD není dosud podporována pro váš scénář, dál používat povolení sdíleného klíče nebo tokeny SAS ve svých aplikacích. Další informace o verzi preview najdete v tématu [ověření přístupu ke službě Azure Storage pomocí Azure Active Directory (Preview)](storage-auth-aad.md).
->
-> Ve verzi preview přiřazení rolí pro RBAC může trvat až pět minut na dokončení propagace.
->
-> Integrace Azure AD pomocí služby Azure Storage vyžaduje použití protokolu HTTPS pro operace služby Azure Storage.
+[!INCLUDE [storage-auth-aad-note-include](../../../includes/storage-auth-aad-note-include.md)]
 
 ## <a name="supported-operations"></a>Podporované operace
 
@@ -95,6 +90,6 @@ Get-AzureStorageBlob -Container $sample-container -Context $ctx
 ## <a name="next-steps"></a>Další postup
 
 - Další informace o rolích RBAC pro Azure storage najdete v tématu [Správa přístupových práv k datům úložiště pomocí RBAC (Preview)](storage-auth-aad-rbac.md).
-- Další informace o použití Identity spravované služby se službou Azure Storage, najdete v článku [ověřování pomocí Azure AD ze Azure Identity spravované služby (Preview)](storage-auth-aad-msi.md).
+- Další informace o použití spravované identity pro prostředky Azure pomocí služby Azure Storage, najdete v článku [ověřit přístup k objektům BLOB a fronty Azure spravovaných identit pro prostředky Azure (Preview)](storage-auth-aad-msi.md).
 - Zjistěte, jak autorizovat přístup ke kontejnerům a front z v rámci aplikace úložiště, najdete v článku [pomocí služby Azure AD s aplikacemi úložiště](storage-auth-aad-app.md).
 - Další informace o integraci služby Azure AD pro objekty BLOB Azure a front, najdete v článku na blogu týmu Azure Storage účtovat, [oznamujeme vydání verze Preview služby Azure AD Authentication pro službu Azure Storage](https://azure.microsoft.com/blog/announcing-the-preview-of-aad-authentication-for-storage/).

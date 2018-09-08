@@ -3,23 +3,19 @@ title: Externí Orchestrace v Durable Functions – Azure
 description: Zjistěte, jak implementovat externí Orchestrace pomocí rozšíření Durable Functions pro službu Azure Functions.
 services: functions
 author: cgillum
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: ''
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
+ms.topic: conceptual
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 0af61ec3b22692402697df5331df80ca044759b5
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 98504534332b6faa7a7019aea9ab7b534d4c3faa
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37340657"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44094435"
 ---
 # <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Externí Orchestrace v Durable Functions (Azure Functions)
 
@@ -68,7 +64,7 @@ Pokud funkce orchestrátoru musí nakonec dokončí, je všechno, co potřebujet
 
 Pokud funkce orchestrátoru je v nekonečné smyčce a musí zastavit, použijte [TerminateAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_TerminateAsync_) metoda zastavte ji. Další informace najdete v tématu [Správa instancí](durable-functions-instance-management.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Zjistěte, jak implementovat Orchestrace s jedním prvkem](durable-functions-singletons.md)

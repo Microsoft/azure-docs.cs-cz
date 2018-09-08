@@ -1,28 +1,30 @@
 ---
-title: Nastavení zásad zabezpečení ve službě Azure Security Center | Microsoft Docs
+title: Nastavení zásad zabezpečení ve službě Azure Security Center | Dokumentace Microsoftu
 description: Tento článek vám pomůže s konfigurací zásad zabezpečení ve službě Azure Security Center.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: mbaldwin
 editor: ''
 ms.assetid: 3b9e1c15-3cdb-4820-b678-157e455ceeba
 ms.service: security-center
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/05/2018
-ms.author: terrylan
-ms.openlocfilehash: f12cede430a94da937a874ade2e50e4ed9860da9
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
-ms.translationtype: HT
+ms.date: 09/3/2018
+ms.author: rkarlin
+ms.openlocfilehash: c68b55beba445b7f5d30efe7155a47e7f6f76690
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34756987"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44161284"
 ---
 # <a name="set-security-policies-in-azure-security-center"></a>Nastavení zásad zabezpečení ve službě Azure Security Center
 Tento článek vám pomůže s konfigurací zásad zabezpečení ve službě Security Center.
+
+Pokyny o tom, jak nastavit zásady pomocí Powershellu najdete v tématu [rychlý start: vytvoření přiřazení zásady pro identifikaci neodpovídajících prostředků pomocí modulu Azure RM Powershellu](../azure-policy/assign-policy-definition-ps.md).
 
 ## <a name="how-security-policies-work"></a>Způsob fungování zásad zabezpečení
 Security Center automaticky vytváří výchozí zásady zabezpečení pro každé z vašich předplatných Azure. Ve službě Security Center můžete zásady upravovat a monitorovat jejich dodržování.
@@ -37,13 +39,12 @@ Ve službě Security Center můžete upravit výchozí zásady zabezpečení pro
 
 1. Přihlaste se k portálu Azure.
 
-2. Na řídicím panelu **Security Center** v části **Obecné** vyberte **Zásady zabezpečení**.
+2. Na řídicím panelu **Security Center** v části **ZÁSADY A DODRŽOVÁÍ PŘEDPISŮ** vyberte **Zásady zabezpečení**.
 
 3. Vyberte předplatné, pro které chcete povolit zásady zabezpečení.
 
-4. V části **Součásti zásad** vyberte **Zásady zabezpečení**.  
-    Toto jsou výchozí zásady přiřazené službou Security Center. Můžete zapnout nebo vypnout dostupná doporučení zabezpečení.
-
+4. Zapněte zásady, které chcete povolit pro předplatné. Zobrazí se doporučení v závislosti na každou zásadu, kterou jste vybrali. 
+  ![seznam zásad](./media/security-center-policies/policies.png)
 5. Až budete s úpravami hotovi, klikněte na **Uložit**.
 
 ## <a name="available-security-policy-definitions"></a>Dostupné definice zásad zabezpečení
@@ -66,7 +67,7 @@ Následující tabulku můžete použít jako referenci pro pochopení definic z
 | Síťový přístup JIT |Pokud je síťový přístup JIT (právě včas) povolený, Security Center uzamkne příchozí provoz do vašich virtuálních počítačů Azure vytvořením pravidla skupiny zabezpečení sítě. Na virtuálním počítači vyberete porty, na které má být příchozí provoz uzamčen. Další informace najdete v tématu popisujícím [správu přístupu k virtuálním počítačům pomocí metody právě včas](https://docs.microsoft.com/azure/security-center/security-center-just-in-time). |
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 V tomto článku jste zjistili, jak ve službě Security Center konfigurovat zásady zabezpečení. Další informace o službě Security Center najdete v následujících článcích:
 
 * [Průvodce plánováním a provozem služby Azure Security Center](security-center-planning-and-operations-guide.md) – Zjistěte, jak naplánovat a pochopit aspekty návrhu pro Azure Security Center.

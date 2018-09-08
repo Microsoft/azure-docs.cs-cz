@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: ad2140d9d94cc4655043625200d42485b03c719b
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 258df8f784cf673d628e3e70874a89c8ade692bd
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364287"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44093681"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Řešení potíží s vynuceným použitím protokolu Kerberos konfigurace delegování pro Proxy aplikací
 
@@ -117,42 +117,42 @@ Příjemce poskytnuté konektoru lístek služby Kerberos. V této fázi očeká
 
 3.  Spustit DevTools (**F12**) v aplikaci Internet Explorer, nebo použijte [Fiddler](https://blogs.msdn.microsoft.com/crminthefield/2012/10/10/using-fiddler-to-check-for-kerberos-auth/) z hostitele konektoru. Přejděte do aplikace pomocí interní adresy URL. Kontrola vrácené v nabízený autorizační hlavičky WWW odpovědi z aplikace, abyste měli jistotu, že buď negotiate, nebo pomocí protokolu Kerberos je k dispozici. 
 
-    a. Další objekt blob protokolu Kerberos, který je vrácený v odpovědi z prohlížeče do aplikace začíná **JÍ**. Těmto písmenům zjistit, zda je spuštěna protokolu Kerberos. Microsoft NT LAN Manager (NTLM), na druhé straně vždy začíná **TlRMTVNTUAAB**, která čte NTLM zabezpečení podporu zprostředkovatele (NTLMSSP) při dekódovat z formátu Base64. Pokud se zobrazí **TlRMTVNTUAAB** na začátku objekt blob protokolu Kerberos není k dispozici. Pokud nevidíte **TlRMTVNTUAAB**, protokolu Kerberos je pravděpodobně k dispozici.
-
+    - Další objekt blob protokolu Kerberos, který je vrácený v odpovědi z prohlížeče do aplikace začíná **JÍ**. Těmto písmenům zjistit, zda je spuštěna protokolu Kerberos. Microsoft NT LAN Manager (NTLM), na druhé straně vždy začíná **TlRMTVNTUAAB**, která čte NTLM zabezpečení podporu zprostředkovatele (NTLMSSP) při dekódovat z formátu Base64. Pokud se zobrazí **TlRMTVNTUAAB** na začátku objekt blob protokolu Kerberos není k dispozici. Pokud nevidíte **TlRMTVNTUAAB**, protokolu Kerberos je pravděpodobně k dispozici.
+   
        > [!NOTE]
        > Pokud používáte aplikaci Fiddler, tato metoda vyžaduje, je dočasně zakázat rozšířené ochrany na konfiguraci aplikace ve službě IIS.
-
-       ![Okno kontroly sítě prohlížeče](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic6.png)
-
-    b. Objekt blob na tomto obrázku nezačíná **TIRMTVNTUAAB**. V tomto příkladu je k dispozici protokol Kerberos, takže tento objekt blob protokolu Kerberos nezačíná znakem **JÍ**.
+      
+      ![Okno kontroly sítě prohlížeče](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic6.png)
+   
+    - Objekt blob na tomto obrázku nezačíná **TIRMTVNTUAAB**. V tomto příkladu je k dispozici protokol Kerberos, takže tento objekt blob protokolu Kerberos nezačíná znakem **JÍ**.
 
 4.  NTLM dočasně odeberte ze seznamu zprostředkovatelů na web služby IIS. Přístup k aplikaci přímo z aplikace Internet Explorer v hostiteli konektoru. NTLM je již v seznamu poskytovatelů. Aplikace můžete přistupovat pouze pomocí protokolu Kerberos. Pokud přístup selže, může být problém s konfigurací aplikace. Ověřování protokolem Kerberos nebude fungovat správně.
 
-    a. Pokud není k dispozici protokol Kerberos, zkontrolujte nastavení ověřování aplikace ve službě IIS. Ujistěte se, že **Negotiate** je uvedena nahoře pomocí protokolu NTLM pod ním. Pokud se zobrazí **není vyjednávání**, **protokolu Kerberos nebo Negotiate**, nebo **pku2u odeslaným**, pokračujte pouze v případě protokolu Kerberos je funkční.
+    - Pokud není k dispozici protokol Kerberos, zkontrolujte nastavení ověřování aplikace ve službě IIS. Ujistěte se, že **Negotiate** je uvedena nahoře pomocí protokolu NTLM pod ním. Pokud se zobrazí **není vyjednávání**, **protokolu Kerberos nebo Negotiate**, nebo **pku2u odeslaným**, pokračujte pouze v případě protokolu Kerberos je funkční.
 
        ![Zprostředkovatelé ověřování Windows](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic7.png)
    
-    b. Pomocí protokolů Kerberos a NTLM v místě dočasně zakážete předběžné ověřování pro aplikaci na portálu. Došlo k pokusu o přístup z Internetu pomocí externí adresu URL. Jste vyzváni k ověření. Budete moct použít stejný účet použitý v předchozím kroku. V opačném případě dojde k nějakému problému s back endové aplikace, ne KCD.
+    - Pomocí protokolů Kerberos a NTLM v místě dočasně zakážete předběžné ověřování pro aplikaci na portálu. Došlo k pokusu o přístup z Internetu pomocí externí adresu URL. Jste vyzváni k ověření. Budete moct použít stejný účet použitý v předchozím kroku. V opačném případě dojde k nějakému problému s back endové aplikace, ne KCD.
 
-    c. Znovu povolte předběžné ověření na portálu. Ověřování prostřednictvím Azure pokouší připojit k aplikaci prostřednictvím jeho externí adresu URL. Jednotné přihlašování se nezdaří, zobrazí zprávu chyby zakázáno v prohlížeči a 13022 událost v protokolu:
+    - Znovu povolte předběžné ověření na portálu. Ověřování prostřednictvím Azure pokouší připojit k aplikaci prostřednictvím jeho externí adresu URL. Jednotné přihlašování se nezdaří, zobrazí zprávu chyby zakázáno v prohlížeči a 13022 událost v protokolu:
 
        *Microsoft AAD Application Proxy Connector uživatele nejde ověřit, protože back-end server odpoví na pokusy o ověření protokolu Kerberos s chybou HTTP 401.*
 
        ![Je zakázané chyba 401 HTTTP](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic8.png)
-
-    d. Zkontrolujte aplikace služby IIS. Ujistěte se, že se fond aplikací nakonfigurovaný a hlavní název služby umožňují použít stejný účet ve službě Azure AD. Přejděte ve službě IIS, jak je znázorněno na následujícím obrázku:
-
+   
+    - Zkontrolujte aplikace služby IIS. Ujistěte se, že se fond aplikací nakonfigurovaný a hlavní název služby umožňují použít stejný účet ve službě Azure AD. Přejděte ve službě IIS, jak je znázorněno na následujícím obrázku:
+      
        ![Okno Konfigurace aplikace IIS](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic9.png)
-
+      
        Až budete vědět, identitu, ujistěte se, že tento účet je nakonfigurovaný pomocí hlavního názvu služby dotyčný. Příklad: `setspn –q http/spn.wacketywack.com`. V příkazovém řádku zadejte následující text:
-
+      
        ![Okno příkazového řádku SetSPN](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic10.png)
-
-    e. Zkontrolujte název SPN definované pro aplikace, nastavení na portálu. Ujistěte se, že fond aplikací aplikace používají stejný hlavní název služby nakonfigurovaný na cíli účtu Azure AD.
+      
+    - Zkontrolujte název SPN definované pro aplikace, nastavení na portálu. Ujistěte se, že fond aplikací aplikace používají stejný hlavní název služby nakonfigurovaný na cíli účtu Azure AD.
 
        ![Konfigurace hlavního názvu služby na webu Azure Portal](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic11.png)
    
-    f. Přejděte do služby IIS a vyberte **Editor konfigurace** možnost pro aplikaci. Přejděte do **system.webServer/security/authentication/windowsAuthentication**. Ujistěte se, že hodnota **UseAppPoolCredentials** je **True**.
+    - Přejděte do služby IIS a vyberte **Editor konfigurace** možnost pro aplikaci. Přejděte do **system.webServer/security/authentication/windowsAuthentication**. Ujistěte se, že hodnota **UseAppPoolCredentials** je **True**.
 
        ![Fondy aplikací IIS konfigurace přihlašovacích údajů – možnost](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic12.png)
 

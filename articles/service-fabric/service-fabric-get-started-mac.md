@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/17/2017
 ms.author: suhuruli
-ms.openlocfilehash: 618180f9cbd1c65863e3e039bac40d1cc493bc37
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 8473b2e202dd408cce6658f3ca349d884a28dc3a
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918496"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44160469"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>Nastavení vývojového prostředí v Mac OS X
 > [!div class="op_single_selector"]
@@ -157,14 +157,16 @@ Service Fabric nabízí nástroje pro generování uživatelského rozhraní, kt
     ```bash
     npm install -g yo
     ```
-3. Nainstalujte generátor Yeoman, který preferujete, podle kroků v úvodní [dokumentaci](service-fabric-get-started-linux.md). Pokud chcete vytvářet aplikace Service Fabric pomocí Yeomana, postupujte podle těchto kroků:
+3. Nainstalujte generátor Yeoman, který preferujete, podle kroků v úvodní [dokumentaci](service-fabric-get-started-linux.md#set-up-yeoman-generators-for-containers-and-guest-executables). Pokud chcete vytvářet aplikace Service Fabric pomocí Yeomana, postupujte podle těchto kroků:
 
     ```bash
     npm install -g generator-azuresfjava       # for Service Fabric Java Applications
     npm install -g generator-azuresfguest      # for Service Fabric Guest executables
     npm install -g generator-azuresfcontainer  # for Service Fabric Container Applications
     ```
-4. K sestavení aplikace Service Fabric Java na počítači Mac musí být na hostitelském počítači nainstalovaná sada JDK verze 1.8 a Gradle. Software jde nainstalovat pomocí [HomeBrew](https://brew.sh/), a to takto: 
+4. Po nainstalování generátorů vytvořte spustitelné soubory hosta nebo služby kontejneru spuštěním příkazu `yo azuresfguest` nebo `yo azuresfcontainer`.
+
+5. K sestavení aplikace Service Fabric Java na počítači Mac musí být na hostitelském počítači nainstalovaná sada JDK verze 1.8 a Gradle. Software jde nainstalovat pomocí [HomeBrew](https://brew.sh/), a to takto: 
 
     ```bash
     brew update

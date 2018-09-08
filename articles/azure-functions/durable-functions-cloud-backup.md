@@ -1,88 +1,84 @@
 ---
-title: FAN odesílacího/fan v scénáře v trvanlivý funkce – Azure
-description: Zjistěte, jak implementovat scénáři fan-odesílacího ventilátor v v rozšíření trvanlivý funkce pro Azure Functions.
+title: FAN odesílací/fan v scénáře v Durable Functions – Azure
+description: Zjistěte, jak implementovat scénář fan-odesílací ventilátor – se změnami v rozšíření Durable Functions pro službu Azure Functions.
 services: functions
 author: cgillum
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: ''
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
+ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 4e7b7b6af1f41eb0077d8a8605eb2a553c251f8e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: eec75ad9cf0f568e674b2a4f12d962982f84294f
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33763844"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44092661"
 ---
-# <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>FAN odesílacího/fan v scénář v trvanlivý funkce – příklad zálohování cloudu
+# <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>FAN odesílací/fan v scénář v Durable Functions – cloudové zálohování příklad
 
-*FAN odesílacího/fan v* odkazuje na vzor souběžně provádění víc funkcí a následnému provedením některé agregace na výsledky. Tento článek vysvětluje vzorku, který používá [trvanlivý funkce](durable-functions-overview.md) k implementaci fan v nebo fan odesílacího scénáře. Ukázka je trvanlivý funkce, která Zálohuje všechny nebo některé z obsahu webu aplikace do Azure Storage.
+*FAN odesílací/fan v* odkazuje na vzorec, podle kterého současně provádí více funkcí a pak provádí některé agregace na výsledky. Tento článek vysvětluje, ukázky, která používá [Durable Functions](durable-functions-overview.md) implementovat fan v/fan odesílací scénář. Vzorek je odolné funkce, která Zálohuje všechny nebo některé z vaší aplikace obsah webu do služby Azure Storage.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* [Nainstalujte trvanlivý funkce](durable-functions-install.md).
-* Dokončení [Hello pořadí](durable-functions-sequence.md) návod.
+* [Nainstalujte Durable Functions](durable-functions-install.md).
+* Dokončení [Hello pořadí](durable-functions-sequence.md) návodu.
 
 ## <a name="scenario-overview"></a>Přehled scénáře
 
-V této ukázce funkce nahrát všechny soubory v zadané directory rekurzivně do úložiště objektů blob. Také se počet celkový počet bajtů, které byly odeslány.
+Funkce v této ukázce nahrát všechny soubory v zadaném adresáři rekurzivně do úložiště objektů blob. Se berou také celkový počet bajtů, které byly odeslány.
 
-Je možné vytvořit jednu funkci, která má na starosti vše. Hlavní problém, spustili byste do **škálovatelnost**. Spuštění jedné funkce lze spustit jen u jeden virtuální počítač, aby propustnost bude omezeno propustnost tohoto jednoho virtuálního počítače. Dalším problémem je **spolehlivost**. Pokud je selhání polovině prostřednictvím nebo celý proces trvá déle než 5 minut, zálohování se možná nepovede ve stavu částečně dokončilo. Potom by ji muset restartovat.
+Je možné napsat jednu funkci, která se postará o všechno. Hlavní problém by měli je **škálovatelnost**. Spuštění jedné funkce dají spustit jenom na jeden virtuální počítač, aby propustnost zpracovat, omezeno propustnost tohoto jednoho virtuálního počítače. Dalším problémem je **spolehlivost**. Dojde-li k selhání polovině nebo celý proces trvá déle než 5 minut, by mohlo selhat zálohování ve stavu částečně dokončilo. Pak bude nutné restartovat.
 
-Robustnější přístup by bylo zápisu dvě běžné funkce: jeden by výčet souborů a názvy souborů přidejte do fronty, a jinou by číst zprávy z fronty a odesílat soubory do úložiště objektů blob. Toto je lepší z hlediska propustnost a spolehlivost, ale vyžaduje, abyste zřizovat a spravovat frontu. Je důležité, je důležité složitost zavedená z hlediska **stavu správy** a **koordinaci** Pokud chcete udělat něco víc, jako je sestava celkový počet bajtů nahrát.
+Robustnější přístup může být zápis dvě běžné funkce: jeden by výčet souborů a názvy souborů přidejte do fronty a jiné by číst zprávy z fronty a nahrání souborů do úložiště objektů blob. Toto je lepší propustnost a spolehlivost, ale vyžaduje, abyste zřizovat a spravovat frontu. Důležitější je, je zavedená významné složitost z hlediska **správu stavu** a **koordinace** Pokud budete chtít provádět žádnou další, stejně jako sestavy celkový počet bajtů nahrát.
 
-Trvanlivý funkce přístup získáte všechny výhody uvedených s velmi nízké režijní náklady.
+Odolná služba Functions přístup poskytuje všechny výhody jsme už zmínili, s velmi nízkou režií.
 
 ## <a name="the-functions"></a>Funkce
 
-Tento článek vysvětluje v ukázkové aplikace následující funkce:
+Tento článek vysvětluje následující funkce v ukázkové aplikaci:
 
 * `E2_BackupSiteContent`
 * `E2_GetFileList`
 * `E2_CopyFileToBlob`
 
-Následující části popisují konfiguraci a kódu, které se používají pro C# skriptování. Kód pro vývoj v sadě Visual Studio se zobrazí na konci tohoto článku.
+Následující části popisují konfiguraci a kód, který se používají pro C# skriptování. Kód pro vývoj sady Visual Studio se zobrazí na konci tohoto článku.
 
-## <a name="the-cloud-backup-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>Zálohování orchestration cloudu (portálu ukázkový kód pro Visual Studio Code a Azure)
+## <a name="the-cloud-backup-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>Zálohování Orchestrace cloudu (Visual Studio Code a Azure portal ukázkový kód)
 
-`E2_BackupSiteContent` Funkce používá standardní *function.json* pro orchestrator funkce.
+`E2_BackupSiteContent` Funkce používá standardní *function.json* pro funkce nástroje orchestrator.
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E2_BackupSiteContent/function.json)]
 
-Tady je kód, který implementuje funkce orchestrator:
+Tady je kód, který implementuje funkce orchestrátoru:
 
 ### <a name="c"></a>C#
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_BackupSiteContent/run.csx)]
 
-### <a name="javascript-functions-v2-only"></a>JavaScript (pouze funkce v2)
+### <a name="javascript-functions-v2-only"></a>JavaScript (jenom funkce v2)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_BackupSiteContent/index.js)]
 
-Tato funkce orchestrator v podstatě provede následující akce:
+Tato funkce nástroje orchestrator v podstatě provede následující akce:
 
 1. Přijímá `rootDirectory` hodnotu jako vstupní parametr.
-2. Volání funkce, která se získat seznam souborů v rámci rekurzivní `rootDirectory`.
-3. Volá více paralelní funkce nahrání každého souboru, do Azure Blob Storage.
-4. Čeká se na všechny nahrávání k dokončení.
-5. Vrátí součet celkový počet bajtů, které byly odeslány do úložiště objektů Blob Azure.
+2. Volá funkci k získání seznamu souborů v rámci rekurzivní `rootDirectory`.
+3. Volá více paralelních funkce kvůli nahrání každého souboru do úložiště objektů Blob v Azure.
+4. Čeká na dokončení všech nahrávání.
+5. Vrátí součet celkový počet bajtů, které byly odeslány do Azure Blob Storage.
 
-Upozornění `await Task.WhenAll(tasks);` (C#) a `yield context.df.Task.all(tasks);` řádku (JS). Všechna volání do `E2_CopyFileToBlob` funkce byly *není* očekáváno. To je úmyslné umožnit, aby se spouštěly paralelně. Když jsme předat tuto řadu úloh, které se `Task.WhenAll`, se nám získat zpět úlohu, která se nedokončí *dokud byly dokončeny všechny operace kopírování*. Pokud jste obeznámeni s Task Parallel Library (TPL) v rozhraní .NET, není to pro vás nový. Rozdíl je, že tyto úlohy mohou běžet na víc virtuálních počítačů současně, a rozšíření trvanlivý funkce zajišťuje, že provádění začátku do konce odolné vůči recyklace procesu.
+Všimněte si, že `await Task.WhenAll(tasks);` (C#) a `yield context.df.Task.all(tasks);` řádku (JS). Všechna volání `E2_CopyFileToBlob` funkce byly *není* očekáváno. Je to záměr, aby se mohly běžet paralelně. Když jsme předat toto pole úloh určených k `Task.WhenAll`, jsme vrátit úlohu, která se nikdy nedokončí *až do dokončení všech operací kopírování*. Pokud jste obeznámeni s Task Parallel Library (TPL) v rozhraní .NET, není to pro vás nová. Rozdíl je, že tyto úlohy mohou běžet na několika virtuálních počítačů současně, a rozšíření Durable Functions se zajistí, že začátku do konce provádění odolné vůči recyklace procesů.
 
-Úlohy jsou velmi podobné JavaScript konceptu lišící. Ale `Promise.all` má několik rozdílů z `Task.WhenAll`. Koncept `Task.WhenAll` byly přesně přes jako součást `durable-functions` modul JavaScript a je určena výhradně k němu.
+Úlohy jsou velmi podobný koncept JavaScript příslibů. Ale `Promise.all` má několik rozdílů z `Task.WhenAll`. Koncept `Task.WhenAll` se přenáší přes jako součást `durable-functions` modul JavaScript a je určena výhradně pro ho.
 
-Po čeká na z `Task.WhenAll` (nebo je z `context.df.Task.all`), víme, že všechna volání funkce dokončili a aby vrátil hodnoty zpět do us. Každé volání `E2_CopyFileToBlob` vrátí počet bajtů nahráli, takže výpočet počet bajtů celkový součet je řádu přidání všechny ty společně návratové hodnoty.
+Po čekání na z `Task.WhenAll` (nebo získávání z `context.df.Task.all`), víme, že všechna volání funkce dokončili a vracet hodnoty zpět na nás. Každé volání `E2_CopyFileToBlob` vrátí počet bajtů nahráli, výpočet součtu počet celkový počet bajtů je otázkou přidání všech projektů společně návratové hodnoty.
 
-## <a name="helper-activity-functions"></a>Podpůrné funkce aktivity
+## <a name="helper-activity-functions"></a>Pomocná funkce aktivity
 
-Podpůrné funkce aktivitu, stejně jako u jiných ukázky, jsou právě běžné funkce, které používají `activityTrigger` aktivovat vazby. Například *function.json* souboru `E2_GetFileList` vypadá podobně jako následující:
+Aktivita funkce pomocné rutiny, stejně jako u jiných ukázky jsou pouze běžné funkce, které používají `activityTrigger` aktivovat vazby. Například *function.json* souboru `E2_GetFileList` vypadá následovně:
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E2_GetFileList/function.json)]
 
@@ -92,39 +88,39 @@ A tady je implementace:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_GetFileList/run.csx)]
 
-### <a name="javascript-functions-v2-only"></a>JavaScript (pouze funkce v2)
+### <a name="javascript-functions-v2-only"></a>JavaScript (jenom funkce v2)
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_GetFileList/index.js)]
 
-Javascriptovou implementaci `E2_GetFileList` používá `readdirp` modul k rekurzivnímu přečíst strukturu adresáře.
+Javascriptovou implementaci `E2_GetFileList` používá `readdirp` modulu rekurzivně čtení struktury adresářů.
 
 > [!NOTE]
-> Možná se ptáte, proč nelze stačí vložit tento kód přímo do funkce produktu orchestrator. Vám může, ale to by rozdělit jednu ze základních pravidel orchestrator funkcí, které je, že by měly nikdy dělat vstupně-výstupní operace, včetně místního systému souborů.
+> Možná se ptáte, proč nelze stačí vložit tento kód přímo do funkce orchestrátoru. Vám může, ale to by narušil jednu ze základních pravidel funkcí nástroje orchestrator, což je, že byste nikdy dělají vstupně-výstupních operací, včetně přístupu k místním souborům systému.
 
-*Function.json* souboru `E2_CopyFileToBlob` podobně jednoduché:
+*Function.json* souboru `E2_CopyFileToBlob` je podobně jednoduchý:
 
 [!code-json[Main](~/samples-durable-functions/samples/csx/E2_CopyFileToBlob/function.json)]
 
-Implementace C# je také poměrně jednoduché. Se stane, používat některé pokročilé funkce vazeb Azure Functions (to znamená, použití `Binder` parametr), ale nemusíte si dělat starosti o tyto podrobnosti pro účely tohoto návodu.
+Implementace jazyka C# je také poměrně jednoduchý. To se stane, že některé pokročilé funkce Azure Functions vazby (to znamená použití `Binder` parametr), ale není nutné se starat o podrobnosti pro účely tohoto návodu.
 
 ### <a name="c"></a>C#
 
 [!code-csharp[Main](~/samples-durable-functions/samples/csx/E2_CopyFileToBlob/run.csx)]
 
-### <a name="javascript-functions-v2-only"></a>JavaScript (pouze funkce v2)
+### <a name="javascript-functions-v2-only"></a>JavaScript (jenom funkce v2)
 
-Javascriptovou implementaci nemá přístup k `Binder` funkce Azure Functions, proto [sada SDK úložiště Azure pro uzel](https://github.com/Azure/azure-storage-node) jeho probíhá. Všimněte si, že vyžaduje sadu SDK `AZURE_STORAGE_CONNECTION_STRING` nastavení aplikace.
+Javascriptovou implementaci nemá přístup k `Binder` funkce Azure Functions, takže [sadu SDK služby Azure Storage pro uzel](https://github.com/Azure/azure-storage-node) jeho probíhá. Všimněte si, že sada SDK vyžaduje `AZURE_STORAGE_CONNECTION_STRING` nastavení aplikace.
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_CopyFileToBlob/index.js)]
 
-Implementace načte soubor z disku a asynchronně datové proudy obsah do objektu blob se stejným názvem v kontejneru "zálohování". Vrácená hodnota je počet bajtů, které jsou zkopírovány do úložiště, pak používány orchestrator funkce pro výpočet agregační součet.
+Implementace načte soubor z disku a asynchronně streamování obsahu do objektu blob se stejným názvem v kontejneru "zálohování". Vrácená hodnota je počet bajtů zkopírovat do úložiště, který se potom využijí funkce orchestrátoru vypočítat agregace sum.
 
 > [!NOTE]
-> To je ideální příklad přesunu vstupně-výstupních operací do `activityTrigger` funkce. Pouze mohou práce být distribuovány na mnoha různých virtuálních počítačů, ale můžete také získat výhody vytváření kontrolních bodů průběhu. Pokud hostitelský proces získá ukončeno z jakéhokoli důvodu, víte, které nahrávání už byl dokončený.
+> To je ideální příkladem přesun vstupně-výstupních operací do `activityTrigger` funkce. Nejenže je práce možné distribuovat napříč mnoha různých virtuálních počítačů, ale získáte také výhody vytváření kontrolních bodů průběhu. Pokud hostitelský proces získá z jakéhokoli důvodu, víte, které nahrávání se dokončila.
 
 ## <a name="run-the-sample"></a>Spuštění ukázky
 
-Orchestration můžete spustit odesláním následující požadavku HTTP POST.
+Orchestraci můžete spustit odesláním následujících požadavku HTTP POST.
 
 ```
 POST http://{host}/orchestrators/E2_BackupSiteContent
@@ -135,9 +131,9 @@ Content-Length: 20
 ```
 
 > [!NOTE]
-> `HttpStart` Funkce, která je vyvolán lze použít pouze se obsah ve formátu JSON. Z tohoto důvodu `Content-Type: application/json` záhlaví je povinná a cesta k adresáři je kódovaná jako řetězec formátu JSON.
+> `HttpStart` Funkce, která jsou volání funguje jenom s obsahem ve formátu JSON. Z tohoto důvodu `Content-Type: application/json` vyžaduje se hlavička a cesta k adresáři je zakódovaný jako řetězec formátu JSON.
 
-Požadavek na tento HTTP aktivační události `E2_BackupSiteContent` orchestrator a předá řetězec `D:\home\LogFiles` jako parametr. Odpověď obsahuje odkaz na načíst stav operace zálohování:
+Požadavek na tomto HTTP aktivační události `E2_BackupSiteContent` orchestrator a předává řetězec `D:\home\LogFiles` jako parametr. Odpověď obsahuje odkaz na načíst stav operace zálohování:
 
 ```
 HTTP/1.1 202 Accepted
@@ -148,7 +144,7 @@ Location: http://{host}/admin/extensions/DurableTaskExtension/instances/b4e9bdcc
 (...trimmed...)
 ```
 
-V závislosti na tom, kolik souborů protokolu máte ve vaší aplikaci funkce tato operace může trvat několik minut na dokončení. Poslední stav můžete získat pomocí dotazu na adresu URL v `Location` hlavičky předchozí HTTP 202 odpovědi.
+V závislosti na tom, kolik soubory protokolu budete mít ve své aplikaci function app tato operace může trvat několik minut. Můžete získat nejnovější stav pomocí adresy URL v dotazu `Location` hlavičky pro předchozí odpověď HTTP 202.
 
 ```
 GET http://{host}/admin/extensions/DurableTaskExtension/instances/b4e9bdcc435d460f8dc008115ff0a8a9?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
@@ -163,7 +159,7 @@ Location: http://{host}/admin/extensions/DurableTaskExtension/instances/b4e9bdcc
 {"runtimeStatus":"Running","input":"D:\\home\\LogFiles","output":null,"createdTime":"2017-06-29T18:50:55Z","lastUpdatedTime":"2017-06-29T18:51:16Z"}
 ```
 
-V takovém případě je stále spuštěna funkce. Budete moci zobrazit vstup, která byla uložena do stavu orchestrator a poslední čas poslední aktualizace. Můžete dál používat `Location` hodnoty hlavičky k dotazování na dokončení. Pokud stav je "dokončeno", uvidíte hodnota odpovědi HTTP podobný následujícímu:
+V takovém případě funkce stále běží. Budete moct zobrazit vstup, který byl uložen do produktu orchestrator stavu a čas poslední aktualizace. Můžete dál používat `Location` hodnoty hlavičky k dotazování na dokončení. Stav "dokončení", zobrazí hodnota odpovědi HTTP podobný následujícímu:
 
 ```
 HTTP/1.1 200 OK
@@ -173,17 +169,17 @@ Content-Type: application/json; charset=utf-8
 {"runtimeStatus":"Completed","input":"D:\\home\\LogFiles","output":452071,"createdTime":"2017-06-29T18:50:55Z","lastUpdatedTime":"2017-06-29T18:51:26Z"}
 ```
 
-Nyní uvidíte, že orchestration je dokončena a přibližně kolik času ho trvalo dokončení. Zobrazí hodnotu `output` pole, které označuje, zda byly nahrán přibližně 450 KB protokolů.
+Nyní uvidíte, že dokončení orchestraci a přibližně kolik času je potřeba k dokončení. Zobrazí také hodnotu `output` pole, což znamená, že přibližně 450 KB protokoly nahraný.
 
 ## <a name="visual-studio-sample-code"></a>Visual Studio ukázkový kód
 
-Tady je orchestration jako jeden soubor jazyka C# v projektu sady Visual Studio:
+Tady je Orchestrace jako jeden soubor jazyka C# v sadě Visual Studio projekt:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/BackupSiteContent.cs)]
 
 ## <a name="next-steps"></a>Další postup
 
-Tato ukázka ukazuje, jak implementovat fan odesílacího/fan v vzor. Další příklad ukazuje, jak implementovat pomocí vzoru monitorování [trvanlivý časovače](durable-functions-timers.md).
+Tato ukázka ukazuje, jak implementovat fan odesílací/fan v modelu. Další příklad ukazuje, jak implementovat vzor na monitorování pomocí [trvalý časovače](durable-functions-timers.md).
 
 > [!div class="nextstepaction"]
-> [Spustit ukázku monitorování](durable-functions-monitor.md)
+> [Spusťte ukázku monitorování](durable-functions-monitor.md)

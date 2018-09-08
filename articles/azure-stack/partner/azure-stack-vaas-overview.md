@@ -13,16 +13,16 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: c96e7385356354d398108ad69492603d38667e46
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 56251245a23df031f3bc8fe3d36de43e194fbcc7
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40234884"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44159669"
 ---
 # <a name="what-is-validation-as-a-service-for-azure-stack"></a>Co je ověření jako služba pro službu Azure Stack?
 
-[!INCLUDE[Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
+[!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
 Ověření jako služba (VaaS) je navržená pro řešení partnerů, kteří jsou společně technické nabídek Azure Stack s Microsoftem nativní služby Azure. Partneři řešení můžete použít službu Pokud chcete zkontrolovat, že svá řešení požadavkům Microsoftu na a fungovat podle očekávání pomocí služby Azure Stack.
 

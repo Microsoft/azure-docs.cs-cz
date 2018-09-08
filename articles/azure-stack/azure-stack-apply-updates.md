@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 09/07/2018
 ms.author: mabrigg
-ms.openlocfilehash: ca07c3aca106f6c92187fea5a3ebf7bf172cddcc
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 8e4c86a3c9ff40f23a2a758b450d685b81dabc1a
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44026198"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44091896"
 ---
 # <a name="apply-updates-in-azure-stack"></a>Použití aktualizací ve službě Azure Stack
 
@@ -65,7 +65,7 @@ Následující postup ukazuje, jak importovat a nainstalovat balíčky aktualiza
 6. V části **nahrát objekt blob**, klikněte na ikonu složky, vyhledejte soubor .exe balíček aktualizace a pak klikněte na tlačítko **otevřít** v okně Průzkumníka souborů.
   
 7. V části **nahrát objekt blob**, klikněte na tlačítko **nahrát**. 
- 
+  
     ![Ukazuje, kde kvůli nahrání každého souboru balíčku](media/azure-stack-apply-updates/ApplyUpdates6.png)
 
 8. Zopakujte kroky 6 a 7 pro *název_balíčku*soubor .bin a soubory Metadata.xml. Pokud zahrnutý import souboru doplňkové Notice.txt.
@@ -74,6 +74,8 @@ Následující postup ukazuje, jak importovat a nainstalovat balíčky aktualiza
 11. K instalaci aktualizace, vyberte balíček, který je označen jako **připravené** a buď klikněte pravým tlačítkem na balíček a vyberte **aktualizovat**, nebo klikněte na tlačítko **aktualizovat** akce nahoře .
 12. Po kliknutí na instalaci balíčku aktualizace, můžete zobrazit stav v **podrobnosti Hromadná postupná aktualizace** oblasti. Z tohoto místa můžete také kliknout na **stáhnout úplných protokolů** ke stažení souborů protokolu.
 13. Po dokončení aktualizace, aktualizace dlaždice zobrazí aktualizovaná verze Azure Stack.
+
+Aktualizace můžete ručně odstranit z účtu úložiště po dokončení instalace ve službě Azure Stack. Azure Stack pravidelně kontroluje starší balíčky aktualizací a odebere je ze služby storage. Azure Stack může trvat dva týdny, chcete-li odebrat starý balíčky.
 
 ## <a name="next-steps"></a>Další postup
 

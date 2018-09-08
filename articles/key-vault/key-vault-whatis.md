@@ -11,15 +11,15 @@ ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 08/02/2018
+ms.topic: conceptual
+ms.date: 09/05/2018
 ms.author: barclayn
-ms.openlocfilehash: 26828efedac9953ce1c7375fc62269e93019ce50
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
-ms.translationtype: HT
+ms.openlocfilehash: d7357dc7e8fa473bd8517dd80ede749b9d8e3f07
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43094866"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44162831"
 ---
 # <a name="what-is-azure-key-vault"></a>Co je Azure Key Vault?
 
@@ -40,9 +40,9 @@ Tady je několik klíčových pojmů:
 - **Uživatel trezoru:** Uživatel trezoru může provádět akce s prostředky uvnitř trezoru, pokud mu vlastník trezoru udělí uživatelský přístup. Dostupné akce závisí na udělených oprávněních.
 - **[Azure Active Directory (Azure AD):](../active-directory/active-directory-whatis.md)** Azure AD je služba Active Directory pro tenanta. Každý adresář má jednu nebo víc domén. K jednomu adresáři se dá přidružit několik předplatných, ale jenom jeden tenant. 
 - **ID tenanta Azure:** ID tenanta představuje jedinečný způsob, jak identifikovat instanci služby Azure AD v rámci předplatného Azure.
-- **Identita spravované služby:** Azure Key Vault nabízí způsob zabezpečeného ukládání přihlašovacích údajů a dalších klíčů a tajných klíčů, ale aby je mohl váš kód načíst, musí se ověřit ve službě Key Vault. Identita spravované služby usnadňuje řešení tohoto problému tím, že poskytuje službám Azure automaticky spravovanou identitu v Azure AD. Tuto identitu můžete použít k ověření ve službě Key Vault nebo jakékoli jiné službě, která podporuje ověřování Azure AD, aniž by váš kód obsahoval přihlašovací údaje. Další informace najdete v tématu [Identita spravované služby pro prostředky Azure](../active-directory/managed-service-identity/overview.md).
+- **Spravované identity pro prostředky Azure**: Azure Key Vault poskytuje způsob, jak bezpečně ukládat přihlašovací údaje a další klíče a tajné klíče, ale váš kód potřebuje ověřit do služby Key Vault je načítat. Použití spravované identity je řešení tohoto problému jednodušší tím, že automaticky spravovanou identitu služby Azure ve službě Azure AD. Tuto identitu můžete použít k ověření ve službě Key Vault nebo jakékoli jiné službě, která podporuje ověřování Azure AD, aniž by váš kód obsahoval přihlašovací údaje. Další informace najdete v tématu na obrázku níže a [spravovaných identit pro prostředky Azure přehled](../active-directory/managed-identities-azure-resources/overview.md).
 
-    ![Diagram fungování Identity spravované služby](./media/key-vault-whatis/msi.png)
+    ![Diagram toho, jak spravovat identity pro prostředky Azure funguje](./media/key-vault-whatis/msi.png)
 
 ## <a name="key-vault-roles"></a>Role služby Key Vault
 
@@ -68,7 +68,7 @@ Tento správce potom poskytne vývojářům identifikátory URI, které mohou vo
 
 Vývojáři také mohou spravovat klíče přímo, pomocí rozhraní API. Další informace najdete v [příručce pro vývojáře Key Vault](key-vault-developers-guide.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Úvodní kurz pro správce najdete v tématu [Začínáme s Azure Key Vault](key-vault-get-started.md).
 

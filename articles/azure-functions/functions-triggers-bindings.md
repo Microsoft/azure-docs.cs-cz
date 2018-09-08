@@ -4,23 +4,19 @@ description: Zjistěte, jak používat triggery a vazby ve službě Azure Functi
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: funkce azure, funkce, zpracování událostí, webhook, dynamické výpočty, architektura bez serverů
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
-ms.tgt_pltfrm: multiple
-ms.workload: na
 ms.date: 05/24/2018
 ms.author: glenga
-ms.openlocfilehash: 85b7248c9b4c61e29ce3c29b9432f94934255819
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: e3f2cc24a3ff765a33d27bbe5a43ca9d5a229e1b
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39346598"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44092951"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Aktivace Azure Functions a vazby koncepty
 
@@ -28,7 +24,7 @@ Tento článek obsahuje přehled triggerů a vazeb ve službě Azure Functions. 
 
 ## <a name="overview"></a>Přehled
 
-A *aktivační událost* definuje, jak je vyvolána funkce. Funkce musí mít přesně jeden trigger. Aktivační události mají související data, která je obvykle datová část, která aktivuje funkci.
+A *aktivační událost* definuje, jak je vyvolána funkce. Funkce musí mít přesně jeden trigger. Triggery obsahují související data, což je obvykle datová část, která funkci aktivovala.
 
 Vstup a výstup *vazby* poskytují deklarativní způsob, jak se připojit k datům z vašeho kódu. Vazby jsou volitelné a funkce mohou mít více vstupní a výstupní vazby. 
 

@@ -6,20 +6,18 @@ documentationcenter: na
 author: jeffhollan
 manager: jpconnock
 keywords: Azure functions, funkce, zpracování událostí, výpočetních, architektury bez serveru, java
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: java
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
+ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 317d8bf40ef152e5b7dae6406be29330feaaa8d3
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: b28e7b158af939defd37734c3ff9fe2309e3ab85
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43842466"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44094395"
 ---
 # <a name="create-your-first-function-with-java-and-intellij-preview"></a>Vytvoření první funkce pomocí Javy a IntelliJ (Preview)
 

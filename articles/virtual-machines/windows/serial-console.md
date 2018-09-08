@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: 4e93e455e309771ed3e33382ee49cdc144036fb1
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 196882cf4515be8afd129128402e9eaee322cb4b
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782409"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44093579"
 ---
 # <a name="virtual-machine-serial-console-preview"></a>Virtuální počítač sériová konzola (preview) 
 
@@ -75,7 +75,7 @@ Pokud potřebná SAC lze povolit v režimu offline
 
 ### <a name="how-do-i-know-if-sac-is-enabled"></a>Jak poznám, jestli je povolené SAC?
 
-Pokud [SAC] (https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) není povoleno konzole sériového portu se nezobrazí SAC řádku. V některých případech se zobrazí informace o stavu virtuálního počítače a v ostatních případech bude prázdné.  
+Pokud [SAC] (https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) není povoleno konzole sériového portu se nezobrazí SAC řádku. V některých případech se zobrazí informace o stavu virtuálního počítače a v ostatních případech bude prázdné. Pokud používáte image Windows serveru vytvořeny před únorem 2018, SAC nebude pravděpodobně možné.
 
 ## <a name="enable-the-windows-boot-menu-in-serial-console"></a>Povolit spouštěcí nabídky Windows v konzole sériového portu 
 
@@ -194,7 +194,7 @@ Neexistuje žádná možnost pomocí virtuálního počítače škálovací sady
 Dosažení zadejte po banner připojení není uveden do protokolu v řádku | Podrobnosti najdete na této stránce: [Hitting zadejte nemá žádný účinek,](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md). To může dojít, pokud používáte vlastní virtuální počítač, Posílená zařízení nebo kontrole konfigurace této causers Windows nepodaří správně připojit do sériového portu.
 Pouze informace o stavu se zobrazuje při připojení k virtuálnímu počítači s Windows| Tím se zobrazí-li Speciální konzoly pro správu nebyl povolen pro vaši image Windows. Zobrazit [přístup sériové konzoly pro Windows](#access-serial-console-for-windows) pokyny o tom, jak ručně povolit SAC na vašem virtuálním počítači Windows. Další podrobnosti najdete v [signálů stavu Windows](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Windows_Health_Info.md).
 Nelze zadat v SAC řádku, pokud je povoleno ladění jádra | Připojení RDP k virtuálnímu počítači a spusťte `bcdedit /debug {current} off` z příkazového řádku se zvýšenými oprávněními. Pokud nelze pomocí protokolu RDP můžete místo toho připojit disk s operačním systémem k jinému virtuálnímu počítači Azure a upravit ho během připojený jako datový disk pomocí `bcdedit /store <drive letter of data disk>:\boot\bcd /debug <identifier> off`, pak Prohodit zpět na disku.
-Vložení do prostředí PowerShell ve výsledcích SAC ve třetí znaku, pokud původní obsah měli opakující se znak | Alternativní řešení je modul PSReadLine odebrat. `Remove-Module PSReadLine` Odebere modul PSReadLine z aktuální relace.
+Vložení do prostředí PowerShell ve výsledcích SAC ve třetí znaku, pokud původní obsah měli opakující se znak | Alternativní řešení je k uvolnění modulu PSReadLine z aktuální relace. Spustit `Remove-Module PSReadLine` uvolnění modulu PSReadLine z aktuální relace – tím neodstraní ani odinstalace modulu.
 Některé klávesnice vstupy generovat výstup strangeová SAC (třeba `[A`, `[3~`) | [VT100](https://aka.ms/vtsequences) řídicí sekvence nejsou podporovány SAC řádku.
 Při přístupu k tomuto virtuálnímu počítači účet úložiště diagnostiky spouštění došlo k odpovědi "Zakázáno". | Zajistěte, aby že tuto diagnostiku spouštění nemá žádné brány firewall účtu. Účet úložiště diagnostiky dostupné spouštěcí je nezbytné pro konzoly sériového portu funkce.
 

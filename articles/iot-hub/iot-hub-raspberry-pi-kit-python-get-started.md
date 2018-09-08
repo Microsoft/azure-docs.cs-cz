@@ -10,12 +10,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: 47a9b04e98337bb9ef4222b3f124d3fb063913a2
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 6e668394bcb647df901dfac72c552475e56f20bf
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39187107"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44161097"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-python"></a>Připojte Raspberry Pi pro službu Azure IoT Hub (Python)
 
@@ -203,6 +203,6 @@ Použijte jednu z následujících klientů SSH z hostitelského počítače pro
 
 ## <a name="next-steps"></a>Další postup
 
-Jste spustili ukázkovou aplikaci shromažďovat data ze senzorů a odesílat je do služby IoT hub. Zprávy, které Raspberry Pi odeslal do IoT hubu nebo odesílání zpráv do Raspberry Pi v rozhraní příkazového řádku najdete v tématu [zařízení spravovat cloudové zasílání zpráv s kurzem iothub-explorer](https://docs.microsoft.com/en-gb/azure/iot-hub/iot-hub-explorer-cloud-device-messaging).
+Jste spustili ukázkovou aplikaci shromažďovat data ze senzorů a odesílat je do služby IoT hub. Zprávy, které služba IoT hub nebo odesílání zpráv do Raspberry Pi odeslal Raspberry Pi najdete v tématu [použití sady Azure IoT Toolkit rozšíření pro Visual Studio Code k odesílání a příjem zpráv mezi zařízením a centrem IoT](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md).
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

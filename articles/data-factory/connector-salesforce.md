@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: jingwang
-ms.openlocfilehash: 19ba4a97b93c01a049f921904d0f5aba4b8c0617
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 56f1721240d4b685133149d50dd7c2a0e6b7e974
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42442050"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44158837"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Kopírování dat z a do Salesforce pomocí služby Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -293,7 +293,7 @@ Kopírování dat ze služby Salesforce, můžete použít SOQL dotazu nebo př�
 | Výběr sloupce | Třeba vyjmenování pole ke zkopírování v dotazu, například `SELECT field1, filed2 FROM objectname` | `SELECT *` se podporuje kromě výběr sloupce. |
 | Uvozovky | Názvy zaznamenaná/objektů nemůže citovat. | Názvy polí nebo objektů může používat uvozovky, například `SELECT "id" FROM "Account"` |
 | Formát data a času |  Přečtěte si podrobnosti o [tady](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_dateformats.htm) a ukázky v další části. | Přečtěte si podrobnosti o [tady](https://docs.microsoft.com/sql/odbc/reference/develop-app/date-time-and-timestamp-literals?view=sql-server-2017) a ukázky v další části. |
-| Logické hodnoty | Reprezentovaná jako `False` a `Ture`, třeba `SELECT … WHERE IsDeleted=True`. | Reprezentovaná jako 0 nebo 1, třeba `SELECT … WHERE IsDeleted=1`. |
+| Logické hodnoty | Reprezentovaná jako `False` a `True`, třeba `SELECT … WHERE IsDeleted=True`. | Reprezentovaná jako 0 nebo 1, třeba `SELECT … WHERE IsDeleted=1`. |
 | Přejmenování sloupce | Nepodporuje se. | Podporované, třeba: `SELECT a AS b FROM …`. |
 | Relace | Podporované, třeba `Account_vod__r.nvs_Country__c`. | Nepodporuje se. |
 

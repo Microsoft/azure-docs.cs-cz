@@ -13,16 +13,16 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: mabrigg
 ms.reviewer: John.Haskin
-ms.openlocfilehash: 07a855ea747125fd0fbe62cd4a67ea2201a16a25
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: c08d5dfae6f649d1ee6e37da62c462d966369633
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40234927"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44161386"
 ---
 # <a name="release-notes---1803"></a>Zpráva k vydání verze - 1803
 
-[!INCLUDE[Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
+[!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
 ## <a name="1803"></a>1803
 

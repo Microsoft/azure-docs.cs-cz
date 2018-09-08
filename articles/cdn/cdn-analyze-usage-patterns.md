@@ -1,6 +1,6 @@
 ---
-title: Základní sestavy od společnosti Verizon | Microsoft Docs
-description: 'Vzorce můžete zobrazit pro vaše CDN pomocí následující sestavy: šířky pásma, přenesená Data, přístupů, mezipaměti stavy, poměr přístupů do mezipaměti, přenesená Data IPV4 nebo IPV6.'
+title: Základní sestavy od Verizonu | Dokumentace Microsoftu
+description: 'Můžete zobrazit vzorce používání vaší sítě CDN pomocí následující sestavy: šířky pásma, přenesená Data, přístupy, stavy mezipaměti, poměr přístupů do mezipaměti, přenesená Data IPV4/IPV6.'
 services: cdn
 documentationcenter: ''
 author: zhangmanling
@@ -14,124 +14,124 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: fa828bfa736d677fb4881e5cc2628c0e03eb8749
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: d10a40d03f0f76676e70afdec94e9adfaa0dd09f
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/06/2017
-ms.locfileid: "26345243"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44162066"
 ---
-# <a name="core-reports-from-verizon"></a>Základní sestavy od společnosti Verizon
+# <a name="core-reports-from-verizon"></a>Základní sestavy od Verizonu
 
-[!INCLUDE[cdn-verizon-only](../../includes/cdn-verizon-only.md)]
+[!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
 
-Pomocí sestav základní Verizon prostřednictvím portálu spravovat profilů Verizon můžete zobrazit vzorce pro vaše CDN s následující sestavy:
+Použitím Verizon základní sestavy prostřednictvím portálu spravovat pro Verizon profily můžete zobrazit vzorce používání vaší sítě CDN se následující sestavy:
 
 * Šířka pásma
-* Data přenesená
-* Přístupů
+* Přenesená data
+* Přístupy
 * Stavy mezipaměti
 * Poměr přístupů do mezipaměti
-* IPV4/IPV6 Data přenesená
+* Přenesená Data IPV4/IPV6
 
-## <a name="accessing-verizon-core-reports"></a>Přístup k základní Verizon sestavy
-1. Okno profil CDN, klikněte **spravovat** tlačítko.
+## <a name="accessing-verizon-core-reports"></a>Přístup k Verizon základní sestavy
+1. Z okna profil CDN, klikněte na tlačítko **spravovat** tlačítko.
    
     ![Tlačítko Spravovat profil CDN](./media/cdn-reports/cdn-manage-btn.png)
    
     Otevře se na portálu pro správu CDN.
-2. Najeďte myší **Analytics** a potom přejděte myší **základní sestavy** plovoucím panelem. Klikněte na sestavu v nabídce.
+2. Najeďte myší **Analytics** kartu a pak najeďte myší **základní sestavy** Kontextová nabídka. Klikněte na sestavu v nabídce.
    
-    ![Portál pro správu CDN - nabídka základní sestavy](./media/cdn-reports/cdn-core-reports.png)
+    ![Portál pro správu CDN – nabídky základní sestavy](./media/cdn-reports/cdn-core-reports.png)
 
-3. Pro každou sestavu, vyberte rozsah dat z **rozsah** seznamu. Můžete buď vybrat předem definované období, jako například **Dnes** nebo **tato týdnu**, nebo můžete vybrat **vlastní** a ručně zadejte rozsah dat kliknutím na ikony kalendáře. 
+3. Pro každou sestavu, vyberte rozsah dat z **rozsah** seznamu. Můžete vybrat předem definovaný rozsah, jako například **Dnes** nebo **tento týden**, nebo můžete vybrat **vlastní** a ručně zadejte rozsah dat kliknutím na ikonu kalendáře. 
 
-4. Jakmile vyberete rozsah dat, klikněte na tlačítko **přejděte** pro generování sestavy. 
+4. Jakmile vyberete rozsah dat, klikněte na tlačítko **Přejít** generování sestav. 
 
-4. Pokud chcete exportovat data ve formátu aplikace Excel, klikněte na ikonu aplikace Excel výše **přejděte** tlačítko.
+4. Pokud chcete exportovat data ve formátu aplikace Excel, klikněte na ikonu Excelu výše **Přejít** tlačítko.
 
 ## <a name="bandwidth"></a>Šířka pásma
-Sestava šířky pásma se skládá z tabulku graf a data, která určuje CDN využití šířky pásma pro protokol HTTP a HTTPS, za určité časové období, v MB/s. Využití šířky pásma můžete zobrazit, přes všechny body POP nebo pro konkrétní POP. Tato sestava vám umožní zobrazit provoz špičky a distribuci pro bodů POP.
+Sestava šířky pásma se skládá z grafu a data tabulky, která určuje využití šířky pásma CDN za určité časové období, v MB/s pro protokol HTTP a HTTPS. Využití šířky pásma můžete zobrazit ve všech bodů POP, nebo pro konkrétní místní nabídky. Tato sestava umožňuje zobrazit provozní špičky a distribuci POP.
 
-Z **uzly okraj** seznamu, vyberte **všechny uzly okraj** Zobrazit provoz ze všech uzlů a vybrat v určité oblasti.
+Z **hraničních uzlů** seznamu vyberte **všech hraničních uzlů** sledovat provoz ze všech uzlů nebo vyberte určité oblasti.
 
-Sestava je aktualizováno každých pět minut.
+Sestava se aktualizuje každých pět minut.
 
 ![Sestava šířky pásma](./media/cdn-reports/cdn-bandwidth.png)
 
-## <a name="data-transferred"></a>Data přenesená
-Tato sestava se skládá z tabulku graf a data, která určuje využití provozu CDN pro protokol HTTP a HTTPS, za určité časové období, v GB. Využití provozu můžete zobrazit, přes všechny body POP nebo pro konkrétní POP. Tato sestava umožňuje zobrazovat špičky provoz a distribučních bodů POP.
+## <a name="data-transferred"></a>Přenesená data
+Tato sestava se skládá z grafu a data tabulky, která určuje využití CDN provozu za určité časové období, v GB pro protokol HTTP a HTTPS. Využití provozu můžete zobrazit ve všech bodů POP, nebo pro konkrétní místní nabídky. Tato sestava umožňuje zobrazit provozní špičky a distribuci přes POP.
 
-Z **uzly okraj** seznamu, vyberte **všechny uzly okraj** Zobrazit provoz ze všech uzlů a vybrat v určité oblasti.
+Z **hraničních uzlů** seznamu vyberte **všech hraničních uzlů** sledovat provoz ze všech uzlů nebo vyberte určité oblasti.
 
-Sestava je aktualizováno každých pět minut.
+Sestava se aktualizuje každých pět minut.
 
 ![Přenesená data sestavy](./media/cdn-reports/cdn-data-transferred.png)
 
-## <a name="hits-status-codes"></a>Přístupů (stavové kódy)
-Tato sestava popisuje distribuci požadavek stavové kódy pro obsah. Každý požadavek pro obsah generuje stavový kód HTTP. Stavový kód popisuje, jak bodů POP edge zpracování žádosti. Stavový kód 2xx například označuje, že žádost úspěšně vyřídila ke klientovi, zatímco stavový kód 4xx značí, že došlo k chybě. Další informace o stavových kódech HTTP najdete v tématu [stavové kódy seznamu HTTP](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes).
+## <a name="hits-status-codes"></a>Počet přístupů (stavové kódy)
+Tato sestava popisuje distribuce požadavek stavové kódy pro váš obsah. Každý požadavek pro obsah generuje stavový kód HTTP. Stavový kód popisuje, jak umístění POP serveru edge zpracování požadavku. Stavový kód 2xx například označuje, že žádost úspěšně vyřídila klientovi, zatímco 4xx stavový kód označuje, že došlo k chybě. Další informace o stavových kódů HTTP najdete v tématu [stavové kódy HTTP seznamu](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes).
 
-![Sestava přístupů](./media/cdn-reports/cdn-hits.png)
+![Přístupy do sestavy](./media/cdn-reports/cdn-hits.png)
 
 ## <a name="cache-statuses"></a>Stavy mezipaměti
-Tato sestava popisuje distribuci přístupů k mezipaměti a Neúspěšné přístupy do mezipaměti pro požadavky klientů. Protože nejrychlejší výkon výsledkem přístupů k mezipaměti, můžete optimalizovat rychlosti doručování dat minimalizovat Neúspěšné přístupy do mezipaměti a přístupů k mezipaměti vypršela platnost. 
+Tato sestava popisuje distribuce přístupů k mezipaměti a Neúspěšné přístupy do mezipaměti pro požadavky klientů. Vzhledem k tomu, abyste dosáhli nejlepšího výkonu vyplývá z přístupů k mezipaměti, můžete optimalizovat doručování rychlosti dat minimalizací Neúspěšné přístupy do mezipaměti a přístupů k mezipaměti vypršela platnost. 
 
-Abyste snížili Neúspěšné přístupy do mezipaměti, nakonfigurujte server původu, abyste minimalizovali použití následující: 
- * `no-cache`hlavičky odpovědi
- * Řetězec dotazu ukládání do mezipaměti, pokud není nezbytně nutné  
- * Kódy lze uložit do mezipaměti bez odpovědi
+Abyste snížili Neúspěšné přístupy do mezipaměti, nakonfigurujte server původu, abyste minimalizovali použití z následujících akcí: 
+ * `no-cache` Hlavičky odpovědi
+ * Řetězec dotazu do mezipaměti, pokud není nezbytně nutné  
+ * Kódy odpovědí non-možné ukládat do mezipaměti
 
-Chcete-li snížit přístupů k mezipaměti vypršela platnost, nastavte prostředek služby `max-age` na dlouhou dobu, chcete-li minimalizovat počet požadavků na zdrojový server.
+Chcete-li snížit přístupů k mezipaměti vypršela platnost, nastavte prostředků `max-age` na dlouhou dobu, chcete-li minimalizovat počet požadavků na zdrojový server.
 
-![Sestavy stavů mezipaměti](./media/cdn-reports/cdn-cache-statuses.png)
+![Sestava stavy mezipaměti](./media/cdn-reports/cdn-cache-statuses.png)
 
-### <a name="main-cache-statuses-include"></a>Hlavní mezipaměti stavy, které patří:
-* TCP_HIT: Zpracovat z hraničního serveru. Objekt byl v mezipaměti a nepřesahuje jeho maximální stáří.
-* TCP_MISS: Zpracovat ze zdrojového serveru. Objekt nebyl v mezipaměti a odpověď byla zpět na počátku.
-* TCP_EXPIRED _MISS: obsluhovat ze zdrojového serveru po opětovné ověření s původu. Objekt byl v mezipaměti, ale překročil jeho maximální stáří. Opětovné ověření s původem výsledkem objekt mezipaměti nahrazují novou odpověď z počátku.
-* TCP_EXPIRED _HIT: zpracovaných od okraje po opětovné ověření s původu. Objekt byl v mezipaměti, ale překročil jeho maximální stáří. Opětovné ověření je zdrojový server má za následek objekt mezipaměti se ponechat beze změny.
+### <a name="main-cache-statuses-include"></a>Hlavní mezipaměti stavy patří:
+* TCP_HIT: Obsluhovat z hraničního serveru. Objekt byl v mezipaměti a nebyla překročena jeho max-age.
+* TCP_MISS: Obsluhují ze zdrojového serveru. Objekt nebyl v mezipaměti a odpověď byla zpět na původní název.
+* TCP_EXPIRED _MISS: obsluhují ze zdrojového serveru po opětovné ověření s původu. Objekt byl v mezipaměti, ale překročil svůj max-age. Opětovné ověření s původem výsledkem objektu mezipaměti teď nahrazuje nová odpověď z původu.
+* TCP_EXPIRED _HIT: obsluhovat z hraničních po opětovné ověření s původu. Objekt byl v mezipaměti, ale překročil svůj max-age. Opětovné ověření je zdrojový server je v objektu mezipaměti je bez jakýchkoli úprav.
 
-### <a name="full-list-of-cache-statuses"></a>Úplný seznam stavů mezipaměti
-* TCP_HIT – tento stav se zobrazí, když požadavek pochází přímo z POP do klienta. Prostředek okamžitě pochází z bodu POP při se uloží do mezipaměti na serveru POP nejbližší klientovi a má hodnotu platný time to live (TTL). Hodnota TTL je dáno následující hlavičky odpovědi:
+### <a name="full-list-of-cache-statuses"></a>Úplný seznam stavy mezipaměti
+* TCP_HIT – tento stav se zobrazí, když požadavek pochází přímo z POP klientovi. Prostředek okamžitě pochází z místní nabídky se uloží do mezipaměti na co nejblíže ke klientovi POP a má platný time to live (TTL). Hodnota TTL je určeno následující hlavičky odpovědi:
   
   * Cache-Control: s-maxage
-  * Cache-Control: maximální stáří
-  * Vypršení platnosti
-* TCP_MISS: Tento stav indikuje, že v mezipaměti verzi požadovaný prostředek nebyl nalezen na serveru POP nejbližší klientovi. Asset se požaduje ze zdrojového serveru nebo serveru štítu původu. Pokud je zdrojový server nebo server štítu počátek vrátí prostředek, je zpracování do klienta a ukládat do mezipaměti na klientovi i serveru edge. Jinak bez 200 stavový kód (například 403 zakázané nebo 404 nebyl nalezen) je vrácen.
-* TCP_EXPIRED_HIT: Tento stav se zobrazí při zpracování žádosti, která je cílena prostředek s vypršenou platností TTL přímo z POP klientovi. Například když asset je maximální doba vypršela platnost. 
+  * Cache-Control: max-age
+  * Platnost vyprší
+* TCP_MISS: Tento stav indikuje, že verzi v mezipaměti požadovaný prostředek nebyl nalezen na nejbližší klientovi POP. Prostředek je požadováno ze zdrojového serveru nebo serveru shield původu. Pokud zdrojový server nebo server původu shield vrátí prostředek, je dodávat do klienta a ukládat do mezipaměti na klientovi a serveru edge. Jinak než 200 stavový kód (například 403 Zakázáno nebo 404 Nenalezeno) se vrátí.
+* TCP_EXPIRED_HIT: Tento stav je uveden při zpracování žádosti, která cílí na prostředek s vypršenou platností TTL přímo v lokalitě POP do klienta. Například když majetek společnosti max-age vypršela platnost. 
   
-   Vypršela platnost žádosti o žádost o opětovné ověření obvykle výsledkem na zdrojový server. Stav TCP_EXPIRED_HIT proběhnout musí na zdrojový server znamenat, že na novější verzi asset neexistuje. Tato situace obvykle výsledkem aktualizace Cache-Control assetu a hlavičky Expires.
-* TCP_EXPIRED_MISS: Tento stav se zobrazí při na novější verzi prostředek s vypršenou platností v mezipaměti pochází z POP do klienta. Tento stav nastane, když hodnota TTL pro prostředek v mezipaměti vypršela (například vypršení platnosti maximální stáří) a zdrojový server vrátí na novější verzi tohoto prostředku. Tuto novou verzi prostředku je zpracovat klientovi místo v mezipaměti. Kromě toho je mezipaměti hraničního serveru a klienta.
-* CONFIG_NOCACHE: Tento stav indikuje, že zákaznické konfigurace edge POP zabránila asset ukládat do mezipaměti.
-* ŽÁDNÁ – tento stav označuje, že nebyla provedena kontrola aktuálnost obsahu mezipaměti.
-* TCP_CLIENT_REFRESH_MISS: Tento stav se zobrazí při klienta HTTP, jako je například prohlížeč, vynutí okraj POP načíst nové verze zastaralé asset ze zdrojového serveru. Ve výchozím nastavení servery zabránit klientem HTTP vynucení edge serverům pro načtení novou verzi asset ze zdrojového serveru.
-* TCP_PARTIAL_HIT: Tento stav se zobrazí, pokud žádost o rozsah bajtů, které jsou výsledkem stiskněte klávesu pro prostředek částečně v mezipaměti. Požadovaný rozsah bajtů je okamžitě zpracovat ze serveru POP do klienta.
-* UNCACHEABLE: Tento stav se zobrazí, když prostředek služby `Cache-Control` a `Expires` hlavičky znamenat, že by neměl být uložené v mezipaměti, na serveru POP nebo klienta HTTP. Tyto typy požadavků se zpracovávají ze zdrojového serveru.
+   Vypršela platnost žádosti o obvykle vytváří požadavek na opětovné ověření na zdrojový server. Stav TCP_EXPIRED_HIT dochází musíte uvést server původu, novější verzi prostředku neexistuje. Tato situace obvykle výsledkem aktualizace prostředku Cache-Control a záhlaví Expires.
+* TCP_EXPIRED_MISS: Tento stav je oznamují se novější verze prostředku uložená v mezipaměti vypršela platnost se načítají z POP do klienta. Tento stav dojde, pokud je hodnota TTL mezipaměti asset platnost (například s prošlou platností max-age) a zdrojový server vrátí novější verze tohoto prostředku. Tato nová verze prostředku slouží ke klientovi místo verze uložené v mezipaměti. Kromě toho je mezipaměti na hraničním serveru a klienta.
+* CONFIG_NOCACHE: Tento stav indikuje, že konfigurace specifické pro zákazníka na hraničních zařízeních POP zabránila asset ukládat do mezipaměti.
+* NONE – tento stav indikuje, že se neprovedla Kontrola aktuálnosti obsahu mezipaměti.
+* TCP_CLIENT_REFRESH_MISS: Tento stav je uveden při klientovi HTTP, jako je například prohlížeč, vynutí okraj POP k načtení nové verze zastaralé asset ze zdrojového serveru. Ve výchozím nastavení servery zabránit v klientovi HTTP vynucení hraniční servery, které chcete načíst ze zdrojového serveru na novou verzi prostředku.
+* TCP_PARTIAL_HIT: Tento stav je hlášené, když požadavek rozsahu bajtů výsledkem přístupů pro prostředek částečně uložené v mezipaměti. Požadovaný rozsah bajtů je okamžitě obsluhovat z POP do klienta.
+* UNCACHEABLE: Tento stav je uveden při prostředků `Cache-Control` a `Expires` záhlaví znamenat, že by neměl být uložené v mezipaměti, na místní nabídky nebo pomocí klienta HTTP. Tyto druhy požadavky se obsluhují ze zdrojového serveru.
 
 ## <a name="cache-hit-ratio"></a>Poměr přístupů do mezipaměti
-Tato sestava informuje o procentu uložené v mezipaměti požadavků, které se spouští přímo z mezipaměti.
+Tato sestava informuje o procentu žádosti uložené v mezipaměti, které byly obsluhovat přímo z mezipaměti.
 
-Sestava obsahuje následující podrobnosti:
+Tato sestava poskytuje následující podrobnosti:
 
-* Požadovaný obsah se ukládá do mezipaměti na serveru POP nejblíže k žadatel.
-* Zpracování žádosti přímo z okraje naše sítě.
-* Požadavek nebylo nutné opětovné ověření je zdrojový server.
+* Požadovaný obsah ukládá do mezipaměti na nejbližší žadateli POP.
+* Přímo z hraničních zařízeních v naší síti zpracování žádosti.
+* Požadavek na opětovné ověření je zdrojový server nevyžadoval.
 
 Sestava neobsahuje:
 
-* Požadavky, které jsou odepřen v důsledku země možnosti filtrování.
-* Požadavky na prostředky, jejichž hlavičky znamenat, že by neměl být mezipaměti. Například `Cache-Control: private`, `Cache-Control: no-cache`, nebo `Pragma: no-cache` hlavičky zabránit prostředek ukládat do mezipaměti.
-* Požadavky na rozsah bajtů částečně v mezipaměti obsahu.
+* Požadavky, kterým je odepřen z důvodu možnosti filtrování země.
+* Požadavky na prostředky, jejichž záhlaví znamenat, že by neměl být mezipaměti. Například `Cache-Control: private`, `Cache-Control: no-cache`, nebo `Pragma: no-cache` záhlaví zakázat prostředek ukládat do mezipaměti.
+* Požadavky na zjištění rozsahu bajtů pro částečně uložené v mezipaměti obsahu.
 
-Vzorec je: (stiskněte KLÁVESU TCP_ / (stiskněte KLÁVESU TCP_ + TCP_MISS)) * 100
+Vzorec je: (stiskněte TCP_ / (TCP_ PŘÍSTUPŮ + TCP_MISS)) * 100
 
 ![Sestava poměr přístupů do mezipaměti](./media/cdn-reports/cdn-cache-hit-ratio.png)
 
 ## <a name="ipv4ipv6-data-transferred"></a>Přenesená Data IPV4/IPV6
-Tato sestava zobrazuje využití distribuce přenosů v sadě vs IPV4 protokol IPV6.
+Tato sestava zobrazuje využití distribuce provozu v sadě Visual Studio IPV4 protokol IPV6.
 
 ![Přenesená Data IPV4/IPV6](./media/cdn-reports/cdn-ipv4-ipv6.png)
 
 ## <a name="considerations"></a>Požadavky
-Sestavy můžete generovat pouze během posledních 18 měsíců.
+Sestavy se můžou generovat jenom během posledních 18 měsíců.
 

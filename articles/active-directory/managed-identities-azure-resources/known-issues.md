@@ -15,18 +15,21 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/12/2017
 ms.author: daveba
-ms.openlocfilehash: a58905d4e6ab22af38bb06b41a4523e6e5ddf86e
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 27f9e0a3875b8d7e9411517863f7d7c2f6982ab3
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44028056"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44158632"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Nejčastější dotazy a známé problémy s spravovaných identit pro prostředky Azure
 
-[!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
+[!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
 ## <a name="frequently-asked-questions-faqs"></a>Nejčastější dotazy
+
+> [!NOTE]
+> Spravované identity pro prostředky azure je nový název pro službu, dřív označované jako Identity spravované služby (MSI).
 
 ### <a name="does-managed-identities-for-azure-resources-work-with-azure-cloud-services"></a>Funguje spravovaných identit pro prostředky Azure s Azure Cloud Services?
 
@@ -49,7 +52,7 @@ Při použití spravované identity pro prostředky Azure s virtuálními počí
 3. Certifikáty používané službou spravovaných identit pro prostředky Azure, už nejsou k dispozici ve virtuálním počítači. 
 4. Koncový bod IMDS je dobře známé nesměrovatelných IP adresu, k dispozici pouze z v rámci virtuálního počítače. 
 
-Spravované identity pro prostředky Azure, které je stále k dispozici pro použití dnes; rozšíření virtuálního počítače ale v budoucnu jsme se ve výchozím nastavení pomocí IMDS koncového bodu. Spravované identity pro prostředky Azure, které rozšíření virtuálního počítače se spustí na zastarání plánování brzy. 
+Spravované identity pro prostředky Azure, které je stále k dispozici pro použití dnes; rozšíření virtuálního počítače ale v budoucnu jsme se ve výchozím nastavení pomocí IMDS koncového bodu. Spravované identity pro prostředky Azure, které rozšíření virtuálního počítače se přestanou používat v lednu 2019. 
 
 Další informace o Azure Instance Metadata Service, najdete v části [IMDS dokumentace](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)
 
@@ -57,7 +60,7 @@ Další informace o Azure Instance Metadata Service, najdete v části [IMDS dok
 
 Všechny Linuxových distribucí, které podporuje Azure IaaS je možné pomocí spravované identity pro prostředky Azure prostřednictvím IMDS koncového bodu. 
 
-Poznámka: Spravované identity pro prostředky Azure rozšíření virtuálního počítače podporuje pouze následující distribucí systému Linux:
+Poznámka: Spravovaných identit pro prostředky Azure (plánovaná k převedení na zastaralého v lednu 2019) rozšíření virtuálního počítače se podporuje pouze následující distribucí systému Linux:
 - CoreOS Stable
 - CentOS 7.1
 - Red Hat 7.2
@@ -87,9 +90,9 @@ Pokud spravovaných identit pro prostředky Azure je povoleno na virtuálním po
 
 ![Chyba při exportování spravovaných identit pro prostředky Azure automatizační skript](./media/msi-known-issues/automation-script-export-error.png)
 
-Spravované identity pro rozšíření virtuálního počítače prostředků Azure v současné době nepodporuje možnost exportu schématem pro šablonu skupiny prostředků. Kvůli tomu že vygenerovaná šablona nezobrazuje parametry konfigurace, umožňuje spravovaným identitám pro prostředky Azure pro prostředek. Tyto části můžete přidat ručně podle příkladů v [konfigurace spravovaných identit pro prostředky Azure na Virtuálním počítači Azure pomocí šablony](qs-configure-template-windows-vm.md).
+Spravované identity pro prostředky Azure, které rozšíření virtuálního počítače (plánovaná k převedení na zastaralého v lednu 2019) se aktuálně podporují možnost exportu schématem pro šablonu skupiny prostředků. Kvůli tomu že vygenerovaná šablona nezobrazuje parametry konfigurace, umožňuje spravovaným identitám pro prostředky Azure pro prostředek. Tyto části můžete přidat ručně podle příkladů v [konfigurace spravovaných identit pro prostředky Azure na Virtuálním počítači Azure pomocí šablony](qs-configure-template-windows-vm.md).
 
-Když funkce exportu schématu je k dispozici pro spravované identity pro rozšíření virtuálního počítače Azure prostředky, objeví se v [export skupiny prostředků, obsahující rozšíření virtuálních počítačů](../../virtual-machines/extensions/export-templates.md#supported-virtual-machine-extensions).
+Když funkce exportu schématu je k dispozici pro spravované identity pro rozšíření virtuálního počítače prostředky Azure (plánovaná k převedení na zastaralého v lednu 2019), objeví se v [export skupiny prostředků, obsahující rozšíření virtuálních počítačů](../../virtual-machines/extensions/export-templates.md#supported-virtual-machine-extensions).
 
 ### <a name="configuration-blade-does-not-appear-in-the-azure-portal"></a>Na webu Azure Portal se nezobrazí okno Konfigurace
 
@@ -125,11 +128,11 @@ az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
 
 - přiřazení uživatelsky přiřazené Identity jsou dostupné jenom pro virtuální počítač a VMSS. Důležité: uživatelsky přiřazené Identity přiřazení se změní v nadcházejících měsících.
 - Duplicitní uživatelsky přiřazené identity na stejný počítač nebo škálovací sada způsobí, že VM/VMSS selhání. Jedná se o identitách, které jsou přidány s jinou velikostí písmen. například MyUserAssignedIdentity a myuserassignedidentity. 
-- Zřizování rozšíření virtuálního počítače k virtuálnímu počítači může selhat z důvodu chyby vyhledávání DNS. Restartujte virtuální počítač a zkuste to znovu. 
+- Zřizování rozšíření virtuálního počítače (plánovaná k převedení na zastaralého v lednu 2019) k virtuálnímu počítači může selhat z důvodu chyby vyhledávání DNS. Restartujte virtuální počítač a zkuste to znovu. 
 - Přidání 'neexistuje' uživatelsky přiřazené identity způsobí, že virtuální počítač selže. 
 - Vytváření uživatelsky přiřazené identity se speciálními znaky (třeba podtržítko) v názvu, se nepodporuje.
 - názvy uživatelsky přiřazené identity jsou omezeny na 24 znaků pro komplexní scénáře. přiřazení se nezdaří uživatelsky přiřazené identity s názvy delší než 24 znaků.
-- Pokud používáte rozšíření virtuálního počítače spravovanou identitu, je podporovaný limit 32 spravované uživatelsky přiřazené identity. Bez přípon spravovanou identitu virtuálního počítače je podporovaný limit 512.  
+- Pokud používáte rozšíření virtuálních počítačů spravovanou identitu (plánovaná k převedení na zastaralého v lednu 2019), je podporovaný limit 32 spravované uživatelsky přiřazené identity. Bez přípon spravovanou identitu virtuálního počítače je podporovaný limit 512.  
 - Při přidávání druhý uživatelsky přiřazené identity, clientID nemusí být k dispozici pro žádosti o tokeny pro rozšíření virtuálního počítače. Jako omezení rizik restartujte spravovaných identit pro prostředky Azure rozšíření virtuálního počítače pomocí následujících příkazů prostředí bash dvě:
  - `sudo bash -c "/var/lib/waagent/Microsoft.ManagedIdentity.ManagedIdentityExtensionForLinux-1.0.0.8/msi-extension-handler disable"`
  - `sudo bash -c "/var/lib/waagent/Microsoft.ManagedIdentity.ManagedIdentityExtensionForLinux-1.0.0.8/msi-extension-handler enable"`

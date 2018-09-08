@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/04/2018
+ms.date: 09/06/2018
 ms.author: tomfitz
-ms.openlocfilehash: 35bd895636bcedf0fd3fad073819d238c7850326
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: e0a2e26fb3dd0afeb4d1f3d030cb42bdc181e63c
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43783334"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44094956"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Přesunutí prostředků do nové skupiny prostředků nebo předplatného
 
@@ -210,7 +210,7 @@ Služby, které umožňují přesun na novou skupinu prostředků a předplatné
 * Portálu řídicích panelů
 * Power BI – jak Power BI Embedded a Power BI pracovního prostoru kolekce
 * Veřejná IP adresa – viz [omezení veřejné IP adresy](#pip-limitations)
-* Redis Cache
+* Redis Cache – Pokud instance služby Redis Cache je nakonfigurovaný s virtuální sítí, instance nelze přesunout do jiného předplatného. Zobrazit [omezení virtuální sítě](#virtual-networks-limitations).
 * Scheduler
 * Search
 * Service Bus

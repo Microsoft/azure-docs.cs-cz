@@ -16,12 +16,12 @@ ms.date: 08/20/2018
 ms.author: markvi
 ms.custom: it-pro
 ms.reviewer: jeedes
-ms.openlocfilehash: 039edd45381670a8fa97fb9025933b28d291d511
-ms.sourcegitcommit: e45b2aa85063d33853560ec4bc867f230c1c18ce
+ms.openlocfilehash: b0e6e764fe44dc5216a6b75453f0be6c35af2d11
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43371385"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44161588"
 ---
 # <a name="saas-application-integration-with-azure-active-directory"></a>Integrace aplikací SaaS pomocí Azure Active Directory
 
@@ -144,7 +144,7 @@ Kde máme zřizování pokyny pro uživatele, uvádíme kurz vývoje aplikace pr
 | ![Logo](./media/tutorial-list/active-directory-saas-cisco-spark-tutorial.png)| [Cisco Spark](cisco-spark-tutorial.md)|[Cisco Spark - zřizování uživatelů](cisco-spark-provisioning-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-cisco-webex-tutorial.png)| [Cisco Webex](cisco-webex-tutorial.md)|[Cisco Webex - zřizování uživatelů](cisco-webex-provisioning-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-sharefile-tutorial.png)| [Citrix ShareFile](sharefile-tutorial.md)|
-| ![Logo](./media/tutorial-list/active-directory-saas-clarizen-tutorial.png)| [Clarizen](clarizen-tutorial.md)|[Clarizen - zřizování uživatelů](clarizen-provisioning-tutorial.md)|
+| ![Logo](./media/tutorial-list/active-directory-saas-clarizen-tutorial.png)| [Clarizen](clarizen-tutorial.md)||
 | ![Logo](./media/tutorial-list/active-directory-saas-clearreview-tutorial.png)| [Vymazat revize](clearreview-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-clearcompany-tutorial.png)| [ClearCompany](clearcompany-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-clever-tutorial.png)| [Chytřejší](clever-tutorial.md)|
@@ -299,6 +299,7 @@ Kde máme zřizování pokyny pro uživatele, uvádíme kurz vývoje aplikace pr
 | Logo | Kurz vývoje aplikace pro jednotné přihlašování | Kurz vývoje aplikace pro zřizování uživatelů |
 | :---: | :--- | :--- |
 | ![Logo](./media/tutorial-list/active-directory-saas-jamfprosamlconnector-tutorial.png)| [Jamf Pro](jamfprosamlconnector-tutorial.md)|
+| ![Logo](./media/tutorial-list/active-directory-saas-jdacloud-tutorial.png)| [JDA cloudu](jdacloud-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-jiramicrosoft-tutorial.png)| [JIRA SAML jednotného přihlašování od Microsoftu](jiramicrosoft-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-jira52microsoft-tutorial.png)| [JIRA SAML jednotného přihlašování od Microsoftu (verzi 5.2)](jira52microsoft-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-jitbit-helpdesk-tutorial.png)| [Jitbit helpdesku](jitbit-helpdesk-tutorial.md)|
@@ -459,7 +460,7 @@ Kde máme zřizování pokyny pro uživatele, uvádíme kurz vývoje aplikace pr
 | ![Logo](./media/tutorial-list/active-directory-saas-redbrickhealth-tutorial.png)| [RedBrick stavu](redbrickhealth-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-redvector-tutorial.png)| [RedVector](redvector-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-reflektive-tutorial.png)| [Reflektive](reflektive-tutorial.md)|
-| ![Logo](./media/tutorial-list/active-directory-saas-replicon-tutorial.png)| [Replicon](replicon-tutorial.md)|[Replicon - zřizování uživatelů](replicon-provisioning-tutorial.md)|
+| ![Logo](./media/tutorial-list/active-directory-saas-replicon-tutorial.png)| [Replicon](replicon-tutorial.md)||
 | ![Logo](./media/tutorial-list/active-directory-saas-reviewsnap-tutorial.png)| [Reviewsnap](reviewsnap-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-reward-gateway-tutorial.png)| [Brána rewards](reward-gateway-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-rfpio-tutorial.png)| [RFPIO](rfpio-tutorial.md)|
@@ -515,6 +516,7 @@ Kde máme zřizování pokyny pro uživatele, uvádíme kurz vývoje aplikace pr
 | ![Logo](./media/tutorial-list/active-directory-saas-showpad-tutorial.png)| [Showpad](showpad-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-signalfx-tutorial.png)| [SignalFx](signalfx-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-silkroad-life-suite-tutorial.png)| [Sada SilkRoad životnosti](silkroad-life-suite-tutorial.md)|
+| ![Logo](./media/tutorial-list/active-directory-saas-silverback-tutorial.png)| [Silverback](silverback-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-simplenexus-tutorial.png)| [SimpleNexus](simplenexus-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-skilljar-tutorial.png)| [Skilljar](skilljar-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-skillport-tutorial.png)| [Skillport](skillport-tutorial.md)|
@@ -616,7 +618,7 @@ Kde máme zřizování pokyny pro uživatele, uvádíme kurz vývoje aplikace pr
 | ![Logo](./media/tutorial-list/active-directory-saas-workteam-tutorial.png)| [Workteam](workteam-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-workstars-tutorial.png)| [Workstars](workstars-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-xaitporter-tutorial.png)| [XaitPorter](xaitporter-tutorial.md)|
-| ![Logo](./media/tutorial-list/active-directory-saas-xmatters-ondemand-tutorial.png)| [xMatters OnDemand.](xmatters-ondemand-tutorial.md)|[xMatters OnDemand - zřizování uživatelů](xmatters-ondemand-provisioning-tutorial.md)|
+| ![Logo](./media/tutorial-list/active-directory-saas-xmatters-ondemand-tutorial.png)| [xMatters OnDemand.](xmatters-ondemand-tutorial.md)||
 | ![Logo](./media/tutorial-list/active-directory-saas-yardielearning-tutorial.png)| [Yardi hodnoceného](yardielearning-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-yardione-tutorial.png)| [YardiOne](yardione-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-yodeck-tutorial.png)| [Yodeck](yodeck-tutorial.md)|

@@ -1,6 +1,6 @@
 ---
-title: Konfigurace prostředí Azure PowerShell zásobníku | Microsoft Docs
-description: Postup konfigurace prostředí Azure PowerShell zásobníku.
+title: Připojení ke službě Azure Stack pomocí prostředí PowerShell jako operátor | Dokumentace Microsoftu
+description: Zjistěte, jak se připojit ke službě Azure Stack pomocí prostředí PowerShell jako operátor
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,32 +11,32 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 06/22/2018
+ms.date: 09/07/2018
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.openlocfilehash: 74a5a9408a78dd0da12fb3f8ed721774030cc438
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: e6e1ffdf4384080649a769b2fdf6877ea744ec51
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36749857"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44162168"
 ---
-# <a name="configure-the-azure-stack-powershell-environment"></a>Konfigurace prostředí Azure PowerShell zásobníku
+# <a name="connect-to-azure-stack-with-powershell-as-an-operator"></a>Připojení ke službě Azure Stack pomocí prostředí PowerShell jako operátor
 
-*Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
+*Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
-Můžete nakonfigurovat zásobník Azure pomocí prostředí PowerShell ke správě prostředků, jako je například vytváření nabídek, plánů, kvóty a upozornění. Toto téma vám pomůže nakonfigurovat prostředí operátor.
+Můžete nakonfigurovat služby Azure Stack pomocí Powershellu ke správě prostředků, jako je například vytváření nabídek, plánů, kvóty a výstrahy. Toto téma vám pomůže nakonfigurovat prostředí operátora.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Spusťte následující předpoklady, některý z [development kit](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), nebo ze systému Windows externí klienta Pokud jste [připojení prostřednictvím VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn). 
+Spuštění následujících požadovaných součástí, buď z [sada](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), nebo z Windows na základě externí klienta po [připojené prostřednictvím sítě VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn). 
 
- - Nainstalujte [modulů prostředí Azure PowerShell kompatibilní s Azure zásobníku](azure-stack-powershell-install.md).  
- - Stažení [nástroje potřebné pro práci s Azure zásobníku](azure-stack-powershell-download.md).  
+ - Nainstalujte [moduly Azure Powershellu kompatibilní s Azure Stack](azure-stack-powershell-install.md).  
+ - Ve službě [Azure Stack development Kit by měl být blobEndpoint](azure-stack-powershell-download.md) .  
 
-## <a name="configure-the-operator-environment-and-sign-in-to-azure-stack"></a>Konfigurace prostředí operátor a přihlaste se k Azure zásobníku
+## <a name="configure-the-operator-environment-and-sign-in-to-azure-stack"></a>Konfigurace prostředí operátor a přihlaste se ke službě Azure Stack
 
-Konfigurace prostředí Azure zásobníku operátor pomocí prostředí PowerShell. Spusťte jeden z následujících skriptů: tenantName Azure AD, koncový bod GraphAudience a ArmEndpoint hodnoty nahraďte konfiguraci prostředí.
+Konfigurace prostředí Azure Stack operátor pomocí Powershellu. Spusťte jeden z následujících skriptů: nahraďte tenantName Azure AD, koncový bod GraphAudience a hodnoty ArmEndpoint s konfigurací prostředí.
 
 ````PowerShell  
     # For Azure Stack development kit, this value is set to https://adminmanagement.local.azurestack.external.
@@ -52,9 +52,9 @@ Konfigurace prostředí Azure zásobníku operátor pomocí prostředí PowerShe
     Add-AzureRmAccount -EnvironmentName "AzureStackAdmin"
 ````
 
-## <a name="test-the-connectivity"></a>Testovací připojení
+## <a name="test-the-connectivity"></a>Otestovat připojení
 
-Teď, když máte všechno nastavení, pomocí prostředí PowerShell vytvořit prostředky v rámci Azure zásobníku. Můžete například vytvořit skupinu prostředků pro aplikace a přidat virtuální počítač. Pomocí následujícího příkazu vytvořte skupinu prostředků s názvem **MyResourceGroup**.
+Teď, když máte všechno, co nastavení, pomocí prostředí PowerShell vytvářet prostředky v rámci služby Azure Stack. Můžete například vytvořit skupinu prostředků pro aplikaci a přidejte virtuální počítač. Pomocí následujícího příkazu vytvořte skupinu prostředků s názvem **MyResourceGroup**.
 
 ```powershell
 New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
@@ -62,5 +62,5 @@ New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
 
 ## <a name="next-steps"></a>Další postup
 
- - [Vývoj šablon pro Azure zásobníku](user/azure-stack-develop-templates.md)
+ - [Vývoj šablon pro Azure Stack](user/azure-stack-develop-templates.md)
  - [Nasazení šablon pomocí PowerShellu](user/azure-stack-deploy-template-powershell.md)

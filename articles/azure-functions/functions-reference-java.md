@@ -6,19 +6,17 @@ documentationcenter: na
 author: rloutlaw
 manager: justhe
 keywords: Azure functions, functions, zpracování událostí, webhook, dynamické výpočty, architektura bez serveru, java
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: java
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
+ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: routlaw
-ms.openlocfilehash: bbc1c3426b52e71db84a988b39a1d76ac24b6168
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: f0dc471e8875ad0d738fce10421c3586752148b9
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697007"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44092305"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Příručka pro vývojáře Azure Functions Java
 

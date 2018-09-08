@@ -13,16 +13,16 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 4372da2f1057c06761dd6abaf18c26df6e33640e
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: ed070ac4fdf9ccca1b1b4b99b8031bc3fd035779
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40234888"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44160145"
 ---
 # <a name="troubleshoot-validation-as-a-service"></a>Řešení potíží s ověření jako služba
 
-[!INCLUDE[Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
+[!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
 Tady jsou běžné problémy, které nesouvisí se vydaných verzí softwaru a jejich řešení.
 

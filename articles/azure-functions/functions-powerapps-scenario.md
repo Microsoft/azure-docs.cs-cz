@@ -3,26 +3,21 @@ title: Volání funkce z PowerApps | Dokumentace Microsoftu
 description: Vytvoření vlastního konektoru, pak zavolat funkci pomocí tohoto konektoru.
 services: functions
 keywords: cloudové aplikace, cloud services, PowerApps, obchodní procesy, obchodní aplikace
-documentationcenter: ''
 author: ggailey777
-manager: cfowler
-editor: ''
+manager: jeconnoc
 ms.assetid: ''
-ms.service: functions
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.service: azure-functions
+ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: ''
-ms.openlocfilehash: 3693b167f196b82c520703fa50ffabb27b555050
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 55de3cd8830834a2af512661d5389952d927ef9f
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38586972"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44094311"
 ---
 # <a name="call-a-function-from-powerapps"></a>Volání funkce z PowerApps
 [PowerApps](https://powerapps.microsoft.com) platformy je určená pro obchodní specialisty k vytváření aplikací bez kódu pro tradiční aplikace. Profesionální vývojáři mohou pomocí Azure Functions rozšířit možnosti PowerApps, při stínění tvůrci aplikace PowerApps z technické podrobnosti.

@@ -11,15 +11,15 @@ ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 05/10/2018
 ms.author: barclayn
-ms.openlocfilehash: 3f3adb1230d6ca6b3a7e616a0beed15d66895124
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
-ms.translationtype: HT
+ms.openlocfilehash: af4ab892ab84ba2f1a19e72710f23ce5ba1232f9
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43282993"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44163103"
 ---
 # <a name="get-started-with-azure-key-vault"></a>Začínáme s Azure Key Vault
 Tento článek vám pomůže začít s Azure Key Vault pomocí PowerShellu a provede vás těmito aktivitami:
@@ -317,7 +317,7 @@ Další užitečné příkazy pro správu Azure Key Vault:
 - `Remove-AzureKeyVaultKey -VaultName 'ContosoKeyVault' -Name 'ContosoFirstKey'`: Příklad odebrání určitého klíče.
 - `Remove-AzureKeyVaultSecret -VaultName 'ContosoKeyVault' -Name 'SQLPassword'`: Příklad odebrání určitého tajného klíče.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Souhrnné informace o Azure Key Vault naleznete v tématu [Co je Azure Key Vault?](key-vault-whatis.md).
 - Chcete-li mít přehled o využívání trezoru klíčů, podívejte se na kurz [Protokolování v Azure Key Vault](key-vault-logging.md).

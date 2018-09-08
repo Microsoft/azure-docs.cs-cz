@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: daveba
-ms.openlocfilehash: a61dca8332a613176b01eb85b44cd743ff8b4085
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 0f8789d64b550d9f0a45aa65728fbc1db64d6def
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44028060"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44094922"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>Použití spravované identity pro prostředky Azure na Virtuálním počítači Azure pro přihlášení 
 
@@ -89,7 +89,7 @@ Odpovědi, jako je například následující může znamenat, že spravovanou i
 Pokud se zobrazí jedna z těchto chyb, vraťte se k virtuálnímu počítači Azure ve [webu Azure portal](https://portal.azure.com) a:
 
 - Přejděte na **Identity** stránce a zajištění **přiřazenou systémem** je nastavená na "Ano".
-- Přejděte **rozšíření** stránce a ujistěte se spravovaným identitám pro úspěšné nasazení rozšíření prostředků Azure.
+- Přejděte **rozšíření** stránce a ujistěte se spravovaným identitám pro rozšíření prostředků Azure **(plánovaná k převedení na zastaralého v lednu 2019)** úspěšné nasazení.
 
 Pokud je buď nesprávný, budete muset znovu nasadit spravované identity pro prostředky Azure pro váš prostředek znovu, nebo řešení potíží s nasazení se nezdařilo. Zobrazit [konfigurace spravovaných identit pro prostředky Azure na virtuálním počítači pomocí webu Azure portal](qs-configure-portal-windows-vm.md) Pokud potřebujete pomoc s konfigurací virtuálního počítače.
 

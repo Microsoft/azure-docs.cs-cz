@@ -1,35 +1,31 @@
 ---
-title: Zpracování chyb v trvanlivý funkce – Azure
-description: Zjistěte, jak se budou zpracovávat chyby v rozšíření trvanlivý funkce pro Azure Functions.
+title: Zpracování chyb v Durable Functions – Azure
+description: Zjistěte, jak chcete zpracovávat chyby ve rozšíření Durable Functions pro službu Azure Functions.
 services: functions
 author: cgillum
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: ''
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
+ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 944fab5ccc55bc9a697e870208338bd0e697672d
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 0b19fe7441d3c2c5222095c31d9c3677b8c9cf34
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33763301"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44092713"
 ---
-# <a name="handling-errors-in-durable-functions-azure-functions"></a>Zpracování chyb v trvanlivý funkce (Azure Functions)
+# <a name="handling-errors-in-durable-functions-azure-functions"></a>Zpracování chyb v Durable Functions (Azure Functions)
 
-Trvanlivý orchestrations funkce jsou implementované v kódu a může využívat možnosti zpracování chyb programovacího jazyka. Myslete na to ve skutečnosti nejsou k dispozici žádné nových konceptů, které potřebujete další informace o zapojení do vaší orchestrations zpracování chyb a honoráře. Existuje však několik chování, které byste měli vědět.
+Trvalý Orchestrace funkce jsou implementované v kódu a může využívat možnosti zpracování chyb programovacího jazyka. S myslete na to ve skutečnosti nejsou k dispozici žádné nové koncepty, které je potřeba další informace o zpracování chyb a vyrovnání začleňte do vašeho Orchestrace. Existuje však několik chování, které byste měli vědět.
 
-## <a name="errors-in-activity-functions"></a>Chyby ve funkcích aktivity
+## <a name="errors-in-activity-functions"></a>Chyby v funkce aktivity
 
-Jakékoli výjimky vyvolané v funkci aktivity je zařazeno zpět na funkce produktu orchestrator a vyvolána jako `FunctionFailedException`. Můžete napsat kód chyby zpracování a kompenzace, která vyhovuje vašim potřebám, funkce produktu orchestrator.
+Je zařazeno zpět do funkce orchestrátoru a vyvolána jako jakoukoliv výjimku, která je vyvolána výjimka ve funkci aktivity `FunctionFailedException`. Můžete napsat kód pro manipulace a kompenzace chyba, která vyhovuje vašim potřebám, funkce orchestrátoru.
 
-Zvažte například následující funkci orchestrator, která převádí prostředků z jednoho účtu:
+Představte si třeba následující funkce orchestrátoru, který převádí prostředků z jednoho účtu:
 
 ```csharp
 #r "Microsoft.Azure.WebJobs.Extensions.DurableTask"
@@ -68,11 +64,11 @@ public static async Task Run(DurableOrchestrationContext context)
 }
 ```
 
-Pokud volání **CreditAccount** funkce selže u cílového účtu, funkce orchestrator kompenzuje to podle kredity prostředků zpátky na zdrojový účet.
+Pokud volání **CreditAccount** funkce selže u cílového účtu, funkce orchestrátoru to vyrovnává podle kredity prostředků zpátky na zdrojový účet.
 
 ## <a name="automatic-retry-on-failure"></a>Automatické opakování při selhání
 
-Při volání funkce aktivity nebo dílčí orchestration funkce můžete určit automatické zásady opakování. V následujícím příkladu se pokusí volání funkce až 3 x a čeká 5 sekund mezi každou opakování:
+Při volání funkce aktivity nebo dílčí Orchestrace funkce, můžete určit zásadu automatické opakování. V následujícím příkladu se pokusí zavolat funkci až třikrát a čekat mezi opakováními 5 sekund:
 
 ```csharp
 public static async Task Run(DurableOrchestrationContext context)
@@ -87,20 +83,20 @@ public static async Task Run(DurableOrchestrationContext context)
 }
 ```
 
-`CallActivityWithRetryAsync` Trvá rozhraní API `RetryOptions` parametr. Dílčí orchestration volá pomocí `CallSubOrchestratorWithRetryAsync` rozhraní API můžete použít tyto stejné zásady opakování.
+`CallActivityWithRetryAsync` Přebírá rozhraní API `RetryOptions` parametru. Suborchestration volá pomocí `CallSubOrchestratorWithRetryAsync` rozhraní API můžete použít tyto stejné zásady opakování.
 
 Existuje několik možností pro přizpůsobení zásady automatické opakování. Jsou to tyto země:
 
 * **Maximální počet pokusů o**: maximální počet opakovaných pokusů.
-* **První pokus**: časového intervalu čekání před první opakovat pokus.
-* **Koeficient omezení rychlosti**: koeficient používá k určení míra zvýšení omezení rychlosti. Výchozí hodnota je 1.
+* **První interval opakování**: dobu čekání před prvním opakováním pokus.
+* **Omezení rychlosti koeficient**: koeficient používá k určení míra zvýšení rychlosti. Výchozí hodnota je 1.
 * **Maximální interval opakování**: maximální dobu čekání mezi pokusy o opakování.
-* **Opakujte časový limit**: maximální množství času na takovém opakování. Výchozí chování je opakovat po neomezenou dobu.
-* **Vlastní**: uživatelské zpětné volání lze, která určuje, zda je třeba opakovat volání funkce.
+* **Časového limitu opakování**: opakování maximální množství času na to. Výchozí chování je to chcete zkusit znovu po neomezenou dobu.
+* **Vlastní**: uživatelské zpětné volání, je možné zadat, která určuje, zda je třeba opakovat volání funkce.
 
-## <a name="function-timeouts"></a>Časové limity – funkce
+## <a name="function-timeouts"></a>Vypršení časových limitů – funkce
 
-Můžete chtít abandon volání funkce v rámci orchestrator funkce, pokud to trvá příliš dlouho dokončení. Je správný způsob k tomu ještě dnes tak, že vytvoříte [trvanlivý časovače](durable-functions-timers.md) pomocí `context.CreateTimer` ve spojení s `Task.WhenAny`, jako v následujícím příkladu:
+Můžete chtít opustit volání funkce v rámci funkce orchestrátoru, pokud trvá moc dlouho. Správný způsob, jak to udělat ještě dnes je tak, že vytvoříte [trvalý časovače](durable-functions-timers.md) pomocí `context.CreateTimer` ve spojení s `Task.WhenAny`, jako v následujícím příkladu:
 
 ```csharp
 public static async Task<bool> Run(DurableOrchestrationContext context)
@@ -130,11 +126,11 @@ public static async Task<bool> Run(DurableOrchestrationContext context)
 ```
 
 > [!NOTE]
-> Tento mechanismus není ve skutečnosti ukončit provedení funkce probíhající aktivity. Místo toho jednoduše umožní ignorovat výsledek a přechod na funkce produktu orchestrator. Najdete v článku [časovače](durable-functions-timers.md#usage-for-timeout) Další informace naleznete v dokumentaci.
+> Tento mechanismus skutečně neukončí provádění funkce probíhající aktivity. Místo toho to jednoduše umožňuje funkce orchestrátoru ignorovat výsledek a přechod na. Další informace najdete v tématu [časovače](durable-functions-timers.md#usage-for-timeout) dokumentaci.
 
 ## <a name="unhandled-exceptions"></a>Nezpracované výjimky
 
-Pokud funkce orchestrator selže s nezpracovanou výjimku, se zaznamenávají podrobnosti o výjimce a instance dokončí s `Failed` stavu.
+Pokud selže funkce orchestrátoru s neošetřenou výjimku, podrobnosti o výjimce protokolují a dokončení instance s `Failed` stav.
 
 ## <a name="next-steps"></a>Další postup
 

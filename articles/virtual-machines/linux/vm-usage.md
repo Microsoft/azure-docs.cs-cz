@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 12/04/2017
 ms.author: memccror
-ms.openlocfilehash: ab56ad07bd3da17f105bd09f2484173207d30015
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: d9df71f6fa2f64544cbefc7d9aca8c153c86ac98
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44025060"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44094251"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Principy používání virtuálních počítačů Azure
 Díky analýze dat využití Azure, může být získány výkonné consumption insights – přehledy, které umožňují lepší nákladů správy a přidělení v rámci vaší organizace. Tento dokument obsahuje podrobné informace o si podrobnosti o spotřebě Azure Compute. Podrobné informace o obecných využití Azure, přejděte na [vysvětlení vašeho vyúčtování](https://docs.microsoft.com/azure/billing/billing-understand-your-bill).
@@ -101,10 +101,10 @@ Název oblasti, v poli umístění prostředku v podrobnosti o využití se liš
 |    ukwest                |    Spojené království – západ                               |
 |    USDoDCentral          |    US DoD – střed                        |
 |    USDoDEast             |    US DoD – východ                           |
-|    USGovArizona          |    USGov – Arizona                         |
-|    usgoviowa             |    USGov (Iowa)                            |
-|    USGovTexas            |    USGov – Texas                           |
-|    usgovvirginia         |    USGov (Virginie)                        |
+|    USGovArizona          |    USGov Arizona                         |
+|    usgoviowa             |    USGov Iowa                            |
+|    USGovTexas            |    USGov Texas                           |
+|    usgovvirginia         |    USGov Virginie                        |
 |    westcentralus         |    USA – středozápad                       |
 |    westeurope            |    Západní Evropa                           |
 |    WestIndia             |    Indie – západ                               |
@@ -128,7 +128,7 @@ ImageType pole se vyplní jenom pro podmnožinu bitové kopie. Pokud jste někte
 ### <a name="why-is-the-vmname-blank-in-the-additional-info"></a>Název je prázdný v další informace
 Název je jenom vyplní v poli Další informace pro virtuální počítače ve škálovací sadě. Pole ID instance obsahuje název virtuálního počítače mimo škálovací sady virtuálních počítačů.
 ### <a name="what-does-computehr-mean-in-the-usagetype-field-in-the-additional-info"></a>Co znamená ComputeHR v poli UsageType v dodatečné informace?
-ComputeHR jsou zahrnovaného výpočetní hodinu, která představuje událost využití za základní cenu infrasturcture. Pokud je UsageType ComputeHR\_SW, událost využití představuje poplatek za software premium pro virtuální počítač.
+ComputeHR jsou zahrnovaného výpočetních hodin, který představuje událost využití pro základní náklady na infrastrukturu. Pokud je UsageType ComputeHR\_SW, událost využití představuje poplatek za software premium pro virtuální počítač.
 ### <a name="how-do-i-know-if-i-am-charged-for-premium-software"></a>Jak poznám, že pokud se mi účtují softwaru premium?
 Při zkoumání Image virtuálního počítače nejlépe vyhovuje vašim potřebám, nezapomeňte se podívat [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute). Bitová kopie je sazba plánu softwaru. Pokud se zobrazí "Free" pro rychlost, neexistuje žádné další poplatky za software. 
 ### <a name="what-is-the-difference-between-microsoftclassiccompute-and-microsoftcompute-in-the-consumed-service"></a>Jaký je rozdíl mezi Microsoft.ClassicCompute a Microsoft.Compute služby spotřebované?

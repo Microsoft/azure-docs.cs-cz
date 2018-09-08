@@ -10,12 +10,12 @@ ms.technology: luis
 ms.topic: article
 ms.date: 08/02/2018
 ms.author: diberry
-ms.openlocfilehash: 1587debecd82072c29d4caffc2b81629b1f52b0e
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 43f169ae11191c2e98c4538189bce781821de980
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39527360"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44157850"
 ---
 # <a name="tutorial-improve-app-with-patternany-entity"></a>Kurz: Zlepšení aplikace s entitou pattern.any
 
@@ -26,7 +26,7 @@ V tomto kurzu použijte ke zvýšení záměr a entity předpovědi pattern.any 
 * Vytvoření vzor, který využívá pattern.any
 * Postup ověření vylepšení predikce
 
-[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>Než začnete
 Pokud nemáte aplikaci lidských zdrojů [vzorku role](luis-tutorial-pattern-roles.md) kurzu [importovat](luis-how-to-start-new-app.md#import-new-app) JSON do nové aplikace ve [LUIS](luis-reference-regions.md#luis-website) webu. App k importu se nachází v [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-roles-HumanResources.json) úložiště GitHub.
@@ -108,7 +108,7 @@ Pattern.any entity extrahuje entity různou délku. Funguje pouze v vzor protož
 
 ## <a name="train-the-luis-app"></a>Trénování aplikace LUIS
 
-[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
+[!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="test-the-new-pattern-for-free-form-data-extraction"></a>Testování nový vzor pro extrakci dat volného tvaru
 1. Vyberte **testování** v horním panelu otevřete panel testů. 
@@ -125,7 +125,7 @@ Pattern.any entity extrahuje entity různou délku. Funguje pouze v vzor protož
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+[!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Další postup
 

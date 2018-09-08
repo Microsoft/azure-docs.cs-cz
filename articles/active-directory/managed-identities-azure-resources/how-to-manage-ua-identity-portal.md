@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/16/2018
 ms.author: daveba
-ms.openlocfilehash: 529daff80f8cfa0f9e4c9e64efd5648ae57e6e66
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 6729bee9bfebd8e80ae3b791dc2a8a480ac8b525
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44028058"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44158718"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-the-azure-portal"></a>Vytvoření seznamu nebo odstranit uživatelem přidělenou spravovanou identitu pomocí webu Azure portal
 
-[!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
+[!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
 Spravované identity pro prostředky Azure poskytuje služby Azure s využitím spravované identity v Azure Active Directory. Tuto identitu můžete použít k ověření služby, které podporují ověřování Azure AD, aniž by bylo přihlašovací údaje ve vašem kódu. 
 

@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: b6423a80b0405bcaabd4f1fc8e26dc3be0adadb0
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: c2048583cde397ac3325fd149982b3a3db475566
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44028031"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44157275"
 ---
 # <a name="assign-a-managed-service-identity-access-to-a-resource-by-using-the-azure-portal"></a>Identita spravované služby se přístup k prostředku přiřadit i pomocí webu Azure portal
 
-[!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
+[!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
 Po dokončení konfigurace k prostředku Azure s Identity spravované služby (MSI), můžete poskytnout přístup MSI do jiného prostředku, stejně jako jakýkoli zaregistrovaný objekt zabezpečení. Tento článek ukazuje, jak poskytnout přístup MSI sadu škálování virtuálního počítače nebo virtuálního počítače Azure do účtu služby Azure storage pomocí webu Azure portal.
 

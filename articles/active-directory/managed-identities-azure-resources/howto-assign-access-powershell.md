@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: 6d503526ed97dd1f61269acd83810cd44598d72f
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 936d549469df2cf4c303f0c3fd185f07281bb69b
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44028011"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44160128"
 ---
 # <a name="assign-a-managed-service-identity-msi-access-to-a-resource-using-powershell"></a>Přiřadit Identity spravované služby (MSI) přístup k prostředku pomocí Powershellu
 
-[!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
+[!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
 Po dokončení konfigurace k prostředku Azure pomocí MSI, můžete poskytnout přístup MSI do jiného prostředku, stejně jako libovolný objekt zabezpečení. Tento příklad ukazuje, jak udělit přístupu MSI virtuálního počítače Azure pro účet úložiště Azure pomocí Powershellu.
 

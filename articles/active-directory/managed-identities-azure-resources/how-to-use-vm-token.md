@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: daveba
-ms.openlocfilehash: 6bb2fa30d79093eab2259cc8234115cfcd1fd1c3
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 86830d8a13e4d83ff48bcf7e2f2dfac41d764718
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44028062"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44161420"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Jak získat přístupový token pomocí spravované identity pro prostředky Azure na Virtuálním počítači Azure 
 
-[!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]  
+[!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]  
 
 Spravované identity pro prostředky Azure poskytuje služby Azure se automaticky spravované identity v Azure Active Directory. Tuto identitu můžete použít k ověření na libovolnou službu, která podporuje ověřování Azure AD, aniž by bylo přihlašovací údaje ve vašem kódu. 
 
@@ -78,7 +78,7 @@ GET 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-0
 | `object_id` | (Volitelné) Parametr řetězce dotazu, která object_id spravovanou identitu, kterou byste chtěli token pro. Povinné, pokud se váš virtuální počítač má několik spravovaných uživatelsky přiřazené identity.|
 | `client_id` | (Volitelné) Parametr řetězce dotazu, která client_id spravovanou identitu, kterou byste chtěli token. Povinné, pokud se váš virtuální počítač má několik spravovaných uživatelsky přiřazené identity.|
 
-Ukázková žádost pomocí spravované identity pro prostředky Azure koncového bodu virtuálního počítače rozšíření *(Chcete-li být zastaralé)*:
+Ukázková žádost pomocí spravované identity pro prostředky Azure koncového bodu virtuálního počítače rozšíření *(plánovaná k převedení na zastaralého v lednu 2019)*:
 
 ```
 GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.com%2F HTTP/1.1

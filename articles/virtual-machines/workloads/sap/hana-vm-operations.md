@@ -13,20 +13,20 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/27/2018
+ms.date: 09/06/2018
 ms.author: msjuergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e2ff826f21adf12d48b21acefe4b704866e02c04
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 0a6c9d4ad27eb6dc6b0aba24f32a4a0dfde3c784
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42917954"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44163308"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Konfigurace infrastruktury SAP HANA a operací v Azure
 Tento dokument obsahuje pokyny pro konfiguraci infrastruktury Azure a operační systémy SAP HANA, které jsou nasazené na nativních virtuálních počítačích Azure (VM). Dokument obsahuje také informace o konfiguraci pro SAP HANA Škálováním pro skladovou Položku virtuálního počítače M128s. Tento dokument není určena k nahrazení standardní dokumentaci k SAPU, který obsahuje následující obsah:
 
-- [Příručka věnovaná SAP](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/330e5550b09d4f0f8b6cceb14a64cd22.html)
+- [Příručka věnovaná SAP](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/330e5550b09d4f0f8b6cceb14a64cd22.html)
 - [Průvodců instalací SAPU](https://service.sap.com/instguides)
 - [Poznámky SAP](https://sservice.sap.com/notes)
 
@@ -212,6 +212,11 @@ Při instalaci virtuálních počítačů pro spuštění SAP HANA, třeba virtu
 
 - Dvě virtuální síťové karty nainstalované: jednu síťovou kartu pro připojení k podsíti správy a jednu síťovou kartu pro připojení z místní sítě a jiných sítí, na instance SAP HANA ve virtuálním počítači Azure.
 - Statické privátní IP adresy, které jsou nasazené pro obě virtuální síťové karty.
+
+> [!NOTE]
+> Byste měli přiřadit statické IP adresy pomocí Azure znamená, že na jednotlivé virtuální síťové adaptéry. Pro virtuální síťový adaptér by neměl přiřadit statické IP adresy v rámci hostovaného operačního systému. Některé služby Azure, jako je služba Azure Backup závisí na skutečnost, který na alespoň primárního virtuálního síťového adaptéru je nastavena, DHCP, ne statické IP adresy. Viz také dokument [Poradce při potížích s Azure se zálohováním virtuálních počítačů](https://docs.microsoft.com/azure/backup/backup-azure-vms-troubleshoot#networking). Pokud je potřeba přiřadit více statických IP adres k virtuálnímu počítači, musíte přiřadit víc karet Vnic k virtuálnímu počítači.
+>
+>
 
 Ale pro nasazení, které jsou enduring, budete muset vytvořit virtuální datové centrum síťové architektury v Azure. Tato architektura se doporučuje oddělení brány virtuální sítě Azure, která se připojuje k místním do samostatné virtuální sítě Azure. Tento samostatný virtuální sítě by měl hostovat veškerý provoz, které se zasílají buď místní nebo k Internetu. Tento přístup umožňuje nasadit software pro auditování a protokolování provoz, který zadá virtuální datové centrum Azure v tento samostatný virtuální síti centra. Je proto nutné jednu virtuální síť, který je hostitelem veškerý software a konfigurace, které se týkají in - a odchozí provoz do nasazení vašeho řešení Azure.
 

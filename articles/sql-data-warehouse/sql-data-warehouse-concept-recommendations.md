@@ -10,20 +10,20 @@ ms.component: manage
 ms.date: 07/27/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 35ae3d1a8a6de2d348f90e2f55b732421b879917
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 48d64873f0a8c3754ac5c3ecda2294c0f337b9d5
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307633"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44094600"
 ---
 # <a name="sql-data-warehouse-recommendations"></a>Doporučení pro SQL Data Warehouse
 
 Tento článek popisuje doporučení obsluhuje SQL Data Warehouse pomocí Azure Advisoru.  
 
-SQL Data Warehouse poskytuje doporučení, aby váš datový sklad je trvale optimalizován pro výkon. Doporučení pro datový sklad je úzce integrovaná s [Azure Advisoru](https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations) , kde přinášejí osvědčené postupy přímo v rámci [webu Azure portal](https://aka.ms/Azureadvisor). SQL Data Warehouse analyzuje aktuální stav služby data warehouse, shromažďuje telemetrická data a zařízení Surface doporučení pro aktivní úlohy na denní bázi. Scénáře podporovaná data warehouse doporučení jsou popsány níže spolu s jak použít doporučené akce.
+SQL Data Warehouse poskytuje doporučení, aby váš datový sklad je trvale optimalizován pro výkon. Datový sklad doporučení jsou úzce integrovaná s [Azure Advisoru](https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations) , kde přinášejí osvědčené postupy přímo v rámci [webu Azure portal](https://aka.ms/Azureadvisor). SQL Data Warehouse analyzuje aktuální stav služby data warehouse, shromažďuje telemetrická data a zařízení Surface doporučení pro aktivní úlohy na denní bázi. Scénáře podporovaná data warehouse doporučení jsou popsány níže spolu s jak použít doporučené akce.
 
-Pokud máte nějakou zpětnou vazbu na Poradce pro SQL Data Warehouse nebo setkáte s problémy, kontaktujte prosím [ sqldwadvisor@service.microsoft.com ](mailto:sqldwadvisor@service.microsoft.com).   
+Pokud máte nějakou zpětnou vazbu na Poradce pro SQL Data Warehouse nebo setkáte s problémy, kontaktujte [ sqldwadvisor@service.microsoft.com ](mailto:sqldwadvisor@service.microsoft.com).   
 
 Klikněte na tlačítko [tady](https://aka.ms/Azureadvisor) zkontrolujte svá doporučení ještě dnes! Aktuálně tato funkce se vztahuje na Gen2 pouze datové sklady. 
 
@@ -39,4 +39,4 @@ Budete mít statistiky neoptimální může vážně ovlivnit výkon dotazů, pr
 
 - [Vytváření a aktualizaci statistik tabulek](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistic)
 
-Pro tyto dvě doporučení Poradce průběžně běží následující [skriptu T-SQL](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/samples/sqlops/MonitoringScripts/ImpactedTables) k identifikaci tabulek vliv Nerovnoměrná distribuce a statistiky doporučení.
+Pokud chcete zobrazit seznam ovlivněných tabulek pomocí těchto doporučení, spusťte následující příkaz [skriptu T-SQL](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/samples/sqlops/MonitoringScripts/ImpactedTables). Advisor nepřetržitě spouští stejný skript T-SQL ke generování těchto doporučení.

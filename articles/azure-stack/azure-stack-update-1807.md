@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: b5bcd12d3ead3fa99f80355e02a068246d7bcfa8
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: eabd6fdd643f7f8e1795f791e8a66e612651dee2
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/07/2018
-ms.locfileid: "44052802"
+ms.locfileid: "44159499"
 ---
 # <a name="azure-stack-1807-update"></a>Aktualizace služby Azure Stack 1807
 
@@ -143,7 +143,11 @@ Další informace o těchto ohrožení zabezpečení, klikněte na výše uveden
   > - Atom: https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom ...
 
 
-- Před instalací této aktualizace, spusťte [testovací AzureStack](azure-stack-diagnostic-test.md) ověřit stav služby Azure Stack a vyřešte všechny provozní problémy zjištěné, včetně všech upozornění a chyby. Také aktivní výstrahy můžete zkontrolovat a vyřešit všechny, které vyžadují nějakou akci.
+- Před instalací této aktualizace, spusťte [testovací AzureStack](azure-stack-diagnostic-test.md) s následujícími parametry do ověřte stav služby Azure Stack a vyřešte všechny provozní problémy zjištěné, včetně všech upozornění a chyby. Také aktivní výstrahy můžete zkontrolovat a vyřešit všechny, které vyžadují nějakou akci.  
+
+  ```PowerShell
+  Test-AzureStack -Include AzsControlPlane, AzsDefenderSummary, AzsHostingInfraSummary, AzsHostingInfraUtilization, AzsInfraCapacity, AzsInfraRoleSummary, AzsPortalAPISummary, AzsSFRoleSummary, AzsStampBMCSummary
+  ``` 
 
 ### <a name="known-issues-with-the-update-process"></a>Známé problémy s proces aktualizace
 

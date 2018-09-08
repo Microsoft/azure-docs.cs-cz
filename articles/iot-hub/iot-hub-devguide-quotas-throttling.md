@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 09/05/2018
 ms.author: dobett
-ms.openlocfilehash: c9004e776488006d563fd4de791cade69736a5b8
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 3989ff6e8ef600500f1c3dcc292d4385d6fb4a8b
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44024365"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44162559"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Reference – IoT Hub kvóty a omezování
 
@@ -25,7 +25,7 @@ Každé centrum IoT se služnou počet jednotek v konkrétní úroveň. Úrovně
 Na úrovni také určuje omezení, které služby IoT Hub vynucuje pro všechny operace.
 
 ## <a name="operation-throttles"></a>Omezení operace
-Omezení operace jsou míry omezení, které se použijí v minuta rozsahy a jsou určené k zabránění zneužití. IoT Hub pokusí zamezit vrácení chyby, kdykoli je to možné, ale spustí vrácení výjimky, pokud akcelerátor porušení příliš dlouho.
+Omezení operace jsou míry omezení, které se použijí v minuta rozsahy a jsou určené k zabránění zneužití. IoT Hub pokusí zamezit vrácení chyby, kdykoli je to možné, ale spustí vrácení `429 ThrottlingException` Pokud porušení omezení příliš dlouho.
 
 V každém okamžiku může zvýšit kvóty nebo limity omezení zvýšením počtu zřízených jednotek služby IoT hub.
 
@@ -42,15 +42,14 @@ V následující tabulce jsou uvedeny vynucené omezení. Hodnoty se vztahují j
 | Přímé metody<sup>1</sup> | 160KB/s/jednotku<sup>2</sup> | 480KB/s/jednotku<sup>2</sup> | 24MB/s/jednotku<sup>2</sup> | 
 | (Zařízení a modul) čtení dvojčat<sup>1</sup> | 10 za sekundu | Vyšší 10/s nebo 1/s/jednotku | 50/s/jednotku |
 | Dvojče aktualizace (zařízení a modul)<sup>1</sup> | 10 za sekundu | Vyšší 10/s nebo 1/s/jednotku | 50/s/jednotku |
-| Úlohy vytvoření, aktualizace, seznamu nebo operace odstranění | 1.67/sec/Unit (100/min/jednotku) | 1.67/sec/Unit (100/min/jednotku) | 83.33/sec/Unit (5 000/min/jednotku) |
-| Dvojče úlohy aktualizace, vyvolat operace přímé metody | 10 za sekundu | Vyšší 10/s nebo 1/s/jednotku | 50/s/jednotku |
-| Úlohy hromadné operace importu/exportu | 1 aktivní úlohy na Centrum | 1 aktivní úlohy na Centrum | 1 aktivní úlohy na Centrum |
+| Úlohy operace<sup>1,3</sup> <br/> (vytvoření, aktualizace, výpis, odstranění) | 1.67/sec/Unit (100/min/jednotku) | 1.67/sec/Unit (100/min/jednotku) | 83.33/sec/Unit (5 000/min/jednotku) |
+| Úlohy zařízení operace<sup>1</sup> <br/> (aktualizovat dvojče, vyvolání přímé metody) | 10 za sekundu | Vyšší 10/s nebo 1/s/jednotku | 50/s/jednotku |
 | Konfigurace a nasazení hraniční<sup>1</sup> <br/> (vytvoření, aktualizace, výpis, odstranění) | 0.33/sec/Unit (20/min/jednotku) | 0.33/sec/Unit (20/min/jednotku) | 0.33/sec/Unit (20/min/jednotku) |
 
 
-<sup>1</sup>tato funkce není k dispozici na úrovni basic služby IoT Hub. Další informace najdete v tématu [návodu k výběru správné služby IoT Hub](iot-hub-scaling.md). <br/><sup>2</sup>funguje omezování měření velikosti 8 KB.
+<sup>1</sup>tato funkce není k dispozici na úrovni basic služby IoT Hub. Další informace najdete v tématu [návodu k výběru správné služby IoT Hub](iot-hub-scaling.md). <br/><sup>2</sup>funguje omezování měření velikosti 8 KB. <br/><sup>3</sup>současně můžete mít jenom jednu úlohu importu/exportu aktivních zařízení.
 
-*Připojení zařízení* řídí omezení frekvence, ve kterém je možné navázat nová připojení zařízení pomocí služby IoT hub. *Připojení zařízení* omezení neřídí maximální počet současně připojených zařízení. Omezení závisí na počtu jednotek, které jsou zřízené pro službu IoT hub.
+*Připojení zařízení* řídí omezení frekvence, ve kterém je možné navázat nová připojení zařízení pomocí služby IoT hub. *Připojení zařízení* omezení neřídí maximální počet současně připojených zařízení. *Připojení zařízení* omezení frekvence závisí na počtu jednotek, které jsou zřízené pro službu IoT hub.
 
 Například pokud zakoupíte jedné jednotky S1, můžete získat omezení 100 připojení za sekundu. Proto se pokud chcete připojit 100 000 zařízení, trvá aspoň 1 000 sekund (přibližně 16 minut). Však může mít libovolný počet současně připojených zařízení, máte zařízení registrovaná v registru identit.
 

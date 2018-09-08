@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: barbkess
-ms.openlocfilehash: 0fa8fc6408a81429dfa9e8d73ef842644591c144
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 1c9fe9fb63b45233ed1a11bb63c0763c6103bc6d
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39365935"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44095177"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Zápis výrazů pro mapování atributů ve službě Azure Active Directory
 Při konfiguraci zřizování pro aplikace SaaS, je jedním z typů mapování atributů, které můžete zadat mapování výrazu. Pro ty musíte napsat skript jako výraz, který umožňuje transformovat data uživatelů na formáty, které jsou více přijatelné pro aplikace SaaS.
@@ -207,7 +207,7 @@ Například pokud je doména "contoso.com", pak můžete použít následující
 Pokud používáte Sandboxu služby Salesforce, můžete potřebovat přidat další přípony pro všechny své uživatelské jméno před jejich synchronizaci.
 
 **Výraz:** <br>
-`Append([userPrincipalName], ".test"))`
+`Append([userPrincipalName], ".test")`
 
 **Ukázkový vstup/výstup:** <br>
 

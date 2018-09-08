@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
 ms.author: lmolkova
-ms.openlocfilehash: 5489fa999f3427345c3ee9f07f904296de224e31
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: e30c6b9ef8f593f2fea3f6e3f5ccf22734ca5bee
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42058651"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44092168"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Distribuované trasování a korelace prostřednictvím zasílání zpráv Service Bus
 
@@ -83,10 +83,10 @@ async Task ProcessAsync(Message message)
 V tomto příkladu `RequestTelemetry` se použije v hlášení pro každou zpracovanou zprávu s časovým razítkem, doba trvání a výsledek (úspěch). Telemetrická data také obsahuje sadu vlastností korelace.
 Vnořené trasování a výjimky během zpracování zpráv jsou také označené s vlastnostmi korelace představující jako "podřízené" `RequestTelemetry`.
 
-V případě, že provedete volání na externí komponenty, podporovaná při zpracování zprávy, jsou také automagically sledovány a korelační. Odkazovat na [sledování vlastních operací pomocí Application Insights .NET SDK](../application-insights/application-insights-custom-operations-tracking.md) pro ruční sledování a korelace.
+V případě, že provedete volání na externí komponenty, podporovaná při zpracování zprávy, jsou také automaticky sledovat a korelační. Odkazovat na [sledování vlastních operací pomocí Application Insights .NET SDK](../application-insights/application-insights-custom-operations-tracking.md) pro ruční sledování a korelace.
 
 ### <a name="tracking-without-tracing-system"></a>Sledování bez trasování systému
-V případě, že váš systém trasování nepodporuje volání služby Service Bus automagical sledování můžete hledat do přidání těchto podpory do trasování systému nebo do vaší aplikace. Tato část popisuje diagnostické události odeslané klientem služby Service Bus .NET.  
+V případě, že váš systém trasování nepodporuje automatické volání služby Service Bus pro sledování můžete hledat do přidání těchto podpory do trasování systému nebo do vaší aplikace. Tato část popisuje diagnostické události odeslané klientem služby Service Bus .NET.  
 
 Klient .NET služby Service Bus je instrumentováno pomocí .NET trasování primitiv [System.Diagnostics.Activity](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) a [System.Diagnostics.DiagnosticSource](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md).
 

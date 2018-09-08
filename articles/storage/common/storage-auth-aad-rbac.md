@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/16/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 75b7ecac465fa12b1e19ca409d1535d89c755801
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 7dde80d8134a6f30f4f32086a2dd030712051256
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44021883"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44093138"
 ---
 # <a name="manage-access-rights-to-azure-storage-data-with-rbac-preview"></a>Správa přístupových práv k datům služby Azure Storage pomocí RBAC (Preview)
 
@@ -34,10 +34,7 @@ Další informace o tom, předdefinované role jsou definované pro službu Azur
 
 Můžete také definovat vlastní role pro použití s kontejnery a fronty. Další informace najdete v tématu [vytváření vlastních rolí pro řízení přístupu](https://docs.microsoft.com/azure/role-based-access-control/custom-roles). 
 
-> [!IMPORTANT]
-> V této verzi preview je určeno pouze pro nevýrobní prostředí. Produkční smlouvy o úrovni služeb (SLA) nebudou dostupné, dokud integrace Azure AD pro službu Azure Storage je deklarována jako obecně dostupné. Pokud se integrace služby Azure AD není dosud podporována pro váš scénář, dál používat povolení sdíleného klíče nebo tokeny SAS ve svých aplikacích. Další informace o verzi preview najdete v tématu [ověření přístupu ke službě Azure Storage pomocí Azure Active Directory (Preview)](storage-auth-aad.md).
->
-> Ve verzi preview přiřazení rolí pro RBAC může trvat až pět minut na dokončení propagace.
+[!INCLUDE [storage-auth-aad-note-include](../../../includes/storage-auth-aad-note-include.md)]
 
 ## <a name="assign-a-role-to-a-security-principal"></a>Přiřadit roli instančnímu objektu zabezpečení
 

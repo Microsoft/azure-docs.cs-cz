@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 3bd5b122-1695-495f-ad9a-7c2a4cd1c808
 ms.service: security-center
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/26/2018
 ms.author: terrylan
-ms.openlocfilehash: 434b73d4625f86fab195dbda1fed9c841791f5b6
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
-ms.translationtype: HT
+ms.openlocfilehash: 8fe2195559d807ef72b54603c8b4118ada705880
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37099455"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44162865"
 ---
 # <a name="security-health-monitoring-in-azure-security-center"></a>Sledování stavu zabezpečení v Azure Security Center
 Tento článek vám pomůže s využíváním možností v Azure Security Center ke sledování dodržování zásad.
@@ -118,7 +118,7 @@ Pokud chcete povolit auditování, vyberte **Zapnuto** pod možností **Auditov�
 
 Další informace najdete v článku o [monitorování identity a přístupu v Azure Security Center](security-center-identity-access.md).
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 V tomto článku jste zjistili, jak ve službě Azure Security Center používat funkce sledování. Pokud se o službě Azure Security Center chcete dozvědět víc, pročtěte si tato témata:
 
 * [Nastavení zásad zabezpečení ve službě Azure Security Center](security-center-policies.md): Zjistěte, jak se v Azure Security Center konfiguruje nastavení zabezpečení.

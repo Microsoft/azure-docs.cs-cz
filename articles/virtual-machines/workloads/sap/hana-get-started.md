@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/15/2016
+ms.date: 09/06/2018
 ms.author: hermannd
-ms.openlocfilehash: 1948fb927c00e928a46c347bc6f1a01a43e155df
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 5ce80e85f00c4c3542bf61e910baec9ccd635bcd
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43112135"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44161301"
 ---
 # <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-vms"></a>Rychlý start: Ruční instalace jedné instance SAP HANA na virtuálních počítačích Azure
 ## <a name="introduction"></a>Úvod
@@ -45,7 +45,9 @@ Tato příručka také předpokládá, že máte zkušenosti s:
    * Podrobnosti o tom, jak zvýšit efektivitu ve využívání s instalací s několika SID ASCS/SCS v Azure. Zobrazit [vytvoření konfigurace několika identifikátorů SID SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-multi-sid). 
    * Principy používání systému SAP NetWeaver založené na Linuxu řízené virtuální počítače v Azure. Zobrazit [používání systému SAP NetWeaver na virtuálních počítačích Microsoft Azure operačním systémem SUSE Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/suse-quickstart). Tato příručka obsahuje konkrétní nastavení pro Linux v Azure virtuální počítače a podrobnosti o tom, jak správně připojení služby Azure storage disků pro virtuální počítače s Linuxem.
 
-V tuto chvíli virtuální počítače Azure s certifikací SAP pro SAP HANA škálovat pouze konfigurace. Horizontální navýšení kapacity konfigurací s úlohy SAP HANA se ještě nepodporují. Pro zajištění vysoké dostupnosti SAP HANA v případě konfigurace vertikálně navýšit kapacitu, najdete v článku [vysoké dostupnosti SAP Hana na Azure virtual machines (VM)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability).
+Typy virtuálních počítačů Azure, které lze použít pro produkční scénáře jsou uvedeny v [dokumentaci k SAPU pro IAAS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html). U scénářů s testovacím širší nativní typy virtuálních počítačů Azure je k dispozici.
+Podrobné informace o virtuálním počítači operace a konfigurace najdete dokumentu [konfigurace infrastruktury SAP HANA a operací v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations).
+Pro zajištění vysoké dostupnosti SAP HANA, naleznete v tématu [vysoké dostupnosti SAP HANA pro Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-overview).
 
 Pokud hledáte získejte instance SAP HANA nebo S/4HANA nebo BW/4HANA systému nasazené ve velmi rychlé uvedení, měli byste zvážit použití [SAP Cloud Appliance Library](http://cal.sap.com). Můžete najít dokumentaci k nasazení, například systém S/4HANA přes SAP CAL na Azure v [Tato příručka](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h). Je všechno, co je potřeba mít předplatné Azure a SAP uživatele, který lze dokument zaregistrovat u SAP Cloud Appliance Library.
 

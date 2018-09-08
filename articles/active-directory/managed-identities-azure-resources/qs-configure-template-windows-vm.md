@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: 5bdd764c3e3c273e3495085f2b684cfdd316706d
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 9021f65e3418ace408177e618390438d312cfed2
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44027969"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44158938"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-a-templates"></a>Konfigurace spravovaných identit pro prostředky Azure na Virtuálním počítači Azure pomocí šablony
 
-[!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
+[!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
 Spravované identity pro prostředky Azure poskytuje služby Azure se automaticky spravované identity v Azure Active Directory. Tuto identitu můžete použít k ověření na libovolnou službu, která podporuje ověřování Azure AD, aniž by bylo přihlašovací údaje ve vašem kódu. 
 
@@ -68,7 +68,7 @@ V této části se povolí a zakáže systém přiřadil spravovanou identitu po
 3. (Volitelné) Přidání virtuálních počítačů spravovaných identit pro rozšíření prostředků Azure jako `resources` elementu. Tento krok je volitelný, i identitu koncového bodu Azure Instance Metadata služby (IMDS), můžete použít k získání tokenů také.  Použijte následující syntaxi:
 
    >[!NOTE] 
-   > V následujícím příkladu se předpokládá rozšíření virtuálního počítače Windows (`ManagedIdentityExtensionForWindows`) se nasazuje. Můžete také nakonfigurovat pro Linux s použitím `ManagedIdentityExtensionForLinux` namísto toho `"name"` a `"type"` elementy.
+   > V následujícím příkladu se předpokládá rozšíření virtuálního počítače Windows (`ManagedIdentityExtensionForWindows`) se nasazuje. Můžete také nakonfigurovat pro Linux s použitím `ManagedIdentityExtensionForLinux` namísto toho `"name"` a `"type"` elementy. Rozšíření virtuálního počítače je naplánovaná na vyřazení v lednu 2019.
    >
 
    ```JSON
@@ -251,7 +251,7 @@ V této části přiřadíte spravovanou identitu uživatelsky přiřazené k vi
    ```
        
 
-2. (Volitelné) Části `resources` prvku, přidejte následující položku k vašemu virtuálnímu počítači přiřadit rozšíření spravovaná identita. Tento krok je volitelný, i identitu koncového bodu Azure Instance Metadata služby (IMDS), můžete použít k získání tokenů také. Použijte následující syntaxi:
+2. (Volitelné) Části `resources` prvku, přidejte následující položku přiřazení spravovanou identitu rozšíření k vašemu virtuálnímu počítači (plánovaná k převedení na zastaralého v lednu 2019). Tento krok je volitelný, i identitu koncového bodu Azure Instance Metadata služby (IMDS), můžete použít k získání tokenů také. Použijte následující syntaxi:
     ```json
     {
         "type": "Microsoft.Compute/virtualMachines/extensions",

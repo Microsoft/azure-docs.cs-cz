@@ -1,6 +1,6 @@
 ---
-title: 'Bing vlastní vyhledávání: Hledání lokality | Microsoft Docs'
-description: Popisuje postup konfigurace hostované uživatelského rozhraní
+title: 'Vlastní vyhledávání Bingu: Hledání na webu | Dokumentace Microsoftu'
+description: Popisuje, jak nakonfigurovat prostředí uživatelského rozhraní
 services: cognitive-services
 author: brapel
 manager: ehansen
@@ -9,59 +9,59 @@ ms.component: bing-custom-search
 ms.topic: article
 ms.date: 09/28/2017
 ms.author: v-brapel
-ms.openlocfilehash: 593ea4d23f8ddcec8efc4be632afa2aab1a5210f
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 7f2b97479ffcdb7ec8b3a1a635562d1fe68c3269
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342863"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44158403"
 ---
-# <a name="configure-your-hosted-ui-experience"></a>Konfigurace prostředí hostované uživatelského rozhraní
-Po dokončení konfigurace vaše vlastní hledání instance, můžete volat rozhraní API služby vlastní Search a získat výsledky hledání je zobrazit v aplikaci. Nebo, pokud je vaše aplikace webové aplikace, můžete použít hostované uživatelské rozhraní, které poskytuje vlastní vyhledávání.   
+# <a name="configure-your-hosted-ui-experience"></a>Konfigurace prostředí uživatelského rozhraní
+Po dokončení konfigurace vaší instance vlastního hledání, můžete volat rozhraní API pro vlastní vyhledávání k získání výsledků hledání a zobrazí je ve vaší aplikaci. Nebo, pokud je vaše aplikace webová aplikace, můžete použít hostované uživatelského rozhraní, která poskytuje vlastní vyhledávání.   
 
-## <a name="configure-custom-hosted-ui"></a>Konfigurace vlastní hostované uživatelského rozhraní
-Použijte následující pokyny ke konfiguraci hostované uživatelského rozhraní pro zahrnutí do vaší webové aplikace.
-1.  Přihlaste se k hledání vlastní [portál](https://customsearch.ai).
-2.  Klikněte na tlačítko Vlastní hledání instance. K vytvoření instance, najdete v části [vytvoření vaší první instance Bing vlastní vyhledávání](quick-start.md).
-3.  Klikněte **hostované uživatelského rozhraní** kartě.
+## <a name="configure-custom-hosted-ui"></a>Konfigurace vlastního prostředí uživatelského rozhraní
+Použijte následující pokyny ke konfiguraci prostředí uživatelského rozhraní pro zahrnutí do vaší webové aplikace.
+1.  Přihlaste se k vlastní vyhledávání [portál](https://customsearch.ai).
+2.  Klikněte na instanci vlastního vyhledávání. Vytvoření instance najdete v tématu [vytvořit první instanci vlastního vyhledávání Bingu](quick-start.md).
+3.  Klikněte na tlačítko **hostované uživatelského rozhraní** kartu.
 4.  Vyberte rozložení.
     - Panel hledání a výsledky (výchozí) &mdash; zobrazit vyhledávací pole a výsledky hledání
-    - Výsledky pouze &mdash; nemáte zobrazit vyhledávací pole, zobrazit pouze výsledky
-    - POP přes &mdash; nemáte zobrazit vyhledávací pole, zobrazit pouze výsledky v posuvné překrytí
+    - Výsledky pouze &mdash; nechcete zobrazit vyhledávací pole, zobrazit pouze výsledky
+    - POP – selhání &mdash; nechcete zobrazit vyhledávací pole, zobrazit výsledky pouze v posuvné překrytí
     
    > [!IMPORTANT]
-   > Nezapomeňte zahrnout parametr dotazu customConfig při výběru **výsledky pouze** rozložení, najdete v části [parametrů dotazu](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#query-parameters).
+   > Nezapomeňte zahrnout parametr dotazu customConfig při výběru **pouze výsledky** rozložení, naleznete v tématu [parametrů dotazu](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference#query-parameters).
 
-5.  V části **další konfigurace**, zadejte hodnoty jako vhodné pro vaši aplikaci. Tato nastavení jsou volitelné. Účinek použití nebo je odstranit, najdete v podokně náhledu na pravé straně.  Výběr dostupných možností konfigurace jsou:
-    - Webové hledání konfigurace:
-        - Webové výsledky povoleno &mdash; Určuje, pokud jsou vráceny výsledky hledání web
-        - Povolit pro automatické návrhy &mdash; určuje Pokud vlastní pro automatické návrhy je povoleno
-        - Webové výsledky na stránce &mdash; počet výsledků hledání webové zobrazíte v čase
-        - Popisek bitové kopie &mdash; Určuje, zda se zobrazí bitové kopie s výsledky hledání
-        - Zvýrazňovat slova &mdash; Určuje, zda se zobrazí výsledky s hledaným výrazům tučným písmem
-    - Obrázek hledání konfigurace:
-        - Obrázek výsledky povoleno &mdash; Určuje, pokud jsou vráceny výsledky hledání bitové kopie
+5.  V části **další konfigurace**, zadejte hodnoty jako vhodná pro vaši aplikaci. Tato nastavení jsou volitelná. Efekt použití nebo odstranění najdete v tématu podokno náhledu na pravé straně.  Výběr dostupných možností konfigurace jsou:
+    - Konfigurace webového vyhledávání:
+        - Webové výsledky s povolenou &mdash; Určuje, pokud jsou vráceny výsledky hledání na webu
+        - Povolit pro automatické návrhy &mdash; určuje zda vlastních automatických návrhů je povolen
+        - Počet výsledků na stránku webové &mdash; počet výsledky hledání na webu pro zobrazení v čase
+        - Popisek image &mdash; Určuje, zda se zobrazí obrázky s výsledky hledání
+        - Zvýrazňovat slova &mdash; Určuje, zda se zobrazí výsledky s hledané termíny tučným písmem
+    - Obrázek konfigurace hledání:
+        - Obrázek výsledky s povolenou &mdash; Určuje, pokud jsou vráceny výsledky hledání obrázků
     - Různé konfigurace:
-        - Název stránky &mdash; Text zobrazovaný v oblasti název stránky
-        - Panel nástrojů motiv &mdash; Určuje barvu pozadí oblasti název stránky
-        - Hledání zástupný text pole &mdash; Text zobrazovaný v před pole hledání jako vstup
-        - Adresa url odkazu název &mdash; cíl pro název odkazu
-        - Adresa url loga &mdash; bitové kopie, zobrazí vedle názvu 
-        - Adresa url Favicon &mdash; ikona zobrazí v záhlaví prohlížeče
+        - Název stránky &mdash; Text zobrazený v nadpisu stránky
+        - Panel nástrojů motiv &mdash; Určuje barvu pozadí oblasti nadpis stránky
+        - Hledat zástupný text box &mdash; Text zobrazený ve vyhledávání předchozí pole k zadání
+        - Adresa url odkazu na nadpis &mdash; cílový název odkazu
+        - Adresa url loga &mdash; obrázek zobrazený vedle názvu 
+        - Adresa url Favicon &mdash; ikona zobrazovaná ve výsledcích záhlaví okna prohlížeče
 
    > [!IMPORTANT]
-   > Musí být povolena alespoň jeden z bitové kopie hledání nebo vyhledávání na webu.
+   > Musí být povolená aspoň jedna pro vyhledávání obrázků nebo vyhledávání na webu.
 
-6.  Zadejte klíč předplatného hledání nebo vyberte jeden z rozevíracího seznamu. Z rozevírací nabídky se zobrazí v klíče z vašeho účtu předplatných Azure. V tématu [kognitivní rozhraní API služby účet](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account).
-7.  Pokud jste povolili automatických návrhů, zadejte klíč předplatného automatických návrhů nebo vyberte jeden z rozevíracího seznamu. Z rozevírací nabídky se zobrazí v klíče z vašeho účtu předplatných Azure. Vlastní automatických návrhů vyžaduje předplatné vrstvu specifiec naleznete [ceny stránky](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/).
+6.  Zadejte klíč předplatného vyhledávání, nebo si vybrat jednoho z rozevíracího seznamu. V rozevíracím seznamu se vyplní klíče z vašeho účtu předplatného Azure. Zobrazit [účet rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account).
+7.  Pokud jste nepovolili automatické návrhy, zadejte klíč předplatného pro automatické návrhy nebo zvolte jednu z rozevíracího seznamu. V rozevíracím seznamu se vyplní klíče z vašeho účtu předplatného Azure. Funkci vlastních automatických návrhů vyžaduje úroveň předplatného specifiec, najdete v článku [stránkách s cenami](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/).
 
 > [!NOTE]
-> Při provádění změn do vlastní konfigurace hostované uživatelského rozhraní, poskytuje podokně na pravé straně referenční dokumentace jazyka visual změny provedené v. Výsledky zobrazené vyhledávání nejsou skutečné výsledky pro vaše instance
+> Při provádění změn pro vlastní prostředí konfigurace uživatelského rozhraní, poskytuje na podokno na pravé straně visual odkaz pro změny. Zobrazené výsledky nejsou skutečné výsledky pro vaši instanci
 
-[!INCLUDE[publish or revert](./includes/publish-revert.md)]
+[!INCLUDE [publish or revert](./includes/publish-revert.md)]
 
-## <a name="consume-custom-ui"></a>Využívat vlastní uživatelské rozhraní
-Rozhraní hostované využívat buď: 
+## <a name="consume-custom-ui"></a>Využívat vlastního uživatelského rozhraní
+Hostované uživatelského rozhraní, využívat buď: 
 
 - Zahrnout skriptu webové stránky
     ``` html
@@ -75,13 +75,13 @@ Rozhraní hostované využívat buď:
     </html>
     ```
 
-- Pomocí adresy URL poskytnuté `https://ui.customsearch.ai/hosted?customConfig=YOUR-CUSTOM-CONFIG-ID`
+- Použijte adresu URL k dispozici `https://ui.customsearch.ai/hosted?customConfig=YOUR-CUSTOM-CONFIG-ID`
 
   > [!IMPORTANT]
-  > Stránku nelze zobrazit zásady ochrany osobních údajů nebo jiných oznámení a podmínky. Vhodnosti pro použití se může lišit.  
+  > Na stránce nelze zobrazit zásady ochrany osobních údajů nebo jiné oznámení a podmínky. Vhodnosti pro používání se můžou lišit.  
 
-Další informace, včetně ID vaše vlastní konfigurace, přejděte na **koncové body** pod **produkční** kartě.
+Další informace, včetně vaší vlastní ID konfigurace, přejděte na **koncové body** pod **produkční** kartu.
 
 ## <a name="next-steps"></a>Další postup
-- [Použití decoration značky zvýraznění textu](./hit-highlighting.md)
+- [Použití dekorace značek zvýraznění textu](./hit-highlighting.md)
 - [Stránka webové stránky](./page-webpages.md)

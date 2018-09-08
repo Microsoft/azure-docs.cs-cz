@@ -3,23 +3,19 @@ title: Odolná služba Functions přehled – Azure
 description: Úvod do rozšíření Durable Functions pro službu Azure Functions.
 services: functions
 author: cgillum
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: ''
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
+ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 25f7cf6de4f217219e510ae00ce21762e755d2e8
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 136316feab5a08308a9f10e499f645aaee0c90d3
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627402"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44093239"
 ---
 # <a name="durable-functions-overview"></a>Trvalý přehled funkcí
 

@@ -5,24 +5,20 @@ services: functions
 documentationcenter: na
 author: ggailey777
 manager: jeconnoc
-editor: ''
-tags: ''
 keywords: Azure functions, funkce, zpracování událostí, dynamické výpočty, architektura bez serveru
 ms.assetid: d2f013d1-f458-42ae-baf8-1810138118ac
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
-ms.tgt_pltfrm: multiple
-ms.workload: na
 ms.date: 08/08/2018
 ms.author: glenga
 ms.custom: ''
-ms.openlocfilehash: 270228e73243e6b2670e7ccb30765526a5db6463
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: e6a3df79bf0786b536dc4c454d19beea2730125a
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42060114"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44093120"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Trigger časovače pro službu Azure Functions 
 

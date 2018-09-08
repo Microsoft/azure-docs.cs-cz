@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: ryanwi
-ms.openlocfilehash: d4b27feab5c1bb5913d2ba26f7f43aca9a899aa0
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: b24860aaf10ba483aeab54d215816314a7d0bc36
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697665"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44162848"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Proto chcete se dozvědět o službě Service Fabric?
 Azure Service Fabric je platforma distribuovaných systémů usnadňující balení, nasazování a spravování škálovatelných a spolehlivých mikroslužeb.  Service Fabric má velký plochy, ale a existuje mnoho dalších informací.  Tento článek poskytuje stručný Service Fabric a popisuje základní koncepty programovacích modelů životního cyklu aplikací, testování, clustery a sledování stavu. Čtení [přehled](service-fabric-overview.md) a [co jsou mikroslužby?](service-fabric-overview-microservices.md) úvod a jak Service Fabric umožňuje vytvářet mikroslužby. Tento článek obsahuje úplný seznam obsahu, ale propojit pro přehled a získávání Začínáme články pro každou oblast Service Fabric. 
@@ -84,7 +84,7 @@ Proč jste stavových mikroslužeb spolu s bezstavové ty? Dva hlavní důvody j
 Service Fabric nabízí několik způsobů, jak zapisovat a spravovat vaše služby. Služby můžou používat rozhraní API služby Service Fabric plně využít funkce platformy a aplikačních architektur. Služby mohou být také všechny zkompilovaný spustitelný program napsané v libovolném jazyce a hostovaná v clusteru Service Fabric. Další informace najdete v tématu [podporované programovací modely](service-fabric-choose-framework.md).
 
 ### <a name="containers"></a>Containers
-Ve výchozím nastavení Service Fabric nasadí a aktivuje služby jako procesy. Service Fabric dokáže nasadit také služby v [kontejnery](service-fabric-containers-overview.md). Co je důležité můžete kombinovat služby v procesech a služby v kontejnerech ve stejné aplikaci. Service Fabric podporuje nasazování kontejnerů Linuxu kontejnery Windows ve Windows serveru 2016. Můžete nasadit aplikace, bezstavové služby nebo stavové služby v kontejnerech. 
+Ve výchozím nastavení Service Fabric nasadí a aktivuje služby jako procesy. Service Fabric dokáže nasadit také služby v [kontejnery](service-fabric-containers-overview.md). Co je důležité můžete kombinovat služby v procesech a služby v kontejnerech ve stejné aplikaci. Service Fabric podporuje nasazování kontejnerů Linuxu a kontejnery Windows ve Windows serveru 2016. Můžete nasadit aplikace, bezstavové služby nebo stavové služby v kontejnerech. 
 
 ### <a name="reliable-services"></a>Reliable Services
 [Reliable Services](service-fabric-reliable-services-introduction.md) je jednoduché rozhraní pro zápis služby, které integrace s platformou Service Fabric a využívat výhod celé sady funkcí platformy. Reliable Services může být bezstavové (podobně jako na většině platforem služby, jako jsou webové servery nebo role pracovních procesů v Azure Cloud Services), kde je trvalý stav ve externí řešení, jako je Azure DB nebo Azure Table Storage. Reliable Services může být stavový, kde je stav ukládaný přímo v samotné použitím spolehlivých kolekcí služby. Stav se provádí [s vysokou dostupností](service-fabric-availability-services.md) prostřednictvím replikace a distribuovaných prostřednictvím [dělení](service-fabric-concepts-partitioning.md), všechny spravované automaticky pomocí Service Fabric.

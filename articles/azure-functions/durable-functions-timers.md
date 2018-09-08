@@ -1,43 +1,39 @@
 ---
-title: Časovače trvanlivý funkcí – Azure
-description: Zjistěte, jak implementovat trvanlivý časovače v rozšíření trvanlivý funkce pro Azure Functions.
+title: Časovače v Durable Functions – Azure
+description: Zjistěte, jak implementovat trvalý časovače v rozšíření Durable Functions pro službu Azure Functions.
 services: functions
 author: cgillum
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: ''
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
+ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 4fd86b70965a7be84c72e265af798292819cbe96
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: ff530d1af9a64383568aa53d3f53c59781d868a5
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33762264"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44090706"
 ---
-# <a name="timers-in-durable-functions-azure-functions"></a>Časovače trvanlivý funkcí (Azure Functions)
+# <a name="timers-in-durable-functions-azure-functions"></a>Časovače v Durable Functions (Azure Functions)
 
-[Trvanlivý funkce](durable-functions-overview.md) poskytuje *trvanlivý časovače* pro použití v orchestrator funkce pro implementaci zpoždění nebo nastavit časové limity na asynchronní akce. Trvanlivý časovače je třeba použít funkce orchestrator místo `Thread.Sleep` a `Task.Delay` (C#), nebo `setTimeout()` a `setInterval()` (JavaScript).
+[Odolná služba Functions](durable-functions-overview.md) poskytuje *trvalý časovače* pro použití ve funkcích produktu orchestrator k implementaci zpoždění nebo nastavit vypršení časového limitu na asynchronní akce. Trvalý časovače byste měli použít ve funkce orchestrátoru místo `Thread.Sleep` a `Task.Delay` (C#), nebo `setTimeout()` a `setInterval()` (JavaScript).
 
-Vytvoření odolné časovač voláním [CreateTimer](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CreateTimer_) metoda v [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html). Metoda vrátí úlohu, která obnoví u zadaného data a času.
+Vytvořte odolné časovače voláním [CreateTimer](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CreateTimer_) metoda [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html). Metoda vrátí úlohu, která obnoví k zadanému datu a času.
 
 ## <a name="timer-limitations"></a>Omezení časovače
 
-Při vytváření, jejíž platnost vyprší ve 4:30, základní enqueues trvanlivý Framework úloh zprávu, která se zobrazí pouze ve 4:30 pm časovač. Při spuštění v plánu spotřeby Azure Functions, nově viditelné časovače zpráva bude zajištěno, že funkce aplikace získá aktivovat na příslušný virtuální počítač.
+Při vytváření časovače, jejíž platnost vyprší v 16:30:00, základní trvalý Framework úloha zařadí zprávu, která se zobrazí pouze v 16:30:00. Při spuštění v plánu consumption Azure Functions, zajistí zpráva nově viditelný časovače, získá aktivovaná aplikace function app na příslušný virtuální počítač.
 
 > [!NOTE]
-> * Trvanlivý časovače nelze poslední delší než 7 dní z důvodu omezení v Azure Storage. Pracujeme na [žádost o funkce rozšířit časovače za 7 dní](https://github.com/Azure/azure-functions-durable-extension/issues/14).
-> * Vždy používat [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) místo `DateTime.UtcNow` podle příkladů níže při výpočtu relativní konečného termínu trvanlivý časovače.
+> * Trvalý časovače nelze trvají déle než 7 dní. z důvodu omezení ve službě Azure Storage. Na kterých pracujeme [funkce žádost o rozšíření časovače se po uplynutí 7 dnů](https://github.com/Azure/azure-functions-durable-extension/issues/14).
+> * Vždy používejte [CurrentUtcDateTime](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CurrentUtcDateTime) místo `DateTime.UtcNow` jak je znázorněno v příkladu níže při výpočtu relativní konečný termín trvalý časovače.
 
 ## <a name="usage-for-delay"></a>Využití pro zpoždění
 
-Následující příklad ukazuje, jak použít časovačů trvanlivý pro zpozdit provádění. V příkladu vydává fakturace oznámení každý den pro deset dní.
+Následující příklad ukazuje, jak používat trvalý časovače pro odkládá se provedení. V příkladu vydává fakturační oznámení každý den po dobu deseti dnů.
 
 #### <a name="c"></a>C#
 
@@ -72,11 +68,11 @@ module.exports = df(function*(context) {
 ```
 
 > [!WARNING]
-> Vyhněte se nekonečné smyčky funkcí produktu orchestrator. Informace o tom, jak bezpečně a efektivně implementovat scénáře nekonečná smyčka najdete v tématu [Eternal Orchestrations](durable-functions-eternal-orchestrations.md). 
+> Vyhněte se nekonečné smyčky ve funkcích produktu orchestrator. Informace o tom, jak bezpečně a efektivně implementovat nekonečná smyčka scénáře najdete v tématu [externí Orchestrace](durable-functions-eternal-orchestrations.md). 
 
-## <a name="usage-for-timeout"></a>Použití časového limitu
+## <a name="usage-for-timeout"></a>Využití časového limitu
 
-Tento příklad ukazuje, jak používat trvanlivý časovače implementovat vypršení časových limitů.
+Tento příklad ukazuje, jak používat trvalý časovače k implementaci vypršení časového limitu.
 
 #### <a name="c"></a>C#
 
@@ -136,14 +132,14 @@ module.exports = df(function*(context) {
 ```
 
 > [!WARNING]
-> Použití `CancellationTokenSource` zrušit trvanlivý časovače (C#) nebo volání `cancel()` na vrácený `TimerTask` (JavaScript), pokud kód nebude počkat na její dokončení. Trvanlivý Framework úlohy nedojde ke změně stavu orchestration "dokončeno", dokud se všechny zbývající úlohy byla dokončena nebo zrušena.
+> Použití `CancellationTokenSource` zrušit trvalý časovače (C#) nebo volání `cancel()` na vrácený `TimerTask` (JavaScript), pokud váš kód nebude čekat na dokončení. Trvalý Framework úlohy nedojde ke změně stavu orchestraci "Dokončit", dokud se všechny zbývající úkoly dokončena nebo zrušena.
 
-Tento mechanismus není ve skutečnosti ukončit provedení funkce probíhající aktivity. Místo toho jednoduše umožní ignorovat výsledek a přechod na funkce produktu orchestrator. Pokud vaše aplikace funkce používá plánu spotřeby, je stále platit pro všechny čas a paměti používané ve funkci opuštěného aktivity. Ve výchozím nastavení mají funkce, které jsou spuštěné v plánu spotřeby vypršení časového limitu pěti minut. Pokud je tento limit překročen, hostitele Azure Functions zastavit všechny provádění a zabránit nezvladatelné situaci fakturace recyklován. [Funkce vypršení časového limitu je možné konfigurovat](functions-host-json.md#functiontimeout).
+Tento mechanismus skutečně neukončí provádění funkce probíhající aktivity. Místo toho to jednoduše umožňuje funkce orchestrátoru ignorovat výsledek a přechod na. Pokud vaši aplikaci function app používáte plán Consumption, se můžete stále účtovat pro jakékoli času a paměti používané funkce opuštěné aktivitu. Funkce běžící v plánu Consumption mají ve výchozím nastavení časového limitu 5 minut. Pokud je tento limit překročen, recykluje všechny zastavíte a zabránit vyčerpává dlouho běžící fakturační situace hostitele Azure Functions. [Funkce vypršení časového limitu je možné konfigurovat](functions-host-json.md#functiontimeout).
 
-Podrobnější příklad, jak implementovat vypršení časových limitů ve funkcích orchestrator, najdete v článku [zásahem ze strany & časové limity - ověření telefonu](durable-functions-phone-verification.md) návod.
+Podrobnější příklad toho, jak implementovat vypršení časových limitů ve funkcích produktu orchestrator, najdete v článku [zásahem ze strany & vypršení časového limitu – ověření pomocí telefonu](durable-functions-phone-verification.md) návodu.
 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Zjistěte, jak vyvolat a zpracování externích událostí](durable-functions-external-events.md)
+> [Zjistěte, jak vyvolat a zpracovat externí události](durable-functions-external-events.md)
 

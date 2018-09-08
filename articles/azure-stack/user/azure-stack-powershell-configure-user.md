@@ -1,6 +1,6 @@
 ---
-title: Konfigurace prostředí uživatele služby Azure Stack Powershellu | Dokumentace Microsoftu
-description: Konfigurace prostředí PowerShell uživatele Azure stacku
+title: Připojení ke službě Azure Stack pomocí prostředí PowerShell jako uživatel | Dokumentace Microsoftu
+description: Kroky pro připojení k instanci služby Azure Stack uživatele.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -12,17 +12,17 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2018
+ms.date: 09/07/2018
 ms.author: sethm
 ms.reviewer: Balsu.G
-ms.openlocfilehash: d8b245666989552208f8cbcf0dddfdfc310f65e0
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: acdad9788737f4f552cedc1b5f42e03e2288dba8
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42058687"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44159075"
 ---
-# <a name="configure-the-azure-stack-users-powershell-environment"></a>Konfigurace prostředí PowerShell uživatele Azure stacku
+# <a name="connect-to-azure-stack-with-powershell-as-a-user"></a>Připojení ke službě Azure Stack pomocí prostředí PowerShell jako uživatel
 
 *Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 

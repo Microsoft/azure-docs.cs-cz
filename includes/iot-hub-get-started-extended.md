@@ -1,10 +1,26 @@
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: iot-hub
+author: dominicbetts
+ms.service: iot-hub
+ms.topic: include
+ms.date: 09/07/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: 73b7604e3072e76c69383481259e1cd8990f4df4
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44168796"
+---
 ## <a name="extended-iot-scenarios"></a>Rozšířené scénáře IoT
 
 Použijete další nástroje a služby Azure. Jakmile budete mít připojené zařízení ke službě IoT Hub, můžete prozkoumat další scénáře, ve kterých se používají další nástroje a služby Azure:
 
 | Scénář                                                   | Nástroj nebo služba Azure              |
 |----------------------------------------------------------- |------------------------------------|
-| [Správa zpráv IoT Hub][Mg_IoT_Hub_Msg]                  | Nástroj iothub-explorer               |
 | [Správa zpráv IoT Hub][Mg_IoT_Toolkit]                  | Rozšíření VS Code Azure IoT Toolkit|
 | [Správa zařízení IoT][Mg_IoT_Dv]                        | Azure CLI 2.0 a rozšíření IoT|
 | [Správa zařízení IoT][Mg_IoT_Dv_Toolkit]                | Rozšíření VS Code Azure IoT Toolkit|
@@ -19,7 +35,6 @@ Použijete další nástroje a služby Azure. Jakmile budete mít připojené za
 Po dokončení těchto kurzů můžete podrobněji prozkoumat možnosti služby IoT Hub v [příručce pro vývojáře][lnk-dev-guide]. Další kurzy najdete v části [Postupy][lnk-how-to].
 
 
-[Mg_IoT_Hub_Msg]: ../articles/iot-hub/iot-hub-explorer-cloud-device-messaging.md
 [Mg_IoT_Toolkit]: ../articles/iot-hub/iot-hub-vscode-iot-toolkit-cloud-device-messaging.md
 [Mg_IoT_Dv]: ../articles/iot-hub/iot-hub-device-management-iot-extension-azure-cli-2-0.md
 [Mg_IoT_Dv_Toolkit]: ../articles/iot-hub/iot-hub-device-management-iot-toolkit.md

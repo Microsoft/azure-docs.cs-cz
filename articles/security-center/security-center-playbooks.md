@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: a8c45ddf-5c4c-4393-b6e9-46ed1f91bf5f
 ms.service: security-center
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2018
 ms.author: yurid
-ms.openlocfilehash: 1d6fee9cb46fcfec32c0ecdb91eec09a56063c4e
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
-ms.translationtype: HT
+ms.openlocfilehash: b9040158679b99ca71a6b973dec9804869351938
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32779273"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44158292"
 ---
 # <a name="security-playbook-in-azure-security-center-preview"></a>Playbook zabezpečení v Azure Security Center (Preview)
 Tento dokument vám pomůže reagovat na problémy související se zabezpečením pomocí playbooků zabezpečení v Azure Security Center.
@@ -96,7 +96,7 @@ Existující playbook ve službě Security Center můžete změnit, pokud chcete
 > Další informace o vytvoření vlastního playbooku pomocí aplikace logiky Azure najdete v tématu [Vytvořte svůj první pracovní postup aplikace logiky pro automatizaci procesů mezi cloudovými aplikacemi a cloudovými službami](https://docs.microsoft.com/azure/logic-apps/logic-apps-create-a-logic-app#add-an-action-that-responds-to-your-trigger).
 
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 V tomto dokumentu jste zjistili, jak používat playbooky ve službě Azure Security Center. Pokud se o službě Azure Security Center chcete dozvědět víc, pročtěte si tato témata:
 
 * [Správa a zpracování výstrah zabezpečení ve službě Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). Zjistěte, jak spravovat výstrahy a reagovat na incidenty zabezpečení ve službě Security Center.

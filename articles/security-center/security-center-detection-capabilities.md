@@ -8,18 +8,18 @@ manager: mbaldwin
 editor: ''
 ms.assetid: 4c5599cc-99a1-430f-895f-601615ef12a0
 ms.service: security-center
-ms.topic: hero-article
+ms.topic: conceptual
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2017
 ms.author: yurid
-ms.openlocfilehash: 699903ff874ace4991c5c4b0584d4661d3e45f33
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.openlocfilehash: a0a218fc18c1c9ede71de590179b0c93221eb80c
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33894229"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44161029"
 ---
 # <a name="azure-security-center-detection-capabilities"></a>Funkce detekce ve službě Azure Security Center
 Tento dokument popisuje pokročilé schopnosti detekce služby Azure Security Center, které pomáhají při identifikaci aktivních hrozeb cílených na prostředky Microsoft Azure, a poskytuje vám informace potřebné pro rychlou reakci na tyto hrozby.
@@ -27,7 +27,7 @@ Tento dokument popisuje pokročilé schopnosti detekce služby Azure Security Ce
 Rozšířená detekce je k dispozici v úrovni Standard služby Azure Security Center. K dispozici je bezplatná 60denní zkušební verze. Upgrade můžete provést z nabídky cenových úrovní v [Zásadách zabezpečení](security-center-policies.md). Další informace o cenách naleznete na stránce [služby Security Center](https://azure.microsoft.com/pricing/details/security-center/). 
 
 > [!NOTE]
-> Ve službě Security Center byla vydána ve verzi Limited Preview nová sada detekcí, které využívají záznamy auditu, což je běžný auditní rámec, k detekci škodlivého chování na počítačích s Linuxem. Pokud se chcete připojit k verzi Preview, zašlete [nám](mailto:ASC_linuxdetections@microsoft.com) e-mail s ID vašich předplatných.
+> Security Center byla vydána ve verzi limited Preview nová sada detekcí, které využívají auditované záznamy běžný auditní rámec, k detekci škodlivého chování na počítačích s Linuxem. Pokud se chcete připojit k verzi Preview, zašlete [nám](mailto:ASC_linuxdetections@microsoft.com) e-mail s ID vašich předplatných.
 
 ## <a name="responding-to-todays-threats"></a>Reakce na současné hrozby
 Za posledních 20 let došlo ve světě hrozeb k významným změnám. V minulosti se společnosti obvykle musely obávat pouze poškození vzhledu webu jednotlivými útočníky, které většinou jen zajímalo předvést, co dokážou udělat. Dnešní útočníci jsou mnohem sofistikovanější a organizovanější. Často mají konkrétní finanční a strategické cíle. Mají také k dispozici větší zdroje, protože mohou být financováni státy nebo organizovanou trestnou činností.
@@ -80,7 +80,7 @@ Služba Azure Security Center zaměstnává týmy pro výzkum zabezpečení a da
 
 Toto celkové úsilí přineslo nové a vylepšené způsoby detekce, ze kterých budete mít okamžitý prospěch – a nemusíte sami nic dělat.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 V tomto dokumentu jste zjistili, jak ve službě Azure Security Center funguje detekce. Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
 
 * [Průvodce plánováním a provozem služby Azure Security Center](security-center-planning-and-operations-guide.md)

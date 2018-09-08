@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/10/2017
 ms.author: nberdy
-ms.openlocfilehash: 0f4d5105b7266ba24fc5efa9af887b4458c05d5e
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 3aa452cd178bd0d064726c5be7dbdf65c6ef8d92
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186192"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44160044"
 ---
 # <a name="iot-hub-operations-monitoring"></a>Monitorování operací služby IoT Hub
 
@@ -186,26 +186,6 @@ Kategorie směrování zpráv sleduje chyb vzniklých při hodnocení trasy zpr�
 }
 ```
 
-## <a name="view-events"></a>Zobrazení událostí
-
-Můžete použít *iothub-explorer* nástroj rychle otestovat, zda služby IoT hub generuje události monitorování. Pokud chcete nástroj nainstalovat, přečtěte si pokyny v [iothub-explorer] [ lnk-iothub-explorer] úložiště GitHub.
-
-1. Ujistěte se, že **připojení** monitorování kategorie je nastavena na **Verbose** na portálu.
-
-1. Na příkazovém řádku spusťte následující příkaz pro čtení z koncového bodu monitorování:
-
-    ```
-    iothub-explorer monitor-ops --login {your iothubowner connection string}
-    ```
-
-1. V jiném příkazového řádku spusťte následující příkaz, který simuluje zařízení odesílající zprávy typu zařízení cloud:
-
-    ```
-    iothub-explorer simulate-device {your device name} --send "My test message" --login {your iothubowner connection string}
-    ```
-
-1. První příkazového řádku zobrazí monitorování události jako připojení simulovaného zařízení do služby IoT hub.
-
 ## <a name="connect-to-the-monitoring-endpoint"></a>Připojte se k monitorování koncového bodu
 
 Monitorování koncového bodu ve službě IoT hub je koncový bod kompatibilní s centrem událostí. Můžete použít libovolný mechanismus, který funguje s Event Hubs slouží ke čtení z tohoto koncového bodu monitorování zpráv. Následující příklad vytvoří čtečku, která není vhodná pro vysoce výkonná nasazení. Další informace o zpracování zpráv ze služby Event Hubs najdete v kurzu [Začínáme se službou Event Hubs][lnk-eventhubs-tutorial].
@@ -303,5 +283,4 @@ Podrobněji prozkoumat možnosti služby IoT Hub, najdete v tématech:
 
 [lnk-devguide]: iot-hub-devguide.md
 [lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md
-[lnk-iothub-explorer]: https://github.com/azure/iothub-explorer
 [lnk-eventhubs-tutorial]: ../event-hubs/event-hubs-csharp-ephcs-getstarted.md

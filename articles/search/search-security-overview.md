@@ -1,130 +1,130 @@
 ---
-title: Zabezpečení a data o ochraně osobních údajů ve službě Azure Search | Microsoft Docs
-description: Služba Azure Search je kompatibilní s SOC 2, HIPAA a dalších certifikátů. Filtruje připojení a data šifrování, ověřování a identita přístupu pomocí uživatele a skupiny identifikátory zabezpečení ve službě Azure Search.
+title: Zabezpečení a dat o ochraně osobních údajů ve službě Azure Search | Dokumentace Microsoftu
+description: Azure Search je kompatibilní s další certifikace, SOC 2 a HIPAA. Filtruje připojení a šifrování, ověřování a identita přístup k datům prostřednictvím uživatele a skupiny identifikátory zabezpečení ve službě Azure Search.
 author: HeidiSteen
 manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 06/19/2018
+ms.date: 09/06/2018
 ms.author: heidist
-ms.openlocfilehash: 888f7c3ced0ef48cff222bffdbf0f278fa5f42b3
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 4b1307aa00fae26d7425c9a95ed673b11ba2e9b4
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36285725"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44092627"
 ---
-# <a name="security-and-data-privacy-in-azure-search"></a>Zabezpečení a data o ochraně osobních údajů ve službě Azure Search
+# <a name="security-and-data-privacy-in-azure-search"></a>Zabezpečení a dat o ochraně osobních údajů ve službě Azure Search
 
-Funkce komplexní zabezpečení a řízení přístupu jsou součástí Azure Search, ujistěte se, že privátní obsah zůstane tímto způsobem. Tento článek vytvoří výčet funkcí a standardy dodržování zabezpečení integrovaný do Azure Search.
+Funkce komplexního zabezpečení a řízení přístupu jsou integrované do Azure Search zajistit, že soukromý obsah zůstane tímto způsobem. Tento článek uvádí funkce a standardy dodržování předpisů zabezpečení integrované do Azure Search.
 
-Architektura zabezpečení služby Azure Search rozdělena na fyzické zabezpečení, šifrované přenosy, šifrované úložiště a dodržování standardů celou platformu. Azure Search operačně přijímá pouze ověřené žádosti. Volitelně můžete přidat uživatelská řízení přístupu na obsah prostřednictvím filtry zabezpečení. Tento článek dotykem na zabezpečení v každé vrstvě, ale se zaměřuje především na tom, jak jsou zabezpečené data a operace ve službě Azure Search.
+Architektura zabezpečení služby Azure Search zahrnuje fyzického zabezpečení, šifrované přenosy, šifrované úložiště a dodržování standardů celou platformu. Azure Search z provozního hlediska přijímá pouze ověřené žádosti. Řízení přístupu na uživatele na obsah můžete volitelně přidat filtry zabezpečení. Tento článek týká zabezpečení v každé vrstvě, ale je primárně zaměřen na službu jak zabezpečená data a operace ve službě Azure Search.
 
-## <a name="standards-compliance-iso-27001-soc-2-hipaa"></a>Dodržování standardů: ISO 27001 SOC 2 HIPAA
+## <a name="standards-compliance-iso-27001-soc-2-hipaa"></a>Standardy dodržování předpisů: ISO 27001, SOC 2, HIPAA
 
-Částečný seznam dodržování standardů zahrnuje SOC 2 typu 2 a HIPAA všeobecně dostupná funkcí. Funkce Preview jsou certifikovány jako součást obecné dostupnosti a nesmí se používat v řešeních s požadavky na konkrétní standardy. Dodržování předpisů certifikační je popsána v [dodržování předpisů přehled Microsoft Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) a [Centrum zabezpečení](https://www.microsoft.com/en-us/trustcenter). 
-
-Certifikace pro následující normy byl [oznámeno v červnu 2018](https://azure.microsoft.com/blog/azure-search-is-now-certified-for-several-levels-of-compliance/).
+Služba Azure Search má certifikaci pro následující normy jako [jsme oznámili v červnu 2018](https://azure.microsoft.com/blog/azure-search-is-now-certified-for-several-levels-of-compliance/):
 
 + [ISO 27001: 2013](https://www.iso.org/isoiec-27001-information-security.html) 
-+ [Dodržování předpisů 2 typ SOC 2](https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report.html) úplné sestavy, přejděte na [Azure – a Azure Government SOC 2 typ II sestava](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide?command=Download&downloadType=Document&downloadId=93292f19-f43e-4c4e-8615-c38ab953cf95&docTab=4ce99610-c9c0-11e7-8c2c-f908a777fa4d_SOC%20%2F%20SSAE%2016%20Reports). 
-+ [Zdravotním pojištění a odpovědnosti za Act (HIPAA)](https://en.wikipedia.org/wiki/Health_Insurance_Portability_and_Accountability_Act)
-+ [Predikativní (část 21 CFR 11)](https://en.wikipedia.org/wiki/Title_21_CFR_Part_11)
++ [Dodržování požadavků SOC 2 typ 2](https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report.html) pro celou sestavu, přejděte na [Azure – a Azure Government SOC 2 typ II sestavy](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide?command=Download&downloadType=Document&downloadId=93292f19-f43e-4c4e-8615-c38ab953cf95&docTab=4ce99610-c9c0-11e7-8c2c-f908a777fa4d_SOC%20%2F%20SSAE%2016%20Reports). 
++ [Health Insurance Portability and Accountability Act (HIPAA)](https://en.wikipedia.org/wiki/Health_Insurance_Portability_and_Accountability_Act)
++ [GxP (21 CFR oddíl 11)](https://en.wikipedia.org/wiki/Title_21_CFR_Part_11)
 + [HITRUST](https://en.wikipedia.org/wiki/HITRUST)
 + [PCI DSS úrovně 1](https://en.wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard)
-+ [Austrálie IRAP zjištění neklasifikovaného DLM](https://asd.gov.au/infosec/irap/certified_clouds.htm)
++ [Austrálie IRAP neutajované DLM](https://asd.gov.au/infosec/irap/certified_clouds.htm)
 
-## <a name="encrypted-transmission-and-storage"></a>Šifrované přenosu a uložení
+Standardy dodržování předpisů se vztahuje na funkce obecně dostupná. Při přechodu do všeobecné dostupnosti a nesmí se používat v řešeních s požadavky přísné normy, které jsou certifikované funkce ve verzi Preview. Certifikace dodržování předpisů je popsána v [dodržování předpisů přehled Microsoft Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) a [Centrum](https://www.microsoft.com/en-us/trustcenter). 
 
-Šifrování rozšiřuje v rámci celého kanálu indexování: od připojení, prostřednictvím přenosu a dolů indexovaná data uložená ve službě Azure Search.
+## <a name="encrypted-transmission-and-storage"></a>Šifrované přenos a ukládání
+
+Šifrování rozšiřuje v celém celý kanál indexování: z připojení prostřednictvím přenosu a to až indexovaná data uložená ve službě Azure Search.
 
 | Vrstva zabezpečení | Popis |
 |----------------|-------------|
-| Šifrování během přenosu | Služba Azure Search naslouchá na portu HTTPS 443. Na platformě jsou šifrované připojení ke službám Azure. |
-| Šifrování v klidovém stavu | Šifrování je plně internalized do procesu vytváření indexu se žádné měřitelný dopad na indexování čas dokončení nebo velikost indexu. Automaticky se objeví na všechny indexování, včetně přírůstkové aktualizace index, který není plně zašifrované (vytvořených před leden 2018).<br><br>Interně, je šifrování na základě [šifrování služby úložiště Azure](https://docs.microsoft.com/azure/storage/common/storage-service-encryption), pomocí 256 bitů [šifrování AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard).|
+| Šifrování během přenosu <br>(PROTOKOL HTTPS A SSL/TLS) | Služba Azure Search naslouchá na portu HTTPS 443. Napříč platformami jsou šifrované připojení ke službám Azure. <br/><br/>Všechny interakce klienta služby Azure Search jsou schopné SSL/TLS 1.2.  Nezapomeňte použít TLSv1.2 pro připojení SSL na vaši službu.|
+| Šifrování v klidovém stavu | V procesu indexování bez jakéhokoli dopadu na měřitelné indexování čas dokončení nebo velikost indexu je plně internalized šifrování. Automaticky se objeví na veškeré indexování, včetně na přírůstkové aktualizace, které nejsou šifrovány plně indexu (vytvořené před lednem 2018).<br><br>Interně, je šifrování na základě [šifrování služby Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption), pomocí 256bitového [šifrování AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard).|
 
-Šifrování je interní do služby Azure Search s certifikáty a šifrovacích klíčů interně spravuje Microsoft a použít univerzálně. Nelze zapnout šifrování nebo vypnout, spravovat nebo nahraďte váš vlastní klíče nebo zobrazit nastavení šifrování na portálu nebo prostřednictvím kódu programu. 
+Šifrování je interní do služby Azure Search, s certifikáty a šifrovacích klíčů interně spravuje Microsoft a použít univerzálně. Nelze vypnout nebo zapnout šifrování, spravovat nebo nahradit vlastní klíče nebo zobrazit nastavení šifrování na portálu nebo prostřednictvím kódu programu. 
 
-Šifrování v klidovém stavu byl oznámen v 24 leden 2018 a platí pro všechny úrovně služeb, včetně sdílených služeb (zdarma), ve všech oblastech. Úplné šifrování musí být indexy vytvořené před tímto datem vyřadit a znovu sestavit v pořadí pro šifrování proběhnout. Jinak se šifrují jenom nová data přidány po leden 24.
+Šifrování v klidovém stavu ve 24. ledna 2018 jsme představili a platí pro všechny úrovně služby, včetně sdílených služeb (zdarma) ve všech oblastech. Úplné šifrování musí být vyřazen a znovu vytvořen, aby se šifrování na indexy vytvořené před tímto datem. V opačném případě je šifrována pouze nová data přidá za leden 24.
 
-## <a name="azure-wide-user-access-controls"></a>Řízení přístupu uživatele v celé Azure
+## <a name="azure-wide-user-access-controls"></a>Řízení přístupu uživatele v Azure – celé
 
-Několik mechanismů zabezpečení jsou k dispozici Azure na úrovni a vytvoříte tedy automaticky dostupné pro prostředky Azure Search.
+Několik mechanismů pro zabezpečení jsou k dispozici celý Azure a vytvoříte tedy automaticky dostupné pro prostředky Azure Search.
 
-+ [Zámky na úrovni prostředků, aby se zabránilo odstranění nebo předplatné](../azure-resource-manager/resource-group-lock-resources.md)
-+ [Na základě rolí řízení přístupu (RBAC) pro řízení přístupu k informacím a operace správy](../role-based-access-control/overview.md)
++ [Zámky na úrovni prostředků abyste zabránili odstranění nebo předplatného](../azure-resource-manager/resource-group-lock-resources.md)
++ [Na základě rolí řízení přístupu (RBAC) k řízení přístupu k informacím a operace správy](../role-based-access-control/overview.md)
 
-Nastavení úrovně přístupu konzistentně ve všech službách podpora všech služeb Azure řízení přístupu na základě role (RBAC). Například zobrazení citlivých dat, jako například klíč správce, je omezen na vlastníka a Přispěvatel role, zatímco zobrazení stavu služby je k dispozici pro členy žádné role. RBAC poskytuje vlastník, Přispěvatel a čtečky rolí. Ve výchozím nastavení všechny Správci služeb jsou členy role vlastníka.
+Všechny služby Azure podporují řízení přístupu na základě rolí (RBAC) k nastavení úrovně přístupu konzistentně napříč všemi službami. Například zobrazení citlivých dat, jako například klíč správce, je omezen na role vlastníka a přispěvatelů, zatímco zobrazení stavu služby je k dispozici pro členy jakékoli role. RBAC poskytuje role vlastník, Přispěvatel a čtenář. Všichni správci služby jsou ve výchozím nastavení členové role vlastník.
 
-## <a name="service-access-and-authentication"></a>Přístup k službě a ověřování
+## <a name="service-access-and-authentication"></a>Služba přístupu a ověřování
 
-Zatímco Azure Search dědí zabezpečení bezpečnostní opatření na platformě Azure, je také vlastní ověřování na základě klíčů. Klíč rozhraní api je řetězec tvořený náhodně generované číslic a písmen. Typ klíče (správce nebo dotazu) určuje úroveň přístupu. Odeslání platný klíč je považovaný za ověření požadavek pochází z důvěryhodné entity. Dva typy klíčů se používají k přístupu ke službě vyhledávání:
+Zatímco Azure Search dědí záruky zabezpečení platformy Azure, poskytuje také vlastní ověřování na základě klíče. Klíč rozhraní api se řetězec skládá náhodně generované čísel a písmen. Typ klíče (správce nebo dotaz) určuje úroveň přístupu. Odeslání platný klíč je považovaný za důkaz žádost pochází z důvěryhodné entity. Dva typy klíče používané pro přístup k vaší vyhledávací služby:
 
-* Správce (platné pro všechny operace čtení a zápis Service)
-* Dotaz (platné pro operace jen pro čtení, například dotazy pro index)
+* Správce (platí pro všechny operace čtení a zápis na službu)
+* Dotaz (platné pro operace určené jen pro čtení, jako jsou dotazy na index)
 
-Klíče správce vytvářejí, když služba je zřízený. Existují dva klíče správce, určený jako *primární* a *sekundární* k jejich přímo, ale ve skutečnosti jsou zaměnitelné. Každá služba má dva klíče správce, takže můžete se vrátit jednu bez ztráty přístupu k službě. Můžete obnovit buď klíč správce, ale nemůžete přidat počet klíčů celkový správce. Je delší než dva klíče správce jednu službu vyhledávání.
+Klíče správce se vytvoří, když je služba zřízená. Existují dva klíče správce, určený jako *primární* a *sekundární* Novoroční přímo, ale ve skutečnosti jsou zaměnitelné. Každá služba má dva klíče správce, takže můžete jeden ho znovu vygenerovat aniž by ztratily přístup k službě. Můžete obnovit buď klíč správce, ale nemůžete přidat do počtu klíčů celkový správce. Je maximálně dva klíče správce službě search.
 
-Klíče dotazu se vytvoří podle potřeby a jsou určené pro klientské aplikace, které volají přímo vyhledávání. Můžete vytvořit až 50 klíče dotazu. V kódu aplikace zadejte adresu URL vyhledávání a dotazu api-key povolit přístup jen pro čtení ke službě. Kód aplikace také určuje index používá vaše aplikace. Společně koncový bod, klíč rozhraní api pro přístup jen pro čtení a cílový index definovat úroveň oboru a přístup připojení z klientské aplikace.
+Klíče jsou vytvořeny podle potřeby a jsou navržené pro klientské aplikace, které volají přímo vyhledávání. Můžete vytvořit až 50 klíče dotazu. V kódu aplikace zadejte adresa URL pro hledání a dotazu api-key, pokud chcete povolit přístup jen pro čtení ke službě. Kód aplikace také určuje index používaný vaší aplikací. Koncový bod, klíč rozhraní api pro přístup jen pro čtení a cílový index společně definují obor a přístup k úrovni připojení z klientské aplikace.
 
-Na každý požadavek, kde každý požadavek se skládá z povinných klíč, operace a objekt se vyžaduje ověření. Když zřetězen dohromady, je dostatečné pro zajištění zabezpečení úplné spektrum operací služby dvě úrovně oprávnění (úplná nebo jen pro čtení) a kontext (například operace dotazu na index). Další informace o klíčích najdete v tématu [vytvořit a spravovat klíče api Key](search-security-api-keys.md).
+U každého požadavku, ve kterém každý požadavek se skládá z povinných klíč, operace a objekt se vyžaduje ověřování. Když zřetězen dohromady, dvou úrovních oprávnění (úplné nebo jen pro čtení) a kontextu (například operace dotazu na index) jsou dostačující pro zajištění zabezpečení opensourcová operací služby. Další informace o klíčích najdete v tématu [vytvořit a spravovat klíče api Key](search-security-api-keys.md).
 
 ## <a name="index-access"></a>Index přístup
 
-Ve službě Azure Search jednotlivé indexu není zabezpečitelných objektů. Místo toho přístup k indexu je určen ve vrstvě služby (přístup pro čtení nebo zápisu), spolu s kontext operace.
+Ve službě Azure Search jednotlivé indexu není zabezpečitelných objektů. Místo toho je určen přístup do indexu ve vrstvě služby (čtení nebo zápisu), spolu s kontextu operace.
 
-Pro přístup koncových uživatelů můžete struktury požadavků na dotazy a připojte se pomocí klíč dotazu, který vytvoří každá žádost jen pro čtení a zahrnovat konkrétního indexu používané vaší aplikace. V žádosti o dotaz neexistuje žádná koncepce připojení indexy nebo přístupu k nim více indexů současně, všechny požadavky cíle jeden index podle definice. Vytváření dotazu na žádost (klíč a jeden cílový index) jako takový definuje hranice zabezpečení.
+Pro přístup koncových uživatelů lze struktury požadavků na dotazy a připojte se pomocí klíče dotazu, který umožňuje všechny požadavky jen pro čtení a zahrnují konkrétního indexu, která vaše aplikace používá. V žádosti o dotaz neexistuje koncept propojení indexy nebo přístupu k nim více indexů současně tak cílit na všechny požadavky podle definice jeden index. Vytváření dotazu na žádost (klíč plus jeden cílový index) v důsledku toho definuje hranice zabezpečení.
 
-Správce a vývojáře přístup k indexů je poskytujících blíže neurčené: obě potřebovat přístup pro zápis k vytvoření, odstranění a aktualizovat objekty spravované službou. Každý, kdo má klíč správce k službě můžou číst, upravit nebo odstranit žádný index v rámci stejné služby. Pro ochranu proti náhodnému nebo škodlivý odstranění indexů je vaše interní zdrojového kódu pro kód prostředky remedy zpětné nežádoucí index, odstranění nebo úpravy. Vyhledávání systému Azure má převzetí služeb při selhání v rámci clusteru, aby se zajistila dostupnost, ale nemá uložení nebo provést vlastní kódu umožňuje vytvořit nebo načíst indexy.
+Přístup správců a vývojářů pro indexy nediferencovanými: oba potřebují přístup pro zápis do vytvářet, odstraňovat a aktualizovat objekty, které služba spravuje. Každý, kdo má klíč správce pro vaši službu může číst, upravit nebo odstranit jakýkoli index ve stejné službě. Pro ochranu před náhodným nebo zlovolným vymazáním indexů interní zdrojového kódu assetů je řešením pro vrácení nežádoucím index, odstranění nebo úpravy. Služba Azure Search má převzetí služeb při selhání v rámci clusteru a zajistit tak dostupnost, ale to se neukládají ani spuštění speciální kódu použít k vytvoření nebo načítání indexů.
 
-Taková řešení pro vyžadování hranic zabezpečení na úrovni index víceklientské architektury řešení, měl obvykle zahrnovat střední vrstvy, uvedeni zákazníci, kteří používala pro zpracování izolace index. Další informace o případ víceklientské použití najdete v tématu [vzory pro víceklientské aplikace SaaS a Azure Search návrhu](search-modeling-multitenant-saas-applications.md).
+Víceklientská architektura řešení vyžadující hranic zabezpečení na úrovni index taková řešení obvykle zahrnují střední vrstvy, které zákazníci používají ke izolace indexu. Další informace o případu použití víceklientské najdete v tématu [modely návrhu pro víceklientské aplikace SaaS a Azure Search](search-modeling-multitenant-saas-applications.md).
 
-## <a name="admin-access-from-client-apps"></a>Přístup správce z klientské aplikace
+## <a name="admin-access-from-client-apps"></a>Přístup správce z klientských aplikací
 
-REST API služby Azure Search správy je rozšíření Azure Resource Manager a sdílí jeho závislé součásti. Služba Active Directory jako takový je předpokladem pro správu služby Azure Search. Všechny požadavky na správu z kódu klienta musí být ověřeny pomocí Azure Active Directory předtím, než požadavek dosáhne Resource Manager.
+REST API pro správu Azure Search je rozšířením Azure Resource Manageru a jeho závislosti sdílí. V důsledku toho služba Active Directory je předpokladem pro správu služby Azure Search. Všechny požadavky na správu z klientského kódu musí být ověřené pomocí Azure Active Directory předtím, než požadavek dosáhne Resource Manageru.
 
-Požadavky na data na koncový bod Azure Search služby, jako je vytvoření indexu (služby REST API Azure Search) nebo vyhledávání dokumentů (služby REST API Azure Search), použijte klíč rozhraní api v hlavičce žádosti.
+Požadavky na data na koncový bod Azure Search service, jako je například vytvoření indexu (Azure Search Service REST API) nebo hledání dokumentů (služba REST API služby Azure Search) pomocí klíče rozhraní api v hlavičce požadavku.
 
-Pokud kód aplikace zpracovává operace správy služeb a také data operací na indexy hledání nebo dokumenty, implementace dva přístupy k ověřování v kódu: nativní Azure Search a ověřování služby Active Directory přístupového klíče metodologie nutné pomocí Správce prostředků. 
+Pokud váš kód aplikace řeší operací správy služeb, jakož i operace s daty na vyhledávacích indexů nebo dokumentů, implementovat dva přístupy k ověřování ve vašem kódu: přístupový klíč, který je nativní pro Azure Search a ověřování služby Active Directory metodologie nutné pomocí Správce prostředků. 
 
-Informace o vytváření struktury žádost ve službě Azure Search najdete v tématu [REST služby Azure Search](https://docs.microsoft.com/rest/api/searchservice/). Další informace o požadavcích na ověřování pro službu správce prostředků najdete v tématu [ověřování pomocí Správce prostředků rozhraní API k přístupu k odběrům](../azure-resource-manager/resource-manager-api-authentication.md).
+Informace o strukturování žádost ve službě Azure Search najdete v tématu [REST služby Azure Search](https://docs.microsoft.com/rest/api/searchservice/). Další informace o požadavcích na ověřování pro Resource Manager najdete v tématu [ověřovací Resource Manageru pomocí rozhraní API pro přístup k předplatným](../azure-resource-manager/resource-manager-api-authentication.md).
 
-## <a name="user-access-to-index-content"></a>Uživatelský přístup k obsahu indexu
+## <a name="user-access-to-index-content"></a>Přístup uživatelů k indexování obsahu
 
-Uživatelská přístup k obsahu indexu se implementuje pomocí filtrů zabezpečení na své dotazy, vrácení dokumenty spojené s danou zabezpečení identity. Místo předdefinované role a přiřazení rolí je řízení přístupu na základě identity implementovaný jako filtr, že výsledky dokumentů a obsah podle identity hledání ořízne. Následující tabulka popisuje dva přístupy pro výsledky hledání oříznutí neoprávněným obsahu.
+Uživatelský přístup k obsahu indexu se implementuje pomocí filtrů zabezpečení na vašich dotazů, které vracejí dokumenty přidružená k identitě daného zabezpečení. Řízení přístupu založené na identitě se místo předdefinované role a přiřazení rolí, implementuje jako filtr, že výsledky dokumentů a obsah na základě identit hledání ořízne. Následující tabulka popisuje dva přístupy pro výsledky hledání oříznutí neoprávněné obsahu.
 
 | Přístup | Popis |
 |----------|-------------|
-|[Oříznutí zabezpečení podle identity filtry](search-security-trimming-for-azure-search.md)  | Dokumenty základní pracovní postup pro implementaci řízení přístupu identity uživatele. Popisuje přidání identifikátory zabezpečení do indexu a pak vysvětluje filtrování toto pole oříznout výsledky zakázaný obsah. |
-|[Oříznutí zabezpečení podle identit Azure Active Directory](search-security-trimming-for-azure-search-with-aad.md)  | Tento článek rozšíří na předchozím článku, konkrétně postup pro načítání identit z Azure Active Directory (AAD), mezi [bezplatné služby](https://azure.microsoft.com/free/) v platformě Azure cloud. |
+|[Oříznutí zabezpečení na základě filtrů identity](search-security-trimming-for-azure-search.md)  | Dokumenty základní pracovní postup k implementaci řízení přístupu identity uživatele. Popisuje přidání identifikátory zabezpečení do indexu a vysvětluje, filtrování pole mají být odebrány výsledky zakázané obsahu. |
+|[Oříznutí zabezpečení na základě identit Azure Active Directory](search-security-trimming-for-azure-search-with-aad.md)  | Tento článek dál navazuje na předchozí článek, konkrétně postup pro načítání identit z Azure Active Directory (AAD), jeden z [bezplatné služby](https://azure.microsoft.com/free/) v cloudové platformy Azure. |
 
-## <a name="table-permissioned-operations"></a>Tabulkou: Permissioned operace
+## <a name="table-permissioned-operations"></a>Tabulkou: Operace udělili oprávnění
 
-Následující tabulka shrnuje operace povolené ve službě Azure Search a který klíč odemkne přístupu konkrétním operaci.
+Následující tabulka shrnuje operace povolené ve službě Azure Search a který klíč odemkne přístup určitou operaci.
 
 | Operace | Oprávnění |
 |-----------|-------------------------|
-| Vytvoření služby | Držitel předplatného Azure|
-| Škálování služby | Klíč správce, RBAC vlastníkem nebo přispěvatelem na prostředek  |
-| Odstranění služby | Klíč správce, RBAC vlastníkem nebo přispěvatelem na prostředek |
-| Vytvořit, upravit, odstranit objekty služby: <br>Indexy a součásti (včetně definice analyzátor, vyhodnocování profily, možnosti CORS), indexery, zdroje dat, synonyma, trochu. | Klíč správce, RBAC vlastníkem nebo přispěvatelem na prostředek  |
-| Dotazování indexu | Správce nebo dotaz, klíč (RBAC není k dispozici) |
-| Dotaz na informace o systému, jako je například vrácení statistiky, počty a seznam objektů. | Klíč správce, RBAC na prostředku (vlastník, Přispěvatel, čtečky) |
-| Správa Správce klíčů | Klíč správce, RBAC vlastníkem nebo přispěvatelem u daného prostředku. |
-| Spravovat klíče dotazů |  Klíč správce, RBAC vlastníkem nebo přispěvatelem u daného prostředku.  |
+| Vytvoření služby | Vlastník předplatného Azure|
+| Škálování služby | Klíč správce, RBAC vlastníka nebo přispěvatele, s prostředkem  |
+| Odstranit službu | Klíč správce, RBAC vlastníka nebo přispěvatele, s prostředkem |
+| Vytvoření, úprava nebo odstranění objektů ve službě: <br>Indexy a součásti (včetně definice analyzátoru, profily vyhodnocování, možnosti CORS), indexery, zdroje dat, synonyma, moduly pro návrhy. | Klíč správce, RBAC vlastníka nebo přispěvatele, s prostředkem  |
+| Dotazování indexu | Klíč správce nebo dotazu (RBAC není k dispozici) |
+| Dotazování systémové informace, jako je například vrácení statistiky, počty a seznam objektů. | Klíč správce, RBAC v prostředku (vlastník, Přispěvatel, Čtenář) |
+| Spravovat klíče správce | Klíč správce, RBAC vlastníka nebo přispěvatele, s prostředkem. |
+| Spravovat klíče dotazů |  Klíč správce, RBAC vlastníka nebo přispěvatele, s prostředkem.  |
 
 ## <a name="physical-security"></a>Fyzické zabezpečení
 
-Datovými centry Microsoftu špičkový fyzické zabezpečení a jsou kompatibilní s rozsáhlé portfolií standardů a nařízení. Pokud chcete dozvědět víc, přejděte na [globálních datových centrech](https://www.microsoft.com/cloud-platform/global-datacenters) stránky nebo shlédnout krátké video na data center zabezpečení.
+Datovými centry společnosti Microsoft poskytuje špičkové fyzického zabezpečení a jsou kompatibilní s rozsáhlou portfolio standardů a nařízení. Další informace, přejděte na [globálních datových center](https://www.microsoft.com/cloud-platform/global-datacenters) stránce nebo podíváte na krátké video s daty, center security.
 
 > [!VIDEO https://www.youtube.com/embed/r1cyTL8JqRg]
 
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-+ [Získat spuštění rozhraní .NET (ukazuje, jak vytvořit index pomocí klíč správce)](search-create-index-dotnet.md)
-+ [Získat spuštění REST (ukazuje, jak vytvořit index pomocí klíč správce)](search-create-index-rest-api.md)
-+ [Řízení přístupu na základě identit pomocí filtrů Azure Search](search-security-trimming-for-azure-search.md)
-+ [Řízení přístupu na základě identity Active Directory, které jsou pomocí filtrů Azure Search](search-security-trimming-for-azure-search-with-aad.md)
++ [Získat spuštění .NET (ukazuje vytvoření indexu pomocí klíč správce)](search-create-index-dotnet.md)
++ [Získat spuštění REST (ukazuje vytvoření indexu pomocí klíč správce)](search-create-index-rest-api.md)
++ [Ovládací prvek přístupu na základě identit pomocí Azure Search filtry](search-security-trimming-for-azure-search.md)
++ [Aktivní řízení přístupu na základě identity adresáře pomocí filtrů Azure Search](search-security-trimming-for-azure-search-with-aad.md)
 + [Filtry ve službě Azure Search](search-filters.md)

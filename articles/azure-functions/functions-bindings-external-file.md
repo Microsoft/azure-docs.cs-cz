@@ -1,37 +1,33 @@
 ---
-title: Externí soubor vazby pro Azure Functions (experimentální)
-description: Používání vazeb externí soubor v Azure Functions
+title: Externí soubor vazby pro službu Azure Functions (experimentální)
+description: Pomocí vazby externích souborů ve službě Azure Functions
 services: functions
-documentationcenter: ''
 author: alexkarcher-msft
-manager: cfowler
-editor: ''
+manager: jeconnoc
 ms.assetid: ''
-ms.service: functions
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: alkarche
-ms.openlocfilehash: 4e9c2c336df465d7488de84bd2a02cc5d9e42f30
-ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
+ms.openlocfilehash: be2d34202b88d0d424eb23c4e078c2fdc45c6ab6
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/05/2018
-ms.locfileid: "27607917"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44093766"
 ---
-# <a name="azure-functions-external-file-bindings-experimental"></a>Azure vazby funkcí externí soubor (experimentální)
-Tento článek ukazuje, jak pracovat se soubory od různých poskytovatelů SaaS (například Google Drive nebo Dropbox) v Azure Functions. Azure Functions podporuje aktivaci, vstup a výstup vazby pro externí soubory. Tyto vazby vytvořit rozhraní API připojení k poskytovatelů SaaS, nebo použít existující API připojení ze skupiny prostředků aplikaci funkce.
+# <a name="azure-functions-external-file-bindings-experimental"></a>Azure Functions externího souboru vazby (experimentální)
+Tento článek ukazuje, jak pracovat se soubory od různých poskytovatelů SaaS (například Dropbox nebo disk Google) ve službě Azure Functions. Azure Functions podporuje aktivaci, vstupní a výstupní vazby externích souborů. Tyto vazby vytvořte připojení rozhraní API pro poskytovatele SaaS, nebo použijte existující připojení rozhraní API ze skupiny prostředků vaší aplikace funkcí.
 
 > [!IMPORTANT]
-> Externí soubor vazby jsou experimentální a může být nikdy dosáhne stavu obecně k dispozici (GA). Jsou zahrnuty pouze v Azure funguje 1.x, a neexistují žádné plány, které chcete přidat do Azure Functions 2.x. Pro scénáře, které vyžadují přístup k datům ve zprostředkovatelích SaaS, zvažte použití [logiku aplikace, které volají do funkce](functions-twitter-email.md). Najdete v článku [systém souborů aplikace logiky konektor](../logic-apps/logic-apps-using-file-connector.md).
+> Vazby externích souborů je experimentální a může být nikdy nedorazí stav všeobecně dostupná (GA). Jsou zahrnuty pouze v Azure Functions 1.x a nejsou žádné plány přidat do služby Azure Functions 2.x. Pro scénáře, které vyžadují přístup k datům v poskytovatelé SaaS, zvažte použití [aplikace logiky, které volají do funkce](functions-twitter-email.md). Zobrazit [konektoru systému souborů aplikace logiky](../logic-apps/logic-apps-using-file-connector.md).
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 ## <a name="available-file-connections"></a>Připojení k dispozici soubor
 
-|Konektor|Trigger|Vstup|Výstup|
+|Spojovací čára|Trigger|Vstup|Výstup|
 |:-----|:---:|:---:|:---:|
 |[Pole](https://www.box.com)|x|x|x
 |[Dropbox](https://www.dropbox.com)|x|x|x
@@ -39,25 +35,25 @@ Tento článek ukazuje, jak pracovat se soubory od různých poskytovatelů SaaS
 |[OneDrive](https://onedrive.live.com)|x|x|x
 |[OneDrive pro firmy](https://onedrive.live.com/about/business/)|x|x|x
 |[SFTP](https://docs.microsoft.com/azure/connectors/connectors-create-api-sftp)|x|x|x
-|[Google Drive](https://www.google.com/drive/)||x|x|
+|[Disk Google](https://www.google.com/drive/)||x|x|
 
 > [!NOTE]
 > Externí připojení souboru lze použít také v [Azure Logic Apps](https://docs.microsoft.com/azure/connectors/apis-list).
 
 ## <a name="trigger"></a>Trigger
 
-Externí soubor aktivační událost umožňuje monitorovat to vzdálená složka a spustíte kód funkce při zjištění změny.
+Aktivační událost externích souborů umožňuje monitorovat vzdálené složky a spustit kód vaší funkce, když se zjistí změny.
 
-## <a name="trigger---example"></a>Aktivační událost – příklad
+## <a name="trigger---example"></a>Aktivační události – příklad
 
-Podívejte se na konkrétní jazyk příklad:
+Podívejte se na příklad specifické pro jazyk:
 
 * [Skript jazyka C#](#trigger---c-script-example)
 * [JavaScript](#trigger---javascript-example)
 
-### <a name="trigger---c-script-example"></a>Aktivační událost – příklad skriptu jazyka C#
+### <a name="trigger---c-script-example"></a>Aktivační události – příklad skriptu jazyka C#
 
-Následující příklad ukazuje aktivační procedury externí soubor vazby ve *function.json* souboru a [funkce skriptu jazyka C#](functions-reference-csharp.md) používající vazby. Funkce zaznamená obsah každý soubor, který je přidán do sledované složky.
+Následující příklad ukazuje vazby v aktivační událost externího souboru *function.json* souboru a [funkce skriptu jazyka C#](functions-reference-csharp.md) , který používá vazba. Funkce zaznamená obsah každého souboru, který se přidá do sledované složky.
 
 Zde je vazba dat v *function.json* souboru:
 
@@ -85,9 +81,9 @@ public static void Run(string myFile, TraceWriter log)
 }
 ```
 
-### <a name="trigger---javascript-example"></a>Aktivační událost – příklad v jazyce JavaScript
+### <a name="trigger---javascript-example"></a>Aktivační události – příklad v jazyce JavaScript
 
-Následující příklad ukazuje aktivační procedury externí soubor vazby ve *function.json* souboru a [funkce JavaScript, která](functions-reference-node.md) používající vazby. Funkce zaznamená obsah každý soubor, který je přidán do sledované složky.
+Následující příklad ukazuje vazby v aktivační událost externího souboru *function.json* souboru a [funkce jazyka JavaScript](functions-reference-node.md) , který používá vazba. Funkce zaznamená obsah každého souboru, který se přidá do sledované složky.
 
 Zde je vazba dat v *function.json* souboru:
 
@@ -115,21 +111,21 @@ module.exports = function(context) {
 };
 ```
 
-## <a name="trigger---configuration"></a>Aktivační událost - konfigurace
+## <a name="trigger---configuration"></a>Aktivační události – konfigurace
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.json* souboru.
 
 |Vlastnost Function.JSON | Popis|
 |---------|---------|----------------------|
-|**Typ** | musí být nastavena na `apiHubFileTrigger`. Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure.|
-|**směr** | musí být nastavena na `in`. Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure. |
-|**Jméno** | Název proměnné, která představuje položku událostí v kódu funkce. | 
-|**připojení**| Určuje nastavení aplikace, která ukládá připojovací řetězec. Nastavení aplikace je vytvořena automaticky při přidání připojení v integrací uživatelského rozhraní na portálu Azure.|
-|**Cesta** | Složka monitorování a volitelně vzor názvu.|
+|**type** | Musí být nastaveno na `apiHubFileTrigger`. Tato vlastnost je nastavena automaticky, když vytvoříte aktivační událost na webu Azure Portal.|
+|**direction** | Musí být nastaveno na `in`. Tato vlastnost je nastavena automaticky, když vytvoříte aktivační událost na webu Azure Portal. |
+|**Jméno** | Název proměnné, která představuje položku událost v kódu funkce. | 
+|**připojení**| Určuje nastavení aplikace, který uchovává připojovací řetězec. Nastavení aplikace, které se vytvoří automaticky při přidání připojení v integrace uživatelského rozhraní na webu Azure Portal.|
+|**Cesta** | Složku, kterou chcete monitorovat a volitelně vzor názvu.|
 
 ### <a name="name-patterns"></a>Vzory názvů
 
-Můžete zadat vzor názvů souborů v `path` vlastnost. Složka odkazuje musí existovat ve zprostředkovateli SaaS.
+Můžete zadat vzor názvů souborů v `path` vlastnost. Složka odkazuje musí existovat v rámci zprostředkovatele SaaS.
 
 Příklady:
 
@@ -137,7 +133,7 @@ Příklady:
 "path": "input/original-{name}",
 ```
 
-Tato cesta by vyhledat soubor s názvem *původní File1.txt* v *vstupní* složku a hodnota `name` proměnné v kódu funkce by `File1.txt`.
+Tato cesta by najít soubor s názvem *původní File1.txt* v *vstupní* složky a hodnota `name` proměnné v kódu funkce by `File1.txt`.
 
 Další příklad:
 
@@ -145,37 +141,37 @@ Další příklad:
 "path": "input/{filename}.{fileextension}",
 ```
 
-Tato cesta by také vyhledat soubor s názvem *původní File1.txt*a hodnota `filename` a `fileextension` proměnných v kódu funkce by *původní File1* a *txt* .
+Tato cesta by také vyhledat soubor s názvem *původní File1.txt*a hodnota `filename` a `fileextension` proměnné v kódu funkce budou *původní File1* a *txt* .
 
-Typ souboru souborů můžete omezit pomocí příkazu pevnou hodnotu pro tuto příponu. Příklad:
+Typ souboru souborů můžete omezit s použitím pevné hodnoty pro příponu souboru. Příklad:
 
 ```json
 "path": "samples/{name}.png",
 ```
 
-V tomto případě pouze *.png* soubory *ukázky* složky aktivovat funkci.
+V takovém případě pouze *.png* soubory *ukázky* složky aktivovat funkci.
 
-Složené závorky jsou speciální znaky v vzory názvů. Pokud chcete zadat názvy souborů, které mají v názvu složené závorky, dvakrát složené závorky.
+Složené závorky jsou speciální znaky v názvu vzory. K určení názvů souborů, které mají v názvu složených závorek, dvakrát složených závorek.
 Příklad:
 
 ```json
 "path": "images/{{20140101}}-{name}",
 ```
 
-Tato cesta by vyhledat soubor s názvem *{20140101}-soundfile.mp3* v *bitové kopie* složku a `name` hodnotu proměnné v kód funkce by *soundfile.mp3*.
+Tato cesta by najít soubor s názvem  *{20140101}-soundfile.mp3* v *image* složky a `name` hodnotu proměnné v kódu funkce by *soundfile.mp3*.
 
-## <a name="trigger---usage"></a>Aktivační událost - využití
+## <a name="trigger---usage"></a>Aktivační události – využití
 
-V jazyce C# funkce, vytvoření vazby na data vstupní soubor pomocí parametr s názvem v podpisu funkce, jako je třeba `<T> <name>`.
-Kde `T` je datový typ chcete deserializaci dat do, a `paramName` je název, který jste zadali v [aktivovat JSON](#trigger). V Node.js funkce získáte přístup, data vstupní soubor pomocí `context.bindings.<name>`.
+V funkcí jazyka C#, můžete vytvořit vazbu na vstupní soubor data s využitím pojmenovaným parametrem v podpisu funkce, jako je třeba `<T> <name>`.
+Kde `T` je datový typ, že chcete zrušit serializaci dat, a `paramName` je název zadaný v [aktivovat JSON](#trigger). Ve funkcích Node.js přistupujete data vstupních souborů s využitím `context.bindings.<name>`.
 
-Soubor lze deserializovat do jakéhokoli z těchto typů:
+Tento soubor lze deserializovat do některé z následujících typů:
 
-* Všechny [objekt](https://msdn.microsoft.com/library/system.object.aspx) – vhodné pro data souboru serializací JSON.
-  Pokud je deklarovat vlastní vstupní typ (například `FooType`), Azure Functions se pokusí rekonstruovat JSON data do zadaného typu.
-* String – vhodné pro data textového souboru.
+* Žádné [objekt](https://msdn.microsoft.com/library/system.object.aspx) – vhodné pro data souboru serializací JSON.
+  Pokud deklarujete vlastní vstupní typ (například `FooType`), Azure Functions, pokusí se deserializovat JSON data do zadaného typu.
+* String – užitečná pro data z textových souborů.
 
-V jazyce C# funkce můžete také vytvořit vazbu na některý z následujících typů a Functions runtime pokusí k deserializaci dat souboru pomocí typu:
+Funkce jazyka C# můžete také navázat na některý z následujících typů a modul runtime služby Functions se pokusí rekonstruovat datový soubor pomocí tohoto typu:
 
 * `string`
 * `byte[]`
@@ -199,12 +195,12 @@ File receipts are stored in a folder named *azure-webjobs-hosts* in the Azure st
 To force reprocessing of a file, delete the file receipt for that file from the *azure-webjobs-hosts* folder manually.
 --->
 
-## <a name="trigger---poison-files"></a>Aktivační událost - poškozených souborů
+## <a name="trigger---poison-files"></a>Aktivační události – počet poškozených souborů
 
-Pokud se aktivace funkce externí soubor nezdaří, Azure Functions opakuje této funkce až 5 výskyty ve výchozím nastavení (včetně prvního pokusu) pro daný soubor.
-Pokud selžou všechny 5 pokusů, funkce přidá zprávu do fronty úložiště s názvem *webjobs. apihubtrigger poison*. Zprávy ve frontě poškozených souborů je objekt JSON, který obsahuje následující vlastnosti:
+Když selže funkce pro aktivaci externí soubor, Azure Functions zopakuje pokus o tuto funkci až 5krát. ve výchozím nastavení (včetně prvního pokusu) pro daný soubor.
+Pokud selžou i všechny 5 pokusech, funkce přidá zprávu do fronty úložiště s názvem *webjobs. apihubtrigger poison*. Fronty zpráv pro poškozené soubory je objekt JSON, který obsahuje následující vlastnosti:
 
-* FunctionId (ve formátu  *&lt;funkce název aplikace >*. Funkce.  *&lt;název funkce >*)
+* FunctionId (ve formátu  *&lt;názvem aplikace function app >*. Funkce.  *&lt;název funkce >*)
 * Typ souboru
 * Název složky
 * Název souboru
@@ -212,18 +208,18 @@ Pokud selžou všechny 5 pokusů, funkce přidá zprávu do fronty úložiště 
 
 ## <a name="input"></a>Vstup
 
-Vstupní vazba Azure externí soubor můžete použít soubor z externí složky ve vaší funkci.
+Vstupní vazby Azure externích souborů můžete použít soubor z externí složku ve své funkci.
 
-## <a name="input---example"></a>Vstup – příklad
+## <a name="input---example"></a>Input – příklad
 
-Podívejte se na konkrétní jazyk příklad:
+Podívejte se na příklad specifické pro jazyk:
 
 * [Skript jazyka C#](#input---c-script-example)
 * [JavaScript](#input---javascript-example)
 
 ### <a name="input---c-script-example"></a>(Vstup) – příklad skriptu jazyka C#
 
-Následující příklad ukazuje externí soubor vstupní a výstupní vazeb v *function.json* souboru a [funkce skriptu jazyka C#](functions-reference-csharp.md) používající vazby. Funkce zkopíruje do výstupního souboru vstupního souboru.
+Následující příklad znázorňuje externí soubor vstupní a výstupní vazby v *function.json* souboru a [funkce skriptu jazyka C#](functions-reference-csharp.md) , který používá vazba. Funkce vstupní soubor zkopíruje do výstupního souboru.
 
 Zde je vazba dat v *function.json* souboru:
 
@@ -268,7 +264,7 @@ public static void Run(string myQueueItem, string myInputFile, out string myOutp
 
 ### <a name="input---javascript-example"></a>(Vstup) – příklad v jazyce JavaScript
 
-Následující příklad ukazuje externí soubor vstupní a výstupní vazeb v *function.json* souboru a [funkce JavaScript, která](functions-reference-node.md) používající vazby. Funkce zkopíruje do výstupního souboru vstupního souboru.
+Následující příklad znázorňuje externí soubor vstupní a výstupní vazby v *function.json* souboru a [funkce jazyka JavaScript](functions-reference-node.md) , který používá vazba. Funkce vstupní soubor zkopíruje do výstupního souboru.
 
 Zde je vazba dat v *function.json* souboru:
 
@@ -317,23 +313,23 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |Vlastnost Function.JSON | Popis|
 |---------|---------|----------------------|
-|**Typ** | musí být nastavena na `apiHubFile`. Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure.|
-|**směr** | musí být nastavena na `in`. Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure. |
-|**Jméno** | Název proměnné, která představuje položku událostí v kódu funkce. | 
-|**připojení**| Určuje nastavení aplikace, která ukládá připojovací řetězec. Nastavení aplikace je vytvořena automaticky při přidání připojení v integrací uživatelského rozhraní na portálu Azure.|
-|**Cesta** | Musí obsahovat název složky a název souboru. Pokud máte například [aktivační událost fronty](functions-bindings-storage-queue.md) ve funkci, můžete použít `"path": "samples-workitems/{queueTrigger}"` tak, aby odkazoval na soubor v `samples-workitems` složku s názvem, který odpovídá názvu souboru, který je uvedený v aktivační události zprávě.   
+|**type** | Musí být nastaveno na `apiHubFile`. Tato vlastnost je nastavena automaticky, když vytvoříte aktivační událost na webu Azure Portal.|
+|**direction** | Musí být nastaveno na `in`. Tato vlastnost je nastavena automaticky, když vytvoříte aktivační událost na webu Azure Portal. |
+|**Jméno** | Název proměnné, která představuje položku událost v kódu funkce. | 
+|**připojení**| Určuje nastavení aplikace, který uchovává připojovací řetězec. Nastavení aplikace, které se vytvoří automaticky při přidání připojení v integrace uživatelského rozhraní na webu Azure Portal.|
+|**Cesta** | Musí obsahovat název složky a název souboru. Pokud máte například [aktivační událost fronty](functions-bindings-storage-queue.md) ve své funkci, můžete použít `"path": "samples-workitems/{queueTrigger}"` tak, aby odkazoval na soubor v `samples-workitems` složku s názvem, který odpovídá názvu souboru, určená ve zprávě aktivační události.   
 
-## <a name="input---usage"></a>(Vstup) – použití
+## <a name="input---usage"></a>(Vstup) – využití
 
-V jazyce C# funkce, vytvoření vazby na data vstupní soubor pomocí parametr s názvem v podpisu funkce, jako je třeba `<T> <name>`. `T`je datový typ chcete deserializaci dat do, a `name` je název, který jste zadali v vstupní vazby. V Node.js funkce získáte přístup, data vstupní soubor pomocí `context.bindings.<name>`.
+V funkcí jazyka C#, můžete vytvořit vazbu na vstupní soubor data s využitím pojmenovaným parametrem v podpisu funkce, jako je třeba `<T> <name>`. `T` je datový typ, že chcete zrušit serializaci dat, a `name` je název zadaný v vstupní vazby. Ve funkcích Node.js přistupujete data vstupních souborů s využitím `context.bindings.<name>`.
 
-Soubor lze deserializovat do jakéhokoli z těchto typů:
+Tento soubor lze deserializovat do některé z následujících typů:
 
-* Všechny [objekt](https://msdn.microsoft.com/library/system.object.aspx) – vhodné pro data souboru serializací JSON.
-  Pokud je deklarovat vlastní vstupní typ (například `InputType`), Azure Functions se pokusí rekonstruovat JSON data do zadaného typu.
-* String – vhodné pro data textového souboru.
+* Žádné [objekt](https://msdn.microsoft.com/library/system.object.aspx) – vhodné pro data souboru serializací JSON.
+  Pokud deklarujete vlastní vstupní typ (například `InputType`), Azure Functions, pokusí se deserializovat JSON data do zadaného typu.
+* String – užitečná pro data z textových souborů.
 
-V jazyce C# funkce můžete také vytvořit vazbu na některý z následujících typů a Functions runtime pokusí k deserializaci dat souboru pomocí typu:
+Funkce jazyka C# můžete také navázat na některý z následujících typů a modul runtime služby Functions se pokusí rekonstruovat datový soubor pomocí tohoto typu:
 
 * `string`
 * `byte[]`
@@ -343,11 +339,11 @@ V jazyce C# funkce můžete také vytvořit vazbu na některý z následujícíc
 
 ## <a name="output"></a>Výstup
 
-Azure externí soubor výstup vazby umožňuje zapisovat soubory do složky externí ve vaší funkci.
+Azure externí soubor výstupní vazbu umožňuje zapisovat soubory na externí složku ve své funkci.
 
 ## <a name="output---example"></a>Výstup – příklad
 
-Najdete v článku [vstupní vazby příklad](#input---example).
+Zobrazit [vstupní vazby příklad](#input---example).
 
 ## <a name="output---configuration"></a>Výstup – konfigurace
 
@@ -355,23 +351,23 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |Vlastnost Function.JSON | Popis|
 |---------|---------|----------------------|
-|**Typ** | musí být nastavena na `apiHubFile`. Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure.|
-|**směr** | musí být nastavena na `out`. Tato vlastnost nastavena automaticky při vytváření aktivační události na portálu Azure. |
-|**Jméno** | Název proměnné, která představuje položku událostí v kódu funkce. | 
-|**připojení**| Určuje nastavení aplikace, která ukládá připojovací řetězec. Nastavení aplikace je vytvořena automaticky při přidání připojení v integrací uživatelského rozhraní na portálu Azure.|
-|**Cesta** | Musí obsahovat název složky a název souboru. Pokud máte například [aktivační událost fronty](functions-bindings-storage-queue.md) ve funkci, můžete použít `"path": "samples-workitems/{queueTrigger}"` tak, aby odkazoval na soubor v `samples-workitems` složku s názvem, který odpovídá názvu souboru, který je uvedený v aktivační události zprávě.   
+|**type** | Musí být nastaveno na `apiHubFile`. Tato vlastnost je nastavena automaticky, když vytvoříte aktivační událost na webu Azure Portal.|
+|**direction** | Musí být nastaveno na `out`. Tato vlastnost je nastavena automaticky, když vytvoříte aktivační událost na webu Azure Portal. |
+|**Jméno** | Název proměnné, která představuje položku událost v kódu funkce. | 
+|**připojení**| Určuje nastavení aplikace, který uchovává připojovací řetězec. Nastavení aplikace, které se vytvoří automaticky při přidání připojení v integrace uživatelského rozhraní na webu Azure Portal.|
+|**Cesta** | Musí obsahovat název složky a název souboru. Pokud máte například [aktivační událost fronty](functions-bindings-storage-queue.md) ve své funkci, můžete použít `"path": "samples-workitems/{queueTrigger}"` tak, aby odkazoval na soubor v `samples-workitems` složku s názvem, který odpovídá názvu souboru, určená ve zprávě aktivační události.   
 
-## <a name="output---usage"></a>Výstup – použití
+## <a name="output---usage"></a>Výstup – využití
 
-V C# funkce, můžete vytvořit vazbu k výstupnímu souboru pomocí pojmenované `out` jako parametr ve vaší podpis funkce `out <T> <name>`, kde `T` je datový typ chcete serializovat data do, a `name` je název, který jste zadali v Vazba výstup. V Node.js funkce, přístup k výstupu pomocí souboru `context.bindings.<name>`.
+V funkcí jazyka C#, můžete svázat do výstupního souboru s použitím pojmenované `out` parametrů v signatuře vaše funkce, jako jsou `out <T> <name>`, kde `T` je datový typ chcete serializovat data, a `name` je název zadaný v výstupní vazbu. Ve funkcích Node.js přistupujete k výstupní soubor pomocí `context.bindings.<name>`.
 
-Můžete napsat do výstupního souboru pomocí kteréhokoli z následujících typů:
+Může zapisovat do výstupního souboru pomocí kteréhokoli z následujících typů:
 
-* Všechny [objekt](https://msdn.microsoft.com/library/system.object.aspx) – užitečné pro serializaci JSON.
-  Pokud je deklarovat vlastní výstupní typ (například `out OutputType paramName`), Azure Functions se pokusí o serializaci objektu do formátu JSON. Pokud výstupní parametr hodnotu null při ukončení funkce, funkce runtime vytvoří soubor jako objekt s hodnotou null.
-* String – (`out string paramName`) vhodné pro data textového souboru. modul runtime funkce vytvoří soubor pouze v případě, že parametr řetězce má jinou hodnotu než null, při ukončení funkce.
+* Žádné [objekt](https://msdn.microsoft.com/library/system.object.aspx) – je to užitečné pro serializaci JSON.
+  Pokud deklarujete vlastní výstupní typ (například `out OutputType paramName`), Azure Functions se pokusí serializovat objekt do formátu JSON. Pokud výstupní parametr má hodnotu null při ukončení funkce, modul runtime služby Functions vytvoří soubor jako objekt s hodnotou null.
+* String – (`out string paramName`) užitečná pro data z textových souborů. modul runtime služby Functions vytvoří soubor pouze v případě, že parametr řetězce je jiná než null při ukončení funkce.
 
-V jazyce C# funkce také výstup můžete na některý z následujících typů:
+V funkcí jazyka C# můžete také výstup na některý z následujících typů:
 
 * `TextWriter`
 * `Stream`
@@ -383,4 +379,4 @@ V jazyce C# funkce také výstup můžete na některý z následujících typů:
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Další informace o Azure functions triggerů a vazeb](functions-triggers-bindings.md)
+> [Další informace o aktivačních událostech Azure functions a vazby](functions-triggers-bindings.md)

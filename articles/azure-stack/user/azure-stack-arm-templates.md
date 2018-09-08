@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 09/07/2018
 ms.author: sethm
 ms.reviewer: jeffgo
-ms.openlocfilehash: 456f27b97ee644aef34f9bb9e2c0525bd61c1c84
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: a50f91d5cbbc0eac7080437c96144014dad651ee
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42058656"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44161761"
 ---
 # <a name="use-azure-resource-manager-templates-in-azure-stack"></a>Použití šablon Azure Resource Manageru ve službě Azure Stack
 
@@ -30,11 +30,11 @@ ms.locfileid: "42058656"
 
 Tyto šablony se dá nasadit pomocí portálu Microsoft Azure Stack, Powershellu, příkazového řádku a sady Visual Studio.
 
-Jsou k dispozici v následujících šablon rychlý Start [Githubu](http://aka.ms/azurestackgithub).
+Jsou k dispozici v následujících šablon rychlý Start [Githubu](http://aka.ms/azurestackgithub):
 
 ## <a name="deploy-sharepoint-server-non-high-availability-deployment"></a>Nasazení serveru SharePoint (nasazení vysoké dostupnosti)
 
-Pomocí rozšíření PowerShell DSC můžete vytvořit farmu služby SharePoint Server 2013, která zahrnuje následující prostředky:
+Pomocí rozšíření PowerShell DSC pro [Vytvoření farmy serverů SharePoint Server 2013](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/AzureStackTechnicalPreview1/sharepoint-2013-non-ha) , který obsahuje následující zdroje:
 
 * Virtuální síť
 * 3 účty úložiště
@@ -45,7 +45,7 @@ Pomocí rozšíření PowerShell DSC můžete vytvořit farmu služby SharePoint
 
 ## <a name="deploy-ad-non-high-availability-deployment"></a>Nasazení AD (bez vysoce – dostupnost – nasazení)
 
-Pomocí rozšíření PowerShell DSC můžete vytvořit server řadiče domény AD, která zahrnuje následující prostředky:
+Pomocí rozšíření PowerShell DSC pro [vytvoření serveru řadiče domény AD](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/AzureStackTechnicalPreview1/ad-non-ha) , který obsahuje následující zdroje:
 
 * Virtuální síť
 * Jeden účet úložiště
@@ -54,7 +54,7 @@ Pomocí rozšíření PowerShell DSC můžete vytvořit server řadiče domény 
 
 ## <a name="deploy-adsql-non-high-availability-deployment"></a>Nasazení AD/SQL (bez vysoce – dostupnost – nasazení)
 
-Pomocí rozšíření PowerShell DSC můžete vytvořit samostatný server SQL Server 2014, která zahrnuje následující prostředky:
+Pomocí rozšíření PowerShell DSC pro [vytvořit samostatný server SQL Server 2014](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/AzureStackTechnicalPreview1/sql-2014-non-ha) , který obsahuje následující zdroje:
 
 * Virtuální síť
 * Dva účty úložiště
@@ -68,15 +68,15 @@ Pomocí rozšíření PowerShell DSC ke konfiguraci existujícího virtuálního
 
 ## <a name="create-a-virtual-machine-from-a-user-image"></a>Vytvoření virtuálního počítače z uživatelské image
 
-Vytvoření virtuálního počítače z vlastní uživatelská image. Tato šablona také nasadí virtuální sítě (pomocí DNS), veřejné IP adresy a síťové rozhraní.
+[Vytvoření virtuálního počítače z vlastní uživatelská image](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/AzureStackTechnicalPreview1/101-vm-from-user-image). Tato šablona také nasadí virtuální sítě (pomocí DNS), veřejné IP adresy a síťové rozhraní.
 
 ## <a name="basic-virtual-machine"></a>Základní virtuální počítač
 
-Nasazení virtuálního počítače s Windows, který zahrnuje virtuální síť (pomocí DNS), veřejné IP adresy a síťové rozhraní.
+[Nasazení virtuálního počítače s Windows](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/AzureStackTechnicalPreview1/101-simple-windows-vm) , který zahrnuje virtuální síť (pomocí DNS), veřejné IP adresy a síťové rozhraní.
 
 ## <a name="cancel-a-running-template-deployment"></a>Zrušit běžící šablona nasazení
 
-Chcete-li zrušit spuštěné nasazení šablony, použijte `Stop-AzureRmResourceGroupDeployment` rutiny Powershellu.
+Chcete-li zrušit spuštěné nasazení šablony, použijte [Stop-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/stop-azurermresourcegroupdeployment) rutiny Powershellu.
 
 ## <a name="next-steps"></a>Další postup
 

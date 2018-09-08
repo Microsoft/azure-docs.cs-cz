@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 06/06/2018
+ms.date: 09/04/2018
 ms.author: juluk
-ms.openlocfilehash: 9a22b14df18e10342bb2a872b82b94ab4ea62d0a
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 606b36be4a2bbeff8dd226f41341d60e23f0d988
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859863"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44163273"
 ---
 [!INCLUDE [PersistingStorage-introblock](../../includes/cloud-shell-persisting-shell-storage-introblock.md)]
 
@@ -42,9 +42,7 @@ Bash ve službě Cloud Shell, můžete spustit příkaz, volána `clouddrive`, c
 #### <a name="prerequisites-for-manual-mounting"></a>Požadavky pro ruční připojení
 Sdílené složce, která je přidružená Cloud Shell pomocí můžete aktualizovat `clouddrive mount` příkazu.
 
-Pokud existující sdílenou složku připojíte, účty úložiště musí být:
-* Místně redundantní úložiště nebo geograficky redundantní úložiště za účelem podpory sdílené složky.
-* Součástí přiřazené oblasti. Když jste připojení, jsou přiřazeny k oblasti je uveden v názvu skupiny prostředků `cloud-shell-storage-<region>`.
+Pokud existující sdílenou složku připojíte, účty úložiště musí být umístěné ve vaší oblasti vyberte Cloud Shell. Načíst umístění spuštěním `env` z prostředí Bash a kontrolu `ACC_LOCATION`.
 
 #### <a name="the-clouddrive-mount-command"></a>`clouddrive mount` Příkaz
 

@@ -10,12 +10,12 @@ ms.technology: luis
 ms.topic: article
 ms.date: 07/30/2018
 ms.author: diberry
-ms.openlocfilehash: 355c1edd4fa7433e68a9c0e903f4f782203326fe
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 9c14f2121cd83cec802f4fd4a92661d58eb7efb3
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39365874"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44159567"
 ---
 # <a name="tutorial-improve-app-with-patterns"></a>Kurz: Vylepšit aplikaci pomocí vzorů
 
@@ -26,7 +26,7 @@ V tomto kurzu pomocí vzorů zvýšit předpovědi záměr a entity.
 * Postup vytvoření vzoru
 * Postup ověření vylepšení predikce modelu
 
-[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -114,15 +114,15 @@ Množství projevy příklad v tyto záměry není dostatečně tak moct trénov
 
 ## <a name="train-the-luis-app"></a>Trénování aplikace LUIS
 
-[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
+[!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>Publikování aplikace a získání adresy URL koncového bodu
 
-[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
+[!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
 ## <a name="query-the-endpoint-with-a-different-utterance"></a>Odeslání dotazu na koncový bod s jinou promluvou
 
-1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
+1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 2. Na konec adresy URL zadejte `Who is the boss of Jill Jones?`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. 
 
@@ -424,7 +424,7 @@ Všechny tyto projevy nalezené entity uvnitř, proto shodují stejný vzor a ma
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+[!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Další postup
 

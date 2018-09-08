@@ -1,6 +1,6 @@
 ---
-title: Integrace mapy služeb s nástrojem System Center Operations Manager | Microsoft Docs
-description: Service Map je řešení v Azure, které automaticky zjišťuje komponenty aplikací v systémech Windows a Linux a mapuje komunikace mezi těmito službami. Tento článek popisuje pomocí mapy služeb pro automatické vytvoření diagramy distribuované aplikace v nástroji Operations Manager.
+title: Řešení Service Map integrace s nástrojem System Center Operations Manager | Dokumentace Microsoftu
+description: Service Map je řešení v Azure, které automaticky zjišťuje komponenty aplikací v systémech Windows a Linux a mapuje komunikace mezi těmito službami. Tento článek popisuje použitím řešení Service Map automaticky vytvořit distribuovanou aplikaci diagramy v nástroji Operations Manager.
 services: monitoring
 documentationcenter: ''
 author: daveirwin1
@@ -14,122 +14,122 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: bwren;dairwin
-ms.openlocfilehash: 6fbc49584b040f952fdff147207864d2d1f6377e
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 5aca1400ddfe1522cd9dc8d68d8cba8a222e4d21
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33887871"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44095194"
 ---
-# <a name="service-map-integration-with-system-center-operations-manager"></a>Integrace mapy služeb s nástrojem System Center Operations Manager
+# <a name="service-map-integration-with-system-center-operations-manager"></a>Řešení Service Map integrace s nástrojem System Center Operations Manager
   > [!NOTE]
   > Tato funkce je ve verzi public preview.
   > 
   
-Service Map automaticky rozpozná komponenty aplikace v systémech Windows a Linux a mapuje komunikaci mezi službami. Mapa služeb umožňuje zobrazit vaše servery způsob, jak si myslíte z nich, jako vzájemně propojena systémy, které doručují důležité služby. Mapy služeb zobrazí připojení mezi servery, procesy a porty mezi žádné připojení TCP architektura žádnou konfiguraci vyžaduje kromě instalaci agenta. Další informace najdete v tématu [mapy služeb dokumentaci]( monitoring-service-map.md).
+Service Map automaticky rozpozná komponenty aplikace v systémech Windows a Linux a mapuje komunikaci mezi službami. Řešení Service Map umožňuje zobrazit vaše servery tak, jak přirozeným způsobem, jako propojené systémy, které doručují důležité služby. Service Map ukazuje propojení mezi servery, procesy a porty v jakékoli architektuře propojené TCP, žádnou konfiguraci kromě instalace agenta vyžaduje. Další informace najdete v tématu [dokumentace ke službě Service Map]( monitoring-service-map.md).
 
-Díky této integraci mezi mapy služeb a System Center Operations Manager můžete automaticky vytvořit diagramy distribuované aplikace v nástroji Operations Manager, které jsou založeny na map dynamické závislostí v mapy služeb.
+Díky této integraci mezi službami Service Map a System Center Operations Manager můžete automaticky vytvořit diagramy distribuované aplikace v nástroji Operations Manager, které jsou založeny na mapách dynamické závislostí v Service Map.
 
 ## <a name="prerequisites"></a>Požadavky
-* Skupinu pro správu nástroje Operations Manager (2012 R2 nebo novější), je Správa u sady serverů.
-* Pracovní prostor analýzy protokolů s řešením mapy služby povolena.
-* Sada serverů (alespoň jeden), které spravuje nástroj Operations Manager a odesílání dat do mapy služeb. Servery se systémy Windows a Linux jsou podporovány.
-* Objekt služby s přístupem k předplatnému Azure, který je přidružen pracovní prostor analýzy protokolů. Další informace, přejděte na [vytvoření instančního objektu](#creating-a-service-principal).
+* Skupinu pro správu nástroje Operations Manager (2012 R2 nebo novější), který spravuje sadu serverů.
+* Pracovní prostor Log Analytics s povolené řešení Service Map.
+* Sada servery (aspoň jeden), které jsou spravovány nástrojem Operations Manager a odesílání dat do Service Map. Servery se systémy Windows a Linux jsou podporovány.
+* Objekt služby s přístupem k předplatnému Azure, který je přidružený k pracovnímu prostoru Log Analytics. Další informace najdete v části [vytvoření instančního objektu](#create-a-service-principal).
 
-## <a name="install-the-service-map-management-pack"></a>Nainstalujte sadu management pack mapy služeb
-Povolit integraci mezi nástrojem Operations Manager a Service Map importováním Microsoft.SystemCenter.ServiceMap komplet sady management pack (Microsoft.SystemCenter.ServiceMap.mpb). Komplet sady management pack z si můžete stáhnout [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=55763). Sada obsahuje následující sady management Pack:
-* Zobrazení aplikací služby Microsoft mapy
-* Mapa služeb Microsoft System Center interní
+## <a name="install-the-service-map-management-pack"></a>Nainstalujte sadu management pack Service Map
+Povolení integrace mezi nástrojem Operations Manager a Service Map importováním Microsoft.SystemCenter.ServiceMap komplet sady management pack (Microsoft.SystemCenter.ServiceMap.mpb). Můžete si stáhnout sady management pack z [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=55763). Sada obsahuje následující sady management Pack:
+* Zobrazení aplikací Microsoft Service Map
+* Interní nástroje Microsoft System Center Service Map
 * Přepsání mapy služby Microsoft System Center
-* Mapa služeb Microsoft System Center
+* Microsoft System Center Service Map
 
-## <a name="configure-the-service-map-integration"></a>Konfigurace integrace mapy služeb
-Po instalaci mapy služeb sady pro správu, nový uzel, **mapy služeb**, se zobrazí v části **Operations Management Suite** v **správy** podokně. 
+## <a name="configure-the-service-map-integration"></a>Konfigurovat integraci řešení Service Map
+Po instalaci sady management Service Map, nový uzel, **Service Map**, se zobrazí v části **Operations Management Suite** v **správu** podokně. 
 
-Při konfiguraci integrace mapy služeb, postupujte takto:
+Pokud chcete nakonfigurovat integraci řešení Service Map, postupujte takto:
 
-1. Chcete-li spustit Průvodce konfigurací v **přehled mapy služby** podokně klikněte na tlačítko **přidání prostoru**.  
+1. Chcete-li spustit Průvodce konfigurací v **Přehled služby mapy** podokně klikněte na tlačítko **přidat pracovní prostor**.  
 
-    ![Přehled služby mapy podokno](media/monitoring-service-map/scom-configuration.png)
+    ![Podokno přehled mapy služeb](media/monitoring-service-map/scom-configuration.png)
 
-2. V **konfigurace připojení** okno, zadejte název klienta nebo ID, ID aplikace (také označované jako uživatelské jméno nebo clientID) a heslo instanční objekt a potom klikněte na **Další**. Další informace, přejděte na [vytvoření instančního objektu](#creating-a-service-principal).
+2. V **konfigurace připojení** okno, zadejte název klienta nebo ID, ID aplikace (označované také jako uživatelské jméno nebo ID klienta) a heslo instančního objektu a pak klikněte na tlačítko **Další**. Další informace najdete v části [vytvoření instančního objektu](#creating-a-service-principal).
 
     ![Okno Konfigurace připojení](media/monitoring-service-map/scom-config-spn.png)
 
-3. V **výběr předplatného** oken, vyberte předplatné, skupinu prostředků Azure (ten, který obsahuje pracovní prostor analýzy protokolů) a pracovní prostor analýzy protokolů a pak klikněte na tlačítko **Další**.
+3. V **výběr předplatného** okna, vyberte předplatné Azure, skupinu prostředků Azure (ten, který obsahuje tento pracovní prostor Log Analytics) a pracovní prostor Log Analytics a pak klikněte na tlačítko **Další**.
 
-    ![Pracovní prostor Operations Manager konfigurace](media/monitoring-service-map/scom-config-workspace.png)
+    ![Pracovní prostor Operations Manageru konfigurace](media/monitoring-service-map/scom-config-workspace.png)
 
-4. V **výběr skupiny počítače** okně vyberte skupiny počítačů mapy které služby chcete synchronizovat do nástroje Operations Manager. Klikněte na tlačítko **skupiny počítačů přidat nebo odebrat**, vyberte skupiny ze seznamu **dostupných skupin počítačů**a klikněte na tlačítko **přidat**.  Po dokončení výběru skupiny klikněte na **Ok** ukončíte.
+4. V **výběr skupiny počítačů** okna, vyberte skupiny počítačů mapy které služby chcete synchronizovat do nástroje Operations Manager. Klikněte na tlačítko **přidat nebo odebrat skupiny počítačů**, vyberte ze seznamu skupin **dostupné skupiny počítačů**a klikněte na tlačítko **přidat**.  Když jste hotovi s výběrem skupin, klikněte na tlačítko **Ok** na dokončení.
     
-    ![Operace skupiny počítače Configuration Manager](media/monitoring-service-map/scom-config-machine-groups.png)
+    ![Skupiny počítačů Configuration Manager Operations](media/monitoring-service-map/scom-config-machine-groups.png)
     
-5. V **výběr serveru** okně konfiguraci skupiny serverů mapy služby se servery, které chcete synchronizovat mezi nástrojem Operations Manager a mapy služeb. Klikněte na tlačítko **přidat nebo odebrat servery**.   
+5. V **výběr serveru** okně Konfigurovat skupinu serverů Service Map se servery, které chcete synchronizovat mezi nástrojem Operations Manager a Service Map. Klikněte na tlačítko **přidat nebo odebrat servery**.   
     
-    Pro integraci sestavení diagramu distribuované aplikace pro server musí být server:
+    Pro integraci sestavení diagramu distribuované aplikace pro server musí být na serveru:
 
-    * Spravován nástrojem Operations Manager
-    * Spravuje mapy služeb
-    * Uvedené ve skupině služby mapy servery
+    * Spravovaných nástrojem Operations Manager
+    * Spravuje řešení Service Map
+    * Uveden ve skupině serverů Service Map
 
-    ![Skupinu konfigurace nástroje Operations Manager](media/monitoring-service-map/scom-config-group.png)
+    ![Skupina konfigurace Operations Manageru](media/monitoring-service-map/scom-config-group.png)
 
-6. Volitelné: Vyberte fond zdrojů serveru pro správu ke komunikaci s analýzy protokolů a pak klikněte na tlačítko **přidání prostoru**.
+6. Volitelné: Vyberte fond zdrojů serveru pro správu komunikovat s Log Analytics a potom klikněte na tlačítko **přidat pracovní prostor**.
 
-    ![Operace fondu zdrojů Configuration Manager](media/monitoring-service-map/scom-config-pool.png)
+    ![Fond zdrojů Configuration Manager Operations](media/monitoring-service-map/scom-config-pool.png)
 
-    Může trvat několik minut, konfigurace a registrace pracovní prostor analýzy protokolů. Po dokončení své konfigurace, Operations Manager zahájí první synchronizace mapy služeb.
+    Může trvat minutu konfigurace a registrace v pracovním prostoru Log Analytics. Po dokončení konfigurace nástroje Operations Manager inicializuje první synchronizace Service Map.
 
-    ![Operace fondu zdrojů Configuration Manager](media/monitoring-service-map/scom-config-success.png)
+    ![Fond zdrojů Configuration Manager Operations](media/monitoring-service-map/scom-config-success.png)
 
 
-## <a name="monitor-service-map"></a>Monitorování mapy služeb
-Až se připojí pracovní prostor analýzy protokolů novou složku, mapy služeb, se zobrazí v **monitorování** podokně konzoly nástroje Operations Manager.
+## <a name="monitor-service-map"></a>Monitor Service Map
+Po připojení pracovního prostoru Log Analytics novou složku Service Map se zobrazí v **monitorování** podokně konzole nástroje Operations Manager.
 
 ![V podokně monitorování nástroje Operations Manager](media/monitoring-service-map/scom-monitoring.png)
 
-Mapa služeb složka obsahuje čtyři uzly:
-* **Aktivní výstrahy**: uvádí všechny aktivní výstrahy o komunikaci mezi nástrojem Operations Manager a mapy služeb.  Všimněte si, že tyto výstrahy nejsou analýzy protokolů výstrahy se synchronizované do nástroje Operations Manager. 
+Složka řešení Service Map má čtyři uzly:
+* **Aktivní výstrahy**: Zobrazuje seznam všech aktivních výstrah o komunikaci mezi nástrojem Operations Manager a Service Map.  Všimněte si, že se tato upozornění Log Analytics výstrahy, synchronizuje do nástroje Operations Manager. 
 
-* **Servery**: seznam monitorovaných serverů, které jsou nakonfigurovány pro synchronizaci z mapy služeb.
+* **Servery**: jsou monitorované servery, které jsou nakonfigurovány k synchronizaci ze služeb Service Map.
 
     ![V podokně monitorování servery nástroje Operations Manager](media/monitoring-service-map/scom-monitoring-servers.png)
 
-* **Počítač zobrazení závislostí skupiny**: uvádí všechny skupiny počítačů, které jsou synchronizované z mapy služeb. Klikněte na možnost žádné skupiny k zobrazení jeho diagramu distribuované aplikace.
+* **Zobrazení závislostí skupin počítačů**: jsou uvedeny všechny skupiny počítačů, které jsou synchronizované z řešení Service Map. Klikněte na možnost žádné skupiny k zobrazení jeho diagramu distribuované aplikace.
 
-    ![Diagram distribuovaných aplikací nástroje Operations Manager](media/monitoring-service-map/scom-group-dad.png)
+    ![Diagramu distribuované aplikace Operations Manageru](media/monitoring-service-map/scom-group-dad.png)
 
-* **Zobrazení závislostí server**: uvádí všechny servery, které jsou synchronizované z mapy služeb. Můžete kliknout na jakýkoli server zobrazíte jeho diagramu distribuované aplikace.
+* **Zobrazení závislostí serveru**: Vypíše všechny servery, které jsou synchronizované z řešení Service Map. Můžete kliknout na libovolný server zobrazíte jeho diagramu distribuované aplikace.
 
-    ![Diagram distribuovaných aplikací nástroje Operations Manager](media/monitoring-service-map/scom-dad.png)
+    ![Diagramu distribuované aplikace Operations Manageru](media/monitoring-service-map/scom-dad.png)
 
 ## <a name="edit-or-delete-the-workspace"></a>Upravit nebo odstranit pracovní prostor
-Můžete upravit nebo odstranit nakonfigurované prostoru prostřednictvím **přehled mapy služby** podokně (**správy** podokně > **Operations Management Suite**  >  **Služby mapy**). Teď můžete konfigurovat jenom jeden pracovní prostor analýzy protokolů.
+Můžete upravit nebo odstranit nakonfigurovaný pracovní prostor prostřednictvím **Přehled služby mapy** podokně (**správu** podokně > **Operations Management Suite**  >  **Service Map**). Teď můžete nakonfigurovat pouze jeden pracovní prostor Log Analytics.
 
-![V podokně pracovní prostor upravit služby Operations Manager](media/monitoring-service-map/scom-edit-workspace.png)
+![V podokně pracovní prostor Operations Manageru upravit](media/monitoring-service-map/scom-edit-workspace.png)
 
 ## <a name="configure-rules-and-overrides"></a>Konfigurace pravidla a přepsání
-Pravidlo, _Microsoft.SystemCenter.ServiceMapImport.Rule_, vytvoření pravidelně načíst informace z mapy služeb. Chcete-li změnit časování synchronizace, můžete nakonfigurovat přepsání pravidla (**vytváření** podokně > **pravidla** > **Microsoft.SystemCenter.ServiceMapImport.Rule**) .
+Pravidlo, _Microsoft.SystemCenter.ServiceMapImport.Rule_, vytvoření pravidelně načítat informace z řešení Service Map. Chcete-li změnit synchronizace časování, můžete nakonfigurovat přepsání pravidla (**Authoring** podokně > **pravidla** > **Microsoft.SystemCenter.ServiceMapImport.Rule**) .
 
-![Operations Manager přepíše vlastnosti – okno](media/monitoring-service-map/scom-overrides.png)
+![V okně Vlastnosti přepsání Operations Manageru](media/monitoring-service-map/scom-overrides.png)
 
-* **Povolit**: Povolit nebo zakázat automatické aktualizace. 
-* **IntervalMinutes**: resetování času mezi aktualizacemi. Výchozí interval je jedna hodina. Pokud chcete synchronizovat častěji mapy serveru, můžete změnit hodnotu.
-* **TimeoutSeconds**: resetování dobu před vypršením časového limitu požadavku. 
-* **TimeWindowMinutes**: resetování časový interval pro dotazování na data. Výchozí hodnota je 60 minut okno. Maximální povolená pomocí mapy služeb hodnota je 60 minut.
+* **Povolené**: Povolí nebo zakáže automatické aktualizace. 
+* **IntervalMinutes**: resetování času mezi aktualizacemi. Výchozí interval je jedna hodina. Pokud chcete synchronizovat server mapy častěji, můžete změnit hodnotu.
+* **TimeoutSeconds**: resetování dobu, než vyprší časový limit žádosti. 
+* **TimeWindowMinutes**: časový interval pro dotazování na data obnovit. Výchozí hodnota je 60 minut okna. Maximální hodnotu povolenou Service Map je 60 minut.
 
 ## <a name="known-issues-and-limitations"></a>Známé problémy a omezení
 
-Současný návrh uvede následující problémy a omezení:
-* Můžete připojit pouze k jedné pracovní prostor analýzy protokolů.
-* I když přidáte servery do skupin serverů mapy služby ručně pomocí **vytváření** podokně mapy pro tyto servery není synchronizovaná okamžitě.  Bude se synchronizovat ze služby mapy při příštím synchronizačním cyklu.
-* Pokud provedete změny diagramy distribuované aplikace vytvořené sady management pack, tyto změny budou přepsány pravděpodobně na příští synchronizaci s mapy služeb.
+Současný návrh představuje následující problémy a omezení:
+* Můžete připojit jenom k jedné pracovní prostor Log Analytics.
+* I když přidáte servery do skupiny serverů mapy služby ručně až **Authoring** podokně mapování pro tyto servery nejsou synchronizované okamžitě.  Bude se synchronizovat z řešení Service Map při další cyklus synchronizace.
+* Pokud provedete změny diagramy distribuované aplikace vytvořené pomocí sady management pack, tyto změny budou přepsány pravděpodobně při další synchronizaci s řešení Service Map.
 
 ## <a name="create-a-service-principal"></a>Vytvoření instančního objektu
-Oficiální Azure dokumentaci o vytvoření objektu služby najdete v tématu:
-* [Vytvoření objektu služby pomocí prostředí PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal)
-* [Vytvořit objekt služby pomocí rozhraní příkazového řádku Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
-* [Vytvořit objekt služby pomocí portálu Azure](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)
+Oficiální dokumentace k Azure o vytvoření instančního objektu služby naleznete v tématu:
+* [Vytvoření instančního objektu pomocí Powershellu](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal)
+* [Vytvoření instančního objektu pomocí Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal-cli)
+* [Vytvoření instančního objektu pomocí webu Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal)
 
 ### <a name="feedback"></a>Váš názor
-Máte k dispozici žádné zpětná vazba nám o mapy služeb nebo této dokumentace? Navštivte naše [User Voice stránky](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map), kde můžete navrhnout funkce nebo hlasovat o existující návrhy.
+Máte jakoukoli zpětnou vazbu pro nás o mapy služeb nebo v této dokumentaci? Navštivte naše [User Voice stránky](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map), kde můžete navrhnout funkce nebo hlasovat o doporučeních existující.

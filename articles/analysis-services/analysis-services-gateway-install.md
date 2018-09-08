@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 08/13/2018
+ms.date: 09/07/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 10bcf54da9660da1edcc8358f10289e9678be5cb
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: 89b21af5303afc2082d3d56ddb9e894f3ae4c4b8
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42055238"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44158407"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Instalace a konfigurace místní brány dat
 Při jeden nebo více serverů služby Azure Analysis Services ve stejné oblasti připojení k místním zdrojům dat, místní brány dat se vyžaduje. Další informace o bráně, naleznete v tématu [On-premises data gateway](analysis-services-gateway.md).
@@ -35,6 +35,7 @@ Při jeden nebo více serverů služby Azure Analysis Services ve stejné oblast
 * Během instalace, při registraci vaší brány Azure je vybrán výchozí oblast pro vaše předplatné. Můžete použít v jiné oblasti. Pokud máte servery ve více než jedné oblasti, musíte nainstalovat bránu pro každou oblast. 
 * Brány nelze nainstalovat na řadič domény.
 * V jednom počítači lze nainstalovat pouze jednu bránu.
+* Ve výchozím nastavení brána používá účet NT SERVICE\PBIEgwService pro přihlášení. Během instalace nebo služby se dá nastavit jiný účet. Nastavení zásad skupiny zkontrolujte, zda povolit, že má účet služby protokolu jako oprávnění služby.
 * Bránu nainstalujte na počítač, který zůstane na a ne přechází do režimu spánku.
 * Bránu neinstalujte na počítač bezdrátově připojené k vaší síti. Výkon můžete snížila.
 * Přihlášení k Azure pomocí účtu ve službě Azure AD pro stejné [tenanta](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant) jako předplatné při registraci brány v. Azure B2B účty (Host) nejsou podporována při instalaci a registraci brány.
@@ -111,7 +112,7 @@ Po nainstalovaný a zaregistrovaný bránu, je potřeba vytvořit prostředek br
     > [!NOTE]
     > Pokud vaše brána se nezobrazí v seznamu, je váš server pravděpodobně že není ve stejné oblasti jako oblast jste zadali při registraci brány. 
 
-A je to. Pokud je potřeba otevřít porty nebo provést další řešení potíží, nezapomeňte se podívat [On-premises data gateway](analysis-services-gateway.md).
+A to je vše. Pokud je potřeba otevřít porty nebo provést další řešení potíží, nezapomeňte se podívat [On-premises data gateway](analysis-services-gateway.md).
 
 ## <a name="next-steps"></a>Další postup
 * [Správa služby Analysis Services](analysis-services-manage.md)   

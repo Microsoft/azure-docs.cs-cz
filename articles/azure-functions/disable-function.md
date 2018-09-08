@@ -3,21 +3,18 @@ title: Zakázání funkcí ve službě Azure Functions
 description: Zjistěte, jak zakázat a povolit funkce v Azure Functions 1.x a 2.x.
 services: functions
 documentationcenter: ''
-author: tdykstra
-manager: cfowler
-editor: ''
-ms.service: functions
-ms.workload: na
-ms.devlang: na
-ms.topic: article
+author: ggailey777
+manager: jeconnoc
+ms.service: azure-functions
+ms.topic: conceptual
 ms.date: 07/24/2018
-ms.author: tdykstra
-ms.openlocfilehash: be30a97c9c94031ea526385326c220fbf0d316b7
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.author: glenga
+ms.openlocfilehash: ab9cf429a0af69db116fe910ab90b83d404afbb7
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40006316"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44093630"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Zakázání funkcí ve službě Azure Functions
 

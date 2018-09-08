@@ -1,36 +1,33 @@
 ---
-title: Ověřování pomocí Azure AD z virtuálního počítače Azure se identita spravované služby (Preview) | Dokumentace Microsoftu
-description: Ověřování pomocí Azure AD z virtuálního počítače Azure se identita spravované služby (Preview).
+title: Ověření přístupu k objektům BLOB a fronty s Azure Active Directory spravovat identity pro prostředky Azure (Preview) – služby Azure Storage | Dokumentace Microsoftu
+description: Úložiště objektů Blob a fronty Azure podporuje ověřování Azure Active Directory pomocí spravované identity pro prostředky Azure. Spravované identity pro prostředky Azure můžete použít k ověření přístupu k objektům BLOB a fronty z aplikací běžících v Azure virtuální počítače, aplikace function App, škálovací sady virtuálních počítačů a dalších. Pomocí spravované identity pro prostředky Azure a využívá širokých možností ověřování Azure AD, můžete zabránit ukládání přihlašovacích údajů s vašimi aplikacemi, které běží v cloudu.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 05/18/2018
+ms.date: 09/05/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: e20e0c412206b2a35973b192ef911bb99ed7c210
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 67e0731c1f10bb635baa4e0d1a26dce0a336b555
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44021859"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44090351"
 ---
-# <a name="authenticate-with-azure-ad-from-an-azure-managed-service-identity-preview"></a>Ověření ve službě Azure AD z Identity spravovaných služeb Azure (Preview)
+# <a name="authenticate-access-to-blobs-and-queues-with-azure-managed-identities-for-azure-resources-preview"></a>Ověření přístupu k objektům BLOB a fronty Azure spravovaných identit pro prostředky Azure (Preview)
 
-Azure Storage podporuje ověřování Azure Active Directory (Azure AD) s [identita spravované služby](../../active-directory/managed-identities-azure-resources/overview.md). Identita spravované služby (MSI) poskytuje automaticky spravovanou identitu ve službě Azure Active Directory (Azure AD). Použití MSI pro ověření do služby Azure Storage z aplikace běžící v Azure virtuální počítače, aplikace function App, škálovací sady virtuálních počítačů a dalších. Pomocí MSI a využívá širokých možností ověřování Azure AD, můžete zabránit ukládání přihlašovacích údajů s vašimi aplikacemi, které běží v cloudu.  
+Úložiště objektů Blob a fronty Azure podporují ověřování Azure Active Directory (Azure AD) s [spravovaných identit pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md). Spravované identity pro prostředky Azure můžete použít k ověření přístupu k objektům BLOB a fronty z aplikací běžících v Azure virtuální počítače (VM), aplikace function App, škálovací sady virtuálních počítačů a dalších. Pomocí spravované identity pro prostředky Azure a využívá širokých možností ověřování Azure AD, můžete zabránit ukládání přihlašovacích údajů s vašimi aplikacemi, které běží v cloudu.  
 
-Chcete-li udělit oprávnění pro identitu spravované služby pro kontejnery úložiště nebo fronty, přiřaďte roli RBAC, včetně úložiště oprávnění k souboru MSI. Další informace o rolích RBAC v úložišti, najdete v části [Správa přístupových práv k datům úložiště pomocí RBAC (Preview)](storage-auth-aad-rbac.md). 
+Udělení oprávnění pro spravovanou identitu do kontejneru objektů blob nebo fronty, přiřadíte roli řízení přístupu na základě role spravovanou identitu, která zahrnuje oprávnění pro daný prostředek na příslušný obor. Další informace o rolích RBAC v úložišti, najdete v části [Správa přístupových práv k datům úložiště pomocí RBAC (Preview)](storage-auth-aad-rbac.md). 
 
-> [!IMPORTANT]
-> V této verzi preview je určeno pouze pro nevýrobní prostředí. Produkční smlouvy o úrovni služeb (SLA) nebudou dostupné, dokud integrace Azure AD pro službu Azure Storage je deklarována jako obecně dostupné. Pokud se integrace služby Azure AD není dosud podporována pro váš scénář, dál používat povolení sdíleného klíče nebo tokeny SAS ve svých aplikacích. Další informace o verzi preview najdete v tématu [ověření přístupu ke službě Azure Storage pomocí Azure Active Directory (Preview)](storage-auth-aad.md).
->
-> Ve verzi preview přiřazení rolí pro RBAC může trvat až pět minut na dokončení propagace.
+Tento článek ukazuje, jak ověřit do fronty nebo Azure Blob storage s využitím spravované identity z virtuálního počítače Azure.  
 
-Tento článek ukazuje, jak ověření na Azure Storage s využitím MSI z virtuálního počítače Azure.  
+[!INCLUDE [storage-auth-aad-note-include](../../../includes/storage-auth-aad-note-include.md)]
 
-## <a name="enable-msi-on-the-vm"></a>Povolení MSI ve virtuálním počítači
+## <a name="enable-managed-identities-on-a-vm"></a>Povolit spravovaným identitám na virtuálním počítači
 
-Než použití MSI pro ověření do služby Azure Storage z vašeho virtuálního počítače, musíte nejprve povolit MSI ve virtuálním počítači. Informace o povolení MSI, najdete v některém z těchto článků:
+Před použitím spravovaných identit pro prostředky Azure k ověření přístupu k objektům BLOB a fronty ze svého virtuálního počítače, je nutné povolit spravovaných identit pro prostředky Azure na virtuálním počítači. Zjistěte, jak povolit spravovaných identit pro prostředky Azure, najdete v některém z těchto článků:
 
 - [Azure Portal](https://docs.microsoft.com/azure/active-directory/managed-service-identity/qs-configure-portal-windows-vm)
 - [Azure PowerShell](../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md)
@@ -38,20 +35,20 @@ Než použití MSI pro ověření do služby Azure Storage z vašeho virtuální
 - [Šablona Azure Resource Manageru](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
 - [Sady Azure SDK](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
 
-## <a name="get-an-msi-access-token"></a>Získání tokenu přístupu MSI
+## <a name="get-a-managed-identity-access-token"></a>Získání tokenu přístupu spravované identity
 
-Abyste mohli ověřovat pomocí MSI, musí vaše aplikace nebo skript získání přístupového tokenu MSI. Další informace o tom, jak získat přístupový token, naleznete v tématu [použití Azure VM Identity spravované služby (MSI) pro získání tokenu](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md).
+K ověření pomocí spravované identity, musíte získat přístupový token spravovanou identitu vaše aplikace nebo skript. Další informace o tom, jak získat přístupový token, naleznete v tématu [použití spravované identity pro prostředky Azure na Virtuálním počítači Azure získat přístupový token](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md).
 
 ## <a name="net-code-example-create-a-block-blob"></a>Příklad kódu .NET: vytvoření objektu blob bloku
 
-Příklad kódu předpokládá, že máte přístupový token MSI. Přístupový token se používá k ověření identity spravované služby pro vytvoření objektu blob bloku.
+Příklad kódu předpokládá, že máte přístupový token spravovaná identita. Přístupový token se používá k autorizaci spravovanou identitu, chcete-li vytvořit objekt blob bloku.
 
 ### <a name="add-references-and-using-statements"></a>Přidání odkazů a příkazy using  
 
 V sadě Visual Studio nainstalujte klientské knihovny Azure Storage ve verzi preview. Z **nástroje** nabídce vyberte možnost **Správce balíčků Nuget**, pak **Konzola správce balíčků**. Do konzoly zadejte následující příkaz:
 
 ```
-Install-Package https://www.nuget.org/packages/WindowsAzure.Storage/9.2.0  
+Install-Package https://www.nuget.org/packages/WindowsAzure.Storage  
 ```
 
 Přidejte následující příkazy using do kódu:
@@ -60,13 +57,13 @@ Přidejte následující příkazy using do kódu:
 using Microsoft.WindowsAzure.Storage.Auth;
 ```
 
-### <a name="create-credentials-from-the-msi-access-token"></a>Vytvořte přihlašovací údaje z tokenu přístupu MSI
+### <a name="create-credentials-from-the-managed-identity-access-token"></a>Vytvořte přihlašovací údaje z přístupového tokenu spravované identity
 
-Chcete-li vytvořit objekt blob bloku, použijte **TokenCredentials** třídy poskytovaný balíček ve verzi preview. Vytvořit novou instanci třídy **TokenCredentials**a předejte token přístupu MSI, který jste získali dříve:
+Chcete-li vytvořit objekt blob bloku, použijte **TokenCredentials** třídy poskytovaný balíček ve verzi preview. Vytvořit novou instanci třídy **TokenCredentials**a předejte spravovanou identitu přístupový token, který jste získali dříve:
 
 ```dotnet
-// Create storage credentials from your MSI access token.
-TokenCredential tokenCredential = new TokenCredential(msiAccessToken);
+// Create storage credentials from your managed identity access token.
+TokenCredential tokenCredential = new TokenCredential(accessToken);
 StorageCredentials storageCredentials = new StorageCredentials(tokenCredential);
 
 // Create a block blob using the credentials.

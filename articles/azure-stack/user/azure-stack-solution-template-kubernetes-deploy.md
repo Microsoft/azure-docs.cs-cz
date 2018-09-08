@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 09/07/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 5df8104907e30337cdf47e5a9489ffdb50451a94
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: c0c625852ff131aaa26e424ded75fbe51f94f23d
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/07/2018
-ms.locfileid: "44055212"
+ms.locfileid: "44159295"
 ---
 # <a name="deploy-a-kubernetes-cluster-to-azure-stack"></a>Nasazení clusteru Kubernetes do služby Azure Stack
 
@@ -28,7 +28,7 @@ ms.locfileid: "44055212"
 > [!Note]  
 > Modul AKS (služby Azure Kubernetes Service) ve službě Azure Stack je ve verzi private preview. Operátor Azure stacku bude muset požádat o přístup k položce Kubernetes Marketplace nutná k provádění pokynů v tomto článku.
 
-Následujícím článku se podíváme na pomocí šablony Azure Resource Manageru řešení k nasazení a zřizování prostředků pro Kubernetes v rámci jediné koordinované operace. Budete potřebovat získat požadované informace o instalaci Azure Stack, generovat šablony a pak nasadit do cloudu.
+Následujícím článku se podíváme na pomocí šablony Azure Resource Manageru řešení k nasazení a zřizování prostředků pro Kubernetes v rámci jediné koordinované operace. Budete potřebovat získat požadované informace o instalaci Azure Stack, generovat šablony a pak nasadit do cloudu. Všimněte si, že šablona není stejný spravované služby AKS nabízí globální Azure, ale blíže služby ACS.
 
 ## <a name="kubernetes-and-containers"></a>Kubernetes a kontejnerů
 
@@ -108,11 +108,11 @@ Poskytněte přístup instančního objektu služby do vašeho předplatného, t
 
 1. Vyberte **+ nový** > **Compute** > **clusteru Kubernetes**. Klikněte na možnost **Vytvořit**.
 
-    ![Nasadit šablonu řešení](media/azure-stack-solution-template-kubernetes-deploy/01_kub_market_item.png)
+    ![Nasazení šablony řešení](media/azure-stack-solution-template-kubernetes-deploy/01_kub_market_item.png)
 
 1. Vyberte **Základy** v vytvoření clusteru Kubernetes.
 
-    ![Nasadit šablonu řešení](media/azure-stack-solution-template-kubernetes-deploy/02_kub_config_basic.png)
+    ![Nasazení šablony řešení](media/azure-stack-solution-template-kubernetes-deploy/02_kub_config_basic.png)
 
 1. Zadejte **uživatelské jméno správce virtuálního počítače Linux**. Uživatelské jméno pro virtuální počítače Linux, které jsou součástí clusteru Kubernetes a DVM.
 
@@ -141,7 +141,7 @@ Poskytněte přístup instančního objektu služby do vašeho předplatného, t
 
 1. Vyberte **nastavení služby Azure Stack razítko**.
 
-    ![Nasadit šablonu řešení](media/azure-stack-solution-template-kubernetes-deploy/03_kub_config_settings.png)
+    ![Nasazení šablony řešení](media/azure-stack-solution-template-kubernetes-deploy/03_kub_config_settings.png)
 
 1. Zadejte **koncový bod Arm Tenanta**. Toto je koncový bod Azure Resource Manageru pro připojení k vytvoření skupiny prostředků pro Kubernetes cluster. Je potřeba koncový bod pro integrovaný systém získat vaše operátory Azure stacku. Pro Azure Stack Development Kit (ASDK), můžete použít `https://management.local.azurestack.external`.
 

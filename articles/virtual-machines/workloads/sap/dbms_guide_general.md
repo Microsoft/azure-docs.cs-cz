@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/12/2018
+ms.date: 09/06/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e7ad93cbfd096cacadaef8666b0ea5b31d7fd992
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: e46503f8dc97f58db1cd5acfd2122e2895fb15b0
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918797"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44162304"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Důležité informace týkající se nasazení Azure Virtual Machines DBMS pro úlohy SAP
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -272,6 +272,11 @@ Existuje několik osvědčených postupů, které je mimo stovky zákaznická na
 - Virtuální počítače ve virtuální síti mají statického přidělování privátní IP adresy. Přečtěte si článek [typy IP adres a metody přidělování v Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm) jako odkaz.
 - Směrování omezení do a z virtuálních počítačů DBMS jsou **není** nastavit s branami firewall nainstalované na místních virtuálních počítačích DBMS. Směrování provozu je definován s [skupiny zabezpečení sítě Azure (NSG)](https://docs.microsoft.com/azure/virtual-network/security-overview)
 - Pro účely oddělení a izolace provozu do virtuálních počítačů databázového systému, přiřadit různé síťové adaptéry k virtuálnímu počítači. Kde každé síťové rozhraní má jinou IP adresu a každé síťové rozhraní je přiřazeným k jiné podsíti virtuální sítě, která znovu má jiná pravidla skupiny zabezpečení sítě. Mějte na paměti, že izolace nebo oddělení provozu v síti je právě opatření pro směrování a neumožňuje nastavení kvót pro propustnost sítě.
+
+> [!NOTE]
+> Byste měli přiřadit statické IP adresy pomocí Azure znamená, že na jednotlivé virtuální síťové adaptéry. Pro virtuální síťový adaptér by neměl přiřadit statické IP adresy v rámci hostovaného operačního systému. Některé služby Azure, jako je služba Azure Backup závisí na skutečnost, který na alespoň primárního virtuálního síťového adaptéru je nastavena, DHCP, ne statické IP adresy. Viz také dokument [Poradce při potížích s Azure se zálohováním virtuálních počítačů](https://docs.microsoft.com/azure/backup/backup-azure-vms-troubleshoot#networking). Pokud je potřeba přiřadit více statických IP adres k virtuálnímu počítači, musíte přiřadit víc karet Vnic k virtuálnímu počítači.
+>
+>
 
 Pro nasazení DBMS ve skupině dostupnosti Azure a navíc samostatné směrování pro aplikační vrstvě SAP a operace a správy provozu na dva virtuální počítače DBMS v produkčním prostředí pomocí dvou virtuálních počítačů, přibližnou diagram vypadat nějak takto:
 

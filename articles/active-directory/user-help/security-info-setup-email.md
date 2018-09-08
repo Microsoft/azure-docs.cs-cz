@@ -11,16 +11,16 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 34696802735fd2a145cd6383dcdc7e4a4b6368e2
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 3f98b4e34c4c76efc33395530ef016b26e1ad523
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39391405"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44163035"
 ---
 # <a name="set-up-security-info-to-use-email-preview"></a>Nastavení informací o zabezpečení pro použití e-mailu (preview)
 
-[!INCLUDE[preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
+[!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
 Nastavení bezpečnostních údajů vyžaduje, abyste pro přihlášení ke svému pracovnímu nebo školnímu účtu a pak dokončete proces registrace. Pokud jste dosud nenastavili své bezpečnostní údaje, budete vyzváni k tomu teď.
 

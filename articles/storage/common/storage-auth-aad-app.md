@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: d065dd6db361c5c348713c6e1ceabe3a4c42c312
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 240bc114350d8464f234200d0ea972224114212f
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577700"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44095143"
 ---
 # <a name="authenticate-with-azure-active-directory-from-an-azure-storage-application-preview"></a>Ověřování pomocí Azure Active Directory z aplikace služby Azure Storage (Preview)
 
@@ -25,10 +25,7 @@ Před ověření objektu zabezpečení z vaší aplikace Azure Storage, nakonfig
 
 Přehled toku přidělení kódu OAuth 2.0, naleznete v tématu [autorizovat přístup k Azure Active Directory webovým aplikacím pomocí OAuth 2.0 kódu udělit tok](../../active-directory/develop/v1-protocols-oauth-code.md).
 
-> [!IMPORTANT]
-> V této verzi preview je určeno pouze pro nevýrobní prostředí. Produkční smlouvy o úrovni služeb (SLA) nebudou dostupné, dokud integrace Azure AD pro službu Azure Storage je deklarována jako obecně dostupné. Pokud se integrace služby Azure AD není dosud podporována pro váš scénář, dál používat povolení sdíleného klíče nebo tokeny SAS ve svých aplikacích. Další informace o verzi preview najdete v tématu [ověření přístupu ke službě Azure Storage pomocí Azure Active Directory (Preview)](storage-auth-aad.md).
->
-> Ve verzi preview přiřazení rolí pro RBAC může trvat až pět minut na dokončení propagace.
+[!INCLUDE [storage-auth-aad-note-include](../../../includes/storage-auth-aad-note-include.md)]
 
 ## <a name="register-your-application-with-an-azure-ad-tenant"></a>Registrace aplikace pomocí tenanta služby Azure AD
 
@@ -176,7 +173,7 @@ CloudBlockBlob blob = new CloudBlockBlob(new Uri("https://storagesamples.blob.co
 ## <a name="next-steps"></a>Další postup
 
 - Další informace o rolích RBAC pro Azure storage najdete v tématu [Správa přístupových práv k datům úložiště pomocí RBAC (Preview)](storage-auth-aad-rbac.md).
-- Další informace o použití Identity spravované služby se službou Azure Storage, najdete v článku [ověřování pomocí Azure AD ze Azure Identity spravované služby (Preview)](storage-auth-aad-msi.md).
+- Další informace o použití spravované identity pro prostředky Azure pomocí služby Azure Storage, najdete v článku [ověřit přístup k objektům BLOB a fronty Azure spravovaných identit pro prostředky Azure (Preview)](storage-auth-aad-msi.md).
 - Zjistěte, jak k přihlášení do Powershellu a Azure CLI s Azure AD identity, najdete v článku [pomocí identity Azure AD pro přístup k Azure Storage s využitím rozhraní příkazového řádku nebo Powershellu (Preview)](storage-auth-aad-script.md).
 - Další informace o integraci služby Azure AD pro objekty BLOB Azure a front, najdete v článku na blogu týmu Azure Storage účtovat, [oznamujeme vydání verze Preview služby Azure AD Authentication pro službu Azure Storage](https://azure.microsoft.com/blog/announcing-the-preview-of-aad-authentication-for-storage/).
 

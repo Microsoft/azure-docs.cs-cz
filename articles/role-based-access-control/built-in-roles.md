@@ -1,6 +1,6 @@
 ---
-title: Předdefinované role v Azure | Dokumentace Microsoftu
-description: Popisuje předdefinované role pro řízení přístupu na základě role (RBAC) v Azure. Zobrazí seznam akcí, NotActions, DataActions a NotDataActions.
+title: Předdefinované role pro prostředky Azure | Dokumentace Microsoftu
+description: Popisuje předdefinované role pro řízení přístupu na základě role (RBAC) a prostředky Azure. Zobrazí seznam akcí, NotActions, DataActions a NotDataActions.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,18 +11,18 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 08/19/2018
+ms.date: 09/06/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: e03b2ab45edd57a124dcc960ff518ece4902d2fa
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 44b32746c43569705b445ac5df0a5727463acbe0
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048364"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44095330"
 ---
-# <a name="built-in-roles-in-azure"></a>Předdefinované role v Azure
+# <a name="built-in-roles-for-azure-resources"></a>Předdefinované role pro prostředky Azure
 [Řízení přístupu na základě role (RBAC)](overview.md) má několik definic předdefinovaná role, které jste přiřadili pro uživatele, skupiny nebo instanční objekty. Přiřazení rolí představují způsob, jak řídit přístup k prostředkům v Azure. Pokud předdefinované role nesplňují konkrétní požadavky vaší organizace, můžete si vytvořit [vlastní role](custom-roles.md).
 
 Předdefinované role jsou vždy vyvíjejí. Chcete-li získat nejnovější definice rolí, použijte [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) nebo [az role definition list](/cli/azure/role/definition#az-role-definition-list).
@@ -43,7 +43,7 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 | [Role operátor služby API Management](#api-management-service-operator-role) | Může spravovat službu, ale ne rozhraní API. |
 | [Role Čtenář služby API Management](#api-management-service-reader-role) | Přístup ke službě a rozhraním API jen ke čtení |
 | [Přispěvatel součástí Application Insights](#application-insights-component-contributor) | Může spravovat součásti Application Insights. |
-| [Application Insights Snapshot debuggeru.](#application-insights-snapshot-debugger) | Uděluje oprávnění uživatele zobrazovat a stahovat ladicí snímky shromážděná pomocí Application Insights Snapshot debuggeru. Všimněte si, že tato role je součástí ani [vlastníka](#owner) ani [Přispěvatel](#contributor) role. |
+| [Application Insights Snapshot debuggeru.](#application-insights-snapshot-debugger) | Uděluje oprávnění uživatele zobrazovat a stahovat ladicí snímky shromážděná pomocí Application Insights Snapshot debuggeru. Všimněte si, že tato oprávnění nejsou součástí [vlastníka](#owner) nebo [Přispěvatel](#contributor) role. |
 | [Operátor úloh Automation](#automation-job-operator) | Vytváření a správa úloh pomocí runbooků služby Automation |
 | [Operátor služby Automation](#automation-operator) | Operátoři Automation můžou spouštět, zastavovat, pozastavovat a obnovovat úlohy. |
 | [Operátor Runbooků Automation](#automation-runbook-operator) | Čtení vlastností runbooků – aby se daly vytvářet úlohy daného runbooku |
@@ -62,10 +62,11 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 | [Přispěvatel klasických sítí](#classic-network-contributor) | Umožňuje správu klasických sítí, ale ne přístup k nim. |
 | [Přispěvatel klasických účtů úložiště](#classic-storage-account-contributor) | Umožňuje správu klasických účtů úložiště, ale ne přístup k nim. |
 | [Role služby operátor klíčů účtů klasického úložiště.](#classic-storage-account-key-operator-service-role) | Operátoři klíčů klasických účtů úložiště můžou vypisovat a znovu generovat klíče pro klasické účty úložiště. |
-| [Přispěvatel klasických virtuálních počítačů](#classic-virtual-machine-contributor) | Umožňuje správu klasických virtuálních počítačů, ale ne přístup k nim ani k virtuální síti nebo účtu úložiště, ke kterým jsou připojené.|
+| [Přispěvatel klasických virtuálních počítačů](#classic-virtual-machine-contributor) | Umožňuje správu klasických virtuálních počítačů, ale ne přístup k nim ani k virtuální síti nebo účtu úložiště, ke kterým jsou připojené. |
+| [Uživatel služby cognitive Services](#cognitive-services-user) | Umožňuje číst a vypsat klíče služeb Cognitive Services. |
 | [Role čtenáře účtu cosmos DB](#cosmos-db-account-reader-role) | Může číst data účtu služby Azure Cosmos DB. Zobrazit [Přispěvatel účtů DocumentDB](#documentdb-account-contributor) ke správě účtů službu Azure Cosmos DB. |
 | [Přispěvatel data Box](#data-box-contributor) | Umožňuje správu všech položek v části služba Data Box s výjimkou udělování přístupu jiným uživatelům. |
-| [Data Box – operátor](#data-box-operator) | Umožňuje spravovat služba Data Box s výjimkou pořadí vytváření nebo úpravy podrobnostmi o objednávce a udělování přístupu jiným uživatelům. |
+| [Čtecí modul dat pole](#data-box-reader) | Umožňuje spravovat služba Data Box s výjimkou pořadí vytváření nebo úpravy podrobnostmi o objednávce a udělování přístupu jiným uživatelům. |
 | [Přispěvatel data Factory](#data-factory-contributor) | Umožňuje správu služeb Data Factory, ale ne přístup k nim. |
 | [Vývojář data Lake Analytics](#data-lake-analytics-developer) | Umožňuje odesílat, monitorovat a spravovat vlastní úlohy, ale neumožňuje vytvářet ani odstraňovat účty Data Lake Analytics. |
 | [Purger dat](#data-purger) | Můžete vymazat analytická data |
@@ -80,6 +81,7 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 | [Přispěvatel aplikace logiky](#logic-app-contributor) | Umožňuje správu aplikace logiky, ale ne přístup k ní. |
 | [Operátor aplikace logiky](#logic-app-operator) | Umožňuje číst, povolovat a zakazovat aplikaci logiky. |
 | [Role operátora spravované aplikace](#managed-application-operator-role) | Umožňuje číst a provádět akce s prostředky spravované aplikace |
+| [Čtečka spravované aplikace](#managed-applications-reader) | Umožňuje číst prostředky ve spravované aplikaci a požádejte o přístup JIT. |
 | [Přispěvatel spravovaných identit](#managed-identity-contributor) | Vytváření, čtení, aktualizace a odstraňování identity přiřazené uživateli |
 | [Operátor spravovaných identit](#managed-identity-operator) | Čtení a přiřazování identity přiřazené uživateli |
 | [Přispěvatel skupiny pro správu](#management-group-contributor) | Role přispěvatele skupiny pro správu |
@@ -259,7 +261,7 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Popis** | Uděluje oprávnění uživatele používat funkce Application Insights Snapshot Debuggeru. |
+> | **Popis** | Uděluje oprávnění uživatele zobrazovat a stahovat ladicí snímky shromážděná pomocí Application Insights Snapshot debuggeru. Všimněte si, že tato oprávnění nejsou součástí [vlastníka](#owner) nebo [Přispěvatel](#contributor) role. |
 > | **ID** | 08954f03-6346-4c2e-81c0-ec3a5cfae23b |
 > | **Akce** |  |
 > | Microsoft.Authorization/*/read | Další role a přiřazení rolí |
@@ -653,6 +655,27 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
 
+## <a name="cognitive-services-user"></a>Uživatel služby cognitive Services
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Popis** | Umožňuje číst a vypsat klíče služeb Cognitive Services. |
+> | **ID** | a97b65f3-24c7-4388-baec-2e87135dc908 |
+> | **Akce** |  |
+> | Microsoft.CognitiveServices/*/read |  |
+> | Microsoft.CognitiveServices/accounts/listkeys/action | Zobrazit seznam klíčů |
+> | Microsoft.Insights/metricdefinitions/read | Číst definice metrik |
+> | Microsoft.Insights/metrics/read | Čtení metrik |
+> | Microsoft.Insights/alertRules/read | Přečtěte si klasických upozornění na metriku |
+> | Microsoft.Insights/diagnosticSettings/read | Čtení nastavení diagnostiky prostředků |
+> | Microsoft.Insights/logDefinitions/read | Číst definice protokolů |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | Získá stavy dostupnosti pro všechny prostředky v zadaném rozsahu. |
+> | Microsoft.Resources/deployments/operations/read | Načte nebo vypíše operace nasazení. |
+> | Microsoft.Resources/subscriptions/operationresults/read | Načte výsledky operací s předplatným. |
+> | Microsoft.Resources/subscriptions/read | Získá výpis předplatných. |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
+> | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
+
 ## <a name="cosmos-db-account-reader-role"></a>Role čtenáře účtu Cosmos DB
 > [!div class="mx-tableFixed"]
 > | | |
@@ -682,7 +705,7 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
 > | Microsoft.Databox/* |  |
 
-## <a name="data-box-operator"></a>Data Box – operátor
+## <a name="data-box-reader"></a>Čtecí modul dat pole
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -690,9 +713,11 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | **ID** | 028f4ed7-e2a9-465e-a8f4-9c0ffdfdc027 |
 > | **Akce** |  |
 > | Microsoft.Authorization/*/read | Další role a přiřazení rolí |
+> | Microsoft.Databox/*/read |  |
+> | Microsoft.Databox/jobs/listsecrets/action | Vypíše nešifrované tajné kódy související s objednávkou. |
+> | Microsoft.Databox/locations/availableSkus/action | Tato metoda vrací seznam dostupných skladových položek. |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | Získá stavy dostupnosti pro všechny prostředky v zadaném rozsahu. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
-> | Microsoft.Databox/jobs/listsecrets/action | Vypíše nešifrované tajné kódy související s objednávkou. |
 
 ## <a name="data-factory-contributor"></a>Přispěvatel Data Factory
 > [!div class="mx-tableFixed"]
@@ -865,6 +890,7 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.LabServices/labAccounts/*/read |  |
 > | Microsoft.LabServices/labAccounts/createLab/action | Vytvoření testovacího prostředí v účtu testovacího prostředí. |
 > | Microsoft.LabServices/labAccounts/sizes/getRegionalAvailability/action | Získejte informace o místní dostupnosti pro každou kategorii velikost konfigurují v rámci účtu testovacího prostředí |
+> | Microsoft.LabServices/labAccounts/getRegionalAvailability/action | Získejte informace o místní dostupnosti pro každou kategorii velikost konfigurují v rámci účtu testovacího prostředí |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
 
@@ -964,6 +990,17 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | **Akce** |  |
 > | Microsoft.Solutions/applications/read | Načte seznam aplikací. |
 
+## <a name="managed-applications-reader"></a>Čtečka spravované aplikace
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Popis** | Umožňuje číst prostředky ve spravované aplikaci a požádejte o přístup JIT. |
+> | **ID** | b9331d33-8a36-4f8c-b097-4f54124fdb44 |
+> | **Akce** |  |
+> | * / čtení | Číst prostředky všech typů, s výjimkou tajných kódů. |
+> | Microsoft.Resources/deployments/* | Vytváření a správě nasazení skupiny prostředků |
+> | Microsoft.Solutions/jitRequests/* |  |
+
 ## <a name="managed-identity-contributor"></a>Přispěvatel spravovaných identit
 > [!div class="mx-tableFixed"]
 > | | |
@@ -1045,7 +1082,8 @@ Následující tabulka obsahuje stručný popis předdefinované role. Klikněte
 > | Microsoft.OperationalInsights/workspaces/sharedKeys/action | Načte sdílené klíče pracovního prostoru. Tyto klíče se používají k připojení agentů Microsoft Operational Insights k pracovnímu prostoru. |
 > | Microsoft.OperationalInsights/workspaces/storageinsightconfigs/* | Konfigurace přehledu úložiště čtení/zápis/delete Log Analytics. |
 > | Microsoft.Support/* | Vytvořit a spravovat lístky podpory |
-> | Microsoft.WorkloadMonitor/workloads/* |  |
+> | Microsoft.WorkloadMonitor/monitors/* |  |
+> | Microsoft.WorkloadMonitor/notificationSettings/* |  |
 > | Microsoft.WorkloadMonitor/workloadInsights/* |  |
 
 ## <a name="monitoring-metrics-publisher"></a>Monitorování metrik vydavatele

@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 07/24/2018
+ms.date: 09/04/2018
 ms.author: juluk
-ms.openlocfilehash: 9588bebdc827760f0e0d3e2aadccbff5f24723f1
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: ff50ea8c49d35306ccb48ec703de39c27c24bf7b
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258921"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44160672"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Přehled služby Azure Cloud Shell
 Azure Cloud Shell je interaktivní, prohlížeč přístupné prostředí pro správu prostředků Azure.
@@ -35,6 +35,7 @@ Zkuste z webu Azure portal pomocí ikony Cloud Shell.
 ![Spuštění portálu](media/overview/portal-launch-icon.png)
 
 ## <a name="features"></a>Funkce
+
 ### <a name="browser-based-shell-experience"></a>Příkazové prostředí založené na prohlížeči
 Cloud Shell umožňuje přístup k založené na prohlížeči prostředí příkazového řádku vytvořené s úkoly správy Azure v úvahu.
 Využijte Cloud Shell pro práci untethered z místního počítače způsobem pouze cloud může poskytovat.
@@ -65,33 +66,11 @@ Cloud Shell je flexibilní nástroj, který je možné z:
 * [Rozšíření Azure Account kódu VS](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 
 ### <a name="connect-your-microsoft-azure-files-storage"></a>Připojte své úložiště Microsoft Azure Files
-Cloudové prostředí počítače jsou dočasné a vyžadují sdílenou složku služby soubory Azure připojit jako `clouddrive` pro uchovávání souborů.
+Cloudové prostředí počítače jsou dočasné a vyžadují nové nebo existující soubory Azure sdílenou složku a připojit jako `clouddrive` pro uchovávání souborů.
 
 Při prvním spuštění Cloud Shell zobrazí výzvu k vytvoření prostředku skupiny, účet úložiště a službou soubory Azure sdílet vaším jménem. Toto je jednorázová kroku a automaticky připojí na všechny relace. Sdílení souborů lze mapovat a použije Bash i PowerShell ve službě Cloud Shell (Preview).
 
-#### <a name="create-new-storage"></a>Vytvoření nového úložiště
-![](media/overview/basic-storage.png)
-
-Účet místně redundantního úložiště (LRS) a sdílenou složku služby soubory Azure můžete vytvořit za vás. Sdílenou složku služby soubory Azure se použije pro prostředí Bash i PowerShell, pokud se rozhodnete, chcete-li použít. Náklady na úložiště regulární použít.
-
-Za vás vytvoří tři prostředky:
-1. Skupina prostředků s názvem: `cloud-shell-storage-<region>`
-2. Účet úložiště s názvem: `cs<uniqueGuid>`
-3. Sdílená složka s názvem: `cs-<user>-<domain>-com-<uniqueGuid>`
-
-> [!Note]
-> Bash ve službě Cloud Shell také vytvoří výchozí obrázek 5 GB disk k uchování `$Home`. Všechny soubory v vašeho adresáře $Home jako jsou klíče SSH jsou zachované ve vaší imagi disku uživatele uložené v připojené sdílené složky Azure. Použijte osvědčené postupy při ukládání souborů do vašeho adresáře $Home a připojené sdílené složky Azure.
-
-#### <a name="use-existing-resources"></a>Použít existující prostředky
-![](media/overview/advanced-storage.png)
-
-Upřesňující možnosti slouží k přidružení stávajících prostředků, abyste službě Cloud Shell.
-Na řádku nastavení úložiště, klikněte na tlačítko "Zobrazit pokročilé nastavení" zobrazte další možnosti.
-
-> [!Note]
-> Rozevírací seznamy se filtrují pro předem přiřazené oblast Cloud Shellu a účty úložiště LRS/GRS/ZRS.
-
-[Další informace o službě Cloud Shell ukládání, aktualizuje se sdílenými složkami Azure a nahrávání a stahování souborů.](persisting-shell-storage.md)
+Přečtěte si další informace o připojení [účtu úložiště nové nebo existující](persisting-shell-storage.md).
 
 ## <a name="concepts"></a>Koncepty
 * Cloud Shell spouští na dočasné hostiteli k dispozici na relací, jednotlivé uživatele

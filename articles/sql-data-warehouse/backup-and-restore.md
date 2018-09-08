@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 08/24/2018
+ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: e9b5005fad1eeb13314e1fb6a5708bb02b96cbf9
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: bdcc0510503e48caf70f4f0d91d7602d767ca9ab
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43248672"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44092474"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Zálohování a obnovení ve službě Azure SQL Data Warehouse
 Zjistěte, jak funguje zálohování a obnovení Azure SQL Data Warehouse. Použití datového skladu snímky k obnovení nebo zkopírujte váš datový sklad k určitému bodu obnovení v primární oblasti. Použití datového skladu geograficky redundantní zálohy k obnovení do jiné geografické oblasti. 
@@ -28,7 +28,7 @@ A *datového skladu obnovení* je nový datový sklad, který je vytvořen z bod
 ## <a name="automatic-restore-points"></a>Body obnovení automaticky
 Snímky jsou integrované funkce služby, která vytvoří body obnovení. Není potřeba aktivovat tuto funkci. Automatické body obnovení aktuálně nelze odstranit uživatele, kde se služba používá, obnovení odkazuje na Udržovat smlouvy o úrovni služeb pro obnovení.
 
-SQL Data Warehouse pořizuje snímky datového skladu v průběhu dne vytváří body obnovení, které jsou k dispozici po dobu sedmi dní. Toto období uchovávání dat nelze změnit. SQL Data Warehouse podporuje osm hodin plánovaného bodu obnovení (RPO). Váš datový sklad v primární oblasti můžete obnovit z některého z snímkům pořízeným za posledních sedm dnů.
+SQL Data Warehouse pořizuje snímky datového skladu v průběhu dne vytváří body obnovení, které jsou k dispozici po dobu sedmi dní. Toto období uchovávání dat nelze změnit. SQL Data Warehouse podporuje cíl bodu obnovení osm hodin (RPO). Váš datový sklad v primární oblasti můžete obnovit z některého z snímkům pořízeným za posledních sedm dnů.
 
 Pokud chcete zobrazit při spuštění poslední snímek, spuštění tohoto dotazu na datový sklad SQL online. 
 
@@ -40,19 +40,20 @@ order by run_id desc
 ```
 
 ## <a name="user-defined-restore-points"></a>Uživatelem definované body obnovení
-Tato funkce umožňuje ruční aktivační událost snímky vytvářet body obnovení datového skladu, před a po velké změny. Tato funkce zajišťuje, že body obnovení jsou logicky konzistentní vzhledem k aplikacím, které nabízí další ochranu dat v případě jakékoli úlohy přerušení nebo chyby uživatele pro rychlé obnovení čas. Body obnovení uživatelem definované jsou k dispozici po dobu sedmi dní a se automaticky odstraní vaším jménem. Nelze změnit doby uchovávání bodů obnovení definovaný uživatelem. Pouze 42 body obnovení uživatelem definované jsou podporovány v libovolném bodě v čase, proto musí být [odstranit](https://go.microsoft.com/fwlink/?linkid=875299) dříve než vytvoříte další bod obnovení. Můžete aktivovat snímky vytvářet body obnovení uživatelem definované prostřednictvím [Powershellu](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabaserestorepoint?view=azurermps-6.2.0#examples) nebo na webu Azure Portal.
+Tato funkce umožňuje ruční aktivační událost snímky vytvářet body obnovení datového skladu, před a po velké změny. Tato funkce zajišťuje, že body obnovení jsou logicky konzistentní vzhledem k aplikacím, které nabízí další ochranu dat v případě jakékoli úlohy přerušení nebo chyby uživatele pro rychlé obnovení čas. Body obnovení uživatelem definované jsou k dispozici po dobu sedmi dní a se automaticky odstraní vaším jménem. Nelze změnit doby uchovávání bodů obnovení definovaný uživatelem. **body obnovení 42 uživatelem definované** jsou mechanismem zaručujícím libovolného bodu v čase, musí být [odstranit](https://go.microsoft.com/fwlink/?linkid=875299) dříve než vytvoříte další bod obnovení. Můžete aktivovat snímky vytvářet body obnovení uživatelem definované prostřednictvím [Powershellu](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabaserestorepoint?view=azurermps-6.2.0#examples) nebo na webu Azure portal.
 
 
 > [!NOTE]
 > Pokud potřebujete body obnovení delší než 7 dní, prosím hlasovat pro tuto funkci [tady](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/35114410-user-defined-retention-periods-for-restore-points). Můžete také vytvořit bod obnovení definované uživatelem a obnovení z bodu obnovení vytvořeného na nový datový sklad. Po obnovení, můžete mít online datový sklad a můžete pozastavit, po neomezenou dobu uložíte náklady na výpočetní výkon. Pozastavený databáze neúčtují poplatky za úložiště za sazby Azure Storage úrovně Premium. Pokud budete potřebovat aktivní kopií obnovená data warehouse, můžete obnovit, což by mělo trvat jenom pár minut.
 >
 
-### <a name="snapshot-retention-when-a-data-warehouse-is-paused"></a>Snímek uchovávání informací, když je datový sklad pozastavený
-SQL Data Warehouse nevytváří žádné snímky a nemá prošlou platnost bodů obnovení, když je datový sklad pozastavený. Obnovit body se nemění, když je datový sklad pozastavený. Obnovení bodu uchovávání závisí na počtu dní, po které datový sklad je online, ne kalendářních dnů.
-
-Například pokud snímku začíná 1. října v 16: 00 a datový sklad pozastavený dne 3 v 16: 00, body obnovení jsou až dva dny. Když přejde do režimu online datový sklad je bod obnovení dvou dnů. Pokud datový sklad převede do režimu online 5. října v 16: 00, nastane o dva dny stará bod obnovení a zůstane po dobu pěti dalších dní.
-
-Pokud datový sklad vrátí do režimu online, SQL Data Warehouse obnoví vytvoření nových bodů obnovení a jejich vyprší, pokud mají více než sedm dnů dat.
+### <a name="restore-point-retention"></a>Uchování bodu obnovení
+Následující část popisuje podrobnosti v období uchování bodu obnovení:
+1. SQL Data Warehouse Odstraní bod obnovení při volání dobu uchování 7 dní **a** po nejméně 42 celkový počet bodů obnovení (včetně definované uživatelem a automatické)
+2. Snímky nejsou provedeny, když je datový sklad pozastavený
+3. Stáří bodu obnovení se měří podle absolutní kalendářních dnů od doby, kdy se používá bod obnovení, včetně toho, když je datový sklad pozastavený
+4. V libovolném okamžiku v čase je zaručeno, že datový sklad možné uložit až 42 body obnovení definované uživatelem a 42 Automatické body obnovení, dokud tyto body obnovení nedosáhly dobu uchování 7 dní
+5. Pokud se pořídí snímek, je datový sklad pozastavený pak pro více než 7 dní a pak bude pokračovat, je možné pro bod obnovení na budou zachovány, dokud nejsou 42 celkový počet bodů obnovení (včetně definované uživatelem a automatické)
 
 ### <a name="snapshot-retention-when-a-data-warehouse-is-dropped"></a>Snímek uchování při přetažení datového skladu
 Při umístění datového skladu SQL Data Warehouse vytvoří konečný snímek a uloží jej po dobu sedmi dní. Datový sklad můžete obnovit do bodu obnovení poslední vytvořený v odstranění. 
@@ -67,7 +68,7 @@ SQL Data Warehouse provede geografické zálohování jednou denně, abyste [sp�
 Geografické zálohy jsou standardně povoleny. Pokud váš datový sklad je Gen1, můžete si [Odhlásit se totiž](/powershell/module/azurerm.sql/set-azurermsqldatabasegeobackuppolicy) Pokud chcete. Nelze se rozhodnete z geografické zálohy pro Gen2 jako ochrana dat je zaručeno, že integrované.
 
 > [!NOTE]
-> Pokud potřebujete kratší cíle bodu obnovení pro geografické zálohování, prosím hlasovat pro tuto funkci [tady](https://feedback.azure.com/forums/307516-sql-data-warehouse). Můžete také vytvořit bod obnovení definované uživatelem a obnovení z bodu obnovení vytvořeného do nového datového skladu v jiné oblasti. Po obnovení, můžete mít online datový sklad a můžete pozastavit, po neomezenou dobu uložíte náklady na výpočetní výkon. Pozastavený databáze neúčtují poplatky za úložiště za sazby Azure Storage úrovně Premium. a potom pozastavte. Budete potřebovat aktivní kopie datového skladu, můžete obnovit, což by mělo trvat jenom pár minut.
+> Pokud potřebujete kratší cíle bodu obnovení pro geografické zálohování, hlasovat pro tuto funkci [tady](https://feedback.azure.com/forums/307516-sql-data-warehouse). Můžete také vytvořit bod obnovení definované uživatelem a obnovení z bodu obnovení vytvořeného do nového datového skladu v jiné oblasti. Po obnovení, můžete mít online datový sklad a můžete pozastavit, po neomezenou dobu uložíte náklady na výpočetní výkon. Pozastavený databáze neúčtují poplatky za úložiště za sazby Azure Storage úrovně Premium. a potom pozastavte. Budete potřebovat aktivní kopie datového skladu, můžete obnovit, což by mělo trvat jenom pár minut.
 >
 
 

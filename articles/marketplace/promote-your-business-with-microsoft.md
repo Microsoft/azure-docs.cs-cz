@@ -1,6 +1,6 @@
 ---
-title: Podpora obchodní činnosti se společností Microsoft | Azure
-description: Podpora obchodní činnosti pomocí webu Azure Marketplace a AppSource pro vydavatele aplikace a služby
+title: Propagaci vašeho podnikání s Microsoftem | Azure
+description: Propagaci vašeho podnikání. pro vydavatele aplikace a služby pomocí webu Azure Marketplace a AppSource
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 documentationcenter: ''
 author: jm-aditi-ms
@@ -14,30 +14,30 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/04/2018
 ms.author: ellacroi
-ms.openlocfilehash: b2b0a0bbc91115de22eda98df91fb104eb5972ed
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: b02ab403c82fd781af72c3b1f08e843c3fc770e3
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34825085"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44094939"
 ---
-# <a name="promote-your-business-with-microsoft"></a>Podpora obchodní činnosti se společností Microsoft  
-Společnost Microsoft nemá cílem pro podporu partnery (můžete) a pro zjednodušení prodávané aplikace nebo nabízejí v obchodní poutače na webu marketplace. Pomocí seznamu na webu marketplace, můžete přístup k programy a prostředkům na webu marketplace. 
+# <a name="promote-your-business-with-microsoft"></a>Propagaci vašeho podnikání s Microsoftem  
+Microsoft má cíl podpora partnerů (vy) a zjednodušit prodej vaší aplikace nebo tuto nabídku v prodejní místa na webu marketplace. Ve výpisu na webu marketplace, přístup k programů a prostředků na webu marketplace. 
 
-Pokud jste ještě už zaregistrovali sítě partnera společnosti Microsoft (MPN) a pak tento přihlašovací než budete pokračovat.  
-*   Další informace o MPN, navštivte stránku nacházející se v programu Microsoft Partner Network [partner.microsoft.com](https://partner.microsoft.com).  
+Pokud jste se ještě nepřihlásili na Microsoft Partner Network (MPN), proveďte to před pokračováním.  
+*   Další informace o programu MPN, navštivte stránku umístěného v programu Microsoft Partner Network [partner.microsoft.com](https://partner.microsoft.com).  
 
-MPN obsahuje pokyny k v následujících tématech.  
+MPN poskytuje pokyny pro následující témata.  
 *   Nové obchodní příležitosti  
-*   Připojení se týmy nebo partnery  
-*   Řešení a školení pomohou růst vaší skillset  
+*   Propojení s týmy nebo partnery  
+*   Řešení a školení, které pomůžou rozvíjet vaše dovednosti  
 
-Ke zvýšení úrovně nabídka nebo aplikaci, použijte pro přístup k další výhody a prostředky v následující tabulce. 
+Ke zvýšení úrovně nabídky nebo aplikace, použijte pro přístup k více výhodách a prostředcích v následující tabulce. 
 
-| Výhody | zdroje |  
+| Výhody | prostředků |  
 |:--- |:--- |  
-| Použijte základní dávky | Jako součást Microsoft Partner Network obdržíte sadu základních výhod, které mohou pomoci ušetřit čas a peníze. Výhody může také vám pomohou posílit vaše možnosti, lépe zákazníků a vytvoření připojení k dosažení úplné nakupujete potenciální.<ul> <li>Další informace o základní výhody, navštivte základní výhody a požadavky na stránce na [partner.microsoft.com/membership/core-benefits](https://partner.microsoft.com/membership/core-benefits).</li> </ul> |  
-| Vám Competency vaší cloudové platformy | Získávat competency pomáhá sami rozlišit mezi dalšími partnery společnosti Microsoft. Získávat competency také vám pomůže předvedení technických otázek a úspěch zákazníka na trhu. Competency je předpokladem pro mnoho programů klíče partnera jako společné zákazník.<ul> <li>Další informace o způsobilosti Cloudová platforma, navštivte stránky nacházející se v kompetenci cloudové platformy [partner.microsoft.com/membership/cloud-platform-competency](https://partner.microsoft.com/membership/cloud-platform-competency).</li> </ul> |  
-| Stát společné prodává připravené | Společné prodává připraven program umožňuje spolupracovat přímo s prodejci Microsoft a dalšími partnery na cílové zákazníka příležitostí a plánování účtu. Řešení se zobrazí na prodejci Microsoft v katalogu řešení prodejce. Microsoft prodejci jsou ze spolupráce spolupráce a vyhrál s vámi.<ul> <li>Další informace o společném prodává připravenosti, navštivte podporovat vaše obchodní stránky nacházející se v [partner.microsoft.com/reach-customers/promote-your-business](https://partner.microsoft.com/reach-customers/promote-your-business).</li> </ul> |  
+| Využijte své výhody Core | V rámci programu Microsoft Partner Network získáte základní výhody, které můžete ušetřit čas i peníze. Výhody může také pomoci lépe posílit vaše dovednosti, lépe zákazníků a navazovat kontakty kontaktovat potenciální podnikání.<ul> <li>Další informace o základní výhody, získáte základní výhody a požadavky na stránce umístění [partner.microsoft.com/membership/core-benefits](https://partner.microsoft.com/membership/core-benefits).</li> </ul> |  
+| Získejte kompetenci pro Cloudovou platformu | Získávat kompetencí umožňuje odlišíte se mezi ostatními partnery Microsoftu. Získávat kompetencí vám také pomůže ukazují technické znalosti a úspěchy zákazníků na trhu. S kompetencí je předpokladem pro mnoho klíčový partner programů, jako je společný prodej.<ul> <li>Další informace o kompetenci pro Cloudovou platformu, navštivte kompetenci pro Cloudovou platformu stránky umístění [partner.microsoft.com/membership/cloud-platform-competency](https://partner.microsoft.com/membership/cloud-platform-competency).</li> </ul> |  
+| Budou připravené společný prodej | Programu společného prodeje připravené umožňuje spolupracovat přímo s prodejci Microsoftu a dalšími partnery na cíl zákaznických příležitostí a plánování účtu. Vaše řešení, stane se viditelným pro prodejci Microsoftu v katalogu řešení prodejce. Prodejci Microsoftu jsou nízkou pro spolupráci a winning s vámi.<ul> <li>Další informace o společný prodej, navštivte podporovat vaše firma stránky umístění [partner.microsoft.com/reach-customers/promote-your-business](https://partner.microsoft.com/reach-customers/promote-your-business).</li> </ul> |  
 
 ---  

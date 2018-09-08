@@ -11,20 +11,20 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: f1905e66bbe823f6c7c9c35d6540f3c8ca1d6ccd
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: b4913d55ee3d254f197512d9251ae750d8896f53
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39389629"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44160434"
 ---
 # <a name="set-up-security-info-to-use-pre-defined-security-questions-preview"></a>Nastavte si bezpečnostní údaje použít předdefinované bezpečnostní otázky (preview)
 
-[!INCLUDE[preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
+[!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
 Nastavení bezpečnostních údajů vyžaduje, abyste pro přihlášení ke svému pracovnímu nebo školnímu účtu a pak dokončete proces registrace. Pokud jste dosud nenastavili své bezpečnostní údaje, budete vyzváni k tomu teď.
 
-## <a name="set-up-security-questions"></a>Nastavil bezpečnostní otázky
+## <a name="set-up-security-questions"></a>Nastavení bezpečnostních otázek
 
 V závislosti na nastavení vaší organizace zobrazí se výzva k přidání bezpečnostní otázky ke svým bezpečnostním údajům, při přihlášení. V opačném případě zahájíte nastavení bezpečnostních otázek bezpečnostních údajů, postupujte podle kroků v [spravovat svoje bezpečnostní údaje](security-info-manage-settings.md).
 

@@ -1,74 +1,70 @@
 ---
-title: Azure testování částí trvanlivý funkce
-description: Zjistěte, jak k jednotce otestovat trvanlivý funkce.
+title: Testování částí Azure Durable Functions
+description: Zjistěte, jak otestovat Durable Functions k jednotce.
 services: functions
 author: kadimitr
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: ''
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
+ms.topic: conceptual
 ms.date: 02/28/2018
 ms.author: kadimitr
-ms.openlocfilehash: 7de9a6f0d4dfcb45932b89504c0d38c3c70283e9
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 81d187cf5b75b7bd943d9dcedc97b56ba9c397de
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33762756"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44092572"
 ---
-# <a name="durable-functions-unit-testing"></a>Trvanlivý testování částí funkce
+# <a name="durable-functions-unit-testing"></a>Odolné funkce testování
 
-Testování částí je důležitou součástí postupy vývoj moderních softwaru. Testování částí ověřte chování obchodní logiky a chránit před Úvod bez povšimnutí nejnovějších změn v budoucnu. Trvanlivý funkce můžou snadno růst v složitost tak, aby se zabránilo nejnovější změny pomůže představení testování částí. Následující části popisují, jak k jednotce otestovat typy tři funkce – klient Orchestration, Orchestrator a aktivita funkce. 
+Testování jednotek je důležitou součástí moderních postupů vývoje softwaru. Jednotkové testy ověření chování obchodní logiky a chránit před Představujeme bez povšimnutí rozbíjející změny v budoucnu. Odolná služba Functions může snadno jejich složitost v tomu budeme rozbíjející změny, aby představení testování částí. Následující části popisují, jak otestovat tři funkce typy – klient Orchestrace, Orchestrator a aktivity k jednotce pro funkce. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-V příkladech v tomto článku vyžadují znalosti systému následující koncepty a rozhraní: 
+V příkladech v tomto článku vyžadují znalost následujících konceptů a rozhraní: 
 
 * Testování částí
 
 * Odolná služba Functions 
 
-* [xUnit](https://xunit.github.io/) – testování framework
+* [xUnit](https://xunit.github.io/) – testovací rozhraní
 
-* [moq](https://github.com/moq/moq4) -Mocking framework
+* [moq](https://github.com/moq/moq4) -napodobování framework
 
 
-## <a name="base-classes-for-mocking"></a>Základní třídy pro mocking 
+## <a name="base-classes-for-mocking"></a>Základní třídy pro vytvoření modelu 
 
-Mocking je podporována prostřednictvím dvou abstraktní třídy trvanlivý funkcí:
+Napodobování je podporované prostřednictvím dvou abstraktních tříd v Durable Functions:
 
 * [DurableOrchestrationClientBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClientBase.html) 
 
 * [DurableOrchestrationContextBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContextBase.html)
 
-Tyto třídy jsou základní třídy pro [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) a [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) které definují metody Orchestration klienta a Orchestrator. Mocks nastaví očekávané chování u metody třídy base tak testu jednotek můžete ověřit obchodní logiku. Je dvoustupňové pracovního postupu pro testování obchodní logiku v Orchestration klienta a Orchestrator částí:
+Tyto třídy jsou základní třídy pro [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) a [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) , které definují metody klient Orchestrace a nástroje Orchestrator. Mocks nastaví očekávané chování u metody základní třídy, test jednotky můžete ověřit obchodní logiku. Není k dispozici ve dvou krocích pracovního postupu pro testování jednotek obchodní logiku v klient Orchestrace a Orchestrator:
 
-1. Při definování podpisy Orchestration klienta a pro Orchestrator, použijte základní třídy místo konkrétní implementaci.
-2. Při testování částí model chování základní třídy a ověřte obchodní logiku. 
+1. Při definování klient Orchestrace a Orchestrátorů podpisy, použijte místo konkrétní implementaci základní třídy.
+2. Při testech jednotek napodobení chování základní třídy a ověřit obchodní logiku. 
 
-Najít další informace v následujících odstavcích pro testování funkcí, které používají klienta orchestration vazby a orchestrator aktivovat vazby.
+Další podrobnosti najdete v následujících odstavcích pro testování funkcí, které používají klienta Orchestrace vazby a orchestrátor aktivovat vazby.
 
-## <a name="unit-testing-trigger-functions"></a>Funkce aktivační událost testování částí
+## <a name="unit-testing-trigger-functions"></a>Aktivační událost funkce testování částí
 
-V této části ověří testování částí logiku následující funkce aktivace protokolu HTTP pro spuštění nové orchestrations.
+V této části testování částí ověří logiky následující funkci triggeru HTTP pro spuštění nové Orchestrace.
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs)]
 
-Testovací úloha jednotky bude ověřte hodnotu `Retry-After` záhlaví zadané v datové části odpovědi. Takže testování částí se model některé [DurableOrchestrationClientBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClientBase.html) metody zajistit předvídatelný chování. 
+Úloha testu jednotek bude ověření hodnoty `Retry-After` hlavičky zadané v datové části odpovědi. Takže testování částí se napodobení některé z [DurableOrchestrationClientBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClientBase.html) metody bylo zajištěno předvídatelný chování. 
 
-Nejprve model základní třídy je požadováno, [DurableOrchestrationClientBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClientBase.html). Model může být novou třídu, která implementuje [DurableOrchestrationClientBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClientBase.html). Však pomocí mocking framework jako [moq](https://github.com/moq/moq4) zjednodušuje proces:    
+Nejprve model základní třídy je nutné, [DurableOrchestrationClientBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClientBase.html). Model může být novou třídu, která implementuje [DurableOrchestrationClientBase](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClientBase.html). Avšak použití napodobování architekturu jako třeba [moq](https://github.com/moq/moq4) zjednodušuje proces:    
 
 ```csharp
     // Mock DurableOrchestrationClientBase
     var durableOrchestrationClientBaseMock = new Mock<DurableOrchestrationClientBase>();
 ```
 
-Potom `StartNewAsync` metoda je mocked vrátit ID známých instance.
+Potom `StartNewAsync` metoda je imitace vrátit ID dobře známé instance.
 
 ```csharp
     // Mock StartNewAsync method
@@ -77,7 +73,7 @@ Potom `StartNewAsync` metoda je mocked vrátit ID známých instance.
         ReturnsAsync(instanceId);
 ```
 
-Další `CreateCheckStatusResponse` je mocked k vždy vrátí prázdnou odpověď HTTP 200.
+Další `CreateCheckStatusResponse` je imitaci chcete vždy vrátit prázdnou odpověď HTTP 200.
 
 ```csharp
     // Mock CreateCheckStatusResponse method
@@ -90,7 +86,7 @@ Další `CreateCheckStatusResponse` je mocked k vždy vrátí prázdnou odpově�
         });
 ```
 
-`TraceWriter` je také mocked:
+`TraceWriter` je také imitace:
 
 ```csharp
     // Mock TraceWriter
@@ -98,7 +94,7 @@ Další `CreateCheckStatusResponse` je mocked k vždy vrátí prázdnou odpově�
 
 ```  
 
-Nyní `Run` metoda je volána z testování částí:
+Nyní `Run` metoda je volána z testu jednotek:
 
 ```csharp
     // Call Orchestration trigger function
@@ -113,7 +109,7 @@ Nyní `Run` metoda je volána z testování částí:
         traceWriterMock.Object);
  ``` 
 
- Posledním krokem je k porovnání výstup očekávanou hodnotou:
+ Posledním krokem je porovnat výstupu se očekávaná hodnota:
 
 ```csharp
     // Validate that output is not null
@@ -123,15 +119,15 @@ Nyní `Run` metoda je volána z testování částí:
     Assert.Equal(TimeSpan.FromSeconds(10), result.Headers.RetryAfter.Delta);
 ```
 
-Po spojení všechny kroky, bude mít testování částí následující kód: 
+Po spojení všech kroků testu jednotek mít následující kód: 
 
 [!code-csharp[Main](~/samples-durable-functions/samples/VSSample.Tests/HttpStartTests.cs)]
 
-## <a name="unit-testing-orchestrator-functions"></a>Funkce orchestrator testování částí
+## <a name="unit-testing-orchestrator-functions"></a>Testování funkce nástroje orchestrator
 
-Funkce Orchestrator jsou i další zajímavé pro jednotku testování, protože mají obvykle mnohem víc obchodní logiku.
+Funkce nástroje Orchestrator je ještě zajímavější jednotky testování, protože mají obvykle mnohem víc obchodní logiku.
 
-V této části jednotka testy ověří výstup `E1_HelloSequence` Orchestrator funkce:
+V této části se jednotka se testy ověření výstupu `E1_HelloSequence` funkce Orchestrátoru:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HelloSequence.cs)]
 
@@ -141,7 +137,7 @@ Kód testu jednotek se spustí s vytvářením model:
     var durableOrchestrationContextMock = new Mock<DurableOrchestrationContextBase>();
 ```
 
-Potom bude možné mocked volání metod aktivity:
+Pak bude imitace volání metody aktivity:
 
 ```csharp
     durableOrchestrationContextMock.Setup(x => x.CallActivityAsync<string>("E1_SayHello", "Tokyo")).ReturnsAsync("Hello Tokyo!");
@@ -149,13 +145,13 @@ Potom bude možné mocked volání metod aktivity:
     durableOrchestrationContextMock.Setup(x => x.CallActivityAsync<string>("E1_SayHello", "London")).ReturnsAsync("Hello London!");
 ```
 
-Další testování částí zavolá `HelloSequence.Run` metoda:
+Vedle testování částí zavolá `HelloSequence.Run` metody:
 
 ```csharp
     var result = await HelloSequence.Run(durableOrchestrationContextMock.Object);
 ```
 
-A nakonec bude ověřeno výstup:
+A nakonec se ověří výstup:
 
 ```csharp
     Assert.Equal(3, result.Count);
@@ -164,13 +160,13 @@ A nakonec bude ověřeno výstup:
     Assert.Equal("Hello London!", result[2]);
 ```
 
-Po spojení všechny kroky, bude mít testování částí následující kód:
+Po spojení všech kroků testu jednotek mít následující kód:
 
 [!code-csharp[Main](~/samples-durable-functions/samples/VSSample.Tests/HelloSequenceOrchestratorTests.cs)]
 
 ## <a name="unit-testing-activity-functions"></a>Aktivita funkce testování částí
 
-Aktivita funkce může být jednotka testována stejným způsobem jako krátkodobé funkce. Aktivita funkce nemají základní třídu pro mocking. Proto testování částí používat přímo typy parametrů.
+Aktivita funkce mohou být jednotky testování stejným způsobem jako jiné durable functions. Aktivita funkce nemají základní třída pro vytvoření modelu. Takže jednotkové testy používat přímo typy parametrů.
 
 V této části testování částí ověří chování `E1_SayHello` aktivita funkce:
 

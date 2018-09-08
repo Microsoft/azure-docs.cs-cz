@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/05/2018
 ms.author: brenduns
 ms.reviewer: jiahan
-ms.openlocfilehash: 4fd2a26d9119e52fc75918abc1ca97e6f9888169
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: a2ad07809963560b1225ff07b095509c93618996
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44028024"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44160417"
 ---
 # <a name="azure-stack-managed-disks-differences-and-considerations"></a>Azure Managed Disks zásobníku: Rozdíly a aspekty
 Tento článek shrnuje známé rozdíly mezi Azure Stack Managed Disks a Managed Disks pro Azure. Další informace o základní rozdíly mezi Azure Stack a Azure, najdete v článku [klíče aspekty](azure-stack-considerations.md) článku.
@@ -28,7 +28,7 @@ Tento článek shrnuje známé rozdíly mezi Azure Stack Managed Disks a Managed
 Spravované disky zjednodušují správu disků pro virtuální počítače IaaS pomocí správy [účty úložiště](/azure/azure-stack/azure-stack-manage-storage-accounts) přidružené k diskům virtuálních počítačů.
   
 
-## <a name="cheat-sheet-virtual-machine-differences"></a>Tahák: rozdíly virtuálního počítače
+## <a name="cheat-sheet-managed-disk-differences"></a>Tahák: spravovaného disku rozdíly
 
 | Funkce | Azure (globální) | Azure Stack |
 | --- | --- | --- |

@@ -13,16 +13,16 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 81a7be973739cfd6eb3f8fb8dc7a0723623c2b8e
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: c50e4b5c9eb81c9386e2cb0db96a88de70dcb9e9
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40234889"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44157799"
 ---
 # <a name="workflow-common-parameters-for-azure-stack-validation-as-a-service"></a>Společné parametry pracovních postupů pro ověřování služby Azure Stack jako služba
 
-[!INCLUDE[Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
+[!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
 Společné parametry zahrnují hodnoty, jako jsou proměnné prostředí a uživatelské přihlašovací údaje vyžadované všechny testy v rámci ověření jako služba (VaaS). Můžete definovat tyto hodnoty na úrovni pracovního postupu. Při vytváření nebo úpravě pracovního postupu, uložte příslušné hodnoty. Pracovní postup v naplánovaný čas načte hodnoty pro test. 
 

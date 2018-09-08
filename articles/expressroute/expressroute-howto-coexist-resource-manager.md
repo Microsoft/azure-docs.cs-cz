@@ -1,28 +1,21 @@
 ---
-title: 'Konfigurace ExpressRoute a připojení VPN typu site-to-site, která mohou existovat vedle sebe: Resource Manager: Azure | Dokumentace Microsoftu'
-description: Tento článek vás provede konfigurací ExpressRoute a připojení VPN typu site-to-site, která mohou v modelu nasazení Resource Manager existovat vedle sebe.
-documentationcenter: na
+title: 'Nakonfigurujte připojení ExpressRoute a VPN typu Site-to-Site, která mohou existovat vedle sebe: prostředí PowerShell: Azure | Dokumentace Microsoftu'
+description: Tento článek vás provede konfigurací ExpressRoute a připojení VPN typu Site-to-Site, která mohou existovat vedle sebe pro model Resource Manageru pomocí Powershellu
 services: expressroute
 author: charwen
 manager: rossort
-editor: ''
-tags: azure-resource-manager
-ms.assetid: c7717b14-3da3-4a6d-b78e-a5020766bc2c
 ms.service: expressroute
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 08/17/2018
-ms.author: charwen,cherylmc,rambala
-ms.openlocfilehash: 0e69a85f320a0a8d77bd07fc0dedb77eb99efb36
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
-ms.translationtype: HT
+ms.topic: conceptual
+ms.date: 09/07/2018
+ms.author: charwen
+ms.openlocfilehash: c267e5002fbd603e4bb749550c19e8d022ce4d54
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41920535"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44162338"
 ---
-# <a name="configure-expressroute-and-site-to-site-coexisting-connections"></a>Konfigurace společně používaných připojení typu Site-to-Site a ExpressRoute
+# <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>Konfigurace ExpressRoute a Site-to-Site současně existujících připojení pomocí prostředí PowerShell
 > [!div class="op_single_selector"]
 > * [PowerShell – Resource Manager](expressroute-howto-coexist-resource-manager.md)
 > * [PowerShell – Classic](expressroute-howto-coexist-classic.md)
@@ -34,7 +27,7 @@ Konfigurace ExpressRoute a současně existujících připojení VPN typu Site-t
 * Můžete nakonfigurovat VPN typu Site-to-Site jako bezpečnou cestu převzetí služeb při selhání pro ExpressRoute. 
 * Další možností je použít VPN typu Site-to-Site pro připojení k webům, které nejsou prostřednictvím ExpressRoute připojené. 
 
-V tomto článku jsou postupy konfigurace pro oba scénáře. Tento článek se týká modelu nasazení Resource Manager a používá PowerShell. 
+V tomto článku jsou postupy konfigurace pro oba scénáře. Tento článek se týká modelu nasazení Resource Manager a používá PowerShell. Můžete také nakonfigurovat tyto scénáře pomocí webu Azure Portal, i když dokumentaci ještě není k dispozici.
 
 >[!NOTE]
 >Pokud chcete vytvořit připojení VPN typu Site-to-Site přes okruh ExpressRoute, přečtěte si prosím [tento článek](site-to-site-vpn-over-microsoft-peering.md).
@@ -236,5 +229,5 @@ Podle následujících pokynů můžete k bráně VPN v nastavení koexistence p
 
 Další informace o VPN typu point-to-site najdete v tématu [Konfigurace připojení typu point-to-site](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o ExpressRoute najdete v tématu [ExpressRoute – nejčastější dotazy](expressroute-faqs.md).

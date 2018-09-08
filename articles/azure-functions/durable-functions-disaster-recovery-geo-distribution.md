@@ -3,23 +3,19 @@ title: Zotavení po havárii a geografická rozptýlenost v Durable Functions �
 description: Přečtěte si o zotavení po havárii a geografická rozptýlenost v Durable Functions.
 services: functions
 author: MS-Santi
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: ''
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
+ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: bbfbf351b8976f4140b6dd98a9a54ba982c3d865
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: c3eae78b613916d05009ecdd567c2f73e5e78c66
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399393"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44091325"
 ---
 # <a name="disaster-recovery-and-geo-distribution"></a>Zotavení po havárii a geografická distribuce
 
