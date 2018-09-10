@@ -9,12 +9,12 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 08/02/2018
 ms.author: diberry
-ms.openlocfilehash: 994bd6f2a041e25d15c7e0b4a216952cec4101fa
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 9672215c8cc5f95775e3b7fba74b27379a58ff49
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39492819"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44162915"
 ---
 # <a name="tutorial-3-add-regular-expression-entity"></a>Kurz: 3. Přidání entity regulárního výrazu
 V tomto kurzu vytvoříte aplikaci, která ukazuje extrakci konzistentně formátovaných dat z promluvy pomocí entity **regulárního výrazu**.
@@ -28,7 +28,7 @@ V tomto kurzu vytvoříte aplikaci, která ukazuje extrakci konzistentně formá
 > * Trénování a publikování aplikace
 > * Odeslání dotazu na koncový bod aplikace a zobrazení odpovědi JSON ze služby LUIS
 
-[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>Než začnete
 Pokud nemáte aplikaci pro lidské zdroje z kurzu k [předem připraveným entitám](luis-tutorial-prebuilt-intents-entities.md), [naimportujte](luis-how-to-start-new-app.md#import-new-app) na webu [LUIS](luis-reference-regions.md#luis-website) do nové aplikace JSON z úložiště [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-prebuilts-HumanResources.json) na GitHubu.
@@ -111,15 +111,15 @@ Podle následujících kroků vytvořte entitu regulárního výrazu, která slu
 
 ## <a name="train-the-luis-app"></a>Trénování aplikace LUIS
 
-[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
+[!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>Publikování aplikace a získání adresy URL koncového bodu
 
-[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
+[!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
 ## <a name="query-the-endpoint-with-a-different-utterance"></a>Odeslání dotazu na koncový bod s jinou promluvou
 
-1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
+1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 2. Na konec adresy URL zadejte `When were HRF-123456 and hrf-234567 published in the last year?`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. Tato promluva není stejná jako žádná z označených promluv, proto je to dobrý test a měl by se vrátit záměr `FindForm` se dvěma čísly formuláře `HRF-123456` a `hrf-234567`.
 
@@ -231,7 +231,7 @@ Služba LUIS s tímto požadavkem skončila. Volající aplikace, například ch
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+[!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

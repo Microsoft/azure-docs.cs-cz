@@ -9,12 +9,12 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 08/02/2018
 ms.author: diberry
-ms.openlocfilehash: 87d97b078927800e4e90c39a70e2acc7163a4c84
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: a69ea8ea45a02399b7c6ad22f0dc514ad8537e06
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39493043"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44159652"
 ---
 # <a name="tutorial-7-add-simple-entity-and-phrase-list"></a>Kurz: 7. Přidání jednoduché entity a seznamu frází
 V tomto kurzu vytvoříte aplikaci, která ukazuje extrakci strojově naučených dat z promluvy pomocí **jednoduché** entity.
@@ -29,7 +29,7 @@ V tomto kurzu vytvoříte aplikaci, která ukazuje extrakci strojově naučenýc
 > * Přidání seznamu frází ke zlepšení signalizování slov týkajících se pracovních pozic
 > * Trénování, publikování aplikace a opětovný dotaz na koncový bod
 
-[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>Než začnete
 Pokud nemáte aplikaci pro lidské zdroje z kurzu ke [složeným entitám](luis-tutorial-composite-entity.md), [naimportujte](luis-how-to-start-new-app.md#import-new-app) JSON do nové aplikace na webu služby [LUIS](luis-reference-regions.md#luis-website). Aplikaci k importování najdete v úložišti [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-composite-HumanResources.json) na Githubu.
@@ -127,15 +127,15 @@ Tato aplikace LUIS obsahuje názvy pracovních pozic v několika záměrech. Dí
 
 ## <a name="train-the-luis-app"></a>Trénování aplikace LUIS
 
-[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
+[!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>Publikování aplikace a získání adresy URL koncového bodu
 
-[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
+[!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
 ## <a name="query-the-endpoint-with-a-different-utterance"></a>Odeslání dotazu na koncový bod s jinou promluvou
 
-1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
+1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 2. Na konec adresy URL zadejte `Here is my c.v. for the programmer job`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. Tato promluva není stejná jako žádná z označených promluv, proto je to dobrý test a měly by se vrátit promluvy `ApplyForJob`.
 
@@ -361,7 +361,7 @@ Služba LUIS s tímto požadavkem skončila. Volající aplikace, například ch
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+[!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

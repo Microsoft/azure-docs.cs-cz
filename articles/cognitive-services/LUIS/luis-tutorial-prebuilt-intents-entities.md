@@ -9,12 +9,12 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 08/03/2018
 ms.author: diberry
-ms.openlocfilehash: 5e4201f3d0684066bb6ba75850191e28405d8e8a
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 0e45b659508c71a9f1220ef5e76b9a95438fa1e6
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522267"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44162236"
 ---
 # <a name="tutorial-2-add-prebuilt-intents-and-entities"></a>Kurz: 2. Přidání předem připravených záměrů a entit
 Přidejte do ukázkové aplikace pro lidské zdroje předem připravené záměry a entity a získejte tak rychle předpověď záměru a extrakci dat. 
@@ -27,7 +27,7 @@ V tomto kurzu se naučíte:
 * Trénování a publikování
 * Dotazování služby LUIS a přijetí odpovědi s předpovědí
 
-[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>Než začnete
 Pokud nemáte aplikaci pro [lidské zdroje](luis-quickstart-intents-only.md) z předchozího kurzu, [naimportujte](luis-how-to-start-new-app.md#import-new-app) na webu [LUIS](luis-reference-regions.md#luis-website) do nové aplikace JSON z úložiště [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-intent-only-HumanResources.json) na GitHubu.
@@ -73,15 +73,15 @@ Služba LUIS poskytuje několik předem připravených entit pro extrakci běžn
 
 ## <a name="train-and-publish-the-app"></a>Trénování a publikování aplikace
 
-[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
+[!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="publish-app-to-endpoint"></a>Publikování aplikace do koncového bodu
 
-[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
+[!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
 ## <a name="query-endpoint-with-an-utterance"></a>Odeslání dotazu na koncový bod s promluvou
 
-1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
+1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 2. Na konec adresy URL zadejte `I want to cancel on March 3`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. 
 
@@ -168,7 +168,7 @@ Služba LUIS poskytuje několik předem připravených entit pro extrakci běžn
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+[!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

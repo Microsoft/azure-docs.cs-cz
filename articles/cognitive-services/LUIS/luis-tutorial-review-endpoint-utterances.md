@@ -9,12 +9,12 @@ ms.component: luis
 ms.topic: tutorial
 ms.date: 08/03/2018
 ms.author: diberry
-ms.openlocfilehash: 5ce08861934305cccca9933a822fccf642746a59
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: db44bfad5ece59ed3373699c10d6134201bf1879
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39527700"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44160077"
 ---
 # <a name="tutorial-review-endpoint-utterances"></a>Kurz: Kontrola promluv koncového bodu
 V tomto kurzu zlepšíte predikce aplikace ověřením nebo opravou promluv získaných prostřednictvím koncového bodu HTTP služby LUIS. 
@@ -27,7 +27,7 @@ V tomto kurzu zlepšíte predikce aplikace ověřením nebo opravou promluv zís
 > * Trénování a publikování aplikace
 > * Odeslání dotazu na koncový bod aplikace a zobrazení odpovědi JSON ze služby LUIS
 
-[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
 ## <a name="before-you-begin"></a>Než začnete
 Pokud nemáte aplikaci pro lidské zdroje z kurzu k [mínění](luis-quickstart-intent-and-sentiment-analysis.md), naimportujte ji z úložiště [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-sentiment-HumanResources.json) na Githubu. Pokud tento kurz používáte jako novou naimportovanou aplikaci, musíte ji také natrénovat, publikovat a potom přidat promluvy do koncového bodu pomocí [skriptu](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/demo-upload-endpoint-utterances/endpoint.js) nebo z koncového bodu v prohlížeči. Přidávané promluvy jsou tyto:
@@ -104,19 +104,19 @@ Aktualizujte seznam frází každým nově zjištěným názvem pracovní pozice
 
 Služba LUIS nemá o těchto změnách informace, dokud se nenatrénuje. 
 
-[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
+[!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="publish-the-app-to-get-the-endpoint-url"></a>Publikování aplikace a získání adresy URL koncového bodu
 
 Pokud jste tuto aplikaci naimportovali, musíte vybrat **Sentiment analysis** (Analýza mínění).
 
-[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
+[!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
 ## <a name="query-the-endpoint-with-an-utterance"></a>Odeslání dotazu na koncový bod s promluvou
 
 Vyzkoušejte promluvu blízkou opravené promluvě. 
 
-1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
+1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 2. Na konec adresy URL zadejte `Are there any natural language processing jobs in my department right now?`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. 
 
@@ -230,7 +230,7 @@ Kontrolou projevů z koncového bodu se zvýšila přesnost predikcí této apli
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
+[!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
