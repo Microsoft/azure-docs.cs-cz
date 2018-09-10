@@ -11,7 +11,7 @@ manager: timlt
 ms.custom: codepen
 ms.openlocfilehash: 37323bacf47613c0faf7769701808ecef2645115
 ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/07/2018
 ms.locfileid: "44157949"
