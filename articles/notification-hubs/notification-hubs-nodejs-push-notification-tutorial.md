@@ -1,7 +1,7 @@
 ---
 title: Odesílání nabízených oznámení pomocí Azure Notification Hubs a Node.js
-description: Naučte se používat Notification Hubs k odesílání nabízených oznámení z aplikace Node.js.
-keywords: nabízená oznámení, nabízené notifications,node.js nabízet, ios push
+description: Zjistěte, jak používat Notification Hubs k odesílání nabízených oznámení z aplikace Node.js.
+keywords: nabízené oznámení, nabízené notifications,node.js nabízených oznámení, nabízené ios
 services: notification-hubs
 documentationcenter: nodejs
 author: dimazaid
@@ -15,12 +15,12 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 7463d41382c59e4f7f03b58dbcbc3f5c45e9d15c
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 49ee6b7fabe78c2328a2a772347c612ad38cfe7a
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33778354"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44091716"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Odesílání nabízených oznámení pomocí Azure Notification Hubs a Node.js
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
@@ -31,78 +31,78 @@ ms.locfileid: "33778354"
 > 
 > 
 
-Tato příručka ukazuje, jak odesílat nabízená oznámení pomocí Azure Notification hubs přímo z aplikace Node.js. 
+Tento průvodce vám ukáže, jak odesílat nabízená oznámení pomocí služby Azure Notification Hubs přímo z aplikace Node.js. 
 
-Pokryté scénáře zahrnují odesílání nabízených oznámení do aplikace na následujících platformách:
+Mezi popsané scénáře patří odesílání nabízených oznámení do aplikace na následujících platformách:
 
 * Android
 * iOS
 * telefon se systémem Windows
-* Univerzální platforma pro Windows 
+* Univerzální platforma Windows 
 
-Další informace o notification hubs najdete v tématu [další kroky](#next) části.
+Další informace o notification hubs najdete v článku [další kroky](#next) oddílu.
 
 ## <a name="what-are-notification-hubs"></a>Co jsou Notification Hubs?
-Azure Notification Hubs poskytuje snadno použitelnou, více platformami, škálovatelné infrastruktury pro odesílání nabízených oznámení do mobilních zařízení. Podrobnosti o infrastrukturu služeb, najdete v článku [Azure Notification Hubs](http://msdn.microsoft.com/library/windowsazure/jj927170.aspx) stránky.
+Azure Notification Hubs poskytuje snadno použitelné, multiplatformní a škálovatelnou infrastrukturu pro posílání nabízených oznámení do mobilních zařízení. Podrobnosti o infrastruktuře služby, najdete v článku [Azure Notification Hubs](http://msdn.microsoft.com/library/windowsazure/jj927170.aspx) stránky.
 
-## <a name="create-a-nodejs-application"></a>Vytvoření aplikace Node.js
-Prvním krokem v tomto kurzu je vytvoření nové prázdné aplikace Node.js. Pokyny pro vytvoření aplikace Node.js, naleznete v části [vytvoření a nasazení aplikace Node.js na webu Azure][nodejswebsite], [Node.js Cloudová služba] [ Node.js Cloud Service] pomocí prostředí Windows PowerShell nebo [webu pomocí služby WebMatrix].
+## <a name="create-a-nodejs-application"></a>Vytvoření aplikace v Node.js
+Prvním krokem v tomto kurzu je vytvoření nové prázdné aplikace Node.js. Pokyny týkající se vytvoření aplikace Node.js najdete v tématu [vytvoření a nasazení aplikace Node.js na Azure web][nodejswebsite], [cloudové služby pro Node.js] [ Node.js Cloud Service] pomocí Windows Powershellu nebo [webu pomocí Webmatrixu][webmatrix].
 
-## <a name="configure-your-application-to-use-notification-hubs"></a>Konfigurace aplikace pro použití služby Notification Hubs
-Chcete-li používat Azure Notification Hubs, musíte stáhnout a použít Node.js [balíček azure](https://www.npmjs.com/package/azure), což zahrnuje integrovanou sadu knihoven pomocné rutiny, které komunikují s REST služeb nabízených oznámení.
+## <a name="configure-your-application-to-use-notification-hubs"></a>Konfigurace aplikace pro použití Notification Hubs
+Pokud chcete používat Azure Notification Hubs, budete muset stáhnout a použít na Node.js [balíček azure](https://www.npmjs.com/package/azure), což zahrnuje integrované sada knihoven pomocné rutiny, které komunikují s REST služby nabízených oznámení.
 
-### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>Získat balíček pomocí uzlu balíček správce (NPM)
-1. Pomocí rozhraní příkazového řádku, jako například **prostředí PowerShell** (Windows), **Terminálové** (Mac), nebo **Bash** (Linux) a přejděte do složky, které jste vytvořili aplikaci prázdné.
-2. Typ **npm nainstalujte azure sb** v příkazovém okně.
-3. Můžete ručně spustit **ls** nebo **dir** příkazu ověřte, že **uzlu\_moduly** složka byla vytvořena. V této složce najít **azure** balíček, který obsahuje knihovny, které potřebujete získat přístup k centru oznámení.
+### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>Získat balíček pomocí Node Package Manager (NPM)
+1. Pomocí rozhraní příkazového řádku, jako **PowerShell** (Windows), **terminálu** (Mac), nebo **Bash** (Linux) a přejděte do složky, ve které jste vytvořili aplikaci prázdné.
+2. Typ **npm nainstalujte azure-sb** v příkazovém okně.
+3. Můžete ručně spustit **ls** nebo **dir** příkazu ověřte, že **uzel\_moduly** složka byla vytvořena. V takové složce najít **azure** balíček, který obsahuje knihovny, budete potřebovat přístup k centru oznámení.
 
 > [!NOTE]
-> Další informace o instalaci NPM na oficiální [NPM blog](http://blog.npmjs.org/post/85484771375/how-to-install-npm). 
+> Další informace o instalaci NPM official je přínosné pro [NPM blogu](http://blog.npmjs.org/post/85484771375/how-to-install-npm). 
 > 
 > 
 
-### <a name="import-the-module"></a>Naimportujte modul
-Pomocí textového editoru, přidejte následující do horní části **server.js** souboru aplikace:
+### <a name="import-the-module"></a>Import modulu
+Pomocí textového editoru, přidejte následující k hornímu okraji **server.js** souboru aplikace:
 
     var azure = require('azure');
 
-### <a name="set-up-an-azure-notification-hub-connection"></a>Nastavit připojení k Azure Notification Hubs
-**NotificationHubService** objekt vám umožňuje spolupracovat s centry oznámení. Následující kód vytvoří **NotificationHubService** objekt pro centra oznámení s názvem **hubname**. Přidejte do horní části **server.js** souboru po příkazu k importu modulu azure:
+### <a name="set-up-an-azure-notification-hub-connection"></a>Nastavit připojení k centru oznámení Azure
+**NotificationHubService** objekt vám umožní pracovat s notification hubs. Následující kód vytvoří **NotificationHubService** objekt pro centra oznámení s názvem **hubname**. Přidejte do horní části **server.js** soubor po příkazu k importu modulu azure:
 
     var notificationHubService = azure.createNotificationHubService('hubname','connectionstring');
 
-Připojení **connectionstring** nelze získat hodnotu z [portál Azure] provedením následujících kroků:
+Připojení **connectionstring** hodnotu můžete získat [Azure Portal] provedením následujících kroků:
 
 1. V levém navigačním podokně klikněte na tlačítko **Procházet**.
-2. Vyberte **Notification Hubs**a pak vyhledejte rozbočovače, které chcete použít pro vzorovou. Můžete se podívat do [Windows Store Začínáme kurzu](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) Pokud potřebujete pomoc, vytváření nového centra oznámení.
+2. Vyberte **Notification Hubs**a pak vyhledejte centrum, které chcete použít pro ukázku. Můžete se podívat do [Windows Store Začínáme kurzu](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md) Pokud potřebujete pomoc při vytvoření nového centra oznámení.
 3. Vyberte **nastavení**.
-4. Klikněte na **zásady přístupu**. Zobrazí oba připojovací řetězce sdílené a úplný přístup.
+4. Klikněte na **zásady přístupu**. Uvidíte oba připojovací řetězce sdílené a úplný přístup.
 
-![Portál Azure – centra oznámení](./media/notification-hubs-nodejs-how-to-use-notification-hubs/notification-hubs-portal.png)
+![Azure portal – Notification Hubs](./media/notification-hubs-nodejs-how-to-use-notification-hubs/notification-hubs-portal.png)
 
 > [!NOTE]
-> Můžete také načíst připojovací řetězec pomocí **Get-AzureSbNamespace** rutiny poskytované [prostředí Azure PowerShell](/powershell/azureps-cmdlets-docs) nebo **azure sb obor názvů zobrazit** s [Rozhraní příkazového řádku azure (Azure CLI)](../cli-install-nodejs.md).
+> Můžete také načíst připojovací řetězec pomocí **Get-AzureSbNamespace** rutiny poskytované [prostředí Azure PowerShell](/powershell/azureps-cmdlets-docs) nebo **zobrazit obor názvů azure sb** příkazů [Rozhraní příkazového řádku azure (Azure CLI)](../cli-install-nodejs.md).
 > 
 > 
 
 ## <a name="general-architecture"></a>Obecná architektura
-**NotificationHubService** objekt poskytuje následující instance objektů pro odesílání nabízených oznámení pro konkrétní zařízení a aplikace:
+**NotificationHubService** objekt poskytuje následující instance objektu pro odesílání nabízených oznámení na konkrétní zařízení a aplikací:
 
-* **Android** -použít **GcmService** objekt, který je k dispozici na **notificationHubService.gcm**
-* **iOS** -použít **ApnsService** objekt, který je přístupná na **notificationHubService.apns**
-* **Windows Phone** -použít **MpnsService** objekt, který je k dispozici na **notificationHubService.mpns**
-* **Univerzální platformu Windows** -použít **WnsService** objekt, který je k dispozici na **notificationHubService.wns**
+* **Android** -použít **GcmService** objektu, který je k dispozici na **notificationHubService.gcm**
+* **iOS** -použít **ApnsService** objekt, který je přístupný na adrese **notificationHubService.apns**
+* **Windows Phone** -použít **MpnsService** objektu, který je k dispozici na **notificationHubService.mpns**
+* **Univerzální platforma Windows** -použít **WnsService** objektu, který je k dispozici na **notificationHubService.wns**
 
-### <a name="how-to-send-push-notifications-to-android-applications"></a>Postupy: odesílání nabízených oznámení do aplikace pro Android
-**GcmService** objekt poskytuje **odeslat** metoda, která slouží k odesílání nabízených oznámení do aplikace pro Android. **Odeslat** metoda přijímá následující parametry:
+### <a name="how-to-send-push-notifications-to-android-applications"></a>Postupy: odesílání nabízených oznámení do aplikací pro Android
+**GcmService** objekt, který poskytuje **odeslat** metodu, která slouží k odesílání nabízených oznámení do aplikací pro Android. **Odeslat** metoda přijímá následující parametry:
 
-* **Značky** -identifikátor značky. Pokud je k dispozici žádná značka, oznámení je odesláno všem klientům.
-* **Datová část** -JSON nebo nezpracovaný řetězec datovou část zprávy.
+* **Značky** -identifikátor značky. Pokud se neposkytne žádná značka oznámení odesláno všem klientům.
+* **Datová část** -JSON nebo nezpracovaného řetězce datovou část zprávy.
 * **Zpětné volání** – funkce zpětného volání.
 
-Další informace o formátu datové části najdete v tématu **datové části** části [implementace serveru GCM](http://developer.android.com/google/gcm/server.html#payload) dokumentu.
+Další informace o formátu datové části, najdete v článku **datové části** část [implementace serveru GCM](http://developer.android.com/google/gcm/server.html#payload) dokumentu.
 
-Následující kód používá **GcmService** instance vystavené **NotificationHubService** k odesílání nabízených oznámení na všechny klientské počítače registrované.
+Následující kód používá **GcmService** instance vystavené **NotificationHubService** k odesílání nabízených oznámení na všechny registrované klienty.
 
     var payload = {
       data: {
@@ -115,16 +115,16 @@ Následující kód používá **GcmService** instance vystavené **Notification
       }
     });
 
-### <a name="how-to-send-push-notifications-to-ios-applications"></a>Postupy: odesílání nabízených oznámení do aplikace pro iOS
-Stejné jako s popsané výše, aplikace pro Android **ApnsService** objekt poskytuje **odeslat** metoda, která slouží k odesílání nabízených oznámení do aplikace pro iOS. **Odeslat** metoda přijímá následující parametry:
+### <a name="how-to-send-push-notifications-to-ios-applications"></a>Postupy: odesílání nabízených oznámení do aplikací pro iOS
+Shodná s aplikací pro Android je popsáno výše, **ApnsService** objekt, který poskytuje **odeslat** metodu, která slouží k odesílání nabízených oznámení do aplikací pro iOS. **Odeslat** metoda přijímá následující parametry:
 
-* **Značky** -identifikátor značky. Pokud je k dispozici žádná značka, oznámení je odesláno všem klientům.
+* **Značky** -identifikátor značky. Pokud se neposkytne žádná značka oznámení odesláno všem klientům.
 * **Datová část** -datovou část JSON nebo řetězec zprávy.
 * **Zpětné volání** – funkce zpětného volání.
 
-Formát datové části Další informace najdete v tématu **datová část oznámení** části [průvodci místních a nabízených oznámení programování](http://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ApplePushService/ApplePushService.html) dokumentu.
+Formát datové části Další informace najdete v tématu **datová část oznámení** část [průvodci místních a nabízených oznámení programování](http://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ApplePushService/ApplePushService.html) dokumentu.
 
-Následující kód používá **ApnsService** instance vystavené **NotificationHubService** k odeslání zprávy upozornění pro všechny klienty:
+Následující kód používá **ApnsService** instance vystavené **NotificationHubService** odeslat zprávu oznámení na všechny klienty:
 
     var payload={
         alert: 'Hello!'
@@ -135,17 +135,17 @@ Následující kód používá **ApnsService** instance vystavené **Notificatio
       }
     });
 
-### <a name="how-to-send-push-notifications-to-windows-phone-applications"></a>Postupy: odesílání nabízených oznámení do aplikací Windows Phone
-**MpnsService** objekt poskytuje **odeslat** metoda, která slouží k odesílání nabízených oznámení do aplikace Windows Phone. **Odeslat** metoda přijímá následující parametry:
+### <a name="how-to-send-push-notifications-to-windows-phone-applications"></a>Postupy: odesílání nabízených oznámení do aplikace Windows Phone
+**MpnsService** objekt, který poskytuje **odeslat** metodu, která slouží k odesílání nabízených oznámení do aplikace Windows Phone. **Odeslat** metoda přijímá následující parametry:
 
-* **Značky** -identifikátor značky. Pokud je k dispozici žádná značka, oznámení je odesláno všem klientům.
-* **Datová část** -datovou část XML zprávy.
-* **TargetName**  -  `toast` pro informační zprávy. `token` pro dlaždici oznámení.
-* **NotificationClass** -prioritu oznámení. Najdete v článku **prvky záhlaví HTTP** části [nabízená oznámení ze serveru](http://msdn.microsoft.com/library/hh221551.aspx) dokumentu platné hodnoty.
+* **Značky** -identifikátor značky. Pokud se neposkytne žádná značka oznámení odesláno všem klientům.
+* **Datová část** -datovou část zprávy XML.
+* **TargetName**  -  `toast` pro informační zprávy. `token` dlaždice oznámení.
+* **NotificationClass** -prioritu oznámení. Najdete v článku **prvky hlavičky protokolu HTTP** část [nabízená oznámení ze serveru](http://msdn.microsoft.com/library/hh221551.aspx) dokumentu platné hodnoty.
 * **Možnosti** – volitelné hlavičky požadavku.
 * **Zpětné volání** – funkce zpětného volání.
 
-Seznam platný **TargetName**, **NotificationClass** a možnosti hlaviček, podívejte se [nabízená oznámení ze serveru](http://msdn.microsoft.com/library/hh221551.aspx) stránky.
+Seznam platných **TargetName**, **NotificationClass** a možnosti záhlaví, podívejte se [nabízená oznámení ze serveru](http://msdn.microsoft.com/library/hh221551.aspx) stránky.
 
 Následující ukázkový kód používá **MpnsService** instance vystavené **NotificationHubService** k odesílání nabízených oznámení:
 
@@ -156,18 +156,18 @@ Následující ukázkový kód používá **MpnsService** instance vystavené **
       }
     });
 
-### <a name="how-to-send-push-notifications-to-universal-windows-platform-uwp-applications"></a>Postupy: odesílání nabízených oznámení do aplikací pro univerzální platformu Windows (UWP)
-**WnsService** objekt poskytuje **odeslat** metoda, která slouží k odesílání nabízených oznámení do aplikace pro univerzální platformu Windows.  **Odeslat** metoda přijímá následující parametry:
+### <a name="how-to-send-push-notifications-to-universal-windows-platform-uwp-applications"></a>Postupy: odesílání nabízených oznámení do aplikace univerzální platformy Windows (UPW)
+**WnsService** objekt, který poskytuje **odeslat** metodu, která slouží k odesílání nabízených oznámení do aplikace univerzální platformy Windows.  **Odeslat** metoda přijímá následující parametry:
 
-* **Značky** -identifikátor značky. Pokud je k dispozici žádná značka, oznámení se odešle klientům všechny registrované.
+* **Značky** -identifikátor značky. Pokud se neposkytne žádná značka oznámení odesláno všem klientům registrovaný.
 * **Datová část** -datovou část zprávy XML.
 * **Typ** – typ oznámení.
 * **Možnosti** – volitelné hlavičky požadavku.
 * **Zpětné volání** – funkce zpětného volání.
 
-Seznam platné typy a hlavičky požadavku, naleznete v části [nabízená oznámení hlavičkách žádostí a odpovědí služby](http://msdn.microsoft.com/library/windows/apps/hh465435.aspx).
+Seznam platné typy a hlavičky požadavku najdete v tématu [nabízená oznámení hlavičky požadavku a odpovědi služby](http://msdn.microsoft.com/library/windows/apps/hh465435.aspx).
 
-Následující kód používá **WnsService** instance vystavené **NotificationHubService** odesílat nabízená oznámení do aplikace UWP:
+Následující kód používá **WnsService** instance vystavené **NotificationHubService** k odesílání nabízených oznámení do aplikace pro UPW:
 
     var payload = '<toast><visual><binding template="ToastText01"><text id="1">Hello!</text></binding></visual></toast>';
     notificationHubService.wns.send(null, payload , 'wns/toast', function(error){
@@ -177,12 +177,12 @@ Následující kód používá **WnsService** instance vystavené **Notification
     });
 
 ## <a name="next-steps"></a>Další kroky
-Výše uvedené ukázkové fragmenty umožňují snadno vytvořit infrastrukturu služby Doručovat nabízená oznámení k široké škále zařízení. Teď, když jste se naučili základy používání centra oznámení s node.js, postupujte podle následujících odkazech na další informace o tom, jak můžete rozšířit tyto další možnosti.
+Výše uvedené ukázkové fragmenty umožňují snadno vytvářet služby infrastruktury pro doručování nabízených oznámení do širokou škálu zařízení. Teď, když jste se naučili základy používání Notification Hubs s využitím node.js, použijte tyto odkazy na další informace o tom, jak můžete rozšířit tyto další možnosti.
 
-* Najdete v článku na webu MSDN odkazy [Azure Notification Hubs](https://msdn.microsoft.com/library/azure/jj927170.aspx).
-* Přejděte [Azure SDK pro uzel] úložišti na Githubu Další ukázky a podrobnosti implementace.
+* Viz odkaz na webu MSDN pro [Azure Notification Hubs](https://msdn.microsoft.com/library/azure/jj927170.aspx).
+* Přejděte [Azure SDK pro Node] úložišti na Githubu pro další ukázky a podrobnosti implementace.
 
-[Azure SDK pro uzel]: https://github.com/WindowsAzure/azure-sdk-for-node
+[Azure SDK pro Node]: https://github.com/WindowsAzure/azure-sdk-for-node
 [Next Steps]: #nextsteps
 [What are Service Bus Topics and Subscriptions?]: #what-are-service-bus-topics
 [Create a Service Namespace]: #create-a-service-namespace
@@ -205,10 +205,11 @@ Výše uvedené ukázkové fragmenty umožňují snadno vytvořit infrastrukturu
 [SqlFilter.SqlExpression]: http://msdn.microsoft.com/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
 [Azure Service Bus Notification Hubs]: http://msdn.microsoft.com/library/windowsazure/jj927170.aspx
 [SqlFilter]: http://msdn.microsoft.com/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.aspx
-[webu pomocí služby WebMatrix]: /develop/nodejs/tutorials/web-site-with-webmatrix/
+[Web Site with WebMatrix]: /develop/nodejs/tutorials/web-site-with-webmatrix/
 [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 [Previous Management Portal]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/previous-portal.png
-[nodejswebsite]: /develop/nodejs/tutorials/create-a-website-(mac)/
+[nodejswebsite]: https://docs.microsoft.com/azure/app-service/app-service-web-get-started-nodejs
+[webmatrix]: https://docs.microsoft.com/aspnet/web-pages/videos/introduction/create-a-website-using-webmatrix
 [Node.js Cloud Service with Storage]: /develop/nodejs/tutorials/web-app-with-storage/
 [Node.js Web Application with Storage]: /develop/nodejs/tutorials/web-site-with-storage/
 [Azure Portal]: https://portal.azure.com

@@ -3,20 +3,18 @@ title: Vazeb Microsoft Graphu, Azure functions
 description: Naučte se používat Microsoft Graphu triggerů a vazeb ve službě Azure Functions.
 services: functions
 author: mattchenderson
-manager: cfowler
-editor: ''
-ms.service: functions
-ms.tgt_pltfrm: na
+manager: jeconnoc
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: mahender
-ms.openlocfilehash: 06ee959d7b38f21684280a35cf770fdcc590b102
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 128e7f693755e7baf752d546fddd786b07c0de78
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43287983"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44093732"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Vazeb Microsoft Graphu, Azure functions
 
@@ -352,7 +350,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**userId**|**ID uživatele**  |Potřebné pokud a pouze v případě _identity_ je nastavena na `userFromId`. ID objektu zabezpečení uživatele přidružené k dříve přihlášenému uživateli.|
 |**userToken**|**UserToken**|Potřebné pokud a pouze v případě _identity_ je nastavena na `userFromToken`. Token platný pro danou aplikaci funkcí. |
 |**Cesta**|**Cesta**|Požadovaná: cesta k Excelovému sešitu ve Onedrivu.|
-|**worksheetName**|**WorksheetName**|List, ve kterém se nachází tabulka.|
+|**worksheetName**|**WorksheetName**|List, ve kterém se nachází v tabulce.|
 |**tableName**|**TableName**|Název tabulky. Pokud není zadán, použije se obsah listu.|
 
 <a name="excel-input-code"></a>
@@ -512,7 +510,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**ID uživatele** |**userId** |Potřebné pokud a pouze v případě _identity_ je nastavena na `userFromId`. ID objektu zabezpečení uživatele přidružené k dříve přihlášenému uživateli.|
 |**userToken**|**UserToken**|Potřebné pokud a pouze v případě _identity_ je nastavena na `userFromToken`. Token platný pro danou aplikaci funkcí. |
 |**Cesta**|**Cesta**|Požadovaná: cesta k Excelovému sešitu ve Onedrivu.|
-|**worksheetName**|**WorksheetName**|List, ve kterém se nachází tabulka.|
+|**worksheetName**|**WorksheetName**|List, ve kterém se nachází v tabulce.|
 |**tableName**|**TableName**|Název tabulky. Pokud není zadán, použije se obsah listu.|
 |**updateType**|**UpdateType**|Požadovaná: typ změny, která se provede v tabulce. Může být jedna z následujících hodnot:<ul><li><code>update</code> -Nahradí obsah tabulky na Onedrivu.</li><li><code>append</code> -Přidá datová část na konec tabulky na Onedrivu vytvořením nových řádků.</li></ul>|
 
@@ -1382,7 +1380,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**userId**|**ID uživatele**  |Potřebné pokud a pouze v případě _identity_ je nastavena na `userFromId`. ID objektu zabezpečení uživatele přidružené k dříve přihlášenému uživateli.|
 |**userToken**|**UserToken**|Potřebné pokud a pouze v případě _identity_ je nastavena na `userFromToken`. Token platný pro danou aplikaci funkcí. |
 |**Akce**|**Akce**|Nepožadováno – Určuje, by měl provádět akce vazby. Může být jedna z následujících hodnot:<ul><li><code>create</code> -Zaregistruje nový odběr.</li><li><code>delete</code> -Odstraní zadaný odběr.</li><li><code>refresh</code> -Aktualizuje zadaný odběr zabránit vypršení platnosti.</li></ul>|
-|**subscriptionResource**|**SubscriptionResource**|Potřebné pokud a pouze tehdy, pokud _akce_ je nastavena na `create`. Určuje prostředek Microsoft Graphu, který bude monitorovat změny. Zobrazit [práce s webhooky v aplikaci Microsoft Graph]. |
+|**subscriptionResource**|**subscriptionResource**|Potřebné pokud a pouze tehdy, pokud _akce_ je nastavena na `create`. Určuje prostředek Microsoft Graphu, který bude monitorovat změny. Zobrazit [práce s webhooky v aplikaci Microsoft Graph]. |
 |**changeType**|**ChangeType**|Potřebné pokud a pouze tehdy, pokud _akce_ je nastavena na `create`. Označuje typ změny v zaregistrovaném prostředku, který vyvolá oznámení. Podporované hodnoty jsou: `created`, `updated`, `deleted`. Více hodnot lze spojovat pomocí seznam oddělený čárkami.|
 
 ### <a name="webhook-output---usage"></a>Webhook výstup – využití

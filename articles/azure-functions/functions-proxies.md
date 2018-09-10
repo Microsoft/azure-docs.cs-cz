@@ -1,130 +1,126 @@
 ---
-title: Práce s proxy Azure Functions | Microsoft Docs
-description: Přehled o tom, jak používat Azure funkce proxy
+title: Práce s proxy serverů ve službě Azure Functions | Dokumentace Microsoftu
+description: Přehled o tom, jak používat proxy služby Azure Functions
 services: functions
-documentationcenter: ''
 author: alexkarcher-msft
-manager: cfowler
-editor: ''
+manager: jeconnoc
 ms.assetid: ''
-ms.service: functions
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: 0e7fe474c3b247baa6550770c661af62e83b3737
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 2aa8036149f4056f2d197f0712b86104f5cf2215
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2018
-ms.locfileid: "29933771"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44095041"
 ---
-# <a name="work-with-azure-functions-proxies"></a>Práce s Azure Functions proxy
+# <a name="work-with-azure-functions-proxies"></a>Práce s proxy služby Azure Functions
 
-Tento článek vysvětluje postup konfigurace a práce s Azure funkce proxy. Pomocí této funkce můžete určovat koncové body ve vaší aplikaci funkce, které jsou implementované pomocí jiný prostředek. Tyto servery proxy pro přerušení velké rozhraní API do více aplikací – funkce (jako architektury mikroslužby), můžete použít při stále poskytovat jeden prostor rozhraní API pro klienty.
+Tento článek vysvětluje postup konfigurace a práce s proxy služby Azure Functions. Pomocí této funkce můžete určovat koncové body na aplikaci funkcí, které jsou implementované jiným prostředkem. Tyto servery proxy můžete použít k rozdělení velké rozhraní API do více aplikací funkcí (jako v architektuře mikroslužeb), přitom stále poskytují jednotnou rovinu rozhraní API pro klienty.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 > [!NOTE] 
-> Standardní funkce fakturace se vztahuje na spuštěních proxy serveru. Další informace najdete v tématu [ceny Azure Functions](https://azure.microsoft.com/pricing/details/functions/).
+> Standardní funkce fakturace se vztahuje na spuštění proxy serveru. Další informace najdete v tématu [ceny Azure Functions](https://azure.microsoft.com/pricing/details/functions/).
 
 ## <a name="create"></a>Vytvořit proxy
 
-V této části se dozvíte, jak vytvořit proxy na portálu funkce.
+V této části se dozvíte, jak vytvořit proxy server na portálu Functions.
 
-1. Otevřete [portál Azure]a poté přejděte k vaší aplikaci funkce.
-2. V levém podokně vyberte **nového proxy**.
-3. Zadejte název pro proxy.
-4. Konfigurace koncového bodu, který je vystaven na tuto aplikaci funkce zadáním **šablonu trasy** a **metody HTTP**. Tyto parametry se chovat podle pravidel pro [aktivace protokolu HTTP].
-5. Nastavte **URL back-end** na jiný koncový bod. Tento koncový bod může být funkce v jiné aplikaci funkce, nebo to může být ostatní rozhraní API. Hodnota nemusí být statické, a může obsahovat odkazy na [nastavení aplikace] a [parametry z původního požadavku klienta].
+1. Otevřít [Azure Portal]a potom přejděte ke své aplikaci function app.
+2. V levém podokně vyberte **nový proxy server**.
+3. Zadejte název pro váš proxy server.
+4. Konfigurace koncového bodu, který je zveřejněný na tuto aplikaci function app tak, že zadáte **šablonu trasy** a **metody HTTP**. Tyto parametry se chovají podle pravidel pro [Aktivační události HTTP].
+5. Nastavte **URL back-end** do jiného koncového bodu. Tento koncový bod může být funkce v jiné aplikaci function app, nebo může být jiné rozhraní API. Hodnota nemusí být statická a může odkazovat [nastavení aplikace] a [parametry z původního požadavku klienta].
 6. Klikněte na možnost **Vytvořit**.
 
-Proxy nyní existuje jako nový koncový bod v aplikaci funkce. Z hlediska klienta je ekvivalentní HttpTrigger v Azure Functions. Váš nový proxy server můžete vyzkoušet tak, že adresa URL proxy serveru a testování pomocí vašeho oblíbeného klienta HTTP.
+Váš proxy server nyní existuje jako nový koncový bod na vaši aplikaci function app. Z pohledu klienta je ekvivalentní HttpTrigger ve službě Azure Functions. Nový proxy server můžete vyzkoušet tak, že zkopírujete adresu URL proxy serveru a testováním pomocí svého oblíbeného klienta HTTP.
 
 ## <a name="modify-requests-responses"></a>Upravit požadavky a odpovědi
 
-S funkcí proxy Azure můžete upravit žádostí a odpovědí z back-end. Tyto transformace můžete používat proměnné, jak jsou definovány v [použijte proměnné].
+Pomocí proxy služby Azure Functions můžete upravit požadavků a odpovědí z back endu. Tyto transformace můžete použít proměnné, jak jsou definovány v [Použití proměnných].
 
 ### <a name="modify-backend-request"></a>Upravit požadavek back-end
 
-Ve výchozím nastavení je požadavek back-end inicializován jako kopii původního požadavku. Kromě nastavení adresy URL back-end, můžete provést změny metoda HTTP, hlaviček a parametrů řetězce dotazu. Změny hodnot, můžete odkazovat [nastavení aplikace] a [parametry z původního požadavku klienta].
+Ve výchozím nastavení je požadavek back-end inicializován jako kopii původního požadavku. Kromě nastavení adresa URL back-end, můžete provádět změny metody HTTP, hlaviček a parametrů řetězce dotazu. Změněné hodnoty může odkazovat na [nastavení aplikace] a [parametry z původního požadavku klienta].
 
-Back-end požadavky mohou být upravena na portálu expading *žádosti o přepsání* část stránky podrobností proxy serveru. 
+Požadavky na back-end můžete upravit na portálu expading *přepsání žádosti* na stránce Podrobnosti o proxy serveru. 
 
 ### <a name="modify-response"></a>Upravit odpověď
 
-Ve výchozím nastavení je odpověď klienta jako kopii odpovědi na back-end inicializován. Můžete změnit stavový kód, frázi důvodu, hlavičky a text z odpovědi. Změny hodnot, můžete odkazovat [nastavení aplikace], [parametry z původního požadavku klienta], a [parametry z back-end odpovědi].
+Ve výchozím nastavení odpověď klienta inicializován jako kopii odpovědi back-end. Stavový kód odpovědi, frázi důvodu, záhlaví a text můžete provádět změny. Změněné hodnoty může odkazovat na [nastavení aplikace], [parametry z původního požadavku klienta], a [parametry z odpovědi back-end].
 
-Back-end požadavky mohou být upravena na portálu expading *odpověď přepsat* část stránky podrobností proxy serveru. 
+Požadavky na back-end můžete upravit na portálu expading *přepsání odpovědi* na stránce Podrobnosti o proxy serveru. 
 
 ## <a name="using-variables"></a>Použití proměnných
 
-Konfigurace proxy serveru nemusí být statická. Podmínka vyhodnocena ho na použití proměnné z původního požadavku klienta, back-end odpovědi nebo nastavení aplikace.
+Konfigurace proxy serveru, nemusí být statické. Podmínka vyhodnocena ho na použití proměnné z původního požadavku klienta, odpovědi back-end nebo nastavení aplikace.
 
-### <a name="reference-localhost"></a>Odkaz na lokální funkce
-Můžete použít `localhost` odkazu na funkci uvnitř stejné funkce aplikaci přímo, bez žádost proxy zvyšuje výkon.
+### <a name="reference-localhost"></a>Referenční dokumentace lokální funkce
+Můžete použít `localhost` odkazu na funkci uvnitř stejné aplikace function app přímo, bez žádost o proxy serveru umožňujícím zpětnou transformaci.
 
-`"backendurl": "https://localhost/api/httptriggerC#1"` bude odkazovat na místní funkce protokolu HTTP aktivované na trasu `/api/httptriggerC#1`
+`"backendurl": "https://localhost/api/httptriggerC#1"` bude odkazovat na místní funkci aktivovanou protokolem HTTP na trasy `/api/httptriggerC#1`
 
  
 >[!Note]  
->Pokud funkce používá *funkce, správce nebo sys* úrovně autorizace, budete muset zadat kód a clientId, podle původní adresu URL funkce. V takovém případě bude odkaz na vypadat: `"backendurl": "https://localhost/api/httptriggerC#1?code=<keyvalue>&clientId=<keyname>"`
+>Pokud vaše funkce používá *funkci, správce nebo sys* úrovní autorizace, budete muset zadat kód a clientId, podle původní adresu URL funkce. V tomto případě odkaz vypadat nějak takto: `"backendurl": "https://localhost/api/httptriggerC#1?code=<keyvalue>&clientId=<keyname>"`
 
-### <a name="request-parameters"></a>Parametry žádosti referenční dokumentace
+### <a name="request-parameters"></a>Odkaz na parametry žádosti
 
-Parametry žádosti můžete použít jako vstupy pro vlastnost adresa URL back-end nebo jako součást úprava požadavky a odpovědi. Některé parametry mohou být vázány z šablony trasy, která je určená v konfiguraci proxy serveru základní a jiné mohou pocházet z vlastnosti příchozího požadavku.
+Parametry požadavku můžete použít jako vstupy pro vlastnost adresa URL back-end nebo jako součást úpravy žádostí a odpovědí. Některé parametry lze navázat z určený v konfiguraci proxy serveru základní šablonu trasy a ostatní můžou pocházet z vlastnosti příchozího požadavku.
 
 #### <a name="route-template-parameters"></a>Parametry šablony trasy
-Parametry, které se používají v šabloně trasy jsou k dispozici bude odkazovat podle názvu. Názvy parametrů jsou uzavřené do složených závorek ({}).
+Parametry, které se používají v šabloně trasy je možné odkazovat podle názvu. Názvy parametrů jsou uzavřeny ve složených závorkách ({}).
 
-Pokud proxy server má šablonu trasy, jako například `/pets/{petId}`, adresa URL back-end může obsahovat hodnotu `{petId}`jako v `https://<AnotherApp>.azurewebsites.net/api/pets/{petId}`. Pokud šablonu trasy ukončí v zástupný znak, jako například `/api/{*restOfPath}`, hodnota `{restOfPath}` je řetězcová reprezentace zbývající segmenty cesty z příchozího požadavku.
+Pokud proxy server má šablonu trasy, jako například `/pets/{petId}`, adresa URL back-end může obsahovat hodnotu `{petId}`, například `https://<AnotherApp>.azurewebsites.net/api/pets/{petId}`. Pokud šablonu trasy ukončí v zástupné znaky, jako například `/api/{*restOfPath}`, hodnota `{restOfPath}` je řetězcové vyjádření zbývající segmentů cesty z příchozího požadavku.
 
-#### <a name="additional-request-parameters"></a>Parametry další žádosti
-Kromě parametry šablony trasy lze použít následující hodnoty v hodnotách konfigurace:
+#### <a name="additional-request-parameters"></a>Další parametry požadavku
+Kromě parametrů šablony trasy je možné v rozšíření konfiguračních hodnot následující hodnoty:
 
-* **{request.method}** : Metoda protokolu HTTP, který se používá u původního požadavku.
-* **{request.headers. \<HeaderName\>}**: hlavičku, který může číst z původního požadavku. Nahraďte *\<HeaderName\>* s názvem záhlaví, který chcete číst. Pokud není k dispozici hlavičky v požadavku, bude hodnota prázdný řetězec.
-* **{request.querystring. \<ParameterName\>}**: parametr řetězce dotazu, který může číst z původního požadavku. Nahraďte *\<ParameterName\>* s názvem parametr, který chcete číst. Pokud parametr není zahrnut v žádosti, bude hodnota prázdný řetězec.
+* **{request.method}** : Metodu HTTP, která se používá na původní požadavek.
+* **{request.headers. \<HeaderName\>}**: záhlaví, který může číst z původního požadavku. Nahraďte *\<HeaderName\>* s názvem záhlaví, který chcete číst. Pokud není k dispozici hlavičky v požadavku, hodnota bude prázdný řetězec.
+* **{request.querystring. \<ParameterName\>}**: parametru řetězce dotazu, který může číst z původního požadavku. Nahraďte *\<ParameterName\>* s názvem parametru, který chcete číst. Pokud parametr není k dispozici v požadavku, hodnota bude prázdný řetězec.
 
-### <a name="response-parameters"></a>Odkaz na back-end odpovědi parametry
+### <a name="response-parameters"></a>Odkaz na odpověď back-end parametry
 
-Odpověď parametry můžete použít jako součást úprava odpověď klientovi. Následující hodnoty lze použít v hodnotách konfigurace:
+Parametry odpovědi může sloužit jako součást úpravy odpověď klientovi. V rozšíření konfiguračních hodnot je možné následující hodnoty:
 
-* **{backend.response.statusCode}** : Stavový kód protokolu HTTP, která je vrácena v odpovědi back-end.
-* **{backend.response.statusReason}** : Frázi důvodu protokolu HTTP, která je vrácena v odpovědi back-end.
-* **{backend.response.headers. \<HeaderName\>}**: hlavičku, který může číst z back-end odpovědi. Nahraďte *\<HeaderName\>* s názvem hlavičky, která si chcete přečíst. Pokud hlavička není zahrnut v odpovědi, bude hodnota prázdný řetězec.
+* **{backend.response.statusCode}** : Stavový kód HTTP vrácená v odpovědi back-end.
+* **{backend.response.statusReason}** : HTTP odůvodnění vrácená v odpovědi back-end.
+* **{backend.response.headers. \<HeaderName\>}**: záhlaví, který může číst z odpovědi back-end. Nahraďte *\<HeaderName\>* s názvem záhlaví chcete číst. Pokud hlavičce nejsou zahrnuty v odpovědi, hodnota bude prázdný řetězec.
 
-### <a name="use-appsettings"></a>Odkaz nastavení aplikace
+### <a name="use-appsettings"></a>Nastavení odkazu na aplikaci
 
-Můžete taky odkazovat [nastavení aplikace, které jsou definovány pro funkce aplikace](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings#develop) tím, že název nastavení znaky procenta (%).
+Je také možné odkazovat [definované pro aplikaci function app nastavení aplikace](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings#develop) tím, že název nastavení znaky procenta (%).
 
-Například adresu URL back-end z *https://%ORDER_PROCESSING_HOST%/api/orders* by měla mít "% ORDER_PROCESSING_HOST %" nahrazeno hodnotou ORDER_PROCESSING_HOST nastavení.
+Například adresu URL back-end z *https://%ORDER_PROCESSING_HOST%/api/orders* musela "ORDER_PROCESSING_HOST %" nahrazeno hodnotou ORDER_PROCESSING_HOST nastavení.
 
 > [!TIP] 
-> Použít nastavení aplikace pro hostitele back-end, když máte více nasazení nebo testovací prostředí. Tímto způsobem můžete zajistit, aby vždy mluvení do správné back-end pro prostředí.
+> Použít nastavení aplikace pro back-end hostitele, pokud máte více nasazení nebo testovací prostředí. Díky tomu, abyste měli jistotu, že vždy mluvíme do správné back endu pro příslušné prostředí.
 
-## <a name="debugProxies"></a>Řešení potíží s proxy
+## <a name="debugProxies"></a>Poradce při potížích s proxy servery
 
-Přidáním příznak `"debug":true` na jakýkoli proxy server v vaší `proxies.json` se povolit protokolování ladění. Protokoly se ukládají do `D:\home\LogFiles\Application\Proxies\DetailedTrace` a přístupné prostřednictvím nástroje pokročilé (kudu). Všechny odpovědi protokolu HTTP bude také obsahovat `Proxy-Trace-Location` záhlaví s adresou URL pro přístup k souboru protokolu.
+Přidáním příznak `"debug":true` na jakýkoli proxy server ve vaší `proxies.json` vám umožní povolit protokolování ladění. Protokoly se ukládají v `D:\home\LogFiles\Application\Proxies\DetailedTrace` a přístupné přes Rozšířené nástroje (kudu). Bude také obsahovat žádné odpovědi protokolu HTTP `Proxy-Trace-Location` záhlaví s adresou URL pro přístup k souboru protokolu.
 
-Proxy server ze strany klienta můžete ladit přidáním `Proxy-Trace-Enabled` záhlaví nastavit na `true`. Také se protokolu trasování do systému souborů a vrátí adresu URL trasování jako hlavičku v odpovědi.
+Můžete ladit proxy ze strany klienta tak, že přidáte `Proxy-Trace-Enabled` záhlaví nastavena na `true`. Také se protokolu trasování do systému souborů a vrátí adresu URL pro trasovacího jako záhlaví v odpovědi.
 
-### <a name="block-proxy-traces"></a>Trasování proxy bloku
+### <a name="block-proxy-traces"></a>Blokovat proxy trasování
 
-Z bezpečnostních důvodů nemusíte chtít kdokoli volání služby ke generování trasování. Nebudou mít přístup k obsahu trasování bez své přihlašovací údaje, ale generování trasování spotřebovává prostředky a udává, že používáte funkce proxy.
+Z bezpečnostních důvodů nechcete umožnit všem volání služby pro generování trasování. Nebudou mít přístup k obsahu trasování bez své přihlašovací údaje, ale generuje se trasování využívá prostředky a uvádí, že používáte proxy serverů funkcí.
 
-Zcela zakázat trasování přidáním `"debug":false` žádné konkrétní server proxy v vaší `proxies.json`.
+Úplně zakázat trasování tak, že přidáte `"debug":false` žádné konkrétní proxy serveru ve vaší `proxies.json`.
 
 ## <a name="advanced-configuration"></a>Pokročilá konfigurace
 
-Proxy servery, které nakonfigurujete jsou uložené v *proxies.json* souboru, který se nachází v kořenovém adresáři aplikace funkce. Můžete ručně upravit tento soubor a nasadit jako součást aplikace, když použijete některou z [metody nasazení](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment) této funkce podporuje. 
+Proxy servery, které nakonfigurujete jsou uložené v *proxies.json* soubor, který je umístěn v kořenovém adresáři aplikace funkce. Můžete ručně upravit tento soubor a nasadit ho jako součást vaší aplikace, když použijete některou z [metody nasazení](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment) této funkce podporuje. 
 
 > [!TIP] 
-> Pokud jste nenastavili jednu z metod nasazení, můžete také pracovat *proxies.json* souboru na portálu. Přejděte do funkce aplikace, vyberte **funkce**a potom vyberte **App Service Editor**. Díky tomu můžete zobrazit celý soubor strukturu funkce aplikace a proveďte změny.
+> Pokud jste nenastavili jedné z metod nasazení, můžete také pracovat s *proxies.json* souboru na portálu. Přejděte do aplikace function app, vyberte **funkce platformy**a pak vyberte **App Service Editor**. Díky tomu můžete zobrazit celý soubor strukturu vaší aplikace function App a pak proveďte změny.
 
-*Proxies.JSON* je definovaný objekt proxy, který se skládá z pojmenované proxy serverů a jejich definice. Případně, pokud vaše editor podporuje, můžete odkazovat [schématu JSON](http://json.schemastore.org/proxies) pro doplňování kódu. Příklad souboru může vypadat následovně:
+*Soubor Proxies.JSON* je definován objekt proxy, který se skládá z pojmenované proxy serverů a jejich definice. Případně, pokud editor podporuje, můžete odkazovat [schématu JSON](http://json.schemastore.org/proxies) pro dokončování kódu. Příklad souboru může vypadat nějak takto:
 
 ```json
 {
@@ -141,21 +137,21 @@ Proxy servery, které nakonfigurujete jsou uložené v *proxies.json* souboru, k
 }
 ```
 
-Každý proxy má popisný název, například *proxy1* v předchozím příkladu. Objekt odpovídající definice proxy serveru je definováno následující vlastnosti:
+Každý proxy má popisný název, například *proxy1* v předchozím příkladu. Odpovídající objekt definice proxy serveru je určené následující vlastnosti:
 
-* **matchCondition**: požadované – objekt definování požadavků, které aktivace provádění tento proxy server. Obsahuje dvě vlastnosti, které jsou sdíleny s [aktivace protokolu HTTP]:
-    * _metody_: metody HTTP, které proxy serveru reaguje na pole. Pokud není zadaný, proxy server odpoví na všechny metody HTTP na trasy.
-    * _trasy_: požadované – definuje šablonu trasy řízení, které adresy URL žádosti proxy odpoví. Na rozdíl od v aktivační události protokolu HTTP, není žádná výchozí hodnota.
-* **backendUri**: adresa URL back-end prostředku, na kterou by měla být žádost směrovány přes proxy server. Tato hodnota může odkazovat nastavení aplikace a parametry z původního požadavku klienta. Pokud tuto vlastnost nezadáte, odpoví Azure Functions HTTP 200 OK.
-* **requestOverrides**: objekt, který definuje transformace na požadavek back-end. V tématu [definovat objekt requestOverrides].
-* **responseOverrides**: objekt, který definuje transformace na odpověď klienta. V tématu [definovat objekt responseOverrides].
+* **matchCondition**: vyžaduje--objekt definující požadavků, které aktivují provádění tento proxy server. Obsahuje dvě vlastnosti, které jsou sdíleny s [Aktivační události HTTP]:
+    * _metody_: pole metod HTTP, které odpovídá proxy serveru. Pokud se nezadá, proxy serveru reaguje na všechny metody HTTP na trasy.
+    * _trasa_: vyžaduje--definuje šablonu trasy, řízení, které žádosti adresy URL vašeho proxy serveru reaguje na. Na rozdíl od v aktivační události HTTP, není žádná výchozí hodnota.
+* **backendUri**: adresa URL back-end prostředku, ke kterému by měl být požadavek směrovány přes proxy server. Tato hodnota může odkazovat nastavení aplikace a parametry z původního požadavku klienta. Pokud tato vlastnost není zahrnutý, Azure Functions odpoví HTTP 200 OK.
+* **requestOverrides**: objekt, který definuje transformaci na požadavek back-end. Zobrazit [Definování requestOverrides objektu].
+* **responseOverrides**: objekt, který definuje transformaci na odpověď klienta. Zobrazit [Definování responseOverrides objektu].
 
 > [!NOTE] 
-> *Trasy* vlastnost v Azure funkce proxy nectí *routePrefix* vlastnost konfigurace hostitele aplikaci funkce. Pokud chcete zahrnout, jako předponu `/api`, musí být zahrnut v *trasy* vlastnost.
+> *Trasy* nerespektuje vlastnost v proxy služby Azure Functions *routePrefix* vlastnost konfigurace hostitele aplikace Function App. Pokud chcete například zahrnout předponu `/api`, musí být zahrnut v *trasy* vlastnost.
 
-### <a name="disableProxies"></a>Zakázat jednotlivé servery proxy
+### <a name="disableProxies"></a>Zakázat jednotlivé proxy
 
-Můžete zakázat jednotlivé proxy přidáním `"disabled": true` k proxy serveru v `proxies.json` souboru. To způsobí, že všechny žádosti, které splňuje matchCondidtion vrátit 404.
+Jednotlivé proxy můžete zakázat přidáním `"disabled": true` k proxy serveru v `proxies.json` souboru. To způsobí, že všechny žádosti matchCondidtion schůzku vrátit kód 404.
 ```json
 {
     "$schema": "http://json.schemastore.org/proxies",
@@ -171,17 +167,17 @@ Můžete zakázat jednotlivé proxy přidáním `"disabled": true` k proxy serve
 }
 ```
 
-### <a name="requestOverrides"></a>Definování objekt requestOverrides
+### <a name="requestOverrides"></a>Definování requestOverrides objektu
 
-Objekt requestOverrides definuje změny provedené na žádost o při volání prostředků back-end. Objekt je definováno následující vlastnosti:
+Objekt requestOverrides definuje změny provedené na požadavek při volání na prostředek back-end. Objekt je definován následující vlastnosti:
 
-* **backend.Request.Method**: Metoda protokolu HTTP, který se používá k volání back-end.
-* **backend.Request.QueryString. \<ParameterName\>**: parametr řetězce dotazu, který je možné nastavit pro volání back-end. Nahraďte *\<ParameterName\>* s názvem parametr, který chcete nastavit. Pokud je zadán prázdný řetězec, není parametr součástí požadavek back-end.
-* **backend.Request.Headers. \<HeaderName\>**: hlavičku, která se dá nastavit pro volání back-end. Nahraďte *\<HeaderName\>* s názvem záhlaví, který chcete nastavit. Pokud zadáte prázdný řetězec, není k dispozici hlavičky v požadavku back-end.
+* **backend.Request.Method**: Metoda HTTP, která slouží k volání back endu.
+* **backend.Request.QueryString. \<ParameterName\>**: parametru řetězce dotazu, který lze nastavit pro volání do back endu. Nahraďte *\<ParameterName\>* s názvem parametru, který chcete nastavit. Pokud je zadán prázdný řetězec, parametr není zahrnutý v požadavku back-end.
+* **backend.Request.Headers. \<HeaderName\>**: záhlaví, které lze nastavit pro volání do back endu. Nahraďte *\<HeaderName\>* s názvem záhlaví, který chcete nastavit. Pokud zadáte prázdný řetězec, záhlaví není zahrnutý v požadavku back-end.
 
-Hodnoty můžete odkazovat nastavení aplikace a parametry z původního požadavku klienta.
+Hodnoty můžete odkazovat na parametry a nastavení aplikace z původního požadavku klienta.
 
-Příklad konfigurace může vypadat následovně:
+Příklad konfigurace může vypadat nějak takto:
 
 ```json
 {
@@ -202,18 +198,18 @@ Příklad konfigurace může vypadat následovně:
 }
 ```
 
-### <a name="responseOverrides"></a>Definování objekt responseOverrides
+### <a name="responseOverrides"></a>Definování responseOverrides objektu
 
-Objekt requestOverrides definuje změny provedené v odpovědi, který je předán zpět do klienta. Objekt je definováno následující vlastnosti:
+Objekt requestOverrides definuje změny provedené v odpovědi, který je předán zpět do klienta. Objekt je definován následující vlastnosti:
 
-* **response.statusCode**: stavový kód protokolu HTTP má být vrácen do klienta.
-* **response.statusReason**: frázi důvodu protokolu HTTP má být vrácen do klienta.
-* **Response.body**: řetězcovou reprezentaci těla má být vrácen do klienta.
-* **Response.Headers. \<HeaderName\>**: hlavičku, která se dá nastavit pro odpověď klientovi. Nahraďte *\<HeaderName\>* s názvem záhlaví, který chcete nastavit. Pokud zadáte prázdný řetězec, záhlaví není zahrnutý v odpovědi.
+* **response.statusCode**: stavový kód HTTP má být vrácena klientovi.
+* **response.statusReason**: odůvodnění HTTP má být vrácena klientovi.
+* **Response.body**: řetězcová reprezentace abych mohl být vrácen do klienta.
+* **Response.Headers. \<HeaderName\>**: záhlaví, které lze nastavit pro odpověď klientovi. Nahraďte *\<HeaderName\>* s názvem záhlaví, který chcete nastavit. Pokud zadáte prázdný řetězec, záhlaví není zahrnutý v odpovědi.
 
-Hodnoty můžete odkazovat nastavení aplikace, parametry z původního požadavku klienta a parametry z back-end odpovědi.
+Hodnoty, se může odkazovat na nastavení aplikace, parametry z původního požadavku klienta a parametry z odpovědi back-end.
 
-Příklad konfigurace může vypadat následovně:
+Příklad konfigurace může vypadat nějak takto:
 
 ```json
 {
@@ -233,15 +229,15 @@ Příklad konfigurace může vypadat následovně:
 }
 ```
 > [!NOTE] 
-> V tomto příkladu text odpovědi nastavena přímo, takže ne `backendUri` vlastnost je vyžadována. Příklad ukazuje, jak je možné použít Azure funkce proxy pro mocking rozhraní API.
+> V tomto příkladu tělo odpovědi nastavena přímo, takže ne `backendUri` vlastnost je potřeba. Příklad ukazuje, jak můžete použít proxy služby Azure Functions pro vytvoření modelu rozhraní API.
 
-[portál Azure]: https://portal.azure.com
-[aktivace protokolu HTTP]: https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook#http-trigger
+[Azure Portal]: https://portal.azure.com
+[Aktivační události HTTP]: https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook#http-trigger
 [Modify the back-end request]: #modify-backend-request
 [Modify the response]: #modify-response
-[definovat objekt requestOverrides]: #requestOverrides
-[definovat objekt responseOverrides]: #responseOverrides
-[nastavení aplikace]: #use-appsettings
-[použijte proměnné]: #using-variables
+[Definování requestOverrides objektu]: #requestOverrides
+[Definování responseOverrides objektu]: #responseOverrides
+[Nastavení aplikace]: #use-appsettings
+[Použití proměnných]: #using-variables
 [parametry z původního požadavku klienta]: #request-parameters
-[parametry z back-end odpovědi]: #response-parameters
+[parametry z odpovědi back-end]: #response-parameters

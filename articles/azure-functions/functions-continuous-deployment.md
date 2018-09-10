@@ -1,153 +1,149 @@
 ---
-title: Průběžné nasazování pro Azure Functions | Microsoft Docs
-description: Průběžné nasazování vlastnosti služby Azure App Service použijte k publikování Azure Functions.
+title: Průběžné nasazování pro službu Azure Functions | Dokumentace Microsoftu
+description: Průběžné nasazování zařízení služby Azure App Service použijte k publikování Azure Functions.
 services: functions
 documentationcenter: na
 author: ggailey777
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 ms.assetid: 361daf37-598c-4703-8d78-c77dbef91643
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
+ms.topic: conceptual
 ms.date: 09/25/2016
 ms.author: glenga
-ms.openlocfilehash: db10cd957f4dc59f787e2ac625355a96c888356e
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 4561b343fa15346388572a70616840be0dd06679
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34735699"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44095483"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Průběžné nasazování se službou Azure Functions
-Azure Functions usnadňuje nasazení funkce aplikace pomocí průběžnou integraci služby App Service. Funkce se integruje s BitBucket, Dropbox, Githubu a Visual Studio Team Services (VSTS). To umožňuje pracovní kde kód funkce aktualizace provedené pomocí jedné z těchto integrovaných služeb aktivační událost nasazení do Azure. Pokud začínáte na Azure Functions, začněte s [přehled Azure Functions](functions-overview.md).
+Služba Azure Functions umožňuje snadno nasadit aplikaci function app používáte průběžnou integraci služby App Service. Functions se integruje s BitBucket, Dropbox, GitHub a Visual Studio Team Services (VSTS). To umožňuje pracovní postupy s kde kód funkce aktualizace provedené pomocí jedné z těchto integrovaných služeb aktivační události nasazení do Azure. Pokud jste ještě do služby Azure Functions, začněte s [přehled Azure Functions](functions-overview.md).
 
-Průběžné nasazování je skvělou možností pro projekty, u kterých se integruje více příspěvků nebo u kterých integrace probíhá často. To také umožňuje udržovat zdrojového kódu na váš kód funkce. Následující zdroje nasazení jsou aktuálně podporovány:
+Průběžné nasazování je skvělou možností pro projekty, u kterých se integruje více příspěvků nebo u kterých integrace probíhá často. Můžete ho taky udržovat správy zdrojového kódu na kód vaší funkce. Aktuálně jsou podporovány následující zdroje nasazení:
 
 * [Bitbucket](https://bitbucket.org/)
 * [Dropbox](https://www.dropbox.com/)
-* Externího úložiště (Git nebo Mercurial)
+* Externí úložiště (Git nebo Mercurial)
 * [Místní úložiště Git](../app-service/app-service-deploy-local-git.md)
 * [GitHub](https://github.com)
 * [OneDrive](https://onedrive.live.com/)
 * [Visual Studio Team Services](https://www.visualstudio.com/team-services/)
 
-Nasazení jsou nakonfigurované na základě aplikací na funkce. Po povolení průběžné nasazování přístup ke kódu funkce portálu je nastavena na *jen pro čtení*.
+Nasazení se konfigurují na základě jednotlivých funkcích aplikace. Po povolení průběžného nasazování přístup ke kódu funkce na portálu je nastavena na *jen pro čtení*.
 
-## <a name="continuous-deployment-requirements"></a>Průběžné nasazování požadavky
+## <a name="continuous-deployment-requirements"></a>Požadavky na průběžné nasazování
 
-Váš zdroj nasazení nakonfigurované a váš kód funkce musí mít v zdroj nasazení před nastavit průběžné nasazování. V nasazení aplikace danou funkci jednotlivé funkce žije v podadresáři s názvem, kde název adresáře je název funkce.  
+Ve zdroji nasazení před můžete nastavit průběžné nasazování musí mít zdroj nasazení nakonfigurované a kód služby functions. V nasazení aplikace s danou funkci jednotlivých funkcí se nachází v podadresáři s názvem, kde název adresáře je název funkce.  
 
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
 
-Abyste mohli nasadit ze služby VSTS, je nutné nejprve propojit svůj účet služby VSTS s předplatným Azure. Další informace najdete v tématu [nastavit fakturace pro váš účet služby VSTS](https://docs.microsoft.com/vsts/billing/set-up-billing-for-your-account-vs?view=vsts#set-up-billing-via-the-azure-portal).
+Aby bylo možné nasadit z VSTS, musíte si nejdříve propojit svůj účet VSTS ve vašem předplatném Azure. Další informace najdete v tématu [nastavte fakturaci pro svůj účet VSTS](https://docs.microsoft.com/vsts/billing/set-up-billing-for-your-account-vs?view=vsts#set-up-billing-via-the-azure-portal).
 
 ## <a name="set-up-continuous-deployment"></a>Nastavení nepřetržitého nasazování
-Pomocí tohoto postupu ke konfiguraci průběžné nasazování pro existující aplikaci funkce. Tyto kroky ukazují integrace s úložišti GitHub, ale podobným způsobem platí pro Visual Studio Team Services nebo jiné služby pro nasazení.
+Pomocí tohoto postupu konfigurace průběžného nasazování pro existující aplikaci function app. Tyto kroky ukazují, integrace s úložišti GitHub, ale podobný postup platí pro Visual Studio Team Services nebo jiné služby pro nasazení.
 
-1. V aplikaci funkce v [portál Azure](https://portal.azure.com), klikněte na tlačítko **funkce** a **možnosti nasazení**. 
+1. V aplikaci function app v [webu Azure portal](https://portal.azure.com), klikněte na tlačítko **funkce platformy** a **možnosti nasazení**. 
    
-    ![Nastavit průběžné nasazování.](./media/functions-continuous-deployment/setup-deployment.png)
+    ![Průběžné nasazování](./media/functions-continuous-deployment/setup-deployment.png)
  
-2. Potom v **nasazení** okně klikněte na tlačítko **instalační program**.
+2. Pak v **nasazení** okně klikněte na **nastavení**.
  
-    ![Nastavit průběžné nasazování.](./media/functions-continuous-deployment/setup-deployment-1.png)
+    ![Průběžné nasazování](./media/functions-continuous-deployment/setup-deployment-1.png)
    
-2. V **zdroj nasazení** okně klikněte na tlačítko **vybrat zdroj**, pak zadejte informace pro váš zdroj vybraný nasazení a klikněte na **OK**.
+2. V **zdroj nasazení** okna, klikněte na tlačítko **zvolit zdroj**, potom vyplňte informace pro vybrané nasazení zdroj a klikněte na tlačítko **OK**.
    
-    ![Vyberte zdroj nasazení.](./media/functions-continuous-deployment/choose-deployment-source.png)
+    ![Vyberte zdroj nasazení](./media/functions-continuous-deployment/choose-deployment-source.png)
 
-Po dokončení konfigurace průběžné nasazování, všechny změny souboru ve zdroji nasazení se zkopírují do aplikaci funkce a aktivaci nasazení plnou verzi webu. Když jsou aktualizovány soubory ve zdrojovém se je znovu nasadil webu.
+Po dokončení konfigurace průběžného nasazování, všechny změny souborů ve zdroji nasazení se zkopírují do aplikace function app a aktivuje nasazení plnou verzi webu. Při aktualizaci souborů ve zdroji se je znovu nasadil Web.
 
 ## <a name="deployment-options"></a>Možnosti nasazení
 
-Tady jsou některé typické nasazení scénáře:
+Následují některé typické nasazení scénáře:
 
 - [Vytvořit pracovní nasazení](#staging)
-- [Průběžné nasazování budou přesunuty existující funkce](#existing)
+- [Přesunout stávající funkce pro průběžné nasazování](#existing)
 
 <a name="staging"></a>
 ### <a name="create-a-staging-deployment"></a>Vytvořit pracovní nasazení
 
-Funkce aplikace ještě nepodporuje nasazovací sloty. Samostatná pracovní a provozní nasazení však můžete spravovat pomocí nepřetržité integrace.
+Aplikací Function App zatím nepodporuje sloty nasazení. Samostatná pracovní a provozní nasazení však můžete spravovat pomocí nepřetržité integrace.
 
-Postup konfigurace a práce s pracovní nasazení se obecně vypadat třeba takto:
+Postup konfigurace a práce s pracovní nasazení vypadá obvykle takto:
 
-1. Vaše předplatné, jeden pro kód produkční a jeden pro pracovní vytvořte dvě funkce aplikace. 
+1. Do vašeho předplatného, jeden pro produkční kód a jeden pro pracovní vytvořte dvě aplikace function App. 
 
-2. Pokud jste ještě nemáte, vytvořte zdroj nasazení. Tento příklad používá [GitHub].
+2. Pokud ho ještě nemáte, vytvořte zdroj nasazení. Tento příklad používá [GitHub].
 
-3. Pro vaše produkční funkce aplikace podle předchozích dokončení kroků **nastavit průběžné nasazování** a nastavit nasazení větve do hlavní větve ve vašem úložišti GitHub.
+3. Pro vaše produkční aplikace function app, dokončení podle předchozích kroků **nastavení průběžného nasazování** a nastavit nasazení větve do hlavní větve z vašeho úložiště GitHub.
    
-    ![Vyberte větev nasazení](./media/functions-continuous-deployment/choose-deployment-branch.png)
+    ![Zvolit větev nasazení](./media/functions-continuous-deployment/choose-deployment-branch.png)
 
-4. Tento krok opakujte pro pracovní funkce aplikace, ale místo toho vyberte pracovní větev ve vašem úložišti GitHub. Pokud vaše zdrojová nasazení nepodporuje vytvoření větve, použijte jinou složku.
+4. Tento krok opakujte pro pracovní aplikace function app, ale místo toho vyberte pracovní větev v úložišti GitHub. Pokud váš zdroj nasazení nepodporuje, větvení, použijte jinou složku.
     
 5. Provést aktualizace kódu v pracovní větev nebo složku a potom ověřte, že tyto změny se projeví v pracovní nasazení.
 
-6. Po testování sloučit změny z pracovní větve do hlavní větve. Tato sloučení aktivuje nasazení na produkční aplikaci funkce. Pokud vaše zdrojová nasazení nepodporuje větví, přepište soubory ve složce produkční soubory z pracovní složky.
+6. Po otestování sloučit změny z pracovní větve do hlavní větve. Nasazení do produkčního prostředí aplikace function app se aktivuje toto sloučení. Pokud váš zdroj nasazení nepodporuje větví, přepište soubory ve složce produkčního prostředí se soubory z pracovní složky.
 
 <a name="existing"></a>
-### <a name="move-existing-functions-to-continuous-deployment"></a>Průběžné nasazování budou přesunuty existující funkce
-Pokud máte existující funkce, které jste vytvořili a udržuje na portálu, budete muset stáhnout existující soubory s kódem funkce pomocí protokolu FTP, nebo místní úložiště Git předtím, než můžete nastavit průběžné nasazování, jak je popsáno výše. To provedete v nastavení služby App Service pro vaši aplikaci funkce. Po stažení jsou vaše soubory, můžete je načíst do zdroje zvolené průběžné nasazování.
+### <a name="move-existing-functions-to-continuous-deployment"></a>Přesunout stávající funkce pro průběžné nasazování
+Pokud máte existující funkce, které jste vytvořili a udržuje na portálu, budete muset stáhnout existující soubory kódu funkce pomocí FTP nebo místní úložiště Git, teprve potom můžete nastavit průběžné nasazování, jak je popsáno výše. Můžete to provést v nastavení služby App Service pro vaši aplikaci function app. Po stažení souborů, můžete je načíst zdroj zvolené průběžné nasazování.
 
 > [!NOTE]
-> Po dokončení konfigurace průběžnou integraci, jste už nebude moci upravit zdrojové soubory vašeho funkce portálu.
+> Po dokončení konfigurace průběžné integrace, je již nebude moci upravit zdrojových souborů na portálu Functions.
 
-- [Postupy: konfigurace přihlašovací údaje nasazení.](#credentials)
-- [Postupy: stažení souborů pomocí protokolu FTP](#downftp)
-- [Postupy: stahovat soubory s použitím místní úložiště Git](#downgit)
+- [Postupy: Konfigurace přihlašovacích údajů nasazení](#credentials)
+- [Postupy: stahování souborů přes FTP](#downftp)
+- [Postupy: stahování souborů pomocí místního úložiště Git](#downgit)
 
 <a name="credentials"></a>
-#### <a name="how-to-configure-deployment-credentials"></a>Postupy: konfigurace přihlašovací údaje nasazení.
-Než si můžete stáhnout soubory z funkce aplikace pomocí protokol FTP nebo místní úložiště Git, je nutné nakonfigurovat vaše přihlašovací údaje pro přístup k webu. Přihlašovací údaje jsou nastavené na úrovni aplikace funkce. Chcete-li nastavit přihlašovací údaje pro nasazení na portálu Azure pomocí následujících kroků:
+#### <a name="how-to-configure-deployment-credentials"></a>Postupy: Konfigurace přihlašovacích údajů nasazení
+Předtím, než může stáhnout soubory z vaší aplikace function app s FTP nebo místní úložiště Git, je nutné nakonfigurovat přihlašovací údaje pro přístup k webu. Přihlašovací údaje jsou nastavené na úrovni aplikace funkce. Chcete-li nastavit přihlašovací údaje pro nasazení na webu Azure Portal postupujte následovně:
 
-1. V aplikaci funkce v [portál Azure](https://portal.azure.com), klikněte na tlačítko **funkce** a **přihlašovací údaje nasazení**.
+1. V aplikaci function app v [webu Azure portal](https://portal.azure.com), klikněte na tlačítko **funkce platformy** a **přihlašovací údaje pro nasazení**.
    
-    ![Nastavte přihlašovací údaje pro místní nasazení](./media/functions-continuous-deployment/setup-deployment-credentials.png)
+    ![Přihlašovací údaje pro místní nasazení](./media/functions-continuous-deployment/setup-deployment-credentials.png)
 
-2. Zadejte uživatelské jméno a heslo a pak klikněte na **Uložit**. Nyní můžete tyto přihlašovací údaje pro přístup k vaší aplikaci funkce z protokol FTP nebo integrované úložiště Git.
+2. Zadejte uživatelské jméno a heslo a potom klikněte na **Uložit**. Nyní můžete tyto přihlašovací údaje pro přístup k aplikaci function app z FTP nebo integrované úložiště Git.
 
 <a name="downftp"></a>
-#### <a name="how-to-download-files-using-ftp"></a>Postupy: stažení souborů pomocí protokolu FTP
+#### <a name="how-to-download-files-using-ftp"></a>Postupy: stahování souborů přes FTP
 
-1. V aplikaci funkce v [portál Azure](https://portal.azure.com), klikněte na tlačítko **funkce** a **vlastnosti**, zkopírujte hodnoty **uživatel FTP/nasazení**, **název hostitele FTP**, a **FTPS název hostitele**.  
+1. V aplikaci function app v [webu Azure portal](https://portal.azure.com), klikněte na tlačítko **funkce platformy** a **vlastnosti**, zkopírujte hodnoty **uživatel FTP/nasazení**, **Název hostitele FTP**, a **název hostitele FTPS**.  
 
-    **Uživatel FTP/nasazení** musí být zadané jako zobrazí na portálu, včetně názvu aplikace, zajistit správné kontextu pro FTP server.
+    **Uživatel FTP/nasazení** musí být zadán jak se zobrazuje na portálu, včetně názvu aplikace k zajištění správného kontextu pro FTP server.
    
-    ![Získat informace o nasazení](./media/functions-continuous-deployment/get-deployment-credentials.png)
+    ![Informace o nasazení](./media/functions-continuous-deployment/get-deployment-credentials.png)
 
-2. Z vašeho klienta FTP, použijte informace o připojení jste shromáždili pro připojení k vaší aplikace a stáhnout zdrojové soubory pro funkce.
+2. Ze svého klienta FTP, použijte informace o připojení jste shromáždili pro připojení k vaší aplikace a stáhněte zdrojové soubory pro vaše funkce.
 
 <a name="downgit"></a>
-#### <a name="how-to-download-files-using-a-local-git-repository"></a>Postupy: stahovat soubory s použitím místní úložiště Git
+#### <a name="how-to-download-files-using-a-local-git-repository"></a>Postupy: stahování souborů pomocí místního úložiště Git
 
-1. V aplikaci funkce v [portál Azure](https://portal.azure.com), klikněte na tlačítko **funkce** a **možnosti nasazení**. 
+1. V aplikaci function app v [webu Azure portal](https://portal.azure.com), klikněte na tlačítko **funkce platformy** a **možnosti nasazení**. 
    
-    ![Nastavit průběžné nasazování.](./media/functions-continuous-deployment/setup-deployment.png)
+    ![Průběžné nasazování](./media/functions-continuous-deployment/setup-deployment.png)
  
-2. Potom v **nasazení** okně klikněte na tlačítko **instalační program**.
+2. Pak v **nasazení** okně klikněte na **nastavení**.
  
-    ![Nastavit průběžné nasazování.](./media/functions-continuous-deployment/setup-deployment-1.png)
+    ![Průběžné nasazování](./media/functions-continuous-deployment/setup-deployment-1.png)
    
-2. V **zdroj nasazení** okně klikněte na tlačítko **úložiště místní Git** a pak klikněte na **OK**.
+2. V **zdroj nasazení** okna, klikněte na tlačítko **místního úložiště Git** a potom klikněte na tlačítko **OK**.
 
-3. V **funkce**, klikněte na tlačítko **vlastnosti** a poznamenejte si hodnotu adresy URL Git. 
+3. V **funkce platformy**, klikněte na tlačítko **vlastnosti** a poznamenejte si hodnotu adresy URL pro Git. 
    
-    ![Nastavit průběžné nasazování.](./media/functions-continuous-deployment/get-local-git-deployment-url.png)
+    ![Průběžné nasazování](./media/functions-continuous-deployment/get-local-git-deployment-url.png)
 
-4. Naklonujte úložiště na místním počítači pomocí Git využívající příkazový řádek nebo vaše oblíbené nástroje Git. Příkaz Git clone vypadá takto:
+4. Naklonujte úložiště na místním počítači pomocí s ohledem na Git příkazového řádku nebo vašeho oblíbeného nástroje Git. Klonovací příkaz Git vypadá takto:
    
         git clone https://username@my-function-app.scm.azurewebsites.net:443/my-function-app.git
 
-5. Načítání souborů z aplikace funkce klonu v místním počítači, jako v následujícím příkladu:
+5. Načtení souborů z aplikace function app klonu v místním počítači, jako v následujícím příkladu:
    
         git pull origin master
    
-    Pokud požadovaný, zadejte vaše [nakonfigurovat přihlašovací údaje nasazení](#credentials).  
+    Pokud o to požádá zadat vaše [nakonfigurované přihlašovací údaje pro nasazení](#credentials).  
 
 [GitHub]: https://github.com/
 

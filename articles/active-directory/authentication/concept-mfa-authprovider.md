@@ -5,23 +5,23 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 09/01/2018
+ms.date: 09/06/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: b601a3d23b23faa16925881a54e2ceba85c800f8
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 8e77a33667bd6794f667348958e0edb9c6a8fb0d
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669061"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44094973"
 ---
 # <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>Kdy použít poskytovatele Azure Multi-Factor Authentication
 
 Dvoustupňové ověřování je k dispozici ve výchozím nastavení pro globální správce, kteří mají uživatele služeb Azure Active Directory a Office 365. Pokud ale budete chtít využívat výhod [pokročilých funkcí](howto-mfa-mfasettings.md) měli byste si zakoupit plnou verzi Azure Multi-Factor Authentication (MFA).
 
-Poskytovatele Azure Multi-Factor Auth umožňuje využít výhod funkcí poskytovaných službou Azure Multi-Factor Authentication pro uživatele, kteří **nemají licence**. 
+Poskytovatele Azure Multi-Factor Auth umožňuje využít výhod funkcí poskytovaných službou Azure Multi-Factor Authentication pro uživatele, kteří **nemají licence**.
 
 Pokud máte licence, které pokrývají všechny uživatele ve vaší organizaci, pak nepotřebujete poskytovatele Azure Multi-Factor auth. Vytvoření poskytovatele ověřování Azure Multi-Factor Authentication, pouze v případě, že budete taky muset zadat dvoustupňové ověřování pro uživatele, kteří nemají licence.
 
@@ -36,41 +36,16 @@ Chcete-li stáhnout sadu SDK, vytvořte poskytovatele Azure Multi-Factor Auth i 
 
 ## <a name="what-is-an-mfa-provider"></a>Co je poskytovatel MFA?
 
-Pokud nemáte licence pro ověřování Azure Multi-Factor Authentication, můžete vytvořit poskytovatele ověřování a vyžadovat dvoustupňové ověřování pro vaše uživatele.
-
 Existují dva typy poskytovatelů ověřování, a rozdíl mezi nimi spočívá jak se vaše předplatné Azure účtuje. Možnost podle ověření zjišťuje počet ověření za měsíc v rámci vašeho tenanta. Tato možnost je vhodná, pokud máte řadu uživatelů, kteří se ověřují jenom občas. Možnost podle uživatelů zjišťuje počet jednotlivců za měsíc, kteří ve vašem tenantovi provedli dvoustupňové ověření. Tato možnost je vhodná, pokud máte uživatelé s licencemi, ale potřebujete rozšířit vícefaktorového ověřování pro další uživatele nad rámec licenčních omezení.
-
-## <a name="create-an-mfa-provider"></a>Vytvoření poskytovatele MFA
-
-Pomocí následujícího postupu vytvoříte poskytovatele služby Azure Multi-Factor Authentication na webu Azure Portal:
-
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) jako globální správce.
-2. Vyberte **Azure Active Directory** > **MFA Server** > **Poskytovatelé**.
-
-   ![Poskytovatelé][Providers]
-
-3. Vyberte **Přidat**.
-4. Vyplňte následující pole a pak vyberte **Přidat**.
-   - **Název** – Název poskytovatele.
-   - **Model použití** – Zvolte jednu ze dvou možností:
-      * Za ověření – nákupní model, který účtuje za ověření. Obvykle se používá pro scénáře, které používají Azure Multi-Factor Authentication v aplikaci zaměřené na spotřebitele.
-      * Pro povolené uživatele – nákupní model, který účtuje za povoleného uživatele. Obvykle se používá pro přístup zaměstnanců k aplikacím, například Office 365. Tuto možnost vyberte, pokud máte uživatele, kteří už mají licence na Azure MFA.
-   - **Předplatné** – Předplatné Azure, na které se budou účtovat aktivity dvoustupňového ověřování prostřednictvím poskytovatele.
-   - **Adresář** – Tenant služby Azure Active Directory, ke kterému je poskytovatel přidružený.
-      * K vytvoření poskytovatele nepotřebujete adresář Azure AD. Pokud plánujete stáhnout jenom Multi-Factor Authentication Server, ponechte toto pole prázdné.
-      * Poskytovatel musí být přidružený k adresáři Azure AD, aby mohl využívat výhod pokročilých funkcí.
-      * Ke každému adresáři Azure AD může být přidružený pouze jeden poskytovatel.
 
 ## <a name="manage-your-mfa-provider"></a>Správa poskytovatele MFA
 
-Po vytvoření poskytovatele MFA není možné změnit model použití (na povoleného uživatele nebo na ověření). Můžete však poskytovatele MFA odstranit a potom vytvořit nového s jiným modelem použití.
+Po vytvoření poskytovatele MFA není možné změnit model použití (na povoleného uživatele nebo na ověření).
 
-Pokud je aktuální poskytovatel Multi-Factor Auth přidružený k adresáři Azure AD (označovaný také jako tenant Azure AD), můžete poskytovatele MFA bezpečně odstranit a vytvořit nového, který je propojený se stejným tenantem Azure AD. Případně pokud jste zakoupili dostatek licencí pro pokrytí všech uživatelů s povoleným vícefaktorovým Ověřováním, můžete můžete poskytovatele MFA odstranit úplně.
+Pokud jste zakoupili dostatek licencí pro pokrytí všech uživatelů s povoleným vícefaktorovým Ověřováním, můžete poskytovatele MFA odstranit úplně.
 
-Pokud poskytovatel MFA není propojený s tenantem Azure AD nebo pokud propojujete poskytovatele MFA s jiným tenantem Azure AD, uživatelská nastavení a možnosti konfigurace se nepřenesou. Je také potřeba znovu aktivovat stávající Azure MFA Servery pomocí přihlašovacích údajů pro aktivaci vygenerovaných prostřednictvím nového poskytovatele MFA. Opětovná aktivace MFA serverů za účelem jejich propojení s novým poskytovatelem MFA nemá vliv, telefonního hovoru a textové zprávy ověřování, ale oznámení mobilní aplikace přestanou fungovat pro všechny uživatele do opětovné aktivace mobilní aplikace.
+Pokud poskytovatel MFA není propojený s tenantem Azure AD nebo pokud propojujete poskytovatele MFA s jiným tenantem Azure AD, uživatelská nastavení a možnosti konfigurace se nepřenesou. Stávající Azure MFA servery je také potřeba znovu aktivovat pomocí přihlašovacích údajů pro aktivaci vygenerovaných prostřednictvím poskytovatele MFA. Opětovná aktivace MFA serverů za účelem propojují se s poskytovatele MFA nebude mít vliv na telefonního hovoru a textové zprávy ověřování, ale oznámení mobilní aplikace přestanou fungovat pro všechny uživatele do opětovné aktivace mobilní aplikace.
 
 ## <a name="next-steps"></a>Další postup
 
 [Konfigurace nastavení služby Multi-Factor Authentication](howto-mfa-mfasettings.md)
-
-[Providers]: ./media/concept-mfa-authprovider/add-providers.png "Přidání poskytovatelů MFA"

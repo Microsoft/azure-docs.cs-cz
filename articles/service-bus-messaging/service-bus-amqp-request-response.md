@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/22/2018
 ms.author: spelluru
-ms.openlocfilehash: f5d5b8064821dfb1aa6d4e99d0152e364f9a83fe
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 0299b05517629740576c562effaa41658f28532f
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700514"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44163239"
 ---
 # <a name="amqp-10-in-microsoft-azure-service-bus-request-response-based-operations"></a>AMQP 1.0 ve službě Microsoft Azure Service Bus: operace založené na žádost odpověď
 
@@ -142,6 +142,10 @@ Zpráva požadavku musí obsahovat následující vlastnosti aplikace:
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |`lock-tokens`|pole identifikátoru uuid|Ano|Tokeny uzamčení zprávy k obnovení.|  
+
+> [!NOTE]
+> Jsou tokeny Zámek `DeliveryTag` vlastnost u přijaté zprávy. Podívejte se na následující příklad v [sady .NET SDK](https://github.com/Azure/azure-service-bus-dotnet/blob/6f144e91310dcc7bd37aba4e8aebd535d13fa31a/src/Microsoft.Azure.ServiceBus/Amqp/AmqpMessageConverter.cs#L336) načte tyto. Token, který může také zobrazit DeliveryAnnotations jako "x-opt zámek token" ale, to není zaručeno a `DeliveryTag` se bude upřednostňovat. 
+> 
   
 #### <a name="response"></a>Odpověď  
 

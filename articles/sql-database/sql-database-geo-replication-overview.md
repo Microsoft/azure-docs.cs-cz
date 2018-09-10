@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/24/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 71268c07f7e653e1f7cf545f373717fd2760fee9
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 026b9147bf6f0f5ab4732d1937bd61d803967854
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918231"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44159516"
 ---
 # <a name="overview-active-geo-replication-and-auto-failover-groups"></a>Přehled: Aktivní geografickou replikaci a automatické převzetí služeb při selhání skupiny
 
@@ -30,7 +30,7 @@ Aktivní geografická replikace je navržená jako řešení obchodní kontinuit
 > Aktivní geografická replikace není k dispozici ve spravované instanci.
 >  
 
-Automatické převzetí služeb při selhání skupiny je rozšířením aktivní geografickou replikaci. Je navržená ke správě převzetí služeb při selhání více sumultaneously geograficky replikované databáze pomocí aplikace iniciované převzetí služeb při selhání nebo delegováním převzetí služeb při selhání má být provedena po službu SQL Database, na základě uživatelem definované kritéria. Ten umožňuje automaticky obnovit více související databáze v sekundární oblasti po závažnému selhání nebo jiné neplánované události, jehož výsledkem úplné nebo částečné ztrátě dostupnosti služby SQL Database v primární oblasti. Kromě toho můžete použít čitelné sekundární databáze k přesměrování zpracování úlohy dotazu jen pro čtení. Protože-automatické převzetí služeb při selhání skupiny zahrnují více databází, musí být nakonfigurované tyto databáze na primárním serveru. Primární a sekundární servery pro databáze ve skupině převzetí služeb při selhání musí být ve stejném předplatném. Automatické převzetí služeb při selhání skupiny podporu replikace všech databází ve skupině jenom jednu sekundární server v jiné oblasti.
+Automatické převzetí služeb při selhání skupiny je rozšířením aktivní geografickou replikaci. Je navržená ke správě převzetí služeb při selhání několika databází geograficky replikovaného současně pomocí převzetí služeb při selhání aplikace zahájené nebo delegováním převzetí služeb při selhání má být provedena po službu SQL Database, na základě uživatelem definované kritéria. Ten umožňuje automaticky obnovit více související databáze v sekundární oblasti po závažnému selhání nebo jiné neplánované události, jehož výsledkem úplné nebo částečné ztrátě dostupnosti služby SQL Database v primární oblasti. Kromě toho můžete použít čitelné sekundární databáze k přesměrování zpracování úlohy dotazu jen pro čtení. Protože-automatické převzetí služeb při selhání skupiny zahrnují více databází, musí být nakonfigurované tyto databáze na primárním serveru. Primární a sekundární servery pro databáze ve skupině převzetí služeb při selhání musí být ve stejném předplatném. Automatické převzetí služeb při selhání skupiny podporu replikace všech databází ve skupině jenom jednu sekundární server v jiné oblasti.
 
 > [!NOTE]
 > Aktivní geografickou replikaci použijte, pokud požadujete více sekundárních replik.
