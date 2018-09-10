@@ -93,7 +93,7 @@ items:
         href: ../common/storage-auth-aad-rbac.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
       - name: Ověření z aplikace
         href: ../common/storage-auth-aad-app.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-      - name: Ověření z Identity spravované služby
+      - name: Ověřování pomocí spravovaných identit
         href: ../common/storage-auth-aad-msi.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
       - name: Použití identity Azure AD s CLI nebo PowerShellem
         href: ../common/storage-auth-aad-script.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -452,9 +452,9 @@ items:
       href: https://github.com/Azure/azure-storage-ruby
     - name: iOS
       href: https://github.com/Azure/azure-storage-ios
-ms.openlocfilehash: 7d2cb03a9334a7092af679ab114ec71ff9463671
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: dc0e516a59f550848e57fbef56f5346e065f90b1
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44022595"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44093375"

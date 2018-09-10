@@ -27,7 +27,7 @@ items:
     href: concept-authentication-methods.md
   - name: Konvergovaná registrace
     href: concept-registration-mfa-sspr-converged.md
-  - name: Samoobslužné resetování hesla
+  - name: Resetování hesla
     items:
     - name: Jak funguje resetování hesel
       href: concept-sspr-howitworks.md
@@ -47,7 +47,7 @@ items:
       href: concept-mfa-whichversion.md
     - name: Licencování uživatelů
       href: concept-mfa-licensing.md
-    - name: Vytvoření poskytovatele ověřování
+    - name: Správa poskytovatele ověřování
       href: concept-mfa-authprovider.md
     - name: Doprovodné materiály k zabezpečení
       href: multi-factor-authentication-security-best-practices.md
@@ -64,9 +64,9 @@ items:
   expanded: true
 - name: Návody
   items:
-  - name: Resetování hesla
+  - name: Samoobslužné resetování hesla
     items:
-    - name: Nasazení resetování hesel
+    - name: Nasazení samoobslužného resetování hesla
       href: howto-sspr-deployment.md
     - name: Předběžná registrace dat ověřování
       href: howto-sspr-authenticationdata.md
@@ -211,9 +211,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-active-directory
   - name: Videa
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
-ms.openlocfilehash: 39be14a49ecdf30d75cc49a37aa9fc7bc55304cc
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 83ad45c90c964df880c2b7fb79fcd3fdff214fbe
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43338941"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44091539"

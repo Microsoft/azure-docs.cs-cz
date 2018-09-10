@@ -16,14 +16,21 @@
 ### [Architektura sítě](hana-network-architecture.md)
 ### [Architektura úložiště](hana-storage-architecture.md)
 ### [Podporované scénáře HLI](hana-supported-scenario.md)
-## [Infrastruktura a možnosti připojení](hana-overview-infrastructure-connectivity.md)
-## [Instalace SAP HANA](hana-installation.md)
+## Infrastruktura a možnosti připojení
+### [Nasazení HLI](hana-overview-infrastructure-connectivity.md)
+### [Připojení virtuálních počítačů Azure k Velkým instancím HANA](hana-connect-azure-vm-large-instances.md)
+### [Připojení virtuální sítě k Velkým instancím HANA s využitím ExpressRoute](hana-connect-vnet-express-route.md)
+### [Další požadavky na síť](hana-additional-network-requirements.md)
+## Instalace SAP HANA
+### [Ověření konfigurace](hana-installation.md)
+### [Ukázková instalace HANA](hana-example-installation.md)
 ## [Vysoká dostupnost a zotavení po havárii](hana-overview-high-availability-disaster-recovery.md)
 ## [Řešení potíží a monitorování](troubleshooting-monitoring.md)
 ## Postup
 ### [Nastavení vysoké dostupnosti s využitím techniky STONITH](ha-setup-with-stonith.md)
 ### [Zálohování operačního systému pro SKU typu II](os-backup-type-ii-skus.md)
 ### [Upgrade operačního systému pro Velké instance HANA](os-upgrade-hana-large-instance.md)
+### [Nastavení serveru SMT pro SUSE Linux](hana-setup-smt.md)
 # SAP HANA ve službě Azure Virtual Machines
 ## [Instalace jedné instance SAP HANA](hana-get-started.md)
 ## [Průvodce nasazením S/4 HANA nebo BW/4 HANA SAP CAL](cal-s4h.md)

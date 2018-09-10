@@ -1,73 +1,84 @@
+items:
 - name: Dokumentace k rozhraní Text Analytics API
   href: index.yml
 - name: Přehled
   items:
-    - name: Co je rozhraní API pro analýzu textu?
-      href: overview.md
+  - name: Co je rozhraní API pro analýzu textu?
+    href: overview.md
 - name: Šablony Rychlý start
-  expanded: true
   items:
-    - name: 'C#'
-      href: quickstarts/csharp.md
-    - name: Přejít
-      href: quickstarts/go.md
-    - name: Java
-      href: quickstarts/java.md
-    - name: Node.js
-      href: quickstarts/nodejs.md
-    - name: PHP
-      href: quickstarts/php.md
-    - name: Python
-      href: quickstarts/python.md
-    - name: Ruby
-      href: quickstarts/ruby.md
+  - name: C#
+    href: quickstarts/csharp.md
+  - name: Přejít
+    href: quickstarts/go.md
+  - name: Java
+    href: quickstarts/java.md
+  - name: Node.js
+    href: quickstarts/nodejs.md
+  - name: PHP
+    href: quickstarts/php.md
+  - name: Python
+    href: quickstarts/python.md
+  - name: Ruby
+    href: quickstarts/ruby.md
+  expanded: true
 - name: Kurzy
   items:
-    - name: Analýza textu s využitím Power BI
-      href: Tutorials/tutorial-power-bi-key-phrases.md
-    - name: Analýza textu v Power Apps
-      href: 'https://powerapps.microsoft.com/tutorials/cognitive-services-api/'
+  - name: Analýza textu s využitím Power BI
+    href: Tutorials/tutorial-power-bi-key-phrases.md
+  - name: Analýza textu v Power Apps
+    href: https://powerapps.microsoft.com/tutorials/cognitive-services-api/
 - name: Návody
   items:
-    - name: Registrace
-      href: How-tos/text-analytics-how-to-signup.md
-    - name: Získání přístupového klíče
-      href: How-tos/text-analytics-how-to-access-key.md
-    - name: Volání rozhraní Text Analytics API
-      href: How-tos/text-analytics-how-to-call-api.md
-    - name: Zjištění jazyka
-      href: How-tos/text-analytics-how-to-language-detection.md
-    - name: Analýza mínění
-      href: How-tos/text-analytics-how-to-sentiment-analysis.md
-    - name: Extrakce klíčových frází
-      href: How-tos/text-analytics-how-to-keyword-extraction.md
-    - name: Rozpoznávání propojených entit
-      href: How-tos/text-analytics-how-to-entity-linking.md
-    - name: Práce se sadou Visual Studio
-      items:
-        - name: Použití připojené služby analýzy textu
-          href: vs-text-connected-service.md
+  - name: Registrace
+    href: How-tos/text-analytics-how-to-signup.md
+  - name: Získání přístupového klíče
+    href: How-tos/text-analytics-how-to-access-key.md
+  - name: Volání rozhraní Text Analytics API
+    href: How-tos/text-analytics-how-to-call-api.md
+  - name: Zjištění jazyka
+    href: How-tos/text-analytics-how-to-language-detection.md
+  - name: Analýza mínění
+    href: How-tos/text-analytics-how-to-sentiment-analysis.md
+  - name: Extrakce klíčových frází
+    href: How-tos/text-analytics-how-to-keyword-extraction.md
+  - name: Rozpoznávání propojených entit
+    href: How-tos/text-analytics-how-to-entity-linking.md
+  - name: Práce se sadou Visual Studio
+    items:
+    - name: Použití připojené služby analýzy textu
+      href: vs-text-connected-service.md
 - name: Referenční informace
   items:
-    - name: Rozhraní Text Analytics API
-      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7'
+  - name: Referenční informace k rozhraní příkazového řádku
+    href: https://docs.microsoft.com/en-us/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list
+  - name: PowerShell – reference
+    href: https://aka.ms/azure-powershell-cognitiveservices
+  - name: Rozhraní Text Analytics API
+    href: https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7
 - name: Zdroje a prostředky
   items:
-    - name: Externí obsah a obsah komunity
-      href: text-analytics-resource-external-community.md
-    - name: Nejčastější dotazy
-      href: text-analytics-resource-faq.md
-    - name: Ceny
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/'
-    - name: Regionální dostupnost
-      href: 'https://azure.microsoft.com/global-infrastructure/services/'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/text-analytics-api'
-    - name: Klíč předplatného
-      href: 'https://azure.microsoft.com/try/cognitive-services/?api=text-analytics'
-    - name: Podporované jazyky
-      href: text-analytics-supported-languages.md
-    - name: Vyzkoušejte si to!
-      href: 'https://azure.microsoft.com/services/cognitive-services/text-analytics/'
-    - name: UserVoice
-      href: 'https://cognitive.uservoice.com/forums/555922-text-analytics'
+  - name: Externí obsah a obsah komunity
+    href: text-analytics-resource-external-community.md
+  - name: Nejčastější dotazy
+    href: text-analytics-resource-faq.md
+  - name: Ceny
+    href: https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/
+  - name: Regionální dostupnost
+    href: https://azure.microsoft.com/global-infrastructure/services/
+  - name: Stack Overflow
+    href: https://stackoverflow.com/questions/tagged/text-analytics-api
+  - name: Klíč předplatného
+    href: https://azure.microsoft.com/try/cognitive-services/?api=text-analytics
+  - name: Podporované jazyky
+    href: text-analytics-supported-languages.md
+  - name: Vyzkoušejte si to!
+    href: https://azure.microsoft.com/services/cognitive-services/text-analytics/
+  - name: UserVoice
+    href: https://cognitive.uservoice.com/forums/555922-text-analytics
+ms.openlocfilehash: 46991531361582ad7d332a4f0ec49ffa9c4497ea
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44160298"
