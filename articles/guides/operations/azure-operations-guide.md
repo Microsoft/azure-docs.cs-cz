@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 08/24/2018
 ms.author: mibender
-ms.openlocfilehash: 06365e4397075d18150095f7e77367f457e3308c
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 28eeae8906480a5a160bfe11386da96b646f7427
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190421"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44296852"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Začínáme pro operátory Azure IT
 
@@ -149,7 +149,7 @@ Jednou z beneﬁts pomocí Azure je, že můžete nasadit aplikace do různých 
 
 ### <a name="azure-portal"></a>portál Azure
 
-Na webu Azure portal je webová aplikace, který slouží k vytvoření, správě a odebrání prostředků Azure a služeb. Na webu Azure portal se nachází na [Shell.Azure.com](https://portal.azure.com). Zahrnuje přizpůsobitelný řídicí panel a nástroje pro správu prostředků Azure. Poskytuje také informace o fakturaci a předplatné. Další informace najdete v tématu [přehled portálu Microsoft Azure](https://azure.microsoft.com/documentation/articles/azure-portal-overview/) a [Správa prostředků Azure prostřednictvím portálu](https://docs.microsoft.com/azure/azure-portal/resource-group-portal).
+Na webu Azure portal je webová aplikace, který slouží k vytvoření, správě a odebrání prostředků Azure a služeb. Na webu Azure portal se nachází na [portal.azure.com](https://portal.azure.com). Zahrnuje přizpůsobitelný řídicí panel a nástroje pro správu prostředků Azure. Poskytuje také informace o fakturaci a předplatné. Další informace najdete v tématu [přehled portálu Microsoft Azure](https://azure.microsoft.com/documentation/articles/azure-portal-overview/) a [Správa prostředků Azure prostřednictvím portálu](https://docs.microsoft.com/azure/azure-portal/resource-group-portal).
 
 ### <a name="resources"></a>Zdroje a prostředky
 
@@ -185,7 +185,7 @@ Správci mohou přistupovat k prostředí Azure PowerShell a rozhraní příkazo
 
 ## <a name="azure-subscriptions"></a>Předplatná Azure
 
-Předplatné je logické seskupení služeb Azure, který je propojený s účtem Azure. Jednom účtu Azure může obsahovat několik předplatných. Fakturace za služby Azure se provádí na základě za předplatné. Předplatná Azure mít účet správce, který má plnou kontrolu nad předplatného a Správce služby, který má kontrolu nad všechny služby v rámci předplatného. Kromě správci, lze udělit jednotlivým účtům podrobné řízení prostředků Azure prostřednictvím řízení přístupu na základě role (RBAC).
+Předplatné je logické seskupení služeb Azure, který je propojený s účtem Azure. Jeden účet Azure může obsahovat několik předplatných. Fakturace za služby Azure se provádí na základě za předplatné. Předplatná Azure mít účet správce, který má plnou kontrolu nad předplatné, a Správce služby, který má kontrolu nad všechny služby v rámci předplatného. Informace o správcích klasickém modelu předplatného najdete v tématu [přidat nebo změnit správce předplatného Azure](../../billing/billing-add-change-azure-subscription-administrator.md). Kromě správci, lze udělit jednotlivým účtům podrobné řízení prostředků Azure pomocí [řízení přístupu na základě role (RBAC)](../../role-based-access-control/overview.md).
 
 ### <a name="select-and-enable-an-azure-subscription"></a>Vybrat a povolit předplatné Azure
 
@@ -205,13 +205,9 @@ Při překročení kreditu, který, služby jsou zakázané, dokud nezačne dal�
 
 ### <a name="grant-administrative-access-to-an-azure-subscription"></a>Udělit přístup správce k předplatnému Azure
 
-Několik rolí správce účtu jsou k dispozici a můžete kdykoli změnit. Jsou dvě klíčové úlohy:
+RBAC má několik předdefinovaných rolí, které vám umožní přiřadit oprávnění. Chcete-li uživatel správcem předplatného Azure, přiřaďte jim [vlastníka](../../role-based-access-control/built-in-roles.md#owner) role v oboru předplatného. Role vlastníka poskytuje úplný přístup uživatelů ke všem prostředkům v rámci předplatného, včetně práva na delegovat přístup ostatním uživatelům.
 
-- **Správce služeb**: Tato role má oprávnění ke správě služeb Azure. Ve výchozím nastavení, je udělen přístup k stejný účet jako správce účtu.
-
-- **Spolupracující správce**: Tato role má stejný přístup jako správce služeb. Tuto roli však nemůže změnit přidružení předplatného k adresářům Azure.
-
-Další informace najdete v tématu [postup přidání nebo změna rolí správce Azure](../../billing/billing-add-change-azure-subscription-administrator.md).
+Další informace najdete v tématu [správě přístupu pomocí RBAC a webu Azure portal](../../role-based-access-control/role-assignments-portal.md).
 
 ### <a name="view-billing-information-in-the-azure-portal"></a>Zobrazovat fakturační informace na webu Azure Portal
 
@@ -307,7 +303,7 @@ Můžete udělit provozní přístup k uživatelským účtům v zadaném oboru:
 
 Pokud chcete udělit přístup, přiřadíte roli pro uživatele nebo skupiny uživatelů. Existuje mnoho předdefinovaných rolí. Můžete také definovat vlastní role.
 
-Tady je pár příklad role integrované do Azure:
+Tady je příklad několika [předdefinované role v Azure](../../role-based-access-control/built-in-roles.md):
 
 - **Vlastník**: uživatel s touto rolí můžou spravovat všechno včetně přístupu.
 
@@ -321,7 +317,7 @@ Tady je pár příklad role integrované do Azure:
 
 - **Přispěvatel účtů úložiště**: uživatel s touto rolí můžou spravovat účty úložiště, ale nemůžete spravovat přístup k účtům úložiště.
 
-Další informace najdete v tématu [použití přiřazení rolí ke správě přístupu k prostředkům předplatného Azure](../../role-based-access-control/role-assignments-portal.md).
+Další informace najdete v tématu [správě přístupu pomocí RBAC a webu Azure portal](../../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="azure-virtual-machines"></a>Azure Virtual Machines
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: cynthn
-ms.openlocfilehash: 8817facc21d2a7ac86bdaf198aab3179a93c4914
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 25773124fcd479489f5d2d544cc5b6e3b11e325a
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38718977"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44301136"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>Nasazení aplikace do škálovací sady virtuálních počítačů
 Pokud chcete spouštět aplikace na instancích virtuálních počítačů ve škálovací sadě, musíte nejprve nainstalovat komponenty aplikace a požadované soubory. Tento článek představuje způsobů, jak vytvářet vlastní image virtuálního počítače pro instancí ve škálovací, nastavení nebo automatické spouštění skriptů instalace v existujících instancích virtuálních počítačů. Také se dozvíte, jak spravovat aplikace nebo aktualizace operačního systému na škálovací sadu.
@@ -114,7 +114,7 @@ az vmss create \
 ### <a name="install-applications-with-os-updates"></a>Instalace aplikací s aktualizacemi operačního systému
 Když novou verzí operačního systému jsou k dispozici, můžete použít nebo vytvořit nové vlastní image a [nasazování upgradů operačního systému](virtual-machine-scale-sets-upgrade-scale-set.md) škálovací nastavte. Všechny instance virtuálních počítačů je upgradovat na nejnovější image, který zadáte. Vlastní image předem nainstalovaná aplikace rozšíření vlastních skriptů nebo prostředí PowerShell DSC můžete mít vaše aplikace automaticky k dispozici při provádění upgradu. Budete muset plánování údržby aplikace při provádění tohoto procesu, abyste zajistili, že zde nejsou žádné verze problémy s kompatibilitou.
 
-Pokud používáte vlastní image virtuálního počítače s předem nainstalovaná aplikace, může aktualizace aplikace integrovat nasazení kanálu pro sestavování nových imagí a nasazování upgradů operačního systému ve škálovací sadě. Tento přístup umožňuje kanálu tak, aby se získaly nejnovější sestavení aplikace, vytvořit a ověřit image virtuálního počítače a potom upgradovat instance virtuálních počítačů ve škálovací sadě. Pokud chcete spustit kanál nasazení, který sestaví a nasadí aktualizace aplikace ve vlastních imagí virtuálních počítačů, může [image Packeru pro vytvoření a nasazení pomocí Visual Studio Team Services](/vsts/pipelines/apps/cd/azure/deploy-azure-scaleset), nebo použít jinou platformu, jako [Spinnaker ](https://www.spinnaker.io/) nebo [Jenkins](https://jenkins.io/).
+Pokud používáte vlastní image virtuálního počítače s předem nainstalovaná aplikace, může aktualizace aplikace integrovat nasazení kanálu pro sestavování nových imagí a nasazování upgradů operačního systému ve škálovací sadě. Tento přístup umožňuje kanálu tak, aby se získaly nejnovější sestavení aplikace, vytvořit a ověřit image virtuálního počítače a potom upgradovat instance virtuálních počítačů ve škálovací sadě. Pokud chcete spustit kanál nasazení, který sestaví a nasadí aktualizace aplikace ve vlastních imagí virtuálních počítačů, může [image Packeru vytvořit a nasadit pomocí služeb Azure DevOps](/azure/devops/pipelines/apps/cd/azure/deploy-azure-scaleset), nebo použít jinou platformu, jako [Spinnaker](https://www.spinnaker.io/) nebo [Jenkins](https://jenkins.io/).
 
 
 ## <a name="next-steps"></a>Další postup

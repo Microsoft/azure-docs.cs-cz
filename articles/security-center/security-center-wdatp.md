@@ -8,17 +8,17 @@ manager: MBaldwin
 editor: ''
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/06/2018
 ms.author: barclayn
-ms.openlocfilehash: f59525d6ff006ebd4560f96b2ca12bea3626a841
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: f2cb4edd469d76f79e4134ca261bac5263bf3ce4
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44057041"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44296053"
 ---
 # <a name="windows-defender-advanced-threat-protection-atp-with-azure-security-center-public-preview"></a>Windows Defender Advanced Threat Protection (ATP) pomocí služby Azure Security Center (Public preview)
 

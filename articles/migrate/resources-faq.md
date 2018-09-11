@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/03/2018
 ms.author: snehaa
-ms.openlocfilehash: ce9dc4aab26b99bbb1e9f24f018354b8c91f66f4
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: f4ce2130b18b183f633c649f98fc1add30753a27
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43699960"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44296003"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate – nejčastější dotazy (FAQ)
 
@@ -41,7 +41,7 @@ Azure Migrate je služba posouzení, která vám pomůže zjistit vaše místní
 Azure Migrate je nástroj pro plánování migrace a Azure Site Recovery Deployment Planner je zotavení po havárii (DR) nástroj pro plánování.
 
 **Migraci z VMware do Azure**: Pokud máte v úmyslu migrace místních úloh do Azure, použijte Azure Migrate týkající se plánování migrace. Azure Migrate posuzuje místní úlohy a poskytuje pokyny, přehledy a mechanismy, které vám pomohou při migraci do Azure. Až budete připravení plán migrace zrealizovat, můžete počítače migrovat do Azure služeb, jako je Azure Site Recovery a Azure Database Migration Service.
-
+ 
 **Migrace z technologie Hyper-V do Azure**: Azure Migrate aktuálně podporuje pouze posouzení virtuálních počítačů VMware pro migraci do Azure. Podpora technologie Hyper-V je na plán služby pro Azure Migrate. Prozatím můžete použít Plánovač nasazení služby Site Recovery. Jakmile se ve službě Azure Migrate je povolena podpora technologie Hyper-V, můžete použít Azure Migrate týkající se plánování migrace úloh Hyper-V.
 
 **Zotavení po havárii z VMware/Hyper-V do Azure**: Pokud máte v úmyslu provést zotavení po havárii (DR) v Azure pomocí Azure Site Recovery (služba Site Recovery), použijte Plánovač nasazení služby Site Recovery pro plánování zotavení po Havárii. Plánovač nasazení služby Site Recovery nemá podrobné, specifické pro Azure Site Recovery hodnocení v místním prostředí. Poskytuje doporučení, která jsou vyžadované Site Recovery pro úspěšné operace zotavení po Havárii, jako je replikace, převzetí služeb při selhání virtuálních počítačů.  
@@ -87,6 +87,10 @@ Zjišťování na základě zařízení shromažďuje metadata o místních virt
   - Síťové výstupy
 
 Zjišťování na základě agenta možnost je k dispozici nad rámec zjišťování na základě zařízení a pomáhá zákazníkům [vizualizace závislostí](how-to-create-group-machine-dependencies.md) virtuálních počítačů v místním prostředí. Agenti závislosti shromažďování podrobností jako plně kvalifikovaný název domény, operačního systému, IP adresa, adresa MAC, spuštěné procesy v rámci virtuálního počítače a příchozí/odchozí připojení TCP z virtuálního počítače. Zjišťování na základě agenta je volitelné a můžete zvolit není nainstalovat agenty, pokud nechcete vizualizovat závislosti virtuálních počítačů.
+
+### <a name="would-there-be-any-performance-impact-on-the-analyzed-esxi-host-environment"></a>By existovat ovlivnit výkon prostředí analyzované hostitele ESXi?
+
+Vzhledem k tomu, že budeme shromažďovat informace přes vCenter server, neexistuje žádný dopad na výkon na hostitelích ESXi. Dokonce i na serveru vCenter je téměř žádný vliv na výkon.
 
 ### <a name="where-is-the-collected-data-stored-and-for-how-long"></a>Kde se shromážděná data uložená a jak dlouho?
 

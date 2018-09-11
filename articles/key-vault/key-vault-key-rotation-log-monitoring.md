@@ -1,9 +1,9 @@
 ---
-title: Nastavit Azure Key Vault se klíče otočení začátku do konce a auditování | Microsoft Docs
-description: Použijte tento postup můžete získat nastavit střídání klíče a monitorování protokoly trezoru klíčů.
+title: Nastavení služby Azure Key Vault s začátku do konce obměny klíčů a auditování | Dokumentace Microsoftu
+description: Použijte tento postup při seznamování s obměny klíčů a monitorování protokolů služby key vault.
 services: key-vault
 documentationcenter: ''
-author: swgriffith
+author: barclayn
 manager: mbaldwin
 tags: ''
 ms.assetid: 9cd7e15e-23b8-41c0-a10a-06e6207ed157
@@ -11,106 +11,110 @@ ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 03/01/2018
-ms.author: stgriffi
-ms.openlocfilehash: 01f1f719545b554b22ef79b38f95087341c65e83
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.topic: conceptual
+ms.date: 06/12/2018
+ms.author: barclayn
+ms.openlocfilehash: bf3aba431e7b417b2213bc3410fd7722d7888d15
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302013"
 ---
-# <a name="set-up-azure-key-vault-with-end-to-end-key-rotation-and-auditing"></a>Nastavení kompletní obměny klíčů a auditování ve službě Azure Key Vault
+# <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>Nastavení služby Azure Key Vault s obměny klíčů a auditování
+
 ## <a name="introduction"></a>Úvod
-Po vytvoření trezoru klíčů, budete moct začít používat tento trezor k ukládání klíčů a tajných klíčů. Aplikace už nutné k uchování klíčů nebo tajných klíčů, ale spíše bude o ně požádat z trezoru klíčů podle potřeby. To umožňuje aktualizovat klíče a tajné klíče, aniž by to ovlivnilo chování vaší aplikace, což otevře a široké možnosti kolem vašeho klíče a tajné správy.
+
+Jakmile máte trezor klíčů, chcete začít, používat k ukládání klíčů a tajných kódů. Vaše aplikace, které už nepotřebujete k uchování vašich klíčů nebo tajných klíčů, ale můžou o ně požádat z trezoru podle potřeby. Umožňuje aktualizovat klíče a tajné kódy bez ovlivnění chování aplikace, která otevírá široké možnosti týkající se klíč a správa tajných kódů.
 
 >[!IMPORTANT]
-> V příkladech v tomto článku jsou uvedené pro pouze pro účely obrázku. Nejsou určeny pro použití v provozním prostředí. 
+> Příklady v tomto článku jsou uvedeny jen jako ukázka. Nejsou určeny pro použití v produkčním prostředí. 
 
-Tento článek vás provede příklad použití Azure Key Vault pro uložení tajný klíč, v tomto případě klíčem účtu úložiště Azure, který přistupuje aplikaci. Také ukazuje implementaci naplánované oběh tento klíč účtu úložiště. Nakonec provede procesem ukázka sledování protokolů auditu trezoru klíčů a vyvolat výstrahy, když jsou vytvářeny neočekávané požadavky.
+Tento článek vás provede:
+
+- Příklad použití Azure Key Vault k uložíte tajný klíč. Tajný kód uložené v tomto kurzu je klíč účtu úložiště Azure přistupuje aplikace. 
+- Také ukazuje implementaci naplánované otáčení tohoto klíče účtu úložiště.
+- Ukazuje, jak monitorovat protokoly auditu služby key vault a vyvolají upozornění při neočekávané požadavky přicházejí.
 
 > [!NOTE]
-> V tomto kurzu není určeno k podrobně popisují počátečním nastavení trezoru klíčů. Další informace naleznete v tématu [Začínáme s Azure Key Vault](key-vault-get-started.md) Pokyny Multiplatformního rozhraní příkazového řádku najdete v tématu [Key Vault spravovat pomocí rozhraní příkazového řádku](key-vault-manage-with-cli2.md).
+> V tomto kurzu není určena pro podrobně vysvětluje počátečním nastavení trezoru klíčů. Další informace naleznete v tématu [Začínáme s Azure Key Vault](key-vault-get-started.md) Multiplatformní rozhraní příkazového řádku najdete v tématu [Správa služby Key Vault pomocí rozhraní příkazového řádku](key-vault-manage-with-cli2.md).
 >
 >
 
 ## <a name="set-up-key-vault"></a>Nastavení služby Key Vault
-Chcete-li aplikaci načíst tajného klíče z Key Vault, musíte nejprve vytvořit tajný klíč a nahrajte ho do trezoru. Můžete to provést spusťte relaci prostředí Azure PowerShell a přihlášení k účtu Azure pomocí následujícího příkazu:
+
+Povolení aplikace načíst tajného klíče ze služby Key Vault, musíte nejprve vytvořit tajný kód a nahrajte ho do svého trezoru. To můžete provést spuštěním relaci Azure Powershellu a přihlášení k účtu Azure pomocí následujícího příkazu:
 
 ```powershell
 Connect-AzureRmAccount
 ```
 
-V automaticky otevřeném okně prohlížeče zadejte svoje uživatelské jméno a heslo k účtu Azure. PowerShell získá všechna předplatná, které jsou spojeny s tímto účtem. Prostředí PowerShell použije první, ve výchozím nastavení.
+V automaticky otevřeném okně prohlížeče zadejte svoje uživatelské jméno a heslo k účtu Azure. PowerShell získá všechna předplatná, které jsou spojeny s tímto účtem. Prostředí PowerShell použije první předplatné ve výchozím nastavení.
 
-Pokud máte více předplatných, možná muset zadat ten, který byl použit k vytvoření trezoru klíčů. Zadejte následující příkaz pro zobrazení předplatných pro váš účet:
+Pokud máte více předplatných, možná budete muset určit ten, který byl použit k vytvoření trezoru klíčů. Zadejte následující příkaz k zobrazení předplatných pro váš účet:
 
 ```powershell
 Get-AzureRmSubscription
 ```
 
-Chcete-li zadat odběr, který je spojen s trezoru klíčů, který budete protokolovat, zadejte:
+Chcete-li specifikovat předplatné přidružené k trezoru klíčů, který budete protokolovat, zadejte:
 
 ```powershell
 Set-AzureRmContext -SubscriptionId <subscriptionID>
 ```
 
-Vzhledem k tomu, že tento článek ukazuje, ukládání klíč účtu úložiště jako tajný klíč, musíte si tento klíč účtu úložiště.
+Protože tento článek ukazuje ukládání klíče účtu úložiště jako tajný klíč, musíte získat tento klíč účtu úložiště.
 
 ```powershell
 Get-AzureRmStorageAccountKey -ResourceGroupName <resourceGroupName> -Name <storageAccountName>
 ```
 
-Po načtení váš tajný klíč (v tomto případě klíč účtu úložiště), je potřeba, převést na zabezpečený řetězec a pak vytvořit tajný klíč s touto hodnotou v trezoru klíčů.
+Po načtení váš tajný klíč (v tomto případě klíč účtu úložiště), musíte převést, který na zabezpečený řetězec a pak vytvořte tajného kódu s touto hodnotou v trezoru klíčů.
 
 ```powershell
 $secretvalue = ConvertTo-SecureString <storageAccountKey> -AsPlainText -Force
 
 Set-AzureKeyVaultSecret -VaultName <vaultName> -Name <secretName> -SecretValue $secretvalue
 ```
-V dalším kroku získáte identifikátor URI pro tajný klíč, který jste vytvořili. Používá se v pozdější fázi při volání trezoru klíčů načíst váš tajný klíč. Spusťte následující příkaz prostředí PowerShell a poznamenejte si hodnotu ID, která je tajný identifikátor URI:
+
+Potom získejte identifikátor URI pro tajný klíč, který jste vytvořili. Používá se v pozdějším kroku při volání načíst vaše tajný kód trezoru klíčů. Spuštěním následujícího příkazu prostředí PowerShell a poznamenejte si hodnotu ID, což je identifikátor URI tajného kódu:
 
 ```powershell
 Get-AzureKeyVaultSecret –VaultName <vaultName>
 ```
 
 ## <a name="set-up-the-application"></a>Nastavení aplikace
-Teď, když máte uložené tajný klíč, můžete k načtení a jeho použití kódu. Existuje několik kroků potřebných k dosažení tohoto cíle. První a nejdůležitější krok je registrace vaší aplikace v Azure Active Directory a potom že Key Vault informace o vaší aplikaci tak, aby ji můžete povolit požadavky od vaší aplikace.
+
+Teď, když máte uložené tajného kódu, můžete kód načíst a použít ho. Existuje několik kroků potřebných k dosažení tohoto cíle. První a nejdůležitější krok je registrace aplikace v Azure Active Directory a potom oznamovat služby Key Vault informace o vaší aplikaci tak, aby ho povolit požadavky od vaší aplikace.
 
 > [!NOTE]
 > Aplikace musí být vytvořeny na stejném tenantovi Azure Active Directory jako váš trezor klíčů.
 >
 >
 
-Otevřete kartu aplikace služby Azure Active Directory.
+1. Přejděte do služby Azure Active Directory.
+2. Zvolte **registrace aplikací** 
+3. Zvolte **registrace nové aplikace** přidání aplikace do služby Azure Active Directory.
 
-![Otevřete aplikace v Azure Active Directory](./media/keyvault-keyrotation/AzureAD_Header.png)
+    ![Otevření aplikace v Azure Active Directory](./media/keyvault-keyrotation/azure-ad-application.png)
 
-Zvolte **přidat** přidání aplikace do Azure Active Directory.
+4. V **vytvořit** oddílu ponechat typ aplikace jako **webové aplikace nebo webové rozhraní API** a zadejte název vaší aplikace. Dejte aplikaci **PŘIHLAŠOVACÍ adresu URL**. To může být cokoliv, co chcete použít pro tuto ukázku.
 
-![Zvolte možnost Přidat](./media/keyvault-keyrotation/Azure_AD_AddApp.png)
+    ![Vytvoření registrace aplikace](./media/keyvault-keyrotation/create-app.png)
 
-Ponechat typ aplikace jako **webové aplikace nebo webové rozhraní API** a zadejte název vaší aplikace.
+5. Po přidání aplikace do Azure Active Directory, je možné zařazení do systému stránky aplikace. Vyberte **nastavení** a vyberte možnost Vlastnosti. Kopírovat **ID aplikace** hodnotu. Budete ji potřebovat v dalších krocích.
 
-![Název aplikace](./media/keyvault-keyrotation/AzureAD_NewApp1.png)
+Dále vygenerujte klíč pro vaše aplikace tak může komunikovat s Azure Active Directory. Klíč v části můžete vytvořit tak, že přejdete na **klíče** části **nastavení**. Poznamenejte si nově vygenerovaný klíč z vaší aplikace Azure Active Directory pro použití v pozdějším kroku. Všimněte si, že klíč nebude k dispozici po přejít z této části. 
 
-Poskytují aplikace **adresa URL přihlašování** a **identifikátor ID URI aplikace**. Mohou to být nic, co chcete použít pro tuto ukázku, a může změnit později v případě potřeby.
+![Klíče aplikace Azure Active Directory](./media/keyvault-keyrotation/create-key.png)
 
-![Zadejte požadované identifikátory URI](./media/keyvault-keyrotation/AzureAD_NewApp2.png)
-
-Po přidání aplikace do Azure Active Directory je přesměrován zpět na stránku aplikace. Klikněte **konfigurace** kartě a vyhledejte a zkopírujte **ID klienta** hodnotu. Poznamenejte si ID klienta na pozdější kroky.
-
-V dalším kroku vygenerujte klíč pro vaši aplikaci, můžete spolupracovat s vaší služby Azure Active Directory. Můžete vytvořit ji do **klíče** tématu **konfigurace** kartě. Poznamenejte si nově vygenerovaný klíč z vaší aplikace Azure Active Directory pro použití v pozdější fázi.
-
-![Klíče aplikace služby Azure Active Directory](./media/keyvault-keyrotation/Azure_AD_AppKeys.png)
-
-Před vytvořením žádné volání z aplikace do trezoru klíčů, se musí zjistit trezoru klíčů o aplikace a její oprávnění. Následující příkaz přebírá název trezoru a ID klienta z aplikací Azure Active Directory a uděluje **získat** přístup k trezoru klíčů pro aplikaci.
+Před vytvořením všechna volání z aplikace do služby key vault, musíte upozornit služby key vault o vaší aplikaci a její oprávnění. Následující příkaz má název trezoru a ID aplikace z aplikace Azure Active Directory a udělení **získat** přístup k trezoru klíčů pro aplikaci.
 
 ```powershell
 Set-AzureRmKeyVaultAccessPolicy -VaultName <vaultName> -ServicePrincipalName <clientIDfromAzureAD> -PermissionsToSecrets Get
 ```
 
-V tomto okamžiku jste připravení začít vytvářet aplikace zavolat. V aplikaci je nutné nainstalovat balíčky NuGet, které jsou potřebné pro interakci s Azure Key Vault a Azure Active Directory. Z konzoly Správce balíčků Visual Studio zadejte následující příkazy. Na zápis tohoto článku, aktuální verzi balíčku, Azure Active Directory je 3.10.305231913, takže můžete chtít potvrďte na nejnovější verzi a aktualizují odpovídajícím způsobem.
+V tomto okamžiku jste připravení začít vytvářet vaše aplikace volání. Ve vaší aplikaci je nutné nainstalovat balíčky NuGet, které jsou nutné k interakci s Azure Key Vault a Azure Active Directory. Z konzoly Správce balíčků Visual Studio zadejte následující příkazy. Při psaní tohoto článku je aktuální verze balíčku Azure Active Directory 3.10.305231913, proto je vhodné k potvrzení na nejnovější verzi a příslušně aktualizovat.
 
 ```powershell
 Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 3.10.305231913
@@ -118,13 +122,13 @@ Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 3.10.30
 Install-Package Microsoft.Azure.KeyVault
 ```
 
-V kódu aplikace vytvořte třídu, pro uložení metodu pro ověřování Azure Active Directory. V tomto příkladu se nazývá třídy **Utils**. Přidejte následující příkaz using:
+V kódu aplikace vytvoření třídy k umístění metodu pro ověření služby Azure Active Directory. V tomto příkladu je názvem třídy **Utils**. Přidejte následující příkaz using:
 
 ```csharp
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 ```
 
-Dál přidejte následující metodu na JWT token načítat z Azure Active Directory. Pro udržovatelnosti můžete přesunout pevně řetězcové hodnoty do konfiguraci webu nebo aplikace.
+Dále přidejte následující metodu pro načtení tokenu JWT ze služby Azure Active Directory. Údržbu můžete přesunout do vaší konfigurace webu nebo aplikace pevně zakódované řetězcové hodnoty.
 
 ```csharp
 public async static Task<string> GetToken(string authority, string resource, string scope)
@@ -143,13 +147,13 @@ public async static Task<string> GetToken(string authority, string resource, str
 }
 ```
 
-Přidání nezbytného kódu volání Key Vault a načíst vaše tajná hodnota. Nejprve je nutné přidat následující příkaz using:
+Přidání nezbytného kódu do volání služby Key Vault a načíst tajná hodnota. Nejprve je nutné přidat následující příkaz using:
 
 ```csharp
 using Microsoft.Azure.KeyVault;
 ```
 
-Přidejte volání metody vyvolání Key Vault a načtení váš tajný klíč. Tato metoda zadejte identifikátor URI, který jste uložili v předchozím kroku tajného klíče. Všimněte si použití **gettoken –** metoda z **Utils** třídy, které jste vytvořili dříve.
+Přidejte volání metody vyvolání služby Key Vault a načítat váš tajný klíč. V této metodě zadejte tajný kód identifikátor URI, který jste si uložili v předchozím kroku. Všimněte si použití **GetToken** metodu z **Utils** třídy, které jste předtím vytvořili.
 
 ```csharp
 var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(Utils.GetToken));
@@ -157,16 +161,17 @@ var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(Utils.GetT
 var sec = kv.GetSecretAsync(<SecretID>).Result.Value;
 ```
 
-Při spuštění aplikace teď byste měli být ověřování pro službu Azure Active Directory a potom načítání tajná hodnota z Azure Key Vault.
+Při spuštění aplikace by měla nyní být ověřování v Azure Active Directory a potom načítání tajná hodnota ze služby Azure Key Vault.
 
-## <a name="key-rotation-using-azure-automation"></a>Střídání klíče pomocí Azure Automation.
-Existují různé možnosti pro implementaci strategie otočení pro hodnoty, které ukládáte jako Azure Key Vault tajných klíčů. Jako součást ruční proces lze otáčet tajné klíče, se může prostřednictvím kódu programu otáčet pomocí volání rozhraní API nebo může být otáčet prostřednictvím skriptu pro automatizaci. Pro účely tohoto článku budete používat prostředí Azure PowerShell v kombinaci s Azure Automation. Chcete-li změnit přístupový klíč účtu úložiště Azure. Pomocí tohoto nového klíče potom aktualizujte tajný klíč trezoru klíčů.
+## <a name="key-rotation-using-azure-automation"></a>Obměna klíčů pomocí Azure Automation
 
-Povolit Azure Automation k nastavení tajný hodnot v trezoru klíčů, musíte získat ID klienta pro připojení s názvem AzureRunAsConnection, která byla vytvořena, když jste vytvořili vaší instanci Azure Automation. Toto ID můžete najít tak, že zvolíte **prostředky** z vaší instanci Azure Automation. Odtud, zvolíte **připojení** a pak vyberte **AzureRunAsConnection** služby zásadu. Poznamenejte si **ID aplikace**.
+Existují různé možnosti pro implementaci otočení strategie pro hodnoty, které se ukládají jako tajné kódy služby Azure Key Vault. Jako součást ruční proces lze otočit tajné kódy, se může prostřednictvím kódu programu otáčet s použitím volání rozhraní API nebo může být otočit pomocí skriptu pro automatizaci. Pro účely tohoto článku budete používat Azure Powershellu v kombinaci s Azure Automation. Chcete-li změnit přístupový klíč účtu úložiště Azure. Potom budete aktualizovat tajný kód trezoru klíčů pomocí nového klíče.
 
-![ID klienta Azure Automation.](./media/keyvault-keyrotation/Azure_Automation_ClientID.png)
+Pokud chcete povolit Azure Automation. Chcete-li nastavit hodnoty tajných kódů v trezoru klíčů, musíte získat ID klienta pro připojení s názvem AzureRunAsConnection, který byl vytvořen při vytvoření instance služby Azure Automation. Toto ID můžete najít výběrem **prostředky** z vaší instance služby Azure Automation. Tady zvolíte **připojení** a pak vyberte **AzureRunAsConnection** služby zásadě. Poznamenejte si **ID aplikace**.
 
-V **prostředky**, zvolte **moduly**. Z **moduly**, vyberte **Galerie**a poté vyhledejte a **Import** aktualizované verze pro každý z následujících modulů:
+![ID klienta služby Azure Automation](./media/keyvault-keyrotation/Azure_Automation_ClientID.png)
+
+V **prostředky**, zvolte **moduly**. Z **moduly**vyberte **Galerie**a poté vyhledejte a **Import** aktualizované verze každého z následujících modulů:
 
     Azure
     Azure.Storage
@@ -177,17 +182,17 @@ V **prostředky**, zvolte **moduly**. Z **moduly**, vyberte **Galerie**a poté v
 
 
 > [!NOTE]
-> Na zápis tohoto článku, jenom dříve uvedené moduly musela být aktualizováno pro následující skript. Pokud zjistíte, že je možné úlohu automatizace, potvrďte, že jste importovali všechny potřebné moduly a jejich závislosti.
+> Při psaní tohoto článku pouze dříve uvedené moduly museli být aktualizováno pro následující skript. Pokud zjistíte, že se nedaří úlohy automatizace, potvrďte, že jste naimportovali všechny potřebné moduly a jejich závislosti.
 >
 >
 
-Po načtení ID aplikace pro připojení k Azure Automation, se musí zjistit trezoru klíčů, tato aplikace má přístup k aktualizaci tajných klíčů v trezoru. Můžete to provést pomocí následujícího příkazu prostředí PowerShell:
+Po načtení ID aplikací pro připojení k Azure Automation, je zapotřebí sdělit trezoru klíčů, že tato aplikace má přístup k aktualizaci tajným kódům v trezoru. Můžete to provést pomocí následujícího příkazu Powershellu:
 
 ```powershell
 Set-AzureRmKeyVaultAccessPolicy -VaultName <vaultName> -ServicePrincipalName <applicationIDfromAzureAutomation> -PermissionsToSecrets Set
 ```
 
-Potom vyberte **Runbooky** v rámci vaší instanci Azure Automation a potom vyberte **přidat Runbook**. Vyberte možnost **Rychle vytvořit**. Název vaší sady runbook a vyberte **prostředí PowerShell** jako typ runbooku. Máte možnost přidat její popis. Nakonec klikněte na **vytvořit**.
+V dalším kroku vyberte **sady Runbook** pod vaší instance služby Azure Automation a pak vyberte **přidat Runbook**. Vyberte možnost **Rychle vytvořit**. Zadejte název vaší sady runbook a vyberte **Powershellu** jako typ runbooku. Máte možnost přidat její popis. Nakonec klikněte na tlačítko **vytvořit**.
 
 ![Vytvoření runbooku](./media/keyvault-keyrotation/Create_Runbook.png)
 
@@ -234,12 +239,12 @@ $secretvalue = ConvertTo-SecureString $SAKeys[1].Value -AsPlainText -Force
 $secret = Set-AzureKeyVaultSecret -VaultName $VaultName -Name $SecretName -SecretValue $secretvalue
 ```
 
-V podokně editor zvolte **testovací podokno** k testování vašeho skriptu. Jakmile se skript spouští bez chyby, můžete vybrat **publikovat**, a pak můžete použít plán pro sady runbook zpět v podokně Konfigurace sady runbook.
+Z podokna editoru zvolte **testovací podokno** k otestování vašeho skriptu. Po bez chyb je spuštěný skript, můžete vybrat **publikovat**, a pak může použít plán pro runbook zpátky v podokně Konfigurace sady runbook.
 
-## <a name="key-vault-auditing-pipeline"></a>Auditování kanálu Key Vault
-Při nastavování trezoru klíčů, můžete zapnout auditování shromažďovat protokoly v žádosti o přístup provedených do trezoru klíčů. Tyto protokoly se ukládají v určené účtu Azure Storage a mohou být vyžádány limitu, monitorovat a analyzovat. Následující scénář používá k vytvoření kanálu pro odeslání e-mailu, když aplikaci, která odpovídají ID aplikace webové aplikace načte tajné klíče z trezoru Azure functions, Azure logic apps a protokoly auditu trezoru klíčů.
+## <a name="key-vault-auditing-pipeline"></a>Auditování kanálu služby Key Vault
+Když nastavíte trezor klíčů, můžete zapnout auditování pro shromažďování protokolů na požadavky na přístup k trezoru klíčů. Tyto protokoly se ukládají v určené účtu Azure Storage a mohou být vyžádány, monitorovat a analyzovat. Následující scénář využívá služba Azure functions, Azure logic apps a protokolů auditu služby key vault k vytvoření kanálu pro odeslání e-mailu, když aplikaci, která se neshoduje s ID aplikace webové aplikace načte tajné kódy z trezoru.
 
-Nejprve musíte povolit protokolování na váš trezor klíčů. To lze provést pomocí následujících příkazů Powershellu (úplné podrobnosti si můžete prohlédnout v [protokolování key vault](key-vault-logging.md)):
+Nejprve je třeba povolit protokolování na váš trezor klíčů. To můžete udělat pomocí následujících příkazů Powershellu (úplné podrobnosti lze zobrazit na [protokolování key vault](key-vault-logging.md)):
 
 ```powershell
 $sa = New-AzureRmStorageAccount -ResourceGroupName <resourceGroupName> -Name <storageAccountName> -Type Standard\_LRS -Location 'East US'
@@ -247,29 +252,29 @@ $kv = Get-AzureRmKeyVault -VaultName '<vaultName>'
 Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories AuditEvent
 ```
 
-Jakmile je tato možnost povolena, protokoly auditu počáteční shromažďování do účtu úložiště určený. Tyto protokoly obsahovat události o tom, jak a kdy vašim trezorům klíčů přistupuje a kým.
+Jakmile je tato možnost povolena, protokoly auditu zahájení shromažďování do účtu úložiště určený. Tyto protokoly obsahovat události o tom, jak a kdy přistupují k vašim trezorům klíčů a kým.
 
 > [!NOTE]
-> Informace o protokolování můžete přistupovat 10 minut po operaci trezoru klíčů. Obvykle bude rychlejší.
+> Informace o protokolování můžete přistupovat 10 minut po provedení této operace služby key vault. Obvykle bude rychlejší.
 >
 >
 
-Dalším krokem je [vytvořit frontu Azure Service Bus](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md). Toto je, kde jsou poslat protokoly auditu trezoru klíčů. Když zpráv protokolu auditování ve frontě, aplikaci logiky je převezme a funguje na ně. Vytvoření služby service bus pomocí následujících kroků:
+Dalším krokem je [vytvoření fronty služby Azure Service Bus](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md). To je, kde jsou vloženy protokoly auditu služby key vault. Když ve frontě zpráv protokolu auditu, aplikace logiky přebere příspěvky a funguje na nich. Vytvoření služby Service bus pomocí následujících kroků:
 
-1. Vytvoření oboru názvů Service Bus (Pokud již účet máte, kterou chcete použít pro tento, přejděte ke kroku 2).
-2. Přejděte do služby service bus na portálu Azure a vyberte obor názvů, které chcete vytvořit ve frontě v.
-3. Vyberte **vytvořit prostředek**, **Enterprise integrace**, **Service Bus**a potom zadejte požadované podrobnosti.
-4. Zvolit informace o připojení služby Service Bus výběr obor názvů a **informace o připojení**. Tyto informace budete potřebovat pro další části.
+1. Vytvoření oboru názvů služby Service Bus (pokud ještě nemáte, kterou chcete použít pro tento, přejděte ke kroku 2).
+2. Přejděte do služby Service bus na webu Azure Portal a vyberte obor názvů, které chcete vytvořit frontu.
+3. Vyberte **vytvořit prostředek**, **podniková integrace**, **služby Service Bus**a potom zadejte požadované podrobnosti.
+4. Vyberte Výběr oboru názvů a kliknutím na informace o připojení služby Service Bus **informace o připojení**. Tyto informace budete potřebovat pro další části.
 
-Dále [vytvoření Azure funkce](../azure-functions/functions-create-first-azure-function.md) dotazování protokoly trezoru klíčů v rámci účtu úložiště a vyzvednutí nové události. Bude jím funkci, která se spustí podle plánu.
+Dále [vytvořit funkci Azure](../azure-functions/functions-create-first-azure-function.md) dotazovat protokoly trezoru klíčů v rámci účtu úložiště a vyzvednutí nové události. Toto bude funkce, která se spouští podle plánu.
 
-Pokud chcete vytvořit Azure funkce, vyberte **vytvořit prostředek**, vyhledávání na webu marketplace pro _aplikaci funkce_a klikněte na tlačítko **vytvořit**. Během vytváření můžete použít existující hostingový plán nebo vytvořte novou. Může se rovněž rozhodnout pro dynamické hostování. Další informace o funkce hostování možnosti naleznete na [postup škálování Azure Functions](../azure-functions/functions-scale.md).
+Chcete-li vytvořit funkci Azure, zvolte **vytvořit prostředek**, na webu Marketplace vyhledáme _aplikace Function App_a klikněte na tlačítko **vytvořit**. Při vytváření můžete použít existující plán hostování nebo vytvořte novou. Může se také rozhodnout pro dynamické hostování. Další informace o funkci Možnosti hostování najdete v [postup škálování Azure Functions](../azure-functions/functions-scale.md).
 
-Když je vytvořen funkci Azure, přejděte k němu a zvolte časovač funkce a C\#. Pak klikněte na tlačítko **vytvořit tuto funkci**.
+Po vytvoření funkce Azure Functions do něj přejděte a vyberte časovač, funkce a C\#. Pak klikněte na tlačítko **vytvořit tuto funkci**.
 
-![Okno Azure spustit funkce](./media/keyvault-keyrotation/Azure_Functions_Start.png)
+![Okno Azure Functions Start](./media/keyvault-keyrotation/Azure_Functions_Start.png)
 
-Na **vývoj** kartě, run.csx kódu nahraďte následujícím kódem:
+Na **vývoj** kartu, nahraďte kód run.csx následujícím kódem:
 
 ```csharp
 #r "Newtonsoft.Json"
@@ -382,17 +387,17 @@ static string GetContainerSasUri(CloudBlockBlob blob)
 
 
 > [!NOTE]
-> Nezapomeňte nahradit proměnné v předchozí kód tak, aby odkazoval na váš účet úložiště, kde se zapisují protokoly trezoru klíčů, sběrnici služby, které jste vytvořili dříve a konkrétní cestu k úložišti protokoly trezoru klíčů.
+> Ujistěte se, že k nahrazení proměnné v předchozím kódu tak, aby odkazovala na váš účet úložiště, ve kterém jsou zapsány protokoly trezoru klíčů, service bus, které jste vytvořili dříve a konkrétní cestu do úložiště protokolů služby key vault.
 >
 >
 
-Funkce převezme nejnovější soubor protokolu z účtu úložiště, kde se zapisují protokoly trezoru klíčů, získá nejnovější události z tohoto souboru a nabízených oznámení je do fronty Service Bus. Vzhledem k tomu, že jeden soubor může mít více událostí, měli vytvořit sync.txt souboru, který funkce se také vypadá v Chcete-li zjistit časové razítko poslední události, která byla zachyceny. Tím se zajistí, že nemáte nabízené stejnou událost vícekrát. Tento soubor sync.txt obsahuje časové razítko pro poslední došlo k události. Protokoly, při načítání, musí být seřazeny podle časového razítka zajistit, že jsou řazení správně.
+Funkce vybere nejnovější soubor protokolu z účtu úložiště, ve kterém jsou zapsány protokoly trezoru klíčů, získá nejnovější události z tohoto souboru a odesílá je do fronty služby Service Bus. Od jednoho souboru může mít více událostí, můžete vytvořit soubor sync.txt, která také srovnává funkce určit časové razítko poslední události, ke které se nenačítají. Tím se zajistí, že není vložíte stejnou událost více než jednou. Tento soubor sync.txt obsahuje časové razítko poslední události došlo k chybě. Protokoly, při načtení, třeba seřazeny podle časové razítko. Ujistěte se, že jsou řazeny správně.
 
-Pro tuto funkci jsme odkazovat na několik dalších knihovny, které nejsou k dispozici ihned v Azure Functions. Zahrnout tyto, potřebujeme Azure Functions je načítat pomocí nástroje NuGet. Vyberte **zobrazit soubory** možnost.
+Pro tuto funkci budeme odkazovat na několik dalších knihoven, které nejsou k dispozici ihned v Azure Functions. Pro ty pak uvádějte, potřebujeme, aby tyto změny služby Azure Functions pomocí nástroje NuGet. Zvolte **zobrazit soubory** možnost.
 
-![Zobrazení souborů](./media/keyvault-keyrotation/Azure_Functions_ViewFiles.png)
+![Možnost zobrazit soubory](./media/keyvault-keyrotation/Azure_Functions_ViewFiles.png)
 
-A přidejte do souboru s názvem souboru project.json s následujícím obsahem:
+A přidejte soubor s názvem souboru project.json s následujícím obsahem:
 
 ```json
     {
@@ -406,37 +411,39 @@ A přidejte do souboru s názvem souboru project.json s následujícím obsahem:
        }
     }
 ```
-Při **Uložit**, Azure Functions stáhnou požadované binární soubory.
 
-Přepnout **integrací** kartě a zadejte parametr časovače smysluplný název pro použití v rámci funkce. V předchozím kódu, se očekává, že časovač k volání *myTimer*. Zadejte [výraz CRON](../app-service/web-sites-create-web-jobs.md#CreateScheduledCRON) následujícím způsobem: 0 \* \* \* \* \* pro časovač způsobí, že funkce se má spustit jednou za minutu.
+Při **Uložit**, Azure Functions se stáhne požadované binární soubory.
 
-Ve stejném **integrací** přidejte vstup typu **Azure Blob Storage**. To bude odkazovat sync.txt soubor, který obsahuje časové razítko poslední události zvážení funkcí. To bude možné v rámci funkce název parametru. V předchozí kód Azure Blob Storage vstup očekává název parametru, který se má *inputBlob*. Zvolte účet úložiště, kde bude uložený soubor sync.txt (může to být stejný nebo jiný účet úložiště). Do pole Cesta zadejte cestu, kde je umístěn soubor ve formátu {container-name}/path/to/sync.txt.
+Přepněte **integrace** kartu a dejte smysluplný název určený v rámci funkce parametr časovače. V předchozím kódu se očekává, že na časovač a volat *myTimer*. Zadejte [výraz CRON](../app-service/web-sites-create-web-jobs.md#CreateScheduledCRON) následujícím způsobem: 0 \* \* \* \* \* časovač, který způsobí, že funkce pro spuštění jednou za minutu.
 
-Přidat výstup typu *Azure Blob Storage* výstup. To bude odkazovat na sync.txt soubor, který jste definovali ve vstupu. To se používá k zápisu časové razítko poslední události po zvážení funkcí. Předchozí kód očekává, že tento parametr má být volána *outputBlob*.
+Na stejném **integrace** kartu, přidat vstup typu **Azure Blob Storage**. To bude odkazovat na sync.txt souboru, který obsahuje časové razítko poslední události podívali se na funkce. To bude možné v rámci funkce podle názvu parametru. V předchozím kódu vstup úložiště objektů Blob v Azure očekává, že název parametru, který se má *inputBlob*. Zvolte účet úložiště, ve kterém bude uložený soubor sync.txt (může to být stejný nebo jiný účet úložiště). V poli Cesta zadejte cestu, kam se soubor nachází ve formátu {container-name}/path/to/sync.txt.
 
-Funkce je nyní připraven. Nezapomeňte přepnout zpět **vývoj** kartě a uložte kód. Ve výstupním okně případné chyby kompilace zkontrolujte a opravte je odpovídajícím způsobem. Pokud kompiluje se kód, pak kód by měl nyní se kontrola protokoly trezoru klíčů každou minutu a vkládání všechny nové události do definované fronty Service Bus. Měli byste vidět zapsat do okna protokolu pokaždé, když se aktivuje funkce informace o protokolování.
+Přidat výstup typu *Azure Blob Storage* výstup. To bude odkazovat na sync.txt soubor, který jste definovali ve vstupu. To se používá k zápisu časové razítko poslední události podívali se na funkce. Předchozí kód očekává, že tento parametrem říkalo *outputBlob*.
 
-### <a name="azure-logic-app"></a>Azure logic Apps
-Dále musíte vytvořit aplikaci Azure logiku, která převezme události funkce je vkládání do fronty Service Bus, analyzuje obsah a odešle e-mailu na základě podmínky se shodoval.
+Funkce je v tuto chvíli připravena. Ujistěte se, že chcete přepnout zpět **vývoj** kartu a uložte kód. Najdete v okně výstupu chyby při kompilaci a opravte je odpovídajícím způsobem. Pokud se kompiluje kód, pak kód by měl nyní být kontroluje protokoly trezoru klíčů se každou minutu a doručením (push) libovolný nové události do definované frontu služby Service Bus. Zobrazí se informace o protokolování zapsat do protokolu okna pokaždé, když se aktivuje funkci.
 
-[Vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md) přechodem na **nový > aplikace logiky**.
+### <a name="azure-logic-app"></a>Azure logic app
 
-Po vytvoření aplikace logiky, přejděte k němu a zvolte **upravit**. V editoru aplikace logiky, vyberte **frontou Service Bus** a zadejte svá pověření Service Bus pro připojení k frontě.
+Dále musíte vytvořit Azure logic app, který převezme událostí funkce vkládání do fronty služby Service Bus, analyzuje obsah a odešle e-mailu na základě podmínky je nalezena shoda.
+
+[Vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md) tak, že přejdete do **nový > aplikace logiky**.
+
+Po vytvoření aplikace logiky do něj přejděte a vyberte **upravit**. V editoru aplikace logiky zvolte **frontu služby Service Bus** a zadejte svoje přihlašovací údaje služby Service Bus pro připojení k frontě.
 
 ![Azure Logic App Service Bus](./media/keyvault-keyrotation/Azure_LogicApp_ServiceBus.png)
 
-Dále vyberte **přidat podmínku**. V podmínce přepněte do editoru Upřesnit a zadejte následující kód, nahraďte APP_ID skutečné APP_ID vaší webové aplikace:
+Dále vyberte **přidat podmínku**. V podmínce přepnout do rozšířeného editoru a zadejte následující kód a nahraďte APP_ID s skutečné APP_ID vaší webové aplikace:
 
 ```
 @equals('<APP_ID>', json(decodeBase64(triggerBody()['ContentData']))['identity']['claim']['appid'])
 ```
 
-Tento výraz v podstatě vrátí **false** Pokud *appid* z příchozí události (což je do těla zprávy služby Service Bus) není *appid* aplikace.
+Tento výraz vrátí v podstatě **false** Pokud *appid* z příchozí události (což je text zprávy služby Service Bus) není *appid* aplikace.
 
-Teď vytvořte akce v rámci **Pokud ne, nedělat nic**.
+Teď vytvořte akci v rámci **Pokud ne, nedělat nic**.
 
-![Aplikace logiky Azure vybrat akci](./media/keyvault-keyrotation/Azure_LogicApp_Condition.png)
+![Zvolte akci Azure Logic App](./media/keyvault-keyrotation/Azure_LogicApp_Condition.png)
 
-Jako akci vyberte **Office 365 - odesílání e-mailu**. Vyplňte pole pro vytvoření e-mailu k odeslání, když se vrátí definované podmínky **false**. Pokud nemáte Office 365, může se podíváte na alternativy, abyste dosáhli stejné výsledky.
+Akce, můžete zvolit **Office 365 – poslat e-mail**. Vyplňte pole k vytvoření e-mailu k odeslání návratu definované podmínky **false**. Pokud nemáte Office 365, je vyhledat v alternativy k dosáhnete stejných výsledků.
 
-V tuto chvíli máte kanál koncová, které hledá nové protokoly auditu trezoru klíčů jednou za minutu. Vynutí nové protokoly, které najde do fronty service bus. Aplikace logiky se aktivuje, když pojmenováváme novou zprávu ve frontě. Pokud *appid* v rámci událost neodpovídá ID aplikace je volající aplikace, odešle e-mailu.
+V tomto okamžiku máte za kompletní kanál, který hledá nové protokoly auditu služby key vault jednou za minutu. Nové protokoly, které nalezne ho odešle do fronty service bus. Aplikace logiky se aktivuje, když jsou novou zprávu ve frontě. Pokud *appid* v rámci události se neshoduje s ID aplikace z volající aplikace, odešle e-mailu.

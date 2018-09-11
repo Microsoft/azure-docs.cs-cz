@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: a295cad2bf1cafce4dc64909174e9417daa7918e
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 08b27acc2d3114486b86aa0c311b9396c0bed48f
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38235444"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44297311"
 ---
 # <a name="azure-devtest-labs-faq"></a>Nejčastější dotazy k Azure DevTest Labs
 Získejte odpovědi na některé nejběžnější otázky o Azure DevTest Labs.
@@ -88,17 +88,17 @@ Komplexní článek o tom, jak vytvořit vlastní role a přiřadit oprávnění
 
 **CI/CD integrace a automatizace**
 ## <a name="does-devtest-labs-integrate-with-my-cicd-toolchain"></a>Integrovat DevTest Labs se Moje sadou nástrojů CI/CD?
-Pokud používáte Visual Studio Team Services, můžete použít [rozšíření DevTest Labs úloh](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks) automatizace kanálu pro vydávání verzí ve službě DevTest Labs. Úlohy, které vám pomůžou s touto příponou patří:
+Pokud používáte Azure DevOps, můžete použít [rozšíření DevTest Labs úloh](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks) automatizace kanálu pro vydávání verzí ve službě DevTest Labs. Úlohy, které vám pomůžou s touto příponou patří:
 
-* Vytvoření a nasazení virtuálního počítače automaticky. Také můžete nakonfigurovat virtuální počítač s nejnovější sestavení pomocí úloh Azure File Copy nebo prostředí PowerShell Team Services.
+* Vytvoření a nasazení virtuálního počítače automaticky. Také můžete nakonfigurovat virtuální počítač s nejnovější sestavení pomocí úloh Azure File Copy nebo prostředí PowerShell Azure DevOps služby.
 * Automaticky zachytávat stav virtuálního počítače po testování pro reprodukci chyby na stejný virtuální počítač pro další zkoumání.
 * Pokud už je nepotřebujete, odstraňte virtuální počítač na konci procesu vydávání verzí.
 
-Následující příspěvky nabídka pokyny a informace o použití rozšíření služby Team Services:
+Následující příspěvky nabídka pokyny a informace o použití rozšíření Azure DevOps služby:
 
-* [DevTest Labs a rozšíření Visual Studio Team Services](https://blogs.msdn.microsoft.com/devtestlab/2016/06/15/azure-devtest-labs-vsts-extension/)
-* [Nasazení nového virtuálního počítače v existující testovací prostředí DevTest Labs ze služby Team Services](http://www.visualstudiogeeks.com/blog/DevOps/Deploy-New-VM-To-Existing-AzureDevTestLab-From-VSTS)
-* [Pomocí služby Team Services produktu release management pro průběžné nasazení na DevTest Labs](http://www.visualstudiogeeks.com/blog/DevOps/Use-VSTS-ReleaseManagement-to-Deploy-and-Test-in-AzureDevTestLabs)
+* [DevTest Labs a rozšíření Azure DevOps](https://blogs.msdn.microsoft.com/devtestlab/2016/06/15/azure-devtest-labs-vsts-extension/)
+* [Nasazení nového virtuálního počítače v existující testovací prostředí DevTest Labs ze služeb Azure DevOps](http://www.visualstudiogeeks.com/blog/DevOps/Deploy-New-VM-To-Existing-AzureDevTestLab-From-VSTS)
+* [Pomocí nástroje Azure DevOps služby release management pro průběžné nasazení na DevTest Labs](http://www.visualstudiogeeks.com/blog/DevOps/Use-VSTS-ReleaseManagement-to-Deploy-and-Test-in-AzureDevTestLabs)
 
 Pro další kontinuální integrace (CI) / průběžné doručování (CD) sady nástrojů, které můžete dosáhnout stejné scénáře podle nasazení [šablon Azure Resource Manageru](https://aka.ms/dtlquickstarttemplate) pomocí [rutin prostředí Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md) a [Sady .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/). Můžete také použít [rozhraní REST API pro DevTest Labs](http://aka.ms/dtlrestapis) integrovat sady nástrojů.  
 
@@ -112,7 +112,7 @@ Vlastní image je virtuální pevný disk (VHD). Vzorec je bitovou kopii, která
 
 ## <a name="how-do-i-create-multiple-vms-from-the-same-template-at-once"></a>Jak můžu vytvořit víc virtuálních počítačů ze stejné šablony najednou?
 Máte dvě možnosti, souběžně vytvoření více virtuálních počítačů ze stejné šablony:
-* Můžete použít [rozšíření Visual Studio Team Services úlohy](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks). 
+* Můžete použít [rozšíření Azure DevOps úkolů](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks). 
 * Je možné [generovat šablony Resource Manageru](devtest-lab-add-vm.md#save-azure-resource-manager-template) při vytváření virtuálního počítače, a [nasazení šablony Resource Manageru z prostředí Windows PowerShell](../azure-resource-manager/resource-group-template-deploy.md).
 
 ## <a name="how-do-i-move-my-existing-azure-vms-into-my-devtest-labs-lab"></a>Jak můžu přesunout svoje existující virtuální počítače Azure do Moje testovací prostředí DevTest Labs?
@@ -145,7 +145,7 @@ Chcete-li najít cílový účet úložiště, který je spojen s testovacího p
 2. V nabídce vlevo vyberte **skupiny prostředků**.
 3. Vyhledejte a vyberte skupinu prostředků, který je spojen s testovacího prostředí.
 4. V části **přehled**, vyberte jeden z účtů úložiště.
-5. Vyberte **objekty BLOB**.
+5. Vyberte **Objekty blob**.
 6. Vyhledejte nahrávání v seznamu. Pokud žádný neexistuje, vraťte se ke kroku 4 a zkuste použít jiný účet úložiště.
 7. Použití **URL** jako cíl v příkazu AzCopy.
 

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: douglasl
-ms.openlocfilehash: 8bbc64a34b5ae95e044b95f921770adc9045574c
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 57c691271c2b2673ade40d600162934341e18a81
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42058380"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44300236"
 ---
 # <a name="continuous-integration-and-deployment-in-azure-data-factory"></a>Průběžná integrace a nasazování ve službě Azure Data Factory
 
@@ -53,9 +53,9 @@ Vyberte **načíst soubor** vyberte vyexportované šablony Resource Manageru a 
 ![Otevřete zobrazení kódu zobrazíte připojovací řetězec](media/continuous-integration-deployment/continuous-integration-codeview.png)
 
 ## <a name="continuous-integration-lifecycle"></a>Životní cyklus kontinuální integrace
-Tady je celý životní cyklus pro průběžnou integraci a nasazení, které můžete použít po povolení integrace VSTS GIT v Uživatelském rozhraní služby Data Factory:
+Tady je celý životní cyklus pro průběžnou integraci a nasazení, které můžete použít po povolení integrace Azure DevOps služby GIT v Uživatelském rozhraní služby Data Factory:
 
-1.  Nastavení datové továrny vývoj s využitím VSTS, ve kterém všichni vývojáři mohou vytvářet prostředky Data Factory jako kanály, datové sady a tak dále.
+1.  Nastavení datové továrny vývoj pomocí služeb Azure DevOps, ve kterém všichni vývojáři mohou vytvářet prostředky Data Factory jako kanály, datové sady a tak dále.
 
 1.  Vývojáři pak lze změnit prostředky, například kanály. Jak získávají své změny, můžete vybrat **ladění** na tom, jak se kanál poběží s nejnovější změny.
 
@@ -67,25 +67,25 @@ Tady je celý životní cyklus pro průběžnou integraci a nasazení, které m�
 
 1.  Exportovaná šablona Resource Manageru můžete nasadit s různými soubory parametrů pro objekt pro vytváření testovací a produkční objekt pro vytváření.
 
-## <a name="automate-continuous-integration-with-vsts-releases"></a>Automatizovat průběžné integrace pomocí VSTS vydané verze
+## <a name="automate-continuous-integration-with-azure-devops-services-releases"></a>Automatizovat průběžné integrace s verzemi služby Azure DevOps
 
-Tady je postup nastavení verzí VSTS, abyste mohli automatizovat nasazení služby data factory do různých prostředí.
+Tady je postup nastavení vydání verze služby Azure DevOps, abyste mohli automatizovat nasazení služby data factory do různých prostředí.
 
-![Diagram průběžné integrace pomocí VSTS](media/continuous-integration-deployment/continuous-integration-image12.png)
+![Diagram průběžné integrace se službami Azure DevOps](media/continuous-integration-deployment/continuous-integration-image12.png)
 
 ### <a name="requirements"></a>Požadavky
 
--   Předplatné Azure propojené s Team Foundation Server nebo VSTS pomocí [ *koncový bod služby Azure Resource Manageru*](https://docs.microsoft.com/vsts/build-release/concepts/library/service-endpoints#sep-azure-rm).
+-   Předplatné Azure propojené s Team Foundation Server nebo služby Azure DevOps pomocí [ *koncový bod služby Azure Resource Manageru*](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-rm).
 
--   Objekt pro vytváření dat s VSTS Git, které jsou nakonfigurované.
+-   Objekt pro vytváření dat s Azure DevOps služby Git nakonfigurované.
 
 -   [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) obsahující tajné klíče.
 
-### <a name="set-up-a-vsts-release"></a>Nastavení verze VSTS
+### <a name="set-up-a-azure-devops-services-release"></a>Nastavení verze služby Azure DevOps
 
-1.  Přejděte na stránku VSTS ve stejném projektu, jako je nakonfigurovaný pomocí služby Data Factory.
+1.  Přejděte na stránku služby Azure DevOps ve stejném projektu, jako je nakonfigurovaný pomocí služby Data Factory.
 
-1.  Klikněte na tlačítko v horní nabídce **sestavení a vydání** &gt; **verze** &gt; **definice vydané verze vytvořit**.
+1.  Klikněte na tlačítko v horní nabídce **kanály Azure** &gt; **verze** &gt; **definice vydané verze vytvořit**.
 
     ![](media/continuous-integration-deployment/continuous-integration-image6.png)
 
@@ -113,15 +113,15 @@ Tady je postup nastavení verzí VSTS, abyste mohli automatizovat nasazení slu�
 
     ![](media/continuous-integration-deployment/continuous-integration-image9.png)
 
-1.  Uložte definici verze.
+1.  Uložte kanál pro vydávání verzí.
 
-1.  Vytvořte nové vydání z této definice vydané verze.
+1.  Vytvořte nové vydání z tohoto kanálu pro vydávání verzí.
 
     ![](media/continuous-integration-deployment/continuous-integration-image10.png)
 
 ### <a name="optional---get-the-secrets-from-azure-key-vault"></a>Volitelné – získání tajné klíče z Azure Key Vault
 
-Pokud máte tajných kódů a zajistěte tak předání šablony Azure Resource Manageru, doporučujeme používat Azure Key Vault s verzí VSTS.
+Pokud máte tajných kódů a zajistěte tak předání šablony Azure Resource Manageru, doporučujeme používat Azure Key Vault s verzí služby Azure DevOps.
 
 Existují dva způsoby, jak zpracovat tajné klíče:
 
@@ -148,7 +148,7 @@ Existují dva způsoby, jak zpracovat tajné klíče:
 
     -   Soubor parametrů musí být ve větvi publikovat.
 
-1.  Přidat [úloh služby Azure Key Vault](https://docs.microsoft.com/vsts/build-release/tasks/deploy/azure-key-vault) před nasazením Azure Resource Manageru, je popsáno v předchozí části:
+1.  Přidat [úloh služby Azure Key Vault](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-key-vault) před nasazením Azure Resource Manageru, je popsáno v předchozí části:
 
     -   Vyberte **úlohy** kartu, vytvoří se nový úkol, vyhledejte **Azure Key Vault** a přidejte ji.
 
@@ -156,13 +156,13 @@ Existují dva způsoby, jak zpracovat tajné klíče:
 
     ![](media/continuous-integration-deployment/continuous-integration-image8.png)
 
-### <a name="grant-permissions-to-the-vsts-agent"></a>Udělit oprávnění k agentovi VSTS
-Úloha služby Azure Key Vault může selhat při prvním s chybou přístup byl odepřen. Stažení protokolů pro vydání a vyhledejte `.ps1` soubor pomocí příkazu udělit oprávnění k agentovi VSTS. Příkaz můžete spustit přímo, nebo můžete zkopírovat ID objektu zabezpečení ze souboru a ručně přidat zásady přístupu na webu Azure Portal. (*Získat* a *seznamu* je minimálním předpokladem).
+### <a name="grant-permissions-to-the-azure-devops-services-agent"></a>Udělení oprávnění pro agenta služeb Azure DevOps
+Úloha služby Azure Key Vault může selhat při prvním s chybou přístup byl odepřen. Stažení protokolů pro vydání a vyhledejte `.ps1` soubor pomocí příkazu udělit oprávnění pro agenta služeb Azure DevOps. Příkaz můžete spustit přímo, nebo můžete zkopírovat ID objektu zabezpečení ze souboru a ručně přidat zásady přístupu na webu Azure Portal. (*Získat* a *seznamu* je minimálním předpokladem).
 
 ### <a name="update-active-triggers"></a>Aktualizace active aktivační události
 Nasazení může selhat, pokud se pokusíte aktualizovat active aktivační události. K aktualizaci aktivního aktivačních událostí, budete muset ručně zastavit a spustit po nasazení. K tomuto účelu můžete přidat úkol prostředí Azure Powershell, jak je znázorněno v následujícím příkladu:
 
-1.  Na kartě úlohy v verzí VSTS vyhledejte **prostředí Azure Powershell** a přidejte ji.
+1.  Na kartě úlohy verze služby Azure DevOps, vyhledejte **prostředí Azure Powershell** a přidejte ji.
 
 1.  Zvolte **Azure Resource Manageru** jako připojení zadejte a vyberte své předplatné.
 
@@ -180,7 +180,7 @@ Můžete podobným způsobem a použijte podobně jako kód (s `Start-AzureRmDat
 
 ## <a name="sample-deployment-template"></a>Ukázková šablona nasazení
 
-Tady je ukázka šablony nasazení, který můžete naimportovat ve VSTS.
+Tady je ukázka šablony nasazení, který můžete naimportovat do služby Azure DevOps.
 
 ```json
 {

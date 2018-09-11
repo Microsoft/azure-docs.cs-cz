@@ -1,5 +1,6 @@
 ---
-title: Rychlý úvod k Node.js pro Azure Cognitive Services Text Analytics API | Dokumentace Microsoftu
+title: 'Rychlý start: Volání rozhraní Text Analytics API pomocí Node.js | Dokumentace Microsoftu'
+titleSuffix: Azure Cognitive Services
 description: Získat informace a ukázky kódu můžete rychle začít používat rozhraní API pro analýzu textu ve službě Microsoft Cognitive Services v Azure.
 services: cognitive-services
 documentationcenter: ''
@@ -9,14 +10,14 @@ ms.component: text-analytics
 ms.topic: article
 ms.date: 08/30/2018
 ms.author: ashmaka
-ms.openlocfilehash: 9c4ff79384399cb7efd70393cb65f8ff055251ed
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 6cb02ea6c886b3c784826f41f6c3cb638e7104e0
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43840418"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44297073"
 ---
-# <a name="quickstart-for-text-analytics-api-with-nodejs"></a>Rychlý start pro Text Analytics API s využitím Node.js 
+# <a name="quickstart-using-nodejs-to-call-the-text-analytics-cognitive-service"></a>Rychlý start: Použití Node.js k volání Text Analytics služby Cognitive Services
 <a name="HOLTop"></a>
 
 Tento článek vám ukáže, jak k [rozpoznání jazyka](#Detect), [analýza sentimentu](#SentimentAnalysis), [extrakce klíčových frází](#KeyPhraseExtraction), a [identifikovat propojených entit](#Entities) pomocí [rozhraní Text Analytics API](//go.microsoft.com/fwlink/?LinkID=759711) s využitím Node.JS.

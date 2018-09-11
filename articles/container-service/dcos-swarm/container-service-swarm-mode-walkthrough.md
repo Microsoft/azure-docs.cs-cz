@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/16/2018
 ms.author: iainfou
 ms.custom: ''
-ms.openlocfilehash: d3438f42753cba82a28d16be2b63926c4762b26b
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 35b8ae347181d272dc899f41f07af36a611aa9f0
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421929"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44299147"
 ---
 # <a name="deploy-docker-ce-cluster"></a>Nasazení clusteru Docker CE
 
@@ -169,7 +169,7 @@ V tomto rychlém startu se k vytvoření služby Docker použily předem vytvoř
 
 V tomto rychlém startu jste nasadili cluster Docker Swarm a do něj jste nasadili vícekontejnerovou aplikaci.
 
-Informace o integraci Dockeru Swarm s Visual Studio Team Services najdete v tématu věnovaném průběžné integraci a doručování s využitím Dockeru Swarm a VSTS.
+Další informace o integraci Dockeru swarm s Azure DevOps, i nadále CI/CD s využitím Dockeru Swarm a Azure DevOps.
 
 > [!div class="nextstepaction"]
-> [CI/CD s Docker Swarm a VSTS](./container-service-docker-swarm-setup-ci-cd.md)
+> [Průběžná integrace a Doručování s využitím Dockeru Swarm a Azure DevOps](./container-service-docker-swarm-setup-ci-cd.md)

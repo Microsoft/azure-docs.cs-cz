@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.author: shlo
-ms.openlocfilehash: b457d1ae01e523ac99c6171fa8d2123023ebcd2c
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 8ad587f7aa7aeb5b7176e63b52f6dea8286055a6
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42060081"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44296887"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Vizuální vytváření obsahu v Azure Data Factory
 Azure Data Factory uživatelské rozhraní rozhraní (UX) umožňuje vizuálně vytvoříte a nasadíte prostředky pro službu data factory bez nutnosti psát jakýkoli kód. Můžete přetáhnout aktivity na plátno kanálu, provádějte testovací běhy, využívejte iterativní ladění a nasadit a monitorovat spuštění kanálů. Existují dvě metody pro provádění vizuálního vytváření pomocí uživatelského rozhraní:
 
 - Autor přímo ve službě Data Factory.
-- Autor integrace Visual Studio Team Services (VSTS) Git pro spolupráci, správy zdrojového kódu nebo Správa verzí.
+- Autor s integrací Azure DevOps Git pro spolupráci, správy zdrojového kódu nebo Správa verzí.
 
 ## <a name="author-directly-with-the-data-factory-service"></a>Autor přímo ve službě Data Factory
-Vizuální vytváření obsahu pomocí služby Data Factory se liší od vizuálním vytváření s VSTS dvěma způsoby:
+Vizuální vytváření obsahu pomocí služby Data Factory se liší od vizuálním vytváření s Azure DevOps dvěma způsoby:
 
 - Služba Data Factory neobsahuje úložiště pro ukládání entity JSON pro vaše změny.
 - Služba Data Factory není optimalizovaná pro spolupráci a správu verzí.
@@ -38,39 +38,39 @@ Při použití uživatelského rozhraní **plátno pro vytváření obsahu** vyt
 
 ![Režim publikování](media/author-visually/data-factory-publish.png)
 
-## <a name="author-with-vsts-git-integration"></a>Vytváření s využitím integrace VSTS Git
-Pro práci na vaše kanály data factory vizuálním vytváření s využitím integrace VSTS Git podporuje správu zdrojového kódu a spolupráci. Datové továrny můžete přidružit účet úložiště VSTS Git pro správy zdrojového kódu, spolupráci, správu verzí a tak dále. Jeden účet úložiště VSTS Git můžete mít více úložišť, ale může být přidružený pouze jeden datový objekt pro vytváření úložiště VSTS Git. Pokud nemáte účet VSTS nebo úložišti, postupujte podle [tyto pokyny](https://docs.microsoft.com/vsts/accounts/create-account-msa-or-work-student) k vytvoření vašich prostředků.
+## <a name="author-with-azure-devops-git-integration"></a>Autor s integrací Azure DevOps Git
+Pro práci na vaše kanály data factory vizuálního vytváření s integrací Azure DevOps Git podporuje správu zdrojového kódu a spolupráci. Datové továrny můžete přidružit úložiště Git v Azure DevOps organizace správu zdrojového kódu, spolupráci, správu verzí a tak dále. Jedna organizace Git v Azure DevOps může mít více úložišť, ale úložiště Git v Azure DevOps může být přidružený pouze jeden služby data factory. Pokud nemáte Azure DevOps organizace nebo úložiště, postupujte podle [tyto pokyny](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student) k vytvoření vašich prostředků.
 
 > [!NOTE]
-> Skript a datových souborů můžete uložit v úložišti Git služby VSTS. Ale budete muset ručně nahrání souborů do služby Azure Storage. Kanál služby Data Factory není automaticky odeslat soubory skriptu nebo data uložená v úložišti Git služby VSTS do služby Azure Storage.
+> V úložišti Git v Azure DevOps můžete ukládat soubory skriptu a data. Ale budete muset ručně nahrání souborů do služby Azure Storage. Kanál služby Data Factory není automaticky odeslat soubory skriptu nebo data uložená v úložišti DevOps Git v Azure do služby Azure Storage.
 
-### <a name="configure-a-vsts-git-repository-with-azure-data-factory"></a>Konfigurace úložiště VSTS Git s Azure Data Factory
-Úložiště VSTS Git můžete nakonfigurovat pomocí služby data factory pomocí dvou metod.
+### <a name="configure-an-azure-devops-git-repository-with-azure-data-factory"></a>Konfigurace úložiště Git v Azure DevOps pomocí služby Azure Data Factory
+Úložiště Git v Azure DevOps můžete nakonfigurovat pomocí služby data factory pomocí dvou metod.
 
-#### <a name="method1"></a> Konfigurace metody 1 (úložiště VSTS Git): Stránka Začínáme
+#### <a name="method1"></a> Konfigurace metody 1 (úložiště Git v Azure DevOps): Stránka Začínáme
 
 Ve službě Azure Data Factory, přejděte **pusťme se do práce** stránky. Vyberte **konfigurace úložiště kódu**:
 
-![Konfigurace úložiště kódu VSTS](media/author-visually/configure-repo.png)
+![Konfigurace úložiště kódu Azure DevOps](media/author-visually/configure-repo.png)
 
 **Nastavení úložiště** otevře se podokno konfigurace:
 
 ![Konfigurovat nastavení úložiště kódu](media/author-visually/repo-settings.png)
 
-V podokně se zobrazí nastavení úložiště VSTS následovně:
+V podokně se zobrazí následující kód Azure DevOps nastavení úložiště:
 
 | Nastavení | Popis | Hodnota |
 |:--- |:--- |:--- |
-| **Typ úložiště** | Typ úložištěm kódu VSTS.<br/>**Poznámka:**: GitHub v tuto chvíli nepodporuje. | Visual Studio Team Services Git |
+| **Typ úložiště** | Typ úložiště kódu Azure DevOps.<br/>**Poznámka:**: GitHub v tuto chvíli nepodporuje. | Azure Dev Ops Git |
 | **Azure Active Directory** | Název tenanta Azure AD. | <your tenant name> |
-| **Účet služby Visual Studio Team Services** | Název účtu VSTS. Můžete najít název účtu VSTS na `https://{account name}.visualstudio.com`. Je možné [přihlásit ke svému účtu VSTS](https://www.visualstudio.com/team-services/git/) pro přístup k profilu Visual Studio a zobrazit projekty a úložiště. | <your account name> |
-| **ProjectName** | Název projektu VSTS. Můžete najít na název projektu VSTS `https://{account name}.visualstudio.com/{project name}`. | <your VSTS project name> |
-| **RepositoryName** | Název úložiště kódu VSTS. Úložiště Git pro správu zdrojového kódu, jak se projekt rozrůstá obsahují projekty VSTS. Můžete vytvořit nové úložiště nebo použít existující úložiště, který je již ve vašem projektu. | <your VSTS code repository name> |
-| **Spolupráce větve** | Větvi VSTS spolupráci, které slouží k publikování. Ve výchozím nastavení je to `master`. Toto nastavení změňte, v případě, že chcete publikovat prostředky z jiné větve. | <your collaboration branch name> |
-| **Kořenová složka** | Kořenové složky ve vaší větvi spolupráci VSTS. | <your root folder name> |
-| **Importovat do úložiště stávající prostředky Data Factory** | Určuje, jestli se má naimportovat stávající prostředky data factory z uživatelského rozhraní **plátno pro vytváření obsahu** do úložiště VSTS Git. Vyberte pole pro import prostředky data factory do přidružené úložiště Git ve formátu JSON. Tato akce exportuje každého prostředku zvlášť (to znamená, propojené služby a datové sady se exportují do samostatných JSONs). Když toto políčko není zaškrtnuto, nenaimportují se existující prostředky. | Vybrané (výchozí) |
+| **Organizace Azure DevOps** | Název vaší organizace Azure DevOps. Můžete vyhledat název vaší organizace Azure DevOps v `https://{organization name}.visualstudio.com`. Je možné [Přihlaste se k vaší organizaci Azure DevOps](https://www.visualstudio.com/team-services/git/) pro přístup k profilu Visual Studio a zobrazit projekty a úložiště. | <your organization name> |
+| **ProjectName** | Název projektu Azure DevOps. Můžete vyhledat název projektu Azure DevOps v `https://{organization name}.visualstudio.com/{project name}`. | <your Azure DevOps project name> |
+| **RepositoryName** | Název úložiště Azure DevOps v kódu. Projekty Azure DevOps obsahovat úložiště Git pro správu zdrojového kódu, jak se projekt rozrůstá. Můžete vytvořit nové úložiště nebo použít existující úložiště, který je již ve vašem projektu. | <your Azure DevOps code repository name> |
+| **Spolupráce větve** | Větvi spolupráci Azure DevOps, které slouží k publikování. Ve výchozím nastavení je to `master`. Toto nastavení změňte, v případě, že chcete publikovat prostředky z jiné větve. | <your collaboration branch name> |
+| **Kořenová složka** | Kořenové složky ve vaší větvi spolupráci Azure DevOps. | <your root folder name> |
+| **Importovat do úložiště stávající prostředky Data Factory** | Určuje, jestli se má naimportovat stávající prostředky data factory z uživatelského rozhraní **plátno pro vytváření obsahu** do úložiště Git v Azure DevOps. Vyberte pole pro import prostředky data factory do přidružené úložiště Git ve formátu JSON. Tato akce exportuje každého prostředku zvlášť (to znamená, propojené služby a datové sady se exportují do samostatných JSONs). Když toto políčko není zaškrtnuto, nenaimportují se existující prostředky. | Vybrané (výchozí) |
 
-#### <a name="configuration-method-2--vsts-git-repo-ux-authoring-canvas"></a>Metoda konfigurace 2 (úložiště VSTS Git): UX plátno pro vytváření obsahu
+#### <a name="configuration-method-2--azure-devops-git-repo-ux-authoring-canvas"></a>Metoda konfigurace 2 (úložiště Git v Azure DevOps): UX plátno pro vytváření obsahu
 V uživatelském prostředí Azure Data Factory **plátno pro vytváření obsahu**, vyhledejte svou datovou továrnu. Vyberte **služby Data Factory** rozevírací nabídky a pak vyberte **konfigurace úložiště kódu**.
 
 Otevře se podokno konfigurace. Podrobnosti o nastavení konfigurace najdete v popisech v <a href="#method1">metody konfigurace 1</a>.
@@ -79,7 +79,7 @@ Otevře se podokno konfigurace. Podrobnosti o nastavení konfigurace najdete v p
 
 ## <a name="use-a-different-azure-active-directory-tenant"></a>Použít na jiného tenanta Azure Active Directory
 
-Úložiště VSTS Git můžete vytvořit v jiném tenantovi Azure Active Directory. Pokud chcete zadat jinou tenanta Azure AD, musíte mít oprávnění správce pro předplatné Azure, které používáte.
+Úložiště Azure DevOps Git můžete vytvořit v jiném tenantovi Azure Active Directory. Pokud chcete zadat jinou tenanta Azure AD, musíte mít oprávnění správce pro předplatné Azure, které používáte.
 
 ## <a name="switch-to-a-different-git-repo"></a>Přepnout na jiné úložiště Git
 
@@ -92,11 +92,11 @@ Po odebrání přidružení k aktuální úložiště, můžete nakonfigurovat n
 ## <a name="use-version-control"></a>Správa verzí
 Systémy správy verzí (označované také jako _správy zdrojového kódu_) umožňují vývojářům spolupráce na kódu a sledování změn provedených na kód základní. Správy zdrojového kódu je to důležitý nástroj pro vývojáře více projekty.
 
-Každé úložiště VSTS Git, který je spojen s data factory má větev spolupráci. (`master` je výchozím nastavení spolupráci větev). Uživatelé mohou také vytvářet větve funkcí kliknutím **+ novou větev** a vývoj v větve funkcí.
+Každá Azure DevOps úložiště Git, který je spojen s data factory má větev spolupráci. (`master` je výchozím nastavení spolupráci větev). Uživatelé mohou také vytvářet větve funkcí kliknutím **+ novou větev** a vývoj v větve funkcí.
 
 ![Změnit kód synchronizace nebo publikování](media/author-visually/sync-publish.png)
 
-Jakmile budete připraveni s vývojem pro funkce ve vaší větvi funkce, můžete kliknout na **vytvořit žádost o přijetí změn**. Tato akce se provede k VSTS Git, kde může vyvolat žádosti o přijetí změn, revizemi kódu a sloučit změny do větve spolupráci. (`master` je výchozí nastavení). Jsou povoleny pouze pro publikování do služby Data Factory ze své větve spolupráci. 
+Jakmile budete připraveni s vývojem pro funkce ve vaší větvi funkce, můžete kliknout na **vytvořit žádost o přijetí změn**. Tato akce se provede Azure DevOps Git, kde může vyvolat žádosti o přijetí změn, revizemi kódu a sloučit změny do větve spolupráci. (`master` je výchozí nastavení). Jsou povoleny pouze pro publikování do služby Data Factory ze své větve spolupráci. 
 
 ![Vytvořte novou žádost o přijetí změn](media/author-visually/create-pull-request.png)
 
@@ -140,11 +140,11 @@ Ve službě Azure Data Factory, přejděte **pusťme se do práce** stránky. Vy
 
 ![Nastavení úložiště GitHub](media/author-visually/github-integration-image2.png)
 
-V podokně se zobrazí nastavení úložiště VSTS následovně:
+V podokně se zobrazí následující kód Azure DevOps nastavení úložiště:
 
 | **Nastavení**                                              | **Popis**                                                                                                                                                                                                                                                                                                                                                                                                                   | **Hodnota**          |
 |----------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
-| **Typ úložiště**                                      | Typ úložištěm kódu VSTS.                                                                                                                                                                                                                                                                                                                                                                                             | GitHubu             |
+| **Typ úložiště**                                      | Typ úložiště kódu Azure DevOps.                                                                                                                                                                                                                                                                                                                                                                                             | GitHubu             |
 | **Účet GitHub**                                       | Název účtu GitHub. Tento název najdete z https://github.com/{account název} / {název úložiště}. Přejdete na tuto stránku vyzve k zadání přihlašovacích údajů Githubu OAuth ke svému účtu GitHub.                                                                                                                                                                                                                                               |                    |
 | **RepositoryName**                                       | Název úložiště GitHub kódu. Účtů GitHub obsahovat úložiště Git pro správu zdrojového kódu. Můžete vytvořit nové úložiště nebo použít existující úložiště, který je již ve vašem účtu.                                                                                                                                                                                                                              |                    |
 | **Spolupráce větve**                                 | Větvi Githubu spolupráci, které slouží k publikování. Ve výchozím nastavení je hlavní. Toto nastavení změňte, v případě, že chcete publikovat prostředky z jiné větve.                                                                                                                                                                                                                                                               |                    |
@@ -172,11 +172,11 @@ Ve službě Azure Data Factory, přejděte **pusťme se do práce** stránky. Vy
 
 ![Nastavení úložiště GitHub](media/author-visually/github-integration-image3.png)
 
-V podokně se zobrazí nastavení úložiště VSTS následovně:
+V podokně se zobrazí následující kód Azure DevOps nastavení úložiště:
 
 | **Nastavení**                                              | **Popis**                                                                                                                                                                                                                                                                                                                                                                                                                   | **Hodnota**          |
 |----------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
-| **Typ úložiště**                                      | Typ úložištěm kódu VSTS.                                                                                                                                                                                                                                                                                                                                                                                             | GitHubu             |
+| **Typ úložiště**                                      | Typ úložiště kódu Azure DevOps.                                                                                                                                                                                                                                                                                                                                                                                             | GitHubu             |
 | **Používání Githubu Enterprise**                                | Pokud chcete vybrat Githubu Enterprise                                                                                                                                                                                                                                                                                                                                                                                              |                    |
 | **Adresa URL Githubu Enterprise**                                | Adresa URL kořenového Githubu Enterprise. Příklad: https://github.mydomain.com                                                                                                                                                                                                                                                                                                                                                          |                    |
 | **Účet GitHub**                                       | Název účtu GitHub. Tento název najdete z https://github.com/{account název} / {název úložiště}. Přejdete na tuto stránku vyzve k zadání přihlašovacích údajů Githubu OAuth ke svému účtu GitHub.                                                                                                                                                                                                                                               |                    |

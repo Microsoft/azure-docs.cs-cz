@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/05/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 4dfeff0e22a541a39a59c37c869af41a7e444fa6
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: c33d1fe1385619420215ec0f0fa3b0a2f90dddc0
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43842494"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44299453"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>Přidání hostitelské servery pro poskytovatele prostředků SQL
 
@@ -45,6 +45,9 @@ Předtím, než přidáte SQL, který je hostitelem serveru, zkontrolujte násle
 Image virtuálních počítačů SQL IaaS jsou dostupné prostřednictvím funkce pro správu webu Marketplace. Tyto Image jsou stejné jako virtuální počítače SQL, které jsou dostupné v Azure.
 
 Ujistěte se, že můžete kdykoli stáhnout nejnovější verzi **rozšíření SQL IaaS** před nasazením virtuálního počítače SQL pomocí položky Marketplace. Rozšíření IaaS a odpovídající portál vylepšení poskytují další funkce, jako jsou automatické opravy a zálohování. Další informace o tomto rozšíření najdete v tématu [automatizace úloh správy v Azure Virtual Machines pomocí rozšíření agenta SQL serveru](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension).
+
+> [!NOTE]
+> Rozšíření SQL IaaS je _požadované_ pro všechny SQL na imagích Windows na webu Marketplace; se nepodaří nasadit, když jste se nepodařilo stáhnout rozšíření virtuálního počítače. Není použit s imagí virtuálních počítačů založených na Linuxu SQL.
 
 Existují další možnosti pro virtuální počítače s SQL, včetně šablon v nasazení [galerii pro rychlý start Azure Stack](https://github.com/Azure/AzureStack-QuickStart-Templates).
 
@@ -125,7 +128,7 @@ Pokud chcete povolit, automatická synchronizace replik indexů na všechny inst
   GO
   ```
 
-Všimněte si, že skupina dostupnosti musí být uzavřena do hranatých závorek.
+Skupina dostupnosti musí být uzavřeny do hranatých závorek.
 
 Na sekundární uzly spusťte následující příkaz SQL:
 

@@ -17,12 +17,12 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b6055dbab85acb1e5fed9679a5072144bc84712c
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: f58c156019048a4e6b08267bf28325857ec69b3a
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42917119"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302199"
 ---
 # <a name="transfer-ownership-of-an-azure-subscription-to-another-account"></a>Přenos vlastnictví předplatného Azure na jiný účet
 
@@ -33,7 +33,7 @@ Převod vašeho předplatného na jiného uživatele v centru účtů můžete z
 > Pokud přenesete předplatné na nový Azure AD tenanta, všechna přiřazení rolí v [řízení přístupu na základě role (RBAC)](../role-based-access-control/overview.md) se trvale odstraní z tenanta zdroje a nebudou migrována k cílovému tenantovi.
 
 > [!div class="nextstepaction"]
-> [Pomozte nám vylepšit Azure fakturační dokumentace](https://go.microsoft.com/fwlink/p/?linkid=2010091)
+> [Pomozte vylepšit dokumentaci k fakturaci Azure](https://go.microsoft.com/fwlink/p/?linkid=2010091)
 
 ## <a name="transfer-ownership-of-an-azure-subscription"></a>Převod vlastnictví předplatného Azure
 
@@ -77,7 +77,7 @@ Podnikový správce může převést vlastnictví předplatného v rámci regist
 
 ## <a name="next-steps-after-accepting-ownership-of-a-subscription"></a>Další kroky následující po přijetí vlastnictví předplatného
 
-1. Teď jste správce účtu. Zkontrolovat a aktualizovat Správce služby, Spolusprávci a ostatní role RBAC. Další informace najdete v tématu [přidání nebo změna role Správce služby Azure, které spravují předplatné nebo služby](billing-add-change-azure-subscription-administrator.md).
+1. Teď jste správce účtu. Zkontrolovat a aktualizovat Správce služby, Spolusprávci a ostatní role RBAC. Další informace najdete v tématu [přidat nebo změnit správce předplatného Azure](billing-add-change-azure-subscription-administrator.md) a [správě přístupu pomocí RBAC a webu Azure portal](../role-based-access-control/role-assignments-portal.md).
 1. Aktualizace přihlašovacích údajů spojené se službami tohoto předplatného, včetně:
    1. Certifikáty pro správu, které uživateli udělit oprávnění správce pro prostředky předplatného. Další informace najdete v tématu [vytvoření a nahrání certifikátu pro správu pro Azure](../cloud-services/cloud-services-certs-create.md)
    1. Přístupové klíče pro služby, jako jsou úložiště. Další informace najdete v tématu [účty Azure storage](../storage/common/storage-create-storage-account.md)

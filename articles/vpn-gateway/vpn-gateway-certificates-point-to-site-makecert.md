@@ -4,36 +4,20 @@ description: Vytvořit certifikát podepsaný svým držitelem, exportujte veře
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: jpconnock
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 02/12/2018
+ms.date: 09/05/2018
 ms.author: cherylmc
-ms.openlocfilehash: b2f31761e4560cf4b9b9a5b92f5de9982a663a75
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 3ff7e754a55e15a8fa8a32f846efbbbe5025e46e
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38651783"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44297855"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-connections-using-makecert"></a>Generování a export certifikátů pro připojení Point-to-Site pomocí nástroje MakeCert
 
-Připojení point-to-Site používat certifikáty k ověřování. Tento článek ukazuje, jak vytvořit certifikát podepsaný svým držitelem a generování klientských certifikátů pomocí nástroje MakeCert. Pokud chcete postup konfigurace Point-to-Site, například jak nahrát kořenových certifikátů, vyberte jednu z "Konfigurace Point-to-Site" články z následujícího seznamu:
-
-> [!div class="op_single_selector"]
-> * [Vytvoření certifikátů podepsaných svým držitelem – PowerShell](vpn-gateway-certificates-point-to-site.md)
-> * [Vytvoření certifikátů podepsaných svým držitelem – použití nástroje MakeCert](vpn-gateway-certificates-point-to-site-makecert.md)
-> * [Konfigurace Point-to-Site – Resource Manager – Azure portal](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
-> * [Konfigurace Point-to-Site – Resource Manager – PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
-> * [Konfigurace Point-to-Site – Classic – Azure portal](vpn-gateway-howto-point-to-site-classic-azure-portal.md)
-> 
-> 
+Připojení point-to-Site používat certifikáty k ověřování. Tento článek ukazuje, jak vytvořit certifikát podepsaný svým držitelem a generování klientských certifikátů pomocí nástroje MakeCert. Pokud hledáte pokyny jiným certifikátem, přečtěte si téma [certifikátů – PowerShell](vpn-gateway-certificates-point-to-site.md) nebo [certifikáty – Linux](vpn-gateway-certificates-point-to-site-linux.md).
 
 Přestože doporučujeme používat [kroky Windows 10 PowerShell](vpn-gateway-certificates-point-to-site.md) k vytvoření certifikátů, poskytujeme jako volitelná metoda tyto pokyny pro MakeCert. Certifikáty, které vygenerujete pomocí některé z metod se dá nainstalovat na [všechny podporované klientské operační systémy](vpn-gateway-howto-point-to-site-resource-manager-portal.md#faq). Použití nástroje MakeCert však má následující omezení:
 

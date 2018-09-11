@@ -11,15 +11,15 @@ ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: bryanla
-ms.openlocfilehash: a319dc670b5b1dab163b2d3aa623fc4fb9ce1c3a
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: dae5e1ab6244d2898bc218ed5db3b6b2b90150cf
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42054420"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44294049"
 ---
 # <a name="common-parameters-and-headers"></a>Běžné parametry a záhlaví
 

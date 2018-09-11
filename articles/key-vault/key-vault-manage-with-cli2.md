@@ -11,15 +11,15 @@ ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/28/2018
 ms.author: barclayn
-ms.openlocfilehash: 7d2b38a27644eed088f4a204cf989f44346e1654
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: f88e98561a88380fbe40ecc9627ffabe39b0071c
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43126907"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44295170"
 ---
 # <a name="manage-key-vault-using-cli-20"></a>Správa služby Key Vault pomocí CLI 2.0
 

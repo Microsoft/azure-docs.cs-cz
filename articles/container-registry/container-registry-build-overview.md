@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 08/01/2018
 ms.author: marsma
-ms.openlocfilehash: 63bbd9b5711330207c34ac4aa05aac3a71304653
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 5c5e41f1baad8bd49f4fa2889ef0677d69db10da
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413575"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44299861"
 ---
 # <a name="automate-os-and-framework-patching-with-acr-build"></a>Automatizace operačního systému a rozhraní framework opravy s využitím ACR buildu
 
@@ -31,7 +31,7 @@ Image kontejneru aktivační události sestavení automaticky, když je kód pot
 
 ## <a name="quick-build-inner-loop-extended-to-the-cloud"></a>Rychlé sestavení: vnitřní smyčky rozšířit do cloudu
 
-Začátek správy životního cyklu spuštěna před vývojáře potvrdit své první řádky kódu. ACR buildu [rychlé sestavení](container-registry-tutorial-quick-build.md) funkce umožňuje prostředí integrované místního vývoje vnitřní smyčky, snižování zátěže systému souborů sestavení do Azure. S rychlé sestavení můžete ověřit vaše definice sestavení automatizované před potvrzením kódu.
+Začátek správy životního cyklu spuštěna před vývojáře potvrdit své první řádky kódu. ACR buildu [rychlé sestavení](container-registry-tutorial-quick-build.md) funkce umožňuje prostředí integrované místního vývoje vnitřní smyčky, snižování zátěže systému souborů sestavení do Azure. S rychlé sestavení můžete ověřit vaše kanály automatizovaných sestavení před potvrzením kódu.
 
 Pomocí známé `docker build` formátu, [az acr sestavení] [ az-acr-build] příkaz v rozhraní příkazového řádku Azure má **kontextu** (sadu souborů pro sestavení), je odesílá do služby ACR buildu a ve výchozím nastavení, nahraje sestavenou image do jeho registru po dokončení.
 

@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/30/2018
+ms.date: 09/09/2018
 ms.author: barbkess
 ms.reviewer: asmalser,luleon
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 928e4811f15953313df167375043231478f5c11a
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 3dafef052f181a961cdf30cb647328ee1b2db601
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42058658"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44299912"
 ---
 # <a name="configure-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>Konfigurace jednotného přihlašování k aplikacím, které nejsou v galerii aplikací Azure Active Directory
 
@@ -42,17 +42,17 @@ Tyto funkce, označované také jako *šablony pro integraci aplikací*zadejte z
 ## <a name="adding-an-unlisted-application"></a>Přidání neuvedené aplikace
 K připojení aplikace pomocí šablony integrace aplikace, přihlaste se k webu Azure portal pomocí účtu správce Azure Active Directory. Přejděte **služby Active Directory > podnikové aplikace > nové aplikace > aplikace mimo galerii** vyberte **přidat**a potom **přidat aplikaci z Galerie** .
 
-  ![](./media/active-directory-saas-custom-apps/customapp1.png)
+  ![Přidání aplikace](./media/active-directory-saas-custom-apps/customapp1.png)
 
 V galerii aplikací můžete přidat neuvedené aplikace tak, že vyberete **aplikace mimo galerii** dlaždici, která je zobrazena ve výsledcích hledání, pokud požadované aplikace se nenašla. Jakmile zadáte název vaší aplikace, můžete nakonfigurovat, volby jednotného přihlašování a chování. 
 
 **Rychlý tip**: jako osvědčený postup, můžete zkontrolovat, jestli aplikace již existuje v galerii aplikací pomocí funkce vyhledávání. Pokud je nalezen aplikace a její popis uvádí jednotného přihlašování, pak aplikaci již podporují pro federované jednotné přihlašování.
 
-  ![](./media/active-directory-saas-custom-apps/customapp2.png)
+  ![Search](./media/active-directory-saas-custom-apps/customapp2.png)
 
 Přidání aplikace tímto způsobem poskytuje podobné možnosti jako na jeden k dispozici pro předběžně integrované aplikace. Pokud chcete začít, vyberte **konfigurovat Single Sign-On** nebo klikněte na **jednotného přihlašování** levé navigační nabídce aplikace. Na další obrazovce zobrazí možnosti pro konfiguraci jednotného přihlašování. Tyto možnosti jsou popsány v následujících částech tohoto článku.
   
-![](./media/active-directory-saas-custom-apps/customapp3.png)
+![Možnosti konfigurace](./media/active-directory-saas-custom-apps/customapp3.png)
 
 ## <a name="saml-based-single-sign-on"></a>Jednotné přihlašování pomocí SAML
 Tuto možnost použijte ke konfiguraci ověřování na základě SAML pro aplikaci. To vyžaduje, aby podporoval aplikace SAML 2.0. Mají shromažďovat informace o tom, jak používat funkce SAML aplikace, než budete pokračovat. Dokončování následujících částí nakonfigurovat jednotné přihlašování mezi aplikací a službou Azure AD.
@@ -98,7 +98,7 @@ Když se uživatel přihlásí k aplikaci, Azure AD vydá SAML token aplikaci, k
 
 Při prohlížení nebo úpravách deklarace identity odesílají v tokenu SAML pro aplikaci v rámci **atributy** kartu.
 
-  ![](./media/active-directory-saas-custom-apps/customapp7.png)
+  ![Atributy](./media/active-directory-saas-custom-apps/customapp7.png)
 
 Existují dva důvody, proč může být potřeba upravit deklarací identity vystavených v tokenu SAML:
 
@@ -138,7 +138,7 @@ Jakmile vaše aplikace byla nakonfigurovaná pro použití služby Azure AD jako
 
 Přiřadit uživatele nebo skupinu do vaší aplikace, klikněte na tlačítko **přiřadit uživatele** tlačítko. Vyberte uživatele nebo skupiny, které chcete přiřadit a pak vyberte **přiřadit** tlačítko.
 
-  ![](./media/active-directory-saas-custom-apps/customapp6.png)
+  ![Přiřazení uživatelů](./media/active-directory-saas-custom-apps/customapp6.png)
 
 Přiřazení uživatele vám umožní vystavit token pro uživatele Azure AD. Navíc způsobí, že dlaždice pro tuto aplikaci zobrazit uživatele přístupovém panelu. Dlaždici aplikace se také zobrazí ve Spouštěči aplikací Office 365, pokud uživatel používá Office 365. 
 
@@ -175,5 +175,5 @@ Po výběru **Další**, zobrazí se výzva k zadání adresu URL aplikace propo
 
 - [Rejstřík článků o správě aplikací ve službě Azure Active Directory](active-directory-apps-index.md)
 - [Přizpůsobení deklarací identity vystavených v tokenu SAML pro předběžně integrované aplikace](active-directory-saml-claims-customization.md)
-- [Řešení potíží s založené na SAML jednotného přihlašování](active-directory-saml-debugging.md)
+- [Řešení potíží s založené na SAML jednotného přihlašování](develop/howto-v1-debug-saml-sso-issues.md)
 

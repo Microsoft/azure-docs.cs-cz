@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
-ms.openlocfilehash: ae34355485f7d5081cc11ce4dd36df5ba81ae320
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 82ffcc6f891a64650375121b9418daad33dc2628
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041224"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44301688"
 ---
 # <a name="test-your-azure-data-lake-analytics-code"></a>Testování kódu Azure Data Lake Analytics
 
@@ -111,11 +111,11 @@ Po zavolání funkce UDO můžete ověřit výsledky prostřednictvím schématu
 
 Po vytvoření testovacího projektu můžete spustit všechny Testové případy ale **Průzkumníka testů > seznam stop**, nebo klikněte pravým tlačítkem na soubor .cs a zvolte **spustit testy**.
 
-## <a name="run-test-cases-in-visual-studio-team-service"></a>Spouštění testovacích případů v aplikaci Visual Studio Team Service
+## <a name="run-test-cases-in-azure-devops"></a>Spouštění testovacích případů v Azure DevOps
 
-Obě **projektů testování skriptů U-SQL** a **testovacích projektů C# UDO** dědit projektů testů jednotek C#. [Úlohy test sady Visual Studio](https://docs.microsoft.com/vsts/pipelines/test/getting-started-with-continuous-testing?view=vsts) v sadě Visual Studio Team Services, můžete spustit tyto testovací případy. 
+Obě **projektů testování skriptů U-SQL** a **testovacích projektů C# UDO** dědit projektů testů jednotek C#. [Úlohy test sady Visual Studio](https://docs.microsoft.com/azure/devops/pipelines/test/getting-started-with-continuous-testing?view=vsts) v Azure DevOps můžete spustit tyto testovací případy. 
 
-### <a name="run-u-sql-test-cases-in-visual-studio-team-service"></a>Spouštění testovacích případů U-SQL ve službě Visual Studio Team Service
+### <a name="run-u-sql-test-cases-in-azure-devops"></a>Spouštění testovacích případů U-SQL v Azure DevOps
 
 Pro testování U-SQL, ujistěte se, že načtete `CPPSDK` na sestavovacím počítači a pak je předat `CPPSDK` cestu k USqlScriptTestRunner (cppSdkFolderFullPath: @"").
 
@@ -126,16 +126,16 @@ CPPSDK je balíček, který zahrnuje Microsoft Visual C++ 14 a sada Windows SDK 
 - Pro sadu Visual Studio 2015 je v části `C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\Microsoft Azure Data Lake Tools for Visual Studio 2015\X.X.XXXX.X\CppSDK`
 - Pro Visual Studio 2017 je v části `C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\SDK\ScopeCppSDK`
 
-**Příprava CPPSDK v agentovi sestavení Visual Studio Team Services**
+**Příprava CPPSDK v agentovi sestavení Azure DevOps**
 
-Nejběžnější způsob přípravy CPPSDK závislostí ve Visual Studio Team Service je následujícím způsobem:
+Nejběžnější způsob přípravy CPPSDK závislost v Azure DevOps je následujícím způsobem:
 
 1.  Složky, která obsahuje knihovny CPPSDK ZIP.
 2.  Zkontrolujte v souboru .zip do systému správy zdrojů. (Soubor .zip zajišťuje změnami všechny knihovny ve složce CPPSDK tak, že některé soubory nejsou ignoruje ".gitignore".)   
 3.  Rozbalte soubor ZIP v kanálu sestavení.
 4.  Bod `USqlScriptTestRunner` do této složky rozbaleny v počítači sestavení.
 
-### <a name="run-c-udo-test-cases-in-visual-studio-team-services"></a>Spouštění jazyka C# UDO testovacích případů v sadě Visual Studio Team Services
+### <a name="run-c-udo-test-cases-in-azure-devops"></a>Spouštění jazyka C# UDO testovacích případů v Azure DevOps
 
 Pro C# UDO test Ujistěte se, že chcete-li odkazovat na následující sestavení, které jsou potřeba pro UDO. Pokud se budete odkazovat na ně prostřednictvím [balíček Nuget Microsoft.Azure.DataLake.USQL.Interfaces](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.Interfaces/), ujistěte se, že ve vašem kanálu sestavení přidáte úlohu obnovení NuGet.
 

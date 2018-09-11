@@ -10,8 +10,7 @@ Vytvoření a správa virtuálních počítačů Azure (VM) konzistentním způs
     - [Azure Automation](#azure-automation) může provádět akce v Azure a místní infrastruktuře.
 
 - Automatizace nasazení aplikací a doručování
-    - Mezi příklady patří [Visual Studio Team Services](#visual-studio-team-services) a [Jenkins](#jenkins).
-
+    - Mezi příklady patří [Azure DevOps služby](#visual-studio-team-services) a [Jenkins](#jenkins).
 
 ## <a name="ansible"></a>Ansible
 [Ansible](https://www.ansible.com/) je modul služby automation pro správu konfigurace, vytvoření virtuálního počítače nebo nasazení aplikace. Ansible používá model bez agentů, obvykle s klíči SSH k ověřování a správě cílového počítače. Úlohy konfigurace jsou definovány v playbooky, s celou řadou Ansible modulů dostupných provádět konkrétní úlohy. Další informace najdete v tématu [funguje jak Ansible](https://www.ansible.com/how-ansible-works).
@@ -52,8 +51,8 @@ Cloud-init navíc funguje v různých distribucích. K instalaci balíčku tak n
 |Canonical |UbuntuServer |16.04-LTS |nejnovější |ano | 
 |Canonical |UbuntuServer |14.04.5-LTS |nejnovější |ano |
 |CoreOS |CoreOS |Stable |nejnovější |ano |
-|OpenLogic |CentOS |7-CI |nejnovější |náhled |
-|RedHat |RHEL |7-RAW-CI |nejnovější |náhled |
+|OpenLogic |CentOS |7-CI |nejnovější |preview |
+|RedHat |RHEL |7-RAW-CI |nejnovější |preview |
 
 Přečtěte si další informace o cloud-init na Azure:
 
@@ -114,12 +113,12 @@ Naučte se:
 - [Použití Azure Automation DSC](../articles/automation/automation-dsc-getting-started.md).
 
 
-## <a name="visual-studio-team-services"></a>Visual Studio Team Services
-[Team Services](https://www.visualstudio.com/team-services/) je sada nástrojů, které umožňují sdílení a sledování kódu, pomocí automatizovaného sestavení a vytvoření kompletní průběžnou integraci a vývoj (CI/CD) kanálu. Team Services se integruje se sadou Visual Studio a jiných editorech zjednodušit využití. Team Services můžete také vytvořit a konfigurovat virtuální počítače Azure a pak nasaďte kód na ně.
+## <a name="azure-devops-services"></a>Azure DevOps Services
+[Služby Azure DevOps](https://www.visualstudio.com/team-services/) je sada nástrojů, které umožňují sdílení a sledování kódu, pomocí automatizovaného sestavení a vytvoření kompletní průběžnou integraci a vývoj (CI/CD) kanálu. Služby Azure DevOps se integruje se sadou Visual Studio a jiných editorech zjednodušit využití. Služby Azure DevOps můžete také vytvořit a konfigurovat virtuální počítače Azure a pak nasaďte kód na ně.
 
 Naučte se:
 
-- [Vytvoření kanálu průběžné integrace pomocí Team Services](../articles/virtual-machines/windows/tutorial-vsts-iis-cicd.md).
+- [Vytvoření kanálu průběžné integrace se službami Azure DevOps](../articles/virtual-machines/windows/tutorial-vsts-iis-cicd.md).
 
 
 ## <a name="jenkins"></a>Jenkins

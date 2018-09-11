@@ -1,98 +1,99 @@
 ---
-title: Integrovat Azure Automation Visual Stuido Team Services zdrojového kódu
-description: Scénář vás provede procesem nastavení integrace s účet Azure Automation a zdrojového kódu Visual Stuido Team Services.
+title: Integrace služby Azure Automation se správou zdrojového kódu služby Azure DevOps
+description: Scénář vás provede nastavíte integraci s účtu Azure Automation a Správa služby Azure DevOps zdrojového kódu.
 services: automation
 author: eamonoreilly
 ms.author: eamono
-keywords: služby VSTS, Azure powershell zdrojového kódu automatizace
+keywords: Azure powershell, Azure DevOps služby, ovládací prvek zdroje, automatizace
 ms.service: automation
 ms.component: process-automation
 ms.topic: conceptual
 ms.date: 03/19/2017
-ms.openlocfilehash: f34267490a0db71e05ece97c23b86467dbf7dbeb
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 022fca09b9e748c030df6b5fc944f7930942a6f7
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34194297"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302404"
 ---
-# <a name="azure-automation-scenario---automation-source-control-integration-with-visual-studio-team-services"></a>Azure Automation scénář – integrace ovládacích prvků zdrojového automatizace s Visual Studio Team Services
+# <a name="azure-automation-scenario---automation-source-control-integration-with-azure-devops"></a>Scénář Azure Automation – automatizace integraci správy zdrojových kódů s Azure DevOps
 
-V tomto scénáři máte projekt Visual Studio Team Services, který používáte ke správě Azure Automation runbook nebo konfigurace DSC ve správě zdrojového kódu.
-Tento článek popisuje postup pro integraci služby VSTS prostředí Azure Automation, aby průběžnou integraci se stane, pro každý vrácení se změnami.
+V tomto scénáři máte projekt Azure DevOps, který používáte ke správě Azure Automation. runbooky a konfigurace DSC pod správou zdrojových kódů.
+Tento článek popisuje, jak integrovat Azure DevOps s vaším prostředím Azure Automation, takže se stane, průběžná integrace pro každé vrácení se změnami.
 
 ## <a name="getting-the-scenario"></a>Získání scénáře
 
-Tento scénář se skládá ze dvou Powershellové runbooky, které můžete importovat přímo z [Galerie Runbooků](automation-runbook-gallery.md) v portálu Azure nebo stažení [Galerie prostředí PowerShell](https://www.powershellgallery.com).
+Tento scénář se skládá ze dvou Powershellové runbooky, které můžete importovat přímo z [Galerie Runbooků](automation-runbook-gallery.md) webu Azure portal nebo stahování [Galerie prostředí PowerShell](https://www.powershellgallery.com).
 
 ### <a name="runbooks"></a>Runbooky
 
 Runbook | Popis| 
 --------|------------|
-Služby synchronizace VSTS | Import sady runbook nebo konfigurace z služby VSTS zdrojového kódu, pokud se provádí vrácení se změnami. Je-li spustit ručně, naimportuje a publikuje všechny sady runbook nebo konfigurace do účtu Automation.| 
-Sync-VSTSGit | Import sady runbook nebo konfigurace ze služby VSTS ve správě zdrojového Git Pokud se provádí vrácení se změnami. Je-li spustit ručně, naimportuje a publikuje všechny sady runbook nebo konfigurace do účtu Automation.|
+Synchronizace VSTS | Importovat runbooky a konfigurace ze správy zdrojových kódů Azure DevOps při vrácení se změnami se provádí. Je-li spustit ručně, importuje a publikuje všechny runbooky a konfigurace do účtu Automation.| 
+Sync-VSTSGit | Importovat runbooky a konfigurace z Azure DevOps v rámci správy zdrojového kódu Gitu při vracení se změnami se provádí. Je-li spustit ručně, importuje a publikuje všechny runbooky a konfigurace do účtu Automation.|
 
 ### <a name="variables"></a>Proměnné
 
 Proměnná | Popis|
 -----------|------------|
-VSToken | Zabezpečte variabilní prostředek, který vytvoříte, který obsahuje osobní přístupový token služby VSTS. Zjistěte, jak vytvořit osobní přístupový token služby VSTS na [stránka ověřování služby VSTS](/vsts/accounts/use-personal-access-tokens-to-authenticate).
+VSToken | Zabezpečte variabilní prostředek, který vytvoříte, která obsahuje osobní přístupový token Azure DevOps. Zjistěte, jak vytvořit osobní přístupový token Azure DevOps na [stránka ověřování Azure DevOps](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate).
 ## <a name="installing-and-configuring-this-scenario"></a>Instalace a konfigurace tohoto scénáře
 
-Vytvoření [osobní přístupový token](/vsts/accounts/use-personal-access-tokens-to-authenticate) v služby VSTS, který použijete k synchronizaci sady runbook nebo konfigurace do vašeho účtu automation.
+Vytvoření [osobní přístupový token](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate) v Azure DevOps, který použijete k synchronizaci runbooky a konfigurace do účtu automation.
 
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSPersonalToken.png) 
 
-Vytvoření [zabezpečené proměnná](automation-variables.md) ve vašem účtu automation k uchování osobní přístupový token, aby mohli ověřit služby VSTS a synchronizace sady runbook nebo konfigurace do účtu Automation runbook. Tato VSToken můžete pojmenovat. 
+Vytvoření [zabezpečenou proměnnou](automation-variables.md) ve vašem účtu automation pro uložení osobní přístupový token, tak, aby sada runbook může ověření na Azure DevOps a synchronizovat runbooky a konfigurace do účtu Automation. Můžete pojmenovat tuto VSToken.
 
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSTokenVariable.png)
 
-Naimportujte sadu runbook, který je synchronizován sady runbook nebo konfigurace do účtu automation. Můžete použít [služby VSTS ukázkové sady runbook](https://www.powershellgallery.com/packages/Sync-VSTS/1.0/DisplayScript) nebo [VSTS s Git ukázkové sady runbook] (https://www.powershellgallery.com/packages/Sync-VSTSGit/1.0/DisplayScript) z PowerShellGallery.com podle toho, pokud používáte služby VSTS zdrojového kódu nebo služby VSTS s Gitem a nasazení do vašeho účtu automation.
+Naimportujte sadu runbook, která se synchronizuje vaše runbooky a konfigurace do účtu automation. Můžete použít [ukázkové sady runbook Azure DevOps](https://www.powershellgallery.com/packages/Sync-VSTS/1.0/DisplayScript) nebo [Azure DevOps s využitím Gitu ukázkové sady runbook](https://www.powershellgallery.com/packages/Sync-VSTSGit/1.0/DisplayScript) z PowerShellGallery.com podle toho, pokud používáte Azure DevOps správy zdrojového kódu nebo Azure DevOps s úložištěm Git a nasazení do vašeho účtu automation.
 
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSPowerShellGallery.png)
 
-Teď můžete [publikování](automation-creating-importing-runbook.md#publishing-a-runbook) této sady runbook, takže si můžete vytvořit webhooku. 
+Teď můžete [publikovat](automation-creating-importing-runbook.md#publishing-a-runbook) tuto sadu runbook, abyste mohli vytvořit webhook. 
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSPublishRunbook.png)
 
-Vytvoření [webhooku](automation-webhooks.md) pro tento runbook služby synchronizace VSTS a vyplňte parametry, jak je uvedeno níže. Ujistěte se, že potřebujete pro služby háku v služby VSTS se zkopírujte adresu url webhooku. VSAccessTokenVariableName je název (VSToken) zabezpečené proměnné, kterou jste vytvořili dříve, aby udržení osobní přístupový token. 
+Vytvoření [webhooku](automation-webhooks.md) pro tuto sadu runbook synchronizace VSTS a zadejte parametry, jak je znázorněno níže. Ujistěte se, že zkopírujete adresu url webhooku, potřebovat pro volání služby v Azure DevOps. VSAccessTokenVariableName je název (VSToken) zabezpečené proměnné, kterou jste vytvořili dříve pro uložení osobní přístupový token. 
 
-Integrace s služby VSTS (synchronizace-VSTS.ps1) mají následující parametry:
-### <a name="sync-vsts-parameters"></a>Služby synchronizace VSTS parametry
+Integrace s Azure DevOps (synchronizace VSTS.ps1) mají následující parametry:
+### <a name="sync-vsts-parameters"></a>Parametry synchronizace VSTS
 
 Parametr | Popis| 
 --------|------------|
-WebhookData | Tato položka obsahuje vrácení se změnami informace odesílané ze služby hák služby VSTS. Tento parametr by měl ponechat prázdné.| 
-ResourceGroup | Toto je název skupiny prostředků, zda má účet automation v.|
-AutomationAccountName | Název účtu služby automation, který je synchronizován s služby VSTS.|
-VSFolder | Název složky v služby VSTS existuje sady runbook a konfigurace.|
-VSAccount | Název účtu, Visual Studio Team Services.| 
-VSAccessTokenVariableName | Název proměnné zabezpečené (VSToken), která uchovává osobní přístupový token služby VSTS.| 
+WebhookData | Obsahuje informace o vrácení se změnami z volání služby Azure DevOps. Tento parametr měli nechat prázdné.| 
+ResourceGroup | Toto je název skupiny prostředků, který obsahuje příslušný účet automation.|
+AutomationAccountName | Název účtu služby automation, která se synchronizuje s Azure DevOps.|
+VSFolder | Název složky v Azure DevOps, pokud existují runboocích a konfiguracích.|
+VSAccount | Název organizace Azure DevOps.| 
+VSAccessTokenVariableName | Název zabezpečenou proměnnou (VSToken), která obsahuje osobní přístupový token Azure DevOps.| 
 
 
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSWebhook.png)
 
-Pokud používáte služby VSTS s GITEM (synchronizace-VSTSGit.ps1) bude trvat následující parametry.
+Pokud používáte Azure DevOps s úložištěm GIT (synchronizace VSTSGit.ps1) bude trvat následující parametry.
 
 Parametr | Popis|
 --------|------------|
-WebhookData | To bude obsahovat informace o vrácení se změnami z hák služby VSTS služby. Tento parametr by měl ponechat prázdné.| ResourceGroup | Tento název skupiny prostředků, zda má účet automation v.|
-AutomationAccountName | Název účtu služby automation, který je synchronizován s služby VSTS.|
-VSAccount | Název účtu, Visual Studio Team Services.|
-VSProject | Název projektu v služby VSTS existuje sady runbook a konfigurace.|
+WebhookData | To bude obsahovat informace o vrácení se změnami z volání služby Azure DevOps. Tento parametr měli nechat prázdné.| 
+ResourceGroup | Tento název skupiny prostředků, který obsahuje příslušný účet automation.|
+AutomationAccountName | Název účtu služby automation, která se synchronizuje s Azure DevOps.|
+VSAccount | Název organizace Azure DevOps.|
+VSProject | Název projektu, kde existují runbooky a konfigurace Azure DevOps.|
 GitRepo | Název úložiště Git.|
-GitBranch | Název větve v úložišti služby VSTS Git.|
-Složka | Název složky v Git služby VSTS větev.|
-VSAccessTokenVariableName | Název proměnné zabezpečené (VSToken), která uchovává osobní přístupový token služby VSTS.|
+GitBranch | Název větve v úložišti Git v Azure DevOps.|
+Složka | Název složky v Azure DevOps Git branch.|
+VSAccessTokenVariableName | Název zabezpečenou proměnnou (VSToken), která obsahuje osobní přístupový token Azure DevOps.|
 
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSGitWebhook.png)
 
-Vytvoření služby háku v služby VSTS pro vrácení se změnami do složky, která aktivuje tento webhook na změnami kódu. Vyberte **nástrojů Web Hooks** jako službu, kterou chcete integrovat při vytváření nové předplatné. Další informace o službách v [dokumentace služby VSTS služeb Jenkins](https://www.visualstudio.com/en-us/docs/marketplace/integrate/service-hooks/get-started).
+Vytvoření volání služby v Azure DevOps pro vrácení se změnami do složky, která aktivuje tento webhook v kódu vrácení se změnami. Vyberte **Web Hooks** jako služba pro integraci s při vytváření nového předplatného. Další informace o volaných služeb na [dokumentaci pro volaných služeb Azure DevOps](https://www.visualstudio.com/en-us/docs/marketplace/integrate/service-hooks/get-started).
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSServiceHook.png)
 
-Teď by měla být moci provést všechny vrácení se změnami runbooky a konfiguraci do služby VSTS a mají tyto automaticky synched do vašeho účtu automation.
+Nyní byste měli být schopni provést všech vrácení se změnami z vašich runboocích a konfiguracích do Azure DevOps a mít tyto automaticky synchronizovat do účtu automation.
 
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSSyncRunbookOutput.png)
 
-Pokud ručně spuštění této sady runbook bez se aktivuje pomocí služby VSTS parametr webhookdata můžete nechat prázdné a provede úplnou synchronizaci ze služby VSTS složce určené.
+Pokud spustíte bez Azure DevOps se aktivuje Tato sada runbook ručně, parametr webhookdata můžete nechat prázdné a provádí úplnou synchronizaci z zadaná složka Azure DevOps.
 
-Pokud chcete odinstalovat tento scénář, odeberte hák služby ze služby VSTS, odstraňte sadu runbook a proměnná VSToken.
+Pokud chcete odinstalovat tento scénář, odeberte volání služby z Azure DevOps, odstraňte sadu runbook a VSToken proměnnou.

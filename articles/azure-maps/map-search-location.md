@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 0cc0ec79cf23d3bba01845ed64493df010c1ca66
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: b324d0a68fde8f47072a087330f2e40a99378984
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44161692"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44299470"
 ---
 # <a name="show-search-results-on-the-map"></a>Na mapě zobrazit výsledky hledání
 
@@ -22,7 +22,7 @@ Tento článek popisuje, jak na mapě zobrazit výsledky hledání a vyhledejte 
 
 Existují dva způsoby, jak vyhledejte umístění, které vás zajímají, jedním ze způsobů, je pomocí modulu service vytvoříte žádost o vyhledávání a druhý je tím, že žádost o vyhledávání prostřednictvím [XMLHttpRequest](https://xhr.spec.whatwg.org/) k [rozhraní APIAzureMapspřibližnévyhledávání](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy). Můžeme probírat i níže.
 
-## <a name="use-service-module-to-make-a-search-request"></a>Modul služby můžete vytvořit žádost o vyhledávání
+## <a name="making-a-search-request-via-service-module"></a>Provedení požadavku hledání prostřednictvím modulu service
 
 ### <a name="understand-the-code"></a>Vysvětlení kódu
 
@@ -36,7 +36,7 @@ Druhý blok kódu používá vyhledávání přibližných shod [mapy přibližn
 Poslední blok kódu nastaví fotoaparátu mezí mapy pomocí mapy [setCameraBounds](https://docs.microsoft.com/javascript/api/azure-maps-control/models.cameraboundsoptions?view=azure-iot-typescript-latest) vlastnost.
 
 
-## <a name="search-by-xmlhttprequest"></a>Hledat podle XMLHttpRequest
+##  <a name="making-a-search-request-via-xmlhttprequest"></a>Provedení požadavku hledání prostřednictvím XMLHttpRequest
 
 ### <a name="understand-the-code"></a>Vysvětlení kódu
 

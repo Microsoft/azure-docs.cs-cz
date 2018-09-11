@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Edge průběžnou integraci a průběžné nasazování | Microsoft Docs
-description: Přehled průběžnou integraci a průběžné nasazování pro Azure IoT Edge
+title: Azure IoT Edge průběžnou integraci a průběžné nasazování | Dokumentace Microsoftu
+description: Přehled průběžné integrace a průběžného nasazování pro Azure IoT Edge
 author: shizn
 manager: ''
 ms.author: xshi
@@ -8,38 +8,38 @@ ms.date: 06/27/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 62d8d770f6b4c3a62a2395eb8c1505dbc3835c28
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 5099ca70503ba2ed4ae8f4969a9199816c4986fb
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37047451"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302567"
 ---
-# <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Průběžnou integraci a průběžné nasazování okraj Azure IoT
+# <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Průběžná integrace a průběžné nasazování do Azure IoT Edge
 
-Tento článek ukazuje, jak můžete použít průběžnou integraci a funkcí průběžného nasazování Visual Studio Team Services (VSTS) a Microsoft Team Foundation Server (TFS) pro vytvoření, testování a nasazení aplikace rychle a efektivně do vaší Azure Okraj IoT. 
+Tento článek popisuje, jak můžete použít tak průběžnou integraci a průběžné nasazování funkce služeb Azure DevOps a Microsoft Team Foundation Server (TFS) pro vytváření, testování a rychle a efektivně nasadit aplikace pro vaše Azure IoT Edge. 
 
 V tomto článku se dozvíte, jak:
-* Vytvoření a zkontrolujte v ukázce jednotku obsahující řešení IoT Edge testy.
-* Nainstalujte rozšíření Azure IoT Edge pro vaše služby VSTS.
-* Nakonfigurujte průběžnou integraci (CI) vytvářet řešení a spouštění testování částí.
-* Nakonfigurujte průběžné nasazování (CD) k nasazení řešení a zobrazování odpovědí.
+* Vytvoření a testy se změnami ukázku jednotku obsahující řešení IoT Edge.
+* Nainstalujte rozšíření Azure IoT Edge pro Azure DevOps.
+* Nakonfiguruje kontinuální integraci (CI) k sestavení řešení a spustit testy jednotek.
+* Konfigurace průběžného nasazování (CD) k nasazení řešení a zobrazování odpovědí.
 
-To bude trvat 30 minut na dokončení kroků v tomto článku.
+Bude trvat 30 minut na dokončení kroků v tomto článku.
 
-![Položky konfigurace a disku CD](./media/how-to-ci-cd/cd.png)
+![CI a CD](./media/how-to-ci-cd/cd.png)
 
-## <a name="create-a-sample-azure-iot-edge-solution-using-visual-studio-code"></a>Vytvoření řešení Azure IoT Edge ukázka pomocí Visual Studio Code
+## <a name="create-a-sample-azure-iot-edge-solution-using-visual-studio-code"></a>Vytvoření ukázkové řešení Azure IoT Edge pomocí Visual Studio Code
 
-V této části vytvoříte ukázkové IoT Edge řešení obsahujícího testy jednotek, které můžete provést v rámci procesu sestavení. Než následující pokyny v této části, proveďte kroky v [vyvíjet IoT řešení s více modulů v aplikaci Visual Studio Code](tutorial-multiple-modules-in-vscode.md).
+V této části vytvoříte ukázkové hraničních zařízeních IoT řešení obsahující testy jednotek, které můžete spouštět jako součást procesu sestavení. Než budete postupovat pokyny v této části, proveďte kroky v [vývoj řešení IoT Edge s několika moduly v aplikaci Visual Studio Code](tutorial-multiple-modules-in-vscode.md).
 
-1. V příkazu palety VS Code, zadejte a spusťte příkaz **Edge: nové IoT řešení**. Pak vyberte pracovní prostor složce, zadejte název řešení (výchozí název je **EdgeSolution**) a vytvořte modul C# (**FilterModule**) jako první modul uživatele v tomto řešení. Bude také nutné zadat úložiště imagí Dockeru pro první modul. Výchozí úložiště bitové kopie je založena na místním registru Docker (`localhost:5000/filtermodule`). Budete muset změnit do registru kontejner Azure (`<your container registry address>/filtermodule`) nebo úložiště Docker Hub další nepřetržité integrace.
+1. Paleta příkazů VS Code, zadejte a spusťte příkaz **Edge: nový IoT Edge řešení**. Vyberte si složku pracovního prostoru, zadejte název řešení (výchozí název je **EdgeSolution**) a vytvořit modulu jazyka C# (**FilterModule**) jako první modul uživatele v tomto řešení. Bude také nutné zadat úložiště imagí Dockeru pro první modul. Výchozí úložiště imagí vychází z místního registru Dockeru (`localhost:5000/filtermodule`). Je třeba změnit ho do služby Azure Container Registry (`<your container registry address>/filtermodule`) nebo centra Dockeru pro další průběžnou integraci.
 
-    ![Instalační program ACR](./media/how-to-ci-cd/acr.png)
+    ![Instalační program služby ACR](./media/how-to-ci-cd/acr.png)
 
-2. V okně VS kód načte pracovního prostoru řešení IoT okraj. Volitelně zadejte a spusťte **Edge: Přidání okraj IoT modulu** přidat další moduly. Je `modules` složku, `.vscode` složku a soubor manifestu šablony nasazení v kořenové složce. Všechny kódy modulu uživatele bude podsložky ve složce `modules`. `deployment.template.json` Je manifestu šablony nasazení. Některé parametry v tomto souboru se získá analýzou z `module.json`, které existuje ve složce každý modul.
+2. Okna nástroje VS Code se načte pracovní prostor řešení IoT Edge. Volitelně zadejte a spustit **Edge: modul IoT Edge přidat** přidáte další moduly. Je `modules` složku, `.vscode` složku a soubor manifestu šablony nasazení v kořenové složce. Všechny kódy modulu uživatele bude podsložky ve složce `modules`. `deployment.template.json` Je v šabloně manifestu nasazení. Některé parametry v tomto souboru se získá analýzou z `module.json`, která existuje v všechny složky, které modul.
 
-3. Ukázky řešení IoT je nyní připraven. Výchozí C# modul funguje jako modul zpráva kanálu. V `deployment.template.json`, zobrazí se, toto řešení obsahuje dva moduly. Zpráva se budou generovat z `tempSensor` modul a bude přímo přesměruje prostřednictvím `FilterModule`, pak se odešle do služby IoT hub. Nahraďte celou **Program.cs** soubor s níže obsah. Další informace o tento fragment kódu najdete [vytvoření projektu modulu IoT Edge C#](https://docs.microsoft.com/azure/iot-edge/tutorial-csharp-module#create-an-iot-edge-module-project).
+3. Ukázku řešení IoT Edge je teď připravený. Výchozí C# modul funguje jako zprávy modulu kanálu. V `deployment.template.json`, uvidíte toto řešení obsahuje dva moduly. Zpráva se budou generovat z `tempSensor` modulu a budou směrované přímo prostřednictvím `FilterModule`, pak odešlou do služby IoT hub. Nahraďte celým **Program.cs** soubor s následující obsah. Další informace o tento fragment kódu, mohou odkazovat na [projekt modul IoT Edge C# vytvořit](https://docs.microsoft.com/azure/iot-edge/tutorial-csharp-module#create-an-iot-edge-module-project).
 
     ```csharp
     namespace FilterModule
@@ -183,7 +183,7 @@ V této části vytvoříte ukázkové IoT Edge řešení obsahujícího testy j
     }
     ```
 
-4. Vytvoření .net Core projektu testování částí. V Průzkumníku souborů VS Code, vytvořte novou složku **tests\FilterModuleTest** v pracovním prostoru. Potom v terminálu integrované VS Code (**Ctrl + '**) spusťte následující příkazy a vytvoření projektu testování xunit a přidat odkaz na **FilterModule** projektu.
+4. .Net Core vytvořit projekt testování částí. V Průzkumníku souborů VS Code, vytvořte novou složku **tests\FilterModuleTest** ve vašem pracovním prostoru. Potom v integrovaném terminálu VS Code (**Ctrl + "**), spusťte následující příkazy vytvořit projekt testů xunit a přidat odkaz na **FilterModule** projektu.
 
     ```cmd
     cd tests\FilterModuleTest
@@ -193,7 +193,7 @@ V této části vytvoříte ukázkové IoT Edge řešení obsahujícího testy j
 
     ![Struktura složek](./media/how-to-ci-cd/add-test-project.png)
 
-5. V **FilterModuleTest** složky, aktualizujte název souboru **UnitTest1.cs** k **FilterModuleTest.cs**. Vyberte a otevřete **FilterModuleTest.cs**, nahraďte celý kód s následující fragment kódu, který obsahuje testování částí proti FilterModule projektu.
+5. V **FilterModuleTest** složky, aktualizujte název souboru **UnitTest1.cs** k **FilterModuleTest.cs**. Vyberte a otevřete **FilterModuleTest.cs**, nahraďte celý kód s následující fragment kódu, který obsahuje testy jednotek proti FilterModule projektu.
 
     ```csharp
     using Xunit;
@@ -270,82 +270,82 @@ V této části vytvoříte ukázkové IoT Edge řešení obsahujícího testy j
     }
     ```
 
-6. V integrovaném terminálu můžete zadat následující příkazy ke spuštění testů jednotek místně. 
+6. V integrovaném terminálu můžete zadat následující příkazy pro spuštění testů jednotek místně. 
     ```cmd
     dotnet test
     ```
 
     ![Testování částí](./media/how-to-ci-cd/unit-test.png)
 
-7. Uložte tyto projekty a poté zkontrolujte ho do úložiště služby VSTS nebo TFS.
+7. Uložte tyto projekty a potom vrátit se změnami do úložiště Azure DevOps nebo TFS.
     
 
 > [!NOTE]
-> Další informace o používání služby VSTS kódu úložiště naleznete v tématu [sdílet kódu s Visual Studio a služby VSTS Git](https://docs.microsoft.com/vsts/git/share-your-code-in-git-vs?view=vsts).
+> Další informace o použití úložiště Azure najdete v tématu [sdílení kódu pomocí sady Visual Studio a úložiště Azure](https://docs.microsoft.com/azure/devops/repos/git/share-your-code-in-git-vs?view=vsts).
 
 
-## <a name="configure-continuous-integration"></a>Konfigurace nepřetržité integrace
-V této části vytvoříte definice buildu, která je nakonfigurována na automatické spuštění při se změnami všechny změny ukázkové řešení IoT a automaticky spustí testy jednotek, které obsahuje.
+## <a name="configure-continuous-integration"></a>Nakonfiguruje kontinuální integraci
+V této části vytvoříte kanál sestavení, která je nakonfigurována na automatické spuštění při vrácení se změnami změny ukázkové řešení IoT Edge a automaticky spustí testy jednotek, které obsahuje.
 
-1. Přihlaste se k účtu služby VSTS (**https://**_váš účet_**. visualstudio.com**) a otevřete projekt, kde můžete zkontrolovat v ukázkové aplikace.
+1. Přihlaste se k vaší organizaci Azure DevOps (**https://**_svůj účet_**. visualstudio.com**) a otevřete projekt, ve kterém můžete zkontrolovat v ukázkové aplikaci.
 
     ![Vrácení se změnami kódu](./media/how-to-ci-cd/init-project.png)
 
-1. Navštivte [Azure IoT hranu služby VSTS](https://marketplace.visualstudio.com/items?itemName=vsc-iot.iot-edge-build-deploy) na služby VSTS Marketplace. Klikněte na tlačítko **získat volné** a postupujte podle pokynů Průvodce toto rozšíření nainstalovat do vašeho účtu služby VSTS a stažení do vaší sady TFS.
+1. Navštivte [Azure IoT Edge pro Azure DevOps](https://marketplace.visualstudio.com/items?itemName=vsc-iot.iot-edge-build-deploy) na Azure DevOps Marketplace. Klikněte na tlačítko **získání bezplatného** a postupujte podle pokynů průvodce a nainstalujte toto rozšíření pro vaši organizaci Azure DevOps nebo ke stažení pro TFS.
 
     ![Instalace rozšíření](./media/how-to-ci-cd/install-extension.png)
 
-1. Ve vaší služby VSTS, otevřete **sestavení &amp; verze** rozbočovače a v **sestavení** , zvolte **+ novou definici**. Nebo, pokud již máte definice sestavení, vyberte **+ nový** tlačítko. 
+1. V Azure DevOps, otevřete **sestavení &amp; vydání** hub a v **sestavení** kartě **+ nový kanál**. Nebo, pokud již máte kanály pro sestavování, vyberte **+ nová** tlačítko. 
 
     ![Nové sestavení](./media/how-to-ci-cd/add-new-build.png)
 
-1. Pokud se zobrazí výzva, vyberte **Git služby VSTS** typ zdroje; vyberte projekt, úložiště a firemní pobočky, kde se nachází váš kód. Zvolte **pokračovat**.
+1. Pokud se zobrazí výzva, vyberte **Azure DevOps Git** typ zdroje; vyberte projekt, úložiště a větev, ve kterém se nachází váš kód. Zvolte **pokračovat**.
 
-    ![Vyberte služby VSTS git](./media/how-to-ci-cd/select-vsts-git.png)
+    ![Vyberte git Azure DevOps](./media/how-to-ci-cd/select-vsts-git.png)
 
-1. V **vyberte šablonu** okně zvolte **začít s prázdnou proces**.
+1. V **vyberte šablonu** okně zvolte **začněte s prázdným procesem**.
 
     ![Prázdný](./media/how-to-ci-cd/start-with-empty.png)
 
-1. Klikněte na tlačítko **+** na pravé straně **fáze 1** přidat úloha do fáze. Pak vyhledejte a vyberte **.Net Core**a klikněte na tlačítko **přidat** přidat tuto úlohu na fázi.
+1. Klikněte na tlačítko **+** na pravé straně **fáze 1** přidejte úkol do fáze. Poté vyhledejte a vyberte **.Net Core**a klikněte na tlačítko **přidat** tento úkol má přidat do fáze.
 
-    ![Test DotNet.](./media/how-to-ci-cd/add-dot-net-core.png)
+    ![DotNet test](./media/how-to-ci-cd/add-dot-net-core.png)
 
-1. Aktualizace **zobrazovaný název** k **dotnet test**a v **příkaz** rozevíracího seznamu vyberte **testování**. Přidat následující cestu k **cestu k projekty**.
+1. Aktualizace **zobrazovaný název** k **příkazu dotnet test**a **příkaz** rozevíracího seznamu vyberte **testování**. Přidat následující cestu k **cesta k projektům**.
 
     ```
     tests/FilterModuleTest/*.csproj
     ```
 
-    ![Konfigurace testovací dotnet.](./media/how-to-ci-cd/dotnet-test.png)
+    ![Nakonfigurujte příkazu dotnet test](./media/how-to-ci-cd/dotnet-test.png)
 
-1. Klikněte na tlačítko **+** na pravé straně **fáze 1** přidat úloha do fáze. Pak vyhledejte a vyberte **Azure IoT Edge**a klikněte na tlačítko **přidat** tlačítko **dvakrát** přidat tyto úlohy do fáze.
+1. Klikněte na tlačítko **+** na pravé straně **fáze 1** přidejte úkol do fáze. Poté vyhledejte a vyberte **Azure IoT Edge**a klikněte na tlačítko **přidat** tlačítko **dvakrát** přidáte tyto úlohy na fázi.
 
     ![IoT Edge](./media/how-to-ci-cd/add-azure-iot-edge.png)
 
-1. V první úloze Azure IoT Edge, aktualizovat **zobrazovaný název** k **modul sestavení a nabízených**a v **akce** rozevíracího seznamu vyberte **sestavení a Push**. V **Module.json souboru** textovému poli, do něj přidejte následující cesty. Zvolte **typ kontejneru registru**, ujistěte se, nakonfigurujte a vyberte stejný registru do vašeho kódu. Tato úloha bude sestavovat a push všechny moduly v řešení a publikovat do registru kontejneru, který jste zadali. Pokud moduly se vloží do různých registrech, můžete mít více **modul sestavení a nabízených** úlohy.
+1. V první úloze Azure IoT Edge, aktualizujte **zobrazovaný název** k **modul sestavení a nabízených oznámení**a v **akce** rozevíracího seznamu vyberte **vytváření a nasdílení změn**. V **Module.json souboru** textové pole, přidat následující cestu k němu. Klikněte na tlačítko **typ registru kontejneru**, ujistěte se, že nakonfigurujete a vyberte stejné registr v kódu. Tato úloha bude sestavovat a push všechny moduly v řešení a publikování do registru kontejneru, který jste zadali. Pokud moduly se vloží do různých registrů, můžete mít více **modul sestavení a Push** úlohy.
 
     ```
     **/module.json
     ```
 
-    ![Sestavení modulu a posílejte nabízená oznámení](./media/how-to-ci-cd/module-build-push.png)
+    ![Modul sestavení a odeslání](./media/how-to-ci-cd/module-build-push.png)
 
-1. V druhé úloze Azure IoT Edge aktualizace **zobrazovaný název** k **nasadit do zařízení IoT Edge**a v **akce** rozevíracího seznamu vyberte **nasadit do hraniční IoT zařízení**. Vyberte předplatné Azure a zadejte název vaší služby IoT Hub. Můžete zadat ID IoT Edge nasazení a prioritu pro nasazení. Můžete také nasadit do jedné nebo více zařízení. Pokud provádíte nasazení na více zařízení, je třeba zadat cílovou podmínku zařízení. Například pokud chcete používat značky zařízení jako podmínka, budete muset aktualizovat zařízení odpovídající značky před nasazení. 
+1. V druhé úloze Azure IoT Edge, aktualizujte **zobrazovaný název** k **nasadit do zařízení IoT Edge**a **akce** rozevíracího seznamu vyberte **nasazení do hraničních zařízení IoT zařízení**. Vyberte své předplatné Azure a zadejte název vašeho centra IoT. Můžete zadat ID nasazení IoT Edge a prioritu nasazení. Můžete také nasadit do jedné nebo více zařízení. Pokud provádíte nasazení na více zařízeních, budete muset zadat cílovou podmínku zařízení. Například pokud chcete používat značky zařízení jako podmínka, musíte aktualizovat odpovídající zařízení značky před nasazení. 
 
-    ![Nasazení na okraj](./media/how-to-ci-cd/deploy-to-edge.png)
+    ![Nasazení do hraničních zařízení](./media/how-to-ci-cd/deploy-to-edge.png)
 
-1. Klikněte na tlačítko **proces** a zajistěte, aby vaše **fronty agenta** je **Preview Linux hostované**.
+1. Klikněte na tlačítko **procesu** a ujistěte se, že vaše **frontu agenta** je **hostované Linuxové verze Preview**.
 
     ![Konfigurace](./media/how-to-ci-cd/configure-env.png)
 
-1. Otevřete **aktivační události** kartě a zapněte **průběžnou integraci** aktivační události. Zajistěte, aby větev obsahující kódu je součástí.
+1. Otevřít **aktivační události** kartu a zapnout **kontinuální integrace** aktivační události. Ujistěte se, že větev, která obsahuje kód je součástí.
 
     ![Trigger](./media/how-to-ci-cd/configure-trigger.png)
 
-1. Uložte novou definici sestavení a fronty nové sestavení. Klikněte **Uložit & fronty** tlačítko.
+1. Uložte nový kanál sestavení a nové sestavení do fronty. Klikněte na tlačítko **Uložit & frontu** tlačítko.
 
-1. Vyberte na panelu zpráv, který se zobrazí odkaz na sestavení. Nebo na vytvoření definice zobrazíte nejnovější zařazených do fronty sestavení úlohy.
+1. Na panelu zpráv, který se zobrazí, zvolte odkaz na sestavení. Můžete také přejít k vytvoření kanálu, pokud chcete zobrazit nejnovější sestavení ve frontě úloh.
 
     ![Sestavení](./media/how-to-ci-cd/build-def.png)
 
@@ -353,20 +353,20 @@ V této části vytvoříte definice buildu, která je nakonfigurována na autom
     
     ![Dokončit](./media/how-to-ci-cd/complete.png)
 
-1. Můžete přejít zpět do VS Code a zkontrolujte explorer zařízení IoT Hub. Hraniční zařízení s modulem by se měl spustit systémem (zajistěte, aby registru pověření jste přidali do hraniční runtime).
+1. Můžete přejít zpět na VS Code a zkontrolovat v Průzkumníku zařízení centra IoT. Hraniční zařízení s modulem by měla začít spouštět (ujistěte se, že jste přidali přihlašovacích údajů registru do modulu runtime Edge).
 
-    ![Hraniční systémem](./media/how-to-ci-cd/edge-running.png)
+    ![Edge, který běží](./media/how-to-ci-cd/edge-running.png)
 
 ## <a name="continuous-deployment-to-iot-edge-devices"></a>Průběžné nasazování do zařízení IoT Edge
 
-Pokud chcete povolit průběžné nasazování, v podstatě budete muset nastavit CI úlohy s správné IoT hraniční zařízení, povolení **aktivační události** pro větvích ve vašem projektu. V classic DevOps praxi projekt obsahuje dvě hlavní větve. Hlavní větve by měla být stabilní verzi kódu a vývoj větve obsahuje nejnovější změny kódu. Každý vývojář v týmu měli rozvětvit vývoj větev svůj nebo svůj vlastní funkce větve při spuštění aktualizace kódu, což znamená, že všechny potvrdí se odehrává na funkci větví vypnout vývoj větev. A každý stisknutí potvrzení by měl být testována prostřednictvím systému CI. Po plně otestovat kód místně, by měly být větev funkce sloučeny do větve vývoj prostřednictvím žádost o přijetí změn. Při testování kód na vývojáře větve prostřednictvím systému položek konfigurace, můžete sloučit do hlavní větve prostřednictvím žádost o přijetí změn.
+Pokud chcete povolit průběžné nasazování, v podstatě potřebujete nastavení položky konfigurace úlohy s použitím správné zařízení IoT Edge, povolení **aktivační události** větví ve vašem projektu. V klasické postupů DevOps projekt obsahuje dvě hlavní větve. Hlavní větve by měla být stabilní verzi kódu a vývoj větev obsahuje nejnovější změny kódu. Každý vývojář v týmu musí vytvořit fork větev vývoje tak, aby jeho nebo vlastní větev funkce při spuštění aktualizace kódu, což znamená, že všechna potvrzení změn dojde na funkci větve vývoje jiné větvi. A každý vložené potvrzení změny by měl být testován prostřednictvím systému CI. Po plně testovaný kód místně, mají vývoj větví prostřednictvím žádosti o přijetí změn sloučit větev funkce. Při testování kódu ve větvi pro vývojáře prostřednictvím systému CI, můžete sloučit do hlavní větví prostřednictvím žádosti o přijetí změn.
 
-Ano při nasazování do zařízení IoT Edge, existují tři hlavní prostředí.
-- Na funkci větve můžete použít simulované zařízení IoT Edge na vývojovém počítači nebo nasadit do fyzického zařízení IoT okraj.
-- Na vývoj větve, měli byste nasadit do fyzického zařízení IoT okraj.
-- Na hlavní větve musí být cílová zařízení IoT hraniční zařízení produkční.
+Proto při nasazování do zařízení IoT Edge, existují tři hlavní prostředí.
+- Na větev funkce můžete použít simulované zařízení IoT Edge na vývojovém počítači nebo nasadit do fyzického zařízení IoT Edge.
+- Na vývoj větve, měli byste nasadit do fyzického zařízení IoT Edge.
+- V hlavní větvi cílová zařízení IoT Edge by měl být produkční zařízení.
 
 ## <a name="next-steps"></a>Další postup
 
-* Pochopení IoT Edge nasazení v [pochopit IoT Edge nasazení jednoho zařízení nebo ve velkém měřítku](module-deployment-monitoring.md)
+* Vysvětlení nasazení IoT Edge v [vysvětlení nasazení IoT Edge pro jednotlivá zařízení nebo ve velkém měřítku](module-deployment-monitoring.md)
 * Provede kroky k vytvoření, aktualizace nebo odstranění nasazení v [nasadit a monitorovat moduly IoT Edge ve velkém měřítku](how-to-deploy-monitor.md).

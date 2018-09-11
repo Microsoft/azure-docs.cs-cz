@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: raynew
-ms.openlocfilehash: ff195093f97f00fca54e4e1c5800b6b0ecf7605a
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 58ea0859af42f7614e69d1693bbd9f8e3a17ccb8
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44054457"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44300541"
 ---
 # <a name="contoso-migration-rebuild-an-on-premises-app-to-azure"></a>Migrace Contoso: znovu sestavte místní aplikaci do Azure
 
@@ -23,19 +23,21 @@ Tento dokument je jednou z řady článků, které ukazují, jak fiktivní spole
 
 **Článek** | **Podrobnosti** | **Stav**
 --- | --- | ---
-[Článek 1: Přehled](contoso-migration-overview.md) | Přehled řady článku, strategie migrace společnosti Contoso a ukázkové aplikace, které se používají v řadě. | K dispozici.
-[Článek 2: Nasazení infrastruktury Azure](contoso-migration-infrastructure.md) | Contoso připraví svoji místní infrastrukturu a jeho infrastruktury Azure pro migraci. Pro všechny články týkající se migrace z této série se používá stejnou infrastrukturu. | K dispozici.
-[Článek 3: Posouzení místních prostředků pro migraci do Azure](contoso-migration-assessment.md)  | Contoso spuštění posouzení své místní aplikace SmartHotel360 běžící ve VMware. Contoso vyhodnocuje aplikací virtuálních počítačů pomocí služby Azure Migrate a databáze aplikace SQL Server pomocí Data Migration Assistant. | K dispozici.
-[Článek 4: Změna hostitele aplikace na virtuálním počítači Azure a SQL Database, spravované Instance](contoso-migration-rehost-vm-sql-managed-instance.md) | Contoso běží lift and shift migrace do Azure pro své místní aplikace SmartHotel360. Contoso migruje aplikace front-endového virtuálního počítače pomocí [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview). Contoso migraci databáze aplikace do Azure SQL Database Managed Instance pomocí [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview). | K dispozici.   
-[Článek 5: Změna hostitele aplikace na virtuálních počítačích Azure](contoso-migration-rehost-vm.md) | Contoso migruje jeho aplikace SmartHotel360 virtuální počítače na virtuální počítače Azure pomocí služby Site Recovery. | K dispozici [článku 5: Změna hostitele aplikace na virtuálních počítačích Azure](contoso-migration-rehost-vm.md) | Contoso migruje jeho aplikace SmartHotel360 virtuální počítače na virtuální počítače Azure pomocí služby Site Recovery. | K dispozici.
-[Článek 6: Změna hostitele aplikace na virtuálních počítačích Azure a ve skupině dostupnosti AlwaysOn systému SQL Server](contoso-migration-rehost-vm-sql-ag.md) | Contoso migruje aplikace SmartHotel360. Společnost Contoso využívá Site Recovery k migraci virtuálních počítačů aplikace. Jak migrovat databázi aplikace do clusteru SQL serveru, který je chráněn skupiny dostupnosti AlwaysOn využívá službu Database Migration Service. | K dispozici [článku 7: Změna hostitele aplikace na virtuálních počítačích Azure s Linuxem](contoso-migration-rehost-linux-vm.md) | Contoso se dokončí migrace lift and shift jeho Linux osTicket aplikace na virtuální počítače Azure pomocí služby Site Recovery. | K dispozici.
-[Článek 8: Změna hostitele Linuxovou aplikaci na virtuálních počítačích Azure a Azure Database for MySQL](contoso-migration-rehost-linux-vm-mysql.md) | Contoso migruje svou aplikaci osTicket Linux do virtuálních počítačů Azure pomocí Site Recovery. Migrace databáze aplikace ke službě Azure Database for MySQL pomocí aplikace MySQL Workbench. | K dispozici.
-[Článek 9: Refaktorujte aplikace do webové aplikace Azure a Azure SQL Database](contoso-migration-refactor-web-app-sql.md) | Contoso migraci své aplikace SmartHotel360 do webové aplikace Azure a migraci databáze aplikace na instanci serveru SQL Azure pomocí Pomocníka s migrací databáze. | K dispozici.    
-[Článek 10: Refaktorujte Linuxovou aplikaci v Azure webové aplikace a služby Azure Database for MySQL](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso migruje osTicket své Linuxové aplikace do webové aplikace Azure v několika oblastech Azure pomocí Azure Traffic Manageru, integrovaná se službou GitHub pro průběžné doručování. Contoso migraci databáze aplikace do Azure Database for MySQL – instance. | K dispozici.
-[Článku 11: Refaktorujte Team Foundation Server ve službě Visual Studio Team Services](contoso-migration-tfs-vsts.md) | Contoso migruje své místní nasazení serveru Team Foundation Server pro Visual Studio Team Services v Azure. | K dispozici.
-[Článek 12: Úprava architektury aplikace na kontejnery služby Azure a Azure SQL Database](contoso-migration-rearchitect-container-sql.md) | Contoso jeho aplikace SmartHotel360 migraci do Azure. Potom rearchitects webové vrstvy aplikace jako kontejner Windows se spuštěnou v Azure Service Fabric a databázi Azure SQL Database. | K dispozici. 
-Článek 13: Znovu sestavte aplikaci v Azure | Contoso replikujícím jeho aplikace SmartHotel360 pomocí celé řady funkcí Azure a služeb, včetně služby Azure App Service, Azure Kubernetes Service (AKS), Azure Functions, Azure Cognitive Services a Azure Cosmos DB. | V tomto článku
+[Článek 1: Přehled](contoso-migration-overview.md) | Poskytuje přehled strategie migrace společnosti Contoso, článek řady a ukázkové aplikace, které používáme. | K dispozici.
+[Článek 2: Nasazení infrastruktury Azure](contoso-migration-infrastructure.md) | Popisuje, jak společnosti Contoso připraví jeho místní a infrastrukturu Azure na migraci. Stejnou infrastrukturu se používá pro všechny články týkající se migrace. | K dispozici.
+[Článek 3: Posouzení místních prostředků](contoso-migration-assessment.md)  | Ukazuje, jak společnosti Contoso spuštění posouzení místních dvouvrstvé SmartHotel360 aplikaci spuštěnou v prostředí VMware. Contoso vyhodnocuje aplikací virtuálních počítačů pomocí [Azure Migrate](migrate-overview.md) služby a databáze aplikace SQL serveru s [Pomocníka s migrací databáze](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017). | K dispozici.
+[Článek 4: Změna hostitele aplikací na virtuálních počítačích Azure a spravované Instance SQL](contoso-migration-rehost-vm-sql-managed-instance.md) | Ukazuje, jak společnosti Contoso běží lift and shift migrace do Azure pro aplikace SmartHotel360. Contoso migruje virtuální počítač front-endu aplikace pomocí [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview)a databáze aplikace do spravované Instance SQL, pomocí [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview). | K dispozici.
+[Článek 5: Změna hostitele aplikace na virtuálních počítačích Azure](contoso-migration-rehost-vm.md) | Ukazuje, jak migrovat aplikace SmartHotel360 virtuálních počítačů pomocí Site Recovery pouze Contoso. | K dispozici.
+[Článek 6: Změna hostitele aplikace na virtuálních počítačích Azure a SQL Server Always On Availability Group](contoso-migration-rehost-vm-sql-ag.md) | Ukazuje, jak společnosti Contoso migruje aplikace SmartHotel360. Contoso využívá Site Recovery k migraci aplikace, virtuální počítače a Database Migration service, jak migrovat databázi aplikace do clusteru SQL serveru, který je chráněn skupiny dostupnosti AlwaysOn. | K dispozici.
+[Článek 7: Změna hostitele aplikace na virtuálních počítačích Azure s Linuxem](contoso-migration-rehost-linux-vm.md) | Ukazuje, jak Contoso funguje lift and shift migrace aplikace osTicket Linux na virtuální počítače Azure pomocí služby Site Recovery | K dispozici.
+[Článek 8: Změna hostitele Linuxovou aplikaci na virtuálních počítačích Azure a Azure serveru MySQL](contoso-migration-rehost-linux-vm-mysql.md) | Ukazuje, jak společnosti Contoso migruje Linuxovou aplikaci osTicket k virtuálním počítačům Azure pomocí Site Recovery a migraci databáze aplikace na instanci serveru Azure MySQL pomocí aplikace MySQL Workbench. | K dispozici.
+[Článek 9: Refaktorujte aplikace na Azure Web Apps a Azure SQL database](contoso-migration-refactor-web-app-sql.md) | Ukazuje, jak společnosti Contoso migruje aplikace SmartHotel360 do webové aplikace Azure a migraci databáze aplikace na instanci serveru SQL Azure | K dispozici.
+[Článek 10: Refaktorujte Linuxovou aplikaci do Azure Web Apps a Azure MySQL](contoso-migration-refactor-linux-app-service-mysql.md) | Ukazuje, jak společnosti Contoso migruje aplikace osTicket Linux do Azure Web Apps ve více lokalitách, integrovaná se službou GitHub pro průběžné doručování. Jejich migrovat databázi aplikace na instanci Azure MySQL. | K dispozici.
+[Článek 11: Refaktorovat TFS na službách Azure DevOps](contoso-migration-tfs-vsts.md) | Ukazuje, jak společnosti Contoso migruje místní nasazení Team Foundation Server (TFS) a migrujte ho ke službám Azure DevOps v Azure. | K dispozici.
+[Článek 12: Úprava architektury aplikace na kontejnery služby Azure a SQL Database](contoso-migration-rearchitect-container-sql.md) | Ukazuje, jak společnosti Contoso migruje a rearchitects jeho SmartHotel aplikace do Azure. Jejich úprava architektury webové vrstvy aplikace jako kontejner Windows a databáze aplikace ve službě Azure SQL Database. | K dispozici.
+Článek 13: Znovu sestavte aplikaci do Azure | Ukazuje, jak společnosti Contoso znovu sestavte své aplikace SmartHotel pomocí celé řady funkcí Azure a služeb, včetně služeb App Services, Kubernetes v Azure, Azure Functions, Cognitive services a Cosmos DB. | Tento článek.
 
+V tomto článku se migruje Contoso dvouvrstvé Windows. NET SmartHotel360 aplikace běžící na virtuálních počítačích VMware do Azure. Pokud chcete používat tuto aplikaci, se poskytuje jako open source a můžete ji stáhnout [Githubu](https://github.com/Microsoft/SmartHotel360).
 
 ## <a name="business-drivers"></a>Obchodní faktory
 
@@ -77,10 +79,10 @@ Po Připnutí dolů cíle a požadavky, Contoso navrhuje, zkontrolujte nasazení
 - Front-endové aplikace se nasadí jako aplikace služby Azure App Services Web v primární oblasti Azure.
 - Funkce Azure poskytuje nahrávání fotografií domácích a Web komunikuje pomocí této funkce.
 - Funkci domácí mazlíčky fotografii využívá Vision API služeb Cognitive Services a služby cosmos DB.
-- Back-end serveru používá mikroslužeb. Ty se nasazují do kontejnerů využívá Azure Kubernetes service (AKS).
-- Kontejnery jsou vytvořené pomocí VSTS a vloženy do Azure Container Registry (ACR).
-- Prozatím Contoso ručně nasadí webové aplikace a funkce kódu pomocí sady Visual Studio.
-- Mikroslužby jsou nasazovány pomocí Powershellového skriptu, který volá nástroje příkazového řádku Kubernetes.
+- Back-end serveru je sestavena pomocí mikroslužeb. Ty se nasadí do kontejnerů využívá Azure Kubernetes service (AKS).
+- Kontejnery se vytvořené pomocí Azure DevOps a vloženy do Azure Container Registry (ACR).
+- Prozatím Contoso ručně nasadit webové aplikace a funkce kódu pomocí sady Visual Studio.
+- Mikroslužby se nasadí pomocí Powershellového skriptu, který volá nástroje příkazového řádku Kubernetes.
 
     ![Architektura scénáře](./media/contoso-migration-rebuild/architecture.png) 
 
@@ -98,17 +100,11 @@ Contoso vyhodnotí navrhovaných návrhu společně vložením seznam výhody a 
 
 ### <a name="migration-process"></a>Proces migrace
 
-1. Contoso připraví a zřizuje služeb a infrastruktury, které potřebují:
-
- - Spravovaného clusteru Kubernetes AKS a služby ACR.
- - Cosmos DB pro domácí mazlíčky fotografie.
- - Funkce Azure Functions k poskytování nahraje domácí mazlíčky fotografií.
- - Účet úložiště, aby mohla obsahovat kontejnery pro domácí mazlíčky fotografie a front-endovou aplikaci nastavení.
- - Rozhraní API pro zpracování obrazu počítačové vyhodnotit domácí mazlíčky fotografie pro aplikaci.
- - Webové aplikace Azure.
- 
-2. Po vytvoření infrastruktury na místě, nastaví Contoso DevOps sestavování a vydávání kanálu vytvářet, vkládat a průběžně integrujte kontejnery do služby ACR.  
-3. Nakonec Contoso nasadí projekty VSTS pro front-endu webu a nastaví kanál vkládat a průběžně integrovat kód do Azure.
+1. Contoso zřizování ACR a AKS a cosmos DB.
+2. Zřizování infrastrukturu pro nasazení, včetně webové aplikace Azure, účet úložiště, funkce a rozhraní API. 
+3. Po vytvoření infrastruktury na místě, že budete vytvářet jejich mikroslužeb imagí kontejnerů pomocí Azure DevOps, které odesílá je služby ACR.
+4. Contoso nasadí těchto mikroslužeb na dotaz pomocí Powershellového skriptu.
+5. Nakonec budete nasazovat funkce Azure functions a webové aplikace.
 
     ![Proces migrace](./media/contoso-migration-rebuild/migration-process.png) 
 
@@ -138,10 +134,12 @@ Tady je Contoso potřebuje pro tento scénář:
 Tady je způsob spuštění migrace Contoso:
 
 > [!div class="checklist"]
-> * **Krok 1: Zřízení back endové prostředky**: Contoso zřídí spravovaného clusteru Kubernetes AKS a Azure container registry.
-> * **Krok 2: Nastavení kanálu pro back-end**: Contoso nastaví pracovních postupů DevOps. Importovat úložiště git do VSTS a vytvořit nový kanál sestavení. Vytvoření kontejnerů Dockeru a odesílá je služby ACR. Po dokončení procesu sestavení v ACR zobrazí nové úložiště (vyplní kontejnery). Contoso pak nasadí zbývající back-endové infrastruktury k migraci back-endu.
-> * **Krok 3: Zřízení front-endové prostředky**: Contoso nasadí front-endovou infrastrukturu, včetně objektů blob úložiště pro domácí mazlíčky fotografie databáze Cosmos k ukládání dokumentů s domácí mazlíčky informace a rozhraní API pro zpracování obrazu pro web.
-> * **Krok 4: Nastavení kanálu pro front-endu**: Contoso aplikace SmartHotel360 publikuje do služby Azure App service a nasadí aplikaci function app PetCheck. Tento problém řeší v dva samostatné kanály umožňující cykly vydávání verzí jiný.
+> * **Krok 1: Zřízení AKS a ACR**: Contoso zřídí spravovaný cluster AKS a Azure container registry pomocí Powershellu
+> * **Krok 2: Vytvoření kontejnerů Dockeru**: nastavte průběžnou Integraci pro kontejnery Dockeru pomocí Azure DevOps a vložit je služby ACR.
+> * **Krok 3: Nasazení mikroslužeb back-end**: nasadí zbývající infrastrukturu, která bude využívat back-end mikroslužeb.
+> * **Krok 4: Nasazení front-endové infrastruktury**: nasadí infrastrukturu front-endu, prozkoumány úložiště objektů blob pro domácí mazlíčky telefony, Cosmos DB a rozhraní API pro zpracování obrazu.
+> * **Krok 5: Migrace back-endu**: nasazování mikroslužeb a spustit v AKS k migraci back-endu.
+> * **Krok 6: Publikování aplikace front-endu**: publikování aplikace SmartHotel360 a službou Azure App service, aplikace Function App, která bude volána domácí mazlíčky službou.
 
 
 
@@ -215,68 +213,68 @@ Zřízení správce společnosti Contoso:
 
 ## <a name="step-2-configure-the-back-end-pipeline"></a>Krok 2: Konfigurace back-end kanálu
 
-### <a name="create-a-vsts-project-and-build-the-pipeline"></a>Vytvoření projektu VSTS a vytvoření kanálu
+### <a name="create-an-azure-devops-project-and-build"></a>Vytvořit projekt Azure DevOps a sestavení
 
-Správce společnosti Contoso vytvořit projekt VSTS a konfigurace sestavení CI k vytvoření kontejneru a předá ji do služby ACR. Pokyny v této části používají [SmartHotel360-Azure-Backend](https://github.com/Microsoft/SmartHotel360-Azure-backend) úložiště.
+Contoso vytvoří projekt Azure DevOps a nakonfiguruje sestavení CI k vytvoření kontejneru a předá ji do služby ACR. Pokyny v této části používají [SmartHotel360-Azure-Backend](https://github.com/Microsoft/SmartHotel360-Azure-backend) repository.r
 
-1. Z visualstudio.com, jejich vytvoření nového účtu (**contosodevops360.visualstudio.com**) a nakonfigurujte ho na používání Git.
+1. Z visualstudio.com, vytvoří novou (**contosodevops360.visualstudio.com**) a nakonfigurujte ho na používání Git.
 
 2. Vytvořte nový projekt (**SmartHotelBackend**) pomocí Gitu pro správu verzí a agilní pracovního postupu.
 
-    ![VSTS](./media/contoso-migration-rebuild/vsts1.png) 
+    ![Azure DevOps](./media/contoso-migration-rebuild/vsts1.png) 
 
 
 3. Naimportují úložiště GitHub.
 
-    ![VSTS](./media/contoso-migration-rebuild/vsts2.png)
+    ![Azure DevOps](./media/contoso-migration-rebuild/vsts2.png)
     
-4. V **sestavení a vydání**, vytvoří nový kanál sestavení pomocí VSTS Git jako zdroj, od importované **SmartHotelBackend** úložiště. 
+4. V **sestavení a vydání**, vytvoří nový kanál pomocí Azure úložiště Git jako zdroj, od importované **smarthotel** úložiště. 
 
-    ![VSTS](./media/contoso-migration-rebuild/vsts3.png)
+    ![Azure DevOps](./media/contoso-migration-rebuild/vsts3.png)
 
 6. Výběru se spustí s prázdném kanálu.
 
-    ![VSTS](./media/contoso-migration-rebuild/vsts4.png)  
+    ![Azure DevOps](./media/contoso-migration-rebuild/vsts4.png)  
 
-7. Vyberou **hostované Linuxové verze Preview** pro definici sestavení.
+7. Vyberou **hostované Linuxové verze Preview** profilace sestavení.
 
-    ![VSTS](./media/contoso-migration-rebuild/vsts5.png) 
+    ![Azure DevOps](./media/contoso-migration-rebuild/vsts5.png) 
  
 8. V **fáze 1**, přidávají **Docker Compose** úloh. Tento úkol sestavení Dockeru compose.
 
-    ![VSTS](./media/contoso-migration-rebuild/vsts6.png) 
+    ![Azure DevOps](./media/contoso-migration-rebuild/vsts6.png) 
 
 9. Opakujte a přidejte další **Docker Compose** úloh. Kontejnery tohohle nahraje do služby ACR.
 
-     ![VSTS](./media/contoso-migration-rebuild/vsts7.png) 
+     ![Azure DevOps](./media/contoso-migration-rebuild/vsts7.png) 
 
 8. Vyberte první úlohu (sestavení) a konfigurace sestavení pomocí předplatného Azure, autorizace a služby ACR. 
 
-    ![VSTS](./media/contoso-migration-rebuild/vsts8.png)
+    ![Azure DevOps](./media/contoso-migration-rebuild/vsts8.png)
 
-9. Určí cestu **č. j. compose.yaml** souboru **src** složce úložiště. Výběrem imagí služby sestavení a zahrnout nejnovější značky. Při změně akci k **sestavování imagí služby**, název úloh VSTS se změní na **automaticky vytvářet služby**
+9. Určí cestu **č. j. compose.yaml** souboru **src** složce úložiště. Výběrem imagí služby sestavení a zahrnout nejnovější značky. Při změně akci k **sestavování imagí služby**, název úlohy Azure DevOps se změní na **automaticky sestavovacích služeb**
 
-    ![VSTS](./media/contoso-migration-rebuild/vsts9.png)
+    ![Azure DevOps](./media/contoso-migration-rebuild/vsts9.png)
 
 10. Nyní nakonfigurujte druhý Docker úlohy (push). Výběrem předplatného a **smarthotelacreus2** služby ACR. 
 
-    ![VSTS](./media/contoso-migration-rebuild/vsts10.png)
+    ![Azure DevOps](./media/contoso-migration-rebuild/vsts10.png)
 
-11. Znovu, zadejte ho do souboru docker-compose.yaml a vyberte **nahrávání imagí služby** a obsahují nejnovější značky. Když akce změny **nahrávání imagí služby**, název úloh VSTS se změní na **služby nabízených oznámení automaticky**
+11. Znovu, zadejte ho do souboru docker-compose.yaml a vyberte **nahrávání imagí služby** a obsahují nejnovější značky. Když akce změny **nahrávání imagí služby**, název úlohy Azure DevOps se změní na **služby nabízených oznámení automaticky**
 
-    ![VSTS](./media/contoso-migration-rebuild/vsts11.png)
+    ![Azure DevOps](./media/contoso-migration-rebuild/vsts11.png)
 
-12. Pomocí úloh VSTS nakonfigurované správce společnosti Contoso Uložit definici sestavení a zahájit proces sestavení.
+12. S úlohami Azure DevOps nakonfigurované Contoso uloží kanálu sestavení a spustí proces sestavení.
 
-    ![VSTS](./media/contoso-migration-rebuild/vsts12.png)
+    ![Azure DevOps](./media/contoso-migration-rebuild/vsts12.png)
 
 13. Kliknutí na úlohu sestavení ke kontrole průběhu.
 
-    ![VSTS](./media/contoso-migration-rebuild/vsts13.png)
+    ![Azure DevOps](./media/contoso-migration-rebuild/vsts13.png)
 
 14. Po dokončení sestavení ACR zobrazuje nové úložiště, které se vyplní s kontejnery, mikroslužby používá.
 
-    ![VSTS](./media/contoso-migration-rebuild/vsts14.png)
+    ![Azure DevOps](./media/contoso-migration-rebuild/vsts14.png)
 
 
 ### <a name="deploy-the-back-end-infrastructure"></a>Nasazení back endová infrastruktura

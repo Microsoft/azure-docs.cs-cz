@@ -1,5 +1,6 @@
 ---
-title: Ruby rychlý start pro Azure Cognitive Services Text Analytics API | Dokumentace Microsoftu
+title: 'Rychlý start: Použití Ruby k volání rozhraní Text Analytics API | Dokumentace Microsoftu'
+titleSuffix: Azure Cognitive Services
 description: Získat informace a ukázky kódu můžete rychle začít používat rozhraní API pro analýzu textu ve službě Microsoft Cognitive Services v Azure.
 services: cognitive-services
 documentationcenter: ''
@@ -9,14 +10,14 @@ ms.component: text-analytics
 ms.topic: article
 ms.date: 08/30/2018
 ms.author: ashmaka
-ms.openlocfilehash: 75c6476e86ee4a742e32ae0e7ffd27842f591843
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 1a1e3beb496048104f2635e1eff6a7aaefbfbb30
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841724"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44296308"
 ---
-# <a name="quickstart-for-text-analytics-api-with-ruby"></a>Rychlý start pro rozhraní Text Analytics API pomocí Ruby 
+# <a name="quickstart-using-ruby-to-call-the-text-analytics-cognitive-service"></a>Rychlý start: Použití Ruby k volání Text Analytics služby Cognitive Services
 <a name="HOLTop"></a>
 
 Tento článek vám ukáže, jak k [rozpoznání jazyka](#Detect), [analýza sentimentu](#SentimentAnalysis), [extrakce klíčových frází](#KeyPhraseExtraction), a [identifikovat propojených entit](#Entities) pomocí [rozhraní Text Analytics API](//go.microsoft.com/fwlink/?LinkID=759711) pomocí Ruby.

@@ -1,6 +1,6 @@
 ---
-title: Kontrola dodržování zásad Security Center pomocí rozhraní REST API Azure | Microsoft Docs
-description: Naučte se používat rozhraní API REST Azure ke kontrole aktuální souladu se zásadami Security Center.
+title: Kontrola dodržování zásad Security Center pomocí rozhraní REST API služby Azure | Dokumentace Microsoftu
+description: Zjistěte, jak použít rozhraní Azure REST API ke kontrole aktuální dodržování zásad ve službě Security Center.
 services: security-center
 documentationcenter: na
 author: lleonard-msft
@@ -9,22 +9,23 @@ editor: ''
 ms.assetid: 82D50B98-40F2-44B1-A445-4391EA9EBBAA
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/05/2017
 ms.author: alleonar
-ms.openlocfilehash: 6c6764eec59633f0bdd0fa396c1581117a0c1e1d
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 1443486590859aac5591aff2ab0551bed9228d7b
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44301745"
 ---
-# <a name="review-security-center-policy-compliance-using-rest-apis"></a>Security Center kontrola dodržování zásad pomocí rozhraní REST API
+# <a name="review-security-center-policy-compliance-using-rest-apis"></a>Security Center kontroly dodržování zásad pomocí rozhraní REST API
 
-Security Center pravidelně ověří proti vaše zásady definované zabezpečení prostředků Azure. Security Center také poskytuje rozhraní REST API, která umožňuje zkontrolovat dodržování předpisů z vaše vlastní aplikace; můžete zadat dotaz na službu nebo výsledky JSON importovat do jiné aplikace. 
+Centrum zabezpečení pravidelně ověří proti zásady definované zabezpečení prostředků Azure. Security Center také poskytuje rozhraní REST API, která umožňuje zkontrolovat dodržování předpisů z vlastních aplikací; můžete přímo dotazování na službu nebo importovat výsledky JSON do jiných aplikací. 
 
-Zde dozvíte ze všech prostředků Azure, které jsou spojené s předplatným načíst aktuální sadu doporučení.
+Zde zjistíte, jak načíst aktuální sadu doporučení ze všech prostředků Azure, které jsou spojené s předplatným.
 
 Načíst aktuální sadu doporučení:
 ``` http
@@ -33,22 +34,22 @@ Content-Type: application/json
 Authorization: Bearer
 ```
 
-## <a name="build-the-request"></a>Vytvoření žádosti  
+## <a name="build-the-request"></a>Žádost o sestavení  
 
-`{subscription-id}` Parametr je povinná a musí obsahovat ID předplatného pro předplatné Azure definováním zásad. Pokud máte více předplatných, najdete v části [práce s více předplatných](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#working-with-multiple-subscriptions).  
+`{subscription-id}` Parametr je vyžadován a musí obsahovat ID předplatného pro předplatné Azure, definování zásad. Pokud máte více předplatných, přečtěte si téma [práce s několika předplatnými](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#working-with-multiple-subscriptions).  
 
-`api-version` Parametr je povinný. V současné době jsou podporovány tyto koncové body pouze u `api-version=2015-06-01-preview`. 
+`api-version` Parametr je povinný. V současné době se tyto koncové body podporují pouze pro `api-version=2015-06-01-preview`. 
 
 Vyžadují se následující hlavičky: 
 
 |Hlavička požadavku|Popis|  
 |--------------------|-----------------|  
-|*Content-Type:*|Povinná hodnota. Nastavte na `application/json`.|  
-|*Autorizace:*|Povinná hodnota. Nastavte na platnou `Bearer` [přístupový token](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |  
+|*Typ obsahu:*|Povinná hodnota. Nastavte na `application/json`.|  
+|*Autorizace:*|Povinná hodnota. Nastaven na platné `Bearer` [přístupový token](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients). |  
 
 ## <a name="response"></a>Odpověď  
 
-Stavovým kódem 200 (OK) se vrátí pro úspěšné odpovědi, který obsahuje seznam Doporučené úkoly k zabezpečení prostředků Azure.
+Pro úspěšné odpovědi, který obsahuje seznam doporučených úloh k zabezpečení vašich prostředků Azure se vrátí stavový kód 200 (OK).
 
 ``` json
 {  
@@ -68,19 +69,19 @@ Stavovým kódem 200 (OK) se vrátí pro úspěšné odpovědi, který obsahuje 
 }  
 ```  
 
-Každá položka v **hodnota** představuje doporučení:
+Každá položka v **hodnotu** představuje doporučení:
 
 |Vlastnost Response.|Popis|
 |----------------|----------|
 |**Stav** | Určuje, zda je doporučení `active` nebo `resolved`. |
-|**CreationTimeUtc** | Datum a čas ve standardu UTC, zobrazující vytvoření doporučení. |
-|**lastStateChangeUtc** | Datum a čas v UTV poslední změny stavu, pokud existuje. |
-|**securityTaskParameters** | Podrobnosti doporučení; Vlastnosti lišit podle základní doporučení. |
+|**CreationTimeUtc** | Datum a čas ve standardu UTC, zobrazuje, kdy byla vytvořena doporučení. |
+|**lastStateChangeUtc** | Datum a čas ve UTV poslední změny stavu, pokud existuje. |
+|**securityTaskParameters** | Podrobnosti doporučení; Vlastnosti lišit v závislosti základní doporučení. |
 ||
   
-Aktuálně podporované doporučení, najdete v části [implementace doporučení zabezpečení](https://docs.microsoft.com/azure/security-center/security-center-recommendations).
+Aktuálně se podporují doporučení, najdete v tématu [implementace doporučení pro zabezpečení](https://docs.microsoft.com/azure/security-center/security-center-recommendations).
 
-Další stavové kódy označují chybový stav. V těchto případech objekt odpovědi obsahuje popis vysvětlením, proč zpracování žádosti se nezdařilo.
+Jiné stavové kódy označují chybové stavy. V těchto případech objektu odpovědi obsahuje popis s vysvětlením, proč žádost selhala.
 
 ``` json
 {  
@@ -139,13 +140,13 @@ Další stavové kódy označují chybový stav. V těchto případech objekt od
 }  
 ```  
 
-Tato odezva ukazuje dva doporučení; Každá položka v seznamu odpovídá konkrétní doporučení. První doporučuje šifrování úložiště na virtuální počítač s Linuxem a druhý navrhne povolit auditování pro SQL server.
+Tato odpověď značí dva doporučení; Každá položka v seznamu odpovídá konkrétní doporučení. První doporučuje šifrování úložiště na virtuální počítač s Linuxem a druhá navrhuje, abyste povolili auditování pro SQL server.
 
-Doporučení se liší podle zásad, které jste povolili. Další informace, včetně aktuálně k dispozici doporučení, najdete v části [Správa doporučení zabezpečení v Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-recommendations).
+Doporučení se liší podle zásad, které jste povolili. Další informace, včetně doporučení pro aktuálně k dispozici, najdete v článku [Správa doporučení zabezpečení v Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-recommendations).
 
 
 ## <a name="see-also"></a>Další informace najdete v tématech  
 - [Nastavení zásad zabezpečení](https://docs.microsoft.com/azure/security-center/security-center-policies-overview)
-- [Zprostředkovatel zabezpečení prostředků Azure REST API](https://msdn.microsoft.com/library/azure/mt704034.aspx)   
+- [Azure rozhraní REST API poskytovatele prostředků zabezpečení](https://msdn.microsoft.com/library/azure/mt704034.aspx)   
 - [Začínáme s Azure REST API](https://docs.microsoft.com/rest/api/azure/)   
-- [Modul prostředí PowerShell Azure Security Center](https://www.powershellgallery.com/packages/Azure-Security-Center/0.0.22)
+- [Modul PowerShell pro Azure Security Center](https://www.powershellgallery.com/packages/Azure-Security-Center/0.0.22)

@@ -1,6 +1,6 @@
 ---
-title: Hledání Azure Security Center | Microsoft Docs
-description: Zjistěte, jak Azure Security Center využívá analýzy protokolů hledání načíst a analyzovat data zabezpečení.
+title: Hledání v Centru zabezpečení Azure | Dokumentace Microsoftu
+description: Zjistěte, jak Azure Security Center používá hledání Log Analytics k načtení a analyzovat data zabezpečení.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -9,59 +9,59 @@ editor: ''
 ms.assetid: 45b9756b-6449-49ec-950b-5ed1e7c56daa
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2017
 ms.author: terrylan
-ms.openlocfilehash: 513c98237a322dabd6b2bf13443e8998ca843b1d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ec8c11dcea825dfaab19643e7aefc68a82542fa9
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23866398"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44301527"
 ---
-# <a name="azure-security-center-search"></a>Azure Security Center vyhledávání
-Azure Security Center používá [analýzy protokolů hledání](../log-analytics/log-analytics-log-searches.md) načíst a analyzovat data zabezpečení. Log Analytics obsahuje dotazovací jazyk rychle načíst a konsolidovat data. Ze služby Security Center můžete využít analýzy protokolů hledání vytvořit dotazy a analyzovat shromážděná data.
+# <a name="azure-security-center-search"></a>Hledání v Centru zabezpečení Azure
+Azure Security Center používá [hledání Log Analytics](../log-analytics/log-analytics-log-searches.md) načíst a analyzovat data zabezpečení. Log Analytics obsahuje dotazovací jazyk pro rychlé načítání a slučování dat. Ze služby Security Center můžete využít hledání Log Analytics vytvářet dotazy a analyzovat shromážděná data.
 
-Hledání je k dispozici v úrovni Free a úroveň Standard služby Security Center.  Data k dispozici v protokolu hledání je závislá na úrovni vrstvy použít do pracovního prostoru.  Najdete v Centru zabezpečení [stránce s cenami](../security-center/security-center-pricing.md) Další informace.
+Vyhledávání je dostupné úrovni Free a úroveň Standard služby Security Center.  Aby byla data dostupná v rámci vaší prohledávání protokolů je závislá na úroveň vrstvy použitý pro váš pracovní prostor.  Zobrazit Security Center [stránce s cenami](../security-center/security-center-pricing.md) Další informace.
 
 
 > [!NOTE]
-> Security Center neukládá data zabezpečení pro pracovní prostor pod úroveň Free. Různé protokoly můžete odeslat do pracovního prostoru pod úroveň Free a vyhledávání na data, ale výsledky hledání tak nebudou obsahovat data ze služby Security Center. Data Security Center jenom uloží do pracovního prostoru v části na plán úrovně Standard.
+> Security Center nedojde k uložení dat zabezpečení pro pracovní prostor v bezplatné úrovni. Různé protokoly můžete odeslat do pracovního prostoru v rámci úrovně Free a hledání na těchto datech, ale výsledky hledání neobsahují data ze služby Security Center. Security Center jenom uloží data do pracovního prostoru v části na úrovni Standard.
 >
 >
 
 ## <a name="access-search"></a>Přístup k vyhledávání
-1. V části v hlavní nabídce Security Center, vyberte **vyhledávání**.
+1. V hlavní nabídce služby Security Center, vyberte **hledání**.
 
-  ![Vyberte protokol hledání][1]
+  ![Vyberte prohledávání protokolů][1]
 
-2. Security Center uvádí všechny pracovní prostory v rámci vašich předplatných Azure. Vyberte pracovní prostor. (Pokud máte jenom jeden pracovní prostor, tento pracovní prostor selektor nezobrazí.)
+2. Security Center obsahuje seznam všech pracovních prostorů v rámci vašich předplatných Azure. Vyberte pracovní prostor. (Pokud máte jenom jeden pracovní prostor, tento selektor pracovního prostoru se nezobrazí.)
 
-  ![Vyberte pracovní prostor][2]
+  ![Vybrat pracovní prostor][2]
 
-3. **Přihlaste se vyhledávání** otevře. Dotaz pro další data v rámci vybraný pracovní prostor, zadejte tento příklad dotazu:
+3. **Prohledávání protokolů** otevře. K dotazování na další data v rámci vybraného pracovního prostoru, zadejte tento příklad dotazu:
 
-  SecurityEvent | kde EventID == 4625 | shrnout count() podle TargetAccount
+  SecurityEvent | kde EventID == 4625 | shrnutí count() by TargetAccount
 
-  Výsledek zobrazuje všechny účty, které se nepodařilo přihlášení (událost 4625).
+  Výsledek se zobrazí všechny účty, které se nezdařilo přihlášení (událost 4625).
 
   ![Výsledky hledání][3]
 
-V tématu [analýzy protokolů dotazu jazyka](../log-analytics/log-analytics-search-reference.md) Další informace o tom, jak dotaz na data v rámci vybraný pracovní prostor.
+Zobrazit [dotazovací jazyk Log Analytics](../log-analytics/log-analytics-search-reference.md) Další informace o tom, jak dotaz na data ve vybraném pracovním prostoru.
 
-## <a name="next-steps"></a>Další kroky
-V tomto článku jste zjistili, jak pro přístup k vyhledávání ve službě Security Center. Security Center používá analýzy protokolů hledání. Další informace o hledání analýzy protokolů najdete v tématu:
+## <a name="next-steps"></a>Další postup
+V tomto článku jste zjistili, jak získat přístup k vyhledávání ve službě Security Center. Security Center používá hledání Log Analytics. Další informace o hledání Log Analytics najdete v tématu:
 
-- [Co je služba Log Analytics?](../log-analytics/log-analytics-overview.md) – Přehled na analýzy protokolů
-- [Principy protokolu vyhledá v analýzy protokolů](../log-analytics/log-analytics-log-search-new.md) – popisuje, jak se používají protokol hledání v analýzy protokolů a poskytuje koncepty, které by se měl chápat před vytvořením vyhledávání protokolu
-- [Najít data pomocí protokolu hledání v analýzy protokolů](../log-analytics/log-analytics-log-searches.md) – kurz na používání protokolu vyhledávání
-- [Analýzy protokolů hledání odkaz](../log-analytics/log-analytics-search-reference.md) – popisuje dotazovací jazyk v analýzy protokolů
+- [Co je služba Log Analytics?](../log-analytics/log-analytics-overview.md) – Přehled v Log Analytics
+- [Principy prohledávání protokolů v Log Analytics](../log-analytics/log-analytics-log-search-new.md) – popisuje, jak se používají prohledávání protokolů v Log Analytics a poskytuje koncepty, které by měl být srozumitelný před vytvořením prohledávání protokolu
+- [Vyhledání dat pomocí prohledávání protokolů v Log Analytics](../log-analytics/log-analytics-log-searches.md) – kurz k používání prohledávání protokolů
+- [Referenční příručce k vyhledávání log Analytics](../log-analytics/log-analytics-search-reference.md) – popisuje dotazovací jazyk v Log Analytics
 
 Další informace o službě Security Center najdete v tématu:
 
-- [Přehled Security Center](security-center-intro.md) – klíčové funkce popisuje Security Center
+- [Přehled služby Security Center](security-center-intro.md) – Centrum zabezpečení popisuje klíčové funkce
 
 <!--Image references-->
 [1]: ./media/security-center-search/search.png

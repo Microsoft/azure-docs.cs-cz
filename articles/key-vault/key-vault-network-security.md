@@ -6,16 +6,16 @@ services: key-vault
 author: amitbapat
 manager: mbaldwin
 ms.service: key-vault
-ms.topic: article
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 08/31/2018
 ms.author: ambapat
-ms.openlocfilehash: c58fc56742c0a11771bdd84e4195e6f476622a3b
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 6315434c1e8acc82e02f5c9e5ae8ab2d1cacc887
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43345232"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302049"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Konfigurace bran firewall služby Azure Key Vault a virtuální sítě
 

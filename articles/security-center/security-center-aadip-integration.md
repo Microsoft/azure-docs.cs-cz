@@ -1,6 +1,6 @@
 ---
-title: Připojení ochrany identit Azure Active Directory do Azure Security Center | Microsoft Docs
-description: Zjistěte, jak Azure Security Center umožňuje integraci s Azure Active Directory Identity Protection.
+title: Připojení služby Azure Active Directory Identity Protection ke službě Azure Security Center | Dokumentace Microsoftu
+description: Zjistěte, jak Azure Security Center umožňuje integrací s Azure Active Directory Identity Protection.
 services: security-center
 documentationcenter: na
 author: terrylan
@@ -9,52 +9,52 @@ editor: ''
 ms.assetid: 0d4b77c2-dba4-4e46-8f55-ab04ddd92496
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2017
 ms.author: yurid
-ms.openlocfilehash: b15508acea92c165cba85e39ab907fa524088164
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 6ab3611d47b32eddd41736df69a3e7382c2b220d
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32774178"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44298757"
 ---
-# <a name="connecting-azure-active-directory-identity-protection-to-azure-security-center"></a>Připojení ochrany identit Azure Active Directory do Azure Security Center
-Tento dokument vám pomůže nakonfigurovat integraci mezi službou ochrany identit Azure Active Directory (AD) a Azure Security Center.
+# <a name="connecting-azure-active-directory-identity-protection-to-azure-security-center"></a>Připojení služby Azure Active Directory Identity Protection ke službě Azure Security Center
+Tento dokument vám umožní nakonfigurovat integraci Azure Active Directory (AD) Identity Protection a Azure Security Center.
 
-## <a name="why-connect-azure-ad-identity-protection"></a>Proč připojovat Azure AD Identity Protection?
-[Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) pomáhá zjišťovat potenciální ohrožení zabezpečení, které ovlivňují identity ve vaší organizaci. Když se připojí, budete moci zobrazit výstrahy služby Azure AD Identity Protection v Security Center. Tato integrace umožňuje zobrazit, korelaci a prozkoumejte všechny výstrahy zabezpečení související s hybridní cloudové úlohy ve službě Security Center. 
+## <a name="why-connect-azure-ad-identity-protection"></a>Proč připojovat aplikaci Azure AD Identity Protection?
+[Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) pomáhá zjišťovat potenciální ohrožení zabezpečení dopadem na identity vaší organizace. Při připojení, budete moci zobrazit výstrahy služby Azure AD Identity Protection ve službě Security Center. Tato integrace umožňuje zobrazení, korelovat a prošetřování výstrahy zabezpečení související s vašimi hybridními cloudovými úlohami ve službě Security Center. 
 
-## <a name="how-do-i-configure-this-integration"></a>Konfigurování této integrace
+## <a name="how-do-i-configure-this-integration"></a>Jak nakonfigurovat tuto integraci?
 Pokud už vaše organizace používá Azure AD Identity Protection, postupujte podle pokynů níže nakonfigurujte integraci:
 
 1. Otevřete řídicí panel **Security Center**.
-2. V levém podokně klikněte na tlačítko **řešení zabezpečení**. Security Center automaticky zjistí, zda je povoleno Azure AD Identity Protection ve vaší organizaci.
+2. V levém podokně klikněte na tlačítko **řešení zabezpečení**. Security Center automaticky zjišťuje, pokud Azure AD Identity Protection je povolená pro vaši organizaci.
 
     ![AADIP](./media/security-center-aadip-integration/security-center-aadip-integration-fig1.png)
 
-3. Klikněte na tlačítko **CONNECT**.
-4. V **integrovat Azure AD Identity Protection** , posuňte se dolů a vyberte odpovídajícího pracovního prostoru:
+3. Klikněte na tlačítko **připojit**.
+4. V **integrovat Azure AD Identity Protection** přejděte dolů a vyberte odpovídajícího pracovního prostoru:
 
-    ![Pracovní prostor](./media/security-center-aadip-integration/security-center-aadip-integration-fig2.png)
+    ![pracovní prostor](./media/security-center-aadip-integration/security-center-aadip-integration-fig2.png)
 
 5. Klikněte na **Připojit**.
 
-Po dokončení této konfigurace, zobrazí se v Azure AD Identity Protection řešení **řešení zabezpečení** v části **připojené řešení**. 
+Po dokončení této konfigurace řešení Azure AD Identity Protection objeví v **řešení zabezpečení** stránce v části **připojená řešení**. 
 
 ## <a name="next-steps"></a>Další postup
-V tomto dokumentu jste zjistili, jak se připojit k Centru zabezpečení Azure AD Identity Protection. Další informace o službě Security Center najdete v následujících článcích:
+V tomto dokumentu jste zjistili, jak se připojit ke službě Security Center služby Azure AD Identity Protection. Další informace o službě Security Center najdete v následujících článcích:
 
 * [Propojení Microsoft Advanced Threat Analytics a Azure Security Center](security-center-ata-integration.md)
-* [Nastavení zásad zabezpečení v Azure Security Center](security-center-policies.md) – zjistěte, jak nakonfigurovat zásady zabezpečení pro skupiny prostředků a předplatná Azure.
-* [Správa doporučení zabezpečení v Azure Security Center](security-center-recommendations.md) – zjistěte, jak vám doporučení pomáhají chránit prostředky v Azure.
+* [Nastavení zásad zabezpečení ve službě Azure Security Center](security-center-policies.md) – zjistěte, jak nakonfigurovat zásady zabezpečení pro vaše předplatná Azure a skupiny prostředků.
+* [Správa doporučení zabezpečení v Azure Security Center](security-center-recommendations.md) – zjistěte, jak vám doporučení pomáhají chránit prostředky Azure.
 * [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – Naučte se sledovat stav svých prostředků Azure.
-* [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – zjistěte, jak spravovat a reakce na výstrahy zabezpečení.
+* [Správa a zpracování výstrah zabezpečení ve službě Azure Security Center](security-center-managing-and-responding-alerts.md) – zjistěte, jak spravovat a reagovat na výstrahy zabezpečení.
 * [Sledování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md) – Zjistěte, jak pomocí Azure Security Center sledovat stav vašich partnerských řešení.
-- [Zabezpečení dat v Azure Security Center](security-center-data-security.md) -další způsob správy a zabezpečení ve službě Security Center.
+- [Zabezpečení dat ve službě Azure Security Center](security-center-data-security.md) – zjistěte, jak data správy a ochrany ve službě Security Center.
 * [Azure Security Center – nejčastější dotazy](security-center-faq.md) – Přečtěte si nejčastější dotazy o použití této služby.
-* [Blog o bezpečnosti Azure](http://blogs.msdn.com/b/azuresecurity/) – získejte nejnovější informace zabezpečení Azure a informace.
+* [Blog o zabezpečení Azure](http://blogs.msdn.com/b/azuresecurity/) – získejte nejnovější zprávy zabezpečení Azure a informace.
 
 

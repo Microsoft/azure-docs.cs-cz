@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2016
 ms.author: cephalin
-ms.openlocfilehash: 0f053c0293488f19adcd058f1ba8304d8d238738
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 3ec67488b238118067e771baf3dd5124308a84cf
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128302"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44296189"
 ---
 # <a name="troubleshoot-slow-web-app-performance-issues-in-azure-app-service"></a>Řešení problémů s výkonem pomalých webových aplikací ve službě Azure App Service
 V tomto článku vám pomůžou s řešením problémů s výkonem pomalých webových aplikací v [služby Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714).
@@ -88,7 +88,7 @@ Můžete také sledovat výkon vašich aplikací s využitím *rozšíření web
 
 Každá webová aplikace App Service poskytuje rozšiřitelná Správa koncový bod, který umožňuje používat sadu výkonných nástrojů nasazených jako rozšíření webu. Rozšíření patří: 
 
-- Editorů zdrojového kódu, jako jsou [Visual Studio Team Services](https://www.visualstudio.com/products/what-is-visual-studio-online-vs.aspx). 
+- Editorů zdrojového kódu, jako jsou [Azure DevOps](https://www.visualstudio.com/products/what-is-visual-studio-online-vs.aspx). 
 - Nástroje pro správu pro připojené prostředky, jako jsou databáze MySQL připojený do webové aplikace.
 
 [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) je lokality rozšíření, která je také k dispozici pro monitorování výkonu. Jak pomocí Application Insights, znovu sestavte svůj kód pomocí sady SDK. Můžete také nainstalovat rozšíření, která poskytuje přístup k dalším datům. Sada SDK umožňuje napsat kód ke sledování využití a výkonu vaší aplikace podrobněji. Další informace najdete v tématu [monitorování výkonu webových aplikací](../application-insights/app-insights-web-monitor-performance.md).
@@ -158,7 +158,7 @@ Zde jsou některé z akcí, které poskytuje Kudu:
 
 Další užitečnou funkci Kudu je, že v případě, že vaše aplikace vyvolává výjimkách first-chance, můžete použít Kudu a vypíše nástroj SysInternals Procdump vytvořit paměti. Tyto výpisy paměti jsou snímky procesu a často vám můžou pomoct vyřešit problémy složitější s vaší webovou aplikací.
 
-Další informace o funkcích dostupných v Kudu najdete v tématu [nástrojů Azure Websites Team Services byste měli vědět o](https://azure.microsoft.com/blog/windows-azure-websites-online-tools-you-should-know-about/).
+Další informace o funkcích dostupných v Kudu najdete v tématu [nástroje Azure DevOps, měli byste vědět o](https://azure.microsoft.com/blog/windows-azure-websites-online-tools-you-should-know-about/).
 
 <a name="mitigate" />
 

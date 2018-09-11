@@ -1,5 +1,5 @@
 ---
-title: Použití Azure Security Center doporučení k vylepšení zabezpečení | Microsoft Docs
+title: Použití služby Azure Security Center doporučení k vylepšení zabezpečení | Dokumentace Microsoftu
 description: " Další informace o použití zásady a doporučení zabezpečení v Azure Security Center můžete zmírnit útok na zabezpečení. "
 services: security-center
 documentationcenter: na
@@ -9,115 +9,115 @@ editor: ''
 ms.assetid: ''
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2017
 ms.author: terrylan
-ms.openlocfilehash: 0616f5e501324bfd821c1455ce234602f1fcf1bd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d5689e6b9b4d808c24bc4952f65904654b5e99f8
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23866664"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44297362"
 ---
-# <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Použití Azure Security Center doporučení k vylepšení zabezpečení
-Konfigurace zásad zabezpečení a pak implementace doporučení pomocí služby Azure Security Center můžete snížit pravděpodobnost událostí významné zabezpečení. Tento článek ukazuje, jak používat zásady a doporučení zabezpečení v Centru zabezpečení můžete zmírnit útok na zabezpečení.
+# <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Použití služby Azure Security Center doporučení k vylepšení zabezpečení
+Tak, že konfigurace zásad zabezpečení a pak implementace doporučení poskytovaných službou Azure Security Center můžete snížit riziko zabezpečení významné události. V tomto článku se dozvíte, jak používat zásady zabezpečení a doporučení ve službě Security Center můžete zmírnit útok na zabezpečení.
 
 > [!NOTE]
-> Tento článek vychází role a koncepty představené v Centru zabezpečení [Průvodce plánováním a operace](security-center-planning-and-operations-guide.md). Je vhodné před pokračováním si prohlédněte v příručce plánování.
+> Tento článek vychází z role a konceptům uvedeným ve službě Security Center [Průvodce plánováním a provozem](security-center-planning-and-operations-guide.md). Je vhodné zkontrolovat příručky plánování před pokračováním.
 >
 >
 
 ## <a name="managing-security-recommendations"></a>Správa doporučení zabezpečení
-Zásady zabezpečení definuje sadu ovládacích prvků, které se doporučují pro prostředky v rámci zadané předplatné nebo skupinu prostředků. V Security Center určíte zásady podle požadavků zabezpečení vaší společnosti. Další informace najdete v tématu [nastavovat zásady zabezpečení ve službě Security Center](security-center-policies.md).
+Zásady zabezpečení definují sadu ovládacích prvků, které se doporučují pro prostředky v rámci daného předplatného nebo skupiny prostředků. Ve službě Security Center určíte zásady podle požadavků zabezpečení vaší společnosti. Další informace najdete v tématu [nastavení zásad zabezpečení ve službě Security Center](security-center-policies.md).
 
 Zásady zabezpečení pro skupiny prostředků se dědí z úrovně předplatného.
 
 ![Dědičnost zásad zabezpečení][1]
 
-Pokud potřebujete vlastní zásady v určitých skupinách prostředků, můžete zakázat dědičnost ve skupině prostředků. Zakázat, nastavte dědičnost na jedinečný okno Zásady zabezpečení a ovládacích prvků, které Security Center zobrazuje doporučení pro přizpůsobení.
+Pokud potřebujete vlastní zásady v určitých skupinách prostředků, můžete zakázat dědičnost ve skupině prostředků. Zakázat, nastavte dědičnosti na jedinečné v okně Zásady zabezpečení a upravit ovládací prvky, které Security Center zobrazí doporučení pro.
 
-Například pokud máte úlohy, které nevyžadují zásadu SQL databáze transparentní dat šifrování (TDE), vypněte tuto zásadu na úrovni předplatného a povolte ji jenom ve skupinách prostředků, ve kterých je požadovaná.
+Například pokud máte úlohy, které nevyžadují zásadu SQL Database transparentní šifrování dat (TDE), vypněte tuto zásadu na úrovni předplatného a povolit pouze ve skupinách prostředků, ve kterém jsou vyžadována transparentní šifrování dat SQL.
 
 > [!NOTE]
 > V případě konfliktu mezi zásadou na úrovni předplatného a zásadou na úrovni skupiny prostředků má přednost zásada na úrovni skupiny prostředků.
 >
 >
 
-Security Center analyzuje stav zabezpečení vašich prostředků Azure. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří se v ovládacích prvcích nastavení v zásadě zabezpečení na základě doporučení. Doporučení vás provede procesem konfigurace potřebných zabezpečení ovládací prvky.
+Security Center analyzuje stav zabezpečení vašich prostředků Azure. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří doporučení v závislosti na nastavení v zásadách zabezpečení ovládací prvky. Doporučení vás provede procesem konfigurace potřebných bezpečnostní kontroly.
 
-Aktuální zásady doporučení v Security Center se zaměřují na aktualizací systému, konfigurace operačního systému, skupin zabezpečení podsítí a virtuálních počítačů (VM), auditování databáze SQL TDE databáze SQL, sítě a brány firewall webových aplikací. Nejaktuálnější pokrytí doporučení služby Security Center, najdete v části [Správa doporučení zabezpečení v Centru zabezpečení](security-center-recommendations.md).
+Aktuální zásady doporučení v Security Center zaměřit se na aktualizace systému, konfigurace operačního systému, skupiny zabezpečení na podsítě a virtuální počítače (VM), auditování služby SQL Database, SQL Database TDE, sítě a brány firewall webových aplikací. Nejaktuálnější pokrytí doporučení služby Security Center, najdete v části [Správa doporučení zabezpečení v Security Center](security-center-recommendations.md).
 
 ## <a name="scenario"></a>Scénář
-Tento scénář popisuje, jak používat Security Center Pokud chcete snížit pravděpodobnost významné bezpečnostního incidentu monitorování doporučení služby Security Center a akce. Tento scénář používá fiktivní společnosti, Contoso a rolí, které jsou uvedené v Centru zabezpečení [Průvodce plánováním a operace](security-center-planning-and-operations-guide.md#security-roles-and-access-controls). Role představují jednotlivce a týmy, které mohou používat Security Center při provádění různých úloh souvisejících se zabezpečením. Role jsou:
+Tento scénář popisuje, jak používat Security Center Chcete-li snížit riziko významný bezpečnostní incident podle doporučení služby Security Center monitorování a provádění akcí. Tento scénář používá fiktivní společnosti, Contoso a rolí uváděné v Centru zabezpečení [Průvodce plánováním a provozem](security-center-planning-and-operations-guide.md#security-roles-and-access-controls). Role představují jednotlivcům i týmům, které mohou používat Security Center k provádění různých úloh souvisejících se zabezpečením. Role jsou:
 
 ![Scénář role][2]
 
-Contoso nedávno migrace některé z jejich místních prostředků do Azure. Contoso chce implementovat a udržovat ochranu, která snižují jejich zranitelnost vůči útoku zabezpečení svých prostředků v cloudu.
+Contoso nedávno provedla migraci některých místních prostředků do Azure. Contoso chce implementovat a udržovat ochrany, které snižují jejich zranitelnost vůči útoku zabezpečení svých prostředků v cloudu.
 
 ## <a name="recommended-solution"></a>Doporučené řešení
-Řešením je použití Security Center pro zabránění a zjištění chyb zabezpečení. Contoso má přístup k Security Center prostřednictvím svého předplatného Azure. [Úroveň Free](security-center-pricing.md) služby Security Center je automaticky povolené na všechny odběry služby Azure a shromažďování dat je povolené na všech virtuálních počítačích v rámci svého předplatného.
+Řešení je začít používat Security Center k zabránění a zjišťování ohrožení zabezpečení. Contoso má přístup ke službě Security Center prostřednictvím svého předplatného Azure. [Úroveň Free](security-center-pricing.md) ze Security Center je automaticky povolená na všech předplatných Azure a je povolené shromažďování dat pro všechny virtuální počítače v rámci svého předplatného.
 
-Nakonfiguruje David v rámci zabezpečení IT společnosti Contoso **zásady zabezpečení** pomocí Security Center. Security Center analyzuje stav zabezpečení prostředků Azure společnosti Contoso. Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří **doporučení** podle nastavení v zásadě zabezpečení ovládacích prvků.
+David, zabezpečení IT společnosti Contoso, konfiguruje **zásady zabezpečení** pomocí služby Security Center. Security Center analyzuje stav zabezpečení prostředků Azure společnosti Contoso. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří **doporučení** podle nastavení v zásadách zabezpečení ovládací prvky.
 
-Jeff, vlastník úloh v cloudu, je zodpovědný za implementaci a udržování ochrany v souladu se zásadami zabezpečení společnosti Contoso. Jeff můžete monitorovat doporučení vytvořené Centrum zabezpečení pro použití ochrany. Doporučení Jeff provede procesem konfigurace potřebných zabezpečení ovládací prvky.
+Jan, vlastníkem úlohy v cloudu, je zodpovědný za implementaci a správu bezpečnostních mechanismů v souladu se zásadami zabezpečení společnosti Contoso. Jan může monitorovat doporučení vytvořených službou Security Center k použití ochrany. Doporučení Jan provede procesem konfigurace zabezpečení potřebných kontrol.
 
 Aby Jan k implementaci a udržování ochrany a odstranění ohrožení zabezpečení potřebné informace pro:
 
-- Monitorování doporučení zabezpečení pomocí služby Security Center
-- Vyhodnocení doporučení zabezpečení a rozhodnout, pokud mu použít nebo vymazat
-- Použít doporučení zabezpečení
+- Doporučení pro monitorování zabezpečení poskytne Security Center
+- Vyhodnocení doporučení týkající se zabezpečení a rozhodnout, jestli má použít nebo zavřít
+- Použití doporučení k zabezpečení
 
-Pojďme postupujte podle kroků Jeff zobrazíte, jak pomocí doporučení služby Security Center mu provede procesem konfigurace ovládacích prvků k vyloučení chyb zabezpečení.
+Pojďme kroků Janova naleznete v tématu jak používá doporučení služby Security Center k mu provede procesem konfigurace ovládacích prvků k odstranění ohrožení zabezpečení.
 
 ## <a name="how-to-implement-this-solution"></a>Postup implementace tohoto řešení
-Jeff přihlásí [portál Azure](https://azure.microsoft.com/features/azure-portal/) a otevře se konzole Security Center. V rámci své každodenní aktivity sledování se mu zkontroluje, pokud jsou doporučení zabezpečení tak, že provedete následující kroky:
+Jan přihlásí k [webu Azure portal](https://azure.microsoft.com/features/azure-portal/) a otevře se konzole Security Center. Jako součást své denní aktivity sledování mohl zkontroluje, pokud jsou doporučení zabezpečení podle následujících kroků:
 
 1. Jan vybere **doporučení** dlaždici otevřete **doporučení**.
    ![Vyberte dlaždici doporučení][3]
-2. Jan zkontroluje seznam doporučení. Zjistí, že Security Center poskytl seznam doporučení v pořadí podle priority z nejvyšší prioritu s nejnižší prioritou. Rozhodne se adresa s vysokou prioritou doporučení v seznamu. Vybere **nainstalovat službu Endpoint Protection** pod **doporučení**.
-3. **Nainstalovat službu Endpoint Protection** otevře zobrazení seznamu virtuálních počítačů bez antimalwarových povolena. Jan zkontroluje seznam virtuálních počítačů, vybere všechny virtuální počítače a potom vybere **nainstalovat na virtuálních počítačích 3**.
+2. Jan zkontroluje seznam doporučení. Zjistí, že Security Center poskytuje seznam doporučení v pořadí podle priority od nejvyšší priority k nejnižší prioritu. Rozhodne se řešit doporučení s vysokou prioritou v seznamu. Vybere **nainstalovat službu Endpoint Protection** pod **doporučení**.
+3. **Nainstalovat službu Endpoint Protection** otevře se zobrazení seznamu virtuálních počítačů bez povolený antimalware v programu. Jan zkontroluje seznam virtuálních počítačů, vybere všechny virtuální počítače a pak vybere **nainstalovat na 3 virtuální počítače**.
    ![Instalace Endpoint Protection][4]
-4. **Vyberte Endpoint Protection** otevře Jeff poskytování dvě antimalwarových řešení. Jan vybere **Antimalware od Microsoftu** řešení.
-5. Zobrazí se další informace o antimalwarové řešení. Jan vybere **vytvořit**.
+4. **Vybrat Endpoint Protection** otevře poskytování Jan dvě antimalwarová řešení. Jan vybere **Microsoft Antimalware** řešení.
+5. Zobrazí se další informace o řešení proti malwaru. Jan vybere **vytvořit**.
    ![Antimalware od Microsoftu][5]
-6. Jan zadá požadovaná konfigurační nastavení v části **nainstalovat** a vybere **OK**.
+6. Jan zadá požadované konfigurační nastavení v části **nainstalovat** a vybere **OK**.
 
 [Microsoft Antimalware](../security/azure-security-antimalware.md) je teď aktivní na vybrané virtuální počítače.
 
-Jeff nadále pohyb s vysokou prioritou a doporučení se střední prioritou, při rozhodování o provádění. Jeff odkazuje [Správa doporučení zabezpečení](security-center-recommendations.md) článek vám pomůže porozumět doporučení a co každé z nich dělá pokud mu použije ji.
+Jan pokračuje procházení s vysokou prioritou a doporučení pro Střední priorita, rozhodování v implementaci. Jan odkazuje [Správa doporučení zabezpečení](security-center-recommendations.md) článek k pochopení doporučení a každý z nich, co dělá pokud mu vztahuje.
 
-Jeff zjišťuje, které [Microsoft Security Response Center (MSRC)](../security/azure-security-response-center.md) provádí sledování zabezpečení vyberte síť Azure a infrastruktury a přijímá stížností intelligence a zneužití ohrožení od jiných výrobců. Pokud Jeff poskytuje zabezpečení kontaktní údaje pro předplatné Azure společnosti Contoso, kontakty Microsoft Contoso, pokud střediska MSRC zjišťuje data zákazníků společnosti Contoso přístupem k nezákonné nebo neoprávněným strana. Pojďme postupujte Jeff podle mu se vztahuje **zadejte kontaktní údaje zabezpečení** doporučení (má tyto požadavky se závažností Střední seznam doporučení výše).
+Jan se učí, který [Microsoft Security Response Center (MSRC)](../security/azure-security-response-center.md) provádí monitorování zabezpečení vyberte síť Azure a infrastrukturou a přijímá threat intelligence a zneužití stížností od třetích stran. Pokud Jan poskytuje podrobností o kontaktu zabezpečení pro předplatné Azure společnosti Contoso, Microsoft kontakty společnosti Contoso, pokud zjistí, MSRC zákaznických dat společnosti Contoso přistupovala nezákonně nebo neoprávněně stran. Pojďme postupujte podle Jan mu se vztahuje **poskytnutí podrobností kontaktů zabezpečení** doporučení (doporučení se závažností Střední seznam doporučení výše).
 
-1. Jan vybere **zadejte kontaktní údaje zabezpečení** pod **doporučení**, otevře **zadejte kontaktní údaje zabezpečení**.
-2. Jan vybere předplatné Azure poskytuje kontaktní informace. Druhý **zadejte kontaktní údaje zabezpečení** otevře se okno.
-   ![Kontaktní údaje zabezpečení][6]
-3. V části **zadejte kontaktní údaje zabezpečení**, zadá Jeff:
+1. Jan vybere **poskytnutí podrobností kontaktů zabezpečení** pod **doporučení**, které se otevře **poskytnutí podrobností kontaktů zabezpečení**.
+2. Jan vybere předplatné Azure, které poskytují kontaktní informace o. Sekundy **poskytnutí podrobností kontaktů zabezpečení** se otevře okno.
+   ![Podrobností o kontaktu zabezpečení][6]
+3. V části **poskytnutí podrobností kontaktů zabezpečení**, Jan zadá:
 
-  - zabezpečení kontaktní e-mailové adresy oddělené čárkami (není limit počtu e-mailové adresy, které může zadat)
-  - telefonní číslo kontaktu jeden zabezpečení
+  - Kontaktní e-mailové adresy zabezpečení oddělených čárkami (není omezený počet e-mailové adresy, které může zadat)
+  - Obraťte se na telefonní číslo jednoho zabezpečení
 
-4. Jan také zapne možnost **zaslat mi e-maily o výstrahách** příjmu e-mailů o výstrahy s vysokou závažností.
-5. Jan vybere **OK** použít kontaktní informace zabezpečení do předplatného společnosti Contoso.
+4. Jan také zapíná možnost **zaslat e-mailem o výstrahách** dostávat e-maily o výstrahách s vysokou závažností.
+5. Jan vybere **OK** použít informace o kontaktu zabezpečení do předplatného společnosti Contoso.
 
-Nakonec Jeff zkontroluje doporučení s nízkou prioritou **ohrožení zabezpečení operačního systému opravit** a určuje, že toto doporučení se nedá použít. Chce zavřít doporučení. Jan vybere se třemi tečkami, které se zobrazí vpravo a pak vybere **přeskočení**.
-   ![Zavření doporučení][7]
+Nakonec Jan zkontroluje doporučení s nízkou prioritou **ohrožení zabezpečení operačního systému opravit** a určuje, že toto doporučení se nedá použít. Chce zavřít doporučení. Jan vybere na tři tečky, které se zobrazí na pravé straně a pak vybere **Zavřít**.
+   ![Zavřít doporučení][7]
 
 ## <a name="conclusion"></a>Závěr
-Monitorování doporučení ve službě Security Center vám mohou pomoci eliminovat ohrožení zabezpečení, než dojde k útoku. Můžete-li zabránit bezpečnostního incidentu, implementaci a udržování ochrany zásadám zabezpečení ve službě Security Center.
+Doporučení ve službě Security Center pro monitorování může pomoct eliminovat ohrožení zabezpečení, než dojde k útoku. Je-li zabránit incidentu zabezpečení, implementaci a správu bezpečnostních mechanismů pomocí zásad zabezpečení ve službě Security Center.
 
-## <a name="next-steps"></a>Další kroky
-Tento scénář ukázal, jak používat zásady a doporučení zabezpečení v Centru zabezpečení můžete zmírnit útok na zabezpečení. Najdete v článku [reakcí na incidenty scénář](security-center-incident-response.md) se dozvíte, jak získat odpověď incidentu plán před útokem probíhá.
+## <a name="next-steps"></a>Další postup
+Tento scénář vám ukázali, jak používat zásady zabezpečení a doporučení ve službě Security Center můžete zmírnit útok na zabezpečení. Zobrazit [scénáři reakce na incidenty](security-center-incident-response.md) se naučíte být při reakci na incidenty připravený plán předtím, než k útoku dojde.
 
 Další informace o službě Security Center najdete v tématu:
 
-* [Sledování stavu zabezpečení](security-center-monitoring.md) – Naučte se monitorovat stav svých prostředků Azure.
-* [Správa a zpracování výstrah zabezpečení](security-center-managing-and-responding-alerts.md) – zjistěte, jak spravovat a reakce na výstrahy zabezpečení.
-* [Monitorování a zpracování události zabezpečení](security-center-events-dashboard.md) – zjistěte, jak sledovat a shromažďovat události zabezpečení procesu v čase.
+* [Sledování stavu zabezpečení](security-center-monitoring.md) – zjistěte, jak můžete monitorovat stav svých prostředků Azure.
+* [Správa a zpracování výstrah zabezpečení](security-center-managing-and-responding-alerts.md) – zjistěte, jak spravovat a reagovat na výstrahy zabezpečení.
+* [Sledování a zpracování událostí zabezpečení](security-center-events-dashboard.md) – zjistěte, jak monitorovat a shromažďovat události zabezpečení procesu v čase.
 * [Sledování partnerských řešení](security-center-partner-solutions.md) – zjistěte, jak sledovat stav vašich partnerských řešení.
 * [Azure Security Center – nejčastější dotazy](security-center-faq.md) – Přečtěte si nejčastější dotazy o použití této služby.
-* [Blog o bezpečnosti Azure](http://blogs.msdn.com/b/azuresecurity/) – získejte nejnovější informace zabezpečení Azure a informace.
+* [Blog o zabezpečení Azure](http://blogs.msdn.com/b/azuresecurity/) – získejte nejnovější zprávy zabezpečení Azure a informace.
 
 <!--Image references-->
 [1]: ./media/security-center-using-recommendations/security-center-policy-inheritance.png

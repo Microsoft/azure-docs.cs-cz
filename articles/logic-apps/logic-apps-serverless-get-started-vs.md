@@ -11,12 +11,12 @@ ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.custom: vs-azure
 ms.topic: article
 ms.date: 08/01/2018
-ms.openlocfilehash: a69c129d5ae1405462e3a54a24cd2edbad2a86a7
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: f5555d9a60934529bf8fed6db6a18dd783f46075
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43126773"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44297464"
 ---
 # <a name="build-your-first-serverless-app-with-azure-logic-apps-and-azure-functions---visual-studio"></a>Vytvořte svoji první aplikaci bez serveru s Azure Logic Apps a Azure Functions – Visual Studio
 
@@ -122,7 +122,7 @@ K vytvoření projektu funkce a funkce pomocí jazyka JavaScript, Python, F #, p
 
 ## <a name="deploy-functions-from-visual-studio"></a>Nasazení služby functions v sadě Visual Studio
 
-Nasazení šablony nasadí jakékoli Azure functions, které máte ve vašem řešení z úložiště Git, která je zadána proměnné v `azuredeploy.json` souboru. Pokud vytvoříte a vytvoření projektu funkce ve vašem řešení, můžete zkontrolovat tento projekt do správy zdrojového kódu Gitu, například GitHub nebo Visual Studio Team Services a pak aktualizujte `repo` proměnné tak, aby šablona nasadí funkce Azure.
+Nasazení šablony nasadí jakékoli Azure functions, které máte ve vašem řešení z úložiště Git, která je zadána proměnné v `azuredeploy.json` souboru. Pokud vytvoříte a vytvoření projektu funkce ve vašem řešení, můžete zkontrolovat tento projekt do správy zdrojového kódu Gitu, například GitHub nebo Azure DevOps a pak aktualizujte `repo` proměnné tak, aby šablona nasadí funkce Azure.
 
 ## <a name="manage-logic-apps-and-view-run-history"></a>Správa aplikací logiky a zobrazení historie spuštění
 

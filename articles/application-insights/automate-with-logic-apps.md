@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/29/2017
 ms.author: mbullwin
-ms.openlocfilehash: 4ae5adaf37f49e9909fa80fd31f088ed6ee1b081
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 91b5c2c23445e5cd3445d1d5b640cb3ecb8e5e7a
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449866"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44301187"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>Automatizace procesů Application Insights s využitím Logic Apps
 
@@ -25,7 +25,7 @@ Připadá vám sami opakovaného spouštění stejné dotazů na vaše telemetri
 
 Pomocí této integrace můžete automatizovat řadu procesů aniž byste museli napsat jediný řádek kódu. Vytvoření aplikace logiky s konektorem služby Application Insights rychle automatizovat jakýkoli proces Application Insights. 
 
-Můžete přidat i další akce. Funkce Logic Apps služby Azure App Service umožňuje stovky akce k dispozici. Například pomocí aplikace logiky můžete automaticky odesílat oznámení e-mailem nebo vytvořit chybu ve službě Visual Studio Team Services. Můžete také použít jeden z mnoha dostupných [šablony](https://docs.microsoft.com/azure/logic-apps/logic-apps-use-logic-app-templates) chcete urychlit proces tvorby aplikace logiky. 
+Můžete přidat i další akce. Funkce Logic Apps služby Azure App Service umožňuje stovky akce k dispozici. Například pomocí aplikace logiky můžete automaticky odesílat oznámení e-mailem nebo vytvořit chybu ve službě Azure DevOps. Můžete také použít jeden z mnoha dostupných [šablony](https://docs.microsoft.com/azure/logic-apps/logic-apps-use-logic-app-templates) chcete urychlit proces tvorby aplikace logiky. 
 
 ## <a name="create-a-logic-app-for-application-insights"></a>Vytvoření aplikace logiky pro službu Application Insights
 

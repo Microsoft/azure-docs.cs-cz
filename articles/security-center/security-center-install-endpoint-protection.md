@@ -1,6 +1,6 @@
 ---
-title: Správa služby endpoint protection problémy s Azure Security Center | Microsoft Docs
-description: Zjistěte, jak spravovat problémy ochrany koncového bodu v Azure Security Center.
+title: Spravovat problémy s endpoint protection pomocí Azure Security Center | Dokumentace Microsoftu
+description: Zjistěte, jak spravovat problémy s endpoint protection ve službě Azure Security Center.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -9,108 +9,108 @@ editor: ''
 ms.assetid: 1599ad5f-d810-421d-aafc-892e831b403f
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/23/2017
 ms.author: terrylan
-ms.openlocfilehash: abbcb0a8e0206d78ca94520dfa81ab92506c47af
-ms.sourcegitcommit: 4d90200f49cc60d63015bada2f3fc4445b34d4cb
+ms.openlocfilehash: a3ac23f3874b85da9c0641264ca6f9c55a7b0515
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/24/2017
-ms.locfileid: "23936291"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44299999"
 ---
-# <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>Správa služby endpoint protection problémy s Azure Security Center
-Azure Security Center sledovat stav ochrany proti malwaru a sestavách to v okně Endpoint protection problémy. Security Center označuje problémy, jako je například zjištěných hrozeb a nedostatečnou ochranou, které můžete k ohrožení své virtuální počítače (VM) a počítače antimalwarových hrozeb. Podle informací uvedených v části **potíže s ochranou koncového bodu**, můžete identifikovat plán veškeré zjištěné potíže vyřešit.
+# <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>Spravovat problémy s endpoint protection pomocí Azure Security Center
+Azure Security Center monitoruje stav ochrany proti malwaru a oznámí to pod oknem problémy ochrany koncového bodu. Security Center zvýrazňuje problémy, jako je například zjištěných hrozeb a nedostatečná ochrana, které můžou ohrožovat zabezpečení vašeho počítače a virtuální počítače (VM) na ně antimalwaru. Podle informací uvedených v části **problémy s Endpoint protection**, můžete určit plán veškeré zjištěné potíže vyřešit.
 
-Security Center sestavy následující potíže s ochranou koncového bodu:
+Security Center sestavy následující problémy s endpoint protection:
 
-- Aplikace Endpoint protection není nainstalován na virtuálních počítačích Azure – podporované antimalwarové řešení není nainstalována na těchto virtuálních počítačích Azure.
-- Aplikace Endpoint protection není nainstalován v počítačích bez Azure – podporované antimalwarových není nainstalován na tyto počítače mimo Azure.
+- Na virtuálních počítačích Azure – podporované antimalwarové řešení není nainstalovaná služba Endpoint protection není nainstalována na těchto virtuálních počítačích Azure.
+- Řešení Endpoint protection není nainstalovaná na počítačích mimo Azure – podporované antimalwarové není nainstalována na tyto počítače mimo Azure.
 - Stavu funkce Endpoint protection:
 
-   - Zastaralý podpis – antimalwarové řešení je nainstalovaná na těchto virtuálních počítačů a počítačů, ale řešení nemá nejnovější antimalwarových signatur.
-   - Žádná ochrana v reálném čase – antimalwarové řešení je nainstalovaná na těchto virtuálních počítačů a počítačů, ale není nakonfigurován pro ochranu v reálném čase.   Služba může být zakázán nebo Security Center může Nepodařilo se získat stav, protože řešení není podporována. V tématu [partner integrace](security-center-partner-integration.md) seznam podporovaných řešení.
-   - Nevykazují – antimalwarové řešení je nainstalován, ale není data pro vytváření sestav.
-   - Je nainstalována Neznámá – antimalwarové řešení, ale její stav je neznámý nebo generování sestav k neznámé chybě.
+   - Zastaralý podpis – antimalwarové řešení je nainstalován na těchto virtuálních počítačů a počítačů, ale řešení nemá nejnovější antimalwarových signatur.
+   - Žádná ochrana v reálném čase – antimalwarové řešení je nainstalován na těchto virtuálních počítačů a počítačů, ale není nakonfigurován pro ochranu v reálném čase.   Služba může být zakázán nebo může být Security Center se nepodařilo získat stav, protože řešení není podporován. Zobrazit [integrace partnerských](security-center-partner-integration.md) seznam podporovaných řešení.
+   - Negenerují se sestavy – nainstalována antimalwarové řešení, ale negenerují se sestavy data.
+   - Neznámé – antimalwarové řešení je nainstalovaná, ale jeho stav je neznámý nebo vytváření sestav k neznámé chybě.
 
    > [!NOTE]
-   > V tématu [integrovat řešení zabezpečení](security-center-partner-integration.md#integrated-azure-security-solutions) seznam zabezpečení řešení ochrany koncových bodů, který je integrovaný s Security Center.
+   > Zobrazit [integrace řešení zabezpečení](security-center-partner-integration.md#integrated-azure-security-solutions) seznam zabezpečení řešení ochrany koncových bodů, který je integrovaná se službou Security Center.
    >
    >
 
 ## <a name="implement-the-recommendation"></a>Implementace doporučení
-Problémy ochrany koncového bodu je zobrazen jako doporučení ve službě Security Center.  Pokud je prostředí bude zranitelný vůči antimalwarových hrozby, toto doporučení se zobrazí v části **doporučení** a v části **výpočetní**. Chcete-li zobrazit **problémy řídicího panelu ochrany koncového bodu**, potřebujete pracovní postup výpočetní.
+Zobrazí se problémy s Endpoint protection jako doporučení ve službě Security Center.  Pokud vaše prostředí je zranitelný vůči hrozbám antimalwaru, toto doporučení se zobrazí v části **doporučení** a v části **Compute**. Zobrazíte **vydá řídicí panel Endpoint protection**, budete muset postupovat podle výpočetní pracovního postupu.
 
-V tomto příkladu použijeme **výpočetní**.  Podíváme se na postup instalace antimalwarových na virtuálních počítačích Azure a na počítače mimo Azure.
+V tomto příkladu budeme používat **Compute**.  Podíváme se na tom, jak nainstalovat antimalwarové na virtuálních počítačích Azure a na počítače mimo Azure.
 
-## <a name="install-antimalware-on-azure-vms"></a>Nainstalujte antimalwarových na virtuálních počítačích Azure
+## <a name="install-antimalware-on-azure-vms"></a>Nainstalujte antimalwarové na virtuálních počítačích Azure
 
-1. Vyberte **výpočetní** v hlavní nabídce Security Center nebo **přehled**.
+1. Vyberte **Compute** hlavní nabídce služby Security Center nebo **přehled**.
 
-   ![Vyberte výpočetní][1]
+   ![Zvolte Compute][1]
 
-2. V části **výpočetní**, vyberte **potíže s ochranou koncového bodu**. **Potíže s ochranou koncového bodu** otevře řídicí panel.
+2. V části **Compute**vyberte **problémy s Endpoint protection**. **Problémy s Endpoint protection** otevře se řídicí panel.
 
-   ![Vyberte potíže s ochranou koncového bodu][2]
+   ![Vyberte problémy s Endpoint protection][2]
 
-   Horní části řídicí panel poskytuje:
+   Horní části řídicího panelu poskytuje:
 
-   - Nainstalovat zprostředkovatele ochrany koncového bodu - seznamy různé zprostředkovatele identifikovaný Security Center.
-   - Stav stavu nainstalované služby endpoint protection – zobrazuje stav virtuálních počítačů a počítačů, které mají nainstalovaný řešení ochrany koncových bodů. Graf zobrazuje počet virtuálních počítačů a počítačů, které jsou v pořádku a číslo s nedostatečnou ochranou.
-   - Malware zjištěn – zobrazuje počet virtuálních počítačů a počítačů, kde je generování sestav Security Center zjistila malware.
-   - Attacked počítače – zobrazuje počet virtuálních počítačů a počítačů, kde je Security Center hlášení útoky malwaru nalezeného.
+   - Nainstalovat poskytovatelé endpoint protection – seznam různých zprostředkovatelů identifikované pomocí služby Security Center.
+   - Stav stavu nainstalované endpoint protection – ukáže stav virtuálních počítačů a počítačů, které mají nainstalovaný žádné řešení ochrany koncových bodů. Tento graf zobrazuje počet virtuálních počítačů a počítačů, které jsou v pořádku a číslo s nedostatečnou ochranou.
+   - Malware zjištěn – zobrazuje počet virtuálních počítačů a počítačů, ve kterém se hlásí, Security Center zjistila malware.
+   - Napadené počítače – zobrazuje počet virtuálních počítačů a počítačů, ve kterém je Security Center reporting útoky pomocí služeb.
 
-   V dolní části řídicího panelu je seznam koncový bod problémy ochrany, které obsahuje následující informace:  
+   V dolní části řídicího panelu je seznam koncových bodů potíže s ochranou, které zahrnují následující informace:  
 
-   - **Celkový počet** -počet virtuálních počítačů a počítačů dopad na problém.
-   - A panelu agregování počet virtuálních počítačů a počítačů dopad na problém. Barvy v panelu určení priority:
+   - **Celkový počet** – počet virtuálních počítačů a počítačů vliv problém.
+   - Objekt panelu agregaci počet virtuálních počítačů a počítačů vliv problém. Barvy v panelu určit priority:
 
-      - Červená - s vysokou prioritou a mělo by se řešit okamžitě
-      - Oranžová – Střední priorita, mělo by se řešit co nejdříve
+      - Červená – vysoká priorita, mělo by se řešit okamžitě
+      - Oranžovou – Střední priorita, mělo by se řešit co nejdříve
 
-3. Vyberte **Endpoint protection není nainstalován na virtuálních počítačích Azure**.
+3. Vyberte **na virtuálních počítačích Azure není nainstalovaná služba Endpoint protection**.
 
-   ![Vyberte aplikace Endpoint protection není nainstalován na virtuálních počítačích Azure][3]
+   ![Vybrat Endpoint protection není nainstalovaná na virtuálních počítačích Azure][3]
 
-4. V části **Endpoint protection není nainstalován na virtuálních počítačích Azure** je seznam virtuálních počítačů Azure, které nemají nainstalovaný Antimalwarový program.  Můžete k instalaci antimalwarových na všech virtuálních počítačích v seznamu nebo vyberte jednotlivé virtuální počítače nainstalovat antimalwarových na kliknutím na konkrétní virtuální počítač.
-5. V části **vyberte Endpoint protection**, vyberte řešení ochrany koncových bodů, které chcete použít. V tomto příkladu vyberte **Antimalware od Microsoftu**.
+4. V části **na virtuálních počítačích Azure není nainstalovaná služba Endpoint protection** je seznam virtuálních počítačů Azure, která nemají nainstalovaný Antimalwarový program.  Můžete k instalaci antimalwarového na všechny virtuální počítače v seznamu nebo vyberte jednotlivé virtuální počítače k instalaci antimalwarového na kliknutím na konkrétní virtuální počítač.
+5. V části **vyberte Endpoint protection**, vyberte řešení ochrany koncových bodů, které chcete použít. V tomto příkladu vyberte **Microsoft Antimalware**.
 6. Zobrazí se další informace o řešení ochrany koncových bodů. Vyberte **Vytvořit**.
 
-## <a name="install-antimalware-on-non-azure-computers"></a>Nainstalovat antimalwarových na počítače mimo Azure
+## <a name="install-antimalware-on-non-azure-computers"></a>Antimalware nainstalovat na počítače mimo Azure
 
-1. Přejděte zpět na **potíže s ochranou koncového bodu** a vyberte **Endpoint protection není nainstalován v počítačích bez Azure**.
+1. Přejděte zpět na **problémy s Endpoint protection** a vyberte **Endpoint protection není nainstalovaná na počítačích mimo Azure**.
 
-   ![Vyberte aplikace Endpoint protection není nainstalován v počítačích bez Azure][4]
+   ![Vybrat Endpoint protection není nainstalovaná na počítačích mimo Azure][4]
 
-2. V části **Endpoint protection není nainstalován v počítačích bez Azure**, vyberte pracovní prostor. Filtrované do pracovního prostoru analýzy protokolů vyhledávací dotaz se otevře a uvádí počítače s chybějícími proti malwaru. Vyberte počítač ze seznamu pro další informace.
+2. V části **Endpoint protection není nainstalovaná na počítačích mimo Azure**, vyberte pracovní prostor. Vyhledávací dotaz Log Analytics vyfiltrovaný tak, aby pracovní prostor se otevře a zobrazí seznam počítačů chybí antimalwarové. Vyberte počítač ze seznamu pro další informace.
 
-   ![Hledání analýzy protokolů][5]
+   ![Hledání log Analytics][5]
 
-Další výsledek hledání otevře s informacemi, které jsou filtrovány pouze pro tento počítač.
+Další výsledek vyhledávání se otevře s informacemi filtrovat pouze pro daný počítač.
 
-  ![Hledání analýzy protokolů][6]
+  ![Hledání log Analytics][6]
 
 > [!NOTE]
-> Doporučujeme vám, že aplikace endpoint protection zřídí pro všechny virtuální počítače a počítače mohly identifikovat a odstraňovat viry, spyware a další škodlivý software.
+> Doporučujeme vám, že aplikace endpoint protection je možné zřídit za všechny virtuální počítače a počítače pomáhá s identifikací a likvidací virů, spywaru a dalšího škodlivého softwaru.
 >
 >
 
-## <a name="next-steps"></a>Další kroky
-Tento článek vám ukázal, jak provést doporučení Security Center "Nainstalovat Endpoint Protection." Další informace o povolení Antimalware od Microsoftu v Azure, najdete v následujících dokumentech:
+## <a name="next-steps"></a>Další postup
+Tento článek vám ukázali, jak implementovat doporučení služby Security Center "Nainstalovat Endpoint Protection." Další informace o povolení Microsoft Antimalware v Azure, najdete v následujícím dokumentu:
 
-* [Antimalware od Microsoftu pro cloudové služby a virtuální počítače](../security/azure-security-antimalware.md) – informace o nasazení Antimalware od Microsoftu.
+* [Microsoft Antimalware pro Cloud Services a Virtual Machines](../security/azure-security-antimalware.md) – zjistěte, jak nasadit Microsoft Antimalware.
 
 Další informace o službě Security Center, najdete v následujících dokumentech:
 
-* [Nastavení zásad zabezpečení v Azure Security Center](security-center-policies.md) – zjistěte, jak nakonfigurovat zásady zabezpečení.
-* [Správa doporučení zabezpečení v Azure Security Center](security-center-recommendations.md) – zjistěte, jak vám doporučení pomáhají chránit prostředky v Azure.
-* [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – Naučte se monitorovat stav svých prostředků Azure.
+* [Nastavení zásad zabezpečení ve službě Azure Security Center](security-center-policies.md) – zjistěte, jak nakonfigurovat zásady zabezpečení.
+* [Správa doporučení zabezpečení v Azure Security Center](security-center-recommendations.md) – zjistěte, jak vám doporučení pomáhají chránit prostředky Azure.
+* [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – zjistěte, jak můžete monitorovat stav svých prostředků Azure.
 * [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – Zjistěte, jak spravovat výstrahy zabezpečení a reagovat na ně.
 * [Sledování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md) – Zjistěte, jak pomocí Azure Security Center sledovat stav vašich partnerských řešení.
 * [Nejčastější dotazy k Azure Security Center](security-center-faq.md) – Přečtěte si nejčastější dotazy k používání této služby.
-* [Blog o bezpečnosti Azure](http://blogs.msdn.com/b/azuresecurity/) – přečtěte si příspěvky o zabezpečení Azure a dodržování předpisů.
+* [Blog o zabezpečení Azure](http://blogs.msdn.com/b/azuresecurity/) – přečtěte si blog příspěvky o zabezpečení Azure a dodržování předpisů.
 
 <!--Image references-->
 [1]:./media/security-center-install-endpoint-protection/compute.png

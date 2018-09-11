@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 143d0d4b66fc8e6e62364090e3d3187c4aa7bb51
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: e53e3e551041ed5bb04ae8e692a3fe3baf2521f8
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42919002"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302235"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Vytvoření prostředí více virtuálních počítačů a prostředků PaaS pomocí šablony Azure Resource Manageru
 
 [Webu Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) vám umožní snadno [přidat jeden virtuální počítač současně do testovacího prostředí](https://docs.microsoft.com/azure/devtest-lab/devtest-lab-add-vm). Nicméně pokud prostředí obsahuje několik virtuálních počítačů, každý virtuální počítač musí být jednotlivě vytvořeny. Pro scénáře, jako je například vícevrstvou webovou aplikaci nebo farmu služby SharePoint mechanismus je potřeba povolit pro vytvoření několika virtuálních počítačů v jednom kroku. Pomocí šablon Azure Resource Manageru můžete definovat infrastrukturu a konfiguraci vašeho řešení Azure a opakovaně nasazovat více virtuálních počítačů v konzistentním stavu. Tato funkce poskytuje následující výhody:
 
-- Šablony Azure Resource Manageru jsou načítány přímo ze svým úložištěm řízení zdrojů (GitHub nebo Team Services Git).
+- Šablony Azure Resource Manageru jsou načítány přímo ze svým úložištěm řízení zdrojů (GitHub nebo Azure DevOps služby Git).
 - Po nakonfigurování mohou uživatelé vytvářet prostředí díky šablonu Azure Resource Manageru z portálu Azure portal, stejně jako u jiných typů [bází virtuálních počítačů](./devtest-lab-comparing-vm-base-image-types.md).
 - V prostředí ze šablony Azure Resource Manageru kromě virtuální počítače IaaS se dá zřídit prostředky Azure PaaS.
 - Náklady na prostředí můžete sledovat v testovacím prostředí kromě jednotlivé virtuální počítače vytvořené pomocí jiných typů základních tříd.
@@ -42,7 +42,7 @@ Další informace o dalších [výhody pomocí šablon Resource Manageru](https:
 Azure DevTest Labs má [veřejném úložišti šablon Azure Resource Manageru](https://github.com/Azure/azure-devtestlab/tree/master/Environments) , můžete použít k vytvoření prostředí bez nutnosti připojení k externímu zdroji Githubu sami. Toto úložiště obsahuje často používané šablony, jako je Azure Web Apps, Service Fabric Cluster a vývojové prostředí farmy služby SharePoint. Tato funkce je podobný veřejné úložiště artefaktů, který je součástí pro každý testovací prostředí, který vytvoříte. Úložiště prostředí umožňuje rychle začít s předem vytvořené prostředí šablony s minimální vstupní parametry, kde přinášejí smooth úvodní prostředí pro PaaS prostředky v rámci testovacích prostředí. Další informace najdete v tématu [konfigurace a použití veřejného prostředí v DevTest Labs](devtest-lab-configure-use-public-environments.md).
 
 ## <a name="configure-your-own-template-repositories"></a>Konfigurace vlastní šablony úložiště
-Šablony prostředí mají spravovat jako jeden z osvědčených postupů pomocí infrastruktury jako kódu a konfigurace jako kódu ve správě zdrojového kódu. Azure DevTest Labs následuje tento postup a načte všechny šablony Azure Resource Manageru přímo z Githubu nebo VSTS Git úložišť. V důsledku toho je možné šablon Resource Manageru v cyklu kompletního postupu vydávání verzí, z testovacího prostředí do produkčního prostředí.
+Šablony prostředí mají spravovat jako jeden z osvědčených postupů pomocí infrastruktury jako kódu a konfigurace jako kódu ve správě zdrojového kódu. Azure DevTest Labs následuje tento postup a načte všechny šablony Azure Resource Manageru přímo z Githubu nebo služby Git v Azure DevOps úložišť. V důsledku toho je možné šablon Resource Manageru v cyklu kompletního postupu vydávání verzí, z testovacího prostředí do produkčního prostředí.
 
 Podívejte se na šablony vytvořené týmem DevTest Labs v [veřejného úložiště GitHub](https://github.com/Azure/azure-devtestlab/tree/master/Environments). V této veřejné úložiště můžete zobrazit šablony, které sdílí ostatní, můžete použít přímo nebo přizpůsobit je tak, aby odpovídala vašim potřebám. Jakmile vytvoříte šablonu, uložte ho v tomto úložišti můžete sdílet s ostatními. Můžete také nastavit vlastní úložiště Git se šablonami, které je možné nastavit prostředí v cloudu. 
 
@@ -79,9 +79,9 @@ Následující kroky vás provedou přidání úložiště do testovacího prost
 1. Vyberte **přidat +** přidat úložišti šablon Azure Resource Manageru.
 1. Při druhém **úložišť** otevře se podokno, následujícím způsobem zadejte informace potřebné:
     - **Název** – zadejte název úložiště, který se používá v testovacím prostředí.
-    - **Adresa URL klonu Git** – zadejte adresu URL klonu GIT HTTPS z Githubu nebo Visual Studio Team Services.  
+    - **Adresa URL klonu Git** – zadejte adresu URL klonu GIT HTTPS z Githubu nebo služby Azure DevOps.  
     - **Větev** – zadejte název větve pro přístup k vaše definice šablon Azure Resource Manageru. 
-    - **Token pat** – osobní přístupový token se používá zabezpečený přístup k úložišti. Chcete-li získat token ze služby Visual Studio Team Services, vyberte  **&lt;Vaše_jméno >> Můj profil > zabezpečení > token veřejného přístupu**. K získání tokenu z Githubu, vyberte svou miniaturu a potom výběrem **Nastavení > token veřejného přístupu**. 
+    - **Token pat** – osobní přístupový token se používá zabezpečený přístup k úložišti. Chcete-li získat token ze služby Azure DevOps, vyberte  **&lt;Vaše_jméno >> Můj profil > zabezpečení > token veřejného přístupu**. K získání tokenu z Githubu, vyberte svou miniaturu a potom výběrem **Nastavení > token veřejného přístupu**. 
     - **Cesty ke složkám** – jedním ze dvou vstupních polí, zadejte cestu ke složce, která začíná lomítkem - / – a je relativní vzhledem k váš identifikátor URI klonu Gitu buď definice artefaktů (první vstupní pole) nebo vaše definice šablon Azure Resource Manageru .   
     
         ![Veřejné úložiště](./media/devtest-lab-create-environment-from-arm/repo-values.png)

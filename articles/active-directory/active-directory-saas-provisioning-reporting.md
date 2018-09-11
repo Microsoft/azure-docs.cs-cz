@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: app-mgmt
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/30/2018
+ms.date: 09/09/2018
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: 3231792ed1cb7f80cd2a106faf3760c48dd13c19
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 47ce9729e25fdfe3b72f45b3090473bb7dbeaa7a
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42058055"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44296325"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Kurz: Vytváření sestav o zřizování automatické uživatelských účtů
 
@@ -30,11 +30,11 @@ Tento článek popisuje, jak zkontrolovat stav zajišťování úlohy poté, co 
 
 ## <a name="overview"></a>Přehled
 
-Zřizování konektory jsou nastavit a nakonfigurovat pomocí [webu Azure portal](https://portal.azure.com), pomocí následujících [poskytuje dokumentaci](saas-apps/tutorial-list.md) pro podporované aplikace. Po nakonfigurování a spuštění, zřizování úlohy můžete reportovány pomocí jedné ze dvou způsobů:
+Zřizování konektory jsou nastavit a nakonfigurovat pomocí [webu Azure portal](https://portal.azure.com), pomocí následujících [poskytuje dokumentaci](./saas-apps/tutorial-list.md) pro podporované aplikace. Po nakonfigurování a spuštění, zřizování úlohy můžete reportovány pomocí jedné ze dvou způsobů:
 
 * **Portál pro správu Azure** – Tento článek popisuje primárně načítání informací o sestavy z [webu Azure portal](https://portal.azure.com), poskytující zřizování souhrnnou sestavu i zřizování podrobné protokoly auditu pro dané aplikace.
 
-* **Audit rozhraní API** – Azure Active Directory také poskytuje rozhraní API s auditu, která umožňuje programový načítání podrobných protokolů auditu zřizování. Zobrazit [auditování Azure Active Directory reference k rozhraní API](active-directory-reporting-api-audit-reference.md) pro dokumentaci k použití tohoto rozhraní API. Přestože tento článek nepopisuje konkrétně jak používat rozhraní API, podrobnosti typy zřizování události, které se zaznamenávají do protokolu auditu.
+* **Audit rozhraní API** – Azure Active Directory také poskytuje rozhraní API s auditu, která umožňuje programový načítání podrobných protokolů auditu zřizování. Zobrazit [auditování Azure Active Directory reference k rozhraní API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/directoryaudit) pro dokumentaci k použití tohoto rozhraní API. Přestože tento článek nepopisuje konkrétně jak používat rozhraní API, podrobnosti typy zřizování události, které se zaznamenávají do protokolu auditu.
 
 ### <a name="definitions"></a>Definice
 
@@ -131,7 +131,7 @@ Nejlepší čitelnost na webu Azure Portal, vyberte **sloupce** tlačítko a vyb
 
 Zřizování souhrnné sestavy a auditu protokoly sami hrát klíčovou roli pomáhá řešit problémy se zřizování různých uživatelský účet správce.
 
-Založené na scénářích informace o odstraňování potíží automatické zřizování uživatelů najdete v tématu [problémy konfigurace a zřizování uživatelů pro aplikaci](active-directory-application-provisioning-content-map.md).
+Založené na scénářích informace o odstraňování potíží automatické zřizování uživatelů najdete v tématu [problémy konfigurace a zřizování uživatelů pro aplikaci](application-provisioning-config-problem.md).
 
 
 ## <a name="additional-resources"></a>Další prostředky

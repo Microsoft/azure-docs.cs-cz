@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
-ms.openlocfilehash: 98dc33cc961c5c90fc3f6737a1cc470d4a753fd0
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: c731fd78ed7052697b3a5bd7c4da3a743e5a208d
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048753"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44299609"
 ---
 # <a name="use-a-u-sql-database-project-to-develop-a-u-sql-database-for-azure-data-lake"></a>Pomocí projekt U-SQL database můžete vyvíjet databáze U-SQL pro Azure Data Lake
 
@@ -57,7 +57,7 @@ Nástroj pro sestavení objektu, poskytuje uživatelsky přívětivé Editoru u�
 
 Výstup pro databázový projekt U-SQL je U-SQL database balíček pro nasazení s názvem s příponou sestavení `.usqldbpack`. `.usqldbpack` Balíček je soubor .zip, který zahrnuje všechny příkazy jazyka DDL v jeden skript U-SQL v **DDL** složky a všechny knihovny DLL a dalších souborů sestavení v **Temp** složky.
 
-Další informace o [způsob, jakým se sestavit projekt U-SQL database s MSBuild příkazového řádku a Visual Studio Team Services vytvářet úlohy](data-lake-analytics-cicd-overview.md).
+Další informace o [způsob, jakým se sestavit projekt U-SQL database s MSBuild příkazového řádku a ke službám Azure DevOps sestavení úloh](data-lake-analytics-cicd-overview.md).
 
 ## <a name="deploy-a-u-sql-database"></a>Nasazení databáze U-SQL
 
@@ -94,7 +94,7 @@ Můžete nasadit databázi U-SQL pomocí databázový projekt U-SQL nebo .usqldb
 
 `PackageDeploymentTool.exe` poskytuje programování a rozhraní příkazového řádku, které pomáhají k nasazení databáze U-SQL. Je součástí sady SDK [balíček Nuget sady SDK U-SQL](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/), který je umístěn na `build/runtime/PackageDeploymentTool.exe`.
 
-[Další informace o sadě SDK a jak vytvořit kanál CI/CD pro nasazení databáze U-SQL](data-lake-analytics-cicd-overview.md#deploy-u-sql-database-through-visual-studio-team-service).
+[Další informace o sadě SDK a jak vytvořit kanál CI/CD pro nasazení databáze U-SQL](data-lake-analytics-cicd-overview.md#deploy-u-sql-database-through-azure-devops).
 
 ## <a name="reference-a-u-sql-database-project"></a>Odkazovat na databázový projekt U-SQL
 

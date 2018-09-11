@@ -1,6 +1,6 @@
 ---
-title: Povolit agenta virtuálního počítače v Azure Security Center | Microsoft Docs
-description: Tento dokument se dozvíte, jak provést doporučení Azure Security Center ** povolit virtuálního počítače agenta **.
+title: Povolit agenta virtuálního počítače v Azure Security Center | Dokumentace Microsoftu
+description: Tento dokument popisuje, jak implementovat doporučení služby Azure Security Center **povolit agenta virtuálního počítače**.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -9,20 +9,20 @@ editor: ''
 ms.assetid: 5b431c25-4241-45b7-9556-cf2a1956f3da
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2017
 ms.author: terrylan
-ms.openlocfilehash: 337a7adfd93c76882a749685702bea6d1524c96a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 200ab53839811e20200534b7168d6b4fb368e42a
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23866307"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44295679"
 ---
 # <a name="enable-vm-agent-in-azure-security-center"></a>Povolit agenta virtuálního počítače v Azure Security Center
-Musí být nainstalovaný Agent virtuálního počítače na virtuální počítače (VM) za účelem [povolení shromažďování dat](security-center-enable-data-collection.md).  Azure Security Center vám umožní zobrazit které virtuální počítače vyžadují agenta virtuálního počítače a doporučí, abyste povolili agenta virtuálního počítače na těchto virtuálních počítačích.
+Agent virtuálního počítače musí být nainstalovaný na virtuálních počítačích (VM) za účelem [Povolit shromažďování dat](security-center-enable-data-collection.md).  Azure Security Center vám umožní zobrazit které virtuální počítače vyžadují agenta virtuálního počítače a doporučí, abyste povolili agenta virtuálního počítače na těchto virtuálních počítačích.
 
 Agent virtuálního počítače je ve výchozím nastavení nainstalován na virtuálních počítačích nasazených z Azure Marketplace. V článku [Agenti a rozšíření virtuálních počítačů – Část 2](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/) najdete informace o tom, jak agenta virtuálního počítače nainstalovat.
 
@@ -32,12 +32,12 @@ Agent virtuálního počítače je ve výchozím nastavení nainstalován na vir
 >
 
 ## <a name="implement-the-recommendation"></a>Implementace doporučení
-1. V **doporučení okno**, vyberte **povolit agenta virtuálního počítače**.
+1. V **okno doporučení**vyberte **povolit agenta virtuálního počítače**.
    ![Povolení agenta virtuálního počítače][1]
-2. Otevře se okno pro **virtuálního počítače agenta je chybí nebo neodpovídá**. Toto okno obsahuje seznam virtuálních počítačů, které vyžadují agenta virtuálního počítače. Postupujte podle pokynů v okně instalace agenta virtuálního počítače.
+2. Otevře se okno **virtuálního počítače agenta je chybí nebo neodpovídá**. Toto okno obsahuje seznam virtuálních počítačů, které vyžadují agenta virtuálního počítače. Postupujte podle pokynů v okně instalace agenta virtuálního počítače.
    ![Chybí Agent virtuálního počítače][2]
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
 
 * [Nastavení zásad zabezpečení v Azure Security Center](security-center-policies.md) – Zjistěte, jak se konfigurují zásady zabezpečení pro vaše předplatné Azure a skupiny prostředků.

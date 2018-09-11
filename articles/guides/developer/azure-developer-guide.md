@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: 2c6db85763b448133d53b22c0600b27b533b2041
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 468c6486274b8bf1dc202716f525c39face91862
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39424224"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44297294"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Úvodní příručka pro vývojáře v Azure
 
@@ -58,7 +58,7 @@ Můžete vytvářet webové aplikace, back-EndY mobilních aplikací a API apps.
 
 Protože všechny typy aplikací tři sdílet modul runtime služby App Service, hostování webu, podporovat mobilní klienty a zpřístupněte vaše rozhraní API v Azure, vše z jednoho projektu nebo řešení. Další informace o App Service najdete v tématu [co je Azure Web Apps](../../app-service/app-service-web-overview.md).
 
-App Service byly navržené s DevOps v úvahu. Podporuje různé nástroje pro publikování a průběžné integrace nasazení, včetně Githubu webhooky, Jenkins, Visual Studio Team Services, TeamCity a dalších.
+App Service byly navržené s DevOps v úvahu. Podporuje různé nástroje pro publikování a průběžné integrace nasazení, včetně Githubu webhooky, Jenkins, Azure DevOps, TeamCity a dalších.
 
 Můžete migrovat existující aplikace do služby App Service s použitím [online nástroje pro migraci](https://www.migratetoazure.net/).
 
@@ -186,7 +186,7 @@ Vaši aplikaci a běží v Azure můžete potřebovat moct sledovat výkon, pod�
 
 ### <a name="devops-integration"></a>Integrace DevOps
 
-Ať už je zřizování virtuálních počítačů nebo publikování vašich webových aplikací s využitím průběžné integrace, Azure se integruje s většinou oblíbených nástrojů DevOps. Díky podpoře nástrojů, jako je Jenkins, Githubu, Puppet, Chef, TeamCity, Ansible, VSTS a další můžete pracovat s nástroji, že už máte a maximálně využívat stávající.
+Ať už je zřizování virtuálních počítačů nebo publikování vašich webových aplikací s využitím průběžné integrace, Azure se integruje s většinou oblíbených nástrojů DevOps. Díky podpoře nástrojů, jako je Jenkins, Githubu, Puppet, Chef, TeamCity, Ansible, Azure DevOps a dalších můžete pracovat s nástroji, že už máte a maximálně využívat stávající.
 
 >**Vyzkoušejte si hned teď:** [vyzkoušet si řadu integrací DevOps](https://azure.microsoft.com/try/devops/).
 
@@ -269,19 +269,7 @@ Kromě definování jednotlivé Azure účtu identit, také nazývané *uživate
 
 ### <a name="manage-your-subscriptions"></a>Správa předplatných
 
-Odběr je logickou jednotku ze služby Azure, který je propojený s účtem Azure. Každý přidružený účet má roli v předplatném. Fakturace za služby Azure se provádí na základě za předplatné. Seznam nabídek k dispozici předplatné podle typu, najdete v části [podrobnosti nabídky Microsoft Azure](https://azure.microsoft.com/support/legal/offer-details/).
-
-#### <a name="administrator-roles"></a>Role správce
-
-Předplatné Azure má několik rolí správce účtu, které můžete kdykoli přiřadit.
-
--   **Správce účtu**: Tato role má plnou kontrolu nad předplatné a je účet, který je zodpovědný za fakturaci.
-
--   **Správce služeb**: Tato role má kontrolu nad všemi službami v rámci předplatného. Ve výchozím nastavení jde o stejný účet jako správce účtu.
-
--   **Spolupracující správce**: Tato role má stejný přístup jako správce služeb, s tím rozdílem, že ho nemůže změnit přidružení předplatného do adresáře služby Azure.
-
-Další informace o rolích správce najdete v tématu [postup přidání nebo změna rolí správce Azure](../../billing/billing-add-change-azure-subscription-administrator.md#add-an-admin-for-a-subscription).
+Předplatné je logické seskupení služeb Azure, který je propojený s účtem Azure. Jeden účet Azure může obsahovat několik předplatných. Fakturace za služby Azure se provádí na základě za předplatné. Seznam nabídek k dispozici předplatné podle typu, najdete v části [podrobnosti nabídky Microsoft Azure](https://azure.microsoft.com/support/legal/offer-details/). Předplatná Azure mít účet správce, který má plnou kontrolu nad předplatné, a Správce služby, který má kontrolu nad všechny služby v rámci předplatného. Informace o správcích klasickém modelu předplatného najdete v tématu [přidat nebo změnit správce předplatného Azure](../../billing/billing-add-change-azure-subscription-administrator.md). Kromě správci, lze udělit jednotlivým účtům podrobné řízení prostředků Azure pomocí [řízení přístupu na základě role (RBAC)](../../role-based-access-control/overview.md).
 
 #### <a name="resource-groups"></a>Skupiny prostředků
 
@@ -293,11 +281,11 @@ V Průzkumníku prostředků Azure je skvělý nástroj pro vizualizaci prostře
 
 Když povolíte přístup k prostředkům Azure, je vždy vhodné zajistit uživatele s nejnižšími oprávněními, který je potřeba provést danou úlohu.
 
--   **Řízení přístupu na základě role (RBAC)**: V Azure, můžete udělit přístup k uživatelským účtům (objekty zabezpečení) v zadaném oboru: předplatné, skupinu prostředků nebo jednotlivé prostředky. RBAC umožňuje nasadit sadu prostředků do skupiny prostředků a udělení oprávnění pro konkrétního uživatele nebo skupiny. To vám také umožní omezit přístup k prostředkům, které patří k cílové skupině prostředků. Můžete také udělit přístup na jeden prostředek, jako je například virtuální počítač nebo virtuální sítě. Pokud chcete udělit přístup, přiřadíte roli pro uživatele, skupinu nebo instanční objekt. Existuje mnoho předdefinovaných rolí, a můžete také definovat vlastní role.
+-   **Řízení přístupu na základě role (RBAC)**: V Azure, můžete udělit přístup k uživatelským účtům (objekty zabezpečení) v zadaném oboru: předplatné, skupinu prostředků nebo jednotlivé prostředky. RBAC umožňuje nasadit sadu prostředků do skupiny prostředků a udělení oprávnění pro konkrétního uživatele nebo skupiny. To vám také umožní omezit přístup k prostředkům, které patří k cílové skupině prostředků. Můžete také udělit přístup na jeden prostředek, jako je například virtuální počítač nebo virtuální sítě. Pokud chcete udělit přístup, přiřadíte roli pro uživatele, skupinu nebo instanční objekt. Existuje mnoho předdefinovaných rolí, a můžete také definovat vlastní role. Další informace najdete v tématu [co je řízení přístupu na základě rolí (RBAC)?](../../role-based-access-control/overview.md).
 
-    >**Kdy použít**: Pokud potřebujete propracovanou správu přístupu pro uživatele a skupiny.
+    >**Kdy použít**: Pokud potřebujete propracovanou správu přístupu pro uživatele nebo skupiny, nebo pokud je potřeba nastavit uživatele jako vlastníka předplatného.
 
-    >**Začínáme**: Další informace najdete v tématu [Začínáme se správou přístupu na webu Azure Portal](../../role-based-access-control/overview.md).
+    >**Začínáme**: Další informace najdete v tématu [správě přístupu pomocí RBAC a webu Azure portal](../../role-based-access-control/role-assignments-portal.md).
 
 -   **Instanční objekty služby**: Kromě poskytování přístupu pro objekty zabezpečení uživatelů a skupin, můžete stejný přístup udělit instančnímu objektu služby.
 

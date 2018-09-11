@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-stack
 ms.reviewer: coborn
 manager: femila
-ms.openlocfilehash: 0e03b524834f528ddb7555a344fbebe720b4d9ff
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: d3c89e2028986e05d5d3957c9805d22f07a840b3
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446967"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44298107"
 ---
 # <a name="azure-stack-ethereum-blockchain-solution-templates"></a>Šablony řešení Azure Stack Etherea blockchain
 
@@ -25,16 +25,14 @@ Pomocí několika vstupů uživatele a nasazení jedním kliknutím pomocí port
 
 ## <a name="prerequisites"></a>Požadavky
 
-Stáhněte si následující [z Marketplace](azure-stack-download-azure-marketplace-item.md):
+Stáhněte si nejnovější položky [z Marketplace](azure-stack-download-azure-marketplace-item.md):
 
-* Ubuntu Server 16.04 LTS verze 16.04.201802220
-* Windows Server 2016 
-* Vlastní skript pro Linux 2.0 
-* Rozšíření vlastních skriptů 
+* Ubuntu Server 16.04 LTS
+* Windows Server 2016
+* Vlastní skript pro Linux 2.0
+* Rozšíření vlastních skriptů pro Windows
 
-Další informace o scénářích blockchain v Azure najdete v části [šablonu řešení ethereum během testování pracovní consortium](../blockchain-workbench/ethereum-deployment-guide.md).
-
-Vyžaduje se předplatné Azure, který podporuje nasazení několik virtuálních počítačů. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
+Další informace o scénáře blockchainu najdete v tématu [šablonu řešení ethereum během testování pracovní consortium](../blockchain-workbench/ethereum-deployment-guide.md).
 
 ## <a name="deployment-architecture"></a>Architektura nasazení
 
@@ -43,6 +41,7 @@ Tato šablona řešení můžete nasadit jednu nebo více sítě konsorcia Ether
 ## <a name="deployment-use-cases"></a>Použití nasazené služby
 
 Šablony můžete nasadit Etherea consortium pro vedoucí instancí a člen spojení v mnoha různými způsoby, tady jsou ty, které jsme testovali:
+
 - V Azure několika uzly stacku s využitím Azure AD nebo AD FS, nasazení potenciálních zákazníků a člen pomocí stejného předplatného nebo různých předplatných.
 - V Azure Stack jedním uzlem (s Azure AD) nasaďte potenciálních zákazníků a člen pomocí stejného předplatného.
 

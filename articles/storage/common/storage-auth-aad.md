@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 06/01/2018
+ms.date: 09/07/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 78df10f3b6062a157e1ec5a057e9f39fc40193e5
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 802eefb7ed8191525a8a4a6601b620ca5dfd5faa
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44091754"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44300609"
 ---
 # <a name="authenticate-access-to-azure-storage-using-azure-active-directory-preview"></a>Ověření přístupu ke službě Azure Storage pomocí Azure Active Directory (Preview)
 
@@ -33,12 +33,12 @@ Mějte na paměti následující skutečnosti o verzi preview:
 - Azure Storage podporuje předdefinované i vlastní role RBAC. Můžete přiřadit role omezená na předplatné, skupinu prostředků, účet úložiště nebo kontejner nebo fronty.
 - Tyto klientské knihovny Azure Storage, které aktuálně podporují integrace služby Azure AD patří:
     - [.NET](https://www.nuget.org/packages/WindowsAzure.Storage)
-    - [Java](http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) (použijte 7.1.x-Preview)
+    - [Java](http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage)
     - Python
-        - [Objekt blob](https://github.com/Azure/azure-storage-python/releases/tag/v1.2.0rc1-blob)
-        - [fronty](https://github.com/Azure/azure-storage-python/releases/tag/v1.2.0rc1-queue)
+        - [Objekt blob](https://github.com/Azure/azure-storage-python/releases/tag/)
+        - [fronty](https://github.com/Azure/azure-storage-python/releases/tag/)
     - [Node.js](https://www.npmjs.com/package/azure-storage)
-    - [JavaScript](https://aka.ms/downloadazurestoragejs))
+    - [JavaScript](https://aka.ms/downloadazurestoragejs)
 
 [!INCLUDE [storage-auth-aad-note-include](../../../includes/storage-auth-aad-note-include.md)]
 

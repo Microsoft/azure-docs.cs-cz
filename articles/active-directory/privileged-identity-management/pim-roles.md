@@ -13,12 +13,12 @@ ms.component: pim
 ms.date: 07/23/2018
 ms.author: rolyon
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
-ms.openlocfilehash: fc45cde1a5f0f287274302541ac0115569e2239d
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: cf0c9b76a7edace9f2a9147823b292e218e20bf7
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666332"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44300269"
 ---
 # <a name="azure-ad-directory-roles-you-can-manage-in-pim"></a>Role adresáře Azure AD, která spravujete v PIM
 <!-- **PLACEHOLDER: Need description of how this works. Azure PIM uses roles from MSODS objects.**-->
@@ -63,21 +63,19 @@ Pokud chcete jiné uživateli dát přístup ke správě v PIM samotné, role, k
 ## <a name="roles-not-managed-in-pim"></a>Role, která nejsou spravovaná v PIM
 Role v systému Exchange Online nebo SharePoint Online, kromě těch, které uvedených výše, nejsou reprezentovány ve službě Azure AD a proto nejsou viditelné v PIM. Další informace o změně přiřazení rolí podrobných v těchto služeb Office 365 najdete v tématu [oprávnění ve službách Office 365](https://support.office.com/article/Permissions-in-Office-365-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
-Skupiny prostředků a předplatná Azure nejsou také reprezentovány ve službě Azure AD. Správa předplatných Azure, najdete v článku [postup přidání nebo změna rolí správce Azure](../../billing/billing-add-change-azure-subscription-administrator.md) a další informace o funkci Azure RBAC najdete v tématu [řízení přístupu na základě rolí Azure](../../role-based-access-control/role-assignments-portal.md).
-
 <!--**The above links might be replaced by ones that are from within this documentation repository **-->
 
 
 ## <a name="user-roles-and-signing-in"></a>Role uživatele a přihlašování
 Některé služby a aplikace přiřazení uživatele k roli nemusí být dostatečné pro povolení tohoto uživatele jako správce.
 
-Přístup k webu Azure portal vyžaduje že uživatel být správce služeb nebo spolusprávcem předplatného Azure, i v případě, že uživatel není potřeba Správa předplatných Azure.  Například pokud chcete spravovat nastavení konfigurace pro službu Azure AD, uživatel musí být globální správce ve službě Azure AD a spolusprávce předplatného na předplatné Azure.  Zjistěte, jak přidat uživatele do předplatných Azure, najdete v článku [postup přidání nebo změna rolí správce Azure](../../billing/billing-add-change-azure-subscription-administrator.md).
+Přístup k webu Azure portal vyžaduje, že uživatel může jenom jeho vlastník předplatného Azure, i v případě, že uživatel není potřeba Správa předplatných Azure.  Například pokud chcete spravovat nastavení konfigurace pro službu Azure AD, uživatel musí být jako globální správce ve službě Azure AD a pouze vlastník předplatného Azure.  Zjistěte, jak přidat uživatele do předplatných Azure, najdete v článku [správě přístupu pomocí RBAC a webu Azure portal](../..//role-based-access-control/role-assignments-portal.md).
 
 Přístup k Microsoft Online Services může vyžadovat uživateli také přiřadí licence mohli otevřít portál služby nebo provádět úlohy správy.
 
 ## <a name="assign-a-license-to-a-user-in-azure-ad"></a>Přiřazení licence pro uživatele ve službě Azure AD
 
-1. Přihlaste se k [webu Azure portal](http://portal.azure.com) pomocí účtu globálního správce nebo Spolusprávce účtu.
+1. Přihlaste se k [webu Azure portal](http://portal.azure.com) s rolí globálního správce nebo vlastníka.
 
 1. Vyberte adresář Azure AD, kterou chcete pracovat, který má licence s ním spojená.
 

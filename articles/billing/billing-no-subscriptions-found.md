@@ -1,6 +1,6 @@
 ---
-title: Žádné předplatné Nenalezeno Chyba při pokusu o přihlášení k portálu Azure nebo centra účtů Azure | Microsoft Docs
-description: Poskytuje řešení problému, ve kterém žádné předplatné Nenalezeno, dojde k chybě při přihlášení k portálu Azure nebo centra účtů Azure.
+title: Žádné předplatné Nenalezeno Chyba při pokusu o přihlášení k webu Azure portal nebo centra účtů Azure | Dokumentace Microsoftu
+description: Poskytuje řešení problému, ve kterém žádné předplatné Nenalezeno, dojde k chybě při přihlášení k webu Azure portal nebo centra účtů Azure.
 services: ''
 documentationcenter: ''
 author: genlin
@@ -15,44 +15,44 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 475a4ad72a1c2fc2ebf99387e193713797cc2586
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: b5fd1db06d13ce0c12a80752e64a6f5c64867761
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34070613"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44298246"
 ---
-# <a name="no-subscriptions-found-error-in-azure-portal-or-azure-account-center"></a>Žádná předplatná nalezena chyba na portálu Azure nebo centra účtů Azure
+# <a name="no-subscriptions-found-error-in-azure-portal-or-azure-account-center"></a>Žádné předplatné Nenalezeno chyby v portálu Azure portal nebo v centru účtů Azure
 
-Může zobrazit chybová zpráva "Nebyla nalezena žádná předplatná", při pokusu o přihlášení k aplikaci [portál Azure](https://portal.azure.com/) nebo [centra účtů Azure](https://account.windowsazure.com/Subscriptions). Tento článek poskytuje řešení tohoto problému.
+Zobrazí se chybová zpráva "Nenašly se žádné odběry" při pokusu o přihlášení k [webu Azure portal](https://portal.azure.com/) nebo [centra účtů Azure](https://account.windowsazure.com/Subscriptions). Tento článek poskytuje řešení tohoto problému.
 
-## <a name="symptom"></a>Příznaky
+## <a name="symptom"></a>Příznak
 
-Při pokusu o přihlášení k aplikaci [portál Azure](https://portal.azure.com/) nebo [centra účtů Azure](https://account.windowsazure.com/Subscriptions), zobrazí se následující chybová zpráva: "Nebyla nalezena žádná předplatná".
+Při pokusu o přihlášení k aplikaci [webu Azure portal](https://portal.azure.com/) nebo [centra účtů Azure](https://account.windowsazure.com/Subscriptions), zobrazí následující chybová zpráva: "Nenašly se žádné odběry".
 
 ## <a name="cause"></a>Příčina
 
-K tomuto problému dochází, pokud jste vybrali v adresáři nesprávný, nebo pokud váš účet nemá dostatečná oprávnění. 
+K tomuto problému dochází, pokud jste vybrali na špatný adresář, nebo pokud váš účet nemá dostatečná oprávnění. 
 
 ## <a name="solution"></a>Řešení
 
-### <a name="scenario-1-error-message-is-received-in-the-azure-portalhttpsportalazurecom"></a>Scénář 1: Chybová zpráva se dostali [portálu Azure](https://portal.azure.com)
+### <a name="scenario-1-error-message-is-received-in-the-azure-portalhttpsportalazurecom"></a>Scénář 1: Chyba doručení zprávy [webu Azure portal](https://portal.azure.com)
 
-Pokud chcete tento problém vyřešit:
+Chcete-li tento problém vyřešit:
 
-* Zkontrolujte, že správné adresář Azure je vybrána kliknutím na váš účet v pravé horní.
+* Ujistěte se, že je vybraná na správný adresář Azure kliknutím na váš účet v pravém horním rohu.
 
-  ![Vyberte adresář, v horní pravé části portálu Azure](./media/billing-no-subscriptions-found/directory-switch.png)
-* Pokud je zaškrtnuto vpravo Azure directory, ale stále zobrazí se chybová zpráva, [byl váš účet přidán jako vlastníka](billing-add-change-azure-subscription-administrator.md).
+  ![Vyberte adresář, v horním pravém rohu webu Azure portal](./media/billing-no-subscriptions-found/directory-switch.png)
+* Pokud je vybrána přímo Azure directory, ale i nadále zobrazí chybová zpráva [přiřazením role vlastníka k vašemu účtu](../role-based-access-control/role-assignments-portal.md).
 
-### <a name="scenario-2-error-message-is-received-in-the-azure-account-centerhttpsaccountwindowsazurecomsubscriptions"></a>Scénář 2: Chybová zpráva se dostali [centra účtů Azure](https://account.windowsazure.com/Subscriptions)
+### <a name="scenario-2-error-message-is-received-in-the-azure-account-centerhttpsaccountwindowsazurecomsubscriptions"></a>Scénář 2: Chyba doručení zprávy [centra účtů Azure](https://account.windowsazure.com/Subscriptions)
 
-Zkontrolujte, zda je účet, který jste použili účet správce. Pokud chcete ověřit, kdo je účet správce, postupujte takto:
+Zkontrolujte, zda je účet, který jste použili účet správce. Pokud chcete ověřit, kdo je správcem účtu, postupujte podle těchto kroků:
 
-1. Přihlaste se k [odběry zobrazit na portálu Azure](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
-1. Vyberte předplatné, které chcete kontrolovat, a pak hledejte v části **nastavení**.
+1. Přihlaste se k [zobrazit předplatná na webu Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
+1. Vyberte předplatné, které chcete zkontrolovat a pak hledejte v části **nastavení**.
 1. Vyberte **vlastnosti**. Správce účtu předplatného se zobrazí v **správce účtu** pole.  
 
 ## <a name="need-help-contact-support"></a>Potřebujete pomoct? Obraťte se na podporu.
 
-Pokud stále potřebujete pomoc, [obraťte se na podporu](http://go.microsoft.com/fwlink/?linkid=544831&clcid=0x409) získat rychle vyřešit problém. 
+Pokud stále potřebujete pomoc, [obraťte se na podporu](http://go.microsoft.com/fwlink/?linkid=544831&clcid=0x409) pro rychlé vyřešení problému. 

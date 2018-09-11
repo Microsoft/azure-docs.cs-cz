@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/06/2018
+ms.date: 09/07/2018
 ms.author: tomfitz
-ms.openlocfilehash: e0a2e26fb3dd0afeb4d1f3d030cb42bdc181e63c
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 807026d2de40de1b14d2eb1d9eeb9da0aade4ad7
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094956"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44297749"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Přesunutí prostředků do nové skupiny prostředků nebo předplatného
 
@@ -163,7 +163,7 @@ Během operace je stále spuštěna, můžete nadále přijímat 202 stavový k�
 
 ## <a name="services-that-can-be-moved"></a>Služby, které je možné přesunout
 
-Služby, které umožňují přesun na novou skupinu prostředků a předplatném jsou:
+Následující seznam obsahuje obecný přehled služby Azure, které lze přesunout do nové skupiny prostředků a předplatném. Víc podrobností najdete v části [přesunout operace Podpora prostředků](move-support-resources.md).
 
 * Analysis Services
 * API Management
@@ -173,6 +173,7 @@ Služby, které umožňují přesun na novou skupinu prostředků a předplatné
 * Automation
 * Azure Active Directory B2C
 * Azure Cosmos DB
+* Azure DevOps – nákupy na Azure DevOps institucím rozšíření od jiných výrobců musí [zrušit jejich nákupů](https://go.microsoft.com/fwlink/?linkid=871160) než účet může pokračovat napříč předplatnými.
 * Azure Maps
 * Azure Relay
 * Azure Stack – registrace
@@ -227,12 +228,11 @@ Služby, které umožňují přesun na novou skupinu prostředků a předplatné
 * Virtuální počítače (classic) – viz [omezení klasického nasazení](#classic-deployment-limitations)
 * Škálovací sady virtuálních počítačů – viz [omezení virtuálních počítačů](#virtual-machines-limitations)
 * Virtuální sítě – viz [omezení virtuální sítě](#virtual-networks-limitations)
-* Visual Studio Team Services – účty VSTS pomocí rozšíření od jiných výrobců nákupy musí [zrušit jejich nákupů](https://go.microsoft.com/fwlink/?linkid=871160) než účet může pokračovat napříč předplatnými.
 * VPN Gateway
 
 ## <a name="services-that-cannot-be-moved"></a>Služby, které nelze přesunout
 
-Služby, které aktuálně nepovolí přesunutí prostředku jsou:
+Následující seznam obsahuje obecný přehled služby Azure, které nelze přesunout do nové skupiny prostředků a předplatném. Víc podrobností najdete v části [přesunout operace Podpora prostředků](move-support-resources.md).
 
 * AD Domain Services
 * Hybridní AD Health Service

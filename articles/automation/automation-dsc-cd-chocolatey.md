@@ -9,12 +9,12 @@ ms.author: dacoulte
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: dc0e49f2857468338f6e1f16462ed814893ea6e7
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 100b3fa0e43be054a85ca9e32d9bb1b11033afb8
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42058643"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44296257"
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Příklad použití: Průběžné nasazování pomocí Chocolatey a automatizace stavu konfigurace virtuálních počítačů
 
@@ -182,7 +182,7 @@ Tento soubor nuspec musí být zkompilovány a uloženy na serveru služby NuGet
 ## <a name="step-6-tying-it-all-together"></a>Krok 6: Propojí to všechno dohromady
 
 Pokaždé, když na verzi předá dotazů a odpovědí a schválení pro nasazení, balíček se vytvoří soubor nuspec a nupkg aktualizovat a nasadit NuGet server. Kromě toho konfigurace (kroku 4 výše) musí být aktualizovány souhlas s nové číslo verze. Musí být odeslán do serveru vyžádané replikace a zkompilovány.
-Od této chvíle je to na virtuální počítače, které jsou závislé na tuto konfiguraci k vyžádání aktualizace a nainstalujte ji. Každá z těchto aktualizací jsou jednoduché – stačí na řádek nebo dvě z prostředí PowerShell. V případě Visual Studio Team Services některé z nich jsou zapouzdřeny v úlohách sestavení, které je možné zřetězit v sestavení. To [článku](https://www.visualstudio.com/docs/alm-devops-feature-index#continuous-delivery) obsahuje další podrobnosti. To [úložiště GitHub se vzorovými](https://github.com/Microsoft/vso-agent-tasks) podrobnosti o různých dostupných úloh.
+Od této chvíle je to na virtuální počítače, které jsou závislé na tuto konfiguraci k vyžádání aktualizace a nainstalujte ji. Každá z těchto aktualizací jsou jednoduché – stačí na řádek nebo dvě z prostředí PowerShell. V případě Azure DevOps některé z nich jsou zapouzdřeny v úlohách sestavení, které je možné zřetězit v sestavení. To [článku](https://www.visualstudio.com/docs/alm-devops-feature-index#continuous-delivery) obsahuje další podrobnosti. To [úložiště GitHub se vzorovými](https://github.com/Microsoft/vso-agent-tasks) podrobnosti o různých dostupných úloh.
 
 ## <a name="notes"></a>Poznámky
 

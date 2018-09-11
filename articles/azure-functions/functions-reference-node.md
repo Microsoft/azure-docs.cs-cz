@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 03/04/2018
 ms.author: glenga
-ms.openlocfilehash: 36307c86332ac331e444d65ba27c044585379e68
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: d80914fcd1f667924b52122b39f95871c1e21532
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093393"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44298008"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Příručka pro vývojáře Azure Functions JavaScript
 
@@ -67,13 +67,19 @@ module.exports = function(context) {
 ```
 context.bindings
 ```
-Vrátí objekt s názvem, který obsahuje všechny vstupní a výstupní data. Například následující definice vazby ve vaší *function.json* umožňuje přístup k obsahu z fronty `context.bindings.myInput` objektu. 
+Vrátí objekt s názvem, který obsahuje všechny vstupní a výstupní data. Například následující definice vazby ve vaší *function.json* umožňuje přístup k obsahu z fronty z `context.bindings.myInput` a přiřaďte výstupy do fronty pomocí `context.bindings.myOutput`.
 
 ```json
 {
     "type":"queue",
     "direction":"in",
     "name":"myInput"
+    ...
+},
+{
+    "type":"queue",
+    "direction":"out",
+    "name":"myOutput"
     ...
 }
 ```
@@ -87,25 +93,27 @@ context.bindings.myOutput = {
         a_number: 1 };
 ```
 
+Všimněte si, že můžete také definujte výstupní vazby dat pomocí `context.done` metoda místo `context.binding` objektu (viz níže).
+
 ### <a name="contextdone-method"></a>Context.Done – metoda
 ```
 context.done([err],[propertyBag])
 ```
 
-Informuje o modulu runtime, který váš kód bylo dokončeno. Pokud používá funkce `async function` deklarace (k dispozici prostřednictvím uzlu 8 + funkce verze 2.x), není potřeba použít `context.done()`. `context.done` Zpětného volání je implicitně volána.
+Informuje o modulu runtime, který váš kód bylo dokončeno. Pokud funkce používá jazyk JavaScript [ `async function` ](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) deklarace (k dispozici prostřednictvím uzlu 8 + funkce verze 2.x), není potřeba použít `context.done()`. `context.done` Zpětného volání je implicitně volána.
 
 Pokud funkce není asynchronní funkci **musí volat `context.done`**  informovat modul runtime dokončení vaší funkce. Provedení příkazu vyprší časový limit, pokud není nalezena.
 
-`context.done` Metoda umožňuje předat zpět oba uživatelem definované chybové modul runtime a kontejner objektů vlastností, které přepsat vlastnosti na `context.bindings` objektu.
+`context.done` Metoda umožňuje předat zpět oba uživatelem definované chybové modul runtime a objekt JSON obsahující výstupní vazbu data. Předat vlastnosti `context.done` přepíše nic nastavit `context.bindings` objektu.
 
 ```javascript
 // Even though we set myOutput to have:
-//  -> text: hello world, number: 123
+//  -> text: 'hello world', number: 123
 context.bindings.myOutput = { text: 'hello world', number: 123 };
 // If we pass an object to the done function...
 context.done(null, { myOutput: { text: 'hello there, world', noNumber: true }});
 // the done method will overwrite the myOutput binding to be: 
-//  -> text: hello there, world, noNumber: true
+//  -> text: 'hello there, world', noNumber: true
 ```
 
 ### <a name="contextlog-method"></a>Context.log – metoda  
@@ -113,7 +121,7 @@ context.done(null, { myOutput: { text: 'hello there, world', noNumber: true }});
 ```
 context.log(message)
 ```
-Umožňuje zapisovat do protokolů streamování konzoly na výchozí úrovni trasování. Na `context.log`, další protokolování metody jsou k dispozici, které vám umožňují zapisovat do protokolu konzoly na jiných úrovních trasování:
+Umožňuje zapisovat do protokolů streamování funkce na výchozí úrovni trasování. Na `context.log`, další protokolování metody jsou k dispozici, které vám umožňují zapisovat protokoly funkce na jiných úrovních trasování:
 
 
 | Metoda                 | Popis                                |
@@ -123,12 +131,14 @@ Umožňuje zapisovat do protokolů streamování konzoly na výchozí úrovni tr
 | **informace o (_zpráva_)**    | Zapíše informace o úroveň protokolování nebo nižší.    |
 | **verbose (_zpráva_)** | Zápisy na podrobné úrovni protokolování.           |
 
-V následujícím příkladu se zapíše do konzoly na úroveň trasování varování:
+Následující příklad zapíše protokolu na úroveň trasování varování:
 
 ```javascript
 context.log.warn("Something has happened."); 
 ```
-Můžete nastavit prahové hodnoty úroveň trasování pro protokolování v souboru host.json nebo vypněte jej.  Další informace o tom, jak zapisovat do protokolů, najdete v další části.
+Je možné [nakonfigurovat prahové hodnoty úroveň trasování pro protokolování](#configure-the-trace-level-for-console-logging) host.json souboru. Další informace o psaní protokolů, najdete v části [zápis trasování výstupy](#writing-trace-output-to-the-console) níže.
+
+Čtení [monitorování Azure Functions](functions-monitoring.md) získat další informace o zobrazení a dotazování protokolů funkce.
 
 ## <a name="binding-data-type"></a>Datový typ vazby
 
@@ -143,11 +153,11 @@ Chcete-li definovat datový typ pro vstupní vazby, použijte `dataType` vlastno
 }
 ```
 
-Další možnosti pro `dataType` jsou `stream` a `string`.
+Možnosti pro `dataType` jsou: `binary`, `stream`, a `string`.
 
 ## <a name="writing-trace-output-to-the-console"></a>Zápisu výstupu sledování do konzoly 
 
-Ve službě Functions použijete `context.log` metody zapsat výstup trasování do konzoly. V tuto chvíli nemůžete použít `console.log` k zápisu do konzoly.
+Ve službě Functions použijete `context.log` metody zapsat výstup trasování do konzoly. Funkce v1.x, nemůžete použít `console.log` k zápisu do konzoly. V v2.x funkce trasování výstupy prostřednictvím `console.log` jsou zachyceny na úrovni aplikace Function App. To znamená, že výstupem z `console.log` nejsou vázané na volání určité funkce.
 
 Při volání `context.log()`, vaše zapíše se do konzoly na výchozí úrovni trasování, který je _informace_ úroveň trasování. Následující kód, zapíše do konzoly na úroveň trasování informace:
 
@@ -155,22 +165,21 @@ Při volání `context.log()`, vaše zapíše se do konzoly na výchozí úrovni
 context.log({hello: 'world'});  
 ```
 
-Předchozí kód je ekvivalentní následujícímu kódu:
+Tento kód je ekvivalentní k výše uvedený kód:
 
 ```javascript
 context.log.info({hello: 'world'});  
 ```
 
-Následující kód, zapíše do konzoly na úrovni Chyba:
+Tento kód se zapíše do konzoly na úrovni Chyba:
 
 ```javascript
 context.log.error("An error has occurred.");  
 ```
 
-Protože _chyba_ je trasování nejvyšší úrovně, toto trasování bude zapsáno do výstupu na všech úrovních trasování tak dlouho, dokud je povoleno protokolování.  
+Protože _chyba_ je trasování nejvyšší úrovně, toto trasování bude zapsáno do výstupu na všech úrovních trasování tak dlouho, dokud je povoleno protokolování.
 
-
-Všechny `context.log` metody podporují stejný formát parametru, který podporuje na Node.js [util.format metoda](https://nodejs.org/api/util.html#util_util_format_format). Vezměte v úvahu následující kód, který zapisuje do konzoly pomocí výchozí úroveň trasování:
+Všechny `context.log` metody podporují stejný formát parametru, který podporuje na Node.js [util.format metoda](https://nodejs.org/api/util.html#util_util_format_format). Vezměte v úvahu následující kód, který zapisuje protokoly funkce s použitím výchozí úroveň trasování:
 
 ```javascript
 context.log('Node.js HTTP trigger function processed a request. RequestUri=' + req.originalUrl);
@@ -204,7 +213,7 @@ HTTP a triggerů webhooků a HTTP výstupní vazby pomocí žádostí a odpověd
 
 ### <a name="request-object"></a>Objekt žádosti
 
-`request` Objektu má následující vlastnosti:
+`context.req` (Požadavek) má následující vlastnosti:
 
 | Vlastnost      | Popis                                                    |
 | ------------- | -------------------------------------------------------------- |
@@ -219,7 +228,7 @@ HTTP a triggerů webhooků a HTTP výstupní vazby pomocí žádostí a odpověd
 
 ### <a name="response-object"></a>Objekt odpovědi
 
-`response` Objektu má následující vlastnosti:
+`context.res` (Odpověď) má následující vlastnosti:
 
 | Vlastnost  | Popis                                               |
 | --------- | --------------------------------------------------------- |
@@ -230,13 +239,7 @@ HTTP a triggerů webhooků a HTTP výstupní vazby pomocí žádostí a odpověd
 
 ### <a name="accessing-the-request-and-response"></a>Přístup k požadavku a odpovědi 
 
-Při práci s triggerů HTTP, můžete přístup k objektům HTTP požadavků a odpovědí v libovolné ze tří způsobů:
-
-+ Z pojmenované vstupní a výstupní vazby. Tímto způsobem triggeru HTTP a vazby fungují stejně jako všechny vazby. Následující příklad nastaví objektu odpovědi pomocí pojmenovaná `response` vazby: 
-
-    ```javascript
-    context.bindings.response = { status: 201, body: "Insert succeeded." };
-    ```
+Při práci s triggerů HTTP, můžete přístup k objektům HTTP požadavků a odpovědí v několika způsoby:
 
 + Z `req` a `res` vlastnosti `context` objektu. Tímto způsobem můžete použít konvenční vzor k datům přístup protokolu HTTP z objektu context, místo nutnosti použít úplnou `context.bindings.name` vzor. Následující příklad ukazuje, jak získat přístup k `req` a `res` objektů `context`:
 
@@ -247,7 +250,20 @@ Při práci s triggerů HTTP, můžete přístup k objektům HTTP požadavků a 
     context.res = { status: 202, body: 'You successfully ordered more coffee!' }; 
     ```
 
-+ Voláním `context.done()`. Zvláštní druh vazby HTTP vrátí odpověď, která je předána `context.done()` metody. Následující HTTP výstupní vazby definuje `$return` výstupní parametr:
++ Z pojmenované vstupní a výstupní vazby. Tímto způsobem triggeru HTTP a vazby fungují stejně jako všechny vazby. Následující příklad nastaví objektu odpovědi pomocí pojmenovaná `response` vazby: 
+
+    ```json
+    {
+        "type": "http",
+        "direction": "out",
+        "name": "response"
+    }
+    ```
+    ```javascript
+    context.bindings.response = { status: 201, body: "Insert succeeded." };
+    ```
+
++ [Pouze odpovědi] Voláním `context.done()`. Zvláštní druh vazby HTTP vrátí odpověď, která je předána `context.done()` metody. Následující HTTP výstupní vazby definuje `$return` výstupní parametr:
 
     ```json
     {
@@ -256,15 +272,13 @@ Při práci s triggerů HTTP, můžete přístup k objektům HTTP požadavků a 
       "name": "$return"
     }
     ``` 
-    Tento výstupní vazby, kde zadáte odpovědi při volání očekává `done()`, následujícím způsobem:
-
     ```javascript
      // Define a valid response object.
     res = { status: 201, body: "Insert succeeded." };
     context.done(null, res);   
     ```  
 
-## <a name="node-version-and-package-management"></a>Uzel version a package management
+## <a name="node-version"></a>Uzel verze
 
 V následující tabulce jsou uvedeny verze Node.js používá každá hlavní verze modul runtime služby Functions:
 
@@ -275,6 +289,7 @@ V následující tabulce jsou uvedeny verze Node.js používá každá hlavní v
 
 Zobrazí aktuální verzi, která používá modul runtime s tiskem `process.version` z jakékoli funkce.
 
+## <a name="package-management"></a>Správa balíčků
 Následující kroky umožňují zahrnout balíčky ve vaší aplikaci funkcí: 
 
 1. Přejděte do části `https://<function_app_name>.scm.azurewebsites.net` (Soubor > Nový > Jiné).

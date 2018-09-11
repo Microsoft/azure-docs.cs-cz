@@ -1,5 +1,5 @@
 ---
-title: Sledování dostupnosti a odezvy libovolných webů | Microsoft Docs
+title: Sledování dostupnosti a odezvy libovolných webů | Dokumentace Microsoftu
 description: Nastavení testů webu ve službě Application Insights. Zasílání upozornění, pokud web přestane být k dispozici nebo reaguje pomalu.
 services: application-insights
 documentationcenter: ''
@@ -10,14 +10,16 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 02/09/2018
-ms.author: sdash ; mbullwin
-ms.openlocfilehash: c97b45616a58035dd5a1d7e832212fb90694ccce
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.reviewer: sdash
+ms.author: mbullwin
+ms.openlocfilehash: 392abef7f92dce024ba6e4af091cf58fde5119b6
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302387"
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Sledování dostupnosti a odezvy libovolných webů
 Po nasazení webové aplikace nebo webu na libovolném serveru můžete nastavit testy ke sledování dostupnosti a odezvy. [Azure Application Insights](app-insights-overview.md) odesílá do vaší aplikace webové požadavky v pravidelných intervalech z bodů po celém světě. Upozorní vás v případě, že vaše aplikace reaguje pomalu nebo nereaguje vůbec.
@@ -113,7 +115,7 @@ Výsledek testu dostupnosti umožňuje:
 
 * Kontrolovat odpověď přijatou ze serveru.
 * Diagnostikovat selhání pomocí telemetrie na straně serveru získané při zpracování instance neúspěšného požadavku.
-* Zaznamenat problém nebo pracovní položku do Gitu nebo VSTS kvůli sledování problému. Chyba bude obsahovat odkaz na tuto událost.
+* Protokolovat chyby nebo pracovní položky v Gitu nebo Azure DevOps kvůli sledování problému. Chyba bude obsahovat odkaz na tuto událost.
 * Otevřít výsledek webového testu v sadě Visual Studio.
 
 *Zdá se, že všechno je v pořádku, ale přesto je hlášena chyba.* Informace o tom, jak snížit šum, najdete v [Častých otázkách](#qna).
@@ -180,7 +182,9 @@ Slouží k zaznamenání relace webové aplikace Visual Studio Enterprise.
 
 Prohlédněte si výsledky testu a všechny chyby stejným způsobem jako u testů s jednou adresou URL.
 
-Kromě toho si můžete výsledky testů stáhnout a zobrazit je v sadě Visual Studio.
+Můžete také stáhnout výsledky testu si je chcete zobrazit v sadě Visual Studio.
+
+Chcete-li stáhnout výsledky testu. Přejděte na souhrn testů dostupnosti, klikněte na výsledek v grafu otevřete okno výsledku testu dostupnosti a potom klikněte na **otevřete v sadě Visual Studio** stáhnout výsledek testu.
 
 #### <a name="too-many-failures"></a>Příliš mnoho selhání?
 
@@ -253,7 +257,7 @@ Pokud váš test vyžaduje přihlášení pomocí OAuth, bude obecný postup ná
 ## <a name="performance-tests"></a>Testy výkonnosti
 Na svém webu můžete spustit zátěžový test. Podobně jako v testu dostupnosti můžete z našich bodů po celém světě odeslat buď jednoduché požadavky, nebo vícekrokové požadavky. Na rozdíl od testu dostupnosti se odesílá mnoho požadavků, které simulují několik souběžných uživatelů.
 
-V okně Přehled otevřete **Nastavení**, **Testy výkonnosti**. Při vytváření testu budete vyzváni k připojení k účtu Visual Studio Team Services nebo k jeho vytvoření.
+V okně Přehled otevřete **Nastavení**, **Testy výkonnosti**. Při vytváření testu budete vyzváni k připojení nebo vytvoření organizace služby Azure DevOps.
 
 Po dokončení testu se zobrazí časy odezvy a míra úspěšnosti.
 

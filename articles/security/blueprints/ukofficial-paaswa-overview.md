@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: f465a6e6cb0642f64670a8d2727c939f91bad134
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 6fe85d7ac527179ab39e89739f5744f3aa1ef8e2
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617245"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44297551"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Zabezpečení Azure a dodržování předpisů: PaaS webového hostování aplikací pro oficiální úlohy Spojené království
 
@@ -27,7 +27,7 @@ Toto zabezpečení Azure a dodržování předpisů poskytuje pokyny a automatiz
 
 Tento podrobný plán zkontroloval podle Spojené království národní Kybernetických zabezpečení centrum (NCSC) a odpovídá principů zabezpečení cloudu 14 NCSC.
 
-Tato architektura využívá Azure [platforma jako služba](https://azure.microsoft.com/overview/what-is-paas/) součásti poskytovat prostředí, které umožňuje zákazníkům řešit náklady a složitost nákupu softwarových licencí, podpůrné aplikační infrastruktury správy a middlewaru nebo nástrojů pro vývoj a další prostředky. Zákazníci spravovat aplikace a služby, které vytvářejí, zaměřuje se na dodávání přidané hodnoty, zatímco je Microsoft Azure spravuje další prostředky Azure jako jsou virtuální počítače, úložiště a sítě, uvedení více [dělení odpovědnosti](https://docs.microsoft.com/azure/security/security-paas-deployments#division-of-responsibility) pro správu infrastruktury do platformy Azure. [Služba Azure App Services](https://azure.microsoft.com/services/app-service/) nabízí automatické škálování, vysokou dostupnost, podporuje Windows a Linux a umožňuje automatizované nasazení z Githubu, Visual Studio Team Services nebo v libovolném adresáři Gitu jako výchozí služby. Pomocí App Services, umožňuje vývojářům soustředit se na dodávání přidané hodnoty bez režie na správu infrastruktury. Je možné k vytvoření nové webové aplikace Java, PHP, Node.js, Python, HTML nebo C# úplně nové, nebo také k migraci existujícího cloudu nebo na místní webové aplikace do služby Azure App Services (i když je důkladné kvůli opatrnost a testování pro potvrzení, výkon se vyžaduje).
+Tato architektura využívá Azure [platforma jako služba](https://azure.microsoft.com/overview/what-is-paas/) součásti poskytovat prostředí, které umožňuje zákazníkům řešit náklady a složitost nákupu softwarových licencí, podpůrné aplikační infrastruktury správy a middlewaru nebo nástrojů pro vývoj a další prostředky. Zákazníci spravovat aplikace a služby, které vytvářejí, zaměřuje se na dodávání přidané hodnoty, zatímco je Microsoft Azure spravuje další prostředky Azure jako jsou virtuální počítače, úložiště a sítě, uvedení více [dělení odpovědnosti](https://docs.microsoft.com/azure/security/security-paas-deployments#division-of-responsibility) pro správu infrastruktury do platformy Azure. [Služba Azure App Services](https://azure.microsoft.com/services/app-service/) nabízí automatické škálování, vysokou dostupnost, podporuje Windows a Linux a umožňuje automatizované nasazení z Githubu, službě Azure DevOps nebo v libovolném adresáři Gitu jako výchozí služby. Pomocí App Services, umožňuje vývojářům soustředit se na dodávání přidané hodnoty bez režie na správu infrastruktury. Je možné k vytvoření nové webové aplikace Java, PHP, Node.js, Python, HTML nebo C# úplně nové, nebo také k migraci existujícího cloudu nebo na místní webové aplikace do služby Azure App Services (i když je důkladné kvůli opatrnost a testování pro potvrzení, výkon se vyžaduje).
 
 Tento podrobný plán se zaměřuje na zřizování bezpečný základ [platforma jako služba](https://azure.microsoft.com/overview/what-is-paas/) webové rozhraní pro uživatele public a také back office. Scénáře návrhu podrobného plánu bere v úvahu, že používání Azure hostované webové služby, kde veřejné uživatelů může bezpečně posílat, zobrazit a spravovat citlivých dat; také, že operátor back office nebo státní správy můžete bezpečně zpracovávat citlivá data, která má veřejný uživatel odeslal. Případy použití pro tento scénář může obsahovat:
 
@@ -103,7 +103,7 @@ Data jsou přenosu z mimo a mezi komponentami Azure je chráněný pomocí [Tran
 
 #### <a name="azure-app-service"></a>Azure App Service
 
-Azure Web Apps poskytuje plně spravovaná webová hostitelské prostředí pro webové aplikace vyvinuté v jazyce Java, PHP, Node.js, Python, HTML a C# bez nutnosti spravovat infrastrukturu. Nabízí automatické škálování a vysokou dostupnost, podporuje systémy Windows a Linux a umožňuje automatizované nasazení z [Visual Studio Team Services](https://azure.microsoft.com/services/visual-studio-team-services/) nebo libovolného úložiště gitu.
+Azure Web Apps poskytuje plně spravovaná webová hostitelské prostředí pro webové aplikace vyvinuté v jazyce Java, PHP, Node.js, Python, HTML a C# bez nutnosti spravovat infrastrukturu. Nabízí automatické škálování a vysokou dostupnost, podporuje systémy Windows a Linux a umožňuje automatizované nasazení z [Azure DevOps](https://azure.microsoft.com/services/visual-studio-team-services/) nebo libovolného úložiště gitu.
 
 App Service je [ISO, SOC a PCI](https://www.microsoft.com/TrustCenter/) a můžou k ověření uživatelů pomocí [Azure Active Directory](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-active-directory-authentication) nebo přihlášení prostřednictvím sociální sítě ([Google](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-google-authentication), [Facebook](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-facebook-authentication), [Twitter](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-twitter-authentication), a [ověřování Microsoft](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-microsoft-authentication).
 

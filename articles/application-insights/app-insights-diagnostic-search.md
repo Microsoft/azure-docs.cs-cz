@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: mbullwin
-ms.openlocfilehash: 1a343e238662393995404b8e4c705cf799866855
-ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
+ms.openlocfilehash: 4d49b6c4fca668a6afe88ade5fbafb0ea9c02dfc
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39137368"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44296155"
 ---
 # <a name="using-search-in-application-insights"></a>Pomocí vyhledávání ve službě Application Insights
 Hledání je funkce [Application Insights](app-insights-overview.md) , který používáte k vyhledání a prozkoumejte telemetrická data jednotlivých položek, například zobrazení stránek, výjimky nebo webové požadavky. A můžete zobrazit trasování protokolů a událostí, které jste nakódovali.
@@ -133,13 +133,13 @@ Pokud vaše aplikace generuje mnoho telemetrie (a vy používáte 2.0.0-beta3 ve
 [Další informace o vzorkování](app-insights-sampling.md).
 
 ## <a name="create-work-item"></a>Vytvořit pracovní položku
-Můžete vytvořit chybu v Githubu nebo Visual Studio Team Services s podrobnostmi o z libovolné položky telemetrie. 
+Můžete vytvořit chybu v Githubu nebo Azure DevOps s podrobnostmi o z libovolné položky telemetrie. 
 
 ![Klikněte na novou pracovní položku, upravte pole a pak klikněte na tlačítko OK.](./media/app-insights-diagnostic-search/42.png)
 
-Při prvním to provedete, zobrazí se výzva k nakonfigurovat odkaz na účet služby Team Services a projektu.
+Okamžiku, kdy to provedete, budete vyzváni ke konfiguraci propojení pro vaši organizaci Azure DevOps a projektu.
 
-![Zadejte adresu URL serveru se službou Team Services a název projektu a klikněte na tlačítko Ověřit](./media/app-insights-diagnostic-search/41.png)
+![Zadejte adresu URL služby Azure DevOps a název projektu a klikněte na tlačítko Ověřit](./media/app-insights-diagnostic-search/41.png)
 
 (Můžete také nakonfigurovat na odkaz v okně pracovních položek).
 

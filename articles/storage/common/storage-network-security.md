@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/25/2017
 ms.author: cbrooks
 ms.component: common
-ms.openlocfilehash: 56c464b9fbc9fe5f2d9acd1a403333fd1c729113
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 05a7dda67ca9747c5d6205952bc9337af628de8f
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44023388"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44296733"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurace virtuálních sítí a bran firewall Azure Storage
 Azure Storage poskytuje vrstvený model zabezpečení umožňuje zabezpečit vaše účty úložiště s konkrétní sadou povolených sítí.  Když jsou nakonfigurovaná pravidla sítě, můžete pouze aplikace z povolených sítí přístup k účtu úložiště.  Při volání z povolené sítě, aplikace dál vyžadují správnou autorizaci (platný přístupový klíč nebo SAS token) pro přístup k účtu úložiště.
@@ -208,7 +208,7 @@ Pravidla sítě protokolu IP pro účty úložiště je možné spravovat prost�
 2. Klikněte v nabídce nastavení nazývá **virtuální sítí a bran firewall**.
 3. Ujistěte se, že rozhodnete povolit přístup z "Vybraných sítí".
 4. Udělit přístup k Internetu rozsah IP adres, zadejte IP adresu nebo rozsah adres (ve formátu CIDR) v rámci brány Firewall, rozsahy adres.
-5. Chcete-li odebrat pravidlo protokolu IP sítě, klikněte na tlačítko "..." otevřete místní nabídku pro pravidlo a klikněte na "Remove".
+5. Pokud chcete odebrat pravidlo protokolu IP sítě, klikněte na ikonu koše vedle pravidel síťové.
 6. Klikněte na tlačítko *Uložit* změny.
 
 #### <a name="powershell"></a>PowerShell

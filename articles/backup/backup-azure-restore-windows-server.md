@@ -6,14 +6,14 @@ author: saurabhsensharma
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
-ms.date: 8/6/2018
+ms.date: 9/7/2018
 ms.author: saurse
-ms.openlocfilehash: ddde297de49edb5f6543d03dfdb972771533301b
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 20d2f289f4d40d773fde9f6b770dc49b87c34804
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39576181"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44297243"
 ---
 # <a name="restore-files-to-a-windows-server-or-windows-client-machine-using-resource-manager-deployment-model"></a>Obnovení souborů na serveru Windows nebo klientském počítači s využitím modelu nasazení Resource Manager
 
@@ -54,6 +54,9 @@ Pokud omylem odstranil se soubor a chcete obnovit na stejný počítač (ze kter
 > [!IMPORTANT]
 > Možnost obnovení *jednotlivých souborů a složek* vyžaduje rozhraní .NET Framework 4.5.2 nebo novější. Pokud se nezobrazí *jednotlivých souborů a složek* možnost, musíte upgradovat rozhraní .NET Framework verze 4.5.2 nebo novější a zkuste to znovu.
 
+> [!TIP]
+> *Jednotlivých souborů a složek* možnost umožňuje rychlý přístup k data bodu obnovení. Je vhodné pro obnovení jednotlivých souborů s velikostí celkovou velikost není více než 80 GB a nabídky přenosu nebo kopírování urychluje MB/s až 6 během obnovení. *Svazku* možnost obnoví všechna zálohovaná data v daném svazku. Tato možnost poskytuje vyšší rychlost přenosu (až 60 MB/s), která je ideální pro obnovení velké velikosti dat nebo celé svazky.
+
 5. Na **vybrat svazek a datum** podokně, vyberte svazek, který obsahuje soubory a složky, kterou chcete obnovit.
 
     V kalendáři vyberte bod obnovení. Z libovolného bodu obnovení můžete obnovit v čase. Data zobrazená **tučné** označení dostupnosti alespoň jeden bod obnovení. Jakmile vyberete datum, pokud jsou k dispozici více bodů obnovení, vyberte konkrétní bod obnovení z **čas** rozevírací nabídky.
@@ -72,6 +75,7 @@ Pokud omylem odstranil se soubor a chcete obnovit na stejný počítač (ze kter
 8. V Průzkumníku Windows zkopírujte soubory a složky, které chcete obnovit a vložte je do libovolného umístění místní k serveru nebo počítači. Můžete otevřít nebo Streamovat soubory přímo ze svazku pro obnovení a ověřte, že obnovujete správné verze.
 
     ![Zkopírujte a vložte soubory a složky z připojeného svazku na místní umístění](./media/backup-azure-restore-windows-server/samemachine_copy_instantrestore.png)
+
 
 9. Až budete hotovi s obnovováním souborů a složek, na **Procházet a obnovit soubory** podokně klikněte na tlačítko **odpojení**. Pak klikněte na tlačítko **Ano** potvrďte, že chcete svazek odpojit.
 

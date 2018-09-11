@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: genli
-ms.openlocfilehash: 448622f0406eb709c8d94d60722edb4ef00f42de
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 1eb2a3c13a1bbf7f2fd7a9691d833fc9c4b3a2b8
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669937"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44294030"
 ---
 # <a name="understand-azure-spending-limit-and-how-to-remove-it"></a>Vysvětlení limitu útraty Azure a jeho odstranění
 
@@ -64,7 +64,7 @@ Pokud chcete odebrat limit útraty, postupujte takto:
 
 Limit útraty vám může bránit v nasazení nebo použití některých třetích stran a služby Microsoftu. Tady jsou scénáře, kdy byste měli limit útraty pro svoje předplatné odebrat.
 
-* Chcete nasadit image Microsoftu, třeba Oracle, a služby, jako je Visual Studio Team Services. V tomto scénáři způsobí, že překročíte limit útraty téměř okamžitě a způsobí, že vaše předplatné se deaktivuje.
+* Máte v plánu nasadit Image Microsoftu jako jsou Oracle a služeb, jako je Azure DevOps služby. V tomto scénáři způsobí, že překročíte limit útraty téměř okamžitě a způsobí, že vaše předplatné se deaktivuje.
 * Používáte ale služby, které nejde přerušit.
 * Nechcete ztratit nastavení služeb a prostředků, jako jsou virtuální IP adresy. Tato nastavení jsou ztraceny po zrušení přidělení služeb a prostředků.
 

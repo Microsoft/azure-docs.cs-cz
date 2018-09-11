@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2018
 ms.author: gokuma
-ms.openlocfilehash: 8131122f78f743d04e332bfc8dfeba87a8c34236
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 37a30055e567b27f4e215dac162642d4447a8e49
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782650"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44298197"
 ---
 # <a name="provision-the-windows-data-science-virtual-machine-on-azure"></a>Zřídit Windows virtuální počítač pro datové vědy v Azure
 Microsoft Data virtuálního počítače VĚDY je image virtuálního počítače (VM) Windows Azure. Má předinstalované a nakonfigurovanou řadu nástrojů, které se používají pro analýzu dat a strojové učení. Tyto nástroje jsou zahrnuty:
@@ -40,7 +40,7 @@ Microsoft Data virtuálního počítače VĚDY je image virtuálního počítač
   * [Weka](http://www.cs.waikato.ac.nz/ml/weka/). Dolování vizuálních dat a strojové učení softwaru v jazyce Java.
   * [Apache Drill](https://drill.apache.org/). Bez schémat modul dotazů SQL pro Apache Hadoop, NoSQL a cloudového úložiště.  Podporuje rozhraní ODBC a JDBC pro dotazování NoSQL a soubory ze standardních nástrojů BI, jako je Power BI, Microsoft Excelu a Tableau.
 * Knihovny v R a Python pro použití v Azure Machine Learning a dalšími službami Azure.
-* Git, včetně Git Bash pro práci s úložišť zdrojového kódu, včetně Githubu a Visual Studio Team Services. Git poskytuje několik oblíbených Linux nástroje příkazového řádku, které jsou dostupné i na Git Bash a příkazový řádek. Příklady jsou awk sed, perl, grep, hledání, wget a curl.
+* Git, včetně Git Bash pro práci s úložišť zdrojového kódu, včetně Githubu a Azure DevOps. Git poskytuje několik oblíbených Linux nástroje příkazového řádku, které jsou dostupné i na Git Bash a příkazový řádek. Příklady jsou awk sed, perl, grep, hledání, wget a curl.
 
 Vědecké zpracování dat zahrnuje iterace v pořadí úloh:
 

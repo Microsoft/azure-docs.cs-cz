@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: tamram
 ms.component: blobs
-ms.openlocfilehash: 4d714d0c345f465fc4911d55f9c57cbfd99087df
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 5139f41832446add3431fc0f4e321af806342da2
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128062"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44296972"
 ---
 # <a name="tutorial-encrypt-and-decrypt-blobs-in-microsoft-azure-storage-using-azure-key-vault"></a>Kurz: Šifrování a dešifrování objektů BLOB ve službě Microsoft Azure Storage pomocí Azure Key Vault
 ## <a name="introduction"></a>Úvod
@@ -45,7 +45,7 @@ Tady je stručný popis toho, jak funguje šifrování na straně klienta:
 ## <a name="set-up-your-azure-key-vault"></a>Nastavení služby Azure Key Vault
 Chcete-li pokračovat s tímto kurzem, budete muset provést následující kroky, které jsou popsány v tomto kurzu [Začínáme s Azure Key Vault](../../key-vault/key-vault-get-started.md):
 
-* Vytvoření trezoru klíčů.
+* Vytvoření trezoru klíčů
 * Přidání klíče nebo tajného klíče do trezoru klíčů.
 * Zaregistrujte aplikaci v Azure Active Directory.
 * Autorizujte aplikaci pro použití klíče nebo tajného klíče.
@@ -61,9 +61,7 @@ Přidání balíčků nuget nezbytné v konzole Správce balíčků.
 
 ```
 Install-Package WindowsAzure.Storage
-
-// This is the latest stable release for ADAL.
-Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.16.204221202
+Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
 
 Install-Package Microsoft.Azure.KeyVault
 Install-Package Microsoft.Azure.KeyVault.Extensions

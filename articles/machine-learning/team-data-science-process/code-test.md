@@ -1,5 +1,5 @@
 ---
-title: Data science kód testování v Azure pomocí UCI dospělé příjem předpovědi datové sady – vědecké zpracování týmových dat a Visual Studio Team Services
+title: Data science kód testování v Azure pomocí UCI dospělé příjem předpovědi datové sady – vědecké zpracování týmových dat a služeb Azure DevOps
 description: Data science kód testování s daty předpovědi pro dospělé příjem UCI
 services: machine-learning, team-data-science-process
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/19/2018
 ms.author: weig
-ms.openlocfilehash: 46d156ce09b1ebcdcceb27ede6e7fa1595d30da6
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: ad0a8b5b0bb9afbbe626c9481961f20ccd4797bf
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39439493"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44294687"
 ---
 # <a name="data-science-code-testing-with-the-uci-adult-income-prediction-dataset"></a>Data science kód testování s datovou sadou UCI dospělé příjem predikcí
 Tento článek obsahuje pokyny pro předběžné pro testování kódu v pracovní postup datových věd. Testování poskytuje datovým vědcům systematicky a efektivní způsob, jak zkontrolovat kvality a očekávaný výsledek svůj kód. Používáme zpracování týmových dat vědy (TDSP) [projekt, který používá datovou sadu pro dospělé příjem UCI](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) , kterou jsme publikovali dříve ukazují, jak kód testování lze provést. 
@@ -37,8 +37,8 @@ Tento článek nahradí termín "unit testing" s "testování kódu." Odkazuje n
 
 Tento článek obsahuje odkazy na jako užitečné zdroje informací.
 
-## <a name="visual-studio-team-services-for-the-testing-framework"></a>Visual Studio Team Services pro testovací rozhraní
-Tento článek popisuje, jak provádět a automatizovat testování pomocí Visual Studio Team Services (VSTS). Můžete se rozhodnout používat alternativní nástroje. Také vám ukážeme, jak nastavit automatické sestavení pomocí VSTS a agenty sestavení. Agenti sestavení se používá Azure virtuální počítače pro datové vědy (datové).
+## <a name="azure-devops-for-the-testing-framework"></a>Azure DevOps pro testovací rozhraní
+Tento článek popisuje, jak provádět a automatizovat testování s použitím Azure DevOps. Můžete se rozhodnout používat alternativní nástroje. Také vám ukážeme, jak nastavit automatické sestavení s použitím Azure DevOps a agenty sestavení. Agenti sestavení se používá Azure virtuální počítače pro datové vědy (datové).
 
 ## <a name="flow-of-code-testing"></a>Tok testování kódu
 Celkový pracovní postup testování kódu v projektu datové vědy vypadá takto: 
@@ -48,7 +48,7 @@ Celkový pracovní postup testování kódu v projektu datové vědy vypadá tak
     
 ## <a name="detailed-steps"></a>Podrobné kroky
 
-Použijte následující postup k nastavení a spuštění kódu, testování a automatizované sestavování pomocí agenta sestavení a VSTS:
+Nastavení a spuštění kódu, testování a automatizované sestavování s využitím Azure DevOps a agenta sestavení, postupujte následovně:
 
 1. Vytvořte projekt aplikace klasické pracovní plochy Visual Studio:
 
@@ -60,7 +60,7 @@ Použijte následující postup k nastavení a spuštění kódu, testování a 
 
     ![Průzkumník řešení](./media/code-test/solution_explorer_in_vs.PNG)
 
-1. Informační kanál projekt kódu do úložiště kódu projektu VSTS: 
+1. Informační kanál projekt kódu do úložiště Azure DevOps project kódu: 
 
     ![Úložiště kódu projektu](./media/code-test/create_repo.PNG)
 
@@ -108,13 +108,13 @@ Použijte následující postup k nastavení a spuštění kódu, testování a 
 
     ![Spuštění testů](./media/code-test/run_tests.PNG)
 
-1. Vrácení kódu se změnami do úložiště projektu pomocí příkazů Gitu. Nejnovější práce se projeví za chvíli ve VSTS.
+1. Vrácení kódu se změnami do úložiště projektu pomocí příkazů Gitu. Nejnovější práce se projeví za chvíli v Azure DevOps.
 
     ![Příkazy Gitu pro vrácení kódu se změnami](./media/code-test/git_check_in.PNG)
 
-    ![Nejnovější práce ve VSTS](./media/code-test/git_check_in_most_recent_work.PNG)
+    ![Nejnovější práce v Azure DevOps](./media/code-test/git_check_in_most_recent_work.PNG)
 
-1. Nastavení automatické sestavení a testování ve VSTS:
+1. Nastavení automatické sestavení a testování v Azure DevOps:
 
     a. V úložišti projektů vyberte **sestavení a vydání**a pak vyberte **+ nová** k vytvoření nového procesu sestavení.
 
@@ -128,7 +128,7 @@ Použijte následující postup k nastavení a spuštění kódu, testování a 
 
        ![List of templates and "Empty process" button](./media/code-test/start_empty_process_template.PNG)
 
-    d. Název sestavení a vyberte agenta. Výchozí Tady můžete zvolit, pokud chcete použít DSVM pro dokončení procesu sestavení. Další informace o nastavení agentů najdete v tématu [agenti sestavení a vydání](https://docs.microsoft.com/vsts/build-release/concepts/agents/agents?view=vsts).
+    d. Název sestavení a vyberte agenta. Výchozí Tady můžete zvolit, pokud chcete použít DSVM pro dokončení procesu sestavení. Další informace o nastavení agentů najdete v tématu [agenti sestavení a vydání](https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=vsts).
     
        ![Build and agent selections](./media/code-test/select_agent.PNG)
 
@@ -142,17 +142,17 @@ Použijte následující postup k nastavení a spuštění kódu, testování a 
     
        ![PowerShell details](./media/code-test/powershell_scripts.PNG)
 
-    g. Vyberte **Uložit & frontu** k dokončení definice procesu sestavení.
+    g. Vyberte **Uložit & frontu** dokončete proces sestavení kanálu.
 
        !["Save & queue" button](./media/code-test/save_and_queue_build_definition.PNG)
 
 Nyní pokaždé, když nové potvrzení se vloží do úložiště kódu, proces sestavení se spustí automaticky. (Tady používáme hlavní jako úložiště, ale můžete definovat žádné větve.) Proces je spuštěn **test1.py** souboru v počítači agenta, abyste měli jistotu, že všechno, co je definována v kódu pracuje správně. 
 
-Pokud výstrahy nejsou nastaveny správně, budete upozorněni v e-mailu po dokončení sestavení. Můžete také zkontrolovat stav sestavení ve VSTS. Pokud selže, můžete zkontrolovat informace o sestavení a zjistit, jaký je poškozený.
+Pokud výstrahy nejsou nastaveny správně, budete upozorněni v e-mailu po dokončení sestavení. Můžete také zkontrolovat stav sestavení v Azure DevOps. Pokud selže, můžete zkontrolovat informace o sestavení a zjistit, jaký je poškozený.
 
 ![E-mailové oznámení úspěch sestavení](./media/code-test/email_build_succeed.PNG)
 
-![VSTS oznámení úspěch sestavení](./media/code-test/vs_online_build_succeed.PNG)
+![Oznámení Azure DevOps úspěch sestavení](./media/code-test/vs_online_build_succeed.PNG)
 
 ## <a name="next-steps"></a>Další postup
 * Najdete v článku [UCI příjem předpovědi úložiště](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) konkrétní příklady testů jednotek pro datové vědy scénáře.
@@ -161,5 +161,5 @@ Pokud výstrahy nejsou nastaveny správně, budete upozorněni v e-mailu po doko
 ## <a name="references"></a>Odkazy
 * [Vědecké zpracování týmových dat](https://aka.ms/tdsp)
 * [Testovací nástroje sady Visual Studio](https://www.visualstudio.com/vs/features/testing-tools/)
-* [Testování prostředků VSTS](https://www.visualstudio.com/team-services/)
+* [Testování prostředky Azure DevOps](https://www.visualstudio.com/team-services/)
 * [Virtuální počítače pro datové vědy](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/)

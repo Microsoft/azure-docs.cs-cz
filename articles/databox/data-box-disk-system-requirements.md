@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/28/2018
+ms.date: 09/06/2018
 ms.author: alkohli
-ms.openlocfilehash: 2fdd574adf3587f11984bee2a2549d9bcd0c4c0d
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: aaa4e4bb24ca42adb9d283e6286dbef879bcb1ea
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43126001"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44299844"
 ---
 # <a name="azure-data-box-disk-system-requirements-preview"></a>Azure Data Box Disk požadavky na systém (Preview)
 
@@ -35,17 +35,29 @@ Požadavky na systém zahrnují podporovaných platforem pro připojení klient�
 
 Tady je seznam podporovaných operačních systémech pro disk odemknutí a operace kopírování dat prostřednictvím klienty připojené k disku Data Box.
 
-| **Operačního systému a platformy** | **Verze** |
+| **Operační systém** | **Otestované verze** |
 | --- | --- |
 | Windows Server |2008 R2 SP1 <br> 2012 <br> 2012 R2 <br> 2016 |
 | Windows |7, 8, 10 |
-| Windows PowerShell |4.0 |
+|Linux <br> <li> Ubuntu </li><li> Debian </li><li> Red Hat Enterprise Linux (RHEL) </li><li> CentOS| <br>14.04, 16.04, 18.04 <br> 8.11, 9 <br> 7.0 <br> 6.5, 6.9, 7.0, 7.5 |  
+
+## <a name="other-required-software-for-windows-clients"></a>Jiného požadovaného softwaru pro klienty Windows
+
+Pro klienta Windows musí také nainstalovaná následující.
+
+| **Software**| **Verze** |
+| --- | --- |
+| Windows PowerShell |5.0 |
 | .NET Framework |4.5.1 |
-| Windows Management Framework |4.0|
+| Windows Management Framework |5.0|
+| BitLocker| - |
 
-> [!NOTE] 
-> BitLocker musí být povolená na klientských počítačích, na kterých běží disk odemknutí nástroj a slouží ke kopírování dat.
+## <a name="other-required-software-for-linux-clients"></a>Jiného požadovaného softwaru pro klienty Linux
 
+Sada nástrojů disku Data Box pro klienta pro Linux, nainstaluje následující požadovaný software:
+
+- dislocker
+- OpenSSL
 
 ## <a name="supported-storage-accounts"></a>Účty úložiště podporuje
 

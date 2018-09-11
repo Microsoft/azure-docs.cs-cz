@@ -1,6 +1,6 @@
 ---
-title: Nejčastější dotazy k nasazení pro webové aplikace Azure | Microsoft Docs
-description: Získejte odpovědi na nejčastější dotazy týkající se nasazení pro funkce Web Apps služby Azure App Service.
+title: Nejčastější dotazy k nasazení pro Azure web apps | Dokumentace Microsoftu
+description: Získejte odpovědi na nejčastější dotazy týkající se nasazení pro funkci Web Apps služby Azure App Service.
 services: app-service\web
 documentationcenter: ''
 author: genlin
@@ -15,88 +15,88 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 54c99cc9dde6a9706c75401dd75b98f8f5de7cec
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: ab8750e5824cf9f7635d11a6b2be332b2f9a761c
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34068066"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302584"
 ---
-# <a name="deployment-faqs-for-web-apps-in-azure"></a>Nejčastější dotazy k nasazení pro webové aplikace v Azure
+# <a name="deployment-faqs-for-web-apps-in-azure"></a>Nejčastější dotazy k nasazení pro službu Web Apps v Azure
 
-Tento článek obsahuje odpovědi na nejčastější dotazy (FAQ) o problémy při nasazení pro [funkce Web Apps služby Azure App Service](https://azure.microsoft.com/services/app-service/web/).
+Tento článek obsahuje odpovědi na nejčastější dotazy (FAQ) o problémech nasazení pro [funkce Web Apps služby Azure App Service](https://azure.microsoft.com/services/app-service/web/).
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="i-am-just-getting-started-with-app-service-web-apps-how-do-i-publish-my-code"></a>I se právě Začínáme s webovými aplikacemi App Service. Jak lze publikovat vlastní kód?
+## <a name="i-am-just-getting-started-with-app-service-web-apps-how-do-i-publish-my-code"></a>Můžu jsem právě začínáte s App Service web apps. Jak můžu publikovat vlastní kód?
 
-Zde jsou některé možnosti pro publikování kódu webové aplikace:
+Tady jsou některé možnosti publikování kódu webové aplikace:
 
 *   Nasazení pomocí sady Visual Studio. Pokud máte řešení sady Visual Studio, klikněte pravým tlačítkem na projekt webové aplikace a pak vyberte **publikovat**.
-*   Nasazení pomocí klienta FTP. Na portálu Azure stáhnete profil publikování pro webové aplikace, kterou chcete nasadit svůj kód. Pak odešlete soubory do \site\wwwroot pomocí stejných přihlašovacích údajů Publikovat profil FTP.
+*   Nasazení pomocí klienta FTP. Na portálu Azure stáhnete profil publikování pro webovou aplikaci, kterou chcete nasadit váš kód. Nakonec odešlete soubory \site\wwwroot pomocí stejných přihlašovacích údajů Publikovat profil FTP.
 
-Další informace najdete v tématu [nasazení vaší aplikace do služby App Service](app-service-deploy-local-git.md).
+Další informace najdete v tématu [nasazení aplikace do služby App Service](app-service-deploy-local-git.md).
 
-## <a name="i-see-an-error-message-when-i-try-to-deploy-from-visual-studio-how-do-i-resolve-this"></a>I při pokusu o nasazení ze sady Visual Studio zobrazí chybová zpráva. Jak to lze vyřešit?
+## <a name="i-see-an-error-message-when-i-try-to-deploy-from-visual-studio-how-do-i-resolve-this"></a>Při pokusu nasadit ze sady Visual Studio se zobrazit chybová zpráva. Jak to můžu vyřešit?
 
-Pokud se zobrazí následující zprávu, pravděpodobně používáte starší verze sady SDK: "při nasazení pro prostředek"YourResourceName"ve skupině prostředků 'YourResourceGroup' došlo k chybě: MissingRegistrationForLocation: předplatné není zaregistrované pro typ prostředku"součástmi"v umístění, střed USA". Zkuste se znovu zaregistrovat pro tohoto zprostředkovatele pro přístup do tohoto umístění." 
+Pokud se zobrazí následující zpráva, pravděpodobně používáte starší verzi sady SDK: "při nasazení pro prostředek"YourResourceName"ve skupině prostředků 'YourResourceGroup' došlo k chybě: MissingRegistrationForLocation: předplatné není zaregistrované pro Typ prostředku "součástí" umístění "USA". Přeregistrujte prosím tohoto zprostředkovatele. Pokud chcete mít přístup do tohoto umístění." 
 
-Chcete-li tuto chybu vyřešit, upgradujte na [nejnovější SDK](https://azure.microsoft.com/downloads/). Pokud se zobrazí tato zpráva a máte na nejnovější SDK, odešlete žádost o podporu.
+Pokud chcete tuto chybu vyřešit, upgradujte [nejnovější sadu SDK](https://azure.microsoft.com/downloads/). Pokud se zobrazí tato zpráva a máte nejnovější sadu SDK, odešlete žádost o podporu.
 
-## <a name="how-do-i-deploy-an-aspnet-application-from-visual-studio-to-app-service"></a>Nasazení aplikace ASP.NET v sadě Visual Studio do služby App Service
+## <a name="how-do-i-deploy-an-aspnet-application-from-visual-studio-to-app-service"></a>Nasazení aplikace ASP.NET ze sady Visual Studio do služby App Service
 <a id="deployasp"></a>
 
-Tento kurz [vytvořte první webové aplikace ASP.NET v Azure v pěti minutách](app-service-web-get-started-dotnet.md) ukazuje, jak nasadit webovou aplikaci ASP.NET do webové aplikace ve službě App Service pomocí Visual Studio 2017.
+Tento kurz [vytvoření vaší první webové aplikace ASP.NET v Azure během pěti minut](app-service-web-get-started-dotnet.md) ukazuje, jak nasadit webovou aplikaci ASP.NET do webové aplikace ve službě App Service pomocí sady Visual Studio 2017.
 
-## <a name="what-are-the-different-types-of-deployment-credentials"></a>Jaké jsou různé typy přihlašovací údaje pro nasazení?
+## <a name="what-are-the-different-types-of-deployment-credentials"></a>Jaké jsou různé druhy přihlašovací údaje pro nasazení?
 
-Služby App Service podporuje dva typy přihlašovací údaje pro místní nasazením Git a FTP/S. Další informace o tom, jak nakonfigurovat přihlašovací údaje pro nasazení najdete v tématu [nakonfigurovat přihlašovací údaje nasazení pro službu App Service](app-service-deployment-credentials.md).
+App Service podporuje dva typy přihlašovacích údajů pro místní nasazení přes Git a FTP/S nasazení. Další informace o tom, jak nakonfigurovat přihlašovací údaje pro nasazení najdete v tématu [nakonfigurovat přihlašovací údaje nasazení pro službu App Service](app-service-deployment-credentials.md).
 
-## <a name="what-is-the-file-or-directory-structure-of-my-app-service-web-app"></a>Co je soubor nebo adresář strukturu webová aplikace služby App Service?
+## <a name="what-is-the-file-or-directory-structure-of-my-app-service-web-app"></a>Co je soubor nebo adresář strukturu Moje webová aplikace App Service?
 
-Informace o struktuře souborů aplikace služby App Service najdete v tématu [struktura souboru v Azure](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure).
+Informace o struktuře souborů z aplikace app Service najdete v tématu [struktura souboru v Azure](https://github.com/projectkudu/kudu/wiki/File-structure-on-azure).
 
-## <a name="how-do-i-resolve-ftp-error-550---there-is-not-enough-space-on-the-disk-when-i-try-to-ftp-my-files"></a>Jak lze vyřešit, "Chyba FTP 550 - zde není dostatek místa na disku" při Moje soubory FTP?
+## <a name="how-do-i-resolve-ftp-error-550---there-is-not-enough-space-on-the-disk-when-i-try-to-ftp-my-files"></a>Jak můžu vyřešit, "FTP chyba 550 – tady není dostatek místa na disku" při pokusu serveru FTP soubory?
 
-Pokud se zobrazí tato zpráva, je pravděpodobné, že používáte do kvóty disku v plánu služby pro webovou aplikaci. Možná budete muset vertikálně navýšit kapacitu na vyšší úroveň služby, na základě potřeb místa na disku. Další informace o cenách plány a omezení prostředků najdete v tématu [služby App Service – ceny](https://azure.microsoft.com/pricing/details/app-service/).
+Pokud se zobrazí tato zpráva, je pravděpodobné, že používáte do disková kvóta v plánu služby pro vaši webovou aplikaci. Možná budete muset vertikálně navýšit kapacitu na vyšší úroveň služby na základě vašich potřeb místa na disku. Další informace o cenách plány a omezení prostředků, najdete v části [ceny služeb App Service](https://azure.microsoft.com/pricing/details/app-service/).
 
-## <a name="how-do-i-set-up-continuous-deployment-for-my-app-service-web-app"></a>Jak nastavit průběžné nasazování pro webovou aplikaci my služby App Service?
+## <a name="how-do-i-set-up-continuous-deployment-for-my-app-service-web-app"></a>Jak nastavit průběžné nasazování pro svou webovou aplikaci služby App Service?
 
-Můžete nastavit průběžné nasazování z několika zdrojů, včetně Visual Studio Team Services, OneDrive, Githubu, Bitbucket, Dropbox a další úložiště Git. Tyto možnosti jsou dostupné na portálu. [Průběžné nasazování do služby App Service](app-service-continuous-deployment.md) je užitečné kurz, který vysvětluje, jak nastavit průběžné nasazování.
+Můžete nastavit průběžné nasazování z několika zdrojů, včetně Azure DevOps, OneDrive, GitHub, Bitbucket, Dropbox a další úložiště Git. Tyto možnosti jsou dostupné na portálu. [Průběžné nasazování do služby App Service](app-service-continuous-deployment.md) je užitečný kurz, který vysvětluje, jak nastavit průběžné nasazování.
 
-## <a name="how-do-i-troubleshoot-issues-with-continuous-deployment-from-github-and-bitbucket"></a>Jak odstranit problémy s průběžné nasazování z Githubu a Bitbucket?
+## <a name="how-do-i-troubleshoot-issues-with-continuous-deployment-from-github-and-bitbucket"></a>Jak se řešení potíží s průběžným nasazováním z Githubu nebo Bitbucketu?
 
-Pomoc příčin problémů s průběžné nasazování z webu GitHub nebo Bitbucket, najdete v tématu [příčin průběžné nasazování](https://github.com/projectkudu/kudu/wiki/Investigating-continuous-deployment).
+Pomoc při zjišťování problémů s průběžným nasazováním z Githubu nebo Bitbucketu, naleznete v tématu [zkoumání průběžné nasazování](https://github.com/projectkudu/kudu/wiki/Investigating-continuous-deployment).
 
-## <a name="i-cant-ftp-to-my-site-and-publish-my-code-how-do-i-resolve-this"></a>I nelze FTP na mé lokality a publikování vlastní kód. Jak to lze vyřešit?
+## <a name="i-cant-ftp-to-my-site-and-publish-my-code-how-do-i-resolve-this"></a>Můžu nelze FTP na svém webu a publikování vlastní kód. Jak to můžu vyřešit?
 
-Chcete-li vyřešit problémy FTP:
+Chcete-li vyřešit problémy s FTP:
 
-1. Ověřte, že jste zadali správný hostitele název a pověření. Podrobné informace o různých typech přihlašovací údaje a jejich použití najdete v tématu [přihlašovací údaje nasazení](https://github.com/projectkudu/kudu/wiki/Deployment-credentials).
-2. Ověřte, že porty serveru FTP nejsou blokována bránou firewall. Porty musí mít tato nastavení:
+1. Ověřte, že zadáváte správný název hostitele a přihlašovací údaje. Podrobné informace o různých typů přihlašovacích údajů a jejich použití naleznete v tématu [přihlašovací údaje pro nasazení](https://github.com/projectkudu/kudu/wiki/Deployment-credentials).
+2. Ověřte, že FTP porty nejsou blokované bránou firewall. Porty by měl mít tato nastavení:
     * Port připojení řízení FTP: 21
-    * Port pro připojení FTP data: 989, 10001-10300
+    * Port připojení dat FTP: 989, 10001-10300
 
-## <a name="how-do-i-publish-my-code-to-app-service"></a>Jak publikovat vlastní kód do služby App Service?
+## <a name="how-do-i-publish-my-code-to-app-service"></a>Jak můžu publikovat svůj kód do služby App Service?
 
-Rychlý start Azure slouží k vám pomůžou nasadit aplikace pomocí nasazení zásobníku a metoda podle svého výběru. Chcete-li použít startu na portálu Azure, přejděte na **nastavení** > **nasazení aplikace**.
+Rychlý start Azure usnadňuje nasazení vaší aplikace pomocí balíčku nasazení a metody podle vašeho výběru. Pokud chcete pomocí rychlého startu, na webu Azure Portal, přejděte na **nastavení** > **nasazení aplikace**.
 
-## <a name="why-does-my-app-sometimes-restart-after-deployment-to-app-service"></a>Proč aplikace my někdy restartovat po nasazení do služby App Service?
+## <a name="why-does-my-app-sometimes-restart-after-deployment-to-app-service"></a>Proč Moje aplikace někdy restartování po nasazení do služby App Service?
 
-Další informace o podmínek, za kterých nasazení aplikace může způsobit restart najdete v tématu [nasazení oproti runtime problémy](https://github.com/projectkudu/kudu/wiki/Deployment-vs-runtime-issues#deployments-and-web-app-restarts"). Jak popisuje článek, služby App Service nasadí soubory do složky wwwroot. Nikdy přímo restartuje vaší aplikace.
+Další informace o okolnostech, za kterých nasazení aplikace může vést k restartování, najdete v článku [nasazení vs. problémy za běhu](https://github.com/projectkudu/kudu/wiki/Deployment-vs-runtime-issues#deployments-and-web-app-restarts"). Tento článek popisuje, jak služby App Service nasadí soubory do složky wwwroot. Nikdy přímo restartování vaší aplikace.
 
-## <a name="how-do-i-integrate-visual-studio-team-services-code-with-app-service"></a>Jak integrovat kódu Visual Studio Team Services službou App Service?
+## <a name="how-do-i-integrate-azure-devops-code-with-app-service"></a>Jak integrovat Azure DevOps kódu pomocí služby App Service?
 
-Máte dvě možnosti pro průběžné nasazování pomocí Visual Studio Team Services:
+Máte dvě možnosti pro průběžné nasazování pomocí Azure DevOps:
 
-*   Pomocí Git projektu. Připojte prostřednictvím služby App Service pomocí možnosti nasazení pro tento úložišti.
-*   Pomocí projektu Team Foundation verze ovládacího prvku (TFVC). Nasazení pomocí agenta sestavení pro službu App Service.
+*   Použití projektu Git. Připojení pomocí služby App Service s použitím možnosti nasazení pro tohoto úložiště.
+*   Použití projektu Team Foundation verze ovládacího prvku (TFVC). Nasazení pomocí agenta sestavení pro službu App Service.
 
-Nasazení průběžné kód pro obě tyto možnosti závisí na stávajících pracovními postupy developer a postupy vrácení se změnami. Další informace najdete v těchto článcích: 
+Nasazení průběžné kódu pro obě tyto možnosti závisí na stávajících pracovních postupů pro vývojáře a postupy k vrácení se změnami. Další informace najdete v těchto článcích: 
 
-*   [Implementace průběžné nasazování vaší aplikace na web Azure](https://www.visualstudio.com/docs/release/examples/azure/azure-web-apps-from-build-and-release-hubs)
-*   [Nastavit účet Visual Studio Team Services, můžete nasadit do webové aplikace](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App)
+*   [Implementaci nepřetržité nasazení vaší aplikace na web Azure](https://www.visualstudio.com/docs/release/examples/azure/azure-web-apps-from-build-and-release-hubs)
+*   [Nastavení Azure DevOps organizace, můžete nasadit do webové aplikace](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App)
 
-## <a name="how-do-i-use-ftp-or-ftps-to-deploy-my-app-to-app-service"></a>Jak používat protokol FTP nebo FTPS k nasazení aplikace do služby App Service?
+## <a name="how-do-i-use-ftp-or-ftps-to-deploy-my-app-to-app-service"></a>Jak použít FTP a FTPS nasadit aplikaci do služby App Service?
 
-Informace o použití FTP a FTPS k nasazení vaší webové aplikace do služby App Service najdete v tématu [nasazení vaší aplikace do služby App Service pomocí FTP nebo S](app-service-deploy-ftp.md).
+Informace o nasazení webové aplikace do služby App Service pomocí FTP a FTPS, naleznete v tématu [nasazení aplikace do služby App Service pomocí FTP/S](app-service-deploy-ftp.md).

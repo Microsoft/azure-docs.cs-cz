@@ -1,92 +1,93 @@
 ---
-title: "Nepřetržité monitorování vaší verze kanálu DevOps s služby VSTS a Azure Application Insights | Microsoft Docs"
-description: "Poskytuje pokyny k rychlému nastavení nepřetržitého monitorování pomocí Application Insights"
+title: Průběžné monitorování kanálu pro vydávání verzí DevOps s Azure DevOps a Azure Application Insights | Dokumentace Microsoftu
+description: Obsahuje pokyny pro rychlé nastavení nepřetržitého monitorování pomocí Application Insights
 services: application-insights
-keywords: 
+keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 11/13/2017
 ms.service: application-insights
-ms.topic: article
+ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5bfbdd0033f966422a84071a694845627827f016
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: ecda8621640223f1c27f32834f2e4a098da4aba6
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44301616"
 ---
-# <a name="add-continuous-monitoring-to-your-release-pipeline"></a>Přidat nepřetržité monitorování do kanálu verze
+# <a name="add-continuous-monitoring-to-your-release-pipeline"></a>Přidání průběžného monitorování do kanálu pro vydávání verzí
 
-Visual Studio Team Services (VSTS) se integruje s Azure Application Insights umožňuje nepřetržité monitorování vaší verze kanálu DevOps v průběhu životního cyklu softwaru. 
+Služby Azure DevOps se integruje s Azure Application Insights a povolit průběžné monitorování kanálu pro vydávání verzí DevOps v průběhu životního cyklu vývoje softwaru. 
 
-Služby VSTS teď podporuje nepřetržité monitorování, jímž kanálů verze můžete začlenit data monitorování z Application Insights a dalším prostředkům služby Azure. Když se detekuje výstrahu Application Insights, nasazení může zůstat ověřovaného vrácení nebo vrácena zpět, dokud výstraha vyřeší. Pokud všechny kontroly skončí úspěchem, nasazení můžete pokračovat automaticky z testu úplně do produkčního prostředí bez nutnosti ruční zásah. 
+Nepřetržité monitorování zajišťovaný kanály verzí můžete začlenit data monitorování z Application Insights a další prostředky Azure teď podporuje služby Azure DevOps. Při zjištění výstrahu Application Insights nasazení může zůstat ověřované nebo vrácena zpět, dokud výstraha vyřeší. Pokud všechny kontroly úspěšně prošel zpracováním, nasazení můžete přejít automaticky z testu úplně přenést do produkčního prostředí bez nutnosti ručního zásahu. 
 
 ## <a name="configure-continuous-monitoring"></a>Nakonfigurovat nepřetržité monitorování
 
-1. Vyberte existující projekt služby VSTS.
+1. Vyberte existující projekt Azure DevOps služby.
 
-2. Pozastavte ukazatel myši nad **sestavení a verze** > vyberte **verze** > klikněte na tlačítko **znaménko plus** > **vytvořit verze definice** > Vyhledejte **monitorování** > **nasazení služby Azure App Service pomocí nepřetržité monitorování.**
+2. Najeďte myší na **sestavení a vydání** > vyberte **verze** > klikněte na tlačítko **znaménko plus** > **definice vydané verze vytvořit** > Vyhledejte **monitorování** > **nasazení služby Azure App Service pomocí nepřetržité monitorování.**
 
-   ![Nová verze definice služby VSTS](.\media\app-insights-continuous-monitoring\001.png)
+   ![Nový kanál pro vydávání verzí služby Azure DevOps](.\media\app-insights-continuous-monitoring\001.png)
 
 3. Klikněte na tlačítko **použít.**
 
-4. Vedle červeného vykřičníku vyberte text modře k **zobrazit úlohy prostředí.**
+4. Vedle červeného vykřičníku vyberte text modrou barvu na **zobrazit úlohy prostředí.**
 
    ![Úlohy v zobrazení prostředí](.\media\app-insights-continuous-monitoring\002.png)
 
-   Zobrazí se pole konfigurace, použijte v následující tabulce k vyplnění vstupních polí.
+   Konfigurační pole se zobrazí, použijte následující tabulku k vyplnění vstupních polí.
 
     | Parametr        | Hodnota |
    | ------------- |:-----|
-   | **Název prostředí**      | Název, který popisuje prostředí definice verze |
-   | **Předplatné Azure** | Rozevírací seznam se naplní s kterýkoli odběr služby Azure propojí s účtem služby VSTS|
-   | **Název služby App Service** | Ruční zadání nová hodnota může být nutný pro toto pole v závislosti na jiných výběr |
-   | **Skupina prostředků**    | Rozevírací seznam se naplní s dostupných skupin prostředků |
-   | **Název prostředku Application Insights** | Rozevírací seznam se naplní ke všem prostředkům Application Insights, které odpovídají dříve vybrané skupiny prostředků.
+   | **Název prostředí**      | Název, který popisuje kanálu prostředí vydané verze |
+   | **Předplatné Azure** | Rozevírací seznam se naplní žádná předplatná Azure, propojené s organizační služby Azure DevOps|
+   | **Název služby App Service** | Ruční zadání nové hodnoty mohou být potřebné pro toto pole v závislosti na jiné výběry |
+   | **Skupina prostředků**    | Naplní rozevírací seznam dostupných skupin prostředků |
+   | **Název prostředku Application Insights** | Rozevírací seznam se naplní všechny prostředky Application Insights, které odpovídají dříve vybraná skupina prostředků.
 
-5. Vyberte **výstrahy konfigurovat Application Insights**
+5. Vyberte **výstrah nakonfigurovat Application Insights**
 
-6. Výchozí pravidla výstrah, vyberte **Uložit** > zadejte komentář > klikněte na tlačítko **OK**
+6. Výchozí pravidla upozornění, vyberte **Uložit** > zadejte popisný komentář > klikněte na tlačítko **OK**
 
-## <a name="modify-alert-rules"></a>Upravit pravidla výstrah
+## <a name="modify-alert-rules"></a>Úprava pravidla výstrah
 
-1. Chcete-li upravit předdefinovaná nastavení výstrah, klikněte na pole s **výpustky...**  napravo od **pravidla výstrah.**
+1. Pokud chcete upravit předdefinované nastavení výstrah, klikněte na pole s **symbol tří teček...**  napravo od **pravidla upozornění.**
 
-   (Out-of-box čtyři pravidla výstrah, které se nacházejí: dostupnost, neúspěšných žádostí, doba odezvy serveru, serveru výjimkami.)
+   (Out-of-box čtyři pravidla upozornění jsou k dispozici: dostupnost, neúspěšné požadavky, doba odezvy serveru, výjimky serveru.)
 
 2. Kliknutím na symbol rozevíracího seznamu vedle **dostupnosti.**
 
-3. Úprava dostupnost **prahová hodnota** pro splnění požadavků na úrovni služby.
+3. Změnit dostupnost **prahová hodnota** pro splnění požadavků na úrovni služby.
 
-   ![Upravit výstrahu](.\media\app-insights-continuous-monitoring\003.png)
+   ![Upravit upozornění](.\media\app-insights-continuous-monitoring\003.png)
 
-4. Vyberte **OK** > **Uložit** > zadejte komentář > klikněte na tlačítko **OK.**
+4. Vyberte **OK** > **Uložit** > zadejte popisný komentář > klikněte na tlačítko **OK.**
 
 ## <a name="add-deployment-conditions"></a>Přidání podmínek nasazení
 
-1. Klikněte na tlačítko **kanálu** > vyberte **před** nebo **po nasazení podmínky** symbol v závislosti na fázi, která vyžaduje bránu průběžné monitorování.
+1. Klikněte na tlačítko **kanálu** > vyberte **Pre** nebo **po nasazení podmínek** symbolu v závislosti na fázi, která vyžaduje bránu průběžné monitorování.
 
    ![Před nasazením podmínky](.\media\app-insights-continuous-monitoring\004.png)
 
-2. Nastavit **brány** k **povoleno** > **schválení brány**> klikněte na tlačítko **přidat.**
+2. Nastavte **brány** k **povoleno** > **schválení brány**> klikněte na tlačítko **přidat.**
 
-3. Vyberte **Azure monitorování** (Tato možnost vám dává možnost na výstrahy přístup jak z monitorování Azure a Application Insights)
+3. Vyberte **Azure Monitor** (Tato možnost vám dává možnost na výstrahy přístup i z Azure monitoru a Application Insights)
 
     ![Azure Monitor](.\media\app-insights-continuous-monitoring\005.png)
 
-4. Zadejte **vypršení časového limitu brány** hodnotu.
+4. Zadejte **časový limit brány** hodnotu.
 
 5. Zadejte **Interval vzorkování.**
 
-## <a name="deployment-gate-status-logs"></a>Protokoly stav nasazení brány
+## <a name="deployment-gate-status-logs"></a>Protokoly brány stav nasazení
 
-Po přidání brány nasazení je výstraha ve službě Application Insights, který přesahuje vaší dříve definovanou prahovou hodnotu, chrání vaše nasazení z nežádoucí verze povýšení. Po vyřešení výstrahy nasazení můžete pokračovat automaticky.
+Po přidání brány nasazení upozornění ve službě Application Insights, překračuje dříve definovanou prahovou hodnotu, chrání vaše nasazení z nežádoucí vydání povýšení. Po vyřešení výstrahy nasazení automaticky pokračovat.
 
-Toto chování zachovávají, vyberte **verze** > vydání klikněte pravým tlačítkem na název **otevřete** > **protokoly.**
+Chcete-li sledovat toto chování, vyberte **verze** > verze klikněte pravým tlačítkem na název **otevřete** > **protokoly.**
 
 ![Logs](.\media\app-insights-continuous-monitoring\006.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-Další informace o vytvoření služby VSTS a verzi vyzkoušet [– elementy quickstart.](https://docs.microsoft.com/vsts/build-release/)
+Další informace o kanálech Azure si je vyzkoušet [šablon rychlý start.](https://docs.microsoft.com/azure/devops/pipelines)

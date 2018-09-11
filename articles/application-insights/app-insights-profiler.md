@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 6048a17bf50ecac691c7cf687f87e454c54ee9d9
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 790d192823867ee858a7fa6bf030721002a6bd94
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521879"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44296869"
 ---
 # <a name="profile-live-azure-web-apps-with-application-insights"></a>Profilování živých webových aplikací Azure pomocí Application Insights
 
@@ -204,7 +204,7 @@ Pokud nasazujete webovou aplikaci do prostředku webové aplikace s Profiler pov
 
 *Adresář není prázdný ' D:\\domácí\\lokality\\wwwroot\\App_Data\\úloh.*
 
-K této chybě dochází při spuštění nasazení webu pomocí skriptů nebo z kanálu nasazení služby Visual Studio Team Services. Řešením je přidat následující parametry další nasazení do úlohy nasazení webu:
+K této chybě dochází při spuštění nasazení webu pomocí skriptů nebo z kanálu nasazení Azure DevOps. Řešením je přidat následující parametry další nasazení do úlohy nasazení webu:
 
 ```
 -skip:Directory='.*\\App_Data\\jobs\\continuous\\ApplicationInsightsProfiler.*' -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data\\jobs\\continuous$' -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data\\jobs$'  -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data$'

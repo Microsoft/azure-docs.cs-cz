@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 90b5009b3b260a0f4245459467ae248f800ad818
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 18e4adb47ecf8e6d44edea873a4b3cc73492b273
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094531"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44301479"
 ---
 # <a name="how-to-manage-a-function-app-in-the-azure-portal"></a>Správa aplikace function app na webu Azure Portal 
 
@@ -111,7 +111,7 @@ Další informace o tom, jak pracovat s nastavením služby App Service najdete 
 
 | | |
 |-|-|
-| ![Možnosti nasazení aplikace funkcí na webu Azure Portal](./media/functions-how-to-use-azure-function-app-settings/function-app-deployment-source.png) | Funkce vám umožní vyvíjet kódu funkce v místním počítači. Pak můžete nahrát projektu lokální funkce aplikace do Azure. Kromě tradičních nahrání přes protokol FTP funkce vám umožní nasadit aplikaci function app pomocí oblíbených průběžnou integraci řešení, jako jsou GitHub, VSTS, Dropbox, Bitbucket a dalších. Další informace najdete v tématu [průběžné nasazování pro službu Azure Functions](functions-continuous-deployment.md). Nahrát ručně pomocí FTP a místního Gitu, je také nutné [nakonfigurujete své přihlašovací údaje nasazení](functions-continuous-deployment.md#credentials). |
+| ![Možnosti nasazení aplikace funkcí na webu Azure Portal](./media/functions-how-to-use-azure-function-app-settings/function-app-deployment-source.png) | Funkce vám umožní vyvíjet kódu funkce v místním počítači. Pak můžete nahrát projektu lokální funkce aplikace do Azure. Kromě tradičních nahrání přes protokol FTP funkce vám umožní nasadit aplikaci function app pomocí oblíbených průběžnou integraci řešení, jako jsou GitHub, Azure DevOps, Dropbox, Bitbucket nebo jiné. Další informace najdete v tématu [průběžné nasazování pro službu Azure Functions](functions-continuous-deployment.md). Nahrát ručně pomocí FTP a místního Gitu, je také nutné [nakonfigurujete své přihlašovací údaje nasazení](functions-continuous-deployment.md#credentials). |
 
 
 ### <a name="cors"></a>CORS

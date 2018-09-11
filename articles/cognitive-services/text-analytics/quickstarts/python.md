@@ -1,6 +1,7 @@
 ---
-title: Python rychlý úvodní kurz pro Azure kognitivní služby, analýza textu rozhraní API | Microsoft Docs
-description: Get informace a ukázky kódu můžete rychle začít používat rozhraní API Analytics Text v kognitivní služby společnosti Microsoft na platformě Azure.
+title: 'Rychlý start: Volání rozhraní Text Analytics API pomocí Pythonu | Dokumentace Microsoftu'
+titleSuffix: Azure Cognitive Services
+description: Získat informace a ukázky kódu můžete rychle začít používat rozhraní API pro analýzu textu ve službě Microsoft Cognitive Services v Azure.
 services: cognitive-services
 author: ashmaka
 ms.service: cognitive-services
@@ -8,31 +9,31 @@ ms.component: text-analytics
 ms.topic: article
 ms.date: 05/02/2018
 ms.author: ashmaka
-ms.openlocfilehash: b4c02767320b71912050ad511811767e6b5decf4
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 8e570aac2c2d89a8147d179c4b0f9155497c5188
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342809"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44298688"
 ---
-# <a name="quickstart-for-text-analytics-api-with-python"></a>Rychlý start pro Analýza textu rozhraní API s Pythonem 
+# <a name="quickstart-using-python-to-call-the-text-analytics-cognitive-service"></a>Rychlý start: Použití Pythonu k volání Text Analytics služby Cognitive Services
 <a name="HOLTop"></a>
 
-Tento návod ukazuje, jak k [zjistit jazyk](#Detect), [analyzovat postojích](#SentimentAnalysis), a [extrahovat klíče frází](#KeyPhraseExtraction) pomocí [rozhraní API Analytics Text](//go.microsoft.com/fwlink/?LinkID=759711)s Python.
+Tento návod ukazuje, jak k [rozpoznání jazyka](#Detect), [analýza sentimentu](#SentimentAnalysis), a [extrakce klíčových frází](#KeyPhraseExtraction) pomocí [rozhraní Text Analytics API](//go.microsoft.com/fwlink/?LinkID=759711)pomocí Pythonu.
 
-V tomto příkladu můžete spustit jako poznámkového bloku Jupyter na [MyBinder](https://mybinder.org) kliknutím na spuštění vazač oznámení: 
+Tento příklad lze spustit jako poznámkového bloku Jupyter [MyBinder](https://mybinder.org) kliknutím na spustit vazače označení: 
 
 [![Vazač](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=TextAnalytics.ipynb)
 
-Odkazovat [definice rozhraní API](//go.microsoft.com/fwlink/?LinkID=759346) pro technická dokumentace k rozhraní API.
+Odkazovat [definice rozhraní API](//go.microsoft.com/fwlink/?LinkID=759346) technickou dokumentaci pro rozhraní API.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Musíte mít [kognitivní rozhraní API služby účet](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s **Text Analytics API**. Můžete použít **úroveň free pro 5 000 transakce za měsíc** k dokončení tohoto postupu.
+Musíte mít [účet rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s **rozhraní Text Analytics API**. Můžete použít **bezplatná úroveň 5 000 transakcí za měsíc** k dokončení tohoto návodu.
 
-Je také nutné mít [koncový bod a přístupový klíč](../How-tos/text-analytics-how-to-access-key.md) který byl vygenerován pro vás během registrace. 
+Je také nutné mít [koncový bod a přístupový klíč](../How-tos/text-analytics-how-to-access-key.md) , která byla vygenerována během registrace. 
 
-Chcete-li pokračovat v tomto průvodci, nahraďte `subscription_key` s klíčem platné předplatné, který jste dříve získali.
+Chcete-li pokračovat s tímto názorným postupem, nahraďte `subscription_key` s platným předplatným klíčem, který jste získali dříve.
 
 
 ```python
@@ -40,7 +41,7 @@ subscription_key = None
 assert subscription_key
 ```
 
-Dále ověřte, že oblast v `text_analytics_base_url` odpovídá jste použili při nastavení služby. Pokud používáte bezplatné zkušební verze klíč, není potřeba nic nezmění.
+Dále ověřte, že v oblasti `text_analytics_base_url` odpovídá ten, který jste použili při nastavení služby. Pokud používáte bezplatné zkušební verze klíče, není potřeba nic měnit.
 
 
 ```python
@@ -49,9 +50,9 @@ text_analytics_base_url = "https://westcentralus.api.cognitive.microsoft.com/tex
 
 <a name="Detect"></a>
 
-## <a name="detect-languages"></a>Zjištění jazyky
+## <a name="detect-languages"></a>Rozpoznávání jazyků
 
-Rozhraní API jazyka detekce zjistí jazyk textového dokumentu, pomocí [metoda zjistit jazyk](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7). Koncový bod služby zjišťování rozhraní API jazyka pro vaši oblast je k dispozici prostřednictvím na následující adrese URL:
+Rozhraní API pro detekci jazyk zjistí jazyk textu dokumentu, pomocí [rozpoznat jazyk metoda](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7). Koncový bod služby detekce jazyka rozhraní API pro vaši oblast je k dispozici prostřednictvím následující adresy URL:
 
 
 ```python
@@ -62,9 +63,9 @@ print(language_api_url)
     https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.0/languages
 
 
-Datová část rozhraní API se skládá z seznam `documents`, každý z zase obsahující `id` a `text` atribut. `text` Úložišť atributů text, který má být analyzován. 
+Datová část rozhraní API se skládá ze seznamu `documents`, každý z zase obsahující `id` a `text` atribut. `text` Úložišť atributů text, který má být analyzován. 
 
-Nahraďte `documents` slovníku u jakéhokoli jiného textu zjišťování jazyka. 
+Nahradit `documents` slovník s jakýkoli jiný text pro rozpoznání jazyka. 
 
 
 ```python
@@ -75,7 +76,7 @@ documents = { 'documents': [
 ]}
 ```
 
-Další několika řádků kódu vyvolávající pomocí zjišťování rozhraní API jazyka `requests` knihovny v Pythonu Určuje jazyk, v dokumentech.
+Další několika řádků kódu vyžadují použití rozhraní API pro detekci jazyka `requests` knihovny v jazyce Python se určit jazyk v dokumentech.
 
 
 ```python
@@ -102,7 +103,7 @@ pprint(languages)
      'errors': []}
 
 
-Následující řádky kódu vykreslují JSON data jako tabulky HTML.
+Následující řádky kódu vykreslit JSON data jako tabulku HTML.
 
 
 ```python
@@ -119,9 +120,9 @@ HTML("<table><tr><th>Text</th><th>Detected languages(scores)</th></tr>{0}</table
 
 ## <a name="analyze-sentiment"></a>Analýza mínění
 
-Rozhraní API Analysis postojích detexts postojích sadu záznamů text, pomocí [postojích metoda](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9). Následující příklad skóre dva dokumenty, jeden v angličtině a druhý ve španělštině.
+Rozhraní API pro analýzu mínění detexts mínění sadu záznamů text, použití [mínění metoda](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9). Následující příklad stanoví skóre dva dokumenty, jednu v angličtině a druhý ve španělštině.
 
-Koncový bod služby pro analýzu postojích je k dispozici pro vaši oblast prostřednictvím na následující adrese URL:
+Koncový bod služby pro analýzu mínění je k dispozici pro vaši oblast prostřednictvím následující adresy URL:
 
 
 ```python
@@ -132,7 +133,7 @@ print(sentiment_api_url)
     https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment
 
 
-Jako příklad detekce jazyk, je služba poskytována s slovník s `documents` klíč, který se skládá z seznam dokumenty. Každý dokument je tvořený řazené kolekce členů `id`, `text` má být analyzován a `language` textu. Zjišťování jazyka rozhraní API z předchozí části můžete použít k naplnění tohoto pole. 
+Jako v příkladu detekce jazyka služby je součástí slovníku pomocí `documents` klíč, který se skládá ze seznamu dokumentů. Každý dokument je řazená kolekce členů skládající se z `id`, `text` má být analyzován a `language` textu. Rozhraní API pro detekci jazyka v předchozí části můžete použít k naplnění tohoto pole. 
 
 
 ```python
@@ -144,7 +145,7 @@ documents = {'documents' : [
 ]}
 ```
 
-Postojích rozhraní API můžete teď používat k analýze v dokumentech jejich chráněny.
+Mínění rozhraní API můžete teď použít k analýze dokumentů pro jejich mínění.
 
 
 ```python
@@ -160,15 +161,15 @@ pprint(sentiments)
      'errors': []}
 
 
-Postojích skóre pro dokument je od 0 $$ $ $1, s vyšší skóre označuje více kladné postojích.
+Skóre mínění v dokumentu je až 0 $$ $1$ s vyšší skóre označuje další pozitivní mínění.
 
 <a name="KeyPhraseExtraction"></a>
 
 ## <a name="extract-key-phrases"></a>Extrakce klíčových frází
 
-Rozhraní API extrakce frázi klíč extrahuje frází klíč z textového dokumentu, pomocí [klíč frází metoda](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6). Tato část průvodce extrahuje klíče frází pro angličtinu a slovenštinu dokumenty.
+Rozhraní API Key frázi extrakci extrahuje klíčových frází z textu dokumentu, pomocí [klíčových frází metoda](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6). Tato část návodu extrahuje klíčových frází pro angličtinu a slovenštinu dokumenty.
 
-Koncový bod služby pro službu klíč frázi extrakce přistupuje prostřednictvím na následující adrese URL:
+Koncový bod služby pro službu extrakce klíčových frází – to se přistupuje prostřednictvím následující adresy URL:
 
 
 ```python
@@ -179,7 +180,7 @@ print(key_phrase_api_url)
     https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases
 
 
-Kolekce dokumentů je stejný jako který byl použit pro analýzu postojích.
+Kolekce dokumentů je stejný jako jste použili pro analýzu mínění.
 
 
 ```python
@@ -205,7 +206,7 @@ pprint(key_phrases)
     }
 
 
-Objekt JSON, které lze znovu vykreslit jako tabulky HTML pomocí následující řádky kódu:
+Objekt JSON lze vykreslit znovu jako tabulku HTML pomocí následující řádky kódu:
 
 
 ```python
@@ -218,11 +219,11 @@ for document in key_phrases["documents"]:
 HTML("<table><tr><th>Text</th><th>Key phrases</th></tr>{0}</table>".format("\n".join(table)))
 ```
 
-## <a name="identify-linked-entities"></a>Identifikovat propojených entit
+## <a name="identify-linked-entities"></a>Identifikujte propojených entit
 
-Rozhraní API propojení entita identifikuje dobře známé entity v textového dokumentu, pomocí [Entity propojení metoda](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634). Následující příklad určuje entity pro angličtinu dokumenty.
+Rozhraní Entity Linking API identifikuje dobře známé entity v textu dokumentu, pomocí [propojování entit metoda](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634). Následující příklad určuje entity pro anglickou dokumenty.
 
-Koncový bod služby pro službu serveru linking entity přistupuje prostřednictvím na následující adrese URL:
+Koncový bod služby pro propojení služby entity se přistupuje prostřednictvím následující adresy URL:
 
 
 ```python
@@ -233,7 +234,7 @@ print(entity_linking_api_url)
     https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.0/entities
 
 
-Zde je kolekce dokumentů:
+Kolekce dokumentů je nižší než:
 
 
 ```python
@@ -243,7 +244,7 @@ documents = {'documents' : [
 ]}
 ```
 
-Nyní dokumenty nelze odesílat do rozhraní API Analytics Text pro příjem odpovědi.
+Teď se dokumenty můžete odeslat k rozhraní Text Analytics API pro příjem odpovědi.
 
 ```python
 headers   = {"Ocp-Apim-Subscription-Key": subscription_key}
@@ -311,9 +312,9 @@ entities = response.json()
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Analýza textu pomocí Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
+> [Analýza textu s využitím Power BI](../tutorials/tutorial-power-bi-key-phrases.md)
 
 ## <a name="see-also"></a>Další informace najdete v tématech 
 
  [Přehled analýzy textu](../overview.md)  
- [Nejčastější dotazy (FAQ)](../text-analytics-resource-faq.md)
+ [Nejčastější dotazy](../text-analytics-resource-faq.md)
