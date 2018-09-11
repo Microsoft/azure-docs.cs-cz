@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/11/18
 ms.author: lizross
 ms.reviewer: asteen
-ms.openlocfilehash: e382f53678806aa3442151703277c3a57bb30830
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 2e74e45761a2f21c522f80d453da48948e17de58
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43302273"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347746"
 ---
 # <a name="what-is-the-myapps-portal"></a>Co je na portálu MyApps?
 
@@ -109,16 +109,6 @@ Tým služby Azure Active Directory publikuje Moje aplikace z mobilní aplikace.
 
 > [!NOTE]
 > Můžete přihlásit k aplikacím, které podporují federace s Azure AD (včetně Salesforce, Google Apps, Dropbox, Box, Concur, Workday, Office 365 a více než 70 ostatní) na prakticky libovolného webového prohlížeče na libovolném zařízení a bez nutnosti modul plug-in nebo mobilní aplikace. K použití v mobilních zařízení, druhý [prostředí portálu MyApps](https://myapps.microsoft.com/) také nevyžadují Moje aplikace z mobilní aplikace.
->
->
-
-### <a name="my-apps-for-android"></a>Moje aplikace pro Android
-
-Moje aplikace pro Android se podporuje na jakékoli zařízení s Androidem, na kterém běží Android verze 4.1 nebo novější.  
-
-Je k dispozici na [obchodu Google Play](https://play.google.com/store/apps/details?id=com.microsoft.myapps).
-
-![Moje aplikace pro Android][3]   
 
 ### <a name="my-apps-for-iphone-and-ipad"></a>Moje aplikace pro iPhone a iPad
 
@@ -129,13 +119,13 @@ Je k dispozici na [Apple App Store](https://itunes.apple.com/us/app/my-apps-azur
 ![Moje aplikace pro iOS][4]    
 
 
-## <a name="managed-browser-for-my-apps"></a>Spravovaný prohlížeč pro Moje aplikace
+## <a name="intune-managed-browser-for-my-apps"></a>Intune Managed Browser pro mé aplikace
 
-Moje aplikace je integrovaná taky s Intune Managed Browser. Intune Managed Browser pro iOS a androidem hrají klíčovou roli v pomáhá zajistit, že data na mobilních zařízeních zůstane v bezpečí. Prohlížeč umožňuje bezpečně a přejděte na webové stránky, které může obsahovat informace o společnosti, a pomáhá poskytovat zabezpečené procházení webu.  
+Moje aplikace je integrovaná taky s Intune Managed Browser. Intune Managed Browser pro iOS a androidem vám umožní bezpečněji a přejděte na webové stránky, které může obsahovat informace o společnosti, a usnadnit tak poskytovat bezpečnější prostředí procházení webu.  
 
-Získáte rychlý přístup k Moje aplikace na domovské stránce Managed Browser a ve své záložky, tak, aby byly potřeba dosáhnout na jakékoli aplikace, kterou chcete získat přístup k méně kliknutí.
+Můžete získat na Moje aplikace i na domovské stránce Managed Browser a ze své záložky, což znamená, že existují šestnáct kliknutí potřebné k dosažení vašich aplikací.
 
-Intune Managed Browser je k dispozici na [Apple App Store](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8) a [Google Play Store](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser&hl=en).
+Intune Managed Browser je k dispozici na [Apple App Store](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8) a [Google Play Store](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser).
 
 ![Spravovaný prohlížeč pro Moje aplikace][5]    
 
@@ -216,11 +206,10 @@ Například pokud aplikace je nakonfigurovaná k ověřování uživatelů pomoc
  
 - Další informace o správě aplikací s Azure AD, najdete v článku [Úvod jednotné přihlašování a správu přístupu k aplikacím v Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
  
-- Další informace o zřizování uživatelů najdete v tématu [automatizace zřizování uživatelů a jeho rušení pro aplikace SaaS](../active-directory-saas-app-provisioning.md).
+- Další informace o zřizování uživatelů najdete v tématu [automatizace zřizování uživatelů a jeho rušení pro aplikace SaaS](../manage-apps/user-provisioning.md).
 
 <!--Image references-->
 [1]: ./media/active-directory-saas-access-panel-introduction/01.png
 [2]: ./media/active-directory-saas-access-panel-introduction/02.png
-[3]: ./media/active-directory-saas-access-panel-introduction/03.png
 [4]: ./media/active-directory-saas-access-panel-introduction/04.png
 [5]: ./media/active-directory-saas-access-panel-introduction/05.png

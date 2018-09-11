@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/05/2018
 ms.author: brenduns
 ms.reviewer: jiahan
-ms.openlocfilehash: a2ad07809963560b1225ff07b095509c93618996
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 26f8880d01da00780317ee2a6f66ee5007576a50
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44160417"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347660"
 ---
 # <a name="azure-stack-managed-disks-differences-and-considerations"></a>Azure Managed Disks zásobníku: Rozdíly a aspekty
 Tento článek shrnuje známé rozdíly mezi Azure Stack Managed Disks a Managed Disks pro Azure. Další informace o základní rozdíly mezi Azure Stack a Azure, najdete v článku [klíče aspekty](azure-stack-considerations.md) článku.
@@ -38,7 +38,7 @@ Spravované disky zjednodušují správu disků pro virtuální počítače IaaS
 |Možnosti zotavení po havárii |Podpora Azure Site Recovery |Není dosud podporován.|
 |Typy disků     |Premium SSD, SSD na úrovni Standard (Preview) a Standard pevný disk |Premium SSD, Standard HDD |
 |Disky Premium  |Plně podporované. |Je možné zřídit, ale bez omezení výkonu nebo záruk  |
-|Disky Premium  |Vstupně-výstupních operací  |Závisí na velikosti 2300 IOPs na disk na disku |
+|Prémiové disky vstupně-výstupních operací  |Závisí na velikosti disku  |2300 IOPs na disk |
 |Propustnost disků úrovně Premium |Závisí na velikosti disku |145 MB za sekundu na disk |
 |Maximální velikost disku  |4 TB       |1 TB       |
 |Výkon disků analýzy |Agregace metrik a metriky pro disk podporované |Není dosud podporován. |

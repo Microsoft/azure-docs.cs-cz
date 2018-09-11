@@ -7,14 +7,14 @@ manager: carmonm
 keywords: zálohy. zálohování;
 ms.service: backup
 ms.topic: conceptual
-ms.date: 6/21/2018
+ms.date: 9/10/2018
 ms.author: markgal
-ms.openlocfilehash: 40a83b93443ebe1482f89a114505a1ba27b93bd2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: dc9d7b924f51fb3a4e9662dfa7ad4b9557b481bc
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39445739"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346997"
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>Příprava prostředí pro zálohování virtuálních počítačů s nasazením Resource Manageru
 
@@ -46,6 +46,7 @@ Pokud tyto podmínky se již existují ve vašem prostředí, pokračujte [zálo
 ## <a name="limitations-when-backing-up-and-restoring-a-vm"></a>Omezení při zálohování a obnovení virtuálního počítače
 Předtím, než je připravit vaše prostředí, nezapomeňte seznámit s těmito omezeními:
 
+* Zálohování virtuálních počítačů s SSD na úrovni Standard se momentálně nepodporuje.
 * Zálohování virtuálních počítačů s více než 16 datových disků se nepodporuje.
 * Zálohování virtuálních počítačů s vyhrazenou IP adresu a není definovaný koncový bod se nepodporuje.
 * Zálohování virtuálních počítačů s Linuxem zašifrovaná pomocí šifrování na Linuxu Unified klíč instalační program (LUKS) se nepodporuje.

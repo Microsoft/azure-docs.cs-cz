@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 07/19/2018
+ms.date: 09/10/2018
 ms.author: cherylmc
-ms.openlocfilehash: d89463826cb05bf4cafd36cf4a38e60852d93094
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 34d84a27406f0ebabd7bca576ee443da1d0c9bcd
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42058636"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44348800"
 ---
 # <a name="about-virtual-network-gateways-for-expressroute"></a>O branách virtuálních sítí pro ExpressRoute
 Bránu virtuální sítě slouží k posílání síťového provozu mezi virtuálními sítěmi Azure a místními umístěními. Můžete použít virtuální síťová brána lze použít pro provoz ExpressRoute nebo VPN provoz. Tento článek se týká bran virtuální sítě ExpressRoute.
@@ -31,7 +31,7 @@ Každá virtuální síť může mít pouze jednu bránu virtuální sítě pro 
 ## <a name="gwsku"></a>SKU brány
 [!INCLUDE [expressroute-gwsku-include](../../includes/expressroute-gwsku-include.md)]
 
-Pokud chcete provést upgrade brány na výkonnější skladové položky brány, ve většině případů můžete použít rutinu Powershellu "Změna velikosti-AzureRmVirtualNetworkGateway". To bude fungovat pro upgrade na Standard a HighPerformance SKU. Pokud chcete upgradovat na UltraPerformance SKU, musíte však znovu vytvořte bránu.
+Pokud chcete provést upgrade brány na výkonnější skladové položky brány, ve většině případů můžete použít rutinu Powershellu "Změna velikosti-AzureRmVirtualNetworkGateway". To bude fungovat pro upgrade na Standard a HighPerformance SKU. Pokud chcete upgradovat na UltraPerformance SKU, musíte však znovu vytvořte bránu. Opětovné vytvoření brány způsobí výpadek.
 
 ### <a name="aggthroughput"></a>Odhadované výkonů podle SKU brány
 Následující tabulka ukazuje typy brány a odhadovanou funkční. Tato tabulka platí pro model nasazení Resource Manager i pro klasický model.

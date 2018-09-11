@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 91ed29b100e0fab0f0e386f771dc6f71d7b424c6
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 7b1f937a71a0ff5b8030c922073dc463af3c8430
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44163409"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44349258"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines, plánování a implementace SAP NetWeaver
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -1921,6 +1921,7 @@ Následující konstrukce Azure se používají pro systém SAP NetWeaver k mini
 * Celý systém běží v rámci jednoho předplatného Azure (povinné).
 * Celý systém běží v rámci jedné virtuální sítě Azure (povinné).
 * I přes všechny virtuální počítače, které patří do stejné virtuální síti je možné oddělit virtuální počítače z jednoho systému SAP do tří skupin dostupnosti.
+* Každá vrstva (například systému DBMS, ASCS, aplikační servery) musíte použít vyhrazenou skupinu dostupnosti.
 * Všechny virtuální počítače spuštěné instance jednoho systému SAP DBMS jsou v jedné skupiny dostupnosti. Předpokládáme, že je více než jeden virtuální počítač s instancí DBMS na systému od nativní vysoké dostupnosti DBMS, které se používají funkce, jako je SQL Server AlwaysOn nebo Oracle Data Guard.
 * Všechny virtuální počítače se systémem DBMS instance použít svůj vlastní účet úložiště. Systém DBMS data a soubory protokolů se replikují z jednoho účtu úložiště do jiného účtu úložiště pomocí funkcí DBMS vysoké dostupnosti, které se synchronizují data. Nedostupnost jeden účet úložiště způsobí nedostupnost jednoho uzlu clusteru SQL Windows, ale ne celou službu systému SQL Server.
 * Všechny virtuální počítače spuštěné instanci (A) SCS jednoho systému SAP jsou v jedné skupiny dostupnosti. Windows Server Failover Cluster (WSFC) je nakonfigurován v rámci těchto virtuálních počítačů k ochraně (A) SCS instance.

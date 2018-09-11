@@ -11,28 +11,38 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: pim
-ms.date: 07/24/2018
+ms.date: 09/07/2018
 ms.author: rolyon
 ms.reviewer: hanki
 ms.custom: pim
-ms.openlocfilehash: 1a1635e0ba16bdc0fa6dc90aa0e1a417f43e04ac
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: de1d29d3ab1b370257c3a2d6b6ff9f677197fc2a
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190172"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303060"
 ---
 # <a name="email-notifications-in-pim"></a>E-mailových oznámení v PIM
 
-Po události kláves se generují v Azure AD Privileged Identity Management (PIM), e-mailová oznámení se odesílají na příslušné správce nebo uživatele. Například PIM odešle e-mailů pro následující události:
+Při události kláves se generují v Azure AD Privileged Identity Management (PIM), odešlou se e-mailová oznámení. Například PIM odešle e-mailů pro následující události:
 
 - Pokud je aktivace privilegovaných rolí čekající na schválení
-- Při schválení žádosti aktivace privilegovaných rolí
+- Po dokončení požadavek aktivace privilegovaných rolí
 - Když se aktivuje privilegovanou roli
 - Když se přiřazení privilegovaných rolí
 - Pokud je povolená Azure AD PIM
 
-Cena začíná na konci. července 2018, budou mít e-mailová oznámení odesílat prostřednictvím PIM novou e-mailovou adresu odesílatele a nové vizuální návrh. Tato aktualizace ovlivní obě PIM pro Azure AD a PIM pro prostředky Azure. Všechny události, které dříve aktivovaly e-mailové oznámení bude nadále rozešle e-mail. Některé e-mailů bude aktualizovaný obsah poskytování více cílových informací.
+E-mailové oznámení se posílají následujícím správcům:
+
+- Správce privilegované role
+- Správce zabezpečení
+
+E-mailová oznámení jsou také odesílány koncového uživatele, který má privilegovaných rolí pro následující události:
+
+- Po dokončení požadavek aktivace privilegovaných rolí
+- Když se přiřazení privilegovaných rolí
+
+Cena začíná na konci. července 2018, e-mailová oznámení odesílat prostřednictvím PIM mají novou e-mailovou adresu odesílatele a nové vizuální návrh. Tato aktualizace ovlivní obě PIM pro Azure AD a PIM pro prostředky Azure. Všechny události, které dříve aktivovaly e-mailové oznámení bude nadále rozešle e-mail. Některé e-mailů bude aktualizovaný obsah poskytování více cílových informací.
 
 ## <a name="sender-email-address"></a>E-mailová adresa odesílatele
 

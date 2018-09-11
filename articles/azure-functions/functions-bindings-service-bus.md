@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: glenga
-ms.openlocfilehash: 2dd8e93aa8da59019af6e04b29da786e78b54a81
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: ee5b11bc04a7e13354c30b64dc55c165eea4f028
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092491"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303961"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Service Bus vazby pro službu Azure Functions
 
@@ -515,7 +515,7 @@ Následující příklad ukazuje funkci Java, která odešle zprávu do fronty s
 public String pushToQueue(
   @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
   final String message,
-  @HttpOutput(name = "response") final OutputBinding<T>; result ) {
+  @HttpOutput(name = "response") final OutputBinding<T> result ) {
       result.setValue(message + " has been sent.");
       return message;
  }

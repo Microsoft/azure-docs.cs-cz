@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/30/2018
+ms.date: 09/09/2018
 ms.author: barbkess
-ms.openlocfilehash: 1c9fe9fb63b45233ed1a11bb63c0763c6103bc6d
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: a48b5aabdaf7f8f9e7269a995d92d046cca21786
+ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44095177"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44325562"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Zápis výrazů pro mapování atributů ve službě Azure Active Directory
 Při konfiguraci zřizování pro aplikace SaaS, je jedním z typů mapování atributů, které můžete zadat mapování výrazu. Pro ty musíte napsat skript jako výraz, který umožňuje transformovat data uživatelů na formáty, které jsou více přijatelné pro aplikace SaaS.
@@ -269,6 +269,6 @@ Pokud kód stavu neodpovídá žádné z předdefinovaných možností, použijt
 * [Přizpůsobení mapování atributů pro zřizování uživatelů](active-directory-saas-customizing-attribute-mappings.md)
 * [Filtry oborů pro zřizování uživatelů](active-directory-saas-scoping-filters.md)
 * [Zapnutí automatického zřizování uživatelů a skupin ze služby Azure Active Directory do aplikací pomocí SCIM](manage-apps/use-scim-to-provision-users-and-groups.md)
-* [Oznámení o zřizování účtů](active-directory-saas-account-provisioning-notifications.md)
+* [Oznámení o zřizování účtů](active-directory-saas-app-provisioning.md)
 * [Seznam kurzů o integraci aplikací SaaS](saas-apps/tutorial-list.md)
 

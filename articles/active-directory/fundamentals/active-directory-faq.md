@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 12/14/2017
 ms.author: lizross
-ms.openlocfilehash: 419b5d480ebd1f978eb2a870231d151b549b25ea
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: cc9b5810085d3300861735a95a94e577bf61d70e
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42054664"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346045"
 ---
 # <a name="azure-active-directory-faq"></a>Nejčastější dotazy ke službě Azure Active Directory
 Azure Active Directory (Azure AD) je komplexní řešení Identity jako služby (IDaaS), které pokrývá všechny prvky identity, řízení přístupu a zabezpečení.
@@ -48,14 +48,13 @@ Placené služby AD Azure, jako je Enterprise Mobility + Security, doplňují os
 
 - - -
 
-**Otázka: Jaké jsou rozdíly mezi správcem předplatného a správcem adresáře?**
+**Otázka: jaké jsou rozdíly mezi vlastníka a globálním správcem?**
 
-**Odpověď:** Ve výchozím nastavení máte po registraci v Azure přiřazenou roli správce předplatného. Správce předplatného může používat účty Microsoft nebo pracovní či školní účty z adresáře, který je přidružený k předplatnému Azure.  Tato role je oprávnění ke správě služeb na webu Azure Portal.
+**Odpověď:** ve výchozím nastavení, osoby, která uživatel zaregistruje do služby pro předplatné Azure je přiřazena role vlastníka pro prostředky Azure. Jako vlastníka můžete použít účet Microsoft nebo pracovní či školní účty z adresáře, který je přidružený k předplatnému Azure.  Tato role je oprávnění ke správě služeb na webu Azure Portal.
 
-Pokud se ostatní potřebují přihlašovat ke službám pomocí stejného předplatného, můžete je přidat jako spolusprávce. Tato role má stejná přístupová oprávnění jako správce služeb, ale nemůže změnit přidružení předplatných k adresářům Azure.  Další informace o správcích předplatného najdete v tématech [Postup přidání nebo změna role správce služby Azure](https://docs.microsoft.com/azure/billing/billing-add-change-azure-subscription-administrator) a [Jak je předplatné Azure propojeno se službou Azure Active Directory](active-directory-how-subscriptions-associated-directory.md).
+Pokud se ostatní potřebují k přihlášení a přístup ke službám pomocí stejného předplatného, můžete je přiřadit odpovídající [předdefinovaná role](../../role-based-access-control/built-in-roles.md). Další informace najdete v tématu [správě přístupu pomocí RBAC a webu Azure portal](../../role-based-access-control/role-assignments-portal.md).
 
-
-Azure AD má ke správě adresáře a funkcím souvisejícím s identitou k dispozici jinou sadu rolí správců.  Tito správci mají přístup k různým funkcím na webu Azure Portal. Role správce určuje, co může provádět – například vytvářet nebo upravovat uživatele, přiřazovat role správce ostatním uživatelům, resetovat hesla uživatelů, spravovat uživatelské licence nebo spravovat domény.  Další informace o správcích adresáře služby Azure AD a jejich rolích najdete v tématu [Přiřazení rolí správce ve službě Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md).
+Ve výchozím nastavení je osoba, která uživatel zaregistruje do služby pro předplatné Azure přiřadit roli globálního správce adresáře. Globální správce má přístup ke všem funkcím pro adresář Azure AD. Azure AD má jinou sadu rolí správce ke správě adresáře a funkcím souvisejícím s identitou. Tito správci budou mít přístup k různým funkcím na webu Azure Portal. Role správce určuje, co mohou provádět, jako je vytvoření nebo úprava uživatele, přiřazovat role správců jiným uživatelům, resetovat hesla uživatelů, spravovat uživatelské licence nebo spravovat domény.  Další informace o správci adresáře Azure AD a jejich rolích najdete v tématu [uživatele přiřadit do rolí správce ve službě Azure Active Directory](active-directory-users-assign-role-azure-portal.md) a [přiřazení rolí správce v Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md).
 
 Kromě toho placené služby AD Azure, jako je Enterprise Mobility + Security, doplňují ostatní webové služby, např. Office 365 nebo Microsoft Azure o komplexní řešení správy a zabezpečení celého podniku.
 
@@ -163,7 +162,7 @@ Máme bránu, která filtruje požadavky a nabízí určitou ochranu před botne
 
 Další informace naleznete v tématu:
 
-* [Konfigurace jednotného přihlašování k aplikacím, které nejsou v galerii aplikací Azure Active Directory](../application-config-sso-how-to-configure-federated-sso-non-gallery.md)
+* [Konfigurace jednotného přihlašování k aplikacím, které nejsou v galerii aplikací Azure Active Directory](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
 * [Zapnutí automatického zřizování uživatelů a skupin ze služby Azure Active Directory do aplikací pomocí SCIM](../manage-apps/use-scim-to-provision-users-and-groups.md)
 
 - - -
@@ -208,7 +207,7 @@ Další informace najdete v tématu [Zabezpečení přístupu k Office 365 a jin
 
 **Odpověď:** Pomocí služby Azure AD můžete automatizovat vytváření, údržbu a odebírání uživatelských identit v mnoha oblíbených cloudových aplikacích SaaS.
 
-Další informace najdete v tématu [Automatizace zřizování uživatelů a jeho rušení pro aplikace SaaS ve službě Azure Active Directory](../active-directory-saas-app-provisioning.md).
+Další informace najdete v tématu [Automatizace zřizování uživatelů a jeho rušení pro aplikace SaaS ve službě Azure Active Directory](../manage-apps/user-provisioning.md).
 
 - - -
 **Otázka: Je možné vytvořit zabezpečené připojení LDAP se službou Azure Active Directory?**

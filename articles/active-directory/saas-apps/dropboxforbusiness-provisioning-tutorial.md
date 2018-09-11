@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Konfigurace Dropbox pro zřizování automatické uživatelů s Azure Active Directory | Microsoft Docs'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Dropbox pro firmy.
+title: 'Kurz: Konfigurace Dropboxu pro automatické zřizování uživatelů pomocí Azure Active Directory | Dokumentace Microsoftu'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Dropbox for Business.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,89 +14,89 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: dcc11d9e1193f180390516e9dd75abbca0889b09
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 8e61fe4af83ee72df74027b2e52a3e81db486798
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36214429"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347303"
 ---
-# <a name="tutorial-configure-dropbox-for-business-for-automatic-user-provisioning"></a>Kurz: Konfigurace Dropbox pro firmy pro zřizování automatické uživatelů
+# <a name="tutorial-configure-dropbox-for-business-for-automatic-user-provisioning"></a>Kurz: Konfigurace Dropbox for Business pro automatické zřizování uživatelů
 
-Cílem tohoto kurzu je tak, aby zobrazovalo kroky, které je třeba provést v Dropbox pro firmy s Azure AD a automaticky zřizovat a zrušte zřízení uživatelských účtů ze služby Azure AD do Dropboxu pro firmy.
+Cílem tohoto kurzu je zobrazit kroky, které je třeba provést v Dropboxu pro firmy a Azure AD, aby automaticky zřizovat a rušit zřízení uživatelských účtů ze služby Azure AD na Dropbox for Business.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Scénář uvedených v tomto kurzu se předpokládá, že už máte následující položky:
+Scénář popsaný v tomto kurzu se předpokládá, že máte následující položky:
 
-*   Klienta služby Azure Active directory.
-*   Dropbox pro obchodní jednotného přihlašování povolené předplatné.
-*   Uživatelský účet v Dropbox pro firmy s oprávněními správce týmu.
+*   Tenanta služby Azure Active directory.
+*   Dropbox pro obchodní jednotné přihlašování v předplatném povolené.
+*   Účet uživatele s oprávněními správce týmu v Dropboxu pro firmy.
 
-## <a name="assigning-users-to-dropbox-for-business"></a>Přiřazování uživatelů do Dropboxu pro firmy
+## <a name="assigning-users-to-dropbox-for-business"></a>Přiřazování uživatelů k Dropboxu pro firmy
 
-Azure Active Directory používá koncept označované jako "úlohy" k určení uživatelů, kteří obdrželi přístup k vybrané aplikace. V kontextu uživatele automatické zřizování účtu se synchronizují pouze uživatelé a skupiny, které byly "přiřazeny" aplikace ve službě Azure AD.
+Azure Active Directory používá koncept nazvaný "přiřazení" k určení, kteří uživatelé měli obdržet přístup k vybrané aplikace. V rámci zřizování automatické uživatelských účtů je synchronizovat jenom uživatelé a skupiny, které se "přiřadily" aplikace ve službě Azure AD.
 
-Před konfigurací a povolení zřizování služby, musíte rozhodnout, jaké uživatelů nebo skupin ve službě Azure AD představují uživatele, kteří potřebují přístup k vaší schránky pro obchodní aplikace. Jakmile se rozhodli, můžete přiřadit tyto uživatele do vaší schránky pro obchodní aplikace podle pokynů tady:
+Před konfigurací a povolení služby zřizování, je potřeba rozhodnout, jaké uživatele a/nebo skupiny ve službě Azure AD představují uživatele, kteří potřebují přístup do vaší schránky pro obchodní aplikace. Jakmile se rozhodli, můžete přiřadit tito uživatelé do vaší schránky pro obchodní aplikace podle zde uvedených pokynů:
 
-[Přiřazení uživatele nebo skupiny do aplikace enterprise](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[Přiřadit uživatele nebo skupiny k podnikové aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
-### <a name="important-tips-for-assigning-users-to-dropbox-for-business"></a>Důležité tipy pro přiřazování uživatelů do Dropboxu pro firmy
+### <a name="important-tips-for-assigning-users-to-dropbox-for-business"></a>Důležité tipy pro přiřazování uživatelů k Dropboxu pro firmy
 
-*   Dále je doporučeno jednoho uživatele Azure AD je přiřazen do Dropboxu pro firmy k testování této konfigurace zřizování. Další uživatele nebo skupiny může být přiřazen později.
+*   Doporučujeme jeden je přiřazen Dropbox for Business pro testování konfigurace zřizování uživatele Azure AD. Další uživatele a/nebo skupiny může být přiřazen později.
 
-*   Při přiřazování uživatele Dropbox pro firmy, musíte vybrat platné uživatelské role. Roli "Výchozí přístup" nefunguje pro zřizování...
+*   Při přiřazování uživatele na Dropbox for Business, musíte vybrat platné uživatelské role. Tuto roli "Výchozí přístupu" nefunguje pro zřizování...
 
 ## <a name="enable-automated-user-provisioning"></a>Povolit automatické zřizování uživatelů
 
-Tato část vás provede připojení služby Azure AD k Dropboxu pro firmy na uživatelský účet zřizování rozhraní API a konfiguraci zřizování službu, kterou chcete vytvořit, aktualizovat a zakázat přiřazené uživatelské účty v Dropbox pro firmy na základě uživatele a skupiny přiřazení ve službě Azure AD.
+Tato část vás provede připojením služby Azure AD na Dropbox firemní uživatelského účtu rozhraní API zřizování a konfigurace služby zřizování, pokud chcete vytvořit, aktualizovat a zakázat přiřazené uživatelské účty v Dropboxu pro firmy na základě uživatele a skupiny přiřazení ve službě Azure AD.
 
 >[!Tip]
->Také můžete povolit na základě SAML jednotné přihlašování pro Dropbox pro firmy, postupujte podle pokynů uvedených v [portál Azure](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatické zřizování, i když tyto dvě funkce doplnění navzájem.
+>Můžete také povolena založené na SAML jednotného přihlašování pro Dropbox for Business, postupujte podle pokynů uvedených v [webu Azure portal](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatické zřizování, i když tyto dvě funkce návrzích mezi sebou.
 
-### <a name="to-configure-automatic-user-account-provisioning"></a>Konfigurace automatického uživatele zřizování účtu:
+### <a name="to-configure-automatic-user-account-provisioning"></a>Postup konfigurace zřizování automatické uživatelských účtů:
 
-1. V [portál Azure](https://portal.azure.com), vyhledejte **Azure Active Directory > podnikové aplikace > všechny aplikace** části.
+1. V [webu Azure portal](https://portal.azure.com), přejděte **Azure Active Directory > podnikové aplikace > všechny aplikace** části.
 
-2. Pokud jste již nakonfigurovali Dropbox pro firmy pro jednotné přihlašování, vyhledejte instanci Dropboxu pro firmy pomocí pole hledání. Jinak vyberte možnost **přidat** a vyhledejte **Dropbox pro firmy** v galerii aplikací. Ve výsledcích hledání vyberte Dropbox pro firmy a přidat do seznamu aplikací.
+2. Pokud jste už nakonfigurovali Dropbox for Business pro jednotné přihlašování, vyhledávání pro vaši instanci Dropbox for Business, pomocí vyhledávacího pole. V opačném případě vyberte **přidat** a vyhledejte **Dropbox for Business** v galerii aplikací. Vyberte Dropbox for Business ve výsledcích hledání a přidat do seznamu aplikací.
 
-3. Vyberte instanci Dropboxu pro firmy a pak vyberte **zřizování** kartě.
+3. Vyberte instanci Dropbox for Business a potom **zřizování** kartu.
 
-4. Nastavte **režimu zřizování** k **automatické**. 
+4. Nastavte **režim zřizování** k **automatické**. 
 
     ![zřizování](./media/dropboxforbusiness-provisioning-tutorial/provisioning.png)
 
-5. V části **přihlašovací údaje správce** klikněte na tlačítko **Authorize**. Dropbox pro obchodní přihlašovací dialogové okno otevře v novém okně prohlížeče.
+5. V části **přihlašovacích údajů správce** klikněte na tlačítko **Authorize**. Dropbox pro obchodní přihlašovací dialogové okno se otevře v novém okně prohlížeče.
 
-6. Na **přihlášení do Dropboxu k propojení s Azure AD** dialogové okno, přihlášení do vaší schránky pro obchodní klienta.
+6. Na **přihlásit se k Dropboxu, abyste mohli propojit s Azure AD** dialogové okno přihlášení do vaší schránky pro obchodní tenanta.
 
      ![Zřizování uživatelů](./media/dropboxforbusiness-provisioning-tutorial/ic769518.png "zřizování uživatelů")
 
-7. Potvrďte, že byste chtěli poskytnout Azure Active Directory oprávnění k provádění změn do vaší schránky pro obchodní klienta. Klikněte na tlačítko **povolit**.
+7. Potvrďte, že chcete udělit oprávnění Azure Active Directory provádět změny do vaší schránky pro obchodní tenanta. Klikněte na tlačítko **povolit**.
     
       ![Zřizování uživatelů](./media/dropboxforbusiness-provisioning-tutorial/ic769519.png "zřizování uživatelů")
 
-8. Na portálu Azure klikněte na tlačítko **Test připojení** zajistit Azure AD může připojit k vaší schránky pro obchodní aplikace. Pokud připojení nezdaří, zkontrolujte vaši Dropbox pro obchodní účet má oprávnění správce týmu a zkuste to **"Ověřit"** krok opakujte.
+8. Na webu Azure Portal, klikněte na tlačítko **Test připojení** aby Azure AD můžete připojit k vaší schránky pro obchodní aplikace. Pokud se nepovede, zajistěte vašeho Dropboxu pro obchodní účet má oprávnění správce týmu a **"Ověřit"** krok znovu.
 
-9. Zadejte e-mailovou adresu uživatele nebo skupiny, který by měly dostávat oznámení zřizování Chyba v **e-mailové oznámení** pole a zaškrtnutím políčka.
+9. Zadejte e-mailovou adresu osoby nebo skupiny, která má obdržet oznámení zřizování chyby v **e-mailové oznámení** pole a zaškrtněte políčko.
 
 10. Klikněte na tlačítko **uložit.**
 
-11. V části mapování vyberte **synchronizaci Azure Active Directory Users na Dropbox pro firmy.**
+11. V oddílu mapování, vyberte **synchronizace Azure Active Directory Users na Dropbox for Business.**
 
-12. V **mapování atributů** , projděte si uživatelské atributy, které jsou synchronizované z Azure AD Dropbox pro firmy. Atributy vybrán jako **párování** vlastnosti se používají tak, aby odpovídaly uživatelské účty v Dropbox pro firmy pro operace aktualizace. Kliknutím na tlačítko Uložit potvrzení změny.
+12. V **mapování atributů** , projděte si atributy uživatele, které se synchronizují ze služby Azure AD na Dropbox for Business. Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly uživatelské účty v Dropboxu pro firmy pro operace update. Vyberte tlačítko Uložit potvrďte změny.
 
-13. Povolit Azure AD zřizování služby pro Dropbox pro firmy, změňte **Stav zřizování** k **na** v části Nastavení
+13. Chcete-li povolit služba pro Dropbox for Business zřizování Azure AD, změňte **stavu zřizování** k **na** v sekci nastavení
 
 14. Klikněte na tlačítko **uložit.**
 
-Spustí počáteční synchronizaci všech uživatelů a skupiny přiřazené k Dropboxu pro firmy v části Uživatelé a skupiny. Počáteční synchronizace trvá déle než následné synchronizace, ke kterým dochází přibližně každých 40 minut, dokud se službou provést. Můžete použít **podrobnosti synchronizace** části monitorovat průběh a odkazech zřízení protokoly aktivity, které popisují všechny akce, které provádí službu zřizování na vaší schránky pro obchodní aplikace.
+Spustí počáteční synchronizaci všech uživatelů a skupiny přiřazené k Dropboxu pro firmy v části Uživatelé a skupiny. Počáteční synchronizace trvá déle než při následné synchronizace, ke kterým dochází přibližně každých 40 minut za předpokladu, že služba běží. Můžete použít **podrobnosti synchronizace** části ke sledování průběhu a odkazech na zřizování protokoly aktivit, které popisují všechny akce prováděné na váš Dropbox zřizovací služba pro obchodní aplikace.
 
-Další informace o tom, jak číst zřizování protokoly služby Azure AD najdete v tématu [zprávy o zřizování účtu automatické uživatele](../active-directory-saas-provisioning-reporting.md).
+Další informace o tom, jak číst zřizování protokoly Azure AD najdete v tématu [hlášení o zřizování automatické uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
 
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Správa uživatelů zřizování účtu pro podnikové aplikace](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-* [Konfigurovat jednotné přihlašování](dropboxforbusiness-tutorial.md)
+* [Správa zřizování uživatelských účtů pro podnikové aplikace](tutorial-list.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
+* [Konfigurace jednotného přihlašování](dropboxforbusiness-tutorial.md)

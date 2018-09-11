@@ -1,24 +1,18 @@
 ---
 title: Řešení potíží Azure Disk Encryption | Dokumentace Microsoftu
 description: Tento článek poskytuje tipy pro řešení potíží pro Microsoft Azure Disk Encryption pro Windows a virtuálních počítačů IaaS s Linuxem.
-services: security
-documentationcenter: na
 author: mestew
-manager: MBaldwin
-ms.assetid: ce0e23bd-07eb-43af-a56c-aa1a73bdb747
 ms.service: security
-ms.devlang: na
+ms.subservice: Azure Disk Encryption
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 08/24/2018
 ms.author: mstewart
-ms.openlocfilehash: e63d798c24159777711c9cdd765e40b44826a530
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.date: 09/10/2018
+ms.openlocfilehash: 3d52e031d6c3266ba9d15a2283adcdbce7a6b929
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42888725"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347677"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Průvodce odstraňováním potíží Azure Disk Encryption
 

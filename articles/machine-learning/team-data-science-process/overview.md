@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: deguhath
-ms.openlocfilehash: e44b21530cb3db8a2ba354ef19ebb3d2c557ecae
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 2cce0b883c18a813aed386186c825c26b0e4b674
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125755"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303774"
 ---
 # <a name="what-is-the-team-data-science-process"></a>Co je vědecké zpracování týmových dat?
 
@@ -71,7 +71,7 @@ Následující diagram představuje zobrazení mřížky úloh (modře) a artefa
 
 ## <a name="standardized-project-structure"></a>Struktura standardizované projektu
 
-Všechny projekty, sdílet adresářovou strukturu a používat šablony pro dokumenty projektu s usnadňuje členům týmu vyhledat informace o jejich projektech. Všechny kódu a dokumenty jsou uloženy v systému správy verzí (VC), jako je Git, TFS nebo Subversion, umožňuje spolupráci mezi týmy. Sledování úloh a funkcí v projektu aplikace agile sledování systému jako Jira, technologie Rally, Visual Studio Team Services umožňuje blíže sledování kódu pro jednotlivé funkce. Tyto sledování také umožňuje týmům získat lepší odhady nákladů. TDSP doporučuje vytvoření oddělené úložiště pro každý projekt na virtuální Clustery pro správu verzí, zabezpečení informací a spolupráci. Standardizované strukturu pro všechny projekty pomáhá institucionální znalosti budovat celé organizace.
+Všechny projekty, sdílet adresářovou strukturu a používat šablony pro dokumenty projektu s usnadňuje členům týmu vyhledat informace o jejich projektech. Všechny kódu a dokumenty jsou uloženy v systému správy verzí (VC), jako je Git, TFS nebo Subversion, umožňuje spolupráci mezi týmy. Sledování úloh a funkcí v projektu aplikace agile sledování systému jako Jira technologie Rally a Azure DevOps umožňuje blíže sledování kódu pro jednotlivé funkce. Tyto sledování také umožňuje týmům získat lepší odhady nákladů. TDSP doporučuje vytvoření oddělené úložiště pro každý projekt na virtuální Clustery pro správu verzí, zabezpečení informací a spolupráci. Standardizované strukturu pro všechny projekty pomáhá institucionální znalosti budovat celé organizace.
 
 Poskytujeme šablony pro strukturu složek a požadované dokumenty ve standardním umístění. Tuto strukturu složek uspořádá soubory, které obsahují kód pro zkoumání dat a extrakci funkce a, který si poznamenejte modelu iterací. Tyto šablony usnadňují členové týmu pochopit práci ostatních nebo přidání nových členů do teams. Je snadné k zobrazování a aktualizace šablony dokumentů ve formátu markdown. Pomocí šablon můžete poskytnout klíčových otázek pro každý projekt – pomáhat zajistit, že problém je dobře definovaný a, že výsledky splňují kvality očekává kontrolní seznamy. Příklady obsahují:
 

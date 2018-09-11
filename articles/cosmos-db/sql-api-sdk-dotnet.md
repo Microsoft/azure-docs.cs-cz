@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 03/09/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: de0203a06e71a90223b864ab3ba059ad1ac9b5e3
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 26de3545c5d79c711703fa97cb796cd6c504f663
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44052276"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346470"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Azure Cosmos DB .NET SDK pro rozhraní SQL API: Stáhněte si a poznámky k verzi
 > [!div class="op_single_selector"]
@@ -50,6 +50,15 @@ ms.locfileid: "44052276"
 </table></br>
 
 ## <a name="release-notes"></a>Poznámky k verzi
+### <a name="a-name200200"></a><a name="2.0.0"/>2.0.0
+
+* Přidání žádosti o podporu zrušení.
+* Přidání SetCurrentLocation k ConnectionPolicy, který automaticky naplní upřednostňované umístění podle oblastí.
+* Oprava chyby v různé dotazy oddílu s Min/Max a filtr, který odpovídá žádné dokumenty v jednotlivých oddílů.
+* DocumentClient metody mají nyní se IDocumentClient.
+* Aktualizované s přímým přístupem přenosu protokolů TCP k omezení počtu připojení.
+* Přidání podpory pro přímý režim TCP pro klienty než Windows.
+
 ### <a name="a-name200-preview2200-preview2"></a><a name="2.0.0-preview2"/>2.0.0-preview2
 
 * Přidání žádosti o podporu zrušení.
@@ -309,8 +318,7 @@ Služba odmítne všechny žádosti do služby Azure Cosmos DB pomocí vyřazeno
 
 | Verze | Datum vydání | Datum vyřazení z provozu |
 | --- | --- | --- |
-| [2.0.0-preview2](#2.0.0-preview2) |26. července 2018 |--- |
-| [2.0.0-Preview](#2.0.0-preview) |11. května 2018 |--- |
+| [2.0.0](#2.0.0) |07. září 2018 |--- |
 | [1.22.0](#1.22.0) |19. dubna 2018 |--- |
 | [1.21.1](#1.20.1) |09. března 2018 |--- |
 | [1.20.2](#1.20.1) |21. února 2018 |--- |

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: jovanpop
 ms.reviewer: carlrab, sashan
-ms.openlocfilehash: 7a60d800ce76f8ff9a903cc068fa7bc87cd33f3f
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 1aab8dfd3a4bcc33cddb71dec08157ee7eb68f8d
+ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700631"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44324644"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Vysoká dostupnost a Azure SQL Database
 
@@ -57,7 +57,7 @@ Kromě toho pro důležité obchodní informace clusteru poskytuje předdefinova
 
 ## <a name="zone-redundant-configuration-preview"></a>Konfigurace redundantního (preview)
 
-Repliky nastavení kvora pro konfigurace místní úložiště jsou ve výchozím nastavení vytvoří ve stejném datacentru. Se zavedením [zóny dostupnosti Azure](../availability-zones/az-overview.md), máte možnost mají být umístěny různých replik sady kvora do různých zón dostupnosti ve stejné oblasti. Chcete-li odstranit jediný bod selhání, je aktualizační kanál, který ovládací prvek duplicitní napříč několika zónami jako tři prstence brány (gs) také. Směrování do aktualizačního kanálu konkrétní gateway řídí [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) (ATM). Protože redundantní konfigurace zóny nevytváří žádné další databáze, redundance, použití zón dostupnosti v Premium nebo pro důležité obchodní informace (preview) úrovně služeb je k dispozici bez dalších nákladů. Výběrem zónu databáze redundantní provedete vaší úrovně Premium nebo pro důležité obchodní informace (preview) databáze odolné vůči mnohem většímu množství chyb, včetně výpadků katastrofickými datacenter, bez nutnosti jakkoli měnit aplikace logiky. Konfigurace redundantního zóny lze také převést všechny existující databáze úrovně Premium nebo pro důležité obchodní informace nebo fondů (preview).
+Repliky nastavení kvora pro konfigurace místní úložiště jsou ve výchozím nastavení vytvoří ve stejném datacentru. Se zavedením [zóny dostupnosti Azure](../availability-zones/az-overview.md), máte možnost mají být umístěny různých replik sady kvora do různých zón dostupnosti ve stejné oblasti. Chcete-li odstranit jediný bod selhání, je aktualizační kanál, který ovládací prvek duplicitní napříč několika zónami jako tři prstence brány (gs) také. Směrování do aktualizačního kanálu konkrétní gateway řídí [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) (ATM). Protože redundantní konfigurace zóny nevytváří redundance další databáze, je použití zón dostupnosti (preview) v úrovních služeb úrovně Premium nebo pro důležité obchodní informace k dispozici bez dalších nákladů. Vyberte zónu databáze redundantní, můžete provádět databází Premium nebo pro důležité obchodní informace odolné mnohem větší sadě chyb, včetně výpadků katastrofickými datacenter, bez nutnosti jakkoli měnit aplikace logiky. Můžete také převést libovolný existující Premium nebo pro důležité obchodní informace databáze nebo fondy redundantní konfigurace zóny.
 
 Vzhledem k tomu zóny redundantní kvora sady replik v různých datových centrech některé vzdálenost mezi nimi, latence sítě může prodloužit dobu potvrzení a tedy mít vliv na výkon některé úlohy OLTP. Můžete se kdykoli vrátit v konfiguraci s jednou zónou zakázáním nastavení redundance zóny. Tento proces je velikost operace s daty a je podobné aktualizace cíle na úrovni (SLO) regulární služby. Na konci procesu databáze nebo fondu migrován z kanál redundantní zóny v jedné zóně kanál nebo naopak.
 
@@ -69,13 +69,13 @@ Zóna redundantní verzi architektury vysoké dostupnosti je znázorněn v násl
 ![Vysoká dostupnost architektura zónově redundantní](./media/sql-database-high-availability/high-availability-architecture-zone-redundant.png)
 
 ## <a name="read-scale-out"></a>Horizontální navýšení kapacity pro čtení
-Jak je popsáno, Premium a pro důležité obchodní informace (preview) sad kvora využívání úrovně a služby technologie AlwaysOn pro vysokou dostupnost v jedné oblasti a zóny redundantní konfigurace. Jednou z výhod technologie AlwaysOn serveru je, že tyto repliky jsou vždy transakčně konzistentní stav. Vzhledem k tomu, že repliky na stejnou úroveň výkonu jako primární, aplikace můžou využít výhod této dodatečnou kapacitu pro obsluhu úlohy jen pro čtení bez dalších nákladů (čtení horizontální navýšení kapacity). Tímto způsobem dotazy jen pro čtení budou z hlavní úlohy čtení a zápis izolovaných a nebude mít vliv na jeho výkon. Čtení funkce úpravy rozsahu je určená pro aplikace, které zahrnují logicky oddělené úlohy jen pro čtení, jako jsou analýzy a proto může využívat tuto dodatečnou kapacitu bez připojení k primární. 
+Jak je popsáno, úrovně služeb Premium a pro důležité obchodní informace kvora sady a využít technologii AlwaysOn pro vysokou dostupnost v jedné oblasti a zóny redundantní konfigurace. Jednou z výhod technologie AlwaysOn serveru je, že tyto repliky jsou vždy transakčně konzistentní stav. Vzhledem k tomu, že repliky na stejnou úroveň výkonu jako primární, aplikace můžou využít výhod této dodatečnou kapacitu pro obsluhu úlohy jen pro čtení bez dalších nákladů (čtení horizontální navýšení kapacity). Tímto způsobem dotazy jen pro čtení budou z hlavní úlohy čtení a zápis izolovaných a nebude mít vliv na jeho výkon. Čtení funkce úpravy rozsahu je určená pro aplikace, které zahrnují logicky oddělené úlohy jen pro čtení, jako jsou analýzy a proto může využívat tuto dodatečnou kapacitu bez připojení k primární. 
 
 Jak používat funkci horizontální navýšení kapacity pro čtení s danou databází, je nutné explicitně aktivovat ho při vytváření databáze nebo později změnou jeho konfigurace přes PowerShell voláním [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) nebo [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) rutiny nebo přes rozhraní REST API Azure Resource Manageru pomocí [databází – vytvořit nebo aktualizovat](/rest/api/sql/databases/createorupdate) metody.
 
 Po povolení horizontální navýšení kapacity pro čtení pro databázi aplikace propojíte databázi budete přesměrováni do repliky pro čtení a zápis nebo jen pro čtení replik databáze podle `ApplicationIntent` vlastnost nakonfigurovaný ve vaší aplikace připojovací řetězec. Informace o tom, `ApplicationIntent` vlastnost, naleznete v tématu [zadání záměru aplikace](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent). 
 
-Pokud je zakázán horizontální navýšení kapacity pro čtení nebo nastavte vlastnost ReadScale v vrstvu Nepodporovaná služba, všechna připojení jsou směrované na repliky pro čtení i zápis, nezávisle `ApplicationIntent` vlastnost.  
+Pokud je zakázán horizontální navýšení kapacity pro čtení nebo nastavte vlastnost ReadScale v vrstvu Nepodporovaná služba, všechna připojení jsou směrované na repliky pro čtení i zápis, nezávisle `ApplicationIntent` vlastnost.
 
 ## <a name="conclusion"></a>Závěr
 Azure SQL Database je úzce integrovaná s platformou Azure a vysoce závisí na platformě Service Fabric pro zjištění selhání a obnovení v Azure Storage blob pro ochranu dat a zóny dostupnosti pro vyšší odolnost proti chybám. Ve stejnou dobu Azure SQL database plně využívá technologii skupiny dostupnosti Always On z pole produktu SQL Server pro replikaci a převzetí služeb při selhání. Kombinací těchto technologií umožňuje aplikacím plně využít výhod modelu smíšené úložiště a podporu nejnáročnější smlouvy o úrovni služeb. 

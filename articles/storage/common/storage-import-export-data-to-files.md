@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 07/17/2018
+ms.date: 09/10/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: d6626b0c27f28f382d0189251fe90879020a69bf
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 6cbaaeed75f160a2281fdce0949397b9a14bf981
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523627"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347915"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Import dat do služby soubory Azure pomocí služby Azure Import/Export
 
@@ -68,8 +68,7 @@ Proveďte následující kroky pro přípravu disků.
         ```
             "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file,rename,"None",None
             "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None 
-            "F:\MyFolder3\MyFile3.txt","MyAzureFileshare2/",file,rename,"None",None 
-            
+                        
         ```
     Další informace o [připravuje se soubor CSV datovou sadu](storage-import-export-tool-preparing-hard-drives-import.md#prepare-the-dataset-csv-file).
     

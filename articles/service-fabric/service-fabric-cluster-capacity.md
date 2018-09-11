@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: chackdan
-ms.openlocfilehash: dc70a20667db7e59f0fe77ec4d84831cfb7e75a5
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: d1d17ff331d3e770b77ce729904e57cf88ebc16c
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617214"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44348564"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Co zvážit při plánování kapacity clusteru Service Fabric
 Pro každého produkčního nasazení plánování kapacity je důležitý krok. Tady jsou některé položky, které musíte zvážit jako součást tohoto procesu.
@@ -51,7 +51,7 @@ Každý typ uzlu je odlišné škálovací nastavit a je možné škálovat nebo
 
 Cluster Service Fabric se může skládat z více než jeden typ uzlu. V takovém případě se cluster skládá z jedné primární typ uzlu a jeden nebo více typů bez primárního uzlu.
 
-Jednoho typu může mít maximálně pouze 100 uzlů na škálovací sadu virtuálních počítačů. Budete muset přidat škálovacích sad virtuálních počítačů na cílovém škálování a automatické škálování nemůže automagically přidat škálovací sady virtuálních počítačů. Přidání škálovacích sad virtuálních počítačů na místě k živému clusteru je náročné úlohy a výsledkem je obvykle uživatelům zřizování nových clusterů se příslušný uzel typy zřízený v okamžiku vytvoření. 
+Jednoho typu nelze spolehlivě škálovat na více než 100 uzlů na virtuální počítač škálovací sady pro SF aplikace; dosažení spolehlivě větší než 100 uzlů se bude vyžadovat přidat dalšího virtuálního počítače škálovací sady.
 
 ### <a name="primary-node-type"></a>Primární typ uzlu
 

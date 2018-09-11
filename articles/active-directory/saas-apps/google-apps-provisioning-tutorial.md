@@ -14,25 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 26715c6abb9c2c940090c84b64a30f7fb701d059
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 924584a77d36ec41488d8c76d9631baf484ff494
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39445685"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346385"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Kurz: Konfigurace G Suite pro automatické zřizování uživatelů
 
 Cílem tohoto kurzu je ukazují, jak automaticky zřizovat a rušit zřízení uživatelských účtů ze služby Azure Active Directory (Azure AD) ke G Suite.
 
 > [!NOTE]
-> Tento kurz popisuje konektor postavené na službě zřizování uživatelů služby Azure AD. Důležité podrobnosti o význam této služby, jak to funguje a nejčastější dotazy najdete v tématu [automatizace zřizování uživatelů a jeho rušení pro aplikace SaaS ve službě Azure Active Directory](./../active-directory-saas-app-provisioning.md).
+> Tento kurz popisuje konektor postavené na službě zřizování uživatelů služby Azure AD. Důležité podrobnosti o význam této služby, jak to funguje a nejčastější dotazy najdete v tématu [automatizace zřizování uživatelů a jeho rušení pro aplikace SaaS ve službě Azure Active Directory](../manage-apps/user-provisioning.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
 Konfigurace integrace Azure AD s G Suite, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - G Suite jednotného přihlašování povolená předplatného
 - Google Apps předplatného nebo předplatného Google Cloud Platform.
 
@@ -88,7 +88,7 @@ Tato část vás provede procesu připojování k uživatelskému účtu API G S
 
     b. Vyberte **název domény** na levém navigačním podokně a pak vyberte **přidat**.
      
-     ![Doména](./media/google-apps-provisioning-tutorial/domain_1.png)
+     ![Domain (Doména)](./media/google-apps-provisioning-tutorial/domain_1.png)
 
      ![Přidat doménu](./media/google-apps-provisioning-tutorial/domain_2.png)
 
@@ -100,7 +100,7 @@ Tato část vás provede procesu připojování k uživatelskému účtu API G S
     
     Komplexnější pokyny o tom, jak ověřit názvy domén s Azure AD najdete v tématu [přidání vlastního názvu domény do Azure AD](https://go.microsoft.com/fwLink/?LinkID=278919&clcid=0x409).
      
-     ![Doména](./media/google-apps-provisioning-tutorial/domain_4.png)
+     ![Domain (Doména)](./media/google-apps-provisioning-tutorial/domain_4.png)
 
     e. Zopakujte předchozí kroky pro všechny domény, které chcete přidat do vašeho adresáře.
 
@@ -172,7 +172,7 @@ Tato část vás provede procesu připojování k uživatelskému účtu API G S
 
 Tento proces spustí počáteční synchronizaci všech uživatelů nebo skupin, které jsou přiřazeny ke G Suite v části Uživatelé a skupiny. Počáteční synchronizace trvá déle než při následné synchronizace, ke kterým dochází přibližně každých 40 minut, zatímco je služba spuštěna. Můžete použít **podrobnosti synchronizace** části ke sledování průběhu a odkazech na zřizování protokolů aktivit. Tyto protokoly popisují všechny akce, které provádí službu zřizování ve vaší aplikaci.
 
-Další informace o tom, jak číst zřizování protokoly Azure AD najdete v tématu [hlášení o zřizování automatické uživatelských účtů](../active-directory-saas-provisioning-reporting.md).
+Další informace o tom, jak číst zřizování protokoly Azure AD najdete v tématu [hlášení o zřizování automatické uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 

@@ -1,5 +1,6 @@
 ---
-title: Rychlý start C# pro služby Cognitive Services Text Analytics API | Dokumentace Microsoftu
+title: 'Rychlé zprovoznění: Použití jazyka C# pro volání rozhraní Text Analytics API | Dokumentace Microsoftu'
+titleSuffix: Azure Cognitive Services
 description: Získejte informace a ukázky kódu, které vám pomůžou rychle začít s využitím rozhraní Text Analytics API ve službě Microsoft Cognitive Services v Azure.
 services: cognitive-services
 documentationcenter: ''
@@ -9,14 +10,14 @@ ms.component: text-analytics
 ms.topic: article
 ms.date: 08/30/2018
 ms.author: ashmaka
-ms.openlocfilehash: 42a682898303b742a17b0a6d4d98c2b9fedf9003
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: b4d945b7495897caf1f4edd1e909581614798a23
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841690"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303017"
 ---
-# <a name="quickstart-for-the-text-analytics-api-with-c"></a>Rychlý start pro rozhraní Text Analytics API s využitím C# 
+# <a name="quickstart-using-c-to-call-the-text-analytics-cognitive-service"></a>Rychlé zprovoznění: Použití jazyka C# pro volání Text Analytics služby Cognitive Services
 <a name="HOLTop"></a>
 
 V tomto článku se dozvíte, jak zjistit jazyk, analýza sentimentu a extrakce klíčových frází pomocí [rozhraní Text Analytics API](//go.microsoft.com/fwlink/?LinkID=759711) pomocí jazyka C#. Kód byl zapsán pro práci na aplikaci .NET Core, s minimálními odkazy na externí knihovny, takže je možné také spustit v systému Linux nebo MacOS.

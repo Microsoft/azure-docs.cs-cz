@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 09/07/2018
+ms.date: 09/10/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 89b21af5303afc2082d3d56ddb9e894f3ae4c4b8
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 1ef5d51db34e0d0a947a4d6ba6c7e614b1ac3384
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44158407"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44348884"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Instalace a konfigurace místní brány dat
 Při jeden nebo více serverů služby Azure Analysis Services ve stejné oblasti připojení k místním zdrojům dat, místní brány dat se vyžaduje. Další informace o bráně, naleznete v tématu [On-premises data gateway](analysis-services-gateway.md).
@@ -35,9 +35,9 @@ Při jeden nebo více serverů služby Azure Analysis Services ve stejné oblast
 * Během instalace, při registraci vaší brány Azure je vybrán výchozí oblast pro vaše předplatné. Můžete použít v jiné oblasti. Pokud máte servery ve více než jedné oblasti, musíte nainstalovat bránu pro každou oblast. 
 * Brány nelze nainstalovat na řadič domény.
 * V jednom počítači lze nainstalovat pouze jednu bránu.
-* Ve výchozím nastavení brána používá účet NT SERVICE\PBIEgwService pro přihlášení. Během instalace nebo služby se dá nastavit jiný účet. Nastavení zásad skupiny zkontrolujte, zda povolit, že má účet služby protokolu jako oprávnění služby.
 * Bránu nainstalujte na počítač, který zůstane na a ne přechází do režimu spánku.
 * Bránu neinstalujte na počítač bezdrátově připojené k vaší síti. Výkon můžete snížila.
+* Při instalaci brány, uživatelský účet, který jste přihlášení k počítači pomocí musí mít protokolu jako oprávnění služby. Po dokončení instalace službu On-premises data gateway používá účet NT SERVICE\PBIEgwService přihlásit jako službu. Jiný účet lze zadat během instalace nebo služby, po dokončení instalace. Nastavení zásad skupiny zkontrolujte, zda povolit, že účet, který jste přihlášení se při instalaci a účet služby, kterou zvolíte mají protokolu na jako oprávnění služby.
 * Přihlášení k Azure pomocí účtu ve službě Azure AD pro stejné [tenanta](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant) jako předplatné při registraci brány v. Azure B2B účty (Host) nejsou podporována při instalaci a registraci brány.
 * Pokud jsou zdroje dat ve službě Azure Virtual Network (VNet), je nutné nakonfigurovat [AlwaysUseGateway](analysis-services-vnet-gateway.md) vlastnost serveru.
 * (Sjednocené) brány je zde popsáno, není podporována v Azure Government, Azure Germany a Azure China suverénních oblastech. Použití **vyhrazená místní brána pro Azure Analysis Services**, nainstalované ze svého serveru **rychlý Start** na portálu. 
@@ -79,7 +79,7 @@ Chcete-li vytvořit bránu prostředků v Azure, je nutné zaregistrovat místn�
 ## <a name="create-resource"></a>Vytvoření prostředku Azure gateway
 Po nainstalovaný a zaregistrovaný bránu, je potřeba vytvořit prostředek brány ve vašem předplatném Azure. Přihlaste se k Azure pomocí stejného účtu, který jste použili při registraci brány.
 
-1. Na webu Azure portal, klikněte na tlačítko **vytvořit novou službu** > **podniková integrace** > **On-premises data gateway**  >   **Vytvoření**.
+1. Na webu Azure portal, klikněte na tlačítko **vytvořit prostředek** > **integrace** > **On-premises data gateway**.
 
    ![Vytváření prostředku brány](media/analysis-services-gateway-install/aas-gateway-new-azure-resource.png)
 

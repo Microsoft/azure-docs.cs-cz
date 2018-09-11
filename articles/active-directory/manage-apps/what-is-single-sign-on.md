@@ -14,12 +14,12 @@ ms.date: 07/16/2018
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: it-pro
-ms.openlocfilehash: 1ac15ce8f8abf2b30b42f02b300a17448f86fc40
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: d17b5967519bc51e4fb33a410149d17c82c28d10
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44052764"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347983"
 ---
 # <a name="what-is-application-access-and-single-sign-on-with-azure-active-directory"></a>Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?
 Jednotné přihlašování znamená možnost přistupovat ke všem aplikacím a prostředkům, které je potřeba udělat firmy, tak, že stačí, když pomocí jediného uživatelského účtu. Jakmile se přihlásíte, dostanete všechny aplikace, které potřebujete, aniž byste museli znovu ověřovat (třeba zadávat heslo) podruhé.
@@ -89,7 +89,7 @@ Pro výběr aplikace Azure AD umožňuje zřizování automatizované uživatels
 
 Při odstranění uživatele nebo informace o jejich změny ve službě Azure AD, tyto změny se projeví také v aplikaci SaaS. To znamená, že správa životního cyklu identit automatické konfigurace umožňuje správcům řídit a poskytnout automatické zřizování a zrušení zřizování aplikací SaaS. Ve službě Azure AD je tato automatizace správy životního cyklu identit zajišťuje zřizování uživatelů.
 
-Další informace najdete v tématu [automatické zřizování uživatelů a jeho rušení pro aplikace SaaS](../active-directory-saas-app-provisioning.md)
+Další informace najdete v tématu [automatické zřizování uživatelů a jeho rušení pro aplikace SaaS](user-provisioning.md)
 
 ## <a name="get-started-with-the-azure-ad-application-gallery"></a>Začínáme s Galerie aplikací Azure AD
 Chcete začít? Nasadit jednotné přihlašování mezi Azure AD a aplikace SaaS, které vaše organizace používá, postupujte podle následujících pokynů.
@@ -109,7 +109,7 @@ Jakmile jste nalezené vaší aplikace, můžete začít podle podrobných pokyn
 ### <a name="application-not-in-the-gallery"></a>Aplikace není v galerii?
 Pokud vaše aplikace nebyl nalezen v galerii aplikací Azure AD, máte tyto možnosti:
 
-* **Přidání neuvedené aplikace používáte** – vlastní kategorii v galerii aplikací na webu Azure portal slouží k připojení neuvedené aplikace, která vaše organizace používá. Můžete přidat libovolné aplikace, který podporuje SAML 2.0 jako federované aplikace nebo aplikací, která založeného na HTML přihlašovací stránky jako heslo jednotného přihlašování k aplikaci. Další podrobnosti najdete v tomto článku [přidání vlastní aplikace](../application-config-sso-how-to-configure-federated-sso-non-gallery.md).
+* **Přidání neuvedené aplikace používáte** – vlastní kategorii v galerii aplikací na webu Azure portal slouží k připojení neuvedené aplikace, která vaše organizace používá. Můžete přidat libovolné aplikace, který podporuje SAML 2.0 jako federované aplikace nebo aplikací, která založeného na HTML přihlašovací stránky jako heslo jednotného přihlašování k aplikaci. Další podrobnosti najdete v tomto článku [přidání vlastní aplikace](configure-federated-single-sign-on-non-gallery-applications.md).
 * **Přidat vlastní aplikaci, kterou vyvíjíte** – Pokud jste vyvinuli aplikaci sami, postupujte podle pokynů v dokumentaci pro vývojáře Azure AD k provedení federovaného jednotného přihlašování nebo zřizování s využitím Azure AD graph API. Další informace naleznete v následujících zdrojích:
   
   * [Scénáře ověřování pro Azure AD](../develop/authentication-scenarios.md)

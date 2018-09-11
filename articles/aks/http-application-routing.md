@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/25/2018
 ms.author: laevenso
-ms.openlocfilehash: 93b9075831db356607438288a7c153dde2f8b210
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 8934852fe3d95d0a96af0283c30bba4b3bdb411b
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42061308"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44345875"
 ---
 # <a name="http-application-routing"></a>Směrování aplikace HTTP
 
@@ -237,7 +237,7 @@ Informace o tom, jak nainstalovat řadič protokol HTTPS zabezpečená příchoz
 <!-- LINKS - internal -->
 [az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
 [az-aks-show]: /cli/azure/aks?view=azure-cli-latest#az-aks-show
-[ingress-https]: ./ingress.md
+[ingress-https]: ./ingress-tls.md
 [az-aks-enable-addons]: /cli/azure/aks#az-aks-enable-addons
 
 

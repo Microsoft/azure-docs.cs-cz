@@ -16,12 +16,12 @@ ms.date: 03/20/2018
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 58108bd2851050e96df1b5453ce96856374b7163
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: bd75ecde75d0f22dc66f047cd063dd85807f6f33
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437031"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44304437"
 ---
 # <a name="manage-access-for-external-users-using-rbac"></a>Správa přístupu pro externí uživatele pomocí RBAC
 
@@ -42,7 +42,7 @@ Existují dva běžné příklady při RBAC je použít (to však není omezeno 
 Role RBAC lze udělit pouze **vlastníky** předplatného. Proto správce musíte být přihlášení jako uživatel, který má tuto roli předem přiřazenou nebo vytvoření předplatného Azure.
 
 Na webu Azure Portal vyberte po přihlášení jako správce "Předplatné" a vyberte možnost použít.
-![okno předplatné na webu Azure portal](./media/role-assignments-external-users/0.png) ve výchozím nastavení, pokud uživatel s rolí správce koupil předplatné Azure, uživateli se zobrazí jako **správce účtu**, to se role předplatného. Další informace o rolích předplatné Azure, najdete v části [přidání nebo změna role Správce služby Azure, které spravují předplatné nebo služby](../billing/billing-add-change-azure-subscription-administrator.md).
+![okno předplatné na webu Azure portal](./media/role-assignments-external-users/0.png) ve výchozím nastavení, pokud uživatel s rolí správce koupil předplatné Azure, uživateli se zobrazí jako **správce účtu**, to se role předplatného. Další informace o rolích předplatné Azure, najdete v části [přidat nebo změnit správce předplatného Azure](../billing/billing-add-change-azure-subscription-administrator.md).
 
 V tomto příkladu, uživateli "alflanigan@outlook.com" je **vlastníka** "Bezplatné zkušební verze" tenant "Výchozí tenanta Azure" předplatného v AAD. Jelikož tento uživatel je Tvůrce předplatné Azure s počáteční Account Microsoft "Aplikace Outlook" (Account Microsoft = Outlook, Live atd.) budou mít výchozí název domény pro všechny uživatele v tomto tenantovi přidán **"\@ alflaniganuoutlook.onmicrosoft.com"**. Standardně je vytvořen syntaxe nové domény sestavení název uživatelské jméno a doménu uživatele, který vytvořil tenanta a přidáním rozšíření **". onmicrosoft.com"**.
 Navíc uživatelé můžou přihlásit se pomocí vlastního názvu domény v tenantovi po přidání a ověření pro nového klienta. Další informace o tom, jak ověřit vlastní název domény v tenantovi Azure Active Directory najdete v tématu [přidání vlastního názvu domény do adresáře služby](/active-directory/active-directory-add-domain).

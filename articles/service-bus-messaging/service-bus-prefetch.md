@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2018
 ms.author: spelluru
-ms.openlocfilehash: ff0e3124168927d03816079a4f5ab322663459ac
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: e6dd30fc8da919995849ba818f608604a57a0b37
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702448"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346822"
 ---
 # <a name="prefetch-azure-service-bus-messages"></a>Předběžné načtení zpráv Azure Service Bus
 
@@ -44,7 +44,7 @@ S [ReceiveAndDelete](/dotnet/api/microsoft.servicebus.messaging.receivemode) př
 
 V [PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode#Microsoft_ServiceBus_Messaging_ReceiveMode_PeekLock) přijímat režimu, načíst do předběžného načítání vyrovnávací paměti zpráv pořízené do vyrovnávací paměti v uzamčeném stavu a vypršení časového limitu účtovat poplatky za tikání zámku. Pokud je velká předběžné načtení ve vyrovnávací paměti a zpracování trvá tak dlouho této zprávy, že vyprší během které se nacházejí v předběžné načtení ve vyrovnávací paměti nebo dokonce i za běhu aplikace zpracovává zprávu, může být některé události matoucí pro aplikaci pro zpracování.
 
-Aplikace může získat zprávy s vypršenou platností nebo imminently, u nichž vyprší platnost zámku. Pokud ano, aplikace může zpracovat zprávu, ale pak najdete, že jej nelze dokončit z důvodu platnost zámku. Aplikace můžete zkontrolovat, [LockedUntilUtc](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.lockeduntilutc#Microsoft_Azure_ServiceBus_Core_MessageReceiver_LockedUntilUtc) vlastnost (která je v souladu s posun mezi zprostředkovatele a hodiny v místním počítači hodin). Pokud vypršela platnost zámku zprávy, aplikace musí ignorovat zprávy. třeba žádná volání rozhraní API nebo se zprávou. Pokud zpráva není vypršel, ale doba platnosti má bezprostřední, zámek můžete obnovit a rozšířit pomocí jiné výchozí dobu uzamčení voláním [zprávy. RenewLock()](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_RenewLockAsync_System_String_)
+Aplikace může získat zprávy s vypršenou platností nebo imminently, u nichž vyprší platnost zámku. Pokud ano, aplikace může zpracovat zprávu, ale pak najdete, že jej nelze dokončit z důvodu platnost zámku. Aplikace můžete zkontrolovat, [LockedUntilUtc](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.lockeduntilutc) vlastnost (která je v souladu s posun mezi zprostředkovatele a hodiny v místním počítači hodin). Pokud vypršela platnost zámku zprávy, aplikace musí ignorovat zprávy. třeba žádná volání rozhraní API nebo se zprávou. Pokud zpráva není vypršel, ale doba platnosti má bezprostřední, zámek můžete obnovit a rozšířit pomocí jiné výchozí dobu uzamčení voláním [zprávy. RenewLock()](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_RenewLockAsync_System_String_)
 
 Pokud zámek tiše ve vyrovnávací paměti předběžné načtení vyprší, zpráva je zpracováván jako opuštěnou a je znovu k dispozici pro načtení z fronty. Umožňuje načíst do předběžné načtení ve vyrovnávací paměti; který může způsobit umístěné na konci. Pokud vyrovnávací paměť předběžné načítání nelze pracovali obvykle prostřednictvím při vypršení platnosti zpráv, to způsobí, že mají být použitelné (řádně) zamknuté opakovaně předem načteného, ale nikdy efektivně doručené zprávy a nakonec přesunou do fronty nedoručených zpráv jednou byl překročen maximální počet doručení.
 

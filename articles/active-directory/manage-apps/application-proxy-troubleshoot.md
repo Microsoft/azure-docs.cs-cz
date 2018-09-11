@@ -15,12 +15,12 @@ ms.date: 06/26/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: 20cc91a1754c3d68b447430abf21a3aad5925e05
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: aa7962e3659618b8c5a4f161d667c5e90477acc9
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39365344"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347643"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Poradce při potížích s Proxy aplikací problémy a chybové zprávy
 Pokud dojde k chybám při přístupu k publikované aplikaci nebo publikování aplikace, zkontrolujte následující možnosti a zda správně funguje Proxy aplikací služby Microsoft Azure AD:
@@ -67,7 +67,7 @@ Tato tabulka obsahuje běžné chyby, které pocházejí z nastavení protokolu 
 | 13016 – azure AD nejde načíst lístek protokolu Kerberos jménem uživatele, protože neexistuje žádný hlavní název uživatele v hraničním tokenu nebo v přístupu k souboru cookie. | Je nějaký problém s konfigurací služby tokenů zabezpečení. Opravte konfiguraci deklarace identity UPN v Služba tokenů zabezpečení. |
 | 13019 – azure AD nelze získat lístek protokolu Kerberos jménem uživatele z důvodu následující obecná chyba rozhraní API. | Tato událost může znamenat nesprávné konfigurace mezi službami Azure AD a server řadiče domény nebo problém v konfiguraci data a času v obou počítačích. Řadič domény odmítl lístek protokolu Kerberos vytvořené službou Azure AD. Ověření Azure AD a back-endový aplikační server jsou nakonfigurované správně, zejména v konfiguraci hlavního názvu služby. Zajistěte, aby že Azure AD je připojený ke stejné doméně jako řadič domény a ověřit, že řadič domény vytvoří vztah důvěryhodnosti s Azure AD. Ujistěte se, že konfigurační data a času v Azure AD a řadiči domény synchronizované. |
 | 13020 – azure AD nelze načíst lístek protokolu Kerberos jménem uživatele, protože není definován back-end server hlavní název služby. | Tato událost může znamenat nesprávné konfigurace mezi službami Azure AD a server řadiče domény nebo problém v konfiguraci data a času v obou počítačích. Řadič domény odmítl lístek protokolu Kerberos vytvořené službou Azure AD. Ověření Azure AD a back-endový aplikační server jsou nakonfigurované správně, zejména v konfiguraci hlavního názvu služby. Zajistěte, aby že Azure AD je připojený ke stejné doméně jako řadič domény a ověřit, že řadič domény vytvoří vztah důvěryhodnosti s Azure AD. Ujistěte se, že konfigurační data a času v Azure AD a řadiči domény synchronizované. |
-| 13022 – azure AD nemůže ověřit uživatele, protože back-end server odpoví na pokusy o ověření protokolu Kerberos s chybou HTTP 401. | Tato událost může znamenat nesprávné konfigurace mezi službami Azure AD a back-endový aplikační server, nebo problém v konfiguraci data a času v obou počítačích. Back-end server odmítl lístek protokolu Kerberos vytvořené službou Azure AD. Ověřte, že Azure AD a správně nakonfigurované back-endový aplikační server. Ujistěte se, že konfigurační data a času v Azure AD a jsou synchronizovány back-endový aplikační server. Další informace najdete v tématu [řešení potíží s protokolem Kerberos omezeného delegování konfigurace pro Proxy aplikací](../application-proxy-back-end-kerberos-constrained-delegation-how-to.md).  |
+| 13022 – azure AD nemůže ověřit uživatele, protože back-end server odpoví na pokusy o ověření protokolu Kerberos s chybou HTTP 401. | Tato událost může znamenat nesprávné konfigurace mezi službami Azure AD a back-endový aplikační server, nebo problém v konfiguraci data a času v obou počítačích. Back-end server odmítl lístek protokolu Kerberos vytvořené službou Azure AD. Ověřte, že Azure AD a správně nakonfigurované back-endový aplikační server. Ujistěte se, že konfigurační data a času v Azure AD a jsou synchronizovány back-endový aplikační server. Další informace najdete v tématu [řešení potíží s protokolem Kerberos omezeného delegování konfigurace pro Proxy aplikací](application-proxy-back-end-kerberos-constrained-delegation-how-to.md).  |
 
 ## <a name="end-user-errors"></a>Chyby koncového uživatele
 

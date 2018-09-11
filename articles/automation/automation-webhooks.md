@@ -9,16 +9,16 @@ ms.author: gwallace
 ms.date: 06/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 241fd1f9168ce6bfb8a4dfe97bbb1ef45ddf3f74
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: a65a0b8e054b1d0bb6cd4cbeb2daf9be2b132a9e
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42054629"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44304524"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Spuštění runbooku Azure Automation s webhooku
 
-A *webhooku* umožňuje spuštění konkrétního runbooku ve službě Azure Automation prostřednictvím jednoho požadavku HTTP. To umožňuje externích služeb, jako je Visual Studio Team Services, Githubu, Azure Log Analytics nebo vlastních aplikací ke spouštění sad runbook bez implementace celé řešení pomocí rozhraní API služby Azure Automation.  
+A *webhooku* umožňuje spuštění konkrétního runbooku ve službě Azure Automation prostřednictvím jednoho požadavku HTTP. To umožňuje externích služeb, jako je Azure DevOps Services, Githubu, Azure Log Analytics nebo vlastních aplikací ke spouštění sad runbook bez implementace celé řešení pomocí rozhraní API služby Azure Automation.  
 ![WebhooksOverview](media/automation-webhooks/webhook-overview-image.png)
 
 Můžete porovnat webhooky k dalším metodám spuštění sady runbook [spuštění runbooku ve službě Azure Automation](automation-starting-a-runbook.md)

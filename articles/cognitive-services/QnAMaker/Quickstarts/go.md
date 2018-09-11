@@ -1,20 +1,21 @@
 ---
-title: Přejděte rychlý start pro rozhraní API (V4) – služby Azure Cognitive Services QnA Maker Microsoft | Dokumentace Microsoftu
+title: 'Rychlý start: Přejděte k rozhraní API (V4) nástroje QnA Maker'
+titleSuffix: Azure Cognitive Services
 description: Získat informace a ukázky kódu můžete rychle začít používat Microsoft Translator Text API ve službě Microsoft Cognitive Services v Azure.
 services: cognitive-services
-documentationcenter: ''
-author: v-jaswel
+author: nitinme
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jaswel
-ms.openlocfilehash: d68ff91d74a6c43c6d492aa07e916a842b50e96f
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 5daf4d5e971e840db020e35d1997615723f8e06d
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867585"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44349037"
 ---
 # <a name="quickstart-for-microsoft-qna-maker-api-with-go"></a>Rychlý start pro nástroj QnA Maker Microsoft rozhraní API s využitím Go 
 <a name="HOLTop"></a>

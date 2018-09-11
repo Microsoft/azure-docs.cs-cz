@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: makohli
-ms.openlocfilehash: 7bd0737e7fb26af95eed63696d1ac07c88a9dec4
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 541ab91bf3a79b1b91fa237880f48bd8e0ccc152
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42059393"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44348068"
 ---
 # <a name="advisor-high-availability-recommendations"></a>Poradce doporučení k vysoké dostupnosti
 
@@ -66,6 +66,10 @@ Profily Traffic Manageru s více než jeden koncový bod prostředí vyšší do
 Pokud všechny koncové body v profilu služby Traffic Manager, který je nakonfigurovaný pro směrování blízkých výrazů jsou ve stejné oblasti, uživatelé z jiných oblastí zaznamenat zpoždění připojení. Přidání nebo přesunutí koncový bod do jiné oblasti bude celkový výkon a zajištění lepší dostupnosti, pokud selžou i všechny koncové body v jedné oblasti. Advisor určí profily Traffic Manageru, které jsou nakonfigurované pro bezkontaktní směrování, kde jsou všechny koncové body ve stejné oblasti a doporučuje přidání nebo přesunutí koncový bod do jiné oblasti Azure.
 
 Pokud se profil služby Traffic Manager je nakonfigurovaný pro geografické směrování, provoz se směruje do koncových bodů podle definovaných oblastí. Pokud se nezdaří oblasti, neexistuje žádné předdefinované převzetí služeb při selhání. Máte koncový bod, ve které oblastní seskupení je konfigurována pro "Všechny (celý svět)" vyhnout provoz probíhá vyřazování a vylepšit dostupnost služeb. Advisor identifikuje profily Traffic Manageru, které jsou nakonfigurované pro geografické směrování, pokud neexistuje žádný koncový bod nakonfigurovaný tak, aby mít oblastní seskupení jako "Všechny (celý svět)" a doporučuje provedením této změny konfigurace.
+
+## <a name="use-soft-delete-on-your-azure-storage-account-to-save-and-recover-data-in-the-event-of-accidental-overwrite-or-deletion"></a>Použití obnovitelného odstranění na vašem účtu úložiště Azure k uložení a obnovení dat v případě náhodnému přepsání nebo odstranění
+
+Povolit [obnovitelné odstranění](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete) na vašem účtu úložiště tak, aby odstranit objekty BLOB přechod do stavu obnovitelného odstranění namísto trvale odstraní. Pokud data se přepíší, obnovitelně odstraněného snímku se vygeneruje pro uložení stavu přepsaná data. To vám umožní provést obnovení v případě náhodnému odstranění nebo přepíše. Advisor určí účtech úložiště Azure, které nemají povolené obnovitelné odstranění a naznačuje, že ho povolíte.
 
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Jak získat přístup k doporučení k vysoké dostupnosti v Advisoru
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2018
 ms.author: apimpm
-ms.openlocfilehash: 1b52c64db29e17a0c52eb63721be81844e856b64
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: cd022677da59588eca910a508b2596aa513eff4b
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42055433"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302805"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Autorizace vývojářských účtů pomocí OAuth 2.0 ve službě Azure API Management
 
@@ -63,9 +63,9 @@ Tato příručka ukazuje, jak nakonfigurovat instanci služby API Management pou
 
     ![Nový server OAuth 2.0](./media/api-management-howto-oauth2/oauth-03.png)
 
-    Pro server Azure Active Directory OAuth 2.0 **adresu URL koncového bodu Token** bude mít následující formát, kde `<APPID>` má formát `yourapp.onmicrosoft.com`.
+    Pro server Azure Active Directory OAuth 2.0 **adresu URL koncového bodu Token** bude mít následující formát, kde `<TenantID>` má formát `yourapp.onmicrosoft.com`.
 
-    `https://login.microsoftonline.com/<APPID>/oauth2/token`
+    `https://login.microsoftonline.com/<TenantID>/oauth2/token`
 
     Výchozí nastavení pro **metody ověřování klientů** je **základní**, a **metoda posílání přístupového tokenu** je **autorizační hlavičky**. Tyto hodnoty jsou nakonfigurované v této části formuláře, spolu s **výchozí obor**.
 

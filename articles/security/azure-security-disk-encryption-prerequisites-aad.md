@@ -1,24 +1,18 @@
 ---
 title: Azure Disk Encryption pomocí Azure AD App požadavky (předchozí verze) | Dokumentace Microsoftu
 description: Tento článek obsahuje požadavky pro používání Microsoft Azure Disk Encryption pro virtuální počítače IaaS.
-services: security
-documentationcenter: na
 author: mestew
-manager: MBaldwin
-ms.assetid: 973cbdc1-12bc-4e0e-90cd-f19b045417a2
 ms.service: security
-ms.devlang: na
+ms.subservice: Azure Disk Encryption
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 08/28/2018
 ms.author: mstewart
-ms.openlocfilehash: 701418c4c2f17d151061ffde704b5a7f05551d9c
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.date: 09/10/2018
+ms.openlocfilehash: 510ca032f77da25238ec060d4122a25345c9fb90
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43338457"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346644"
 ---
 # <a name="azure-disk-encryption-prerequisites-previous-release"></a>Požadavky Azure Disk Encryption (předchozí verze)
 
@@ -142,7 +136,7 @@ Příklad příkazy, které je možné připojit datové disky a vytvořte nezby
 
 Pokud jste již obeznámeni s požadavky pro Azure Disk Encryption Key Vault a Azure AD, můžete použít [skript prostředí PowerShell pro Azure Disk Encryption požadované součásti](https://raw.githubusercontent.com/Azure/azure-powershell/master/src/ResourceManager/Compute/Commands.Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1 ). Další informace o používání skriptu požadavky najdete v článku [šifrování virtuálního počítače Quickstart](quick-encrypt-vm-powershell.md) a [Azure Disk Encryption příloha](azure-security-disk-encryption-appendix.md#bkmk_prereq-script). 
 
-1. Vytvoření trezoru klíčů. 
+1. Vytvoření trezoru klíčů 
 2. Nastavení aplikace Azure AD a instanční objekt služby.
 3. Nastavte zásady přístupu trezoru klíčů pro aplikace Azure AD.
 4. Nastavení služby key vault pokročilé zásady přístupu.

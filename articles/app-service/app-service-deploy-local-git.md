@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: dariagrigoriu;cephalin
-ms.openlocfilehash: f461a9a7cc900ce5f8fdba7b255417b1790d3f4d
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: ae8739a65efbe7662a8f72e961d772fecaf4b527
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42055648"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303689"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Místní nasazení z Gitu do služby Azure App Service
 
@@ -101,10 +101,10 @@ Automatizace specifické pro modul runtime ve výstupu, jako je MSBuild pro tech
 
 Přejděte do své aplikace a zkontrolujte, že obsah nasazení.
 
-## <a name="deploy-from-local-git-with-vsts-builds"></a>Nasazení z místního Gitu k sestavení VSTS
+## <a name="deploy-from-local-git-with-azure-devops-services-builds"></a>Nasazení z místního Gitu k sestavení služeb Azure DevOps
 
 > [!NOTE]
-> Pro App Service a vytvořit potřebná sestavení a definice verzí v účtu VSTS, musí váš účet Azure mít roli **vlastníka** ve vašem předplatném Azure.
+> Pro službu App Service k vytváření kanálů nezbytné Azure ve vaší organizaci Azure DevOps služby, musí váš účet Azure mít roli **vlastníka** ve vašem předplatném Azure.
 >
 
 Pokud chcete povolit místní nasazení Gitu pro svou aplikaci pomocí Kudu sestavovací server, přejděte do vaší aplikace v [webu Azure portal](https://portal.azure.com).
@@ -113,14 +113,14 @@ V levém navigačním panelu na stránce vaší aplikace, klikněte na tlačítk
 
 ![](media/app-service-deploy-local-git/portal-enable.png)
 
-Klikněte na tlačítko **průběžné doručování s VSTS** > **pokračovat**.
+Klikněte na tlačítko **průběžné doručování služeb Azure DevOps** > **pokračovat**.
 
 ![](media/app-service-deploy-local-git/vsts-build-server.png)
 
-V **konfigurovat** stránce, konfigurace nového účtu VSTS nebo zadat existující účet. Až budete hotovi, klikněte na tlačítko **pokračovat**.
+V **konfigurovat** stránce, nakonfigurovat novou organizaci Azure DevOps služby nebo zadejte existující organizace. Až budete hotovi, klikněte na tlačítko **pokračovat**.
 
 > [!NOTE]
-> Pokud chcete použít existující účet VSTS, která není uvedená, budete muset [propojit účet VSTS se svým předplatným Azure](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
+> Pokud chcete použít existující služby Azure DevOps organizace, která není uvedená, budete muset [propojení organizace služby Azure DevOps s předplatným Azure](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
 
 V **testovací** zvolte, jestli se má povolit zátěžové testy a pak klikněte na **pokračovat**.
 
@@ -128,7 +128,7 @@ V závislosti na [cenovou úroveň](https://azure.microsoft.com/pricing/details/
 
 V **Souhrn** stránky, zkontrolujte možnosti a klikněte na tlačítko **Dokončit**.
 
-Trvá několik minut, než účet VSTS, až bude připravená. Až to bude hotové, zkopírujte adresu URL úložiště Git v Centru pro nasazení.
+Trvá několik minut, než Azure DevOps služby organizace až bude připravená. Až to bude hotové, zkopírujte adresu URL úložiště Git v Centru pro nasazení.
 
 ![](media/app-service-deploy-local-git/vsts-repo-ready.png)
 
@@ -138,7 +138,7 @@ Zpět v _okně místního terminálu_ přidejte vzdálené úložiště Azure do
 git remote add vsts <url>
 ```
 
-Nasaďte aplikaci do vzdáleného úložiště Azure pomocí následujícího příkazu. Po zobrazení výzvy ve Správci přihlašovacích údajů Git, přihlaste se pomocí vaší uživatelské visualstudio.com. Další metody ověřování, najdete v části [Přehled ověřování VSTS](/vsts/git/auth-overview?view=vsts).
+Nasaďte aplikaci do vzdáleného úložiště Azure pomocí následujícího příkazu. Po zobrazení výzvy ve Správci přihlašovacích údajů Git, přihlaste se pomocí vaší uživatelské visualstudio.com. Další metody ověřování, najdete v části [Přehled ověřování služby Azure DevOps](/vsts/git/auth-overview?view=vsts).
 
 ```bash
 git push vsts master

@@ -9,22 +9,23 @@ editor: ''
 ms.assetid: ''
 ms.service: security
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 8/17/2018
+ms.date: 9/10/2018
 ms.author: tomsh
-ms.openlocfilehash: cc922762f84b3a0658d503c4bfa6eb0079173e4e
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: b6953cc45305cf0812b185187c01149f0345756d
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841543"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346063"
 ---
 # <a name="azure-security-white-papers"></a>Azure Security dokumenty white paper
 | | |
 |-|-|
 |[Úvod&nbsp;k&nbsp;Azure&nbsp;zabezpečení](azure-security.md)|Popisuje kolekci ovládacích prvků zabezpečení implementované v Azure z perspektivy odběratele a Microsoft operations. Poskytuje podrobný přehled o prvky zabezpečení určených pro zákazníky k dispozici v Azure.|
+|[Osvědčené postupy zabezpečení pro řešení Azure](https://azure.microsoft.com/resources/security-best-practices-for-azure-solutions)|Kolekce doporučené postupy zabezpečení pro použití při při navrhování, nasazování a správa cloudových řešení pomocí služby Azure.|
 |[Pokročilá detekce hrozeb](azure-threat-detection.md)|Vodítka, které vás provedou Azure blíží k posouzení ohrožení zabezpečení před internetovými útoky, diagnostiku a analýzy. Vysvětluje, jak Microsoft využívá detekci pokročilých hrozeb k zabezpečení platformy. Také vysvětluje, jak Microsoft zahrnuje tyto mechanismy ve veřejné různé funkce a služby.|
 |[Azure data šifrování neaktivních](azure-security-encryption-atrest.md)|Zaměřuje se na způsob ochrany dat v klidovém stavu i různých komponent zahrnutých v implementaci ochrany dat Azure. Obsahuje přehled výhody a nevýhody ochrany přístupy různých správu klíčů.|
 |[Protokolování a auditování Azure](azure-log-audit.md)|Poskytuje úvod pro generování, shromažďování a analýze protokolů zabezpečení ze služeb hostovaných v Azure. Tyto protokoly můžete získat informace o zabezpečení vašeho nasazení Azure. |

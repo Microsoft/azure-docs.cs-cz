@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/31/2018
 ms.author: marsma
-ms.openlocfilehash: e78be76d68cf75cf9d59f5b5dff86c65524275a9
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 16349af5932987cc0db4295355a0365c8579fcbf
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697234"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44345736"
 ---
 # <a name="network-configuration-in-azure-kubernetes-service-aks"></a>Konfigurace sítě ve službě Azure Kubernetes Service (AKS)
 
@@ -173,11 +173,14 @@ Platí následující dotazy a odpovědi k **Upřesnit** konfiguraci sítě.
 
 Další informace o možnostech sítě v AKS v následujících článcích:
 
-[Statické IP adresy pomocí nástroje pro vyrovnávání zatížení Azure Kubernetes Service (AKS)](static-ip.md)
+- [Statické IP adresy pomocí nástroje pro vyrovnávání zatížení Azure Kubernetes Service (AKS)](static-ip.md)
+- [Použití interního nástroje Azure Container Service (AKS)](internal-lb.md)
 
-[HTTPS příchozího přenosu dat ve službě Azure Container Service (AKS)](ingress.md)
-
-[Použití interního nástroje Azure Container Service (AKS)](internal-lb.md)
+- [Vytvoření základního příchozího přenosu dat řadiče s externí síťové připojení.][aks-ingress-basic]
+- [Povolit doplněk směrování aplikace HTTP][aks-http-app-routing]
+- [Vytvoření řadiče příchozího přenosu dat, který se používá soukromé, interní sítě a IP adresy][aks-ingress-internal]
+- [Vytvoření řadič příchozího přenosu dat s dynamické veřejné IP adresy a konfigurace umožňuje šifrovat automaticky generovat certifikáty TLS][aks-ingress-tls]
+- [Vytvoření kontroler příchozího přenosu dat se statickou veřejnou IP Adresou a konfigurace umožňuje šifrovat automaticky generovat certifikáty TLS][aks-ingress-static-tls]
 
 ### <a name="acs-engine"></a>Modul ACS
 
@@ -200,3 +203,8 @@ Clustery Kubernetes jsou vytvořené pomocí modul ACS podporovat [kubenet] [ ku
 [az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
 [aks-ssh]: ssh.md
 [ManagedClusterAgentPoolProfile]: /azure/templates/microsoft.containerservice/managedclusters#managedclusteragentpoolprofile-object
+[aks-ingress-basic]: ingress-basic.md
+[aks-ingress-tls]: ingress-tls.md
+[aks-ingress-static-tls]: ingress-static-ip.md
+[aks-http-app-routing]: http-application-routing.md
+[aks-ingress-internal]: ingress-internal-ip.md

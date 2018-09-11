@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 050e8efed38c40d8c7da292c0d6865869a07c9f9
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 2a4bae196e956d92548944637509b23f78ceb5d2
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43121705"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44348000"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lessonlycom"></a>Kurz: Integrace Azure Active Directory se službou Lessonly.com
 
@@ -126,7 +126,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     | `https://<companyname>.lessonly.com/auth/saml/metadata`|
 
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte s skutečné přihlašovací adresu URL a identifikátorem. Kontakt [tým podpory Lessonly.com klienta](mailto:dev@lessonly.com) k získání těchto hodnot. 
+    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte s skutečné přihlašovací adresu URL a identifikátorem. Kontakt [tým podpory Lessonly.com klienta](mailto:support@lessonly.com) k získání těchto hodnot. 
 
 1. Na **podpisový certifikát SAML** klikněte na tlačítko **Certificate(Base64)** a uložte soubor certifikátu v počítači.
 
@@ -165,7 +165,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace jednotného přihlašování](./media/lessonly-tutorial/tutorial_lessonly.com_configure.png)
 
-1. Ke konfiguraci jednotného přihlašování na **Lessonly.com** straně, je nutné odeslat na stažený **Certificate(Base64)** a **URL odhlašování SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** k [tým podpory Lessonly.com](mailto:dev@lessonly.com).
+1. Ke konfiguraci jednotného přihlašování na **Lessonly.com** straně, je nutné odeslat na stažený **Certificate(Base64)** a **URL odhlašování SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** k [tým podpory Lessonly.com](mailto:support@lessonly.com).
 
 > [!TIP]
 > Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
@@ -208,7 +208,7 @@ Cílem této části je vytvořte uživatele Britta Simon v Lessonly.com. Lesson
 Neexistuje žádná položka akce pro vás v této části. Vytvoří se nový uživatel během pokusu o přístup k Lessonly.com, pokud ještě neexistuje.
 
 > [!NOTE]
-> Pokud je potřeba ručně vytvořit uživatele, budete muset požádat [tým podpory Lessonly.com](mailto:dev@lessonly.com).
+> Pokud je potřeba ručně vytvořit uživatele, budete muset požádat [tým podpory Lessonly.com](mailto:support@lessonly.com).
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 

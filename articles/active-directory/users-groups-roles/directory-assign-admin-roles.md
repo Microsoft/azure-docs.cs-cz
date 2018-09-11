@@ -14,12 +14,12 @@ ms.date: 09/07/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 9aa8e5e6e683da0cb95583979e96c1d315dffff9
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 2768ba4726ccaf5e2249e356e425aeafaaaf91f6
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094294"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44349241"
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Přiřazení rolí správce v Azure Active Directory
 
@@ -86,7 +86,7 @@ K dispozici jsou následující role správce:
 
 * **[Partnerská podpora úrovně 2](#partner-tier2-support)**: nepoužívejte. Tato role se už nepoužívá a bude odebrána z Azure AD v budoucnu. Tato role je určen pro malý počet těmito partnery společnosti Microsoft a není určena pro obecné použití.
 
-* **[Heslo správce / správce technické podpory](#helpdesk-administrator)**: uživatelé s touto rolí může měnit hesla, spravovat žádosti o služby a monitorovat stav služby. Správců technické podpory můžou měnit hesla jen uživatelům a jiným správcům technické podpory. 
+* **[Heslo správce / správce technické podpory](#helpdesk-administrator)**: uživatelé s touto rolí můžou měnit hesla, zneplatnit obnovovací tokeny, spravovat žádosti o služby a monitorovat stav služby. Správců technické podpory můžou měnit hesla a zneplatnit tokeny obnovení pouze pro uživatele a jiným správcům technické podpory. Zrušení platnosti tokenu obnovení vynutí uživatel znovu přihlásil.
 
   > [!NOTE]
   > V rozhraní Microsoft Graph API, Azure AD Graph API a Azure AD PowerShell tato role nazývá "Správce technické podpory". Je "Heslo správce" v [webu Azure portal](https://portal.azure.com/).
@@ -126,7 +126,7 @@ K dispozici jsou následující role správce:
   >
   >
 
-* **[Správce uživatelských účtů](#user-account-administrator)**: uživatelé s touto rolí můžete vytvářet a spravovat všechny aspekty uživatelů a skupin. Kromě toho tato role obsahuje možnost spravovat lístky podpory a monitorovat stav služby. Platí určitá omezení. Tato role například neumožňuje odstranit globálního správce. Správci účtu uživatele můžou měnit hesla uživatelů, správců technické podpory a ostatní uživatele účtu pouze správci.
+* **[Správce uživatelských účtů](#user-account-administrator)**: uživatelé s touto rolí můžete vytvářet a spravovat všechny aspekty uživatelů a skupin. Kromě toho tato role obsahuje možnost spravovat lístky podpory a monitorovat stav služby. Platí určitá omezení. Tato role například neumožňuje odstranit globálního správce. Správci uživatelského účtu můžete změnit heslo a zneplatnit obnovovací tokeny pro uživatele, správců technické podpory a jiných správců uživatelských účtů. Zrušení platnosti tokenu obnovení vynutí uživatel znovu přihlásil.
 
 | Můžete provést | Nelze provést. |
 | --- | --- |
@@ -1176,6 +1176,6 @@ Výchozí role pro uživatele člena. Můžete všechny čtení a zápis omezeno
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o tom, jak změnit správce pro předplatné služby Azure naleznete v tématu [Postup přidání nebo změna role správce služby Azure](../../billing/billing-add-change-azure-subscription-administrator.md)
+* Další informace o tom, jak přiřadit uživatele jako správce předplatného Azure, najdete v článku [správě přístupu pomocí RBAC a webu Azure portal](../../role-based-access-control/role-assignments-portal.md)
 * Další informace o tom, jak se přístup k prostředkům řídí ve službě Microsoft Azure, najdete v části [Principy přístupu k prostředkům ve službě Azure](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 * Další informace o vztahu Azure Active Directory k předplatnému Azure najdete v tématu [Jak je předplatné Azure propojeno se službou Azure Active Directory](../fundamentals/active-directory-how-subscriptions-associated-directory.md).

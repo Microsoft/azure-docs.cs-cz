@@ -16,12 +16,12 @@ ms.date: 12/12/2017
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
-ms.openlocfilehash: b696325c19d4e1d9c9fe6b85a3c46add756340ea
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 4247ef1ffd1b8d5c5ec393e3ebff20c3e04e32b3
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39443507"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347694"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>Automatické zřizování uživatelů a skupin ze služby Azure Active Directory do aplikací pomocí systému pro mezi doménami Identity Management (SCIM)
 
@@ -84,7 +84,7 @@ Aplikace s podporou SCIM profilu je popsáno v tomto článku můžou být přip
 13. Klikněte na tlačítko **Uložit** spustit služba zřizování Azure AD. 
 14. Je-li synchronizovat jenom přiřazené uživatele a skupiny (doporučeno), je potřeba vybrat možnost **uživatelů a skupin** kartu a přiřaďte uživatele a/nebo skupiny, kterou chcete synchronizovat.
 
-Jakmile se počáteční synchronizace se spustila, můžete použít **protokoly auditu** kartu sledování průběhu, který zobrazuje všechny akce provedené v zřizovací služba ve vaší aplikaci. Další informace o tom, jak číst zřizování protokoly Azure AD najdete v tématu [hlášení o zřizování automatické uživatelských účtů](../active-directory-saas-provisioning-reporting.md).
+Jakmile se počáteční synchronizace se spustila, můžete použít **protokoly auditu** kartu sledování průběhu, který zobrazuje všechny akce provedené v zřizovací služba ve vaší aplikaci. Další informace o tom, jak číst zřizování protokoly Azure AD najdete v tématu [hlášení o zřizování automatické uživatelských účtů](check-status-user-account-provisioning.md).
 
 >[!NOTE]
 >Počáteční synchronizace trvá déle než při následné synchronizace, ke kterým dochází přibližně každých 40 minut za předpokladu, že služba běží. 
@@ -152,7 +152,7 @@ Nejjednodušší způsob, jak implementovat SCIM koncový bod, který může př
 13. Klikněte na tlačítko **Uložit** spustit služba zřizování Azure AD. 
 14. Je-li synchronizovat jenom přiřazené uživatele a skupiny (doporučeno), je potřeba vybrat možnost **uživatelů a skupin** kartu a přiřaďte uživatele a/nebo skupiny, kterou chcete synchronizovat.
 
-Jakmile se počáteční synchronizace se spustila, můžete použít **protokoly auditu** kartu sledování průběhu, který zobrazuje všechny akce provedené v zřizovací služba ve vaší aplikaci. Další informace o tom, jak číst zřizování protokoly Azure AD najdete v tématu [hlášení o zřizování automatické uživatelských účtů](../active-directory-saas-provisioning-reporting.md).
+Jakmile se počáteční synchronizace se spustila, můžete použít **protokoly auditu** kartu sledování průběhu, který zobrazuje všechny akce provedené v zřizovací služba ve vaší aplikaci. Další informace o tom, jak číst zřizování protokoly Azure AD najdete v tématu [hlášení o zřizování automatické uživatelských účtů](check-status-user-account-provisioning.md).
 
 V posledním kroku ověřování ukázka je k otevření souboru TargetFile.csv \AzureAD-BYOA-Provisioning-Samples\ProvisioningAgent\bin\Debug složky na svém počítači s Windows. Po spuštění procesu zřizování tento soubor obsahuje podrobné informace o všech přiřazeny a zřízení uživatelů a skupin.
 
@@ -692,11 +692,11 @@ Následující ilustrace ukazuje zprávy, že Azure AcD odesílá do služby SCI
 
 ## <a name="related-articles"></a>Související články
 * [Rejstřík článků o správě aplikací ve službě Azure Active Directory](../active-directory-apps-index.md)
-* [Automatizace uživatele zřizování a jeho rušení pro aplikace SaaS](../active-directory-saas-app-provisioning.md)
-* [Přizpůsobení mapování atributů pro zřizování uživatelů](../active-directory-saas-customizing-attribute-mappings.md)
-* [Zápis výrazů pro mapování atributů](../active-directory-saas-writing-expressions-for-attribute-mappings.md)
-* [Filtry oborů pro zřizování uživatelů](../active-directory-saas-scoping-filters.md)
-* [Oznámení o zřizování účtů](../active-directory-saas-app-provisioning.md)
+* [Automatizace uživatele zřizování a jeho rušení pro aplikace SaaS](user-provisioning.md)
+* [Přizpůsobení mapování atributů pro zřizování uživatelů](customize-application-attributes.md)
+* [Zápis výrazů pro mapování atributů](functions-for-customizing-application-data.md)
+* [Filtry oborů pro zřizování uživatelů](define-conditional-rules-for-provisioning-user-accounts.md)
+* [Oznámení o zřizování účtů](user-provisioning.md)
 * [Seznam kurzů o integraci aplikací SaaS](../saas-apps/tutorial-list.md)
 
 <!--Image references-->

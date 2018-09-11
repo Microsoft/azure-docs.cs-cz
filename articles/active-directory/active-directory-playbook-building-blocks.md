@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 41d495e38a8360609afe924bb49ccf2f6aea086e
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 4c8f2966df9c33ec227b14c00996f84f39043cdb
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43340035"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44349224"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory doklad o playbook koncept: stavební bloky
 
@@ -340,7 +340,7 @@ Pokud má aplikace zřizování povolená, můžete potřebovat Počkejte někol
 | Krok | Zdroje a prostředky |
 | --- | --- |
 | Odebrání uživatele ze skupiny přiřazené k aplikaci | [Správa členství ve skupinách pro uživatele ve vašem tenantovi Azure Active Directory](fundamentals/active-directory-groups-members-azure-portal.md) |
-| Počkejte několik minut, než se jeho rušení | [Automatické zřizování uživatelů aplikace SaaS ve službě Azure AD: Jak funguje automatické zřizování?](active-directory-saas-app-provisioning.md#how-does-automatic-provisioning-work) |
+| Počkejte několik minut, než se jeho rušení | [Automatické zřizování uživatelů aplikace SaaS ve službě Azure AD: Jak funguje automatické zřizování?](manage-apps/user-provisioning.md#how-does-automatic-provisioning-work) |
 | Na relace samostatné prohlížeče Přihlaste se jako informační pracovník na portálu Moje aplikace a potvrďte tuto dlaždici chybí | http://myapps.microsoft.com |
 
 

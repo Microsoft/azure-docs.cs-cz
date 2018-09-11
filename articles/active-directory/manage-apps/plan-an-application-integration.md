@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 07/16/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: e90ffa0a7b5eb9e622a666fdcfa956763abd7633
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: d52ec316f9f5540d4d0d0fe0bc4e4bf778e1daf7
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44162797"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44345437"
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Integrace Azure Active Directory s aplikacemi získávání Příručka Začínáme
 
@@ -85,7 +85,7 @@ Pokud chcete přidat vlastní aplikaci do Galerie aplikací Azure, přečtěte s
 Následující články popisují způsoby, jak můžete spravovat přístup k aplikacím, jakmile bude se integrovat s Azure AD pomocí konektorů služby Azure AD a Azure AD.
 
 * [Správa přístupu k aplikacím pomocí služby Azure AD](what-is-access-management.md)
-* [Automatizace s využitím konektorů služby Azure AD](../active-directory-saas-app-provisioning.md)
+* [Automatizace s využitím konektorů služby Azure AD](user-provisioning.md)
 * [Přiřazování uživatelů k aplikaci](../active-directory-applications-guiding-developers-assigning-users.md)
 * [Přiřazování skupin k aplikaci](../active-directory-applications-guiding-developers-assigning-groups.md)
 * [Sdílení účtů](../active-directory-sharing-accounts.md)

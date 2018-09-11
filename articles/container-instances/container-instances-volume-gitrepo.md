@@ -8,12 +8,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 06/15/2018
 ms.author: marsma
-ms.openlocfilehash: 34036c5ec9ccd8c502104ce862e4749c59be62b9
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 86d85f9f84b8d3ae3c31ff59089ce264d5e3192e
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43113010"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44304335"
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>Připojit svazek gitRepo ve službě Azure Container Instances
 
@@ -90,17 +90,17 @@ Příklad rozhraní příkazového řádku Azure `--gitrepo-url` parametr pro pr
 --gitrepo-url https://gituser:abcdef1234fdsa4321abcdef@github.com/GitUser/some-private-repository
 ```
 
-Pro úložiště VSTS Git zadejte libovolné uživatelské jméno (můžete použít "vstsuser" jako v následujícím příkladu) v kombinaci s platný token PAT:
+Pro úložiště Git v Azure DevOps zadejte libovolné uživatelské jméno (můžete použít "azuredevopsuser" jako v následujícím příkladu) v kombinaci s platný token PAT:
 
 ```azurecli
---gitrepo-url https://vstsuser:abcdef1234fdsa4321abcdef@vstsaccountname.visualstudio.com/_git/some-private-repository
+--gitrepo-url https://azuredevopsuser:abcdef1234fdsa4321abcdef@azuredevopsorganizationname.visualstudio.com/_git/some-private-repository
 ```
 
-Další informace o osobní přístupové tokeny Githubu a VSTS naleznete v následujících tématech:
+Další informace o osobní přístupové tokeny Githubu a Azure DevOps naleznete v následujících tématech:
 
 GitHub: [vytvoření osobního přístupového tokenu pro příkazový řádek][pat-github]
 
-VSTS: [vytvářet osobní přístupové tokeny k ověření přístupu][pat-vsts]
+Azure DevOps: [vytvářet osobní přístupové tokeny k ověření přístupu][pat-vsts]
 
 ## <a name="next-steps"></a>Další postup
 

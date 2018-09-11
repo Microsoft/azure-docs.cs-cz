@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: ca1ea5fb95ba1c49b5c1e3660c598e8f1443b43c
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 8680a8fa9c460983b88aa4845adcbe72d3a43abf
+ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666263"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44325511"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Řízení přístupu v Azure Data Lake Storage Gen1
 
@@ -121,19 +121,7 @@ Níže jsou uvedeny některé obvyklé scénáře, které vám pomohou pochopit,
 * K výpisu obsahu složky volající potřebuje oprávnění **Číst + Provést**.
 * Pro všechny složky předchůdce volající potřebuje oprávnění **Provést**.
 
-## <a name="viewing-permissions-in-the-azure-portal"></a>Oprávnění k zobrazení v rámci Azure Portal
 
-Z **Průzkumník dat** klikněte v okně účtu Data Lake Storage Gen1 **přístup** zobrazí seznamy ACL pro soubor nebo složku v Průzkumníku dat. Po kliknutí na **Přístup** se zobrazí seznamy ACL pro složku **catalog** v rámci účtu **mydatastore**.
-
-![Data Lake Storage Gen1 seznamy řízení přístupu](./media/data-lake-store-access-control/data-lake-store-show-acls-1.png)
-
-V horní části tohoto okna se zobrazí oprávnění vlastníka. (Na snímku obrazovky je vlastnícím uživatelem Bob.) Pod tím se zobrazí přiřazené přístupové seznamy ACL. 
-
-![Data Lake Storage Gen1 seznamy řízení přístupu](./media/data-lake-store-access-control/data-lake-store-show-acls-simple-view.png)
-
-Kliknutím na **Rozšířené zobrazení** přejdete k podrobnějšímu zobrazení, kde jsou uvedené výchozí seznamy ACL, maska a popis superuživatelů.  Toto okno nabízí také možnost rekurzivního nastavení přístupových a výchozích seznamů ACL pro podřízené soubory a složky na základě oprávnění aktuální složky.
-
-![Data Lake Storage Gen1 seznamy řízení přístupu](./media/data-lake-store-access-control/data-lake-store-show-acls-advance-view.png)
 
 ## <a name="the-super-user"></a>Superuživatel
 
@@ -227,30 +215,27 @@ def access_check( user, desired_perms, path ) :
   return ( (desired_perms & perms & mask ) == desired_perms)
 ```
 
-## <a name="the-mask-and-effective-permissions"></a>Maska a „efektivní oprávnění“
+## <a name="the-mask"></a>Maska
 
-**Maska** je hodnota RWX, která se používá k omezení přístupu pro **pojmenované uživatele**, **vlastnící skupinu** a **pojmenované skupiny** při použití algoritmu kontroly přístupu. Zde jsou uvedeny klíčové koncepce pro masku.
-
-* Maska vytvoří „efektivní oprávnění“. To znamená, že upraví oprávnění v době kontroly přístupu.
-* Masku může přímo upravit vlastník souboru a kterýkoli superuživatel.
-* Maska může odebrat oprávnění k vytvoření efektivního oprávnění. Maska *nemůže* přidávat oprávnění k efektivnímu oprávnění.
-
-Podívejme se na několik příkladů. V následujícím příkladu je maska nastavena na hodnotu **RWX**, což znamená, že maska neodebere žádná oprávnění. Efektivní oprávnění pro pojmenovaného uživatele, vlastnící skupinu a pojmenovanou skupinu se během kontroly přístupu nezmění.
-
-![Data Lake Storage Gen1 seznamy řízení přístupu](./media/data-lake-store-access-control/data-lake-store-acls-mask-1.png)
-
-V následujícím příkladu je maska nastavena na hodnotu **R-X**. To znamená, že v době kontroly přístupu **deaktivuje oprávnění Zapisovat** pro **pojmenovaného uživatele**, **vlastnící skupinu** a **pojmenovanou skupinu**.
-
-![Data Lake Storage Gen1 seznamy řízení přístupu](./media/data-lake-store-access-control/data-lake-store-acls-mask-2.png)
-
-Pro informaci je zde uvedeno, kde masku pro soubor nebo složku najdete na webu Azure Portal.
-
-![Data Lake Storage Gen1 seznamy řízení přístupu](./media/data-lake-store-access-control/data-lake-store-show-acls-mask-view.png)
+Jak je znázorněno v algoritmu kontroly přístupu, maska omezuje přístup pro **pojmenované uživatele**, **vlastnící skupinu**, a **pojmenovaným skupinám**.  
 
 > [!NOTE]
 > Pro nový účet Data Lake Storage Gen1 je použita výchozí maska přístupového seznamu ACL kořenové složky ("/") hodnotou rwx.
 >
 >
+
+### <a name="the-sticky-bit"></a>Bit sticky
+
+Bit sticky představuje pokročilejší funkci systému souborů POSIX. V kontextu Data Lake Storage Gen1 je pravděpodobné, že bude potřeba sticky bit.
+
+V následující tabulce jsou uvedeny fungování bitu sticky v Data Lake Storage Gen1.
+
+| Uživatelská skupina         | File    | Složka |
+|--------------------|---------|-------------------------|
+| Bit sticky **VYPNUTÝ** | Žádný vliv   | Žádný vliv           |
+| Bit sticky **ZAPNUTÝ**  | Žádný vliv   | Brání všem s výjimkou **superuživatelů** a **vlastnícího uživatele** podřízené položky v odstranění nebo přejmenování této podřízené položky.               |
+
+Bit sticky se na webu Azure Portal nezobrazuje.
 
 ## <a name="permissions-on-new-files-and-folders"></a>Oprávnění pro nové soubory a složky
 
@@ -278,34 +263,37 @@ Když je v rámci nadřazené složky vytvořena podřízená složka, výchozí
 
 Toto jsou některá Pokročilá témata, které vám pomohou pochopit, jak se určují seznamy ACL pro Data Lake Storage Gen1 soubory nebo složky.
 
-### <a name="umasks-role-in-creating-the-access-acl-for-new-files-and-folders"></a>Role funkce umask při vytváření přístupového seznamu ACL pro nové soubory a složky
+### <a name="umask"></a>Vlastnost umask
 
-V systému odpovídajícím standardu POSIX se používá obecná koncepce 9bitové hodnoty vlastnosti umask pro nadřazenou složku. Tato hodnota se používá při převodu oprávnění **vlastnícího uživatele**, **vlastnící skupiny** a **jiné** na přístupový seznam ACL nového podřízeného souboru nebo složky. Bity hodnoty umask identifikují bity, které mají být deaktivovány v přístupovém seznamu ACL podřízené položky. Tento postup se proto používá k selektivnímu zabránění šíření oprávnění pro **vlastnícího uživatele**, **vlastnící skupinu** a **jiné**.
+Při vytváření souboru nebo složky, vlastnost umask se používá k úpravě nastavení výchozí seznamy ACL na podřízené položky. Vlastnost umask je 9 bit 9bitové hodnoty na nadřazené složky, které obsahuje hodnota RWX pro **vlastnícího uživatele**, **vlastnící skupinu**, a **jiných**.
 
-V systému HDFS představuje vlastnost umask zpravidla možnost konfigurace v rámci celé lokality a řídí ji správci. Data Lake Storage Gen1 používá **umask v rámci účtu** , který se nedá změnit. Následující tabulka udává vlastnost umask služby Data Lake Storage Gen1.
+Vlastnost umask pro Azure Data Lake Storage Gen1 konstantní hodnoty, který je nastaven na 007. Tato hodnota se přeloží na
 
-| Uživatelská skupina  | Nastavení | Vliv na přístupový seznam ACL nové podřízené položky |
-|------------ |---------|---------------------------------------|
-| Vlastnící uživatel | ---     | Žádný vliv                             |
-| Vlastnící skupina| ---     | Žádný vliv                             |
-| Ostatní       | RWX     | Odebrání oprávnění Číst + Zapisovat + Provést         |
+* umask.owning_user = 0 #---
+* umask.owning_group = 0 #---
+* umask.Other = 7 # RWX
 
-Následující obrázek znázorňuje praktické použití funkce umask. Výsledkem je odebrání oprávnění **Číst + Zapisovat + Provést** pro **jiné** uživatele. Jelikož vlastnost umask neurčila bity pro **vlastnícího uživatele** a **vlastnící skupinu**, nejsou tato oprávnění transformována.
+Tato hodnota umask efektivně znamená, že hodnota pro ostatní se nikdy nepřenáší ve výchozím nastavení na nové podřízené položky – bez ohledu na to, co znamená výchozí seznam ACL. 
 
-![Data Lake Storage Gen1 seznamy řízení přístupu](./media/data-lake-store-access-control/data-lake-store-acls-umask.png)
+Následující psuedocode ukazuje, jak vlastnost umask se použije při vytváření seznamů ACL pro podřízené položky.
 
-### <a name="the-sticky-bit"></a>Bit sticky
+```
+def set_default_acls_for_new_child(parent, child):
+    child.acls = []
+    foreach entry in parent.acls :
+        new_entry = None
+        if (entry.type == OWNING_USER) :
+            new_entry = entry.clone(perms = entry.perms & (~umask.owning_user))
+        elif (entry.type == OWNING_GROUP) :
+            new_entry = entry.clone(perms = entry.perms & (~umask.owning_group))
+        elif (entry.type == OTHER) :
+            new_entry = entry.clone(perms = entry.perms & (~umask.other))
+        else :
+            new_entry = entry.clone(perms = entry.perms )
+        child_acls.add( new_entry )
+```
 
-Bit sticky představuje pokročilejší funkci systému souborů POSIX. V kontextu Data Lake Storage Gen1 je pravděpodobné, že bude potřeba sticky bit.
 
-V následující tabulce jsou uvedeny fungování bitu sticky v Data Lake Storage Gen1.
-
-| Uživatelská skupina         | File    | Složka |
-|--------------------|---------|-------------------------|
-| Bit sticky **VYPNUTÝ** | Žádný vliv   | Žádný vliv           |
-| Bit sticky **ZAPNUTÝ**  | Žádný vliv   | Brání všem s výjimkou **superuživatelů** a **vlastnícího uživatele** podřízené položky v odstranění nebo přejmenování této podřízené položky.               |
-
-Bit sticky se na webu Azure Portal nezobrazuje.
 
 ## <a name="common-questions-about-acls-in-data-lake-storage-gen1"></a>Běžné dotazy týkající se seznamů ACL v Data Lake Storage Gen1
 
@@ -348,15 +336,6 @@ Identifikátor GUID se zobrazí v případě, že daný uživatel již ve služb
 ### <a name="does-data-lake-storage-gen1-support-inheritance-of-acls"></a>Podporuje Data Lake Storage Gen1 dědění seznamů ACL?
 
 Ne, ale výchozí seznamy ACL je možné použít k nastavení seznamů ACL pro podřízené soubory a složku nově vytvořené v nadřazené složce.  
-
-### <a name="what-is-the-difference-between-mask-and-umask"></a>Jaký je rozdíl mezi vlastnostmi maska a umask?
-
-| Vlastnost maska | Vlastnost umask|
-|------|------|
-| Vlastnost **maska** je k dispozici u všech souborů a složek. | **Vlastnost umask** je vlastnost účtu Data Lake Storage Gen1. V Data Lake Storage Gen1 tedy existuje pouze jedna vlastnost umask.    |
-| Vlastnost maska pro soubor nebo složku může změnit vlastnící uživatel nebo vlastnící skupina souboru či superuživatel. | Vlastnost umask nemůže změnit žádný uživatel, dokonce ani superuživatel. Tato hodnota je neměnná, konstantní.|
-| Vlastnost maska se používá při provádění algoritmu kontroly přístupu za běhu a slouží k určení, zda má uživatel oprávnění k provedení operace se souborem nebo složkou. Rolí masky je vytvoření „efektivních oprávnění“ v době kontroly přístupu. | Vlastnost umask se během kontroly přístupu vůbec nepoužívá. Vlastnost umask se používá k určení přístupového seznamu ACL nových podřízených položek složky. |
-| Maska je 3bitová hodnota RWX, která se vztahuje na pojmenovaného uživatele, vlastnící skupinu a pojmenovanou skupinu v době kontroly přístupu.| Vlastnost umask je 9bitová hodnota a vztahuje se na vlastnícího uživatele, vlastnící skupinu a **jiné** pro novou podřízenou položku.|
 
 ### <a name="where-can-i-learn-more-about-posix-access-control-model"></a>Kde najdu další informace o modelu řízení přístupu POSIX?
 

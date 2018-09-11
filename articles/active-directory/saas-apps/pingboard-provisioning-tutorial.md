@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/19/2017
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.openlocfilehash: 93c3b0cbc3ce063aaeb086d089631a8810293bbe
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: e96ea7d212f1a34bb6d10f8c49a15e1b34bfc469
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382529"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44348952"
 ---
 # <a name="tutorial-configure-pingboard-for-automatic-user-provisioning"></a>Kurz: Konfigurace Pingboard pro automatické zřizování uživatelů
 
@@ -89,7 +89,7 @@ Tato část vás provede připojení k rozhraní API zřizování Pingboard uži
 
 1. V části **mapování** vyberte **synchronizace Azure Active Directory uživatelům Pingboard**.
 
-1. V **mapování atributů** , projděte si atributy uživatele ze služby Azure AD synchronizovány se službou Pingboard. Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly uživatelské účty v Pingboard pro operace update. Vyberte **Uložit** potvrďte všechny změny. Další informace najdete v tématu [zřizování mapování atributů uživatelů vlastní](../active-directory-saas-customizing-attribute-mappings.md).
+1. V **mapování atributů** , projděte si atributy uživatele ze služby Azure AD synchronizovány se službou Pingboard. Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly uživatelské účty v Pingboard pro operace update. Vyberte **Uložit** potvrďte všechny změny. Další informace najdete v tématu [zřizování mapování atributů uživatelů vlastní](../manage-apps/customize-application-attributes.md).
 
 1. Povolit služba pro Pingboard, zřizování v Azure AD **nastavení** oddíl, změna **stavu zřizování** k **na**.
 
@@ -97,7 +97,7 @@ Tato část vás provede připojení k rozhraní API zřizování Pingboard uži
 
 Počáteční synchronizace trvá delší dobu než následující synchronizuje, ke kterým dochází přibližně každých 40 minut za předpokladu, že služba běží. Použití **podrobnosti synchronizace** části ke sledování průběhu a odkazech na zřizování protokolů aktivit. Protokoly popisují všechny akce v aplikaci Pingboard zřizovací služba.
 
-Další informace o tom, jak číst zřizování protokoly Azure AD najdete v tématu [zprávu o zřizování automatické uživatelských účtů](../active-directory-saas-provisioning-reporting.md).
+Další informace o tom, jak číst zřizování protokoly Azure AD najdete v tématu [zprávu o zřizování automatické uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 

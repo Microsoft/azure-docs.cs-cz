@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s domény a problémy s certifikátem SSL ve službě Azure web apps | Microsoft Docs
-description: Řešení potíží s domény a problémy s certifikátem SSL ve službě Azure web apps
+title: Řešení potíží s doménou a problémy s certifikátem protokolu SSL ve službě Azure web apps | Dokumentace Microsoftu
+description: Řešení potíží s doménou a problémy s certifikátem protokolu SSL ve službě Azure web apps
 services: app-service\web
 documentationcenter: ''
 author: genlin
@@ -14,183 +14,183 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2018
 ms.author: genli
-ms.openlocfilehash: 59a9011edef49494288716ab16f30e28e440293b
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 5dd87c75638c3d084226becaace5c9454660c907
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34195178"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303672"
 ---
-# <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-web-apps"></a>Řešení potíží s domény a problémy s certifikátem SSL ve službě Azure web apps
+# <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-web-apps"></a>Řešení potíží s doménou a problémy s certifikátem protokolu SSL ve službě Azure web apps
 
-V tomto článku jsou uvedeny běžné problémy, které se můžete setkat při konfiguraci domény nebo certifikát SSL pro vaše webové aplikace Azure. Také popisuje možné příčiny a řešení těchto problémů.
+Tento článek uvádí běžné problémy, které se můžete setkat při konfiguraci domény nebo certifikát SSL pro službu Azure web apps. Také popisuje možné příčiny a řešení těchto problémů.
 
-Pokud potřebujete další pomoc v libovolném bodě v tomto článku, obraťte se na Azure odborníky na [fórech MSDN a Stack Overflow](https://azure.microsoft.com/support/forums/). Alternativně můžete soubor incidentu podpory Azure. Přejděte na [podporu Azure lokality](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**.
+Pokud potřebujete další nápovědu v libovolném bodě v tomto článku, můžete se obrátit odborníků na Azure na [fóra MSDN a Stack Overflow](https://azure.microsoft.com/support/forums/). Alternativně můžete soubor incidentu podpory Azure. Přejděte [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**.
 
 ## <a name="certificate-problems"></a>Problémy s certifikátem
 
-### <a name="you-cant-add-an-ssl-certificate-binding-to-a-web-app"></a>Nelze přidat vazbu certifikátu SSL pro webovou aplikaci 
+### <a name="you-cant-add-an-ssl-certificate-binding-to-a-web-app"></a>Nelze přidat vazbu certifikátu SSL do webové aplikace 
 
-#### <a name="symptom"></a>Příznaky
+#### <a name="symptom"></a>Příznak
 
 Když přidáte vazby SSL, zobrazí se následující chybová zpráva:
 
-"Nepodařilo se přidat vazbu SSL. Nelze nastavit certifikátu pro stávající virtuální IP adresy protože jiné VIP už používá tento certifikát."
+"Nepovedlo se přidat vazbu SSL. Nelze nastavit certifikát pro stávající virtuální IP adresy protože jiná virtuální IP adresa už používá tento certifikát."
 
 #### <a name="cause"></a>Příčina
 
-Tomuto problému může dojít, pokud máte víc vazeb SSL založenou na protokolu IP pro stejnou IP adresu napříč více webových aplikací. Webové aplikace A má například protokolem SSL založenou na protokolu IP s starý certifikát. Webovou aplikaci B má protokolem SSL založenou na protokolu IP pomocí nového certifikátu pro stejnou IP adresu. Když aktualizujete vazbu SSL webové aplikace pomocí nového certifikátu, selže s touto chybou protože stejnou IP adresu se používá pro jiné aplikace. 
+Tomuto problému může dojít, pokud máte více vazeb SSL založených na protokolu IP pro stejnou IP adresu mezi několik webových aplikací. Například webové aplikace A má se původní certifikát SSL na základě IP adresy. Webová aplikace B má SSL založené na protokolu IP pomocí nového certifikátu pro stejnou IP adresu. Při aktualizaci vazby SSL webové aplikace s novým certifikátem selže s touto chybou vzhledem k tomu, že stejné IP adresy se používá pro jiné aplikace. 
 
 #### <a name="solution"></a>Řešení 
 
-Chcete-li tento problém vyřešit, použijte jednu z následujících metod:
+Chcete-li vyřešit tento problém, použijte jednu z následujících metod:
 
-- Odstraňte vazbu založená na IP ve webové aplikaci, která používá starý certifikát. 
-- Vytvořte novou vazbu SSL založenou na protokolu IP, který používá nový certifikát.
+- Odstranění vazby SSL založené na protokolu IP ve webové aplikaci, která používá starý certifikát. 
+- Vytvořte novou vazbu SSL na základě IP adresy, které používá nový certifikát.
 
-### <a name="you-cant-delete-a-certificate"></a>Certifikát nelze odstranit 
+### <a name="you-cant-delete-a-certificate"></a>Nelze odstranit certifikát 
 
-#### <a name="symptom"></a>Příznaky
+#### <a name="symptom"></a>Příznak
 
-Když se pokusíte odstranit certifikát, zobrazí se následující chybová zpráva:
+Při pokusu o odstranění certifikátu, zobrazí se následující chybová zpráva:
 
-"Nelze odstranit certifikát, protože je aktuálně používána v vazbu SSL. Vazba SSL musí odebrat před odstraněním certifikátu."
+"Se nepodařilo odstranit certifikát, protože se aktuálně používá v vazby SSL. Vazba SSL musí být odstraněny než budete moct odstranit certifikát."
 
 #### <a name="cause"></a>Příčina
 
-Tento problém se může vyskytnout, pokud jiné webové aplikace používá certifikát.
+Tomuto problému může dojít, pokud jiné webové aplikace používá certifikát.
 
 #### <a name="solution"></a>Řešení
 
-Odeberte vazbu SSL pro tento certifikát z webové aplikace. Potom se pokuste odstranit certifikát. Pokud je certifikát stále nelze odstranit, vymažte mezipaměť prohlížeče internet a znovu otevřete portál Azure nové okno prohlížeče. Potom se pokuste odstranit certifikát.
+Odeberte vazbu SSL pro tento certifikát z webové aplikace. Pokuste se odstranit certifikát. Pokud stále nelze odstranit certifikát, vymazat mezipaměť internetového prohlížeče a znovu otevřít na webu Azure portal v novém okně prohlížeče. Pokuste se odstranit certifikát.
 
-### <a name="you-cant-purchase-an-app-service-certificate"></a>Není možné dokoupit certifikát služby App Service 
+### <a name="you-cant-purchase-an-app-service-certificate"></a>Není možné koupit na server certifikát služby App Service 
 
-#### <a name="symptom"></a>Příznaky
-Není možné dokoupit [Azure App Service certificate](./web-sites-purchase-ssl-web-site.md) z portálu Azure.
+#### <a name="symptom"></a>Příznak
+Není možné koupit [služby Azure App Service certificate](./web-sites-purchase-ssl-web-site.md) z portálu Azure portal.
 
 #### <a name="cause-and-solution"></a>Příčina a řešení
 Tento problém může vzniknout z některého z následujících důvodů:
 
-- Plán služby App Service je volné nebo sdílené. Tyto cenové úrovně nepodporují SSL. 
+- Plán služby App Service je Free nebo Shared. Tyto cenové úrovně nepodporují SSL. 
 
-    **Řešení**: upgradovat plán služby App Service pro webovou aplikaci na Standard.
+    **Řešení**: upgradovat plán služby App Service pro webové aplikace na úroveň Standard.
 
-- Předplatné nemá platná platební karta.
+- Předplatné nemá uvedenou platnou platební kartu.
 
-    **Řešení**: do svého předplatného přidáte platná platební karta. 
+    **Řešení**: přidejte do svého předplatného uvedenou platnou platební kartu. 
 
-- Nabídky předplatného nepodporuje nákup certifikát služby App Service, například studenty Microsoft.  
+- Nabídky předplatného nepodporuje si koupíte certifikát App Service, jako je například Microsoft Student.  
 
-    **Řešení**: Upgrade vašeho předplatného. 
+    **Řešení**: upgradujte své předplatné. 
 
-- Odběr byl dosažen limit nákupy, které jsou povoleny na předplatném.
+- Odběr byl dosažen limit nákupy, které jsou povoleny v rámci předplatného.
 
-    **Řešení**: mít maximálně 10 nákupy certifikát pro typy předplatného průběžné platby a EA certifikáty služby App Service. Pro ostatní typy předplatného se limit je 3. Chcete-li tento limit zvýšit, kontaktujte [podporu Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
-- Certifikát služby App Service byla označena jako podvodů. Se vám zobrazila tato chybová zpráva: "váš certifikát byl označen příznakem pro možném podvodu. Žádost aktuálně probíhá kontrola. Pokud certifikát není začnou použitelné do 24 hodin, kontaktujte prosím podporu Azure."
+    **Řešení**: certifikátům služby App Service mají omezení na 10 nákupy certifikát pro typy předplatného s průběžnými platbami a EA. Limit pro ostatní typy předplatného je 3. Limit zvýšit, obraťte se na [podpory Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+- Certifikát App Service byla označena jako podvod. Přijal se následující chybová zpráva: "váš certifikát se označil jako potenciálně podvodný. Požadavek je právě probíhá kontrola. Pokud certifikát není autentický během 24 hodin, kontaktujte prosím podporu Azure. "
 
-    **Řešení**: Pokud certifikát je označena jako podvodů a není vyřešen po 24 hodinách, postupujte podle těchto kroků:
+    **Řešení**: Pokud tento certifikát je označen jako podvodů a nevyřeší po 24 hodinách, postupujte podle těchto kroků:
 
     1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
     2. Přejděte na **služby App Service Certificate**a vyberte certifikát.
-    3. Vyberte **konfigurace certifikátu** > **krok 2: ověření** > **ověření domény**. Tento krok odešle e-mailová oznámení k poskytovateli Azure certifikát pro vyřešení problému.
+    3. Vyberte **konfigurace certifikátu** > **krok 2: ověření** > **ověření domény**. Tento krok odešle oznámení e-mailu certifikátů Azure poskytovatelem a vyřešit problém.
 
 ## <a name="domain-problems"></a>Problémy domény
 
-### <a name="you-purchased-an-ssl-certificate-for-the-wrong-domain"></a>Jste zakoupili certifikát protokolu SSL pro nesprávné domény
+### <a name="you-purchased-an-ssl-certificate-for-the-wrong-domain"></a>Jste zakoupili certifikát SSL pro nesprávnou doménou
 
-#### <a name="symptom"></a>Příznaky
+#### <a name="symptom"></a>Příznak
 
-Jste zakoupili certifikát služby App Service pro chybný doménu. Nelze aktualizovat certifikát, který chcete použít správné doméně.
+Jste zakoupili certifikát App Service pro nesprávnou doménou. Nelze aktualizovat certifikát, který používáte správnou doménu.
 
 #### <a name="solution"></a>Řešení
 
-Odstraňte tento certifikát a pak Zakupte nový certifikát.
+Odstranit tento certifikát a potom koupit nový certifikát.
 
-Pokud aktuální certifikát, který se používá nesprávný domény je ve stavu "Vydáno", také platit budete pro daný certifikát. Certifikáty App Service nejsou nevratný, ale můžou kontaktovat [podporu Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) zobrazíte, jestli existují další možnosti. 
+Pokud aktuální certifikát, který používá nesprávnou doménou je ve stavu "Vydáno", můžete také účtovat tohoto certifikátu. Certifikáty služby App Service jsou nevratné, ale můžete kontaktovat [podpory Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , jestli existují další možnosti. 
 
-### <a name="an-app-service-certificate-was-renewed-but-the-web-app-shows-the-old-certificate"></a>Byl obnoven na server certifikát služby App Service, ale webová aplikace zobrazuje starý certifikát 
+### <a name="an-app-service-certificate-was-renewed-but-the-web-app-shows-the-old-certificate"></a>Bylo obnoveno na server certifikát služby App Service, ale webová aplikace se zobrazuje starý certifikát 
 
-#### <a name="symptom"></a>Příznaky
+#### <a name="symptom"></a>Příznak
 
-Certifikát služby App Service byl obnoven, ale webové aplikace, kterou používá certifikát služby App Service je stále používá starý certifikát. Navíc se vám zobrazila upozornění, že je vyžadována protokol HTTPS.
+Platnost certifikátu služby App Service se obnovila, ale webovou aplikaci, která používá certifikát App Service stále používá starý certifikát. Navíc dostanete upozornění, že se musí používat protokol HTTPS.
 
 #### <a name="cause"></a>Příčina 
-Funkce Web Apps služby Azure App Service spouští úlohu na pozadí každých 8 hodin a synchronizuje prostředek certifikátu, pokud nedošlo k žádným změnám. Když otáčet nebo aktualizovat certifikát, někdy aplikace stále načítá starý certifikát a ne nově aktualizovaných certifikát. Důvodem je, že úloha synchronizace prostředků certifikát nebyl spuštěn ještě. 
+Funkce Web Apps služby Azure App Service spouští úlohy na pozadí každých 8 hodin a synchronizuje prostředek certifikátu, pokud nedošlo k žádným změnám. Při otočení nebo aktualizovat certifikát, někdy aplikace stále načítá starý certifikát a není nově aktualizovaný certifikát. Důvodem je, že nebyla dosud spuštěna úloha synchronizovat prostředek certifikátu. 
  
 #### <a name="solution"></a>Řešení
 
-Můžete vynutit synchronizace certifikátu:
+Můžete vynutit synchronizaci certifikátu:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **služby App Service Certificate**a pak vyberte certifikát.
-2. Vyberte **změna hodnoty klíče a synchronizovat**a potom vyberte **synchronizace**. Synchronizace trvá delší dobu pro dokončení. 
-3. Po dokončení synchronizace zobrazit následující upozornění: "Aktualizace úspěšně všechny prostředky pomocí nejnovější certifikátu."
+2. Vyberte **obnovit klíč a synchronizovat**a pak vyberte **synchronizace**. Synchronizace nějakou dobu dokončení trvá. 
+3. Po dokončení synchronizace se zobrazí následující oznámení: "Úspěšně aktualizovány všechny prostředky používaly nejnovější certifikát."
 
-### <a name="domain-verification-is-not-working"></a>Ověření domény není funkční. 
+### <a name="domain-verification-is-not-working"></a>Ověření domény nefunguje 
 
-#### <a name="symptom"></a>Příznaky 
-Certifikát služby App Service vyžaduje ověření domény, než se certifikát připravené k použití. Když vyberete **ověřte**, proces selže.
+#### <a name="symptom"></a>Příznak 
+Certifikát App Service vyžaduje ověření domény předtím, než se certifikát je připravený k použití. Když vyberete **ověřte**, proces selže.
 
 #### <a name="solution"></a>Řešení
-Ručně ověřte svoji doménu tak, že přidáte záznam TXT:
+Přidejte záznam TXT ručně ověřte svoji doménu:
  
-1.  Přejděte k poskytovateli služby DNS (Domain Name), který je hostitelem název vaší domény.
-2.  Přidejte záznam TXT pro vaši doménu, která používá hodnotu tokenu domény, které se zobrazí na portálu Azure. 
+1.  Přejděte k poskytovateli služby DNS (Domain Name), který hostuje váš název domény.
+2.  Přidejte záznam TXT pro vaši doménu, která používá hodnotu domény token, který se zobrazí na webu Azure Portal. 
 
-Počkejte několik minut pro šíření záznamů DNS spustit, a potom vyberte **aktualizovat** tlačítko pro aktivaci ověření. 
+Počkejte několik minut, než proběhne rozšíření DNS, spustit a pak vyberte **aktualizovat** tlačítko spusťte ověření. 
 
-Jako alternativu můžete použít metodu webovou stránku HTML ručně ověřit doménu. Tato metoda umožňuje certifikační autority do potvrdili vlastnictví domény domény, který certifikát je vystavený pro.
+Jako alternativu můžete použít metodu webové stránce HTML ručně ověřit vaši doménu. Tato metoda umožňuje certifikační autoritě potvrdit vlastnictví domény, který certifikát je vydaný pro domény.
 
-1.  Vytvoření souboru HTML, který je s názvem {tokenu ověření domény} .html. Obsah tohoto souboru musí být hodnota tokenu ověření domény.
-3.  Odešlete tento soubor v kořenovém adresáři webového serveru, který je hostitelem vaší domény.
+1.  Vytvořte soubor HTML, který je pojmenován {token pro ověření domény} .html. Obsah tohoto souboru by měla být hodnota tokenu pro ověření domény.
+3.  Odešlete tento soubor v kořenové složce webového serveru, který je hostitelem vaší domény.
 4.  Vyberte **aktualizovat** zkontrolovat stav certifikátu. Může trvat několik minut na dokončení ověření.
 
-Například pokud jste zakoupení standardní certifikátu pro azure.com s tokenu 1234abcd ověření domény, webové žádosti na http://azure.com/1234abcd.html by měla vrátit 1234abcd. 
+Například, pokud si kupujete standardní certifikát pro azure.com s token 1234abcd ověření domény, webové žádosti na http://azure.com/1234abcd.html by měla vrátit 1234abcd. 
 
 > [!IMPORTANT]
-> Pořadí certifikát má pouze 15 dní na provedení operace ověření domény. Po 15 dnech odmítne certifikační autority certifikátu a vám není účtován certifikát. V takovém případě odstraňte tento certifikát a zkuste to znovu.
+> Pořadí certifikátů má pouze 15 dnů, dokončit operace ověření domény. Po 15 dnech certifikační autorita zamítne certifikát a se vám neúčtují poplatky pro certifikát. V takovém případě odstranit tento certifikát a zkuste to znovu.
 >
 > 
 
-### <a name="you-cant-purchase-a-domain"></a>Není možné dokoupit domény
+### <a name="you-cant-purchase-a-domain"></a>Není možné koupit doménu
 
-#### <a name="symptom"></a>Příznaky
-Nelze zakoupení domény z domény webové aplikace nebo služby App Service na portálu Azure.
+#### <a name="symptom"></a>Příznak
+Nelze nakupovat domény z domény webové aplikace nebo služby App Service na webu Azure Portal.
 
 #### <a name="cause-and-solution"></a>Příčina a řešení
 
-K tomuto problému dochází pro jednu z následujících důvodů:
+K tomuto problému dochází z jednoho z následujících důvodů:
 
-- Neexistuje žádná platební karta na předplatné Azure nebo z platební karty je neplatný.
+- Neexistuje žádná platební karta u předplatného Azure nebo platební karty je neplatné.
 
-    **Řešení**: do svého předplatného přidáte platná platební karta.
+    **Řešení**: přidejte do svého předplatného uvedenou platnou platební kartu.
 
-- Nejste se vlastník předplatného, takže nemáte oprávnění k nákupu domény.
+- Nejste se vlastník předplatného, tak, že nemáte oprávnění k nákupu domény.
 
-    **Řešení**: [přidat roli vlastníka](../billing/billing-add-change-azure-subscription-administrator.md) ke svému účtu. Nebo se obraťte na správce předplatného získat oprávnění k nákupu domény.
-- Dosáhli jste limitu pro nákup domén na vaše předplatné. Současný limit je 20.
+    **Řešení**: [přiřazení role vlastníka](../role-based-access-control/role-assignments-portal.md) ke svému účtu. Nebo se obraťte na správce předplatného o získání oprávnění kupovat doménu.
+- Dosáhli jste limitu pro nákup domén v rámci předplatného. Současný limit je 20.
 
-    **Řešení**: Chcete-li požádat o zvýšení limitu, obraťte se na [podporu Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
-- Typ vašeho předplatného Azure nepodporuje nákup domény služby App Service.
+    **Řešení**: Chcete-li požádat o zvýšení limitu, obraťte se na [podpory Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+- Typ vašeho předplatného Azure nepodporuje koupit doménu služby App Service.
 
-    **Řešení**: Upgrade vašeho předplatného Azure k jinému typu předplatného, jako je například předplatné průběžnými platbami.
+    **Řešení**: upgradu vašeho předplatného Azure na jiný typ předplatného, jako je například předplatné s průběžnými platbami.
 
-### <a name="you-cant-add-a-host-name-to-a-web-app"></a>Název hostitele nelze přidat do webové aplikace 
+### <a name="you-cant-add-a-host-name-to-a-web-app"></a>Nelze přidat název hostitele do webové aplikace 
 
-#### <a name="symptom"></a>Příznaky
+#### <a name="symptom"></a>Příznak
 
-Když přidáte název hostitele, proces selže, pokud chcete ověřit a ověření domény.
+Když přidáte název hostitele, proces selže a ověřit doménu ověřit.
 
 #### <a name="cause"></a>Příčina 
 
-K tomuto problému dochází pro jednu z následujících důvodů:
+K tomuto problému dochází z jednoho z následujících důvodů:
 
-- Nemáte oprávnění k přidávání název hostitele.
+- Nemáte oprávnění přidat název hostitele.
 
-    **Řešení**: požádejte správce předplatného tak, abyste získali oprávnění k přidávání název hostitele.
-- Nebylo možné ověřit vlastnictví domény.
+    **Řešení**: požádejte správce předplatného o udělení oprávnění přidat název hostitele.
+- Nepovedlo se ověřit vaše vlastnictví domény.
 
-    **Řešení**: Ověřte, zda je správně nakonfigurována vaše CNAME nebo záznam. Pokud chcete namapovat vlastní doménu do webové aplikace, vytvořte záznam CNAME nebo záznam. Pokud chcete použít kořenovou doménu, musíte použít záznamy A a TXT:
+    **Řešení**: Ověřte, zda je správně nakonfigurován váš záznam CNAME nebo záznam. K mapování vlastní domény na webovou aplikaci, vytvořte záznam CNAME nebo záznam. Pokud chcete použít kořenovou doménu, musíte použít záznamy A a TXT:
 
     |Typ záznamu|Hostitel|Přejděte na|
     |------|------|-----|
@@ -200,73 +200,73 @@ K tomuto problému dochází pro jednu z následujících důvodů:
 
 ### <a name="dns-cant-be-resolved"></a>Nelze přeložit DNS
 
-#### <a name="symptom"></a>Příznaky
+#### <a name="symptom"></a>Příznak
 
-Jste dostali se následující chybová zpráva:
+Dostanete se následující chybová zpráva:
 
 "Záznam DNS nebyl nalezen."
 
 #### <a name="cause"></a>Příčina
-K tomuto problému dochází pro jednu z následujících důvodů:
+K tomuto problému dochází z jednoho z následujících důvodů:
 
-- Čas na dobu, za provozu (TTL) jestli nevypršela platnost. Zkontrolujte konfiguraci DNS pro doménu, abyste zjistili hodnota TTL a potom počkejte, než po dobu vypršení platnosti.
+- Time to live (TTL) období nevypršela platnost. Zkontrolujte konfiguraci DNS pro vaši doménu k určení hodnoty TTL a potom počkejte období vypršení platnosti.
 - Konfigurace DNS je nesprávná.
 
 #### <a name="solution"></a>Řešení
-- Počkejte, než 48 hodin pro tento problém se vyřeší.
-- Pokud ve své konfiguraci DNS může změnit nastavení TTL, změňte hodnotu na 5 minut, zda se podařilo problém vyřešit.
-- Použití [WhatsmyDNS.net](https://www.whatsmydns.net/) k ověření, že doménu odkazují na IP adresu webové aplikace. Pokud tomu tak není, konfigurovat záznam A správnou IP adresu webové aplikace.
+- Počkejte, až 48 hodin pro tento problém sám nevyřeší.
+- Pokud nastavení TTL můžete změnit v konfiguraci DNS, změňte hodnotu na 5 minut, pokud chcete zobrazit, zda tento problém řeší.
+- Použití [WhatsmyDNS.net](https://www.whatsmydns.net/) k ověření, že vaše doména odkazuje na IP adresu webové aplikace. Pokud ne, nakonfigurujte záznam na správnou IP adresu webové aplikace.
 
-### <a name="you-need-to-restore-a-deleted-domain"></a>Je třeba obnovit odstraněné domény 
+### <a name="you-need-to-restore-a-deleted-domain"></a>Je třeba obnovit Odstraněná doména 
 
-#### <a name="symptom"></a>Příznaky
-Vaše doména je už nebude viditelné v portálu Azure.
+#### <a name="symptom"></a>Příznak
+Vaše doména už nejsou viditelné na webu Azure Portal.
 
 #### <a name="cause"></a>Příčina 
-Vlastník předplatného může omylem odstranili domény.
+Vlastníkem předplatného může-li neúmyslně domény.
 
 #### <a name="solution"></a>Řešení
-Pokud vaše doména byla odstraněna před méně než 7 dní, doménu ještě nezačala proces odstraňování. V takovém případě můžete koupit ve stejné doméně znovu na portálu Azure v rámci stejného předplatného. (Nezapomeňte do vyhledávacího pole zadejte název přesný domény.) Vám nebude nic účtováno znovu pro tuto doménu. Pokud doména byla odstraněna před více než 7 dní, obraťte se na [podporu Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) nápovědu k obnovení domény.
+Pokud vaše doména byla odstraněna před méně než sedm dní, doménu ještě nezačala proces odstranění. V takovém případě můžete koupit stejné domény znovu na webu Azure portal v rámci stejného předplatného. (Nezapomeňte do vyhledávacího pole zadejte název domény přesné.) Vám nebude účtovat znovu pro tuto doménu. Pokud domény byl odstraněn před více než sedm dnů, obraťte se na [podpory Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) nápovědu k obnovení domény.
 
-### <a name="a-custom-domain-returns-a-404-error"></a>Vlastní doménu vrátí chybu 404 
+### <a name="a-custom-domain-returns-a-404-error"></a>Vlastní domény vrátí chybu 404 
 
-#### <a name="symptom"></a>Příznaky
+#### <a name="symptom"></a>Příznak
 
-Když přejdete na web pomocí vlastní název domény, zobrazí se následující chybová zpráva:
+Přejděte na web s použitím vlastního názvu domény zobrazí následující chybová zpráva:
 
-"Chyba 404 webové aplikace nebyl nalezen."
+"Chyba 404webovou aplikaci nebyl nalezen."
 
 
 #### <a name="cause-and-solution"></a>Příčina a řešení
 
-**Příčina 1** 
+**Příčiny 1** 
 
 Vlastní domény, který jste nakonfigurovali chybí záznam CNAME nebo A. 
 
-**Řešení pro příčina 1**
+**Řešení příčiny 1**
 
 - Pokud jste přidali záznam A, ujistěte se, že je taky přidaný záznam TXT. Další informace najdete v tématu [vytvořte záznam a](./app-service-web-tutorial-custom-domain.md#create-the-a-record).
-- Pokud nemáte používat kořenové domény pro vaši webovou aplikaci, doporučujeme použít záznam CNAME místo záznam.
-- Nepoužívejte záznam CNAME a záznam A ve stejné doméně. To může způsobit konflikt a zabrání přeloženy domény. 
+- Pokud není nutné používat kořenové domény pro webovou aplikaci, doporučujeme použít záznam CNAME, který místo záznam.
+- Nepoužívejte záznam CNAME i záznam stejné domény. To může způsobit konflikt a zabránit doméně Probíhá řešení. 
 
-**Příčina 2** 
+**Příčiny 2** 
 
-Internetového prohlížeče může být stále ukládání starou IP adresu pro vaši doménu. 
+Internetového prohlížeče může přesto být ukládání do mezipaměti starou IP adresu pro vaši doménu. 
 
-**Řešení pro příčina 2**
+**Řešení příčiny 2**
 
-Zrušte zaškrtnutí v prohlížeči. Pro zařízení s Windows, můžete spustit příkaz `ipconfig /flushdns`. Použití [WhatsmyDNS.net](https://www.whatsmydns.net/) k ověření, že doménu odkazují na IP adresu webové aplikace. 
+Zrušte v prohlížeči. Pro zařízení s Windows, můžete spustit příkaz `ipconfig /flushdns`. Použití [WhatsmyDNS.net](https://www.whatsmydns.net/) k ověření, že vaše doména odkazuje na IP adresu webové aplikace. 
 
-### <a name="you-cant-add-a-subdomain"></a>Nelze přidat subdoména 
+### <a name="you-cant-add-a-subdomain"></a>Nelze přidat subdoménu 
 
-#### <a name="symptom"></a>Příznaky
+#### <a name="symptom"></a>Příznak
 
-Nový název hostitele nelze přidat do webové aplikace přiřadit subdoména.
+Nový název hostitele nelze přidat do webové aplikace k přiřazení subdomény.
 
 #### <a name="solution"></a>Řešení
 
-- Zeptejte se správce předplatného, abyste měli jistotu, že máte oprávnění k přidání názvu hostitele do webové aplikace.
-- Pokud potřebujete další subdomény, doporučujeme změnit hostování domény do Azure DNS. Pomocí Azure DNS, můžete přidat 500 názvy hostitelů do vaší webové aplikace. Další informace najdete v tématu [přidat subdoména](https://blogs.msdn.microsoft.com/waws/2014/10/01/mapping-a-custom-subdomain-to-an-azure-website/).
+- Obraťte se na správce předplatného, abyste měli jistotu, že máte oprávnění k přidání názvu hostitele do webové aplikace.
+- Pokud potřebujete další subdomény, doporučujeme změnit hostování domény do Azure DNS. S využitím Azure DNS, můžete přidat hostitele 500 do vaší webové aplikace. Další informace najdete v tématu [přidání subdomény](https://blogs.msdn.microsoft.com/waws/2014/10/01/mapping-a-custom-subdomain-to-an-azure-website/).
 
 
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/27/2017
 ms.author: daveba
-ms.openlocfilehash: 93ca9cd55d89b87f8436a632fb5a25657a4bfca6
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 9c2ff6ef87290db0658d064b30d3c032b609dc92
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44157732"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346777"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-virtual-machine-scale-sets-using-powershell"></a>Konfigurace spravovaných identit pro prostředky Azure na škálovací sady virtuálních počítačů pomocí Powershellu
 
@@ -35,7 +35,9 @@ V tomto článku pomocí Powershellu, se dozvíte, jak k provádění spravovan�
 
 - Pokud nejste obeznámeni s spravovaných identit pro prostředky Azure, podívejte se [oddílu přehled](overview.md). **Nezapomeňte si přečíst [rozdíl mezi systém přiřadil a identity přiřazené uživateli spravované](overview.md#how-does-it-work)**.
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
-- Váš účet k provádění operací správy v tomto článku, potřebuje následující přiřazení rolí:
+- Váš účet k provádění operací správy v tomto článku, potřebuje následující přiřazení řízení přístupu na základě rolí Azure:
+    > [!NOTE]
+    > Žádné další Azure vyžaduje přiřazení rolí adresáře AD.
     - [Přispěvatel virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) vytvoření virtuálního počítače škálovací sady a povolení a odeberte systém přiřadil spravované a/nebo uživatelsky přiřazené identity spravované ze škálovací sady virtuálních počítačů.
     - [Spravovaná identita Přispěvatel](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) role k vytvoření uživatel přiřazenou se identita spravované.
     - [Operátor Identity spravované](/azure/role-based-access-control/built-in-roles#managed-identity-operator) roli přiřadit a odebrat uživatel přiřazenou se identita spravované od a do škálovací sady virtuálních počítačů.

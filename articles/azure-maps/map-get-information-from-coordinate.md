@@ -3,18 +3,18 @@ title: Zobrazení informací o koordinují s Azure Maps | Dokumentace Microsoftu
 description: Jak zobrazit informace o adresu na mapě, když uživatel vybere souřadnice
 author: jingjing-z
 ms.author: jinzh
-ms.date: 09/07/2018
+ms.date: 09/08/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: d1baa4adc555e65c4a25928d19f201dba6109142
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 993d1da4b2a99ec0f30a5a685835d9f6b6d35a9e
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44157680"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302890"
 ---
 # <a name="get-information-from-a-coordinate"></a>Získání informací ze souřadnice
 
@@ -22,7 +22,7 @@ Tento článek popisuje, jak telefonování adresa zpětného vyhledávání, a 
 
 Existují dva způsoby, jak vytvořit adresu zpětného vyhledávání, jednou je pomocí dotazu [mapy zpětná adresa rozhraní API Azure Search](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) prostřednictvím služby modulu a druhý je tím, že [XMLHttpRequest](https://xhr.spec.whatwg.org/) rozhraní API k dotazování Adresa. Můžeme probírat i níže.
 
-## <a name="use-the-service-module-to-make-a-reverse-address-search"></a>Používejte modul služby, aby adresa zpětného vyhledávání
+## <a name="making-a-reverse-search-request-via-service-module"></a>Provádění zpětného vyhledávání požadavku prostřednictvím modulu service
 
 ### <a name="understand-the-code"></a>Vysvětlení kódu
 
@@ -41,7 +41,7 @@ Poslední blok kódu přidá naslouchací proces událostí pro kliknutí myší
 
 Pro úspěšné odpovědi shromažďuje adresy pro kliknutí na umístění a definuje obsah automaticky otevíraného okna a umístění prostřednictvím [setPopupOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#setpopupoptions) funkce třídy automaticky otevíraného okna.
 
-## <a name="use-xmlhttprequest-to-make-a-reverse-address-search"></a>Používejte XMLHTTPRequest, aby adresa zpětného vyhledávání
+## <a name="making-a-reverse-search-request-via-xmlhttprequest"></a>Provádění zpětného vyhledávání požadavku prostřednictvím XMLHttpRequest
 
 ### <a name="understand-the-code"></a>Vysvětlení kódu
 

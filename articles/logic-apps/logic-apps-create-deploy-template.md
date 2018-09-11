@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: 85928ec6-d7cb-488e-926e-2e5db89508ee
 ms.date: 10/18/2016
-ms.openlocfilehash: 68e655490470db6aade53c6f3523d0c9d87c3fbd
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 393543bbb1891e14ed67487aff26a7bda1eebcd5
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123461"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44304233"
 ---
 # <a name="create-azure-resource-manager-templates-for-deploying-logic-apps"></a>Vytvoření šablony Azure Resource Manageru pro nasazení aplikací logiky
 
@@ -173,7 +173,7 @@ Pokud máte stávající projekt skupiny prostředků, můžete přidat aplikace
 
 ## <a name="deploy-a-logic-app-template"></a>Nasazení šablony aplikace logiky
 
-Šablony můžete nasadit pomocí všechny nástroje, jako je PowerShell, rozhraní REST API [Visual Studio Team Services Release Management](#team-services)a šablony nasazení na webu Azure portal.
+Šablony můžete nasadit pomocí všechny nástroje, jako je PowerShell, rozhraní REST API [Azure DevOps Release Management](#team-services)a šablony nasazení na webu Azure portal.
 K ukládání hodnot pro parametry, doporučujeme také, že vytvoříte [soubor parametrů](../azure-resource-manager/resource-group-template-deploy.md#parameter-files).
 Zjistěte, jak [nasazení prostředků pomocí šablon Azure Resource Manageru a Powershellu](../azure-resource-manager/resource-group-template-deploy.md) nebo [nasazení prostředků pomocí šablon Azure Resource Manageru a webu Azure portal](../azure-resource-manager/resource-group-template-deploy-portal.md).
 
@@ -185,13 +185,13 @@ Připojení OAuth, otevřete aplikaci logiky v návrháři pro Logic Apps, a tat
 Na Githubu v části je ukázkový skript [LogicAppConnectionAuth](https://github.com/logicappsio/LogicAppConnectionAuth) projektu.
 
 <a name="team-services"></a>
-## <a name="visual-studio-team-services-release-management"></a>Visual Studio Team Services Release Management
+## <a name="azure-devops-release-management"></a>Azure DevOps Release Management
 
-Běžný scénář pro nasazení a správu prostředí je použití nástroje, jako je Release Management ve službě Visual Studio Team Services, pomocí šablony nasazení aplikace logiky. Visual Studio Team Services zahrnuje [nasazení skupiny prostředků Azure](https://github.com/Microsoft/vsts-tasks/tree/master/Tasks/DeployAzureResourceGroup) úloh, můžete přidat do jakékoli sestavení nebo kanál verze. Je potřeba mít [instanční objekt služby](https://blogs.msdn.microsoft.com/visualstudioalm/2015/10/04/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/) pro autorizace k nasazení a pak vytvářet definice vydané verze.
+Běžný scénář pro nasazení a správu prostředí je použití nástroje, jako je Release Management v Azure DevOps s šablony nasazení aplikace logiky. Zahrnuje Azure DevOps [nasazení skupiny prostředků Azure](https://github.com/Microsoft/vsts-tasks/tree/master/Tasks/DeployAzureResourceGroup) úloh, můžete přidat do jakékoli sestavení nebo kanál verze. Je potřeba mít [instanční objekt služby](https://blogs.msdn.microsoft.com/visualstudioalm/2015/10/04/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/) pro autorizaci k nasazení a pak můžete vygenerovat kanál pro vydávání verzí.
 
-1. V produktu Release Management, vyberte **prázdný** tak, že vytvoříte prázdnou definici.
+1. V produktu Release Management, vyberte **prázdný** tak, že vytvoříte kanál prázdný.
 
-    ![Vytvořit prázdnou definici][1]
+    ![Vytvoření prázdné kanálu][1]
 
 2. Vyberte všechny prostředky, které potřebujete v takovém případě pravděpodobně včetně šablony aplikace logiky, který je generován ručně nebo jako součást procesu sestavení.
 3. Přidat **nasazení skupiny prostředků Azure** úloh.

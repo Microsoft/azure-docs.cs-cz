@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/21/2018
+ms.date: 09/06/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6c080d44aed7c2b3db54a34f4b711db66681cbe9
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.openlocfilehash: 5de5177db92e4069710e597a41c44287e5af90b2
+ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42054471"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44325290"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie vydaných verzí
 Tým služby Azure Active Directory (Azure AD) pravidelně aktualizuje s novými funkcemi a funkce služby Azure AD Connect. Ne všechny položky se vztahují na všechny cílové skupiny.
@@ -36,6 +36,16 @@ Kroky pro upgrade z Azure AD Connect | Různé způsoby [upgrade z předchozí v
 Požadovaná oprávnění | Oprávnění potřebná k aktualizaci použít, najdete v části [účtech a oprávněních](./active-directory-aadconnect-accounts-permissions.md#upgrade).
 
 Stáhnout | [Stažení služby Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771).
+
+
+ 
+## <a name="118820"></a>1.1.882.0  
+
+9/7/2018: všeobecně dostupné ke stažení, nebudou vydání verze pro automatický upgrade 
+
+### <a name="fixed-issues"></a>Opravené problémy  
+
+Azure AD Connect Upgrade selže, pokud vždy na dostupnosti SQL je nakonfigurovaná pro databáze ADSync. Tato oprava hotfix řeší tento problém a umožňuje úspěch upgradu. 
 
 ## <a name="118800"></a>1.1.880.0
 
@@ -91,7 +101,7 @@ Nové funkce a vylepšení
 - Konfigurace zpětného zápisu zařízení se teď spravuje výhradně v Azure AD Connect průvodce.
 - Řešení potíží s nový PowerShell modul volané ADSyncTools.psm1 se přidá, který slouží k řešení problémů s připojením SQL a různé další nástroje. Další informace o modulu ADSyncTools [tady](active-directory-aadconnect-tshoot-sql-connectivity.md). 
 - Byla přidána nová dodatečnou úlohu "Nakonfigurovat možnosti zařízení". Úlohu můžete nakonfigurovat následující dvě operace: 
-    -   **Připojení k hybridní službě Azure AD**: Pokud má místní prostředí AD nároky na místo a chcete také výhody poskytované službou Azure Active Directory, můžete implementovat hybridních zařízení připojených k Azure AD. Jde o zařízení, která jsou obě, připojené k vaší místní služby Active Directory a Azure Active Directory.
+    -   **Připojení k hybridní službě Azure AD**: Pokud má místní prostředí AD nároky na místo a chcete také výhody poskytované službou Azure Active Directory, můžete implementovat hybridních zařízení připojených k Azure AD. Jedná se o zařízení připojená k místní službě Active Directory i k Azure Active Directory.
     -   **Zpětný zápis zařízení**: zpětný zápis zařízení se používá k povolení podmíněného přístupu založené na zařízení se službou AD FS (2012 R2 nebo vyšší) chráněný zařízení
 
    >[!NOTE] 

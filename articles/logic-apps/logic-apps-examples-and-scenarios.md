@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: e06311bc-29eb-49df-9273-1f05bbb2395c
 ms.date: 01/31/18
-ms.openlocfilehash: f35822351a1ff5176548d67c8d94ada02f470421
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 0d5a7cb97636b9ca3aabf6c4199ce9e41bc1665d
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123704"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44304420"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Běžné scénáře, příklady, kurzy a názorné postupy pro Azure Logic Apps
 
@@ -76,7 +76,7 @@ Aplikace logiky zahrnují bohaté možnosti pro pokročilé řízení toku, nap�
 
 ## <a name="deploy-and-manage-logic-apps"></a>Nasazení a Správa aplikací logiky
 
-Můžete plně vývoj a nasazení aplikací logiky s využitím sady Visual Studio, Visual Studio Team Services, nebo jakékoli jiné správy zdrojového kódu a automatické sestavení nástroje. Pro podporu nasazení pro pracovní postupy a závislé připojení v šabloně prostředku, aplikace logiky pomocí šablony nasazení Azure resource. Nástroje sady Visual Studio automaticky vygenerovat tyto šablony, které můžete vrátit se změnami do správy zdrojového kódu pro správu verzí.
+Můžete plně vývoj a nasazení aplikací logiky s využitím sady Visual Studio, Azure DevOps, nebo jakékoli jiné správy zdrojového kódu a automatické sestavení nástroje. Pro podporu nasazení pro pracovní postupy a závislé připojení v šabloně prostředku, aplikace logiky pomocí šablony nasazení Azure resource. Nástroje sady Visual Studio automaticky vygenerovat tyto šablony, které můžete vrátit se změnami do správy zdrojového kódu pro správu verzí.
 
 * [Vytvoření a nasazení aplikací logiky s využitím sady Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
 * [Zapnout sledování, protokolování a výstrahy pro existující aplikace logiky](../logic-apps/logic-apps-monitor-your-logic-apps.md)

@@ -1,20 +1,21 @@
 ---
-title: Rychlý start C# pro rozhraní API (V4) – služby Azure Cognitive Services QnA Maker Microsoft | Dokumentace Microsoftu
+title: 'Rychlý start: C# pro rozhraní API (V4) nástroje QnA Maker'
+titleSuffix: Azure Cognitive Services
 description: Získat informace a ukázky kódu můžete rychle začít používat Microsoft Translator Text API ve službě Microsoft Cognitive Services v Azure.
 services: cognitive-services
-documentationcenter: ''
-author: v-jaswel
+author: nitinme
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 4bcc52547b5610bcb8dfa9b0cc56b2afc40e3c32
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 3c0248b08dbaa1d81843474fcc65590c719e8170
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866079"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44348306"
 ---
 # <a name="quickstart-for-microsoft-qna-maker-api-with-c"></a>Rychlý start pro rozhraní API pomocí jazyka C# Microsoft QnA Maker 
 <a name="HOLTop"></a>
@@ -38,7 +39,7 @@ V tomto článku se dozvíte, jak používat [API nástroje QnA Maker Microsoft]
 
 ## <a name="prerequisites"></a>Požadavky
 
-Budete potřebovat [Visual Studio 2017](https://www.visualstudio.com/downloads/) tento kód spustit na Windows. (Bezplatná edice Community bude fungovat.)
+Budete potřebovat [Visual Studio 2017](https://www.visualstudio.com/downloads/) tento kód spustit na Windows. (Bude stačit bezplatná verze Community Edition.)
 
 Musíte mít [účet rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s **API nástroje QnA Maker Microsoft**. Budete potřebovat placené předplatné klíče z vašeho [řídicí panel Azure](https://portal.azure.com/#create/Microsoft.CognitiveServices).
 

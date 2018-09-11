@@ -1,24 +1,18 @@
 ---
 title: Azure Disk Encryption pro Windows a virtuální počítače s Linuxem v režimu IaaS | Dokumentace Microsoftu
 description: Tento článek je dodatek pro Microsoft Azure Disk Encryption pro Windows a virtuálních počítačů IaaS s Linuxem.
-services: security
-documentationcenter: na
 author: mestew
-manager: MBaldwin
-ms.assetid: 98bbcb84-8e6c-4eb2-8490-c2a0c67aad79
 ms.service: security
-ms.devlang: na
+ms.subservice: Azure Disk Encryption
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 08/24/2018
 ms.author: mstewart
-ms.openlocfilehash: 9efd8730af292e6f720c3bacd5707c48f0eab7ac
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.date: 09/10/2018
+ms.openlocfilehash: 2f932ff39495916c4a9fb55714c73383e06c72e1
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42887929"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346839"
 ---
 # <a name="appendix-for-azure-disk-encryption"></a>Dodatek pro Azure Disk Encryption 
 Tento článek je dodatek k [Azure Disk Encryption pro virtuální počítače IaaS](azure-security-disk-encryption-overview.md). Nezapomeňte že si přečíst Azure Disk Encryption pro virtuální počítače IaaS články nejprve k pochopení kontextu. Tento článek popisuje, jak připravit předem šifrované virtuální pevné disky a další úlohy.
@@ -116,8 +110,8 @@ V následující tabulce jsou uvedeny parametry, které lze použít ve skriptu 
 |------|------|------|
 |$resourceGroupName| Název skupiny prostředků, ke kterému patří trezoru klíčů.  Novou skupinu prostředků s tímto názvem bude vytvořen, pokud neexistuje.| True|
 |$keyVaultName|Název trezoru klíčů, ve které šifrovací klíče jsou umístit. Nový trezor s tímto názvem bude vytvořen, pokud neexistuje.| True|
-|$location|Umístění trezoru klíčů. Ujistěte se, že trezor klíčů a virtuální počítače k šifrování jsou ve stejném umístění. Získání seznamu umístění s `Get-AzureRMLocation`.|True|
-|$subscriptionId|Identifikátor předplatného Azure, který se má použít.  Můžete získat ID vašeho předplatného s `Get-AzureRMSubscription`.|True|
+|$location|Umístění trezoru klíčů. Ujistěte se, že trezor klíčů a virtuální počítače k šifrování jsou ve stejném umístění. Seznam umístění získáte pomocí rutiny `Get-AzureRMLocation`.|True|
+|$subscriptionId|Identifikátor předplatného Azure, který se má použít.  Své ID předplatného můžete získat pomocí rutiny `Get-AzureRMSubscription`.|True|
 |$aadAppName|Název aplikace Azure AD, která se použije k zápisu tajných klíčů do trezoru klíčů. Pokud aplikace se zadaným názvem neexistuje, vytvoří se nová. Pokud tato aplikace už existuje, předejte parametr aadClientSecret skriptu.|False|
 |$aadClientSecret|Tajný kód klienta aplikace Azure AD, který jste vytvořili dříve.|False|
 |$keyEncryptionKeyName|Název volitelné šifrovací klíč klíče v trezoru klíčů. Nový klíč s tímto názvem bude vytvořen, pokud neexistuje.|False|

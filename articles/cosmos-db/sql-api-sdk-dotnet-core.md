@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 03/22/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f3c0efe7fbeb3d3259d1e8505a965499cfb941e9
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: b1ab1381271391da9f4775488908af4eb1e47f5d
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44049384"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346266"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB .NET Core SDK pro rozhraní SQL API: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -52,6 +52,15 @@ ms.locfileid: "44049384"
 ## <a name="release-notes"></a>Poznámky k verzi
 
 Azure Cosmos DB .NET Core SDK má paritu funkcí s nejnovější verzí [.NET SDK služby Azure Cosmos DB](sql-api-sdk-dotnet.md).
+
+### <a name="a-name200200"></a><a name="2.0.0"/>2.0.0
+
+* Přidání žádosti o podporu zrušení.
+* Přidání SetCurrentLocation k ConnectionPolicy, který automaticky naplní upřednostňované umístění podle oblastí.
+* Oprava chyby v různé dotazy oddílu s Min/Max a filtr, který odpovídá žádné dokumenty v jednotlivých oddílů.
+* DocumentClient metody mají nyní se IDocumentClient.
+* Aktualizované s přímým přístupem přenosu protokolů TCP k omezení počtu připojení.
+* Přidání podpory pro přímý režim TCP pro klienty než Windows.
 
 ### <a name="a-name200-preview2200-preview2"></a><a name="2.0.0-preview2"/>2.0.0-preview2
 
@@ -186,8 +195,7 @@ Pokud máte dotazy související s touto sadou SDK, zveřejněte ji do [StackOve
 
 | Verze | Datum vydání | Datum vyřazení z provozu |
 | --- | --- | --- |
-| [2.0.0-preview2](#2.0.0-preview2) |26. července 2018 |--- |
-| [2.0.0-Preview](#2.0.0-preview) |11. května 2018 |--- |
+| [2.0.0](#2.0.0) |07. září 2018 |--- |
 | [1.9.1](#1.9.1) |09. března 2018 |--- |
 | [1.8.2](#1.8.2) |21. února 2018 |--- |
 | [1.8.1](#1.8.1) |05. února 2018 |--- |

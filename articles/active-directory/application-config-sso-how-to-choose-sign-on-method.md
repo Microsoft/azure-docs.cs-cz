@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/11/2017
+ms.date: 09/09/2018
 ms.author: barbkess
-ms.openlocfilehash: 336aa4f671e6d86684664fa5e5d15a03a4beff23
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: ad7247d81422436e7a4c996e7849f770184ee2d8
+ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39366285"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44325205"
 ---
 # <a name="how-to-determine-what-single-sign-on-method-to-use"></a>Jak určit, jaké jednotného přihlašování metodu použít
 
@@ -29,7 +29,7 @@ V tomto článku vám pomůžou pochopit režimy jednotné přihlašování podp
 
 Následující tabulka popisuje různé jednotné přihlašování a zřizování režimy podporované jednotlivými typy předchozí aplikace. Vám pomůže tato tabulka vám pomůže lépe porozumět aplikaci, pro kterou je třeba přidat pro podporu určitého cíle.
 
-  ![Tabulka typů Asie a Tichomoří](./media/application-tables/table1.png)
+  ![Tabulka typů aplikací](./media/application-config-sso-how-to-choose-sign-on-method/table1.png)
 
 ## <a name="how-to-choose-a-single-sign-on-mode"></a>Jak zvolit režim jednotného přihlašování
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: b3550c771b4c2916987c66f318010e5bb246fa39
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 80abe29c80898b691aa6e5e47bf068a9e69e50e4
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39446846"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303366"
 ---
 # <a name="use-an-app-service-environment"></a>Pomocí služby App Service environment #
 
@@ -136,7 +136,7 @@ Tyto možnosti publikování všech s externí služby ASE se chovají stejně. 
 
 Hlavní rozdíl v publikování je pro službu ASE. S ILB ASE jsou všechny dostupné jenom prostřednictvím ILB koncové body pro publikování. ILB je na privátní IP adresa v podsíti služby ASE ve virtuální síti. Pokud nemáte přístup k síti na ILB, nelze publikovat všechny aplikace v této službě ASE. Jak je uvedeno v [vytvoření a použití prostředí ILB ASE][MakeILBASE], budete muset nakonfigurovat DNS pro aplikace v systému. Který obsahuje koncový bod správce řízení služeb. Pokud nejsou definované správně, nelze publikovat. Vaše Integrovaná vývojová prostředí také nutné mít přístup k síti na ILB, aby do něj publikovat přímo.
 
-Internetové systémy kontinuální integrace, jako jsou GitHub a Visual Studio Team Services, nefungují s ILB ASE, protože koncový bod publikování není přístup k Internetu. Místo toho je potřeba použít systém kontinuální integrace, který používá model na vyžádání, jako je Dropbox.
+Internetové systémy kontinuální integrace, jako jsou GitHub a Azure DevOps, nefungují s ILB ASE, protože koncový bod publikování není přístup k Internetu. Místo toho je potřeba použít systém kontinuální integrace, který používá model na vyžádání, jako je Dropbox.
 
 Koncové body pro publikování pro aplikace ve službě ASE s interním nástrojem pro vyrovnávání zatížení používají doménu, pomocí které byla služba ASE s interním nástrojem pro vyrovnávání zatížení vytvořená. Zobrazí se v profilu publikování aplikace a v okně portálu aplikace (v **přehled** > **Essentials** a také v **vlastnosti**). 
 

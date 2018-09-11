@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: azure-vs
 ms.date: 03/06/2018
 ms.author: ghogen
-ms.openlocfilehash: 87c7029836bf28464fd48e17480119a4dcb1201c
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 703e969fe31def329be60037cceba27864063b4e
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42057517"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44304046"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-visual-studio"></a>Povolení připojení ke vzdálené ploše pro roli v cloudových službách Azure pomocí sady Visual Studio
 
@@ -30,7 +30,7 @@ Vzdálená plocha umožňuje přístup k ploše role, která běží v Azure. P�
 
 Průvodce publikováním, která sadě Visual Studio poskytuje pro cloud services zahrnuje možnost povolit vzdálenou plochu během procesu publikování pomocí přihlašovacích údajů, které zadáte. Pomocí této možnosti je vhodné při používání sady Visual Studio 2017 verze 15.4 nebo starší.
 
-S Visual Studio 2017 verze 15.5 nebo novější ale doporučujeme vyhnout povolení vzdálené plochy prostřednictvím Průvodce publikovat, pokud pracujete jenom jako jediný vývojář. Pro každé situaci, ve kterém může otevřít projekt jinými vývojáři místo toho povolit vzdálenou plochu na webu Azure portal, prostředí PowerShell nebo z definice vydané verze v pracovním postupu průběžného nasazování. Toto doporučení je z důvodu změny jak Visual Studio komunikuje s vzdálené plochy na cloudovou službu virtuálního počítače, jak je vysvětleno v tomto článku.
+S Visual Studio 2017 verze 15.5 nebo novější ale doporučujeme vyhnout povolení vzdálené plochy prostřednictvím Průvodce publikovat, pokud pracujete jenom jako jediný vývojář. Pro každé situaci, ve kterém může otevřít projekt jinými vývojáři místo toho povolit vzdálenou plochu na webu Azure portal, prostředí PowerShell nebo z kanál pro vydávání verzí v pracovním postupu průběžného nasazování. Toto doporučení je z důvodu změny jak Visual Studio komunikuje s vzdálené plochy na cloudovou službu virtuálního počítače, jak je vysvětleno v tomto článku.
 
 ## <a name="configure-remote-desktop-through-visual-studio-2017-version-154-and-earlier"></a>Konfigurace vzdálené plochy prostřednictvím sady Visual Studio 2017 verze 15.4 nebo starší
 
@@ -82,9 +82,9 @@ Pokud sdílíte s týmem projektu, pak je nejlepší, zrušte zaškrtnutí polí
 
 ### <a name="deploying-from-a-build-server-with-visual-studio-2017-version-155-and-later"></a>Nasazení ze serveru sestavení pomocí sady Visual Studio 2017 verze 15.5 nebo novější
 
-Můžete nasadit projekt cloudové služby ze serveru sestavení (například s Visual Studio Team Services), které Visual Studio 2017 verze 15.5 nebo novější nainstalovaný v agentovi sestavení. Pomocí tohoto uspořádání nasazení se odehrává ze stejného počítače, na kterém je k dispozici šifrovací certifikát.
+Můžete nasadit projekt cloudové služby ze serveru sestavení (například pomocí služeb Azure DevOps), které Visual Studio 2017 verze 15.5 nebo novější nainstalovaný v agentovi sestavení. Pomocí tohoto uspořádání nasazení se odehrává ze stejného počítače, na kterém je k dispozici šifrovací certifikát.
 
-Pokud chcete používat rozšíření RDP z Visual Studio Team Services, uveďte následující podrobnosti v definici sestavení:
+Pokud chcete používat rozšíření RDP ze služeb Azure DevOps, uveďte následující podrobnosti ve vašem kanálu sestavení:
 
 1. Zahrnout `/p:ForceRDPExtensionOverPlugin=true` vaše argumenty nástroje MSBuild k Ujistěte se, že nasazení funguje se rozšíření RDP spíše než plugin protokolu RDP. Příklad:
 

@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: 676d5e553e2929ae09d447141ca315fd1cc448e3
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: c88ae933360b5040ad3d2b877041049512f08b0d
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37449760"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303400"
 ---
 # <a name="permissions-on-the-azureiotsolutionscom-site"></a>Oprávnění na webu azureiotsolutions.com
 
@@ -62,7 +62,7 @@ Další informace týkající se uživatelů a rolí ve službě AAD najdete v �
 
 Role správce Azure řídí schopnost mapování předplatné Azure s tenantem AAD.
 
-Další informace o rolích správce Azure v článku [postup přidání nebo změna Azure Spolusprávce, Správce služeb a správce účtu][lnk-admin-roles].
+Další informace o rolích správce Azure v článku [přidat nebo změnit správce předplatného Azure][lnk-admin-roles].
 
 ## <a name="faq"></a>Nejčastější dotazy
 

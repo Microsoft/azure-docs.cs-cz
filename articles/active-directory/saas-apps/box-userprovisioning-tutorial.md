@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Konfigurace pole pro zřizování automatické uživatelů s Azure Active Directory | Microsoft Docs'
+title: 'Kurz: Konfigurace pole pro automatické zřizování uživatelů pomocí Azure Active Directory | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a pole.
 services: active-directory
 documentationCenter: na
@@ -14,123 +14,123 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2017
 ms.author: jeedes
-ms.openlocfilehash: 2a2bb427e00e735e5f0dfaa0c85e60afbe890ea6
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: f7fa4c9b0926d796c0c12b39d0056fe72e4028c7
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36230416"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44349020"
 ---
-# <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>Kurz: Konfigurace pole pro zřizování automatické uživatelů
+# <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>Kurz: Konfigurace pole pro automatické zřizování uživatelů
 
-Cílem tohoto kurzu je zobrazit kroky že nutné k provedení v poli a Azure AD automaticky zřizovat a deaktivace zřízení uživatelských účtů ze služby Azure AD pole.
+Cílem tohoto kurzu je k ilustraci kroků, že které potřebujete provést do boxu tak Azure AD a automaticky zřizovat a rušit přístup uživatelských účtů ze služby Azure AD na pole.
 
 > [!NOTE]
-> Tento kurz popisuje spojnice postavená na službu zřizování uživatele Azure AD. Důležité informace o jaké této služby, jak to funguje a nejčastější dotazy najdete v tématu [automatizace zřizování uživatelů a rušení zajištění pro aplikace SaaS ve službě Azure Active Directory](./../active-directory-saas-app-provisioning.md).
+> Tento kurz popisuje konektor postavené na službě zřizování uživatelů služby Azure AD. Důležité podrobnosti o význam této služby, jak to funguje a nejčastější dotazy najdete v tématu [automatizace zřizování uživatelů a jeho rušení pro aplikace SaaS ve službě Azure Active Directory](../manage-apps/user-provisioning.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s poli, potřebujete následující položky:
+Konfigurace integrace Azure AD s polem, potřebujete následující položky:
 
 - Klient služby Azure AD
 - Pole obchodní plán nebo lepší
 
 > [!NOTE]
-> Při testování kroky v tomto kurzu, doporučujeme, abyste provedli *není* použít provozním prostředí.
+> Při testování kroky v tomto kurzu doporučujeme, abyste udělali *není* použijte produkční prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle následujících doporučení:
+Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle následujících doporučení:
 
-- Nepoužívejte provozním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verze Azure AD, můžete [získat zkušební verzi jeden měsíc](https://azure.microsoft.com/pricing/free-trial/).
+- Nepoužívejte produkčním prostředí, pokud to není nutné.
+- Pokud nemáte prostředí zkušební verzi Azure AD, můžete si [získat měsíční zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
 
-## <a name="assigning-users-to-box"></a>Přiřazování uživatelů do pole 
+## <a name="assigning-users-to-box"></a>Přiřazování uživatelů k poli 
 
-Azure Active Directory používá koncept označované jako "úlohy" k určení uživatelů, kteří obdrželi přístup k vybrané aplikace. V kontextu uživatele automatické zřizování účtu se synchronizují pouze uživatelé a skupiny, které byly "přiřazeny" aplikace ve službě Azure AD.
+Azure Active Directory používá koncept nazvaný "přiřazení" k určení, kteří uživatelé měli obdržet přístup k vybrané aplikace. V rámci zřizování automatické uživatelských účtů je synchronizovat jenom uživatelé a skupiny, které se "přiřadily" aplikace ve službě Azure AD.
 
-Před konfigurací a povolení zřizování služby, musíte rozhodnout, jaké uživatelů nebo skupin ve službě Azure AD představují uživatele, kteří potřebují přístup k vaší aplikaci pole. Jakmile se rozhodli, můžete přiřadit tyto uživatele do pole aplikace podle pokynů tady:
+Před konfigurací a povolení služby zřizování, je potřeba rozhodnout, jaké uživatele a/nebo skupiny ve službě Azure AD představují uživatele, kteří potřebují přístup k aplikaci Box. Po se rozhodli, můžete přiřadit tyto uživatele k aplikaci Box podle zde uvedených pokynů:
 
-[Přiřazení uživatele nebo skupiny do aplikace enterprise](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
+[Přiřadit uživatele nebo skupiny k podnikové aplikace](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)
 
 ## <a name="assign-users-and-groups"></a>Přiřazení uživatelů a skupin
-**Pole > Uživatelé a skupiny** na portálu Azure umožňuje určit, kteří uživatelé a skupiny musí mít udělen přístup k poli. Přiřazení uživatele nebo skupiny, způsobí, že následující kroky, kterými dojít:
+**Pole > Uživatelé a skupiny** karta na portálu Azure portal umožňuje určit, kteří uživatelé a skupiny by měl být udělen přístup k poli. Přiřazení uživatele nebo skupiny způsobí, že dojde k následující věci:
 
-* Azure AD umožňuje přiřazený uživatel (buď přímé přiřazení nebo členství ve skupině) k ověření pole. Pokud uživatel není přiřazen, Azure AD je pro přihlášení k pole nepovoluje a vrátí chybu na stránce pro přihlášení k Azure AD.
-* Dlaždici aplikace pro pole se přidá do uživatele [Spouštěč aplikace](../manage-apps/what-is-single-sign-on.md#deploying-azure-ad-integrated-applications-to-users).
-* Pokud je povoleno automatické zřizování, pak přiřazené uživatele nebo skupin se přidají do zřizování fronty automaticky zřídit.
+* Azure AD umožňuje přiřazené uživateli (buď pomocí přímého přiřazení nebo členství ve skupině) k ověření pole. Pokud uživatel není přiřazen, Azure AD je k přihlášení do pole neumožňuje a vrátí chybu na přihlašovací stránce služby Azure AD.
+* Dlaždice aplikace pro pole se přidá do daného uživatele [Spouštěče aplikací](../manage-apps/what-is-single-sign-on.md#deploying-azure-ad-integrated-applications-to-users).
+* Pokud je povoleno automatické zřizování, pak přiřazené uživatele a/nebo skupiny se přidají do zřizovacího fronty automaticky zřídit.
   
-  * Pokud pouze uživatelské objekty byly nakonfigurovány zřídit, pak všechny přímo přiřazené uživatele jsou umístěny ve frontě zřizování a všechny uživatele, kteří jsou členy jakékoli přiřazených skupin jsou umístěny ve frontě zřizování. 
-  * Pokud objekty skupiny byly nakonfigurovány zřídit, jsou všechny objekty přiřazené skupiny zřízené pole a všechny uživatele, kteří jsou členy těchto skupin. Členství ve skupině a uživateli se zachovají při zápisu do pole.
+  * Pokud pouze uživatelské objekty byly nakonfigurovány zřídit, pak všechny přímo přiřazené uživatele jsou umístěné ve frontě zřizování a všechny uživatele, kteří jsou členy jakékoli přiřazených skupin jsou umístěné ve frontě zřizování. 
+  * Pokud objekty skupiny byly nakonfigurované pro zřídí, jsou všechny objekty přiřazené skupiny zřízené do pole a všechny uživatele, kteří jsou členy těchto skupin. Skupiny a uživatele ve skupinách jsou zachovány při zapisovaných do pole.
 
-Můžete použít **atributy > jednotné přihlašování** karta konfigurace, které atributy uživatele (nebo deklarace identity) jsou uvedené pole během ověřování na základě SAML a **atributy > zřizování** kartu a nakonfigurovat způsob, jakým se atributy uživatelů a skupin probíhá z Azure AD pole během zřizování operace.
+Můžete použít **atributy > Single Sign-On** kartu Konfigurace, které atributy uživatele (nebo deklarace identity) se uživateli zobrazí pole během ověřování na základě SAML a **atributy > zřizování** záložku Nakonfigurujte, jak se atributy uživatelů a skupin toku ze služby Azure AD do pole během zřizování operace.
 
-### <a name="important-tips-for-assigning-users-to-box"></a>Důležité tipy pro přiřazování uživatelů do pole 
+### <a name="important-tips-for-assigning-users-to-box"></a>Důležité tipy pro přiřazování uživatelů k poli 
 
-*   Dále je doporučeno jednoho přiřazeného pole testování zřizování konfigurace uživatele Azure AD. Další uživatele nebo skupiny může být přiřazen později.
+*   Dále je doporučeno jednoho pole přiřazené k otestování konfigurace zřizování uživatele Azure AD. Další uživatele a/nebo skupiny může být přiřazen později.
 
-*   Při přiřazování uživatele pole, musíte vybrat platné uživatelské role. Roli "Výchozí přístup" nefunguje pro zřizování.
+*   Při přiřazování uživatele do pole, musíte vybrat platné uživatelské role. Tuto roli "Výchozí přístupu" nefunguje pro zřizování.
 
 ## <a name="enable-automated-user-provisioning"></a>Povolit automatické zřizování uživatelů
 
-Tato část provede připojení k pole uživatelský účet zřizování rozhraní API služby Azure AD a konfiguraci zřizování službu, kterou chcete vytvořit, aktualizovat a zakažte přiřazené uživatelské účty v poli podle přiřazení uživatelů a skupin ve službě Azure AD.
+Tato část provede připojení služby Azure AD k pole uživatelského účtu rozhraní API zřizování a konfigurace služby zřizování, pokud chcete vytvořit, aktualizovat a zakázat přiřazené uživatelské účty v poli podle přiřazení uživatelů a skupin ve službě Azure AD.
 
-Pokud je povoleno automatické zřizování, pak přiřazené uživatele nebo skupin se přidají do zřizování fronty automaticky zřídit.
+Pokud je povoleno automatické zřizování, pak přiřazené uživatele a/nebo skupiny se přidají do zřizovacího fronty automaticky zřídit.
     
- * Pokud pouze uživatelské objekty jsou nakonfigurované zřídit, pak přímo přiřazené uživatele jsou umístěny v zřizování fronty, a všechny uživatele, kteří jsou členy jakékoli přiřazených skupin jsou umístěny ve frontě zřizování. 
+ * Pokud pouze uživatelské objekty jsou nakonfigurované jako zřízené a pak přímo přiřazené uživatele jsou umístěné ve frontě zřizování a všechny uživatele, kteří jsou členy jakékoli přiřazených skupin jsou umístěné ve frontě zřizování. 
     
- * Pokud objekty skupiny byly nakonfigurovány zřídit, jsou všechny objekty přiřazené skupiny zřízené pole a všechny uživatele, kteří jsou členy těchto skupin. Členství ve skupině a uživateli se zachovají při zápisu do pole.
+ * Pokud objekty skupiny byly nakonfigurované pro zřídí, jsou všechny objekty přiřazené skupiny zřízené do pole a všechny uživatele, kteří jsou členy těchto skupin. Skupiny a uživatele ve skupinách jsou zachovány při zapisovaných do pole.
 
 > [!TIP] 
-> Můžete také povolit na základě SAML jednotné přihlašování pro pole, postupujte podle pokynů uvedených v [portál Azure](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatické zřizování, i když tyto dvě funkce doplnění navzájem.
+> Můžete také povolena založené na SAML jednotného přihlašování pro pole, podle pokynů uvedených v [webu Azure portal](https://portal.azure.com). Jednotné přihlašování se dá nakonfigurovat nezávisle na automatické zřizování, i když tyto dvě funkce návrzích mezi sebou.
 
-### <a name="to-configure-automatic-user-account-provisioning"></a>Konfigurace automatického uživatele zřizování účtu:
+### <a name="to-configure-automatic-user-account-provisioning"></a>Postup konfigurace zřizování automatické uživatelských účtů:
 
-Cílem této části se popisují postup povolení zřizování uživatelských účtů služby Active Directory do pole.
+Cílem této části se popisují, jak povolit zřizování uživatelských účtů služby Active Directory do pole.
 
-1. V [portál Azure](https://portal.azure.com), vyhledejte **Azure Active Directory > podnikové aplikace > všechny aplikace** části.
+1. V [webu Azure portal](https://portal.azure.com), přejděte **Azure Active Directory > podnikové aplikace > všechny aplikace** části.
 
-2. Pokud jste již nakonfigurovali pole pro jednotné přihlašování, vyhledejte instanci pole s použitím pole hledání. Jinak vyberte možnost **přidat** a vyhledejte **pole** v galerii aplikací. Vyberte pole ve výsledcích hledání a přidejte ji do seznamu aplikací.
+2. Pokud jste už nakonfigurovali políčko pro jednotné přihlašování, hledání instance z boxu pomocí vyhledávacího pole. V opačném případě vyberte **přidat** a vyhledejte **pole** v galerii aplikací. Ve výsledcích hledání vyberte pole a přidejte do seznamu aplikací.
 
-3. Vyberte instanci pole a pak vyberte **zřizování** kartě.
+3. Vyberte instanci pole a potom **zřizování** kartu.
 
-4. Nastavte **režimu zřizování** k **automatické**. 
+4. Nastavte **režim zřizování** k **automatické**. 
 
     ![zřizování](./media/box-userprovisioning-tutorial/provisioning.png)
 
-5. V části **přihlašovací údaje správce** klikněte na tlačítko **Autorizovat** otevřete dialogové okno přihlášení pole v novém okně prohlížeče.
+5. V části **přihlašovacích údajů správce** klikněte na tlačítko **Authorize** otevřete dialogové okno přihlášení pole v novém okně prohlížeče.
 
-6. Na **přihlášení k udělení přístupu k poli** zadejte požadované pověření a pak klikněte na tlačítko **Authorize**. 
+6. Na **přihlášení udělit přístup k poli** stránky, zadejte požadované přihlašovací údaje a klikněte na **Authorize**. 
    
-    ![Povolit automatické uživatele zajišťování](./media/box-userprovisioning-tutorial/IC769546.png "povolit zřizování automatické uživatelů")
+    ![Povolit automatické zřizování uživatelů](./media/box-userprovisioning-tutorial/IC769546.png "povolit automatické zřizování uživatelů")
 
-7. Klikněte na tlačítko **udělit přístup k poli** autorizovat tuto operaci a vrátit na portál Azure. 
+7. Klikněte na tlačítko **udělit přístup k poli** povolit tuto operaci a vrátit se k webu Azure portal. 
    
-    ![Povolit automatické uživatele zajišťování](./media/box-userprovisioning-tutorial/IC769549.png "povolit zřizování automatické uživatelů")
+    ![Povolit automatické zřizování uživatelů](./media/box-userprovisioning-tutorial/IC769549.png "povolit automatické zřizování uživatelů")
 
-8. Na portálu Azure klikněte na tlačítko **Test připojení** zajistit Azure AD může připojit k vaší aplikaci Box. Pokud připojení nezdaří, zkontrolujte účtu pole má oprávnění správce týmu a zkuste to **"Ověřit"** krok opakujte.
+8. Na webu Azure Portal, klikněte na tlačítko **Test připojení** aby Azure AD můžete připojit k aplikaci Box. Pokud se nepovede, ověřte svůj účet boxu má oprávnění správce týmu a zkuste **"Ověřit"** krok znovu.
 
-9. Zadejte e-mailovou adresu uživatele nebo skupiny, který by měly dostávat oznámení zřizování Chyba v **e-mailové oznámení** pole a zaškrtnutím políčka.
+9. Zadejte e-mailovou adresu osoby nebo skupiny, která má obdržet oznámení zřizování chyby v **e-mailové oznámení** pole a zaškrtněte políčko.
 
 10. Klikněte na tlačítko **uložit.**
 
-11. V části mapování vyberte **synchronizaci Azure Active Directory Users pole.**
+11. V oddílu mapování, vyberte **synchronizace Azure Active Directory Users na pole.**
 
-12. V **mapování atributů** , projděte si uživatelské atributy, které jsou synchronizované z Azure AD pole. Atributy vybrán jako **párování** vlastnosti se používají tak, aby odpovídaly uživatelské účty v poli pro operace aktualizace. Kliknutím na tlačítko Uložit potvrzení změny.
+12. V **mapování atributů** , projděte si atributy uživatele, které se synchronizují ze služby Azure AD do pole. Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly uživatelské účty do pole pro operace update. Vyberte tlačítko Uložit potvrďte změny.
 
-13. Povolit Azure AD zřizování služby pro pole, změňte **Stav zřizování** k **na** v části Nastavení
+13. Chcete-li povolit služba pro pole zřizování Azure AD, změňte **stavu zřizování** k **na** v sekci nastavení
 
 14. Klikněte na tlačítko **uložit.**
 
-Která spustí počáteční synchronizaci všech uživatelů a skupiny přiřazené pole v části Uživatelé a skupiny. Počáteční synchronizace trvá déle než následné synchronizace, ke kterým dochází přibližně každých 40 minut, dokud se službou provést. Můžete použít **podrobnosti synchronizace** části monitorovat průběh a odkazech zřízení protokoly aktivity, které popisují všechny akce, které provádí službu zřizování na pole aplikace.
+Která spustí počáteční synchronizaci všech uživatelů a skupiny přiřazené k poli v části Uživatelé a skupiny. Počáteční synchronizace trvá déle než při následné synchronizace, ke kterým dochází přibližně každých 40 minut za předpokladu, že služba běží. Můžete použít **podrobnosti synchronizace** části ke sledování průběhu a odkazech na zřizování protokoly aktivit, které popisují všechny akce provedené v aplikaci Box zřizovací služba.
 
-Další informace o tom, jak číst zřizování protokoly služby Azure AD najdete v tématu [zprávy o zřizování účtu automatické uživatele](../active-directory-saas-provisioning-reporting.md).
+Další informace o tom, jak číst zřizování protokoly Azure AD najdete v tématu [hlášení o zřizování automatické uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
 
-Ve vašem klientovi políčko synchronizovaní uživatelé jsou uvedeny v části **spravované uživatele** v **konzoly pro správu**.
+Ve vašem tenantovi pole synchronizovaní uživatelé patří **spravovaných uživatelů** v **konzoly pro správu**.
 
 ![Stav integrace](./media/box-userprovisioning-tutorial/IC769556.png "stav integrace")
 
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Správa uživatelů zřizování účtu pro podnikové aplikace](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-* [Konfigurovat jednotné přihlašování](box-tutorial.md)
+* [Správa zřizování uživatelských účtů pro podnikové aplikace](tutorial-list.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
+* [Konfigurace jednotného přihlašování](box-tutorial.md)

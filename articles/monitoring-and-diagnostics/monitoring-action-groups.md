@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/1/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: 998f35c8957b63d73d7a3d15be76711198fa4833
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 441469e24de5324fb5bed40c75f9a6b26f85bcc5
+ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42745703"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44325052"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Vytvoření a Správa skupin akcí na webu Azure Portal
 ## <a name="overview"></a>Přehled ##
@@ -83,6 +83,7 @@ Informace o tom, jak nakonfigurovat skupiny akcí pomocí šablon Azure Resource
 
 <dt>Sady Runbook</dt>
 <dd>Můžete mít až 10 akce sada Runbook v skupiny akcí</dd>
+<dd>Odkazovat [limity předplatného Azure](../azure-subscription-service-limits.md) pro omezení datových částí sady Runbook</dd>
 
 <dt>SMS</dt>
 <dd>Můžete mít až 10 SMS akce v skupiny akcí</dd>

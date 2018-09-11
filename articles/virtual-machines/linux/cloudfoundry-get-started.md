@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 01/19/2017
 ms.author: seanmck
-ms.openlocfilehash: 42910675bcf512a3d6c76369adc9f41215420a78
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 18aa5ab16a1690fdcead46ebc15d72837f62612d
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972287"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302465"
 ---
 # <a name="cloud-foundry-on-azure"></a>Cloud Foundry v Azure
 
@@ -60,9 +60,9 @@ Pokud používáte Pivotal Cloud Foundry, služba Service broker je také [k dis
 
 ## <a name="related-resources"></a>Související prostředky
 
-### <a name="visual-studio-team-services-plugin"></a>Plug-in Visual Studio Team Services
+### <a name="azure-devops-services-plugin"></a>Modul plug-in Azure DevOps služby
 
-Cloud Foundry je vhodné pro agilní vývoj softwaru, včetně využití čipu TPM kontinuální integrace (CI) a průběžné doručování (CD). Pokud používáte Visual Studio Team Services (VSTS) ke správě vašich projektů a chcete nastavit až CI/CD kanálu cílí na Cloud Foundry, můžete použít [VSTS Cloud Foundry vytvořte rozšíření](https://marketplace.visualstudio.com/items?itemName=ms-vsts.cloud-foundry-build-extension). Modul plug-in můžete snadno nakonfigurovat a automatizovat nasazení do Cloud Foundry, ať už spuštěné v Azure nebo jiného prostředí.
+Cloud Foundry je vhodné pro agilní vývoj softwaru, včetně využití čipu TPM kontinuální integrace (CI) a průběžné doručování (CD). Pokud používáte Azure DevOps služby ke správě vašich projektů a chcete nastavit až CI/CD kanálu cílí na Cloud Foundry, můžete použít [Azure DevOps služby Cloud Foundry vytvořte rozšíření](https://marketplace.visualstudio.com/items?itemName=ms-vsts.cloud-foundry-build-extension). Modul plug-in můžete snadno nakonfigurovat a automatizovat nasazení do Cloud Foundry, ať už spuštěné v Azure nebo jiného prostředí.
 
 ## <a name="next-steps"></a>Další postup
 

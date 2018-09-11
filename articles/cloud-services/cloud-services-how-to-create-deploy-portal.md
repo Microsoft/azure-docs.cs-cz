@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 57109848bf78311ea4d601b135c5dd304d613aeb
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: ece3511d0d3c12be13a649385ea9b6dd5c75bfe0
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008123"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303704"
 ---
 # <a name="how-to-create-and-deploy-a-cloud-service"></a>Jak vytvořit a nasadit cloudovou službu
 Na webu Azure portal poskytuje dva způsoby, jak vám pomůže vytvořit a nasadit cloudovou službu: *rychlé vytvoření* a *vytvořit vlastní*.
@@ -27,7 +27,7 @@ Na webu Azure portal poskytuje dva způsoby, jak vám pomůže vytvořit a nasad
 Tento článek vysvětluje, jak používat metodu rychlého vytvoření k vytvořit novou cloudovou službu a pak pomocí **nahrát** nahrát a nasadit balíček cloudové služby v Azure. Při použití této metody s portálem Azure je k dispozici užitečné odkazy pro dokončení všech požadavků, co využijete. Pokud jste připravení nasadit cloudovou službu, při vytváření, můžete mít obojí současně pomocí vytvořit vlastní.
 
 > [!NOTE]
-> Pokud chcete publikovat cloudovou službu z Visual Studio Team Services (VSTS), použijte funkci pro rychlé vytvoření a nastavení publikování VSTS z tohoto rychlého startu Azure nebo na řídicím panelu. Další informace najdete v tématu [průběžné doručování do Azure pomocí Visual Studio Team Services][TFSTutorialForCloudService], nebo si zobrazte nápovědu pro **rychlý Start** stránky.
+> Pokud chcete publikovat vaše Cloudová služba z Azure DevOps, použijte funkci pro rychlé vytvoření a nastavení publikování Azure DevOps z tohoto rychlého startu Azure nebo na řídicím panelu. Další informace najdete v tématu [průběžné doručování do Azure s využitím Azure DevOps][TFSTutorialForCloudService], nebo si zobrazte nápovědu pro **rychlý Start** stránky.
 >
 >
 

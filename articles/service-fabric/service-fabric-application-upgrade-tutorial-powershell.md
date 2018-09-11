@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 0238dce3f8cbf838e7fce3afefb866e3aaa791bc
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: c1005d60df0b1cfd3b24be954ab4ff1b18c8f7a8
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42057176"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44348765"
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>Upgrade aplikace Service Fabric pomocí Powershellu
 > [!div class="op_single_selector"]
@@ -46,7 +46,7 @@ Vytvářejte a publikujte aplikaci kliknutím pravým tlačítkem na projekt apl
 > 
 > 
 
-Po vytvoření projektu v sadě Visual Studio, můžete použít příkaz prostředí PowerShell [kopírování ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/copy-servicefabricapplicationpackage) ImageStore zkopírujte balíček aplikace. Pokud chcete ověřit balíček aplikace místně, použijte [testovací ServiceFabricApplicationPackage](/powershell/servicefabric/vlatest/test-servicefabricapplicationpackage) rutiny. Dalším krokem je registrace aplikace pomocí modulu runtime Service Fabric [Register-ServiceFabricApplicationType](/powershell/servicefabric/vlatest/register-servicefabricapplicationtype) rutiny. Následující krok, je spustit instanci aplikace s použitím [New-ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) rutiny.  Tyto tři kroky, které jsou obdobou použití **nasadit** položky nabídky v sadě Visual Studio.  Po dokončení zřizování by měl vyčistit balíčku aplikace zkopírovaná z úložiště imagí za účelem snížení spotřebované prostředky.  Pokud typ aplikace se už nevyžaduje, mělo by neregistrované ze stejného důvodu. Zobrazit [nasazení a odeberte aplikací pomocí prostředí PowerShell](service-fabric-application-upgrade-tutorial-powershell.md) Další informace.
+Po vytvoření projektu v sadě Visual Studio, můžete použít příkaz prostředí PowerShell [kopírování ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage) ImageStore zkopírujte balíček aplikace. Pokud chcete ověřit balíček aplikace místně, použijte [testovací ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage) rutiny. Dalším krokem je registrace aplikace pomocí modulu runtime Service Fabric [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype) rutiny. Následující krok, je spustit instanci aplikace s použitím [New-ServiceFabricApplication](/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) rutiny.  Tyto tři kroky, které jsou obdobou použití **nasadit** položky nabídky v sadě Visual Studio.  Po dokončení zřizování by měl vyčistit balíčku aplikace zkopírovaná z úložiště imagí za účelem snížení spotřebované prostředky.  Pokud typ aplikace se už nevyžaduje, mělo by neregistrované ze stejného důvodu. Zobrazit [nasazení a odeberte aplikací pomocí prostředí PowerShell](service-fabric-application-upgrade-tutorial-powershell.md) Další informace.
 
 Teď můžete použít [Service Fabric Explorer zobrazíte cluster a aplikace](service-fabric-visualizing-your-cluster.md). Aplikace má webová služba, která se dá Navigovat v aplikaci Internet Explorer tak, že zadáte [ http://localhost:8081/visualobjects ](http://localhost:8081/visualobjects) do adresního řádku.  Měli byste vidět některé s plovoucí desetinnou čárkou vizuální objekty přesouvat na obrazovce.  Kromě toho můžete použít [Get-ServiceFabricApplication](/powershell/module/servicefabric/get-servicefabricapplication?view=azureservicefabricps) ke kontrole stavu aplikace.
 

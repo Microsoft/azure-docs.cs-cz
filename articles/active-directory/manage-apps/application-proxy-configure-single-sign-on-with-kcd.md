@@ -15,12 +15,12 @@ ms.date: 05/24/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017, it-pro
-ms.openlocfilehash: 4ce76f1156d4d8d85f5e10bb750b012f93ba7afb
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 1178d85f295c6ac01f367db8adc2c9b855cdc829
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39366676"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347819"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Omezené delegování protokolu Kerberos pro jednotné přihlašování do aplikací pomocí Proxy aplikace
 
@@ -135,12 +135,12 @@ Pokud se používá delegovaná identita přihlášení, tato hodnota nemusí b�
    * Název účtu SAM místní (závisí na konfiguraci řadiče domény)
 
 ### <a name="troubleshooting-sso-for-different-identities"></a>Řešení potíží s jednotného přihlašování pro různé identity
-Pokud dojde k chybě v procesu jednotného přihlašování, zobrazí se v protokolu událostí počítač konektor jak je vysvětleno v [Poradce při potížích s](../application-proxy-back-end-kerberos-constrained-delegation-how-to.md).
+Pokud dojde k chybě v procesu jednotného přihlašování, zobrazí se v protokolu událostí počítač konektor jak je vysvětleno v [Poradce při potížích s](application-proxy-back-end-kerberos-constrained-delegation-how-to.md).
 Ale v některých případech je požadavek úspěšně odeslán do back-end aplikace během této aplikace odpovědi v různých dalších odpovědi protokolu HTTP. Řešení potíží s těchto případech byste začít kontrolou číslo události 24029 na počítači se konektor Proxy aplikací protokol události relace. Identita uživatele, která byla použita pro delegování se zobrazí v poli "user" v rámci podrobnosti o události. Chcete-li zapnout relace protokolu, vyberte **zobrazit analytické a ladit protokoly** v nabídce Zobrazit prohlížeč událostí.
 
 ## <a name="next-steps"></a>Další postup
 
-* [Jak nakonfigurovat aplikaci Proxy aplikací pro použití omezeného delegování protokolu Kerberos](../application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
+* [Jak nakonfigurovat aplikaci Proxy aplikací pro použití omezeného delegování protokolu Kerberos](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
 * [Řešení potíží s problémy, se kterými máte potíže s Proxy aplikací](application-proxy-troubleshoot.md)
 
 

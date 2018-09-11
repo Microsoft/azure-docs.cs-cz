@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
 ms.reviewer: asmalser
-ms.openlocfilehash: 9763c7a9e79f4c9e9d6296efb79e944205e8a99c
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 7d6056987ee05f68eecf026e954327a2f62cf886
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39264143"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44348901"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Kurz: Konfigurace Slack pro automatické zřizování uživatelů
 
@@ -32,7 +32,7 @@ Cílem tohoto kurzu je zobrazit kroky je třeba provést v Slack a Azure AD, aby
 
 Scénář popsaný v tomto kurzu se předpokládá, že máte následující položky:
 
-*   Klient služby Azure Active Directory
+*   Tenanta Azure Active Directory.
 *   Slack klienta s [Plus plán](https://aadsyncfabric.slack.com/pricing) nebo lépe povoleno 
 *   Uživatelský účet v Slack s oprávněními správce týmu 
 
@@ -111,7 +111,7 @@ Volitelně můžete povolit zajišťování skupiny objektů ze služby Azure AD
 
 Tento výsledek v jakýchkoli objektů skupiny přiřazené k Slack v **uživatelů a skupin** části plně synchronizovány ze služby Azure AD na Slack. Můžete použít **podrobnosti synchronizace** části ke sledování průběhu a odkazech na zřizování protokoly aktivit, které popisují všechny akce provedené v aplikaci Slack zřizovací služba.
 
-Další informace o tom, jak číst zřizování protokoly Azure AD najdete v tématu [hlášení o zřizování automatické uživatelských účtů](../active-directory-saas-provisioning-reporting.md).
+Další informace o tom, jak číst zřizování protokoly Azure AD najdete v tématu [hlášení o zřizování automatické uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
 
 
 ## <a name="additional-resources"></a>Další prostředky

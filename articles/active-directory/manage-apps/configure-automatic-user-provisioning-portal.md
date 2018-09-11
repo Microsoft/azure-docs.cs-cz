@@ -15,15 +15,15 @@ ms.workload: identity
 ms.date: 07/26/2017
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: 2b2b44deacf8278b8e8c2554cc873c5d0b75f6f9
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 95d2f65e99b37b38f99ec5a750d74828661fe7ee
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39366184"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44349139"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Správa uživatelského účtu zřizování pro podnikové aplikace na webu Azure Portal
-Tento článek popisuje způsob použití [webu Azure portal](https://portal.azure.com) ke správě automatické účet zřizování uživatelů pro aplikace, které jej podporují, zejména těch, které jsou přidané z "doporučené" kategorie ajehorušení[ Galerie aplikací Azure Active Directory](what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery). Další informace o zřizování automatické uživatelských účtů a jak to funguje, najdete v článku [automatizace zřizování uživatelů a jeho rušení pro aplikace SaaS ve službě Azure Active Directory](../active-directory-saas-app-provisioning.md).
+Tento článek popisuje způsob použití [webu Azure portal](https://portal.azure.com) ke správě automatické účet zřizování uživatelů pro aplikace, které jej podporují, zejména těch, které jsou přidané z "doporučené" kategorie ajehorušení[ Galerie aplikací Azure Active Directory](what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery). Další informace o zřizování automatické uživatelských účtů a jak to funguje, najdete v článku [automatizace zřizování uživatelů a jeho rušení pro aplikace SaaS ve službě Azure Active Directory](user-provisioning.md).
 
 ## <a name="finding-your-apps-in-the-portal"></a>Vyhledání aplikace na portálu
 Všechny aplikace, které jsou nakonfigurované pro jednotné přihlašování v adresáři, správcem adresáře pomocí [Galerie aplikací Azure Active Directory](what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery), můžete zobrazit a spravovat [webu Azure portal](https://portal.azure.com). Aplikace lze nalézt v **všechny služby** &gt; **podnikové aplikace** části portálu. Podnikové aplikace jsou aplikace, které se nasazují a používané ve vaší organizaci.
@@ -46,7 +46,7 @@ Nastavení pro vytváření uživatelského účtu můžete spravovat tak, že v
 Výběr **automatické** možnost otevře obrazovku, která je rozdělena do čtyř oddílů:
 
 ### <a name="admin-credentials"></a>Přihlašovací údaje správce
-Tato část se kdy vyžaduje přihlašovací údaje pro službu Azure AD pro připojení k rozhraní API jsou zadány pro správu uživatelů vaší aplikace. Vyžaduje se vstup se liší v závislosti na aplikaci. Další informace o požadavcích pro konkrétní aplikace a typy přihlašovacích údajů, najdete v článku [kurz ke konfiguraci pro konkrétní aplikaci](../active-directory-saas-app-provisioning.md).
+Tato část se kdy vyžaduje přihlašovací údaje pro službu Azure AD pro připojení k rozhraní API jsou zadány pro správu uživatelů vaší aplikace. Vyžaduje se vstup se liší v závislosti na aplikaci. Další informace o požadavcích pro konkrétní aplikace a typy přihlašovacích údajů, najdete v článku [kurz ke konfiguraci pro konkrétní aplikaci](user-provisioning.md).
 
 Výběr **Test připojení** tlačítko využijete k otestování přihlašovací údaje tím, že Azure AD pokuste se připojit k aplikaci prvku zřizování aplikace s použitím zadané přihlašovací údaje.
 
@@ -60,7 +60,7 @@ Existuje sada předem nakonfigurované mapování mezi objekty uživatelů Azure
 Podporovaná vlastní nastavení patří:
 
 * Povolení a zakázání mapování pro konkrétní objekty, například objekt uživatele Azure AD k objektu uživatele aplikace SaaS.
-* Úprava atributů, které vedou z objektu uživatele Azure AD do objektu uživatele aplikace. Další informace o mapování atributů najdete v tématu [Principy mapování typů atributů](../active-directory-saas-customizing-attribute-mappings.md#understanding-attribute-mapping-types).
+* Úprava atributů, které vedou z objektu uživatele Azure AD do objektu uživatele aplikace. Další informace o mapování atributů najdete v tématu [Principy mapování typů atributů](customize-application-attributes.md#understanding-attribute-mapping-types).
 * Filtrovat zřizování akce, které Azure AD provádí na cílové aplikace. Namísto toho, aby plně synchronizovat objekty služby Azure AD, můžete omezit akce provést. Například výběrem pouze **aktualizace**, Azure AD pouze aktualizace stávajících uživatelských účtů v aplikaci a ne vytvořit nové. Pouze výběrem **vytvořit**, pouze vytvoří nové uživatelské účty ale neaktualizuje existující aplikace Azure. Tato funkce umožňuje správcům vytvořit jiné mapování pro vytváření účtů a aktualizovat pracovní postupy.
 
 ### <a name="settings"></a>Nastavení

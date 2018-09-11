@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.author: glenga
-ms.openlocfilehash: 53a5de98ccdae4d4a73d8dc7b150c8e333024b33
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: d7396ddb94017048247050726f83b0302e946633
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44095160"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347116"
 ---
 # <a name="zip-deployment-for-azure-functions"></a>Nasazení ZIP pro službu Azure Functions
 
@@ -93,7 +93,7 @@ Můžete také spouštět funkce přímo ze souboru balíčku nasazení. Tato me
 > [!NOTE]
 > Možnost spuštění z balíčku pro nasazení vaší aplikace function app je ve verzi preview.
 
-Nasazení ZIP se integruje se s touto funkcí, které lze povolit nastavením nastavení aplikace funkcí `WEBSITE_RUN_FROM_ZIP` hodnotě `1`. Další informace najdete v tématu [spouštět funkce ze souboru balíčku nasazení](run-functions-from-deployment-package.md).
+Nasazení ZIP se integruje se s touto funkcí, které lze povolit nastavením nastavení aplikace funkcí `WEBSITE_RUN_FROM_PACKAGE` hodnotě `1`. Další informace najdete v tématu [spouštět funkce ze souboru balíčku nasazení](run-functions-from-deployment-package.md).
 
 [!INCLUDE [app-service-deploy-zip-push-custom](../../includes/app-service-deploy-zip-push-custom.md)]
 

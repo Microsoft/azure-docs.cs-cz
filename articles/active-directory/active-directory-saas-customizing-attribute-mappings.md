@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/30/2018
+ms.date: 09/09/2018
 ms.author: barbkess
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: accc2e994e7ea361315d5dfb33b257e58410490c
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 4d3967acc7c6dc3b2c94236cc53e8b45e09e6b6d
+ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42056814"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44325375"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Přizpůsobení mapování atributů zřizování pro aplikace SaaS ve službě Azure Active Directory uživatelů
 Microsoft Azure AD poskytuje podporu pro zřizování uživatelů pro aplikace SaaS třetích stran, jako je například Salesforce, Google Apps a jiná. Pokud máte zřizování uživatelů pro aplikace SaaS třetích stran povoleno, řídí na webu Azure portal jeho hodnoty atributů ve formě mapování atributů.
@@ -33,18 +33,18 @@ Je předem nakonfigurované sady atributů a atributů mapování mezi objekty u
 Na portálu Azure AD, dostanete tuto funkci kliknutím **mapování** konfiguraci v části **zřizování** v **spravovat** část  **Podniková aplikace**.
 
 
-![Salesforce][5] 
+![Salesforce](media/active-directory-saas-customizing-attribute-mappings/21.png) 
 
 Kliknutím **mapování** konfigurace, otevře se související **mapování atributů** obrazovky. Existují – mapování atributů, které vyžaduje aplikaci SaaS, aby správně fungoval. Pro požadované atributy **odstranit** funkce není k dispozici.
 
 
-![Salesforce][6]  
+![Salesforce](media/active-directory-saas-customizing-attribute-mappings/22.png)
 
 V předchozím příkladu vidíte, že **uživatelské jméno** atribut spravovaný objekt v Salesforce se vyplní **userPrincipalName** hodnotu odkazovaný objekt služby Azure Active Directory.
 
 Můžete upravit existující **mapování atributů** kliknutím mapování. Tím se otevře **Upravit atribut** obrazovky.
 
-![Salesforce][7]  
+![Salesforce](media/active-directory-saas-customizing-attribute-mappings/23.png)
 
 
 ### <a name="understanding-attribute-mapping-types"></a>Principy typů mapování atributů
@@ -77,7 +77,7 @@ Kromě této vlastnosti mapování atributů podporují také následující atr
 
 Vybraný počet aplikací, jako je například Google Apps, ServiceNow a pole podporují možnost zřizování skupiny objektů kromě objektů uživatelů. Objekty skupiny může obsahovat vlastnosti skupiny, jako je zobrazované názvy a aliasy, kromě členy skupiny e-mailu.
 
-![ServiceNow][8]  
+![ServiceNow](media/active-directory-saas-customizing-attribute-mappings/24.png)
 
 Skupinové zřizování může být volitelně povolit nebo zakázat tak, že vyberete mapování skupin v rámci **mapování**a nastavení **povoleno** na požadovanou možnost v **mapováníatributů** obrazovky.
 
@@ -104,7 +104,7 @@ Aplikace a systémy, které podporují přizpůsobení seznamu atributů patří
 >[!NOTE]
 >Úpravy v seznamu podporovaných atributů se doporučuje jenom pro správce, kteří si přizpůsobili schématu jejich aplikací a systémů a znalosti zblízka jak jejich vlastní atributy definované. V některých případech to vyžaduje znalost nástroje rozhraní API a vývojáři aplikace nebo systému k dispozici. 
 
-![Editor][9]  
+![Editor](media/active-directory-saas-customizing-attribute-mappings/25.png) 
 
 Při úpravě seznam podporovaných atributů, jsou k dispozici následující vlastnosti:
 
@@ -152,10 +152,4 @@ Tato možnost vynutí efektivně opětovnou synchronizaci všech uživatelů je 
 * [Zapnutí automatického zřizování uživatelů a skupin ze služby Azure Active Directory do aplikací pomocí SCIM](manage-apps/use-scim-to-provision-users-and-groups.md)
 * [Seznam kurzů o integraci aplikací SaaS](saas-apps/tutorial-list.md)
 
-<!--Image references-->
-[5]: ./media/active-directory-saas-customizing-attribute-mappings/21.png
-[6]: ./media/active-directory-saas-customizing-attribute-mappings/22.png
-[7]: ./media/active-directory-saas-customizing-attribute-mappings/23.png
-[8]: ./media/active-directory-saas-customizing-attribute-mappings/24.png
-[9]: ./media/active-directory-saas-customizing-attribute-mappings/25.PNG
 

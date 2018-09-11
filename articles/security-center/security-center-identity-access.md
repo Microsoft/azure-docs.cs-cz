@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: 9f04e730-4cfa-4078-8eec-905a443133da
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
 ms.author: rkarlin
-ms.openlocfilehash: 4a934bd69e63605fd624d06533c4e411bc94b531
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 17fd9907a5e3e3f4485b35c8e74d6e46fecb7fda
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630914"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303502"
 ---
 # <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>Monitorování identity a přístupu v Azure Security Center (Preview)
 Tento článek vám pomůže používat Azure Security Center k monitorování identit a aktivit přístupu uživatelů.

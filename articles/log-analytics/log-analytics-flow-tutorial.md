@@ -1,6 +1,6 @@
 ---
-title: Automatizovat procesy analýzy protokolů Azure s Flow Microsoft
-description: Zjistěte, jak Microsoft Flow můžete rychle automatizovat opakované procesy pomocí konektoru Azure Log Analytics.
+title: Automatizace procesů Azure Log Analytics pomocí Microsoft Flow
+description: Zjistěte, jak můžete pomocí Microsoft Flow k automatizaci rychle opakovatelnou procesů pomocí konektoru služby Azure Log Analytics.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,41 +13,41 @@ ms.topic: conceptual
 ms.date: 09/29/2017
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 21cf7cf3d12902b02fcbf650a1623e78004d28b4
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: d623cd4cb1a62fab7b5f8cc4e9686d88cde94ed8
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131696"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303265"
 ---
-# <a name="automate-log-analytics-processes-with-the-connector-for-microsoft-flow"></a>Automatizovat procesy analýzy protokolů pomocí konektoru pro Flow Microsoft
-[Microsoft Flow](https://ms.flow.microsoft.com) vám umožní vytvořit automatizované pracovní postupy pomocí stovky akce pro celou řadu služeb. Výstup z jednu akci je možné použít jako vstup pro jiné umožňuje vytvářet integrace mezi různými službami.  Konektor analýzy protokolů Azure pro Microsoft Flow umožňují vytvářet pracovní postupy, které zahrnují data načtená při prohledávání protokolu v analýzy protokolů.
+# <a name="automate-log-analytics-processes-with-the-connector-for-microsoft-flow"></a>Automatizace procesů Log Analytics pomocí konektoru pro Microsoft Flow
+[Microsoft Flow](https://ms.flow.microsoft.com) můžete vytvářet automatizované pracovní postupy pomocí stovek akce pro širokou škálu služeb. Výstup z jedné akce můžete použít jako vstup do druhé umožňuje vytvářet integrace mezi různými službami.  Azure Log Analytics connector pro Microsoft Flow umožňují vytvářet pracovní postupy, které zahrnují data načtená pomocí prohledávání protokolů v Log Analytics.
 
-Například můžete použít Microsoft Flow používat data analýzy protokolů e-mailem oznámení z Office 365, vytvoření chyby ve Visual Studio Team Services, nebo příspěvek ve Slack.  Při jednoduchého plánu, nebo některá z akcí v připojené služby, jako je při doručení e-mailu nebo tweet, můžete aktivovat pracovní postup.  
+Například můžete použít Microsoft Flow k použití dat Log Analytics v e-mailové oznámení z Office 365, vytvořit chybu ve službě Azure DevOps nebo publikovat zprávu Slack.  Pracovní postup můžete aktivovat podle jednoduchého plánu nebo z některé akce propojené služby, například při přijetí e-mailu nebo tweet.  
 
-Tento kurz v tomto článku se dozvíte, jak vytvořit toku, který automaticky odesílá výsledky vyhledávání protokolu analýzy protokolů e-mailem, pouze příklad, jak můžete použít analýzy protokolů v Flow Microsoft. 
+Kurz v tomto článku se dozvíte, jak vytvořit tok, který automaticky odesílá výsledky prohledávání protokolu Log Analytics prostřednictvím e-mailu, jenom jeden příklad použití Log Analytics v Microsoft Flow. 
 
 
 ## <a name="step-1-create-a-flow"></a>Krok 1: Vytvoření toku
-1. Přihlaste se k [Microsoft Flow](http://flow.microsoft.com)a vyberte **Moje toků**.
+1. Přihlaste se k [Microsoft Flow](http://flow.microsoft.com)a vyberte **Moje toky**.
 2. Klikněte na tlačítko **+ vytvořit z prázdné**.
 
-## <a name="step-2-create-a-trigger-for-your-flow"></a>Krok 2: Vytvoření aktivační událost pro vaše tok
-1. Klikněte na tlačítko **vyhledávání stovky konektory a aktivační události**.
+## <a name="step-2-create-a-trigger-for-your-flow"></a>Krok 2: Vytvoření aktivační události pro váš tok
+1. Klikněte na tlačítko **prohledejte stovky konektorů a aktivačních událostí**.
 2. Typ **plán** do vyhledávacího pole.
-3. Vyberte **plán**a potom vyberte **plán - opakování**.
-4. V **frekvence** zaškrtněte **den** a v **Interval** zadejte **1**.<br><br>![Dialogové okno Microsoft Flow aktivační události](media/log-analytics-flow-tutorial/flow01.png)
+3. Vyberte **plán**a pak vyberte **plán – opakování**.
+4. V **frekvence** pole vyberte **den** a **Interval** zadejte **1**.<br><br>![Dialogové okno aktivační události Microsoft Flow](media/log-analytics-flow-tutorial/flow01.png)
 
 
-## <a name="step-3-add-a-log-analytics-action"></a>Krok 3: Přidání akce analýzy protokolů
-1. Klikněte na tlačítko **+ nový krok**a potom klikněte na **přidat akci**.
-2. Vyhledejte **protokolu analýzy**.
-3. Klikněte na tlačítko **Azure Log Analytics – spuštění dotazu a vizualizace výsledků**.<br><br>![Spusťte okno dotazu analýzy protokolů](media/log-analytics-flow-tutorial/flow02.png)
+## <a name="step-3-add-a-log-analytics-action"></a>Krok 3: Přidejte akci Log Analytics
+1. Klikněte na tlačítko **+ nový krok**a potom klikněte na tlačítko **přidat akci**.
+2. Vyhledejte **Log Analytics**.
+3. Klikněte na tlačítko **Azure Log Analytics – spustit dotaz a vizualizaci výsledků**.<br><br>![Spusťte okno dotazu log Analytics](media/log-analytics-flow-tutorial/flow02.png)
 
-## <a name="step-4-configure-the-log-analytics-action"></a>Krok 4: Konfigurace analýzy protokolů akce
+## <a name="step-4-configure-the-log-analytics-action"></a>Krok 4: Nakonfigurujte akci, která Log Analytics
 
-1. Zadejte podrobnosti pro pracovní prostor, včetně ID předplatné, skupinu prostředků a název pracovního prostoru.
-2. Přidejte následující dotaz analýzy protokolů, který **dotazu** okno.  Toto je ukázkový dotaz a můžete nahradit všechny jiné, vrací data.
+1. Zadejte podrobnosti pro váš pracovní prostor, včetně ID předplatného, skupinu prostředků a název pracovního prostoru.
+2. Přidejte následující dotaz Log Analytics, který **dotazu** okna.  Toto je ukázkový dotaz a můžete nahradit všechny jiné, které vrací data.
 ```
     Event
     | where EventLevelName == "Error" 
@@ -56,30 +56,30 @@ Tento kurz v tomto článku se dozvíte, jak vytvořit toku, který automaticky 
     | sort by Computer
 ```
 
-2. Vyberte **tabulky HTML** pro **typ grafu**.<br><br>![Akce analýzy protokolů](media/log-analytics-flow-tutorial/flow03.png)
+2. Vyberte **tabulku HTML** pro **typ grafu**.<br><br>![Log Analytics akce](media/log-analytics-flow-tutorial/flow03.png)
 
-## <a name="step-5-configure-the-flow-to-send-email"></a>Krok 5: Konfigurace toku k odeslání e-mailu
+## <a name="step-5-configure-the-flow-to-send-email"></a>Krok 5: Konfigurace tok poslání e-mailu
 
-1. Klikněte na tlačítko **nový krok**a potom klikněte na **+ přidat akci**.
+1. Klikněte na tlačítko **nový krok**a potom klikněte na tlačítko **+ přidat akci**.
 2. Vyhledejte **Office 365 Outlook**.
-3. Klikněte na tlačítko **Office 365 Outlook – e-mailu**.<br><br>![Okno Výběr Outlook Office 365](media/log-analytics-flow-tutorial/flow04.png)
+3. Klikněte na tlačítko **Office 365 Outlook – odeslat e-mail**.<br><br>![Okno pro výběr Office 365 Outlooku](media/log-analytics-flow-tutorial/flow04.png)
 
 4. Zadejte e-mailová adresa příjemce v **k** okno a předmět e-mailu v **subjektu**.
-5. Klikněte kamkoli do **textu** pole.  A **dynamický obsah** otevře se okno s hodnotami z předchozí akce.  
-6. Vyberte **textu**.  Toto je výsledky dotazu v akci pro analýzy protokolů.
-6. Klikněte na tlačítko **zobrazit rozšířené možnosti**.
+5. Klikněte kamkoli do **tělo** pole.  A **dynamický obsah** otevře se okno s hodnotami z předchozích akcí.  
+6. Vyberte **tělo**.  Toto je výsledky dotazu v akci Log Analytics.
+6. Klikněte na tlačítko **zobrazit pokročilé možnosti**.
 7. V **je HTML** vyberte **Ano**.<br><br>![Okno Konfigurace e-mailu Office 365](media/log-analytics-flow-tutorial/flow05.png)
 
-## <a name="step-6-save-and-test-your-flow"></a>Krok 6: Uložit a testování vaší toku
-1. V **toku název** pole, přidejte název vaší toku a pak klikněte na tlačítko **vytvořit toku**.<br><br>![Uložit toku](media/log-analytics-flow-tutorial/flow06.png)
-2. Tok teď se vytvoří a spustí za den, což je plán, který jste zadali. 
-3. Chcete-li hned otestovat toku, klikněte na tlačítko **spustit nyní** a potom **spustit toku**.<br><br>![Spustit toku](media/log-analytics-flow-tutorial/flow07.png)
-3. Po dokončení toku zkontrolujte e-mailu příjemce, který jste zadali.  Byste měli obdržet e-mail se text podobný následujícímu:<br><br>![Ukázkového e-mailu](media/log-analytics-flow-tutorial/flow08.png)
+## <a name="step-6-save-and-test-your-flow"></a>Krok 6: Uložit a testování vašeho toku
+1. V **název toku** pole, přidat pro nový tok název a potom klikněte na tlačítko **vytvořit tok**.<br><br>![Uložit tok](media/log-analytics-flow-tutorial/flow06.png)
+2. Tok se teď vytvoří a spustí za den, což je plán, který jste zadali. 
+3. Pokud chcete okamžitě testování tohoto toku, klikněte na tlačítko **Run Now** a potom **spustit tok**.<br><br>![Spustit tok](media/log-analytics-flow-tutorial/flow07.png)
+3. Po dokončení toku zaškrtněte příjemce, který jste zadali e-mailu.  Byste měli obdržet e-mail s tělem podobný následujícímu:<br><br>![Ukázka e-mailu](media/log-analytics-flow-tutorial/flow08.png)
 
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o [přihlásit analýzy protokolů hledání](log-analytics-log-search-new.md).
+- Další informace o [prohledávání protokolů v Log Analytics](log-analytics-log-search-new.md).
 - Další informace o [Microsoft Flow](https://ms.flow.microsoft.com).
 
 

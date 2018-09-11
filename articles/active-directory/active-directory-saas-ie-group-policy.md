@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/30/2018
+ms.date: 09/09/2018
 ms.author: barbkess
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 70552e982ff4c21d02b5f52ea48f108ce7f3b97e
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: ce27f51dc5e80b4ce2bd83b5f9f6c75853a2ea73
+ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39366805"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44325273"
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>Jak nasadit rozšíření přístupového panelu pro aplikaci Internet Explorer pomocí zásad skupiny
 Tento kurz ukazuje, jak používat zásady skupiny k provedení vzdálené instalace rozšíření přístupový Panel pro aplikaci Internet Explorer v počítačích uživatelů. Toto rozšíření, je třeba Internet Explorer, kteří se muset přihlásit do aplikace, které jsou nakonfigurované pomocí [založené na heslech jednotného přihlašování](manage-apps/what-is-single-sign-on.md#password-based-single-sign-on).
@@ -120,7 +120,7 @@ Rozšíření by měl nyní možné pro počítače ve vybrané organizační je
 ## <a name="step-5-optional-disable-remember-password-prompt"></a>Krok 5 (volitelné): Zakáže "Heslo si zapamatujte"
 Při přihlášení k webům pomocí rozšíření přístupového panelu, Internet Explorer může zobrazit následující výzva s dotazem, "Chcete uložit heslo?"
 
-![](./media/active-directory-saas-ie-group-policy/remember-password-prompt.png)
+![Výzva k zadání hesla](./media/active-directory-saas-ie-group-policy/remember-password-prompt.png)
 
 Pokud budete chtít zabráníte uživatelům zobrazovat tuto výzvu, postupujte podle pokynů níže, aby se zabránilo automatické dokončování z pamatovat si hesla:
 

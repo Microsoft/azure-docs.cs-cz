@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: asmalser
-ms.openlocfilehash: 0df23d50fa208482e45d2d35555ec79c587cc80a
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 930ca49a63e34214ec197d8dd37f38361b34fe90
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42445656"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347031"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning-preview"></a>Kurz: Konfigurace Workday pro uživatele automatické zřizování (preview)
 
@@ -27,7 +27,7 @@ Cílem tohoto kurzu je zobrazit kroky, které je potřeba provést k importu už
 
 ## <a name="overview"></a>Přehled
 
-[Služba zřizování uživatelů Azure Active Directory](../active-directory-saas-app-provisioning.md) integruje [Workday lidských zdrojů API](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html) pro zřízení uživatelských účtů. Toto připojení používá Azure AD povolit následující uživatel pracovní postupy zřizování:
+[Služba zřizování uživatelů Azure Active Directory](../manage-apps/user-provisioning.md) integruje [Workday lidských zdrojů API](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html) pro zřízení uživatelských účtů. Toto připojení používá Azure AD povolit následující uživatel pracovní postupy zřizování:
 
 * **Zřizování uživatelů do služby Active Directory** -synchronizovat vybrané skupiny uživatelů z Workday do jednoho nebo více doménovými strukturami Active Directory.
 
@@ -39,13 +39,13 @@ Cílem tohoto kurzu je zobrazit kroky, které je potřeba provést k importu už
 
 Workday uživatele pracovní postupy zřizování podporuje služby zřizování uživatelů Azure AD povolit automatizaci následující lidské zdroje a scénářů správy životního cyklu identit:
 
-* **Náboru nových zaměstnanců** – při přidání nového zaměstnance do Workday, uživatelský účet se automaticky vytvoří v Active Directory, Azure Active Directory a volitelně Office 365 a [dalším aplikacím SaaS podporované službou Azure AD](../active-directory-saas-app-provisioning.md), se zpětným zápisem e-mailovou adresu do Workday.
+* **Náboru nových zaměstnanců** – při přidání nového zaměstnance do Workday, uživatelský účet se automaticky vytvoří v Active Directory, Azure Active Directory a volitelně Office 365 a [dalším aplikacím SaaS podporované službou Azure AD](../manage-apps/user-provisioning.md), se zpětným zápisem e-mailovou adresu do Workday.
 
-* **Aktualizace atributu a profil zaměstnance** – při aktualizaci záznamu zaměstnance ve Workday (například jeho název, název nebo správce), jeho uživatelský účet se automaticky aktualizují v Active Directory, Azure Active Directory a volitelně Office 365 a [dalším aplikacím SaaS podporované službou Azure AD](../active-directory-saas-app-provisioning.md).
+* **Aktualizace atributu a profil zaměstnance** – při aktualizaci záznamu zaměstnance ve Workday (například jeho název, název nebo správce), jeho uživatelský účet se automaticky aktualizují v Active Directory, Azure Active Directory a volitelně Office 365 a [dalším aplikacím SaaS podporované službou Azure AD](../manage-apps/user-provisioning.md).
 
-* **Zaměstnance ukončení** – když se ukončí zaměstnance ve Workday, automaticky se vypne jeho uživatelský účet v Active Directory, Azure Active Directory a volitelně Office 365 a [dalším aplikacím SaaS nepodporuje v Azure AD](../active-directory-saas-app-provisioning.md).
+* **Zaměstnance ukončení** – když se ukončí zaměstnance ve Workday, automaticky se vypne jeho uživatelský účet v Active Directory, Azure Active Directory a volitelně Office 365 a [dalším aplikacím SaaS nepodporuje v Azure AD](../manage-apps/user-provisioning.md).
 
-* **Zaměstnanec znovu hires** – když je rehired zaměstnance ve Workday, jejich starý účet můžete automaticky znovu aktivována nebo znovu zřídit (v závislosti na vašich předvoleb) do služby Active Directory, Azure Active Directory a volitelně Office 365 a [dalším aplikacím SaaS podporované službou Azure AD](../active-directory-saas-app-provisioning.md).
+* **Zaměstnanec znovu hires** – když je rehired zaměstnance ve Workday, jejich starý účet můžete automaticky znovu aktivována nebo znovu zřídit (v závislosti na vašich předvoleb) do služby Active Directory, Azure Active Directory a volitelně Office 365 a [dalším aplikacím SaaS podporované službou Azure AD](../manage-apps/user-provisioning.md).
 
 ### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>Kdo je tento uživatel zřizování řešení, které nejlépe vyhovuje?
 
@@ -327,7 +327,7 @@ V této části můžete nakonfigurovat uživatele tok dat z Workday do Active D
 
          * **Konstantní** -zapsat hodnotu statické, konstantní řetězec pro atribut AD
 
-         * **Výraz** – umožňuje psát vlastní hodnotu pro atribut AD založené na jeden nebo více atributů Workday. [Další informace najdete v článku o výrazech](../active-directory-saas-writing-expressions-for-attribute-mappings.md).
+         * **Výraz** – umožňuje psát vlastní hodnotu pro atribut AD založené na jeden nebo více atributů Workday. [Další informace najdete v článku o výrazech](../manage-apps/functions-for-customizing-application-data.md).
 
       * **Zdrojový atribut** – atribut uživatele z Workday. Pokud hledáte atribut není k dispozici, najdete v článku [přizpůsobení seznamu atributů uživatelů Workday](#customizing-the-list-of-workday-user-attributes).
 
@@ -356,14 +356,14 @@ V této části můžete nakonfigurovat uživatele tok dat z Workday do Active D
 
 -   Atribut userPrincipalName ve službě Active Directory je generována zřetězením ID uživatele Workday s příponou domény
 
--   [Je dokumentace ke službě na psaní výrazů zde](../active-directory-saas-writing-expressions-for-attribute-mappings.md). To zahrnuje příklady o tom, jak odeberte speciální znaky.
+-   [Je dokumentace ke službě na psaní výrazů zde](../manage-apps/functions-for-customizing-application-data.md). To zahrnuje příklady o tom, jak odeberte speciální znaky.
 
   
 | WORKDAY ATRIBUT | ATRIBUT SLUŽBY ACTIVE DIRECTORY |  ODPOVÍDAJÍCÍ ID? | VYTVOŘIT / AKTUALIZOVAT |
 | ---------- | ---------- | ---------- | ---------- |
 | **WorkerID**  |  EmployeeID | **Ano** | Zapisovat pouze při vytváření |
 | **UserId**    |  CN    |   |   Zapisovat pouze při vytváření |
-| **Připojte se k ("@", [ID], "contoso.com")**   | userPrincipalName     |     | Zapisovat pouze při vytváření 
+| **Připojte se k ("@", [ID], "contoso.com")**   | userPrincipalName (Hlavní název uživatele)     |     | Zapisovat pouze při vytváření 
 | **Nahraďte (Mid (Nahraďte (\[UserID\],, "(\[ \\ \\ / \\ \\ \\ \\ \\ \\ \[ \\\\\]\\\\:\\\\;\\ \\|\\\\=\\\\,\\\\+\\\\\*\\ \\? \\ \\ &lt; \\ \\ &gt; \]) "," ",), 1, 20)," ([\\\\.) \* \$] (file:///\\.) *$)", , "", , )**      |    SAMAccountName            |     |         Zapisovat pouze při vytváření |
 | **Přepínač (\[aktivní\],, "0", "True", "1")** |  accountDisabled      |     | Vytváření a aktualizace |
 | **Jméno**   | givenName       |     |    Vytváření a aktualizace |
@@ -490,7 +490,7 @@ Po dokončení části 1-3 můžete spustit službu zřizování zpět na portá
 
 3. Tím se spustí počáteční synchronizaci, to může trvat proměnný počet hodin v závislosti na počtu uživatelů, kteří jsou ve Workday.
 
-4. V okamžiku, zkontrolujte **protokoly auditu** kartu na webu Azure Portal najdete v článku jaké akce proběhla zřizovací služba. Protokoly auditu zobrazuje všechny události jednotlivou synchronizaci provést zřizovací služba, například kteří uživatelé jsou číst z Workday a pak následně přidáním nebo aktualizací do služby Active Directory. **[Zobrazit zřizování průvodce vytvářením sestav pro podrobné pokyny o tom, jak načíst protokoly auditu](../active-directory-saas-provisioning-reporting.md)**
+4. V okamžiku, zkontrolujte **protokoly auditu** kartu na webu Azure Portal najdete v článku jaké akce proběhla zřizovací služba. Protokoly auditu zobrazuje všechny události jednotlivou synchronizaci provést zřizovací služba, například kteří uživatelé jsou číst z Workday a pak následně přidáním nebo aktualizací do služby Active Directory. **[Zobrazit zřizování průvodce vytvářením sestav pro podrobné pokyny o tom, jak načíst protokoly auditu](../manage-apps/check-status-user-account-provisioning.md)**
 
 1.  Zkontrolujte, [protokolu událostí Windows](https://technet.microsoft.com/library/cc722404(v=ws.11).aspx) na počítači s Windows serverem hostování agenta k nějakým novým chybám nebo upozornění. Tyto události jsou zobrazitelné spuštěním **Eventvwr.msc** na serveru a vyberete **protokoly Windows > aplikace**. Všechny zprávy týkající se zřizování jsou zaznamenány v rámci zdroje **AADSyncAgent**.
 
@@ -581,7 +581,7 @@ V této části můžete nakonfigurovat jak uživatelská data z Workday do Azur
 
       * **Konstantní** -zapsat hodnotu statické, konstantní řetězec pro atribut AD
 
-      * **Výraz** – umožňuje psát vlastní hodnotu pro atribut AD založené na jeden nebo více atributů Workday. [Další informace najdete v článku o výrazech](../active-directory-saas-writing-expressions-for-attribute-mappings.md).
+      * **Výraz** – umožňuje psát vlastní hodnotu pro atribut AD založené na jeden nebo více atributů Workday. [Další informace najdete v článku o výrazech](../manage-apps/functions-for-customizing-application-data.md).
 
    * **Zdrojový atribut** – atribut uživatele z Workday. Pokud hledáte atribut není k dispozici, najdete v článku [přizpůsobení seznamu atributů uživatelů Workday](#customizing-the-list-of-workday-user-attributes).
 
@@ -611,7 +611,7 @@ Po dokončení části 1-2 je spustit službu zřizování.
 
 3. Tím se spustí počáteční synchronizaci, to může trvat proměnný počet hodin v závislosti na počtu uživatelů, kteří jsou ve Workday.
 
-4. Jednotlivé synchronizační události lze zobrazit v **protokoly auditu** kartu. **[Zobrazit zřizování průvodce vytvářením sestav pro podrobné pokyny o tom, jak načíst protokoly auditu](../active-directory-saas-provisioning-reporting.md)**
+4. Jednotlivé synchronizační události lze zobrazit v **protokoly auditu** kartu. **[Zobrazit zřizování průvodce vytvářením sestav pro podrobné pokyny o tom, jak načíst protokoly auditu](../manage-apps/check-status-user-account-provisioning.md)**
 
 5. Jeden dokončeno, bude zapisovat souhrnnou sestavu auditu **zřizování** kartu, jak je znázorněno níže.
 
@@ -669,7 +669,7 @@ Po dokončení části 1-2 je spustit službu zřizování.
 
 3. Tím se spustí počáteční synchronizaci, to může trvat proměnný počet hodin v závislosti na počtu uživatelů, kteří jsou ve Workday.
 
-4. Jednotlivé synchronizační události lze zobrazit v **protokoly auditu** kartu. **[Zobrazit zřizování průvodce vytvářením sestav pro podrobné pokyny o tom, jak načíst protokoly auditu](../active-directory-saas-provisioning-reporting.md)**
+4. Jednotlivé synchronizační události lze zobrazit v **protokoly auditu** kartu. **[Zobrazit zřizování průvodce vytvářením sestav pro podrobné pokyny o tom, jak načíst protokoly auditu](../manage-apps/check-status-user-account-provisioning.md)**
 
 5. Jeden dokončeno, bude zapisovat souhrnnou sestavu auditu **zřizování** kartu, jak je znázorněno níže.
 
@@ -808,7 +808,7 @@ Workday zřizování řešení pro službu Active Directory vyžaduje aby byl na
 
 ## <a name="next-steps"></a>Další postup
 
-* [Zjistěte, jak kontrolovat protokoly a získat sestavy o zřizování aktivity](../active-directory-saas-provisioning-reporting.md)
+* [Zjistěte, jak kontrolovat protokoly a získat sestavy o zřizování aktivity](../manage-apps/check-status-user-account-provisioning.md)
 * [Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Workday a Azure Active Directory](workday-tutorial.md)
 * [Naučte se integrovat s Azure Active Directory dalším aplikacím SaaS](tutorial-list.md)
 

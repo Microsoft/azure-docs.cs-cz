@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: bwren
-ms.openlocfilehash: 40b8f51c66ebe98cd1c312002b7bd5e96e5032bd
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 3154a2f8b283f68ec3e10ba621ccba3ee6d77de2
+ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39112701"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44324746"
 ---
 # <a name="data-collection-details-for-management-solutions-in-azure"></a>Podrobnosti shromažďování dat pro řešení pro správu v Azure
 Tento článek obsahuje seznam [řešení pro správu](monitoring-solutions.md) od Microsoftu k dispozici s odkazy na jejich podrobnou dokumentaci.  Poskytuje také informace o jejich metoda a četnost shromažďování dat do Log Analytics.  K identifikaci různých řešení, které jsou k dispozici a lépe porozumět požadavkům datového toku a připojení pro jiné řešení, můžete použít informace v tomto článku. 
@@ -65,7 +65,7 @@ Vysvětlení sloupců jsou následující:
 | [Sledování výkonu sítě](../log-analytics/log-analytics-network-performance-monitor.md) | Windows | &#8226; | &#8226; |  |  |  | Počet metod Handshake protokolu TCP každých 5 sekund dat odeslaných každé 3 minuty |
 | [Office 365 Analytics (Náhled)](../operations-management-suite/oms-solution-office-365.md) |Windows | | | | | |v oznámení |
 | **Řešení pro správu** | **Platforma** | **Agent sledování Microsoft** | **Agent nástroje Operations Manager** | **Úložiště Azure** | **Nástroj Operations Manager vyžaduje?** | **Dat agenta nástroje Operations Manager odeslaná pomocí skupiny pro správu** | **Četnost shromažďování dat** |
-| [Analýza služby Service Fabric (verze Preview)](../log-analytics/log-analytics-service-fabric.md) |Windows | | |&#8226; | | |5 minut |
+| [Analýza služby Service Fabric](../service-fabric/service-fabric-diagnostics-oms-setup.md) |Windows | | |&#8226; | | |5 minut |
 | [Mapa služeb](../operations-management-suite/operations-management-suite-service-map.md) | Windows a Linux | &#8226; | &#8226; |  |  |  | 15 sekund |
 | [Posouzení SQL](../log-analytics/log-analytics-sql-assessment.md) |Windows |&#8226; |&#8226; | | |&#8226; |7 dní |
 | [SurfaceHub](../log-analytics/log-analytics-surface-hubs.md) |Windows |&#8226; | | | | |Při doručení |

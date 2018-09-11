@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2018
 ms.author: spelluru
-ms.openlocfilehash: bafc08eae4a32f803f485097401a586a662f64e9
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: a8213ebfe1d2643fd3c38e655b2571de82ef048f
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700403"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346556"
 ---
 # <a name="message-browsing"></a>Procházení zpráv
 
-Zpráva procházení ("prohlížení") umožňuje klientovi služby Service Bus se vytvořit výčet všechny zprávy, které se nacházejí ve frontě nebo odběru, obvykle pro diagnostiku a účely ladění.
+Procházení zpráv nebo prohlížení, umožňuje klientovi služby Service Bus se vytvořit výčet všech zpráv, které jsou umístěny do fronty nebo odběru, obvykle pro účely ladění a diagnostiky.
 
 Operace peek vrátí všechny zprávy, které existují ve frontě nebo odběru protokolu zpráv, nejen ty, k dispozici pro okamžité získání s `Receive()` nebo `OnMessage()` smyčky. `State` Vlastnosti každé zprávy zjistíte, jestli je aktivní zprávy (k dispozici pro další přijetí), [odložené](message-deferral.md), nebo [naplánované](message-sequencing.md).
 
@@ -30,13 +30,13 @@ Spotřebované a vypršela platnost zprávy vyčistily pomocí asynchronního "�
 
 To je obzvláště důležité vzít v úvahu při pokusu o obnovení odložené zprávy z fronty. Zpráva, pro kterou [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc#Microsoft_Azure_ServiceBus_Message_ExpiresAtUtc) uplynutí okamžiku už nejsou vhodné pro pravidelné načítání jiným způsobem, i v případě, že je vracených náhled. Vrací tyto zprávy je záměrné, protože náhled je diagnostický nástroj, který odráží aktuální stav do protokolu.
 
-Náhled vrátí zprávy, které byly uzamčeny a jsou právě zpracovávána pomocí dalších příjemců, ale ještě nebyly dokončeny. Ale protože Peek vrací odpojené snímku, stav zámku zprávy nebyly nalezeny u nahlédnout zpráv a [LockedUntilUtc](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.lockeduntilutc#Microsoft_Azure_ServiceBus_Core_MessageReceiver_LockedUntilUtc) a [token LockToken](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.locktoken#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_LockToken) throw vlastnosti [ InvalidOperationException](/dotnet/api/system.invalidoperationexception) když se aplikace pokusí přečíst.
+Náhled vrátí zprávy, které byly uzamčeny a jsou právě zpracovávána pomocí dalších příjemců, ale ještě nebyly dokončeny. Ale protože Peek vrací odpojené snímku, stav zámku zprávy nebyly nalezeny u nahlédnout zpráv a [LockedUntilUtc](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.lockeduntilutc) a [token LockToken](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.locktoken#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_LockToken) throw vlastnosti [ InvalidOperationException](/dotnet/api/system.invalidoperationexception) když se aplikace pokusí přečíst.
 
 ## <a name="peek-apis"></a>Náhled rozhraní API
 
 [Náhled/PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_PeekAsync) a [PeekBatch/PeekBatchAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatchasync#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatchAsync_System_Int64_System_Int32_) metody existují v klientské knihovny pro všechny .NET a Javu a pro všechny objekty příjemce: **MessageReceiver**, **Popsaným**, **QueueClient**, a **SubscriptionClient**. Operace Peek funguje pro všechny fronty a předplatná a jejich příslušné fronty nedoručených zpráv.
 
-Při volání opakovaně, metody Peek zobrazí všechny zprávy, které existují v protokolu fronty nebo odběru v pořadí podle čísla pořadí, od nejnižší dostupné pořadové číslo k nejvyšší. To je v tom pořadí, ve kterém byly zpráv zařazených do fronty; není pořadí, ve kterém může být nakonec načten zprávy.
+Při volání opakovaně, metody Peek zobrazí všechny zprávy, které existují v protokolu fronty nebo odběru v pořadí podle čísla pořadí, od nejnižší dostupné pořadové číslo k nejvyšší. To je v tom pořadí, ve kterém byly zpráv zařazených do fronty a není pořadí, ve kterém může být nakonec načten zprávy.
 
 [PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatch_System_Int32_) načte více zpráv a vrátí je jako výčet. Pokud nejsou k dispozici žádné zprávy, výčet objekt je prázdný, není null.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: ee606540bef47b11ad8fd9e820af2f5b51d47b0b
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 00b2b249f5889888f34d57fd1577ccfea776d00c
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39493017"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347966"
 ---
 # <a name="securing-paas-databases-in-azure"></a>Zabezpečení databáze PaaS v Azure
 
@@ -79,7 +79,7 @@ Další informace o omezení brány Firewall SQL Azure a IP, naleznete v tématu
 ### <a name="encryption-of-data-at-rest"></a>Šifrování neaktivních uložených dat
 [Transparentní šifrování dat (TDE)](https://msdn.microsoft.com/library/azure/bb934049) je ve výchozím nastavení povolené. Transparentní šifrování dat transparentně šifruje systému SQL Server, Azure SQL Database a Azure SQL Data Warehouse dat a souborů protokolu. Transparentní šifrování dat chrání proti ohrožení zabezpečení přímý přístup k souborům a jejich zálohování. To umožňuje šifrování neaktivních uložených dat bez změny konfigurace existujících aplikací. Transparentní šifrování dat by mělo zůstat vždy povolena, to ale nezpůsobí ukončení útočník pomocí cesty normální přístup. Transparentní šifrování dat umožňuje v souladu s mnoha zákonům, předpisům a pokyny uvedenými v různých oborech.
 
-Azure SQL pro transparentní šifrování dat spravuje klíče související problémy. Jak se TDE, místní speciální musí být dbát na možnosti obnovení a při přesunu databází. Ve složitějších scénářích klíče můžete explicitně spravovat ve službě Azure Key Vault pomocí rozšiřitelná Správa klíčů (viz [povolení šifrování TDE u SQL serveru pomocí EKM](/security/encryption/enable-tde-on-sql-server-using-ekm)). Také díky tomu pro používání Your Own Key (BYOK) přes funkci BYOK služby Azure Key trezory.
+Azure SQL pro transparentní šifrování dat spravuje klíče související problémy. Jak se TDE, místní speciální musí být dbát na možnosti obnovení a při přesunu databází. Ve složitějších scénářích klíče můžete explicitně spravovat ve službě Azure Key Vault pomocí rozšiřitelná Správa klíčů (viz [povolení šifrování TDE u SQL serveru pomocí EKM](/sql/relational-databases/security/encryption/enable-tde-on-sql-server-using-ekm)). Také díky tomu pro používání Your Own Key (BYOK) přes funkci BYOK služby Azure Key trezory.
 
 Azure SQL, zajišťuje šifrování pro sloupce prostřednictvím [s funkcí Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine). To umožňuje jenom autorizované aplikace přístup k citlivým sloupce. Pomocí tohoto typu šifrování omezuje dotazy SQL pro šifrované sloupce na základě rovnosti hodnot.
 

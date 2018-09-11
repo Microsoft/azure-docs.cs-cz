@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3892b546bb6873a802d85b30cd89801abc9a7424
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 7653541a6a66ce5e94119dbb720213a4b40adc81
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44162423"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303424"
 ---
 # <a name="using-azure-for-hosting-and-running-sap-workload-scenarios"></a>Použití Azure k hostování a spuštění scénáře úloh řešení SAP
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -335,60 +335,22 @@ Další kroky:
 
 
 ## <a name="sap-hana-on-azure-virtual-machines"></a>SAP HANA ve službě Azure Virtual Machines
+Tato část dokumentace obsahuje různé aspekty systému SAP HANA. Jako předpoklad měli byste se seznámit s zásady služby Azure, které poskytují základní služby Azure IaaS. to většinou znalosti v oblasti Azure compute, úložiště a sítě. Mnoho z těchto témat jsou zpracovány v SAP NetWeaver související [Azure Planning Guide](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/planning-guide). 
 
-### <a name="getting-started-with-sap-hana-on-azure"></a>Začínáme se SAP HANA v Azure
-Title: Úvodní příručka pro ruční instalaci sady SAP HANA na virtuálních počítačích Azure
+Dokumentace specifické pro HANA v Azure se skládá z tohoto seznamu článků a dědicem dílčí článků:
 
-Shrnutí: Této úvodní příručky pomáhají nastavit jednou instancí systému SAP HANA na virtuálních počítačích Azure pomocí ruční instalace SAP NetWeaver 7.5 a SAP HANA SP12. V Průvodci předpokládá, že je čtečka znáte základy Azure IaaS jako jak nasadit virtuální počítače nebo virtuální sítě buď prostřednictvím webu Azure portal nebo Powershellu/CLI, včetně možnosti používat šablony json. Kromě toho se očekává, že čtečky je obeznámen se SAP HANA, SAP NetWeaver a jak ji nainstalovat lokálně.
+- [Rychlý start: Ruční instalace jedné instance SAP HANA na virtuálních počítačích Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-get-started)
+- [Nasadit řešení SAP S/4HANA nebo BW/4HANA v Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/cal-s4h)
+- [Konfigurace infrastruktury SAP HANA a operace v Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-vm-operations)
+- [Vysoká dostupnost SAP HANA pro virtuální počítače Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/sap-hana-availability-overview)
+- [Dostupnost SAP HANA v rámci jedné oblasti Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/sap-hana-availability-one-region)
+- [Dostupnost SAP HANA v různých oblastech Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/sap-hana-availability-across-regions)
+- [Vysoká dostupnost SAP HANA na virtuálních počítačích Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/sap-hana-high-availability)
+- [Průvodce zálohováním pro SAP HANA v Azure Virtual Machines](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/sap-hana-backup-guide)
+- [SAP HANA Azure Backup na úrovni souborů](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/sap-hana-backup-file-level)
+- [Zálohování SAP HANA založené na snímcích úložiště](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/sap-hana-backup-storage-snapshots)
 
-
-[Tuto příručku můžete najít zde](hana-get-started.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
-### <a name="s4hana-sap-cal-deployment-on-azure"></a>Nasazení SAP CAL S/4HANA v Azure
-Title: Nasaďte řešení SAP S/4HANA nebo BW/4HANA v Azure
-
-Shrnutí: Tento průvodce pomůže k předvedení nasazení SAP S/4HANA v Azure s využitím SAP Cloud Appliance Library. SAP Cloud Appliance Library je služba pro SAP, která umožňuje nasadit aplikace SAP v Azure. Tento průvodce popisuje krok za krokem nasazení.
-
-
-[Tuto příručku můžete najít zde](cal-s4h.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
-### <a name="high-availability-of-sap-hana-in-azure-virtual-machines"></a>Vysoká dostupnost SAP Hana v Azure Virtual Machines
-Title: Vysoké dostupnosti SAP Hana v Azure Virtual Machines
-
-Shrnutí: Tento průvodce vás provede konfiguraci vysoké dostupnosti SAP HANA a operačního systému SUSE 12 tak, aby vyhovovaly HANA System replication pomocí automatického převzetí služeb při selhání. V průvodci je specifický pro Azure Virtual Machines a SUSE. V Průvodci se nevztahuje ještě pro Red Hat nebo úplné obnovení systému nebo privátního cloudu nebo jiná nasazení veřejného cloudu mimo Azure.
-
-
-
-[Tuto příručku můžete najít zde](sap-hana-high-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
-### <a name="sap-hana-backup-overview-on-azure-vms"></a>Přehled zálohování SAP HANA na virtuálních počítačích Azure
-Title: Zálohování Průvodce pro SAP HANA v Azure Virtual Machines
-
-Shrnutí: Tento průvodce poskytuje základní informace o zálohování možnosti spuštění SAP HANA v Azure Virtual Machines.
-
-
-
-[Tuto příručku můžete najít zde](sap-hana-backup-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
-### <a name="sap-hana-file-level-backup-on-azure-vms"></a>Zálohování SAP HANA úrovně souboru na virtuálních počítačích Azure
-Title: Zálohování SAP HANA založené na snímcích úložiště
-
-Shrnutí: Tento průvodce obsahuje informace o použití zálohy založené na snímku na virtuálních počítačích Azure, při spuštění SAP HANA v Azure Virtual Machines.
-
-
-
-[Tuto příručku můžete najít zde](sap-hana-backup-file-level.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
-
-### <a name="sap-hana-snapshot-based-backups-on-azure-vms"></a>Zálohy snímků na základě SAP HANA na virtuálních počítačích Azure
-Název: SAP HANA Azure Backup na úrovni souborů
-
-Shrnutí: Tento průvodce obsahuje informace o použití SAP HANA soubor zálohování na úrovni spuštění SAP HANA v Azure Virtual Machines
-
-
-
-[Tuto příručku můžete najít zde](sap-hana-backup-storage-snapshots.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
+ 
 
 ## <a name="sap-netweaver-deployed-on-azure-virtual-machines"></a>SAP NetWeaver nasadit v Azure Virtual Machines
 

@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 06/14/2018
 ms.author: spelluru
-ms.openlocfilehash: 9dd9150411b465d210c7e02dc52d6851f670845f
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 18e2cc9457252dbd931b03fc08382287fd3a3c1e
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697631"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44304641"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Osvědčené postupy pro zlepšení výkonu pomocí zasílání zpráv Service Bus
 
@@ -66,7 +66,7 @@ Klient naplánuje souběžných operací pomocí provádí asynchronní operace.
   var receiver = new MessageReceiver(connectionString, queueName, ReceiveMode.PeekLock);
   var doneReceiving = new TaskCompletionSource<bool>();
 
-  receiver.RegisterMessageHandler(
+  receiver.RegisterMessageHandler(...);
   ```
 
 ## <a name="receive-mode"></a>Zobrazí režim

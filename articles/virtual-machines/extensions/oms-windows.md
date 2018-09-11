@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: roiyz
-ms.openlocfilehash: 2c228784e7a0a78f6dfdb93ce632bf340dea0ee9
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 94e45462a676f6a03e838f63ad37dfbf68839eb4
+ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414738"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44325069"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>Log Analytics rozšíření virtuálního počítače pro Windows
 
@@ -74,8 +74,10 @@ Následující kód JSON ukazuje schéma pro rozšíření agenta Log Analytics.
 | vydavatele | Microsoft.EnterpriseCloud.Monitoring |
 | type | MicrosoftMonitoringAgent |
 | typeHandlerVersion | 1.0 |
-| ID pracovního prostoru (např.) | 6f680a37-00c6-41c7-a93f-1437e3462574 |
+| ID pracovního prostoru (e.g)* | 6f680a37-00c6-41c7-a93f-1437e3462574 |
 | workspaceKey (např.) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI+rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ== |
+
+\* ID pracovního prostoru je volána consumerId v rozhraní API služby Log Analytics.
 
 ## <a name="template-deployment"></a>Nasazení šablon
 

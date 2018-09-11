@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: spelluru
-ms.openlocfilehash: 100559f86a72cd5a5148d1db99764e5b04f3e3b1
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 44c25aa589b757ec29dad6863ff1969e76aed872
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702472"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346232"
 ---
 # <a name="messages-payloads-and-serialization"></a>Zprávy, datové části a serializace
 
@@ -36,7 +36,7 @@ Ekvivalentní názvů používaných na úrovni protokolu AMQP jsou uvedeny v z�
 |---------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |  [ContentType](/dotnet/api/microsoft.azure.servicebus.message.contenttype) (content-type)           | Volitelně popisuje datovou část zprávy s popisovačem ve formátu RFC2045, část 5; například `application/json`.                                                                                                                                                                                                                                                                                             |
 |  [ID korelace](/dotnet/api/microsoft.azure.servicebus.message.correlationid#Microsoft_Azure_ServiceBus_Message_CorrelationId) (id korelace)       | Umožňuje aplikaci určit kontext zprávy pro účely korelace; například odráží **MessageId** zprávy, která je přidání reakce.                                                                                                                                                                                                                                                                  |
-| [DeadLetterSource](/dotnet/api/microsoft.azure.servicebus.message.deadlettersource)                      | Nastavte pouze ve zprávách, které byly dead lettered a následně automaticky předána z fronty nedoručených zpráv s jinou entitou. Označuje entitu, ve kterém byla zpráva dead lettered. Tato vlastnost je jen pro čtení.                                                                                                                                                                                                                                  |
+| [DeadLetterSource](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deadlettersource)                      | Nastavte pouze ve zprávách, které byly dead lettered a následně automaticky předána z fronty nedoručených zpráv s jinou entitou. Označuje entitu, ve kterém byla zpráva dead lettered. Tato vlastnost je jen pro čtení.                                                                                                                                                                                                                                  |
 | [DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deliverycount)                         | Počet doručení, které se pokusil pro tuto zprávu. Hodnota tohoto čítače se zvýší, když vyprší platnost zámku zprávy nebo zprávy je explicitně opuštěny příjemce. Tato vlastnost je jen pro čtení.                                                                                                                                                                                                                                                  |
 | [EnqueuedSequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedsequencenumber)                | Pro zprávy, které byly předány automaticky tato vlastnost odpovídá pořadové číslo, které měly byla přiřazena první zprávu na jeho původní bod odeslání. Tato vlastnost je jen pro čtení.                                                                                                                                                                                                                                                                |
 | [EnqueuedTimeUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc)                       | Čas UTC rychlé kdy byla zpráva přijata a uložených v dané entitě. Tato hodnota může sloužit jako indikátor čas doručení autoritativní a neutrální, když příjemce, aby důvěřovala odesílatele hodiny. Tato vlastnost je jen pro čtení.                                                                                                                                                                                                   |

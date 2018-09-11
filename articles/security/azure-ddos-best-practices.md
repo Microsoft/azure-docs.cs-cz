@@ -1,6 +1,6 @@
 ---
-title: Azure ochrana proti útoku DDoS osvědčené postupy a referenční architektury | Microsoft Docs
-description: Informace o tom, jak můžete data protokolování a získáte přehled o hloubkové o vaší aplikaci.
+title: Azure DDoS Protection osvědčené postupy a referenční architektury | Dokumentace Microsoftu
+description: Další informace o použití protokolování dat získat podrobný přehled o vaší aplikaci.
 services: security
 author: barclayn
 manager: mbaldwin
@@ -13,293 +13,293 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2018
 ms.author: barclayn
-ms.openlocfilehash: b802c7b96bd8d0cfa56347d45542495caf69d7e4
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 09411ad3f0a27ba4d6d36342f9e298e177a021d8
+ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34824706"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44324933"
 ---
-# <a name="azure-ddos-protection-best-practices-and-reference-architectures"></a>Ochrana proti útoku DDoS Azure: Osvědčené postupy a referenční architektury
+# <a name="azure-ddos-protection-best-practices-and-reference-architectures"></a>Azure DDoS Protection: Osvědčené postupy a referenční architektury
 
-Tento článek je vedoucím pracovníkům IT a pracovníky zabezpečení. Se očekává, že jste obeznámeni s Azure, sítě a zabezpečení.
+Tento článek je určený pro IT pracovníky s rozhodovací pravomocí a zabezpečení pracovníků. Očekává, že jste obeznámeni s Azure, sítě a zabezpečení.
 
-Návrh distribuovaných útok DoS (Denial) vyžaduje odolnost proti chybám plánování a návrhu pro různé režimy selhání. Tento článek obsahuje osvědčené postupy pro navrhování aplikací v Azure pro odolnost proti útokům DDoS.
+Navrhování pro distribuované s cílem odepření služeb (DDoS) odolnost proti chybám vyžaduje plánování a návrh pro různé režimy selhání. Tento článek obsahuje osvědčené postupy pro navrhování aplikací v Azure pro odolnost proti chybám před útoky DDoS.
 
 ## <a name="types-of-attacks"></a>Typy útoků
 
-DDoS je typ útoku, který se pokouší vyčerpat prostředky aplikace. Cílem je mít vliv na dostupnost aplikace a schopnost zpracovávat oprávněné požadavky. Útoky jsou čím dál víc sofistikovaná a větší velikost a dopad. Útoky DDoS můžete cílit na všechny koncový bod, který je veřejně dostupný prostřednictvím Internetu.
+Před útoky DDoS je typ útoku, který se pokouší vyčerpání prostředků aplikace. Cílem je mít vliv na dostupnost vaší aplikace a její schopnost zpracovávat oprávněné požadavky. Útokům se stávají propracované a větší velikost a dopad. Útoky DDoS můžete cílit na libovolný koncový bod, který je veřejně dostupný prostřednictvím Internetu.
 
-Azure poskytuje trvalou ochranu proti útokům DDoS. Tato ochrana je integrována do platformy Azure ve výchozím nastavení a v žádné peníze navíc. 
+Azure poskytuje trvalou ochranu před útoky DDoS. Tato ochrana je integrovaná do platformy Azure ve výchozím nastavení a bez dalších poplatků. 
 
-Kromě základních ochrana proti útoku DDoS v platformě [Azure DDoS ochrany standardní](https://azure.microsoft.com/services/ddos-protection/) poskytuje pokročilé možnosti zmírnění DDoS před útoky ze sítě. Je automaticky nastaven chránit konkrétní prostředky v Azure. Ochrana je jednoduché, aby při vytváření nové virtuální sítě. To lze provést i po vytvoření a nevyžaduje žádné změny aplikace nebo prostředku.
+Kromě základní ochranu před útoky DDoS na platformě [Azure DDoS Protection Standard](https://azure.microsoft.com/services/ddos-protection/) poskytuje pokročilé funkce pro zmírnění útoků DDoS proti síťovým útokům. Toto pravidlo je vyladěný automaticky k ochraně vašich konkrétních prostředků Azure. Ochrana je snadno zajistit při vytváření nové virtuální sítě. Je možné provést po vytvoření a nevyžaduje žádné změny aplikace nebo prostředku.
 
-![Role ochrana proti útoku DDoS Azure při ochraně před případným útočníkem zákazníků a virtuální sítě](media/azure-ddos-best-practices/image1.png)
+![Role služby Azure DDoS Protection při ochraně před případným útočníkem zákazníků a virtual network](media/azure-ddos-best-practices/image1.png)
 
-Útoky DDoS můžete rozdělit do tří kategorií: odměrné, protokol a prostředků.
+Útoky DDoS je možné rozdělit do tří kategorií: odměrné, protokol a prostředků.
 
 ### <a name="volumetric-attacks"></a>Odměrné útoky
 
-Odměrné útoky jsou nejběžnější typ útoku DDoS. Jsou odměrné útoky hrubou silou osoby, které cílí sítě a transportní vrstvy. Pokusu vyčerpat prostředky, jako je síťová propojení. 
+Odměrné útoky jsou nejběžnějším typem útoky DDoS. Způsoby odměrné útoky hrubou silou osoby, cílených sítě a přenosové vrstvy. Se pokusí vyčerpání prostředků, jako je síťová propojení. 
 
-Tyto útoky často používají více nakažené systémy k vyplnění vrstvy sítě s zdánlivě legitimní přenosy. Používají protokolů síťové vrstvy, například zprávy protokolu ICMP (Internet Control), protokolu UDP (User Datagram) a protokolu TCP (Transmission Control).
+Tyto útoky často používají více nakažené systémy k zahlcení sítě vrstvy se zdánlivě legitimní provozu. Používají protokoly síťové vrstvy, jako je například ovládací prvek zpráva ICMP (Internet Protocol), protokolu UDP (User Datagram) a protokolu TCP (Transmission Control).
 
-Útoky DDoS nejčastěji používané síťové vrstvy jsou TCP SYN zahlcení odezvu protokolu ICMP, UDP zahlcení, DNS, a NTP zesílení útoků. Tento typ útoku umožňuje nejenom dojít k přerušení služby, ale také jako smokescreen pro více nefarious a cílové sítě neoprávněných vniknutí. Je například poslední odměrné útoku [Memcached zneužití](https://www.wired.com/story/github-ddos-memcached/) , vliv na Githubu. Tento útok cílové UDP port 11211 a vygeneruje 1.35 Tb nebo s útoky svazku.
+Útoky DDoS nejčastěji používané síťové vrstvy jsou TCP SYN zahlcení odezvu protokolu ICMP, zahlcení, DNS, UDP a útoky zesílení NTP. Tento typ útoku slouží pouze k dojít k přerušení služby, ale také jako smokescreen pro neslouží pro nekalé účely a cílové napadení sítě. Je například poslední odměrné útoku [Memcached zneužít](https://www.wired.com/story/github-ddos-memcached/) , která měla vliv na Githubu. Tento útok cílového portu UDP 11211 a generované 1.35 Tb za sekundu objemu útoku.
 
 ### <a name="protocol-attacks"></a>Protokol útoky
 
-Protokol útokům cílový aplikační protokoly. Pokouší se spotřebovávají všechny dostupné prostředky v zařízení infrastruktury, jako jsou brány firewall, aplikační servery a nástroje pro vyrovnávání zatížení. Protokol útoky pomocí paketů, které jsou poškozené nebo obsahují abnormality protokolu. Tyto útoky fungovat na odeslání velkého počtu otevřených žádostí, serverů a dalších zařízení komunikace odpovědět a čekat na odpověď paketů. Cíl pokusí reagovat na otevřených žádostí, eventuálně vyvolá chybu systému.
+Protokol útokům cílové aplikační protokoly. Se pokusí použít všechny dostupné prostředky v zařízeních infrastruktury, jako jsou brány firewall, aplikační servery a nástroje pro vyrovnávání zatížení. Protokol útoky pomocí paketů, které jsou poškozené nebo obsahovat anomálie protokolu. Tyto útoky fungovat na odeslání velkého počtu otevřených žádostí, servery a jiná sdělení odpovědět a čekat na odpověď paketů. Cíl se pokusí odpovědět na otevřených žádostí, eventuálně chybu systému.
 
-Nejčastější útoku DDoS založené na protokolu je záplava TCP SYN. V tento útok po sobě TCP SYN požadavků pokusí zahlcovat cíl. Cílem je zajistit cíle reagovat. Dyn se 2016 výpadek kromě se útoku, se skládal z TCP SYN floods tento cílový port 53 Dyn na servery DNS.
+Nejběžnějším příkladem s útoky DDoS založené na protokolu je TCP SYN zahlcení. V tento útok sledu očekávání TCP SYN požadavků pokusí zahlcovat cíl. Cílem je, aby cíle reagovat. Výpadek Dyn 2016, kromě probíhá útok aplikační vrstvu se skládal z TCP SYN floods tento cílový port 53 Dyn na servery DNS.
 
 ### <a name="resource-attacks"></a>Útoky prostředků
 
-Útoky prostředků cíle aplikační vrstvu. Ve snaze zahlcovat systému budou aktivovat procesy back-end. Prostředek útokům zneužití provoz, který vypadá normální, ale, že má u sebe náročná na prostředky procesoru dotazuje na server. Objem provozu, které jsou potřebné k vyčerpat prostředky je nižší než u jiných typů útoků. Provoz v rámci útoku prostředků je lišit od legitimní provoz, takže je obtížné zjistit. Nejběžnější útoky prostředků jsou v protokolu HTTP nebo HTTPS a služby DNS.
+Prostředek útoky cílit na aplikační vrstvu. Back endové procesy se aktivuje ve snaze zahlcovat systému. Prostředek útokům zneužití provoz, který vypadá normální ale, že se mělo náročnou na procesor dotazů na server. Objem provozu, které jsou potřebné k vyčerpání prostředků je nižší než u jiných typů útoků. Provoz v rámci útoku prostředků je nerozeznatelná od legitimního provoz díky tomu je obtížné rozpoznat. Nejběžnější útoky prostředků jsou na HTTP/HTTPS a služby DNS.
 
-## <a name="shared-responsibility-in-the-cloud"></a>Sdílené odpovědnost v cloudu
+## <a name="shared-responsibility-in-the-cloud"></a>Sdílená odpovědnost v cloudu
 
-Strategie obrany do hloubky pomáhá boj roste různých a vyspělosti útoků. Zabezpečení je sdílený odpovědnost mezi zákazníkem a Microsoft. Microsoft passphrase [sdílenou odpovědnost modelu](https://azure.microsoft.com/blog/microsoft-incident-response-and-shared-responsibility-for-cloud-computing/). Následující obrázek znázorňuje tuto dělení zodpovědnosti:
+V obrany strategie pomáhá boji s rostoucí celé řady a vyspělost kybernetických útoků. Zabezpečení je sdílenou odpovědnost mezi zákazníkem a Microsoft. Označuje jako Microsoft [sdílená odpovědnost modelu](https://azure.microsoft.com/blog/microsoft-incident-response-and-shared-responsibility-for-cloud-computing/). Následující obrázek znázorňuje tuto dělení zodpovědnosti:
 
 ![Odpovědnosti zákazníka a Azure](media/azure-ddos-best-practices/image2.png)
 
-Azure zákazníci využívat kontrola osvědčených postupů Microsoftu a vytváření globálně distribuované aplikace, které jsou vytvořeny a testována selhání.
+Zákazníci Azure využívat kontrola osvědčených postupů Microsoftu a vytváření globálně distribuovaných aplikací, které jsou navrženy a jsou testovány z hlediska selhání.
 
 ## <a name="fundamental-best-practices"></a>Základní osvědčené postupy
 
-Doporučený postup k vytvoření odolné DDoS služby v Azure naleznete v následujících oddílech.
+Následující oddíly poskytují doporučený postup pro vytváření před útoky DDoS odolných služeb v Azure.
 
 ### <a name="design-for-security"></a>Navrhování se zabezpečením
 
-Zajistěte, aby zabezpečení prioritu v průběhu celého cyklu aplikace, z návrhu a implementace a operací nasazení. Aplikace mohou mít chyby, které umožňují relativně nízký objem požadavků používat nadměrné množství prostředků, což vede k výpadku služby. 
+Ujistěte se, že zabezpečení je priorita v průběhu celého životního cyklu aplikace, od návrhu a implementace až po nasazení a provoz. Aplikace může mít chyby, které umožňují relativně nízký objem požadavků na použití nadměrné množství prostředků, což vede k výpadku služeb. 
 
-K ochraně služby spuštěné v Microsoft Azure, by měl mít dostatečné povědomí o architektuře aplikace a zaměřit se na [pět pilíře kvality softwaru](https://docs.microsoft.com/azure/architecture/guide/pillars).
-Typické provoz svazky, byste měli vědět modelu připojení mezi aplikací a jinými aplikacemi a koncové body služby, které jsou umístěny do veřejného Internetu.
+K ochraně služby spuštěné v Microsoft Azure, musí mít dostatečné povědomí o vaší aplikace architektury a zaměřit [pět pilířů kvality softwaru](https://docs.microsoft.com/azure/architecture/guide/pillars).
+Typické provozem, měli byste vědět model připojení mezi aplikací a další aplikace a koncové body služby, které jsou vystaveny do veřejného Internetu.
 
-Je nejdůležitější zajistit, aby aplikace dostatečně odolné pro zpracování odepření služby, který je zaměřený na vlastní aplikace. Zabezpečení a ochrana osobních údajů jsou součástí platformy Azure, počínaje [životního cyklu SDL (Security Development)](https://www.microsoft.com/sdl/default.aspx). Procesu SDL adres zabezpečení v každé fázi vývoje a zajistí, že Azure se průběžně aktualizuje na i zabezpečení.
+Zajištění, že aplikace je dostatečně odolné pro zpracování odepření služby, který je zaměřený na vlastní aplikace je nejdůležitější. Zabezpečení a ochrana osobních údajů jsou integrované do platformy Azure počínaje [Security Development Lifecycle (SDL)](https://www.microsoft.com/sdl/default.aspx). Do procesu SDL zajišťuje zabezpečení ve všech fázích vývoje a zajišťuje, že Azure se průběžně aktualizuje, aby byl ještě větší zabezpečení.
 
-### <a name="design-for-scalability"></a>Návrh pro škálovatelnost
+### <a name="design-for-scalability"></a>Návrh pro zajištění škálovatelnosti
 
-Škálovatelnost je, jak dobře může systém zpracování zvýšené zátěže. Je třeba navrhnout vašich aplikací [škálovat horizontálně](https://docs.microsoft.com/azure/architecture/guide/design-principles/scale-out) poptávku zesilovací zatížení, konkrétně v případě útoku DDoS. Pokud je aplikace závislá na jednu instanci služby, vytvoří jediný bod selhání. Zřizování více instancí díky systém pružnější a větší škálovatelnost.
+Škálovatelnost je, jak dobře může systému zvládnout zvýšenou zátěž. Je třeba navrhnout svoje aplikace na [škálovat horizontálně](https://docs.microsoft.com/azure/architecture/guide/design-principles/scale-out) podle potřeby zesilovací zatížení, konkrétně v případě útoku DDoS. Pokud je aplikace závislá na jednu instanci služby, vzniká jediný bod selhání. Zřízení více instancí je váš systém větší škálovatelnost a odolnost.
 
-Pro [Azure App Service](../app-service/app-service-value-prop-what-is.md), vyberte možnost [plán služby App Service](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) , nabízí několik instancí. Pro cloudové služby Azure, konfiguraci každé použití role [více instancí](../cloud-services/cloud-services-choose-me.md). Pro [virtuální počítače Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about/?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), ujistěte se, že vaše Architektura virtuálního počítače (VM) obsahuje více než jeden virtuální počítač a že každý virtuální počítač je zahrnut v [skupinu dostupnosti](../virtual-machines/virtual-machines-windows-manage-availability.md). Doporučujeme používat [sady škálování virtuálního počítače](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) pro možnostmi automatického škálování.
+Pro [služby Azure App Service](../app-service/app-service-value-prop-what-is.md)vyberte [plán služby App Service](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md) , který nabízí více instancí. Pro Azure Cloud Services, nakonfigurovat všechny své role používat [více instancí](../cloud-services/cloud-services-choose-me.md). Pro [Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-about/?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), ujistěte se, že vaše Architektura virtuálního počítače (VM) obsahuje více než jeden virtuální počítač a že každý virtuální počítač je součástí [dostupnosti](../virtual-machines/virtual-machines-windows-manage-availability.md). Doporučujeme používat [škálovací sady virtuálních počítačů](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) pro možnosti automatického škálování.
 
-### <a name="defense-in-depth"></a>Důslednou
+### <a name="defense-in-depth"></a>Obrana dopodrobna
 
-Rada za důslednou je řízení rizik pomocí různých Obranným strategie. Vrstvení obrany zabezpečení v aplikaci snižuje pravděpodobnost úspěšného útoku. Doporučujeme, abyste implementovat zabezpečené návrhy pro vaše aplikace pomocí integrované funkce platformy Azure.
+Myšlenku za vás ubrání je řízení rizik pomocí různých obranné strategii. Vrstvení obrana zabezpečení v aplikaci snižuje pravděpodobnost úspěšného útoku. Doporučujeme implementovat zabezpečení návrhů pro vaše aplikace pomocí integrované funkce platformy Azure.
 
-Například zvyšuje riziko útoku s velikostí (*surface area*) aplikace. Můžete snížit plochy s využitím povolených uzavřeny zveřejněné adresní prostor IP adres a naslouchání portům, které nejsou potřebné na služby Vyrovnávání zatížení ([Vyrovnávání zatížení Azure](../load-balancer/load-balancer-get-started-internet-portal.md) a [Azure Application Gateway](../application-gateway/application-gateway-create-probe-portal.md)). [Skupin zabezpečení (Nsg) sítě](../virtual-network/security-overview.md) jsou jiný způsob, jak omezit možnost útoku.
-Můžete použít [služby značky](/virtual-network/security-overview.md#service-tags) a [skupin zabezpečení aplikací](/virtual-network/security-overview.md#application-security-groups) minimalizovat složitost pro vytváření pravidel zabezpečení a konfigurace zabezpečení sítě, jako přirozené rozšíření struktury aplikace.
+Například, hodnota se zvyšuje riziko útoku s velikost (*plocha*) aplikace. Můžete snížit styčné plochy pomocí přidávání na seznam povolených uzavřeny vystavené adresní prostor IP adres a naslouchání porty, které nejsou potřebné v nástrojích pro vyrovnávání zatížení ([Azure Load Balancer](../load-balancer/load-balancer-get-started-internet-portal.md) a [Azure Application Gateway](../application-gateway/application-gateway-create-probe-portal.md)). [Skupiny zabezpečení sítě (Nsg)](../virtual-network/security-overview.md) představují jiný způsob omezení možností útoku.
+Můžete použít [značky služeb](../virtual-network/security-overview.md#service-tags) a [skupiny zabezpečení aplikací](../virtual-network/security-overview.md#application-security-groups) minimalizovat složitost vytváření pravidla zabezpečení a konfigurace zabezpečení sítě jako přirozené rozšíření struktury aplikace.
 
-Měli byste nasadit služby Azure v [virtuální sítě](../virtual-network/virtual-networks-overview.md) kdykoli je to možné. Tento postup umožňuje prostředky služby pro komunikaci prostřednictvím privátních IP adres. Služba Azure provoz z virtuální sítě používá veřejné IP adresy jako zdrojové IP adresy ve výchozím nastavení. Pomocí [koncové body služby](../virtual-network/virtual-network-service-endpoints-overview.md) dojde k přepnutí provoz služby při jejich získáváte přístup k službě Azure z virtuální sítě používá privátní adresy virtuální sítě zdrojové IP adresy.
+Měli byste nasadit služby Azure v [virtuální sítě](../virtual-network/virtual-networks-overview.md) kdykoli je to možné. Tento postup umožňuje prostředky služby pro komunikaci prostřednictvím privátních IP adres. Provoz služeb Azure z virtuální sítě jako zdrojové IP adresy používá veřejné IP adresy ve výchozím nastavení. Pomocí [koncové body služby](../virtual-network/virtual-network-service-endpoints-overview.md) přepne provoz služby na používání privátních adres virtuální sítě jako zdrojové IP adresy, když přistupuje služby Azure z virtuální sítě.
 
-Vidíte často zákazníků místních prostředků získávání napadení spolu s jejich prostředky v Azure. Pokud se připojujete místní prostředí do Azure, doporučujeme vám, že minimalizujete ohrožení místních prostředků do veřejného Internetu. Škálování a rozšířené možnosti ochrany DDoS Azure můžete použít nasazením vaší dobře známé veřejné entity v Azure. Protože tyto veřejně dostupné entity jsou často cíl útokům DDoS, je vložíte do Azure snižuje dopad na místních prostředků.
+Vidíme často zákazníků s místními prostředky získávání napadených spolu s jejich prostředky v Azure. Pokud se připojujete do místního prostředí do Azure, doporučujeme, minimalizujete ohrožení místních prostředků do veřejného Internetu. Škálování a rozšířené možnosti ochrany před útoky DDoS Azure můžete použít nasazením veřejného dobře známé entity v Azure. Protože tyto veřejně dostupné entity jsou často cílem pro útoky DDoS, umístit je do Azure sníží to dopad na vaše místní prostředky.
 
-## <a name="azure-offerings-for-ddos-protection"></a>Nabídky Azure pro ochrana proti útoku DDoS
+## <a name="azure-offerings-for-ddos-protection"></a>Nabídky Azure DDoS Protection
 
-Azure má dva DDoS nabídky služeb, které zajišťují ochranu před útoky ze sítě (vrstvy 3 a 4): DDoS ochrany Basic a Standard ochrany DDoS. 
+Azure má dva nabídky služeb DDoS, které poskytují ochranu před síťovými útoky (vrstva 3 a 4): před útoky DDoS Protection Basic a Standard ochranu před útoky DDoS. 
 
-### <a name="ddos-protection-basic"></a>DDoS ochrany Basic
+### <a name="ddos-protection-basic"></a>Před útoky DDoS Basic Protection
 
-Základní ochrany je integrována do Azure ve výchozím nastavení bez dalších poplatků. Škálování a kapacitu globálně nasazené síť Azure poskytuje ochranu proti běžné síťové vrstvy útoků prostřednictvím zmírnění vždy na provoz monitorování a v reálném čase. Základní ochrany DDoS vyžaduje žádné změny konfigurace nebo aplikace uživatele. Základní ochrany DDoS pomáhá chránit všech služeb Azure, včetně PaaS služby, jako je Azure DNS.
+Basic protection je integrovaná do Azure ve výchozím nastavení bez dalších poplatků. Škálování a kapacitu sítě globálně nasazených Azure poskytuje ochranu před běžnými útoky síťové vrstvě prostřednictvím monitorování a v reálném čase zmírnění neustále v provozu. DDoS Protection základní vyžaduje žádné změny v konfiguraci nebo aplikaci uživatele. DDoS Protection základní k ochraně všech služeb Azure, včetně služeb PaaS, jako je Azure DNS.
 
-![Mapování reprezentace síť Azure, se text "globální DDoS zmírnění přítomnosti" a "Úvodní DDoS zmírnění kapacity"](media/azure-ddos-best-practices/image3.png)
+![Mapování reprezentace síti Azure a za text "globální DDoS zmírnění přítomnosti" a "Úvodní kapacitu zmírnění útoků DDoS"](media/azure-ddos-best-practices/image3.png)
 
-Základní ochrana proti útoku DDoS v Azure se skládá z softwarové a hardwarové součásti. Rovině řízení softwaru rozhodne, kdy, kde, a jaký typ provozu měli řízenými prostřednictvím hardwaru zařízení, které analyzovat a odebrat provoz útoku. Řídicí provádí toto rozhodnutí založené na ochrana proti útoku DDoS celé infrastruktury *zásad*. Tato zásada je staticky nastavit a všeobecně použitá pro všechny zákazníky Azure.
+Základní ochranu před útoky DDoS v Azure se skládá z softwarové a hardwarové součásti. Rovina řízení softwaru rozhodne, kdy, kde, a jaký typ provoz by měl řízena prostřednictvím hardwarová zařízení, které analyzovat a odeberte provoz útoku. Rovina řízení provádí toto rozhodnutí založené na DDoS Protection celou infrastrukturu *zásady*. Tato zásada je staticky nastavit a použít univerzálně pro všechny zákazníky Azure.
 
-Například Ochrana proti útoku DDoS zásad určuje, jaký provoz svazek má být ochranu *aktivaci.* (To znamená, klienta provoz by měl být směrován přes čištění zařízení.) Pak tato zásada určuje, jak by měla čištění dat zařízení *zmírnit* útoku.
+Například zásady ochrany před útoky DDoS Určuje, na jaký objem provozu by měl být ochranu *aktivuje.* (To znamená, tenanta provoz by měl být směrován přes scrubbingu zařízení.) Potom tato zásada určuje, jak by měl scrubbingu zařízení *zmírnit* útoku.
 
-Službu Azure DDoS ochrany na úrovni Basic je zaměřený na ochranu infrastruktury a ochranu na platformě Azure. Se snižuje provoz, když překročí rychlost, kterou je proto důležité, může to ovlivnit několik zákazníků ve víceklientském prostředí. Neposkytuje výstrahy nebo na zákazníka přizpůsobit zásady.
+Služba Azure DDoS Protection na úrovni Basic je zaměřený na ochranu infrastruktury a ochranu platformy Azure. To omezuje provoz když překročí kurz, který je proto důležité, že by mohla ovlivnit více zákazníků ve víceklientském prostředí. Neposkytuje výstrahy nebo přizpůsobené zásady na zákazníka.
 
-### <a name="ddos-protection-standard"></a>Standardní ochrany DDoS
+### <a name="ddos-protection-standard"></a>Před útoky DDoS Standard Protection
 
-Standardní ochrany poskytuje rozšířené funkce zmírnění DDoS. Toto pravidlo je přizpůsobená automaticky k ochraně vaší konkrétní prostředky ve virtuální síti Azure. Ochrana se snadno povolit na všechny nové nebo existující virtuální síť a nevyžaduje žádné změny aplikace nebo prostředku. Má několik výhod oproti základní služby, včetně protokolování, výstrahy a telemetrie. Následující oddíly popisují klíčové funkce Azure DDoS ochrany standardní služby.
+Standard protection poskytuje vylepšené funkce, které před útoky DDoS omezení rizik. Toto pravidlo je vyladěný automaticky k ochraně vašich konkrétní prostředků ve virtuální síti Azure. Ochrana se snadno povolit na všechny nové nebo existující virtuální sítě a nevyžaduje žádné změny aplikace nebo prostředku. Má několik výhod oproti základní služby, včetně protokolování, výstrahy a telemetrie. Následující oddíly popisují klíčové funkce služby Azure DDoS Protection Standard.
 
-#### <a name="adaptive-real-time-tuning"></a>Adaptivní v reálném čase ladění
+#### <a name="adaptive-real-time-tuning"></a>Adaptivní ladění v reálném čase
 
-Službu Azure DDoS ochrany základní pomáhá chránit zákazníků a zabránit ovlivňuje ostatním zákazníkům. Například, pokud služba se zřizuje pro typický objem legitimní příchozí provoz, která je menší než *aktivační událost míra* zásady ochrana proti útoku DDoS celé infrastruktury, může přejít útoku DDoS na prostředky tohoto zákazníka. bez povšimnutí. Obecně platí složitost poslední útoky (například více vektoru DDoS) a specifické pro aplikaci chování klientů volání pro na zákazníka, zásady vlastní ochrany. Služba provede tato přizpůsobení pomocí dvou statistiky:
+Služba Azure DDoS Protection na úrovni Basic pomáhá zákazníkům chránit a bránit dopady ostatním zákazníkům. Například, pokud služba se zřizuje pro typický objem legitimní příchozí provoz, který je menší než *rychlost triggeru* zásad ochrany před útoky DDoS celé infrastruktury, je možné dát s útoky DDoS na prostředky daného zákazníka bez povšimnutí. Obecně platí složitost nedávné útoky (například více vektoru DDoS) a chování specifické pro aplikaci tenantů volání pro na zákazníka, přizpůsobené ochraně zásady. Služba provede toto přizpůsobení pomocí dvou insights:
 
-- Automatické učení vzory přenosů dat (podle IP) na zákazníka pro vrstvy 3 a 4.
+- Automatické učení vzory provozu (IP) za zákazníka pro vrstvy 3 a 4.
 
-- Minimalizace falešně pozitivních zjištění, vzhledem k tomu, že škále Azure umožňuje vyrovná se se zatížením významné množství provozu.
+- Minimalizuje počet falešně pozitivních výsledků, vzhledem k tomu, že škálování Azure umožňuje chránit před značné množství provozu.
 
-![Diagram jak DDoS ochrany standardní funguje, se "Zásady generací" v kroužku](media/azure-ddos-best-practices/image5.png)
+![Diagram před útoky DDoS Protection standardní fungování s "Generování zásad" v kruhu](media/azure-ddos-best-practices/image5.png)
 
-#### <a name="ddos-protection-telemetry-monitoring-and-alerting"></a>Ochrana proti útoku DDoS telemetrie, monitorování a výstrahy
+#### <a name="ddos-protection-telemetry-monitoring-and-alerting"></a>Služba DDoS Protection telemetrických dat, monitorování a upozorňování
 
-DDoS ochrany standardní zpřístupní bohatá telemetrie prostřednictvím [Azure monitorování](/monitoring-and-diagnostics/monitoring-overview-azure-monitor.md) po dobu trvání útoku DDoS. Můžete nakonfigurovat výstrahy pro libovolný Azure monitorování metriky, které používá ochrana proti útoku DDoS. Protokolování lze integrovat s Splunk (Azure Event Hubs), analýzy protokolů Azure a Azure Storage pro účely provádění pokročilých analýz prostřednictvím rozhraní Azure Diagnostics monitorování.
+DDoS Protection Standard poskytuje bohaté telemetrická data prostřednictvím [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md) po dobu trvání s útoky DDoS. Můžete nakonfigurovat výstrahy pro některé z metrik Azure monitoru, který používá ochranu před útoky DDoS. Protokolování lze integrovat s Splunk (služby Azure Event Hubs), Azure Log Analytics a Azure Storage pro pokročilé analýzy prostřednictvím rozhraní Azure Diagnostics monitorování.
 
-##### <a name="ddos-mitigation-policies"></a>Zásady omezení rizik DDoS
+##### <a name="ddos-mitigation-policies"></a>Zásady omezení rizik před útoky DDoS
 
-Na portálu Azure vyberte **monitorování** > **metriky**. V **metriky** podokně, vyberte skupinu prostředků, vyberte typ prostředku **veřejnou IP adresu**a vyberte Azure veřejné IP adresy. Metriky DDoS jsou viditelné v **dostupné metriky** podokně.
+Na webu Azure Portal, vyberte **monitorování** > **metriky**. V **metriky** podokně, vyberte skupinu prostředků, vyberte typ prostředku **veřejnou IP adresu**a vyberte Azure veřejné IP adresy. Jsou viditelné v metrik DDoS **dostupné metriky** podokně.
 
-DDoS ochrany standardní použije tři zásady zmírnění automaticky laděným (TCP SYN, TCP a UDP) pro každou veřejnou IP adresu k chráněnému prostředku ve virtuální síti, který má DDoS povolena. Prahové hodnoty zásad můžete zobrazit výběrem metriky **příchozí pakety k aktivaci DDoS zmírnění**.
+DDoS Protection standardní použije tři automaticky laděným zásady omezení rizik (TCP SYN, TCP a UDP) pro každé veřejné IP adresy chráněného prostředku ve virtuální síti, který má povolené před útoky DDoS. Prahové hodnoty zásady můžete zobrazit výběrem metriky **příchozí pakety pro aktivaci omezení rizik útoků DDoS**.
 
-![K dostupným metrikám a metriky graf](media/azure-ddos-best-practices/image7.png)
+![Dostupné metriky a graf metrik](media/azure-ddos-best-practices/image7.png)
 
-Zásady prahové hodnoty jsou automaticky konfigurované prostřednictvím profilace provoz sítě na základě learning počítače. Zmírnění dopadů DDoS dochází IP adresu napadené jenom v případě, že je překročena mezní hodnota zásad.
+Prahové hodnoty zásad jsou automaticky konfigurované prostřednictvím machine learning-based sítě provoz profilování. Omezení rizik útoků DDoS dojde k IP adrese terčem útoku pouze v případě, že je překročena mezní hodnota zásad.
 
-##### <a name="metric-for-an-ip-address-under-ddos-attack"></a>Metrika pro IP adresu v útoku DDoS
+##### <a name="metric-for-an-ip-address-under-ddos-attack"></a>Metriky pro IP adresu s útoky DDoS
 
-Pokud je veřejná IP adresa v části útoku, hodnoty pro metriku **útoku DDoS pod nebo není** jako ochrana proti útoku DDoS provede zmírnění dopadů na útok provoz se změní na 1.
+Pokud je veřejná IP adresa je v části útoku, hodnotu pro metriku **útoku DDoS pod nebo není** mění DDoS Protection provede omezení rizik útoků provoz na hodnotu 1.
 
-![Metrika "V části DDoS útoku nebo není" a graf](media/azure-ddos-best-practices/image8.png)
+!["V části před útoky DDoS útoku nebo není" metriky a diagram](media/azure-ddos-best-practices/image8.png)
 
-Doporučujeme, abyste konfigurace výstrahy na tato metrika. Potom obdržíte po active zmírnění dopadů DDoS provést na veřejnou IP adresu.
+Doporučujeme, abyste konfiguraci upozornění na tuto metriku. Potom obdržíte po aktivní omezení rizik útoků DDoS provedené na veřejnou IP adresu.
 
-Další informace najdete v tématu [spravovat Azure DDoS ochrany standardní pomocí portálu Azure](../virtual-network/ddos-protection-manage-portal.md).
+Další informace najdete v tématu [spravovat Azure DDoS Protection Standard pomocí webu Azure portal](../virtual-network/ddos-protection-manage-portal.md).
 
-#### <a name="web-application-firewall-for-resource-attacks"></a>Brány firewall webových aplikací pro útoky prostředků
+#### <a name="web-application-firewall-for-resource-attacks"></a>Firewall webových aplikací pro útoky prostředků
 
-Specifické pro prostředek útoky na aplikační vrstvu, měli byste nakonfigurovat brány firewall webových aplikací (firewall webových aplikací) usnadňuje zabezpečení webových aplikací. Firewall webových aplikací kontroluje příchozí webové přenosy zablokujte vložení SQL, webů skriptování, DDoS a jiným útokům vrstvy 7. Azure poskytuje [firewall webových aplikací jako funkce Application Gateway](../application-gateway/application-gateway-web-application-firewall-overview.md) pro centralizované ochranu webových aplikací z běžných zneužití a ohrožení zabezpečení. Nejsou k dispozici od Azure partnerů, které může být vhodnější pro vaše potřeby prostřednictvím jiné nabídky firewall webových aplikací [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?search=WAF&page=1).
+Specifické pro prostředek útoky na aplikační vrstvě, měli byste nakonfigurovat firewall webových aplikací (WAF) Chcete-li pomoci zabezpečit webové aplikace. WAF kontroluje příchozí webový provoz a blokují injektáže SQL, před útoky DDoS a další vrstvy 7 útoky skriptování napříč weby. Azure poskytuje [jako funkce služby Application Gateway WAF](../application-gateway/application-gateway-web-application-firewall-overview.md) pro centralizovanou ochranu webových aplikací před běžným zneužitím a ohrožení zabezpečení. Nejsou k dispozici od partnerů Azure, které může být vhodnější pro vaše potřeby prostřednictvím dalších nabídek WAF [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?search=WAF&page=1).
 
-I brány firewall webových aplikací jsou náchylné k útokům vyčerpání odměrné a stavu. Důrazně doporučujeme povolení DDoS ochrany standardní ve virtuální síti firewall webových aplikací k ochraně před odměrné a protokol útoků. Další informace najdete v tématu [ochrana proti útoku DDoS referenční architektury](#ddos-protection-reference-architectures) části.
+Dokonce i firewallů webových aplikací jsou však náchylné k útokům vyčerpání odměrné federace a jednotlivých států. Důrazně doporučujeme povolit použití standardní před útoky DDoS Protection ve virtuální síti WAF k ochraně před odměrné a útoky protokolu. Další informace najdete v tématu [DDoS Protection referenční architektury](#ddos-protection-reference-architectures) oddílu.
 
 ### <a name="protection-planning"></a>Plánování ochrany
 
-Plánování a příprava jsou velmi důležité pochopit, jak systém provede při útoku DDoS. Navrhování plán správy incidentů odpovědi je součástí této úsilí.
+Plánování a příprava jsou zásadní pro pochopení, jak systém provede během s útoky DDoS. Navrhování plán správy incidentů odpovědi je součástí tohoto úsilí.
 
-Pokud máte DDoS ochrany standardní, ujistěte se, že je povolena ve virtuální síti internetových koncových bodů. Konfigurace výstrah DDoS můžete neustále podívejte se na všechny potenciální útoky na infrastrukturu. 
+Pokud máte před útoky DDoS Protection standardní, ujistěte se, že je povoleno ve virtuální síti internetových koncových bodů. Konfigurace výstrah před útoky DDoS umožňuje neustále sledovat všechny potenciální útoky na infrastrukturu. 
 
-Vaše aplikace je třeba sledovat nezávisle. Pochopte normální chování aplikace. Připravte tak, aby fungoval, pokud aplikace není chovají podle očekávání při útoku DDoS.
+Vaše aplikace, měli byste sledovat nezávisle na sobě. Vysvětlení normálního chování aplikace. Připravte tak, aby fungoval, pokud aplikace se nechová podle očekávání při útoku DDoS.
 
-#### <a name="testing-through-simulations"></a>Testování prostřednictvím simulace
+#### <a name="testing-through-simulations"></a>Testování v prostředích s simulace
 
-Je vhodné pro testování vaší předpoklady o tom, jak vaše služby reagovat na útok provádění pravidelných simulace. Během testování, ověření, že služby nebo aplikace i nadále fungovat podle očekávání, a bez přerušení uživatelského rozhraní. Zjistí nesrovnalosti z hlediska technologie i proces a začleňte je v odpovědi strategie DDoS. Doporučujeme provést tyto testy, v pracovním prostředí nebo v době mimo špičku. Chcete-li minimalizovat dopad na produkční prostředí.
+Je vhodné otestovat předpokladů o jak služby bude reagovat na útok prováděním pravidelné simulace. Během testování, ověřte, že služby nebo aplikace i nadále fungovat podle očekávání a neexistuje žádné přerušení činnost koncového uživatele. Identifikovat mezery z pohledu technologií i proces a je začlenit do strategie odpověď před útoky DDoS. Doporučujeme provádět tyto testy pracovní prostředí, nebo během hodin mimo špičku, chcete-li minimalizovat dopad na produkční prostředí.
 
-Jsme spolupráci se společností [BreakingPoint cloudu](https://www.ixiacom.com/products/breakingpoint-cloud) k sestavení rozhraní, kde Azure zákazníci mohou generovat provoz proti povolena ochrana proti útoku DDoS veřejné koncové body pro simulace. Můžete použít [BreakingPoint cloudu](https://www.ixiacom.com/products/breakingpoint-cloud) simulace na:
+Jsme uzavřeli partnerství s [BreakingPoint Cloud](https://www.ixiacom.com/products/breakingpoint-cloud) k sestavení rozhraní, kde Zákazníci Azure mohou generovat provoz s podporou služba DDoS Protection veřejné koncové body pro simulace. Můžete použít [BreakingPoint Cloud](https://www.ixiacom.com/products/breakingpoint-cloud) simulace do:
 
-- Ověření, jak Ochrana proti útoku DDoS Azure pomáhá chránit před útoky DDoS vašich prostředků Azure.
+- Ověření, jak Azure DDoS Protection pomáhá chránit prostředky Azure před útoky DDoS.
 
-- Optimalizujte váš proces reakcí na incidenty v rámci útoku DDoS.
+- Optimalizace procesu reakce na incidenty v rámci útoky DDoS.
 
-- Zdokumentujte DDoS dodržování předpisů.
+- Zdokumentujte dodržování předpisů před útoky DDoS.
 
-- Cvičení týmům zabezpečení sítě.
+- Trénování vaše týmy zabezpečení sítě.
 
-Počítačové bezpečnosti vyžaduje konstantní inovace v obrany. Azure DDoS Standard ochrana se stav systému – Nejaktuálnější nabízí účinným řešením pro zmírnění stále komplexní útokům DDoS.
+Kybernetického zabezpečení vyžaduje stálé inovace v obrany. Služba Azure DDoS Standard protection je stavu z – moderní s efektivním řešením pro zmírnění čím dál složitějších útoky DDoS.
 
-## <a name="components-of-a-ddos-response-strategy"></a>Součástí strategie DDoS odpovědi
+## <a name="components-of-a-ddos-response-strategy"></a>Součástí strategie odpověď před útoky DDoS
 
-Útoku DDoS zacílený prostředků Azure vyžaduje minimem zásahů z hlediska uživatelů. Přesto zařadit DDoS zmírnění jako součást strategie reakcí na incidenty pomáhá minimalizovat dopad na kontinuity podnikových procesů.
+S útoky DDoS, které cílí na prostředky Azure obvykle vyžaduje minimem zásahů z pohledu uživatele. Stále zahrnutí před útoky DDoS zmírnění jako součást strategie reakce na incidenty pomáhá minimalizovat dopad na obchodní kontinuity podnikových procesů.
 
-### <a name="microsoft-threat-intelligence"></a>Analýzou hrozeb Microsoftu
+### <a name="microsoft-threat-intelligence"></a>Analýzy hrozeb Microsoftu
 
-Společnost Microsoft nemá síť intelligence rozsáhlé hrozeb. Tato síť používá souhrnný znalosti komunity rozšířené zabezpečení, která podporuje služeb Microsoft online services, partnery společnosti Microsoft a vztahy v rámci komunity zabezpečení Internetu. 
+Microsoft má síť rozsáhlé threat intelligence. Tato síť používá kolektivních znalostí komunitě rozšířené zabezpečení, který podporuje online služeb Microsoftu, partnerů Microsoftu a relace v rámci komunity zabezpečení Internetu. 
 
-Jako poskytovatel kritické infrastruktury Microsoft obdrží včasné upozornění o hrozbách. Microsoft shromažďuje analýzou hrozeb z jeho online služeb a jeho základní globální zákazníka. Microsoft zahrnuje všechny tento analýzou hrozeb zpět do produktů ochrana proti útoku DDoS Azure.
+Jako poskytovatel důležitou infrastrukturu společnost Microsoft obdrží včasného upozornění na hrozby. Microsoft shromažďuje hrozeb ze svých služeb online services a globální zákaznické základny. Microsoft zahrnuje všechny této analýzy hrozeb zpět do služby Azure DDoS Protection produktů.
 
-Jednotky služby společnosti Microsoft digitální činů (DCU) také provede urážlivé strategie proti botnetů. Botnetů jsou běžné zdroj příkazy a ovládání útoku DDoS.
+Navíc Microsoft Digital Crimes Unit (DCU) provádí urážlivé strategie proti botnetů. Botnetů jsou běžné příčiny příkazy a ovládání pro útoky DDoS.
 
-### <a name="risk-evaluation-of-your-azure-resources"></a>Vyhodnocení rizik vašich prostředků Azure
+### <a name="risk-evaluation-of-your-azure-resources"></a>Hodnocení rizika z vašich prostředků Azure
 
-je nutné pochopit oboru riziko proti útoku DDoS průběžně. Pravidelně položte si: 
-- Nové veřejně dostupné prostředky Azure potřebujete ochrany?
+Je nutné pochopit tak rozsah nebezpečí před útoky DDoS průběžně. Pravidelně položte si otázku: 
+- Jaké nové prostředky veřejně dostupné Azure potřebujete ochrany?
 
-- Je jediný bod selhání v rámci služby? 
+- Představuje jediný bod selhání ve službě? 
 
-- Jak lze služby izolované omezit dopad útoku, při stále zpřístupnění služeb zákazníkům platný?
+- Jak lze služby izolované omezit dopad útoku při stále zpřístupnění služby zákazníkům platná?
 
-- Existují virtuálních sítí, kde DDoS ochrany standardní by měla být zapnutá, ale není? 
+- Existují virtuálních sítí, kde před útoky DDoS Protection Standard by měly být povolené, ale není? 
 
-- Jsou mé služby aktivní/aktivní s převzetí služeb při selhání nad několika oblastmi?
+- Jsou Moje služby aktivní/aktivní s převzetí služeb při selhání ve více oblastech?
 
-### <a name="customer-ddos-response-team"></a>Zákazník DDoS týmu
+### <a name="customer-ddos-response-team"></a>Tým zákazníků před útoky DDoS
 
-Vytvoření týmu DDoS odpovědi je klíče krok reagovat na útok rychle a efektivně. Identifikujte kontakty ve vaší organizaci, kteří budou dohlížejí plánování a provádění. Tento tým odpovědi DDoS třeba důkladně porozumět službu Azure DDoS ochrany standardní. Ujistěte se, že tým může zjišťovat a zmírňovat útoku ve spolupráci s interních a externích zákazníků, včetně tým podpory společnosti Microsoft.
+Vytvoření týmu odpověď před útoky DDoS je klíče krokem při reagování na útok, rychle a efektivně. Identifikujte kontakty ve vaší organizaci, kteří budou získejte přehled o plánování a provádění. Tento tým před útoky DDoS, třeba důkladně porozumět služby Azure DDoS Protection Standard. Ujistěte se, že tým včasně identifikovat a zmírní útok, tím, že koordinuje s interním i externím zákazníkům, včetně tým podpory společnosti Microsoft.
 
-Pro váš tým odpovědi DDoS doporučujeme použít simulace cvičení jako normální součást dostupnost služeb a plánování kontinuity. Těchto cvičení by měla obsahovat testování škálování.
+Pro tým odpovědi před útoky DDoS doporučujeme použít simulace cvičení jako normální součást dostupnosti služeb a plánování kontinuity podnikových procesů. Tato cvičení by měly zahrnovat testování škálování.
 
-### <a name="alerts-during-an-attack"></a>Výstrahy při útoku
+### <a name="alerts-during-an-attack"></a>Upozornění během útoku
 
-Azure DDoS ochrany standardní identifikuje a snižuje útoky DDoS bez jakéhokoli zásahu uživatele. Chcete-li zobrazit oznámení, pokud je active zmírnění dopadů pro chráněný veřejnou IP adresu, můžete [výstrahu](../virtual-network/ddos-protection-manage-portal.md) na metriku **útoku DDoS pod nebo není**. Můžete vytvářet výstrahy pro jiné metriky DDoS pochopit škále útoku, provoz probíhá vyřazování a další podrobnosti.
+Azure DDoS Protection standardní identifikuje a omezuje útoky DDoS bez jakéhokoli zásahu uživatele. Máme vás upozornit, když je aktivní omezení rizik pro chráněné veřejné IP adresy, můžete [výstraha](../virtual-network/ddos-protection-manage-portal.md) na metriku **útoku DDoS pod nebo není**. Můžete vytvářet upozornění pro jiné metriky před útoky DDoS porozumět rozsahu útoku, provoz probíhá vyřazování a další podrobnosti.
 
-#### <a name="when-to-contact-microsoft-support"></a>Při kontaktování podpory společnosti Microsoft
+#### <a name="when-to-contact-microsoft-support"></a>Při kontaktování podpory Microsoftu
 
-- Při útoku DDoS zjistíte, že výkon chráněného prostředku je vážně sníženou nebo prostředek není k dispozici.
+- Při útoku DDoS zjistit, že je vážně snížení výkonu chráněných prostředků nebo prostředek není k dispozici.
 
-- Si myslíte, že službu Ochrana proti útoku DDoS není chovají podle očekávání. 
+- Si myslíte, že služba DDoS Protection se nechová podle očekávání. 
 
-  Spuštění služby ochrana proti útoku DDoS zmírnění pouze, pokud hodnota metriky **zásady pro aktivaci zmírnění DDoS (SYN TCP/TCP/UDP)** je nižší než přenosů přijatých na chráněný prostředek veřejné IP.
+  Pouze v případě spuštění služby DDoS Protection ke zmírnění hodnota metriky **zásady pro aktivaci omezení rizik útoků DDoS (TCP/TCP SYN/UDP)** je nižší než přenosů přijatých na chráněný prostředek veřejné IP.
 
-- Plánování virální událost, která výrazně zvýší síťový provoz.
+- Máte v plánu virálního událostí, který výrazně zvyšuje provozu vaší sítě.
 
-- Objekt actor má ohrožena ke spuštění útoku DDoS proti vašich prostředků.
+- Prvek "actor" má spustit s útoky DDoS na vaše prostředky ohrožené.
 
-Pro vytvoření útoků, které mají dopad na kritické obchodní, závažnost A [lístek podpory](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Vytvořit útoků, které mají kritický dopad na firmu, A závažnost [lístek podpory](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
 ### <a name="post-attack-steps"></a>Kroky po útoku
 
-Vždycky je strategii je dobré udělat postmortem po útoku a podle potřeby upravte strategie DDoS odpovědi. Co je třeba zvážit:
+Je vždy vhodné strategie postmortem po útoku a podle potřeby upravte strategie odpověď před útoky DDoS. Co je třeba zvážit:
 
-- Byl existuje přerušení služby nebo uživatele zaznamenat nedostatek škálovatelná architektura?
+- Byl existuje případnému přerušení služby nebo uživatelské prostředí kvůli chybějícímu škálovatelnou architekturu?
 
-- Služby nebo aplikace se vyskytla nejvíce?
+- Které aplikace nebo služby, kde nejvíce?
 
-- Jak efektivní byl strategie DDoS odpověď, a jak ji bylo možné zlepšit?
+- Jak efektivní je strategie odpověď před útoky DDoS a jak ji bylo možné zlepšit?
 
-Pokud se domníváte, že jste v části útoku DDoS, eskalovat prostřednictvím vaší normální kanály podpory Azure.
+Pokud máte podezření, že jste v části s útoky DDoS, požadavek eskalujte prostřednictvím běžných kanálů podpory Azure.
 
-## <a name="ddos-protection-reference-architectures"></a>Ochrana proti útoku DDoS referenční architektury
+## <a name="ddos-protection-reference-architectures"></a>Služba DDoS Protection referenční architektury
 
-Zajišťuje DDoS ochrany standardní [pro služby, které jsou nasazeny ve virtuální síti](../virtual-network/virtual-network-for-azure-services.md). Pro jiné služby použije výchozí DDoS ochrany základní služba. Následující odkaz architektury jsou uspořádány podle scénáře, architektura vzory seskupeny dohromady.
+DDoS Protection Standard je navržená [pro služby, které jsou nasazené ve virtuální síti](../virtual-network/virtual-network-for-azure-services.md). Pro jiné služby použije výchozí služba DDoS Protection základní. Následující referenční architektury jsou uspořádané podle scénářů, s vzory architektury seskupené dohromady.
 
-### <a name="virtual-machine-windowslinux-workloads"></a>Úlohy virtuálních počítačů (Windows nebo Linux)
+### <a name="virtual-machine-windowslinux-workloads"></a>Úlohy virtuálních počítačů (Windows/Linux)
 
 #### <a name="application-running-on-load-balanced-vms"></a>Aplikace běžící na virtuálních počítačích s vyrovnáváním zatížení
 
-Tuto referenční architekturu zobrazuje sadu osvědčené postupy pro spuštění několika virtuálních počítačů Windows ve škále nastavit za službou Vyrovnávání zatížení, zvýšit dostupnost a škálovatelnost. Tato architektura lze použít pro všechny bezstavového zatížení, třeba webový server.
+Tato referenční architektura představuje sadu osvědčených postupů pro spuštění několika virtuálních počítačů Windows ve škálovací sadě za nástrojem pro vyrovnávání zatížení, ke zlepšení dostupnosti a škálovatelnosti. Tuto architekturu je možné pro jakoukoli bezstavovou úlohu, například webový server.
 
-![Diagram architektury odkaz pro aplikace běžící na virtuálních počítačích s vyrovnáváním zatížení](media/azure-ddos-best-practices/image9.png)
+![Diagram referenční architektury pro aplikace běžící na virtuálních počítačích s vyrovnáváním zatížení](media/azure-ddos-best-practices/image9.png)
 
-V této architektuře jsou úlohy distribuované napříč několika instancemi virtuálního počítače. Existuje jednu adresu IP a přenosy z Internetu je distribuován do virtuálních počítačů pomocí služby Vyrovnávání zatížení. Standardní ochrany DDoS je povoleno ve virtuální síti nástroje pro vyrovnávání zatížení Azure (internet), který má veřejné IP adresy s ním spojená.
+V této architektuře jsou úlohy distribuované napříč několika instancemi virtuálního počítače. Existuje jedna veřejná IP adresa a internetový provoz je distribuovaný virtuálním počítačům přes nástroj pro vyrovnávání zatížení. DDoS Protection Standard je povolené ve službě virtual network Azure (internet) nástroje pro vyrovnávání zatížení, který má veřejnou IP adresu s ním spojená.
 
-Nástroje pro vyrovnávání zatížení rozloží příchozí žádosti Internetu pro instance virtuálních počítačů. Sady škálování virtuálního počítače povolit počtu virtuálních počítačů k škálovat příchozí nebo odchozí ručně nebo automaticky na základě předdefinovaných pravidel. To je důležité, pokud je v útoku DDoS. Další informace o této referenční architektuře, najdete v části [v tomto článku](https://docs.microsoft.com/azure/architecture/reference-architectures/virtual-machines-windows/multi-vm).
+Nástroje pro vyrovnávání zatížení distribuuje příchozí Internetové žádosti mezi instance virtuálních počítačů. Škálovací sady virtuálních počítačů umožňují určitému počtu virtuálních počítačů pro horizontální snížení nebo navýšení kapacity ručně nebo automaticky na základě předdefinovaných pravidel. To je důležité, pokud je prostředek terčem útoku DDoS. Další informace o této referenční architektuře, najdete v části [v tomto článku](https://docs.microsoft.com/azure/architecture/reference-architectures/virtual-machines-windows/multi-vm).
 
-#### <a name="application-running-on-windows-n-tier"></a>Aplikace běžící v systému Windows N-vrstvá
+#### <a name="application-running-on-windows-n-tier"></a>Aplikace běžící na Windows. N-vrstvá
 
-N-vrstvou architekturu je možné implementovat mnoha způsoby. Následující diagram znázorňuje Typická třívrstvá webové aplikace. Tato architektura staví na článek [spustit Vyrovnávání zatížení sítě virtuálních počítačů pro škálovatelnost a dostupnost](https://docs.microsoft.com/azure/architecture/reference-architectures/virtual-machines-windows/multi-vm). Webové a obchodní vrstvy používají virtuální počítače s vyrovnáváním zatížení.
+N-vrstvou architekturu je možné implementovat mnoha způsoby. Následující diagram znázorňuje typickou třívrstvou webovou aplikaci. Tato architektura vychází z článku [s vyrovnáváním zatížení virtuálních počítačů pro zajištění škálovatelnosti a dostupnosti](https://docs.microsoft.com/azure/architecture/reference-architectures/virtual-machines-windows/multi-vm). Webové a obchodní vrstvy používají virtuální počítače s vyrovnáváním zatížení.
 
-![Diagram architektury odkaz pro aplikace běžící v systému Windows N-vrstvá](media/azure-ddos-best-practices/image10.png)
+![Diagram referenční architektury pro aplikace běžící na Windows. N-vrstvá](media/azure-ddos-best-practices/image10.png)
 
-V této architektuře DDoS ochrany standardní je povoleno ve virtuální síti. Všechny veřejné IP adresy ve virtuální síti získat ochrana proti útoku DDoS pro vrstvy 3 a 4. Pro ochranu vrstvy 7 nasaďte Aplikační brána v SKU firewall webových aplikací. Další informace o této referenční architektuře, najdete v části [v tomto článku](https://docs.microsoft.com/azure/architecture/reference-architectures/virtual-machines-windows/n-tier).
+V této architektuře před útoky DDoS Protection Standard je povolena ve virtuální síti. Všechny veřejné IP adresy ve virtuální síti získáte ochranu před útoky DDoS pro vrstvy 3 a 4. Pro zajištění ochrany vrstvy 7 nasaďte službu Application Gateway v WAF SKU. Další informace o této referenční architektuře, najdete v části [v tomto článku](https://docs.microsoft.com/azure/architecture/reference-architectures/virtual-machines-windows/n-tier).
 
 #### <a name="paas-web-application"></a>Webová aplikace PaaS
 
-Tuto referenční architekturu ukazuje spouštění aplikací Azure App Service v jedné oblasti. Tato architektura zobrazuje sadu osvědčené postupy pro webové aplikace, která používá [Azure App Service](https://azure.microsoft.com/documentation/services/app-service/) a [Azure SQL Database](https://azure.microsoft.com/documentation/services/sql-database/).
-Pohotovostní oblast je nastavený pro scénáře převzetí služeb při selhání.
+Tato referenční architektura ukazuje spuštění aplikace Azure App Service v jedné oblasti. Tato architektura představuje sadu osvědčených postupů pro webovou aplikaci, která používá [služby Azure App Service](https://azure.microsoft.com/documentation/services/app-service/) a [Azure SQL Database](https://azure.microsoft.com/documentation/services/sql-database/).
+Pohotovostní oblasti je nastavený pro scénáře převzetí služeb při selhání.
 
-![Diagram architektury odkaz pro webovou aplikaci PaaS](media/azure-ddos-best-practices/image11.png)
+![Diagram referenční architektury pro webové aplikace PaaS](media/azure-ddos-best-practices/image11.png)
 
-Azure Traffic Manager směruje příchozí požadavky na aplikační brána v jednom z oblastí. Během normálních operací směruje požadavky na aplikační brána v oblasti aktivní. Pokud tuto oblast stane nedostupným, Traffic Manager převezme aplikační brány v oblasti pohotovostní.
+Azure Traffic Manager směruje příchozí žádosti do Application Gateway v oblastech. V normálním provozu směruje žádosti do Application Gateway v aktivní oblast. Pokud tato oblast stane nedostupnou, Traffic Manager převezme služby při selhání aplikační brány v pohotovostním režimu oblasti.
 
-Všechny přenosy z Internetu určených k webové aplikaci se směruje na [Application Gateway veřejnou IP adresu](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-app-overview) prostřednictvím Traffic Manager. V tomto scénáři app service (webové aplikace) sám není přímo externě čelí a je chráněn Application Gateway. 
+Veškerý provoz z Internetu směřující do webové aplikace se směruje do [veřejné IP adresy služba Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-app-overview) pomocí Traffic Manageru. V tomto scénáři, app service (webová aplikace) sám není přímo externě připojena a je chráněný službou Application Gateway. 
 
-Doporučujeme nakonfigurovat aplikace skladová položka brány firewall webových aplikací (zabránit režim) k ochraně před útoky vrstvy 7 (HTTP nebo HTTPS/WebSocket). Kromě toho jsou nakonfigurovány webové aplikace, aby [přijímal pouze provoz ze služby Application Gateway](https://azure.microsoft.com/blog/ip-and-domain-restrictions-for-windows-azure-web-sites/) IP adresu.
+Doporučujeme, abyste nakonfigurovali Application Gateway WAF SKU (zabránění režimu) k ochraně před útoky vrstvy 7 (HTTP/HTTPS/WebSocket). Kromě toho web apps umožňují [přijímat pouze komunikaci ze služby Application Gateway](https://azure.microsoft.com/blog/ip-and-domain-restrictions-for-windows-azure-web-sites/) IP adresu.
 
-Další informace o tuto referenční architekturu najdete v tématu [v tomto článku](https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/multi-region).
+Další informace o této referenční architektuře, najdete v části [v tomto článku](https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/multi-region).
 
-### <a name="mitigation-for-non-web-paas-services"></a>Zmírnění dopadů pro jiné webové PaaS služby
+### <a name="mitigation-for-non-web-paas-services"></a>Zmírnění dopadů pro služby PaaS mimo web
 
 #### <a name="hdinsight-on-azure"></a>HDInsight v Azure
 
-Zobrazí tuto referenční architekturu DDoS ochrany Standard pro konfiguraci [cluster Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/). Ujistěte se, že clusteru HDInsight je propojena k virtuální síti a že je povolena ochrana proti útoku DDoS ve virtuální síti.
+Tato referenční architektura ukazuje před útoky DDoS Protection úrovně Standard pro konfiguraci [clusteru Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/). Ujistěte se, že clusteru HDInsight je propojený s virtuální sítí a že služba DDoS Protection je povolená ve virtuální síti.
 
-!["HDInsight" a "Upřesňující nastavení" podokna s nastavení virtuální sítě](media/azure-ddos-best-practices/image12.png)
+!["HDInsight" a "Nastavení" podoken s nastavení virtuální sítě](media/azure-ddos-best-practices/image12.png)
 
-![Výběr pro povolení ochrany DDoS](media/azure-ddos-best-practices/image13.png)
+![Výběr pro povolení ochrany před útoky DDoS](media/azure-ddos-best-practices/image13.png)
 
-Přenosy určené do clusteru HDInsight z Internetu se v této architektuře směruje na veřejné IP adresy přidružené k vyrovnávání zatížení brány HDInsight. Nástroje pro vyrovnávání zatížení brána pak odešle provoz hlavních uzlech nebo uzlů pracovního procesu přímo. Protože DDoS ochrany standardní je povoleno ve virtuální síti HDInsight, získat všechny veřejné IP adresy ve virtuální síti ochrana proti útoku DDoS pro vrstvy 3 a 4. Tuto referenční architekturu zkombinovat s N-vrstvá a více oblast referenční architektury.
+V této architektuře se směruje provoz směřující do clusteru HDInsight z Internetu do veřejné IP adresy spojené s nástrojem load balancer HDInsight bránu. Nástroj pro vyrovnávání zatížení brána pak odešle provoz k hlavním uzlům nebo pracovní uzly přímo. Protože standardní před útoky DDoS Protection je povolená na virtuální síť HDInsight, všechny veřejné IP adresy ve virtuální síti získáte ochranu před útoky DDoS pro vrstvy 3 a 4. Tato referenční architektura zkombinovat s N-vrstvé a více oblastí referenční architektury.
 
 Další informace o této referenční architektuře, najdete v článku [rozšíření Azure HDInsight pomocí Azure Virtual Network](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network?toc=%2fazure%2fvirtual-network%2ftoc.json) dokumentaci.
 
 
 > [!NOTE]
-> Azure App Service Environment pro PowerApps nebo API pro správu ve virtuální síti s veřejnou IP adresu jsou podporované nativně.
+> Azure App Service Environment pro PowerApps nebo rozhraní API management ve virtuální síti s veřejnou IP adresu jsou podporované nativně.
 
 ## <a name="next-steps"></a>Další postup
 
-* [Stránku produktů Azure ochrana proti útoku DDoS](https://azure.microsoft.com/services/ddos-protection/)
+* [Produktová stránka Azure DDoS Protection](https://azure.microsoft.com/services/ddos-protection/)
 
-* [Blog Azure ochrana proti útoku DDoS](http://aka.ms/ddosblog)
+* [Blog o Azure DDoS Protection](http://aka.ms/ddosblog)
 
-* [Dokumentace k Azure ochrana proti útoku DDoS](../virtual-network/ddos-protection-overview.md)
+* [Dokumentace ke službě Azure DDoS Protection](../virtual-network/ddos-protection-overview.md)

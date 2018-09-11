@@ -17,12 +17,12 @@ ms.date: 09/07/2017
 ms.author: barbkess
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: e86c7e82203e2ecd571d5ce5e450999704218e33
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: c7f2892586dd78f3e4b102deb8c51b9979ed07e2
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39579159"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44348170"
 ---
 # <a name="advanced-certificate-signing-options-in-the-saml-token-for-gallery-apps-in-azure-active-directory"></a>Rozšířené možnosti v tokenu SAML pro aplikace z Galerie v Azure Active Directory podepsání certifikátu
 Azure Active Directory (Azure AD) ještě dnes podporuje tisíce předem integrovaných aplikací v galerii aplikací Azure Active Directory. Toto číslo zahrnuje více než 500 aplikace, které podporují jednotné přihlašování s použitím protokolu SAML 2.0. Když se uživatel přihlásí k aplikaci prostřednictvím služby Azure AD pomocí SAML, Azure AD odešle token aplikaci (přes HTTP POST). Aplikace pak ověří a použije token pro přihlášení uživatele místo vás vyzve k zadání uživatelského jména a hesla. Tyto tokeny SAML jsou podepsány pomocí jedinečný certifikát, který je generován ve službě Azure AD a konkrétní standardních algoritmů.
@@ -61,7 +61,7 @@ Azure AD podporuje dva podpisové algoritmy podepsat odpověď SAML:
 
 ## <a name="next-steps"></a>Další postup
 * [Rejstřík článků o správě aplikací ve službě Azure Active Directory](../active-directory-apps-index.md)
-* [Konfigurace jednotného přihlašování k aplikacím, které nejsou v galerii aplikací Azure Active Directory](../application-config-sso-how-to-configure-federated-sso-non-gallery.md)
+* [Konfigurace jednotného přihlašování k aplikacím, které nejsou v galerii aplikací Azure Active Directory](configure-federated-single-sign-on-non-gallery-applications.md)
 * [Řešení potíží s založené na SAML jednotného přihlašování](../develop/howto-v1-debug-saml-sso-issues.md)
 
 

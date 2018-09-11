@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.openlocfilehash: 9ab2b22840d162fc0194151c5eec02675aad92dc
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 26642fefbb86b2709e110b13d782286fd18d5e60
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39427648"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44348051"
 ---
 # <a name="tutorial-configure-asana-for-automatic-user-provisioning"></a>Kurz: Konfigurace Asana pro automatické zřizování uživatelů
 
@@ -89,7 +89,7 @@ Tato část vás provede připojením služby Azure AD na uživatelský účet v
 
 1. V části **mapování** vyberte **synchronizace Azure Active Directory uživatelům Asana**.
 
-1. V **mapování atributů** , projděte si atributy uživatele ze služby Azure AD synchronizovány se službou Asana. Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly uživatelské účty v Asaně pro operace update. Vyberte **Uložit** potvrďte všechny změny. Další informace najdete v tématu [přizpůsobení mapování atributů zřízení uživatele](../active-directory-saas-customizing-attribute-mappings.md).
+1. V **mapování atributů** , projděte si atributy uživatele ze služby Azure AD synchronizovány se službou Asana. Atributy vybrané jako **odpovídající** vlastnosti se používají tak, aby odpovídaly uživatelské účty v Asaně pro operace update. Vyberte **Uložit** potvrďte všechny změny. Další informace najdete v tématu [přizpůsobení mapování atributů zřízení uživatele](../manage-apps/customize-application-attributes.md).
 
 1. Povolit služba pro Asana, zřizování v Azure AD **nastavení** oddíl, změna **stavu zřizování** k **na**.
 
@@ -97,7 +97,7 @@ Tato část vás provede připojením služby Azure AD na uživatelský účet v
 
 Nyní spustí počáteční synchronizaci pro všechny uživatele s přiřazenými v Asaně **uživatelé** oddílu. Počáteční synchronizace trvá déle než při následné synchronizace, ke kterým dochází přibližně každých 40 minut za předpokladu, že služba běží. Použití **podrobnosti synchronizace** části ke sledování průběhu a odkazech na zřizování protokolů aktivit. Protokoly auditu popisují všechny akce provedené v Asaně aplikaci zřizovací služba.
 
-Další informace o tom, jak číst zřizování protokoly Azure AD najdete v tématu [zprávu o zřizování automatické uživatelských účtů](../active-directory-saas-provisioning-reporting.md).
+Další informace o tom, jak číst zřizování protokoly Azure AD najdete v tématu [zprávu o zřizování automatické uživatelských účtů](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 

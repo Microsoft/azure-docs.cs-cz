@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: dsc
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 08/08/2018
+ms.date: 09/10/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 03b22e3a4c2c0b8eb87ee0b61edba3c6f0923170
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: a78d2b0b2fa0b1968e6804fdfd5f2f325ed11bfb
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42443811"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347609"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>Kompilace konfigurací DSC v konfiguraci stavu služby Azure Automation
 
@@ -235,7 +235,7 @@ Odkazy na prostředek jsou stejné v konfiguraci stavu Azure Automation a sady r
 
 ### <a name="credential-assets"></a>Assety přihlašovacích údajů
 
-Konfigurace DSC ve službě Azure Automation může odkazovat na používání prostředků přihlašovacích údajů Automation `Get-AzureRmAutomationCredential`. Pokud má parametr, který obsahuje konfiguraci **PSCredential** typ, můžete použít `Get-AutomationRmAutomationCredential` rutiny předáním název řetězce objektu Azure Automation asset přihlašovacích údajů pro danou rutinu se načíst přihlašovací údaje. Pak můžete použít tento objekt pro vyžadování parametr **PSCredential** objektu. Azure Automation asset přihlašovacích údajů s tímto názvem na pozadí, je načten a předané do konfigurace. Následující příklad ukazuje to v akci.
+Konfigurace DSC ve službě Azure Automation může odkazovat na používání prostředků přihlašovacích údajů Automation `Get-AutomationPSCredential` rutiny. Pokud má parametr, který obsahuje konfiguraci **PSCredential** typ, můžete použít `Get-AutomationPSCredential` rutiny předáním název řetězce objektu Azure Automation asset přihlašovacích údajů pro danou rutinu se načíst přihlašovací údaje. Pak můžete použít tento objekt pro vyžadování parametr **PSCredential** objektu. Azure Automation asset přihlašovacích údajů s tímto názvem na pozadí, je načten a předané do konfigurace. Následující příklad ukazuje to v akci.
 
 Uchování přihlašovacích údajů zabezpečené při konfiguraci uzlů (MOF konfigurace dokumenty) vyžaduje šifrování přihlašovacích údajů v uzlu konfiguračního souboru MOF. Ale aktuálně je zapotřebí sdělit PowerShell DSC, že je v pořádku, pro přihlašovací údaje, které má obsahovat výstup ve formátu prostého textu při generování MOF konfigurace uzlu, protože prostředí PowerShell DSC neví, že Azure Automation bude možné šifrování celý soubor MOF po jeho vygenerování prostřednictvím úlohy kompilace.
 

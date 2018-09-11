@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 4b0c5d55c8a62dadbe11382997f4d258e66e1a31
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 0c5cfaad096b5702f321eead1f3da0d9225f4b53
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37951137"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302856"
 ---
-# <a name="platforms-and-tools-for-data-science-team-projects"></a>Týmové projekty platformy a nástroje pro datové vědy
+# <a name="platforms-and-tools-for-data-science-projects"></a>Platformy a nástroje pro projekty datových věd
 
 Společnost Microsoft poskytuje komplexní opensourcová data a analýzy služby a prostředky pro na místní i cloudové platformy. Je možné nasadit efektivního a škálovatelného provést spuštění vaše projekty datových věd. Pokyny pro týmy, které implementují projekty datových věd v organizovaným verzi řízen a je poskytována spolupráce [vědecké zpracování týmových dat](overview.md) (TDSP).  Přehled rolí pracovníky a jejich přidružených úloh, které jsou zpracovávány standardizací data science týmu o tomto procesu najdete v části [vědecké zpracování týmových dat role a úlohy](roles-tasks.md).
 
@@ -126,7 +126,7 @@ Spusťte následující příkaz prostředí bash instalace Git na počítačíc
 
 ### <a name="generate-public-ssh-key-on-linux-centos-machines"></a>Generovat veřejný klíč SSH na počítačích s Linuxem (CentOS)
 
-Pokud používáte počítače s Linuxem (CentOS) ke spuštění příkazů git, musíte přidat veřejný klíč SSH z vašeho počítače k serveru VSTS tak, aby tento počítač je rozpoznáno serverem VSTS. Nejprve musíte vytvořit veřejný klíč SSH a přidejte klíč k veřejné klíče SSH na stránce nastavení zabezpečení VSTS. 
+Pokud používáte počítače s Linuxem (CentOS) ke spuštění příkazů git, musíte přidat veřejný klíč SSH z vašeho počítače do služby Azure DevOps tak, aby tento počítač je rozpoznáván DevOps služby Azure. Nejprve musíte vygenerovat veřejný klíč SSH a přidejte klíč k veřejné klíče SSH na stránce nastavení zabezpečení služby Azure DevOps. 
 
 - Vygenerujte klíč SSH, spusťte následující dva příkazy: 
 
@@ -136,7 +136,7 @@ Pokud používáte počítače s Linuxem (CentOS) ke spuštění příkazů git,
 ![](./media/platforms-and-tools/resources-1-generate_ssh.png)
 
 - Zkopírujte celý ssh včetně klíče *ssh-rsa*. 
-- Přihlaste se k serveru VSTS. 
+- Přihlaste se k vašim službám Azure DevOps. 
 - Klikněte na tlačítko **< jméno\>**  v pravém horním rohu stránky a klikněte na tlačítko **zabezpečení**. 
     
     ![](./media/platforms-and-tools/resources-2-user-setting.png)

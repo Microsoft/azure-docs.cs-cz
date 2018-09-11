@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/05/2016
 ms.author: mlearned
-ms.openlocfilehash: db3cc8bb546758402e4f0b3fe91449e597e754fa
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: d0bf66a224a8a42f813bc817f78321167e309bdb
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42058038"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303519"
 ---
 # <a name="tutorial-devops-with-the-azure-portal"></a>Kurz: DevOps s využitím webu Azure portal
 Platforma Azure je plná flexibilních pracovních postupů DevOps. V tomto kurzu se dozvíte, jak využít možnosti portálu Azure pro vývoj, testování, nasazení, řešení potíží, monitorování a správu běžících aplikací. Tento kurz se zaměřuje na:
@@ -82,7 +82,7 @@ Vytvořte webovou aplikaci pomocí služby [Azure App Service](https://azure.mic
     
     ![image15][image15]
     
-    Povolení průběžného nasazování pomocí webu Azure portal je snadná záležitost. Pro nasazení do Azure můžete vytvořit i složitější kanály pro vydávání a použít spoustu jiných postupů s existující správou zdrojového kódu a systémů průběžné integrace, jako je například využití automatizovaných systémů správy sestavení a vydávání.
+    Povolení průběžného nasazování pomocí webu Azure portal je snadná záležitost. Můžete také vytvářet složitější kanály pro vydávání a použít spoustu jiných postupů s existující správou zdrojového kódu a systémů pro průběžnou integraci pro nasazení do Azure, jako je například využití automatizovaných systémů pro správu Azure kanály.
 
 ## <a name="develop-and-test-an-app"></a>Vývoj a testování aplikace
 Teď uděláme nějaké pár změn v základu kódu a tyto změny rychle nasadíme. Bude také nastavit některá testování výkonu pro webovou aplikaci.
@@ -99,7 +99,7 @@ Teď uděláme nějaké pár změn v základu kódu a tyto změny rychle nasadí
 4. V okně konzoly může v reálném čase zadávat příkazy pro svoji aplikaci. Zadejte příkaz dir a stiskněte enter. Všimněte si, že příkazy, které potřebují zvýšená oprávnění, nebudou fungovat.
    
    ![image19][image19]
-5. Přejděte zpět do kategorie Vývoj a vyberte Visual Studio Online. Poznámka: Visual Studio Online je teď jmenuje Visual Studio Team Services.
+5. Přejděte zpět do kategorie Vývoj a vyberte Visual Studio Online. Poznámka: Visual Studio Online je teď jmenuje služby Azure DevOps.
    
    ![image20][image20]
 6. Ve své aplikaci zapněte prostředí pro úpravy v prohlížeči.
@@ -125,7 +125,7 @@ Teď uděláme nějaké pár změn v základu kódu a tyto změny rychle nasadí
 12. Přejděte zpět do okna nástrojů a v kategorii Vývoj klikněte na Test výkonnosti.
     
     ![image28][image28]
-13. Musíte nastavit účet služby Team Services. Další podrobnosti najdete tady: [vytvořit účet služby Team Services](https://docs.microsoft.com/vsts/organizations/accounts/create-organization-msa-or-work-student).
+13. Je nutné nastavit organizace služby Azure DevOps. Další podrobnosti najdete tady: [vytvořit organizaci služeb Azure DevOps](https://docs.microsoft.com/vsts/organizations/accounts/create-organization-msa-or-work-student).
 14. Klikněte na Nový, tím vytvoříte test výkonnosti.
     
     ![image29][image29]

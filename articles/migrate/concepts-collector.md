@@ -4,21 +4,19 @@ description: Poskytuje přehled zařízení Kolektoru a jeho konfiguraci.
 author: ruturaj
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 08/25/2018
+ms.date: 09/10/2018
 ms.author: ruturajd
 services: azure-migrate
-ms.openlocfilehash: 74caf0ab052e1f6558dc20d15d84c01177b3f9cb
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: dae6cc9a55049e2b44291eb105288b33a1db9e7b
+ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43665576"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44325528"
 ---
 # <a name="collector-appliance"></a>Zařízení kolektoru
 
 [Azure Migrate](migrate-overview.md) posuzuje místní úlohy pro migraci do Azure. Tento článek obsahuje informace o tom, jak pomocí zařízení Kolektoru.
-
-
 
 ## <a name="overview"></a>Přehled
 
@@ -27,6 +25,17 @@ Azure Migrate Collector je zjednodušené zařízení, který slouží ke zjiš�
 Zařízení Kolektoru je OVF, který si můžete stáhnout z projektu Azure Migrate. Vytvoření instance virtuálního počítače VMware s 4 jádra, 8 GB paměti RAM a jeden disk 80 GB. Operační systém zařízení je Windows Server 2012 R2 (64bitová verze).
 
 Pomocí následujících kroků můžete vytvořit kolektor zde - [vytvoření virtuálního počítače kolektor](tutorial-assessment-vmware.md#create-the-collector-vm).
+
+## <a name="discovery-methods"></a>Metody zjišťování
+
+Existují dvě metody, ve kterých zjistíte v místním prostředí:
+
+a. **Jednorázově:** kolekcí tohoto modelu komunikuje s vCenter Server ke shromažďování metadat virtuální počítače. Pro shromažďování dat o výkonu virtuálních počítačů závisí na výkonu historických datech uložených v systému vCenter Server a shromažďuje historie výkonu za poslední měsíc. V tomto modelu Azure Migrate shromažďuje čítač Průměrná (oproti čítače ve špičce) pro jednotlivé metriky, [Další informace] (https://docs.microsoft.com/azure/migrate/concepts-collector#what-data-is-collected) o čítače výkonu shromážděné službou Azure Migrate. Protože jde o jednorázovou zjišťování, zařízení v tomto případě není nepřetržitě připojeny k projektu. Proto se neprojeví změny v místním prostředí ve službě Azure Migrate, po dokončení zjišťování. Pokud chcete změny tak, aby odrážely, budete muset provést opakované zjišťování stejného prostředí do stejného projektu.
+
+b. **Průběžná zjišťování:** zařízení kolektoru pro tento model je trvalým připojením k projektu Azure Migrate. Průběžně profily v místním prostředí pro shromažďování dat o využití v reálném čase na každých 20 sekund. Zařízení potom zobrazí – až 20 sekund ukázky a vytvoří jeden datový bod pro každých 15 minut výběrem maximální hodnotu, která se posílají do Azure. Tento model není závislý na nastavení statistiky systému vCenter Server pro shromažďování dat o výkonu. Můžete zastavit průběžné kdykoli profilace ze zařízení.
+
+> [!NOTE]
+> Průběžná zjišťování funkce je ve verzi preview.
 
 ## <a name="collector-communication-diagram"></a>Diagram komunikace kolekcí
 
@@ -39,13 +48,9 @@ Pomocí následujících kroků můžete vytvořit kolektor zde - [vytvoření v
 | Kolektor      | vCenter Server        | Výchozí port 443                             | Kolekce by měl být schopen komunikovat se serverem vCenter. Ve výchozím nastavení připojení k vCenter na 443. Pokud server vCenter naslouchá na jiném portu, tento port by měl být k dispozici jako odchozí port na kolektoru |
 | Kolektor      | Protokol RDP|   | TCP 3389 | Pro, abyste mohli pro protokol RDP do počítače Kolektoru |
 
-
-
-
-
 ## <a name="collector-pre-requisites"></a>Požadavky na kolekce
 
-Kolekce je potřeba předat několik nepotlačí kontroly, aby se může připojit ke službě Azure Migrate a nahrát zjištěná data. Tento článek vypadá na jednotlivé požadavky a pochopit, proč se vyžaduje.
+Kolekce je potřeba předat několik nepotlačí kontroly, aby se může připojit ke službě Azure Migrate a nahrát zjištěná data. Tento článek vypadá na jednotlivé požadavky a rozumí, proč se vyžaduje.
 
 ### <a name="internet-connectivity"></a>Připojení k internetu
 
@@ -77,8 +82,8 @@ Pokud proxy server, který používáte pro připojení k Internetu je prověřu
 6. Zvolte možnost **všechny certifikáty umístit v následujícím úložišti**. Klikněte na tlačítko **Procházet** a vyberte **Důvěryhodní vydavatelé** ze seznamu certifikátů, které vytvoříte. Klikněte na **Další**.
 
     ![Úložiště certifikátů](./media/concepts-intercepting-proxy/certificate-store.png)
-    
-7. Klikněte na **Dokončit**. To certifikát budete importovat. 
+
+7. Klikněte na **Dokončit**. To certifikát budete importovat.
 8. Volitelně můžete ověřit, že je certifikát importován tak, že otevřete nástroj certifikáty jako v kroku 1 a 2 výše.
 9. V aplikaci Azure Migrate collector ověřte, že kontrolu požadovaných součástí připojení k Internetu je úspěšné.
 
@@ -166,7 +171,7 @@ Jakmile se spustí zjišťování zjištění serveru vCenter virtuálních poč
 
 ### <a name="what-data-is-collected"></a>Jaká data se shromažďují?
 
-Kolekce úloh zjišťuje následující statické metadata o vybrané virtuální počítače.
+Zařízení kolektoru zjistí následující statické metadata o vybrané virtuální počítače.
 
 1. Název zobrazení virtuálních počítačů (na serveru vCenter)
 2. Cesta inventáře Virtuálního počítače (hostitele nebo složku v systému vCenter)
@@ -177,7 +182,9 @@ Kolekce úloh zjišťuje následující statické metadata o vybrané virtuáln�
 6. Velikost paměti, velikosti disků
 7. A z čítačů výkonu virtuálních počítačů, disku a sítě, jak je uvedeno v následující tabulce.
 
-V následující tabulce jsou uvedeny čítačů výkonu, které se budou shromažďovat a také výsledky posouzení, které jsou by to vliv na konkrétní čítač nejsou shromažďována.
+Následující tabulka uvádí pro model na čas zjišťování, čítače přesné údaje o výkonu, které se budou shromažďovat a také výsledky posouzení, které jsou by to vliv na konkrétní čítač nejsou shromažďována.
+
+Průběžná zjišťování, čítače se shromažďují v reálném čase (intervalu 20 sekund), takže není žádná závislost na úroveň statistiky vCenter. Zařízení potom zobrazí – až 20 sekund ukázky vytvořte jeden datový bod pro každých 15 minut tak, že vyberete hodnotu ve špičce ukázky 20 sekund a odesílá je do Azure.
 
 |Čítač                                  |Úroveň    |Úroveň podle zařízení  |Hodnocení dopadu                               |
 |-----------------------------------------|---------|------------------|------------------------------------------------|
@@ -191,13 +198,17 @@ V následující tabulce jsou uvedeny čítačů výkonu, které se budou shroma
 |net.transmitted.average                  | 2       |3                 |Cena za virtuální počítače velikosti a sítě                        |
 
 > [!WARNING]
-> Pokud jste právě nastavili vyšší úroveň statistiky, ji budou trvat až jeden den generovat čítače výkonu. Proto doporučujeme spustit zjišťování po jednom dni.
+> Jednorázové zjišťování Pokud jste právě nastavili vyšší úroveň statistiky, ji bude trvat až jeden den generovat čítače výkonu. Proto doporučujeme spustit zjišťování po jednom dni. Průběžná zjišťování modelu počkejte aspoň jeden den po spuštění zjišťování pro zařízení profilu prostředí a pak vytvořit posouzení.
 
 ### <a name="time-required-to-complete-the-collection"></a>Čas potřebný k dokončení kolekce
 
-Kolektor pouze zjišťuje data počítačů a odesílá je do projektu. Projekt může trvat déle než zjištěná data se zobrazí na portálu a můžete začít vytvářet posouzení.
+**Jednorázově**
 
-Podle počtu virtuálních počítačů ve vybraném oboru, trvá až 15 minut odesílat statická metadata do projektu. Po statické metadata jsou k dispozici na portálu, můžete zobrazit seznam počítačů v portálu a začít vytvářet skupiny. Posouzení nejde vytvořit, až do dokončení úlohy kolekce a projektu má zpracovat data. Jakmile úloha kolekce byla dokončena v kolekci, může trvat až jednu hodinu, než bude k dispozici na portálu, data o výkonu podle počtu virtuálních počítačů ve vybraném oboru.
+V tomto modelu kolektoru shromažďuje historie konfigurace a výkonu virtuálních počítačů ze systému vCenter Server a odesílá je do projektu. Zařízení v tomto případě není nepřetržitě připojeny k projektu. Podle počtu virtuálních počítačů ve vybraném oboru, trvá až 15 minut k odeslání konfigurace metadat do projektu. Po konfiguraci metadata jsou k dispozici na portálu, můžete zobrazit seznam počítačů na portálu a začít vytvářet skupiny. Shromážděná data konfigurace, může trvat až jednu hodinu, než bude k dispozici na portálu, data o výkonu podle počtu virtuálních počítačů ve vybraném oboru.
+
+**Průběžná zjišťování**
+
+V tomto modelu konfigurační data z místních virtuálních počítačů je k dispozici po spuštění 1 hodinu aktivuje data zjišťování a výkonu, poté jsou dostupné po 2 hodinách. Protože se jedná průběžné modelu, kolektor průběžně odesílá data o výkonu do projektu Azure Migrate.
 
 ## <a name="locking-down-the-collector-appliance"></a>Uzamčení zařízení kolektoru
 Doporučujeme spustit průběžné aktualizace Windows na zařízení kolektoru. Pokud kolekce není aktualizován po dobu 60 dnů, se spustí automatické vypínání na počítači kolektoru. Pokud je funkce zjišťování spuštěna, počítače nebudou vypnout, i v případě, že je po jeho 60 dnů. Příspěvek zjišťování úlohy dokončí, počítač se vypne. Pokud používáte více než 45 dnů kolektoru, doporučujeme počítač aktualizoval na celou dobu spuštění aktualizace Windows.

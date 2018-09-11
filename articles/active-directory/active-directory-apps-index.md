@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: cde70518164c386697127b079979b5b3b76ae088
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: cd95a1f1e0631340fa9844fd31c3d8c0af1168dd
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42057187"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347048"
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Rejstřík článků o správě aplikací ve službě Azure Active Directory
 Tato stránka obsahuje úplný seznam všech dokumentech zapisovat o různé funkce související s aplikací v Azure Active Directory (Azure AD).
@@ -42,7 +42,7 @@ Tato část poskytuje rychlý přístup k příslušné Průvodce řešením pot
 | Oblast funkcí |  |
 |:---:| --- |
 | Federované jednotné přihlašování |[Řešení potíží s založené na SAML jednotného přihlašování](develop/howto-v1-debug-saml-sso-issues.md) |
-| Založené na heslech jednotného přihlašování |[Řešení potíží s rozšíření přístupového panelu pro aplikaci Internet Explorer](active-directory-saas-ie-troubleshooting.md) |
+| Založené na heslech jednotného přihlašování |[Řešení potíží s rozšíření přístupového panelu pro aplikaci Internet Explorer](manage-apps/manage-access-panel-browser-extension.md) |
 | Proxy aplikací |[Průvodce odstraňováním potíží pro Proxy aplikací](manage-apps/application-proxy-troubleshoot.md) |
 | Jednotné přihlašování mezi místním AD a Azure AD |[Řešení potíží s synchronizaci hodnot Hash hesel](connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md#troubleshoot-password-hash-synchronization)<br /><br />[Řešení potíží se zpětným zápisem hesla](authentication/active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) |
 | Dynamické členství ve skupinách |[Řešení potíží s dynamické členství ve skupinách](users-groups-roles/groups-troubleshooting.md) |
@@ -56,7 +56,7 @@ Jednotné přihlašování umožňuje uživatelům přístup k různým aplikac�
 | Úvod k federaci a další typy přihlašování |[Jednotné přihlašování s Azure AD](manage-apps/what-is-single-sign-on.md) |
 | Tisíce aplikací SaaS, které jsou předem integrovány se službou Azure AD s zjednodušené kroky konfigurace jednotného přihlašování |[Začínáme s Galerie aplikací Azure AD](manage-apps/what-is-single-sign-on.md#get-started-with-the-azure-ad-application-gallery)<br /><br />[Úplný seznam předem integrovaných aplikací, které podporují federace](saas-apps/tutorial-list.md)<br /><br />[Postup přidání aplikace do Galerie aplikací Azure AD](develop/howto-app-gallery-listing.md) |
 | Víc než 150 kurzy aplikací o tom, jak nakonfigurovat jednotné přihlašování pro aplikace, jako [Salesforce](saas-apps/salesforce-tutorial.md), [ServiceNow](saas-apps/servicenow-tutorial.md), [Google Apps](saas-apps/google-apps-tutorial.md), [Workday](saas-apps/workday-tutorial.md)a mnoho dalšího |[Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](saas-apps/tutorial-list.md) |
-| Jak ručně nastavit a přizpůsobit vaší konfigurace jednotného přihlašování |[Jak do nakonfigurovat federované jednotné přihlašování k aplikacím, které nejsou v galerii aplikací Azure Active Directory](application-config-sso-how-to-configure-federated-sso-non-gallery.md)<br /><br />[Přizpůsobení deklarací identity vystavených v tokenu SAML pro předběžně integrované aplikace](active-directory-saml-claims-customization.md) |
+| Jak ručně nastavit a přizpůsobit vaší konfigurace jednotného přihlašování |[Jak do nakonfigurovat federované jednotné přihlašování k aplikacím, které nejsou v galerii aplikací Azure Active Directory](manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)<br /><br />[Přizpůsobení deklarací identity vystavených v tokenu SAML pro předběžně integrované aplikace](active-directory-saml-claims-customization.md) |
 | Průvodce odstraňováním potíží pro federované aplikace, které používají protokol SAML |[Řešení potíží s založené na SAML jednotného přihlašování](develop/howto-v1-debug-saml-sso-issues.md) |
 | Jak nakonfigurovat datum vypršení platnosti certifikátu vaší aplikace a jak obnovit své certifikáty |[Správa certifikátů pro federované jednotné přihlašování ve službě Azure Active Directory](manage-apps/manage-certificates-for-federated-single-sign-on.md) |
 
@@ -70,7 +70,7 @@ Pokud chcete povolit jednotné přihlašování k aplikacím, které nepodporuj�
 | Úvod do jednotné přihlašování funguje jak založené na heslech a technický přehled (BRIEF) |[Založené na heslech jednotné přihlašování s Azure AD](manage-apps/what-is-single-sign-on.md#password-based-single-sign-on) |
 | Přehled scénáře týkající se účtu pro sdílení obsahu a jak se tyto problémy vyřešit pomocí Azure AD |[Sdílení účtů pomocí Azure AD](active-directory-sharing-accounts.md) |
 | Automaticky změňte heslo pro některé aplikace v pravidelných intervalech |[Automatická změna hesel (preview)](https://blogs.technet.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/) |
-| Nasazení a řešení potíží s pokyny pro aplikaci Internet Explorer verze rozšíření pro správu hesel Azure AD |[Jak nasadit rozšíření přístupového panelu pro aplikaci Internet Explorer pomocí zásad skupiny](active-directory-saas-ie-group-policy.md)<br /><br />[Řešení potíží s rozšíření přístupového panelu pro aplikaci Internet Explorer](active-directory-saas-ie-troubleshooting.md) |
+| Nasazení a řešení potíží s pokyny pro aplikaci Internet Explorer verze rozšíření pro správu hesel Azure AD |[Jak nasadit rozšíření přístupového panelu pro aplikaci Internet Explorer pomocí zásad skupiny](manage-apps/deploy-access-panel-browser-extension.md)<br /><br />[Řešení potíží s rozšíření přístupového panelu pro aplikaci Internet Explorer](manage-apps/manage-access-panel-browser-extension.md) |
 
 Založené na heslech jednotného přihlašování je k dispozici pro všechny edice Azure AD pro až do deseti aplikací na uživatele. [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) podporuje neomezený počet aplikací. Pokud má vaše organizace [Azure AD Basic](https://azure.microsoft.com/pricing/details/active-directory/) nebo [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/), pak můžete [pomocí skupin můžete přiřadit přístup k aplikacím](#managing-access-to-applications). Automatická změna hesel je [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) funkce.
 
@@ -130,11 +130,11 @@ Automatizujte vytváření, údržbu a odebírání uživatelských identit v ap
 
 | Průvodce článku |  |
 |:---:| --- |
-| Další informace o tom, jak funguje a najít odpovědi na nejčastější dotazy |[Automatizace zřizování a jeho rušení pro aplikace SaaS uživatele](active-directory-saas-app-provisioning.md) |
-| Nakonfigurujte, jak je mapována informace mezi službami Azure AD a vaše aplikace SaaS |[Přizpůsobení mapování atributů](active-directory-saas-customizing-attribute-mappings.md)<br><br>[Zápis výrazů pro mapování atributů](active-directory-saas-writing-expressions-for-attribute-mappings.md) |
+| Další informace o tom, jak funguje a najít odpovědi na nejčastější dotazy |[Automatizace zřizování a jeho rušení pro aplikace SaaS uživatele](manage-apps/user-provisioning.md) |
+| Nakonfigurujte, jak je mapována informace mezi službami Azure AD a vaše aplikace SaaS |[Přizpůsobení mapování atributů](manage-apps/customize-application-attributes.md)<br><br>[Zápis výrazů pro mapování atributů](manage-apps/functions-for-customizing-application-data.md) |
 | Povolení automatického zřizování pro každou aplikaci, která podporuje protokol SCIM |[Nastavení automatické zřizování uživatelů pro každou aplikaci SCIM-Enabled](manage-apps/use-scim-to-provision-users-and-groups.md) |
-| Postup vykázat a řešení potíží s zřizování uživatelů |[Vytváření sestav pro automatické zřizování uživatelů](active-directory-saas-provisioning-reporting.md)<br><br>[Řešení potíží s zřizování uživatelů](active-directory-application-provisioning-content-map.md) |
-| Omezení toho, kdo získá přiřazeni k aplikaci na základě jejich hodnot atributu |[Filtry oborů](active-directory-saas-scoping-filters.md) |
+| Postup vykázat a řešení potíží s zřizování uživatelů |[Vytváření sestav pro automatické zřizování uživatelů](manage-apps/check-status-user-account-provisioning.md)<br><br>[Řešení potíží s zřizování uživatelů](active-directory-application-provisioning-content-map.md) |
+| Omezení toho, kdo získá přiřazeni k aplikaci na základě jejich hodnot atributu |[Filtry oborů](manage-apps/define-conditional-rules-for-provisioning-user-accounts.md) |
 
 Zřizování automatizované uživatelů je k dispozici pro všechny edice Azure AD pro až do deseti aplikací na uživatele. [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) podporuje neomezený počet aplikací. Pokud má vaše organizace [Azure AD Basic](https://azure.microsoft.com/pricing/details/active-directory/) nebo [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/), pak můžete [použití skupin pro správu, kteří uživatelé se zřídil](#managing-access-to-applications).
 

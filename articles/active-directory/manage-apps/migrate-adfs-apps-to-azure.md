@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 03/02/2018
 ms.author: barbkess
-ms.openlocfilehash: d22b86ad33db600eb5273e3ab09e71a1b1fd527b
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: cdce0ae223a637ac30ed472d2bf711aa36958414
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577492"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346759"
 ---
 # <a name="migrate-ad-fs-on-premises-apps-to-azure"></a>Migrace místních aplikací AD FS do Azure 
 
@@ -55,7 +55,7 @@ Organizaci, která již používá AD FS, Ping nebo jiného místního zprostře
 - Azure AD jako zprostředkovatel identity pro aplikace SaaS podporuje další možnosti, jako například:
   - Podpisové certifikáty tokenů pro jednotlivé aplikace.
   - [Konfigurovatelná data vypršení platnosti certifikátů](manage-certificates-for-federated-single-sign-on.md).
-  - [Automatizované zřizování](../active-directory-saas-app-provisioning.md) uživatelských účtů (v klíčových aplikacích z Azure Marketplace) na základě identit Azure AD.
+  - [Automatizované zřizování](user-provisioning.md) uživatelských účtů (v klíčových aplikacích z Azure Marketplace) na základě identit Azure AD.
 
 **Zachování výhod místního zprostředkovatele identity**
 - Přestože získáte výhody služby Azure AD, můžete k ověřování nadále používat své místní řešení. Díky tomu si zachováte výhody, jako jsou místní řešení vícefaktorového ověřování, protokolování a auditování. 
@@ -232,7 +232,7 @@ Vzhledem k tomu, že jste dříve vytvořili konfiguraci v části **Identita** 
 ![Výběr služby Azure AD jako ověřovací služby](media/migrate-adfs-apps-to-azure/migrate10.png)
 
 ### <a name="optional-configure-user-provisioning-in-azure-ad"></a>Volitelné: Konfigurace zřizování uživatelů ve službě Azure AD
-Pokud chcete, aby zřizování uživatelů pro danou aplikaci SaaS zpracovávala přímo služba Azure AD, přečtěte si téma [Automatizace zřizování a rušení zřízení uživatelů pro aplikace SaaS pomocí Azure Active Directory](../active-directory-saas-app-provisioning.md).
+Pokud chcete, aby zřizování uživatelů pro danou aplikaci SaaS zpracovávala přímo služba Azure AD, přečtěte si téma [Automatizace zřizování a rušení zřízení uživatelů pro aplikace SaaS pomocí Azure Active Directory](user-provisioning.md).
 
 ## <a name="next-steps"></a>Další postup
 

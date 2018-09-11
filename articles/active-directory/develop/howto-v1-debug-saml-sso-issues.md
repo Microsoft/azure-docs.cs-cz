@@ -15,12 +15,12 @@ ms.date: 06/15/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin, dastrock, smalser
-ms.openlocfilehash: 5895e918fbd3b67074069ccc81bd794a75725c9a
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 388337fa80d174cb17dae12fa9d5f2fbdfe7e737
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39620932"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44347779"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Ladění založené na SAML jednotného přihlašování k aplikacím v Azure Active Directory
 
@@ -96,11 +96,11 @@ Chcete-li vyřešit chybu:
     - Deklarací identity vystavených v tokenu
     - Certifikát použitý k podpisu tokenu. Informace o tom, jak zkontrolovat odpověď SAML, naleznete v tématu [protokol jednotné přihlašování SAML](single-sign-on-saml-protocol.md).
 4. Další informace o odpověď SAML, naleznete v tématu [protokol jednotné přihlašování SAML](single-sign-on-saml-protocol.md).
-5. Teď, když si přečtete odpověď SAML, naleznete v tématu [chyba na stránce aplikace po přihlášení](../application-sign-in-problem-application-error.md) pokyny k vyřešení problému. 
+5. Teď, když si přečtete odpověď SAML, naleznete v tématu [chyba na stránce aplikace po přihlášení](../manage-apps/application-sign-in-problem-application-error.md) pokyny k vyřešení problému. 
 6. Pokud pořád nejste schopni úspěšně se přihlásit, požádejte dodavatele aplikace co chybí odpověď SAML.
 
 
 ## <a name="next-steps"></a>Další postup
-Teď, když jednotné přihlašování funguje pro aplikace, může [automatizace zřizování uživatelů a jeho rušení pro aplikace SaaS](../active-directory-saas-app-provisioning.md), nebo [Začínáme s podmíněným přístupem](../conditional-access/app-based-conditional-access.md).
+Teď, když jednotné přihlašování funguje pro aplikace, může [automatizace zřizování uživatelů a jeho rušení pro aplikace SaaS](../manage-apps/user-provisioning.md), nebo [Začínáme s podmíněným přístupem](../conditional-access/app-based-conditional-access.md).
 
 

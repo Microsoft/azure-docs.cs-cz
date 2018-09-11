@@ -1,6 +1,6 @@
 ---
-title: Poznámky k verzi pro rozšíření sady Visual Studio pro Developer Analytics
-description: Nejnovější aktualizace pro Visual Studio tools for Developer Analytics.
+title: Zpráva k vydání verze pro Visual Studio Extension pro Developer Analytics
+description: Nejnovější aktualizace pro Visual Studio tools pro analýzy pro vývojáře.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -10,31 +10,33 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/20/2017
-ms.author: mbullwin; aruna
-ms.openlocfilehash: 53a4d7fe1d92826b92866e170fd731edbd5ba1bf
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.reviewer: aruna
+ms.author: mbullwin
+ms.openlocfilehash: 016d13a08ea3fe591529ad6dd29b25534d9c603d
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303740"
 ---
 # <a name="release-notes-for-developer-analytics-tools"></a>Poznámky k verzi pro Developer Analytics Tools
 
 ## <a name="version-718-visual-studio-2015"></a>Verze 7.18 (Visual Studio 2015)
 
 * Přepracovaná informační zprávy.
-* "Ne" filtry v podrobností zobrazit události v hledání Application Insights.
+* "Not" filtry zařazená do podrobností zobrazení událostí v hledání Application Insights.
 * Opravy chyb
 
 ## <a name="version-86-visual-studio-2017-rtw-and-rc4-and-version-717-visual-studio-2015"></a>Verze 8.6 (Visual Studio 2017 RTW a RC4) a verze 7.17 (Visual Studio 2015)
 
-* Poznámky označení při publikování aplikace ze sady Visual Studio teď probíhají k datům v Průzkumníku metrik na portálu Azure
-* Značky jsou nyní přidána do posuvníky v souborech kód odpovídající červené a žlutý Codelensu upozornění z Application Insights
-* Aktualizovat informace v okně Konfigurace – ceny
+* Poznámky označení při publikování aplikace ze sady Visual Studio jsou teď k datům v Průzkumníku metrik na webu Azure Portal
+* Značky jsou teď přidané do posuvníků v kódu soubory odpovídající červené a žluté CodeLens upozornění ze služby Application Insights
+* Aktualizovaný ceník informace v okně Konfigurace
 * Opravy chyb
 
-[Najdete v podrobné poznámky](https://www.visualstudio.com/news/releasenotes/vs2017-relnotes#devanalytics)
+[Podrobné poznámky](https://www.visualstudio.com/news/releasenotes/vs2017-relnotes#devanalytics)
 
 ## <a name="version-716-visual-studio-2015"></a>Verze 7.16 (Visual Studio 2015)
 
@@ -42,65 +44,65 @@ ms.lasthandoff: 05/08/2018
 
 ## <a name="version-85-visual-studio-2017-rc3-and-version-715-visual-studio-2015"></a>Verze 8.5 (Visual Studio 2017 RC3) a verze 7.15 (Visual Studio 2015)
 
-* Codelensu nyní zobrazuje ladění a za provozu telemetrická data v projektech, které odesílají data na prostředek Application Insights
-* Aplikace statistiky, které informace o cenách se nyní zobrazí v okně Konfigurace
-* Codelensu pro požadavky a výjimkami teď podporuje projekty ASP.NET, které jsou napsané v jazyce Visual Basic
-* Hledání Application Insights se teď zobrazuje počet zrušení jen Vzorkovaná události pro události, které byly odebrány vzorky
+* CodeLens nyní zobrazuje telemetrická živá data i data ladění v projektech, které posílají data do prostředku Application Insights
+* Informace o cenách se teď zobrazují v okně Konfigurace Application Insights
+* CodeLens pro žádosti a výjimky teď podporuje projekty ASP.NET, které jsou napsané v jazyce Visual Basic
+* Hledání Application Insights se teď zobrazí počty zrušení vzorkované události pro události, které byly vzorkovány mají
 * Opravy chyb
 
 ## <a name="version-714-visual-studio-2015"></a>Verze 7.14 (Visual Studio 2015)
 
-* Podpora hledání dostupnosti (webového testu) a stránky zobrazení událostí
-* Trendy podporu dostupnosti (webového testu) a stránky zobrazení událostí
-* Diagnostické nástroje a popisek podrobnosti události pro SDK adaptivního vzorkování
+* Hledat podporu pro dostupnost (webový test) a stránky zobrazení událostí
+* Trendy podporu pro dostupnost (webový test) a stránky zobrazení událostí
+* Popisek podrobnosti o události pro adaptivní vzorkování sady SDK a diagnostických nástrojů
 * Opravy chyb
 
 ## <a name="version-712-visual-studio-2015"></a>Verze 7.12 (Visual Studio 2015)
 
-* Nové publikování formát oznámení
+* Publikovat nový formát oznámení
 * Opravy chyb
 
 ## <a name="version-84-visual-studio-2017-rc2-and-version-711-visual-studio-2015"></a>Verze 8.4 (Visual Studio 2017 RC2) a verze 7.11 (Visual Studio 2015)
 
-* Codelensu uvádí požadavky pro místní ladicí relace pro projekty s Application Insights SDK
-* Codelensu vám umožní přejít přímo na analýza aplikace zobrazíte dopad uživatele
-* Vložit JavaScript ke shromažďování zobrazení stránky
+* CodeLens ukazuje žádosti pro místních ladicích relací pro projekty se sadou SDK Application Insights
+* CodeLens umožní přejít přímo na analýzu aplikací, zobrazíte dopad na uživatele
+* Vložte skript jazyka JavaScript pro shromažďování zobrazení stránek
 * Opravy chyb
 
 ## <a name="version-710-visual-studio-2015"></a>Verze 7.10 (Visual Studio 2015)
 
-* Nový design intervalu pro správu a konfiguraci statistiky aplikace
+* Nový návrh pro okno Konfigurace Application Insights
 * Opravy chyb
 
 ## <a name="version-79-visual-studio-2015"></a>Verze 7.9 (Visual Studio 2015)
 
-* Codelensu ukazuje výjimky, které se vyskytly během místní ladicí relace pro projekty s Application Insights SDK
+* CodeLens ukazuje výjimky, které se vyskytly během místních ladicích relací pro projekty se sadou SDK Application Insights
 * Opravy chyb
 
-## <a name="version-83-visual-studio-2017-rc-and-version-78-visual-studio-2015"></a>Verze 8.3 (Visual Studio 2017 RC) a verze 7,8 (Visual Studio 2015)
+## <a name="version-83-visual-studio-2017-rc-and-version-78-visual-studio-2015"></a>Verze 8.3 (Visual Studio 2017 RC) a verze 7.8 (Visual Studio 2015)
 
 * Nové prostředí pro přidání Application Insights v okně Konfigurace
 * Opravy chyb
 
 ## <a name="version-77-visual-studio-2015"></a>Verze 7.7 (Visual Studio 2015)
 
-* Přesnější mapování z telemetrické události metod pomocí vlastní směrování ASP.NET
+* Přesnější mapování z události telemetrie do metody používající vlastní směrování ASP.NET
 * Opravy chyb
 
 ## <a name="version-76-visual-studio-2015"></a>Verze 7.6 (Visual Studio 2015)
 
-* Analýza události zapojenou do činnosti z novou kartu Sledování operaci na události v nástroji pro vyhledávání
+* Analýza událostí zapojenou do činnosti na nové kartě sledovat operaci u událostí v nástroje hledání
 * Opravy chyb
 
 ## <a name="version-75-visual-studio-2015"></a>Verze 7.5 (Visual Studio 2015)
 
-* Produkční telemetrické informace pro požadavky v diagnostických nástrojích
-* Pracovní položka vytvoření z související položky v nástroji pro vyhledávání
+* Produkční telemetrické informace pro žádosti v diagnostických nástrojích
+* Vytvoření pracovní položky z související položky v nástroji pro hledání
 * Opravy chyb
 
 ## <a name="version-74-visual-studio-2015"></a>Verze 7.4 (Visual Studio 2015)
 
-* Podokno filtru v trendy je nyní s možností změny velikosti
+* Podokna filtru v trendech je nyní umožňující změnu velikosti
 * Opravy chyb
 
 ## <a name="version-73-visual-studio-2015"></a>Verze 7.3 (Visual Studio 2015)
@@ -116,176 +118,176 @@ ms.lasthandoff: 05/08/2018
 
 ## <a name="version-71-visual-studio-2015"></a>Verze 7.1 (Visual Studio 2015)
 
-* Telemetrie připravenosti indikátoru v trendy Application Insights
+* Indikátor připravenost telemetrie v trendech Application Insights
 * Opravy chyb
 
 ## <a name="version-70"></a>Verze 7.0
 ### <a name="azure-application-insights-trends"></a>Trendy Azure Application Insights
-Azure Application Insights je nový nástroj v sadě Visual Studio, který můžete použít k analýze, jak vaše aplikace funguje v čase. Abyste mohli začít, na **Application Insights** panelu nástrojů tlačítko nebo v okně hledání Application Insights zvolte **prozkoumat trendy Telemetrie**. Případně na **zobrazení** nabídky, klikněte na tlačítko **ostatní okna**a potom klikněte na **trendy Application Insights**. Zvolte jeden z pěti běžných dotazů, abyste mohli začít. Můžete analyzovat různé sady dat na základě typy telemetrických dat, časových rozsahů a další vlastnosti. Chcete-li v datech nalézt anomálií, zvolte jednu z možností anomálií v **typ zobrazení** rozevíracího seznamu. Možnosti filtrování v dolní části okna usnadňují zdokonalování v konkrétních podmnožinách vaší telemetrie.
+Azure Application Insights je nový nástroj v sadě Visual Studio, který můžete použít k analýze, jak funguje vaše aplikace v čase. Abyste mohli začít na **Application Insights** panelu nástrojů tlačítko nebo v okně hledání Application Insights zvolte **prozkoumat trendy Telemetrie**. Případně na **zobrazení** nabídky, klikněte na tlačítko **ostatní Windows**a potom klikněte na **trendy Application Insights**. Zvolte jeden z pěti běžných dotazů, abyste mohli začít. Můžete analyzovat různé datové sady založené na typy telemetrie, časových rozsahů a dalších vlastností. Pokud chcete vyhledat anomálie v datech, vyberte jednu z možností anomálií v **typ zobrazení** rozevíracího seznamu. Možnosti filtrování v dolní části okna usnadňují zdokonalování v konkrétních podmnožinách vaší telemetrie.
 
 ![Trendy Application Insights](./media/app-insights-release-notes-vsix/Trends.png)
 
 ### <a name="exceptions-in-codelens"></a>Výjimky v CodeLens
-Telemetrie výjimek se nyní zobrazí ve funkci CodeLens. Pokud váš projekt jste se připojili ke službě Application Insights, uvidíte počet výjimek, k nimž došlo v jednotlivých metod v produkční za posledních 24 hodin. Z Codelensu můžete přejít k vyhledávání a trendy výjimky podrobněji prozkoumat.
+Ve funkci CodeLens se teď zobrazuje telemetrie výjimek. Pokud váš projekt jste se připojili ke službě Application Insights, uvidíte počet výjimek, ke kterým došlo v každé metodě v produkčním prostředí za posledních 24 hodin. Z funkce CodeLens můžete přejít k vyhledávání nebo trendy výjimek podrobněji prozkoumat.
 
 ![Výjimky v CodeLens](./media/app-insights-release-notes-vsix/ExceptionsCodeLens.png)
 
-### <a name="aspnet-core-support"></a>Podpora jádra ASP.NET
-Application Insights v sadě Visual Studio teď podporuje projektů ASP.NET Core RC2. Můžete přidat Application Insights do nových projektů ASP.NET Core RC2 ze **nový projekt** dialogovém okně, stejně jako na následujícím snímku obrazovky. Nebo můžete přidat do existujícího projektu, klikněte pravým tlačítkem na projekt v Průzkumníku řešení a pak klikněte na tlačítko **přidat Telemetrii Application Insights**.
+### <a name="aspnet-core-support"></a>Podpora technologie ASP.NET Core
+Application Insights v sadě Visual Studio teď podporuje projekty ASP.NET Core RC2. Můžete přidat Application Insights do nových projektů ASP.NET Core RC2 ze **nový projekt** dialogové okno, stejně jako v následujícím snímku obrazovky. Nebo můžete přidat do existujícího projektu, klikněte pravým tlačítkem na projekt v Průzkumníku řešení a pak klikněte na **přidat Telemetrii Application Insights**.
 
-![Podpora jádra ASP.NET](./media/app-insights-release-notes-vsix/NetCoreSupport.png)
+![Podpora technologie ASP.NET Core](./media/app-insights-release-notes-vsix/NetCoreSupport.png)
 
-ASP.NET 5 RC1 a projektů ASP.NET Core RC2 mají také nové podpory v okně diagnostické nástroje. Zobrazí se události Application Insights jako požadavky a výjimkami z vaší aplikace ASP.NET při ladění místně ve vašem počítači. Z každé události, klikněte na tlačítko **vyhledávání** k podrobnostem pro další informace.
+ASP.NET 5 RC1 a ASP.NET Core RC2 projekty také mít novou podporu v okně diagnostické nástroje. Zobrazí se vám události Application Insights, jako jsou žádosti a výjimky z vaší aplikace v ASP.NET během ladění místně ve vašem počítači. V každé události, klikněte na **hledání** a přejít k podrobnostem pro další informace.
 
-![Podpora diagnostické nástroje](./media/app-insights-release-notes-vsix/DiagnosticTools.png)
+![Podpora nástrojů pro diagnostiku](./media/app-insights-release-notes-vsix/DiagnosticTools.png)
 
-### <a name="hockeyapp-for-universal-windows-apps"></a>HockeyApp pro univerzální aplikace pro Windows
-Kromě beta distribuce a uživatel zpětnou vazbu nabízí HockeyApp symbolicated havárií vytváření sestav pro vaše univerzální aplikace pro Windows. Provedli jsme ji ještě snadnější přidejte sadu SDK HockeyApp: klikněte pravým tlačítkem na projekt Universal Windows a pak klikněte na **hokeji aplikace – povolit dojít k chybě analýzy**. To nainstaluje sadu SDK, nastaví havárií kolekce a zřídí HockeyApp prostředek v cloudu, aniž byste museli ke službě HockeyApp nahrávání aplikace.
+### <a name="hockeyapp-for-universal-windows-apps"></a>HockeyApp pro Universal Windows apps
+Kromě beta rozdělení a uživatel zpětnou vazbu HockeyApp nabízí symbolizovaná hlášení pro aplikace pro Universal Windows. Provedli jsme ji ještě jednodušší přidat sadu SDK HockeyApp: klikněte pravým tlačítkem na projekt Universal Windows a potom klikněte na tlačítko **: Hockey App - povolit analýzu selhání**. To nainstaluje sady SDK, nastaví sběru chyb a zřizuje prostředek HockeyApp v cloudu, aniž byste museli nahrání aplikace do služby HockeyApp.
 
 Další nové funkce:
 
-* Provedli jsme prostředí hledání Application Insights rychlejší a intuitivnější. Nyní časových rozsahů a podrobností filtry budou automaticky použita při jejich výběru.
-* Také v hledání Application Insights, nyní je možnost Přechod na kód přímo z požadavku telemetrie.
-* Provedli jsme vylepšení HockeyApp přihlašování uživatelů.
-* V diagnostických nástrojích zobrazí se produkční telemetrické informace pro výjimky.
+* Provedli jsme prostředí hledání Application Insights, rychlejší a intuitivnější. Nyní časových rozsahů a filtrů podrobností jsou automaticky použít, protože je zvolíte.
+* Také v hledání Application Insights, teď je k dispozici možnost pro přechod na kód přímo z telemetrických dat požadavek.
+* Provedli jsme vylepšení HockeyApp přihlašovací prostředí.
+* V diagnostických nástrojích zobrazí se produkční telemetrické informace o výjimkách.
 
 ## <a name="version-52"></a>Verze 5.2
-Snažíme se radostí oznamujeme zavedení HockeyApp scénáře v sadě Visual Studio. První integrace se v beta rozdělení univerzální aplikace pro Windows a aplikací Windows Forms z Visual Studia.
+Je nám potěšením oznamujeme po zavedení služby HockeyApp scénáře v aplikaci Visual Studio. První integrace probíhá distribuce beta verzí Universal Windows apps a aplikací Windows Forms z Visual Studia.
 
-S beta rozdělení nahrajete dřívější verze aplikací do HockeyApp pro distribuci ke podmnožinu vybrané zákazníků nebo testerům, sada. Rozdělení beta, v kombinaci s HockeyApp havárií kolekce a uživatel zpětnou vazbu funkce, vám může poskytnout cenné informace o vaší aplikaci před provedením široký verze. Můžete tyto informace k řešení potíží s vaší aplikací, abyste mohli vyhnout nebo minimalizovat budoucí problémy, jako je například nízkou aplikace hodnocení, záporné zpětnou vazbu a tak dále.
+S distribucí beta verzí můžete nahrát starší verze aplikací s HockeyApp pro distribuci na vybranou podmnožinu zákazníků nebo testerům. Distribuce beta verzí, v kombinaci s HockeyApp selhání kolekce a uživatelské funkce pro zpětnou vazbu, vám může poskytnout cenné informace o vaší aplikaci předtím, než provedete různé verze. Můžete tyto informace pro řešení potíží s s vaší aplikací, aby mohl vyhnout nebo minimalizovat potíže v budoucnosti, jako je například aplikace nízké hodnocení, negativní zpětnou vazbu a tak dále.
 
-Podívejte se na jednoduchých je nahrát sestavení pro beta rozdělení z Visual Studia.
+Podívejte se jak jednoduše je nahrát sestavení pro beta rozdělení z Visual Studia.
 
-### <a name="universal-windows-apps"></a>Univerzální aplikace pro Windows
-V místní nabídce uzlu projektu aplikace Universal Windows nyní zahrnuje možnost uložení buildu pro HockeyApp.
+### <a name="universal-windows-apps"></a>Aplikace pro Universal Windows
+Místní nabídku pro uzel projektu aplikace Windows Universal teď obsahuje možnost nahrát sestavení s HockeyApp.
 
-![Místní nabídky projektu pro univerzální aplikace pro Windows](./media/app-insights-release-notes-vsix/UniversalContextMenu.png)
+![Místní nabídky projekt pro Universal Windows apps](./media/app-insights-release-notes-vsix/UniversalContextMenu.png)
 
-Vyberte položku a HockeyApp, otevře se dialog pro nahrání. Budete potřebovat účet HockeyApp pro nahrání buildu. Pokud se nový uživatel, nemusíte si dělat starosti. Vytvoření účtu je jednoduchý proces.
+Zvolte položku a HockeyApp, otevře se dialogové okno nahrát. Budete potřebovat účet HockeyApp nahrát sestavení. Pokud jste novým uživatelem, Nedělejte si starosti. Vytvoření účtu je jednoduchý proces.
 
-Když jste připojení, uvidíte formulář nahrávání v dialogovém okně.
+Pokud jste připojeni, zobrazí se formulář nahrávání v dialogovém okně.
 
-![Nahrát dialogové okno pro univerzální aplikace pro Windows](./media/app-insights-release-notes-vsix/UniversalUploadDialog.png)
+![Dialogové okno pro Universal Windows apps nahrát](./media/app-insights-release-notes-vsix/UniversalUploadDialog.png)
 
-Vyberte obsah k nahrání (soubor .appxbundle nebo .appx) a potom vyberte možnosti verze v průvodci. Volitelně můžete přidat poznámky k verzi na další stránce. Zvolte **Dokončit** zahájíte nahrávání.
+Vyberte obsah chcete nahrát (soubor .appxbundle nebo .appx) a pak zvolte možnosti verze v průvodci. Volitelně můžete přidat poznámky k verzi na další stránku. Zvolte **Dokončit** a zahajte nahrávání.
 
-Po dokončení nahrávání se zobrazí oznámení HockeyApp s potvrzením a odkaz na aplikaci na portálu HockeyApp.
+Po dokončení nahrávání se zobrazí oznámení HockeyApp s potvrzením a odkazem na aplikaci na portálu HockeyApp.
 
-![Nahrát dokončení oznámení](./media/app-insights-release-notes-vsix/UploadComplete.png)
+![Odeslat oznámení o dokončení](./media/app-insights-release-notes-vsix/UploadComplete.png)
 
-A to je vše! Právě jste nahráli sestavení pro beta rozdělení několika kliknutími.
+A to je vše! Jste právě nahráli sestavení pro beta rozdělení jen několika kliknutími.
 
-Můžete spravovat aplikaci na portálu HockeyApp mnoha způsoby. To zahrnuje, pozvat uživatele, zobrazení zpráv o chybách a zpětnou vazbu, změna podrobnosti a tak dále.
+Můžete spravovat aplikace v několika různými způsoby v portálu pro HockeyApp. Jedná se o pozvání uživatelů, zobrazení zprávy o chybách a zpětné vazby, změna podrobností a tak dále.
 
-![HockeyApp portálu](./media/app-insights-release-notes-vsix/HockeyAppPortal.png)
+![Portál HockeyApp](./media/app-insights-release-notes-vsix/HockeyAppPortal.png)
 
-Najdete v článku [HockeyApp znalostní báze](http://support.hockeyapp.net/kb/app-management-2) další podrobnosti o správě aplikací.
+Zobrazit [HockeyApp znalostní báze](http://support.hockeyapp.net/kb/app-management-2) podrobné informace o správě aplikací.
 
-### <a name="windows-forms-apps"></a>Windows Forms aplikace
-V místní nabídce uzlu projektu formuláře Windows nyní zahrnuje možnost uložení buildu pro HockeyApp.
+### <a name="windows-forms-apps"></a>Aplikace modelu Windows Forms
+Místní nabídku pro uzel projektu formuláře Windows teď obsahuje možnost nahrát sestavení s HockeyApp.
 
-![Kontextové nabídky projektu pro aplikace Windows Forms](./media/app-insights-release-notes-vsix/WinFormContextMenu.png)
+![Místní nabídky projekt pro aplikace Windows Forms](./media/app-insights-release-notes-vsix/WinFormContextMenu.png)
 
-Otevře se dialogové okno nahrání HockeyApp je podobné tomu, v aplikaci pro univerzální Windows.
+Otevře se dialogové okno nahrání HockeyApp je podobný v Universal Windows app.
 
-![Nahrát dialogové okno pro aplikace Windows Forms](./media/app-insights-release-notes-vsix/WinFormsUploadDialog.png)
+![Dialogové okno pro aplikace Windows Forms nahrát](./media/app-insights-release-notes-vsix/WinFormsUploadDialog.png)
 
-Všimněte si nové pole v tomto průvodci pro zadání verzi aplikace. Pro univerzální aplikace pro Windows je vyplněný informace z manifestu. Aplikace Windows Forms, Bohužel nemáte ekvivalentní k této funkci. Musíte určit je ručně.
+Všimněte si nového pole v tomto průvodci pro určení verze aplikace. Pro Universal Windows apps se vyplní informace z manifestu. Aplikace Windows Forms, bohužel nemají ekvivalentní k této funkci. Je potřeba je zadat ručně.
 
-Zbytek tok je podobná univerzální aplikace pro Windows: Výběr sestavení a verze možnosti, přidat verze poznámky, odesílání a spravovat na portálu HockeyApp.
+Je podobný Universal Windows apps zbytku toku: Zvolte možnosti kanály Azure, přidejte verze poznámky, nahrávat a spravovat na portálu pro HockeyApp.
 
-Stačí jednoduše jako příkaz, který. Zkuste to a dejte nám vědět, co si myslíte.
+Je stejně jednoduché jako. Vyzkoušejte ho a dejte nám vědět, co si myslíte.
 
 ## <a name="version-43"></a>Verze 4.3
-### <a name="search-telemetry-from-local-debug-sessions"></a>Hledání telemetrie z místní ladicí relace
-V této verzi můžete nyní vyhledat telemetrie Application Insights vygenerované v relaci ladění Visual Studio. Dříve můžete použít vyhledávání pouze v případě, že jste zaregistrovali vaší aplikace pomocí Application Insights. Aplikace, musí mít nainstalovaný pro vyhledání místní telemetrie Application Insights SDK.
+### <a name="search-telemetry-from-local-debug-sessions"></a>Hledat telemetrii od místních ladicích relací
+V této vydané verzi můžete teď hledat telemetrii Application Insights generované v ladicí relaci sady Visual Studio. Dříve můžete použít hledání pouze v případě, že registrovaná aplikace v Application Insights. Vaše aplikace nyní, musí mít nainstalovaný vyhledejte místní telemetrie Application Insights SDK.
 
-Pokud máte aplikace ASP.NET pomocí Application Insights SDK, proveďte následující postup použijte funkci vyhledávání.
+Pokud máte aplikaci ASP.NET pomocí Application Insights SDK, proveďte následující kroky pro hledání.
 
 1. Ladění aplikace.
-2. Otevřete hledání Application Insights v jednom z těchto způsobů:
-   * Na **zobrazení** nabídky, klikněte na tlačítko **ostatní okna**a potom klikněte na **hledání Application Insights**.
-   * Klikněte **Application Insights** tlačítka panelu nástrojů.
-   * V Průzkumníku řešení rozbalte **souboru ApplicationInsights.config**a potom klikněte na **vyhledávání ladicí relace telemetrie**.
-3. Pokud nemáte registraci s Application Insights, otevře se v okně vyhledávání v režimu telemetrie relace ladění.
-4. Klikněte **vyhledávání** ikonu zobrazíte místní telemetrie.
+2. Otevřít hledání Application Insights v jednom z těchto způsobů:
+   * Na **zobrazení** nabídky, klikněte na tlačítko **ostatní Windows**a potom klikněte na tlačítko **hledání Application Insights**.
+   * Klikněte na tlačítko **Application Insights** tlačítka panelu nástrojů.
+   * V Průzkumníku řešení rozbalte **soubor ApplicationInsights.config**a potom klikněte na tlačítko **hledat telemetrii relace ladění**.
+3. Pokud pomocí nástroje Application Insights se ještě nezaregistrovali, otevře se okno hledání v režimu telemetrii relace ladění.
+4. Klikněte na tlačítko **hledání** ikonu zobrazíte telemetrii místní.
 
 ![Nahrávání je dokončené.](./media/app-insights-release-notes-vsix/LocalSearch.png)
 
-## <a name="version-42"></a>Verzi 4.2
-V této verzi jsme přidali funkce, aby hledání snadnější v souvislosti s událostí, data s možností přejít ke kódu od více dat událostí a nijak namáhavá prostředí odeslání protokolování dat do služby Application Insights. Toto rozšíření se aktualizuje jednou měsíčně. Pokud máte zpětnou vazbu nebo funkce požadavky, odešle do aidevtools@microsoft.com.
+## <a name="version-42"></a>Verze 4.2
+V této verzi jsme přidali funkcí pro zajištění vyhledávání dat v rámci událostí, umožňuje přechod na kód z více dat událostí a dovolíte prostředí to poslat data protokolování do Application Insights. Toto rozšíření se aktualizuje každý měsíc. Pokud máte zpětnou vazbu nebo požadavky na funkce, odeslat ho do aidevtools@microsoft.com.
 
-### <a name="no-click-logging-experience"></a>Kliknutím na Ne protokolování prostředí
-Pokud už používáte System.Diagnostics.Tracing, NLog a log4net, nemusíte si dělat starosti o přesunutí všechny vaše trasování do služby Application Insights. V této verzi integrovali adaptéry Application Insights protokolování s prostředím normální konfigurace.
-Pokud již máte jeden z těchto rozhraní protokolování, který je nakonfigurován, následující část popisuje, jak ji připravit.
+### <a name="no-click-logging-experience"></a>Možnosti protokolování č jedním kliknutím
+Pokud už používáte NLog, log4net nebo System.Diagnostics.Tracing, není nutné starat o přesunem všech vašich trasování do Application Insights. V této verzi jsme Integrovali jsme adaptéry protokolování Application Insights s normální konfiguračního prostředí.
+Pokud už máte jedno z těchto rozhraní protokolování nakonfigurované, následující část popisuje jak ho načíst.
 **Pokud jste už přidali Application Insights:**
 
-1. Klikněte pravým tlačítkem na uzel projektu a pak klikněte na **Application Insights**a potom klikněte na **konfigurovat Application Insights**. Ujistěte se, najdete v části možnost Přidat správný adaptér v okně konfigurace.
-2. Alternativně při sestavování řešení, Všimněte si okně automaticky otevírané okno, které se zobrazí v horní části rohu obrazovky a klikněte na tlačítko **konfigurace**.
+1. Klikněte pravým tlačítkem na uzel projektu a pak klikněte na tlačítko **Application Insights**a potom klikněte na tlačítko **konfigurovat Application Insights**. Ujistěte se, že se zobrazí možnost Přidat správný adaptér v okně konfigurace.
+2. Můžete také při sestavování řešení, mějte na paměti automaticky otevírané okno, které se zobrazí v horní části napravo od vaší obrazovky a klikněte na **konfigurovat**.
 
 ![Protokolování oznámení](./media/app-insights-release-notes-vsix/LoggingToast.png)
 
-Pokud máte nainstalován adaptér protokolování, spusťte aplikaci a zkontrolujte, zda že zobrazit data na kartě diagnostické nástroje takto:
+Pokud máte nainstalován adaptér protokolování, spusťte aplikaci a ujistěte se, že se zobrazí data v kartě diagnostické nástroje, například takto:
 
 ![Trasování](./media/app-insights-release-notes-vsix/Traces.png)
 
-### <a name="jump-to-or-find-the-code-where-the-telemetry-event-property-is-emitted"></a>Přejít na nebo najít kód, kde je vlastnost telemetrie události vygenerované
-S novou verzí uživatel kliknutím na libovolnou hodnotu události podrobností a to bude hledat odpovídající řetězce v aktuálním řešení otevřete. Výsledky se zobrazí v sadě Visual Studio "Najít výsledky" seznamu, jak je uvedeno níže:
+### <a name="jump-to-or-find-the-code-where-the-telemetry-event-property-is-emitted"></a>Přejít na nebo kódu najít, kde je vygenerován vlastnost události telemetrie
+V nové verzi může uživatel kliknout na libovolnou hodnotu v události podrobností a tím bude hledat odpovídající řetězce v aktuálním řešení otevřené. Výsledky se zobrazí v sadě Visual Studio "Výsledky hledání" seznamu, jak je znázorněno níže:
 
-![Najít shodu](./media/app-insights-release-notes-vsix/FindMatch.png)
+![Najít shoda](./media/app-insights-release-notes-vsix/FindMatch.png)
 
-### <a name="new-search-window-for-when-you-are-not-signed-in"></a>Nové hledání okna pro Pokud nejste přihlášení
-Vylepšili jsme vzhledu okno hledání Application Insights a slouží k vyhledávání dat, zatímco vaše aplikace je v produkčním prostředí.
+### <a name="new-search-window-for-when-you-are-not-signed-in"></a>Pokud nejste přihlášení nové okno hledání
+Vylepšili jsme najdete v okně hledání Application Insights umožňují prohledávat svá data, zatímco je vaše aplikace v produkčním prostředí.
 
-![Hledání oken](./media/app-insights-release-notes-vsix/SearchWindow.png)
+![Okno hledání](./media/app-insights-release-notes-vsix/SearchWindow.png)
 
-### <a name="see-all-telemetry-events-associated-with-the-event"></a>Zobrazit všechny události telemetrická data přidružená k události
-Přidali jsme novou kartu, s předdefinované dotazy pro všechna data související s událostí telemetrie, že uživatel prohlíží vedle na kartě Podrobnosti události. Žádost o má například pole s názvem **ID operace**. Všechny události přidružené k této žádosti mají stejnou hodnotu pro **ID operace**. Pokud dojde k výjimce během zpracování požadavku operaci, výjimka dostane stejné ID operace jako požadavek, aby bylo snazší najít. Pokud se díváte na žádost, klikněte na tlačítko **všechny telemetrická data pro tuto operaci** otevřete novou kartu, která zobrazí nové výsledky hledání.
+### <a name="see-all-telemetry-events-associated-with-the-event"></a>Zobrazit všechny události telemetrie, které jsou přidružené k události
+Přidali jsme nová karta s předdefinované dotazy pro všechna data související s telemetrické události, že uživatel prohlíží vedle karty podrobnosti události. Například požadavek má pole s názvem **ID operace**. Má stejnou hodnotu pro každou událost přidružené k této žádosti **ID operace**. Pokud dojde k výjimce během zpracování požadavku operace, výjimky se přihlašovací ID stejné operace jako požadavek, aby bylo snazší najít. Pokud se díváte na žádost, klikněte na tlačítko **veškerá telemetrie pro tuto operaci** otevřete novou kartu, která se zobrazí nové výsledky hledání.
 
 ![Související položky](./media/app-insights-release-notes-vsix/RelatedItems.png)
 
 ### <a name="forward-and-back-history-in-search"></a>Vpřed a zpět v historii hledání
-Nyní můžete přejít přepínat mezi výsledky hledání.
+Teď můžete přejít vpřed a zpět mezi výsledky hledání.
 
 ![Přejít zpátky](./media/app-insights-release-notes-vsix/GoBAck.png)
 
 ## <a name="version-41"></a>Verze 4.1
-Tato verze obsahuje mnoho nových funkcí a aktualizace. Musíte mít nainstalovanou na něj nainstalovat tuto verzi Update 1.
+Tato verze přináší několik nových funkcí a aktualizací. Musíte mít nainstalovanou nainstalovat tuto verzi Update 1.
 
-### <a name="jump-from-an-exception-to-method-in-source-code"></a>Přechod z výjimku metodě ve zdrojovém kódu
-Nyní Pokud zobrazíte výjimky z vaší aplikace produkční v okně hledání Application Insights, můžete přejít na metodu ve vašem kódu místo, kde dochází výjimku. Potřebujete mít správný projekt načíst a Application Insights postará REST! (Další informace o okně hledání Application Insights, najdete v poznámkách k verzi pro verzi 4.0 v následujících částech.)
+### <a name="jump-from-an-exception-to-method-in-source-code"></a>Přechod z výjimky k metodě ve zdrojovém kódu
+Nyní pokud zobrazení výjimek z produkční aplikace v okně hledání Application Insights, můžete přejít na metodu ve svém kódu místo, kde dochází k výjimce. Potřebujete mít správný projekt, který je načten a Application Insights se postará o všechno ostatní. (Další informace o okně hledání Application Insights, zobrazit poznámky k verzi pro verzi 4.0 v následujících částech.)
 
-Jak to funguje? Vyhledání Statistika aplikace můžete použít i v případě, že je řešení není otevřené. Oblast trasování zásobníku zobrazí zprávu s informací, a všechny položky v trasování zásobníku nejsou k dispozici.
+Jak to funguje? Aplikace Insights Search můžete použít i v případě, že řešení není otevřené. Zobrazí informační zprávy area trasování zásobníku a mnoho z položek v trasování zásobníku nejsou k dispozici.
 
-Pokud je k dispozici informace o souboru, některé položky může být odkazy, ale stále položce řešení informace budou viditelné.
+Pokud je k dispozici informace o souboru, některé položky může být odkazy, ale položka informací o řešení, budou se dál zobrazovat.
 
-Pokud kliknete na odkaz, budete ve vašem kódu přejít do umístění vybrané metody. Může být rozdíl v číslo verze, ale funkce, přejít na správnou verzi kódu, vrátí se v pozdějších verzích.
+Pokud kliknete na hypertextový odkaz, bude ve vašem kódu přejděte do umístění vybrané metody. Může být rozdíl v čísle verze, ale funkce, můžete přejít na správnou verzi kódu, budou přicházet v pozdějších verzích.
 
 ![Klikněte na podrobnosti o výjimce](./media/app-insights-release-notes-vsix/jumptocode.png)
 
-### <a name="new-entry-points-to-the-search-experience-in-solution-explorer"></a>Nový vstupní body k vyhledávání na základě zkušeností uživatelů Průzkumníku řešení
-Nyní můžete zobrazit vyhledávání pomocí Průzkumníka řešení.
+### <a name="new-entry-points-to-the-search-experience-in-solution-explorer"></a>Vyzkoušet nové vstupní body k hledání v Průzkumníkovi řešení
+Hledání teď můžete přistupovat pomocí Průzkumníka řešení.
 
-![Hledání v Průzkumníku řešení](./media/app-insights-release-notes-vsix/searchentry.png)
+![Hledání v Průzkumníkovi řešení](./media/app-insights-release-notes-vsix/searchentry.png)
 
-### <a name="displays-a-notification-when-publish-is-completed"></a>Zobrazí oznámení při publikování dokončení
-Dialogové okno automaticky otevírané okno se zobrazí, když je online, publikování projektu tak, aby vaše data Application Insights můžete zobrazit v produkčním prostředí.
+### <a name="displays-a-notification-when-publish-is-completed"></a>Zobrazí upozornění při publikování je dokončeno
+Místní dialogové okno se zobrazí, když je projekt publikován online, tak, aby vaše data Application Insights můžete zobrazit v produkčním prostředí.
 
-![Publikování dokončení oznámení](./media/app-insights-release-notes-vsix/publishtoast.png)
+![Publikování oznámení o dokončení](./media/app-insights-release-notes-vsix/publishtoast.png)
 
-## <a name="version-40"></a>verze 4.0
-### <a name="search-application-insights-data-from-within-visual-studio"></a>Vyhledávání dat Application Insights z Visual Studia
-Jako funkce vyhledávání v portálu Application Insights, teď v sadě Visual Studio můžete filtrovat a vyhledávat na typy událostí, vlastnost hodnoty a text a pak zkontrolujte jednotlivé události.
+## <a name="version-40"></a>Verze 4.0
+### <a name="search-application-insights-data-from-within-visual-studio"></a>Hledání Application Insights data z Visual Studia
+Jako funkce vyhledávání v portálu Application Insights, teď v sadě Visual Studio můžete filtrovat a vyhledávat na typy událostí, vlastnost hodnoty a text a poté zkontrolujte jednotlivé události.
 
-![Hledání oken](./media/app-insights-release-notes-vsix/search.png)
+![Okno hledání](./media/app-insights-release-notes-vsix/search.png)
 
 ### <a name="see-data-coming-from-your-local-computer-in-diagnostic-tools"></a>Zobrazit data z místního počítače v diagnostických nástrojích
-Telemetrie, kromě jiných ladění data, můžete zobrazit na stránce diagnostických nástrojů Visual Studia. Je podporován pouze technologie ASP.NET 4.5.
+Na stránce diagnostické nástroje sady Visual Studio můžete zobrazit telemetrii, kromě jiných dat ladění. Je podporován pouze technologie ASP.NET 4.5.
 
 ![Stránka diagnostické nástroje](./media/app-insights-release-notes-vsix/diagtools.png)
 
 ### <a name="add-the-sdk-to-your-project-without-signing-in-to-azure"></a>Přidejte sadu SDK do projektu bez přihlášení do Azure
-Už muset přihlásit k Azure a přidejte Application Insights balíčky do projektu, buď prostřednictvím **nový projekt** dialogové okno nebo z místní nabídky projektu. Pokud přihlásit, sadu SDK nainstalovat a nakonfigurovat na odesílání telemetrie na portál jako před. Pokud nemáte přihlásit, přidá SDK do projektu a vygeneruje telemetrie diagnostiky rozbočovače. Můžete ho nakonfigurovat později podle potřeby.
+Už máte přihlásit k Azure a přidání balíčků Application Insights do projektu, buď prostřednictvím **nový projekt** dialogového okna nebo v místní nabídce projektu. Pokud se přihlásíte, sadu SDK nainstalovaná a nakonfigurovaná k odesílání telemetrie na portál jako před. Pokud není přihlásíte, sady SDK se přidají do vašeho projektu a vygeneruje telemetrii centra diagnostiky. Můžete ho nakonfigurovat později můžete podle potřeby.
 
 ![Dialogové okno Nový projekt](./media/app-insights-release-notes-vsix/newproject.png)
 
