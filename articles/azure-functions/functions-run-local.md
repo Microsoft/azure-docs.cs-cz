@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.author: glenga
-ms.openlocfilehash: 294dea695f120ff47712e0ccf79072a41baca07b
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: b33c9246bef2ca22542e338a1ec1f91a92aa300e
+ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092814"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44324831"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Práce s Azure Functions Core Tools
 
@@ -26,11 +26,11 @@ Nástroje Azure Functions Core můžete vyvíjet a testovat funkce v místním p
 
 ## <a name="core-tools-versions"></a>Základní verze nástroje
 
-Existují dvě verze nástrojů Azure Functions Core. Verze, kterou použijete, závisí na vaše místní vývojové prostředí, možnost volby jazyka a úroveň je vyžadována podpora:
+Existují dvě verze nástrojů Azure Functions Core. Verze použijete, závisí na svoje místní vývojové prostředí [volba jazyka](supported-languages.md)a je vyžadována podpora na úrovni:
 
-+ [Verzi 1.x](#v1): podporuje verzi 1.x modulu runtime, která je všeobecně dostupná (GA). Tato verze nástroje je podporována pouze na počítačích s Windows a je nainstalovaná ze [balíčku npm](https://docs.npmjs.com/getting-started/what-is-npm). S touto verzí můžete vytvořit funkce v následujících experimentálních jazyků, které nejsou oficiálně podporované. Další informace najdete v tématu [podporované jazyky ve službě Azure Functions](supported-languages.md)
++ [Verzi 1.x](#v1): podporuje verzi 1.x modulu runtime, která je všeobecně dostupná (GA). Tato verze nástroje je podporována pouze na počítačích s Windows a je nainstalovaná ze [balíčku npm](https://docs.npmjs.com/getting-started/what-is-npm).
 
-+ [Verze 2.x](#v2): podporuje [verze 2.x modulu runtime](functions-versions.md). Tato verze podporuje [Windows](#windows-npm), [macOS](#brew), a [Linux](#linux). Správce balíčků specifických pro platformu používá nebo npm pro instalaci. Podobně jako modul runtime verze 2.x tuto verzi základní nástroje je momentálně ve verzi preview. 
++ [Verze 2.x](#v2): podporuje [verze 2.x modulu runtime](functions-versions.md). Tato verze podporuje [Windows](#windows-npm), [macOS](#brew), a [Linux](#linux). Správce balíčků specifických pro platformu používá nebo npm pro instalaci. Podobně jako modul runtime verze 2.x tuto verzi základní nástroje je momentálně ve verzi preview. Ve verzi 2.x, všechny funkce v aplikaci function app musí používat stejné prostředí runtime jazyka.
 
 Pokud není uvedeno jinak, příklady v tomto článku platí pro verze 2.x. Důležité aktualizace na verzi 2.x, včetně narušující změně oznámení, podívejte [oznámení služby Azure App Service](https://github.com/Azure/app-service-announcements/issues) úložiště.
 

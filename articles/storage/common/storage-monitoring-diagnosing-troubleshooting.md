@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: fhryo-msft
 ms.component: common
-ms.openlocfilehash: e560eb9e0bbce09c541bfc66ea760ea3e636f841
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 0807bc5df9d4ee8782ae017dbb7ed63c38a13443
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528710"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44304675"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Monitorování, diagnostika a řešení problémů s Microsoft Azure Storage
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -73,7 +73,7 @@ Praktické vodítko na začátku do konce odstraňování potíží v aplikacíc
   * [Dodatek 2: Pomocí Wireshark pro zachycení síťového provozu]
   * [Dodatek 3: Použití Microsoft Message Analyzer pro zachycení síťového provozu]
   * [Dodatek 4: Zobrazení metriky a protokolovat data pomocí aplikace Excel]
-  * [Dodatek 5: Monitorování pomocí služby Application Insights pro Visual Studio Team Services]
+  * [Dodatek 5: Monitorování pomocí Application Insights pro Azure DevOps]
 
 ## <a name="introduction"></a>Úvod
 Tento průvodce vám ukáže, jak používat funkce, jako je Azure Storage Analytics, klientské protokolování v klientské knihovně Azure Storage a další nástroje třetích stran k identifikaci, diagnostice a řešení problémů s Azure Storage související s problémy.
@@ -125,7 +125,7 @@ Můžete použít [webu Azure portal](https://portal.azure.com) Chcete-li zobraz
 [Webu Azure portal](https://portal.azure.com) můžete zadat taky upozornění na incidenty, které mají vliv na různé služby Azure.
 Poznámka: Tyto informace byly dříve k dispozici, spolu s využitím historických dat na [řídicího panelu služby Azure](http://status.azure.com).
 
-Když [webu Azure portal](https://portal.azure.com) shromažďuje informace o stavu z uvnitř datových centrech Azure (zevnitř monitorování), zvažte také přijetí externí přístup ke generování syntetické transakce, které pravidelně přístup hostované v Azure webové aplikace z více míst. Služby nabízené [Dynatrace](http://www.dynatrace.com/en/synthetic-monitoring) a Application Insights pro Visual Studio Team Services jsou příkladem tohoto přístupu. Další informace o Application Insights pro Visual Studio Team Services najdete v tématu dodatku "[dodatek 5: monitorování pomocí Application Insights pro Visual Studio Team Services](#appendix-5)."
+Když [webu Azure portal](https://portal.azure.com) shromažďuje informace o stavu z uvnitř datových centrech Azure (zevnitř monitorování), zvažte také přijetí externí přístup ke generování syntetické transakce, které pravidelně přístup hostované v Azure webové aplikace z více míst. Služby nabízené [Dynatrace](http://www.dynatrace.com/en/synthetic-monitoring) a Application Insights pro DevOps v Azure jsou příkladem tohoto přístupu. Další informace o Application Insights pro Azure DevOps, naleznete v tématu dodatku "[dodatek 5: monitorování pomocí Application Insights pro Azure DevOps](#appendix-5)."
 
 ### <a name="monitoring-capacity"></a>Monitorování kapacity
 Metrik úložiště pouze ukládá metriky kapacity pro službu blob service, protože objekty BLOB obvykle účet pro největší objem uložených dat (v době psaní, není možné pomocí metrik Storage můžete sledovat kapacitu tabulky a fronty). Můžete najít v těchto dat **$MetricsCapacityBlob** tabulky, pokud jste povolili monitorování služby Blob Service. Storage Metrics zaznamenává tato data jednou denně, a můžete použít hodnotu **RowKey** k určení, zda řádek obsahuje entity, která má vztah k uživatelským datům (hodnota **data**) nebo data analytics (hodnota **analytics**). Každá entita uložené obsahuje informace o velikost úložiště využitá (**kapacity** měřená v bajtech) a aktuální počet kontejnerů (**ContainerCount**) a objekty BLOB (**ObjectCount** ) používá v účtu úložiště. Další informace o metriky kapacity uložené v **$MetricsCapacityBlob** tabulky, najdete v článku [tabulkovému schématu metrik Storage Analytics](http://msdn.microsoft.com/library/azure/hh343264.aspx).
@@ -466,7 +466,7 @@ Nejčastější příčinou této chyby je klient odpojení před vypršení ča
 ### <a name="the-client-is-receiving-403-messages"></a>Klient dostává zprávy HTTP 403 (zakázáno)
 Pokud vaše klientská aplikace způsobující chyby HTTP 403 (zakázáno), pravděpodobnou příčinou je, že klient používá vypršenou platností sdíleného přístupového podpisu (SAS) při odesílání požadavku na úložiště (i když další možné příčiny zahrnují hodiny zkosení, neplatné klíče a prázdný záhlaví ). Pokud vypršela platnost klíče SAS příčinou je, neuvidíte žádné položky v datech log úložiště protokolování na straně serveru. V následující tabulce jsou uvedeny ukázky z protokolu na straně klienta generovaný klientskou knihovnu pro úložiště, který ukazuje tento problém vyskytující se:
 
-| Zdroj | Podrobnosti | Podrobnosti | ID žádosti klienta | Operace text |
+| Zdroj | Podrobnosti | Podrobnosti | ID požadavku klienta | Operace text |
 | --- | --- | --- | --- | --- |
 | Microsoft.WindowsAzure.Storage |Informace |3 |85d077ab-… |Spouští se operace s umístěním primární umístění režim PrimaryOnly podle. |
 | Microsoft.WindowsAzure.Storage |Informace |3 |85d077ab -… |Spouští se požadavku na https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&amp; sr = c&amp;si = mypolicy&amp;sig = OFnd4Rd7z01fIvh % 2BmcR6zbudIH2F5Ikm 2FyhNYZEmJNQ % 3D&amp;verze api-version = 2014-02-14. |
@@ -571,7 +571,7 @@ V následující tabulce jsou uvedeny ukázkovou zprávu protokolu na straně se
 | Adresa URL požadavku        | https://domemaildist.blob.core.windows.net/azureimblobcontainer/blobCreatedViaSAS.txt |
 | &nbsp;                 |   ?sv=2014-02-14&sr=c&si=mypolicy&sig=XXXXX&;api-version=2014-02-14 |
 | Záhlaví ID žádosti  | a1f348d5-8032-4912-93ef-b393e5252a3b |
-| ID žádosti klienta  | 2d064953-8436-4ee0-aa0c-65cb874f7929 |
+| ID požadavku klienta  | 2d064953-8436-4ee0-aa0c-65cb874f7929 |
 
 
 Zjistěte, proč se klientská aplikace pokouší o provedení operace, pro které mu nebylo uděleno oprávnění.
@@ -625,7 +625,7 @@ Pokud k tomuto problému dochází často, byste měli prozkoumat, proč klient 
 ### <a name="the-client-is-receiving-409-messages"></a>Klient dostává zprávy HTTP 409 (konflikt)
 V následující tabulce jsou uvedeny extrakci z protokolu na straně serveru pro dva klientské operace: **DeleteIfExists** a potom hned za **CreateIfNotExists** pomocí stejného názvu kontejneru objektů blob. Výsledkem každého klienta operace dva požadavky odeslané na server, nejprve **GetContainerProperties** požadavek na zkontrolovat, zda kontejner existuje, za nímž následuje **DeleteContainer** nebo  **CreateContainer** požadavku.
 
-| Časové razítko | Operace | Výsledek | Název kontejneru | ID žádosti klienta |
+| Časové razítko | Operace | Výsledek | Název kontejneru | ID požadavku klienta |
 | --- | --- | --- | --- | --- |
 | 05:10:13.7167225 |GetContainerProperties |200 |mmcont |c9f52c89-… |
 | 05:10:13.8167325 |DeleteContainer |202 |mmcont |c9f52c89-… |
@@ -799,8 +799,8 @@ Pokud chcete importovat data protokolování úložiště do aplikace Excel po s
 
 V kroku 1 tohoto **Průvodce importem textu**vyberte **středník** jako pouze oddělovač a zvolte dvojitých uvozovek jako **kvalifikátor Text**. Pak klikněte na tlačítko **Dokončit** a zvolit umístění, kam umístit data v sešitu.
 
-### <a name="appendix-5"></a>Dodatek 5: Monitorování pomocí Application Insights pro Visual Studio Team Services
-Můžete také použít funkci Application Insights pro Visual Studio Team Services jako součást vašeho sledování výkonu a dostupnosti. Tento nástroj můžete:
+### <a name="appendix-5"></a>Dodatek 5: Monitorování pomocí Application Insights pro Azure DevOps
+Můžete použít také funkci Application Insights pro DevOps v Azure jako součást vašeho sledování výkonu a dostupnosti. Tento nástroj můžete:
 
 * Ujistěte se, že webová služba je k dispozici a reagují. Jestli je vaše aplikace na web nebo aplikace pro zařízení, která používá webovou službu, ho otestujte adresu URL každých několik minut, než z míst po celém světě a vám oznámíme, pokud je nějaký problém.
 * Rychle Diagnostikujte jakékoli problémy s výkonem nebo výjimky ve webové službě. Zjistěte, pokud využití procesoru nebo jiné prostředky jsou roztažení, získat trasování zásobníku z výjimek a snadno prohledávat protokolu trasování. Pokud výkon vaší aplikace klesne pod přijatelné meze, Microsoft může odeslat e-mailu. Můžete monitorovat webové služby .NET a Javy.
@@ -865,7 +865,7 @@ Další informace najdete [co je Application Insights](../../application-insight
 [Dodatek 2: Pomocí Wireshark pro zachycení síťového provozu]: #appendix-2
 [Dodatek 3: Použití Microsoft Message Analyzer pro zachycení síťového provozu]: #appendix-3
 [Dodatek 4: Zobrazení metriky a protokolovat data pomocí aplikace Excel]: #appendix-4
-[Dodatek 5: Monitorování pomocí služby Application Insights pro Visual Studio Team Services]: #appendix-5
+[Dodatek 5: Monitorování pomocí Application Insights pro Azure DevOps]: #appendix-5
 
 <!--Image references-->
 [1]: ./media/storage-monitoring-diagnosing-troubleshooting/overview.png
