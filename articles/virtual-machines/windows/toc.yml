@@ -40,7 +40,7 @@ items:
     href: tutorial-monitoring.md
   - name: 12. Správa zabezpečení virtuálních počítačů
     href: tutorial-azure-security.md
-  - name: 13. CI/CD služby Team Services
+  - name: 13. Průběžná integrace a doručování v Azure Pipelines
     href: tutorial-vsts-iis-cicd.md
   - name: 14. Instalace zásobníku SQL\IIS\.NET
     href: tutorial-iis-sql.md
@@ -346,6 +346,20 @@ items:
       href: portal-create-fqdn.md
     - name: Překlad DNS
       href: ../../dns/dns-for-azure-services.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+  - name: Konfigurace spravovaných identit na virtuálních počítačích
+    items:
+    - name: Portál
+      href: /azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm?context=azure/virtual-machines/windows/context/windows-vm-context
+    - name: Rozhraní příkazového řádku
+      href: /active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm?context=azure/virtual-machines/windows/context/windows-vm-context
+    - name: PowerShell
+      href: /azure/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm?context=azure/virtual-machines/windows/context/windows-vm-context
+    - name: Šablona Azure Resource Manageru
+      href: /azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm?context=azure/virtual-machines/windows/context/windows-vm-context
+    - name: REST
+      href: /azure/active-directory/managed-identities-azure-resources/qs-configure-rest-vm?context=azure/virtual-machines/windows/context/windows-vm-context
+    - name: Sady Azure SDK
+      href: /azure/active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm?context=azure/virtual-machines/windows/context/windows-vm-context
   - name: Použití rozšíření virtuálních počítačů
     href: ../extensions/overview.md
   - name: Migrace virtuálních počítačů
@@ -478,9 +492,9 @@ items:
     href: https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines
   - name: Nejčastější dotazy
     href: faq.md
-ms.openlocfilehash: 70cfe0f8ac4c0918cb63091a69852480a8c14583
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 1eee9b89e7db5ea8edcb5172090082afeed52079
+ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44025032"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44325443"

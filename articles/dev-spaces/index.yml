@@ -1,0 +1,65 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: b275387e5d884f8ca6484690b7caf5a84759e9e2
+ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44325996"
+documentType: LandingData
+title: Azure Dev Spaces
+metadata:
+  title: Azure Dev Spaces | Microsoft Docs
+  meta.description: Rapid Kubernetes development with containers and microservices on Azure.
+  services: azure-dev-spaces
+  author: ghogen
+  manager: douge
+  ms.service: azure-dev-spaces
+  ms.topic: landing-page
+  ms.date: 08/23/2018
+  ms.author: ghogen
+sections:
+- title: Rychlé a iterativní vývojové prostředí Kubernetes pro týmy
+  items:
+  - type: paragraph
+    text: S minimálním nastavováním počítačů pro vývoj můžete iterativně spouštět a ladit kontejnery přímo ve službě Azure Kubernetes Service (AKS).  Můžete také spolupracovat se svým týmem v rámci sdíleného clusteru Kubernetes a využívat kompletní testování s ostatními komponentami, aniž byste museli replikovat nebo napodobovat závislosti. S využitím Azure Dev Spaces můžete vyvíjet pro Windows, Mac nebo Linux pomocí známých nástrojů, jako jsou Visual Studio a Visual Studio Code, nebo pomocí příkazového řádku.
+  - type: markdown
+    text: >-
+      > [!IMPORTANT]
+
+      > Služba Azure Dev Spaces je aktuálně ve verzi Preview a podporují ji jenom clustery AKS v oblastech **USA – východ**,**USA – střed**, **USA – západ 2**, **Západní Evropa**, **Kanada – střed** a **Kanada – východ**. Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Některé aspekty této funkce se můžou před zveřejněním změnit.
+- title: Začínáme s Azure Dev Spaces
+  items:
+  - type: paragraph
+    text: 'Začněte prosím výběrem průvodce pro konkrétní jazyk:'
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: https://docs.microsoft.com/media/logos/logo_java.svg
+      text: Java
+      href: quickstart-java.md
+    - image:
+        src: https://docs.microsoft.com/media/logos/logo_NETcore.svg
+      text: .NET a VS Code
+      href: quickstart-netcore.md
+    - image:
+        src: https://docs.microsoft.com/media/logos/logo_visual-studio.svg
+      text: .NET a Visual Studio
+      href: quickstart-netcore-visualstudio.md
+    - image:
+        src: https://docs.microsoft.com/media/logos/logo_nodejs.svg
+      text: Node.js
+      href: quickstart-nodejs.md
+- title: Jak Azure Dev Spaces zjednodušuje vývoj na platformě Kubernetes
+  items:
+  - type: paragraph
+    text: 'Azure Dev Spaces pomáhá vývojovým týmům dosáhnout vyšší produktivity na platformě Kubernetes následujícími způsoby:'
+  - type: list
+    style: unordered
+    items:
+    - text: Minimalizuje nastavení místních počítačů pro vývoj pro každého člena týmu a umožňuje pracovat přímo ve službě AKS, spravovaném clusteru Kubernetes v Azure.
+    - text: Umožňuje rychle iterovat a ladit kód přímo v Kubernetes pomocí sady Visual Studio 2017 nebo editoru Visual Studio Code.
+    - text: Umožňuje generovat prostředky konfigurace jako kódu pro Docker a Kubernetes, které pak můžete používat v různých fázích od vývoje až po produkci.
+    - text: Spravovaný cluster Kubernetes můžete sdílet se svým týmem a všichni v něm spolupracovat. Kód můžete vyvíjet izolovaně a pak ho otestovat spolu s ostatními komponentami, aniž byste museli replikovat nebo simulovat závislosti.
+  - type: markdown
+    text: '![](media/azure-dev-spaces/vscode-overview.png)'

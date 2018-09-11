@@ -1,29 +1,36 @@
+items:
 - name: Dokumentace ke Cloud Foundry
   href: index.md
 - name: Šablony Rychlý start
-  expanded: true
   items:
-    - name: Šablona Marketplace
-      href: 'https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry'
+  - name: Šablona Marketplace
+    href: https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry
+  expanded: true
 - name: Kurzy
   items:
-    - name: Nasazení aplikace CF do Azure
-      href: /azure/virtual-machines/linux/cloudfoundry-deploy-your-first-app
-    - name: CloudFoundry v Azure
-      href: /azure/virtual-machines/linux/cloudfoundry-get-started
-    - name: Nasazení CF OMS Nozzle
-      href: /azure/cloudfoundry/cloudfoundry-oms-nozzle
-    - name: Integrace Cloud Foundry s Azure
-      href: /azure/cloudfoundry/how-cloud-foundry-integrates-with-azure
+  - name: Nasazení aplikace CF do Azure
+    href: /azure/virtual-machines/linux/cloudfoundry-deploy-your-first-app
+  - name: CloudFoundry v Azure
+    href: /azure/virtual-machines/linux/cloudfoundry-get-started
+  - name: Nasazení CF OMS Nozzle
+    href: /azure/cloudfoundry/cloudfoundry-oms-nozzle
+  - name: Integrace Cloud Foundry s Azure
+    href: /azure/cloudfoundry/how-cloud-foundry-integrates-with-azure
 - name: Zdroje a prostředky
   items:
-    - name: Plány Azure do budoucna
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: Web Cloud Foundry
-      href: 'https://docs.cloudfoundry.org/'
-    - name: Instalace CF v Azure
-      href: 'https://docs.pivotal.io/pivotalcf/1-11/customizing/pcf_azure.html'
-    - name: Pivotal a Azure
-      href: 'https://pivotal.io/partners/microsoft'
-    - name: Plug-in VSTS pro CF
-      href: 'https://github.com/Microsoft/vsts-cloudfoundry'
+  - name: Plány Azure do budoucna
+    href: https://azure.microsoft.com/roadmap/
+  - name: Web Cloud Foundry
+    href: https://docs.cloudfoundry.org/
+  - name: Instalace CF v Azure
+    href: https://docs.pivotal.io/pivotalcf/1-11/customizing/pcf_azure.html
+  - name: Pivotal a Azure
+    href: https://pivotal.io/partners/microsoft
+  - name: Modul plug-in Azure DevOps pro CF
+    href: https://github.com/Microsoft/vsts-cloudfoundry
+ms.openlocfilehash: ee63fd4e7387777a042c41a8b457f2d9d0ace8e5
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44294235"

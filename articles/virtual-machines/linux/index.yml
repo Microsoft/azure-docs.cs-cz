@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: c1bb364bfedb24349f2b0bc92f99d482027f709d
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 078da85f8ad4addd23a35b456a49d5a8248fc59b
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43185345"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44294370"
 documentType: LandingData
 title: Linux Virtual Machines
 metadata:
@@ -71,7 +71,7 @@ sections:
     - html: <a href="/azure/virtual-machines/linux/tutorial-monitoring">Monitorování a aktualizace virtuálních počítačů</a>
     - html: <a href="/azure/virtual-machines/linux/tutorial-azure-security">Správa zabezpečení na virtuálních počítačích</a>
     - html: <a href="/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd">Vytvoření infrastruktury CI/CD pomocí Jenkins, Dockeru a GitHubu</a>
-    - html: <a href="/azure/virtual-machines/linux/tutorial-build-deploy-jenkins">CI/CD s Team Services</a>
+    - html: <a href="/azure/virtual-machines/linux/tutorial-build-deploy-jenkins">Průběžná integrace a doručování s využitím Azure Pipelines</a>
     - html: Vytvoření zásobníku webového serveru pomocí <a href="/azure/virtual-machines/linux/tutorial-lamp-stack">LAMP</a>, <a href="/azure/virtual-machines/linux/tutorial-lemp-stack">LEMP</a> nebo <a href="/azure/virtual-machines/linux/tutorial-mean-stack">MEAN</a>
     - html: <a href="/azure/virtual-machines/linux/tutorial-secure-web-server">Zabezpečení webového serveru pomocí SSL</a>
 - title: Bezplatné školicí video od Pluralsightu

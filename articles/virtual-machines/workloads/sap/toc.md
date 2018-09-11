@@ -25,7 +25,9 @@
 ### [Ověření konfigurace](hana-installation.md)
 ### [Ukázková instalace HANA](hana-example-installation.md)
 ## [Vysoká dostupnost a zotavení po havárii](hana-overview-high-availability-disaster-recovery.md)
-## [Řešení potíží a monitorování](troubleshooting-monitoring.md)
+## Řešení potíží a monitorování
+### [Sledování HLI](troubleshooting-monitoring.md)
+### [Sledování a řešení potíží na straně HANA](hana-monitor-troubleshoot.md)
 ## Postup
 ### [Nastavení vysoké dostupnosti s využitím techniky STONITH](ha-setup-with-stonith.md)
 ### [Zálohování operačního systému pro SKU typu II](os-backup-type-ii-skus.md)
