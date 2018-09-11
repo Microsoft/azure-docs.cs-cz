@@ -1,24 +1,18 @@
 ---
 title: Azure Disk Encryption pro virtuální počítače IaaS – přehled | Dokumentace Microsoftu
 description: Tento článek obsahuje přehled služby Microsoft Azure Disk Encryption pro virtuální počítače IaaS.
-services: security
-documentationcenter: na
 author: mestew
-manager: MBaldwin
-ms.assetid: 30324adb-e24c-433a-9214-2d1465cbdf45
 ms.service: security
-ms.devlang: na
+ms.subservice: Azure Disk Encryption
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 08/24/2018
 ms.author: mstewart
-ms.openlocfilehash: 88500be4bae83049e8a7060719f4f85e7622c645
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.date: 09/10/2018
+ms.openlocfilehash: ea72e4ac778e52d4f6e4f5597d38a1de59ba43fc
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42886987"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44348935"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms"></a>Azure Disk Encryption pro virtuální počítače IaaS 
 Microsoft Azure platí závazek k zajištění ochrany osobních údajů, suverenita dat a umožňuje řízení hostované v Azure celou řadu technologie šifrování, řídit a spravovat šifrovací klíče dat a dat přístup k řízení a auditu. Tento ovládací prvek poskytuje zákazníkům Azure vybrat řešení, které nejlíp vyhovují jejich potřebám firmy. Tento článek vás seznámí s technologických řešeních "Disk Encryption pro Windows a Linux virtuálních počítačů Azure IaaS", k ochraně a chránit vaše data ke splnění požadavků vaší organizace na zabezpečení a závazky dodržování předpisů. 
@@ -175,4 +169,4 @@ Vysvětlení některých běžných termínů používaných v této technologie
 
 ## <a name="next-steps"></a>Další postup
 > [!div class="nextstepaction"]
-> [Požadované součásti služby Azure Disk Encryption](azure-security-disk-encryption-prerequisites.md)
+> [Požadavky na službu Azure Disk Encryption](azure-security-disk-encryption-prerequisites.md)
