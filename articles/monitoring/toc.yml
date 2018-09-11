@@ -1,116 +1,123 @@
+items:
 - name: Dokumentace k monitorování Azure
   href: index.md
 - name: Přehled
   items:
-    - name: Monitorování v Azure
-      href: monitoring-overview.md
+  - name: Monitorování v Azure
+    href: monitoring-overview.md
 - name: Sdílené služby
   items:
-    - name: Zobrazení výstrah
-      items:
-        - name: Upozornění Azure
-          href: ../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md?toc=%2fazure%2fmonitoring%2ftoc.json
-        - name: Skupiny akcí
-          href: ../monitoring-and-diagnostics/monitoring-action-groups.md?toc=%2fazure%2fmonitoring%2ftoc.json
-        - name: Import upozornění Operations Manageru
-          href: ../log-analytics/log-analytics-solution-alert-management.md?toc=%2fazure%2fmonitoring%2ftoc.json
+  - name: Zobrazení výstrah
+    items:
+    - name: Upozornění Azure
+      href: ../monitoring-and-diagnostics/monitoring-overview-unified-alerts.md?toc=%2fazure%2fmonitoring%2ftoc.json
+    - name: Skupiny akcí
+      href: ../monitoring-and-diagnostics/monitoring-action-groups.md?toc=%2fazure%2fmonitoring%2ftoc.json
+    - name: Import upozornění Operations Manageru
+      href: ../log-analytics/log-analytics-solution-alert-management.md?toc=%2fazure%2fmonitoring%2ftoc.json
+  - name: Automatické škálování
+    items:
     - name: Automatické škálování
-      items:
-        - name: Automatické škálování
-          href: ../monitoring-and-diagnostics/monitoring-overview-autoscale.md?toc=%2fazure%2fmonitoring%2ftoc.json
+      href: ../monitoring-and-diagnostics/monitoring-overview-autoscale.md?toc=%2fazure%2fmonitoring%2ftoc.json
+  - name: Metriky
+    items:
     - name: Metriky
-      items:
-        - name: Metriky
-          href: ../monitoring-and-diagnostics/monitoring-overview-metrics.md?toc=%2fazure%2fmonitoring%2ftoc.json
-    - name: Logs
-      items:
-        - name: Protokoly aktivit
-          href: ../monitoring-and-diagnostics/monitoring-overview-activity-logs.md?toc=%2fazure%2fmonitoring%2ftoc.json
-        - name: Diagnostické protokoly
-          href: ../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md?toc=%2fazure%2fmonitoring%2ftoc.json
-        - name: Shromažďování protokolů napříč předplatnými Azure
-          href: ../log-analytics/log-analytics-activity-logs-subscriptions.md?toc=%2fazure%2fmonitoring%2ftoc.json
+      href: ../monitoring-and-diagnostics/monitoring-overview-metrics.md?toc=%2fazure%2fmonitoring%2ftoc.json
+  - name: Logs
+    items:
+    - name: Protokoly aktivit
+      href: ../monitoring-and-diagnostics/monitoring-overview-activity-logs.md?toc=%2fazure%2fmonitoring%2ftoc.json
+    - name: Diagnostické protokoly
+      href: ../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md?toc=%2fazure%2fmonitoring%2ftoc.json
+    - name: Shromažďování protokolů napříč předplatnými Azure
+      href: ../log-analytics/log-analytics-activity-logs-subscriptions.md?toc=%2fazure%2fmonitoring%2ftoc.json
 - name: Data monitorování
   items:
-    - name: Datové typy a analytické nástroje
-      href: monitoring-data-collection.md
-    - name: Zdroje dat monitorování Azure
-      href: monitoring-data-sources.md
+  - name: Datové typy a analytické nástroje
+    href: monitoring-data-collection.md
+  - name: Zdroje dat monitorování Azure
+    href: monitoring-data-sources.md
 - name: Sledování prostředků
   items:
-    - name: Aplikace
+  - name: Aplikace
+    items:
+    - name: Application Insights
+      href: ../application-insights/app-insights-overview.md?toc=%2fazure%2fmonitoring%2ftoc.json
+    - name: Application Insights Connector
+      href: ../log-analytics/log-analytics-app-insights-connector.md?toc=%2fazure%2fmonitoring%2ftoc.json
+    - name: Key Vault Analytics
+      href: ../log-analytics/log-analytics-azure-key-vault.md?toc=%2fazure%2fmonitoring%2ftoc.json
+    - name: Service Fabric Analytics
+      href: ../service-fabric/service-fabric-diagnostics-oms-setup.md?toc=%2fazure%2fmonitoring%2ftoc.json
+    - name: Azure Web Apps Analytics
+      href: ../log-analytics/log-analytics-azure-web-apps-analytics.md?toc=%2fazure%2fmonitoring%2ftoc.json
+  - name: Containers
+    items:
+    - name: Přehled monitorování kontejnerů
+      href: monitoring-container-overview.md
+    - name: AKS Container Health
+      href: monitoring-container-health.md
+    - name: Monitorování Dockeru a kontejnerů s Windows
+      href: ../log-analytics/log-analytics-containers.md?toc=%2fazure%2fmonitoring%2ftoc.json
+    - name: Monitorování aplikací Dockeru
+      href: ../application-insights/app-insights-docker.md?toc=%2fazure%2fmonitoring%2ftoc.json
+  - name: Databáze
+    items:
+    - name: Azure SQL
+      href: ../log-analytics/log-analytics-azure-sql.md?toc=%2fazure%2fmonitoring%2ftoc.json
+  - name: Virtuální počítače
+    items:
+    - name: Stav agenta
+      href: ../monitoring/monitoring-solution-agenthealth.md?toc=%2fazure%2fmonitoring%2ftoc.json
+    - name: Analýzy VMWare
+      href: ../log-analytics/log-analytics-vmware.md?toc=%2fazure%2fmonitoring%2ftoc.json
+    - name: Mapa služeb
       items:
-        - name: Application Insights
-          href: ../application-insights/app-insights-overview.md?toc=%2fazure%2fmonitoring%2ftoc.json
-        - name: Application Insights Connector
-          href: ../log-analytics/log-analytics-app-insights-connector.md?toc=%2fazure%2fmonitoring%2ftoc.json
-        - name: Key Vault Analytics
-          href: ../log-analytics/log-analytics-azure-key-vault.md?toc=%2fazure%2fmonitoring%2ftoc.json
-        - name: Service Fabric Analytics
-          href: ../log-analytics/log-analytics-service-fabric.md?toc=%2fazure%2fmonitoring%2ftoc.json
-        - name: Azure Web Apps Analytics
-          href: ../log-analytics/log-analytics-azure-web-apps-analytics.md?toc=%2fazure%2fmonitoring%2ftoc.json
-    - name: Containers
+      - name: Použití
+        href: monitoring-service-map.md
+      - name: Konfigurace
+        href: monitoring-service-map-configure.md
+      - name: Integrace s Operations Managerem
+        href: monitoring-service-map-scom.md
+  - name: Další prostředky
+    items:
+    - name: Hodnocení stavu služby AD
+      href: ../log-analytics/log-analytics-ad-assessment.md?toc=%2fazure%2fmonitoring%2ftoc.json
+    - name: Stav replikace AD
+      href: ../log-analytics/log-analytics-ad-replication-status.md?toc=%2fazure%2fmonitoring%2ftoc.json
+    - name: Office 365
+      href: ../monitoring/monitoring-solution-office-365.md
+    - name: Surface Hub
+      href: ../log-analytics/log-analytics-surface-hubs.md?toc=%2fazure%2fmonitoring%2ftoc.json
+  - name: Řešení pro správu
+    items:
+    - name: Použití
       items:
-        - name: Přehled monitorování kontejnerů
-          href: monitoring-container-overview.md
-        - name: AKS Container Health
-          href: monitoring-container-health.md
-        - name: Monitorování Dockeru a kontejnerů s Windows
-          href: ../log-analytics/log-analytics-containers.md?toc=%2fazure%2fmonitoring%2ftoc.json
-        - name: Monitorování aplikací Dockeru
-          href: ../application-insights/app-insights-docker.md?toc=%2fazure%2fmonitoring%2ftoc.json
-    - name: Databáze
+      - name: Instalace a použití řešení
+        href: monitoring-solutions.md
+      - name: Inventář řešení
+        href: monitoring-solutions-inventory.md
+      - name: Cílová řešení
+        href: monitoring-solution-targeting.md
+    - name: Vytvořit
       items:
-        - name: Azure SQL
-          href: ../log-analytics/log-analytics-azure-sql.md?toc=%2fazure%2fmonitoring%2ftoc.json
-    - name: Virtuální počítače
-      items:
-        - name: Stav agenta
-          href: ../monitoring/monitoring-solution-agenthealth.md?toc=%2fazure%2fmonitoring%2ftoc.json
-        - name: Analýzy VMWare
-          href: ../log-analytics/log-analytics-vmware.md?toc=%2fazure%2fmonitoring%2ftoc.json
-        - name: Mapa služeb
-          items:
-            - name: Použití
-              href: monitoring-service-map.md
-            - name: Konfigurace
-              href: monitoring-service-map-configure.md
-            - name: Integrace s Operations Managerem
-              href: monitoring-service-map-scom.md
-    - name: Další prostředky
-      items:
-        - name: Hodnocení stavu služby AD
-          href: ../log-analytics/log-analytics-ad-assessment.md?toc=%2fazure%2fmonitoring%2ftoc.json
-        - name: Stav replikace AD
-          href: ../log-analytics/log-analytics-ad-replication-status.md?toc=%2fazure%2fmonitoring%2ftoc.json
-        - name: Office 365
-          href: ../monitoring/monitoring-solution-office-365.md
-        - name: Surface Hub
-          href: ../log-analytics/log-analytics-surface-hubs.md?toc=%2fazure%2fmonitoring%2ftoc.json
-    - name: Řešení pro správu
-      items:
-        - name: Použití
-          items:
-            - name: Instalace a použití řešení
-              href: monitoring-solutions.md
-            - name: Inventář řešení
-              href: monitoring-solutions-inventory.md
-            - name: Cílová řešení
-              href: monitoring-solution-targeting.md
-        - name: Vytvořit
-          items:
-            - name: Návrh a sestavení
-              href: monitoring-solutions-creating.md
-            - name: Soubor řešení
-              href: monitoring-solutions-solution-file.md
-            - name: Prostředky služby Automation
-              href: monitoring-solutions-resources-automation.md
-            - name: Prohledávání protokolů a upozornění
-              href: monitoring-solutions-resources-searches-alerts.md
-            - name: Zobrazení
-              href: monitoring-solutions-resources-views.md
-            - name: Osvědčené postupy
-              href: monitoring-solutions-best-practices.md
-            - name: Shromažďování dat monitorování z runbooku
-              href: monitoring-runbook-datacollect.md
+      - name: Návrh a sestavení
+        href: monitoring-solutions-creating.md
+      - name: Soubor řešení
+        href: monitoring-solutions-solution-file.md
+      - name: Prostředky služby Automation
+        href: monitoring-solutions-resources-automation.md
+      - name: Prohledávání protokolů a upozornění
+        href: monitoring-solutions-resources-searches-alerts.md
+      - name: Zobrazení
+        href: monitoring-solutions-resources-views.md
+      - name: Osvědčené postupy
+        href: monitoring-solutions-best-practices.md
+      - name: Shromažďování dat monitorování z runbooku
+        href: monitoring-runbook-datacollect.md
+ms.openlocfilehash: 190062c30d87628e9aba42c616815313c45b8623
+ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44324695"

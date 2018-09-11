@@ -1,5 +1,5 @@
 # Azure Dev Spaces
-## [Přehled](azure-dev-spaces.md)
+## [Přehled](index.yml)
 
 ## Šablony Rychlý start
 ### [Java (VS Code a CLI)](quickstart-java.md)
