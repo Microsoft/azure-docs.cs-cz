@@ -9,14 +9,14 @@ ms.service: sql-database
 ms.subservice: managed-instance
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 08/30/2018
+ms.date: 09/11/2018
 ms.author: bonova
-ms.openlocfilehash: 5caafdfbaca1a701d2728afdfcb31e8e73b4fded
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 7a2b98f0a78c82b65d7d29181a048ab59f237107
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44050302"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391925"
 ---
 # <a name="what-is-a-managed-instance-preview"></a>Co je Managed Instance (preview)?
 
@@ -200,7 +200,7 @@ Spravovaná Instance cíle uživatelských scénářů s migrací velkokapacitn�
 ### <a name="backup-and-restore"></a>Zálohování a obnovení  
 
 Postup migrace využívá zálohování SQL na úložiště objektů blob v Azure. Zálohy uložené v Azure storage blob je možné obnovit přímo do Managed Instance pomocí [příkaz T-SQL RESTORE](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql?view=azuresqldb-mi-current). 
-  - Kurz ukazuje, jak obnovit Wide World Importers – Standard záložního souboru, najdete v tématu [obnovení zálohy do spravované Instance](sql-database-managed-instance-get-started-restore.md). Tento kurz ukazuje, jak nahrát soubor zálohy úložištěm objektů BLOB Azure a zabezpečené ho pomocí sdíleného přístupového podpisu (SAS) klíče.
+  - Rychlý start ukazuje, jak obnovit Wide World Importers – Standard záložního souboru, naleznete v tématu [obnovení zálohy do spravované Instance](sql-database-managed-instance-get-started-restore.md). Tento rychlý start ukazuje, jak nahrát soubor zálohy úložištěm objektů BLOB Azure a zabezpečené ho pomocí sdíleného přístupového podpisu (SAS) klíče.
   - Informace o obnovení z adresy URL, najdete v části [nativní obnovit z adresy URL](sql-database-managed-instance-migrate.md#native-restore-from-url).
   
 ### <a name="data-migration-service"></a>Data Migration Service
@@ -251,6 +251,6 @@ V následující tabulce jsou uvedeny několik vlastností, které jsou přístu
 - Zjistěte, jak vytvořit první Managed Instance, najdete v článku [příručky rychlý start](sql-database-managed-instance-get-started.md).
 - Pro funkce a seznam porovnání, naleznete v tématu [běžné funkce SQL](sql-database-features.md).
 - Další informace o konfiguraci virtuální sítě najdete v tématu [Konfigurace virtuální sítě pro Managed Instance](sql-database-managed-instance-vnet-configuration.md).
-- Kurz, který vytváří Managed Instance a obnoví databázi ze zálohy, najdete v tématu [vytvoříte Managed Instance](sql-database-managed-instance-get-started.md).
+- Rychlý start, která vytváří Managed Instance a obnoví databázi ze zálohy, naleznete v tématu [vytvoříte Managed Instance](sql-database-managed-instance-get-started.md).
 - Kurz migrace pomocí Azure Database Migration Service (DMS) najdete v tématu věnovaném [migraci Managed Instance pomocí DMS](../dms/tutorial-sql-server-to-managed-instance.md).
 - Informace o cenách najdete v tématu [ceny SQL Database Managed Instance](https://azure.microsoft.com/pricing/details/sql-database/managed/).
