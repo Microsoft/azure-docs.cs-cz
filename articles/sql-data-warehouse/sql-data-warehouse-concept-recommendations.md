@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 07/27/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 48d64873f0a8c3754ac5c3ecda2294c0f337b9d5
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 57bce631a570f549d46a9b0beefcb5adce4decfc
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094600"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44380110"
 ---
 # <a name="sql-data-warehouse-recommendations"></a>Doporučení pro SQL Data Warehouse
 
@@ -37,6 +37,6 @@ Nerovnoměrná distribuce dat může způsobit další data pohybu nebo prostře
 
 Budete mít statistiky neoptimální může vážně ovlivnit výkon dotazů, protože to může způsobit optimalizátoru dotazů SQL Data Warehouse ke generování plány neoptimální dotazů. Následující dokumentace popisuje osvědčené postupy týkající se vytváření a aktualizaci statistiky:
 
-- [Vytváření a aktualizaci statistik tabulek](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistic)
+- [Vytváření a aktualizaci statistik tabulek](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics)
 
 Pokud chcete zobrazit seznam ovlivněných tabulek pomocí těchto doporučení, spusťte následující příkaz [skriptu T-SQL](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/samples/sqlops/MonitoringScripts/ImpactedTables). Advisor nepřetržitě spouští stejný skript T-SQL ke generování těchto doporučení.

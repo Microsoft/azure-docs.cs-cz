@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
 ms.author: yashar
-ms.openlocfilehash: 82b23f46acc94fefccc871583657200b90a33f05
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 9ca31a09cd14a8b05e6f98d05f552e202ca4a9fd
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43303558"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391857"
 ---
 # <a name="what-are-azure-reservations"></a>Co jsou rezervace Azure?
 
@@ -69,6 +69,14 @@ Abyste lépe pochopili, jak ovlivňuje rezervace fakturace, najdete v následuj�
 ## <a name="what-happens-when-the-reservation-term-expires"></a>Co se stane, když vyprší platnost období rezervace?
 
 Na konci období rezervace fakturace slevy vyprší a virtuální počítač, databáze SQL nebo jiný prostředek se účtuje ve výši platby jako můžete přejít cena. Azure rezervace není automatického obnovení. Pokračovat v uplatňování slevy fakturace, musíte koupit novou rezervaci pro opravňující služby a softwaru.
+
+## <a name="discount-applies-to-different-sizes-with-instance-size-flexibility"></a>Sleva za vztahuje na různých velikostí s flexibilitou velikost instance
+
+Při nákupu rezervace sleva provést u ostatních instancí s atributy, které jsou ve stejné skupině velikostí. Flexibilita pokrytí slevy závisí na typu rezervace a atributy, které můžete vybrat při nákupu rezervace.
+
+- Rezervované instance virtuálních počítačů: Při nákupu rezervace, pokud vyberete **optimalizovaná pro**: **instance velikost flexibilitu**, pokrytí slevy závisí na velikosti virtuálního počítače, vyberete. Rezervaci můžete použít velikosti virtuálních počítačů (VM) ve stejné skupině velikost series. Další informace najdete v tématu [flexibilitu velikost virtuálního počítače s rezervovanými instancemi virtuálních počítačů](../virtual-machines/windows/reserved-vm-instance-size-flexibility.md).
+- Plán softwaru SUSE Linux Enterprise: pokrytí slevy závisí na virtuální procesory virtuálních počítačů, ve kterém běží SUSE software. Další informace najdete v tématu [pochopit, jak se použije slevu plán softwaru SUSE Linux Enterprise](billing-understand-suse-reservation-charges.md).
+- SQL Database rezervované kapacity: pokrytí slevy závisí na úroveň výkonu můžete vybrat. Další informace najdete v tématu [pochopit, jak se použije sleva za rezervaci Azure](billing-understand-reservation-charges.md).
 
 ## <a name="next-steps"></a>Další postup
 

@@ -5,18 +5,18 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 10/11/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8ba46223f0d0a4db7615bc94fe8a1bbfa18e57f8
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 9ed2614969952eab90dfec572d9b61071981c4bf
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442334"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391619"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-azure-on-premises-data-gateway"></a>Připojení k místním zdrojům dat s využitím Azure na místní bránu dat
-Místní brána dat funguje jako most poskytující zabezpečený přenos dat mezi místním zdrojům dat a vaše servery Azure Analysis Services v cloudu. Kromě práce s více servery služby Azure Analysis Services ve stejné oblasti, nejnovější verzi brány také funguje s Azure Logic Apps, Power BI, Powerapps a Microsoft Flow. Více služeb ve stejné oblasti můžete přidružit jednu bránu. 
+Místní brána dat funguje jako most poskytující zabezpečený přenos dat mezi místním zdrojům dat a vaše servery Azure Analysis Services v cloudu. Kromě práce s více servery služby Azure Analysis Services ve stejné oblasti, nejnovější verzi brány také funguje s Azure Logic Apps, Power BI, Powerapps a Microsoft Flow. Více služeb ve stejném předplatném a stejné oblasti můžete přidružit jednu bránu. 
 
 Získání první nastavení brány je složené ze čtyř částí procesu:
 
@@ -26,7 +26,7 @@ Získání první nastavení brány je složené ze čtyř částí procesu:
 
 - **Vytváření prostředku brány v Azure** – v tomto kroku vytvoříte prostředek brány ve vašem předplatném Azure.
 
-- **Připojte své servery k prostředku brány** – Jakmile se prostředek brány v rámci vašeho předplatného, můžete začít k němu připojuje vaše servery. K němu můžete připojit několik serverů a dalších prostředků.
+- **Připojte své servery k prostředku brány** – Jakmile se prostředek brány v rámci vašeho předplatného, můžete začít k němu připojuje vaše servery. Pokud jsou ve stejném předplatném a stejné oblasti se můžete připojit víc serverů a dalších prostředků.
 
 Abyste mohli hned začít, najdete v článku [instalace a konfigurace místní brány dat](analysis-services-gateway-install.md).
 

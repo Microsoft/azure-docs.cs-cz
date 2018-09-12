@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/16/2018
+ms.date: 09/10/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 88ff30ec90427f16ebd82259c17ee8cbb2644be2
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 90d9c22ab1ad06a101c58a85f7b2f7c701772c88
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39071590"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377730"
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Klientské knihovny pro připojení ke službě Azure Analysis Services
 
@@ -34,8 +34,8 @@ Analysis Services Management Objects (AMO) a ADOMD klientské knihovny jsou k di
 
 |Balíček  | Verze produktu  | 
 |---------|---------|
-|[SADA AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    15.3.1     |
-|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   15.3.1     |
+|[SADA AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    15.5.0     |
+|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   15.5.0     |
 
 Sémantické správy verzí podle sestavení balíčků NuGet AssemblyVersion: hlavní. PODVERZE. OPRAVA. Odkazy na NuGet načíst očekávaná verze i v případě, že je k dispozici různé verze v mezipaměti GAC (vyplývající z instalace MSI). Oprava se zvýší, pro každou vydanou verzí. Synchronizace jsou zachovány AMO a ADOMD verze.
 

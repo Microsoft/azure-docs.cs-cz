@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: 196882cf4515be8afd129128402e9eaee322cb4b
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 1bb6e464b748f2558cec35a95554bb3e08b667f0
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093579"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378325"
 ---
 # <a name="virtual-machine-serial-console-preview"></a>Virtuální počítač sériová konzola (preview) 
 
@@ -98,7 +98,10 @@ Konzole sériového portu je možné odeslat NMI na virtuálním počítači Azu
 Informace o konfiguraci Windows vytvořit výpis stavu systému, když dostane NMI najdete v tématu: [jak vygenerovat soubor s výpisem paměti kompletní selhání nebo soubor s výpisem paměti jádra s použitím NMI v systému Windows](https://support.microsoft.com/en-us/help/927069/how-to-generate-a-complete-crash-dump-file-or-a-kernel-crash-dump-file)
 
 ## <a name="disable-serial-console"></a>Zakázat konzoly sériového portu
-Všechna předplatná mají ve výchozím přístupem ke konzole sériového portu pro všechny virtuální počítače. Konzola sériového portu na úrovni předplatného nebo na úrovni virtuálního počítače můžete kdykoli deaktivovat.
+Všechna předplatná mají ve výchozím přístupem ke konzole sériového portu pro všechny virtuální počítače. Konzola sériového portu na úrovni předplatného nebo na úrovni virtuálního počítače můžete kdykoli deaktivovat. 
+
+> [!Note] 
+> Pokud chcete povolit nebo zakázat konzoly sériového portu k předplatnému, musíte mít oprávnění k zápisu do předplatného. To zahrnuje, ale není omezena pouze na role správce nebo vlastníka. Vlastní role může mít také oprávnění k zápisu.
 
 ### <a name="subscription-level-disable"></a>Zakázat úroveň předplatného
 Konzola sériového portu se dají zakázat pro celé předplatné podle prostřednictvím [volání rozhraní API REST zakázat konzoly](https://aka.ms/disableserialconsoleapi). "Vyzkoušet" funkce k dispozici na stránce dokumentace k rozhraní API můžete samozřejmě využít zakázání a povolení konzoly sériového portu pro odběr. Zadejte vaše `subscriptionId`, "Výchozí" v `default` pole a klikněte na tlačítko spustit. Příkazy Azure CLI ještě nejsou k dispozici a budou doručeny později. [Zkuste volání rozhraní REST API zde](https://aka.ms/disableserialconsoleapi).
@@ -190,7 +193,6 @@ Jak jsme jsou stále ve verzi preview fázích pro přístup ke konzole sériov�
 
 Problém                             |   Omezení rizik 
 :---------------------------------|:--------------------------------------------|
-Neexistuje žádná možnost pomocí virtuálního počítače škálovací sady instance sériové konzoly | V období preview se nepodporuje přístup ke konzole sériového portu pro instance škálovací sady virtuálních počítačů.
 Dosažení zadejte po banner připojení není uveden do protokolu v řádku | Podrobnosti najdete na této stránce: [Hitting zadejte nemá žádný účinek,](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md). To může dojít, pokud používáte vlastní virtuální počítač, Posílená zařízení nebo kontrole konfigurace této causers Windows nepodaří správně připojit do sériového portu.
 Pouze informace o stavu se zobrazuje při připojení k virtuálnímu počítači s Windows| Tím se zobrazí-li Speciální konzoly pro správu nebyl povolen pro vaši image Windows. Zobrazit [přístup sériové konzoly pro Windows](#access-serial-console-for-windows) pokyny o tom, jak ručně povolit SAC na vašem virtuálním počítači Windows. Další podrobnosti najdete v [signálů stavu Windows](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Windows_Health_Info.md).
 Nelze zadat v SAC řádku, pokud je povoleno ladění jádra | Připojení RDP k virtuálnímu počítači a spusťte `bcdedit /debug {current} off` z příkazového řádku se zvýšenými oprávněními. Pokud nelze pomocí protokolu RDP můžete místo toho připojit disk s operačním systémem k jinému virtuálnímu počítači Azure a upravit ho během připojený jako datový disk pomocí `bcdedit /store <drive letter of data disk>:\boot\bcd /debug <identifier> off`, pak Prohodit zpět na disku.
@@ -203,9 +205,25 @@ Při přístupu k tomuto virtuálnímu počítači účet úložiště diagnosti
 
 A. Poskytnout zpětnou vazbu jako problém tak, že přejdete do https://aka.ms/serialconsolefeedback. Můžete také menší (upřednostňované) pošlete zpětnou vazbu prostřednictvím azserialhelp@microsoft.com nebo v kategorii virtuálního počítače http://feedback.azure.com
 
-**Q. Nejde mi pro přístup ke konzole sériového portu, kde můžete soubor případ podpory?**
+**Q. Podporuje konzoly sériového portu, kopírování a vkládání?**
 
-A. Tato funkce ve verzi preview se vztahuje prostřednictvím podmínky verze Preview služby Azure. Podpora pro tuto potíže nejlépe vyřeší prostřednictvím kanálů uvedených výše. 
+A. Ano, co dělá. Zkopírujte a vložte do terminálu pomocí kombinace kláves Ctrl + Shift + C a Ctrl + Shift + V.
+
+**Q. Kdo může povolit nebo zakázat konzoly sériového portu pro Moje předplatné?**
+
+A. Pokud chcete povolit nebo zakázat konzoly sériového portu na úrovni celé předplatné, musí mít oprávnění k zápisu do předplatného. Role, které mají oprávnění k zápisu patří, ale nejsou omezeny rolí správce nebo vlastníka. Vlastní role může mít také oprávnění k zápisu.
+
+**Q. Kdo má přístup k konzoly sériového portu pro virtuální počítač?**
+
+A. Musíte mít přístup úrovně Přispěvatel nebo vyšší do virtuálního počítače pro přístup ke konzole sériového portu Virtuálního počítače. 
+
+**Q. Moje konzoly sériového portu se nezobrazuje nic, co mám dělat?**
+
+A. Vaše image je pravděpodobně nesprávně nakonfigurované pro přístup ke konzole sériového portu. Zobrazit [povolit konzoly sériového portu v obrázcích vlastní nebo starší](#Enable-Serial-Console-in-custom-or-older-images) podrobné informace o konfiguraci bitové kopie umožňují konzoly sériového portu.
+
+**Q. Je k dispozici konzoly sériového portu pro Virtual Machine Scale Sets?**
+
+A. V současné době se nepodporuje přístup ke konzole sériového portu pro instance škálovací sady virtuálních počítačů.
 
 ## <a name="next-steps"></a>Další postup
 * Podrobné pokyny k příkazy CMD a prostředí PowerShell můžete použít v Windows SAC, klikněte na tlačítko [tady](serial-console-cmd-ps-commands.md).

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 08/08/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: e4b6d115aebfd96d127e0d72c0c99188bedd93e6
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: cade124cefbd4e2e63ab4cb6fa4f22b3bd672ad0
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44057028"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391806"
 ---
 # <a name="batch-ai-service-quotas-and-limits"></a>Omezení a kvóty služby batch AI
 
@@ -33,22 +33,7 @@ Pokud budete chtít spustit úlohy v produkčním prostředí v Batch AI, budete
 
 ## <a name="resource-quotas"></a>Kvóty prostředků
 
-Batch AI je výchozí limit kvóty na počtu jader a počet clusterů jednu oblast v rámci předplatného.
-
-| **Prostředek** | **Výchozí omezení** | **Maximální limit** |
-| --- | --- | --- |
-| Počet vyhrazených jader na oblast | 10 - 24 | Neuvedeno<sup>1</sup> |
-| Počet jader s nízkou prioritou na oblast | 10 - 24 | NENÍ K DISPOZICI<sup>2</sup> |
-| Clustery na oblast | 20 | 200<sup>3</sup> |
-
-> [!NOTE]
-> Výchozí omezení se liší v závislosti na typu vašeho předplatného, které máte.
-
-<sup>1</sup> počet vyhrazených jader na předplatné služby Batch AI je možné zvýšit, ale maximální počet není uvedený. Požádejte podporu Azure o zvýšení možnosti.
-
-<sup>2</sup> je možné zvýšit počet jader s nízkou prioritou na předplatné služby Batch AI, ale maximální počet není uvedený. Požádejte podporu Azure o zvýšení možnosti.
-
-<sup>3</sup> podpory Azure kontaktu, pokud chcete požádat o zvýšení nad tento limit.
+[!INCLUDE [azure-batch-ai-limits](../../includes/azure-batch-ai-limits.md)]
 
 ## <a name="other-limits"></a>Další omezení
 

@@ -1,6 +1,6 @@
 ---
-title: Zálohování a data obnovení pro zásobník Azure pomocí služby Backup infrastruktury | Microsoft Docs
-description: Můžete zálohovat a obnovit konfiguraci a data služby pomocí infrastruktury služby zálohování.
+title: Zálohování a obnovení dat pro Azure Stack pomocí infrastruktury služby Backup | Dokumentace Microsoftu
+description: Zálohovat a obnovit konfiguraci a data service pomocí služby zálohování infrastruktury.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -12,53 +12,53 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 4/20/2017
+ms.date: 9/10/2018
 ms.author: mabrigg
 ms.reviewer: hectorl
-ms.openlocfilehash: 12138ac5a173f66d8b6b0041de9f31f4ac326485
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 9f2668ff84ade4ba99b7aa7dcd67feafadc1c6c4
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34822951"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377832"
 ---
-# <a name="backup-and-data-recovery-for-azure-stack-with-the-infrastructure-backup-service"></a>Zálohování a data obnovení pro zásobník Azure pomocí služby Backup infrastruktury
+# <a name="backup-and-data-recovery-for-azure-stack-with-the-infrastructure-backup-service"></a>Zálohování a obnovení dat pro Azure Stack pomocí infrastruktury služby Backup
 
-*Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
+*Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
-Můžete zálohovat a obnovit konfiguraci a data služby pomocí infrastruktury služby zálohování. Instalace jednotlivých zásobník Azure obsahuje instance služby. Zálohy vytvořené pomocí služby pro opakované nasazení cloudu zásobník Azure můžete použít k obnovení identitu, zabezpečení a správce prostředků Azure data.
+Zálohovat a obnovit konfiguraci a data service pomocí služby zálohování infrastruktury. Každá instalace služby Azure Stack obsahuje instanci služby. Zálohy vytvořené ve službě pro opětovné nasazení Azure Stack cloud můžete použít k obnovení identit, zabezpečení a data Azure Resource Manageru.
 
-Až budete připraveni k uvedení do produkčního prostředí svém cloudu můžete povolit zálohování. Nepovolujte zálohování, pokud máte v plánu provést testování a ověření na dlouhou dobu.
+Zálohování můžete povolit, pokud budete chtít umístit své cloudové do produkčního prostředí. Nepovolujte zálohování, pokud máte v plánu provést testování a ověřování pro dlouhou dobu.
 
-Před povolením služby zálohování, zajistěte, aby byla [požadavky na místě](#verify-requirements-for-the-infrastructure-backup-service).
+Před povolením služby backup, ujistěte se, že máte [požadavky splněné](#verify-requirements-for-the-infrastructure-backup-service).
 
 > [!Note]  
-> Služba zálohování infrastruktury nezahrnuje aplikací a dat uživatele. Najdete v následujících článcích pokyny o zálohování a obnovení [App Services](https://aka.ms/azure-stack-app-service), [SQL](https://aka.ms/azure-stack-ms-sql), a [MySQL](https://aka.ms/azure-stack-mysql) zprostředkovatelé prostředků a dat uživatele...
+> Služba Backup infrastruktury nezahrnuje aplikací a dat uživatele. Naleznete v následujících článcích pokyny o zálohování a obnovení [App Services](https://aka.ms/azure-stack-app-service), [SQL](https://aka.ms/azure-stack-ms-sql), a [MySQL](https://aka.ms/azure-stack-mysql) poskytovatelů prostředků a data přidruženého uživatele...
 
-## <a name="the-infrastructure-backup-service"></a>Služby infrastruktura zálohování
+## <a name="the-infrastructure-backup-service"></a>Zálohovací služby infrastruktury
 
-Služba obsahuje následující funkce.
+Služby obsahují následující funkce.
 
 | Funkce                                            | Popis                                                                                                                                                |
 |----------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Služby infrastruktury zálohování                     | Koordinaci zálohování napříč podmnožinu služby infrastruktury v zásobníku Azure. Pokud dojde k havárii, lze data obnovit jako součást nového nasazení. |
-| Komprese a šifrování exportovaný zálohování dat | Zálohovaná data komprimovaná a šifrovaná systém předtím, než se exportují do externího úložiště umístění poskytnutý správcem.                |
-| Úloha zálohování monitorování                              | Systém upozorní, když selže a náprava kroky úlohy zálohování.                                                                                                |
-| Zálohování prostředí                       | Zálohování RP podporuje povolení zálohování.                                                                                                                         |
-| Obnovení cloudu                                     | Při závažné ztrátě dat zálohování můžete použít k obnovení základní informace zásobníku Azure jako součást nasazení.                                 |
+| Služby infrastruktury zálohování                     | Zálohování koordinaci mezi podmnožinou služby infrastruktury ve službě Azure Stack. Pokud dojde k havárii, je možné obnovit data v rámci opětovné nasazení. |
+| Komprese a šifrování dat exportovaných zálohování | Zálohovaná data komprimovaná a šifrovaná systém předtím, než se exportují do umístění úložiště externí program od správce.                |
+| Monitorování úlohy zálohování                              | Systém oznámení při selhání a nápravné kroky úlohy zálohování.                                                                                                |
+| Prostředí správy zálohování                       | Zálohování RP podporuje povolení zálohování.                                                                                                                         |
+| Cloudové zotavení                                     | Pokud dojde ke ztrátě dat, zálohování umožňuje obnovit základní informace o službě Azure Stack jako součást nasazení.                                 |
 
-## <a name="verify-requirements-for-the-infrastructure-backup-service"></a>Ověřte požadavky pro službu zálohování infrastruktury
+## <a name="verify-requirements-for-the-infrastructure-backup-service"></a>Ověřte požadavky pro službu Backup infrastruktury
 
 - **Umístění úložiště**  
-  Budete potřebovat sdílené složky přístupné z Azure zásobníku, která může obsahovat sedm zálohy. Každá záloha je přibližně 10 GB. Do sdílené složky byste měli mít k uložení 140 GB záloh. Další informace o výběru umístění úložiště pro službu Azure zásobníku infrastruktura zálohování najdete v tématu [zálohování řadiče požadavky](azure-stack-backup-reference.md#backup-controller-requirements).
+  Budete potřebovat sdílené složky přístupné z Azure Stack, který může obsahovat sedm zálohy. Každá záloha je přibližně 10 GB. Vaše sdílené složky měli být schopni uložit 140 GB místa zálohy. Další informace o výběru umístění úložiště pro zálohy služby Azure Stack infrastruktury, najdete v části [záložní řadič požadavky](azure-stack-backup-reference.md#backup-controller-requirements).
 - **Přihlašovací údaje**  
-  Budete potřebovat účet uživatele domény a přihlašovací údaje, například můžete použít přihlašovací údaje správce Azure zásobníku.
+  Budete potřebovat účet uživatele domény a přihlašovací údaje, například můžete použít přihlašovací údaje Správce služby Azure Stack.
 - **Šifrovací klíč**  
-  Záložní soubory jsou šifrované pomocí tohoto klíče. Ujistěte se, že tento klíč uložit na bezpečném místě. Jakmile poprvé nastavit tento klíč nebo klíč Otočit v budoucnu, nelze zobrazit, tento klíč z tohoto rozhraní. Další pokyny ke generování předsdílený klíč, postupujte podle skripty v [povolit zálohování pro zásobník Azure pomocí prostředí PowerShell](azure-stack-backup-enable-backup-powershell.md).
+  Záložní soubory jsou šifrované pomocí tohoto klíče. Ujistěte se, že tento klíč uložit na bezpečném místě. Po nastavení tohoto klíče poprvé nebo v budoucnu obměně klíče za nemůže zobrazit tento klíč z tohoto rozhraní. Další pokyny ke generování předsdíleným klíčem, postupujte podle skripty na [povolit zálohování pro Azure Stack s prostředím PowerShell](azure-stack-backup-enable-backup-powershell.md).
 
 ## <a name="next-steps"></a>Další postup
 
-- Zjistěte, jak [povolit zálohování pro zásobník Azure z portálu pro správu](azure-stack-backup-enable-backup-console.md).
-- Zjistěte, jak [povolení zálohování pro Azure zásobníku pomocí prostředí PowerShell](azure-stack-backup-enable-backup-powershell.md).
-- Zjistěte, jak [zálohování Azure zásobníku](azure-stack-backup-back-up-azure-stack.md )
-- Zjistěte, jak [zotavit závažné ztráty dat](azure-stack-backup-recover-data.md)
+- Zjistěte, jak [povolit zálohování pro Azure Stack z portálu pro správu](azure-stack-backup-enable-backup-console.md).
+- Zjistěte, jak [povolit zálohování pro Azure Stack s prostředím PowerShell](azure-stack-backup-enable-backup-powershell.md).
+- Zjistěte, jak [zálohování Azure stacku](azure-stack-backup-back-up-azure-stack.md )
+- Zjistěte, jak [obnovit ze ztráty dat](azure-stack-backup-recover-data.md)

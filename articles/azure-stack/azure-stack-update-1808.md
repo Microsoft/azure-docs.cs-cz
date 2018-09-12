@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/07/2018
+ms.date: 09/11/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: f9973f2099ed5c6dda38c6569f42995b6903ef5e
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 8574eeb54d3695eff5bca43b24e90e45a36b1a70
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44162406"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391653"
 ---
 # <a name="azure-stack-1808-update"></a>Aktualizace služby Azure Stack. 1808
 
@@ -70,6 +70,8 @@ Tato aktualizace zahrnuje následující vylepšení pro službu Azure Stack.
 - <!-- 1697698  | IS, ASDK --> *Kurzy rychlý Start* v na řídicím panelu portálu teď odkaz na související články v online dokumentaci k Azure Stack.
 
 - <!-- 2515955   | IS ,ASDK--> *Všechny služby* nahradí *další služby* na portálech správce a uživatele Azure stacku. Teď můžete použít *všechny služby* jako alternativu k navigaci na portálech Azure Stack stejným způsobem jako v Azure Portal.
+
+- <!-- TBD | IS, ASDK --> **+ Vytvořit prostředek** nahradí **+ nová** na portálech správce a uživatele Azure stacku.  Teď můžete použít *+ vytvořit prostředek* jako alternativu k navigaci na portálech Azure Stack stejným způsobem jako v Azure Portal. 
 
 - <!--  TBD – IS, ASDK --> *Základní A* velikostí virtuálních počítačů byly ukončeny pro [vytvoření škálovací sady virtuálních počítačů](azure-stack-compute-add-scalesets.md) (VMSS) prostřednictvím portálu. Pokud chcete vytvořit VMSS se tato velikost, pomocí Powershellu nebo šablony.  
 

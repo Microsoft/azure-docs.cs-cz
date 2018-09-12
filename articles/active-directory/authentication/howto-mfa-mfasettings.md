@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: da5905af4a861502f190cd873033923d8fd0bfa7
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 890a6b9dd1ef63fcc59984686b2d6dec773cdb52
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/11/2018
-ms.locfileid: "44349088"
+ms.locfileid: "44391840"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurovat nastavení ověřování Azure Multi-Factor Authentication
 
@@ -180,7 +180,7 @@ Bez ohledu na to, zda je povolena funkce důvěryhodné IP adresy je vyžadován
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Na levé straně vyberte **Azure Active Directory** > **podmíněného přístupu** > **pojmenovaná umístění**.
 3. Vyberte **MFA nakonfigurovat důvěryhodné IP adresy**.
-4. Na **nastavení služby** stránce v části **důvěryhodné IP adresy**, zvolte jednu z následujících dvou možností:
+4. Na **nastavení služby** stránce v části **důvěryhodné IP adresy**, zvolte z některého z následujících dvou možností:
    
    * **Pro žádosti od federovaných uživatelů pocházející z mém intranetu**: Chcete-li tuto možnost zvolte, vyberte zaškrtávací políčko. Všechny federovaní uživatelé, kteří přihlašování z podnikové sítě obejít dvoustupňové ověřování s použitím deklarace identity, která je vydala službou AD FS. Zajistěte, aby služba AD FS pravidlo, které přidá deklaraci intranetu na odpovídající provoz. Pokud pravidla buď neexistuje, vytvořte ve službě AD FS následující pravidlo:<br/>
 
@@ -203,7 +203,7 @@ Bez ohledu na to, zda je povolena funkce důvěryhodné IP adresy je vyžadován
 2. Na levé straně vyberte **Azure Active Directory** > **uživatelé**.
 3. Vyberte **ověřování službou Multi-Factor Authentication**.
 4. V části ověřování Multi-Factor Authentication, vyberte **nastavení služby**.
-5. Na **nastavení služby** stránce v části **důvěryhodné IP adresy**, zvolte jednu z následujících dvou možností:
+5. Na **nastavení služby** stránce v části **důvěryhodné IP adresy**, zvolte jednu (nebo obě) následující dvě možnosti:
    
    * **Pro žádosti od federovaných uživatelů v mém intranetu**: Chcete-li tuto možnost zvolte, vyberte zaškrtávací políčko. Všechny federovaní uživatelé, kteří přihlašování z podnikové sítě obejít dvoustupňové ověřování s použitím deklarace identity, která je vydala službou AD FS. Zajistěte, aby služba AD FS pravidlo, které přidá deklaraci intranetu na odpovídající provoz. Pokud pravidla buď neexistuje, vytvořte ve službě AD FS následující pravidlo:<br/>
 

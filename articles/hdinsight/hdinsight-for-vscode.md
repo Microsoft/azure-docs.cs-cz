@@ -1,24 +1,25 @@
 ---
-title: Nástroje HDInsight pro Azure – použití nástroje Visual Studio Code pro Hive, LLAP nebo pySpark
+title: Nástroje pro Azure HDInsight – použít Visual Studio Code pro Hive, LLAP nebo PySpark | Dokumentace Microsoftu
 description: Další informace o použití nástroje Azure HDInsight pro Visual Studio Code k vytvoření a odeslání dotazů a skriptů.
-keywords: VS Code, Azure HDInsight Tools, Hive, Python, PySpark, Spark, HDInsight, Hadoop, LLAP, Interactive Hive, Interactive Query
-services: hdinsight
+Keywords: VS Code,Azure HDInsight Tools,Hive,Python,PySpark,Spark,HDInsight,Hadoop,LLAP,Interactive Hive,Interactive Query
+services: HDInsight
+documentationcenter: ''
 author: jejiang
 ms.author: jejiang
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/27/2017
-ms.openlocfilehash: 58f930b7bb1dee8f8f95b6627ebf70fe095126c0
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 5cf3a18dc01ba5670e73aa93cb6c9aab2d5de660
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697845"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378615"
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Použití Azure HDInsight Tools pro Visual Studio Code
 
-Další informace o použití nástroje Azure HDInsight pro Visual Studio Code (VS Code) pro vytvoření a odesílání dávkových úloh Hive, interaktivních dotazů Hive a skriptů pySpark. Nástroje Azure HDInsight lze nainstalovat na platformách, které jsou podporovány ve VS Code. Patří sem Windows, Linux a macOS. Můžete najít požadované součásti pro různé platformy.
+Další informace o použití nástroje Azure HDInsight pro Visual Studio Code (VS Code) pro vytvoření a odesílání dávkových úloh Hive, interaktivních dotazů Hive a skriptů PySpark. Nástroje Azure HDInsight lze nainstalovat na platformách, které jsou podporovány ve VS Code. Patří sem Windows, Linux a macOS. Můžete najít požadované součásti pro různé platformy.
 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -33,7 +34,7 @@ Jsou vyžadovány k dokončení kroků v tomto článku následující položky:
    
 Po dokončení instalace požadované součásti můžete nainstalovat nástroje Azure HDInsight pro VS Code. 
 
-**Azure HDInsight nainstalovat nástroje**
+### <a name="to-install-azure-hdinsight-tools"></a>Instalace nástrojů pro Azure HDInsight
 
 1. Otevřete Visual Studio Code.
 
@@ -51,7 +52,7 @@ Po dokončení instalace požadované součásti můžete nainstalovat nástroje
 
 Vytvoření pracovního prostoru v nástroji VS Code, předtím, než se můžete připojit k Azure.
 
-**Otevřete pracovní prostor**
+### <a name="to-open-a-workspace"></a>Otevřete pracovní prostor
 
 1. Na **souboru** nabídce vyberte možnost **otevřít složku**. Poté určíte existující složku jako vaše pracovní složky nebo vytvořte novou. Složka se zobrazí v levém podokně.
 
@@ -59,25 +60,28 @@ Vytvoření pracovního prostoru v nástroji VS Code, předtím, než se můžet
 
    ![Nový soubor](./media/hdinsight-for-vscode/new-file.png)
 
-3. Pojmenujte nový soubor s příponou .py (skriptu Spark) nebo .hql (dotazy Hive). Všimněte si, že **XXXX_hdi_settings.json** konfigurační soubor je automaticky přidán do pracovní složky.
-
-4. Otevřít **XXXX_hdi_settings.json** z **EXPLORER**, nebo klikněte pravým tlačítkem na skript editoru vyberte **nastavit konfiguraci**. Můžete nakonfigurovat přihlášení položky, výchozí clusteru a parametrů odeslání úlohy, jak je znázorněno v ukázce v souboru. Můžete také nechat zbývající parametry prázdné.
+3. Pojmenujte nový soubor s příponou .py (skriptu Spark) nebo .hql (dotazy Hive). 
 
 ## <a name="connect-to-hdinsight-cluster"></a>Připojte se ke clusteru HDInsight
 
 Před odesláním skriptů do clusterů HDInsight z VS Code, budete muset připojit ke svému účtu Azure, nebo připojit cluster (pomocí nástroje Ambari uživatelského jména a hesla nebo doméně připojené k účtu).
 
-**Pro připojení k Azure**
+### <a name="to-connect-to-azure"></a>Pro připojení k Azure
 
 1. Pokud ještě nemáte je vytvoření nové pracovní složky a nový soubor skriptu.
 
 2. Pravým tlačítkem myši na editor skriptů a pak v místní nabídce vyberte **HDInsight: přihlášení**. Můžete také zadat **Ctrl + Shift + P**a pak zadejte **HDInsight: přihlášení**.
 
-    ![Přihlaste se nástroje HDInsight pro Visual Studio Code](./media/hdinsight-for-vscode/hdinsight-for-vscode-extension-login.png)
+    ![Nástroje HDInsight pro Visual Studio Code přihlášení](./media/hdinsight-for-vscode/hdinsight-for-vscode-extension-login.png)
 
 3. Pro přihlášení, přihlaste podle pokynů **výstup** podokně.
+    + Pro globální prostředí HDInsight přihlášení aktivují Azure přihlášení v procesu.
 
-    **Azure:** ![HDInsight Tools for Visual Studio Code přihlašovací údaje](./media/hdinsight-for-vscode/hdinsight-for-vscode-extension-Azurelogin-info.png)
+        ![Pokyny pro azure k přihlášení](./media/hdinsight-for-vscode/hdi-azure-hdinsight-azure-signin.png)
+
+    + Pro jiné prostředí postupujte podle pokynů přihlášení.
+
+        ![Pokyny pro jiné prostředí k přihlášení](./media/hdinsight-for-vscode/hdi-azure-hdinsight-hdinsight-signin.png)
 
     Jakmile budete hotovi, název svého účtu Azure se zobrazí ve stavovém řádku v levé dolní části okna nástroje VS Code. 
 
@@ -96,7 +100,7 @@ Před odesláním skriptů do clusterů HDInsight z VS Code, budete muset připo
     - Odeslání dávkových skriptů PySpark
     - Konfigurace sady
 
-<a id="linkcluster"></a>**Propojení clusteru**
+<h3 id="linkcluster">Propojení clusteru</h3>
 
 Můžete propojit normální cluster pomocí Ambari, spravovat uživatelské jméno, také propojit zabezpečení clusteru hadoop s použitím doména uživatelské jméno (například: user1@contoso.com).
 1. Výběrem otevřete paletu příkazů **CTRL + SHIFT + P**a pak zadejte **HDInsight: propojení clusteru**.
@@ -116,12 +120,25 @@ Můžete propojit normální cluster pomocí Ambari, spravovat uživatelské jm�
 
 4. Také můžete zrušit propojení clusteru podle vložení **HDInsight: zrušení propojení clusteru** z palety příkazů.
 
+
+### <a name="to-link-a-generic-livy-endpoint"></a>Chcete-li propojit koncový bod obecného livy
+
+1. Výběrem otevřete paletu příkazů **CTRL + SHIFT + P**a pak zadejte **HDInsight: propojení clusteru**.
+2. Vyberte **koncový bod obecného Livy**.
+3. Zadejte obecné livy koncového bodu, například: http://10.172.41.42:18080.
+4. Vyberte **základní** potřebovat při autorizaci pro obecný livy koncový bod, jinak vyberte **žádný**.
+5. Název vstupu uživatele při vyberte **základní** v step4.
+6. Zadejte heslo, když vyberte **základní** v step4.
+7. Obecný koncový bod livy propojení se úspěšně vytvořilo.
+
+   ![propojené obecnému clusteru livy](./media/hdinsight-for-vscode/link-cluster-process-generic-livy.png)
+
 ## <a name="list-hdinsight-clusters"></a>Výpis clusterů HDInsight
 
 Pokud chcete otestovat připojení, můžete vytvořit seznam clusterů HDInsight:
 
-**Seznam clusterů HDInsight v rámci vašeho předplatného Azure**
-1. Otevřete pracovní prostor a pak se připojte k Azure. Další informace najdete v tématu [pracovní prostor otevřít HDInsight](#open-hdinsight-workspace) a [připojit se k Azure](#connect-to-azure).
+### <a name="to-list-hdinsight-clusters-under-your-azure-subscription"></a>Seznam clusterů HDInsight v rámci vašeho předplatného Azure
+1. Otevřete pracovní prostor a pak se připojte k Azure. Další informace najdete v tématu [pracovní prostor otevřít HDInsight](#open-hdinsight-workspace) a [připojit se k Azure](#connect-to-hdinsight-cluster).
 
 2. Pravým tlačítkem myši na editor skriptů a pak vyberte **HDInsight: Cluster seznamu** v místní nabídce. 
 
@@ -130,39 +147,41 @@ Pokud chcete otestovat připojení, můžete vytvořit seznam clusterů HDInsigh
     ![Nastavit výchozí konfiguraci clusteru](./media/hdinsight-for-vscode/list-cluster-result.png)
 
 ## <a name="set-a-default-cluster"></a>Nastavit výchozí clusteru
-1. Otevřete pracovní prostor a připojení k Azure. Zobrazit [pracovní prostor otevřít HDInsight](#open-hdinsight-workspace) a [připojit se k Azure](#connect-to-azure).
+1. Otevřete pracovní prostor a připojení k Azure. Zobrazit [pracovní prostor otevřít HDInsight](#open-hdinsight-workspace) a [připojit se k Azure](#connect-to-hdinsight-cluster).
 
 2. Pravým tlačítkem myši na editor skriptů a pak vyberte **HDInsight: Cluster nastavit výchozí**. 
 
-3. Vyberte cluster, jako výchozí clusteru pro aktuální soubor skriptu. Automaticky aktualizovat konfigurační soubor nástroje **XXXX_hdi_settings.json**. 
+3. Vyberte cluster, jako výchozí clusteru pro aktuální soubor skriptu. Automaticky aktualizovat konfigurační soubor nástroje **. VSCode\settings.json**. 
 
    ![Výchozí konfigurace clusteru sady](./media/hdinsight-for-vscode/set-default-cluster-configuration.png)
 
-## <a name="set-the-azure-environment"></a>Nastavení prostředí Azure 
+## <a name="set-the-azure-environment"></a>Nastavení prostředí Azure
 1. Výběrem otevřete paletu příkazů **CTRL + SHIFT + P**.
 
 2. Zadejte **HDInsight: nastavení prostředí Azure**.
 
 3. Vyberte jeden ze způsobů z Azure a AzureChina jako váš výchozí položku pro přihlášení.
 
-4. Mezitím nástroj již uchránila váš výchozí přihlašovací jméno položku v **XXXX_hdi_settings.json**. Můžete také přímo aktualizovat ho v tomto konfiguračním souboru. 
+4. Mezitím nástroj již uchránila váš výchozí přihlašovací jméno položku v **. VSCode\settings.json**. Můžete také přímo aktualizovat ho v tomto konfiguračním souboru. 
 
    ![Výchozí přihlášení položku konfigurace sady](./media/hdinsight-for-vscode/set-default-login-entry-configuration.png)
 
-## <a name="submit-interactive-hive-queries"></a>Odesílání interaktivních dotazů Hive
+## <a name="submit-interactive-hive-queries-hive-batch-scripts"></a>Odešlete interaktivní dotazy Hive, dávkových skriptů Hive
 
-Pomocí nástrojů HDInsight pro VS Code můžete odeslat interaktivních dotazů Hive ke clusterům HDInsight interactive query.
+Pomocí nástrojů HDInsight pro VS Code můžete odeslat interaktivních dotazů Hive, dávkových skriptů Hive do clusterů HDInsight.
 
 1. Pokud ještě nemáte pracovní složku a soubor skriptu Hive, vytvořte nové.
 
-2. Pokud jste to ještě neudělali, připojte se k účtu Azure a pak nakonfigurujte výchozí cluster.
+2. Připojení ke clusterům Azure účet nebo odkaz.
 
 3. Pak zkopírujte a vložte do souboru Hive následující kód a uložte ho.
 
     ```hiveql
     SELECT * FROM hivesampletable;
     ```
-3. Klikněte pravým tlačítkem myši na editor skriptů a vyberte **HDInsight: Hive Interactive** (HDInsight: interaktivní Hive) a odešlete tak dotaz. Nástroje také umožňují odeslat pomocí místní nabídky místo celého souboru skriptu blok kódu. Brzy potom se na nové kartě zobrazí výsledky dotazu.
+4. Pravým tlačítkem myši na editor skriptů, vyberte **HDInsight: interaktivní Hive** chcete odeslat dotaz, nebo použijte klávesovou zkratku **Ctrl + Alt + I**. Vyberte **HDInsight: Hive Batch** odešlete skript, nebo použijte klávesovou zkratku **Ctrl + Alt + H**. 
+
+5. Vyberte cluster, když potřebují. Nástroje také umožňují odeslat pomocí místní nabídky místo celého souboru skriptu blok kódu. Brzy potom se na nové kartě zobrazí výsledky dotazu.
 
    ![Výsledky interaktivního Hivu](./media/hdinsight-for-vscode/interactive-hive-result.png)
 
@@ -170,31 +189,10 @@ Pomocí nástrojů HDInsight pro VS Code můžete odeslat interaktivních dotaz�
 
     - Panel **MESSAGES** (ZPRÁVY): Když vyberete číslo řádku **Line**, přejdete na první řádek spuštěného skriptu.
 
-Spuštění interaktivního dotazu zabere mnohem kratší dobu než [spuštění dávkové úlohy Hive](#submit-hive-batch-scripts).
-
-## <a name="submit-hive-batch-scripts"></a>Odeslání skriptů dávky Hive
-
-1. Pokud ještě nemáte pracovní složku a soubor skriptu Hive, vytvořte nové.
-
-2. Pokud jste to ještě neudělali, připojte se k účtu Azure a pak nakonfigurujte výchozí cluster.
-
-3. Pak zkopírujte a vložte do souboru Hive následující kód a uložte ho.
-
-    ```hiveql
-    SELECT * FROM hivesampletable;
-    ```
-3. Klikněte pravým tlačítkem myši na editor skriptů a vyberte **HDInsight: Hive Batch** (HDInsight: Dávka Hive) a odešlete tak úlohu Hive. 
-
-4. Vyberte cluster, do kterého ji chcete odeslat.  
-
-    Po odeslání úlohy Hive se na panelu **OUTPUT** (VÝSTUP) zobrazí informace o úspěšném odeslání a ID úlohy. Úloha Hive otevře také **WEBOVÝ PROHLÍŽEČ**, ve kterém se zobrazí protokoly a stav úlohy v reálném čase.
-
-   ![odeslání výsledku úlohy Hive](./media/hdinsight-for-vscode/submit-Hivejob-result.png)
-
-[Odeslání interaktivních dotazů Hive](#submit-interactive-hive-queries) zabere mnohem kratší dobu než odeslání dávkové úlohy.
-
 ## <a name="submit-interactive-pyspark-queries"></a>Odešlete interaktivní dotazy PySpark
-Nástroje HDInsight pro VS Code také umožňuje odeslat interaktivní dotazy PySpark ke clusterům Spark.
+
+### <a name="to-submit-interactive-pyspark-queries-to-spark-clusters"></a>K odeslání interaktivní dotazy PySpark ke clusterům Spark.
+
 1. Pokud ještě nemáte je vytvoření nové pracovní složky a nový soubor skriptu s příponou .py.
 
 2. Pokud jste tak ještě neučinili, připojte ke svému účtu Azure.
@@ -213,7 +211,7 @@ Nástroje HDInsight pro VS Code také umožňuje odeslat interaktivní dotazy Py
    for i in range(0, 5):
         print(sortedCollection[i])
    ```
-4. Zvýrazněte tyto skripty. Klikněte pravým tlačítkem myši na editor skriptů a vyberte **HDInsight: PySpark interaktivní**.
+4. Zvýrazněte tyto skripty. Klikněte pravým tlačítkem myši na editor skriptů a vyberte **HDInsight: PySpark interaktivní**, nebo použijte klávesovou zkratku **Ctrl + Alt + I**.
 
 5. Pokud jste ještě nenainstalovali **Python** rozšíření ve VS Code, vyberte **nainstalovat** tlačítko, jak je znázorněno na následujícím obrázku:
 
@@ -233,7 +231,32 @@ Nástroje HDInsight pro VS Code také umožňuje odeslat interaktivní dotazy Py
 
 >[!NOTE]
 >Clustery můžete spravovat informace o relaci. Definované proměnné, funkce a hodnoty, které odpovídají jsou uloženy v relaci, takže může být odkazováno mezi víc volání služeb pro stejného clusteru. 
- 
+
+### <a name="to-disable-environment-check"></a>Chcete-li zakázat kontrolu prostředí
+
+Ve výchozím nastavení, nástrojů HDInsight zkontroluje prostředí a nainstalujte závislé balíčky při odeslání interaktivní dotazy PySpark. Chcete-li zakázat kontrolu prostředí, nastavte **hdinsight.disablePysparkEnvironmentValidation** k **Ano** pod **UŽIVATELSKÁ nastavení**.
+
+   ![Nastavit prostředí zaškrtnutí od nastavení](./media/hdinsight-for-vscode/hdi-azure-hdinsight-environment-check.png)
+
+Alternativně klepněte na tlačítko **zakázat ověření** tlačítko otevře dialogové okno.
+
+   ![Nastavte zaškrtávací prostředí z dialogového okna](./media/hdinsight-for-vscode/hdi-azure-hdinsight-environment-check-dialog.png)
+
+### <a name="pyspark3-is-not-supported-with-spark2223"></a>PySpark3 nepodporuje Spark2.2/2.3
+
+PySpark3 se už nepodporuje s clusterem Spark 2.2 a Spark2.3 clusterem, podporovány jsou pouze "PySpark" pro Python. Je známo, problém, který odešle Spark 2.2/2.3 selhat s Python3.
+
+   ![Chyba získávání pythonu3 odeslat](./media/hdinsight-for-vscode/hdi-azure-hdinsight-py3-error.png)
+
+Postupujte podle kroků použít Python2.x: 
+
+1. Instalovat Python 2.7 do místního počítače a přidejte ho do systémové cesty.
+
+2. Restartujte VSCode.
+
+3. Přepnout Python 2 kliknutím **Python XXX** na stav panelu a potom vyberte cíl Python.
+
+   ![Vyberte verzi pythonu](./media/hdinsight-for-vscode/hdi-azure-hdinsight-select-python.png)
 
 ## <a name="submit-pyspark-batch-job"></a>Odeslání úlohy služby batch PySpark
 
@@ -263,7 +286,7 @@ Nástroje HDInsight pro VS Code také umožňuje odeslat interaktivní dotazy Py
             print("%s: %i" % (word, count))
         spark.stop()
     ```
-4. Pravým tlačítkem myši na editor skriptů a pak vyberte **HDInsight: PySpark Batch**. 
+4. Pravým tlačítkem myši na editor skriptů a pak vyberte **HDInsight: PySpark Batch**, nebo použijte klávesovou zkratku **Ctrl + Alt + H**. 
 
 5. Vyberte cluster, do které chcete odeslat úlohu PySpark. 
 
@@ -271,15 +294,22 @@ Nástroje HDInsight pro VS Code také umožňuje odeslat interaktivní dotazy Py
 
 Po odeslání úlohy Python odeslání protokolů se objeví v **výstup** okna ve VS Code. **URL uživatelského rozhraní Spark** a **URL uživatelského rozhraní Yarn** jsou také uvedeny. Adresu URL můžete otevřít ve webovém prohlížeči a sledovat stav úlohy.
 
->[!NOTE]
->PySpark3 nepodporuje už Livy 0.4 (což je cluster Hdinsight spark 2.2). Pouze "PySpark" je podporován Python. Je známo, problém, který se spark 2.2 odeslat selhat s python3.
-   
 ## <a name="livy-configuration"></a>Konfigurace Livy
-Konfigurace Livy se podporuje, může být nastavena v nastavení projektu ve složce pracovní prostor. Další podrobnosti najdete v tématu [Livy README](https://github.com/cloudera/livy/blob/master/README.rst ).
+
+Konfigurace Livy se podporuje, může být nastavena na **. VSCode\settings.json** ve složce pracovní prostor. Konfigurace livy v současné době podporuje pouze skript Pythonu. Další podrobnosti najdete v tématu [Livy README](https://github.com/cloudera/livy/blob/master/README.rst ).
+
+<a id="triggerlivyconf"></a>**Jak aktivovat konfigurace livy**
+   
+Můžete najít na **souboru** nabídce vyberte možnost **Předvolby**a zvolte **nastavení** v místní nabídce. Klikněte na tlačítko **nastavení pracovního prostoru** kartu, budete moct začít nastavit konfiguraci livy.
+
+Také můžete odeslat soubor, Všimněte si, že složka .vscode je automaticky přidán do pracovní složky. Kliknutím můžete najít konfiguraci livy **.vscode\settings.json**.
 
 + Nastavení projektu:
 
     ![Konfigurace Livy](./media/hdinsight-for-vscode/hdi-livyconfig.png)
+
+>[!NOTE]
+>Pro nastavení **driverMomory** a **executorMomry**, nastavte hodnotu s jednotkou, například 1 g nebo 1024 m. 
 
 + Podporované konfigurace Livy:   
 
@@ -316,6 +346,30 @@ Konfigurace Livy se podporuje, může být nastavena v nastavení projektu ve sl
     | protokol | Řádky protokolu | seznam řetězců |
     | state |   Stav služby batch | řetězec |
 
+>[!NOTE]
+>Přiřazené konfigurace livy se zobrazí v podokně výstupů když odešlete skript.
+
+## <a name="integrate-with-azure-hdinsight-from-explorer"></a>Integrace s Azure HDInsight z Průzkumníka
+
+Azure HDInsight je přidaný do na levém panelu. Můžete procházet a přímé správě clusteru.
+
+1. Rozbalte **AZURE HDINSIGHT**, pokud není přihlášení, zobrazí se **přihlášení do Azure...**  odkaz.
+
+    ![Přihlaste se obrázek odkazu](./media/hdinsight-for-vscode/hid-azure-hdinsight-sign-in.png)
+
+2. Klikněte na tlačítko **přihlášení k Azure**, se zobrazí místní okno přihlášení odkaz a kód v pravé dolní části.
+
+    ![Pokyny pro jiné prostředí k přihlášení](./media/hdinsight-for-vscode/hdi-azure-hdinsight-azure-signin-code.png)
+
+3. Klikněte na tlačítko **zkopírovat a otevřít** tlačítko se otevře prohlížeč, vložte kód, klikněte na tlačítko **pokračovat** tlačítko, zobrazí se vám v pomocném parametru o přihlášení úspěšně.
+
+4. Po přihlášení dostupných předplatných a clusterů (HBase, Spark a Hadoop jsou podporovány) budou zobrazeny v **AZURE HDINSIGHT**. 
+
+   ![Předplatné Azure HDInsight](./media/hdinsight-for-vscode/hdi-azure-hdinsight-subscription.png)
+
+5. Rozbalte cluster a zobrazit schéma databáze a tabulky metadat hive.
+
+   ![Cluster Azure HDInsight](./media/hdinsight-for-vscode/hdi-azure-hdinsight-cluster.png)
 
 ## <a name="additional-features"></a>Další funkce
 

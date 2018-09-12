@@ -1,9 +1,9 @@
 ---
-title: Aktualizace zásobníku Azure 1710 (sestavení 20171020.1) | Microsoft Docs
-description: Další informace o tom, co je v aktualizaci 1710 pro Azure zásobníku integrované systémy, známé problémy a kde se stáhnout aktualizaci.
+title: Azure Stack 1710 Update (Build 20171020.1) | Dokumentace Microsoftu
+description: Další informace o tom, co je ve verzi 1710 aktualizace pro Azure Stack integrované systémy, známé problémy a kde se stáhnout aktualizaci.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: brenduns
 manager: femila
 editor: ''
 ms.assetid: 135314fd-7add-4c8c-b02a-b03de93ee196
@@ -13,60 +13,61 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
-ms.author: mabrigg
-ms.openlocfilehash: 8c7c39ecdc332c994e5c00f8415462f208e7d20b
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.author: brenduns
+ms.reviewer: justini
+ms.openlocfilehash: cf870551a3dbd9b5ea0ef6f886dc6451e43b2c25
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30311919"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377186"
 ---
-# <a name="azure-stack-1710-update-build-201710201"></a>Aktualizace zásobníku Azure 1710 (sestavení 20171020.1)
+# <a name="azure-stack-1710-update-build-201710201"></a>Azure Stack 1710 Update (Build 20171020.1)
 
-*Platí pro: Azure zásobníku integrované systémy*
+*Platí pro: integrované systémy Azure Stack*
 
-Tento článek popisuje vylepšení a opravy v tomto balíčku aktualizace – známé problémy pro tuto verzi a toho, kde se stáhnout aktualizaci. Známé problémy jsou rozdělené do známé problémy přímo související s proces aktualizace a známé problémy s sestavení (po instalaci).
+Tento článek popisuje vylepšení a opravy v tomto balíčku aktualizace – známé problémy pro tuto verzi a kde se stáhnout aktualizaci. Známé problémy jsou rozděleny do známé problémy přímo související s proces aktualizace a známé problémy se sestavením (po instalaci).
 
 > [!IMPORTANT]
-> Tento balíček aktualizace je pouze pro Azure zásobníku integrované systémy. Tento balíček aktualizace nevztahují na Azure zásobníku Development Kit.
+> Tento balíček aktualizace je pouze pro integrované systémy Azure Stack. Tento balíček aktualizace nevztahují na Azure Stack Development Kit.
 
-## <a name="improvements-and-fixes"></a>Vylepšení a opravy
+## <a name="improvements-and-fixes"></a>Vylepšení a oprav
 
-Tato aktualizace zahrnuje následující vylepšení kvality a opravy pro Azure zásobníku.
+Tato aktualizace zahrnuje následující vylepšení kvality a opravy pro službu Azure Stack.
  
-### <a name="windows-server-2016-improvements-and-fixes"></a>Windows Server 2016 vylepšení a opravy
+### <a name="windows-server-2016-improvements-and-fixes"></a>Windows Server 2016 vylepšení a oprav
 
-- Aktualizace pro systém Windows Server 2016: 10. října 2017 – KB4041691 (sestavení 14393.1770 operačního systému. V tématu [ https://support.microsoft.com/help/4041691 ](https://support.microsoft.com/help/4041691) Další informace.
+- Aktualizace pro Windows Server 2016: 10. října 2017 – KB4041691 (14393.1770 sestavení operačního systému. Zobrazit [ https://support.microsoft.com/help/4041691 ](https://support.microsoft.com/help/4041691) Další informace.
 
-### <a name="additional-quality-improvements-and-fixes"></a>Další kvalitou vylepšení a opravy
+### <a name="additional-quality-improvements-and-fixes"></a>Další kvalitou vylepšení a oprav
 
-- Přidat privilegované koncový bod rutiny prostředí PowerShell pro aktualizaci serveru protokolu NTP (Network Time) a odstranění potíží.
-- Byla přidána podpora pro aktualizaci modulů koncový bod privilegované koncový bod právě dostatečně správy JEA () a rutiny seznamu povolených IP adres. 
-- Chyby opravené jazyce v privilegované koncový bod.
-- Přidání možnosti otočit přihlašovací údaje brány.
+- Přidání rutin Powershellu privilegovaných koncový bod pomáhají s řešením aktualizace serveru pro Protokol NTP (Network Time).
+- Přidání podpory pro aktualizace privilegovaných koncový bod Just Enough Administration (JEA) koncového bodu moduly a rutiny seznamu povolených IP adres. 
+- Oprava chyb místním jazyce privilegovaných koncový bod.
+- Přidali jsme možnost pravidelná Změna přihlašovacích údajů brány.
 - Odebrat CBLocalAdmin účet místního správce. 
-- Pevné obsahu výstrahy šablony prezenčního signálu chcete Ujistěte se, že prezenčního signálu výstrahy pracovní správně po aktualizaci.
-- Pevné zprostředkovatele prostředků infrastruktury řešení překročení časového limitu během operací FRU. 
-- Přidání možnosti pro vývojáře v cloudu používat profily rozhraní API Správce prostředků Azure v zásobníku Azure.
+- Oprava obsah šablona upozornění prezenčního signálu Chcete-li Ujistěte se, že prezenční signál výstrahy pracovní správně po aktualizaci.
+- Oprava zprostředkovatele prostředků infrastruktury kvůli vypršení časového limitu během operací FRU řešení. 
+- Přidali jsme možnost pro cloudové vývojáře k používání profilů rozhraní API Azure Resource Manageru ve službě Azure Stack.
 - Zakázat službu Windows Update na nasazení virtuálního počítače (DVM). 
-- Odebrat uzel power zapnout nebo vypnout akce z uživatelského rozhraní.
-- Různé ostatní výkonu a stability opravy. 
+- Odebrat uzel power zapnuto/vypnuto akce z uživatelského rozhraní.
+- Různé jiné výkon a stabilita opravy. 
  
 ## <a name="known-issues-with-the-update-process"></a>Známé problémy s proces aktualizace
 
-Tato část obsahuje známé problémy, které mohou nastat při instalaci aktualizace 1710.
+Tato část obsahuje známé problémy, které můžete narazit při instalaci aktualizace 1710.
 
 > [!IMPORTANT]
-> Pokud se aktualizace nezdaří, pokud později pokusíte obnovit aktualizace je nutné použít `Resume-AzureStackUpdate` rutiny z privilegovaných koncový bod. Pokračovat aktualizace pomocí portálu správce. (Jde o známý problém v této verzi.) Další informace najdete v tématu [monitorování aktualizací v zásobníku Azure pomocí privilegované koncový bod](azure-stack-monitor-update.md).
+> Pokud se aktualizace nezdaří, když později pokusu o pokračování aktualizace, je nutné použít `Resume-AzureStackUpdate` rutiny z privileged koncového bodu. Běh aktualizace pomocí portálu správce. (Jde o známý problém v této verzi.) Další informace najdete v tématu [monitorování aktualizací ve službě Azure Stack pomocí privilegovaných koncového bodu](azure-stack-monitor-update.md).
 
-| Příznaky  | Příčina  | Řešení |
+| Příznak  | Příčina  | Řešení |
 |---------|---------|---------|
-|Při aktualizaci, chyba podobná následující<br>může dojít během kroku "Úložiště hostitelů restartovat uzel úložiště"<br> akce plánu aktualizace.<br><br>**{"název": "Restartujte úložiště hostitelů", "Popis": "Restartujte<br> úložiště hostitelů. chybová zpráva","": "Zadejte restartování Role<br> 'BareMetal' vyvolá k výjimce: \n\n počítač<br> HostName-05 bylo přeskočeno. Nepodařilo se načíst jeho LastBootUpTime<br> prostřednictvím služby WMI se následující chybová zpráva:<br> RPC server nedostupný.<br> (Výjimka z HRESULT: 0x800706BA). \nat Restart hostitel** | Tento problém je způsoben potenciální vadný ovladač existuje v některých konfiguracích. | 1. Přihlaste se k rozhraní základní desky řadiče (BMC) pro správu webových a restartujte hostitele, který je identifikován v chybové zprávě.<br><br>2. Obnovení aktualizace pomocí privilegované koncový bod. |
-| Při provádění aktualizace proces aktualizace se stalace<br> a není poskytnutí přehledu o pokroku po kroku "krok: spuštěním kroku 2.4 - instalace<br> Aktualizovat"akce plánu aktualizace.<br><br>Tento krok je následována řadu procesy kopírování .nupkg<br> soubory ke sdíleným složkám interní infrastruktury. Příklad:<br><br>**Kopírování souborů 1 z content\PerfCollector\VirtualMachines k <br> \VirtualMachineName-ERCS03\C$\TraceCollectorUpdate\ <br>PerfCounterConfiguration**<br><br>Nebo, zobrazí se zpráva:<br><br>**WarningMessage:Task: Volání rozhraní 'LiveUpdate'<br> role Cloud\Fabric\VirtualMachines se nezdařilo:<br> zadejte 'LiveUpdate' role vyvolá VirtualMachines<br> výjimka: není dostatek místa na disku .**  | Problém je způsoben soubory protokolu naplňování disky na virtuální počítač infrastruktury a o problém v systému Windows Server Škálováním na více systémů souborovým serverem (SOFS), bude dodána v další aktualizaci. | O pomoc obraťte se na oddělení zákaznických služeb a podpory společnosti Microsoft. | 
-| Při aktualizaci, chyba podobná následující<br> může dojít během kroku "krok: spuštěním kroku 2.13.2 - aktualizace<br> *VM_Name*"v plánu akce aktualizace. (Virtuální počítač<br> Název se může lišit.)<br><br>**ActionPlanInstanceWarning ece/MachineName:<br> WarningMessage:Task: volání rozhraní 'LiveUpdate' z<br> role Cloud\Fabric\WAS se nezdařilo: Zadejte 'LiveUpdate' role<br> 'Byl' způsobila výjimku: došlo k CHYBĚ během úložiště<br> inicializace: došlo k chybě při pokusu o vytvoření rozhraní API<br> volání do služby Microsoft Storage: {"Zpráva": "vypršení časového limitu<br> došlo k chybě při komunikaci se službou Service Fabric.<br> Typ výjimky: TimeoutException.<br> Zpráva o výjimce: Vypršel časový limit operace. "}**  | Problém je způsoben vypršení časového limitu vstupně-výstupních operací v systému Windows Server, který bude opraven v další aktualizaci. | Požádejte o pomoc Microsoft CSS.
-| Při aktualizaci, chyba podobná následující<br> může dojít během kroku "krok 21 restartování virtuálních počítačů SQL serveru."<br><br>**Typ 'LiveUpdateRestart' Role vyvolá VirtualMachines<br> výjimka: VerboseMessage: [VirtualMachines:LiveUpdateRestart]<br> dotazování pro virtuální počítač MachineName-Sql01. - 13/10/2017 5:23:50: 00 VerboseMessage: [virtuálních počítačů: LiveUpdateRestart]<br> virtuální počítač je označený jako vysoké dostupnosti. – 13/10/2017 5:23:50: 00<br> VerboseMessage: [VirtualMachines:LiveUpdateRestart] v<br>MS. Internal.ServerClusters.ExceptionHelp.Build v<br>MS. Internal.ServerClusters.ClusterResource.BeginTakeOffline<br>(Boolean force) v Microsoft.FailoverClusters.PowerShell.<br> StopClusterResourceCommand.BeginTimedOperation() v <br>Microsoft.FailoverClusters.PowerShell.TimedCmdlet.Wrapped<br>ProcessRecord() v Microsoft.FailoverClusters.PowerShell.<br> FCCmdlet.ProcessRecord() - 13/10/2017 5:23:50: 00 upozornění<br>zpráva: úloha: volání rozhraní 'LiveUpdateRestart' z<br> role Cloud\Fabric\VirtualMachines se nezdařilo:** | Tento problém může dojít, pokud virtuální počítač se nepodařilo restartovat. | Požádejte o pomoc Microsoft CSS.
-| Když provedete aktualizaci, může dojít k chybě podobný následujícímu:<br><br>**2017-10-22T01:37:37.5369944Z typ "Vypnout" Role 'SQL'<br> vyvolal výjimku: došlo k chybě pozastavení uzlu<br> nástroje 's45r1004-Sql01' Stop-SQL, C:\ProgramData\SF\ErcsClusterNode2 <br>\Fabric\work\ Applications\ EnterpriseCloud <br>EngineApplicationType&#95;App1\ <br>EnterpriseCloudEngineServicePkg.Code.1.0.597.18\ <br> CloudDeployment\Roles\SQL\SQL.psm1:line 542 v<br> Vypnutí, C:\ProgramData\SF\ErcsClusterNode2\Fabric\work\ <br>aplikace \EnterpriseCloudEngineApplicationType&#95;App1\ <br>EnterpriseCloudEngineServicePkg.Code.1.0.597.18\Cloud<br> Deployment\Classes\SQL\SQL.psm1: 50 v řádku < ScriptBlock&#62;,<br> <No file>: řádek 18 v < ScriptBlock&#62;, < žádný soubor&#62;: řádek 16** | Tento problém může dojít, pokud virtuální počítač nelze vložit do pozastaveném stavu na vyprazdňování role. | Požádejte o pomoc Microsoft CSS.
-| Při aktualizaci, může dojít k některým z těchto chyb:<br><br>**Typ "Ověřit" Role "ADFS" způsobila výjimku: ověření<br> pro roli služby AD FS nebo grafu se nezdařilo s chybou: Chyba při kontrole služby AD FS<br> testu Koncový bod *endpoint_URI*: výjimka volání<br> " GetResponse"s"0"argumenty:" vzdáleného serveru<br> došlo k chybě: (503) serveru není k dispozici. "v Invoke -<br>ADFSGraphValidation**<br><br>**Typ "Ověřit" Role "ADFS" způsobila výjimku: ověření<br> pro roli služby AD FS nebo grafu se nezdařilo s chybou: Chyba při načítání<br> vlastnosti služby AD FS: Nelze se připojit k <br>net.tcp://localhost: 1 500 nebo zásad. Pokus o připojení už bylo<br> pro časový rozsah 00:00:02.0498923. Kód chyby TCP<br> 10061: žádné připojení může vytvořit, protože cíl<br> počítač je aktivně odmítl 127.0.0.1:1500.<br> v Invoke-ADFSGraphValidation** | Plán akcí aktualizace nelze ověřit stav služby Active Directory Federation Services (AD FS). | Požádejte o pomoc Microsoft CSS.
+|Když provádíte aktualizace, podobný následující chybě<br>může dojít během kroku "Úložiště hostitele restartovat uzel úložiště"<br> akční plán aktualizace.<br><br>**{"name": "Restartujte úložiště hostitelů", "Popis": "Restartujte<br> úložiště hostitele. chybová zpráva","": "Zadejte restartování Role<br> 'BareMetal' vyvolána k výjimce: \n\n počítače<br> HostName-05 se přeskočí. Nepovedlo se načíst jeho LastBootUpTime<br> prostřednictvím služby WMI se následující chybová zpráva:<br> RPC server není k dispozici.<br> (Výjimka z HRESULT: 0x800706BA). \nat Restart hostitel** | Tento problém je způsoben potenciální vadné ovladače k dispozici v některých konfiguracích. | 1. Přihlaste se k webovému rozhraní řadič pro správu základní desky a restartujte hostitele, který je identifikován v chybové zprávě.<br><br>2. Obnovit aktualizace pomocí privilegovaných koncový bod. |
+| Když provádíte aktualizace, zobrazí se proces aktualizace zpomalí<br> a po kroku neprovádět průběh "krok: provádí se krok 2.4 – instalace<br> aktualizace"akční plán aktualizace.<br><br>Tento krok je následována řadou kopírování procesy .nupkg<br> soubory do sdílené složky interní infrastrukturu. Příklad:<br><br>**Kopírování souborů 1 z content\PerfCollector\VirtualMachines k <br> \VirtualMachineName-ERCS03\C$\TraceCollectorUpdate\ <br>PerfCounterConfiguration**<br><br>Nebo, zobrazí se zpráva:<br><br>**WarningMessage:Task: Volání rozhraní "LiveUpdate"<br> role Cloud\Fabric\VirtualMachines se nezdařilo:<br> zadejte "LiveUpdate" role vyvoláno VirtualMachines<br> výjimky: není dostatek místa na disku .**  | Problém je způsoben nezaplňuje disky na virtuálním počítači s infrastrukturou a problém v systému Windows Server horizontální navýšení kapacity souborový Server (SOFS), který bude doručen v následné aktualizaci souborů protokolu. | Prosím požádejte o pomoc Microsoft zákaznický servis a podporu (CSS). | 
+| Když provádíte aktualizace, podobný následující chybě<br> může dojít během kroku "krok: provádí se krok 2.13.2 – aktualizace<br> *VM_Name*"z akční plán aktualizace. (Virtuální počítač<br> Název se může lišit.)<br><br>**ActionPlanInstanceWarning OSN/MachineName:<br> WarningMessage:Task: volání rozhraní "LiveUpdate"<br> roli se nepovedlo Cloud\Fabric\WAS: zadejte "LiveUpdate" role<br> 'Byla' vyvolal výjimku: při došlo k CHYBĚ úložiště<br> inicializace: došlo k chybě při pokusu o vytvoření rozhraní API<br> volat službu Microsoft Storage: {"Message": "vypršení časového limitu<br> došlo k chybě při komunikaci se Service Fabric.<br> Typ výjimky: TimeoutException.<br> Zpráva o výjimce: Vypršel časový limit operace. "}**  | Problém je způsoben Windows Server, který bude vyřešen v následné aktualizace vypršel časový limit vstupně-výstupních operací. | Požádejte prosím o pomoc Microsoft CSS.
+| Když provádíte aktualizace, podobný následující chybě<br> může dojít během kroku "kroku 21 restartování virtuálních počítačů SQL server."<br><br>**Zadejte "LiveUpdateRestart" role vyvoláno VirtualMachines<br> výjimka: VerboseMessage: [VirtualMachines:LiveUpdateRestart]<br> dotazování na virtuální počítač MachineName-Sql01. – 10/13/2017 5:23:50: 00 VerboseMessage: [virtuálních počítačů: LiveUpdateRestart]<br> virtuální počítač je označený jako vysoké dostupnosti. – 10/13/2017 5:23:50: 00<br> VerboseMessage: [VirtualMachines:LiveUpdateRestart] na<br>MS. Internal.ServerClusters.ExceptionHelp.Build na<br>MS. Internal.ServerClusters.ClusterResource.BeginTakeOffline<br>(logická platnost) na Microsoft.FailoverClusters.PowerShell.<br> StopClusterResourceCommand.BeginTimedOperation() na <br>Microsoft.FailoverClusters.PowerShell.TimedCmdlet.Wrapped<br>ProcessRecord() na Microsoft.FailoverClusters.PowerShell.<br> FCCmdlet.ProcessRecord() - 10/13/2017 5:23:50: 00 upozornění<br>zprávy: úloha: vyvolání sady rozhraní "LiveUpdateRestart"<br> role Cloud\Fabric\VirtualMachines se nezdařilo:** | Tomuto problému může dojít, pokud virtuální počítač se nepodařilo restartovat. | Požádejte prosím o pomoc Microsoft CSS.
+| Když provádíte aktualizace, může dojít k chybě podobný následujícímu:<br><br>**2017-10-22T01:37:37.5369944Z typ "Vypnout" Role "SQL"<br> vyvolal výjimku: došlo k chybě pozastavuje uzel<br> .v 's45r1004 Sql01' Stop-SQL, C:\ProgramData\SF\ErcsClusterNode2 <br>\Fabric\work\ Applications\ EnterpriseCloud <br>EngineApplicationType&#95;App1\ <br>EnterpriseCloudEngineServicePkg.Code.1.0.597.18\ <br> CloudDeployment\Roles\SQL\SQL.psm1:line 542 na<br> Vypnutí, C:\ProgramData\SF\ErcsClusterNode2\Fabric\work\ <br>aplikací \EnterpriseCloudEngineApplicationType&#95;App1\ <br>EnterpriseCloudEngineServicePkg.Code.1.0.597.18\Cloud<br> Deployment\Classes\SQL\SQL.psm1: 50 na řádek < ScriptBlock&#62;,<br> <No file>: 18 na řádek < ScriptBlock&#62;, < žádný soubor&#62;: řádek 16** | Tomuto problému může dojít, pokud virtuální počítač nelze vložit do pozastaveného stavu k vyprázdnění role. | Požádejte prosím o pomoc Microsoft CSS.
+| Když provádíte aktualizace, může dojít k některým z následujících chyb:<br><br>**Typ "Ověřit" Role "ADFS" způsobila výjimku: ověření<br> pro roli služby AD FS/grafu se nezdařilo s chybou: Chyba při kontrole služby AD FS<br> koncový bod pro zjišťování *endpoint_URI*: výjimka volání<br> " GetResponse"s"0"argumenty v počtu:" vzdálený server<br> vrátil chybu: (503) Server není k dispozici. "Invoke-<br>ADFSGraphValidation**<br><br>**Typ "Ověřit" Role "ADFS" způsobila výjimku: ověření<br> pro roli služby AD FS/grafu se nezdařilo s chybou: Chyba při načítání<br> vlastnosti služby AD FS: Nelze se připojit k <br>NET.TCP://localhost: 1 500/zásad. Pokus o připojení trval po<br> pro časové období 00:00:02.0498923. Kód chyby TCP<br> 10061: může být nevytváří žádné připojení, protože cíl<br> počítač aktivně odmítl 127.0.0.1:1500.<br> na Invoke-ADFSGraphValidation** | Akční plán aktualizace nemůže ověřit stav služby Active Directory Federation Services (AD FS). | Požádejte prosím o pomoc Microsoft CSS.
 
 ## <a name="known-issues-post-installation"></a>Známé problémy (po instalaci)
 
@@ -74,60 +75,60 @@ Tato část obsahuje známé problémy s sestavení 20171020.1 po instalaci.
 
 ### <a name="portal"></a>Portál
 
-- Nemusí být možné zobrazit úložiště nebo výpočetní prostředky na portálu správce. To znamená, že došlo k chybě při instalaci aktualizace a že aktualizace byla nahlášena nesprávně jako úspěšné. Pokud k tomuto problému dochází, požádejte o pomoc Microsoft CSS.
-- Může se zobrazit prázdný řídicí panel portálu. Chcete-li obnovit řídicí panel, vyberte ikonu ozubené kolečko v pravém horním rohu portálu a pak vyberte **obnovit výchozí nastavení**.
-- Když máte zobrazeny vlastnosti skupiny prostředků, **přesunout** tlačítko k dispozici. Toto chování je očekávané. Přesunutí skupin prostředků mezi předplatnými není aktuálně podporován.
-- Pro jakýkoli pracovní postup, kde v rozevíracím seznamu vyberte předplatné, skupinu prostředků nebo umístění může zaznamenat jeden nebo více z následujících důvodů:
+- Není možné zobrazit na portálu správce prostředků výpočetního výkonu a úložiště. To znamená, že došlo k chybě při instalaci aktualizace a že aktualizace byla nahlášena nesprávně jako úspěšně dokončený. Pokud k tomuto problému dochází, požádejte o pomoc Microsoft CSS.
+- Může se zobrazit prázdný řídicí panel portálu. Obnovit řídicí panel, vyberte ikonu ozubeného kolečka v pravém horním rohu portálu a pak vyberte **obnovit výchozí nastavení**.
+- Když máte zobrazeny vlastnosti skupinu prostředků **přesunout** je tlačítko neaktivní. Toto chování je očekávané. Přesunutí skupin prostředků mezi předplatnými není aktuálně podporováno.
+- Pro všechny pracovní postupy, kde v rozevíracím seznamu vyberte předplatné, skupinu prostředků nebo umístění může docházet jeden nebo více z následujících problémů:
 
-   - Může se zobrazit prázdný řádek v horní části seznamu. By měl mít pořád povolený výběr položky podle očekávání.
-   - Pokud je seznam položek v rozevíracím seznamu krátký, asi nebudete moci zobrazit některé názvy položek.
-   - Pokud máte více předplatných uživatele, rozevíracího seznamu skupiny prostředků může být prázdná. 
+   - Může se zobrazit prázdný řádek v horní části seznamu. Byste měli stále moci vybrat položky podle očekávání.
+   - Pokud seznam položek v rozevíracím seznamu je krátký, nebudete moci zobrazit některé názvy položek.
+   - Pokud máte více předplatných uživatele, může být prázdný rozevírací seznam skupin prostředků. 
 
-   Obejít poslední dva problémy, můžete zadat název předplatné nebo skupinu prostředků (pokud ho znáte), nebo můžete místo toho použít PowerShell.
-- Odstranění odběrů uživatele za následek osamocené prostředky. Jako alternativní řešení nejprve odstraňte prostředky uživatele nebo skupinu celý prostředků a potom odstraňte odběry uživatele.
-- Nemůžete se moci zobrazit oprávnění k vašemu předplatnému používání portálů zásobník Azure. Jako alternativní řešení můžete ověřit oprávnění pomocí prostředí PowerShell.
-- **Stav služby** okno nepodaří načíst. Když otevřete okno Stav služby je správce nebo uživatel portálu Azure zásobníku zobrazí chybu a nenačte informace. Toto je očekávané chování. I když můžete vybrat a otevřete stav služby, tato funkce ještě není k dispozici, ale bude implementované v budoucí verzi systému Azure zásobníku.
+   Poslední dva problémy obejít, můžete zadat název předplatného nebo skupiny prostředků (pokud ho znáte) nebo můžete místo toho použít PowerShell.
+- Odstraňuje se předplatné uživatele za následek osamocené prostředky. Jako alternativní řešení nejprve odstranit prostředky uživatele nebo celou skupinu prostředků a pak odstraňte předplatná uživatelů.
+- Nemůžete zobrazit oprávnění k předplatnému pomocí na portálech Azure Stack. Jako alternativní řešení můžete ověřit oprávnění s použitím prostředí PowerShell.
+- **Service Health** okno se nepodaří načíst. Když otevřete okno Service Health na správce nebo uživatel portálu Azure Stack chybovou zprávu a nenačte informace. Toto je očekávané chování. I když můžete vybrat a otevřít Service Health, tato funkce ještě není k dispozici, ale budou implementovány v budoucí verzi služby Azure Stack.
  
 
 ### <a name="backup"></a>Backup
 
 - Nepovolujte infrastruktura zálohování na **infrastruktura zálohování** okno.
 
-### <a name="health-and-monitoring"></a>Sledování stavu a
+### <a name="health-and-monitoring"></a>Monitorování stavu a
 
-- Pokud restartujete instance role infrastruktury, zobrazí se zpráva s oznámením, že restartování se nezdařilo. Ale restartování ve skutečnosti bylo úspěšné.
+- Pokud restartování instance role infrastrukturu, můžete obdržet zprávu s oznámením, že při restartování se nepovedlo. Ale ve skutečnosti úspěšně restartování.
 
 ### <a name="marketplace"></a>Marketplace
-- Při pokusu o přidání položky do zásobníku Azure marketplace s použitím **přidat z Azure** možnost, všechny položky můžou být vidět ke stažení.
-- Uživatelé mohou procházet na kompletní nabídku marketplace bez předplatného a uvidí položky pro správu jako plány a nabízí. Tyto položky jsou pro uživatele funkční.
+- Při pokusu o přidání položky do Tržiště Azure Stack s použitím **přidat z Azure** možnost, ne všechny položky mohou být viditelná pro stahování.
+- Uživatele můžete přejít na kompletní nabídku marketplace bez předplatného a vidí správce různé věci, třeba plány a nabídky. Tyto položky jsou pro uživatele nefunkční.
 
 ### <a name="compute"></a>Compute
-- Uživatelé mají možnost vytvoření virtuálního počítače pomocí geograficky redundantní úložiště. Tato konfigurace způsobuje, že vytvoření virtuálního počítače k selhání.
-- Můžete nakonfigurovat dostupnost virtuálního počítače nastavit pouze u domény selhání jednoho a doméně aktualizace jednoho.
-- Neexistuje žádné zkušenosti marketplace pro vytvoření sady škálování virtuálního počítače. Můžete vytvořit škálování nastavit pomocí šablony.
-- Nastavení škálování pro sady škálování virtuálního počítače nejsou k dispozici na portálu. Jako alternativní řešení, můžete použít [prostředí Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set). Z důvodu rozdílů verze prostředí PowerShell, je nutné použít `-Name` parametr místo `-VMScaleSetName`.
+- Uživatelům se zobrazí možnost k vytvoření virtuálního počítače s geograficky redundantním úložištěm. Tato konfigurace způsobuje, že vytváření virtuálních počítačů k selhání.
+- Můžete nakonfigurovat virtuální počítač dostupnosti pouze s jednu doménu selhání a aktualizační doména jednoho.
+- Neexistuje žádné možnosti marketplace k vytvoření škálovací sady virtuálních počítačů. Můžete vytvořit škálovací sadu pomocí šablony.
+- Nastavení škálování pro škálovací sady virtuálních počítačů nejsou k dispozici na portálu. Jako alternativní řešení můžete použít [prostředí Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set). Z důvodu rozdíly mezi verzemi prostředí PowerShell, je nutné použít `-Name` parametr namísto `-VMScaleSetName`.
  
 ### <a name="networking"></a>Sítě
-- Nástroj pro vyrovnávání zatížení s veřejnou IP adresu nelze vytvořit pomocí portálu. Jako alternativní řešení můžete použít PowerShell k vytvoření nástroje pro vyrovnávání zatížení.
-- Když vytvoříte Vyrovnávání zatížení sítě, musíte vytvořit pravidlo překladu adres sítě. Pokud to neuděláte, obdržíte chybu při pokusu přidat pravidlo NAT po vytvoření nástroje pro vyrovnávání zatížení.
-- Veřejnou IP adresu z virtuálního počítače (VM) nelze zrušit přidružení, po virtuálního počítače byla vytvořena a související s touto adresou IP. Zrušení přidružení se zobrazí postup, ale pořád přidruženy původní virtuální počítač dříve přiřazenou veřejnou IP adresu. K tomuto chování dochází i v případě, že je přiřadit IP adresu na nový virtuální počítač (obvykle označuje jako *prohození*). Všechny budoucí pokusy o připojení přes tuto IP adresu povede připojení do původně přidružený virtuální počítač a ne do nového. V současné době je nutné pouze použít nové veřejné IP adresy pro vytvoření nového virtuálního počítače.
+- Nelze vytvořit nástroj pro vyrovnávání zatížení s veřejnou IP adresu pomocí portálu. Jako alternativní řešení můžete použít PowerShell k vytvoření nástroje pro vyrovnávání zatížení.
+- Když vytvoříte nástroj pro vyrovnávání zatížení sítě, musíte vytvořit pravidlo překladu adres sítě. Pokud to neuděláte, obdržíte chybu při pokusu o přidání pravidla NAT po vytvoření nástroje pro vyrovnávání zatížení.
+- Po byla vytvořena a přidružené tuto IP adresu virtuálního počítače, nelze zrušit přidružení veřejné IP adresy z virtuálního počítače (VM). Zrušení přidružení se zobrazí postup, ale zůstane spojená s původní virtuální počítač dříve přiřazenou veřejnou IP adresu. K tomuto chování dochází i v případě, že znovu přiřadit IP adresu do nového virtuálního počítače (obvykle označované jako *prohození virtuálních IP adres*). Všechny budoucí pokusy o připojení přes tuto IP adresu výsledkem připojení do původně přidružený virtuální počítač a ne do nového. V současné době musí používáte jenom nové veřejné IP adresy pro vytvoření nového virtuálního počítače.
  
 ### <a name="sqlmysql"></a>SQL/MySQL
-- To může trvat až jednu hodinu, než klienti databáze můžete vytvářet v nové SQL nebo MySQL SKU. 
-- Vytvoření položky přímo na SQL a MySQL hostitelské servery, které nejsou prováděné poskytovatelem prostředků není podporována a může mít za následek neodpovídající stavu.
+- To může trvat až hodinu, než bude tenanti můžou vytvořit databází v nové SQL nebo MySQL SKU. 
+- Vytváření položek přímo na SQL a MySQL hostitelské servery, které se neprovádí přes poskytovatele prostředků se nepodporuje a jejím výsledkem neodpovídající stavu.
  
 ### <a name="app-service"></a>App Service
-- Uživatel musí zaregistrovat zprostředkovatele prostředku úložiště dřív, než vytvoří jejich první funkce Azure v rámci předplatného.
+- Dřív, než vytvoří jejich první funkce Azure v rámci předplatného, musí uživatel zaregistrovat zprostředkovatele prostředku úložiště.
  
-### <a name="field-replaceable-unit-fru-procedures"></a>Postupy pole replaceable jednotka (FRU)
+### <a name="field-replaceable-unit-fru-procedures"></a>Vyměnitelná jednotka (FRU) postupy pole
 
-- Během hromadné postupné aktualizace nejsou opravit offline bitové kopie. Pokud potřebujete nahradit uzlu jednotek škálování, pracujete s OEM dodavatele hardwaru a ujistěte se, že nahrazené uzel má nejnovější úroveň opravy.
+- Během Hromadná postupná aktualizace nejsou opravit offline image. Pokud je potřeba nahradit uzel jednotek škálování, pracujete s OEM dodavatele hardwaru a ujistěte se, že nahrazené uzel obsahuje nejnovější úroveň opravy.
 
-## <a name="download-the-update"></a>Stažení aktualizace
+## <a name="download-the-update"></a>Stáhnout aktualizaci.
 
-Můžete si stáhnout balíček aktualizace 1710 [zde](https://aka.ms/azurestackupdatedownload).
+Můžete stáhnout balíček aktualizace 1710 [tady](https://aka.ms/azurestackupdatedownload).
 
 ## <a name="next-steps"></a>Další postup
 
-- Přehled správy aktualizací v zásobníku Azure najdete v tématu [správě aktualizací v přehledu Azure zásobníku](azure-stack-updates.md).
-- Informace o tom, jak použít aktualizace najdete v tématu [aktualizace v zásobníku Azure](azure-stack-apply-updates.md).
+- Přehled správy aktualizací ve službě Azure Stack najdete v tématu [správy aktualizací ve službě Azure Stack přehled](azure-stack-updates.md).
+- Informace o tom, jak použít aktualizace najdete v tématu [použití aktualizací ve službě Azure Stack](azure-stack-apply-updates.md).

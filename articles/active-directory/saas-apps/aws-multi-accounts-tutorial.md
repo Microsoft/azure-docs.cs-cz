@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2018
 ms.author: jeedes
-ms.openlocfilehash: 55a271e49977feb6d8e5c188f1724b66db4cb4f5
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: a7d77df4d6be1572d2076684cfa4702cb32b5ed6
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42054017"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391908"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-multiple-amazon-web-services-aws-accounts"></a>Kurz: Integrace Azure Active Directory s více účty Amazon Web Services (AWS)
 
@@ -317,6 +317,9 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 27. Po vytvoření skupiny, vyberte skupinu a přiřaďte k aplikaci.
 
     ![Konfigurovat Single Sign-On přidat](./media/aws-multi-accounts-tutorial/graph-explorer-new5.png)
+
+> [!Note]
+> Vnořené skupiny nejsou podporovány při přiřazování skupin.
 
 28. Přiřazení role do skupiny, vyberte roli a klikněte na **přiřadit** tlačítko v dolní části stránky.
 

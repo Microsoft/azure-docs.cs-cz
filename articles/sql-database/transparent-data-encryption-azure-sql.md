@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 07/09/2018
 ms.author: aliceku
 monikerRange: = azuresqldb-current || = azure-sqldw-latest || = sqlallproducts-allversions
-ms.openlocfilehash: 0ed05fd2d55f1c4c80bec9f64925be2eddddc067
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: afc53fc1abce74b247ec2e25bc3e4845bc870860
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "40043706"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44380195"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>Transparentní šifrování dat pro SQL Database a Data Warehouse
 
@@ -128,7 +128,7 @@ Pokud chcete nakonfigurovat transparentní šifrování dat přes rozhraní REST
 
 ## <a name="next-steps"></a>Další postup
 
-- Obecný popis transparentní šifrování dat, naleznete v tématu [transparentní šifrování dat] ((https://docs.microsoft.com/sql/relational-databases/security/transparent-data-encryption).
+- Obecný popis transparentní šifrování dat, naleznete v tématu [transparentní šifrování dat](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption).
 - Další informace o transparentní šifrování dat s podporou vlastního klíče pro SQL Database a Data Warehouse, najdete v článku [transparentní šifrování dat s podporou vlastního klíče](transparent-data-encryption-byok-azure-sql.md).
 - Pokud chcete začít používat transparentní šifrování dat s podporou vlastního klíče, naleznete v příručce s postupy [zapnout transparentní šifrování dat s použitím vlastního klíče ze služby Key Vault pomocí Powershellu](transparent-data-encryption-byok-azure-sql-configure.md).
 - Další informace o službě Key Vault najdete v tématu [stránky dokumentace ke službě Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault).

@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: kakampf
-ms.openlocfilehash: 120068cb9dcd92b2b18c2e175793d2072baa2724
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 95d6c392bb0fcb5dfef21fabde9b0bd44e2284a3
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43112159"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44379481"
 ---
 # <a name="what-are-the-hadoop-components-and-versions-available-with-hdinsight"></a>Jaké jsou komponenty a verze, které jsou k dispozici s HDInsight?
 
@@ -242,7 +242,7 @@ Následující tabulky uvádějí výchozí velikostí virtuálních počítač�
   | Edge: Doporučená velikost virtuálního počítače | | | | | |Windows: D12 v2, D13 v2, D14 v2; Linux: D4 v2, D12 v2, D13 v2, D14 v2 |
 * Brazílie – jih a Japonsko – západ pouze (žádné velikosti v2):
 
-  | Typ clusteru | Hadoop | HBase | Interaktivní dotaz |Storm | Spark | ML Server |
+  | Typ clusteru | Hadoop | HBase | Interaktivní dotaz |Storm | Spark | Služba ML |
   | --- | --- | --- | --- | --- | --- | --- |
   | Hlavní: výchozí velikosti virtuálního počítače |D3 |D3  | D13, D14 |A3 |D12 |D12 |
   | Hlavní: doporučené velikosti virtuálních počítačů |D3, D4, D12 |D3, D4, D12  | D13, D14 |A3, A4, A5 |D12, D13, D14 |D12, D13, D14 |

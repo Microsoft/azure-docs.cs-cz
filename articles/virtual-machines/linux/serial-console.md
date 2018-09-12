@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: 857998c73abed76c9e20d5b3422ce607fb9f733d
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: ceaa61832212093ac52225fc34db1ed7f4571a18
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782876"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44380286"
 ---
 # <a name="virtual-machine-serial-console-preview"></a>Virtuální počítač sériová konzola (preview) 
 
@@ -73,7 +73,7 @@ Ubuntu      | Imagemi Ubuntu v Azure k dispozici máte přístup ke konzole ve v
 CoreOS      | CoreOS imagí dostupných v Azure mají přístup ke konzole ve výchozím nastavení povolená.
 SUSE        | Novější imagí SLES dostupných v Azure máte přístup ke konzole ve výchozím nastavení povolená. Pokud používáte starší verze SLES (10 nebo pod) v Azure, postupujte [článku znalostní BÁZE](https://www.novell.com/support/kb/doc.php?id=3456486) umožňující konzoly sériového portu. 
 Oracle Linux        | Linuxové Image Oracle v Azure k dispozici máte přístup ke konzole ve výchozím nastavení povolená.
-Vlastní Linuxové Image     | Pokud chcete povolit konzoly sériového portu pro vaši vlastní image virtuálního počítače s Linuxem, povolte přístup ke konzole v /etc/inittab spouštět ttyS0 terminálu. Tady je příklad, který to přidejte do souboru inittab: `S0:12345:respawn:/sbin/agetty -L 115200 console vt102`. Další informace o správně vytváření vlastních imagí najdete v části [vytvoření a nahrání VHD s Linuxem v Azure](https://aka.ms/createuploadvhd).
+Vlastní Linuxové Image     | Pokud chcete povolit konzoly sériového portu pro vaši vlastní image virtuálního počítače s Linuxem, povolte přístup ke konzole v `/etc/inittab` ke spuštění v terminálu `ttyS0`. Tady je příklad, který to přidejte do souboru inittab: `S0:12345:respawn:/sbin/agetty -L 115200 console vt102`. Další informace o správně vytváření vlastních imagí najdete v části [vytvoření a nahrání VHD s Linuxem v Azure](https://aka.ms/createuploadvhd).
 
 ## <a name="common-scenarios-for-accessing-serial-console"></a>Časté scénáře pro přístup ke konzole sériového portu 
 Scénář          | Akce v konzole sériového portu                
@@ -87,6 +87,9 @@ Interakce s zaváděcího programu pro spouštění | GRUB přístup prostředni
 
 ## <a name="disable-serial-console"></a>Zakázat konzoly sériového portu
 Všechna předplatná mají ve výchozím přístupem ke konzole sériového portu pro všechny virtuální počítače. Konzola sériového portu na úrovni předplatného nebo na úrovni virtuálního počítače můžete kdykoli deaktivovat.
+
+> [!Note] 
+> Pokud chcete povolit nebo zakázat konzoly sériového portu k předplatnému, musíte mít oprávnění k zápisu do předplatného. To zahrnuje, ale není omezena pouze na role správce nebo vlastníka. Vlastní role může mít také oprávnění k zápisu.
 
 ### <a name="subscription-level-disable"></a>Zakázat úroveň předplatného
 Konzola sériového portu se dají zakázat pro celé předplatné podle prostřednictvím [volání rozhraní API REST zakázat konzoly](https://aka.ms/disableserialconsoleapi). "Vyzkoušet" funkce k dispozici na stránce dokumentace k rozhraní API můžete samozřejmě využít zakázání a povolení konzoly sériového portu pro odběr. Zadejte vaše `subscriptionId`, "Výchozí" v `default` pole a klikněte na tlačítko spustit. Příkazy Azure CLI ještě nejsou k dispozici a budou doručeny později. [Zkuste volání rozhraní REST API zde](https://aka.ms/disableserialconsoleapi).
@@ -167,7 +170,6 @@ Jak jsme jsou stále ve verzi preview fázích pro přístup ke konzole sériov�
 
 Problém                           |   Omezení rizik 
 :---------------------------------|:--------------------------------------------|
-Neexistuje žádná možnost pomocí virtuálního počítače škálovací sady instance sériové konzoly |  V období preview se nepodporuje přístup ke konzole sériového portu pro instance škálovací sady virtuálních počítačů.
 Dosažení zadejte po banner připojení není uveden do protokolu v řádku | Podrobnosti najdete na této stránce: [Hitting zadejte nemá žádný účinek,](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md). K tomu může dojít, pokud používáte vlastní virtuální počítač, Posílená zařízení nebo konfigurace GRUB, který způsobí, že Linux selhání správně připojení do sériového portu.
 Při přístupu k tomuto virtuálnímu počítači účet úložiště diagnostiky spouštění došlo k odpovědi "Zakázáno". | Zajistěte, aby že tuto diagnostiku spouštění nemá žádné brány firewall účtu. Účet úložiště diagnostiky dostupné spouštěcí je nezbytné pro konzoly sériového portu funkce.
 Text konzoly sériového portu potrvá jenom část na velikost obrazovky (často po pomocí textového editoru) | Jde o známý problém s Neznámý obrazovku přes sériové připojení. Doporučujeme, abyste instaling xterm nebo některé podobné nástroj, který obsahuje příkaz "Změna velikosti". Spuštění "Změna velikosti" opravu provedete.
@@ -178,18 +180,32 @@ Text konzoly sériového portu potrvá jenom část na velikost obrazovky (čast
 
 A. Poskytnout zpětnou vazbu jako problém tak, že přejdete do https://aka.ms/serialconsolefeedback. Můžete také menší (upřednostňované) pošlete zpětnou vazbu prostřednictvím azserialhelp@microsoft.com nebo v kategorii virtuálního počítače http://feedback.azure.com
 
-**Q. Nejde mi pro přístup ke konzole sériového portu, kde můžete soubor případ podpory?**
+**Q. Podporuje konzoly sériového portu, kopírování a vkládání?**
 
-A. Tato funkce ve verzi preview se vztahuje prostřednictvím podmínky verze Preview služby Azure. Podpora pro tuto potíže nejlépe vyřeší prostřednictvím kanálů uvedených výše. 
+A. Ano, co dělá. Zkopírujte a vložte do terminálu pomocí kombinace kláves Ctrl + Shift + C a Ctrl + Shift + V.
 
 **Q. Můžete použít konzoly sériového portu místo připojení SSH?**
 
 A. Když to může zdát, že je to technicky možné, konzoly sériového portu je určena pro použití především jako nástroje pro odstraňování potíží v situacích, kdy není možné připojení pomocí protokolu SSH. Nedoporučujeme použití konzoly sériového portu jako náhrady SSH dvou důvodů:
 
-1. Konzola sériového portu nemá tak velkou šířku pásma jako ssh - je připojení pouze text, takže další interakce náročná na výkon grafické uživatelské rozhraní bude obtížné v konzole sériového portu.
+1. Konzola sériového portu nemá tak velkou šířku pásma jako SSH - je připojení pouze text, takže další interakce náročná na výkon grafické uživatelské rozhraní bude obtížné v konzole sériového portu.
 1. Přístup ke konzole sériového portu je aktuálně pouze uživatelské jméno a heslo. Klíče SSH jsou mnohem bezpečnější než kombinace uživatelského jména a hesla, tak z hlediska zabezpečení přihlášení doporučujeme prostřednictvím konzoly sériového portu SSH.
 
+**Q. Kdo může povolit nebo zakázat konzoly sériového portu pro Moje předplatné?**
 
+A. Pokud chcete povolit nebo zakázat konzoly sériového portu na úrovni celé předplatné, musí mít oprávnění k zápisu do předplatného. Role, které mají oprávnění k zápisu patří, ale nejsou omezeny rolí správce nebo vlastníka. Vlastní role může mít také oprávnění k zápisu.
+
+**Q. Kdo má přístup k konzoly sériového portu pro virtuální počítač?**
+
+A. Musíte mít přístup úrovně Přispěvatel nebo vyšší do virtuálního počítače pro přístup ke konzole sériového portu Virtuálního počítače. 
+
+**Q. Moje konzoly sériového portu se nezobrazuje nic, co mám dělat?**
+
+A. Vaše image je pravděpodobně nesprávně nakonfigurované pro přístup ke konzole sériového portu. Zobrazit [konzoly sériového portu přístup pro Linux](#Access-Serial-Console-for-Linux) podrobné informace o konfiguraci bitové kopie umožňují konzoly sériového portu.
+
+**Q. Je k dispozici konzoly sériového portu pro Virtual Machine Scale Sets?**
+
+A. V současné době se nepodporuje přístup ke konzole sériového portu pro instance škálovací sady virtuálních počítačů.
 
 ## <a name="next-steps"></a>Další postup
 * Použití konzoly sériového portu k [spustí v GRUB a do režimu jednoho uživatele](serial-console-grub-single-user-mode.md)

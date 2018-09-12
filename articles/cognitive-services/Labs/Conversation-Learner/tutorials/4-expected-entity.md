@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: fb9193066c9501341efb779b9f9e2ccace02cccf
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: a43c52143f936eaefd4383714b1c67b6b74d34e8
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42888200"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378665"
 ---
 # <a name="how-to-use-the-expected-entity-property-of-actions"></a>Jak používat vlastnost "Očekáván entity" akcí
 
@@ -65,7 +65,7 @@ Namítají Pokud je pole "očekáván entity" akce nastavená $entity a potom na
     - Tato hodnota znamená, že pokud tento dotaz se zobrazí výzva, a odpověď uživatele nemá žádné entity, zjistili, robot by měl Předpokládejme, že celá odpověď uživatele je tuto entitu.
 2. Klikněte na tlačítko akce a pak novou akci na vytvoří druhou akci.
 3. V odpovědi zadejte "Hello $name".
-    - Entita je automaticky přidán jako požadované entity. 
+    - Všimněte si, že entita je automaticky přidán jako požadované entity. 
 4. Klikněte na Uložit.
 
 Nyní máte dvě akce.

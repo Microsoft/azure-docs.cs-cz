@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 04/28/2018
 ms.author: v-jerkin
-ms.openlocfilehash: de9abac2839341e1744a694daaaa0befdff4e7fa
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 704534ed50e12e7f9290cb321ad3b9e1b99117d5
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43668576"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377884"
 ---
 # <a name="supported-languages-for-speech-service"></a>Podporované jazyky pro Speech service
 
@@ -29,13 +29,22 @@ Rozpoznávání řeči Microsoft rozhraní API podporuje následující jazyky.
  ar – například | Arabština (Egypt), moderní standard | Ne | Ano | Ne
  IT-IT | Italština (Itálie) | Ne | Ano | Ne 
  de-DE | Němčina (Německo) | Ne | Ano | Ano
- ja-JP | Japonština (Japonsko) | Ne | Ano | Ne
- cs-CZ | Angličtina (Spojené státy) | Ano | Ano | Ano
- pt-BR | Portugalština (Brazílie) | Ne | Ano | Ne
- es-ES | Španělština (Španělsko) | Ne | Ano | Ne
- ru-RU | Ruština (Rusko) | Ne | Ano | Ne
  fr-FR | Francouzština (Francie) | Ne | Ano | Ne
+ cs-CZ | Angličtina (Spojené státy) | Ano | Ano | Ano
+ en-GB | Angličtina (Britské) | Ne | Ano | Ne
+ cs CA | Angličtina (Kanada) | Ne | Ano | Ne
+ cs AU | Angličtina (Austrálie) | Ne | Ano | Ne
+ es-ES | Španělština (Španělsko) | Ne | Ano | Ne
+ NL-NL | Nizozemština (Nizozemsko) | Ne | Ano | Ne
+ pt-PT | Portoguese (Portogal) | Ne | Ano | Ne
+ tr-TR | Turečtina (Turecko) | Ne | Ano | Ne
+ pt-BR | Portugalština (Brazílie) | Ne | Ano | Ne
+ ru-RU | Ruština (Rusko) | Ne | Ano | Ne
  zh-CN | Čínština (Mandarínština, zjednodušená čínština) | Ne | Ano | Ne
+ zh-HK | Čínština (Mandarínština, tradiční) | Ne | Ano | Ne
+ zh-TW | Čínština (Tchaj-wanská Mandarínština) | Ne | Ano | Ne
+ ja-JP | Japonština (Japonsko) | Ne | Ano | Ne
+ ko-KR | Korejština (Jižní Korea) | Ne | Ano | Ne
 
 ## <a name="text-to-speech"></a>Převod textu na řeč
 

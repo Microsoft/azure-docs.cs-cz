@@ -9,12 +9,12 @@ ms.custom: scale out apps
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 10ba369c9627f7492f9776a757d4bccb74013b5f
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: c7682b63689d9b47fce5fa65a3c0a2301d53502a
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/11/2018
-ms.locfileid: "44349190"
+ms.locfileid: "44379193"
 ---
 # <a name="deploy-a-split-merge-service"></a>Nasazení služby dělení a slučování
 Nástroj split-merge umožňuje přesun dat mezi horizontálně dělené databáze. Zobrazit [přesouvá data mezi databázemi s horizontálním navýšením kapacity](sql-database-elastic-scale-overview-split-and-merge.md)
@@ -143,7 +143,7 @@ Pokud své role pracovního procesu selže do režimu online, ale webová role p
 
 ## <a name="test-the-service-deployment"></a>Testování nasazení služby
 ### <a name="connect-with-a-web-browser"></a>Připojit pomocí webového prohlížeče
-Zjistěte koncový bod webové služby dělení a slučování. Zjistíte to v portálu Azure classic tak, že přejdete **řídicí panel** cloudové služby a podíváte se na **adresa URL webu** na pravé straně. Nahraďte **http://** s **https://** vzhledem k tomu, že výchozí nastavení zabezpečení zakázat koncový bod HTTP. Načtení stránky pro tuto adresu URL do prohlížeče.
+Zjistěte koncový bod webové služby dělení a slučování. Zjistíte to v portálu tak, že přejdete **přehled** cloudové služby a podíváte se na **adresa URL webu** na pravé straně. Nahraďte **http://** s **https://** vzhledem k tomu, že výchozí nastavení zabezpečení zakázat koncový bod HTTP. Načtení stránky pro tuto adresu URL do prohlížeče.
 
 ### <a name="test-with-powershell-scripts"></a>Testování pomocí skriptů prostředí PowerShell
 Nasazení a prostředí můžete otestovat spuštěním zahrnuté ukázkové skripty Powershellu.

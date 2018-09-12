@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 09/11/2018
 git ms.author: brenduns
 ms.reviewer: misainat
-ms.openlocfilehash: fe6be5a041b87af2323c7978c5371e326b3cd3d6
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: c1b88518f9e27093ff00ad020e470fa5670dfcd6
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44051268"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391942"
 ---
 # <a name="azure-stack-development-kit-release-notes"></a>Zpráva k vydání verze Azure Stack Development Kit  
 Tento článek obsahuje informace o vylepšení, oprav a známé problémy v Azure Stack Development Kit. Pokud si nejste jistí, kterou verzi používáte, můžete si [použití portálu ke kontrole](.\.\azure-stack-updates.md#determine-the-current-version).
@@ -60,6 +60,8 @@ Toto sestavení obsahuje následující vylepšení a oprav pro Azure Stack.
 - <!-- 1697698  | IS, ASDK --> *Kurzy rychlý Start* v na řídicím panelu portálu teď odkaz na související články v online dokumentaci k Azure Stack.
 
 - <!-- 2515955   | IS ,ASDK--> *Všechny služby* nahradí *další služby* na portálech správce a uživatele Azure stacku. Teď můžete použít *všechny služby* jako alternativu k navigaci na portálech Azure Stack stejným způsobem jako v Azure Portal.
+
+- <!-- TBD | IS, ASDK --> **+ Vytvořit prostředek** nahradí **+ nová** na portálech správce a uživatele Azure stacku.  Teď můžete použít *+ vytvořit prostředek* jako alternativu k navigaci na portálech Azure Stack stejným způsobem jako v Azure Portal. 
 
 - <!--  TBD – IS, ASDK --> *Základní A* velikostí virtuálních počítačů byly ukončeny pro [vytvoření škálovací sady virtuálních počítačů](.\.\azure-stack-compute-add-scalesets.md) (VMSS) prostřednictvím portálu. Pokud chcete vytvořit VMSS se tato velikost, pomocí Powershellu nebo šablony. 
 

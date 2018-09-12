@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: anwestg
-ms.openlocfilehash: 9173dfcbb5f73c2292bce7d28c2dae5dbece79cd
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 9e868788d0cf3b3c0f2f30095388046f64ced71c
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42059405"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378536"
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Přidání poskytovatele prostředků App Service do služby Azure Stack
 
@@ -97,7 +97,7 @@ Nasazení poskytovatele prostředků App Service, postupujte podle těchto krok�
 8. Zadejte informace pro svou sdílenou složku a potom vyberte **Další**. Plně kvalifikovaný název domény (FQDN) nebo IP adresa souborového serveru se musí používat adresu sdílené složky. Například \\\appservicefileserver.local.cloudapp.azurestack.external\websites, nebo \\\10.0.0.1\websites.
 
    >[!NOTE]
-   >Instalační program se pokusí o test připojení ke sdílení souborů než budete pokračovat. Ale pokud nasazení provádíte do existující virtuální sítě, může tento test připojení souborů. Jsou uvedeny upozornění a výzvy, chcete-li pokračovat. Pokud sdílenou složku. informace o správné, pokračujte v nasazení.
+   >Instalační program se pokusí o test připojení ke sdílení souborů než budete pokračovat. Ale pokud nasazení provádíte do existující virtuální síť, tento test připojení se nemusí podařit. Jsou uvedeny upozornění a výzvy, chcete-li pokračovat. Pokud sdílenou složku. informace o správné, pokračujte v nasazení.
 
    ![Instalační program služby App Service][7]
 

@@ -1,36 +1,36 @@
 ---
-title: Azure zásobníku školení a certifikace
-description: Další informace o Azure zásobníku školení certifikační příležitosti
+title: Azure Stack školení a certifikace
+description: Další informace o možnostech certifikačních školení Azure Stack
 services: azure-stack
 author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 09/10/2018
 ms.author: mabrigg
-keywords: ''
-ms.openlocfilehash: 19dba180d19967dcd6a01a6b2851d746ad1f9831
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2b9a769abb1e704dce0bd6924372be62bb85d68d
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32154507"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44376863"
 ---
-# <a name="azure-stack-training-and-certification"></a>Azure zásobníku školení a certifikace
+# <a name="azure-stack-training-and-certification"></a>Azure Stack školení a certifikace
 
-*Platí pro: Azure zásobníku integrované systémy*
+*Platí pro: integrované systémy Azure Stack*
 
-Následující možnosti školení a certifikace jsou k dispozici můžete další informace o Azure zásobníku a předvedení vaší znalosti zásobník Azure.
+Následující možnosti školení a certifikace jsou k dispozici vám pomůžou získat informace o službě Azure Stack a ukazují vaše znalosti Azure Stack.
 
 ## <a name="training"></a>Školení
 
-- [Během 20537A: Konfigurace a provozování hybridního cloudu s Microsoft Azure zásobníku](https://www.microsoft.com/en-us/learning/course.aspx?cid=20537)
-- [edX: Azure školení Online zásobníku](https://aka.ms/AzureStackMOOC)
-- [Role úlohy a mapy kurzů](https://azure.microsoft.com/training/learning-paths/)
+- [Kurz 20537A: Konfigurace a provozování hybridní Cloud s Microsoft Azure Stack](https://www.microsoft.com/en-us/learning/course.aspx?cid=20537)
+- [edX: Online školení pro Azure Stack](https://aka.ms/AzureStackMOOC)
+- [Úloha role a postupy výuky](https://azure.microsoft.com/training/learning-paths/)
 
 ## <a name="certification"></a>Certifikace
-Azure certifikace zásobníku jsou aktuálně ve vývoji. Vraťte se zpět pro nejnovější aktualizace.
+
+Certifikáty Azure Stack je v současnosti ve vývoji. Sledujte nejnovější aktualizace.
 
 ## <a name="next-steps"></a>Další postup
 
-[Dokumentace k Azure zásobníku](https://docs.microsoft.com/azure/azure-stack/)
+[Dokumentace ke službě Azure Stack](https://docs.microsoft.com/azure/azure-stack/)

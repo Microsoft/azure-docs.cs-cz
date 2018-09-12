@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/19/2017
 ms.author: daveba
-ms.openlocfilehash: f729a7972a36d53cb8f4f3769aedde4ca2005d80
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 77953884253002c6da7b0151151d97bb65a6c659
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346116"
+ms.locfileid: "44377084"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-vm-using-the-azure-portal"></a>Konfigurace spravovaných identit pro prostředky Azure na virtuální počítač pomocí webu Azure portal
 
@@ -34,8 +34,10 @@ V tomto článku se dozvíte, jak můžete povolit nebo zakázat systému a uži
 - Pokud nejste obeznámeni s spravovaných identit pro prostředky Azure, podívejte se [oddílu přehled](overview.md).
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
 - Váš účet k provádění operací správy v tomto článku, potřebuje následující přiřazení řízení přístupu na základě rolí Azure:
+
     > [!NOTE]
     > Žádné další Azure vyžaduje přiřazení rolí adresáře AD.
+
     - [Přispěvatel virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) povolit a odeberte systém přiřadil spravovaná identita z virtuálního počítače Azure.
 
 ## <a name="system-assigned-managed-identity"></a>Systém přiřadil spravované identity

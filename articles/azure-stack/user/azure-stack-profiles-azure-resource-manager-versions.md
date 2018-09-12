@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/24/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 9d33ccf9262d4432ac7255121e97f318d00b5145
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: bc57d445c334baeb32dbffda814cb10a35956d03
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43050645"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44380212"
 ---
 # <a name="resource-provider-api-versions-supported-by-profiles-in-azure-stack"></a>Verze rozhraní API poskytovatele prostředků podporované profily ve službě Azure Stack
 
@@ -54,9 +54,9 @@ Vysvětlení profilů rozhraní API a verze vydávání verzí pro službu Azure
 | Resources_Locks | 2016-10-01 |
 | Předplatná | 2016-10-01 |
 
-Další seznam verzí pro každý typ prostředku pro zprostředkovatele v profilu rozhraní api najdete v tématu [podrobnosti 2018-03-01hybridní](#details-for-the-2018-03-01-hybrid) profilu.
+Další seznam verzí pro každý typ prostředku pro zprostředkovatele v profilu rozhraní API najdete v tématu [podrobnosti 2018-03-01hybridní](#details-for-the-2018-03-01-hybrid) profilu.
 
-## <a name="overview-of-2017-03-09-profile"></a>Přehled 2017-03-09-profile
+## <a name="overview-of-2018-03-01-hybrid"></a>Přehled 2018-03-01hybridní
 
 | Poskytovatel prostředků | verze API-version |
 |------------------------------------------------|------------------------------|
@@ -76,7 +76,7 @@ Další seznam verzí pro každý typ prostředku pro zprostředkovatele v profi
 | Resources_Locks | 2016-09-01 |
 | Předplatná | 2016-06-1 |
 
-Další seznam verzí pro každý typ prostředku pro zprostředkovatele v profilu rozhraní api najdete v tématu [podrobnosti 2017-03-09-profile](#details-for-the-2017-03-09-profile)
+Další seznam verzí pro každý typ prostředku pro zprostředkovatele v profilu rozhraní api najdete v tématu [podrobnosti 2018-03-01hybridní](#details-for-the-2018-03-01-hybrid)
 
 ## <a name="details-for-the-2018-03-01-hybrid"></a>Podrobnosti o 2018-03-01hybridní
 
@@ -231,7 +231,7 @@ Poskytovatel prostředků úložiště (SRP) umožňuje spravovat váš účet �
 | StorageAccounts | 2016-01-01 |
 | Použití | 2016-01-01 |
 
-## <a name="details-for-the-2017-03-09-profile"></a>Podrobnosti o 2017-03-09-profile
+## <a name="details-for-the-2018-03-01-hybrid"></a>Podrobnosti o 2018-03-01hybridní
 
 ### <a name="microsoft-authorization"></a>Autorizace Microsoft
 

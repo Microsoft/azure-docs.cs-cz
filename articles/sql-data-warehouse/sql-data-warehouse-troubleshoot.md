@@ -10,15 +10,15 @@ ms.component: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: befb4cc075841d45cae769b5ddf924434e65eff3
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 3500754c7e9cb14ea86e9c0e562ec5f98fc1fc94
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307243"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377764"
 ---
 # <a name="troubleshooting-azure-sql-data-warehouse"></a>Řešení potíží s Azure SQL Data Warehouse
-Toto téma obsahuje seznam běžných otázka Poradce při potížích.
+Tento článek uvádí běžné otázka Poradce při potížích.
 
 ## <a name="connecting"></a>Připojování
 | Problém | Řešení |
@@ -27,13 +27,13 @@ Toto téma obsahuje seznam běžných otázka Poradce při potížích.
 | Server instančního objektu "Moje_uživatelské_jméno" není přístup k databázi "master" v aktuálním kontextu zabezpečení. Výchozí databázi uživatele nelze otevřít. Přihlášení se nezdařilo. Přihlašovací jméno uživatele "Moje_uživatelské_jméno" se nezdařilo. (Microsoft SQL Server, chyba: 916) |K této chybě dochází, když uživatel AAD pokusí připojit k hlavní databázi, ale nemá žádné uživatele v hlavní větvi.  Chcete-li tento problém vyřešit, buď zadejte SQL Data Warehouse, kterou chcete připojit v době připojení nebo přidejte uživatele k hlavní databázi.  Zobrazit [Přehled zabezpečení] [ Security overview] , kde najdete další podrobnosti. |
 | Chyba CTAIP |Této chybě může dojít po vytvoření přihlášení v hlavní databázi systému SQL server, ale ne v databázi SQL Data Warehouse.  Pokud dojde k této chybě, podívejte se na [Přehled zabezpečení] [ Security overview] článku.  Tento článek vysvětluje, jak vytvořit přihlášení a uživatele na hlavním serveru a tom, jak vytvořit uživatele v databázi SQL Data Warehouse. |
 | Blokovaná bránou Firewall |Azure SQL Database jsou chráněny serveru a databáze úrovně brány firewall, aby pouze známé IP adresy, které mají přístup k databázi. Bránu firewall se ve výchozím nastavení, což znamená, že je potřeba explicitně povolit a IP adresu nebo rozsah adres zabezpečený před připojením.  Pokud chcete nakonfigurovat bránu firewall pro přístup, postupujte podle kroků v [konfigurovat přístup k serveru brány firewall pro IP adresu vašeho klienta] [ Configure server firewall access for your client IP] v [zřizování pokyny] [Provisioning instructions]. |
-| Nelze se připojit pomocí nástroje nebo ovladače |SQL Data Warehouse se doporučuje používat [SSMS][SSMS], [SSDT pro Visual Studio][SSDT for Visual Studio], nebo [sqlcmd] [ sqlcmd] k dotazování na data. Další podrobnosti o ovladače a připojení k SQL Data Warehouse, najdete v části [ovladače pro Azure SQL Data Warehouse] [ Drivers for Azure SQL Data Warehouse] a [připojení k Azure SQL Data Warehouse] [ Connect to Azure SQL Data Warehouse] článků. |
+| Nelze se připojit pomocí nástroje nebo ovladače |SQL Data Warehouse se doporučuje používat [SSMS][SSMS], [SSDT pro Visual Studio][SSDT for Visual Studio], nebo [sqlcmd] [ sqlcmd] k dotazování na data. Další informace o ovladače a připojení k SQL Data Warehouse najdete v tématu [ovladače pro Azure SQL Data Warehouse] [ Drivers for Azure SQL Data Warehouse] a [připojení k Azure SQL Data Warehouse] [ Connect to Azure SQL Data Warehouse] článků. |
 
 ## <a name="tools"></a>Nástroje
 | Problém | Řešení |
 |:--- |:--- |
 | Průzkumník objektů systému Visual Studio chybí uživatel AAD |Jedná se o známý problém.  Jako alternativní řešení, zobrazení uživatelů v [sys.database_principals][sys.database_principals].  Zobrazit [ověřování do služby Azure SQL Data Warehouse] [ Authentication to Azure SQL Data Warehouse] Další informace o používání služby Azure Active Directory se službou SQL Data Warehouse. |
-|Příručka skriptování, pomocí Průvodce skriptovací nebo připojení přes SSMS je pomalá, ukončování "zamrzlých" nebo vytváření chyb| Ujistěte se prosím, že uživatelé byly vytvořeny v hlavní databázi. V možnosti skriptování Ujistěte se také, že edice modulu a je nastaven jako "Microsoft Azure SQL Data Warehouse edici" modul typu "Microsoft Azure SQL Database".|
+|Příručka skriptování, pomocí Průvodce skriptovací nebo připojení přes SSMS je pomalá, ukončování "zamrzlých" nebo vytváření chyb| Ujistěte se, že uživatelé byly vytvořeny v hlavní databázi. V možnosti skriptování Ujistěte se také, že edice modulu a je nastaven jako "Microsoft Azure SQL Data Warehouse edici" modul typu "Microsoft Azure SQL Database".|
 
 ## <a name="performance"></a>Výkon
 | Problém | Řešení |
@@ -102,7 +102,7 @@ Pro další pomoc při hledání řešení problému tady jsou některé další
 [Unsupported data types]: sql-data-warehouse-tables-data-types.md#unsupported-data-types
 [Overview]: sql-data-warehouse-tables-overview.md
 [Data types]: sql-data-warehouse-tables-data-types.md
-[Distribute]:/sql-data-warehouse-tables-distribute.md
+[Distribute]: sql-data-warehouse-tables-distribute.md
 [Index]: sql-data-warehouse-tables-index.md
 [Partition]: sql-data-warehouse-tables-partition.md
 [Statistics]: sql-data-warehouse-tables-statistics.md

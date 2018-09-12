@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 07/23/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: 6dff2d1886a560e3a7e2758816a884782e33787f
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 12023216575b08732f3ef2d04bac9e825621f720
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43287966"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44376965"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-june-2018"></a>Co je nového ve službě Azure SQL Data Warehouse? Červen 2018
 Azure SQL Data Warehouse neustále obdrží vylepšení. Tento článek popisuje nové funkce a změny, které byly zavedeny v červnu 2018. 
@@ -23,7 +23,7 @@ Azure SQL Data Warehouse neustále obdrží vylepšení. Tento článek popisuje
 ## <a name="user-defined-restore-points"></a>Uživatelem definované body obnovení
 SQL Data Warehouse automaticky pořizuje snímky datového skladu každých 8 hodin starat plánovaného bodu obnovení osm hodin (RPO). Když to automatizované snímky usnadnění správy zatížení spuštěných váš datový sklad, není potřeba dělat jeho snímky v kritické dobu podle potřeb vašeho podniku. Třeba pořízení snímku bezprostředně před významné datové zatížení nebo nasazení nové skripty do datového skladu povolit bod obnovení přímo před provedením operace. 
 
-SQL Data Warehouse teď podporuje [body obnovení uživatelem definované](https://azure.microsoft.com/blog/quick-recovery-time-with-sql-data-warehouse-using-user-defined-restore-points/) prostřednictvím [New-AzureRmSqlDatabaseRestorePoint](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabaserestorepoin) rutiny.
+SQL Data Warehouse teď podporuje [body obnovení uživatelem definované](https://azure.microsoft.com/blog/quick-recovery-time-with-sql-data-warehouse-using-user-defined-restore-points/) prostřednictvím [New-AzureRmSqlDatabaseRestorePoint](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabaserestorepoint) rutiny.
 
 ```PowerShell
 New-AzureRmSqlDatabaseRestorePoint
@@ -50,7 +50,7 @@ The SELECT permission was denied on the column 'SSN' of the object 'Membership',
 ```
 
 ## <a name="objectschemaname"></a>OBJECT_SCHEMA_NAME
-[OBJECT_SCHEMA_NAME()]() funkce vrací název schématu databáze pro objekty s rozsahem schématu. Tato funkce stala běžné nástroje ETL při ověřování schématu objektu. 
+[OBJECT_SCHEMA_NAME()](https://docs.microsoft.com/sql/t-sql/functions/object-schema-name-transact-sql) funkce vrací název schématu databáze pro objekty s rozsahem schématu. Tato funkce stala běžné nástroje ETL při ověřování schématu objektu. 
 
 ```sql
 SELECT

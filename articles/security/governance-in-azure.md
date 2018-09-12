@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 579e900ee6616af8fd197e501364acd8e18d3e37
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 6e5b6fac25c8c7f76991a58fbcab363c6fc20f12
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970519"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44380348"
 ---
 # <a name="governance-in-azure"></a>Zásady správného řízení v Azure
 
@@ -70,7 +70,7 @@ Organizace se smlouvou Enterprise předplatná Azure, postupujte podle čtyři �
 
 1. Registrace podnikového správce.
 
-2. Oddělení správce
+2. Správce oddělení
 
 3. Vlastník účtu
 
@@ -146,21 +146,21 @@ Další doporučení k šablonám najdete v tématu [Osvědčené postupy pro vy
 
 Azure Resource Manager analyzuje závislosti a pomáhají zajistit, že se prostředky vytvoří ve správném pořadí. Pokud jeden prostředek závisí na hodnotě z jiného prostředku (například virtuální počítač potřebuje účet úložiště pro disky), které [nastavit závislost](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-define-dependencies) v šabloně.
 
-Šablony můžete také využít pro aktualizace infrastruktury. Můžete například ke svému řešení přidat prostředek a konfigurační pravidla pro prostředky, které jsou už nasazené. Pokud šablona specifikuje vytvoření prostředku, ale tento prostředek již existuje, Resource Manager provede aktualizaci místo vytvoření nového assetu. Její data zahrnují doby odezvy, závislosti, výjimky, trasování, ladění snímků a profily spouštění.
+Šablony můžete také využít pro aktualizace infrastruktury. Můžete například ke svému řešení přidat prostředek a konfigurační pravidla pro prostředky, které jsou už nasazené. Pokud šablona specifikuje vytvoření prostředku, ale tento prostředek již existuje, Resource Manager provede aktualizaci místo vytvoření nového assetu. Resource Manager aktualizuje stávající asset do stejného stavu, jako kdyby byl nový.
 
-Poskytuje nástroje pro analýzu všechna tato telemetrie si můžete usnadnit ladění aplikace i vám pomohou pochopit, jak uživatelé pracují s ním.
+Resource Manager poskytuje rozšíření pro scénáře, když budete potřebovat další operace, jako je instalace softwaru, který není součástí instalace.
 
-### <a name="resource-tracking"></a>Můžete zjistit, zda nárůst doby odezvy je z důvodu něco v aplikaci nebo některé externí pravděpodobně problém.
+### <a name="resource-tracking"></a>Sledování prostředků
 
-Pokud používáte Visual Studio a aplikace se při selhání, můžete přejít přímo na problém řádek kódu, můžete to napravit. Log [Analytics](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) je pro uživatele, kteří potřebují k vyladění výkonu a plánování údržby na aplikace běžící v produkčním prostředí. Shromažďuje a agreguje data z mnoha zdrojů, s trvat 10 až 15 minut. Poskytuje holistické řešení pro správu IT pro Azure, místní a cloudové infrastruktury třetí strany (například Amazon Web Services).
+Jak uživatelé ve vaší organizaci přidávat prostředky do předplatného, bude další důležité prostředky přidružit vhodné oddělení, zákazníků a prostředí. Log [Analytics](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) je pro uživatele, kteří potřebují k vyladění výkonu a plánování údržby na aplikace běžící v produkčním prostředí. Použití značek k poskytnutí informací o zdroji nebo vlastníka. Značky umožňují nejenom agregovat a skupině prostředků v několika způsoby, ale také použít tato data pro účely vracení peněz.
 
-Poskytuje nástroje pro analýzu dat napříč zdroji, umožňuje složitých dotazů ve všech protokolů a můžete proaktivně upozorní na zadané podmínky. Můžete dokonce shromáždění vlastních dat v centrálním úložišti a následně dotazovat a vizualizovat tato data.
+Používat značky v případě, že máte komplexní kolekci skupin prostředků a prostředků a potřebujete tyto assety způsobem, který je pro vás nejvhodnější vizualizovat. Například můžete označit prostředky, které slouží podobnou roli ve vaší organizaci nebo, který patří do stejného oddělení.
 
-System Center Operations Manager je pro správu a monitorování velkých cloudových zařízení. Možná už znáte jako nástroj pro správu pro místní Windows Server a Hyper-V na základě cloudy, ale můžete také integrovat a Správa aplikací pro Azure. Mimo jiné ho můžete nainstalovat na existující živé aplikace Application Insights. Označení může také hrát důležitou roli při omezení zbytečných nákladů ve vašem předplatném.
+Uživatelé ve vaší organizaci mohou vytvořit různé prostředky, které může být obtížné později identifikovat a spravovat bez použití značek. Můžete například chtít odstranit všechny prostředky pro projekt. Pokud tyto prostředky nejsou označené značkami, musíte je ručně najít. Označení může také hrát důležitou roli při omezení zbytečných nákladů ve vašem předplatném.
 
-Pokud aplikace přestane fungovat, Operations Manageru zjistíte v řádu sekund. Příklady implementace zásad správného řízení předplatného Azure
+Prostředky nemusí nacházet ve stejné skupině prostředků se stejnou značkou. Můžete vytvořit vlastní taxonomii značek a zajistit, že všichni uživatelé ve vaší organizaci používat společné značky a nikoli neúmyslně použití mírně odlišné značky (například "oddělení" místo "oddělení").
 
-Microsoft Azure Government Můžete vytvořit zásady k zajištění, že prostředky jsou označené odpovídajícími hodnotami.
+Zásady prostředků umožňují vytvořit standardní pravidla pro vaši organizaci. Můžete vytvořit zásady k zajištění, že prostředky jsou označené odpovídajícími hodnotami.
 
 Označené prostředky můžete také zobrazit přes Azure Portal. [Sestavu využití](https://docs.microsoft.com/azure/billing/billing-understand-your-bill) pro vaše předplatné obsahuje názvy a hodnoty značek, takže je lze rozdělit náklady podle značek.
 

@@ -8,21 +8,24 @@ ms.topic: include
 ms.date: 07/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 1606b5e38b79cb535108ca747783a05de1fbc982
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: eac6c6d76bcc3b3d9cfeda7d8ca4e52e28ba9d8f
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40027110"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44369124"
 ---
 Velikosti virtuálních počítačů pro obecné účely poskytují vyvážený poměr procesorů k paměti. Ideální pro testování a vývoj, malé a střední databáze a webové servery s nízkým a středním provozem. Tento článek obsahuje informace o počtu virtuálních procesorů, datové disky a síťové adaptéry, jakož i propustnost úložiště pro velikosti v této skupině. 
 
-- Virtuální počítače řady Av2-series je možné nasadit na celou řadu typů hardwaru a procesorů. Velikost je omezována v závislosti na použitém hardwaru a nabízí konzistentní výkon procesoru pro spuštěné instance bez ohledu na hardware. Pokud chcete zjistit fyzický hardware, na kterém je virtuální počítač dané velikosti nasazený, zadejte dotaz na virtuální hardware přímo z virtuálního počítače.
+- Virtuální počítače řady Av2-series je možné nasadit na celou řadu typů hardwaru a procesorů. Díky konfiguraci paměti a výkonu procesoru jsou virtuální počítače řady A-Series nejvhodnější pro úlohy základní úrovně, jako je vývoj a testování. Velikost je omezována v závislosti na použitém hardwaru a nabízí konzistentní výkon procesoru pro spuštěné instance bez ohledu na hardware. Pokud chcete zjistit fyzický hardware, na kterém je virtuální počítač dané velikosti nasazený, zadejte dotaz na virtuální hardware přímo z virtuálního počítače.
 
-- Virtuální počítače Dv2-series, nástupce původní řady D-series, mají výkonnější procesor. Procesor v Dv2-series je asi o 35 % rychlejší než procesor v D-series. Je založen na nejnovější generace Intel Xeon® E5-2673 v3 (Haswell) 2,4 GHz nebo E5-2673 v4 (Broadwell) 2,3 GHz procesorech a s technologií Intel Turbo Boost Technology 2.0 můžete až na 3,1 GHz. Řada Dv2-series má stejnou konfiguraci paměti a disku jako řada D.
+  Vzorové případy použití zahrnují vývojové a testovací servery, webové servery s nízkým provozem, malé a střední databáze, testování konceptů, úložiště kódu.
+
+- Řada Dv2-series, nástupce původní D-series, nabízí výkonnější procesor a optimální konfigurace procesoru k paměti, díky kterým jsou vhodné pro většinu produkčních úloh. Procesor v Dv2-series je asi o 35 % rychlejší než procesor v D-series. Je založen na nejnovější generace Intel Xeon® E5-2673 v3 (Haswell) 2,4 GHz nebo E5-2673 v4 (Broadwell) 2,3 GHz procesorech a s technologií Intel Turbo Boost Technology 2.0 můžete až na 3,1 GHz. Řada Dv2-series má stejnou konfiguraci paměti a disku jako řada D.
 
 - Dv3-series, funkcí procesoru 2,4 GHz Intel Xeon® E5-2673 v3 (Haswell) procesor nebo nejnovější procesorech 2,3 GHz Intel XEON® E5-2673 v4 (Broadwell) procesoru v konfiguraci typu hyper, poskytuje lepší návrh hodnoty pro většinu obecných úloh účel.  Paměti došlo k rozbalení (z ~3.5 GiB/virtuální procesor do 4 GB a vCPU) zatímco disku a sítě limity byly upraveny na základě vázané na jádro, aby bylo v souladu s přechodem na hyperthreadingem.  Dv3 už má vysoký poměr paměti velikosti virtuálních počítačů řady D/Dv2, ty se přesunuly na novou řadu Ev3.
 
+  Vzorové případy použití řady D-series zahrnují podnikových aplikací, relačních databází, ukládání do mezipaměti a analýzu. 
 
 ## <a name="b-series"></a>B-Series
 
@@ -31,6 +34,8 @@ Storage úrovně Premium: podporováno
 Premium Storage ukládání do mezipaměti: Není podporováno
 
 Zvládáním výkonových špiček virtuální počítače řady B-series jsou ideální pro úlohy, které nejsou nutné plný výkon procesoru nepřetržitě, jako jsou webové servery, malé databáze a vývoj a testovací prostředí. Tyto úlohy mají obvykle požadavky na výkon zvládáním výkonových špiček. B-Series poskytuje tyto zákazníkům možnost zakoupení velikost virtuálního počítače s výkonem při provádění základní ceny, umožňující instance virtuálního počítače Vybudujte kredity, když virtuální počítač využívá míň než jeho základní výkon. Když virtuální počítač se nashromáždil kredit, můžete převést virtuální počítač nad základní Virtuálního počítače pomocí až 100 % procesoru, když vaše aplikace vyžaduje vyšší výkon procesoru.
+
+Vzorové případy použití zahrnují servery pro vývoj a testování, servery web s nízkým provozem, malé databáze, mikroslužby, servery pro testování konceptů, buildovací servery.
 
 
 | Velikost             | Virtuální procesory  | Paměť: GiB | Místní SSD: GiB | Základní výkonu jádro | Kredity bankovních / hodina | Maximální počet bankovních kredity | Max. datových disků | Maximální výkon místního disku: IOPS / MB/s | Maximální počet bez mezipaměti výkonu disku: IOPS / MB/s | Maximální počet síťových karet |          

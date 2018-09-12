@@ -10,108 +10,111 @@ ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 08/24/2018
-ms.openlocfilehash: 1f8e3ede4140ab5346285f7c247864f8ef8e2d48
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.date: 09/11/2018
+ms.openlocfilehash: e61e975a07dd643652ca4847025499e3e77f42be
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42889604"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377067"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-db"></a>Známé problémy a migrace omezení online migrace do Azure SQL DB
 
 Známé problémy a omezení související s online migraci z SQL serveru do služby Azure SQL Database jsou popsané níže.
 
-- Migrace z dočasné tabulky nejsou podporovány
+### <a name="migration-of-temporal-tables-not-supported"></a>Migrace z dočasné tabulky nejsou podporovány
 
-    **Příznak**
+**Příznak**
 
-    Pokud zdrojová databáze obsahuje jeden nebo více dočasných tabulek, migrace databází selže během operace "úplné načtení dat" a může se zobrazit následující zpráva:
+Pokud zdrojová databáze obsahuje jeden nebo více dočasných tabulek, migrace databází selže během operace "úplné načtení dat" a může se zobrazit následující zpráva:
 
-    {"ID prostředku": "/subscriptions/<subscription id>/resourceGroups/migrateready/providers/Microsoft.DataMigration/services/<DMS Service name>", "errorType": "Chyba migrace databáze", "errorEvents": "[" funkce zachytávání nelze nastavit. RetCode: SqlState SQL_ERROR: 42000 NativeError: 13570 zprávy: [Microsoft] [SQL Server Native Client 11.0] [SQL Server] použití replikace není podporována se systémovou správou dočasná tabulka "[aplikace. Měst]' řádek: 1 sloupec: hodnota -1 "]"}
+{"ID prostředku": "/subscriptions/<subscription id>/resourceGroups/migrateready/providers/Microsoft.DataMigration/services/<DMS Service name>", "errorType": "Chyba migrace databáze", "errorEvents": "[" funkce zachytávání nelze nastavit. RetCode: SqlState SQL_ERROR: 42000 NativeError: 13570 zprávy: [Microsoft] [SQL Server Native Client 11.0] [SQL Server] použití replikace není podporována se systémovou správou dočasná tabulka "[aplikace. Měst]' řádek: 1 sloupec: hodnota -1 "]"}
  
-   ![Příklad chyby dočasnou tabulku](media\known-issues-azure-sql-online\dms-temporal-tables-errors.png)
+ ![Příklad chyby dočasnou tabulku](media\known-issues-azure-sql-online\dms-temporal-tables-errors.png)
 
-   **Alternativní řešení**
+**Alternativní řešení**
 
-   1. Najdete dočasných tabulek ve schématu zdroje pomocí dotazu níže.
-        ``` 
-       select name,temporal_type,temporal_type_desc,* from sys.tables where temporal_type <>0
-        ```
-   2. Vyloučit z těchto tabulek **nakonfigurovat nastavení migrace** okno, ve kterém zadáte tabulky k migraci.
-   3. Znovu spusťte aktivitu migrace.
+1. Najdete dočasných tabulek ve schématu zdroje pomocí dotazu níže.
+     ``` 
+     select name,temporal_type,temporal_type_desc,* from sys.tables where temporal_type <>0
+     ```
+2. Vyloučit z těchto tabulek **nakonfigurovat nastavení migrace** okno, ve kterém zadáte tabulky k migraci.
 
-    **Prostředky**
+3. Znovu spusťte aktivitu migrace.
 
-    Další informace najdete v článku [dočasných tabulek se](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables?view=sql-server-2017).
+**Prostředky**
+
+Další informace najdete v článku [dočasných tabulek se](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables?view=sql-server-2017).
  
-- Migrace tabulky obsahuje jeden nebo více sloupců datového typu hierarchyid
+### <a name="migration-of-tables-includes-one-or-more-columns-with-the-hierarchyid-data-type"></a>Migrace tabulky obsahuje jeden nebo více sloupců datového typu hierarchyid
 
-    **Příznak**
+**Příznak**
 
-    Může zobrazit výjimka SQL navrhuje "ntext není kompatibilní s hierarchyid" během operace "úplné načtení dat":
+Může zobrazit výjimka SQL navrhuje "ntext není kompatibilní s hierarchyid" během operace "úplné načtení dat":
      
-    ![Příklad hierarchyid chyby](media\known-issues-azure-sql-online\dms-hierarchyid-errors.png)
+![Příklad hierarchyid chyby](media\known-issues-azure-sql-online\dms-hierarchyid-errors.png)
 
-    **Alternativní řešení**
+**Alternativní řešení**
 
-    1. Najdete uživatele tabulky, které obsahují sloupce datového typu hierarchyid pomocí dotazu níže.
+1. Najdete uživatele tabulky, které obsahují sloupce datového typu hierarchyid pomocí dotazu níže.
 
-        ``` 
-        select object_name(object_id) 'Table name' from sys.columns where system_type_id =240 and object_id in (select object_id from sys.objects where type='U')
-        ``` 
+      ``` 
+      select object_name(object_id) 'Table name' from sys.columns where system_type_id =240 and object_id in (select object_id from sys.objects where type='U')
+      ``` 
 
-    2.  Vyloučit z těchto tabulek **nakonfigurovat nastavení migrace** okno, ve kterém zadáte tabulky k migraci.
-    3.  Znovu spusťte aktivitu migrace.
+ 2. Vyloučit z těchto tabulek **nakonfigurovat nastavení migrace** okno, ve kterém zadáte tabulky k migraci.
 
-- Selhání migrace s různými porušení integrity s aktivní aktivačními událostmi ve schématu během "úplné načtení dat" nebo "Přírůstková synchronizace dat"
+ 3. Znovu spusťte aktivitu migrace.
 
-    **Alternativní řešení**
-    1. Najdete aktivační události, které jsou aktuálně aktivní zdrojové databáze pomocí dotazu níže:
-        ```
-        select * from sys.triggers where is_disabled =0
-        ```
-    2.  Zakázat aktivační události na zdrojové databázi pomocí kroků uvedených v následujícím článku [DISABLE TRIGGER (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/disable-trigger-transact-sql?view=sql-server-2017).
-    3.  Opětovné spuštění aktivity migrace.
+### <a name="migration-failures-with-various-integrity-violations-with-active-triggers-in-the-schema-during-full-data-load-or-incremental-data-sync"></a>Selhání migrace s různými porušení integrity s aktivní aktivačními událostmi ve schématu během "úplné načtení dat" nebo "Přírůstková synchronizace dat"
 
-- Podpora pro typy dat LOB
+**Alternativní řešení**
+1. Najdete aktivační události, které jsou aktuálně aktivní zdrojové databáze pomocí dotazu níže:
+     ```
+     select * from sys.triggers where is_disabled =0
+     ```
+2. Zakázat aktivační události na zdrojové databázi pomocí kroků uvedených v následujícím článku [DISABLE TRIGGER (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/disable-trigger-transact-sql?view=sql-server-2017).
 
-    **Příznak**
+3. Opětovné spuštění aktivity migrace.
 
-    Pokud délka sloupec velkého objektu (LOB) je větší než 32 KB, může získat data zkrácena v cílovém. Délka sloupce LOB pomocí dotazu níže, můžete zkontrolovat: 
+### <a name="support-for-lob-data-types"></a>Podpora pro typy dat LOB
 
-    ``` 
-    SELECT max(len(ColumnName)) as LEN from TableName
-    ```
+**Příznak**
 
-    **Alternativní řešení**
+Pokud délka sloupec velkého objektu (LOB) je větší než 32 KB, může získat data zkrácena v cílovém. Délka sloupce LOB pomocí dotazu níže, můžete zkontrolovat: 
 
-    Pokud máte sloupec LOB, který je větší než 32 KB, obraťte se na technický tým na [ dmsfeedback@microsoft.com ](mailto:dmsfeedback@microsoft.com).
+``` 
+SELECT max(len(ColumnName)) as LEN from TableName
+```
 
-- Problémy s sloupce časového razítka
+**Alternativní řešení**
 
-    **Příznak**
+Pokud máte sloupec LOB, který je větší než 32 KB, obraťte se na technický tým na [ dmsfeedback@microsoft.com ](mailto:dmsfeedback@microsoft.com).
 
-    DMS nemigruje hodnotu časové razítko zdroje Místo toho DMS generuje novou hodnotu časového razítka v cílové tabulce.
+### <a name="issues-with-timestamp-columns"></a>Problémy s sloupce časového razítka
 
-    **Alternativní řešení**
+**Příznak**
 
-    Pokud potřebujete DMS k migraci přesné časové razítko hodnoty uložené ve zdrojové tabulce, obraťte se na technický tým na [ dmsfeedback@microsoft.com ](mailto:dmsfeedback@microsoft.com).
+DMS nemigruje hodnotu časové razítko zdroje Místo toho DMS generuje novou hodnotu časového razítka v cílové tabulce.
 
-- Chyby při migraci dat se neposkytuje další podrobnosti v okně podrobný stav databáze.
+**Alternativní řešení**
 
-    **Příznak**
+Pokud potřebujete DMS k migraci přesné časové razítko hodnoty uložené ve zdrojové tabulce, obraťte se na technický tým na [ dmsfeedback@microsoft.com ](mailto:dmsfeedback@microsoft.com).
 
-    Když dojde k selhání migrace v zobrazení stavu podrobnosti databáze, vyberete **chyby při migraci dat** odkaz na horním pásu karet nemusí poskytnout další podrobnosti, které jsou specifické pro selhání migrace.
+### <a name="data-migration-errors-do-not-provide-additional-details-on-the-database-detailed-status-blade"></a>Chyby při migraci dat se neposkytuje další podrobnosti v okně podrobný stav databáze.
 
-     ![chyby při migraci dat žádné podrobnosti o příklad](media\known-issues-azure-sql-online\dms-data-migration-errors-no-details.png)
+**Příznak**
 
-    **Alternativní řešení**
+Když dojde k selhání migrace v zobrazení stavu podrobnosti databáze, vyberete **chyby při migraci dat** odkaz na horním pásu karet nemusí poskytnout další podrobnosti, které jsou specifické pro selhání migrace.
 
-    Získat podrobnosti o konkrétní chybě, postupujte podle následujících kroků.
+![chyby při migraci dat žádné podrobnosti o příklad](media\known-issues-azure-sql-online\dms-data-migration-errors-no-details.png)
 
-    1.  Zavřete okno podrobný stav databáze zobrazte obrazovku aktivitu migrace.
+**Alternativní řešení**
+
+Získat podrobnosti o konkrétní chybě, postupujte podle následujících kroků.
+
+1. Zavřete okno podrobný stav databáze zobrazte obrazovku aktivitu migrace.
 
      ![obrazovka aktivita migrace](media\known-issues-azure-sql-online\dms-migration-activity-screen.png)
 
-    2. Vyberte **viz podrobnosti o chybě** zobrazíte specifické chybové zprávy, které vám umožní řešit chyby při migraci.
+2. Vyberte **viz podrobnosti o chybě** zobrazíte specifické chybové zprávy, které vám umožní řešit chyby při migraci.

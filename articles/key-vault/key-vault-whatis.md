@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: barclayn
-ms.openlocfilehash: d7357dc7e8fa473bd8517dd80ede749b9d8e3f07
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 580ebbf219daa4c22034ffbf9ee3abbbdd0c8130
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44162831"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378759"
 ---
 # <a name="what-is-azure-key-vault"></a>Co je Azure Key Vault?
 
 Azure Key Vault pomáhá řešit následující problémy
-- Azure Key Vault je možné využít k zabezpečenému ukládání tokenů, hesel, certifikátů, klíčů rozhraní API a dalších tajných klíčů a důsledné kontrole přístupu k nim.
-- Azure Key Vault je možné použít také jako řešení pro správu klíčů. Azure Key Vault usnadňuje vytváření a správu šifrovacích klíčů sloužících k šifrování dat. 
-- Azure Key Vault je také služba, která umožňuje snadné zřizování, správu a nasazování veřejných a privátních certifikátů SSL/TLS (Secure Sockets Layer/Transport Layer Security) pro použití s Azure a interními připojenými prostředky. 
-- Klíče a tajné klíče je možné chránit pomocí softwaru nebo modulů HSM ověřených podle standardu FIPS 140-2 Level 2.
+- **Správa tajných kódů** -Azure Key Vault umožňuje bezpečně ukládat a důsledně řídit přístup k tokeny, hesla, certifikáty, klíče rozhraní API a dalších tajných kódů
+- **Správa klíčů** -Azure Key Vault slouží také jako řešení pro správu klíčů. Azure Key Vault usnadňuje vytváření a správu šifrovacích klíčů sloužících k šifrování dat. 
+- **Správa certifikátů** – Azure Key Vault je také služba, která umožňuje snadné zřizování, spravovat a nasazovat veřejné a privátní certifikáty Secure Sockets Layer/Transport Layer Security (SSL/TLS) pro použití s Azure a vaší interní připojení prostředky. 
+- **Moduly hardwarového zabezpečení** -klíčů nebo tajných kódů se dají chránit buď softwarové, nebo podle standardu FIPS 140-2 úrovně 2 ověří moduly hardwarového zabezpečení
 
 ## <a name="basic-concepts"></a>Základní koncepty
 

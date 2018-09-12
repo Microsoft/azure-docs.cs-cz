@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: sethm
 ms.reviewer: thoroet
-ms.openlocfilehash: b563117f4d4b0e3859f0478a66610b0238f265dd
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 995a22b947756fd0fb297c395846df26de20bdd9
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092554"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391823"
 ---
 # <a name="install-powershell-for-azure-stack"></a>Instalace Powershellu pro Azure Stack
 
@@ -27,7 +27,7 @@ ms.locfileid: "44092554"
 
 Pro práci s vaším cloudovým, je nutné nainstalovat kompatibilní moduly Powershellu služby Azure Stack. Kompatibilita je povolená díky funkci s názvem *profilů API*.
 
-Profily rozhraní API poskytují způsob, jak spravovat verze rozdíly mezi Azure a Azure Stack. Profilu verze rozhraní API je sada modulů Azure Powershellu pro Resource Manager s konkrétní verzí rozhraní API. Každá Cloudová platforma obsahuje sadu podporovaných profilů verzí API. Například Azure Stack podporuje verzi konkrétní průkaz s datem profilu, jako **2017-03-09-profile**, a podporuje Azure **nejnovější** profilu verze rozhraní API. Při instalaci profilu jsou nainstalovány moduly Powershellu pro Azure Resource Manager, které odpovídají zadaný profil.
+Profily rozhraní API poskytují způsob, jak spravovat verze rozdíly mezi Azure a Azure Stack. Profilu verze rozhraní API je sada modulů Azure Powershellu pro Resource Manager s konkrétní verzí rozhraní API. Každá Cloudová platforma obsahuje sadu podporovaných profilů verzí API. Například Azure Stack podporuje verzi konkrétní průkaz s datem profilu, jako **2017-03-09-profile**, a podporuje Azure **nejnovější** profilu verze rozhraní API. Při instalaci profilu jsou nainstalovány moduly Powershellu pro Azure Resource Manager, které odpovídají zadaný profil.  
 
 Můžete nainstalovat kompatibilní moduly Powershellu v Internetu připojený, částečně připojeno nebo odpojených scénářů, služby Azure Stack. Tento článek vás provede podrobné pokyny k instalaci prostředí PowerShell pro Azure Stack pro tyto scénáře.
 

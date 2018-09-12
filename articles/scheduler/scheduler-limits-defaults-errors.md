@@ -14,21 +14,21 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/18/2016
 ms.author: deli
-ms.openlocfilehash: db6b1c196cb468f41c7a7ce34758de346b522abb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4be0695402b66fdb2a027bfbada0e0b26e02d36f
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23867812"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378716"
 ---
 # <a name="scheduler-limits-and-defaults"></a>Omezení a výchozích hodnot
-## <a name="scheduler-quotas-limits-defaults-and-throttles"></a>Scheduler kvóty, omezení, výchozí hodnoty a omezení
+## <a name="scheduler-quotas-limits-defaults-and-throttles"></a>Kvóty pro Scheduler, omezení, výchozí hodnoty a omezení
 [!INCLUDE [scheduler-limits-table](../../includes/scheduler-limits-table.md)]
 
 ## <a name="the-x-ms-request-id-header"></a>Hlavička x-ms-request-id
-Každý požadavek směřovaný na službu Plánovač vrátí hlavičky odpovědi s názvem**x-ms-request-id**. Tuto hlavičku obsahuje neprůhledné hodnoty, která jednoznačně identifikuje požadavek.
+Každý požadavek směřovaný služba Plánovač vrátí hlavičku odpovědi s názvem **x-ms-request-id**. Této hlavičky obsahuje neprůhledná hodnota, která jednoznačně identifikuje požadavek.
 
-Pokud požadavek konzistentně selhává a ověříte, že je správně formulovali požadavek, můžete používat tuto hodnotu ohlaste chybu společnosti Microsoft. V sestavě zahrnují hodnotu x-ms-request-id, Přibližná doba, po který byl požadavek, identifikátor odběru, kolekci úloh nebo úlohy a typ operace, které se pokusili žádosti.
+Pokud si ověříte, že žádost je správně formulovat žádost se opakovaně nedaří zálohovat, můžete použít tuto hodnotu hlásit chyby společnosti Microsoft. V sestavě zahrnují hodnotu x-ms-request-id, jak dlouho byla podána žádost, identifikátor předplatné, kolekci úloh nebo úlohy a typ operace, která k pokusu o žádost.
 
 ## <a name="see-also"></a>Viz také
  [Co je Scheduler?](scheduler-intro.md)

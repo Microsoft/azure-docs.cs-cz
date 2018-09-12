@@ -10,19 +10,19 @@ ms.component: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 3e2008315a8b1c728ef1dac50002b8322907eb51
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: c035ef1a79cde7c594c66964052c0653c5c709d9
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43248000"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377968"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-azure-sql-data-warehouse-with-powershell"></a>Rychlý start: Pozastavení a obnovení compute v Azure SQL Data Warehouse pomocí prostředí PowerShell
 Použití Powershellu k pozastavení výpočetních prostředků ve službě Azure SQL Data Warehouse vám ušetří náklady. [Obnovit výpočty](sql-data-warehouse-manage-compute-overview.md) až budete připravení použít datový sklad.
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-Tento kurz vyžaduje modul Azure PowerShell verze 5.1.1 nebo novější. To, jakou verzi aktuálně používáte, zjistíte spuštěním příkazu ` Get-Module -ListAvailable AzureRM`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps.md).
+Tento kurz vyžaduje modul Azure PowerShell verze 5.1.1 nebo novější. To, jakou verzi aktuálně používáte, zjistíte spuštěním příkazu ` Get-Module -ListAvailable AzureRM`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps).
 
 ## <a name="before-you-begin"></a>Než začnete
 
@@ -67,7 +67,7 @@ Informace o umístění vašeho datového skladu vyhledáte pomocí následujíc
 ## <a name="pause-compute"></a>Pozastavit výpočetní prostředky
 Abyste dosáhli nižších nákladů, lze pozastavit a obnovit výpočetní prostředky na vyžádání. Například pokud nepoužíváte databáze v noci a o víkendech, můžete pozastavit během těchto obdobích a obnovit během dne. Neplatí žádné poplatky za výpočetní prostředky, zatímco databáze je pozastavená. Můžete ale dál účtovat poplatky za úložiště.
 
-Chcete-li pozastavit databázi, použijte [Suspend-AzureRmSqlDatabase](/powershell/module/azurerm.sql/suspend-azurermsqldatabase.md) rutiny. Následující příklad pozastaví datový sklad s názvem **mySampleDataWarehouse** hostovaný na serveru s názvem **newserver-20171113**. Server je ve skupině prostředků Azure s názvem **myResourceGroup**.
+Chcete-li pozastavit databázi, použijte [Suspend-AzureRmSqlDatabase](/powershell/module/azurerm.sql/suspend-azurermsqldatabase) rutiny. Následující příklad pozastaví datový sklad s názvem **mySampleDataWarehouse** hostovaný na serveru s názvem **newserver-20171113**. Server je ve skupině prostředků Azure s názvem **myResourceGroup**.
 
 
 ```Powershell
@@ -93,7 +93,7 @@ Resume-AzureRmSqlDatabase –ResourceGroupName "myResourceGroup" `
 –ServerName "newserver-20171113" -DatabaseName "mySampleDataWarehouse"
 ```
 
-Varianta, tento další příklad načte do objektu $database databáze. Je následně prostřednictvím kanálu předá objekt, který má [Resume-AzureRmSqlDatabase](/powershell/module/azurerm.sql/resume-azurermsqldatabase.md) a uloží výsledky do $resultDatabase. Poslední příkaz zobrazí výsledky.
+Varianta, tento další příklad načte do objektu $database databáze. Je následně prostřednictvím kanálu předá objekt, který má [Resume-AzureRmSqlDatabase](/powershell/module/azurerm.sql/resume-azurermsqldatabase) a uloží výsledky do $resultDatabase. Poslední příkaz zobrazí výsledky.
 
 ```Powershell
 $database = Get-AzureRmSqlDatabase –ResourceGroupName "ResourceGroup1" `

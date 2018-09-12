@@ -3,7 +3,7 @@ title: Azure konzoly sériového portu GRUB a režimu jednoho uživatele | Dokum
 description: Pomocí konzoly sériového portu pro grub ve službě Azure virtual machines.
 services: virtual-machines-linux
 documentationcenter: ''
-author: alsin
+author: asinn826
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,15 +14,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 059cb0cbc7e62af16dbf95693be421feebcc1ee0
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.openlocfilehash: 9952720e917dc9202630b2feda0fadd0402d9eb6
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42058697"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377866"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Použít pro přístup k GRUB a Jednouživatelský režim konzoly sériového portu
 Režim jednoho uživatele je minimální prostředí s minimálním funkce. Může být užitečné pro prozkoumat problémy s spouštěcí nebo problémů se sítí a méně services může běžet na pozadí, v závislosti na runlevel, systém souborů nemusí i připojit automaticky. To je užitečné v situacích, například poškozený systém souborů, porušení fstab prošetření nebo síťového připojení (nesprávná iptables konfigurace).
+
+Pro přístup k GRUB, je potřeba restartování vašeho virtuálního počítače přitom otevřete okno konzoly sériového portu. To lze provést pomocí SysRq `'b'` příkaz, nebo kliknutím na restartování tlačítka v okně Přehled. Některé distribuce bude vyžadovat vstup z klávesnice zobrazíte GRUB, zatímco jiné se automaticky zobrazit GRUB na několik sekund na spouštěcí a povolit vstup uživatele zrušit vypršení časového limitu se vstup z klávesnice. 
 
 Některé distribuce automaticky vyřadí je v jednouživatelském režimu nebo nouzového režimu Pokud je virtuální počítač nelze spustit. Jiné, ale vyžadují další nastavení, před jejich lze přetáhnout je do režimu jednoho uživatele nebo nouzové situace to automaticky.
 

@@ -15,18 +15,20 @@ ms.topic: article
 ms.date: 08/15/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 8da02641cc54f9308f8e0bbb8d2b28da9a930aa2
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 994893eb73356fde9acc593569dc5fb1c5a0106f
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42054226"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391126"
 ---
 # <a name="use-api-version-profiles-for-powershell-in-azure-stack"></a>Použití profilů verzí rozhraní API pro prostředí PowerShell ve službě Azure Stack
 
 *Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
 Profilů verzí API poskytují způsob, jak spravovat verze rozdíly mezi Azure a Azure Stack. Profilu verze rozhraní API je sada moduly AzureRM Powershellu s konkrétní verzí rozhraní API. Každá Cloudová platforma obsahuje sadu podporovaných profilů verzí API. Například Azure Stack podporuje verzi konkrétní průkaz s datem profilu, jako **2017-03-09-profile**, a podporuje Azure **nejnovější** profilu verze rozhraní API. Při instalaci profilu jsou nainstalovány moduly AzureRM Powershellu, které odpovídají zadaný profil.
+
+ 
 
 ## <a name="install-the-powershell-module-required-to-use-api-version-profiles"></a>Nainstalujte modul prostředí PowerShell vyžaduje použití profilů verzí API
 

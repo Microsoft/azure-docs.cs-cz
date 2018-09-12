@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2018
 ms.author: kumud
-ms.openlocfilehash: 042ab6cc0c894a720e9d9974be9debdb089fe65d
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 308e085bf98dea179a81b3ac28c14de2994b5927
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44050251"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44390848"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Load Balancer úrovně Standard a zóny dostupnosti
 
@@ -77,7 +77,7 @@ Pomocí následujícího skriptu vytvořte zónově redundantních front-endovou
             "apiVersion": "2017-08-01",
             "type": "Microsoft.Network/loadBalancers",
             "name": "load_balancer_standard",
-            "location": "region",
+            "location": "[resourceGroup().location]",
             "sku":
             {
                 "name": "Standard"
@@ -111,7 +111,7 @@ Pomocí následujícího skriptu vytvořte oblastmi standardní veřejnou IP adr
             "apiVersion": "2017-08-01",
             "type": "Microsoft.Network/publicIPAddresses",
             "name": "public_ip_standard",
-            "location": "region",
+            "location": "[resourceGroup().location]",
             "zones": [ "1" ],
             "sku":
             {

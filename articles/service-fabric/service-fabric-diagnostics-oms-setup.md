@@ -1,6 +1,6 @@
 ---
-title: Nastavení monitorování pomocí analýzy protokolů Azure Service Fabric - | Microsoft Docs
-description: Zjistěte, jak nastavit analýzy protokolů pro vizualizaci a analýzu událostí k monitorování clusterů Azure Service Fabric.
+title: Azure Service Fabric – nastavení monitorování pomocí Log Analytics | Dokumentace Microsoftu
+description: Zjistěte, jak nastavit službu Log Analytics pro vizualizaci a analyzování události k monitorování clusterů Azure Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: srrengar
@@ -12,185 +12,90 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 4/03/2018
+ms.date: 9/11/2018
 ms.author: srrengar
-ms.openlocfilehash: 90a28162fb1f455c154ad4d2da7beac6bc785bc7
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 5fa7b7ebfb1495a737a6d037566101df632764aa
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36301032"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377747"
 ---
-# <a name="set-up-log-analytics-for-a-cluster"></a>Nastavení analýzy protokolů pro cluster
+# <a name="set-up-log-analytics-for-a-cluster"></a>Nastavení Log Analytics pro cluster
 
-Analýzy protokolů je naše doporučení pro sledování událostí na úrovni clusteru. Můžete nastavit pracovní prostor analýzy protokolů pomocí Azure Resource Manager, prostředí PowerShell nebo Azure Marketplace. Pokud chcete zachovat aktualizovanou šablonu Resource Manager nasazení pro budoucí použití, nastavení prostředí analýzy protokolů pomocí stejné šablony. Nasazení prostřednictvím Marketplace je jednodušší, pokud již máte cluster nasadit s diagnostikou povolena. Pokud nemáte přístup na úrovni předplatného v účtu, do které nasazujete, nasaďte pomocí prostředí PowerShell nebo šablony Resource Manageru.
+Log Analytics je naše doporučení pro monitorování událostí na úrovni clusteru. Můžete nastavit pracovní prostor Log Analytics prostřednictvím Azure Resource Manageru, Powershellu nebo Azure Marketplace. Pokud chcete zachovat aktualizovanou šablonu Resource Manageru pro budoucí použití vašeho nasazení, můžete stejnou šablonu použijte k nastavení prostředí Log Analytics. Nasazení prostřednictvím webu Marketplace a je jednodušší, pokud už máte cluster nasazený s povolenou diagnostikou. Pokud nemáte přístup na úrovni předplatného v účtu, do které nasazujete, nasaďte pomocí Powershellu nebo šablony Resource Manageru.
 
 > [!NOTE]
-> Nastavení analýzy protokolů pro monitorování vašeho clusteru, musíte mít diagnostiky povoleno zobrazovat události na úrovni clusteru nebo platformu. Odkazovat na [postup nastavení diagnostiky v clusterech Windows](service-fabric-diagnostics-event-aggregation-wad.md) a [postup nastavení diagnostiky v clusterech Linux](service-fabric-diagnostics-event-aggregation-lad.md) Další informace
+> K nastavení Log Analytics pro monitorování vašeho clusteru, musíte mít zapnutou zobrazení událostí úrovně clusteru nebo na úrovni platformy diagnostiku. Odkazovat na [nastavení diagnostiky v clusterech Windows](service-fabric-diagnostics-event-aggregation-wad.md) a [nastavení diagnostiky v clusterech s Linuxem](service-fabric-diagnostics-event-aggregation-lad.md) Další informace
 
-## <a name="deploy-a-log-analytics-workspace-by-using-azure-marketplace"></a>Nasazení pracovní prostor analýzy protokolů pomocí Azure Marketplace
+## <a name="deploy-a-log-analytics-workspace-by-using-azure-marketplace"></a>Nasazení pracovního prostoru Log Analytics pomocí webu Azure Marketplace
 
-Pokud chcete přidat pracovní prostor analýzy protokolů po nasazení clusteru, přejděte na Azure Marketplace v portálu a vyhledejte **Service Fabric Analytics**. Toto je vlastní řešení pro nasazení Service Fabric, která obsahuje data, které jsou specifické pro Service Fabric. V tomto procesu vytvoříte řešení (řídicí panel k zobrazení statistiky) i prostoru (agregace v základních datech clusteru).
+Pokud chcete přidat pracovní prostor Log Analytics po nasazení clusteru, přejděte na Azure Marketplace na portálu a vyhledejte **analýza služby Service Fabric**. Toto je vlastní řešení pro Service Fabric nasazení, který obsahuje data specifická pro Service Fabric. V tomto procesu vytvoříte řešení (řídicí panel, aby insights) i pracovního prostoru (agregace podkladových dat clusteru).
 
 1. Vyberte **nový** v levé navigační nabídce. 
 
-2. Vyhledejte **služby Fabric Analytics**. Vyberte prostředek, který se zobrazí.
+2. Vyhledejte **Service Fabric Analytics**. Vyberte prostředek, který se zobrazí.
 
 3. Vyberte **Vytvořit**.
 
-    ![Služba Fabric Analytics v Marketplace.](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics.png)
+    ![Analýza služby Service Fabric na webu Marketplace](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics.png)
 
-4. V okně vytváření Service Fabric Analytics vyberte **vyberte pracovní prostor** pro **pracovním prostorem OMS** pole a potom **vytvořit nový pracovní prostor**. Vyplňte požadované položky. Jediným požadavkem je, že předplatné pro cluster Service Fabric a pracovního prostoru je stejný. Při ověření vaší položky pracovního prostoru spustí nasazení. Nasazení trvá jenom pár minut.
+4. V okně vytváření analýza služby Service Fabric, zvolte **vyberte pracovní prostor** pro **pracovní prostor OMS** pole a potom **vytvořit nový pracovní prostor**. Vyplňte požadované položky. Jediným požadavkem je, že předplatné pro cluster Service Fabric a pracovní prostor je stejný. Když ověříte zadané pracovního prostoru začne nasazovat. Nasazení trvá jenom pár minut.
 
-5. Po dokončení vyberte **vytvořit** znovu v dolní části okna Vytvoření Service Fabric Analytics. Ujistěte se, že nový pracovní prostor se zobrazí v části **pracovním prostorem OMS**. Tato akce přidá řešení do pracovního prostoru, kterou jste vytvořili.
+5. Až budete hotovi, vyberte **vytvořit** znovu v dolní části okna vytváření analýza služby Service Fabric. Ujistěte se, že nový pracovní prostor se zobrazí v části **pracovní prostor OMS**. Tato akce přidá řešení do pracovního prostoru, který jste vytvořili.
 
-Pokud používáte systém Windows, pokračujte následujícími kroky pro připojení analýzy protokolů k účtu úložiště, kde jsou uloženy vaše události clusteru. 
+Pokud používáte Windows, pokračujte následujícími kroky pro připojení Log Analytics do účtu úložiště, kde jsou uložené vaše události clusteru. 
 
 >[!NOTE]
->Povolení této funkce pro Linux clusterů ještě není k dispozici. 
+>Povolení této funkce pro clustery s Linuxem ještě není k dispozici. 
 
-### <a name="connect-the-log-analytics-workspace-to-your-cluster"></a>Pracovní prostor Log Analytics připojit ke clusteru 
+### <a name="connect-the-log-analytics-workspace-to-your-cluster"></a>Připojení k vašemu clusteru pracovní prostor Log Analytics 
 
-1. V pracovním prostoru musí být připojen k diagnostiky dat pocházejících z clusteru. Přejděte do skupiny prostředků, ve které jste vytvořili řešení Service Fabric analýzy. Vyberte **ServiceFabric\<nameOfWorkspace\>**  a přejděte na stránku s jeho Přehled. Odtud můžete změnit nastavení řešení, nastavení pracovního prostoru a přístupu pracovní prostor analýzy protokolů.
+1. Pracovní prostor se musí být připojen k diagnostická data z vašeho clusteru. Přejděte do skupiny prostředků, ve které jste vytvořili řešení analýza služby Service Fabric. Vyberte **ServiceFabric\<nameOfWorkspace\>**  a přejít na stránku jeho Přehled. Odtud můžete změnit nastavení řešení, pracovní prostor nastavení a přístup k pracovnímu prostoru Log Analytics.
 
-2. V levém navigačním nabídce v části **zdroje dat pracovního prostoru**, vyberte **účtů úložiště protokolů**.
+2. V levé navigační nabídce v části **zdroje dat pracovního prostoru**vyberte **protokoly účtů úložiště**.
 
-3. Na **protokol účtu úložiště** vyberte **přidat** v horní části přidat váš cluster protokoly do pracovního prostoru.
+3. Na **protokoly účtu úložiště** stránce **přidat** v horní části, chcete-li přidat váš cluster protokoly do pracovního prostoru.
 
-4. Vyberte **účet úložiště** přidat odpovídající účet vytvořený v clusteru. Pokud jste použili výchozí název, účet úložiště je **sfdg\<resourceGroupName\>**. Můžete to ověřit také pomocí šablony Azure Resource Manager používá k nasazení kontrolou hodnota používaná pro cluster, **applicationDiagnosticsStorageAccountName**. Pokud název nezobrazuje, posuňte se dolů a vyberte **načtěte více**. Vyberte název účtu úložiště.
+4. Vyberte **účtu úložiště** přidat příslušný účet vytvořený ve vašem clusteru. Pokud jste použili výchozí název, účet úložiště je **sfdg\<resourceGroupName\>**. Můžete to ověřit také pomocí šablony Azure Resource Manageru použít k nasazení clusteru, kontrolou hodnoty používané pro **applicationDiagnosticsStorageAccountName**. Pokud název není uveden, posuňte se dolů a vyberte **načíst další**. Vyberte název účtu úložiště.
 
-5. Zadejte typ Data. Nastavte ji na **události služby Fabric**.
+5. Určení datového typu. Nastavte ho na **události Service Fabric**.
 
-6. Ujistěte se, zda je zdroj automaticky nastavena na **WADServiceFabric\*EventTable**.
+6. Ujistěte se, že zdroji se automaticky nastaví na **WADServiceFabric\*EventTable**.
 
-7. Vyberte **OK** připojit pracovního prostoru do protokolů vašeho clusteru.
+7. Vyberte **OK** k připojení vašeho pracovního prostoru do vašeho clusteru protokolů.
 
-    ![Přidat protokol účtu úložiště k analýze protokolů](media/service-fabric-diagnostics-event-analysis-oms/add-storage-account.png)
+    ![Přidejte protokoly účtu úložiště do služby Log Analytics](media/service-fabric-diagnostics-event-analysis-oms/add-storage-account.png)
 
-Účet se zobrazí jako součást svého účtu úložiště přihlásí zdroje dat pracovního prostoru.
+Účet se teď zobrazí se jako součást vašeho účtu úložiště protokolů v zdroje dat pracovního prostoru.
 
-Řešení Service Fabric analýzy jste přidali v pracovní prostor analýzy protokolů, který je nyní správně připojené k platformě váš cluster a tabulku protokolu aplikace. Další zdroje můžete přidat do pracovního prostoru stejným způsobem.
+Analýza služby Service Fabric řešení jste přidali v pracovním prostoru Log Analytics, která je teď správně připojený k platforma vašeho clusteru a tabulku protokolu aplikace. Stejným způsobem můžete přidat další zdroje do pracovního prostoru.
 
 
-## <a name="deploy-log-analytics-by-using-a-resource-manager-template"></a>Nasazení analýzy protokolů pomocí šablony Resource Manageru
+## <a name="deploy-log-analytics-by-using-a-resource-manager-template"></a>Nasadit Log Analytics s využitím šablony Resource Manageru
 
-Když nasadíte cluster pomocí šablony Resource Manageru, šablona vytvoří nový pracovní prostor analýzy protokolů, Service Fabric řešení přidá do pracovního prostoru a nakonfiguruje jej číst data z tabulky příslušné úložiště.
+Při nasazování clusteru pomocí šablony Resource Manageru šablony vytvoří nový pracovní prostor Log Analytics, přidá řešení Service Fabric do pracovního prostoru a nakonfiguruje ho na čtení dat z tabulky odpovídající úložiště.
 
-Můžete použít a změnit [Tato ukázka šablona](https://github.com/krnese/azure-quickstart-templates/tree/master/service-fabric-oms) podle svých požadavků.
+Můžete použít a upravit [Tato ukázková šablona](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-OMS-UnSecure) podle svých požadavků. Tato šablona provádí tyto kroky
 
-Proveďte následující změny:
-1. Přidat `omsWorkspaceName` a `omsRegion` na parametry přidáním následující fragment kódu do parametrech definovaných v vaše *template.json* souboru. Nebojte se, že podle potřeby upravte výchozí hodnoty. Také přidejte dva nové parametry ve vaší *Parameters.JSON tímto kódem* souboru definujte jejich hodnoty pro nasazení prostředků:
-    
-    ```json
-    "omsWorkspacename": {
-        "type": "string",
-        "defaultValue": "sfomsworkspace",
-        "metadata": {
-            "description": "Name of your Log Analytics Workspace"
-        }
-    },
-    "omsRegion": {
-        "type": "string",
-        "defaultValue": "East US",
-        "allowedValues": [
-            "West Europe",
-            "East US",
-            "Southeast Asia"
-        ],
-        "metadata": {
-            "description": "Specify the Azure Region for your Log Analytics workspace"
-        }
-    }
-    ```
+* Vytvoří cluster Service Fabric s 5 uzly
+* Vytvoří pracovní prostor Log Analytics a řešení v Service Fabric
+* Nakonfiguruje agenta OMS pro shromažďování a odesílání 2 čítačů výkonu ukázkové do pracovního prostoru
+* Nakonfiguruje WAD collect Service Fabric a odesílá je do tabulky v úložišti Azure (WADServiceFabric * EventTable)
+* Konfiguruje pracovní prostor Log Analytics ke čtení událostí z těchto tabulek
 
-    `omsRegion` Hodnoty musí odpovídat na konkrétní sadu hodnot. Vyberte ten, který je nejblíže k nasazení clusteru.
 
-2. Pokud odesíláte žádné protokoly aplikace k analýze protokolů, nejdřív ověřte, že `applicationDiagnosticsStorageAccountType` a `applicationDiagnosticsStorageAccountName` jsou zahrnuty jako parametry v šabloně. Pokud nejsou zahrnuty, přidejte je do části proměnné a upravit jejich hodnoty podle potřeby. Použít také jako parametry podle předchozích formátu.
+Šablony můžete nasadit jako upgrade Resource Manageru do clusteru s použitím `New-AzureRmResourceGroupDeployment` rozhraní API v modul AzureRM Powershellu. Příklad příkazu by byl:
 
-    ```json
-    "applicationDiagnosticsStorageAccountType": "Standard_LRS",
-    "applicationDiagnosticsStorageAccountName": "[toLower(concat('oms', uniqueString(resourceGroup().id), '3' ))]"
-    ```
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName "<resourceGroupName>" -TemplateFile "<templatefile>.json" 
+``` 
 
-3. Přidáte řešení Service Fabric na vaší šablony proměnné:
+Azure Resource Manager zjistí, že tento příkaz je aktualizace pro existující prostředek. Zpracuje pouze změny mezi šablony řízení stávající nasazení a novou šablonu, která je k dispozici.
 
-    ```json
-    "solution": "[Concat('ServiceFabric', '(', parameters('omsWorkspacename'), ')')]",
-    "solutionName": "ServiceFabric"
-    ```
+## <a name="deploy-log-analytics-by-using-azure-powershell"></a>Nasadit Log Analytics pomocí Azure Powershellu
 
-4. Přidejte následující na konci části vaše prostředky, po kterém je deklarovaná prostředek clusteru Service Fabric:
-
-    ```json
-    {
-        "apiVersion": "2015-11-01-preview",
-        "location": "[parameters('omsRegion')]",
-        "name": "[parameters('omsWorkspacename')]",
-        "type": "Microsoft.OperationalInsights/workspaces",
-        "properties": {
-            "sku": {
-                "name": "Free"
-            }
-        },
-        "resources": [
-            {
-                "apiVersion": "2015-11-01-preview",
-                "name": "[concat(parameters('applicationDiagnosticsStorageAccountName'),parameters('omsWorkspacename'))]",
-                "type": "storageinsightconfigs",
-                "dependsOn": [
-                    "[concat('Microsoft.OperationalInsights/workspaces/', parameters('omsWorkspacename'))]",
-                    "[concat('Microsoft.Storage/storageAccounts/', parameters('applicationDiagnosticsStorageAccountName'))]"
-                ],
-                "properties": {
-                    "containers": [ ],
-                    "tables": [
-                        "WADServiceFabric*EventTable",
-                        "WADWindowsEventLogsTable",
-                        "WADETWEventTable"
-                    ],
-                    "storageAccount": {
-                        "id": "[resourceId('Microsoft.Storage/storageaccounts/', parameters('applicationDiagnosticsStorageAccountName'))]",
-                        "key": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('applicationDiagnosticsStorageAccountName')),'2015-06-15').key1]"
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "apiVersion": "2015-11-01-preview",
-        "location": "[parameters('omsRegion')]",
-        "name": "[variables('solution')]",
-        "type": "Microsoft.OperationsManagement/solutions",
-        "id": "[resourceId('Microsoft.OperationsManagement/solutions/', variables('solution'))]",
-        "dependsOn": [
-            "[concat('Microsoft.OperationalInsights/workspaces/', parameters('OMSWorkspacename'))]"
-        ],
-        "properties": {
-            "workspaceResourceId": "[resourceId('Microsoft.OperationalInsights/workspaces/', parameters('omsWorkspacename'))]"
-        },
-        "plan": {
-            "name": "[variables('solution')]",
-            "publisher": "Microsoft",
-            "product": "[Concat('OMSGallery/', variables('solutionName'))]",
-            "promotionCode": ""
-        }
-    }
-    ```
-    
-    > [!NOTE]
-    > Pokud jste přidali `applicationDiagnosticsStorageAccountName` jako proměnnou, nezapomeňte upravit každý odkaz na jeho `variables('applicationDiagnosticsStorageAccountName')` místo `parameters('applicationDiagnosticsStorageAccountName')`.
-
-5. Nasazení šablony jako upgrade správce prostředků do clusteru pomocí `New-AzureRmResourceGroupDeployment` rozhraní API v modulu AzureRM prostředí PowerShell. Příkaz příkladu by byl:
-
-    ```powershell
-    New-AzureRmResourceGroupDeployment -ResourceGroupName "sfcluster1" -TemplateFile "<path>\template.json" -TemplateParameterFile "<path>\parameters.json"
-    ``` 
-
-    Azure Resource Manager zjistí, že tento příkaz aktualizaci stávajícího prostředku. Zpracuje pouze změny mezi šablony řídí stávající nasazení a poskytuje novou šablonu.
-
-## <a name="deploy-log-analytics-by-using-azure-powershell"></a>Nasazení analýzy protokolů pomocí Azure PowerShell
-
-Prostředek analýzy protokolů pomocí prostředí PowerShell můžete taky nasadit pomocí `New-AzureRmOperationalInsightsWorkspace` příkaz. Chcete-li použít tuto metodu, ujistěte se, instalaci [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.1.1). Vytvořit nový pracovní prostor analýzy protokolů a přidejte do ní řešení Service Fabric pomocí tohoto skriptu: 
+Prostředku Log Analytics prostřednictvím prostředí PowerShell můžete také nasadit pomocí `New-AzureRmOperationalInsightsWorkspace` příkazu. Pokud chcete použít tuto metodu, ujistěte se, že jste si nainstalovali [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-5.1.1). Pomocí tohoto skriptu můžete vytvořit nový pracovní prostor Log Analytics a k němu přidejte řešení pro Service Fabric: 
 
 ```PowerShell
 
@@ -216,11 +121,11 @@ Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName $ResourceGroup
 
 ```
 
-Když jste hotovi, postupujte podle kroků v předchozím oddílu pro připojení k účtu příslušné úložiště analýzy protokolů.
+Jakmile budete hotovi, postupujte podle kroků v předchozí části pro připojení k účtu pro příslušné úložiště Log Analytics.
 
-Můžete také přidat další řešení nebo provádět další úpravy pracovní prostor analýzy protokolů pomocí prostředí PowerShell. Další informace najdete v tématu [Spravovat analýzy protokolů pomocí prostředí PowerShell](../log-analytics/log-analytics-powershell-workspace-configuration.md).
+Můžete také přidat další řešení a provádět další úpravy do pracovního prostoru Log Analytics pomocí Powershellu. Další informace najdete v tématu [spravovat Log Analytics pomocí Powershellu](../log-analytics/log-analytics-powershell-workspace-configuration.md).
 
 ## <a name="next-steps"></a>Další postup
-* [Nasazení agenta analýzy protokolů](service-fabric-diagnostics-oms-agent.md) na uzly shromáždit čítače výkonu a shromažďovat protokoly pro vaše kontejnery a statistiky docker
-* Získat familiarized s [vyhledávání a dotazování protokolu](../log-analytics/log-analytics-log-searches.md) funkcím poskytovaným jako součást analýzy protokolů
-* [Pomocí zobrazení návrhu můžete vytvořit vlastní zobrazení v analýzy protokolů](../log-analytics/log-analytics-view-designer.md)
+* [Nasadit agenta Log Analytics](service-fabric-diagnostics-oms-agent.md) na svých uzlech shromažďování čítačů výkonu a shromáždit statistiky dockeru a protokoly pro vaše kontejnery
+* Seznamte se s [prohledávání protokolů a dotazování](../log-analytics/log-analytics-log-searches.md) funkce nabízená v rámci služby Log Analytics
+* [Návrhář zobrazení použít k vytváření vlastních zobrazení v Log Analytics](../log-analytics/log-analytics-view-designer.md)

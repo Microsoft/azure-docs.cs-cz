@@ -6,21 +6,20 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 09/10/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 387c4ce51d7bc9b618bb87fd347b9448926452b7
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: ef9fe0e05343f9c99656634a075b1bd464a13c7e
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39426791"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44379583"
 ---
 # <a name="prepare-azure-stack-pki-certificates-for-deployment"></a>Příprava nasazení certifikátů Azure Stack PKI
 Soubory certifikátů [získané z certifikační Autority podle výběru](azure-stack-get-pki-certs.md) musí importovat a exportovat s vlastnostmi odpovídající požadavky na certifikát služby Azure Stack.
@@ -45,7 +44,7 @@ Pomocí těchto kroků můžete připravit a ověřování certifikátů Azure S
 
     ![Konfigurace úložiště certifikátů](.\media\prepare-pki-certs\3.png)
 
-    a. Pokud importujete PFX, které se zobrazí další dialog. Na **ochrana privátního klíče** stránky, zadejte heslo pro certifikát soubory a pak povolte **označit tento klíč jako exportovatelný. To umožňuje zálohovat nebo přenést vaše klíče později** možnost. Vyberte **Další**.
+    a. Pokud importujete PFX, zobrazí se další dialogového okna. Na **ochrana privátního klíče** stránky, zadejte heslo pro certifikát soubory a pak povolte **označit tento klíč jako exportovatelný. To umožňuje zálohovat nebo přenést vaše klíče později** možnost. Vyberte **Další**.
 
     ![Označit klíč jako exportovatelný](.\media\prepare-pki-certs\2.png)
 

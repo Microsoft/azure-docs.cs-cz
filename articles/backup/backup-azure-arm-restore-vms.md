@@ -8,13 +8,13 @@ keywords: obnovení zálohy; Postup při obnovení; bod obnovení;
 ms.service: backup
 ms.topic: conceptual
 ms.date: 09/04/2017
-ms.author: geetha.g
-ms.openlocfilehash: c0dc738af450711c129b6c1802aec34c6b1da6ec
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.author: geg
+ms.openlocfilehash: eb47b1d8d3f2859b2b5c0b79633b2d37e5a40756
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346215"
+ms.locfileid: "44380161"
 ---
 # <a name="use-the-azure-portal-to-restore-virtual-machines"></a>Obnovení virtuálních počítačů pomocí webu Azure portal
 Chraňte vaše data pořizování snímků dat definovaných intervalech. Tyto snímky jsou označovány jako body obnovení a jsou uloženy v trezorech služby Recovery Services. Pokud je nutné opravit nebo znovu vytvořit virtuální počítač (VM), můžete obnovit virtuální počítač z některé z bodů obnovení uložených. Při obnovení bodu obnovení můžete provést tyto akce:

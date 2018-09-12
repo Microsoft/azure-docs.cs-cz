@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 07/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: ac8686d0ea5704492bfc2e08972a2f70c9b34c43
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 16e2a9cfbd9f08428fddade290117b27bc3401f7
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37906815"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44369263"
 ---
-Virtuální počítače Azure řady H-series je nejnovější vydání v vysokovýkonné výpočetní prostředí, že virtuální počítače zaměřené na potřeby dynamiky, jako je molekulární modelování, výpočty dynamiky tekutin a. Tyto 8 a 16 virtuálních procesorů počítače jsou postavené na procesorů Intel Haswell E5-2667 V3 procesoru technologie nabízejí paměti DDR4 a dočasné úložiště založené na SSD. 
+Virtuální počítače Azure řady H-series je nejnovější vydání v vysokovýkonného výpočetního prostředí, že virtuální počítače zaměřené na zpracování úloh, jako jsou dávkové zpracování, analýzy, molekulární modelování a dynamika tekutin. Tyto 8 a 16 virtuálních procesorů počítače jsou postavené na procesorů Intel Haswell E5-2667 V3 procesoru technologie nabízejí paměti DDR4 a dočasné úložiště založené na SSD. 
 
 Řada H-series nabízí kromě značného výkonu procesorů i řadu možností přímého přístupu do paměti vzdáleného počítače (RDMA) s nízkou latencí díky technologii FDR InfiniBand, a množství konfigurací paměti pro podporu požadavků na vysoce paměťově náročné výpočetní operace.
 

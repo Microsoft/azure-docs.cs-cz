@@ -12,21 +12,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2018
+ms.date: 09/10/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 41e75fcfd0b88d5c37bb8dd6fcc16b1767b34dba
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: bc3b5cfc106fdb90e99fb918113f4f371f928b26
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39285353"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377951"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory bezproblémové jednotné přihlašování
 
 ## <a name="what-is-azure-active-directory-seamless-single-sign-on"></a>Co je Azure Active Directory bezproblémové jednotné přihlašování?
 
-Azure Active Directory bezproblémové jednotné přihlašování (Azure AD bezproblémové jednotné přihlašování) automaticky přihlásí uživatele v případě, že nejsou na firemní zařízení připojených k podnikové síti. Při povolení uživatele není potřeba zadejte své heslo k přihlášení do služby Azure AD a obvykle, dokonce i ve svých uživatelských jmen zadejte. Tato funkce poskytuje uživatelům snadný přístup k vaší cloudové aplikace bez nutnosti jakékoli další místní komponenty.
+Bezproblémové jednotné přihlašování Azure Active Directory (bezproblémové jednotné přihlašování Azure AD) automaticky přihlašuje uživatele, kteří zrovna používají svá podniková zařízení připojená k vaší podnikové síti. Při povolení uživatele není potřeba zadejte své heslo k přihlášení do služby Azure AD a obvykle, dokonce i ve svých uživatelských jmen zadejte. Tato funkce poskytuje uživatelům snadný přístup k vašim cloudovým aplikacím bez potřeby dalších místních komponent.
 
 >[!VIDEO https://www.youtube.com/embed/PyeAC85Gm7w]
 
@@ -62,13 +62,15 @@ Bezproblémové jednotné přihlašování je možné kombinovat s buď [synchro
 
 | OS\Browser |Internet Explorer|Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|Ano|Ne|Ano|Ano\*|neuvedeno
-|Windows 8.1|Ano|neuvedeno|Ano|Ano\*|neuvedeno
-|Windows 8|Ano|neuvedeno|Ano|Ano\*|neuvedeno
-|Windows 7|Ano|neuvedeno|Ano|Ano\*|neuvedeno
-|Mac OS X|neuvedeno|neuvedeno|Ano\*|Ano\*|Ano\*
+|Windows 10|Ano\*|Ne|Ano|Ano\*\*|neuvedeno
+|Windows 8.1|Ano\*|neuvedeno|Ano|Ano\*\*|neuvedeno
+|Windows 8|Ano\*|neuvedeno|Ano|Ano\*\*|neuvedeno
+|Windows 7|Ano\*|neuvedeno|Ano|Ano\*\*|neuvedeno
+|Mac OS X|neuvedeno|neuvedeno|Ano\*\*|Ano\*\*|Ano\*
 
-\*Vyžaduje [další konfigurace](active-directory-aadconnect-sso-quick-start.md#browser-considerations)
+\*Vyžaduje aplikaci Internet Explorer 10 nebo novější
+
+\*\*Vyžaduje [další konfigurace](active-directory-aadconnect-sso-quick-start.md#browser-considerations)
 
 >[!NOTE]
 >Pro Windows 10, doporučuje se použít [Azure AD Join](../active-directory-azureadjoin-overview.md) zajistit optimální jednotné přihlašování práci s Azure AD.

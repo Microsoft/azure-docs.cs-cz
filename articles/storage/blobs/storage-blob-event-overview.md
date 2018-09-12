@@ -8,16 +8,18 @@ ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
 ms.component: blobs
-ms.openlocfilehash: d38ab71ed2d2ebff04004f02589cfccca4199318
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: c6dfb8ac36f3b5d51cc1d6126449b458f8f4946c
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42057520"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377425"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reakce na události služby Blob storage
 
-Události služby Azure Storage umožňují aplikacím reagovat na vytváření a odstraňování objektů BLOB pomocí moderní architektury bez serveru. Dělá to bez nutnosti složité kódu nebo nákladné a neefektivní cyklického dotazování služby.  Místo toho události se nasdílejí [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) pro předplatitele, jako [Azure Functions](https://azure.microsoft.com/services/functions/), [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/), nebo dokonce vlastní naslouchací proces protokolu http vlastní a pouze Plaťte za to co používáte. 
+Události služby Azure Storage umožňují aplikacím reagovat na vytváření a odstraňování objektů BLOB pomocí moderní architektury bez serveru. Dělá to bez nutnosti složité kódu nebo nákladné a neefektivní cyklického dotazování služby.  Místo toho události se nasdílejí [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) pro předplatitele, jako [Azure Functions](https://azure.microsoft.com/services/functions/), [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/), nebo dokonce vlastní naslouchací proces protokolu http vlastní a pouze Plaťte za to co používáte.
+
+Události služby BLOB storage se spolehlivě odesílají službě mřížky událost, která nabízí spolehlivé doručování aplikací prostřednictvím zásad opakování bohaté a doručování onta nedoručených zpráv.
 
 Běžné scénáře události úložiště objektů Blob obsahovat obrázek nebo video zpracování, indexování nebo jakýkoli pracovní postup souboru objektově orientovaný.  Nahrávání souborů asynchronní se skvěle hodí k události.  Pokud jsou málo časté změny, ale vaše situace vyžaduje okamžitou odezvu, může být zvláště efektivní architektury založené na události.
 

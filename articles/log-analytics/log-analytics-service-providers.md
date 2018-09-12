@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/05/2018
+ms.date: 07/11/2018
 ms.author: meirm
 ms.component: na
-ms.openlocfilehash: 7e555eb2618dbebf939fe0ab2f313b88299cd2d0
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 7898af1a8d516fa74deef5614b5373f1dbd22f5a
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346198"
+ms.locfileid: "44378598"
 ---
 # <a name="log-analytics-for-service-providers"></a>Log Analytics pro poskytovatele služeb
 Log Analytics může pomoct, poskytovatelům spravovaných služeb (MSP), pro velké podniky, nezávislí výrobci softwaru (ISV) a poskytovatelů hostitelských služeb spravovat a monitorovat servery v jeho místní nebo cloudovou infrastrukturu. 
@@ -84,4 +84,4 @@ Existují dvě možnosti, jak implementovat centrální umístění ve službě 
 * Automatizace vytváření pracovních prostorů pomocí [prostředí PowerShell](log-analytics-powershell-workspace-configuration.md) 
 * Použití [výstrahy](log-analytics-alerts.md) integrovat se stávajícími systémy
 * Pomocí souhrnné sestavy [Power BI](log-analytics-powerbi.md)
-
+* Zkontrolujte proces [konfigurace Log Analytics a Power BI k monitorování více zákazníků CSP](https://docs.microsoft.com/azure/cloud-solution-provider/support/monitor-multiple-customers)

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/04/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 017ac3214046b812ce003ab7a190f2f2b3f4f2e2
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 3517114d5bc267aa32cea49161d0d34156a2ed1e
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697937"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44390905"
 ---
 # <a name="update-the-sql-resource-provider"></a>Aktualizace poskytovatele prostředků SQL
 
@@ -49,7 +49,9 @@ Po *UpdateSQLProvider.ps1* skript vytvoří nový virtuální počítač, skript
 
 ### <a name="update-script-powershell-example"></a>Aktualizovat ukázkový skript prostředí PowerShell
 
-Můžete upravit a spustit následující skript z se zvýšenými oprávněními ISE Powershellu. Nezapomeňte změnit informace o účtu a hesla podle potřeby pro vaše prostředí.
+<a name="you-can-edit-and-run-the-following-script-from-an-elevated-powershell-ise"></a>Můžete upravit a spustit následující skript z se zvýšenými oprávněními ISE Powershellu. 
+-  
+- Nezapomeňte změnit informace o účtu a hesla podle potřeby pro vaše prostředí.
 
 > [!NOTE]
 > Tento proces aktualizace platí jenom pro integrované systémy Azure Stack.

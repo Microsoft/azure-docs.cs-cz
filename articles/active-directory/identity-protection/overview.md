@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/08/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 06e3a596b60bf96319071fff68b0bf1655869559
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 791abd52ff4c016fe873288008e9d9b6adec6480
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003793"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378492"
 ---
 # <a name="azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection
 
@@ -83,7 +83,7 @@ Pro vyrovnávání zatížení správy aktivit kolem vaší implementace Identit
 | :--                          | ---                                |  ---   |
 | Globální správce         | Úplný přístup k Identity Protection, připojit Identity Protection| |
 | Správce zabezpečení       | Úplný přístup k Identity Protection | Připojení Identity Protection, resetujte hesla pro uživatele |
-| Čtenář zabezpečení              | Přístup k Identity Protection jen pro čtení | Připojení Identity Protection, uživatelům remidiate, nakonfigurovat zásady, resetování hesla |
+| Čtenář zabezpečení              | Přístup k Identity Protection jen pro čtení | Oprava uživatelů připojení Identity Protection, nakonfigurovat zásady, resetování hesel |
 
 
 

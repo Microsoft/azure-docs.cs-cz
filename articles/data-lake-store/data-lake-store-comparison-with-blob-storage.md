@@ -1,6 +1,6 @@
 ---
-title: Porovnání Azure Data Lake Store s Azure Storage Blob | Dokumentace Microsoftu
-description: Porovnání Azure Data Lake Store pomocí Azure Storage Blob
+title: Porovnání Azure Data Lake Storage Gen1 s Azure Storage Blob | Dokumentace Microsoftu
+description: Porovnání Azure Data Lake Storage Gen1 s Azure Storage Blob
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
@@ -12,21 +12,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 0b374e92a1e1d9828bc8c095e29e1dfdfd13275b
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 3cc38e7ede9882e78e509738351696a64c938c40
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39492907"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391404"
 ---
-# <a name="comparing-azure-data-lake-store-and-azure-blob-storage"></a>Porovnání Azure Data Lake Store a Azure Blob Storage
-Tabulky v tomto článku shrnuje rozdíly mezi Azure Data Lake Store a Azure Blob Storage podél některé klíčové aspekty zpracování velkých objemů dat. Azure Blob Storage je obecný, škálovatelné úložiště objektů, která je navržená pro širokou škálu scénářů úložiště. Azure Data Lake Store je hyperškálovatelné úložiště, která je optimalizována pro úlohy analýzy velkých objemů dat.
+# <a name="comparing-azure-data-lake-storage-gen1-and-azure-blob-storage"></a>Porovnání Azure Data Lake Storage Gen1 a Azure Blob Storage
+Tabulky v tomto článku shrnuje rozdíly mezi Azure Data Lake Storage Gen1 a Azure Blob Storage podél některé klíčové aspekty zpracování velkých objemů dat. Azure Blob Storage je obecný, škálovatelné úložiště objektů, která je navržená pro širokou škálu scénářů úložiště. Azure Data Lake Storage Gen1 je vysoce škálovatelné úložiště, která je optimalizována pro úlohy analýzy velkých objemů dat.
 
-|  | Azure Data Lake Store | Azure Blob Storage |
+|  | Azure Data Lake Storage Gen1 | Azure Blob Storage |
 | --- | --- | --- |
 | Účel |Storage optimalizované pro úlohy analýzy velkých objemů dat |Úložiště objektů pro obecné účely pro nejrůznější scénáře využití služby storage, včetně analýzy velkých objemů dat |
 | Případy použití |Dávka, interaktivní, streaming analytics a machine learning data jako například soubory, IoT data protokolu, klikněte na tlačítko streamů, velkých datových sad |Jakýkoli typ textových nebo binárních dat, jako jsou například aplikace back end, zálohování dat, úložiště médií pro streamování a obecné účely – data. Kromě toho plnou podporu pro úlohy související s analýzou; dávka, interaktivní, streaming analytics a machine learning data jako například soubory, IoT data protokolu, klikněte na tlačítko streamů, velkých datových sad |
-| Klíčové koncepty |Účet data Lake Store obsahuje složky, který zase obsahuje data uložená jako soubory |Účet úložiště obsahuje kontejnerů, která naopak má data ve formě objektů BLOB |
+| Klíčové koncepty |Účet data Lake Storage Gen1 obsahuje složky, který zase obsahuje data uložená jako soubory |Účet úložiště obsahuje kontejnerů, která naopak má data ve formě objektů BLOB |
 | Struktura |Hierarchický systém souborů |Úložiště objektů s plochým oborem názvů |
 | Rozhraní API |Rozhraní REST API přes protokol HTTPS |Rozhraní REST API přes HTTP/HTTPS |
 | Rozhraní API na straně serveru |[Kompatibilních s WebHDFS REST API](https://msdn.microsoft.com/library/azure/mt693424.aspx) |[Rozhraní REST API služby Azure Blob Storage](https://msdn.microsoft.com/library/azure/dd135733.aspx) |

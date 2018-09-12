@@ -1,6 +1,6 @@
 ---
-title: Nahraďte fyzický disk v zásobníku Azure | Microsoft Docs
-description: Popisuje proces pro jak nahradit fyzický disk v zásobníku Azure.
+title: Nahraďte fyzický disk ve službě Azure Stack | Dokumentace Microsoftu
+description: Popisuje proces pro nahrazení fyzický disk ve službě Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -12,61 +12,61 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/30/2018
+ms.date: 09/10/2018
 ms.author: mabrigg
-ms.openlocfilehash: f168c005c729ae75a5369b80b3dc5eab03ee0243
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 7ce501be5458282273e51a5b2bc18482592d2333
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30311317"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44376948"
 ---
-# <a name="replace-a-physical-disk-in-azure-stack"></a>Nahraďte fyzický disk v Azure zásobníku
+# <a name="replace-a-physical-disk-in-azure-stack"></a>Nahraďte fyzický disk ve službě Azure Stack
 
-*Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
+*Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
-Tento článek popisuje obecný postup k nahrazení fyzický disk v zásobníku Azure. Pokud fyzický disk selže, měli byste ho nahradit co nejdříve.
+Tento článek popisuje obecný postup k nahrazení fyzický disk ve službě Azure Stack. Pokud fyzický disk selže, by ho nahradit co nejdříve.
 
-Tento postup můžete použít pro integrované systémy a pro vývoj kit nasazení, které mají za provozu disky.
+Tento postup můžete použít pro integrované systémy a pro nasazení development kit, které mají disky vyměnitelné za provozu.
 
-Nahrazení skutečný disk, který pokyny se budou lišit podle výrobce (OEM) dodavatele hardwaru. Dokumentaci od dodavatele pole replaceable jednotka (FRU) podrobné kroky, které jsou specifické pro systém. 
+Výměna skutečné disku, které kroky se budou lišit podle dodavatele hardwaru, výrobce OEM (OEM). Dokumentaci od dodavatele pole vyměnitelná jednotka (FRU) podrobné pokyny, které jsou specifické pro váš systém. 
 
-## <a name="review-disk-alert-information"></a>Zkontrolujte výstrahy informace o disku
-Když disk selže, obdržíte výstrahu, která vám ukáže, že připojení bylo ztraceno fyzického disku. 
+## <a name="review-disk-alert-information"></a>Projděte si informace o výstrahách disku
+Pokud některý disk selže, obdržíte výstrahu, která říká, že připojení bylo ztraceno fyzický disk. 
 
- ![Výstrahy zobrazuje připojení ztratilo fyzického disku](media/azure-stack-replace-disk/DiskAlert.png)
+ ![Fyzický disk ke ztrátě připojení k zobrazení výstrah](media/azure-stack-replace-disk/DiskAlert.png)
 
-Pokud otevřete výstrahu, popis výstrahy obsahuje uzel jednotek škálování a umístění přesnou pozici fyzického disku, který je třeba nahradit. Další Azure zásobníku pomáhá identifikovat pomocí možnosti indikátor LED selhání disku.
+Pokud otevřete výstrahy, popis výstrahy obsahuje uzel jednotek škálování a slotu přesné fyzické umístění disku, který je třeba nahradit. Další Azure Stack pomáhá identifikovat pomocí možnosti indikátor LED selhání disku.
 
  ## <a name="replace-the-disk"></a>Výměna disku
 
-Postupujte podle pokynů dodavatele hardwaru OEM FRU určena k nahrazení skutečný disk.
+Postupujte podle pokynů výrobce OEM dodavatele hardwaru FRU určena k nahrazení skutečné disku.
 
 > [!note]
-> Nahradí disky pro jeden uzel jednotky škálování najednou. Počkejte na dokončení než budete pokračovat na další uzel jednotky škálování úloh oprava virtuálního disku
+> Nahraďte disky pro jeden uzel jednotek škálování v čase. Počkejte na dokončení před přechodem na další uzel jednotek škálování úloh oprava virtuálního disku
 
-Aby se zabránilo použití nepodporované disku v integrovaném systému, bude systém blokovat disky, které nejsou podporované od dodavatele. Pokud se pokusíte použít nepodporovaný disk, nová výstraha se zprávou, že disk je z důvodu nepodporovaný model nebo firmware v karanténě.
+Zabránit používání nepodporované disku v integrovaný systém, bude systém blokovat disky, které nejsou podporovány od dodavatele. Pokud se pokusíte použít nepodporovaný disk, nová výstraha se říká, že disk má byl umístěn do karantény z důvodu nepodporované modelu, nebo firmware.
 
-Po nahradíte disku, zásobník Azure automaticky zjistí nový disk a spustí proces opravy virtuálního disku.  
+Po vyměňujete disk, Azure Stack automaticky zjistí nový disk a spustí proces opravy virtuálního disku.  
  
- ## <a name="check-the-status-of-virtual-disk-repair"></a>Zkontrolujte stav oprava virtuálního disku
+ ## <a name="check-the-status-of-virtual-disk-repair"></a>Kontrola stavu oprava virtuálního disku
  
- Po nahradíte disk, můžete sledovat stav virtuálního disku a opravit průběh úlohy pomocí privilegované koncový bod. Z libovolného počítače, který má síťové připojení ke koncovému bodu privilegované podle těchto kroků.
+ Po vyměňujete disk, můžete sledovat stav virtuálního disku a opravit průběh úlohy pomocí privilegovaných koncový bod. Z libovolného počítače, který má síťové připojení ke koncovému bodu privileged postupujte podle těchto kroků.
 
-1. Otevřete relaci prostředí Windows PowerShell a připojte se do privilegované koncového bodu.
+1. Otevřete relaci Windows Powershellu a připojte se k privilegovaným koncový bod.
     ````PowerShell
         $cred = Get-Credential
         Enter-PSSession -ComputerName <IP_address_of_ERCS>`
           -ConfigurationName PrivilegedEndpoint -Credential $cred
     ```` 
   
-2. Spusťte následující příkaz k zobrazení stavu virtuální disk:
+2. Spuštěním následujícího příkazu zobrazíte stav virtuálního disku:
     ````PowerShell
         Get-VirtualDisk -CimSession s-cluster
     ````
    ![Výstup prostředí PowerShell Get-VirtualDisk příkazu](media/azure-stack-replace-disk/GetVirtualDiskOutput.png)
 
-3. Spusťte následující příkaz, chcete-li zobrazit aktuální stav úlohy úložiště:
+3. Spuštěním následujícího příkazu zobrazíte aktuální stav úlohy úložiště:
     ```PowerShell
         Get-VirtualDisk -CimSession s-cluster | Get-StorageJob
     ````
@@ -74,7 +74,7 @@ Po nahradíte disku, zásobník Azure automaticky zjistí nový disk a spustí p
 
 ## <a name="troubleshoot-virtual-disk-repair"></a>Řešení potíží s oprava virtuálního disku
 
-Pokud oprava virtuálního disku úlohy se zobrazí zablokované, pomocí následujícího příkazu restartujete úlohu:
+Pokud oprava virtuálního disku úlohy se zobrazí zablokované, spuštěním následujícího příkazu restartujete úlohu:
   ````PowerShell
         Get-VirtualDisk -CimSession s-cluster | Repair-VirtualDisk
   ```` 

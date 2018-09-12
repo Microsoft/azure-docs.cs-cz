@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 09/29/2017
+ms.date: 09/06/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 3fa4f230f5e2d15e815c47792c3955aa93d29fc4
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 29fd4e62c13852e23e15f89ab6b4e2976fc42b25
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094735"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377136"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>Rozhraní API protokolu HTTP v Durable Functions (Azure Functions)
 
@@ -45,6 +45,7 @@ Tato funkce příklad vytváří následující data JSON odpovědi. Datový typ
 | statusQueryGetUri |Adresa URL stavu instance Orchestrace. |
 | sendEventPostUri  |"Vyvolat událost" adresa URL instance Orchestrace. |
 | terminatePostUri  |"Ukončit" adresa URL instance Orchestrace. |
+| rewindPostUri     |"Zpět" adresa URL instance Orchestrace. |
 
 Tady je příklad odpovědi:
 
@@ -52,13 +53,14 @@ Tady je příklad odpovědi:
 HTTP/1.1 202 Accepted
 Content-Length: 923
 Content-Type: application/json; charset=utf-8
-Location: https://{host}/runtime/webhooks/DurableTaskExtension/instances/34ce9a28a6834d8492ce6a295f1a80e2?taskHub=DurableFunctionsHub&connection=Storage&code=XXX
+Location: https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2?taskHub=DurableFunctionsHub&connection=Storage&code=XXX
 
 {
     "id":"34ce9a28a6834d8492ce6a295f1a80e2",
-    "statusQueryGetUri":"https://{host}/runtime/webhooks/DurableTaskExtension/instances/34ce9a28a6834d8492ce6a295f1a80e2?taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
-    "sendEventPostUri":"https://{host}/runtime/webhooks/DurableTaskExtension/instances/34ce9a28a6834d8492ce6a295f1a80e2/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
-    "terminatePostUri":"https://{host}/runtime/webhooks/DurableTaskExtension/instances/34ce9a28a6834d8492ce6a295f1a80e2/terminate?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code=XXX"
+    "statusQueryGetUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2?taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
+    "sendEventPostUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
+    "terminatePostUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2/terminate?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
+    "rewindPostUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2/rewind?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code=XXX"
 }
 ```
 > [!NOTE]
@@ -110,7 +112,7 @@ GET /admin/extensions/DurableTaskExtension/instances/{instanceId}?taskHub={taskH
 Formát Functions 2.0 má stejné parametry, ale má mírně odlišné předpony adresy URL:
 
 ```http
-GET /runtime/webhooks/DurableTaskExtension/instances/{instanceId}?taskHub={taskHub}&connection={connection}&code={systemKey}&showHistory={showHistory}&showHistoryOutput={showHistoryOutput}
+GET /runtime/webhooks/durabletask/instances/{instanceId}?taskHub={taskHub}&connection={connection}&code={systemKey}&showHistory={showHistory}&showHistoryOutput={showHistoryOutput}
 ```
 
 #### <a name="response"></a>Odpověď
@@ -121,6 +123,7 @@ Několik hodnot kód stavu je to možné, může být vrácen.
 * **HTTP 202 (přijato)**: Zadaná instance právě probíhá.
 * **HTTP 400 (Chybný požadavek)**: Zadaná instance se nezdařilo nebo bylo ukončeno.
 * **HTTP 404 (Nenalezeno)**: Zadaná instance neexistuje nebo nebyl spuštěn.
+* **HTTP 500 (vnitřní chyba serveru)**: Zadaná instance selhala s neošetřenou výjimku.
 
 Datová část odpovědi **HTTP 200** a **HTTP 202** případech je objekt JSON s následující pole:
 
@@ -206,7 +209,7 @@ GET /admin/extensions/DurableTaskExtension/instances/?taskHub={taskHub}&connecti
 Formát Functions 2.0 má stejné parametry, ale mírně odlišné předpony adresy URL: 
 
 ```http
-GET /runtime/webhooks/DurableTaskExtension/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}
+GET /runtime/webhooks/durabletask/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}
 ```
 
 #### <a name="response"></a>Odpověď
@@ -281,7 +284,7 @@ POST /admin/extensions/DurableTaskExtension/instances/{instanceId}/raiseEvent/{e
 Formát Functions 2.0 má stejné parametry, ale má mírně odlišné předpony adresy URL:
 
 ```http
-POST /runtime/webhooks/DurableTaskExtension/instances/{instanceId}/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection={connection}&code={systemKey}
+POST /runtime/webhooks/durabletask/instances/{instanceId}/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection={connection}&code={systemKey}
 ```
 
 Požádat o výchozí sadu a také následující unikátní parametry již bylo zmíněno dříve zahrnují parametry pro toto rozhraní API:
@@ -321,13 +324,13 @@ Ukončí běžící instanci Orchestrace.
 Pro funkce 1.0 formát požadavku je následující:
 
 ```http
-DELETE /admin/extensions/DurableTaskExtension/instances/{instanceId}/terminate?reason={reason}&taskHub={taskHub}&connection={connection}&code={systemKey}
+POST /admin/extensions/DurableTaskExtension/instances/{instanceId}/terminate?reason={reason}&taskHub={taskHub}&connection={connection}&code={systemKey}
 ```
 
 Formát Functions 2.0 má stejné parametry, ale má mírně odlišné předpony adresy URL:
 
 ```http
-DELETE /runtime/webhooks/DurableTaskExtension/instances/{instanceId}/terminate?reason={reason}&taskHub={taskHub}&connection={connection}&code={systemKey}
+POST /runtime/webhooks/durabletask/instances/{instanceId}/terminate?reason={reason}&taskHub={taskHub}&connection={connection}&code={systemKey}
 ```
 
 Požádat o parametry pro toto rozhraní API obsahovat výchozí sadu a také následující jedinečný parametr již bylo zmíněno dříve.
@@ -347,7 +350,47 @@ Několik hodnot kód stavu je to možné, může být vrácen.
 Tady je příklad žádosti, která ukončí spuštěné instance a určí důvod z **buggy**:
 
 ```
-DELETE /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/terminate?reason=buggy&taskHub=DurableFunctionsHub&connection=Storage&code=XXX
+POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/terminate?reason=buggy&taskHub=DurableFunctionsHub&connection=Storage&code=XXX
+```
+
+Odpovědi pro toto rozhraní API neobsahuje žádný obsah.
+
+## <a name="rewind-instance-preview"></a>REWIND instance (preview)
+
+Obnoví instanci neúspěšné Orchestrace do spuštěného stavu přehráním nejnovější neúspěšné operace.
+
+#### <a name="request"></a>Žádost
+
+Pro funkce 1.0 formát požadavku je následující:
+
+```http
+POST /admin/extensions/DurableTaskExtension/instances/{instanceId}/rewind?reason={reason}&taskHub={taskHub}&connection={connection}&code={systemKey}
+```
+
+Formát Functions 2.0 má stejné parametry, ale má mírně odlišné předpony adresy URL:
+
+```http
+POST /runtime/webhooks/durabletask/instances/{instanceId}/rewind?reason={reason}&taskHub={taskHub}&connection={connection}&code={systemKey}
+```
+
+Požádat o parametry pro toto rozhraní API obsahovat výchozí sadu a také následující jedinečný parametr již bylo zmíněno dříve.
+
+| Pole       | Typ parametru  | Typ dat | Popis |
+|-------------|-----------------|-----------|-------------|
+| reason      | Řetězec dotazu    | řetězec    | Volitelné. Důvod převíjení Orchestrace instance. |
+
+#### <a name="response"></a>Odpověď
+
+Několik hodnot kód stavu je to možné, může být vrácen.
+
+* **HTTP 202 (přijato)**: rewind žádost byla přijata ke zpracování.
+* **HTTP 404 (Nenalezeno)**: zadané instance nebyla nalezena.
+* **HTTP 410 (Gone)**: Zadaná instance byla dokončena nebo byl ukončen.
+
+Tady je příklad žádosti, která přetočí nezdařených instancí a určí důvod z **oprava**:
+
+```
+POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/rewind?reason=fixed&taskHub=DurableFunctionsHub&connection=Storage&code=XXX
 ```
 
 Odpovědi pro toto rozhraní API neobsahuje žádný obsah.

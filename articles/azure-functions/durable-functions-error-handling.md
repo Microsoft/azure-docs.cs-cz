@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 04/30/2018
+ms.date: 09/05/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 0b19fe7441d3c2c5222095c31d9c3677b8c9cf34
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 6bf9eb2cd2ebdf5f6d53e00923146bab49a142bf
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092713"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377901"
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>Zpracování chyb v Durable Functions (Azure Functions)
 
@@ -92,7 +92,7 @@ Existuje několik možností pro přizpůsobení zásady automatické opakován�
 * **Omezení rychlosti koeficient**: koeficient používá k určení míra zvýšení rychlosti. Výchozí hodnota je 1.
 * **Maximální interval opakování**: maximální dobu čekání mezi pokusy o opakování.
 * **Časového limitu opakování**: opakování maximální množství času na to. Výchozí chování je to chcete zkusit znovu po neomezenou dobu.
-* **Vlastní**: uživatelské zpětné volání, je možné zadat, která určuje, zda je třeba opakovat volání funkce.
+* **Zpracování**: uživatelské zpětné volání, je možné zadat, která určuje, zda je třeba opakovat volání funkce.
 
 ## <a name="function-timeouts"></a>Vypršení časových limitů – funkce
 

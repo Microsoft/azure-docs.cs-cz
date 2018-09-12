@@ -1,6 +1,6 @@
 ---
-title: 'Python: Operace systému souborů v Azure Data Lake Store | Dokumentace Microsoftu'
-description: Zjistěte, jak pomocí sady Python SDK pracovat se systémem souborů Data Lake Store.
+title: 'Python: Operace systému souborů v Azure Data Lake Storage Gen1 | Dokumentace Microsoftu'
+description: Zjistěte, jak pomocí sady Python SDK pracovat systémem souborů Data Lake Storage Gen1.
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: fa1c42a7bb9a06b2ea790e883ec7da6caa41d6b3
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 33abaf7488579a501dc7e2d0b63645726b86c28b
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39009179"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44390718"
 ---
-# <a name="filesystem-operations-on-azure-data-lake-store-using-python"></a>Operace systému souborů v Azure Data Lake Store pomocí Pythonu
+# <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-python"></a>Operace systému souborů v Azure Data Lake Storage Gen1 pomocí Pythonu
 > [!div class="op_single_selector"]
 > * [.NET SDK](data-lake-store-data-operations-net-sdk.md)
 > * [Java SDK](data-lake-store-get-started-java-sdk.md)
@@ -27,7 +27,7 @@ ms.locfileid: "39009179"
 >
 > 
 
-V tomto článku zjistíte, jak používat sadu Python SDK k provádění operací systému souborů v Azure Data Lake Store. Pokyny k provádění operací správy účtů ve službě Data Lake Store pomocí Pythonu najdete v tématu [Operace správy účtů ve službě Data Lake Store pomocí Pythonu](data-lake-store-get-started-python.md).
+V tomto článku se dozvíte, jak k provádění operací systému souborů ve službě Azure Data Lake Storage Gen1 pomocí sady Python SDK. Pokyny, jak provádět operace správy účtů v Data Lake Storage Gen1 pomocí Pythonu najdete v tématu [operace správy účtů v Data Lake Storage Gen1 pomocí Pythonu](data-lake-store-get-started-python.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -35,15 +35,15 @@ V tomto článku zjistíte, jak používat sadu Python SDK k provádění operac
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Účet Azure Data Lake Store**. Postupujte podle pokynů v tématu [Začínáme s Azure Data Lake Store s použitím webu Azure Portal](data-lake-store-get-started-portal.md).
+* **Účet Azure Data Lake Storage Gen1**. Postupujte podle pokynů na adrese [Začínáme s Azure Data Lake Storage Gen1 pomocí webu Azure portal](data-lake-store-get-started-portal.md).
 
 ## <a name="install-the-modules"></a>Instalace modulů
 
-Abyste mohli pracovat se službou Data Lake Store pomocí Pythonu, je nutné nainstalovat tři moduly.
+Pro práci s Data Lake Storage Gen1 pomocí Pythonu, je nutné nainstalovat tři moduly.
 
 * Modul `azure-mgmt-resource`, který zahrnuje moduly Azure pro Active Directory atd.
-* Modul `azure-mgmt-datalake-store`, který zahrnuje operace správy účtů Azure Data Lake Store. Další informace o tomto modulu najdete v [referenčních informacích k modulu Azure Data Lake Store Management](https://docs.microsoft.com/python/api/azure.mgmt.datalake.store?view=azure-python).
-* Modul `azure-datalake-store`, který zahrnuje operace systému souborů Azure Data Lake Store. Další informace o tomto modulu najdete v [referenčních informacích k modulu Azure Data Lake Store Filesystem](http://azure-datalake-store.readthedocs.io/en/latest/).
+* `azure-mgmt-datalake-store` Modul, který zahrnuje operace správy účtů Azure Data Lake Storage Gen1. Další informace o tomto modulu najdete v tématu [odkazu na modul azure-mgmt-datalake-store](https://docs.microsoft.com/python/api/azure.mgmt.datalake.store?view=azure-python).
+* `azure-datalake-store` Modul, který zahrnuje operace systému souborů Azure Data Lake Storage Gen1. Další informace o tomto modulu najdete v tématu [odkazu na modul azure-datalake-store systému souborů](http://azure-datalake-store.readthedocs.io/en/latest/).
 
 Pomocí následujících příkazů tyto moduly nainstalujte.
 
@@ -69,11 +69,11 @@ pip install azure-datalake-store
     ## Use this only for Azure AD multi-factor authentication
     from msrestazure.azure_active_directory import AADTokenCredentials
 
-    ## Required for Azure Data Lake Store account management
+    ## Required for Azure Data Lake Storage Gen1 account management
     from azure.mgmt.datalake.store import DataLakeStoreAccountManagementClient
     from azure.mgmt.datalake.store.models import DataLakeStoreAccount
 
-    ## Required for Azure Data Lake Store filesystem management
+    ## Required for Azure Data Lake Storage Gen1 filesystem management
     from azure.datalake.store import core, lib, multithread
 
     # Common Azure imports
@@ -90,12 +90,12 @@ pip install azure-datalake-store
 
 V této části popíšeme různé způsoby, jak provádět ověření pomocí Azure AD. Dostupné jsou následující možnosti:
 
-* Pokud chcete ve své aplikaci ověřování koncového uživatele, přečtěte si téma [Ověřování koncového uživatele pomocí služby Data Lake Store s použitím Pythonu](data-lake-store-end-user-authenticate-python.md).
-* Pokud chcete ve své aplikaci ověřování služba-služba, přečtěte si téma [Ověřování služba-služba pomocí služby Data Lake Store s použitím Pythonu](data-lake-store-service-to-service-authenticate-python.md).
+* Své aplikaci ověřování koncového uživatele, najdete v části [ověřování koncového uživatele s Data Lake Storage Gen1 pomocí Pythonu](data-lake-store-end-user-authenticate-python.md).
+* Své aplikaci ověřování služba služba, naleznete v tématu [ověřování služba služba Data Lake Storage Gen1 pomocí Pythonu](data-lake-store-service-to-service-authenticate-python.md).
 
 ## <a name="create-filesystem-client"></a>Vytvoření klienta systému souborů
 
-Následující fragment kódu nejprve vytvoří klienta účtu Data Lake Store. Objekt klienta použije k vytvoření účtu Data Lake Store. Nakonec vytvoří objekt klienta systému souborů.
+Následující fragment kódu nejprve vytvoří klienta účtu Data Lake Storage Gen1. Objekt klienta použije k vytvoření účtu Data Lake Storage Gen1. Nakonec vytvoří objekt klienta systému souborů.
 
     ## Declare variables
     subscriptionId = 'FILL-IN-HERE'
@@ -127,9 +127,9 @@ Následující fragment kódu nejprve vytvoří klienta účtu Data Lake Store. 
     adlsFileSystemClient.rm('/mysampledirectory', recursive=True)
 
 ## <a name="next-steps"></a>Další postup
-* [Operace správy účtů ve službě Data Lake Store pomocí Pythonu](data-lake-store-get-started-python.md)
+* [Operace správy účtů v Data Lake Storage Gen1 pomocí Pythonu](data-lake-store-get-started-python.md).
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-* [Referenční informace k Pythonu pro Azure Data Lake Store (systém souborů)](http://azure-datalake-store.readthedocs.io/en/latest)
-* [Aplikace typu Open Source pro velké objemy dat kompatibilní s Azure Data Lake Store](data-lake-store-compatible-oss-other-applications.md)
+* [Referenční informace k Azure Data Lake Storage Gen1 Pythonu (systém souborů)](http://azure-datalake-store.readthedocs.io/en/latest)
+* [Aplikace typu Open zdroj velké objemy dat kompatibilní s Azure Data Lake Storage Gen1](data-lake-store-compatible-oss-other-applications.md)

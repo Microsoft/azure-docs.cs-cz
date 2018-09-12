@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 03/19/2018
+ms.date: 08/31/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 72ea5e54bf86ce408700c0456f6d37f5f3c29924
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 70ea13c1badf79c86bed53a34d9036706dbbac6a
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44091778"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378144"
 ---
 # <a name="manage-instances-in-durable-functions-azure-functions"></a>Správa instancí v Durable Functions (Azure Functions)
 
@@ -145,8 +145,6 @@ Parametry tak, aby [RaiseEventAsync](https://azure.github.io/azure-functions-dur
 * **EventData**: JSON serializovat datovou část k odeslání do instance.
 
 ```csharp
-#r "Microsoft.Azure.WebJobs.Extensions.DurableTask"
-
 [FunctionName("RaiseEvent")]
 public static Task Run(
     [OrchestrationClient] DurableOrchestrationClient client,
@@ -207,7 +205,8 @@ V závislosti na čas potřebný k získání odpovědi z instance Orchestrace e
             "id": "d3b72dddefce4e758d92f4d411567177",
             "sendEventPostUri": "http://localhost:7071/admin/extensions/DurableTaskExtension/instances/d3b72dddefce4e758d92f4d411567177/raiseEvent/{eventName}?taskHub={taskHub}&connection={connection}&code={systemKey}",
             "statusQueryGetUri": "http://localhost:7071/admin/extensions/DurableTaskExtension/instances/d3b72dddefce4e758d92f4d411567177?taskHub={taskHub}&connection={connection}&code={systemKey}",
-            "terminatePostUri": "http://localhost:7071/admin/extensions/DurableTaskExtension/instances/d3b72dddefce4e758d92f4d411567177/terminate?reason={text}&taskHub={taskHub}&connection={connection}&code={systemKey}"
+            "terminatePostUri": "http://localhost:7071/admin/extensions/DurableTaskExtension/instances/d3b72dddefce4e758d92f4d411567177/terminate?reason={text}&taskHub={taskHub}&connection={connection}&code={systemKey}",
+            "rewindPostUri": "https://localhost:7071/admin/extensions/DurableTaskExtension/instances/d3b72dddefce4e758d92f4d411567177/rewind?reason={text}&taskHub={taskHub}&connection={connection}&code={systemKey}"
         }
     ```
 
@@ -228,12 +227,12 @@ Metoda vrátí instanci [HttpManagementPayload](https://azure.github.io/azure-fu
 * **StatusQueryGetUri**: adresa URL stavu instance Orchestrace.
 * **SendEventPostUri**: "vyvolat událost" adresa URL instance Orchestrace.
 * **TerminatePostUri**: "ukončit" adresa URL instance Orchestrace.
+* **RewindPostUri**: "zpět" adresa URL instance Orchestrace.
 
 Aktivita funkce můžete odeslat instanci [HttpManagementPayload](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.Extensions.DurableTask.HttpManagementPayload.html#Microsoft_Azure_WebJobs_Extensions_DurableTask_HttpManagementPayload_) k externím systémům ke sledování nebo vyvolat události na Orchestrace:
 
 ```csharp
-#r "Microsoft.Azure.WebJobs.Extensions.DurableTask"
-
+[FunctionName("SendInstanceInfo")]
 public static void SendInstanceInfo(
     [ActivityTrigger] DurableActivityContext ctx,
     [OrchestrationClient] DurableOrchestrationClient client,
@@ -246,6 +245,29 @@ public static void SendInstanceInfo(
 
     // send the payload to Cosmos DB
     document = new { Payload = payload, id = ctx.InstanceId };
+}
+```
+
+## <a name="rewinding-instances-preview"></a>Zpět instance (preview)
+
+Neúspěšné Orchestrace instance může být *převinuta* do dříve dobrý stav pomocí [RewindAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RewindAsync_System_String_System_String_) rozhraní API. Funguje tak, že vložíte Orchestrace zpět do *systémem* stavu a opětovné spuštění aktivity a/nebo dílčí Orchestrace selhání spuštění, které způsobily selhání Orchestrace.
+
+> [!NOTE]
+> Toto rozhraní API není určen jako náhrada za zpracování správné chyb a zásady opakování. Místo toho je určena pro použití pouze v případech, kde instance Orchestrace selhat z důvodu neočekávané. Další podrobnosti o chybě zásady zpracování a zkuste to znovu, najdete v tématu [zpracování chyb](durable-functions-error-handling.md) tématu.
+
+Jedním z příkladů použití případu pro *rewind* je pracovní postup zahrnující řadu [lidské schválení](durable-functions-overview.md#pattern-5-human-interaction). Předpokládejme, že je potřeba zvážit řadu funkcí aktivity, které někdo upozornění, že je potřeba jejich schválení a čekat na odpověď v reálném čase. Po schválení aktivity obdrželi odpovědi nebo vypršení časového limitu, jiné aktivity selže z důvodu chybné konfigurace aplikaci (například neplatný připojovací řetězec databáze). Výsledkem je selhání Orchestrace hlouběji do pracovního postupu. S `RewindAsync` rozhraní API, Správce aplikací můžete opravit chyby konfigurace a *rewind* neúspěšné Orchestrace zpět do stavu bezprostředně před selháním. Žádný z kroků lidské interakce musí být znovu schválené a orchestraci teď můžete dokončit úspěšně.
+
+> [!NOTE]
+> *Rewind* funkce nepodporuje převíjecí Orchestrace instancí, které používají trvalý časovače.
+
+```csharp
+[FunctionName("RewindInstance")]
+public static Task Run(
+    [OrchestrationClient] DurableOrchestrationClient client,
+    [ManualTrigger] string instanceId)
+{
+    string reason = "Orchestrator failed and needs to be revived.";
+    return client.RewindAsync(instanceId, reason);
 }
 ```
 

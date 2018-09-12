@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 18/30/2018
 ms.author: rkarlin
-ms.openlocfilehash: f43ebff65cf32dce1dae6bb9a592b491e56c8810
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 08174a6781772abdebd9e203a3433a1a4ac82859
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44295391"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378359"
 ---
 # <a name="customize-os-security-configurations-in-azure-security-center-preview"></a>Přizpůsobení konfiguracemi zabezpečení operačního systému ve službě Azure Security Center (Preview)
 
@@ -69,9 +69,11 @@ Chcete-li přizpůsobit výchozí konfigurace zabezpečení operačního systém
    > Ve výchozím nastavení, je konfigurační soubor, který můžete stáhnout v *json* formátu. Pokyny týkající se tento soubor upravovali, přejděte na [přizpůsobení konfiguračního souboru](#customize-the-configuration-file).
    >
 
-   Po uložení souboru úspěšně, tato konfigurace používá pro všechny virtuální počítače a počítače, které jsou připojené ke všem pracovním prostorům v rámci předplatného. Proces obvykle trvá několik minut, ale může trvat déle, v závislosti na velikosti infrastruktury.
-
 6. K provedení změny, vyberte **Uložit**. V opačném případě není uložený zásady.
+
+    ![Tlačítko Uložit](media/security-center-customize-os-security-config/save-successfully.png)
+
+   Po uložení souboru úspěšně, tato konfigurace používá pro všechny virtuální počítače a počítače, které jsou připojeny k pracovním prostorům v rámci předplatného. Proces obvykle trvá několik minut, ale může trvat déle, v závislosti na velikosti infrastruktury.
 
 V kterékoli fázi můžete resetovat aktuální konfigurace zásad do výchozího stavu. To se dělá takto v **OS upravit pravidla konfigurace zabezpečení** okně **resetování**. Potvrďte výběrem této možnosti **Ano** v místním okně potvrzení.
 

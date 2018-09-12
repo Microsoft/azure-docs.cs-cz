@@ -8,14 +8,14 @@ tags: billing
 ms.assetid: 60d848f9-ff26-496e-a5ec-ccf92ad7d125
 ms.service: billing
 ms.topic: article
-ms.date: 08/16/2018
+ms.date: 09/11/2018
 ms.author: byvinyal
-ms.openlocfilehash: 00955d5de314e6efb0e491e33708495fbdd14f3b
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 6a514abf9c34335e1665ca0fd221d2399fddd039
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782586"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44390822"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity, kvóty a omezení předplatného a služeb Azure
 Tento dokument uvádí některé nejčastějšími omezeními Microsoft Azure, které se taky říká se jim kvóty. Tento dokument nepopisuje aktuálně všech služeb Azure. V průběhu času v seznamu rozbalit a doplněn o popis další platformy.
@@ -56,6 +56,7 @@ V následující omezení se přidala nová tabulka tak, aby odrážel případn
 * [Azure Redis Cache](#azure-redis-cache-limits)
 * [Backup](#backup-limits)
 * [Batch](#batch-limits)
+* [Batch AI](#batch-ai-limits)
 * [BizTalk Services](#biztalk-services-limits)
 * [CDN](#cdn-limits)
 * [Cloud Services](#cloud-services-limits)
@@ -210,6 +211,9 @@ Následující omezení služby App Service zahrnují omezení pro Web Apps, Mob
 
 ### <a name="batch-limits"></a>Omezení služby batch
 [!INCLUDE [azure-batch-limits](../includes/azure-batch-limits.md)]
+
+### <a name="batch-ai-limits"></a>Omezení služby batch AI
+[!INCLUDE [azure-batch-ai-limits](../includes/azure-batch-ai-limits.md)]
 
 ### <a name="biztalk-services-limits"></a>Omezení služby BizTalk Services
 Následující tabulka uvádí omezení pro Azure Biztalk Services.

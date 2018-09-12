@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 03/25/2017
 ms.author: ghogen
-ms.openlocfilehash: a4be3f063c51f26e1df9ecf4cca4ae0655554750
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 596db56a71d4cc73517b9a9cbfe9b97e536aa83a
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42055654"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378842"
 ---
 # <a name="manage-the-resources-associated-with-your-azure-accounts-in-visual-studio-cloud-explorer"></a>Spravovat prostředky přidružené k účtům Azure v Průzkumníku cloudu sady Visual Studio
 Průzkumník cloudu umožňuje zobrazit vaše prostředky Azure a skupiny prostředků, zkoumání jejich vlastností a provádění klíčových vývojářských diagnostiky úkonů ze sady Visual Studio. 
@@ -40,9 +40,9 @@ Chcete-li zobrazit prostředky přidružené k účtu Azure, musíte nejprve př
 
     ![Ikona nastavení účtu Explorer Azure cloudu](media/vs-azure-tools-resources-managing-with-cloud-explorer/azure-account-settings.png)
 
-1. Vyberte **přidat nový účet**. 
+1. Vyberte **spravovat účty**. 
 
-    ![Odkaz Přidat účet Průzkumník cloudu](media/vs-azure-tools-resources-managing-with-cloud-explorer/add-account-link.png)
+    ![Odkaz Přidat účet Průzkumník cloudu](media/vs-azure-tools-resources-managing-with-cloud-explorer/manage-accounts-link.png)
 
 1. Přihlaste se k účtu Azure jehož prostředky, které chcete procházet. 
 
@@ -56,13 +56,17 @@ Chcete-li zobrazit prostředky přidružené k účtu Azure, musíte nejprve př
 
 ## <a name="remove-an-azure-account-from-cloud-explorer"></a>Odebrat účet Azure z Průzkumníka cloudu 
 
-1. V **Průzkumníka cloudu**vyberte **nastavení účtu Azure**.
+1. V **Průzkumníka cloudu**vyberte **správu účtů**.
 
     ![Ikona nastavení účtu Explorer Azure cloudu](media/vs-azure-tools-resources-managing-with-cloud-explorer/azure-account-settings.png)
 
-1. Vedle účet, který chcete odebrat, vyberte **odebrat**.
+1. Vedle účet, který chcete odebrat, vyberte **spravovat účty**.
 
     ![Ikona nastavení účtu Explorer Azure cloudu](media/vs-azure-tools-resources-managing-with-cloud-explorer/remove-account.png)
+
+1. Zvolte **odebrat** odebrat účet.
+
+    ![Dialogové okno účty spravovat Průzkumník cloudu](media/vs-azure-tools-resources-managing-with-cloud-explorer/accountmanage.PNG)
 
 ## <a name="view-resource-types-or-resource-groups"></a>Zobrazit typy prostředků nebo skupiny prostředků
 Chcete-li zobrazit vaše prostředky Azure, můžete použít buď **typy prostředků** nebo **skupiny prostředků** zobrazení.

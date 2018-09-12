@@ -1,6 +1,6 @@
 ---
-title: Nahrát velké objemy dat do Data Lake Store pomocí offline metod | Microsoft Docs
-description: Použijte nástroj AdlCopy ke zkopírování dat z Azure úložiště objektů BLOB do Data Lake Store
+title: Nahrávání velkých objemů dat do Azure Data Lake Storage Gen1 pomocí offline metody | Dokumentace Microsoftu
+description: Použijte nástroj AdlCopy ke kopírování dat z Azure Storage BLOB do Azure Data Lake Storage Gen1
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
@@ -12,28 +12,28 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 2b3ae9e4ecb8b8db4eee109f0867c7884bea37c2
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: 6430bf524ac81af242bf7afb4c2c8196309806ab
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34625674"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391671"
 ---
-# <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-data-lake-store"></a>Používat službu Azure Import/Export pro offline kopii dat do Data Lake Store
-V tomto článku se dozvíte kopírování obrovských sad dat (> 200 GB) do Azure Data Lake Store pomocí metod kopii offline, jako je třeba [služba Azure Import/Export](../storage/common/storage-import-export-service.md). Soubor používá jako příklad v tomto článku je konkrétně 339,420,860,416 bajtů nebo přibližně 319 GB na disku. Umožňuje volání 319GB.tsv tento soubor.
+# <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-azure-data-lake-storage-gen1"></a>Pomocí služby Azure Import/Export pro offline kopírování dat do Azure Data Lake Storage Gen1
+V tomto článku se dozvíte víc o kopírování obrovských sad dat (> 200 GB) do Azure Data Lake Storage Gen1 pomocí offline kopírování metod, jako je třeba [služba Azure Import/Export](../storage/common/storage-import-export-service.md). Soubor použitý jako příklad v tomto článku je konkrétně 339,420,860,416 bajtů nebo přibližně 319 GB na disku. Pojmenujme tuto 319GB.tsv souboru.
 
-Služba Azure Import/Export vám umožní bezpečněji přenos velkých objemů dat do úložiště objektů Blob v Azure pomocí přesouvání pevných disků o datovém centru Azure.
+Služba Azure Import/Export vám umožní bezpečněji přenášet velké objemy dat do Azure Blob storage přenosem pevných disků do datacentra Azure.
 
 ## <a name="prerequisites"></a>Požadavky
 Než začnete, musíte mít následující:
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 * **Účet úložiště Azure**.
-* **Účet Azure Data Lake Store**. Pokyny o tom, jak vytvořit najdete v tématu [Začínáme s Azure Data Lake Store](data-lake-store-get-started-portal.md)
+* **Účet Azure Data Lake Storage Gen1**. Pokyny k jeho vytvoření najdete v tématu [Začínáme s Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md)
 
 ## <a name="preparing-the-data"></a>Příprava dat
 
-Než začnete používat službu Import/Export, rozdělit datového souboru k přesunu **do kopie, které jsou menší než 200 GB** velikost. Nástroj pro import nefunguje s soubory větší než 200 GB. V tomto kurzu jsme rozdělit do bloků, 100 GB. Můžete to provést pomocí [emulaci](https://cygwin.com/install.html). Emulaci podporuje příkazy Linux. V takovém případě použijte následující příkaz:
+Než začnete používat službu Import/Export, přerušit datový soubor, které se mají přenést **do kopie, které jsou kratší než 200 GB** velikosti. Nástroj pro import nefunguje s soubory větší než 200 GB. V tomto kurzu rozdělíme tento soubor do bloků dat s 100 GB. Můžete to provést pomocí [Cygwin](https://cygwin.com/install.html). Cygwin podporuje Linuxové příkazy. V takovém případě použijte následující příkaz:
 
     split -b 100m 319GB.tsv
 
@@ -48,28 +48,28 @@ Operace rozdělení vytvoří soubory s následujícími názvy.
     319GB.tsv-part-ad
 
 ## <a name="get-disks-ready-with-data"></a>Příprava disky s daty
-Postupujte podle pokynů v [pomocí služby Azure Import/Export](../storage/common/storage-import-export-service.md) (v části **Příprava jednotky** část) k přípravě pevné disky. Tady je celkový pořadí:
+Postupujte podle pokynů v [pomocí služby Azure Import/Export](../storage/common/storage-import-export-service.md) (v části **Příprava jednotky** části) pro přípravu pevných disků. Toto je celkový pořadí:
 
-1. Pořídit pevný disk, který splňuje požadavek na který se má použít pro službu Azure Import/Export.
-2. Určete účet úložiště Azure, kde data se zkopírují po je dodáván na datovém centru Azure.
-3. Použití [nástroj Azure Import/Export](http://go.microsoft.com/fwlink/?LinkID=301900&clcid=0x409), nástroj příkazového řádku. Zde je ukázka fragment kódu, který ukazuje, jak používat nástroj.
+1. Pořídit pevný disk, který splňuje požadavky pro službu Azure Import/Export.
+2. Identifikujte účet úložiště Azure, ve kterém data se zkopírují po dodává se do datacentra Azure.
+3. Použití [nástrojem Import/Export Azure](http://go.microsoft.com/fwlink/?LinkID=301900&clcid=0x409), nástroje příkazového řádku. Tady je ukázka fragment kódu, který ukazuje, jak používat nástroj.
 
     ````
     WAImportExport PrepImport /sk:<StorageAccountKey> /t: <TargetDriveLetter> /format /encrypt /logdir:e:\myexportimportjob\logdir /j:e:\myexportimportjob\journal1.jrn /id:myexportimportjob /srcdir:F:\demo\ExImContainer /dstdir:importcontainer/vf1/
     ````
-    V tématu [pomocí služby Azure Import/Export](../storage/common/storage-import-export-service.md) pro další fragmenty ukázka.
-4. Předchozí příkaz vytvoří soubor deníku do zadaného umístění. Tento soubor deníku použít k vytvoření úlohy importu z [portál Azure](https://portal.azure.com).
+    Zobrazit [pomocí služby Azure Import/Export](../storage/common/storage-import-export-service.md) pro víc fragmentů kódu ukázky.
+4. Předchozí příkaz vytvoří soubor deníku v zadaném umístění. Tento soubor deníku použít k vytvoření úlohy importu z [webu Azure portal](https://portal.azure.com).
 
-## <a name="create-an-import-job"></a>Vytvoření úlohy importu
-Nyní můžete vytvořit úlohy importu pomocí pokynů uvedených v [pomocí služby Azure Import/Export](../storage/common/storage-import-export-service.md) (v části **vytvořit úlohy importu** části). Pro tuto úlohu importu s další podrobnosti, také poskytněte soubor deníku vytvořili při přípravě na pevných discích.
+## <a name="create-an-import-job"></a>Vytvořit úlohu importu
+Nyní můžete vytvořit úlohu importu pomocí pokynů v [pomocí služby Azure Import/Export](../storage/common/storage-import-export-service.md) (v části **vytvořit úlohu importu** části). Pro tuto úlohu importu se další podrobnosti najdete také poskytnout soubor deníku vytvořili při přípravě na pevných discích.
 
-## <a name="physically-ship-the-disks"></a>Fyzicky dodávat disky
-Nyní můžete fyzicky dodávat disky datového centra Azure. Existuje ale data se zkopírují přes Azure úložiště objektů BLOB, které jste zadali při vytváření úlohy importu. Navíc při vytváření úlohy, když jste se rozhodli poskytnout informace o sledování později, můžete nyní přejděte zpět na vaše úlohy importu a aktualizovat číslo sledování.
+## <a name="physically-ship-the-disks"></a>Fyzicky zasílejte disky
+Nyní můžete fyzicky zasílejte disků do datacentra Azure. Data se tam zkopíruje do objektů BLOB Azure Storage, který jste zadali při vytváření úlohy importu. Navíc při vytváření úlohy, když jste se rozhodli zadání informací o sledování později, můžete nyní přejít zpět do úlohy importu a aktualizovat číslo pro sledování.
 
-## <a name="copy-data-from-azure-storage-blobs-to-azure-data-lake-store"></a>Kopírování dat z objektů BLOB služby Azure Storage do Azure Data Lake Store
-Po ve stavu úlohy importu zobrazuje, zda je dokončena, můžete ověřit, zda je k dispozici do objektů BLOB Azure Storage, měl zadaná data. Potom můžete různé metody pro přesun dat z objektů BLOB do Azure Data Lake Store. Všechny dostupné možnosti, pro nahrávání dat najdete v tématu [příjem dat do Data Lake Store](data-lake-store-data-scenarios.md#ingest-data-into-data-lake-store).
+## <a name="copy-data-from-azure-storage-blobs-to-azure-data-lake-storage-gen1"></a>Kopírování dat z Azure Storage BLOB do Azure Data Lake Storage Gen1
+Po jeho dokončení zobrazuje stav úlohy importu, můžete ověřit, zda je k dispozici v objektech BLOB Azure Storage, měl zadaná data. Potom můžete celé řady metod pro přesun dat z objektů BLOB do Azure Data Lake Storage Gen1. Všechny dostupné možnosti pro nahrávání dat, naleznete v tématu [Ingestovat data do Data Lake Storage Gen1](data-lake-store-data-scenarios.md#ingest-data-into-data-lake-storage-gen1).
 
-V této části nám umožňují JSON definice, které můžete použít k vytvoření kanál služby Azure Data Factory pro kopírování dat. Můžete použít tyto definice JSON z [portál Azure](../data-factory/v1/data-factory-copy-activity-tutorial-using-azure-portal.md), nebo [Visual Studio](../data-factory/v1/data-factory-copy-activity-tutorial-using-visual-studio.md), nebo [prostředí Azure PowerShell](../data-factory/v1/data-factory-copy-activity-tutorial-using-powershell.md).
+V této části vám poskytneme o definice JSON, které můžete použít k vytvoření kanálu Azure Data Factory pro kopírování dat. Můžete použít tyto definice JSON z [webu Azure portal](../data-factory/tutorial-copy-data-portal.md) nebo [sady Visual Studio](../data-factory/tutorial-copy-data-dot-net.md).
 
 ### <a name="source-linked-service-azure-storage-blob"></a>Zdroj propojené služby (objekt blob úložiště Azure)
 ````
@@ -85,16 +85,16 @@ V této části nám umožňují JSON definice, které můžete použít k vytvo
 }
 ````
 
-### <a name="target-linked-service-azure-data-lake-store"></a>Cíl propojené služby (Azure Data Lake Store)
+### <a name="target-linked-service-azure-data-lake-storage-gen1"></a>Cílit na propojenou službu (Azure Data Lake Storage Gen1)
 ````
 {
-    "name": "AzureDataLakeStoreLinkedService",
+    "name": "AzureDataLakeStorageGen1LinkedService",
     "properties": {
         "type": "AzureDataLakeStore",
         "description": "",
         "typeProperties": {
-            "authorization": "<Click 'Authorize' to allow this data factory and the activities it runs to access this Data Lake Store with your access rights>",
-            "dataLakeStoreUri": "https://<adls_account_name>.azuredatalakestore.net/webhdfs/v1",
+            "authorization": "<Click 'Authorize' to allow this data factory and the activities it runs to access this Data Lake Storage Gen1 account with your access rights>",
+            "dataLakeStoreUri": "https://<adlsg1_account_name>.azuredatalakestore.net/webhdfs/v1",
             "sessionId": "<OAuth session id from the OAuth authorization session. Each session id is unique and may only be used once>"
         }
     }
@@ -127,7 +127,7 @@ V této části nám umožňují JSON definice, které můžete použít k vytvo
 "properties": {
   "published": false,
   "type": "AzureDataLakeStore",
-  "linkedServiceName": "AzureDataLakeStoreLinkedService",
+  "linkedServiceName": "AzureDataLakeStorageGen1LinkedService",
   "typeProperties": {
     "folderPath": "/importeddatafeb8job/"
     },
@@ -187,12 +187,12 @@ V této části nám umožňují JSON definice, které můžete použít k vytvo
     }
 }
 ````
-Další informace najdete v tématu [přesun dat z objektu blob úložiště Azure do Azure Data Lake Store pomocí Azure Data Factory](../data-factory/connector-azure-data-lake-store.md).
+Další informace najdete v tématu [přesun dat z Azure Storage blob do služby Azure Data Lake Storage Gen1 pomocí Azure Data Factory](../data-factory/connector-azure-data-lake-store.md).
 
-## <a name="reconstruct-the-data-files-in-azure-data-lake-store"></a>Rekonstrukci datových souborů v Azure Data Lake Store
-Spuštění se souborem, který byl 319 GB a překročila ho dolů do souborů menší velikost tak, že by mohla být přenesena pomocí služby Azure Import/Export. Teď, když se data v Azure Data Lake Store, jsme rekonstrukci soubor původní velikost. K tomu můžete použít následující cmldts prostředí Azure PowerShell.
+## <a name="reconstruct-the-data-files-in-azure-data-lake-storage-gen1"></a>Obnovit data souborů v Azure Data Lake Storage Gen1
+Začali jsme se souborem, který byl 319 GB a to vypneme dostalo do souborů menší velikost tak, aby mohl být přenosu pomocí služby Azure Import/Export. Teď, když data v Azure Data Lake Storage Gen1, jsme obnovit původní velikost souboru. K tomu slouží následující rutiny prostředí Azure PowerShell.
 
-````
+```
 # Login to our account
 Connect-AzureRmAccount
 
@@ -204,10 +204,10 @@ Set-AzureRmContext -SubscriptionId
 Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
 
 # Join  the files
-Join-AzureRmDataLakeStoreItem -AccountName "<adls_account_name" -Paths "/importeddatafeb8job/319GB.tsv-part-aa","/importeddatafeb8job/319GB.tsv-part-ab", "/importeddatafeb8job/319GB.tsv-part-ac", "/importeddatafeb8job/319GB.tsv-part-ad" -Destination "/importeddatafeb8job/MergedFile.csv"
+Join-AzureRmDataLakeStoreItem -AccountName "<adlsg1_account_name" -Paths "/importeddatafeb8job/319GB.tsv-part-aa","/importeddatafeb8job/319GB.tsv-part-ab", "/importeddatafeb8job/319GB.tsv-part-ac", "/importeddatafeb8job/319GB.tsv-part-ad" -Destination "/importeddatafeb8job/MergedFile.csv"
 ````
 
 ## <a name="next-steps"></a>Další postup
-* [Zabezpečení dat ve službě Data Lake Store](data-lake-store-secure-data.md)
-* [Použití Azure Data Lake Analytics se službou Data Lake Store](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-* [Použití Azure HDInsight se službou Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Zabezpečení dat ve službě Data Lake Storage Gen1](data-lake-store-secure-data.md)
+* [Použití Azure Data Lake Analytics s Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
+* [Použití Azure HDInsight s Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)

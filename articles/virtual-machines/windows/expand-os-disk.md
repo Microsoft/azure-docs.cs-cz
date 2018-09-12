@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: kirpas
-ms.openlocfilehash: f7ff1f2f27806c92c1ac887ce3c3343b96339745
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 3ea57a834bfbb1583c53bbb1be80daffe1f05de6
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37888945"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44380263"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>Tom, jak rozšířit jednotku operačního systému virtuálního počítače
 
@@ -139,7 +139,7 @@ Select-AzureRmSubscription -SubscriptionName 'my-subscription-name'
 $rgName = 'my-resource-group-name'
 $vmName = 'my-vm-name'
 $vm = Get-AzureRmVM -ResourceGroupName $rgName -Name $vmName
-Stop-AzureRMVM -ResourceGroupName $rgName -Name $vmName
+Stop-AzureRmVM -ResourceGroupName $rgName -Name $vmName
 $disk= Get-AzureRmDisk -ResourceGroupName $rgName -DiskName $vm.StorageProfile.OsDisk.Name
 $disk.DiskSizeGB = 1023
 Update-AzureRmDisk -ResourceGroupName $rgName -Disk $disk -DiskName $disk.Name

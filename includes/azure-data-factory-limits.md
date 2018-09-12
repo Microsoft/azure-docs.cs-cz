@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/20/2018
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 67144407b078a30c521201cbc31c6087c839fa26
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 4aa4809c57eaf26b10053d432f9191580ec143a0
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39030013"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44381069"
 ---
 Data factory je víceklientská služba, která má následující výchozí omezení na místě zajistit, aby chránily zákaznických předplatných z druhé strany úlohy. Mnoho omezení můžete snadno navýšit pro vaše předplatné až do maximálního limitu tak, že kontaktujete podporu.
 
@@ -28,7 +28,7 @@ Data factory je víceklientská služba, která má následující výchozí ome
 | Souběžný kanál spuštění za služby data factory | 10 000  | [Kontaktování podpory](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Maximální počet aktivit za kanál (obsahuje vnitřní aktivity pro kontejnery) | 40 | 40 |
 | Maximální počet parametrů na kanálu | 50 | 50 |
-| Položky ForEach | 100,000 | 100,000 |
+| Položky ForEach | 100 000 | 100 000 |
 | Paralelní zpracování ForEach | 20 | 50 |
 | Znaků na výraz | 8 192 | 8 192 |
 | Minimální interval Přeskakující okno | 15 min | 15 min |
@@ -38,6 +38,8 @@ Data factory je víceklientská služba, která má následující výchozí ome
 | Jednotky integrace dat za spuštění aktivity kopírování <sup>3</sup> | 256 | [Kontaktování podpory](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Zápis volání rozhraní API | 2 500/hod<br/><br/> Toto omezení se vynucují pomocí Azure Resource Manageru, nikoli Azure Data Factory. | [Obraťte se na podporu](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Volání rozhraní API pro čtení | 12 500/hod<br/><br/> Toto omezení se vynucují pomocí Azure Resource Manageru, nikoli Azure Data Factory. | [Kontaktování podpory](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| Monitorování dotazů za minutu | 1000 | [Kontaktování podpory](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| Operace CRUD entity za minutu | 50 | [Kontaktování podpory](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 
 
 ### <a name="version-1"></a>Verze 1

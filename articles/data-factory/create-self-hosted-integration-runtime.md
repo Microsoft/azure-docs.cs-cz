@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: bb5e58c0cb06baabf76d7d0443e94b368549176f
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 7948b54bd6402cf238c5709d270087746ed4fa95
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44051336"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44380365"
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>Jak vytvořit a nakonfigurovat modul Integration Runtime
 Integration Runtime (IR) je výpočetní infrastruktura, službou Azure Data Factory používá k poskytování možnosti integrace dat v různých síťových prostředích. Podrobnosti o prostředí IR najdete v tématu [přehled modulu Runtime integrace](concepts-integration-runtime.md).
@@ -134,7 +134,6 @@ Tady jsou požadavky na certifikát TLS/SSL, který se používá k zabezpečen�
 
 - Certifikát musí být veřejně důvěryhodné X509 certifikát v3. Doporučujeme používat certifikáty vydané veřejnou (třetí strany) certifikační autoritou (CA).
 - Každý uzel integration runtime musí důvěřovat tomuto certifikátu.
-- Zástupné certifikáty jsou podporovány. Pokud je váš plně kvalifikovaný název domény **node1.domain.contoso.com**, můžete použít ***. domain.contoso.com** jako název subjektu certifikátu.
 - Certifikátů SAN se nedoporučuje, protože se použijí jenom poslední položka alternativní názvy subjektů a všechny ostatní se bude ignorovat kvůli aktuálním omezením. Například máte certifikát SAN jehož SAN jsou **node1.domain.contoso.com** a **node2.domain.contoso.com**, tento certifikát můžete použít jenom na počítači, jehož plně kvalifikovaný název domény je **node2.domain.contoso.com**.
 - Podporuje všechny klíče velikost podporovaná ve Windows serveru 2012 R2 pro certifikáty SSL.
 - Certifikátů CNG pomocí klíče nejsou podporovány.  

@@ -1,34 +1,33 @@
 ---
-title: Správa oprávnění k prostředkům na uživatele v Azure zásobníku (Správce služeb a klientů) | Microsoft Docs
-description: Jako správce služeb nebo klienta zjistěte, jak ke správě oprávnění RBAC.
+title: Správa oprávnění k prostředkům na uživatele ve službě Azure Stack (Správce služeb a klientů) | Dokumentace Microsoftu
+description: Jako správce služeb nebo tenanta zjistěte, jak spravovat oprávnění RBAC.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
-manager: fenila
+manager: femila
 editor: ''
-ms.assetid: cccac19a-e1bf-4e36-8ac8-2228e8487646
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2018
+ms.date: 09/10/2018
 ms.author: mabrigg
-ms.reviewer: thomas.roettinger
-ms.openlocfilehash: 0e50ea44ebb0b0a7285dab04666dd55cad480c6a
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: thoroet
+ms.openlocfilehash: ab61e1f892f46ad36df741b7a72afcfcbaa0ed87
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29385632"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44376931"
 ---
 # <a name="manage-role-based-access-control"></a>Správa řízení přístupu na základě rolí
 
-*Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
+*Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
-Uživatel v zásobníku Azure může být čtečky, vlastníka nebo přispěvatele pro každou instanci předplatné, skupinu prostředků nebo služby. Například uživatel A může mít čtečky oprávnění k odběru jeden, ale mají oprávnění vlastníka pro virtuální počítač sedm.
+Uživatel ve službě Azure Stack může být čtečky, vlastníka nebo přispěvatele pro každou instanci tohoto předplatného, skupinu prostředků nebo služeb. Například uživatel A může mít oprávnění Čtenář předplatného k jednomu, ale máte oprávnění vlastníka pro virtuální počítač sedm.
 
- - Čtečka: Zobrazit vše, co uživatel, ale nelze provést žádné změny.
+ - Čtenář: Uživatel může vše zobrazit, ale nemůže provádět žádné změny.
  - Přispěvatel: Uživatel může spravovat všechno kromě přístupu k prostředkům.
  - Vlastník: Uživatel může spravovat všechno včetně přístupu k prostředkům.
 
@@ -36,18 +35,18 @@ Uživatel v zásobníku Azure může být čtečky, vlastníka nebo přispěvate
 
 1. Přihlaste se pomocí účtu, který má oprávnění vlastníka prostředku, který chcete spravovat.
 2. V okně pro prostředek, klikněte **přístup** ikonu ![](media/azure-stack-manage-permissions/image1.png).
-3. V **uživatelé** okně klikněte na tlačítko **role**.
-4. V **role** okně klikněte na tlačítko **přidat** se přidat oprávnění pro uživatele.
+3. V **uživatelé** okna, klikněte na tlačítko **role**.
+4. V **role** okna, klikněte na tlačítko **přidat** přidání oprávnění pro uživatele.
 
-## <a name="set-access-permissions-for-a-universal-group"></a>Nastavte přístupová oprávnění pro skupinu jako univerzální 
+## <a name="set-access-permissions-for-a-universal-group"></a>Nastavte přístupová oprávnění pro univerzální skupinu 
 
 > [!Note]  
-Platí pouze pro služby Active Directory Federated Services (AD FS).
+Lze použít pouze na služby Active Directory Federated Services (AD FS).
 
 1. Přihlaste se pomocí účtu, který má oprávnění vlastníka prostředku, který chcete spravovat.
 2. V okně pro prostředek, klikněte **přístup** ikonu ![](media/azure-stack-manage-permissions/image1.png).
-3. V **uživatelé** okně klikněte na tlačítko **role**.
-4. V **role** okně klikněte na tlačítko **přidat** přidání oprávnění pro univerzální skupiny Active Directory skupiny.
+3. V **uživatelé** okna, klikněte na tlačítko **role**.
+4. V **role** okna, klikněte na tlačítko **přidat** přidání oprávnění pro univerzální skupiny skupiny služby Active Directory.
 
 ## <a name="next-steps"></a>Další postup
 [Přidání tenanta Azure Stacku](azure-stack-add-new-user-aad.md)

@@ -6,20 +6,19 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: 6996DFC1-5E05-423A-968F-A9427C24317C
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/30/2018
+ms.date: 09/10/2018
 ms.author: mabrigg
-ms.openlocfilehash: 70c1fd72df437ade3bc12cd23db923f6d449e7fb
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 5d988e8a8a32924b8424a07cf20c75f0e8f8cf4d
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38465739"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391070"
 ---
 # <a name="get-up-and-running-with-powershell-in-azure-stack"></a>Uvedení do provozu pomocí prostředí PowerShell ve službě Azure Stack
 
@@ -27,12 +26,14 @@ ms.locfileid: "38465739"
 
 Tento rychlý start vám umožní nainstalovat a nakonfigurovat prostředí Azure Stack pomocí Powershellu. Skript, který zajišťuje v tomto článku je vymezen **operátory Azure stacku** pouze.
 
-Tento článek je zkrácenou verzi kroky, které jsou popsány v [instalace Powershellu]( azure-stack-powershell-install.md), [stáhněte si nástroje]( azure-stack-powershell-download.md), a [konfigurace prostředí PowerShell operátory Azure stacku]( azure-stack-powershell-configure-admin.md) článků. Pomocí skriptů v tomto tématu můžete nastavit prostředí PowerShell pro Azure Stack prostředí, které jsou nasazeny pomocí Azure Active Directory nebo Active Directory Federation Services (AD FS).  
+Tento článek je zkrácenou verzi kroky, které jsou popsány v [instalace Powershellu]( azure-stack-powershell-install.md), [stáhněte si nástroje]( azure-stack-powershell-download.md), a [konfigurace prostředí PowerShell operátory Azure stacku]( azure-stack-powershell-configure-admin.md) článků. Pomocí skriptů v tomto článku můžete nastavit prostředí PowerShell pro Azure Stack prostředí, které jsou nasazeny pomocí Azure Active Directory nebo Active Directory Federation Services (AD FS).  
 
 
 ## <a name="set-up-powershell-for-azure-active-directory-based-deployments"></a>Nastavení prostředí PowerShell pro nasazení na základě Azure Active Directory
 
-Pokud jste připojeni přes síť VPN, přihlaste se k Azure Stack Development Kit, nebo externí klienta se systémem Windows. Otevřete relaci Powershellu se zvýšenými oprávněními a spusťte následující skript. Nezapomeňte aktualizovat **TenantName**, **ArmEndpoint**, a **GraphAudience** proměnné podle potřeby pro konfiguraci vašeho prostředí:
+<a name="sign-in-to-your-azure-stack-development-kit-or-a-windows-based-external-client-if-you-are-connected-through-vpn-open-an-elevated-powershell-ise-session-and-then-run-the-following-script"></a>Pokud jste připojeni přes síť VPN, přihlaste se k Azure Stack Development Kit, nebo externí klienta se systémem Windows. Otevřete relaci Powershellu se zvýšenými oprávněními a spusťte následující skript. 
+-  
+- Nezapomeňte aktualizovat **TenantName**, **ArmEndpoint**, a **GraphAudience** proměnné podle potřeby pro konfiguraci vašeho prostředí:
 
 ```powershell
 # Specify Azure Active Directory tenant name.

@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 03/19/2018
+ms.date: 09/06/2018
 ms.author: azfuncdf
-ms.openlocfilehash: ea8c275e5cc37f8c5ecd7c29491b7146669d00fb
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: c84977dacddcf9ccca7fde735ad4acb8a1523fa9
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092899"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378699"
 ---
 # <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Funkce řetězení v Durable Functions – ukázka Hello pořadí
 
@@ -104,6 +104,9 @@ Ke spuštění `E1_HelloSequence` Orchestrace, odeslat požadavek následující
 ```
 POST http://{host}/orchestrators/E1_HelloSequence
 ```
+
+> [!NOTE]
+> Předchozím fragmentu kódu HTTP předpokládá existuje položka v `host.json` souboru, který odebere výchozí `api/` předpony ze všech URL funkce triggeru HTTP. Značky můžete najít v této konfiguraci `host.json` soubor ve vzorcích.
 
 Například pokud používáte ukázku v aplikaci function app s názvem "myfunctionapp", nahraďte "myfunctionapp.azurewebsites.net" "{hostitele}".
 

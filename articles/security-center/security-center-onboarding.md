@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/02/2018
 ms.author: rkarlin
-ms.openlocfilehash: e74a5a431144c303b0301c8b7a22417784ecb65b
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 50055befaa0a5f0bb03bda18e01edfb751e49369
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44300492"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44379991"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>Připojení ke službě Azure Security Center úrovně Standard pro zvýšení zabezpečení
 Upgrade na Security Center úrovně Standard využívat správu rozšířené zabezpečení a ochrana před internetovými útoky pro vašimi hybridními cloudovými úlohami.  Můžete vyzkoušet zdarma po dobu 60 dnů Standard. Zobrazit Security Center [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/) Další informace.
@@ -103,7 +103,7 @@ Pomocí následujícího pracovního postupu můžete přidat počítač **přip
 
    ![Přidat počítače][7]
 
- **Přímý Agent** okno obsahuje odkaz ke stažení agenta Windows nebo Linuxem a klíči pro ID vašeho pracovního prostoru, které použijete při konfiguraci agenta.   
+ **Přímý Agent** okno obsahuje odkaz ke stažení agenta Windows nebo Linuxem, jakož i ID pracovního prostoru a klíče, které použijete při konfiguraci agenta.   
 
 ## <a name="next-steps"></a>Další postup
 V tomto článku jste zjistili, jak připojit Azure a prostředků mimo Azure, aby bylo možné využívat pokročilé zabezpečení Security Center.  Další zprovozněné prostředky, najdete v tématu

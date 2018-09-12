@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: apimpm
-ms.openlocfilehash: d4eb8f3e805d96a276851052b74cac90465d1185
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 4c1696fc373975eb9857c40366829fbe6a535911
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42057485"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391874"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Autorizace vývojářských účtů pomocí Azure Active Directory ve službě Azure API Management
 
@@ -79,7 +79,10 @@ V tomto článku se dozvíte, jak povolit přístup k portálu pro vývojáře p
 
     ![Zaškrtnutí políček u oprávnění](./media/api-management-howto-aad/api-management-with-aad005.png)
 
+1. Vyberte **udělit oprávnění** souhlas oprávnění aplikace.
+
     Další informace o oprávněních aplikace a delegovaná oprávnění najdete v tématu [přístup k rozhraní Graph API][Accessing the Graph API].
+    
 1. V levém podokně zkopírujte **ID aplikace** hodnotu.
 
     ![Hodnota "ID aplikace"](./media/api-management-howto-aad/application-id.png)
@@ -98,6 +101,7 @@ V tomto článku se dozvíte, jak povolit přístup k portálu pro vývojáře p
     > Tento klíč si poznamenejte. Po zavření okna konfigurace služby Azure AD, nelze zobrazit klíč znovu.
     > 
     > 
+
 1. Přepněte zpět do aplikace API Management. 
 
     V **přidat zprostředkovatele identity** okně vložte klíč, který v **tajný kód klienta** textového pole.
@@ -106,6 +110,7 @@ V tomto článku se dozvíte, jak povolit přístup k portálu pro vývojáře p
     > Zkontrolujte prosím, že aktualizace **tajný kód klienta** vypršení platnosti klíče. 
     >  
     >
+
 1. **Přidat zprostředkovatele identity** okno obsahuje také **povolené Tenantů** textového pole. Existuje zadejte domény instancí Azure AD, ke kterým chcete udělit přístup k rozhraním API instance služby API Management. Více domén můžete oddělit vložení znaků newline, mezerami nebo čárkami.
 
     Můžete zadat více doménách **povolené Tenantů** části. Než každý uživatel může přihlásit z jiné domény než původní doménu, ve kterém byl zaregistrován aplikace, globálním správcem jiné doméně, musí udělit oprávnění pro aplikaci pro přístup k datům adresáře. Udělení oprávnění, by měl globálního správce:

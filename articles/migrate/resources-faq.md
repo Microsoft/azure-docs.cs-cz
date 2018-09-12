@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/03/2018
 ms.author: snehaa
-ms.openlocfilehash: f4ce2130b18b183f633c649f98fc1add30753a27
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 16fce3eb5ab3874f7106d05bf99dc795cc22a528
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296003"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377532"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate – nejčastější dotazy (FAQ)
 
@@ -48,13 +48,13 @@ Azure Migrate je nástroj pro plánování migrace a Azure Site Recovery Deploym
 
 ### <a name="which-azure-regions-are-supported-by-azure-migrate"></a>Které oblasti Azure jsou podporovány službou Azure Migrate?
 
-Azure Migrate aktuálně podporuje východní USA a střed USA – Západ jako umístění projektu migrace. Všimněte si, že i v případě, že projekty migrace můžete vytvořit jenom v západní USA – střed a východní USA, můžete přesto posoudit, s u svých počítačů [více cílových míst](https://docs.microsoft.com/azure/migrate/how-to-modify-assessment#edit-assessment-properties). Umístění projektu slouží pouze k uložení zjištěná data.
+Azure Migrate aktuálně podporuje východní USA a střed USA – Západ jako umístění projektu migrace. I v případě, že projekty migrace můžete vytvořit jenom v západní USA – střed a východní USA, můžete přesto posoudit u svých počítačů [více cílových míst](https://docs.microsoft.com/azure/migrate/how-to-modify-assessment#edit-assessment-properties). Umístění projektu slouží pouze k uložení zjištěná data.
 
 ### <a name="how-does-the-on-premises-site-connect-to-azure-migrate"></a>Jak v místní lokalitě připojit k Azure Migrate?
 
 Připojení může být přes internet nebo pomocí veřejného partnerského vztahu ExpressRoute.
 
-### <a name="can-i-harden-the-vm-set-up-with-the-ova-template"></a>Můžete posílení virtuálního počítače s. Šablony pro soubory OVA?
+### <a name="can-i-harden-the-vm-set-up-with-theova-template"></a>Můžete posílení virtuálního počítače s. Šablony pro soubory OVA?
 
 Další součásti (například antivirový program) mohou být přidány do. Šablony pro soubory OVA za předpokladu, jako jsou ponechána komunikaci a pravidel brány firewall vyžadované pro zařízení Azure Migrate pro práci se.   
 
@@ -90,7 +90,9 @@ Zjišťování na základě agenta možnost je k dispozici nad rámec zjišťov�
 
 ### <a name="would-there-be-any-performance-impact-on-the-analyzed-esxi-host-environment"></a>By existovat ovlivnit výkon prostředí analyzované hostitele ESXi?
 
-Vzhledem k tomu, že budeme shromažďovat informace přes vCenter server, neexistuje žádný dopad na výkon na hostitelích ESXi. Dokonce i na serveru vCenter je téměř žádný vliv na výkon.
+V případě třídy [jedním z přístupů doba zjišťování](https://docs.microsoft.com/azure/migrate/concepts-collector#discovery-methods), aby se daly shromažďovat data o výkonu, úroveň statistiky na vCenter serveru byste museli být nastavená na 3. Nastavení na této úrovni může shromažďovat velké množství dat, která bude uložena v databázi serveru vCenter pro řešení potíží. Proto to může způsobit problémy s výkonem v systému vCenter Server. Na hostiteli ESXi by mělo pouze nepatrný dopad.
+
+Zavedli jsme průběžné profilace údaje o výkonu (což je ve verzi preview). Průběžné profilací, již není potřeba měnit statistiky systému vCenter Server úroveň se spustit posouzení na základě výkonu. Zařízení kolektoru bude nyní profilu místních počítačů k měření data o výkonu virtuálních počítačů. Toto musí téměř žádný vliv na výkon na hostitelích ESXi, stejně jako v systému vCenter Server.
 
 ### <a name="where-is-the-collected-data-stored-and-for-how-long"></a>Kde se shromážděná data uložená a jak dlouho?
 

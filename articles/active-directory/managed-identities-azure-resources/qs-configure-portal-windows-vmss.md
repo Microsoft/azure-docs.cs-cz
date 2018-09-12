@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
 ms.author: daveba
-ms.openlocfilehash: cfd9936a4eb43fcecb66e672767b6f1133262c1d
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 0a6440b7fffe1aec26ba4755f21fa2f56935887e
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/11/2018
-ms.locfileid: "44345704"
+ms.locfileid: "44377577"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-the-azure-portal"></a>Konfigurace spravovaných identit pro prostředky Azure na virtuální počítač škálovací sady s použitím webu Azure portal
 
@@ -32,8 +32,10 @@ V tomto článku pomocí Powershellu, se dozvíte, jak k provádění následuj�
 - Pokud nejste obeznámeni s spravovaných identit pro prostředky Azure, podívejte se [oddílu přehled](overview.md).
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
 - Váš účet k provádění operací správy v tomto článku, potřebuje následující přiřazení řízení přístupu na základě rolí Azure:
+
     > [!NOTE]
     > Žádné další Azure vyžaduje přiřazení rolí adresáře AD.
+
     - [Přispěvatel virtuálních počítačů](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) povolit a odeberte systém přiřadil spravovanou identitu ze škálovací sady virtuálních počítačů.
 
 ## <a name="system-assigned-managed-identity"></a>Systém přiřadil spravované identity

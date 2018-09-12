@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 32cf0ad791a8b36d6a90519d428df0b21d542a31
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 6a9ecbcc5161f47a192d5bf3a893a42b3ee9ce2f
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092797"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44379498"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Vazby pro Durable Functions (Azure Functions)
 
@@ -121,7 +121,7 @@ module.exports = df(function*(context) {
 
 Aktivační událost aktivity umožňuje vytvářet funkce, které jsou volány funkce nástroje orchestrator.
 
-Pokud používáte Visual Studio, aktivační událost pro aktivitu je nakonfigurovaný nástrojem [ActvityTriggerAttribute](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.ActivityTriggerAttribute.html) atribut rozhraní .NET. 
+Pokud používáte Visual Studio, aktivační událost pro aktivitu je nakonfigurovaný nástrojem [ActivityTriggerAttribute](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.ActivityTriggerAttribute.html) atribut rozhraní .NET. 
 
 Pokud používáte pro vývoj na webu Azure portal, aktivační událost pro aktivitu je definován následujícím objektu JSON v `bindings` pole *function.json*:
 

@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 04/03/2017
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 74a4066e3d30b1e91fe558fcfeb6f39220e41c02
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 08ba5e7cbdc041a41f1d006d69980bf6efc00101
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37887340"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44380282"
 ---
-# <a name="configure-a-webhook-on-an-azure-metric-alert"></a>Konfigurace webhooku v upozornění metriky Azure
+# <a name="have-a-classic-metric-alert-notify-a-non-azure-system-using-a-webhook"></a>Mít klasických upozornění na metriku oznámení do systému mimo Azure, pomocí webhooku
 Použití webhooků pro směrování Azure oznámení s dalšími systémy pro následné zpracování nebo vlastní akce. Webhooku v upozornění můžete směrovat do služby, které posílat SMS zprávy do protokolu chyb, které chcete upozornit tým prostřednictvím chatu nebo zasílání zpráv služby, nebo pro různé další akce. 
 
 Tento článek popisuje, jak nastavit webhooku v upozornění metriky Azure. Taky se naučíte vypadá datová část požadavku HTTP POST do webhooku. Informace o instalaci a schéma pro aktivitu Azure upozornění protokolu (upozornění na události), najdete v části [zavolání webhooku v upozornění protokolu aktivit Azure](insights-auditlog-to-webhook-email.md).
@@ -72,20 +72,20 @@ Operace POST obsahuje následující datovou část JSON a schéma pro všechny 
 | Pole | Povinné | Pevné sady hodnot | Poznámky |
 |:--- |:--- |:--- |:--- |
 | status |Ano |Aktivováno, vyřešeno |Stav upozornění na základě podmínek, je nastavit. |
-| kontext |Ano | |Kontext výstrahy. |
+| Kontext |Ano | |Kontext výstrahy. |
 | časové razítko |Ano | |Čas, kdy byla výstraha. |
 | id |Ano | |Každé pravidlo upozornění má jedinečné ID. |
 | jméno |Ano | |Název výstrahy. |
 | description |Ano | |Popis výstrahy. |
 | conditionType |Ano |Metriky, události |Podporuje dva typy výstrah: metrik a událostí. Upozornění na metriky jsou založeny na podmínku metriky. Výstrahy na události jsou založené na události v protokolu aktivit. Tuto hodnotu použijte, chcete-li zkontrolovat, jestli upozornění je založené na metriku nebo události. |
-| podmínka |Ano | |Na základě konkrétních polí ke kontrole **conditionType** hodnotu. |
+| condition |Ano | |Na základě konkrétních polí ke kontrole **conditionType** hodnotu. |
 | metricName |Pro upozornění na metriku | |Název metriky, která definuje, co pravidlo monitoruje. |
 | metricUnit |Pro upozornění na metriku |Počet bajtů, BytesPerSecond, Count, CountPerSecond, %, sekund |Jednotka povolené v metrice. Zobrazit [povolené hodnoty](https://msdn.microsoft.com/library/microsoft.azure.insights.models.unit.aspx). |
 | metricValue |Pro upozornění na metriku | |Skutečná hodnota metriky, který výstrahu způsobil. |
 | Prahová hodnota |Pro upozornění na metriku | |Prahová hodnota, na který se aktivuje upozornění. |
 | velikost_okna |Pro upozornění na metriku | |Časový úsek, který slouží k monitorování výstrah aktivity podle prahovou hodnotu. Hodnota musí být mezi 5 minutami a 1 den. Hodnota musí být ve formátu ISO 8601 doby trvání. |
 | timeAggregation |Pro upozornění na metriku |Průměr, poslední, Maximum, Minimum, None, celkem |Jak by měl kombinovat data, která se shromažďují v čase. Výchozí hodnota je průměr. Zobrazit [povolené hodnoty](https://msdn.microsoft.com/library/microsoft.azure.insights.models.aggregationtype.aspx). |
-| – operátor |Pro upozornění na metriku | |Operátor, který se používá k porovnání aktuálního data metriky pro nastavenou prahovou hodnotu. |
+| – Operátor |Pro upozornění na metriku | |Operátor, který se používá k porovnání aktuálního data metriky pro nastavenou prahovou hodnotu. |
 | subscriptionId |Ano | |ID předplatného Azure. |
 | resourceGroupName |Ano | |Název skupiny prostředků pro daný prostředek. |
 | resourceName |Ano | |Název prostředku ovlivněných prostředků. |

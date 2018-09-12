@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7b1f937a71a0ff5b8030c922073dc463af3c8430
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 274f9d89113f583cc7b65ae01f3132d35b82b920
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/11/2018
-ms.locfileid: "44349258"
+ms.locfileid: "44380416"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines, plánování a implementace SAP NetWeaver
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -511,7 +511,7 @@ Azure Resource Manager umožňuje zřizovat aplikace pomocí deklarativní šabl
 
 Další informace o použití šablon Resource Manageru najdete tady:
 
-* [Nasadit a spravovat virtuální počítače pomocí šablony Azure Resource Manager a rozhraní příkazového řádku Azure] [../../linux/create-ssh-secured-vm-from-template.md]
+* [Nasazení a správa virtuálních počítačů pomocí šablon Azure Resource Manageru a Azure CLI](../../linux/create-ssh-secured-vm-from-template.md)
 * [Správa virtuálních počítačů pomocí Azure Resource Manageru a Powershellu][virtual-machines-deploy-rmtemplates-powershell]
 * <https://azure.microsoft.com/documentation/templates/>
 

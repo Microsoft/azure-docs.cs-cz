@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 04/30/2018
+ms.date: 09/06/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 136316feab5a08308a9f10e499f645aaee0c90d3
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 1d6160f8c66fd749942be581cb2992977da82911
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093239"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377985"
 ---
 # <a name="durable-functions-overview"></a>Trvalý přehled funkcí
 
@@ -334,7 +334,7 @@ Na pozadí rozšíření Durable Functions je postavený na [trvalý Framework �
 
 ### <a name="event-sourcing-checkpointing-and-replay"></a>Model Event sourcing, vytváření kontrolních bodů a opětovného přehrání
 
-Funkce nástroje Orchestrator spolehlivě Udržovat stav jejich provedení pomocí vzoru návrhu cloudu říká [modelu Event Sourcing](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing). Místo uložení přímo *aktuální* stavu Orchestrace, trvalý rozšíření používá úložiště nabízí jen možnost připojovat k zaznamenání *úplné posloupnosti akcí* provedenou na základě Orchestrace funkce. To přináší řadu výhod, včetně vylepšení výkonu, škálovatelnosti a rychlost odezvy ve srovnání s "vypsání" úplné běhový stav. Mezi další výhody patří poskytování konečné konzistence transakčních dat a zachování úplné záznamy pro audit a historii. Záznamy pro audit, sami povolit spolehlivé provádět kompenzační akce.
+Funkce nástroje Orchestrator spolehlivě Udržovat stav jejich provedení pomocí vzoru návrhu říká [modelu Event Sourcing](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing). Místo uložení přímo *aktuální* stavu Orchestrace, trvalý rozšíření používá úložiště nabízí jen možnost připojovat k zaznamenání *úplné posloupnosti akcí* provedenou na základě Orchestrace funkce. To přináší řadu výhod, včetně vylepšení výkonu, škálovatelnosti a rychlost odezvy ve srovnání s "vypsání" úplné běhový stav. Mezi další výhody patří poskytování konečné konzistence transakčních dat a zachování úplné záznamy pro audit a historii. Záznamy pro audit, sami povolit spolehlivé provádět kompenzační akce.
 
 Použití modelu Event Sourcing v tomto rozšíření je transparentní. Na pozadí `await` operátor v funkce orchestrátoru vrací řízení vlákna orchestrator zpět do dispečera trvalý Framework úloh. Dispečer pak potvrdí všechny nové akce, které funkce orchestrátoru naplánované (třeba volání jedné nebo více podřízených funkcí nebo plánování trvalý časovače) do úložiště. Tato akce transparentní potvrzení připojí k *historie provádění* instance Orchestrace. Historie je uložena v tabulce úložiště. Potvrzení akce poté přidá zprávy do fronty k naplánování samotnou práci. Funkce orchestrátoru v tomto okamžiku může být uvolněna z paměti. Fakturace se zastaví, pokud používáte plán Consumption funkce Azure.  Při další práci restartování funkce a její stav je znovu vytvořena.
 
@@ -369,6 +369,8 @@ Rozšíření Durable Functions používá fronty Azure Storage, tabulek a objek
 Funkce nástroje Orchestrator naplánovat funkce aktivity a zobrazí jejich odpovědi prostřednictvím vnitřní fronty zpráv. Při spuštění aplikace function app v plánu Consumption funkce Azure, tyto fronty jsou monitorovány pomocí [kontroler škálování Azure Functions](functions-scale.md#how-the-consumption-plan-works) a nový výpočet instance jsou přidány podle potřeby. Horizontální navýšení kapacity na několik virtuálních počítačů se funkce orchestrátoru narazit na jeden virtuální počítač při spuštění funkce aktivity, které volá na několik různých virtuálních počítačů. Další podrobnosti najdete na chování škálování odolná služba Functions v [výkon a škálování](durable-functions-perf-and-scale.md).
 
 Tabulka úložiště slouží k uložení historie provádění pro účty nástroje orchestrator. Pokaždé, když se instance rehydrates na konkrétní virtuální počítač, načte historii jejího spouštění z table storage tak, aby ho můžete znovu sestavit stavu místní. Jednou z vhodné věcí o historii k dispozici ve službě Table storage je, že můžete podívat a zobrazit historii vaší Orchestrace pomocí nástrojů, jako [Microsoft Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
+
+Úložiště objektů blob se používají především jako mechanismus "pronájmu" ke koordinaci škálování Orchestrace instancí napříč několika virtuálními počítači. Používají se také pro uchovávání dat pro velké zprávy, které nelze ukládat přímo do tabulky nebo fronty.
 
 ![Snímek obrazovky Azure Storage Exploreru](media/durable-functions-overview/storage-explorer.png)
 
