@@ -9,12 +9,12 @@ ms.custom: mvc,migrate
 ms.topic: tutorial
 ms.date: 07/02/2018
 ms.author: carlrab
-ms.openlocfilehash: ceab627d98149774a3eb767ee56d688f9c11ff99
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 1d8ec772293354c059f21aaae8006f5c40540058
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346837"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44050200"
 ---
 # <a name="migrate-your-sql-server-database-to-azure-sql-database-using-dma"></a>Migrace databáze SQL Serveru do služby Azure SQL Database pomocí DMA
 
@@ -43,7 +43,7 @@ Předpokladem dokončení tohoto kurzu je splnění následujících požadavků
 
 ## <a name="log-in-to-the-azure-portal"></a>Přihlášení k portálu Azure Portal
 
-Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-blank-sql-database"></a>Vytvoření prázdné databáze SQL
 
@@ -133,7 +133,7 @@ Teď se můžete z této IP adresy připojit k serveru SQL Database a jeho datab
 
 Na webu Azure Portal získejte plně kvalifikovaný název serveru služby Azure SQL Database. Plně kvalifikovaný název serveru slouží k připojení k serveru SQL Azure pomocí klientských nástrojů, včetně nástroje Data Migration Assistant a aplikace SQL Server Management Studio.
 
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. V nabídce vlevo vyberte **SQL Database** a na stránce **Databáze SQL** klikněte na vaši databázi. 
 3. V podokně **Základy** na stránce webu Azure Portal pro vaši databázi vyhledejte a potom zkopírujte **Název serveru**.
 
@@ -240,7 +240,7 @@ Pomocí aplikace [SQL Server Management Studio](https://docs.microsoft.com/sql/s
 
 4. Klikněte na **Připojit**. V aplikaci SSMS se otevře okno Průzkumníka objektů. 
 
-5. V Průzkumníkovi objektů zobrazte objekty v ukázkové databázi rozbalením **Databáze** a potom **mySampleDatabase**.
+5. V Průzkumníku objektů zobrazte objekty v ukázkové databázi rozbalením **Databáze** a potom **mySampleDatabase**.
 
    ![databázové objekty](./media/sql-database-connect-query-ssms/connected.png)  
 
@@ -248,7 +248,7 @@ Pomocí aplikace [SQL Server Management Studio](https://docs.microsoft.com/sql/s
 
 Pomocí aplikace SQL Server Management Studio můžete změnit úroveň služby, úroveň výkonu a úroveň kompatibility. Během fáze importu doporučujeme pro zajištění nejlepšího výkonu importovat do databáze na vyšší úrovni výkonu, ale po dokončení importu vertikálně snížit kapacitu, abyste ušetřili, dokud nebudete připraveni importovanou databázi aktivně používat. Změna úrovně kompatibility může přinést lepší výkon a přístup k nejnovějším možnostem služby Azure SQL Database. Při migraci starší databáze zůstane její úroveň kompatibility zachována na nejnižší podporované úrovni, která je kompatibilní s importovanou databází. Další informace najdete v tématu [Zvýšení výkonu dotazů s úrovní kompatibility 130 ve službě Azure SQL Database](sql-database-compatibility-level-query-performance-130.md).
 
-1. V Průzkumníkovi objektů klikněte pravým tlačítkem na **mySampleDatabase** a pak klikněte na **Nový dotaz**. Otevře se okno dotazu připojené k vaší databázi.
+1. V Průzkumníku objektů klikněte pravým tlačítkem na **mySampleDatabase** a pak klikněte na **Nový dotaz**. Otevře se okno dotazu připojené k vaší databázi.
 
 2. Provedením následujícího příkazu nastavte úroveň služby na **Standard** a úroveň výkonu na **S1**.
 

@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 08/09/2018
 ms.author: mlandzic
 manager: craigg
-ms.openlocfilehash: afecd69cdf9832e1c6dc294ca01968ee50a3eabd
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 73990d6feeed56114bc3c66164bbb53c093bbe21
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41918880"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44050607"
 ---
 # <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-managed-instance"></a>Migrace certifikátu databáze s ochranou TDE do spravované instance Azure SQL
 
@@ -141,4 +141,4 @@ Certifikát je nyní k dispozici pro zadanou spravovanou instanci a bude v ní m
 
 V tomto článku jste zjistili, jak migrovat certifikát s šifrovacím klíčem databáze chráněné transparentním šifrováním dat z místních nebo IaaS systémů SQL Server do spravované instance Azure SQL.
 
-V kurzu [Obnovení zálohy databáze do spravované instance Azure SQL Database](sql-database-managed-instance-restore-from-backup-tutorial.md) se naučíte, jak obnovit zálohu databáze do spravované instance Azure SQL Database.
+V kurzu [Obnovení zálohy databáze do spravované instance Azure SQL Database](sql-database-managed-instance-get-started-restore.md) se naučíte, jak obnovit zálohu databáze do spravované instance Azure SQL Database.

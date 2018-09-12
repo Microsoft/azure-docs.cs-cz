@@ -9,12 +9,12 @@ ms.custom: mvc,develop databases
 ms.topic: tutorial
 ms.date: 07/16/2018
 ms.author: carlrab
-ms.openlocfilehash: 6f12c44c2d65eef7e8d3345ec79b812304fe9791
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: ed2d4654163881b3258c4a98632d48acd0e80fb5
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091533"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44055365"
 ---
 # <a name="tutorial-design-your-first-azure-sql-database-using-ssms"></a>Kurz: Návrh první databáze Azure SQL Database pomocí SSMS
 

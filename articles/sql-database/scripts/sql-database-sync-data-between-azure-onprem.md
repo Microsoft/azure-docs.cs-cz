@@ -17,26 +17,27 @@ ms.workload: database
 ms.date: 04/01/2018
 ms.author: xiwu
 ms.reviewer: douglasl
-ms.openlocfilehash: 650303918e6aac1d4d16549f0b1ca976f0e6bf11
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: f616cfb32164950b85a559d4e06b273212aec4b6
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43663879"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44049429"
 ---
 # <a name="use-powershell-to-sync-between-a-sql-database-and-a-sql-server-on-premises-database"></a>Použití PowerShellu k synchronizaci mezi službou SQL Database a místní databází SQL Serveru
 
 Tento příklad PowerShellu nakonfiguruje Synchronizaci dat pro synchronizaci mezi službou Azure SQL Database a místní databází SQL Serveru. 
 
-Tato ukázka vyžaduje modul Azure PowerShellu verze 4.2 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps).
- 
-Spuštěním příkazu `Connect-AzureRmAccount` vytvořte připojení k Azure.
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+[!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
+
+Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte v tomto kurzu použít modul Azure PowerShell verze 5.7.0 nebo novější. Verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzureRmAccount` pro vytvoření připojení k Azure.
 
 Přehled Synchronizace dat SQL najdete v tématu [Synchronizace dat mezi několika cloudovými a místními databázemi pomocí Synchronizace dat SQL Azure](../sql-database-sync-data.md).
 
 ## <a name="sample-script"></a>Ukázkový skript
 
-```powershell
+```powershell-interactive
 # prerequisites: 
 # 1. Create an Azure Database from AdventureWorksLT sample database as hub database
 # 2. Create an Azure Database in the same region as sync database

@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: mvc,security
 ms.topic: tutorial
-ms.date: 04/24/2018
+ms.date: 09/07/2018
 ms.author: daredis
-ms.openlocfilehash: 54ec3c1386d6ce2023106367a6af1915e754948f
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6d805a39831ce2eea204689a4daa069d10b757e8
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32193457"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054066"
 ---
 # <a name="secure-your-azure-sql-database"></a>Zabezpečení služby Azure SQL Database
 
@@ -46,11 +46,11 @@ Abyste mohli absolvovat tento kurz, ujistěte se, že máte následující:
 
 - Instalace nejnovější verze aplikace [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS). 
 - Instalace aplikace Microsoft Excel.
-- Vytvořený server a databázi SQL Azure – Viz [Vytvoření databáze SQL Azure na webu Azure Portal](sql-database-get-started-portal.md), [Vytvoření izolované databáze SQL Azure pomocí Azure CLI](sql-database-get-started-cli.md) a [Vytvoření izolované databáze SQL Azure pomocí PowerShellu](sql-database-get-started-powershell.md). 
+- Vytvořený server a databázi SQL Azure – Viz [Vytvoření databáze SQL Azure na webu Azure Portal](sql-database-get-started-portal.md), [Vytvoření izolované databáze SQL Azure pomocí Azure CLI](sql-database-cli-samples.md) a [Vytvoření izolované databáze SQL Azure pomocí PowerShellu](sql-database-powershell-samples.md). 
 
 ## <a name="log-in-to-the-azure-portal"></a>Přihlášení k portálu Azure Portal
 
-Přihlaste se k portálu [Azure Portal](https://portal.azure.com/).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>Vytvoření pravidla brány firewall na úrovni serveru na webu Azure Portal
 

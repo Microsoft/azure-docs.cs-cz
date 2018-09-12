@@ -13,12 +13,12 @@ ms.topic: tutorial
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
 manager: douge
-ms.openlocfilehash: 1b603db552edd14dab2c86e6b005184eb88e74bb
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 97b052833946b373e2333491c4b516b3a088130b
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42154811"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44158462"
 ---
 # <a name="team-development-with-azure-dev-spaces"></a>Týmový vývoj se službou Azure Dev Spaces
 
@@ -163,6 +163,6 @@ Pokud chcete otestovat novou verzi `mywebapi` ve spojení s projektem `webfronte
 
 Teď k adrese URL přidejte „scott.s.“. Adresa URL tedy bude vypadat nějak podobně jako http://scott.s.webfrontend.123456abcdef.eastus.aksapp.io. Aktualizujte stránku v prohlížeči. Mělo by dojít k zastavení na zarážce, kterou jste nastavili v projektu `mywebapi`. Pokračujte kliknutím na F5. V prohlížeči by se teď měla zobrazit nová zpráva „Hello from webfrontend and mywebapi now says something new.“ Důvodem je skutečnost, že v prostoru `default/scott` je spuštěná cesta k aktualizovanému kódu v `mywebapi`.
 
-[!INCLUDE[](includes/well-done.md)]
+[!INCLUDE [](includes/well-done.md)]
 
-[!INCLUDE[](includes/clean-up.md)]
+[!INCLUDE [](includes/clean-up.md)]

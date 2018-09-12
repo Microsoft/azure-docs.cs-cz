@@ -11,12 +11,12 @@ ms.topic: tutorial
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
 manager: douge
-ms.openlocfilehash: 1bdc0b450a0d36c5de00050559750ded61edd7e5
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: b4c355c864f83bcd76c310fecb0f26dd3372e760
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43188890"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44162746"
 ---
 # <a name="team-development-with-azure-dev-spaces"></a>Týmový vývoj se službou Azure Dev Spaces
 
@@ -76,7 +76,7 @@ Hotovo! Teď máte aplikaci s více kontejnery, kde můžete každý kontejner v
 
 ## <a name="learn-about-team-development"></a>Informace o týmovém vývoji
 
-[!INCLUDE[](includes/team-development-1.md)]
+[!INCLUDE [](includes/team-development-1.md)]
 
 Podívejte se, jak to funguje:
 1. Přejděte do okna editoru VS Code s projektem `mywebapi` a upravte kód výchozí obslužné rutiny GET `/` například takto:
@@ -87,11 +87,11 @@ Podívejte se, jak to funguje:
     });
     ```
 
-[!INCLUDE[](includes/team-development-2.md)]
+[!INCLUDE [](includes/team-development-2.md)]
 
-[!INCLUDE[](includes/well-done.md)]
+[!INCLUDE [](includes/well-done.md)]
 
-[!INCLUDE[](includes/clean-up.md)]
+[!INCLUDE [](includes/clean-up.md)]
 
 
 

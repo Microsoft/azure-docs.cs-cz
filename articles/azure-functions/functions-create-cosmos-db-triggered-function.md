@@ -4,24 +4,20 @@ description: Pomocí služby Azure Functions vytvoříte funkci bez serveru, kte
 services: azure-functions
 documentationcenter: na
 author: ggailey777
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 ms.assetid: bc497d71-75e7-47b1-babd-a060a664adca
-ms.service: functions; cosmos-db
+ms.service: azure-functions; cosmos-db
 ms.devlang: multiple
 ms.topic: quickstart
-ms.tgt_pltfrm: multiple
-ms.workload: na
 ms.date: 03/27/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: ec594a4ba3a794ca1b4c52962ff190b86dce5a81
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 5ae81824c2f35dd2ad26d64f3a343fecc549d805
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43051353"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44095211"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Vytvoření funkce aktivované službou Azure Cosmos DB
 
@@ -115,7 +111,7 @@ Dále se připojíte ke svému účtu služby Azure Cosmos DB a vytvoříte v da
     | **ID kolekce** | Items | Název nové kolekce. Musí se shodovat s názvem definovaným ve vazbě vaší funkce.  |
     | **Kapacita úložiště** | Pevná (10 GB)|Použijte výchozí hodnotu. Tato hodnota je kapacita úložiště databáze. |
     | **Propustnost** |400 RU| Použijte výchozí hodnotu. Pokud budete chtít snížit latenci, můžete propustnost později navýšit. |
-    | **[Klíč oddílu](../cosmos-db/partition-data.md#design-for-scale)** | /kategorie|Klíč oddílu, který rovnoměrně distribuuje data do jednotlivých oddílů. Výběr správného klíče oddílu je důležitý pro vytvoření výkonné kolekce. | 
+    | **[Klíč oddílu](../cosmos-db/partition-data.md#best-practices-when-choosing-a-partition-key)** | /kategorie|Klíč oddílu, který rovnoměrně distribuuje data do jednotlivých oddílů. Výběr správného klíče oddílu je důležitý pro vytvoření výkonné kolekce. | 
 
 1. Kliknutím na **OK** vytvořte kolekci **Úlohy**. Vytvoření kolekce může chvíli trvat.
 

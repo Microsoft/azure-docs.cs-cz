@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/29/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: e941eb27e9c55f9a4b0e7af8d4cd8efa0220616b
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: efb59a73b3c9b0ab06fae2e7b4fe5b97d85249eb
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39264456"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44052801"
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-mongodb-api"></a>Kurz: Dotazování služby Azure Cosmos DB pomocí rozhraní MongoDB API
 
@@ -67,7 +67,7 @@ S použitím výše uvedeného dokumentu family (rodina) vrátí následující 
 
 **Dotaz**
     
-    db.families.find({ id: “WakefieldFamily”})
+    db.families.find({ id: "WakefieldFamily"})
 
 **Results**
 
@@ -117,7 +117,7 @@ Další dotaz vrátí všechny děti v rodině.
 
 **Dotaz**
     
-    db.families.find( { id: “WakefieldFamily” }, { children: true } )
+    db.families.find( { id: "WakefieldFamily" }, { children: true } )
 
 **Results**
 

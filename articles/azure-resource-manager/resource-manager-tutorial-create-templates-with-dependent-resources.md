@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 08/27/2018
+ms.date: 09/07/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7509ed46ba07cd8250f82f8eb258d18e3f4a1ee6
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: e5ced038d5f1ab57939221a0392ab436560c348d
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43107101"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44160506"
 ---
 # <a name="tutorial-create-azure-resource-manager-templates-with-dependent-resources"></a>Kurz: Vytváření šablon Azure Resource Manageru se závislými prostředky
 
@@ -26,11 +26,12 @@ Zjistěte, jak vytvořit šablonu Azure Resource Manageru a nasadit více prost�
 
 Některé prostředky se nedají nasadit, dokud bude existovat jiný prostředek. Nemůžete třeba vytvořit virtuální počítač, dokud bude existovat jeho účet úložiště a síťové rozhraní. Tento vztah se definuje tím, že jeden prostředek označíte jako závislý na jiných prostředcích. Resource Manager vyhodnocuje závislosti mezi prostředky a provádí nasazení v závislém pořadí. Pokud na sobě prostředky nezávisí, Resource Manager je nasadí paralelně. Další informace najdete v článku [Určení pořadí pro nasazení prostředků v šablonách Azure Resource Manageru](./resource-group-define-dependencies.md).
 
+Tento kurz se zabývá následujícími úkony:
+
 > [!div class="checklist"]
 > * Otevření šablony rychlého startu
 > * Prozkoumání šablony
 > * Nasazení šablony
-> * Vyčištění prostředků
 
 Podle pokynů v tomto kurzu vytvoříte virtuální počítač, virtuální síť a další závislé prostředky. 
 

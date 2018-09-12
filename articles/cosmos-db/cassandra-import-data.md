@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 11/15/2017
 ms.author: govindk
 ms.custom: mvc
-ms.openlocfilehash: 55a6fec1b6ac018b4b24c0d27dcfdd5812455800
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: f8c84cc501ea6a979d90d254abeceea8fcc6bddf
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189672"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44053015"
 ---
 # <a name="migrate-your-data-to-azure-cosmos-db-cassandra-api-account"></a>Migrace dat do účtu rozhraní API Cassandra služby Azure Cosmos DB
 
@@ -71,7 +71,7 @@ Při importu dat Cassandra do Azure Cosmos DB pro použití s rozhraním API Cas
             {
                 byte[] valueInBytes = customPayload[key];
                 string value = Encoding.UTF8.GetString(valueInBytes);
-                Console.WriteLine($“CustomPayload:  {key}: {value}”);
+                Console.WriteLine($"CustomPayload:  {key}: {value}");
             }
  
     ``` 

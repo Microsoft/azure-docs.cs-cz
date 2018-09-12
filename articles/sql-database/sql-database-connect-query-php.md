@@ -10,12 +10,12 @@ ms.devlang: php
 ms.topic: quickstart
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 8fe343587336ff22f82ed0d1ef700fc56c86f577
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 19ffb1043317cf7e7ce4c00fd85d21274dab7c0a
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38561090"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44055518"
 ---
 # <a name="use-php-to-query-an-azure-sql-database"></a>Použití PHP k dotazování databáze SQL Azure
 
@@ -27,7 +27,7 @@ Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následují
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
-- [Pravidlo brány firewall na úrovni serveru](sql-database-get-started-portal.md#create-a-server-level-firewall-rule) pro veřejnou IP adresu počítače, který používáte pro tento rychlý start.
+- [Pravidlo brány firewall na úrovni serveru](sql-database-get-started-portal-firewall.md) pro veřejnou IP adresu počítače, který používáte pro tento rychlý start.
 
 - Máte nainstalovaný jazyk PHP a související software pro váš operační systém:
 

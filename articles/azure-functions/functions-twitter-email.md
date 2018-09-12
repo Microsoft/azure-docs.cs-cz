@@ -3,25 +3,20 @@ title: Vytvoření funkce, která se integruje s Azure Logic Apps | Microsoft Do
 description: Vytvořte funkci, která se integruje se službami Azure Logic Apps a Azure Cognitive Services za účelem kategorizace mínění ve tweetech a odesílání oznámení, pokud je mínění špatné.
 services: functions, logic-apps, cognitive-services
 keywords: pracovní postup, cloudové aplikace, cloudové služby, firemní procesy, systémová integrace, integrace podnikových aplikací, enterprise application integration, EAI
-documentationcenter: ''
 author: ggailey777
-manager: cfowler
-editor: ''
+manager: jeconnoc
 ms.assetid: 60495cc5-1638-4bf0-8174-52786d227734
-ms.service: functions
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 12/12/2017
 ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 16a46b4c49687186e25c399dcc2c5c168e7c5004
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 23db8d307892b100f291a1f32c9b77c73a60f23e
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38586870"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44090758"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Vytvoření funkce, která se integruje s Azure Logic Apps
 
@@ -63,7 +58,7 @@ Rozhraní API služeb Cognitive Services jsou v Azure k dispozici jako samostatn
     | Nastavení      |  Navrhovaná hodnota   | Popis                                        |
     | --- | --- | --- |
     | **Název** | MyCognitiveServicesAccnt | Zvolte jedinečný název účtu. |
-    | **Umístění** | Západní USA | Použijte umístění, které je k vám nejblíže. |
+    | **Umístění** | USA – západ | Použijte umístění, které je k vám nejblíže. |
     | **Cenová úroveň** | F0 | Začněte s nejnižší úrovní. Pokud vyčerpáte všechna volání, proveďte škálování na vyšší úroveň.|
     | **Skupina prostředků** | myResourceGroup | Stejnou skupinu prostředků použijte pro všechny služby v tomto kurzu.|
 
@@ -144,7 +139,7 @@ Teď máte funkci, která kategorizuje skóre mínění. Dále vytvoříte aplik
     | ----------------- | ------------ | ------------- |
     | **Název** | TweetSentiment | Zvolte vhodný název vaší aplikace. |
     | **Skupina prostředků** | myResourceGroup | Zvolte stejnou existující skupinu prostředků jako předtím. |
-    | **Umístění** | Východ USA | Zvolte umístění, které je blízko vás. |    
+    | **Umístění** | USA – východ | Zvolte umístění, které je blízko vás. |    
 
 4. Zvolte **Připnout na řídicí panel** a pak kliknutím na **Vytvořit** vytvořte aplikaci logiky. 
 

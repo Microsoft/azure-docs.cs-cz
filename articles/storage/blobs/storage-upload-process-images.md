@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: 1756ac4ddbbc6d93307839e8447da84deb0716f7
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 2537e7cd6d59dfd38cac6b18009ce7d6a311ed10
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398723"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44027142"
 ---
 # <a name="upload-image-data-in-the-cloud-with-azure-storage"></a>Odeslání dat obrázků do cloudu v Azure Storage
 
@@ -77,9 +77,9 @@ Pomocí příkazu [az storage account keys list](/cli/azure/storage/account/keys
 V tomto případě je `<blob_storage_account>` název účtu služby Blob Storage, který jste vytvořili. Veřejný přístup ke kontejneru _images_ je nastavený na hodnotu `off` a veřejný přístup ke kontejneru _thumbnails_ na hodnotu `container`. Nastavení veřejného přístupu `container` umožňuje zobrazení miniatur návštěvníky dané webové stránky.
  
 ```azurecli-interactive 
-$blobStorageAccount="<blob_storage_account>"
+blobStorageAccount=<blob_storage_account>
 
-$blobStorageAccountKey=$(az storage account keys list -g myResourceGroup \
+blobStorageAccountKey=$(az storage account keys list -g myResourceGroup \
 -n $blobStorageAccount --query [0].value --output tsv) 
 
 az storage container create -n images --account-name $blobStorageAccount \

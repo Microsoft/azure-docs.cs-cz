@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 11/02/2017
 ms.author: spelluru
-ms.openlocfilehash: 23e0e487914b6e8810d8db00462c353c99955665
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: fa8c4b07f79564a1e9aa4e78b2323789283d4e73
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697464"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054617"
 ---
 # <a name="net-on-premisescloud-hybrid-application-using-azure-wcf-relay"></a>Hybridní místní/cloudová aplikace .NET využívající Azure WCF Relay
 
@@ -232,7 +232,7 @@ V této části sestavíte jednoduchou aplikaci ASP.NET, která zobrazí data na
     ![][18]
 
 7. Vraťte se do dialogového okna **Nová webová aplikace ASP.NET** a kliknutím na **OK** vytvořte aplikaci MVC.
-8. Teď musíte nakonfigurovat prostředky Azure pro novou webovou aplikaci. Postupujte podle pokynů v [části Publikování v Azure v tomto článku](../app-service/app-service-web-get-started-dotnet-framework.md#publish-to-azure). Potom se vraťte do tohoto kurzu a pokračujte dalším krokem.
+8. Teď musíte nakonfigurovat prostředky Azure pro novou webovou aplikaci. Postupujte podle pokynů v [části Publikování v Azure v tomto článku](../app-service/app-service-web-get-started-dotnet-framework.md#launch-the-publish-wizard). Potom se vraťte do tohoto kurzu a pokračujte dalším krokem.
 10. V Průzkumníkovi řešení klikněte pravým tlačítkem na **Modely**, pak levým na **Přidat** a pak na **Třída**. Do pole **Název** zadejte název **Product.cs**: Pak klikněte na **Přidat**.
 
     ![][17]

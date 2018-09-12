@@ -16,12 +16,12 @@ ms.topic: overview
 ms.date: 02/16/2017
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: e40283abd418552f296f7539e554e0ad5232e49a
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 5ab5452aec5b0371caaf437b6e364ed7b922db3a
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37031680"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44162253"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Seznámení se službou Azure App Service v Linuxu
 
@@ -76,7 +76,7 @@ Na webu Azure Portal se zobrazují pouze funkce, které jsou aktuálně funkčn�
 
 Některé funkce, například integrace virtuálních sítí, ověřování pomocí Azure Active Directory nebo prostřednictvím třetí strany nebo rozšíření webu Kudu, ještě nejsou dostupné. Jakmile budou tyto funkce dostupné, aktualizujeme naši dokumentaci a blog, abychom vás informovali o změnách.
 
-Služba App Service v Linuxu se podporuje pouze s plány služby úrovně [Basic, Standard a Premium](https://azure.microsoft.com/pricing/details/app-service/plans/) a neobsahuje úroveň [Free ani Shared](https://azure.microsoft.com/pricing/details/app-service/plans/). [Linux v ASE (úroveň Isolated)](https://blogs.msdn.microsoft.com/appserviceteam/2018/05/07/announcing-the-linux-on-app-service-environment-public-preview/) je v režimu verze Preview a aktuálně se nepodporuje pro produkční úlohy. Službu Web App for Containers nemůžete vytvořit v plánu služby App Service, který už je hostitelem služby Web Apps mimo Linux. V současné době také platí omezení, že v jedné skupině prostředků není možné kombinovat aplikace pro Windows a aplikace pro Linux.
+Služba App Service v Linuxu se podporuje pouze s plány služby úrovně [Basic, Standard a Premium](https://azure.microsoft.com/pricing/details/app-service/plans/) a neobsahuje úroveň [Free ani Shared](https://azure.microsoft.com/pricing/details/app-service/plans/). Službu Web App for Containers nemůžete vytvořit v plánu služby App Service, který už je hostitelem služby Web Apps mimo Linux. V současné době také platí omezení, že v jedné skupině prostředků není možné kombinovat aplikace pro Windows a aplikace pro Linux.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 

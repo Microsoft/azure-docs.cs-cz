@@ -8,12 +8,12 @@ ms.topic: get-started-article
 ms.date: 03/26/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: a69e8946c050cc69411f843b07e907a119c6edea
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 72f320279d23dc701f045ee6db1681a355f98808
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522925"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44022282"
 ---
 # <a name="managing-azure-file-shares-with-azure-powershell"></a>Správa sdílených složek Azure pomocí Azure PowerShellu 
 Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure je možné připojit v systémech Windows, Linux a macOS. Tato příručka vás provede základy práce se sdílenými složkami Azure pomocí PowerShellu. V tomto článku získáte informace o těchto tématech:
@@ -55,7 +55,7 @@ $storageAcct = New-AzureRmStorageAccount `
 ```
 
 ## <a name="create-an-azure-file-share"></a>Vytvoření sdílené složky Azure
-Teď můžete vytvořit svou první sdílenou složku Azure. Sdílenou složku můžete vytvořit pomocí rutiny [New-AzureStorageShare](/powershell/module/azurerm.storage/new-azurestorageshare). Tento příklad vytvoří sdílenou složku `myshare`.
+Teď můžete vytvořit svou první sdílenou složku Azure. Sdílenou složku můžete vytvořit pomocí rutiny [New-AzureStorageShare](https://docs.microsoft.com/powershell/module/servicemanagement/azure.storage/new-azurestorageshare). Tento příklad vytvoří sdílenou složku `myshare`.
 
 ```azurepowershell-interactive
 New-AzureStorageShare `
@@ -75,7 +75,7 @@ Teď, když jste vytvořili sdílenou složku Azure, můžete sdílenou složku 
 
 
 ### <a name="create-directory"></a>Vytvoření adresáře
-Vytvořte nový adresář *myDirectory* v kořenovém adresáři sdílené složky Azure pomocí rutiny [New-AzureStorageDirectory](/powershell/module/azurerm.storage/new-azurestoragedirectory).
+Vytvořte nový adresář *myDirectory* v kořenovém adresáři sdílené složky Azure pomocí rutiny [New-AzureStorageDirectory](https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragedirectory).
 
 
 ```azurepowershell-interactive
