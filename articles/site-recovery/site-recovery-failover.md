@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 09/11/2018
 ms.author: ponatara
-ms.openlocfilehash: 3ef52030f694b0f9ccf2bd10545918a4fae9f2ee
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: c9a2f258ca952ca36000e1ca0630fbde31ba7ba0
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37918301"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391313"
 ---
 # <a name="failover-in-site-recovery"></a>Převzetí služeb při selhání v Site Recovery
 Tento článek popisuje, jak k převzetí služeb při selhání virtuálních počítačů a fyzických serverů chrání Site Recovery.
@@ -31,14 +31,14 @@ Použijte následující tabulku vědět o možnosti převzetí služeb při sel
 
 
 ## <a name="run-a-failover"></a>Spuštění převzetí služeb při selhání
-Tento postup popisuje, jak spustit převzetí služeb při selhání pro [plánu obnovení](site-recovery-create-recovery-plans.md). Alternativně můžete spustit převzetí služeb při selhání pro jeden virtuální počítač nebo fyzický server z **replikované položky** stránky
+Tento postup popisuje, jak spustit převzetí služeb při selhání pro [plánu obnovení](site-recovery-create-recovery-plans.md). Alternativně můžete spustit převzetí služeb při selhání pro jeden virtuální počítač nebo fyzický server z **replikované položky** stránce, jak je popsáno [tady](vmware-azure-tutorial-failover-failback.md#run-a-failover-to-azure).
 
 
 ![Převzetí služeb při selhání](./media/site-recovery-failover/Failover.png)
 
 1. Vyberte **plány obnovení** > *recoveryplan_name*. Klikněte na tlačítko **převzetí služeb při selhání**
 2. Na **převzetí služeb při selhání** obrazovky, vyberte **bod obnovení** převzetí služeb při selhání. Můžete použít jednu z následujících možností:
-    1.  **Nejnovější** (výchozí): Tato možnost spustí úlohu pomocí první zpracování všech dat poslaných do služby Site Recovery. Zpracování dat vytvoří bod obnovení pro každý virtuální počítač. Tohoto bodu obnovení se používá pro virtuální počítač během převzetí služeb při selhání. Tato možnost poskytuje nejnižší cíl (bodu obnovení rpo) jako virtuální počítač po převzetí služeb při selhání bude mít veškerá data, které jsou replikované do služby Site Recovery při aktivaci převzetí služeb při selhání.
+    1.  **Nejnovější**: Tato možnost spustí úlohu pomocí první zpracování všech dat poslaných do služby Site Recovery. Zpracování dat vytvoří bod obnovení pro každý virtuální počítač. Tohoto bodu obnovení se používá pro virtuální počítač během převzetí služeb při selhání. Tato možnost poskytuje nejnižší cíl (bodu obnovení rpo) jako virtuální počítač po převzetí služeb při selhání bude mít veškerá data, které jsou replikované do služby Site Recovery při aktivaci převzetí služeb při selhání.
     1.  **Nejnovější zpracovaný**: Tato možnost převezme služby při selhání všech virtuálních počítačů v plánu obnovení do nejnovějšího bodu obnovení, která již byla zpracována službou Site Recovery. Při provádění testovacího převzetí služeb při selhání virtuálního počítače, je zobrazen také časové razítko posledního bodu obnovení zpracované. Pokud provádíte převzetí služeb při selhání použít plán obnovení, můžete přejít na jednotlivých virtuálních počítačů a podívejte se na **nejnovější body obnovení** dlaždice k získání těchto informací. Protože se neztrácí žádný čas ke zpracování nezpracovaných dat, tato možnost poskytuje nízkou možnost převzetí služeb při selhání obnovení čas (RTO).
     1.  **Nejnovější konzistentní vzhledem k**: Tato možnost převezme služby při selhání všech virtuálních počítačů v plánu obnovení do nejnovějšího bodu obnovení konzistentní vzhledem k aplikaci, která již byla zpracována službou Site Recovery. Při provádění testovacího převzetí služeb při selhání virtuálního počítače, je zobrazen také časové razítko bodu nejnovější konzistentní vzhledem k obnovení. Pokud provádíte převzetí služeb při selhání použít plán obnovení, můžete přejít na jednotlivých virtuálních počítačů a podívejte se na **nejnovější body obnovení** dlaždice k získání těchto informací.
     1.  **Nejnovější více virtuálních počítačů zpracovat**: Tato možnost dostupná jenom pro plány obnovy, které mají nejméně jeden virtuální počítač s konzistencí pro víc virtuálních počítačů na. Virtuální počítače, které jsou součástí replikační skupiny převzetí služeb při nejnovější společné pro více virtuálních počítačů obnovení konzistentní vzhledem k bodu. Ostatní virtuální počítače převzetí služeb při selhání do bodu jejich nejnovější zpracované obnovení.  
@@ -104,18 +104,19 @@ Převzetí služeb při selhání virtuálních počítačů v určitých příp
 
 Ve všech ostatních případech tento přechodný krok není povinný a doba trvání převzetí služeb při selhání je nižší.
 
-
-
-
-
 ## <a name="using-scripts-in-failover"></a>Pomocí skriptů v převzetí služeb při selhání
 Můžete chtít automatizovat některé akce a převzetím služeb. Můžete použít skripty nebo [runbooky Azure automation](site-recovery-runbook-automation.md) v [plány obnovení](site-recovery-create-recovery-plans.md) to udělat.
 
 ## <a name="post-failover-considerations"></a>Důležité informace o převzetí služeb při selhání příspěvku
 Účtování převzetí služeb při selhání může být vhodné vzít v úvahu tato doporučení:
 ### <a name="retaining-drive-letter-after-failover"></a>Zachování písmeno jednotky po převzetí služeb při selhání
-Pokud chcete zachovat písmeno jednotky na virtuální počítače po převzetí služeb při selhání, můžete nastavit **zásada SAN** pro virtuální počítač na **OnlineAll**. [Přečtěte si další informace](https://support.microsoft.com/en-us/help/3031135/how-to-preserve-the-drive-letter-for-protected-virtual-machines-that-are-failed-over-or-migrated-to-azure).
+Pokud chcete zachovat písmeno jednotky na virtuální počítače po převzetí služeb při selhání, můžete nastavit **zásada SAN** pro virtuální počítač na **OnlineAll**. [Přečtěte si další informace](https://support.microsoft.com/help/3031135/how-to-preserve-the-drive-letter-for-protected-virtual-machines-that-are-failed-over-or-migrated-to-azure).
 
+## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>Příprava připojení k virtuálním počítačům Azure po převzetí služeb při selhání
+
+Pokud chcete připojit k virtuálním počítačům Azure po převzetí služeb při selhání pomocí protokolu RDP nebo SSH, postupujte podle požadavků shrnutých v tabulce [tady](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover).
+
+Postupujte podle kroků popsaných [tady](site-recovery-failover-to-azure-troubleshoot.md) problémy řešit jakékoli připojení zveřejnit převzetí služeb při selhání.
 
 
 ## <a name="next-steps"></a>Další postup

@@ -298,7 +298,7 @@ V tomto kurzu vytvoříte kanál se dvěma aktivitami vyhledávání, jednou akt
 24. Vyberte v návrháři kanálu **aktivitu Uložená procedura** a změňte její název na **StoredProceduretoWriteWatermarkActivity**. 
 
     ![Aktivita Uložená procedura – název](./media/tutorial-incremental-copy-portal/stored-procedure-activity-name.png)
-25. Přepněte na kartu **Účet SQL** a jako **Propojená služba** vyberte *AzureSqlDatabaseLinkedService**. 
+25. Přepněte na kartu **Účet SQL** a jako **Propojená služba** vyberte *AzureSqlDatabaseLinkedService*\*. 
 
     ![Aktivita Uložená procedura – účet SQL](./media/tutorial-incremental-copy-portal/sp-activity-sql-account-settings.png)
 26. Přepněte na kartu **Uložená procedura** a proveďte následující kroky: 

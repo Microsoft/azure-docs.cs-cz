@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: 9fab1050-cfbc-4a8b-b1b3-5531bee92856
 ms.topic: article
 ms.date: 11/22/2016
-ms.openlocfilehash: fc4fdff5080e6ebe13850157e8d560a1d31e7719
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 1307b6df22c51af9710d44abb23178d65e3507aa
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43127475"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377390"
 ---
 # <a name="secure-access-in-azure-logic-apps"></a>Zabezpečený přístup v Azure Logic Apps
 
@@ -77,7 +77,7 @@ Tato nastavení se dá nakonfigurovat v nastavení aplikace logiky:
 1. Klikněte na tlačítko **nastavení pracovního postupu** položky nabídky v části **nastavení**
 1. Zadejte seznam rozsahů IP adres na přijetí aktivační událost
 
-Platný rozsah IP adres má formát `192.168.1.1/255`. Pokud chcete aplikaci logiky tak, aby se aktivovaly jenom jako vnořenou aplikaci logiky, vyberte **pouze jiných funkcí logic apps** možnost. Tato možnost zapíše prázdné pole k prostředku význam jen volá službu samotnou (nadřazená aplikace logiky) úspěšně vyvolat.
+Platný rozsah IP adres má formát `192.168.1.1/32`. Pokud chcete aplikaci logiky tak, aby se aktivovaly jenom jako vnořenou aplikaci logiky, vyberte **pouze jiných funkcí logic apps** možnost. Tato možnost zapíše prázdné pole k prostředku význam jen volá službu samotnou (nadřazená aplikace logiky) úspěšně vyvolat.
 
 > [!NOTE]
 > Můžete spustit aplikaci logiky s triggerem požadavku prostřednictvím rozhraní REST API nebo správu `/triggers/{triggerName}/run` bez ohledu na IP. Tento scénář vyžaduje ověřování pomocí rozhraní Azure REST API a všechny události se objeví v protokolu auditu Azure. Zásady řízení přístupu sady odpovídajícím způsobem.

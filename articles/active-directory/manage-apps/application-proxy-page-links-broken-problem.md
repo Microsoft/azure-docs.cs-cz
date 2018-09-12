@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/18/2018
+ms.date: 09/10/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 505b3e7df64ef804448bd5753bdaa6148b22a2c3
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 382b484f5ed1e45863d24635554cd7c3a55176a4
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356546"
+ms.locfileid: "44378410"
 ---
 # <a name="links-on-the-page-dont-work-for-an-application-proxy-application"></a>Odkazy na stránce nefungují pro aplikaci Proxy aplikací
 
@@ -43,9 +43,7 @@ Existují tři způsoby, jak tento problém vyřešit. Volby níže jsou uvedeny
 
     Tato možnost zajišťuje odkazy v aplikaci zvenku přístupný prostřednictvím Proxy aplikací od odkazy v aplikaci na interní adresy URL jsou také rozpoznány externě. Všechny odkazy stále musí patřit do publikované aplikace. Však s touto možností odkazy nemusí patřit do stejné aplikace a můžou patřit do několika aplikací.
 
-3.  Pokud žádná z těchto možností lze provést, je ve verzi preview novou funkci, která provádí překlad/přepisování adres URL. Pomocí této funkce interní adresy URL nebo odkazy, které existují v textu HTML vašich aplikací jsou přeložit, nebo "mapovat", na publikované externí Proxy adresy URL aplikací. Tento překlad funguje pouze na odkazy ve formátu HTML nebo šablon stylů CSS a nepomůže, pokud odkaz na vaši je generován prostřednictvím JS. 
-
-V důsledku toho důrazně doporučujeme používat [vlastních domén](application-proxy-configure-custom-domain.md) řešení, pokud je to možné. Pokud chcete získat verzi preview, e-mailu <aadapfeedback@microsoft.com> s applicationId(s).
+3.  Pokud žádná z těchto možností jsou to proveditelné, povolení vložený odkaz překlad více způsoby. Mezi tyto možnosti patří pomocí Intune Managed Browser, Moje aplikace rozšíření, nebo pomocí nastavení překladu odkaz na aplikaci. Další informace o každé z těchto možností a jak je chcete povolit, najdete v článku [přesměrovat odkazy pevně zakódované k aplikacím publikovaným pomocí Proxy aplikací Azure AD](application-proxy-configure-hard-coded-link-translation.md).
 
 ## <a name="next-steps"></a>Další postup
 [Práce s existující místní proxy servery](application-proxy-configure-connectors-with-proxy-servers.md)
