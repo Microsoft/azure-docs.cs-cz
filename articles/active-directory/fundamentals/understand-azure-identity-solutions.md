@@ -14,12 +14,12 @@ ms.component: fundamentals
 ms.technology: ''
 ms.assetid: ''
 ms.custom: it-pro
-ms.openlocfilehash: 118f8258673c8a19d5f06e5fc62ff56d0fb44ea1
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: ec84cdb4e226eea4d16d28d63acd7be59241b973
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398360"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346912"
 ---
 # <a name="understand-azure-identity-solutions"></a>Vysvětlení řešení identit Azure
 Microsoft Azure Active Directory (Azure AD) je cloudové řešení správy identit a přístupu, které poskytuje adresářové služby, správu identit a správu přístupu k aplikacím. Azure AD rychle [umožní jednotné přihlašování](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-sso) k tisícům předem integrovaných komerčních i vlastních aplikací v [galerii aplikací Azure AD](https://azure.microsoft.com/marketplace/active-directory/all/). Řadu těchto aplikací už nejspíš používáte, třeba Office 365, Salesforce.com, Box, ServiceNow a Workday.
@@ -110,10 +110,10 @@ Máme spoustu skvělých materiálů online, ze kterých se o Azure AD dozvíte 
 
 * [Povolení hybridní správy adresáře pomocí služby Azure AD Connect](../connect/active-directory-aadconnect.md)
 * [Dodatečné zabezpečení pro dokonale propojený svět](../authentication/multi-factor-authentication.md)
-* [Automatizace zřizování uživatelů a jeho rušení pro aplikace SaaS ve službě Azure Active Directory](../active-directory-saas-app-provisioning.md)
+* [Automatizace zřizování uživatelů a jeho rušení pro aplikace SaaS ve službě Azure Active Directory](../manage-apps/user-provisioning.md)
 * [Správa hesel odkudkoli](../user-help/active-directory-passwords-update-your-own-password.md)
 * [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
-* [Automatizace zřizování uživatelů a jeho rušení pro aplikace SaaS ve službě Azure Active Directory](../active-directory-saas-app-provisioning.md)
+* [Automatizace zřizování uživatelů a jeho rušení pro aplikace SaaS ve službě Azure Active Directory](../manage-apps/user-provisioning.md)
 * [Jak poskytnout zabezpečený vzdálený přístup k místním aplikacím](../manage-apps/application-proxy.md)
 * [Správa přístupu k prostředkům pomocí skupin služby Azure Active Directory](active-directory-manage-groups.md)
 * [Co je licencování Microsoft Azure Active Directory?](active-directory-licensing-whatis-azure-portal.md)
