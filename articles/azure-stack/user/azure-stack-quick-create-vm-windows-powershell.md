@@ -6,21 +6,20 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: 7CA6C0AC-23B7-4007-BA32-7A950FD1F3B8
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 09/07/2018
+ms.date: 09/10/2018
 ms.author: mabrigg
 ms.custom: mvc
-ms.openlocfilehash: aaeed9c86f340d2eda2524922c7af9a8285a1782
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 4795de2126a34907ecdec69e87a059dbadd0c3d0
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44162649"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44380382"
 ---
 # <a name="quickstart-create-a-windows-server-virtual-machine-by-using-powershell-in-azure-stack"></a>Rychlý start: vytvoření virtuálního počítače s Windows serverem pomocí prostředí PowerShell ve službě Azure Stack
 

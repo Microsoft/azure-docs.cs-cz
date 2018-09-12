@@ -197,6 +197,7 @@
 #### [Exportní tenanta](manage-apps/tenant-restrictions.md)
 #### [Použití uživatelů zřizování SCIM](manage-apps/use-scim-to-provision-users-and-groups.md)
 
+### [Prostředí vyjádření souhlasu s aplikací Azure AD](application-consent-experience.md)
 
 ### Řešení potíží
 

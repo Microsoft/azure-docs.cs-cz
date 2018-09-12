@@ -1,0 +1,126 @@
+items:
+- name: Dokumentace ke správě aplikací Azure AD
+  href: index.yml
+- name: Přehled
+  items:
+  - name: Správa aplikací
+    href: what-is-application-management.md
+- name: Šablony Rychlý start
+  items:
+  - name: Přidání aplikace – portál
+    href: add-application-portal.md
+  - name: Zobrazení aplikací klienta – portál
+    href: view-applications-portal.md
+  expanded: true
+- name: Kurzy
+  items:
+  - name: Konfigurace jednotného přihlašování – portál
+    href: configure-single-sign-on-portal.md
+- name: Koncepty
+  items:
+  - name: Plánování integrace cloudových aplikací
+    items:
+    - name: Co se stane po přidání aplikace
+      href: plan-an-application-integration.md
+  - name: Plánování integraci místních aplikací
+    items:
+    - name: Proxy aplikací
+      href: application-proxy.md
+    - name: Konektory
+      href: application-proxy-connectors.md
+    - name: Skupiny konektorů
+      href: application-proxy-connector-groups.md
+    - name: Zabezpečení
+      href: application-proxy-security.md
+    - name: Síťová topologie
+      href: application-proxy-network-topology.md
+    - name: Porovnání řešení vzdáleného přístupu
+      href: application-proxy-migration.md
+  - name: Zřizování uživatelů a skupin
+    items:
+    - name: Automatické zřizování uživatelů
+      href: configure-automatic-user-provisioning-portal.md
+    - name: Aplikace s podporou SCIM
+      href: use-scim-to-provision-users-and-groups.md
+  - name: Zabezpečení aplikací
+    items:
+    - name: Možnosti přístupu k aplikacím
+      href: what-is-access-management.md
+    - name: Možnosti podpisu certifikátů
+      href: certificate-signing-options.md
+    - name: Správa certifikátů
+      href: manage-certificates-for-federated-single-sign-on.md
+  - name: Jednotné přihlašování
+    items:
+    - name: Metody jednotného přihlašování
+      href: application-proxy-single-sign-on.md
+    - name: Zjišťování domovské sféry
+      href: configure-authentication-for-federated-users-portal.md
+    - name: Omezené delegování Kerberos (KCD)
+      href: application-proxy-configure-single-sign-on-with-kcd.md
+    - name: Ukládání hesel do trezoru
+      href: application-proxy-configure-single-sign-on-password-vaulting.md
+    - name: Přístup příkazem ping
+      href: application-proxy-configure-single-sign-on-with-ping-access.md
+- name: Návody
+  items:
+  - name: Integrace cloudových aplikací
+    items:
+    - name: Změna názvu nebo loga
+      href: change-name-or-logo-portal.md
+  - name: Integrace místních aplikací
+    items:
+    - name: Povolení proxy aplikace
+      href: application-proxy-enable.md
+    - name: Publikování aplikace pro vzdálený přístup
+      href: application-proxy-publish-azure-portal.md
+    - name: Konfigurace konektorů
+      href: application-proxy-configure-connectors-with-proxy-servers.md
+    - name: Konfigurace aplikací pracujících s deklaracemi
+      href: application-proxy-configure-for-claims-aware-applications.md
+    - name: Registrace konektoru – bezobslužná instalace
+      href: application-proxy-register-connector-powershell.md
+    - name: Konfigurace nativních klientských aplikací
+      href: application-proxy-configure-native-client-application.md
+    - name: Konfigurace vlastní domovské stránky
+      href: application-proxy-configure-custom-home-page.md
+    - name: Převod vložených odkazů
+      href: application-proxy-configure-hard-coded-link-translation.md
+    - name: Publikování s využitím zástupných znaků
+      href: application-proxy-wildcard.md
+    - name: Odebrání osobních údajů
+      href: application-proxy-remove-personal-data.md
+    - name: Konfigurace vlastní domény
+      href: application-proxy-configure-custom-domain.md
+    - name: Integrace se Vzdálenou plochou
+      href: application-proxy-integrate-with-remote-desktop-services.md
+    - name: Integrace se SharePointem
+      href: application-proxy-integrate-with-sharepoint-server.md
+    - name: Integrace s Teams
+      href: application-proxy-integrate-with-teams.md
+    - name: Integrace s Tableau
+      href: application-proxy-integrate-with-tableau.md
+    - name: Integrace s Qlikem
+      href: application-proxy-qlik.md
+    - name: Chyby konfigurace
+      href: application-proxy-troubleshoot.md
+  - name: Přístup k aplikaci
+    items:
+    - name: Přiřazení uživatele k aplikaci
+      href: assign-user-or-group-access-portal.md
+    - name: Odebrání přístupu uživatele nebo skupiny
+      href: remove-user-or-group-access-portal.md
+    - name: Skrytí aplikace před uživatelem
+      href: hide-application-from-user-portal.md
+    - name: Zákaz přihlašování uživatelů
+      href: disable-user-sign-in-portal.md
+  - name: Migrace
+    items:
+    - name: Migrace aplikace ADFS do Azure
+      href: migrate-adfs-apps-to-azure.md
+ms.openlocfilehash: 57a377c56764272b70814bc78b31f718d3d902b7
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44381790"

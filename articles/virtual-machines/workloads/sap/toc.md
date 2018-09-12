@@ -24,7 +24,11 @@
 ## Instalace SAP HANA
 ### [Ověření konfigurace](hana-installation.md)
 ### [Ukázková instalace HANA](hana-example-installation.md)
-## [Vysoká dostupnost a zotavení po havárii](hana-overview-high-availability-disaster-recovery.md)
+## Vysoká dostupnost a zotavení po havárii
+### [Možnosti a aspekty](hana-overview-high-availability-disaster-recovery.md)
+### [Zálohování a obnovení](hana-backup-restore.md)
+### [Principy a příprava](hana-concept-preparation.md)
+### [Postup převzetí služeb při selhání pro zotavení po havárii](hana-failover-procedure.md)
 ## Řešení potíží a monitorování
 ### [Sledování HLI](troubleshooting-monitoring.md)
 ### [Sledování a řešení potíží na straně HANA](hana-monitor-troubleshoot.md)

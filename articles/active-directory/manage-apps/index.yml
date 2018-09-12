@@ -1,0 +1,47 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: d7df652a5549f3cea1b3d5bd5652c6e39fbd456a
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44381789"
+documentType: LandingData
+title: Dokumentace ke správě aplikací Azure AD
+metadata:
+  title: Dokumentace ke správě aplikací Azure Active Directory
+  meta.description: Learn how to manage and deploy applications with Azure Active Directory.
+  services: active-directory
+  author: barbkess
+  manager: mtillman
+  layout: LandingPage
+  ms.assetid: 
+  ms.service: active-directory
+  ms.topic: landing-page
+  ms.date: 09/06/2018
+  ms.author: barbkess
+abstract:
+  description: Zjistěte, jak spravovat a nasazovat aplikace s využitím Azure Active Directory.
+sections:
+- title: Zprovoznění během 5 minut
+  items:
+  - type: paragraph
+    text: Naučíte se, jak přidat aplikaci pro uživatele s přístupem přes Azure Active Directory.
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: https://docs.microsoft.com/media/common/i_protect.svg
+      text: Přidání aplikace
+      href: https://docs.microsoft.com/azure/active-directory/manage-apps/add-application-portal
+    - image:
+        src: https://docs.microsoft.com/media/common/i_protect.svg
+      text: Zobrazení vašich aplikací
+      href: https://docs.microsoft.com/azure/active-directory/manage-apps/view-applications-portal
+- title: Podrobné kurzy
+  items:
+  - type: paragraph
+    text: Zjistěte, jak povolit jednoduchý a bezpečný přihlašovací proces pro vaše aplikace.
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="/azure/active-directory/manage-apps/configure-single-sign-on-portal">Konfigurace jednotného přihlašování</a>

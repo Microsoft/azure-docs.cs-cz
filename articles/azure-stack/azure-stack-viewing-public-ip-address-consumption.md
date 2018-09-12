@@ -6,20 +6,19 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: 0f77be49-eafe-4886-8c58-a17061e8120f
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/05/2018
+ms.date: 09/10/2018
 ms.author: mabrigg
-ms.openlocfilehash: 0bd4ab27384f8eb31aa520cbff58c71ae58bd6f7
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 6207a77555d0d4656c0728dddec769e483f4d762
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44022929"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378240"
 ---
 # <a name="view-public-ip-address-consumption-in-azure-stack"></a>Zobrazení spotřeby veřejných IP adres ve službě Azure Stack
 

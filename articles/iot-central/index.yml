@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: f8dcee53aecfcb7468d87c480c68f14715dea035
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391568"
 documentType: LandingData
 title: Dokumentace k řešení Azure IoT Central (Preview)
 metadata:
@@ -11,15 +17,13 @@ metadata:
   ms.service: iot-central
   services: iot-central
   manager: timlt
-  ms.openlocfilehash: df6acc821183e7336d8079895c7494eed397eea1
-  ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-  ms.translationtype: HT
-  ms.contentlocale: cs-CZ
-  ms.lasthandoff: 06/01/2018
-  ms.locfileid: "34628568"
 abstract:
   description: Azure IoT Central je plně spravované řešení SaaS (software jako služba), které usnadňuje propojení, monitorování a správu vašich prostředků IoT i ve velkém měřítku. Azure IoT Central zjednodušuje počáteční nastavení vašeho řešení IoT a snižuje zátěž související se správou, provozními náklady a režií obvyklou pro projekty IoT. Naše rychlé starty a kurzy vás naučí vytvářet, přizpůsobovat, spravovat a využívat aplikace Azure IoT Central.
 sections:
+- title: Nadcházející změny
+  items:
+  - type: paragraph
+    text: Azure IoT Central v několika následujících týdnech přejde na využívání služby Azure IoT Hub Device Provisioning Service (DPS) pro všechna připojení zařízení. Jakmile tato změna začne platit, budete muset aktualizovat kód vašeho zařízení, aby se k registraci a připojení zařízení používala sada DPS SDK. Pro všechny aplikace používající funkci průběžného exportu dat a/nebo šablonu řešení Power BI se bude muset změnit cílový kontejner úložiště a vytvořit nová šablona řešení. <a href="https://aka.ms/iotcentral-create-technical-support-ticket">Pokud se chcete dozvědět víc, kontaktujte prosím technickou podporu.</a>
 - title: Zprovoznění během 5 minut
   items:
   - type: paragraph

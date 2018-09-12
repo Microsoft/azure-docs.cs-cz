@@ -147,6 +147,8 @@ items:
     href: view-network-topology.md
   - name: Určení relativní latence mezi umístěním a oblastí Azure
     href: view-relative-latencies.md
+  - name: Sledování výkonu sítě
+    href: ../log-analytics/log-analytics-network-performance-monitor.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
 - name: Referenční informace
   items:
   - name: Azure CLI
@@ -179,9 +181,9 @@ items:
     href: https://azure.microsoft.com/support/legal/sla/
   - name: Stack Overflow
     href: http://stackoverflow.com/questions/tagged/network-watcher
-ms.openlocfilehash: 16908298ec3ede9cc1bb29b5c05afa3c6c447ad9
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 69b4efb5adc0b6c3c7766b7c9178ccefb816711d
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41927619"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391636"
