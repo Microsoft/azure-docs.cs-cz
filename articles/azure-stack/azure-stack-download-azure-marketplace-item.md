@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/05/2018
+ms.date: 09/12/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 290b3daf73e323b3f5a7e1ef81299e72bf1c5f1d
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
-ms.translationtype: MT
+ms.openlocfilehash: ddb1fcd91ff0c0018bcab9988a5ab063b882cf36
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44024796"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44714660"
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Stažení položek z marketplace z Azure do služby Azure Stack
 
@@ -66,7 +66,7 @@ Nasazení Azure Stack musí mít připojení k Internetu a být [registrované v
 
     Po dokončení stahování, můžete nasadit nové položky marketplace jako operátory Azure stacku nebo uživatele.
 
-5. Pokud chcete nasadit stažené položky, vyberte **+ nová**a potom je prohledejte mezi kategorie pro novou položku marketplace. Dále vyberte položku k zahájení procesu nasazení. Proces se liší pro marketplace různé položky. 
+5. Pokud chcete nasadit stažené položky, vyberte **+ vytvořit prostředek**a potom je prohledejte mezi kategorie pro novou položku marketplace. Dále vyberte položku k zahájení procesu nasazení. Proces se liší pro marketplace různé položky. 
 
 ## <a name="disconnected-or-a-partially-connected-scenario"></a>Odpojení nebo částečně připojeného scénáře
 

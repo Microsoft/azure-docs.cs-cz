@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 08/15/2018
+ms.date: 09/12/2018
 ms.author: sethm
-ms.openlocfilehash: a8d211992f52c9719cad76f16133e23eba24d422
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 9f229caa76059db403ced5b74c7a35ec2f0b8e9d
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42139360"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721876"
 ---
 # <a name="key-considerations-using-services-or-building-apps-for-azure-stack"></a>Klíč aspekty: použití služeb nebo vytváření aplikací pro Azure Stack
 
@@ -33,7 +33,7 @@ Operátor Azure Stack vám dá vědět, které služby jsou k dispozici pro pou�
 
 Azure technického obsahu se předpokládá, že jsou aplikací vyvíjených pro službu Azure namísto Azure stacku. Při sestavení a nasazení aplikací do služby Azure Stack, musíte znát několik klíčových rozdílů, například:
 
-* Azure Stack nabízí podmnožinu funkcí, které jsou dostupné v Azure a služby.
+* Azure Stack přináší **dílčí** služeb a funkcí, které jsou k dispozici v Azure.
 * Vaše společnost nebo poskytovali služeb, můžete zvolit služby, které chtějí nabídnout. Dostupné možnosti patří vlastní služby nebo aplikace. Nabízejí může vlastní přizpůsobené dokumentace.
 * Je nutné použít správné Azure Stack specifické koncové body (například adresy URL adresy portálu a koncový bod Azure Resource Manager).
 * Je nutné použít prostředí PowerShell a rozhraní API verze, které podporuje Azure Stack. Pomocí podporované verze zajistí, že vaše aplikace bude fungovat ve službě Azure Stack a Azure.
@@ -43,7 +43,7 @@ Azure technického obsahu se předpokládá, že jsou aplikací vyvíjených pro
 Následující tabulka popisuje základní rozdíly mezi Azure Stack a Azure. Tyto rozdíly v úvahu byste měli vzít při vývoji pro Azure Stack nebo pomocí služby Azure Stack.
 *Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
-| Oblast | Azure (globální) | Azure Stack |
+| Plošný | Azure (globální) | Azure Stack |
 | -------- | ------------- | ----------|
 | Kdo funguje? | Microsoft | Vaše organizace nebo poskytovali služeb.|
 | Kdo je kontaktovat kvůli podpoře? | Microsoft | Pro integrovaný systém obraťte se na vaše služby Azure Stack – operátor (v organizaci nebo service provider) pro podporu.<br><br>Azure Stack Development Kit podporu najdete [fórech Microsoftu](https://social.msdn.microsoft.com/Forums/home?forum=azurestack). Vývojová sada je prostředí pro testování, neexistuje žádné oficiální podporu, kterou nabízí prostřednictvím Microsoft podporu služby zákazníkům (CSS).
@@ -75,11 +75,11 @@ Azure Stack podporuje konkrétní verze prostředí Azure PowerShell a rozhraní
 Chcete-li mít jistotu, že používáte správnou verzi Azure Powershellu, použijte [profilů verzí API](azure-stack-version-profiles.md). K určení profilu nejnovější verze rozhraní API, které můžete použít, přečtěte si sestavení služby Azure Stack, který používáte. Tyto informace můžete získat od správce služby Azure Stack.
 
 >[!NOTE]
- Pokud používáte Azure Stack Development Kit a mají přístup pro správu, najdete v části "Zjistit aktuální verzi" [Správa aktualizací](https://docs.microsoft.com/azure/azure-stack/azure-stack-updates#determine-the-current-version) určit sestavení služby Azure Stack.
+ Pokud používáte Azure Stack Development Kit a mají přístup pro správu, najdete v části "Zjistit aktuální verzi" [Správa aktualizací](../azure-stack-updates.md#determine-the-current-version) určit sestavení služby Azure Stack.
 
 Pro jiná rozhraní API spusťte následující příkaz Powershellu na výstup obory názvů, typy prostředků a verze rozhraní API, které jsou podporovány v rámci vašeho předplatného Azure Stack. Poznámka: může být stále rozdíly na úrovni vlastnost. (Pro tento příkaz fungovat, musíte už mít [nainstalované](azure-stack-powershell-install.md) a [nakonfigurované](azure-stack-powershell-configure-user.md) prostředí PowerShell pro prostředí Azure Stack. Musíte také mít předplatné v rámci nabídky Azure Stack.)
 
- ```powershell
+```powershell
 Get-AzureRmResourceProvider | Select ProviderNamespace -Expand ResourceTypes | Select * -Expand ApiVersions | `
 Select ProviderNamespace, ResourceTypeName, @{Name="ApiVersion"; Expression={$_}} 
 ```

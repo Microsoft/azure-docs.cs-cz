@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 7/10/2017
+ms.date: 09/12/2018
 ms.author: brenduns
 ms.reviewer: scottnap
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6225a12b50ebb7bf0a0cb9244153800ba734d93a
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: a219f44cb27bb6ebe4e17079ad487457ae8852f0
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39006899"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44718113"
 ---
 # <a name="create-a-site-to-site-vpn-connection-between-two-virtual-networks-in-different-azure-stack-development-kit-environments"></a>Vytvoření připojení site-to-site VPN mezi dvěma virtuálními sítěmi v různých prostředích Azure Stack Development Kit
 ## <a name="overview"></a>Přehled
@@ -92,10 +92,7 @@ Správce služeb můžete přihlásit jako tenant k testovací plány, nabídky 
 
 ### <a name="create-the-virtual-network-and-vm-subnet"></a>Vytvoření virtuální sítě a podsítě virtuálních počítačů
 1. Pro přihlášení k portálu user portal pomocí účtu tenanta.
-2. Na portálu user portal, vyberte **nový**.
-
-    ![Vytvořit novou virtuální síť](media/azure-stack-create-vpn-connection-one-node-tp2/image3.png)
-
+2. Na portálu user portal, vyberte **+ vytvořit prostředek**.
 3. Přejděte na **Marketplace**a pak vyberte **sítě**.
 4. Vyberte **virtuální síť**.
 5. Pro **název**, **adresní prostor**, **název podsítě**, a **rozsah adres podsítě**, použijte hodnoty, které se zobrazí dříve v síti Konfigurace tabulky.
@@ -118,7 +115,7 @@ Správce služeb můžete přihlásit jako tenant k testovací plány, nabídky 
 6. Vyberte **OK** vytvořit podsíť brány.
 
 ### <a name="create-the-virtual-network-gateway"></a>Vytvoření brány virtuální sítě
-1. Na webu Azure Portal, vyberte **nový**. 
+1. Na webu Azure Portal, vyberte **+ vytvořit prostředek**. 
 2. Přejděte na **Marketplace**a pak vyberte **sítě**.
 3. V seznamu síťových prostředků, vyberte **Brána virtuální sítě**.
 4. V **název**, zadejte **GW1**.
@@ -140,7 +137,7 @@ Způsob obecněji dívat se, že prostředek brány místní sítě vždycky uv�
 
 ### <a name="create-the-local-network-gateway-resource"></a>Vytváření prostředku brány místní sítě
 1. Přihlaste se k fyzickému počítači Azure Stack pro POC1.
-2. Na portálu user portal, vyberte **nový**.
+2. Na portálu user portal, vyberte **+ vytvořit prostředek**.
 3. Přejděte na **Marketplace**a pak vyberte **sítě**.
 4. V seznamu prostředků vyberte **bránu místní sítě**.
 5. V **název**, zadejte **POC2-GW**.
@@ -149,7 +146,7 @@ Způsob obecněji dívat se, že prostředek brány místní sítě vždycky uv�
 8. Ověřte, že vaše **předplatné**, **skupiny prostředků**, a **umístění** jsou správné a pak vyberte **vytvořit**.
 
 ### <a name="create-the-connection"></a>Vytvoření připojení
-1. Na portálu user portal, vyberte **nový**.
+1. Na portálu user portal, vyberte **+ vytvořit prostředek**.
 2. Přejděte na **Marketplace**a pak vyberte **sítě**.
 3. V seznamu prostředků vyberte **připojení**.
 4. Na **Základy** okno nastavení pro **typ připojení**vyberte **Site-to-site (IPSec)**.
@@ -163,7 +160,7 @@ Způsob obecněji dívat se, že prostředek brány místní sítě vždycky uv�
 ### <a name="create-a-vm"></a>Vytvoření virtuálního počítače
 Ověřit data přenášená přes připojení VPN, budete potřebovat virtuální počítače pro odesílání a příjem dat v jednotlivých Azure Stack Development Kit. Teď vytvořte virtuální počítač v POC1 a potom ve vaší virtuální síti, vložit ho podsítě virtuálních počítačů.
 
-1. Na webu Azure Portal, vyberte **nový**.
+1. Na webu Azure Portal, vyberte **+ vytvořit prostředek**.
 2. Přejděte na **Marketplace**a pak vyberte **Compute**.
 3. Vyberte v seznamu imagí virtuálních počítačů **systému Windows Server 2016 Datacenter Eval** bitové kopie.
 4. Na **Základy** okno v **název**, zadejte **VM01**.
@@ -185,7 +182,7 @@ Správce služeb můžete přihlásit jako tenant k testovací plány, nabídky 
 ### <a name="create-the-virtual-network-and-vm-subnet"></a>Vytvoření virtuální sítě a podsítě virtuálních počítačů
 
 1. Přihlaste se pomocí účtu tenanta.
-2. Na portálu user portal, vyberte **nový**.
+2. Na portálu user portal, vyberte **+ vytvořit prostředek**.
 3. Přejděte na **Marketplace**a pak vyberte **sítě**.
 4. Vyberte **virtuální síť**.
 5. Použijte informace uvedené výše v tabulce Konfigurace sítě a určete hodnoty pro POC2 **název**, **adresní prostor**, **název podsítě**a **Rozsah adres podsítě**.
@@ -205,7 +202,7 @@ Správce služeb můžete přihlásit jako tenant k testovací plány, nabídky 
 6. Vyberte **OK** vytvořit podsíť brány.
 
 ### <a name="create-the-virtual-network-gateway"></a>Vytvoření brány virtuální sítě
-1. Na webu Azure Portal, vyberte **nový**.  
+1. Na webu Azure Portal, vyberte **+ vytvořit prostředek**.  
 2. Přejděte na **Marketplace**a pak vyberte **sítě**.
 3. V seznamu síťových prostředků, vyberte **Brána virtuální sítě**.
 4. V **název**, zadejte **GW2**.
@@ -218,7 +215,7 @@ Správce služeb můžete přihlásit jako tenant k testovací plány, nabídky 
 
 ### <a name="create-the-local-network-gateway-resource"></a>Vytváření prostředku brány místní sítě
 
-1. V portálu user portal POC2 vyberte **nový**. 
+1. V portálu user portal POC2 vyberte **+ vytvořit prostředek**. 
 4. Přejděte na **Marketplace**a pak vyberte **sítě**.
 5. V seznamu prostředků vyberte **bránu místní sítě**.
 6. V **název**, zadejte **POC1-GW**.
@@ -227,7 +224,7 @@ Správce služeb můžete přihlásit jako tenant k testovací plány, nabídky 
 9. Ověřte, že vaše **předplatné**, **skupiny prostředků**, a **umístění** jsou správné a pak vyberte **vytvořit**.
 
 ## <a name="create-the-connection"></a>Vytvoření připojení
-1. Na portálu user portal, vyberte **nový**. 
+1. Na portálu user portal, vyberte **+ vytvořit prostředek**. 
 2. Přejděte na **Marketplace**a pak vyberte **sítě**.
 3. V seznamu prostředků vyberte **připojení**.
 4. Na **základní** okno nastavení pro **typ připojení**, zvolte **Site-to-site (IPSec)**.
@@ -238,10 +235,10 @@ Správce služeb můžete přihlásit jako tenant k testovací plány, nabídky 
 9. V **sdílený klíč (PSK)**, zadejte **12345**. Pokud zvolíte jinou hodnotu, mějte na paměti, že *musí* odpovídat hodnotě pro sdílený klíč, který jste vytvořili v POC1. Vyberte **OK**.
 10. Zkontrolujte **Souhrn** okna a pak vyberte **OK**.
 
-## <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
+## <a name="create-a-virtual-machine"></a>Vytvořit virtuální počítač
 Teď vytvořte virtuální počítač v POC2 a umístí jej podsítě virtuálních počítačů ve vaší virtuální síti.
 
-1. Na webu Azure Portal, vyberte **nový**.
+1. Na webu Azure Portal, vyberte **+ vytvořit prostředek**.
 2. Přejděte na **Marketplace**a pak vyberte **Compute**.
 3. Vyberte v seznamu imagí virtuálních počítačů **systému Windows Server 2016 Datacenter Eval** bitové kopie.
 4. Na **Základy** okně pro **název**, zadejte **VM02**.
@@ -314,7 +311,7 @@ Pokud chcete nakonfigurovat připojení VPN, musíte vytvořit statickou trasu m
 
 4. Opakujte tento postup v POC2.
 
-## <a name="test-the-connection"></a>Otestování připojení
+## <a name="test-the-connection"></a>Otestovat připojení
 Teď, když se připojení site-to-site, měli byste ověřit, že dokážete zajistit provoz přes něj. Pokud chcete ověřit, přihlaste se k jednomu z virtuálních počítačů, které jste vytvořili v prostředí Azure Stack Development Kit. Pak odešlete zprávu ping virtuální počítač, který jste vytvořili v druhém prostředí. 
 
 Pokud chcete mít jistotu, že je přenos odesílat přes připojení site-to-site, zkontrolujte pomocí příkazu ping adresa Direct IP (DIP) virtuálního počítače ve vzdálené podsíti, nikoli virtuální IP adresy. K tomuto účelu najdete IP adresu na druhém konci připojení. Uložte adresu pro pozdější použití.

@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/08/2018
+ms.date: 09/12/2018
 ms.author: mattbriggs
 ms.reviewer: shnatara
-ms.openlocfilehash: 9feb2e538d3578fe259aa3fbc693a1e953f2f894
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 3d3701c670236d67697f4109a59fa31900037a0d
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39440347"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44720918"
 ---
 # <a name="deploy-a-service-fabric-cluster-in-azure-stack"></a>Nasazení clusteru Service Fabric v Azure stacku
 
@@ -120,7 +120,7 @@ Další informace najdete v tématu [Spravovat trezor klíčů ve službě Azure
 
 ## <a name="deploy-the-marketplace-item"></a>Nasadit položky Marketplace
 
-1. Na portálu user portal, přejděte na **nový** > **Compute** > **Service Fabric Cluster**. 
+1. Na portálu user portal, přejděte na **+ vytvořit prostředek** > **Compute** > **Service Fabric Cluster**. 
 
    ![Vyberte Service Fabric Cluster](./media/azure-stack-solution-template-service-fabric-cluster/image2.png)
 
@@ -186,7 +186,7 @@ Cluster Service Fabric můžete přistupovat pomocí rozhraní Service Fabric Ex
 
 1. K ověření na webu musíte vybrat certifikát pro použití. Vyberte **víc možností**, vyberte příslušný certifikát a potom klikněte na tlačítko **OK** pro připojení k Service Fabric Explorer. 
 
-   ![Ověření](media/azure-stack-solution-template-service-fabric-cluster/image14.png)
+   ![Ověřit](media/azure-stack-solution-template-service-fabric-cluster/image14.png)
 
 
 

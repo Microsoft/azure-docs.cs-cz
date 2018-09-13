@@ -3,7 +3,7 @@ title: Architektura identity pro službu Azure Stack | Dokumentace Microsoftu
 description: Další informace o architektuře identitu, která vám pomůže s využitím Azure stacku.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: PatAltimore
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/01/2018
-ms.author: brenduns
+ms.author: patricka
 ms.reviewer: ''
-ms.openlocfilehash: bf69c71a8b361e4a147263bc60324573c710818f
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: f2d843b343fa830adf41352ae692ea98bed52ecc
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412692"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44713642"
 ---
 # <a name="identity-architecture-for-azure-stack"></a>Architektura identity pro službu Azure Stack
 Než se rozhodnete zprostředkovatele identity pro použití s Azure Stack, pochopit rozdíly mezi možnosti služby Azure Active Directory (Azure AD) a Active Directory Federation Services (AD FS). 
@@ -32,7 +32,7 @@ Zprostředkovatel identity, kterou zvolíte můžete omezit možnosti, včetně 
 
 |Funkce nebo scénáře        |Azure AD  |AD FS  |
 |------------------------------|----------|-------|
-|Připojení k Internetu     |Ano       |Nepovinné|
+|Připojení k Internetu     |Ano       |Volitelné|
 |Podpora pro více tenantů     |Ano       |Ne      |
 |Položky nabídky na webu Marketplace |Ano       |Ano. Vyžaduje použití [offline syndikace Marketplace](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario) nástroj.|
 |Podpora pro Active Directory Authentication Library (ADAL) |Ano |Ano|

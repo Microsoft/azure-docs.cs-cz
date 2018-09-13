@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/05/2018
+ms.date: 09/11/2018
 ms.author: jeffgilb
 ms.reviewer: ''
 ms.custom: mvc
-ms.openlocfilehash: 09b9126125006fb70f5e2560f04b815b4a874405
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: d106d9f79498678f08142f952e09c5125c6e5d6c
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44027295"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721513"
 ---
 # <a name="tutorial-make-virtual-machines-available-to-your-azure-stack-users"></a>Kurz: zpřístupníte virtuálních počítačů pro vaše uživatele Azure stacku
 
@@ -46,19 +46,19 @@ Další informace najdete v tématu [klíčových funkcích a konceptech v Azure
 
 Nabídky jsou skupiny jednoho nebo několika plánů, které poskytovatelé předkládají uživatelům, aby si koupí nebo přihlášení k odběru. Proces vytváření nabídka má několik kroků. Nejprve budete vyzváni k vytvoření nabídky, pak plán a nakonec kvóty.
 
-1. [Přihlaste se](azure-stack-connect-azure-stack.md) k portálu jako správce cloudu a pak vyberte **nový** > **nabízí + plány** > **nabízejí**.
+1. [Přihlaste se](azure-stack-connect-azure-stack.md) k portálu jako správce cloudu a pak vyberte **+ vytvořit prostředek** > **nabízí + plány** > **nabízejí**.
 
    ![Nová nabídka](media/azure-stack-tutorial-tenant-vm/image01.png)
 
-1. V **nová nabídka**, zadejte **zobrazovaný název** a **název prostředku**a pak vyberte novou nebo existující **skupiny prostředků**. Zobrazovaný název představuje popisný název nabídky. Pouze operátor cloudu můžete zobrazit název prostředku. Je to název, který správci používají pro práci s nabídkou jako s prostředkem Azure Resource Manageru.
+1. V **nová nabídka**, zadejte **zobrazovaný název** a **název prostředku**a pak vyberte novou nebo existující **skupiny prostředků**. Zobrazovaný název představuje popisný název nabídky. Název prostředku, což je název, který správci používají pro práci s nabídkou jako s prostředkem Azure Resource Manageru můžete zobrazit pouze operátor cloudu.
 
-   ![Zobrazované jméno](media/azure-stack-tutorial-tenant-vm/image02.png)
+   ![Zobrazovaný název](media/azure-stack-tutorial-tenant-vm/image02.png)
 
 1. Vyberte **základní plány**a **plán** vyberte **přidat** pro přidání do nabídky nový plán.
 
    ![Přidat plán](media/azure-stack-tutorial-tenant-vm/image03.png)
 
-1. V **nový plán** části, vyplňte **zobrazovaný název** a **název prostředku**. Zobrazovaný název je popisný název plánu, který uživatelé uvidí. Pouze operátor cloudu můžete zobrazit název prostředku. Jedná se o název, operátorům cloudu použít pro práci s plánem jako s prostředkem Azure Resource Manageru.
+1. V **nový plán** části, vyplňte **zobrazovaný název** a **název prostředku**. Zobrazovaný název je popisný název plánu, který uživatelé uvidí. Název prostředku, což je název, operátorům cloudu použít pro práci s plánem jako s prostředkem Azure Resource Manageru můžete zobrazit pouze operátor cloudu.
 
    ![Zobrazovaný název plánu](media/azure-stack-tutorial-tenant-vm/image04.png)
 
@@ -112,11 +112,11 @@ Teď, když jste vytvořili v rámci nabídky, takže ji můžete otestovat. Se 
    - Integrovaný systém, adresa URL se liší v závislosti na oblasti vaší operátor a název domény externího a bude mít tento formát https://portal.&lt; *oblast*&gt;.&lt; *Plně kvalifikovaný název domény*&gt;.
    - Pokud používáte Azure Stack Development Kit, adresy portálu je https://portal.local.azurestack.external.
 
-   ![Získat předplatné](media/azure-stack-subscribe-plan-provision-vm/image01.png)
+   ![Získat předplatné](media/azure-stack-tutorial-tenant-vm/image10.png)
 
    b. V **pořiďte si předplatné**, zadejte název pro vaše předplatné na **zobrazovaný název** pole. Vyberte **nabízejí**a pak vyberte jednu z nabídek v **zvolit nabídku** seznamu. Vyberte **Vytvořit**.
 
-   ![Vytvoření nabídky](media/azure-stack-subscribe-plan-provision-vm/image02.png)
+   ![Vytvoření nabídky](media/azure-stack-tutorial-tenant-vm/image11.png)
 
    c. Chcete-li zobrazit předplatné, vyberte **všechny služby**a potom v části **Obecné** vyberte kategorii **předplatná**. Vyberte své nové předplatné služby, které jsou součástí předplatného.
 
@@ -131,7 +131,7 @@ Teď, když jste vytvořili v rámci nabídky, takže ji můžete otestovat. Se 
       - Integrovaný systém, adresa URL se liší v závislosti na oblasti vaší operátor a název domény externího a bude mít tento formát https://portal.&lt; *oblast*&gt;.&lt; *Plně kvalifikovaný název domény*&gt;.
    - Pokud používáte Azure Stack Development Kit, adresy portálu je https://portal.local.azurestack.external.
 
-   b.  Na řídicím panelu, vyberte **nový** > **Compute** > **systému Windows Server 2016 Datacenter Eval**a pak vyberte **vytvořit**.
+   b.  Na řídicím panelu vyberte **+ vytvořit prostředek** > **Compute** > **systému Windows Server 2016 Datacenter Eval**a pak vyberte **Vytvořit**.
 
    c. V **Základy**, zadejte následující informace:
       - Zadejte **název**
@@ -151,14 +151,11 @@ Teď, když jste vytvořili v rámci nabídky, takže ji můžete otestovat. Se 
 
    h. Vyberte **OK** v **nastavení** uložte konfiguraci sítě.
 
-   ![Vytvoření virtuální sítě](media/azure-stack-provision-vm/image04.png)
-
-   i. V **Souhrn**vyberte **OK** k vytvoření virtuálního počítače.  
+      i. V **Souhrn**vyberte **OK** k vytvoření virtuálního počítače.  
 
    j. Pokud chcete zobrazit nový virtuální počítač, vyberte **všechny prostředky**. Vyhledejte virtuální počítač a vyberte jeho název ve výsledcích hledání.
 
-   ![Všechny zdroje](media/azure-stack-provision-vm/image06.png)
-
+   
 ## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:

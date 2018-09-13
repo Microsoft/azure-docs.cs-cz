@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/14/2018
+ms.date: 09/12/2018
 ms.author: brenduns
 ms.reviewer: ''
-ms.openlocfilehash: 878b7952938c7ec534bc09e27ee8b859c1aaeefb
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: db9f19154668fa33bb94e59a4da6735b1a6d3d49
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42139517"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44720493"
 ---
 # <a name="connect-azure-stack-to-azure-using-azure-expressroute"></a>Připojení k Azure pomocí Azure ExpressRoute Azure Stack
 
@@ -98,7 +98,7 @@ Použijte následující postupy k vytvoření požadovaných síťových prost�
 #### <a name="create-the-virtual-network-and-vm-subnet"></a>Vytvoření virtuální sítě a podsítě virtuálních počítačů
 
 1. Přihlaste se k portálu user portal s účtem uživatele (tenant).
-1. Na portálu vyberte **nový**.
+1. Na portálu vyberte **+ vytvořit prostředek**.
 
 1. V části **Azure Marketplace**vyberte **sítě**.
 
@@ -131,7 +131,7 @@ Použijte následující postupy k vytvoření požadovaných síťových prost�
 
 #### <a name="create-the-virtual-network-gateway"></a>Vytvoření brány virtuální sítě
 
-1. Prostřednictvím uživatelského portálu služby Azure Stack, vyberte **nový**.
+1. Prostřednictvím uživatelského portálu služby Azure Stack, vyberte **+ vytvořit prostředek**.
 1. V části **Azure Marketplace**vyberte **sítě**.
 1. V seznamu síťových prostředků vyberte **bránu virtuální sítě**.
 1. V **název** zadejte **GW1**.
@@ -146,7 +146,7 @@ Použijte následující postupy k vytvoření požadovaných síťových prost�
 
 Prostředku brány místní sítě určuje vzdálenou bránu na druhém konci připojení k síti VPN. V tomto příkladu je vzdáleným koncem připojení LAN podrozhraní ExpressRoute směrovače. Pro Tenanta 1 je znázorněno v *obrázek 2*, Vzdálená adresa je 10.60.3.255.
 
-1. Přihlaste se k portálu user portal Azure Stack s vaším uživatelským účtem a vyberte **nový**.
+1. Přihlaste se k portálu user portal Azure Stack s vaším uživatelským účtem a vyberte **+ vytvořit prostředek**.
 1. V části **Azure Marketplace**vyberte **sítě**.
 1. V seznamu prostředků vyberte **bránu místní sítě**.
 1. V **název** zadejte **ER-směrovač-GW**.
@@ -163,7 +163,7 @@ Prostředku brány místní sítě určuje vzdálenou bránu na druhém konci p�
 
 #### <a name="create-the-connection"></a>Vytvoření připojení
 
-1. Prostřednictvím uživatelského portálu služby Azure Stack, vyberte **nový**.
+1. Prostřednictvím uživatelského portálu služby Azure Stack, vyberte **+ vytvořit prostředek**.
 1. V části **Azure Marketplace**vyberte **sítě**.
 1. V seznamu prostředků vyberte **Připojení**.
 1. V části **Základy**, zvolte **Site-to-site (IPSec)** jako **typ připojení**.
@@ -183,11 +183,11 @@ Po vytvoření brány virtuální sítě můžete získat veřejnou IP adresu br
 1. V části **Brána virtuální sítě**vyberte **přehled** ze seznamu prostředků. Alternativně můžete vybrat **vlastnosti**.
 1. IP adresa, kterou chcete mějte na paměti, je uvedený v části **veřejnou IP adresu**. Tato adresa je pro příklad konfigurace 192.68.102.1.
 
-#### <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
+#### <a name="create-a-virtual-machine"></a>Vytvořit virtuální počítač
 
 Vyzkoušejte přenosy dat prostřednictvím připojení VPN, budete potřebovat virtuální počítače pro odesílání a přijímání dat ve virtuální síti Azure Stack. Vytvoření virtuálního počítače a nasaďte ji k podsíti virtuálních počítačů pro vaši virtuální síť.
 
-1. Prostřednictvím uživatelského portálu služby Azure Stack, vyberte **nový**.
+1. Prostřednictvím uživatelského portálu služby Azure Stack, vyberte **+ vytvořit prostředek**.
 1. V části **Azure Marketplace**vyberte **Compute**.
 1. Vyberte v seznamu imagí virtuálních počítačů **systému Windows Server 2016 Datacenter Eval** bitové kopie.
 
@@ -216,7 +216,7 @@ Vyzkoušejte přenosy dat prostřednictvím připojení VPN, budete potřebovat 
 >* Vytvoření brány virtuální sítě
 >* Vytvoření brány místní sítě
 >* Vytvoření připojení
->* Vytvoření virtuálního počítače
+>* Vytvořit virtuální počítač
 >
 >Pokud se chystáte použít 2 Tenanta jako příklad, nezapomeňte změnit IP adres, aby se zabránilo překrytí.
 
@@ -352,7 +352,7 @@ Vytvoření partnerského vztahu centra a virtuální sítě pomocí postupu v p
 * V centru do paprsku **povolit průchod bránou**.
 * Z paprsku k rozbočovači **používat vzdálenou bránu**.
 
-### <a name="create-a-virtual-machine"></a>Vytvoření virtuálního počítače
+### <a name="create-a-virtual-machine"></a>Vytvořit virtuální počítač
 
 Úlohy virtuálních počítačů nasaďte do virtuální sítě paprsků.
 
@@ -589,7 +589,7 @@ route-map VNET-ONLY permit 10
 !
 ```
 
-## <a name="test-the-connection"></a>Otestování připojení
+## <a name="test-the-connection"></a>Otestovat připojení
 
 Po navázání připojení Site-to-Site a okruh ExpressRoute, vyzkoušejte připojení.
 

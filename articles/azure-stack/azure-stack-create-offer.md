@@ -11,21 +11,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/20/2018
+ms.date: 09/12/2018
 ms.author: brenduns
 ms.reviewer: efemmano
-ms.openlocfilehash: 66a89c3cb14dd642ae993cbf3c45885635f59759
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 7b26afa99e9ab14db83aee5c0487c1c405243962
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42139617"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719762"
 ---
 # <a name="create-an-offer-in-azure-stack"></a>Vytvoření nabídky ve službě Azure Stack
 
 [Nabízí](azure-stack-key-features.md) jsou skupiny jednoho nebo několika plánů, které poskytovatelé předkládají uživatelům kupovat nebo přihlášení k odběru. Tento dokument ukazuje, jak vytvořit nabídku, která zahrnuje [plán, který jste vytvořili](azure-stack-create-plan.md). Tato nabídka umožňuje odběratelům nastavení virtuálních počítačů.
 
-1. Přihlaste se k portálu Správce služby Azure Stack (https://adminportal.local.azurestack.external) a vyberte **nový** > **nabízí Tenanta + plány** > **nabízejí**.
+1. Přihlaste se k portálu Správce služby Azure Stack (https://adminportal.local.azurestack.external) a vyberte **+ vytvořit prostředek** > **nabízí Tenanta + plány** > **nabízejí**.
 
    ![Vytvoření nabídky](media/azure-stack-create-offer/image01.png)
   
