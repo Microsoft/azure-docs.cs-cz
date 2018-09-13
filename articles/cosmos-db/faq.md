@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: sngun
-ms.openlocfilehash: 2f18840802a39f03659792a4d5b33ad3a73c5961
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 85d8eb555d96b1c50da0ed00ae1f06c3eec1a5ba
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44051438"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44722199"
 ---
 # <a name="azure-cosmos-db-faq"></a>Nejčastější dotazy k Azure Cosmos DB
 ## <a name="azure-cosmos-db-fundamentals"></a>Základy služby Azure Cosmos DB
@@ -118,6 +118,10 @@ Kontejner a zřizování úrovně propustnosti databáze jsou samostatné nabíd
 
 Nyní můžete vytvořit kolekce s propustností klíče oddílu pomocí [CreatePartitionedCollection](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/CollectionManagement/Program.cs#L118) metoda sady .net SDK nebo pomocí [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/cosmosdb/collection?view=azure-cli-latest#az-cosmosdb-collection-create). Vytvoření pevné kolekce pomocí webu Azure portal taková není podporován.  
 
+### <a name="does-azure-cosmosdb-support-time-series-analysis"></a>Služby Azure cosmos DB podporuje řadu analýza? 
+Ano, služby Azure cosmos DB podporuje analýzu časových řad, tady je ukázka pro [vzor času řady](https://github.com/Azure/azure-cosmosdb-dotnet/tree/master/samples/Patterns). Tento příklad ukazuje způsob použití kanálu pro agregovaná zobrazení sestavení v datech časové řady změn. Tento přístup můžete rozšířit pomocí spark streaming nebo jiném editoru datového proudu.
+
+
 ## <a name="sql-api"></a>SQL API
 
 ### <a name="how-do-i-start-developing-against-the-sql-api"></a>Jak můžu začít vyvíjet s využitím rozhraní SQL API?
@@ -208,6 +212,10 @@ Kromě běžné kódy chyb MongoDB rozhraní MongoDB API má svůj vlastní konk
 |---------------------|-------|--------------|-----------|
 | TooManyRequests     | 16500 | Celkový počet spotřebovaných jednotek žádostí překročilo četnost zřízené jednotky žádosti pro kolekci a se omezila. | Zvažte možnost škálování propustnosti přiřazené ke kontejneru nebo sadu kontejnerů Azure portal nebo opakuje akci. |
 | ExceededMemoryLimit | 16501 | Jako víceklientská služba operace překročil přidělení paměti klienta. | Redukujte obor operaci prostřednictvím více omezující kritéria dotazu nebo se obraťte na podporu – od [webu Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). <br><br>Příklad:  *&nbsp; &nbsp; &nbsp; &nbsp;db.getCollection('users').aggregate ([<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{$match: {name: "Andy"}}, <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{$sort: {stáří: -1} }<br>&nbsp;&nbsp;&nbsp;&nbsp;])*) |
+
+### <a name="is-the-simba-driver-for-mongodb-supported-for-use-with-azure-cosmosdb-mongodb-api"></a>Je ovladač Simba pro MongoDB podporovaných pro použití s MongoDB API služby Azure cosmos DB?
+Ano, můžete použít ovladač Mongo ODBC Simba pomocí rozhraní MongoDB API služby Azure cosmos DB
+
 
 ## <a id="table"></a>Rozhraní Table API
 
@@ -458,7 +466,7 @@ Azure Cosmos DB využívá [horizontální dělení](partition-data.md) automati
 
 ### <a name="how-can-i-protect-against-injection-attacks-using-gremlin-drivers"></a>Jak můžete chránit před útoky prostřednictvím injektáže pomocí Gremlin ovladače? 
 
-Nejvíce nativní ovladače Tinkerpop Gremlin povolí možnost zadat slovník parametrů pro spuštění dotazu. Toto je příklad toho, jak to udělat v [Gremlin.Net]() a [Gremlin-Javascript](https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started/blob/master/app.js).
+Nejvíce nativní ovladače Tinkerpop Gremlin povolí možnost zadat slovník parametrů pro spuštění dotazu. Toto je příklad toho, jak to udělat v [Gremlin.Net]((http://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet)) a [Gremlin-Javascript](https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started/blob/master/app.js).
 
 ### <a name="why-am-i-getting-the-gremlin-query-compilation-error-unable-to-find-any-method-error"></a>Proč se zobrazuje "chybě kompilace dotazu Gremlin: nepovedlo se najít žádné metody" Chyba?
 

@@ -7,14 +7,14 @@ manager: mikemcca
 ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: article
-ms.date: 01/04/2018
+ms.date: 09/10/2018
 ms.author: sajagtap
-ms.openlocfilehash: 5a4d6383f0ee7e8db6ceee0997e53afa1e9dd93c
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 32e18273ad92f6b415b2a0219fd8b0520fe707f3
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44026461"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44716141"
 ---
 # <a name="create-reviews-using-net"></a>Vytvoření kontroly pomocí .NET
 
@@ -52,8 +52,6 @@ Pokud používáte bezplatné zkušební verze klíč vygenerovaný pomocí nás
 
 1. Vyberte tento projekt jako jeden spouštěný projekt pro řešení.
 
-1. Přidejte odkaz na **ModeratorHelper** sestavení, který jste vytvořili v projektu [rychlý start pomocné rutiny klienta Content Moderator](content-moderator-helper-quickstart-dotnet.md).
-
 ### <a name="install-required-packages"></a>Instalace požadovaných balíčků
 
 Nainstalujte následující balíčky NuGet:
@@ -66,14 +64,64 @@ Nainstalujte následující balíčky NuGet:
 
 Upravit program v nástrojích příkazy.
 
+    using Microsoft.Azure.CognitiveServices.ContentModerator;
     using Microsoft.CognitiveServices.ContentModerator;
     using Microsoft.CognitiveServices.ContentModerator.Models;
-    using ModeratorHelper;
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Threading;
+
+### <a name="create-the-content-moderator-client"></a>Vytvoření klienta služby Content Moderator
+
+Přidejte následující kód k vytvoření klienta Content Moderator pro vaše předplatné.
+
+> [!IMPORTANT]
+> Aktualizace **Oblast_azure** a **CMSubscriptionKey** pole s hodnotami vaší oblasti identifikátor a klíč předplatného.
+
+
+    /// <summary>
+    /// Wraps the creation and configuration of a Content Moderator client.
+    /// </summary>
+    /// <remarks>This class library contains insecure code. If you adapt this 
+    /// code for use in production, use a secure method of storing and using
+    /// your Content Moderator subscription key.</remarks>
+    public static class Clients
+    {
+        /// <summary>
+        /// The region/location for your Content Moderator account, 
+        /// for example, westus.
+        /// </summary>
+        private static readonly string AzureRegion = "YOUR API REGION";
+
+        /// <summary>
+        /// The base URL fragment for Content Moderator calls.
+        /// </summary>
+        private static readonly string AzureBaseURL =
+            $"https://{AzureRegion}.api.cognitive.microsoft.com";
+
+        /// <summary>
+        /// Your Content Moderator subscription key.
+        /// </summary>
+        private static readonly string CMSubscriptionKey = "YOUR API KEY";
+
+        /// <summary>
+        /// Returns a new Content Moderator client for your subscription.
+        /// </summary>
+        /// <returns>The new client.</returns>
+        /// <remarks>The <see cref="ContentModeratorClient"/> is disposable.
+        /// When you have finished using the client,
+        /// you should dispose of it either directly or indirectly. </remarks>
+        public static ContentModeratorClient NewClient()
+        {
+            // Create and initialize an instance of the Content Moderator API wrapper.
+            ContentModeratorClient client = new ContentModeratorClient(new ApiKeyServiceClientCredentials(CMSubscriptionKey));
+
+            client.BaseUrl = AzureBaseURL;
+            return client;
+        }
+    }
 
 ## <a name="create-a-class-to-associate-internal-content-information-with-a-review-id"></a>Vytvoření třídy přidružení interní informace o obsahu k ID revize
 
@@ -150,7 +198,7 @@ Aktualizujte tyto hodnoty tak, aby obsahovala informace specifické pro vaše p�
     /// Content Moderator account. You can retrieve your team name from
     /// the Conent Moderator web site. Your team name is the Id associated 
     /// with your subscription.</remarks>
-    private const string TeamName = "{teamname}";
+    private const string TeamName = "YOUR REVIEW TEAM ID";
 
     /// <summary>
     /// The optional name of the subteam to assign the review to.
@@ -163,7 +211,7 @@ Aktualizujte tyto hodnoty tak, aby obsahovala informace specifické pro vaše p�
     /// <remarks>Revies show up for reviewers on your team. 
     /// As reviewers complete reviews, results are sent to the
     /// callback endpoint using an HTTP POST request.</remarks>
-    private const string CallbackEndpoint = "{callbackUrl}";
+    private const string CallbackEndpoint = "YOUR API ENDPOINT";
 
     /// <summary>
     /// The media type for the item to review.

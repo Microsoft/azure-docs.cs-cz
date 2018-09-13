@@ -3,14 +3,14 @@ title: Z VMware do Azure replikace architektura v Azure Site Recovery | Dokument
 description: Tento článek obsahuje přehled komponent a architektury používané při replikaci místních virtuálních počítačů VMware do Azure pomocí Azure Site Recovery
 author: rayne-wiselman
 ms.service: site-recovery
-ms.date: 08/29/2018
+ms.date: 09/12/2018
 ms.author: raynew
-ms.openlocfilehash: 4a97c44226d875a08f81a6306fc9ddd4ee29c409
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 498c41324bfc85f6f91acc8000df4c34856cf428
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43288137"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44715750"
 ---
 # <a name="vmware-to-azure-replication-architecture"></a>Z VMware do Azure replikace architektury
 
@@ -36,16 +36,23 @@ Následující tabulka a obrázek poskytuje souhrnný přehled komponenty použ�
 
 ## <a name="replication-process"></a>Proces replikace
 
-1. Když povolíte replikaci pro virtuální počítač, začne replikovat v souladu se zásadami replikace. 
+1. Když povolíte replikaci pro virtuální počítač, začíná počáteční replikace do úložiště Azure, pomocí zásad replikace zadaný. Je třeba počítat s následujícím:
+    - Replikace pro virtuální počítače VMware, je na úrovni bloku, téměř nepřetržité, pomocí agenta služby Mobility spuštěného na virtuálním počítači.
+    - Použijí se všechna nastavení zásad replikace:
+        - **Prahová hodnota cíle bodu obnovení**. Toto nastavení nemá vliv na replikaci. Pomáhá s monitorováním. Vyvolá událost, a volitelně odešle e-mail, pokud aktuální cíl bodu obnovení překročí limit prahové hodnoty, který zadáte.
+        - **Uchování bodu obnovení**. Toto nastavení určuje, jak daleko zpět v čase, který chcete vrátit, když dojde k přerušení. Maximální doba uchování ve službě premium storage je 24 hodin. Na úložiště úrovně standard je 72 hodin. 
+        - **Snímky konzistentní s**. Snímky konzistentní s aplikací může trvat každých 1 až 12 hodin v závislosti na potřebách aplikace. Snímky jsou snímky objektů blob v Azure standardní. Agent Mobility spuštěný na virtuálním počítači požádá o snímek služby VSS v souladu se toto nastavení a záložek, které odkazují bodu v čase jako aplikace konzistentní vzhledem k aplikacím ve streamu replikace.
+
 2. Provoz replikuje do služby Azure storage veřejné koncové body přes internet. Alternativně můžete použít Azure ExpressRoute s [veřejného partnerského vztahu](../expressroute/expressroute-circuit-peerings.md#azure-public-peering). Přenos replikačních dat přes virtuální privátní síť site-to-site (VPN) z místní lokality do Azure se nepodporuje.
-3. Počáteční kopie dat virtuálního počítače se replikují do úložiště Azure.
-4. Po dokončení počáteční replikace začne probíhat rozdílová replikace do Azure. Sledované změny se pro jednotlivé počítače ukládají do souboru .hrl.
-5. Komunikace se stane, následujícím způsobem:
+3. Po dokončení počáteční replikace začne probíhat rozdílová replikace do Azure. Sledované změny se pro počítač se odesílají na procesní server.
+4. Komunikace se stane, následujícím způsobem:
 
     - Virtuální počítače komunikovat s místní konfigurační server na portu HTTPS 443 příchozí kvůli správě replikace.
     - Konfigurační server orchestruje replikaci pomocí Azure přes odchozí port HTTPS 443.
     - Příchozí data replikace k procesového serveru (běžícího na počítači serveru configuration) na příchozím portu HTTPS 9443 poslat virtuálních počítačů. Tento port je možné upravit.
     - Procesový server přijímá data replikace, optimalizuje je zašifruje a odesílá je do úložiště Azure přes port 443 odchozí.
+
+
 
 
 **Z VMware do Azure replikaci**
@@ -65,7 +72,7 @@ Po nastavení replikace a spuštění postupu zotavení po havárii (testovací 
     * **Dočasný procesní server v Azure**: selhání obnovení z Azure, můžete nastavit virtuální počítač Azure tak, aby fungoval jako procesový server pro zpracování replikace z Azure. Tento virtuální počítač je možné po navrácení služeb po obnovení odstranit.
     * **Připojení k síti VPN**: K navrácení služeb po obnovení, potřebujete připojení VPN (nebo ExpressRoute) ze sítě Azure k místní lokalitě.
     * **Samostatný hlavní cílový server**: ve výchozím nastavení, hlavní cílový server, který se nainstaloval s konfiguračním serverem na virtuálních počítačů VMware v místním zpracovává navrácení služeb po obnovení. Pokud potřebujete selhání zpět velký objem provozu, nastavte samostatný místní hlavní cílový server pro tento účel.
-    * **Zásady navrácení služeb po obnovení:** Pro zpětnou replikaci do vaší místní lokality budete potřebovat zásady navrácení služeb. Tato zásada byla vytvořena automaticky při vytvoření zásad replikace z místního do Azure.
+    * **Zásady navrácení služeb po obnovení:** Pro zpětnou replikaci do vaší místní lokality budete potřebovat zásady navrácení služeb. Tato zásada se vytvoří automaticky při vytváření zásady replikace z místního do Azure.
 4. Po součásti jsou na místě, dojde k navrácení služeb po obnovení v tři akce:
 
     - Fáze 1: Znovunastavení ochrany virtuálních počítačů Azure tak, aby se replikace z Azure zpět do místních virtuálních počítačů VMware.

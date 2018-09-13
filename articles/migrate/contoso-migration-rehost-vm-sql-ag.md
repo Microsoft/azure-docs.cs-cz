@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: raynew
-ms.openlocfilehash: 9a9bcc25a0ab6c50ebce394a43edd7bfcd764bed
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 7c96f362793ca2697eb2c92c07ff38d2fe6caad2
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304709"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44716872"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-on-azure-vms-and-sql-server-alwayson-availability-group"></a>Migrace Contoso: Změna hostitele aplikace v místním na virtuálních počítačích Azure a skupiny dostupnosti AlwaysOn SQL serveru
 
@@ -107,7 +107,7 @@ Contoso vyhodnotí své navrhované návrhu společně vložením seznam výhody
 **Posouzení** | **Podrobnosti**
 --- | ---
 **V oblasti IT** | WEBVM bude přesunuta do Azure beze změny, provedení migrace jednoduché.<br/><br/> Na úrovni serveru SQL Server se spustí na SQL Server 2017 a Windows serveru 2016. Tím vyřadí jejich aktuální operační systém Windows Server 2008 R2 a systémem SQL Server 2017 podporuje cíle a technické požadavky společnosti Contoso. IT poskytuje 100 % kompatibilitu při přesouvání mimo systém SQL Server 2008 R2.<br/><br/> Contoso můžou využívat své investice do Software Assurance, pomocí zvýhodněné hybridní využití Azure.<br/><br/> Vysoká dostupnost nasazení systému SQL Server v Azure a zajišťuje odolnost proti chybám tak, aby aplikace datové vrstvy již není jediným bodem převzetí služeb při selhání.
-**Nevýhody** | WEBVM běží Windows Server 2008 R2. Operační systém se nepodporuje v Azure pro konkrétní role (července 2018). [Další informace](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines).<br/><br/> Webová vrstva aplikace zůstanou jediný bod převzetí služeb při selhání.</br><br/> Contoso se potřebujete i nadále podporuje webové vrstvy jako virtuální počítač Azure, spíše než Přesun do spravované služby, jako je Azure App Service.<br/><br/> Pomocí tohoto řešení pro zvolený Contoso muset pokračovat správu dva virtuální počítače SQL serveru, nikoli Přesun do spravované platformy, jako je například spravované Instance Azure SQL. S programem Software Assurance, může navíc Contoso exchange svoje stávající licence pro zvýhodněné sazby na spravované instanci SQL Azure.
+**Nevýhody** | WEBVM běží Windows Server 2008 R2. Operační systém se nepodporuje v Azure pro konkrétní role (července 2018). [Další informace](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines).<br/><br/> Webová vrstva aplikace zůstanou jediný bod převzetí služeb při selhání.</br><br/> Contoso se potřebujete i nadále podporuje webové vrstvy jako virtuální počítač Azure, spíše než Přesun do spravované služby, jako je Azure App Service.<br/><br/> Pomocí tohoto řešení pro zvolený Contoso muset pokračovat správu dva virtuální počítače SQL serveru, nikoli Přesun do spravované platformy, jako je například Azure SQL Database Managed Instance. Kromě toho s programem Software Assurance, může vyměňovat Contoso svoje stávající licence pro zlevněné sazby v Azure SQL Database Managed Instance.
 
 
 ### <a name="azure-services"></a>Služby Azure

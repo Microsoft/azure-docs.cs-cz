@@ -9,12 +9,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: mahender
-ms.openlocfilehash: 128e7f693755e7baf752d546fddd786b07c0de78
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 3d6d4f2e3d89e1d8abf647b21e35fcdfec020b1d
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093732"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44722261"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Vazeb Microsoft Graphu, Azure functions
 
@@ -350,7 +350,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**userId**|**ID uživatele**  |Potřebné pokud a pouze v případě _identity_ je nastavena na `userFromId`. ID objektu zabezpečení uživatele přidružené k dříve přihlášenému uživateli.|
 |**userToken**|**UserToken**|Potřebné pokud a pouze v případě _identity_ je nastavena na `userFromToken`. Token platný pro danou aplikaci funkcí. |
 |**Cesta**|**Cesta**|Požadovaná: cesta k Excelovému sešitu ve Onedrivu.|
-|**worksheetName**|**WorksheetName**|List, ve kterém se nachází v tabulce.|
+|**worksheetName**|**WorksheetName**|List, ve kterém se nachází tabulka.|
 |**tableName**|**TableName**|Název tabulky. Pokud není zadán, použije se obsah listu.|
 
 <a name="excel-input-code"></a>
@@ -510,7 +510,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**ID uživatele** |**userId** |Potřebné pokud a pouze v případě _identity_ je nastavena na `userFromId`. ID objektu zabezpečení uživatele přidružené k dříve přihlášenému uživateli.|
 |**userToken**|**UserToken**|Potřebné pokud a pouze v případě _identity_ je nastavena na `userFromToken`. Token platný pro danou aplikaci funkcí. |
 |**Cesta**|**Cesta**|Požadovaná: cesta k Excelovému sešitu ve Onedrivu.|
-|**worksheetName**|**WorksheetName**|List, ve kterém se nachází v tabulce.|
+|**worksheetName**|**WorksheetName**|List, ve kterém se nachází tabulka.|
 |**tableName**|**TableName**|Název tabulky. Pokud není zadán, použije se obsah listu.|
 |**updateType**|**UpdateType**|Požadovaná: typ změny, která se provede v tabulce. Může být jedna z následujících hodnot:<ul><li><code>update</code> -Nahradí obsah tabulky na Onedrivu.</li><li><code>append</code> -Přidá datová část na konec tabulky na Onedrivu vytvořením nových řádků.</li></ul>|
 
@@ -737,6 +737,7 @@ public static async Task Run(HttpRequest req, TraceWriter log, Stream myOneDrive
         .FirstOrDefault(q => string.Compare(q.Key, "text", true) == 0)
         .Value;
     await myOneDriveFile.WriteAsync(Encoding.UTF8.GetBytes(data), 0, data.Length);
+    myOneDriveFile.Close();
     return;
 }
 ```
