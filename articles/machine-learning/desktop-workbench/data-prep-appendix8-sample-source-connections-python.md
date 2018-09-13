@@ -1,53 +1,53 @@
 ---
-title: Příklad další data připojení ke zdroji možné přípravy dat Azure Machine Learning | Microsoft Docs
-description: Tento dokument obsahuje sadu příklady připojení zdroje dat, které je možné při přípravě dat Azure Machine Learning
+title: Příklad dalších zdrojových datových připojení s přípravou dat Azure Machine Learning | Dokumentace Microsoftu
+description: Tento dokument obsahuje sadu příkladem zdrojového datová připojení, které je možné s přípravou dat Azure Machine Learning
 services: machine-learning
 author: euangMS
 ms.author: euang
 manager: lanceo
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.custom: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: b87d88a5bb7846894c425e701a073707ddd1f3be
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 89a30c070abe3b10414c7284bb33f2c8216ee0c8
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831180"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35643099"
 ---
 # <a name="sample-of-custom-source-connections-python"></a>Ukázka připojení vlastní zdroje (Python) 
-Před čtením této příloha, přečtěte si [Python rozšiřitelnost přehled](data-prep-python-extensibility-overview.md).
+Předtím, než se pustíte do čtení tohoto dodatku, přečtěte si [přehled rozšíření Python](data-prep-python-extensibility-overview.md).
 
 ## <a name="load-data-from-dataworld"></a>Načtení dat z data.world
 
 ### <a name="prerequisites"></a>Požadavky
 
-#### <a name="register-yourself-at-dataworld"></a>Sami zaregistrovat na data.world
-Budete potřebovat token rozhraní API z webu data.world.
+#### <a name="register-yourself-at-dataworld"></a>Zaregistrovat v data.world
+Budete potřebovat token rozhraní API z data.world webu.
 
-#### <a name="install-dataworld-library"></a>Nainstaluje data.world knihovny
+#### <a name="install-dataworld-library"></a>Nainstalujte knihovnu data.world
 
-Otevřete rozhraní příkazového řádku Azure Machine Learning Workbench výběrem **soubor** > **otevřete rozhraní příkazového řádku**.
+Otevřete rozhraní příkazového řádku Azure Machine Learning Workbench výběrem **souboru** > **otevřete rozhraní příkazového řádku**.
 
 ```console
 pip install git+git://github.com/datadotworld/data.world-py.git
 ```
 
-Potom spustíte `dw configure` na příkazovém řádku, které vás vyzve k zadání vašeho tokenu. Když zadáte token, .dw nebo adresář bude vytvořen v domovském adresáři a váš token je uložený existuje.
+Potom spusťte `dw configure` na příkazovém řádku, který vás vyzve k zadání tokenu. Když zadáte token, .dw / adresář bude vytvořen v domovském adresáři a váš token je uložen existuje.
 
 ```
 API token (obtained at: https://data.world/settings/advanced): <enter API token here>
 ```
-Nyní byste měli mít importovat data.world knihovny.
+Teď byste měli moci naimportovat data.world knihovny.
 
-#### <a name="load-data-into-data-preparation"></a>Načtení dat do data přípravy
+#### <a name="load-data-into-data-preparation"></a>Načtení dat do přípravu dat
 
-Vytvořte transformace transformace toku dat (skript). Potom pomocí následujícího skriptu k načítání dat z data.world.
+Vytvoření transformace transformovat tok dat (skript). Pak pomocí následujícího skriptu k načtení dat z data.world.
 
 ```python
 #paths = df['Path'].tolist()
@@ -61,5 +61,5 @@ lds = dw.load_dataset('data-society/the-simpsons-by-the-data')
 df = lds.dataframes['simpsons_episodes']
 
 ```
-## <a name="azure-cosmos-db-as-a-data-source-connection"></a>Azure DB Cosmos jako připojení ke zdroji dat
-Příklad Azure DB Cosmos jako datové připojení, najdete v tématu [zatížení Azure DB Cosmos jako připojení zdroje dat](data-prep-load-azure-cosmos-db.md)
+## <a name="azure-cosmos-db-as-a-data-source-connection"></a>Azure Cosmos DB jako připojení ke zdroji dat
+Příklad služby Azure Cosmos DB jako datové připojení, přečtěte si [zatížení Azure Cosmos DB jako zdroje datového připojení](data-prep-load-azure-cosmos-db.md)

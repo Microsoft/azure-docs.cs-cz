@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 7948b54bd6402cf238c5709d270087746ed4fa95
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 7cd5fc965a57052323d4b916f0f2b7dbc0feb7b3
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380365"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44715410"
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>Jak vytvořit a nakonfigurovat modul Integration Runtime
 Integration Runtime (IR) je výpočetní infrastruktura, službou Azure Data Factory používá k poskytování možnosti integrace dat v různých síťových prostředích. Podrobnosti o prostředí IR najdete v tématu [přehled modulu Runtime integrace](concepts-integration-runtime.md).
@@ -57,7 +57,7 @@ Tady je podrobný datový tok pro přehled kroků pro kopírování s místní p
 
 ## <a name="considerations-for-using-self-hosted-ir"></a>Předpoklady pro použití v místním prostředí IR
 
-- Jeden místní prostředí integration runtime je použít pro více zdrojů dat v místním. Nicméně **jeden místní prostředí integration runtime se váže na jenom jeden Azure data factory** a nemůže je sdílet s jinou datovou továrnu.
+- Jeden místní prostředí integration runtime je použít pro více zdrojů dat v místním. A **jeden místní prostředí integration runtime může** sdílet pomocí jiné služby data factory ve stejném tenantovi Azure Active Directory. Další podrobnosti najdete v tématu [sdílení místního prostředí integration runtime](#sharing-the-self-hosted-integration-runtime-ir-with-multiple-data-factories).
 - Můžete mít **pouze jednu instanci z místního prostředí integration runtime** nainstalována na jednom počítači. Předpokládejme, máte dva datové továrny, které potřebují přístup k místním zdrojům dat, budete muset nainstalovat místní prostředí integration runtime na dvou místních počítačů. Jinými slovy, místní prostředí integration runtime se váže na konkrétní datové továrny
 - **Místní prostředí IR nemusí být ve stejném počítači jako zdroj dat**. Však s místním prostředí integration runtime blíže ke zdroji dat snižuje čas potřebný pro místní prostředí integration runtime připojit ke zdroji dat. Doporučujeme nainstalovat místní prostředí integration runtime na počítač, který se liší od zdroje dat v místním hostiteli. Když místního prostředí integration runtime a zdroje dat jsou na různých počítačích, místní prostředí integration runtime není soutěží o prostředky se zdrojem dat.
 - Můžete mít **různými moduly runtime integrace v místním prostředí na různých počítačích připojení ke stejnému zdroji dat v místním**. Například může mít dvě místní prostředí integration runtime obsluhuje dva datové továrny, ale stejného zdroje dat v místním zaregistruje datové továrny.

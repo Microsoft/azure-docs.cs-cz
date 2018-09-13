@@ -1,61 +1,61 @@
 ---
-title: Přehled funkcí Azure Machine Learning preview | Microsoft Docs
-description: Koncepční přehled funkce preview Azure Machine Learning, jako je například odběry, účty, pracovní prostory, projekty, atd.
+title: Koncepční přehled funkcí Azure Machine Learning ve verzi preview | Dokumentace Microsoftu
+description: Koncepční přehled funkce ve verzi preview služby Azure Machine Learning, jako je například předplatná, účty, pracovními prostory, projekty, atd.
 services: machine-learning
 author: serinakaye
 ms.author: serinak
 manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/06/2017
-ms.openlocfilehash: d448e1c464ed966cd9e742516adebe963acf13b7
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: f63b9c077e64b642adfd8c7eed5026563eb6319a
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34832287"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35642770"
 ---
-# <a name="azure-machine-learning---concepts"></a>Azure Machine Learning – koncepty
+# <a name="azure-machine-learning---concepts"></a>Azure Machine Learning – koncepce
 
-Tento článek definuje a popisuje koncepty, které potřebujete vědět, abyste mohli používat Azure Machine Learning. 
+Tento článek definuje a popisuje koncepty, které potřebujete vědět k používání Azure Machine Learning. 
 
 ![Hierarchie koncepty](media/overview-general-concepts/hierarchy.png)
 
-- **Předplatné:** předplatné Azure uděluje přístup k prostředkům v Azure. Protože Azure Machine Learning se úzce integruje se výpočty, úložiště a mnoho dalších prostředků Azure a služby, Workbench vyžaduje, aby každý uživatel má přístup k platné předplatné Azure. Uživatelé musí také mít dostatečná oprávnění v rámci tohoto předplatného vytvořit prostředky.
+- **Předplatné:** předplatné Azure uděluje přístup k prostředkům v Azure. Protože Azure Machine Learning se úzce integruje se výpočetní prostředky, úložiště a mnoho dalších prostředků Azure a služby, aplikace Workbench vyžaduje, že každý uživatel má přístup k platné předplatné Azure. Uživatelé musí také mít dostatečná oprávnění v rámci tohoto předplatného vytvářet prostředky.
 
 
-- **Účet experimentování:** experimentování účet je prostředek Azure vyžadují Azure ML a fakturace vehicle. Obsahuje pracovní prostory, která obsahují projekty. Můžete přidat více uživatelů, označuje jako _licencí_, k účtu experimenty. Aby bylo možné použít ke spuštění experimenty Azure ML Workbench musí mít přístup k účtu experimenty. 
+- **Účet experimentování:** účet experimentování ve službě je prostředek Azure vyžaduje Azure ML a fakturační vozidlo. Obsahuje vaše pracovní prostory, které pak obsahovat projekty. Můžete přidat více uživatelů, označuje jako _licence_, k účtu experimentování. Chcete-li používat aplikaci Azure ML Workbench Pokud chcete spouštět experimenty musí mít přístup k účtu experimentování. 
 
 
-- **Model správy účtu** účet modelu správy je také prostředek služby Azure vyžaduje Azure ML pro správu modelů. Můžete ho registrovat manifestů a modely, sestavení kontejnerizované webové služby a nasadit místně nebo v cloudu. Je také další fakturace vehicle Azure ML.
+- **Účet správy modelů** účet správy modelů je také nutné ke správě modely Azure ml prostředku Azure. Můžete ho zaregistrovat manifestů a modely, sestavovat kontejnerizované webové služby a nasazovat je místně nebo v cloudu. Je také další fakturační nástroj Azure ml.
 
 
-- **Pracovní prostor:** pracovního prostoru je primární součásti pro sdílení a spolupráce v Azure ML. Projekty jsou seskupené v rámci pracovního prostoru. Pracovního prostoru je pak možné sdílet s více uživatelů, které byly přidány k experimentování účtu.
+- **Pracovní prostor:** pracovní prostor je primární součásti pro sdílení a spolupráce v Azure ML. Projekty jsou seskupena do pracovního prostoru. Pracovní prostor je pak sdílet s více uživateli, které byly přidány do experimentálního účtu.
 
 
-- **Projekt:** v Azure Machine Learning projektu je logický kontejner pro všechny pracovní prováděná k vyřešení problému. Mapuje se na jedinou složku souborů na místním disku, do které můžete přidat jakékoli soubory nebo podsložky. Volitelně lze přidružit úložiště Git pro správy zdrojového kódu a spolupráci projektu.  
+- **Projekt:** ve službě Azure Machine Learning je projekt logickým kontejnerem pro veškerou práci prováděnou za účelem vyřešení problému. Mapuje se na jedinou složku souborů na místním disku, do které můžete přidat jakékoli soubory nebo podsložky. Projekt může být volitelně přidružena úložiště Git pro správu zdrojového kódu a spolupráci.  
 
-- **Experiment:** v Azure ML experimentu je jeden nebo více soubory zdrojového kódu, které mohou být provedeny z jeden vstupní bod. Může obsahovat úlohy, jako je přijímání dat, funkce technikům, školení modelu nebo vyhodnocení modelu. V současné době podporuje Azure ML Python nebo pouze experimenty PySpark.
-
-
-- **Model:** v Azure Machine Learning, označují modely produkt experimentu strojového učení. Jsou recepty, když správně použitá k datům, generovat předpovězené hodnoty. Modely lze nasadit do testovacího nebo produkční prostředí a použít pro výpočet skóre nová data. Jednou v produkčním prostředí, modely mohou být monitorovat data výkonu a odlišily a retrained podle potřeby. 
-
-- **Cíl výpočetní:** výpočetní cíl se nachází výpočetní prostředek, který jste nakonfigurovali pro provádění experimentů. Může být místním počítači (Windows nebo systému macOS), kontejner Docker spuštěn v místním počítači nebo v virtuálního počítače s Linuxem v Azure nebo clusteru HDInsight Spark.
+- **Experiment:** experimentu v Azure ML je minimálně jeden zdrojový kód soubor, které mohou být provedeny z jednoho vstupního bodu. Může obsahovat úlohy, jako je příjem dat, vytváření funkcí, trénování modelu nebo vyhodnocení modelu. V současné době Azure ML podporuje Python nebo PySpark pouze experimenty.
 
 
-- **Spustit:** službu experimentování definuje spustit jako životnost spuštění experimentu v výpočetní cíl. Azure ML zaznamená informace o každé spuštění automaticky a uvede celou historii konkrétní experimentu ve formě historie spouštění.
+- **Model:** v Azure Machine Learning, modely odkazovat na produkt experimentu strojového učení. Jsou recepty, které při použití správně na data, generovat předpovězeným hodnotám. Modely lze nasadit do testovacího nebo produkčního prostředí a použít pro vyhodnocování nová data. Jednou v produkčním prostředí, modelů může být monitorovat data o výkonu a posun a retrained podle potřeby. 
 
-- **Prostředí:** v Azure Machine Learning, prostředí označuje konkrétní výpočetní prostředek, který se používá pro nasazení a správě modely. Může to být místního počítače, virtuální počítač s Linuxem v Azure nebo Kubernetes clusteru se systémem v Azure Container Service, v závislosti na kontextu a konfigurace. Váš model je hostovaná v kontejner Docker spuštěna v těchto prostředích a zveřejněné jako koncový bod REST API.
-
-
-- **Spravovaný model:** Model správy umožňuje nasazovat modely jako webové služby, spravovat různé verze vaší modelů a monitorovat jejich výkonu a metriky. Spravované modely je zaregistrovaná pomocí účtu Azure Machine Learning modelu správy.
-
-- **Manifesty:** systému modelu správy model nasadí do produkčního prostředí, obsahuje manifestu, který může zahrnovat modelu, závislosti, vyhodnocování skriptu, ukázkových dat a schéma. Manifest je recepturách použít k vytvoření bitové kopie kontejner Docker. Pomocí modelu správy můžete automaticky generovat manifesty, vytvořit různé verze a spravovat tyto manifesty. 
+- **Cílové výpočetní prostředí:** cílové výpočetní prostředí je výpočetní prostředek, který nakonfigurujete pro provádění své experimenty. Může být místní (Windows nebo macOS), kontejner Dockeru spuštěný na místním počítači nebo v virtuálního počítače s Linuxem v Azure nebo cluster HDInsight Spark.
 
 
-- **Obrázky:** manifesty můžete použít k vygenerování (a znovu je obnovovat) imagí Dockeru. Kontejnerizované imagí Dockeru vytvořit flexibilitu spustit v cloudu, na místním počítači nebo na zařízení IoT. Bitové kopie jsou samostatné a zahrnují všechny závislosti, které jsou nutné pro vyhodnocování nová data s modely. 
+- **Spustit:** služba experimentování ve službě definuje spustit jako životnost spuštění experimentu v cílové výpočetní prostředí. Služba Azure ML automaticky zaznamenává informace o jednotlivých spuštění a představuje celou historii konkrétní experiment v podobě historie spuštění.
 
-- **Služba:** Model správy umožňuje nasadit modely jako webové služby. Webová služba logiku a závislosti jsou zapouzdřeny do bitové kopie. Každý webová služba je sada kontejnery podle image připraveno k žádosti o službu na dané adrese URL. Webové služby se počítá jako jedno nasazení.
+- **Prostředí:** prostředí ve službě Azure Machine Learning, označuje konkrétního výpočetního prostředku, který se používá pro nasazování a správu modelů. Může být místního počítače, virtuální počítač s Linuxem v Azure nebo clusterů Kubernetes spuštěných v Azure Container Service, v závislosti na kontextu a konfigurace. Váš model je hostované v kontejneru Dockeru spuštěném v těchto prostředích a vystavený jako koncový bod rozhraní REST API.
+
+
+- **Spravovaný model:** Správa modelů umožňuje nasazovat modely jako webové služby, správa různých verzí vašich modelů a monitorujte jejich výkon a metriky. Spravované modely jsou registrované pomocí účtu správy modelů Azure Machine Learning.
+
+- **Manifesty:** systému pro správu modelu model nasadí do produkčního prostředí, obsahuje manifest, který může zahrnovat model, závislosti, hodnoticí skript, ukázková data a schéma. Manifest je předpisu použitý k vytvoření image kontejneru Dockeru. Pomocí správy modelů ve službě, můžete automaticky generovat manifesty, vytvořit různé verze a spravovat tyto manifesty. 
+
+
+- **Obrázky:** manifesty můžete generovat (a znovu generovat) Image Dockeru. Vytvoření kontejnerové Image Dockeru flexibilitu pro spouštění v cloudu, v místních počítačích nebo na zařízení IoT. Image jsou samostatné a zahrnout všechny závislosti, které vyžaduje pro vyhodnocování nová data s modely. 
+
+- **Services:** Správa modelů umožňuje nasazovat modely jako webové služby. Webová služba logiky a závislosti jsou zapouzdřeny do bitové kopie. Každá webová služba je sada kontejnery založené na obrázku připraveno na dané adrese URL žádosti o služby. Webová služba se počítá jako jedno nasazení.

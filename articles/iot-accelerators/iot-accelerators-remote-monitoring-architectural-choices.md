@@ -1,57 +1,60 @@
 ---
-title: Vzdálené monitorování řešení architektury volby - Azure | Microsoft Docs
-description: Tento článek popisuje architektury a technické volby provedené v vzdálené monitorování
+title: Řešení volby architektury vzdáleného monitorování – Azure | Dokumentace Microsoftu
+description: Tento článek popisuje, architektury a technické volby provedené v vzdáleného monitorování
 author: timlaverty
 manager: camerons
 ms.author: timlav
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 04/30/2018
+ms.date: 09/12/2018
 ms.topic: conceptual
-ms.openlocfilehash: 6c4bf0e4bf0a6c1a791cf762ec9bb44ed5c0b1bd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 709886e77819adca961a44f65fe6402dd7d20d53
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34627684"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44716294"
 ---
-# <a name="remote-monitoring-architectural-choices"></a>Vzdálené monitorování architektury volby
+# <a name="remote-monitoring-architectural-choices"></a>Volby architektury vzdáleného monitorování
 
-Accelerator řešení Azure IoT vzdálené monitorování je typu open source, MIT licenci, akcelerátoru řešení, která představuje běžné scénáře IoT, jako je připojení zařízení, Správa zařízení a zpracování datového proudu, aby zákazníci urychlit jejich vývoj proces.  Řešení vzdáleného monitorování následuje doporučené referenční architektura Azure IoT publikovaná [zde](https://aka.ms/iotrefarchitecture).  
+Akcelerátor řešení vzdáleného monitorování Azure IoT je open source, licence MIT, akcelerátor řešení, která představuje běžné scénáře IoT, jako je například připojení k zařízení, zařízení a zpracování datového proudu, takže zákazníci můžou urychlit jejich vývoj proces.  Řešení vzdáleného monitorování následuje doporučené referenční architektura Azure IoT publikované [tady](https://aka.ms/iotrefarchitecture).  
 
-Tento článek popisuje architektury a technické volby provedené v každém subsystémů pro řešení vzdáleného monitorování a alternativy, které jsou považovány za.  Je důležité si uvědomit, že technické volby provedené v řešení vzdáleného monitorování nejsou jediný způsob, jak implementovat řešení vzdáleného sledování IoT.  Technická implementace je směrný plán pro vytváření k úspěšné aplikaci a by měl být upraven podle dovedností, zkušeností a potřebám svislé aplikace pro implementaci řešení zákazníků.
+Tento článek popisuje architekturu a technický volby provedené v jednotlivých subsystémů řešení vzdáleného monitorování a popisuje zvažované alternativy.  Je důležité si uvědomit, že technické volby provedené v řešení vzdáleného monitorování nejsou jediný způsob, jak implementovat řešení vzdáleného monitorování IoT.  Technická implementace je směrný plán pro vytváření úspěšné aplikace a měli upravit tak, aby odpovídaly dovednosti, zkušenosti a potřeby svislé aplikace pro zákaznické implementace řešení.
 
-## <a name="architectural-choices"></a>Architektury volby
+## <a name="architectural-choices"></a>Architektonické volby
 
-### <a name="microservices-serverless-and-cloud-native"></a>Mikroslužeb, bez serveru a cloudových nativní
+### <a name="microservices-serverless-and-cloud-native"></a>Mikroslužby, prostředí bez serveru a nativní pro cloud
 
-Architektura doporučujeme pro cloud nativní, mikroslužbu, jsou aplikace či aplikace IoT a bez serveru na základě.  Různé subsystémy IoT aplikace by měly být vytvořeny jako samostatné služby, které jsou nasadit nezávisle a škálovat nezávisle.  Tyto atributy povolte větší škálování, větší flexibilitu při aktualizaci jednotlivých subsystémy a poskytují flexibilitu zvolit si odpovídající technologii subsystému za den.  S více technologiemi se dá implementovat Mikroslužeb. Například pomocí bez serveru technologie, jako je například Azure Functions kontejneru technologie, jako je například Docker nebo hostování mikroslužeb v PaaS služby, jako je například Azure App Services.
+Architektura doporučujeme pro cloud nativní, mikroslužby, jsou aplikace IoT a bez serveru založené.  Různé subsystémy aplikace IoT, by měly být sestaveny jako samostatných služeb, které jsou nezávisle nasadit a škálovat nezávisle.  Tyto atributy umožňují větším měřítku, větší flexibilitu při aktualizaci jednotlivých subsystémů a zadejte volnost ve výběru vhodných technologií na základě za subsystému.  Mikroslužby je možné implementovat s více technologiemi. Například technologie kontejnerů, jako je Docker pomocí technologie bez serverů, třeba Azure Functions nebo hostování mikroslužeb na služby modelu PaaS, jako je například Azure App Services.
 
-## <a name="core-subsystem-technology-choices"></a>Výběr technologie subsystému jádra
+## <a name="core-subsystem-technology-choices"></a>Základní subsystém technologické volby
 
-V této části podrobně technologie volby provedené v řešení vzdáleného monitorování pro každou subsystémů jádra.
+Tato část podrobně technologické volby provedené v řešení vzdáleného monitorování pro každou základní subsystémů.
 
-![Diagram jádra](./media/iot-accelerators-remote-monitoring-architectural-choices/subsystem.png) 
+![Základní Diagram](./media/iot-accelerators-remote-monitoring-architectural-choices/subsystem.png) 
 
 ### <a name="cloud-gateway"></a>Cloudová brána
-Azure IoT Hub se používá jako cloudová brána řešení vzdáleného monitorování.  IoT Hub nabízí zabezpečené, obousměrná komunikace se zařízeními. Další informace o IoT Hub [zde](https://azure.microsoft.com/services/iot-hub/). Pro připojení zařízení IoT používají .NET Core a sady SDK služby IoT Hub Java.  Sady SDK nabízejí obálky kolem rozhraní API REST centra IoT a zpracovávat scénáře, jako je opakování.
+Azure IoT Hub se používá jako cloudová brána řešení vzdáleného monitorování.  IoT Hub nabízí zabezpečenou obousměrnou komunikaci mezi zařízeními. Další informace o službě IoT Hub [tady](https://azure.microsoft.com/services/iot-hub/). Připojení zařízení IoT se používají sady SDK služby IoT Hub Java a .NET Core.  Sady SDK nabízejí obálky kolem rozhraní REST API centra IoT a zpracování scénářů, jako je například opakovaných pokusů.
 
 ### <a name="stream-processing"></a>Zpracování streamů
-Pro datový proud zpracování řešení vzdáleného monitorování používá Azure Stream Analytics ke zpracování komplexní pravidlo.  Pro zákazníky, kteří požadují jednodušší pravidla máme také vlastní mikroslužbu s podporou pro zpracování jednoduchých pravidel, i když tato nastavení nejsou součástí mimo nasazení pole. Referenční architektura doporučuje použití Azure Functions pro jednoduché pravidlo zpracování a Azure Stream Analytics (ASA) pro zpracování komplexní pravidla.  
+Pro datový proud používá řešení vzdáleného monitorování pro zpracování Azure Stream Analytics pro zpracování složitých pravidla.  Pro zákazníky, kteří jednodušší pravidla máme i vlastní mikroslužeb s podporou pro zpracování jednoduchých pravidel, i když tato nastavení nejsou součástí vzdáleného nasazení pole. Referenční architektura doporučuje použití Azure Functions pro zpracování jednoduché pravidlo a Azure Stream Analytics (ASA) pro zpracování složitých pravidla.  
 
 ### <a name="storage"></a>Úložiště
-Pro úložiště Azure Cosmos DB se používá pro všechny požadavky na úložiště: studené úložiště, záložním úložiště, pravidla úložiště a výstrahy. Probíhá aktuálně Přesun do Azure blob storage dle doporučení referenční architektura.  Azure Cosmos DB je doporučené úložiště pro obecné účely záložním řešení pro aplikace či aplikace IoT, i když jsou vhodné pro mnoho případy použití řešení například Statistika řady čas Azure a Azure Data Lake.
+Akcelerátor řešení vzdálené monitorování pro úložiště, používá Azure Time Series Insights a Azure Cosmos DB. Azure Time Series Insights ukládá zprávy přicházející z připojených zařízení prostřednictvím služby IoT Hub. Akcelerátor řešení využívá Azure Cosmos DB pro všechna úložiště, jako je například studeného úložiště, definice pravidla, alarmy a nastavení konfigurace. Azure Cosmos DB je doporučené úložiště pro obecné účely teplé řešení pro aplikace IoT, i když jsou vhodné pro mnoho případy použití řešení, jako je Azure Time Series Insights a Azure Data Lake. S Azure Time Series Insights můžete získat podrobnější přehled o datech časových řad ze zjišťování trendy a anomálie, které umožňuje provádět analýzy původních příčin a vyhnout se nákladným prostojům. 
 
-### <a name="business-integration"></a>Obchodní integraci
-Obchodní integraci do řešení pro vzdálené monitorování je omezený na generování výstrahy, které jsou umístěny v záložním úložiště. Integrace obchodních další lze provést integrací řešení službou Azure Logic Apps.
+> [!NOTE]
+> Azure Time Series Insights pro akcelerátor řešení vzdálené monitorování je aktuálně ve verzi preview a je dostupná jenom [vybrat oblasti](https://azure.microsoft.com/global-infrastructure/services/). Pokud provádíte nasazení akcelerátoru řešení vzdáleného monitorování mimo tyto oblasti, Cosmos DB je výchozí možnost úložiště.
+
+### <a name="business-integration"></a>Obchodní integrace
+Integrace obchodních v řešení vzdáleného monitorování je omezená na generování poplachů, které jsou umístěny v záložním úložišti. Další obchodní integrace lze provést integrací řešení s Azure Logic Apps.
 
 ### <a name="user-interface"></a>Uživatelské rozhraní
-Webové uživatelské rozhraní je vytvořené s nástroji JavaScript React.  Reagují nabízí rozhraní běžně používané odvětví webového uživatelského rozhraní a je podobná dalších oblíbených rozhraní, jako je například úhlová.  
+Webové uživatelské rozhraní je sestavené s JavaScript React.  React nabízí architekturu webového uživatelského rozhraní běžně používaných odvětví a je podobný dalších oblíbených architektur, jako jsou Angular.  
 
 ### <a name="runtime-and-orchestration"></a>Modul runtime a Orchestrace
-Doba spuštění aplikace zvolené pro subsystém implementace v řešení vzdáleného monitorování je Docker kontejnery s Kubernetes jako orchestrator pro vodorovné škálování.  Tato architektura umožňuje pro jednotlivé škálování definice za subsystému ale způsobuje náklady DevOps při ochraně virtuálních počítačů a kontejnery aktuální z hlediska zabezpečení.  Alternativy k Docker a Kubernetes zahrnují hostování mikroslužeb v PaaS služby (například Azure App Service) nebo jako produktu orchestrator pomocí Service Fabric, orchestrátoru DC/OS, Swarm atd.
+Doba spuštění aplikace, které jste zvolili pro subsystém implementace v řešení vzdáleného monitorování kontejnerů Dockeru pomocí Kubernetes je jako orchestrátor pro horizontální škálování.  Tato architektura umožňuje pro definici jednotlivých škálování za subsystému ale způsobuje náklady na DevOps v průběžná virtuálních počítačů a kontejnerů z hlediska zabezpečení.  Alternativy k Dockeru a Kubernetes zahrnují hostování mikroslužeb na služby modelu PaaS (například Azure App Service) nebo jako orchestrátor pomocí Service Fabric, DC/OS, Swarm atd.
 
 ## <a name="next-steps"></a>Další postup
-* Nasazení řešení vzdáleného monitorování [zde](https://www.azureiotsolutions.com/).
-* Prozkoumejte Githubu kód v [C#](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/) a [Java](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java/).  
-* Další informace o referenční architektura IoT [zde](https://aka.ms/iotrefarchitecture).
+* Nasazení řešení vzdáleného monitorování [tady](https://www.azureiotsolutions.com/).
+* Zkoumání kódu Githubu v [jazyka C#](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/) a [Java](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java/).  
+* Další informace o referenční architektura IoT [tady](https://aka.ms/iotrefarchitecture).

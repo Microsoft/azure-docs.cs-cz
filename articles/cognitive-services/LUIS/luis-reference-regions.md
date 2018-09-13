@@ -1,6 +1,6 @@
 ---
-title: Language Understanding (LUIS) oblastí a koncové body - Azure - Cognitive Services LUIS | Dokumentace Microsoftu
-titleSuffix: Azure
+title: Publikování oblasti a koncové body – LUIS
+titleSuffix: Azure Cognitive Services
 description: Oblast, ve kterém můžete publikovat aplikaci LUIS odpovídá oblast nebo umístění, ve kterém zadáte na webu Azure Portal, při vytváření klíče koncového bodu Azure LUIS. Při publikování aplikace LUIS automaticky generuje adresu URL koncového bodu pro oblast spojené s klíči. K publikování aplikace LUIS do více než jedné oblasti, budete potřebovat alespoň jeden klíč v jedné oblasti.
 services: cognitive-services
 author: diberry
@@ -8,14 +8,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 08/23/2018
+ms.date: 09/11/2018
 ms.author: diberry
-ms.openlocfilehash: 7812ce37cb22c8774c785f5f645b8fef90b02a3e
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 48e1e19d2d425fe123e5a0c369ecebf623b74eb2
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42815499"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721298"
 ---
 # <a name="regions-and-keys"></a>Oblasti a klíčů
 
@@ -30,6 +30,11 @@ Existují tři websites LUIS, podle oblasti. Musí se vytvářet a publikovat ve
 |[AU.LUIS.ai][au.luis.ai]|Austrálie|
 |[EU.LUIS.ai][eu.luis.ai]|Evropa|
 
+## <a name="regions-and-azure-resources"></a>Oblasti a prostředků Azure
+Publikování aplikace do všech oblastí, které jsou spojené s prostředky služby LUIS přidat na portálu služby LUIS. Například aplikace vytvořená v [www.luis.ai][www.luis.ai], pokud vytvoříte prostředek LUIS v **westus** a přidejte ho do aplikace jako prostředek, publikování aplikace v dané oblasti. 
+
+## <a name="public-apps"></a>Veřejné aplikace
+Aplikace z veřejného app je publikována ve všech oblastech, tak, aby uživatel s klíčem služby LUIS prostředků na základě oblasti můžete přistupovat k aplikaci v oblasti podle toho, která souvisí s jejich klíč prostředku.
 
 ## <a name="publishing-regions"></a>Publikování oblastí
 

@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: ba6710c8b5b8de1c63fa6778ea3853ab52365254
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: efdded28fa4554bf58399d997bf663781a08755e
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325332"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44714697"
 ---
 # <a name="about-the-speech-to-text-api"></a>O Speech to Text API
 
@@ -36,7 +36,7 @@ ms.locfileid: "39325332"
 
 ## <a name="api-capabilities"></a>Funkce rozhraní API
 
-Některé funkce **převod řeči na Text** nejsou k dispozici prostřednictvím REST API. V následující tabulce najdete souhrn možností jednotlivých metod přístupu k rozhraní API.
+Velké množství funkcí **převod řeči na Text** rozhraní API – zejména v oblasti Vlastní nastavení – jsou k dispozici prostřednictvím REST. V následující tabulce najdete souhrn možností jednotlivých metod přístupu k rozhraní API. Pro úplný seznam možností a rozhraní API podrobnosti prosím najdete [Swagger](https://swagger/service/11ed9226-335e-4d08-a623-4547014ba2cc#/)
 
 | Případ použití | REST | Sady SDK |
 |-----|-----|-----|----|
@@ -44,6 +44,16 @@ Některé funkce **převod řeči na Text** nejsou k dispozici prostřednictvím
 | Přepisy delší utterance (> 15 s) | Ne | Ano |
 | Přepisy streamování zvuku s volitelné dočasné výsledky | Ne | Ano |
 | Vysvětlení mluvčího záměry prostřednictvím služby LUIS | Ne\* | Ano |
+| Vytvořit testy přesnosti | Ano | Ne |
+| Nahrání datových sad pro přizpůsobení modelu | Ano | Ne |
+| Vytvoření a správa modely řeči | Ano | Ne |
+| Vytvoření a správa model nasazení | Ano | Ne |
+| Správa předplatných | Ano | Ne |
+| Vytvoření a správa model nasazení | Ano | Ne |
+| Vytvoření a správa model nasazení | Ano | Ne |
+
+> [!NOTE]
+> Rozhraní REST API implementuje tohoto omezení požadavků rozhraní API 25 na 5 sekund. Zpráva hearders informuje omezení
 
 \* *Služba LUIS záměry a entity, může být odvozena pomocí samostatné předplatné služby LUIS. S tímto předplatným sady SDK můžete zavolat LUIS a poskytnout výsledky entit a účel, jakož i řeči přepisů. Pomocí rozhraní REST API, můžete volat LUIS sami sebe k odvození záměry a entity ve vašem předplatném služby LUIS.*
 

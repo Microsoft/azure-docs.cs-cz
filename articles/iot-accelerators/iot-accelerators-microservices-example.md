@@ -1,19 +1,18 @@
 ---
 title: Změnit a opakované nasazení mikroslužby | Dokumentace Microsoftu
 description: V tomto kurzu se dozvíte, jak změnit a opakované nasazení mikroslužby v vzdáleného monitorování
-author: giyeh
-manager: hegate
-ms.author: giyeh
+author: dominicbetts
+ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 04/19/2018
 ms.topic: conceptual
-ms.openlocfilehash: e15e17a499ad33a270b220fa7483d96c2945f6bb
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 561c5b0f49c36cf15e85e3a334c7a8aa326f70a9
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43338073"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44715053"
 ---
 # <a name="customize-and-redeploy-a-microservice"></a>Přizpůsobení a opakované nasazení mikroslužby
 
@@ -47,14 +46,15 @@ V této části volat výchozí IoT hub správci mikroslužeb rozhraní API. Roz
 2. Vyhledejte, kam jste stáhli Postman a otevřete jej.
 3. V nástroji Postman, zadejte následující v GET: http://localhost:8080/iothubmanager/v1/status.
 4. Zobrazit návrat a byste měli vidět, "Stavu": "OK: aktivní a dobře".
-![Aktivní a dobře Postman zprávy](./media/iot-accelerators-microservices-example/postman-alive-well.png)
+
+    ![Aktivní a dobře Postman zprávy](./media/iot-accelerators-microservices-example/postman-alive-well.png)
 
 ## <a name="change-the-status-and-build-the-image"></a>Změna stavu a sestavení image
 
 Teď změňte stavová zpráva Iot Hub správci mikroslužeb "Nové provedeny změny, tady!" a pak znovu vytvořte image dockeru obsahující tento nový stav. Pokud narazíte na problémy většinou neřeší, podívejte se na naše [Poradce při potížích s](#Troubleshoot) oddílu.
 
 1. Ujistěte se, že otevřete terminál a přejděte do adresáře, kam jste naklonovali řešení vzdáleného monitorování. 
-2. Přejděte do adresáře ".. azure-iot-pcs-remote-monitoring-dotnet/iothub-manager/WebService/v1/Controllers".
+2. Změňte adresář na "azure-iot-pcs-remote-monitoring-dotnet/services/iothub-manager/WebService/v1/Controllers".
 3. Otevřete StatusController.cs v libovolném textovém editoru nebo prostředí IDE, který vás zajímá. 
 4. Vyhledejte následující kód:
 
@@ -68,7 +68,7 @@ Teď změňte stavová zpráva Iot Hub správci mikroslužeb "Nové provedeny zm
     return new StatusApiModel(true, "New Edits Made Here!");
     ```
 
-5. Vraťte se do svého terminálu, ale teď přejděte do následujícího adresáře: "... azure-iot-pcs-remote-monitoring-dotnet/iothub-manager/scripts/docker".
+5. Vraťte se do svého terminálu, ale teď přejděte do následujícího adresáře: "azure-iot-pcs-remote-monitoring-dotnet/services/iothub-manager/scripts/docker".
 6. Pokud chcete sestavit nová image dockeru, zadejte
 
     ```cmd/sh
@@ -113,7 +113,7 @@ Než budete moct odeslat nová image dockeru do docker hubu, Docker očekává, 
 ## <a name="update-your-remote-monitoring-solution"></a>Aktualizujte vaše řešení vzdálené monitorování
 Teď je potřeba aktualizovat vaše místní docker-compose.yml k o přijetí změn nové image dockeru z docker hubu. Pokud narazíte na problémy většinou neřeší, podívejte se na naše [Poradce při potížích s](#Troubleshoot) oddílu.
 
-1. Přejděte zpět do terminálu a přejděte do následujícího adresáře: ".. Azure-IOT-PCs-Remote-Monitoring-DotNet/Scripts/Local".
+1. Přejděte zpět do terminálu a přejděte do následujícího adresáře: "azure-iot-pcs-remote-monitoring-dotnet/services/scripts/local".
 2. Otevřete docker-compose.yml v libovolném textovém editoru nebo prostředí IDE, který vás zajímá.
 3. Vyhledejte následující kód:
 
@@ -130,7 +130,7 @@ Teď je potřeba aktualizovat vaše místní docker-compose.yml k o přijetí zm
 ## <a name="view-the-new-response-status"></a>Zobrazení nového stavu odpovědi
 Nakonec znovu nasadit instanci místní řešení vzdáleného monitorování a zobrazení nového stavu odpovědi v nástroji Postman.
 
-1. Vraťte se do svého terminálu a přejděte do následujícího adresáře: ".. Azure-IOT-PCs-Remote-Monitoring-DotNet/Scripts/Local".
+1. Vraťte se do svého terminálu a přejděte do následujícího adresáře: "azure-iot-pcs-remote-monitoring-dotnet/scripts/local".
 2. Spusťte místní instanci řešení vzdáleného monitorování tak, že do terminálu zadáte následující příkaz:
 
     ```cmd/sh

@@ -5,17 +5,17 @@ services: azure-stack
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 07/03/2018
+ms.date: 09/12/2018
 ms.topic: article
 ms.service: azure-stack
 ms.reviewer: coborn
 manager: femila
-ms.openlocfilehash: d3c89e2028986e05d5d3957c9805d22f07a840b3
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: b4c8ff113ff76586cc4a91adfe568b07327a2d94
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44298107"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721974"
 ---
 # <a name="azure-stack-ethereum-blockchain-solution-templates"></a>Šablony řešení Azure Stack Etherea blockchain
 
@@ -50,7 +50,7 @@ Tato šablona řešení můžete nasadit jednu nebo více sítě konsorcia Ether
 Vedoucí instancí šablony consortium nakonfiguruje první člen nároky na místo v síti. 
 
 1. Stáhněte si [vedoucí instance šablony z Githubu](https://raw.githubusercontent.com/Azure/AzureStack-QuickStart-Templates/master/ethereum-consortium-blockchain/marketplace/ConsortiumLeader/mainTemplate.json)
-2. V portálu pro správu Azure Stack, vyberte **nový > nasazení šablony** nasadit z vlastní šablony.
+2. V portálu pro správu Azure Stack, vyberte **+ vytvořit prostředek > nasazení šablony** nasadit z vlastní šablony.
 3. Vyberte **úpravy šablony** upravit novou vlastní šablonu.
 4. V editovacím podokně na pravé straně zkopírujte a vložte vedoucí instancí šablony JSON, které jste předtím stáhli.
     
@@ -105,7 +105,7 @@ Pokud chcete ověřit nasazení vedoucí, projděte mezi – web pro správu. Ad
 ### <a name="joining-consortium-member-deployment"></a>Spojování consortium člen nasazení
 
 1. Stáhněte si [consortium členské šablony z Githubu](https://raw.githubusercontent.com/Azure/AzureStack-QuickStart-Templates/master/ethereum-consortium-blockchain/marketplace/JoiningMember/mainTemplate.json)
-2. V portálu pro správu Azure Stack, vyberte **nový > nasazení šablony** nasadit z vlastní šablony.
+2. V portálu pro správu Azure Stack, vyberte **+ vytvořit prostředek > nasazení šablony** nasadit z vlastní šablony.
 3. Vyberte **úpravy šablony** upravit novou vlastní šablonu.
 4. V editovacím podokně na pravé straně zkopírujte a vložte vedoucí instancí šablony JSON, které jste předtím stáhli.
 5. Vyberte **Uložit**.
@@ -157,7 +157,7 @@ Jak je znázorněno na obrázku, je stav uzlů člena **neběží**. Je to proto
 Tato šablona vytvoří připojení z vedoucí na vzdálený člen. 
 
 1. Stáhněte si [připojení člen a vedoucí instance šablony z Githubu](https://raw.githubusercontent.com/Azure/AzureStack-QuickStart-Templates/master/ethereum-consortium-blockchain/marketplace/Connection/mainTemplate.json)
-2. V portálu pro správu Azure Stack, vyberte **nový > nasazení šablony** nasadit z vlastní šablony.
+2. V portálu pro správu Azure Stack, vyberte **+ vytvořit prostředek > nasazení šablony** nasadit z vlastní šablony.
 3. Vyberte **úpravy šablony** upravit novou vlastní šablonu.
 4. V editovacím podokně na pravé straně zkopírujte a vložte vedoucí instancí šablony JSON, které jste předtím stáhli.
     

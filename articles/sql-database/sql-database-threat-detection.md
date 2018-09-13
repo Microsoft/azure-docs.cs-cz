@@ -10,13 +10,13 @@ ms.custom: security
 ms.topic: conceptual
 ms.date: 05/17/2018
 ms.author: ronmat
-ms.reviewer: carlrab
-ms.openlocfilehash: c82692525f06fda93f94a8d856eb65254e5fd211
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.reviewer: vanto
+ms.openlocfilehash: 1f30d55bea825549453d9c8a3077ad17756e6a6f
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003939"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44714241"
 ---
 # <a name="azure-sql-database-threat-detection"></a>Detekce hrozeb Azure SQL Database
 

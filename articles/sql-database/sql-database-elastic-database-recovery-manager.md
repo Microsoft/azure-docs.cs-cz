@@ -1,6 +1,6 @@
 ---
-title: Pomocí Správce obnovení opravit problémy mapy horizontálního oddílu | Microsoft Docs
-description: Použití třídy RecoveryManager pro řešení problémů s horizontálního oddílu mapy
+title: Oprava problémů s horizontálními oddíly mapy pomocí Správce obnovení | Dokumentace Microsoftu
+description: Řešení problémů s mapováním horizontálních oddílů pomocí třídy RecoveryManager
 services: sql-database
 manager: craigg
 author: stevestein
@@ -9,41 +9,41 @@ ms.custom: scale out apps
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 6257edbb567be3ebb3151724e7e50ca81905ad40
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3aeee7cd4c588460a16b93237b08f13d8422a72a
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34646231"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721294"
 ---
 # <a name="using-the-recoverymanager-class-to-fix-shard-map-problems"></a>Oprava problémů s mapováním horizontálních oddílů pomocí třídy RecoveryManager
-[RecoveryManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.aspx) třída poskytuje ADO.Net aplikace umožňuje snadno zjistit a opravit nekonzistence mezi globální horizontálních mapy (GSM) a místní horizontálních mapy (LSM) v prostředí s horizontálně dělené databáze. 
+[RecoveryManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.aspx) třída umožňuje ADO.Net aplikace snadno zjistit a opravit nekonzistence mezi mapy horizontálních oddílů globální (GSM) a mapy horizontálních oddílů místní (LSM) v prostředí s horizontálně dělené databáze. 
 
-GSM a LSM sledovat mapování každou databázi v horizontálně dělené prostředí. V některých případech zalomení probíhá mezi GSM a LSM. V takovém případě použijte třídu RecoveryManager zjistit a opravit rozdělení.
+GSM a LSM sledovat mapování jednotlivých databází v horizontálně dělené prostředí. V některých případech dojde GSM až LSM k přerušení. V takovém případě pomocí třídy RecoveryManager k rozpoznání a opravě přerušení.
 
-Třída RecoveryManager je součástí [klientské knihovny pro elastické databáze](sql-database-elastic-database-client-library.md). 
+Třídy RecoveryManager je součástí [Klientská knihovna Elastic Database](sql-database-elastic-database-client-library.md). 
 
-![Mapování horizontálních][1]
+![Mapy horizontálních oddílů][1]
 
-Definice podmínek, najdete v části [Glosář nástroje elastické databáze](sql-database-elastic-scale-glossary.md). Zjistit, jak **ShardMapManager** se používá k správě dat v horizontálně dělené řešení najdete v tématu [horizontálního oddílu mapy správu](sql-database-elastic-scale-shard-map-management.md).
+Definice termínu, naleznete v tématu [Glosář nástrojů elastické databáze](sql-database-elastic-scale-glossary.md). Pochopit, jak **ShardMapManager** slouží ke správě dat v horizontálně dělené řešení, najdete v článku [správy mapování horizontálních oddílů](sql-database-elastic-scale-shard-map-management.md).
 
 ## <a name="why-use-the-recovery-manager"></a>Proč používat Správce obnovení?
-V prostředí s horizontálně dělené databáze není jednoho klienta na databázi a mnoho databází na serveru. V prostředí může být také mnoho serverů. Každá databáze je namapována v mapě horizontálního oddílu, tak volání budou směrovány na správný server a databáze. Databáze se sledují podle **horizontálního dělení klíč**, a je mu přiřazená každý horizontálního oddílu **rozsah hodnot klíče**. Například klíč horizontálního dělení může představují zákazníka názvy z "D" na "F." Mapování horizontálních oddílů všechny (neboli databáze) a jejich mapování rozsahy jsou součástí **globální horizontálních mapy (GSM)**. Každá databáze také obsahuje mapu rozsahů obsažených v horizontálního oddílu, který se označuje jako **místní horizontálních mapy (LSM)**. Když se aplikace připojí k horizontálního oddílu, mapování se uloží do mezipaměti pomocí aplikace pro rychlé načítání. LSM slouží k ověření data uložená v mezipaměti. 
+V prostředí s horizontálně dělené databáze je jednoho tenanta na databázi a velký počet databází na serveru. V prostředí může být také mnoho serverů. Každá databáze je mapována v mapy horizontálních oddílů, takže volání je možné směrovat správnému serveru a databáze. Databáze jsou sledována podle **klíč horizontálního dělení**, a je mu přiřazená každý horizontální oddíl **rozsahu hodnot klíčů**. Například klíč horizontálního dělení může představovat názvů zákazníka z hodnoty "D" k "F" Mapování všech horizontálních oddílů (označuje se také jako databáze) a jejich mapování oblastí jsou obsaženy v **mapy horizontálních oddílů globální (GSM)**. Každá databáze obsahuje také mapa rozsahů adres obsažené v horizontálním oddílu, který se označuje jako **mapy horizontálních oddílů místní (LSM)**. Když se aplikace připojí k horizontálnímu oddílu, mapování je uložit do mezipaměti s aplikací pro rychlé načítání. LSM slouží k ověření dat uložených v mezipaměti. 
 
-GSM a LSM mohou stát synchronizované z následujících důvodů:
+GSM a LSM může přestat synchronizované z následujících důvodů:
 
-1. Odstranění horizontálních, jejichž rozsah je pokládán již nebude používán nebo přejmenování horizontálního oddílu. Odstranění horizontálního oddílu vede **osamocené mapování horizontálních**. Podobně přejmenovat databázi, může způsobit mapování u osamocených horizontálního oddílu. V závislosti na záměr změnu ID horizontálního oddílu může třeba je odebrat nebo umístění horizontálního oddílu je třeba aktualizovat. Chcete-li obnovit odstraněnou databázi, přečtěte si téma [obnovit odstraněnou databázi](sql-database-recovery-using-backups.md).
-2. Dojde k události geo-převzetí služeb při selhání. Chcete-li pokračovat, jeden musí aktualizovat název serveru a název databáze správce mapy horizontálního oddílu v aplikaci a aktualizujte podrobnosti horizontálního oddílu mapování pro všechny horizontálních oddílů v mapě horizontálního oddílu. Pokud dojde k selhání geograficky, by je možné automatizovat tuto logiku obnovení v rámci pracovního postupu převzetí služeb při selhání. Automatizace akce obnovení umožňuje hladký možnosti správy databází s povolenou geografickou a zabraňuje ruční lidského akce. Další informace o možnosti obnovení databáze, pokud je výpadku datacentra najdete v tématu [kontinuity podnikových procesů](sql-database-business-continuity.md) a [zotavení po havárii](sql-database-disaster-recovery.md).
-3. Horizontálního oddílu nebo databázi ShardMapManager je obnoven dříve bodu v stav. Další informace o bodu obnovení pomocí záloh najdete v tématu [obnovení pomocí záloh](sql-database-recovery-using-backups.md).
+1. Odstranění do horizontálního oddílu, jejichž rozsah je zřejmě již používán nebo přejmenování horizontálního oddílu. Odstraňuje se horizontální oddíl má za následek **osamocené mapování horizontálních oddílů**. Obdobně přejmenováno databáze může způsobit mapování horizontálních oddílů osamocený. V závislosti na záměru změnu možná bude nutné k odebrání horizontálního oddílu nebo umístění horizontálního oddílu je potřeba aktualizovat. Chcete-li obnovit odstraněnou databázi, přečtěte si téma [obnovení odstraněné databáze](sql-database-recovery-using-backups.md).
+2. Dojde k události geo-převzetí služeb při selhání. Chcete-li pokračovat, jeden musíte aktualizovat název serveru a název databáze správce mapování horizontálních oddílů v aplikaci a pak aktualizovat podrobnosti mapování horizontálních oddílů pro všemi horizontálními oddíly v mapě horizontálních oddílů. Pokud při selhání geograficky tuto logiku obnovení by mělo být automatické v rámci pracovního postupu převzetí služeb při selhání. Automatizace zotavení umožňuje bezproblémové možnosti správy databází s povolenou geografickou a ručně prováděné akce lidské se vyhnete. Další informace o možnosti obnovení databáze při výpadku datového centra, naleznete v tématu [kontinuita podnikových procesů](sql-database-business-continuity.md) a [zotavení po havárii](sql-database-disaster-recovery.md).
+3. Horizontální oddíl nebo ShardMapManager databáze je obnovit do dříve bodu v čase. Další informace o bodu v čase obnovení pomocí záloh najdete v tématu [obnovení pomocí záloh](sql-database-recovery-using-backups.md).
 
-Další informace o nástrojích elastické databáze pro databázi SQL Azure, geografická replikace a obnovení naleznete v následujících tématech: 
+Další informace o nástrojích elastické databáze Azure SQL Database, geografickou replikaci a obnovení naleznete v následujících tématech: 
 
-* [Přehled: Cloudu obchodní kontinuitu a databáze zotavení po havárii s databází SQL](sql-database-business-continuity.md) 
-* [Začínáme s nástroje elastické databáze](sql-database-elastic-scale-get-started.md)  
-* [ShardMap správy](sql-database-elastic-scale-shard-map-management.md)
+* [Přehled: Cloudová provozní kontinuita a databáze zotavení po havárii s využitím SQL Database](sql-database-business-continuity.md) 
+* [Začínáme s nástroji elastic database](sql-database-elastic-scale-get-started.md)  
+* [Správa ShardMap](sql-database-elastic-scale-shard-map-management.md)
 
-## <a name="retrieving-recoverymanager-from-a-shardmapmanager"></a>Načítání RecoveryManager z ShardMapManager
-Prvním krokem je vytvoření RecoveryManager instance. [GetRecoveryManager metoda](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getrecoverymanager.aspx) vrátí správce obnovení pro aktuální [ShardMapManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx) instance. Chcete-li vyřešit všechny nekonzistence v mapě horizontálního oddílu, musí nejdřív získat RecoveryManager mapy konkrétní horizontálního oddílu. 
+## <a name="retrieving-recoverymanager-from-a-shardmapmanager"></a>Načítání z ShardMapManager RecoveryManager
+Prvním krokem je vytvoření RecoveryManager instance. [GetRecoveryManager metoda](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getrecoverymanager.aspx) vrátí recovery manager pro aktuální [ShardMapManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx) instance. Chcete-li vyřešit jakékoli nekonzistence mapy horizontálních oddílů, musí nejdřív načtěte RecoveryManager pro konkrétní horizontálního dělení mapu. 
 
    ```
     ShardMapManager smm = ShardMapManagerFactory.GetSqlShardMapManager(smmConnnectionString,  
@@ -51,63 +51,63 @@ Prvním krokem je vytvoření RecoveryManager instance. [GetRecoveryManager meto
              RecoveryManager rm = smm.GetRecoveryManager(); 
    ```
 
-V tomto příkladu je RecoveryManager inicializován ze ShardMapManager. ShardMapManager obsahující ShardMap také již byla inicializována. 
+V tomto příkladu je inicializován RecoveryManager z ShardMapManager. ShardMapManager obsahující ShardMap také již byl inicializován. 
 
-Vzhledem k tomu, že tento kód aplikace zpracovává samotná mapa horizontálního oddílu, přihlašovací údaje použité metoda factory (v předchozím příkladu smmConnectionString) by měl být přihlašovací údaje, které mají oprávnění pro čtení a zápis na databázi GSM odkazuje připojovací řetězec. Tyto přihlašovací údaje se obvykle liší od přihlašovací údaje používané k otevření připojení pro směrování závislé na data. Další informace najdete v tématu [pomocí přihlašovacích údajů v klientovi elastické databáze](sql-database-elastic-scale-manage-credentials.md).
+Vzhledem k tomu, že tento kód aplikace zpracovává samotné mapy horizontálních oddílů, přihlašovací údaje použité pro objekt pro vytváření – metoda (v předchozím příkladu smmConnectionString) by měl být přihlašovací údaje, které mají oprávnění pro čtení i zápis v GSM databázi odkazuje připojení řetězec. Tyto přihlašovací údaje se obvykle liší od přihlašovacích údajů, které slouží k otevření připojení pro směrování závislé na datech. Další informace najdete v tématu [pomocí přihlašovacích údajů klienta elastické databáze](sql-database-elastic-scale-manage-credentials.md).
 
-## <a name="removing-a-shard-from-the-shardmap-after-a-shard-is-deleted"></a>Odebráním horizontálního oddílu ShardMap po odstranění horizontálního oddílu
-[DetachShard metoda](https://msdn.microsoft.com/library/azure/dn842083.aspx) odpojí dané horizontálního oddílu z mapování horizontálních a odstraní mapování přidružené horizontálního oddílu.  
+## <a name="removing-a-shard-from-the-shardmap-after-a-shard-is-deleted"></a>Odebrání horizontálního oddílu ShardMap po odstranění horizontálního oddílu
+[DetachShard metoda](https://msdn.microsoft.com/library/azure/dn842083.aspx) odpojí dané horizontálních oddílů z mapy horizontálních oddílů a odstraní mapování spojené s horizontálním oddílu.  
 
-* Parametr umístění je umístění horizontálního oddílu, konkrétně název serveru a název databáze, horizontálních odpojuje. 
-* Parametr shardMapName je název mapy horizontálního oddílu. Toto je pouze vyžadována, je-li více mapami horizontálního oddílu spravuje správce mapu stejné ID horizontálního oddílu. Volitelné. 
+* Umístění parametru je umístění horizontálního oddílu, konkrétně název serveru a název databáze, horizontálních oddílů budou tímto odpojeny. 
+* Parametr shardMapName je název mapy horizontálních oddílů. Toto je jenom nutné při několika map horizontálních oddílů se spravují přes stejné správce mapování horizontálních oddílů. Volitelné. 
 
 
 > [!IMPORTANT]
-> Tento postup použijte, pouze pokud jste si jisti, že rozsah pro aktualizovaný mapování je prázdný. Výše uvedené metody Neprovádět kontrolu dat pro rozsah přesouvání, proto je nejlepší zahrnout kontroly v kódu.
+> Tento postup použijte, pouze pokud jste si jisti, že rozsah aktualizovaná mapování je prázdný. Metod uvedených výše nezaškrtávejte políčko dat pro rozsah přesouvaných, takže je vhodné zahrnout kontroly ve vašem kódu.
 >
 
-V tomto příkladu odebere mapy horizontálního oddílu horizontálních oddílů. 
+V tomto příkladu odebere horizontálních oddílů z mapy horizontálních oddílů. 
 
    ```
    rm.DetachShard(s.Location, customerMap);
    ``` 
 
-Mapování horizontálních odráží umístění horizontálního oddílu v GSM před odstranění horizontálního oddílu. Protože horizontálního oddílu byla odstraněna, se předpokládá, bylo záměrné, klíče rozsahu horizontálního dělení je již používán. Pokud ne, můžete provést obnovení bodu v době. Obnovit horizontálního oddílu starší bodu v čase. (V takovém případě zkontrolujte následující část ke zjištění horizontálního oddílu nekonzistence.) Pokud chcete obnovit, najdete v části [bodu v době obnovení](sql-database-recovery-using-backups.md).
+Mapy horizontálních oddílů odráží umístění horizontálních oddílů v GSM před odstraněním horizontálního oddílu. Protože se odstranil horizontálního oddílu, předpokládá se, to je to tak úmyslně, a rozsah klíčů horizontálního dělení je již používán. Pokud ne, můžete provést obnovení k určitému bodu v čase. provést obnovení horizontálních oddílů starší v daném okamžiku. (V takovém případě najdete v následující části k detekci horizontálních oddílů nekonzistence.) Pokud chcete obnovit, naleznete v tématu [bodu v čase obnovení](sql-database-recovery-using-backups.md).
 
-Vzhledem k tomu, že se předpokládá, že byl odstraněn databáze záměrně, poslední správce čištění akcí je odstranit položku k horizontálního oddílu ve Správci mapy horizontálního oddílu. To brání aplikaci v nechtěně zápisu informací o na rozsah, který není očekáván.
+Protože se předpokládá, že odstranění databáze je to tak úmyslně, poslední správce vyčištění akcí je odstranit položku do horizontálního oddílu v správce mapování horizontálních oddílů. To zabrání aplikaci od nedopatřením zápisu informací do rozsahu, který není očekáván.
 
-## <a name="to-detect-mapping-differences"></a>Ke zjištění rozdíly mapování
-[DetectMappingDifferences metoda](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.detectmappingdifferences.aspx) vybere a vrátí jednu z horizontálního oddílu mapy (místní nebo globální) jako zdroj pravdivosti a sloučí mapování na obou horizontálního oddílu mapy (GSM a LSM).
+## <a name="to-detect-mapping-differences"></a>Chcete-li zjistit rozdíly mapování
+[DetectMappingDifferences metoda](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.detectmappingdifferences.aspx) vybere a vrátí jednu z mapy horizontálních oddílů (místní nebo globální) jako zdroj pravdivých informací a sloučí mapování na obou mapy horizontálních oddílů (GSM a LSM).
 
    ```
    rm.DetectMappingDifferences(location, shardMapName);
    ```
 
 * *Umístění* Určuje název serveru a název databáze. 
-* *ShardMapName* parametr je název mapy horizontálního oddílu. Používá se pouze požadované Pokud více mapami horizontálního oddílu spravuje správce mapu stejné ID horizontálního oddílu. Volitelné. 
+* *ShardMapName* parametr je název mapy horizontálních oddílů. Toto je jenom nutné, pokud několika map horizontálních oddílů jsou spravovány stejné správce mapování horizontálních oddílů. Volitelné. 
 
 ## <a name="to-resolve-mapping-differences"></a>Chcete-li vyřešit rozdíly mapování
-[ResolveMappingDifferences metoda](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.resolvemappingdifferences.aspx) vybere jeden horizontálního oddílu map (místní nebo globální) jako zdroj pravdivosti a sloučí mapování na obou horizontálního oddílu mapy (GSM a LSM).
+[ResolveMappingDifferences metoda](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.resolvemappingdifferences.aspx) vybere jeden z mapy horizontálních oddílů (místní nebo globální) jako zdroj pravdivých informací a sloučí mapování na obou mapy horizontálních oddílů (GSM a LSM).
 
    ```
    ResolveMappingDifferences (RecoveryToken, MappingDifferenceResolution.KeepShardMapping);
    ```
 
-* *RecoveryToken* parametr zobrazí rozdíly v mapování mezi GSM a LSM pro konkrétní horizontálního oddílu. 
-* [MappingDifferenceResolution výčtu](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.mappingdifferenceresolution.aspx) slouží k označení metodu pro překlad rozdíl mezi mapování horizontálního oddílu. 
-* **MappingDifferenceResolution.KeepShardMapping** se doporučuje, když LSM obsahuje mapování přesné, a proto by měl použít mapování v horizontálního oddílu. To je obvykle případ, pokud dojde převzetí služeb při selhání: horizontálního oddílu je umístěn na nový server. Vzhledem k tomu, že horizontálního oddílu musí být nejprve odebrány z GSM (pomocí metody RecoveryManager.DetachShard), mapování na GSM už existuje. Proto LSM použije k opětovnému zřízení mapování horizontálního oddílu.
+* *RecoveryToken* parametru zobrazí rozdíly GSM a LSM pro konkrétní horizontálních oddílů v mapování. 
+* [MappingDifferenceResolution výčet](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.mappingdifferenceresolution.aspx) se používá k označení metodu pro překlad rozdíl mezi mapování horizontálních oddílů. 
+* **MappingDifferenceResolution.KeepShardMapping** se doporučuje, když LSM obsahuje mapování přesné, a proto by měla sloužit mapování v horizontálním oddílu. Toto je obvykle tento případ, pokud dojde k selhání: horizontálního oddílu je umístěn na nový server. Protože horizontálního oddílu musí být nejprve odebrány z GSM (pomocí metody RecoveryManager.DetachShard), mapování na GSM již existuje. Proto LSM použije pro opětovné vytvoření mapování horizontálních oddílů.
 
-## <a name="attach-a-shard-to-the-shardmap-after-a-shard-is-restored"></a>Přiřadit horizontálního oddílu ShardMap po obnovení horizontálního oddílu
-[AttachShard metoda](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.attachshard.aspx) připojí dané horizontálního oddílu mapu horizontálního oddílu. Pak zjistí nekonzistencím mapy horizontálního oddílu a aktualizuje mapování tak, aby odpovídaly horizontálního oddílu v okamžiku obnovení horizontálního oddílu. Se předpokládá, že databáze je přejmenována také tak, aby odrážela původní název databáze (dříve, než byla obnovena horizontálního oddílu), protože bod v době obnovení výchozí nastavení pro novou databázi spolu s časové razítko. 
+## <a name="attach-a-shard-to-the-shardmap-after-a-shard-is-restored"></a>Připojení k ShardMap horizontálního oddílu, po obnovení do horizontálního oddílu
+[AttachShard metoda](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.attachshard.aspx) připojí dané horizontálními oddíly mapy horizontálních oddílů. Potom jakékoli nekonzistence mapy horizontálních oddílů a aktualizuje mapování tak, aby odpovídaly horizontálních oddílů Přejme během obnovení horizontálních oddílů. Předpokládá se, že databáze je také přejmenovat tak, aby odrážely původní název databáze (dříve, než se obnovila horizontální oddíl), protože výchozí obnovení bodu v čase do nové databáze s časové razítko. 
 
    ```
    rm.AttachShard(location, shardMapName)
    ``` 
 
-* *Umístění* parametr je název serveru a název databáze, horizontálních připojovaný. 
-* *ShardMapName* parametr je název mapy horizontálního oddílu. Toto je pouze vyžadována, je-li více mapami horizontálního oddílu spravuje správce mapu stejné ID horizontálního oddílu. Volitelné. 
+* *Umístění* parametr je název serveru a název databáze, připojovaný horizontálního oddílu. 
+* *ShardMapName* parametr je název mapy horizontálních oddílů. Toto je jenom nutné při několika map horizontálních oddílů se spravují přes stejné správce mapování horizontálních oddílů. Volitelné. 
 
-Tento příklad přidá horizontálního oddílu horizontálního oddílu mapu, která byla nedávno obnovena ze starší čas bodu v. Vzhledem k tomu, že byla obnovena horizontálního oddílu (konkrétně mapování horizontálních v LSM), je potenciálně nekonzistentní s položkou horizontálního oddílu v GSM. Mimo tento příklad kódu se horizontálního oddílu obnovit a přejmenovat na původní název databáze. Vzhledem k tomu, že ho byla obnovena, předpokládá se, že je mapování v LSM důvěryhodné mapování. 
+V tomto příkladu přidá do mapy horizontálního dělení, která byla nedávno obnovena ze dřívější čas bod v horizontálním oddílu. Protože horizontálních oddílů (konkrétně mapování horizontálních oddílů v LSM) byla obnovena, není potenciálně konzistentní s položkou horizontálních oddílů v GSM. Mimo tento příklad kódu byl horizontálního oddílu obnovit a přejmenovat na původní název databáze. Vzhledem k tomu, že byla obnovena, předpokládá se, že je namapování LSM důvěryhodné mapování. 
 
    ```
    rm.AttachShard(s.Location, customerMap); 
@@ -118,24 +118,24 @@ Tento příklad přidá horizontálního oddílu horizontálního oddílu mapu, 
        } 
    ```
 
-## <a name="updating-shard-locations-after-a-geo-failover-restore-of-the-shards"></a>Aktualizace umístění horizontálního oddílu po geo-převzetí služeb při selhání (obnovení) horizontálních oddílů
-Pokud dojde k selhání geograficky, sekundární databázi se provádí zápis přístupný a že bude nové primární databáze. Název serveru a potenciálně databáze (v závislosti na konfiguraci), se může lišit od původní primární. Proto je potřeba opravit položky mapování pro horizontálního oddílu v GSM a LSM. Podobně pokud byla databáze obnovena jiný název nebo umístění nebo do dřívějšího bodu v čase, může to způsobit nekonzistence v rámci služby maps horizontálního oddílu. Správce mapy horizontálního oddílu zpracovává distribuci otevřená připojení k databázi správné. Distribuce je založena na datech v mapě horizontálního oddílu a hodnota klíče horizontálního dělení, který je cílem dané žádosti o aplikace. Po geo-převzetí služeb při selhání musí být tyto informace aktualizovány název přesné serveru, názvu databáze a mapování horizontálních obnovené databáze. 
+## <a name="updating-shard-locations-after-a-geo-failover-restore-of-the-shards"></a>Aktualizace umístění horizontálních oddílů po geo-převzetí služeb při selhání (obnovení) horizontálních oddílů
+Pokud dojde při selhání geografické, sekundární databáze zpřístupněna zápisu a stane nová primární databáze. Název serveru a potenciálně databáze (v závislosti na vaší konfiguraci), se může lišit od původní databáze. Proto musí být stanovena položky mapování horizontálních oddílů v GSM a LSM. Podobně pokud obnovení databáze na jiný název nebo umístění, nebo k dřívějšímu bodu v čase, to může způsobit nekonzistence v mapy horizontálních oddílů. Správce mapování horizontálních oddílů zpracovává rozdělení otevřená připojení ke správné databázi. Distribuce podle data mapy horizontálních oddílů a hodnotu klíče horizontálního dělení, který je cílem dané žádosti o aplikace. Po geo-převzetí služeb při selhání musí být tyto informace aktualizovány název přesné serveru, název databáze a mapování horizontálních oddílů z obnovené databáze. 
 
 ## <a name="best-practices"></a>Osvědčené postupy
-GEO-převzetí služeb při selhání a obnovení jsou operace, které jsou obvykle spravuje správce cloudu aplikace záměrně využitím jedna z funkcí kontinuity obchodních databází SQL Azure. Plánování kontinuity obchodních vyžaduje procesy, postupy a opatření, aby zajistily, že provoz firmy můžete pokračovat bez přerušení. Dostupné metody jako součást třídy RecoveryManager by měl použít v rámci tento pracovní postup k Ujistěte se, že GSM a LSM budou kopírovány podle akce obnovení. Je pět základní kroky pro zajištění správně GSM a LSM odpovídají přesných informací po události převzetí služeb při selhání. Kódu aplikace k provedení těchto kroků můžete integrovat do existující nástroje a pracovní postup. 
+Geografické převzetí služeb při selhání a obnovení jsou operace obvykle spravuje správce cloudové aplikace záměrně využívají jednu z funkce provozní kontinuity obchodních databází Azure SQL. Obchodní kontinuity podnikových procesů plánování vyžaduje procesy, postupy a opatření pro zajištění, že obchodní operace mohou bez přerušení pokračovat. Metody, které jsou k dispozici jako součást třídy RecoveryManager by měl použít v rámci této pracovní postup k Ujistěte se, že GSM a LSM jsou tak pořád aktuální závisí na akci obnovení. Existuje pět základních kroků správně zajistit, že GSM a LSM odrážejí přesné informace po události převzetí služeb při selhání. Kód aplikace provádět tyto kroky je možné integrovat do existujících nástrojů a pracovních postupů. 
 
-1. Načtení RecoveryManager z ShardMapManager. 
-2. Odpojte staré horizontálního oddílu z mapy horizontálního oddílu.
-3. Připojte nové horizontálního oddílu mapu horizontálního oddílu, včetně nové umístění horizontálního oddílu.
+1. Načtěte RecoveryManager z ShardMapManager. 
+2. Odpojení původního horizontálního oddílu z mapy horizontálních oddílů.
+3. Připojte nový horizontální oddíl do mapy horizontálního oddílu, včetně nové umístění horizontálních oddílů.
 4. V mapování mezi GSM a LSM rozpoznat nekonzistence. 
-5. Rozdíly mezi GSM a LSM, důvěřující LSM vyřešte. 
+5. Rozdíly GSM a LSM, důvěřující LSM vyřešte. 
 
-Tento příklad provede následující kroky:
+V tomto příkladu provede následující kroky:
 
-1. Odebere horizontálních oddílů horizontálního oddílu mapu, která odráží horizontálního oddílu umístění před převzetím služeb při selhání.
-2. Připojí horizontálních oddílů a mapováním horizontálního oddílu odrážející nová umístění horizontálního oddílu (parametr "Configuration.SecondaryServer" je nový název serveru, ale název stejné databáze).
-3. Získá tokeny obnovení zjišťuje rozdíly mapování mezi GSM a LSM pro každý horizontálního oddílu. 
-4. Přeloží nekonzistence ve důvěřující mapování z LSM z každé horizontálního oddílu. 
+1. Odebere horizontálních oddílů z mapy horizontálních oddílů, který umístění horizontálních oddílů před událostí převzetí služeb při selhání.
+2. Připojí horizontálními oddíly mapy horizontálních oddílů odrážející nové umístění horizontálních oddílů (parametr "Configuration.SecondaryServer" je nový název serveru, ale stejný název databáze).
+3. Získá tokeny obnovení nalezením mapování rozdíly GSM a LSM pro každý horizontální oddíl. 
+4. Odstraňuje nekonzistence důvěryhodnou mapování z LSM každý horizontální oddíl. 
    
    ```
    var shards = smm.GetShards(); 

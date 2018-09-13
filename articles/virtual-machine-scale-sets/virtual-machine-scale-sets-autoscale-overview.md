@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/29/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 48e64f0cc65ade870425f73989209e8bef8ec8d5
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 4c33466af6e57264e02a7d5c298f7f1f9fbf4ed8
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38630282"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44717297"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Nastaví přehled automatického škálování díky škálování virtuálních počítačů Azure
 Škálovací sady virtuálních počítačů Azure můžete automaticky zvýšit nebo snížit počet instancí virtuálních počítačů, na kterých běží vaše aplikace. Toto chování automatizované a elastické snižuje režie na správu pro monitorování a optimalizace výkonu vaší aplikace. Můžete vytvořit pravidla, která definují přijatelný výkon pro pozitivní zkušenosti. Pokud jsou splněny tyto definované prahové hodnoty, pravidla automatického škálování provést akci Upravit kapacitu škálovací sady. Můžete také naplánovat události pro automatické zvýšení nebo snížení kapacity škálovací sady na pevnou časy. Tento článek obsahuje základní informace o výkonu, které metriky jsou k dispozici a jaké akce automatického škálování můžete provádět.
@@ -90,7 +90,7 @@ Pravidla automatického škálování se pak zobrazí, když metriky se porovná
 
 | Operátor                 |
 |--------------------------|
-| Více než             |
+| Větší než             |
 | Je větší nebo rovno |
 | Méně než                |
 | Je menší nebo rovno    |
@@ -106,7 +106,7 @@ Když automatické škálování pravidlo aktivuje, může automaticky škálova
 | Zvýšit počet o   | Pevný počet instancí virtuálních počítačů k vytvoření. Užitečné ve škálovacích sadách s menší počet virtuálních počítačů.                                           |
 | Zvýšit procento o | Založený na procentech zvýšení instancí virtuálních počítačů. Vhodné pro pracovat ve větším měřítku nastaví, pokud oprava zvýšení nemusí výkon výrazně. |
 | Zvýšit počet na   | Vytvořte velký počet instancí virtuálního počítače jsou potřeba k dosažení požadované maximální velikost.                                                            |
-| Snížit počet na   | Pevný počet instancí virtuálních počítačů odebrat. Užitečné ve škálovacích sadách s menší počet virtuálních počítačů.                                           |
+| Snížit počet o   | Pevný počet instancí virtuálních počítačů odebrat. Užitečné ve škálovacích sadách s menší počet virtuálních počítačů.                                           |
 | Snížit procento o | Založený na procentech snížení instancí virtuálních počítačů. Vhodné pro pracovat ve větším měřítku nastaví, pokud oprava zvýšení nemusí výrazně snížit náklady a spotřeba prostředků. |
 | Snížit počet na   | Odeberte, protože velký počet instancí virtuálního počítače jsou potřeba k dosažení požadované minimální velikost.                                                            |
 

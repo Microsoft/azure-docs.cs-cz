@@ -1,41 +1,42 @@
 ---
-title: "Filtrovat telemetrie Azure Application Insights ve webové aplikace Java | Microsoft Docs"
-description: "Omezit přenos telemetrie filtrováním událostí, které nepotřebujete k monitorování."
+title: Filtrovat telemetrii Azure Application Insights do vaší webové aplikace v Javě | Dokumentace Microsoftu
+description: Snížení provozu telemetrie se tak filtrování událostí, které není nutné k monitorování.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/23/2016
 ms.author: mbullwin
-ms.openlocfilehash: f9e061c010667bc18ac54e6546cc25339e9c0e3e
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 8ea431b3ab1836626fc6c7551f3bee24e4a3db86
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35642637"
 ---
-# <a name="filter-telemetry-in-your-java-web-app"></a>Filtr telemetrie webové aplikace Java
+# <a name="filter-telemetry-in-your-java-web-app"></a>Filtrování telemetrických dat ve vaší webové aplikace v Javě
 
-Filtry poskytnout způsob, jak vybrat telemetrii, vaše [webovou aplikaci Java odešle do služby Application Insights](app-insights-java-get-started.md). Existují některé filtry se na pole, které můžete použít, a můžete je zapsat také vlastní filtry.
+Filtry poskytují způsob, jak vybrat telemetrická data, která vaše [odesílá webové aplikace v Javě do služby Application Insights](app-insights-java-get-started.md). Existují některé out-of-the-box filtry, které můžete použít, a můžete taky psát vlastní filtry.
 
-Filtry se na pole zahrnují:
+Out-of-the-box filtry zahrnují:
 
-* Úroveň závažnosti trasování
+* Trasovat úroveň závažnosti
 * Konkrétní adresy URL, klíčová slova nebo kódy odpovědí
-* Rychlou odezvu – to znamená, na které aplikace odpověděl rychle požadavky
-* Názvy konkrétním událostí
+* Rychlé odpovědi – to znamená požadavků, u kterých vaše aplikace poslaných rychle
+* Názvy konkrétních událostí
 
 > [!NOTE]
-> Filtry zkreslit metrik vaší aplikace. Například můžete rozhodnout, že chcete-li diagnostikovat pomalé odezvy, můžete nastavit filtr vyřadí krátké doby odezvy. Ale je potřeba si uvědomit, že průměrná odezvy hlášené Application Insights bude nižší než skutečná rychlost a počet požadavků bude menší než skutečná počet.
-> Pokud se jedná o problém, použijte [vzorkování](app-insights-sampling.md) místo.
+> Filtry zkosení metriky vaší aplikace. Například můžete rozhodnout, že pokud chcete diagnostikovat pomalé odezvy, můžete nastavit filtr zahodíte krátké doby odezvy. Musíte však být vědomi, Průměrná doba odezvy hlášené službou Application Insights se pak budou pomalejší než skutečná rychlost a počet požadavků bude menší, než je skutečný počet.
+> Pokud je to žádný problém, použijte [vzorkování](app-insights-sampling.md) místo.
 
 ## <a name="setting-filters"></a>Nastavení filtrů
 
-Přidejte soubor ApplicationInsights.xml, `TelemetryProcessors` části jako tento ukázkový:
+Přidejte soubor ApplicationInsights.xml, `TelemetryProcessors` oddílu jako v tomto příkladu:
 
 
 ```XML
@@ -88,11 +89,11 @@ Přidejte soubor ApplicationInsights.xml, `TelemetryProcessors` části jako ten
 
 
 
-[Zkontrolujte úplnou sadu předdefinovaných procesorů](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal/processor).
+[Zkontrolujte úplnou sadu předdefinovaných procesory](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal/processor).
 
 ## <a name="built-in-filters"></a>Integrované filtry
 
-### <a name="metric-telemetry-filter"></a>Metriky Telemetrie filtru
+### <a name="metric-telemetry-filter"></a>Filtr Telemetrie metrik
 
 ```XML
 
@@ -101,10 +102,10 @@ Přidejte soubor ApplicationInsights.xml, `TelemetryProcessors` části jako ten
            </Processor>
 ```
 
-* `NotNeeded`-Čárkami oddělený seznam názvů vlastní metriky.
+* `NotNeeded` -Čárkami oddělený seznam názvů vlastní metriky.
 
 
-### <a name="page-view-telemetry-filter"></a>Filtr Telemetrická zobrazení stránky
+### <a name="page-view-telemetry-filter"></a>Filtrování Telemetrie zobrazení stránky
 
 ```XML
 
@@ -115,9 +116,9 @@ Přidejte soubor ApplicationInsights.xml, `TelemetryProcessors` části jako ten
            </Processor>
 ```
 
-* `DurationThresholdInMS`-Doba trvání odkazuje na čas potřebný k načtení stránky. Pokud je toto nastaveno, nejsou hlášeny stránky, které načtené rychleji, než tuto chvíli.
-* `NotNeededNames`-Čárkami oddělený seznam názvů stránky.
-* `NotNeededUrls`-Fragmenty čárkami oddělený seznam adresy URL. Například `"home"` odfiltruje všechny stránky, které mají "Domů" v adrese URL.
+* `DurationThresholdInMS` – Doba trvání odkazuje na čas potřebný k načtení stránky. Pokud je nastaveno, stránky, které načíst rychleji, než tuto chvíli se nezobrazují.
+* `NotNeededNames` -Čárkami oddělený seznam názvů stránky.
+* `NotNeededUrls` -Počet fragmentů čárkami oddělený seznam adresy URL. Například `"home"` vyfiltruje všechny stránky, které mají "Domů" v adrese URL.
 
 
 ### <a name="request-telemetry-filter"></a>Filtr Telemetrie požadavku
@@ -136,9 +137,9 @@ Přidejte soubor ApplicationInsights.xml, `TelemetryProcessors` části jako ten
 
 ### <a name="synthetic-source-filter"></a>Syntetické zdrojový filtr
 
-Odfiltruje všechny telemetrická data, která mají hodnoty ve vlastnosti SyntheticSource. Mezi ně patří požadavky od robotů, pavouci a testy dostupnosti.
+Odfiltruje všechny telemetrická data, která se mají hodnoty ve vlastnosti SyntheticSource. Patří sem požadavky od robotů, pavouci a testy dostupnosti.
 
-Filtrovat telemetrická data pro všechny syntetické požadavky:
+Filtrování telemetrických dat pro všechny syntetické požadavky:
 
 
 ```XML
@@ -146,7 +147,7 @@ Filtrovat telemetrická data pro všechny syntetické požadavky:
            <Processor type="SyntheticSourceFilter" />
 ```
 
-Filtrovat telemetrie pro konkrétní syntetické zdroje:
+Filtrování telemetrických dat pro konkrétní syntetické zdroje:
 
 
 ```XML
@@ -156,11 +157,11 @@ Filtrovat telemetrie pro konkrétní syntetické zdroje:
            </Processor>
 ```
 
-* `NotNeeded`-Čárkami oddělený seznam názvů syntetické zdroje.
+* `NotNeeded` -Čárkami oddělený seznam názvů syntetické zdroje.
 
 ### <a name="telemetry-event-filter"></a>Filtr událostí telemetrie
 
-Filtry vlastních událostí (přihlášení pomocí [TrackEvent()](app-insights-api-custom-events-metrics.md#trackevent)).
+Filtruje vlastní události (zaprotokolované pomocí [TrackEvent()](app-insights-api-custom-events-metrics.md#trackevent)).
 
 
 ```XML
@@ -171,12 +172,12 @@ Filtry vlastních událostí (přihlášení pomocí [TrackEvent()](app-insights
 ```
 
 
-* `NotNeededNames`-Čárkami oddělený seznam názvů událostí.
+* `NotNeededNames` -Čárkami oddělený seznam názvů událostí.
 
 
-### <a name="trace-telemetry-filter"></a>Filtr Telemetrie trasování
+### <a name="trace-telemetry-filter"></a>Filtrování Telemetrie trasování
 
-Filtry protokolu trasování (přihlášení pomocí [TrackTrace()](app-insights-api-custom-events-metrics.md#tracktrace) nebo [protokolování framework kolekce](app-insights-java-trace-logs.md)).
+Trasování protokolů filtry (zaprotokolované pomocí [použitím metod TrackTrace()](app-insights-api-custom-events-metrics.md#tracktrace) nebo [protokolování framework kolekcí](app-insights-java-trace-logs.md)).
 
 ```XML
 
@@ -185,20 +186,20 @@ Filtry protokolu trasování (přihlášení pomocí [TrackTrace()](app-insights
            </Processor>
 ```
 
-* `FromSeverityLevel`Platné hodnoty jsou:
- *  VYPNOUT - vyfiltrovat všech trasování
- *  TRASOVÁNÍ – žádné filtrování. hodnotu úroveň trasování
- *  Informace o - filtru na úroveň trasování
- *  VAROVÁNÍ - trasování a informace o filtru
- *  Chyba: filtru se varování, informace trasování
- *  KRITICKÝ - filtru se jenom důležité
+* `FromSeverityLevel` Platné hodnoty jsou:
+ *  VYPNOUT - odfiltrovat všechna trasování
+ *  TRASOVÁNÍ – bez filtrování. se rovná úroveň trasování
+ *  Informace o – filtrování úroveň trasování
+ *  WARN – filtrování trasování a informace
+ *  Chyba – filtrování UPOZORNIT, informace o trasování
+ *  DŮLEŽITÉ – filtr všechny ale důležité
 
 
 ## <a name="custom-filters"></a>Vlastní filtry
 
 ### <a name="1-code-your-filter"></a>1. Kód filtru
 
-V kódu, vytvořte třídu, která implementuje `TelemetryProcessor`:
+Ve vašem kódu, vytvořte třídu, která implementuje `TelemetryProcessor`:
 
 ```Java
 
@@ -235,7 +236,7 @@ V kódu, vytvořte třídu, která implementuje `TelemetryProcessor`:
 ```
 
 
-### <a name="2-invoke-your-filter-in-the-configuration-file"></a>2. Vyvolání filtru v konfiguračním souboru
+### <a name="2-invoke-your-filter-in-the-configuration-file"></a>2. Vyvolání filtr v konfiguračním souboru
 
 V ApplicationInsights.xml:
 
@@ -256,10 +257,10 @@ V ApplicationInsights.xml:
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-*Moje filtru není funkční.*
+*Tento filtr není funkční.*
 
-* Zkontrolujte, zda jste zadali platný parametr hodnoty. Například doby trvání musí být celá čísla. Neplatné hodnoty způsobí, že filtr budou ignorovány. Pokud vaše vlastní filtr vyvolá výjimku z konstruktoru nebo metoda set, se budou ignorovat.
+* Zkontrolujte, zda jste zadali platný parametr hodnoty. Například dob trvání by měl být celá čísla. Neplatné hodnoty způsobí, že filtr, aby se ignorovat. Pokud vaše vlastní filtr vyvolá výjimku konstruktoru nebo metody set, bude se ignorovat.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-* [Vzorkování](app-insights-sampling.md) – zvažte vzorkování jako alternativu, která není zkreslit vaše metriky.
+* [Vzorkování](app-insights-sampling.md) – zvažte jako alternativu, která není zkosení metriky vzorkování.

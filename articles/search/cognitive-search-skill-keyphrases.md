@@ -1,6 +1,6 @@
 ---
-title: Klíč frázi extrakce kognitivní vyhledávání odborností (Azure Search) | Microsoft Docs
-description: Vyhodnotí nestrukturovaných text a pro každý záznam, vrátí seznam klíčů frází obohacení kanál služby Azure Search.
+title: Klíč frázi extrakce kognitivního vyhledávání dovedností (Azure Search) | Dokumentace Microsoftu
+description: Vyhodnotí nestrukturovaného textu a pro každý záznam, vrátí seznam hodnot klíčových frází v rozšíření kanálu služby Azure Search.
 services: search
 manager: pablocas
 author: luiscabrer
@@ -10,40 +10,40 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: a12efaa020e626e4a10a0708c9b84d8fe125588c
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: b1da16269a1cbe83c6c0c625aba13026b6a462d6
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33791032"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35903158"
 ---
-#   <a name="key-phrase-extraction-cognitive-skill"></a>Klíč frázi extrakce kognitivní dovedností
+#   <a name="key-phrase-extraction-cognitive-skill"></a>Extrakce frází klíč kognitivních dovedností
 
-**Klíč frázi extrakce** odborností vyhodnocuje nestrukturovaných text a pro každý záznam, vrátí seznam hodnot klíčů frází.
+**Extrakce frází klíč** dovednosti vyhodnotí nestrukturovaného textu a pro každý záznam, vrátí seznam hodnot klíčových frází.
 
-Tato možnost je užitečná, pokud potřebujete rychle identifikovat hlavní body čtených v záznamu. Například daného vstupního textu "jídlo byla chutný a nebyly k dispozici vynikající pracovníci", služba vrátí "jídlo" a "vynikající zaměstnanci".
+Tato možnost je užitečná, pokud je potřeba rychle identifikovat hlavní témata body v záznamu. Například daný vstupní text "potravinovém byla chutný a bylo vynikající pracovníci", služba vrátí "potravin" a "vynikající zaměstnanci".
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.KeyPhraseExtractionSkill 
 
 ## <a name="data-limits"></a>Omezení dat
-Maximální velikost záznamu by měla být 50 000 znaků měřený podle `String.Length`. Pokud potřebujete rozdělit vaše data před odesláním do Extraktor klíče frázi, zvažte použití [Text rozdělení odborností](cognitive-search-skill-textsplit.md).
+Maximální velikost záznamu by měla být 50 000 znaků pohledu `String.Length`. Pokud je potřeba rozdělit data před odesláním k extrakci klíčových frází, zvažte použití [dovedností rozdělit textové](cognitive-search-skill-textsplit.md).
 
 ## <a name="skill-parameters"></a>Parametry dovedností
 
-Parametry jsou malá a velká písmena.
+Parametry rozlišují malá a velká písmena.
 | Vstupy                | Popis |
 |---------------------|-------------|
-| defaultLanguageCode | (Volitelné) Kód jazyka, který chcete použít pro dokumenty, které nejsou explicitně zadat jazyk.  Pokud není ve výchozím jazyk kódu zadaný, angličtina (en) se použije jako výchozí kód jazyka. <br/> V tématu [úplný seznam podporovaných jazyků](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages). |
-| maxKeyPhraseCount   | (Volitelné) Maximální počet klíčů frází k vytvoření. |
+| defaultLanguageCode | (Volitelné) Kód jazyka, který chcete použít pro dokumenty, které nejsou explicitně zadat jazyk.  Pokud výchozí kód jazyka není zadaný, angličtina (en) se použije jako výchozí kód jazyka. <br/> Zobrazit [úplný seznam podporovaných jazyků](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages). |
+| maxKeyPhraseCount   | (Volitelné) Maximální počet klíčových frází k vytvoření. |
 
 ## <a name="skill-inputs"></a>Vstupy dovedností
 | Vstupy     | Popis |
 |--------------------|-------------|
-| Text | Text, který má být analyzován.|
-| languageCode  |  Řetězec označující jazyk záznamy. Pokud není tento parametr zadán, kód výchozí jazyk se použije k analýze záznamy. <br/>V tématu [úplný seznam podporovaných jazyků](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)|
+| text | Text, který má být analyzován.|
+| languageCode  |  Řetězec označující jazyk záznamy. Pokud není tento parametr zadán, použije se výchozí kód jazyka k analýze záznamy. <br/>Zobrazit [úplný seznam podporovaných jazyků](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)|
 
-##  <a name="sample-definition"></a>Ukázka definice
+##  <a name="sample-definition"></a>Ukázková definice
 
 ```json
  {
@@ -67,7 +67,7 @@ Parametry jsou malá a velká písmena.
   }
 ```
 
-##  <a name="sample-input"></a>Ukázka vstup
+##  <a name="sample-input"></a>Ukázkový vstup
 
 ```json
 {
@@ -110,11 +110,11 @@ Parametry jsou malá a velká písmena.
 
 
 ## <a name="errors-and-warnings"></a>Chyby a upozornění
-Pokud zadáte zadání nepodporovaný jazyk kódu, je generována chyba a nejsou rozbalené klíče frází.
-Pokud text je prázdná, bude možné vytvořit upozornění.
-Pokud text je delší než 50 000 znaků, analyzuje pouze první 50 000 znaků a objeví se upozornění.
+Pokud zadáte kód nepodporovaný jazyk, je vygenerována chyba a nejsou extrahována klíčové fráze.
+Pokud je text prázdný, budou vytvářet upozornění.
+Pokud text je delší než 50 000 znaků, jenom prvních 50 000 znaků se dají analyzovat a objeví se upozornění.
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
 + [Předdefinované dovednosti](cognitive-search-predefined-skills.md)
-+ [Jak definovat skillset](cognitive-search-defining-skillset.md)
++ [Definování dovedností](cognitive-search-defining-skillset.md)

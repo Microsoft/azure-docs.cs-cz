@@ -1,6 +1,6 @@
 ---
-title: Aplikace Azure Statistika Telemetrie datový Model - událostí Telemetrie | Microsoft Docs
-description: Aplikace Insights datový model pro událost telemetrie
+title: Azure Application Insights Telemetrie datový Model - Telemetrie událostí | Dokumentace Microsoftu
+description: Application Insights datový model pro telemetrie událostí
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -9,24 +9,26 @@ ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/25/2017
-ms.author: mbullwin; sergkanz
-ms.openlocfilehash: 4f6b5c35b65b4aff2dbe8dafbb2eb07d75c2382a
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.reviewer: sergkanz
+ms.author: mbullwin
+ms.openlocfilehash: 777c52276ca767ee1fb4d05666850350c02c1e00
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35642772"
 ---
-# <a name="event-telemetry-application-insights-data-model"></a>Událost telemetrie: Application Insights datový model
+# <a name="event-telemetry-application-insights-data-model"></a>Telemetrie událostí: datový model Application Insights
 
-Události můžete vytvořit položky telemetrie (v [Application Insights](app-insights-overview.md)) představují událost, která v aplikaci. Obvykle je zásahu uživatele, jako je tlačítko klikněte na tlačítko nebo pořadí checkout. Může být také událost životní cyklus aplikace jako aktualizace inicializace nebo konfigurace. 
+Můžete vytvořit událost položky telemetrie (v [Application Insights](app-insights-overview.md)) představující události, ke které došlo ve vaší aplikaci. Obvykle je interakce s uživatelem, například klikněte na tlačítko nebo objednávka rezervace. Může být událost životního cyklu aplikace jako aktualizace inicializace nebo konfigurace. 
 
-Události sémanticky, může nebo nemusí být korelační na požadavky. Ale pokud používá správně, telemetrie událostí je důležitější než požadavky nebo trasování. Události představují obchodní telemetrie a měl by být subjektu k oddělení, méně agresivní [vzorkování](app-insights-api-filtering-sampling.md).
+Události sémanticky, může nebo nemusí být korelována požadavky. Pokud však správně použít telemetrie událostí je důležitější než požadavky nebo trasování. Události představují obchodní telemetrická data a mělo by být předmětu k oddělení, méně agresivní [vzorkování](app-insights-api-filtering-sampling.md).
 
 ## <a name="name"></a>Název
 
-Název události. Chcete-li povolit správné seskupení a užitečné metriky, omezte aplikace tak, aby vygeneruje malý počet názvy samostatná událost. Nepoužívejte například samostatné název pro každou instanci vygenerované události.
+Název události. Povolit správné seskupování a užitečné metriky, zakažte svou aplikaci tak, aby generuje malý počet názvů samostatná událost. Nepoužívejte například odlišný název pro každou instanci vygenerované události.
 
 Maximální délka: 512 znaků
 
@@ -40,6 +42,6 @@ Maximální délka: 512 znaků
 
 ## <a name="next-steps"></a>Další postup
 
-- V tématu [datový model](application-insights-data-model.md) Application Insights typy a data modelu.
-- [Psát vlastní události telemetrii](app-insights-api-custom-events-metrics.md#trackevent)
-- Podívejte se na [platformy](app-insights-platforms.md) nepodporuje Application Insights.
+- Zobrazit [datový model](application-insights-data-model.md) pro typy a datový model Application Insights.
+- [Psát vlastní telemetrii událostí](app-insights-api-custom-events-metrics.md#trackevent)
+- Podívejte se na [platformy](app-insights-platforms.md) podporované službou Application Insights.

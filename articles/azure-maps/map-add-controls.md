@@ -4,17 +4,16 @@ description: Jak přidat ovládací prvek lupy, výška ovládacího prvku, otá
 author: walsehgal
 ms.author: v-musehg
 ms.date: 08/29/2018
-ms.topic: how-to-guides
+ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: mvc
-ms.openlocfilehash: 435c6545b69b4457c3e1035fb8125399d4c9c23a
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 0bd7e5bd3fc4c4ce3508ca7d3f877fbdf00d5375
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666127"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44717631"
 ---
 # <a name="add-map-controls-to-azure-maps"></a>Přidání ovládacích prvků mapa ke službě Azure Maps
 

@@ -1,84 +1,84 @@
 ---
-title: Co je nového v Azure Machine Learning
-description: Tento dokument podrobně popisuje aktualizace Azure Machine Learning.
+title: Co je nového ve službě Azure Machine Learning
+description: Tento dokument podrobně popisuje aktualizace pro Azure Machine Learning.
 services: machine-learning
 author: hning86
 ms.author: haining
 manager: mwinkle
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: reference
 ms.date: 03/28/2018
-ms.openlocfilehash: 6085762f9f3874df8dd90866e387a581915dbbaf
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 9c135c1db557393a26e6e071f92b61fcbf3ae477
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831597"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35642950"
 ---
 # <a name="whats-new-in-azure-machine-learning"></a>Novinky ve službě Azure Machine Learning
 
-V tomto článku, další informace o nových verzí systému [Azure Machine Learning](../service/overview-what-is-azure-ml.md). 
+V tomto článku najdete další informace o nových verzích [Azure Machine Learning](../service/overview-what-is-azure-ml.md). 
 
 
-## <a name="2018-05-sprint-5"></a>2018-05 (sprintu 5)
+## <a name="2018-05-sprint-5"></a>2018-05 (sprint 5)
 
-V této verzi Azure Machine Learning můžete:
-+ Obrázky Featurize quantized verzi ResNet 50 cvičení třídění na základě těchto funkcí a [nasazení tohoto modelu na FPGA v Azure](../service/how-to-deploy-fpga-web-service.md) pro inferencing s velmi nízkou latencí.
+V této verzi služby Azure Machine Learning můžete:
++ Obrázky Vytrénovaných kvantizované verzi modelem ResNet 50 trénování klasifikátor založených na těchto funkcích a [nasazení modelu FPGA v Azure](../service/how-to-deploy-fpga-web-service.md) pro odvozování mimořádně nízkou latencí.
 
-+ Rychle sestavení a nasazení vysoce přesné strojového učení a modely hloubkové learning pomocí [vlastní Azure Machine Learning balíčky](../service/reference-python-package-overview.md) pro následující domény:
++ Rychle sestavovat a nasazovat modely obsáhlého learningu pomocí s velmi přesnými strojového učení a [vlastní vydání balíčky Azure Machine Learning](../service/reference-python-package-overview.md) pro tyto domény:
   + [Počítačové zpracování obrazu](../service/how-to-build-deploy-image-classification-models.md)
   + [Analýza textu](../service/how-to-build-deploy-text-classification-models.md)
   + [Prognózování](../service/how-to-build-deploy-forecast-models.md)
 
 ## <a name="2018-03-sprint-4"></a>2018-03 (sprintu 4)
-**Číslo verze**: 0.1.1801.24353 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;([najít vaší verzí](../service/known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number))
+**Číslo verze**: 0.1.1801.24353 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;([verzi zjistíte](../service/known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number))
 
 
-Řadu následující aktualizace jsou vytvářeny jako přímý výsledky váš názor. Uchovávejte je Připravujeme!
+Mnohé z následující aktualizace probíhají jako přímé výsledky váš názor. Prosím Novoroční předsevzetí!
 
-**Upozorňují na důležité nové funkce a změny**
+**Důležité nové funkce a změny**
 
-- Podpora pro spouštění skriptů na vzdálené virtuálních počítačů Ubuntu nativně ve svém vlastním prostředí kromě vzdáleného docker na základě spuštění.
-- Nové prostředí prostředí v aplikaci Workbench umožňuje vytvářet výpočetní cíle a spouštět konfigurace kromě našich zkušeností založené na rozhraní příkazového řádku.
+- Podpora pro spouštění vašich skriptů na vzdálenou virtuální počítače s Ubuntu nativně ve svém vlastním prostředí kromě vzdáleného dockeru na základě spuštění.
+- Nové prostředí pro prostředí v aplikaci Workbench umožňuje vytvoření cílových výpočetních prostředí a spuštění konfigurace kromě naše prostředí na základě rozhraní příkazového řádku.
 ![Karta prostředí](media/azure-machine-learning-release-notes/environment-page.png)
-- Sestavy o historii přizpůsobitelné spustit ![obrázek nové spuštění sestavy historie](media/azure-machine-learning-release-notes/new-run-history-reports.png)
+- Přizpůsobitelné historie spuštění sestavy ![obrázek nové spuštění sestavy historie](media/azure-machine-learning-release-notes/new-run-history-reports.png)
 
 **Podrobné aktualizace**
 
-Následuje seznam podrobné aktualizací v oblasti Azure Machine Learning v této sprintu jednotlivých součástí.
+Tady je seznam podrobné aktualizace v každé oblasti komponenty služby Azure Machine Learning v tomto sprintu.
 
-### <a name="workbench-ui"></a>Workbench uživatelského rozhraní
-- Upravitelné spustit historie sestavy
-  - Konfiguraci vylepšené grafu pro spuštění historie sestavy
-    - Použít entrypoints lze změnit.
-    - Nejvyšší úrovně filtry můžete přidat a upravit ![přidat filtry](media/azure-machine-learning-release-notes/add-filters.jpg)
-    - Grafy a statistiky můžete přidat nebo upravit (a přetažení myší přeskupení).
+### <a name="workbench-ui"></a>Aplikace Workbench uživatelského rozhraní
+- Upravitelné sestavy historie spuštění
+  - Konfiguraci vylepšené grafu historie spuštění sestav
+    - Využité entrypoints lze změnit.
+    - Filtry nejvyšší úrovně lze přidávat a upravovat ![přidat filtry](media/azure-machine-learning-release-notes/add-filters.jpg)
+    - Grafy a statistiky můžete přidat nebo upravit (a změnit jejich uspořádání přetažením).
     ![Vytváření nových grafů](media/azure-machine-learning-release-notes/configure-charts.png)
 
-  - CRUD pro spuštění historie sestavy
-  - Přesunout všechny existující zobrazení seznamu historie spouštění konfigurací na straně serveru sestav, který se chová jako kanály na spuštění z bodů vybranou položku.
+  - CRUD pro sestavy historie spuštění
+  - Přesunout všechny stávající zobrazení seznamu historie spuštění konfigurace na straně serveru sestav, který se chová jako kanály na spuštění z bodů vybranou položku.
 
 - Karta prostředí
-  - Můžete snadno přidávat nová cílová výpočetní a spustit konfigurační soubory do projektu ![nová cílová výpočetní](media/azure-machine-learning-release-notes/add-new-environments.png)
-  - Spravovat a aktualizovat konfiguračních souborů pomocí UX jednoduchý, založené na formulářích
-  - Tlačítko Nový při přípravě vašeho prostředí pro spuštění
+  - Snadno přidat nové cílové výpočetní prostředí a spusťte konfigurační soubory do projektu ![nový cíl Compute](media/azure-machine-learning-release-notes/add-new-environments.png)
+  - Spravovat a aktualizovat konfigurační soubory pomocí jednoduchého, založené na formulářích UX
+  - Příprava prostředí pro spuštění nové tlačítko
 
 - Vylepšení výkonu do seznamu souborů na bočním panelu
 
 ### <a name="data-preparation"></a>Příprava dat 
-- Azure Machine Learning Workbench teď umožňuje prohledávat pomocí známých sloupec názvu pro sloupec.
+- Azure Machine Learning Workbench umožňuje prohledávat pomocí známých sloupec název pro sloupec.
 
 
 ### <a name="experimentation"></a>Experimentování
-- Azure Machine Learning Workbench teď podporuje nativní systémem skripty vlastního prostředí python nebo pyspark. Pro tuto funkci uživatel vytvoří a spravuje vlastní prostředí na vzdálený počítač a pomocí Azure Machine Learning Workbench provést jejich skripty na tomto cíli. Najdete v tématu [konfigurace služby Azure Machine Learning experimentování](experimentation-service-configuration.md) 
+- Azure Machine Learning Workbench teď podporuje spouštění vašich skriptů nativně ve svém vlastním prostředí python nebo pyspark. Pro tuto funkci uživatel vytvoří a spravuje vlastní prostředí na vzdáleném virtuálním počítači a spustit své skripty na určené pomocí Azure Machine Learning Workbench. Podrobnosti najdete na [konfigurace služby Azure Machine Learning služby experimentování ve službě](experimentation-service-configuration.md) 
 
 ### <a name="model-management"></a>Správa modelů
-- Podpora pro přizpůsobení nasazení kontejnerů: umožňuje přizpůsobení bitové kopie kontejneru tím, že se instalace externí knihovny pomocí výstižný get atd. Je již omezena na pip instalovatelných knihovny. Najdete v článku [dokumentace](model-management-custom-container.md) Další informace.
-  - Použití `--docker-file myDockerStepsFilename` příznak a název souboru s manifestu, image nebo příkazy vytváření služby.
-  - Upozorňujeme, že bitová kopie je Ubuntu a nemůže být upraven.
-  - Příklad: 
+- Podpora pro vlastní nastavení nasazení kontejnerů: Povolí, přizpůsobení image kontejneru tím, že instalace pomocí apt-get a další externí knihovny. Už nejsou omezené na pip Instalovatelné knihovny. Zobrazit [dokumentaci](model-management-custom-container.md) pro další informace.
+  - Použití `--docker-file myDockerStepsFilename` příznak a název souboru manifestu, image nebo příkazy vytváření služby.
+  - Mějte na paměti, že základní bitovou kopii se systémem Ubuntu a nemůže být upraven.
+  - Příklad příkazu: 
   
       ```shell
       $ az ml image create -n myimage -m mymodel.pkl -f score.py --docker-file mydockerstepsfile
@@ -86,317 +86,317 @@ Následuje seznam podrobné aktualizací v oblasti Azure Machine Learning v tét
 
 
 
-## <a name="2018-01-sprint-3"></a>2018-01 (sprintu 3) 
-**Číslo verze**: 0.1.1712.18263 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;([najít vaší verzí](../service/known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number))
+## <a name="2018-01-sprint-3"></a>2018-01 (sprint 3) 
+**Číslo verze**: 0.1.1712.18263 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;([verzi zjistíte](../service/known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number))
 
-Dále jsou aktualizace a vylepšení v této sprintu. Řadu tyto aktualizace jsou vytvářeny jako přímý výsledek zpětnou vazbu od uživatelů. 
+Níže jsou aktualizace a vylepšení v tomto sprintu. U velké části těchto aktualizací probíhají jako přímý výsledek zpětné vazby uživatelů. 
 
 
-Následuje seznam podrobné aktualizací v oblasti Azure Machine Learning v této sprintu jednotlivých součástí.
+Tady je seznam podrobné aktualizace v každé oblasti komponenty služby Azure Machine Learning v tomto sprintu.
 
-- Aktualizace zásobníku ověřování vynutí přihlášení a účet výběru při spuštění
+- Aktualizace zásobníku ověřování vynutí výběru přihlášení a účet při spuštění
 
 ### <a name="workbench"></a>Workbench
-- Možnost instalace nebo odinstalace aplikace z panelu Přidat nebo odebrat programy
-- Aktualizace zásobníku ověřování vynutí přihlášení a účet výběr na spuštění
-- Vylepšené prostředí pro jednotné přihlašování na (SSO) v systému Windows
-- Uživatelé, kteří patří do více klientů s odlišnými pověřeními teď bude moci přihlásit do Workbench
+- Možnost instalace/odinstalace aplikace z panelu Přidat nebo odebrat programy
+- Aktualizace zásobníku ověřování vynutí výběru přihlášení a účet při spuštění
+- Vylepšené prostředí pro jednotné přihlašování (SSO) ve Windows
+- Uživatelé, kteří patří do více tenantů s jinými přihlašovacími údaji teď budou moct přihlásit do aplikace Workbench
 
-### <a name="ui"></a>UŽIVATELSKÉHO ROZHRANÍ
+### <a name="ui"></a>UŽIVATELSKÉ ROZHRANÍ
 - Obecná vylepšení a opravy chyb
 
 ### <a name="notebooks"></a>Poznámkové bloky
 - Obecná vylepšení a opravy chyb
 
 ### <a name="data-preparation"></a>Příprava dat 
-- Vylepšené automatické návrhy při provádění podle příkladu transformace
-- Vylepšený algoritmus pro vzor frekvence inspector
-- Schopnost posílání ukázkových dat a zpětnou vazbu při provádění transformací podle příkladu ![odvozena obrázek odeslat zpětnou vazbu odkaz na sloupec transformace](media/azure-machine-learning-release-notes/SendFeedbackFromDeriveColumn.png)
-- Vylepšení Spark modulu Runtime
-- Scala nahradili Pyspark
-- Opravené neschopnost zavřete dat nelze použít pro nástroj Inspector řady čas 
-- Pevné zablokování dobu provádění Data Prep pro HDI
+- Vylepšené automatické návrhy při provádění transformací například
+- Vylepšený algoritmus pro vzor četnosti inspektoru
+- Umožňuje odeslat ukázková data a zpětnou vazbu při provádění transformací například ![Image odeslat odkaz pro zasílání názorů na odvození sloupce transformace](media/azure-machine-learning-release-notes/SendFeedbackFromDeriveColumn.png)
+- Vylepšení modulu Runtime Spark
+- Scala nahradil Pyspark
+- Oprava neschopnost zavřete dat není k dispozici pro řadu inspektor čas 
+- Oprava zablokuje čas pro spuštění přípravy dat pro Hdinsight
 
-### <a name="model-management-cli-updates"></a>Aktualizace modelu správy rozhraní příkazového řádku 
-  - Vlastnictví předplatného se už nevyžaduje pro zřizování prostředků. Přispěvatel přístup do skupiny prostředků jsou dostatečné pro nastavení prostředí pro nasazení.
-  - Povolené místní prostředí instalace zdarma odběrů 
+### <a name="model-management-cli-updates"></a>Aktualizace rozhraní příkazového řádku správy modelů 
+  - Vlastnictví předplatného se už nevyžaduje pro zřizování prostředků. Přístup přispěvatele do skupiny prostředků bude stačit k nastavení prostředí nasazení.
+  - Povolené místní prostředí nastavení bezplatné předplatné 
 
-## <a name="2017-12-sprint-2-qfe"></a>2017 – 12 (úbytek sprintu 2 QFE) 
-**Číslo verze**: 0.1.1711.15323 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;([najít vaší verzí](../service/known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number))
+## <a name="2017-12-sprint-2-qfe"></a>2017-12 (sprint 2 QFE) 
+**Číslo verze**: 0.1.1711.15323 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;([verzi zjistíte](../service/known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number))
 
-Toto je verze QFE (Quick Fix Engineering), vedlejší verzi. Ho řeší problémy několik telemetrie a pomáhá produktový tým, abyste lépe pochopili, jak je produkt používán. Ve znalostní bázi můžete přejít do budoucích úsilí o zlepšování zkušeností produktu. 
+Jedná se o verzi QFE (Quick Fix Engineering), vedlejší verzi. Řeší problémy s několika telemetrie a pomáhá produktovému týmu a lépe pochopit, jak se používá produktu. Ve znalostní bázi můžete přejít do budoucí úsilí pomáhá vylepšovat prostředí produktu. 
 
 Kromě toho existují dvě důležité aktualizace:
 
-- Pevná chyby ve prep data, která zabránila inspector řady čas ze zobrazení v dat příprava balíčků.
-- V nástroji příkazového řádku už nemusí být vlastníkem předplatného Azure zřídit clustery ACS výpočetní Machine Learning. 
+- Oprava chyby v přípravy dat, která zabránila zobrazení v balíčků pro přípravu dat řady inspektor čas.
+- V nástroji příkazového řádku musíte už být vlastníkem předplatného Azure ke zřízení clusterů Machine Learning Compute ACS. 
 
-## <a name="2017-12-sprint-2"></a>2017 – 12 (sprintu 2)
-**Číslo verze**: 0.1.1711.15263 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;([najít vaší verzí](../service/known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number))
+## <a name="2017-12-sprint-2"></a>12. 2017 (sprint 2)
+**Číslo verze**: 0.1.1711.15263 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;([verzi zjistíte](../service/known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number))
 
-Vítá vás třetí aktualizace Azure Machine Learning. Tato aktualizace obsahuje vylepšení v aplikaci workbench, rozhraní příkazového řádku (CLI) a back endové služby. Děkujeme pro odesílání úsměvy a frowns. Řadu následující aktualizace jsou vytvářeny jako přímý výsledky váš názor. 
+Vítá vás třetí aktualizace služby Azure Machine Learning. Tato aktualizace zahrnuje vylepšení v aplikaci workbench, rozhraní příkazového řádku (CLI) a back endové služby. Děkujeme pro odesílání úsměvy a frowns. Mnohé z následující aktualizace probíhají jako přímé výsledky váš názor. 
 
-**Upozorňují na důležité nové funkce**
-- [Podpora pro SQL Server a databázi SQL Azure jako zdroj dat](data-prep-appendix2-supported-data-sources.md#types) 
-- [Hloubkové Learning na Spark s podporou GPU pomocí MMLSpark](https://github.com/Azure/mmlspark/blob/master/docs/gpu-setup.md)
-- [Všechny kontejnery AML jsou kompatibilní s Azure IoT hraniční zařízení po nasazení (žádné další kroky požadované)](http://aka.ms/aml-iot-edge-blog)
-- Seznam registrovaných modelu a podrobnosti zobrazení k dispozici portál Azure
-- Přístup k výpočetní cílů pomocí ověřování na základě klíčů SSH kromě přístupu pomocí uživatelského jména nebo hesla. 
-- Nový nástroj Inspector vzor frekvence v datech rychlá příprava prostředí. 
+**Důležité nové funkce**
+- [Podpora pro SQL Server a Azure SQL DB jako zdroje dat](data-prep-appendix2-supported-data-sources.md#types) 
+- [Hloubkové učení ve Sparku s podporou GPU používání MMLSpark](https://github.com/Azure/mmlspark/blob/master/docs/gpu-setup.md)
+- [Všechny kontejnery AML musí být kompatibilní s Azure IoT Edge zařízení po nasazení (žádné další kroky vyžadované)](http://aka.ms/aml-iot-edge-blog)
+- Registrovanému modelu seznamu a podrobností zobrazení k dispozici webu Azure portal
+- Přístup k cílových výpočetních prostředí pomocí ověřování na základě klíčů SSH kromě přístupu pomocí uživatelského jména a hesla. 
+- Nový model frekvence inspektoru v datech pro přípravu prostředí. 
 
-**Podrobné aktualizace** tady je seznam podrobné aktualizací v oblasti Azure Machine Learning v této sprintu jednotlivých součástí.
+**Podrobné aktualizace** následuje seznam podrobné aktualizace v každé oblasti komponenty služby Azure Machine Learning v tomto sprintu.
 
 ### <a name="installer"></a>Instalační program
-- Instalační program může vlastní aktualizace, která chyb opravy a nové funkce, může být podporovaný bez nutnosti znovu ji nainstalujte uživatele
+- Instalační program může vlastní aktualizace, opravy chyb a nové funkce může být podporovaný, aniž by uživatel musel ho znovu nainstalujte
 
-### <a name="workbench-authentication"></a>Workbench ověřování
-- Více opravy pro ověřování systému. Dejte nám vědět, pokud se stále setkáváte přihlášení problémy.
-- Změny uživatelského rozhraní, které bylo snazší najít nastavení správce serveru Proxy.
+### <a name="workbench-authentication"></a>Ověřování aplikace Workbench
+- Několik oprav ověřovacího systému. Dejte nám vědět, pokud jsou stále setkává s problémy při přihlášení.
+- Změny uživatelského rozhraní, které usnadňují vyhledání nastavení správce serveru Proxy.
 
 ### <a name="workbench"></a>Workbench
-- Zobrazení jen pro čtení souboru má nyní světla modré pozadí
-- Vpravo zjistitelnost více přesunutý tlačítko Upravit.
-- formáty souborů "ipynb", "dprep" a "dsource" lze vykreslit nyní ve formátu raw textu
-- Nástroje workbench má nyní nové prostředí pro úpravy, které mohou uživatelé směrem pomocí externí integrovaného vývojového prostředí upravit skripty a používat Workbench jenom pro typy souborů, které mají bohaté prostředí úpravy (například poznámkových bloků, zdroje dat, Data přípravy balíčky) upravit
-- Načítání seznamu pracovních prostorů a projektů, které má uživatel přístup k je výrazně rychlejší nyní
+- Zobrazení souborů jen pro čtení má teď světle modrá na pozadí
+- Doprava a usnadňují zjistitelnější přesunutý tlačítko Upravit.
+- formáty souborů "ipynb", "dprep" a "dsource" lze vykreslit teď ve formátu raw textu
+- Aplikace workbench teď obsahuje nové možnosti úprav, který provede uživatelé pomocí externí prostředí IDE účelem úprav skriptů a pomocí aplikace Workbench pouze můžete upravit typy souborů, které mají bohaté možnosti úprav (například poznámkových bloků, zdroje dat, balíčků pro přípravu dat)
+- Načítá se seznam pracovních prostorů a projektů, které má uživatel přístup k je teď mnohem rychlejší
 
 ### <a name="data-preparation"></a>Příprava dat 
-- Vzor Inspector frekvence zobrazíte vzory řetězec ve sloupci. Můžete také filtrovat svá data pomocí vzorce. To ukazuje zobrazení podobně jako hodnota počty inspector. Rozdílem je, že vzor frekvence zobrazuje počet jedinečný vzory dat, než počet jedinečných data. Můžete také filtrovat příchozí nebo odchozí všechny řádky splňující určité vzor.
+- Kontrola frekvence vzor Chcete-li zobrazit tyto vzory se dají řetězec ve sloupci. Můžete také filtrovat data pomocí tyto vzory. Zobrazí zobrazení podobný inspektoru četnost hodnot. Rozdíl je, že vzor četnosti zobrazují počty jedinečné vzory dat, a ne počet jedinečných dat. Můžete také filtrovat snížení nebo navýšení kapacity všechny řádky, které odpovídají určité vzoru.
 
-![Obrázek vzor frekvence inspector na číslo produktu](media/azure-machine-learning-release-notes/pattern-inspector-product-number.png)
+![Obrázek inspektoru frekvence vzor na číslo produktu](media/azure-machine-learning-release-notes/pattern-inspector-product-number.png)
 
-- Vylepšení výkonu při doporučujeme edge případech zkontrolujte v transformaci 'odvozena sloupec podle příkladu.
+- Vylepšení výkonu při doporučování hraniční případy ke kontrole v transformaci "odvození sloupce podle příkladu.
 
-- [Podpora pro SQL Server a databázi SQL Azure jako zdroj dat](data-prep-appendix2-supported-data-sources.md#types) 
+- [Podpora pro SQL Server a Azure SQL DB jako zdroje dat](data-prep-appendix2-supported-data-sources.md#types) 
 
-![Obrázek vytvoříte nový zdroj dat serveru SQL](media/azure-machine-learning-release-notes/sql-server-data-source.png)
+![Obrázek vytvoření nového zdroje dat serveru SQL](media/azure-machine-learning-release-notes/sql-server-data-source.png)
 
-- Povolit zobrazení "na první pohled" počty řádků a sloupců
+- Povolené "zasáhnout" Zobrazit počty řádků a sloupců
 
 ![Obrázek sloupce počet řádků v odkladu](media/azure-machine-learning-release-notes/row-col-count.png)
 
-- Příprava dat je povolena v kontextech všechny výpočetní
-- Zdroje dat, které používají databázi systému SQL Server jsou povolené všechny výpočetní kontexty
-- Data připravená data mřížky sloupce je možné filtrovat podle typu dat
-- Opravené problém s převodem více sloupců k datu
-- Pevné problém tento uživatel může vybrat výstupního sloupce jako zdroj v odvozena sloupec podle příkladu Pokud uživatel změnil název výstupního sloupce v rozšířeném režimu.
+- Příprava dat je povolený v všechny výpočetní kontext
+- Zdroje dat využívající databázi SQL serveru jsou povoleny v všechny výpočetní kontext
+- Mřížky, které sloupce by šlo filtrovat podle datového typu pro přípravu dat
+- Oprava potíží s převod více sloupců na data
+- Opravili jsme chybu, tento uživatel může vybrat výstupního sloupce jako zdroj v odvodit sloupec podle příkladu Pokud uživatel změnil název výstupního sloupce v rozšířeném režimu.
 
 ### <a name="job-execution"></a>Provádění úlohy
-Teď můžete vytvářet a přístup k remotedocker nebo clusteru cíli typu výpočetní s SSH klíč ověřování pomocí následujících kroků:
-- Připojte cíl výpočetní pomocí následujícího příkazu v rozhraní příkazového řádku
+Nyní můžete vytvořit a otevřít remotedocker nebo v clusteru cílového typu výpočetního prostředí s pomocí ověřování SSH klíče pomocí následujících kroků:
+- Připojit cílové výpočetní prostředí pomocí následujícího příkazu v rozhraní příkazového řádku
 
     ```azure-cli
     $ az ml computetarget attach remotedocker --name "remotevm" --address "remotevm_IP_address" --username "sshuser" --use-azureml-ssh-key
     ```
 >[!NOTE]
->-k (nebo--použití azureml-ssh-key) možnost v příkazu určuje pro vygenerování a použití klíče SSH.
+>-k (nebo--použijte azureml-ssh-key) v příkazu určuje pro vygenerování a použití klíče SSH.
 
-- Azure ML Workbench bude generovat veřejný klíč a výstup, v konzole. Přihlaste se k cíli výpočetní pomocí stejného uživatelského jména a soubor ~/.ssh/authorized_keys připojit k tomuto veřejnému klíči.
+- Azure ML Workbench generovat veřejný klíč, který se výstup, který v konzole. Přihlaste se do cílové výpočetní prostředí pomocí stejného uživatelského jména a připojit soubor ~/.ssh/authorized_keys pomocí veřejného klíče.
 
-- Můžete připravit tento cíl výpočetní a použít jej pro spuštění a Azure ML Workbench budou používat tento klíč pro ověřování.  
+- Můžete připravit této cílové výpočetní prostředí a použít ho pro spuštění a Azure ML Workbench použije tento klíč pro ověřování.  
 
-Další informace o vytváření výpočetní cíle, najdete v části [konfigurace služby Azure Machine Learning experimentování](experimentation-service-configuration.md)
+Další informace o vytvoření cílových výpočetních prostředí najdete v tématu [konfigurace služby Azure Machine Learning služby experimentování ve službě](experimentation-service-configuration.md)
 
 ### <a name="visual-studio-tools-for-ai"></a>Visual Studio Tools pro AI
 - Přidání podpory pro [Visual Studio Tools for AI](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vstoolsai-vs2017). 
 
 ### <a name="command-line-interface-cli"></a>Rozhraní příkazového řádku (CLI)
-- Přidat `az ml datasource create` příkaz umožňuje vytváření zdroje dat z příkazového řádku
+- Přidání `az ml datasource create` příkaz umožňuje vytvoření zdroje dat z příkazového řádku
 
-### <a name="model-management-and-operationalization"></a>Model správy a Operationalization
-- [Všechny kontejnery AML jsou kompatibilní s Azure IoT hraniční zařízení při operationalized (žádné další kroky požadované)](http://aka.ms/aml-iot-edge-blog) 
-- Vylepšení v rozhraní příkazového řádku o16n chybové zprávy
-- Opravy chyb v portálu pro správu modelu UX  
-- Konzistentní písmeno velká a malá písmena pro atributy model správy na stránce podrobností
-- V reálném čase vyhodnocování časový limit volání nastavena na 60 sekund
-- Registrovaný modelu seznamu a podrobností zobrazení k dispozici na portálu Azure
+### <a name="model-management-and-operationalization"></a>Správa modelů a Operacionalizace
+- [Všechny kontejnery AML musí být kompatibilní s Azure IoT Edge zařízení, když mají zprovoznit (žádné další kroky vyžadované)](http://aka.ms/aml-iot-edge-blog) 
+- Vylepšení chybových zpráv v rozhraní příkazového řádku o16n
+- Opravy chyb v portálu pro správu modelu uživatelského prostředí  
+- Konzistentní písmeno malých a velkých písmen pro atributy model správy na stránce podrobností
+- Časový limit volání vyhodnocování v reálném čase nastavena na 60 sekund
+- Registrovanému modelu seznamu a podrobností zobrazení k dispozici na webu Azure Portal
 
-![Podrobné informace o modelu portálu](media/azure-machine-learning-release-notes/model-list.jpg)
+![Podrobné informace o modelu na portálu](media/azure-machine-learning-release-notes/model-list.jpg)
 
-![Přehled modelu portálu](media/azure-machine-learning-release-notes/model-overview-portal.jpg)
+![Přehled modelu na portálu](media/azure-machine-learning-release-notes/model-overview-portal.jpg)
 
 ### <a name="mmlspark"></a>MMLSpark
-- Učení na Spark s přímým [podporu GPU](https://github.com/Azure/mmlspark/blob/master/docs/gpu-setup.md)
-- Podpora pro správce prostředků šablony pro nasazení snadno prostředků
-- Podpora pro ekosystému SparklyR
+- Hloubkové učení ve Sparku s využitím [podporou GPU](https://github.com/Azure/mmlspark/blob/master/docs/gpu-setup.md)
+- Podpora pro šablony Resource Manageru pro nasazení jednoduché prostředků
+- Podpora pro ekosystém SparklyR
 - [Integrace AZTK](https://github.com/Azure/aztk/wiki/Spark-on-Azure-for-Python-Users#optional-set-up-mmlspark)
 
 ### <a name="sample-projects"></a>Ukázkové projekty
-- [Iris](https://github.com/Azure/MachineLearningSamples-Iris) a [MMLSpark](https://github.com/Azure/mmlspark) ukázky aktualizovat pomocí nové verze sady SDK Azure ML
+- [Iris](https://github.com/Azure/MachineLearningSamples-Iris) a [MMLSpark](https://github.com/Azure/mmlspark) ukázky aktualizovat v nové verzi sady SDK Azure ML
 
 ### <a name="breaking-changes"></a>Změny způsobující chyby
-- Povýší `--type` přepínač ve `az ml computetarget attach` na dílčí příkaz a. 
+- Povýšen `--type` přepínače v `az ml computetarget attach` k dílčí příkaz. 
 
-    - `az ml computetarget attach --type remotedocker` je nyní `az ml computetarget attach remotedocker`
-    - `az ml computetarget attach --type cluster` je nyní `az ml computetarget attach cluster`
+    - `az ml computetarget attach --type remotedocker` je teď `az ml computetarget attach remotedocker`
+    - `az ml computetarget attach --type cluster` je teď `az ml computetarget attach cluster`
 
-## <a name="2017-11-sprint-1"></a>2017-11 (sprintu 1) 
-**Číslo verze**: 0.1.1710.31013 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;([najít vaší verzí](../service/known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number))
+## <a name="2017-11-sprint-1"></a>2017-11 (sprint 1) 
+**Číslo verze**: 0.1.1710.31013 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;([verzi zjistíte](../service/known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number))
 
-V této verzi jsme provedli jsme vylepšení v oblasti zabezpečení, stability a udržovatelnosti v aplikaci workbench, rozhraní příkazového řádku a vrstva back endové služby. Děkujeme za nám pošlete úsměvy a frowns. Řadu níže aktualizace, které jsou vytvářeny jako přímý výsledky váš názor. Zachovat jejich Připravujeme!
+V této verzi jsme provedli jsme vylepšení týkající se zabezpečení, stability a udržovatelnosti v aplikaci workbench, rozhraní příkazového řádku a vrstva back endové služby. Děkujeme, že mnohokrát odesláním úsměvy a frowns. Mnoho níže aktualizace probíhají jako přímé výsledky váš názor. Novoroční předsevzetí!
 
-### <a name="notable-new-features"></a>Upozorňují na důležité nové funkce
-- Azure ML je nyní k dispozici ve dvou nových oblastí Azure: **západní Evropa** a **jihovýchodní Asie**. Připojí předchozí oblasti **východní USA 2**, **– Západ střední USA**, a **Austrálie – východ**, přináší celkový počet nasazení oblasti na pět.
-- Jsme povoleno syntaxe kódu Python zvýraznění v aplikaci Workbench, aby bylo snazší číst a upravovat Python zdrojového kódu. 
-- Teď můžete spustit vaše oblíbené IDE přímo ze souboru, nikoli z celý projekt.  Otevření souboru v Workbench a potom kliknutím na "Upravit" spustí soubor aktuální, projektu vaší IDE (aktuálně VS Code a PyCharm jsou podporované).  Můžete také kliknout na šipku vedle tlačítka Upravit upravte soubor v textovém editoru Workbench.  Soubory jsou jen pro čtení, dokud nekliknete na tlačítko Upravit, zabránit náhodným změnám.
-- Oblíbené knihovny výkresu `matplotlib` verze 2.1.0 je nyní součástí aplikace Workbench.
-- Jsme upgradovat na verzi .NET Core 2.0 pro přípravný modul data. Odebrat tento požadavek pro instalaci brew openssl během instalace aplikace v systému macOS. Je také dláždí zajímavější data přípravný funkcí se v blízké budoucnosti. 
-- Domovské stránce specifické pro verzi aplikace jsme povolili tak, aby získat více důležité poznámky k verzi a aktualizovat výzvy na základě vaší aktuální verze aplikace.
-- Pokud vaše místní uživatelské jméno má svůj prostor v něm, můžete nyní úspěšně nainstalovat aplikace. 
+### <a name="notable-new-features"></a>Důležité nové funkce
+- Služba Azure ML je teď dostupná ve dvou nových oblastech Azure: **západní Evropa** a **jihovýchodní Asie**. Připojí předchozí oblasti **USA – východ 2**, **střed USA – západ**, a **Austrálie – východ**, přináší celkový počet nasazené oblasti na pět.
+- Povolili jsme syntaxe kódu Python zvýraznění v aplikaci Workbench, aby bylo snazší číst a upravovat zdrojový kód Pythonu. 
+- Teď můžete spustit přímo ze souboru, nikoli z celého projektu oblíbeného prostředí IDE.  Otevření souboru v aplikaci Workbench a pak kliknutím na "Edit" spustí vaše integrované vývojové prostředí (aktuálně VS Code a PyCharm podporuje) k aktuálnímu souboru a projektu.  Můžete také kliknout na šipku vedle tlačítka Upravit upravte soubor v textovém editoru aplikace Workbench.  Soubory jsou jen pro čtení, dokud nekliknete na tlačítko Upravit, prevenci proti náhodným změnám.
+- Oblíbené knihovny zobrazování `matplotlib` verze 2.1.0 je nyní dodávána s prostředím aplikace Workbench.
+- Budeme upgradovat verzi .NET Core 2.0 pro modul pro přípravu dat. To odebere požadavek brew install openssl během instalace aplikace v systému macOS. To usnadní také cestu pro zajímavější data přípravu funkce přijde v blízké budoucnosti. 
+- Zavedli jsme domovskou stránku aplikace specifické pro verzi a tak získat relevantnější zpráva k vydání verze a aktualizaci pokynů podle vaší aktuální verzí aplikace.
+- Pokud vaše místní uživatelské jméno obsahuje mezeru, aplikace nyní možné úspěšně nainstalovat. 
 
 ### <a name="detailed-updates"></a>Podrobné aktualizace
-Níže je seznam podrobné aktualizací v oblasti Azure Machine Learning v této sprintu jednotlivých součástí.
+Níže je seznam podrobné aktualizace v každé oblasti komponenty služby Azure Machine Learning v tomto sprintu.
 
 #### <a name="installer"></a>Instalační program
-- Instalační program aplikace teď vyčistí instalační adresář vytvořený starší verzí aplikace.
-- Opravit chyby, který vede získávání zablokované ve 100 % v systému macOS vysoké Sierra Instalační služby.
-- Je nyní přímý odkaz na adresáře instalačního programu pro uživatele ke kontrole instalační protokoly v případě, že instalace se nezdaří.
-- Nainstalujte teď funguje pro uživatele, kteří mají místo ve své uživatelské jméno.
+- Instalační program aplikace nyní vyčistí instalační_adresář vytvořena pomocí starší verze aplikace.
+- Opravili jsme chybu, která vede získávání zablokuje na 100 % v systému macOS High Sierra Instalační služby.
+- Je teď přímý odkaz na instalační program adresář pro uživatele, aby v případě selhání instalace, projděte si instalační protokoly.
+- Instalace teď funguje pro uživatele, kteří mají místa v jejich uživatelskému jménu.
 
-#### <a name="workbench-authentication"></a>Workbench ověřování
-- Podpora pro ověřování v správce serveru Proxy.
-- Teď přihlášení úspěšné, pokud uživatel je za bránou firewall. 
-- Pokud má uživatel experimentování účty v několika oblastech Azure a jedné oblasti se stane nedostupný, aplikace se už zablokuje.
-- Pokud ověřování neproběhne a dialogové okno ověřování je stále zobrazena, aplikace už se pokusí načíst prostoru z místní mezipaměti.
+#### <a name="workbench-authentication"></a>Ověřování aplikace Workbench
+- Podpora pro ověřování ve Správci serveru Proxy.
+- Protokolování nyní proběhne úspěšně, pokud uživatel je za bránou firewall. 
+- Pokud jsou uživatelské účty služby experimentování ve službě v několika oblastech Azure, a pokud jedné oblasti stane nedostupný, přestane reagovat už aplikace.
+- Pokud ověřování neproběhne a dialogové okno ověřování je stále zobrazená, aplikace už se pokusí načíst pracovní prostor z místní mezipaměti.
 
-#### <a name="workbench-app"></a>Workbench aplikace
-- Zvýraznění syntaxe kódu Python je povolený v textovém editoru.
-- Tlačítko Upravit v textovém editoru slouží k úpravě souboru buď v IDE (VS Code a PyCharm podporuje) nebo v editoru integrovaný text.
+#### <a name="workbench-app"></a>Aplikace Workbench
+- Zvýrazňování syntaxe kódu Python je povolená v textovém editoru.
+- Tlačítko Upravit v textovém editoru lze upravit soubor v rozhraní IDE (VS Code a PyCharm jsou podporovány) nebo v editoru integrovanou text.
 - Textový editor, je v režimu jen pro čtení ve výchozím nastavení. 
-- Uložte změny teď tlačítko visual stavu zakázáno po aktuální soubor uložený a proto už nekonzistence.
-- Uloží Workbench _všechny_ neuložené soubory při zahájení spustit.
-- Workbench pamatuje, že poslední používáte prostoru v místním počítači, takže se automaticky otevře.
-- Pouze jedna instance nástroje Workbench je nyní povoleno spustit. Může být dříve spustit více instancí, které způsobily problémy při fungování na stejném projektu.
-- Nabídka soubor přejmenovat "... otevřít projekt" na "Přidat existující složky jako projektu..." 
-- Karta přepínání je mnohem rychlejší.
-- Odkazy na nápovědu se přidají do dialogového okna konfigurace IDE.
-- Formulář zpětné vazby teď pamatuje e-mailovou adresu zadali naposledy.
-- Úsměvy a frowns textová oblast formuláře je větší, nyní, pošlete nám další názor! 
-- `--owner` Přepínač text nápovědy v `az ml workspace create` po opravě.
-- Jsme přidali "O" dialogové okno s pomohou uživatele snadno zobrazení a zkopírování číslo verze aplikace.
-- V nabídce Nápověda naleznete vkládá položku nabídky "Navrhnout funkce".
-- Název účtu experimentování je nyní viditelné v názvu aplikace panelu předcházející "Azure Machine Learning Workbench" název aplikace.
-- Domovskou stránku specifické pro verzi aplikace se zobrazí, nyní na základě verze aplikace zjištěna.
+- Uložte změny nyní tlačítko vizuálního stavu zakázáno po aktuální soubor je uložený a proto již změny.
+- Aplikace Workbench uloží _všechny_ neuložené soubory při zahájení spuštění.
+- Aplikace Workbench zapamatuje si, že poslední použitá pracovní prostor v místním počítači, takže se automaticky otevře.
+- Pouze jedna instance aplikace Workbench je teď můžou ke spuštění. Může být již v minulosti představila více instancí, které způsobily potíže při fungování na stejném projektu.
+- Přejmenované nabídky Soubor "Otevřít projekt..." do "Přidat existující složku jako projekt..." 
+- Přepínání karta je teď mnohem rychlejší.
+- Odkazy nápovědy jsou přidány do dialogového okna Konfigurace integrovaného vývojového prostředí.
+- Formulář zpětné vazby teď si pamatuje e-mailovou adresu zadali naposledy.
+- Úsměvy a frowns textová oblast formuláře je nyní větší, tak nám můžete poslat další názor! 
+- `--owner` Přepnout text nápovědy v `az ml workspace create` je opravit.
+- Přidali jsme "O" dialogové okno s umožňující uživateli snadno zobrazení a zkopírování číslo verze aplikace.
+- Položka nabídky "Navrhovat funkce" je přidána do nabídky Nápověda.
+- Název experimentálního účtu je nyní v aplikaci záhlaví, předchozí název aplikace "Azure Machine Learning Workbench".
+- Domovská stránka specifické pro verzi aplikace se zobrazí, teď na základě verze aplikace zjistila.
 
 #### <a name="data-preparation"></a>Příprava dat 
-- Externí web můžete již nebudou načteny z Inspector mapu, aby se zabránilo potenciální problémy se zabezpečením.
-- Inspektoři Histogram a počet hodnot má teď možnost zobrazit graf v logaritmické měřítko.
-- Při výpočtu probíhá, kvality pruh dat nyní zobrazuje barvu signál stavu "výpočet".
-- Metriky nyní zobrazit statistiky sloupce pro sloupce hodnotu představující kategorii.
-- Poslední znak v názvu zdroje dat už se zkrátí.
-- Přípravný balíček dat nyní zůstane otevřená, při přepínání karet, výsledná zvýšení znatelné výkonu.
-- Ve zdroji dat, při přepínání mezi zobrazením dat a metriky nebudou změny pořadí sloupců teď.
-- Otevírání neplatný `.dprep` nebo `.dsource` soubor už způsobí, že Workbench havárií.
-- Přípravný balíček dat můžete teď používá relativní cesta pro výstup v _zapisovat do souboru CSV_ transformace.
-- _Zachovat sloupec_ transformace teď umožňuje uživateli přidat další sloupce upravit.
-- _Nahraďte ho_ nabídky nyní ve skutečnosti spustí _nahraďte hodnotu_ dialogové okno.
-- _Nahraďte hodnotu_ transformace nyní funkce očekávaným místo zobrazení chyby.
-- Při odkazování na datové soubory mimo složku projekt, což umožňuje spuštění balíčku v místní kontextu s absolutní cestu k souboru dat, přípravný datový balíček teď používá absolutní cesta.
-- _Celého souboru_ strategie vzorkování nyní podporuje při použití Azure blob jako zdroj dat.
-- Generuje kód Python (z dat přípravný balíčku) teď představuje znaky CR a LF, což popisný v systému Windows.
-- _Zvolte metriky_ rozevírací teď skryje vlastnost při přechodu k zobrazení dat.
-- Workbench můžete nyní proces parquet soubory i v případě, že používá modul Python runtime. Dřív pouze Spark můžete použít při zpracování parquet soubory. 
-- Filtrování hodnot ve sloupci s _datum_ datový typ už způsobí, že data přípravný modul chyby.
-- Zobrazení metriky teď respektuje vzorkování strategie aktualizace.
-- Vzdálené vzorkování úlohy teď funguje správně.
+- Externí web je už načíst z mapový inspektor, aby se zabránilo potenciální problémy se zabezpečením.
+- Inspektoři Histogram a počet hodnot má teď možnost zobrazit graf v logaritmickém měřítku.
+- Pruh kvality dat, pokud je výpočet probíhající nyní zobrazuje jinou barvou, který signalizuje, že stav "výpočet".
+- Sloupec metriky se teď zobrazují statistiky pro sloupce s hodnotami zařazené do kategorií.
+- Poslední znak v názvu zdroje dat už je oříznutá.
+- Balíček pro přípravu dat teď zůstane otevřená, při přepínání karet, což zisky zřetelný rozdíl ve výkonu.
+- Ve zdroji dat, při přepínání mezi zobrazením dat a zobrazení metrik už změny pořadí sloupců nyní.
+- Otevírání neplatný `.dprep` nebo `.dsource` souboru již nezpůsobuje, že aplikace Workbench selhání.
+- Balíček pro přípravu dat můžete nyní používá relativní cestu pro výstup v _zápisu do sdíleného svazku clusteru_ transformace.
+- _Zachovat sloupec_ transformace teď umožňuje uživateli přidat i další sloupce při úpravách.
+- _Nahraďte_ nabídky teď ve skutečnosti spustí _nahradit hodnotu_ dialogové okno.
+- _Nahraďte hodnotu_ transformace nyní funkce očekávaným namísto vyvolání chyby.
+- Balíček pro přípravu dat teď používá absolutní cestu, při odkazování na datových souborů mimo složku projektu, což umožňuje spouštění balíčku v místní kontextu se absolutní cesta k datovému souboru.
+- _Úplný soubor_ strategie vzorkování teď podporuje při použití Azure blob jako zdroj dat.
+- Generovaný kód Pythonu (z balíčku pro přípravu dat) nyní nese CR a LF, takže popisný ve Windows.
+- _Zvolte metriky_ rozevírací seznam nyní skryje vlastnost při přechodu k zobrazení dat.
+- Aplikace Workbench můžete nyní soubory parquet procesu i v případě, že ho používá modulu runtime Pythonu. Dříve pouze Spark lze použít při zpracování soubory parquet. 
+- Vyfiltrování hodnot ve sloupci s _datum_ datového typu již nezpůsobuje, že modul pro přípravu k selhání.
+- Zobrazení metrik nyní respektuje vzorkování strategii aktualizace.
+- Vzdálené úlohy vzorkování teď funguje správně.
 
 #### <a name="job-execution"></a>Provádění úlohy
-- Argument je nyní zahrnutá v záznamu historie spouštění.
-- Úlohy spuštěna rozhraní příkazového řádku se zobrazí v panelu spustit historie úlohy automaticky.
-- Panel úloh nyní zobrazuje úloh vytvořených produktem uživatele typu Host přidá do klienta Azure AD.
-- Panel úlohu zrušit a akce odstranění jsou stabilnější.
-- Když kliknete na tlačítko spustit, je nyní spuštěna chybovou zprávu, pokud konfigurační soubory, které jsou v nesprávném formátu.
-- Ukončování aplikace už naruší úloh spuštěna v rozhraní příkazového řádku.
-- Úlohy spuštěna CLI nyní nadále rozdělit standardní výstup i po jedné hodině provádění.
-- Lepší chybové zprávy se zobrazují, když se nezdaří spustit přípravný balíček dat v Pythonu nebo PySpark.
-- `az ml experiment clean` Nyní vyčistí imagí Dockeru do vzdáleného virtuálního počítače.
-- `az ml experiment clean` nyní pracuje správně pro místní cíl v systému macOS.
-- Chybové zprávy při cílení na místním nebo vzdáleném Docker spuštění vyčištěním nahoru a snadněji číst.
-- Lepší chybová zpráva se zobrazí, když při připojené jako cíl provádění není správně naformátovaný název hlavního uzlu clusteru HDInsight.
-- Lepší chybová zpráva se zobrazí, pokud tajný klíč nebyl nalezen ve službě přihlašovacích údajů. 
-- Knihovna MMLSpark upgradován na podporu Apache Spark 2.2.
-- MMLSpark nyní zahrnují subjektu kódování transformace (OK kódování) pro lékařské dokumenty.
-- `matplotlib` verze 2.1.0 je nyní uvidíte na více systémů v pole s Workbench.
+- Argument je nyní zahrnutá v záznamu historie spuštění.
+- Úlohy se spustila rozhraní příkazového řádku se zobrazí v panel Historie úlohy spustit automaticky.
+- Panel úlohy nyní zobrazuje úloh vytvořených produktem uživatele typu Host do tenanta Azure AD.
+- Zrušit panel úlohy a jsou více stabilní akce odstranění.
+- Při kliknutí na tlačítko spustit, je nyní spuštěna chybovou zprávu, pokud konfigurační soubory jsou v chybný formát.
+- Ukončující aplikace už naruší úloh spuštěna v rozhraní příkazového řádku.
+- Úlohy spustila rozhraní příkazového řádku nyní dál rozdělit standardní výstup i po jedné hodině provádění.
+- Lepší chybové zprávy se zobrazují, když se nezdaří spustit balíček pro přípravu dat v Pythonu/PySpark.
+- `az ml experiment clean` Nyní vyčistí Image Dockeru ve vzdáleném virtuálním počítači.
+- `az ml experiment clean` nyní funguje správně pro místní cíl v systému macOS.
+- Chybové zprávy při cílení na místním nebo vzdáleném Docker spuštění vyčištěním a snadněji čitelné.
+- Lepší chybové zprávy se zobrazí, když název hlavního uzlu clusteru HDInsight není ve správném formátu při připojené jako cíl provádění.
+- Lepší chybové zprávy se zobrazí, pokud tajný klíč nebyl nalezen ve službě přihlašovacích údajů. 
+- Knihovna MMLSpark se upgraduje na podporu Apache Spark 2.2.
+- MMLSpark teď obsahují subjektu kódování transformace (síť kódování) pro lékařské dokumenty.
+- `matplotlib` verze 2.1.0 je nyní uvidíte na více instancí na pole pomocí aplikace Workbench.
 
 #### <a name="jupyter-notebook"></a>Poznámkový blok Jupyter
-- Vyhledávání názvu poznámkového bloku nyní pracuje správně v zobrazení poznámkových bloků.
-- Nyní můžete odstranit Poznámkový blok v zobrazení poznámkových bloků.
-- Nové magic `%upload_artifact` je přidána pro nahrávání souborů vytvořil v prostředí pro spuštění poznámkového bloku do úložiště dat historie spouštění.
-- Chyby jádra jsou nyní prezentované v stav úlohy poznámkového bloku pro snazší ladění.
-- Jupyter nyní správně vypnutí serveru při přihlášení uživatele mimo aplikaci.
+- Vyhledání názvu poznámkového bloku teď funguje správně v zobrazení poznámkových bloků.
+- Nyní můžete odstranit poznámkového bloku v zobrazení poznámkových bloků.
+- Nové magic `%upload_artifact` je přidaný pro nahrávání souborů vytvořených v prostředí pro spuštění poznámkového bloku do úložiště dat historie spuštění.
+- Chyby jádra se nyní zobrazí v stav úlohy poznámkového bloku pro snazší ladění.
+- Jupyter nyní správně vypnutí serveru při přihlášení uživatele z aplikace.
 
-#### <a name="azure-portal"></a>Azure Portal
-- Účet experimentování a účet Model správy mohou být vytvořeny teď v dvě nové oblasti Azure: západní Evropa a jihovýchodní Asie.
-- Model správy účtu DevTest plán nyní je k dispozici pouze pokud je první z nich má být vytvořen v rámci předplatného. 
-- Odkaz Nápověda v portálu Azure je aktualizována tak, aby odkazoval na stránce dokumentace správné.
-- Pole popisu se odebere ze stránce s podrobnostmi o Docker bitové kopie, protože není použitelný.
-- Podrobnosti, včetně nastavení AppInsights a automatického škálování jsou přidány na stránku podrobností webové služby.
-- Model správy stránky teď vykreslí i v případě, že soubory cookie třetích stran nejsou v prohlížeči. 
+#### <a name="azure-portal"></a>portál Azure
+- Účet experimentování a účet služby Správa modelů je nyní vytvořit ve dvou nových oblastech Azure: západní Evropa a jihovýchodní Asie.
+- Plán DevTest účtu správy modelů teď je k dispozici pouze pokud je první z nich má být vytvořen v rámci předplatného. 
+- Odkaz na nápovědu na webu Azure Portal se aktualizuje tak, aby odkazoval na stránku pro správnou dokumentaci.
+- Pole popisu je odebrat ze stránky podrobností image Dockeru, protože se nedá použít.
+- Podrobnosti, včetně nastavení AppInsights a automatické škálování jsou přidány na stránku podrobností webové služby.
+- Stránka pro správu modelu nyní vykreslí i v případě, že soubory cookie třetích stran jsou zakázány v prohlížeči. 
 
-#### <a name="operationalization"></a>Operationalization
-- Webové služby s "skóre" v jeho název už se nezdaří.
-- Uživatel nyní můžete vytvořit prostředí nasazení právě Přispěvatel přístup k skupinu prostředků Azure nebo předplatné. Vlastník přístup k celé předplatné již není potřeba.
-- Operationalization CLI nyní požívá karta Automatické dokončování v systému Linux.
-- Služba vytváření bitové kopie teď podporuje vytváření bitové kopie pro služby nebo zařízení Azure IoT.
+#### <a name="operationalization"></a>Operacionalizace
+- Webové služby s využitím "skóre" v názvu již selže.
+- Uživatel teď můžete vytvářet prostředí pro nasazení s právě přístup přispěvatele pro skupinu prostředků Azure nebo předplatné. Přístup vlastníka pro celé předplatné je už nepotřebujete.
+- Operacionalizace CLI nyní využívá automatické doplňování tabulátorů v Linuxu.
+- Služba vytváření bitových kopií teď podporuje sestavování imagí pro služby/zařízení Azure IoT.
 
 #### <a name="sample-projects"></a>Ukázkové projekty
 - [_Klasifikace Iris_ ](./tutorial-classifying-iris-part-1.md) ukázkového projektu:
-    - `iris_pyspark.py` je přejmenován na `iris_spark.py`.
-    - `iris_score.py` je přejmenován na `score_iris.py`.
-    - `iris.dprep` a `iris.dsource` jsou aktualizovány tak, aby odrážela nejnovější aktualizace dat přípravný modul.
-    - `iris.ipynb` Poznámkového bloku se mění pro práci v clusteru HDInsight.
-    - Historie spouštění zapnutý `iris.ipynb` Poznámkový blok buněk.
-- [_Rozšířená Data Prep pomocí dat sdílené složky kolo_ ](./tutorial-bikeshare-dataprep.md) ukázkový projekt "Zpracování chyby hodnota" krok pevné.
-- [_MMLSpark na datech pro dospělé úplné zjišťování_ ](https://github.com/Azure/MachineLearningSamples-mmlspark) ukázkový projekt `docker.runconfig` aktualizováno z JSON na YAML formátu.
-- [_Distribuované ladění Hyperparameter_ ](./scenario-distributed-tuning-of-hyperparameters.md) ukázkový projekt`docker.runconfig` aktualizováno z JSON na YAML formátu.
-- Nový Projekt Ukázka [ _klasifikace bitovou kopii pomocí CNTK_](./scenario-image-classification-using-cntk.md).
+    - `iris_pyspark.py` bylo přejmenováno na `iris_spark.py`.
+    - `iris_score.py` bylo přejmenováno na `score_iris.py`.
+    - `iris.dprep` a `iris.dsource` jsou aktualizovány tak, aby odrážely nejnovější aktualizace dat přípravu modul.
+    - `iris.ipynb` Poznámkového bloku se mění v clusteru HDInsight.
+    - Je zapnutá historie spuštění `iris.ipynb` buňky poznámkového bloku.
+- [_Rozšířené použití Data projektu Bikeshare Data Prep_ ](./tutorial-bikeshare-dataprep.md) ukázkový projekt "Zpracování chybovou hodnotu" krok opraveno.
+- [_MMLSpark dospělé dat sčítání_ ](https://github.com/Azure/MachineLearningSamples-mmlspark) ukázkový projekt `docker.runconfig` formátu aktualizováno z hodnoty JSON na YAML.
+- [_Distribuované Hyperparametrů_ ](./scenario-distributed-tuning-of-hyperparameters.md) ukázkový projekt`docker.runconfig` formátu aktualizováno z hodnoty JSON na YAML.
+- Nový projekt ukázky [ _klasifikace obrázků s využitím CNTK_](./scenario-image-classification-using-cntk.md).
 
 
-## <a name="2017-10-sprint-0"></a>2017 10 (sprintu 0) 
-**Číslo verze**: 0.1.1710.31013 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;([najít vaší verzí](../service/known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number))
+## <a name="2017-10-sprint-0"></a>2017 – 10 (sprint 0) 
+**Číslo verze**: 0.1.1710.31013 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;([verzi zjistíte](../service/known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number))
 
-Vítá vás Azure Machine Learning Workbench následující naše počáteční verze public preview konference Microsoft Ignite 2017 první aktualizace. Hlavní aktualizace v této verzi jsou spolehlivost a ustálení opravy.  Mezi důležité problémy, které jsme řešili patří:
+Vítá vás se nejdřív aktualizovat aplikaci Azure Machine Learning Workbench po naše počáteční verzi public preview na konferenci Microsoft Ignite 2017. Spolehlivost a stabilizace jsou hlavní aktualizace v této verzi opravy.  Důležité problémy, se kterými vyřešili jsme patří:
 
 ### <a name="new-features"></a>Nové funkce
-- systému macOS vysoké Sierra se teď podporuje.
+- se teď podporuje macOS High Sierra
 
 ### <a name="bug-fixes"></a>Opravy chyb
-#### <a name="workbench-experience"></a>Workbench prostředí
-- Přetažení souboru do Workbench způsobí, že Workbench došlo k chybě.
-- Okno terminálu v produktu VS Code nakonfigurované jako rozhraní IDE pro Workbench nerozpoznává _az ml_ příkazy.
+#### <a name="workbench-experience"></a>Aplikace Workbench prostředí
+- Přetažení souboru do aplikace Workbench způsobí, že se aplikace Workbench a havárií.
+- V okně terminálu v nástroji VS Code, nakonfigurované jako integrované vývojové prostředí pro aplikaci Workbench nerozpozná _az ml_ příkazy.
 
-#### <a name="workbench-authentication"></a>Workbench ověřování
-Jsme provedli několik aktualizací pro zlepšení různé problémy přihlášení a ověření nahlásí.
-- Okno ověřování zachová odebrání up, zejména při připojení k Internetu není stabilní.
-- Problémy s lepší spolehlivostí kolem ověřování vypršení platnosti tokenu.
-- V některých případech ověřování zobrazí se okno dvakrát.
-- Hlavní okno Workbench stále zobrazí zpráva "ověřování" po dokončení procesu ověřování a pole automaticky otevíraný dialog už se zavře.
-- Pokud není k dispozici žádné připojení k Internetu, ověřovací dialog se zobrazí prázdnou obrazovku.
+#### <a name="workbench-authentication"></a>Ověřování aplikace Workbench
+Jsme provedli několik aktualizací pro zlepšení různých přihlášení a ověření problémy, které nahlásili.
+- Okno ověřování zachová automaticky otevíraného up, zejména při připojení k Internetu není stabilní.
+- Vylepšení spolehlivosti problémy kolem ověřování vypršení platnosti tokenu.
+- V některých případech se vyskytuje dvakrát okno ověřování.
+- Hlavního okna aplikace Workbench stále zobrazuje zpráva "ověřování" po dokončení procesu ověřování a místním dialogovém už zrušená.
+- Pokud neexistuje žádné připojení k Internetu, ověřování otevře se dialogové okno s prázdnou obrazovku.
 
 #### <a name="data-preparation"></a>Příprava dat 
-- Když je filtrován určitou hodnotu, chyb a chybějící hodnoty jsou také vyfiltrovány.
-- Změna strategie vzorkování odebere následné existující operace spojení.
-- Nahrazující hodnota chybějící transformace není zohledňují NaN.
+- Když je filtrovat konkrétní hodnoty, chyby a chybějící hodnoty se taky odfiltrovat.
+- Změna strategie vzorkování odebere následné stávající operace spojení.
+- Nahrazení chybí hodnota transformace nepřijímá NaN v úvahu.
 - Odvození typu datum vyvolá výjimku, když je zjištěna hodnota null.
 
 #### <a name="job-execution"></a>Provádění úlohy
-- Při provádění úlohy se nepodaří odeslat složky projektu, protože překročila limit velikosti neexistuje žádná zrušte chybová zpráva.
-- Pokud se skript v jazyce Python uživatele změní pracovní adresář, nejsou sledovány soubory zapisovat do složky výstupy. 
-- Pokud aktivní předplatné Azure je jiný než ten, který patří aktuální projekt, výsledků úlohy chyby 403.
-- Když Docker není k dispozici, žádná zrušte chybová zpráva se vrátí, pokud se uživatel pokusí použít Docker jako cíl provádění.
+- Při provádění úlohy se nepodařilo nahrát složku projektu, protože překročil limit velikosti není žádná vymazat chybovou zprávu.
+- Pokud se skript Pythonu uživatele změní pracovní adresář, nebudou pro účely soubory zapsané do složky výstupy. 
+- Pokud aktivní předplatné Azure je jiný než ten, který patří aktuálního projektu, výsledky odeslání úlohy Chyba 403.
+- Pokud Docker není k dispozici, žádný vymazat chybovou zprávu je vrácena, jestliže uživatel pokusí použít jako cíl spuštění Docker.
 - .runconfig soubor se neuloží automaticky, když uživatel klikne na _spustit_ tlačítko.
 
 #### <a name="jupyter-notebook"></a>Poznámkový blok Jupyter
-- Poznámkový blok serveru nelze spustit, pokud uživatel používá s určitými typy přihlášení.
-- Poznámkový blok serveru chybové zprávy není surface protokolů, které jsou viditelné pro uživatele.
+- Pokud uživatel použije k určitým typům přihlášení nelze spustit server poznámkového bloku.
+- Poznámkový blok server chybové zprávy není plochu v protokolech, které jsou viditelné pro uživatele.
 
-#### <a name="azure-portal"></a>Azure Portal
-- Když vyberete tmavým motivem portálu Azure, budou okna Správa modelu zobrazuje jako černé políčko.
+#### <a name="azure-portal"></a>portál Azure
+- Tmavý motiv z webu Azure portal výběrem způsobí, že okno Správa modelů ve službě a zobrazí černé políčko.
 
-#### <a name="operationalization"></a>Operationalization
-- Opětovné použití manifestu aktualizovat webovou službu způsobí, že novou bitovou kopii Docker vytvořené s náhodným názvem.
-- Protokoly webové služby nelze načíst z Kubernetes clusteru.
-- Zavádějící chybová zpráva je vytištěna, když uživatel se pokusí vytvořit Model správy účet nebo účet ML výpočetní a zaznamená problémy s oprávněními.
+#### <a name="operationalization"></a>Operacionalizace
+- Opětovné použití manifest, který chcete aktualizovat webovou službu způsobí, že se nová image Dockeru sestavenou s náhodným názvem.
+- Protokoly webové služby nelze načíst z clusteru Kubernetes.
+- Zavádějící chybovou zprávu, vytiskne se, když se uživatel pokusí vytvořit účet správy modelů nebo účet pro ML Compute a zaznamená problémy s oprávněními.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -1,6 +1,6 @@
 ---
 title: Nastavení monitorování výstrah pro úlohy Azure Stream Analytics
-description: Tento článek popisuje, jak nastavit monitorování a výstrahy pro úlohy Azure Stream Analytics pomocí portálu Azure.
+description: Tento článek popisuje, jak nastavit monitorování a výstrah pro úlohy Azure Stream Analytics pomocí webu Azure portal.
 services: stream-analytics
 author: jseb225
 ms.author: jeanb
@@ -9,38 +9,38 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/26/2017
-ms.openlocfilehash: fb69f1b52e5b17dd6794c896969c29003a929c9b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4c676ab3039a02a4fda27ab00312133e5de8077a
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31412106"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35904036"
 ---
-# <a name="tutorial-set-up-alerts-for-azure-stream-analytics-jobs"></a>Kurz: Nastavení výstrah pro úlohy Azure Stream Analytics
-Výstrahy můžete nastavit, které spustí výstrahu, když metriky dosáhne podmínku, která zadáte. Může například nastavit výstrahy pro podmínku takto:
+# <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Nastavení upozornění pro úlohy Azure Stream Analytics
+Můžete nastavit výstrahy aktivovat upozornění, když metrika dosáhne podmínku, která zadáte. Může například nastavit upozornění pro podmínku vypadat asi takto:
 
 `If there are zero input events in the last 5 minutes, send email notification to sa-admin@example.com`
 
-Pravidla můžete nastavit na metriky prostřednictvím portálu nebo se dají konfigurovat [prostřednictvím kódu programu](https://code.msdn.microsoft.com/windowsazure/Receive-Email-Notifications-199e2c9a) přes protokoly operací data.
+Pravidla lze nastavit na metrik na portálu, nebo se dají konfigurovat [programově](https://code.msdn.microsoft.com/windowsazure/Receive-Email-Notifications-199e2c9a) nad daty protokoly operací.
 
-## <a name="set-up-alerts-in-the-azure-portal"></a>Nastavit výstrahy na portálu Azure
-1. Na portálu Azure otevřete úlohu služby Stream Analytics, kterou chcete vytvořit výstrahu pro. 
+## <a name="set-up-alerts-in-the-azure-portal"></a>Nastavte si upozornění na webu Azure Portal
+1. Na webu Azure Portal otevřete chcete vytvořit upozornění pro úlohu Stream Analytics. 
 
-2. V **úlohy** okně klikněte na tlačítko **monitorování** části.  
+2. V **úlohy** okna, klikněte na tlačítko **monitorování** oddílu.  
 
-3. V **metrika** okně klikněte **přidat upozornění** příkaz.
+3. V **metrika** okna, klikněte na tlačítko **přidat upozornění** příkazu.
 
-      ![Nastavení portálu Azure](./media/stream-analytics-set-up-alerts/06-stream-analytics-set-up-alerts.png)  
+      ![Nastavení Azure portal](./media/stream-analytics-set-up-alerts/06-stream-analytics-set-up-alerts.png)  
 
 4. Zadejte název a popis.
 
-5. Použijte na selektory můžete definovat podmínku, pod kterým bude zasílat výstrahu.
+5. Pomocí voliče můžete definovat podmínky, pod kterým se pošle oznámení.
 
-6. Zadejte informace o tom, kde by měl navštěvují výstrahy.
+6. Zadání informací o kde se mají směrovat výstrahy.
 
-      ![Nastavení oznámení pro úlohu Azure streamování Analytics](./media/stream-analytics-set-up-alerts/stream-analytics-add-alert.png)  
+      ![Nastavení oznámení pro úlohu Azure Stream Analytics](./media/stream-analytics-set-up-alerts/stream-analytics-add-alert.png)  
 
-Další podrobnosti týkající se konfigurace výstrahy na portálu Azure najdete [dostávat oznámení o výstrahách](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).  
+Další podrobnosti týkající se konfigurace výstrahy na webu Azure Portal najdete [doručování oznámení o upozorněních](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).  
 
 
 ## <a name="get-help"></a>Podpora

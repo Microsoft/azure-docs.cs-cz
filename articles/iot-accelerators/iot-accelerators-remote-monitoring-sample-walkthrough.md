@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: 097eba4f5bcbb74d4158cc8d4135255d31e03ebd
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 4e1456064e35b55871638e9eeb34859194cb869b
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44027006"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44714900"
 ---
 # <a name="remote-monitoring-solution-accelerator-overview"></a>Přehled akcelerátorů řešení vzdáleného monitorování
 
@@ -50,7 +50,7 @@ Můžete zřídit fyzické zařízení na řídicím panelu portálu řešení.
 
 ### <a name="device-simulation-microservice"></a>Mikroslužby simulace zařízení
 
-Toto řešení zahrnuje [mikroslužeb simulace zařízení](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/device-simulation) , která umožňuje Správa fondu s Simulovaná zařízení z řídicího panelu řešení pro testování tohoto toku začátku do konce v řešení. Simulovaná zařízení:
+Toto řešení zahrnuje [mikroslužeb simulace zařízení](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/device-simulation) , která umožňuje Správa fondu s Simulovaná zařízení z portálu řešení pro testování tohoto toku začátku do konce v řešení. Simulovaná zařízení:
 
 * Generování telemetrie zařízení cloud.
 * Reakce na volání metody typu cloud zařízení ze služby IoT Hub.
@@ -87,9 +87,9 @@ Tato služba také spouští služby IoT Hub dotazy se načíst zařízení, kte
 
 Mikroslužeb poskytuje koncový bod RESTful ke správě zařízení a dvojčata zařízení, vyvolání metod a spouštění dotazů služby IoT Hub.
 
-### <a name="telemetry-microservice"></a>Telemetrie mikroslužeb
+### <a name="device-telemetry-microservice"></a>Mikroslužby telemetrie zařízení
 
-[Telemetrie mikroslužeb](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/device-telemetry) poskytuje koncový bod RESTful pro čtení k telemetrii zařízení, operací CRUD u pravidla a přístup pro čtení a zápis pro definice upozornění ze služby storage.
+[Mikroslužeb telemetrie zařízení](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/device-telemetry) přístup pro čtení k telemetrii zařízení ukládají v Time Series Insights poskytuje koncový bod RESTful. Koncový bod RESTful, taky umožňuje operací CRUD u pravidla a přístup pro čtení a zápisu pro definice upozornění ze služby storage.
 
 ### <a name="storage-adapter-microservice"></a>Mikroslužby adaptér úložiště
 
@@ -99,21 +99,27 @@ Hodnoty jsou uspořádány do kolekce. Můžete pracovat na jednotlivé hodnoty 
 
 Tato služba poskytuje koncový bod RESTful pro operace CRUD s páry klíč hodnota. Hodnoty
 
-### <a name="cosmos-db"></a>Databáze Cosmos
+### <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
-Standardní nasazení akcelerátoru řešení používá [služby Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/) jako jeho hlavní úložiště služby.
+Nasazení akcelerátoru řešení používat [služby Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/) k uložení pravidel, alarmy, nastavení konfigurace a všechny ostatní studeného úložiště.
 
 ### <a name="azure-stream-analytics-manager-microservice"></a>Azure Stream Analytics správce mikroslužeb
 
 [Mikroslužeb Azure Stream Analytics správce](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/asa-manager) spravuje úlohy Azure Stream Analytics (ASA), včetně nastavení jejich konfigurace, spouštění a zastavování je a jejich stavu monitorování.
 
-Úlohy Azure Stream Analytics podporuje dvě referenční datové sady. Jeden datový soubor definuje pravidla a jeden definuje skupiny zařízení. Referenční data pravidla se generuje z informace spravuje mikroslužby telemetrická data. Správce mikroslužeb Azure Stream Analytics transformuje pravidla telemetrie na logiku zpracování datového proudu.
+Úlohy Azure Stream Analytics podporuje dvě referenční datové sady. Jeden datový soubor definuje pravidla a jeden definuje skupiny zařízení. Referenční data pravidla se generuje z informace spravuje mikroslužby telemetrie zařízení. Správce mikroslužeb Azure Stream Analytics transformuje pravidla telemetrie na logiku zpracování datového proudu.
 
 Referenční data pro skupiny zařízení slouží k identifikaci která skupina platná pravidla pro příchozí zprávy telemetrická data. Skupiny zařízení spravuje mikroslužby konfigurace a použití dotazů na dvojčata zařízení Azure IoT Hub.
+
+Úlohy ASA dodat telemetrie z připojených zařízení Time Series Insights pro ukládání a analýzu.
 
 ### <a name="azure-stream-analytics"></a>Azure Stream Analytics
 
 [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/) je modul pro zpracování událostí, který umožňuje zkoumat velké objemy dat streamované ze zařízení.
+
+### <a name="azure-time-series-insights"></a>Azure Time Series Insights
+
+[Azure Time Series Insights](https://docs.microsoft.com/azure/time-series-insights/) úložišť telemetrie ze zařízení připojených k akcelerátoru řešení. Umožňuje také vizualizaci a dotazování na ně telemetrie zařízení v řešení webového uživatelského rozhraní.
 
 ### <a name="configuration-microservice"></a>Konfigurace mikroslužeb
 
@@ -125,7 +131,7 @@ Referenční data pro skupiny zařízení slouží k identifikaci která skupina
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
-Standardní nasazení akcelerátoru řešení používá [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) jako poskytovatele OpenID Connect. Azure Active Directory uchovává informace o uživateli a zajišťuje, že se certifikáty pro ověření tokenů JWT token podpisů. 
+Nasazení akcelerátoru řešení používat [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) jako poskytovatele OpenID Connect. Azure Active Directory uchovává informace o uživateli a zajišťuje, že se certifikáty pro ověření tokenů JWT token podpisů.
 
 ## <a name="presentation"></a>Prezentace
 
@@ -142,13 +148,15 @@ Uživatelské rozhraní zobrazí všechny funkce akcelerátoru řešení a komun
 * Ověřování a autorizace mikroslužeb pro ochranu dat uživatele.
 * Mikroslužby Správce služby IoT Hub k zobrazení a správa zařízení IoT.
 
+Uživatelské rozhraní se integruje se v Průzkumníku služby Azure Time Series Insights umožňuje dotazování a analýze telemetrických dat zařízení.
+
 Konfigurace mikroslužeb umožňuje ukládat a načítat nastavení konfigurace uživatelského rozhraní.
 
 ## <a name="next-steps"></a>Další postup
 
 Pokud chcete prozkoumat dokumentaci zdrojového kódu a pro vývojáře, začněte s jedním ze dvou úložišť GitHub:
 
-* [Akcelerátor řešení vzdálené monitorování s Azure IoT (.NET)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/).
+* [Akcelerátor řešení vzdálené monitorování s Azure IoT (.NET)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet).
 * [Akcelerátor řešení vzdálené monitorování s Azure IoT (Java)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java).
 
 Diagramy architektury podrobné řešení:

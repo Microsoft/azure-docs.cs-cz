@@ -6,17 +6,17 @@ ms.service: azure-dev-spaces
 ms.component: azds-kubernetes
 author: ghogen
 ms.author: ghogen
-ms.date: 05/11/2018
+ms.date: 09/11/2018
 ms.topic: article
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
 manager: douge
-ms.openlocfilehash: b66e43c0f40f184bfb2c62327f5742346ff8b187
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: c6ca3003c1338f3e057c76d9e04d8b0cbd2210c7
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841605"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721190"
 ---
 # <a name="troubleshooting-guide"></a>Průvodce odstraňováním potíží
 
@@ -26,9 +26,13 @@ Tato příručka obsahuje informace o běžných problémů, možná bude při p
 
 Aby bylo možné řešení problémů s efektivněji, může být užitečné vytvořit podrobnější protokoly ke kontrole.
 
-Pro rozšíření sady Visual Studio, můžete to provést nastavením `MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` proměnné prostředí na hodnotu 1. Je potřeba restartovat Visual Studio pro proměnné prostředí se projeví. Po povolení podrobných protokolů se zapíšou do vaší `%TEMP%\Microsoft.VisualStudio.Azure.DevSpaces.Tools` adresáře.
+Pro rozšíření sady Visual Studio, nastavte `MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` proměnné prostředí na hodnotu 1. Je potřeba restartovat Visual Studio pro proměnné prostředí se projeví. Po povolení podrobných protokolů se zapíšou do vaší `%TEMP%\Microsoft.VisualStudio.Azure.DevSpaces.Tools` adresáře.
 
 V rozhraní příkazového řádku, můžete pomocí výstupní informace během provádění příkazu `--verbose` přepnout.
+
+## <a name="debugging-services-with-multiple-instances"></a>Ladění služeb s více instancemi
+
+V současné době podporuje Azure Dev prostory ladění pouze na jednu instanci (pod). Soubor azds.yaml obsahuje nastavení, replicaCount, která určuje počet instancí, které se spustí pro vaši službu. Pokud změníte replicaCount nakonfigurovat svoji aplikaci spouštět více instancí pro určitou službu, nemusí být chování ladicí program podle očekávání.
 
 ## <a name="error-failed-to-create-azure-dev-spaces-controller"></a>Chyba "nepovedlo se vytvořit Azure Dev prostory kontroleru.
 
@@ -67,14 +71,14 @@ Při použití _azds.exe_, použijte--verbose možnost příkazového řádku a 
 
 V sadě Visual Studio:
 
-1. Otevřít **nástroje > Možnosti** a v části **projekty a řešení**, zvolte a **sestavíte a spustíte**.
+1. Otevřít **nástroje > Možnosti** a v části **projekty a řešení**, zvolte **sestavíte a spustíte**.
 2. Změnit nastavení pro **podrobnosti výstupu sestavení projektu nástroje MSBuild** k **podrobné** nebo **diagnostických**.
 
     ![Možnosti nástrojů – snímek obrazovky dialogového okna](media/common/VerbositySetting.PNG)
     
 ## <a name="dns-name-resolution-fails-for-a-public-url-associated-with-a-dev-spaces-service"></a>Překlad názvů DNS pro veřejnou adresu URL související se službou Dev prostory nezdaří
 
-Pokud k tomu dojde, může se zobrazit "Nelze zobrazit stránku" nebo "Tento web je nedostupné" Chyba ve webovém prohlížeči při pokusu o připojení k veřejné adrese URL přidružené k Dev prostory služby.
+Při překladu názvů DNS selže, může se zobrazit "Nelze zobrazit stránku" nebo "Tento web je nedostupné" Chyba ve webovém prohlížeči při pokusu o připojení k veřejné adrese URL přidružené k Dev prostory služby.
 
 ### <a name="try"></a>Zkuste:
 
@@ -84,7 +88,7 @@ Můžete použít následující příkaz, který seznam všech adres URL souvis
 azds list-uris
 ```
 
-Pokud je adresa URL v *čekající* stavu, která znamená, že Dev prostory stále čeká registraci DNS pro dokončení. V některých případech bude trvat několik minut, než k tomu dojde. Vývoj prostory otevře také tunel localhost pro každou službu, kterou můžete použít při čekání na registraci DNS.
+Pokud je adresa URL v *čekající* stavu, která znamená, že Dev prostory stále čeká registraci DNS pro dokončení. V některých případech trvá několik minut, než registraci dokončit. Vývoj prostory otevře také tunel localhost pro každou službu, kterou můžete použít při čekání na registraci DNS.
 
 Pokud adresa URL zůstane v *čekající* stavu po dobu více než 5 minut, může to znamenat problém s externí pod DNS, který vytvoří veřejný koncový bod a/nebo pod kontroleru příchozího přenosu dat nginx, která získá veřejný koncový bod. Pokud chcete odstranit tyto pody můžete použít následující příkazy. Že se znovu vytvoří automaticky.
 
@@ -121,7 +125,7 @@ Azure Dev prostory poskytuje nativní podporu pro C# nebo Node.js. Při spuště
 Stále můžete Azure Dev prostory pomocí kódu napsaného v jiných jazycích, ale budete muset vytvořit soubor Dockerfile před spuštěním příkazu *azds nahoru* poprvé.
 
 ### <a name="try"></a>Zkuste:
-Pokud vaše aplikace je napsán v jazyce, že Azure Dev prostory nenabízí nativní podporu, bude nutné zadat příslušný soubor Dockerfile pro sestavení image kontejneru, spouštění kódu. Docker nabízí [seznam osvědčených postupů pro psaní soubory Dockerfile](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/) a také [odkaz na soubor Dockerfile](https://docs.docker.com/engine/reference/builder/) , který vám s tím pomůže.
+Pokud vaše aplikace je napsán v jazyce, že Azure Dev prostory nenabízí nativní podporu, bude nutné zadat příslušný soubor Dockerfile pro sestavení image kontejneru, spouštění kódu. Docker nabízí [seznam osvědčených postupů pro psaní soubory Dockerfile](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/) a také [odkaz na soubor Dockerfile](https://docs.docker.com/engine/reference/builder/) , které vám umožňují se píše soubor Dockerfile, který vyhovuje vašim potřebám.
 
 Jakmile budete mít odpovídající soubor Dockerfile v místě, abyste mohli pokračovat spuštění *azds nahoru* ke spuštění aplikace v Azure Dev mezery.
 
@@ -152,7 +156,7 @@ Je nutné spustit `azds up` z kořenového adresáře kódu, které chcete spust
 1. Pokud nemáte _azds.yaml_ souboru ve složce kód spustit `azds prep` ke generování Docker, Kubernetes a Azure Dev prostory prostředky.
 
 ## <a name="error-the-pipe-program-azds-exited-unexpectedly-with-code-126"></a>Chyba: "cílového programu se neočekávaně ukončil s kódem 126 azds."
-Spouští se ladicí program VS Code může někdy vést k této chybě. Jedná se o známý problém.
+Spouští se ladicí program VS Code může někdy vést k této chybě.
 
 ### <a name="try"></a>Zkuste:
 1. Zavřete a znovu spusťte VS Code.
@@ -162,7 +166,7 @@ Spouští se ladicí program VS Code může někdy vést k této chybě. Jedná 
 Spuštění ladicího programu VS Code zaznamená chybu: `Failed to find debugger extension for type:coreclr.`
 
 ### <a name="reason"></a>Důvod
-Pro jazyk C# nainstalovaný na svém vývojovém počítači, který zahrnuje podporu ladění pro.Net Core nemáte rozšíření VS Codu (CoreCLR).
+Rozšíření VS Codu pro jazyk C# nainstalována na vývojovém počítači nemáte. Rozšíření jazyka C# obsahuje podporu ladění pro.Net Core (CoreCLR).
 
 ### <a name="try"></a>Zkuste:
 Nainstalujte [rozšíření VS Codu pro jazyk C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp).

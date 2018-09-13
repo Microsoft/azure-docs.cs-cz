@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: ceaa61832212093ac52225fc34db1ed7f4571a18
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 8a4b29cf8f2a5a79c68bad3631a54449d3ada09a
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380286"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44717858"
 ---
 # <a name="virtual-machine-serial-console-preview"></a>Virtuální počítač sériová konzola (preview) 
 
@@ -172,7 +172,7 @@ Problém                           |   Omezení rizik
 :---------------------------------|:--------------------------------------------|
 Dosažení zadejte po banner připojení není uveden do protokolu v řádku | Podrobnosti najdete na této stránce: [Hitting zadejte nemá žádný účinek,](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md). K tomu může dojít, pokud používáte vlastní virtuální počítač, Posílená zařízení nebo konfigurace GRUB, který způsobí, že Linux selhání správně připojení do sériového portu.
 Při přístupu k tomuto virtuálnímu počítači účet úložiště diagnostiky spouštění došlo k odpovědi "Zakázáno". | Zajistěte, aby že tuto diagnostiku spouštění nemá žádné brány firewall účtu. Účet úložiště diagnostiky dostupné spouštěcí je nezbytné pro konzoly sériového portu funkce.
-Text konzoly sériového portu potrvá jenom část na velikost obrazovky (často po pomocí textového editoru) | Jde o známý problém s Neznámý obrazovku přes sériové připojení. Doporučujeme, abyste instaling xterm nebo některé podobné nástroj, který obsahuje příkaz "Změna velikosti". Spuštění "Změna velikosti" opravu provedete.
+Text konzoly sériového portu potrvá jenom část na velikost obrazovky (často po pomocí textového editoru) | Konzoly sériového portu nepodporují vyjednávání o velikost okna ([RFC 1073](https://www.ietf.org/rfc/rfc1073.txt)), což znamená, že bude bez signálu SIGWINCH odesílat aktualizace velikosti obrazovky a virtuální počítač bude nemají žádné informace o velikosti svého terminálu. Doporučujeme, abyste instaling xterm nebo některé podobné nástroj, který obsahuje příkaz "Změna velikosti". Spuštění "Změna velikosti" opravu provedete.
 
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy 

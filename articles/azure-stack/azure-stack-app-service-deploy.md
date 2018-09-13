@@ -12,14 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 09/12/2018
 ms.author: anwestg
-ms.openlocfilehash: 9e868788d0cf3b3c0f2f30095388046f64ced71c
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: ae742bbe1e5b751a8a8cabf378afd049728c3b8a
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44378536"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44717501"
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Přidání poskytovatele prostředků App Service do služby Azure Stack
 
@@ -228,7 +228,7 @@ Po nasazení a zaregistrujte poskytovatele prostředků App Service, otestujte a
 
 Pokud chcete vytvořit test webové aplikace, postupujte takto:
 
-1. Na portálu Azure Stack tenanta, vyberte **nový** > **Web + mobilní zařízení** > **webovou aplikaci**.
+1. Prostřednictvím uživatelského portálu služby Azure Stack, vyberte **+ vytvořit prostředek** > **Web + mobilní zařízení** > **webovou aplikaci**.
 
 2. V části **webovou aplikaci**, zadejte název do **webovou aplikaci**.
 

@@ -1,49 +1,49 @@
 ---
-title: Podmíněný přístup pro uživatele spolupráce Azure Active Directory s B2B | Microsoft Docs
-description: Spolupráce Azure Active Directory s B2B podporuje vícefaktorové ověřování (MFA) pro výběrový přístup k podnikovým aplikacím
+title: Podmíněný přístup pro uživatele spolupráce Azure Active Directory B2B | Dokumentace Microsoftu
+description: Spolupráce Azure Active Directory s B2B podporuje vícefaktorové ověřování (MFA) pro selektivní přístup k vašim podnikovým aplikacím
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: article
 ms.date: 09/11/2017
-ms.author: twooley
-author: twooley
+ms.author: mimart
+author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 196fa9e4b6e3ac805f9ae7ce7d53a3d12b250142
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
-ms.translationtype: HT
+ms.openlocfilehash: 8e8e73b9206cf2134e96e609dfe5558c54e4289c
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34267376"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35643443"
 ---
 # <a name="conditional-access-for-b2b-collaboration-users"></a>Podmíněný přístup pro uživatele spolupráce B2B
 
-## <a name="multi-factor-authentication-for-b2b-users"></a>Víceúrovňové ověřování pro uživatele s B2B
-S spolupráce Azure AD B2B organizace můžete vynutit zásady vícefaktorového ověřování (MFA) pro uživatele B2B. Tyto zásady lze vynutit na klienta, aplikace nebo na úrovni jednotlivých uživatelů, stejným způsobem, že jsou povoleny pro zaměstnance na plný úvazek a členy organizace. Zásady vícefaktorového ověřování se vynucují v organizaci poskytující prostředky.
+## <a name="multi-factor-authentication-for-b2b-users"></a>Ověřování službou Multi-Factor Authentication pro uživatele B2B
+Se spoluprací Azure AD B2B může organizace přinutit zásady ověřování službou Multi-Factor Authentication (MFA) pro uživatele B2B. Tyto zásady je možné vynucovat na tenanta, aplikace nebo úroveň jednotlivého uživatele stejným způsobem, že jsou povolené pro zaměstnance na plný úvazek a členy vaší organizace. Zásady vícefaktorového ověřování se vynucují v organizaci poskytující prostředky.
 
 Příklad:
-1. Správce nebo informace pracovního procesu ve společnosti A vyzývá uživatele ze společnosti B k aplikaci *Foo* ve společnosti A.
-2. Aplikace *Foo* ve společnosti je nakonfigurován A aby se vyžadovalo při přístupu.
-3. Když uživatel ze společnosti B pokusí o přístup k aplikaci *Foo* ve společnosti klienta, zobrazí se výzva k dokončení výzvu vícefaktorového ověřování.
-4. Uživatel můžete nastavit jejich MFA s společnosti A a vybere možnost jejich vícefaktorového ověřování.
-5. Tento scénář se dá použít pro všechny identity (Azure AD nebo účet spravované služby, například, pokud uživatelé ve společnosti B ověření pomocí sociálních ID)
-6. Společnost A musí mít dostatek licencí Azure AD Premium, které podporují vícefaktorového ověřování. Uživatel ze společnosti B využívá tuto licenci od společnosti A.
+1. Správce nebo informace o pracovních procesů ve společnosti A vyzývá uživatele k aplikaci ze společnosti B *Foo* ve firmě A.
+2. Aplikace *Foo* ve společnosti A je nakonfigurován tak, aby vyžadovala vícefaktorové ověřování pro přístup.
+3. Když uživatel ze společnosti B pokusí o přístup k aplikaci *Foo* ve společnosti tenanta, zobrazí se výzva k dokončení ověřovacím testem MFA.
+4. Uživatel můžete nastavit jejich MFA s firmy a zvolí možnost jejich vícefaktorové ověřování.
+5. V tomto scénáři se dá použít pro všechny identity (Azure AD nebo MSA, například, pokud uživatelé ve společnosti B ověření pomocí ID sociální)
+6. Firmy A musí mít dostatek licencí Azure AD Premium, které podporují vícefaktorové ověřování. Uživatel ze společnosti B spotřebuje tuto licenci od společnosti A.
 
-Pozváním klientů je zodpovědná za vícefaktorového ověřování pro uživatele od organizace partnera vždy, i v případě, že partnerské organizace má možnosti vícefaktorového ověřování.
+Pozvání tenantů je zodpovědná za MFA pro uživatele v organizaci partnera vždy i v případě organizaci partnera poskytujícího možnosti MFA.
 
-### <a name="setting-up-mfa-for-b2b-collaboration-users"></a>Nastavení vícefaktorového ověřování pro uživatele spolupráce B2B
-Chcete-li zjistit, jak je snadné pro nastavení vícefaktorového ověřování pro uživatele spolupráce B2B, přečtěte si téma Jak v následujícím videu:
+### <a name="setting-up-mfa-for-b2b-collaboration-users"></a>Nastavení MFA pro uživatele spolupráce B2B
+Chcete-li zjistit, jak snadné je nastavení vícefaktorového ověřování pro uživatele spolupráce B2B, přečtěte si postup v následujícím videu:
 
 >[!VIDEO https://channel9.msdn.com/Blogs/Azure/b2b-conditional-access-setup/Player]
 
-### <a name="b2b-users-mfa-experience-for-offer-redemption"></a>MFA prostředí pro uživatele B2B nabízejí uplatnění kódu.
+### <a name="b2b-users-mfa-experience-for-offer-redemption"></a>Vyzkoušejte si MFA pro uživatele B2B nabízejí uplatnění.
 Podívejte se na následující animace zobrazíte uplatnění prostředí:
 
 >[!VIDEO https://channel9.msdn.com/Blogs/Azure/MFA-redemption/Player]
 
-### <a name="mfa-reset-for-b2b-collaboration-users"></a>MFA resetovat pro uživatele spolupráce B2B
-V současné době správce můžete vyžadovat spolupráce B2B uživatelům ověření až znovu jen pomocí následující rutiny prostředí PowerShell:
+### <a name="mfa-reset-for-b2b-collaboration-users"></a>MFA pro uživatele spolupráce B2B resetování
+V současné době správce můžete vyžadovat uživatele spolupráce B2B až po korektury si znovu pouze pomocí následujících rutin Powershellu:
 
 1. Připojení k Azure AD
 
@@ -51,7 +51,7 @@ V současné době správce můžete vyžadovat spolupráce B2B uživatelům ov�
   $cred = Get-Credential
   Connect-MsolService -Credential $cred
   ```
-2. Získání všech uživatelů s potvrzením až metody
+2. Získat všichni uživatelé s potvrzením do metody
 
   ```
   Get-MsolUser | where { $_.StrongAuthenticationMethods} | select UserPrincipalName, @{n="Methods";e={($_.StrongAuthenticationMethods).MethodType}}
@@ -62,48 +62,48 @@ V současné době správce můžete vyžadovat spolupráce B2B uživatelům ov�
   Get-MsolUser | where { $_.StrongAuthenticationMethods} | select UserPrincipalName, @{n="Methods";e={($_.StrongAuthenticationMethods).MethodType}}
   ```
 
-3. Reset – metoda MFA pro konkrétního uživatele, aby vyžadovala od uživatele spolupráce B2B se znovu nastavit metody výš. Příklad:
+3. Resetujte – metoda vícefaktorové ověřování pro konkrétního uživatele tak, aby vyžadovala uživatele spolupráce B2B znovu nastavit metody výš. Příklad:
 
   ```
   Reset-MsolStrongAuthenticationMethodByUpn -UserPrincipalName gsamoogle_gmail.com#EXT#@ WoodGroveAzureAD.onmicrosoft.com
   ```
 
-### <a name="why-do-we-perform-mfa-at-the-resource-tenancy"></a>Proč jsme provedu MFA v klientů prostředků?
+### <a name="why-do-we-perform-mfa-at-the-resource-tenancy"></a>Proč jsme na prostředek tenantů provádět vícefaktorové ověřování?
 
-V aktuální verzi MFA je vždy v prostředku klientů, z důvodů předvídatelnost. Řekněme například, uživatel Contoso (Jan) vyzván k Fabrikam a Fabrikam se povolit MFA pro uživatele B2B.
+V aktuální verzi vícefaktorové ověřování je vždy v prostředku tenantů, z důvodu, předvídatelnost. Řekněme například, společnosti Fabrikam je pozvaný uživatel Contoso (Jan) a povolila Fabrikam MFA pro uživatele B2B.
 
-Pokud společnosti Contoso má povolenou zásadu vícefaktorového ověřování pro App1, ale není na počítači App2, pak pokud se podíváme na Contoso MFA deklarace identity v tokenu, jsme setkat s následujícím problémem:
+Pokud Contoso má povolenou zásadu vícefaktorového ověřování pro počítač App1, ale ne počítači App2, pak když se podíváte na Contoso vícefaktorové ověřování deklarací identity v tokenu, nám může se zobrazit následující problém:
 
-* Den 1: Uživatel má MFA ve společnosti Contoso a přistupuje k počítači App1 a pak žádné další MFA řádku se zobrazí ve firmě Fabrikam.
+* 1. den: Uživatel má MFA ve společnosti Contoso a přistupuje k serveru App1 a pak žádné další MFA řádku je zobrazena ve společnosti Fabrikam.
 
-* Den 2: Uživatel přistupoval 2 aplikace ve společnosti Contoso, takže teď při přístupu k Fabrikam, se musí v MFA zaregistrovat existuje.
+* Dne 2: Uživatel použil 2 aplikace ve společnosti Contoso, takže teď při přístupu ke společnosti Fabrikam, musí registrovat pro MFA existuje.
 
-Tento proces může být matoucí a může vést k vyřadit v dokončených přihlášení.
+Tento proces může být matoucí a může vést k dokončení přihlášení vyřaďte.
 
-Kromě toho i v případě, že Contoso má schopnost MFA, není vždy, že tento případ Fabrikam by důvěřovat zásad vícefaktorového ověřování Contoso.
+Kromě toho i v případě, že Contoso má schopnost vícefaktorové ověřování, není vždy, že by případ Fabrikam důvěřovat zásad vícefaktorového ověřování Contoso.
 
-Nakonec prostředků klienta MFA funguje taky pro účty spravované služby a sociálních ID a orgs partnera, které nemají MFA nastavit.
+Nakonec prostředků tenanta MFA funguje taky pro účty spravované služby a identifikátory sociálních sítí a pro partnerské organizace, které nemají nastavení vícefaktorového ověřování.
 
-Doporučení pro MFA pro uživatele B2B je proto vždy vyžadovat vícefaktorové ověřování v pozváním klientovi. Tento požadavek může vést k dvojité vícefaktorového ověřování v některých případech, ale vždy, když přistupují k pozváním klienta, se koncovým uživatelům prostředí předvídatelný: Jan musí v MFA zaregistrovat s pozváním klienta.
+Doporučení pro vícefaktorové ověřování pro uživatele B2B je proto vždy vyžadovat vícefaktorové ověřování ve zvoucí tenantovi. Tento požadavek může vést k double vícefaktorové ověřování v některých případech, ale při každém přístupu k pozvání tenanta, koncovým uživatelům prostředí je předvídatelné: Sally musíte zaregistrovat pro vícefaktorové ověřování u tenanta pozvat.
 
-### <a name="device-based-location-based-and-risk-based-conditional-access-for-b2b-users"></a>Na zařízení, na základě polohy a na základě riziko podmíněného přístupu pro uživatele s B2B
+### <a name="device-based-location-based-and-risk-based-conditional-access-for-b2b-users"></a>Na základě zařízení, na základě umístění a na základě rizik podmíněného přístupu pro uživatele B2B
 
-Pokud Contoso povolí zásady podmíněného přístupu na základě zařízení pro svoje firemní data, je přístup zabránila zařízení, která nejsou spravovaná ve společnosti Contoso a není kompatibilní se zásadami společnosti Contoso zařízení.
+Pokud Contoso povolí zásady podmíněného přístupu podle zařízení pro firemní data, je zabráněno přístup ze zařízení, která nejsou spravovaná společností Contoso a není kompatibilní se zásadami společnosti Contoso zařízení.
 
-Pokud uživatel B2B zařízení nespravuje ve společnosti Contoso, zablokuje se přístup B2B uživatelů z partnerských organizací v jakémkoli kontextu tyto zásady se vynucují. Contoso však můžete vytvořit seznamy vyloučení obsahující konkrétní partnerskou uživatele z nich vyloučit ze zásad podmíněného přístupu podle zařízení.
+Pokud uživatel B2B zařízení nespravuje ve společnosti Contoso, zablokuje se přístup uživatelů B2B z partnerských organizací v jakémkoli kontextu tyto zásady vynucují. Contoso však můžete vytvořit seznamy vyloučení obsahující konkrétní partnerskou uživatele chcete vyloučit ze zásad podmíněného přístupu na základě zařízení.
 
-#### <a name="location-based-conditional-access-for-b2b"></a>Na základě polohy podmíněný přístup pro B2B
+#### <a name="location-based-conditional-access-for-b2b"></a>Podmíněný přístup založený na umístění pro B2B
 
-Zásady podmíněného přístupu na základě umístění můžete vynutit pro B2B uživatele, pokud pozváním organizace je možné vytvořit důvěryhodný rozsah IP adres, který definuje jejich organizace partnera.
+Zásady podmíněného přístupu na základě umístění můžete vynutit pro uživatele B2B, pokud zvoucí organizaci je možné vytvořit důvěryhodný rozsah IP adres, definující jejich partnerských organizacích.
 
-#### <a name="risk-based-conditional-access-for-b2b"></a>Podmíněný přístup využívající riziko pro B2B
+#### <a name="risk-based-conditional-access-for-b2b"></a>Na základě rizik podmíněného přístupu pro B2B
 
-V současné době přihlášení zásad založených na riziko nelze použít uživatelům B2B, protože vyhodnocení rizik se provádí na domovskou organizaci B2B uživatele.
+V současné době na základě rizik zásady přihlašování nelze použít pro uživatele B2B, protože hodnocení rizik se provádí na domovské organizace uživatele B2B.
 
 ## <a name="next-steps"></a>Další postup
 
-Na spolupráci Azure AD B2B najdete v následujících článcích:
+Na spolupráce B2B ve službě Azure AD najdete v následujících článcích:
 
 * [Co je spolupráce B2B ve službě Azure AD?](what-is-b2b.md)
-* [Licencování Azure AD s B2B spolupráce](licensing-guidance.md)
-* [Spolupráce Azure Active Directory s B2B nejčastější dotazy (FAQ)](faq.md)
+* [Licencování spolupráce v Azure AD B2B](licensing-guidance.md)
+* [Spolupráce Azure Active Directory s B2B – nejčastější dotazy (FAQ)](faq.md)

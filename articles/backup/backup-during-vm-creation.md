@@ -1,6 +1,6 @@
 ---
 title: Povolit zálohování virtuálních počítačů Azure při vytváření
-description: Prohlédněte si postup povolení zálohování virtuálního počítače Azure během procesu vytváření.
+description: Postup povolení zálohování virtuálních počítačů Azure během procesu vytváření.
 services: backup, virtual-machines
 author: markgalioto
 manager: carmonm
@@ -9,77 +9,77 @@ ms.service: backup, virtual-machines
 ms.topic: conceptual
 ms.date: 01/08/2018
 ms.author: trinadhk
-ms.openlocfilehash: 928481f07875286a21f68dae6556f04eb2b6ae5c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9fd4707a201163002cc15cc9cf97e544e76cf7c6
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606116"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35756273"
 ---
-# <a name="enable-backup-during-azure-virtual-machine-creation"></a>Povolit zálohování při vytvoření virtuálního počítače Azure 
+# <a name="enable-backup-during-azure-virtual-machine-creation"></a>Povolit zálohování během vytváření virtuálních počítačů Azure 
 
-Služba Azure Backup poskytuje rozhraní pro vytvoření a konfigurace zálohování do cloudu. Ochrana dat pomocí záloh, body obnovení, volá se v pravidelných intervalech. Azure Backup vytváří body obnovení, které je možné uchovávat v geograficky redundantních trezorech obnovení. Tento článek podrobně popisují k povolení zálohování při vytváření virtuálního počítače (VM) na portálu Azure.  
+Služba Azure Backup poskytuje rozhraní pro vytvoření a konfigurace zálohování do cloudu. Ochrana dat pomocí zálohy, označení body obnovení v pravidelných intervalech. Azure Backup vytváří body obnovení, které je možné uchovávat v geograficky redundantních trezorech obnovení. Tento článek podrobně popisuje, jak povolit zálohování při vytváření virtuálního počítače (VM) na webu Azure Portal.  
 
 ## <a name="log-in-to-azure"></a>Přihlášení k Azure 
 
-Pokud jste ještě nejsou v přihlášení ke svému účtu, přihlaste se k [portál Azure](http://portal.azure.com).
+Pokud si nejste ještě v přihlášení ke svému účtu, přihlaste se k [webu Azure portal](http://portal.azure.com).
  
 ## <a name="create-virtual-machine-with-backup-configured"></a>Vytvoření virtuálního počítače pomocí zálohování je nakonfigurované 
 
-1. V levém horním rohu portálu Azure klikněte na **nový**. 
+1. V levém horním rohu webu Azure portal klikněte na tlačítko **nový**. 
 
-2. Vyberte **výpočetní**a pak vyberte bitovou kopii virtuálního počítače.   
+2. Vyberte **Compute**a potom vyberte image virtuálního počítače.   
 
-3. Zadejte informace o virtuálním počítači. Uživatelské jméno a heslo zadané se používá k přihlášení k virtuálnímu počítači. Jakmile budete hotovi, klikněte na **OK**. 
+3. Zadejte informace o virtuálním počítači. Uživatelské jméno a heslo se používá k přihlášení k virtuálnímu počítači. Jakmile budete hotovi, klikněte na **OK**. 
 
 4. Vyberte velikost virtuálního počítače.  
 
-5. V části **Nastavení > Zálohování**, klikněte na tlačítko **povoleno** se zprovoznit nastavení konfigurace zálohy. Můžete přijmout výchozí hodnoty a klikněte na tlačítko **OK** na stránce nastavení pokračovat do souhrnná stránka pro vytvoření virtuálního počítače. Pokud chcete změnit hodnoty, proveďte další kroky.  
+5. V části **Nastavení > Zálohování**, klikněte na tlačítko **povoleno** a zobrazte si nastavení konfigurace zálohování. Můžete přijmout výchozí hodnoty a klikněte na tlačítko **OK** na stránce nastavení přejděte na stránce Souhrn vytvoření virtuálního počítače. Pokud chcete změnit hodnoty, postupujte podle dalších kroků.  
 
-6. Vytvořte nebo vyberte trezor služeb zotavení, který obsahuje zálohy virtuálního počítače. Při vytváření trezoru služeb zotavení, můžete skupinu prostředků pro úložiště.  
+6. Vytvořte nebo vyberte trezor služby Recovery Services, který uchovává zálohy virtuálního počítače. Při vytváření trezoru služby recovery services, můžete skupina prostředků trezoru.  
 
-    ![Konfigurace zálohování na virtuální počítač vytvořit stránku](./media/backup-during-vm-creation/create-vm-backup-config.png) 
+    ![Konfigurace zálohování na virtuálním počítači vytvořit stránku](./media/backup-during-vm-creation/create-vm-backup-config.png) 
 
     > [!NOTE] 
-    > Skupinu prostředků pro trezor služeb zotavení může být jiná než skupina prostředků pro virtuální počítač.  
+    > Skupiny prostředků pro trezor služby Recovery Services může být jiné než skupiny prostředků pro virtuální počítač.  
     > 
     > 
 
-7. Ve výchozím nastavení je zaškrtnuté zásady zálohování můžete rychle zajistit ochranu virtuálního počítače. Zásady zálohování Určuje, jak často se bude trvat snímků zálohy a jak dlouho chcete uchovat tyto záložní kopie. Můžete přijmout výchozí zásady, nebo můžete vytvořit nebo vybrat jiné zásady zálohování. Chcete-li upravit zásady zálohování, vyberte **zásady zálohování** a změnit hodnoty zásad.  
+7. Ve výchozím nastavení zásady zálohování je vybraná k rychlému zajištění ochrany virtuálního počítače. Zásady zálohování Určuje, jak často se snímky se zálohami a jak dlouho chcete uchovat tyto záložní kopie. Můžete přijmout výchozí zásady, nebo můžete vytvořit nebo vybrat jiné zásady zálohování. Chcete-li upravit zásady zálohování, vyberte **zásady zálohování** a změňte hodnoty zásad.  
 
-8. Pokud jste radostí hodnotami konfigurace zálohování na stránce nastavení klikněte na tlačítko **OK**.  
+8. Až budete spokojení s hodnotami konfiguraci zálohování, na stránce nastavení, klikněte na tlačítko **OK**.  
 
-9. Na stránce Souhrn po uplynutí ověřování, klikněte na tlačítko **vytvořit** k vytvoření virtuálního počítače, který používá nakonfigurované nastavení zálohování. 
+9. Na stránce Souhrn po uplynutí ověřování, klikněte na tlačítko **vytvořit** k vytvoření virtuálního počítače, který používá nastavení nakonfigurované zálohování. 
 
-## <a name="initiate-a-backup-after-creating-the-vm"></a>Spustit zálohování, po vytvoření virtuálního počítače 
+## <a name="initiate-a-backup-after-creating-the-vm"></a>Spustit zálohování po vytvoření virtuálního počítače 
 
-I když byly vytvořeny zásady zálohování, je vhodné vytvořit prvotní zálohování. Chcete-li zobrazit podrobnosti zálohování pro virtuální počítač po dokončení šablony vytvoření virtuálního počítače, z **operace** nastavit nabídky na levé straně, klikněte na tlačítko **zálohování**. To můžete spustit zálohování na vyžádání, obnovte úplnou virtuálního počítače nebo všechny disky, obnovit soubory ze zálohy virtuálního počítače nebo změnit zásady zálohování, které jsou spojené s virtuálním počítačem.  
+I když vytvoření zásady zálohování, je vhodné vytvořit prvotní zálohování. Chcete-li zobrazit podrobnosti zálohování pro virtuální počítač po dokončení šablonu vytvoření virtuálního počítače, ze **operace** nastavení v nabídce vlevo klikněte na tlačítko **zálohování**. Můžete spustit zálohu na vyžádání, obnovení úplné virtuální počítač nebo všechny disky, obnovení souborů ze záloh virtuálních počítačů nebo změnit zásady zálohování přidružené k virtuálnímu počítači.  
 
-## <a name="using-a-resource-manager-template-to-deploy-a-protected-vm"></a>Pomocí šablony Resource Manageru k nasazení chráněných virtuálních počítačů
+## <a name="using-a-resource-manager-template-to-deploy-a-protected-vm"></a>Nasazení chráněného virtuálního počítače pomocí šablony Resource Manageru
 
-Předchozí kroky vysvětlují, jak používat portál Azure k vytvoření virtuálního počítače a chránit do trezoru služeb zotavení. Pokud chcete rychle nasadit jeden nebo více virtuálních počítačů a chránily do trezoru služeb zotavení, uvidí šablonu, [nasadit virtuální počítač s Windows a povolení zálohování](https://azure.microsoft.com/resources/templates/101-recovery-services-create-vm-and-configure-backup/).
+Předchozí kroky popisují, jak pomocí webu Azure portal k vytvoření virtuálního počítače a chránit je trezor služby Recovery Services. Pokud chcete rychle nasadit jeden nebo více virtuálních počítačů a chránit je trezor služby Recovery Services, uvidí šablonu, [nasazení virtuálního počítače s Windows a povolení zálohování](https://azure.microsoft.com/resources/templates/101-recovery-services-create-vm-and-configure-backup/).
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy 
 
-### <a name="which-vm-images-enable-backup-at-the-time-of-vm-creation"></a>Které Image virtuálních počítačů povolit zálohování v době vytvoření virtuálního počítače? 
+### <a name="which-vm-images-enable-backup-at-the-time-of-vm-creation"></a>Které imagí virtuálních počítačů povolit zálohování v době vytvoření virtuálního počítače? 
 
-K povolení zálohování při vytváření virtuálních počítačů jsou podporovány v následujícím seznamu základní Image vydaná společností Microsoft. U ostatních virtuálních počítačů můžete povolit zálohování po vytvoření virtuálního počítače. Další informace [povolit zálohování po vytvoření virtuálního počítače](quick-backup-vm-portal.md) 
+Pro povolení zálohování během vytváření virtuálních počítačů jsou podporovány následující seznam základní Image publikované společností Microsoft. Pro jiné virtuální počítače můžete povolit zálohování po vytvoření virtuálního počítače. Další informace [povolit zálohování po vytvoření virtuálního počítače](quick-backup-vm-portal.md) 
 
-- **Windows** -Windows Server 2016 datového centra, jádra Windows Server 2016 datového centra, Windows Server 2012 DataCenter, Windows Server 2012 R2 DataCenter, Windows Server 2008 R2 SP1 
-- **Ubuntu** -Ubuntu Server 1710, Ubuntu Server 1704, UUbuntu Server 1604(LTS) 1404(LTS) Ubuntu Server 
-- **Red Hat** -RHEL 6.7, 6.8, 6.9, 7.2, 7.3, 7.4 
-- **SUSE** -SUSE Linux Enterprise Server 11 SP4, 12 SP2, 12 SP3 
-- **Debian** -Debian 8, Debian 9 
+- **Windows** – Windows Server 2016 datového centra, jádra Windows serveru 2016 datového centra, Windows Server 2012 DataCenter, Windows Server 2012 R2 DataCenter, Windows Server 2008 R2 SP1 
+- **Ubuntu** – Ubuntu Server 1710, Ubuntu Server 1704, UUbuntu Server 1604(LTS) 1404(LTS) Ubuntu Server 
+- **Red Hat** -RHEL 6.7, 6.8 6.9, 7.2, 7.3, 7.4 
+- **SUSE** -SP4 operačním systémem SUSE Linux Enterprise Server 11, 12 SP2, 12 SP3 
+- **Debian** – Debian 8, Debian 9 
 - **CentOS** -CentOS 6.9, CentOS 7.3 
-- **Oracle Linux** -Oracle Linux 6.7, 6.8, 6.9, 7.2, 7.3 
+- **Oracle Linux** – Oracle Linux 6.7, 6.8 6.9, 7.2, 7.3 
  
-### <a name="is-backup-cost-included-in-the-vm-cost"></a>Je zálohování náklady součástí náklady na virtuální počítač? 
+### <a name="is-backup-cost-included-in-the-vm-cost"></a>Je záložní cena součástí cena za virtuální počítače? 
 
-Ne, zálohování náklady jsou samostatný, nebo se liší od náklady na virtuální počítače. Další informace o cenách zálohování najdete v tématu [cenách zálohování lokality](https://azure.microsoft.com/pricing/details/backup/).
+Ne, náklady na zálohování jsou samostatné a odlišné od nákladů na virtuální počítače. Další informace o cenách zálohování, najdete v článku [ceny za službu Backup site](https://azure.microsoft.com/pricing/details/backup/).
  
-### <a name="which-permissions-are-required-to-enable-backup-on-a-vm"></a>Oprávnění, která jsou potřeba k povolení zálohování na virtuálním počítači? 
+### <a name="which-permissions-are-required-to-enable-backup-on-a-vm"></a>Jaká oprávnění jsou vyžadována k povolení zálohování na virtuálním počítači? 
 
-Pokud jste Přispěvatel virtuálních počítačů, můžete povolit zálohování na virtuálním počítači. Pokud používáte vlastní roli, potřebujete následující oprávnění k úspěšně povolit zálohování na virtuálním počítači. 
+Pokud jste Přispěvatel virtuálních počítačů, můžete povolit zálohování na virtuálním počítači. Pokud používáte vlastní roli, potřebujete následující oprávnění, aby úspěšně povolit zálohování na virtuálním počítači. 
 
 - Microsoft.RecoveryServices/Vaults/write 
 - Microsoft.RecoveryServices/Vaults/read 
@@ -91,11 +91,11 @@ Pokud jste Přispěvatel virtuálních počítačů, můžete povolit zálohová
 - Microsoft.RecoveryServices/Vaults/backupPolicies/read 
 - Microsoft.RecoveryServices/Vaults/backupPolicies/write 
  
-Pokud váš trezor služeb zotavení a virtuální počítač různé skupiny prostředků, ujistěte se, že máte oprávnění k zápisu ve skupině prostředků trezoru služeb zotavení.  
+Pokud váš trezor služby recovery services a virtuální počítače různých skupin prostředků, ujistěte se, že máte oprávnění k zápisu ve skupině prostředků trezoru služeb zotavení.  
 
 ## <a name="next-steps"></a>Další postup 
 
-Teď, když chráníte virtuální počítač, najdete v následujících článcích Další informace o úlohách správy virtuálních počítačů a obnovení virtuálních počítačů. 
+Teď, když jste nastavili ochranu virtuálního počítače, naleznete v následujících článcích se dozvíte o úlohy správy virtuálních počítačů a jak obnovit virtuální počítače. 
 
 - [Správa a monitorování virtuálních počítačů](backup-azure-manage-vms.md) 
 - [Obnovení virtuálních počítačů](backup-azure-arm-restore-vms.md) 

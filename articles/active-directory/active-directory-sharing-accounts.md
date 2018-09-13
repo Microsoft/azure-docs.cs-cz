@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 09/11/2018
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: c8d7f1f5b793fcb684e9896bb93213a23d489860
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 163972329161f90ad364b25e7e60e9e5a04324d5
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448539"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44720000"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Sdílení účtů pomocí Azure AD
 ## <a name="overview"></a>Přehled
@@ -71,7 +71,7 @@ Používání Azure AD pro sdílet účet, budete muset:
 Můžete také vytvořit sdílené účet lépe zabezpečit pomocí ověřování služby Multi-Factor Authentication (MFA) (Další informace o [zabezpečení aplikací s Azure AD](authentication/concept-mfa-whichversion.md)) a schopnost spravovat, kdo má přístup k aplikaci pomocí můžetedelegovat[ Azure AD samoobslužný](users-groups-roles/groups-self-service-management.md) správu skupin.
 
 ## <a name="related-articles"></a>Související články
-* [Rejstřík článků o správě aplikací ve službě Azure Active Directory](active-directory-apps-index.md)
+* [Správa aplikací v Azure Active Directory](manage-apps/what-is-application-management.md)
 * [Ochrana aplikací s podmíněným přístupem](active-directory-conditional-access-azure-portal.md)
 * [Správa/SSAA samoobslužné skupiny](users-groups-roles/groups-self-service-management.md)
 

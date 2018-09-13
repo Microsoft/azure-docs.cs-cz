@@ -11,16 +11,16 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: 41870f4f3cf4a0aba461021b4787e1ba004e5ead
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: eef84e8c5fb67faef99beec934f29e55365ce811
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44095109"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44715954"
 ---
 # <a name="azure-functions-http-and-webhook-bindings"></a>Azure Functions HTTP a webhookové vazby
 
-Tento článek vysvětluje, jak pracovat s vazby HTTP ve službě Azure Functions. Azure Functions podporuje HTTP triggery a vazby výstupu.
+Tento článek vysvětluje, jak používat triggery HTTP a výstupní vazby ve službě Azure Functions. Azure Functions podporuje HTTP triggery a vazby výstupu.
 
 Aktivační událost HTTP je možné přizpůsobit reagovat na [webhooky](https://en.wikipedia.org/wiki/Webhook). Aktivační událost webhooku přijímá pouze datovou část JSON a ověří ve formátu JSON. Existují speciální verze triggeru webhooku, které usnadňují zpracování webhooků z určitých poskytovatelů, jako jsou GitHub a Slack.
 
@@ -276,7 +276,7 @@ module.exports = function(context, req) {
 
 ### <a name="trigger---java-example"></a>Aktivační události – příklad v jazyce Java
 
-Následující příklad ukazuje vazbu aktivační události v *function.json* souboru a [Java funkce](functions-reference-java.md) , který používá vazba. Funkce vrátí odpověď HTTP stav kódem 200 arequest subjektu, který předpon spouštěcí text požadavku s "Hello," pozdrav.
+Následující příklad ukazuje vazbu aktivační události v *function.json* souboru a [Java funkce](functions-reference-java.md) , který používá vazba. Funkce vrátí stavový kód 200 odpověď HTTP s hlavní část žádosti, které předpony adres spouštěcí text požadavku s "Hello," pozdrav.
 
 
 Tady je *function.json* souboru:
@@ -504,7 +504,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 ## <a name="trigger---usage"></a>Aktivační události – využití
 
-Pro funkce C# a F #, je možné deklarovat typ triggeru zadejte buď `HttpRequestMessage` nebo vlastního typu. Pokud se rozhodnete `HttpRequestMessage`, získáte plný přístup k objektu žádosti. Pro vlastní typ funkce se pokusí analyzovat datovou část JSON žádosti můžete nastavit vlastnosti objektu. 
+Pro funkce C# a F #, je možné deklarovat typ triggeru zadejte buď `HttpRequestMessage` nebo vlastního typu. Pokud se rozhodnete `HttpRequestMessage`, získáte plný přístup k objektu žádosti. Pro vlastní typ modul runtime pokusí analyzovat datovou část JSON žádosti můžete nastavit vlastnosti objektu.
 
 Pro funkce jazyka JavaScript poskytuje modul runtime služby Functions tělo požadavku místo objekt žádosti. Další informace najdete v tématu [příklad v jazyce JavaScript aktivační událost](#trigger---javascript-example).
 
@@ -603,47 +603,70 @@ Ve výchozím nastavení, jsou všechny funkce trasy s předponou *api*. Můžet
 
 ### <a name="authorization-keys"></a>Autorizace klíče
 
-Aktivace protokolu HTTP umožňují používat klíče pro zvýšení zabezpečení. Standardní triggeru HTTP je použít jako klíč rozhraní API vyžaduje klíč být přítomné v žádosti. Webhook můžete použít klíče k autorizaci požadavků mnoha různými způsoby v závislosti na tom, co zprostředkovatel podporuje.
+Funkce vám umožní používat klíče pro znesnadnit přístup vašich koncových bodů HTTP funkce během vývoje.  Standardní triggeru HTTP může být nutné že tyto klíče rozhraní API se v požadavku. Webhooky může pomocí klíče k autorizaci požadavků mnoha různými způsoby v závislosti na tom, co zprostředkovatel podporuje.
 
-> [!NOTE]
-> Při místním spuštění funkce, bez ohledu na to je zakázáno ověřování `authLevel` nastavit `function.json`. Jakmile publikujete do služby Azure Functions `authLevel` projeví se okamžitě.
-
-Klíče jsou uložené v rámci aplikace function App v Azure a jsou v klidovém stavu zašifrovaná. Chcete-li zobrazit vaše klíče, vytvářet nové, nebo vrátit klíče na nové hodnoty, přejděte na jedno z vašich funkcí na portálu a vyberte "Manage". 
+> [!IMPORTANT]
+> Zatímco klíče mohou pomoci při vývoji obfuskaci koncové body HTTP, nejsou určeny jako způsob, jak zabezpečit triggeru HTTP v produkčním prostředí. Další informace najdete v tématu [Zabezpečte koncový bod HTTP v produkčním prostředí](#secure-an-http-endpoint-in-production).
 
 Existují dva typy klíčů:
 
-- **Klíče hostitele**: tyto klíče jsou sdíleny ve všech funkcí v rámci aplikace function app. Když se použije jako klíč rozhraní API, tyto rutiny umožňují přístup k žádné funkce v rámci aplikace function app.
-- **Funkční klávesy**: tyto klíče použít pouze na konkrétní funkce, za kterých jsou definovány. Když se použije jako klíč rozhraní API, tyto pouze umožnit přístup k této funkce.
+* **Klíče hostitele**: tyto klíče jsou sdíleny ve všech funkcí v rámci aplikace function app. Když se použije jako klíč rozhraní API, tyto rutiny umožňují přístup k žádné funkce v rámci aplikace function app.
+* **Funkční klávesy**: tyto klíče použít pouze na konkrétní funkce, za kterých jsou definovány. Když se použije jako klíč rozhraní API, tyto pouze umožnit přístup k této funkce.
 
 Každý klíč je s názvem pro odkaz a na úrovni funkcí a hostitele je výchozí klíč (s názvem "Výchozí"). Funkční klávesy mají přednost před klíče hostitele. Když dva klíče jsou definovány se stejným názvem, je vždy použít funkční klávesy.
 
-**Hlavní klíč** je výchozí klíč hostitele s názvem "_hlavní", který je definován pro každou aplikaci function app. Tento klíč se nedá odvolat. Poskytuje přístup pro správu rozhraní API modulu runtime. Pomocí `"authLevel": "admin"` ve vazbě JSON vyžaduje tento klíč, které se budou zobrazovat na vyžádání; další klíč má za následek selhání autorizace.
+Každá aplikace function app má také speciální **hlavní klíč**. Tento klíč je klíč hostitele s názvem `_master`, který poskytuje přístup pro správu rozhraní API modulu runtime. Tento klíč se nedá odvolat. Když nastavíte autorizaci na úrovni `admin`, požadavky musí používat hlavního klíče; Další klíč má za následek selhání autorizace.
 
-> [!IMPORTANT]  
-> Z důvodu zvýšená oprávnění udělená pomocí hlavního klíče by neměly sdílet tento klíč s třetími stranami nebo distribuovat v nativní klientské aplikace. Buďte opatrní při výběru úroveň správce autorizace.
+> [!CAUTION]  
+> Z důvodu vyšší úroveň oprávnění v aplikaci function app udělit pomocí hlavního klíče by neměly sdílet tento klíč s třetími stranami nebo distribuovat v nativní klientské aplikace. Buďte opatrní při výběru úroveň správce autorizace.
+
+### <a name="obtaining-keys"></a>Získání klíče
+
+Klíče jsou uložené v rámci aplikace function App v Azure a jsou v klidovém stavu zašifrovaná. Chcete-li zobrazit vaše klíče, vytvářet nové, nebo vrátit klíče na nové hodnoty, přejděte na jednu z funkcí aktivovanou protokolem HTTP v [webu Azure portal](https://portal.azure.com) a vyberte **spravovat**.
+
+![Správa funkce klíče na portálu.](./media/functions-bindings-http-webhook/manage-function-keys.png)
+
+Neexistuje žádné podporované rozhraní API pro získání programově funkční klávesy.
 
 ### <a name="api-key-authorization"></a>Autorizace pro klíč k rozhraní API
 
-Ve výchozím nastavení aktivační událost HTTP vyžaduje klíč rozhraní API v požadavku HTTP. Takže požadavku HTTP obvykle vypadá takto:
+Většina šablony triggeru HTTP vyžaduje klíč rozhraní API v požadavku. Proto požadavku HTTP obvykle bude vypadat jako na následující adrese URL:
 
     https://<yourapp>.azurewebsites.net/api/<function>?code=<ApiKey>
 
-Klíče mohou být součástí proměnné řetězce dotazu s názvem `code`, jak je uvedeno výše, nebo to můžou být součástí `x-functions-key` hlavičky protokolu HTTP. Hodnota klíče může být libovolné klávesy funkce definované pro funkci nebo libovolná klávesa hostitele.
+Klíče mohou být součástí proměnné řetězce dotazu s názvem `code`, jak je uvedeno výše. To může být i součástí `x-functions-key` hlavičky protokolu HTTP. Hodnota klíče může být libovolné klávesy funkce definované pro funkci nebo libovolná klávesa hostitele.
 
 Můžete povolit anonymní požadavky, které nevyžadují žádné klíče. Můžete také vyžadovat, že se použije hlavní klíč. Změnit výchozí úroveň autorizace pomocí `authLevel` vlastnost ve vazbě JSON. Další informace najdete v tématu [aktivační události – konfigurace](#trigger---configuration).
 
+> [!NOTE]
+> Při místním spuštění funkce je zakázáno autorizace bez ohledu na nastavení úrovně zadané ověřování. Po publikování do Azure, `authLevel` vynucuje nastavení v triggeru.
+
 ### <a name="keys-and-webhooks"></a>Klíče a webhooky
 
-Webhook autorizace zařizuje služba příjemce komponentu webhooku, část triggeru HTTP a mechanismu, který se liší v závislosti na typu webhooku. Každý mechanismus dělá, ale závisí na klíč. Ve výchozím nastavení se používá klíč funkce s názvem "Výchozí". Pokud chcete použít jiný kód, konfigurace poskytovatele webhooku odeslat název klíče s požadavkem v jednom z následujících způsobů:
+Webhook autorizace zařizuje služba příjemce komponentu webhooku, část triggeru HTTP a mechanismu, který se liší v závislosti na typu webhooku. Každý mechanismus Spolehněte se na klíč. Ve výchozím nastavení se používá klíč funkce s názvem "Výchozí". Pokud chcete použít jiný kód, konfigurace poskytovatele webhooku odeslat název klíče s požadavkem v jednom z následujících způsobů:
 
-- **Řetězec dotazu**: Zprostředkovatel předává název klíče ve `clientid` parametru řetězce dotazu, jako `https://<yourapp>.azurewebsites.net/api/<funcname>?clientid=<keyname>`.
-- **Hlavička požadavku**: Zprostředkovatel předává název klíče ve `x-functions-clientid` záhlaví.
+* **Řetězec dotazu**: Zprostředkovatel předává název klíče ve `clientid` parametru řetězce dotazu, jako `https://<yourapp>.azurewebsites.net/api/<funcname>?clientid=<keyname>`.
+* **Hlavička požadavku**: Zprostředkovatel předává název klíče ve `x-functions-clientid` záhlaví.
+
+Příklad zabezpečený pomocí klíče webhooku, najdete v části [vytvoření funkce aktivované webhookem Githubu](functions-create-github-webhook-triggered-function.md).
+
+### <a name="secure-an-http-endpoint-in-production"></a>Zabezpečte koncový bod HTTP v produkčním prostředí
+
+Plně zabezpečit vaše koncové body funkce v produkčním prostředí, je třeba zvážit, implementace některého z následujících možností funkce zabezpečení na úrovni aplikace:
+
+* Zapnete autorizace služby App Service/ověřování pro aplikaci function app. Platformu App Service umožňuje ověřování uživatelů pomocí Azure Active Directory (AAD), ověřování instančních objektů a důvěryhodné jiného zprostředkovatele identity. Tato funkce povolena pouze ověřeným uživatelům přístup k aplikaci funkce. Další informace najdete v tématu [konfigurace aplikace App Service pro použití přihlášení Azure Active Directory](../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md).
+
+* Azure API Management (APIM) se používají k ověření požadavků. APIM poskytuje celou řadu možností zabezpečení rozhraní API pro příchozí požadavky. Další informace najdete v tématu [zásady služby API Management ověřování](../api-management/api-management-authentication-policies.md). Pomocí služby APIM na místě můžete nakonfigurovat aplikaci function app tak, aby přijímal žádosti pouze z adresy PI vaší instanci APIM. Další informace najdete v tématu [omezení podle IP adresy](ip-addresses.md#ip-address-restrictions).
+
+* Nasadíte aplikaci function app do Azure App Service Environment (ASE). Služba ASE obsahuje vyhrazené hostitelské prostředí, ve kterém chcete spouštět funkce. Služba ASE vám umožní nakonfigurovat jeden front-end bránu, můžete použít k ověření všechny příchozí požadavky. Další informace najdete v tématu [konfigurace brány Firewall webových aplikací (WAF) služby App Service Environment](../app-service/environment/app-service-app-service-environment-web-application-firewall.md).
+
+Když používáte jednu z těchto metod funkce zabezpečení na úrovni aplikace, byste měli nastavit funkci aktivovanou protokolem HTTP ověřování na úrovni `anonymous`.
 
 ## <a name="trigger---limits"></a>Aktivační události – omezení
 
-Délka požadavku HTTP je omezena na 100MB (104,857,600 bajtů) a délka adresy URL je omezena na 4KB (4 096 bajtů). Tato omezení jsou určeny `httpRuntime` element modulu runtime [souboru Web.config](https://github.com/Azure/azure-webjobs-sdk-script/blob/v1.x/src/WebJobs.Script.WebHost/Web.config).
+Délka požadavku HTTP je omezena na 100 MB (104,857,600 bajtů) a délka adresy URL je omezena na 4 KB (4 096 bajtů). Tato omezení jsou určeny `httpRuntime` element modulu runtime [souboru Web.config](https://github.com/Azure/azure-webjobs-sdk-script/blob/v1.x/src/WebJobs.Script.WebHost/Web.config).
 
-Pokud funkce, která používá triggeru HTTP nemá dokončit během přibližně 2,5 minut, bude časový limit brány a vrátí chybu HTTP 502. Funkce bude pokračovat v běhu, ale nebude možné vrátit odpověď HTTP. Pro dlouho běžící funkce doporučujeme dodržovat asynchronní vzory a vrátí se umístění, kde příkaz ping stav žádosti. Informace o tom, jak dlouho může běžet funkce, najdete v části [škálování a hostování - plánu Consumption](functions-scale.md#consumption-plan). 
+Pokud funkce, která používá HTTP trigger nemá dokončit během přibližně 2,5 minut, bude časový limit brány a vrátí chybu HTTP 502. Funkce bude pokračovat v běhu, ale nebude možné vrátit odpověď HTTP. Pro dlouho běžící funkce doporučujeme dodržovat asynchronní vzory a vrátí se umístění, kde příkaz ping stav žádosti. Informace o tom, jak dlouho může běžet funkce, najdete v části [škálování a hostování - plánu Consumption](functions-scale.md#consumption-plan). 
 
 ## <a name="trigger---hostjson-properties"></a>Aktivační události – vlastnosti host.json
 
@@ -657,7 +680,7 @@ Pomocí protokolu HTTP výstupní vazbu reagovat na odesílatel požadavku HTTP.
 
 ## <a name="output---configuration"></a>Výstup – konfigurace
 
-Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.json* souboru. Pro třídy C# jsou knihovny existuje žádný atribut vlastnosti, které odpovídají tyto *function.json* vlastnosti. 
+Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.json* souboru. Pro knihoven tříd C#, nejsou žádné vlastnosti atribut, které odpovídají tyto *function.json* vlastnosti. 
 
 |Vlastnost  |Popis  |
 |---------|---------|

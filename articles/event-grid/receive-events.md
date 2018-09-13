@@ -1,6 +1,6 @@
 ---
-title: Přijímat události z události mřížky Azure pro koncový bod HTTP
-description: Popisuje, jak ověřit koncový bod protokolu HTTP, pak přijímat a deserializaci události z události mřížky Azure
+title: Příjem událostí ze služby Azure Event Grid pro koncový bod HTTP
+description: Popisuje, jak ověřit koncový bod HTTP, pak zobrazí a deserializovat události ze služby Azure Event Grid
 services: event-grid
 author: banisadr
 manager: darosa
@@ -8,29 +8,29 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: babanisa
-ms.openlocfilehash: 3f55abf9be382a040d7b5d4111ec689929b36918
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 1ff0cf9d2733d7ebb6e739ce44da6442ffc26c1c
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34823465"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35643565"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>Příjem událostí pro koncový bod HTTP
 
-Tento článek popisuje, jak [ověření koncový bod HTTP](security-authentication.md#webhook-event-delivery) přijímat události z události předplatného a přijímat deserializovat události. Tento článek používá funkce Azure pro demonstrační účely, ale koncepty platí bez ohledu na to, který je hostitelem aplikace.
+Tento článek popisuje, jak [ověřit koncový bod HTTP](security-authentication.md#webhook-event-delivery) přijímat události z odběru událostí a příjem deserializovat události. Tento článek používá funkci Azure pro demonstrační účely, ale stejné koncepty platí bez ohledu na to, kde je aplikace hostovaná.
 
 > [!NOTE]
-> Je **důrazně** doporučeno používat [aktivační událost mřížky](../azure-functions/functions-bindings-event-grid.md) při spuštění funkce Azure s událostí mřížky. Obecný WebHook aktivační události zde slouží demonstrative.
+> Je **důrazně** doporučeno používat [Trigger služby Event Grid](../azure-functions/functions-bindings-event-grid.md) při aktivaci funkce Azure s využitím služby Event Grid. Použití obecného Webhooku trigger zde je Demonstrativní.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Budete potřebovat funkce aplikace pomocí [HTTP aktivované funkce](../azure-functions/functions-create-generic-webhook-triggered-function.md)
+* Budete potřebovat aplikaci function app s [protokolu HTTP aktivované – funkce](../azure-functions/functions-create-generic-webhook-triggered-function.md)
 
 ## <a name="add-dependencies"></a>Přidat závislosti
 
-Pokud vyvíjíte v rozhraní .NET, [Přidat závislost](../azure-functions/functions-reference-csharp.md#referencing-custom-assemblies) na funkce pro `Microsoft.Azure.EventGrid` [balíček Nuget](https://www.nuget.org/packages/Microsoft.Azure.EventGrid). Sady SDK pro jiné jazyky jsou dostupné prostřednictvím [publikování sady SDK](./sdk-overview.md#data-plane-sdks) odkaz. Tyto balíčky obsahovat modely pro typy nativní události, jako například `EventGridEvent`, `StorageBlobCreatedEventData`, a `EventHubCaptureFileCreatedEventData`.
+Pokud vyvíjíte v rozhraní .NET, [Přidat závislost](../azure-functions/functions-reference-csharp.md#referencing-custom-assemblies) na vaši funkci `Microsoft.Azure.EventGrid` [balíček Nuget](https://www.nuget.org/packages/Microsoft.Azure.EventGrid). Jsou k dispozici prostřednictvím sady SDK pro ostatní jazyky [publikovat sady SDK](./sdk-overview.md#data-plane-sdks) odkaz. Tyto balíčky obsahují modely pro typy nativních událostí, například `EventGridEvent`, `StorageBlobCreatedEventData`, a `EventHubCaptureFileCreatedEventData`.
 
-Klikněte na odkaz "zobrazení soubory. ve vaší funkci Azure (na portálu Azure functions pravé většina podokno) a vytvořte soubor s názvem souboru project.json. Přidejte následující obsah `project.json` souboru a uložte jej:
+Klikněte na odkaz "Zobrazit soubory" ve své funkci Azure (pravém většiny podokně na portálu Azure functions) a vytvořte soubor s názvem souboru project.json. Přidejte následující obsah `project.json` soubor a uložte ho:
 
  ```json
 {
@@ -48,11 +48,11 @@ Klikněte na odkaz "zobrazení soubory. ve vaší funkci Azure (na portálu Azur
 
 ## <a name="endpoint-validation"></a>Koncový bod ověření
 
-První věc, kterou chcete udělat, je zpracování `Microsoft.EventGrid.SubscriptionValidationEvent` události. Pokaždé, když se uživatel přihlásí k události, odešle událost mřížky událost ověření koncový bod s `validationCode` v datovou částí. Koncový bod je potřeba echo tomto zpět v textu odpovědi na [prokázat koncový bod je platná a ve vlastnictví můžete](security-authentication.md#webhook-event-delivery). Pokud používáte [aktivační událost mřížky](../azure-functions/functions-bindings-event-grid.md) místo WebHook, jehož aktivuje funkce, koncový bod ověření zpracovává za vás. Pokud používáte rozhraní API služby třetích stran (jako je [Zapier](https://zapier.com) nebo [IFTTT](https://ifttt.com/)), nebudete moci prostřednictvím kódu programu echo ověřovacího kódu. Pro tyto služby můžete ručně ověřit předplatné pomocí ověření adresy URL, která je odesláno jako událost ověření předplatného. Zkopírujte tuto adresu URL v `validationUrl` vlastnost a odesílání GET vyžádat buď prostřednictvím klienta REST nebo webový prohlížeč.
+První věc, kterou chcete udělat, je zpracování `Microsoft.EventGrid.SubscriptionValidationEvent` události. Pokaždé, když se uživatel přihlásí k události, služby Event Grid odešle událost ověření koncového bodu se `validationCode` v datové části data. Koncový bod je potřeba echo tomto zpět v textu odpovědi na [koncový bod je platný a je vlastnictví prokázat](security-authentication.md#webhook-event-delivery). Pokud používáte [Trigger služby Event Grid](../azure-functions/functions-bindings-event-grid.md) spíše než funkce aktivované Webhooku, koncový bod ověřování se udělá za vás. Pokud používáte rozhraní API služby třetí strany (například [Zapier](https://zapier.com) nebo [IFTTT](https://ifttt.com/)), nemusí být schopen prostřednictvím kódu programu echo ověřovacího kódu. Za tyto služby můžete ručně ověřit předplatné pomocí adresy URL ověřování, který se posílá událost ověření předplatného. Zkopírujte tuto adresu URL v `validationUrl` vlastnost a odeslat GET vyžádat buď pomocí klienta REST nebo ve webovém prohlížeči.
 
-Ruční ověřování je ve verzi preview. Pokud ji chcete používat, je nutné nainstalovat [rozšíření Event Grid](/cli/azure/azure-cli-extensions-list) pro [AZ CLI 2.0](/cli/azure/install-azure-cli). Můžete si je nainstalovat pomocí příkazu `az extension add --name eventgrid`. Pokud používáte rozhraní REST API, zkontrolujte, že používáte `api-version=2018-05-01-preview`.
+Ruční ověření je ve verzi preview. Pokud ji chcete používat, je nutné nainstalovat [rozšíření Event Grid ](/cli/azure/azure-cli-extensions-list) pro [Azure CLI](/cli/azure/install-azure-cli). Můžete si je nainstalovat pomocí příkazu `az extension add --name eventgrid`. Pokud používáte rozhraní REST API, zkontrolujte, že používáte `api-version=2018-05-01-preview`.
 
-Pokud chcete prostřednictvím kódu programu echo ověřovacího kódu, použijte následující kód (můžete také vyhledat související ukázky v https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/tree/master/EventGridConsumer):
+Pokud chcete prostřednictvím kódu programu echo ověřovací kód, použijte následující kód (můžete také vyhledat související ukázky v https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/tree/master/EventGridConsumer):
 
 ```csharp
 using System.Net;
@@ -114,9 +114,9 @@ module.exports = function (context, req) {
 };
 ```
 
-### <a name="test-validation-response"></a>Test ověření odpovědi
+### <a name="test-validation-response"></a>Test ověření odpovědí
 
-Testování funkce odpovědi ověření zadáním nebo vložením událost vzorku do pole testování pro funkci:
+Testování funkce odpověď ověření zadáním nebo vložením událost vzorku do pole testu pro funkci:
 
 ```json
 [{
@@ -133,13 +133,13 @@ Testování funkce odpovědi ověření zadáním nebo vložením událost vzork
 }]
 ```
 
-Po kliknutí na tlačítko spustit, výstup by měl být 200 OK a `{"ValidationResponse":"512d38b6-c7b8-40c8-89fe-f46f9e9622b6"}` v textu:
+Po kliknutí na spustit, výstup by měl být 200 OK a `{"ValidationResponse":"512d38b6-c7b8-40c8-89fe-f46f9e9622b6"}` v textu:
 
 ![Odpověď ověřování](./media/receive-events/validation-response.png)
 
-## <a name="handle-blob-storage-events"></a>Zpracování událostí úložiště objektů Blob
+## <a name="handle-blob-storage-events"></a>Zpracování událostí služby Blob storage
 
-Teď umožňuje rozšířit funkci pro zpracování `Microsoft.Storage.BlobCreated`:
+Teď můžeme rozšířit funkci pro zpracování `Microsoft.Storage.BlobCreated`:
 
 ```cs
 using System.Net;
@@ -215,9 +215,9 @@ module.exports = function (context, req) {
 
 ```
 
-### <a name="test-blob-created-event-handling"></a>Test vytvořit objekt Blob zpracování událostí
+### <a name="test-blob-created-event-handling"></a>Otestovat zpracování události vytvoření objektu Blob
 
-Otestovat novou funkčnost funkce umístěním [událostí úložiště objektů Blob](./event-schema-blob-storage.md#example-event) do testovací pole a spuštění:
+Vyzkoušejte nové funkce funkci tak, že vložíte [události úložiště objektů Blob](./event-schema-blob-storage.md#example-event) do pole testu a spuštění:
 
 ```json
 [{
@@ -245,17 +245,17 @@ Otestovat novou funkčnost funkce umístěním [událostí úložiště objektů
 }]
 ```
 
-Byste měli vidět výstup URL objektu blob v protokolu funkce:
+Byste měli vidět výstup adresy URL objektu blob v protokolu funkce:
 
 ![Výstup protokolu](./media/receive-events/blob-event-response.png)
 
-Můžete také otestovat vytvořením účtu úložiště Blob nebo obecné účely V2 účtu úložiště (GPv2) [přidávání a událostí předplatné](../storage/blobs/storage-blob-event-quickstart.md)a nastavení koncového bodu na adresu URL, funkce:
+Můžete také otestovat tak, že vytvoříte účet Blob storage nebo pro obecné účely V2 (GPv2) účtu, [přidávání a odběru událostí](../storage/blobs/storage-blob-event-quickstart.md)a nastavení koncového bodu na adresu URL funkce:
 
 ![Adresa URL funkce](./media/receive-events/function-url.png)
 
-## <a name="handle-custom-events"></a>Popisovač vlastní události
+## <a name="handle-custom-events"></a>Zpracování vlastních událostí
 
-Nakonec umožňuje rozšířit funkce jednou tak, aby ho může také zpracovat vlastních událostí. Přidání kontroly pro událost `Contoso.Items.ItemReceived`. Poslední kód by měl vypadat jako:
+A konečně umožňuje ještě jednou rozšířit funkci tak, aby také dokáže zpracovat vlastní události. Přidat kontrolu pro událost `Contoso.Items.ItemReceived`. Konečný kód by měl vypadat:
 
 ```cs
 using System.Net;
@@ -357,9 +357,9 @@ module.exports = function (context, req) {
 
 ```
 
-### <a name="test-custom-event-handling"></a>Zpracování událostí vlastní test
+### <a name="test-custom-event-handling"></a>Vlastní události zpracování testu
 
-Nakonec testovací rozšířeného funkce dokáže zpracovat teď vaše vlastní typ události:
+Nakonec testu, rozšířeného funkce teď zvládne vaše vlastní typ události:
 
 ```json
 [{
@@ -377,10 +377,10 @@ Nakonec testovací rozšířeného funkce dokáže zpracovat teď vaše vlastní
 }]
 ```
 
-Můžete také otestovat tuto funkci za provozu pomocí [odeslání vlastní události s CURL z portálu](./custom-event-quickstart-portal.md) nebo [publikování na vlastní téma](./post-to-custom-topic.md) pomocí některé služby nebo aplikace, které vystavit koncový bod například [Postman](https://www.getpostman.com/). Vytvořte vlastní téma a odběr událostí s koncovým bodem nastavit jako adresu URL funkce.
+Můžete také otestovat za provozu pomocí této funkce [odesílání vlastních událostí pomocí CURL z portálu](./custom-event-quickstart-portal.md) nebo [účtování do vlastního tématu](./post-to-custom-topic.md) pomocí libovolné služby nebo aplikace, která můžete vytvořit koncový bod jako je například [Postman](https://www.getpostman.com/). Vytvořte vlastní téma a odběr událostí s koncovým bodem nastavit jako adresu URL funkce.
 
 ## <a name="next-steps"></a>Další postup
 
-* Prozkoumejte [Management mřížky Azure událostí a publikovat sady SDK](./sdk-overview.md)
-* Zjistěte, jak [post do vlastní tématu](./post-to-custom-topic.md)
-* Použijte jeden z podrobné kurzy událostí mřížky a funkce, jako například [Změna velikosti obrázků nahrán do úložiště objektů Blob](resize-images-on-storage-blob-upload-event.md)
+* Prozkoumejte [Azure Event Grid Management a publikování sad SDK](./sdk-overview.md)
+* Zjistěte, jak [odeslat do vlastního tématu](./post-to-custom-topic.md)
+* Zkuste použít jeden z podrobné kurzy služby Event Grid a funkce, jako [změny velikosti obrázků nahrané do úložiště objektů Blob](resize-images-on-storage-blob-upload-event.md)

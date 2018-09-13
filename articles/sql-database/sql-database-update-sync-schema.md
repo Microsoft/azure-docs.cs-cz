@@ -10,16 +10,16 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.custom: data-sync
-ms.openlocfilehash: eca5e308399b9fb694a8e5060d72c12790a8f78d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6859784dcb3b3905459e83cfcb7812d7f23ac630
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434954"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721853"
 ---
 # <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>Automatizace replikace změn schématu synchronizace dat SQL Azure
 
-Synchronizace dat SQL umožňuje uživatelům synchronizovat data mezi databázemi SQL Azure a místním SQL serverem v jednom směru nebo v obou směrech. Jednou z aktuálních omezení synchronizace dat SQL je chybějící podpora jazyků replikace změn schématu. Pokaždé, když změníte schéma tabulky, budete muset použít změny ručně pro všechny koncové body, včetně centra a všechny členy a potom aktualizovat schéma synchronizace.
+Synchronizace dat SQL umožňuje uživatelům synchronizovat data mezi databázemi Azure SQL a místním SQL serverem v jednom směru nebo v obou směrech. Jednou z aktuálních omezení synchronizace dat SQL je chybějící podpora jazyků replikace změn schématu. Pokaždé, když změníte schéma tabulky, budete muset použít změny ručně pro všechny koncové body, včetně centra a všechny členy a potom aktualizovat schéma synchronizace.
 
 Tento článek představuje řešení, které automaticky replikovat změny schématu pro všechny koncové body synchronizace dat SQL.
 1. Toto řešení používá ke sledování změn schématu aktivační událost jazyka DDL.

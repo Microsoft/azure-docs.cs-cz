@@ -8,13 +8,13 @@ ms.service: sql-database
 ms.topic: conceptual
 ms.date: 5/17/2018
 ms.author: ronitr
-ms.reviewer: carlrab
-ms.openlocfilehash: 8881f66a73a2368696ee16cc0f9bb0b16d2f6d7e
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.reviewer: vanto
+ms.openlocfilehash: 15afa8c21ad0cc94170cf5050310c8a59e2e8020
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42058637"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44713795"
 ---
 # <a name="advanced-threat-protection-for-azure-sql-database"></a>Advanced Threat Protection pro Azure SQL Database
 

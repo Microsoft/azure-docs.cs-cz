@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: fundamentals
 ms.topic: conceptual
-ms.date: 09/12/2017
+ms.date: 09/11/2018
 ms.author: lizross
 ms.custom: it-pro
-ms.openlocfilehash: bdc8754253ce2567d957b4d6240fe52242aea2ea
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: d84c3b556f27366c249382a37e0a8227726110cf
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37449758"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44714680"
 ---
 # <a name="managing-owners-for-a-group"></a>Správa vlastníků pro skupinu
 Jakmile vlastníka prostředku má přidělený přístup k prostředku na skupiny Azure AD, členství ve skupině spravuje ho vlastník skupiny. Vlastník prostředku deleguje efektivní oprávnění pro přiřazení uživatelů k prostředku na vlastníka skupiny.
@@ -42,6 +42,6 @@ Následující články poskytují další informace o službě Azure Active Dir
 
 * [Správa přístupu k prostředkům pomocí skupin služby Azure Active Directory](active-directory-manage-groups.md)
 * [Rutiny služby Azure Active Directory pro konfiguraci nastavení skupiny](../users-groups-roles/groups-settings-cmdlets.md)
-* [Rejstřík článků o správě aplikací ve službě Azure Active Directory](../active-directory-apps-index.md)
+* [Správa aplikací v Azure Active Directory](../manage-apps/what-is-application-management.md)
 * [Představení služby Azure Active Directory](active-directory-whatis.md)
 * [Integrování místních identit do služby Azure Active Directory](../connect/active-directory-aadconnect.md)

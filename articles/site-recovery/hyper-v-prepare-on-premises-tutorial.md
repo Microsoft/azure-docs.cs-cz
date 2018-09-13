@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 09/12/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: fb820d124fd9b5e882cad538ad436532d7865fbc
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: f1899817ee2d0efec4ab561a64f24e49cb173c29
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37921539"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44720765"
 ---
 # <a name="prepare-on-premises-hyper-v-servers-for-disaster-recovery-to-azure"></a>Příprava místních serverů Hyper-V pro zotavení po havárii do Azure
 
@@ -60,13 +60,15 @@ Nástroj VMM Příprava na mapování sítě následujícím způsobem:
 ## <a name="verify-internet-access"></a>Ověřte přístup k Internetu
 
 1. Pro účely tohoto kurzu je nejjednodušší konfiguraci pro hostitele Hyper-V a VMM server umožňuje mít přímý přístup k Internetu bez použití proxy serveru. 
-2. Ujistěte se, že, který je hostitelem technologie Hyper-V a server VMM v případě potřeby můžete přístup k těmto adresám URL: 
-
-    [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]
-    
+2. Zajistěte, aby, který je hostitelem technologie Hyper-V a server VMM v případě potřeby můžete přístup k požadované níže uvedených adres URL.   
 3. Pokud jste řízení přístupu pomocí IP adresy, ujistěte se, že:
     - Pravidla brány firewall založená na adresu IP se můžete připojit k [Azure rozsahů IP adres Datacentra](https://www.microsoft.com/download/confirmation.aspx?id=41653)a port HTTPS (443).
     - Povolte rozsahy IP adres pro oblast Azure svého předplatného.
+    
+### <a name="required-urls"></a>Požadované adresy URL
+
+
+[!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]
 
 
 ## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>Příprava připojení k virtuálním počítačům Azure po převzetí služeb při selhání

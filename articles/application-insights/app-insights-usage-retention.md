@@ -1,6 +1,6 @@
 ---
-title: Analýza uživatelů uchovávání informací pro webové aplikace pomocí služby Azure Application Insights | Microsoft docs
-description: Počet uživatelů, kteří se vrátit do vaší aplikace?
+title: Analýza uživatelů uchovávání informací pro webové aplikace pomocí Azure Application Insights | Dokumentace Microsoftu
+description: Kolik uživatelů se vrátit do své aplikace?
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -9,51 +9,52 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: bafe9579cc783dbc5c851e626e3b9bea0c559520
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 6e042034d52551d58e290b54ca3547dedbc89c47
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35642933"
 ---
 # <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>Analýza uživatelů uchovávání informací pro webové aplikace pomocí Application Insights
 
-Funkci uchování v [Azure Application Insights](app-insights-overview.md) pomáhá analyzovat počet uživatelů, kteří se vraťte do vaší aplikace a jak často provádět konkrétní úlohy nebo dosáhnout cíle. Například pokud spustíte herní lokality, může porovnejte počet uživatelů, kteří vrátit do lokality po ztrátě hry s číslem, kteří se vrátí po hodnocený. Tyto znalosti vám pomůžou líp uživatelské prostředí a obchodní strategie.
+Funkce uchování v [Azure Application Insights](app-insights-overview.md) pomáhá analyzovat kolik uživatelů do vaší aplikace vracejí, a jak často provádět konkrétní úlohy nebo cílů. Například pokud spustíte her lokality, může porovnat počtu uživatelů, kteří vraťte se na web po ztrátě hry s použitím čísla, kteří se vrátí po soutěže winning. Tyto znalosti pomáhá vylepšovat uživatelské prostředí a strategii.
 
 ## <a name="get-started"></a>Začínáme
 
-Pokud nevidíte ještě dat v nástroji pro uchovávání informací na portálu služby Application Insights [zjistěte, jak začít pracovat s nástroji využití](app-insights-usage-overview.md).
+Pokud jste ještě nezobrazují žádná data v nástroji pro uchovávání informací na portálu služby Application Insights [zjistěte, jak začít pracovat s nástroji využití](app-insights-usage-overview.md).
 
-## <a name="the-retention-tool"></a>Nástroj pro uchování
+## <a name="the-retention-tool"></a>Nástroj udržení
 
 ![Nástroj Udržení](./media/app-insights-usage-retention/retention.png)
 
-1. Panel nástrojů umožňuje uživatelům vytváření nových sestav uchování, otevřete existující sestavy uchování, uloží aktuální sestavu uchování nebo uložit, protože vrátit zpět změny provedené v uložených sestav, aktualizovat data v sestavě, sdílené složky sestav e-mailem nebo přímý odkaz a přístup k na stránce dokumentace. 
-2. Ve výchozím nastavení zobrazuje uchování všichni uživatelé, kteří neprovedli nic, pak se vrátila zpět a neprovedli nic jiného v období. Můžete vybrat různé kombinace události zúžit zaměření na konkrétního uživatele aktivity.
-3. Přidejte jeden nebo více filtry vlastností. Například se můžete soustředit na uživatele v konkrétní země nebo oblasti. Klikněte na tlačítko **aktualizace** po nastavení filtrů. 
-4. Celkové uchování graf zobrazuje souhrn uživatele uchování mezi zvolené časové období. 
-5. Mřížky zobrazuje počet uživatelů, které uchovávají podle Tvůrce dotazů v #. 2. Každý řádek představuje kohorty uživatele, který provedl všechny události v zobrazeném časovém období. Každý buňky v řádku zobrazuje, kolik této kohorty vrátil nejméně jednou za na pozdější dobu. Někteří uživatelé se můžou vrátit ve více než jedno období. 
-6. Statistika karty Zobrazit nejvyšší pět inicializace události a horní pět vrácený události uživatelům lépe porozumět jejich uchovávání dat sestavy. 
+1. Panel nástrojů umožňuje uživatelům vytvářet nové sestavy uchovávání, otevřete existující sestavy uchovávání, uložit aktuální sestavu uchování nebo si uložte, protože vrátit zpět změny provedené v uložených sestav, aktualizovat data v sestavě, sdílet sestavu e-mailem nebo přímý odkaz a přístup k dokumentaci stránka. 
+2. Ve výchozím nastavení zobrazuje uchování všem uživatelům, kteří neprovedli nic, pak se nevrátili a cokoli, nebyl během období. Můžete vybrat jinou kombinaci události zúžit zaměření na aktivit konkrétního uživatele.
+3. Přidejte jeden nebo více filtrů na vlastnosti. Například se můžete zaměřit na uživatele v konkrétní zemi nebo oblast. Klikněte na tlačítko **aktualizace** po nastavení filtrů. 
+4. Celkový graf uchování zobrazuje souhrn udržení uživatelů ve vybraném časovém období. 
+5. Mřížky se zobrazí počet uživatelů, které uchovávají podle Tvůrce dotazů v #2. Každý řádek představuje kohorta uživatelů, který provedl jakékoli události v zobrazeném časovém období. Každá buňka v řádku ukazuje, kolik z tohoto kohorta vrátil nejméně jednou za na pozdější dobu. Někteří uživatelé mohou vrátit ve více než jednu tečku. 
+6. Karty insights zobrazit horní pět zahájení události a horní pět vrácené události a poskytuje tak uživatelům lépe pochopit jejich uchování sestav. 
 
-![Při přechodu myší uchování](./media/app-insights-usage-retention/hover.png)
+![Uchování myši při najetí myší](./media/app-insights-usage-retention/hover.png)
 
-Uživatelé mohou pozastavte ukazatel myši nad buněk na nástroj uchování pro přístup k analytics nástroj a tlačítko tipy vysvětlující, co znamená buňky. Tlačítko Analytics trvá uživatelům nástroj pro analýzu s předem vyplněná dotazu generovat uživatelé z buňky. 
+Uživatelé mohou najet myší buněk v nástroje uchovávání pro přístup k analytics tlačítko a nástroj tipy s vysvětlením, co znamená buňku. Tlačítko Analytics přejdou uživatelé k nástroj analýzy s předem naplněných dotazu generovat uživatelů z buňky. 
 
-## <a name="use-business-events-to-track-retention"></a>Použít obchodní události ke sledování uchování
+## <a name="use-business-events-to-track-retention"></a>Použít obchodní události ke sledování uchovávání informací
 
-Nejužitečnější analysis uchování získáte měření události, které představují důležité obchodní aktivity. 
+Nejužitečnější analýzy uchování získáte měření událostí, které představují důležité obchodní činnost. 
 
-Například může být řada uživatelů otevřete stránku ve vaší aplikaci bez hru, který se zobrazí. Sledování právě zobrazení stránky by proto zadejte nesprávné odhad kolik lidí vrátit ve hře po jeho využívat dříve. Získat přehledné informace o vrácení přehrávače, vaše aplikace by měli poslat vlastní události, když uživatel ve skutečnosti hraje.  
+Například může být mnoho uživatelů otevřete stránku ve vaší aplikaci bez hru, která se zobrazí. Sledování právě zobrazení stránek by proto poskytnout odhad nepřesné vrátit kolik lidí si tuto hru zahrát po využívat dříve. Získat přehledné informace o vrácení přehrávačů, by měla vaše aplikace odeslat vlastní událost, když uživatel přehrává ve skutečnosti.  
 
-Je dobrým zvykem kód vlastní události, které představují klíče obchodní akce a použít pro uchování analýzy. Když Pokud chcete zachytit herní výsledek, budete muset napsat řádek kódu pro odeslání vlastní události Application insights. Pokud píšete ho v kódu webové stránky nebo v Node.JS, vypadá takto:
+Je dobrým zvykem naprogramujte vlastní události, které představují akce klíčových obchodních a použít pro analýzu uchovávání informací. Pokud chcete zaznamenat výsledek her, budete muset psát řádek kódu pro odesílání vlastních událostí do Application Insights. Pokud můžete zapsat do kódu webové stránky nebo v Node.JS, bude vypadat takto:
 
 ```JavaScript
     appinsights.trackEvent("won game");
 ```
 
-Nebo v serverovém kódu ASP.NET:
+Nebo v kódu serveru ASP.NET:
 
 ```csharp
    telemetry.TrackEvent("won game");
@@ -63,12 +64,12 @@ Nebo v serverovém kódu ASP.NET:
 
 
 ## <a name="next-steps"></a>Další postup
-- Pokud chcete povolit použití možnosti, zahájit odesílání [vlastních událostí](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) nebo [stránky zobrazení](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views).
-- Pokud jste již odeslat vlastní události nebo zobrazení stránky, prozkoumejte využití nástroje se dozvíte, jak uživatelé používat služby.
+- Povolit použití prostředí, spusťte odesílání [vlastních událostí](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) nebo [zobrazení stránek](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views).
+- Pokud jste již posílat vlastní události nebo zobrazení stránek, prozkoumejte nástroje využití se dozvíte, jak uživatelé vaši službu používat.
     - [Uživatelé, relace, události](app-insights-usage-segmentation.md)
     - [Trychtýře](usage-funnels.md)
     - [Toky uživatele](app-insights-usage-flows.md)
     - [Workbooks](app-insights-usage-workbooks.md)
-    - [Přidat uživatelský kontext](app-insights-usage-send-user-context.md)
+    - [Přidat kontext uživatele](app-insights-usage-send-user-context.md)
 
 

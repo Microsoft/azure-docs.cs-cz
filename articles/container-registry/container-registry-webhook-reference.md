@@ -1,6 +1,6 @@
 ---
-title: Referenční dokumentace schématu webhooku registru kontejner Azure
-description: Webhooku požadavku JSON datové části odkaz pro registru kontejner Azure.
+title: Referenční dokumentace schématu webhook registru kontejneru Azure
+description: Webhook požadavku JSON datové části referenční informace pro Azure Container Registry.
 services: container-registry
 author: mmacy
 manager: jeconnoc
@@ -8,67 +8,68 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 12/02/2017
 ms.author: marsma
-ms.openlocfilehash: f62477a4c68abf1617d9689047913fd820ee5461
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 87fe978416c29b50abeef0e0a6624d7440dd87ef
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35642623"
 ---
-# <a name="azure-container-registry-webhook-reference"></a>Odkaz na Azure webhooku registru kontejneru
+# <a name="azure-container-registry-webhook-reference"></a>Referenční informace webhook služby Azure Container Registry
 
-Můžete [konfigurace webhooky](container-registry-webhook.md) pro vaše registru kontejneru, který generovat události při určitých akcí u ní. Například můžete povolit webhooků, které se spouštějí na bitovou kopii kontejneru `push` a `delete` operace. Když se aktivuje webhook, jehož registru kontejner Azure vydá požadavek HTTP či HTTPS obsahující informace o události na koncový bod, který zadáte. Váš koncový bod můžete zpracovat webhooku a odpovídajícím způsobem fungovat.
+Je možné [konfigurace webhooků](container-registry-webhook.md) pro svůj registr kontejneru, které generují události, kdy byly provedeny některé akce před ním. Například můžete povolit webhooky, které se spouštějí na image kontejneru `push` a `delete` operace. Když webhooku se aktivuje, Azure Container Registry vydá požadavek HTTP či HTTPS obsahující informace o události do koncového bodu, který zadáte. Váš koncový bod můžete zpracovat webhook a příslušně na ně reagovat.
 
-Následujících oddílech jsou upřesněny schéma žádostí webhooku generovaných událostmi podporované. Části událostí obsahují datové schéma pro typ události, datovou část požadavku příklad a jeden nebo více příklady příkazů, které by aktivovat webhooku.
+Následující části popisují schéma webhooku požadavkům vygenerovaným rozhraním podporované události. Části události obsahují datové části schéma pro typ události, datovou část požadavku příklad a jeden nebo více příklady příkazů, které by aktivují webhook.
 
-Informace o konfiguraci webhooky pro vaše registru kontejner Azure najdete v tématu [pomocí registru kontejner Azure webhooky](container-registry-webhook.md).
+Informace o konfiguraci webhooků pro službu Azure container registry najdete v tématu [pomocí Azure Container Registry webhooky](container-registry-webhook.md).
 
-## <a name="webhook-requests"></a>Webhooku požadavky
+## <a name="webhook-requests"></a>Požadavky Webhooku
 
 ### <a name="http-request"></a>Požadavek protokolu HTTP
 
-Díky spouštěná webhooku protokolu HTTP `POST` požadavek na koncový bod adresy URL, jste zadali, když jste nakonfigurovali webhooku.
+Díky protokolu HTTP aktivované webhookem `POST` požadavek na koncový bod adresy URL zadané při konfiguraci webhooku.
 
 ### <a name="http-headers"></a>Hlavičky protokolu HTTP
 
-Žádosti o Webhooku zahrnovat `Content-Type` z `application/json` Pokud jste nezadali `Content-Type` vlastní hlavičky vaší webhooku.
+Zahrnují požadavky Webhooku `Content-Type` z `application/json` v případě špatných `Content-Type` vlastní hlavičky pro vaše webhooku.
 
-Žádná další záhlaví jsou přidány k žádosti nad rámec těchto vlastní hlavičky, kterou jste určili pro webhooku.
+Žádné hlavičky jsou přidány do požadavku nad rámec těchto vlastní hlavičky, které jste určili pro webhook.
 
-## <a name="push-event"></a>Oznámení událostí
+## <a name="push-event"></a>Nabízených oznámení událostí
 
-Webhooku se aktivuje, když bitovou kopii kontejneru vložena do úložiště.
+Webhook se aktivuje, když je nasdílení imagí kontejneru do úložiště.
 
-### <a name="push-event-payload"></a>Datová část události push
+### <a name="push-event-payload"></a>Datová část události nabízených oznámení
 
 |Element|Typ|Popis|
 |-------------|----------|-----------|
 |`id`|Řetězec|ID události webhooku.|
 |`timestamp`|DateTime|Čas, kdy byla aktivována událost webhooku.|
-|`action`|Řetězec|Akce, která aktivuje událost webhooku.|
-|[cíl](#target)|Komplexní typ|Cíl události, která aktivuje událost webhooku.|
-|[Požadavek](#request)|Komplexní typ|Požadavek, který generuje události webhooku.|
+|`action`|Řetězec|Akce, který spustil danou událost webhooku.|
+|[Cíl](#target)|Komplexní typ|Cíl události, která aktivuje událost webhooku.|
+|[Požadavek](#request)|Komplexní typ|Žádosti, které vygenerovalo událost webhooku.|
 
 ### <a name="target"></a>cíl
 
 |Element|Typ|Popis|
 |------------------|----------|-----------|
 |`mediaType`|Řetězec|Typ MIME odkazovaného objektu.|
-|`size`|Int32|Počet bajtů obsahu. Stejné jako pole s délkou.|
-|`digest`|Řetězec|Hodnotu hash obsahu, podle definice specifikace rozhraní API registru V2 HTTP.|
-|`length`|Int32|Počet bajtů obsahu. Stejná jako velikost pole.|
+|`size`|Datový typ Int32|Počet bajtů obsahu. Stejné jako délku pole.|
+|`digest`|Řetězec|Přehled obsahu, jak je definováno ve specifikaci protokolu HTTP rozhraní API V2 registru.|
+|`length`|Datový typ Int32|Počet bajtů obsahu. Stejná jako velikost pole.|
 |`repository`|Řetězec|Název úložiště.|
 |`tag`|Řetězec|Název obrázku značky.|
 
-### <a name="request"></a>Požadavek
+### <a name="request"></a>požadavek
 
 |Element|Typ|Popis|
 |------------------|----------|-----------|
-|`id`|Řetězec|ID požadavku, která iniciovala události.|
-|`host`|Řetězec|Externě dostupný název hostitele instance registru, jak je uvedeno v hlavičce HTTP hostitele na příchozí požadavky.|
+|`id`|Řetězec|ID požadavku, který spustil danou událost.|
+|`host`|Řetězec|Zvenku přístupný název hostitele instance registru, jak je uvedeno v HTTP hlavičce hostitele na příchozí požadavky.|
 |`method`|Řetězec|Metoda žádosti, které vygenerovalo událost.|
 |`useragent`|Řetězec|Hlavičky uživatelského agenta žádosti.|
 
-### <a name="payload-example-push-event"></a>Datová část příklad: nabízené událostí
+### <a name="payload-example-push-event"></a>Příklad datové části: nabízených oznámení událostí
 
 ```JSON
 {
@@ -92,7 +93,7 @@ Webhooku se aktivuje, když bitovou kopii kontejneru vložena do úložiště.
 }
 ```
 
-Příklad [příkazového řádku Dockeru](https://docs.docker.com/engine/reference/commandline/cli/) příkaz, který aktivuje **nabízené** webhooku událostí:
+Příklad [rozhraní příkazového řádku Dockeru](https://docs.docker.com/engine/reference/commandline/cli/) příkaz, který aktivuje **nabízených** události webhooku:
 
 ```bash
 docker push myregistry.azurecr.io/hello-world:v1
@@ -100,36 +101,36 @@ docker push myregistry.azurecr.io/hello-world:v1
 
 ## <a name="delete-event"></a>Odstranit událost
 
-Webhooku se aktivuje, když úložiště nebo manifest se odstraní. Neaktivuje při odstranění značku.
+Webhook se aktivuje, když je odstraněn úložiště nebo manifest. Není aktivováno, když se odstraní značky.
 
-### <a name="delete-event-payload"></a>Odstranit datová část události
+### <a name="delete-event-payload"></a>Odstranit datovou část události
 
 |Element|Typ|Popis|
 |-------------|----------|-----------|
 |`id`|Řetězec|ID události webhooku.|
 |`timestamp`|DateTime|Čas, kdy byla aktivována událost webhooku.|
-|`action`|Řetězec|Akce, která aktivuje událost webhooku.|
-|[cíl](#delete_target)|Komplexní typ|Cíl události, která aktivuje událost webhooku.|
-|[Požadavek](#delete_request)|Komplexní typ|Požadavek, který generuje události webhooku.|
+|`action`|Řetězec|Akce, který spustil danou událost webhooku.|
+|[Cíl](#delete_target)|Komplexní typ|Cíl události, která aktivuje událost webhooku.|
+|[Požadavek](#delete_request)|Komplexní typ|Žádosti, které vygenerovalo událost webhooku.|
 
-### <a name="delete_target"></a> cíl
+### <a name="delete_target"></a> Cíl
 
 |Element|Typ|Popis|
 |------------------|----------|-----------|
 |`mediaType`|Řetězec|Typ MIME odkazovaného objektu.|
-|`digest`|Řetězec|Hodnotu hash obsahu, podle definice specifikace rozhraní API registru V2 HTTP.|
+|`digest`|Řetězec|Přehled obsahu, jak je definováno ve specifikaci protokolu HTTP rozhraní API V2 registru.|
 |`repository`|Řetězec|Název úložiště.|
 
 ### <a name="delete_request"></a> Požadavek
 
 |Element|Typ|Popis|
 |------------------|----------|-----------|
-|`id`|Řetězec|ID požadavku, která iniciovala události.|
-|`host`|Řetězec|Externě dostupný název hostitele instance registru, jak je uvedeno v hlavičce HTTP hostitele na příchozí požadavky.|
+|`id`|Řetězec|ID požadavku, který spustil danou událost.|
+|`host`|Řetězec|Zvenku přístupný název hostitele instance registru, jak je uvedeno v HTTP hlavičce hostitele na příchozí požadavky.|
 |`method`|Řetězec|Metoda žádosti, které vygenerovalo událost.|
 |`useragent`|Řetězec|Hlavičky uživatelského agenta žádosti.|
 
-### <a name="payload-example-delete-event"></a>Datová část příklad: odstranit událost
+### <a name="payload-example-delete-event"></a>Příklad datové části: odstranit událost
 
 ```JSON
 {
@@ -150,7 +151,7 @@ Webhooku se aktivuje, když úložiště nebo manifest se odstraní. Neaktivuje 
   }
 ```
 
-Příklad [Azure CLI 2.0](/cli/azure/acr) příkazy této aktivační události **odstranit** webhooku událostí:
+Příklad [rozhraní příkazového řádku Azure](/cli/azure/acr) příkazy, které spouštějí **odstranit** události webhooku:
 
 ```azurecli
 # Delete repository
@@ -162,4 +163,4 @@ az acr repository delete -n MyRegistry --repository MyRepository --tag MyTag --m
 
 ## <a name="next-steps"></a>Další postup
 
-[Pomocí webhooků registru kontejner Azure](container-registry-webhook.md)
+[Použití webhooků v Azure Container Registry](container-registry-webhook.md)

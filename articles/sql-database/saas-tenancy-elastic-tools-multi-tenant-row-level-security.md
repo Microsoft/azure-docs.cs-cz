@@ -1,6 +1,6 @@
 ---
-title: Víceklientské aplikace s RLS a nástroje elastické databáze | Microsoft Docs
-description: Používejte nástroje elastické databáze pomocí zabezpečení na úrovni řádků pro vytvoření aplikace s vysoce škálovatelné datové vrstvy.
+title: Aplikace s více tenanty pomocí zabezpečení na úrovni řádků a nástrojů pro elastické databáze | Dokumentace Microsoftu
+description: Používejte nástroje elastické databáze pomocí zabezpečení na úrovní řádků k sestavení aplikace s vysoce škálovatelnou datovou vrstvou.
 metakeywords: azure sql database elastic tools multi tenant row level security rls
 services: sql-database
 manager: craigg
@@ -10,60 +10,60 @@ ms.custom: scale out apps
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: thmullan
-ms.openlocfilehash: 02ad01185a86aa5a975be2a66b54a214029dd73f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 96093ea65452693a999363f6bbad26a4a1904f60
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34645806"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44714933"
 ---
-# <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>Víceklientské aplikací pomocí nástroje elastické databáze a zabezpečení na úrovni řádků
+# <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>Aplikace s více tenanty s nástroji elastic database a zabezpečení na úrovní řádků
 
-[Nástroje elastické databáze](sql-database-elastic-scale-get-started.md) a [nízkoúrovňového zabezpečení (RLS)] [ rls] spolupracují s cílem povolit škálování datovou vrstvu víceklientské aplikace s Azure SQL Database. Společně tyto technologie vám pomohou sestavit aplikaci, která je vysoce škálovatelná datové vrstvy. Datová vrstva podporuje víceklientské horizontálních oddílů a používá **ADO.NET SqlClient** nebo **Entity Framework**. Další informace najdete v tématu [návrhová schémata pro víceklientské aplikace SaaS ve službě Azure SQL Database](saas-tenancy-app-design-patterns.md).
+[Nástroje pro elastické databáze](sql-database-elastic-scale-get-started.md) a [nízkoúrovňového zabezpečení (RLS)] [ rls] spolupracují s cílem povolit škálování datové vrstvy aplikace s více tenanty s databází Azure SQL Database. Společně tyto technologie vám pomůže vytvářet aplikace, která má vysoce škálovatelnou datovou vrstvou. Datová vrstva podporuje víceklientské horizontální oddíly a používá **Sqlclienta ADO.NET** nebo **Entity Framework**. Další informace najdete v tématu [vzory návrhu pro víceklientské aplikace SaaS využívající Azure SQL Database](saas-tenancy-app-design-patterns.md).
 
-- **Nástroje elastické databáze** umožňuje vývojářům škálovat vrstvu dat s standardní horizontálního dělení postupy, pomocí knihovny .NET a šablony služeb Azure. Správa horizontálních oddílů pomocí [klientské knihovny pro elastické databáze] [ s-d-elastic-database-client-library] pomáhá zautomatizovat a zjednodušit řadu infrastruktury úlohy, které jsou obvykle spojené s horizontálního dělení.
-- **Zabezpečení na úrovni řádků** vývojářům umožňuje bezpečně uložit data pro více klientů ve stejné databázi. Zásady zabezpečení RLS odfiltrovat řádky, které nepatří do klienta provádění dotazu. Centralizuje logice filtru uvnitř databáze zjednodušuje údržbu a snižuje riziko chyby zabezpečení. Alternativní z spoléhat na všechny kód klienta enfore zabezpečení je rizikové.
+- **Nástroje pro elastické databáze** umožňují vývojářům horizontálně navýšit kapacitu datové vrstvy se standardní běžných postupech, pomocí knihoven .NET a šablon služby Azure. Správa horizontálních oddílů pomocí [Klientská knihovna Elastic Database] [ s-d-elastic-database-client-library] pomáhá automatizovat a zefektivnit mnoho infrastruktury úloh obvykle spojené s horizontálního dělení.
+- **Zabezpečení na úrovní řádků** vývojářům umožňuje bezpečně ukládat data pro více tenantů v jedné databázi. Zásady zabezpečení RLS vyfiltrování řádků, které nepatří do klienta, spouštění dotazu. Centralizace filtr logika uvnitř databáze lze usnadnit správu a snižuje riziko vzniku chyb zabezpečení. Alternativou sady spoléhat na všechny klientským kódem, aby enfore zabezpečení je nebezpečné.
 
-Pomocí společně tyto funkce, může aplikace ukládat data pro více klientů ve stejné ID horizontálního oddílu databázi. Ho stojí méně každého klienta, když klienti sdílení databáze. Ještě stejnou aplikaci můžete také nabízejí jeho premium klientům možnost platícího pro své vlastní vyhrazené horizontálního oddílu jednoho klienta. Jednou z výhod izolace jednoho klienta je posílení jistoty výkonu. V databázi jednoho klienta neexistuje žádný další klient neslučitelných pro prostředky.
+Pomocí společně tyto funkce, může aplikace ukládat data pro více tenantů v jedné databázi horizontálních oddílů. To stojí méně každého tenanta když klienti sdílí databázi. Ještě stejné aplikace lze také nabízejí jeho tenanti úrovně premium možnost platit za své vlastní vyhrazený horizontálních oddílů jednoho tenanta. Jednou z výhod izolace jednoho tenanta je záruky týkající se posílení výkonu. V databázi jednoho tenanta neexistuje žádný tenanta, které soutěží o prostředky.
 
-Cílem je použijte klientskou knihovnu elastické databáze [závislé na data směrování](sql-database-elastic-scale-data-dependent-routing.md) rozhraní API pro automatické připojení k databázi správný horizontálních každého daného klienta. Jedinou horizontálních obsahuje konkrétní hodnotu TenantId pro daného klienta. Hodnoty TenantId je *horizontálního dělení klíč*. Po připojení, zásady zabezpečení RLS v rámci databáze zajišťuje, daného tenanta přístup pouze tyto řádky dat, které obsahují jeho TenantId.
+Cílem je používat Klientská knihovna elastic database [směrování závislé na datech](sql-database-elastic-scale-data-dependent-routing.md) rozhraní API pro každý daného tenanta automaticky připojit k databázi správné horizontálních oddílů. Pouze jeden horizontální oddíl obsahuje určitou hodnotu TenantId pro daného tenanta. ID Tenanta je *klíč horizontálního dělení*. Po navázání připojení zásadu zabezpečení zabezpečení na úrovni řádků v databázi zajišťuje, že daného tenanta přístup pouze řádky dat, které obsahují jeho ID Tenanta.
 
 > [!NOTE]
-> Identifikátor klienta může obsahovat více než jeden sloupec. Pro usnadnění práce je toto pojednání, předpokládáme neformálně TenantId jeden sloupec.
+> Identifikátor tenanta může obsahovat více než jeden sloupec. Pro usnadnění práce je této diskuse, předpokládáme neformálně jednosloupcová TenantId.
 
-![Architektura aplikace blogu][1]
+![Architektura blogovací aplikace][1]
 
 ## <a name="download-the-sample-project"></a>Stáhněte si ukázkový projekt
 
 ### <a name="prerequisites"></a>Požadavky
 
-- Použijte sadu Visual Studio (2012 nebo vyšší) 
-- Vytvořte tři databáze SQL Azure 
-- Stáhněte si ukázkový projekt: [elastické databáze nástroje pro Azure SQL - víceklientské horizontálních oddílů](http://go.microsoft.com/?linkid=9888163)
-  - Zadejte informace pro vaše databáze na začátku **Program.cs** 
+- Pomocí sady Visual Studio (2012 nebo novějším) 
+- Vytvořte tři databáze Azure SQL 
+- Stáhněte si ukázkový projekt: [elastické databáze nástroje pro Azure SQL – víceklientské horizontální oddíly](http://go.microsoft.com/?linkid=9888163)
+  - Vyplňte informace o vašich databází na začátku **Program.cs** 
 
-Rozšiřuje popsané v tomto projektu [elastické databáze nástroje pro Azure SQL - Entity Framework integrace](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md) přidáním podpory pro víc klientů horizontálních databáze. Sestavení projektu jednoduché konzolové aplikace pro vytvoření blogy a příspěvky. Projekt obsahuje čtyři klientů a také dvě databáze víceklientské horizontálního oddílu. Tato konfigurace je znázorněna na předchozím obrázku. 
+Rozšiřuje popsané v tomto projektu [elastické databáze nástroje pro Azure SQL – integrace Entity Frameworku](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md) přidáním podpory pro databáze s více tenanty horizontálními oddíly. Projekt se sestaví jednoduchou konzolovou aplikaci pro vytváření blogů a příspěvky. Projekt nezahrnuje čtyřmi klienty a dvěma databázemi s horizontálními oddíly více tenantů. Tato konfigurace je znázorněno na předchozím obrázku. 
 
-Sestavte a spusťte aplikaci. To běžet bootstraps správce mapy horizontálního oddílu nástroje elastické databáze a provádí následující testy: 
+Sestavte a spusťte aplikaci. Tento běh bootstraps nástrojů elastické databáze správce mapování horizontálních oddílů a provádí následující testy: 
 
-1. Pomocí rozhraní Entity Framework a LINQ, vytvořte nový blog a následně se zobrazí všechny blogy pro každého klienta
-2. Pomocí ADO.NET SqlClient, zobrazte všechny blogy pro klienta
-3. Pokuste se vložit blogu pro chybný klienta k ověření, že je vyvolána chyba  
+1. Použití rozhraní Entity Framework a LINQ, vytvoření nového blogu a zobrazte všechny blogy pro každého klienta
+2. Pomocí Sqlclienta ADO.NET, zobrazte všechny blogy pro tenanta
+3. Pokuste se vložit do blogu pro nesprávného tenanta, chcete-li ověřit, že se zobrazuje chyba  
 
-Všimněte si, že vzhledem k tomu, že RLS dosud nebyla spuštěna v databázích horizontálního oddílu, každý z těchto testů zjistí problém: Klienti mohou vidět blogy, který nepatří do nich a aplikace není zabránila vkládání blogu pro chybný klienta. Zbývající část tohoto článku popisuje, jak vyřešit tyto problémy vynucování izolace klienta s RLS. Existují dva kroky: 
+Všimněte si, že vzhledem k tomu, že RLS ještě nepovolila v databázemi s horizontálními oddíly, každá z těchto testů zjistí problém: tenantů jsou vidět blogy, které nepatří k nim a aplikace není zabráněno vložení blogu pro nesprávného tenanta. Zbývající část tohoto článku popisuje, jak tyto problémy vyřešit vynucování izolace klienta pomocí zabezpečení na úrovni řádků. Existují dva kroky: 
 
-1. **Aplikační vrstvě**: Upravit kód aplikace vždy nastavit aktuální TenantId v RELACI\_KONTEXT po otevření připojení. Ukázkový projekt již nastaví hodnoty TenantId tímto způsobem. 
-2. **Datová vrstva**: vytvoření zásady zabezpečení RLS v každé databázi horizontálního oddílu filtrování řádků podle TenantId uložené v RELACI\_kontextu. Vytvořit zásadu pro každou databází horizontálního oddílu, jinak nejsou filtrovány řádků v víceklientské horizontálních oddílů. 
+1. **Aplikační vrstva**: upravovat kód aplikace vždy nastavit aktuální ID Tenanta v RELACI\_kontextu po otevření připojení. Ukázkový projekt již nastaví ID Tenanta tímto způsobem. 
+2. **Datová vrstva**: vytvoření zásad zabezpečení zabezpečení na úrovni řádků v jednotlivých horizontálních oddílů databáze filtrovat řádky podle ID Tenanta uložená v RELACI\_kontextu. Vytvořit zásadu pro každou z vaší databáze s horizontálními oddíly, jinak nejsou filtrované řádky v horizontálních oddílech více tenantů. 
 
-## <a name="1-application-tier-set-tenantid-in-the-sessioncontext"></a>1. Aplikační vrstvě: Sada TenantId v RELACI\_kontextu
+## <a name="1-application-tier-set-tenantid-in-the-sessioncontext"></a>1. Aplikační vrstva: Sada ID Tenanta v RELACI\_kontextu
 
-Nejprve je připojit k databázi horizontálního oddílu pomocí rozhraní API směrování dat závislé Klientská knihovna pro elastické databáze. Aplikace stále musí zjistit databázi které TenantId používá připojení. Hodnoty TenantId informuje zásady zabezpečení RLS řádky musí být odfiltrována jako náležící do ostatních klientů. Uložení aktuální TenantId v [relace\_kontextu](https://docs.microsoft.com/sql/t-sql/functions/session-context-transact-sql) připojení.
+Nejprve je připojit k databázi horizontálních oddílů s použitím závislé na datech směrování rozhraní API, aby Klientská knihovna elastic database. Aplikace stále zapotřebí sdělit databáze TenantId, která používá připojení. ID Tenanta říká zásad zabezpečení zabezpečení na úrovni řádků, musí se odfiltrovat, které řádky jako patřící do jiných tenantů. Aktuální ID Tenanta v Store [relace\_kontextu](https://docs.microsoft.com/sql/t-sql/functions/session-context-transact-sql) připojení.
 
-Alternativu k RELACI\_kontextu, je použít [kontextu\_informace](https://docs.microsoft.com/sql/t-sql/functions/context-info-transact-sql). RELACE, ale\_kontextu není lepší volbou. RELACE\_kontextu je jednodušší použít, vrátí hodnotu NULL ve výchozím nastavení a podporuje páry klíč hodnota.
+Alternativa k RELACI\_kontextu, je použít [kontextu\_informace](https://docs.microsoft.com/sql/t-sql/functions/context-info-transact-sql). Ale relace\_KONTEXT je lepší volbou. RELACE\_se snadněji používá KONTEXT, ve výchozím nastavení vrátí hodnotu NULL a podporuje páry klíč hodnota.
 
 ### <a name="entity-framework"></a>Entity Framework
 
-Pro aplikace používající rozhraní Entity Framework, je snadnější přístup k nastavení relace\_kontextu v rámci ElasticScaleContext přepsání popsané v [závislé na Data směrování pomocí EF DbContext](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md#data-dependent-routing-using-ef-dbcontext). Vytvoření a provedení SqlCommand, který nastaví TenantId v RELACI\_KONTEXT, který má shardingKey zadaný pro připojení. Pak se vraťte připojení zprostředkované přes závislé na data směrování. Tímto způsobem, je potřeba jenom jeden zápis kódu nastavit relace\_kontextu. 
+Pro aplikace používající nástroj Entity Framework, je nejjednodušší přístup k nastavení relace\_kontextu v rámci ElasticScaleContext přepsání je popsáno v [závislé na datech směrování, pomocí EF DbContext](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md#data-dependent-routing-using-ef-dbcontext). Vytvoření a provedení SqlCommand, který nastaví ID Tenanta v RELACI\_kontextu shardingKey zadané pro připojení. Pak se vraťte připojení zprostředkované přes směrování závislé na datech. Díky tomu je potřeba jenom napsat kód jednou k nastavení relace\_kontextu. 
 
 ```csharp
 // ElasticScaleContext.cs 
@@ -121,7 +121,7 @@ public static SqlConnection OpenDDRConnection(
 // ... 
 ```
 
-Nyní relace\_je automaticky nastaven KONTEXT s zadaný TenantId vždy, když je volána ElasticScaleContext: 
+Nyní relace\_je automaticky nastaven KONTEXT s zadané TenantId pokaždé, když je vyvolána ElasticScaleContext: 
 
 ```csharp
 // Program.cs 
@@ -143,9 +143,9 @@ SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() =>
 }); 
 ```
 
-### <a name="adonet-sqlclient"></a>ADO.NET SqlClient
+### <a name="adonet-sqlclient"></a>Sqlclienta ADO.NET
 
-Pro aplikace pomocí ADO.NET SqlClient vytvořte funkci obálku kolem metoda ShardMap.OpenConnectionForKey. Mít obálku automaticky nastaví TenantId v RELACI\_KONTEXT, který má aktuální TenantId před vrácením připojení. Zajistit, že relace\_vždy nastaven KONTEXT, otvírat pouze připojení pomocí této funkce obálku.
+Pro aplikace pomocí Sqlclienta ADO.NET vytvořte funkce obálky kolem metoda ShardMap.OpenConnectionForKey. Obálka automaticky nastaví ID Tenanta v RELACI mít\_kontextu aktuální ID Tenanta před vrácením připojení. K zajištění této relace\_kontextu je vždycky nastavený, byste měli otvírat jenom připojení pomocí této funkce obálky.
 
 ```csharp
 // Program.cs
@@ -211,22 +211,22 @@ All blogs for TenantId {0} (using ADO.NET SqlClient):", tenantId4);
 
 ```
 
-## <a name="2-data-tier-create-row-level-security-policy"></a>2. Datová vrstva: vytvoření zásad zabezpečení na úrovni řádků
+## <a name="2-data-tier-create-row-level-security-policy"></a>2. Datová vrstva: vytvoření zásad zabezpečení na úrovní řádků
 
-### <a name="create-a-security-policy-to-filter-the-rows-each-tenant-can-access"></a>Vytvoření zásady zabezpečení pro filtrování řádky, které můžete přístup každý klient
+### <a name="create-a-security-policy-to-filter-the-rows-each-tenant-can-access"></a>Vytvoření zásad zabezpečení filtrovat řádky, které můžete přístup každý klient
 
-Teď, když je aplikace nastavení relace\_KONTEXT aktuální TenantId před dotazování, zásady zabezpečení RLS můžete filtrovat dotazy a vyloučení řádky, které mají různé TenantId.  
+Teď, když je aplikace nastavení relace\_KONTEXT s aktuálním ID Tenanta před dotazování zásadu zabezpečení zabezpečení na úrovni řádků můžete filtrovat dotazy a vyloučit řádky, které mají různé TenantId.  
 
-Funkce RLS se implementuje v Transact-SQL. Uživatelem definované funkce definuje logiku přístupu a zásady zabezpečení sváže tuto funkci Libovolný počet tabulek. Pro tento projekt:
+Zabezpečení na úrovni řádků je implementována v jazyce Transact-SQL. Uživatelem definované funkce definuje logikou přístupu a zásady zabezpečení připojí tuto funkci do libovolného počtu tabulek. Pro tento projekt:
 
-1. Funkce ověřuje, že aplikace je připojený k databázi, a že hodnoty TenantId uložené v RELACI\_kontextu odpovídá TenantId daného řádku.
-    - Aplikace je připojený místo jiný uživatel SQL.
+1. Funkce ověří, že aplikace je připojený k databázi, a že ID Tenanta uložená v RELACI\_kontextu souhlasí s ID Tenanta daného řádku.
+    - Připojen k aplikaci, místo jiný uživatel SQL.
 
-2. Predikát filtru umožňuje řádky, které vyhovují filtru TenantId předávat vyberte aktualizace a odstranit dotazy.
-    - Predikát BLOCK zabraňuje řádky, které nesplní filtr z vložené nebo aktualizované.
-    - Pokud relace\_KONTEXT nebyl nastaven, funkce vrátí hodnotu NULL a viditelný nebo může být vložen nejsou žádné řádky. 
+2. Predikát filtru umožňuje řádky, které vyhovují filtru TenantId předávání pro SELECT, UPDATE a odstraňování dotazů.
+    - Predikát BLOCK brání řádky, které nesplní filtr ze sloupce vložené nebo aktualizované.
+    - Pokud relace\_kontextu nebyla nastavena, funkce vrátí hodnotu NULL a žádné řádky jsou viditelné nebo může být vložen. 
 
-Pokud chcete povolit RLS na všechny horizontálních oddílů, spusťte následující T-SQL pomocí Visual Studio (SSDT), aplikace SSMS nebo ve skriptu PowerShell, který je zahrnutý v projektu. Nebo pokud používáte [elastické databáze úlohy](sql-database-elastic-jobs-overview.md), je možné automatizovat provádění této T-SQL na všechny horizontálních oddílů.
+Povolit zabezpečení na úrovni řádků na všechny horizontální oddíly, spusťte následující příkaz T-SQL pomocí Visual Studio (SSDT), aplikace SSMS nebo powershellu zahrnutý v projektu. Nebo pokud používáte [úlohy Elastic Database](sql-database-elastic-jobs-overview.md), můžete automatizovat provádění tohoto jazyka T-SQL na všechny horizontální oddíly.
 
 ```sql
 CREATE SCHEMA rls; -- Separate schema to organize RLS objects.
@@ -252,11 +252,11 @@ GO
 ```
 
 > [!TIP]
-> V projektu komplexní možná budete muset přidat predikát na stovky tabulky, který může být zdlouhavé. Je pomocná uložené procedury, která automaticky generuje zásadu zabezpečení a přidá predikát ve všech tabulkách ve schématu. Další informace najdete v příspěvku na blogu [použití zabezpečení na úrovni řádků pro všechny tabulky – Pomocník skriptu (blog)](http://blogs.msdn.com/b/sqlsecurity/archive/2015/03/31/apply-row-level-security-to-all-tables-helper-script).
+> V komplexní projekt možná budete muset přidat predikát na stovkách tabulky, který může být zdlouhavé. Je pomocná uložené procedury, která automaticky generuje zásadu zabezpečení a přidá predikát ve všech tabulkách ve schématu. Další informace najdete v příspěvku na blogu [použít zabezpečení na úrovní řádků pro všechny tabulky – pomocné rutiny skriptu (blog)](http://blogs.msdn.com/b/sqlsecurity/archive/2015/03/31/apply-row-level-security-to-all-tables-helper-script).
 
-Pokud spustíte ukázkovou aplikaci znovu, nyní tenantům v pouze řádky, které patří k nim. Kromě toho aplikace nelze vložit řádky, které patří do klientů jiných než ten, který aktuálně připojené k databázi horizontálního oddílu. Aplikaci nelze aktualizovat také TenantId v žádné řádky, které můžete zobrazit. Pokud se aplikace pokusí udělat, je vyvolána DbUpdateException.
+Teď Pokud spustíte ukázkovou aplikaci znovu, tenantů se projeví pouze řádky, které patří k nim. Kromě toho aplikace nelze vložit řádky, které patří do jiných než ten, který aktuálně připojených do horizontálních oddílů databáze tenantů. Aplikaci nelze aktualizovat také ID Tenanta v nějaké řádky, které můžete zobrazit. Pokud se aplikace pokusí udělat, je vyvolána DbUpdateException.
 
-Pokud později přidáte nové tabulky, změnit zásady zabezpečení a přidejte filtr a zároveň se ZABLOKUJÍ predikáty na novou tabulku.
+Pokud chcete přidat novou tabulku později změnit zásady zabezpečení a přidejte filtr a blok predikáty na novou tabulku.
 
 ```sql
 ALTER SECURITY POLICY rls.tenantAccessPolicy     
@@ -265,9 +265,9 @@ ALTER SECURITY POLICY rls.tenantAccessPolicy
 GO 
 ```
 
-### <a name="add-default-constraints-to-automatically-populate-tenantid-for-inserts"></a>Přidat výchozí omezení automatické vyplnění TenantId pro vložení
+### <a name="add-default-constraints-to-automatically-populate-tenantid-for-inserts"></a>Přidat výchozí omezení k automatickému vyplnění TenantId pro vložení
 
-Můžete vložit výchozího omezení na každou tabulku automaticky naplnit hodnoty TenantId s hodnotou, které jsou aktuálně uloženy v RELACI\_KONTEXT při vložení řádků. Následuje příklad. 
+Můžete vložit výchozího omezení na každou tabulku k automatickému vyplnění ID Tenanta s hodnotou aktuálně uložené v RELACI\_kontextu při vkládání řádků. Následuje příklad. 
 
 ```sql
 -- Create default constraints to auto-populate TenantId with the
@@ -283,7 +283,7 @@ ALTER TABLE Posts
 GO 
 ```
 
-Aplikaci teď není nutné zadávat TenantId při vložení řádků: 
+Aplikace teď není potřeba zadat TenantId při vkládání řádků: 
 
 ```csharp
 SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() => 
@@ -300,14 +300,14 @@ SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() =>
 ```
 
 > [!NOTE]
-> Pokud používáte výchozí omezení pro projekt Entity Framework, je doporučeno, které *není* zahrnout do modelu dat EF sloupci TenantId. Toto doporučení je, protože rozhraní Entity Framework dotazuje automaticky zadejte výchozí hodnoty, které potlačí výchozí omezení vytvořené v T-SQL, které používají relace\_kontextu.
-> V projektu vzorku použít výchozí omezení, například doporučujeme odebrat TenantId z DataClasses.cs (a spuštění Add-Migration v konzole Správce balíčků) a zkontrolujte, zda pole existuje pouze v tabulkách databáze pomocí T-SQL. Tímto způsobem EF automaticky zadat nesprávné výchozí hodnoty při vkládání dat.
+> Pokud používáte výchozí omezení pro projekt rozhraní Entity Framework, je doporučeno, kterou jste *není* obsahovat sloupec ID Tenanta v datovém modelu EF. Toto doporučení totiž Entity Framework dotazuje automaticky zadejte výchozí hodnoty, které přepíší výchozí omezení, vytvořené v T-SQL, které používají relace\_kontextu.
+> V projektu vzorku používat výchozí omezení, například by měl odeberete TenantId z DataClasses.cs (a spuštění přidat migrace v konzole Správce balíčků) a zkontrolujte, zda pole existuje pouze v tabulkách databáze pomocí jazyka T-SQL. Tímto způsobem EF automaticky zadat nesprávné výchozích hodnot při vkládání dat.
 
-### <a name="optional-enable-a-superuser-to-access-all-rows"></a>(Volitelné) Povolit *superuživatel* přístup všechny řádky
+### <a name="optional-enable-a-superuser-to-access-all-rows"></a>(Volitelné) Povolit *superuživatele* pro přístup k všechny řádky
 
-Některé aplikace může být vhodné vytvořit *superuživatel* přístup všechny řádky. Superuživatele může povolit vytváření sestav napříč všichni klienti na všechny horizontálních oddílů. Nebo superuživatele může provádět operace sloučení rozdělení na horizontálních oddílů, které vyžadují přesunutí řádků klienta mezi databázemi.
+Některé aplikace může být vhodné vytvořit *superuživatele* kdo má přístup k všechny řádky. Superuživatele může povolit hlášení ve všech tenantech na všechny horizontální oddíly. Nebo superuživatele může provádět operace dělení a slučování s horizontálními oddíly, které zahrnují přesun řádků tenanta mezi databázemi.
 
-Pokud chcete povolit superuživatele, vytvořte nového uživatele SQL (`superuser` v tomto příkladu) v každé databázi horizontálního oddílu. Potom změňte zásady zabezpečení s novou predikátem funkci, která umožňuje tento uživatel pro přístup k všechny řádky. Tyto funkce je uvedeno dále.
+Pokud chcete povolit superuživatele, vytvořte nového uživatele SQL (`superuser` v tomto příkladu) v každé databázi horizontálních oddílů. Potom změňte zásady zabezpečení s novou predikátu funkci, která umožňuje tento uživatel pro přístup k všechny řádky. Takové funkce je uvedeno dále.
 
 ```sql
 -- New predicate function that adds superuser logic.
@@ -339,16 +339,16 @@ GO
 
 ### <a name="maintenance"></a>Údržba
 
-- **Přidání nové horizontálních oddílů**: spuštění skriptu T-SQL povolit RLS na všechny nové horizontálních oddílů, jinak nejsou filtrovány dotazy na tyto horizontálních oddílů.
-- **Přidání nové tabulky**: Přidání predikát filtru a blokování do nastavení zásad zabezpečení na všechny horizontálních oddílů vždy, když je vytvořena nová tabulka. V opačném případě nefiltrují dotazy na novou tabulku. Přidání je možné automatizovat pomocí aktivační událost jazyka DDL, jak je popsáno v [použití zabezpečení na úrovni řádků automaticky do nově vytvořené tabulky (blog)](http://blogs.msdn.com/b/sqlsecurity/archive/2015/05/22/apply-row-level-security-automatically-to-newly-created-tables.aspx).
+- **Přidání nových horizontálních oddílů**: spuštění skriptu T-SQL k povolení zabezpečení na úrovni řádků na všech nových horizontálních oddílů, v opačném případě nejsou filtrovány dotazy v těchto horizontálních oddílech.
+- **Přidání nových tabulek**: Přidat predikát filtru a blok zásady zabezpečení na všechny horizontální oddíly pokaždé, když je vytvořena nová tabulka. V opačném případě nefiltrují dotazy na novou tabulku. Toto přidání je možné automatizovat pomocí aktivační událost jazyka DDL, jak je popsáno v [použít zabezpečení na úrovní řádků automaticky na nově vytvořené tabulky (blog)](http://blogs.msdn.com/b/sqlsecurity/archive/2015/05/22/apply-row-level-security-automatically-to-newly-created-tables.aspx).
 
 ## <a name="summary"></a>Souhrn
 
-Nástroje elastické databáze a zabezpečení na úrovni řádků může být společně slouží jako škálování aplikace datové vrstvy s podporou pro oba více klientů a jednoho klienta horizontálních oddílů. Víceklientské horizontálních oddílů lze použít k ukládání dat efektivněji. Této efektivity je výraznější, kde velký počet klientů, které mají jenom pár řádků data. Horizontálních oddílů jednoho klienta může podporovat klienty premium, které mají přísnější výkon a požadavky na izolaci.  Další informace najdete v tématu [zabezpečení na úrovni řádků odkaz][rls].
+Nástroje pro elastické databáze a zabezpečení na úrovní řádků může být horizontální oddíly společně slouží jako horizontální navýšení kapacity aplikace datové vrstvy s podporou pro oba více tenantů a jednoho tenanta. Víceklientské horizontální oddíly je možné ukládat data efektivněji. Této efektivity je výraznější, kde mají pouze několik řádků dat velkého počtu klientů. Horizontální oddíly jednoho tenanta může podporovat tenanti úrovně premium, které mají větší výkon a požadavky na izolaci.  Další informace najdete v tématu [informace o zabezpečení na úrovni řádků][rls].
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-- [Co je Azure elastickém fondu?](sql-database-elastic-pool.md)
+- [Co je elastický fond Azure?](sql-database-elastic-pool.md)
 - [Horizontální navýšení kapacity s Azure SQL Database](sql-database-elastic-scale-introduction.md)
 - [Vzory návrhu pro aplikace SaaS s více tenanty využívající Azure SQL Database](saas-tenancy-app-design-patterns.md)
 - [Ověřování ve víceklientských aplikacích s využitím Azure AD a OpenID Connect](../guidance/guidance-multitenant-identity-authenticate.md)
@@ -356,7 +356,7 @@ Nástroje elastické databáze a zabezpečení na úrovni řádků může být s
 
 ## <a name="questions-and-feature-requests"></a>Otázky a žádosti o funkce
 
-Máte dotazy, kontaktujte nás na [SQL Database fórum](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted). A přidejte všechny žádosti o funkce pro [fóru pro zpětnou vazbu SQL Database](https://feedback.azure.com/forums/217321-sql-database/).
+Máte dotazy, kontaktujte nás na [fórum SQL Database](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted). A přidejte jakékoli žádosti o funkce pro [fóru pro zpětnou vazbu SQL Database](https://feedback.azure.com/forums/217321-sql-database/).
 
 
 <!--Image references-->

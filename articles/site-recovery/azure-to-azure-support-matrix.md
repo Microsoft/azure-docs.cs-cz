@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: sujayt
-ms.openlocfilehash: 43955cd516e9779200b66608270797a66565f53b
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 105c1d97a812841e82a0c364ec7dda097c0dd399
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44378461"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44717365"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Matice podpory pro které se replikují z jedné oblasti Azure do jiné
 
@@ -38,7 +38,7 @@ Tento článek shrnuje podporované konfigurace a komponenty při replikaci a ob
 --- | --- | ---
 **Přesun trezoru mezi skupinami prostředků** | Nepodporuje se<br/><br/> Trezoru služby Recovery services nelze přesouvat mezi skupinami prostředků.
 **Přesunout výpočetní síťi prostředků mezi skupinami prostředků** | Nepodporuje se.<br/><br/> Při přesunutí virtuálního počítače nebo přidružené komponent, jako jsou úložiště nebo sítě po replikuje, musíte zakázat replikaci a znovu povolit replikaci pro virtuální počítač.
-**Replikace virtuálních počítačů Azure z jednoho předplatného do druhého pro zotavení po havárii** | Podporováno ve stejném tenantovi Azure Active Directory pro virtuální počítače "Modelu nasazení Resource manager". Nepodporuje se pro virtuální počítače v modelu nasazení Classic.
+**Replikace virtuálních počítačů Azure z jednoho předplatného do druhého pro zotavení po havárii** | Podporováno ve stejném tenantovi Azure Active Directory. Není podporována pro klasické virtuální počítače.
 **Migrace virtuálních počítačů napříč oblastmi v rámci podporovaných geografických clusterů (v rámci a napříč předplatnými)** | Podporováno ve stejném tenantovi Azure Active Directory pro virtuální počítače "Modelu nasazení Resource manager". Nepodporuje se pro virtuální počítače v modelu nasazení Classic.
 **Migrace virtuálních počítačů ve stejné oblasti** | Nepodporuje se.
 
@@ -207,7 +207,7 @@ Ověřený proxy server | Nepodporuje se | Pokud virtuální počítač použív
 Site to Site VPN s místními (s nebo bez ExpressRoute)| Podporováno | Ujistěte se, že trasy definované uživatelem a skupin zabezpečení sítě jsou nakonfigurovány tak, že provoz obnovení lokality se nesměruje na místní. Odkazovat na [sítě dokument s pokyny.](site-recovery-azure-to-azure-networking-guidance.md)  
 Připojení mezi virtuálními SÍTĚMI | Podporováno | Odkazovat na [sítě dokument s pokyny.](site-recovery-azure-to-azure-networking-guidance.md)  
 Koncové body služby virtuální sítě | Podporováno | Bran firewall Azure Storage pro virtuální sítě nejsou podporovány. Umožňuje přístup ke konkrétním virtuálním sítím Azure v používá k ukládání replikovaných dat účtů úložiště mezipaměti není podporována.
-Akcelerované síťové služby | Nepodporuje se | Je možné replikovat virtuální počítač s Akcelerovanými síťovými službami povolené, ale převzetí služeb při selhání virtuálního počítače nebude mít Akcelerovanými síťovými službami povolena. Akcelerované síťové služby budou taky zakázané pro zdrojový virtuální počítač na navrácení služeb po obnovení.
+Akcelerované síťové služby | Podporováno | Akcelerované síťové služby musí být povolené na zdrojovém virtuálním počítači. [Další informace](azure-vm-disaster-recovery-with-accelerated-networking.md).
 
 
 ## <a name="next-steps"></a>Další postup

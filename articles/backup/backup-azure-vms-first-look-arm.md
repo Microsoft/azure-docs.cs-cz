@@ -11,16 +11,16 @@ ms.date: 08/01/2018
 ms.author: markgal
 ms.custom: H1Hack27Feb2017
 keywords: zálohy. zálohování virtuálních počítačů
-ms.openlocfilehash: c3bb198a65f907080023af707080f60c9c1fccbf
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: fee0e20e232621764ba10d714b7ddfe9c759dafc
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398885"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44717909"
 ---
 # <a name="back-up-azure-virtual-machines-to-recovery-services-vault"></a>Zálohování virtuálních počítačů Azure do trezoru služby Recovery Services
 
-Tento článek vysvětluje, jak Konfigurace ochrany pro virtuální počítač z nabídky operace virtuálního počítače nebo služby Recovery Services vault. Trezory Služeb zotavení chrání:
+Tento článek vysvětluje, jak nakonfigurovat ochranu pro virtuální počítač z nabídky operace virtuálních počítačů nebo do trezoru služby Recovery Services. Trezory Služeb zotavení chrání:
 
 * Virtuální počítače nasazené Azure Resource Managerem
 * Klasické virtuální počítače

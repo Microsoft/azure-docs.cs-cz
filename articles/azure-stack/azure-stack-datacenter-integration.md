@@ -1,6 +1,6 @@
 ---
-title: Datacenter Obecné aspekty integrace pro Azure zásobníku integrované systémy | Microsoft Docs
-description: Zjistěte, co můžete dělat teď plánování a přípravu integrace datového centra s několika uzly Azure zásobníku.
+title: Integrované systémy pro datacenter Obecné aspekty integrace pro Azure Stack | Dokumentace Microsoftu
+description: Zjistěte, co můžete dělat nyní plánování a přípravu integrace datového centra pomocí služby Azure Stack víc uzlů.
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -12,194 +12,191 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/01/2018
+ms.date: 09/12/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 0c43b66a9d6210ea951af3fae5eca8bc6d47c3d9
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 9e5a8cf59d4f1dc47495c5889f8ed4aae64f7ff7
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261212"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44720442"
 ---
-# <a name="datacenter-integration-considerations-for-azure-stack-integrated-systems"></a>Aspekty Datacenter integrace pro Azure zásobníku integrované systémy
-Pokud byste chtěli v systému Azure zásobníku integrované, byste měli porozumět některé hlavní informace o plánování řešení nasazení a jak systému zapadá do vašeho datového centra. Tento článek obsahuje přehled těchto aspektů, který vám pomůže provádět rozhodnutí důležité infrastruktury pro systém Azure zásobníku více uzly. Pochopení těchto aspektů pomáhá při práci s dodavatele hardwaru, od výrobců OEM jako jejich nasazení do vašeho datového centra Azure zásobníku.  
+# <a name="datacenter-integration-considerations-for-azure-stack-integrated-systems"></a>Důležité informace o integraci Datacenter pro integrované systémy Azure Stack
+Pokud vás zajímá systémech pro Azure Stack integrované, měli byste porozumět některé hlavní rozhodnutí při plánování nasazení a jak se systém zapadá do vašeho datového centra. Tento článek obsahuje základní přehled o tyto aspekty, které pomůžou při rozhodování důležitou infrastrukturu pro váš systém Azure Stack víc uzlů. Znalost těchto aspektů pomáhá při práci s OEM dodavatele hardwaru, jako jsou nasazení do vašeho datového centra Azure Stack.  
 
 > [!NOTE]
-> Azure systémech s více uzly zásobníku lze pouze zakoupit od dodavatelů povolený hardware. 
+> Více uzly systémy pro Azure Stack si můžete koupit jenom od dodavatelů povolený hardware. 
 
-K nasazení Azure zásobníku, potřebujete poskytovat informace o plánování pro poskytovatele řešení, před zahájením nasazení pomohou proces přejděte rychle a bez problémů. Informace požadované rozsahy napříč sítí, zabezpečení a informace o identitě s mnoha důležitých rozhodnutí, které mohou vyžadovat znalost z mnoha různých oblastech a vedoucím pracovníkům. Proto můžete chtít stáhnout osoby z více týmy ve vaší organizaci k zajištění, že máte všechny požadované informace, které jsou připravené před zahájením nasazení. Obraťte se na dodavatele hardwaru, při shromažďování těchto informací, protože mohou mít užitečné vaše rozhodování Rady, jak může pomoct.
+Nasazení Azure Stack, budete muset před zahájením nasazení usnadňují proces přejděte rychle a plynule poskytovat informace o plánování poskytovatele řešení. Informace požadované rozsahy adres napříč sítě, zabezpečení a informace o identitě s mnoha důležitých rozhodnutí, které mohou vyžadovat znalosti z mnoha různých oblastech a manažeři s rozhodovací pravomocí. Proto budete muset vyžádat uživatelé z několika týmy ve vaší organizaci, abyste měli jistotu, že máte všechny požadované informace, které jsou připravené před zahájením nasazení. Může pomoct komunikovat s vaším dodavatelem hardwaru při shromažďování těchto informací může být užitečné při rozhodování o vaše Rady, jak mají.
 
-Analýza a shromažďování požadované informace, možná budete muset udělat nějaké změny konfigurace před nasazením do prostředí vaší sítě. To může zahrnovat rezervování adresní prostory IP adres pro řešení Azure zásobníku, konfigurace směrovače, přepínače a brány firewall, aby příprava pro připojení k nové řešení přepínače zásobník Azure. Ujistěte se, že máte expert oblasti subjektu leží až, vám pomohou s plánování.
+Při zkoumání a shromažďují se potřebné informace, může být potřeba udělat nějaké změny konfigurace před nasazením do prostředí vaší sítě. To může zahrnovat rezervace adresní prostory IP adres pro řešení Azure Stack, konfigurace směrovače, přepínače a brány firewall pro přípravu připojení k nové přepínače řešení Azure Stack. Ujistěte se, že jste expert oblasti subjektu u až, vám pomůžou s plánování.
 
-## <a name="capacity-planning-considerations"></a>Informace o plánování kapacity
-Při posuzování o Azure zásobníku řešení pro získávání, musí být provedeny možnostmi konfigurace hardwaru, které mají přímý vliv na celkové kapacity své řešení Azure zásobníku. Mezi ně patří classic Výběr procesoru, paměti hustotu, konfigurace úložiště a škálování celkového řešení (například počet serverů). Na rozdíl od tradičních virtualizace řešení nevztahuje jednoduché aritmetické operace tyto součásti k určení použitelné kapacity. Prvním důvodem je, že zásobník Azure je navržen pro hostování součásti infrastruktury nebo správu v rámci řešení sám sebe. Druhý důvodem je skutečnost, že některé kapacity na řešení je vyhrazen na podporu odolnosti; aktualizace softwaru na řešení tak, aby minimalizuje narušení úlohy klientů. 
+## <a name="capacity-planning-considerations"></a>Co zvážit při plánování kapacity
+Při vyhodnocování řešení Azure Stack určené pro získání, možnosti konfigurace hardwaru se musí provádět které mají přímý vliv na celkové kapacity své řešení Azure Stack. Patří mezi ně classic volby procesoru, paměti hustota, konfigurace úložiště a celkové řešení škálování (například počet serverů). Na rozdíl od tradiční virtualizaci řešení jednoduché aritmetické operace těchto komponent k určení využitelné kapacity se nevztahuje. Prvním důvodem je, že Azure Stack je navržený pro hostování součásti infrastruktury nebo správu v rámci vlastním řešením. Druhý důvodem je, že některé z kapacity řešení nebylo vyhrazeno podporu odolnost; aktualizace softwaru řešení způsobem, který minimalizuje přerušení úlohy klientů. 
 
-[Tabulky Plánovač kapacity zásobník Azure](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) pomáhá provedete informován rozhodnutí ohledně plánování kapacity dvěma způsoby: buď výběrem nabídku hardwaru a pokus o kombinaci prostředků nebo přizpůsobit tak, že definujete zatížení, které Azure zásobníku se má spustit zobrazíte dostupného hardwaru SKU, které ji podporují. Nakonec tabulku slouží jako vodítko při přijímání rozhodnutí související s Azure zásobník plánování a konfigurace. 
+[Tabulky Plánovač kapacity Azure Stack](https://aka.ms/azstackcapacityplanner) pomáhá provedete informováni rozhodnutí ohledně plánování kapacity dvěma způsoby: buď výběrem nabídky hardwaru a pokusu přizpůsobit kombinace prostředků nebo tak, že definujete úlohy, které Azure Stack je určena pro spuštění zobrazíte dostupného hardwaru skladových položek, které může podporovat. Nakonec tabulky uvádí, které tento průvodce vám pomůžou dělat rozhodnutí související s Azure Stack plánování a konfigurace. 
 
-Tabulku není určeno k sloužit jako náhrada pro zkoumání a analýzu.  Společnost Microsoft neposkytuje žádná vyjádření či záruky, vyjádřené nebo předpokládané, s ohledem na informace uvedené v tabulce.
+Tabulka není určena pro sloužit jako náhradu pro zkoumání a analýzy.  Společnost Microsoft neposkytuje žádná vyjádření či záruky, vyjádřené nebo předpokládané, s ohledem na informace uvedené v tabulce.
 
 
 
 ## <a name="management-considerations"></a>Aspekty správy
-Azure zásobník je zapečetěné systému, kde infrastruktury je uzamčené z oprávnění i a síťový perspektivy. Sítě seznamy řízení přístupu (ACL) se použijí pro blokovat veškerý příchozí provoz neoprávněným a všechny zbytečné komunikace mezi součástmi infrastruktury. Díky tomu je obtížné neoprávněným uživatelům přístup k systému.
+Azure Stack je zapečetěná systému, kde infrastruktury je uzamčené i z oprávnění a síťové perspektivy. Sítě seznamy řízení přístupu (ACL) se použijí pro blokování všech neoprávněný příchozí provoz a všechny nepotřebné komunikaci mezi součástmi infrastruktury. Díky tomu je obtížné neoprávněným uživatelům přístup k systému.
 
-Pro každodenní správu a operace neexistuje žádný správce neomezený přístup k infrastruktuře. Operátory Azure zásobníku musí spravovat systém prostřednictvím portálu správce nebo prostřednictvím Správce Azure Resource Manager (prostřednictvím prostředí PowerShell nebo rozhraní REST API). Není k dispozici přístup k systému pomocí jiné nástroje pro správu, například Správce technologie Hyper-V nebo Správce clusteru převzetí služeb při selhání. K ochraně systému, nelze nainstalovat software jiných výrobců (například agenty) uvnitř součástí infrastruktury Azure zásobníku. Vzájemná funkční spolupráce s externí správu a zabezpečení softwaru dojde k pomocí prostředí PowerShell nebo rozhraní REST API.
+Pro každodenní správu a provoz není k dispozici správce neomezený přístup k infrastruktuře. Operátoři Azure stacku musí spravovat systém prostřednictvím portálu správce nebo prostřednictvím Azure Resource Manageru (prostřednictvím Powershellu nebo rozhraní REST API). Neexistuje žádný přístup k systému – jiné nástroje pro správu, jako je například Správce technologie Hyper-V nebo Správce clusteru převzetí služeb při selhání. K ochraně systému, nelze nainstalovat software třetí strany (například agentů) uvnitř komponenty infrastruktury Azure stacku. Vzájemná funkční spolupráce s externí správu a zabezpečení softwaru dojde k prostřednictvím Powershellu nebo rozhraní REST API.
 
-Vyšší úroveň přístupu je potřeba pro řešení potíží, které nejsou přeložit prostřednictvím výstrahy zprostředkování kroky, musíte spolupracovat s Microsoft Support. Prostřednictvím podpory je metoda zajistit dočasný správce s úplnými oprávněními přístup k systému provádět pokročilejší operace. 
+Vyšší úroveň přístupu je potřeba pro řešení potíží s problémy, které nejsou vyřešené výstrahy zprostředkování kroky, musí pracovat s Microsoft Support. Díky podpoře je metoda a zajistit tak dočasné správce s úplnými oprávněními přístup k systému provádět pokročilé operace. 
 
-## <a name="identity-considerations"></a>Aspekty identity
+## <a name="identity-considerations"></a>Důležité informace o identity
 
-### <a name="choose-identity-provider"></a>Vyberte poskytovatele správy identit
-Musíte vzít v úvahu identity poskytovatele, kterého chcete použít pro nasazení zásobník Azure, Azure AD ani AD FS. Po nasazení bez opětovného nasazení úplnou nelze přepnout poskytovatelů identit. Pokud nejste vlastníkem účet Azure AD a používáte účet, které jste získali od poskytovatele cloudových služeb, a pokud se rozhodnete přepnout zprostředkovatele a použijte jiný Azure AD účet, v tomto okamžiku budete muset obraťte se na svého poskytovatele řešení k opětovnému nasazení řešení f nebo můžete na vaše náklady.
+### <a name="choose-identity-provider"></a>Vyberte zprostředkovatele identity
+Musíte vzít v úvahu kterého zprostředkovatele identity, kterou chcete použít pro nasazení Azure Stack, Azure AD nebo AD FS. Po nasazení bez opětovného nasazení celé systému nelze přepnout zprostředkovatelé identity. Pokud nejste vlastníkem účtu služby Azure AD a používáte účet, které jste získali od poskytovatele cloudových služeb, a pokud se rozhodnete přepínání poskytovatele a jiné služby Azure AD pomocí účtu, v tomto okamžiku budete muset kontaktovat svého poskytovatele řešení k opětovnému nasazení řešení f nebo můžete na vaše náklady.
 
 
 
-Svou volbu zprostředkovatele identity nemá žádný vliv na klientské virtuální počítače, identitu systému a účty, které používají, zda bylo možné připojit doméně služby Active Directory atd. Toto je samostatný.
+Zvoleného poskytovatele identity nemá žádný vliv na klientské virtuální počítače, identitu systému a účty, které používají, zda se můžete připojit doméně služby Active Directory atd. Toto je samostatný.
 
-Další informace o výběru zprostředkovatele identity v [zásobník Azure integrované systémy připojení modely článku](.\azure-stack-connection-models.md).
+Další informace o výběru zprostředkovatele identity v [článku modelů připojení integrované systémy Azure Stack](.\azure-stack-connection-models.md).
 
 ### <a name="ad-fs-and-graph-integration"></a>Integrace služby AD FS a graf
-Pokud se rozhodnete nasadit zásobník Azure pomocí služby AD FS jako zprostředkovatele identity, musíte integrovat instanci služby AD FS v zásobníku Azure s existující instancí služby AD FS přes důvěryhodnost federace. To umožňuje identit v existující doménové struktury služby Active Directory k ověření s prostředky v Azure zásobníku.
+Pokud budete chtít nasadit Azure Stack pomocí služby AD FS jako zprostředkovatele identity, musíte integrovat instance služby AD FS v Azure stacku s existující instancí služby AD FS přes důvěryhodnost federace. To umožňuje identit v existující doménové struktury služby Active Directory k ověření pomocí prostředků ve službě Azure Stack.
 
-Můžete také integrovat službu grafu v zásobníku Azure s existující služby Active Directory. To umožňuje spravovat na základě rolí řízení přístupu (RBAC) v Azure zásobníku. Když je delegovaný přístup k prostředku, vyhledá komponentu grafu uživatelský účet v existující doménové struktuře služby Active Directory pomocí protokolu LDAP.
+Můžete také integrovat službu grafu ve službě Azure Stack s existující služby Active Directory. To umožňuje spravovat na základě rolí řízení přístupu (RBAC) v Azure stacku. Když se deleguje přístup k prostředku, komponenta grafu vyhledá uživatelský účet v existující doménové struktuře služby Active Directory pomocí protokolu LDAP.
 
-Následující diagram znázorňuje integrované služby AD FS a graf tok přenosů.
-![Diagram zobrazuje tok přenosů služby AD FS a graf](media/azure-stack-datacenter-integration/ADFSIntegration.PNG)
+Následující diagram znázorňuje integrované služby AD FS a grafu toku provozu.
+![Diagram znázorňující tok provozu služby AD FS a grafu](media/azure-stack-datacenter-integration/ADFSIntegration.PNG)
 
-## <a name="licensing-model"></a>Model správy licencí
-Musíte rozhodnout, které licenčním modelu, který chcete použít. Dostupné možnosti závisí na, jestli nasazení Azure zásobníku připojení k Internetu:
-- Pro [připojené nasazení](azure-stack-connected-deployment.md), můžete zvolit platím jako--používání nebo na základě kapacity licencování. Platím jako--používání vyžaduje připojení k Azure sestavy využití, které se pak fakturuje prostřednictvím Azure commerce. 
-- Licencování pouze na základě kapacity jsou podporované, když jste [nasazení odpojení](azure-stack-disconnected-deployment.md) z Internetu. 
+## <a name="licensing-model"></a>Licenční model
+Musíte rozhodnout, které licenčního modelu, který chcete použít. Dostupné možnosti závisí na Určuje, jestli nasazení Azure Stack připojený k Internetu:
+- Pro [připojené nasazení](azure-stack-connected-deployment.md), můžete platit jako využití nebo založená na kapacitě licencování. Platba jako využití vyžaduje připojení k Azure pro využití sestav, které se pak fakturuje v rámci Azure commerce. 
+- Pouze licencování na základě kapacity je podporován, když jste [nasazení odpojení](azure-stack-disconnected-deployment.md) z Internetu. 
 
-Další informace o licencování modelech najdete v tématu [Microsoft Azure zásobníku balení a ceny](https://azure.microsoft.com/mediahandler/files/resourcefiles/5bc3f30c-cd57-4513-989e-056325eb95e1/Azure-Stack-packaging-and-pricing-datasheet.pdf).
+Další informace o licenční modely najdete v tématu [Microsoft Azure Stack balení a ceny](https://azure.microsoft.com/mediahandler/files/resourcefiles/5bc3f30c-cd57-4513-989e-056325eb95e1/Azure-Stack-packaging-and-pricing-datasheet.pdf).
 
 
 ## <a name="naming-decisions"></a>Pojmenování rozhodnutí
 
-Budete muset myslíte o tom, jak chcete naplánujte zásobník Azure obor názvů, zejména název oblast a název externí domény. Externí název plně kvalifikované domény (FQDN) nasazení Azure zásobníku pro veřejné koncové body se rozumí kombinace těchto dvou názvy: &lt; *oblast*&gt;.&lt; *plně kvalifikovaný název domény*&gt;. Například *east.cloud.fabrikam.com*. V tomto příkladu bude k dispozici na následující adresy URL portálů zásobník Azure:
+Bude potřeba uvažovat o způsobu plánování oboru názvů služby Azure Stack, zejména název oblasti a název externí domény. Externí plně kvalifikovaný název domény (FQDN) nasazení Azure Stack pro veřejných koncových bodů je kombinací těchto dvou názvů: &lt; *oblasti*&gt;.&lt; *plně kvalifikovaný název domény*&gt;. Například *east.cloud.fabrikam.com*. V tomto příkladu bude k dispozici na na následující adresy URL na portálech Azure Stack:
 
 - https://portal.east.cloud.fabrikam.com
 - https://adminportal.east.cloud.fabrikam.com
 
 > [!IMPORTANT]
-> Název oblasti, které zvolíte pro vaše nasazení zásobník Azure musí být jedinečný a zobrazí se v portálu adresy. 
+> Název oblasti, kterou jste vybrali pro nasazení Azure Stack musí být jedinečný a zobrazí se v portálu adresy. 
 
-Následující tabulka shrnuje tato rozhodnutí pojmenování domény.
+Následující tabulka shrnuje tato rozhodnutí názvů domény.
 
 | Název | Popis | 
 | -------- | ------------- | 
-|Název oblasti | Název vaší první oblasti Azure zásobníku. Tento název se používá jako součást plně kvalifikovaný název domény pro veřejnou virtuální IP adresy (VIP) se spravuje zásobník Azure. Název oblasti obvykle, bude identifikátor fyzické umístění, jako je například umístění datového centra. | 
-| Název externí domény | Název zóny, systému DNS (Domain Name) pro koncové body pomocí externího virtuální IP adresy. Použít ve plně kvalifikovaný název domény pro tyto veřejné virtuální IP adresy. | 
-| Název domény privátní (interní) | Název domény (a interní DNS zóny) vytvořit v zásobníku Azure pro správu infrastruktury. 
+|Název oblasti | Název vaší první oblasti Azure Stack. Tento název se používá jako součást plně kvalifikovaný název domény pro veřejnou virtuální IP adresy (VIP), které spravuje Azure Stack. Název oblasti obvykle by měl být identifikátor fyzické umístění, jako je například umístění datového centra.<br><br>Název oblasti musí obsahovat jenom písmena a číslice mezi 0 až 9. Žádné speciální znaky, například "-" nebo "#", atd. jsou povoleny.| 
+| Název externí domény | Název zóny systému DNS (Domain Name) pro koncové body s externích virtuálních IP adres. Používá se v plně kvalifikovaný název domény pro tyto veřejné virtuální IP adresy. | 
+| Název domény privátní (interní) | Název domény (a interní DNS zóny) vytvořené ve službě Azure Stack pro správu infrastruktury. 
 | | |
 
 ## <a name="certificate-requirements"></a>Požadavky na certifikát
 
-Pro nasazení budete potřebovat zajistit certifikáty, Secure Sockets Layer (SSL) pro veřejné koncové body. Certifikáty na vysoké úrovni, mají tyto požadavky:
+Pro nasazení budete muset poskytnout vrstvy SSL (Secure Sockets) certifikáty pro koncové body veřejnou. Na vysoké úrovni certifikáty mají následující požadavky:
 
-- Můžete použít certifikát se zástupným znakem jednoho nebo můžete použít sadu vyhrazené certifikáty a použít zástupné znaky pouze pro koncové body, jako je například úložiště a Key Vault.
-- Certifikáty, může být vydaný veřejnou důvěryhodné certifikační autority (CA) nebo spravované zákazníkem certifikační Autority.
+- Můžete použít jeden zástupný znak certifikát nebo můžete použít sadu vyhrazených certifikáty a použít zástupné znaky pouze pro koncové body, jako jsou úložiště a služby Key Vault.
+- Certifikáty můžou být vystavené důvěryhodné veřejné certifikační autority (CA) nebo spravované zákazníkem certifikační Autority.
 
-Další informace o jaké infrastruktury veřejných KLÍČŮ jsou certifikáty potřebné k nasazení zásobník Azure a získat je najdete v tématu, [požadavky na certifikáty infrastruktury veřejných klíčů Azure zásobníku](azure-stack-pki-certs.md).  
+Další informace o jaké infrastruktury veřejných KLÍČŮ certifikáty jsou nutné k nasazení Azure Stack a tom, jak je získat, najdete v článku, [požadavky na certifikáty infrastruktury veřejných klíčů v Azure stacku](azure-stack-pki-certs.md).  
 
 
 > [!IMPORTANT]
-> Zadané informace o certifikátu PKI slouží jako obecné pokyny. Než získáte všechny certifikáty infrastruktury veřejných KLÍČŮ pro Azure zásobníku, spolupracovat s partnerským hardwaru výrobce OEM. Zadá podrobnější pokyny certifikátu a požadavky.
+> Zadané informace o certifikátu PKI by měla sloužit jako obecné pokyny. Než si koupíte jakékoli certifikáty infrastruktury veřejných KLÍČŮ pro Azure Stack, spolupráci s partnerem hardwaru výrobce OEM. Poskytnou podrobnější pokyny k certifikátu a požadavky.
 
 
-## <a name="time-synchronization"></a>Synchronizaci času
-Musíte vybrat určitý čas, který server s se používá k synchronizaci Azure zásobníku.  Čas symbolization je velmi důležité zásobník Azure a její role infrastruktury, jako se používá ke generování lístky protokolu Kerberos, které se používají k ověření interních služeb mezi sebou.
+## <a name="time-synchronization"></a>Čas synchronizace
+Je nutné vybrat určitou dobu, kterou server s se používá k synchronizaci služby Azure Stack.  Symbolization čas je důležité pro Azure Stack a jeho infrastruktury role, protože se používá ke generování lístky protokolu Kerberos, které se používají k ověření interních služeb mezi sebou.
 
-Je nutné zadat, že IP adresy pro čas synchronizace serveru, i když většina komponenty v infrastruktuře můžete vyřešit adresu URL, některé podporuje pouze IP adresy. Pokud jste se používá možnost odpojené nasazení, je nutné zadat čas serveru ve vaší podnikové síti, které jste opravdu dosažitelný z infrastruktury sítě v Azure zásobníku.
+Je nutné zadat, že integrační balíček pro server synchronizace času, i když většina komponent v infrastruktuře lze přeložit adresu URL, některé může podporovat jenom IP adresy. Pokud jste se pomocí možnosti odpojené nasazení, je nutné zadat čas v podnikové síti, kterou Opravdu se dá kontaktovat server ze sítě infrastruktury v Azure stacku.
 
-## <a name="connect-azure-stack-to-azure"></a>Připojit k Azure Azure zásobníku
+## <a name="connect-azure-stack-to-azure"></a>Azure Stack připojení k Azure
 
-U scénářů s hybridní cloudové budete muset naplánovat, jak se chcete připojit zásobník Azure do Azure. Existují dvě podporované metody pro připojení virtuálních sítí v Azure zásobníku virtuálních sítí v Azure: 
-- **Site-to-site**. Připojení virtuální privátní sítě (VPN) prostřednictvím protokolu IPsec (IKE v1 a IKE v2). Tento typ připojení vyžaduje zařízení VPN nebo směrování a vzdálený přístup (RRAS). Další informace o branách VPN v Azure najdete v tématu [o službě VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). Komunikace přes tento tunel je šifrovaný a je bezpečné. Ale je omezena šířka pásma maximální propustnost tunelového propojení (100 – 200 MB/s).
-- **Odchozí NAT**. Ve výchozím nastavení budou všechny virtuální počítače v Azure zásobníku mít připojení k externím sítím přes odchozí adres (NAT) Každý virtuální sítě, který je vytvořen v zásobníku Azure získá přiřazen veřejnou IP adresu. Ať už virtuální počítač je přímo přiřazenou veřejnou IP adresu, nebo je za službou Vyrovnávání zatížení s veřejnou IP adresu, bude mít odchozí přístup přes odchozí NAT pomocí virtuální IP adresu ve virtuální síti. Tento postup funguje pouze pro komunikaci, která se spouští virtuální počítač a je určený pro externí sítě (Internetu nebo intranetu). Nelze se používá ke komunikaci s virtuálním počítačem mimo.
+U scénářů s hybridní cloud, musíte naplánovat, jak chcete pro připojení služby Azure Stack k Azure. Existují dvě podporované metody k propojení virtuálních sítí ve službě Azure Stack k virtuálním sítím v Azure: 
+- **Site-to-site**. Připojení virtuální privátní sítě (VPN) prostřednictvím protokolu IPsec (IKE v1 a IKE v2). Tento typ připojení vyžaduje zařízení VPN nebo směrování a vzdálený přístup (RRAS). Další informace o VPN Gateway v Azure najdete v tématu [informace o službě VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). Komunikace přes tento tunel je šifrovaný a je bezpečné. Šířka pásma je však omezená maximální propustnost tunelového propojení (100 – 200 MB/s).
+- **Odchozí NAT**. Ve výchozím nastavení všechny virtuální počítače ve službě Azure Stack, budou mít připojení k externím sítím přes odchozí NAT. Každá virtuální síť, která se vytvoří ve službě Azure Stack získá přiřazenou k němu veřejnou IP adresu. Virtuální počítač je přímo přiřazena veřejná IP adresa nebo je za nástroj pro vyrovnávání zatížení s veřejnou IP adresu, bude mít odchozí přístup přes odchozí NAT pomocí virtuální IP adresu ve virtuální síti. Tento postup funguje pouze pro komunikaci, která je zahájeno virtuálním počítačem a je určený pro sítě externí (internet nebo intranet). Nelze použít ke komunikaci s virtuálním počítačem mimo.
 
-### <a name="hybrid-connectivity-options"></a>Možnosti hybridní připojení
+### <a name="hybrid-connectivity-options"></a>Hybridní možnosti připojení
 
-Hybridní připojení je důležité vzít v úvahu, jaký typ nasazení, můžete chtít nabízet a kde bude nasazen. Budete muset zvážit, jestli chcete izolovat síťový provoz na každého klienta, a jestli budete mít k intranetu nebo Internetu nasazení.
+Hybridní připojení je důležité vzít v úvahu, jaký typ nasazení, které chcete nabízet a kam se nasadí. Musíte vzít v úvahu, jestli chcete izolovat síťový provoz na tenanta a určuje, zda bude nutné při nasazování intranetu nebo Internetu.
 
-- **Jednoho klienta Azure zásobníku**. Nasazení zásobník Azure, která vypadá, alespoň z hlediska sítě, pokud je jeden klienta. Může být, že mnoho klientů odběry, ale stejně jako služby intranetu, veškerý provoz přenáší přes stejné sítě. Síťový provoz z jednoho předplatného přenáší přes síťové připojení stejné jako jiné předplatné a nemusí být izolované přes šifrované tunelové propojení.
+- **Azure Stack s jedním tenantem**. Nasazení služby Azure Stack, která vypadá, alespoň z hlediska sítě, jako by byl jednoho tenanta. Může být, že mnoho klientů předplatných, ale stejně jako služby intranetu, veškerý provoz bude procházet přes stejné sítě. Síťový provoz z jednoho předplatného bude procházet přes stejné připojení jako jiné předplatné a nemusí být izolované prostřednictvím šifrovaného tunelu.
 
-- **Zásobník Azure víceklientské**. Nasazení služby Azure zásobníku, kde musí být každého klienta předplatného provoz, který je vázaný sítě, které jsou externí vzhledem k Azure zásobníku izolované od ostatních klientů síťový provoz.
+- **Azure Stack s více tenanty**. Nasazení služby Azure Stack, kde musí být izolované od ostatních tenantů síťové přenosy tenanta předplatného provoz, který je vázaný sítě, které jsou externí vzhledem k Azure Stack.
  
-- **Nasazení v síti intranet**. Nasazení služby Azure zásobníku, která se nachází v podnikovém intranetu, obvykle na prostor privátní IP adresy a za jeden nebo více bran firewall. Veřejné IP adresy nejsou skutečně veřejné, protože nedá se trasovat přímo prostřednictvím veřejného Internetu.
+- **Nasazení v síti intranet**. Nasazení služby Azure Stack, který je umístěný v podnikové síti intranet, obvykle v privátní adresní prostor IP adres a za jeden nebo více bran firewall. Veřejné IP adresy nejsou skutečně veřejné, protože nemůže být směrován přímo přes veřejný internet.
 
-- **Nasazení Internet**. Nasazení služby zásobník Azure, která je připojena k veřejnosti Internetu a používá směrovatelných v Internetu veřejné IP adresy pro veřejný rozsah virtuálních IP adres. Nasazení můžete stále nacházejí za bránou firewall, ale veřejné rozsah virtuálních IP adres je přímo dosažitelný z veřejného Internetu a Azure.
+- **Nasazení Internet**. Nasazení služby Azure Stack, který je připojený k veřejného Internetu a používá směrovatelných v Internetu veřejné IP adresy pro veřejný rozsah virtuálních IP adres. Nasazení se můžete stále nacházejí za bránou firewall, ale veřejné rozsah virtuálních IP adres je přímo dostupné z veřejného Internetu a z Azure.
  
-Následující tabulka shrnuje hybridní scénáře připojení s výhody, nevýhody a případy použití.
+Následující tabulka shrnuje scénáře hybridních připojení, s profesionály v oboru, nevýhody a případy použití.
 
-| Scénář | Metoda připojení | Odborníci na | Nevýhody | Je vhodný pro |
+| Scénář | Připojení – metoda | V oblasti IT | Nevýhody | Vhodné pro |
 | -- | -- | --| -- | --|
-| Jeden klient Azure zásobník nasazení v síti intranet | Odchozí NAT | Lepší šířku pásma pro přenosy na rychlejší. Jednoduchá implementace; nemá žádné brány vyžaduje. | Provoz nejsou šifrovaná; žádná izolace nebo šifrování mimo zásobníku. | Podnikové nasazení, kde jsou rovnoměrně důvěryhodné všichni klienti.<br><br>Podnikům, které mají okruh Azure ExpressRoute do Azure. |
-| Víceklientské Azure zásobník nasazení v síti intranet | Site-to-site VPN | Je bezpečné provoz z virtuální sítě klienta do cílové. | Tunelové propojení VPN typu site-to-site je omezena šířka pásma.<br><br>Vyžaduje bránu virtuální sítě a zařízení v cílové síti VPN. | Musí být zabezpečená podnikového nasazení, kde některé přenosy dat klientů od ostatních klientů. |
-| Jeden klient Azure zásobník internet nasazení | Odchozí NAT | Lepší šířku pásma pro přenosy na rychlejší. | Provoz nejsou šifrovaná; žádná izolace nebo šifrování mimo zásobníku. | Hostování scénáře, kde klient získá vlastní nasazení Azure zásobníku a vyhrazené okruhu do prostředí Azure zásobníku. Například ExpressRoute a Multiprotocol Label přepínání (MPLS).
-| Víceklientské Azure zásobník internet nasazení | Site-to-site VPN | Je bezpečné provoz z virtuální sítě klienta do cílové. | Tunelové propojení VPN typu site-to-site je omezena šířka pásma.<br><br>Vyžaduje bránu virtuální sítě a zařízení v cílové síti VPN. | Scénáře, kde chce víceklientská Cloudová nabízejí poskytovatele hostování, kde není klienti důvěřovat navzájem a přenosy dat musí být zašifrován.
+| Jeden tenant služby Azure Stack, nasazení v síti intranet | Odchozí NAT. | Lepší šířku pásma pro přenosy rychlejší. Jednoduchá implementace; není vyžadováno žádné brány. | Provoz nejsou šifrovaná; žádná izolace nebo šifrování mimo zásobníku. | Podnikové nasazení, kde jsou všechny tenanty stejně důvěryhodné.<br><br>Podniky, které mají okruh Azure ExpressRoute pro Azure. |
+| Více tenantů Azure Stack, nasazení v síti intranet | Site-to-site VPN | Provoz z virtuální sítě tenanta do cíle je zabezpečená. | Šířka pásma je omezená tunelového připojení sítě VPN site-to-site.<br><br>Vyžaduje bránu virtuální sítě a zařízení sítě VPN v cílové síti. | Musí být zabezpečená podniková nasazení, kde některé přenosy dat klientů z jiných tenantů. |
+| Jeden tenant služby Azure Stack, internet nasazení | Odchozí NAT. | Lepší šířku pásma pro přenosy rychlejší. | Provoz nejsou šifrovaná; žádná izolace nebo šifrování mimo zásobníku. | Hostování scénáře, ve kterém tenant získá vlastní nasazení Azure stacku a vyhrazeného okruhu do prostředí Azure Stack. Například ExpressRoute a Multiprotocol Label přepínání (MPLS).
+| Více tenantů Azure Stack, internet nasazení | Site-to-site VPN | Provoz z virtuální sítě tenanta do cíle je zabezpečená. | Šířka pásma je omezená tunelového připojení sítě VPN site-to-site.<br><br>Vyžaduje bránu virtuální sítě a zařízení sítě VPN v cílové síti. | Scénáře, kdy chce nabízí Cloudová víceklientská poskytovatele hostování, ve kterém klienti nedůvěřovat mezi sebou a provozu musí být zašifrován.
 |  |  |  |  |  |
 
-### <a name="using-expressroute"></a>Pomocí služby ExpressRoute
+### <a name="using-expressroute"></a>Pomocí ExpressRoute
 
-Zásobník Azure můžete připojit k Azure přes [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) pro jednoho klienta intranetu i víceklientské scénáře. Budete potřebovat zřízené okruh ExpressRoute prostřednictvím [poskytovatele připojení](https://docs.microsoft.com/azure/expressroute/expressroute-locations).
+Azure Stack se můžete připojit k Azure prostřednictvím [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) pro jednoho tenanta intranetu a scénářích s více tenanty. Budete potřebovat zřízené okruh ExpressRoute prostřednictvím [poskytovatelem připojení](https://docs.microsoft.com/azure/expressroute/expressroute-locations).
 
-Následující diagram znázorňuje ExpressRoute pro jednoho klienta scénář (kde "Zákazníka připojení" je okruh ExpressRoute).
+Následující diagram znázorňuje ExpressRoute pro jednoho tenanta scénář (kde ""zákazníka připojení je okruh ExpressRoute).
 
-![Diagram znázorňující jednoho klienta ExpressRoute scénář](media/azure-stack-datacenter-integration/ExpressRouteSingleTenant.PNG)
+![Diagram znázorňující jednoho tenanta ExpressRoute scénář](media/azure-stack-datacenter-integration/ExpressRouteSingleTenant.PNG)
 
-Následující diagram znázorňuje ExpressRoute pro scénář více klientů.
+Následující diagram znázorňuje ExpressRoute pro scénářích s více tenanty.
 
 ![Diagram znázorňující víceklientské ExpressRoute scénář](media/azure-stack-datacenter-integration/ExpressRouteMultiTenant.PNG)
 
 ## <a name="external-monitoring"></a>Externí monitorování
-Získat jediné zobrazení všech výstrah ze zařízení a nasazení Azure zásobníku a integrovat do existujících IT služby pracovních postupů správy pro zpracování lístků výstrahy, můžete [integrovat externí datacenter sledování řešeníAzurezásobníku](azure-stack-integrate-monitor.md).
+Chcete-li získat jednotné zobrazení všech výstrah ze zařízení a nasazení Azure stacku a integrujte upozornění do existujících IT služby pracovních postupů správy pro vytváření tiketů, můžete [Azure Stack integrujte monitorování řešeníexterníchdatacenter](azure-stack-integrate-monitor.md).
 
-Je součástí řešení Azure zásobníku, hostitele životního cyklu hardwaru počítače mimo Azure zásobníku, který spouští nástroje pro správu poskytuje výrobce OEM pro hardware. Můžete použít tyto nástroje nebo jiná řešení, které přímo integrovat existující řešení monitorování ve vašem datovém centru.
+Je součástí řešení Azure Stack, životní cyklus hostitelský hardware počítače mimo Azure Stack, na kterém běží OEM nástroje pro správu poskytnutých dodavatelem hardwaru. Můžete použít tyto nástroje nebo jiných řešeních, která se integrují přímo se stávajícími řešeními monitorování ve vašem datovém centru.
 
 Následující tabulka shrnuje seznam aktuálně dostupných možností.
 
 | Oblast | Externí řešení monitorování |
 | -- | -- |
-| Azure softwaru zásobníku | [Azure zásobníku sady Management Pack pro nástroj Operations Manager](https://azure.microsoft.com/blog/management-pack-for-microsoft-azure-stack-now-available/)<br>[Modul plug-in Nagios](https://exchange.nagios.org/directory/Plugins/Cloud/Monitoring-AzureStack-Alerts/details)<br>Na základě REST API – volání | 
-| Fyzické servery (přes rozhraní IPMI BMC) | Hardware OEM – sada management pack Operations Manager dodavatele<br>Řešení poskytuje dodavatel hardwaru výrobce OEM<br>Dodavatele hardwaru Nagios moduly plug-in | Výrobce OEM partnera podporováno monitorování řešení (součást) | 
-| Síťová zařízení (SNMP) | Zjišťování síťových zařízení Operations Manager<br>Řešení poskytuje dodavatel hardwaru výrobce OEM<br>Přepínač Nagios modulu plug-in |
-| Sledování stavu předplatného klienta | [Sada System Center Management Pack pro systém Windows Azure](https://www.microsoft.com/download/details.aspx?id=50013) | 
+| Azure Stack software | [Azure Stack sady Management Pack pro nástroj Operations Manager](https://azure.microsoft.com/blog/management-pack-for-microsoft-azure-stack-now-available/)<br>[Modul plug-in Nagios](https://exchange.nagios.org/directory/Plugins/Cloud/Monitoring-AzureStack-Alerts/details)<br>Volání rozhraní API založených na REST | 
+| Fyzické servery (pro správu základní desky přes rozhraní IPMI) | Výrobce OEM hardware - sady management pack Operations Manageru dodavatele<br>Výrobce OEM hardwaru poskytnutých dodavatelem řešení<br>Dodavatel hardwaru Nagios moduly plug-in | Výrobce OEM partnera podporováno monitorování řešení (zahrnout) | 
+| Síťová zařízení (SNMP) | Zjišťování síťových zařízení pomocí Operations Manageru<br>Výrobce OEM hardwaru poskytnutých dodavatelem řešení<br>Přepnout modul plug-in Nagios |
+| Monitorování stavu předplatného tenanta | [System Center Management Pack pro Windows Azure](https://www.microsoft.com/download/details.aspx?id=50013) | 
 |  |  | 
 
 Vezměte na vědomí následující požadavky:
-- Řešení, které používáte, musí být bez agenta. Nelze instalovat agenty třetích stran uvnitř součásti zásobníku Azure. 
-- Pokud chcete použít System Center Operations Manager, je třeba nástroje Operations Manager 2012 R2 nebo Operations Manager 2016.
+- Řešení, které používáte, musí být bez agentů. Nemůžete instalovat agenty třetích stran v Azure stacku komponenty. 
+- Pokud chcete použít System Center Operations Manager, Operations Manager 2012 R2 nebo Operations Manageru 2016 je vyžadována.
 
 ## <a name="backup-and-disaster-recovery"></a>Zálohování a zotavení po havárii
 
-Plánování zálohování a zotavení po havárii zahrnuje plánování pro obě základní zásobník Azure infrastrukturu, která hostuje virtuální počítače IaaS a PaaS služby a pro klienta aplikace a data. Musíte naplánovat pro tyto samostatně.
+Plánování zálohování a zotavení po havárii zahrnuje plánování pro obě základní infrastruktury služby Azure Stack, který hostuje virtuální počítače IaaS a PaaS služby a pro klienta aplikace a data. Je nutné naplánovat odděleně pro tyto.
 
-### <a name="protect-infrastructure-components"></a>Chránit součásti infrastruktury
+### <a name="protect-infrastructure-components"></a>Ochrana komponent infrastruktury
 
-Můžete [zálohování Azure zásobníku](azure-stack-backup-back-up-azure-stack.md) sdílet součásti infrastruktury pro SMB, zadejte:
+Je možné [zálohování Azure stacku](azure-stack-backup-back-up-azure-stack.md) součásti infrastruktury pro SMB sdílejí, že zadáte:
 
-- Budete potřebovat externí sdílené složce SMB na existující server systému Windows soubor nebo zařízení třetích stran.
-- Měli byste použít této stejné sdílené složce pro zálohování síťové přepínače a životního cyklu hostitele hardwaru. Dodavatele hardwaru, od výrobců OEM pomůže poskytnout pokyny pro zálohování a obnovení všechny tyto komponenty jsou tyto externí do protokolů Azure. Jste zodpovědná za spuštění zálohování pracovních postupů na základě doporučení výrobce OEM.
+- Budete potřebovat externí sdílené složky protokolu SMB na existující soubor založený na Windows server nebo na zařízení třetích stran.
+- Tato stejnou sdílenou složku byste měli použít pro zálohování síťové přepínače a životního cyklu hostitelský hardware. Výrobce OEM dodavatele hardwaru pomůže poskytnout pokyny pro zálohování a obnovení tyto součásti jsou tyto externí do služby Azure Stack. Jste zodpovědná za spuštění zálohování pracovních postupů podle doporučení výrobce OEM.
 
-Pokud dojde k závažné ztráty dat, můžete použít infrastrukturu zálohy dat nasazení opakovaným přidáním jako certifikát kořenové certifikační Autority nasazení pro vstupy a identifikátory, účty služby, federované prostředky (v odpojených nasazení), plánů, nabídky odběry, kvóty, RBAC roli zásady a přiřazení a tajné klíče Key Vault.
+Pokud dojde ke ztrátě dat, můžete použít zálohování infrastruktury reseed nasazení dat. například certifikát kořenové certifikační Autority nasazení pro vstupy a identifikátory, účty služeb, federované prostředky (v odpojených nasazení), plány, nabídky, odběry, kvóty, přiřazení zásad a role RBAC a tajných kódů služby Key Vault.
  
-### <a name="protect-tenant-applications-on-iaas-virtual-machines"></a>Chránit aplikace od klienta na virtuální počítače IaaS
+### <a name="protect-tenant-applications-on-iaas-virtual-machines"></a>Ochrana aplikací tenanta na virtuálních počítačích IaaS
 
-Azure zásobníku nezálohuje až klienta aplikace a data. Je nutné naplánovat zálohování a po havárii obnovení ochrany na cíl, externí do protokolů Azure. Ochranu klienta je aktivita řízené klienta. Pro virtuální počítače IaaS můžete klientů používat technologie v hosta k ochraně souborů, složek, data aplikací a stavu systému. Jako poskytovatel enterprise nebo službě, můžete však nabízí řešení zálohování a obnovení ve stejném datovém centru nebo externě v cloudu.
+Azure Stack, ne back up tenanta aplikacím a datům. Je nutné naplánovat zálohování a po havárii obnovení ochrany na cíl externí do služby Azure Stack. Ochranu klienta je aktivita řízené tenanta. Pro virtuální počítače IaaS tenantů, můžete použít na hostovi technologie k ochraně souboru, složky, data aplikací a stavu systému. Jako zprostředkovatele enterprise nebo službu, můžete však nabízí řešení zálohování a obnovení ve stejném datacentru nebo externě v cloudu.
 
-Zálohování virtuálních počítačů Linux nebo IaaS ve Windows, musíte použít zálohování produktů s přístupem k hostovaného operačního systému k ochraně souboru, složky, stav operačního systému a dat aplikací. Zálohování Azure, System Center Data Center Protection Manager, můžete použít nebo podporovány produkty třetích stran.
+K zálohování virtuálních počítačů s Linuxem nebo Windows IaaS, musíte použít zálohování produktů díky přístupu k hostovanému operačnímu systému k ochraně souboru, složky, stav operačního systému a dat aplikací. Můžete použít Azure Backup, System Center Data Protection Manageru, nebo produkty třetích stran, které podporují.
 
-Pokud chcete replikovat data do sekundárního umístění a orchestraci převzetí služeb při selhání aplikace, pokud dojde k havárii, můžete použít Azure Site Recovery nebo podporované produkty třetích stran. (Na počáteční verze integrované systémy Azure Site Recovery nebudou podporovat navrácení služeb po obnovení. Však můžete dosáhnout navrácení služeb po obnovení ruční proces.) Aplikace, které podporují nativní replikace (jako je Microsoft SQL Server) navíc můžete replikovat data do jiného umístění, kde je aplikace spuštěna.
-
-> [!IMPORTANT]
-> V původním vydáním integrované systémy podporujeme ochrany technologie, které fungují na úrovni hosta virtuálního počítače IaaS. Nelze instalovat agenty na základní servery infrastruktury.
+Replikace dat do sekundárního umístění a orchestrovat převzetí služeb při selhání aplikace, pokud dojde k havárii, můžete použít Azure Site Recovery nebo podporované produkty třetích stran. Také aplikace, které podporují nativní replikace, jako je Microsoft SQL Server, můžete replikovat data do jiného umístění, ve kterém je spuštěná aplikace.
 
 ## <a name="learn-more"></a>Další informace
 
-- Informace o případy použití, nákup, partneři a OEM výrobci hardwaru najdete v tématu [zásobník Azure](https://azure.microsoft.com/overview/azure-stack/) stránky produktu.
-- Informace o plán a geografická dostupnosti pro zásobník Azure integrované systémy, najdete v dokumentu white paper: [Azure zásobník: rozšíření Azure](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/). 
+- Informace o případy použití, nákup, partnery a dodavateli hardwaru OEM, najdete v článku [Azure Stack](https://azure.microsoft.com/overview/azure-stack/) stránce produktu.
+- Informace o plánu a geografické dostupnosti pro službu Azure Stack integrované systémy, najdete v dokumentu white paper: [Azure Stack: rozšíření Azure](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/). 
 
 ## <a name="next-steps"></a>Další postup
-[Azure modelů připojení nasazení zásobníku](azure-stack-connection-models.md)
+[Modely připojení nasazení služby Azure Stack](azure-stack-connection-models.md)

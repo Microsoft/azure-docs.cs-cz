@@ -1,6 +1,6 @@
 ---
-title: Analýza hrozeb v Azure Security Center | Dokumentace Microsoftu
-description: Zjistěte, jak používat možnosti analýzy hrozeb v Azure Security Center k identifikaci potenciálních hrozeb na virtuálních počítačích a počítačích.
+title: Hrozeb inteligenci a mapování výstrah zabezpečení ve službě Azure Security Center | Dokumentace Microsoftu
+description: Zjistěte, jak použít funkci vydána upozornění hrozeb a mapa intelligence ve službě Azure Security Center k identifikaci potenciálních hrozeb na virtuálních počítačích a počítačích.
 services: security-center
 documentationcenter: na
 author: rkarlin
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: a3988575074708a46138b5e550bfc0014ca3bd15
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: d82d52e05d85fbd5197f84f032a55dd9c74f9d1f
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44293928"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44714424"
 ---
-# <a name="security-alerts-map-azure-security-center"></a>Výstrahy zabezpečení mapování Azure Security Center
+# <a name="security-alerts-map-and-threat-intelligence"></a>Výstrahy zabezpečení mapy a analýz hrozeb
 Tento článek vám umožní použít mapu výstrahy zabezpečení Azure Security Center a mapa analýzy hrozeb založený na událostech zabezpečení pro řešení potíží s související se zabezpečením.
 
 ## <a name="how-the-security-alerts-map-works"></a>Jak se mapují výstrahy zabezpečení funguje
@@ -49,7 +49,8 @@ Pokud chcete vizualizovat aktuální hrozby na vašem prostředí, spusťte nás
 Mapa upozornění zabezpečení je založená na výstrahy. Tyto výstrahy jsou založené na aktivitách komunikace pro síť, ve které byla přidružena IP adresu, která byla úspěšně, jestli je IP adresa známá rizikové IP adresy (například známé cryptominer) nebo IP adresu, která není rozpoznána dříve jako rizikovou. Na mapě poskytuje výstrahy v rámci žádné předplatné, které jste vybrali dříve v Azure. 
 
 Upozornění na mapě se zobrazují podle zeměpisného umístění, kde jsou zjištěny jako pocházející z, a jsou barevně odlišeny podle závažnosti. 
- 
+    ![Informace analýzy hrozeb](./media/security-center-threat-intel/security-center-alert-map.png)
+
 ## <a name="viewing-the-event-based-threat-intelligence-dashboard"></a>Zobrazení založeného na událostech řídicímu panelu analýzy hrozeb
 Chcete-li zobrazit mapa analýzy hrozeb na základě zabezpečení nezpracovaných událostí, můžete podle následujícího postupu. Toto mapování se zobrazí pouze události, které se týkají IP adresu, která se považuje za rizikové, například IP adresu známé botnety.
 

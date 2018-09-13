@@ -1,6 +1,6 @@
 ---
-title: Analýza využití pomocí služby Azure Application Insights | Microsoft docs
-description: Porozumět uživatelům a co dělají s vaší aplikací.
+title: Analýzy používání pomocí Azure Application Insights | Dokumentace Microsoftu
+description: Pochopíte uživatele a co dělají s vaší aplikací.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -9,97 +9,98 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/10/2017
 ms.author: mbullwin
-ms.openlocfilehash: 79f4f77f08653c40591137268b87dc2feeb0acf6
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 1217083980355c69fa51d7a6983c71295684f5b1
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35643529"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Analýzy používání pomocí nástroje Application Insights
 
-Funkce web nebo mobilní aplikace, které jsou nejčastěji používané? Vaši uživatelé dosáhli svých cílů s vaší aplikací? Jejich vyřadit na konkrétní body a vracejí později?  [Azure Application Insights](app-insights-overview.md) pomáhá získat efektivní přehled o tom, jak uživatelé používají vaši aplikaci. Při každé aktualizaci aplikace můžete vyhodnotit, jak dobře funguje pro uživatele. Replikace můžete provést rozhodnutí o další cyklech vývoj řízených daty.
+Které funkce vašich webových nebo mobilních aplikací jsou nejoblíbenější? Vaši uživatelé dosáhli svých cílů s vaší aplikací? Odešli na konkrétní body a vrátit později?  [Azure Application Insights](app-insights-overview.md) umožňuje okamžitý přehled o tom, jak ostatní využívají vaše aplikace. Při každé aktualizaci aplikace můžete vyhodnotit, jak dobře funguje pro uživatele. Tyto znalosti dokážete na základě rozhodnutí o další vývojové cykly dat.
 
-## <a name="send-telemetry-from-your-app"></a>Odeslání telemetrie z vaší aplikace.
+## <a name="send-telemetry-from-your-app"></a>Odesílání telemetrie z vaší aplikace
 
-Dosažení co nejlepších výsledků je získat nainstalováním Application Insights v kódu aplikace serveru i na webových stránkách. Klientské a serverové součásti vaší aplikace odesílat telemetrii zpět na portál Azure pro analýzu.
+Dosažení co nejlepších výsledků je získat nainstalováním služby Application Insights v kódu serveru vaší aplikace a na webových stránkách. Klientské a serverové komponenty vaší aplikace odesílat telemetrii zpět na webu Azure portal pro analýzu.
 
-1. **Serverový kód:** nainstalovat modul vhodné pro vaše [ASP.NET](app-insights-asp-net.md), [Azure](app-insights-azure.md), [Java](app-insights-java-get-started.md), [Node.js](app-insights-nodejs.md), nebo [jiné](app-insights-platforms.md) aplikace.
+1. **Kód serveru:** nainstalovat modul vhodné pro vaše [ASP.NET](app-insights-asp-net.md), [Azure](app-insights-azure.md), [Java](app-insights-java-get-started.md), [Node.js](app-insights-nodejs.md), nebo [jiných](app-insights-platforms.md) aplikace.
 
-    * *Nechcete instalovat serverový kód? Právě [vytvořte prostředek Azure Application Insights](app-insights-create-new-resource.md).*
+    * *Nechcete, aby instalace serveru kód? Právě [vytvoří prostředek služby Azure Application Insights](app-insights-create-new-resource.md).*
 
-2. **Kód webové stránky:** otevřete [portál Azure](https://portal.azure.com), otevřete prostředek Application Insights pro vaši aplikaci a pak otevřete **Začínáme > sledování a diagnostikovat Client-Side**. 
+2. **Kódu webové stránky:** otevřít [webu Azure portal](https://portal.azure.com), otevřete prostředek Application Insights pro vaši aplikaci a pak otevřete **Začínáme > monitorování a Diagnostika Client-Side**. 
 
-    ![Zkopírujte skript do head vaší hlavní webové stránky.](./media/app-insights-usage-overview/02-monitor-web-page.png)
+    ![Zkopírujte skript do hlavní webové stránky předlohy.](./media/app-insights-usage-overview/02-monitor-web-page.png)
 
-3. **Kód mobilní aplikace:** použijte sadu App SDK Center k shromažďování událostí z vaší aplikace a potom posílat kopie tyto události Application insights pro analýzu, [těchto pokynů](app-insights-mobile-center-quickstart.md).
+3. **Kód mobilní aplikace:** App Center SDK umožňuje shromažďovat události z vaší aplikace a pak posílat kopie těchto událostí do služby Application Insights pro analýzu, [podle těchto pokynů](app-insights-mobile-center-quickstart.md).
 
-4. **Získat telemetrie:** spusťte projekt v režimu ladění pro několik minut a potom vyhledejte výsledky v okně Přehled ve službě Application Insights.
+4. **Získání telemetrie:** spuštění projektu v režimu ladění na pár minut a zkuste najít výsledky v okně Přehled v Application Insights.
 
-    Publikování aplikace ke sledování výkonu vaší aplikace a zjistěte, co uživatelé dělají s vaší aplikací.
+    Publikování aplikace pro monitorování výkonu vaší aplikace a zjistěte, jak uživatelé pracují s vaší aplikací.
 
-## <a name="include-user-and-session-id-in-your-telemetry"></a>Zahrnout ID uživatele a relace telemetrie
-Sledování uživatelů v čase, Application Insights vyžaduje způsob, jak je identifikovat. Nástroj události je pouze využití nástroj, který nevyžaduje ID uživatele nebo ID relace.
+## <a name="include-user-and-session-id-in-your-telemetry"></a>Zahrnout do vaší telemetrie ID uživatelů a relací
+Sledování uživatelů v čase, Application Insights vyžaduje způsob, jak jejich identifikaci. Nástroj událostí je pouze použití nástroj, který nevyžaduje ID uživatele nebo ID relace.
 
-Zahájit odesílání uživatele a pomocí ID relací [tento proces](https://docs.microsoft.com/azure/application-insights/app-insights-usage-send-user-context).
+Zahájit odesílání uživatele a aby se ID relací pomocí [tento proces](https://docs.microsoft.com/azure/application-insights/app-insights-usage-send-user-context).
 
-## <a name="explore-usage-demographics-and-statistics"></a>Prozkoumat využití demografické údaje a statistiky
-Zjistí, pokud uživatelé používají vaši aplikaci, jaké stránky, budou se nejvíce zajímá, kde se nachází vaši uživatelé, jaké prohlížeče a operační systémy používají. 
+## <a name="explore-usage-demographics-and-statistics"></a>Prozkoumejte demografických využití a statistiky
+Přečtěte si, když uživatelé používají vaše aplikace, které stránky se nejvíce zajímají, kde se nachází vaši uživatelé, jaké prohlížeče a operační systémy používají. 
 
-Uživatele a relace sestavy filtr dat, stránky nebo vlastní události a je rozdělit pomocí vlastnosti, jako je například umístění prostředí a stránky. Můžete také přidat vlastní filtry.
+Sestavy uživatelů a relací filtrování dat podle stránky nebo vlastní události a segmentovat podle vlastnosti, jako je umístění, prostředí a stránky. Můžete také přidat vlastní filtry.
 
 ![Uživatelé](./media/app-insights-usage-overview/users.png)  
 
-Statistika na pravé straně bodu zajímavých vzorců v sadě dat.  
+Přehledy na pravé straně bodu zajímavých vzorců v sadě dat.  
 
-* **Uživatelé** sestava udává počet jedinečných uživatelů, kteří přístup k vaší stránky v rámci vašich vybrané časové období. Pro webové aplikace uživatelé počítají pomocí souborů cookie. Pokud někdo přistupuje k webu s jinou prohlížeče nebo klientské počítače nebo vymaže jejich souborů cookie, pak se bude počítat více než jednou.
-* **Relací** sestava vrátí počet uživatelských relací, které přistupují k webu. Relace je období aktivity uživatelem, byl ukončen tečkou nečinnosti více než půl hodiny.
+* **Uživatelé** sestavy se počítá počet jedinečných uživatelů, kteří přístup ke stránkám v rámci zvolenou časová období. Pro web apps uživatelé se počítají pomocí souborů cookie. Pokud někdo získá přístup k webu s různými prohlížeči nebo klientské počítače nebo vymaže jejich souborů cookie, pak se bude počítat více než jednou.
+* **Relace** sestava vrátí počet uživatelských relací, které přistupují k webu. Relace je období aktivity podle uživatele, ukončeny určité době nečinnosti více než půl hodiny.
 
-[Další informace o nástroje uživatelů, relací a události](app-insights-usage-segmentation.md)  
+[Informace o nástrojích uživatelé, relace a události](app-insights-usage-segmentation.md)  
 
 ## <a name="page-views"></a>Zobrazení stránek
 
-V okně využití klikněte na tlačítko prostřednictvím zobrazení stránky dlaždicí a získejte rozpis nejoblíbenější stránky:
+V okně využití proklikejte dlaždici zobrazení stránek a získat rozpis nejoblíbenějších stránek:
 
 ![V okně Přehled klikněte na graf zobrazení stránky](./media/app-insights-usage-overview/05-games.png)
 
-V předchozím příkladu je z webu hry. Z grafy okamžitě uvidíme:
+Výše uvedený příklad je z webu hry. Z grafů okamžitě vidět:
 
-* Využití nebyl vylepšené minulého týdne. Možná jsme měli zamyslet optimalizaci pro vyhledávací weby?
-* Tenis je nejoblíbenější herní stránka. Umožňuje zaměřit se na další vylepšení na tuto stránku.
-* Uživatelé v průměru, najdete na stránce tenis o třikrát za týden. (Existují další o třikrát relace než uživatelů.)
-* Většina uživatelů přejděte na web během pracovní týden USA a v pracovní době. Možná jsme by měl poskytovat tlačítko "rychlý skrýt" na webové stránce.
-* [Poznámky](app-insights-annotations.md) na graf zobrazit, pokud byly nasazeny nové verze webu. Žádná z poslední nasazení měl znatelný vliv na využití.
+* V minulém týdnu ještě lepší využití. Možná by přistupujeme k optimalizace pro vyhledávací weby?
+* Tenis je nejoblíbenější her. Zaměřme se na další vylepšení na tuto stránku.
+* Uživatelé v průměru, najdete na stránce tenis přibližně tři časy za týden. (Existují další informace o třikrát relace než uživatelé).
+* Většina uživatelů přejděte na web v průběhu pracovního týdne USA a v pracovní době. Možná by měl poskytujeme "rychlé skrýt" tlačítko na webové stránce.
+* [Poznámky](app-insights-annotations.md) v grafu zobrazit, když se nasadily nových verzí na webu. Žádná z poslední nasazení měli znatelný vliv na využití.
 
-Co dělat, pokud chcete prozkoumat provoz na váš web podrobněji, jako je rozdělení pomocí vlastní vlastnosti, které váš web odesílá v jeho telemetrická zobrazení stránky?
+Co když chcete prozkoumat podrobněji, jako je rozdělení vlastní vlastnost, která odešle svůj web v jeho telemetrie zobrazení stránky provoz?
 
-1. Otevřete **události** nástroj v nabídce prostředku Application Insights. Tento nástroj umožňuje analyzovat, kolik zobrazení stránky a vlastních událostí, které byly odeslány z vaší aplikace na základě různých možností filtrování, cohorting a segmentace.
-2. V rozevírací nabídce "Kdo používá" Vyberte "Any zobrazení stránky".
-3. V rozevírací nabídce "Rozdělení podle" Vyberte vlastnosti, podle kterého rozdělit vaší telemetrická zobrazení stránky.
+1. Otevřít **události** nástroj v nabídce prostředků Application Insights. Tento nástroj umožňuje analyzovat počet zobrazení stránek a vlastní události, které byly odeslány z vaší aplikace založené na širokou škálu možností filtrování, cohorting a segmentace.
+2. V rozevíracím seznamu "Kdo used" Vyberte "Any zobrazení stránky".
+3. V rozevíracím seznamu "Rozděleno podle" Vyberte vlastnost, podle kterého chcete rozdělit vaší telemetrie zobrazení stránky.
 
-## <a name="retention---how-many-users-come-back"></a>Uchování – počet uživatelů, kteří se vrátit?
+## <a name="retention---how-many-users-come-back"></a>Uchování – kolik uživatelů se vrátit?
 
-Uchování pomáhá pochopit, jak často se vaši uživatelé vrátit používat své aplikace založené na kohorty uživatele, kteří provést některé akce obchodní během určité časové období. 
+Uchovávání dat pomáhá pochopit, jak často uživatelé vrací a používá své aplikace založené na kohorty uživatelů, které provedl některé obchodní během určité časovém intervalu. 
 
-- Pochopit, jaké konkrétní funkce způsobit, že uživatelům se zpět více než jiné 
-- Hypotézy formulář na základě reálného uživatelských dat 
-- Zjistěte, jestli uchování problém ve vašem produkt 
+- Pochopit, jaké konkrétní funkce způsobit, že uživatelé přijít zpět více než jiné 
+- Formulář hypotézy podle dat uživatelů 
+- Určení, zda je uchovávání problému v produktu 
 
 ![Uchovávání](./media/app-insights-usage-overview/retention.png) 
 
-Ovládací prvky uchovávání informací v horní části umožňují definovat konkrétních událostí a časový rozsah uchování vypočítat. Graf uprostřed nabízí vizuální znázornění uchování procentuální podle zadaný časový rozsah. Graf na dolní představuje jednotlivé uchování v daném časovém období. Tato úroveň podrobností můžete zjistit, co uživatelé dělají a co může mít vliv na stávajícím uživatelům na podrobnější členitosti.  
+Uchování ovládacích prvků v horní části umožňují definovat konkrétní události a časový rozsah pro výpočet uchovávání informací. Grafu uprostřed nabízí vizuální znázornění do celkové procentní hodnoty uchovávání informací o zadaný časový rozsah. V dolní části grafu představuje jednotlivé uchování v daném časovém období. Tato úroveň podrobností můžete pochopit, co uživatelé dělají a co by mohly ovlivnit stávajícím uživatelům na podrobnější členitosti.  
 
-[Informace o nástroji pro uchování](app-insights-usage-retention.md)
+[Informace o nástroji pro uchovávání dat](app-insights-usage-retention.md)
 
 ## <a name="custom-business-events"></a>Vlastní obchodní události
 
-Potřebujete vědět, co uživatelé dělají s vaší aplikací, je užitečné k vložení řádků kódu do protokolu vlastních událostí. Tyto události můžete sledovat nic akcím podrobné uživatel kliknutím na konkrétní tlačítka na větších obchodní události, jako je například nakupování nebo vítězství. 
+Abyste pochopili, co uživatelé dělají s vaší aplikací je vhodné vložit řádky kódu pro záznam vlastních událostí. Tyto události můžete sledovat cokoli podrobné uživatelské akce, jako je kliknutí na konkrétní tlačítka, významnější obchodní události, například nákupem nebo vítězství. 
 
-I když v některých případech může představovat zobrazení stránky užitečné události, není true obecně. Uživatele můžete otevřít stránku produktu bez kdybyste kupovali produktu. 
+I když v některých případech může představovat zobrazení stránek užitečné události, není true obecně. Uživatele můžete otevřít stránku produktu bez nutnosti kupovat produktu. 
 
-S konkrétní obchodní události můžete grafu vaši uživatelé průběh svého webu. Můžete zjistit jejich předvoleb pro různé možnosti a tam, kde se vyřadit out nebo mít problémy. Replikace můžete provést informované rozhodnutí o priority v backlogu vývoj.
+S konkrétní obchodní události můžete graf průběh vaši uživatelé svého webu. Můžete zjistit jejich předvoleb pro různé možnosti a tam, kde se vyřadit out nebo mají potíže. S tyto znalosti můžete provádět informovaná rozhodnutí o priority v backlog vývoj.
 
 Z aplikace na straně klienta může být protokolovány události:
 
@@ -119,27 +120,27 @@ Nebo na straně serveru:
     tc.TrackEvent("CompletedPurchase");
 ```
 
-Hodnoty vlastností lze připojit k tyto události, takže můžete filtrovat nebo rozdělení událostí v případě, že si prohlédnout na portálu. Kromě toho je standardní sada vlastností připojený k každé události, jako je například ID anonymního uživatele, které umožňuje sledovat posloupnost aktivit jednotlivého uživatele.
+Hodnoty vlastností lze připojit k tyto události, takže můžete filtrovat nebo události, když si prohlédnout na portálu rozdělit. Kromě toho standardní sadu vlastností je připojen k každé události, jako je ID anonymního uživatele, který umožňuje trasování posloupnost aktivit jednotlivého uživatele.
 
 Další informace o [vlastních událostí](app-insights-api-custom-events-metrics.md#trackevent) a [vlastnosti](app-insights-api-custom-events-metrics.md#properties).
 
 ### <a name="slice-and-dice-events"></a>Nařezání a rozčlenění události
 
-V nástrojích pro uživatele, relace a události můžete řezu a rozčlenění vlastních událostí podle uživatele, název události a vlastnosti.
+V nástrojích uživatelé, relace a události můžete rozdělit a můžete detailně rozebrat vlastních událostí podle uživatele, název události a vlastnosti.
 ![Uživatelé](./media/app-insights-usage-overview/users.png)  
   
-## <a name="design-the-telemetry-with-the-app"></a>Návrh telemetrie s aplikací
+## <a name="design-the-telemetry-with-the-app"></a>Návrh telemetrie v aplikaci
 
-Při navrhování jednotlivých funkcí aplikace, zvažte, jak chcete měřit její úspěšnost s uživateli. Rozhodněte, jaké obchodní události, které je potřeba zaznamenat a kód sledování volání pro tyto události do vaší aplikace od začátku.
+Při návrhu jednotlivé funkce vaší aplikace, zvažte, jak budete měřit její úspěšnost s uživateli. Rozhodněte, jaké obchodní události, je potřeba zaznamenat a kód pro sledování volání pro tyto události do vaší aplikace od začátku.
 
 ## <a name="a--b-testing"></a>A | Testování B
-Pokud si nejste jisti, který variant funkce, která bude více úspěšné, uvolněte obou z nich, provádění jednotlivých přístupné pro různé uživatele. Měřit její úspěšnost. pro každou z a poté přesuňte jednotná verzi.
+Pokud si nejste jisti, které varianta funkce bude úspěšnější, uvolněte jejich provádění jednotlivých přístupné pro jiné uživatele. Měření úspěchu jednotlivých a poté přesuňte do jednotné verze.
 
-Pro tento postup můžete hodnot různých vlastností připojení k všechny telemetrická data, které odesílají každou verzi vaší aplikace. Můžete to udělat tak, že definují vlastnosti v active TelemetryContext. Tyto výchozí vlastnosti jsou přidány do každé telemetrie zprávu, která aplikace odešle – nejen vlastní zprávy, ale také standardní telemetrie.
+Pro tuto techniku připojíte hodnot různých vlastností veškerá telemetrická data, která odesílá každé verze vaší aplikace. Uděláte to tak, že definujete vlastnosti v aktivní TelemetryContext. Tyto výchozí vlastnosti se přidají do každé telemetrické zprávy, které aplikace odesílá – nejen vlastní zprávy, ale také standardní telemetrická data.
 
-V portálu služby Application Insights filtrovat a rozdělení dat na hodnoty vlastností, která porovnat různé verze.
+Na portálu Application Insights filtrovat a rozdělení dat na hodnoty vlastností, aby porovnejte různé verze.
 
-K tomu, [nastavení inicializátoru telemetrie](app-insights-api-filtering-sampling.md##add-properties-itelemetryinitializer):
+K tomu [nastavit inicializátor telemetrie](app-insights-api-filtering-sampling.md##add-properties-itelemetryinitializer):
 
 ```csharp
 
@@ -154,7 +155,7 @@ K tomu, [nastavení inicializátoru telemetrie](app-insights-api-filtering-sampl
     }
 ```
 
-Ve webové aplikaci inicializátoru například Global.asax.cs:
+V inicializátoru webové aplikace jako je například Global.asax.cs:
 
 ```csharp
 
@@ -166,7 +167,7 @@ Ve webové aplikaci inicializátoru například Global.asax.cs:
     }
 ```
 
-Všechny nové TelemetryClients automaticky přidat hodnotu vlastnosti, které zadáte. Jednotlivé telemetrické události můžete přepsat výchozí hodnoty.
+Všechny nové TelemetryClients automaticky přidat hodnotu, kterou zadáte. Jednotlivé telemetrické události můžete přepsat výchozí hodnoty.
 
 ## <a name="next-steps"></a>Další postup
    - [Uživatelé, relace, události](app-insights-usage-segmentation.md)
@@ -174,4 +175,4 @@ Všechny nové TelemetryClients automaticky přidat hodnotu vlastnosti, které z
    - [Uchování](app-insights-usage-retention.md)
    - [Toky uživatele](app-insights-usage-flows.md)
    - [Workbooks](app-insights-usage-workbooks.md)
-   - [Přidat uživatelský kontext](app-insights-usage-send-user-context.md)
+   - [Přidat kontext uživatele](app-insights-usage-send-user-context.md)

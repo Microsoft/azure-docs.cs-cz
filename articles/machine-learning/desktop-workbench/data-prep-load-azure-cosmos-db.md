@@ -1,31 +1,31 @@
 ---
-title: Připojení k Azure Cosmos DB jako zdroj dat v nástroji Azure Machine Learning Workbench | Microsoft Docs
-description: Tento dokument obsahuje příklad o tom, jak se připojit k databázi Cosmos Azure pomocí Azure Machine Learning Workbench
+title: Připojení ke službě Azure Cosmos DB jako zdroje dat v aplikaci Azure Machine Learning Workbench | Dokumentace Microsoftu
+description: Tento dokument obsahuje příklad o tom, jak se připojit ke službě Azure Cosmos DB pomocí Azure Machine Learning Workbench
 services: machine-learning
 author: cforbe
 ms.author: cforbe
 manager: mwinkle
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.custom: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 09/11/2017
-ms.openlocfilehash: 20e23f41310b90c62eacb7279ea3da0eec376683
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 2d9562582a94b7c7aac5b972a7ef57b84eb9aa9e
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34830686"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35644595"
 ---
-# <a name="connecting-to-azure-cosmos-db-as-a-data-source"></a>Připojení k databázi Azure Cosmos jako zdroj dat
-Tento článek obsahuje python ukázka umožňuje připojit k databázi Cosmos v nástroji Azure Machine Learning Workbench.
+# <a name="connecting-to-azure-cosmos-db-as-a-data-source"></a>Připojení ke službě Azure Cosmos DB jako zdroje dat
+Tento článek obsahuje python ukázka umožňuje připojení ke službě Cosmos DB v aplikaci Azure Machine Learning Workbench.
 
-## <a name="load-azure-cosmos-db-data-into-data-preparation"></a>Načtení dat Azure Cosmos DB do Příprava dat
+## <a name="load-azure-cosmos-db-data-into-data-preparation"></a>Načtení dat služby Azure Cosmos DB do přípravu dat
 
-Vytvořit nový tok dat založených na skriptech a pak použít následující skript k načítání dat z Azure Cosmos DB. 
+Vytvoření nového toku dat založených na skriptech a pak použijte tento skript k načtení dat ze služby Azure Cosmos DB. 
 
 ```python
 import pydocumentdb
@@ -54,5 +54,5 @@ docs = client.ReadDocuments(coll['_self'])
 df = pd.DataFrame(list(docs))
 ```
 
-## <a name="other-data-source-connections"></a>Další připojení ke zdroji dat
-Další ukázky najdete v tématu [připojení příklad další zdroje dat](data-prep-appendix8-sample-source-connections-python.md)
+## <a name="other-data-source-connections"></a>Další připojení zdrojů dat
+Další ukázky, přečtěte si [příklad další zdrojová datová připojení](data-prep-appendix8-sample-source-connections-python.md)

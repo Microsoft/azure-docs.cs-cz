@@ -1,27 +1,27 @@
 ---
-title: Podporované cíle dat a výstupy, které jsou k dispozici přípravy dat Azure Machine Learning | Microsoft Docs
-description: Tento dokument poskytuje úplný seznam podporovaných cíle a výstupy k dispozici pro přípravu Azure Machine Learning dat.
+title: Podporované datové cíle a výstupy, které jsou k dispozici s přípravou dat Azure Machine Learning | Dokumentace Microsoftu
+description: Tento dokument poskytuje úplný seznam podporovaných cílů a vypíše dostupné pro přípravu dat Azure Machine Learning
 services: machine-learning
 author: euangMS
 ms.author: euang
 manager: lanceo
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.custom: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: 4aee24150524c270084ae8ec22f09df94b6e9f36
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 123328010758eea6e7eadce29440e204f91dcef6
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831706"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35642745"
 ---
-# <a name="supported-data-exports-for-this-preview"></a>Podporované exportuje data pro tuto verzi preview 
-Je možné exportovat do několika různých formátech. Tyto formáty můžete zachovat mezilehlých výsledků přípravy data před integrací výsledky do zbytku Machine Learning pracovního postupu.
+# <a name="supported-data-exports-for-this-preview"></a>Pro tuto verzi preview nepodporuje export dat 
+Je možné exportovat do několika různých formátů. Pokud chcete zachovat mezivýsledků přípravu dat před začlenit výsledky do ostatních pracovního postupu, Machine Learning můžete použít tyto formáty.
 
 ## <a name="types"></a>Typy 
 ### <a name="csv-file"></a>Soubor CSV 
@@ -30,32 +30,32 @@ Zápis do souboru čárkami oddělených hodnot do úložiště.
 #### <a name="options"></a>Možnosti
 - Konce řádků
 - Nahraďte hodnoty Null s
-- Nahraďte chyby s 
+- Nahradit chyby 
 - Oddělovač
 
 
 ### <a name="parquet"></a>Parquet 
-Zapsat datovou sadu jako Parquet do úložiště.
+Zapište datovou sadu jako Parquet do úložiště.
 
-Parquet jako formátu můžou mít různé formy v úložišti. Pro menší datové sady se někdy používá .parquet jeden soubor. Různé Python knihovny podporují čtení a zápis do jednoho .parquet souborů. 
+Parquet jako formátu můžou mít různé formy v úložišti. Pro menší datové sady se někdy používá .parquet jeden soubor. Různé knihovny jazyka Python podporují čtení a zápis do jednoho .parquet soubory. 
 
-V současné době Azure Machine Learning Workbench spoléhá na knihovně PyArrow Python pro vypsání Parquet během místní interaktivní používání. Znamená, že jedním souborem Parquet je aktuálně pouze formát výstupu Parquet podporovanou během místní interaktivní používání.
+V současné době aplikace Azure Machine Learning Workbench spoléhá na knihovny PyArrow Python pro vypsání Parquet během interaktivní místní použití. To znamená, Parquet jeden soubor je aktuálně pouze Parquet výstupní formát, který je podporovaný během interaktivní místní použití.
 
-Během spuštění Škálováním na více systémů (na Spark) Azure Machine Learning Workbench spoléhá na Spark Parquet čtení a zápis funkce. Spark výchozí formát výstupu Parquet (aktuálně pouze jaký podporuje) je podobný ve struktuře datové sady Hive. To znamená, že složka obsahuje mnoho .parquet soubory, které jsou všechny menší oddíl větší datové sady. 
+Během spuštění horizontální navýšení kapacity (na Sparku) Azure Machine Learning Workbench spoléhá na Spark Parquet čtení a zápis funkce. Spark výchozí výstupní formát Parquet (aktuálně pouze jaký podporuje) je podobné struktury datové sady Hive. To znamená, že složka obsahuje mnoho souborů .parquet, které jsou menší oddílu větší datové sady. 
 
 #### <a name="caveats"></a>Upozornění 
-Parquet formátu je poměrně malí a má některé implementace nekonzistence mezi různé knihovny. Pro instanci Spark umístí omezení, na kterých se znaky v názvy sloupců, při zápisu do Parquet. Toto PyArrow neprovede. V názvu sloupce nemůže být tyto znaky: 
-- ,
+Parquet formátu je relativně mladé a má některé implementace nekonzistence mezi různé knihovny. Pro instanci Spark umístí omezení, na kterých znaky jsou platné v názvech sloupce, při zápisu do Parquet navýšení kapacity. PyArrow, proveďte to. V názvu sloupce nemůže být tyto znaky: 
+- , 
 - ;
 - {}
 - ()
 - \\n
-- \\T
+- \\t
 - =
 
 >[!NOTE]
->- Pro zajištění kompatibility s Spark, při každém zápisu dat do Parquet, výskyty tyto znaky v názvy sloupců jsou nahrazeny a podtržítko (_).
->- K zachování konzistence napříč místním a Škálováním na více systémů běží, jakákoliv data zapsána do Parquet, prostřednictvím aplikace, Python nebo Spark, má názvy sloupců upravený pro zajištění kompatibility Spark. Aby názvů očekávaných sloupců při zápisu do Parquet znaků Spark, odeberte neplatné nastavte ze sloupce před jejich zápis.
+>- K zajištění kompatibility se Sparkem pokaždé, když zapíšete data do Parquet, výskyty tyto znaky v názvy sloupců jsou nahrazeny a znaky podtržítka (_).
+>- K zachování konzistence napříč místním a horizontální navýšení kapacity spuštění, všechna data zapsána do Parquet, prostřednictvím aplikací, Python nebo Spark, má názvy sloupců upravený k zajištění kompatibility Spark. Aby názvů očekávaných sloupců při zápisu do Parquet znaků ve Sparku, odeberte neplatné nastavení ze sloupce před zápisem.
 
 
 
@@ -64,5 +64,5 @@ Parquet formátu je poměrně malí a má některé implementace nekonzistence m
 Místní pevný disk nebo namapované síťové umístění úložiště.
 
 ### <a name="azure-blob-storage"></a>Azure Blob Storage
-Úložiště objektů Blob Azure vyžaduje předplatné Azure.
+Azure Blob storage, musíte mít předplatné Azure.
 

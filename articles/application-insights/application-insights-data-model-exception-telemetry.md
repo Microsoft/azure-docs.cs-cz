@@ -1,5 +1,5 @@
 ---
-title: Datový Model aplikace Azure Statistika Telemetrie - Telemetrie výjimek | Microsoft Docs
+title: Azure Application Insights Telemetrie datový Model - Telemetrie výjimek | Dokumentace Microsoftu
 description: Application Insights datový model pro telemetrie výjimek
 services: application-insights
 documentationcenter: .net
@@ -9,32 +9,34 @@ ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/25/2017
-ms.author: mbullwin; sergkanz
-ms.openlocfilehash: 036670c46a0ff40dd7b20a03c90f10513395cd71
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.reviewer: sergkanz
+ms.author: mbullwin
+ms.openlocfilehash: 88e521a04d69d4ca169e33a80ac15620568c5282
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35642614"
 ---
-# <a name="exception-telemetry-application-insights-data-model"></a>Telemetrie výjimek: Application Insights datový model
+# <a name="exception-telemetry-application-insights-data-model"></a>Telemetrie výjimek: datový model Application Insights
 
-V [Application Insights](app-insights-overview.md), představuje instanci výjimky zpracované nebo neošetřené výjimky, které došlo během provádění v monitorované aplikaci.
+V [Application Insights](app-insights-overview.md), představuje instanci výjimky zpracované nebo neošetřené výjimky, ke které došlo během provádění monitorovanou aplikaci.
 
-## <a name="problem-id"></a>Id problému
+## <a name="problem-id"></a>ID problému
 
-Identifikátor, kde byla výjimka vydána v kódu. Použít pro seskupení výjimky. Obvykle kombinace typ výjimky a funkce v zásobníku volání.
+Identifikátor, kde byla výjimka vyvolána v kódu. Používá se pro výjimky seskupení. Obvykle kombinace typu výjimky a funkci ze zásobníku volání.
 
-Maximální délka: 1024 znaků
+Maximální délka: 1024 znaků.
 
 ## <a name="severity-level"></a>Úroveň závažnosti
 
-Úroveň závažnosti trasování. Hodnota může být `Verbose`, `Information`, `Warning`, `Error`, `Critical`.
+Trasujte úroveň závažnosti. Hodnota může být `Verbose`, `Information`, `Warning`, `Error`, `Critical`.
 
 ## <a name="exception-details"></a>Podrobnosti výjimky
 
-(Chcete-li být rozšířené)
+(Chcete-li rozšířit)
 
 ## <a name="custom-properties"></a>Vlastní vlastnosti
 
@@ -46,6 +48,6 @@ Maximální délka: 1024 znaků
 
 ## <a name="next-steps"></a>Další postup
 
-- V tématu [datový model](application-insights-data-model.md) Application Insights typy a data modelu.
-- Zjistěte, jak [diagnostikovat výjimky ve webových aplikacích pomocí služby Application Insights](app-insights-asp-net-exceptions.md).
-- Podívejte se na [platformy](app-insights-platforms.md) nepodporuje Application Insights.
+- Zobrazit [datový model](application-insights-data-model.md) pro typy a datový model Application Insights.
+- Zjistěte, jak [Diagnostika výjimky ve vašich webových aplikací pomocí Application Insights](app-insights-asp-net-exceptions.md).
+- Podívejte se na [platformy](app-insights-platforms.md) podporované službou Application Insights.

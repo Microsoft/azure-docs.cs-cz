@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/31/2018
 ms.author: jomolesk
-ms.openlocfilehash: 8212788eb775e86918c7111265f3276c7bd99d91
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 0949eb41bd69d9e6dc277c2bcf15fd14344db434
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304216"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721207"
 ---
 # <a name="azure-security-and-compliance-blueprint---paas-web-application-for-nist-special-publication-800-171"></a>Zabezpečení Azure a dodržování předpisů – PaaS webovou aplikaci pro speciální publikace NIST 800-171
 

@@ -1,40 +1,40 @@
 ---
-title: Jak používat spustit historie a metrik Model v Azure strojového učení Workbench | Microsoft Docs
-description: Příručka pro použití funkce historii běhů a metriky Model Azure Machine Learning Workbench
+title: Jak používat spustit historie a metrik modelů v Azure Machine Learning Workbench | Dokumentace Microsoftu
+description: Průvodce používáním funkce historie spuštění a metrik modelů Azure Machine Learning Workbench
 services: machine-learning
 author: rastala
 ms.author: roastala
 manager: haining
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/07/2017
-ms.openlocfilehash: df29117235e890a9b20619744df6320f298a73b2
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 34fe72087a3de133d65ea4a4737ab5dba45242f4
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831860"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35642796"
 ---
-# <a name="how-to-use-run-history-and-model-metrics-in-azure-machine-learning-workbench"></a>Postup použití historie spouštění a metrik Model v Azure Machine Learning Workbench
+# <a name="how-to-use-run-history-and-model-metrics-in-azure-machine-learning-workbench"></a>Postup použití historie spouštění a metriky modelu v aplikaci Azure Machine Learning Workbench
 
-Azure Machine Learning Workbench podporuje vědecké účely experimentování data přes jeho **historii běhů** a **metrik Model** funkce.
-**Historie spouštění** poskytuje prostředky ke sledování výstupy vaší strojového učení experimenty a pak umožňuje filtrování a porovnání jejich výsledky.
-**Model metriky** lze protokolovat z libovolného bodu skripty, sledování, ať hodnoty jsou nejdůležitější v experimentů vědecké účely data.
-Tento článek popisuje, jak provádět efektivní použití těchto funkcí k zvýšit rychlost a kvalitu vědecké účely experimentování vaše data.
+Azure Machine Learning Workbench podporuje datové vědy experimentování ve službě prostřednictvím jeho **historie běhů** a **metrik Model** funkce.
+**Historie spuštění** poskytuje prostředky ke sledování výstupů vašich se strojovým učením a pak povolí filtrování a porovnání jejich výsledky.
+**Model metriky** můžete protokolovat z libovolného bodu skripty, sledování, ať hodnoty jsou nejdůležitější ve své experimenty datové vědy.
+Tento článek popisuje, jak efektivně využívat tyto funkce, které zvyšují rychlost a kvalitu vaše data science experimentování.
 
 ## <a name="prerequisites"></a>Požadavky
-Na krok tímto průvodcem postupy, budete muset:
-* [Vytvořit a nainstalovat Azure Machine Learning](../service/quickstart-installation.md)
+Pro jednotlivé kroky v této příručce s postupy, musíte:
+* [Vytvořte a nainstalujte Azure Machine Learning](../service/quickstart-installation.md)
 - [Vytvoření projektu](../service/quickstart-installation.md)
 
 
-## <a name="azure-ml-logging-api-overview"></a>Přehled rozhraní API služby Azure ML protokolování
-[Rozhraní API protokolování služby Azure ML](reference-logging-api.md) je k dispozici prostřednictvím **azureml.logging** modulu v Python (který je nainstalován pomocí nástroje Azure ML Workbench.) Po importu tento modul, můžete použít **get_azureml_logger** metoda pro vytvoření instance **protokolovač** objektu.
-Pak můžete použít protokoly **protokolu** metodu pro uložení párů klíč hodnota vyprodukované skripty jazyka Python.
-V současné době metrik model protokolování skalárních typů seznamů jsou podporovány a jak je znázorněno.
+## <a name="azure-ml-logging-api-overview"></a>Přehled rozhraní API pro Azure ML protokolování
+[Rozhraní API protokolování služby Azure ML](reference-logging-api.md) je k dispozici prostřednictvím **azureml.logging** moduly v Pythonu (který je nainstalovaný v aplikaci Azure ML Workbench.) Po importování tento modul, můžete použít **get_azureml_logger** metoda pro vytvoření instance **protokolovací nástroj** objektu.
+Potom můžete použít protokolovač **protokolu** metoda ukládají dvojice hodnot klíč/hodnota vytvářených skripty Python.
+V současné době protokolování modelu metriky Skalární typy seznamu jsou podporovány a jak je znázorněno.
 
 ```Python
 # create a logger instance in already set up environment 
@@ -48,29 +48,29 @@ logger.log("simple value", 7)
 # log list
 logger.log("all values", [5, 6, 7])
 ```
-Je snadno použitelné protokolovacího nástroje v rámci vašich projektů Azure ML Workbench a v tomto článku se dozvíte, jak to udělat.
+Je snadné použijte protokolovací nástroj v rámci vašich projektů Azure ML Workbench a v tomto článku se dozvíte, jak postupovat.
 
-## <a name="create-a-project-in-azure-ml-workbench"></a>Vytvoření projektu v Azure ML Workbench
-Pokud ještě nemáte projektu, můžete vytvořit jeden z [vytvořit a nainstalovat rychlý Start](../service/quickstart-installation.md) z **řídicího panelu Projekt**, můžete otevřít **iris_sklearn.py** skriptu () jak je znázorněno.)
+## <a name="create-a-project-in-azure-ml-workbench"></a>Vytvoření projektu v aplikaci Azure ML Workbench
+Pokud projekt ještě nemáte, můžete vytvořit jeden z [vytvoření a instalace rychlý Start](../service/quickstart-installation.md) z **řídicí panel projekt**, můžete otevřít **iris_sklearn.py** skriptu () jak je znázorněno.)
 
-![přístup k skript z na kartě soubory](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-01b.png)
+![na kartě souborů přístup ke skriptu](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-01b.png)
 
-Tento skript můžete použít jako vodítko pro očekávané implementaci protokolování v Azure ML metrika modelu.
+Tento skript můžete použít jako vodítko pro očekávané implementace modelu metriky protokolování v Azure ML.
 
-## <a name="parameterize-and-log-model-metrics-from-script"></a>Parametrizace a protokolu modelu metriky ze skriptu
-V **iris_sklearn.py** skriptu, očekávané vzor pro import a konstrukce protokolovacího nástroje v Pythonu, se může snížit na následující řádky kódu.
+## <a name="parameterize-and-log-model-metrics-from-script"></a>Parametrizovat a protokolování metrik Model ze skriptu
+V **iris_sklearn.py** skriptu, očekávaný vzor k importu a konstrukce protokolovací nástroj v Pythonu můžete omezit na následující řádky kódu.
 
 ```Python
 from azureml.logging import get_azureml_logger
 run_logger = get_azureml_logger()
 ```
 
-Po vytvoření můžete vyvolat **protokolu** metoda s žádným dvojice název hodnota.
+Po vytvoření můžete vyvolat **protokolu** metoda s žádným dvojice název/hodnota.
 
-Po dokončení vývoj je často užitečné Parametrizace skripty tak, aby hodnoty lze předat ve prostřednictvím příkazového řádku.
-Následující ukázka ukazuje, jak tak, aby přijímal parametry příkazového řádku (pokud existuje) pomocí standardní knihovny jazyka Python.
-Tento skript přijímá jeden parametr pro rychlost regulaci (*reg*) používá podle klasifikace modelu ve snaze zvýšit *přesnost* bez overfitting.
-Tyto proměnné jsou poté protokolována jako *regulaci míra* a *přesnost* tak, aby model s optimální výsledky lze snadno identifikovat.
+Jakmile je dokončen vývoj, často je užitečné k parametrizaci skripty tak, aby hodnoty mohou být předány do prostřednictvím příkazového řádku.
+Následující ukázka ukazuje, jak přijmout parametry příkazového řádku (Pokud je k dispozici) pomocí standardní knihovny jazyka Python.
+Tento skript přijímá jeden parametr pro míry Regularizace (*reg*) umožňuje přizpůsobit model klasifikace ve snaze zvýšit *přesnost* bez overfitting.
+Tyto proměnné jsou poté protokolována jako *Regularizace* a *přesnost* tak, aby model s optimálních výsledků lze snadno identifikovat.
 
 ```Python
 # change regularization rate and you will likely get a different accuracy.
@@ -96,82 +96,82 @@ print ("Accuracy is {}".format(accuracy))
 run_logger.log("Accuracy", accuracy)
 ```
 
-Provedení těchto kroků ve skriptech povolit je, aby optimální využití **historii běhů**.
+Provedení těchto kroků ve skriptech povolit, aby optimální využití **historie běhů**.
 
-## <a name="launch-runs-from-project-dashboard"></a>Spuštění se spouští z řídicího panelu Projekt
-Vrácením **řídicího panelu Projekt**, můžete spustit **sledovaných spustit** výběrem **iris_sklearn.py** skript a zadáte **regulaci rychlost**  parametr ve **argumenty** textové pole.
+## <a name="launch-runs-from-project-dashboard"></a>Spuštění spustí z řídicího panelu Projekt
+Vrácení **řídicí panel projekt**, můžete spustit **sledované spustit** tak, že vyberete **iris_sklearn.py** skript a zadáte **regularizace**  parametr **argumenty** textové pole.
 
-![zadání parametrů a spuštění běží](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-05.png)
+![zadávání parametrů a po otevření spuštění](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-05.png)
 
-Vzhledem k tomu, že spuštění sledovaných spustí neblokuje Azure ML Workbench, může být několik spuštěn paralelně.
-Stav každé sledovaných spuštění se zobrazí na **panelu úloh** jak je vidět.
+Protože spuštění sledované spuštění Azure ML Workbench neblokuje, několik můžete spustit paralelně.
+Stav jednotlivých sledovaných spuštění je viditelný v **úlohy na panelu** jak je znázorněno.
 
-![sledování běží v panelu úloh](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-06.png)
+![sledování běží na panelu úloh](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-06.png)
 
-To umožňuje optimálního využití prostředků, bez nutnosti Každá úloha běžela postupně.
+To umožňuje optimální využití bez nutnosti Každá úloha spuštění postupně.
 
-## <a name="view-results-in-run-history"></a>Zobrazení výsledků v historie spouštění
-Průběh a výsledky sledovaných spustí jsou k dispozici pro analýzu v Azure ML Workbench **historii běhů**.
-**Historie spouštění** poskytuje tři různá zobrazení:
+## <a name="view-results-in-run-history"></a>Zobrazení výsledků v historii spuštění
+Průběh a výsledky sledované spuštění jsou k dispozici pro analýzu v aplikaci Azure ML Workbench **historie běhů**.
+**Historie spuštění** poskytuje tři různá zobrazení:
 - Řídicí panel
 - Podrobnosti
 - porovnání
 
-**Řídicí panel** zobrazení ukazuje údaje o mezi všechny spustí skript dané vykresluje ve formulářích grafického rozhraní i tabulkových.
-**Podrobnosti** zobrazení zobrazí všechny údaje získané z konkrétní spuštění dané skriptu, včetně protokolu metriky a výstupní soubory (například vykresluje znázorněním.) **Porovnání** zobrazení umožňuje výsledky dvě nebo tři běží jako zobrazenou-souběžného, také včetně zaznamenána metriky a výstupní soubory.
+**Řídicí panel** zobrazení ukazuje údaje o napříč všechna spuštění daného skriptu, vykreslí grafické i tabulkovém formulářů.
+**Podrobnosti** zobrazení ukazuje údaje o všech generovaných z konkrétního spuštění dané skripty, včetně zaznamenané metriky a výstupních souborů (jako je vykreslen vykreslí.) **Porovnání** view umožňuje výsledky dvě nebo tři spuštění bude zobrazené vedle sebe, včetně také metrikách zaznamenaných do protokolu a výstupní soubory.
 
-Mezi osm sledovat postupnými **iris_sklearn.py**, hodnoty **regulaci rychlost** parametr a **přesnost** výsledek byly zaznamenány pro ilustraci použití spustit Zobrazení historie.
+Přes osm sledovat spuštění **iris_sklearn.py**, hodnoty **regularizace** parametr a **přesnost** výsledek vypsané si ukážeme, jak pomocí spustit Zobrazení historie.
 
-### <a name="run-history-dashboard"></a>Řídicí panel Historie spouštění
-Výsledky všech spuštění osm jsou viditelné v **spustit řídicí panel Historie**.
-Jako **iris_sklearn.py** protokoly *regulaci míra* a *přesnost*, **spustit řídicí panel Historie** zobrazí grafy pro tyto hodnoty pomocí výchozí.
+### <a name="run-history-dashboard"></a>Řídicí panel Historie spuštění
+V zobrazují výsledky všech osm spuštění **řídicí panel Historie spuštění**.
+Jako **iris_sklearn.py** protokoly *Regularizace* a *přesnost*, **řídicí panel Historie spuštění** zobrazuje grafy pro tyto hodnoty Výchozí nastavení.
 
-![Řídicí panel Historie spouštění](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-07.png)
+![řídicí panel Historie spuštění](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-07.png)
 
-**Spustit řídicí panel Historie** lze přizpůsobit tak, aby zaznamenané hodnoty se zobrazí také v mřížce.  Kliknutím **přizpůsobit** , zobrazí se ikona **přizpůsobení zobrazení seznamu** dialog, jak je znázorněno.
+**Řídicí panel Historie spuštění** můžete přizpůsobit tak, aby zaznamenané hodnoty se také zobrazí v mřížce.  Kliknutím **přizpůsobit** , zobrazí se ikona **vlastní nastavení zobrazení seznamu** dialog, jak je znázorněno.
 
-![přizpůsobení historie spouštění řídicí panel mřížky](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-08.png)
+![přizpůsobení řídicího panelu mřížky historie spuštění](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-08.png)
 
-Všechny hodnoty zaznamenána během sledovaného spustí jsou k dispozici pro zobrazení a vyberete **regulaci míra** a **přesnost** přidá je do mřížky.
+Všechny hodnoty zaznamenána během sledovaného spuštění jsou k dispozici k zobrazení a následným výběrem **Regularizace** a **přesnost** přidá je do mřížky.
 
 ![zaznamenané hodnoty v přizpůsobené mřížky](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-09.png)
 
-Je snadno najít zajímavé spustí podržením ukazatele nad body v grafech.  V takovém případě spusťte 7 poskytuje dobrý přesnost kombinaci s nízkou doba trvání.
+Je snadné najít zajímavé spuštění podržením ukazatele nad body v grafech.  V takovém případě spusťte 7 poskytuje dobré přesnost s nízkou dobou trvání s velkou provázaností.
 
-![hledání zajímavé spustit](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-10.png)
+![hledání zajímavé spuštění](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-10.png)
 
-Kliknutím na bod přidružené spustit 7 v jakékoli grafu nebo odkaz na 7 spustit v zobrazení mřížky **spustit podrobnosti historie**.
+Kliknutím na bod přidružený k 7 spustit libovolný graf nebo odkaz na spuštění 7 v zobrazení mřížky **podrobnosti o historii spuštění**.
 
-### <a name="run-history-details"></a>Podrobnosti o historii spuštění
-V tomto zobrazení se zobrazí úplné výsledky 7 spustit spolu s artefakty vyprodukované spustit 7.
+### <a name="run-history-details"></a>Podrobnosti historie spuštění
+V tomto zobrazení se zobrazí úplné výsledky spuštění 7 spolu s všechny artefakty vytvořené metodou spustit 7.
 
-![Podrobnosti o historii spuštění](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-11.png)
+![Podrobnosti historie spuštění](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-11.png)
 
-**Spustit podrobnosti historie** zobrazení poskytuje taky možnost **Stáhnout** všechny soubory, zapisovat do **. / výstupy** složky (tyto soubory jsou zajišťované Azure ML Workbench cloudové úložiště pro historii běhů, který je předmětem jiný článek.)
+**Podrobnosti o historii spuštění** zobrazení poskytuje taky možnost **Stáhnout** žádné soubory zapsané do **. / výstupy** složek (tyto soubory se zálohují na aplikaci Azure ML Workbench cloudové úložiště pro historie spuštění, což je předmětem jiného článku.)
 
-Nakonec **spustit podrobnosti historie** poskytuje prostředky ke obnovení projektu jeho stav v době této spustit.
-Kliknutím **obnovení** tlačítko zobrazí dialog potvrzení, jak je vidět.
+Nakonec **podrobnosti o historii spuštění** poskytuje prostředky k obnovení vašeho projektu jeho stav v době toto spuštění.
+Kliknutím **obnovení** tlačítku zobrazí dialog potvrzením, jak je znázorněno.
 
-![Potvrďte spustit obnovení](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-13.png)
+![Potvrdit obnovení spuštění](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-13.png)
 
-Pokud potvrzen, soubory mohou být přepsány nebo odebrán, takže pomocí pečlivě této funkce.
+Pokud potvrzené, soubory mohou být přepsány nebo odebrán, tedy tuto funkci používat opatrně.
 
 ### <a name="run-history-comparison"></a>Spustit porovnání historie
-Výběr dva nebo tři běží v **spustit řídicí panel Historie** a kliknutím na **porovnat** vám umožňuje **spustit porovnání historie** zobrazení.
-Můžete také kliknutím na tlačítko **porovnat** a výběrem příkazu Spustit v rámci **spustit podrobnosti historie** zobrazení také přesune na můžete **spustit porovnání historie** zobrazení.
-V obou případech **spustit porovnání historie** zobrazení poskytuje prostředky ke naleznete v protokolu výsledky a artefakty dvě nebo tři spustí vedle sebe.
+Vyberete dva nebo tři spuštění **řídicí panel Historie spuštění** a kliknete na **porovnání** vám přináší **spustit porovnání historie** zobrazení.
+Můžete také kliknutím na **porovnání** a výběrem příkazu Spustit v rámci **podrobnosti o historii spuštění** zobrazení také přináší **spustit porovnání historie** zobrazení.
+V obou případech **spustit porovnání historie** zobrazení umožňuje zobrazit zaznamenané výsledky a artefakty dvě nebo tři spuštění vedle sebe.
 
 ![Spustit porovnání historie](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-12.png)
 
-Toto zobrazení je užitečné zejména pro porovnání pozemků, ale obecně všechny vlastnosti spustí je možné porovnávat sem.
+Toto zobrazení je užitečné zejména pro porovnání vykreslení, ale obecně všechny vlastnosti spuštění lze porovnat tady.
 
 ### <a name="command-line-interface"></a>Command Line Interface
-Azure Machine Learning Workbench také poskytuje přístup k historii běhů pomocí jeho **příkazového řádku rozhraní**.
-Pro přístup k **příkazového řádku rozhraní**, klikněte na tlačítko **spusťte příkazový řádek** nabídky, jak je vidět.
+Azure Machine Learning Workbench také poskytuje přístup k historii spuštění prostřednictvím jeho **rozhraní příkazového řádku**.
+Pro přístup **rozhraní příkazového řádku**, klikněte na tlačítko **otevřít příkazový řádek** nabídky, jak je znázorněno.
 
 ![Otevřete příkazový řádek](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-14.png)
 
-K dispozici pro spuštění historie příkazů přistupuje prostřednictvím `az ml history`, s online nápovědy k dispozici přidáním `-h` příznak.
+Příkazy, které jsou k dispozici pro historie běhů se přistupuje prostřednictvím `az ml history`, s online nápovědy k dispozici tak, že přidáte `-h` příznak.
 ```
 $ az ml history -h
 
@@ -186,8 +186,8 @@ Commands:
     list    : List runs.
     promote : Promote Artifacts.
 ```
-Tyto příkazy poskytovat stejné funkce a vrátit stejnou data zobrazená **spustit zobrazení historie**.
-Můžete například zobrazit výsledky poslední spuštění jako objekt JSON.
+Tyto příkazy poskytují stejné funkce a vrátit se stejnou data zobrazená **zobrazení historie spuštění**.
+Například lze zobrazit výsledky poslední spuštění jako objekt JSON.
 ```
 $ az ml history last
 {
@@ -215,7 +215,7 @@ $ az ml history last
   "user_id": "e9fafe06-b0e4-4154-8374-aae34f9977b2"
 }
 ```
-Také lze zobrazit seznam všech běží v tabulkovém formátu.
+Navíc lze zobrazit seznam všech spuštění ve formátu tabulky.
 ```
 $ az ml history list -o table
   Accuracy    Regularization Rate  Duration        Run_id                  Script_name      Start_time_utc                    Status
@@ -230,10 +230,10 @@ $ az ml history list -o table
   0.641509              10         0:00:06.059082  IrisDemo_1504832109906  iris_sklearn.py  2017-09-08T00:55:14.739806+00:00  Completed
 
 ```
-**Příkazového řádku rozhraní** je alternativní cestu pro přístup k možnosti Azure Machine Learning Workbench.
+**Rozhraní příkazového řádku** je alternativní cesta pro přístup k sílu Azure Machine Learning Workbench.
 
 ## <a name="next-steps"></a>Další kroky
-Tyto funkce jsou k dispozici pro pomoc s procesem vědecké účely experimentování data.
-Věříme, že mají být užitečné najít a výrazně ocení váš názor.
-Toto je právě naše počáteční implementace a budeme mít mnoho vylepšení plánované.
-Těšíme se na nepřetržitě jejich doručování Azure Machine Learning Workbench. 
+Tyto funkce jsou dostupné jako pomoc s procesem data science experimentování.
+Věříme, že je vhodné vyhledat a výrazně ocení svůj názor.
+Toto je jenom naše počáteční implementace a máme spoustu vylepšení, plánované.
+Těšíme se průběžné doručování je k aplikaci Azure Machine Learning Workbench. 

@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 08/06/2018
 ms.topic: conceptual
-ms.openlocfilehash: 956cb80ddbf96f23585dd52f3dc1013c7a665113
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: fccdc4ac40878060b94d495b8895e2a128c9477c
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42886306"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44716107"
 ---
 # <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>Konfigurace řízení přístupu na základě rolí v akcelerátoru řešení vzdáleného monitorování
 
@@ -134,11 +134,11 @@ Následující kroky popisují, jak přidat roli do aplikace v Azure Active Dire
 
 ### <a name="define-a-policy-for-the-new-role"></a>Definovat zásady pro novou roli
 
-Po přidání role do aplikace na webu Azure Portal, je třeba definovat zásady v [roles.json](https://github.com/Azure/remote-monitoring-services-dotnet/blob/master/pcs-auth/Services/data/policies/roles.json) pro roli, která se přiřadí oprávnění potřebná ke správě zařízení.
+Po přidání role do aplikace na webu Azure Portal, je třeba definovat zásady v [roles.json](https://github.com/Azure/remote-monitoring-services-dotnet/blob/master/auth/Services/data/policies/roles.json) pro roli, která se přiřadí oprávnění potřebná ke správě zařízení.
 
-1. Klonování [ověřování a autorizace mikroslužeb](https://github.com/Azure/pcs-auth-dotnet) úložiště z Githubu do místního počítače.
+1. Klonování [vzdálené monitorování Mikroslužeb](https://github.com/Azure/remote-monitoring-services-dotnet) úložiště z Githubu do místního počítače.
 
-1. Upravit **Services/data/policies/roles.json** soubor a přidejte zásadu **ManageDevices** role, jak je znázorněno v následujícím fragmentu kódu. **ID** a **Role** hodnoty musí odpovídat definici role v manifestu aplikace z předchozí části. Seznam povolených akcí umožňuje někdo v **ManageDevices** role vytvářet, aktualizovat a odstraňovat zařízení připojených k řešení:
+1. Upravit **auth/Services/data/policies/roles.json** soubor a přidejte zásadu **ManageDevices** role, jak je znázorněno v následujícím fragmentu kódu. **ID** a **Role** hodnoty musí odpovídat definici role v manifestu aplikace z předchozí části. Seznam povolených akcí umožňuje někdo v **ManageDevices** role vytvářet, aktualizovat a odstraňovat zařízení připojených k řešení:
 
     ```json
     {
@@ -184,7 +184,7 @@ Po přidání role do aplikace na webu Azure Portal, je třeba definovat zásady
 
 ### <a name="how-the-web-ui-enforces-permissions"></a>Jak ve webovém uživatelském rozhraní vynucuje oprávnění
 
-Webové uživatelské rozhraní používá [ověřování a autorizace mikroslužeb](https://github.com/Azure/pcs-auth-dotnet) rozhodnout, jaké akce uživatele může vzít a jaké ovládací prvky jsou zobrazeny v uživatelském rozhraní. Například, pokud vaše řešení se nazývá **contoso-rm4**, webové uživatelské rozhraní načte seznam povolených akcí pro aktuálního uživatele odesláním požadavku následující:
+Webové uživatelské rozhraní používá [ověřování a autorizace mikroslužeb](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/auth) rozhodnout, jaké akce uživatele může vzít a jaké ovládací prvky jsou zobrazeny v uživatelském rozhraní. Například, pokud vaše řešení se nazývá **contoso-rm4**, webové uživatelské rozhraní načte seznam povolených akcí pro aktuálního uživatele odesláním požadavku následující:
 
 ```http
 http://contoso-rm4.azurewebsites.net/v1/users/current
@@ -226,7 +226,7 @@ Další informace najdete v tématu [součástí chráněných](https://github.c
 
 Mikroslužby se taky podívat oprávnění k ochraně proti neoprávněné požadavky rozhraní API. Když mikroslužbě obdrží požadavek na rozhraní API, dekóduje a ověří token JWT k získání ID uživatele a oprávnění přidružené k roli uživatele.
 
-Následující fragment kódu ze [DevicesController.cs](https://github.com/Azure/iothub-manager-dotnet/blob/master/WebService/v1/Controllers/DevicesController.cs) soubor [IoTHub správce mikroslužeb](https://github.com/Azure/iothub-manager-dotnet), ukazuje, jak funguje dodržování oprávnění:
+Následující fragment kódu ze [DevicesController.cs](https://github.com/Azure/remote-monitoring-services-dotnet/blob/master/iothub-manager/WebService/v1/Controllers/DevicesController.cs) soubor [IoTHub správce mikroslužeb](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/iothub-manager), ukazuje, jak funguje dodržování oprávnění:
 
 ```csharp
 [HttpDelete("{id}")]

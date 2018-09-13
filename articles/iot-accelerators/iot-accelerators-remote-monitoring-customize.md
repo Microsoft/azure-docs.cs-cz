@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/17/2018
 ms.topic: conceptual
-ms.openlocfilehash: 36e63d26bf7ada2d23fa3cd9fddbb5ba90494527
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 01ef5fd70b1c919c5aa2a7afbb6e46558a80b1f3
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43126018"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44717331"
 ---
 # <a name="customize-the-remote-monitoring-solution-accelerator"></a>Přizpůsobení akcelerátoru řešení vzdáleného monitorování
 
@@ -454,8 +454,8 @@ See the [Connect an external visualization tool](https://github.com/Azure/azure-
 
 Pokročilejší úpravy vrstva prezentace a vizualizace v řešení vzdáleného monitorování, můžete upravit kód. Jsou příslušné úložiště GitHub:
 
-* [Konfigurace mikroslužeb pro řešení Azure IoT (.NET)](https://github.com/Azure/pcs-ui-config-dotnet/)
-* [Konfigurace mikroslužeb pro řešení Azure IoT (Java)](https://github.com/Azure/pcs-ui-config-java/)
+* [Konfigurace mikroslužeb pro řešení Azure IoT (.NET)](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/config)
+* [Konfigurace mikroslužeb pro řešení Azure IoT (Java)](https://github.com/Azure/remote-monitoring-services-java/tree/master/config)
 * [Počítače s Azure IoT vzdálené monitorování webového uživatelského rozhraní](https://github.com/Azure/pcs-remote-monitoring-webui)
 
 ## <a name="next-steps"></a>Další postup

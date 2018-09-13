@@ -11,12 +11,12 @@ ms.date: 08/01/2018
 ms.author: ninarn
 ms.topic: conceptual
 ms.reviewer: carlrab
-ms.openlocfilehash: cbfbe02926907ca3ca5b6c13932c8b67862c8456
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 4c5bb0ab3431fa951871e64d7bdd8a3a313f480f
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43842019"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721496"
 ---
 # <a name="create-and-manage-elastic-pools-in-azure-sql-database"></a>Vytvoření a správa elastických fondů Azure SQL Database
 
@@ -102,9 +102,9 @@ Můžete vytvářet a spravovat databázi SQL elastické fondy a databáze ve fo
 |[Elastické fondy – vytvořit nebo aktualizovat](/rest/api/sql/elasticpools/createorupdate)|Vytvoří nový elastický fond nebo aktualizuje existující elastického fondu.|
 |[Elastické fondy – odstranit](/rest/api/sql/elasticpools/delete)|Odstraní elastického fondu.|
 |[Elastické fondy – Get](/rest/api/sql/elasticpools/get)|Získá elastického fondu.|
-|[Elastické fondy – seznam serverem](/rest/api/sql/elasticpools/listbyserver)|Vrátí seznam hodnot elastické fondy na serveru.|
+|[Elastické fondy – seznam Server](/rest/api/sql/elasticpools/listbyserver)|Vrátí seznam hodnot elastické fondy na serveru.|
 |[Elastické fondy – aktualizace](/rest/api/sql/elasticpools/update)|Aktualizace existujícího elastického fondu.|
-|[Aktivity elastického fondu](/rest/api/sql/elasticpoolactivities)|Vrátí aktivity elastického fondu.|
+|[Elastický fond aktivity](/rest/api/sql/elasticpoolactivities)|Vrátí aktivity elastického fondu.|
 |[Elastický fond v činnosti databáze](/rest/api/sql/elasticpooldatabaseactivities)|Vrátí aktivity u databází v elastickém fondu.|
 |[Databáze – vytvořit nebo aktualizovat](/rest/api/sql/databases/createorupdate)|Vytvoří novou databázi nebo aktualizuje existující databázi.|
 |[Databáze - Get](/rest/api/sql/databases/get)|Získá databázi.|

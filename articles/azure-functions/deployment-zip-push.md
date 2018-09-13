@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.author: glenga
-ms.openlocfilehash: d7396ddb94017048247050726f83b0302e946633
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 03cb9384beba1afcb97a765824e63e79ca34aa62
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347116"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44717214"
 ---
 # <a name="zip-deployment-for-azure-functions"></a>Nasazení ZIP pro službu Azure Functions
 
@@ -89,9 +89,6 @@ Pokud používáte rozhraní příkazového řádku Azure v místním počítač
 ## <a name="run-functions-from-the-deployment-package"></a>Spuštění funkce z balíčku pro nasazení
 
 Můžete také spouštět funkce přímo ze souboru balíčku nasazení. Tato metoda přeskočí krok nasazení z balíčku pro kopírování souborů `wwwroot` adresáře aplikace function App. Místo toho je připojený soubor balíčku tak, že modul runtime služby Functions a obsah `wwwroot` adresáře budou jen pro čtení.  
-
-> [!NOTE]
-> Možnost spuštění z balíčku pro nasazení vaší aplikace function app je ve verzi preview.
 
 Nasazení ZIP se integruje se s touto funkcí, které lze povolit nastavením nastavení aplikace funkcí `WEBSITE_RUN_FROM_PACKAGE` hodnotě `1`. Další informace najdete v tématu [spouštět funkce ze souboru balíčku nasazení](run-functions-from-deployment-package.md).
 

@@ -1,30 +1,30 @@
 ---
-title: Použijte sadu nástrojů AI pro hraniční Azure IoT | Microsoft Docs
-description: Tento článek popisuje, jak používat sadu nástrojů AI pro Azure IoT okraj.
+title: Použití sady AI Toolkit pro Azure IoT Edge | Dokumentace Microsoftu
+description: Tento článek popisuje, jak používat AI Toolkit pro Azure IoT Edge.
 services: machine-learning
 author: tedway
 ms.author: tedway
 manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 2/1/2018
-ms.openlocfilehash: b4d0d50f8fd90dfbe15b00246831da248cfff104
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: f5905f9f5e8524e4ae1d330c501d08d774955202
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34832546"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35642606"
 ---
-# <a name="use-the-ai-toolkit-for-azure-iot-edge"></a>Použijte sadu nástrojů AI pro Azure IoT Edge
+# <a name="use-the-ai-toolkit-for-azure-iot-edge"></a>Použití sady AI Toolkit pro Azure IoT Edge
 
-Využijte možností umělé inteligence, machine learning a pokročilou analýzu na okraj. Pomocí sady Toolkit AI pro Azure IoT Edge můžete nasadit AI a strojového učení, kde je umístěn vaše data. Zprovoznit model jako kontejner Docker pomocí rozhraní REST API a pak nabízená modelu hraniční zařízení s Azure IoT Hub. AI nástrojů pro Azure IoT Edge přináší intelligence, elastické výpočetního prostředí a napájení cloudu místech s omezené přerušované, nebo žádná připojení.
+Začněte využívat možnosti umělé inteligence, strojové učení a pokročilé analýzy na hraničních zařízeních. Pomocí sady AI Toolkit pro Azure IoT Edge můžete nasadit AI a strojového učení, kde se vaše data kdekoli. Zprovoznění vašeho modelu jako kontejner Dockeru pomocí rozhraní REST API a potom nasdílejte modelu do hraničního zařízení pomocí služby Azure IoT Hub. AI Toolkit pro Azure IoT Edge přináší inteligentní funkce, elastický výpočetní výkon a výkon cloudu místa s omezením, nim dochází přerušovaně, nebo žádné připojení.
 
-AI nástrojů pro Azure IoT okraj je kolekce skripty, kód a nasadit kontejnery. Mezi příklady patří prediktivní údržby, klasifikace bitové kopie a zpracování rozpoznávání řeči, jakož i vlastní modelu nasazení pomocí Azure Machine Learning a Azure IoT Hub. Modely, které jsou součástí sady nástrojů může být použita jako-se, ale všechny zdrojový kód a data jsou k dispozici pro vývojáře, chcete-li přizpůsobit podle svých potřeb.
+AI Toolkit pro Azure IoT Edge je kolekce skripty, kód a nasadit kontejnery. Mezi příklady patří prediktivní Údržba, klasifikace obrázků a zpracování řeči, jakož i nasazení vlastního modelu Azure Machine Learning a Azure IoT Hub. Modely, které jsou součástí sady nástrojů může sloužit jako-se, ale všechny zdrojový kód a data jsou k dispozici pro vývojáře přizpůsobit podle svých potřeb.
 
-AI nástrojů pro Azure IoT Edge veřejného úložiště Githubu najdete na [aka.ms/AI – toolkit](http://aka.ms/AI-toolkit).
+AI Toolkit pro Azure IoT Edge veřejného úložiště GitHub lze nalézt v [aka.ms/AI – sada nástrojů](http://aka.ms/AI-toolkit).
 
 
 

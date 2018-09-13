@@ -1,5 +1,5 @@
 ---
-title: Datový Model aplikace Azure Statistika Telemetrie - metriky Telemetrie | Microsoft Docs
+title: Azure Application Insights Telemetrie datový Model - metriky Telemetrie | Dokumentace Microsoftu
 description: Application Insights datový model pro metriky telemetrie
 services: application-insights
 documentationcenter: .net
@@ -9,69 +9,71 @@ ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/25/2017
-ms.author: mbullwin; sergkanz
-ms.openlocfilehash: 3feb1e79ba4e4666cbe9ffc77136520922728710
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.reviewer: sergkanz
+ms.author: mbullwin
+ms.openlocfilehash: df16efcca70f4fc3392fbd97cd98b5a293a60b96
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35643111"
 ---
-# <a name="metric-telemetry-application-insights-data-model"></a>Metriky telemetrie: Application Insights datový model
+# <a name="metric-telemetry-application-insights-data-model"></a>Telemetrie metrik: datový model Application Insights
 
-Existují dva typy metriky telemetrie nepodporuje [Application Insights](app-insights-overview.md): jeden měření a předem agregovaná metrika. Jedno měření je právě název a hodnotu. Předem agregovaná metrika určuje minimální a maximální hodnotou metriky v jako interval agregace a směrodatné odchylky ho.
+Existují dva typy metrik telemetrických dat nepodporuje [Application Insights](app-insights-overview.md): jeden měření a předem agregovaných metrik. Jedno měření je jenom název a hodnotu. Předem agregovaná metrika určuje minimální a maximální hodnota metriky v interval agregace a směrodatné odchylky poměru ho.
 
-Předem agregované metriky telemetrie předpokládá toto období agregace byl jednu minutu.
+Předem agregovaných metrik telemetrie předpokládá tohoto období agregace byl jednu minutu.
 
-Existuje několik dobře známé metriky jmen nepodporuje Application Insights. Tyto metriky umístit do tabulky čítače výkonu.
+Existuje několik známých názvy metrik podporované službou Application Insights. Tyto metriky se umístí do tabulky čítače výkonu.
 
-Metrika představující systém a proces čítače:
+Metrika představuje systém a proces čítače:
 
-| **Název rozhraní .NET**             | **Název lhostejné platformy** | **Název REST API** | **Popis**
+| **Název rozhraní .NET**             | **Agnostické název platformy** | **Název rozhraní REST API** | **Popis**
 | ------------------------- | -------------------------- | ----------------- | ---------------- 
 | `\Processor(_Total)\% Processor Time` | Probíhající práce... | [processorCpuPercentage](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessorCpuPercentage) | Celkový počet počítačů procesoru
-| `\Memory\Available Bytes`                 | Probíhající práce... | [memoryAvailableBytes](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FmemoryAvailableBytes) | Zobrazuje velikost fyzické paměti, v bajtech, k dispozici pro procesy spuštěné v počítači. Vypočítá se jako součet množství místa v seznamech vynulované, volných a paměti. Množství volné paměti je připravený k použití; vynulované paměti se skládá z stránek paměti vyplněno nulami na novější procesy zabránit v zobrazení dat používá předchozí proces; pohotovostní paměť je paměti, který byl odebrán z pracovní sady procesu (jeho fyzické paměti) během cesty k disku, ale je třeba připomenout, stále k dispozici. V tématu [paměti objektu](https://msdn.microsoft.com/library/ms804008.aspx)
-| `\Process(??APP_WIN32_PROC??)\% Processor Time` | Probíhající práce... | [processCpuPercentage](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessCpuPercentage) | Procesor procesu hostování aplikace
-| `\Process(??APP_WIN32_PROC??)\Private Bytes`      | Probíhající práce... | [processPrivateBytes](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessPrivateBytes) | využité procesem hostování aplikace
-| `\Process(??APP_WIN32_PROC??)\IO Data Bytes/sec` | Probíhající práce... | [processIOBytesPerSecond](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessIOBytesPerSecond) | Počet vstupně-výstupních operací se spustí proces hostování aplikace
-| `\ASP.NET Applications(??APP_W3SVC_PROC??)\Requests/Sec`             | Probíhající práce... | [requestsPerSecond](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestsPerSecond) | Míra požadavků zpracovaných aplikací 
-| `\.NET CLR Exceptions(??APP_CLR_PROC??)\# of Exceps Thrown / sec`    | Probíhající práce... | [exceptionsPerSecond](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FexceptionsPerSecond) | počet výjimek vyvolaných aplikace
-| `\ASP.NET Applications(??APP_W3SVC_PROC??)\Request Execution Time`   | Probíhající práce... | [requestExecutionTime](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestExecutionTime) | čas spuštění průměrný počet požadavků
+| `\Memory\Available Bytes`                 | Probíhající práce... | [memoryAvailableBytes](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FmemoryAvailableBytes) | Zobrazuje velikost fyzické paměti v bajtech, k dispozici pro procesy spuštěné v počítači. Počítá se sečtením množství místa v seznamech vynulované, bezplatným a pohotovostní paměti. Množství volné paměti je připravený k použití. vynulované paměti se skládá ze stránek paměti, které jsou vyplněny nulami zabráníte novější procesy zobrazovat data používaná předchozího procesu. pohotovostní paměti je paměť, která byla odebrána z pracovní sady procesu (jeho fyzické paměti) cestě na disk, ale je stále možné zrušit. Zobrazit [objektů paměti do mezipaměti](https://msdn.microsoft.com/library/ms804008.aspx)
+| `\Process(??APP_WIN32_PROC??)\% Processor Time` | Probíhající práce... | [processCpuPercentage](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessCpuPercentage) | Procesor procesu, který je hostitelem aplikace
+| `\Process(??APP_WIN32_PROC??)\Private Bytes`      | Probíhající práce... | [processPrivateBytes](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessPrivateBytes) | paměti využívané procesem, který je hostitelem aplikace
+| `\Process(??APP_WIN32_PROC??)\IO Data Bytes/sec` | Probíhající práce... | [processIOBytesPerSecond](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessIOBytesPerSecond) | Počet vstupně-výstupních operací spustí proces, který je hostitelem aplikace
+| `\ASP.NET Applications(??APP_W3SVC_PROC??)\Requests/Sec`             | Probíhající práce... | [requestsPerSecond](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestsPerSecond) | Počet požadavků zpracovaných aplikace 
+| `\.NET CLR Exceptions(??APP_CLR_PROC??)\# of Exceps Thrown / sec`    | Probíhající práce... | [exceptionsPerSecond](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FexceptionsPerSecond) | počet výjimek vyvolaných aplikací
+| `\ASP.NET Applications(??APP_W3SVC_PROC??)\Request Execution Time`   | Probíhající práce... | [requestExecutionTime](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestExecutionTime) | Doba provádění průměrných požadavků
 | `\ASP.NET Applications(??APP_W3SVC_PROC??)\Requests In Application Queue` | Probíhající práce... | [requestsInQueue](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestsInQueue) | Počet požadavků čekajících na zpracování ve frontě
 
 ## <a name="name"></a>Název
 
-Název metriky, kterou jste chtěli vidět v portálu Application Insights a uživatelského rozhraní. 
+Název metriky, které byste chtěli vidět v portálu Application Insights a uživatelského rozhraní. 
 
 ## <a name="value"></a>Hodnota
 
-Jednu hodnotu pro měření. Součet jednotlivými měřeními pro agregaci.
+Jednu hodnotu pro měření. Součet jednotlivých měření pro agregaci.
 
 ## <a name="count"></a>Počet
 
-Váha metriky agregovaná metrika. Neměla by být nastavená pro měření.
+Váha metriky agregované metriky. By neměla být nastavena pro měření.
 
-## <a name="min"></a>Min.
+## <a name="min"></a>Minimum
 
-Minimální hodnota agregovaná metrika. Neměla by být nastavená pro měření.
+Minimální hodnota agregovaná metrika. By neměla být nastavena pro měření.
 
-## <a name="max"></a>Max.
+## <a name="max"></a>Maximum
 
-Maximální hodnota agregovaná metrika. Neměla by být nastavená pro měření.
+Maximální hodnota agregovaná metrika. By neměla být nastavena pro měření.
 
 ## <a name="standard-deviation"></a>Směrodatná odchylka
 
-Standardní odchylka agregovaná metrika. Neměla by být nastavená pro měření.
+Směrodatná odchylka agregovaná metrika. By neměla být nastavena pro měření.
 
 ## <a name="custom-properties"></a>Vlastní vlastnosti
 
-Metrika s vlastní vlastnost `CustomPerfCounter` nastavena na `true` označení, že metriku představuje čítačů výkonu systému windows. Tyto metriky umístěny v tabulce čítače výkonu. Není v customMetrics. Název tato metrika je také analyzovat extrahovat kategorie čítače a názvy instancí.
+Vlastní vlastnost metrika `CustomPerfCounter` nastavena na `true` znamenat, že metrika představuje čítačů výkonu systému windows. Tyto metriky jsou umístěny v tabulce čítače výkonu. Není v customMetrics. Název této metriky je také analyzovat extrahovat kategorie, čítače a názvů instancí.
 
 [!INCLUDE [application-insights-data-model-properties](../../includes/application-insights-data-model-properties.md)]
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o použití [Application Insights API pro vlastní události a metriky](app-insights-api-custom-events-metrics.md#trackmetric).
-- V tématu [datový model](application-insights-data-model.md) Application Insights typy a data modelu.
-- Podívejte se na [platformy](app-insights-platforms.md) nepodporuje Application Insights.
+- Další informace o použití [API pro Application Insights pro vlastní události a metriky](app-insights-api-custom-events-metrics.md#trackmetric).
+- Zobrazit [datový model](application-insights-data-model.md) pro typy a datový model Application Insights.
+- Podívejte se na [platformy](app-insights-platforms.md) podporované službou Application Insights.

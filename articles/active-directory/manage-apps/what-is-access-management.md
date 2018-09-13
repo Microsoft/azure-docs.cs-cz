@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2017
 ms.author: barbkess
-ms.openlocfilehash: d39df136c6c81e380ccbe7fa2c050d906dc4c182
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: cec1b3089403966cbf738b372a4380bdacf264b7
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39367041"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44718271"
 ---
 # <a name="managing-access-to-apps"></a>Správa přístupu k aplikacím
 Probíhající access managementu, využití hodnocení a vytváření sestav i nadále být náročné z těchto po integraci aplikace do systému identity vaší organizace. V mnoha případech třeba provádět průběžnou aktivní roli při správě přístupu k vašim aplikacím správci IT nebo helpdesk. Přiřazení v některých případech se provádí pomocí obecné nebo oddělení IT tým. Často se má rozhodnutí přiřazení delegovat na obchodní rozhodovací pravomocí vyžadující schválení před IT díky přiřazení.  Další organizace investovat do integrace s existující automatizované identit a přístupu systémem správy, jako je řízení přístupu na základě Role (RBAC) nebo řízení přístupu na základě atributů (ABAC). Integrace a vývoje pravidla jsou obvykle specializovaných a drahých. Monitorování a vytváření sestav o buď způsob správy je svůj vlastní samostatný, nákladné a komplexní investice.
@@ -54,7 +54,5 @@ V takovém případě všechny přiřazené uživatele by být automaticky při�
 Správci můžou využívat [podmíněný přístup Azure AD](../active-directory-conditional-access-azure-portal.md) nastavovat zásady pro konkrétní role. Tyto zásady můžete zahrnout, zda je povolen přístup mimo podniková prostředí a získat přístup v různých případech i ověřování službou Multi-Factor Authentication nebo zařízení požadavky.
 
 ## <a name="next-steps"></a>Další postup
-
-* [Rejstřík článků o správě aplikací ve službě Azure Active Directory](../active-directory-apps-index.md)
 * [Ochrana aplikací s podmíněným přístupem](../active-directory-conditional-access-azure-portal.md)
 * [Správa/SSAA samoobslužné skupiny](../users-groups-roles/groups-self-service-management.md)

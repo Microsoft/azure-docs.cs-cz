@@ -1,6 +1,6 @@
 ---
-title: Spravovat pracovní prostor Machine Learning | Microsoft Docs
-description: Správa přístupu k Azure Machine Learning pracovní prostory a nasadit a spravovat rozhraní API pro ML webové služby
+title: Správa pracovního prostoru Machine Learning | Dokumentace Microsoftu
+description: Správa přístupu k pracovních prostorů Azure Machine Learning a nasazovat a spravovat služby webového rozhraní API ML
 services: machine-learning
 documentationcenter: ''
 author: heatherbshapiro
@@ -15,43 +15,43 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/27/2017
-ms.openlocfilehash: 8c8e65d5fd7efd1f9212b76e1a72b91a0ea07272
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 6e1febfff211dd92f8990d1880562e64382de5f0
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835062"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35643368"
 ---
 # <a name="manage-an-azure-machine-learning-workspace"></a>Správa pracovního prostoru Azure Machine Learning
 
 > [!NOTE]
-> Informace týkající se správy webové služby v portálu webové služby Machine Learning najdete v tématu [spravovat webové služby pomocí portálu webové služby Azure Machine Learning](manage-new-webservice.md).
+> Informace o správě webových služeb Machine Learning Web Services portálu najdete v tématu [Správa webové služby pomocí portálu Azure Machine Learning Web Services](manage-new-webservice.md).
 > 
 > 
 
-Můžete spravovat pracovní prostory Machine Learning na portálu Azure.
+Můžete spravovat pracovní prostory Machine Learning na webu Azure Portal.
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
 ## <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 
-Správa prostoru na portálu Azure:
+Správa pracovního prostoru na webu Azure Portal:
 
-1. Přihlaste se k [portál Azure](https://portal.azure.com/) pomocí účtu správce předplatného Azure.
-2. Do vyhledávacího pole v horní části stránky, zadejte "počítač pracovní prostory learning" a potom vyberte **Machine Learning pracovních prostorů**.
-3. Klikněte na pracovní prostor, který chcete spravovat.
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) pomocí účtu správce předplatného Azure.
+2. Do vyhledávacího pole v horní části stránky, zadejte "pracovní prostory machine learning" a pak vyberte **pracovní prostory Machine Learning**.
+3. Klikněte na pracovním prostoru, který chcete spravovat.
 
-Kromě informací o správu standardní prostředku a možnosti, které jsou k dispozici můžete:
+Kromě standardních prostředků informacím a k dispozici možnosti můžete:
 
-- Zobrazení **vlastnosti** – Tato stránka zobrazuje informace o pracovním prostoru a prostředků, a můžete změnit předplatném nebo skupině prostředků, tento pracovní prostor je propojená s.
-- **Nové synchronizace klíčů k úložišti** -pracovním prostoru udržuje klíče k účtu úložiště. Pokud účet úložiště změny klíčů, pak můžete kliknout na **nové synchronizace klíče** synchronizovat klíče s pracovním prostoru.
+- Zobrazení **vlastnosti** – Tato stránka zobrazuje informace o pracovním prostoru a prostředků, a můžete změnit předplatné a skupinu prostředků, které tento pracovní prostor je propojená s.
+- **Resynchronizovat klíče úložiště** -pracovního prostoru udržuje klíčů k účtu úložiště. Pokud účet úložiště se změní klíče, pak můžete kliknout na **resynchronizace klíčů** aby se klíče synchronizovaly s pracovním prostorem.
 
-Ke správě webových služeb přidružený tento pracovní prostor, použití portálu webové služby Machine Learning. V tématu [spravovat webové služby pomocí portálu webové služby Azure Machine Learning](manage-new-webservice.md) úplné informace.
+Správa webových služeb přidružený k tomuto pracovnímu prostoru, použití portálu webových služeb Machine Learning. Zobrazit [Správa webové služby pomocí portálu Azure Machine Learning Web Services](manage-new-webservice.md) podrobnější informace.
 
 > [!NOTE]
-> Nasadit nebo spravovat nové webové služby musí mít přiřazenou roli Přispěvatel nebo správce na předplatné, která je nasazena webová služba. Pokud můžete pozvat jiného uživatele na pracovní prostor machine learning, musíte je přiřadit k roli Přispěvatel nebo správce na předplatné, než můžete nasadit nebo spravovat webové služby. 
+> Nasazovat nebo spravovat s novými webovými službami musí mít přiřazenou roli přispěvatelem nebo správcem předplatného, které je nasazena webová služba. Pokud vás pozvat jiného uživatele do pracovního prostoru machine learning, je nutné jim přiřadit roli přispěvatelem nebo správcem předplatného mohli nasadit nebo spravovat webové služby. 
 > 
->Další informace o nastavení oprávnění přístupu najdete v tématu [zobrazení přiřazení přístupu pro uživatele a skupiny na portálu Azure](../../role-based-access-control/role-assignments-users.md).
+>Další informace o nastavení přístupových oprávnění najdete v tématu [správě přístupu pomocí RBAC a webu Azure portal](../../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="next-steps"></a>Další postup
-* Další informace o [nasazení Machine Learning s šablon Azure Resource Manageru](deploy-with-resource-manager-template.md). 
+* Další informace o [nasazení služby Machine Learning pomocí šablony Azure Resource Manageru](deploy-with-resource-manager-template.md). 

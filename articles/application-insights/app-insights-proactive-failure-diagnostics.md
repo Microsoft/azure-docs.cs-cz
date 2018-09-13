@@ -1,6 +1,6 @@
 ---
-title: Inteligentní detekce - selhání anomálie ve službě Application Insights | Microsoft Docs
-description: Vás upozorní na neobvyklé změny v počet neúspěšných požadavků do vaší webové aplikace a obsahuje diagnostiky analýzu. Není nutné konfigurovat.
+title: Inteligentní zjišťování – anomálie selhání ve službě Application Insights | Dokumentace Microsoftu
+description: Vás upozorní na neobvyklé změny počet neúspěšných žádostí do vaší webové aplikace a poskytuje diagnostické analýzu. Je potřeba žádná konfigurace.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -10,144 +10,146 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/09/2017
-ms.author: mbullwin; yossiy
-ms.openlocfilehash: 29ae81551d4bd4be4123c8e7780b8b5ecc259f09
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.reviewer: yossiy
+ms.author: mbullwin
+ms.openlocfilehash: 1987ebf76f06cb60e8ce1fb5c8215b6520d44d52
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35643390"
 ---
-# <a name="smart-detection---failure-anomalies"></a>Inteligentní detekce - anomálií selhání
-[Application Insights](app-insights-overview.md) automaticky vás upozorní skoro v reálném čase, pokud dojde neobvyklé zvýšení počet neúspěšných žádostí vaší webové aplikace. Zjistí neobvyklého nárůstu počet požadavků HTTP nebo závislostí volání, které jsou hlášeny jako se nezdařilo. Pro žádosti neúspěšné požadavky jsou obvykle s kódy odpovědí 400 nebo vyšší. Můžete rychlou kontrolu a diagnostikovat problém, analýzu charakteristiky selhání a související telemetrii je součástí oznámení. Existují také odkazy na portálu služby Application Insights pro další diagnostiku. Tato funkce musí žádné nastavení ani konfigurace, protože využívá algoritmy strojového učení k předpovědi je míra selhání normální.
+# <a name="smart-detection---failure-anomalies"></a>Inteligentní zjišťování – anomálie selhání
+[Application Insights](app-insights-overview.md) automaticky upozorní téměř v reálném čase, zda prostředích vašich webových aplikací neobvykle zvýší počet neúspěšných žádostí. Zjistí neobvyklý nárůst míry požadavků protokolu HTTP nebo volání závislostí, které se ohlásí jako neúspěšný. Pro požadavků neúspěšných požadavků jsou obvykle s kódy odpovědí 400 nebo vyšší. Umožňují posuzovat a diagnostikovat potíže, analýzu povaze chyby a související telemetrii najdete v oznámení. Existují také odkazy na portálu služby Application Insights pro další diagnostiku. Funkce potřebuje žádné instalace ani konfigurace, protože používá algoritmy strojového učení k předpovědi normální míra neúspěchů.
 
-Tato funkce funguje pro Java a ASP.NET webové aplikace hostované v cloudu nebo na serverech. Taky funguje pro každou aplikaci, která generuje telemetrická žádost nebo závislost – například pokud máte role pracovního procesu, který volá [TrackRequest()](app-insights-api-custom-events-metrics.md#trackrequest) nebo [TrackDependency()](app-insights-api-custom-events-metrics.md#trackdependency).
+Tato funkce funguje pro jazyk Java a ASP.NET webových aplikací hostovaných v cloudu nebo na vašich vlastních serverech. Funguje i pro každou aplikaci, která generuje telemetrická data požadavku nebo závislost – například pokud máte role pracovního procesu, která volá [TrackRequest()](app-insights-api-custom-events-metrics.md#trackrequest) nebo [TrackDependency()](app-insights-api-custom-events-metrics.md#trackdependency).
 
-Po nastavení [Application Insights pro svůj projekt](app-insights-overview.md), a pokud vaše aplikace generuje určité minimální množství telemetrie, inteligentní detekce anomálií selhání trvá další normální chování vaší aplikace, než je 24 hodin zapnout a může odesílat výstrahy.
+Po nastavení [Application Insights pro váš projekt](app-insights-overview.md), a pokud vaše aplikace generuje určité minimální množství telemetrických dat, inteligentní detekci anomálií selhání trvá další normálního chování aplikace, než bude 24 hodin Přepnout a odesílání oznámení.
 
-Zde je ukázka výstraha.
+Tady je ukázka upozornění.
 
-![Ukázka inteligentní detekce výstraha zobrazující clusteru analysis kolem selhání](./media/app-insights-proactive-failure-diagnostics/013.png)
+![Ukázkové upozornění inteligentního zjišťování zobrazující analýzy cluster po selhání](./media/app-insights-proactive-failure-diagnostics/013.png)
 
 > [!NOTE]
-> Ve výchozím nastavení zobrazí kratší pošty formátu než v tomto příkladu. Ale můžete [přepnout na tento podrobný formát](#configure-alerts).
+> Ve výchozím nastavení získáte kratší formát e-mailu než v tomto příkladu. Ale můžete [přepnout na tento podrobný formát](#configure-alerts).
 >
 >
 
-Všimněte si, že se dozvíte:
+Všimněte si, že musíte:
 
-* Míra selhání ve srovnání s chování normální aplikace.
-* Počet uživatelů, kteří jsou vliv – abyste věděli, kolik starat.
-* Charakteristik vzor přidružené chyby. V tomto příkladu je kód konkrétní odpovědi, název požadavku (operace) a verzí v aplikaci. Které okamžitě sděluje, kde začít hledat v kódu. Další možnosti může být konkrétní operační systém prohlížeče nebo klienta.
-* Výjimka, trasování protokolu a selhání závislosti (databáze nebo dalších externích součástí), zobrazí jako přidružen charakterizované selhání.
-* Přímé odkazy na relevantní vyhledávání v telemetrii ve službě Application Insights.
+* Chybovost v porovnání s normální chování.
+* Kolik uživatelů se TOP týká – abyste věděli, kolik si dělat starosti.
+* Charakteristické model přidružený k selhání. V tomto příkladu je konkrétní odezvy kód, název požadavku (operace) a verze aplikace. Která okamžitě zjistíte, kde začít hledat ve vašem kódu. Další možnosti může být konkrétní operační systém prohlížeč nebo klienta.
+* Výjimky, trasování protokolu a chyb závislostí (databází nebo dalších externích součástí), který se přidruží charakterizované selhání.
+* Odkazy přímo na relevantní hledání na telemetrická data ve službě Application Insights.
 
-## <a name="benefits-of-smart-detection"></a>Výhody Inteligentní detekce
-Obyčejnou [metriky výstrahy](app-insights-alerts.md) zjistíte, může se jednat o problém. Ale Inteligentní detekce spuštění diagnostiky pracovní pro vás, provádění mnoho analýzy, že byste jinak museli dělat sami. Můžete získat výsledky přehledně zabalené, což pomáhá rychle získat do kořenového adresáře problému.
+## <a name="benefits-of-smart-detection"></a>Výhody inteligentního zjišťování
+Běžné [upozornění na metriku](app-insights-alerts.md) říct, pravděpodobně došlo k potížím. Ale inteligentního zjišťování spustí diagnostické práce za vás provádí spoustu analýzy, které by jinak museli dělat sami. Získáte výsledky elegantně zabaleny, pomáhá zajistit, abyste se rychle dostanete se k problému.
 
 ## <a name="how-it-works"></a>Jak to funguje
-Inteligentní detekce monitoruje telemetrická data přijata z vaší aplikace, zejména selhání sazby. Toto pravidlo spočítá počet požadavků, pro kterou `Successful request` vlastnost má hodnotu false, a počet závislostí volání pro kterou `Successful call` vlastnost je false. Pro žádosti, ve výchozím nastavení `Successful request == (resultCode < 400)` (Pokud jste napsali vlastní kód pro [filtru](app-insights-api-filtering-sampling.md#filtering) nebo vygenerování vlastního [TrackRequest](app-insights-api-custom-events-metrics.md#trackrequest) volání). 
+Inteligentní zjišťování monitoruje telemetrická data přijatá z vaší aplikace, zejména chybovost. Toto pravidlo se počítá počet požadavků, pro kterou `Successful request` vlastnost má hodnotu false a počet závislosti volání pro kterou `Successful call` vlastnost má hodnotu false. Pro žádosti, ve výchozím nastavení `Successful request == (resultCode < 400)` (Pokud jste napsali vlastní kód pro [filtr](app-insights-api-filtering-sampling.md#filtering) nebo generovat vlastní [TrackRequest](app-insights-api-custom-events-metrics.md#trackrequest) volání). 
 
-Výkon vaší aplikace má typický vzor chování. Některé požadavků nebo závislostí volání budou náchylnější k selhání než jiné; a celkové míra selhání může se stát, zatížením. Inteligentní detekce využívá strojové učení k vyhledání tyto anomálií.
+Výkon vaší aplikace je typický vzor chování. Některé požadavky nebo volání závislostí budou náchylnější k selhání než jiné; a celková míra selhání můžou směřovat stoupajícím zatížením. Inteligentní zjišťování využívá strojové učení k vyhledání těchto anomálie.
 
-Jako telemetrie dodává do Application Insights z vaší webové aplikace, inteligentní detekce porovná aktuální chování vzory vidět za posledních několik dnů. Pokud neobvyklý růst v míra selhání pozorovanou porovnáním s předchozí výkonu, analýzu se aktivuje.
+Jak telemetrická data pochází z vaší webové aplikace do Application Insights, inteligentní zjišťování porovná aktuální chování s vzory za posledních několik dnů. Pokud je abnormální nárůst chybovosti porovnáním s předchozím výkonu, analýzu se aktivuje.
 
-Když se aktivuje analýzu službu analysis clusteru provádí chybných požadavků a pokouší se určit vzor hodnot, které charakterizovat chyby. V předchozím příkladu analýza zjistila, že většina selhání jsou o konkrétní výsledný kód, název požadavku, hostitele adresy URL serveru a role instance. Analýza naopak zjistila vlastnost operačního systému klienta v průběhu více hodnot, a proto není uveden.
+Při spuštění analýzy provádí služba analýzy clusteru neúspěšných požadavků a pokouší se určit vzorek hodnot, které charakterizují chyby. V předchozím příkladu analýzy zjistil, že většina selhání se týkají výsledné kódu, žádost o název, hostitel adresy URL serveru a role instance. Naopak analýzy zjistil, že vlastnost operační systém klienta je distribuována na více hodnot, a proto není uvedený.
 
-Když služby je instrumentována pomocí těchto volání telemetrie, vyhledá analyzátoru výjimku a selhání závislostí, které jsou přidružené požadavky v clusteru, který má identifikuje, společně s příklady všech protokolů trasování, které jsou spojené s těmito požadavky.
+Pokud vaše služba se neinstrumentují službou těchto volání telemetrie, analyzátor hledá výjimky a chyby závislosti, které jsou propojeny s požadavky v clusteru, který má identifikovali, společně s příkladem všech protokolů trasování tyto žádosti spotřebují.
 
-Výsledný analysis vám bude zaslána jako výstrahu, pokud jste ji nakonfigurovali nikoli k.
+Výsledný analýzy vám zaslán jako upozornění, pokud jste ji nakonfigurovali nikoli k.
 
-Podobně jako [výstrahy, můžete nastavit ručně](app-insights-alerts.md), můžete zkontrolovat stav výstrahy a nakonfigurovat ho v okně výstrahy prostředku Application Insights. Ale na rozdíl od ostatních výstrah, nemusíte nastavení nebo konfigurace Inteligentní detekce. Pokud chcete, můžete zakázat nebo změnit jeho cíl e-mailové adresy.
+Podobně jako [výstrahy, je nastavit ručně](app-insights-alerts.md), můžete zkontrolovat stav výstrahy a nakonfigurovat jej v okně oznámení vašemu prostředku Application Insights. Ale na rozdíl od ostatních výstrah, není nutné vytvořit nebo nakonfigurovat inteligentní zjišťování. Pokud chcete, můžete jej zakázat nebo změnit jeho cíl e-mailové adresy.
 
 ## <a name="configure-alerts"></a>Konfigurace upozornění
-Můžete zakázat Inteligentní detekce, změnit příjemců e-mailu, vytvořit webhook, jehož nebo vyjádřit výslovný souhlas pro podrobnější výstražné zprávy.
+Můžete zakázat inteligentní zjišťování, změnit příjemců e-mailu, vytvořte webhook nebo vyjádřit výslovný souhlas s podrobnější oznámení.
 
-Otevřete stránku výstrahy. Selhání anomálie se dodává spolu s všechny výstrahy, které jste si nastavili ručně, a zobrazí se, zda právě probíhá její stav výstrahy.
+Otevření stránky s upozorněními. Anomálie selhání je zahrnut spolu s všechny výstrahy, které jste ručně nastavili, a uvidíte, jestli je aktuálně ve stavu upozornění.
 
-![Na stránce Přehled klikněte na dlaždici výstrahy. Nebo na libovolné stránce metriky, klikněte na tlačítko výstrahy.](./media/app-insights-proactive-failure-diagnostics/021.png)
+![Na stránce Přehled klikněte na dlaždici upozornění. Nebo na libovolné stránce metriky, klikněte na tlačítko výstrahy.](./media/app-insights-proactive-failure-diagnostics/021.png)
 
-Klikněte na výstrahu, kterou chcete nakonfigurovat ji.
+Klikněte na výstrahu, kterou chcete nakonfigurovat.
 
 ![Konfigurace](./media/app-insights-proactive-failure-diagnostics/032.png)
 
-Všimněte si, že můžete zakázat Inteligentní detekce, ale nelze ho proto odstranit (nebo vytvořte jiný).
+Všimněte si, že inteligentní zjišťování můžete zakázat, ale nelze ji odstranit, (nebo vytvořte jiný).
 
 #### <a name="detailed-alerts"></a>Podrobné výstrahy
-Pokud zvolíte možnost "Získat podrobnější Diagnostika" e-mailu, bude obsahovat další diagnostické informace. V některých případech budete moct diagnostikovat problém právě z dat v e-mailu.
+Pokud zvolíte možnost "Získat podrobnější diagnostiku" e-mail bude obsahovat další diagnostické informace. Někdy budete mít k diagnostice problému jenom z dat v e-mailu.
 
-Není lehké riziko, že podrobnější výstrahy můžou obsahovat citlivé informace, protože obsahuje výjimku a trasování zpráv. Však tomu by mohlo dojít pouze pokud váš kód by se mohl citlivých informací do těchto zpráv.
+Není lehké riziko, že podrobnější výstraha může obsahovat citlivé informace, protože obsahuje výjimkách a trasovací zprávy. Ale to by mohlo dojít pouze pokud váš kód by mohlo znamenat citlivé informace do těchto zpráv.
 
-## <a name="triaging-and-diagnosing-an-alert"></a>Triaging a diagnostice výstrahu
-Výstraha naznačuje, že byl zjištěn neobvyklý růst v frekvence neúspěšných požadavků. Je pravděpodobné, že je nějaký problém s vaší aplikace nebo jeho prostředí.
+## <a name="triaging-and-diagnosing-an-alert"></a>Třídění a Diagnostika výstrahu
+Výstraha naznačuje, že se zjistil neobvyklý nárůst míry neúspěšných žádostí. Je pravděpodobné, že je nějaký problém s vaší aplikace nebo její prostředí.
 
-Z procento požadavky a počet ovlivněných uživatelů můžete rozhodnout, jak naléhavé problém. V příkladu nahoře je míra selhání 22,5 % porovná s normální rychlosti % 1, označuje, že něco chybný se děje. Na druhé straně byly ovlivněny pouze 11 uživatele. Pokud by měla aplikace, by mohli k vyhodnocení, jak závažná, je.
+Z procento žádostí a počet ovlivněných uživatelů můžete rozhodnout, jak urgentní je problém. V předchozím příkladu je míra selhání 22.5 % porovná s normální mírou 1 %, znamená, že něco špatně se děje. Na druhé straně pouze 11 uživatele vliv. Pokud se vaše aplikace, by mohli posoudit, jak závažná je.
 
-V mnoha případech bude moci diagnostikovat problém rychle z žádosti o název, výjimky, závislost selhání a trasování data poskytnutá.
+V mnoha případech bude možné k diagnostice problému rychle z název žádosti, výjimky, závislosti selhání a trasování data k dispozici.
 
-Existují některé další různá vodítka. Například je míra selhání závislostí v tomto příkladu je stejný jako výjimka rychlost (89.3 %). To naznačuje, že nastane výjimka přímo z chyby závislosti - budete jasno, kde začít hledat v kódu.
+Existují některé další příčiny. Například míra selhání závislostí v tomto příkladu je stejný jako frekvence výjimek (89.3 %). To naznačuje, že výjimka nastane přímo z chyb závislostí – díky tomu získáte jasno, kde začít hledat ve vašem kódu.
 
-Dále prozkoumat, odkazy v každé části vás nasměruje přímo do [stránky hledání](app-insights-diagnostic-search.md) filtruje tak, aby příslušné požadavky, výjimky, závislostí nebo trasování. Nebo můžete otevřít [portál Azure](https://portal.azure.com), přejděte do prostředku Application Insights pro vaši aplikaci a otevřete okno selhání.
+Dále prozkoumat odkazy v každé části přejdete přímo do [stránka hledání](app-insights-diagnostic-search.md) vyfiltrovaný tak, aby příslušné požadavky, výjimky, závislosti nebo trasování. Nebo můžete otevřít [webu Azure portal](https://portal.azure.com), přejděte do prostředku Application Insights pro vaši aplikaci a otevře se okno selhání.
 
-V tomto příkladu kliknutím na odkaz 'Zobrazit podrobnosti selhání závislosti' otevře v okně hledání Application Insights. Zobrazí příkaz SQL, který obsahuje příklad příčiny: hodnoty Null byly poskytnuty v povinná pole a neprošel ověřením při ukládání operace.
+V tomto příkladu kliknutím na odkaz 'Zobrazit podrobnosti o neúspěšných závislostí' Otevře se okno hledání Application Insights. Zobrazí příkaz SQL, který obsahuje příklad hlavní příčina: hodnoty Null byly k dispozici na povinná a neprošel ověřením při ukládání operace.
 
 ![Diagnostické vyhledávání](./media/app-insights-proactive-failure-diagnostics/051.png)
 
 ## <a name="review-recent-alerts"></a>Nedávné výstrahy můžete zkontrolovat
 
-Klikněte na tlačítko **Inteligentní detekce** získat nejnovější výstrahy:
+Klikněte na tlačítko **inteligentního zjišťování** zobrazíte nejnovější oznámení:
 
-![Souhrn výstrah](./media/app-insights-proactive-failure-diagnostics/070.png)
+![Souhrn výstrah podle](./media/app-insights-proactive-failure-diagnostics/070.png)
 
 
 ## <a name="whats-the-difference-"></a>Jaký je rozdíl...
-Inteligentní detekce anomálií selhání doplňuje jiné podobné avšak odlišné funkce Application Insights.
+Inteligentní detekce anomálie selhání doplňuje dalších podobných ale různé prvky služby Application Insights.
 
-* [Metriky výstrahy](app-insights-alerts.md) jsou nastavené sami a můžete monitorovat řadu metrik, jako je například obsazení procesoru, požadavků, časů načtení stránky a tak dále. Můžete je používat k varovat, například pokud budete muset přidat další prostředky. Naopak Inteligentní detekce anomálií selhání obsahuje malé řadu důležitých metriky (aktuálně pouze chybných požadavků rychlost), navržená tak, aby oznámí, že jste v téměř v reálném čase způsobem po vaší webové aplikace se nezdařilo požadavku zvyšuje rychlost výrazně ve srovnání s webovou aplikaci normální chování.
+* [Upozornění na metriku](app-insights-alerts.md) vámi nastavené a můžete monitorovat širokou řadu metrik, jako jsou vytížení procesoru, požadavků, doby načítání stránek a tak dále. Můžete využít k by vás varovala, například pokud budete muset přidat další prostředky. Oproti tomu inteligentní detekci anomálií selhání pokrývá malé řadu důležité metriky (aktuálně jenom neúspěšné frekvence požadavků), navržená tak, aby byli informováni vždy, můžete v téměř reálném čase způsobem, jakmile se vaše webová aplikace neprošla požadavku zvyšuje rychlost výrazně ve srovnání s webovou aplikaci normální chování.
 
-    Inteligentní detekce automaticky upraví jeho prahovou hodnotu v odpovědi na běžné podmínky.
+    Inteligentní zjišťování automaticky přizpůsobí prahové hodnoty v odpovědi na obvyklé podmínky.
 
-    Inteligentní zjišťování spustí diagnostiky práci za vás.
-* [Inteligentní detekce anomálií výkonu](app-insights-proactive-performance-diagnostics.md) také používá počítač intelligence ke zjištění neobvyklé vzorců vaše metriky a není nutná žádná konfigurace vy. Ale na rozdíl od Inteligentní detekce anomálií selhání účelem Inteligentní detekce anomálií výkonu je najít segmenty vaší potrubí využití, který může být chybně zpracoval – například podle konkrétní stránky na určitý typ prohlížeče. Každý den provedení analýzy a pokud se nenajde žádný výsledek, bude nejspíš naléhavé mnohem menší než výstrahu. Naopak nepřetržitě provedení analýzy selhání anomálií na příchozích telemetrických dat, a budete informováni, minut Pokud sazby selhání serveru jsou větší, než se očekávalo.
+    Inteligentní zjišťování spustí diagnostické práce za vás.
+* [Inteligentní detekce anomálie výkonu](app-insights-proactive-performance-diagnostics.md) také používá strojové inteligence ke zjištění neobvyklé vzory v metriky a není nutná žádná konfigurace sami. Ale na rozdíl od inteligentního zjišťování anomálií selhání účelu inteligentního zjišťování anomálie výkonu je vyhledání segmenty vaší potrubí využití, které může být chybně dodávat – například podle konkrétní stránky na konkrétní typ prohlížeče. Analýza se provádí denně a pokud se nenajde žádné výsledky, je pravděpodobně mnohem méně naléhavé než výstrahu. Naopak analýzy pro anomálie selhání je průběžně provedla příchozích telemetrických dat a se pak zobrazí upozornění během několika minut, pokud míra selhání serveru jsou větší, než se očekávalo.
 
-## <a name="if-you-receive-a-smart-detection-alert"></a>Pokud se zobrazí upozornění na inteligentní detekce
-*Proč obdrželi tuto výstrahu?*
+## <a name="if-you-receive-a-smart-detection-alert"></a>Pokud se zobrazí upozornění inteligentního zjišťování
+*Proč jste dostali Tato výstraha?*
 
-* Zjistili jsme neobvyklý růst v rychlost neúspěšných požadavků v porovnání s normální účaří úvodní tečky. Po dokončení analýzy selhání a související telemetrii myslíme si, že dojde k problému, který by měl vypadat do.
+* Zjistili jsme neobvyklý nárůst míry neúspěšných žádostí ve srovnání s normální základních hodnot v předchozím období. Po dokončení analýzy selhání a související telemetrii myslíme si, že dojde k nějakému problému, který byste se podívat do.
 
-*Znamená oznámení, že jsou výborný problém?*
+*Znamená oznámení, že mám jednoznačně problém?*
 
-* Pokusíme se výstraha na přerušení aplikace nebo snížení výkonu, ale pouze můžete plně pochopit sémantiky a dopadu na aplikace nebo uživatele.
+* Snažíme se upozornění na narušení aplikace nebo snížení výkonu, ale pouze plně rozumíte sémantika a dopad na aplikaci nebo uživatele.
 
-*Ano se možnost nepřetržitého podíváte na svá data?*
+*Ano guys podíváte na moje data?*
 
-* Ne. Služba je plně automatická. Pouze zobrazí oznámení. Vaše data jsou [privátní](app-insights-data-retention-privacy.md).
+* Ne. Tato služba je plně automatická. Pouze dostanete oznámení. Vaše data jsou [privátní](app-insights-data-retention-privacy.md).
 
-*Je nutné k odběru Tato výstraha?*
+*Budu muset předplatit Tato výstraha?*
 
-* Ne. Každá aplikace, že odešle požadavek telemetrie má pravidlo výstrahy Inteligentní detekce.
+* Ne. Každá aplikace, že odešle požadavek telemetrie se pravidlo upozornění inteligentního zjišťování.
 
-*Můžete zrušit nebo dostávat oznámení, namísto toho odesílána kolegové?*
+*Je možné zrušit nebo dostávat oznámení, namísto toho odesílána kolegové?*
 
-* Ano, pravidla v výstrah, klikněte na tlačítko pravidla inteligentního detekce jeho konfiguraci. Můžete zakázat výstrahy, nebo změnit příjemce pro výstrahy.
+* Ano, pravidla v upozornění, klikněte na pravidlo inteligentní zjišťování k jeho konfiguraci. Můžete zakázat upozornění nebo změnit příjemce pro výstrahy.
 
-*Ztrátou e-mailu. Kde najdu oznámení na portálu*
+*Mohu ztratit e-mailu. Kde najdu oznámení na portálu?*
 
-* V protokolech aktivity. V Azure otevřete prostředek Application Insights pro vaši aplikaci a potom vyberte protokoly aktivity.
+* V protokolech aktivit. V Azure otevřete prostředek Application Insights pro vaši aplikaci a pak vyberte protokoly aktivit.
 
-*Některé výstrahy jsou o známých problémech a není chcete přijímat.*
+*Některé výstrahy jsou o známých problémech a nebudete chtít přijímat.*
 
-* Máme potlačení výstrahy na našem nevyřízených položek.
+* Potlačení výstrah máme v backlogu.
 
 ## <a name="next-steps"></a>Další postup
-Tyto diagnostické nástroje můžete zkontrolovat telemetrie z vaší aplikace:
+Tyto diagnostické nástroje umožňují kontrolovat telemetrie z vaší aplikace:
 
-* [Metriky explorer](app-insights-metrics-explorer.md)
+* [Průzkumník metrik](app-insights-metrics-explorer.md)
 * [Průzkumník služby Search](app-insights-diagnostic-search.md)
-* [Analýza - účinný dotazovací jazyk](app-insights-analytics-tour.md)
+* [Analýza – výkonný dotazovací jazyk](app-insights-analytics-tour.md)
 
-Inteligentní detekce jsou zcela automatické. Ale možná chcete nastavit některé další výstrahy?
+Inteligentní detekce je úplně automatický. Ale možná chcete nastavit některé další oznámení?
 
 * [Ručně konfigurované metriky výstrahy](app-insights-alerts.md)
 * [Testy dostupnosti webu](app-insights-monitor-web-app-availability.md)

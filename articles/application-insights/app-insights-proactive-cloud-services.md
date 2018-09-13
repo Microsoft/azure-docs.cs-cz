@@ -1,6 +1,6 @@
 ---
-title: Výstraha ohledně problémů v Azure Cloud Services pomocí integrace Azure Diagnostics pomocí služby Azure Application Insights | Microsoft Docs
-description: Monitorování pro problémy jako chyby spuštění, dojde k chybě a role recyklovat smyčky v Azure Cloud Services pomocí služby Azure Application Insights
+title: Upozornění na potíže v cloudových službách Azure pomocí Azure Diagnostics integrace s Azure Application Insights | Dokumentace Microsoftu
+description: Sledování problémů, jako je selhání spuštění, chyb a role recyklovat smyčky v cloudových službách Azure pomocí Azure Application Insights
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -10,29 +10,30 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/07/2018
-ms.author: harelbr; mbullwin
-ms.openlocfilehash: 18817fd84a86a72d379f96973b71658f2cdf4afd
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.reviewer: harelbr
+ms.author: mbullwin
+ms.openlocfilehash: cdb395a590fb200a24c68e56728a270b968e53b5
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34851237"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35643116"
 ---
-# <a name="alert-on-issues-in-azure-cloud-services-using-the-azure-diagnostics-integration-with-azure-application-insights"></a>Výstraha na problémy ve službě Azure Cloud Services pomocí integrace Azure diagnostics pomocí služby Azure Application Insights
+# <a name="alert-on-issues-in-azure-cloud-services-using-the-azure-diagnostics-integration-with-azure-application-insights"></a>Upozornění na problémy v Azure Cloud Services pomocí integrace diagnostiky Azure pomocí Azure Application Insights
 
-V tomto článku jsme se popisují, jak nastavit pravidla výstrah, které sledování problémů jako selhání spuštění, dojde k chybě a role recyklovat smyčky v Azure Cloud Services (webové a pracovní role).
+V tomto článku jsme popisuje, jak nastavit pravidel upozornění, která sledování problémů, jako je selhání spuštění, chyb a role recyklovat smyčky v cloudových službách Azure (webové a pracovní role).
 
-Metoda popsaná v tomto článku je na základě [Azure Diagnostics integrace s nástrojem Application Insights](https://azure.microsoft.com/blog/azure-diagnostics-integration-with-application-insights/)a nedávno vydané [výstrahy protokolu pro službu Application Insights](https://azure.microsoft.com/blog/log-alerts-for-application-insights-preview/) schopností.
+Metoda popsaných v tomto článku je založena na [integrace Azure Diagnostics Application insights](https://azure.microsoft.com/blog/azure-diagnostics-integration-with-application-insights/)a nedávno vydané [upozornění protokolů pro službu Application Insights](https://azure.microsoft.com/blog/log-alerts-for-application-insights-preview/) funkce.
 
 ## <a name="define-a-base-query"></a>Vytvoření základního dotazu
 
-Pokud chcete začít, bude definujeme základní dotaz, který načte události v protokolu událostí systému Windows z tohoto kanálu Windows Azure, které jsou zachycení do Application Insights jako záznamy trasování.
-Tyto záznamy lze použít pro zjišťování celou řadu problémů v Azure Cloud Services, jako je selhání spuštění, selhání modulu runtime a recyklovat smyčky.
+Abyste mohli začít, nadefinujeme základní dotaz, který načte události protokolu událostí Windows z kanálu Windows Azure, které jsou zachyceny do Application Insights jako záznamy sledování.
+Tyto záznamy lze použít pro zjišťování celou řadou potíží v Azure Cloud Services, jako je selhání spuštění, chyby za běhu a recyklovat smyčky.
 
 > [!NOTE]
-> Základní dotaz níže zjistí problémy časové okno 30 minut a předpokládá latence 10 minut v příjem záznamy telemetrie. Tato výchozí nastavení lze nakonfigurovat podle svých potřeb.
+> Základní dotaz níže zjistí problémy v časovém intervalu 30 minut a předpokládá k ingestování telemetrických dat záznamů zpoždění 10 minut. Tato výchozí nastavení je možné nakonfigurovat podle svých potřeb.
 
 ```
 let window = 30m;
@@ -45,13 +46,13 @@ let EventLogs = traces
 | project timestamp, channel, eventId, message, cloud_RoleInstance, cloud_RoleName, itemCount;
 ```
 
-## <a name="check-for-specific-event-ids"></a>Kontrola pro konkrétní ID událostí
+## <a name="check-for-specific-event-ids"></a>Vyhledat konkrétní události ID
 
-Po načtení události v protokolu událostí systému Windows, můžete zjistit konkrétní problémy kontrolou jejich odpovídající ID a zpráva vlastnosti události (viz následující příklady).
-Jednoduše kombinovat základní dotaz výše s jedním z dotazy níže a slouží, které při definování pravidlo výstrahy protokolu dotazu.
+Po načtení událostí protokolu událostí Windows, lze zjistit určité problémy s kontrolou jejich příslušné ID a zpráva vlastnosti události (Další příklady naleznete níže).
+Jednoduše kombinovat základní dotaz nad s jedním z dotazy níže a používané, které dotaz při definování pravidel upozornění protokolů.
 
 > [!NOTE]
-> V následujících příkladech bude problém zjištěn, pokud se zjistí víc než třemi události během analyzovaných časový interval. Toto výchozí nastavení můžete konfigurovat a měnit citlivosti pravidlo výstrahy.
+> V následujících příkladech se problém zjistil, nejsou-li více než tři události nalezeny analyzované časovém období. Toto výchozí nastavení můžete konfigurovat a měnit citlivosti pravidlo upozornění.
 
 ```
 // Detect failures in the OnStart method
@@ -89,38 +90,38 @@ EventLogs
 
 ## <a name="create-an-alert"></a>Vytvoření upozornění
 
-V navigační nabídce v prostředku Application Insights, přejděte na **výstrahy**a potom vyberte **nové pravidlo výstrahy**.
+V nabídce navigace v rámci prostředku Application Insights, přejděte na **výstrahy**a pak vyberte **nové pravidlo upozornění**.
 
 ![Snímek obrazovky vytvořit pravidlo](./media/app-insights-proactive-cloud-services/001.png)
 
-V **vytvořit pravidlo** okno, v části **definovat výstrahy podmínku** části, klikněte na **přidat kritéria**a potom vyberte **hledání protokolů vlastní**.
+V **vytvořit pravidlo** okně v části **Definujte podmínku upozornění** části, klikněte na **přidat kritéria**a pak vyberte **prohledávání protokolů vlastní**.
 
-![Snímek obrazovky kritéria Definujte podmínky pro výstrahu](./media/app-insights-proactive-cloud-services/002.png)
+![Snímek obrazovky definovat podmínky kritéria pro výstrahy](./media/app-insights-proactive-cloud-services/002.png)
 
-V **vyhledávací dotaz** pole, vložte kombinované dotaz jste připravili v předchozím kroku.
+V **vyhledávací dotaz** vložte kombinované dotazu, který jste připravili v předchozím kroku.
 
-Potom pokračujte **prahová hodnota** pole a jeho hodnotu nastavte na hodnotu 0. Může volitelně vylepšení **období** a četnost **pole**.
+Potom pokračujte **prahová hodnota** pole a nastavte jej na hodnotu 0. Může volitelně můžete upravit **období** a frekvenci **pole**.
 Klikněte na **Done** (Hotovo).
 
 ![Snímek obrazovky konfigurace signál logiku dotazu](./media/app-insights-proactive-cloud-services/003.png)
 
-V části **definovat podrobnosti výstrahy** části, zadejte **název** a **popis** do pravidlo výstrahy a nastavte její **závažnost**.
-Také zkontrolujte, zda **pravidlo povolit po vytvoření** tlačítko nastavena na **Ano**.
+V části **definujte podrobnosti o upozornění** části, zadejte **název** a **popis** na pravidlo upozornění a nastavte jeho **závažnost**.
+Také, ujistěte se, že **Povolit pravidlo po vytvoření** tlačítka nastaven **Ano**.
 
-![Podrobnosti výstrahy – snímek obrazovky](./media/app-insights-proactive-cloud-services/004.png)
+![Snímek obrazovky podrobností výstrah](./media/app-insights-proactive-cloud-services/004.png)
 
-V části **definovat akce skupiny** části, můžete vybrat existující **akce skupiny** nebo vytvořte novou.
-Můžete mít skupině Akce obsahovat více akcí různých typů.
+V části **definujte skupinu akcí** oddílu, můžete vybrat existující **skupiny akcí** nebo vytvořte novou.
+Může zvolit, aby skupina akcí obsahovat více akcí z různých typů.
 
-![Snímek obrazovky akce skupiny](./media/app-insights-proactive-cloud-services/005.png)
+![Snímek obrazovky skupiny akcí](./media/app-insights-proactive-cloud-services/005.png)
 
-Jakmile skupině Akce, které jste definovali, potvrďte změny a klikněte na **vytvořit pravidlo výstrahy**.
+Jakmile skupinu akcí, které jste definovali, potvrďte provedené změny a klikněte na tlačítko **vytvořit pravidlo upozornění**.
 
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o automatické zjišťování:
 
-[Selhání anomálií](app-insights-proactive-failure-diagnostics.md)
+[Anomálie selhání](app-insights-proactive-failure-diagnostics.md)
 [nevracení paměti](app-insights-proactive-potential-memory-leak.md)
 [anomálie výkonu](app-insights-proactive-performance-diagnostics.md)
 

@@ -1,6 +1,6 @@
 ---
-title: Inteligentní diagnostiky výkonu Statistika-protokol – Azure SQL Database | Microsoft Docs
-description: Inteligentní statistika poskytuje protokolu diagnostiky problémů s výkonem databáze SQL Azure
+title: Intelligent Insights Diagnostika protokolování výkonu – Azure SQL Database | Dokumentace Microsoftu
+description: Intelligent Insights poskytuje protokol diagnostiky problémů s výkonem Azure SQL Database
 services: sql-database
 author: danimir
 manager: craigg
@@ -10,22 +10,22 @@ ms.custom: monitor & tune
 ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: v-daljep
-ms.openlocfilehash: 3d1a9045ed89bd3e5714762add7cb9568c46e44f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 36b7c3775bb4e9addc5b3c9780805ddfe56249bf
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34648237"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44717994"
 ---
-# <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Použití protokolu diagnostiky výkonu inteligentního Statistika Azure SQL Database
+# <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Použití protokolu diagnostiky výkonu Intelligent Insights Azure SQL Database
 
-Tato stránka obsahuje informace o tom, jak používat protokol diagnostiky výkonu Azure SQL Database generované [inteligentního Statistika](sql-database-intelligent-insights.md), formát a k datům obsahuje pro váš vlastní vývoj potřebuje. Můžete odeslat tento protokol diagnostiky a [Azure Log Analytics](../log-analytics/log-analytics-azure-sql.md), [Azure Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md), [Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage), nebo řešení třetí strany pro vlastní DevOps výstrahy a vytváření sestav Možnosti.
+Tato stránka obsahuje informace o tom, jak používat protokol diagnostiky výkonu Azure SQL Database generovaných [Intelligent Insights](sql-database-intelligent-insights.md), jeho formát a data obsahuje pro potřeby vaší vlastní vývoj. Odešlete tento protokol diagnostiky a [Azure Log Analytics](../log-analytics/log-analytics-azure-sql.md), [Azure Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md), [služby Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage), nebo řešení třetí strany pro vlastní vývoj a provoz upozorňování a generování sestav Možnosti.
 
-## <a name="log-header"></a>Záhlaví protokolu
+## <a name="log-header"></a>Hlavička protokolu
 
-Protokol diagnostiky používá standardní formát JSON k vypsání výsledků zjištění inteligentního Statistika. Vlastnost přesný kategorie pro přístup k protokolu inteligentního Insights je pevná hodnota "SQLInsights".
+Diagnostický protokol používalo standardní formát JSON do výstupu Intelligent Insights zjištění. Vlastnost přesné kategorie pro přístup k protokolu Intelligent Insights je pevná hodnota "SQLInsights".
 
-Hlavička protokolu běžné a skládá se z časové razítko (TimeGenerated), který ukazuje vytvoření položku. Zahrnuje také ID prostředku (ResourceId), který odkazuje na konkrétní položka má vztah k databázi SQL. Kategorie (kategorie), úrovni (úroveň) a název operaci (OperationName) jsou pevně dané vlastnosti, jejichž hodnoty se nezmění. Indikuje, že je záznam protokolu informativní a že pocházejí z inteligentního přehledy (SQLInsights).
+Hlavička protokolu je běžné a skládá se z časové razítko (TimeGenerated), který ukazuje, kdy byl vytvořen záznam. Zahrnuje také ID prostředku (ID prostředku), který odkazuje na konkrétní položka má vztah k databázi SQL. Category (kategorie), úroveň (úrovně) a název operaci (OperationName) jsou pevně dané vlastnosti, jejichž hodnoty se nezmění. Indikuje, že je položka protokolu informativní a že pocházejí z Intelligent Insights (SQLInsights).
 
 ```json
 "TimeGenerated" : "2017-9-25 11:00:00", // time stamp of the log entry
@@ -35,15 +35,15 @@ Hlavička protokolu běžné a skládá se z časové razítko (TimeGenerated), 
 "OperationName" : "Insight", // fixed property
 ```
 
-## <a name="issue-id-and-database-affected"></a>ID problému a databáze vliv
+## <a name="issue-id-and-database-affected"></a>ID problému a ovlivněné databáze
 
-Vlastnost Identifikace problém (issueId_d) poskytuje způsob jednoznačně sledování problémy s výkonem, dokud se jejich vyřešení. Inteligentní Statistika dodržuje každý problém životního cyklu jako "Aktivní", "Ověření" nebo "Úplná". Prostřednictvím jednotlivých fází stav můžete zaznamenat inteligentního Statistika více záznamů událostí v protokolu. Pro každou z těchto položek zůstane jedinečné číslo ID problému. Inteligentní Insights sleduje problém prostřednictvím životního cyklu a generuje přehledu v protokolu diagnostiky každých 15 minut.
+Vlastnost Identifikace problému (issueId_d) poskytuje způsob jednoznačně sledování problémů s výkonem, dokud se nevyřeší. Intelligent Insights dodržuje každý životní cyklus problém jako "Aktivní", "Ověření" nebo "Dokončených". Prostřednictvím jednotlivých fází stav Intelligent Insights zaznamenat více záznamů událostí v protokolu. Pro každou z těchto položek zůstane jedinečné identifikační číslo problém. Intelligent Insights sleduje problém prostřednictvím jejich životního cyklu a generuje přehledů v protokolu diagnostiky každých 15 minut.
 
-Jakmile se zjistí problém s výkonem a pro tak dlouho, dokud jeho platnost, problém se hlásí jako "Aktivní" v části vlastnost status (status_s). Po zjištěný problém zmírnit, má ověřit a ohlásit jako "Ověření" v části vlastnost status (status_s). Pokud tento problém již neexistuje, stav (status_s) vlastnost hlásí tento problém jako "Dokončeno".
+Po zjištění problému s výkonem a tak dlouho, dokud to trvá, problém se hlásí jako "Aktivní" v části Vlastnosti stavu (status_s). Po vyřešení zjištěného problému má ověřený a označení "Ověření" v části Vlastnosti stavu (status_s). Pokud tento problém se nadále nenachází, vlastnost status (status_s) ohlásí tento problém jako "Dokončit".
 
-Společně s ID problému protokolu diagnostiky hlásí počáteční (intervalStartTime_t) a end (intervalEndTme_t) časová razítka konkrétní události související s problém, který se použije v hlášení v protokolu diagnostiky.
+Spolu s ID problému diagnostický protokol sestavy (intervalStartTime_t) start a end (intervalEndTme_t) časová razítka konkrétní události týkající se problému, který se použije v hlášení v protokolu diagnostiky.
 
-Vlastnost elastického fondu (elasticPoolName_s) určuje, které elastického fondu databáze s problémem patří do. Není-li databáze součástí fondu elastické databáze, tato vlastnost nemá žádnou hodnotu. Databáze, ve kterém byl zjištěn problém je uvedeno v databázi vlastnost name (databaseName_s).
+Vlastnosti elastického fondu (elasticPoolName_s) označuje, které elastického fondu databáze s problémem patří. Pokud databáze, které nejsou součástí elastického fondu, tato vlastnost nemá žádnou hodnotu. Vlastnost name (databaseName_s) databáze zachycuje databáze, ve kterém byl zjištěn problém.
 
 ```json
 "intervalStartTime_t": "2017-9-25 11:00", // start of the issue reported time stamp
@@ -56,9 +56,9 @@ Vlastnost elastického fondu (elasticPoolName_s) určuje, které elastického fo
 
 ## <a name="detected-issues"></a>Zjištěné problémy
 
-V další části inteligentního Statistika výkonu protokolu obsahuje problémy s výkonem, které byly zjištěny prostřednictvím vestavěné inteligentní umělé. Detekce jsou uvedena v vlastnosti v rámci protokolu diagnostiky JSON. Tyto detekce skládá z kategorii problému, dopad problém, vliv na dotazy a metriky. Vlastnosti detekce může obsahovat více problémy s výkonem, které byly zjištěny.
+Další část protokolu výkonu Intelligent Insights obsahuje problémy s výkonem, které byly zjištěny prostřednictvím integrovanou umělou inteligencí. Detekce jsou uvedeny ve vlastnostech v protokolu diagnostiky JSON. Tyto detekce se skládají z kategorii problému, dopad problému, vliv na dotazy a metriky. Detekce vlastnosti může obsahovat více, které byly zjištěny problémy s výkonem.
 
-Problémy s výkonem zjištěné jsou hlášeny s následující strukturou detekce vlastnost:
+S následující strukturou vlastnost detekcí jsou hlášeny problémy s výkonem zjištěné:
 
 ```json
 "detections_s" : [{
@@ -68,41 +68,41 @@ Problémy s výkonem zjištěné jsou hlášeny s následující strukturou dete
 }] 
 ```
 
-Vzory rozpoznat výkon a podrobnosti, které jsou výstupem do protokolu diagnostiky jsou uvedeny v následující tabulce.
+Vzory zjistitelná výkonu a informace, které jsou výstupem v protokolu diagnostiky jsou k dispozici v následující tabulce.
 
 ### <a name="detection-category"></a>Detekce kategorie
 
-Vlastnost category (kategorie) popisuje kategorii výkonu rozpoznat vzory. Najdete v následující tabulce pro všechny možné kategorie výkonu rozpoznat vzory. Další informace najdete v tématu [řešení potíží s výkonem databáze s inteligentního Insights](sql-database-intelligent-insights-troubleshoot-performance.md).
+Vlastnost category (kategorie) popisuje kategorie vzory zjistitelná výkonu. Podívejte se na následující tabulku pro všechny možné kategorie vzorů zjistitelná výkonu. Další informace najdete v tématu [databáze odstraňování problémů s výkonem Intelligent insights](sql-database-intelligent-insights-troubleshoot-performance.md).
 
-V závislosti na výkonu zjištěném problému, podrobnosti výstupem v diagnostiku lišit podle toho souboru protokolu.
+Soubor protokolu v závislosti na výkonu zjištěném problému, podrobnosti výstupem v diagnostice liší odpovídajícím způsobem.
 
-| Vzory rozpoznat výkonu | Podrobnosti o výstupem |
+| Vzory zjistitelná výkonu | Podrobnosti výstupu |
 | :------------------- | ------------------- |
-| Rozsáhlejší limitů prostředků | <li>Vliv na prostředky</li><li>Hodnoty hash dotazu</li><li>Procento spotřeby prostředků</li> |
-| Zvýšení zatížení | <li>Počet dotazů, jejichž spuštění vyšší</li><li>Hodnoty hash dotazu dotazů s největší příspěvku zvýšení zatížení</li> |
-| Přetížení paměti | <li>Fulltextu paměti</li> |
-| Zamykání | <li>Vliv na hodnoty hash dotazu</li><li>Blokování hodnoty hash dotazu</li> |
-| Zvýšená MAXDOP | <li>Hodnoty hash dotazu</li><li>Dobu čekání CXP</li><li>Čekání</li> |
-| Pagelatch kolizí | <li>Dotaz na hodnoty hash dotazů způsobuje kolizí</li> |
-| Chybí indexu | <li>Hodnoty hash dotazu</li> |
-| Nový dotaz | <li>Hodnota hash dotazu nové dotazy</li> |
-| Statistiky neobvyklou čekání | <li>Typy neobvyklou čekání</li><li>Hodnoty hash dotazu</li><li>Dobu čekání dotazu</li> |
-| Databáze TempDB kolizí | <li>Dotaz na hodnoty hash dotazů způsobuje kolizí</li><li>Uvedení dotazu na celkový databáze pagelatch kolizí čekací doba [%]</li> |
-| Nedostatek DTU elastického fondu | <li>Elastický fond</li><li>Hlavní databáze spotřeba DTU</li><li>Procento fondu používá ji příjemce nejvyšší počet jednotek DTU</li> |
-| Plánování regrese | <li>Hodnoty hash dotazu</li><li>Kvalitní plán ID</li><li>Chybný plán ID</li> |
-| Změna hodnoty obor databáze konfigurace | <li>Změny konfigurace s rozsahem databáze ve srovnání s výchozí hodnoty</li> |
+| Dosáhnout omezení prostředků | <li>Ovlivněné prostředky</li><li>Hodnoty hash dotazu</li><li>Procento využití prostředků</li> |
+| Zvýšení zatížení | <li>Počet dotazů, jejichž spuštění vyšší</li><li>Hodnoty hash dotazu dotazů s největší příspěvek na zvýšení zatížení</li> |
+| Přetížení paměti | <li>Paměť fulltextu</li> |
+| Uzamykání | <li>Vliv na hodnoty hash dotazu</li><li>Blokování hodnoty hash dotazu</li> |
+| Zvýšená MAXDOP | <li>Hodnoty hash dotazu</li><li>CXP čekací dobu</li><li>Čekání</li> |
+| Pagelatch kolizí | <li>Dotazování hodnoty hash způsobí kolizi dotazů</li> |
+| Chybějící Index | <li>Hodnoty hash dotazu</li> |
+| Nový dotaz | <li>Hodnota hash dotazu nových dotazů</li> |
+| Statistiky neobvyklé čekání | <li>Typy neobvyklé čekání</li><li>Hodnoty hash dotazu</li><li>Dobu čekání dotazu</li> |
+| Databáze TempDB kolizí | <li>Dotazování hodnoty hash způsobí kolizi dotazů</li><li>Attribution dotazu na celkový databáze pagelatch kolize čekací dobu [%]</li> |
+| Nedostatek DTU elastického fondu | <li>Elastický fond</li><li>Hlavní databáze využívání jednotek DTU</li><li>Procento DTU použít hlavní spotřebitel fondu</li> |
+| Regrese plán | <li>Hodnoty hash dotazu</li><li>Dobrý plán ID</li><li>Chybný plán ID</li> |
+| Změna hodnoty konfigurace s rozsahem databáze | <li>Změny konfigurace s rozsahem databáze ve srovnání s výchozími hodnotami</li> |
 | Pomalé klienta | <li>Hodnoty hash dotazu</li><li>Čekání</li> |
-| Cenová úroveň přechod na starší verzi | <li>Text oznámení</li> |
+| Přechod na starší cenová úroveň | <li>Text oznámení</li> |
 
 ### <a name="impact"></a>Dopad
 
-Dopad (dopad), že vlastnost popisuje na problém, který má databáze podílí kolik zjištěné chování. Ovlivňuje rozsahu od 1 do 3, 3 jako nejvyšší příspěvku, 2 jako střední a 1 jako nejnižší příspěvku. Hodnota dopad může použít jako vstup pro vlastní výstrahy automatizace, v závislosti na svých konkrétních potřeb. Dotazy na vlastnosti ovlivněné (QueryHashes), poskytovat seznam dotaz hodnoty hash, které byly ovlivněny konkrétní detekce.
+Dopad (dopad), že vlastnost popisuje kolik zjištěném chování přispívají k problému, který má databázi. Dopady rozsahu od 1 do 3, 3 jako největším přispěním, 2 jako střední a 1 jako nejnižší příspěvek. Hodnota dopad může použít jako vstup pro vlastní výstrahy automatizace, v závislosti na vašich konkrétních potřeb. Dotazy na vlastnosti ovlivněné (QueryHashes) zadejte seznam dotazu hodnoty hash, které byly ovlivněny konkrétním zjišťování.
 
 ### <a name="impacted-queries"></a>Ovlivněné dotazy
 
-Následující část inteligentního Statistika protokolu obsahuje informace o konkrétní dotazy, které situace měla vliv na výkon zjištěné problémy. Tyto informace jsou zveřejňovány jako pole objektů vložených ve vlastnosti impact_s. Vlastnost účinek se skládá z entity a metriky. Entity odkazovat na konkrétní dotaz (typ: dotazu). Hodnota hash jedinečný dotazu je zveřejněn v části vlastnosti value (hodnota). Kromě toho každý dotaz odhalena následuje metriky a hodnotu, které označují problémy zjištěné výkonem.
+V další části protokolu Intelligent Insights poskytuje informace o určité dotazy, které byly ovlivněny problémy zjištěné výkonu. Tyto informace jsou zveřejňovány jako pole objektů, které jsou součástí impact_s vlastnost. Vlastnost účinek se skládá z entity a metriky. Entity odkazují na speciální dotaz (typ: dotaz). Hodnota hash jedinečný dotazu je zveřejněn pod vlastnost value (hodnota). Kromě toho každý dotaz zveřejněn postupuje podle metrik a hodnotu, které označují problém zjištěné výkonu.
 
-V následujícím příkladu protokolu mít prodloužena doba provádění dotazu s hash 0x9102EXZ4 zjistilo (metrika: DurationIncreaseSeconds). Hodnota 110 sekund znamená, že tento konkrétní dotaz trvalo déle 110 sekund provést. Protože více dotazů můžete zjistit, v této části konkrétní protokolu může obsahovat několik záznamů dotazu.
+V následujícím příkladu protokolu, mají vyšší dobu provádění dotazu s hash 0x9102EXZ4 zjistilo (metrika: DurationIncreaseSeconds). Hodnota 110 sekund značí, že tento speciální dotaz trvalo déle 110 sekund provádění. Protože více dotazů můžete zjistit, tento oddíl obsahuje konkrétní protokol může obsahovat několik záznamů dotazu.
 
 ```json
 "impact" : [{
@@ -116,18 +116,18 @@ V následujícím příkladu protokolu mít prodloužena doba provádění dotaz
 
 ### <a name="metrics"></a>Metriky
 
-Jednotky měření pro jednotlivé metriky hlášené jsou poskytovány na základě vlastnost metrika (metrika) s možné hodnoty sekund, počet a procento. Hodnota měřená metrika je uveden ve vlastnosti value (hodnota).
+Jednotka měření pro jednotlivé metriky hlášené není k dispozici vlastnost metrika (metrika) pomocí sady sekund, počet a procento možné hodnoty. Hodnota metriky měřené je uveden ve vlastnosti value (hodnota).
 
-Vlastnost DurationIncreaseSeconds poskytuje jednotky měření v sekundách. Měrné jednotky CriticalErrorCount je číslo, které představuje počtu chyb.
+Vlastnost DurationIncreaseSeconds poskytuje měrnou jednotku v řádu sekund. Měrné jednotky CriticalErrorCount je číslo představující počet k chybě.
 
 ```json
 "metric" : "DurationIncreaseSeconds", // issue metric type – possible values: DurationIncreaseSeconds, CriticalErrorCount, WaitingSeconds
 "value" : 102 // value of the measured metric (in this case seconds)
 ```
 
-## <a name="root-cause-analysis-and-improvement-recommendations"></a>Doporučení pro analýzu a zlepšování příčina kořenové
+## <a name="root-cause-analysis-and-improvement-recommendations"></a>Doporučení pro analýzy a zlepšování příčina kořenové
 
-Poslední část protokol inteligentního Statistika výkonu se vztahují na Analýza automatizované hlavní příčiny problému snížení identifikovaných výkonu. Informace se zobrazí v lidských friendly tento problém ve vlastnosti kořenové příčina analysis (rootCauseAnalysis_s). Zlepšování doporučení jsou zahrnuty v protokolu, kde je to možné.
+Poslední část protokolu výkonu Intelligent Insights se vztahují na analýzu automatizované původní příčiny snížení problému identifikovaného výkonu. Informace se zobrazí ve vhodných lidských tento problém ve vlastnosti kořenové příčiny analýzy (rootCauseAnalysis_s). Doporučení pro vylepšení jsou zahrnuty v protokolu, kde je to možné.
 
 ```json
 // example of reported root cause analysis of the detected performance issue, in a human-readable format
@@ -135,13 +135,13 @@ Poslední část protokol inteligentního Statistika výkonu se vztahují na Ana
 "rootCauseAnalysis_s" : "High data IO caused performance to degrade. It seems that this database is missing some indexes that could help."
 ```
 
-Můžete použít protokol inteligentního Statistika výkonu s [Azure Log Analytics]( https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql) nebo řešení třetí strany pro vlastní DevOps výstrahy a vytváření sestav funkce.
+Můžete použít protokol výkonu inteligentních přehledů s [Azure Log Analytics]( https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql) nebo řešení třetí strany pro vlastní vývoj a provoz výstrahy a vytváření sestav funkce.
 
 ## <a name="next-steps"></a>Další postup
-- Další informace o [inteligentního Statistika](sql-database-intelligent-insights.md) koncepty.
-- Zjistěte, jak [řešení potíží s výkonem databáze SQL Azure s inteligentního Insights](sql-database-intelligent-insights-troubleshoot-performance.md).
-- Zjistěte, jak [monitorovat Azure SQL Database pomocí Azure SQL Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql).
-- Zjistěte, jak [shromažďovat a využívat data protokolu z vašich prostředků Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs).
+- Další informace o [Intelligent Insights](sql-database-intelligent-insights.md) koncepty.
+- Zjistěte, jak [řešení problémů s výkonem Azure SQL Database s Intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md).
+- Zjistěte, jak [monitorování Azure SQL Database s využitím Azure SQL Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql).
+- Zjistěte, jak [shromažďovat a zpracovávat data protokolu z vašich prostředků Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs).
 
 
 

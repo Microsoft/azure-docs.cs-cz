@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 09/11/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 24f237a04d19d03ab7357db6fb9c7ab60036f3d2
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 4eadbe38eede505a3339d4b6090d0a34c12a5fc2
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44390989"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721955"
 ---
 # <a name="post-asdk-installation-configuration-tasks"></a>Po dokončení instalace ASDK úlohy konfigurace
 
@@ -162,6 +162,11 @@ Set-ADDefaultDomainPasswordPolicy -MaxPasswordAge 180.00:00:00 -Identity azurest
 
 ![Konzola pro správu zásad skupiny](media/asdk-post-deploy/gpmc.png)
 
+## <a name="enable-multi-tenancy"></a>Povolení víceklientské architektury
+Pro nasazení s využitím Azure AD, je potřeba [povolení víceklientské architektury](.\.\azure-stack-enable-multitenancy.md#enable-multi-tenancy) ASDK pro vaši instalaci.
+
+> [!NOTE]
+> Když správce nebo uživatelské účty z jiných domén, než jaký se používá k registraci Azure Stack se používají pro přihlášení k portálu Azure Stack, použili k registraci ve službě Azure Stack název domény musí být připojeno k portálu pro adresu url. Pokud Azure Stack je zaregistrován s fabrikam.onmicrosoft.com a uživatelský účet přihlášení je například admin@contoso.com, by měla adresa url pro použití k protokolování do portálu user portal: https://portal.local.azurestack.external/fabrikam.onmicrosoft.com.
 
 ## <a name="next-steps"></a>Další postup
 [Zaregistrujte ASDK v Azure](asdk-register.md)

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/14/2018
 ms.author: kgremban
-ms.openlocfilehash: 068e9a3379bd2762455aade1761592fa70a09a20
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: 3c12e98137f44ac094adaae282b5d56d30061e60
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43144374"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719847"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Reakce na události služby IoT Hub s využitím služby Event Grid pro aktivaci akcí
 
@@ -34,12 +34,11 @@ IoT Hub zveřejňuje následující typy událostí:
 | Typ události | Popis |
 | ---------- | ----------- |
 | Microsoft.Devices.DeviceCreated | Publikuje, když je zařízení zaregistrované do služby IoT hub. |
-| Microsoft.Devices.DeviceDeleted | Publikuje, když zařízení se odstraní ze služby IoT hub. | 
-| Microsoft.Devices.DeviceConnected | Publikuje, když je zařízení připojené do služby IoT hub. | 
-| Microsoft.Devices.DeviceDisconnected | Publikuje, když zařízení je odpojen od služby IoT hub. | 
-Mějte na paměti, že zařízení připojené, a události odpojení zařízení bude brzy povolená pro oblastech Kanada – východ a východní USA.
+| Microsoft.Devices.DeviceDeleted | Publikuje, když zařízení se odstraní ze služby IoT hub. |
+| Microsoft.Devices.DeviceConnected | Publikuje, když je zařízení připojené do služby IoT hub. |
+| Microsoft.Devices.DeviceDisconnected | Publikuje, když zařízení je odpojen od služby IoT hub. |
 
-Nastavit, které události chcete-li publikovat z každé služby IoT hub pomocí webu Azure portal nebo rozhraní příkazového řádku Azure. Příklad, projděte si kurz [odeslat e-mailová oznámení o událostech služby Azure IoT Hub pomocí Logic Apps](../event-grid/publish-iot-hub-events-to-logic-apps.md). 
+Nastavit, které události chcete-li publikovat z každé služby IoT hub pomocí webu Azure portal nebo rozhraní příkazového řádku Azure. Příklad, projděte si kurz [odeslat e-mailová oznámení o událostech služby Azure IoT Hub pomocí Logic Apps](../event-grid/publish-iot-hub-events-to-logic-apps.md).
 
 ## <a name="event-schema"></a>Schéma událostí
 
@@ -146,7 +145,7 @@ Aplikace, které zpracovávají události služby IoT Hub postupujte podle těch
 ## <a name="next-steps"></a>Další postup
 
 * [Projděte si kurz událostí služby IoT Hub](../event-grid/publish-iot-hub-events-to-logic-apps.md)
-* [Zjistěte, jak uspořádat zařízení připojené a odpojené události](../iot-hub/iot-hub-how-to-order-connection-state-events.md)
+* [Informace o uspořádání událostí připojení a odpojení zařízení](../iot-hub/iot-hub-how-to-order-connection-state-events.md)
 * [Další informace o službě Event Grid][lnk-eg-overview]
 * [Srovnání rozdílů mezi směrování událostí služby IoT Hub a zpráv][lnk-eg-compare]
 

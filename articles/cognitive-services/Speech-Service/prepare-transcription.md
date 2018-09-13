@@ -1,5 +1,5 @@
 ---
-title: Pokyny pro určené k transkripci řeči školení
+title: Pokyny pro přepis pro vzdělávání Speech Service
 description: Zjistěte, jak připravit text pro přizpůsobení akustických a jazykových modelů a hlasová písma pro službu rozpoznávání řeči.
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
@@ -9,44 +9,44 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/01/2018
 ms.author: panosper
-ms.openlocfilehash: db324b6c5444955debdc6a3e09906a0de47ff819
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: f9cb205b5111e981ee70adca715139402c9e31a4
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "41987975"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721808"
 ---
-# <a name="transcription-guidelines-for-using-speech-service"></a>Přepis pokyny k používání Speech service
+# <a name="transcription-guidelines-for-using-the-speech-service"></a>Přepis pokyny k používání Speech Service
 
-Chcete-li přizpůsobit **převod řeči na Text** nebo **převod textu na řeč**, je nutné zadat text spolu s řeči. Každý řádek v textu odpovídá jedné utterance. Text by měl odpovídat řeč jako přesně nejvíce. Text je volána *přepisu*, a je třeba jej vytvořit v určitém formátu.
+Chcete-li přizpůsobit **převod řeči na Text** nebo **převod textu na řeč**, je nutné zadat text spolu s řeči. Každý řádek v textu odpovídá jedné utterance. Text by měl odpovídat řeč co nejpřesněji. Text je volána *přepisu*, a je třeba jej vytvořit v určitém formátu.
 
-Speech service normalizuje vstup pro zachování konzistence text. 
+Speech Service normalizuje vstup pro zachování konzistence text. 
 
 Tento článek popisuje oba typy normalizations. Pravidla se mírně liší pro jednotlivé jazyky.
 
-## <a name="us-english-en-us"></a>Jazykovou verzi US English (en US)
+## <a name="us-english-en-us"></a>Jazykovou verzi US English (en-us)
 
 Textová data, by měly být zapsány utterance jeden na řádek, ve formátu prostého textu, pomocí pouze znaková sada ASCII.
 
-Vyhněte se použití rozšířené (Latin-1) nebo interpunkční znaky znakové sady Unicode. Tyto znaky může být zahrnuta neúmyslně při přípravě dat v textovém editoru nebo automatizované získávání dat data z webové stránky. Nahraďte tyto znaky náhrady odpovídající ASCII. Příklad:
+Vyhněte se použití rozšířené (Latin-1) nebo interpunkční znaky znakové sady Unicode. Tyto znaky může být zahrnuta neúmyslně při přípravě dat v textovém editoru nebo scrape data z webové stránky. Nahraďte příslušné náhrady ASCII znaky. Příklad:
 
 | Aby se zabránilo znaků | Nahrazení |
 |----- | ----- |
-| "Hello world" (otevírají a zavírají dvojité uvozovky) | "Hello world" (dvojité uvozovky) |
+| "Hello world" (levá a pravá dvojité uvozovky) | "Hello world" (dvojité uvozovky) |
 | John's na den (vpravo jednoduché uvozovky) | John's na den (apostrof) |
 | bylo dobré – Ne, bylo vynikající! (pomlčku) | bylo dobré – Ne, bylo vynikající! (pomlčky) |
 
 ### <a name="text-normalization-rules-for-english"></a>Text pravidel normalizace pro angličtinu
 
-Speech service provádí následující pravidla normalizace.
+Speech Service provádí následující normalizace pravidla:
 
-*   Malá písmena veškerý text
-*   Odebrat všechny interpunkční znaménka s výjimkou Wordu interní apostrofy
-*   Rozšíření čísel do mluvené řeči formuláře, včetně korunách
+* Použití malých písmen pro veškerý text
+* Odebrat všechny interpunkční znaménka s výjimkou Wordu interní apostrofy
+* Rozbalení čísla do mluvené řeči formuláře, včetně korunách
 
-Tady je několik příkladů
+Zde je několik příkladů:
 
-| Původní Text | Po normalizace |
+| Původní text | Po normalizace |
 |----- | ----- |
 | "Tichá krávy!" uvedené Batman. | tichá krávy říká, že batman |
 | "Co?" uvedené Batman sidekick dotazování. | jaké uvedené batman sidekick dotazování |
@@ -57,17 +57,17 @@ Tady je několik příkladů
 | Pi je asi 3.14 | Pi je přibližně tři čtyři jeden bod |
 | To stojí $3.14 | to stojí tři čtrnáct |
 
-Platí následující normalizace pro vaše záznamy o studiu text.
+Platí následující normalizace pro vaše záznamy o studiu text:
 
-*   Zkratky by měl být napsána v slova
-*   Nestandardní číselné řetězce (například některé datum nebo formuláře monitorování účtů) by měl uvádět slova
-*   Slov s neabecedními znaky nebo smíšené alfanumerické znaky by měla být přepsána, jak vyslovováno
-*   Ponechte zkratky vyslovuje se jako slova beze změny. Například této možnosti taky přemýšlíte, laserové, paměti RAM, NATO.
-*   Zápis zkratky vyslovuje se jako samostatné písmena s písmeny, oddělené mezerami. Například, IBM, procesoru, úřadu FBI, TBD, NaN. 
+* Zkratky by měl být zapsaná ve slovech.
+* Nestandardní číselné řetězce (například některé datum nebo formuláře monitorování účtů) by měl zapsaná ve slovech.
+* Slov s neabecedními znaky nebo smíšené alfanumerické znaky by měla být přepsána jako výraznější.
+* Ponechte zkratek, které jsou vyslovuje se jako slova beze změny (například "této možnosti taky přemýšlíte," "laserové," "RAM" nebo "NATO").
+* Zápis zkratek, které jsou vyslovováno jako samostatné písmena s písmeny oddělených mezerami (třeba "IBM," "CPU", "FBI", "TBD" nebo "Není číslo"). 
 
 Zde je několik příkladů:
 
-| Původní Text | Po normalizace |
+| Původní text | Po normalizace |
 |----- | ----- |
 | 14 NE 3rd zotavení po havárii. | čtrnáct severovýchod třetí disk |
 | Dr. Bruce Banner | Banner Bruce lékař |
@@ -80,29 +80,29 @@ Zde je několik příkladů:
 | Přehrát OU812 podle Van Halen | Přehrát U O 8 1 2 Van Halen |
 | UTF-8 s BOM | U T F 8 s BOM |
 
-## <a name="chinese-zh-cn"></a>Čínština (zh-CN)
+## <a name="chinese-zh-cn"></a>Čínština (zh-cn)
 
-Textová data nahrát do služby Custom Speech Service používali s značky pořadí bajtů kódování UTF-8. Soubor by měly být zapsány jeden utterance každý řádek.
+Textová data, která se nahraje do služby Custom Speech Service používali s značky pořadí bajtů kódování UTF-8. Soubor by měly být zapsány jeden utterance každý řádek.
 
-Nepoužívejte poloviční šířku interpunkční znaménka. Tyto znaky může být zahrnuta neúmyslně při přípravě dat v textovém editoru nebo automatizované získávání dat data z webové stránky. Nahraďte je vhodné náhrady plnou šířkou. Příklad:
+Nepoužívejte poloviční šířku interpunkční znaménka. Tyto znaky může být zahrnuta neúmyslně při přípravě dat v textovém editoru nebo scrape data z webové stránky. Nahraďte je vhodné náhrady plnou šířkou. Příklad:
 
 | Aby se zabránilo znaků | Nahrazení |
 |----- | ----- |
-| "你好" (otevření a zavření dvojité uvozovky) | "你好" (dvojité uvozovky) |
+| "你好" (levá a pravá dvojité uvozovky) | "你好" (dvojité uvozovky) |
 | 需要什么帮助? (otazník) | 需要什么帮助? |
 
 ### <a name="text-normalization-rules-for-chinese"></a>Text pravidel normalizace pro čínštinu
 
-Speech service provádí následující pravidla normalizace.
+Speech Service provádí následující normalizace pravidla:
 
-*   Odebrat všechny interpunkční znaménka
-*   Rozbalení čísla do mluvené řeči formuláře
-*   Převod na poloviční šířku písmena plnou šířkou
-*   Velká písmena všech slov v angličtině
+* Odebrat všechny interpunkční znaménka
+* Rozbalení čísla do mluvené řeči formuláře
+* Převod na poloviční šířku písmena plnou šířkou
+* Použití velkých písmen pro všechny anglická slova
 
 Zde je několik příkladů:
 
-| Původní Text | Po normalizace |
+| Původní text | Po normalizace |
 |----- | ----- |
 | 3,1415 | 三 点 一 四 一 五 |
 | ￥3.5 | 三 元 五 角 |
@@ -112,14 +112,14 @@ Zde je několik příkladů:
 | 下午5:00的航班 | 下午 五点 的 航班 |
 | 我今年21岁 | 我 今年 二十 一 岁 |
 
-Platí následující normalizace pro text před importem.
+Předtím, než importujete textu, aby u ní použil normalizace následující:
 
-*   Zkratky by měl být napsána v slova (stejně jako v mluvené slovo formuláře)
-*   Vypsat číselných řetězců v podobě mluvené slovo.
+* Zkratky by měl být napsána v slova (stejně jako v mluvené slovo formulář).
+* Vypsat číselných řetězců v podobě mluvené slovo.
 
 Zde je několik příkladů:
 
-| Původní Text | Po normalizace |
+| Původní text | Po normalizace |
 |----- | ----- |
 | 我今年21 | 我今年二十一 |
 | 3号楼504 | 三号 楼 五 零 四 |
@@ -129,45 +129,45 @@ Zde je několik příkladů:
 Textová data nahrát do **převod řeči na Text** služba musí použít s značky pořadí bajtů kódování UTF-8. Soubor by měly být zapsány jeden utterance každý řádek.
 
 > [!NOTE]
-> Tyto příklady používají němčina. Ale tyto pokyny platí pro všechny jazyky, které nejsou Angličtina (USA) nebo čínština.
+> Následující příklady používají němčina. Ale pokyny platí pro všechny jazyky, které nejsou Angličtina (USA) nebo čínština.
 
 ### <a name="text-normalization-rules-for-german"></a>Text pravidel normalizace pro němčinu
 
-Speech service provádí následující pravidla normalizace.
+Speech Service provádí následující normalizace pravidla:
 
-*   Malá písmena veškerý text
-*   Odebírá všechny interpunkční znaménka, včetně různých typů uvozovky ("test", "test", "test" nebo "test" jsou v pořádku)
-*   Rušení řádků pomocí libovolného speciálního znaku ze sady z ¤ y ¦ smyslu © ª ¬® ° rozmezí ² µ × ÿ Ø¬¬
-*   Rozšíření čísel, tvaru, včetně dolar nebo euro objemy
-*   Samohlásky jsou přijaty pouze u, e, u; ostatní se nahradí "th" nebo být zahozeny
+* Použití malých písmen pro veškerý text
+* Odebrat všechny interpunkční znaménka, včetně různých typů uvozovky ("test", "test", "test" a "test" jsou OK)
+* Rušení řádků pomocí libovolného speciálního znaku ze sady z ¤ y ¦ smyslu © ª ¬® ° rozmezí ² µ × ÿ Ø¬¬
+* Rozšíření čísla do tvaru, včetně dolar nebo eurech
+* Přijímá samohlásky pouze u, e a vy; ostatní se nahradí "th" nebo být zahozeny
 
-Tady je několik příkladů
+Zde je několik příkladů:
 
-| Původní Text | Po normalizace |
+| Původní text | Po normalizace |
 |----- | ----- |
 | Aktualizační kanál Frankfurter | aktualizační kanál frankfurter |
 | ¡Eine Frage! | eine frage |
 | WIR haben | WIR haben |
 
-Platí následující normalizace pro text před importem.
+Předtím, než importujete textu, aby u ní použil normalizace následující:
 
-*   Desetinné čárky by měl být ","a"."
-*   Oddělovač času mezi hodiny a minuty musí být ":"a".": 12:00 Uhr
-*   Zkratky jako "certifikační autorita." nejsou nahrazeny. Doporučujeme, abyste že použijte úplný formát.
-*   Čtyři hlavní matematické operátory jsou odebrány: +, -, \*, /. Doporučujeme nahradit jejich literálu formuláře: plus/minus mal geteilt.
-*   To samé platí pro operátory porovnání (=, <>,) - gleich kleiner als, grösser als
-*   Použití zlomky, jako je například 3/4 ve tvaru (například "drei viertel" namísto ¾)
-*   Nahraďte formulářem, slovo "Euro" € symbol
+* Desetinné čárky by měl být ","a".".
+* Oddělovače času mezi hodinách a minutách by měl být ":"a"." (například 12:00 Uhr).
+* Zkratky jako "ca". nejsou nahrazeny. Doporučujeme použít úplný formát.
+* Čtyři hlavní matematické operátory (+, -, \*, a /) se odeberou. Doporučujeme nahradit jejich literálu formuláře: "plus," "minus," "zjišťování" a "geteilt."
+* Stejné pravidlo platí pro operátory porovnání (=, <, a >). Doporučujeme nahradit "gleich", "kleiner als," a "grösser als."
+* Použijte zlomky, jako je například 3/4 ve tvaru (například "drei viertel" namísto ¾).
+* € Symbol nahraďte formulářem, slovo "Euro."
 
 Zde je několik příkladů:
 
-| Původní Text | Po normalizace uživatele | Po normalizace systému
+| Původní text | Po normalizace uživatele | Po normalizace systému
 |--------  | ----- | -------- |
-| ES TIS 12.23Uhr | 12:23Uhr TIS ES | ES TIS zwölf uhr drei a zwanzig uhr |
+| Uhr TIS 12.23 ES | ES TIS 12:23 Uhr | ES TIS zwölf uhr drei a zwanzig uhr |
 | {12.45} | {12,45} | zwölf komma vier fünf ||
 | 2 + 3-4 | 2 a 3 minus 4 | zwei plus drei minus vier|
 
 ## <a name="next-steps"></a>Další postup
 
-- [Získání zkušebního předplatného služby Speech](https://azure.microsoft.com/try/cognitive-services/)
+- [Získejte zkušební verzi předplatného Speech Service](https://azure.microsoft.com/try/cognitive-services/)
 - [Rozpoznávání řeči v jazyce C#](quickstart-csharp-dotnet-windows.md)

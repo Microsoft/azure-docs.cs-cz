@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/11/2018
+ms.date: 09/12/2018
 git ms.author: brenduns
 ms.reviewer: misainat
-ms.openlocfilehash: c1b88518f9e27093ff00ad020e470fa5670dfcd6
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 1d3e4724820f7109eb9b695fe06d221a2796c26f
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391942"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44722195"
 ---
 # <a name="azure-stack-development-kit-release-notes"></a>Zpráva k vydání verze Azure Stack Development Kit  
 Tento článek obsahuje informace o vylepšení, oprav a známé problémy v Azure Stack Development Kit. Pokud si nejste jistí, kterou verzi používáte, můžete si [použití portálu ke kontrole](.\.\azure-stack-updates.md#determine-the-current-version).
@@ -43,8 +43,12 @@ Toto sestavení obsahuje následující vylepšení a oprav pro Azure Stack.
 
 - <!-- 2489570 | IS ASDK--> **Podpora pro vlastní konfigurace zásad IPSec/IKE** pro [bran VPN Gateway ve službě Azure Stack](/azure/azure-stack/azure-stack-vpn-gateway-about-vpn-gateways).
 
+- <!-- | IS ASDK--> **Položka marketplace Kubernetes**. Teď můžete nasadit clustery Kubernetes pomocí [položky Kubernetes Marketplace](/azure/azure-stack/azure-stack-solution-template-kubernetes-cluster-add). Uživatele můžete vybrat položku Kubernetes a vyplňte několik parametrů k nasazení clusteru Kubernetes do služby Azure Stack. Účelem šablony je usnadňují uživatelům, aby instalační program nasazení Kubernetes pro vývoj/testování v několika krocích.
 
-### <a name="fixed-issues"></a>Opravené problémy
+- <!-- | IS ASDK--> **Blockchain šablony**. Teď můžete spustit [ethereum během nasazení consortium](/azure/azure-stack/azure-stack-ethereum) ve službě Azure Stack. Tři nové šablony v můžete najít [Azure Stack šablon pro rychlý Start](https://github.com/Azure/AzureStack-QuickStart-Templates). Povolit uživatele k nasazení a konfiguraci sítě konsorcia několika člen ethereum během s minimálními znalostmi Azure a Etherea. Účelem šablony je usnadňují uživatelům, aby instalační program pro vývoj/testování Blockchain nasazení v několika krocích.
+
+
+### <a name="fixed-issues"></a>Oprava potíží
 - <!-- IS ASDK--> Opravili jsme problém pro vytvoření dostupnosti na portálu, což vedlo sada domény selhání a aktualizační doména 1.
 
 - <!-- IS ASDK --> Nastavení škálování škálovací sady virtuálních počítačů jsou teď dostupné na portálu.  
@@ -68,6 +72,8 @@ Toto sestavení obsahuje následující vylepšení a oprav pro Azure Stack.
 ### <a name="known-issues"></a>Známé problémy
 
 #### <a name="portal"></a>Portál  
+- <!-- 2967387 – IS, ASDK --> Účet, který používáte k přihlášení k portálu Azure Stack správce nebo uživatel zobrazí jako **neidentifikovaný uživatel**. K tomu dojde, pokud nemá buď *první* nebo *poslední* zadaný název. Chcete-li tento problém obejít, upravte uživatelský účet první nebo poslední název. Musíte pak Odhlásit se a přihlaste se zpět na portál. 
+
 -  <!--  2873083 - IS ASDK --> Při použití na portálu vytvořit škálovací sadu virtuálních počítačů (VMSS), nastavte *velikost instance* rozevírací seznam nenačte správně při použití aplikace Internet Explorer. Chcete-li tento problém vyřešit, použijte jiný prohlížeč při použití portálu k vytvoření VMSS.  
 
 - <!-- TBD  ASDK --> Výchozí časové pásmo pro všechna nasazení Azure Stack jsou nyní nastavení koordinovaný univerzální čas (UTC). Časové pásmo můžete vybrat při instalaci Azure Stack, ale automaticky přejde na čas UTC jako výchozí během instalace.
@@ -209,7 +215,7 @@ Toto sestavení obsahuje následující vylepšení a oprav pro Azure Stack.
  
 - <!-- 2536808 IS ASDK --> **Vylepšené čas vytvoření virtuálního počítače** pro virtuální počítače, které jsou vytvořené pomocí Image stáhnout z webu Azure marketplace.
 
-### <a name="fixed-issues"></a>Opravené problémy
+### <a name="fixed-issues"></a>Oprava potíží
 
 - <!-- TBD | ASDK, IS --> Různá vylepšení provedly se proces aktualizace provádět spolehlivější. Kromě toho byly provedeny opravy základní infrastruktury, což zvyšuje vyprázdnění uzlu, a tím minimalizovat potenciální výpadek pro úlohy během aktualizace.
 
@@ -377,7 +383,7 @@ Toto sestavení obsahuje následující vylepšení a oprav pro Azure Stack.
   Tato funkce je ve verzi preview a je byste se neměli spoléhat v produkčním prostředí.   
 
 
-### <a name="fixed-issues"></a>Opravené problémy
+### <a name="fixed-issues"></a>Oprava potíží
 - Opravili jsme problém, který blokovaný [otevřete novou žádost o podporu z rozevíracího seznamu](.\.\azure-stack-manage-portals.md#quick-access-to-help-and-support) z portálu pro správu. Tato možnost teď funguje očekávaným způsobem.
 
 - <!--  TBD ASDK --> Virtuální počítač, který je hostitelem koncového bodu oprávnění (období) bylo zvýšeno na 4GB. V ASDK je tento virtuální počítač s názvem AzS-ERCS01.

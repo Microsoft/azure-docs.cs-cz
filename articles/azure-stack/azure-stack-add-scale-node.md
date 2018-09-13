@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/20/2018
+ms.date: 09/12/2018
 ms.author: brenduns
 ms.reviewer: thoroet
-ms.openlocfilehash: 02602243bcb4e426ebf4984e387da8e8c148232e
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 0899b1784c796e5f6265dda842ca8955615a1584
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42056613"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44718085"
 ---
 # <a name="add-additional-scale-unit-nodes-in-azure-stack"></a>Přidat další škálovací jednotku uzly ve službě Azure Stack
 
@@ -64,7 +64,7 @@ Portál pro správu nebo prostředí PowerShell slouží k přidání nových uz
 ### <a name="use-the-admin-portal"></a>Použití portálu pro správu
 
 1. Přihlaste se k portálu pro správu služby Azure Stack jako operátory Azure stacku.
-2. Přejděte do **nové** > **kapacity** > **škálování jednotek uzel**.
+2. Přejděte do **+ vytvořit prostředek** > **kapacity** > **uzel jednotek škálování**.
    ![Uzel jednotek škálování](media/azure-stack-add-scale-node/select-node1.png)
 3. Na **přidat uzel** podokně, vyberte *oblasti*a pak vyberte *jednotka škálování* , že chcete přidat uzel, který má. Zadat také *IP adresa řadiče BMC* pro přidáváte uzel jednotek škálování. Najednou můžete přidat pouze jeden uzel.
    ![Přidat podrobnosti o uzlu](media/azure-stack-add-scale-node/select-node2.png)

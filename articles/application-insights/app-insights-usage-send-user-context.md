@@ -1,6 +1,6 @@
 ---
-title: Odeslat uživatelský kontext ID povolit použití možnosti v Azure Application Insights | Microsoft Docs
-description: Sledovat, jak se uživatelé přesunou prostřednictvím služby přiřazením, každý z nich jedinečný, trvalé řetězec ID ve službě Application Insights.
+title: Odeslání kontextu uživatele ID umožňující použití prostředí ve službě Azure Application Insights | Dokumentace Microsoftu
+description: Sledujte, jak se uživatelé přesunou prostřednictvím služby tak, že každý z nich přiřadíte jedinečný a trvalý řetězec ID ve službě Application Insights.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -9,48 +9,50 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: csharp
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/02/2017
-ms.author: mbullwin;abgreg
-ms.openlocfilehash: 196eeb7b5a817ff932f99c7db86ead5625b5f206
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.reviewer: abgreg
+ms.author: mbullwin
+ms.openlocfilehash: 14322162d3f78f0cb90ecaf077d1d85f7cbba581
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35643494"
 ---
-#  <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>Odeslat uživatelský kontext ID umožňující použití prostředí ve službě Azure Application Insights
+#  <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>Odeslání kontextu uživatele ID Umožněte využití ve službě Azure Application Insights
 
 ## <a name="tracking-users"></a>Sledování uživatelů
 
-Application Insights umožňuje monitorování a sledování uživatelům pomocí sady nástrojů pro použití produktu: 
+Application Insights umožňuje monitorovat a sledovat uživatele přes sadu nástrojů pro využití produktu: 
 * [Uživatelé, relace, události](https://docs.microsoft.com/azure/application-insights/app-insights-usage-segmentation)
 * [Trychtýře](https://docs.microsoft.com/azure/application-insights/usage-funnels)
 * [Uchování](https://docs.microsoft.com/azure/application-insights/app-insights-usage-retention)
 * Kohorty
 * [Workbooks](https://docs.microsoft.com/azure/application-insights/app-insights-usage-workbooks)
 
-Aby bylo možné sledovat, co uživatel provede v čase, Application Insights pro jednotlivé uživatele nebo relace potřebuje ID. Zahrňte následující ID každé vlastní zobrazení události nebo stránky.
-- Uživatelé, nálevky, uchovávání a kohorty: zahrnují ID uživatele.
+Aby bylo možné sledovat, co uživatel provede v čase, Application Insights musí ID pro každého uživatele nebo relace. Zahrňte následující ID každé vlastní událost nebo zobrazení stránky.
+- Uživatelé, trychtýře, uchovávání a kohorty: zahrnují ID uživatele.
 - Relace: Zahrnují ID relace.
 
-Pokud vaše aplikace je integrována [JavaScript SDK](https://docs.microsoft.com/azure/application-insights/app-insights-javascript#set-up-application-insights-for-your-web-page), automaticky sledován ID uživatele.
+Pokud vaše aplikace je integrováno [JavaScript SDK](https://docs.microsoft.com/azure/application-insights/app-insights-javascript#set-up-application-insights-for-your-web-page), se automaticky sleduje ID uživatele.
 
 ## <a name="choosing-user-ids"></a>Výběr ID uživatele
 
-ID uživatele by měla zachová napříč relacemi uživatele sledovat chování uživatele v průběhu času. Existují různé přístupy k zachování ID.
-- Definice uživatele, který už máte ve službě.
-- Služba má přístup do prohlížeče, pak může předat soubor cookie s ID prohlížeče v ní. ID pro se uchová, dokud zůstane soubor cookie v prohlížeči uživatele.
-- V případě potřeby můžete použít nové ID každé relaci, ale výsledky o uživatelích, bude omezena. Například nebudete moci zobrazit, jak v průběhu času mění chování uživatele.
+ID uživatelů byste neměli zachovat napříč uživatelských relací ke sledování chování uživatelů v čase. Existují různé přístupy k uchování ID.
+- Definice jako uživatel, který už máte ve své službě.
+- Služba má přístup do prohlížeče, ho můžete předat do souboru cookie s ID prohlížeče v ní. ID se zachová pro za předpokladu, zůstane soubor cookie v prohlížeči uživatele.
+- V případě potřeby můžete použít nové ID každé relaci, ale výsledky o uživatelích budou omezené. Například nebudete moci zobrazit, jak mění chování uživatele v průběhu času.
 
-ID musí být identifikátor Guid nebo jiný řetězec dostatečně složité, se jednoznačně označit každého uživatele. Například to může být dlouho náhodné číslo.
+ID by měl být identifikátor Guid nebo jiným řetězcem dostatečně složité jedinečnou identifikaci jednotlivých uživatelů. Například to může být dlouhý náhodné číslo.
 
-Pokud ID obsahuje osobní identifikační informace o uživateli, se nejedná o správnou hodnotu k odeslání do Application Insights jako ID uživatele. Můžete odeslat toto ID jako [ověřit ID uživatele](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#authenticated-users), ale nesplňuje požadavek na ID uživatele pro scénáře použití.
+Obsahuje-li ID osobní identifikační údaje o uživateli, není odpovídající hodnotu k odeslání do Application Insights jako ID uživatele. Můžete odeslat toto ID jako [ověřit ID uživatele](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#authenticated-users), ale nesplňuje požadavek na ID uživatele pro scénáře použití.
 
-## <a name="aspnet-apps-setting-the-user-context-in-an-itelemetryinitializer"></a>Aplikace ASP.NET: nastavení kontextu uživatele v ITelemetryInitializer
+## <a name="aspnet-apps-setting-the-user-context-in-an-itelemetryinitializer"></a>ASP.NET apps: nastavení uživatelský kontext ITelemetryInitializer
 
-Vytvořte inicializátoru telemetrie, jak je podrobně popsaná v [zde](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#add-properties-itelemetryinitializer)a nastavte Context.User.Id a Context.Session.Id.
+Vytvořte inicializátoru telemetrie, jak je popsáno podrobněji [tady](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#add-properties-itelemetryinitializer)a nastavte Context.User.Id a Context.Session.Id.
 
-Tento příklad nastaví na identifikátor, který vyprší po relaci ID uživatele. Pokud je to možné použijte ID uživatele, která je uchována napříč relacemi.
+V tomto příkladu nastaví ID uživatele pro identifikátor, jejíž platnost vyprší po relaci. Pokud je to možné použijte ID uživatele, které se uchovávají napříč relacemi.
 
 ```csharp
 
@@ -88,10 +90,10 @@ Tento příklad nastaví na identifikátor, který vyprší po relaci ID uživat
 ```
 
 ## <a name="next-steps"></a>Další postup
-- Pokud chcete povolit použití možnosti, zahájit odesílání [vlastních událostí](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) nebo [stránky zobrazení](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views).
-- Pokud jste již odeslat vlastní události nebo zobrazení stránky, prozkoumejte využití nástroje se dozvíte, jak uživatelé používat služby.
+- Povolit použití prostředí, spusťte odesílání [vlastních událostí](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) nebo [zobrazení stránek](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views).
+- Pokud jste již posílat vlastní události nebo zobrazení stránek, prozkoumejte nástroje využití se dozvíte, jak uživatelé vaši službu používat.
     * [Přehled využití](app-insights-usage-overview.md)
-    * [Uživatelů, relací a události](app-insights-usage-segmentation.md)
+    * [Uživatelé, relace a události](app-insights-usage-segmentation.md)
     * [Trychtýře](usage-funnels.md)
     * [Uchování](app-insights-usage-retention.md)
     * [Workbooks](app-insights-usage-workbooks.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure diagnostické protokoly | Microsoft Docs
-description: Zákazníka můžete povolit analýzy protokolů pro Azure CDN.
+title: Diagnostické protokoly Azure | Dokumentace Microsoftu
+description: Odběratele můžete povolit analýzy protokolů pro Azure CDN.
 services: cdn
 documentationcenter: ''
 author: dksimpson
@@ -14,344 +14,341 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2018
 ms.author: v-deasim
-ms.openlocfilehash: 98a7fc5c4607115811e17a7cf6acd4e867663833
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: b949b89c5181e9c804b7802323ee3b8e595a62e8
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261300"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35899423"
 ---
 # <a name="azure-diagnostic-logs"></a>Diagnostické protokoly Azure
 
-S Azure diagnostické protokoly můžete zobrazit analýzu základní a uložit je do jedné nebo více cílů, včetně:
+S diagnostické protokoly Azure můžete zobrazit základní analýzy a uložit je do jedné nebo více cílů, včetně:
 
  - Účet služby Azure Storage
  - Azure Event Hubs
- - [Pracovní prostor analýzy protokolů](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started)
+ - [Pracovní prostor služby Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started)
  
 Tato funkce je dostupná na koncové body CDN pro všechny cenové úrovně. 
 
-Azure diagnostics protokoly umožňují, aby můžete využívat požadovaným způsobem exportu metriky základní informace o využití z koncový bod CDN do různých zdrojů. Například můžete provést následující typy dat exportu:
+Protokoly diagnostiky Azure umožňuje exportovat metriky základní informace o využití z koncového bodu CDN pro širokou škálu zdrojů tak, aby vám mohou využívat vlastní způsobem. Například můžete provést následující druhy export dat:
 
-- Exportujte data do úložiště objektů blob, exportovat do souboru CSV a generovat grafy v aplikaci Excel.
-- Exportovat data do centra událostí a korelovat s daty z jiné služby Azure.
-- Exportovat data do analýzy protokolů a zobrazení dat v vlastní pracovní prostor analýzy protokolů
+- Exportujte data do úložiště objektů blob, export do souboru CSV a generovat grafy v aplikaci Excel.
+- Export dat do služby Event Hubs a je možné korelovat s daty z jiných služeb Azure.
+- Exportovat data do Log Analytics a zobrazení dat v vlastní pracovní prostor Log Analytics
 
-Následující diagram znázorňuje typické zobrazení základní analýza CDN data.
+Následující diagram ukazuje typické CDN core analytics přehled data.
 
-![Portál – protokolů diagnostiky](./media/cdn-diagnostics-log/01_OMS-workspace.png)
+![Portál – protokoly diagnostiky](./media/cdn-diagnostics-log/01_OMS-workspace.png)
 
-*Obrázek 1 – Zobrazit analýzu základní CDN*
+*Obrázek 1 – CDN core analytics zobrazení*
 
-Další informace o diagnostických protokolů najdete v tématu [diagnostické protokoly](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs).
+Další informace o diagnostických protokolech najdete v tématu [diagnostické protokoly](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs).
 
-## <a name="enable-logging-with-the-azure-portal"></a>Povolit protokolování na portálu Azure
+## <a name="enable-logging-with-the-azure-portal"></a>Povolit protokolování pomocí webu Azure portal
 
-Postupujte podle těchto kroků povolit protokolování s CDN základní analýza:
+Postupujte podle těchto kroků povolit protokolování pomocí CDN core analytics:
 
-Přihlaste se k [portálu Azure](http://portal.azure.com). Pokud jste si již povolili CDN pro pracovní postup [vytvoření profilu Azure CDN a koncový bod](cdn-create-new-endpoint.md) než budete pokračovat.
+Přihlaste se k [portálu Azure](http://portal.azure.com). Pokud není již jste povolili CDN pro pracovní postup [vytvoření koncového bodu a profilu Azure CDN](cdn-create-new-endpoint.md) předtím, než budete pokračovat.
 
-1. Na portálu Azure přejděte do **profil CDN**.
+1. Na webu Azure Portal, přejděte na **profil CDN**.
 
-2. Na portálu Azure vyhledejte profil CDN nebo vyberte jednu z řídicího panelu. Pak vyberte koncový bod CDN, pro který chcete povolit diagnostické protokoly.
+2. Na webu Azure Portal vyhledejte profil CDN nebo vyberte některou z řídicího panelu. Vyberte koncový bod CDN, pro kterou chcete povolit diagnostické protokoly.
 
-    ![Portál – protokolů diagnostiky](./media/cdn-diagnostics-log/02_Browse-to-Diagnostics-logs.png)
+    ![Portál – protokoly diagnostiky](./media/cdn-diagnostics-log/02_Browse-to-Diagnostics-logs.png)
 
-3. Vyberte **protokolů diagnostiky** v části monitorování.
+3. Vyberte **diagnostické protokoly** v části monitorování.
 
-   **Protokolů diagnostiky** se zobrazí stránka.
+   **Diagnostické protokoly** se zobrazí stránka.
 
-    ![Portál – protokolů diagnostiky](./media/cdn-diagnostics-log/03_Diagnostics-logs-options.png)
+    ![Portál – protokoly diagnostiky](./media/cdn-diagnostics-log/03_Diagnostics-logs-options.png)
 
-### <a name="enable-logging-with-azure-storage"></a>Povolit protokolování s Azure Storage
+### <a name="enable-logging-with-azure-storage"></a>Povolit protokolování pomocí služby Azure Storage
 
-Účet úložiště k ukládání protokolů, postupujte podle těchto kroků:
+Pokud chcete použít účet úložiště k ukládání protokolů, postupujte takto:
     
-1. Pro **název**, zadejte název pro nastavení protokolů diagnostiky.
+1. Pro **název**, zadejte název pro nastavení diagnostických protokolů.
  
-2. Vyberte **archivu do účtu úložiště**, pak vyberte **CoreAnalytics**. 
+2. Vyberte **archivovat do účtu úložiště**a pak vyberte **CoreAnalytics**. 
 
-2. Pro **uchovávání dat (dny)**, zvolte počet dní uchovávání informací. Uchování nulový počet dnů po neomezenou dobu ukládá protokoly. 
+2. Pro **uchování (dny)**, zvolte počet dní uchování. 0 dnů uchování dat po neomezenou dobu ukládá protokoly. 
 
-    ![Portál – protokolů diagnostiky](./media/cdn-diagnostics-log/04_Diagnostics-logs-storage.png) 
+    ![Portál – protokoly diagnostiky](./media/cdn-diagnostics-log/04_Diagnostics-logs-storage.png) 
 
-3. Vyberte **účet úložiště**.
+3. Vyberte **účtu úložiště**.
 
     **Vyberte účet úložiště** se zobrazí stránka.
 
-4. V rozevíracím seznamu vyberte účet úložiště, a pak vyberte **OK**.
+4. Vyberte účet úložiště z rozevíracího seznamu a potom vyberte **OK**.
 
-    ![Portál – protokolů diagnostiky](./media/cdn-diagnostics-log/cdn-select-storage-account.png)
+    ![Portál – protokoly diagnostiky](./media/cdn-diagnostics-log/cdn-select-storage-account.png)
 
-5. Po provedení požadovaných nastavení protokolů diagnostiky, vyberte **Uložit**.
+5. Po provedení nastavení diagnostický protokol vyberte **Uložit**.
 
-### <a name="logging-with-log-analytics"></a>Protokolování s analýzy protokolů
+### <a name="logging-with-log-analytics"></a>Protokolování pomocí služby Log Analytics
 
-Analýzy protokolů k ukládání protokolů, postupujte podle těchto kroků:
+Použití Log Analytics k ukládání protokolů, postupujte podle těchto kroků:
 
-1. Z **protokolů diagnostiky** vyberte **odeslat k analýze protokolů**. 
+1. Z **diagnostické protokoly** stránce **odesílat do Log Analytics**. 
 
-    ![Portál – protokolů diagnostiky](./media/cdn-diagnostics-log/05_Ready-to-Configure.png)    
+    ![Portál – protokoly diagnostiky](./media/cdn-diagnostics-log/05_Ready-to-Configure.png)    
 
-2. Vyberte **konfigurace** konfigurace analýzy protokolů protokolování. 
+2. Vyberte **konfigurovat** chcete nakonfigurovat protokolování pro Log Analytics. 
 
    **Pracovních prostorů OMS** se zobrazí stránka.
 
-    ![Portál – protokolů diagnostiky](./media/cdn-diagnostics-log/06_Choose-workspace.png)
+    ![Portál – protokoly diagnostiky](./media/cdn-diagnostics-log/06_Choose-workspace.png)
 
 3. Vyberte **vytvořit nový pracovní prostor**.
 
-    **Pracovním prostorem OMS** se zobrazí stránka.
+    **Pracovní prostor OMS** se zobrazí stránka.
 
-    ![Portál – protokolů diagnostiky](./media/cdn-diagnostics-log/07_Create-new.png)
+    ![Portál – protokoly diagnostiky](./media/cdn-diagnostics-log/07_Create-new.png)
 
-4. Pro **pracovním prostorem OMS**, zadejte název pracovní prostor OMS. Název pracovní prostor OMS musí být jedinečný a obsahovat pouze písmena, číslice a pomlčky; nejsou povoleny mezery a podtržítka. 
+4. Pro **pracovní prostor OMS**, zadejte název pracovního prostoru OMS. Název pracovního prostoru OMS musí být jedinečný a obsahovat jenom písmena, číslice a spojovníky; nejsou povoleny mezery a podtržítka. 
 
-5. Pro **předplatné**, vyberte z rozevíracího seznamu existujícímu předplatnému. 
+5. Pro **předplatné**, vyberte stávající předplatné z rozevíracího seznamu. 
 
-6. Pro **skupiny prostředků**, vytvořte novou skupinu prostředků nebo vyberte nějaký existující.
+6. Pro **skupiny prostředků**, vytvořte novou skupinu prostředků nebo vyberte existující.
 
 7. Pro **umístění**, vyberte umístění ze seznamu.
 
-8. Vyberte **připnout na řídicí panel** Pokud chcete uložit nastavení protokolu na řídicí panel. 
+8. Vyberte **připnout na řídicí panel** Pokud chcete uložit konfiguraci protokolu na řídicí panel. 
 
-9. Vyberte **OK** k dokončení konfigurace.
+9. Vyberte **OK** a dokončete tak konfiguraci.
 
-    ![Portál – protokolů diagnostiky](./media/cdn-diagnostics-log/08_Workspace-resource.png)
+10. Po vytvoření pracovního prostoru se vrátíte **diagnostické protokoly** stránky. Potvrďte název nového pracovního prostoru Log Analytics.
 
-10. Po vytvoření pracovního prostoru se vrátíte na **diagnostické protokoly** stránky. Zkontrolujte název nové pracovní prostor analýzy protokolů.
+    ![Portál – protokoly diagnostiky](./media/cdn-diagnostics-log/09_Return-to-logging.png)
 
-    ![Portál – protokolů diagnostiky](./media/cdn-diagnostics-log/09_Return-to-logging.png)
+11. Vyberte **CoreAnalytics**a pak vyberte **Uložit**.
 
-11. Vyberte **CoreAnalytics**, pak vyberte **Uložit**.
+12. Chcete-li zobrazit nový pracovní prostor Log Analytics, vyberte **základní analýzy** ze stránky koncového bodu CDN.
 
-12. Chcete-li zobrazit nový pracovní prostor analýzy protokolů, vyberte **základní analýza** z stránku koncového bodu CDN.
+    ![Portál – protokoly diagnostiky](./media/cdn-diagnostics-log/cdn-core-analytics-page.png) 
 
-    ![Portál – protokolů diagnostiky](./media/cdn-diagnostics-log/11_OMS-dashboard.png) 
+    Váš pracovní prostor Log Analytics je teď připravený k protokolování dat o. Aby bylo možné využívat data, je nutné použít [Log Analytics řešení](#consuming-diagnostics-logs-from-a-log-analytics-workspace), uvedených dále v tomto článku.
 
-    Pracovní prostor analýzy protokolů je nyní připraven k protokolovat data. Aby bylo možné využívat data, je nutné použít [řešení protokolu analýzy](#consuming-diagnostics-logs-from-a-log-analytics-workspace), zahrnuté později v tomto článku.
+Další informace o protokolu data zpoždění, naleznete v tématu [protokolovat data zpoždění](#log-data-delays).
 
-Další informace o zpoždění dat protokolu najdete v tématu [protokolu zpoždění data](#log-data-delays).
+## <a name="enable-logging-with-powershell"></a>Povolení protokolování prostřednictvím PowerShellu
 
-## <a name="enable-logging-with-powershell"></a>Povolení protokolování v prostředí PowerShell
-
-Následující příklad ukazuje postup povolení diagnostických protokolů prostřednictvím rutin prostředí PowerShell Azure.
+Následující příklad ukazuje, jak povolit diagnostické protokoly prostřednictvím rutin Azure Powershellu.
 
 ### <a name="enabling-diagnostic-logs-in-a-storage-account"></a>Povolení diagnostických protokolů v účtu úložiště
 
-1. Přihlaste se a vybrat odběr, který:
+1. Přihlášení a výběru předplatného:
 
-    Připojit AzureRmAccount 
+    Connect-AzureRmAccount 
 
     Select-AzureSubscription - SubscriptionId 
 
-2. Pokud chcete povolit diagnostických protokolů v účtu úložiště, zadejte tento příkaz:
+2. Povolení diagnostických protokolů v účtu úložiště, zadejte tento příkaz:
 
     ```powershell
     Set-AzureRmDiagnosticSetting -ResourceId "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}" -StorageAccountId "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ClassicStorage/storageAccounts/{storageAccountName}" -Enabled $true -Categories CoreAnalytics
     ```
 
-3. K povolení protokolů diagnostiky v pracovním prostoru analýzy protokolů, zadejte tento příkaz:
+3. Pokud chcete povolit diagnostické protokoly v pracovním prostoru Log Analytics, zadejte tento příkaz:
 
     ```powershell
     Set-AzureRmDiagnosticSetting -ResourceId "/subscriptions/`{subscriptionId}<subscriptionId>
     .<subscriptionName>" -WorkspaceId "/subscriptions/<workspaceId>.<workspaceName>" -Enabled $true -Categories CoreAnalytics 
     ```
 
-## <a name="consuming-diagnostics-logs-from-azure-storage"></a>Použití protokolů diagnostiky ze služby Azure Storage
-Tato část popisuje schéma CDN základní analýza, jak je organizovaná uvnitř účet úložiště Azure a poskytuje ukázkový kód pro stažení protokolů v souboru CSV.
+## <a name="consuming-diagnostics-logs-from-azure-storage"></a>Využívání diagnostické protokoly z Azure Storage
+Tato část popisuje schéma CDN core analytics, jak je uspořádaný v rámci účtu úložiště Azure a poskytuje ukázkový kód pro stahování protokolů v souboru CSV.
 
-### <a name="using-microsoft-azure-storage-explorer"></a>Pomocí Průzkumníka úložiště Microsoft Azure
-Než se dostanete k základní analytická data z účtu úložiště Azure, musíte nejprve nástroj pro přístup k obsahu v účtu úložiště. Na trhu jsou k dispozici několik nástrojů, i když je ten, který doporučujeme Microsoft Azure Storage Explorer. Si můžete stáhnout nástroj [Azure Storage Explorer](http://storageexplorer.com/). Po stažení a instalaci softwaru, nakonfigurujte ji používat stejný účet úložiště Azure, který byl nakonfigurovaný jako cíl do protokolů diagnostiky CDN.
+### <a name="using-microsoft-azure-storage-explorer"></a>Pomocí Průzkumníka služby Microsoft Azure Storage
+Pro přístup k základní analytických dat z účtu služby Azure storage, musíte nejdřív nástroj pro přístup k obsahu v účtu úložiště. Na trhu jsou k dispozici několik nástrojů, je ten, který doporučujeme Průzkumníka služby Microsoft Azure Storage. Stáhněte si nástroj, najdete v článku [Průzkumníka služby Azure Storage](http://storageexplorer.com/). Po stažení a instalace softwaru, nakonfigurujte ho na použití stejného účtu úložiště Azure, který byl nakonfigurovaný jako cíl, aby CDN diagnostické protokoly.
 
-1.  Otevřete **Microsoft Azure Storage Explorer**
+1.  Otevřít **Průzkumníka služby Microsoft Azure Storage**
 2.  Najděte účet úložiště
-3.  Rozbalte **kontejnery objektů Blob** uzel v rámci tohoto účtu úložiště.
-4.  Vyberte kontejner s názvem *insights-logs-coreanalytics*.
-5.  Zobrazit výsledky nahoru v pravém podokně počínaje první úroveň jako *resourceId =*. Pokračujte výběrem jednotlivých úrovních, vyhledejte soubor *PT1H.json*. Najdete zde *formát cesty objektu Blob* Poznámka vysvětlení cesty.
-6.  Každý objekt blob *PT1H.json* soubor představuje analýzy protokolů pro jednu hodinu pro konkrétní koncový bod CDN nebo jeho vlastní doménu.
-7.  Schéma obsah tohoto souboru JSON je popsaná v části schéma protokoly analýzy jádra.
+3.  Rozbalte **kontejnery objektů Blob** uzel pod tímto účtem úložiště.
+4.  Vyberte kontejner s názvem *přehledy. protokoly coreanalytics*.
+5.  Zobrazit výsledky nahoru v pravém podokně, počínaje první úrovně, jako *resourceId =*. Pokračujte výběrem jednotlivých úrovních, dokud nenajdete soubor *PT1H.json*. Vysvětlení cesty, najdete v článku [formát cesty objektu Blob](cdn-azure-diagnostic-logs.md#blob-path-format).
+6.  Každý objekt blob *PT1H.json* soubor představuje protokoly analýzy za jednu hodinu pro určitý koncový bod CDN nebo své vlastní domény.
+7.  Schéma obsah tohoto souboru JSON je popsaný v části schématu protokoly analýzy jader.
 
 
-> [!NOTE]
-> **Formát cesty objektu BLOB**
-> 
-> Základní analýza protokolů jsou generovány každou hodinu a data se shromažďují a uložený v jednom Azure blob, které jako datové části JSON. Protože nástroj Průzkumník úložišť interpretuje '/' jako oddělovač adresářů a zobrazí v hierarchii, cesta k objekt blob systému Azure se zobrazí jako kdyby je hierarchická struktura a představuje název objektu blob. Následuje název objektu blob podle následující konvence: 
-    
-    resourceId=/SUBSCRIPTIONS/{Subscription Id}/RESOURCEGROUPS/{Resource Group Name}/PROVIDERS/MICROSOFT.CDN/PROFILES/{Profile Name}/ENDPOINTS/{Endpoint Name}/ y={Year}/m={Month}/d={Day}/h={Hour}/m={Minutes}/PT1H.json
+#### <a name="blob-path-format"></a>Formát cesty objektu BLOB
 
-**Popis polí:**
+Základní protokoly analýzy se generují každou hodinu a data se shromažďují a ukládají uvnitř jednoho Azure blob jako datovou část JSON. Protože nástroji Storage explorer interpretuje "/" jako oddělovač adresářů a zobrazuje hierarchii, cesta do objektu blob Azure se zobrazí jako kdyby je hierarchická struktura a představuje název objektu blob. Název objektu blob se řídí následujícími zásadami vytváření názvů:   
+
+```resourceId=/SUBSCRIPTIONS/{Subscription Id}/RESOURCEGROUPS/{Resource Group Name}/PROVIDERS/MICROSOFT.CDN/PROFILES/{Profile Name}/ENDPOINTS/{Endpoint Name}/ y={Year}/m={Month}/d={Day}/h={Hour}/m={Minutes}/PT1H.json```
+
+**Popis pole:**
 
 |Hodnota|Popis|
 |-------|---------|
 |ID předplatného    |ID předplatného Azure ve formátu Guid.|
-|Název skupiny prostředků |Název skupiny prostředků, do které patří prostředky CDN.|
+|Název skupiny prostředků |Název skupiny prostředků, do které patří prostředků CDN.|
 |Název profilu |Název profilu CDN|
 |Název koncového bodu |Název koncového bodu CDN|
 |Rok|  Reprezentace čtyřmístný rok, například 2017|
-|Měsíc| Reprezentace dvoumístné číslo měsíce. 01 = leden... 12 = prosinec|
-|Den|   Dvouciferné znázornění dne v měsíci|
-|PT1H.json| Skutečný soubor JSON se uloží analytická data|
+|Měsíc| Dvěma číslicemi reprezentuje číslo měsíce. 01. ledna =... 12. prosince =|
+|Den|   Dvěma číslicemi vyjádření dne v měsíci|
+|PT1H.json| Skutečný soubor JSON je ukládat analytics data|
 
-### <a name="exporting-the-core-analytics-data-to-a-csv-file"></a>Export základní analytická data do souboru CSV
+### <a name="exporting-the-core-analytics-data-to-a-csv-file"></a>Export dat analytics core do souboru CSV
 
-Chcete-li snadný přístup k základní analýza, je k dispozici ukázkový kód pro nástroj. Tento nástroj umožňuje stahování souborů JSON do souboru nestrukturované oddělený čárkami ve formátu, který můžete použít k vytvoření grafu nebo jiných agregací.
+Abyste usnadnili snadnou pro přístup k základní analýzy, je k dispozici ukázkový kód pro nástroj. Tento nástroj umožňuje stahovat soubory JSON do souboru paušální oddělený čárkami ve formátu, který slouží k vytvoření grafů nebo jiných agregací.
 
-Zde je, jak můžete použít nástroj:
+Zde je, jak můžete pomocí nástroje:
 
-1.  Po kliknutí na odkaz githubu: [https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv ](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv)
+1.  Po kliknutí odkaz githubu: [https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv ](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv)
 2.  Stáhněte si kód.
-3.  Postupujte podle pokynů pro kompilaci a konfigurace.
+3.  Postupujte podle pokynů ke kompilaci a konfigurace.
 4.  Spusťte nástroj.
-5.  Výsledný soubor CSV zobrazuje analytická data v jednoduchých ploché hierarchii.
+5.  Výsledný soubor CSV zobrazuje analytics data v hierarchii jednoduché bez stromové struktury.
 
-## <a name="consuming-diagnostics-logs-from-a-log-analytics-workspace"></a>Použití protokolů diagnostiky z pracovního prostoru analýzy protokolů
-Analýzy protokolů je služba Azure, která monitoruje své cloudové a místní prostředí k udržování své dostupnosti a výkonu. Shromažďuje data generovaná prostředky ve vašem cloudovém a místním prostředí a také data z dalších nástrojů pro monitorování a poskytuje analýzy napříč zdroji. 
+## <a name="consuming-diagnostics-logs-from-a-log-analytics-workspace"></a>Využívání diagnostické protokoly z pracovního prostoru Log Analytics
+Log Analytics je služba Azure, která monitoruje cloudové a místní prostředí s cílem zachovat jejich dostupnost a výkon. Shromažďuje data generovaná prostředky ve vašem cloudovém a místním prostředí a také data z dalších nástrojů pro monitorování a poskytuje analýzy napříč zdroji. 
 
-Chcete-li použít analýzy protokolů, je nutné [povolit protokolování](#enable-logging-with-azure-storage) do pracovního prostoru analýzy protokolů Azure, které je popsané výše v tomto článku.
+Chcete-li používat službu Log Analytics, je třeba [povolit protokolování](#enable-logging-with-azure-storage) do pracovního prostoru Azure Log Analytics, která je popsána výše v tomto článku.
 
-### <a name="using-the-log-analytics-workspace"></a>Použití pracovního prostoru analýzy protokolů
+### <a name="using-the-log-analytics-workspace"></a>Používání pracovního prostoru Log Analytics
 
  Následující diagram znázorňuje architekturu vstupy a výstupy úložiště:
 
 ![Pracovní prostor Log Analytics](./media/cdn-diagnostics-log/12_Repo-overview.png)
 
-*Obrázek 3 - úložiště analýzy protokolů*
+*Obrázek 3 – úložiště Log Analytics*
 
-Data můžete zobrazit v mnoha různými způsoby pomocí řešení pro správu. Můžete získat řešení pro správu z [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/monitoring-management?page=1&subcategories=management-solutions).
+Data můžete zobrazit v různých způsobů, jak pomocí řešení pro správu. Můžete získat z řešení pro správu [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/monitoring-management?page=1&subcategories=management-solutions).
 
-Řešení pro správu můžete nainstalovat z Azure marketplace. výběrem **ho získat** odkaz na konci každé řešení.
+Řešení pro správu můžete nainstalovat z webu Azure marketplace výběrem **získat** odkaz na konci každé řešení.
 
-### <a name="add-a-log-analytics-cdn-management-solution"></a>Přidat řešení pro správu protokolu analýzy CDN
+### <a name="add-a-log-analytics-cdn-management-solution"></a>Přidání řešení Log Analytics pro správu CDN
 
-Použijte následující postup přidání řešení pro správu protokolu Analytics:
+Postupujte podle těchto kroků přidejte řešení pro správu Log Analytics:
 
-1.   Přihlaste se k portálu Azure pomocí svého předplatného Azure a přejděte na řídicí panel.
+1.   Přihlaste se k webu Azure portal pomocí svého předplatného Azure a přejděte na řídicí panel.
     ![Řídicí panel Azure](./media/cdn-diagnostics-log/13_Azure-dashboard.png)
 
-2. V **nový** v části **Marketplace**, vyberte **monitorování + správu**.
+2. V **nový** stránce v části **Marketplace**vyberte **monitorování a správa**.
 
     ![Marketplace](./media/cdn-diagnostics-log/14_Marketplace.png)
 
-3. V **monitorování + správu** vyberte **zobrazit všechny**.
+3. V **monitorování a správa** stránce **zobrazit všechny**.
 
     ![Zobrazit všechno](./media/cdn-diagnostics-log/15_See-all.png)
 
-4. Vyhledejte CDN do vyhledávacího pole.
+4. CDN do vyhledávacího pole Hledat.
 
     ![Zobrazit všechno](./media/cdn-diagnostics-log/16_Search-for.png)
 
-5. Vyberte **Azure CDN základní analýza**. 
+5. Vyberte **Azure CDN Core Analytics**. 
 
     ![Zobrazit všechno](./media/cdn-diagnostics-log/17_Core-analytics.png)
 
-6. Po výběru **vytvořit**, se zobrazí výzva k vytvoření nové pracovní prostor analýzy protokolů nebo použijte existující. 
+6. Po výběru **vytvořit**, zobrazí se výzva k vytvoření nového pracovního prostoru Log Analytics nebo použijte již existující. 
 
     ![Zobrazit všechno](./media/cdn-diagnostics-log/18_Adding-solution.png)
 
-7. Vyberte pracovní prostor, který jste vytvořili před. Pak je potřeba přidat účet automation.
+7. Vyberte pracovní prostor, který jste vytvořili před. Potom musíte přidat účet automation.
 
     ![Zobrazit všechno](./media/cdn-diagnostics-log/19_Add-automation.png)
 
-8. Na následující obrazovce se zobrazí formulář účet automation, který je nutné vyplnit. 
+8. Na následující obrazovce se zobrazí formulář účtu automation, který musíte vyplnit. 
 
     ![Zobrazit všechno](./media/cdn-diagnostics-log/20_Automation.png)
 
-9. Po vytvoření účtu automation, jste připraveni přidat řešení. Vyberte tlačítko **Vytvořit**.
+9. Po vytvoření účtu automation, budete chtít přidat vaše řešení. Vyberte tlačítko **Vytvořit**.
 
     ![Zobrazit všechno](./media/cdn-diagnostics-log/21_Ready.png)
 
-10. Řešení teď přidaná do pracovního prostoru. Vraťte se do řídicího panelu portálu Azure.
+10. Vaše řešení je nyní přidán do pracovního prostoru. Vraťte se do řídicího panelu Azure portal.
 
     ![Zobrazit všechno](./media/cdn-diagnostics-log/22_Dashboard.png)
 
-    Vyberte pracovní prostor analýzy protokolů, které jste vytvořili pro přejděte do pracovního prostoru. 
+    Vyberte pracovní prostor Log Analytics, který jste vytvořili, přejděte do pracovního prostoru. 
 
-11. Vyberte **portálu OMS** dlaždice zobrazíte nové řešení.
+11. Vyberte **portál OMS** dlaždici zobrazíte nové řešení.
 
     ![Zobrazit všechno](./media/cdn-diagnostics-log/23_workspace.png)
 
-12. Portálu by teď měl vypadat jako následující obrazovka:
+12. Na portálu by měla vypadat jako na následujícím obrázku:
 
     ![Zobrazit všechno](./media/cdn-diagnostics-log/24_OMS-solution.png)
 
-    Vyberte jednu z dlaždice zobrazíte několik zobrazení na vaše data.
+    Vyberte jednu z dlaždice zobrazíte několik zobrazení o vašich datech.
 
     ![Zobrazit všechno](./media/cdn-diagnostics-log/25_Interior-view.png)
 
-    Můžete se posunete doleva nebo doprava zobrazíte další dlaždice představující jednotlivé zobrazení do data. 
+    Můžete posunout doleva nebo doprava, pokud chcete zobrazit další dlaždice představující jednotlivá zobrazení k datům. 
 
-    Vyberte jednu z dlaždice, které chcete zobrazit další podrobnosti o vaše data.
+    Vyberte jednu z dlaždice zobrazíte další podrobnosti o vašich datech.
 
      ![Zobrazit všechno](./media/cdn-diagnostics-log/26_Further-detail.png)
 
 ### <a name="offers-and-pricing-tiers"></a>Nabídky a cenové úrovně
 
-Můžete zobrazit nabídky a cenové úrovně pro řešení pro správu [zde](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions#offers-and-pricing-tiers).
+Zobrazí se nabídky a cenové úrovně pro řešení pro správu [tady](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions#offers-and-pricing-tiers).
 
 ### <a name="customizing-views"></a>Přizpůsobení zobrazení
 
-Zobrazení lze přizpůsobit do vašich dat pomocí **Návrhář zobrazení**. Pokud chcete začít návrh, přejděte do pracovního prostoru analýzy protokolů a vyberte **Návrhář zobrazení** dlaždici.
+Zobrazení můžete přizpůsobit svá data pomocí **Návrhář zobrazení**. Pokud chcete začít návrhu, přejděte do pracovního prostoru Log Analytics a vyberte **Návrhář zobrazení** dlaždici.
 
 ![Návrhář zobrazení](./media/cdn-diagnostics-log/27_Designer.png)
 
-Přetažení myší podrobnosti typy grafů a vyplňte v datech je chcete analyzovat.
+Přetáhněte myší typy grafů a vyplňte data podrobnosti chcete analyzovat.
 
 ![Návrhář zobrazení](./media/cdn-diagnostics-log/28_Designer.png)
 
     
 ## <a name="log-data-delays"></a>Zpoždění data protokolu
 
-Následující tabulka uvádí protokolu zpoždění data pro **Azure CDN Standard od společnosti Microsoft**, **Azure CDN Standard od společnosti Akamai**, a **Azure CDN Standard nebo Premium od společnosti Verizon**.
+Následující tabulka uvádí protokolu data zpoždění **Azure CDN Standard od společnosti Microsoft**, **Azure CDN Standard od Akamai**, a **Azure CDN Standard nebo Premium od Verizonu**.
 
-Zpoždění data protokolu Microsoft | Verizon protokolu data zpoždění | Akamai protokolu data zpoždění
+Zpoždění data protokolu Microsoft | Verizon zpoždění data protokolu | Zpoždění data protokolu Akamai
 --- | --- | ---
-Zpožděn 1 hodina. | Zpožděn 1 hodinu a může trvat až 2 hodin zahájíte zobrazování po dokončení šíření koncový bod. | Zpoždění po 24 hodinách; Pokud byla vytvořena více než 24 hodinami, trvá spustit zobrazování až 2 hodin. Pokud byl nedávno vytvořen, může trvat až 25 hodin pro protokoly spuštění, které jsou uvedeny.
+Opožděná. 1 hodina. | Zpožděné za 1 hodinu a může trvat až 2 hodin na spuštění vyskytující se po dokončení šíření koncový bod. | Opožděná. 24 hodin Pokud byl vytvořen před více než 24 hodin, trvá začnou zobrazovat, až 2 hodiny. Pokud byl vytvořen nedávno, může trvat až 25 hodin protokoly a začnou zobrazovat.
 
-## <a name="diagnostic-log-types-for-cdn-core-analytics"></a>Typy protokolů diagnostiky pro CDN základní analýza
+## <a name="diagnostic-log-types-for-cdn-core-analytics"></a>Typy diagnostických protokolů pro CDN core analytics
 
-Microsoft teď nabízí základní Analýza protokolů pouze obsahujících metriky zobrazuje statistiku odpovědi HTTP a statistiky odchozí jak je vidět z CDN POP nebo okrajů.
+Společnost Microsoft aktuálně nabízí základní protokoly analýzy pouze, které obsahují metriky znázorňující statistiky odpovědi protokolu HTTP a statistiky odchozího přenosu dat jak je vidět z CDN POP a hran.
 
-### <a name="core-analytics-metrics-details"></a>Základní analýza metriky podrobnosti
-Následující tabulka uvádí seznam metriky, které jsou k dispozici v základní analýzy protokolů pro **Azure CDN Standard od společnosti Microsoft**, **Azure CDN Standard od společnosti Akamai**, a **Azure CDN Standard nebo Premium od společnosti Verizon**. Ne všechny metriky jsou k dispozici od všech poskytovatelů, i když tyto rozdíly jsou minimální. Tabulka zobrazuje také, zda daná metrika je k dispozici od zprostředkovatele. Podle metrik, které jsou k dispozici pro pouze tyto koncové body CDN mající provoz na ně.
+### <a name="core-analytics-metrics-details"></a>Podrobnosti o Core analytics metriky
+Následující tabulka uvádí seznam metrik, které jsou k dispozici v základní analýzy protokolů pro **Azure CDN Standard od společnosti Microsoft**, **Azure CDN Standard od Akamai**, a **Azure CDN Standard nebo Premium od společnosti Verizon**. Některé metriky jsou k dispozici od všech zprostředkovatelů, i když tyto rozdíly jsou minimální. Tabulka také zobrazuje, zda je k dispozici od poskytovatele danou metriku. Metriky jsou k dispozici pouze ty koncové body CDN, které mají provoz na ně.
 
 
 |Metrika                     | Popis | Microsoft | Verizon | Akamai |
 |---------------------------|-------------|-----------|---------|--------|
-| RequestCountTotal         | Celkový počet přístupů k žádosti o během této doby. | Ano | Ano |Ano |
-| RequestCountHttpStatus2xx | Počet všech požadavků, které 2xx kód HTTP (například 200, 202). | Ano | Ano |Ano |
-| RequestCountHttpStatus3xx | Počet všech požadavků, které 3xx kód HTTP (například 300, 302). | Ano | Ano |Ano |
-| RequestCountHttpStatus4xx | Počet všech požadavků, které 4xx kód HTTP (například 400, 404). | Ano | Ano |Ano |
-| RequestCountHttpStatus5xx | Počet všech požadavků, jejichž výsledkem kód HTTP 5xx (například 500, 504). | Ano | Ano |Ano |
+| RequestCountTotal         | Celkový počet přístupů požadavku během tohoto období. | Ano | Ano |Ano |
+| RequestCountHttpStatus2xx | Počet všech žádostí, z kterých vzniklo kód HTTP 2xx (například 200, 202). | Ano | Ano |Ano |
+| RequestCountHttpStatus3xx | Počet všech žádostí, z kterých vzniklo kód HTTP 3xx (například 300, 302). | Ano | Ano |Ano |
+| RequestCountHttpStatus4xx | Počet všech žádostí, z kterých vzniklo kód HTTP 4xx (například 400, 404). | Ano | Ano |Ano |
+| RequestCountHttpStatus5xx | Počet všech žádostí, z kterých vzniklo kód HTTP 5xx (například 500, 504). | Ano | Ano |Ano |
 | RequestCountHttpStatusOthers | Počet všechny ostatní kódy HTTP (mimo 2xx 5xx). | Ano | Ano |Ano |
-| RequestCountHttpStatus200 | Počet všech požadavků, jejichž výsledkem 200 kód odpovědi HTTP. | Ano | Ne  |Ano |
-| RequestCountHttpStatus206 | Počet všech požadavků, jejichž výsledkem 206 kód odpovědi HTTP. | Ano | Ne  |Ano |
-| RequestCountHttpStatus302 | Počet všech požadavků, jejichž výsledkem 302 kód odpovědi HTTP. | Ano | Ne  |Ano |
-| RequestCountHttpStatus304 | Počet všech požadavků, jejichž výsledkem 304 kód odpovědi HTTP. | Ano | Ne  |Ano |
-| RequestCountHttpStatus404 | Počet všech požadavků, jejichž výsledkem odpovědi kódu HTTP 404. | Ano | Ne  |Ano |
-| RequestCountCacheHit | Počet všech požadavků, jejichž výsledkem mezipaměti přístupů. Asset zpracování přímo z POP do klienta. | Ano | Ano | Ne  |
-| RequestCountCacheMiss | Počet všech požadavků, které vedly k neúspěšnému přístupu do mezipaměti. K neúspěšnému přístupu do mezipaměti znamená asset nebyla nalezena na serveru POP nejbližší klientovi a proto byla načtena z tohoto počátku. | Ano | Ano | Ne |
-| RequestCountCacheNoCache | Počet všech požadavků na prostředek, které nebudou moci ukládat do mezipaměti z důvodu konfigurace uživatele na hranici. | Ano | Ano | Ne |
-| RequestCountCacheUncacheable | Počet všech požadavků na prostředky, které nebudou moci ukládat do mezipaměti asset Cache-Control a Expires hlavičky, které označují, že by neměl být uložené v mezipaměti, na serveru POP nebo klienta HTTP. | Ano | Ano | Ne |
-| RequestCountCacheOthers | Počet všech požadavků stavem mezipaměti, které nejsou pokryty výše. | Ne | Ano | Ne  |
-| EgressTotal | Odchozí přenosy dat v GB | Ano |Ano |Ano |
+| RequestCountHttpStatus200 | Počet všech žádostí, z kterých vzniklo 200 kód odpovědi HTTP. | Ano | Ne  |Ano |
+| RequestCountHttpStatus206 | Počet všech žádostí, z kterých vzniklo odpověď 206 kód protokolu HTTP. | Ano | Ne  |Ano |
+| RequestCountHttpStatus302 | Počet všech žádostí, z kterých vzniklo 302 kód odpovědi HTTP. | Ano | Ne  |Ano |
+| RequestCountHttpStatus304 | Počet všech žádostí, z kterých vzniklo 304 kód odpovědi HTTP. | Ano | Ne  |Ano |
+| RequestCountHttpStatus404 | Počet všech žádostí, z kterých vzniklo 404 kód odpovědi HTTP. | Ano | Ne  |Ano |
+| RequestCountCacheHit | Počet všech žádostí, z kterých vzniklo mezipaměť přístupů. Asset vyřídila přímo v lokalitě POP do klienta. | Ano | Ano | Ne  |
+| RequestCountCacheMiss | Počet všech žádostí, z kterých vzniklo neúspěšnému přístupu do mezipaměti. Prostředek se nenašel na nejbližší klientovi POP a proto byla načtena z původního zdroje znamená, že neúspěšnému přístupu do mezipaměti. | Ano | Ano | Ne |
+| RequestCountCacheNoCache | Počet všech žádostí na prostředek, které nemají ukládat do mezipaměti kvůli konfiguraci uživatele na hraničních zařízeních. | Ano | Ano | Ne |
+| RequestCountCacheUncacheable | Počet všech požadavků na prostředky, které nemají ukládat do mezipaměti podle prostředku Cache-Control a Expires hlavičky, které označují, že by neměl být uložené v mezipaměti, na místní nabídky nebo pomocí klienta HTTP. | Ano | Ano | Ne |
+| RequestCountCacheOthers | Počet všech žádostí se stavem mezipaměti není pokrytá výše. | Ne | Ano | Ne  |
+| EgressTotal | Přenos odchozích dat v GB | Ano |Ano |Ano |
 | EgressHttpStatus2xx | Odchozí datové přenosy * pro odpovědi s stavové kódy HTTP 2xx v GB. | Ano | Ano | Ne  |
 | EgressHttpStatus3xx | Přenos odchozích dat pro odpovědi s stavové kódy HTTP 3xx v GB. | Ano | Ano | Ne  |
 | EgressHttpStatus4xx | Přenos odchozích dat pro odpovědi s stavové kódy HTTP 4xx v GB. | Ano | Ano | Ne  |
 | EgressHttpStatus5xx | Přenos odchozích dat pro odpovědi s stavové kódy HTTP 5xx v GB. | Ano | Ano | Ne |
-| EgressHttpStatusOthers | Přenos odchozích dat pro odpovědi s ostatních stavových kódech HTTP v GB. | Ano | Ano | Ne  |
-| EgressCacheHit | Odchozí přenos dat pro odpovědi, které byly doručeny přímo z mezipaměti CDN na CDN POP nebo okraje. | Ano | Ano | Ne |
-| EgressCacheMiss. | Přenos odchozích dat pro odpovědi, které nebyly na nejbližší server POP najít a načíst ze zdrojového serveru. | Ano | Ano | Ne |
-| EgressCacheNoCache | Přenos odchozích dat pro prostředky, které nebudou moci ukládat do mezipaměti z důvodu konfigurace uživatele na hranici. | Ano | Ano | Ne |
-| EgressCacheUncacheable | Odchozí datové přenosy pro prostředky, které nebudou moci ukládat do mezipaměti Cache-Control nebo Expires hlavičky assetu. Označuje, že by neměl být uložené v mezipaměti, na serveru POP nebo klienta HTTP. | Ano | Ano | Ne |
-| EgressCacheOthers | Odchozí datové přenosy s dalšími scénáři mezipaměti. | Ne | Ano | Ne |
+| EgressHttpStatusOthers | Přenos odchozích dat pro odpovědi s stavových kódech HTTP v GB. | Ano | Ano | Ne  |
+| EgressCacheHit | Odchozí přenos dat pro odpovědi, které byly doručeny přímo z mezipaměti CDN v CDN POP a hran. | Ano | Ano | Ne |
+| EgressCacheMiss. | Přenos odchozích dat pro odpovědi, které nebyly na serveru POP nejbližší najít a načíst ze zdrojového serveru. | Ano | Ano | Ne |
+| EgressCacheNoCache | Přenos odchozích dat pro prostředky, které nemají ukládat do mezipaměti kvůli konfiguraci uživatele na hraničních zařízeních. | Ano | Ano | Ne |
+| EgressCacheUncacheable | Přenos odchozích dat pro prostředky, které nemají ukládat do mezipaměti Cache-Control nebo Expires hlavičky prostředku. Označuje, že by neměl být uložené v mezipaměti, na místní nabídky nebo pomocí klienta HTTP. | Ano | Ano | Ne |
+| EgressCacheOthers | Přenosy odchozích dat pro další scénáře mezipaměti. | Ne | Ano | Ne |
 
-* Odchozí přenosy dat odkazuje na provoz klientovi předána ze serverů CDN POP.
+* Odchozí přenos dat se odkazuje na provoz klientovi předána ze serverů CDN POP.
 
 
 ### <a name="schema-of-the-core-analytics-logs"></a>Schéma základní analýzy protokolů 
 
-Všechny protokoly se ukládají ve formátu JSON a každá položka má polí s řetězcem podle schématu. následující:
+Všechny protokoly se ukládají ve formátu JSON a každý záznam obsahuje pole řetězce podle následujícího schématu:
 
 ```json
     "records": [
@@ -396,7 +393,7 @@ Všechny protokoly se ukládají ve formátu JSON a každá položka má polí s
 }
 ```
 
-Kde *čas* představuje čas zahájení hodinu hranic, pro který je hlášen statistik. Pokud metriky není podporována zprostředkovatelem CDN, místo hodnotu double nebo celé číslo, nebude hodnotu null. Tato hodnota null ukazuje na nepřítomnost metriky a se liší od hodnoty 0. Není jednu sadu tyto metriky v každé doméně nakonfigurovaný v koncovém bodě.
+Kde *čas* představuje čas zahájení hodinu hranic, pro které je hlášeno statistiky. Metrika není podporováno zprostředkovatelem CDN, místo hodnoty double nebo celé číslo, je hodnota null. Tato hodnota null označuje absenci metriky a se liší od hodnoty 0. Existuje jedna sada tyto metriky za konfiguraci domény na koncový bod.
 
 Příklad vlastnosti:
 
@@ -436,10 +433,10 @@ Příklad vlastnosti:
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Azure diagnostické protokoly](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
-* [Základní analýza prostřednictvím doplňkovém portálu Azure CDN](https://docs.microsoft.com/azure/cdn/cdn-analyze-usage-patterns)
+* [Diagnostické protokoly Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
+* [Základní analýza přes doplňkový portál Azure CDN](https://docs.microsoft.com/azure/cdn/cdn-analyze-usage-patterns)
 * [Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
-* [Analýza protokolů Azure rozhraní REST API](https://docs.microsoft.com/rest/api/loganalytics)
+* [Rozhraní REST API Azure Log Analytics](https://docs.microsoft.com/rest/api/loganalytics)
 
 
 

@@ -1,40 +1,44 @@
 ---
-title: Vytvářet a spravovat elastické úlohy pomocí prostředí PowerShell | Microsoft Docs
-description: Prostředí PowerShell použít ke správě fondů databáze SQL Azure
+title: Vytvoření a správa elastických úloh pomocí Powershellu | Dokumentace Microsoftu
+description: Prostředí PowerShell použít ke správě fondů Azure SQL Database
 services: sql-database
 manager: craigg
 author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 06/14/2018
 ms.author: sstein
-ms.openlocfilehash: d1869dd689ef090978c3835e0a16fec82dfb5c05
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: 6f72e0cbb4476e9ff22bd1a1ead8dbee24a7edf0
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34648682"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35643590"
 ---
-# <a name="create-and-manage-sql-database-elastic-jobs-using-powershell-preview"></a>Vytvářet a spravovat úlohy elastické databáze SQL pomocí prostředí PowerShell (preview)
+# <a name="create-and-manage-sql-database-elastic-jobs-using-powershell-preview"></a>Vytvoření a správa elastických úloh SQL Database pomocí Powershellu (preview)
 
-Rozhraní API prostředí PowerShell pro **úlohy elastické databáze** (ve verzi preview), umožňují definovat skupiny databází, na které budou spuštěny skripty. Tento článek ukazuje, jak vytvořit a spravovat **úlohy elastické databáze** pomocí rutin prostředí PowerShell. V tématu [elastické úlohy přehled](sql-database-elastic-jobs-overview.md). 
+
+[!INCLUDE [elastic-database-jobs-deprecation](../../includes/sql-database-elastic-jobs-deprecate.md)]
+
+
+Rozhraní API prostředí PowerShell pro **úlohy elastické databáze** (ve verzi preview) umožňují definovat skupiny databází, u kterých se spustí skripty. Tento článek popisuje, jak vytvořit a spravovat **úlohy elastické databáze** pomocí rutin prostředí PowerShell. Zobrazit [přehled úloh Elastic](sql-database-elastic-jobs-overview.md). 
 
 ## <a name="prerequisites"></a>Požadavky
-* Předplatné Azure. Bezplatná zkušební verze, najdete v části [bezplatnou zkušební verzi jeden měsíc](https://azure.microsoft.com/pricing/free-trial/).
-* Sadu databází, které jsou vytvořené pomocí nástrojů pro elastické databáze. V tématu [začít pracovat s nástroji elastické databáze](sql-database-elastic-scale-get-started.md).
-* Azure Powershell Podrobné informace najdete v tématu [Instalace a konfigurace prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview).
-* **Elastické databáze úlohy** balíček prostředí PowerShell: najdete v části [úlohy instalace elastické databáze](sql-database-elastic-jobs-service-installation.md)
+* Předplatné Azure. Bezplatná zkušební verze, najdete v části [zkušební verze na měsíc zdarma](https://azure.microsoft.com/pricing/free-trial/).
+* Sada databáze vytvořené s nástroji Elastic Database. Zobrazit [Začínáme s nástroji Elastic Database](sql-database-elastic-scale-get-started.md).
+* Azure PowerShell Podrobné informace najdete v tématu [Instalace a konfigurace prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview).
+* **Úlohy elastic Database** balíčků v Powershellu: viz [úlohy instalace elastické databáze](sql-database-elastic-jobs-service-installation.md)
 
-### <a name="select-your-azure-subscription"></a>Vyberte předplatné Azure
-Vyberte předplatné, je třeba Id předplatného (**- SubscriptionId**) nebo název odběru (**- Název_předplatného**). Pokud máte více předplatných můžete spustit **Get-AzureRmSubscription** rutiny a zkopírujte nastavit informace o požadované předplatné od výsledku. Až budete mít informace o vašem předplatném, spusťte následující příkaz pro nastavení toto předplatné jako výchozí, konkrétně cíle pro vytváření a Správa úloh:
+### <a name="select-your-azure-subscription"></a>Vyberte své předplatné Azure
+Vyberte předplatné, je třeba Id předplatného (**- SubscriptionId**) nebo název předplatného (**- SubscriptionName**). Pokud máte více předplatných, můžete spustit **Get-AzureRmSubscription** rutiny a kopírovat nastavit informace o požadované předplatné z výsledku. Jakmile budete mít informace o vašem předplatném, spusťte následující rutinu nastavit toto předplatné jako výchozí, konkrétně cíl pro vytváření a Správa úloh:
 
     Select-AzureRmSubscription -SubscriptionId {SubscriptionID}
 
-[Prostředí PowerShell ISE](https://technet.microsoft.com/library/dd315244.aspx) se doporučuje pro použití při vývoji a spustit skripty prostředí PowerShell pro úlohy elastické databáze.
+[Prostředí PowerShell ISE](https://technet.microsoft.com/library/dd315244.aspx) se doporučuje pro využití pro vývoj a spouštění skriptů prostředí PowerShell pro úlohy elastické databáze.
 
-## <a name="elastic-database-jobs-objects"></a>Objekty úlohy elastické databáze.
-V následující tabulce jsou uvedeny na všechny typy objektů z **úlohy elastické databáze** spolu s jeho popis a příslušná rozhraní API prostředí PowerShell.
+## <a name="elastic-database-jobs-objects"></a>Objekty úlohy elastické databáze
+V následující tabulce jsou uvedeny na všechny typy objektů z **úlohy elastické databáze** spolu s jeho popis a relevantní rozhraní API Powershellu.
 
 <table style="width:100%">
   <tr>
@@ -44,14 +48,14 @@ V následující tabulce jsou uvedeny na všechny typy objektů z **úlohy elast
   </tr>
   <tr>
     <td>Přihlašovací údaj</td>
-    <td>Uživatelské jméno a heslo používané k připojení k databázím pro spouštění skriptů nebo aplikace DACPACs. <p>Heslo je zašifrováno před odesláním a ukládání do databáze elastické databáze úlohy.  Heslo se dešifruje pomocí služby úlohy elastické databáze pomocí přihlašovacích údajů vytvořen a odesláno z instalační skript.</td>
+    <td>Uživatelské jméno a heslo mají používat při připojování k databázím pro spouštění skriptů nebo aplikací DACPACs. <p>Heslo je zašifrováno před odesláním a uložení do databáze úlohy Elastic Database.  Úlohy Elastic Database služby přes přihlašovací údaje, které vytvoří a nahraje ze skriptu instalace je dešifrovat heslo.</td>
     <td><p>Get-AzureSqlJobCredential</p>
     <p>New-AzureSqlJobCredential</p><p>Set-AzureSqlJobCredential</p></td></td>
   </tr>
 
   <tr>
     <td>Skript</td>
-    <td>Skript Transact-SQL, který se má použít pro provedení mezi databázemi.  Skript by měl být vytvořené jako idempotent vzhledem k tomu, že služba bude opakovat akci během provádění skriptu při selhání.
+    <td>Příkaz Transact-SQL skript, který má použít pro spuštění napříč databázemi.  Skript by měl být vytvořen jako idempotentní, protože služba bude opakovat akci během provádění skriptu při selhání.
     </td>
     <td>
     <p>Get-AzureSqlJobContent</p>
@@ -63,7 +67,7 @@ V následující tabulce jsou uvedeny na všechny typy objektů z **úlohy elast
 
   <tr>
     <td>DACPAC</td>
-    <td><a href="https://msdn.microsoft.com/library/ee210546.aspx">Aplikace na datové vrstvě </a> balíčku má být použita mezi databázemi.
+    <td><a href="https://msdn.microsoft.com/library/ee210546.aspx">Aplikace datové vrstvy </a> balíček, který chcete použít napříč databázemi.
     </td>
     <td>
     <p>Get-AzureSqlJobContent</p>
@@ -73,7 +77,7 @@ V následující tabulce jsou uvedeny na všechny typy objektů z **úlohy elast
   </tr>
   <tr>
     <td>Cílové databáze</td>
-    <td>Název databáze a serveru odkazující na Azure SQL Database.
+    <td>Název databáze a serveru přejděte ke službě Azure SQL Database.
     </td>
     <td>
     <p>Get-AzureSqlJobTarget</p>
@@ -81,8 +85,8 @@ V následující tabulce jsou uvedeny na všechny typy objektů z **úlohy elast
     </td>
   </tr>
   <tr>
-    <td>Cíl horizontálního oddílu mapy</td>
-    <td>Kombinace cílové databáze a pověření pro použije k určení informací uložených v rámci mapování horizontálních elastické databáze.
+    <td>Cíl mapy horizontálních oddílů</td>
+    <td>Kombinace cílové databáze a přihlašovacích údajů se použije k určení informací uložených v rámci mapy horizontálních oddílů Elastic Database.
     </td>
     <td>
     <p>Get-AzureSqlJobTarget</p>
@@ -91,15 +95,15 @@ V následující tabulce jsou uvedeny na všechny typy objektů z **úlohy elast
     </td>
   </tr>
 <tr>
-    <td>Cíl vlastní kolekce</td>
-    <td>Definované skupiny databází souhrnně používat pro provedení.</td>
+    <td>Cíl vlastní shromažďování</td>
+    <td>Definované skupiny databází společně použít pro spuštění.</td>
     <td>
     <p>Get-AzureSqlJobTarget</p>
     <p>New-AzureSqlJobTarget</p>
     </td>
   </tr>
 <tr>
-    <td>Cíl podřízené vlastní kolekce</td>
+    <td>Vlastní kolekce podřízených cíl</td>
     <td>Cílové databáze, který se odkazuje z vlastní kolekce.</td>
     <td>
     <p>Add-AzureSqlJobChildTarget</p>
@@ -110,7 +114,7 @@ V následující tabulce jsou uvedeny na všechny typy objektů z **úlohy elast
 <tr>
     <td>Úloha</td>
     <td>
-    <p>Definice parametrů pro úlohu, která lze použít k aktivaci provádění nebo ke splnění plánu.</p>
+    <p>Definice parametrů pro úlohu, která lze použít, chcete aktivovat provedení té nebo ke splnění plánu.</p>
     </td>
     <td>
     <p>Get-AzureSqlJob</p>
@@ -122,7 +126,7 @@ V následující tabulce jsou uvedeny na všechny typy objektů z **úlohy elast
 <tr>
     <td>Provádění úlohy</td>
     <td>
-    <p>Kontejner úlohy, které jsou nutné ke splnění provádění skriptu nebo použití DACPAC k cíli pomocí přihlašovacích údajů pro připojení databáze s chybami zpracovány v souladu zásady spouštění.</p>
+    <p>Kontejner úloh, potřebnou ke splnění provádění skriptu nebo aplikování DACPAC k cíli pomocí přihlašovacích údajů pro připojení k databázi s chybami zpracování podle zásadu spouštění.</p>
     </td>
     <td>
     <p>Get-AzureSqlJobExecution</p>
@@ -134,8 +138,8 @@ V následující tabulce jsou uvedeny na všechny typy objektů z **úlohy elast
 <tr>
     <td>Provádění úloh úkolu</td>
     <td>
-    <p>Jedné jednotky práce ke splnění úlohy.</p>
-    <p>Pokud úkol není schopna úspěšně provést, bude do protokolu výsledné zpráva o výjimce a nové odpovídající úkol bude vytvořen a provést v souladu zásady zadaný spouštění.</p></p>
+    <p>Jednu jednotku práce ke splnění úlohy.</p>
+    <p>Pokud úlohu není možné úspěšně provést, se zapíše výsledný zpráva výjimky a novou úlohu odpovídající bude vytvořena a provedeny podle zadaného spuštění zásad.</p></p>
     </td>
     <td>
     <p>Get-AzureSqlJobExecution</p>
@@ -147,8 +151,8 @@ V následující tabulce jsou uvedeny na všechny typy objektů z **úlohy elast
 <tr>
     <td>Zásady spouštění úlohy</td>
     <td>
-    <p>Ovládací prvky úlohy vypršení časových limitů provádění, limity opakování a intervaly mezi opakovanými pokusy.</p>
-    <p>Elastické databáze úlohy obsahuje výchozí zásady spouštění úlohy, což způsobí, že v podstatě nekonečné opakování selhání úkolů úloh s exponenciálního omezení rychlosti intervalů mezi každou opakování.</p>
+    <p>Ovládací prvky úlohy vypršení časového limitu pro spuštění, limitu opakování a intervalů mezi opakovanými pokusy.</p>
+    <p>Úlohy elastic Database zahrnuje výchozí zásadu spouštění úlohy, což způsobí, že v podstatě nekonečné opakované pokusy o selhání úkolů úlohy pomocí exponenciálního omezení rychlosti intervalů mezi opakováními.</p>
     </td>
     <td>
     <p>Get-AzureSqlJobExecutionPolicy</p>
@@ -160,7 +164,7 @@ V následující tabulce jsou uvedeny na všechny typy objektů z **úlohy elast
 <tr>
     <td>Plán</td>
     <td>
-    <p>Čas na základě specifikace pro provedení proběhla v opakovaném intervalu nebo najednou.</p>
+    <p>Čas na základě specifikace pro spuštění k provedení opakované interval nebo najednou.</p>
     </td>
     <td>
     <p>Get-AzureSqlJobSchedule</p>
@@ -170,9 +174,9 @@ V následující tabulce jsou uvedeny na všechny typy objektů z **úlohy elast
   </tr>
 
 <tr>
-    <td>Aktivační události úlohy</td>
+    <td>Aktivuje úlohu</td>
     <td>
-    <p>Mapování mezi úlohy a plán, který chcete provádění aktivační události úlohy podle plánu.</p>
+    <p>Mapování mezi úlohu a plán, který chcete spuštění aktivační události úlohy podle plánu.</p>
     </td>
     <td>
     <p>New-AzureSqlJobTrigger</p>
@@ -181,35 +185,35 @@ V následující tabulce jsou uvedeny na všechny typy objektů z **úlohy elast
   </tr>
 </table>
 
-## <a name="supported-elastic-database-jobs-group-types"></a>Podporované úlohy elastické databáze skupiny typy
-Úloha spustí skripty jazyka Transact-SQL (T-SQL) nebo aplikace DACPACs napříč skupinou databází. Když je úloha odeslána spouštění napříč skupinou databází, úloha "rozšíří" do podřízené úlohy, kde každá má požadovaný spuštění na jedné databáze ve skupině. 
+## <a name="supported-elastic-database-jobs-group-types"></a>Podporované úlohy elastické databáze seskupení typů
+Úloha spustí skriptů Transact-SQL (T-SQL) nebo aplikaci DACPACs napříč skupinou databází. Když je úloha odeslána provádět v rámci skupiny databází, úloha "rozbalí" o úlohách podřízený, kde každá provádí požadované spuštění na jednu databázi ve skupině. 
 
 Existují dva typy skupin, které můžete vytvořit: 
 
-* [Mapování horizontálních](sql-database-elastic-scale-shard-map-management.md) skupiny: když je úloha odeslána cílovou mapu horizontálního oddílu, dotazuje mapy horizontálního oddílu k určení jeho aktuální sadu horizontálních oddílů úlohy a potom vytvoří podřízené úlohy pro každý horizontálního oddílu v mapě horizontálního oddílu.
-* Vlastní skupiny kolekce: definované vlastní sadu databází. Když úloha cílem vlastní kolekce, vytvoří podřízené úlohy pro každou databázi aktuálně v vlastní kolekci.
+* [Mapy horizontálních oddílů](sql-database-elastic-scale-shard-map-management.md) skupiny: když je úloha odeslána cílovou mapy horizontálních oddílů, dotazuje mapy horizontálních oddílů k určení jeho aktuální sadu horizontálních oddílů úlohy a potom vytvoří podřízené úlohy pro každý horizontální oddíl v mapě horizontálních oddílů.
+* Vlastní skupiny kolekcí: definované vlastní sadu databází. Když projekt cílí na vlastní kolekce, vytvoří podřízené úlohy pro každou databázi aktuálně do vlastní kolekce.
 
-## <a name="to-set-the-elastic-database-jobs-connection"></a>Chcete-li nastavit elastické databáze úlohy připojení
-Připojení musí být nastavena na úlohy *řízení databáze* před použitím úlohy rozhraní API. Tuto rutinu spustíte aktivuje okno pověření objevil požaduje uživatelské jméno a heslo, které vytvořili při instalaci úlohy elastické databáze. Všechny příklady uvedené v tomto tématu předpokládají, že už jsou hotové tento první krok.
+## <a name="to-set-the-elastic-database-jobs-connection"></a>Chcete-li nastavit Elastic Database úlohy připojení
+Připojení musí být nastavena na úlohy, které *databáze správy* před použitím úlohy, které rozhraní API. Tuto rutinu spustíte aktivuje okno přihlašovacích údajů překryvné požadujícím uživatelské jméno a heslo vytvořené při instalaci úlohy elastické databáze. Všechny příklady v tomto tématu se předpokládá, že tento první krok už jsou hotové.
 
 Otevření připojení do úlohy elastické databáze:
 
     Use-AzureSqlJobConnection -CurrentAzureSubscription 
 
 ## <a name="encrypted-credentials-within-the-elastic-database-jobs"></a>Zašifrované přihlašovací údaje v rámci úlohy elastické databáze
-Přihlašovací údaje databáze lze vložit do úlohy *řízení databáze* s jeho heslo šifrované. Je nezbytné k ukládání pověření a umožněte úloh provést později, (pomocí plány úloh).
+Databázová pověření mohou být zařazeny do úlohy *databáze správy* s jeho heslo šifrovaná. Je potřeba ukládat přihlašovací údaje pro aktivaci úlohy má být proveden později, (pomocí plánů úloh).
 
-Šifrování funguje prostřednictvím certifikát vytvořen jako součást instalační skript. Instalační skript se vytvoří a odešle certifikát do cloudové služby Azure pro dešifrování uložené šifrovaná hesla. Cloudová služba Azure později ukládá veřejný klíč v rámci úlohy *řízení databáze* což umožňuje rozhraní API prostředí PowerShell nebo Azure rozhraní portálu pro zašifrování zadaného hesla bez nutnosti certifikát, který chcete nainstalovat místně .
+Šifrování funguje prostřednictvím certifikát vytvořenou jako součást instalační skript. Instalační skript vytvoří a nahraje certifikát do cloudové služby Azure pro dešifrování uložené šifrovaná hesla. Azure Cloud Service později uloží veřejný klíč v rámci úlohy *databáze správy* umožňující rozhraní API prostředí PowerShell nebo Azure portal rozhraní k zašifrování zadaného hesla bez vyžadování certifikátů místně nainstalovaný .
 
-Hesla přihlašovací údaje jsou šifrované a zabezpečení od uživatelů s přístupem jen pro čtení k objektům úlohy elastické databáze. Ale je možné, uživatel se zlými úmysly přístup pro čtení a zápis k objektům elastické databáze úlohy extrahování heslo. Přihlašovací údaje jsou navrženy pro opětovné použití mezi jednotlivými spuštěními úlohy. Přihlašovací údaje jsou předány k cílovým databázím při navazování připojení. Aktuálně neexistují žádná omezení na cílové databáze používané pro každý přihlašovací údaje, uživatel se zlými úmysly může přidat cíl databáze pro databázi pod kontrolou uživateli se zlými úmysly. Uživatel může následně spustit úlohu cílení na tuto databázi k získání hesla přihlašovací údaje.
+Hesla přihlašovací údaje jsou zašifrované a zabezpečené od uživatelů s přístupem jen pro čtení k objektům úlohy elastické databáze. Ale je možné, uživatel se zlými úmysly s přístupem pro čtení a zápis na objekty úlohy Elastic Database extrahovat hesla. Přihlašovací údaje jsou navrženy pro opětovné používání pro spuštění úlohy. Přihlašovací údaje jsou předány do cílové databáze při navazování připojení. Aktuálně neexistují žádná omezení na cílové databáze používané pro každý přihlašovacích údajů, uživatel se zlými úmysly může přidat cíl databáze pro databázi v rámci řízení uživateli se zlými úmysly. Uživatel může následně spustit úlohu, která cílí na tuto databázi k získání hesla přihlašovací údaje.
 
 Osvědčené postupy zabezpečení pro úlohy elastické databáze patří:
 
-* Omezit využití rozhraní API důvěryhodným osobám.
-* Přihlašovací údaje by měl mít alespoň oprávnění potřebná k provedení úlohy projektu.  Další informace si můžete prohlédnout v rámci to [autorizace a oprávnění](https://msdn.microsoft.com/library/bb669084.aspx) článku na webu MSDN SQL Server.
+* Omezte možnost používat rozhraní API na důvěryhodné osoby.
+* Přihlašovací údaje by měl mít alespoň oprávnění potřebná k provedení úlohy.  Další informace můžete zobrazit v rámci této [autorizace a oprávnění](https://msdn.microsoft.com/library/bb669084.aspx) článku na webu MSDN SQL Server.
 
-### <a name="to-create-an-encrypted-credential-for-job-execution-across-databases"></a>Chcete-li vytvořit šifrovaný pověření pro provádění úlohy mezi databázemi
-K vytvoření nových přihlašovacích údajů šifrovaná, [ **rutiny Get-Credential** ](https://technet.microsoft.com/library/hh849815.aspx) vyzve k zadání uživatelského jména a hesla, které lze předat [ **rutiny New-AzureSqlJobCredential** ](/powershell/module/elasticdatabasejobs/new-azuresqljobcredential).
+### <a name="to-create-an-encrypted-credential-for-job-execution-across-databases"></a>Chcete-li vytvořit šifrované přihlašovací údaje pro provádění úlohy napříč databázemi
+K vytvoření nových přihlašovacích údajů šifrované, [ **rutiny Get-Credential** ](https://technet.microsoft.com/library/hh849815.aspx) vyzve k zadání uživatelského jména a hesla, které mohou být předány [ **rutiny New-AzureSqlJobCredential** ](/powershell/module/elasticdatabasejobs/new-azuresqljobcredential).
 
     $credentialName = "{Credential Name}"
     $databaseCredential = Get-Credential
@@ -217,15 +221,15 @@ K vytvoření nových přihlašovacích údajů šifrovaná, [ **rutiny Get-Cred
     Write-Output $credential
 
 ### <a name="to-update-credentials"></a>Chcete-li aktualizovat přihlašovací údaje
-Při změně hesla, použijte [ **rutiny Set-AzureSqlJobCredential** ](/powershell/module/elasticdatabasejobs/set-azuresqljobcredential) a nastavte **CredentialName** parametr.
+Při změně hesla, použijte [ **rutiny Set-AzureSqlJobCredential** ](/powershell/module/elasticdatabasejobs/set-azuresqljobcredential) a nastavit **CredentialName** parametru.
 
     $credentialName = "{Credential Name}"
     Set-AzureSqlJobCredential -CredentialName $credentialName -Credential $credential 
 
-## <a name="to-define-an-elastic-database-shard-map-target"></a>Chcete-li definovat cíl elastické databáze horizontálního oddílu mapy
-K provedení úlohy pro všechny databáze v sadě horizontálního oddílu (vytvořený [klientské knihovny pro elastické databáze](sql-database-elastic-database-client-library.md)), použít mapování horizontálních jako cílové databáze. Tento příklad vyžaduje horizontálně dělené aplikace vytvořené pomocí klientské knihovny pro elastické databáze. V tématu [Začínáme s ukázkou nástroje elastické databáze](sql-database-elastic-scale-get-started.md).
+## <a name="to-define-an-elastic-database-shard-map-target"></a>Chcete-li definovat cíl mapy horizontálních oddílů elastické databáze
+K provedení úlohy pro všechny databáze v sadě horizontálních oddílů (vytvořené pomocí [Klientská knihovna Elastic Database](sql-database-elastic-database-client-library.md)), použijte mapu horizontálního oddílu jako cílové databáze. Tento příklad vyžaduje horizontálně dělené aplikace vytvořené využitím klientské knihovny pro elastické databáze. Zobrazit [Začínáme s ukázkou nástrojů Elastic Database](sql-database-elastic-scale-get-started.md).
 
-Databáze manager mapy horizontálního oddílu musí být nastavena jako databáze cíl a poté mapy konkrétní horizontálního oddílu musí být zadány jako cíl.
+Databáze správce mapování horizontálních oddílů musí být nastavena jako cílovou databázi a potom mapy horizontálních oddílů konkrétní musí být zadán jako cíl.
 
     $shardMapCredentialName = "{Credential Name}"
     $shardMapDatabaseName = "{ShardMapDatabaseName}" #example: ElasticScaleStarterKit_ShardMapManagerDb
@@ -235,10 +239,10 @@ Databáze manager mapy horizontálního oddílu musí být nastavena jako datab�
     $shardMapTarget = New-AzureSqlJobTarget -ShardMapManagerCredentialName $shardMapCredentialName -ShardMapManagerDatabaseName $shardMapDatabaseName -ShardMapManagerServerName $shardMapDatabaseServerName -ShardMapName $shardMapName
     Write-Output $shardMapTarget
 
-## <a name="create-a-t-sql-script-for-execution-across-databases"></a>Vytvoření skriptu T-SQL pro provedení mezi databází
-Při vytváření skriptů T-SQL pro spuštění, důrazně doporučujeme vytvořit mají být [idempotent](https://en.wikipedia.org/wiki/Idempotence) a odolné proti selhání. Vždy, když dojde k selhání, bez ohledu na klasifikaci selhání spuštění, bude opakovat úlohy elastické databáze provádění skriptu.
+## <a name="create-a-t-sql-script-for-execution-across-databases"></a>Vytvoření skriptu T-SQL pro provádění napříč databázemi
+Při vytváření skriptů T-SQL pro spuštění, důrazně doporučujeme vytvářet mohly [idempotentní](https://en.wikipedia.org/wiki/Idempotence) a odolné proti chybám. Úlohy elastic Database bude opakovat spuštění skriptu při každém spuštění dojde k selhání, bez ohledu na to klasifikace selhání.
 
-Použití [ **rutiny New-AzureSqlJobContent** ](/powershell/module/elasticdatabasejobs/new-azuresqljobcontent) vytvoříte a uložíte skript pro spuštění a sadu **- ContentName** a **- CommandText** Parametry.
+Použití [ **rutiny New-AzureSqlJobContent** ](/powershell/module/elasticdatabasejobs/new-azuresqljobcontent) vytvoříte a uložíte skript pro spuštění a nastavte **- ContentName** a **- CommandText** Parametry.
 
     $scriptName = "Create a TestTable"
 
@@ -258,7 +262,7 @@ Použití [ **rutiny New-AzureSqlJobContent** ](/powershell/module/elasticdataba
     Write-Output $script
 
 ### <a name="create-a-new-script-from-a-file"></a>Vytvořit nový skript ze souboru
-Pokud skriptu T-SQL je definována v souboru, můžete to použijte import skript:
+Pokud skript T-SQL je definován v rámci souboru, to pomocí importujte skript:
 
     $scriptName = "My Script Imported from a File"
     $scriptPath = "{Path to SQL File}"
@@ -266,10 +270,10 @@ Pokud skriptu T-SQL je definována v souboru, můžete to použijte import skrip
     $script = New-AzureSqlJobContent -ContentName $scriptName -CommandText $scriptCommandText
     Write-Output $script
 
-### <a name="to-update-a-t-sql-script-for-execution-across-databases"></a>Chcete-li aktualizovat skriptu T-SQL pro provedení mezi databázemi
-Tento skript prostředí PowerShell aktualizuje text příkazu T-SQL pro existující skript.
+### <a name="to-update-a-t-sql-script-for-execution-across-databases"></a>Chcete-li aktualizovat pro spuštění skriptu T-SQL napříč databázemi
+Tento skript Powershellu aktualizuje text příkazu T-SQL pro existující skript.
 
-Nastavte následující proměnné tak, aby odrážela definici skriptu požadované nastavení:
+Nastavte následující proměnné tak, aby odrážely definici skriptu požadované nastavení:
 
     $scriptName = "Create a TestTable"
     $scriptUpdateComment = "Adding AdditionalInformation column to TestTable"
@@ -293,13 +297,13 @@ Nastavte následující proměnné tak, aby odrážela definici skriptu požadov
     INSERT INTO TestTable(InsertionTime, AdditionalInformation) VALUES (sysutcdatetime(), 'test');
     GO"
 
-### <a name="to-update-the-definition-to-an-existing-script"></a>Aktualizovat definici do existujícího skriptu
+### <a name="to-update-the-definition-to-an-existing-script"></a>Aktualizovat definici existující skript
     Set-AzureSqlJobContentDefinition -ContentName $scriptName -CommandText $scriptCommandText -Comment $scriptUpdateComment 
 
-## <a name="to-create-a-job-to-execute-a-script-across-a-shard-map"></a>Chcete-li vytvořit úlohu pro spuštění skriptu napříč horizontálního oddílu mapy
-Tento skript prostředí PowerShell spustí úlohu pro spuštění skriptu mezi každou horizontálního oddílu v mapě horizontálního oddílu služby elastické škálování.
+## <a name="to-create-a-job-to-execute-a-script-across-a-shard-map"></a>K vytvoření úlohy pro spuštění skriptu napříč horizontálními oddíly mapy
+Tento skript Powershellu spustí úlohu pro spuštění skriptu v jednotlivých horizontálních oddílů v mapě horizontálních oddílů elastické škálování.
 
-Nastavte následující proměnné tak, aby odrážela požadované skriptu a cíle:
+Nastavte následující proměnné tak, aby odrážely požadované skriptu a cíl:
 
     $jobName = "{Job Name}"
     $scriptName = "{Script Name}"
@@ -312,50 +316,50 @@ Nastavte následující proměnné tak, aby odrážela požadované skriptu a c�
     Write-Output $job
 
 ## <a name="to-execute-a-job"></a>K provedení úlohy
-Tento skript PowerShell spouští stávající úloze:
+Tento skript prostředí PowerShell spustí existující úlohy:
 
-Aktualizujte tak, aby odrážela název požadované úlohy, který provedli následující proměnnou:
+Aktualizujte tak, aby odrážely název požadované úlohy, který jste spustili následující proměnnou:
 
     $jobName = "{Job Name}"
     $jobExecution = Start-AzureSqlJobExecution -JobName $jobName 
     Write-Output $jobExecution
 
-## <a name="to-retrieve-the-state-of-a-single-job-execution"></a>Při načítání stavu provádění jedné úlohy
-Použití [ **rutiny Get-AzureSqlJobExecution** ](/powershell/module/elasticdatabasejobs/get-azuresqljobexecution) a nastavte **JobExecutionId** parametr, pokud chcete zobrazit stav provádění úlohy.
+## <a name="to-retrieve-the-state-of-a-single-job-execution"></a>Načíst stav spuštění jedné úlohy
+Použití [ **rutiny Get-AzureSqlJobExecution** ](/powershell/module/elasticdatabasejobs/get-azuresqljobexecution) a nastavit **JobExecutionId** parametr, chcete-li zobrazit stav provádění úlohy.
 
     $jobExecutionId = "{Job Execution Id}"
     $jobExecution = Get-AzureSqlJobExecution -JobExecutionId $jobExecutionId
     Write-Output $jobExecution
 
-Použijte stejný **Get-AzureSqlJobExecution** rutiny s **metoda IncludeChildren** parametr, pokud chcete zobrazit stav podřízených spuštění úlohy, konkrétně určitém stavu pro každé spuštění úlohy každou databázi cílem úlohy.
+Použijte stejný **Get-AzureSqlJobExecution** rutinu s **metoda IncludeChildren** parametr zobrazit stav podřízených se prováděné úlohy, konkrétně určitý stav pro každé spuštění úlohy každou databázi cílem pro úlohu.
 
     $jobExecutionId = "{Job Execution Id}"
     $jobExecutions = Get-AzureSqlJobExecution -JobExecutionId $jobExecutionId -IncludeChildren
     Write-Output $jobExecutions 
 
-## <a name="to-view-the-state-across-multiple-job-executions"></a>Pokud chcete zobrazit stav mezi jednotlivými spuštěními více úloh
-[ **Rutiny Get-AzureSqlJobExecution** ](/powershell/module/elasticdatabasejobs/new-azuresqljob) má více volitelné parametry, které lze použít k zobrazení více spuštění úlohy, filtrovaný pomocí zadané parametry. Následující ukazuje některé možné způsoby, jak používat Get-AzureSqlJobExecution:
+## <a name="to-view-the-state-across-multiple-job-executions"></a>Chcete-li zobrazit stav napříč několika se prováděné úlohy
+[ **Rutiny Get-AzureSqlJobExecution** ](/powershell/module/elasticdatabasejobs/new-azuresqljob) má více volitelné parametry, které lze použít k zobrazení více spuštění úlohy, filtrovaný pomocí zadaných parametrů. Následující příklad ukazuje některé možné způsoby, jak použít Get-AzureSqlJobExecution:
 
-Načtěte všechny aktivní nejvyšší úrovně úloha spuštění:
+Načtěte všechny aktivní úlohy nejvyšší úrovně spuštění:
 
     Get-AzureSqlJobExecution
 
-Načtení všech spuštěních nejvyšší úrovně úlohy, včetně spuštěních neaktivní úlohy:
+Načtěte všechny nejvyšší úrovně se prováděné úlohy, včetně spuštění neaktivní úlohy:
 
     Get-AzureSqlJobExecution -IncludeInactive
 
-Načtěte všechny podřízené úlohy spuštěních zadaná úloha spuštění ID, včetně spuštěních neaktivní úlohy:
+Načtěte všechny podřízené se prováděné úlohy ID zadaná úloha spuštění, včetně spuštění neaktivní úlohy:
 
     $parentJobExecutionId = "{Job Execution Id}"
     Get-AzureSqlJobExecution -AzureSqlJobExecution -JobExecutionId $parentJobExecutionId -IncludeInactive -IncludeChildren
 
-Načíst všechny úlohy spuštěních vytvořený plán / úlohy kombinaci, včetně neaktivní úlohy:
+Načíst všechny prováděné úlohy vytvořené podle určeného plánu na úlohu kombinaci, včetně neaktivní úlohy:
 
     $jobName = "{Job Name}"
     $scheduleName = "{Schedule Name}"
     Get-AzureSqlJobExecution -JobName $jobName -ScheduleName $scheduleName -IncludeInactive
 
-Načtěte všechny úlohy cílení na mapě zadaný horizontálního oddílu, včetně neaktivní úlohy:
+Načtěte všechny úlohy, které cílí na mapě určený horizontální oddíl, včetně neaktivní úlohy:
 
     $shardMapServerName = "{Shard Map Server Name}"
     $shardMapDatabaseName = "{Shard Map Database Name}"
@@ -363,28 +367,28 @@ Načtěte všechny úlohy cílení na mapě zadaný horizontálního oddílu, v�
     $target = Get-AzureSqlJobTarget -ShardMapManagerDatabaseName $shardMapDatabaseName -ShardMapManagerServerName $shardMapServerName -ShardMapName $shardMapName
     Get-AzureSqlJobExecution -TargetId $target.TargetId -IncludeInactive
 
-Načtěte všechny úlohy cílení na vlastní kolekce, včetně neaktivní úlohy:
+Načtěte všechny úlohy, které cílí na vlastní kolekce, včetně neaktivní úlohy:
 
     $customCollectionName = "{Custom Collection Name}"
     $target = Get-AzureSqlJobTarget -CustomCollectionName $customCollectionName
     Get-AzureSqlJobExecution -TargetId $target.TargetId -IncludeInactive
 
-Načtení seznamu spuštěních úloh úlohy v rámci provedení určité úlohy:
+Získání seznamu úkolů prováděné úlohy v rámci konkrétní úlohy spuštění:
 
     $jobExecutionId = "{Job Execution Id}"
     $jobTaskExecutions = Get-AzureSqlJobTaskExecution -JobExecutionId $jobExecutionId
     Write-Output $jobTaskExecutions 
 
-Načtěte podrobnosti o provádění úkolů úlohy:
+Načtěte podrobnosti provádění úlohy úlohy:
 
-Následující skript prostředí PowerShell slouží k zobrazení podrobností o provádění úloh úkolu, který je zvláště užitečná při ladění selhání spuštění.
+Následující skript prostředí PowerShell slouží k zobrazení podrobností o provádění úloh úkolu, který je zvláště užitečné při ladění selhání spuštění.
 
     $jobTaskExecutionId = "{Job Task Execution Id}"
     $jobTaskExecution = Get-AzureSqlJobTaskExecution -JobTaskExecutionId $jobTaskExecutionId
     Write-Output $jobTaskExecution
 
-## <a name="to-retrieve-failures-within-job-task-executions"></a>Načtení selhání v rámci úlohy spuštěních úloh
-**JobTaskExecution objekt** zahrnuje vlastnost pro životní cyklus úlohy společně s vlastností zpráv. Pokud se nezdařilo provádění úloh úkolu, vlastnost životního cyklu bude nutné nastavit *se nezdařilo* a vlastnosti zprávy se nastaví výsledné zpráva o výjimce a jeho zásobníku. Pokud úloha nebyla úspěšná, je důležité k zobrazení podrobností úlohy, které se nezdařilo pro danou úlohu.
+## <a name="to-retrieve-failures-within-job-task-executions"></a>K načtení selhání v rámci úlohy prováděné úlohy
+**JobTaskExecution objekt** obsahují vlastnost pro životní cyklus úloh společně s vlastností zprávy. Pokud provádění úloh úkolu se nezdařilo, vlastnost životní cyklus bude nastavena na *neúspěšné* a nastaví vlastnost zprávy na výslednou zprávu o výjimce a svůj zásobník. Pokud úloha nebyla úspěšná, je důležité k zobrazení podrobností úlohy, které se nezdařila pro danou úlohu.
 
     $jobExecutionId = "{Job Execution Id}"
     $jobTaskExecutions = Get-AzureSqlJobTaskExecution -JobExecutionId $jobExecutionId
@@ -396,34 +400,34 @@ Následující skript prostředí PowerShell slouží k zobrazení podrobností 
             }
         }
 
-## <a name="to-wait-for-a-job-execution-to-complete"></a>Čekání na dokončení provedení úlohy
-Následující skript prostředí PowerShell umožňuje počkejte na dokončení úlohy úlohy:
+## <a name="to-wait-for-a-job-execution-to-complete"></a>Čekání na spuštění úlohy k dokončení
+Následující skript prostředí PowerShell slouží k čekání na dokončení úkolu úlohy:
 
     $jobExecutionId = "{Job Execution Id}"
     Wait-AzureSqlJobExecution -JobExecutionId $jobExecutionId 
 
 ## <a name="create-a-custom-execution-policy"></a>Vytvořit zásadu vlastní spuštění
-Elastické databáze úlohy podporuje vytváření vlastní provádění zásad, které mohou být použity při spouštění úloh.
+Úlohy elastic Database podporuje vytváření vlastní spuštění zásady, které lze použít při spuštění úlohy.
 
-Zásady spouštění aktuálně povolit pro definování:
+Zásady spouštění aktuálně umožňují definovat:
 
 * Název: Identifikátor pro zásady spouštění.
-* Časový limit úlohy: Celkový čas před úlohy budou zrušeny úlohami elastické databáze.
-* Počáteční Interval opakování: Interval čekání před první opakování.
-* Maximální Interval opakování: Limitu opakování intervalů používat.
-* Koeficient omezení rychlosti Interval opakování: Koeficient používá k výpočtu další interval mezi opakovanými pokusy.  Se používá následující vzorec: (počáteční opakujte Interval) * Math.pow ((Interval omezení rychlosti koeficient), (počet pokusů o) - 2). 
-* Maximální počet pokusů: Maximální počet opakování pokusů provést v rámci úlohy.
+* Časový limit úlohy: Celkový čas předtím, než úloha se zruší úlohy Elastic Database.
+* Počáteční Interval opakování: Interval čekání před prvním opakováním.
+* Maximální Interval opakování: Zakončení intervalů opakování, které chcete použít.
+* Opakovaný pokus o Interval omezení rychlosti koeficient: Koeficient pro výpočet na další interval mezi opakovanými pokusy.  Se používá tento vzorec: (počátečního intervalu opakování) * Math.Pow – (Interval omezení rychlosti koeficient (), (počet pokusů o) - 2). 
+* Maximální počet pokusů o: Maximální počet opakovaných pokusů provést v rámci úlohy.
 
 Výchozí zásadu spouštění používá následující hodnoty:
 
-* Název: Zásady spouštění výchozí
+* Název: Výchozí zásadu spouštění
 * Časový limit úlohy: 1 týden
-* Počáteční Interval opakování: 100 milisekund
+* Počátečního intervalu opakování: 100 milisekund
 * Maximální Interval opakování: 30 minut
-* Opakujte koeficient Interval: 2
-* Maximální počet pokusů: 2 147 483 647
+* Koeficient Interval opakování: 2
+* Maximální počet pokusů o: 2 147 483 647
 
-Vytvořte zásadu požadované spouštění:
+Vytvoření zásady požadovaného spouštění:
 
     $executionPolicyName = "{Execution Policy Name}"
     $initialRetryInterval = New-TimeSpan -Seconds 10
@@ -448,65 +452,65 @@ Aktualizujte zásady spouštění požadované aktualizace:
     Write-Output $updatedExecutionPolicy
 
 ## <a name="cancel-a-job"></a>Zrušení úlohy
-Elastické databáze úlohy podporuje požadavků na zrušení úloh.  Pokud elastické databáze úlohy zjistí žádost o zrušení úlohy se spouští, se ho pokusí zastavit úlohu.
+Úlohy elastic Database podporuje požadavky zrušení úloh.  Pokud úlohy Elastic Database zjistí požadavek na zrušení úlohy se spouští, se pokusí o zastavení úlohy.
 
-Že úlohy elastické databáze můžete provést zrušení dvěma různými způsoby:
+Existují dva různé způsoby, že úlohy Elastic Database můžete provádět zrušení:
 
-1. Zrušit aktuálně spuštěných úloh: Pokud zrušení se zjistí, zatímco úloha je aktuálně spuštěna, zrušení se pokusí v rámci aktuálně prováděné aspekt úlohy.  Například: Pokud je aktuálně provést při pokusu o zrušení dlouho spuštěných dotazu, bude pokus o dotaz zrušíte.
-2. Zrušení úloh opakování: v případě zrušení zjištění vlákno řízení předtím, než se spustí úloha pro spuštění, bude vlákno řízení vyhnout, spouští se úloha a deklarovat požadavek, protože došlo ke zrušení.
+1. Zrušit běžící úlohy: Pokud zrušením se zjistí, zatímco úloha je aktuálně spuštěná, proběhne pokus o zrušení v rámci aktuálně prováděné aspekt úlohy.  Příklad: Pokud je dlouho probíhající dotazy aktuálně prováděné při pokusu o zrušení, bude pokus o zrušení dotazu.
+2. Ruší se úloha opakovaných pokusů: Pokud vlákno ovládací prvek zjistí zrušením předtím, než se spustí úloha pro spuštění, vlákno ovládací prvek se zabránilo spouštění úlohy a deklarovat žádost jako zrušená.
 
-Pokud zrušení úlohy je požadováno pro nadřazené úloze, bude pro nadřazené úloze a všechny jeho podřízené úlohy dodržet žádost o zrušení.
+Pokud je požadováno zrušení úlohy k nadřazené úloze se žádost o zrušení dodržet nadřazená úloha a všechny jeho podřízené úlohy.
 
-Odeslat žádost o zrušení, použijte [ **rutinu Stop-AzureSqlJobExecution** ](/powershell/module/elasticdatabasejobs/stop-azuresqljobexecution) a nastavte **JobExecutionId** parametr.
+Pokud chcete odeslat žádost o zrušení, použijte [ **rutinu Stop-AzureSqlJobExecution** ](/powershell/module/elasticdatabasejobs/stop-azuresqljobexecution) a nastavit **JobExecutionId** parametru.
 
     $jobExecutionId = "{Job Execution Id}"
     Stop-AzureSqlJobExecution -JobExecutionId $jobExecutionId
 
-## <a name="to-delete-a-job-and-job-history-asynchronously"></a>K odstranění úlohy a úlohy historie asynchronně
-Elastické databáze úlohy podporuje asynchronní odstranění úloh. Úloha může být označený k odstranění a systém bude odstranění úlohy a všechny jeho historie úlohy po dokončení všech spuštěních úloh pro úlohu. Systém nebude automaticky zrušit spuštěních aktivní úlohy.  
+## <a name="to-delete-a-job-and-job-history-asynchronously"></a>K odstranění úlohy a asynchronně historie úlohy
+Úlohy elastic Database podporuje asynchronní odstraňování úloh. Úloha může být označený k odstranění a systém se odstranění úlohy a všechny jeho historie úloh po dokončení všech provedení úloh pro úlohu. Systém nebude automaticky zrušit spuštění aktivní úloha.  
 
-Vyvolání [ **Stop-AzureSqlJobExecution** ](/powershell/module/elasticdatabasejobs/stop-azuresqljobexecution) zrušit spuštěních aktivní úlohy.
+Vyvolání [ **Stop-AzureSqlJobExecution** ](/powershell/module/elasticdatabasejobs/stop-azuresqljobexecution) zrušit spuštění aktivní úloha.
 
-Chcete-li aktivovat odstranění úlohy, použijte [ **rutinu Remove-AzureSqlJob** ](/powershell/module/elasticdatabasejobs/remove-azuresqljob) a nastavte **JobName** parametr.
+K aktivaci úlohy odstranění, použijte [ **rutiny Remove-AzureSqlJob** ](/powershell/module/elasticdatabasejobs/remove-azuresqljob) a nastavit **JobName** parametru.
 
     $jobName = "{Job Name}"
     Remove-AzureSqlJob -JobName $jobName
 
-## <a name="to-create-a-custom-database-target"></a>Chcete-li vytvořit cíl vlastní databázi
-Můžete definovat vlastní databázi cíle pro přímé spouštění nebo pro zahrnutí do skupiny vlastní databázi. Například protože **elastické fondy** není dosud podporován přímo pomocí rozhraní API prostředí PowerShell, můžete vytvořit vlastní databázi cíle a cílové kolekce vlastní databázi, která zahrnuje všechny databáze ve fondu.
+## <a name="to-create-a-custom-database-target"></a>Chcete-li vytvořit cíl vlastní databáze
+Můžete definovat vlastní databázi cíle pro přímé spouštění nebo zahrnutí v rámci skupiny vlastní databázi. Například protože **elastické fondy** jsou ještě není podporovaný přímo pomocí rozhraní API prostředí PowerShell, můžete vytvořit vlastní databázi cíle a cílové kolekce vlastní databázi, která zahrnuje všechny databáze ve fondu.
 
-Nastavte následující proměnné tak, aby odrážela informace o požadované databázi:
+Nastavte následující proměnné tak, aby odrážely informace o požadované databáze:
 
     $databaseName = "{Database Name}"
     $databaseServerName = "{Server Name}"
     New-AzureSqlJobTarget -DatabaseName $databaseName -ServerName $databaseServerName 
 
-## <a name="to-create-a-custom-database-collection-target"></a>Chcete-li vytvořit cíl kolekce vlastní databázi
-Použití [ **New-AzureSqlJobTarget** ](/powershell/module/elasticdatabasejobs/new-azuresqljobtarget) rutiny můžete definovat vlastní databázi kolekce cíl povolit spuštění v rámci více definovaných databázových cílů. Po vytvoření skupiny databáze, databáze může být přidružený k cíli vlastní kolekce.
+## <a name="to-create-a-custom-database-collection-target"></a>Chcete-li vytvořit cílové kolekce vlastní databáze
+Použití [ **New-AzureSqlJobTarget** ](/powershell/module/elasticdatabasejobs/new-azuresqljobtarget) rutiny k definování vlastní databázi kolekce cíl k povolení spuštění napříč několika cíly definovaných databázových. Po vytvoření skupiny databáze, databáze může být přidružený k cíli vlastní kolekce.
 
-Nastavte následující proměnné tak, aby odrážela konfigurace cílového požadovanou vlastní kolekce:
+Nastavte následující proměnné tak, aby odrážely konfiguraci cílů požadované vlastní kolekce:
 
     $customCollectionName = "{Custom Database Collection Name}"
     New-AzureSqlJobTarget -CustomCollectionName $customCollectionName 
 
-### <a name="to-add-databases-to-a-custom-database-collection-target"></a>Přidání databází do kolekce cíl vlastní databázi
-Přidání databáze pro použití konkrétní vlastní kolekce [ **přidat AzureSqlJobChildTarget** ](/powershell/module/elasticdatabasejobs/add-azuresqljobchildtarget) rutiny.
+### <a name="to-add-databases-to-a-custom-database-collection-target"></a>Přidání databáze do cílové kolekce vlastní databáze
+Chcete-li přidat databázi použít konkrétní vlastní kolekce [ **přidat AzureSqlJobChildTarget** ](/powershell/module/elasticdatabasejobs/add-azuresqljobchildtarget) rutiny.
 
     $databaseServerName = "{Database Server Name}"
     $databaseName = "{Database Name}"
     $customCollectionName = "{Custom Database Collection Name}"
     Add-AzureSqlJobChildTarget -CustomCollectionName $customCollectionName -DatabaseName $databaseName -ServerName $databaseServerName 
 
-#### <a name="review-the-databases-within-a-custom-database-collection-target"></a>Zkontrolujte databází v rámci kolekce cíl vlastní databázi
-Použití [ **Get-AzureSqlJobTarget** ](/powershell/module/elasticdatabasejobs/new-azuresqljobtarget) rutiny načíst podřízené databází v rámci kolekce cíl vlastní databázi. 
+#### <a name="review-the-databases-within-a-custom-database-collection-target"></a>Zkontrolujte databází v rámci cílové kolekce vlastní databáze
+Použití [ **Get-AzureSqlJobTarget** ](/powershell/module/elasticdatabasejobs/new-azuresqljobtarget) rutina pro načtení podřízené databáze v cílové kolekci vlastní databázi. 
 
     $customCollectionName = "{Custom Database Collection Name}"
     $target = Get-AzureSqlJobTarget -CustomCollectionName $customCollectionName
     $childTargets = Get-AzureSqlJobTarget -ParentTargetId $target.TargetId
     Write-Output $childTargets
 
-### <a name="create-a-job-to-execute-a-script-across-a-custom-database-collection-target"></a>Vytvořit úlohu pro spuštění skriptu mezi cílovou kolekci vlastní databázi
-Použití [ **New-AzureSqlJob** ](/powershell/module/elasticdatabasejobs/new-azuresqljob) rutiny vytvořit úlohu pro skupinu databází definované cílovou kolekci vlastní databázi. Elastické databáze úlohy se úloha rozšířit více podřízených úloh, každou odpovídající databázi přidruženého cílové kolekce vlastní databázi a ujistěte se, že skript se spustí na každou databázi. Znovu je důležité, aby skripty se idempotent chcete být odolní vůči opakování.
+### <a name="create-a-job-to-execute-a-script-across-a-custom-database-collection-target"></a>Vytvoření úlohy pro spuštění skriptu v cílové kolekci vlastní databáze
+Použití [ **New-AzureSqlJob** ](/powershell/module/elasticdatabasejobs/new-azuresqljob) rutina pro vytvoření úlohy pro skupinu databází určené cílové kolekce vlastní databázi. Úlohy elastic Database bude rozšíření úlohy do více podřízené úlohy, které každý odpovídající databázi přidružené k cílové kolekce vlastní databázi a ujistěte se, že je skript spuštěn na každou databázi. Znovu je důležité, že skripty jsou idempotentní chcete být odolní vůči opakování.
 
     $jobName = "{Job Name}"
     $scriptName = "{Script Name}"
@@ -516,14 +520,14 @@ Použití [ **New-AzureSqlJob** ](/powershell/module/elasticdatabasejobs/new-azu
     $job = New-AzureSqlJob -JobName $jobName -CredentialName $credentialName -ContentName $scriptName -TargetId $target.TargetId
     Write-Output $job
 
-## <a name="data-collection-across-databases"></a>Shromažďování dat mezi databázemi
-Úlohu můžete použít k provedení dotazu napříč skupinou databází a odešlou výsledky do určité tabulky. V tabulce můžete položit dotaz na ve skutečnosti zobrazíte výsledky dotazu z každé databáze. To poskytuje asynchronní metodu při spuštění dotazu mezi mnoha databázemi. Neúspěšných pokusů o přihlášení se zpracovávají automaticky prostřednictvím opakování.
+## <a name="data-collection-across-databases"></a>Shromažďování dat napříč databázemi
+Úlohu můžete použít k provedení dotazu v rámci skupiny databází a odešlou výsledky do určité tabulky. Zobrazení výsledků dotazu z každé databáze ve skutečnosti může být dotazována v tabulce. To poskytuje asynchronní metodě k provedení dotazu v rozsáhlé skupině databází. Neúspěšných pokusů o přihlášení jsou automaticky zpracovány prostřednictvím opakovaných pokusů.
 
-Zadané cílové tabulky se automaticky vytvoří, pokud ještě neexistuje. Nová tabulka odpovídá schématu vrácené výsledné sady. Pokud skript vrátí více sad výsledků dotazu, odeslat úlohy elastické databáze pouze první do cílové tabulky.
+Zadané cílové tabulky se automaticky vytvoří, pokud ještě neexistuje. Nová tabulka odpovídá schématu sady výsledků dotazu vrácená. Pokud skript vrátí více sad výsledků dotazu, odeslat úlohy elastické databáze pouze první do cílové tabulky.
 
-Následující skript PowerShell spouští skript a shromažďuje své výsledky do zadané tabulky. Tento skript předpokládá, že skriptu T-SQL byl vytvořen který výstupy jedné sadě výsledků a vytvořený cíl kolekce vlastní databázi.
+Následující skript prostředí PowerShell spustí skript a shromažďuje výsledky do zadané tabulky. Tento skript předpokládá, že skript T-SQL se vytvořila která vytvoří výstup jedna sada výsledků dotazu a vytvoření cílové kolekce vlastní databázi.
 
-Tento skript používá [ **Get-AzureSqlJobTarget** ](/powershell/module/elasticdatabasejobs/new-azuresqljobtarget) rutiny. Nastavte parametry skriptu, přihlašovací údaje a provádění cíle:
+Tento skript používá [ **Get-AzureSqlJobTarget** ](/powershell/module/elasticdatabasejobs/new-azuresqljobtarget) rutiny. Nastavte parametry pro skript, přihlašovací údaje a cíl spuštění:
 
     $jobName = "{Job Name}"
     $scriptName = "{Script Name}"
@@ -536,8 +540,8 @@ Tento skript používá [ **Get-AzureSqlJobTarget** ](/powershell/module/elastic
     $destinationTableName = "{Destination Table Name}"
     $target = Get-AzureSqlJobTarget -CustomCollectionName $customCollectionName
 
-### <a name="to-create-and-start-a-job-for-data-collection-scenarios"></a>Vytvoření a spuštění úlohy scénáře kolekce dat
-Tento skript používá [ **Start-AzureSqlJobExecution** ](/powershell/module/elasticdatabasejobs/start-azuresqljobexecution) rutiny.
+### <a name="to-create-and-start-a-job-for-data-collection-scenarios"></a>Vytvoření a spuštění úlohy pro scénáře shromažďování dat
+Tento skript používá [ **Start AzureSqlJobExecution** ](/powershell/module/elasticdatabasejobs/start-azuresqljobexecution) rutiny.
 
     $job = New-AzureSqlJob -JobName $jobName 
     -CredentialName $executionCredentialName 
@@ -552,8 +556,8 @@ Tento skript používá [ **Start-AzureSqlJobExecution** ](/powershell/module/el
     $jobExecution = Start-AzureSqlJobExecution -JobName $jobName
     Write-Output $jobExecution
 
-## <a name="to-schedule-a-job-execution-trigger"></a>Při plánování provádění aktivační události úlohy
-Následující skript prostředí PowerShell můžete použít k vytvoření plánu opakování. Tento skript používá intervalu minutu, ale [ **New-AzureSqlJobSchedule** ](/powershell/module/elasticdatabasejobs/new-azuresqljobschedule) také podporuje – DayInterval, - HourInterval, - MonthInterval a - WeekInterval parametry. Plány, které jsou spouštěny pouze jednou lze vytvořit pomocí předávání - jednorázově.
+## <a name="to-schedule-a-job-execution-trigger"></a>Naplánování spuštění aktivační události úlohy
+Následující skript prostředí PowerShell slouží k vytvoření plánu opakování. Tento skript používá minutovém intervalu, ale [ **New-AzureSqlJobSchedule** ](/powershell/module/elasticdatabasejobs/new-azuresqljobschedule) také podporuje parametry - DayInterval, - HourInterval, - MonthInterval a - WeekInterval. Je možné vytvořit plány, které jsou spouštěny pouze jednou za předávání - jednorázové.
 
 Vytvoření nového plánu:
 
@@ -567,7 +571,7 @@ Vytvoření nového plánu:
     Write-Output $schedule
 
 ### <a name="to-trigger-a-job-executed-on-a-time-schedule"></a>K aktivaci provést podle časového plánu úlohy
-Aktivační události úlohy lze definovat za účelem mít úlohu provést podle časového plánu. Následující skript prostředí PowerShell slouží k vytvoření aktivační události úlohy.
+Aktivační události úlohy je možné definovat tak mít úlohu provést podle časového plánu. Následující skript prostředí PowerShell slouží k vytvoření aktivační události úlohy.
 
 Použití [New-AzureSqlJobTrigger](/powershell/module/elasticdatabasejobs/new-azuresqljobtrigger) a nastavte následující proměnné tak, aby odpovídaly požadované úlohy a plán:
 
@@ -578,8 +582,8 @@ Použití [New-AzureSqlJobTrigger](/powershell/module/elasticdatabasejobs/new-az
     -JobName $jobName
     Write-Output $jobTrigger
 
-### <a name="to-remove-a-scheduled-association-to-stop-job-from-executing-on-schedule"></a>Odebrání naplánované přidružení o zastavení úlohy ve spouštění podle plánu.
-Odebrání ze opakovaném provádění úlohy prostřednictvím aktivační události úlohy, můžete odebrat aktivační události úlohy. Odebrat aktivační události úlohy zastavení úlohy z se spouští podle plánu pomocí [ **rutinu Remove-AzureSqlJobTrigger**](/powershell/module/elasticdatabasejobs/remove-azuresqljobtrigger).
+### <a name="to-remove-a-scheduled-association-to-stop-job-from-executing-on-schedule"></a>Chcete-li odebrat naplánované přidružení o zastavení úlohy spuštění podle plánu
+Přestat opakované úlohy spuštění pomocí aktivační události úlohy, je možné odebrat aktivační událost úlohy. Odebrání aktivační procedury úlohy zastavení úlohy z podle plánu pomocí provádí [ **rutiny Remove-AzureSqlJobTrigger**](/powershell/module/elasticdatabasejobs/remove-azuresqljobtrigger).
 
     $jobName = "{Job Name}"
     $scheduleName = "{Schedule Name}"
@@ -587,38 +591,38 @@ Odebrání ze opakovaném provádění úlohy prostřednictvím aktivační udá
     -ScheduleName $scheduleName 
     -JobName $jobName
 
-### <a name="retrieve-job-triggers-bound-to-a-time-schedule"></a>Načíst aktivační události úlohy vázána na časového plánu
-Následující skript prostředí PowerShell slouží k získání a zobrazení aktivačních událostí úlohy registrované na konkrétní časového plánu.
+### <a name="retrieve-job-triggers-bound-to-a-time-schedule"></a>Načtení aktivační události úlohy vázán na časový plán
+Následující skript prostředí PowerShell slouží k získání a zobrazení úloh aktivačních událostí zaregistrované u konkrétního časového plánu.
 
     $scheduleName = "{Schedule Name}"
     $jobTriggers = Get-AzureSqlJobTrigger -ScheduleName $scheduleName
     Write-Output $jobTriggers
 
-### <a name="to-retrieve-job-triggers-bound-to-a-job"></a>Načíst aktivační události úlohy vázána na úlohu
-Použití [Get-AzureSqlJobTrigger](/powershell/module/elasticdatabasejobs/get-azuresqljobtrigger) můžete získat a zobrazit plány obsahující úlohu registrované.
+### <a name="to-retrieve-job-triggers-bound-to-a-job"></a>Načtení aktivační události úlohy vázán na úlohu
+Použití [Get-AzureSqlJobTrigger](/powershell/module/elasticdatabasejobs/get-azuresqljobtrigger) můžete získat a zobrazit plány obsahující úlohu registrovaný.
 
     $jobName = "{Job Name}"
     $jobTriggers = Get-AzureSqlJobTrigger -JobName $jobName
     Write-Output $jobTriggers
 
-## <a name="to-create-a-data-tier-application-dacpac-for-execution-across-databases"></a>Vytvořit aplikace na datové vrstvě (DACPAC) pro spuštění v rámci databáze
-Vytvoření DACPAC naleznete v tématu [aplikace datové vrstvy](https://msdn.microsoft.com/library/ee210546.aspx). Chcete-li nasadit DACPAC, použijte [rutiny New-AzureSqlJobContent](/powershell/module/elasticdatabasejobs/new-azuresqljobcontent). DACPAC musí být přístupný pro službu. Doporučuje se nahrát vytvořený DACPAC do služby Azure Storage a vytvoření [sdíleného přístupového podpisu](../storage/common/storage-dotnet-shared-access-signature-part-1.md) pro DACPAC.
+## <a name="to-create-a-data-tier-application-dacpac-for-execution-across-databases"></a>Vytvoření aplikace datové vrstvy (DACPAC) pro spuštění napříč databázemi
+Vytvoření DACPAC najdete v tématu [aplikace datové vrstvy](https://msdn.microsoft.com/library/ee210546.aspx). Chcete-li nasadit DACPAC, použijte [rutiny New-AzureSqlJobContent](/powershell/module/elasticdatabasejobs/new-azuresqljobcontent). DACPAC musí být přístupná pro službu. Doporučuje se nahrání vytvořený balíčku DACPAC do služby Azure Storage a vytvoření [sdílený přístupový podpis](../storage/common/storage-dotnet-shared-access-signature-part-1.md) pro DACPAC.
 
     $dacpacUri = "{Uri}"
     $dacpacName = "{Dacpac Name}"
     $dacpac = New-AzureSqlJobContent -DacpacUri $dacpacUri -ContentName $dacpacName 
     Write-Output $dacpac
 
-### <a name="to-update-a-data-tier-application-dacpac-for-execution-across-databases"></a>Aktualizace aplikace na datové vrstvě (DACPAC) pro provedení mezi databázemi
-Existující DACPACs zaregistrován v rámci úlohy elastické databáze můžete aktualizovat tak, aby odkazoval na nový identifikátory URI. Použití [ **rutiny Set-AzureSqlJobContentDefinition** ](/powershell/module/elasticdatabasejobs/set-azuresqljobcontentdefinition) aktualizovat identifikátor URI DACPAC na existujícím zaregistrován DACPAC:
+### <a name="to-update-a-data-tier-application-dacpac-for-execution-across-databases"></a>Aktualizace aplikace datové vrstvy (DACPAC) pro spuštění napříč databázemi
+Existující DACPACs zaregistrován v rámci úlohy Elastic Database můžete aktualizovat tak, aby odkazoval na nové identifikátory URI. Použití [ **rutiny Set-AzureSqlJobContentDefinition** ](/powershell/module/elasticdatabasejobs/set-azuresqljobcontentdefinition) aktualizace identifikátoru URI balíčku DACPAC do stávajícího zaregistrovaný DACPAC:
 
     $dacpacName = "{Dacpac Name}"
     $newDacpacUri = "{Uri}"
     $updatedDacpac = Set-AzureSqlJobDacpacDefinition -ContentName $dacpacName -DacpacUri $newDacpacUri
     Write-Output $updatedDacpac
 
-## <a name="to-create-a-job-to-apply-a-data-tier-application-dacpac-across-databases"></a>Chcete-li vytvořit úlohu použít aplikaci na datové vrstvě (DACPAC) mezi databázemi
-Po vytvoření DACPAC v rámci úlohy elastické databáze, lze vytvořit úlohu pro použití DACPAC napříč skupinou databází. Následující skript prostředí PowerShell slouží k vytvoření úlohy DACPAC v kolekci vlastních databází:
+## <a name="to-create-a-job-to-apply-a-data-tier-application-dacpac-across-databases"></a>Vytvořte úlohu chcete-li použít aplikace datové vrstvy (DACPAC) napříč databázemi
+Po vytvoření DACPAC v rámci úlohy Elastic Database můžete používat DACPAC napříč skupinou databází vytvořen projektu. Následující skript prostředí PowerShell slouží k vytvoření balíčku DACPAC úlohy v kolekci vlastních databází:
 
     $jobName = "{Job Name}"
     $dacpacName = "{Dacpac Name}"

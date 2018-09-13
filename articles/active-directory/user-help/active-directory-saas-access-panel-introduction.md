@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.component: user-help
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/11/18
+ms.date: 09/11/2018
 ms.author: lizross
 ms.reviewer: asteen
-ms.openlocfilehash: 2e74e45761a2f21c522f80d453da48948e17de58
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 1caf69ee822ec11e8797ca23c9c163d36344edc7
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347746"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719983"
 ---
 # <a name="what-is-the-myapps-portal"></a>Co je na portálu MyApps?
 
@@ -200,7 +200,7 @@ Například pokud aplikace je nakonfigurovaná k ověřování uživatelů pomoc
 
 ## <a name="next-steps"></a>Další postup
 
-- Chcete-li zobrazit seznam všech témat, které se vztahují ke správě aplikací, najdete v článku [Rejstřík článků o správě aplikací ve službě Azure Active Directory](../active-directory-apps-index.md).
+- Další informace o správě aplikací, najdete v článku [Správa aplikací v Azure Active Directory](../manage-apps/what-is-application-management.md).
  
 - Zjistěte, jak integrovat aplikace SaaS s Azure AD, najdete v článku [seznam kurzů o integraci aplikací SaaS](../saas-apps/tutorial-list.md).
  

@@ -9,12 +9,12 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 06/11/2018
 ms.author: panosper
-ms.openlocfilehash: 4e08abedf9b60f229865bf935d50443782bd928c
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 330acf3e1258951f0129a1ba47f03c5140c30adf
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44024461"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719048"
 ---
 # <a name="text-to-speech-frequently-asked-questions"></a>Převod textu na řeč – nejčastější dotazy
 
@@ -55,6 +55,10 @@ Zajišťuje další služby, které vám pomohou připravit skripty pro záznam.
 **Dotaz: lze stáhnout Moje modelu a spustit místně?**
 
 **A**: modely nelze stáhnout a spustit místně.
+
+**Otázka: jsou moje žádosti o omezený?**
+
+**A**: rozhraní REST API omezuje požadavky na 25 na 5 sekund. Podrobnosti najdete na naší stránce pro [převod textu na řeč](text-to-speech.md). 
 
 ## <a name="next-steps"></a>Další postup
 

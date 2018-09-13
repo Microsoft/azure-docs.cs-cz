@@ -1,6 +1,6 @@
 ---
-title: Aplikace Azure přehled Telemetrie datový Model - trasování Telemetrie | Microsoft Docs
-description: Application Insights datový model pro trasování telemetrie
+title: Azure Application Insights Telemetrie datový Model - telemetrická data trasování | Dokumentace Microsoftu
+description: Application Insights datový model pro trasovacího telemetrii
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -9,28 +9,30 @@ ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/25/2017
-ms.author: mbullwin; sergkanz
-ms.openlocfilehash: d93ed9f292b6c05d0a3fb3202567f4024f62e35e
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.reviewer: sergkanz
+ms.author: mbullwin
+ms.openlocfilehash: 2487df93baec80c0e4f7741aa7b052ac89459b3b
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35643208"
 ---
-# <a name="trace-telemetry-application-insights-data-model"></a>Trasování telemetrie: Application Insights datový model
+# <a name="trace-telemetry-application-insights-data-model"></a>Telemetrie trasování: datový model Application Insights
 
-Trasování telemetrie (v [Application Insights](app-insights-overview.md)) představuje `printf` styl příkazy trasování, které jsou prohledávat text. `Log4Net`, `NLog`, a další položky založený na textu protokolu jsou převedeny do instance tohoto typu. Trasování nemá měření jako rozšíření.
+Telemetrie trasování (v [Application Insights](app-insights-overview.md)) představuje `printf` stylu příkazy trasování, které jsou prohledávány text. `Log4Net`, `NLog`, a další položky založený na textu protokolu jsou přeloženy do instance tohoto typu. Trasování nemá měření jako rozšiřitelnosti.
 
 ## <a name="message"></a>Zpráva
 
-Zpráva trasování.
+Trasovací zprávy.
 
 Maximální délka: 32768 znaků
 
 ## <a name="severity-level"></a>Úroveň závažnosti
 
-Úroveň závažnosti trasování. Hodnota může být `Verbose`, `Information`, `Warning`, `Error`, `Critical`.
+Trasujte úroveň závažnosti. Hodnota může být `Verbose`, `Information`, `Warning`, `Error`, `Critical`.
 
 ## <a name="custom-properties"></a>Vlastní vlastnosti
 
@@ -39,7 +41,7 @@ Maximální délka: 32768 znaků
 ## <a name="next-steps"></a>Další postup
 
 - [Prozkoumejte protokoly trasování .NET ve službě Application Insights](app-insights-asp-net-trace-logs.md).
-- [Prozkoumejte Java protokolů trasování ve službě Application Insights](app-insights-java-trace-logs.md).
-- V tématu [datový model](application-insights-data-model.md) Application Insights typy a data modelu.
-- [Psát vlastní trasování telemetrii](app-insights-api-custom-events-metrics.md#tracktrace)
-- Podívejte se na [platformy](app-insights-platforms.md) nepodporuje Application Insights.
+- [Prozkoumejte protokoly trasování v Application Insights Java](app-insights-java-trace-logs.md).
+- Zobrazit [datový model](application-insights-data-model.md) pro typy a datový model Application Insights.
+- [Napište vlastní trasovací telemetrii](app-insights-api-custom-events-metrics.md#tracktrace)
+- Podívejte se na [platformy](app-insights-platforms.md) podporované službou Application Insights.

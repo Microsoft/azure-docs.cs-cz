@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 88a6e1a66390b2b317e1e30a71455ad693e6d7df
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 70af437fb7baa461b63430747cf5252be3503c0e
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39264650"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44714781"
 ---
 # <a name="designing-globally-available-services-using-azure-sql-database"></a>Navrhování globálně dostupné služby využívající Azure SQL Database
 
@@ -160,4 +160,4 @@ Strategie zotavení po havárii konkrétní cloud můžete kombinovat nebo rozš
 ## <a name="next-steps"></a>Další postup
 * Přehled zajištění provozní kontinuity podnikání a scénáře, naleznete v tématu [přehled zajištění provozní kontinuity firmy](sql-database-business-continuity.md)
 * Další informace o skupinách geografickou replikaci a převzetí služeb při selhání najdete v tématu [aktivní geografické replikace](sql-database-geo-replication-overview.md)  
-* Informace o aktivní geografickou replikaci s Elastickými fondy najdete v tématu [strategie zotavení po havárii Elastických fondů](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).
+* Informace o aktivní geografickou replikaci s elastickými fondy najdete v tématu [strategie zotavení po havárii Elastických fondů](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).

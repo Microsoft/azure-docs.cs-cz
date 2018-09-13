@@ -1,5 +1,5 @@
 ---
-title: Nainstalovat a používat rozhraní příkazového řádku pro nejdůležitější úkoly - Azure Machine Learning
+title: Nainstalovat a používat rozhraní příkazového řádku pro hlavní úlohy – Azure Machine Learning
 description: Zjistěte, jak nainstalovat a používat rozhraní příkazového řádku pro nejběžnější strojového učení úlohy v Azure Machine Learning.
 services: machine-learning
 author: haining
@@ -7,101 +7,101 @@ ms.author: haining
 manager: cgronlun
 ms.reviewer: mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/10/2018
-ms.openlocfilehash: 4b6ed5c70201b918a5bfa252719b2673303b38e9
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 0e37e1839d2248507a30de08e2ac4c975bd3b859
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34830856"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35643066"
 ---
-# <a name="install-and-use-the-machine-learning-cli-for-top-tasks-in-azure-machine-learning"></a>Nainstalovat a používat strojového učení rozhraní příkazového řádku pro nejdůležitější úkoly v Azure Machine Learning
+# <a name="install-and-use-the-machine-learning-cli-for-top-tasks-in-azure-machine-learning"></a>Instalace a používání strojového učení rozhraní příkazového řádku pro nejdůležitější úkoly v Azure Machine Learning
 
-Služby Azure Machine Learning se vědecké zpracování dat integrované, začátku do konce a pokročilé analýzy řešení. Professional datových vědců slouží služby Azure Machine Learning k přípravě dat, vývoj experimenty a nasazovat modely v cloudovém měřítku. 
+Služby Azure Machine Learning se začátku do konce, integrované datové vědy a pokročilé řešení pro analýzu. Profesionální datové vědce slouží k přípravě dat, vývoji experimentů a nasazování modelů na úrovni cloudu služby Azure Machine Learning. 
 
-Azure Machine Learning nabízí rozhraní příkazového řádku (CLI), pomocí které můžete:
-+ Správa prostoru a projektů
-+ Nastavit výpočetní cíle
-+ Spustit experimenty školení
-+ Zobrazení historie a metriky pro posledních běží
-+ Modely nasazení do provozu jako webové služby
-+ Správa modelů produkční a služby
+Azure Machine Learning nabízí rozhraní příkazového řádku (CLI), pomocí kterých lze:
++ Správa pracovních prostorů a projektů
++ Nastavení cílových výpočetních prostředí
++ Spouštět experimenty školení
++ Zobrazení historie a metriky pro poslední spuštění
++ Nasadit modely do produkce jako webové služby
++ Správa modelů v produkčním prostředí a služeb
 
-Tento článek představuje některé velmi užitečné příkazy rozhraní příkazového řádku pro usnadnění vaší práce. 
+Tento článek představuje několik nejužitečnější příkazů rozhraní příkazového řádku pro vaše pohodlí. 
 
 ![Azure Machine Learning rozhraní příkazového řádku](media/cli-for-azure-machine-learning/flow.png)
 
 ## <a name="what-you-need-to-get-started"></a>Co potřebujete, abyste mohli začít
 
-Je nutné použít přispěvatele předplatné Azure nebo skupinu prostředků, kde můžete nasadit modely. Navíc musíte nainstalovat Azure Machine Learning Workbench, aby bylo možné spustit rozhraní příkazového řádku. 
+Potřebujete přístup přispěvatele k předplatnému Azure nebo skupinu prostředků, kde můžete nasadit modely. Potřebujete také nainstalovat aplikaci Azure Machine Learning Workbench, aby spusťte rozhraní příkazového řádku. 
 
 >[!IMPORTANT]
->Rozhraní příkazového řádku doručit službou Azure Machine Learning se liší od [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest), který se používá ke správě prostředků Azure.
+>Rozhraní příkazového řádku dodávají s Azure Machine Learning services se liší od [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest), který se používá pro správu prostředků Azure.
 
-## <a name="get-and-start-cli"></a>Získat a spustit rozhraní příkazového řádku
+## <a name="get-and-start-cli"></a>Získání a spuštění rozhraní příkazového řádku
 
-Toto rozhraní příkazového řádku získáte nainstalujte Azure Machine Learning Workbench, který lze stáhnout z tohoto umístění:
+Toto rozhraní příkazového řádku získáte nainstalujte aplikaci Azure Machine Learning Workbench, můžete stáhnout tady:
     + Windows – https://aka.ms/azureml-wb-msi 
     + MacOS - https://aka.ms/azureml-wb-dmg 
 
 Spuštění rozhraní příkazového řádku:
-+ V nástroji Azure Machine Learning Workbench, spusťte rozhraní příkazového řádku z nabídky **souboru -> spusťte příkazový řádek.**
++ V aplikaci Azure Machine Learning Workbench, spusťte rozhraní příkazového řádku z nabídky **soubor -> otevřít příkazový řádek.**
 
-## <a name="get-command-help"></a>Získat nápovědu k příkazu 
+## <a name="get-command-help"></a>Získání nápovědy k příkazům 
 
-Můžete získat další informace o rozhraní příkazového řádku pomocí `--debug` nebo `--help` po příkazech, jako třeba `az ml <xyz> --debug` kde `<xyz>` je název příkazu. Příklad:
+Můžete získat další informace o příkazech rozhraní příkazového řádku pomocí `--debug` nebo `--help` po příkazech, jako například `az ml <xyz> --debug` kde `<xyz>` je název příkazu. Příklad:
 ```azurecli
 az ml computetarget --debug 
 
 az ml experiment --help
 ```
 
-## <a name="common-cli-tasks-for-azure-machine-learning"></a>Běžné úlohy rozhraní příkazového řádku pro Azure Machine Learning 
+## <a name="common-cli-tasks-for-azure-machine-learning"></a>Běžné úlohy rozhraní příkazového řádku pro službu Azure Machine Learning 
 
-Další informace o běžné úkoly, je možné provádět pomocí rozhraní příkazového řádku v této části, včetně:
-+ [Nastavení výpočetní cíle](#target)
-+ [Odeslání úlohy pro vzdálené spuštění](#jobs)
+Další informace o nejběžnějších úlohách můžete provádět pomocí rozhraní příkazového řádku v této části, včetně:
++ [Nastavení cílových výpočetních prostředí](#target)
++ [Odesílání úloh pro vzdálené spuštění](#jobs)
 + [Práce s poznámkovými bloky Jupyter](#jupyter)
-+ [Interakci s historií spuštění](#history)
-+ [Konfigurace prostředí pro zprovoznění](#o16n)
++ [Interakce s historie spuštění](#history)
++ [Konfigurace prostředí na zprovoznění](#o16n)
 
 <a name="target"></a>
 
-### <a name="set-up-a-compute-target"></a>Nastavit výpočetní cíl
+### <a name="set-up-a-compute-target"></a>Nastavení cílové výpočetní prostředí
 
-Můžete vypočítat vaší strojového učení modelu v různé cíle, včetně:
+Můžete vypočítat váš model strojového učení v různých cílů, včetně:
 + v místním režimu
-+ v vědecké zpracování dat virtuálních počítačů (DSVM)
-+ v clusteru HDInsight
++ ve virtuálním počítači (DSVM) pro datové vědy
++ v clusteru služby HDInsight
 
-Připojit cílové vědecké účely dat virtuálních počítačů:
+Připojit cílové virtuální počítač pro datové vědy:
 ```azurecli
 az ml computetarget attach remotedocker -n <target name> -a <ip address or FQDN> -u <username> -w <password>
 ``` 
 
-Pro připojení cílové HDInsight:
+Připojit cílové HDInsight:
 ```azurecli
 az ml computetarget attach cluster -n <target name> -a <cluster name, e.g. myhdicluster-ssh.azurehdinsight.net> -u <ssh username> -w <ssh password>
 ```
 
-V rámci **aml_config** složky, můžete změnit conda závislosti. 
+V rámci **aml_config** složky, můžete změnit závislosti systému conda. 
 
 Navíc můžete pracovat s PySpark, Python nebo Python v GPU DSVM. 
 
-Chcete-li definovat Python operační režim:
+Chcete-li definovat režim operace Pythonu:
 + Pro Python, přidejte `Framework:Python` v `<target name>.runconfig` 
 
 + PySpark, přidejte `Framework:PySpark` v `<target name>.runconfig` 
 
-+ Pro jazyk Python v DSVM GPU
++ Pro jazyk Python v GPU DSVM,
     1. Přidat `Framework:Python` v `<target name>.runconfig` 
 
-    1. Navíc přidat `baseDockerImage: microsoft/mmlspark:plus-gpu-0.9.9 and nvidiaDocker:true` v `<target name>.compute`
+    1. Přidejte také `baseDockerImage: microsoft/mmlspark:plus-gpu-0.9.9 and nvidiaDocker:true` v `<target name>.compute`
 
-Příprava cílového výpočetní:
+Příprava cílového výpočetního prostředí:
 ```azurecli
 az ml experiment prepare -c <target name>
 ```
@@ -110,14 +110,14 @@ az ml experiment prepare -c <target name>
 >Chcete-li zobrazit vaše předplatné:<br/>
 >`az account show`<br/>
 >
->Chcete-li nastavit vaše předplatné:<br/>
+>Nastavení předplatného:<br/>
 >`az account set –s "my subscription name" `
 
 <a name="jobs"></a>
 
-### <a name="submit-remote-jobs"></a>Odesílání vzdálené úloh
+### <a name="submit-remote-jobs"></a>Odesílat vzdálené úlohy
 
-Se odeslat úlohu na vzdálený cíl:
+Odeslání úlohy pro vzdálený cíl:
 ```azurecli
 az ml experiment submit -c <target name> myscript.py
 ```
@@ -126,69 +126,69 @@ az ml experiment submit -c <target name> myscript.py
 
 ### <a name="work-with-jupyter-notebooks"></a>Práce s poznámkovými bloky Jupyter
 
-Spuštění poznámkového bloku Jupyter:
+Chcete-li spustit Poznámkový blok Jupyter:
 ```azurecli
 az ml notebook start
 ```
 
-Tento příkaz spustí poznámkového bloku Jupyter v localhost. Můžete pracovat na místní výběrem jádra Python 3, nebo ve vzdálené virtuálního počítače fungovat tak, že vyberete jádra `<target name>`.
+Tento příkaz spustí Poznámkový blok Jupyter v místním hostiteli. Můžete pracovat v místní tak, že vyberete jádra Python 3, nebo ve vzdáleném virtuálním počítači fungovat tak, že vyberete jádra `<target name>`.
 
 <a name="history"></a>
 
-### <a name="interact-with-and-explore-the-run-history"></a>Komunikovat s a seznamte se s historie spouštění
+### <a name="interact-with-and-explore-the-run-history"></a>Pracovat a prozkoumejte historii spuštění
 
-Do seznamu historie spouštění:
+Do seznamu historie spuštění:
 ```azurecli
 az ml history list -o table
 ```
 
-Seznam všech dokončil spustí:
+Chcete-li vypsat všechny dokončené běhy:
 ```azurecli
 az ml history list --query "[?status=='Completed']" -o table
 ```
 
-Najít spustí s nejsprávnější výsledky:
+K vyhledání spuštění s největší přesností:
 ```azurecli
 az ml history list --query "@[?Accuracy != null] | max_by(@, &Accuracy).Accuracy"
 ```
 
-Můžete také stáhnout soubory generované každé spuštění. 
+Můžete také stáhnout soubory generované záznamem pro každé spuštění. 
 
-Podporovat model, který je uložen v výstupy složky:
+Podporovat model, který je uložen ve složce výstupy:
 ```azurecli
 az ml history promote -r <run id> -ap outputs/model.pkl -n <model name>
 ```
 
-Stažení tohoto modelu:
+Chcete-li stáhnout tento model:
 ```azurecli
 az ml asset download -l assets/model.pkl.link -d <model folder path>
 ```
 
 <a name="o16n"></a>
 
-### <a name="configure-your-environment-to-operationalize"></a>Konfigurace prostředí, aby zprovoznění
+### <a name="configure-your-environment-to-operationalize"></a>Nakonfigurujte své prostředí na zprovoznění
 
-Chcete-li nastavit svoje prostředí operationalization, musíte vytvořit:
+Chcete-li nastavení prostředí operacionalizace, musíte vytvořit:
 
 > [!div class="checklist"]
-> * Skupinu prostředků. 
-> * účet úložiště
-> * Azure kontejneru registru (ACR)
-> * Přehled účet aplikace
-> * Kubernetes nasazení v clusteru Azure Container Service (ACS)
+> * Skupinu prostředků 
+> * Účet úložiště
+> * Služby Azure Container Registry (ACR)
+> * Účet Application insight
+> * Nasazení Kubernetes v clusteru Azure Container Service (ACS)
 
 
-Nastavení pro testování v kontejner Docker místní nasazení:
+Nastavení místního nasazení pro testování v kontejneru Dockeru:
 ```azurecli
 az ml env setup -l <region, e.g. eastus2> -n <env name> -g <resource group name>
 ```
 
-Nastavení clusteru s Kubernetes služby ACS:
+Nastavení clusteru ACS s Kubernetes:
 ```azurecli
 az ml env setup -l <region, e.g. eastus2> -n <env name> -g <resource group name> --cluster
 ```
 
-Pokud chcete monitorovat stav nasazení:
+K monitorování stavu nasazení:
 ```azurecli
 az ml env show -n <environment name> -g <resource group name>
 ```
@@ -200,9 +200,9 @@ az ml env set -n <environment name> -g <resource group name>
 
 ## <a name="next-steps"></a>Další postup
 
-Začínáme s jedním z těchto článků: 
-+ [Instalace a spuštění pomocí Azure Machine Learning](../service/quickstart-installation.md)
-+ [Klasifikace dat Iris kurz: Část 1](tutorial-classifying-iris-part-1.md)
+Začněte s některou z těchto článků: 
++ [Nainstalovat a začít používat Azure Machine Learning](../service/quickstart-installation.md)
++ [Kurz klasifikace Iris dat: Část 1](tutorial-classifying-iris-part-1.md)
 
-Prozkoumat podrobněji s jedním z těchto článků:
-+ [Rozhraní příkazového řádku pro správu modelů](model-management-cli-reference.md)
+Podívejte se podrobněji s jedním z těchto článků:
++ [Příkazy rozhraní příkazového řádku pro správu modelů](model-management-cli-reference.md)

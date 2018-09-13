@@ -9,14 +9,14 @@ manager: craigg
 ms.custom: VNet Service endpoints
 ms.topic: conceptual
 ms.date: 08/28/2018
-ms.reviewer: carlrab
+ms.reviewer: vanto
 ms.author: dmalik
-ms.openlocfilehash: 38806b3dbf47b21885ef704cfec8be3c491a66a0
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: e1c05b56a1a7cc57b4d85d696df324438d916f11
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44055382"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44720716"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database-and-sql-data-warehouse"></a>Použití koncové body služeb virtuální sítě a pravidel pro Azure SQL Database a SQL Data Warehouse
 

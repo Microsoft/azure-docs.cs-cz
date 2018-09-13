@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 4dc88abda0f19896b8f1ed6465fe0fc39ac81b72
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: aad6aa788e9d7c7ca2c438bdeb63e77e91e4791a
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381232"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44714464"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>O technické profily v Azure Active Directory B2C vlastních zásad
 
@@ -37,7 +37,6 @@ Technický profil umožňuje tyto druhy scénářů:
 - [Poskytovatel RESTful](restful-technical-profile.md) – obohacení dat uživatele volání rozhraní REST API služby, jako je ověření vstupu uživatele, nebo integrovat – obchodní aplikace.
 - [SAML2](saml-technical-profile.md) -federace se službou jakýkoli poskytovatel identity protokolu SAML.
 - [Samoobslužné s prohlašovanou](self-asserted-technical-profile.md) -komunikovat s uživatelem. Například shromažďovat přihlašovací údaje uživatele k přihlášení, vykreslení na stránku pro přihlášení nebo resetování hesla.
-- [Token vystavitele](jwt-issuer-technical-profile.md) -vystavit přístupový token.
 - **WsFed** -federace se službou jakýkoli poskytovatel identity WsFed protokolu. 
 - **Správa relací** – zpracování různých typů relací. 
 - **Zprostředkovatel kontext cesty uživatele**

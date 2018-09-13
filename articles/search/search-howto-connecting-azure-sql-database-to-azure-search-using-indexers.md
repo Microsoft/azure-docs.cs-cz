@@ -1,6 +1,6 @@
 ---
-title: Připojení databáze Azure SQL do Azure Search pomocí indexerů | Microsoft Docs
-description: Naučte se načítat data z databáze SQL Azure do indexu Azure Search pomocí indexerů.
+title: Připojení k Azure Search pomocí indexerů Azure SQL Database | Dokumentace Microsoftu
+description: Zjistěte, jak načítat data z Azure SQL Database do indexu Azure Search pomocí indexerů.
 author: chaosrealm
 manager: jlembicz
 services: search
@@ -9,54 +9,55 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: eugenesh
-ms.openlocfilehash: 5545b2e40777496ab8c808a8c2692b346d3509c5
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 5897740a1b5a183738c08b4dfde571be652aff3e
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35644497"
 ---
 # <a name="connecting-azure-sql-database-to-azure-search-using-indexers"></a>Připojení k Azure Search pomocí indexerů Azure SQL Database
 
-Předtím, než se můžete dotazovat [indexu Azure Search](search-what-is-an-index.md), musí jeho naplnění vaše data. Pokud data žije v Azure SQL database, **indexer Azure Search pro databázi SQL Azure** (nebo **indexer Azure SQL** pro zkrácení) můžete automatizovat proces indexování, což znamená méně kódu k zápisu a méně infrastrukturu pro zajímají.
+Předtím, než můžete zadávat dotazy [index Azure Search](search-what-is-an-index.md), je nutné ho naplnit svými daty. Pokud se data nacházejí ve službě Azure SQL database **indexeru Azure Search pro službu Azure SQL Database** (nebo **indexer pro Azure SQL** zkráceně) můžete automatizovat proces indexování, což znamená, že menší kód pro zápis a méně Infrastruktura o kterého vám jde.
 
-Tento článek se zabývá mechanismů pomocí [indexery](search-indexer-overview.md), ale také popisuje funkce, které jsou k dispozici jenom s databází Azure SQL (například integrované sledování změn). 
+Tento článek se týká použití mechanismu [indexery](search-indexer-overview.md), ale také popisuje funkce, které jsou k dispozici pouze s databází Azure SQL (například integrované sledování změn). 
 
-Kromě databází Azure SQL, Azure Search nabízí indexery pro [Azure Cosmos DB](search-howto-index-cosmosdb.md), [úložiště objektů Azure Blob](search-howto-indexing-azure-blob-storage.md), a [úložiště tabulek Azure](search-howto-indexing-azure-tables.md). Chcete-li požádat o podporu pro další datové zdroje, zadejte svůj názor na [fóru pro zpětnou vazbu Azure Search](https://feedback.azure.com/forums/263029-azure-search/).
+Kromě databází Azure SQL, Azure Search poskytuje indexery pro [služby Azure Cosmos DB](search-howto-index-cosmosdb.md), [úložiště objektů Blob v Azure](search-howto-indexing-azure-blob-storage.md), a [úložiště tabulek v Azure](search-howto-indexing-azure-tables.md). Chcete-li požádat o podporu u jiných zdrojů dat, poskytněte zpětnou vazbu na [fóru pro zpětnou vazbu Azure Search](https://feedback.azure.com/forums/263029-azure-search/).
 
 ## <a name="indexers-and-data-sources"></a>Indexery a zdroje dat.
 
-A **zdroj dat** Určuje, která data do indexu, přihlašovací údaje pro přístup k datům a zásady, které efektivně identifikovat změny v datech (nové, modified nebo deleted řádky). Je definována jako prostředek nezávisle tak, aby ji můžete použít několik indexerů.
+A **zdroj dat** Určuje, jaká data do indexu, přihlašovací údaje pro přístup k datům a zásady, které efektivně identifikovat změny v datech (nové, změněné nebo odstraněné řádky). Jako nezávislý prostředek je definován tak, aby ho můžete použít několik indexerů.
 
-**Indexer** je na prostředek, který připojí jeden zdroj dat s indexem cílové vyhledávání. Indexer se používá následujícími způsoby:
+**Indexer** je prostředek, který připojí jeden zdroj dat s cílovou vyhledávací index. Indexer je používán následujícími způsoby:
 
 * Proveďte jednorázové kopii dat k naplnění indexu.
-* Aktualizujte index změnami ve zdroji dat podle plánu.
-* Spusťte na vyžádání se aktualizovat index podle potřeby.
+* Aktualizace indexu se změnami ve zdroji dat podle plánu.
+* Spouštět na vyžádání na aktualizace indexu, podle potřeby.
 
-Jeden indexeru můžete využívat pouze jednu tabulku nebo zobrazení, ale můžete vytvořit několik indexerů, pokud chcete k naplnění více indexů vyhledávání. Další informace o konceptech najdete v tématu [Indexer Operations: obvyklý pracovní postup](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations#typical-workflow).
+Jeden indexer může využívat pouze jednu tabulku nebo zobrazení, ale pokud chcete naplnit pole více vyhledávacích indexů, můžete vytvořit několik indexerů. Další informace o konceptech najdete v tématu [operace indexeru: obvyklý pracovní postup](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations#typical-workflow).
 
 Můžete nastavit a nakonfigurovat indexer Azure SQL pomocí:
 
-* Průvodce importem dat v [portálu Azure](https://portal.azure.com)
+* Průvodce importem dat v [webu Azure portal](https://portal.azure.com)
 * Služba Azure Search [sady .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
 * Služba Azure Search [rozhraní REST API](https://docs.microsoft.com/rest/api/searchservice/indexer-operations)
 
-V tomto článku pomocí REST API pro vytvoření **indexery** a **zdroje dat**.
+V tomto článku jsme pomocí rozhraní REST API vytvoříte **indexery** a **zdroje dat**.
 
-## <a name="when-to-use-azure-sql-indexer"></a>Kdy použít Azure SQL Indexer
-V závislosti na několika různými faktory týkající se dat používání Azure SQL indexer může nebo nemusí být vhodné. Pokud vaše data splňuje následující požadavky, můžete použít indexer Azure SQL.
+## <a name="when-to-use-azure-sql-indexer"></a>Kdy použít Indexer pro Azure SQL
+V závislosti na několika různými faktory týkající se vašich dat použijte indexer pro Azure SQL může nebo nemusí být vhodné. Pokud se vaše data vejde následující požadavky, můžete použít indexer pro Azure SQL.
 
 | Kritéria | Podrobnosti |
 |----------|---------|
-| Data pocházejí z jedné tabulky nebo zobrazení | Pokud data je rozmístěny na několika tabulkám, můžete vytvořit jediné zobrazení data. Ale pokud používáte zobrazení, nebudete moci používat SQL Server integrovaného detekce změn aktualizovat index s přírůstkové změny položku. Další informace najdete v tématu [zaznamenávání změnit a odstranit řádky](#CaptureChangedRows) níže. |
-| Datové typy jsou kompatibilní | Většina, ale ne všechny typy SQL jsou podporovány v indexu Azure Search. Seznam najdete v tématu [mapování datové typy](#TypeMapping). |
-| Synchronizace dat v reálném čase není vyžadováno | Indexer můžete přeindexování tabulku maximálně každých pět minut. Pokud potřebujete projeví v indexu během několika sekund nebo minut jeden data často mění a změny, doporučujeme používat [REST API](https://docs.microsoft.com/rest/api/searchservice/AddUpdate-or-Delete-Documents) nebo [.NET SDK](search-import-data-dotnet.md) tak, aby nabízel aktualizované řádky přímo. |
-| Přírůstkové indexování je možné | Pokud máte velké sady dat a plán spuštění indexeru podle plánu, musí být schopni efektivně identifikovat nové, změněné nebo odstraněné řádky Azure Search. Bez přírůstkové indexování je povoleno pouze pokud jste indexu na vyžádání (ne podle plánu), nebo indexování méně než 100 000 řádků. Další informace najdete v tématu [zaznamenávání změnit a odstranit řádky](#CaptureChangedRows) níže. |
+| Data pocházejí z jedné tabulky nebo zobrazení | Pokud data je rozmístěny napříč více tabulek, můžete vytvořit jedno zobrazení data. Ale pokud používáte zobrazení, nebude moct používat SQL Server integrovaného detekce změn aktualizovat index s přírůstkové změny. Další informace najdete v tématu [zachytávání změnit a odstranit řádky](#CaptureChangedRows) níže. |
+| Datové typy jsou kompatibilní | Většinu, ale ne všechny typy SQL jsou podporovány v indexu Azure Search. Seznam najdete v tématu [mapování datových typů](#TypeMapping). |
+| Synchronizace dat v reálném čase se nevyžaduje | Indexer můžete přeindexování tabulce maximálně každých pět minut. Pokud data často mění a změny se projeví v indexu během několika sekund nebo minut jeden, doporučujeme použít [rozhraní REST API](https://docs.microsoft.com/rest/api/searchservice/AddUpdate-or-Delete-Documents) nebo [sady .NET SDK](search-import-data-dotnet.md) aktualizované řádky vložit přímo. |
+| Přírůstkové indexování je možné | Pokud máte velké sady dat a chcete indexer spouštět podle plánu, musí být schopen efektivně identifikovat nové, změněné nebo odstraněné řádky Azure Search. Non-incremental indexování se povoluje jenom Pokud indexování na vyžádání (ne podle plánu), nebo indexování méně než 100 000 řádků. Další informace najdete v tématu [zachytávání změnit a odstranit řádky](#CaptureChangedRows) níže. |
 
 > [!NOTE] 
-> Vyhledávání systému Azure se podporuje jenom ověřování systému SQL Server. Pokud budete potřebovat podporu pro ověřování Azure Active Directory hesla, hlasovat prosím pro tento [UserVoice návrhu](https://feedback.azure.com/forums/263029-azure-search/suggestions/33595465-support-azure-active-directory-password-authentica).
+> Služba Azure Search podporuje jenom ověřování systému SQL Server. Pokud potřebujete podporu pro ověřování Azure Active Directory hesla, prosím hlasovat pro tuto [návrhu UserVoice](https://feedback.azure.com/forums/263029-azure-search/suggestions/33595465-support-azure-active-directory-password-authentica).
 
-## <a name="create-an-azure-sql-indexer"></a>Vytvořením indexeru. Azure SQL
+## <a name="create-an-azure-sql-indexer"></a>Vytvořit Indexer Azure SQL
 
 1. Vytvoření zdroje dat:
 
@@ -73,11 +74,11 @@ V závislosti na několika různými faktory týkající se dat používání Az
     }
    ```
 
-   Můžete získat připojovací řetězec z [portál Azure](https://portal.azure.com); použít `ADO.NET connection string` možnost.
+   Můžete získat připojovací řetězec z [webu Azure portal](https://portal.azure.com); použít `ADO.NET connection string` možnost.
 
-2. Pokud již nemáte, vytvořte cílový index Azure Search. Můžete vytvořit index pomocí [portál](https://portal.azure.com) nebo [vytvořit Index rozhraní API](https://docs.microsoft.com/rest/api/searchservice/Create-Index). Zkontrolujte, zda je schéma cílový index kompatibilní se schématem zdrojové tabulky – viz [mapování mezi SQL a služba Azure search datové typy](#TypeMapping).
+2. Pokud již nemáte, vytvořte cílový index Azure Search. Můžete vytvořit index pomocí [portál](https://portal.azure.com) nebo [vytvořit Index API](https://docs.microsoft.com/rest/api/searchservice/Create-Index). Ujistěte se, že schéma cílový index kompatibilní s schématu zdrojové tabulky – viz [mapování mezi SQL a službu Azure search datové typy](#TypeMapping).
 
-3. Vytvořte indexeru tak, že ho pojmenujete a odkazování na index zdrojové a cílové dat:
+3. Vytvoření indexeru tak, že ho pojmenujete a odkazuje na index zdroj a cíl dat:
 
     ```
     POST https://myservice.search.windows.net/indexers?api-version=2017-11-11
@@ -91,24 +92,24 @@ V závislosti na několika různými faktory týkající se dat používání Az
     }
     ```
 
-Indexer vytvořené v tomto případě nemá plán. Automaticky spustí, až když je vytvořena. Můžete ho spustit znovu v současně pomocí **spustit indexer** žádost:
+Indexer vytvořené v tomto případě nemá plán. Automaticky spustí, až když je vytvořena. Můžete ji spustit znovu kdykoliv **spustit indexer** žádosti:
 
     POST https://myservice.search.windows.net/indexers/myindexer/run?api-version=2017-11-11
     api-key: admin-key
 
-Můžete přizpůsobit několik aspektů indexer chování, například velikost dávky a kolik dokumentů mohou být přeskočeny, než se nezdaří spuštění indexeru. Další informace najdete v tématu [vytvoření rozhraní API Indexer](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer).
+Můžete přizpůsobit několik aspektů indexer chování, jako je například velikost dávky a kolik dokumentů mohou být přeskočeny, předtím, než se nezdaří spuštění indexeru. Další informace najdete v tématu [vytvořit Indexer API](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer).
 
-Budete muset povolit službám Azure připojit k vaší databázi. V tématu [připojení z Azure](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) pokyny o tom, jak to udělat.
+Budete muset povolit službám Azure pro připojení k vaší databázi. Zobrazit [připojení z Azure](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) pokyny, jak to provést.
 
-Ke sledování indexer stavu a provádění historii (počet položek indexed, selhání atd.), použijte **indexer stav** žádost:
+K monitorování indexer stavu a spouštění historie (počet položek indexovaných, chyby atd.), použijte **indexer stav** žádosti:
 
     GET https://myservice.search.windows.net/indexers/myindexer/status?api-version=2017-11-11
     api-key: admin-key
 
-Odpověď by měl vypadat takto:
+Odpověď by měl vypadat nějak takto:
 
     {
-        "@odata.context":"https://myservice.search.windows.net/$metadata#Microsoft.Azure.Search.V2015_02_28.IndexerExecutionInfo",
+        "\@odata.context":"https://myservice.search.windows.net/$metadata#Microsoft.Azure.Search.V2015_02_28.IndexerExecutionInfo",
         "status":"running",
         "lastResult": {
             "status":"success",
@@ -138,11 +139,11 @@ Odpověď by měl vypadat takto:
         ]
     }
 
-Historie provádění obsahuje až 50 nedávno provedených spuštěních, které jsou seřazeny v opačném chronologickém pořadí (tak, aby poslední spuštění bude první v odpovědi).
+Historie provádění obsahuje až 50 nedávno dokončené spuštění, které jsou seřazeny v opačném pořadí chronologickém (tak, aby poslední spuštění je dodávána první v odpovědi).
 Další informace o odpovědi můžete najít v [získání stavu indexeru](http://go.microsoft.com/fwlink/p/?LinkId=528198)
 
 ## <a name="run-indexers-on-a-schedule"></a>Indexery spouštět podle plánu
-Můžete také uspořádat indexeru pravidelně spouštět podle plánu. Chcete-li to provést, přidejte **plán** vlastnost při vytváření nebo aktualizaci indexeru. Následující příklad ukazuje požadavek PUT aktualizovat indexer:
+Můžete také uspořádat indexer pravidelné spouštění podle plánu. Chcete-li to provést, přidejte **plán** vlastnost při vytváření nebo aktualizaci indexeru. Následující příklad ukazuje požadavek PUT aktualizovat indexer:
 
     PUT https://myservice.search.windows.net/indexers/myindexer?api-version=2017-11-11
     Content-Type: application/json
@@ -154,23 +155,23 @@ Můžete také uspořádat indexeru pravidelně spouštět podle plánu. Chcete-
         "schedule" : { "interval" : "PT10M", "startTime" : "2015-01-01T00:00:00Z" }
     }
 
-**Interval** parametr je povinný. Interval odkazuje na čas mezi začátkem spuštěních dvě po sobě jdoucích indexer. Nejkratší povolený interval je 5 minut; nejdelší je jeden den. Musí být naformátovaná jako hodnota "hodnoty doby podle" XSD (omezená podmnožina [ISO 8601 trvání](http://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) hodnotu). Je tento vzor: `P(nD)(T(nH)(nM))`. Příklady: `PT15M` pro každých 15 minut, `PT2H` pro každé 2 hodiny.
+**Interval** parametr je povinný. Interval označuje čas mezi začátkem dvě po sobě jdoucích indexer spuštění. Nejkratší povolený interval je 5 minut; nejdelší sekvenci je za jeden den. Musí být naformátovaná jako hodnotu "dayTimeDuration" XSD (omezená podmnožina [ISO 8601 trvání](http://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) hodnota). Tento vzor je: `P(nD)(T(nH)(nM))`. Příklady: `PT15M` pro každých 15 minut `PT2H` pro každé dvě hodiny.
 
-Volitelné **startTime** Určuje, kdy by měla být zahájena naplánované spuštění. Pokud je vynechaný, použije se aktuální čas UTC. Tento čas může být v minulosti – naplánoval případ první spuštění jakoby indexeru je spuštěn nepřetržitě od čas spuštění.  
+Volitelný **startTime** označuje, kdy by měla začít naplánované spuštění. Pokud ji vynecháte, je použit aktuální čas UTC. Tento čas může být v minulosti – ve kterém případě dojde k prvnímu spuštění plánu jako v případě, že indexer je spuštěné nepřetržitě od má položka StartTime hodnotu.  
 
-Najednou můžete spustit pouze jeden spuštění indexeru. Pokud indexeru je spuštěn, když její spuštění je naplánováno, odloží se provádění, dokud dalším naplánovaném čase.
+Najednou lze spustit pouze jedno provedení indexeru. Pokud indexer je spuštěn, když je naplánováno spuštění, provádění se odložit, dokud dalším naplánovaném čase.
 
-Zvažte příklad udělat konkrétnější. Předpokládejme, že jsme následující hodinový plán nakonfigurovat:
+Zvažte následující příklad to lze provést konkrétnější. Předpokládejme, že jsme následující hodinový plán nakonfigurovali:
 
     "schedule" : { "interval" : "PT1H", "startTime" : "2015-03-01T00:00:00Z" }
 
 Stane se toto:
 
-1. První spuštění indexeru spustí na nebo přibližně 1. března 2015 12:00 v noci UTC.
-2. Předpokládejme, že spuštění tohoto trvá 20 minut (nebo kdykoli menší než 1 hodina).
-3. Druhý provádění spustí na nebo přibližně 1. března 2015 1:00 ráno
-4. Nyní předpokládejme, že spuštění tohoto trvá víc než jednu hodinu – například 70 minut – tak, aby jeho dokončení přibližně 2:10:00
-5. Je teď 2:00:00, čas pro třetí provádění spustit. Ale protože druhý provádění z ráno 1 je stále spuštěna, třetí provedení je přeskočeno. Třetí provádění spustí ve 3 hodiny.
+1. Dojde k prvnímu spuštění indexeru začíná na nebo okolo 1. března 2015 12:00 dop. UTC.
+2. Předpokládejme, že toto spuštění trvá 20 minut (nebo vždy menší než 1 hodina).
+3. Spuštění druhého začíná na nebo okolo 1. března 2015 1:00 dop.
+4. Nyní předpokládejme, že toto spuštění trvá déle než hodinu – například 70 minut – tak, aby nedokončí přibližně 2:10:00
+5. Je nyní 2:00:00, čas pro třetí spuštění spustit. Ale protože spuštění druhého z 1: 00 ráno je pořád spuštěný, třetí provedení se přeskočilo. Třetí spuštění ve 3 hodiny.
 
 Můžete přidat, změnit nebo odstranit plán pro existujícího indexeru pomocí **PUT indexer** požadavku.
 
@@ -178,19 +179,19 @@ Můžete přidat, změnit nebo odstranit plán pro existujícího indexeru pomoc
 
 ## <a name="capture-new-changed-and-deleted-rows"></a>Zachycení nové, změny a odstranění řádků
 
-Služba Azure Search používá **přírůstkové indexování** -li se vyhnout přeindexování celou tabulku nebo zobrazení pokaždé, když spustí indexer. Vyhledávání systému Azure nabízí že dva změnit zásady detekce pro podporu přírůstkové indexování. 
+Služba Azure Search používá **přírůstkové indexování** vyhnout se přeindexování celou tabulku nebo zobrazení pokaždé, když spustí indexeru. Služba Azure Search poskytuje že dvě zásady detekce pro podporu přírůstkové indexování změn. 
 
 ### <a name="sql-integrated-change-tracking-policy"></a>Zásady sledování změn s integrací SQL
-Pokud vaše databáze SQL podporuje [sledování změn](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server), doporučujeme používat **SQL integrované změnit způsob sledování**. Toto je zásada maximální efektivitou. Kromě toho umožňuje Azure Search k identifikaci odstraněných řádků bez nutnosti do tabulky přidat sloupec explicitní "obnovitelného odstranění".
+Pokud vaše databáze SQL podporuje [sledování změn](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server), doporučujeme používat **SQL integrované změnit způsob sledování**. Toto je nejefektivnější zásady. Kromě toho umožňuje Azure Search k identifikaci odstraněné řádky, aniž by bylo nutné přidat do tabulky sloupec explicitní "obnovitelné odstranění".
 
 #### <a name="requirements"></a>Požadavky 
 
-+ Požadavky na databázi verze:
++ Požadavky na verzi databáze:
   * SQL Server 2012 SP3 nebo novější, pokud používáte systém SQL Server na virtuálních počítačích Azure.
-  * Azure SQL Database verze 12, pokud používáte Azure SQL Database.
-+ Pouze tabulky (žádná zobrazení). 
-+ V databázi [povolit sledování změn](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-tracking-sql-server) pro tabulku. 
-+ Žádný složené primární klíč (primární klíč obsahující více než jeden sloupec) v tabulce.  
+  * Azure SQL Database V12, pokud používáte Azure SQL Database.
++ Pouze tabulky (k dispozici žádná zobrazení). 
++ V databázi [povolit řešení change tracking](https://docs.microsoft.com/sql/relational-databases/track-changes/enable-and-disable-change-tracking-sql-server) pro tabulku. 
++ Složený primární klíč (primární klíč obsahující více než jeden sloupec) v tabulce.  
 
 #### <a name="usage"></a>Využití
 
@@ -206,27 +207,27 @@ Pokud chcete tuto zásadu použít, vytvořit nebo aktualizovat zdroj dat takto:
       }
     }
 
-Při použití zásady, sledování změn SQL integrované nezadávejte zásadami detekce odstraňování oddělení dat – tato zásada má integrovanou podporu pro identifikaci odstranit řádky. Ale pro odstranění být zjištěné "automagically", klíč dokumentu v indexu vyhledávání musí být stejný jako primární klíč v tabulce SQL. 
+Při použití SQL integrované řešení change tracking zásad, nezadávejte zásadu samostatná data pro odstranění duplicit – má integrovanou podporu pro identifikaci tuto zásadu odstranit řádky. Ale pro odstranění, který bude zjištěná "automagically", klíč dokumentu v indexu vyhledávání musí být stejná jako primární klíč v tabulce SQL. 
 
 <a name="HighWaterMarkPolicy"></a>
 
-### <a name="high-water-mark-change-detection-policy"></a>Zásady detekce změn horní meze
+### <a name="high-water-mark-change-detection-policy"></a>Zásady detekce změn vysoká označuje jako horní mez
 
-Tyto zásady detekce změn spoléhá na sloupec "horní mez" zaznamenávání verze nebo čas poslední aktualizace řádek. Pokud používáte zobrazení, musíte použít zásadu horní mez. Horní mez sloupec musí splňovat následující požadavky.
+Tato zásada zjišťování změn spoléhá na sloupec "vysoká označuje jako horní mez" zachytávání verze nebo čas poslední aktualizace řádku. Pokud používáte zobrazení, musíte použít zásadu vysoce mezí. Sloupce mezí vysoce musí splňovat následující požadavky.
 
 #### <a name="requirements"></a>Požadavky 
 
-* Vloží všechny zadejte hodnotu pro sloupec.
-* Všechny aktualizace k položce také změnit hodnotu pro sloupec.
-* Hodnota v tomto sloupci se zvyšuje s každou insert nebo update.
-* Dotazy s následující kde a klauzule ORDER BY se dají efektivně provádět: `WHERE [High Water Mark Column] > [Current High Water Mark Value] ORDER BY [High Water Mark Column]`
+* Všechny operace vložení zadejte hodnotu pro sloupec.
+* Všechny aktualizace položky také změnit hodnotu sloupce.
+* Hodnota v tomto sloupci Hodnota se zvyšuje s každou insert nebo update.
+* Dotazy s následujícími kde a efektivně mohou být provedeny klauzule ORDER BY: `WHERE [High Water Mark Column] > [Current High Water Mark Value] ORDER BY [High Water Mark Column]`
 
 > [!IMPORTANT] 
-> Důrazně doporučujeme pomocí [rowversion](https://docs.microsoft.com/sql/t-sql/data-types/rowversion-transact-sql) datový typ sloupce horní mez. Pokud se používá jiný typ dat sledování změn není zaručeno zaznamenat všechny změny případě transakce provádění souběžně dotaz indexer. Při použití **rowversion** v konfiguraci s replikami jen pro čtení, musí odkazovat na primární replice indexeru. Scénáře synchronizace dat lze použít pouze primární repliku.
+> Důrazně doporučujeme používat [rowversion](https://docs.microsoft.com/sql/t-sql/data-types/rowversion-transact-sql) datový typ pro sloupec vysoce mezí. Pokud se používá k jakýmkoli jiným datovým typem, sledování změn není zaručeno zachytit všechny změny za přítomnosti transakce provádění současně dotazu indexeru. Při použití **rowversion** v konfiguraci s replikami jen pro čtení, musí odkazovat na primární replice indexeru. Pro scénáře synchronizace dat je možné pouze primární repliku.
 
 #### <a name="usage"></a>Využití
 
-Použít zásadu horní mez, vytvořit nebo aktualizovat zdroj dat takto:
+Použití zásad vysoce mezí, vytvořit nebo aktualizovat zdroj dat takto:
 
     {
         "name" : "myazuresqldatasource",
@@ -240,11 +241,11 @@ Použít zásadu horní mez, vytvořit nebo aktualizovat zdroj dat takto:
     }
 
 > [!WARNING]
-> Pokud zdrojová tabulka nemá index na sloupci horní mez, dotazy, které používá indexeru SQL může vypršení časového limitu. Konkrétně `ORDER BY [High Water Mark Column]` klauzule vyžaduje index efektivně spouštět, když tabulka obsahuje mnoho řádků.
+> Pokud zdrojová tabulka nemá žádné index na sloupci vysoce mezí, dotazy, pomocí kterých indexer SQL může vypršení časového limitu. Zejména v případě `ORDER BY [High Water Mark Column]` klauzule vyžaduje indexu umožňuje efektivně spouštět, pokud tabulka obsahuje mnoho řádků.
 >
 >
 
-Pokud dojde k vypršení časového limitu, můžete použít `queryTimeout` nastavení konfigurace indexer nastavit časový limit dotazu na hodnotu vyšší než 5 minut výchozí časový limit. Nastavit časový limit na 10 minut, například vytvořit nebo aktualizovat indexer s následující konfigurací:
+Pokud narazíte na chyby časového limitu, můžete použít `queryTimeout` nastavení konfigurace indexeru nastavit časový limit dotazu na hodnotu vyšší než výchozí časový limit 5 minut. Nastavit časový limit na 10 minut, třeba vytvořit nebo aktualizovat indexer s následující konfigurací:
 
     {
       ... other indexer definition properties
@@ -252,7 +253,7 @@ Pokud dojde k vypršení časového limitu, můžete použít `queryTimeout` nas
             "configuration" : { "queryTimeout" : "00:10:00" } }
     }
 
-Můžete také zakázat `ORDER BY [High Water Mark Column]` klauzule. To však není doporučeno, protože pokud se spuštění indexeru je přerušen kvůli chybě, indexeru je znovu zpracovat všechny řádky Pokud později - běží, i v případě indexeru již zpracována téměř všechny řádky v čase, který byl přerušen. Chcete-li zakázat `ORDER BY` klauzule, použijte `disableOrderByHighWaterMarkColumn` nastavení v definici indexer:  
+Můžete také zakázat `ORDER BY [High Water Mark Column]` klauzuli. To však není doporučeno, protože pokud se spuštění indexeru je přerušeno s chybou, indexer musí znovu zpracovat všechny řádky novější – poběží i v případě indexeru už zpracovala téměř všechny řádky v době, kdy bylo přerušeno. Chcete-li zakázat `ORDER BY` klauzule, použijte `disableOrderByHighWaterMarkColumn` nastavení v definici indexer:  
 
     {
      ... other indexer definition properties
@@ -260,12 +261,12 @@ Můžete také zakázat `ORDER BY [High Water Mark Column]` klauzule. To však n
             "configuration" : { "disableOrderByHighWaterMarkColumn" : true } }
     }
 
-### <a name="soft-delete-column-deletion-detection-policy"></a>Softwarové zásady odstranit detekce odstranění sloupce
-Při odstranění řádků ze zdrojové tabulky, pravděpodobně chcete odstranit tyto řádky z také indexu vyhledávání. Pokud chcete použít zásady sledování změn SQL integrované, to se stará za vás. Ale zásady sledování změn horní meze není vám pomůžou s odstraněných řádků. Co dělat?
+### <a name="soft-delete-column-deletion-detection-policy"></a>Zásady obnovitelné odstranění detekce odstranění sloupce
+Při odstranění řádků z tabulky zdroje, pravděpodobně chcete odstranit řádky z vyhledávacího indexu. Pokud používáte zásady sledování změn SQL integrované, to postará za vás. Ale zásady sledování změn jako horní mez vysoce vám nepomohly s odstraněnými řádky. Co dělat?
 
-Pokud se fyzicky odebrání řádky z tabulky Azure Search nemá žádný způsob, jak odvození přítomnost záznamy, které už existují.  Můžete však technika "soft odstranění" logicky odstranění řádků bez odstranění z tabulky. Přidá sloupec na vaše řádky tabulky nebo zobrazení a označit jako odstranit pomocí sloupce.
+Pokud fyzicky odebrání řádků z tabulky Azure Search nemá žádný způsob, jak odvodit přítomnost záznamy, které už existují.  Můžete však použít techniku "obnovitelného odstranění" logicky odstraňovat řádky, aniž byste je odebrali z tabulky. Přidání sloupce pro tabulku nebo zobrazení a označit řádky jako odstraněné pomocí tohoto sloupce.
 
-Při použití konfigurace soft odstranění techniku, můžete určit zásadu obnovitelného odstranění takto při vytváření nebo aktualizaci zdroje dat:
+Při použití obnovitelného odstranění techniku, můžete určit, zásadu obnovitelného odstranění následujícím způsobem při vytváření nebo aktualizaci zdroje dat:
 
     {
         …,
@@ -276,34 +277,34 @@ Při použití konfigurace soft odstranění techniku, můžete určit zásadu o
         }
     }
 
-**SoftDeleteMarkerValue** musí být řetězec – použít řetězcovou reprezentaci skutečnou hodnotu. Například pokud máte sloupec celé číslo, které jsou označeny odstraněných řádků s hodnotou 1, použijte `"1"`. Pokud BIT sloupec, kde jsou označené odstraněných řádků logickou hodnotu true, použijte `"True"`.
+**SoftDeleteMarkerValue** musí být řetězcový – použijte řetězcovou reprezentaci skutečnou hodnotu. Například pokud máte sloupec celých čísel, kde odstraněné řádky jsou označeny hodnotou 1 použít `"1"`. Pokud máte sloupec BIT, kde odstraněné řádky jsou označeny logická hodnota true, použijte `"True"`.
 
 <a name="TypeMapping"></a>
 
-## <a name="mapping-between-sql-and-azure-search-data-types"></a>Mapování mezi datové typy SQL a Azure Search
-| Datový typ SQL. | Cílový index povolené typy polí | Poznámky |
+## <a name="mapping-between-sql-and-azure-search-data-types"></a>Mapování mezi datovými typy SQL a Azure Search
+| Datový typ SQL. | Povolené typy pole cílový index | Poznámky |
 | --- | --- | --- |
-| Bit |Edm.Boolean Edm.String | |
+| Bit |Typem Edm.Boolean Edm.String | |
 | int, smallint, tinyint |Edm.Int32, Edm.Int64, Edm.String | |
 | bigint |Edm.Int64 Edm.String | |
 | skutečné, float |Edm.Double, Edm.String | |
-| Smallmoney peníze desítková číslice |Edm.String |Vyhledávání systému Azure nepodporuje převod decimal typy do Edm.Double, protože by to ztratit přesnost |
-| Char, nchar, varchar, nvarchar |Edm.String<br/>Collection(Edm.String) |Řetězec SQL lze použít k naplnění Collection(Edm.String) pole, pokud řetězec představuje pole JSON řetězců: `["red", "white", "blue"]` |
-| smalldatetime, datetime, datetime2, date, datetimeoffset |Edm.DateTimeOffset, Edm.String | |
+| Smallmoney peníze desítková číslice |Edm.String |Služba Azure Search nepodporuje převod desítkové typy do Edm.Double, protože tím byste ztratit přesnost |
+| Char, nchar, varchar, nvarchar |Edm.String<br/>Collection(Edm.String) |K vyplnění pole Collection(Edm.String), pokud řetězec představuje pole JSON řetězců, které je možné řetězec SQL: `["red", "white", "blue"]` |
+| smalldatetime, data a času, datetime2, date, datetimeoffset |Edm.DateTimeOffset, Edm.String | |
 | uniqueidentifer |Edm.String | |
-| Geography |Edm.GeographyPoint |Jsou podporovány pouze geography instance typu bodu s SRID 4326 (což je výchozí hodnota) |
-| ROWVERSION |neuvedeno |Verze řádku sloupce nelze uložit do indexu vyhledávání, ale mohou být použity pro sledování změn |
-| Doba, časový interval, binary, varbinary, image, xml, geometry, typy CLR |neuvedeno |Nepodporuje se |
+| Zeměpisné oblasti |Edm.GeographyPoint |Jsou podporovány pouze zeměpisné oblasti instance typu bodu SRID 4326 (což je výchozí hodnota) |
+| ROWVERSION |neuvedeno |Verze řádku sloupce nelze ukládat v indexu vyhledávání, ale mohou být použity pro sledování změn |
+| čas, časový interval, binární soubor, varbinary, image, xml, geometry, typy CLR |neuvedeno |Nepodporuje se |
 
 ## <a name="configuration-settings"></a>Nastavení konfigurace
-SQL indexer zpřístupňuje několik nastavení konfigurace:
+SQL indexer poskytuje několik nastavení konfigurace:
 
 | Nastavení | Typ dat | Účel | Výchozí hodnota |
 | --- | --- | --- | --- |
-| queryTimeout |řetězec |Nastaví časový limit pro spuštění dotazu SQL |5 minut ("00: 05:00") |
-| disableOrderByHighWaterMarkColumn |BOOL |Způsobí, že příkaz jazyka SQL, které používají zásady horní mez k vynechejte klauzuli ORDER by. V tématu [zásad horní mez](#HighWaterMarkPolicy) |false (nepravda) |
+| queryTimeout |řetězec |Nastaví časový limit pro provedení dotazu SQL. |5 minut ("00: 05:00") |
+| disableOrderByHighWaterMarkColumn |BOOL |Způsobí, že dotaz SQL použitý zásadami vysoce mezí Pokud chcete vynechat, nechte klauzule ORDER by. Zobrazit [vysoce mezí zásad](#HighWaterMarkPolicy) |false (nepravda) |
 
-Toto nastavení se použije v `parameters.configuration` objektu v definici indexer. Pokud chcete nastavit časový limit dotazu na 10 minut, například vytvořit nebo aktualizovat indexer s následující konfigurací:
+Tato nastavení se používají v `parameters.configuration` objektu v definice indexeru. Například pokud chcete nastavit časový limit dotazu na 10 minut, vytvořit nebo aktualizovat indexer s následující konfigurací:
 
     {
       ... other indexer definition properties
@@ -313,44 +314,44 @@ Toto nastavení se použije v `parameters.configuration` objektu v definici inde
 
 ## <a name="faq"></a>Nejčastější dotazy
 
-**Otázka: je možné použít indexer Azure SQL s databází SQL spuštěn na virtuální počítače IaaS v Azure?**
+**Otázka: Mohu použít indexer pro Azure SQL s SQL Database běžící na virtuálních počítačích IaaS v Azure?**
 
-Ano. Však musíte povolit svoji službu vyhledávání pro připojení k vaší databázi. Další informace najdete v tématu [konfigurovat spojení z indexer Azure Search na SQL Server na virtuálním počítači Azure](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md).
+Ano. Ale budete muset povolit vaší vyhledávací služby pro připojení k vaší databázi. Další informace najdete v tématu [konfigurace připojení indexeru Azure Search k systému SQL Server na Virtuálním počítači Azure](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md).
 
-**Otázka: je možné použít indexer Azure SQL s databází SQL místní aplikace?**
+**Otázka: Mohu použít indexer pro Azure SQL s databází SQL, které jsou spuštěné místně?**
 
-Ne přímo. Není doporučujeme nebo podporu přímé připojení, jak je to proto se vyžaduje otevření databází pro provoz sítě Internet. Zákazníci proběhlo úspěšně tento scénář použití most technologií, jako je Azure Data Factory. Další informace najdete v tématu [nabízet data do indexu Azure Search pomocí Azure Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-azure-search-connector).
+Ne přímo. Společnost Microsoft nedoporučuje ani nepodporuje přímé připojení, jako to uděláte tak by vyžadovalo otevření databází pro provoz sítě Internet. Zákazníci mají proběhlo úspěšně, v tomto scénáři použití most technologií, jako je Azure Data Factory. Další informace najdete v tématu [vložení dat do indexu Azure Search pomocí Azure Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-azure-search-connector).
 
-**Otázka: je možné použít indexer Azure SQL s databázemi než SQL Server spuštěnou v IaaS v Azure?**
+**Otázka: Mohu použít indexer pro Azure SQL s databázemi než SQL Server běžící na IaaS v Azure?**
 
-Ne. Tento scénář nepodporujeme, protože nebyly testovány indexeru se žádné databáze než SQL Server.  
+Ne. Nepodporujeme tento scénář, protože nebyly testovány indexeru se žádné databáze než SQL Server.  
 
-**Otázka: je možné vytvořit několik indexerů spuštěna podle plánu?**
+**Dotaz: lze vytvořit několik indexerů spouštění podle plánu?**
 
-Ano. Ale pouze jeden indexer může být spuštěn v jednom uzlu najednou. Pokud budete potřebovat k současnému spuštění více indexery, vezměte v úvahu škálování služby vyhledávání k více než jednu jednotku vyhledávání.
+Ano. Nicméně pouze indexerů může běžet na jednom uzlu najednou. Pokud budete potřebovat několik indexerů, které jsou spuštěny souběžně, zvažte možnost škálování služby vyhledávání pro více než jedna jednotka služby search.
 
-**Otázka: funguje s vliv indexer pracovním vytížením můj dotaz?**
+**Otázka se spuštění indexeru vliv dotazu úlohy?**
 
-Ano. Spuštění indexeru na jednom z uzlů v vaši službu vyhledávání a tento uzel prostředky jsou sdílené mezi indexování a obsluhuje přenosy dotazu a další žádosti o rozhraní API. Pokud spustíte zatížení s intenzivním indexování a dotazů a dojde k vysokou míru 503 chyby nebo odezvy roste, vezměte v úvahu [škálování služby vyhledávání](search-capacity-planning.md).
+Ano. Spuštění indexeru na jednom z uzlů ve vaší vyhledávací služby a prostředky daného uzlu jsou sdílené mezi indexování a obsluhující provoz dotazu a další požadavky rozhraní API. Pokud spuštění úlohy náročné na indexování a dotazování a dojde k vysoké rychlosti 503 chyby nebo zvýšení doby odezvy, zvažte [vertikálně kapacitu vaší služby search](search-capacity-planning.md).
 
-**Otázka: je možné používat sekundární repliku v [clusteru převzetí služeb při selhání](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview) jako zdroj dat?**
+**Dotaz: lze použít v sekundární replice [clusteru převzetí služeb při selhání](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview) jako zdroj dat?**
 
-To záleží na okolnostech. Pro úplnou indexování tabulku nebo zobrazení, můžete použít sekundární repliku. 
+To záleží na okolnostech. Pro úplné indexování tabulky nebo zobrazení, můžete použít na sekundární repliku. 
 
-Pro přírůstkové indexování změn podporuje Azure Search, dvě zásady detekce: SQL integrované změnit sledováním a horní mez.
+Přírůstkové indexování podporuje Azure Search, dvě zásady detekce změn: změnit SQL integrované sledování a vysoká označuje jako horní mez.
 
-U replik, jen pro čtení databáze SQL nepodporuje sledování integrované změn. Proto je nutné použít zásady horní mez. 
+Na repliky jen pro čtení SQL database nepodporuje sledování integrované změn. Proto musíte použít zásad vysoce mezí. 
 
-Standardní doporučujeme použít rowversion datový typ pro sloupec horní mez. Pomocí rowversion však spoléhá na SQL Database `MIN_ACTIVE_ROWVERSION` funkci, která není podporována u replik, jen pro čtení. Indexer proto musí odkazovat na primární repliku, pokud používáte rowversion.
+Naše standardní doporučuje používat rowversion datový typ pro sloupec vysoce mezí. Pomocí rowversion však závisí na SQL Database `MIN_ACTIVE_ROWVERSION` funkce, která není podporována u replik jen pro čtení. Indexer proto musí odkazovat na primární replice, pokud používáte rowversion.
 
-Pokud se pokusíte použít rowversion na repliku jen pro čtení, zobrazí se následující chyba: 
+Pokud se pokusíte použít rowversion repliky jen pro čtení, zobrazí se následující chyba: 
 
     "Using a rowversion column for change tracking is not supported on secondary (read-only) availability replicas. Please update the datasource and specify a connection to the primary availability replica.Current database 'Updateability' property is 'READ_ONLY'".
 
-**Otázka: je možné použít jako alternativní, bez rowversion sloupec pro sledování změn horní meze?**
+**Otázka: Mohu použít alternativní, sloupci bez rowversion pro sledování změn jako horní mez vysoce?**
 
-Není doporučeno. Pouze **rowversion** umožňuje pro synchronizaci dat spolehlivé. Nicméně, v závislosti na logice aplikace může být bezpečné pokud:
+Není doporučeno. Pouze **rowversion** umožňuje synchronizaci dat spolehlivé. Nicméně, v závislosti na vaší aplikace logiky může být bezpečné pokud:
 
-+ Můžete zajistit, že při spuštění indexeru neexistují nezpracovaných transakce v tabulce, který je právě indexovaný (například všechny tabulky, které aktualizace dojít, protože batch na plán a plán indexer Azure Search je nastaven na překrývající se k aktualizaci tabulky naplánovat).  
++ Můžete zajistit, že po spuštění indexeru, že nejsou žádné nevyřízené transakce v tabulce se indexuje zpětně (například všechny aktualizace tabulky dojít v dávce, podle plánu, a plán indexeru Azure Search je nastavená na překrývající se aktualizace tabulky plán).  
 
-+ Pravidelně provedením úplné nové indexování a pokračovat tam zmeškaných řádky. 
++ Pravidelně provádět úplnou reindex ke sbírání všechny chybějící řádky. 

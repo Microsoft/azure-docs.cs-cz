@@ -1,6 +1,6 @@
 ---
-title: Export vašeho předplatného Azure informace na nejvyšší úrovni | Microsoft Docs
-description: Popisuje, jak můžete zobrazit všechny předplatné Azure spojené s vaším účtem ID.
+title: Export vašeho předplatného Azure informace na nejvyšší úrovni | Dokumentace Microsoftu
+description: Popisuje, jak zobrazit všechna ID předplatných Azure spojené s vaším účtem.
 keywords: ''
 services: billing
 documentationcenter: ''
@@ -13,24 +13,24 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/9/2017
+ms.date: 06/15/2018
 ms.author: adpick
-ms.openlocfilehash: b995b0c7154faab66a44bef1a7d74eeb8404e5c1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7bc9f4df6e98dd86283c4389466b13b8f6bb4d15
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34654814"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35897327"
 ---
-# <a name="export-and-view-your-top-level-subscription-information"></a>Export a zobrazit informace z vašeho nejvyšší úrovně předplatného
-Pokud potřebujete zobrazit sadu předplatné ID přidružených k pověření uživatele [stáhnout soubor .json s informace o vašem předplatném z centra účtů Azure](http://account.azure.com/subscriptions/download).
+# <a name="export-and-view-your-top-level-subscription-information"></a>Vyexportovat a zobrazit informace o předplatném nejvyšší úrovně
+Pokud chcete zobrazit sady přidružené přihlašovací údaje uživatele, ID předplatného [stáhnout soubor .json, informace o vašem předplatném z centra účtů Azure](http://account.azure.com/subscriptions/download).
 
 [!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
-Soubor stažený .json poskytuje následující informace:
-- E-mailu: E-mailová adresa spojená s vaším účtem.
-- Identifikátor PUID: Jedinečný identifikátor spojené s vaším účtem fakturace.
-- SubscriptionIds: Seznam odběry, které patří k účtu, uvedené podle ID předplatného.
+Soubor stažený .json obsahuje následující informace:
+- E-mailu: E-mailovou adresu spojenou s vaším účtem.
+- Identifikátor PUID: Jedinečný identifikátor přidružený k fakturačnímu účtu.
+- SubscriptionIds: Seznam předplatných, které patří ke svému účtu, uvedené podle ID předplatného.
 
 ### <a name="subscriptionsjson-sample"></a>Ukázka Subscriptions.JSON
 ~~~~

@@ -1,6 +1,6 @@
 ---
-title: Začínáme s Azure Application Insights s Javou v prostředí Eclipse | Microsoft docs
-description: Pomocí modulu plug-in Eclipse přidejte výkon a sledování využití do vašeho webu Java pomocí Application Insights
+title: Začínáme s Azure Application Insights s Javou v prostředí Eclipse | Dokumentace Microsoftu
+description: Pomocí modulu plug-in Eclipse pro přidání výkon a sledování využití pro web v Javě s využitím Application Insights
 services: application-insights
 documentationcenter: java
 author: mrbullwinkle
@@ -10,44 +10,44 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/12/2016
 ms.author: mbullwin
-ms.openlocfilehash: 8e8e63b053cb5bd504a41da9b537354a1dd42968
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: ebcfe02eb8d969af26f5121bda85e4610302e838
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34795556"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35642893"
 ---
-# <a name="get-started-with-application-insights-with-java-in-eclipse"></a>Začínáme s Application Insights s Javou v prostředí Eclipse
-Application Insights SDK odesílá telemetrii z webové aplikace Java, takže je můžete analyzovat využití a výkonu. Modul plug-in pro službu Application Insights Eclipse automaticky nainstaluje sady SDK v projektu, abyste měli mimo pole telemetrie a rozhraní API, které můžete psát vlastní telemetrii.   
+# <a name="get-started-with-application-insights-with-java-in-eclipse"></a>Začínáme s Application Insights s Javou v Eclipse
+Sada SDK služby Application Insights odesílá telemetrii z vaší webové aplikace v Javě, tak, aby využití a výkonu můžete analyzovat. Modul plug-in pro službu Application Insights Eclipse automaticky nainstaluje sady SDK ve vašem projektu, aby získáváte z telemetrických dat pole a rozhraní API, které vám pomůže psát vlastní telemetrii.   
 
 ## <a name="prerequisites"></a>Požadavky
-Aktuálně modul plug-in funguje pro projekty Maven a dynamické webové projekty v prostředí Eclipse.
-([Přidat službu Application Insights na jiné typy projektu Java][java].)
+Aktuálně modul plug-in funguje pro projekty Maven a dynamické webových projektů v prostředí Eclipse.
+([Přidat službu Application Insights na jiné typy projektů Java][java].)
 
 Budete potřebovat:
 
-* 1.7 prostředí JRE nebo 1.8
+* Prostředí JRE 1.7 nebo 1.8
 * Předplatné [Microsoft Azure](https://azure.microsoft.com/).
-* [Integrované vývojové prostředí Eclipse pro vývojáře v jazyce Java EE](http://www.eclipse.org/downloads/), džínovinu nebo novější.
-* Windows 7 nebo novější nebo Windows Server 2008 nebo novějším.
+* [Integrované vývojové prostředí Eclipse pro vývojáře na platformě Java EE](http://www.eclipse.org/downloads/), Indigo nebo novější.
+* Windows 7 nebo novější nebo Windows Server 2008 nebo novější
 
-Pokud dáváte přednost, zkuste rozhraní Spring [konfigurace aplikace inicializátoru pružiny spouštěcí používat Průvodce Application Insights](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights)
+Pokud dáváte přednost rozhraní Spring, zkuste [nakonfigurovat aplikaci Spring Boot Initializer, abyste mohli použít příručku ke službě Application Insights](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights).
 
-## <a name="install-the-sdk-on-eclipse-one-time"></a>Instalace sady SDK v prostředí Eclipse (jednou)
-Stačí udělat tento jednou pro každý počítač. Tento krok nainstaluje sada nástrojů, který poté můžete přidat sadu SDK do každé Dynamic Web Project.
+## <a name="install-the-sdk-on-eclipse-one-time"></a>Instalace sady SDK v Eclipse (jednou)
+Stačí provést jednou na počítač. Tento krok nainstaluje sadu nástrojů, které potom můžete přidat sadu SDK do jednotlivých dynamický webový projekt.
 
-1. V prostředí Eclipse klikněte na tlačítko Nápověda, nainstalovat nový Software.
+1. V Eclipse klikněte na tlačítko Nápověda, instalace nového softwaru.
 
     ![Nápověda, instalace nového softwaru](./media/app-insights-java-eclipse/0-plugin.png)
-2. Sada SDK je v http://dl.microsoft.com/eclipse, v rámci Azure Toolkit.
-3. Zrušte zaškrtnutí políčka **obraťte se na všechny lokality aktualizace...**
+2. Sada SDK je v http://dl.microsoft.com/eclipse, v rámci sady Azure Toolkit.
+3. Zrušte zaškrtnutí políčka **kontaktovat všechny weby aktualizace...**
 
-    ![Application Insights SDK zrušte vám poskytne všechny aktualizace lokality](./media/app-insights-java-eclipse/1-plugin.png)
+    ![Pro sadu SDK Application Insights zrušte kontaktujte všechny weby aktualizace](./media/app-insights-java-eclipse/1-plugin.png)
 
-Postupujte podle zbývajících kroků pro každý projekt, Java.
+Postupujte podle pokynů pro každý projekt v Javě.
 
 ## <a name="create-an-application-insights-resource-in-azure"></a>Vytvořte prostředek Application Insights v Azure
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
@@ -60,19 +60,19 @@ Postupujte podle zbývajících kroků pro každý projekt, Java.
     ![V přehledu nového prostředku klikněte na tlačítko Vlastnosti a zkopírujte klíč instrumentace](./media/app-insights-java-eclipse/03-key.png)  
 
 ## <a name="add-application-insights-to-your-project"></a>Přidejte ke svému projektu Application Insights.
-1. Přidejte Application Insights z místní nabídky projektu webové Java.
+1. Přidejte Application Insights v místní nabídce vašeho webového projektu v Javě.
 
     ![V přehledu nového prostředku klikněte na tlačítko Vlastnosti a zkopírujte klíč instrumentace](./media/app-insights-java-eclipse/02-context-menu.png)
-2. Vložte klíč instrumentace, který jste získali z portálu Azure.
+2. Vložte klíč instrumentace, který jste získali z portálu Azure portal.
 
     ![V přehledu nového prostředku klikněte na tlačítko Vlastnosti a zkopírujte klíč instrumentace](./media/app-insights-java-eclipse/03-ikey.png)
 
-Klíč je odeslán společně s každou položkou telemetrie a říká službě Application Insights, aby ho zobrazila v prostředku.
+Klíč se pošle společně s každou položkou telemetrie a říká službě Application Insights, aby ho zobrazila v prostředku.
 
-## <a name="run-the-application-and-see-metrics"></a>Spusťte aplikaci a zobrazit metriky
-Spusťte svoji aplikaci.
+## <a name="run-the-application-and-see-metrics"></a>Spuštění aplikace a zobrazení metrik
+Spusťte aplikaci.
 
-Vraťte se do zdroje Application Insights v Microsoft Azure.
+Vraťte se do prostředku Application Insights v Microsoft Azure.
 
 Data požadavků HTTP se zobrazí v okně přehled. (Pokud zde nejsou, počkejte několik sekund a pak klikněte na tlačítko Aktualizovat.)
 
@@ -80,29 +80,29 @@ Data požadavků HTTP se zobrazí v okně přehled. (Pokud zde nejsou, počkejte
 
 Proklikejte se prostřednictvím jakékoli grafu pro zobrazení podrobnějších metrik.
 
-![Počty žádostí podle názvu](./media/app-insights-java-eclipse/6-barchart.png)
+![Požadavek se počítá podle názvu](./media/app-insights-java-eclipse/6-barchart.png)
 
 [Další informace o metrikách.][metrics]
 
-A při zobrazení vlastností požadavku, uvidíte telemetrické události související s například požadavky a výjimkami.
+A při zobrazení vlastností požadavku uvidíte telemetrické události související s například požadavky a výjimky.
 
-![Všechny trasování pro tento požadavek](./media/app-insights-java-eclipse/7-instance.png)
+![Všechna trasování pro tuto žádost](./media/app-insights-java-eclipse/7-instance.png)
 
-## <a name="client-side-telemetry"></a>Telemetrických dat na straně klienta
-V okně Rychlý Start klikněte na tlačítko Get kód ke sledování mých webových stránek:
+## <a name="client-side-telemetry"></a>Telemetrie na straně klienta
+Z okna rychlý Start klikněte na tlačítko získat kód ke sledování mých webových stránek:
 
 ![V okně přehledu aplikace zvolte Rychlý start, získat kód ke sledování webové stránky. Zkopírujte skript.](./media/app-insights-java-eclipse/02-monitor-web-page.png)
 
-Vložte fragment kódu v hlavě soubory ve formátu HTML.
+Vložte fragment kódu v čele soubory ve formátu HTML.
 
 #### <a name="view-client-side-data"></a>Zobrazení dat na straně klienta
-Otevřete aktualizované webových stránek a jejich použití. Počkejte minutu nebo dvě, pak se vraťte do Application Insights a otevřete okno využití. (V okně Přehled přejděte dolů a klikněte na využití.)
+Otevřete aktualizované webové stránky a jejich použití. Počkejte minutu nebo dvě, a vraťte se do služby Application Insights a otevřete okno využití. (V okně Přehled přejděte dolů a klikněte na odkaz využití.)
 
-Stránka zobrazení, uživatele a relace metriky se zobrazí v okně využití:
+Stránka zobrazení, uživatelů a relací metriky se zobrazí v okně využití:
 
-![Relace, uživatelů a zobrazení stránek](./media/app-insights-java-eclipse/appinsights-47usage-2.png)
+![Relací, uživatelů a zobrazení stránek](./media/app-insights-java-eclipse/appinsights-47usage-2.png)
 
-[Další informace o nastavení telemetrických dat na straně klienta.][usage]
+[Další informace o nastavení telemetrie na straně klienta.][usage]
 
 ## <a name="publish-your-application"></a>Publikování aplikace
 Teď publikujte aplikaci na server, dovolte osobám ji používat a sledujte telemetrii zobrazenou na portálu.
@@ -133,9 +133,9 @@ Chcete-li shromažďovat data o dalších výjimkách, máte dvě možnosti:
 [Nainstalujte agenta Java](app-insights-java-agent.md) k protokolování určených vnitřních metod a volání provedená prostřednictvím JDBC s daty časování.
 
 ## <a name="performance-counters"></a>Čítače výkonu
-V okně vaší přehled přejděte dolů a kliknutím **servery** dlaždici. Uvidíte rozsah čítačů výkonu.
+V okně Přehled, posuňte se dolů a klikněte na tlačítko **servery** dlaždici. Uvidíte rozsah čítačů výkonu.
 
-![Posuňte se dolů a klikněte na dlaždici servery](./media/app-insights-java-eclipse/11-perf-counters.png)
+![Posuňte se dolů klikněte na dlaždici na serverech](./media/app-insights-java-eclipse/11-perf-counters.png)
 
 ### <a name="customize-performance-counter-collection"></a>Vlastní nastavení kolekce čítačů výkonu
 Pro zakázání shromažďování standardní sady čítačů výkonu přidejte následující kód do kořenového uzlu souboru ApplicationInsights.xml:
@@ -196,7 +196,7 @@ Každý [čítač výkonu systému Windows](https://msdn.microsoft.com/library/w
 * [Nainstalujte collectd s modulem plug-in Application Insights](app-insights-java-collectd.md) a získejte celou řadu dat systému a sítě.
 
 ## <a name="availability-web-tests"></a>Testy dostupnosti webu
-Application Insights může otestovat váš web v pravidelných intervalech a zkontrolovat, zda je funkční a dobře reaguje. [Nastavit][availability], přejděte dolů a klikněte na tlačítko dostupnost.
+Application Insights může otestovat váš web v pravidelných intervalech a zkontrolovat, zda je funkční a dobře reaguje. [Chcete-li nastavit][availability], přejděte dolů a klikněte na tlačítko dostupnost.
 
 ![Posuňte se dolů, klikněte na tlačítko Dostupnost a pak Přidat test webu](./media/app-insights-java-eclipse/31-config-web-test.png)
 
@@ -207,27 +207,27 @@ Získáte tabulky s dobami odezvy a navíc e-mailová oznámení, pokud váš we
 [Další informace o testech dostupnosti webu.][availability]
 
 ## <a name="diagnostic-logs"></a>Diagnostické protokoly
-Pokud používáte Logback nebo Log4J (verze 1.2 nebo v2.0) pro trasování, může mít vaše protokoly trasování automaticky odešlou do Application Insights, kde vám umožní zkoumat a hledat v nich.
+Pokud již používáte, Logback nebo Log4J (verze 1.2 nebo 2.0) pro trasování, může mít protokoly trasování automaticky odesílaných do Application Insights, kde můžete prozkoumat a hledat v nich.
 
 [Další informace o diagnostických protokolů][javalogs]
 
 ## <a name="custom-telemetry"></a>Vlastní telemetrii
-Po zadání několika řádků kódu vložte ve webové aplikaci Java a zjistěte, co uživatelé dělají s ním nebo k diagnostice potíží.
+Vložte několik řádků kódu webové aplikace v Javě a zjistěte, jak uživatelé pracují s ním nebo pomoc s diagnostikou problémů.
 
-Kód můžete vložit na webové stránce JavaScript i v jazyce Java na straně serveru.
+Kód můžete vložit do webové stránky JavaScript i v Javě na straně serveru.
 
 [Další informace o vlastní telemetrii][track]
 
 ## <a name="next-steps"></a>Další postup
-#### <a name="detect-and-diagnose-issues"></a>Najít a diagnostikovat problémy
-* [Přidat telemetrie webového klienta] [ usage] sám výkonu telemetrie webového klienta.
+#### <a name="detect-and-diagnose-issues"></a>Detekujte a Diagnostikujte problémy
+* [Přidání telemetrie webového klienta] [ usage] získejte telemetrii výkonu z webového klienta.
 * [Nastavení webových testů][availability] pro zajištění, že aplikace zůstane funkční a bude reagovat.
 * [Prohledávejte události a protokoly][diagnostic] pro pomoc s diagnostikou problémů.
-* [Zaznamenat trasování Log4J nebo Logback][javalogs]
+* [Záznam trasování Log4J nebo Logback][javalogs]
 
 #### <a name="track-usage"></a>Sledovat využití
-* [Přidat telemetrie webového klienta] [ usage] monitorování zobrazení stránek a metrik základní uživatele.
-* [Sledujte vlastní události a metriky](app-insights-web-track-usage.md) Další informace o tom, jak se používá aplikace, jak na klientovi a na serveru.
+* [Přidání telemetrie webového klienta] [ usage] pro monitorování zobrazení stránek a metrik základní uživatel.
+* [Sledujte vlastní události a metriky](app-insights-web-track-usage.md) Další informace o aplikaci způsobu, jak u klienta a serveru.
 
 <!--Link references-->
 

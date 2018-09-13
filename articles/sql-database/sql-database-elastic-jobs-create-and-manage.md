@@ -9,12 +9,12 @@ ms.custom: scale out apps
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: sstein
-ms.openlocfilehash: b367ddafc659db4dc4b8d658ac9dc007c4671b8c
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 8c83513838170d18cfc2f1d4f7cd42df2ec617e1
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39093101"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44717484"
 ---
 # <a name="create-and-manage-scaled-out-azure-sql-databases-using-elastic-jobs-preview"></a>Vytvářet a spravovat škálovaná databází Azure SQL Database pomocí elastických úloh (preview)
 

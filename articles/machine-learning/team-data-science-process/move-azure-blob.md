@@ -1,5 +1,5 @@
 ---
-title: Přesun dat do a z Azure Blob Storage | Microsoft Docs
+title: Přesun dat do a z úložiště objektů Blob v Azure | Dokumentace Microsoftu
 description: Přesun dat z a do služby Azure Blob Storage
 services: machine-learning,storage
 documentationcenter: ''
@@ -15,39 +15,39 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 40ec20765bf7874f245d3e37800b0b38dcda475d
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
-ms.translationtype: HT
+ms.openlocfilehash: 854c671d4db6cdca2b019ed9adb0475e588281b1
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34838043"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35622547"
 ---
-# <a name="move-data-to-and-from-azure-blob-storage"></a>Přesun dat do a z Azure Blob Storage
+# <a name="move-data-to-and-from-azure-blob-storage"></a>Přesun dat do a z úložiště objektů Blob v Azure
 [!INCLUDE [cap-ingest-data-selector](../../../includes/cap-ingest-data-selector.md)]
 
 <!-- just in case, adding this to separate these two include references -->
 
 [!INCLUDE [blob-storage-tool-selector](../../../includes/machine-learning-blob-storage-tool-selector.md)]
 
-Jakou metodu je pro vás nejvhodnější závisí na vašem scénáři. [Scénáře pro pokročilou analýzu v Azure Machine Learning](plan-sample-scenarios.md) pomáhá určit prostředky, které potřebujete pro různé pracovní úlohy vědecké účely data, která je použita v procesu pokročilou analýzu.
+Metoda je pro vás nejvhodnější, závisí na váš scénář. [Scénáře pro pokročilé analýzy ve službě Azure Machine Learning](plan-sample-scenarios.md) článek vám pomůže určit prostředky, které potřebujete pro různé datové vědy pracovních postupech, používat v procesu pokročilých analýz.
 
 > [!NOTE]
-> Dokončení Úvod do Azure blob storage, najdete v části [základy objektu Blob Azure](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) a [služby objektů Blob Azure](https://msdn.microsoft.com/library/azure/dd179376.aspx).
+> Dokončení Úvod do Azure blob storage, najdete v tématu [základy Azure Blob](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) a [služby Azure Blob](https://msdn.microsoft.com/library/azure/dd179376.aspx).
 > 
 > 
 
-Jako alternativu, můžete použít [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) na: 
+Jako alternativu můžete použít [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) na: 
 
-* Vytvoření a plánování kanálu, který stahuje dat z Azure blob storage 
-* předejte ji do publikované webové služby Azure Machine Learning, 
-* Zobrazí výsledky prediktivní analýzy a 
-* Nahrání výsledky do úložiště. 
+* Vytvoření a naplánování kanálu, který se stáhne data z úložiště objektů blob v Azure 
+* Předejte do publikované webové služby Azure Machine Learning, 
+* Zobrazit výsledky prediktivní analýzy a 
+* Nahrajte výsledky do úložiště. 
 
-Další informace najdete v tématu [vytvořit prediktivní kanály pomocí Azure Data Factory a Azure Machine Learning](../../data-factory/v1/data-factory-azure-ml-batch-execution-activity.md).
+Další informace najdete v tématu [vytváření prediktivních kanálů pomocí služby Azure Data Factory a Azure Machine Learning](../../data-factory/transform-data-using-machine-learning.md).
 
 ## <a name="prerequisites"></a>Požadavky
-Tento dokument předpokládá, že máte předplatné Azure, účet úložiště a odpovídající klíč úložiště pro tento účet. Před nahrávání nebo stahování dat, musíte znát klíč účet a název účtu úložiště Azure.
+Tento dokument předpokládá, že máte předplatné Azure, účet úložiště a odpovídající klíč úložiště pro tento účet. Před nahrávání a stahování dat, musíte znát vaše služby Azure storage účtu název a klíč účtu.
 
-* Předplatné Azure, naleznete v tématu [bezplatnou zkušební verzi jeden měsíc](https://azure.microsoft.com/pricing/free-trial/).
-* Pokyny pro vytvoření účtu úložiště a získávání účet a klíčové informace naleznete v tématu [účty Azure storage](../../storage/common/storage-create-storage-account.md).
+* Nastavení předplatného služby Azure, najdete v článku [zkušební verze na měsíc zdarma](https://azure.microsoft.com/pricing/free-trial/).
+* Pokyny k vytvoření účtu úložiště a účet a informace o klíči najdete v tématu [účty Azure storage](../../storage/common/storage-create-storage-account.md).
 

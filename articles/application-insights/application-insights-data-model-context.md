@@ -1,6 +1,6 @@
 ---
-title: Aplikace Azure Statistika Telemetrie datový Model - kontextu Telemetrie | Microsoft Docs
-description: Application Insights telemetrie kontextu datový model
+title: Azure Application Insights Telemetrie datový Model - kontextu Telemetrie | Dokumentace Microsoftu
+description: Application Insights telemetrie kontextu datového modelu
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -9,131 +9,133 @@ ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/15/2017
-ms.author: sergkanz; mbullwin
-ms.openlocfilehash: f6654dc869b6c1a3f91ee8dee44dcdbf4bdfc5fd
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.reviewer: sergkanz
+ms.author: mbullwin
+ms.openlocfilehash: b6cfae20f09b19a57cf411777e78abb1dbbf0484
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35643495"
 ---
-# <a name="telemetry-context-application-insights-data-model"></a>Kontext telemetrie: Application Insights datový model
+# <a name="telemetry-context-application-insights-data-model"></a>Kontext telemetrie: datový model Application Insights
 
-Každá položka telemetrie může mít pole silného typu kontextu. Každé pole umožňuje určitého scénáře monitorování. Kolekce vlastních vlastností slouží k ukládání kontextové informace specifické pro aplikaci nebo vlastní.
+Každé položce telemetrie může obsahovat pole silného typu kontextu. Každé pole umožňuje určitého scénáře monitorování. Kolekce vlastních vlastností slouží k ukládání kontextové informace specifické pro aplikaci nebo vlastní.
 
 
 ## <a name="application-version"></a>Verze aplikace
 
-Informace v kontextu pole aplikace je vždy o aplikaci, která odesílá telemetrii. Verze aplikace se používá k analýze trendů změny v chování aplikace a její korelace k nasazení.
+Informace v polích kontext aplikace je vždy o aplikaci, která odesílá telemetrická data. Verze aplikace se používá k analýze trendů změny v chování aplikace a její spojitost s míněním nasazení.
 
 Maximální délka: 1024
 
 
 ## <a name="client-ip-address"></a>IP adresa klienta
 
-IP adresa klientského zařízení. IPv4 a IPv6 jsou podporovány. Při odesílání telemetrických dat ze služby umístění kontextu je o uživatele, který spustil operace ve službě. Application Insights extrahovat informace geografického umístění, z IP adresy klienta a pak ho zkrátit. IP adresa klienta samostatně proto nelze použít jako osobní údaje koncového uživatele. 
+IP adresa klientského zařízení. Protokoly IPv4 a IPv6 jsou podporovány. Při odesílání telemetrických dat ze služby umístění kontext je informace o uživateli, který inicioval operaci služby. Application Insights extrahovat informace geografického umístění, z IP adresy klienta a pak ji zkrátit. IP adresa klienta samostatně proto nelze použít jako identifikovatelné informace pro koncové uživatele. 
 
 Maximální délka: 46
 
 
 ## <a name="device-type"></a>Typ zařízení
 
-Toto pole byl původně slouží k určení typu zařízení, kterou používá koncový uživatel aplikace. Dnes používaná primárně k rozlišení telemetrie JavaScript s typem zařízení, prohlížeč, z telemetrických dat na straně serveru se zařízením zadejte "Počítač".
+Toto pole bylo původně slouží k označení typu zařízení, kterou používá koncový uživatel aplikace. Dnes používají především pro rozlišení JavaScript telemetrická data typu zařízení: prohlížeč"z telemetrických dat na straně serveru se zařízením zadejte"Počítač".
 
 Maximální délka: 64
 
 
-## <a name="operation-id"></a>Id operace
+## <a name="operation-id"></a>ID operace
 
-Jedinečný identifikátor kořenové operace. Tento identifikátor skupiny telemetrie umožňuje napříč více součástí. V tématu [telemetrie korelace](application-insights-correlation.md) podrobnosti. Id operace vytvoří žádost o nebo zobrazení stránky. Všechny další telemetrií nastaví toto pole na hodnotu obsahující zobrazení požadavku nebo stránky. 
+Jedinečný identifikátor kořenovou operaci. Tento identifikátor skupiny telemetrie umožňuje napříč více komponent. Zobrazit [korelace telemetrie](application-insights-correlation.md) podrobnosti. Id operace je vytvořen pomocí požadavku nebo zobrazení stránky. Všechny další telemetrie nastaví toto pole na hodnotu nadřazeného žádosti nebo zobrazení stránky. 
 
 Maximální délka: 128
 
 
 ## <a name="parent-operation-id"></a>ID nadřazené operace
 
-Jedinečný identifikátor okamžitou nadřazené položce telemetrie. V tématu [telemetrie korelace](application-insights-correlation.md) podrobnosti.
+Jedinečný identifikátor položky telemetrie bezprostřední nadřazený objekt. Zobrazit [korelace telemetrie](application-insights-correlation.md) podrobnosti.
 
 Maximální délka: 128
 
 
 ## <a name="operation-name"></a>Název operace
 
-Název (skupina) operaci. Název operace vytvoří žádost o nebo zobrazení stránky. Všechny ostatní položky telemetrie nastavte pole na hodnotu obsahující zobrazení požadavku nebo stránky. Název operace se používá pro hledání všech telemetrie položek pro skupinu operací (například "GET domovské/indexem"). Tato vlastnost kontextu se používá k odpovědi na otázky typu "jaké jsou typické výjimky vydané na této stránce."
+Název (skupina) operace. Název operace vytvoří požadavek nebo zobrazení stránky. Všechny ostatní položky telemetrie nastavte pole na hodnotu nadřazeného žádosti nebo zobrazení stránky. Název operace se používá pro vyhledání všech položkách telemetrie pro skupinu operací (například "GET Home/Index"). Tato vlastnost kontextu se používá zodpovědět otázky typu "jaké jsou typické výjimky vyvolané na této stránce."
 
 Maximální délka: 1024
 
 
-## <a name="synthetic-source-of-the-operation"></a>Syntetické zdroj operace
+## <a name="synthetic-source-of-the-operation"></a>Zdroj syntetického operace
 
-Název syntetické zdroje. Nějaké telemetrie z aplikace může představovat syntetické provoz. To může být webový prohledávací modul indexování webu, testy dostupnosti webu nebo trasování z diagnostiky knihoven jako Application Insights SDK sám sebe.
+Název syntetické zdroje. Některé telemetrická data z aplikace může představovat syntetického provozu. Může být webový prohledávací modul indexování webu, testy dostupnosti webu nebo trasování z diagnostické knihoven, jako jsou Application Insights SDK.
 
 Maximální délka: 1024
 
 
-## <a name="session-id"></a>Id relace
+## <a name="session-id"></a>ID relace
 
-ID relace - instanci interakce uživatele s aplikací. Informace v polích kontextu relace je vždy o koncového uživatele. Při odesílání telemetrických dat ze služby kontextu relace je o uživatele, který spustil operace ve službě.
+ID relace – instance interakce uživatele s aplikací. Informace v polích kontextu relace je vždy o koncového uživatele. Při odesílání telemetrických dat ze služby, spočívá v kontextu relace uživatele, který inicioval operaci ve službě.
 
 Maximální délka: 64
 
 
-## <a name="anonymous-user-id"></a>Id anonymní uživatele
+## <a name="anonymous-user-id"></a>Id anonymního uživatele
 
-Id anonymního uživatele. Představuje koncový uživatel aplikace. Při odesílání telemetrických dat ze služby je kontext uživatele o uživatele, který spustil operace ve službě.
+Id anonymního uživatele. Představuje koncový uživatel aplikace. Při odesílání telemetrických dat ze služby je kontext uživatele o uživateli, který inicioval operaci služby.
 
-[Vzorkování](app-insights-sampling.md) je jedním z techniky, chcete-li minimalizovat objem shromážděných telemetrie. Algoritmus vzorkování pokusí buď ukázka příchozí nebo odchozí korelační telemetrie. Id anonymní uživatele se používá pro generování skóre vzorkování. Takže id anonymní uživatele by mělo být dostatečně náhodná hodnota. 
+[Vzorkování](app-insights-sampling.md) je jeden z postupů, chcete-li minimalizovat množství shromážděných telemetrie. Algoritmus vzorkování, pokusí se buď ukázka snížení nebo navýšení kapacity korelační telemetrická data. Id anonymního uživatele se používá pro generování skóre vzorkování. Id anonymního uživatele by tak měly být dostatečně náhodnou hodnotu. 
 
-Pomocí id anonymního uživatele pro uložení uživatelské jméno je zneužití pole. Pomocí id uživatele ověřený.
+Uložení uživatelské jméno pomocí id anonymního uživatele je nesprávné použití pole. Pomocí id uživatele ověřený.
 
 Maximální délka: 128
 
 
 ## <a name="authenticated-user-id"></a>Id ověřeného uživatele
 
-Id ověřeného uživatele. Opak id anonymního uživatele, toto pole představuje uživatele s popisným názvem. Od jeho PII informace nejsou shromažďovány ve výchozím nastavení většina SDK.
+Id ověřeného uživatele. Opak id anonymního uživatele, toto pole představuje uživatele s popisným názvem. Od jeho informace PII není shromažďují ve výchozím nastavení většina sady SDK.
 
 Maximální délka: 1024
 
 
 ## <a name="account-id"></a>ID účtu
 
-V aplikacích víceklientské Toto je účet ID nebo název, který funguje s uživateli. Příklady může být ID předplatného pro Azure portal nebo blog název platforma blogu.
+Ve víceklientských aplikacích jedná se o účet ID nebo název, který uživatel pracuje s. Příklady může být ID předplatného pro Azure portal nebo blogu název blogovací platforma.
 
 Maximální délka: 1024
 
 
-## <a name="cloud-role"></a>Role cloudu
+## <a name="cloud-role"></a>Role v cloudových procesech
 
-Název role aplikace je součástí. Mapuje přímo název role v azure. Můžete také použít k rozlišení malých služeb, které jsou součástí jedné aplikace.
+Název role aplikace je součástí. Mapuje přímo na název role v azure. Můžete také použít k rozlišení mikroslužby, které jsou součástí jedné aplikace.
 
 Maximální délka: 256
 
 
-## <a name="cloud-role-instance"></a>Instance role cloudu
+## <a name="cloud-role-instance"></a>Instance cloudové role
 
-Název instance, kde je aplikace spuštěna. Název počítače pro místní, název instance pro Azure.
+Název skupiny prostředků, ve kterém je spuštěná aplikace. Název počítače pro místní, název instance pro Azure.
 
 Maximální délka: 256
 
 
 ## <a name="internal-sdk-version"></a>Interní: Verze sady SDK
 
-Verze sady SDK. V tématu https://github.com/Microsoft/ApplicationInsights-Home/blob/master/SDK-AUTHORING.md#sdk-version-specification informace.
+Verze sady SDK. Zobrazit https://github.com/Microsoft/ApplicationInsights-Home/blob/master/SDK-AUTHORING.md#sdk-version-specification informace.
 
 Maximální délka: 64
 
 
 ## <a name="internal-node-name"></a>Interní: Název uzlu
 
-Toto pole představuje název uzlu používá pro účely fakturace. Použijte ho k přepsání standardní detekce uzlů.
+Toto pole představuje název uzlu použije pro účely fakturace. Použijte k přepsání standardních detekce uzly.
 
 Maximální délka: 256
 
 
 ## <a name="next-steps"></a>Další postup
 
-- Zjistěte, jak [rozšířit a filtrovat telemetrie](app-insights-api-filtering-sampling.md).
-- V tématu [datový model](application-insights-data-model.md) Application Insights typy a data modelu.
-- Podívejte se na kolekci vlastností kontextu standardní [konfigurace](app-insights-configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet).
+- Zjistěte, jak [rozšířit a filtrování telemetrie](app-insights-api-filtering-sampling.md).
+- Zobrazit [datový model](application-insights-data-model.md) pro typy a datový model Application Insights.
+- Prohlédněte si kolekci properties standardní kontextu [konfigurace](app-insights-configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet).

@@ -8,14 +8,14 @@ manager: jeconnoc
 ms.service: azure-functions
 ms.custom: vs-azure
 ms.topic: conceptual
-ms.date: 05/23/2018
+ms.date: 09/12/2018
 ms.author: glenga
-ms.openlocfilehash: 39745991f7ab3b181f892bbaa59283d92737ecf3
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 63213e38dab5ef2edd5150fe0adb620fecb2041c
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093869"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44714441"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Vývoj Azure Functions pomocí sady Visual Studio  
 
@@ -96,7 +96,7 @@ Chcete-li nastavit připojovací řetězec účtu úložiště:
 
 3. Opakujte předchozí krok a přidejte jedinečné klíče **hodnoty** pole pro všechna připojení, které vyžadují vaše funkce.
 
-## <a name="create-a-function"></a>Vytvoření funkce
+## <a name="add-a-function-to-your-project"></a>Přidání funkce do vašeho projektu
 
 V předem zkompilované funkce jsou definovány vazby používá funkci použití atributů v kódu. Při použití nástrojů Azure Functions k vytvoření funkce z dodané šablony tyto atributy jsou použity pro vás. 
 

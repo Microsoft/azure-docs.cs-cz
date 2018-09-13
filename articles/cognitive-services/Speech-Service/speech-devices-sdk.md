@@ -1,7 +1,7 @@
 ---
 title: Informace o zařízeních řeči SDK
-description: Úvod do sadou SDK pro řeč zařízení.
-titleSuffix: Microsoft Cognitive Services
+description: Iseznamte se sadou SDK pro řeč zařízení.
+titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: v-jerkin
 ms.service: cognitive-services
@@ -9,32 +9,35 @@ ms.technology: speech
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 97a5d00d43ac6a9d4b28ba23ca69d9b67e1bdf6f
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: ea1f2248feaa6b96f757b251d293860ad40ff8ce
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43049795"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44715699"
 ---
 # <a name="about-the-speech-devices-sdk-preview"></a>Informace o zařízeních řeči SDK (Preview)
 
-[Microsoft Speech service](overview.md) funguje se širokou škálu zařízení a zdrojů zvuku. Nyní můžete pozvedněte své aplikace řeči na vyšší úroveň díky odpovídající hardware a software. Sadou SDK pro řeč zařízení je knihovnu zapíná se předem spárované s jasným cílem vytvořené pole mikrofon development Kit. Získáte tak schopnost rychle otestovat nové hlasové scénáře, sadou SDK pro řeč zařízení umožňuje snadno integrovat Speech Service Microsoftu založené na cloudu do zařízení a vytvářet mimořádné uživatelské prostředí pro vaše zákazníky. 
+[Microsoft Speech service](overview.md) funguje se širokou škálu zařízení a zdrojů zvuku. Teď může trvat vašich aplikací rozpoznávání řeči na další úroveň díky odpovídající hardware a software. Sada SDK zařízení řeči je pretuned knihovny, které je spárováno pomocí účelových, mikrofon pole development Kit. 
 
-Využívá sadou SDK pro řeč zařízení [sadou SDK pro řeč](speech-sdk.md)a používá sadou SDK pro řeč k odesílání zvuk zpracovány našeho algoritmu pokročilé zpracování zvuku z pole mikrofon zařízení, které chcete [Microsoft Speech Service](overview.md).  Používá vícekanálových zvuku můžete poskytnout přesnější úplně pole [rozpoznávání řeči](speech-to-text.md) prostřednictvím šumu potlačení, zrušení zpětné vazby, beamforming a deaktivace reverberation.
+Vám můžou pomoct sadou SDK pro řeč zařízení:
+* Rychle otestujte nové hlasové scénáře.
+* Speech service založené na cloudu mnohem snazší integrate do zařízení.
+* Vytvoření mimořádné uživatelské prostředí pro vaše zákazníky. 
 
-Sadou SDK pro řeč zařízení umožňuje také vytvářet okolí zařízení s vlastními [přizpůsobit probuzení slovo](speech-devices-sdk-create-kws.md)– upozornění, který iniciuje interakce s uživatelem je jedinečné pro vlastní značky. 
+Využívá sadou SDK pro řeč zařízení [sadou SDK pro řeč](speech-sdk.md). Používá sadou SDK pro řeč pro posílat zvuk, který je zpracován našeho algoritmu pokročilé zpracování zvuku z pole mikrofon zařízení, které chcete [Speech service](overview.md). Používá vícekanálový zvuku můžete poskytnout přesnější úplně pole [rozpoznávání řeči](speech-to-text.md) prostřednictvím šumu potlačení, zrušení zpětné vazby, beamforming a dereverberation.
 
-Sada SDK usnadňuje různé scénáře hlasové služby, jako jsou jednotky do pořadí systémy, v obchodě nebo doma Asistenti a inteligentní mluvčí. Může reagovat na uživatele s textem, mluvit zpět na ně ve výchozí nebo [vlastní hlasové](how-to-customize-voice-font.md), poskytovat výsledky vyhledávání [přeložit](speech-translation.md) do jiných jazyků a další. Těšíme se zobrazuje, co je vytvořit!
+Sadou SDK pro řeč zařízení můžete použít také k vytváření okolí zařízení, které mají vlastní [přizpůsobit probuzení slovo](speech-devices-sdk-create-kws.md)– upozornění, který iniciuje interakce s uživatelem je jedinečné pro vlastní značky. 
 
-
+Sadou SDK pro řeč zařízení umožňuje různé scénáře hlasové služby, jako jsou jednotky do pořadí systémy, v obchodě nebo doma Asistenti a inteligentní mluvčí. Může reagovat na uživatele s textem, mluvit zpět na ně ve výchozí nebo [vlastní hlasové](how-to-customize-voice-font.md), poskytovat výsledky vyhledávání [přeložit](speech-translation.md) do jiných jazyků a další. Těšíme se zobrazuje, co je vytvořit!
 
 ## <a name="development-kit-providers"></a>Poskytovatelé Development kit
 
-Referenční návrhy systému kompletní, začátku do konce. Další už brzy!
+Tyto referenční návrhy dokončení, začátku do konce systému v současné době jsou k dispozici: 
 
 |||
 |-|-|
-|[![ROOBO logo](media/speech-devices-sdk/roobo-logo.png)](http://ddk.roobo.com/)|ROOBO poskytuje kompletní řešení AI systému pro electric spotřebičů, automobily, robotů, toys a další obory. Referenční návrhy společnosti ROOBO výrazně zkrátit vývoj dobu uvedení na trh prostřednictvím integrace se službou Microsoft Speech. [Navštivte ROOBO](http://ddk.roobo.com/)|
+|[![ROOBO logo](media/speech-devices-sdk/roobo-logo.png)](http://ddk.roobo.com/)|ROOBO poskytuje kompletní umělé inteligence (AI) systému řešení electric spotřebičů, automobily, robotů, toys a další obory. Referenční návrhy společnosti ROOBO výrazně zkrátit vývoj dobu uvedení na trh prostřednictvím integrace se službou Microsoft Speech. [Navštivte ROOBO](http://ddk.roobo.com/).|
 
 ## <a name="next-steps"></a>Další postup
 

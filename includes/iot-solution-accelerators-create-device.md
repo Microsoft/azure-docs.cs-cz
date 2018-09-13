@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/16/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: c6e57d5094f455983b8b474b6930f628d654e457
-ms.sourcegitcommit: e45b2aa85063d33853560ec4bc867f230c1c18ce
+ms.openlocfilehash: 9196648d7e3d2ea717b1a61cbca959805649ed2f
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43371212"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44754417"
 ---
 Do prvního scénáře, přidejte nový typ telemetrických dat na Contoso existující **chladič** typ zařízení.
 
@@ -73,6 +73,7 @@ Tato příručka, budete potřebovat:
 
 * Visual Studio Code. Je možné [stáhněte si Visual Studio Code pro Mac, Linux a Windows](https://code.visualstudio.com/download).
 * .NET core. Můžete si stáhnout [.NET Core pro Windows, Mac a Linux](https://www.microsoft.com/net/download).
+* [C# pro Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
 * Postman. Můžete si stáhnout [Postman pro Mac, Windows nebo Linuxem](https://www.getpostman.com/apps).
 * [Nasadí do vašeho předplatného Azure IoT hub](../articles/iot-hub/iot-hub-create-through-portal.md). Potřebujete připojovací řetězec služby IoT hub k dokončení kroků v této příručce. Získání připojovacího řetězce z webu Azure portal.
 * Databáze Cosmos DB, která používá rozhraní SQL API a, který je nakonfigurovaný pro [silnou konzistenci](../articles/cosmos-db/manage-account.md). Potřebujete připojovací řetězec databáze Cosmos DB k dokončení kroků v této příručce. Získání připojovacího řetězce z webu Azure portal.
@@ -89,13 +90,11 @@ Pokyny v tomto článku se předpokládá, že používáte Windows. Pokud použ
 
 ### <a name="download-the-microservices"></a>Stáhněte si mikroslužby
 
-Stáhněte a rozbalte [mikroslužeb adaptér úložiště](https://github.com/Azure/pcs-storage-adapter-dotnet/archive/master.zip) z Githubu do vhodného umístění na místním počítači.
-
-Stáhněte a rozbalte [mikroslužeb simulace zařízení](https://github.com/Azure/device-simulation-dotnet/archive/master.zip) z Githubu do vhodného umístění na místním počítači.
+Stáhněte a rozbalte [pro vzdálené monitorování mikroslužeb](https://github.com/Azure/remote-monitoring-services-dotnet/archive/master.zip) z Githubu do vhodného umístění na místním počítači.
 
 ### <a name="run-the-storage-adapter-microservice"></a>Spustit adaptér mikroslužeb úložiště
 
-Otevřít **počítače úložiště adaptér dotnet-master** složky ve Visual Studio Code. Získáte po kliknutí na **obnovení** tlačítka a opravte všechna nevyřešené závislosti.
+Otevřít **remote-monitoring-services-dotnet-master\storage-adapter** složky ve Visual Studio Code. Získáte po kliknutí na **obnovení** tlačítka a opravte všechna nevyřešené závislosti.
 
 Otevřít **.vscode/launch.json** soubor a přiřadit k připojovací řetězec služby Cosmos DB **PCS_STORAGEADAPTER_DOCUMENTDB_CONNSTRING** proměnné prostředí.
 
@@ -420,7 +419,7 @@ V této části provedete testovací typy zařízení, které jste vytvořili v 
 
 ### <a name="run-the-device-simulation-microservice"></a>Spustit mikroslužeb simulace zařízení
 
-Otevřít **zařízení simulace dotnet-master** složky, které jste si stáhli z Githubu v nové instanci sady Visual Studio Code. Získáte po kliknutí na **obnovení** tlačítka a opravte všechna nevyřešené závislosti.
+Otevřít **remote-monitoring-services-dotnet-master\device-simulation** složky, které jste si stáhli z Githubu v nové instanci sady Visual Studio Code. Získáte po kliknutí na **obnovení** tlačítka a opravte všechna nevyřešené závislosti.
 
 Otevřít **.vscode/launch.json** soubor a přiřadit k připojovací řetězec služby IoT Hub **PCS_IOTHUB_CONNSTRING** proměnné prostředí.
 

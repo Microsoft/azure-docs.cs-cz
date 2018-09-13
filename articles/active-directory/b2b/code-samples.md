@@ -1,38 +1,38 @@
 ---
-title: Kód spolupráce Azure Active Directory s B2B a ukázky PowerShell | Microsoft Docs
-description: Ukázky kódu a prostředí PowerShell pro Azure Active Directory s B2B spolupráce
+title: Kód pro spolupráci Azure Active Directory s B2B a ukázky prostředí PowerShell | Dokumentace Microsoftu
+description: Ukázky kódu a prostředí PowerShell pro spolupráci Azure Active Directory s B2B
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: article
 ms.date: 04/11/2017
-ms.author: twooley
-author: twooley
+ms.author: mimart
+author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: d522649e9339611c56e9f2ae7e6feac067d2ab49
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
-ms.translationtype: HT
+ms.openlocfilehash: f9740aba27b7a593fdf2b465f539d305d24333de
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34267381"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35643365"
 ---
-# <a name="azure-active-directory-b2b-collaboration-code-and-powershell-samples"></a>Kód spolupráce Azure Active Directory s B2B a ukázky prostředí PowerShell
+# <a name="azure-active-directory-b2b-collaboration-code-and-powershell-samples"></a>Kód pro spolupráci Azure Active Directory s B2B a ukázky prostředí PowerShell
 
-## <a name="powershell-example"></a>Příklad PowerShell
-Vám může hromadné pozvání externí uživatele organizaci z e-mailové adresy, které jsou uloženy v. Soubor CSV.
+## <a name="powershell-example"></a>Příklad Powershellu
+Vám může hromadné – pozvání externí uživatele organizace v e-mailové adresy, které jsou uložené v. Soubor CSV.
 
-1. Příprava. CSV soubor vytvořte nový soubor CSV a pojmenujte ji invitations.csv. V tomto příkladu soubor je uložen v C:\data a obsahuje následující informace:
+1. Příprava. Sdílený svazek clusteru vytvořit nový soubor CSV a pojmenujte ho invitations.csv. V tomto příkladu soubor je uložen v C:\data a obsahuje následující informace:
   
   Název                  |  InvitedUserEmailAddress
   --------------------- | --------------------------
-  Pozvané Gmail B2B     | b2binvitee@gmail.com
-  Pozvané B2B aplikace Outlook   | b2binvitee@outlook.com
+  B2B Gmailu pozvaného     | b2binvitee@gmail.com
+  Aplikace Outlook B2B pozvaného   | b2binvitee@outlook.com
 
 
-2. Získat nejnovější Azure AD PowerShell nové rutiny používat, musíte nainstalovat aktualizovaný modul Azure AD PowerShell, kterou si můžete stáhnout z [stránce vydání modul prostředí Powershell](https://www.powershellgallery.com/packages/AzureADPreview)
+2. Získat nejnovější Azure AD PowerShell nové rutiny používat, musíte nainstalovat aktualizovaný modul Azure AD PowerShell, kterou si můžete stáhnout z [stránce verzí modulu prostředí Powershell](https://www.powershellgallery.com/packages/AzureADPreview)
 
-3. Přihlaste se k vaší klientů
+3. Přihlaste se na vašem tenantovi
 
     ```
     $cred = Get-Credential
@@ -50,11 +50,11 @@ Vám může hromadné pozvání externí uživatele organizaci z e-mailové adre
 
 Tato rutina odešle pozvánka k e-mailové adresy v invitations.csv. Další funkce této rutiny:
 - Vlastní text v e-mailové zprávy
-- Včetně zobrazovaný název pro pozvané uživatele
-- Odesílání zpráv do CCs nebo zcela potlačit e-mailové zprávy
+- Včetně zobrazované názvy pozvaný uživatel
+- Odesílání zpráv do CCs nebo zcela potlačení e-mailové zprávy
 
 ## <a name="code-sample"></a>Ukázka kódu
-Zde jsme ukazují, jak volat rozhraní API, pozvánku v režimu "pouze aplikace", získat adresu URL se pro prostředek, ke kterému jsou vyzve uživatele B2B. Cílem je k odesílání e-mailu s vlastní pozvánku. E-mailu se může skládat s klientem HTTP, aby bylo možné přizpůsobit, jak vypadá a odeslat pomocí rozhraní Graph API.
+Tady jsme ukazují, jak volat e-mailové pozvánce rozhraní API, v režimu "pouze aplikace", můžete získat adresu URL uplatnění pro prostředek, ke kterému zvete uživatele B2B. Cílem je odeslat vlastní uvítací e-mail. E-mailu se může skládat s klientem HTTP, takže můžete přizpůsobit, jak vypadá a poslat ho přes rozhraní Graph API.
 
 ```
 namespace SampleInviteApp

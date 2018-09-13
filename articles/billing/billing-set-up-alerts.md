@@ -1,7 +1,7 @@
 ---
-title: Nastavení výstrah fakturace nebo platební pro předplatná Azure | Microsoft Docs
-description: Popisuje, jak můžete na můžete nastavit výstrahy faktury Azure, se můžete vyhnout fakturace výskyt nečekaných událostí.
-keywords: platební výstraze, fakturace výstrahu
+title: Nastavení upozornění fakturace ani kredit nad rámec pro předplatná Azure | Dokumentace Microsoftu
+description: Popisuje, jak můžete nastavit výstrahy na vaší faktuře za Azure tomu se můžete vyhnout fakturační překvapení.
+keywords: kredit výstrahy, upozornění fakturace
 services: billing
 documentationcenter: ''
 author: adpick
@@ -13,56 +13,56 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/9/2017
+ms.date: 06/15/2018
 ms.author: adpick
-ms.openlocfilehash: 981cb1153e0268e6572207f8d2401edb23485863
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 094bfe041ae04e52b6d998ccfd1d964abf192d6a
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34607799"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35904051"
 ---
-# <a name="set-up-billing-or-credit-alerts-for-your-microsoft-azure-subscriptions"></a>Nastavení výstrah fakturace nebo platební pro vaše předplatné Microsoft Azure
-Pokud jste správce účtů pro předplatné Azure, můžete použít Azure fakturace služby oznámení. Chcete-li vytvořit vlastní fakturace výstrahy, které vám pomůžou monitorovat a spravovat fakturace aktivity pro vaše účty Azure.
+# <a name="set-up-billing-or-credit-alerts-for-your-microsoft-azure-subscriptions"></a>Nastavení upozornění fakturace nebo kredit pro předplatné Microsoft Azure
+Pokud jste správcem účtu pro předplatné Azure, služba upozornění fakturace Azure můžete vytvářet přizpůsobená upozornění fakturace, která vám pomůžou sledovat a řídit fakturaci účtů Azure.
 
-Tato služba je ve verzi preview, takže je nutné povolit na stránce funkce verze Preview.
+Tato služba je ve verzi preview, takže je potřeba povolit na stránce funkce ve verzi Preview.
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
-## <a name="set-the-alert-threshold-and-email-recipients"></a>Nastavit výstrahy příjemce prahovou hodnotu a e-mailu
-1. Navštivte [stránce funkce verze Preview](https://account.windowsazure.com/PreviewFeatures) a povolte **fakturace výstrah služby**.
+## <a name="set-the-alert-threshold-and-email-recipients"></a>Nastavte upozornění příjemcům prahové hodnoty a e-mailu
+1. Navštivte [stránce funkcí ve verzi Preview](https://account.windowsazure.com/PreviewFeatures) a povolit **služba upozornění fakturace**.
 
-1. Po přijetí e-mailu potvrzení, že je zapnutý fakturace služby pro vaše předplatné, navštivte [stránce předplatných](https://account.windowsazure.com/Subscriptions) na portálu účtů. Klikněte na předplatné, které chcete monitorovat a pak klikněte na tlačítko **výstrahy**.
+1. Po přijetí e-mailové potvrzení, že je zapnutá fakturace služby pro vaše předplatné, navštivte [na stránce předplatná](https://account.windowsazure.com/Subscriptions) na portálu účtů. Klikněte na předplatné, které chcete monitorovat a potom klikněte na **výstrahy**.
 
-    ![Snímek obrazovky zobrazení odběry z centra účtů Azure, se zvýrazněnou výstrahy][Image1]
+    ![Snímek obrazovky zobrazení předplatných centru účtů Azure s výstrahami zvýrazněnou][Image1]
 
-2. Klikněte na tlačítko **přidat výstrahy** k vytvoření vaší první z nich. Můžete nastavit celkem pět fakturace výstrahy na předplatné s různé prahové hodnoty a až dvě příjemců e-mailu pro každou výstrahu.
+2. Klepnutím na tlačítko **přidat upozornění** k vytvoření vaší první z nich. Celkový počet pět upozornění fakturace na jedno předplatné, se různé prahové hodnoty a až dva příjemců e-mailu pro každé upozornění můžete nastavit.
 
-    ![Snímek obrazovky zobrazení výstrahy, ve kterém můžete přidat výstrahy][Image2]
+    ![Snímek obrazovky zobrazení výstrah, ve kterém můžete přidat výstrahu][Image2]
 
-3. Přidáte-li výstrahu, můžete zadat jedinečný název, zvolte útraty prahovou hodnotu a zvolte e-mailové adresy, které jsou odesílány výstrahy. Při nastavování prahovou hodnotu, můžete buď **fakturace celkový** nebo **peněžního kreditu, který** z **výstrahy pro** seznamu. Fakturace celkem zobrazí se výstraha při předplatné výdaje překročí prahovou hodnotu. Pro peněžního kreditu zobrazí se výstraha při peněžní kredity neklesla pod limit. Peněžní kredity obvykle platí pro odběry bezplatné zkušební verze a Visual Studio.
+3. Přidáte-li výstrahu, zadejte pro něj jedinečný název, zvolte útraty prahovou hodnotu a zvolte e-mailové adresy, kam se mají oznámení odesílat. Při nastavování prahovou hodnotu, můžete použít buď **fakturace celkové** nebo **peněžní kredit ve výši** z **výstrah pro** seznamu. Fakturační celkem zobrazí se výstraha při předplatné útraty překročí prahovou hodnotu. U nabídek peněžních kreditů zobrazí se výstraha při peněžní kredity klesne pod limit. Peněžní kredity obvykle vztahovat na předplatná bezplatnou zkušební verzi a sady Visual Studio.
 
-    ![Snímek obrazovky zobrazení výstrah přidání, kde můžete konfigurovat příjemce][Image3]
+    ![Snímek obrazovky zobrazení výstrah sčítání, kde můžete konfigurovat příjemce][Image3]
 
-Azure podporuje všechny e-mailovou adresu, ale není ověřte, že prací e-mailovou adresu, proto tuto možnost pro překlepům.
+Azure podporuje všechny e-mailovou adresu, ale neověřuje, že e-mailové adresy funguje, tak zkontrolujte pro překlepy.
 
-## <a name="check-on-your-alerts"></a>Zkontrolujte na upozornění
-Po nastavení výstrahy centra účtů je uvádí a ukazuje, kolik více můžete nastavit. Pro každou výstrahu zobrazí datum a čas, který byl odeslán, jestli je výstraha fakturace celkový nebo peněžního kreditu, který a omezení, které vytvořili. Datum je formát rrrr mm-dd formát data a času je 24 hodin koordinaci světový čas (UTC). Kliknutím na znaménko plus pro výstrahu v seznamu, pokud ho chcete upravit, nebo klikněte na odpadkový ho odstranit.
+## <a name="check-on-your-alerts"></a>Podívejte se na vaše upozornění
+Po nastavení výstrah do centra pro účty jejich seznam a ukazuje, kolik více můžete nastavit. Pro každé upozornění zobrazí datum a čas, kdy byla vyslána ať už jde o výstrahu týkající se fakturace celkové nebo peněžní kredit ve výši a omezení, které nastavíte. Datum je formát rrrr mm-dd formát data a času je 24 hodin koordinovat světový čas (UTC). Klikněte na znaménko plus upozornění v seznamu se ji upravit, nebo klikněte na tlačítko odpadkového koše ho odstranit.
 
-## <a name="delete-alerts-or-email-addresses-from-the-azure-billing-alert-service"></a>Odstranit výstrahy nebo e-mailové adresy z Azure fakturace služby oznámení.
-Pokud byste někdy potřebovali odebrat jakékoli informace ze služby, aktualizujte e-mailovou adresu na soubor nebo zcela odstranit výstrahu.
+## <a name="delete-alerts-or-email-addresses-from-the-azure-billing-alert-service"></a>Odstranění upozornění nebo e-mailové adresy z služba upozornění fakturace Azure
+Pokud byste někdy potřebovali, odeberte všechny informace ze služby, aktualizujte e-mailovou adresu pro soubor nebo výstrahu zcela odstranit.
 
-   ![Snímek obrazovky zobrazení výstrah odstranění, kde můžete odebrat osobní údaje.][Image4]
+   ![Snímek obrazovky zobrazení výstrah odstranění, kde můžete odebrat osobní údaje][Image4]
 
-## <a name="billing-alerts-for-enterprise-agreement-ea-customers"></a>Výstrahy fakturace pro zákazníky Enterprise Agreement (EA)
-EA předplatných nejsou podporované touto službou, místo toho EA zákazníkům můžete získat výstrahy pro každé oddělení v zápisu nastavením výdaje kvóty. V tématu [oddělení výdaje kvóty](https://ea.azure.com/helpdocs/departmentSpendingQuotas) na portálu EA začít pracovat.
+## <a name="billing-alerts-for-enterprise-agreement-ea-customers"></a>Upozornění fakturace pro zákazníky, kteří Enterprise Agreement (EA)
+Tato služba nepodporuje předplatných EA, místo toho zákazníci programu EA si můžete získat upozornění pro každé oddělení v rámci registrace nastavením kvóty útraty. Zobrazit [kvóty útraty oddělení](https://ea.azure.com/helpdocs/departmentSpendingQuotas) na portálu EA, abyste mohli začít.
 
-## <a name="learn-more-about-azure-cost-management"></a>Další informace o Azure náklady na správu
-- Odhad náklady na používání [cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/), [celkové náklady na vlastnictví kalkulačky](https://aka.ms/azure-tco-calculator), a když přidáte službu.
-- [Zkontrolujte využití a náklady na portálu Azure pravidelně](billing-getting-started.md#costs).
-- Zapnout [Azure Advisor náklady doporučení](../advisor/advisor-cost-recommendations.md).
+## <a name="learn-more-about-azure-cost-management"></a>Další informace o službě Azure cost management
+- Odhad nákladů s využitím [cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/), [celkové náklady na vlastnictví kalkulačky](https://aka.ms/azure-tco-calculator), a pokud přidáte službu.
+- [Kontrola využití a nákladů pravidelně na webu Azure portal](billing-getting-started.md#costs).
+- Zapnout [nákladů doporučení Azure Advisoru](../advisor/advisor-cost-recommendations.md).
 
-Další informace najdete v tématu [Azure náklady správy pokyny](billing-getting-started.md).
+Další informace najdete v tématu [Azure cost management pokyny](billing-getting-started.md).
 
 [Image1]: ./media/azure-billing-set-up-alerts/billingalert1.png 
 [Image2]: ./media/azure-billing-set-up-alerts/billingalert2.png

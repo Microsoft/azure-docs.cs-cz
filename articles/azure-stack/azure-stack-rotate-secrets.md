@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: dacfa738a99eb2d580d825957d09b2b1a3111e93
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: b0fe9acc187aab87e8ee0528cf998e2ef923f897
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44051387"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44722006"
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>Otočit tajné kódy ve službě Azure Stack
 
@@ -110,6 +110,8 @@ Obměna externí interní tajný kód:
     Zabezpečený řetězec heslo použité pro všechny vytvořené soubory certifikátů pfx.
 4. Počkejte, dokud otočit tajných klíčů.  
 Po úspěšném dokončení otočení tajného kódu se zobrazí konzola **celkový stav akce: Úspěch**. 
+    > [!note]  
+    > Pokud selže tajných kódů otočení, postupujte podle pokynů v chybové zprávě a znovu spusťte počáteční secretrotation s **– opětovné spuštění** parametru. Obraťte se na podporu Pokud dochází k opakované otočení tajných kódů chyb. 
 5. Po úspěšném dokončení tajných kódů otáčení odebrat certifikáty ze sdílené složky vytvořené v kroku předběžné a uložit je do jejich zabezpečené umístění zálohy. 
 
 ## <a name="walkthrough-of-secret-rotation"></a>Návod k otočení tajného kódu
@@ -136,6 +138,10 @@ Obměna pouze interní tajných kódů služby Azure Stack:
 
 1. Vytvořte relaci Powershellu s [privilegovaných koncový bod](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint).
 2. V relaci privilegovaných koncový bod spustit **Start SecretRotation** bez argumentů.
+3. Počkejte, dokud otočit tajných klíčů.  
+Po úspěšném dokončení otočení tajného kódu se zobrazí konzola **celkový stav akce: Úspěch**. 
+    > [!note]  
+    > Pokud selže tajných kódů otočení, postupujte podle pokynů v chybové zprávě a znovu spusťte počáteční secretrotation s **– spusťte znovu** parametru. Obraťte se na podporu Pokud dochází k opakované otočení tajných kódů chyb. 
 
 ## <a name="start-secretrotation-reference"></a>Odkaz na začátku SecretRotation
 

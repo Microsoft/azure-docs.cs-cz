@@ -3,19 +3,19 @@ title: 'Rychlý start: Java pro rozhraní API (v4) nástroje QnA Maker'
 titleSuffix: Azure Cognitive Services
 description: Získat informace a ukázky kódu můžete rychle začít používat Microsoft Translator Text API ve službě Microsoft Cognitive Services v Azure.
 services: cognitive-services
-author: nitinme
+author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: article
-ms.date: 05/07/2018
-ms.author: v-jaswel
-ms.openlocfilehash: b436cbc1efde2e28b388e6bfc1843af1808ea993
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.date: 09/12/2018
+ms.author: diberry
+ms.openlocfilehash: 48876a9cc1e79b99a94e99ced2ad823e7c368a60
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346669"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721666"
 ---
 # <a name="quickstart-for-microsoft-qna-maker-api-with-java"></a>Rychlý start pro nástroj QnA Maker Microsoft API s využitím Javy 
 <a name="HOLTop"></a>

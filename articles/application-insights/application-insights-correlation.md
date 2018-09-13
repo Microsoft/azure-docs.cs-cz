@@ -1,6 +1,6 @@
 ---
-title: Azure Application Insights Telemetrie korelace | Microsoft Docs
-description: Application Insights telemetrie korelace
+title: Korelace Telemetrie Azure Application Insights | Dokumentace Microsoftu
+description: Korelace telemetrie Application Insights
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -9,41 +9,43 @@ ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/09/2018
-ms.author: mbullwin; sergkanz
-ms.openlocfilehash: 12b46b4abaa17fe9dd0e9055bca5463312bbd15d
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.reviewer: sergkanz
+ms.author: mbullwin
+ms.openlocfilehash: 057e47c19f6405bec9e1fa80dd7097476876baa9
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35643185"
 ---
-# <a name="telemetry-correlation-in-application-insights"></a>Korelace telemetrii ve službě Application Insights
+# <a name="telemetry-correlation-in-application-insights"></a>Korelace telemetrie v Application Insights
 
-Na světě služby malých každé logické operace vyžaduje práci v různých součástí služby. Každou z těchto součástí samostatně agentem lze sledovat [Application Insights](app-insights-overview.md). Součást webové aplikace komunikuje s součást zprostředkovatele ověřování k ověření pověření uživatele a s komponentou rozhraní API se získat data pro vizualizaci. Rozhraní API součásti následně můžete zadávat dotazy na data z jiných služeb a použití komponent, poskytovatel mezipaměti a oznámit komponentu fakturace o toto volání. Application Insights podporuje distribuované telemetrie korelace. Umožňuje zjistit, které komponenta je zodpovědná za selhání nebo snížení výkonu.
+V řadě mikroslužby každé logické operace vyžaduje práci v různých součástí služby. Každá z těchto součástí samostatně lze pomocí [Application Insights](app-insights-overview.md). Součást webové aplikace komunikuje s součást zprostředkovatele ověřování k ověření přihlašovacích údajů uživatele a s komponentou rozhraní API k získání dat pro vizualizaci. Komponentu rozhraní API v jeho důsledku můžete dotazovat data z jiných služeb a používat komponenty zprostředkovatele mezipaměti a upozornění fakturace komponenty o tomto volání. Application Insights podporuje distribuované telemetrie korelace. Umožňuje zjistit, jaká součást je zodpovědná za selhání nebo snížení výkonu.
 
-Tento článek vysvětluje datový model použít ke korelaci telemetrické zprávy odesílané součástmi více pomocí Application Insights. Pokrývá kontextu šíření technik a protokoly. Také vysvětluje implementace koncepty korelace na různé jazyky a platformy.
+Tento článek vysvětluje používané službou Application Insights k harmonizaci telemetrická data odesílaná více komponent datového modelu. Zabývá se kontext šíření techniky a protokoly. Věnuje se také provádění koncepty korelace v různých jazycích a platformách.
 
-## <a name="telemetry-correlation-data-model"></a>Telemetrie korelace datový model
+## <a name="telemetry-correlation-data-model"></a>Datový model korelace telemetrie
 
-Definuje Application Insights [datový model](application-insights-data-model.md) pro distribuované telemetrie korelace. Pokud chcete přiřadit telemetrie logický provoz, každá položka telemetrie má kontext pole s názvem `operation_Id`. Tento identifikátor je sdílen každá položka telemetrie v distribuované trasování. Proto i přes ztrátu telemetrie z jedné vrstvy stále můžete přidružit telemetrie hlášené ostatní součásti.
+Definuje Application Insights [datový model](application-insights-data-model.md) pro korelaci distribuované telemetrie. Pokud chcete přidružit telemetrie logické operace, každé položce telemetrie má kontext pole s názvem `operation_Id`. Tento identifikátor je sdílet každé položce telemetrie v distribuované trasování. Takže i přes ztrátu telemetrie z jedné vrstvy stále můžete přidružit hlášené součástmi další telemetrická data.
 
-Distribuované logický provoz se obvykle skládá z sady menší operací - žádostí zpracovaných rozhraním jedna z komponent. Tyto operace jsou definovány [požadavku telemetrie](application-insights-data-model-request-telemetry.md). Každý požadavek telemetrie má svou vlastní `id` identifikující globálně jedinečné. A všechny telemetrie – trasování, výjimky, atd. s touto žádostí měli nastavit `operation_parentId` na hodnotu požadavku `id`.
+Distribuované logické operace se obvykle skládá z sadu menších operací - žádostí zpracovaných rozhraním jednu součást. Tyto operace jsou definovány [telemetrie žádostí](application-insights-data-model-request-telemetry.md). Každý požadavek telemetrie má svůj vlastní `id` , který globálně jedinečným způsobem identifikuje. A veškerá telemetrie – trasování, výjimky, atd. s touto žádostí, nastavte `operation_parentId` hodnotě požadavku `id`.
 
-Každé odchozí operace jako volání protokolu http na jinou součást reprezentována [telemetrických závislostí](application-insights-data-model-dependency-telemetry.md). Telemetrických závislostí také definuje vlastní `id` , je globálně jedinečný. Požadavek telemetrie, iniciovaná toto volání závislostí použije jako `operation_parentId`.
+Všechny odchozí operace jako volání protokolu http na jinou komponentu reprezentována [telemetrických závislostí](application-insights-data-model-dependency-telemetry.md). Telemetrie závislostí také definuje vlastní `id` , který je globálně jedinečný. Telemetrie žádostí iniciovaných toto volání závislosti, používá ho jako `operation_parentId`.
 
-Můžete vytvořit v zobrazení distribuované logické operace pomocí `operation_Id`, `operation_parentId`, a `request.id` s `dependency.id`. Tato pole také definovat pořadí příčiny telemetrii volání.
+Můžete vytvořit zobrazení pomocí distribuované logické operace `operation_Id`, `operation_parentId`, a `request.id` s `dependency.id`. Tato pole také definovat pořadí příčinnou souvislost volání telemetrická data.
 
-V prostředí malých služeb může trasování ze součásti přejděte do různých úložných. Všechny komponenty může mít svůj vlastní klíč instrumentace ve službě Application Insights. Pro získání telemetrických dat pro logický provoz, musíte se k dotazování na data z každé úložiště. Po velký počet úložných je potřeba mít na kde hledat další nápovědu.
+Trasování z komponent může v prostředí mikroslužby, přejděte do různých úložných. Každá komponenta může mít svůj vlastní Instrumentační klíč ve službě Application Insights. K získání telemetrických informací o logické operace, budete muset dotaz na data z každé úložiště. Když je velký počet úložišť, musíte mít pomocného parametru, ve kterém můžete vyhledat další.
 
-Application Insights datový model definuje dvě pole chcete tento problém vyřešit: `request.source` a `dependency.target`. První pole identifikuje komponentu závislostí žádost iniciovala a druhý identifikuje, která komponenta vrátila odpověď volání závislostí.
+Application Insights data model definuje dvě pole pro vyřešení tohoto problému: `request.source` a `dependency.target`. První pole určuje komponentu, závislost žádost iniciovala a druhý určuje, jaká součást vrátil odpověď volání závislostí.
 
 
 ## <a name="example"></a>Příklad:
 
-Podívejme se na příklad ceny STOCK aplikace zobrazuje aktuální cena trhu populace pomocí externí rozhraní API volat rozhraní API akcií. CENY STOCK aplikace má na stránce `Stock page` otevřít s použitím klienta webové prohlížeče `GET /Home/Stock`. Aplikace dotazuje rozhraní API STOCK pomocí volání protokolu HTTP `GET /api/stock/value`.
+Vezměme si příklad ceny AKCIE aplikace zobrazuje aktuální trhu ceny akcie pomocí externího rozhraní API volat rozhraní API AKCIE. Na stránce má aplikace ceny AKCIE `Stock page` otevřít s použitím klienta webové prohlížeče `GET /Home/Stock`. Aplikace dotazuje prostřednictvím volání protokolu HTTP rozhraní API AKCIE `GET /api/stock/value`.
 
-Můžete analyzovat výsledné telemetrie spuštění dotazu:
+Můžete analyzovat výsledná telemetrických dat spuštěním dotazu:
 
 ```
 (requests | union dependencies | union pageViews) 
@@ -51,70 +53,70 @@ Můžete analyzovat výsledné telemetrie spuštění dotazu:
 | project timestamp, itemType, name, id, operation_ParentId, operation_Id
 ```
 
-V poznámce zobrazení výsledek, že všechny položky telemetrie sdílet kořenu `operation_Id`. Při volání ajax provedené na stránce – nové jedinečné id `qJSXU` je přiřazena k telemetrických závislostí a stránkové zobrazení na id slouží jako `operation_ParentId`. Dále požadavek serveru používá rozhraní ajax na id jako `operation_ParentId`atd.
+V poznámce výsledek zobrazení, že všechny položky telemetrie sdílet kořenovou `operation_Id`. Při volání ajax udělali na stránce – nové jedinečné id `qJSXU` je přiřazena k telemetrii závislostí a id pro zobrazení stránky se používá jako `operation_ParentId`. Pak požadavek na serveru používá id jazyka ajax na jako `operation_ParentId`atd.
 
 | itemType   | jméno                      | id           | operation_ParentId | operation_Id |
 |------------|---------------------------|--------------|--------------------|--------------|
-| pageView   | Uložené stránky                |              | STYz               | STYz         |
-| závislosti | / Home GET/Stock           | qJSXU        | STYz               | STYz         |
-| Požadavek    | Domovské GET/Stock            | KqKwlrSt9PA= | qJSXU              | STYz         |
-| závislosti | ZÍSKAT /api/stock/value      | bBrf2L7mm2g = | KqKwlrSt9PA=       | STYz         |
+| pageView   | Základní stránka                |              | STYz               | STYz         |
+| závislost | / GET Home/Stock           | qJSXU        | STYz               | STYz         |
+| požadavek    | GET Home/Stock            | KqKwlrSt9PA= | qJSXU              | STYz         |
+| závislost | ZÍSKAT /api/stock/value      | bBrf2L7mm2g = | KqKwlrSt9PA=       | STYz         |
 
-Nyní když volání `GET /api/stock/value` provedené na externí službu chcete znát identitu tohoto serveru. Abyste mohli nastavit `dependency.target` pole správně. Když externí služba nepodporuje monitorování - `target` nastavena na název hostitele služby jako `stock-prices-api.com`. Ale pokud služby identifikuje vrácením i předdefinovanou hlavičky protokolu HTTP - `target` obsahuje identitu služby, která umožňuje vytvářet distribuované trasování dotazováním telemetrie z dané služby Application Insights. 
+Teď při volání `GET /api/stock/value` provedené externí služby chcete znát identitu serveru. Abyste mohli nastavit `dependency.target` pole odpovídajícím způsobem. Když externí služba nepodporuje sledování - `target` je nastavena na název hostitele služby jako `stock-prices-api.com`. Nicméně pokud tuto službu identifikuje vrácením i předdefinovanou hlavičky protokolu HTTP - `target` obsahuje identitu služby, která umožňuje vytvářet distribuované trasování pomocí dotazu na telemetrická data ze služby Application Insights. 
 
-## <a name="correlation-headers"></a>Korelace hlavičky
+## <a name="correlation-headers"></a>Korelace záhlaví
 
-Pracujeme na návrh RFC [korelace protokolu HTTP](https://github.com/lmolkova/correlation/blob/master/http_protocol_proposal_v1.md). Tento návrh definuje dvě hlavičky:
+Pracujeme na RFC návrh [korelační protokol HTTP](https://github.com/lmolkova/correlation/blob/master/http_protocol_proposal_v1.md). Tento návrh definuje dvě záhlaví:
 
 - `Request-Id` provádění globálně jedinečné id volání
-- `Correlation-Context` -provádění kolekce párů hodnot názvu vlastnosti distribuované trasování
+- `Correlation-Context` -provádění kolekce dvojic hodnot název vlastnosti distribuované trasování
 
-Standardní také definuje dvě schémata `Request-Id` generování - centralizovaného a hierarchického. S plochým schématu, je dobře známé `Id` definovaný pro klíč `Correlation-Context` kolekce.
+Standardní definuje také dvě schémata `Request-Id` generování - bez stromové struktury a hierarchické. Plochý schématu je dobře známé `Id` definovaný pro klíč `Correlation-Context` kolekce.
 
-Definuje Application Insights [rozšíření](https://github.com/lmolkova/correlation/blob/master/http_protocol_proposal_v2.md) pro korelačního protokolu HTTP. Používá `Request-Context` název páry hodnota potřebný k šíření kolekci vlastností, které jsou používány bezprostředního volajícího nebo volaný. Application Insights SDK používá tuto hlavičku nastavit `dependency.target` a `request.source` pole.
+Definuje Application Insights [rozšíření](https://github.com/lmolkova/correlation/blob/master/http_protocol_proposal_v2.md) pro korelaci protokolu HTTP. Používá `Request-Context` název dvojice šíření kolekci vlastností používané okamžité volající nebo volaný. Application Insights SDK používá této hlavičky k nastavení `dependency.target` a `request.source` pole.
 
-## <a name="open-tracing-and-application-insights"></a>Otevřete trasování a Application Insights
+## <a name="open-tracing-and-application-insights"></a>Otevřít trasování a Application Insights
 
-[Otevřete trasování](http://opentracing.io/) a data modelů vypadá Application Insights 
+[Otevřít trasování](http://opentracing.io/) a vyhledá modely dat Application Insights 
 
 - `request`, `pageView` mapuje **rozpětí** s `span.kind = server`
-- `dependency` se mapuje na **rozpětí** s `span.kind = client`
+- `dependency` mapuje **rozpětí** s `span.kind = client`
 - `id` nástroje `request` a `dependency` mapuje **Span.Id**
-- `operation_Id` se mapuje na **TraceId**
-- `operation_ParentId` se mapuje na **odkaz** typu `ChildOf`
+- `operation_Id` mapuje **TraceId**
+- `operation_ParentId` mapuje **odkaz** typu `ChildOf`
 
-V tématu [datový model](application-insights-data-model.md) Application Insights typy a data modelu.
+Zobrazit [datový model](application-insights-data-model.md) pro typy a datový model Application Insights.
 
-V tématu [specifikace](https://github.com/opentracing/specification/blob/master/specification.md) a [semantic_conventions](https://github.com/opentracing/specification/blob/master/semantic_conventions.md) definice otevřít trasování konceptů.
+Zobrazit [specifikace](https://github.com/opentracing/specification/blob/master/specification.md) a [semantic_conventions](https://github.com/opentracing/specification/blob/master/semantic_conventions.md) definice otevřít trasování koncepty.
 
 
-## <a name="telemetry-correlation-in-net"></a>Korelace telemetrie v rozhraní .NET
+## <a name="telemetry-correlation-in-net"></a>Korelace telemetrie v .NET
 
-V čase rozhraní .NET definovány různými způsoby korelovat telemetrii a diagnostické protokoly. Je `System.Diagnostics.CorrelationManager` umožní sledovat [LogicalOperationStack a aktivity](https://msdn.microsoft.com/library/system.diagnostics.correlationmanager.aspx). `System.Diagnostics.Tracing.EventSource` a Windows ETW definovat metodu [SetCurrentThreadActivityId](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid.aspx). `ILogger` používá [protokolu obory](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-scopes). WCF a Http přenosová nahoru "aktuální" šíření kontextu.
+V čase .NET definovány různými způsoby pro korelaci protokolů telemetrie a Diagnostika. Je `System.Diagnostics.CorrelationManager` umožňuje sledovat [LogicalOperationStack a ID aktivity](https://msdn.microsoft.com/library/system.diagnostics.correlationmanager.aspx). `System.Diagnostics.Tracing.EventSource` a trasování událostí pro Windows Windows definovat metodu [SetCurrentThreadActivityId](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid.aspx). `ILogger` používá [protokolu obory](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-scopes). WCF a Http při přenosu nahoru "aktuální" šíření kontextu.
 
-Ale tyto metody nepomohly podporu automatického distribuované trasování. `DiagnosticsSource` je způsob, jak podporují automatické mezi počítači korelace. Knihovny .NET podporuje diagnostiky zdrojů a povolit automatické mezi počítači šíření kontextu korelace prostřednictvím přenosu jako http.
+Ale tyto metody nepovolili automatické distribuované trasování podpory. `DiagnosticsSource` je způsob, jak podporovat automatické křížové korelace počítače. Knihovny .NET podporuje diagnostiku zdrojů a povolit automatické různé počítače šíření kontextu korelace prostřednictvím přenosu, jako je http.
 
-[Průvodce aktivity](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) ve zdroji diagnostiky vysvětluje základy sledování aktivit. 
+[Průvodce aktivity](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) ve zdroji diagnostiky vysvětluje základy tohoto sledování aktivit. 
 
-Jádro ASP.NET 2.0 podporuje extrakce hlavičky protokolu Http a spuštění nové aktivity. 
+ASP.NET Core 2.0 podporuje extrakce hlavičky protokolu Http a spouští se nová aktivita. 
 
-`System.Net.HttpClient` Počáteční verze `4.1.0` podporuje automatické vkládání korelace hlavičky protokolu Http a sledování volání protokolu http jako aktivita.
+`System.Net.HttpClient` Počáteční verze `4.1.0` podporuje automatické vkládání korelace hlavičky protokolu Http a sledování volání http jako aktivita.
 
-Je-li nový modul Http [Microsoft.AspNet.TelemetryCorrelation](https://www.nuget.org/packages/Microsoft.AspNet.TelemetryCorrelation/) pro ASP.NET Classic. Tento modul implementuje pomocí DiagnosticsSource korelace telemetrie. Spustí aktivita podle příchozí hlavičky žádosti. Korelaci také telemetrie z různých fází zpracování žádosti. I pro případy, spuštění každé fáze zpracování služby IIS na jiný spravovat vláken.
+Nový modul Http [Microsoft.AspNet.TelemetryCorrelation](https://www.nuget.org/packages/Microsoft.AspNet.TelemetryCorrelation/) v případě klasického modelu ASP.NET. Tento modul implementuje pomocí DiagnosticsSource korelace telemetrie. Spustí aktivitu podle příchozí hlavičky žádosti. Také koreluje telemetrická data z různých fází zpracování požadavku. I pro případech, kdy jednotlivé fáze zpracování služby IIS běží na různých spravovat vlákna.
 
-Application Insights SDK počáteční verze `2.4.0-beta1` používá k shromažďování telemetrických dat a přidružte ji k aktuální aktivita DiagnosticsSource a aktivity. 
+Počáteční verze Application Insights SDK `2.4.0-beta1` používá DiagnosticsSource a aktivita shromažďovat telemetrii a přidružte jej k aktuální aktivitu. 
 
 <a name="java-correlation"></a>
-## <a name="telemetry-correlation-in-the-java-sdk"></a>Korelace telemetrie v jazyce Java SDK
-[Application Insights Java SDK](app-insights-java-get-started.md) podporuje automatické korelovat telemetrii počínaje verzí `2.0.0`. Automaticky naplní `operation_id` pro všechny telemetrická (trasování, výjimky, vlastních událostí atd.), které jsou vydané v rámci oboru požadavku. Je také postará šíření korelace hlavičky (popsané výše) pro volání služeb prostřednictvím protokolu HTTP Pokud [agenta Java SDK](app-insights-java-agent.md) je nakonfigurovaný. Poznámka: pro funkci korelace podporují pouze volání provedená prostřednictvím Apache HTTP klienta. Pokud používáte šablonu Rest pružiny nebo Feign, jak lze pomocí Apache HTTP klienta pod pokličkou.
+## <a name="telemetry-correlation-in-the-java-sdk"></a>Korelace telemetrie v sadě Java SDK
+[Application Insights Java SDK](app-insights-java-get-started.md) podporuje automatické korelace telemetrie od verze `2.0.0`. Automaticky naplní `operation_id` pro veškerá telemetrie (trasování, výjimky, vlastní události atd.), vydáno v rámci oboru požadavku. Je také se postará o šíření korelace hlavičky (popsaných výše) pro volání mezi službami přes protokol HTTP-li [agenta Java SDK](app-insights-java-agent.md) je nakonfigurované. Poznámka: pro funkci korelace jsou podporovány pouze volání provedená prostřednictvím Apache HTTP klienta. Pokud používáte Spring Rest šablony nebo Feign, jak jde použít s klient Apache HTTP pod pokličkou.
 
-V současné době nepodporuje automatické kontextu šíření přes zasílání zpráv technologie (například Kafka, RabbitMQ, Azure Service Bus). Je možné, ale k ručně pomocí kódu takových scénářů `trackDependency` a `trackRequest` rozhraní API, kterým telemetrických závislostí představuje zprávu se zařazených do fronty podle výrobce a požadavek představuje zprávu zpracovává příjemce. V takovém případě obě `operation_id` a `operation_parentId` by mělo být předáno ve vlastnostech zprávy.
+V současné době se nepodporuje automatické kontextu šíření napříč technologie zasílání zpráv (například Kafka, RabbitMQ, Azure Service Bus). Je ale možné ručně kódu s použitím scénářů `trackDependency` a `trackRequest` rozhraní API, kterým telemetrických závislostí představuje zprávu se zařazených do fronty podle výrobce a požadavek představuje zprávu zpracovává příjemce. V takovém případě obě `operation_id` a `operation_parentId` by mělo být předáno ve vlastnostech zprávy.
 
 <a name="java-role-name"></a>
 ### <a name="role-name"></a>Název role
-V některých případech můžete chtít upravit způsob názvům součástí jsou zobrazeny v [aplikace mapy](app-insights-app-map.md). Uděláte to tak, můžete ručně nastavit `cloud_roleName` jedním z následujících akcí:
+V některých případech může být vhodné přizpůsobit způsob názvů součástí se zobrazuje v [Mapa aplikace](app-insights-app-map.md). Uděláte to tak, můžete ručně nastavit `cloud_roleName` pomocí jedné z následujících akcí:
 
-Pomocí inicializátoru telemetrie (všechny položky telemetrická data jsou příznakem)
+Pomocí inicializátoru telemetrie (všech položkách telemetrie jsou označené)
 ```Java
 public class CloudRoleNameInitializer extends WebTelemetryInitializerBase {
 
@@ -124,7 +126,7 @@ public class CloudRoleNameInitializer extends WebTelemetryInitializerBase {
     }
   }
 ```
-Prostřednictvím [třídy kontextu zařízení](https://docs.microsoft.com/et-ee/java/api/com.microsoft.applicationinsights.extensibility.context._device_context) (pouze tuto položku telemetrie příznakem)
+Prostřednictvím [třídy kontextu zařízení](https://docs.microsoft.com/et-ee/java/api/com.microsoft.applicationinsights.extensibility.context._device_context) (pouze tuto položku telemetrie je označené)
 ```Java
 telemetry.getContext().getDevice().setRoleName("My Component Name");
 ```
@@ -132,6 +134,6 @@ telemetry.getContext().getDevice().setRoleName("My Component Name");
 ## <a name="next-steps"></a>Další postup
 
 - [Psát vlastní telemetrii](app-insights-api-custom-events-metrics.md)
-- Zařadit všechny součásti služby malých v Application Insights. Podívejte se na [podporované platformy](app-insights-platforms.md).
-- V tématu [datový model](application-insights-data-model.md) Application Insights typy a data modelu.
-- Zjistěte, jak [rozšířit a filtrovat telemetrie](app-insights-api-filtering-sampling.md).
+- Připojit všechny součásti micro služby Application insights. Podívejte se na [podporované platformy](app-insights-platforms.md).
+- Zobrazit [datový model](application-insights-data-model.md) pro typy a datový model Application Insights.
+- Zjistěte, jak [rozšířit a filtrování telemetrie](app-insights-api-filtering-sampling.md).

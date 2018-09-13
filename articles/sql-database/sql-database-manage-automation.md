@@ -9,12 +9,12 @@ ms.custom: monitor & tune
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: c68a493f439b5bc54cb04162de88ef31058d25f3
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 43476cfcae2035c3b8e94b4a5e264a0c8ff424e0
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42056791"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44715444"
 ---
 # <a name="managing-azure-sql-databases-using-azure-automation"></a>Správa databází Azure SQL Database pomocí Azure Automation.
 Tato příručka vás seznámí s služby Azure Automation a jak ho lze zjednodušit správu vašich databází Azure SQL.
@@ -31,7 +31,7 @@ Azure SQL Database můžete spravovat ve službě Azure Automation s použitím 
 
 Azure Automation má také možnost ke komunikaci se servery SQL přímo, pomocí příkazů SQL pomocí prostředí PowerShell.
 
-[v galerii runbooků Azure Automation](https://azure.microsoft.com/blog/2014/10/07/introducing-the-azure-automation-runbook-gallery/) obsahuje celou řadu produktů týmu a komunity sady runbook začít s automatizací správy Azure SQL Database, dalších služeb Azure a systémy 3. stran. Galerie runbooků patří:
+[v galerii runbooků Azure Automation](https://azure.microsoft.com/blog/2014/10/07/introducing-the-azure-automation-runbook-gallery/) obsahuje celou řadu produktů týmu a komunity sady runbook začít s automatizací správy databází Azure SQL, dalších služeb Azure a systémech 3. stran. Galerie runbooků patří:
 
 * [Spouštějte dotazy SQL proti databázi serveru SQL Server](https://gallery.technet.microsoft.com/scriptcenter/How-to-use-a-SQL-Command-be77f9d2)
 * [Vertikální škálování (nahoru nebo dolů) služby Azure SQL Database podle plánu](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-Database-e957354f)

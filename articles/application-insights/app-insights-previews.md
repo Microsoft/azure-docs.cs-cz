@@ -1,40 +1,41 @@
 ---
-title: "Nastavit předvolby preview služby Azure Application Insights | Microsoft Docs"
-description: "Vývojový tým služby Azure Application Insights zavede nové možnosti. Můžete nastavit, které nové možnosti, kterou chcete zobrazit náhled na portálu Azure."
+title: Nastavit předvolby ve verzi preview pro Azure Application Insights | Dokumentace Microsoftu
+description: Vývojový tým Azure Application Insights zavádění nových prostředí. Můžete nastavit, které nová prostředí, které chcete ve verzi preview na webu Azure Portal.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
-ms.assetid: 
+ms.assetid: ''
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/01/2017
 ms.author: mbullwin
-ms.openlocfilehash: f39ed880003c6ead0e720b730e6b70a4287b5f3f
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 4d3e7a28e2a57cfeae4e48719dbc17533a856016
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35643519"
 ---
-# <a name="preview-upcoming-changes-to-azure-application-insights"></a>Zobrazení náhledu změn nadcházející do služby Azure Application Insights 
+# <a name="preview-upcoming-changes-to-azure-application-insights"></a>Připravované změny ve verzi Preview služby Azure Application Insights 
 
-Application Insights často uvolní nové funkce. Pokud chcete tato vylepšení lze zobrazit, musíte se zaregistrovat v okně Application Insights Preview.  Vývojový tým zpřístupní náhledy nové funkce v omezené míře před uvolněním je pro všechny uživatele. 
+Application Insights často vydává nové funkce. Pokud chcete zobrazit náhledy tato vylepšení, můžete se zaregistrovat v okně Application Insights ve verzi Preview.  Vývojový tým zpřístupňuje náhledy nových funkcí v omezené míře před uvolněním pro všechny uživatele. 
 
-Následující obrázek znázorňuje, jak lze nastavit předvolby preview.
+Následující obrázek ukazuje, jak nastavit předvolby ve verzi preview.
 
-![Okna Preview Statistika aplikací](./media/app-insights-preview/preview.png)
+![Okno Application Insights ve verzi Preview](./media/app-insights-preview/preview.png)
 
 ## <a name="set-preferences"></a>Nastavení předvoleb
 
-V okně Preview můžete vybrat z následujících možností pro až se zobrazí verze Preview.
+V okně verze Preview můžete vybrat jednu z následujících možností až uvidíte verze Preview.
 
-- Vždy: Zobrazí Preview dojde, jakmile jsou k dispozici.
-- Automaticky: Zobrazí Preview dojde, Microsoft doporučuje pro váš účet. 
-- Nikdy: Zobrazí, jenom prostředí Preview, které jste vybrali. 
+- Vždy: Zobrazí se že ve verzi Preview prostředí, jako jsou k dispozici.
+- Auto: Zobrazí ve verzi Preview prostředí pro společnost Microsoft doporučuje pro váš účet. 
+- Nikdy: Budou zobrazovat jenom prostředí ve verzi Preview, které vyberete. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Vytvoření prostředku](app-insights-create-new-resource.md)

@@ -1,6 +1,6 @@
 ---
-title: "Monitorování služeb Node.js pomocí Azure Application Insights | Dokumentace Microsoftu"
-description: "Monitorujte výkon a diagnostikujte problémy ve službách Node.js pomocí Application Insights."
+title: Monitorování služeb Node.js pomocí Azure Application Insights | Dokumentace Microsoftu
+description: Monitorujte výkon a diagnostikujte problémy ve službách Node.js pomocí Application Insights.
 services: application-insights
 documentationcenter: nodejs
 author: mrbullwinkle
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 05/01/2017
 ms.author: mbullwin
-ms.openlocfilehash: 5b8e35a953c936949af0d496345f537ad85fc359
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
-ms.translationtype: HT
+ms.openlocfilehash: 28be3a1734639ac175e4d18d9e9f21b83b9a7e7c
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35642751"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Monitorování služeb a aplikací Node.js pomocí Application Insights
 
@@ -208,7 +209,7 @@ server.on("listening", () => {
 });
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Monitorování telemetrických dat na portálu](app-insights-dashboards.md)
 * [Psaní analytických dotazů do telemetrických dat](app-insights-analytics-tour.md)

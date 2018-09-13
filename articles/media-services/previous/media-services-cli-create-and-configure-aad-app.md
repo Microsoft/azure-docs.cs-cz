@@ -1,6 +1,6 @@
 ---
-title: Pro vytvoření aplikace Azure AD a nakonfigurujte ho pro přístup k rozhraní API služby Azure Media Services použít 2.0 rozhraní příkazového řádku | Microsoft Docs
-description: Toto téma ukazuje, jak používat 2.0 rozhraní příkazového řádku k vytvoření aplikace Azure AD a nakonfigurovat ji pro přístup k rozhraní API služby Azure Media Services.
+title: Pomocí Azure CLI k vytvoření aplikace Azure AD a nakonfigurujte ho pro přístup k rozhraní API služby Azure Media Services | Dokumentace Microsoftu
+description: Toto téma ukazuje, jak pomocí Azure CLI k vytvoření aplikace Azure AD a nakonfigurujte ho pro přístup k rozhraní API služby Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,32 +13,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: juliako
-ms.openlocfilehash: 7685be97213f0b298499d474c0a6a772ca608fb2
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: fcd0ea10bd39f9e7252e114e8d6401a4fe0ecadb
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788176"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35897285"
 ---
-# <a name="use-cli-20-to-create-an-aad-app-and-configure-it-to-access-azure-media-services-api"></a>Pomocí rozhraní příkazového řádku 2.0 vytvořit aplikaci AAD a konfigurovat ho pro přístup k rozhraní API služby Azure Media Services
+# <a name="use-azure-cli-to-create-an-aad-app-and-configure-it-to-access-azure-media-services-api"></a>Pomocí Azure CLI vytvořit aplikaci AAD a nakonfigurujte ho pro přístup k rozhraní API služby Azure Media Services
 
-Toto téma ukazuje, jak vytvořit aplikaci Azure Active Directory (Azure AD) a objektu zabezpečení pro přístup k prostředkům Azure Media Services pomocí rozhraní příkazového řádku 2.0. 
+Toto téma ukazuje, jak pomocí Azure CLI pro vytvoření aplikace Azure Active Directory (Azure AD) a instanční objekt služby pro přístup k prostředkům Azure Media Services. 
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Účet Azure. Podrobnosti najdete na stránce [bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/). 
-- Účet Media Services. Další informace najdete v tématu [vytvoření účtu Azure Media Services pomocí webu Azure portal](media-services-portal-create-account.md).
+- Účet Media Services. Další informace najdete v tématu [vytvoření účtu služby Azure Media Services pomocí webu Azure portal](media-services-portal-create-account.md).
 
-## <a name="use-the-azure-cloud-shell"></a>Použití prostředí cloudu Azure
+## <a name="use-the-azure-cloud-shell"></a>Pomocí služby Azure Cloud Shell
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. Spusťte prostředí cloudu v horním navigačním podokně portálu.
+2. Spusťte Cloud Shell z horního navigačního podokna portálu.
 
     ![Cloud Shell](./media/media-services-cli-create-and-configure-aad-app/media-services-cli-create-and-configure-aad-app01.png) 
 
-Další informace najdete v tématu [Přehled prostředí cloudu Azure](../../cloud-shell/overview.md).
+Další informace najdete v tématu [Přehled služby Azure Cloud Shell](../../cloud-shell/overview.md).
 
-## <a name="create-an-azure-ad-app-and-configure-access-to-the-media-account-with-cli-20"></a>Vytvoření aplikace Azure AD a konfigurace přístupu k účtu media s 2.0 rozhraní příkazového řádku
+## <a name="create-an-azure-ad-app-and-configure-access-to-the-media-account-with-azure-cli"></a>Vytvoření aplikace Azure AD a konfigurovat přístup k účtu media pomocí Azure CLI
  
 ```azurecli
 az login
@@ -52,15 +52,15 @@ Příklad:
 az role assignment create --assignee a3e068fa-f739-44e5-ba4d-ad57866e25a1 --role Contributor --scope /subscriptions/0b65e280-7917-4874-9fed-1307f2615ea2/resourceGroups/Default-AzureBatch-SouthCentralUS/providers/microsoft.media/mediaservices/sbbash
 ```
 
-V tomto příkladu **oboru** je cesta úplné prostředku pro médium účet služby. Ale **oboru** může být na všech úrovních.
+V tomto příkladu **oboru** účet služby je cesta úplné prostředku pro médium. Ale **oboru** může být na libovolné úrovni.
 
-Například je může použít jeden z následujících úrovní:
+Například to může být jeden z následujících úrovní:
  
 * **Předplatné** úroveň.
 * **Skupiny prostředků** úroveň.
-* **Prostředků** úrovně (například účet Media).
+* **Prostředků** úrovně (například účet média).
 
-Další informace najdete v tématu [vytvořit objekt služby Azure pomocí Azure CLI 2.0](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli)
+Další informace najdete v tématu [vytvoření instančního objektu Azure pomocí rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli)
 
 Viz také [Manage Role-Based řízení přístupu pomocí rozhraní příkazového řádku Azure](../../role-based-access-control/role-assignments-cli.md). 
 

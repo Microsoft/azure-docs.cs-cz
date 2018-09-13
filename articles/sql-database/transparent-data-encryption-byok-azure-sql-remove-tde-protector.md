@@ -17,12 +17,12 @@ ms.topic: conceptual
 ms.date: 08/07/2017
 ms.author: rebeccaz
 monikerRange: = azuresqldb-current || = azure-sqldw-latest || = sqlallproducts-allversions
-ms.openlocfilehash: feb187101ec02d6e765d6b025f518dc416f55b8b
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: cc52b9ee290ca362c51f7a30cc09056e66df3c55
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "40043691"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719813"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>Odebrat ochranného transparentní šifrování dat (TDE) pomocí Powershellu
 ## <a name="prerequisites"></a>Požadavky
@@ -40,8 +40,8 @@ Pokud klíč je někdy podezření u něho ohrožena bezpečnost, tak, aby se sl
 Mějte na paměti, která jednou ochrana TDE je odstraněn ve službě Key Vault **všechna připojení k šifrovaným databázím na serveru jsou blokovány, a tyto databáze přejdou do režimu offline a během 24 hodin**. Starší zálohy šifrované pomocí ohrožený klíč už nejsou dostupné.
 
 Tato příručka prochází přes dva přístupy v závislosti na požadovaný výsledek po reakce na incidenty:
-- Zachovat databází Azure SQL Database / Data Warehouses **přístupné**
-- Chcete-li databází Azure SQL Database / Data Warehouses **nedostupný**
+- Zachovat Azure SQL Database / Data Warehouses **přístupné**
+- Aby Azure SQL Database / Data Warehouses **nedostupný**
 
 ## <a name="to-keep-the-encrypted-resources-accessible"></a>Zachovat šifrovaná prostředky dostupné
 1. Vytvoření [nový klíč ve službě Key Vault](https://docs.microsoft.com/powershell/module/azurerm.keyvault/add-azurekeyvaultkey?view=azurermps-4.1.0). Ujistěte se, že tento nový klíč je vytvořen v samostatné služby key vault z potenciálně napadeného ochrana TDE, protože je zřízený řízení přístupu na úrovni trezoru. 

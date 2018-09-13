@@ -1,6 +1,6 @@
 ---
-title: Azure řetězci úložiště bitové kopie Service Fabric | Microsoft Docs
-description: Pochopení připojovací řetězec úložiště bitové kopie
+title: Azure Service Fabric image store připojení řetězce | Dokumentace Microsoftu
+description: Vysvětlení připojovací řetězec úložiště obrázků
 services: service-fabric
 documentationcenter: .net
 author: alexwun
@@ -14,43 +14,43 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/27/2018
 ms.author: alexwun
-ms.openlocfilehash: 7d164fea62afac83c4fe2216c56a9980d9279f3a
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 8a11f9c9ebc2dd0b0eabf7a34d5ef38ae4e29309
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207124"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719066"
 ---
-# <a name="understand-the-imagestoreconnectionstring-setting"></a>Pochopení parametr ImageStoreConnectionString nastavení
+# <a name="understand-the-imagestoreconnectionstring-setting"></a>Principy nastavení ImageStoreConnectionString
 
-V některé dokumentaci jsme stručně zmínili existenci parametru "Parametr ImageStoreConnectionString" bez popisující, co opravdu znamená. A poté, co projde článek jako [nasazení a odeberte aplikací pomocí prostředí PowerShell][10], vypadá všechny uděláte je zkopírujte a vložte hodnotu, jak se objevuje v manifestu clusteru cílového clusteru. Takže nastavení musí být konfigurovat každý cluster, ale při vytváření clusteru prostřednictvím [portál Azure][11], není žádná možnost pro konfiguraci tohoto nastavení a je vždy "fabric: úložiště bitových kopií". Jaký je účel toto nastavení pak?
+V některých část naší dokumentace jsme stručně zmiňovat existenci parametr "ImageStoreConnectionString" bez popisující, co to vlastně znamená. A poté, co projde článku jako [nasazení a odeberte aplikací pomocí prostředí PowerShell][10], vypadá podobně jako všechny provedete, kopírování a vkládání je hodnota, jak je znázorněno v manifestu clusteru cílový cluster. Proto musí být nastavení konfigurovat na cluster, ale při vytváření clusteru prostřednictvím [webu Azure portal][11], není možnost nakonfigurovat toto nastavení a je vždy "prostředků infrastruktury: ImageStore". K čemu je toto nastavení pak?
 
 ![Manifestu clusteru][img_cm]
 
-Service Fabric spuštěna jako platformu pro interní používání Microsoft mnoha různými týmy, takže některé aspekty jsou vysoce přizpůsobitelné – "Image Store" je jeden takový aspekt. Úložiště bitových kopií je v podstatě modulární úložiště pro ukládání balíčky aplikací. Pokud vaše aplikace je nasazená do uzlu v clusteru, tento uzel stáhne obsah balíčku aplikace z úložiště bitových kopií. Parametr ImageStoreConnectionString je nastavení, která zahrnuje všechny potřebné informace pro klienty a uzly najít správný úložiště bitových kopií pro daný cluster.
+Service Fabric spustil(a) jako platforma pro interní použití Microsoft mnoho různých týmů, takže některé aspekty jsou vysoce přizpůsobitelné – "Image Store" je jeden takový aspekt. Image Store je v podstatě připojitelné úložiště pro ukládání balíčků aplikací. Při nasazení vaší aplikace na uzlu v clusteru, tento uzel umožňuje stažení obsahu balíčku aplikace z Image Store. ImageStoreConnectionString je nastavení, která obsahuje všechny potřebné informace pro klienty a uzly najít správnou Image Store pro daný cluster.
 
-Aktuálně existují tři možné typy poskytovatelů úložiště Image Store a jejich odpovídající připojovací řetězce jsou následující:
+Aktuálně existují tři možné typy poskytovatelů Image Store a jejich odpovídající připojovací řetězce jsou následující:
 
-1. Služba úložiště Image Store: "fabric: úložiště bitových kopií"
+1. Služba Image Store: "prostředků infrastruktury: ImageStore"
 
-2. Systém souborů: "file:[file systému cesta]"
+2. Systém souborů: "file:[file systémové cesty]"
 
-3. Azure Storage: "xstore:DefaultEndpointsProtocol = https; AccountName = [...]; AccountKey = [...]; Kontejner = [...] "
+3. Azure Storage: "xstore = https; AccountName = [...]; AccountKey = [...]; Kontejner = [...] "
 
-Typ zprostředkovatele použít v produkčním prostředí je službu Store bitové kopie, což je stavová trvalou systémová služba, která se zobrazí v Service Fabric Exploreru. 
+Typ zprostředkovatele použít v produkčním prostředí je Image Store Service, které stavové trvalé systémová služba, která se zobrazí v Service Fabric Exploreru. 
 
-![Služby úložiště bitových kopií][img_is]
+![Image Store Service][img_is]
 
-Hostování v systému služby v rámci samotného clusteru je úložiště Image Store eliminuje vnější závislosti pro úložiště balíčků a nám dává větší kontrolu nad polohu úložiště. Budoucí vylepšení kolem je úložiště Image Store se pravděpodobně cíle zprostředkovatele úložiště Image Store nejprve, není-li výhradně. Připojovací řetězec pro poskytovatele služeb úložiště bitové kopie nemá žádné jedinečné informace, protože klient je již připojen do cílového clusteru. Klient pouze musí vědět, že má být použita protokoly cílení na službu system.
+Hostování Image Store v systému služby v rámci samotného clusteru eliminuje vnější závislosti pro úložiště balíčků a získáváme větší kontrolu nad umístění úložiště. Budoucí vylepšení kolem Image Store se pravděpodobně cílit Image Store poskytovatele nejprve, pokud není výhradně. Připojovací řetězec pro poskytovatele služeb Image Store nemá žádné jedinečné informace, protože klient je již připojen do cílového clusteru. Klient stačí vědět, že by měla sloužit protokoly, které cílí na systém služby.
 
-Zprostředkovatele systému souborů se používá místo službu úložiště bitové kopie pro místní clustery jeden pole během vývoje k navázání připojení clusteru mírně rychlejší. Rozdíl je obvykle malý, ale je užitečné optimalizace pro většinu zaměstnance během vývoje. Je možné nasadit místní cluster jeden pole s ostatních úložiště zprostředkovatele typů a, ale obvykle neexistuje žádný důvod k tomu, protože pracovního postupu pro vývoj/testování zůstává stejný bez ohledu na zprostředkovatele. Zprostředkovatel úložiště Azure existuje pouze pro podporuje starší verze starého clustery nasazené, než byla zavedena poskytovatele služeb úložiště bitové kopie.
+Zprostředkovatele systému souborů se používá namísto Image Store Service pro místní clustery jeden pole během vývoje ke spuštění clusteru mírně rychlejší. Rozdíl je obvykle malý, ale je užitečné optimalizace pro většinu lidí během vývoje. Je možné nasadit místního clusteru jeden pole s ostatních úložiště zprostředkovatele typů a, ale obvykle neexistuje žádný důvod k tomu, protože pracovní postup vývoje/testování zůstává stejný bez ohledu na poskytovatele. Zprostředkovatel služby Azure Storage k dispozici pouze pro stále podporuje starší verze starých předtím, než byla zavedena poskytovatele Image Store k nasazení clusterů.
 
-Kromě toho ani zprostředkovatele systému souborů ani poskytovatele úložiště Azure má být použit jako metodu sdílení úložišti bitové kopie mezi clustery s několika – tato akce způsobí poškození dat konfigurace clusteru, protože každý cluster můžete zapsat konfliktní data do Úložiště bitových kopií. Chcete-li sdílet balíčky zřízené aplikací mezi více clusterů, použijte [sfpkg] [ 12] soubory místo toho, který je možné uložit do jakékoli externí úložiště ke stahování identifikátor URI.
+Kromě toho není zprostředkovatele systému souborů nebo zprostředkovatele služby Azure Storage, by měla sloužit jako způsob sdílení Image Store mezi clustery s několika – bude výsledkem poškození dat konfigurace clusteru můžete každý cluster psaní konfliktní data do bitové kopie Store. Chcete-li sdílet balíčky zřízené aplikací mezi více clusterů, použijte [sfpkg] [ 12] soubory místo toho, který může být odeslán do jakéhokoli externího úložiště při stahování identifikátor URI.
 
-Proto při konfigurovat parametr ImageStoreConnectionString obecně právě používáte výchozí nastavení. Při publikování do Azure pomocí sady Visual Studio, parametr je automaticky nastaven pro vás odpovídajícím způsobem. Programová nasazení do clusterů, které jsou hostované v Azure připojovací řetězec je vždy "fabric: úložiště bitových kopií". V případě, že pokud máte pochybnosti, jeho hodnota vždy ověřovány načítání manifestu clusteru podle [prostředí PowerShell](https://docs.microsoft.com/powershell/servicefabric/vlatest/get-servicefabricclustermanifest), [.NET](https://msdn.microsoft.com/library/azure/mt161375.aspx), nebo [REST](https://docs.microsoft.com/rest/api/servicefabric/get-a-cluster-manifest). Místní testování a produkčních clusterů by měl být vždy nakonfigurovaný na použití i poskytovatele služby úložiště bitové kopie.
+Proto ImageStoreConnectionString je konfigurovat, stačí použít výchozí nastavení. Při publikování do Azure pomocí sady Visual Studio, parametr je automaticky nastaven pro vás odpovídajícím způsobem. Programové nasazení do clusterů, které jsou hostované v Azure připojovací řetězec je vždy "prostředků infrastruktury: ImageStore". I když v případě pochybností si je jeho hodnota vždy ověřit načtením manifestu clusteru podle [PowerShell](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricclustermanifest), [.NET](https://msdn.microsoft.com/library/azure/mt161375.aspx), nebo [REST](https://docs.microsoft.com/rest/api/servicefabric/get-a-cluster-manifest). V místním testování a produkční clustery vždy by měl být povolen použít poskytovateli Image Store Service.
 
 ### <a name="next-steps"></a>Další postup
-[Nasazení a odebírat aplikace pomocí prostředí PowerShell][10]
+[Nasazení a odebírat aplikace pomocí Powershellu][10]
 
 <!--Image references-->
 [img_is]: ./media/service-fabric-image-store-connection-string/image_store_service.png

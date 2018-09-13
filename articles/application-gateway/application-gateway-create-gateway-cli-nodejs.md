@@ -1,6 +1,6 @@
 ---
-title: Vytvoření služby Azure Application Gateway - rozhraní příkazového řádku Azure 1.0 | Microsoft Docs
-description: Informace o vytvoření služby Application Gateway pomocí Azure CLI 1.0 ve službě Správce prostředků
+title: Vytvoření služby Azure Application Gateway – Azure CLI 1.0 | Dokumentace Microsoftu
+description: Informace o vytvoření služby Application Gateway s využitím rozhraní příkazového řádku Azure CLI 1.0 v Resource Manageru
 services: application-gateway
 documentationcenter: na
 author: vhorne
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: victorh
-ms.openlocfilehash: 3d67e896da5e616e443fc4e1edd9aaafb0f0e2f9
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 29eec4ad1883db9d824b416bdfc7e984a5af4fbe
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35643274"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-cli"></a>Vytvoření služby application gateway pomocí Azure CLI
 
@@ -33,53 +34,53 @@ ms.lasthandoff: 05/04/2018
 > 
 > 
 
-Služba Azure Application Gateway je nástroj pro vyrovnávání zatížení vrstvy 7. Poskytuje převzetí služeb při selhání, směrování výkonu požadavků HTTP mezi různými servery, ať už jsou místní nebo v cloudu. Application gateway poskytuje následující funkce doručování aplikací: HTTP načíst vlastní stavu sondy vyrovnávání, spřažení relace na základě souborů cookie a přesměrování zpracování Secure Sockets Layer (SSL) a podpora pro více lokalit.
+Služba Azure Application Gateway je nástroj pro vyrovnávání zatížení vrstvy 7. Poskytuje převzetí služeb při selhání, směrování výkonu požadavků HTTP mezi různými servery, ať už jsou místní nebo v cloudu. Application gateway poskytuje následující funkce doručování aplikací: načíst vyrovnávání, spřažení relace na základě souborů cookie a přesměrování zpracování Secure Sockets Layer (SSL), vlastních sond stavu protokolu HTTP a podpory více webů.
 
-## <a name="prerequisite-install-the-azure-cli"></a>Předpoklad: Instalace rozhraní příkazového řádku Azure CLI
+## <a name="prerequisite-install-the-azure-cli"></a>Předpoklad: Instalace Azure CLI
 
-Chcete-li provést kroky v tomto článku, je potřeba [nainstalovat rozhraní příkazového řádku Azure pro Mac, Linux a Windows (Azure CLI)](../xplat-cli-install.md) a potřebujete [Přihlaste se k Azure](/cli/azure/authenticate-azure-cli). 
+K provedení kroků v tomto článku, budete muset [instalace rozhraní příkazového řádku Azure pro Mac, Linux a Windows (Azure CLI)](../xplat-cli-install.md) a budete muset [Přihlaste se k Azure](/cli/azure/authenticate-azure-cli). 
 
 > [!NOTE]
-> Pokud nemáte účet Azure, budete potřebovat. Zde si můžete zaregistrovat [bezplatnou zkušební verzi](../active-directory/sign-up-organization.md).
+> Pokud nemáte účet Azure, budete potřebovat. Zde si můžete zaregistrovat [bezplatnou zkušební verzi](../active-directory/fundamentals/sign-up-organization.md).
 
 ## <a name="scenario"></a>Scénář
 
-V tomto scénáři zjistíte postup vytvoření služby application gateway pomocí portálu Azure.
+V tomto scénáři se dozvíte, jak vytvořit službu application gateway pomocí webu Azure portal.
 
-Tento scénář se:
+Tento scénář bude:
 
 * Vytvoření střední application gateway se dvěma instancemi.
-* Vytvořte virtuální síť s názvem ContosoVNET s vyhrazeným blokem CIDR 10.0.0.0/16.
-* Vytvoříte podsíť s názvem subnet01, který používá jako jeho blok CIDR 10.0.0.0/28.
+* Vytvoření virtuální sítě s názvem ContosoVNET s vyhrazeným blokem CIDR 10.0.0.0/16.
+* Vytvoříte podsíť s názvem subnet01 používající blokem CIDR 10.0.0.0/28.
 
 > [!NOTE]
-> Další konfigurace aplikační brány, včetně stavu vlastní testy, adresy fondu back-end a dalších pravidlech nakonfigurovány po dokončení konfigurace aplikační brány a ne během počátečního nasazení.
+> Další konfigurace služby application gateway, včetně vlastních stavových testy, back-endový fond adres a další pravidla jsou nakonfigurována po dokončení konfigurace aplikační brány a ne během počátečního nasazení.
 
 ## <a name="before-you-begin"></a>Než začnete
 
-Služba Azure Application Gateway vyžaduje vlastní podsíti. Při vytváření virtuální sítě, ujistěte se, že necháte dostatek adresní prostor tak, aby měl více podsítí. Po nasazení služby application gateway k podsíti, jedinými dodatečnými application Gateway je moct přidat do podsítě.
+Azure Application Gateway vyžaduje vlastní podsíť. Při vytváření virtuální sítě, zajistěte ponechat dostatek adresního prostoru přesměrují do několika podsítí. Po nasazení služby application gateway k podsíti, budou moct přidat do podsítě jenom další aplikační brány.
 
 ## <a name="log-in-to-azure"></a>Přihlášení k Azure
 
-Otevřete **Microsoft Azure příkazového řádku**a přihlaste se. 
+Otevřít **příkazového řádku Microsoft Azure**a přihlaste se. 
 
 ```azurecli-interactive
 azure login
 ```
 
-Jakmile zadáte v předchozím příkladu, je k dispozici kód. Přejděte na https://aka.ms/devicelogin ve prohlížeči a pokračujte v procesu přihlášení.
+Jakmile zadáte v předchozím příkladu, je k dispozici kód. Přejděte na https://aka.ms/devicelogin v prohlížeči a pokračujte v procesu přihlášení.
 
-![cmd zobrazující zařízení přihlášení][1]
+![přihlášení na zařízení cmd zobrazení][1]
 
-V prohlížeči zadejte kód, který jste dostali. Budete přesměrováni na stránku přihlášení.
+V prohlížeči zadejte kód, který jste obdrželi. Budete přesměrováni na přihlašovací stránku.
 
-![prohlížeče k zadání kódu][2]
+![prohlížeče a zadejte kód][2]
 
-Jakmile byl zadán kód jste přihlášeni, zavřete prohlížeč pokračovat na tento scénář.
+Jakmile byl zadán kód se přihlásíte, zavřete prohlížeč a pokračujte ve scénáři.
 
 ![Úspěšné přihlášení][3]
 
-## <a name="switch-to-resource-manager-mode"></a>Přepnout do režimu Resource Manager
+## <a name="switch-to-resource-manager-mode"></a>Přepnout do režimu Resource Manageru
 
 ```azurecli-interactive
 azure config mode arm
@@ -87,7 +88,7 @@ azure config mode arm
 
 ## <a name="create-the-resource-group"></a>Vytvoření skupiny prostředků
 
-Před vytvořením služby application gateway, se tak, aby obsahovala služby application gateway vytvoří skupinu prostředků. Následuje ukázka příkazu.
+Před vytvořením služby application gateway, je tak, aby obsahovala application gateway vytvoří skupinu prostředků. Následuje ukázka příkazu.
 
 ```azurecli-interactive
 azure group create \
@@ -97,7 +98,7 @@ azure group create \
 
 ## <a name="create-a-virtual-network"></a>Vytvoření virtuální sítě
 
-Po vytvoření skupiny prostředků pro službu application gateway se vytvoří virtuální síť.  V následujícím příkladu se adresní prostor jako 10.0.0.0/16, jak jsou definovány v předchozím scénáři poznámky.
+Jakmile se vytvoří skupina prostředků, je pro službu application gateway vytvoří virtuální síť.  V následujícím příkladu byla adresní prostor jako 10.0.0.0/16, jak jsou definovány v předchozím scénáři poznámky.
 
 ```azurecli-interactive
 azure network vnet create \
@@ -109,7 +110,7 @@ azure network vnet create \
 
 ## <a name="create-a-subnet"></a>Vytvoření podsítě
 
-Po vytvoření virtuální sítě, přidá se podsíť pro aplikační bránu.  Pokud budete chtít aplikační bránu pomocí webové aplikace hostované ve stejné virtuální síti jako službu application gateway, ujistěte se, zda je dostatek místa pro jinou podsíť.
+Po vytvoření virtuální sítě, se přidá podsíť pro službu application gateway.  Pokud máte v plánu používat služba application gateway s webovou aplikací hostovaných ve stejné virtuální síti jako služba application gateway, je potřeba ponechat dostatek volného místa pro jinou podsíť.
 
 ```azurecli-interactive
 azure network vnet subnet create \
@@ -121,7 +122,7 @@ azure network vnet subnet create \
 
 ## <a name="create-the-application-gateway"></a>Vytvoření služby Application Gateway
 
-Po vytvoření virtuální sítě a podsítě jsou dokončeny předpoklady pro službu application gateway. Kromě toho jsou požadovány pro následující krok .pfx dříve exportovaný certifikát a heslo pro certifikát: IP adresy pro back-end jsou IP adresy pro back-end serveru. Tyto hodnoty může být buď soukromé IP adresy ve virtuální síti, veřejné IP adresy nebo plně kvalifikované názvy domény pro back-end serverů.
+Po vytvoření virtuální sítě a podsítě se splnily požadavky pro službu application gateway. Kromě toho jsou požadovány pro následující krok certifikátu dříve exportovaný PFX a heslo pro certifikát: IP adresy používané pro back-end jsou IP adresy pro back-end serveru. Tyto hodnoty lze privátních IP adres ve virtuální síti, veřejné IP adresy nebo plně kvalifikované názvy domény pro váš back-end serverů.
 
 ```azurecli-interactive
 azure network application-gateway create \
@@ -143,16 +144,16 @@ azure network application-gateway create \
 ```
 
 > [!NOTE]
-> Seznam parametrů, které lze zadat během vytváření, spusťte následující příkaz: **síť azure aplikace gateway vytvořit – pomáhají**.
+> Seznam parametrů, které lze zadat při vytváření, spusťte následující příkaz: **azure network application-gateway create--pomáhají**.
 
-Tento příklad vytvoří základní aplikační brána s výchozím nastavením pro naslouchací proces, fond back-end, nastavení http back-end a pravidla. Můžete upravit toto nastavení tak, aby vyhovovala vašemu nasazení po úspěšné přidělení přístupových práv.
-Pokud již máte webové aplikace definovaná pomocí fondu back-end v předchozích krocích po vytvoření, Vyrovnávání zatížení začne.
+Tento příklad vytvoří základní aplikační brána s výchozím nastavením pro naslouchací proces, back-endový fond, nastavení http back-endu a pravidla. Můžete upravit tato nastavení tak, aby odpovídala nasazení po úspěšném zřízení.
+Pokud už máte definované s back-endového fondu v předchozích krocích, po vytvoření webové aplikace služby Vyrovnávání zatížení začne.
 
 ## <a name="next-steps"></a>Další postup
 
-Naučte se vytvářet vlastní stavu sondy navštivte stránky [vytvořit vlastní stav testu](application-gateway-create-probe-portal.md)
+Informace o vytváření vlastních testů stavu návštěvou [vytvořte sondu stavu vlastní](application-gateway-create-probe-portal.md)
 
-Zjistěte, jak nakonfigurovat snižování zátěže protokolu SSL a trvat nákladná dešifrování SSL vypnout webových serverů, navštivte stránky [konfigurovat přesměrování zpracování SSL](application-gateway-ssl-arm.md)
+Zjistěte, jak nakonfigurovat snižování zátěže protokolu SSL a trvat nákladné SSL dešifrování, zbaví vaše webové servery návštěvou [konfigurovat přesměrování zpracování SSL](application-gateway-ssl-arm.md)
 
 <!--Image references-->
 

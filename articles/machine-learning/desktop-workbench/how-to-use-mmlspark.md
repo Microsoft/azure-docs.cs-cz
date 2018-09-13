@@ -1,51 +1,51 @@
 ---
-title: Jak používat MMLSpark Machine Learning | Microsoft Docs
-description: Průvodce použití knihovny MMLSpark s Azure Machine Learning.
+title: Jak používat MMLSpark Machine Learning | Dokumentace Microsoftu
+description: Příručka pro použití knihovny MMLSpark s Azure Machine Learning.
 services: machine-learning
 author: rastala
 ms.author: roastala
 manager: jhubbard
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 01/12/2018
-ms.openlocfilehash: 3c9bcce67bb802a8596416b55ef61a51ab2900bd
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 654b2559518cd52978153310fbb1e89a91838a8a
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831526"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35643419"
 ---
-# <a name="how-to-use-microsoft-machine-learning-library-for-apache-spark"></a>Jak používat Microsoft Machine Learning knihovny pro Apache Spark
+# <a name="how-to-use-microsoft-machine-learning-library-for-apache-spark"></a>Jak používat knihovna Microsoft Machine Learning pro Apache Spark
 
 ## <a name="introduction"></a>Úvod
 
-[Microsoft Machine Learning knihovny pro Apache Spark](https://github.com/Azure/mmlspark) (MMLSpark) poskytuje nástroje, které vám umožní snadno vytvářet škálovatelné machine learning modely pro rozsáhlých datových sad. Obsahuje integrace SparkML kanálů s [kognitivní nástrojů Microsoft ](https://github.com/Microsoft/CNTK) a [OpenCV](http://www.opencv.org/), umožňuje: 
- * Příjem příchozích dat a data před zpracování obrázku
- * Featurize obrázky a text použití předem vyškolení přímým učení modely
- * Trénování a stanovíte jeho skóre klasifikace a regrese modelů pomocí implicitní featurization.
+[Knihovna Microsoft Machine Learning pro Apache Spark](https://github.com/Azure/mmlspark) (MMLSpark) poskytuje nástroje, které vám umožní snadno vytvářet modely škálovatelné strojového učení pro velké datové sady. To zahrnuje integraci kanálů ve SparkML pomocí [Microsoft Cognitive Toolkit ](https://github.com/Microsoft/CNTK) a [OpenCV](http://www.opencv.org/), umožňuje: 
+ * Příchozí přenos dat a dat předběžného zpracování obrázků
+ * Zpracování volných obrázků a textu s použitím předem natrénovaných modelů hloubkového učení
+ * Trénování a stanovíte jeho skóre klasifikačních a regresních modelů pomocí implicitní snadné.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Na krok tímto průvodcem postupy, budete muset:
-- [Nainstalovat Azure Machine Learning Workbench](../service/quickstart-installation.md)
-- [Nastavte cluster Azure HDInsight Spark](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-jupyter-spark-sql)
+Pro jednotlivé kroky v této příručce s postupy, musíte:
+- [Instalace aplikace Azure Machine Learning Workbench](../service/quickstart-installation.md)
+- [Nastavení clusteru Azure HDInsight Spark](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-jupyter-spark-sql)
 
-## <a name="run-your-experiment-in-docker-container"></a>Spuštění experimentu v kontejner Docker
+## <a name="run-your-experiment-in-docker-container"></a>Spusťte Experiment v kontejneru Dockeru
 
-Vaše Azure Machine Learning Workbench je nakonfigurovaný na použití MMLSpark při spuštění experimenty v kontejner Docker místně nebo do vzdáleného virtuálního počítače. Tato funkce umožňuje snadno ladění a Experimentujte s modely PySpark, před jejich spuštěním na škálování na clusteru. 
+Azure Machine Learning Workbench je konfigurovaná pro použití MMLSpark při spouštět experimenty v kontejneru Dockeru, místně nebo ve vzdáleném virtuálním počítači. Díky této funkci můžete snadno ladit a experimentovat s vašimi modely PySpark, před spuštěním v měřítku v clusteru. 
 
-Chcete-li začít používat příklad, vytvořte nový projekt a vyberte Galerie "MMLSpark na pro dospělé úplné zjišťování" příklad. Vyberte "Docker" jako kontext výpočetní na řídicím panelu projektu a klikněte na možnost "Spustit". Azure Machine Learning Workbench vytvoří kontejner Docker ke spuštění programu PySpark a poté spustí program.
+Abyste mohli začít používat příklad, vytvořte nový projekt a vybrat, například "MMLSpark na dospělé sčítání" Galerie. Vyberte "Docker" jako výpočetní kontext z řídicího panelu Projekt a klikněte na možnost "Spustit". Azure Machine Learning Workbench sestaví kontejner Dockeru pro spuštění programu PySpark a poté spustí program.
 
-Po dokončení spuštění, můžete zobrazit výsledky v zobrazení historie spouštění nástroje Azure Machine Learning Workbench.
+Po dokončení spuštění se zobrazí výsledky v zobrazení historie spuštění aplikace Azure Machine Learning Workbench.
 
-## <a name="install-mmlspark-on-azure-hdinsight-spark-cluster"></a>Nainstalujte MMLSpark na clusteru Azure HDInsight Spark.
+## <a name="install-mmlspark-on-azure-hdinsight-spark-cluster"></a>MMLSpark nainstalujte na clusteru Azure HDInsight Spark.
 
-K dokončení toto a následující krok, potřebujete první [vytvořit cluster Azure HDInsight Spark](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-jupyter-spark-sql).
+K dokončení toto a následující krok, musíte si nejdřív [vytvoření clusteru Azure HDInsight Spark](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-jupyter-spark-sql).
 
-Ve výchozím nastavení nainstaluje Azure Machine Learning Workbench MMLSpark balíček v clusteru, při spuštění experimentu. Můžete řídit toto chování a instalaci dalších balíčků Spark úpravou souboru s názvem _aml_config/spark_dependencies.yml_ ve složce projektu.
+Ve výchozím nastavení nainstaluje aplikaci Azure Machine Learning Workbench balíček MMLSpark ve vašem clusteru, při spuštění experimentu. Můžete kontrolovat toto chování a nainstalovat další balíčky Spark úpravou souboru s názvem _aml_config/spark_dependencies.yml_ ve složce vašeho projektu.
 
 ```
 # Spark configuration properties.
@@ -61,11 +61,11 @@ packages:
     version: "0.9.9"
 ```
 
-MMLSpark můžete taky nainstalovat přímo na používání clusteru HDInsight Spark [akce skriptu](https://github.com/Azure/mmlspark#hdinsight).
+MMLSpark můžete taky nainstalovat přímo na váš clusteru HDInsight Spark pomocí [akce skriptu](https://github.com/Azure/mmlspark#hdinsight).
 
-## <a name="set-up-azure-hdinsight-spark-cluster-as-compute-target"></a>Nastavení clusteru Azure HDInsight Spark jako výpočetní cíl
+## <a name="set-up-azure-hdinsight-spark-cluster-as-compute-target"></a>Nastavení clusteru Azure HDInsight Spark jako cíl Compute
 
-Otevřete okno příkazového řádku z Azure Machine Learning Workbench přechodem do nabídky "Soubor" a klikněte na tlačítko "spusťte příkazový řádek"
+Otevřete okno CLI aplikace Azure Machine Learning Workbench tak, že přejdete do nabídky "File" a klikněte na tlačítko "otevřít příkazový řádek"
 
 V okně příkazového řádku spusťte následující příkazy:
 
@@ -77,15 +77,15 @@ az ml computetarget attach cluster --name <myhdi> --address <myhdi-ssh.azurehdin
 az ml experiment prepare -c <myhdi>
 ```
 
-Nyní je k dispozici jako cíl pro projekt výpočetní cluster.
+Teď je k dispozici, protože pro projekt cílové výpočetní prostředí clusteru.
 
 ## <a name="run-experiment-on-azure-hdinsight-spark-cluster"></a>Spusťte experiment v clusteru Azure HDInsight Spark.
 
-Přejděte zpět na řídicím panelu projektu příkladu "MMLSpark na pro dospělé úplné zjišťování". Vyberte jako cíl výpočetní cluster a klikněte na tlačítko spustit.
+Vraťte se do řídicího panelu Projekt příkladu "MMLSpark na dospělé sčítání". Vyberte svůj cluster jako cílové výpočetní prostředí a klikněte na tlačítko spustit.
 
-Azure Machine Learning Workbench odesílá úlohy spark pro cluster. Můžete monitorovat průběh a zobrazit výsledky v zobrazení historie spouštění.
+Azure Machine Learning Workbench odešle úlohu spark do clusteru. Můžete sledovat průběh a výsledky zobrazit v zobrazení historie spuštění.
 
 ## <a name="next-steps"></a>Další postup
-Informace o MMLSpark knihovny a příklady naleznete v tématu [úložiště MMLSpark GitHub](https://github.com/Azure/mmlspark)
+Informace o knihovna MMLSpark a příklady najdete v tématu [úložiště MMLSpark GitHub](https://github.com/Azure/mmlspark)
 
-*Apache®, Apache Spark a Spark® jsou registrované ochranné známky nebo ochranné známky Foundation softwaru Apache ve Spojených státech a dalších zemích.*
+*Apache®, Apache Spark a Spark® jsou registrované ochranné známky nebo ochranné známky nadace Apache Software ve Spojených státech amerických a dalších zemích.*

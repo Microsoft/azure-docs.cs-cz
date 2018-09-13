@@ -1,28 +1,28 @@
 ---
-title: Azure ML protokolování API – referenční informace | Microsoft Docs
-description: Protokolování referenční dokumentace rozhraní API.
+title: Referenční informace k Azure ML API protokolování | Dokumentace Microsoftu
+description: Protokolování reference k rozhraní API.
 services: machine-learning
 author: akshaya-a
 ms.author: akannava
 manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/25/2017
-ms.openlocfilehash: b9ea51139fded3d55f0a73024163b7fa943c0ebb
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 101c47f4916ca3fab56800eaf012c55150769302
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834688"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35644421"
 ---
-# <a name="logging-api-reference"></a>Protokolování referenční dokumentace rozhraní API
+# <a name="logging-api-reference"></a>Protokolování reference k rozhraní API
 
-Knihovna Azure ML protokolování umožňuje programu pro vydávání metriky a soubory, které jsou sledovány službou historie pro pozdější analýzu. V současné době jsou podporovány pár základních typů souborů a metriky a sadu podporované typy bude zvýší s budoucími verzemi balíčku Python.
+Knihovna protokolování Azure ML umožňuje programu generovat metriky a soubory, které jsou sledovány objektem služby historie pro pozdější analýzu. V současné době podporuje několik základní typy metrik a soubory, a sadu podporovaných typů se zvýší s budoucími verzemi balíčku Python.
 
-## <a name="uploading-metrics"></a>Odesílání metriky
+## <a name="uploading-metrics"></a>Nahrává se metrik
 
 ```python
 # import logging API package
@@ -41,7 +41,7 @@ logger.log("simple string value", "this is a string metric")
 logger.log("chart data points", [1, 3, 5, 10, 6, 4])
 ```
 
-Standardně jsou všechny metriky odeslán asynchronně tak, aby odesílání nebude mít dopad na spuštění programu. Při odesílání více metriky v hraniční případech to může způsobit řazení problémy. Příkladem může být dva metriky protokolována ve stejnou dobu, ale z nějakého důvodu, kterou uživatel by raději přesný řazení zachovaná. Jiné případem je při metriku musí být sledována před spuštění některých kódu, který je znám selhat rychlé. V obou případech řešení je _počkejte_ dokud metrika je plně protokolována než budete pokračovat:
+Standardně jsou všechny metriky odeslání asynchronně tak, aby odesílání nebude bránit ve spuštění programu. Odeslání více metrik v hraniční případy, může to způsobovat problémy pořadí. Příklad tohoto by dvě metriky protokoluje ve stejnou dobu, ale z nějakého důvodu, které uživatele chcete raději jejich přesné pořadí zachovaná. Další možnost je při metriku musí být sledována před systémem nějaký kód, který je znám potenciálně selhání. V obou případech je řešení _počkejte_ dokud metrika se plně protokoluje než budete pokračovat:
 
 ```python
 # blocking call
@@ -49,9 +49,9 @@ logger.log("my metric 1", 1).wait()
 logger.log("my metric 2", 2).wait()
 ```
 
-## <a name="consuming-metrics"></a>Využívání metriky
+## <a name="consuming-metrics"></a>Použití metrik
 
-Metriky jsou uložené ve službě historie a vázané na spuštění, která je vytvořena. Karta Historie spustit i rozhraní příkazového řádku následující příkaz povolí vám umožňuje načíst jejich (a artefakty níže), po dokončení spuštění.
+Metriky jsou uložené ve službě historie a vázané na spuštění, který je vytvořen. Kartě historie spuštění a následujícího příkazu rozhraní příkazového řádku umožňují načíst je (a artefakty níže), po dokončení spuštění.
 
 ```azurecli
 # show the last run
@@ -66,7 +66,7 @@ $ az ml history info -r <runid>
 
 ## <a name="artifacts-files"></a>Artefakty (soubory)
 
-Kromě metriky AzureML umožňuje uživateli sledovat i soubory. Ve výchozím nastavení jsou všechny soubory, které jsou zapsány do `outputs` složku relativně k programu pracovní adresář (složce projektu v kontextu výpočetní) se odešlou do historie služby a sledovat pro pozdější analýzu. Přímý přístup do paměti je, že velikost jednotlivých souborů musí být menší než 512 MB.
+Kromě metrik AzureML mu umožní sledovat i soubory. Ve výchozím nastavení jsou všechny soubory zapsané do `outputs` složce relativní k programu pracovní adresář (složka projektu ve výpočetním kontextu) se odešlou do služby historie a sledovány pro pozdější analýzu. Výstrahou je, že velikost jednotlivých souborů musí být menší než 512 MB.
 
 
 ```Python
@@ -74,9 +74,9 @@ Kromě metriky AzureML umožňuje uživateli sledovat i soubory. Ve výchozím n
 logger.upload("artifact/path", "This should be the contents of artifact/path in the service")
 ```
 
-## <a name="consuming-artifacts"></a>Využívání artefaktů
+## <a name="consuming-artifacts"></a>Použití artefaktů
 
-Tisknout obsah artefakt, které je sledováno, uživatel může použít na kartě Historie spusťte pro danou spustit a **Stáhnout** nebo **povýšit** artefaktů, nebo použijte níže rozhraní příkazového řádku k dosažení stejného efektu.
+Tisknout obsah artefakt, který je sledováno uživatele můžete použít kartu historie spuštění pro danou běžet do **Stáhnout** nebo **povýšit** artefaktu, nebo použijte následujících příkazů rozhraní příkazového řádku k dosažení stejného výsledku.
 
 ```azurecli
 # show all artifacts generated by a run
@@ -86,5 +86,5 @@ $ az ml history info -r <runid> -a <artifact/path>
 $ az ml history promote -r <runid> -ap <artifact/prefix> -n <name of asset to create>
 ```
 ## <a name="next-steps"></a>Další postup
-- Provede [klasifikace iris tutoria, část 2](tutorial-classifying-iris-part-2.md) zobrazíte protokolování rozhraní API v akci.
-- Zkontrolujte [historii běhů použití a metrik Model v Azure Machine Learning Workbench](how-to-use-run-history-model-metrics.md) pochopit podrobnější protokolování rozhraní API pro použití v historii spustit.
+- Projít [klasifikace iris tutoria, část 2](tutorial-classifying-iris-part-2.md) zobrazíte protokolování rozhraní API v akci.
+- Kontrola [použití historie spuštění a metrik modelů v Azure Machine Learning Workbench](how-to-use-run-history-model-metrics.md) pochopit podrobnější protokolování rozhraní API pro použití v historii spuštění.

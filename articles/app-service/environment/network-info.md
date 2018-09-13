@@ -1,6 +1,6 @@
 ---
-title: Aspekty sítě pomocí služby Azure App Service environment
-description: Vysvětluje App Service Environment síťový provoz a jak nastavit skupiny Nsg a udr s vaší App Service Environment
+title: Důležité informace o sítích pomocí služby Azure App Service environment
+description: Vysvětluje síťový provoz služby ASE a jak nastavit skupiny zabezpečení sítě a trasy definované uživatelem s vaší služby ASE
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -11,102 +11,105 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2018
+ms.date: 05/29/2018
 ms.author: ccompy
-ms.openlocfilehash: d099163cdc34624afd8f01b8f1978c5ee902d1ff
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: ef2288e2f756db6529f1ec5f7b3a49067b2998aa
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35643251"
 ---
-# <a name="networking-considerations-for-an-app-service-environment"></a>Aspekty sítě služby App Service Environment #
+# <a name="networking-considerations-for-an-app-service-environment"></a>Důležité informace o sítích pro službu App Service Environment #
 
 ## <a name="overview"></a>Přehled ##
 
- Azure [App Service Environment] [ Intro] nasazení služby Azure App Service na podsíť ve virtuální síti Azure (VNet). Existují dva typy nasazení pro služby App Service environment (App Service Environment):
+ Azure [služby App Service Environment] [ Intro] je nasazení služby Azure App Service do podsítě ve službě Azure virtual network (VNet). Existují dva typy nasazení pro App Service environment (ASE):
 
-- **Externí App Service Environment**: zpřístupní aplikace app Service Environment hostované na IP adresu přístupné z Internetu. Další informace najdete v tématu [vytvořit externí App Service Environment][MakeExternalASE].
-- **App Service Environment ILB**: zpřístupní aplikace app Service Environment hostované na IP adresu ve virtuální síti. Vnitřní koncový bod je k pro vyrovnávání interní zatížení (ILB), proto volal ILB App Service Environment. Další informace najdete v tématu [vytvoření a použití App Service Environment ILB][MakeILBASE].
+- **Externí služby ASE**: poskytuje hostované služby ASE aplikace na IP adresu přístupné z Internetu. Další informace najdete v tématu [vytvoření externí služby ASE][MakeExternalASE].
+- **Služba ASE s ILB**: poskytuje hostované služby ASE aplikace na IP adresu uvnitř virtuální sítě. Vnitřní koncový bod je interní nástroj pro vyrovnávání zatížení (ILB), což je důvod, proč se používá označení službu ASE. Další informace najdete v tématu [vytvoření a použití prostředí ILB ASE][MakeILBASE].
 
-Existují dvě verze služby App Service Environment: ASEv1 a ASEv2. Informace o ASEv1 najdete v tématu [Úvod do služby App Service Environment v1][ASEv1Intro]. ASEv1 se dá nasadit v klasický nebo virtuální sítě Resource Manageru. ASEv2 lze nasadit pouze do virtuální sítě Resource Manageru.
+Existují dvě verze služby App Service Environment: ASEv1 a ASEv2. Informace v ASEv1 najdete v tématu [Úvod do služby App Service Environment v1][ASEv1Intro]. Verzi ASEv1 je možné nasadit v klasický nebo virtuální síť Resource Manageru. ASEv2 dá nasadit jenom do virtuální sítě Resource Manageru.
 
-Všechna volání ze App Service Environment, které připojuje k Internetu ponechte virtuální sítě pomocí virtuální IP adresu přiřazené App Service Environment. Veřejné IP adresy z této VIP je pak zdrojové IP adresy pro všechna volání z App Service Environment, které připojuje k Internetu. Pokud aplikace, které vaše App Service Environment provádět volání k prostředkům ve vaší virtuální síti nebo přes síť VPN, je jedním z IP adresy v podsíti používané vaší App Service Environment zdrojové IP adresy. Protože App Service Environment není v rámci virtuální sítě, ho také přístup k prostředkům v rámci virtuální sítě bez jakékoli dodatečné konfigurace. Pokud virtuální sítě připojen k síti na pracovišti, aplikací ve vaší App Service Environment také mít přístup k prostředkům existuje. Nemusíte konfigurovat App Service Environment nebo aplikace pro všechny další.
+Všechna volání ze služby ASE, které připojuje k Internetu, ponechejte virtuální sítě pomocí virtuální IP adresy přiřazené pro danou službu ASE. Veřejnou IP Adresou této virtuálních IP adres je zdrojová IP adresa pro všechna volání ze služby ASE, které připojuje k Internetu. Pokud aplikace ve vaší službě ASE provést volání k prostředkům ve vaší virtuální síti nebo přes síť VPN, Zdrojová IP adresa je jednou z IP adresy v podsíti používaným vaší službou ASE. Vzhledem k tomu, že služba ASE je v rámci virtuální sítě, dostanete také prostředky v rámci virtuální sítě bez jakékoli dodatečné konfigurace. Pokud virtuální síť je připojená k vaší místní síti, aplikace ve vaší službě ASE také mají přístup k prostředkům existuje bez další konfigurace.
 
-![Externí App Service Environment][1] 
+![Externí služby ASE][1] 
 
-Pokud máte externí App Service Environment, veřejné VIP je také koncového bodu, který aplikace app Service Environment řešení pro:
+Pokud už máte externí služby ASE, je koncový bod, který vaše aplikace služby ASE přeložit pro také veřejných virtuálních IP adres:
 
 * HTTP/S. 
 * FTP/S. 
 * Nasazení webu.
 * Vzdálené ladění.
 
-![ILB APP SERVICE ENVIRONMENT][2]
+![SLUŽBA ASE S ILB][2]
 
-Pokud máte App Service Environment ILB, IP adresa ILB je koncový bod pro protokol HTTP/S, FTP/S, nasazení webu a vzdálené ladění.
+Pokud máte službu ASE, je adresa ILB koncových bodů HTTP/S, FTP/S, nasazení webu a vzdálené ladění.
 
-Normální aplikace přístupové porty jsou:
+Běžná aplikace přístupové porty jsou:
 
 | Použití | Od | Akce |
 |----------|---------|-------------|
-|  PROTOKOL HTTP NEBO HTTPS  | Konfigurovatelná uživatelem |  80, 443 |
+|  HTTP/HTTPS  | Konfigurovatelná uživatelem |  80, 443 |
 |  FTP/FTPS    | Konfigurovatelná uživatelem |  21, 990, 10001-10020 |
 |  Visual Studio vzdálené ladění  |  Konfigurovatelná uživatelem |  4016, 4018, 4020, 4022 |
 
-To platí, pokud jste na externí App Service Environment nebo ILB App Service Environment. Pokud jste na externí App Service Environment, stiskněte tlačítko tyto porty na veřejných virtuálních IP adres. Pokud jste v App Service Environment ILB, stiskněte tlačítko tyto porty na ILB. Pokud se uzamknout port 443, může být dopad na některé funkce umístěné na portálu. Další informace najdete v tématu [portál závislosti](#portaldep).
+Toto je hodnota true, pokud jste na externí služby ASE nebo ASE s ILB. Pokud používáte externí služby ASE, dostanete se tyto porty na veřejných virtuálních IP adres. Pokud používáte službu ASE, dostanete se tyto porty na ILB. Pokud se uzamknout port 443, může být vliv na některé funkce v portálu. Další informace najdete v tématu [závislosti portálu](#portaldep).
 
-## <a name="ase-subnet-size"></a>Velikost podsítě App Service Environment ##
+## <a name="ase-subnet-size"></a>Velikost podsítě služby ASE ##
 
-Velikost podsítě používané k hostování App Service Environment nelze změnit po nasazení App Service Environment.  App Service Environment používá adresu pro každou infrastruktury roli stejně jako u každé instance plán izolované aplikační služby.  Kromě toho jsou 5 adresy používané pro každou podsíť, která je vytvořena sítí Azure.  App Service Environment se žádné plány služby App Service na všech použije 12 adresy před vytvořením aplikace.  Pokud je App Service Environment ILB pak použije 13 adresy předtím, než vytvoříte aplikaci v této App Service Environment. Jako škálovat plánu aplikace služby bude vyžadovat další adresy pro každý front-end, který je přidán.  Ve výchozím nastavení jsou servery front-end přidány pro každých 15 celkový počet instancí plánu služby App Service. 
+Po nasazení služby ASE se nedá změnit velikost podsítě používané k hostování služby ASE.  Služby ASE používá adresu pro každou roli infrastruktury stejně jako u každé instance plánu izolované služby App Service.  Kromě toho jsou 5 adres používané sítí Azure pro každou podsíť, která je vytvořena.  Služba ASE se žádné plány služby App Service vůbec používat 12 adres před vytvořením aplikace.  Pokud je prostředí ILB ASE pak použije 13 adresy předtím, než vytvoříte aplikaci v této službě ASE. Jak škálovat svoji službu ASE, infrastrukturu role jsou přidány každý násobky 15 až 20 instancí plánu služby App Service.
 
    > [!NOTE]
-   > V podsíti, ale App Service Environment může být nic jiného. Je třeba zvolit adresní prostor, který umožňuje růstem do budoucna. Nelze změnit, tato nastavení později. Doporučujeme velikost `/25` adresy 128.
+   > V podsíti, ale služba ASE může být nic dalšího. Je potřeba zvolit adresní prostor, který umožňuje na budoucí růst. Toto nastavení později nejde změnit. Doporučujeme velikost `/24` s 256 adres.
 
-## <a name="ase-dependencies"></a>Závislosti App Service Environment ##
+Když škálujete směrem nahoru nebo dolů, se přidají nové role odpovídající velikost a pak se vaše úlohy migrují z aktuální velikost pro cílovou velikost. Až po migraci vašich aplikací se odeberou původním virtuálním počítačům. To znamená, že pokud máte službu ASE s 100 instancí ASP bude tečku tam, kde potřebujete double počet virtuálních počítačů.  Je proto doporučujeme použití lomítkem (/ 24) tak, aby vyhovovaly všechny změny, které můžete potřebovat.  
 
-App Service Environment příchozí přístup závislostí je:
+## <a name="ase-dependencies"></a>Závislostí služby ASE ##
 
-| Použití | Od | Akce |
-|-----|------|----|
-| Správa | Adresy pro správu služby aplikace | Podsíť App Service Environment: 454, 455 |
-|  Interní komunikaci App Service Environment | Podsíť App Service Environment: všechny porty | Podsíť App Service Environment: všechny porty
-|  Povolit pro vyrovnávání zatížení Azure příchozí | Nástroj pro vyrovnávání zatížení Azure | Podsíť App Service Environment: všechny porty
-|  Aplikace přiřazené IP adresy | Aplikace, které jsou přiřazeny adresy | Podsíť App Service Environment: všechny porty
-
-Příchozí provoz poskytuje příkazy a ovládání App Service Environment kromě sledování systému. Zdroj IP adres pro tyto přenosy dat jsou uvedené v [adresy App Service Environment správu] [ ASEManagement] dokumentu. Konfigurace zabezpečení sítě je potřeba povolit přístup ze všech IP adres na portech 454 a 455.
-
-V rámci podsítě App Service Environment nejsou mnoho porty používané pro interní součást komunikace a můžete změnit.  To vyžaduje všechny porty v podsíti App Service Environment, aby mohl být dostupný z podsítě App Service Environment. 
-
-Pro komunikaci mezi nástroje pro vyrovnávání zatížení Azure a podsíť App Service Environment jsou minimální porty, které musí být otevřený 454 a 455 16001. 16001 port se používá pro zachování připojení provoz mezi nástroje pro vyrovnávání zatížení a App Service Environment. Pokud používáte App Service Environment ILB pak zamknete provoz dolů právě 454, 455, 16001 porty.  Pokud používáte externí App Service Environment budete muset vzít v úvahu přístupové porty normální aplikace.  Pokud používáte aplikaci přiřazenou adresy budete muset otevřít na všechny porty.  Jakmile bude přiřazena adresa pro konkrétní aplikaci, nástroj pro vyrovnávání zatížení bude používat porty, které nejsou známé z předem odeslat HTTP a HTTPS provozy App Service Environment.
-
-Pokud používáte aplikace přiřazené IP adresy, budete muset povolit přenosy z přiřazené vašich aplikací App Service Environment podsítě IP adres.
-
-Pro odchozí přístup App Service Environment závisí na několika externími systémy. Tyto závislosti systému jsou definovány s názvy DNS a nejsou mapovány na sadu pevné IP adresy. Proto App Service Environment vyžaduje přístup z podsítě App Service Environment všechny externí IP adres napříč různými porty. App Service Environment obsahuje následující odchozí závislosti:
+Služba ASE příchozí přístup, který se závislosti:
 
 | Použití | Od | Akce |
 |-----|------|----|
-| Azure Storage | Podsíť App Service Environment | Table.Core.Windows.NET, blob.core.windows.net, queue.core.windows.net, file.core.windows.net: 80, 443, 445 (445 je potřeba jenom pro ASEv1.) |
-| Azure SQL Database | Podsíť App Service Environment | Database.Windows.NET: 1433, 11000 11999, 14000 14999 (Další informace najdete v tématu [využití portu SQL Database verze 12](../../sql-database/sql-database-develop-direct-route-ports-adonet-v12.md).)|
-| Správa Azure | Podsíť App Service Environment | management.core.windows.net, management.azure.com: 443 
-| Ověření certifikátu SSL |  Podsíť App Service Environment            |  OCSP.msocsp.com, mscrl.microsoft.com, crl.microsoft.com: 443
-| Azure Active Directory        | Podsíť App Service Environment            |  Internet: 443
-| Správa služby App Service        | Podsíť App Service Environment            |  Internet: 443
-| Azure DNS                     | Podsíť App Service Environment            |  Internet: 53
-| Interní komunikaci App Service Environment    | Podsíť App Service Environment: všechny porty |  Podsíť App Service Environment: všechny porty
+| Správa | Adresy pro správu aplikace app Service | Podsíti služby ASE: 454, 455 |
+|  Interní komunikace služby ASE | Podsíti služby ASE: všechny porty | Podsíti služby ASE: všechny porty
+|  Povolit nástroji Azure load balancer příchozí | Nástroj pro vyrovnávání zatížení Azure | Podsíti služby ASE: všechny porty
+|  Aplikace přiřazené IP adresy | Přiřazené adresy aplikace | Podsíti služby ASE: všechny porty
 
-Pokud App Service Environment ztratí přístup k tyto závislosti, přestane fungovat. Pokud k tomu dojde dost dlouho, je pozastaven App Service Environment.
+Řízení příchozích přenosů poskytuje příkazy a ovládání služby ase kromě systému sledování. Zdrojové adresy pro tento provoz jsou uvedeny v [adresy služby ASE správu] [ ASEManagement] dokumentu. Konfigurace zabezpečení sítě je potřeba povolit přístup ze všech IP adres na portech 454 a 455. Pokud zablokujete přístup z těchto adres, vaše služba ASE přestane není v pořádku a pak zablokuje.
+
+V podsíti služby ASE, existuje mnoho porty používané pro komponentu interní komunikace a můžete změnit.  To vyžaduje všechny porty v podsíti služby ASE byla přístupná z podsítě služby ASE. 
+
+Minimální porty, které musí být otevřené pro komunikaci mezi Azure load balancer a podsíti služby ASE jsou 454 a 455 16001. 16001 port je používán pro keep alive přenosy mezi nástroje pro vyrovnávání zatížení a služby ASE. Pokud používáte službu ASE, můžeš provoz na právě 454, 455, 16001 porty.  Pokud používáte externí služby ASE, pak je potřeba vzít v úvahu přístupové porty normální aplikace.  Pokud používáte aplikace přiřazené adresy musíte otevřít na všech portech.  Když se konkrétní aplikaci přiřadí adresu, nástroje pro vyrovnávání zatížení bude používat porty, které nejsou známé z předem směrovat provoz protokolu HTTP a HTTPS do služby ASE.
+
+Pokud používáte aplikace přiřazené IP adresy, budete muset povolit přenosy z IP adres přiřazených k vašim aplikacím k podsíti služby ASE.
+
+Pro odchozí přístup k službě ASE závisí na více externích systémů. Tyto systémové závislosti jsou definovány s názvy DNS a nejsou mapovány na pevnou sadu IP adres. Služba ASE vyžaduje, aby odchozí přístup z podsítě služby ASE pro všechny externí IP adresy na různých portů. Služba ASE má následující odchozí závislosti:
+
+| Použití | Od | Akce |
+|-----|------|----|
+| Azure Storage | Podsíti služby ASE | Table.Core.Windows.NET blob.core.windows.net, queue.core.windows.net, file.core.windows.net: 80, 443, 445 (445 je potřeba jenom pro ASEv1.) |
+| Azure SQL Database | Podsíti služby ASE | Database.Windows.NET: 1433 |
+| Správa Azure | Podsíti služby ASE | Management.Core.Windows.NET, management.azure.com, admin.core.windows.net: 443 |
+| Ověření certifikátů SSL |  Podsíti služby ASE            |  OCSP.msocsp.com, mscrl.microsoft.com, crl.microsoft.com: 443 |
+| Azure Active Directory        | Podsíti služby ASE            |  Login.Windows.NET: 443 |
+| Správa služby App Service        | Podsíti služby ASE            |  GR-prod -<regionspecific>. cloudapp.net a az prod.metrics.nsatc .net: 443 |
+| Azure DNS                     | Podsíti služby ASE            |  Internet: 53 |
+| Interní komunikace služby ASE    | Podsíti služby ASE: všechny porty |  Podsíti služby ASE: všechny porty |
+
+Pokud službu ASE ztratí přístup do těchto závislostí, přestane fungovat. Pokud k tomu dojde dostatečně dlouho, služba ASE je pozastaveno.
 
 ### <a name="customer-dns"></a>Zákazník DNS ###
 
-Pokud jsou virtuální síť nakonfigurované zákazník definovaný server DNS, úlohy klientů ji použít. App Service Environment se stále musí komunikovat s Azure DNS pro účely správy. 
+Pokud virtuální síť nakonfigurována se serverem DNS definované zákazníkem, úlohy klientů použít. Služba ASE se stále potřebuje ke komunikaci s Azure DNS pro účely správy. 
 
-Pokud jsou virtuální síť nakonfigurované zákazník DNS na druhé straně sítě VPN, musí být dostupný z podsítě, která obsahuje App Service Environment serverem DNS.
+Pokud zákazník DNS na druhé straně VPN nakonfigurované virtuální sítě, DNS server musí být dostupný z podsítě, která obsahuje službu ASE.
 
 <a name="portaldep"></a>
 
-## <a name="portal-dependencies"></a>Portál závislosti ##
+## <a name="portal-dependencies"></a>Závislosti portálu ##
 
-Kromě funkční závislosti App Service Environment existuje několik další položky týkající se práce s portálem. Některé z možností na portálu Azure závisí na přímý přístup k _SCM lokality_. Pro každou aplikaci ve službě Azure App Service existují dvě adresy URL. První adresa URL je přístup k vaší aplikaci. Druhý adresa URL je pro přístup k webu SCM, což se označuje taky jako _Kudu konzoly_. Funkce, které používají SCM lokality:
+Kromě funkční závislostí služby ASE se několik další položky týkající se práce s portálem. Některé funkce na webu Azure Portal závisí na přímý přístup k _web SCM_. Pro každou aplikaci ve službě Azure App Service jsou dvě adresy URL. První adresa URL je přístup k vaší aplikaci. Je druhý adresa URL pro přístup k webu SCM, což se označuje taky jako _konzola Kudu_. Funkce, které používají web SCM:
 
 -   Webové úlohy
 -   Functions
@@ -116,89 +119,95 @@ Kromě funkční závislosti App Service Environment existuje několik další p
 -   Průzkumník procesů
 -   Konzola
 
-Pokud používáte App Service Environment ILB, lokalita SCM není dostupné z oblasti mimo virtuální sítě internet. Pokud vaše aplikace je hostitelem App Service Environment ILB, některé funkce nebudou fungovat z portálu.  
+Pokud používáte službu ASE, není web SCM Internetu dostupné z oblasti mimo virtuální síť. Když je vaše aplikace hostovaná ve službě ASE s ILB, nebudou fungovat některé funkce z portálu.  
 
-Mnoho z těchto možností, které závisí na webu SCM jsou k dispozici přímo v konzole Kudu. Můžete se připojit k němu přímo, a nikoli pomocí portálu. Pokud je vaše aplikace hostovaná v App Service Environment ILB, používáte pro přihlášení vaše přihlašovací údaje pro publikování. Adresa URL pro přístup k webu SCM aplikace hostované v App Service Environment ILB má následující formát: 
+Mnohé z těchto funkcí, které závisí na web SCM jsou k dispozici přímo v konzole Kudu. Můžete se připojit k němu přímo, nikoli přes portál. Pokud je vaše aplikace hostovaná ve službě ASE s ILB, použijte přihlašovací údaje pro publikování pro přihlášení. Adresa URL pro přístup k webu SCM aplikace hostované ve službě ASE s ILB má následující formát: 
 
 ```
 <appname>.scm.<domain name the ILB ASE was created with> 
 ```
 
-Pokud vaše App Service Environment ILB je název domény *contoso.net* a je název vaší aplikace *testapp*, aplikace je k dispozici na adrese *testapp.contoso.net*. SCM webu, která jde s ním je k dispozici na adrese *testapp.scm.contoso.net*.
+Pokud vaše služba ASE s ILB je název domény *contoso.net* a je název vaší aplikace *testapp*, aplikace je dosažena *testapp.contoso.net*. Správce řízení služeb webu, která jde s ním je dosažena *testapp.scm.contoso.net*.
 
 ## <a name="functions-and-web-jobs"></a>Funkce a webové úlohy ##
 
-Funkce a webové úlohy závisí na webu SCM, ale jsou podporovány pro použití na portálu, i v případě, že vaše aplikace nacházely ve ILB App Service Environment, dokud bude prohlížeč dosáhnout SCM lokality.  Pokud používáte certifikát podepsaný svým držitelem s vaší App Service Environment ILB, musíte povolit prohlížeč důvěřovat certifikátu.  Pro aplikaci Internet Explorer a Microsoft Edge, tzn. certifikát musí být v úložišti počítače vztah důvěryhodnosti.  Pokud používáte Chrome, pak to znamená, že jste dříve přijali certifikát v prohlížeči zasažení pravděpodobně z důvodu webu scm přímo.  Nejlepším řešením je použití komerční certifikát, který je v prohlížeči řetěz certifikátů.  
+Funkce a webových úloh závisí na web SCM. podporují se ale pro použití na portálu i v případě, že vaše aplikace nacházely ve službě ASE s ILB, tak dlouho, dokud váš prohlížeč může kontaktovat web SCM.  Pokud používáte certifikát podepsaný svým držitelem se vaše služba ASE s ILB, je potřeba povolit váš prohlížeč důvěřovat certifikátu.  Pro aplikaci Internet Explorer a Microsoft Edge, tzn. certifikát musí být v úložišti počítače vztah důvěryhodnosti.  Pokud používáte Chrome, pak to znamená, že jste dříve přijali certifikátu v prohlížeči stisknutím pravděpodobně web scm přímo.  Nejlepším řešením je použití komerční certifikát, který je v řetězu certifikátů prohlížeče vztah důvěryhodnosti.  
 
-## <a name="ase-ip-addresses"></a>App Service Environment IP adresy ##
+## <a name="ase-ip-addresses"></a>Služba ASE IP adresy ##
 
-App Service Environment má několik IP adres znát. Jsou to tyto:
+Služba ASE má několik IP adres je potřeba vědět. Jsou to tyto:
 
-- **Veřejná IP adresa příchozí**: použít pro provoz aplikace v externím App Service Environment a přenosy správy v App Service Environment ILB i externí App Service Environment.
-- **Odchozí veřejnou IP adresu**: používá jako IP adresa "od" pro odchozí připojení z App Service Environment která opouští virtuální sítě, které nejsou směrovány dolů sítě VPN.
-- **ILB IP adresu**: Pokud používáte ILB App Service Environment.
-- **Přiřazené aplikace založená na IP adresy**: jedinou možnou s externí App Service Environment a je nakonfigurovaný na základě IP protokol SSL.
+- **Veřejnou IP adresu příchozího**: použít pro aplikaci externí službě ase a provoz správy v externí službě ASE a službu ASE.
+- **Odchozí veřejnou IP adresu**: použít jako IP adresa "od" pro odchozí připojení ze služby ASE, které ponechejte virtuální sítě, které nejsou směrovány dolů sítě VPN.
+- **Adresa ILB IP**: Pokud používáte službu ASE.
+- **Aplikace přiřazená SSL na základě IP adresy**: jedinou možnou externí služby ASE a když je nakonfigurovaný protokol SSL na základě IP adresy.
 
-Tyto IP adresy jsou snadno viditelná v ASEv2 na portálu Azure z rozhraní App Service Environment. Pokud máte App Service Environment ILB, IP adresu pro ILB je uvedený.
+Tyto IP adresy jsou snadno viditelné v ASEv2 na webu Azure Portal v uživatelském rozhraní služby ASE. Pokud máte službu ASE, je uvedena IP adresa pro ILB.
+
+   > [!NOTE]
+   > Tyto IP adresy se nezmění, tak dlouho, dokud vaše služba ASE zůstane zprovozněný.  Pokud vaše služba ASE bude pozastavit a obnovit, adresy používané službou ASE se změní. Běžné příčiny službu ase k zablokuje je-li blokovat přístup k řízení příchozích nebo blokovat přístup k závislostí služby ASE. 
 
 ![IP adresy][3]
 
-### <a name="app-assigned-ip-addresses"></a>Aplikace přiřazené IP adresy ###
+### <a name="app-assigned-ip-addresses"></a>Aplikace přiřazená IP adresy ###
 
-S externí App Service Environment můžete přiřadit IP adresy pro jednotlivé aplikace. Nejde udělat s ILB App Service Environment. Další informace o tom, jak nakonfigurovat aplikaci, aby měla vlastní IP adresu, najdete v části [vazby stávající vlastní certifikát SSL pro službu Azure web apps](../app-service-web-tutorial-custom-ssl.md).
+S externí služby ASE můžete přiřadit IP adresy pro jednotlivé aplikace. Nemůžete udělat s ILB ASE. Další informace o tom, jak nakonfigurovat aplikaci tak, aby mít svou vlastní IP adresu najdete v tématu [vytvoření vazby existujícího vlastního certifikátu SSL k Azure web apps](../app-service-web-tutorial-custom-ssl.md).
 
-Pokud aplikace má vlastní založená na IP adresu, App Service Environment si vyhrazuje dva porty pro mapování na tuto IP adresu. Je jeden port pro přenos HTTP a další port, který je pro protokol HTTPS. Tyto porty jsou uvedeny v uživatelském rozhraní App Service Environment v části IP adresy. Přenosy musí být schopný dosáhnout tyto porty z virtuální IP adresu nebo aplikace jsou nedostupné. Tento požadavek je důležité si pamatovat při konfiguraci skupin zabezpečení sítě (Nsg).
+Pokud aplikace má vlastní SSL založené na protokolu IP adresu, službu ASE rezervuje dva porty pro mapování na tuto IP adresu. Jeden port je pro provoz protokolu HTTP a je jiný port pro protokol HTTPS. Tyto porty jsou uvedené v uživatelském rozhraní služby ASE v části IP adresy. Provoz musí být schopen kontaktovat tyto porty z virtuální IP adresy nebo aplikace nejsou dostupné. Tento požadavek je důležité si pamatovat, když konfigurujete skupiny zabezpečení sítě (Nsg).
 
 ## <a name="network-security-groups"></a>Network Security Groups (Skupiny zabezpečení sítě) ##
 
-[Skupin zabezpečení sítě] [ NSGs] umožňují řídit přístup k síti v rámci virtuální sítě. Pokud používáte portál, je na nejnižší prioritu tak, aby odepřel všechno, co pravidlo implicitní odepřít. Můžete vytvořit jsou vaše povolí pravidla.
+[Skupiny zabezpečení sítě] [ NSGs] poskytnout možnost řídit přístup k síti v rámci virtuální sítě. Při použití na portálu se s nejnižší prioritou na Zamítnout vše, co pravidlo odepřít implicitní. Co je vytvořit jsou vaše pravidla povolit.
 
-V App Service Environment nemáte přístup k virtuálním počítačům použity k hostování App Service Environment, sám sebe. Jsou v předplatném spravovaný společností Microsoft. Pokud chcete omezit přístup k aplikacím na App Service Environment, nastavte skupiny Nsg na podsítě App Service Environment. Při tom věnujte pozornost pečlivě závislosti App Service Environment. Pokud zablokujete všechny závislosti, App Service Environment přestane fungovat.
+Ve službě ASE nemáte přístup k virtuálním počítačům, které používají k hostování služby ASE, samotného. Jsou to v rámci předplatného spravovaných microsoftem. Pokud chcete omezit přístup k aplikacím služby ase, nastavte skupiny zabezpečení sítě v podsíti služby ASE. Přitom platíte důkladnou pozornost závislostí služby ASE. Pokud zablokujete všechny závislosti, že služba ASE přestane fungovat.
 
-Skupiny Nsg se dá nakonfigurovat pomocí portálu Azure nebo pomocí prostředí PowerShell. Zde uvedené informace zobrazí na portálu Azure. Vytvořit a spravovat skupiny Nsg na portálu jako prostředek nejvyšší úrovně v rámci **sítě**.
+Skupiny zabezpečení sítě se dá nakonfigurovat na webu Azure portal nebo přes PowerShell. Zde uvedené informace se zobrazí na webu Azure portal. Vytvoření a Správa skupin zabezpečení sítě na portálu jako prostředek nejvyšší úrovně v rámci **sítě**.
 
-Pokud jsou požadavky na příchozí a odchozí vzít v úvahu, by mělo vypadat jako skupiny Nsg uvedeno v tomto příkladu skupin Nsg. Rozsah adres virtuální sítě je _192.168.250.0/23_, a podsíť, který je App Service Environment ve _192.168.251.128/25_.
+Pokud příchozí a odchozí požadavky jsou vzít v úvahu, vypadat podobně jako na skupiny zabezpečení sítě v tomto příkladu skupiny zabezpečení sítě. Rozsah adres virtuální sítě je _192.168.250.0/23_, a je podsíť, která služba ASE je v _192.168.251.128/25_.
 
-První dva příchozí požadavky pro App Service Environment funkce se zobrazí v horní části seznamu v tomto příkladu. Jejich umožňuje správu App Service Environment a App Service Environment pro komunikaci se sám sebe. Jiné položky jsou všechny konfigurovatelné klienta a můžou řídit přístup k síti pro aplikace spouštěné v App Service Environment. 
+První dva příchozí požadavky pro službu ASE tak funkce se zobrazí v horní části seznamu v tomto příkladu. Umožňuje správu služby ASE a služba ASE ke komunikaci se sebou samým. Ostatní položky jsou všechny tenanty konfigurovatelné a můžete řídit přístup k síti pro aplikace hostované služby ASE. 
 
 ![Příchozí pravidla zabezpečení][4]
 
-Výchozí pravidlo umožňuje IP adresy ve virtuální síti, aby komunikoval s App Service Environment podsítě. Jiné výchozí pravidlo umožňuje Vyrovnávání zatížení, také známé jako veřejné VIP, ke komunikaci s App Service Environment. Pokud chcete zobrazit výchozí pravidla, vyberte **výchozí pravidla** vedle **přidat** ikonu. Když vložíte odepření všechno ostatní pravidla po pravidla NSG uvedené, abyste zabránili provoz mezi virtuální IP adresu a App Service Environment. Pokud chcete zabránit provoz přicházející ze uvnitř virtuální sítě, přidáte vlastní pravidlo povolující příchozí. Použít zdroj rovna AzureLoadBalancer s cílovým serverem **žádné** a rozsah portů **\***. Protože pravidla NSG se použije k podsíti App Service Environment, nemusíte být v cílovém specifické.
+Výchozí pravidlo umožňuje IP adresy ve virtuální síti komunikovat s podsíti služby ASE. Další výchozí pravidlo umožňuje nástroje pro vyrovnávání zatížení, označované také jako veřejnou virtuální IP adresy, ke komunikaci se službou ASE. Pokud chcete zobrazit výchozí pravidla, vyberte **výchozí pravidla** vedle **přidat** ikonu. Když vložíte odepřít všechno ostatní pravidla po pravidla skupiny zabezpečení sítě je vidět, zabránit provoz mezi virtuální IP adresy a služby ASE. Chcete-li zabránit provoz přicházející z uvnitř virtuální sítě, přidejte vlastní pravidlo, které povolí příchozí. Použít prostředek rovna AzureLoadBalancer s cílovou **jakékoli** a rozsah portů **\***. Vzhledem k tomu, že pravidlo NSG, je použita na podsíti služby ASE, nemusíte být konkrétní v cílovém umístění.
 
-Pokud jste přiřadili IP adresu do vaší aplikace, zajistěte, aby že nechat otevřené porty. Pokud chcete zobrazit porty, vyberte **App Service Environment** > **IP adresy**.  
+Pokud jste IP adresy přiřazené vaší aplikaci, ujistěte se, že můžete ponechat porty otevřené. Pokud chcete zobrazit porty, vyberte **služby App Service Environment** > **IP adresy**.  
 
-Všechny položky, které jsou uvedené v následující odchozí pravidla, je potřeba, s výjimkou poslední položky. Umožňují přístup k síti do app Service Environment závislosti, které jste si poznamenali dříve v tomto článku. Pokud některý z nich zablokujete, vaše App Service Environment přestane fungovat. Poslední položky v seznamu umožňuje vaší App Service Environment ke komunikaci s další prostředky ve virtuální síti.
+Všechny položky uvedené v následující odchozí pravidla jsou potřeba, s výjimkou poslední položky. Umožňují přístup k síti závislostí služby ASE, které jste si poznamenali dříve v tomto článku. Pokud některý z nich, vaše služba ASE přestane fungovat. Poslední položku v seznamu umožňuje vaší služby ASE ke komunikaci s ostatními prostředky ve virtuální síti.
 
 ![Odchozí pravidla zabezpečení][5]
 
-Po skupin Nsg jsou definovány, přiřadíte k podsíti, který vaše App Service Environment je na. Pokud si nepamatujete App Service Environment virtuální síť nebo podsíť, uvidíte na stránce portálu App Service Environment. Chcete-li přiřadit NSG pro podsíť, přejděte k podsíti uživatelského rozhraní a vyberte NSG.
+Jakmile vaše skupiny zabezpečení sítě jsou definovány, je přiřadíte k podsíti, ke které vaše služba ASE je v. Pokud si nepamatujete ASE virtuální síť nebo podsíť, zobrazí se na stránce portálu služby ASE. Přiřazení skupiny zabezpečení sítě k podsíti služby, přejděte k podsíti uživatelského rozhraní a vyberte skupiny zabezpečení sítě.
 
 ## <a name="routes"></a>Trasy ##
 
-Vynucené tunelování je nastavena tras ve vaší virtuální síti, nebude odchozí přenosy přejděte přímo k Internetu, ale jinde jako bránu ExpressRoute nebo virtuální zařízení.  Pokud potřebujete nakonfigurovat vaše App Service Environment takovým způsobem, pak dokument číst na [konfigurace služby App Service Environment se vynucené tunelování][forcedtunnel].  Tento dokument vás bude informovat možnosti práce s ExpressRoute a vynucené tunelování.
+Vynucené tunelování znamená nastavit trasy ve virtuální síti, odchozí provoz nemá přejít přímo na Internetu, ale někde jinde jako bránu ExpressRoute nebo virtuální zařízení.  Pokud je potřeba nakonfigurovat službu ASE takovým způsobem, pak dokument číst na [konfigurace služby App Service Environment s vynuceným tunelovým propojením][forcedtunnel].  Tento dokument vám sdělí možnosti dostupné pro práci s ExpressRoute a vynucené tunelování.
 
-Při vytváření App Service Environment portálu jsme také vytvořit sadu směrovací tabulky na podsíť, která je vytvořena pomocí App Service Environment.  Tyto trasy, že jednoduše odeslat odchozí přenos přímo k Internetu.  
-Ruční vytvoření tras, postupujte takto:
+Při vytváření služby ASE na portálu také vytvoříme sadu směrovací tabulky podsítě, který je vytvořen pomocí služby ASE.  Tyto trasy se jednoduše Řekněme, že odesílání odchozí provoz přímo k Internetu.  
+Ruční vytvoření tras, postupujte podle těchto kroků:
 
-1. Přejděte na portálu Azure. Vyberte **sítě** > **směrovacích tabulek**.
+1. Přejděte na web Azure Portal. Vyberte **sítě** > **směrovací tabulky**.
 
-2. Vytvořte novou tabulku směrování ve stejné oblasti jako virtuální síť.
+2. Vytvoření nové směrovací tabulky ve stejné oblasti jako virtuální síť.
 
-3. V rámci tabulky tras uživatelského rozhraní, vyberte **trasy** > **přidat**.
+3. Ve směrovací tabulce uživatelského rozhraní, **trasy** > **přidat**.
 
-4. Nastavte **typ dalšího směrování** k **Internet** a **předpona adresy** k **0.0.0.0/0**. Vyberte **Uložit**.
+4. Nastavte **typem dalšího segmentu směrování** k **Internet** a **předponu adresy** k **0.0.0.0/0**. Vyberte **Uložit**.
 
     Zobrazí se přibližně takto:
 
     ![Funkční trasy][6]
 
-5. Když vytvoříte nový směrovací tabulka, přejděte na podsíť, která obsahuje vaše App Service Environment. Vyberte směrovací tabulku ze seznamu na portálu. Po uložení změn, měli byste vidět pak skupiny Nsg a trasy zaznamenán s podsíť.
+5. Po vytvoření nové směrovací tabulky, přejděte na podsíť, která obsahuje vaše služba ASE. Směrovací tabulka vyberte ze seznamu na portálu. Po uložení změn, měli byste vidět pak skupin zabezpečení sítě a tras, které jsou uvedené s vaší podsítě.
 
     ![Skupiny Nsg a trasy][7]
 
 ## <a name="service-endpoints"></a>Koncové body služeb ##
 
 Koncové body služby umožňují omezit přístup k víceklientským službám na sadu virtuálních sítí a podsítí Azure. Další informace o koncových bodech služby najdete v dokumentaci pro [koncové body služby virtuální sítě][serviceendpoints]. 
+
+   > [!NOTE]
+   > Koncové body služby s SQL nefungují se službou ASE v oblastech US Government. Tyto informace jsou platné pouze v oblastech Azure.
 
 Když pro prostředek povolíte koncové body služby, vytvoří se trasy s vyšší prioritou než všechny ostatní trasy. Pokud použijete koncové body služby se službou ASE s vynuceným tunelováním, nebude se vynucovat tunelování provozu správy SQL Azure a služby Azure Storage. 
 

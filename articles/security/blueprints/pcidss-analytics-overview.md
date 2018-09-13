@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/03/2018
 ms.author: meladie
-ms.openlocfilehash: 9ee5bf94b13b671dc6be89ce07c37d28d24650db
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: fbab6d1f35aeb2d81581b39b19a6ea93214f3486
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37908102"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719541"
 ---
 # <a name="azure-security-and-compliance-blueprint-analytics-for-pci-dss"></a>Dodržování předpisů a zabezpečení Azure: Analýza pro PCI DSS
 
@@ -31,7 +31,7 @@ Toto zabezpečení Azure a dodržování předpisů poskytuje platforma pro anal
 
 Azure nabízí širokou škálu služeb generování sestav a analýz pro zákazníky. Toto řešení zahrnuje služby Azure Machine Learning ve spojení s Azure SQL Database a rychle procházet data a poskytovat rychlejší výsledky prostřednictvím chytřejší modelování. Azure Machine Learning zvyšuje rychlost dotazů zjištěním nové relace mezi datovými sadami. Jakmile data vyškolila přes několik statistických funkcí, až 7 dalšího dotazu fondy (celková, včetně serveru zákazník 8) můžete synchronizovat se službou stejné tabulkové modely rozložit dotazu úlohy a snížení doby odezvy.
 
-Pro rozšířené analýzy a generování sestav lze nastavit s indexy columnstore Azure SQL Database. Azure Machine Learning a Azure SQL Database můžete vertikálně navýšit nebo snížit nebo úplně vypne v reakci na využití ze strany zákazníků. Veškerý provoz SQL je šifrován pomocí protokolu SSL pomocí zahrnutí certifikáty podepsané svým držitelem. Jako osvědčený postup doporučuje Azure používat důvěryhodné certifikační autority nabízí vyšší zabezpečení.
+Pro rozšířené analýzy a generování sestav lze nastavit s indexy columnstore Azure SQL Database. Azure Machine Learning a Azure SQL databáze můžete vertikálně navýšit nebo snížit nebo úplně vypne v reakci na využití ze strany zákazníků. Veškerý provoz SQL je šifrován pomocí protokolu SSL pomocí zahrnutí certifikáty podepsané svým držitelem. Jako osvědčený postup doporučuje Azure používat důvěryhodné certifikační autority nabízí vyšší zabezpečení.
 
 Jakmile se data odeslán do databáze SQL Azure a školení technologii Azure Machine Learning, je mineralizuje provozní uživatele a správce SQL/Data s Power BI. Power BI zobrazí data intuitivně a získává informace napříč více datových sad, chcete-li nakreslit lepší přehled o. Jeho vysoký stupeň přizpůsobivost a snadnou integraci s Azure SQL Database zajišťuje, že zákazníci můžou nakonfigurovat zpracovávat širokou škálu scénářů znamének podle svých obchodních potřeb.
 

@@ -1,32 +1,32 @@
 ---
-title: Auditování a vytváření sestav služby Azure Active Directory s B2B spolupráce uživatele | Microsoft Docs
-description: Vlastnosti uživatele Guest se dají konfigurovat v spolupráce Azure Active Directory s B2B
+title: Auditování a vytváření sestav uživatele služby Azure Active Directory s B2B spolupráce | Dokumentace Microsoftu
+description: Vlastnosti uživatele typu Host se dají konfigurovat v spolupráce Azure Active Directory s B2B
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: article
 ms.date: 04/12/2017
-ms.author: twooley
-author: twooley
+ms.author: mimart
+author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 64f15095bd260cd5f83e0e834607cd64bb3a47ee
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
-ms.translationtype: HT
+ms.openlocfilehash: 50f6a1ee7486918869342f032818d587c99f4cac
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34267372"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35642946"
 ---
 # <a name="auditing-and-reporting-a-b2b-collaboration-user"></a>Auditování a vytváření sestav uživatele spolupráce B2B
-Uživatele typu Host máte auditování podobné možnosti jako s uživateli člen. Tady je příklad pozvánky a uplatnění historii pozvaný Sam Oogle:
+Uživatelé typu Host máte podobné možnosti auditování s využitím členské uživatele. Tady je příklad historie pozvánku a uplatnění pozvaného Sam Oogle:
 
 ![protokol auditu](./media/auditing-and-reporting/audit-log.png)
 
-Můžete podrobně každou z těchto událostí získat podrobnosti. Například podíváme se na podrobnosti o přijetí.
+Můžete věnovat každá z těchto událostí, který obsahuje podrobné informace. Například Pojďme se podívat na podrobnosti přijetí.
 
 ![Podrobnosti o aktivitě](./media/auditing-and-reporting/activity-details.png)
 
-Můžete také exportovat tyto protokoly z Azure AD a používat nástroj pro vytváření sestav podle svého výběru k získání přizpůsobených sestav.
+Můžete také exportovat tyto protokoly z Azure AD a získání přizpůsobených sestav pomocí vytváření sestav nástroje podle vašeho výběru.
 
 ### <a name="next-steps"></a>Další postup
 

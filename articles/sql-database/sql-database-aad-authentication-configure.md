@@ -10,13 +10,13 @@ ms.custom: security
 ms.topic: conceptual
 ms.date: 03/07/2018
 ms.author: mireks
-ms.reviewer: carlrab
-ms.openlocfilehash: a648071d4d98f500e70557b330d5c79dba747a1f
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.reviewer: vanto
+ms.openlocfilehash: d123cb2d272f1c360d12e9d71eec6dc5ca508ebd
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43345071"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44718742"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql-database-managed-instance-or-sql-data-warehouse"></a>Konfigurace a Správa ověřování služby Azure Active Directory s SQL Database, mi nebo SQL Data Warehouse
 
@@ -189,7 +189,7 @@ Následující příklad odebere správce Azure AD:
 Remove-AzureRmSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -ServerName "demo_server"
 ```
 
-Správce Azure Active Directory můžete také vytvářet pomocí rozhraní REST API. Další informace najdete v tématu [Reference k REST API správy služby a operace pro operace databáze SQL Azure pro Azure SQL Database.](https://msdn.microsoft.com/library/azure/dn505719.aspx)
+Správce Azure Active Directory můžete také vytvářet pomocí rozhraní REST API. Další informace najdete v tématu [operace pro operace databáze SQL Azure pro službu Azure SQL Database a Service Management REST API – referenční informace](https://msdn.microsoft.com/library/azure/dn505719.aspx)
 
 ### <a name="cli"></a>Rozhraní příkazového řádku  
 Správce Azure AD můžou zřizovat také voláním následující příkazy rozhraní příkazového řádku:

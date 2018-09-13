@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.reviewer: jonfan, LADocs
 ms.suite: integration
-ms.openlocfilehash: 4ce65f1b5dd22da031ebf6730b5efad2d04f91a0
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 001dc4d5057767191003697c5fb819e53a8658f2
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39365583"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719932"
 ---
 # <a name="migrate-biztalk-server-edi-solutions-to-biztalk-services-technical-guide"></a>Migrace řešení EDI z BizTalk serveru do BizTalk Services: technický průvodce
 
@@ -55,7 +55,7 @@ Hlavní rozdíly a podobnosti mezi tok, který řešení EDI BizTalk serveru a B
   
     Ve službě BizTalk Services po EDI přijímat most zpracovává zprávy EDI, směruje zprávy k externímu procesu. Externí proces může běžet na Microsoft Azure nebo místně. Externí proces by měl zprávy směruje do most odeslat EDI; Most odeslat ze své podstaty nestahuje zprávy. Po zpracování zprávy, směruje most EDI odeslat zprávu do obchodního partnera.
 
-BizTalk Services umožňují snadno použít konfiguraci prostředí rychle vytvořit a nasadit smlouvy s B2B mezi obchodními partnery, bez jakékoli Microsoft Azure Compute konfigurace instance (webové nebo pracovní role), všechny databáze Microsoft Azure SQL nebo některý Účet úložiště Microsoft Azure. Složitější scénáře budou vyžadovat propojí pracovní postupy nebo další zpracování služby "kolem okraje" Trading Partner smlouvy před nebo po zpracování most obchodní Partner smlouvy EDI. Podrobně následující posloupnosti událostí během zpracování ve službě BizTalk Services zpráv EDI.
+BizTalk Services umožňují snadno použít konfiguraci prostředí rychle vytvořit a nasadit smlouvy s B2B mezi obchodními partnery bez konfigurace všechny instance Microsoft Azure Compute (webové nebo pracovní role), všechny databáze Microsoft Azure SQL nebo některý Účet úložiště Microsoft Azure. Složitější scénáře budou vyžadovat propojí pracovní postupy nebo další zpracování služby "kolem okraje" Trading Partner smlouvy před nebo po zpracování most obchodní Partner smlouvy EDI. Podrobně následující posloupnosti událostí během zpracování ve službě BizTalk Services zpráv EDI.
 
 1. Přijme zprávu EDI z obchodní partner, společnost Fabrikam.  Pro příjem zpráv EDI z obchodní partneři, služby BizTalk Services podporují přenosové protokoly, jako je například FTP, SFTP, AS2 a HTTP/S.
 2. Obchodní partner zpracování škálování na straně smlouvy zpětně přeloží zpráv EDI do formátu XML.  Zpětně přeložený zpráv EDI (ve formátu XML) lze směrovat na koncové body služby Service Bus jako koncový bod Service Bus Relay, téma služby Service Bus, frontu služby Service Bus nebo Most BizTalk Services.

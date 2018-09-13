@@ -12,12 +12,12 @@ ms.author: josack
 ms.suite: sql
 ms.prod_service: sql-database
 ms.component: data-movement
-ms.openlocfilehash: 133cba72a93d692851043f1c66d6a4a38e18b324
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: d82cc3ee1074e326c9e4dee7fd65e338cb95e19f
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44379453"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44722227"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>Nové DBA v cloudu – Správa vaší databáze ve službě Azure SQL Database
 
@@ -209,7 +209,7 @@ Z tohoto grafu můžete také nastavit upozornění podle prostředků. Tyto vý
 
    ![Query Performance Insight](./media/sql-database-manage-after-migration/query-performance-insight.png)
 
-- **Azure SQL Analytics (Preview) ve službě Log Analytics**: [Azure Log Analytics](../log-analytics/log-analytics-azure-sql.md) umožňuje shromažďovat a vizualizace klíčových metrik výkonu Azure SQL Azure podporují až 150 000 databází SQL a 5 000 Elastických fondech SQL za pracovní prostor. Slouží ke sledování a přijímat oznámení. Můžete monitorovat metriky elastického fondu SQL Database a napříč několika předplatných Azure a elastické fondy a je možné identifikovat problémy v každé vrstvě zásobníku aplikací.
+- **Azure SQL Analytics (Preview) ve službě Log Analytics**: [Azure Log Analytics](../log-analytics/log-analytics-azure-sql.md) umožňuje shromažďovat a vizualizace klíčových metrik výkonu Azure SQL Azure podporují až 150 000 databází SQL a 5 000 SQL elastické fondy na pracovní prostor. Slouží ke sledování a přijímat oznámení. Můžete monitorovat metriky elastického fondu SQL Database a napříč několika předplatných Azure a elastické fondy a je možné identifikovat problémy v každé vrstvě zásobníku aplikací.
 
 ### <a name="i-am-noticing-performance-issues-how-does-my-sql-database-troubleshooting-methodology-differ-from-sql-server"></a>Můžu jsem řadí problémy s výkonem: jak Moje databáze SQL metodologie řešení potíží se liší od SQL serveru?
 Hlavní část postupy řešení potíží, můžete využít pro diagnostiku dotazů a problémů s výkonem databáze zůstávají stejné. Po všech stejný Server SQL využívá modul cloudu. Však má integrované platformy – Azure SQL DB "intelligence". Může pomoct při řešení potíží a ještě snadněji diagnostikovat problémy s výkonem. Můžete ho také některé z těchto nápravná opatření proveďte vaším jménem a v některých případech, proaktivně opravit - automaticky. 

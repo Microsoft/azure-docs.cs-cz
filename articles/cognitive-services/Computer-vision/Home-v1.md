@@ -1,6 +1,6 @@
 ---
-title: Počítače vize rozhraní API pro službu Microsoft kognitivní | Microsoft Docs
-description: Použijte pokročilé algoritmy v rozhraní API vize počítače při zpracování obrázků a vrátí informace ve kognitivní služby společnosti Microsoft.
+title: Computer Vision API na služby Microsoft Cognitive Services | Dokumentace Microsoftu
+description: Pomocí pokročilých algoritmů v rozhraní API pro počítačové zpracování obrazu umožňují zpracování obrázků a vrátí informace o Microsoft Cognitive Services.
 services: cognitive-services
 author: KellyDF
 manager: corncar
@@ -9,46 +9,46 @@ ms.component: computer-vision
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: kefre
-ms.openlocfilehash: 86e0441c600162e479c678d3cb1dbeaad423ddb5
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 84d931ad79bf32b39a4d771f6afd1c9a05ad2395
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343485"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44714815"
 ---
-# <a name="what-is-computer-vision-api-version-10"></a>Co je počítač vize rozhraní API verze 1.0?
+# <a name="what-is-computer-vision-api-version-10"></a>Co je počítač Vision API verze 1.0?
 
 > [!IMPORTANT]
-> Nová verze rozhraní API vize počítači je nyní k dispozici, najdete v tématu:
+> Nová verze rozhraní API pro počítačové zpracování obrazu je nyní k dispozici, najdete v článku:
 >- [Přehled](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)
->- [Počítač vize rozhraní API verze 2.0](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)
+>- [Verze rozhraní API pro zpracování obrazu počítače 2.0](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)
 
-Rozhraní API vize počítače založené na cloudu poskytuje vývojářům přístup k pokročilé algoritmy pro zpracování obrázků a vrátí informace. Nahrávání obrázku nebo zadat adresu URL obrázku, můžete Microsoft počítače vize algoritmy analyzovat visual obsah různými způsoby podle vstupy a možnosti výběru. S rozhraním API vize počítače uživatelů můžete analyzovat bitových kopií do:
-* [Značka Image na základě obsahu.](#Tagging)
-* [Kategorizace bitové kopie.](#Categorizing)
-* [Určete typ a kvalitu bitové kopie.](#Identifying)
-* [Zjištění lidského řezy a vrátit jejich souřadnice. ](#Faces)
-* [Rozpoznat specifické pro doménu obsah.](#Domain-Specific)
+Cloudové rozhraní API pro počítačové zpracování obrazu poskytuje vývojářům přístup k pokročilým algoritmům pro zpracování obrázků a vrácení informací. Na základě nahrání obrázku nebo zadání adresy URL obrázku mohou algoritmy Microsoftu pro počítačové zpracování obrazu různými způsoby analyzovat vizuální obsah, a to v závislosti na vstupech a volbách uživatelů. Pomocí rozhraní API pro počítačové zpracování obrazu můžete uživatelům díky analýze obrázků můžete:
+* [Označit Image na základě obsahu.](#Tagging)
+* [Kategorizace obrázků.](#Categorizing)
+* [Určete typ a kvalitu imagí.](#Identifying)
+* [Rozpoznávejte lidské tváře a vrátit jejich souřadnice. ](#Faces)
+* [Rozpoznávání obsahu specifického pro doménu.](#Domain-Specific)
 * [Generovat popisy obsahu.](#Descriptions)
-* [Slouží k identifikaci tištěné text najít v obrázcích optické rozpoznávání znaků.](#OCR)
-* [Rozpoznat ručně psaný text.](#RecognizeText)
+* [Optické rozpoznávání znaků na slouží k identifikaci tištěný text nalezeno v obrázcích.](#OCR)
+* [Rozpoznávání rukopisného textu.](#RecognizeText)
 * [Rozlišení barevná schémata.](#Color)
-* [Příznak obsah pro dospělé.](#Adult)
+* [Příznak obsahu pro dospělé.](#Adult)
 * [Oříznutí fotografie má být použit jako miniatury.](#Thumbnails)
 
 ## <a name="requirements"></a>Požadavky
 * Podporované metody zadávání znaků: Nezpracovaná binární ve formě application/octet-stream adresa URL obrázku nebo image.
-* Podporované formáty bitové kopie: JPEG, PNG, GIF, BMP.
-* Velikost souboru obrázku: méně než 4 MB volného místa.
+* Podporované formáty image: JPEG, PNG, GIF, BMP.
+* Velikost souboru obrázku: menší než 4 MB.
 * Obrázek dimenze: větší než 50 × 50 pixelů.
 
-## <a name="tagging-images"></a>Označování bitové kopie
-Rozhraní API vize počítači vrátí značky na základě více než 2000 rozpoznatelném objekty, životností lidé, kulisy a akce. Když jsou nejednoznačné značky nebo není běžné znalostní báze, odpověď rozhraní API Nápověda je poskytována prostřednictvím '' upřesnit význam značky v kontextu známé nastavení. Značky nejsou uspořádána jako taxonomii a neexistuje žádná hierarchie dědičnosti. Kolekce obsahu značky tvoří základ pro bitovou kopii popis zobrazí jako lidského čitelný jazyk, ve formátu v dokončení věty. Všimněte si, že v tomto okamžiku jazykem je angličtina pouze podporované pro popis bitové kopie.
+## <a name="tagging-images"></a>Označování Imagí
+Rozhraní API pro počítačové zpracování obrazu vrací značky na základě na více než 2 000 rozpoznatelných objektů, živých bytostí, krajin a akcí. Při značky jsou nejednoznačný nebo není, rozhraní API poskytne "pomocné parametry" pro objasnění významu značky v kontextu známé nastavení. Značky nejsou uspořádaná jako taxonomie a neexistuje žádná hierarchie dědičnosti. Kolekce obsahu značek tvoří základ pro bitovou kopii "popisu" zobrazí jako lidského čitelné jazyk, ve formátu v úplných větách. Všimněte si, že v tomto okamžiku angličtina je jediný podporovaný jazyk pro popis obrázku.
 
-Po odeslání bitovou kopii nebo zadáte adresu URL obrázku, výstupní algoritmy API vize počítače na základě objektů, životností lidé a akce, které jsou určené v obrázku značky. Označování není omezeno na hlavní subjektu, jako je například osoby v popředí, ale také zahrnuje nábytek (vnitřní nebo venku), nastavení, nástroje, rostlin, zvířat, příslušenství, miniaplikacemi atd.
+Po nahrání obrázku nebo zadáte adresu URL obrázku, výstupní API pro počítačové zpracování obrazu algoritmy značky na základě objektů, živých bytostí a akcí identifikované v bitové kopii. Označování není omezena pouze na hlavní předmět, jako je osoba v popředí, ale také zahrnuje nastavení (vnitřních nebo venkovní), o nábytek, nástroje, zařízení, zvířata, příslušenství, miniaplikace atd.
 
 ### <a name="example"></a>Příklad:
-![House_Yard](./Images/house_yard.jpg) '
+![House_Yard](./Images/house_yard.png) '
 
 ```json
 Returned Json
@@ -89,77 +89,77 @@ Returned Json
    ],
 }
 ```
-## <a name="categorizing-images"></a>Kategorizaci bitové kopie
-Kromě označování a popisy vrátí počítače vize API kategorií na základě taxonomii definované v předchozích verzích. Tyto kategorie jsou uspořádána jako taxonomii s hierarchií dědičného nadřazený podřízený. Všechny kategorie jsou v angličtině. Můžete použít samostatně nebo s naší nové modely.
+## <a name="categorizing-images"></a>Kategorizace obrázků
+Kromě označování a popisy rozhraní API pro počítačové zpracování obrazu vrací na základě taxonomie kategorií definované v předchozích verzích. Tyto kategorie jsou uspořádané jako taxonomie s dědičného hierarchie nadřazený/podřízený. Všechny kategorie jsou v angličtině. Můžete použít samostatně nebo pomocí našich nových modelů.
 
 ### <a name="the-86-category-concept"></a>Koncept 86 kategorie
-Na základě seznamu 86 konceptů vidět v následujícím diagramu, visual funkce, které se nacházejí v bitové kopii lze rozdělit od široké až konkrétní. Úplné taxonomii v textovém formátu, najdete v části [kategorie taxonomii](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy).
+Na základě seznamu konceptů 86 vidět v následujícím diagramu, vizuální funkce nalezeném v obrázku lze označit od široké do konkrétní. Úplné taxonomie v textovém formátu, naleznete v tématu [taxonomie kategorií](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy).
 
-![Analýza kategorií](./Images/analyze_categories.jpg)
+![Analýza kategorie](./Images/analyze_categories.png)
 
 Image                                                  | Odpověď
 ------------------------------------------------------ | ----------------
-![Žena střešní](./Images/woman_roof.jpg)                 | osoby
-![Rodiny fotografii](./Images/family_photo.jpg)             | people_crowd
-![Cute PSA](./Images/cute_dog.jpg)                     | animal_dog
-![Venku Horská](./Images/mountain_vista.jpg)       | outdoor_mountain
-![Vize analyzovat jídlo chléb](./Images/bread.jpg)       | food_bread
+![Žena stříška](./Images/woman_roof.png)                 | osoby
+![Rodinných fotografií](./Images/family_photo.png)             | people_crowd
+![Roztomilá pes](./Images/cute_dog.png)                     | animal_dog
+![Venkovní Horská oblast](./Images/mountain_vista.png)       | outdoor_mountain
+![Pro zpracování obrazu analyzovat Bread potravin](./Images/bread.png)       | food_bread
 
 ## <a name="identifying-image-types"></a>Identifikace typy obrázků
-Existuje několik způsobů zařadit do kategorií bitové kopie. Rozhraní API vize počítač můžete nastavit logický příznak indikující, zda bitová kopie je černobílý nebo barev. Můžete ho také nastavit příznak označující, zda je obrázek kreslení čáry nebo ne. Můžete také určit, zda obrázek není klip obrázky, nebo není a znamenat jeho kvalitu jako takový na škále 0-3.
+Kategorizace obrázků několika způsoby. Rozhraní API pro počítačové zpracování obrazu může nastavit logický příznak, který označuje, jestli obrázek je černobílý nebo barevný. Můžete také nastavit příznak označující, zda obrázek je nebo není Perokresba. To lze také určit, jestli obrázek je nebo není klipart a určit jeho kvality v důsledku na škále 0 – 3.
 
-### <a name="clip-art-type"></a>Typ klip obrázky
-Zjistí, zda bitová kopie je klip obrázky, nebo ne.  
+### <a name="clip-art-type"></a>Klipart – typ
+Zjistí, jestli obrázek je klipart nebo ne.  
 
 Hodnota | Význam
 ----- | --------------
-0     | Non klip – obrázky
-1     | nejednoznačný
-2     | Normální – klip – obrázky
-3     | dobré klip – obrázky
+0     | Bez klipart
+1     | Nejednoznačný
+2     | Normální klipart
+3     | Dobré klipart
 
 Image|Odpověď
 ----|----
-![Vize analyzovat sýr klip obrázky](./Images/cheese_clipart.jpg)|3 dobré klip – obrázky
-![Vize analyzovat úklidové metr](./Images/house_yard.jpg)|0 Non klip – obrázky
+![Pro zpracování obrazu analyzovat produkci minipivovarů ve Wisconsinu klipart](./Images/cheese_clipart.png)|3 dobré klipart
+![Pro zpracování obrazu analyzovat House Yard](./Images/house_yard.png)|0 Non klipart
 
 ### <a name="line-drawing-type"></a>Typ čar
-Zjistí, zda je obrázek kreslení čáry nebo ne.
+Zjistí, zda obrázek je nebo není Perokresba.
 
 Image|Odpověď
 ----|----
-![Vize analyzovat Lion kreslení](./Images/lion_drawing.jpg)|True
-![Vize analyzovat květina](./Images/flower.jpg)|False
+![Pro zpracování obrazu analyzovat Lion kreslení](./Images/lion_drawing.png)|True
+![Analýza květinu pro zpracování obrazu](./Images/flower.png)|False
 
 ### <a name="faces"></a>Tváře
-Zjistí lidského tyto řezy v obrázku a vygeneruje souřadnice řez, rámeček pro vzhled, pohlaví a stáří. Tyto funkce visual, jsou podmnožinou metadata vygenerované řez. Rozsáhlejší metadata vygenerované řezy (obličeje identifikace, pozice zjišťování a další) pomocí rozhraní API řez.  
+Detekuje lidské tváře v obrázku a generuje souřadnic pro rozpoznávání tváře, rámeček pro rozpoznávání tváře, pohlaví a věk. Tyto funkce visual jsou podmnožinou metadata generovaná pro rozpoznávání tváře. Rozsáhlejší metadata generovaná pro tváří (Identifikace tváře, rozpoznávání pozice a další) použijte rozhraní API pro rozpoznávání tváře.  
 
 Image|Odpověď
 ----|----
-![Vize analyzovat žena střešní vzhled](./Images/woman_roof_face.png) | [{"Stáří": 23, "pohlaví": "Ženského", "faceRectangle": {"left": 1379 "top": 320, "šířka": 310, "výška": 310}}]
-![Vize analyzovat Mom dceřiné vzhled](./Images/mom_daughter_face.png) | [{"Stáří": 28, "pohlaví": "Ženského", "faceRectangle": {"left": 447 "top": 195, "šířka": 162, "výška": 162}}, {"Stáří": 10, "pohlaví": "Mužského", "faceRectangle": {"left": 355 "top": 87, "šířka": 143, "výška": 143}}]
-![Vize analyzovat rodiny Phot vzhled](./Images/family_photo_face.png) | [{"Stáří": 11, "pohlaví": "Mužského", "faceRectangle": {"left": 113 "top": 314, "šířka": 222, "výška": 222}}, {"Stáří": 11, "pohlaví": "Ženského", "faceRectangle": {"left": 1200 "top": 632, "šířka": 215, "výška": 215}}, {"Stáří": 41, "pohlaví": "Mužského", " faceRectangle": {"left": 514"top": 223"šířka": 205,"výška": 205}}, {"Stáří": 37,"pohlaví":"Ženského","faceRectangle": {"left": 1008"top": 277,"šířka": 201,"výška": 201}}]
+![Pro zpracování obrazu analyzovat žena stříška pro rozpoznávání tváře](./Images/woman_roof_face.png) | [{"age": 23, "pohlaví": "Ženský", "faceRectangle": {"left": 1379 "top": 320, "šířka": 310, "výška": 310}}]
+![Pro zpracování obrazu analyzovat Mom dceřinou pro rozpoznávání tváře](./Images/mom_daughter_face.png) | [{"age": 28, "pohlaví": "Ženský", "faceRectangle": {"left": 447 "top": 195, "šířka": 162, "výška": 162}}, {"age": 10, "pohlaví": "Mužského", "faceRectangle": {"left": 355, "top": 87, "šířka": 143, "výška": 143}}]
+![Pro zpracování obrazu analyzovat řady Phot pro rozpoznávání tváře](./Images/family_photo_face.png) | [{"age": 11 "pohlaví": "Mužského", "faceRectangle": {"left": 113 "top": 314, "šířka": 222, "výška": 222}}, {"age": 11 "pohlaví": "Ženský", "faceRectangle": {"left": 1200 "top": 632, "šířka": 215, "výška": 215}}, {"age": 41, "pohlaví": "Mužského", " faceRectangle": {"left": 514"top": 223"šířka": 205,"výška": 205}}, {"age": 37,"pohlaví":"Ženský","faceRectangle": {"left": 1008"top": 277,"šířka": 201,"výška": 201}}]
 
 
-## <a name="domain-specific-content"></a>Obsah specifické pro doménu
+## <a name="domain-specific-content"></a>Obsahu specifického pro doménu
 
-Kromě označování a nejvyšší úrovně kategorizaci, rozhraní API vize počítač podporuje také specializované (nebo specifické pro doménu) informací. Specializované informace se dá implementovat jako samostatnou metodu nebo s vysoké úrovně kategorizaci. Funguje jako prostředek pro další upřesnění taxonomii 86 kategorie prostřednictvím přidání modelů specifické pro doménu.
+Kromě značek a nejvyšší úrovně kategorizaci, rozhraní API pro počítačové zpracování obrazu také podporuje speciální (nebo specifický pro doménu) informací. Specializované informace je možné implementovat jako samostatnou metodu nebo pomocí kategorizace vysoké úrovně. Funguje jako prostředky pro další upřesnění taxonomie kategorií 86 prostřednictvím přidání doménově specifické modely.
 
-V současné době jsou pouze specializované informace podporovaných celebrit rozpoznávání a významné. Jsou specifické pro doménu obecnější pro osoby a osoby skupiny kategorií a zajímavá po celém světě.
+V současné době jsou jenom specializovaná informace, které jsou podporovány rozpoznávání celebrit a památek. Jsou specifické pro doménu upřesnění lidé a skupiny kategorií lidí a památek po celém světě.
 
-Existují dvě možnosti pro použití modelů specifické pro doménu:
+Existují dvě možnosti použití doménově specifické modely:
 
-### <a name="option-one---scoped-analysis"></a>Možnost 1 - vymezená analýzy
-Analýza pouze zvolený model vyvoláním volání na HTTP POST. Pro tuto možnost Pokud víte, které model, který chcete použít, zadejte název modelu a můžete získat informace jenom relevantní pro tento model. Například můžete použít tuto možnost jenom hledání celebrit rozpoznávání. Odpověď obsahuje seznam potenciální odpovídající celebrit, doplněny jejich spolehlivosti skóre.
+### <a name="option-one---scoped-analysis"></a>Možnost 1 - s vymezeným oborem analýzy
+Analyzujte pouze zvolené modelu vyvoláním volání rozhraní HTTP POST. Pro tuto možnost Pokud víte, které model, který chcete použít, zadejte název modelu a můžete získat informace jenom relevantní k tomuto modelu. Například můžete použít tuto možnost se díval jenom pro rozpoznávání celebrit. Odpověď obsahuje seznam potenciál odpovídající celebrit doplněny jejich skóre spolehlivosti.
 
-### <a name="option-two---enhanced-analysis"></a>Možnost 2 - rozšířené analýzy
-Analýza poskytnout další podrobnosti související s kategorií ze taxonomii 86 kategorie. Tato možnost je k dispozici pro použití v aplikacích, kde uživatelé chtějí získat obecné image analysis kromě podrobností z jednoho nebo více modelů specifické pro doménu. Když tato metoda je volána, třídění 86 kategorie taxonomii jako první. Pokud žádné ze skupin odpovídat známé nebo odpovídající modely, následuje druhého průchodu třídění volání. Například pokud se podrobnosti = all' nebo 'celebrit, zahrnout "Podrobnosti", metoda volá třídění celebrit po volání třídění 86 kategorie. Výsledek obsahuje značky začínající 'people_'.
+### <a name="option-two---enhanced-analysis"></a>Možnost 2 – Rozšířená analýza
+Analýza poskytnout další podrobnosti související s kategorií podle kategorie 86 taxonomie. Tato možnost je k dispozici pro použití v aplikacích, kde uživatelé chtějí získat analýzy obecný obrázek kromě podrobností z jednoho nebo více doménově specifické modely. Po vyvolání tato metoda je volána nejprve taxonomie kategorií 86 třídění. Pokud některou z kategorií odpovídat známé/porovnávání vzorů, následuje překontrolovat třídění volání. Například pokud "podrobnosti = all" nebo "details" zahrnout "celebrit", metoda se volá třídění celebrit po volání třídění 86 kategorie. Výsledek bude obsahovat značky začínající "people_".
 
 ## <a name="generating-descriptions"></a>Generování popisy 
-Algoritmy API vize počítače analyzovat obsah bitovou kopii. Tato analýza tvoří základ pro "Popis" zobrazí jako čitelný jazyk v dokončení věty. Popis shrnuje, co se nachází v bitovou kopii. Algoritmy API vize počítače generují různé popisy podle objekty identifikovat v bitové kopii. Popisy jsou každý vyhodnotit a vygeneruje spolehlivosti skóre. Seznam je poté vrácen seřazené z nejvyšší skóre spolehlivosti nejnižší. Naleznete příklad robota, které používá tuto technologii ke generování popisků obrazu [zde](https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/intelligence-ImageCaption).  
+API pro počítačové zpracování obrazu algoritmy analyzovat obsah v obrázku. Tato analýza tvoří základ pro "popisu" zobrazí jako čitelný jazyk v úplných větách. Popis shrnuje, co se nachází na obrázku. API pro počítačové zpracování obrazu algoritmy generovat různé popisy založené na objektech identifikované v bitové kopii. Jednotlivé popisy se vyhodnotí a vygeneruje se pro ně skóre spolehlivosti. Pak se vrátí seznam seřazený od nejvyššího skóre spolehlivosti po nejnižší. Najdete příklad, který používá tuto technologii ke generování popisků obrazu robota [tady](https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/intelligence-ImageCaption).  
 
 ### <a name="example-description-generation"></a>Příklad popisu generování
-![B & volit budovy](./Images/bw_buildings.jpg) '
+![B & vá budov](./Images/bw_buildings.png) '
 ```json
  Returned Json
 
@@ -197,81 +197,81 @@ Algoritmy API vize počítače analyzovat obsah bitovou kopii. Tato analýza tvo
 }
 ```
 
-## <a name="perceiving-color-schemes"></a>Vnímání barevná schémata
-Algoritmus počítače vize extrahuje barvy z obrázku. Barvy se analyzují ve třech různých kontextech: popředí, pozadí a celek. Jsou seskupené do barvy dvanáct 12 dominantní zvýraznění. Tyto barvy zvýraznění jsou černé, blue, menších, šedá, zelená, oranžová, růžová, fialová, červená, šedozelená, prázdné a žlutě. V závislosti na barvy v obraze mohou být vráceny jednoduché černobílý nebo barvy zvýraznění v hexadecimální kódy.
+## <a name="perceiving-color-schemes"></a>Barevná schémata vnímání
+Algoritmus počítačového zpracování obrazu extrahuje barvy z obrázku. Barvy se analyzují ve třech různých kontextech: popředí, pozadí a celek. Jsou seskupené do dvanácti 12 dominantních doplňkových barev. Tyto barvy zvýraznění jsou černá, modrá, brown, šedá, zelená, orange, růžová, nachová, červená, šedozelená, prázdné a žlutou barvou. V závislosti na barvy v obrázku mohou být vráceny jednoduché černobílý nebo barvy zvýraznění v šestnáctkové kódy.
 
 Image                                                       | Popředí |Pozadí| Barvy
 ----------------------------------------------------------- | --------- | ------- | ------
-![Venku Horská](./Images/mountain_vista.jpg)            | Černá     | Černá   | Bílá
-![Vize analyzovat květina](./Images/flower.jpg)               | Černá     | Bílá   | Prázdné, černé, zelená
-![Vize analyzovat Train stanice](./Images/train_station.jpg) | Černá     | Černá   | Černá
+![Venkovní Horská oblast](./Images/mountain_vista.png)            | Černá     | Černá   | Bílá
+![Analýza květinu pro zpracování obrazu](./Images/flower.png)               | Černá     | Bílá   | Prázdné, Black, zelená
+![Pro zpracování obrazu analyzovat trénování stanice](./Images/train_station.png) | Černá     | Černá   | Černá
 
-### <a name="accent-color"></a>Barva zvýraznění
-Barva extrahovat z image představují barvu nejvíce poutavých uživatelům prostřednictvím směs dominantní barvy a sytost.
+### <a name="accent-color"></a>Barva motivu
+Extrahovat z bitové kopie navržené tak, aby představují nejčastěji poutavých barva uživatelům prostřednictvím kombinace dominantní barvy a sytost barev.
 
 Image                                                       | Odpověď
 ----------------------------------------------------------- | ----
-![Venku Horská](./Images/mountain_vista.jpg)            | #BC6F0F
-![Vize analyzovat květina](./Images/flower.jpg)               | #CAA501
-![Vize analyzovat Train stanice](./Images/train_station.jpg) | #484B83
+![Venkovní Horská oblast](./Images/mountain_vista.png)            | #BC6F0F
+![Analýza květinu pro zpracování obrazu](./Images/flower.png)               | #CAA501
+![Pro zpracování obrazu analyzovat trénování stanice](./Images/train_station.png) | #484B83
 
 
-### <a name="black--white"></a>Černobílý
-Logický příznak, který určuje, zda je obrázek černé & bílé nebo ne.
+### <a name="black--white"></a>Černá a bílá
+Příznak logické hodnoty, která určuje, jestli obrázek je černá a bílá nebo ne.
 
 Image                                                      | Odpověď
 ---------------------------------------------------------- | ----
-![Vize analyzovat sestavení](./Images/bw_buildings.jpg)      | True
-![Vize analyzovat úklidové metr](./Images/house_yard.jpg)      | False
+![Pro zpracování obrazu analýza sestavení](./Images/bw_buildings.png)      | True
+![Pro zpracování obrazu analyzovat House Yard](./Images/house_yard.png)      | False
 
-## <a name="flagging-adult-content"></a>Označování obsah pro dospělé
-V jednotlivých kategoriích visual je pro dospělé a zájem skupinu, která umožňuje zjišťování pro dospělé materiály a omezuje zobrazení bitové kopie obsahující sexuální obsah. Filtr pro zjišťování obsahu pro dospělé a zájem můžete nastavit na posuvné stupnice zohlednit preferencím uživatele.
+## <a name="flagging-adult-content"></a>Nastavení příznaku obsah pro dospělé
+V jednotlivých kategoriích visual je pro dospělé nebo pikantního skupiny, která umožňuje detekovat dospělé materiálů a omezuje zobrazení obrázků sexuální zneužívání obsahem. Filtr pro dospělé nebo pikantního obsahu zjišťování můžete nastavit pomocí posuvné stupnice tak, aby vyhovovaly preferencím uživatele.
 
-## <a name="optical-character-recognition-ocr"></a>Optické rozpoznávání znaků (rozpoznávání znaků)
-Technologie rozpoznávání znaků zjistí textového obsahu v obrázku a extrahuje identifikovaných text do proudu strojově čitelným znak. Výsledek můžete použít k hledání a mnoha dalším účelům jako lékařské záznamy, zabezpečení a bankovnictví. Jazyk se detekuje automaticky. Rozpoznávání znaků šetří čas a poskytuje užitečný pro uživatele tím, že aby se změny fotografie textu místo přepisování text.
+## <a name="optical-character-recognition-ocr"></a>Optické rozpoznávání znaků (OCR)
+Technologie OCR detekuje textový obsah v obrázku a extrahuje zjištěný text do datového proudu Strojově čitelný znaků. Výsledek můžete použít k prohledávání a řadě dalších účelů, jako jsou zdravotnickými záznamy, zabezpečení a bankovnictví. Jazyk se detekuje automaticky. OCR šetří čas a zvyšuje pohodlí uživatelů tím, že jim pořídit fotografie textu místo zdlouhavého přepisování pořídili text.
 
-Rozpoznávání znaků podporuje 25 jazyků. Tyto jazyky jsou jazyky: arabština, zjednodušené čínštině, tradiční čínština, čeština, dánština, holandština, angličtina, finština, francouzština, němčina, řečtina, maďarština, italština, japonština, korejština, norština, polština, portugalština, rumunština, ruština, srbština (cyrilice a latinka) Slovenština, španělština, švédština a turečtina.
+OCR podporuje 25 jazycích. Tyto jazyky jsou: arabština, zjednodušené čínštiny, tradiční čínština, čeština, dánština, holandština, angličtina, finština, francouzština, němčina, řečtina, maďarština, italština, japonština, korejština, norština, polština, portugalština, rumunština, ruština, srbština (cyrilice a latinka) Slovenština, španělština, švédština a turečtina.
 
-V případě potřeby rozpoznávání znaků opraví oběh rozpoznaný text ve stupních, okolo osy vodorovné bitové kopie. Rozpoznávání znaků poskytuje souřadnice rámce jednotlivých slov, jak je vidět níže obrázku.
+V případě potřeby řeší OCR otočení rozpoznaný text ve stupních okolo osy vodorovný obrázek. OCR obsahuje souřadnice rámec jednotlivých slov, jak je znázorněno v následující ukázce.
 
-![Přehled rozpoznávání znaků](./Images/vision-overview-ocr.png) požadavky pro rozpoznávání znaků:
-- Velikost vstupní bitové kopie musí být mezi 40 x 40 a 3200 x 3200 pixelů.
-- Obrázek nesmějí být větší než 10 megapixely.
+![Přehled technologie OCR](./Images/vision-overview-ocr.png) požadavky pro optické rozpoznávání znaků:
+- Velikost vstupního obrázku musí být až 40 x 40 3200 x 3200 pixelů.
+- Na obrázku nesmí být větší než 10 megapixely k.
 
-Vstupní image lze otáčet o žádné více 90 stupňů plus malé úhel z se 40 stupňů.
+Vstupního obrázku můžete otočit o žádné nadbytečné 90 stupňů plus malé úhlu z až "40 stupňů.
 
-Přesnost rozpoznávání textu závisí na kvalitu bitovou kopii. Nesprávné čtení může být způsobeno těchto situacích:
-- Rozmazaně bitové kopie.
-- Ručně nebo kurzívových text.
-- Styly uměleckého písem.
-- Malé textové velikost.
-- Komplexní pozadí, stínů nebo oslnění přes text nebo Perspektiva narušení.
-- Chybí nebo je příliš velký velkých písmen na začátku slova
-- Dolní, horní index nebo přeškrtnutí text.
+Rozpoznávání textu přesnost závisí na kvalitu obrazu. Nesprávné čtení může být způsobeno v následujících případech:
+- Použitím bitové kopie.
+- Rukou psaný nebo kurzívových text.
+- Styly umělecký písem.
+- Malá velikost textu.
+- Komplexní pozadí, stíny nebo oslnění přes text nebo Perspektiva narušení.
+- Příliš velký nebo chybějící velká písmena na začátku slova
+- Dolní index, horní index nebo přeškrtnutý text.
 
-Omezení: Na fotografie, kde je dominantní text, mohou falešně pozitivních pocházet z částečně rozpoznaný slova. Na některých fotografie, zejména fotografie bez jakýkoli text, přesnost závisí na mnoho typ obrázku.
+Omezení: Na fotografie, kde je dominantní textu, počet falešně pozitivních výsledků může pocházet částečně rozpoznaná slova. V některých fotografie, zejména fotografie žádný text můžete přesnost mnohem lišit v závislosti na typ bitové kopie.
 
-## <a name="recognize-handwritten-text"></a>Rozpoznat ručně psaný Text
-Tato technologie umožňuje zjistit a extrahovat ručně psaný text z poznámky, písmena, essays, Tabule, formuláře atd. Pracuje s různými povrchy a pozadími, jako je bílý papír, žluté samolepicí bločky nebo tabule.
+## <a name="recognize-handwritten-text"></a>Rozpoznávání rukopisného textu
+Tato technologie umožňuje detekovat a extrahovat rukou psaný text z poznámek, dopisů, esejí, bločky nebo Tabule, formuláře, atd. Pracuje s různými povrchy a pozadími, jako je bílý papír, žluté samolepicí bločky nebo tabule.
 
-Rozpoznávání textu psaného rukou šetří čas i úsilí. Vzhledem k tomu, že stačí pořídit si obrázky textu a není potřeba ho přepisovat, může vám zajistit zvýšení produktivity. Ji umožňuje digitalizace poznámky. Tato digitization umožňuje implementovat rychlý a snadný vyhledávání. Už nebudete zavalení papíry.
+Rozpoznávání textu psaného rukou šetří čas i úsilí. Vzhledem k tomu, že stačí pořídit si obrázky textu a není potřeba ho přepisovat, může vám zajistit zvýšení produktivity. Umožňuje digitalizaci poznámek. Tato digitalizaci umožňuje implementovat rychlé a snadné vyhledávání. Už nebudete zavalení papíry.
 
 Vstupní požadavky:
-- Podporované formáty bitové kopie: JPEG, PNG nebo BMP.
-- Velikost souboru obrázku musí být menší než 4 MB volného místa.
-- Obrázek dimenze musí být alespoň 40 x 40, maximálně 3200 x 3200.
+- Podporované formáty image: JPEG, PNG nebo BMP.
+- Velikost souboru obrázku musí být menší než 4 MB.
+- Rozměry obrázku musí být alespoň 40 x 40, maximálně 3200 x 3200.
 
 Poznámka: Tato technologie je momentálně ve verzi Preview a je dostupná jenom pro anglický text.
 
-## <a name="generating-thumbnails"></a>Vytváření miniatur
-Miniatura je malá reprezentace obraz v plné velikosti. Různým zařízení, jako jsou telefony, tablety a počítače vytvořit potřebu velikost miniatur a rozložení prostředí (UX) jiný uživatel. Použití inteligentního oříznutí, tato funkce rozhraní API vize počítače vám pomůže vyřešit problém.
+## <a name="generating-thumbnails"></a>Generování miniatur
+Miniatura je znázornění obrázek v plné velikosti. Pohyblivá podle zařízení, jako jsou telefony, tablety a počítače vytvořit potřebu rozložení rozhraní (UX) jiný uživatel a miniatur. Pomocí inteligentního ořezávání, toto rozhraní API pro počítačové zpracování obrazu funkce vám pomůže vyřešit problém.
 
-Po nahrání bitovou kopii, získá vygeneruje Miniatura vysoce kvalitní a algoritmus počítače vize API analyzuje objektů v rámci bitovou kopii. Ji pak ořízne obrázek podle požadavků oblasti zájmu (ROI). Výstup získá zobrazit v rámci speciální rozhraní, jak je vidět níže obrázku. Vygenerovaný miniaturu lze zobrazit pomocí aspekt dávce, které se liší od poměr stran původní bitové kopie pro přizpůsobení potřebám uživatele.
+Po nahrání obrázku, získá vygenerována vysoce kvalitní miniaturu a algoritmus rozhraní API pro počítačové zpracování obrazu analyzuje objekty v obrázku. To potom obrázek ořízne tak, aby odpovídal požadavkům oblasti zájmu (ROI). Výstup se zobrazí v rámci speciální, jak je znázorněno v následující ukázce. Vygenerované miniatury lze zobrazit pomocí aspekt deklaraci, která se liší od poměru stran u původní image tak, aby vyhovovaly potřebám uživatele.
 
-Algoritmus miniatur funguje takto:
+Miniatura algoritmus funguje takto:
 
-1. Odebere rušivě elementy z bitové kopie a rozpozná objekt hlavní oblast zájmu (ROI).
-2. Ořízne obrázek na základě identifikovaných oblasti zájmu.
-3. Změní poměr stran podle cílové dimenze miniatur.
+1. Odebere rušivé prvky z obrázku a rozpozná hlavní objekt oblasti zájmu (ROI).
+2. Obrázek ořízne tak, podle zjištěných oblasti zájmu.
+3. Změní poměr stran, aby odpovídala rozměrům cílového miniatur.
 
 ![Miniatury](./Images/thumbnail-demo.png)

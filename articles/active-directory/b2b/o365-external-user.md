@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 7e0a65e4a5807cb9a6b39feecfd2d5b2643ea4a9
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 1ab7518ff5a9524dbfe1b258a51b7ad0ef5c9765
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39330838"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44716770"
 ---
 # <a name="office-365-external-sharing-and-azure-active-directory-b2b-collaboration"></a>Externí sdílení Office 365 a spolupráce Azure Active Directory s B2B
 
@@ -38,9 +38,14 @@ Správa externích sdílení v Onedrivu nebo Sharepointu Online se spoluprací A
 
 ![Onedrivu nebo Sharepointu Online externí sdílení nastavení](media/o365-external-user/odsp-sharing-setting.png)
 
+Po povolení externí sdílení, možnost vyhledat existující uživatele typu Host v Sharepointu Online (SPO) výběr osob je vypnuto ve výchozím nastavení tak, aby odpovídaly starší verzi chování.
+
+Tuto funkci můžete povolit pomocí nastavení "ShowPeoplePickerSuggestionsForGuestUsers" na úrovni kolekce klienta a serveru. Můžete nastavit funkci pomocí rutiny Set-SPOTenant a Set-SPOSite, který umožní členům hledat všechny existující uživatele typu Host do adresáře. Změny v rámci tenanta neovlivní již zřízených SPO webů.
+
 ## <a name="next-steps"></a>Další postup
 
 * [Co je spolupráce B2B ve službě Azure AD?](what-is-b2b.md)
 * [Přidání uživatele spolupráce B2B do role](add-guest-to-role.md)
 * [Delegování pozvánek spolupráce B2B](delegate-invitations.md)
 * [Dynamické skupiny a spolupráci B2B](use-dynamic-groups.md)
+* [Řešení potíží s spolupráce Azure Active Directory s B2B](troubleshoot.md)

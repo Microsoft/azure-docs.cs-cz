@@ -15,22 +15,22 @@ ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: v-daljep
 ms.component: na
-ms.openlocfilehash: 82845f475857f9a911febd496e86eb2a60f69c25
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: b8d8acda4ff1dee0643227c3fa2375c634c1b4a4
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782222"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44717416"
 ---
-# <a name="monitor-azure-sql-databases-using-azure-sql-analytics-preview"></a>Monitorování databází Azure SQL Database pomocí Azure SQL Analytics (Preview)
+# <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Monitorování Azure SQL Database pomocí Azure SQL Analytics (Preview)
 
 ![Azure SQL Analytics symbol](./media/log-analytics-azure-sql/azure-sql-symbol.png)
 
-Azure SQL Analytics je Cloudová řešení pro monitorování výkonu databází Azure SQL Database, elastických fondů a spravovaných instancí ve velkém měřítku a napříč několika předplatnými monitorování. Shromažďuje a vizualizuje důležité metriky výkonu databáze SQL Azure s integrovanými inteligentními funkcemi pro řešení potíží s výkonem.
+Azure SQL Analytics je Cloudová řešení pro monitorování výkonu Azure SQL Database, elastických fondů a spravovaných instancí ve velkém měřítku a napříč několika předplatnými monitorování. Shromažďuje a vizualizuje důležité metriky výkonu databáze SQL Azure s integrovanými inteligentními funkcemi pro řešení potíží s výkonem.
 
 Pomocí metrik, která shromáždíte pomocí řešení můžete vytvořit vlastní pravidla monitorování a výstrah. Toto řešení vám umožní identifikovat problémy v každé vrstvě vaším zásobníkem aplikace. Prezentovat data o všech Azure SQL databáze, elastické fondy a databáze spravované instance v jeden pracovní prostor Log Analytics pomocí Azure diagnostických metrik společně se zobrazeními Log Analytics. Log Analytics umožňuje shromažďovat, korelovat a vizualizovat strukturovanými i nestrukturovanými daty.
 
-Toto řešení ve verzi preview v současné době podporuje až 200 000 databází Azure SQL Database a 5 000 Elastických fondech SQL za jednotlivé pracovní prostory.
+Toto řešení ve verzi preview v současné době podporuje až 200 000 databází Azure SQL a 5 000 elastických fondech SQL za jednotlivé pracovní prostory.
 
 Praktické přehled o použití řešení Azure SQL Analytics a typické scénáře využití najdete v části vložené video:
 
@@ -62,9 +62,9 @@ Provedení následujících kroků přidejte řešení pro Azure SQL Analytics d
 5. V **vytvořit nové řešení** vytvořit novou oblast, nebo vyberte existující pracovní prostor, který chcete přidat řešení a potom klikněte na **vytvořit**.  
     ![Přidat do pracovního prostoru](./media/log-analytics-azure-sql/add-to-workspace.png)
 
-### <a name="configure-azure-sql-databases-and-elastic-pools-to-stream-diagnostics-telemetry"></a>Konfigurace databází Azure SQL Database a elastické fondy na datový proud diagnostickou telemetrii
+### <a name="configure-azure-sql-databases-and-elastic-pools-to-stream-diagnostics-telemetry"></a>Konfigurovat Azure SQL Database a elastické fondy pro datový proud diagnostickou telemetrii
 
-Po vytvoření řešení Azure SQL Analytics ve vašem pracovním prostoru, aby bylo možné sledovat výkon databází Azure SQL Database a/nebo elastické fondy, budete muset **nakonfigurujte každý** Azure SQL Database a chcete, aby prostředků elastického fondu k monitorování datového proudu jeho telemetrická data diagnostiky do řešení.
+Po vytvoření řešení Azure SQL Analytics ve vašem pracovním prostoru, aby bylo možné sledovat výkon databází Azure SQL a/nebo elastické fondy, budete muset **nakonfigurujte každý** Azure SQL Database a chcete, aby prostředků elastického fondu k monitorování datového proudu jeho telemetrická data diagnostiky do řešení.
 
 - Povolení diagnostiky Azure pro Azure SQL Database a elastické fondy a [nakonfigurujete je, aby odesílají data do Log Analytics](../sql-database/sql-database-metrics-diag-logging.md).
 
@@ -123,7 +123,7 @@ Elastické fondy a databáze mají své vlastní konkrétní sestavy, které zob
 
 ![Databáze Azure SQL Analytics](./media/log-analytics-azure-sql/azure-sql-sol-database.png)
 
-![Elastický fond Azure SQL Analytics](./media/log-analytics-azure-sql/azure-sql-sol-pool.png)
+![Elastický fond Azure SQL](./media/log-analytics-azure-sql/azure-sql-sol-pool.png)
 
 ### <a name="query-reports"></a>Sestavy dotazu
 

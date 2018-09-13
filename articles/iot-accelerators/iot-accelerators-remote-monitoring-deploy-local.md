@@ -1,23 +1,23 @@
 ---
 title: Nasazení řešení vzdáleného monitorování místní – Azure | Dokumentace Microsoftu
-description: V tomto kurzu se dozvíte, jak do svého místního počítače pro vývoj a testování nasazení akcelerátoru řešení vzdáleného monitorování.
+description: Tato příručka ukazuje, jak do svého místního počítače pro vývoj a testování nasazení akcelerátoru řešení vzdáleného monitorování.
 author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 03/07/2018
+ms.date: 09/06/2018
 ms.topic: conceptual
-ms.openlocfilehash: 21bc8c27a44c940279b0c5bdcdbe04e579dc4bfa
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: aaaf31d5c1faae8176dd9909f74c70300c3f0b4e
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39188789"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44716419"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally"></a>Nasazení akcelerátoru řešení vzdáleného monitorování místně
 
-Tento článek ukazuje, jak nasazení akcelerátoru řešení vzdáleného monitorování do místního počítače pro vývoj a testování. Tento přístup nasazuje mikroslužby do místní kontejner Dockeru a využívá služby IoT Hub, Cosmos DB a služby Azure storage v cloudu. Použijete akcelerátory řešení (počítačů) rozhraní příkazového řádku pro nasazení Azure cloud services.
+Tento článek ukazuje, jak nasazení akcelerátoru řešení vzdáleného monitorování do místního počítače pro vývoj a testování. Tento přístup nasazuje mikroslužby do místní kontejner Dockeru a v cloudu pomocí služby IoT Hub, Cosmos DB a Azure Time Series Insights. Použijete akcelerátory řešení (počítačů) rozhraní příkazového řádku pro nasazení Azure cloud services.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -31,82 +31,49 @@ K dokončení místní nasazení, budete potřebovat následující nástroje na
 * [Docker](https://www.docker.com)
 * [Docker compose](https://docs.docker.com/compose/install/)
 * [Node.js](https://nodejs.org/) -tento software je předpokladem pro rozhraní příkazového řádku počítače.
-* POČÍTAČE S CLI
-* Místní úložiště zdrojového kódu
 
 > [!NOTE]
 > Tyto nástroje jsou dostupné na spoustě platforem, včetně Windows, Linuxu a iOS.
 
-### <a name="install-the-pcs-cli"></a>Instalace rozhraní příkazového řádku počítače
-
-Pokud chcete nainstalovat rozhraní příkazového řádku počítače přes npm, spusťte následující příkaz v prostředí příkazového řádku:
-
-```cmd/sh
-npm install iot-solutions -g
-```
-
-Další informace o rozhraní příkazového řádku najdete v tématu [jak používat rozhraní příkazového řádku](https://github.com/Azure/pcs-cli/blob/master/README.md).
-
 ### <a name="download-the-source-code"></a>Stáhněte si zdrojový kód
 
- Vzdálené monitorování úložiště zdrojového kódu obsahuje konfigurační soubory Dockeru, které potřebujete ke stažení, konfiguraci a spuštění imagí Dockeru, které obsahují mikroslužby. Klonovat a vytvořte místní verzi úložiště, přejděte do vhodný složky na místním počítači prostřednictvím oblíbených příkazového řádku nebo terminálu a spusťte následující příkazy:
+ Vzdálené monitorování úložiště zdrojového kódu GitHub zahrnuje Docker konfigurační soubory, které potřebujete ke stažení, konfiguraci a spuštění imagí Dockeru, které obsahují mikroslužby. Klonovat a vytvořte místní verzi úložiště, použijte prostředí příkazového řádku přejděte do vhodný složky na místním počítači a spusťte následující příkazy:
 
 Nainstalovat Java implementace mikroslužby, spusťte:
 
 ```cmd/sh
-git clone --recursive https://github.com/Azure/azure-iot-pcs-remote-monitoring-java
+git clone --recurse-submodules -j8 https://github.com/Azure/azure-iot-pcs-remote-monitoring-java
 ```
 
 Pokud chcete nainstalovat implementace .net mikroslužeb, spusťte:
 
 ```cmd\sh
-git clone --recursive https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet
+git clone --recurse-submodules -j8 https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet
 ```
-
-Vzdálené úložiště Monioring předkonfigurované řešení & dílčí moduly [ [Java](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java) | [.Net](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet) ]
 
 > [!NOTE]
 > Tyto příkazy stáhnout zdrojový kód pro všechny mikroslužby. I když není nutné zdrojový kód pro spuštění mikroslužby v Dockeru, zdrojový kód je užitečné, pokud budete později chtít upravit toto předkonfigurované řešení a místní test provedených změn.
 
 ## <a name="deploy-the-azure-services"></a>Nasazení služby Azure
 
-I když v tomto článku se dozvíte, jak spouštět mikroslužby lokálně, jsou závislé na tři služby Azure v cloudu. Tyto služby Azure můžete nasadit [ručně na webu Azure portal](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Manual-steps-to-create-azure-resources-for-local-setup), nebo pomocí rozhraní příkazového řádku počítače. V tomto článku se dozvíte, jak používat `pcs` nástroj.
+I když v tomto článku se dozvíte, jak spouštět mikroslužby lokálně, jsou závislé na spouštění v cloudu služby Azure. Tyto služby Azure můžete nasadit [ručně na webu Azure portal](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Manual-steps-to-create-azure-resources-for-local-setup), nebo pomocí dodávaného skriptu. Následující příklady skriptu se předpokládá, že používáte úložiště .NET na počítači s Windows. Pokud pracujete s jiným prostředím, cesty, přípony souboru a oddělovače cest odpovídajícím způsobem nastavte. Použití skriptu:
 
-### <a name="sign-in-to-the-cli"></a>Přihlaste se k rozhraní příkazového řádku
+1. Ve vašem prostředí příkazového řádku, přejděte **azure-iot-pcs-remote-monitoring-dotnet\services\scripts\local\launch** složky v klonovaném kopii úložiště.
 
-Před nasazením akcelerátor řešení, musíte se přihlásit ke svému předplatnému Azure pomocí rozhraní příkazového řádku takto:
+1. Spustit **start.cmd** skriptu a postupujte podle zobrazených výzev. Skript vyzve k zadání následujících informací:
+    * Název řešení.
+    * Předplatné Azure, které se má použít.
+    * Umístění datového centra Azure používat.
 
-```cmd/sh
-pcs login
-```
+    Tento skript vytvoří skupinu prostředků v Azure s názvem řešení.
 
-Použijte na obrazovce pokynů a dokončete proces přihlašování. Ujistěte se, že není kliknete na libovolné místo v rámci rozhraní příkazového řádku nebo přihlášení může selhat. Zobrazí se zpráva úspěšného přihlášení v rozhraní příkazového řádku a pokud jste dokončili přihlášení. 
+1. Ve vašem prostředí příkazového řádku, přejděte **azure-iot-pcs-remote-monitoring-dotnet\services\scripts\local\launch\os\win** složky v klonovaném kopii úložiště.
 
-### <a name="run-a-local-deployment"></a>Spusťte místní nasazení
-
-Použijte následující příkaz pro spuštění místního nasazení. To vytvoří požadované prostředky azure a vytiskne proměnné prostředí do konzoly. 
-
-```cmd/pcs
-pcs -s local
-```
-
-Skript vyzve k zadání následujících informací:
-
-* Název řešení.
-* Předplatné Azure, které se má použít.
-* Umístění datového centra Azure používat.
-
-> [!NOTE]
-> Skript vytvoří instanci, instance služby Cosmos DB a účet úložiště Azure ve skupině prostředků ve vašem předplatném Azure, služby IoT Hub. Název skupiny prostředků je název řešení, které jste zvolili, když jste spustili `pcs` nástroj výše. 
-
-> [!IMPORTANT]
-> Skript trvá několik minut. Po dokončení se zobrazí zpráva `Copy the following environment variables to /scripts/local/.env file:`. Kopírování prostředí definice proměnných s následující zprávou, použijeme je v pozdějším kroku.
+1. Spustit **set-env uri.cmd** skriptu.
 
 ## <a name="run-the-microservices-in-docker"></a>Spuštění mikroslužby v Dockeru
 
-Chcete-li spustit mikroslužby v Dockeru, nejprve upravte **skripty\\místní\\.env** souboru v místní kopii úložiště, které jste naklonovali v dřívějším kroku výše. Celý obsah souboru nahraďte definice proměnných prostředí jste si poznamenali při spuštění `pcs` příkaz v předchozím kroku. Tyto proměnné prostředí povolit mikroslužby v kontejneru Dockeru pro připojení ke službám Azure, které jsou vytvořené `pcs` nástroj.
-
-Ke spuštění akcelerátor řešení, přejděte na **scripts\local** složku v prostředí příkazového řádku a spusťte následující příkaz:
+Ke spuštění akcelerátor řešení, přejděte na **azure-iot-pcs-remote-monitoring-dotnet\services\scripts\local** složku v prostředí příkazového řádku a spusťte následující příkaz:
 
 ```cmd\sh
 docker-compose up
@@ -120,7 +87,7 @@ Chcete-li získat přístup k řídicím panelu řešení vzdáleného monitorov
 
 ## <a name="clean-up"></a>Vyčištění
 
-Chcete-li po dokončení testování se vyhnout zbytečným poplatkům, odeberte cloudových služeb z vašeho předplatného Azure. Nejjednodušší způsob, jak odebrat služby je přejděte [webu Azure portal](https://ms.portal.azure.com) a odstraňte skupinu prostředků, kterou jste vytvořili pomocí `pcs` nástroj.
+Chcete-li po dokončení testování se vyhnout zbytečným poplatkům, odeberte cloudových služeb z vašeho předplatného Azure. Nejjednodušší způsob, jak odebrat služby je přejděte [webu Azure portal](https://ms.portal.azure.com) a odstraňte skupinu prostředků, který byl vytvořen při spuštění **start.cmd** skriptu.
 
 Použití `docker-compose down --rmi all` příkazu odeberte Image Dockeru a uvolněte místo na místním počítači. Můžete také odstranit místní kopie úložiště vzdálené monitorování vytvoří, když jste naklonovali zdrojový kód z Githubu.
 

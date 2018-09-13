@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 08/29/2018
 ms.author: vturecek
-ms.openlocfilehash: afd682625d7bb74f9a4b726a534508b805562e7f
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 384d0fa32b64706c9d9d9baa0e2e0bbb2ac3c522
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43701530"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719592"
 ---
 # <a name="aspnet-core-in-service-fabric-reliable-services"></a>ASP.NET Core v Service Fabric Reliable Services
 
@@ -54,12 +54,12 @@ Obvykle v místním prostředí aplikací ASP.NET Core vytvořit webového hosti
 
 Ale vstupní bod aplikace není na správném místě vytvořit WebHost spolehlivé služby, protože vstupní bod aplikace slouží pouze k registraci modulu runtime Service Fabric, typ služby tak, aby ji může vytvořit instance daného typu služby. Tomuto webovému hostiteli musí být vytvořené v Reliable Service samotný. V rámci hostitelského procesu služby instance služby a/nebo repliky můžete projít více životního cyklu. 
 
-Instance spolehlivé služby představuje vaše služby třídu odvozenou z `StatelessService` nebo `StatefulService`. Komunikační balík pro službu je součástí `ICommunicationListener` implementaci ve třídě služby. `Microsoft.ServiceFabric.Services.AspNetCore.*` Balíčky NuGet obsahovat implementace `ICommunicationListener` , který spouští a spravuje hostitele ASP.NET Core pro Kestrel nebo HttpSys spolehlivé služby.
+Instance spolehlivé služby představuje vaše služby třídu odvozenou z `StatelessService` nebo `StatefulService`. Komunikační balík pro službu je součástí `ICommunicationListener` implementaci ve třídě služby. `Microsoft.ServiceFabric.AspNetCore.*` Balíčky NuGet obsahovat implementace `ICommunicationListener` , který spouští a spravuje hostitele ASP.NET Core pro Kestrel nebo HttpSys spolehlivé služby.
 
 ![Hostování technologie ASP.NET Core v Reliable Service][1]
 
 ## <a name="aspnet-core-icommunicationlisteners"></a>ICommunicationListeners ASP.NET Core
-`ICommunicationListener` Implementace pro Kestrel a HttpSys v `Microsoft.ServiceFabric.Services.AspNetCore.*` balíčky NuGet podobné vzorce používání, ale provádět mírně odlišné akce specifické pro každý webový server. 
+`ICommunicationListener` Implementace pro Kestrel a HttpSys v `Microsoft.ServiceFabric.AspNetCore.*` balíčky NuGet podobné vzorce používání, ale provádět mírně odlišné akce specifické pro každý webový server. 
 
 Obě naslouchací procesy komunikace poskytovat konstruktor, který používá následující argumenty:
  - **`ServiceContext serviceContext`**: `ServiceContext` Objekt, který obsahuje informace o spuštěné služby.
@@ -67,7 +67,7 @@ Obě naslouchací procesy komunikace poskytovat konstruktor, který používá n
  - **`Func<string, AspNetCoreCommunicationListener, IWebHost> build`**: výraz lambda, kterou implementujete, ve kterém se vytváří a vrácení `IWebHost`. To umožňuje nakonfigurovat `IWebHost` tak, jak byste normálně v aplikaci ASP.NET Core. Výraz lambda obsahuje adresu URL, který je generován pro vás v závislosti na integraci Service Fabric možnosti použít a `Endpoint` konfigurace, které zadáte. Že adresa URL můžete potom změnit nebo použít jako-je spustit webový server.
 
 ## <a name="service-fabric-integration-middleware"></a>Middleware pro integraci Service Fabric
-`Microsoft.ServiceFabric.Services.AspNetCore` Obsahuje balíček NuGet `UseServiceFabricIntegration` rozšiřující metody na `IWebHostBuilder` , který přidá Service Fabric s ohledem na middleware. Tento middleware konfiguruje Kestrel nebo HttpSys `ICommunicationListener` k registraci ve službě pojmenování Service Fabric Service adresu URL jedinečné služby a poté ověří požadavky klientů, aby se klienti připojují k požadovanou službu. To je nezbytné v prostředí sdílené hostitele, jako je Service Fabric, ve kterém můžete spustit na stejný fyzický nebo virtuální počítač více webových aplikací, ale nepoužívejte názvy hostitele, čímž zabráníte klientům omylem připojování ke službě nesprávné. Tento scénář je popsaný v následující části podrobněji.
+`Microsoft.ServiceFabric.AspNetCore` Obsahuje balíček NuGet `UseServiceFabricIntegration` rozšiřující metody na `IWebHostBuilder` , který přidá Service Fabric s ohledem na middleware. Tento middleware konfiguruje Kestrel nebo HttpSys `ICommunicationListener` k registraci ve službě pojmenování Service Fabric Service adresu URL jedinečné služby a poté ověří požadavky klientů, aby se klienti připojují k požadovanou službu. To je nezbytné v prostředí sdílené hostitele, jako je Service Fabric, ve kterém můžete spustit na stejný fyzický nebo virtuální počítač více webových aplikací, ale nepoužívejte názvy hostitele, čímž zabráníte klientům omylem připojování ke službě nesprávné. Tento scénář je popsaný v následující části podrobněji.
 
 ### <a name="a-case-of-mistaken-identity"></a>Případ chybné identity
 Repliky služby, bez ohledu na protokol, naslouchat na kombinaci IP: jedinečný port. Jakmile repliku služby zahájil naslouchání na koncový bod IP: port, sestavy služba pojmenování Service Fabric ve kterém je možné zjistit pomocí klienty nebo jiné služby pro tuto adresu koncového bodu. Pokud služby používat porty dynamicky přiřazené aplikace, repliku služby shodou použít stejný koncový bod IP: port jiné službě, která byla předtím na stejný fyzický nebo virtuální počítač. To může způsobit klientovi mistakely připojit ke službě nesprávné. Můžete k tomu dojít, pokud dojde k následujícímu pořadí událostí:

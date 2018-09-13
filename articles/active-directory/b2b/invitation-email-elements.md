@@ -1,78 +1,78 @@
 ---
-title: Elementy pozvánku e-mail spolupráce B2B – Azure Active Directory | Microsoft Docs
-description: Azure Active Directory s B2B spolupráce pozvánku e-mailové šablony
+title: Prvky B2B spolupráce e-mailová pozvánka – Azure Active Directory | Dokumentace Microsoftu
+description: Azure Active Directory s B2B spolupráce pozvánky e-mailová šablona
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: article
 ms.date: 05/23/2017
-ms.author: twooley
-author: twooley
+ms.author: mimart
+author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: e8285779154914bd09513c057d8e5ae0b6388831
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
-ms.translationtype: HT
+ms.openlocfilehash: 97015706ec883777deba3398910c0c83b88ecde1
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34259998"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35642621"
 ---
-# <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>Elementy pozvánku e-mail spolupráce B2B – Azure Active Directory
+# <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>Prvky B2B spolupráce e-mailová pozvánka – Azure Active Directory
 
-E-mailů pozvánku je zásadní součástí a převeďte partnery na palubě jako uživatelé spolupráce B2B ve službě Azure AD. Můžete je používat k příjemce důvěryhodnosti zvýšit. můžete přidat legitimitu a sociálních ověření k e-mailu, abyste měli jistotu příjemce funguje celý výběr **Začínáme** tlačítko pro přijetí pozvánky. Tento vztah důvěryhodnosti je, že klíč znamená snížení sdílení tření. A budete chtít také zajistit e-mailu vypadají skvěle!
+E-mailových pozvánek jsou zásadní pro partnery na palubě jako uživatele spolupráce B2B Azure AD. Můžete využít ke zvýšení důvěryhodnosti příjemce. můžete přidat legitimitu a vyhovuje výběr z reálného prostředí k e-mailu, abyste měli jistotu, příjemce, jako **Začínáme** tlačítko k přijetí pozvánky. Tento vztah důvěryhodnosti je, že klíč znamená, že omezíte třecí plochy sdílení. A budete chtít také zajistit e-mailu vypadají skvěle!
 
 ![E-mailová pozvánka Azure AD s B2b](media/invitation-email-elements/invitation-email.png)
 
-## <a name="explaining-the-email"></a>Vysvětlení e-mailu
-Podívejme se na několik elementy e-mailu, abyste věděli, jak nejlépe používat jejich funkce.
+## <a name="explaining-the-email"></a>S vysvětlením, e-mailu
+Podívejme se na několik elementů e-mailu, abyste věděli, jak nejlépe používat jejich funkce.
 
 ### <a name="subject"></a>Předmět
-Předmět e-mailu se následující následující: přijměte naše pozvání &lt;tenantname&gt; organizace
+Předmět e-mailu používá následující vzor: vás &lt;tenantname&gt; organizace
 
 ### <a name="from-address"></a>Adresa odesílatele
-Používáme LinkedIn jako vzor pro adresa odesílatele.  Musí být jasné, kdo je pozvání odeslal a ze společnosti a také vysvětlení, že e-mailu, pochází z Microsoftu e-mailovou adresu. Formát je: &lt;zobrazovaný název pozvánky&gt; z &lt;tenantname&gt; (přes Microsoft) <invites@microsoft.com>
+Používáme vzor LinkedIn jako adresa odesílatele.  By měl být jasné, kdo je odesílatel pozvánky a ze společnosti a i vyjasnit, e-mailu přichází z Microsoftu e-mailovou adresu. Formát je: &lt;zobrazované jméno odesílatele pozvánky&gt; z &lt;tenantname&gt; (přes Microsoft) <invites@microsoft.com>
 
 ### <a name="reply-to"></a>Zpáteční adresa
-Odpověď pro e-mailu je nastavena k e-mailu pozval vás, pokud je k dispozici, takže odpovídání na e-mailu, odešle e-mailem zpátky do pozvání odeslal.
+Odpovědi e-mailu je nastavena k e-mailu odesílatel pozvánky, pokud je k dispozici, takže odpovídání na e-mailu odešle e-mailu zpět odesílatel pozvánky.
 
 ### <a name="branding"></a>Branding
-Pozvánku e-mailů z vašeho používání klienta firemního brandingu, které může nastavili pro vašeho klienta. Pokud budete chtít využít tuto funkci využít [sem](https://docs.microsoft.com/azure/active-directory/active-directory-branding-custom-signon-azure-portal) jsou uvedeny podrobnosti o tom, jak ho nakonfigurovat. Banner s logem se zobrazí v e-mailu. Postupujte podle velikost bitové kopie kvality pokyny a [sem](https://docs.microsoft.com/azure/active-directory/active-directory-branding-custom-signon-azure-portal) pro dosažení co nejlepších výsledků. Kromě toho název společnosti také se zobrazí v volání akce.
+E-mailových pozvánek z vašeho tenanta používání firemní branding, které jste nastavil pro vašeho tenanta. Pokud chcete využít výhod této funkce, které [tady](https://docs.microsoft.com/azure/active-directory/active-directory-branding-custom-signon-azure-portal) jsou uvedené podrobnosti o tom, jak ho nakonfigurovat. Banner s logem se zobrazí v e-mailu. Velikost bitové kopie postupujte podle pokynů kvality a [tady](https://docs.microsoft.com/azure/active-directory/active-directory-branding-custom-signon-azure-portal) pro dosažení co nejlepších výsledků. Kromě toho název společnosti také se zobrazí při volání akce.
 
 ### <a name="call-to-action"></a>Výzva k akci
-Volání akce se skládá ze dvou částí: vysvětlením, proč příjemce přijal e-mailu a co příjemce je se zobrazí dotaz, jak je řešit.
-- V části "Proč" lze řešit pomocí následujícího vzorce: jste byli pozváni přístup k aplikacím v &lt;tenantname&gt; organizace
+Výzvou k akci se skládá ze dvou částí: s vysvětlením, proč příjemce obdrží e-mailu a co příjemce je požádaná, jak je řešit.
+- V části "Proč" se dají řešit pomocí následujícímu vzoru: dostali jste pozvání k přístupu k aplikacím v &lt;tenantname&gt; organizace
 
-- A "co zobrazí se výzva k provést" části je indikován přítomnost **Začínáme** tlačítko. Pokud příjemce byl přidán bez nutnosti pozvánky, toto tlačítko nezobrazí.
+- A "co zobrazí se výzva provedete" oddíl je označen přítomnost **Začínáme** tlačítko. Po přidání příjemce bez nutnosti pozvánky, nebude se zobrazí toto tlačítko.
 
-### <a name="inviters-information"></a>Pozval vás na informace
-Pozvání odeslal na zobrazované jméno je obsažena v e-mailu. A kromě toho, pokud jste nastavili profilový obrázek pro váš účet Azure AD, pozváním e-mailu, budou obsahovat tento obrázek také. Oba mají zvýšit důvěru vaše příjemce e-mailu.
+### <a name="inviters-information"></a>Informace odesílatele pozvánky.
+Odesílatel pozvánky pro zobrazovaný název je součástí e-mailu. A kromě toho, pokud jste nastavili profilový obrázek pro váš účet Azure AD, pozval e-mail bude obsahovat daný obrázek i. Oba jsou určení ke zvýšení spolehlivosti vaší příjemce e-mailu.
 
-Pokud jste ještě profilový obrázek, se zobrazí ikona s iniciály pozvání odeslal na místo na obrázku:
+Pokud ještě jste nenastavili profilový obrázek, zobrazí se ikona s iniciály odesílatel pozvánky místo na obrázku:
 
-  ![Zobrazení pozvánky iniciály](media/invitation-email-elements/inviters-initials.png)
+  ![Zobrazení iniciály odesílatel pozvánky.](media/invitation-email-elements/inviters-initials.png)
 
 ### <a name="body"></a>Tělo
-Text obsahuje zprávu, která vytvoří pozvání odeslal nebo předána pozvánku rozhraní API. Je textová oblast, takže nezpracovává značky HTML z bezpečnostních důvodů.
+Text obsahuje zprávu, odesílatel pozvánky lze kombinovat nebo se předá prostřednictvím e-mailové pozvánce rozhraní API. Takže nezpracovává značky HTML z bezpečnostních důvodů je textová oblast.
 
-### <a name="footer-section"></a>Sekce zápatí
-Zápatí obsahuje značky společnosti Microsoft a umožňuje příjemce vědět, pokud e-mailu byla odeslaná z Nesledované alias. Zvláštní případy:
+### <a name="footer-section"></a>Zápatí
+Zápatí obsahuje značky společnosti Microsoft a umožní příjemce vědět, pokud byla odeslána e-mailu byla odeslaná z nemonitorovaného aliasu. Zvláštní případy:
 
-- Pozvání odeslal nemá e-mailovou adresu v pozváním klientů
+- Odesílající uživatel nemá e-mailovou adresu ve zvoucí tenantů
 
-  ![Obrázek pozval vás nemá e-mailovou adresu v pozváním klientů](media/invitation-email-elements/inviter-no-email.png)
+  ![Obrázek odesílatele pozvánky nemá e-mailovou adresu ve zvoucí tenantů](media/invitation-email-elements/inviter-no-email.png)
 
 
-- Příjemce nemusí uplatnit pozvánku
+- Příjemce nemusí uplatnění pozvání
 
-  ![Pokud není třeba uplatnit pozvánku k příjemce](media/invitation-email-elements/when-recipient-doesnt-redeem.png)
+  ![Když příjemce nemusí uplatnění pozvánky](media/invitation-email-elements/when-recipient-doesnt-redeem.png)
 
 
 ## <a name="next-steps"></a>Další postup
 
-Na spolupráci Azure AD B2B najdete v následujících článcích:
+Na spolupráce B2B ve službě Azure AD najdete v následujících článcích:
 
-- [Co je spolupráce Azure AD B2B](what-is-b2b.md)
-- [Jak Azure Active Directory správci přidat uživatele spolupráce B2B?](add-users-administrator.md)
-- [Jak informační pracovníci přidat uživatele spolupráce B2B?](add-users-information-worker.md)
-- [Uplatnění pozvánku spolupráce B2B](redemption-experience.md)
-- [Přidání uživatelů spolupráce B2B bez Pozvánka](add-user-without-invite.md)
+- [Co je spolupráce B2B ve službě Azure AD](what-is-b2b.md)
+- [Jak správci služby Azure Active Directory přidat uživatele spolupráce B2B?](add-users-administrator.md)
+- [Jak informačních pracovníků vynutit přidat uživatele spolupráce B2B?](add-users-information-worker.md)
+- [Uplatnění pozvání spolupráce B2B](redemption-experience.md)
+- [Přidat uživatele spolupráce B2B bez pozvánky](add-user-without-invite.md)

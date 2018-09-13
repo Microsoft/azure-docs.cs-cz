@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: d111a9f852b849df15dbd056a7210fac82cee190
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: eebe41ea879ad34defadd08ce3095f7f6edca4d8
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39324251"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719796"
 ---
 # <a name="about-the-text-to-speech-api"></a>O převod textu na řeč rozhraní API
 
@@ -37,6 +37,21 @@ Mezi scénáře, v které řeči syntézu přijali patří:
 Microsoft **převod textu na řeč** služba nabízí více než 75 hlasy ve více než 45 jazyků a národních prostředí. Pokud chcete použít tyto standardní "hlasová písma", stačí zadat název hlas s několika dalších parametrů při volání rozhraní REST API služby. Podrobnosti hlasy podporované, najdete v článku [podporované jazyky](https://docs.microsoft.com/azure/cognitive-services/speech-service/supported-languages#text-to-speech). 
 
 Pokud chcete jedinečný hlas pro vaši aplikaci, můžete vytvořit [vlastní hlasové písmo](how-to-customize-voice-font.md) z vlastní ukázky řeči.
+
+## <a name="api-capabilities"></a>Funkce rozhraní API
+
+Velké množství funkcí **převod textu na řeč** rozhraní API – zejména v oblasti Vlastní nastavení – jsou k dispozici prostřednictvím REST. V následující tabulce najdete souhrn možností jednotlivých metod přístupu k rozhraní API. Pro úplný seznam možností a rozhraní API podrobnosti prosím najdete [Swagger](https://swagger/service/11ed9226-335e-4d08-a623-4547014ba2cc#/)
+
+| Případ použití | REST | Sady SDK |
+|-----|-----|-----|----|
+| Nahrání datových sad pro přizpůsobení hlasu | Ano | Ne |
+| Vytvoření a správa modelů hlasového písma | Ano | Ne |
+| Vytvoření a Správa nasazení hlasového písma | Ano | Ne |
+| Vytvoření a správa testů hlasového písma| Ano | Ne |
+| Správa předplatných | Ano | Ne |
+
+> [!NOTE]
+> Rozhraní API implementuje tohoto omezení požadavků rozhraní API 25 na 5 sekund. Zpráva hearders informuje omezení.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 09/12/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 9287eb0925556d382410f95caf16a9ca478ca2da
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: c9429f5909e5ba3fd66681fa62cf16125922d075
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44054413"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721768"
 ---
 # <a name="add-a-kubernetes-cluster-to-the-azure-stack-marketplace"></a>Přidání clusteru Kubernetes do Tržiště Azure Stack
 
@@ -48,7 +48,7 @@ Vytvořte plán, nabídky a předplatné pro položky Marketplace clusteru Kuber
 
 1. Vyberte **změnit stav**. Vyberte **veřejné**.
 
-1. Vyberte **+ nová** > **nabídky a plány** > **předplatné** vytvořit si nové předplatné.
+1. Vyberte **+ vytvořit prostředek** > **nabídky a plány** > **předplatné** vytvořit si nové předplatné.
 
     a. Zadejte **zobrazovaný název**.
 

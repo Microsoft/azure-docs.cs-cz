@@ -1,88 +1,89 @@
 ---
-title: Upgrade na Azure Search .NET SDK verze 5 | Microsoft Docs
+title: Upgrade na Azure Search .NET SDK verze 5 | Dokumentace Microsoftu
 description: Upgrade na Azure Search .NET SDK verze 5
 author: brjohnstmsft
 manager: jlembicz
+services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: brjohnst
-ms.openlocfilehash: 88949f4cf0e4408f5d1e4d9c9a5833b041b5a5ab
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: b08507d7685ce87a4c176385f750a72d6ae51ba3
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32778576"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35899026"
 ---
 # <a name="upgrading-to-the-azure-search-net-sdk-version-5"></a>Upgrade na Azure Search .NET SDK verze 5
-Pokud používáte verzi 4.0 preview nebo starší z [Azure Search .NET SDK](https://aka.ms/search-sdk), tento článek vám pomůže při upgradu aplikace k používání verze 5.
+Pokud používáte verzi 4.0 ve verzi preview nebo starší aplikace [Azure Search .NET SDK](https://aka.ms/search-sdk), tento článek vám pomůže při upgradu aplikace pro používání verze 5.
 
-Další obecné návod sady SDK, včetně příkladů, najdete v tématu [jak používat Azure Search z aplikace .NET](search-howto-dotnet-sdk.md).
+Další obecné návod sady SDK, včetně příkladů najdete v tématu [použití Azure Search z aplikace .NET](search-howto-dotnet-sdk.md).
 
-Verze 5 .NET SDK služby Azure Search obsahuje některé změny z předchozích verzí. Tyto jsou většinou dílčí, takže měnili kód měli vyžadovat jen minimální úsilí. V tématu [kroky pro upgrade](#UpgradeSteps) pokyny o tom, jak upravit svůj kód k použití nové verze sady SDK.
+Azure Search .NET SDK verze 5 obsahuje některé změny z předchozích verzí. Toto jsou většinou dílčí, takže změna kódu by měla trvat pouze minimálním úsilím. Zobrazit [kroky pro upgrade](#UpgradeSteps) pokyny o tom, jak změnit váš kód k použití nové verze sady SDK.
 
 > [!NOTE]
-> Pokud používáte verzi 2.0 preview nebo starší, doporučujeme nejprve upgradovat na verzi 3 a pak upgradovat na verze 5. V tématu [upgrade .NET SDK služby Azure Search verze 3](search-dotnet-sdk-migration.md) pokyny.
+> Pokud používáte verzi 2.0 preview nebo starší, byste nejprve upgradovat na verzi 3 a pak provedete upgrade na verzi 5. Zobrazit [upgrade na Azure Search .NET SDK verze 3](search-dotnet-sdk-migration.md) pokyny.
 >
-> Instanci služby Azure Search podporuje několik verzí rozhraní REST API, včetně nejnovější. Můžete použít verzi, když je už nejnovějšího, ale doporučujeme migraci kód a použít nejnovější verzi. Při použití rozhraní REST API, musíte zadat verze rozhraní API v každé žádosti o prostřednictvím parametr api-version. Když pomocí sady .NET SDK, určuje verzi sady SDK používáte odpovídající verzi rozhraní REST API. Pokud používáte starší SDK, můžete spustit tento kód se žádné změny, i v případě, že je služba upgradovat pro podporu na novější verzi rozhraní API.
+> Instance služby Azure Search podporuje několik verzí rozhraní REST API, včetně nejnovější. Můžete nadále používat verzi, pokud již není nejnovější, ale doporučujeme migrovat kód Refaktorovat pro použití na nejnovější verzi. Při použití rozhraní REST API, je nutné zadat verzi rozhraní API v každé žádosti prostřednictvím parametru verze api-version. Při použití sady .NET SDK, určuje verzi sady SDK, které používáte odpovídající verzi rozhraní REST API. Pokud používáte starší sada SDK, můžete nadále spouštět tento kód beze změny i v případě, že služba se upgraduje na novější verzi rozhraní API podporují.
 
 <a name="WhatsNew"></a>
 
 ## <a name="whats-new-in-version-5"></a>Co je nového ve verzi 5
-Verze 5 .NET SDK služby Azure Search cílí na nejnovější verzi obecně k dispozici REST API Azure Search, konkrétně 2017-11-11. Díky tomu je možné použít nové funkce služby Azure Search z aplikace .NET, včetně následujících:
+Azure Search .NET SDK verze 5, zaměřuje na nejnovější verzi obecně dostupnou verzi REST API služby Azure Search, konkrétně 2017-11-11. To umožňuje používat nové funkce služby Azure Search z aplikace .NET, včetně následujících:
 
 * [Synonyma](search-synonyms.md).
-* Nyní můžete prostřednictvím kódu programu k upozornění v historii spouštění indexer (najdete v článku `Warning` vlastnost `IndexerExecutionResult` v [.NET – referenční informace](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet) podrobnosti).
+* Nyní můžete prostřednictvím kódu programu k upozornění v historii spuštění indexeru (najdete v článku `Warning` vlastnost `IndexerExecutionResult` v [.NET – referenční informace](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexerexecutionresult?view=azure-dotnet) další podrobnosti).
 * Podpora pro .NET Core 2.
-* Nový balíček struktura podporuje používání pouze ty části sady SDK, která je nutné (viz [nejnovější změny ve verzi 5](#ListOfChanges) podrobnosti).
+* Nová struktura balíčku podporuje používání jen ty části sady SDK, které potřebujete (naleznete v tématu [nejnovější změny ve verzi 5](#ListOfChanges) podrobnosti).
 
 <a name="UpgradeSteps"></a>
 
 ## <a name="steps-to-upgrade"></a>Kroky pro upgrade
-Nejdřív aktualizovat vaše NuGet odkaz pro `Microsoft.Azure.Search` pomocí konzoly Správce balíčků NuGet nebo nástrojem pravým tlačítkem myši na vaše odkazy na projekt a výběrem "Správa NuGet balíčky..." v sadě Visual Studio.
+Nejprve aktualizujte referenci NuGet pro `Microsoft.Azure.Search` pomocí konzoly Správce balíčků NuGet nebo tím, že pravým tlačítkem myši na odkazy projektu a vyberte "Spravovat NuGet balíčky..." v sadě Visual Studio.
 
-Jakmile NuGet stáhl nové balíčky a jejich závislosti, znovu sestavte projekt. Pokud používáte funkce preview, která není v novou sadu SDK GA, třeba znovu sestavit úspěšně (Pokud ne, dejte nám vědět, na [Githubu](https://github.com/azure/azure-sdk-for-net/issues)). Pokud ano, jste připravení přejít!
+Po stažení nové balíčky a jejich závislostí NuGet znovu sestavte projekt. Pokud používáte funkci ve verzi preview, které nejsou v sadu SDK pro verzi GA, třeba znovu sestavit úspěšně (Pokud ne, dejte nám vědět o [Githubu](https://github.com/azure/azure-sdk-for-net/issues)). Pokud ano, jste připraveni začít!
 
-Pamatujte, že z důvodu změn v balení .NET SDK služby Azure Search, je nutné znovu sestavit aplikaci, aby bylo možné používat verze 5. Tyto změny jsou podrobně popsané na [nejnovější změny ve verzi 5](#ListOfChanges).
+Upozorňujeme, že z důvodu změn v balíčku Azure Search .NET SDK, je nutné znovu sestavit aplikaci, aby bylo možné používat verze 5. Tyto změny jsou podrobně popsány v [nejnovější změny ve verzi 5](#ListOfChanges).
 
-Může se zobrazit další sestavení upozornění související s zastaralé metody nebo vlastnosti. Upozornění bude obsahovat pokyny o tom, jak používat místo zastaralé funkce. Například, pokud vaše aplikace používá `IndexingParametersExtensions.DoNotFailOnUnsupportedContentType` metoda, měli byste obdržet upozornění, že "Toto chování je teď povolené ve výchozím nastavení, takže voláním této metody není nutné."
+Může se zobrazit další upozornění související s zastaralé metody nebo vlastnosti. Upozornění bude obsahovat pokyny, jak použít namísto zastaralé funkce. Například, pokud vaše aplikace používá `IndexingParametersExtensions.DoNotFailOnUnsupportedContentType` metoda, měli byste obdržet upozornění, že "Toto chování je teď ve výchozím nastavení povoleno, takže volání této metody již není nezbytné."
 
-Jakmile jste odstraněna všechna upozornění, sestavení, vám do vaší aplikace využívat výhod nových funkcí, nechcete-li provádět změny. Nové funkce v sadě SDK jsou podrobně popsané na [co je nového ve verzi 5](#WhatsNew).
+Po vyřešili jsme upozornění sestavení, můžete aplikaci výhod nových funkcí, pokud chcete měnit. Nové funkce v sadě Windows SDK jsou podrobně popsány v [co je nového ve verzi 5](#WhatsNew).
 
 <a name="ListOfChanges"></a>
 
-## <a name="breaking-changes-in-version-5"></a>Nejnovější změny ve verzi 5
-Většina významné narušující změně ve verze 5 je, že `Microsoft.Azure.Search` sestavení a její obsah, rozdělena do čtyř samostatné sestavení, které jsou nyní distribuovaných jako čtyři samostatné balíčky NuGet:
+## <a name="breaking-changes-in-version-5"></a>Rozbíjející změny v verze 5
+Většina podstatné rozbíjející změnu do verze 5 je, že `Microsoft.Azure.Search` sestavení a jeho obsah rozdělena do čtyř samostatné sestavení, které se nyní distribuují jako čtyři samostatné balíčky NuGet:
 
- - `Microsoft.Azure.Search`: Toto je meta balíček, který obsahuje všechny ostatní balíčky Azure Search jako závislosti. Pokud provádíte upgrade ze starší verze sady SDK, jednoduše upgrade tohoto balíčku a nové sestavení by vám měly dostatečně k použití na novou verzi.
- - `Microsoft.Azure.Search.Data`: Tento balíček použijte, pokud vyvíjíte aplikaci .NET používání služby Azure Search a potřebujete jenom dotaz nebo aktualizovat dokumenty ve vašem indexy. Pokud také potřebujete vytvořit nebo aktualizovat indexy, synonymum mapy nebo jiným prostředkům úrovni služby, použijte `Microsoft.Azure.Search` balíček místo.
- - `Microsoft.Azure.Search.Service`: Tento balíček používejte, pokud vyvíjíte automatizace v rozhraní .NET pro správu indexů Azure Search, synonymum mapy, indexery, zdroje dat nebo jiným prostředkům na úrovni služby. Pokud potřebujete jenom dotazu nebo aktualizace dokumentů ve vašem indexy, použijte `Microsoft.Azure.Search.Data` balíček místo. Pokud budete potřebovat všechny funkce Azure Search, použijte `Microsoft.Azure.Search` balíček místo.
- - `Microsoft.Azure.Search.Common`: Vyžaduje na knihovny .NET vyhledávání Azure běžné typy. Neměli byste potřebovat pro tento balíček použít přímo v aplikaci; Smyslem je pouze má být použit jako závislost.
+ - `Microsoft.Azure.Search`: Toto je meta balíček, který obsahuje všechny ostatní balíčky Azure Search jako závislosti. Pokud upgradujete ze starší verze sady SDK, jednoduše upgradu tohoto balíčku a nové sestavení by vám měly dostatečně chcete začít používat novou verzi.
+ - `Microsoft.Azure.Search.Data`: Tento balíček použijte, pokud vyvíjíte aplikace .NET pomocí Azure Search a potřebujete jenom dotazování a aktualizaci dokumentů v indexů. Pokud je také potřeba vytvořit nebo aktualizovat indexů, map synonym, nebo další prostředky na úrovni služby, použijte `Microsoft.Azure.Search` balíček místo.
+ - `Microsoft.Azure.Search.Service`: Tento balíček použijte, pokud vyvíjíte v rozhraní .NET pro správu indexů Azure Search, map synonym, indexery, zdroje dat nebo další prostředky na úrovni služby automation. Pokud potřebujete jenom k dokumentům dotazu nebo aktualizace v indexů, použijte `Microsoft.Azure.Search.Data` balíček místo. Pokud budete potřebovat všechny funkce služby Azure Search, použijte `Microsoft.Azure.Search` balíček místo.
+ - `Microsoft.Azure.Search.Common`: Vyžadované knihoven Azure Search pro .NET běžných typů. By neměl muset použít tento balíček přímo v aplikaci; Je určená jenom pro použití jako závislost.
  
-Tuto změnu je technicky nejnovější vzhledem k tomu, že mnoho typů byly přesunuty mezi sestavení. Z tohoto důvodu znovu sestavit aplikaci je nutné před upgradem na verzi 5 sady SDK.
+Tato změna je technicky zásadní, protože mnoho typů se přesunuly mezi sestaveními. To je důvod, proč znovu sestavit aplikaci je nutné před upgradem na verzi 5 sady SDK.
 
-Existuje malý počet jiné narušující změny ve verze 5, které mohou vyžadovat kód změní kromě nové sestavení aplikace.
+Existuje malý počet dalších rozbíjející změny v verze 5, které mohou vyžadovat kód změní kromě nové sestavení aplikace.
 
 ### <a name="removed-obsolete-members"></a>Odebrat zastaralé členy
 
-Může se zobrazit chyby související s metody nebo vlastnosti, které byly označeny jako zastaralé v dřívějších verzích a následně odstraněny v verze 5 sestavení. Pokud narazíte na takové chyby, zde je způsob jejich řešení:
+Může se zobrazit chyby související s metodami nebo vlastnostmi, které byly označeny jako zastaralé ve starších verzích a následně odebrat ve verzi 5 sestavení. Pokud narazíte na takové chyby, tady je způsob jejich řešení:
 
-- Pokud jste používali `IndexingParametersExtensions.IndexStorageMetadataOnly` metoda, použijte `SetBlobExtractionMode(BlobExtractionMode.StorageMetadata)` místo.
-- Pokud jste používali `IndexingParametersExtensions.SkipContent` metoda, použijte `SetBlobExtractionMode(BlobExtractionMode.AllMetadata)` místo.
+- Pokud jste používali `IndexingParametersExtensions.IndexStorageMetadataOnly` metody, použijte `SetBlobExtractionMode(BlobExtractionMode.StorageMetadata)` místo.
+- Pokud jste používali `IndexingParametersExtensions.SkipContent` metody, použijte `SetBlobExtractionMode(BlobExtractionMode.AllMetadata)` místo.
 
-### <a name="removed-preview-features"></a>Funkce odebrané preview
+### <a name="removed-preview-features"></a>Funkce odebrané ve verzi preview
 
-Pokud upgradujete z verze 4.0-preview verze 5, mějte na paměti, pole JSON a CSV analýza podporu pro objekt Blob indexery byl odebrán vzhledem k tomu, že tyto funkce jsou stále ve verzi preview. Konkrétně tyto metody `IndexingParametersExtensions` třídy byly odebrány:
+Pokud provádíte upgrade z verze 4.0-preview do verze 5, mějte na paměti, že pole JSON a parsování podporu pro indexování objektů Blob CSV má se odebrat, protože tyto funkce jsou stále ve verzi preview. Konkrétně tyto metody `IndexingParametersExtensions` jsme odebrali třídu:
 
 - `ParseJsonArrays`
 - `ParseDelimitedTextFiles`
 
-Pokud vaše aplikace obsahuje pevné závislost na těchto funkcích, nebudete moci upgradovat na verzi 5 .NET SDK služby Azure Search. Můžete nadále používat verze 4.0-preview. Ale prosím mějte na paměti, **nedoporučujeme používání náhled sady SDK v produkční aplikace**. Funkce Preview jsou pouze zkušební verze a může změnit.
+Pokud vaše aplikace má pevný závislost na těchto funkcích, nebude možné upgradovat na verzi 5 Azure Search .NET SDK. Můžete nadále používat verze 4.0-preview. Však prosím mějte na paměti, která **nedoporučujeme používání verze preview sady SDK v aplikacích v produkčním prostředí**. Funkce ve verzi Preview jsou určené pro zkušební pouze a může změnit.
 
 ## <a name="conclusion"></a>Závěr
-Pokud potřebujete další podrobnosti o použití .NET SDK služby Azure Search, přečtěte si [.NET postupy](search-howto-dotnet-sdk.md).
+Pokud potřebujete další podrobnosti o použití Azure Search .NET SDK, přečtěte si [.NET postupy](search-howto-dotnet-sdk.md).
 
-Uvítáme vaše názory týkající se sady SDK. Pokud narazíte na potíže, neváhejte nám požádat o pomoc na [fórum Azure Search MSDN](https://social.msdn.microsoft.com/Forums/azure/home?forum=azuresearch). Pokud narazíte na chyby, můžete soubor problém v [úložiště Azure .NET SDK GitHub](https://github.com/Azure/azure-sdk-for-net/issues). Ujistěte se, že předpony název vašeho problému s "[Azure Search]".
+Vítáme váš názor na sadě SDK. Pokud narazíte na problémy, neváhejte nás požádat o pomoc na [fórum Azure Search na webu MSDN](https://social.msdn.microsoft.com/Forums/azure/home?forum=azuresearch). Pokud zjistíte chybu, můžete založit problém v [úložiště Azure .NET SDK GitHub](https://github.com/Azure/azure-sdk-for-net/issues). Ujistěte se, že jako předpona váš problém název s "[Azure Search]".
 
-Děkujeme za používání služby Azure Search.
+Děkujeme vám za použití Azure Search.

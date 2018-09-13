@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.date: 08/15/2018
+ms.date: 09/12/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 42e8f8bd3f921686c3ba13f4c752d52e3067fbbe
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 16c4ab4601dbe57e014bfcb06ff9b35d02c60cfa
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "40177578"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721904"
 ---
 # <a name="common-questions---hyper-v-to-azure-replication"></a>Časté otázky – Hyper-V do Azure replikace
 
@@ -64,7 +64,7 @@ Ano, jak šifrování během přenosu a [šifrování v Azure](https://docs.micr
 
 ### <a name="what-do-i-need-on-premises"></a>K čemu potřebuji místní?
 
-Potřebujete jeden nebo více virtuálních počítačů spuštěných na jeden nebo více samostatných nebo clusterovaných hostitelů technologie Hyper-V. Se dají taky replikovat virtuální počítače spuštěné na hostitelích, které jsou spravované nástrojem System Center Virtual Machine Manager (VMM). Se dají taky replikovat virtuální počítače spuštěné na hostitelích, které jsou spravované nástrojem System Center Virtual Machine Manager (VMM).
+Potřebujete jeden nebo více virtuálních počítačů spuštěných na jeden nebo více samostatných nebo clusterovaných hostitelů technologie Hyper-V. Se dají taky replikovat virtuální počítače spuštěné na hostitelích, které jsou spravované nástrojem System Center Virtual Machine Manager (VMM).
     - Pokud používáte VMM během nasazování Site Recovery, shromáždíte hostitelé a clustery Hyper-V do lokality Hyper-V. Jste instalovali agenty Site Recovery (zprostředkovatele Azure Site Recovery a agent Recovery Services) na každém hostiteli Hyper-V.
     - Pokud jsou hostitelé Hyper-V v cloudu VMM, můžete orchestrovat replikace v nástroji VMM. Nainstalujete zprostředkovatele Site Recovery na VMM server a agenta služby Recovery Services na každého hostitele Hyper-V. Můžete namapovat mezi logické a VM sítě VMM a virtuálním sítím Azure.
     - 
@@ -166,11 +166,6 @@ Site Recovery potřebuje přístup k hostitelům Hyper-V pro replikaci virtuáln
 ### <a name="what-does-site-recovery-install-on-hyper-v-vms"></a>Co Site Recovery nainstalovat na virtuální počítače Hyper-V?
 
 Site Recovery explicitně nic neinstaluje na virtuálních počítačích Hyper-V povolena replikace.
-- Během replikace virtuálních počítačů komunikovat s využitím Site Recovery následujícím způsobem:
-    - Virtuální počítače komunikovat s konfiguračním serverem na port HTTPS 443 pro správu replikace.
-    - Virtuální počítače odesílají data do procesového serveru na příchozím portu HTTPS 9443 (je možné upravit).
-    - Pokud povolíte konzistenci pro více virtuálních počítačů, virtuálních počítačů vzájemně komunikovat přes port 20004.
-
 
 
 
@@ -211,7 +206,7 @@ Po znovu spuštěn a je v místní infrastruktuře, můžete službu navrátit. 
 5. Po úloh se nepodařilo vrátit, povolíte zpětnou replikaci, tak, aby místní virtuální počítače replikovat do Azure znovu.
 
 ### <a name="can-i-fail-back-to-a-different-location"></a>Můžu navrátit služby zpět do jiného umístění?
-Ano, pokud převzetí služeb při selhání do Azure, můžete navrátit služby zpět do jiného umístění Pokud původní není k dispozici. [Další informace](concepts-types-of-failback.md#alternate-location-recovery-alr).
+Ano, pokud převzetí služeb při selhání do Azure, můžete navrátit služby zpět do jiného umístění Pokud původní není k dispozici. [Další informace](hyper-v-azure-failback.md#failback-to-an-alternate-location-in-hyper-v-environment).
 
 
 

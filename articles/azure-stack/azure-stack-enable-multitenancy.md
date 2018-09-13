@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/23/2018
+ms.date: 09/11/2018
 ms.author: patricka
-ms.openlocfilehash: e61b4457cd88c236145ce7595ee7db4340538465
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 0a10662e359379356ecc8d82af1b7d6331c41a65
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39330800"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44720051"
 ---
 # <a name="multi-tenancy-in-azure-stack"></a>Víceklientská architektura v Azure stacku
 
@@ -101,6 +101,18 @@ Register-AzSWithMyDirectoryTenant `
 > Pokud správce služby Azure Stack v budoucnu nainstaluje nové služby nebo aktualizace, budete muset znovu spusťte tento skript.
 >
 > Tento skript spusťte znovu kdykoli zkontrolovat stav služby Azure Stack aplikace ve vašem adresáři.
+
+
+### <a name="activate-the-administrator-and-tenant-portals"></a>Aktivace portálů správce a tenanta
+Po nasazení, které používají službu Azure AD je nutné aktivovat i Azure Stack správce a tenanta portály. Tato aktivace vyjádří souhlas poskytuje správná oprávnění (uvedené na stránce souhlas) pro všechny uživatele adresáře portálu Azure Stack a Azure Resource Manageru.
+
+- U portálu správce, přejděte na https://adminportal.local.azurestack.external/guest/signup, přečtěte si informace a pak klikněte na přijmout. Po přijetí, můžete přidat správce služby, kteří nejsou také správci tenanta adresáře.
+- Portál pro klienty, přejděte do https://portal.local.azurestack.external/guest/signup, přečtěte si informace a pak klikněte na přijmout. Po přijetí, můžete uživatele v adresáři přihlásit na portál pro klienty. 
+ 
+> [!NOTE] 
+> Pokud nemáte aktivaci portály, pouze adresáře správce přihlásit a používat na portálech. Pokud jiný uživatel přihlásí, zobrazí se chyba s oznámením, že správce nebyla udělena oprávnění ostatním uživatelům. Když správce nepatří do požadovaného adresáře služby Azure Stack je zaregistrovaná a nativně, musí být adresář služby Azure Stack připojeno k aktivační adrese URL. Například pokud Azure Stack je zaregistrovaná a může fabrikam.onmicrosoft.com a uživatele s rolí správce je admin@contoso.com, přejděte na https://portal.local.azurestack.external/guest/signup/fabrikam.onmicrosoft.com aktivovat na portálu.
+
+
 
 ### <a name="direct-users-to-sign-in"></a>Přímé přihlášení uživatele
 

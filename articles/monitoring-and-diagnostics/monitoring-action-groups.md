@@ -5,15 +5,15 @@ author: dkamstra
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 06/1/2018
+ms.date: 09/12/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: 441469e24de5324fb5bed40c75f9a6b26f85bcc5
-ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
+ms.openlocfilehash: 6163a099894a823614355f71a3e1af4a6a9026ec
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44325052"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44717671"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Vytvoření a Správa skupin akcí na webu Azure Portal
 ## <a name="overview"></a>Přehled ##
@@ -33,9 +33,9 @@ Informace o tom, jak nakonfigurovat skupiny akcí pomocí šablon Azure Resource
 1. V [portál](https://portal.azure.com)vyberte **monitorování**. **Monitorování** okno konsoliduje všechny vaše monitorování nastavení a data v jednom zobrazení.
 
     !["Monitor" service](./media/monitoring-action-groups/home-monitor.png)
-1. V **nastavení** vyberte **skupiny akcí**.
+1. Vyberte **výstrahy** vyberte **spravovat skupiny akcí**.
 
-    ![Na kartě "Akce skupiny"](./media/monitoring-action-groups/action-groups-blade.png)
+    ![Správa skupin akcí na tlačítko](./media/monitoring-action-groups/manage-action-groups.png)
 1. Vyberte **přidat skupinu akcí**a přejít k vyplnění polí.
 
     ![Příkaz "Přidat skupinu akcí"](./media/monitoring-action-groups/add-action-group.png)
@@ -97,6 +97,17 @@ Informace o tom, jak nakonfigurovat skupiny akcí pomocí šablon Azure Resource
 <dt>Webhook</dt>
 <dd>Můžete mít až 10 akce Webhooku v skupiny akcí
 <dd>Zkuste logic - časový limit pro odpověď je 10 sekund. Volání webhooku se bude opakovat maximálně 2 při následující stavové kódy HTTP vrácené časy jsou časy: 408, 429, 503, 504 nebo koncový bod HTTP neodpovídá. Prvním opakováním se stane po 10 sekundách. Druhý a poslední opakování se stane po 100 sekund.</dd>
+<dd>Zdrojové rozsahy IP adres
+<ul>
+    <li>13.106.57.181</li>
+    <li>13.106.54.3</li>
+    <li>13.106.54.19</li>
+    <li>13.106.38.142</li>
+    <li>13.106.38.148</li>
+    <li>13.106.57.196</li>
+</ul>
+Získat informace o změnách na tyto IP adresy, doporučujeme, abyste konfiguraci [upozornění na stav služby](./monitoring-service-notifications.md) monitoruje informační upozornění týkající se služby skupiny akcí.
+</dd>
 </dl>
 
 ## <a name="manage-your-action-groups"></a>Spravovat skupiny akcí ##

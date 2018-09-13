@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/15/2018
 ms.author: jomolesk
-ms.openlocfilehash: 8885eba0d69c869ad5d298094b835f0351d8d94d
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: d05be48da296b0d088e38b4c7474103b02e6d5cd
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342909"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721071"
 ---
 # <a name="azure-security-and-compliance-blueprint-data-analytics-for-uk-nhs"></a>Dodržování předpisů a zabezpečení Azure: Analýza dat pro společnost NHS Velká Británie
 
@@ -29,7 +29,7 @@ Toto řešení poskytuje platforma pro analýzy, na kterých zákazníci mohou v
 
 Azure nabízí širokou škálu služeb generování sestav a analýzy pro zákazníka; Toto řešení však zahrnuje služby Azure Analysis Services ve spojení s Azure SQL Database a rychle procházet data a poskytovat rychlejší výsledky prostřednictvím chytřejší modelování dat zákazníků. Služby Azure Analytics je forma machine learningu určené pro zvýšení rychlosti dotazu zjištěním nové relace mezi datovými sadami. Jakmile data vyškolila přes několik statistických funkcí, až 7 dalšího dotazu fondy (celková, včetně serveru zákazník 8) můžete synchronizovat se službou stejné tabulkové modely rozložit zatížení dotazy a snížení doby odezvy.
 
-Pro rozšířené analýzy a generování sestav lze nastavit s indexy columnstore Azure SQL Database. Analytické služby Azure a Azure SQL Database můžete vertikálně navýšit nebo snížit nebo úplně vypne v reakci na využití ze strany zákazníků. Veškerý provoz SQL je šifrován pomocí protokolu SSL pomocí zahrnutí certifikáty podepsané svým držitelem. Jako osvědčený postup doporučuje Azure používat důvěryhodné certifikační autority nabízí vyšší zabezpečení.
+Pro rozšířené analýzy a generování sestav lze nastavit s indexy columnstore Azure SQL Database. Analytické služby Azure a Azure SQL databáze můžete vertikálně navýšit nebo snížit nebo úplně vypne v reakci na využití ze strany zákazníků. Veškerý provoz SQL je šifrován pomocí protokolu SSL pomocí zahrnutí certifikáty podepsané svým držitelem. Jako osvědčený postup doporučuje Azure používat důvěryhodné certifikační autority nabízí vyšší zabezpečení.
 
 Jakmile se data odeslán do databáze SQL Azure a školení služba Azure Analysis Services, je mineralizuje provozní uživatele a správce SQL/dat pomocí Power BI. Power BI zobrazí data intuitivně a získává informace napříč více datových sad, chcete-li nakreslit lepší přehled o. Jeho vysoký stupeň přizpůsobivost a snadnou integraci s Azure SQL Database zajišťuje, že zákazníci můžou nakonfigurovat zpracovávat širokou škálu scénářů znamének podle svých obchodních potřeb.
 

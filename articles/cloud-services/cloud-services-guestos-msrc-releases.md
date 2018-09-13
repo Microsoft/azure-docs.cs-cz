@@ -3,7 +3,7 @@ title: Seznam aktualizací nainstalovaných do hostovaného operačního systém
 description: Seznam aktualizací nainstalovaných do hostovaného operačního systému verze
 services: cloud-services
 documentationcenter: na
-author: raiye
+author: RichardScheel
 manager: timlt
 editor: ''
 ms.assetid: d0a272a9-ed01-4f4c-a0b3-bd5e841bdd77
@@ -12,17 +12,40 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 8/3/2018
-ms.author: raiye
-ms.openlocfilehash: aa7ee049177fccbcca7d648ca749eb9fb35a0f53
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.date: 9/12/2018
+ms.author: RichardScheel
+ms.openlocfilehash: 4ef49fe978db5c9b04bf9c8271e192fa60433d4b
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522301"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44722295"
 ---
 # <a name="azure-guest-os"></a>Azure hostovaného operačního systému
 Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hostovaného operačního systému Azure v následujících tabulkách. Hledání Tento článek k určení, pokud platí konkrétní aktualizace do hostovaného operačního systému, kterou používáte. Aktualizace vždy převést do dalšího období pro konkrétní [řady] [ family-explain] byly zavedeny v.
+
+## <a name="august-guest-os"></a>Srpen hostovaného operačního systému
+| Kategorie produktů | Článek znalostní BÁZE nadřazené | Popis ohrožení zabezpečení | Hostovaný operační systém | Datum poprvé byla představena |
+| --- | --- | --- | --- | --- |
+| Rel 18-08 | [4343887] | Zabezpečení systému Windows 10 | 5.22 | 14. srpna 2018 |
+| Rel 18-08 | [4343899] | Pouze zabezpečení Windows | 2.77 | 14. srpna 2018 |
+| Rel 18-08 | [4343896] | Pouze zabezpečení Windows | 3.64 | 14. srpna 2018 |
+| Rel 18-08 | [4343888] | Pouze zabezpečení Windows | 4.57 | 14. srpna 2018 |
+| Rel 18-08 | [4344177], [4344173] | Rozhraní .NET 3.5, 4.5 zabezpečení | 2.77 | 14. srpna 2018 |
+| Rel 18-08 | [4344175], [4344172] | Rozhraní .NET 3.5, 4.x zabezpečení | 3.64 | 14. srpna 2018 |
+| Rel 18-08 | [4344178], [4344171] | Rozhraní .NET 3.5, 4.x zabezpečení | 4.57 | 14. srpna 2018 |
+| Rel 18-08 | [4346742], [4346739] | Vydání OOB 4.x rozhraní .NET 3.5 | 3.64 | 30. července 2018 |
+| Rel 18-08 | [4346745], [4346408] | Vydání OOB 4.x rozhraní .NET 3.5 | 4.57 | 30. července 2018 |
+| Rel 18-08 | [4343902] | Animace Flash | 3.64, 4.57, 5.22 | 14. srpna 2018 |
+| Rel 18-08 | [4343205] | Internet Explorer | 2.77, 3.64, 4.57 | 14. srpna 2018 |
+| neuvedeno | [4338818] |Souhrn dne Non-zabezpečení |2.77 | 10. července 2018 |
+| neuvedeno | [4019990] |Kompilátor D3D aktualizace pro .NET |2.77 | 10. července 2018 |
+| neuvedeno | [4338830] |Souhrn dne Non-zabezpečení |3.64 | 10. července 2018 |
+| neuvedeno | [4338421] |Aktualizace z července zabezpečením .NET 3.5 |3.64 | 10. července 2018 |
+| neuvedeno | [4338416] |X rollup dne zabezpečením .NET 4 |3.64 | 10. července 2018 |
+| neuvedeno | [4338815] |Souhrn dne Non-zabezpečení |4.57 | 10. července 2018 |
+| neuvedeno | [4338424] |Aktualizace z července zabezpečením .NET 3.5 |3.64 | 10. července 2018 |
+| neuvedeno | [4338415] |X rollup dne zabezpečením .NET 4 |3.64 | 10. července 2018 |
 
 
 ## <a name="july-guest-os"></a>Červenec hostovaného operačního systému
@@ -696,6 +719,31 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 | neuvedeno |[2896881] |Dlouhý čas přihlášení při použití příkazu jazyka AddPrinterConnection VBScript mapovat tiskárny pro uživatele během procesu přihlášení ve Windows |4.15, 3.22, 2.34 |13. ledna 2015 |
 
 
+[4343887]: http://support.microsoft.com/kb/4343887
+[4343899]: http://support.microsoft.com/kb/4343899
+[4343896]: http://support.microsoft.com/kb/4343896
+[4343888]: http://support.microsoft.com/kb/4343888
+[4344177]: http://support.microsoft.com/kb/4344177
+[4344173]: http://support.microsoft.com/kb/4344173
+[4344175]: http://support.microsoft.com/kb/4344175
+[4344172]: http://support.microsoft.com/kb/4344172
+[4344178]: http://support.microsoft.com/kb/4344178
+[4344171]: http://support.microsoft.com/kb/4344171
+[4346742]: http://support.microsoft.com/kb/4346742
+[4346739]: http://support.microsoft.com/kb/4346739
+[4346745]: http://support.microsoft.com/kb/4346745
+[4346408]: http://support.microsoft.com/kb/4346408
+[4343902]: http://support.microsoft.com/kb/4343902
+[4343205]: http://support.microsoft.com/kb/4343205
+[4338818]: http://support.microsoft.com/kb/4338818
+[4019990]: http://support.microsoft.com/kb/4019990
+[4338830]: http://support.microsoft.com/kb/4338830
+[4338421]: http://support.microsoft.com/kb/4338421
+[4338416]: http://support.microsoft.com/kb/4338416
+[4338815]: http://support.microsoft.com/kb/4338815
+[4338424]: http://support.microsoft.com/kb/4338424
+[4338415]: http://support.microsoft.com/kb/4338415
+
 
 [4338814]: http://support.microsoft.com/kb/4338814
 [4338823]: http://support.microsoft.com/kb/4338823
@@ -1303,7 +1351,6 @@ Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hosto
 [3057839]:http://support.microsoft.com/kb/3057839
 [3062577]:http://support.microsoft.com/kb/3062577
 [3063858]:http://support.microsoft.com/kb/3063858
-
 
 
 [archive]: https://msdn.microsoft.com/library/azure/dn391773.aspx

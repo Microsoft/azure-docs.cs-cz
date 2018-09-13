@@ -1,58 +1,58 @@
 ---
-title: Postup konfigurace Azure Machine Learning Workbench pro práci s IDE?  | Dokumenty Microsoft
-description: Příručka ke konfiguraci Azure Machine Learning Workbench pro práci s vaší IDE.
+title: Jak nakonfigurovat aplikaci Azure Machine Learning Workbench pro práci s integrovaným vývojovým prostředím?  | Dokumenty Microsoft
+description: Tento průvodce konfiguruje aplikaci Azure Machine Learning Workbench pro práci s vaším prostředím IDE.
 services: machine-learning
 author: svankam
 ms.author: svankam
 manager: mwinkle
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: 1b43671b40e3244690371669fb60796f75174df0
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 18692fe631a7e1349ead6bc68a87934e6d030913
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834902"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35643364"
 ---
-# <a name="how-to-configure-azure-machine-learning-workbench-to-work-with-an-ide"></a>Postup konfigurace Azure Machine Learning Workbench pro práci s IDE 
+# <a name="how-to-configure-azure-machine-learning-workbench-to-work-with-an-ide"></a>Jak nakonfigurovat aplikaci Azure Machine Learning Workbench pro práci s integrovaným vývojovým prostředím 
 
-Azure Machine Learning Workbench může být nakonfigurováno pro práci s oblíbených Python integrovaného vývojového prostředí (integrované vývojové prostředí). Umožňuje vývojové prostředí vědecké účely smooth data přesun mezi přípravy dat, vytváření kódu, spustit sledování a operationalization. Aktuálně jsou podporované integrovaného vývojového prostředí:
+Azure Machine Learning Workbench můžete nakonfigurovat pro práci s oblíbenými integrovanými vývojovými prostředími Pythonu (integrované vývojové prostředí). Umožňuje vývojové prostředí vědy smooth data přesouvání mezi přípravy dat, vytváření kódu, sledování spuštění a operacionalizace. V současné době jsou podporované Integrovaná vývojová prostředí:
 - Microsoft Visual Studio Code 
 - JetBrain PyCharm 
 
-## <a name="configure-workbench"></a>Konfigurace workbench
-1. Klikněte na **souboru** nabídce v horní části levého horního rohu aplikace. 
-2. Vyberte **konfigurace projektu IDE** možnost plovoucím panelem 
+## <a name="configure-workbench"></a>Konfigurace aplikace workbench
+1. Klikněte na **souboru** nabídky v horním levém horním rohu aplikace. 
+2. Vyberte **konfigurace projektu IDE** možnost informační rámeček 
 3. Zadejte `VS Code` nebo `PyCharm` v **název** pole (název je volitelný)
-4. Zadejte umístění k IDE spustitelný soubor (kompletní s názvem spustitelného souboru a rozšíření) **cesta spuštění**
+4. Zadejte umístění v integrovaném vývojovém prostředí spustitelný soubor (dokončeno s názvem spustitelného souboru a přípony) **cesta provedení**
 
-### <a name="default-install-path-for-visual-studio-code"></a>Výchozí cestu instalace pro Visual Studio Code  
+### <a name="default-install-path-for-visual-studio-code"></a>Výchozí instalační cesty pro Visual Studio Code  
 
-* Windows 32-bit- `C:\Program Files (x86)\Microsoft VS Code\Code.exe`
-* Windows 64-bit- `C:\Program Files\Microsoft VS Code\Code.exe`
-* systému macOS - vyberte .app cestu, například `/Applications/Visual Studio Code.app`, a aplikace připojí zbytek cesty pro vás. Úplná cesta ke spustitelnému souboru, ve výchozím nastavení je `/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code`. Pokud jste provedli `Shell Command: Install 'code' command in PATH` příkazů v produktu VS Code, pak můžete taky odkazovat VS Code skript v `/usr/local/bin/code`
+* Windows 32-bit `C:\Program Files (x86)\Microsoft VS Code\Code.exe`
+* Windows 64-bit `C:\Program Files\Microsoft VS Code\Code.exe`
+* macOS – vyberte .app cestu, například `/Applications/Visual Studio Code.app`, a aplikace se připojí zbývající část cesty za vás. Úplná cesta ke spustitelnému souboru ve výchozím nastavení je `/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code`. Pokud jste spustili `Shell Command: Install 'code' command in PATH` příkaz ve VS Code, pak je také možné odkazovat skript VS Code na `/usr/local/bin/code`
 
-### <a name="default-install-path-for-pycharm"></a>Výchozí instalační cesta pro PyCharm 
+### <a name="default-install-path-for-pycharm"></a>Výchozí instalační cesty pro PyCharm 
 
 * Windows 32-bit - `C:\Program Files (x86)\JetBrains\PyCharm Community Edition 2017.2.1\bin\pycharm.exe`. 
 * Windows 64-bit - `C:\Program Files\JetBrains\PyCharm Community Edition 2017.2.1\bin\pycharm64.exe`.
-* systému macOS - vyberte .app cestu, například "/ aplikace/PyCharm CE.app" a aplikace připojí zbytek cesty pro vás. Úplná cesta ke spustitelnému souboru, ve výchozím nastavení je `/Applications/PyCharm CE.app/Contents/MacOS/pycharm`. Můžete také zjistit PyCharm ve složce Koš `/usr/local/bin/charm`
+* macOS – vyberte .app cestu, například "/ Applications/PyCharm CE.app" a zbývající část cesty pro vás připojí aplikace. Úplná cesta ke spustitelnému souboru ve výchozím nastavení je `/Applications/PyCharm CE.app/Contents/MacOS/pycharm`. Můžete také zjistit PyCharm ve složce bin `/usr/local/bin/charm`
 
-## <a name="open-project-in-ide"></a>Otevřete projekt v IDE 
-Po dokončení konfigurace projektu Azure Machine Learning můžete otevřít tak, že otevřete **soubor** nabídky v Azure Machine Learning Workbench, pak klikněte na **otevřít projekt (< IDE_Name >)**. Tato akce otevře aktuální aktivní projekt v nakonfigurovaných rozhraní IDE. _Poznámka: Pokud nejste v projektu **otevřeného projektu (< IDE_Name >)** bude zakázán._
+## <a name="open-project-in-ide"></a>Otevřít projekt v integrovaném vývojovém prostředí 
+Po dokončení konfigurace projektu aplikace Azure Machine Learning můžete otevřít tak, že otevřete **souboru** nabídky v aplikaci Azure Machine Learning Workbench klikněte **otevřít projekt (< IDE_Name >)**. Tato akce otevře aktuální aktivní projekt v nakonfigurovaných integrovaném vývojovém prostředí. _Poznámka: Pokud si nejste v projektu **otevřeného projektu (< IDE_Name >)** se deaktivuje._
 
 ## <a name="configuring-the-integrated-terminal-in-visual-studio-code"></a>Konfigurace integrovaného terminálu ve Visual Studio Code
 
 ### <a name="windows"></a>Windows 
-Budeme mít přepsat výchozí prostředí jako cmd místo prostředí PowerShell. Po kliknutí na tlačítko na **otevřeného projektu (< IDE_Name >)**, zobrazí se dotaz: 
+Budeme mít přepsat výchozí prostředí bude cmd místo prostředí PowerShell. Po kliknutí na na **otevřeného projektu (< IDE_Name >)**, zobrazí se dotaz: 
 
-_Povolíte prostředí shell: `C:\windows\System32\cmd.exe` (definovanou jako nastavení pracovního prostoru) ke spuštění v terminálu?_
+_Povolit prostředí: `C:\windows\System32\cmd.exe` (posunu definovaná jako nastavení pracovního prostoru) spustit v terminálu?_
 
-Odpověď `yes` umožňující konfiguraci prostředí bezproblémově pracovat s rozhraní příkazového řádku Azure ML Workbench.
+Odpověď `yes` umožňující konfiguraci prostředí bez problémů pracovat s rozhraním příkazového řádku Azure ML Workbench.
 
 ### <a name="mac"></a>Mac
-Ke spuštění `az` příkaz pomocí Visual Studio Code integrované terminálu v systému Mac, je nutné ručně nastavit `PATH` na stejnou hodnotu jako `PATH` v projektu `.vscode/settings.json` souboru pod klíčem `terminal.integrated.env.osx`. Můžete tak učinit spuštěním následujícího příkazu v terminálu: `PATH=<PATH in .vscode/settings>`
+Ke spuštění `az` příkaz pomocí Visual Studio Code integrovaný terminál na počítači Mac, je nutné ručně nastavit `PATH` na stejnou hodnotu jako `PATH` v projektu `.vscode/settings.json` souboru pod klíčem `terminal.integrated.env.osx`. Můžete to provést spuštěním následujícího příkazu v terminálu: `PATH=<PATH in .vscode/settings>`

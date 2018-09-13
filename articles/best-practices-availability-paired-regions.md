@@ -6,12 +6,12 @@ ms.service: multiple
 ms.topic: article
 ms.date: 07/03/2018
 ms.author: raynew
-ms.openlocfilehash: 6eb28ad918f9d95c26d91c05d8ee9556ef768bd3
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: c500a1ecc817e4d95e39ca0ac985e1d90ffc8a78
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125848"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721259"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Obchodní kontinuity podnikových procesů a zotavení po havárii (BCDR): spárované oblasti Azure
 
@@ -73,7 +73,7 @@ Jak je uvedeno na obrázku 2.
 
 ![Úložiště](./media/best-practices-availability-paired-regions/2Green.png) **služby Azure Storage** – geograficky redundantní úložiště (GRS) je ve výchozím nastavení nakonfigurované, když se vytvoří účet služby Azure Storage. S GRS data automaticky replikují na třech místech v rámci primární oblasti a třikrát v párované oblasti. Další informace najdete v tématu [možnosti redundance Azure Storage](storage/common/storage-redundancy.md).
 
-![Azure SQL](./media/best-practices-availability-paired-regions/3Green.png) **databází Azure SQL Database** – s Azure SQL standardní geografická replikace, můžete nakonfigurovat asynchronní replikace transakcí do spárované oblasti. S premium geografickou replikací můžete nakonfigurovat replikaci do libovolné oblasti na světě; Doporučujeme však, že nasazování těchto prostředků v spárované oblasti pro většinu scénářů zotavení po havárii. Další informace najdete v tématu [geografické replikace ve službě Azure SQL Database](sql-database/sql-database-geo-replication-overview.md).
+![Azure SQL](./media/best-practices-availability-paired-regions/3Green.png) **Azure SQL Database** – s Azure SQL Database geografickou replikaci, můžete nakonfigurovat asynchronní replikace transakcí do libovolné oblasti na světě; doporučujeme však nasazování těchto prostředků v Spárované oblasti pro většinu scénářů zotavení po havárii. Další informace najdete v tématu [geografické replikace ve službě Azure SQL Database](sql-database/sql-database-geo-replication-overview.md).
 
 ![Resource Manager](./media/best-practices-availability-paired-regions/4Green.png) **Azure Resource Manageru** -Resource Manageru ze své podstaty poskytuje logickou izolaci komponentami pro správu služby napříč oblastmi. To znamená, že jsou méně pravděpodobné, že ovlivnit jiné logické chyby v jedné oblasti.
 

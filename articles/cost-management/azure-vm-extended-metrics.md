@@ -1,80 +1,85 @@
 ---
-title: Přidání rozšířené metriky pro virtuální počítače Azure | Microsoft Docs
-description: Tento článek vám umožňuje povolit a konfigurovat metriky rozšířené diagnostiky pro virtuální počítače Azure.
+title: Přidání rozšířené metriky pro virtuální počítače Azure | Dokumentace Microsoftu
+description: Tento článek vám pomůže povolit a nakonfigurovat rozšířené diagnostických metrik pro virtuální počítače Azure.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 06/07/2018
+ms.date: 06/12/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 58245478cf49c030c435b487e233bbc893a2b9a3
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: b7e4665dc3579f357ce1e28bf34be35c931736bd
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296352"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35642913"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>Přidání rozšířené metriky pro virtuální počítače Azure
 
-Náklady správy používá Azure metriky data z virtuálních počítačů Azure zobrazíte podrobné informace o jejich prostředky. Data metriky, označované taky jako čítače výkonu se používá ve náklady na správu ke generování sestav. Však náklady na správu není shromažďovat automaticky všechny Azure metriky data z virtuálních počítačů hostovaného – je nutné povolit metriky kolekce. Tento článek vám umožňuje povolit a nakonfigurovat další diagnostiky metriky pro virtuální počítače Azure.
+Služba Cost Management využívá Azure metriky data z vašich virtuálních počítačů Azure zobrazíte podrobné informace o jejich prostředky. Data metriky, čítače výkonu, nazývané také používá ke generování sestav Cost Management. Ale Cost Management není shromažďovat automaticky všech dat metriky Azure z virtuálních počítačů hosta, je nutné povolit shromažďování metrik. Tento článek vám pomůže povolit a nakonfigurovat dalších diagnostických metrik pro virtuální počítače Azure.
 
-Jakmile povolíte metriky kolekce, můžete:
+Po povolení shromažďování metrik můžete:
 
-- Vědět, když jsou virtuální počítače dosažení jejich paměti, disku a limity využití procesoru.
-- Zjištění trendů využití a anomálií.
-- Náklady na řídit nastavení velikosti podle využití.
-- Získáte náklady efektivní změna velikosti optimalizace doporučení z náklady na správu.
+- Vědět, když vaše virtuální počítače jsou tam dostupné pro jejich omezení procesoru, disku a paměti.
+- Detekujte trendy využití a anomálie.
+- Řídit své náklady podle velikosti podle využití.
+- Získání nákladů efektivní velikosti optimalizace doporučení Cost Management.
 
-Můžete například chtít sledovat % využití procesoru a paměti % virtuální počítače Azure. Metriky virtuálního počítače Azure odpovídají _[hostitel] procento procesoru_ a _procento paměti [hosta]_.
+Například můžete chtít sledovat % procesoru a paměti % virtuální počítače Azure. Metriky virtuálního počítače Azure odpovídají _[hostitele] využití CPU_ a _procento paměti [hosta]_.
 
-## <a name="verify-that-metrics-are-enabled-on-vms"></a>Ověřte, zda jsou povolena metriky na virtuálních počítačích
+> [!NOTE]
+> Kolekce rozšířených dat metriky se podporuje jenom s využitím Azure monitoru úrovni hosta. Služba Cost Management není kompatibilní s rozšířením Log Analytics VM.
+
+## <a name="verify-that-metrics-are-enabled-on-vms"></a>Ověřte, že jsou na virtuálních počítačích povolené metriky
 
 1. Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
-2. V části **virtuální počítače**, vyberte virtuální počítač a potom v části **monitorování**, vyberte **metriky**. Se zobrazí seznam dostupných metriky.
-3. Vyberte některé metriky a graf zobrazuje data pro ně.  
-    ![Příklad metrika – procento procesoru hostitele](./media/azure-vm-extended-metrics/metric01.png)
+2. V části **virtuálních počítačů**, vyberte virtuální počítač a potom v části **monitorování**vyberte **metriky**. Se zobrazí seznam dostupných metrik.
+3. Vyberte několik metrik a graf zobrazí data pro ně.  
+    ![Příklad metrika – využití CPU na hostiteli](./media/azure-vm-extended-metrics/metric01.png)
 
-V předchozím příkladu omezenou sadu standardní metriky, které jsou k dispozici pro hostitele, ale nejsou paměti metriky. Metriky paměti jsou součástí rozšířené metriky. Musíte provést některé další kroky pro rozšířené metriky povolit. Následující informace vás provede povolením.
+V předchozím příkladu omezenou sadu standardní metriky jsou k dispozici pro hostitele, ale nejsou paměti metriky. Metriky paměti jsou součástí rozšířené metriky. Musíte provést další kroky k povolení rozšířené metriky. Následující informace vám pomůže povolovat.
 
-## <a name="enable-extended-metrics-in-the-azure-portal"></a>Povolit rozšířené metriky na portálu Azure
+## <a name="enable-extended-metrics-in-the-azure-portal"></a>Povolit rozšířené metriky na webu Azure Portal
 
-Standardní metriky jsou metriky počítače hostitele. _[Hostitel] procento procesoru_ metrika je jedním z příkladů. Existují také základní metriky pro hostované virtuální počítače a také nazývají rozšířené metriky. Příklady rozšířené metriky _procento paměti [hosta]_ a _dostupné paměti [hosta]_.
+Standardní metriky jsou metriky hostitele počítače. _Využití CPU na [hostitele]_ metrika je jedním z příkladů. Existují také základní metriky pro hostované virtuální počítače a také jsou volány rozšířené metriky. Příklady rozšířené metriky _procento paměti [hosta]_ a _dostupné paměti [hosta]_.
 
-Povolení rozšířené metriky je jednoduchá. Pro každý virtuální počítač povolte monitorování na úrovni hosta. Když povolíte monitorování na úrovni hosta, je na virtuálním počítači nainstalován agent nástroje Azure diagnostics. Následující postup je stejný pro virtuální počítače classic a běžné a stejný pro systém Windows a virtuální počítače s Linuxem.
+Povolení rozšířené metriky je jednoduché. Pro každý virtuální počítač povolte monitorování na úrovni hosta. Když povolíte monitorování na úrovni hosta, instalaci agenta Azure diagnostics na virtuálním počítači. Následující postup je stejný pro virtuální počítače classic a běžné a stejný pro Windows a virtuální počítače s Linuxem.
 
-### <a name="enable-guest-level-monitoring-on-existing-vms"></a>Povolit monitorování na úrovni hosta na existující virtuální počítače
+Uvědomte si, že Azure a Linuxu monitorování na úrovni hosta se vyžaduje účet úložiště. Když povolíte monitorování na úrovni hosta, pokud se rozhodnete nemáte existující účet úložiště, pak je jedna vytvořená za vás.
 
-1. V **virtuální počítače**, zobrazení seznamu virtuálních počítačů a potom vyberte virtuální počítač.
-2. V části **monitorování**, vyberte **metriky**.
-3. Klikněte na tlačítko **nastavení pro diagnostiku**.
-4. Na stránce nastavení diagnostiky, klikněte na tlačítko **povolit sledování na úrovni hosta**. Virtuální počítače s Linuxem vyžadují stávající účet úložiště. Pokud nemáte účet úložiště pro virtuální počítač s Windows, jeden vytvoří se pro vás.  
+### <a name="enable-guest-level-monitoring-on-existing-vms"></a>Povolit monitorování na úrovni hosta na stávajících virtuálních počítačů
+
+1. V **virtuálních počítačů**, zobrazit seznam vašich virtuálních počítačů a potom vyberte virtuální počítač.
+2. V části **monitorování**vyberte **metriky**.
+3. Klikněte na tlačítko **nastavení diagnostiky**.
+4. Na stránce nastavení diagnostiky, klikněte na tlačítko **povolit monitorování na úrovni hosta**.  
     ![Povolit monitorování na úrovni hosta](./media/azure-vm-extended-metrics/enable-guest-monitoring.png)
-5. Po několika minutách instalaci agenta Azure diagnostics ve virtuálním počítači. Aktualizujte stránku a metriky hosta se aktualizuje seznam dostupné metriky.  
+5. Po několika minutách se nainstaluje agent diagnostiky Azure na virtuálním počítači. Aktualizujte stránku a metrik hosta se aktualizuje seznam dostupných metrik.  
     ![Rozšířené metriky](./media/azure-vm-extended-metrics/extended-metrics.png)
 
 ### <a name="enable-guest-level-monitoring-on-new-vms"></a>Povolit monitorování na úrovni hosta na nové virtuální počítače
 
-Při vytváření nové virtuální počítače, ujistěte se, že jste vybrali **hostovaného operačního systému diagnostiky**. Virtuální počítače s Linuxem vyžadují stávající účet úložiště. Pokud nemáte účet úložiště pro virtuální počítač s Windows, jeden vytvoří se pro vás.
+Při vytváření nové virtuální počítače, ujistěte se, že vyberete **Diagnostika hostovaného operačního systému**.
 
 ![Povolte diagnostiku hostovaného operačního systému](./media/azure-vm-extended-metrics/new-enable-diag.png)
 
 ## <a name="resource-manager-credentials"></a>Přihlašovací údaje správce prostředků
 
-Jakmile povolíte rozšířené metriky, zajistěte, aby náklady na správu měl přístup k vaší [přihlašovací údaje správce prostředků](activate-subs-accounts.md). Vaše přihlašovací údaje jsou nutná pro náklady na správu ke sběru a zobrazte údaje o výkonu pro virtuální počítače. Používají se také k vytvoření doporučení optimalizace nákladů. Cenově musí alespoň tři dny údaje o výkonu z instance chcete-li zjistit, jestli je kandidátem na downsizing doporučení.
+Po povolení rozšířené metriky, ujistěte se, že Cost Management má přístup k vaší [Resource Manageru přihlašovacími údaji](activate-subs-accounts.md). Vaše přihlašovací údaje jsou požadovány pro Cost Management ke shromáždění a zobrazení dat výkonu pro virtuální počítače. Také slouží k vytvoření doporučení pro optimalizaci nákladů. Služba Cost Management potřebuje aspoň tři dny údaje o výkonu z instance k určení, zda je mezi kandidáty pro doporučení downsizing.
 
-## <a name="enable-vm-metrics-with-a-script"></a>Povolit metriky virtuálního počítače pomocí skriptu
+## <a name="enable-vm-metrics-with-a-script"></a>Zapnutí metrik virtuálního počítače pomocí skriptu
 
-Můžete povolit metriky virtuálního počítače pomocí skriptů prostředí Azure PowerShell. Pokud máte mnoho virtuálních počítačů, které chcete povolit metriky na, můžete použít skript pro automatizaci procesu. Příklad skriptů jsou na webu GitHub na [Azure Diagnostics povolit](https://github.com/Cloudyn/azure-enable-diagnostics).
+Metriky virtuálního počítače pomocí skriptů prostředí Azure PowerShell můžete povolit. Pokud máte mnoho virtuálních počítačů, které chcete k zapnutí metrik na, můžete použít skript k automatizaci procesu. Příklady skriptů najdete na Githubu v [povolení diagnostiky Azure](https://github.com/Cloudyn/azure-enable-diagnostics).
 
-## <a name="view-azure-performance-metrics"></a>Metriky výkonu Azure zobrazení
+## <a name="view-azure-performance-metrics"></a>Zobrazit metriku výkonu Azure
 
-Chcete-li zobrazit metriky výkonu na vaší instancí Azure na portálu Cloudyn, přejděte na **prostředky** > **výpočetní** > **instanci Průzkumníka**. V seznamu instancí virtuálních počítačů rozbalte instance a poté rozbalte prostředků k zobrazení podrobností.
+Pokud chcete zobrazit metriky výkonu na vaše instance Azure na portálu Cloudyn, přejděte na **prostředky** > **Compute** > **instanci Průzkumníka**. V seznamu instancí virtuálních počítačů rozbalte instanci a potom rozbalte prostředků k zobrazení podrobností.
 
-![Instance Explorer](./media/azure-vm-extended-metrics/instance-explorer.png)
+![Instance Průzkumníka](./media/azure-vm-extended-metrics/instance-explorer.png)
 
 ## <a name="next-steps"></a>Další postup
 
-- Pokud jste ještě nepovolili přístup pomocí rozhraní API Správce prostředků Azure pro vaše účty, pokračujte [aktivovat Azure předplatných a účtů](activate-subs-accounts.md)
+- Pokud jste ještě nepovolili přístup přes rozhraní API Azure Resource Manageru pro vaše účty, pokračujte [účtů a předplatných Azure aktivovat](activate-subs-accounts.md).

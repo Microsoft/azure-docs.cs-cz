@@ -1,109 +1,109 @@
 ---
-title: Podporované zdroje dat, které jsou k dispozici přípravy dat Azure Machine Learning | Microsoft Docs
-description: Tento dokument obsahuje úplný seznam podporovaných zdrojů dat k dispozici pro přípravu dat Azure Machine Learning.
+title: Podporované zdroje dat, které jsou k dispozici s přípravou dat Azure Machine Learning | Dokumentace Microsoftu
+description: Tento dokument obsahuje úplný seznam podporovaných zdrojů dat dostupných pro přípravu dat Azure Machine Learning.
 services: machine-learning
 author: euangMS
 ms.author: euang
 manager: lanceo
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.custom: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: 1a6ef0b928bd9a2d21db68a0d5476357b1d32dd1
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 88ed4fa43e5724cfe1d6f1555db947d77045cd2e
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831543"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35644534"
 ---
-# <a name="supported-data-sources-for-azure-machine-learning-data-preparation"></a>Podporované zdroje dat pro přípravu Azure Machine Learning dat. 
-Tento článek popisuje aktuálně podporovaných zdrojů dat pro přípravu dat Azure Machine Learning.
+# <a name="supported-data-sources-for-azure-machine-learning-data-preparation"></a>Podporované zdroje dat pro přípravu dat Azure Machine Learning 
+Tento článek popisuje, jak aktuálně podporovaných zdrojů dat pro přípravu dat Azure Machine Learning.
 
-Takto vypadají podporovaných zdrojů dat pro tuto verzi.
+Podporovaných zdrojů dat pro tuto verzi jsou následující.
 
 ## <a name="types"></a>Typy 
 
 ### <a name="sql-server"></a>SQL Server
-Čtení z místní systém SQL server nebo Azure SQL database.
+Čtení z místního SQL serveru nebo databáze Azure SQL.
 
 #### <a name="options"></a>Možnosti
 - Adresa serveru
-- Důvěřovat serveru (sudé při certifikát na serveru není platný. Používejte opatrně)
+- Důvěřovat serveru (sudý při certifikát na serveru není platný. Používejte opatrně)
 - Typ ověřování (Windows, Server)
 - Uživatelské jméno
 - Heslo
 - Pro připojení k databázi
-- Dotaz SQL
+- Příkaz jazyka SQL
 
 #### <a name="notes"></a>Poznámky
-- SQL variant sloupce nejsou podporovány.
-- Sloupec čas je převést na typ datetime připojením čas z databáze k datu pod hodnotou 1970/1/1
-- Při spuštění v clusteru Spark, všechna data související s sloupců (date, datetime, datetime2, datetimeoffset) vyhodnotí nesprávné hodnoty dat před 1583
-- Hodnoty ve sloupcích decimal mohou ztratit přesnost z důvodu převodu do desítkové soustavy
+- Sloupce variantu jazyka SQL nejsou podporovány.
+- Sloupec čas je převeden na datum a čas přidáním čas z databáze datum 1970/1/1
+- Při spuštění v clusteru Spark, všechna data související s sloupce (datum, datum a čas, datetime2, datetimeoffset) vyhodnotí nesprávné hodnoty dat před 1583
+- Hodnoty ve sloupcích decimal, může dojít ke ztrátě přesnosti z důvodu převodu na desítkové
 
-### <a name="directory-vs-file"></a>Directory oproti souboru
-Zvolte jeden soubor a přečtěte si ho do přípravy data. Typ souboru je analyzována určit výchozí parametry pro připojení k souboru na další obrazovce.
+### <a name="directory-vs-file"></a>Adresář a soubor
+Zvolte jeden soubor a načíst do přípravy dat. Typ souboru je analyzovat určit výchozí parametry pro připojení k souboru na další obrazovce.
 
-Vyberte adresář nebo sadu souborů v adresáři (Nástroje pro výběr souborů je vícenásobného výběru.). S buď přístupem soubory se čtou v jako jednoho datového toku a jsou připojeny k sobě navzájem hlavičky vynechají v případě potřeby.
+Vyberte adresář nebo sadu souborů v adresáři (Výběr souboru je vícenásobného výběru). Kterýkoliv přístup soubory jsou čteny jako jednoho datového toku a jsou připojeny k sobě navzájem, záhlaví, v případě potřeby vynechají.
 
-Typy podporované souboru jsou:
-- S oddělovači (.csv tsv, .txt, atd.)
+Podporované typy souborů jsou:
+- S oddělovači (CSV, TSV, txt, atd.)
 - Pevná šířka
 - Prostý text
 - Soubor JSON
 
 ### <a name="csv-file"></a>Soubor CSV
-Načtení souboru čárkami oddělených hodnot úložiště.
+Čtení souboru čárkami oddělených hodnot z úložiště.
 
 #### <a name="options"></a>Možnosti
 - Oddělovač
 - Poznámka
 - Záhlaví
-- Decimal – symbol
-- Kódování souborů
-- Řádky tak, aby přeskočil
+- Symbol desetinné čárky
+- Kódování souboru
+- Chcete-li přeskočit řádky
 
 ### <a name="tsv-file"></a>Soubor TSV
-Načtení souboru karta oddělených hodnot úložiště.
+Čtení souboru kartu oddělených hodnot z úložiště.
 
 #### <a name="options"></a>Možnosti
 - Poznámka
 - Záhlaví
-- Kódování souborů
-- Řádky tak, aby přeskočil
+- Kódování souboru
+- Chcete-li přeskočit řádky
 
-### <a name="excel-xlsxlsx"></a>Aplikace Excel (.xls/.xlsx)
-Přečtěte si jeden listu aplikace Excel soubor současně zadáním názvu list nebo číslo.
+### <a name="excel-xlsxlsx"></a>Excel (.xls/.xlsx)
+Přečtěte si Excelový list jeden soubor současně tak, že zadáte název tabulky nebo číslo.
 
 #### <a name="options"></a>Možnosti
 - Název listu nebo číslo
 - Záhlaví
-- Řádky tak, aby přeskočil
+- Chcete-li přeskočit řádky
 
 ### <a name="json-file"></a>Soubor JSON
-Načtení souboru JSON úložiště. Soubor je "průmětu" na čtení.
+Čtení souboru JSON z úložiště. Soubor je "sloučí" pro čtení.
 
 #### <a name="options"></a>Možnosti
 - Žádný
 
 ### <a name="parquet"></a>Parquet
-Číst Parquet datové sady, buď jeden soubor nebo složku.
+Čtení Parquet datové sady, buď jeden soubor nebo složku.
 
-Parquet jako formátu můžou mít různé formy v úložišti. Pro menší sady dat se někdy používá .parquet jeden soubor. Různé knihovny Python podporovat čtení nebo zápis do jednoho .parquet souborů. V současné době přípravy dat Azure Machine Learning spoléhá na knihovně PyArrow Python pro čtení Parquet během místní interaktivní používání. Podporuje jeden .parquet soubory (Pokud napsané jako a nikoli jako součást větší datové sady), a také Parquet datových sad.
+Parquet jako formátu můžou mít různé formy v úložišti. Pro menší sady dat se někdy používá .parquet jeden soubor. Různé knihovny jazyka Python podporují čtení nebo zápis do jednoho .parquet souborů. Pro tuto chvíli přípravu dat Azure Machine Learning spoléhá na knihovny PyArrow Python pro čtení Parquet během interaktivní místní použití. Podporuje jeden .parquet souborů (pokud byly napsány jako takové, nikoli jako součást větších datových sad), a také Parquet datových sad.
 
-Datové sady Parquet je kolekce více než jeden soubor .parquet, z nichž každý představuje menší oddílu větší datové sady. Datové sady jsou obvykle obsažené ve složce a jsou výchozí formát výstupu parquet pro platformy, jako je například Spark a Hive.
+Parquet datové sady je kolekce více než jeden soubor .parquet, z nichž každý představuje menší oddílu větších datových sad. Datové sady jsou obvykle obsaženy ve složce a jsou výstupní formát parquet výchozí pro platformy, jako je Spark a Hive.
 
 >[!NOTE]
->Při čtení Parquet data, která je ve složce s více soubory .parquet, je nejbezpečnější a vyberte adresář pro čtení a **Parquet datové sady** možnost. Díky tomu PyArrow přečíst celou složku místo jednotlivých souborů. Tím se zajistí podpora pro čtení složitější způsoby Parquet ukládání na disku, jako je například vytváření oddílů složky.
+>Při čtení Parquet data, která je ve složce s více soubory .parquet, je nejbezpečnější a vyberte adresář pro čtení a **Parquet datovou sadu** možnost. Díky tomu PyArrow čtení celé složky namísto jednotlivých souborů. Tím se zajistí podporu pro složitější způsoby ukládání na disku, jako je například složka dělení Parquet pro čtení.
 
-Provádění Škálováním na více systémů využívá Spark Parquet čtení možnosti a podporuje jeden soubory, jakož i složek, podobně jako místní interaktivní použití.
+Horizontální navýšení kapacity provádění spoléhá na Spark Parquet čtení funkcí a podporují jednotlivé soubory i složky, podobně jako interaktivní místní použití.
 
 #### <a name="options"></a>Možnosti
-- Parquet datové sady. Tato možnost určuje, zda přípravu dat Azure Machine Learning rozšíří daný adresář a se pokusí přečíst každý soubor jednotlivě (nezaškrtnuté režim), nebo jestli zpracovává adresáři jako celé sady dat (vybraný režim). S vybraný režim PyArrow vybere nejlepší způsob, jak interpretovat soubory.
+- Parquet datové sady. Tato možnost určuje, zda přípravu dat Azure Machine Learning rozbalí daný adresář a se pokusí přečíst každý soubor samostatně (nevybrané režimu), nebo jestli ho považuje za adresáři celé datové sady (vybraný režim). Vybraný režim PyArrow vybere nejlepší způsob, jak interpretovat soubory.
 
 
 ## <a name="locations"></a>Umístění
@@ -111,8 +111,8 @@ Provádění Škálováním na více systémů využívá Spark Parquet čtení 
 Místní pevný disk nebo namapované síťové umístění úložiště.
 
 ### <a name="sql-server"></a>SQL Server
-Místní SQL Server, nebo Azure SQL database.
+Místního SQL serveru, nebo Azure SQL database.
 
 ### <a name="azure-blob-storage"></a>Azure Blob Storage
-Objekt Blob úložiště Azure, který vyžaduje předplatné Azure.
+Azure Blob storage, který vyžaduje předplatné Azure.
 

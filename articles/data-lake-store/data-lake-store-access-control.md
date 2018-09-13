@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 114413d65bb8b1d70bad21badb9508c5f942845c
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 72bc0408ed1eba2d959d246a55677ee9964ef106
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391109"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44718810"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Řízení přístupu v Azure Data Lake Storage Gen1
 
@@ -69,10 +69,10 @@ Zápis **RWX** se používá k označení **Číst + Zapisovat + Provést**. Pou
 
 | Číselný tvar | Krátký tvar |      Význam     |
 |--------------|------------|------------------------|
-| 7            | RWX        | Číst + Zapisovat + Provést |
-| 5            | R-X        | Číst + Provést         |
-| 4            | R--        | Čtení                   |
-| 0            | ---        | Žádná oprávnění         |
+| 7            | `RWX`        | Číst + Zapisovat + Provést |
+| 5            | `R-X`        | Číst + Provést         |
+| 4            | `R--`        | Čtení                   |
+| 0            | `---`        | Žádná oprávnění         |
 
 
 ### <a name="permissions-do-not-inherit"></a>Oprávnění se nedědí
@@ -85,13 +85,13 @@ Níže jsou uvedeny některé obvyklé scénáře, které vám pomohou pochopit,
 
 |    Operace             |    /    | Seattle / | Portland / | Data.txt     |
 |--------------------------|---------|----------|-----------|--------------|
-| Přečtěte si Data.txt            |   --X   |   --X    |  --X      | R--          |
-| Připojit k Data.txt       |   --X   |   --X    |  --X      | RW-          |
-| Odstranit Data.txt          |   --X   |   --X    |  -WX      | ---          |
-| Vytvoření Data.txt          |   --X   |   --X    |  -WX      | ---          |
-| Seznam /                   |   R-X   |   ---    |  ---      | ---          |
-| Seznam /Seattle/           |   --X   |   R-X    |  ---      | ---          |
-| Seznam /Seattle/Portland /  |   --X   |   --X    |  R-X      | ---          |
+| Přečtěte si Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
+| Připojit k Data.txt       |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
+| Odstranit Data.txt          |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| Vytvoření Data.txt          |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| Seznam /                   |   `R-X`   |   `---`    |  `---`      | `---`          |
+| Seznam /Seattle/           |   `--X`   |   `R-X`    |  `---`      | `---`          |
+| Seznam /Seattle/Portland /  |   `--X`   |   `--X`    |  `R-X`      | `---`          |
 
 
 > [!NOTE]
@@ -99,25 +99,6 @@ Níže jsou uvedeny některé obvyklé scénáře, které vám pomohou pochopit,
 >
 >
 
-### <a name="permissions-needed-to-enumerate-a-folder"></a>Oprávnění k výpisu obsahu složky
-
-![Data Lake Storage Gen1 seznamy řízení přístupu](./media/data-lake-store-access-control/data-lake-store-acls-6.png)
-
-* K výpisu obsahu složky volající potřebuje oprávnění **Číst + Provést**.
-* Pro všechny složky předchůdce volající potřebuje oprávnění **Provést**.
-
-
-Z **Průzkumník dat** klikněte v okně účtu Data Lake Storage Gen1 **přístup** zobrazí seznamy ACL pro soubor nebo složku v Průzkumníku dat. Klikněte na tlačítko **přístup** zobrazí seznamy ACL pro **katalogu** ve složce **mydatastorage** účtu.
-
-![Data Lake Storage Gen1 seznamy řízení přístupu](./media/data-lake-store-access-control/data-lake-store-show-acls-1.png)
-
-V horní části tohoto okna se zobrazí oprávnění vlastníka. (Na snímku obrazovky je vlastnícím uživatelem Bob.) Pod tím se zobrazí přiřazené přístupové seznamy ACL. 
-
-![Data Lake Storage Gen1 seznamy řízení přístupu](./media/data-lake-store-access-control/data-lake-store-show-acls-simple-view.png)
-
-Kliknutím na **Rozšířené zobrazení** přejdete k podrobnějšímu zobrazení, kde jsou uvedené výchozí seznamy ACL, maska a popis superuživatelů.  Toto okno nabízí také možnost rekurzivního nastavení přístupových a výchozích seznamů ACL pro podřízené soubory a složky na základě oprávnění aktuální složky.
-
-![Data Lake Storage Gen1 seznamy řízení přístupu](./media/data-lake-store-access-control/data-lake-store-show-acls-advance-view.png)
 
 ## <a name="the-super-user"></a>Superuživatel
 
@@ -127,13 +108,8 @@ Superuživatel má většina oprávnění ze všech uživatelů v účtu Data La
 * Může měnit oprávnění pro kterýkoli soubor nebo složku.
 * Může měnit vlastnícího uživatele nebo vlastnící skupinu pro kterýkoli soubor nebo složku.
 
-V Azure má účet Data Lake Storage Gen1 několik rolí Azure, včetně:
+Všechny uživatele, kteří jsou součástí **vlastníky** roli pro účet Data Lake Storage Gen1 jsou automaticky superuživatel.
 
-* Vlastníci
-* Přispěvatelé
-* Čtenáři
-
-Všichni uživatelé **vlastníky** role pro účet Data Lake Storage Gen1 je automaticky superuživateli pro tento účet. Další informace najdete v tématu [Řízení přístupu na základě role](../role-based-access-control/role-assignments-portal.md).
 Pokud chcete vytvořit vlastní roli řízení přístupu na základě role (RBAC) s oprávněními superuživatele, musí zahrnovat následující oprávnění:
 - Microsoft.DataLakeStore/accounts/Superuser/action
 - Microsoft.Authorization/roleAssignments/write
@@ -153,11 +129,16 @@ Uživatel, který položku vytvořil, je automaticky jejím vlastníkem. Vlastn�
 
 ## <a name="the-owning-group"></a>Vlastnící skupina
 
+**Na pozadí**
+
 V seznamech ACL POSIX je ke každému uživateli přiřazena „primární skupina“. Uživatel „alice“ může například patřit do skupiny „finance“. Alice může patřit do více skupin, ale jedna skupina je vždy určena jako její primární skupina. Když Alice vytvoří soubor v rámci specifikace POSIX, bude jako vlastnící skupina tohoto souboru nastavena její primární skupina, což je v tomto případě skupina „finance“. Jinak se vlastnící skupina chová podobně jako přiřazená oprávnění pro jiné uživatele nebo skupiny.
 
-Přiřazení vlastnící skupinu pro vytvoření nového souboru nebo složky:
+**Přiřazení vlastnící skupinu pro nový soubor nebo složku**
+
 * **Případ 1:** Kořenová složka „/“. Tato složka se vytvoří při vytvoření účtu Data Lake Storage Gen1. V takovém případě je vlastnící skupina nastavena podle uživatele, který účet vytvořil.
 * **Případ 2** (všechny ostatní případy): Při vytvoření nové položky se vlastnící skupina zkopíruje z nadřazené složky.
+
+**Mění se vlastnící skupina**
 
 Vlastnící skupinu smí změnit:
 * Všichni superuživatelé.
@@ -179,30 +160,32 @@ def access_check( user, desired_perms, path ) :
   # path is the file or folder
   # Note: the "sticky bit" is not illustrated in this algorithm
   
-# Handle super users
-    if (is_superuser(user)) :
-      return True
+# Handle super users.
+  if (is_superuser(user)) :
+    return True
 
-  # Handle the owning user. Note that mask is not used.
-    if (is_owning_user(path, user))
-      perms = get_perms_for_owning_user(path)
-      return ( (desired_perms & perms) == desired_perms )
+  # Handle the owning user. Note that mask IS NOT used.
+  entry = get_acl_entry( path, OWNER )
+  if (user == entry.identity)
+      return ( (desired_perms & e.permissions) == desired_perms )
 
-  # Handle the named user. Note that mask is used.
-  if (user in get_named_users( path )) :
-      perms = get_perms_for_named_user(path, user)
-      mask = get_mask( path )
-      return ( (desired_perms & perms & mask ) == desired_perms)
+  # Handle the named users. Note that mask IS used.
+  entries = get_acl_entries( path, NAMED_USERS )
+  for entry in entries:
+      if (user == entry.identity ) :
+          mask = get_mask( path )
+          return ( (desired_perms & entry.permmissions & mask) == desired_perms)
 
   # Handle groups (named groups and owning group)
-  belongs_to_groups = [g for g in get_groups(path) if is_member_of(user, g) ]
-  if (len(belongs_to_groups)>0) :
-    group_perms = [get_perms_for_group(path,g) for g in belongs_to_groups]
-    perms = 0
-    for p in group_perms : perms = perms | p # bitwise OR all the perms together
-    mask = get_mask( path )
-    return ( (desired_perms & perms & mask ) == desired_perms)
-
+  member_count = 0
+  perms = 0
+  for g in get_groups(path) :
+    if (user_is_member_of_group(user, g)) :
+      member_count += 1
+      perms | =  get_perms_for_group(path,g)
+  if (member_count>0) :
+    return ((desired_perms & perms & mask ) == desired_perms)
+ 
   # Handle other
   perms = get_perms_for_other(path)
   mask = get_mask( path )
@@ -218,7 +201,7 @@ Jak je znázorněno v algoritmu kontroly přístupu, maska omezuje přístup pro
 >
 >
 
-#### <a name="the-sticky-bit"></a>Bit sticky
+### <a name="the-sticky-bit"></a>Bit sticky
 
 Bit sticky představuje pokročilejší funkci systému souborů POSIX. V kontextu Data Lake Storage Gen1 je pravděpodobné, že bude potřeba sticky bit. Stručně řečeno pokud je sticky bit zapnutá ve složce, podřízené položky můžete pouze smazány nebo přejmenovány vlastnící uživatel podřízenou položku.
 
@@ -239,9 +222,9 @@ Vlastnost umask pro Azure Data Lake Storage Gen1 konstantní hodnoty, který je 
 
 | Vlastnost umask komponenty     | Číselný tvar | Krátký tvar | Význam |
 |---------------------|--------------|------------|---------|
-| umask.owning_user   |    0         |   ---      | Pro vlastnícího uživatele, zkopírujte výchozí seznam ACL nadřazené položky do přístupového seznamu ACL podřízené | 
-| umask.owning_group  |    0         |   ---      | Pro vlastnící skupinu, zkopírujte výchozí seznam ACL nadřazené položky do přístupového seznamu ACL podřízené | 
-| umask.Other         |    7         |   RWX      | Pro ostatní odeberte všechna oprávnění na přístupový seznam ACL podřízeného |
+| umask.owning_user   |    0         |   `---`      | Pro vlastnícího uživatele, zkopírujte výchozí seznam ACL nadřazené položky do přístupového seznamu ACL podřízené | 
+| umask.owning_group  |    0         |   `---`      | Pro vlastnící skupinu, zkopírujte výchozí seznam ACL nadřazené položky do přístupového seznamu ACL podřízené | 
+| umask.Other         |    7         |   `RWX`      | Pro ostatní odeberte všechna oprávnění na přístupový seznam ACL podřízeného |
 
 Hodnota umask efektivně používat Azure Data Lake Storage Gen1 znamená, že hodnota pro ostatní se nikdy nepřenáší ve výchozím nastavení na nové podřízené položky – bez ohledu na to, co znamená výchozí seznam ACL. 
 

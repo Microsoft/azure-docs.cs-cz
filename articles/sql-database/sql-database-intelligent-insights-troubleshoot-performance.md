@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s výkonem databáze SQL Azure s inteligentního Insights | Microsoft Docs
-description: Inteligentní přehledy vám pomůže vyřešit problémy s výkonem databáze SQL Azure.
+title: Řešení problémů s výkonem Azure SQL Database s Intelligent Insights | Dokumentace Microsoftu
+description: Intelligent Insights pomáhá řešit problémy s výkonem Azure SQL Database.
 services: sql-database
 author: danimir
 manager: craigg
@@ -10,324 +10,324 @@ ms.custom: monitor & tune
 ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: v-daljep
-ms.openlocfilehash: bcc33eb7e5050c991c89b7f0998eec3707f62ebb
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 100cb939c0d7297b92af3255382745355aa8d271
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751339"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44722108"
 ---
-# <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Řešení potíží s výkonem databáze SQL Azure s inteligentního statistiky
+# <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Řešení problémů s výkonem Azure SQL Database s Intelligent Insights
 
-Tato stránka obsahuje informace o problémy s výkonem databáze SQL Azure, které jsou zjištěné [inteligentního Statistika](sql-database-intelligent-insights.md) protokolu diagnostiky výkonu databáze. Tento protokol diagnostics lze odeslat buď do [Azure Log Analytics](../log-analytics/log-analytics-azure-sql.md), [Azure Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md), [Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage), nebo řešení třetí strany pro vlastní DevOps výstrahy a vytváření sestav Možnosti.
+Tato stránka poskytuje informace o problémy s výkonem Azure SQL Database, které jsou zjištěné [Intelligent Insights](sql-database-intelligent-insights.md) protokolu diagnostiky výkonu databáze. Je možné odeslat tento diagnostický protokol [Azure Log Analytics](../log-analytics/log-analytics-azure-sql.md), [Azure Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md), [služby Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage), nebo řešení třetí strany pro vlastní vývoj a provoz upozorňování a generování sestav Možnosti.
 
 > [!NOTE]
-> Rychlé SQL Database výkonu řešení potíží informace prostřednictvím inteligentního statistiky, v tématu [doporučené řešení potíží s toku](sql-database-intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow) vývojový diagram v tomto dokumentu.
+> Rychlé SQL Database performance Průvodce odstraňováním potíží prostřednictvím inteligentních přehledů, najdete v článku [doporučené řešení potíží s tok](sql-database-intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow) vývojový diagram v tomto dokumentu.
 >
 
-## <a name="detectable-database-performance-patterns"></a>Vzory výkonu rozpoznat databáze
+## <a name="detectable-database-performance-patterns"></a>Vzory výkonu zjistitelná databáze
 
-Problémy s výkonem inteligentního Insights automaticky rozpozná s databází SQL, na základě dobu čekání provádění dotazu, chyby nebo vypršení časových limitů. Výstupy pak vzory zjištěné výkonu protokolu diagnostiky. Vzory rozpoznat výkonu jsou shrnuty v následující tabulce:
+Problémy s výkonem Intelligent Insights automaticky rozpozná službou SQL Database založené na čekací dobu provádění dotazů, chyb nebo vypršení časových limitů. Potom vypíše vzory zjištěné výkonu do protokolu diagnostiky. Vzory zjistitelná výkonu jsou shrnuty v následující tabulce:
 
-| Vzory rozpoznat výkonu | Podrobnosti o výstupem |
+| Vzory zjistitelná výkonu | Podrobnosti výstupu |
 | :------------------- | ------------------- |
-| [Rozsáhlejší limitů prostředků](sql-database-intelligent-insights-troubleshoot-performance.md#reaching-resource-limits) | Spotřeba dostupné prostředky (Dtu), databáze pracovních vláken nebo relace přihlášení databáze, které jsou k dispozici na monitorovaných předplatné bylo dosaženo omezení, což způsobí, že problémy s výkonem databáze SQL. |
-| [Zvýšení zatížení](sql-database-intelligent-insights-troubleshoot-performance.md#workload-increase) | Zvýšení zatížení nebo průběžné akumulace úlohy v databázi byla zjištěna, což způsobí, že problémy s výkonem databáze SQL. |
-| [Přetížení paměti](sql-database-intelligent-insights-troubleshoot-performance.md#memory-pressure) | Pracovní procesy, které požadovaly uděluje paměti musí čekat přidělení paměti pro statisticky významné množství času. Nebo nahromadění vyšší pracovních procesů, který uděluje paměti požadovaná existuje, jenž ovlivňuje výkon databáze SQL. |
-| [Zamykání](sql-database-intelligent-insights-troubleshoot-performance.md#locking) | Zamykání nadměrné databáze byla zjištěna, jenž ovlivňuje výkon databáze SQL. |
-| [Zvýšená MAXDOP](sql-database-intelligent-insights-troubleshoot-performance.md#increased-maxdop) | Došlo ke změně Maximální stupeň možnost paralelismus (MAXDOP), a ovlivňuje efektivitu provádění dotazu. |
-| [Pagelatch kolizí](sql-database-intelligent-insights-troubleshoot-performance.md#pagelatch-contention) | Byla zjištěna Pagelatch kolizí, jenž ovlivňuje výkon databáze SQL. Více vláken současně pokusí o přístup stejné stránky vyrovnávací paměť dat v paměti. Výsledkem je zvýšená čekací dobu, která ovlivňuje výkon databáze SQL. |
-| [Chybí indexu](sql-database-intelligent-insights-troubleshoot-performance.md#missing-index) | Byl zjištěn problém s chybějící index, jenž ovlivňuje výkon databáze SQL. |
-| [Nový dotaz](sql-database-intelligent-insights-troubleshoot-performance.md#new-query) | Byla zjištěna nový dotaz, který má vliv na celkový výkon databáze SQL. |
-| [Statistiky neobvyklou čekání](sql-database-intelligent-insights-troubleshoot-performance.md#unusual-wait-statistic) | Byly zjištěny dobu čekání neobvyklou databáze, která ovlivňuje výkon databáze SQL. |
-| [Databáze TempDB kolizí](sql-database-intelligent-insights-troubleshoot-performance.md#tempdb-contention) | Více vláken došlo k pokusu o přístup k stejné databáze tempDB prostředky, které způsobuje kritický bod, který ovlivňuje výkon databáze SQL. |
-| [Nedostatek DTU elastického fondu](sql-database-intelligent-insights-troubleshoot-performance.md#elastic-pool-dtu-shortage) | Nedostatek dostupné Edtu ve fondu elastické ovlivňuje výkon databáze SQL. |
-| [Plánování regrese](sql-database-intelligent-insights-troubleshoot-performance.md#plan-regression) | Nový plán nebo změny v zatížení existujícího plánu byla zjištěna, jenž ovlivňuje výkon databáze SQL. |
-| [Změna hodnoty obor databáze konfigurace](sql-database-intelligent-insights-troubleshoot-performance.md#database-scoped-configuration-value-change) | Změna konfigurace v databázi ovlivňuje výkon databáze SQL. |
-| [Pomalé klienta](sql-database-intelligent-insights-troubleshoot-performance.md#slow-client) | Byla zjištěna pomalá aplikace klienta, který nemůže využívat výstup z databáze SQL dostatečně rychlé, jenž ovlivňuje výkon databáze SQL. |
-| [Cenová úroveň přechod na starší verzi](sql-database-intelligent-insights-troubleshoot-performance.md#pricing-tier-downgrade) | Přechod na starší verzi akci s cenovou úroveň zmenšit dostupné prostředky, které ovlivňuje výkon databáze SQL. |
+| [Dosáhnout omezení prostředků](sql-database-intelligent-insights-troubleshoot-performance.md#reaching-resource-limits) | Spotřeby dostupných prostředků (Dtu), database pracovních vláken nebo relace přihlášení databáze k dispozici na monitorovaných předplatné bylo dosaženo omezení, což způsobí, že problémy s výkonem SQL Database. |
+| [Zvýšení zatížení](sql-database-intelligent-insights-troubleshoot-performance.md#workload-increase) | Zvýšení zatížení nebo průběžné akumulací úloh v databázi byla zjištěna, což způsobí, že problémy s výkonem SQL Database. |
+| [Přetížení paměti](sql-database-intelligent-insights-troubleshoot-performance.md#memory-pressure) | Pracovní procesy, které požadované paměti uděluje se muset počkat, než pro přidělení paměti pro statisticky značné množství času. Nebo existuje zvýšené nahromadění dělníky, kteří požadované paměti uděluje, což ovlivňuje výkon databáze SQL. |
+| [Uzamčení](sql-database-intelligent-insights-troubleshoot-performance.md#locking) | Uzamčení nadměrné databáze bylo zjištěno, což má vliv na výkon SQL Database. |
+| [Zvýšená MAXDOP](sql-database-intelligent-insights-troubleshoot-performance.md#increased-maxdop) | Došlo ke změně maximální míru paralelismu možnost (MAXDOP) a ovlivňuje efektivitu provádění dotazu. |
+| [Pagelatch kolizí](sql-database-intelligent-insights-troubleshoot-performance.md#pagelatch-contention) | Byl zjištěn Pagelatch kolize, což má vliv na výkon SQL Database. Více vláken současně pokus o přístup k stránky stejné vyrovnávací paměti dat v paměti. Výsledkem je zvýšená čekací dobu, což ovlivňuje výkon databáze SQL. |
+| [Chybějící Index](sql-database-intelligent-insights-troubleshoot-performance.md#missing-index) | Byl zjištěn problém s chybějící index, který ovlivňuje výkon databáze SQL. |
+| [Nový dotaz](sql-database-intelligent-insights-troubleshoot-performance.md#new-query) | Byl zjištěn nový dotaz, který má vliv na celkový výkon SQL Database. |
+| [Statistiky neobvyklé čekání](sql-database-intelligent-insights-troubleshoot-performance.md#unusual-wait-statistic) | Byly zjištěny neobvyklé databáze čekací dobu, což má vliv na výkon SQL Database. |
+| [Databáze TempDB kolizí](sql-database-intelligent-insights-troubleshoot-performance.md#tempdb-contention) | Několik vláken pokusí o přístup ke stejné prostředky databáze tempDB, které způsobí, že kritický bod, který ovlivňuje výkon databáze SQL. |
+| [Nedostatek DTU elastického fondu](sql-database-intelligent-insights-troubleshoot-performance.md#elastic-pool-dtu-shortage) | Nedostatek dostupné edtu v elastickém fondu ovlivňuje výkon databáze SQL. |
+| [Regrese plán](sql-database-intelligent-insights-troubleshoot-performance.md#plan-regression) | Nový plán nebo ke změně v úloze existující plán byl zjištěn, což má vliv na výkon SQL Database. |
+| [Změna hodnoty konfigurace s rozsahem databáze](sql-database-intelligent-insights-troubleshoot-performance.md#database-scoped-configuration-value-change) | Změna konfigurace v databázi ovlivňuje výkon databáze SQL. |
+| [Pomalé klienta](sql-database-intelligent-insights-troubleshoot-performance.md#slow-client) | Bylo zjištěno pomalé žádosti klienta, který se nedá využívat, výstup z databáze SQL, který je dostatečně rychle, což ovlivňuje výkon databáze SQL. |
+| [Přechod na starší cenová úroveň](sql-database-intelligent-insights-troubleshoot-performance.md#pricing-tier-downgrade) | Cenové akce downgrade úrovně snížení dostupné prostředky, které má vliv na výkon SQL Database. |
 
 > [!TIP]
-> Optimalizace výkonu průběžné databáze SQL, povolit [Azure SQL Database automatické ladění](https://docs.microsoft.com/azure/sql-database/sql-database-automatic-tuning). Tato jedinečná funkce vestavěné inteligentní SQL Database nepřetržitě monitoruje databázi SQL, automaticky vyladí indexy a platí opravy plán spuštění dotazu.
+> Optimalizace výkonu průběžné služby SQL Database, povolte [automatické ladění Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-automatic-tuning). Tato jedinečná funkce SQL Database integrované inteligentní funkce nepřetržitě monitoruje vaši databázi SQL, automaticky vyladí indexy a použije opravy plán provádění dotazu.
 >
 
-Následující část popisuje vzory výše uvedených rozpoznat výkonu podrobněji.
+Následující část popisuje vzory dříve uvedených zjistitelná výkonu podrobněji.
 
-## <a name="reaching-resource-limits"></a>Rozsáhlejší limitů prostředků
+## <a name="reaching-resource-limits"></a>Dosáhnout omezení prostředků
 
 ### <a name="what-is-happening"></a>Co se děje
 
-Tento vzor rozpoznat výkonu kombinuje problémy s výkonem, které se vztahují k dosažení limitů dostupných prostředků, pracovní limity a omezení relací. Po zjištění tento problém s výkonem se pole Popis protokolu diagnostiky označuje, zda problémy s výkonem se prostředků, worker nebo omezení relací.
+Tento model zjistitelná výkonu kombinuje problémy s výkonem, které se vztahují k dosažení omezení dostupných prostředků, pracovních procesů limity a omezení relací. Po zjištění, tento problém s výkonem, pole Popis diagnostický protokol označuje, zda se tyto problémy s výkonem související s prostředků, pracovních procesů nebo omezení relace.
 
-Prostředky v databázi SQL se obvykle označují jako [DTU prostředky](https://docs.microsoft.com/azure/sql-database/sql-database-what-is-a-dtu). Skládají se z kombinaci měření prostředků procesoru a vstupů/výstupů (dat a transakční protokol vstupů/výstupů). Vzor dosažení limitů prostředků se rozpozná, když zjistí snížení výkonu dotazu je způsobena dosažení žádné omezení měřená prostředků.
+Prostředky pro službu SQL Database se obvykle označují jako [DTU prostředky](https://docs.microsoft.com/azure/sql-database/sql-database-what-is-a-dtu). Skládají se z měří prostředky procesoru a vstupů/výstupů (dat a protokolů transakcí vstupně-výstupní operace). Vzor dosažení omezení prostředků je rozpoznán při zjištění snížení výkonu dotazu je způsobeno tím, že žádné limity prostředků měřené dosáhnout.
 
-Prostředek omezení relace označuje počet dostupných souběžných přihlášení k databázi SQL. Tento vzor výkonu se rozpozná, když aplikace, které jsou připojené k databázím SQL bylo dosaženo počtu dostupných souběžných přihlášení k databázi. Pokud se aplikace pokusí použít více relací, než je k dispozici v databázi, je vliv na výkon dotazu.
+Omezení prostředků relace označuje počet souběžných přihlášení k dispozici ke službě SQL database. Tento model výkonu je rozpoznán po aplikace, které jsou připojené k databázím SQL bylo dosaženo počtu dostupných souběžných přihlášení k databázi. Pokud se aplikace pokusí použít další relace, než je k dispozici na databázi, je vliv na výkon dotazů.
 
-Dosažení limity pracovního procesu je konkrétní případ dosažení omezení prostředků, protože nejsou k dispozici pracovníci počítá ve využití DTU. Dosažení limity pracovního procesu na databázi, může způsobit zvýšení doby čekání konkrétní prostředky, což vede k dotazu snížení výkonu.
+Dosažení omezení pracovního procesu je zvláštní případ dosažení omezení prostředků, protože dostupné pracovní procesy nejsou započteny v využití DTU. Dosažení omezení pracovních procesů na databázi může způsobit vzestup specifické podle prostředků čekací dobu, což vede k snížení výkonu dotazů.
 
 ### <a name="troubleshooting"></a>Řešení potíží
 
-Protokol diagnostiky výstupy hodnoty hash dotazu dotazů, které vliv na výkon a procenta spotřeby prostředků. Tyto informace můžete použít jako východisko pro optimalizaci velikosti pracovní zátěže databáze. Konkrétně můžete optimalizovat dotazy, které ovlivňují snížení výkonu přidáním indexy. Nebo můžete optimalizovat aplikace s více i zatížení distribučním. Pokud chcete snížit zatížení nebo provést optimalizace nemůžete, zvažte zvýšení cenové úrovně se vaše předplatné databáze SQL se zvýšit množství dostupných zdrojů.
+Diagnostický protokol vypíše hodnoty hash dotazu dotazů, které měla vliv na výkon a procenta využití prostředků. Tyto informace můžete použít jako výchozí bod pro optimalizaci vašich úloh databáze. Konkrétně můžete optimalizovat dotazy, které ovlivňují snížení výkonu tak, že přidáte indexy. Nebo můžete optimalizovat aplikace s více i zatížení distribuci. Pokud nemůžete můžete snížit zatížení nebo nastavit optimalizace, zvažte zvýšení cenové úrovně předplatného databáze SQL zvýšit objem prostředků, které jsou k dispozici.
 
-Pokud bylo dosaženo omezení relace k dispozici, můžete optimalizovat aplikací snížením počtu přihlášení, provedené v databázi. Pokud nemůžete snížit počet přihlášení z vaší aplikace do databáze, zvažte zvýšení cenová úroveň databáze. Nebo můžete rozdělit a přesuňte databázi do více databází pro více vyvážené distribuce zatížení.
+Pokud bylo dosaženo omezení dostupné relace, můžete optimalizovat aplikací snížením počtu přihlášení, provedené v databázi. Pokud nemůžete snížit počet přihlášení z vaší aplikace k databázi, zvažte zvýšení cenová úroveň databáze. Nebo můžete rozdělit a přesuňte databázi do více databází pro více vyvážené distribuce zatížení.
 
-Další návrhy na řešení omezení relací, najdete v části [řešení problémů s omezení přihlašovacích jmen k databázi SQL maximální](https://blogs.technet.microsoft.com/latam/2015/06/01/how-to-deal-with-the-limits-of-azure-sql-database-maximum-logins/). K dispozici prostředek limity pro vaše předplatné vrstvy naleznete v tématu [limitů prostředků databáze SQL](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits).
+Další návrhy na řešení omezení relací, naleznete v tématu [jak zacházet s omezeními maximální přihlašovací jména SQL Database](https://blogs.technet.microsoft.com/latam/2015/06/01/how-to-deal-with-the-limits-of-azure-sql-database-maximum-logins/). Omezení dostupných prostředků vaší úrovně předplatného najdete v tématu [limity prostředků SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits).
 
 ## <a name="workload-increase"></a>Zvýšení zatížení
 
 ### <a name="what-is-happening"></a>Co se děje
 
-Tento vzor výkonu identifikuje problémy způsobené zvýšení zatížení, nebo v jeho závažnější formuláře pile-up zatížení.
+Tento model výkonu identifikuje problémy způsobené zvýšení zatížení, nebo v podobě závažnější pile-up pracovního vytížení.
 
-Toto zjišťování se provádí pomocí kombinace několik metriky. Základní metrika měří je zjišťování o zvýšení v zatížení ve srovnání s posledních směrného plánu úlohy. Jinou formu zjišťování je založen na měření velký nárůst active pracovních vláken, který dostatečně velký pro vliv na výkon dotazu.
+Tato detekce se provádí prostřednictvím kombinace několik metrik. Základní metrika měří je zjistit zvýšení zatížení ve srovnání se standardními hodnotami posledních úloh. Další způsob, jak detekce vychází měření velký nárůst v aktivní pracovních vláken, který je dostatečně velký, aby vliv na výkon dotazů.
 
-V jeho závažnější formuláře může zatížení nepřetržitě hromadí z důvodu nemohou databáze SQL pro zpracování úlohy. Výsledkem je neustále rostoucí velikost zatížení, která je podmínka pile-up zatížení. Z důvodu tuto podmínku zvětšování čas, který čeká na provedení úlohy. Tato podmínka představuje jeden z nejzávažnějšího problémů s výkonem databáze. Tento problém je zjištěna prostřednictvím monitorování nárůst Počet přerušených pracovních vláken. 
+V podobě přísnější může zatížení průběžně hromadí lokalizovat služby SQL database pro zpracování úlohy. Výsledkem je neustále rostoucím velikost pracovního vytížení, které je podmínka pile-up pracovního vytížení. Kvůli této výjimce roste čas, který čeká na spuštění úlohy. Tento stav představuje jeden z nejzávažnější problémy s výkonem databáze. Tento problém byl zjištěn prostřednictvím monitorování nárůst počtu přerušené pracovní vlákna. 
 
 ### <a name="troubleshooting"></a>Řešení potíží
 
-Protokol diagnostiky výstupy počet dotazů, jejichž spuštění zvýšilo a hodnota hash dotazu dotazu s největší příspěvku zvýšení zatížení. Tyto informace můžete použít jako výchozí bod pro optimalizaci zatížení. Dotaz identifikovat jako největší Přispěvatel se zvýšení zatížení je obzvláště užitečná jako výchozí bod.
+Diagnostický protokol Vypíše počet dotazů, jejichž provedení zvýšil a hodnota hash dotazu dotazu s největší příspěvek na zvýšení zatížení. Tyto informace můžete použít jako výchozí bod pro optimalizaci zatížení. Dotaz identifikována jako největší přispěvateli na zvýšení zatížení je užitečné zejména jako výchozí bod.
 
-Můžete uvažovat o distribuci zatížení více rovnoměrně do databáze. Zvažte optimalizaci dotazu, který ovlivňuje výkon přidáním indexy. Je také může distribuovat vaše zatížení mezi více databází. Pokud tato řešení nejsou možné, zvažte zvýšení cenové úrovně se vaše předplatné databáze SQL se zvýšit množství dostupných zdrojů.
+Můžete zvážit, distribuci zatížení rozkládalo rovnoměrněji do databáze. Uvažujte o optimalizaci dotazu, který ovlivňuje výkon tak, že přidáte indexy. Také může rozdělit vaše zatížení mezi několika databázemi. Pokud tato řešení není možné, zvažte zvýšení cenové úrovně předplatného databáze SQL zvýšit objem prostředků, které jsou k dispozici.
 
 ## <a name="memory-pressure"></a>Přetížení paměti
 
 ### <a name="what-is-happening"></a>Co se děje
 
-Tento vzor výkonu označuje snížení aktuální databáze výkonu způsobené přetížení paměti, nebo v jeho závažnější formuláře podmínku pile-up paměti, porovnání se směrným plánem posledních sedmi dnů výkonu.
+Tento model výkonu indikuje snížení výkonnosti v aktuální databázi výkonu způsobené tlaku na paměť, nebo v podobě závažnější podmínku pile-up paměti ve srovnání s poslední základní úrovně výkonu sedm dní.
 
-Přetížení paměti označuje výkonovou podmínku, ve kterém je velký počet pracovních vláken uděluje žádajícího paměti v databázi SQL. Vyšší objemy způsobí, že podmínce využití velkého množství paměti, ve kterém je databáze SQL nelze efektivně přidělit paměť pro všechny pracovní procesy, které ji. Jedním z nejčastějších důvodů pro tento problém se týká množství paměti k dispozici k databázi SQL na jedné straně. Na druhé straně zvýšení zatížení způsobí zvýšení pracovních vláken a přetížení paměti.
+Přetížení paměti označuje výkonovou podmínku, ve kterém je velký počet pracovních vláken udělí žádost o paměti v databázi SQL. Velký objem způsobí, že podmínku využití velkého množství paměti, ve kterém databáze SQL není schopen efektivně přidělit paměť pro všechny pracovní procesy, které si ji vyžádat. Mezi nejběžnější důvody pro tento problém se týká množství paměti k dispozici pro databáze SQL na jedné straně. Na druhé straně nárůst zatížení způsobí zvýšení v pracovních vláken a přetížení paměti.
 
-Závažnější formu přetížení paměti je podmínka pile-up paměti. Tento stav označuje vyšší počet pracovních vláken žádají uděluje paměti než nejsou k dispozici dotazy uvolňování paměti. Tento počet pracovních vláken, která uděluje žádajícího paměti také může být neustále zvýšení (kumulování) vzhledem k tomu, že databázový stroj SQL se nepodařilo přidělit paměť dostatečně efektivně pro splnění těchto požadavků. Podmínka pile-up paměti představuje jeden z nejzávažnějšího problémů s výkonem databáze.
+Závažnější formu přetížení paměti je podmínka pile-up paměti. Tento stav indikuje, vyšší počet pracovních vláken žádáte uděluje paměti než dotazy uvolnění paměti. Tento počet pracovních vláken, které také udělí žádost o paměti mohou být nepřetržitě zvýšení (kumulování) vzhledem k tomu, že databázový stroj SQL není schopen efektivně dostatečně přidělit paměť pro splnění těchto požadavků. Stav paměti pile-up představuje jeden z nejzávažnější problémy s výkonem databáze.
 
 ### <a name="troubleshooting"></a>Řešení potíží
 
-Protokol diagnostiky výstupy podrobnosti paměti objektu úložiště s fulltextu (to znamená, pracovní vlákno) označen jako nejvyšší důvod pro velké množství paměti a relevantní časová razítka. Tyto informace můžete použít jako základ pro řešení potíží. 
+Diagnostický protokol výstupy podrobnosti úložiště paměti objektu s fulltextu (to znamená, pracovní vlákno) označené jako nejvyšší důvod vysoké využití paměti a relevantní časová razítka. Tyto informace můžete použít jako základ pro řešení potíží. 
 
-Můžete optimalizovat nebo odebrat dotazů souvisejících s úředníci s nejvyšší využití paměti. Můžete také zajistit, že nejsou dotazování na data, která nemáte v úmyslu použít. Doporučeným postupem je vždy nutné použít klauzuli WHERE v dotazech. Kromě toho doporučujeme, abyste vytvořili neclusterované indexy hledat data, nikoli jeho kontrolu.
+Můžete optimalizovat nebo dotazů souvisejících s úředníci s nejvyšším využitím paměti odebrat. Také zajistit, že nejsou dotazování na data, který nemáte v úmyslu použít. Dobrým postupem je vždycky potřeba použít klauzuli WHERE v dotazech. Kromě toho doporučujeme vytvořit neseskupené indexy vyhledávání dat, než ho naskenovat.
 
-Také můžete snížit zatížení optimalizace nebo distribuci přes více databází. Nebo můžete distribuovat vaše zatížení mezi více databází. Pokud tato řešení nejsou možné, zvažte zvýšení cenové úrovně se vaše předplatné databáze SQL se zvýšit množství paměti k dispozici prostředky pro databázi.
+Také můžete snížit zatížení optimalizace nebo distribuci přes více databází. Nebo můžete k distribuci vašich úloh mezi několik databází. Pokud tato řešení není možné, zvažte zvýšení cenové úrovně předplatného databáze SQL zvýšit objem paměťových prostředků dostupných v databázi.
 
-Další tipy pro řešení potíží, najdete v části [paměti uděluje meditačních: Záhadné příjemce paměti systému SQL Server s mnoha názvy](https://blogs.msdn.microsoft.com/sqlmeditation/2013/01/01/memory-meditation-the-mysterious-sql-server-memory-consumer-with-many-names/).
+Další tipy pro řešení potíží, najdete v části [paměti uděluje meditačních: záhadnými a často příjemce paměti systému SQL Server s mnoha názvy](https://blogs.msdn.microsoft.com/sqlmeditation/2013/01/01/memory-meditation-the-mysterious-sql-server-memory-consumer-with-many-names/).
 
-## <a name="locking"></a>Zamykání
+## <a name="locking"></a>Uzamykání
 
 ### <a name="what-is-happening"></a>Co se děje
 
-Tento vzor výkonu označuje snížení aktuální výkon databáze, ve kterém zamykání nadměrné databáze je zjištěn porovnání se směrným plánem posledních sedmi dnů výkonu. 
+Tento model výkonu indikuje snížení aktuální výkonu databáze, ve kterém uzamčení nadměrné databáze je zjištěn ve srovnání s poslední základní úrovně výkonu sedm dní. 
 
-V moderní RDBMS zamykání je nezbytné pro implementaci vícevláknové systémy, ve kterých je maximalizovat výkon spuštěním více souběžných pracovních procesů a paralelní databázové transakce, kde je to možné. Zamykání v tomto kontextu odkazuje na předdefinované přístup mechanismus, ve kterém můžete pouze jediné transakce výhradně přístup řádků, stránky, tabulky a soubory, které jsou vyžadované a není pokouší s jinou transakcí pro prostředky. Pokud transakce, která uzamčena prostředky pro použití se provádí s nimi, je vydání zámku na tyto prostředky, což umožňuje dalších transakcí pro přístup k požadované prostředky. Další informace o uzamčení najdete v tématu [Zamknout v databázovém stroji](https://msdn.microsoft.com/library/ms190615.aspx).
+V moderních relační databázový systém a uzamčení je nezbytné k implementaci s více vlákny systémy, ve kterých se výkon maximalizuje spuštěním více souběžných pracovních procesů a paralelní databázové transakce, kde je to možné. Uzamčení v tomto kontextu označuje integrovaný přístup mechanismus, ve kterém můžete pouze jedné transakce výhradně přístup řádků, stránky, tabulky a soubory, které jsou vyžadovány a ne soutěžit s jinou transakcí pro prostředky. Po dokončení transakce, která uzamčené prostředky pro použití s nimi s těmito prostředky zámek je uvolněn, což umožňuje, aby ostatní transakce pro přístup k požadovaným prostředkům. Další informace o uzamčení, naleznete v tématu [uzamčení v databázovém stroji](https://msdn.microsoft.com/library/ms190615.aspx).
 
-Pokud transakce provedený stroj SQL čekají na delší dobu potřebnou pro přístup k prostředkům uzamčen pro použití, tato doba čekání způsobí, že zpomalení výkonu provádění úlohy. 
+Pokud transakce provedeny modulem SQL čekají na delší dobu, po kterou se má přístup k prostředkům uzamčen pro použití, tato čekací doba způsobí, že zpomalení výkonu provádění úloh. 
 
 ### <a name="troubleshooting"></a>Řešení potíží
 
-Protokol diagnostiky výstupy uzamčení podrobnosti, které můžete použít jako základ pro řešení potíží. Můžete analyzovat hlášené blokování dotazů, to znamená, dotazy, které zavést uzamčení snížení výkonu, a je odebrat. V některých případech může být úspěšné při optimalizaci blokování dotazů.
+Diagnostický protokol výstupy zamykání podrobnosti, které můžete použít jako základ pro řešení potíží. Můžete analyzovat ohlášené blokování dotazů, to znamená, dotazy, které zavádějí zamykání snížení výkonu, a je odebrat. V některých případech může být úspěšné při optimalizaci blokování dotazů.
 
-A co možná nejbezpečnějším způsobem zmírnit problém je potřeba uchovat transakce krátký a redukuje zámku nejnákladnější dotazů. Můžete rozdělit dávce velkých operací do menší operací. Dobrým postupem je redukuje zámku dotaz tak, že dotaz co nejúčinnější. Velké kontroly snížit, protože zvýšit pravděpodobnost, blokování a nepříznivě ovlivnit celkový výkon databáze. Pro zjištěné dotazy, které způsobí zamykání můžete vytvořit nové indexy nebo přidat sloupce do stávajícího indexu, aby se zabránilo prohledávání tabulky. 
+Nejjednodušší a nejbezpečnější způsob, jak tyto problémy zmírnit je Udržovat transakce krátký a aby se snížil objem zámek nejdražší dotazů. Můžete rozdělit velké hromadné operace do menších operací. Aby se snížil objem zámek dotaz tak, že dotaz co nejúčinnější je dobrým zvykem. Snížit velké kontrol, protože zvýšit šanci na zablokování a nepříznivě ovlivnit celkový výkon databáze. Zjištěné dotazů, které způsobují uzamčení můžete vytvořit nový indexy nebo přidání sloupce do stávajícího indexu, aby se zabránilo prohledávání tabulky. 
 
-Další návrhy, najdete v části [řešení blokující problémy, které jsou způsobeny eskalace zámku v systému SQL Server](https://support.microsoft.com/help/323630/how-to-resolve-blocking-problems-that-are-caused-by-lock-escalation-in).
+Další návrhy najdete v části [řešení blokující problémy, které jsou způsobeny uzamknout Eskalace v systému SQL Server](https://support.microsoft.com/help/323630/how-to-resolve-blocking-problems-that-are-caused-by-lock-escalation-in).
 
 ## <a name="increased-maxdop"></a>Zvýšená MAXDOP
 
 ### <a name="what-is-happening"></a>Co se děje
 
-Tento vzor rozpoznat výkonu označuje, že podmínka, ve kterém byl plán spuštění zvolené dotazu paralelizovaná málo větší, než by musela být. Optimalizátor dotazů SQL Database může zlepšit výkon úloh spuštěním dotazy paralelně pro urychlení věcí, kde je to možné. V některých případech tráví paralelní pracovníci zpracování dotazu delší dobu čekání na další k synchronizaci a sloučení výsledky ve srovnání s provedením stejný dotaz s méně paralelní pracovní procesy, nebo i v některých případech ve srovnání s jeden pracovní vlákno.
+Tento model zjistitelná výkonu označuje podmínku, ve kterém se plán provádění zvolený dotaz paralelizován více, než by byla. Optimalizace dotazů SQL Database můžete zvýšit výkon úloh, že zpracování dotazů paralelně věci urychlit, kde je to možné. V některých případech paralelních pracovních zpracování dotazu věnovat víc času čekáním na jiné k synchronizaci a sloučit výsledky porovnání se provádí stejný dotaz s menší počet paralelních pracovních procesů nebo dokonce v některých případech, ve srovnání s jeden pracovní podproces.
 
-Systém expert analyzuje aktuální databáze výkon ve srovnání s obdobím směrného plánu. Určuje, zda dříve spuštěné dotazu běží něco pomalejší, než před protože plán dotazu provádění více paralelizovaná málo než by mělo být.
+Expertní systém analyzuje aktuální výkonu databáze ve srovnání s směrné období. Určuje, zda dříve spuštěný dotaz běží pomaleji, než před vzhledem k tomu, že plán provádění dotazu je paralelizovaná více než by mělo být.
 
-Možnosti konfigurace serveru MAXDOP pro službu SQL Database je použít k řízení, kolik jader procesoru můžete použít ke spuštění stejný dotaz paralelně. 
+Možnosti konfigurace serveru MAXDOP pro službu SQL Database slouží k řízení, kolik Procesorových jader je možné spustit stejný dotaz paralelně. 
 
 ### <a name="troubleshooting"></a>Řešení potíží
 
-Protokol diagnostiky výstupy hodnoty hash dotazu související s dotazy, pro které trvání provádění zvýšit, protože jejich byly paralelizovaná více než by měl mít byla málo. Protokol také výstupy CXP dobu čekání. Tentokrát představuje dobu, kterou jeden organizátora/coordinator vlákno (vlákna 0) čeká jiná vlákna ukončíte před slučování výsledky a průběh. Kromě toho protokol diagnostiky výstupy nízká provádění dotazů čekaly při provádění celkové doby čekání. Tyto informace můžete použít jako základ pro řešení potíží.
+Diagnostický protokol vypíše hodnoty hash dotazu související s dotazy, u kterých zvýšit dobu trvání spuštění, protože byly více než měla být paralelizována. Protokol také výstup CXP čekací dobu. Tentokrát představuje čas, kdy jeden médií/koordinátor vlákno (vlákno 0) čeká na všechna vlákna do dokončení a sloučení výsledků a průběh. Kromě toho diagnostický protokol výstupy, které špatné provádí dotazy čekaly ve spuštění celkovou dobu čekání. Tyto informace můžete použít jako základ pro řešení potíží.
 
-Nejprve optimalizovat nebo zjednodušte složitých dotazů. Dobrým postupem je rozdělit dlouho dávkových úloh na menší části. Kromě toho ověřte, že jste vytvořili indexy, aby se vaše dotazy. Maximální stupně paralelního zpracování (MAXDOP) můžete také ručně vynutit pro dotaz, který byl označení nízký provádění. Tato operace konfigurace pomocí T-SQL najdete v tématu [konfigurovat možnosti konfigurace serveru MAXDOP](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option).
+Nejprve optimalizovat nebo zjednodušení složitých dotazů. Dobrým postupem je rozdělte dlouhé dávkových úloh Hive do menších. Kromě toho Ujistěte se, které jste vytvořili indexů pro podporu vašich dotazů. Maximální volnost paralelismu (MAXDOP) můžete také ručně vynutit pro dotaz, který byla označena jako nízký. Tato operace konfigurace s použitím jazyka T-SQL, najdete v článku [nakonfigurovat možnosti konfigurace serveru MAXDOP](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option).
 
-Nastavení serveru MAXDOP možnost konfigurace na nulu (0) jako výchozí hodnota označuje, že databáze SQL můžete použít všechny dostupné logické jader procesoru učinit paralelní vlákna pro provádění jeden dotaz. Nastavení MAXDOP na jedna (1) označuje, že pouze jeden základní lze použít pro spuštění jeden dotaz. To znamená, že paralelismus vypnutý. V závislosti na základ za případů k dispozici jader s databází a diagnostiku protokolování informací, můžete vyladit MAXDOP možnost počet jader používá pro provádění paralelního dotazu, který může být problém ve vašem případě vyřešit.
+Nastavení serveru MAXDOP možnosti konfigurace na nulu (0), protože výchozí hodnota označuje, že SQL Database můžete použít k dispozici logických jader procesoru paralelizovat vlákna pro provádění pomocí jediného dotazu. Nastavení MAXDOP pro jeden (1) označuje, že pouze jedno jádro lze použít pro provedení jednoho dotazu. V praxi to znamená, že je vypnuto paralelismu. V závislosti na základ za případ dostupných jader na databázi a Diagnostika protokolování informací, možnost MAXDOP počet jader využívaných pro provádění paralelního dotazu, který může být problém ve vašem případě můžete ladit.
 
 ## <a name="pagelatch-contention"></a>Pagelatch kolizí
 
 ### <a name="what-is-happening"></a>Co se děje
 
-Tento vzor výkonu označuje aktuální snížení výkonu zatížení databáze z důvodu pagelatch kolizí porovnání se směrným plánem posledních sedmi dnů zatížení.
+Tento model výkonu indikuje snížení výkonu úlohy aktuální databáze z důvodu kolize pagelatch porovnané se standardními hodnotami v posledních sedm dní úlohy.
 
-Zámky jsou mechanismy zjednodušené synchronizace použít SQL Database k povolení více vláken. Jejich zaručit konzistenci struktury v paměti, které zahrnují indexy, datových stránek a ostatní interní struktury.
+Zámky jsou zjednodušené synchronizace mechanismus používaný službou SQL Database k povolení multithreadingu. Jejich zaručit konzistenci struktury v paměti, které zahrnují indexy, datových stránek a jiných vnitřní struktury.
 
-V databázi SQL nejsou k dispozici mnoho typů zámků. Pro účely jednoduchost vyrovnávací paměti západek slouží k ochraně stránky v paměti ve fondu vyrovnávací paměti. Zámky vstupně-výstupní operace se používají k ochraně stránky ještě nebyla načtena do fondu vyrovnávací paměti. Vždy, když data jsou zapsána do nebo ze stránky ve fondu vyrovnávací paměti pro čtení, je potřeba nejdřív získat západku vyrovnávací paměti pro stránku pracovní vlákno. Vždy, když pracovní vlákno se pokusí přistoupit ke stránce, která už není k dispozici ve fondu vyrovnávací paměti v paměti, Přišla žádost o vstupně-výstupní operace načíst požadované informace z úložiště. Tato posloupnost událostí, které označuje závažnější formu snížení výkonu.
+V databázi SQL jsou k dispozici mnoho typů zámků. V zájmu jednoduchosti vyrovnávací paměti zámky slouží k ochraně stránek v paměti ve fondu vyrovnávací paměti. Zámky vstupně-výstupních operací se používají k ochraně stránky ještě nebyla načtena do fondu vyrovnávacích pamětí. Pokaždé, když se data zapisují do nebo číst ze stránky ve fondu vyrovnávacích pamětí, pracovní vlákno je potřeba nejdřív získat západku vyrovnávací paměti pro stránku. Pokaždé, když pracovní vlákno se pokusí otevřít stránku, která ještě není k dispozici ve fondu vyrovnávacích pamětí, se požadavek vstupně-výstupní operace se načíst požadované informace z úložiště. Tahle posloupnost událostí označuje závažnější formu snížení výkonu.
 
-Kolize na stránce západek nastane, když více vláken současně pokusí získat zámky na stejnou strukturu v paměti, které představuje vyšší čekací dobu pro spuštění dotazu. V případě sporu pagelatch vstupně-výstupní operace, když je přístupná z úložiště, data tato čekací doba je i větší. Výrazně se může ovlivnit výkon pracovního vytížení. Pagelatch kolizí je nejběžnější scénář vláken čekajících na sebe navzájem a neslučitelných pro prostředky na více systémů procesoru.
+Spory na zámků stránky vyvolá se v případě více vláken současně pokusí získat zámky na stejnou strukturu v paměti, která zavádí zvýšenou čekací doba pro provedení dotazu. V případě sporu pagelatch vstupně-výstupních operací, když data musí být přístupné ze služby storage, tato čekací doba je ještě větší. Značně může ovlivnit výkon úloh. Pagelatch kolizí je nejběžnější scénář vláken čekajících na sebe navzájem a soutěží o prostředky ve více procesorů systémech.
 
 ### <a name="troubleshooting"></a>Řešení potíží
 
-Protokol diagnostiky výstupy pagelatch kolizí podrobnosti. Tyto informace můžete použít jako základ pro řešení potíží.
+Diagnostický protokol výstupy pagelatch podrobnosti o sporu. Tyto informace můžete použít jako základ pro řešení potíží.
 
-Protože pagelatch je mechanismus řízení interní databáze SQL, automaticky určují, kdy je použít. Rozhodnutí o aplikaci, včetně návrhu schématu může ovlivnit chování pagelatch z důvodu deterministické chování zámků.
+Protože pagelatch je mechanismus interní kontroly služby SQL Database, automaticky určuje, kdy je můžete použít. Rozhodnutí o aplikaci, včetně návrhu schématu může ovlivnit chování pagelatch kvůli deterministické chování zámky.
 
-Jednu metodu pro zpracování západky kolizí je nahradit počátečních klíč rovnoměrně distribuuje vložení přes rozsah index klíče sekvenční indexu. Obvykle počáteční sloupec v indexu distribuuje úměrně zatížení. Další metodou pro vezměte v úvahu je vytváření oddílů tabulky. Vytvoření hodnotu hash schéma s počítaný sloupec v tabulce rozdělené na oddíly je běžný postup pro minimalizaci nadměrné západky kolizí. V případě sporu pagelatch vstupně-výstupní operace představení indexy pomáhá zmírnit tento problém s výkonem. 
+Jedním ze způsobů pro zpracování západky překročila kolizí je sekvenční index klíč nahradit počátečních klíčem a vloží rovnoměrně distribuuje mezi rozsahem indexu. Obvykle počáteční sloupec v indexu distribuuje zatížení proporcionálně. Jinou metodou vezměte v úvahu je dělení tabulky. Vytvoření hodnoty hash s vypočítaným sloupcem na dělenou tabulku schéma vytváření oddílů je běžný postup pro snížení rizik souvisejících s nadměrné západku kolize. V případě sporu pagelatch vstupně-výstupních operací Představujeme indexy pomáhá ke zmírnění tohoto problému s výkonem. 
 
-Další informace najdete v tématu [Diagnostikujte a vyřešte opatřit kolizí v systému SQL Server](http://download.microsoft.com/download/B/9/E/B9EDF2CD-1DBF-4954-B81E-82522880A2DC/SQLServerLatchContention.pdf) (ke stažení PDF).
+Další informace najdete v tématu [diagnostikovat a vyřešit opatřit kolizí v systému SQL Server](http://download.microsoft.com/download/B/9/E/B9EDF2CD-1DBF-4954-B81E-82522880A2DC/SQLServerLatchContention.pdf) (soubor PDF ke stažení).
 
-## <a name="missing-index"></a>Chybí indexu
+## <a name="missing-index"></a>Chybějící Index
 
 ### <a name="what-is-happening"></a>Co se děje
 
-Tento vzor výkonu označuje aktuální snížení zatížení výkonu databáze, kde je porovnání se směrným plánem posledních sedmi dnů z důvodu chybějící index.
+Tento model výkonu indikuje aktuální databázi pracovního vytížení snížení výkonu ve srovnání s posledních sedmi dnů základní z důvodu chybějící index.
 
-Index se používá k urychlení výkonu dotazů. Nabízí rychlý přístup k datům tabulky snížením počtu stránek datové sady, které je třeba navštívené nebo zkontrolovat.
+Index se používá ke zrychlení výkonu dotazů. Poskytuje rychlý přístup k datům table snížením počtu stránek datové sady, které vyžadují navštívili, nebo zkontrolovat.
 
-Prostřednictvím této detekce, pro které by bylo vytváření indexů výhodné výkonu jsou identifikovány konkrétní dotazy, které způsobit snížení výkonu.
+Prostřednictvím této detekce, pro který by bylo výhodné výkon vytváření indexů se identifikují určité dotazy, které způsobit snížení výkonu.
 
 ### <a name="troubleshooting"></a>Řešení potíží
 
-Protokol diagnostiky výstupy hodnoty hash dotazu pro dotazy, které byly identifikovány do mají vliv na výkon úloh. Můžete vytvořit indexů pro tyto dotazy. Můžete také optimalizovat nebo odebrat tyto dotazy, pokud nejsou požadované. Dobrý výkon postupem se vyhnete dotazování na data, která nepoužíváte.
+Diagnostický protokol vypíše hodnoty hash dotazu pro dotazy, které byly identifikovány ovlivňovat výkon úloh. Můžete sestavit indexy pro tyto dotazy. Můžete také optimalizovat nebo odstranit tyto dotazy, pokud nejsou povinné. Dobrý výkon postupem je Vyhněte se dotazování na data, které nepoužíváte.
 
 > [!TIP]
-> Věděli jste, že vestavěné inteligentní SQL Database může automaticky spravovat přizpůsobené provádění indexů pro vaše databáze?
+> Víte, že integrované inteligentní funkce SQL Database může automaticky spravovat ty indexy databází?
 >
-> Pro optimalizaci průběžné výkonu SQL databáze, doporučujeme, abyste povolili [SQL Database automatické ladění](sql-database-automatic-tuning.md). Tato jedinečná funkce vestavěné inteligentní SQL Database nepřetržitě monitoruje databázi SQL a automaticky vyladí a vytváří indexy pro své databáze.
+> Pro optimalizaci výkonu průběžné služby SQL Database, doporučujeme, abyste povolili [automatické ladění SQL Database](sql-database-automatic-tuning.md). Tato jedinečná funkce SQL Database integrované inteligentní funkce nepřetržitě monitoruje vaši databázi SQL a automaticky vyladí a vytvoří indexy databází.
 >
 
 ## <a name="new-query"></a>Nový dotaz
 
 ### <a name="what-is-happening"></a>Co se děje
 
-Tento vzor výkonu označuje rozpoznání nový dotaz, je špatně provádění a které mají vliv na výkon zatížení porovnání se směrným plánem výkonu 7 dnů.
+Tento model výkonu indikuje, že nový dotaz byla nalezena, která je špatně provádění a by to mělo dopad na výkon úloh porovnané se standardními hodnotami výkonu sedm dní.
 
-Zápis dobré provádění dotazu v některých případech může být náročné úlohy. Další informace o programování dotazů najdete v tématu [dotazy SQL zápis](https://msdn.microsoft.com/library/bb264565.aspx). Za účelem optimalizace výkonu existující dotaz, najdete v části [ladění dotazu](https://msdn.microsoft.com/library/ms176005.aspx).
+Zápis dobré provádění dotazu někdy může být náročné úlohy. Další informace o psaní dotazů najdete v tématu [psaní SQL dotazy](https://msdn.microsoft.com/library/bb264565.aspx). Optimalizujte stávající výkon dotazů, najdete v článku [optimalizace dotazů](https://msdn.microsoft.com/library/ms176005.aspx).
 
 ### <a name="troubleshooting"></a>Řešení potíží
 
-Diagnostika protokolování informací výstupy až dvě nové většinu využívání procesoru dotazů, včetně jejich hodnoty hash dotazu. Protože zjištěné dotaz ovlivňuje výkon úloh, můžete optimalizovat svůj dotaz. Doporučeným postupem je načíst pouze data, která budete muset použít. Doporučujeme také pomocí klauzule WHERE dotazů. Doporučujeme také zjednodušit složitých dotazů a je rozdělit na menší dotazy. Jiné dobrým postupem je analyzují velké batch dotazy na menší dotazy batch. Představení indexů pro nové dotazy je většinou vhodné zmírnit tento problém s výkonem.
+Diagnostika protokolování informací výstupy až dvě nové většina využívání procesoru dotazů, včetně jejich hodnotám hash dotazu. Protože zjištěné dotazu má vliv na výkon úloh, můžete optimalizovat dotaz. Dobrým postupem je načíst pouze data, která je třeba použít. Doporučujeme také používat dotazy s klauzulí WHERE. Doporučujeme také zjednodušení složitých dotazů a jejich rozdělte na menší dotazy. Jiné dobrým postupem je rozdělit velké dávkové dotazy na menší dotazy služby batch. Představujeme indexů pro nové dotazy je obvykle vhodné ke zmírnění tohoto problému s výkonem.
 
 Zvažte použití [Azure SQL Database Query Performance Insight](sql-database-query-performance.md).
 
-## <a name="unusual-wait-statistic"></a>Statistiky neobvyklou čekání
+## <a name="unusual-wait-statistic"></a>Statistiky neobvyklé čekání
 
 ### <a name="what-is-happening"></a>Co se děje
 
-Tento vzor rozpoznat výkonu označuje snížení výkonu úlohy, ve kterém jsou identifikovány nízká provádění dotazů ve srovnání s posledních sedmi dnů zatížení směrného plánu.
+Tento model zjistitelná výkonu indikuje snížení výkonu zatížení ve které jsou označeny špatné provádění dotazů ve srovnání s posledních sedm dní úlohy standardních hodnot.
 
-V takovém případě systému nelze klasifikovat nízká provádění dotazů v ostatních kategorií standardní rozpoznat výkon, ale zjistil, že zodpovědná za regresi čekání statistiky. Proto je považuje za jako dotazy s *neobvyklou čekání statistiky*, kde je zodpovědná za regresi neobvyklou čekání statistiky také vystaven. 
+V takovém případě systém nelze klasifikovat špatné provádění dotazů v ostatních kategoriích zjistitelná výkonu, ale zjistila za regresi čekání statistiky. Proto je vyhodnotí jako dotazů s *neobvyklé čekání statistiky*, kde je zodpovědná za regresi neobvyklé čekání statistiky také přístupný. 
 
 ### <a name="troubleshooting"></a>Řešení potíží
 
-Protokol diagnostiky výstupy informace o neobvyklou čekání podrobnosti času, hodnoty hash dotazu ovlivněných dotazy a dobu čekání.
+Diagnostický protokol Vypíše informace o podrobnosti čekání neobvyklé času, hodnoty hash dotazu ovlivněné dotazy a dobu čekání.
 
-Protože systému nelze úspěšně zjistit příčinu nízká provádění dotazů, diagnostické informace je to dobrý výchozí bod pro ruční řešení potíží. Můžete optimalizovat výkon těchto dotazů. Doporučeným postupem je načíst pouze data, která je nutné použít a zjednodušit a rozdělení složitých dotazů na menší části. 
+Protože systém nemohl úspěšně zjistit původní příčinu špatné provádění dotazů, diagnostických informací je dobrým výchozím bodem pro řešení potíží s ruční. Můžete optimalizovat výkon těchto dotazů. Dobrým postupem je načíst pouze data, která je nutné použít a zjednodušit a rozdělit do menších složitým dotazům. 
 
-Další informace o optimalizaci výkonu dotazů najdete v tématu [ladění dotazu](https://msdn.microsoft.com/library/ms176005.aspx).
+Další informace o optimalizaci výkonu dotazů najdete v tématu [optimalizace dotazů](https://msdn.microsoft.com/library/ms176005.aspx).
 
 ## <a name="tempdb-contention"></a>Databáze TempDB kolizí
 
 ### <a name="what-is-happening"></a>Co se děje
 
-Tento vzor rozpoznat výkonu označuje podmínku výkonu databáze, ve kterém existuje úzkým místem vláken pokusu o přístup k prostředkům databáze tempDB. (Tato podmínka není vstupně-výstupní operace související s). Typický scénář pro tento problém s výkonem je stovky souběžných dotazů, všechny vytvářet, používat a potom zrušit malé databáze tempDB tabulky. Systém zjistil, že počet souběžných dotazů pomocí stejné tabulky databáze tempDB vyšší s dostatečnou statistické násobek ovlivnit výkon databáze ve srovnání s posledních sedmi dnů výkonu směrného plánu.
+Tento model zjistitelná výkonu označuje výkonovou podmínku databáze, ve které existuje kritickým bodem vláken pokusu o přístup k prostředkům databázi tempDB. (Tato podmínka není vstupně-výstupní operace související s). Typický scénář pro tento problém s výkonem se stovky souběžných dotazů, že všechny vytvářet, používat a potom vyřaďte databázi tempDB malé tabulky. Systém zjistil, že zvýšením počtu souběžných dotazů pomocí stejných tabulkách databáze tempDB s dostatečnou statistické význam má být ovlivněn výkon databáze ve srovnání s poslední základní úrovně výkonu sedm dní.
 
 ### <a name="troubleshooting"></a>Řešení potíží
 
-Protokol diagnostiky výstupy databáze tempDB kolizí podrobnosti. Informace můžete použít jako výchozí bod pro řešení potíží. Můžete pokračovat a zmírnit tento druh kolizí zvýšit propustnost celkové zatížení dvě věci: můžete zastavit pomocí dočasných tabulek. Můžete taky použít paměťově optimalizované tabulky. 
+Diagnostický protokol vrátí podrobnosti o sporu databázi tempDB. Informace můžete použít jako výchozí bod pro řešení potíží. Můžete pokračovat zmírnění tento druh kolize a zvýší propustnost celkovou úlohu dvě věci: můžete zastavit pomocí dočasných tabulek. Můžete použít také paměťově optimalizovaných tabulkách. 
 
-Další informace najdete v tématu [Úvod k paměťově optimalizované tabulky](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables). 
+Další informace najdete v tématu [Úvod do paměťově optimalizovaných tabulkách](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables). 
 
 ## <a name="elastic-pool-dtu-shortage"></a>Nedostatek DTU elastického fondu
 
 ### <a name="what-is-happening"></a>Co se děje
 
-Tento vzor rozpoznat výkonu označuje snížení v aktuální zatížení výkonu databáze porovnání se směrným plánem posledních sedmi dnů. Je z důvodu nedostatku dostupné Dtu ve fondu elastické vašeho předplatného. 
+Tento model zjistitelná výkonu indikuje snížení výkonnosti v porovnání se směrným plánem posledních sedmi dnů výkon úloh aktuální databáze. Je z důvodu nedostatku dostupné Dtu v elastickém fondu vašeho předplatného. 
 
-Prostředky v databázi SQL se obvykle označují jako [DTU prostředky](sql-database-service-tiers.md#what-are-database-transaction-units-dtus), které zahrnují kombinaci měření prostředků procesoru a vstupů/výstupů (dat a transakční protokol vstupů/výstupů). [Prostředky Azure elastický fond](sql-database-elastic-pool.md) slouží jako fond prostředky k dispozici eDTU, které jsou sdílené mezi více databází pro účely škálování. Pokud nejsou k dispozici eDTU prostředky ve vašem fondu elastické dostatečně velký pro podporu všechny databáze ve fondu, je zjištěna problém výkonu nedostatku DTU elastického fondu v systému.
+Prostředky pro službu SQL Database se obvykle označují jako [DTU prostředky](sql-database-service-tiers.md#what-are-database-transaction-units-dtus), obsahovat kombinaci měření prostředky procesoru a vstupů/výstupů (dat a protokolů transakcí vstupně-výstupní operace). [Elastický fond Azure prostředky](sql-database-elastic-pool.md) slouží jako fond prostředky k dispozici eDTU, které jsou sdílené mezi několika databázemi pro účely škálování. Když prostředky k dispozici eDTU v elastickém fondu nejsou dostatečně velký pro podporu všech databází ve fondu, systém zjistí problém nedostatek výkonu jednotek DTU elastického fondu.
 
 ### <a name="troubleshooting"></a>Řešení potíží
 
-Protokol diagnostiky výstupy informace o elastického fondu, uvádí nejvyšší spotřeba DTU databáze a nabízí procento DTU fondu používá databázi horní využívání.
+Diagnostický protokol Vypíše informace o elastickém fondu, uvádí hlavní využívání jednotek DTU databáze a poskytuje procento DTU fondu používá databáze využívající nahoru.
 
-Protože je tento stav výkonu související s více databází v elastickém fondu pomocí stejného fondu Edtu, postup řešení potíží se zaměřit na nejvyšší spotřeba DTU databáze. Můžete snížit zatížení databáze využívající horní zahrnující optimalizace využívání horní dotazů na těchto databází. Také můžete zajistit, že nejsou dotazování na data, která nepoužíváte. Další možností je optimalizovat aplikací s použitím nejvyšší spotřeba DTU databáze a rozložit zatížení mezi více databází.
+Vzhledem k tomu, že je tento stav výkonu související s více databází pomocí stejného fondu Edtu v elastickém fondu, postup řešení potíží se zaměřují na hlavní využívání jednotek DTU databáze. Můžete snížit zatížení databáze využívající horní zahrnující optimalizace dotazů horní využívání nad těmito databázemi. Můžete také zajistit, že nejsou dotazování na data, která nepoužíváte. Další možností je k optimalizaci aplikací pomocí hlavní databází využívání jednotek DTU a rozložit zatížení mezi několika databázemi.
 
-Pokud snížení a optimalizace aktuální zatížení v hlavní databáze spotřeba DTU nejsou možné, zvažte zvýšení elastického fondu cenová úroveň. Například zvýšit má za následek zvýšení dostupný počet jednotek Dtu elastického fondu.
+Nejsou-li snížení a optimalizace aktuální pracovní zatížení hlavní databáze využívající DTU je to možné, zvažte zvýšení vašeho elastického fondu cenovou úroveň. Například navýšení počtu výsledků zvýšení dostupný počet jednotek Dtu elastického fondu.
 
-## <a name="plan-regression"></a>Plánování regrese
+## <a name="plan-regression"></a>Regrese plán
 
 ### <a name="what-is-happening"></a>Co se děje
 
-Tento vzor rozpoznat výkonu označuje podmínku, ve kterém SQL Database využívá plán spuštění zhoršené dotazu. Neoptimální plán obvykle způsobí, že provádění vyšší dotazů, což vede k už čekat časy pro aktuální a další dotazy.
+Tento model zjistitelná výkonu označuje podmínku, ve kterém SQL Database využívá plán spuštění neoptimální dotazu. Neoptimální plán obvykle způsobí, že spuštění zvýšenou dotazu, což vede k delšímu čekání aktuální a dalších dotazů.
 
-Databáze SQL určuje plán provádění dotazu s nejmenším náklady na spuštění dotazu. Jako typ změna dotazy a úlohy existující plány jsou někdy už efektivní, nebo možná SQL Database nepodali dobrý hodnocení. Jako řádu oprava plány provádění dotazů se dá ručně vynutit.
+SQL database určuje plán provádění dotazu s nejnižší náklady na provedení dotazu. Jako typ změny dotazy a úlohy někdy stávajících plánů už nejsou efektivní nebo možná SQL Database nevytvořili dobré posouzení. Jak opravy plánům spuštění dotazů se dá ručně vynutit.
 
-Tento vzor rozpoznat výkonu kombinuje tři různé případy regrese plán: nový plán regrese, staré regrese plán a existující změnit plány úloh. Je součástí konkrétní typ regrese plán, který došlo k chybě *podrobnosti* vlastnost v protokolu diagnostiky.
+Tento model zjistitelná výkonu kombinuje tři různé případy regrese plánu: nový plán regrese, původní plán regrese a existující úlohy změnit plány. Je součástí konkrétního typu plánu regrese, ke které došlo *podrobnosti* vlastnost v protokolu diagnostiky.
 
-Novou podmínku regrese plán odkazuje do stavu, ve kterém začíná SQL Database, provádění nový plán spuštění dotazu, který není co nejúčinnější původní plán. Starý stav regrese plán týká stavu při SQL Database přepíná z použití nové, efektivnější plánu k původní plánu, který není co nejúčinnější nový plán. Existující úlohy regrese změnit plány odkazuje do stavu, ve kterém starý a nový plány nepřetržitě alternativní, s rovnováhu mezi více přejdete k provádění nízká plánu.
+Nové podmínky regrese plán odkazuje na stavu, ve kterém SQL Database začne provádět nový plán provádění dotazu, který není tak účinné jako původní plán. Staré regrese podmínku plán týká stavu při přepnutí SQL Database pomocí nového, efektivnější plán na původní plán, který není tak účinné jako nový plán. Existující regrese změnit plány úloh odkazuje na stavu, ve kterém původní a nové plány průběžně alternativní, s zůstatek na účtu, budete více směrem k provádění špatné plánu.
 
-Další informace o plánu regresí najdete v tématu [co je plán Regrese v systému SQL Server?](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2017/06/09/what-is-plan-regression-in-sql-server/). 
+Další informace o plánu regrese, naleznete v tématu [co je plán Regrese v systému SQL Server?](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2017/06/09/what-is-plan-regression-in-sql-server/). 
 
 ### <a name="troubleshooting"></a>Řešení potíží
 
-Protokol diagnostiky výstupy hodnoty hash dotazu, ID kvalitní plán, ID chybný plánu a ID dotazu. Tyto informace můžete použít jako základ pro řešení potíží.
+Diagnostický protokol vypíše hodnoty hash dotazu, ID dobrého plánu, plán chybné ID a dotazu ID. Tyto informace můžete použít jako základ pro řešení potíží.
 
-Můžete analyzovat, které plán je lepší, provádí se pro vaše konkrétní dotazy, které můžete identifikovat s hash dotazu zadat. Po určení, které plán funguje lépe pro své dotazy, můžete je ručně vynutit. 
+Můžete analyzovat, s jakým plánem je lepší pro určité dotazy, které chcete zjistit pomocí dotazu uvedené hodnoty hash. Až zjistíte, s jakým plánem fungovala lépe pro své dotazy, můžete ji ručně vynutit. 
 
-Další informace najdete v tématu [zjistěte, jak brání systému SQL Server plán regresí](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2017/04/25/you-shall-not-regress-how-sql-server-2017-prevents-plan-regressions/).
+Další informace najdete v tématu [zjistěte, jak systém SQL Server zabraňuje regresím plán](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2017/04/25/you-shall-not-regress-how-sql-server-2017-prevents-plan-regressions/).
 
 > [!TIP]
-> Věděli jste, že vestavěné inteligentní SQL Database může automaticky spravovat přizpůsobené provádění provádění plány dotazů pro vaše databáze?
+> Víte, že integrované inteligentní funkce SQL Database může automaticky spravovat ty plánům spuštění dotazů pro vaše databáze?
 >
-> Pro optimalizaci průběžné výkonu SQL databáze, doporučujeme, abyste povolili [SQL Database automatické ladění](sql-database-automatic-tuning.md). Tato jedinečná funkce vestavěné inteligentní databáze SQL nepřetržitě monitoruje databázi SQL a automaticky vyladí a vytvoří přizpůsobené provádění dotazu provádění plány pro své databáze.
+> Pro optimalizaci výkonu průběžné služby SQL Database, doporučujeme, abyste povolili [automatické ladění SQL Database](sql-database-automatic-tuning.md). Tato jedinečná funkce SQL Database integrované inteligentní funkce nepřetržitě monitoruje vaši databázi SQL a automaticky vyladí a vytvoří ty dotazu plánům spuštění vašich databází.
 >
 
-## <a name="database-scoped-configuration-value-change"></a>Změna hodnoty obor databáze konfigurace
+## <a name="database-scoped-configuration-value-change"></a>Změna hodnoty konfigurace s rozsahem databáze
 
 ### <a name="what-is-happening"></a>Co se děje
 
-Tento vzor rozpoznat výkonu označuje podmínku, ve kterém změny v konfiguraci databáze obor způsobí snížení výkonu, který je zjišťován ve srovnání s posledních sedmi dnů databáze chování pracovního vytížení. Tento vzor označuje, že poslední změny provedené v konfiguraci s rozsahem databáze ještě nezačala výhodné výkon databáze.
+Tento model zjistitelná výkonu označuje podmínku, ve kterém změny v konfiguraci s rozsahem databáze způsobí snížení výkonu, se zjištěným ve srovnání s poslední chování úloh databáze sedm dní. Tento model označuje, že nebude nedávné změny konfigurace s rozsahem databáze zdá se být výhodné výkonu vaší databáze.
 
-Změny konfigurace databáze obor lze nastavit pro každé jednotlivé databáze. Tato konfigurace je případ od případu použít k optimalizaci jednotlivých výkon vaší databáze. Pro každé jednotlivé databáze můžete konfigurovat následující možnosti: MAXDOP, LEGACY_CARDINALITY_ESTIMATION, PARAMETER_SNIFFING, QUERY_OPTIMIZER_HOTFIXES a ZRUŠTE PROCEDURE_CACHE.
+Změny konfigurace s rozsahem databáze můžete nastavit pro každé jednotlivé databáze. Tato konfigurace se používá na případ od případu pro optimalizaci individuální výkon vaší databáze. Pro každé jednotlivé databáze můžete konfigurovat následující možnosti: MAXDOP LEGACY_CARDINALITY_ESTIMATION, PARAMETER_SNIFFING, QUERY_OPTIMIZER_HOTFIXES a vymazat PROCEDURE_CACHE.
 
 ### <a name="troubleshooting"></a>Řešení potíží
 
-Diagnostika protokolu výstupy obor databáze konfigurace provedené změny nedávno které způsobit snížení výkonu ve srovnání s předchozí chování zatížení 7 dnů. Můžete se vrátit na předchozí hodnoty změny konfigurace. Také můžete vyladit hodnoty hodnotou dokud nebude dosaženo úroveň požadovaný výkon. Hodnoty konfigurace oboru databáze můžete zkopírovat z podobně jako databáze s dostatečný výkon. Pokud nemůžete řešení výkon, vrátit zpět na výchozí databázi SQL výchozí hodnoty a pokus a systém doladit od tohoto směrného plánu.
+Diagnostika protokolů výstupů s rozsahem databáze konfigurace provedené změny nedávno způsobující snížení výkonu ve srovnání s předchozím chování úloh sedm dní. Můžete vracet změny konfigurace na předchozí hodnoty. Také můžete vyladit hodnoty hodnotou dokud není dosaženo úrovně požadovaného výkonu. Obor databáze konfigurační hodnoty můžete zkopírovat z podobně jako databáze s vyhovující výkon. Pokud nemůžete vyřešit výkon, vrátit k výchozí databázi SQL výchozí hodnoty a pokuste se vyladění od těchto standardních hodnot.
 
-Další informace o optimalizaci obor databáze konfigurace a syntaxe T-SQL na změnu konfigurace najdete v tématu [Alter database obor konfigurace (Transact-SQL)](https://msdn.microsoft.com/library/mt629158.aspx).
+Další informace o optimalizaci s rozsahem databáze konfigurace a syntaxi T-SQL na změnu konfigurace najdete v tématu [Alter database scoped configuration (Transact-SQL)](https://msdn.microsoft.com/library/mt629158.aspx).
 
 ## <a name="slow-client"></a>Pomalé klienta
 
 ### <a name="what-is-happening"></a>Co se děje
 
-Tento vzor rozpoznat výkonu rychlého databáze odesílá výsledky označuje podmínku, ve kterém klienta pomocí databáze SQL nemůže využívat výstup z databáze. Vzhledem k tomu, že databáze SQL není výsledky spuštění dotazů ukládání do vyrovnávací paměti, zpomaluje a čeká, klient využívat výstupy přenášená dotazu než budete pokračovat. Tento stav může také související k síti, která není dostatečně dostatečně rychle přenést výstupy z databáze SQL pro využívání klienta.
+Tento model zjistitelná výkon tak rychle, jak databáze odesílá výsledky označuje podmínku, ve kterém klienta pomocí databáze SQL nelze využít výstup z databáze. Protože databáze SQL se ukládá výsledky prováděnou dotazů ve vyrovnávací paměti, může zpomalit a počká, aby klient mohl využívat výstupy přenášená dotazu než budete pokračovat. K tomuto stavu může také související k síti, která není dostatečně dostatečně rychle přenášet vytvořené jako výstupy z databáze SQL k používání klienta.
 
-Tento stav se vygeneruje pouze v případě, že snížení výkonu se zjistí ve srovnání s posledních sedmi dnů databáze chování pracovního vytížení. Tento problém s výkonem se zjistí, že pouze v případě, že statisticky k výraznému snížení výkonu ve srovnání s předchozí chování výkonu.
+Tento stav se vygeneruje pouze v případě zjištění regrese výkonu ve srovnání s poslední chování úloh databáze sedm dní. Tento problém s výkonem se zjistí, že pouze v případě, že dojde k snížení statisticky významná výkonu ve srovnání s předchozím chování výkonu.
 
 ### <a name="troubleshooting"></a>Řešení potíží
 
-Tento vzor rozpoznat výkonu označuje podmínku, která na straně klienta. Řešení potíží se vyžaduje aplikace na straně klienta nebo klientské sítě. Protokol diagnostiky výstupy dotazu hodnoty hash a dobu čekání, které se zdá, že čekat nejvíc klient využívat během posledních dvou hodin. Tyto informace můžete použít jako základ pro řešení potíží.
+Tento model zjistitelná výkonu označuje podmínku, na straně klienta. Řešení potíží s vyžádáním na aplikace na straně klienta nebo klientské sítě. Diagnostický protokol vypíše hodnoty hash dotazu a dobu čekání, které vypadá to, že se čeká na maximum pro klienta k využití v posledních dvou hodinách. Tyto informace můžete použít jako základ pro řešení potíží.
 
-Můžete optimalizovat výkon aplikace pro používání těchto dotazů. Můžete také zvážit problémy s latencí sítě možná. Protože problémy s výkonem snížení bylo založeno na změny v posledních sedmi dnů výkonu směrného plánu, můžete prozkoumat, jestli nedávné změny stavu aplikace nebo sítě způsobila tato událost regrese výkonu. 
+Můžete optimalizovat výkon vaší aplikace pro používání těchto dotazů. Můžete zvážit také problémy s latencí sítě je to možné. Vzhledem k tomu, že problém snížení výkonu byl založen na změnu v hodnotě poslední základní úrovně výkonu sedm dní, můžete prozkoumat, jestli nedávné změny aplikací nebo sítí podmínku způsobil této události regrese výkonu. 
 
-## <a name="pricing-tier-downgrade"></a>Cenová úroveň přechod na starší verzi
+## <a name="pricing-tier-downgrade"></a>Přechod na starší cenová úroveň
 
 ### <a name="what-is-happening"></a>Co se děje
 
-Tento vzor rozpoznat výkonu označuje podmínku, ve kterém byl snížit cenovou úroveň předplatného databáze SQL. Kvůli nedostatku prostředků pro databáze (Dtu) systém zjistil pokles v aktuální databázi výkon ve srovnání s posledních sedmi dnů směrného plánu.
+Tento model zjistitelná výkonu označuje podmínku, ve kterém byl snížit cenovou úroveň předplatného SQL Database. Z důvodu omezení prostředků pro databáze (Dtu) systém zjistil pokles v aktuální výkonu databáze porovnané se standardními hodnotami v posledních sedm dní.
 
-Kromě toho může být stavu, ve kterém byla cenová úroveň databáze SQL předplatného snížit a poté provedli upgrade na vyšší úroveň během krátké doby. V sekci podrobností protokolu diagnostiky jako cenová úroveň přechod na starší verzi a upgradu je výstupem zjišťování snížení toto dočasný výkonu.
+Kromě toho může být podmínka, ve kterém byl cenovou úroveň předplatného SQL Database downgradovat a poté provedli upgrade na vyšší úroveň během krátké doby. Detekce toto snížení výkonu dočasné je výstupem v sekci podrobností diagnostický protokol jako cen přechod na starší úroveň a upgrade.
 
 ### <a name="troubleshooting"></a>Řešení potíží
 
-Pokud snížit cenovou úroveň a proto Dtu, které jsou k dispozici pro databáze SQL a budete spokojeni s výkon, není nic, které musíte udělat. Pokud snížit cenovou úroveň a budete spokojeni s výkon databáze SQL, snižte zatížení vaší databáze nebo zvažte zvýšení cenovou úroveň na vyšší úrovni.
+Je-li snížit cenovou úroveň a proto Dtu databáze SQL k dispozici, a budete spokojeni s výkonem, nic, co je potřeba. Je-li snížit cenovou úroveň a budete spokojeni se výkon vaší databáze SQL, snížit vaše databázové procesy využívající nebo zvažte zvýšení cenovou úroveň na vyšší úrovni.
 
 ## <a name="recommended-troubleshooting-flow"></a>Doporučené řešení potíží s toku
 
- Postupujte podle vývojový diagram pro doporučený postup pro řešení potíží s výkonem pomocí inteligentního statistiky.
+ Postupujte podle vývojový diagram pro doporučený postup pro řešení problémů s výkonem s použitím inteligentní přehledy.
 
-Statistika inteligentního přístup prostřednictvím portálu Azure tak, že přejdete k analýze SQL Azure. Pokus o příchozí výstrah výkonu a vyberte ji. Zjistit, co se děje na stránce detekce. Sledujte analýza zadaný hlavní příčiny problému, text dotazu, trendy čas dotazu a incidentu vývoj. Pokus o vyřešení problému pomocí inteligentního Statistika doporučení pro zmírnění problémy s výkonem. 
+Intelligent Insights přístup prostřednictvím webu Azure portal tak, že přejdete do služby Azure SQL Analytics. Pokus o příchozí výstrah výkonu a vyberte ji. Zjistit, co se děje na stránce detekcí. Sledujte analýza zadaného původní příčiny problému, text dotazu, dotaz čas trendy a incidentů vývoj. Pokus o vyřešení problému s využitím inteligentních přehledů doporučení pro snížení rizik souvisejících s výkonem. 
 
 [![Vývojový diagram odstraňování potíží](./media/sql-database-intelligent-insights/intelligent-insights-troubleshooting-flowchart.png)](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/intelligent-insight/Troubleshoot%20Azure%20SQL%20Database%20performance%20issues%20using%20Intelligent%20Insight.pdf)
 
 > [!TIP]
-> Vyberte vývojový diagram ke stažení PDF verze.
+> Vyberte vývojový diagram stahovat PDF verzi.
 
-Inteligentní Insights je obvykle nutné jednu hodinu čas k provedení analýza hlavní příčiny problémy s výkonem. Pokud problém nelze najít v inteligentního přehledy a je pro vás velmi důležité, použijte k identifikaci ručně hlavní příčinu problémy s výkonem úložiště dotazů. (Tyto problémy jsou obvykle méně než hodinu stará.) Další informace najdete v tématu [monitorování výkonu pomocí úložiště dotazů](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store).
+Intelligent Insights musí obvykle hodinu čas k provedení analýzy hlavní příčiny potíží s výkonem. Pokud nemůžete najít svůj problém v Intelligent Insights a je pro vás velmi důležité, pomocí Query Store ručně zjistit původní příčinu potíží s výkonem. (Tyto problémy jsou obvykle méně než hodinu stará.) Další informace najdete v tématu [monitorování výkonu pomocí Query Store](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store).
 
 ## <a name="next-steps"></a>Další postup
-- Další informace [inteligentního Statistika](sql-database-intelligent-insights.md) koncepty.
-- Použití [protokolu diagnostiky výkonu inteligentního Statistika Azure SQL Database](sql-database-intelligent-insights-use-diagnostics-log.md).
-- Monitorování [Azure SQL Database pomocí Azure SQL Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql).
-- Naučte se [shromažďovat a využívat data protokolu z vašich prostředků Azure](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md).
+- Přečtěte si [Intelligent Insights](sql-database-intelligent-insights.md) koncepty.
+- Použití [protokolování diagnostiky výkonu Intelligent Insights Azure SQL Database](sql-database-intelligent-insights-use-diagnostics-log.md).
+- Monitorování [Azure SQL Database s využitím Azure SQL Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql).
+- Zjistěte, jak [shromažďovat a zpracovávat data protokolu z vašich prostředků Azure](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md).

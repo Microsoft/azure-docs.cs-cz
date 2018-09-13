@@ -1,6 +1,6 @@
 ---
-title: Povolit rozhraní příkazového řádku Azure pro uživatele Azure zásobníku | Microsoft Docs
-description: Naučte se používat rozhraní příkazového řádku (CLI) a platformy pro správu a nasazení prostředků v Azure zásobníku
+title: Povolení rozhraní příkazového řádku Azure pro uživatele Azure stacku | Dokumentace Microsoftu
+description: Další informace o použití multiplatformního rozhraní příkazového řádku (CLI) ke správě a nasazování prostředků ve službě Azure Stack
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -12,30 +12,30 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/06/2018
+ms.date: 06/11/2018
 ms.author: mabrigg
-ms.openlocfilehash: d0103d211608514848da7d789d32d37d8385f33f
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 09c551ea7196ae20a60a5dd34c1cda889ff5df46
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35247852"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35643273"
 ---
-# <a name="enable-azure-cli-for-azure-stack-users"></a>Povolit rozhraní příkazového řádku Azure pro uživatele Azure zásobníku
+# <a name="enable-azure-cli-for-azure-stack-users"></a>Povolení rozhraní příkazového řádku Azure pro uživatele Azure stacku
 
-*Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
+*Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
-Nejsou k dispozici žádné úlohy specifické pro operátor zásobník Azure, které můžete provádět pomocí rozhraní příkazového řádku Azure. Ale předtím, než mohou uživatelé spravovat prostředky přes rozhraní příkazového řádku, operátory zásobník Azure je nutné zadat s následujícími službami:
+Certifikát kořenové certifikační Autority můžete poskytnout uživatelům Azure stacku, tak, aby se používat rozhraní příkazového řádku Azure na svých počítačích vývojářů. Uživatelé budou potřebovat certifikát ke správě prostředků prostřednictvím rozhraní příkazového řádku.
 
-* **Certifikát kořenové certifikační Autority zásobník Azure** je povinný, pokud uživatelé používají rozhraní příkazového řádku z pracovní stanice mimo Azure zásobníku Development Kit.  
+* **Kořenový certifikát certifikační Autority Azure stacku** je vyžadována, pokud uživatelé používají rozhraní příkazového řádku z pracovní stanice mimo Azure Stack Development Kit.  
 
-* **Koncový bod virtuálního počítače aliasy** poskytuje alias, jako je "UbuntuLTS" nebo "Win2012Datacenter", který odkazuje na image vydavatele, nabídky, SKU a verzi jako jeden parametr při nasazování virtuálních počítačů.  
+* **Koncový bod virtuálního počítače aliasy** poskytuje alias, jako je "UbuntuLTS" nebo "Win2012Datacenter,", který odkazuje vydavatel image, nabídky, SKU a verze jako jediný parametr při nasazování virtuálních počítačů.  
 
 Následující části popisují, jak získat tyto hodnoty.
 
-## <a name="export-the-azure-stack-ca-root-certificate"></a>Exportujte certifikát kořenové certifikační Autority Azure zásobníku
+## <a name="export-the-azure-stack-ca-root-certificate"></a>Exportujte certifikát kořenové certifikační Autority Azure stacku
 
-Certifikát kořenové certifikační Autority zásobník Azure je k dispozici v sadě pro vývoj a na virtuálním počítači klienta, který běží v rámci vývojového prostředí sady. Pokud chcete exportovat certifikát od kořenové zásobník Azure ve formátu PEM, přihlaste se k vaší development kit nebo klientský virtuální počítač a spusťte následující skript:
+Kořenový certifikát certifikační Autority Azure Stack najdete na vývojové sadě a virtuálnímu počítači tenanta, na kterém běží ve vývojovém prostředí sady. Export kořenového certifikátu služby Azure Stack ve formátu PEM, přihlaste se k development kit nebo tomuto virtuálnímu počítači a spusťte následující skript:
 
 ```powershell
 $label = "AzureStackSelfSignedRootCert"
@@ -54,21 +54,21 @@ Write-Host "Converting certificate to PEM format"
 certutil -encode root.cer root.pem
 ```
 
-## <a name="set-up-the-virtual-machine-aliases-endpoint"></a>Nastavit koncový bod aliasy virtuálního počítače
+## <a name="set-up-the-virtual-machine-aliases-endpoint"></a>Nastavení koncového bodu virtuálního počítače aliasy
 
-Azure zásobníku operátory měli nastavit veřejně přístupném koncovém bodu, který je hostitelem alias soubor virtuálního počítače. Alias soubor virtuálního počítače je soubor JSON, který poskytuje běžný název pro bitovou kopii. Tento název je zadán následně při nasazení virtuálního počítače jako parametr příkazového řádku Azure CLI.  
+Operátoři Azure stacku byste nastavit veřejně přístupném koncovém bodu, který je hostitelem soubor alias virtuálního počítače. Soubor alias virtuálního počítače je soubor JSON, který poskytuje běžný název pro image. Tento název je následně zadat při nasazení virtuálního počítače jako parametr příkazového řádku Azure.  
 
-Předtím, než přidáte položku do souboru alias, ujistěte se, že jste [stažení bitové kopie z Azure Marketplace](azure-stack-download-azure-marketplace-item.md), nebo mají [publikovat svoji vlastní image](azure-stack-add-vm-image.md). Pokud publikujete vlastní image, poznamenejte si vydavatele, nabídky, SKU a verzi informace, které jste zadali během publikování. Pokud je image z marketplace, můžete zobrazit informace pomocí ```Get-AzureVMImage``` rutiny.  
+Předtím, než přidáte položku do souboru alias, ujistěte se, že jste [stažení Image z Azure Marketplace](azure-stack-download-azure-marketplace-item.md), nebo mít [publikovat vlastní image](azure-stack-add-vm-image.md). Pokud publikujete vlastní image, poznamenejte si informace vydavatele, nabídky, SKU a verze, které jste zadali během publikování. Pokud se jedná image z marketplace, můžete zobrazit informace s použitím ```Get-AzureVMImage``` rutiny.  
 
-A [ukázkový soubor alias](https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json) mnoho běžných Image aliasy je k dispozici. Který můžete použít jako počáteční bod. Tento soubor v prostoru vaši klienti rozhraní příkazového řádku kde dosáhnout ho uložit. Jedním ze způsobů je hostitelem souboru v účtu úložiště blob a sdílet adresu URL s uživateli:
+A [ukázkový soubor alias](https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json) běžné imagi aliasů je k dispozici. Který můžete použít jako výchozí bod. Hostování tento soubor do místa, kde vaši klienti rozhraní příkazového řádku k němu přistoupit. Jedním ze způsobů je hostitelem souboru v účtu blob storage a sdílejte její adresu URL s uživateli:
 
-1. Stažení [ukázkový soubor](https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json) z Githubu.
-2. Vytvořte nový účet úložiště v Azure zásobníku. Pokud se provádí, vytvořte nový kontejner objektů blob. Nastavit zásady přístupu k "veřejná".  
-3. Nahrání souboru JSON do nového kontejneru. Po dokončení můžete zobrazit adresu URL objektu blob výběrem název objektu blob a potom vyberete adresu URL z vlastnosti objektů blob.
+1. Stáhněte si [ukázkový soubor](https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json) z Githubu.
+2. Vytvořte nový účet úložiště ve službě Azure Stack. Po dokončení, který vytvoříte nový kontejner objektů blob. Nastavit zásady přístupu k "public".  
+3. Nahrajte soubor JSON do nového kontejneru. Po dokončení, který se zobrazí adresa URL objektu blob výběrem názvu objektu blob a pak vyberete adresu URL z vlastností objektu blob.
 
 ## <a name="next-steps"></a>Další postup
 
-- [Nasazení šablon pomocí rozhraní příkazového řádku Azure](azure-stack-deploy-template-command-line.md)
+- [Nasazení šablon pomocí Azure CLI](azure-stack-deploy-template-command-line.md)
 
 - [Připojení přes PowerShell](azure-stack-connect-powershell.md)
 

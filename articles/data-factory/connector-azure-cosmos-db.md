@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/28/2018
+ms.date: 09/11/2018
 ms.author: jingwang
-ms.openlocfilehash: 1afd64fbd7019164f0e1f5c850f2dcd8250cdbfc
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: eb290dffd7bdd86b9776d4f30b6fd09a2a952a46
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39600332"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44720017"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-using-azure-data-factory"></a>Kopírování dat do nebo ze služby Azure Cosmos DB pomocí Azure Data Factory
 
@@ -34,10 +34,14 @@ Můžete kopírovat data ze služby Azure Cosmos DB do jakékoli podporovaného 
 
 Konkrétně tento konektor služby Azure Cosmos DB podporuje:
 
-- Cosmos DB [rozhraní SQL API](https://docs.microsoft.com/azure/cosmos-db/documentdb-introduction).
+- Kopírování dat z/do služby Cosmos DB [rozhraní SQL API](https://docs.microsoft.com/azure/cosmos-db/documentdb-introduction).
+- Zápis do služby Cosmos DB jako vložení nebo UPSERT.
 - Import/export dokumentů JSON jako-je nebo kopírování dat z/do tabulkové datové sady, například SQL databáze, soubory CSV atd. Zkopírujte dokumenty s kódováním – je do a z souborů JSON nebo jiné kolekce Cosmos DB najdete v článku [Import/Export dokumentů JSON](#importexport-json-documents).
 
 Integruje do služby Data Factory [Cosmos DB hromadné prováděcí modul knihovny](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started) zajištění co nejvyššího výkonu zápisu do služby Cosmos DB.
+
+>[!TIP]
+>Sledování [toto video](https://www.youtube.com/watch?v=5-SRNiC_qOU&t=760s) který vás provede kopírování dat z Azure Blob storage do služby Cosmos DB a popisuje důležité informace týkající se obecné ingestovat data do služby Cosmos DB pro optimalizaci výkonu.
 
 ## <a name="getting-started"></a>Začínáme
 

@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: c5621d5e16e31104ee28cc521386a5c0ca290a8b
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 66494ca6bd9b4d8276469e85f4c6bb435ae245f7
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39187695"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44716396"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>Nejčastější dotazy k akcelerátorům řešení IoT
 
@@ -73,10 +73,6 @@ Dvě. V předplatném Azure můžete vytvořit pouze dvě vnitřní transakce ú
 > Microsoft Azure pro DreamSpark je teď označuje jako Microsoft Imagine pro studenty.
 
 V současné době nelze vytvořit akcelerátoru řešení se [Microsoft Azure pro DreamSpark](https://azure.microsoft.com/pricing/member-offers/imagine/) účtu. Však můžete vytvořit [Bezplatný zkušební účet pro Azure](https://azure.microsoft.com/free/) během několika minut, která vám umožní vytvořit akcelerátoru řešení.
-
-### <a name="can-i-create-a-solution-accelerator-if-i-have-cloud-solution-provider-csp-subscription"></a>Můžete vytvořit akcelerátoru řešení, když mám předplatné Cloud Solution Provider (CSP)?
-
-V současné době nelze vytvořit akcelerátoru řešení s předplatným Cloud Solution Provider (CSP). Však můžete vytvořit [Bezplatný zkušební účet pro Azure](https://azure.microsoft.com/free/) během několika minut, která vám umožní vytvořit akcelerátoru řešení.
 
 ### <a name="how-do-i-delete-an-aad-tenant"></a>Jak se odstraním klienta AAD?
 

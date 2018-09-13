@@ -1,37 +1,37 @@
 ---
-title: Známé problémy a Průvodci odstraňováním potíží | Microsoft Docs
-description: Příručka k řešení a seznam známých problémů
+title: Známé problémy a Průvodce odstraňováním potíží | Dokumentace Microsoftu
+description: Seznam známých problémů a tento průvodce vám pomůže vyřešit
 services: machine-learning
 author: svankam
 ms.author: svankam
 manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: studio
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 01/12/2018
-ms.openlocfilehash: 05db4e47e5b2931a101a323a0210c080b87c1c42
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: dc57509475634b6a8038179dbb205533c3ea9d99
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34832937"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35899027"
 ---
-# <a name="azure-machine-learning-workbench---known-issues-and-troubleshooting-guide"></a>Azure Machine Learning Workbench – známé problémy a Průvodce odstraňováním potíží s 
-Tento článek vám pomůže najít a opravy chyb nebo selhání došlo jako součást pomocí aplikace Azure Machine Learning Workbench. 
+# <a name="azure-machine-learning-workbench---known-issues-and-troubleshooting-guide"></a>Azure Machine Learning Workbench – známé problémy a Průvodce odstraňováním potíží 
+Tento článek vám pomůže najít a opravit chyby nebo selhání došlo k jako součást pomocí aplikace Azure Machine Learning Workbench. 
 
-## <a name="find-the-workbench-build-number"></a>Najít Workbench číslo sestavení
-Při komunikaci s tým podpory, je důležité zahrnout číslo sestavení aplikace Workbench. V systému Windows, můžete zjistit číslo sestavení kliknutím na **pomoci** nabídky a zvolte **o Azure ML Workbench**. V systému macOS, můžete kliknutím na **Azure ML Workbench** nabídky a zvolte **o Azure ML Workbench**.
+## <a name="find-the-workbench-build-number"></a>Najít číslo sestavení aplikace Workbench
+Při komunikaci se na tým podpory, je důležité zahrnout číslo sestavení z aplikace Workbench. Na Windows, můžete zjistit číslo buildu kliknutím na **pomáhají** nabídku a zvolte **o aplikaci Azure ML Workbench**. V systému macOS, můžete kliknout na **aplikaci Azure ML Workbench** nabídku a zvolte **o aplikaci Azure ML Workbench**.
 
-## <a name="machine-learning-msdn-forum"></a>Strojového učení fórum MSDN
-Máme fóru MSDN, že můžete účtovat otázky. Produktový tým aktivně sleduje na fóru. Fórum je adresa URL [ https://aka.ms/azureml-forum ](https://aka.ms/azureml-forum). 
+## <a name="machine-learning-msdn-forum"></a>Fórum MSDN služby Machine Learning
+Máme fórum na webu MSDN, můžete posílat otázky. Produktový tým Toto fórum aktivně monitoruje. Fórum je adresa URL [ https://aka.ms/azureml-forum ](https://aka.ms/azureml-forum). 
 
 ## <a name="gather-diagnostics-information"></a>Shromážděte diagnostické informace
-V některých případech může být užitečné, pokud zajistíte diagnostické informace, žádostí o pomoc. Tady je bydlišti soubory protokolů:
+V některých případech může být užitečné, pokud může poskytnout diagnostické informace, pokud s žádostí o pomoc. Zde je, kde live soubory protokolu:
 
-### <a name="installer-log"></a>Instalační program protokolu
-Pokud narazíte na problém během instalace, instalační soubory protokolu jsou tady:
+### <a name="installer-log"></a>Protokol instalačního programu
+Pokud narazíte na problém během instalace, soubory protokolu Instalační služby systému jsou tady:
 
 ```
 # Windows:
@@ -40,10 +40,10 @@ Pokud narazíte na problém během instalace, instalační soubory protokolu jso
 # macOS:
 /tmp/amlinstaller/logs/*
 ```
-Můžete si obsah tyto adresáře zip a odeslat do us pro diagnostiku.
+Můžete si obsah tyto adresáře zip a odeslat společnosti Microsoft pro diagnostiku.
 
-### <a name="workbench-desktop-app-log"></a>Workbench protokolu aplikace na ploše
-Pokud máte potíže s přihlášením nebo pokud dojde k chybě plochy Workbench, najdete tady soubory protokolu:
+### <a name="workbench-desktop-app-log"></a>Protokol desktopovou aplikaci Workbench
+Pokud máte potíže s přihlášením nebo pokud dojde k chybě aplikace Workbench desktop, můžete najít zde soubory protokolu:
 ```
 # Windows
 %APPDATA%\AmlWorkbench
@@ -51,63 +51,63 @@ Pokud máte potíže s přihlášením nebo pokud dojde k chybě plochy Workbenc
 # macOS
 ~/Library/Application Support/AmlWorkbench
 ``` 
-Můžete si obsah tyto adresáře zip a odeslat do us pro diagnostiku.
+Můžete si obsah tyto adresáře zip a odeslat společnosti Microsoft pro diagnostiku.
 
 ### <a name="experiment-execution-log"></a>Protokolu spuštění experimentu
-Pokud konkrétní skript selže při odeslání z plochy aplikace, zkuste odeslat znovu ji prostřednictvím rozhraní příkazového řádku `az ml experiment submit` příkaz. To měl dát celý text chybové zprávy ve formátu JSON a co je nejdůležitější obsahuje **ID operace** hodnotu. Pošlete nám, včetně soubor JSON **ID operace** a jsme může pomoci diagnostikovat. 
+Pokud konkrétní skript selže během odesílání z desktopové aplikace, zkuste se znovu ji spustit pomocí rozhraní příkazového řádku `az ml experiment submit` příkazu. To by vám měl dát celé chybové zprávy ve formátu JSON a obsahuje nejdůležitější ale je **ID operace** hodnotu. Pošlete nám, včetně souboru JSON **ID operace** a můžeme vám pomoct diagnostikovat. 
 
-Pokud konkrétní skript v odesílání úspěšné, ale v provádění selže, by měl vytiskněte **spustit ID** k identifikaci této konkrétní spustit. Můžete zabalit příslušných protokolových souborů pomocí následujícího příkazu:
+Pokud se odeslání určitého skriptu, ale selže při provádění, by měl vytisknout **ID spuštění** k identifikaci tohoto konkrétního spuštění. Můžete zabalit příslušných protokolových souborů pomocí následujícího příkazu:
 
 ```azurecli
 # Create a ZIP file that contains all the diagnostics information
 $ az ml experiment diagnostics -r <run_id> -t <target_name>
 ```
 
-`az ml experiment diagnostics` Příkaz generuje `diagnostics.zip` souboru v kořenové složce projektu. Balíček ZIP obsahuje složku celý projekt ve stavu v době, kdy byla spuštěna, a informace o protokolování. Nezapomeňte odebrat všechny citlivé informace, které nechcete zahrnout před odesláním nám soubor diagnostiky.
+`az ml experiment diagnostics` Příkaz vygeneruje `diagnostics.zip` soubor v kořenové složce projektu. Balíček ZIP obsahuje celé složky projektu ve stavu v době, kdy byla spuštěna, a navíc informace o protokolování. Nezapomeňte odebrat všechny citlivé informace, které nechcete zahrnout soubor před odesláním souboru diagnostiky.
 
 ## <a name="send-us-a-frown-or-a-smile"></a>Pošlete nám zamračeného smajlíka (nebo smajlíka)
 
-Když pracujete v Azure ML Workbench, můžete také odeslat nám zamračeného smajlíka (nebo smajlíka) kliknutím na ikonu emotikona řez v levém dolním rohu okna aplikace. Volitelně můžete zahrnout e-mailovou adresu (takže jsme můžete získat zpět vám) nebo snímek aktuálního stavu. 
+Při práci v aplikaci Azure ML Workbench můžete také nám pošlete zamračeného smajlíka (nebo smajlíka) kliknutím na ikona usměvavého obličeje v levém dolním rohu okna aplikace. Volitelně můžete také zahrnout e-mailovou adresu (takže jsme pro vás získáte zpět) a/nebo snímek aktuálního stavu. 
 
-## <a name="known-service-limits"></a>Omezení známé služby
+## <a name="known-service-limits"></a>Omezení služeb
 - Maximální povolená velikost složky projektu: 25 MB.
     >[!NOTE]
-    >Toto omezení se nevztahuje na `.git`, `docs` a `outputs` složek. Názvy těchto složek rozlišují velká a malá písmena. Pokud pracujete s velkými soubory, podívejte se na [uložením změn a pozornosti s velkými soubory](../desktop-workbench/how-to-read-write-files.md).
+    >Toto omezení neplatí pro `.git`, `docs` a `outputs` složek. Názvy těchto složek rozlišují malá a velká písmena. Pokud pracujete s velkými soubory, podívejte se na [uložením změn a velké soubory se zabývají](../desktop-workbench/how-to-read-write-files.md).
 
-- Maximální povolená doba spuštění experimentu: sedm dní
+- Maximální povolená doba spuštění experimentu: 7 dní
 
-- Maximální velikost souboru sledovaných v `outputs` složka po spuštění: 512 MB
-  - To znamená, že pokud váš skript vytvoří soubor větší než 512 MB ve složce výstupy, pokud nejsou zjištěny existuje. Pokud pracujete s velkými soubory, podívejte se na [uložením změn a pozornosti s velkými soubory](../desktop-workbench/how-to-read-write-files.md).
+- Maximální velikost souboru sledované v `outputs` složka po spuštění: 512 MB
+  - To znamená, že pokud váš skript vytvoří soubor, který je větší než 512 MB ve složce výstupy, nejsou shromažďovány existuje. Pokud pracujete s velkými soubory, podívejte se na [uložením změn a velké soubory se zabývají](../desktop-workbench/how-to-read-write-files.md).
 
-- Klíče SSH nejsou podporovány při připojování ke vzdálenému počítači nebo clusteru Spark přes protokol SSH. Aktuálně je podporována pouze uživatelské jméno a heslo režimu.
+- Klíče SSH nejsou podporovány při připojování ke vzdálenému počítači nebo v clusteru Spark přes protokol SSH. Aktuálně podporuje jenom režim uživatelského jména a hesla.
 
-- Při použití clusteru HDInsight jako výpočetní cíl, musí používat Azure blob jako primárního úložiště. Použití Azure Data Lake Storage není podporováno.
+- Při použití clusteru HDInsight jako cílové výpočetní prostředí, musíte použít Azure blob jako primární úložiště. Použití Azure Data Lake Storage se nepodporuje.
 
-- Text, který clustering transformací nejsou podporovány na macu.
+- Transformace textu clusteringu nejsou podporovány v systému Mac.
 
-- Knihovna RevoScalePy je podporována pouze v systému Windows a Linux (v kontejnerech Docker). Není podporována v systému macOS.
+- RevoScalePy knihovna je podporován pouze ve Windows a Linuxu (v kontejnerech Dockeru). Není podporován v systému macOS.
 
-- Poznámkové bloky Jupyter mají maximální velikost maximálně 5 MB při jejich otevření z aplikace Workbench. Velké poznámkových bloků můžete otevřít z příkazového řádku pomocí poznámkového bloku ml az spuštění příkazu a vyčištění buňky výstupy ke snížení velikosti souboru.
+- Poznámkové bloky Jupyter mají omezení maximální velikosti 5 MB při otevírání v aplikaci Workbench. Velké poznámkové bloky můžete otevřít z příkazového řádku pomocí příkazu az ml Poznámkový blok spustit, a vypíše čistou buňky ke zmenšení velikosti souborů.
 
-## <a name="cant-update-workbench"></a>Nelze aktualizovat Workbench
-Když je k dispozici nové aktualizace, domovskou stránku aplikace Workbench zobrazí zprávu informující o nové aktualizace. Měli byste vidět aktualizaci oznámení "BADGE" zobrazovaných v levém dolním rohu aplikace na ikonu zvonku. Klikněte na oznámení "BADGE" a postupujte podle pokynů Průvodce instalační program pro instalaci aktualizace. 
+## <a name="cant-update-workbench"></a>Nelze aktualizovat aplikaci Workbench
+Když je k dispozici nové aktualizace, domovskou stránku aplikace Workbench zobrazí zpráva o nové aktualizace. Měli byste vidět aktualizaci oznámení "BADGE" povolí, v levém dolním aplikace na ikonu zvonu. Klikněte na Odznáček a postupujte podle pokynů Průvodce instalačního programu pro instalaci aktualizace. 
 
-![aktualizace image](./media/known-issues-and-troubleshooting-guide/update.png)
+![aktualizovat bitovou kopii](./media/known-issues-and-troubleshooting-guide/update.png)
 
-Pokud se nezobrazí oznámení, pokuste se restartovat aplikaci. Pokud stále nevidíte oznámení o aktualizaci po restartování, může být několik příčin.
+Pokud se nezobrazí oznámení, zkuste aplikaci restartovat. Pokud oznámení o aktualizaci po restartu stále nevidíte, může být několik příčin.
 
-### <a name="you-are-launching-workbench-from-a-pinned-shortcut-on-the-task-bar"></a>Jsou spuštění Workbench z definovaného zástupce na hlavním panelu
-Možná jste již nainstalovali aktualizace. Ale vaše připnuté zástupce stále odkazuje na staré bitů na disku. Můžete to ověřit procházením `%localappdata%/AmlWorkbench` složku a zda máte nainstalovanou existuje nejnovější verzi a zkontrolujte vlastnost definovaného zástupce zobrazíte, kde bude ukazovat na. Pokud se ověřit, stačí odstranit staré zástupce, spusťte Workbench z nabídky Start a volitelně vytvořte nový definovaného zástupce odkazující na hlavním panelu úloh.
+### <a name="you-are-launching-workbench-from-a-pinned-shortcut-on-the-task-bar"></a>Aplikace Workbench provádíte spuštění z připojených zástupce na hlavním panelu
+Možná jste již nainstalovali aktualizace. Ale připnuté místní stále odkazuje na starý bity na disku. Můžete to ověřit tak, že přejdete na `%localappdata%/AmlWorkbench` složky a jestli máte existuje nainstalovanou nejnovější verzi a prozkoumejte vlastnost připojené místní zobrazíte, kde bude ukazovat na. Je-li ověřit, jednoduše odebrat starý zástupce, spusťte aplikaci Workbench v nabídce Start a volitelně vytvořit nového zástupce připnuté na hlavním panelu.
 
-### <a name="you-installed-workbench-using-the-install-azure-ml-workbench-link-on-a-windows-dsvm"></a>Jste nainstalovali pomocí odkazu "instalace Azure ML Workbench" v systému Windows DSVM Workbench
-Bohužel neexistuje žádný snadný opravy na tomto. Je nutné provést následující kroky k odebrání nainstalovaná služba bits a stáhnout nejnovější verzi instalačního programu nástroje Workbench čerstvou – instalace: 
-   - Odeberte tuto složku `C:\Users\<Username>\AppData\Local\amlworkbench`
-   - odebrat skriptu `C:\dsvm\tools\setup\InstallAMLFromLocal.ps1`
-   - odebrat zástupce na ploše, který spouští skript výše
-   - stáhnout instalační program https://aka.ms/azureml-wb-msi a znovu nainstalovat.
+### <a name="you-installed-workbench-using-the-install-azure-ml-workbench-link-on-a-windows-dsvm"></a>Nainstalované aplikace Workbench pomocí "instalace aplikace Azure ML Workbench" odkaz na Windows DSVM
+Bohužel není na tomto žádné snadno napravit. Je nutné provést následující kroky odebrat bits nainstalovaná a stáhněte si nejnovější instalační program pro nové instalace aplikace Workbench: 
+   - odebrat složku `C:\Users\<Username>\AppData\Local\amlworkbench`
+   - odebrat skript `C:\dsvm\tools\setup\InstallAMLFromLocal.ps1`
+   - odebrat zástupce, který se spustí skript výše
+   - stažení instalačního programu https://aka.ms/azureml-wb-msi a znovu nainstalujte.
 
-## <a name="stuck-at-checking-experimentation-account-screen-after-logging-in"></a>Zablokované ve "Kontrola experimentování účet" obrazovky po přihlášení
-Po přihlášení může získat na prázdnou obrazovku zprávou zobrazující "Kontroluje experimentování účet" s roztočený kolem zablokované aplikace Workbench. Chcete-li vyřešit tento problém, proveďte následující kroky:
+## <a name="stuck-at-checking-experimentation-account-screen-after-logging-in"></a>Zablokuje na obrazovce "Checking účet experimentování ve službě" po přihlášení
+Po přihlášení se aplikace Workbench může způsobit zablokování a zobrazení na prázdnou obrazovku a zobrazí se zpráva zobrazující "Kontrola experimentální účet" kolečkem zaneprázdnění. Chcete-li vyřešit tento problém, proveďte následující kroky:
 1. Vypnutí aplikace
 2. Odstraňte následující soubor:
   ```
@@ -119,39 +119,39 @@ Po přihlášení může získat na prázdnou obrazovku zprávou zobrazující "
   ```
 3. Restartujte aplikaci.
 
-## <a name="cant-delete-experimentation-account"></a>Nelze odstranit účet experimentování
-Rozhraní příkazového řádku můžete použít k odstranění účtu experimentování, ale je nutné odstranit nejprve podřízených pracovních prostorů a podřízené projekty v rámci těchto podřízených pracovních prostorů. Jinak se zobrazí chyba "prostředek budete moct odstranit po odstranění vnořených prostředků."
+## <a name="cant-delete-experimentation-account"></a>Nelze odstranit experimentální účet
+Rozhraní příkazového řádku můžete použít k odstranění účtu experimentování, ale je nutné odstranit první podřízený pracovní prostory a podřízené projekty v rámci těchto podřízených pracovních prostorů. V opačném případě se zobrazí chyba "nelze odstranit prostředek než vnořených prostředků se odstraní."
 
 ```azure-cli
 # delete a project
-$ az ml project delete -g <resource group name> -a <experimentation account name> -w <worksapce name> -n <project name>
+$ az ml project delete -g <resource group name> -a <experimentation account name> -w <workspace name> -n <project name>
 
 # delete a workspace 
-$ az ml workspace delete -g <resource group name> -a <experimentation account name> -n <worksapce name>
+$ az ml workspace delete -g <resource group name> -a <experimentation account name> -n <workspace name>
 
 # delete an experimentation account
 $ az ml account experimentation delete -g <resource group name> -n <experimentation account name>
 ```
 
-Můžete také odstranit projekty a pracovní prostory v rámci aplikace Workbench.
+Můžete také odstranit projektů a pracovní prostory z v rámci aplikace Workbench.
 
-## <a name="cant-open-file-if-project-is-in-onedrive"></a>Nelze otevřít soubor, pokud je projekt ve Onedrivu
-Pokud máte Windows 10 patří Creators aktualizace a vytvoření projektu v místní složce namapované na OneDrive, můžete zjistit, že všechny soubor nelze otevřít v Workbench. Toto je z důvodu chyby zaváděné aktualizace Creators patří, která způsobuje selhání ve složce OneDrive kódu node.js. Chybě bude opraven brzy službou Windows update, ale do té doby, prosím nevytvářejte projekty ve složce OneDrive.
+## <a name="cant-open-file-if-project-is-in-onedrive"></a>Soubor nelze otevřít, pokud je projekt ve Onedrivu
+Pokud máte Windows 10 Fall Creators Update a váš projekt je vytvořen v místní složce namapované na Onedrivu, můžete zjistit libovolný soubor nelze otevřít v aplikaci Workbench. Toto je kvůli chybě zavedené Fall Creators Update, která způsobí selhání ve složce Onedrivu kódu node.js. Chyba se opraví brzy ve Windows update, ale do té doby, nevytvářejte prosím projekty ve složce Onedrivu.
 
-## <a name="file-name-too-long-on-windows"></a>Název souboru příliš dlouho v systému Windows
-Pokud používáte Workbench v systému Windows, můžete narazit na výchozí maximální souboru 260 znaků názvu limit délky, která by mohla surface jako chyba "systém nemůže najít zadanou cestu". Můžete upravit nastavení klíče registru a povolit mnohem delší cestu název souboru. Zkontrolujte [v tomto článku](https://msdn.microsoft.com/library/windows/desktop/aa365247%28v=vs.85%29.aspx?#maxpath) další podrobnosti o tom, jak nastavit _hodnotou MAX_PATH_ klíč registru.
+## <a name="file-name-too-long-on-windows"></a>Název souboru příliš dlouho ve Windows
+Pokud používáte aplikaci Workbench na Windows, můžete narazit na výchozí maximální souboru 260 znaků názvu limit délky, které může přinášet jako chybu "systém nemůže najít zadanou cestu". Můžete upravit nastavení klíče registru a povolit mnohem delší cestu souboru. Kontrola [v tomto článku](https://msdn.microsoft.com/library/windows/desktop/aa365247%28v=vs.85%29.aspx?#maxpath) podrobné informace o tom, jak nastavit _MAX_PATH_ klíč registru.
 
-## <a name="interrupt-cli-execution-output"></a>Přerušení výstupu spuštění příkazového řádku
-Pokud ji experimentování spouštět s využitím `az ml experiment submit` nebo `az ml notebook start` a chcete přerušení výstup: 
-- V systému Windows pomocí kombinace kláves Ctrl-Break z klávesnice
-- V systému macOS použijte kombinaci kláves Ctrl-c
+## <a name="interrupt-cli-execution-output"></a>Přerušit provádění výstupu rozhraní příkazového řádku
+Pokud jste pusťte se do experimentování ve službě spuštění pomocí `az ml experiment submit` nebo `az ml notebook start` a chcete přerušit výstup: 
+- Ve Windows použijte kombinaci kláves Ctrl + Break z klávesnice
+- V systému macOS pomocí Ctrl-C.
 
-Upozorňujeme, že pouze přeruší do výstupního datového proudu v okně příkazového řádku. Je ve skutečnosti nezastaví úlohu, která je spouštěna. Pokud chcete zrušit probíhající úlohy, použijte `az ml experiment cancel -r <run_id> -t <target name>` příkaz.
+Mějte prosím na paměti, že pouze přeruší výstupní datový proud v okně rozhraní příkazového řádku. Je ve skutečnosti nezastaví úlohu, která je spouštěna. Pokud chcete zrušit probíhající úlohy, použijte `az ml experiment cancel -r <run_id> -t <target name>` příkazu.
 
-Na počítačích se systémem Windows pomocí klávesnice, které nemají zalomení klíč možné mezi ně patří Fn-B, Ctrl-Fn-B nebo Fn + Esc. Kombinace konkrétní naleznete v dokumentaci od dodavatele hardwaru.
+Počítačích s Windows pomocí klávesnice, které nemají klíč přerušení, je to možné mezi ně patří služby Fn-B nebo Ctrl-Fn-B Fn + Esc. Pro konkrétní kombinaci kláves naleznete v dokumentaci od dodavatele hardwaru.
 
-## <a name="docker-error-read-connection-refused"></a>Chyba docker "číst: odmítl připojení"
-Při provádění proti místní kontejner Docker, v některých případech může zobrazit chybová zpráva: 
+## <a name="docker-error-read-connection-refused"></a>Chyba docker "čtení: připojení bylo odmítnuto"
+Při spouštění proti místní kontejner Dockeru, v některých případech může se zobrazit následující chyba: 
 ```
 Get https://registry-1.docker.io/v2/: 
 dial tcp: 
@@ -159,23 +159,23 @@ lookup registry-1.docker.io on [::1]:53: read udp [::1]:49385->[::1]:53:
 read: connection refused
 ```
 
-Můžete je vyřešit ho změnou Docker serveru DNS z `automatic` na pevnou hodnotu `8.8.8.8`.
+Můžete to napravit změnou Docker Server DNS z `automatic` pevnou hodnotu `8.8.8.8`.
 
-## <a name="remove-vm-execution-error-no-tty-present"></a>Odebrat virtuální počítač při provádění "nenachází žádné tty"
-Při provádění proti kontejner Docker ve vzdáleném počítači systému Linux, můžete se setkat se následující chybová zpráva:
+## <a name="remove-vm-execution-error-no-tty-present"></a>Odebrat Chyba spuštění virtuálního počítače "k dispozici žádné tty"
+Při spouštění proti kontejneru Docker ve vzdáleném počítači s Linuxem, můžete se setkat se následující chybová zpráva:
 ```
 sudo: no tty present and no askpass program specified.
 ``` 
-To může nastat, když změníte kořenové heslo virtuálního počítače s Ubuntu Linux pomocí portálu Azure. 
+To může nastat, pokud změna kořenové heslo virtuálního počítače s Ubuntu Linuxem pomocí webu Azure portal. 
 
-Azure Machine Learning Workbench vyžaduje heslo bez sudoers přístup ke spuštění na vzdáleného hostitele. Nejjednodušší způsob, jak to udělat, je použití _visudo_ upravte následující soubor (soubor může vytvořit Pokud neexistuje):
+Azure Machine Learning Workbench vyžaduje přístup bez hesla sudoers ke spouštění na vzdáleného hostitele. Nejjednodušší způsob, jak to udělat, je použití _visudo_ a upravte následující soubor (soubor může vytvořit Pokud neexistuje):
 
 ```
 $ sudo visudo -f /etc/sudoers
 ```
 
 >[!IMPORTANT]
->Je potřeba upravit soubor s _visudo_ a není jiného příkazu. _visudo_ automaticky syntaxe kontroluje všechny konfigurační soubory sudo a nepodařilo se vytvořit soubor syntakticky správnou sudoers můžete zablokování sudo.
+>Je potřeba upravit soubor s _visudo_ a ne jiným příkazem. _visudo_ automaticky kontroluje všechny konfigurační soubory sudo, syntaxi a nepodařilo se vytvořit soubor syntakticky správný sudoers můžete zablokovat sudo.
 
 Na konci souboru vložte následující řádek:
 
@@ -183,26 +183,26 @@ Na konci souboru vložte následující řádek:
 username ALL=(ALL) NOPASSWD:ALL
 ```
 
-Kde _uživatelské jméno_ je název Azure Machine Learning Workbench bude používat k přihlášení do vzdáleného hostitele.
+Kde _uživatelské jméno_ je název aplikace Azure Machine Learning Workbench použije k přihlášení na vzdáleného hostitele.
 
-Na řádku musí být umístěny po #includedir "/ etc/sudoers.d", v opačném případě může být přepsána jiné pravidlo.
+Na řádku musí být umístěné za #includedir "/ etc/sudoers.d", jinak mohou být přepsána jiné pravidlo.
 
-Pokud máte složitější konfigurace sudo, můžete chtít dokumentaci sudo Ubuntu k dispozici zde: https://help.ubuntu.com/community/Sudoers
+Pokud máte složitější konfigurace sudo, můžete chtít dokumentaci sudo pro Ubuntu, které jsou k dispozici zde: https://help.ubuntu.com/community/Sudoers
 
-Výše uvedené chyby může také dojít, pokud nepoužíváte Ubuntu Linux virtuálních počítačů na bázi v Azure jako cíl provádění. Virtuálních počítačů na bázi Ubuntu Linux podporujeme jenom pro vzdálené spuštění. 
+Výše uvedené chyby může také dojít, pokud nepoužíváte založeného na Ubuntu virtuálního počítače s Linuxem v Azure jako cíl provádění. Podporujeme jenom virtuální počítač založený na Ubuntu Linuxu pro vzdálené spuštění. 
 
-## <a name="vm-disk-is-full"></a>Virtuální počítač disk je plný.
-Ve výchozím nastavení při vytváření nového virtuálního počítače s Linuxem v Azure, získáte 30 GB disk pro operační systém. Modul docker ve výchozím nastavení používá stejný disk pro stahování dolů bitové kopie a spuštěných kontejnerů. To může zaplnit disk operačního systému a zobrazí chybu "Virtuální počítač Disk je plný", pokud se odehrává se.
+## <a name="vm-disk-is-full"></a>Virtuální počítač disk je plný
+Ve výchozím nastavení při vytváření nového virtuálního počítače s Linuxem v Azure, získáte 30 GB disk pro operační systém. Modul docker ve výchozím nastavení používá stejný disk potažením dolů imagí a spuštěné kontejnery. To můžete vyplnit disk s operačním systémem a se zobrazí chyba "Virtuální počítač Disk je plný", když k ní dojde.
 
-Chcete-li odebrat všechny Docker Image, které už používáte je rychlou opravu. Příkaz Docker neobsahuje právě který. (Samozřejmě budete muset SSH do virtuálního počítače Chcete-li spustit příkaz Docker z prostředí bash.)
+Rychlé opravy je odebrat všechny Image Dockeru, které už používáte. Následující příkaz Docker právě tohle dělá. (Samozřejmě budete muset SSH k virtuálnímu počítači za účelem provedení příkazu Docker z prostředí bash.)
 
 ```
 $ docker system prune -a
 ```
 
-Můžete také přidat datový disk a nakonfigurovat modul Docker použít datový disk pro ukládání bitových kopií. Tady je [jak přidat datový disk](https://docs.microsoft.com/azure/virtual-machines/linux/add-disk). Pak můžete [změnu kde Docker ukládá bitové kopie](https://forums.docker.com/t/how-do-i-change-the-docker-image-installation-directory/1169).
+Můžete také přidat datový disk a nakonfigurovat modul Docker datový disk k ukládání imagí. Tady je [přidání datového disku](https://docs.microsoft.com/azure/virtual-machines/linux/add-disk). Pak můžete [změnit, kam Docker ukládá obrázky](https://forums.docker.com/t/how-do-i-change-the-docker-image-installation-directory/1169).
 
-Případně můžete rozšířit disk operačního systému a nemáte přístup ke konfiguraci modulu Docker. Tady je [jak můžete rozšířit disk operačního systému](https://docs.microsoft.com/azure/virtual-machines/linux/expand-disks).
+Nebo, můžete rozbalit disk s operačním systémem a není nutné touch konfigurace modulu Docker. Tady je [jak lze rozvinout disk s operačním systémem](https://docs.microsoft.com/azure/virtual-machines/linux/expand-disks).
 
 ```azure-cli
 # Deallocate VM (stopping will not work)
@@ -218,41 +218,41 @@ $ az disk update --resource-group myResourceGroup --name myVMdisc --size-gb 250
 $ az vm start --resource-group myResourceGroup  --name myVM
 ```
 
-## <a name="sharing-c-drive-on-windows"></a>Sdílení jednotka C v systému Windows
-Pokud jsou prováděny v místní kontejner Docker v systému Windows, nastavení `sharedVolumes` k `true` v `docker.compute` souboru pod `aml_config` může zlepšit výkon provádění. To však vyžaduje sdílet jednotce C _Docker pro nástroj Windows_. Pokud si nejste moci sdílet jednotku C, zkuste následující tipy:
+## <a name="sharing-c-drive-on-windows"></a>Sdílení jednotce C na Windows
+Pokud jsou spuštěny v místním kontejneru Dockeru na Windows, nastavení `sharedVolumes` k `true` v `docker.compute` soubor `aml_config` může zvýšit výkon spuštění. Ale to vyžaduje, aby sdílet jednotce C v _Docker pro Windows nástrojů_. Pokud nemůžete sdílet jednotce C, zkuste následující tipy:
 
 * Kontrola sdílení na jednotce C pomocí Průzkumníka souborů
 * Otevřete nastavení síťového adaptéru a odinstalace a přeinstalace "Souborů a tiskáren sdílení v sítích Microsoft" pro vEthernet
-* Otevřete nastavení docker a sdílet C jednotku z v rámci nastavení docker
-* Změny heslo pro Windows ovlivní sdílení. Otevřete Průzkumníka souborů, dál sdílet. jednotka C a zadejte nové heslo.
-* Brány firewall problému může dojít také při pokusu o sdílení jednotce C s Docker. To [Stack Overflow post](http://stackoverflow.com/questions/42203488/settings-to-windows-firewall-to-allow-docker-for-windows-to-share-drive/43904051) může být užitečné.
-* Při sdílení jednotka C pomocí přihlašovacích údajů do domény, sdílení může přestat pracovat v sítích, kde je řadič domény není dostupný (pro například domácí sítě, veřejnou Wi-Fi atd.). Další informace najdete v tématu [tento příspěvek](https://blogs.msdn.microsoft.com/stevelasker/2016/06/14/configuring-docker-for-windows-volumes/).
+* Otevřete nastavení dockeru a sdílet jednotce C z v rámci nastavení dockeru
+* Změny hesla Windows ovlivní sdílení. Otevřete Průzkumníka souborů, dál sdílet. jednotka C a zadejte nové heslo.
+* Brány firewall problému může dojít také při pokusu o sdílení jednotce C s Dockerem. To [Stack Overflow příspěvek](http://stackoverflow.com/questions/42203488/settings-to-windows-firewall-to-allow-docker-for-windows-to-share-drive/43904051) může být užitečné.
+* Při sdílení jednotce C pomocí přihlašovacích údajů do domény, sdílení může přestat pracovat v sítích, ve kterém řadiči domény není dostupný (pro například domácí sítě, veřejná Wi-Fi atd.). Další informace najdete v tématu [tento příspěvek](https://blogs.msdn.microsoft.com/stevelasker/2016/06/14/configuring-docker-for-windows-volumes/).
 
-Také se můžete vyhnout sdílení problém, na malé výkonu náklady, nastavení `sharedVolumne` k `false` v `docker.compute` souboru.
+Také můžete vyhnout sdílení problém na malé výkon, náklady, nastavením `sharedVolumne` k `false` v `docker.compute` souboru.
 
-## <a name="wipe-clean-workbench-installation"></a>Vymazání čistou instalaci Workbench
-Obecně nemusíte to udělat. Ale v případě, že je zapotřebí vymazat čisté instalace, tady jsou kroky:
+## <a name="wipe-clean-workbench-installation"></a>Vymazat čistou instalaci aplikace Workbench
+Obvykle není nutné to udělat. Ale v případě, že můžete vymazat čistou instalaci, tady je postup:
 
 - Ve Windows:
-  - Nejdříve se ujistěte, používáte _přidat nebo odebrat programy_ aplet v _ovládací panely_ odebrat _Azure Machine Learning Workbench_ aplikaci.  
-  - Potom můžete stáhnout a spustit některý z následujících skriptů:
+  - Nejprve se ujistěte, použijete _přidat nebo odebrat programy_ aplet v _ovládací panely_ odebrat _Azure Machine Learning Workbench_ vstupní aplikace.  
+  - Pak si stáhnout a použít jednu z následujících skriptů:
     - [Skript příkazového řádku Windows](https://github.com/Azure/MachineLearning-Scripts/blob/master/cleanup/cleanup_win.cmd).
-    - [Skript prostředí Windows PowerShell](https://github.com/Azure/MachineLearning-Scripts/blob/master/cleanup/cleanup_win.ps1). (Možná budete muset spustit `Set-ExecutionPolicy Unrestricted` v okně prostředí PowerShell oprávněními zvýšenými na úroveň oprávnění před spuštěním skriptu.)
+    - [Skript prostředí Windows PowerShell](https://github.com/Azure/MachineLearning-Scripts/blob/master/cleanup/cleanup_win.ps1). (Možná budete muset spustit `Set-ExecutionPolicy Unrestricted` v okně Powershellu se zvýšenými oprávněními oprávnění před spuštěním skriptu.)
 - V systému macOS:
-  - Právě stažení a spuštění [skript prostředí bash systému macOS](https://github.com/Azure/MachineLearning-Scripts/blob/master/cleanup/cleanup_mac.sh).
+  - Stačí stáhnout a spustit [skriptu prostředí bash macOS](https://github.com/Azure/MachineLearning-Scripts/blob/master/cleanup/cleanup_mac.sh).
 
-## <a name="azure-ml-using-a-different-python-location-than-the-azure-ml-installed-python-environment"></a>Azure ML použití python jiné umístění než Azure ML nainstalované prostředí python
-Kvůli změnám v nástroji Azure Machine Learning Workbench uživatelé všimnout, že místní spuštění nemusí ukazují prostředí python, který je nainstalován pomocí nástroje Azure ML Workbench už. To může dojít, pokud uživatel mít jiné prostředí python, které jsou v počítači nainstalovanou a nastavení cesty "Python" tak, aby odkazoval na prostředí. Chcete-li používat Azure ML Workbench nainstalovaná prostředí Python, postupujte takto:
-- Přejděte na soubor local.compute složce aml_config v rámci kořenového adresáře projektu.
-- Změna proměnnou "pythonLocation" tak, aby odkazoval na fyzickou cestu nástroje Azure ML workbench nainstalovaná prostředí python. Tuto cestu můžete získat dvěma způsoby:
-    - Umístění Azure ML python najdete na %localappdata%\AmlWorkbench\python\python.exe
-    - můžete otevřít cmd z Azure ML Workbench, zadejte na příkazovém řádku python, importovat sys.exe, spustit sys.executable a získání cesty z ní. 
+## <a name="azure-ml-using-a-different-python-location-than-the-azure-ml-installed-python-environment"></a>Služba Azure ML pomocí umístění pythonu jiné než Azure ML nainstalované prostředí pythonu
+Kvůli změnám v aplikaci Azure Machine Learning Workbench uživatelé zaznamenat, že místní spuštění nemusí odkazovat na nainstalovala aplikace Azure ML Workbench už prostředí pythonu. K tomu může dojít, pokud uživatel mít jiné prostředí python nainstalován v počítači, a cesty "Python" je nastavená tak, aby odkazoval do daného prostředí. Chcete-li používat aplikaci Azure ML Workbench nainstalovaná prostředí Pythonu, postupujte podle těchto kroků:
+- Přejděte k souboru local.compute v rámci vaší složky aml_config v kořenovém adresáři projektu.
+- Změnit proměnné "pythonLocation" tak, aby odkazoval na fyzická cesta k aplikaci Azure ML workbench nainstalovat prostředí pythonu. Tuto cestu můžete získat dvěma způsoby:
+    - Umístění pythonu v Azure ML lze nalézt v %localappdata%\AmlWorkbench\python\python.exe
+    - můžete otevřít cmd z Azure ML Workbench, na příkazovém řádku zadejte python, importovat sys.exe, spusťte sys.executable a získání cesty z něj. 
 
 
 
-## <a name="some-useful-docker-commands"></a>Některé užitečné příkazy Docker
+## <a name="some-useful-docker-commands"></a>Některé užitečné příkazy Dockeru
 
-Zde jsou některé užitečné příkazy Docker:
+Tady jsou některé užitečné příkazy Dockeru:
 
 ```sh
 # display all running containers

@@ -1,6 +1,6 @@
 ---
-title: Upgrade aplikace Service Fabric | Microsoft Docs
-description: Tento článek obsahuje úvod do upgradu aplikace Service Fabric, včetně výběrem možnosti upgradu režimy a provádění kontroly stavu.
+title: Upgrade aplikace Service Fabric | Dokumentace Microsoftu
+description: Tento článek obsahuje úvod k upgradu aplikace Service Fabric, včetně zvolíte možnost upgradu režimech a provádění kontroly stavu.
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
@@ -14,74 +14,74 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: fca05a1b21e1cefd4146f754d7dedda0d7ff2ac0
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 79408c9936000aa18dba9347b8a10fa7dcd8e8ee
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207974"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35759554"
 ---
 # <a name="service-fabric-application-upgrade"></a>Upgrade aplikace Service Fabric
-Aplikace Azure Service Fabric je kolekce služeb. Během upgradu, porovná Service Fabric nové [manifest aplikace](service-fabric-application-and-service-manifests.md) v předchozí verzi a určuje, které služby v uzlu aktualizace vyžadovat aplikace. Service Fabric porovnává verze čísla ve službě manifesty s čísla verze v předchozí verzi. Je-li služba se nezměnila, není aktualizován dané služby.
+Aplikace Azure Service Fabric je kolekce služeb. Během upgradu, porovná Service Fabric nové [manifest aplikace](service-fabric-application-and-service-manifests.md) s předchozí verzí a určuje, které služby vyžadovat aktualizace aplikace. Service Fabric porovnává verzi čísla ve službě manifesty pomocí čísla verze v předchozí verzi. Pokud služba se nezměnila, není upgradována danou službu.
 
-## <a name="rolling-upgrades-overview"></a>Vrácení upgradu – přehled
-V postupného upgradu aplikace upgradu provádí ve fázích. V každé fázi upgradu použijí pro dílčí sadu uzlů v clusteru, názvem domény služby aktualizace. V důsledku toho zůstává k dispozici v rámci upgradu aplikace. Během upgradu clusteru může obsahovat kombinací staré a nové verze.
+## <a name="rolling-upgrades-overview"></a>Přehled upgradu se zajištěním provozu
+V aplikaci se zajištěním upgradu provádí ve fázích. V každé fázi upgradu použít pro dílčí sadu uzlů v clusteru, s názvem aktualizační doména. V důsledku toho zůstane k dispozici v rámci upgradu aplikace. Během upgradu clusteru může obsahovat kombinaci staré a nové verze.
 
-Z tohoto důvodu musí být dvě verze dopředného a zpětně kompatibilní. Pokud nejsou kompatibilní, Správce aplikací je zodpovědná za pracovní více fází upgradu údržbu dostupnosti. V případě více fází upgradu prvním krokem je upgrade zprostředkující verzi aplikace, která je kompatibilní s předchozí verzí. Druhým krokem je upgrade finální verzi, která dělí kompatibilitu s verzí před aktualizací, ale je kompatibilní s verzí zprostředkující.
+Z tohoto důvodu musí být dvě verze dopředné a zpětné kompatibilní. Pokud nejsou kompatibilní, správce aplikace je zodpovědná za pracovní více fází upgradu dostupnost. V případě více fází upgradu je prvním krokem upgraduje na zprostředkující verzi aplikace, která je kompatibilní s předchozí verzí. Druhým krokem je upgrade finální verze přeruší kompatibilitu s verzí před aktualizací, která je kompatibilní s verzí zprostředkující.
 
-Aktualizace domény jsou určené v manifestu clusteru při konfiguraci clusteru. Aktualizace domén neobdrží aktualizace v určitém pořadí. Doména aktualizace je logická jednotka nasazení pro aplikaci. Aktualizace domén povolit služby, aby zůstaly během upgradu na vysokou dostupnost.
+Aktualizační domény jsou určené v manifestu clusteru, při konfiguraci clusteru. Aktualizační domény nebudou přijímat aktualizace v určitém pořadí. Aktualizační doména je logická jednotka nasazení pro aplikaci. Aktualizační domény povolit služby, které mají zůstat na vysokou dostupnost během upgradu.
 
-Bez vrácení upgrady je možné, pokud je na všech uzlech v clusteru, což je případ, kdy aplikace má pouze jednu aktualizační doménu upgradu. Tento přístup se nedoporučuje, protože služba přestane fungovat a není k dispozici při upgradu. Kromě toho Azure neposkytuje žádné záruky, při nastavení clusteru s doménou pouze jednu aktualizaci.
+Zajištěním bez je možné v případě upgrade se použije na všechny uzly v clusteru, což je případ, kdy má jenom jednu aktualizační doménu aplikace. Tento přístup není doporučen, protože služba přestane fungovat a není k dispozici během upgradu. Kromě toho Azure neposkytuje žádné záruky při cluster má nastavenou jenom jedna aktualizační doména.
 
-Po dokončení upgradu, všechny služby a replicas(instances) by zůstat ve stejné verzi – tj, jestliže upgrade úspěšné, bude aktualizován na novou verzi; Pokud upgrade selže, je vrácena, že by se vrátit zpět na předchozí verzi aplikace.
+Po dokončení upgradu všech služeb a replicas(instances) by zůstat ve stejné verzi – to znamená, pokud upgradu úspěšná, bude aktualizován na novou verzi; Když se upgrade nezdaří a je vrácena zpět, že by se vrátit zpět na předchozí verzi aplikace.
 
-## <a name="health-checks-during-upgrades"></a>Kontroly stavu během upgradu
-Pro upgrade musí být nastaveny zásady stavu (nebo mohou být použity výchozí hodnoty). Upgrade se říká úspěšné, pokud jsou všechny aktualizace domény upgradován během zadaného vypršení časových limitů a pokud všechny domény aktualizace se považují za v pořádku.  Domény v pořádku aktualizace znamená, že aktualizace domény předány všechny kontroly stavu určená v zásadách stavu. Například může zásady stavu vyžádá, musí být všechny služby v rámci instance aplikace *pořádku*, jak je definováno stavu Service Fabric.
+## <a name="health-checks-during-upgrades"></a>Doplněk pro kontroly stavu během upgradu
+Pro účely upgradu musí být nastaveny zásady stavu (nebo mohou být použity výchozí hodnoty). Upgrade se nazývá úspěšné při upgradu všech aktualizačních domén v rámci zadané vypršení časových limitů a všech aktualizačních domén se považují za v pořádku.  V pořádku aktualizační doména znamená, že aktualizační doména předány kontroly stavu uveden v zásadách stavu. Například může zásady stavu stanoví, že všechny služby v rámci instancí aplikace musí být *v pořádku*, je dle stavu Service Fabric.
 
-Zásady stavu a kontroly během upgradu pomocí Service Fabric se bez ohledu na služby a aplikace. To znamená, že se provádějí žádné testy specifickou pro službu.  Například služby může mít požadavek propustnost, ale Service Fabric nemá informace ke kontrole propustnost. Odkazovat [stavu články](service-fabric-health-introduction.md) pro kontroly, které se provádí. Kontroly, které dojít během upgradu zahrnout testy pro jestli byl balíček aplikace správně zkopírován, zda byla spuštěna instance a tak dále.
+Zásady stavu a kontrol během upgradu v Service Fabric jsou nezávislá na služby a aplikace. To znamená jsou prováděny žádné testy specifické pro služby.  Třeba vaše služba může mít požadavek na propustnost, ale Service Fabric nemá žádné informace ke kontrole propustnost. Odkazovat [stavu články](service-fabric-health-introduction.md) kontroly, které se provádí. Kontroly, ke kterým dochází při upgradu zahrnout testy pro Určuje, zda byl balíček aplikace zkopíroval správně, zda byla spuštěna instance a tak dále.
 
-Stav aplikace je agregaci podřízených entit aplikace. Stručně řečeno Service Fabric vyhodnocuje stav aplikace prostřednictvím stavu, který je hlášen na aplikaci. Také vyhodnocuje stav všech služeb pro aplikace tímto způsobem. Service Fabric další vyhodnocuje stav aplikačních služeb agregací stav jejich podřízené položky, jako je například služba repliky. Po splňují zásady stavu aplikace, můžete pokračovat v upgradu. Pokud je porušení zásad stavu, upgradu aplikace se nezdaří.
+Připravenost aplikace není agregaci podřízené entity aplikace. Stručně řečeno Service Fabric vyhodnocuje stav aplikací prostřednictvím služby health, která se použije v hlášení v aplikaci. Také vyhodnotí stav všech služeb pro aplikaci tímto způsobem. Service Fabric další vyhodnocuje stav aplikačních služeb na základě agregace stav jejich podřízené prvky, jako je například repliku služby. Po ověření zásady stavu aplikace upgradu pokračovat. Pokud porušení zásad stavu, nezdaří se upgrade aplikace.
 
 ## <a name="upgrade-modes"></a>Upgrade režimy
-Režim, který doporučujeme pro upgradu aplikace je monitorovaných režimu, který je běžně používané režimem. Monitorovaných režimu provede upgrade na jednu aktualizační doménu a pokud kontroluje všechny stavy průchodu (podle zásad určených), přejde k další domény aktualizace automaticky.  Pokud selhání kontroly stavu a/nebo se dosáhne vypršení časových limitů, upgrade je pro doménu aktualizace buď vrácena nebo režim se změní na není sledována ručně. Můžete nakonfigurovat upgrade na vyberte jednu z těchto dvou režimů pro upgrade se nezdařilo. 
+Režim, který doporučujeme pro upgrade aplikace je monitorovaných režimu, který je běžně používané režimem. Monitorované režimu provede upgrade na jednu aktualizační doménu a je-li doplněk pro kontroly stavu všech pass (podle zásad určených) přejde k další aktualizační domény automaticky.  Selhání kontroly stavu a/nebo časové limity se dosáhne, upgrade je buď vrátit zpět pro aktualizační doména, zda je režim změnit na nemonitorovaný ruční. Můžete nakonfigurovat upgradu zvolte jednu z těchto dvou režimů selhání upgradu na verzi. 
 
-Sledována ruční režim musí ruční zásah po každém upgradu v doméně služby aktualizace, chcete-li ji upgradu na další aktualizaci domény. Budou provedeny žádné kontroly stavu Service Fabric. Správce provádí kontroly stavu nebo stavu před spuštěním upgradu v další aktualizaci domény.
+Nemonitorované ruční režim vyžaduje ruční zásah po každém upgradu na aktualizační doména, aktivovala aktualizaci na další aktualizační domény. Jsou prováděny žádné kontroly stavu Service Fabric. Správce provádí kontroly stavu nebo stavu před spuštěním upgradu v další aktualizační domény.
 
-## <a name="upgrade-default-services"></a>Upgradujte výchozí služby
-Některé výchozí služby parametry definované v [manifest aplikace](service-fabric-application-and-service-manifests.md) lze také upgradovat v rámci upgradu aplikace. Pouze služba parametry, které podporují mění prostřednictvím [aktualizace ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) lze změnit jako součást upgradu. Chování Změna výchozích služeb během upgradu aplikace je následující:
+## <a name="upgrade-default-services"></a>Aktualizace výchozí služby
+Některé výchozí služby parametry definované v [manifest aplikace](service-fabric-application-and-service-manifests.md) můžete také upgradovat, protože při upgradu aplikace. Pouze služba parametry, které podporují mění prostřednictvím [aktualizace ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) lze změnit jako součást upgradu. Chování Změna výchozích služeb během upgradu aplikace vypadá takto:
 
-1. Výchozí služby v nové manifestu aplikace, které už neexistují v clusteru se vytvoří.
-2. Výchozí služby, které existují v manifestech předchozí a nové aplikace jsou aktualizované. Parametry výchozí služba v nové manifest aplikace přepsat parametry existující službu. Upgradu aplikace bude vrácení zpět automaticky, pokud se nezdaří aktualizace výchozí služby.
-3. Výchozí služby, které nejsou k dispozici v nové manifest aplikace jsou odstraněny, pokud existují v clusteru. **Všimněte si, že odstraněním služby výchozí způsobí odstranění všechno, co služba stavu a nesmí být vrátit zpět.**
+1. Vytvářejí se výchozí služby nový manifest aplikace, které už neexistují v clusteru.
+2. Aktualizují se výchozí služby, které existují v manifestech předchozí a nové aplikace. Parametry výchozí služba v nový manifest aplikace přepsat parametry existující služby. Upgrade aplikace vrátí zpět automaticky, pokud se aktualizace výchozí služby nezdaří.
+3. Pokud existují v clusteru, odstraní se výchozí služby, které neexistují v nový manifest aplikace. **Všimněte si, že odstraňuje se služba výchozí způsobí odstranění všech funkcí, které služba stavu a nesmí být vrátit zpět.**
 
-Při upgradu aplikace je vrácena, parametry výchozí služby se vrátit zpět na původní hodnoty před upgrade spustit ale odstraněné služby nelze znovu vytvořit s jejich původním stavu.
+Při upgradu aplikace se vrátí zpět, výchozí parametry služby jsou vráceny zpět na původní hodnoty, než upgrade spustil, ale odstraněné services nemůže být znovu vytvořena s jejich starý stav.
 
 > [!TIP]
-> [EnableDefaultServicesUpgrade](service-fabric-cluster-fabric-settings.md) nastavení konfigurace clusteru musí být *true* a povolte tak pravidla 2) a 3) nad (výchozí služby aktualizace a odstranění). Tato funkce je podporovaná počínaje Service Fabric verzi 5.5.
+> Tím [EnableDefaultServicesUpgrade](service-fabric-cluster-fabric-settings.md) nastavení konfigurace clusteru musí být *true* povolit pravidla 2) a 3) nad (výchozí služby aktualizace a odstranění). Tato funkce je podporované počínaje Service Fabric verze 5.5.
 
-## <a name="upgrading-multiple-applications-with-https-endpoints"></a>Upgrade více aplikací s koncovými body HTTPS
-Budete muset pečlivě nepoužívat **stejný port** pro různé instance stejné aplikace při používání protokolu HTTP**S**. Důvodem je, že Service Fabric, nebude možné upgradovat certifikátu pro jednu z instancí aplikace. Například pokud aplikace 1 nebo aplikace 2 obou chcete upgradovat jejich cert 1 cert 2. Při upgradu se stane, Service Fabric může mít vyčistit cert 1 registrace pomocí ovladače http.sys i když se stále používá jiná aplikace. Chcete-li tomu zabránit, Service Fabric zjistí, že se už používá jiná instance aplikace zaregistrované na portu s certifikátem (z důvodu http.sys) a operaci se nezdaří.
+## <a name="upgrading-multiple-applications-with-https-endpoints"></a>Upgrade více aplikací pomocí koncových bodů HTTPS
+Budete muset dejte pozor, abyste používat **stejný port** pro různé instance stejné aplikace při používání protokolu HTTP**S**. Důvodem je, že Service Fabric nebudou moct upgradovat certifikátu pro jeden z instancí aplikace. Pokud například aplikace 1 nebo aplikace 2 oba chtějí upgradovat jejich cert 1 na certifikátu. 2. Při upgradu dojde, Service Fabric může vyčistili registrační certifikát 1 se souborem http.sys i v případě, že ji stále používá jiná aplikace. Chcete-li tomu zabránit, Service Fabric zjistí, že je již jiná instance aplikace zaregistrované na portu s certifikátem (z důvodu http.sys) a operace se nezdaří.
 
-Proto Service Fabric nepodporuje upgrade dvě různé služby pomocí **stejný port** v případech jinou aplikaci. Jinými slovy nelze použít stejný certifikát na různé služby na stejném portu. Pokud potřebujete mít sdílené certifikát na stejném portu, je třeba zajistit, že služby jsou umístěny na různých počítačích s omezeními umístění. Nebo zvažte, pokud je to možné pomocí Service Fabric dynamické porty pro každou službu v každé instanci aplikace. 
+Proto Service Fabric nepodporuje upgrade dvou různých služeb pomocí **stejný port** v různé instance aplikace. Jinými slovy nelze použít stejný certifikát na různé služby na stejném portu. Pokud je potřeba mít sdílené certifikát na stejném portu, je potřeba zajistit, že služby jsou umístěné na různých počítačích pomocí omezení umístění. Nebo zvažte použití dynamické porty Service Fabric, pokud je to možné pro každou službu v každé instanci aplikace. 
 
-Pokud se zobrazí upgradu služeb při selhání s protokolem https, chybu upozornění oznamující "Rozhraní API systému Windows HTTP serveru nepodporuje víc certifikátů pro aplikace, které sdílejí port."
+Pokud se zobrazí upgradu selhání pomocí protokolu https, chybu upozornění oznamující "Rozhraní API Windows HTTP serveru nepodporuje více certifikátů pro aplikace, které sdílejí portu."
 
 ## <a name="application-upgrade-flowchart"></a>Vývojový diagram upgradu aplikace
-Vývojový diagram níže vám může pomoct pochopit proces upgradu aplikace Service Fabric. Konkrétně toku popisuje jak vypršení časových limitů, včetně *HealthCheckStableDuration*, *HealthCheckRetryTimeout*, a *UpgradeHealthCheckInterval*, pomůže ovládací prvek při upgradu v jedné aktualizační doméně se považuje za úspěch nebo selhání.
+Vývojový diagram za tímto odstavcem pomůže vám porozumět procesu upgradu aplikace Service Fabric. Konkrétně se tok popisuje jak časové limity, včetně *HealthCheckStableDuration*, *HealthCheckRetryTimeout*, a *UpgradeHealthCheckInterval*, Nápověda ovládací prvek při upgradu v jedné aktualizační doméně se považuje za úspěch nebo selhání.
 
-![Proces upgradu pro Fabric aplikaci služby][image]
+![Proces upgradu aplikace Service Fabric][image]
 
 ## <a name="next-steps"></a>Další postup
-[Upgrade vaší aplikace pomocí sady Visual Studio](service-fabric-application-upgrade-tutorial.md) vás provede upgrade aplikace pomocí sady Visual Studio.
+[Upgrade aplikace pomocí sady Visual Studio](service-fabric-application-upgrade-tutorial.md) vás provede upgrade aplikace pomocí sady Visual Studio.
 
-[Upgrade vaší aplikace pomocí prostředí Powershell](service-fabric-application-upgrade-tutorial-powershell.md) vás provede upgrade aplikace pomocí prostředí PowerShell.
+[Upgrade aplikace pomocí Powershellu](service-fabric-application-upgrade-tutorial-powershell.md) vás provede upgrade aplikace pomocí Powershellu.
 
-Řídí, jak vaše aplikace upgraduje pomocí [Upgrade parametry](service-fabric-application-upgrade-parameters.md).
+Řídí, jak vaše aplikace upgradovala pomocí [parametry upgradu](service-fabric-application-upgrade-parameters.md).
 
-Zkontrolujte upgradů aplikace kompatibilní podle naučit se používat [serializace dat](service-fabric-application-upgrade-data-serialization.md).
+Díky upgradů aplikace kompatibilní učit, jak používat [serializaci dat](service-fabric-application-upgrade-data-serialization.md).
 
-Další informace o použití pokročilých funkcí při upgradu vaší aplikace tím, že odkazuje na [Pokročilá témata](service-fabric-application-upgrade-advanced.md).
+Zjistěte, jak používat pokročilé funkce při upgradu aplikace rekapitulací [Pokročilá témata](service-fabric-application-upgrade-advanced.md).
 
-Řešení běžných potíží v upgradů aplikací podle kroků v části [řešení potíží s aplikací upgrady](service-fabric-application-upgrade-troubleshooting.md).
+Vyřešit běžné problémy v upgradech aplikací odkazující na kroky v [řešení potíží s upgrady aplikací](service-fabric-application-upgrade-troubleshooting.md).
 
 [image]: media/service-fabric-application-upgrade/service-fabric-application-upgrade-flowchart.png

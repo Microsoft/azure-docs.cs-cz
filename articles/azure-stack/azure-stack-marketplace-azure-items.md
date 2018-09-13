@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/14/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: bb2dc0d5500778372de674c749b44267fb512a2e
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 406d5965c02ceddc617c8729bad95ac7819af30e
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43701149"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44722057"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Položky Azure Marketplace k dispozici pro službu Azure Stack
 
@@ -101,6 +101,7 @@ Microsoft Azure Stack podporuje následující virtuální počítače Azure Mar
 
 |  | Název položky | Popis | Vydavatel |
 | --- | --- | --- | --- |
+| ![Arista vEOS směrovače](media/azure-stack-marketplace-azure-items/arista.png) | [Arista vEOS směrovače](https://azuremarketplace.microsoft.com/marketplace/apps/arista-networks.veos-router) | VEOS Arista směrovače se funkce bohaté multicloudové a vícehypervisorové virtuální směrovač, který umožňuje podnikům a poskytovatelů cloudu, k vytvoření konzistentní, vysoce zabezpečené a škálovatelné hybridní sítě. | Arista Networks |
 | ![AbanteCart](media/azure-stack-marketplace-azure-items/abantecart.png) | [AbanteCart](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.abantecart) | Open source elektronického obchodování nákupní košík. | Bitnami |
 | ![ActiveMQ](media/azure-stack-marketplace-azure-items/activemq.png) | [ActiveMQ](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.activemq) | Zprostředkovatele zpráv Open source v jazyce Java. | Bitnami |
 | ![Akeneo](media/azure-stack-marketplace-azure-items/akeneo.png) | [Akeneo](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.akeneo) | Výkonné PIM navržené pro zjednodušení procesů správy. | Bitnami |
@@ -156,6 +157,7 @@ Microsoft Azure Stack podporuje následující virtuální počítače Azure Mar
 | ![Memcached více instancí](media/azure-stack-marketplace-azure-items/memcached.png) | [Memcached více instancí](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.memcached-multipleinstances) | Memcached je objekt paměti vysoce výkonné a distribuované ukládání do mezipaměti systému. Toto řešení zřídí více uzlů protokolem Memcache k vytvoření vysoce výkonné, odolné proti selhání distribuované mezipaměti pro vaši aplikaci. **Tato šablona řešení také vyžaduje Debian 8 a vlastní skript pro Linuxové rozšíření 2.0.** | Bitnami |
 | ![MODX](media/azure-stack-marketplace-azure-items/modx.png) | [MODX](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.modx) | Intuitivní webový systém CMS. | Bitnami |
 | ![MongoDB](media/azure-stack-marketplace-azure-items/mongodb.png) | [MongoDB](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.mongodb) | Vysoce výkonná open source databáze NoSQL napsaný v jazyce C++. | Bitnami |
+| ![MongoDB s replikací](media/azure-stack-marketplace-azure-items/mongodb.png) | [MongoDB s replikací](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.production-mongodb) | Vysoce výkonná open source databáze NoSQL napsaný v jazyce C++. **Tato šablona řešení vyžaduje služby Azure Stack na verze 1807 nebo novější a také vyžaduje Debian 8 a vlastní skript pro Linuxové rozšíření 2.0.** | Bitnami |
 | ![Moodle](media/azure-stack-marketplace-azure-items/moodle.png) | [Systém Moodle](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.moodle) | Efektivní CMS pro komunity online výukové kurzy. | Bitnami |
 | ![Multicraft](media/azure-stack-marketplace-azure-items/multicraft.png) | [Multicraft](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.multicraft) | Minecraftu. server, který je hostitelem panelu řešení a ovládací prvek. | Bitnami |
 | ![MyBB](media/azure-stack-marketplace-azure-items/mybb.png) | [MyBB](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.mybb) | Zdarma a open source softwaru fóra. | Bitnami |
@@ -194,6 +196,7 @@ Microsoft Azure Stack podporuje následující virtuální počítače Azure Mar
 | ![RabbitMQ clusteru](media/azure-stack-marketplace-azure-items/rabbitmq.png) | [RabbitMQ clusteru](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.rabbitmq-cluster) | RabbitMQ je zprostředkovatel zasílání zpráv poskytuje společnou platformu pro odesílání a přijímání zpráv a bezpečné místo, kde si live, dokud se přijaté zprávy aplikace. Toto řešení používá několik virtuálních počítačů ke zřízení více uzlů v clusteru s RabbitMQ tvoří jednu logickou zprostředkovatele. **Tato šablona řešení také vyžaduje Debian 8 a vlastní skript pro Linuxové rozšíření 2.0.** | Bitnami |
 | ![Re: dash](media/azure-stack-marketplace-azure-items/redash.png) | [Re: dash](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.redash) | A vizualizace dat Open-source platforma pro spolupráci. | Bitnami |
 | ![Redis](media/azure-stack-marketplace-azure-items/redis.png) | [Redis](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.redis) | Výkonná open source párů klíč hodnota. | Bitnami |
+| ![Redis vysoké dostupnosti](media/azure-stack-marketplace-azure-items/redis.png) | [Redis vysoké dostupnosti](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.production-redis) | Výkonná open source párů klíč hodnota. **Tato šablona řešení vyžaduje služby Azure Stack na verze 1807 nebo novější a také vyžaduje Debian 8 a vlastní skript pro Linuxové rozšíření 2.0.** | Bitnami |
 | ![Redmine](media/azure-stack-marketplace-azure-items/redmine.png) | [Redmine](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.redmine) | Výkonné projektu Správa webové aplikace | Bitnami |
 | ![Redmine+Agile](media/azure-stack-marketplace-azure-items/redmineagile.png) | [Redmine + Agile](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.redmineplusagile) | Aplikace pro řízení projektů předkonfigurované agilní modulu plug-in. | Bitnami |
 | ![ReportServer komunity](media/azure-stack-marketplace-azure-items/reportserver.png) | [ReportServer komunity](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.reportserver) | Platforma Open source business intelligence. | Bitnami |

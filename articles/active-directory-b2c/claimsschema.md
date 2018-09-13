@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 3ac80b045443614e66bc1d8446047087629b1d96
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 76fdf532a35cbe16543bc49b5c02fad5d86690d5
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381159"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44718982"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -115,8 +115,7 @@ Naleznete příklad konfiguruje **PhoneNumber** deklarace identity s `Simple` ma
 <ClaimType Id="PhoneNumber">
   <DisplayName>Phone</DisplayName>
   <DataType>string</DataType>
-  <Mask Type="Simple">XXX-XXX-</Mask>
-  <AdminHelpText/>
+  <Mask Type="Simple">XXX-XXX-</Mask>  
   <UserHelpText>Your telephone number.</UserHelpText>
 </ClaimType>
 ```
@@ -277,7 +276,6 @@ Azure AD B2C podporuje různé typy vstupu uživatele, jako je textové pole, he
 <ClaimType Id="dateOfBirth">
   <DisplayName>Date Of Birth</DisplayName>
   <DataType>date</DataType>
-  <AdminHelpText/>
   <UserHelpText>The date on which you were born.</UserHelpText>
   <UserInputType>DateTimeDropdown</UserInputType>
 </ClaimType>

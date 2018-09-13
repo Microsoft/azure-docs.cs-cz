@@ -1,6 +1,6 @@
 ---
 title: Mezipaměť poskytovatel výstupní mezipaměti ASP.NET
-description: Naučte se mezipaměť výstupu stránky ASP.NET pomocí Azure Redis Cache
+description: Zjistěte, jak pomocí Azure Redis Cache výstup stránky ASP.NET do mezipaměti
 services: redis-cache
 documentationcenter: na
 author: wesmc7777
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 02/14/2017
 ms.author: wesmc
-ms.openlocfilehash: 81c95949971d54833ca7a15ec5148116c94767f7
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 3cf906830965959709a8c7e8dc7d2acc3f3a6f32
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
-ms.locfileid: "27909818"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35904022"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-redis-cache"></a>Poskytovatel výstupní mezipaměti ASP.NET pro Azure Redis Cache
-Poskytovatel výstupní mezipaměti Redis je mechanismus mimo proces úložiště pro data do výstupní mezipaměti. Tato data jsou speciálně pro úplné odpovědi protokolu HTTP (stránka ukládání výstupu do mezipaměti). Zprostředkovatel připojuje do nový výstupní mezipaměti poskytovatele rozšíření bod byla zavedena v technologii ASP.NET 4.
+Poskytovatel výstupní mezipaměti redis cache je mechanismus úložiště mimo proces pro výstupní data v mezipaměti. Tato data jsou speciálně pro úplné odpovědi protokolu HTTP (stránce ukládání výstupu do mezipaměti). Zprostředkovatel zpřístupní nový výstupní mezipaměť zprostředkovatele rozšíření bod, která byla zavedena v rozhraní ASP.NET 4.
 
-Pokud chcete používat poskytovatel výstupní mezipaměti Redis, nejdřív nakonfigurovat mezipaměť a pak nakonfigurujte vaši aplikaci ASP.NET pomocí balíčku Redis NuGet poskytovatel výstupní mezipaměti. Toto téma obsahuje pokyny týkající se konfigurace aplikace k používání poskytovatel výstupní mezipaměti Redis. Další informace o vytváření a konfiguraci instanci služby Azure Redis Cache najdete v tématu [vytvoření mezipaměti](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache).
+Poskytovatel výstupní mezipaměti Redis, nejprve nakonfigurovat mezipaměť a potom konfiguraci aplikace ASP.NET pomocí balíčku Redis NuGet poskytovatel výstupní mezipaměti. Toto téma obsahuje pokyny ke konfiguraci vaší aplikace pro použití zprostředkovatele výstupní mezipaměti Redis. Další informace o vytváření a konfiguraci instance služby Azure Redis Cache najdete v tématu [vytvoření mezipaměti](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache).
 
-## <a name="store-aspnet-page-output-in-the-cache"></a>Ukládání výstupu stránek ASP.NET do mezipaměti
-Chcete-li konfigurovat klientskou aplikaci v sadě Visual Studio pomocí balíčku Redis Cache relace stavu NuGet, klikněte na tlačítko **Správce balíčků NuGet**, **Konzola správce balíčků** z **nástroje** nabídky.
+## <a name="store-aspnet-page-output-in-the-cache"></a>Store výstup stránky technologie ASP.NET v mezipaměti
+Chcete-li konfigurovat klientskou aplikaci v sadě Visual Studio pomocí balíčku Redis Cache relace stavu NuGet, klikněte na tlačítko **Správce balíčků NuGet**, **Konzola správce balíčků** z **nástroje**nabídky.
 
 V okně `Package Manager Console` spusťte následující příkaz.
     
@@ -35,21 +35,24 @@ V okně `Package Manager Console` spusťte následující příkaz.
 Install-Package Microsoft.Web.RedisOutputCacheProvider
 ```
 
-Balíček Redis NuGet poskytovatel výstupní mezipaměti má závislost na StackExchange.Redis.StrongName balíčku. Pokud balíček StackExchange.Redis.StrongName se nenachází ve vašem projektu, je nainstalovaná. Další informace o balíčku pro Redis NuGet poskytovatel výstupní mezipaměti najdete v tématu [RedisOutputCacheProvider](https://www.nuget.org/packages/Microsoft.Web.RedisOutputCacheProvider/) NuGet stránky.
+Balíček Redis NuGet poskytovatel výstupní mezipaměti má závislost na balíčku StackExchange.Redis.StrongName. Pokud balíček StackExchange.Redis.StrongName není k dispozici ve vašem projektu, je nainstalována. Další informace o balíčku Redis NuGet zprostředkovatele mezipaměti výstupu, najdete v článku [RedisOutputCacheProvider](https://www.nuget.org/packages/Microsoft.Web.RedisOutputCacheProvider/) stránce NuGet.
 
 >[!NOTE]
->Kromě StackExchange.Redis.StrongName balíčku silným názvem vzrůstá také jiný silným názvem verze StackExchange.Redis. Pokud váš projekt používá StackExchange.Redis verze jiný silným názvem, že je nutné odinstalovat, v opačném případě můžete získat konflikty pojmenování ve vašem projektu. Další informace o těchto balíčcích najdete v tématu [.NET konfigurace klientů mezipaměti](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients).
+>Kromě StackExchange.Redis.StrongName balíček silným názvem je také verze bez silným názvem StackExchange.Redis. Pokud váš projekt používá verzi StackExchange.Redis bez silným názvem, že musíte provést odinstalaci, v opačném případě můžete získat konflikty pojmenování ve vašem projektu. Další informace týkající se těchto balíčků naleznete v tématu [.NET konfigurace klientů mezipaměti](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients).
 >
 >
 
-Balíček NuGet se stáhne a přidá požadované odkazy na sestavení a přidá do souboru web.config v následující části. Tato část obsahuje požadovanou konfiguraci pro aplikace ASP.NET pomocí poskytovatel výstupní mezipaměti Redis.
+Balíček NuGet stáhne a přidá odkazy na požadovaná sestavení a přidá do souboru web.config následující části. Tato část obsahuje požadované konfigurace pro aplikace ASP.NET pomocí poskytovatel výstupní mezipaměti Redis.
 
 ```xml
 <caching>
   <outputCachedefault Provider="MyRedisOutputCache">
     <providers>
+      <!-- For more details check https://github.com/Azure/aspnet-redis-providers/wiki -->
+      <!-- Either use 'connectionString' OR 'settingsClassName' and 'settingsMethodName' OR use 'host','port','accessKey','ssl','connectionTimeoutInMilliseconds' and 'operationTimeoutInMilliseconds'. -->
+      <!-- 'databaseId' and 'applicationName' can be used with both options. -->
       <!--
-      <add name="MyRedisOutputCache"
+      <add name="MyRedisOutputCache" 
         host = "127.0.0.1" [String]
         port = "" [number]
         accessKey = "" [String]
@@ -57,39 +60,47 @@ Balíček NuGet se stáhne a přidá požadované odkazy na sestavení a přidá
         databaseId = "0" [number]
         applicationName = "" [String]
         connectionTimeoutInMilliseconds = "5000" [number]
-        operationTimeoutInMilliseconds = "5000" [number]
+        operationTimeoutInMilliseconds = "1000" [number]
+        connectionString = "<Valid StackExchange.Redis connection string>" [String]
+        settingsClassName = "<Assembly qualified class name that contains settings method specified below. Which basically return 'connectionString' value>" [String]
+        settingsMethodName = "<Settings method should be defined in settingsClass. It should be public, static, does not take any parameters and should have a return type of 'String', which is basically 'connectionString' value.>" [String]
+        loggingClassName = "<Assembly qualified class name that contains logging method specified below>" [String]
+        loggingMethodName = "<Logging method should be defined in loggingClass. It should be public, static, does not take any parameters and should have a return type of System.IO.TextWriter.>" [String]
+        redisSerializerType = "<Assembly qualified class name that implements Microsoft.Web.Redis.ISerializer>" [String]
       />
       -->
-      <add name="MyRedisOutputCache" type="Microsoft.Web.Redis.RedisOutputCacheProvider" host="127.0.0.1" accessKey="" ssl="false"/>
-    </providers>
+      <add name="MyRedisOutputCache" type="Microsoft.Web.Redis.RedisOutputCacheProvider"
+           host=""
+           accessKey=""
+           ssl="true" />
   </outputCache>
 </caching>
 ```
 
-V komentáři části poskytuje příklad atributů a ukázkové nastavení pro každý atribut.
+Komentářem část poskytuje příklad atributů a nastavení vzorku pro každý atribut.
 
-Nakonfigurovat atributy s hodnotami v okně vaší mezipaměti na portálu Microsoft Azure a podle potřeby nakonfigurujte další hodnoty. Pokyny pro přístup k vlastnosti mezipaměti najdete v části [konfigurace nastavení mezipaměti Redis](cache-configure.md#configure-redis-cache-settings).
+Nakonfigurovat atributy s hodnotami z okna vaší mezipaměti na webu Microsoft Azure Portal a podle potřeby nakonfigurujte další hodnoty. Pokyny pro přístup k vlastnosti vaší mezipaměti, naleznete v tématu [konfigurace nastavení mezipaměti Redis](cache-configure.md#configure-redis-cache-settings).
 
-* **hostitele** – zadejte váš koncový bod mezipaměti.
-* **port** – použít port bez SSL nebo vaše port SSL, v závislosti na nastavení ssl.
+* **Hostitel** – zadejte koncový bod mezipaměti.
+* **port** – použít port bez SSL nebo port protokolu SSL, v závislosti na nastavení ssl.
 * **accessKey** – použít primární nebo sekundární klíč pro mezipaměť.
-* **SSL** – hodnota true, pokud chcete zabezpečit komunikaci mezipaměti nebo klienta pomocí protokolu ssl; jinak hodnota false. Nezapomeňte zadat správný port.
-  * Port bez SSL je ve výchozím nastavení pro nové mezipaměti zakázán. Zadejte hodnotu PRAVDA pro toto nastavení pro použití portu SSL. Další informace o povolení portu bez SSL najdete v tématu [přístupové porty](cache-configure.md#access-ports) tématu [konfigurace mezipaměti](cache-configure.md) tématu.
-* **hodnotu databaseId** – zadanou databázi, kterou chcete použít pro mezipaměť výstupní data. Pokud není zadáno, je použita výchozí hodnota 0.
-* **applicationName** – klíče jsou uložené v redis jako `<AppName>_<SessionId>_Data`. Toto schéma pojmenování umožňuje více aplikacím sdílet stejný klíč. Tento parametr je volitelný a pokud nezadáte, je použita výchozí hodnota.
-* **connectionTimeoutInMilliseconds** – toto nastavení umožňuje potlačit connectTimeout nastavení klienta StackExchange.Redis. Pokud není zadaný, použije se výchozí nastavení connectTimeout 5000. Další informace najdete v tématu [konfigurační model StackExchange.Redis](http://go.microsoft.com/fwlink/?LinkId=398705).
-* **operationTimeoutInMilliseconds** – toto nastavení umožňuje potlačit syncTimeout nastavení klienta StackExchange.Redis. Pokud není zadaný, použije se výchozí nastavení syncTimeout 1000. Další informace najdete v tématu [konfigurační model StackExchange.Redis](http://go.microsoft.com/fwlink/?LinkId=398705).
+* **SSL** – hodnota true, pokud chcete pro zabezpečení komunikace klient/mezipaměti pomocí protokolu ssl; jinak hodnota false. Nezapomeňte zadat správný port.
+  * Port bez SSL je ve výchozím nastavení pro nové mezipaměti zakázán. Zadejte hodnotu PRAVDA pro toto nastavení pro použití portu SSL. Další informace o povolení portu bez SSL, najdete v článku [přístupové porty](cache-configure.md#access-ports) tématu [konfigurace mezipaměti](cache-configure.md) tématu.
+* **ID databáze** – zadanou databázi, kterou má použít pro mezipaměť výstupní data. Pokud není zadán, je použita výchozí hodnota 0.
+* **applicationName** – klíče jsou uložené v redis jako `<AppName>_<SessionId>_Data`. Toto schéma pojmenování umožňuje více aplikacím sdílet stejný klíč. Tento parametr je nepovinný a pokud nezadáte ji použije se výchozí hodnota.
+* **connectionTimeoutInMilliseconds** – toto nastavení umožňuje potlačit connectTimeout nastavení klienta StackExchange.Redis. Pokud není zadán, se používá ve výchozím nastavení connectTimeout 5000. Další informace najdete v tématu [konfigurační model StackExchange.Redis](http://go.microsoft.com/fwlink/?LinkId=398705).
+* **operationTimeoutInMilliseconds** – toto nastavení umožňuje potlačit syncTimeout nastavení klienta StackExchange.Redis. Pokud není zadán, se používá ve výchozím nastavení syncTimeout 1000. Další informace najdete v tématu [konfigurační model StackExchange.Redis](http://go.microsoft.com/fwlink/?LinkId=398705).
 
-Přidáte direktivu OutputCache na každé stránce, pro kterou chcete výstupu do mezipaměti.
+Přidejte direktivu OutputCache na každou stránku, pro kterou chcete výstupu do mezipaměti.
 
 ```
 <%@ OutputCache Duration="60" VaryByParam="*" %>
 ```
 
-V předchozím příkladu data uložená v mezipaměti stránky zůstává v mezipaměti po dobu 60 sekund, a jinou verzi stránky se uloží do mezipaměti pro každou kombinaci parametrů. Další informace o direktivu OutputCache najdete v tématu [ @OutputCache ](http://go.microsoft.com/fwlink/?linkid=320837).
+V předchozím příkladu stránky v mezipaměti data zůstanou v mezipaměti po dobu 60 sekund, a jinou verzi na stránce se uloží do mezipaměti pro každou kombinaci parametrů. Další informace o direktivě OutputCache najdete v tématu [ @OutputCache ](http://go.microsoft.com/fwlink/?linkid=320837).
 
-Jakmile jsou tyto kroky provést, vaše aplikace nakonfigurována pro použití poskytovatel výstupní mezipaměti Redis.
+Jakmile jsou tyto kroky provést, vaše aplikace nakonfigurována pro použití zprostředkovatele výstupní mezipaměti Redis.
 
 ## <a name="next-steps"></a>Další postup
-Podívejte se [poskytovatele stavu relace ASP.NET pro Azure Redis Cache](cache-aspnet-session-state-provider.md).
+Podívejte se [zprostředkovatel stavu relací ASP.NET pro Azure Redis Cache](cache-aspnet-session-state-provider.md).
 

@@ -1,51 +1,51 @@
 ---
-title: Azure Machine Learning nasazení modelu správy webové služby | Microsoft Docs
-description: Tento dokument popisuje kroky k nasazení modelu strojového učení pomocí Azure Machine Learning modelu správy.
+title: Azure Machine Learning nasazení modelu správy webové služby | Dokumentace Microsoftu
+description: Tento dokument popisuje kroky při nasazení modelu strojového učení pomocí Azure Machine Learning model správy.
 services: machine-learning
 author: aashishb
 ms.author: aashishb
 manager: hjerez
 ms.reviewer: jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 01/03/2018
-ms.openlocfilehash: 5360c9371b0e1d3191624cd1a65e505e7b9968de
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: f6bb6f3fbafe9b529d483af8edd55e16a35e703a
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34832039"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35642911"
 ---
-# <a name="deploying-a-machine-learning-model-as-a-web-service"></a>Nasazení modelu strojového učení jako webovou službu
+# <a name="deploying-a-machine-learning-model-as-a-web-service"></a>Nasadit Model strojového učení jako webové služby
 
-Azure Machine Learning modelu Management poskytuje rozhraní pro nasazení modely jako kontejnerizované na základě Docker webové služby. Můžete nasadit modely, které vytvoříte pomocí rozhraní, jako je například Spark, Microsoft kognitivní Toolkit (CNTK), Keras, Tensorflow a Python. 
+Správa modelů Azure Machine Learning poskytuje rozhraní pro nasazení modelů jako kontejnerizovaných webových služeb využívajících Docker. Můžete nasadit modely vytvořené pomocí architektury, jako jsou Spark, Microsoft Cognitive Toolkit (CNTK), Keras, Tensorflow a Python. 
 
-Tento dokument popisuje postup nasazení modely jako webové služby pomocí rozhraní příkazového řádku (CLI) Azure Machine Learning modelu správy.
+Tento dokument popisuje kroky pro nasazení modelů jako webové služby pomocí rozhraní příkazového řádku správy modelů Azure Machine Learning (rozhraní příkazového řádku).
 
 ## <a name="what-you-need-to-get-started"></a>Co potřebujete, abyste mohli začít
 
-K plnému využití z této příručky, byste měli mít přispěvatele přístup k předplatné Azure nebo skupinu prostředků, které vaše modely, které můžete nasadit.
-Rozhraní příkazového řádku obsahuje předem nainstalovaná na Azure Machine Learning Workbench a na [Azure DSVMs](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-virtual-machine-overview).  Lze ji také nainstalovat jako samostatný balíček.
+Pokud chcete naplno využít této příručce, byste měli mít přístup přispěvatele k předplatnému Azure nebo skupinu prostředků, kterou můžete nasadit vlastní modely a.
+Rozhraní příkazového řádku je předem nainstalovaný na aplikaci Azure Machine Learning Workbench a v [Azure datové](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-virtual-machine-overview).  Můžete ho taky nainstalovat jako samostatný balíček.
 
-Kromě toho prostředí účet a nasazení modelu správy musí již být nastavení.  Další informace o nastavení účtu pro správu modelu a prostředí pro místní a nasazení clusteru najdete v tématu [Model správy konfigurace](deployment-setup-configuration.md).
+Kromě toho prostředí účet a nasazení modelu správy musí již být nastavení.  Další informace o nastavení vašeho účtu služby Správa modelů a prostředí pro místní a nasazení clusteru najdete v tématu [konfigurace správy modelů](deployment-setup-configuration.md).
 
-## <a name="deploying-web-services"></a>Nasazení webové služby
-Pomocí CLIs, můžete nasadit webové služby pro spuštění v místním počítači nebo na clusteru.
+## <a name="deploying-web-services"></a>Nasazování webových služeb
+Rozhraní příkazového řádku můžete nasadit webové služby ke spuštění v místním počítači nebo v clusteru.
 
-Doporučujeme začít s místní nasazení. Nejprve ověřit, že model a kód fungovat, pak nasazení webové služby do clusteru s podporou pro produkční škálování použití.
+Doporučujeme začít se místní nasazení. Nejprve ověřte, že váš model a kód fungovat, pak nasadit také webovou službu do clusteru pro použití v produkčním měřítku.
 
 Tady jsou kroky nasazení:
-1. Pomocí modelu Machine Learning uložené, vyškolení,
-2. Vytvořte schéma pro webové služby vstupní a výstupní data
-3. Vytvoření bitové kopie založené na Docker kontejneru
+1. Použít uložený, trénované, model Machine Learning
+2. Vytvořte schéma pro webovou službu vstupní a výstupní data
+3. Vytvoření image kontejneru dockeru
 4. Vytvoření a nasazení webové služby
 
-### <a name="1-save-your-model"></a>1. Uložit modelu
-Začněte u souboru uložené trained model, například mymodel.pkl. Přípona souboru se liší podle platformy, které použijete k natrénování a model uložte. 
+### <a name="1-save-your-model"></a>1. Uložit model
+Začněte s souboru uloženého trénovaného modelu, například mymodel.pkl. Přípona souboru se liší podle platformy, na kterou použijete k natrénování a uložit model. 
 
-Například můžete použít jazyka Python okurky knihovnu modulu trained model uložit do souboru. Tady je [příklad](http://scikit-learn.org/stable/modules/model_persistence.html) použití Iris datové sady:
+Jako příklad slouží Pickle knihovna Python k uložení naučeného modelu do souboru. Tady je [příklad](http://scikit-learn.org/stable/modules/model_persistence.html) datovou sadu Iris pomocí:
 
 ```python
 import pickle
@@ -61,7 +61,7 @@ saved_model = pickle.dumps(clf)
 
 Při generování schématu je volitelný, důrazně doporučujeme k definování proměnné formát požadavku a vstup pro lepší zpracování.
 
-Vytvořte schéma automaticky ověření vstupní a výstupní webové služby. CLIs taky použití schématu pro generování dokumentu Swagger pro webovou službu.
+Vytvořte schéma automaticky ověřit vstup a výstup webové služby. Rozhraní příkazového řádku také použití schématu pro generování dokumentu Swagger pro webovou službu.
 
 Pokud chcete vytvořit schéma, importujte následující knihovny:
 
@@ -70,7 +70,7 @@ from azureml.api.schema.dataTypes import DataTypes
 from azureml.api.schema.sampleDefinition import SampleDefinition
 from azureml.api.realtime.services import generate_schema
 ```
-V dalším kroku definujte vstupní proměnné například Spark dataframe, Pandas dataframe nebo NumPy pole. Následující příklad používá Numpy pole:
+Dále definujte vstupních proměnných, například Spark dataframe, Pandas dataframe nebo NumPy pole. Následující příklad používá Numpy pole:
 
 ```python
 inputs = {"input_array": SampleDefinition(DataTypes.NUMPY, yourinputarray)}
@@ -90,7 +90,7 @@ inputs = {"input_df": SampleDefinition(DataTypes.PANDAS, yourinputdataframe)}
 generate_schema(run_func=run, inputs=inputs, filepath='./outputs/service_schema.json')
 ```
 
-Následující příklad používá obecný formát JSON:
+Obecný formát JSON v následujícím příkladu:
 
 ```python
 inputs = {"input_json": SampleDefinition(DataTypes.STANDARD, yourinputjson)}
@@ -98,22 +98,22 @@ generate_schema(run_func=run, inputs=inputs, filepath='./outputs/service_schema.
 ```
 
 ### <a name="3-create-a-scorepy-file"></a>3. Vytvořte soubor score.py
-Poskytnete score.py souboru, který načte modelu a vrátí výsledek předpovědi pomocí modelu.
+Zadáte-score.py soubor, který načte modelu a vrátí výsledky předpovědí pomocí modelu.
 
 Soubor musí obsahovat dvě funkce: init a spustit.
 
-Přidejte následující kód v horní části souboru score.py povolit funkci shromažďování dat, která pomáhá shromažďovat data vstup a předpovědi modelu
+Přidejte následující kód v horní části souboru score.py povolit funkci shromažďování dat, která pomáhá shromažďovat data vstupu a předpovědí modelu
 
 ```python
 from azureml.datacollector import ModelDataCollector
 ```
 
-Zkontrolujte [modelu shromažďování dat](how-to-use-model-data-collection.md) další podrobnosti o tom, jak tuto funkci používat.
+Zkontrolujte [shromažďování dat modelů](how-to-use-model-data-collection.md) části Podrobné informace o tom, jak tuto funkci používat.
 
 #### <a name="init-function"></a>Init – funkce
-Pomocí funkce init načíst uložené model.
+Pomocí funkce init můžete načíst uložené modelu.
 
-Příklad jednoduchého init – funkce načítání modelu:
+Příklad jednoduché init funkce načítání modelu:
 
 ```python
 def init():  
@@ -126,9 +126,9 @@ def init():
 ```
 
 #### <a name="run-function"></a>Run – funkce
-Spuštění funkce používá k vrácení předpovědi v modelu a vstupní data.
+Spuštění funkce používá k vrácení předpověď modelu a vstupní data.
 
-Příklad jednoduchou spuštění funkce zpracování vstupu a vrátit výsledek předpovědi:
+Příklad jednoduchou funkci zpracování vstupu a vrátit výsledek předpovědi spustit:
 
 ```python
 def run(input_df):
@@ -142,8 +142,8 @@ def run(input_df):
         return (str(e))
 ```
 
-### <a name="4-register-a-model"></a>4. Zaregistrovat modelu
-Následující příkaz slouží k registraci model vytvořený v kroku 1 výše,
+### <a name="4-register-a-model"></a>4. Zaregistrujte model
+Následující příkaz se použije k registraci modelu vytvořili v kroku 1 výše
 
 ```
 az ml model register --model [path to model file] --name [model name]
@@ -155,26 +155,26 @@ Následující příkaz vám pomůže vytvořit manifest pro model
 ```
 az ml manifest create --manifest-name [your new manifest name] -f [path to score file] -r [runtime for the image, e.g. spark-py]
 ```
-Model dříve zaregistrovaný můžete přidat k manifestu pomocí argumentu `--model-id` nebo `-i` ve výše uvedeném příkazu. S další lze zadat více modelů -i argumenty.
+Dříve registrovaného modelu můžete přidat do manifestu pomocí argumentu `--model-id` nebo `-i` ve výše uvedeném příkazu. Více modelů je možné zadat při další -i argumenty.
 
 ### <a name="6-create-an-image"></a>6. Vytvoření image 
-Můžete vytvořit bitovou kopii s možností obsahující vytvořené před jeho manifestu. 
+Můžete vytvořit bitovou kopii s možností máte vytvořený manifestu před. 
 
 ```
 az ml image create -n [image name] --manifest-id [the manifest ID]
 ```
 
 >[!NOTE] 
->Jeden příkaz můžete využít taky k registraci, manifest a model vytváření modelu. Použití -h službou vytvořit příkaz pro další podrobnosti.
+>Můžete také jediný příkaz k provedení registrace, manifest a model vytváření modelu. Použití -h ve službě vytvořit příkaz pro další podrobnosti.
 
-Jako alternativu, je jeden příkaz registrovat model, vytvoření manifestu a vytvořit bitovou kopii (ale není vytvoření a nasazení webové služby, ještě) jako jeden krok následujícím způsobem.
+Jako alternativu, je jediným příkazem zaregistrujte model, vytvoření manifestu a vytvořit bitovou kopii (ale není vytvořit a nasadit také webovou službu ještě) jako jeden krok následujícím způsobem.
 
 ```
 az ml image create -n [image name] --model-file [model file or folder path] -f [code file, e.g. the score.py file] -r [the runtime e.g. spark-py which is the Docker container image base]
 ```
 
 >[!NOTE]
->Další informace o parametrech příkazového typ -h na konci příkazu například bitové kopie ml az vytvořit -h.
+>Podrobné informace o parametrech příkazového typ -h na konci příkazu například az ml image vytvořte -h.
 
 
 ### <a name="7-create-and-deploy-the-web-service"></a>7. Vytvoření a nasazení webové služby
@@ -185,16 +185,16 @@ az ml service create realtime --image-id <image id> -n <service name>
 ```
 
 >[!NOTE] 
->Také můžete jeden příkaz k provedení všechny předchozí kroky 4. Použití -h službou vytvořit příkaz pro další podrobnosti.
+>Jediný příkaz můžete také provádět všechny předchozí kroky 4. Použití -h ve službě vytvořit příkaz pro další podrobnosti.
 
-Jako alternativu je jeden příkaz pro registraci modelu, vytvoření manifestu, vytvořit bitovou kopii, a taky, vytvoření a nasazení webové služby, jako jeden krok následujícím způsobem.
+Jako alternativu je jediným příkazem zaregistrujte model, vytvoření manifestu, vytvoření bitové kopie, a také vytvoření a nasazení webové služby, jako jeden krok následujícím způsobem.
 
 ```azurecli
 az ml service create realtime --model-file [model file/folder path] -f [scoring file e.g. score.py] -n [your service name] -s [schema file e.g. service_schema.json] -r [runtime for the Docker container e.g. spark-py or python] -c [conda dependencies file for additional python packages]
 ```
 
 
-### <a name="8-test-the-service"></a>8. Testování služby
+### <a name="8-test-the-service"></a>8. Pokud chcete službu otestovat
 Chcete-li získat informace o tom, jak volat služby použijte následující příkaz:
 
 ```
@@ -207,11 +207,11 @@ Volání služby pomocí funkce spuštění z příkazového řádku:
 az ml service run realtime -i <service id> -d "{\"input_df\": [INPUT DATA]}"
 ```
 
-V následujícím příkladu volání ukázku Iris webové služby:
+Následující příklad volá ukázku Iris webové služby:
 
 ```
 az ml service run realtime -i <service id> -d "{\"input_df\": [{\"sepal length\": 3.0, \"sepal width\": 3.6, \"petal width\": 1.3, \"petal length\":0.25}]}"
 ```
 
 ## <a name="next-steps"></a>Další postup
-Teď, když testování k webové službě pro spustit místně, můžete nasadit do clusteru s podporou pro použití ve velkém měřítku. Podrobnosti o nastavení clusteru s podporou pro nasazení webu služby najdete v tématu [modelu Management Configuration](deployment-setup-configuration.md). 
+Teď, když jste otestovali webovou službu spustit místně, můžete ho nasadíte na clusteru pro použití ve velkém měřítku. Podrobnosti o nastavení clusteru pro nasazení webové služby najdete v tématu [konfigurace správy modelu](deployment-setup-configuration.md). 

@@ -1,38 +1,38 @@
 ---
-title: Pomocí Azure Machine Learning Data přípravy rozšiřitelnost Python | Microsoft Docs
-description: Tento dokument obsahuje přehled a příklady podrobné informace o použití kód Python rozšířit funkce Příprava dat
+title: Rozšíření Pythonu pomocí služby Azure Machine Learning Data přípravy | Dokumentace Microsoftu
+description: Tento dokument obsahuje přehled a podrobné příklady toho, jak použít kód Python k rozšíření funkčnosti přípravu dat
 services: machine-learning
 author: euangMS
 ms.author: euang
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.custom: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 05/09/2018
-ms.openlocfilehash: e91d3e4bfb1cba6f45b0106b3fabe5bef7e0e079
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: a713f5fcde31e0e25de080a65b71209011ef551d
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831420"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35643479"
 ---
-# <a name="data-preparations-python-extensions"></a>Rozšíření dat přípravy Python
-Azure Machine Learning Data přípravy jako způsob vyplnění funkce mezery mezi integrované funkce, zahrnuje rozšíření na více úrovních. V tomto dokumentu jsme popisují rozšiřitelnost prostřednictvím skript v jazyce Python. 
+# <a name="data-preparations-python-extensions"></a>Rozšíření Pythonu přípravy dat.
+Jako způsob vyplnění funkčností mezi integrované funkce Příprava dat aplikace Azure Machine Learning obsahuje rozšíření na více úrovních. V tomto dokumentu jsme popisují rozšiřitelnost prostřednictvím skript Pythonu. 
 
 ## <a name="custom-code-steps"></a>Kroky vlastního kódu 
-Data přípravy má následující vlastní kroky, kde uživatelé můžete napsat kód:
+Příprava dat má vlastní takto kde uživatelé můžou zadat kód:
 
-* Přidání sloupců
+* Přidat sloupec
 * Rozšířený filtr
 * Transformace toku dat
 * Transformace oddílu
 
-## <a name="code-block-types"></a>Typy blok kódu 
-Pro každý z těchto kroků jsme podporují dva typy kódu bloku. Nejprve podporujeme výraz úplné Python, který je provést, protože je. Za druhé podporujeme modul Python, kde voláme určitou funkci známé podpisem kódu, který zadáte.
+## <a name="code-block-types"></a>Typy bloků kódu 
+Pro každý z těchto kroků podporuje dva typy bloků kódu. Nejprve podporujeme úplné výraz Pythonu, který je proveden, protože je. Za druhé podporuje modul Pythonu, kde voláme určitou funkci známé podpisem v kódu, které zadáte.
 
-Například můžete přidat nový sloupec, který vypočítá protokol jiný sloupec v následujících dvou způsobů:
+Například můžete přidat nový sloupec, který vypočítá protokolu jiného sloupce v následujících dvou způsobů:
 
 Výraz 
 
@@ -48,14 +48,14 @@ def newvalue(row):
 ```
 
 
-Transformace přidat sloupec v režimu modulu očekává funkci s názvem `newvalue` který přijímá řádek proměnné a vrátí hodnotu pro sloupec. Tento modul může obsahovat jakékoliv množství kód Python s další funkce, importy atd.
+Přidat sloupec transformace v režimu modulu očekává, že se najít funkci s názvem `newvalue` , který přijímá proměnnou řádků a vrátí hodnotu pro sloupec. Tento modul může obsahovat libovolné množství kódu v Pythonu s další funkce, importy, atd.
 
-Podrobnosti o každém bodě rozšíření jsou popsané v následujících částech. 
+Podrobnosti o jednotlivých rozšiřovacího bodu jsou popsány v následujících částech. 
 
 ## <a name="imports"></a>Importy 
-Pokud použijete typ bloku výrazu, můžete přesto přidat **importovat** příkazů do vašeho kódu. Všechny musí být seskupeny do nejvyšší řádků kódu.
+Pokud používáte typ bloku výrazu, můžete přesto přidat **importovat** příkazy do vašeho kódu. Všichni musí být seskupeny na horní řádky kódu.
 
-Opravte 
+Opravit 
 
 ```python
 import math 
@@ -73,10 +73,10 @@ import numpy
 ```
  
  
-Pokud použijete typ bloku modul, můžete podle všechny normální Python pravidla pro používání **importovat** příkaz. 
+Pokud používáte modul typ bloku, můžete postupovat podle všech běžných pravidel Python pro použití **importovat** příkazu. 
 
 ## <a name="default-imports"></a>Výchozí importy
-Následující importy jsou vždy zahrnuty a dá se použít v kódu. Nemusíte je znovu importovat. 
+Následující importy jsou vždy součástí a použitelné ve vašem kódu. Není nutné je znovu importovat. 
 
 ```python
 import math  
@@ -89,13 +89,13 @@ import scipy as sp
 ```
   
 
-## <a name="install-new-packages"></a>Instalace nové balíčky
-Pokud chcete použít balíček, který není ve výchozím nastavení nainstalovaná, musíte nejprve nainstalovat do prostředí, které používá Data přípravy. Tato instalace je třeba provést na místním počítači a na všechny výpočty cíle, které chcete spustit na.
+## <a name="install-new-packages"></a>Nainstalovat nové balíčky
+Použít balíček, který není nainstalovaný ve výchozím nastavení, musíte nejprve nainstalovat do prostředí, která používá Data přípravy. Tato instalace je potřeba udělat v místním počítači a na všech cílových výpočetních prostředí, které chcete spouštět.
 
-K instalaci vaší balíčků výpočetní cíli, budete muset upravit conda_dependencies.yml soubor umístěný ve složce aml_config v kořenovém adresáři projektu.
+Pokud chcete nainstalovat balíčky v cílové výpočetní prostředí, je třeba upravit conda_dependencies.yml soubor umístěný ve složce Nástroje aml_config v kořenovém adresáři vašeho projektu.
 
 ### <a name="windows"></a>Windows 
-A vyhledejte umístění v systému Windows, najít konkrétní aplikaci instalaci Pythonu a jeho adresáře skripty. Výchozí umístění je:  
+K vyhledání umístění na Windows, najdete instalaci konkrétní aplikace Python a jeho adresář skripty. Výchozí umístění je:  
 
 `C:\Users\<user>\AppData\Local\AmlWorkbench\Python\Scripts` 
 
@@ -108,7 +108,7 @@ nebo
 `pip install <libraryname> `
 
 ### <a name="mac"></a>Mac 
-A vyhledejte umístění na Macu, najít konkrétní aplikaci instalaci Pythonu a jeho adresáře skripty. Výchozí umístění je: 
+K vyhledání umístění na počítači Mac, najdete instalaci konkrétní aplikace Python a jeho adresář skripty. Výchozí umístění je: 
 
 `/Users/<user>/Library/Caches/AmlWorkbench/Python/bin` 
 
@@ -120,8 +120,8 @@ nebo
 
 `./pip install <libraryname>`
 
-## <a name="use-custom-modules"></a>Použijte vlastní moduly
-V toku dat transformace (skript) uveďte následující kód Python
+## <a name="use-custom-modules"></a>Použití vlastních modulů
+Napište následující kód Pythonu v Transform Dataflow (Script)
 
 ```python
 import sys
@@ -131,7 +131,7 @@ from UserModule import ExtensionFunction1
 df = ExtensionFunction1(df)
 ```
 
-Přidat sloupce (skript), nastavte typ bloku kódu = modul a zadejte následující kód Python
+Přidat sloupec (skript), nastavte typ bloku kódu = modul a zadejte následující kód Pythonu
 
 ```python 
 import sys
@@ -142,11 +142,11 @@ from UserModule import ExtensionFunction2
 def newvalue(row):
     return ExtensionFunction2(row)
 ```
-Pro spuštění různých kontextech (místní, Docker, Spark), přejděte na absolutní cesta na správném místě. Můžete použít "os.getcwd() + relativePath" ho najít.
+Pro spuštění různých kontextech (místní, Docker, Spark), přejděte na absolutní cesta na správném místě. Můžete chtít použít "os.getcwd() relativePath plus (+) a vyhledejte jej.
 
 
-## <a name="column-data"></a>Datové sloupce 
-Sloupec dat je přístupná z řádku pomocí zápisu s tečkou nebo zápis klíč hodnota. Názvy sloupců, které obsahují mezery nebo speciální znaky, není přístupná pomocí zápisu s tečkou. `row` Proměnná by měla být vždy definována v obou režimech rozšíření Python (modulu a výraz). 
+## <a name="column-data"></a>Sloupec data 
+Sloupec data přístupná z řádku pomocí zápisu s tečkou nebo zápis klíč hodnota. Názvy sloupců, které obsahují mezery ani speciální znaky nelze přistupovat pomocí zápisu s tečkou. `row` Byste vždy měli definovat proměnnou v obou režimech rozšíření Pythonu (modulu a výraz). 
 
 Příklady 
 
@@ -155,12 +155,12 @@ Příklady
     row["ColumnA"] + row["ColumnB"]
 ```
 
-## <a name="add-column"></a>Přidání sloupců 
+## <a name="add-column"></a>Přidat sloupec 
 ### <a name="purpose"></a>Účel
-Bod rozšíření přidat sloupec umožňuje zapisovat Python k výpočtu nový sloupec. Kód, který můžete psát má přístup k úplné řádek. Je nutné vrátit novou hodnotu sloupce pro každý řádek. 
+Přidat sloupec rozšiřovací bod umožňuje zapsat Python k výpočtu nový sloupec. Kód, který napíšete má přístup k celý řádek. Je potřeba vrátit hodnotu nový sloupec pro každý řádek. 
 
 ### <a name="how-to-use"></a>Způsob použití
-Tento bod rozšíření můžete přidat pomocí bloku přidat sloupec (skript). Je k dispozici na nejvyšší úrovni **transformace** nabídky, stejně jako na **sloupec** kontextové nabídky. 
+Tento rozšiřovací bod můžete přidat pomocí bloku Add Column (Script). Je k dispozici na na nejvyšší úrovni **transformace** nabídky, stejně jako na **sloupec** kontextové nabídky. 
 
 ### <a name="syntax"></a>Syntaxe
 Výraz
@@ -179,10 +179,10 @@ def newvalue(row):
 
 ## <a name="advanced-filter"></a>Rozšířený filtr
 ### <a name="purpose"></a>Účel 
-Bod rozšíření Upřesnit filtr umožňuje psát vlastní filtr. Máte přístup k celý řádek, a váš kód musí vracet hodnotu True (včetně řádek), nebo hodnotu NEPRAVDA (vyloučení řádek). 
+Rozšířený filtr rozšiřovací bod umožňuje psát vlastní filtr. Máte přístup k celým řádkem, a musí kód vrátit hodnotu True (včetně řádek), nebo hodnotu NEPRAVDA (vyloučit řádek). 
 
 ### <a name="how-to-use"></a>Způsob použití
-Tento bod rozšíření můžete přidat pomocí bloku Advanced Filter (skript). Je k dispozici na nejvyšší úrovni **transformace** nabídky. 
+Tento rozšiřovací bod můžete přidat pomocí bloku Rozšířený filtr (skript). Je k dispozici na na nejvyšší úrovni **transformace** nabídky. 
 
 ### <a name="syntax"></a>Syntaxe
 
@@ -202,15 +202,15 @@ def includerow(row):
 
 ## <a name="transform-dataflow"></a>Transformace toku dat
 ### <a name="purpose"></a>Účel 
-Bod rozšíření transformace toku dat umožňuje zcela transformace datového toku. Máte přístup k Pandas dataframe, který obsahuje všechny sloupce a řádky, které jste zpracování. Váš kód musí vracet Pandas dataframe s nová data. 
+Transformace toku dat rozšiřovacího bodu vám umožňuje zcela transformovat tok dat. Máte přístup k Pandas dataframe, který obsahuje všechny sloupce a řádky, které jste zpracování. Váš kód musí vracet Pandas dataframe s novými daty. 
 
 >[!NOTE]
->V Python je všechna data, která mají být načtena do paměti v Pandas dataframe, pokud se používá toto rozšíření. 
+>V jazyce Python je všechna data mají být načtena do paměti v Pandas dataframe, pokud se používá toto rozšíření. 
 >
->V Spark všechna data se shromažďují do jednoho pracovního uzlu. Pokud data je velký, pracovní může mít nedostatek paměti. Pečlivě dodržujte.
+>Ve Sparku všechna data jsou shromažďována do jednoho pracovního uzlu. Pokud jsou data velmi velké, pracovník může dojít volné paměti. Používejte opatrně.
 
 ### <a name="how-to-use"></a>Způsob použití 
-Tento bod rozšíření můžete přidat pomocí bloku toku transformace dat (skript). Je k dispozici na nejvyšší úrovni **transformace** nabídky. 
+Tento rozšiřovací bod můžete přidat pomocí bloku Transform Dataflow (Script). Je k dispozici na na nejvyšší úrovni **transformace** nabídky. 
 ### <a name="syntax"></a>Syntaxe 
 
 Výraz
@@ -233,14 +233,14 @@ def transform(df):
 
 ## <a name="transform-partition"></a>Transformace oddílu  
 ### <a name="purpose"></a>Účel 
-Bodem transformace oddílu rozšíření umožňuje transformovat oddíl datového toku. Máte přístup k Pandas dataframe, který obsahuje všechny sloupce a řádky, pro tento oddíl. Váš kód musí vracet Pandas dataframe s nová data. 
+Rozšiřovací bod transformace oddíl umožňuje transformovat oddílu datového toku. Máte přístup k Pandas dataframe, který obsahuje všechny sloupce a řádky pro tento oddíl. Váš kód musí vracet Pandas dataframe s novými daty. 
 
 >[!NOTE]
->V Python budete muset zvýšit s jedním oddílem nebo více oddílů, v závislosti na velikosti vaše data. V Spark kterými pracujete dataframe, která obsahuje data pro oddíl v dané pracovního uzlu. V obou případech nelze předpokládat, že máte přístup k celé datové sady. 
+>V jazyce Python může se skončit s jedním oddílem nebo více oddílů, v závislosti na velikosti dat. Ve Sparku kterou pracujete datový rámec, který obsahuje data pro oddíl na daný pracovního uzlu. V obou případech nelze předpokládat, že máte přístup k celé datové sady. 
 
 
 ### <a name="how-to-use"></a>Způsob použití
-Tento bod rozšíření můžete přidat pomocí bloku transformace oddílu (skript). Je k dispozici na nejvyšší úrovni **transformace** nabídky. 
+Tento rozšiřovací bod můžete přidat pomocí bloku transformace oddílu (skript). Je k dispozici na na nejvyšší úrovni **transformace** nabídky. 
 
 ### <a name="syntax"></a>Syntaxe 
 
@@ -265,10 +265,10 @@ def transform(df, index):
 
 
 ## <a name="datapreperror"></a>DataPrepError  
-### <a name="error-values"></a>Chybové hodnoty  
-Při přípravě dat existuje koncept chybové hodnoty. 
+### <a name="error-values"></a>Chybových hodnot  
+Příprava dat existuje koncept chybových hodnot. 
 
-Je možné setkat chybové hodnoty v vlastní kód Python. Jsou instance třídy Python s názvem `DataPrepError`. Tato třída zabalí výjimka Python a má několik vlastností. Vlastnosti obsahují informace o chybě, která došlo k chybě při zpracování původní hodnotu, stejně jako původní hodnotu. 
+Je možné se setkat se chybové hodnoty ve vlastním kódu Pythonu. Jsou instancemi třídy Python s názvem `DataPrepError`. Tato třída zabalí výjimka Python a má několik vlastností. Všechny vlastnosti obsahují informace o chybě, ke které došlo při zpracování na původní hodnotu, stejně jako na původní hodnotu. 
 
 
 ### <a name="datapreperror-class-definition"></a>Definice třídy DataPrepError
@@ -277,7 +277,7 @@ class DataPrepError(Exception):
     def __bool__(self): 
         return False 
 ``` 
-Vytvoření DataPrepError v rámci přípravy Python Data obvykle vypadá takto: 
+Vytvoření DataPrepError v rámci Python přípravy dat obecně vypadá takto: 
 ```python 
 DataPrepError({ 
    'message':'Cannot convert to numeric value', 
@@ -287,7 +287,7 @@ DataPrepError({
 }) 
 ``` 
 #### <a name="how-to-use"></a>Způsob použití 
-Je možné při spuštění Python okamžiku rozšíření pro generování DataPrepErrors jako návratové hodnoty pomocí předchozí metody vytvoření. Je mnohem vyšší pravděpodobnost, že jsou DataPrepErrors došlo při zpracování dat na místě rozšíření. V tomto okamžiku vlastní kód Python je potřeba zpracovat DataPrepError jako platný datový typ.
+Je možné při spuštění Pythonu na rozšiřovacím bodem ke generování DataPrepErrors jako návratové hodnoty s použitím předchozí způsob vytvoření. Je mnohem pravděpodobnější, že jsou DataPrepErrors došlo při zpracování dat v rozšiřovacím bodem. V tuto chvíli musí zpracovat DataPrepError jako platný datový typ. vlastního kódu Python.
 
 #### <a name="syntax"></a>Syntaxe 
 Výraz 

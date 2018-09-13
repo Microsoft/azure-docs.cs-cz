@@ -1,8 +1,8 @@
 ---
-title: "Inteligentní detekce - Pack detekce zabezpečení pomocí služby Azure Application Insights | Microsoft Docs"
-description: "Monitorování aplikace pomocí služby Azure Application Insights pro potenciální potíže se zabezpečením."
+title: Inteligentní zjišťování – Pack detekce zabezpečení pomocí Azure Application Insights | Dokumentace Microsoftu
+description: Monitorování aplikace pomocí Azure Application Insights pro potenciální problémy se zabezpečením.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
@@ -10,41 +10,42 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: mbullwin
-ms.openlocfilehash: 837525d70f28c0710b8a8b86d411a7854402207f
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: edfe2956da84347abf3e5da7a7d0fd448361c7f5
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35642789"
 ---
 # <a name="application-security-detection-pack-preview"></a>Sada zjišťování zabezpečení aplikace (preview)
 
-Application Insights automaticky analyzuje příchozí telemetrická data generované vaší aplikace a zjistí potenciální potíže se zabezpečením. Tato funkce umožňuje identifikovat případné problémy zabezpečení a mohli je zpracovat opravou aplikace nebo provedením nezbytná bezpečnostní opatření.
+Application Insights automaticky analyzuje telemetrii generovanou vaší aplikace a detekuje potenciální problémy se zabezpečením. Tato funkce umožňuje identifikovat případné problémy zabezpečení a jejich zpracování po opravě aplikace nebo provedením potřebných bezpečnostních opatření.
 
-Tato funkce vyžaduje žádné speciální nastavení jiné než [konfigurace aplikace k odesílání telemetrie](https://docs.microsoft.com/azure/application-insights/app-insights-usage-overview).
+Tato funkce vyžaduje žádné speciální instalační program, než [konfiguraci vaší aplikace odesílat telemetrická data](https://docs.microsoft.com/azure/application-insights/app-insights-usage-overview).
 
-## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>Při obdržení tento typ upozornění Inteligentní detekce
-Existují tři typy zabezpečení problémy, které jsou zjištěny:
-1. Nezabezpečené přístup k adrese URL: adresu URL v aplikaci je přistupuje prostřednictvím protokolu HTTP a HTTPS. Adresu URL, která přijímá požadavky HTTPS, obvykle nesmí přijímal požadavky HTTP. To může znamenat chybu chyb nebo zabezpečení ve vaší aplikaci.
-2. Nezabezpečené formuláře: formuláře (nebo jiným požadavkem "POST") v aplikaci používá protokol HTTP místo protokolu HTTPS. Pomocí protokolu HTTP může ohrozit uživatelská data, která odesílají formuláře.
-3. Aktivita podezřelé uživatele: aplikace se přistupuje z několika zemích stejným uživatelem přibližně ve stejnou dobu. Například stejného uživatele dostupný aplikace a Spojených státech v tutéž hodinu. Toto zjišťování označuje pokus potenciálně škodlivým přístupem k vaší aplikaci.
+## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>Při obdržení tohoto typu upozornění inteligentního zjišťování
+Existují tři typy, které jsou zjištěny problémy se zabezpečením:
+1. Zabezpečený přístup k adrese URL: adresa URL aplikace, je přistupováno prostřednictvím protokolu HTTP a HTTPS. Obvykle adresu URL, která přijímá požadavky HTTPS by neměla přijímat požadavky HTTP. To může znamenat chybu nebo zabezpečení problém ve vaší aplikaci.
+2. Nezabezpečené formuláře: formuláře (nebo jiný požadavek "POST") v aplikaci používá protokol HTTP místo protokolu HTTPS. Pomocí protokolu HTTP může ohrozit uživatelská data, která se ve formuláři odesílají.
+3. Podezřelé aktivity uživatele: aplikace se přistupuje z několika zemích stejným uživatelem na přibližně ve stejnou dobu. Například stejného uživatele získat přístup k aplikaci z Španělsko a USA během jedné hodiny. Tato detekce indikuje pokus o potenciálně škodlivém přístup do vaší aplikace.
 
-## <a name="does-my-app-definitely-have-a-security-issue"></a>Aplikace my máme věci má problém zabezpečení?
-Ne, oznámení neznamená, že má vaše aplikace výborný porušení zabezpečení. Detekce žádnou z výše uvedených scénářích určíte v řadě případů porušení zabezpečení. Detekce však mohou mít přirozené obchodního oprávnění a můžete ignorovat.
+## <a name="does-my-app-definitely-have-a-security-issue"></a>Moje aplikace jednoznačně má potíže se zabezpečením?
+Ne, oznámení, neznamená, že má vaše aplikace jednoznačně potíže se zabezpečením. Detekce kterékoli z výše uvedených scénářích může v mnoha případech znamenat potíže se zabezpečením. Ale zjišťování může mít fyzické obchodní odůvodnění a můžete ignorovat.
 
-## <a name="how-do-i-fix-the-insecure-url-access-detection"></a>Jak lze upravit detekce "Nezabezpečené URL přístup"?
-1. **Třídění.** Oznámení poskytuje počet uživatelů, kteří přístup nezabezpečené adresy URL a adresy URL, která byla většina vliv nezabezpečené přístup. Můžete přiřadit prioritu problém.
-2. **Rozsah.** Jaké procento uživatelé přistupovat k nezabezpečené adresy URL? Kolik adresy URL situace měla vliv na? Tyto informace můžete získat z oznámení.
-3. **Diagnostika.** Detekce poskytuje seznam nezabezpečené požadavky a seznamy adres URL a uživatele, kteří situace měla vliv na, při další diagnostice problému.
+## <a name="how-do-i-fix-the-insecure-url-access-detection"></a>Jak opravit detekce "Nezabezpečené adresy URL přístup"?
+1. **Třídění.** Oznámení obsahuje počet uživatelů, kteří navštívili nezabezpečené adresy URL a adresy URL, která byla většina ovlivněny nezabezpečené přístup. Můžete přiřadit prioritu problému.
+2. **Obor.** Jaké je procento uživatelů přistupuje nezabezpečené adresy URL? Kolik adresy URL se to týká? Tyto informace můžete získat z oznámení.
+3. **Diagnostika.** Zjišťování poskytuje seznam nezabezpečené požadavky a seznamy adres URL a uživatelů, které byly ovlivněny, při další diagnostice problému.
 
-## <a name="how-do-i-fix-the-insecure-form-detection"></a>Jak lze upravit detekce "Nezabezpečené form"?
-1. **Třídění.** Oznámení poskytuje počet nezabezpečené formulářů a počet uživatelů, jejichž data se potenciálně ohrožená. Můžete přiřadit prioritu problém.
-2. **Rozsah.** Formulář, který byl součástí největšího počtu nezabezpečené přenosů a co je distribuce přenosů nezabezpečené časem? Tyto informace můžete získat z oznámení.
-3. **Diagnostika.** Detekce poskytuje seznam nezabezpečené formulářů a rozpis číslo nezabezpečené přenosů pro každý formulář při další diagnostice problému.
+## <a name="how-do-i-fix-the-insecure-form-detection"></a>Jak opravit detekce "Nezabezpečené formuláře"?
+1. **Třídění.** Oznámení obsahuje počet nezabezpečené formulářů a počet uživatelů, jejichž data se potenciálně dojde k ohrožení bezpečnosti. Můžete přiřadit prioritu problému.
+2. **Obor.** Jaký byl zahrnut v největší počet nezabezpečené přenosy a co je rozdělení nezabezpečené přenosy v čase? Tyto informace můžete získat z oznámení.
+3. **Diagnostika.** Zjišťování poskytuje seznam nezabezpečené formulářů a rozpis počtu nezabezpečené přenosy pro každý formulář při další diagnostice problému.
 
-## <a name="how-do-i-fix-the-suspicious-user-activity-detection"></a>Jak lze upravit detekce "podezřelé uživatele aktivita"?
-1. **Třídění.** Oznámení poskytuje počet různých uživatelů, které vykazují podezřelé chování. Můžete přiřadit prioritu problém.
-2. **Rozsah.** Z kterých zemích podezřelé požadavky pocházejí? Kteří uživatelé se nejvíce podezřelé? Tyto informace můžete získat z oznámení.
-3. **Diagnostika.** Detekce poskytuje seznam podezřelé uživatele a seznam zemí, pro každého uživatele, při další diagnostice problému.
+## <a name="how-do-i-fix-the-suspicious-user-activity-detection"></a>Jak opravit detekce "podezřelé aktivity uživatele"?
+1. **Třídění.** Oznámení obsahuje počet různých uživatelů, kteří monitorujícím podezřelého chování. Můžete přiřadit prioritu problému.
+2. **Obor.** Ze kterých zemí podezřelé požadavky pocházejí? Který uživatel byl nejvíce podezřelých? Tyto informace můžete získat z oznámení.
+3. **Diagnostika.** Zjišťování poskytuje seznam uživatelů, podezřelých a seznam zemí, pro každého uživatele, při další diagnostice problému.

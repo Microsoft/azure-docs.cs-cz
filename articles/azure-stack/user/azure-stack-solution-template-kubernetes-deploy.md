@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/07/2018
+ms.date: 09/12/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: c0c625852ff131aaa26e424ded75fbe51f94f23d
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 00c3fd0d1f637575904ebaa8031159344adf7e9f
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44159295"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44718572"
 ---
 # <a name="deploy-a-kubernetes-cluster-to-azure-stack"></a>Nasazení clusteru Kubernetes do služby Azure Stack
 
@@ -106,13 +106,13 @@ Poskytněte přístup instančního objektu služby do vašeho předplatného, t
 
 1. Otevřít [portálu Azure Stack](https://portal.local.azurestack.external).
 
-1. Vyberte **+ nový** > **Compute** > **clusteru Kubernetes**. Klikněte na možnost **Vytvořit**.
+1. Vyberte **+ vytvořit prostředek** > **Compute** > **clusteru Kubernetes**. Klikněte na možnost **Vytvořit**.
 
-    ![Nasazení šablony řešení](media/azure-stack-solution-template-kubernetes-deploy/01_kub_market_item.png)
+    ![Nasadit šablonu řešení](media/azure-stack-solution-template-kubernetes-deploy/01_kub_market_item.png)
 
 1. Vyberte **Základy** v vytvoření clusteru Kubernetes.
 
-    ![Nasazení šablony řešení](media/azure-stack-solution-template-kubernetes-deploy/02_kub_config_basic.png)
+    ![Nasadit šablonu řešení](media/azure-stack-solution-template-kubernetes-deploy/02_kub_config_basic.png)
 
 1. Zadejte **uživatelské jméno správce virtuálního počítače Linux**. Uživatelské jméno pro virtuální počítače Linux, které jsou součástí clusteru Kubernetes a DVM.
 
@@ -141,7 +141,7 @@ Poskytněte přístup instančního objektu služby do vašeho předplatného, t
 
 1. Vyberte **nastavení služby Azure Stack razítko**.
 
-    ![Nasazení šablony řešení](media/azure-stack-solution-template-kubernetes-deploy/03_kub_config_settings.png)
+    ![Nasadit šablonu řešení](media/azure-stack-solution-template-kubernetes-deploy/03_kub_config_settings.png)
 
 1. Zadejte **koncový bod Arm Tenanta**. Toto je koncový bod Azure Resource Manageru pro připojení k vytvoření skupiny prostředků pro Kubernetes cluster. Je potřeba koncový bod pro integrovaný systém získat vaše operátory Azure stacku. Pro Azure Stack Development Kit (ASDK), můžete použít `https://management.local.azurestack.external`.
 

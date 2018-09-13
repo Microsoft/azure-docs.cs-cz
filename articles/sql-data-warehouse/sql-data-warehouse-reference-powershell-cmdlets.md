@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 222bc8ee15fdc8802dacd5a5b74cfd84961aa397
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: f38c9e3bed93a77cd9b35c6d23983ee5785a34a7
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43300749"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44714460"
 ---
 # <a name="powershell-cmdlets-and-rest-apis-for-sql-data-warehouse"></a>Rutiny prostředí PowerShell a rozhraní REST API pro službu SQL Data Warehouse
 Mnoho úkolů správy SQL Data Warehouse je možné spravovat pomocí rutin Azure Powershellu nebo rozhraní REST API.  Níže je několik příkladů toho, jak používat příkazy Powershellu k automatizaci běžných úkolů ve službě SQL Data Warehouse.  Některé dobré příklady REST, najdete v článku [spravovat škálovatelnost s využitím REST][Manage scalability with REST].
@@ -88,7 +88,7 @@ Další příklady prostředí PowerShell najdete v tématu:
 * [Vytvoření SQL Data Warehouse pomocí prostředí PowerShell][Create a SQL Data Warehouse using PowerShell]
 * [Obnovení databáze][Database restore]
 
-Další úlohy, které je možné automatizovat pomocí Powershellu, najdete v části [rutiny služby Azure SQL Database][Azure SQL Database Cmdlets]. Všimněte si, že ne všechny rutiny služby Azure SQL Database jsou podporovány pro službu Azure SQL Data Warehouse.  Seznam úkolů, které je možné automatizovat pomocí REST, naleznete v tématu [operací s databází Azure SQL Database][Operations for Azure SQL Databases].
+Další úlohy, které je možné automatizovat pomocí Powershellu, najdete v části [rutiny služby Azure SQL Database][Azure SQL Database Cmdlets]. Všimněte si, že ne všechny rutiny služby Azure SQL Database jsou podporovány pro službu Azure SQL Data Warehouse.  Seznam úkolů, které je možné automatizovat pomocí REST, naleznete v tématu [operací pro službu Azure SQL Database][Operations for Azure SQL Database].
 
 <!--Image references-->
 
@@ -100,7 +100,7 @@ Další úlohy, které je možné automatizovat pomocí Powershellu, najdete v �
 
 <!--MSDN references-->
 [Azure SQL Database Cmdlets]: https://docs.microsoft.com/powershell/module/azurerm.sql
-[Operations for Azure SQL Databases]: https://msdn.microsoft.com/library/azure/dn505719.aspx
+[Operations for Azure SQL Database]: https://msdn.microsoft.com/library/azure/dn505719.aspx
 [Get-AzureRmSqlDatabase]: https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabase
 [Get-AzureRmSqlDeletedDatabaseBackup]: https://docs.microsoft.com/powershell/module/azurerm.sql/get-AzureRmSqlDeletedDatabaseBackup
 [Get-AzureRmSqlDatabaseRestorePoints]: https://docs.microsoft.com/powershell/module/azurerm.sql/get-AzureRmSqlDatabaseRestorePoints

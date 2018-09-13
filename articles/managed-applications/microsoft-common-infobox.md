@@ -1,6 +1,6 @@
 ---
-title: Azure elementu InfoBox uživatelského rozhraní | Microsoft Docs
-description: Popisuje element Microsoft.Common.TextBlock uživatelského rozhraní pro portál Azure.
+title: Azure prvek uživatelského rozhraní informační okno | Dokumentace Microsoftu
+description: Popisuje element Microsoft.Common.TextBlock uživatelského rozhraní pro Azure portal.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -11,17 +11,21 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/30/2018
+ms.date: 06/15/2018
 ms.author: tomfitz
-ms.openlocfilehash: 9507280bf5df1e63c81f0b2488b9676784c69812
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: abd1329f2ebac90bf846dfd5fc5b307ddb5e52bd
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34260870"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35903192"
 ---
-# <a name="microsoftcommoninfobox-ui-element"></a>Element Microsoft.Common.InfoBox uživatelského rozhraní
-Ovládací prvek, který přidává okno s informacemi.
+# <a name="microsoftcommoninfobox-ui-element"></a>Prvek uživatelského rozhraní Microsoft.Common.InfoBox
+Ovládací prvek, který přidá informační okno. Do pole obsahuje důležité text nebo upozornění, které pomáhají uživatelům pochopit, jaké hodnoty, který píše. Můžete také propojit na identifikátor URI pro další informace.
+
+## <a name="ui-sample"></a>Ukázka uživatelského rozhraní
+![Microsoft.Common.InfoBox](./media/managed-application-elements/microsoft.common.infobox.png)
+
 
 ## <a name="schema"></a>Schéma
 ```json
@@ -39,8 +43,8 @@ Ovládací prvek, který přidává okno s informacemi.
 
 ## <a name="remarks"></a>Poznámky
 
-* Pro `icon`, použijte **žádné**, **informace**, **upozornění**, nebo **chyba**.
-* `uri` Vlastnost je nepovinná.
+* Pro `icon`, použijte **žádný**, **informace**, **upozornění**, nebo **chyba**.
+* `uri` Vlastnost je volitelná.
 
 ## <a name="sample-output"></a>Ukázkový výstup
 
@@ -49,5 +53,5 @@ Ovládací prvek, který přidává okno s informacemi.
 ```
 
 ## <a name="next-steps"></a>Další postup
-* Úvod do vytváření definic uživatelského rozhraní, najdete v části [Začínáme s CreateUiDefinition](create-uidefinition-overview.md).
-* Popis společných vlastností v prvky uživatelského rozhraní najdete v tématu [CreateUiDefinition elementy](create-uidefinition-elements.md).
+* Úvod do vytváření definic uživatelského rozhraní, naleznete v tématu [Začínáme s funkcí CreateUiDefinition](create-uidefinition-overview.md).
+* Popis společné vlastnosti v prvcích uživatelského rozhraní, naleznete v tématu [CreateUiDefinition prvky](create-uidefinition-elements.md).

@@ -1,25 +1,25 @@
 ---
-title: Azure Machine Learning modelu rozhraní příkazového řádku managementu | Microsoft Docs
-description: Referenční informace o rozhraní příkazového řádku Azure Machine Learning modelu Management.
+title: Referenční informace k rozhraní příkazového řádku Azure Správa modelů Machine Learning | Dokumentace Microsoftu
+description: Referenční informace pro rozhraní příkazového řádku Azure Správa modelů Machine Learning.
 services: machine-learning
 author: aashishb
 ms.author: aashishb
 manager: hjerez
 ms.reviewer: jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 11/08/2017
-ms.openlocfilehash: 540f22e38201ec488d8e2c1d7494bc83d7b83a7e
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 9e69f2e71cce6d689669838785ce992fbbcfa940
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831917"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35644603"
 ---
-# <a name="model-management-command-line-interface-reference"></a>Referenční informace o modelu správy rozhraní příkazového řádku
+# <a name="model-management-command-line-interface-reference"></a>Referenční informace k rozhraní příkazového řádku pro správu modelu
 
 ## <a name="base-cli-concepts"></a>Základní koncepty rozhraní příkazového řádku:
 
@@ -30,8 +30,8 @@ ms.locfileid: "34831917"
     model   : Manage operationalization models.
     service : Manage operationalized services.
 
-## <a name="account-commands"></a>Účet příkazy
-Účet pro správu modelu je potřeba použít služby, které umožňují nasadit a spravovat modely. Použití `az ml account modelmanagement -h` zobrazíte v následujícím seznamu:
+## <a name="account-commands"></a>Příkazy účtu
+Účet správy modelů se vyžaduje k používání služeb, které umožňují nasadit a spravovat modely. Použití `az ml account modelmanagement -h` zobrazíte v následujícím seznamu:
 
     create: Create a Model Management Account.
     delete: Delete a specified Model Management Account.
@@ -40,9 +40,9 @@ ms.locfileid: "34831917"
     show  : Show a Model Management Account.
     update: Update an existing Model Management Account.
 
-**Vytvoření modelu správy účtu**
+**Vytvoření účtu služby Správa modelů**
 
-Vytvořte účet model správy pro fakturaci pomocí následujícího příkazu:
+Vytvořte účet správy modelů pro fakturační pomocí následujícího příkazu:
 
 `az ml account modelmanagement create --location [Azure region e.g. eastus2] --name [new account name] --resource-group [resource group name to store the account in]`
 
@@ -70,15 +70,15 @@ Místní argumenty:
     show           : Show an MLC resource; if resource_group or cluster_name are not provided, shows
                      the active MLC env.
 
-**Nastavení prostředí pro nasazení**
+**Nastavení prostředí nasazení**
 
-Příkaz instalační program vyžaduje, abyste Přispěvatel přístup k předplatnému. Pokud ho nemáte, potřebujete přístup na úrovni Přispěvatel alespoň ke skupině prostředků, do které nasazujete. V druhém případě je potřeba zadat název skupiny prostředků jako součást příkazu pro nastavení pomocí příznaku `-g`. 
+Příkaz pro nastavení vyžaduje, abyste měli přístup přispěvatele k předplatnému. Pokud ho nemáte, potřebujete přístup na úrovni Přispěvatel alespoň ke skupině prostředků, do které nasazujete. V druhém případě je potřeba zadat název skupiny prostředků jako součást příkazu pro nastavení pomocí příznaku `-g`. 
 
-Existují dvě možnosti pro nasazení: *místní* a *clusteru*. Nastavení `--cluster` (nebo `-c`) příznak umožňuje nasazení clusteru, který se zřídí clusteru služby ACS. Základní nastavení syntaxe vypadá takto:
+Existují dvě možnosti nasazení: *místní* a *clusteru*. Nastavení `--cluster` (nebo `-c`) příznak umožňuje nasazení clusteru, které zřizuje cluster služby ACS. Základní nastavení syntaxe vypadá takto:
 
 `az ml env setup [-c] --location [location of environment resources] --name[name of environment]`
 
-Tento příkaz inicializuje vaší Azure strojového učení prostředí s účet úložiště, ACR registru a službě Statistika aplikaci vytvořit ve vašem předplatném. Ve výchozím nastavení je-li zadána žádná příznak prostředí inicializována pro pouze místní nasazení (žádné ACS). Pokud potřebujete škálování služby, zadejte `--cluster` (nebo `-c`) příznak pro vytvoření clusteru služby ACS.
+Tento příkaz inicializuje vaše aplikace Azure machine learning prostředí s účtem úložiště, registru ACR a služba App Insights ve vašem předplatném. Ve výchozím nastavení prostředí je inicializován pro místní nasazení jenom (žádné služby ACS) Pokud není zadán žádný příznak. Pokud je potřeba škálovat službu, zadejte `--cluster` (nebo `-c`) příznak k vytvoření clusteru ACS.
 
 Podrobnosti o příkazu:
 
@@ -112,7 +112,7 @@ Globální argumenty
     register
     show
 
-**Zaregistrovat modelu**
+**Zaregistrujte model**
 
 Příkaz pro registraci modelu.
 
@@ -162,12 +162,12 @@ Podrobnosti o příkazu:
     -p                           : A pip requirements.txt file needed by the code file.
     -v                           : Verbosity flag.
 
-Argumenty registrované modelu
+Argumenty registrovanému modelu
 
     --model-id -i                : [Required] Id of previously registered model to add to manifest.
                                    Multiple models can be specified with additional -i arguments.
 
-Zrušení registrace modelu argumenty
+Zrušit registraci modelu argumenty
 
     --model-file -m              : [Required] Model file to register. If used, must be combined with
                                    model name.
@@ -191,13 +191,13 @@ Globální argumenty
     show
     usage
 
-**Vytvoření bitové kopie**
+**Vytvoření image**
 
-Můžete vytvořit bitovou kopii s možností obsahující vytvořené před jeho manifestu. 
+Můžete vytvořit bitovou kopii s možností máte vytvořený manifestu před. 
 
 `az ml image create -n [image name] --manifest-id [the manifest ID]`
 
-Nebo můžete vytvořit manifest a bitové kopie s jeden příkaz. 
+Nebo můžete vytvořit v manifestu a bitovou kopii s jediným příkazem. 
 
 `az ml image create -n [image name] --model-file [model file or folder path] -f [code file, e.g. the score.py file] -r [the runtime eg.g. spark-py which is the Docker container image base]`
 
@@ -208,11 +208,11 @@ Podrobnosti o příkazu:
     --image-type              : The image type to create. Defaults to "Docker".
     -v                        : Verbosity flag.
 
-Registrovaný manifestu argumenty
+Registrované manifestu argumenty
 
     --manifest-id             : [Required] Id of previously registered manifest to use in image creation.
 
-Zrušení registrace manifestu argumenty
+Zrušit registraci manifestu argumenty
 
     --conda-file -c           : Path to Conda Environment file.
     --dependency -d           : Files and directories required by the service. Multiple dependencies can
@@ -225,7 +225,7 @@ Zrušení registrace manifestu argumenty
 
 
 ## <a name="service-commands"></a>Příkazy služby
-Podporovány jsou následující příkazy pro službu. Informace o parametrech u každého příkazu, použijte parametr -h. Například použít `az ml service create realtime -h` zobrazíte podrobnosti o příkazu vytvořit.
+Pro službu jsou podporovány následující příkazy. Zobrazit parametry pro každý příkaz, použijte parametr -h. Například použít `az ml service create realtime -h` zobrazíte podrobnosti o příkazu vytvořit.
 
     create
     delete
@@ -239,15 +239,15 @@ Podporovány jsou následující příkazy pro službu. Informace o parametrech 
 
 **Vytvoření služby**
 
-Vytvoření služby s dříve vytvořenou bitovou kopii, použijte následující příkaz:
+Vytvoření služby s dříve vytvořenou image, použijte následující příkaz:
 
 `az ml service create realtime --image-id [image to deploy] -n [service name]`
 
-Vytvoření služby, manifest a bitovou kopii pomocí jednoho příkazu, použijte následující příkaz:
+Pokud chcete vytvořit službu, manifest a bitovou kopii pomocí jediného příkazu, použijte následující příkaz:
 
 `az ml service create realtime --model-file [path to model file(s)] -f [path to model scoring file, e.g. score.py] -n [service name] -r [run time included in the image, e.g. spark-py]`
 
-Příkazy podrobnosti:
+Podrobnosti o příkazy:
 
     -n                                : [Required] Webservice name.
     --autoscale-enabled               : Enable automatic scaling of service replicas based on request demand.
@@ -264,11 +264,11 @@ Příkazy podrobnosti:
     -v                                : Verbosity flag.
     -z                                : Number of replicas for a Kubernetes service.  Default: 1.
 
-Argumenty registrované bitové kopie
+Argumenty registrované Image
 
     --image-id                        : [Required] Image to deploy to the service.
 
-Zrušení registrace Image argumenty
+Zrušit registraci Image argumenty
 
     --conda-file -c                   : Path to Conda Environment file.
     --image-type                      : The image type to create. Defaults to "Docker".
@@ -289,13 +289,13 @@ Globální argumenty
     --verbose                         : Increase logging verbosity. Use --debug for full debug logs.
 
 
-Poznámka: na `-d` příznak pro připojení závislosti: Pokud předáte název adresáře, který ještě není dodávat (zip, vkládání atd.), automaticky získá tar'ed adresáře a je předán hotová, pak automaticky jednoduchý na druhém konci. 
+Poznámky ke `-d` příznak pro připojení závislosti: Pokud předáte název adresáře, který ještě není instalován (zip, cíl, atd.), automaticky získá tar'ed a je předána spolu pak automaticky jednoduchý na druhém konci tohoto adresáře. 
 
-Pokud předáte v adresáři, který je již instalován, adresář je považován za soubor a předají je. Je zpřístupnění automaticky. předpokládá se, že pro zpracování, který do vašeho kódu.
+Pokud předáte do adresáře, který je již instalován, adresář je považován za soubor a předají je. Je zpřístupnění automaticky. předpokládá, že pro zpracování, které ve vašem kódu.
 
 **Získat podrobnosti služby**
 
-Načíst podrobnosti ze služby včetně adresu URL, využití (včetně ukázková data, pokud byla vytvořena schématu).
+Získáte podrobnosti o službě včetně adresy URL, využití (včetně ukázkových dat, pokud byl vytvořen schématu).
 
 `az ml service show realtime --name [service name]`
 
@@ -313,7 +313,7 @@ Globální argumenty
     --query    : JMESPath query string. See http://jmespath.org/ for more information and examples.
     --verbose  : Increase logging verbosity. Use --debug for full debug logs.
 
-**Spouštění služby**
+**Spuštění služby**
 
 `az ml service run realtime -n [service name] -d [input_data]`
 
@@ -335,8 +335,8 @@ Příkaz
 
     az ml service run realtime
 
-Argumenty – id -i: [vyžaduje] id služby skóre proti.
--d: data, která mají použít pro volání webové služby.
+Argumenty – id -i: [povinné] id služby ke stanovení skóre proti.
+-d: data se mají použít pro volání webové služby.
 -v: Příznak podrobností.
 
 Globální argumenty

@@ -1,6 +1,6 @@
 ---
-title: Monitorování výkonu pro webové aplikace v jazyce Java ve službě Azure Application Insights | Microsoft Docs
-description: Rozšířené výkon a sledování využití vašeho webu Java pomocí Application Insights.
+title: Sledování výkonu webové aplikace v Javě ve službě Azure Application Insights | Dokumentace Microsoftu
+description: Rozšířené monitorování výkonu a využití vašeho webu Java pomocí Application Insights.
 services: application-insights
 documentationcenter: java
 author: mrbullwinkle
@@ -10,45 +10,45 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/24/2016
 ms.author: mbullwin
-ms.openlocfilehash: 3a771da2a1ef0333d49e1d83530b3d3032a550d2
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: 366e79e7a58f45f5a5eeb318d3dd08427fbec0b0
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32151626"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35642753"
 ---
-# <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Monitorování závislostí, zachycení výjimky a časy spuštění metoda v webové aplikace v jazyce Java
+# <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Monitorování závislostí, zachycené výjimky a časy spuštění metody do webové aplikace v Javě
 
 
-Pokud máte [instrumentovány webové aplikace Java pomocí Application Insights][java], můžete agenta Java a získejte detailnější přehledy, beze změn kódu:
+Pokud máte [instrumentována webové aplikace Java pomocí Application Insights][java], agenta Java můžete získat podrobnější přehledy, bez jakýchkoli změn kódu:
 
-* **Závislosti:** Data o volání, které vytváří vaše aplikace pro jiné komponenty, včetně:
-  * **Volání REST** provedené prostřednictvím HttpClient, OkHttp a RestTemplate (pružiny) zaznamenání.
-  * **Redis** zaznamenání volání provedená prostřednictvím Jedis klienta.
-  * **[Volání JDBC](http://docs.oracle.com/javase/7/docs/technotes/guides/jdbc/)**  -MySQL, SQL Server a Oracle DB příkazy jsou ukládány automaticky. Pro databázi MySQL Pokud volání trvá déle, než 10s, bude agent podřízen plán dotazu.
-* **Zachycení výjimky:** informace o výjimky, které jsou zpracovávány vašeho kódu.
-* **Metoda čas spuštění:** informace o době potřebné k provedení konkrétních metod.
+* **Závislosti:** Data o volání, které aplikace provádí na dalších komponentách, včetně:
+  * **Volání REST** provádí přes HttpClient, OkHttp a RestTemplate (Spring) jsou zachyceny.
+  * **Redis** volání provedená prostřednictvím klienta Jedis jsou zachyceny.
+  * **[Volání JDBC](http://docs.oracle.com/javase/7/docs/technotes/guides/jdbc/)**  -MySQL a SQL Server, Oracle DB příkazy ukládány automaticky. Pro MySQL Pokud volání trvá déle než 10s, bude agent podřízen plán dotazu.
+* **Zachytit výjimky:** informace o výjimkách, které váš kód zpracovává.
+* **Metoda doba provádění:** informace o čas potřebný k provedení specifických metod.
 
-Pokud chcete používat agenta Java, nainstalujte na vašem serveru. Webové aplikace musí být instrumentovány s [Application Insights Java SDK][java]. 
+Pokud chcete používat agenta Java, nainstalujte na server. Svoje webové aplikace musí být neinstrumentují službou [Application Insights Java SDK][java]. 
 
-## <a name="install-the-application-insights-agent-for-java"></a>Nainstalujte agenta Application Insights pro jazyk Java
-1. Na počítači se systémem vašeho serveru Java, [stáhnout agenta](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest). Ověřte, zda Pokud chcete stáhnout stejné verson agenta Java jako balíčky jádra a web Application Insights Java SDK.
-2. Upravte skript spuštění serveru aplikace a přidejte následující JVM:
+## <a name="install-the-application-insights-agent-for-java"></a>Instalace agenta služby Application Insights pro Java
+1. Na počítači spuštěný serveru Java [stáhnout agenta](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest). Zkontrolujte, zda Pokud chcete stáhnout stejné verson agenta Java jako balíčky core a web Application Insights Java SDK.
+2. Upravte spouštěcí skript serveru aplikace a přidejte následující JVM:
    
     `javaagent:`*Úplná cesta k souboru JAR agenta*
    
-    Například v Tomcat na počítač s Linuxem:
+    Například v Tomcatu na počítači s Linuxem:
    
     `export JAVA_OPTS="$JAVA_OPTS -javaagent:<full path to agent JAR file>"`
 3. Restartujte server aplikace.
 
-## <a name="configure-the-agent"></a>Konfiguraci agenta
-Vytvořte soubor s názvem `AI-Agent.xml` a umístěte ji ve stejné složce jako soubor JAR agenta.
+## <a name="configure-the-agent"></a>Konfigurace agenta
+Vytvořte soubor s názvem `AI-Agent.xml` a umístěte ho ve stejné složce jako soubor JAR agenta.
 
-Nastavte obsah souboru xml. Podle následujícího příkladu lze zahrnout nebo vynechejte funkcí, že chcete upravte.
+Nastavení obsahu souboru xml. Podle následujícího příkladu lze zahrnout nebo vynechejte funkce, že chcete upravte.
 
 ```XML
 
@@ -87,19 +87,19 @@ Nastavte obsah souboru xml. Podle následujícího příkladu lze zahrnout nebo 
 
 ```
 
-Je nutné povolit výjimku sestavy a metoda časování pro jednotlivé metody.
+Je nutné povolit sestavy výjimku a metoda časování pro jednotlivé metody.
 
-Ve výchozím nastavení `reportExecutionTime` hodnotu true a `reportCaughtExceptions` je false.
+Ve výchozím nastavení `reportExecutionTime` má hodnotu true a `reportCaughtExceptions` má hodnotu false.
 
 ## <a name="view-the-data"></a>Zobrazení dat
-V prostředku Application Insights se zobrazí agregovaný vzdálené závislostí a metoda provádění časy [v rámci dlaždice výkon][metrics].
+V prostředku Application Insights se zobrazí agregovaná vzdálené závislosti a způsob spuštění s úspěšností [pod dlaždice výkon][metrics].
 
-Chcete-li vyhledat jednotlivých instancí, závislostí, výjimek a metoda sestavy, otevřete [vyhledávání][diagnostic].
+Chcete-li vyhledat jednotlivé instance dané závislosti, výjimky a metoda sestavy, otevřete [hledání][diagnostic].
 
-[Diagnostika problémů závislostí - Další](app-insights-asp-net-dependencies.md#diagnosis).
+[Diagnostika závislostí problémy – Další informace](app-insights-asp-net-dependencies.md#diagnosis).
 
 ## <a name="questions-problems"></a>Máte dotazy? Problémy?
-* Žádná data? [Sada výjimky brány firewall](app-insights-ip-addresses.md)
+* Žádná data? [Nastavení výjimek brány firewall](app-insights-ip-addresses.md)
 * [Řešení potíží s Javou](app-insights-java-troubleshoot.md)
 
 <!--Link references-->

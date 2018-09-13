@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/06/2018
+ms.date: 09/11/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 477bd6047da639dcf21592a7ec0c1b80844e031e
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 5b8ae1d5d3f28c50cbbaedf65c5589fce98d3c68
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43337730"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44715903"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-google-account-using-azure-active-directory-b2c"></a>Nastavení registrace a přihlášení pomocí účtu Google pomocí Azure Active Directory B2C
 
@@ -25,25 +25,21 @@ Použít účet Google jako zprostředkovatele identity v Azure Active Directory
 
 1. Přihlaste se k [konzole pro vývojáře Google](https://console.developers.google.com/) pomocí svých přihlašovacích údajů účtu Google.
 2. Vyberte **vytvořit projekt**a potom klikněte na tlačítko **vytvořit**. Pokud jste vytvořili projekty před, vyberte seznam projektů a pak vyberte **nový projekt**.
-3. Zadejte **název projektu**a potom klikněte na tlačítko **vytvořit**.
+3. Zadejte **název projektu**, klikněte na tlačítko **vytvořit**a zkontrolujte, že používáte nový projekt.
 3. Vyberte **pověření** v nabídce vlevo a pak vyberte **Vytvořte přihlašovací údaje** > **ID klienta Oauth**.
 4. Vyberte **obrazovkami pro vyjádření souhlasu konfigurovat**.
 5. Vyberte nebo zadejte platný **e-mailová adresa**, zadejte **název produktu, který se uživatelům zobrazí**a klikněte na tlačítko **Uložit**.
 6. V části **typ aplikace**vyberte **webovou aplikaci**.
-7. Zadejte **název** pro vaši aplikaci, zadejte `https://{tenant}.b2clogin.com` v **oprávnění JavaScript zdroje**, a `https://{tenant}.b2clogin.com/te/{tenant}.onmicrosoft.com/oauth2/authresp` v **identifikátory URI pro přesměrování autorizovaní**. Nahraďte **{klient}** s názvem vašeho tenanta (například contosob2c).
+7. Zadejte **název** pro vaši aplikaci, zadejte `https://your-tenant-name.b2clogin.com` v **oprávnění JavaScript zdroje**, a `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` v **identifikátory URI pro přesměrování autorizovaní**. Nahraďte `your-tenant-name` s názvem vašeho tenanta. Budete muset použít jenom malá písmena. Pokud zadáte název vašeho klienta i v případě, že klient je definována s velká písmena v Azure AD B2C.
 8. Klikněte na možnost **Vytvořit**.
 9. Zkopírujte hodnoty **ID klienta** a **tajný kód klienta**. Budete potřebovat oba poskytovatelé konfigurace Google jako zprostředkovatele identity ve vašem tenantovi. **Tajný kód klienta** je důležitým bezpečnostním pověřením.
 
 ## <a name="configure-a-google-account-as-an-identity-provider"></a>Konfigurace Google účtu jako zprostředkovatele identity
 
 1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) jako globální správce tenanta Azure AD B2C.
-2. Přepněte v pravém horním rohu portálu Azure Portal na adresář, který obsahuje tenanta Azure AD B2C, a ujistěte se tak, že používáte správný adresář. Vyberte informace o předplatném a pak **Přepnout adresář**. 
+2. Ujistěte se, že používáte adresáře, který obsahuje vašeho tenanta Azure AD B2C kliknutím **filtr adresářů a předplatných** v horní nabídce a výběrem adresáře, který obsahuje váš tenant.  
 
-    ![Přepnutí na tenanta Azure AD B2C](./media/active-directory-b2c-setup-fb-app/switch-directories.png)
-
-    Vyberte adresář, který obsahuje vašeho tenanta.
-
-    ![Výběr adresáře](./media/active-directory-b2c-setup-fb-app/select-directory.png)
+    ![Přepnutí na tenanta Azure AD B2C](./media/active-directory-b2c-setup-goog-app/switch-directories.png)
 
 3. Zvolte **Všechny služby** v levém horním rohu portálu Azure Portal a vyhledejte a vyberte **Azure AD B2C**.
 4. Vyberte **zprostředkovatelé Identity**a pak vyberte **přidat**.

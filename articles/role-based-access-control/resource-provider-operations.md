@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 09/06/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 7e66f9a0f22103c01e947c028a5c8355cb4d0e15
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: dc362dba62e8fd41b33e10368483577d8166f300
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44095568"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44722329"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Operace poskytovatele prostředků Azure Resource Manageru
 
@@ -4455,7 +4455,7 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.Sql/managedInstances/delete | Odstraní existující spravované instance. |
 > | Akce | Microsoft.Sql/managedInstances/encryptionProtector/read | Vrátí seznam hodnot ochrany pomocí šifrování serveru nebo načte vlastnosti pro zadaný server ochrana šifrování. |
 > | Akce | Microsoft.Sql/managedInstances/encryptionProtector/write | Aktualizací vlastností pro zadaný šifrování Ochrana serveru. |
-> | Akce | Microsoft.Sql/managedInstances/keys/delete | Odstraní existující klíč spravované Instance Azure SQL. |
+> | Akce | Microsoft.Sql/managedInstances/keys/delete | Odstraní existující klíč Azure SQL Database Managed Instance. |
 > | Akce | Microsoft.Sql/managedInstances/keys/read | Vrátí seznam spravovanou instanci klíče nebo načte vlastnosti klíče určené spravované instance. |
 > | Akce | Microsoft.Sql/managedInstances/keys/write | Vytvoří klíč se zadanými parametry nebo aktualizovat vlastnosti a značky pro klíč zadaný spravované instance. |
 > | Akce | Microsoft.Sql/managedInstances/metricDefinitions/read | Získat definice metriky pro spravovanou instanci |

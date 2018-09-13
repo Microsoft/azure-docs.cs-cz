@@ -12,14 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 09/12/2018
 ms.author: anwestg
-ms.openlocfilehash: 9e36e470c3516c55089ce1e44540b6b1eacbb6b2
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 4b6ad2e237d73d5d8ca414bffc3a679ee552105f
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42061296"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44718725"
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>Přidání poskytovatele prostředků App Service pro odpojené prostředí Azure Stack zabezpečené službou AD FS
 
@@ -226,7 +226,7 @@ Můžete *musí* předplatného tenanta k vytvoření aplikace, které používa
 >
 Od třetí technical preview k vytvoření webového rozhraní API a Azure funkce aplikace, musíte použít portál pro klienty a mít předplatné tenanta.
 
-1. Na portálu Azure Stack tenanta, klikněte na tlačítko **nový** > **Web + mobilní zařízení** > **webovou aplikaci**.
+1. Na portálu Azure Stack tenanta, klikněte na tlačítko **+ vytvořit prostředek** > **Web + mobilní zařízení** > **webovou aplikaci**.
 
 2. Na **webovou aplikaci** okno, zadejte název v **webovou aplikaci** pole.
 

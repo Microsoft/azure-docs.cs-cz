@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/17/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: 5fcdf02fe75905fb3e492671ba44adb65dfd0da7
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: a4bf21f972da1aa92d6f127e8cbabb89a9c31489
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42060762"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719949"
 ---
 # <a name="azure-sql-database-purchasing-models-and-resources"></a>Azure SQL Database nákupu modely a prostředky 
 
@@ -61,7 +61,7 @@ Pro izolované databáze Azure SQL na konkrétní úroveň výkonu v rámci [úr
 
 ![ohraničujícího rámečku](./media/sql-database-what-is-a-dtu/bounding-box.png)
 
-Počet jednotek Dtu jsou zvláště užitečná pro pochopení relativní množství prostředků mezi databázemi SQL Azure na různé úrovně výkonu a úrovně služeb. Například zdvojnásobení jednotek Dtu zvýšením úrovně výkonu databáze odpovídá zdvojnásobení sady prostředků, které jsou k dispozici pro tuto databázi. Například databáze Premium P11 se 1 750 DTU nabízí 350x více DTU výpočetního výkonu než databáze Basic s 5 DTU.  
+Počet jednotek Dtu jsou zvláště užitečná pro pochopení relativní množství prostředků mezi databázemi Azure SQL na různé úrovně výkonu a úrovně služeb. Například zdvojnásobení jednotek Dtu zvýšením úrovně výkonu databáze odpovídá zdvojnásobení sady prostředků, které jsou k dispozici pro tuto databázi. Například databáze Premium P11 se 1 750 DTU nabízí 350x více DTU výpočetního výkonu než databáze Basic s 5 DTU.  
 
 Chcete-li získat podrobnější přehled o spotřebě prostředků (DTU) vašich úloh, použijte [Azure SQL Database Query Performance Insight](sql-database-query-performance.md) na:
 
