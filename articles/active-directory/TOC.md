@@ -232,11 +232,11 @@
 
 
 #### Registrace aplikací
-##### [Zadání polí pro objekt aplikace](application-dev-registration-config-specific-application-property-how-to.md)
-##### [Změna výchozího nastavení životnosti tokenu](application-dev-registration-config-change-token-lifetime-how-to.md)
+##### [Zadání polí pro objekt aplikace](develop/registration-config-specific-application-property-how-to.md)
+##### [Změna výchozího nastavení životnosti tokenu](develop/registration-config-change-token-lifetime-how-to.md)
 
 #### Authentication
-##### [Konfigurace koncových bodů](application-dev-registration-config-how-to.md)
+##### [Konfigurace koncových bodů](develop/registration-config-how-to.md)
 
 #### Podmíněný přístup
 ##### [Zákazník nesplnil předběžné požadavky registrace zařízení](active-directory-conditional-access.md)
@@ -248,7 +248,7 @@
 ##### [Které aplikace jsou podporované s podmíněným přístupem?](active-directory-conditional-access-supported-apps.md)
 
 #### Vyhledání rozhraní API
-##### [Vyhledání rozhraní API](application-dev-api-find-an-api-how-to.md)
+##### [Vyhledání rozhraní API](develop/api-find-an-api-how-to.md)
 
 #### Správa přístupu
 ##### [Přiřazení uživatelů a skupin k aplikaci](manage-apps/methods-for-assigning-users-and-groups.md)
@@ -258,14 +258,14 @@
 ##### [Neočekávaná aplikace v seznamu aplikací](manage-apps/application-types.md)
 
 #### Aplikace s více tenanty
-##### [Konfigurace nové aplikace](application-dev-setup-multi-tenant-app.md)
-##### [Přidání do galerie aplikací](application-dev-registration-config-multi-tenant-application-add-to-gallery-how-to.md)
+##### [Konfigurace nové aplikace](develop/setup-multi-tenant-app.md)
+##### [Přidání do galerie aplikací](develop/registration-config-multi-tenant-application-add-to-gallery-how-to.md)
 
 #### Oprávnění
-##### [Volba oprávnění pro rozhraní API](application-dev-perms-for-given-api.md)
-##### [Udělení oprávnění pro mou aplikaci](application-dev-registration-config-grant-permissions-how-to.md)
-##### [Delegovaná oprávnění versus oprávnění aplikace](application-dev-delegated-and-app-perms.md)
-##### [Souhlas pro aplikaci](application-dev-consent-framework.md)
+##### [Volba oprávnění pro rozhraní API](develop/perms-for-given-api.md)
+##### [Udělení oprávnění pro mou aplikaci](develop/registration-config-grant-permissions-how-to.md)
+##### [Delegovaná oprávnění versus oprávnění aplikace](develop/delegated-and-app-perms.md)
+##### [Souhlas pro aplikaci](develop/consent-framework.md)
 
 #### Zřizování
 ##### [Jak dlouho to trvá](manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md)
@@ -278,7 +278,7 @@
 
 #### Jednotné přihlašování
 ##### [Volba metody](manage-apps/single-sign-on-modes.md)
-##### [Konfigurace](application-dev-registration-config-sso-how-to.md)
+##### [Konfigurace](develop/registration-config-sso-how-to.md)
 ##### [Konfigurace federovaného jednotného přihlašování – aplikace v galerii](manage-apps/configure-federated-single-sign-on-gallery-applications.md)
 ##### [Běžné potíže s konfigurací federovaného jednotného přihlašování – aplikace v galerii](manage-apps/configure-federated-single-sign-on-gallery-applications-problems.md)
 ##### [Konfigurace federovaného jednotného přihlašování – aplikace mimo galerii](manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
@@ -303,7 +303,7 @@
 ##### [Potíže s místní aplikací – proxy aplikací](manage-apps/application-sign-in-problem-on-premises-application-proxy.md)
 
 ### [Vývoj aplikací](active-directory-applications-guiding-developers-for-lob-applications.md)
-### [Knihovna dokumentů](active-directory-apps-index.md)
+
 
 ## Správa adresáře
 ### [Azure AD Connect](./connect/active-directory-aadconnect.md)
