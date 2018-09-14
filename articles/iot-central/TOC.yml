@@ -36,8 +36,6 @@ items:
     href: concepts-connectivity.md
 - name: Návody
   items:
-  - name: Vytvoření aplikace
-    href: howto-create-application.md
   - name: Připojení zařízení
     items:
     - name: Příprava a připojení aplikace v Node.js (generické)
@@ -122,9 +120,9 @@ items:
     href: iot-central-customer-data-requests.md
   - name: Stack Overflow
     href: https://stackoverflow.com/questions/tagged/azure-iot-central
-ms.openlocfilehash: 6cfa705fbcdf7c876dd78fb28210742eb5562e8a
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 75958525a9315f521aea8389850379625d635aee
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714594"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45543941"

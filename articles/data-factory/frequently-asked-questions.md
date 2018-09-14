@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: shlo
-ms.openlocfilehash: 37c2c96ad14741fba2733765640f8d6d9ef3fee2
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 73bc8b6954470d11d6369bc733bb7c6f794ce892
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44716415"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45577128"
 ---
 # <a name="azure-data-factory-faq"></a>Nejčastější dotazy k Azure Data Factory
 Tento článek obsahuje odpovědi na nejčastější dotazy ohledně služby Azure Data Factory.  
@@ -82,7 +82,7 @@ Od původní verze Public Preview v 2017 Data Factory přináší následující
 -   Azure SQL Database s koncovými body služby virtuální sítě
 -   Spravované Instance (IU)
 -   Elastický fond
--   Podpora pro Azure Resource Manageru Virtual Network (VNet) nad klasickou virtuální síť, která se nepoužívají v budoucnu – díky tomu můžete vložit/spojení vašeho prostředí Azure-SSIS Integration Runtime (IR) k virtuální síti, který je nakonfigurovaný pro službu Azure SQL DB pomocí koncových bodů služby virtuální sítě nebo MI / místní přístup k datům, naleznete v tématu: https://docs.microsoft.com/en-us/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network 
+-   Podpora pro Azure Resource Manageru Virtual Network (VNet) nad klasickou virtuální síť, která se nepoužívají v budoucnu – díky tomu můžete vložit/spojení vašeho prostředí Azure-SSIS Integration Runtime (IR) k virtuální síti, který je nakonfigurovaný pro službu Azure SQL DB pomocí koncových bodů služby virtuální sítě nebo MI / místní přístup k datům, naleznete v tématu: https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network 
 -   Podpora pro ověřování Azure Active Directory (AAD) nad rámec ověřování SQL pro připojení k vaší databáze SSISDB – to vám umožní používat ověřování AAD s vaší ADF Identity spravované služby (MSI)
 -   Podpora pro přenesení svoji vlastní licenci systému SQL Server v místním získat značné úspory z možnosti Azure Hybrid Benefit (AHB)
 -   Podporu pro Enterprise Edition z Azure-SSIS IR, která vám umožní používat pokročilé/prémiové funkce, vlastní nastavení, chcete-li nainstalovat další součásti nebo rozšíření a 3. stran ekosystému, naleznete v tématu: https://blogs.msdn.microsoft.com/ssis/2018/04/27/enterprise-edition-custom-setup-and-3rd-party-extensibility-for-ssis-in-adf/ 

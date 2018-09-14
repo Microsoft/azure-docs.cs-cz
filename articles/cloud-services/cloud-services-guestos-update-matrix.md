@@ -3,7 +3,7 @@ title: Seznamte se s nejnovější verzí hostovaného operačního systému Azu
 description: Nejnovější verzi zprávy a Kompatibilita sady SDK pro Azure Cloud Services hostovaného operačního systému.
 services: cloud-services
 documentationcenter: na
-author: raiye
+author: RichardScheel
 manager: timlt
 editor: ''
 ms.assetid: 6306cafe-1153-44c7-8554-623b03d59a34
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 8/3/2018
-ms.author: raiye
-ms.openlocfilehash: 2ee31e0a2d563ddf2aa63498b4ca280e4da26754
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.date: 9/12/2018
+ms.author: RichardScheel
+ms.openlocfilehash: 8d49742e90e09a8836309db165b07074645df00a
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39524854"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576166"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure verzí hostovaného operačního systému a matice kompatibility sady SDK
 Poskytuje že vám aktuální informace o nejnovější verzi operačního systému hosta Azure uvolní pro cloudové služby. Tyto informace pomohou při plánování způsob upgradu, než je zakázáno hostovaného operačního systému. Je-li konfigurovat vaše role používat *automatické* aktualizace hostovaného operačního systému, jak je popsáno v [nastavení aktualizace operačního systému hosta Azure][Azure Guest OS Update Settings], není důležité, abyste si přečetli tuto stránku.
@@ -36,13 +36,16 @@ Poskytuje že vám aktuální informace o nejnovější verzi operačního syst�
 >
 
 > [!IMPORTANT]
-> Od tohoto dne uvedení, pouze nejnovější 2 verze hostovaného operačního systému bude podporované a dostupný na webu Azure Portal.
+> Pouze nejnovější 2 verze hostovaného operačního systému bude podporované a dostupný na webu Azure Portal.
 >
 >
 
 Informace o tom, jak aktualizovat vaše hostovaného operačního systému nejste si jistí? Zkontrolujte [to] [ cloud updates] navýšení kapacity.
 
 ## <a name="news-updates"></a>Aktualizace zprávy
+
+###### <a name="september-12-2018"></a>**12. září 2018**
+Hostovaný operační systém. srpna vydala.
 
 ###### <a name="august-3-2018"></a>**3. srpna 2018**
 Hostovaný operační systém z července vydala.
@@ -86,23 +89,22 @@ Vydal se dne hostovaného operačního systému.
 Nainstalované rozhraní .NET framework: 4.0, 4.5, 4.5.1, 4.5.2, 4.6, 4.6.1 a 4.6.2
 
 > [!NOTE]
-> Data s * se může změnit.
->
 > Hesla protokolu RDP pro operační systém řady 5 musí být minimálně 10 znaků.
 >
 
-| Konfigurační řetězec | Datum vydání | Zakázat datum | Neplatné datum |
-| --- | --- | --- | --- |
-| WA-GUEST-OS-5.21_201807-02 |3. srpna 2018 |Příspěvek 5.23 |Bude doplněno |
-| WA-GUEST-OS-5.20_201806-01 |3. července 2018 |Příspěvek 5.22 |Bude doplněno |
-|~~WA-GUEST-OS-5.19_201805-01~~ |1. června 2018 |3. srpna 2018 |Bude doplněno |
-|~~WA-GUEST-OS-5.18_201804-01~~ |4. května 2018 |3. července 2018 |Bude doplněno |
-|~~WA-GUEST-OS-5.17_201803-01~~ |6. dubna 2018 |1. června 2018|Bude doplněno |
-|~~WA-GUEST-OS-5.16_201802-01~~ |12. března 2018 |4. května 2018 |Bude doplněno |
-|~~WA-GUEST-OS-5.15_201801-01~~ |4. ledna 2018 |6. dubna 2018 |Bude doplněno |
-|~~WA-GUEST-OS-5.14_201712-01~~ |4. ledna 2018 |12. března 2018 |Bude doplněno |
-|~~WA-GUEST-OS-5.13_201711-01~~ |14. prosince 2017 |4. ledna 2018|Bude doplněno |
-|~~WA-GUEST-OS-5.12_201710-02~~ |8. listopadu 2017 |4. ledna 2018 |Bude doplněno |
+| Konfigurační řetězec | Datum vydání | Zakázat datum |
+| --- | --- | --- |
+| WA-GUEST-OS-5.22_201808-01 |12. září 2018 |Příspěvek 5,24 |
+| WA-GUEST-OS-5.21_201807-02 |3. srpna 2018 |Příspěvek 5.23 |
+|~~WA-GUEST-OS-5.20_201806-01~~ |3. července 2018 |12. září 2018 |
+|~~WA-GUEST-OS-5.19_201805-01~~ |1. června 2018 |3. srpna 2018 |
+|~~WA-GUEST-OS-5.18_201804-01~~ |4. května 2018 |3. července 2018 |
+|~~WA-GUEST-OS-5.17_201803-01~~ |6. dubna 2018 |1. června 2018|
+|~~WA-GUEST-OS-5.16_201802-01~~ |12. března 2018 |4. května 2018 |
+|~~WA-GUEST-OS-5.15_201801-01~~ |4. ledna 2018 |6. dubna 2018 |
+|~~WA-GUEST-OS-5.14_201712-01~~ |4. ledna 2018 |12. března 2018 |
+|~~WA-GUEST-OS-5.13_201711-01~~ |14. prosince 2017 |4. ledna 2018|
+|~~WA-GUEST-OS-5.12_201710-02~~ |8. listopadu 2017 |4. ledna 2018 |
 
 
 ## <a name="family-4-releases"></a>Uvolní řady 4
@@ -110,23 +112,19 @@ Nainstalované rozhraní .NET framework: 4.0, 4.5, 4.5.1, 4.5.2, 4.6, 4.6.1 a 4.
 
 Nainstalované rozhraní .NET framework: 4.0, 4.5, 4.5.1, 4.5.2
 
-> [!NOTE]
-> Data s * se může změnit
->
->
-
-| Konfigurační řetězec | Datum vydání | Zakázat datum | Neplatné datum |
-| --- | --- | --- | --- |
-| WA-GUEST-OS-4.56_201807-02 |3. srpna 2018 |Příspěvek 4.58 |Bude doplněno |
-| WA-GUEST-OS-4.55_201806-01 |3. července 2018 |Příspěvek 4.57 |Bude doplněno |
-|~~WA-GUEST-OS-4.54_201805-01~~ |1. června 2018 |3. srpna 2018 |Bude doplněno |
-|~~WA-GUEST-OS-4.53_201804-01~~ |4. května 2018 |3. července 2018 |Bude doplněno |
-|~~WA-GUEST-OS-4.52_201803-01~~ |6. dubna 2018 |1. června 2018 |Bude doplněno |
-|~~WA-GUEST-OS-4.51_201802-01~~ |12. března 2018 |4. května 2018 |Bude doplněno |
-|~~WA-GUEST-OS-4.50_201801-01~~ |4. ledna 2018 |6. dubna 2018 |Bude doplněno |
-|~~WA-GUEST-OS-4.49_201712-01~~ |4. ledna 2018 |12. března 2018 |Bude doplněno |
-|~~WA-GUEST-OS-4.48_201711-01~~ |14. prosince 2017 |4. ledna 2018 |Bude doplněno |
-|~~WA-GUEST-OS-4.47_201710-02~~ |8. listopadu 2017 |4. ledna 2018 |Bude doplněno |
+| Konfigurační řetězec | Datum vydání | Zakázat datum |
+| --- | --- | --- |
+| WA-GUEST-OS-4.57_201808-01 |12. září 2018 |Příspěvek 4.59 |
+| WA-GUEST-OS-4.56_201807-02 |3. srpna 2018 |Příspěvek 4.58 |
+|~~WA-GUEST-OS-4.55_201806-01~~ |3. července 2018 |12. září 2018 |
+|~~WA-GUEST-OS-4.54_201805-01~~ |1. června 2018 |3. srpna 2018 |
+|~~WA-GUEST-OS-4.53_201804-01~~ |4. května 2018 |3. července 2018 |
+|~~WA-GUEST-OS-4.52_201803-01~~ |6. dubna 2018 |1. června 2018 |
+|~~WA-GUEST-OS-4.51_201802-01~~ |12. března 2018 |4. května 2018 |
+|~~WA-GUEST-OS-4.50_201801-01~~ |4. ledna 2018 |6. dubna 2018 |
+|~~WA-GUEST-OS-4.49_201712-01~~ |4. ledna 2018 |12. března 2018 |
+|~~WA-GUEST-OS-4.48_201711-01~~ |14. prosince 2017 |4. ledna 2018 |
+|~~WA-GUEST-OS-4.47_201710-02~~ |8. listopadu 2017 |4. ledna 2018 |
 
 
 ## <a name="family-3-releases"></a>Uvolní řady 3
@@ -134,23 +132,19 @@ Nainstalované rozhraní .NET framework: 4.0, 4.5, 4.5.1, 4.5.2
 
 Nainstalované rozhraní .NET framework: 4.0, 4.5, 4.5.1, 4.5.2
 
-> [!NOTE]
-> Data s * se může změnit
->
->
-
-| Konfigurační řetězec | Datum vydání | Zakázat datum | Neplatné datum |
-| --- | --- | --- | --- |
-| WA-GUEST-OS-3.63_201807-02 |3. srpna 2018 |Příspěvek 3.65 |Bude doplněno |
-| WA-GUEST-OS-3.62_201806-01 |3. července 2018 |Příspěvek 3.64 |Bude doplněno |
-|~~WA-GUEST-OS-3.61_201805-01~~ |1. června 2018 |3. srpna 2018 |Bude doplněno |
-|~~WA-GUEST-OS-3.60_201804-01~~ |4. května 2018 |3. července 2018 |Bude doplněno |
-|~~WA-GUEST-OS-3.59_201803-01~~ |6. dubna 2018 |1. června 2018 |Bude doplněno |
-|~~WA-GUEST-OS-3.58_201802-01~~ |19. března 2018 |4. května 2018 |Bude doplněno |
-|~~WA-GUEST-OS-3.57_201801-01~~ |29. ledna 2018 |6. dubna 2018 |Bude doplněno |
-|~~WA-GUEST-OS-3.56_201712-01~~ |4. ledna 2018 |19. března 2018 |Bude doplněno |
-|~~WA-GUEST-OS-3.55_201711-01~~ |14. prosince 2017 |29. ledna 2018 |Bude doplněno |
-|~~WA-GUEST-OS-3.54_201710-02~~ |8. listopadu 2017 |4. ledna 2018 |Bude doplněno |
+| Konfigurační řetězec | Datum vydání | Zakázat datum |
+| --- | --- | --- |
+| WA-GUEST-OS-3.64_201808-01 |12. září 2018 |Příspěvek 3,66 |
+| WA-GUEST-OS-3.63_201807-02 |3. srpna 2018 |Příspěvek 3.65 |
+|~~WA-GUEST-OS-3.62_201806-01~~ |3. července 2018 |12. září 2018 |
+|~~WA-GUEST-OS-3.61_201805-01~~ |1. června 2018 |3. srpna 2018 |
+|~~WA-GUEST-OS-3.60_201804-01~~ |4. května 2018 |3. července 2018 |
+|~~WA-GUEST-OS-3.59_201803-01~~ |6. dubna 2018 |1. června 2018 |
+|~~WA-GUEST-OS-3.58_201802-01~~ |19. března 2018 |4. května 2018 |
+|~~WA-GUEST-OS-3.57_201801-01~~ |29. ledna 2018 |6. dubna 2018 |
+|~~WA-GUEST-OS-3.56_201712-01~~ |4. ledna 2018 |19. března 2018 |
+|~~WA-GUEST-OS-3.55_201711-01~~ |14. prosince 2017 |29. ledna 2018 |
+|~~WA-GUEST-OS-3.54_201710-02~~ |8. listopadu 2017 |4. ledna 2018 |
 
 
 ## <a name="family-2-releases"></a>Uvolní řady 2
@@ -158,25 +152,21 @@ Nainstalované rozhraní .NET framework: 4.0, 4.5, 4.5.1, 4.5.2
 
 Nainstalované rozhraní .NET framework: 3.5, 4.0, 4.5, 4.5.1, 4.5.2
 
-> [!NOTE]
-> Data s * se může změnit
->
->
-
-| Konfigurační řetězec | Datum vydání | Zakázat datum | Neplatné datum |
-| --- | --- | --- | --- |
-| WA-GUEST-OS-2.76_201807-02 |3. srpna 2018 |Příspěvek 2.78 |Bude doplněno |
-| WA-GUEST-OS-2.75_201806-01 |3. července 2018 |Příspěvek 2.77 |Bude doplněno |
-|~~WA-GUEST-OS-2.74_201805-01~~ |1. června 2018 |3. srpna 2018|Bude doplněno |
-|~~WA-GUEST-OS-2.73_201804-01~~ |4. května 2018 |3. července 2018 |Bude doplněno |
-|~~WA-GUEST-OS-2.72_201803-01~~ |6. dubna 2018 |1. června 2018 |Bude doplněno |
-|~~WA-GUEST-OS-2.71_201802-01~~ |12. března 2018 |4. května 2018 |Bude doplněno |
-|~~WA-GUEST-OS-2.70_201801-01~~ |29. ledna 2018 |6. dubna 2018 |Bude doplněno |
-|~~WA-GUEST-OS-2.69_201712-01~~ |4. ledna 2018 |12. března 2018 |Bude doplněno |
-|~~WA-GUEST-OS-2.68_201711-01~~ |14. prosince 2017 |29. ledna 2018 |Bude doplněno |
-|~~WA-GUEST-OS-2.67_201710-02~~ |8. listopadu 2017 |4. ledna 2018 |Bude doplněno |
-|~~WA-GUEST-OS-2.66_201709-01~~ |6. října 2017 |14. prosince 2017 |Bude doplněno |
-|~~WA-GUEST-OS-2.65_201708-01~~ |24. srpna 2017 |14. prosince 2017 |Bude doplněno |
+| Konfigurační řetězec | Datum vydání | Zakázat datum |
+| --- | --- | --- |
+| WA-GUEST-OS-2.77_201808-01 |12. září 2018 |Příspěvek 2.79 |
+| WA-GUEST-OS-2.76_201807-02 |3. srpna 2018 |Příspěvek 2.78 |
+|~~WA-GUEST-OS-2.75_201806-01~~ |3. července 2018 |12. září 2018 |
+|~~WA-GUEST-OS-2.74_201805-01~~ |1. června 2018 |3. srpna 2018|
+|~~WA-GUEST-OS-2.73_201804-01~~ |4. května 2018 |3. července 2018 |
+|~~WA-GUEST-OS-2.72_201803-01~~ |6. dubna 2018 |1. června 2018 |
+|~~WA-GUEST-OS-2.71_201802-01~~ |12. března 2018 |4. května 2018 |
+|~~WA-GUEST-OS-2.70_201801-01~~ |29. ledna 2018 |6. dubna 2018 |
+|~~WA-GUEST-OS-2.69_201712-01~~ |4. ledna 2018 |12. března 2018 |
+|~~WA-GUEST-OS-2.68_201711-01~~ |14. prosince 2017 |29. ledna 2018 |
+|~~WA-GUEST-OS-2.67_201710-02~~ |8. listopadu 2017 |4. ledna 2018 |
+|~~WA-GUEST-OS-2.66_201709-01~~ |6. října 2017 |14. prosince 2017 |
+|~~WA-GUEST-OS-2.65_201708-01~~ |24. srpna 2017 |14. prosince 2017 |
 
 
 ## <a name="msrc-patch-updates"></a>Aktualizace MSRC
@@ -221,7 +211,7 @@ V následujícím příkladu 2 je rodině, 12 je verze a "rel2" je verze.
 Konfigurační řetězec pro hostovaný operační systém obsahuje tytéž informace součástí, spolu s data zobrazení, které opravy MSRC byla zvážena pro tuto verzi. V tomto příkladu byla zvážena MSRC opravy vytvořil pro Windows Server 2008 R2 až a včetně srpen 2012 pro zahrnutí. Jsou zahrnuty pouze opravy konkrétně použití pro tuto verzi Windows serveru. Například pokud oprava MSRC platí pro Microsoft Office, nebude zahrnutý protože tento produkt není součástí základní image Windows serveru.
 
 ## <a name="guest-os-system-update-process"></a>Proces aktualizace systému operačního systému hosta
-Tato stránka obsahuje informace o nadcházejících verzí hostovaného operačního systému. Zákazníci označili, že chtějí vědět, kdy vydané verzi dochází, protože jejich rolí cloudové služby se restartuje, pokud jsou nastavená na "Automatické" aktualizace. Verzí hostovaného operačního systému obvykle dochází minimálně pět (5) dní po MSRC aktualizovat verzi, ke které dojde k druhému úterý v každém měsíci. Nová verze zahrnují všechny příslušné opravy MSRC pro každou řadu hostovaného operačního systému.
+Tato stránka obsahuje informace o nadcházejících verzí hostovaného operačního systému. Zákazníci označili, že chtějí vědět, kdy vydané verzi dochází, protože jejich rolí cloudové služby se restartuje, pokud jsou nastavená na "Automatické" aktualizace. Verzí hostovaného operačního systému obvykle dochází 2 až 3 týdny poté, co MSRC aktualizovat verzi, ke které dojde k druhému úterý v každém měsíci. Nová verze zahrnují všechny příslušné opravy MSRC pro každou řadu hostovaného operačního systému.
 
 Microsoft Azure je neustále uvolnění aktualizace. Hostovaný operační systém je pouze jeden tyto aktualizace v kanálu. Verze může mít vliv celá řada faktorů, příliš mnoho, aby seznam tady. Kromě toho Azure běží v doslova stovky tisíc počítačů. To znamená, že je možné uvést přesné datum a čas, kdy se restartuje vaše role. Pracujeme na plán na omezení nebo čas restartování počítače.
 

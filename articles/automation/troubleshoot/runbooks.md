@@ -8,12 +8,12 @@ ms.date: 07/13/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 78f9ba817008a28e63ec167c4e2ccc7f3859be16
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 1954393c9fe544c33919c8f9fb8ee04e430e7639
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42057525"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542561"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Řešení potíží s runbooky
 
@@ -216,17 +216,19 @@ Tato chyba může být způsobeno z následujících důvodů:
 
 1. Limit paměti. Na tom, kolik paměti přidělených Sandboxu nejsou nepřispějete [omezení služby Automation](../../azure-subscription-service-limits.md#automation-limits) tak úlohy může selhat, je pokud používá více než 400 MB paměti.
 
-2. Nekompatibilní modul. Tato situace může nastat, pokud závislostí modulů nejsou správné, a pokud nejsou, vaše sada runbook obvykle vrací "Příkaz nebyl nalezen" nebo "Nelze vytvořit vazbu parametru" zprávy.
+1. Síťové sokety. Azure izolovaných prostorů jsou omezena na 1 000 souběžných síťové sokety, jak je popsáno v [omezení služby Automation](../../azure-subscription-service-limits.md#automation-limits).
+
+1. Nekompatibilní modul. Tato situace může nastat, pokud závislostí modulů nejsou správné, a pokud nejsou, vaše sada runbook obvykle vrací "Příkaz nebyl nalezen" nebo "Nelze vytvořit vazbu parametru" zprávy.
 
 #### <a name="resolution"></a>Řešení
 
 Některé z následujících řešení tento problém vyřešit:
 
-* Navrhované metody pro práci v rámci omezení paměti jsou rozdělit zatížení mezi více runbooky, není zpracování co nejvíce dat v paměti, nikoli k zápisu zbytečné výstup z vaší sady runbook, nebo zvažte počet kontrolních bodů zápisu do vašich pracovních postupů prostředí PowerShell sady runbook.  
+* Navrhované metody pro práci v rámci omezení paměti jsou rozdělit zatížení mezi více runbooky, není zpracování co nejvíce dat v paměti, nikoli k zápisu zbytečné výstup z vaší sady runbook, nebo zvažte počet kontrolních bodů zápisu do vašich pracovních postupů prostředí PowerShell sady runbook. Clear – metoda můžete použít například `$myVar.clear()` vymazání proměnné a použití `[GC]::Collect()` spustit uvolňování paměti okamžitě, tím se snižuje nároky na paměť pro sady runbook za běhu.
 
 * Aktualizovat moduly Azure pomocí následujících kroků [aktualizace modulů Azure Powershellu ve službě Azure Automation](../automation-update-azure-modules.md).  
 
-* Druhým řešením je spouštět sadu runbook [Hybrid Runbook Worker](../automation-hrw-run-runbooks.md). Hybridní pracovní procesy nejsou omezeny [spravedlivé sdílení](../automation-runbook-execution.md#fair-share) omezuje, jsou Azure karantény.
+* Druhým řešením je spouštět sadu runbook [Hybrid Runbook Worker](../automation-hrw-run-runbooks.md). Hybridní pracovní procesy nejsou omezeny omezení paměti a sítě, které jsou Azure karantény.
 
 ### <a name="fails-deserialized-object"></a>Scénář: Sada Runbook selže z důvodu deserializovaný objekt
 

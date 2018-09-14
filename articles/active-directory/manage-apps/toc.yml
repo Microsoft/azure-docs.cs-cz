@@ -95,7 +95,7 @@ items:
     - name: Změna názvu nebo loga
       href: change-name-or-logo-portal.md
     - name: Kurzy aplikací SaaS
-      href: ../saas-apps/tutorial-list.md
+      href: /azure/active-directory/saas-apps/tutorial-list?context=azure/active-directory/manage-apps/context/manage-apps-context
   - name: Integrace místních aplikací
     items:
     - name: Povolení proxy aplikace
@@ -265,7 +265,7 @@ items:
 - name: Zdroje a prostředky
   items:
   - name: Plány nasazení služby Azure AD
-    href: ../fundamentals/active-directory-deployment-plans.md
+    href: /azure/active-directory/fundamentals/active-directory-deployment-plans?context=azure/active-directory/manage-apps/context/manage-apps-context
   - name: Fórum Azure pro názory
     href: https://feedback.azure.com/forums/169401-azure-active-directory
   - name: Plány Azure do budoucna
@@ -282,9 +282,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-active-directory
   - name: Videa
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
-ms.openlocfilehash: de8f961b5f39751aac95c7fcde47a73c848ef96e
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 24452d3c2d5991f9dc81b9d740ec9473e2b8a1e0
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721785"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579884"

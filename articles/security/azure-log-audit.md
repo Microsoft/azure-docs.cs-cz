@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: a499f609e517d880b3a942ac6dc3eb0dc10b69e7
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 93b0a7e382c27cab5f050166ec8fa89fc7cf6b96
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42054819"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576098"
 ---
 # <a name="azure-logging-and-auditing"></a>Protokolování a auditování Azure
 
@@ -45,7 +45,7 @@ V následující tabulce jsou uvedeny nejdůležitější typy protokolů dostup
 |[Protokoly aktivit](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)|Rovina řízení událostí na prostředky Azure Resource Manageru|   Poskytuje podrobné informace o operacích provedených na prostředky ve vašem předplatném.|    Rozhraní REST API, [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)|
 |[Protokoly diagnostiky Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)|Časté data o operaci prostředky Azure Resource Manageru v rámci předplatného|    Poskytuje přehled o operacích, které provedly vaše prostředky, samotného.| Azure Monitor, [Stream](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)|
 |[Sestavy Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-azure-portal)|Protokoly a sestavy | Sestavy aktivit přihlašování uživatele a informace aktivit systému o uživatelích a Správa skupin.|[Graph API](https://docs.microsoft.com/azure/active-directory/develop/active-directory-graph-api-quickstart)|
-|[Virtuální počítače a cloudové služby](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-quick-collect-azurevm)|Služba Protokol událostí Windows a protokolu Syslog v Linuxu|    Zaznamenává systémová data a data protokolování na virtuální počítače a přenese data do účtu úložiště Azure podle vašeho výběru.|   Windows (pomocí Windows Azure Diagnostics [[WAD](https://docs.microsoft.com/azure/azure-diagnostics)] úložiště) a Linuxu ve službě Azure Monitor|
+|[Virtuální počítače a cloudové služby](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-collect-azurevm)|Služba Protokol událostí Windows a protokolu Syslog v Linuxu|  Zaznamenává systémová data a data protokolování na virtuální počítače a přenese data do účtu úložiště Azure podle vašeho výběru.|   Windows (pomocí Windows Azure Diagnostics [[WAD](https://docs.microsoft.com/azure/azure-diagnostics)] úložiště) a Linuxu ve službě Azure Monitor|
 |[Analýza úložiště Azure](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)|Protokolování úložiště poskytuje data metriky pro účet úložiště|Poskytuje podrobné informace o trasování požadavků, analyzuje trendy využití a Diagnostika problémů s vaším účtem úložiště.|   Rozhraní REST API nebo [klientské knihovny](https://msdn.microsoft.com/library/azure/mt347887.aspx)|
 |[Protokolů toků skupin zabezpečení sítě (NSG)](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)|Formát JSON ukazuje příchozí a odchozí toky na základě podle pravidla|Zobrazí informace o příchozí a odchozí provoz IP přes skupinu zabezpečení sítě.|[Azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)|
 |[Application insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview)|Protokoly, výjimky a vlastní Diagnostika|   Poskytuje application performance monitoring (APM) služby pro webové vývojáře ve více platformách.| Rozhraní REST API [Power BI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)|

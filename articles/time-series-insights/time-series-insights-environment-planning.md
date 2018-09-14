@@ -11,12 +11,12 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/15/2017
-ms.openlocfilehash: 2c06463d95467543a426079addf981aa42d53eb6
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: c98a90aa44166d6453612f9b73287966851df6ce
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630632"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45578153"
 ---
 # <a name="plan-your-azure-time-series-insights-environment"></a>Plánování prostředí Azure Time Series Insights
 
@@ -101,11 +101,11 @@ Jako službu Azure Time Series Insights poskytuje vysokou dostupnost (HA) pomoc�
 
 Time Series Insights nemá integrované zotavení po havárii (BCDR).  Zákazníci, kteří vyžadují BCDR však stále implementovat strategii zotavení. Vytvoření druhého prostředí Time Series Insights v oblasti zálohování Azure a odesílá je do této sekundární prostředí ze zdroje primární události, využívat druhou vyhrazenou skupinu spotřebitelů a pokyny pro tento zdroj události BCDR.  
 
-1.  Vytvořte prostředí v druhé oblasti.  Další informace o vytvoření prostředí Time Series Insights [tady](https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-get-started).
-2.  Vytvoření druhého vyhrazenou skupinu spotřebitelů pro váš zdroj událostí a připojení tohoto zdroje událostí do nového prostředí.  Nezapomeňte určit druhé, vyhrazená skupina příjemců.  Další informace o tomto podle buď [dokumentace ke službě IoT Hub](https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub) nebo [dokumentace k centrům událostí](https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-data-access).
+1.  Vytvořte prostředí v druhé oblasti.  Další informace o vytvoření prostředí Time Series Insights [tady](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started).
+2.  Vytvoření druhého vyhrazenou skupinu spotřebitelů pro váš zdroj událostí a připojení tohoto zdroje událostí do nového prostředí.  Nezapomeňte určit druhé, vyhrazená skupina příjemců.  Další informace o tomto podle buď [dokumentace ke službě IoT Hub](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub) nebo [dokumentace k centrům událostí](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-data-access).
 3.  Pokud primární oblast, přestanou fungovat během události po havárii, přepněte operací zálohování prostředí Time Series Insights.  
 
-Další informace o službě IoT Hub BCDR zásady, head [tady](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-ha-dr).  Další informace o zásadách BCDR centra událostí, head [tady](https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-geo-dr).  
+Další informace o službě IoT Hub BCDR zásady, head [tady](https://docs.microsoft.com/azure/iot-hub/iot-hub-ha-dr).  Další informace o zásadách BCDR centra událostí, head [tady](https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr).  
 
 ## <a name="next-steps"></a>Další postup
 - [Přidání zdroje událostí centra událostí](time-series-insights-how-to-add-an-event-source-eventhub.md)
