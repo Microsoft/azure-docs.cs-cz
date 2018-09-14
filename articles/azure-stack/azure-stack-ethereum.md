@@ -1,27 +1,34 @@
 ---
 title: Šablony řešení Azure Stack Etherea blockchain
-description: Použití šablon vlastní řešení k nasazení a konfiguraci sítě konsorcia Etherea blockchain v Azure stacku
+description: Kurz použití šablony vlastní řešení k nasazení a konfiguraci sítě konsorcia Etherea blockchain v Azure stacku
 services: azure-stack
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 09/12/2018
-ms.topic: article
+ms.date: 09/13/2018
+ms.topic: tutorial
 ms.service: azure-stack
-ms.reviewer: coborn
+ms.reviewer: seyadava
+ms.custom: mvc
 manager: femila
-ms.openlocfilehash: b4c8ff113ff76586cc4a91adfe568b07327a2d94
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: b21a9ca58fc29a3da62ea08e81e628368fe5385f
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721974"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45580765"
 ---
-# <a name="azure-stack-ethereum-blockchain-solution-templates"></a>Šablony řešení Azure Stack Etherea blockchain
+# <a name="tutorial-use-the-azure-stack-ethereum-blockchain-solution-template"></a>Kurz: Použití šablony řešení Etherea zásobníku Azure blockchain
 
 Šablona řešení Etherea je navržena pro snadnější a rychlejší nasazení a konfiguraci sítě konsorcia několika člen Etherea blockchain s minimálními znalostmi Azure a Etherea.
 
 Pomocí několika vstupů uživatele a nasazení jedním kliknutím pomocí portálu Azure Stack tenanta můžete zřídit každý člen jejich nároky na síť. Nároky na síť každého člena se skládá ze sady uzlů s vyrovnáváním zatížení transakce s které aplikace nebo uživatele mohou spolupracovat při odeslání transakce, sada uzlů dolování se záznamu transakcemi a síťové virtuální zařízení (NVA). Krok následné připojení připojí síťových virtuálních zařízení pro vytvoření plně nakonfigurovaného blockchain více členy sítě.
+
+Chcete-li toto nastavení bude:
+
+> [!div class="checklist"]
+> * Zvolte architekturu nasazení
+> * Nasadit samostatný, vedoucí consortium nebo člen sítě konsorcia
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -198,5 +205,13 @@ Po dokončení nasazení trvá několik minut, než se vedoucí instancí a čle
 
 ## <a name="next-steps"></a>Další postup
 
-- Další informace o Ethereem a Azure, najdete v článku [technologie Blockchainu a aplikace | Microsoft Azure](https://azure.microsoft.com/solutions/blockchain/).
-- Další informace o scénářích blockchain v Azure najdete v části [šablonu řešení ethereum během testování pracovní consortium](../blockchain-workbench/ethereum-deployment-guide.md).
+V tomto kurzu jste se naučili:
+
+> [!div class="checklist"]
+> * Zvolte architekturu nasazení
+> * Nasadit samostatný, vedoucí consortium nebo člen sítě konsorcia
+
+Další informace o Ethereem a Azure, najdete v tématech:
+
+> [!div class="nextstepaction"]
+> [Technologie Blockchainu a aplikace](https://azure.microsoft.com/solutions/blockchain/)

@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/12/2018
+ms.date: 09/13/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: ddb1fcd91ff0c0018bcab9988a5ab063b882cf36
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
-ms.translationtype: HT
+ms.openlocfilehash: e396fc82754188ea655c70b44d4bf937a3c3163c
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714660"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45544207"
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Stažení položek z marketplace z Azure do služby Azure Stack
 
@@ -148,9 +148,9 @@ Existují dvě části pro tento scénář:
 ### <a name="import-the-download-and-publish-to-azure-stack-marketplace"></a>Importovat soubor ke stažení a publikování na Azure Marketplace zásobníku
 1. Soubory pro Image virtuálních počítačů nebo šablon řešení, které máte [dříve stažené](#use-the-marketplace-syndication-tool-to-download-marketplace-items) musí být dostupné místně do vašeho prostředí Azure Stack.  
 
-2. Použití portálu pro správu k odeslání balíčku pro položku marketplace (.azpkg soubor) do úložiště objektů Blob v Azure stacku. Nahrávání balíčku ji zpřístupní k Azure Stack, můžete později publikovat položky Azure Marketplace zásobníku.
+2. Použití portálu pro správu k odeslání balíčku pro položku marketplace (.azpkg soubor) a image virtuálního pevného disku (soubor .vhd) do úložiště objektů Blob v Azure stacku. Nahrání balíčku a souborů na disku je zpřístupní pro Azure Stack, později publikování položky Azure Stack Marketplace.
 
-   Nahrávání je potřeba mít účet storage s kontejnerem veřejně přístupná (viz požadavky pro tento scénář)   
+   Nahrávání je potřeba mít účet storage s kontejnerem veřejně přístupná (viz požadavky pro tento scénář).  
    1. V portálu pro správu služby Azure Stack, přejděte na **všechny služby** a potom v části **DATA + úložiště** vyberte **účty úložiště**.  
    
    2. Vyberte účet úložiště z vašeho předplatného a pak v části **služby BLOB SERVICE**vyberte **kontejnery**.  
@@ -159,7 +159,7 @@ Existují dvě části pro tento scénář:
    3. Vyberte kontejner, kterou chcete použít a pak vyberte **nahrát** otevřít **nahrát objekt blob** podokně.  
       ![Kontejner](media/azure-stack-download-azure-marketplace-item/container.png)  
    
-   4. V podokně nahrání objektů blob, přejděte na soubory, které chcete načíst do služby storage a potom vyberte **nahrát**.  
+   4. V podokně nahrání objektu blob přejděte k souborům balíčku a disk k načtení do úložiště a pak vyberte **nahrát**.  
       ![upload](media/azure-stack-download-azure-marketplace-item/upload.png)  
 
    5. V podokně kontejner se zobrazí soubory, které nahrajete. Vyberte soubor a zkopírujte adresu URL **vlastnosti objektu Blob** podokně. Tuto adresu URL použijete v dalším kroku při importu položky marketplace do služby Azure Stack.  Na následujícím obrázku je kontejner *úložiště objektů blob testu* a soubor je *Microsoft.WindowsServer2016DatacenterServerCore ARM.1.0.801.azpkg*.  Soubor je adresa URL *https://testblobstorage1.blob.local.azurestack.external/blob-test-storage/Microsoft.WindowsServer2016DatacenterServerCore-ARM.1.0.801.azpkg*.  
@@ -169,7 +169,7 @@ Existují dvě části pro tento scénář:
 
    Můžete získat *vydavatele*, *nabízejí*, a *sku* hodnoty bitové kopie z textového souboru, který stahuje se soubor AZPKG. Textový soubor je uložen v cílovém umístění. *Verze* hodnotu verze, které jste si poznamenali při stahování položky z Azure v předchozím postupu. 
  
-   V následujícím příkladu skriptu se používají hodnoty pro Windows Server 2016 Datacenter - virtuálního počítače jádra serveru. Nahraďte *URI_path* s cestou do umístění úložiště objektů blob pro položku.
+   V následujícím příkladu skriptu se používají hodnoty pro Windows Server 2016 Datacenter - virtuálního počítače jádra serveru. Hodnota pro *- Osuri* je příklad cesty k umístění úložiště objektů blob pro položku.
 
    ```PowerShell  
    Add-AzsPlatformimage `
@@ -178,7 +178,7 @@ Existují dvě části pro tento scénář:
     -sku "2016-Datacenter-Server-Core" `
     -osType Windows `
     -Version "2016.127.20171215" `
-    -OsUri "URI_path"  
+    -OsUri "https://mystorageaccount.blob.local.azurestack.external/cont1/Microsoft.WindowsServer2016DatacenterServerCore-ARM.1.0.801.vhd"  
    ```
    **Šablony řešení:** některé šablony může obsahovat malé 3 MB. Soubor virtuálního pevného disku s názvem **fixed3.vhd**. Není nutné importovat do služby Azure Stack. Fixed3.VHD.  Tento soubor je součástí některých šablony řešení požadavků pro publikování na webu Azure Marketplace.
 
@@ -198,7 +198,7 @@ Existují dvě části pro tento scénář:
      -GalleryItemUri "https://mystorageaccount.blob.local.azurestack.external/cont1/Microsoft.WindowsServer2016DatacenterServerCore-ARM.1.0.801.azpkg" `
      –Verbose
     ```
-5. Po publikování položky galerie, je tak, že přejdete do **všechny služby**. Části **Obecné** vyberte **Marketplace**.  Při stahování šablony řešení, ujistěte se, že přidáte všechny závislé image virtuálního pevného disku pro danou šablonu řešení.  
+5. Po publikování položky galerie je teď k dispozici pro použití. Pokud chcete potvrdit, publikování položky galerie, přejděte na **všechny služby**a potom v části **Obecné** vyberte **Marketplace**.  Při stahování šablony řešení, ujistěte se, že přidáte všechny závislé image virtuálního pevného disku pro danou šablonu řešení.  
   ![Zobrazení marketplace](media/azure-stack-download-azure-marketplace-item/view-marketplace.png)  
 
 > [!NOTE]

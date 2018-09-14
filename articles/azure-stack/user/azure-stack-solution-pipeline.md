@@ -11,17 +11,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/04/2018
+ms.date: 09/12/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 773acd3a22244403548ef4ce35164291f5c0be7d
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: ad40f3efc123d313b2fd759889b0aa2621b3d7aa
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44300831"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542497"
 ---
-# <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>Kurz: nasazení aplikace do Azure a Azure Stack
+# <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>Kurz: Nasazení aplikace do Azure a Azure Stack
 
 *Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
@@ -81,7 +81,7 @@ V tomto kurzu se předpokládá, že máte některé základní znalosti o Azure
  * Vytvoření [plánu nebo nabídky](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview) ve službě Azure Stack.
  * Vytvoření [tenanta předplatného](https://docs.microsoft.com/azure/azure-stack/azure-stack-subscribe-plan-provision-vm) ve službě Azure Stack.
  * Vytvoření webové aplikace v rámci předplatného tenanta. Poznamenejte si nový URL webové aplikace pro později použít.
- * Nasazení virtuálního počítače Azure DevOps služby v rámci předplatného tenanta.
+ * Nasazení virtuálního počítače Windows serveru 2012 v rámci předplatného tenanta. Tento server bude používat jako váš server sestavení a ke spouštění služeb Azure DevOps.
 * Zadejte bitovou kopii systému Windows Server 2016 s .NET 3.5 pro virtuální počítač (VM). Tento virtuální počítač bude vytvořen ve vaší službě Azure Stack jako privátní sestavovacího agenta.
 
 ### <a name="developer-tool-requirements"></a>Požadavky na nástroj pro vývojáře

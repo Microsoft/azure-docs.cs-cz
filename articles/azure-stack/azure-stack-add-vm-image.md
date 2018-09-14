@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 09/05/2018
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: ba4c53f03350995544eb95917102bd7123a077d2
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 7a5c6875f080655e69f549e45ec474958128754f
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44022760"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45575809"
 ---
 # <a name="make-a-virtual-machine-image-available-in-azure-stack"></a>Zpřístupnit image virtuálního počítače ve službě Azure Stack
 
@@ -75,7 +75,7 @@ Image musí být možné odkazovat identifikátor URI úložiště objektů blob
 ## <a name="add-a-vm-image-to-the-marketplace-by-using-powershell"></a>Přidání image virtuálního počítače na webu Marketplace pomocí Powershellu
 
 > [!Note]  
-> Když přidáte šablony a nasazení prostředí PowerShell založený na bitovou kopii pouze bude k dispozici pro správce prostředků Azure. Nedělejte obrázky k dispozici vaši uživatelé jako položky marketplace publikování položky marketplace pomocí kroků v článku [vytvoření a publikování položky Marketplace](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-create-and-publish-marketplace-item)
+> Když přidáte šablony a nasazení prostředí PowerShell založený na bitovou kopii pouze bude k dispozici pro správce prostředků Azure. Nedělejte obrázky k dispozici vaši uživatelé jako položky marketplace publikování položky marketplace pomocí kroků v článku [vytvoření a publikování položky Marketplace](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-and-publish-marketplace-item)
 
 1. [Instalace Powershellu pro Azure Stack](azure-stack-powershell-install.md).  
 
