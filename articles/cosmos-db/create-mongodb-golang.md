@@ -1,5 +1,5 @@
 ---
-title: 'Azure Cosmos DB: Sestavení aplikace konzoly v jazyce Go s rozhraním API MongoDB na webu Azure Portal | Microsoft Docs'
+title: 'Azure Cosmos DB: Sestavení aplikace konzoly v jazyce Go s rozhraním API MongoDB na webu Azure Portal | Dokumentace Microsoftu'
 description: Obsahuje vzorový kód v jazyce Go, který můžete použít pro připojení ke službě Azure Cosmos DB a zadávání dotazů.
 services: cosmos-db
 author: slyons
@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 07/21/2017
 ms.author: sclyon
 ms.custom: mvc
-ms.openlocfilehash: 68049b9c0b9186a433ddf3c92be12487cfd3c13b
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 7bfcbf2c72dbe33727097841f34f3f6869e9d2d8
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700276"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44053127"
 ---
 # <a name="azure-cosmos-db-build-a-mongodb-api-console-app-with-golang-and-the-azure-portal"></a>Azure Cosmos DB: Sestavení aplikace konzoly v jazyce Go s rozhraním API MongoDB na webu Azure Portal
 
@@ -138,7 +138,7 @@ Metoda **mgo.Dial()** se používá v případě, že není k dispozici připoje
 Instance objektu **DialWIthInfo{}** slouží k vytvoření objektu relace. Po vytvoření relace můžete je kolekci přistupovat pomocí následujícího fragmentu kódu:
 
 ```go
-collection := session.DB(“database”).C(“package”)
+collection := session.DB("database").C("package")
 ```
 
 <a id="create-document"></a>

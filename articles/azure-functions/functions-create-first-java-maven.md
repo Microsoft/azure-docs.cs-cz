@@ -1,25 +1,23 @@
 ---
-title: Vytvoření první funkce v Azure pomocí Javy a Mavenu | Microsoft Docs
+title: Vytvoření první funkce v Azure pomocí Javy a Mavenu | Dokumentace Microsoftu
 description: Vytvořte a publikujte do Azure jednoduchou funkci aktivovanou protokolem HTTP pomocí Javy a Mavenu.
 services: functions
 documentationcenter: na
 author: rloutlaw
 manager: justhe
 keywords: azure functions, functions, event processing, compute, serverless architecture
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: java
 ms.topic: quickstart
-ms.tgt_pltfrm: multiple
-ms.workload: na
 ms.date: 08/10/2018
 ms.author: routlaw, glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 3840d8d1e18e73c1f08c450859032c07e441cff2
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 16d6dd6a589256ad98a37465e64e847778d0cc7e
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43699171"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44092589"
 ---
 # <a name="create-your-first-function-with-java-and-maven-preview"></a>Vytvoření první funkce pomocí Javy a Mavenu (Preview)
 

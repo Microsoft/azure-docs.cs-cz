@@ -8,16 +8,16 @@ ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 06/27/2018
 ms.author: diberry
-ms.openlocfilehash: 559c0e5832249b095b923fe88467f8f4c5ffa5e1
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 4dd5437940994a2f264b5a11baebcd67fdddb43d
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "43769216"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44163086"
 ---
 # <a name="quickstart-analyze-text-using-java"></a>Rychlý start: Analýza textu pomocí Javy
 
-[!include[Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
+[!INCLUDE [Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
 
 <a name="create-luis-subscription-key"></a>
 
@@ -28,15 +28,15 @@ ms.locfileid: "43769216"
 * ID veřejné aplikace: df67dcdb-c37d-46af-88e1-8b97951ca1c2
 
 
-[!include[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-luis-repo-note.md)]
+[!INCLUDE [Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-luis-repo-note.md)]
 
 ## <a name="get-luis-key"></a>Získání klíče LUIS
 
-[!include[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-get-key-para.md)]
+[!INCLUDE [Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-get-key-para.md)]
 
 ## <a name="analyze-text-with-browser"></a>Analýza textu pomocí prohlížeče
 
-[!include[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-browser-para.md)]
+[!INCLUDE [Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-browser-para.md)]
 
 ## <a name="analyze-text-with-java"></a>Analýza textu pomocí Javy 
 
@@ -56,7 +56,7 @@ Pomocí Javy můžete získat přístup ke stejným výsledkům, jako jste vidě
     
 ## <a name="luis-keys"></a>Klíče služby LUIS
 
-[!include[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-key-usage-para.md)]
+[!INCLUDE [Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-key-usage-para.md)]
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

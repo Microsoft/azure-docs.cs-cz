@@ -1,5 +1,5 @@
 ---
-title: Zabezpečení trezoru klíčů | Microsoft Docs
+title: Zabezpečení trezoru klíčů | Dokumentace Microsoftu
 description: Spravujte přístupová oprávnění pro trezor klíčů pro správu trezorů, klíčů a tajných klíčů. Model ověřování a autorizace pro trezor klíčů a jak trezor klíčů zabezpečit
 services: key-vault
 documentationcenter: ''
@@ -11,15 +11,15 @@ ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 08/31/2018
 ms.author: ambapat
-ms.openlocfilehash: 9b8b0da6e1572ab79ffb369497f64aad2cd249b9
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
-ms.translationtype: HT
+ms.openlocfilehash: d8c5e660b460e763fb4a500463543316c8c914ed
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43343458"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44159399"
 ---
 # <a name="secure-your-key-vault"></a>Zabezpečení trezoru klíčů
 Azure Key Vault je cloudová služba, která chrání šifrovací klíče a tajné klíče (například certifikáty, připojovací řetězce a hesla) a pro vaše cloudové aplikace. Jelikož tato data jsou citlivá a zcela klíčová pro vaši obchodní (i jinou) činnost, je na místě zabezpečit přístup k trezorům klíčů tak, aby k nim mohli přistupovat jen autorizované aplikace a autorizovaní uživatelé. Tento článek představuje model přístupu k trezoru klíčů, vysvětluje ověření a autorizaci a na příkladu názorně popisuje, jak lze zabezpečit přístup k trezoru klíčů pro vaše cloudové aplikace.
@@ -97,7 +97,7 @@ Zásady přístupu trezoru klíčů udělují odděleně oprávnění pro klíč
 
 Kromě zásad přístupu můžete přístup k rovině dat omezit [koncovými body služby Virtual Network pro Azure Key Vault](key-vault-overview-vnet-service-endpoints.md) tím, že nakonfigurujete [brány firewall a pravidla virtuální sítě](key-vault-network-security.md) a tím přidáte další vrstvu zabezpečení.
 
-## <a name="example"></a>Příklad
+## <a name="example"></a>Příklad:
 Řekněme, že vyvíjíte aplikaci, která používá certifikát pro SSL, službu Azure Storage k ukládání dat a používá 2048bitový klíč RSA pro podpisové operace. A tato aplikace běží ve virtuálním počítači (nebo ve škálovací sadě virtuálních počítačů). Můžete použít trezor klíčů, ve kterém budou uloženy všechny tajné klíče aplikace, a použít tento trezor klíčů k uložení zaváděcího certifikátu, který aplikace používá k ověření v Azure Active Directory.
 
 Takže souhrn všech klíčů a tajných klíčů, které budou uložené v trezoru klíčů.
