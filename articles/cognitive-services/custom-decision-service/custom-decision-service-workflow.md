@@ -1,6 +1,6 @@
 ---
-title: Vlastní pracovní postup služby rozhodnutí - kognitivní služeb Azure | Microsoft Docs
-description: Tento článek nabízí přehled Azure vlastní rozhodnutí služby pracovního postupu.
+title: Vlastní pracovní postup Decision Service - služeb Azure Cognitive Services | Dokumentace Microsoftu
+description: Tento článek obsahuje přehled služby Azure Custom Decision Service pracovního postupu.
 services: cognitive-services
 author: noellelacharite
 manager: nolachar
@@ -8,23 +8,23 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 06/04/2018
 ms.author: nolachar
-ms.openlocfilehash: 851d7f8cc47b455dbced26ff53d841ed0a5ff0db
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 32d5939e9adb4d98ae0c38a32ded0e0b6dec8256
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "35343935"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45580629"
 ---
-# <a name="custom-decision-service-workflow"></a>Vlastní pracovní postup služby rozhodnutí
+# <a name="custom-decision-service-workflow"></a>Pracovní postup Custom Decision Service
 
-Doporučujeme následující tento vzor při vytváření aplikace.
+Doporučujeme tento vzor při sestavování aplikací.
 
-![Vlastní pracovní postup služby rozhodnutí](media/custom-decision-service-workflow.png)
+![Pracovní postup Custom Decision Service](media/custom-decision-service-workflow.png)
 
-Přidat [připojovacího řetězce úložiště Azure](https://docs.microsoft.com/en-us/azure/storage/common/storage-configure-connection-string).
+Přidat [připojovacího řetězce služby Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-configure-connection-string).
 
 ## <a name="next-steps"></a>Další postup
 
-* [Registrace vaší aplikace](custom-decision-service-get-started-register.md) službou vlastní rozhodnutí
-* Začínáme za účelem optimalizace [webové stránky](custom-decision-service-get-started-browser.md) nebo [aplikace pro smartphone](custom-decision-service-get-started-app.md).
-* Obrátit [referenční dokumentace rozhraní API](custom-decision-service-api-reference.md) Další informace o funkci zadané.
+* [Zaregistrujte si vaši aplikaci](custom-decision-service-get-started-register.md) pomocí služby Custom Decision Service
+* Začínáme se optimalizovat [webovou stránku](custom-decision-service-get-started-browser.md) nebo [aplikace pro smartphone](custom-decision-service-get-started-app.md).
+* Poraďte [reference k rozhraní API](custom-decision-service-api-reference.md) Další informace o funkcích, které zadaná.

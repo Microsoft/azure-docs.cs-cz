@@ -5,7 +5,7 @@ services: sql-database
 author: becczhang
 manager: craigg
 ms.prod: ''
-ms.reviewer: carlrab
+ms.reviewer: vanto
 ms.prod_service: sql-database, sql-data-warehouse
 ms.service: sql-database
 ms.tgt_pltfrm: ''
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 07/09/2018
 ms.author: aliceku
 monikerRange: = azuresqldb-current || = azure-sqldw-latest || = sqlallproducts-allversions
-ms.openlocfilehash: 9e743dc2d5b6c2305bf071fecec58fcf13d5c92e
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 8c1db822c1c0e7b91843687fdc1e6f6808cf60c1
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44717722"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45544158"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>Transparentní šifrování dat pro SQL Database a Data Warehouse
 

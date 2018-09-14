@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 4/26/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 7289259214f90507c5b9cf527f19f0cf7026798c
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: be0ec31a05c0c1454e1af58b4a9c4ca959acbecf
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391449"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45577119"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Vytvoření upozornění na metriku pomocí šablony Resource Manageru
 Tento článek popisuje, jak můžete použít [šablony Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md) konfigurace [novějších upozornění metrik](monitoring-near-real-time-metric-alerts.md) ve službě Azure Monitor. Šablony Resource Manageru umožňují programově nastavit výstrahy konzistentní vzhledem k aplikacím a reprodukovatelné způsobem napříč prostředími. Jsou aktuálně k dispozici na novějších upozornění metrik [tuto sadu typů prostředků](monitoring-near-real-time-metric-alerts.md#metrics-and-dimensions-supported).
@@ -184,7 +184,7 @@ Uložte jako simplemetricalert.json pro účely Tento názorný postup vás prov
 }
 ```
 
-Vysvětlení schématu a vlastnosti pro pravidlo výstrahy [je k dispozici tady](https://docs.microsoft.com/en-us/rest/api/monitor/metricalerts/createorupdate).
+Vysvětlení schématu a vlastnosti pro pravidlo výstrahy [je k dispozici tady](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate).
 
 Na příkazovém řádku nebo pomocí souboru parametrů můžete nastavit hodnoty pro parametry. Ukázkový soubor parametrů jsou uvedeny níže. 
 

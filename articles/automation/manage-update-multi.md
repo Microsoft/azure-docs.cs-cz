@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 08/29/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 231a9876c7a84953a7d9a88b761a1da9475d1f48
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 9cb2b0bdb036b26fbd355ff4bd84885b7e15507d
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43248137"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45541969"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Správa aktualizací pro několik počítačů
 
@@ -50,7 +50,7 @@ Správa aktualizací je podporována v následujících operačních systémech:
 
 Agenty Linux musí mít přístup k úložišti aktualizací.
 
-Toto řešení nepodporuje agenta Operations Management Suite (OMS) pro Linux, který je nakonfigurovaný k ukládání dat do několika pracovních prostorů Azure Log Analytics.
+Toto řešení nepodporuje agenta Log Analytics pro Linux, který je nakonfigurovaný k ukládání dat do několika pracovních prostorů Azure Log Analytics.
 
 ## <a name="enable-update-management-for-azure-virtual-machines"></a>Povolení řešení Update Management pro Azure virtual machines
 
@@ -127,7 +127,7 @@ V **nové nasazení aktualizací** podokně zadejte následující informace:
 
 - **Název**: Zadejte jedinečný název pro identifikaci nasazení aktualizace.
 - **Operační systém**: vyberte **Windows** nebo **Linux**.
-- **Počítače k aktualizaci**: Zvolte Uložit hledání, importované skupiny, nebo vybrat počítače, které chcete vybrat počítače, které chcete aktualizovat. Pokud se rozhodnete **počítače**, připravenosti na počítači se zobrazí v **připravenost agenta aktualizací** sloupce. Zobrazí se stav počítače a před naplánovat nasazení aktualizace. Další informace o různých metod vytváření skupiny počítačů v Log Analytics najdete v tématu [skupiny počítačů v Log Analytics](../log-analytics/log-analytics-computer-groups.md)
+- **Počítače k aktualizaci**: Zvolte Uložit hledání, importované skupiny, nebo vybrat počítače, které chcete vybrat počítače, které chcete aktualizovat. Pokud zvolíte možnost **Počítače**, ve sloupci **PŘIPRAVENOST AGENTA AKTUALIZACE** se zobrazí připravenost počítačů. Zobrazí se stav počítače a před naplánovat nasazení aktualizace. Další informace o různých způsobech vytváření skupin počítačů v Log Analytics najdete v tématu [Skupiny počítačů v Log Analytics](../log-analytics/log-analytics-computer-groups.md).
 
   ![Podokno nasazení nové aktualizace](./media/manage-update-multi/update-select-computers.png)
 

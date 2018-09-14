@@ -10,12 +10,12 @@ ms.component: QnAMaker
 ms.topic: article
 ms.date: 04/21/2018
 ms.author: saneppal
-ms.openlocfilehash: 18eae69867dc9774f63b11c762b22df4595bdce6
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: b923e7c39ccd96bd9b158c98507f961ea2dc3e02
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43781743"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576761"
 ---
 # <a name="integrate-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>Integrace nástroje QnA Maker a LUIS distribuovat znalostní báze
 Jak QnA Maker znalostní báze případu dostatečného růstu, bude obtížné spravovat jako jeden monolitické nastavit a je potřeba rozdělit do menších logické bloků ve znalostní bázi.
@@ -29,14 +29,14 @@ I když je jednoduché vytvářet více znalostních bází v nástroje QnA Make
 Ve výše popsaném scénáři QnA Maker nejprve získá záměr příchozí dotaz z modelu LUIS a použije ji směrovat do znalostní báze správný nástroj QnA Maker.
 
 ## <a name="prerequisites"></a>Požadavky
-- Přihlaste se k [LUIS](https://www.luis.ai/) portál a [vytvořit aplikaci](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/create-new-app).
-- [Přidání záměrů](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/add-intents) podle váš scénář.
-- [Trénování](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-how-to-train) a [publikovat](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/publishapp) aplikace LUIS.
+- Přihlaste se k [LUIS](https://www.luis.ai/) portál a [vytvořit aplikaci](https://docs.microsoft.com/azure/cognitive-services/luis/create-new-app).
+- [Přidání záměrů](https://docs.microsoft.com/azure/cognitive-services/luis/add-intents) podle váš scénář.
+- [Trénování](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-train) a [publikovat](https://docs.microsoft.com/azure/cognitive-services/luis/publishapp) aplikace LUIS.
 - Přihlaste se k [QnA Maker](https://qnamaker.ai) a [vytvořit](https://www.qnamaker.ai/Create) znalostních bází v závislosti na vašem scénáři.
 - Otestujeme a publikujeme a znalostních bází.
 
 ## <a name="qna-maker--luis-bot"></a>Nástroj QnA Maker + LUIS Bot
-1. První vytváření robotů webové aplikace pomocí šablony služby LUIS, ho propojit s aplikaci LUIS, kterou jste vytvořili výše a úprava příkazů. Podrobný postup najdete [tady](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/luis-csharp-tutorial-build-bot-framework-sample).
+1. První vytváření robotů webové aplikace pomocí šablony služby LUIS, ho propojit s aplikaci LUIS, kterou jste vytvořili výše a úprava příkazů. Podrobný postup najdete [tady](https://docs.microsoft.com/azure/cognitive-services/luis/luis-csharp-tutorial-build-bot-framework-sample).
 
 2. Přidáte závislosti do horní části souboru s další závislosti:
 

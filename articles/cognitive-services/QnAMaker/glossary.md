@@ -1,44 +1,44 @@
 ---
-title: Glosář - kognitivní služby Microsoft | Microsoft Docs
-titleSuffix: Azure
+title: Glosář – QnA Maker
+titleSuffix: Azure Cognitive Services
 description: Glosář
 services: cognitive-services
 author: nstulasi
-manager: sangitap
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 04/21/2018
-ms.author: saneppal
-ms.openlocfilehash: e28cddec005cb6ba99b9f60d8b03a11f1bc97062
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.date: 09/12/2018
+ms.author: nstulasi
+ms.openlocfilehash: e4c0af68911ed25d4c07ef2050d0b74c435488ab
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343273"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45540793"
 ---
 # <a name="glossary"></a>Glosář
 
 ## <a name="qna-maker-service"></a>Služba QnA Maker
-Služba QnA Maker je nezbytné k použití QnA Maker. Zakoupení vrstvu QnA Maker nastaví prostředky ve vašem předplatném Azure k vytváření a správě vašeho znalostní báze knowledge base. Všechny uživatelské účty, QnA Maker můžete vytvořit více služeb QnA Maker v rámci svého předplatného Azure.
+Služba QnA Maker je jako nezbytné komponenty k použití nástroje QnA Maker. Zakoupení vrstvu QnA Maker nastaví prostředky ve vašem předplatném Azure pro vytváření a správu znalostní báze. Všechny uživatelské účty nástroje QnA Maker můžete vytvořit víc služeb nástroje QnA Maker v rámci svého předplatného Azure.
 
-## <a name="knowledge-base"></a>Znalostní báze Knowledge Base
-Znalostní báze slouží jako úložiště otázky a odpovědi vytvořen, udržuje a použít QnA Maker. Každá úroveň QnA Maker lze použít pro více znalostních bází.
+## <a name="knowledge-base"></a>Znalostní báze
+Znalostní báze je úložiště otázky a odpovědi vytvořen, udržovat a použít nástroj QnA Maker. Každá úroveň QnA Maker lze použít pro více znalostní báze.
 
 ## <a name="endpoint"></a>Koncový bod
-Koncový bod HTTP na základě REST obsluhy obsahu znalostní báze knowledge base, které lze integrovat do vaší aplikace, obvykle robotu konverzace. 
+Koncový bod HTTP založené na protokolu REST pro obsluhu obsah znalostní báze, který je možné integrovat do své aplikace, často je chatovací robot. 
 
 ## <a name="test-knowledge-base"></a>Test znalostní báze
-Znalostní báze má dva stavy - Test a publikovat. Znalostní báze test je verze, která se úpravy, uložený a testované pro přesnosti a úplnosti odpovědi. Změny provedené ve znalostní bázi knowledge testovací neovlivňují koncového uživatele vaší aplikace nebo chat robota.
+Znalostní báze má dva stavy - testů a publikovat. Znalostní báze testu je verze, která je právě upravený, uložených a testují přesnosti a úplnosti odpovědi. Změny provedené ve znalostní bázi test neovlivňují koncový uživatel aplikace/chatovací robot.
 
 ## <a name="published-knowledge-base"></a>Publikované znalostní báze
-Znalostní báze má dva stavy - Test a publikovaný.  Znalostní báze publikované je verze, která se používá v robota chatovací nebo aplikace. Akce publikování znalostní bázi převádí obsah znalostní báze Test na publikovanou verzi znalostní bázi knowledge base. Vzhledem k tomu, že publikované znalostní bázi knowledge base na verzi, která používá aplikace prostřednictvím koncového bodu se mělo dbát na to, k zajištění, že obsah je správná a dobře otestované.
+Znalostní báze má dva stavy - Test a publikovaný.  Znalostní báze publikované je verze, která se používá v vašeho botu nebo aplikace chat. Akce publikování znalostní báze převádí obsah znalostní báze Test na publikovanou verzi znalostní báze. Protože znalostní báze publikované verzi, která aplikace používá prostřednictvím koncového bodu, by měl zajistit, že obsah je správná a dobře otestovaný věnovat pozornost.
 
 ## <a name="query"></a>Dotaz
-Dotaz uživatele je otázka s dotazem, koncovým uživatelům nebo tester znalostní bázi knowledge base. Dotaz je často ve formátu přirozeného jazyka nebo několik klíčových slov, které představují na otázku.
+Dotaz, který uživatel je dotazu, koncovým uživatelům nebo tester znalostní báze. Dotaz je často ve formátu přirozeného jazyka nebo několik klíčových slov, které představují dotaz.
 
 ## <a name="response"></a>Odpověď
-Odpověď je načíst ze znalostní báze podle nejlepší shodu pro daného uživatele dotaz odpověď.
+Odpověď je načíst ze znalostní báze podle je nejlepší shodou pro daný uživatelský dotaz odpověď.
 
 ## <a name="confidence-score"></a>Skóre spolehlivosti
-Skóre spolehlivosti odpovědi je numerická hodnota mezi 0 a 100, 100 se přesný dotazu nalezena shoda mezi dotaz uživatele a dotaz ve znalostní bázi knowledge base, který zpracoval odpověď je správná, příslušné odpovědi na dotaz daného uživatele. Odpovědi, které jsou obvykle seřazeny podle skóre spolehlivosti a jednu s vyšší jistotou skóre spuštěn jako výchozí odpověď.
+Skóre spolehlivosti odpovědi je číselná hodnota mezi 0 a 100, 100 se přesný dotaz v případě shody mezi uživatele dotazu a dotaz ve znalostní báze, který obsluhuje odpovědi je odpověď správná, odpovídající dotazu daného uživatele. Odpovědi jsou obvykle seřazené podle skóre spolehlivosti a s větší jistoty slouží jako výchozí odpověď.

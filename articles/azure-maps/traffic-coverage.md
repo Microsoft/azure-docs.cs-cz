@@ -3,17 +3,17 @@ title: Provoz pokrytí ve službě Azure Maps | Dokumentace Microsoftu
 description: Další informace o zajištění provozu ve službě Azure Maps
 author: dsk-2015
 ms.author: dkshir
-ms.date: 11/28/2017
+ms.date: 09/12/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 37f63b719ed6137716789e3093074f50a74e4ae0
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 3ef9cce659e1173e419e1ea24cf0a414202013b5
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990087"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45575673"
 ---
 # <a name="azure-maps-traffic-coverage"></a>Zajištění provozu Azure Maps
 

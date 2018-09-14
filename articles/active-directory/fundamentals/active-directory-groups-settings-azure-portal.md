@@ -1,50 +1,72 @@
 ---
-title: Správa vlastností skupiny v Azure AD | Microsoft Docs
-description: Jak upravit vlastnosti a další nastavení konfigurace pro skupinu v Azure Active Directory
+title: Jak upravit údaje skupiny pomocí služby Azure Active Directory | Dokumentace Microsoftu
+description: Jak lze upravit informace o panelu skupiny s využitím Azure Active Directory.
 services: active-directory
-documentationcenter: ''
 author: eross-msft
 manager: mtillman
-editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.component: fundamentals
-ms.topic: quickstart
-ms.date: 08/01/2017
+ms.topic: conceptual
+ms.date: 08/27/2018
 ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 50d9443197df35ac032c87317966551da1612c41
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
-ms.translationtype: HT
+ms.openlocfilehash: 0bac740a5da9c1e57ea1755c58579463da4a883a
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37860326"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45580430"
 ---
-# <a name="manage-the-settings-for-a-group-in-azure-active-directory"></a>Správa nastavení pro skupinu v Azure Active Directory
-Tento článek vysvětluje, jak změnit nastavení pro skupinu v Azure Active Directory (Azure AD).
+# <a name="how-to-edit-your-group-information-using-azure-active-directory"></a>Postupy: Úprava skupiny informací pomocí Azure Active Directory
 
-## <a name="how-do-i-find-and-change-the-settings"></a>Jak zjistím a změním nastavení?
-1. Přihlaste se k [centru pro správu Azure AD](https://aad.portal.azure.com) pomocí účtu, který má k adresáři oprávnění globálního správce.
-2. Vyberte **Všechny služby**, do textového pole zadejte **Uživatelé a skupiny** a potom stiskněte **Enter**.
+Pomocí Azure Active Directory, můžete upravit nastavení skupiny, včetně aktualizace jeho název, popis nebo typ členství.
 
-   ![Otevření okna Uživatelé a skupiny](./media/active-directory-groups-settings-azure-portal/search-user-management.png)
-3. V okně **Uživatelé a skupiny** vyberte **Všechny skupiny**.
+## <a name="to-edit-your-group-settings"></a>Chcete-li upravit nastavení skupiny
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com) pomocí účtu globálního správce adresáře.
 
-   ![Otevření okna Všechny skupiny](./media/active-directory-groups-settings-azure-portal/view-groups-blade.png)
-4. V okně **Uživatelé a skupiny – Všechny skupiny** vyberte skupinu.
-5. V okně **Skupina – *název_skupiny*** vyberte **Vlastnosti**.
+2. Vyberte **Azure Active Directory**a pak vyberte **skupiny**.
 
-   ![Otevření okna Vlastnosti](./media/active-directory-groups-settings-azure-portal/select-group-properties.png)
-6. Po dokončení změn vlastností skupiny vyberte **Uložit**.    
+    **Skupiny – všechny skupiny** se zobrazí stránka zobrazuje všechny aktivní skupiny.
 
-   ![Uložení změn vlastností](./media/active-directory-groups-settings-azure-portal/save-group-properties.png)
+3. Z **skupiny – všechny skupiny** stránky, zadejte co největší část názvu skupiny, jak můžete do **hledání** pole. Pro účely tohoto článku jsme při hledání **zásady MDM - západní** skupiny.
 
-## <a name="next-steps"></a>Další kroky
+    Výsledky hledání zobrazeny podle **hledání** pole, aktualizují se při psaní více znaků.
+
+    ![Stránka všech skupin, se hledaný text do vyhledávacího pole](media/active-directory-groups-settings-azure-portal/search-for-specific-group.png)
+
+4. Vyberte skupinu **zásady MDM - západní**a pak vyberte **vlastnosti** z **spravovat** oblasti.
+
+    ![Stránka Přehled skupiny s číslem a členů a zvýrazněnou možností člena](media/active-directory-groups-settings-azure-portal/group-overview-blade.png)
+
+5. Aktualizace **obecné nastavení** informace podle potřeby, včetně:
+
+    ![Nastavení vlastností pro skupinu](media/active-directory-groups-settings-azure-portal/group-properties-settings.png)
+
+    - **Název skupiny.** Upravte název existující skupiny.
+    
+    - **Popis skupiny.** Upravte existující popis skupiny.
+
+    - **Typ skupiny.** Typ skupiny nelze změnit po vytvoření. Chcete-li změnit **typ skupiny**, musíte odstranit skupinu a vytvořte novou.
+    
+    - **Typ členství.** Změníte typ členství. Další informace o různých typech dostupné členy najdete v tématu [postupy: vytvoření základní skupiny a přidání členů pomocí portálu Azure Active Directory](active-directory-groups-create-azure-portal.md)
+    
+    - **ID objektu.** ID objektu nelze změnit, ale můžete je zkopírovat používané k příkazům Powershellu pro skupinu. Další informace o používání rutin prostředí PowerShell najdete v tématu [rutiny služby Azure Active Directory pro konfiguraci nastavení skupiny](../users-groups-roles/groups-settings-v2-cmdlets.md).
+
+## <a name="next-steps"></a>Další postup
 Následující články poskytují další informace o službě Azure Active Directory.
 
-* [Zobrazení existujících skupin](active-directory-groups-view-azure-portal.md)
-* [Vytvoření nové skupiny a přidání členů](active-directory-groups-create-azure-portal.md)
-* [Správa členů skupiny](active-directory-groups-members-azure-portal.md)
-* [Správa členství ve skupině](active-directory-groups-membership-azure-portal.md)
-* [Správa dynamických pravidel pro uživatele ve skupině](../users-groups-roles/groups-dynamic-membership.md)
+- [Zobrazení skupin a členů](active-directory-groups-view-azure-portal.md)
+
+- [Vytvoření základní skupiny a přidání členů](active-directory-groups-create-azure-portal.md)
+
+- [Postup přidání nebo odebrání členů ze skupiny](active-directory-groups-members-azure-portal.md)
+
+- [Správa dynamických pravidel pro uživatele ve skupině](../users-groups-roles/groups-create-rule.md)
+
+- [Správa členství ve skupině](active-directory-groups-membership-azure-portal.md)
+
+- [Správa přístupu k prostředkům pomocí skupin](active-directory-manage-groups.md)
+
+- [Přiřazení nebo přidání předplatného Azure ke službě Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)

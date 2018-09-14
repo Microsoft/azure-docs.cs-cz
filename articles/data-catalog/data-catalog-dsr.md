@@ -8,12 +8,12 @@ ms.assetid: fd4345ca-2ed8-4c5e-9c4b-f954be2fc9f9
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 0f7ee285e77b9e54e2ff720f10f0d24c5b764014
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 7b3f403ac479e0a6a8a4ae46c2a5ab448bd8ecc2
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042935"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45544126"
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Podporované zdroje dat ve službě Azure Data Catalog
 
@@ -369,7 +369,7 @@ Metadata můžete publikovat pomocí veřejné rozhraní API nebo kliknutím-jed
       <td>✓</td>
       <td>✓</td>
       <td></td>
-      <td></td>
+      <td>Pouze starší verze kolekce z Azure DocumentDB a kolekce rozhraní SQL API ve službě Azure Cosmos DB jsou kompatibilní. Novějších rozhraní API Cosmos DB se zatím nepodporují. V seznamu zdroj dat, zvolte Azure DocumentDB.</td>
     </tr>
     <tr>
       <td>Obecná rozhraní ODBC tabulky</td>
@@ -534,32 +534,6 @@ Pokud se chcete podívat na konkrétnímu zdroji dat nepodporuje, navrhněte ji 
             <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; domain
             <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; account
             <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; name
-        
-      </td>
-    </tr>
-    <tr>
-      <td>Cosmos</td>
-      <td>Container</td>
-      <td>Virtual cluster</td>
-      <td>
-        
-            Protocol: cosmos
-            <br>Authentication: {basic, windows}
-            <br>Address:
-            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url
-        
-      </td>
-    </tr>
-    <tr>
-      <td>Cosmos</td>
-      <td>Table</td>
-      <td>Stream, stream set, view</td>
-      <td>
-        
-            Protocol: cosmos
-            <br>Authentication: {basic, windows}
-            <br>Address:
-            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url
         
       </td>
     </tr>

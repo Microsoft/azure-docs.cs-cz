@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 05/14/2018
 ms.author: jomolesk
-ms.openlocfilehash: a2dadbd0b9e68b07ed098b8ffc338d09531b1e50
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: b4f40dfced7060dd01df7410d07ac5b7cfdf3176
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44715376"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45580697"
 ---
 # <a name="azure-security-and-compliance-blueprint-analytics-for-gdpr"></a>Zabezpečení Azure a dodržování předpisů: Analytics gdpr
 
@@ -70,13 +70,13 @@ Toto řešení používá následující služby Azure. Podrobnosti o architektu
 Následující část podrobně popisuje nasazení a implementaci prvky.
 
 **Azure Event Grid**
-[Azure Event Grid](https://docs.microsoft.com/en-us/azure/event-grid/overview) umožňuje zákazníkům snadno vytvářet aplikace s architekturami založenými na událost. Uživatelé vybrat prostředek Azure, které se chcete přihlásit k odběru a obslužné rutiny události nebo webhooku k odeslání události do koncového bodu. Zákazníkům umožňují zabezpečit koncové body webhooku přidáním parametrů dotazu na adresu URL webhooku, při vytváření odběru událostí. Azure Event Grid se podporuje jenom koncové body HTTPS webhooku. Azure Event Grid umožňuje zákazníkům určit úroveň přístupu k různým uživatelům provádět různé operace správy, jako je například seznam odběrů událostí, vytvářet nové a vygenerujte klíče. Event Grid využívá Azure Role-Based řízení přístupu (RBAC).
+[Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview) umožňuje zákazníkům snadno vytvářet aplikace s architekturami založenými na událost. Uživatelé vybrat prostředek Azure, které se chcete přihlásit k odběru a obslužné rutiny události nebo webhooku k odeslání události do koncového bodu. Zákazníkům umožňují zabezpečit koncové body webhooku přidáním parametrů dotazu na adresu URL webhooku, při vytváření odběru událostí. Azure Event Grid se podporuje jenom koncové body HTTPS webhooku. Azure Event Grid umožňuje zákazníkům určit úroveň přístupu k různým uživatelům provádět různé operace správy, jako je například seznam odběrů událostí, vytvářet nové a vygenerujte klíče. Event Grid využívá Azure Role-Based řízení přístupu (RBAC).
 
 **Služba Azure Functions**
-[Azure Functions](https://docs.microsoft.com/en-us/azure/azure-functions/functions-overview) je a bez serveru výpočetní služba, která umožňuje uživatelům spouštět kód na vyžádání bez nutnosti explicitně zřizovat nebo spravovat infrastrukturu. Azure Functions můžete použít ke spuštění skriptu nebo kusu kódu jako reakci na různé události.
+[Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) je a bez serveru výpočetní služba, která umožňuje uživatelům spouštět kód na vyžádání bez nutnosti explicitně zřizovat nebo spravovat infrastrukturu. Azure Functions můžete použít ke spuštění skriptu nebo kusu kódu jako reakci na různé události.
 
 **Azure Machine Learning**
-[Azure Machine Learning](https://docs.microsoft.com/en-us/azure/machine-learning/preview/) je technika datové vědy, která umožňuje počítačům s využitím existujících dat předpovídá budoucí chování, výsledky a trendy.
+[Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/preview/) je technika datové vědy, která umožňuje počítačům s využitím existujících dat předpovídá budoucí chování, výsledky a trendy.
 
 **Azure Data Catalog**: [katalogu Data Catalog](https://docs.microsoft.com/azure/data-catalog/data-catalog-what-is-data-catalog) činí zdroje dat snadno objevitelné a srozumitelné uživatelé, kteří spravují data. Běžné zdroje dat můžete zaregistrovaný, příznakem a vyhledávat osobní údaje. Data zůstávají uložena ve stávajícím umístění, ale kopie metadat spolu s odkazem na umístění zdroje dat přidá do katalogu Data Catalog. Tato metadata jsou také indexována, aby byl každý zdroj dat snadno objevitelný prostřednictvím vyhledávání a aby byl srozumitelný uživatelům, kteří ho objevili.
 
@@ -88,7 +88,7 @@ Tato referenční architektura definuje privátní virtuální síť, která adr
   - Skupina zabezpečení sítě pro pracovní vytížení
 
 Skupiny zabezpečení sítě mají konkrétní porty a protokoly, otevřete řešení mohli pracovat zabezpečeně a správně. Kromě toho jsou povoleny následující konfigurace pro jednotlivé skupiny NSG:
-  - [Diagnostické protokoly a události](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-nsg-manage-log) jsou povolené a uložená v účtu úložiště
+  - [Diagnostické protokoly a události](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log) jsou povolené a uložená v účtu úložiště
   - OMS Log Analytics je připojen k [skupin zabezpečení sítě a Diagnostika](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json)
 
 **Podsítě**: Každá podsíť je přidružený k jeho odpovídající skupiny zabezpečení sítě.
@@ -134,7 +134,7 @@ Tyto technologie nabízejí možnosti pro správu přístup k osobním údajům 
 - Jsou povolené diagnostické protokoly pro Key Vault s dobu uchování o délce alespoň 365 dnů.
 - Povolené kryptografických operací s klíči jsou omezené na ty povinné.
 
-**Výstrahy zabezpečení**: [Azure Security Center](https://docs.microsoft.com/en-us/azure/security-center/security-center-intro) zákazníkům umožňuje monitorování provozu, shromažďovat protokoly a analýza zdroje dat pro hrozby. Kromě toho Azure Security Center má přístup k existující konfigurace služby Azure a poskytuje configuration a služby doporučení, která pomůžou zlepšit stav zabezpečení a ochrana osobních údajů. Azure Security Center zahrnuje [sestava analýzy hrozeb](https://docs.microsoft.com/en-us/azure/security-center/security-center-threat-report) pro každou zjištěnou hrozbou pro pomoc týmům reakce na incidenty vyšetřením a odstraněním hrozeb.
+**Výstrahy zabezpečení**: [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) zákazníkům umožňuje monitorování provozu, shromažďovat protokoly a analýza zdroje dat pro hrozby. Kromě toho Azure Security Center má přístup k existující konfigurace služby Azure a poskytuje configuration a služby doporučení, která pomůžou zlepšit stav zabezpečení a ochrana osobních údajů. Azure Security Center zahrnuje [sestava analýzy hrozeb](https://docs.microsoft.com/azure/security-center/security-center-threat-report) pro každou zjištěnou hrozbou pro pomoc týmům reakce na incidenty vyšetřením a odstraněním hrozeb.
 
 ### <a name="logging-and-auditing"></a>Protokolování a auditování
 
@@ -152,13 +152,13 @@ Kromě toho jsou zahrnuty jako součást této architektury následující řeš
 -   [Správa aktualizací](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-update-management): řešení Update Management umožňuje správu zákazníka aktualizace zabezpečení operačního systému, včetně proces instalace požadovaných aktualizací a stav dostupných aktualizací.
 -   [Stav agenta](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth): řešení Agent Health sestavy, kolik agentů je nasazených a zeměpisné rozšíření, jakož i kolik agentů, které jsou reagovat a počet agentů, které jsou odesílání provozních dat.
 -   [Protokoly aktivit Azure](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): The Activity Log Analytics řešení pomáhá s analýzou protokolů aktivit Azure napříč všemi předplatnými Azure zákazníka.
--   [Sledování změn](https://docs.microsoft.com/en-us/azure/automation/automation-change-tracking): řešení Change Tracking umožňuje zákazníkům snadno identifikovat změny v prostředí.
+-   [Sledování změn](https://docs.microsoft.com/azure/automation/automation-change-tracking): řešení Change Tracking umožňuje zákazníkům snadno identifikovat změny v prostředí.
 
 **Azure Monitor**
-[Azure Monitor](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/) pomáhá zákazníkům sledování výkonu, zabezpečení a rozpoznávání trendů tím, že umožňuje organizacím auditovat, vytvářet upozornění a archivovat data, včetně rozhraní API pro sledování volá v prostředcích zákazníků Azure.
+[Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) pomáhá zákazníkům sledování výkonu, zabezpečení a rozpoznávání trendů tím, že umožňuje organizacím auditovat, vytvářet upozornění a archivovat data, včetně rozhraní API pro sledování volá v prostředcích zákazníků Azure.
 
 **Application Insights**
-[Application Insights](https://docs.microsoft.com/en-us/azure/application-insights/) je rozšiřitelná služba správu výkonu aplikací (APM) pro webové vývojáře ve více platformách. Použijte ho k monitorování živé webové aplikace. Detekuje anomálie výkonu a obsahuje výkonné analytické nástroje pro usnadnění diagnostiky potíží a pochopit, jak vlastně uživatelé s aplikací. Je navržena tak, aby pomáhal uživatelům průběžně vylepšovat výkon a použitelnost.
+[Application Insights](https://docs.microsoft.com/azure/application-insights/) je rozšiřitelná služba správu výkonu aplikací (APM) pro webové vývojáře ve více platformách. Použijte ho k monitorování živé webové aplikace. Detekuje anomálie výkonu a obsahuje výkonné analytické nástroje pro usnadnění diagnostiky potíží a pochopit, jak vlastně uživatelé s aplikací. Je navržena tak, aby pomáhal uživatelům průběžně vylepšovat výkon a použitelnost.
 
 ## <a name="threat-model"></a>Model hrozeb
 
@@ -176,17 +176,17 @@ Diagram toku dat pro tuto referenční architekturu je k dispozici pro [Stáhnou
 ### <a name="vpn-and-expressroute"></a>Připojení VPN a ExpressRoute
 Zabezpečené tunelové propojení sítě VPN nebo [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) musí být nakonfigurovaný pro zabezpečené připojení k prostředky nasazené jako součást tato data analytics referenční architektuře. Odpovídajícím způsobem nastavíte síť VPN nebo ExpressRoute, můžete zákazníky přidat vrstvu ochrany dat během přenosu.
 
-Implementací zabezpečeného tunelového propojení sítě VPN s Azure můžete vytvořit virtuální privátní připojení mezi místní sítí a virtuální sítí Azure. Toto připojení probíhá přes Internet a umožňuje zákazníkům bezpečně "tunelového propojení" informací uvnitř šifrované propojení mezi sítí zákazníka a Azure. Site-to-Site VPN je zabezpečené, Vyspělá technologie, která byla nasazena podniky všech velikostí desítky let. [Režimu tunelového propojení IPsec](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2003/cc786385(v=ws.10)) se používá při použití této možnosti jako mechanismus pro šifrování.
+Implementací zabezpečeného tunelového propojení sítě VPN s Azure můžete vytvořit virtuální privátní připojení mezi místní sítí a virtuální sítí Azure. Toto připojení probíhá přes Internet a umožňuje zákazníkům bezpečně "tunelového propojení" informací uvnitř šifrované propojení mezi sítí zákazníka a Azure. Site-to-Site VPN je zabezpečené, Vyspělá technologie, která byla nasazena podniky všech velikostí desítky let. [Režimu tunelového propojení IPsec](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2003/cc786385(v=ws.10)) se používá při použití této možnosti jako mechanismus pro šifrování.
 
 Protože provoz v rámci tunelového připojení sítě VPN přes Internet prostřednictvím sítě site-to-site VPN, společnost Microsoft nabízí možnost jiný, ještě větší zabezpečení připojení. Azure ExpressRoute je vyhrazené sítě WAN propojení mezi Azure a místním umístěním nebo poskytovatele hostingu serveru Exchange. Jak připojení ExpressRoute se nepřenášejí prostřednictvím Internetu, tato připojení nabízí další spolehlivost, vyšší rychlost, nižší latenci a lepší zabezpečení než Typická připojení přes Internet. Navíc vzhledem k tomu, že toto je přímé připojení poskytovatele telekomunikačních zákazníka, data nejsou prochází přes Internet a proto není vystavený ho.
 
-Osvědčené postupy pro implementaci zabezpečenou hybridní síť, která rozšiřuje místní síť do Azure jsou [dostupné](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid).
+Osvědčené postupy pro implementaci zabezpečenou hybridní síť, která rozšiřuje místní síť do Azure jsou [dostupné](https://docs.microsoft.com/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid).
 
 ### <a name="extract-transform-load-etl-process"></a>Proces extrakce, transformace a načítání (ETL)
-[PolyBase](https://docs.microsoft.com/en-us/sql/relational-databases/polybase/polybase-guide) můžete načíst data do Azure SQL Database bez nutnosti samostatné ETL nebo importovat nástroj. PolyBase umožňuje přístup k datům prostřednictvím dotazů T-SQL. Společnosti Microsoft business intelligence a analýza zásobníku, jakož i nástroje třetích stran, které jsou kompatibilní s SQL serverem, je možné díky technologii PolyBase.
+[PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) můžete načíst data do Azure SQL Database bez nutnosti samostatné ETL nebo importovat nástroj. PolyBase umožňuje přístup k datům prostřednictvím dotazů T-SQL. Společnosti Microsoft business intelligence a analýza zásobníku, jakož i nástroje třetích stran, které jsou kompatibilní s SQL serverem, je možné díky technologii PolyBase.
 
 ### <a name="azure-active-directory-setup"></a>Instalace nástroje Azure Active Directory
-[Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-whatis) je zásadní pro správu nasazení a zřizování přístupu pro pracovníky, práci s prostředím. Existující systému Windows Server Active Directory je možné integrovat s AAD v [čtyři kliknutí](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnect-get-started-express). Zákazníci mohou také spojit nasazenou infrastrukturu služby Active Directory (řadiče domény) existující AAD tím, že nasazenou infrastrukturu služby Active Directory subdoména doménové struktury služby AAD.
+[Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) je zásadní pro správu nasazení a zřizování přístupu pro pracovníky, práci s prostředím. Existující systému Windows Server Active Directory je možné integrovat s AAD v [čtyři kliknutí](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-get-started-express). Zákazníci mohou také spojit nasazenou infrastrukturu služby Active Directory (řadiče domény) existující AAD tím, že nasazenou infrastrukturu služby Active Directory subdoména doménové struktury služby AAD.
 
 ## <a name="disclaimer"></a>Právní omezení
 

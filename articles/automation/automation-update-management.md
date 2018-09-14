@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 08/29/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 62a7bb9bf63e8ebf97f9aeb5b08bf08ef06da43b
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: ddc27d9f5124000601a57b4ecd72c3d6021c109f
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782786"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542629"
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení Update Management v Azure
 
@@ -88,9 +88,9 @@ Agenti Windows musí být nakonfigurován pro komunikaci se serverem WSUS nebo m
 
 #### <a name="linux"></a>Linux
 
-Pro Linux musí mít tento počítač přístup k úložišti aktualizací. Úložiště aktualizací může být privátní nebo veřejné. K interakci s Update managementem se vyžaduje protokol TLS 1.1 a TLS 1.2. Toto řešení nepodporuje agenta Operations Management Suite (OMS) pro Linux, který je nakonfigurovaný k ukládání dat do několika pracovních prostorů Log Analytics.
+Pro Linux musí mít tento počítač přístup k úložišti aktualizací. Úložiště aktualizací může být privátní nebo veřejné. K interakci s Update managementem se vyžaduje protokol TLS 1.1 a TLS 1.2. Toto řešení nepodporuje agenta Log Analytics pro Linux, který je nakonfigurovaný k ukládání dat do několika pracovních prostorů Log Analytics.
 
-Informace o instalaci agenta OMS pro Linux a ke stažení nejnovější verze najdete v tématu [agenta Operations Management Suite pro Linux](https://github.com/microsoft/oms-agent-for-linux). Informace o tom, jak nainstalovat agenta pro Windows z OMS najdete v tématu [Operations Management Suite Agent pro Windows](../log-analytics/log-analytics-windows-agent.md).
+Informace o instalaci agenta Log Analytics pro Linux a stáhněte si nejnovější verzi najdete v tématu [agenta Operations Management Suite pro Linux](https://github.com/microsoft/oms-agent-for-linux). Informace o tom, jak nainstalovat Log Analytics agenta pro Windows najdete v tématu [Operations Management Suite Agent pro Windows](../log-analytics/log-analytics-windows-agent.md).
 
 ## <a name="permissions"></a>Oprávnění
 
@@ -147,7 +147,7 @@ Na počítači s Windows můžete zkontrolovat následující informace, chcete-
 Pokud agent nemůže komunikovat s Log Analytics a agent je nakonfigurován pro komunikaci s Internetem prostřednictvím brány firewall nebo proxy server, ověřte, zda je správně nakonfigurována brána firewall nebo proxy server. Zjistěte, jak ověřit, zda je správně nakonfigurována brána firewall nebo proxy server, najdete v článku [konfiguraci sítě pro agenta Windows](../log-analytics/log-analytics-agent-windows.md) nebo [konfigurace sítě pro linuxového agenta](../log-analytics/log-analytics-agent-linux.md).
 
 > [!NOTE]
-> Pokud jsou vaše Linuxové systémy nakonfigurován pro komunikaci pomocí serveru proxy nebo bránou OMS a připojujete toto řešení, aktualizace *proxy.conf* oprávnění udělit skupině omiuser udělili oprávnění ho číst pomocí následujících příkazy:
+> Pokud jsou vaše Linuxové systémy nakonfigurován pro komunikaci pomocí serveru proxy nebo brány Log Analytics a připojujete toto řešení, aktualizace *proxy.conf* oprávnění udělit skupině omiuser udělili oprávnění ho číst pomocí Následující příkazy:
 >
 > `sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/proxy.conf`
 > `sudo chmod 644 /etc/opt/microsoft/omsagent/proxy.conf`

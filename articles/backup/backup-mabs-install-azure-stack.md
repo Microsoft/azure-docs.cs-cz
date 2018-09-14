@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 6/5/2018
 ms.author: markgal
-ms.openlocfilehash: eda3e95c1bd8fb7eef97ee9db10c217c2885198f
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 5092a677bcbeac179e26fa0591b6a1cfbc3263d4
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970879"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576693"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Instalace Azure Backup Serveru v Azure Stacku
 
@@ -310,7 +310,7 @@ Azure Backup serveru sdílí kód pomocí aplikace Data Protection Manager. Zobr
 
 ## <a name="add-backup-storage"></a>Přidání úložiště záloh
 
-První zálohy se ukládají na úložiště připojené k počítači Azure Backup Server. Další informace o přidávání disků najdete v tématu [přidání moderního úložiště záloh](https://docs.microsoft.com/en-us/system-center/dpm/add-storage?view=sc-dpm-1801).
+První zálohy se ukládají na úložiště připojené k počítači Azure Backup Server. Další informace o přidávání disků najdete v tématu [přidání moderního úložiště záloh](https://docs.microsoft.com/system-center/dpm/add-storage?view=sc-dpm-1801).
 
 > [!NOTE]
 > Budete muset přidat úložiště pro zálohování i v případě, že máte v úmyslu odesílání dat do Azure. V architektuře Azure Backup Server, trezoru služby Recovery Services obsahuje *druhý* kopii dat při místní úložiště obsahuje záložní kopie prvnímu (zároveň povinná).
@@ -328,10 +328,10 @@ Jakmile budete vědět o stavu možnosti připojení Azure a předplatné Azure,
 | Stav připojení | předplatné Azure | Zálohování do Azure | Zálohování na disk | Obnovení z Azure | Obnovení z disku |
 | --- | --- | --- | --- | --- | --- |
 | Připojeno |Aktivní |Povoleno |Povoleno |Povoleno |Povoleno |
-| Připojeno |Vypršela platnost |Zastaveno |Zastaveno |Povoleno |Povoleno |
+| Připojeno |Vypršela |Zastaveno |Zastaveno |Povoleno |Povoleno |
 | Připojeno |Zrušení zřízení |Zastaveno |Zastaveno |Body obnovení zastavena a Azure odstranit |Zastaveno |
 | Došlo ke ztrátě připojení > 15 dnů |Aktivní |Zastaveno |Zastaveno |Povoleno |Povoleno |
-| Došlo ke ztrátě připojení > 15 dnů |Vypršela platnost |Zastaveno |Zastaveno |Povoleno |Povoleno |
+| Došlo ke ztrátě připojení > 15 dnů |Vypršela |Zastaveno |Zastaveno |Povoleno |Povoleno |
 | Došlo ke ztrátě připojení > 15 dnů |Zrušení zřízení |Zastaveno |Zastaveno |Body obnovení zastavena a Azure odstranit |Zastaveno |
 
 ### <a name="recovering-from-loss-of-connectivity"></a>Obnovit ze ztráty připojení
@@ -360,10 +360,10 @@ Můžete také odkazovat na [nejčastější dotazy týkající se Azure Backup]
 
 ## <a name="next-steps"></a>Další postup
 
-V článku [Příprava prostředí pro aplikaci DPM](https://docs.microsoft.com/en-us/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1801), obsahuje informace o podporovaných konfiguracích Azure Backup serveru.
+V článku [Příprava prostředí pro aplikaci DPM](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1801), obsahuje informace o podporovaných konfiguracích Azure Backup serveru.
 
 Abyste získali lepší představu o ochranu úloh pomocí Microsoft Azure Backup serveru můžete použít v následujících článcích.
 
-- [Zálohování serveru SQL Server](https://docs.microsoft.com/en-us/azure/backup/backup-mabs-sql-azure-stack)
-- [Zálohování serveru SharePoint](https://docs.microsoft.com/en-us/azure/backup/backup-mabs-sharepoint-azure-stack)
+- [Zálohování serveru SQL Server](https://docs.microsoft.com/azure/backup/backup-mabs-sql-azure-stack)
+- [Zálohování serveru SharePoint](https://docs.microsoft.com/azure/backup/backup-mabs-sharepoint-azure-stack)
 - [Alternativní server backup](backup-azure-alternate-dpm-server.md)

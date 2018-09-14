@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/01/2018
 ms.author: hrushib
-ms.openlocfilehash: 8cfa0e2a5aa1d7f560fe84f4eda18349f5d1d8b4
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 4aeb37d656dcb5ebca1a48253c418186dfca0a7a
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38991181"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45575408"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Principy pravidelné zálohování konfigurace v Azure Service Fabric
 
@@ -182,19 +182,19 @@ Pokud není nutné k zálohování dat, můžete zásady zálohování zakázán
 ## <a name="suspend--resume-backup"></a>Pozastavit a obnovit zálohování
 Dočasné pozastavení pravidelné zálohování dat může vyžadují určité situace. V takové situaci, v závislosti na požadavek na pozastavení zálohování rozhraní API může použít na _aplikace_, _služby_, nebo _oddílu_. Pravidelné zálohování pozastavení je přenositelný podstrom hierarchie aplikace od okamžiku, kdy se použije. 
 
-* Při pozastavení se má použít na _aplikace_ pomocí [pozastavení aplikace Zálohování](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-suspendapplicationbackup) rozhraní API, všechny služby a oddíly v rámci této aplikace se pozastavuje pravidelné zálohování dat.
+* Při pozastavení se má použít na _aplikace_ pomocí [pozastavení aplikace Zálohování](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-suspendapplicationbackup) rozhraní API, všechny služby a oddíly v rámci této aplikace se pozastavuje pravidelné zálohování dat.
 
-* Při pozastavení se má použít na _služby_ pomocí [pozastavení služby zálohování](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-suspendservicebackup) rozhraní API, všechny oddíly v rámci této služby se pozastavuje pravidelné zálohování dat.
+* Při pozastavení se má použít na _služby_ pomocí [pozastavení služby zálohování](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-suspendservicebackup) rozhraní API, všechny oddíly v rámci této služby se pozastavuje pravidelné zálohování dat.
 
-* Při pozastavení se má použít na _oddílu_ pomocí [pozastavit oddílu zálohování](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-suspendpartitionbackup) rozhraní API a pak se pozastaví oddíly v rámci této služby se pozastavuje pravidelné zálohování dat.
+* Při pozastavení se má použít na _oddílu_ pomocí [pozastavit oddílu zálohování](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-suspendpartitionbackup) rozhraní API a pak se pozastaví oddíly v rámci této služby se pozastavuje pravidelné zálohování dat.
 
 Po pozastavení se vaše potřeby zálohování periodických dat. můžete obnovit pomocí odpovídajících obnovit zálohování rozhraní API. Pravidelné zálohování musí pokračovat znovu současně _aplikace_, _služby_, nebo _oddílu_ kde bylo pozastaveno.
 
-* Pokud bylo použito pro pozastavení _aplikace_, pak by měl obnovit, pomocí [obnovit zálohu aplikace](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-resumeapplicationbackup) rozhraní API. 
+* Pokud bylo použito pro pozastavení _aplikace_, pak by měl obnovit, pomocí [obnovit zálohu aplikace](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumeapplicationbackup) rozhraní API. 
 
-* Pokud bylo použito pro pozastavení _služby_, pak by měl obnovit, pomocí [obnovit službu zálohování](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-resumeservicebackup) rozhraní API.
+* Pokud bylo použito pro pozastavení _služby_, pak by měl obnovit, pomocí [obnovit službu zálohování](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumeservicebackup) rozhraní API.
 
-* Pokud bylo použito pro pozastavení _oddílu_, pak by měl obnovit, pomocí [Obnovit oddíl zálohování](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-resumepartitionbackup) rozhraní API.
+* Pokud bylo použito pro pozastavení _oddílu_, pak by měl obnovit, pomocí [Obnovit oddíl zálohování](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumepartitionbackup) rozhraní API.
 
 ## <a name="auto-restore-on-data-loss"></a>Automatické obnovení ztráty dat
 Oddíl služby může dojít ke ztrátě dat z důvodu neočekávané chyby. Například disku pro dvě ze tří replik pro oddíl (včetně primární replice) získá poškozený nebo dojde k vymazání.
@@ -202,7 +202,7 @@ Oddíl služby může dojít ke ztrátě dat z důvodu neočekávané chyby. Nap
 Když Service Fabric zjistí, že oddíl je ztrátu dat, vyvolá `OnDataLossAsync` rozhraní metoda v oddílu a očekává, že oddíl má provést požadované akce, která pocházejí z ztrátě dat. V této situaci, pokud má platné zásady zálohování v oddílu `AutoRestoreOnDataLoss` příznak nastaven na `true` pak získá obnovení aktivuje automaticky pomocí nejnovější dostupné zálohy pro tento oddíl.
 
 ## <a name="get-backup-configuration"></a>Získat konfiguraci zálohování
-Jsou k dispozici získat informace o konfiguraci zálohování na samostatné rozhraní API _aplikace_, _služby_, a _oddílu_ oboru. [Získejte informace o konfiguraci zálohování aplikace](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-getapplicationbackupconfigurationinfo), [získat informace o konfiguraci zálohování služby](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-getservicebackupconfigurationinfo), a [získat informace o konfiguraci zálohování oddílu](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-getpartitionbackupconfigurationinfo) jsou rozhraní API v uvedeném pořadí. Tato rozhraní API, hlavně vrátí příslušné zásady zálohování, rozsah, jakou zásadu zálohování, která jsou použité a zálohování pozastavení podrobnosti. Tady je stručný popis vrácené výsledky těchto rozhraní API.
+Jsou k dispozici získat informace o konfiguraci zálohování na samostatné rozhraní API _aplikace_, _služby_, a _oddílu_ oboru. [Získejte informace o konfiguraci zálohování aplikace](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getapplicationbackupconfigurationinfo), [získat informace o konfiguraci zálohování služby](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getservicebackupconfigurationinfo), a [získat informace o konfiguraci zálohování oddílu](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackupconfigurationinfo) jsou rozhraní API v uvedeném pořadí. Tato rozhraní API, hlavně vrátí příslušné zásady zálohování, rozsah, jakou zásadu zálohování, která jsou použité a zálohování pozastavení podrobnosti. Tady je stručný popis vrácené výsledky těchto rozhraní API.
 
 - Informace o konfiguraci zálohování aplikace: poskytuje podrobné informace o zásady zálohování použít v aplikaci a všechny zásady údajů na služby a oddíly, které patří k aplikaci. Zahrnuje také informace o pozastavení pro aplikace a služby a oddíly.
 
@@ -218,11 +218,11 @@ Tato rozhraní API také podporujte stránkování výsledků, když _MaxResults
 
 Tady je stručné informace o podporovaných variant.
 
-- [Získání seznamu zálohování aplikace](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-getapplicationbackuplist): vrátí seznam záloh, které jsou k dispozici pro každý oddíl, do které patří k dané aplikaci Service Fabric.
+- [Získání seznamu zálohování aplikace](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getapplicationbackuplist): vrátí seznam záloh, které jsou k dispozici pro každý oddíl, do které patří k dané aplikaci Service Fabric.
 
-- [Získání seznamu služby Backup](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-getservicebackuplist): vrátí seznam záloh, které jsou k dispozici pro každý oddíl, do které patří k dané služby Service Fabric.
+- [Získání seznamu služby Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getservicebackuplist): vrátí seznam záloh, které jsou k dispozici pro každý oddíl, do které patří k dané služby Service Fabric.
  
-- [Získat seznam oddílů zálohování](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-getpartitionbackuplist): vrátí seznam záloh, které jsou k dispozici pro zadaný oddíl.
+- [Získat seznam oddílů zálohování](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackuplist): vrátí seznam záloh, které jsou k dispozici pro zadaný oddíl.
 
 ## <a name="next-steps"></a>Další postup
 - [Reference k rozhraní API REST obnovení zálohy](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)

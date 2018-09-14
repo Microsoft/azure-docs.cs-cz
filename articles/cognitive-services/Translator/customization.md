@@ -1,6 +1,6 @@
 ---
-title: Přizpůsobení překlad Microsoft překladač Text rozhraní API | Microsoft Docs
-description: Pomocí centra společnosti Microsoft překladač sestavení strojový překlad systému pomocí upřednostňované terminologie a stylu.
+title: Přizpůsobení překladu Microsoft Translator Text API | Dokumentace Microsoftu
+description: Pomocí Microsoft Translatoru Hub můžete vytvářet strojový překlad systému pomocí upřednostňované terminologie a stylu.
 services: cognitive-services
 author: Jann-Skotdal
 manager: chriswendt1
@@ -9,56 +9,56 @@ ms.component: translator-text
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: v-jansko
-ms.openlocfilehash: 1db22a414c41f338c4e7fd6ce9dc7ac739fa9237
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 9c7083ed0147b221d3d400afe83bb3bd6b6db86e
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343559"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574019"
 ---
-# <a name="customize-your-text-translations"></a>Přizpůsobit své překlady textu
+# <a name="customize-your-text-translations"></a>Upravte svoje textové překlady
 
-Ve verzi preview Microsoft vlastní překladač je funkce služby Microsoft Translator, což umožňuje uživatelům přizpůsobení Microsoft Translator pokročilé neuronové strojový překlad, při překladu textu s použitím rozhraní API Text překladač Microsoft (pouze verze 3). 
+Microsoft Translatoru Custom ve verzi preview je funkce služby Microsoft Translator, který umožňuje uživatelům přizpůsobit Microsoft Translatoru pokročilé Neurální strojový překlad, při překladu textu s použitím rozhraní Microsoft Translator Text API (pouze verze 3). 
 
-Tuto funkci lze také přizpůsobit rozpoznávání řeči překlad při použití s [kognitivní služby řeči preview](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/).
+Funkci lze použít také k přizpůsobení překladu řeči při použití s [řeči Cognitive Services ve verzi preview](https://docs.microsoft.com/azure/cognitive-services/speech-service/).
 
-## <a name="custom-translator"></a>Vlastní překladač
-S vlastní překladač můžete vytvořit neuronové překlad systémy, které rozuměli technologiím použitým v vlastní obchodní a odvětví. Systém přizpůsobené překlad pak integrovat do stávajících aplikací, pracovní postupy a weby. 
+## <a name="custom-translator"></a>Vlastní Translator
+S vlastní překlady můžete vytvořit Neurální překladové systémy, které rozuměli technologiím použitým v obchodních a oboru. Systém přizpůsobených překladových pak integrovat do stávajících aplikací, pracovní postupy a websites. 
 
 ### <a name="how-does-it-work"></a>Jak to funguje?
-Použijte dříve přeložený dokumentů (letáky, webové stránky, dokumentace atd.) k vytvoření překlad systém, který lépe než systém obecné překlad odráží specifické pro doménu terminologie a styl. Uživatelé mohou odesílat dokumenty TMX, XLIFF, TXT, DOCX a XLSX.  
+Použijte dříve přeložené dokumentů (letáků, webové stránky, dokumentaci, atd.) na sestavovací systém překladu, který odráží specifického pro doménu terminologie a stylu, lepší výsledky než obecné překladový systém. Uživatelé můžou nahrávat dokumenty, TMX XLIFF, TXT, DOCX a XLSX.  
 
-Systém přijímá také data, která je paralelní na úrovni dokumentu, ale ještě není zarovnána na úrovni věty. Pokud mají uživatelé přístup k verzím stejný obsah v několika jazycích, ale v samostatných dokumentech vlastní překladač bude moct automaticky odpovídat věty na dokumentech.  Systém můžete data také využívají jeden jazyk v jazyce nebo oba aby doplňovala paralelní Cvičná data ke zlepšení překlady. 
+Systém přijímá také data, která je paralelní na úrovni dokumentu, ale zatím není zarovnána na úrovni vět. Pokud mají uživatelé přístup k verzím stejný obsah ve více jazycích, ale v samostatných dokumentech vlastní Translator budou moci automaticky odpovídat věty v dokumentech.  Systém můžete také jeden jazyk data v těchto jazycích k doplnění paralelní trénovacích dat do vylepšovat překlady. 
 
-Pak je k dispozici prostřednictvím regulární volání rozhraní API Microsoft překladač Text pomocí parametru kategorie přizpůsobený systém.
+Přizpůsobený systém je pak k dispozici prostřednictvím pravidelné volání parametr kategorie pomocí rozhraní Microsoft Translator Text API.
 
-Zadaný příslušného typu a množství dat, školení není, můžete očekávat zvýšení rozsahu 5 až 10 nebo i další BLEU odkazuje na kvalitu překladu pomocí vlastní překladač.
+Zadaný odpovídající typ a velikost trénovacích dat není, můžete očekávat zvýšení rozsahu 5 až 10 nebo ještě více BLEU odkazuje na kvalitu překladu s použitím překladač vlastní.
 
-Další podrobnosti o různých úrovní přizpůsobení na základě dostupných dat najdete v [vlastní překladač uživatelská příručka](http://aka.ms/CustomTranslatorDocs).
+Další podrobnosti o různých úrovních přizpůsobení na základě dostupných dat najdete v [uživatelská příručka k vlastní Translator](http://aka.ms/CustomTranslatorDocs).
 
 
-## <a name="microsoft-translator-hub"></a>Microsoft překladač rozbočovače
+## <a name="microsoft-translator-hub"></a>Centrum Microsoft Translatoru
 
-Starší verze překladač centra společnosti Microsoft lze přeložit statistické strojového překladu. [Další informace](https://www.microsoft.com/en-us/translator/hub.aspx) 
+Starší verze centra Microsoft Translator umožňuje překládat statistické strojového překladu. [Další informace](https://www.microsoft.com/en-us/translator/hub.aspx) 
 
-## <a name="custom-translator-versus-hub"></a>Vlastní překladač versus rozbočovače
+## <a name="custom-translator-versus-hub"></a>Vlastní Translator oproti centra
 
-|   | **Centrum** | **Vlastní překladač**|
+|   | **Centrum** | **Vlastní Translator**|
 |:-----|:----:|:----:|
-|Stav funkce přizpůsobení   | Všeobecná dostupnost  | Preview |
-| Text rozhraní API verze  | Pouze v2   | Pouze v3 |
+|Stav funkce vlastního nastavení   | Všeobecná dostupnost  | Preview |
+| Verze text API  | Pouze v2   | Pouze v3 |
 | Přizpůsobení SMT | Ano   | Ne | 
 | Přizpůsobení NMT | Ne    | Ano |
 | Nové sjednocené přizpůsobení služby řeči | Ne    | Ano | 
-| [Žádné trasování](http://www.aka.ms/notrace) | Ano   | Ano | 
+| [Bez trasování](http://www.aka.ms/notrace) | Ano   | Ano | 
 
-## <a name="collaborative-translations-framework"></a>Spolupráce překlady Framework
+## <a name="collaborative-translations-framework"></a>Framework spolupráci překlady
 
 > [!NOTE]
-> Od verze 1. února 2018 AddTranslation() a AddTranslationArray() již nejsou k dispozici pro použití s V2.0 překladač Text rozhraní API. Tyto metody se nezdaří a nic se zapíšou. V3.0 překladač Text rozhraní API nepodporuje tyto metody.
+> Od 1. února 2018 je AddTranslation() a AddTranslationArray() již nejsou k dispozici pro použití s Translator Text API V2.0. Tyto metody se nezdaří a nic budou zapsány. Verze Translator Text API 3.0 nepodporuje tyto metody.
 
->Podobné funkce je k dispozici v rozhraní API překladač rozbočovače. V tématu [ https://hub.microsofttranslator.com/swagger ](https://hub.microsofttranslator.com/swagger). 
+>Podobně jako funkce jsou dostupné v rozhraní Translator API rozbočovače. Zobrazit [ https://hub.microsofttranslator.com/swagger ](https://hub.microsofttranslator.com/swagger). 
 
 ## <a name="next-steps"></a>Další postup
 > [!div class="nextstepaction"]
-> [Nastavit vlastní jazyk systému pomocí vlastní překladač](http://aka.ms/CustomTranslatorDocs)
+> [Nastavení vlastní jazyk systému pomocí Translatoru Custom](http://aka.ms/CustomTranslatorDocs)

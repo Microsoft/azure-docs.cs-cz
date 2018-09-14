@@ -7,20 +7,20 @@ author: juliako
 manager: erikre
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 07/31/2018
+ms.date: 09/09/2018
 ms.author: juliako
-ms.openlocfilehash: 1cffa067d8028adab4dbcc82c529f77d980ce6be
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 72f110c0c98e6fb6ee5fca684fdc74c6986e032c
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397539"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45541403"
 ---
 # <a name="find-exact-moments-within-videos"></a>Vyhledání určitých momentů ve videích
 
 Toto téma ukazuje možnosti hledání, které vám umožní vyhledání určitých momentů ve videích.
 
-1. Přihlaste se k vaší [Video Indexer](https://api-portal.videoindexer.ai/) účtu.
+1. Přejděte [Video Indexer](https://www.videoindexer.ai/) web a přihlaste se.
 2. Prohledávat všechna videa ve vašem účtu.
 
     V následujícím příkladu jsme hledali všechna videa, které jsou vytvořené na webu Channel 9 se Scottem Hanselmanem.
@@ -50,7 +50,7 @@ Po nalezení videa, kterou chcete pracovat, můžete pokračovat, zpracování v
 
 - [Vytvořit nové poznatky z videí podle existujícího videa](video-indexer-create-new.md)
 - [Zpracování obsahu pomocí rozhraní REST API služby Video Indexer](video-indexer-use-apis.md)
-- [Vložení widgetů visual ve vaší aplikaci](video-indexer-embed-widgets.md)
+- [Vložení vizuálních widgetů do vaší aplikace](video-indexer-embed-widgets.md)
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/12/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: 1ec4a6033fad643c75cdf9f7ebc5cdb1f4bab9c3
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 559859e1f844cae37b0baaf48b0ad7c5cc2d4b0a
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44717144"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542427"
 ---
 # <a name="configure-a-vnet-for-azure-sql-database-managed-instance"></a>Konfigurace virtuální sítě pro spravovanou instanci Azure SQL Database
 
@@ -101,7 +101,7 @@ Nejjednodušší způsob, jak vytvořit a konfigurovat virtuální sítě je pou
 
 3. Konfigurace prostředí sítě. V následujícím formátu můžete nakonfigurovat parametry vaše síťové prostředí:
 
-![Konfigurace sítě azure](./media/sql-database-managed-instance-get-started/create-mi-network-arm.png)
+![Konfigurace sítě azure](./media/sql-database-managed-instance-vnet-configuration/create-mi-network-arm.png)
 
 Můžete změnit názvy virtuální sítě a podsítě a upravit rozsahy IP adres přidružené k síťové prostředky. Po stisknutí tlačítka "Koupit", bude tento formulář vytvoření a konfiguraci prostředí. Pokud už nebudete potřebovat dvě podsítě můžete odstranit výchozí hodnotu. 
 

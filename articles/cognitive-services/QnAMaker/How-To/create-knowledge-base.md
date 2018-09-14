@@ -1,56 +1,57 @@
 ---
-title: Postup vytvoření znalostní báze knowledge base - QnA Maker - Azure kognitivní Services | Microsoft Docs
-description: Postup vytvoření znalostní bázi knowledge base
+title: Vytvoření znalostní báze – QnA Maker
+titleSuffix: Azure Cognitive Services
+description: Přidání chit chat pro svého robota díky konverzační a poutavé. Nástroj QnA Maker umožňuje snadno přidat předvyplněný sadu nejvyšší chit konverzace, do znalostní BÁZÍ. To můžete jako výchozí bod pro svého robota chit chat a vám ušetří čas a náklady na jejich vytváření od začátku.
 services: cognitive-services
 author: nstulasi
-manager: sangitap
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 09/12/2018
 ms.author: saneppal
-ms.openlocfilehash: 93b64948ecc52feeb0f862f2b76ea898dce2333a
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: 66705a0afdcdb04fe49bea0bfc03286df3611071
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35343882"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45543354"
 ---
 # <a name="create-a-knowledge-base"></a>Vytvoření znalostní báze
 
-QnA Maker je velmi jednoduchý zařadit do svých existujících zdrojů dat k vytvoření znalostní bázi knowledge base. Můžete vytvořit nové báze knowledge base QnA Maker z nejčastější dotazy týkající se stránky, produkty příručky, strukturovaných dokumenty nebo redakčně přidat.
+Nástroj QnA Maker umožňuje velmi jednoduchý připojení stávajících zdrojů dat k vytvoření znalostní báze. Můžete vytvořit nové znalostní báze QnA Maker z nejčastější dotazy k stránky, produkty příručky, strukturovaných dokumentů nebo je přidat pomocí redakčních úprav.
 
 ## <a name="steps"></a>Kroky
 
-1. Abyste mohli začít, přihlaste k [QnA Maker portál](https://qnamaker.ai) pomocí přihlašovacích údajů služby azure a kliknutím na tlačítko **vytvořit novou službu**.
+1. Abyste mohli začít, přihlaste se k [portál QnA Maker](https://qnamaker.ai) s azure přihlašovací údaje a klikněte na kartu **vytvořit novou službu**.
 
-    ![Vytvoření KB ](../media/qnamaker-how-to-create-kb/create-new-service.png)
+    ![Vytvoření znalostní BÁZE ](../media/qnamaker-how-to-create-kb/create-new-service.png)
 
-2. Pokud jste ještě nevytvořili služby QnA Maker, vyberte **vytvoření služby QnA**. Jinak vyberte službu QnA Maker z rozevírací nabídky v kroku 2. Vyberte službu QnA Maker, který bude hostitelem znalostní bázi Knowledge Base.
+2. Pokud jste ještě nevytvořili služba QnA Maker, vyberte **vytvořit službu QnA**. Jinak klikněte na tlačítko služba QnA Maker z rozevírací nabídky v kroku 2. Vyberte službu QnA Maker, která bude hostovat ve znalostní bázi.
 
-    ![Nastavení služby QnA](../media/qnamaker-how-to-create-kb/setup-qna-resource.png)
+    ![Služba QnA instalace](../media/qnamaker-how-to-create-kb/setup-qna-resource.png)
 
-3. Zadejte následující informace pro vytvoření znalostní bázi knowledge base.
+3. Chcete-li vytvořit ve znalostní bázi, zadejte následující informace.
 
-    ![Sada zdrojů dat](../media/qnamaker-how-to-create-kb/set-data-sources.png)
+    ![Nastavení zdroje dat](../media/qnamaker-how-to-create-kb/set-data-sources.png)
 
-    - Poskytnout služby **název.** Duplicitní názvy jsou podporované a jsou také podporovány speciální znaky.
-    - Vložte adresy URL, které budou extrahována ze. Zobrazit další informace o typech zdrojů podporované [zde](../Concepts/data-sources-supported.md).
-    - Můžete také nahrajte soubory, ze které je extrahována data. Najdete v článku [informace o cenách](https://aka.ms/qnamaker-pricing
+    - Zadejte vaši službu **název.** Duplicitní názvy jsou podporovány a jsou také podporovány speciální znaky.
+    - Vložte adresy URL, které se extrahují z. Zobrazit další informace o typech podporované zdroje [tady](../Concepts/data-sources-supported.md).
+    - Můžete také nahrajte soubory, ze které je extrahována data. Zobrazit [informace o cenách](https://aka.ms/qnamaker-pricing
 ) chcete zobrazit, kolik dokumenty, které můžete přidat.
-    - Pokud chcete ručně přidat QnAs, můžete přeskočit propojení souborů.
+    - Pokud chcete ručně přidat maximálně, můžete přeskočit propojování souborů.
 
 4. Vyberte **Vytvořit**.
 
-    ![Vytvoření KB](../media/qnamaker-how-to-create-kb/create-kb.png)
+    ![Vytvoření znalostní BÁZE](../media/qnamaker-how-to-create-kb/create-kb.png)
 
-5. Trvá několik minut pro data extrahovat.
+5. Trvá několik minut, než se data extrahovat.
 
     ![Extrakce](../media/qnamaker-how-to-create-kb/hang-tight-extraction.png)
 
-6. Pokud vaše znalostní báze Knowledge Base byla úspěšně vytvořena, budete přesměrováni na **znalostní báze Knowledge base** stránky.
+6. Pokud znalostní báze byl úspěšně vytvořen, budete přesměrováni na **znalostní báze** stránky.
 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Import znalostní bázi knowledge base](../Tutorials/migrate-knowledge-base.md)
+> [Importovat znalostní báze](../Tutorials/migrate-knowledge-base.md)

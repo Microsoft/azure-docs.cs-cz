@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 02d402b7de82631ce459c60cb42e5335c7e7cfe3
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 5c2a37f3753292c6db847a4a9152bd4506f8fa5e
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003296"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45580482"
 ---
 # <a name="azure-active-directory-identity-protection-playbook"></a>Playbook Azure Active Directory Identity Protection
 
@@ -115,7 +115,7 @@ Tato část obsahuje kroky pro testování uživatelského rizika a zásady zabe
 
 ### <a name="user-risk-security-policy"></a>Zásady zabezpečení rizik uživatelů
 
-Další informace najdete v tématu [zásady zabezpečení rizik uživatelů](overview.md#user-risk-security-policy).
+Další informace najdete v tématu [jak nakonfigurovat zásady rizik uživatelů](howto-user-risk-policy.md).
 
 ![Riziko uživatele](./media/playbook/02.png "Playbook")
 
@@ -140,7 +140,7 @@ Další informace najdete v tématu [zásady zabezpečení rizik uživatelů](ov
 
 ### <a name="sign-in-risk-security-policy"></a>Zásady zabezpečení rizik přihlašování
 
-Další informace najdete v tématu [zásady zabezpečení rizik uživatelů](overview.md#user-risk-security-policy).
+Další informace najdete v tématu [jak nakonfigurovat zásady rizik přihlašování](howto-sign-in-risk-policy.md).
 
 ![Riziko přihlášení](./media/playbook/01.png "Playbook")
 

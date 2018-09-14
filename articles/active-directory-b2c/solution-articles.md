@@ -8,12 +8,12 @@ ms.date: 09/07/2018
 ms.topic: conceptual
 ms.service: active-directory
 ms.component: b2c
-ms.openlocfilehash: a9faece909bba89714deef9d229ab86bd351b445
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: bdacbe425aa3140f8a3d60fdf121712d1e6eda3e
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347133"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45541598"
 ---
 # <a name="solutions-and-training-for-azure-active-directory-b2c"></a>Řešení a školení pro Azure Active Directory B2C
 
@@ -25,7 +25,4 @@ Azure Active Directory (Azure AD) B2C umožňuje organizacím implementovat fire
 | [Získání odborné znalosti v Azure AD B2C: kurzu pro vývojáře](https://aka.ms/learnAADB2C) | Tento kurz začátku do konce trvá vývojáře prostřednictvím úplné cesty na vývoj aplikací s využitím Azure AD B2C jako mechanismus ověřování. Deset podrobné modulů s praktickými cvičeními pokrývají vše od vytvoření předplatného Azure k vytvoření vlastní zásady, které definují cesty, které upoutat zákazníky. |
 | [Povolení partnery, dodavateli a zákazníky k přístupu k aplikacím pomocí Azure active Directory](https://aka.ms/aadexternalidentities) | Každá organizace úspěch, bez ohledu na její velikost, odvětví, nebo dodržování předpisů a stavu zabezpečení, spoléhá na organizační schopnost spolupracují s dalšími organizacemi a spojení se zákazníky.<br><br>Spojuje Azure AD, Azure AD B2C a spolupráce B2B ve službě Azure AD, tento průvodce Detailně popisuje, přidanou hodnotu a mechanismy sestavování aplikace nebo webové prostředí, které poskytuje konsolidované ověřování prostředí přizpůsobené kontexty z vaší zaměstnanci, obchodními partnery a dodavateli a zákazníky. |
 | [Migrace aplikace ověřování Azure AD B2C v hybridním prostředí](https://aka.ms/MigratetoAADB2C) | V dnešních organizacích moderní digitální transformace a přesunu do cloudu dojde ve fázích, vyžadování většina organizací aspoň dočasně pracovat v hybridním prostředí identity.<br><br>Tato příručka se zaměřuje na tvorbu plán migrace pro přesun první aplikace Azure AD B2C a popisuje důležité informace o to udělat v hybridním prostředí identit. |
-
-<!-- 
-| [General Data protection Regulation (GDPR) Considerations for Customer Facing Applications](https://aka.ms/AADB2CandGDPR) | For any customer facing applications, GDPR must be taken into consideration by all organizations that embark on projects that hold personal data and serve EU citizens.<br><br>This solution Guide focuses on how Azure AD B2C can be used as a flexible component of your overall GDPR compliance approach, including how AAD B2C components support each of the key GDPR rights for individuals. | 
--->
+| [Ochrana dat Obecné aspekty Regulation (GDPR) pro aplikace směřující zákazníka](https://aka.ms/AADB2CandGDPR) | Pro všechny zákazníky Internetové aplikace podle nařízení GDPR musí vzít v úvahu všechny organizace, které pouštět na projektech, které obsahovat osobní údaje a poskytovat občany EU.<br><br>Tato příručka se zaměřuje na použití Azure AD B2C jako flexibilní součástí vaší celkovým přístupem dodržování předpisů GDPR včetně jak komponent Azure AD B2C podporovat každé z klíče GDPR práva pro jednotlivce. |

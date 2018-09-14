@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: rajanaki
-ms.openlocfilehash: 81dbb61d696da84febc89563f946581315fdf527
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 9f0a299fb8221554a3b0c9a19a616d5ba7613a67
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37921434"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574398"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Automatická aktualizace služby Mobility v replikaci z Azure do Azure
 
@@ -79,8 +79,8 @@ V případě, že tlačítko Opravit není k dispozici, najdete v podokně nasta
 
  - **Chyba**: The spustit jako účet nemá oprávnění pro přístup k prostředku služby recovery services.
 
-    **Doporučená akce**: odstraňte a pak [znovu vytvořte účet Spustit jako](https://docs.microsoft.com/en-us/azure/automation/automation-create-runas-account) nebo se ujistěte, že aplikace účtu Automation spustit jako pro Azure Active Directory má přístup k prostředku služby recovery services.
+    **Doporučená akce**: odstraňte a pak [znovu vytvořte účet Spustit jako](https://docs.microsoft.com/azure/automation/automation-create-runas-account) nebo se ujistěte, že aplikace účtu Automation spustit jako pro Azure Active Directory má přístup k prostředku služby recovery services.
 
 - **Chyba**: nebyl nalezen účet Spustit jako. Jeden z nich byl odstraněn nebo není vytvořená: aplikace Azure Active Directory, instanční objekt, Role, prostředek certifikátu služby Automation, asset připojení Automation – nebo kryptografický otisk není mezi certifikátem a připojením identický. 
 
-    **Doporučená akce**: odstraňte a [znovu vytvořte účet Spustit jako](https://docs.microsoft.com/en-us/azure/automation/automation-create-runas-account).
+    **Doporučená akce**: odstraňte a [znovu vytvořte účet Spustit jako](https://docs.microsoft.com/azure/automation/automation-create-runas-account).

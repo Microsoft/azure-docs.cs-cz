@@ -1,6 +1,6 @@
 ---
-title: Podporované jazyky v Bing pravopisu zkontrolujte rozhraní API (kognitivní služeb pro Microsoft v Azure) | Microsoft Docs
-description: Seznam všeobecně dostupná a jazyk preview podporu pro operace API kontrola pravopisu Bing.
+title: Podporované jazyky v Bingu rozhraní API kontrolu pravopisu (Microsoft Cognitive Services v Azure) | Dokumentace Microsoftu
+description: Seznam obecně dostupná a jazyka ve verzi preview podporu pro operace API kontrola pravopisu Bingu.
 services: cognitive-services
 author: noellelacharite
 manager: nolachar
@@ -9,28 +9,28 @@ ms.component: bing-spell-check
 ms.topic: conceptual
 ms.date: 05/08/2018
 ms.author: nolachar
-ms.openlocfilehash: 7cab8e0471151cd2ae7c2e31406f2460fdff6a0b
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: a62980f563c8fad525696aca73f8c036382fa820
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37050382"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45573786"
 ---
 # <a name="supported-language-list-and-status"></a>Seznam podporovaných jazyků a stav
 
-Tyto jazyky jsou podporovány rozhraním API kontrola pravopisu Bing (pouze v `spell` režim). 
+Rozhraní API Bingu pro kontrolu pravopisu zkontrolujte podporuje tyto jazyky (pouze v `spell` režim). 
 
-Pamatujte, že pro práci s jakéhokoli jiného jazyka než `en-US`, `mkt` by mělo být nastavené a buď `Accept-Language` nebo `setLang` by měla být nastavena, jako je popsán v [API kontrola pravopisu v7 – referenční informace](https://docs.microsoft.com/en-us/rest/api/cognitiveservices/bing-spell-check-api-v7-reference)
+Pamatujte, že pro práci s jakéhokoli jiného jazyka než `en-US`, `mkt` by měla být nastavena a buď `Accept-Language` nebo `setLang` je třeba nastavit tak, že je popsán v [referenční dokumentace rozhraní API kontrolu pravopisu v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference)
 
 | Jazyk    | Kód jazyka |
 |:----------- |:-------------:|
 | arabština      | `ar`          |
 | čínština (Čínská lidová republika)     | `zh-CN`          |
-| Čínština (Hongkong – zvláštní správní oblast)    | `zh-HK`          |
+| Čínština (Hongkong – zvláštní administrativní oblast)    | `zh-HK`          |
 | Čínština (Tchaj-wan)     | `zh-TW`          |
 | dánština      | `da`          |
 | nizozemština (Belgie)       | `nl-BE`          |
-| Holandština (Nizozemsko)      | `nl-NL`          |
+| Nizozemština (Nizozemsko)      | `nl-NL`          |
 | angličtina (Austrálie)    | `en-AU`          |
 | angličtina (Kanada)     | `en-CA`          |
 | English (India)    | `en-IN`          |
@@ -67,5 +67,5 @@ Pamatujte, že pro práci s jakéhokoli jiného jazyka než `en-US`, `mkt` by m�
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-- [Kognitivní stránky dokumentace služby](https://docs.microsoft.com/azure/cognitive-services/)
-- [Kognitivní stránka služby produktu](https://azure.microsoft.com/services/cognitive-services/)
+- [Stránka dokumentace ke službám Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/)
+- [Produktová stránka služeb Cognitive Services](https://azure.microsoft.com/services/cognitive-services/)

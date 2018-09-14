@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/17/2018
-ms.openlocfilehash: 8b6c8220bd009505f683ce888558e612aebdc0b3
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 6eb2452507c3adcb8532a0dd2e50ad701e35cd7f
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048100"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579215"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>Plánování úloh U-SQL pomocí SQL Server Integration Services (SSIS)
 
@@ -63,7 +63,7 @@ V zobrazení návrhu balíčku služby SSIS, přidejte **úlohy Azure Data Lake 
 ### <a name="configure-azure-data-lake-store-file-system-task"></a>Konfigurace úlohy systému souborů Azure Data Lake Store
 
 1. Nastavte **operace** k **CopyFromADLS**.
-2. Nastavit **AzureDataLakeConnection**, další informace o [Správce připojení Azure Data Lake Store](https://docs.microsoft.com/en-us/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager?view=sql-server-2017).
+2. Nastavit **AzureDataLakeConnection**, další informace o [Správce připojení Azure Data Lake Store](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager?view=sql-server-2017).
 3. Nastavte **AzureDataLakeDirectory**. Přejděte ke složce pro ukládání skriptů U-SQL. Použijte relativní cestu, která je relativní vzhledem ke kořenové složce účtu Azure Data Lake Store.
 4. Nastavte **cílové** do složky, která ukládá do mezipaměti staženými skripty U-SQL. Tato cesta ke složce se použije v kontejneru smyčky Foreach pro odeslání úlohy U-SQL. 
 
@@ -106,7 +106,7 @@ V zobrazení návrhu balíčku služby SSIS, přidejte **úlohy Azure Data Lake 
 
 3. Nastavte **AzureDataLakeAnalyticsConnection** k účtu Azure Data Lake Analytics, které chcete odesílat úlohy do. Další informace o [Správce připojení Azure Data Lake Analytics](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-analytics-connection-manager?view=sql-server-2017).
 
-4. Nastavte další úlohy konfigurace. [Další informace](https://docs.microsoft.com/en-us/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017).
+4. Nastavte další úlohy konfigurace. [Další informace](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017).
 
 5. Použití **výrazy** nastavovat dynamicky název úlohy U-SQL:
 
@@ -119,7 +119,7 @@ V zobrazení návrhu balíčku služby SSIS, přidejte **úlohy Azure Data Lake 
 
 Soubory U-SQL ve službě Azure Blob Storage můžete používat pomocí **úloha stažení objektů Blob v Azure** v Azure Feature Pack. Díky tomu můžete pomocí skriptů v cloudu.
 
-Kroky jsou podobné s [Scnario 2: soubory využití U-SQL v Azure Data Lake Store](#scenario-2-use-u-sql-files-in-azure-data-lake-store). Změňte úlohu systém souborů Azure Data Lake Store k úloze stažení objektů Blob v Azure. [Další informace o úloze stažení objektů Blob v Azure](https://docs.microsoft.com/en-us/sql/integration-services/control-flow/azure-blob-download-task?view=sql-server-2017).
+Kroky jsou podobné s [Scnario 2: soubory využití U-SQL v Azure Data Lake Store](#scenario-2-use-u-sql-files-in-azure-data-lake-store). Změňte úlohu systém souborů Azure Data Lake Store k úloze stažení objektů Blob v Azure. [Další informace o úloze stažení objektů Blob v Azure](https://docs.microsoft.com/sql/integration-services/control-flow/azure-blob-download-task?view=sql-server-2017).
 
 Tok řízení je jako níže.
 
@@ -164,11 +164,11 @@ V některých případech můžete dynamicky nastavovat hodnotu proměnné U-SQL
 - Nastavte vstupní a výstupní proměnné cesty souboru dynamicky podle aktuální datum a čas.
 - Nastavte parametr pro uložené procedury.
 
-[Další informace o tom, jak nastavit parametry pro skript U-SQL](https://docs.microsoft.com/en-us/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017#parameter-mapping-page-configuration).
+[Další informace o tom, jak nastavit parametry pro skript U-SQL](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017#parameter-mapping-page-configuration).
 
 ## <a name="next-steps"></a>Další postup
 
 - [Spouštění balíčků služby SSIS v Azure](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)
 - [Azure Feature Pack for Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-2017#scenario-managing-data-in-the-cloud)
-- [Plánování úloh U-SQL pomocí Azure Data Factory](https://docs.microsoft.com/en-us/azure/data-factory/transform-data-using-data-lake-analytics)
+- [Plánování úloh U-SQL pomocí Azure Data Factory](https://docs.microsoft.com/azure/data-factory/transform-data-using-data-lake-analytics)
 

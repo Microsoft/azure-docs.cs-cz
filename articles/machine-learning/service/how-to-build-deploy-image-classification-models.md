@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: netahw
 author: nhaiby
 ms.date: 04/23/2018
-ms.openlocfilehash: 6b7f73573cb1465b89e54e30894b3549153e4acb
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 1188ff040c12fd431cfcef5eea982647df6b9a71
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37888428"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576387"
 ---
 # <a name="build-and-deploy-image-classification-models-with-azure-machine-learning"></a>Sestavování a nasazování modelů klasifikace obrázků s Azure Machine Learning
 
@@ -174,7 +174,7 @@ display(annotation_ui.ui)
 
 ## <a name="augment-images"></a>Posílení imagí
 
-[ `augmentation` Modulu](https://docs.microsoft.com/en-us/python/api/cvtk.augmentation) poskytuje funkce, které rozšiřují pomocí všechny transformace je popsáno v objektu dataset [imgaug](https://github.com/aleju/imgaug) knihovny. Transformace bitové kopie mohou být seskupeny do jednoho kanálu, v takovém případě jsou všechny transformace v kanálu použít současně každé image. 
+[ `augmentation` Modulu](https://docs.microsoft.com/python/api/cvtk.augmentation) poskytuje funkce, které rozšiřují pomocí všechny transformace je popsáno v objektu dataset [imgaug](https://github.com/aleju/imgaug) knihovny. Transformace bitové kopie mohou být seskupeny do jednoho kanálu, v takovém případě jsou všechny transformace v kanálu použít současně každé image. 
 
 Pokud chcete použít jiné rozšíření samostatně nebo v různých způsobem, můžete definovat více kanálů a předat je do *augment_dataset* funkce. Další informace a příklady rozšíření image, najdete v článku [imgaug dokumentaci](https://github.com/aleju/imgaug).
 

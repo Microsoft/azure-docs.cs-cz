@@ -1,76 +1,77 @@
 ---
-title: Postup testování znalostní báze knowledge base - QnA Maker - Azure kognitivní Services | Microsoft Docs
-description: Před publikováním otestujte znalostní báze.
+title: Testování znalostní báze – QnA Maker
+titlesuffix: Azure Cognitive Services
+description: Testování znalostní báze QnA Maker je důležitou součástí iterativní proces, aby se zlepšila přesnost odpovědi se vrací. Můžete otestovat ve znalostní bázi prostřednictvím rozhraní rozšířené chatu, který také umožňuje že provádět úpravy.
 services: cognitive-services
 author: nstulasi
-manager: sangitap
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 09/12/2018
 ms.author: saneppal
-ms.openlocfilehash: cffb63666edab25e1b3b0739d0e0f2f828600f3a
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: d2b93e62513f256e151d3ab3b34d6dc6d9a49d79
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343269"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542612"
 ---
 # <a name="test-your-knowledge-base"></a>Testování znalostní báze
 
-Testování QnA Maker znalostní báze je důležitou součástí iterativní proces k zajištění přesnosti odpovědí nebyl vrácen. Můžete otestovat ve znalostní bázi knowledge prostřednictvím chatu rozšířené rozhraní, které také umožňuje že provádět úpravy.
+Testování znalostní báze QnA Maker je důležitou součástí iterativní proces, aby se zlepšila přesnost odpovědi se vrací. Můžete otestovat ve znalostní bázi prostřednictvím rozhraní rozšířené chatu, který také umožňuje že provádět úpravy.
 
-## <a name="test-answer-matching"></a>Testování odpovídající odpovědí
+## <a name="test-answer-matching"></a>Odpovídající odpověď testu
 
-1.  Výběrem jeho název na přístup k vaší znalostní báze knowledge base **Moje znalostních bází** stránky.
-2.  Chcete-li získat přístup k panelu testu snímku na více systémů, vyberte **Test** v horním panelu vaší aplikace.
+1.  Výběrem názvu na přístup ke znalostní báze **Moje znalostních bází** stránky.
+2.  Chcete-li získat přístup k panelu snímku na více instancí testu, vyberte **Test** v horním panelu vaší aplikace.
 
     ![Test přístupu](../media/qnamaker-how-to-test-kb/access-test.png)
 
-3.  Zadejte dotaz do textového pole a vyberte Enter.
+3.  Zadejte dotaz do textového pole a stiskněte Enter.
 
-4.  Nejlépe odpovídající odpověď ze znalostní báze se vrátí jako odpověď.
+4.  Nejlépe odpovídající odpověď na základě znalostní báze se vrátí jako odpověď.
 
-## <a name="clear-test-panel"></a>Zrušte testovací panely
+## <a name="clear-test-panel"></a>Vymazat test panelu
 
-Pokud chcete vymazat všechny zadané testovací dotazy a jejich výsledky z konzoly pro testovací, vyberte **začít znovu** v levém horním rohu panelu testu.
+Chcete-li vymazat všechny zadané testovací dotazy a jejich výsledky z testovací konzole, vyberte **začít od začátku** v levém horním rohu panelu Test.
 
-## <a name="close-test-panel"></a>Zavřete testovací panely
+## <a name="close-test-panel"></a>Test Zavřít panel
 
-Zavřete testovací panelu, vyberte **Test** tlačítko znovu. Panel testu je otevřen, nelze upravovat obsah znalostní báze Knowledge Base.
+Zavřít panel testu, vyberte **Test** tlačítko znovu. Při otevření panelu Test nelze upravovat obsah znalostní báze Knowledge Base.
 
-## <a name="inspect-score"></a>Zkontrolujte skóre
+## <a name="inspect-score"></a>Kontrola skóre
 
-Si prohlédnout podrobnosti výsledků testů v panelu kontroly.
+Si prohlédnout podrobnosti o výsledku testu na panelu zkontrolujte, jestli se.
 
-1.  Test se snímku na panelu otevřete, vybrat **kontroly** další podrobnosti o této odpovědi.
+1.  Test snímku na více instancí panelu otevřete, vyberte **zkontrolujte, jestli se** podrobné informace o této odpovědi.
 
-    ![Kontrola odpovědí](../media/qnamaker-how-to-test-kb/inspect.png)
+    ![Zkontrolovat odpovědi](../media/qnamaker-how-to-test-kb/inspect.png)
 
-2.  Zobrazí se panel kontroly. Na panelu zahrnuje horní vyhodnocování záměr, jakož i všechny zjištěné entity. Panel zobrazuje výsledek vybrané utterance.
+2.  Otevře se panel kontroly. Na panelu zahrnuje nejvyšší hodnocení záměr, stejně jako všechny zjištěné entity. Na panelu zobrazuje výsledek vybraný utterance.
 
-## <a name="correct-the-top-scoring-answer"></a>Opravte horní vyhodnocování odpovědí
+## <a name="correct-the-top-scoring-answer"></a>Opravte nejvyšší hodnocení odpovědí
 
-Pokud horní vyhodnocování odpověď není v pořádku, vyberte ze seznamu a vyberte správnou odpověď **uložte a cvičení**.
+Pokud nejvyšší hodnocení odpověď je nesprávná, vyberte ze seznamu a vyberte správnou odpověď **uložit a jejich trénování**.
 
 ![Test přístupu](../media/qnamaker-how-to-test-kb/choose-answer.png)
 
 ## <a name="add-alternate-questions"></a>Přidat alternativní otázky
 
-Můžete přidat alternativní formy dotaz na danou odpovědí. Typ odpovědi alternativní textového pole a klikněte na, zadejte je přidat. Vyberte **uložte a cvičení** pro ukládání aktualizací.
+Můžete přidat alternativní formy dotaz na danou odpovědí. Zadejte alternativní odpovědi na textové pole a klikněte na enter je přidat. Vyberte **uložit a jejich trénování** pro ukládání aktualizací.
 
 ![Test přístupu](../media/qnamaker-how-to-test-kb/add-alternate-question.png)
 
-## <a name="add-a-new-answer"></a>Přidat novou odpověď
+## <a name="add-a-new-answer"></a>Přidat nové odpovědi
 
-Pokud žádné z existující odpovědi, které se shodují jsou nesprávné nebo odpověď neexistuje ve znalostní bázi knowledge base (dobrý nalezena žádná shoda v KB), můžete přidat novou odpověď. Zadejte novou odpověď na otázku aktuální do textového pole a stiskněte klávesu enter ho přidejte. 
+Pokud některý z existujících odpovědi, které se shoda našla, nejsou správné nebo odpověď neexistuje znalostní báze knowledge base (dobré nalezena žádná shoda v KB), můžete přidat nové odpovědi. Zadejte novou odpověď na aktuální otázku do textového pole a stiskněte klávesu enter a přidejte ji. 
 
-Vyberte **uložte a cvičení** udržení této odpovědi. Zadat nový pár otázku odpovědí teď přidaná do znalostní báze.
+Vyberte **uložit a jejich trénování** zachovat tuto odpověď. Nový pár otázka – odpověď byl přidán do znalostní báze.
 
 ![Test přístupu](../media/qnamaker-how-to-test-kb/add-answer.png)
 
 > [!NOTE]
-> Všechny úpravy do znalostní báze získat uloží jenom po stisknutí klávesy **uložte a cvičení** tlačítko.
+> Všechny úpravy do znalostní báze získat uloží jenom po stisknutí klávesy **uložit a jejich trénování** tlačítko.
 
 ## <a name="next-steps"></a>Další postup
 

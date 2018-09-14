@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 9d4d7633428cd174a31214db2db6b6d9928230bd
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: dde8881fc446eef0dd6ca0735e5e23a5a19328fa
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627912"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45578346"
 ---
 # <a name="stream-azure-diagnostic-logs-to-an-event-hub"></a>Diagnostické protokoly Azure Stream do centra událostí
-**[Diagnostické protokoly Azure](monitoring-overview-of-diagnostic-logs.md) ** můžete streamování v reálném čase pro libovolné aplikace na portálu nebo tím, že ID pravidla autorizace centra událostí v nastavení diagnostiky Azure pomocí integrovaných možností "Export do služby Event Hubs" Rutiny Powershellu nebo Azure CLI 2.0.
+**[Diagnostické protokoly Azure](monitoring-overview-of-diagnostic-logs.md)**  můžete streamování v reálném čase pro libovolné aplikace na portálu nebo tím, že ID pravidla autorizace centra událostí v nastavení diagnostiky Azure pomocí integrovaných možností "Export do služby Event Hubs" Rutiny Powershellu nebo Azure CLI 2.0.
 
 ## <a name="what-you-can-do-with-diagnostics-logs-and-event-hubs"></a>Co můžete dělat s Event Hubs a protokoly diagnostiky
 Můžete například použít funkci streamování pro diagnostické protokoly několika způsoby:
@@ -41,7 +41,7 @@ Můžete například použít funkci streamování pro diagnostické protokoly n
 
 ## <a name="enable-streaming-of-diagnostic-logs"></a>Povolení streamování diagnostických protokolů
 
-Streamování diagnostických protokolů prostřednictvím kódu programu, prostřednictvím portálu, nebo pomocí můžete povolit [REST API služby Azure Monitor](https://docs.microsoft.com/en-us/rest/api/monitor/diagnosticsettings). V obou případech můžete vytvořit nastavení diagnostiky ve kterém určíte, obor názvů služby Event Hubs a kategorie protokolů a metrik, které chcete odeslat do oboru názvů. Centra událostí je vytvořen v oboru názvů pro každou kategorii protokolů, které povolíte. Diagnostika **kategorie protokolu** je typ protokolu, který může shromažďovat prostředku.
+Streamování diagnostických protokolů prostřednictvím kódu programu, prostřednictvím portálu, nebo pomocí můžete povolit [REST API služby Azure Monitor](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings). V obou případech můžete vytvořit nastavení diagnostiky ve kterém určíte, obor názvů služby Event Hubs a kategorie protokolů a metrik, které chcete odeslat do oboru názvů. Centra událostí je vytvořen v oboru názvů pro každou kategorii protokolů, které povolíte. Diagnostika **kategorie protokolu** je typ protokolu, který může shromažďovat prostředku.
 
 > [!WARNING]
 > Povolení a streamování diagnostických protokolů z výpočetních prostředků (například virtuální počítače nebo Service Fabric) [vyžaduje jinou sadu kroků](../event-hubs/event-hubs-streaming-azure-diags-data.md).
@@ -93,7 +93,7 @@ ID pravidla autorizace centra událostí je řetězec v tomto formátu: `{Event 
 
 ### <a name="via-azure-cli-20"></a>Via Azure CLI 2.0
 
-Pokud chcete povolit streamování prostřednictvím [příkazového řádku Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/monitor?view=azure-cli-latest), můžete použít [az monitor diagnostiky – nastavení vytváření](https://docs.microsoft.com/en-us/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create) příkazu.
+Pokud chcete povolit streamování prostřednictvím [příkazového řádku Azure CLI 2.0](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest), můžete použít [az monitor diagnostiky – nastavení vytváření](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create) příkazu.
 
 ```azurecli
 az monitor diagnostic-settings create --name <diagnostic name> \

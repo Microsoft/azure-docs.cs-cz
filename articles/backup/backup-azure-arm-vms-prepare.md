@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 9/10/2018
 ms.author: markgal
-ms.openlocfilehash: dc9d7b924f51fb3a4e9662dfa7ad4b9557b481bc
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 80987408e65785afba1df2d2f6b6fc9981fd2dbf
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346997"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542816"
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>Příprava prostředí pro zálohování virtuálních počítačů s nasazením Resource Manageru
 
@@ -215,8 +215,8 @@ Následující video vás provede krok za krokem postupem konfigurace značky sl
 
 >[!VIDEO https://www.youtube.com/embed/1EjLQtbKm1M]
 
-> [!WARNING]
-> Značky služby Storage jsou k dispozici pouze v určitých oblastech a jsou ve verzi preview. Seznam oblastí naleznete v tématu [značky služeb pro úložiště](../virtual-network/security-overview.md#service-tags).
+> [!NOTE]
+> Seznam značek služeb úložiště a oblastí najdete v tématu [značky služeb pro úložiště](../virtual-network/security-overview.md#service-tags).
 
 ### <a name="use-an-http-proxy-for-vm-backups"></a>Použít proxy server HTTP pro zálohy virtuálních počítačů
 Pokud zálohujete virtuální počítač, rozšíření zálohování na virtuálním počítači odešle snímku příkazy pro správu do služby Azure Storage pomocí rozhraní API protokolu HTTPS. Směrování provozu linka záložního telefonu na server proxy protokolu HTTP, protože se jedná o jedinou komponentou nakonfigurovaný pro přístup k veřejnému Internetu.

@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 52582a6fe3f6c8ccc22c57268e20a94139be9e6f
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 669a436293ddf6f13760db5e6802aaae82ddd74b
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094854"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45577509"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Výkon a škálování v Durable Functions (Azure Functions)
 
@@ -27,13 +27,13 @@ Informace o tom chování škálování, budete muset pochopit některé podrobn
 
 **Historie** tabulka je tabulka Azure Storage, který obsahuje historii událostí pro všechny instance Orchestrace úloh centrum. Název této tabulky je ve formě *TaskHubName*historie. Instance spuštění nové řádky se přidají do této tabulky. Klíč oddílu této tabulky je odvozený od ID instance orchestraci. Instance ID je náhodný ve většině případů, které zajišťuje optimální distribuci interních oddílů ve službě Azure Storage.
 
-Když je potřeba spustit instanci Orchestrace, odpovídající řádky v tabulce historie jsou načtena do paměti. Tyto *Historie událostí* se pak znovu přehrát do kódu funkce orchestrátoru jak ji získat zpátky do stavu dříve byl vytvořen kontrolní bod. Použití historie provádění k opětovnému sestavení stavu tímto způsobem je ovlivněno [model Event Sourcing](https://docs.microsoft.com/en-us/azure/architecture/patterns/event-sourcing).
+Když je potřeba spustit instanci Orchestrace, odpovídající řádky v tabulce historie jsou načtena do paměti. Tyto *Historie událostí* se pak znovu přehrát do kódu funkce orchestrátoru jak ji získat zpátky do stavu dříve byl vytvořen kontrolní bod. Použití historie provádění k opětovnému sestavení stavu tímto způsobem je ovlivněno [model Event Sourcing](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing).
 
 ## <a name="instances-table"></a>Instance tabulky
 
 **Instance** jiné tabulky Azure Storage, který obsahuje stavy všech instancí Orchestrace v centru úkolu je tabulka. Jak se vytvářejí instance, nové řádky se přidají do této tabulky. Klíč oddílu v této tabulce je ID instance Orchestrace klíč řádku je dlouhodobý – konstanta Existuje jeden řádek pro každou instanci Orchestrace.
 
-Tato tabulka slouží ke splnění požadavků na dotazy instance z [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_GetStatusAsync_System_String_) rozhraní API také [dotazu na stavovou rozhraní HTTP API](https://docs.microsoft.com/en-us/azure/azure-functions/durable-functions-http-api#get-instance-status). Je udržovat konzistentní s obsahem **historie** tabulka již bylo zmíněno dříve. Použití samostatné tabulky Azure Storage efektivně splňovat operace dotazů instance tímto způsobem je ovlivněno [zodpovědnosti příkazů a dotazů oddělení (CQRS) vzor](https://docs.microsoft.com/en-us/azure/architecture/patterns/cqrs).
+Tato tabulka slouží ke splnění požadavků na dotazy instance z [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_GetStatusAsync_System_String_) rozhraní API také [dotazu na stavovou rozhraní HTTP API](https://docs.microsoft.com/azure/azure-functions/durable-functions-http-api#get-instance-status). Je udržovat konzistentní s obsahem **historie** tabulka již bylo zmíněno dříve. Použití samostatné tabulky Azure Storage efektivně splňovat operace dotazů instance tímto způsobem je ovlivněno [zodpovědnosti příkazů a dotazů oddělení (CQRS) vzor](https://docs.microsoft.com/azure/architecture/patterns/cqrs).
 
 ## <a name="internal-queue-triggers"></a>Vnitřní fronty aktivační události
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 03/9/2018
 ms.author: ellacroi
-ms.openlocfilehash: d89fef56a9fdab799170ed1ccd3261470d66bf95
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 104ef98aac3e34e30a86854a0d759cf11106b55b
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414697"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45575292"
 ---
 # <a name="azure-marketplace-consulting-services"></a>Konzultační služby Azure Marketplace
 Konzultační služby na webu Azure Marketplace poskytuje partnerům Microsoftu má za cíl připojení zákazníků pomocí služeb pro podporu a rozšiřují jejich používání Azure. Na webu Azure Marketplace podporuje seznam nabídek konzultační služby od partnerů systému integrátor (SI) společnosti Microsoft. 
@@ -73,7 +73,7 @@ Další informace najdete v tématu [činnost prostřednictvím programu Microso
 Spuštění konzultační služby Azure Marketplace, bude publikovaný v konkrétní geografické oblasti. První spuštění bude: USA, Kanadě, Spojeném království a Austrálii. Katalogy pro jiné země, bude publikovaný po smysluplné číslo a přesvědčivé výběr nabídky služeb byly odeslané partnerů a schváleny společností Microsoft.
 
 ## <a name="how-to-register-for-consulting-services-in-azure-marketplace"></a>Jak se zaregistrovat pro konzultační služby na Azure Marketplace
-Začněte tím, že registrace konzultační služby s [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/sell/signup). Vydavatelé mohou na odkazovat [stát vydavatelem na webu Marketplace](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher), úplný seznam Kontrola požadavků na registraci. 
+Začněte tím, že registrace konzultační služby s [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/sell/signup). Vydavatelé mohou na odkazovat [stát vydavatelem na webu Marketplace](https://docs.microsoft.com/azure/marketplace/become-publisher), úplný seznam Kontrola požadavků na registraci. 
 
 **Co chcete očekávat po registraci** The Onboardingový tým vás bude kontaktovat do 1 – 3 pracovních dnů s uvítací e-mail, který bude obsahovat přihlašovací údaje pro váš portál partnerů cloudu (CPP). [Portál partnerů cloudu](https://cloudpartner.azure.com) je portál výpis nabídka, kde vydavatelé odesílat informacích o a odesílání. 
 
@@ -93,7 +93,7 @@ Před registrací můžete spustit shromažďování a příprava obsah, který 
 |Nastavení pro nové nabídky  |
 |---------|
 |Název (200 znaků) a popis (2000 znaků)    |
-|Možnosti     |
+|Kompetence     |
 |Dostupnost země/oblast     |
 |Doba trvání zapojení     |
 |Příslušné odvětví, kategorie a klíčová slova pro vyhledávání     |
@@ -150,7 +150,7 @@ Při kontrole nabízejí popisy a nabízejí souhrny, tým se vztahují následu
 |**Testování konceptu**    |    Srozumitelně vysvětlit, jaké změny engineering, technických artefaktů nebo jiné artefakty, které zákazník můžete očekávat, že jako výsledky ze strany     | Optimalizujte vaši nabídku souhrnu s nejvyšší klíčová slova optimalizace pro vyhledávací weby        |
 |**Seminář**    |   Zahrnout podrobné program denní, týdenní nebo měsíční, v závislosti na zvolené době trvání vaší nabídky. Srozumitelně vysvětlit studijních cílů nebo jiných podkladech jsou z vaší workshop     |   Optimalizujte vaši nabídku souhrnu s nejvyšší klíčová slova optimalizace vyhledávací web      |
 
-V rámci portál Cloud Partner, můžete přidat na váš výpis formátování s použitím [Markdownu](https://docs.microsoft.com/en-us/contribute/how-to-write-use-markdown). Toto je jednoduchý design jazyk, který vám pomůže přidat polština svůj výpis. 
+V rámci portál Cloud Partner, můžete přidat na váš výpis formátování s použitím [Markdownu](https://docs.microsoft.com/contribute/how-to-write-use-markdown). Toto je jednoduchý design jazyk, který vám pomůže přidat polština svůj výpis. 
 
 **Ukázka Markdownu poznámky**
 *   Přidat * na začátku a konce bloku kopírování – bez mezer, chcete-li vytvořit kurzíva (Ex: *obsah*)

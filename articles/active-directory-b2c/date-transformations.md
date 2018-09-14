@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 42090b8b55becc5e703e0e7180d0cbec0d48a3f4
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: ff96b9a63e7340788ef2474ce9934145c184e1e1
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381233"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542765"
 ---
 # <a name="date-claims-transformations"></a>Datum deklarace identity transformace
 
@@ -88,7 +88,7 @@ Volání ověření s vlastním potvrzením technický profil **neinteraktivní 
 
 ## <a name="convertdatetodatetimeclaim"></a>ConvertDateToDateTimeClaim
 
-Převede **datum** typu deklarace identity k **data a času** ClaimTpye. Transformace deklarací identity převede formát času a přičte 12:00:00 AM k datu.
+Převede **datum** typu deklarace identity k **data a času** typu deklarace identity. Transformace deklarací identity převede formát času a přičte 12:00:00 AM k datu.
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 | ---- | ----------------------- | --------- | ----- |

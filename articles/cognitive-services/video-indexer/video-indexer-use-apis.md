@@ -7,14 +7,14 @@ author: juliako
 manager: erikre
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 07/25/2018
+ms.date: 09/09/2018
 ms.author: juliako
-ms.openlocfilehash: 73359955861b88f2bc5ca297c32fa78c2632148c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: bd0f9e01257bec2d39ef0c8e13b68c4a7a13637d
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449463"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542917"
 ---
 # <a name="use-azure-video-indexer-api"></a>Použití Azure rozhraní Video Indexer API
 
@@ -23,23 +23,20 @@ ms.locfileid: "39449463"
 
 Video Indexer konsoliduje různých technologií audio a video umělé inteligence (AI) nabízené microsoftem v jedné integrované služby, což usnadňuje vývoj. Rozhraní API slouží k povolení, který vývojářům zaměřit se na používání technologie AI média bez starostí o škálování, globální přístup, dostupnost a spolehlivost cloudovou platformu. Rozhraní API můžete nahrát soubory, dostávat podrobné poznatky z videí, získání adres URL insight a player widgetů k vložení do vaší aplikace a další úlohy.
 
-Při vytváření účtu Video Indexer, můžete vybrat účet bezplatné zkušební verze (ve kterém získáte určitý počet minut zdarma indexování) nebo placenou variantu (Pokud nejste omezení kvóty). S bezplatnou zkušební verzi Video Indexer poskytuje až 600 minut zdarma indexování uživatelům webu a až 2 400 minut zdarma indexování uživatelům rozhraní API. S placenou variantu, vytvoříte účet služby Video Indexer, který je [připojené k vašemu předplatnému Azure a účet služby Azure Media Services](connect-to-azure.md). Platíte za minut indexovat, stejně jako účet Media související poplatky. 
+Při vytváření účtu Video Indexer, můžete vybrat účet bezplatné zkušební verze (ve kterém získáte určitý počet minut zdarma indexování) nebo placenou variantu (Pokud nejste omezení kvóty). S bezplatnou zkušební verzi Video Indexer poskytuje až 600 minut zdarma indexování uživatelům webu a až 2 400 minut zdarma indexování uživatelům rozhraní API. S placenou variantu, vytvoříte účet služby Video Indexer, který je [připojené k vašemu předplatnému Azure a účet služby Azure Media Services](connect-to-azure.md). Platíte za minut indexované stejně jako související poplatky za účet Azure Media Services. 
 
-Tento článek popisuje, jak vývojáři mohou využít výhod [Video Indexer API](https://api-portal.videoindexer.ai/). Podrobnější přehled služby Video Indexer, najdete v tématu [přehled](video-indexer-overview.md) článku.
+Tento článek popisuje, jak vývojáři mohou využít výhod [Video Indexer API](https://api-portal.videoindexer.ai/).
 
 ## <a name="subscribe-to-the-api"></a>Přihlaste se k rozhraní API odběru
 
-1. Přihlásit se.
-
-    Jak začít s vývojem pomocí funkce Video Indexer, musíte první přihlásit k [Video Indexer](https://api-portal.videoindexer.ai/) portálu. 
+1. Přihlaste se k [portál pro vývojáře Video Indexer](https://api-portal.videoindexer.ai/).
     
-    ![Registrace](./media/video-indexer-use-apis/video-indexer-api01.png)
+    ![Přihlášení](./media/video-indexer-use-apis/video-indexer-api01.png)
 
     > [!Important]
     > * Je nutné použít stejný zprostředkovatel, který jste použili při registraci pro Video Indexer.
     > * Osobní Google a Microsoft (outlook nebo živé) účty jde použít jenom pro účty. Účty připojené k Azure vyžadují služby Azure AD.
     > * Může existovat pouze jeden aktivní účet na e-mailu. Pokud se uživatel pokusí přihlásit pomocí user@gmail.com pro LinkedIn a potom s user@gmail.com pro Google pozdější zobrazí chybovou stránku, informacemi o tom uživatel již existuje.
-
 
 2. Přihlásit k odběru.
 
@@ -91,15 +88,15 @@ Použít s hodnotami popsanými v následující tabulce. **Param value** je hod
 
 Parametr ID účtu se vyžaduje u všech provozních volání rozhraní API. ID účtu je identifikátor GUID, který lze získat v jednom z následujících způsobů:
 
-* Použití portálu pro Video Indexer k získání ID účtu:
+* Použití **Video Indexer webu** k získání ID účtu:
 
-    1. Přihlaste se k [videoindexer](https://www.videoindexer.ai/).
+    1. Přejděte [Video Indexer](https://www.videoindexer.ai/) web a přihlaste se.
     2. Přejděte **nastavení** stránky.
     3. Zkopírujte ID účtu.
 
         ![ID účtu](./media/video-indexer-use-apis/account-id.png)
 
-* Použití rozhraní API prostřednictvím kódu programu získat ID účtu.
+* Použití **portál pro vývojáře Video Indexer** prostřednictvím kódu programu získat ID účtu.
 
     Použití [získat účty](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Accounts?) rozhraní API.
     
@@ -225,7 +222,5 @@ Debug.WriteLine(playerWidgetLink);
 ## <a name="next-steps"></a>Další postup
 
 [Zkontrolujte podrobnosti ve výstupu JSON](video-indexer-output-json.md).
-
-## <a name="see-also"></a>Další informace najdete v tématech
 
 [Video Indexer s přehledem](video-indexer-overview.md)

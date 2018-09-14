@@ -1,56 +1,84 @@
 ---
-title: Správa skupin v Azure AD, do kterých vaše skupina patří | Microsoft Docs
-description: Skupiny v Azure Active Directory můžou obsahovat jiné skupiny. Tady je postup, jak tato členství spravovat.
+title: Jak přidat nebo odebrat skupiny z jiné skupiny ve službě Azure Active Directory | Dokumentace Microsoftu
+description: Zjistěte, jak přidat nebo odebrat skupiny z jiné skupiny pomocí služby Azure Active Directory.
 services: active-directory
-documentationcenter: ''
 author: eross-msft
 manager: mtillman
-editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.component: fundamentals
-ms.topic: quickstart
-ms.date: 10/10/2017
+ms.topic: conceptual
+ms.date: 08/28/2018
 ms.author: lizross
 ms.custom: it-pro
 ms.reviewer: krbain
-ms.openlocfilehash: 8a71677ae3ceb5617f0a817a8eff438d5e3f2774
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
-ms.translationtype: HT
+ms.openlocfilehash: c28fe5ef226fac993fde221b16bfa875ba4845ca
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37860331"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579764"
 ---
-# <a name="manage-to-which-groups-a-group-belongs-in-your-azure-active-directory-tenant"></a>Správa skupin ve vašem tenantovi Azure Active Directory, do kterých vaše skupina patří
-Skupiny v Azure Active Directory můžou obsahovat jiné skupiny. Tady je postup, jak tato členství spravovat.
+# <a name="how-to-add-or-remove-a-group-from-another-group-using-azure-active-directory"></a>Postupy: Přidat nebo odebrat skupiny z jiné skupiny pomocí služby Azure Active Directory
+Tento článek vám umožní přidat a odebrat skupiny z jiné skupiny pomocí služby Azure Active Directory.
 
-## <a name="how-do-i-find-the-groups-of-which-my-group-is-a-member"></a>Jak zjistím, ve kterých skupinách má moje skupina členství?
-1. Přihlaste se k [centru pro správu Azure AD](https://aad.portal.azure.com) pomocí účtu, který má k adresáři oprávnění globálního správce.
-2. Vyberte **Uživatelé a skupiny**.
+>[!Note]
+>Pokud se snažíte odstranit nadřazené skupiny, přečtěte si téma [aktualizace nebo odstranění skupiny a její členy](active-directory-groups-delete-group.md).
 
-   ![Obrázek otevření uživatelů a skupin](./media/active-directory-groups-membership-azure-portal/search-user-management.png)
-1. Vyberte **Všechny skupiny**.
+## <a name="add-a-group-as-a-member-to-another-group"></a>Přidání skupiny jako člen do jiné skupiny
+Existující skupiny můžete přidat do jiné existující skupiny, vytvoření člena skupiny (podskupiny) a nadřazenou skupinu. Vlastnosti atributy a nadřazené skupiny, ušetříte čas konfigurační nastavení převezme skupina člena.
 
-   ![Obrázek výběru skupin](./media/active-directory-groups-membership-azure-portal/view-groups-blade.png)
-1. Vyberte skupinu.
-2. Vyberte **Členství ve skupinách**.
+### <a name="to-add-a-group-as-a-member-to-another-group"></a>Přidání skupiny jako člen do jiné skupiny
 
-   ![Obrázek otevření členství ve skupinách](./media/active-directory-groups-membership-azure-portal/group-membership-blade.png)
-1. Pokud chcete přidat členství vaší skupiny v jiné skupině, vyberte v okně **Skupina – Členství ve skupinách** příkaz **Přidat**.
-2. Vyberte skupinu v okně **Vybrat skupinu** a pak v dolní části okna vyberte tlačítko **Vybrat**. Skupinu nelze přidat do více skupin najednou. Položky v poli **Uživatel** se filtrují podle toho, jak se vaše zadání shoduje s jakoukoli částí jména uživatele nebo názvu zařízení. V tomto poli není možné používat žádné zástupné znaky.
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com) pomocí účtu globálního správce adresáře.
 
-   ![Přidání členství ve skupinách](./media/active-directory-groups-membership-azure-portal/add-group-membership.png)
-8. Pokud chcete odebrat členství vaší skupiny v jiné skupině, vyberte danou skupinu v okně **Skupina – Členství ve skupinách**.
-9. Vyberte příkaz **Odebrat** a po zobrazení výzvy tuto volbu potvrďte.
+2. Vyberte **Azure Active Directory**a pak vyberte **skupiny**.
 
-   ![Příkaz pro odebrání členství](./media/active-directory-groups-membership-azure-portal/remove-group-membership.png)
-10. Až změny členství vaší skupiny v jiných skupinách dokončíte, vyberte **Uložit**.
+3. Na **skupiny – všechny skupiny** stránky, vyhledejte a vyberte skupinu, která se stane členem jiné skupiny. Pro toto cvičení používáme **zásady MDM - západní** skupiny.
+
+    >[!Note]
+    >Vaši skupinu můžete přidat jako člena pouze do jedné skupiny najednou. Kromě toho **vybrat skupinu** pole filtry pro zobrazení na základě porovnání svou položku do libovolné části názvu uživatele nebo zařízení. Zástupné znaky nejsou podporovány.
+
+    ![Vybraná skupina skupiny – všechny skupiny stránka zásadám MDM. – západ](media/active-directory-groups-membership-azure-portal/group-all-groups-screen.png)
+
+4. Na **MDM zásad - západ - členství ve skupinách** stránce **členství ve skupinách**vyberte **přidat**, vyhledejte skupinu, kterou chcete, aby vaše skupina členem, a klikněte na tlačítko  **Vyberte**. Pro toto cvičení používáme **zásady MDM – všechny organizace** skupiny.
+
+    **Zásady MDM - západní** skupiny je teď členem **zásady MDM – všechny organizace** skupina dědí všechny vlastnosti a konfigurace zásad MDM – všechny skupiny organizace.
+
+    ![Členství ve skupině s vytvořením přidání skupiny do jiné skupiny](media/active-directory-groups-membership-azure-portal/add-group-membership.png)
+
+5. Zkontrolujte **MDM zásad - západ - členství ve skupinách** stránku, abyste zobrazili skupina a člen relace.
+
+    ![MDM - západ - zásad skupiny ve skupinách stránky zobrazující nadřazené skupiny](media/active-directory-groups-membership-azure-portal/group-membership-blade.png)
+
+6. Podrobnější přehled vztahů skupiny a členů, vyberte název skupiny (**zásady MDM – všechny organizace**) a podívejte se na **zásady MDM - západní** stránce Podrobnosti.
+
+    ![Skupiny členství stránky zobrazující člena a podrobnosti o skupině](media/active-directory-groups-membership-azure-portal/group-membership-review.png)
+
+## <a name="remove-a-member-group-from-another-group"></a>Odebrání člena skupiny z jiné skupiny
+Stávající člen skupiny můžete odebrat z jiné skupiny. Ale odebrání členství taky odebere všechny zděděné atributy a vlastnosti pro vaše uživatele.
+
+### <a name="to-remove-a-member-group-from-another-group"></a>Odebrání člena skupiny z jiné skupiny
+1. Na **skupiny – všechny skupiny** stránky, vyhledejte a vyberte skupinu, která se má odebrat jako člena jiné skupiny. Pro toto cvičení znovu používáme **zásady MDM - západní** skupiny.
+
+2. Na **zásady MDM – přehled – západ** stránce **členství ve skupinách**.
+
+    ![Zásady MDM – stránka s přehledem – západ](media/active-directory-groups-membership-azure-portal/group-membership-overview.png)
+
+3. Vyberte **zásady MDM – všechny organizace** skupinu **MDM zásad - západ - členství ve skupinách** stránce a pak vyberte **odebrat** z **zásady MDM - západní** stránce Podrobnosti.
+
+    ![Skupiny členství stránky zobrazující člena a podrobnosti o skupině](media/active-directory-groups-membership-azure-portal/group-membership-remove.png)
+
 
 ## <a name="additional-information"></a>Další informace
 Následující články poskytují další informace o službě Azure Active Directory.
 
-* [Zobrazení existujících skupin](active-directory-groups-view-azure-portal.md)
-* [Vytvoření nové skupiny a přidání členů](active-directory-groups-create-azure-portal.md)
-* [Správa nastavení skupiny](active-directory-groups-settings-azure-portal.md)
-* [Správa členů skupiny](active-directory-groups-members-azure-portal.md)
-* [Správa dynamických pravidel pro uživatele ve skupině](../users-groups-roles/groups-dynamic-membership.md)
+- [Zobrazení skupin a členů](active-directory-groups-view-azure-portal.md)
+
+- [Vytvoření základní skupiny a přidání členů](active-directory-groups-create-azure-portal.md)
+
+- [Přidat nebo odebrat členy ze skupiny](active-directory-groups-members-azure-portal.md)
+
+- [Upravit nastavení skupiny](active-directory-groups-settings-azure-portal.md)
+
+- [Přiřazení licencí uživatelům ve skupině](../users-groups-roles/licensing-groups-assign.md)

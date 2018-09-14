@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: ellacroi
-ms.openlocfilehash: a85cd5287f6947ec17dc19291a70d6dd081e1827
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: b64a35f6b7422b1e24812c1041305dab2ebad6c0
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39035856"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45578493"
 ---
 # <a name="determine-your-publishing-option"></a>Určení publikování možnost
 Přímo na požadavky zakládající nárok i na webu marketplace výhody GTM souvisí možnost publikování, který jste vybrali pro vaši nabídku. Důležitější je výběr publikování možnost a typ nabídky na portál Cloud Partner definuje interakci uživatele v rámci vaší nabídky na webu marketplace.
@@ -80,7 +80,7 @@ Než vytvoříte nabídku, musíte zvolit typ nabídky. Typ nabídky bude odpov�
 
 Typ jednoho nabídky může být nakonfigurována jinak v portál partnerů cloudu umožňuje různé možnosti publikování, volání k akci, zřizování nebo ceny. Možnost publikování a konfiguraci typu nabídky se také zarovnat na nabídku nárok a technické požadavky. 
 
-Nezapomeňte zkontrolovat storu a nabízejí požadavky zakládající nárok typ v tomto [příručce pro vydavatele](https://docs.microsoft.com/en-us/azure/marketplace/marketplace-publishers-guide) a technické požadavky na publikování před vytvořením vaší nabídky.
+Nezapomeňte zkontrolovat storu a nabízejí požadavky zakládající nárok typ v tomto [příručce pro vydavatele](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) a technické požadavky na publikování před vytvořením vaší nabídky.
 
 ## <a name="next-steps"></a>Další kroky
 

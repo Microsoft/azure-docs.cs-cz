@@ -1,5 +1,5 @@
 ---
-title: Bezpečné připojení k back-endové prostředky ze služby App Service Environment
+title: Bezpečné připojení k back-Endovým prostředkům ze služby App Service Environment
 description: Další informace o tom, jak bezpečně připojit back-endové prostředky ze služby App Service Environment.
 services: app-service
 documentationcenter: ''
@@ -14,87 +14,87 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2016
 ms.author: stefsch
-ms.openlocfilehash: 2fb13a4dac923a19dc12910cb1b78e909b93abe1
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 1732e6778febac60a25da74c330cb3d3da94154d
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36317567"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45580038"
 ---
-# <a name="securely-connecting-to-backend-resources-from-an-app-service-environment"></a>Bezpečné připojení k back-endové prostředky ze služby App Service Environment
+# <a name="securely-connecting-to-backend-resources-from-an-app-service-environment"></a>Bezpečné připojení k back-Endovým prostředkům ze služby App Service Environment
 ## <a name="overview"></a>Přehled
-Vzhledem k tomu, že služby App Service Environment se vždy vytvoří v **buď** virtuální síť Azure Resource Manager **nebo** modelu nasazení classic [virtuální sítě] [ virtualnetwork], odchozí připojení ze služby App Service Environment jiných back-endové prostředky můžete toku výhradně přes virtuální síť.  Nedávné změny provedené v června 2016 ASEs také lze nasadit do virtuálních sítí, které používají rozsahů veřejných adres nebo RFC1918 adresní prostory (tj. privátní adresy).  
+Protože služba App Service Environment se vždy vytvářejí ve **buď** virtuální sítí Azure Resource Manageru **nebo** modelu nasazení classic [virtuální sítě] [ virtualnetwork], odchozí připojení ze služby App Service Environment do dalších back-endovým prostředkům může probíhat výhradně prostřednictvím virtuální sítě.  Nedávné změny provedené v červnu 2016 je možné také nasadit služby ase do virtuální sítě, které používají rozsahy adres veřejné nebo definice RFC1918 adresní prostory (tj. privátní adresy).  
 
-Například může být SQL Server běžící na clusteru s podporou virtuálních počítačů s port 1433 uzamčené.  Koncový bod může být ACLd pouze povolit přístup z jiných zdrojů ve stejné virtuální síti.  
+Například může být SQL Server běžící v clusteru virtuálních počítačů s port 1433 uzamčen.  Koncový bod může být ACLd k povolení přístupu jenom z dalších prostředků ve stejné virtuální síti.  
 
-Další příklad citlivé koncových bodů může spustit místně a připojit k Azure přes buď [Site-to-Site] [ SiteToSite] nebo [Azure ExpressRoute] [ ExpressRoute] připojení.  V důsledku toho pouze prostředky ve virtuálních sítích, které jsou připojené k Site-to-Site nebo ExpressRoute tunely bude mít přístup k místní koncové body.
+Další příklad – citlivých koncových bodů může spustit v místním a být připojení k Azure prostřednictvím [Site-to-Site] [ SiteToSite] nebo [Azure ExpressRoute] [ ExpressRoute] připojení.  Jen k prostředkům ve virtuální sítě připojené k Site-to-Site nebo ExpressRoute tunely v důsledku toho budou mít přístup k místní koncové body.
 
-Pro všechny z těchto scénářů bude aplikace běžící na služby App Service Environment navázat zabezpečené připojení k různým serverům a prostředky.  Odchozí provoz z aplikace běžící ve službě App Service Environment privátní koncových bodů ve stejné virtuální síti (nebo připojené ke stejné virtuální síti), bude pouze toku přes virtuální síť.  Odchozí přenosy na privátní koncové body nebude toku prostřednictvím veřejného Internetu.
+U všech těchto scénářích aplikace běžící na App Service Environment bude možné pro zabezpečené připojení k různým servery a prostředky.  Odchozí provoz z aplikací běžících ve službě App Service Environment do privátní koncových bodů ve stejné virtuální síti (nebo připojeny ke stejné virtuální síti), bude pouze flow přes virtuální síť.  Odchozí provoz do koncových bodů privátní nebude flow přes veřejný Internet.
 
-Jeden přímý přístup paměti platí pro odchozí provoz ze služby App Service Environment do koncových bodů v rámci virtuální sítě.  Prostředí App Service se nemůže připojit koncové body virtuálních počítačů, které jsou umístěné v **stejné** podsíti jako App Service Environment.  Za normálních okolností nemělo by se jednat problém, dokud prostředí App Service jsou nasazeny do podsítě vyhrazené pro výhradní použití App Service Environment.
+Jeden výstrahou platí pro odchozí provoz ze služby App Service Environment do koncových bodů v rámci virtuální sítě.  App Service Environment nemůže kontaktovat koncové body virtuálních počítačů umístěných v **stejné** podsítě jako služba App Service Environment.  To obvykle by neměl být problém tak dlouho, dokud App Service Environment se nasazuje do podsítě vyhrazené pro výhradní použití App Service Environment.
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## <a name="outbound-connectivity-and-dns-requirements"></a>Odchozí připojení a požadavky na DNS
-Pro služby App Service Environment ke správnému fungování vyžaduje odchozí přístup k různým koncové body. Úplný seznam externí koncové body používané App Service Environment je v části "Vyžaduje připojení k síti" [konfiguraci sítě pro ExpressRoute](app-service-app-service-environment-network-configuration-expressroute.md#required-network-connectivity) článku.
+Pro službu App Service Environment fungovala správně vyžaduje odchozí přístup do různých koncových bodů. Úplný seznam externích koncových bodů použitých ve službě ASE je v části "Vyžaduje připojení k síti" [konfiguraci sítě pro ExpressRoute](app-service-app-service-environment-network-configuration-expressroute.md#required-network-connectivity) článku.
 
-Prostředí služby App Service vyžaduje platnou konfiguraci pro virtuální síť infrastruktury služby DNS.  Pokud z nějakého důvodu dojde ke změně konfigurace DNS po vytvoření služby App Service Environment, vývojáři vynutit služby App Service Environment načíst novou konfiguraci DNS.  Aktivuje restartu postupného prostředí pomocí ikonu "Restartovat" se nachází v horní části okna Správa služby App Service Environment na portálu způsobí, že prostředí tak, aby se vyzvedávat novou konfiguraci DNS.
+Služby App Service Environment vyžaduje platnou konfiguraci pro virtuální síť infrastruktury služby DNS.  Pokud z nějakého důvodu dojde ke změně konfigurace DNS po vytvoření služby App Service Environment, vývojáři můžete vynutit službu App Service Environment, aby se získaly novou konfiguraci DNS.  Aktivuje se zajištěním provozu restartování prostředí pomocí ikony "Restartovat" umístěný v horní části okna správy služby App Service Environment na portálu způsobí, že prostředí tak, aby získaly novou konfiguraci DNS.
 
-Dále je doporučeno, aby žádné vlastní servery DNS na virtuální sítě se instalační program dopředu před vytvořením služby App Service Environment.  Pokud je při vytváření služby App Service Environment se změnila konfigurace DNS virtuální sítě, které způsobí selhání procesu vytvoření služby App Service Environment.  V souvislosti podobnou Pokud na druhém konci brány VPN existuje vlastního serveru DNS a serveru DNS je nedostupná nebo není k dispozici, procesu vytváření služby App Service Environment se také nezdaří.
+Doporučuje se také, že všechny vlastní servery DNS ve virtuální síti se instalační program předem před vytvořením služby App Service Environment.  Pokud při vytváření služby App Service Environment se změnila konfigurace DNS virtuální sítě, které způsobí selhání procesu vytvoření služby App Service Environment.  V podobných souvislosti Pokud vlastní server DNS existuje na druhém konci bránu sítě VPN a DNS server je nedostupná nebo není k dispozici, proces vytváření služby App Service Environment se také nezdaří.
 
-## <a name="connecting-to-a-sql-server"></a>Připojení k serveru SQL
-Obvyklé konfigurace systému SQL Server má koncový bod naslouchání na portu 1433:
+## <a name="connecting-to-a-sql-server"></a>Připojení k SQL serveru
+Běžné konfigurace systému SQL Server má naslouchat na portu 1433 koncový bod:
 
-![Koncový bod serveru SQL][SqlServerEndpoint]
+![Koncový bod SQL serveru][SqlServerEndpoint]
 
-Existují dva přístupy pro provoz směřující do tohoto koncového bodu:
+Existují dvě metody pro omezujete provoz směřující do tohoto koncového bodu:
 
 * [Sítě seznamy řízení přístupu][NetworkAccessControlLists] (sítě ACL)
 * [Skupiny zabezpečení sítě][NetworkSecurityGroups]
 
 ## <a name="restricting-access-with-a-network-acl"></a>Omezení přístupu k síti seznamu ACL
-Port 1433 lze zabezpečit pomocí seznamu řízení přístupu síti.  V příkladu níže povolených programů klienta adresy pocházející z uvnitř virtuální sítě a blokuje přístup pro všechny ostatní klienty.
+Port 1433 je možné zabezpečit pomocí seznamu řízení přístupu síť.  V příkladu níže klienta seznamů povolených adres pocházející z ve virtuální síti a blokuje přístup na všechny ostatní klienty.
 
 ![Příklad seznamu řízení přístupu sítě][NetworkAccessControlListExample]
 
-Všechny aplikace běžící v App Service Environment ve stejné virtuální síti jako SQL Server bude moci připojit k instanci SQL serveru pomocí **interní virtuální síť** IP adresu pro virtuální počítač systému SQL Server.  
+Všechny aplikace spuštěné ve službě App Service Environment ve stejné virtuální síti jako SQL Server bude moct připojit k instanci systému SQL Server pomocí **interní virtuální síti** IP adresu pro virtuální počítač s SQL serverem.  
 
-Příklad připojovacího řetězce níže odkazuje na SQL Server pomocí jeho privátní IP adresy.
+Příklad připojovacího řetězce následující odkazuje na SQL serveru pomocí jeho privátní IP adresu.
 
     Server=tcp:10.0.1.6;Database=MyDatabase;User ID=MyUser;Password=PasswordHere;provider=System.Data.SqlClient
 
-I když virtuální počítač obsahuje také veřejný koncový bod, pokusy o připojení pomocí veřejnou IP adresu se odmítne kvůli sítě ACL. 
+I když má virtuální počítač také veřejný koncový bod, pokusy o připojení pomocí veřejné IP adresy odmítne kvůli sítě ACL. 
 
-## <a name="restricting-access-with-a-network-security-group"></a>Omezení přístupu ke skupině zabezpečení sítě
-Alternativní způsob pro přístup k zabezpečení je skupina zabezpečení sítě.  Skupiny zabezpečení sítě můžete použít pro jednotlivé virtuální počítače, nebo podsíť obsahující virtuální počítače.
+## <a name="restricting-access-with-a-network-security-group"></a>Omezení přístupu se skupinou zabezpečení sítě
+Alternativním přístupem k zabezpečení přístupu se skupina zabezpečení sítě.  Skupiny zabezpečení sítě můžete použít k jednotlivým virtuální počítačům nebo podsíť obsahující virtuální počítače.
 
-Nejprve je potřeba vytvořit skupinu zabezpečení sítě:
+Skupina zabezpečení sítě je nejprve potřeba vytvořit:
 
     New-AzureNetworkSecurityGroup -Name "testNSGexample" -Location "South Central US" -Label "Example network security group for an app service environment"
 
-Omezení přístupu k jenom interní provoz VNet je velmi jednoduchý ke skupině zabezpečení sítě.  Výchozí pravidla ve skupině zabezpečení sítě povolí přístup pouze z jiných klientů sítě ve stejné virtuální síti.
+Omezení přístupu k jen vnitřní provoz virtuální sítě je velmi jednoduchý se skupinou zabezpečení sítě.  Výchozí pravidla skupiny zabezpečení sítě povolení přístupu jenom z jiných klientů sítě ve stejné virtuální síti.
 
-V důsledku zablokujete přístup k systému SQL Server je jednoduché, použití skupinu zabezpečení sítě s jeho výchozí pravidla buď na virtuální počítače s SQL serverem, nebo podsíť obsahující virtuální počítače.
+V důsledku zablokujete přístup k systému SQL Server je jednoduché, stačí použít skupinu zabezpečení sítě s jeho výchozí pravidla buď na virtuální počítače s SQL serverem nebo podsíť obsahující virtuální počítače.
 
 Následující ukázka platí skupinu zabezpečení sítě pro podsíť obsahující:
 
     Get-AzureNetworkSecurityGroup -Name "testNSGExample" | Set-AzureNetworkSecurityGroupToSubnet -VirtualNetworkName 'testVNet' -SubnetName 'Subnet-1'
 
-Konečný výsledek je sada pravidel zabezpečení, která blokují externí přístup při povolení přístupu interní virtuální sítě:
+Konečný výsledek je sada pravidel zabezpečení, která blokovat externí přístup zároveň vám umožní přístup k interní virtuální síť:
 
 ![Výchozí pravidla zabezpečení sítě][DefaultNetworkSecurityRules]
 
 ## <a name="getting-started"></a>Začínáme
-Chcete-li začít pracovat s prostředí App Service, přečtěte si téma [Úvod do služby App Service Environment][IntroToAppServiceEnvironment]
+Začínáme s App Service Environment najdete v článku [Úvod do služby App Service Environment][IntroToAppServiceEnvironment]
 
-Podrobnosti ohledně ovládání příchozí přenosy do služby App Service Environment najdete v tématu [řízení příchozí přenosy do služby App Service Environment][ControlInboundASE]
+Podrobnosti o řízení příchozího provozu do služby App Service Environment, naleznete v tématu [řízení příchozího provozu do služby App Service Environment][ControlInboundASE]
 
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]
 
 <!-- LINKS -->
 [virtualnetwork]: https://azure.microsoft.com/documentation/articles/virtual-networks-faq/
 [ControlInboundTraffic]:  app-service-app-service-environment-control-inbound-traffic.md
-[SiteToSite]: https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-multi-site
+[SiteToSite]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-multi-site
 [ExpressRoute]: http://azure.microsoft.com/services/expressroute/
 [NetworkAccessControlLists]: https://azure.microsoft.com/documentation/articles/virtual-networks-acl/
 [NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/

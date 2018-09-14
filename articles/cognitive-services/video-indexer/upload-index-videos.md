@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: juliako
-ms.openlocfilehash: ac9d3f8fd10a3b65a2af2999b8c7ade7965de912
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 3cf5a32d95b028664f29b82b14e2294d58ae9925
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43664441"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579988"
 ---
 # <a name="upload-and-index-your-videos"></a>Nahrání a indexovat vaše videa  
 
@@ -33,7 +33,7 @@ Tento článek také popisuje některé z parametrů, můžete nastavit na rozhr
 ## <a name="uploading-considerations"></a>Důležité informace o nahrávání
     
 - Při nahrávání videa podle zadané adresy URL (upřednostňováno) koncového bodu musí být zabezpečené pomocí protokolu TLS 1.2 (a novější)
-- Možnost bajtové pole je omezena na 4GB a vyprší po 30 min
+- Možnost bajtové pole je omezená na 2GB a vyprší po 30 min
 - Zadaná adresa URL v `videoURL` param musí být zakódovaný, aby
 
 ## <a name="configurations-and-params"></a>Konfigurace a parametry

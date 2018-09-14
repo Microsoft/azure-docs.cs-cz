@@ -1,6 +1,6 @@
 ---
-title: Úvod do aplikace služby prostředí v1
-description: Další informace o funkci v1 App Service Environment, která poskytuje jednotek škálování zabezpečené, připojený k virtuální síti, vyhrazené pro spuštění všech aplikací.
+title: Úvod do služby App Service Environment v1
+description: Další informace o funkci App Service Environment v1, která poskytuje zabezpečené, připojené k virtuální síti, vyhrazené škálovací jednotky pro všechny vaše aplikace.
 services: app-service
 documentationcenter: ''
 author: stefsch
@@ -14,73 +14,73 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
-ms.openlocfilehash: ca30818b015e95594d3b2c9861d98f24174c0aea
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: a2efb3177a97aa362a269ab3a00239a0d391f026
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36318159"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574687"
 ---
-# <a name="introduction-to-app-service-environment-v1"></a>Úvod do aplikace služby prostředí v1
+# <a name="introduction-to-app-service-environment-v1"></a>Úvod do služby App Service Environment v1
 
 > [!NOTE]
-> Tento článek je o v1 App Service Environment.  Existuje novější verze App Service Environment, který je jednodušší použít a běží na výkonnější infrastruktury. Další informace o nové verzi spuštění s [Úvod do služby App Service Environment](intro.md).
+> Tento článek je o App Service Environment v1.  Existuje novější verze služby App Service Environment, která se snadněji používá a běží na výkonnější infrastruktuře. Další informace o nové verzi spuštění s [Úvod do služby App Service Environment](intro.md).
 > 
 
 ## <a name="overview"></a>Přehled
-Služby App Service Environment je [Premium] [ PremiumTier] služby možnost plánu [Azure App Service](../app-service-web-overview.md) poskytuje plně izolovaném a vyhrazeném prostředí pro zabezpečené spouštění Aplikace Azure App Service ve velkém rozsahu, včetně webových aplikací, mobilní aplikace a aplikace API.  
+Služby App Service Environment je [Premium] [ PremiumTier] služeb možnost plánu [služby Azure App Service](../app-service-web-overview.md) , která poskytuje plně izolované a vyhrazené prostředí pro zabezpečené spouštění Aplikace Azure App Service ve velkém měřítku, včetně Web Apps, Mobile Apps a API Apps.  
 
-Služby App Service Environment jsou ideální pro aplikační procesy vyžadující:
+Služby App Service Environment jsou ideální pro úlohy aplikací vyžadující:
 
-* Velmi velký rozsah
-* Izolace a bezpečný přístup
+* Velmi velké měřítko
+* Izolace a bezpečný přístup k síti
 
-Zákazníci vytvářet více prostředí App Service v rámci jedné oblasti Azure, a také nad několika oblastmi Azure.  Tím je ideální pro vodorovně škálování vrstvy aplikace bez stavu na podporu vysoké zatížení RPS prostředí App Service.
+Zákazníci tak můžou vytvářet více prostředí App Service v rámci jedné oblasti Azure, stejně jako ve víc oblastech Azure.  Díky tomu je prostředí App Service ideální pro horizontální škálování bez stavu aplikačních vrstev vysokou náročných úloh RPS.
 
-Služby App Service Environment jsou izolované spouštění jenom jednoho zákazníka aplikací a vždy nasazených do virtuální sítě.  Zákazníci mají jemně odstupňovanou kontrolu nad obě aplikace příchozí a odchozí síťový provoz a aplikace může vytvořit vysokorychlostní zabezpečené připojení přes virtuální sítě k firemním prostředkům místně.
+Služby App Service Environment jsou izolované ke spouštění jenom aplikace jednoho zákazníka a vždycky jsou nasazené do virtuální sítě.  Zákazníci mají podrobnou kontrolu nad síťovými přenosy v obou vstupní a výstupní aplikace a aplikace můžete vytvářet vysokorychlostní zabezpečená připojení prostřednictvím virtuálních sítí a místním podnikovým prostředkům.
 
-Přehled o tom, jak prostředí App Service povolit velkém rozsahu a zabezpečit přístup k síti, najdete v článku [podrobné informace AzureCon] [ AzureConDeepDive] na prostředí App Service!
+Přehled toho, jak služby App Service Environment povolit vysokou škálovatelností a zabezpečený přístup k síti, najdete v článku [konference Azurecon] [ AzureConDeepDive] v prostředích App Service!
 
-Přímý informace na vodorovně škálování pomocí několika prostředí App Service najdete v článku o tom, jak instalace [geograficky distribuovaná aplikace nároků][GeodistributedAppFootprint].
+Podrobně nyní na horizontální škálování, použití více App Service Environment najdete v článku o tom, jak nastavení [nároky na geografické distribuce aplikace][GeodistributedAppFootprint].
 
-Informace o tom, jak byla nakonfigurována Architektura zabezpečení uvedené v AzureCon podrobné informace, najdete v článku na implementaci [Architektura zabezpečení na základě](app-service-app-service-environment-layered-security.md) s prostředí App Service.
+Konfiguraci architektury zabezpečení v konference Azurecon najdete v článku o implementaci [vrstvy architektury zabezpečení](app-service-app-service-environment-layered-security.md) s App Service Environment.
 
-Aplikace běžící v prostředí App Service může mít svůj přístup závislé na nadřazený zařízení, jako jsou brány firewall systému webové aplikace (firewall webových aplikací).  V článku na [konfigurace firewall webových aplikací pro prostředí App Service](app-service-app-service-environment-web-application-firewall.md) popisuje tento scénář. 
+Aplikace běžící na App Service Environment může mít přístup chráněný branami upstreamovými zařízeními, jako jsou brány firewall webových aplikací (WAF).  V článku věnovaném [konfigurace brány WAF pro služby App Service Environment](app-service-app-service-environment-web-application-firewall.md) popisuje tento scénář. 
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../../includes/app-service-web-to-api-and-mobile.md)]
 
-## <a name="dedicated-compute-resources"></a>Vyhrazený výpočetní prostředky
-Všechny výpočetní prostředky ve službě App Service Environment jsou vyhrazené výhradně pro v rámci jednoho předplatného a služby App Service Environment se dá nakonfigurovat s až padesát (50) výpočetní prostředky pro výhradní použití jedné aplikace.
+## <a name="dedicated-compute-resources"></a>Vyhrazené výpočetní prostředky
+Všechny výpočetní prostředky ve službě App Service Environment je vyhrazená jenom pro jedno předplatné a služby App Service Environment se dá nakonfigurovat s až 50 (50) výpočetních prostředků pro výhradní použití jedné aplikace.
 
-Služby App Service Environment se skládá z front-endu výpočetní fondu zdrojů, jakož i fondy jednu až tři pracovní výpočetních prostředků. 
+Služby App Service Environment se skládá z front-endu výpočty fondu zdrojů, jakož i fondy prostředků výpočetní jedné do tří pracovních procesů. 
 
-Front-endu fond obsahuje výpočetní prostředky zodpovědná za ukončení protokolu SSL jako dobře automatické vyvažování zátěže požadavků aplikace v rámci služby App Service Environment. 
+Front-endový fond obsahuje výpočetních prostředků za ukončení protokolu SSL jako a automatické vyrovnávání zatížení požadavků aplikací ve službě App Service Environment. 
 
-Každý pracovní fond obsahuje výpočetní prostředky přidělené [plány služby App Service][AppServicePlan], který naopak obsahovat jeden nebo více aplikacemi Azure App Service.  Vzhledem k tomu, že ve službě App Service Environment může být až tři fondy různých pracovních procesů, máte možnost vybrat různé výpočetní prostředky pro každý fond pracovních procesů.  
+Každý fond pracovních procesů obsahuje výpočetní prostředky přidělené [plány služby App Service][AppServicePlan], které pak obsahovat jednu nebo víc aplikací Azure App Service.  Vzhledem k tomu, že ve službě App Service Environment může být až tři fondy jinému pracovnímu procesu, budete mít volnost ve výběru různých výpočetních prostředků pro každý fond pracovních procesů.  
 
-Například tímto způsobem lze vytvořit jeden fond pracovních procesů s méně výkonná výpočetní prostředky pro plány služby App Service určený pro vývoj nebo testování aplikací.  Fond pracovních procesů druhý (nebo i třetí) může použít výkonnější výpočetní prostředky, které jsou určené pro plány služby App Service spouští aplikace produkční.
+Například to umožňuje vytvořit jeden fond pracovních procesů s menším výpočetní prostředky pro plány služby App Service určený pro vývojové nebo testovací aplikace.  Fond pracovních procesů druhý (nebo dokonce třetí) použít výkonnější výpočetní prostředky, které jsou určené pro plány služby App Service spouštění produkčních aplikací.
 
-Další informace o objemu výpočetní prostředky, které jsou k dispozici pro fondy front-endu a pracovního procesu, najdete v části [postup konfigurace služby App Service Environment][HowToConfigureanAppServiceEnvironment].  
+Další podrobnosti o množství výpočetních prostředků dostupných pro fondy front-endu a pracovního procesu najdete v tématu [konfigurace služby App Service Environment][HowToConfigureanAppServiceEnvironment].  
 
-Podrobné informace o dostupných výpočetních prostředků velikosti podporované ve službě App Service Environment [App Service – ceny] [ AppServicePricing] stránky a projděte si dostupné možnosti pro prostředí App Service v Cenová úroveň Premium.
+Podrobné informace o dostupných výpočetních prostředků velikosti podporované ve službě App Service Environment [App Service – ceny] [ AppServicePricing] stránce a projděte si dostupné možnosti pro App Service Environment v Cenovou úroveň Premium.
 
 ## <a name="virtual-network-support"></a>Podpora virtuální sítě
-Služby App Service Environment se dají vytvářet v **buď** virtuální síť Azure Resource Manager **nebo** virtuální síť modelu nasazení classic ([Další informace o virtuálních sítí] [MoreInfoOnVirtualNetworks]).  Vzhledem k tomu, že služby App Service Environment vždy existuje ve virtuální síti a přesněji v podsíti virtuální sítě, můžete využít funkce zabezpečení virtuálních sítí k řízení i příchozí a odchozí síťovou komunikaci.  
+Služby App Service Environment je možné vytvořit v **buď** virtuální sítí Azure Resource Manageru **nebo** virtuální síť modelu nasazení classic ([Další informace o virtuálních sítích] [MoreInfoOnVirtualNetworks]).  Protože služba App Service Environment vždy existuje ve virtuální síti a přesněji v rámci podsítě virtuální sítě, můžete využívat funkce zabezpečení virtuální sítě k řízení i příchozí a odchozí síťovou komunikaci.  
 
-Služby App Service Environment může být buď internetové s veřejnou IP adresu, nebo interní, kterým čelí jenom adresu Azure vyrovnávání interní zatížení (ILB).
+Služby App Service Environment může být buď internetového s použitím veřejné IP adresy nebo interní směřuje pouze adresy Azure nástroje pro vyrovnávání interní zatížení (ILB).
 
-Můžete použít [skupin zabezpečení sítě] [ NetworkSecurityGroups] omezit příchozí síťovou komunikaci na podsíť, které se nachází služby App Service Environment.  To umožňuje spouštět aplikace za nadřazeného zařízení a služeb, jako jsou brány firewall webových aplikací a poskytovatelů SaaS sítě.
+Můžete použít [skupiny zabezpečení sítě] [ NetworkSecurityGroups] omezit příchozí síťovou komunikaci na podsíť, ve které se nachází služby App Service Environment.  To umožňuje spouštět aplikace za upstreamovými zařízeními a službami, jako jsou brány firewall webových aplikací a síťoví poskytovatelé SaaS.
 
-Aplikace také často potřebují přístup k firemním prostředkům, jako jsou třeba interní databáze a webové služby.  Běžně se provést tyto koncové body k dispozici pouze pro interní síťový provoz v rámci virtuální sítě Azure.  Jakmile služby App Service Environment se připojí ke stejné virtuální síti jako interní služby, aplikace běžící v prostředí k nim přístup, včetně koncových bodů, které jsou dostupné prostřednictvím [Site-to-Site] [ SiteToSite] a [Azure ExpressRoute] [ ExpressRoute] připojení.
+Aplikace také často potřebují přístup k firemním prostředkům, jako jsou třeba interní databáze a webové služby.  Běžným přístupem je, aby tyto koncové body k dispozici pouze pro interní síťový provoz směřující do služby Azure virtual network.  Jakmile App Service Environment je připojený ke stejné virtuální síti jako interní služby, aplikace běžící v prostředí můžete k nim přístup, včetně koncových bodů, které jsou dostupné prostřednictvím [Site-to-Site] [ SiteToSite] a [Azure ExpressRoute] [ ExpressRoute] připojení.
 
-Pro další informace o tom, jak prostředí App Service práci s virtuálními sítěmi a místními sítěmi najdete v následujících článcích na [síťovou architekturu][NetworkArchitectureOverview], [řízení příchozí Provoz][ControllingInboundTraffic], a [bezpečně připojování k back-EndY][SecurelyConnectingToBackends]. 
+Pro další informace o fungování služby App Service Environment s virtuálními sítěmi a místními sítěmi najdete v následujících článcích na [Síťová architektura][NetworkArchitectureOverview], [řízení příchozí Provoz][ControllingInboundTraffic], a [zabezpečené připojení k back-EndY][SecurelyConnectingToBackends]. 
 
 ## <a name="getting-started"></a>Začínáme
-Chcete-li začít pracovat s prostředí App Service, přečtěte si téma [jak k vytvoření služby App Service Environment][HowToCreateAnAppServiceEnvironment]
+Začínáme s App Service Environment najdete v článku [jak k vytvoření služby App Service Environment][HowToCreateAnAppServiceEnvironment]
 
-Přehled architektury sítě služby App Service Environment, najdete [přehled architektury sítě] [ NetworkArchitectureOverview] článku.
+Přehled architektury sítě služby App Service Environment, najdete v článku [přehled architektury sítě] [ NetworkArchitectureOverview] článku.
 
-Podrobné informace o používání služby App Service Environment se službou ExpressRoute, najdete v následujícím článku na [Express Route a prostředí App Service][NetworkConfigDetailsForExpressRoute].
+Podrobnosti o používání služby App Service Environment se službou ExpressRoute, najdete v následujícím článku na [Express Route a App Service Environment][NetworkConfigDetailsForExpressRoute].
 
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]
 
@@ -93,7 +93,7 @@ Podrobné informace o používání služby App Service Environment se službou 
 [AzureConDeepDive]:  https://azure.microsoft.com/documentation/videos/azurecon-2015-deploying-highly-scalable-and-secure-web-and-mobile-apps/
 [GeodistributedAppFootprint]:  app-service-app-service-environment-geo-distributed-scale.md
 [NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
-[SiteToSite]: https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-multi-site
+[SiteToSite]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-multi-site
 [ExpressRoute]: http://azure.microsoft.com/services/expressroute/
 [HowToConfigureanAppServiceEnvironment]:  app-service-web-configure-an-app-service-environment.md
 [ControllingInboundTraffic]:  app-service-app-service-environment-control-inbound-traffic.md

@@ -8,7 +8,7 @@ author: becczhang
 manager: jhubbard
 editor: ''
 ms.prod: ''
-ms.reviewer: carlrab
+ms.reviewer: vanto
 ms.suite: sql
 ms.prod_service: sql-database, sql-data-warehouse
 ms.service: sql-database
@@ -19,12 +19,12 @@ ms.topic: article
 ms.date: 08/07/2017
 ms.author: ryzhang26
 monikerRange: = azuresqldb-current || = azure-sqldw-latest || = sqlallproducts-allversions
-ms.openlocfilehash: 53ec5a315245537957c7c9eecde862da724b12f1
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: ad4202ffed38438cb2e330d813521bbf4d50d5c5
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "40043688"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542015"
 ---
 # <a name="rotate-the-transparent-data-encryption-tde-protector-using-powershell"></a>Otočit ochrana transparentní šifrování dat (TDE) pomocí Powershellu 
 

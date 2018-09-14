@@ -7,14 +7,14 @@ author: juliako
 manager: erikre
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 09/09/2018
 ms.author: juliako
-ms.openlocfilehash: c598fdae40b4552e1d4dc29b8558d82d0830160a
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 229624f4070c931b6ad892533aad269af49c738b
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841827"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45544180"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Vytvoření připojení k Azure účet služby Video Indexer
 
@@ -52,16 +52,18 @@ Tento článek ukazuje, jak vytvořit účet služby Video Indexer, který je pr
 
 ## <a name="connect-to-azure"></a>Připojení k Azure
 
-1. Přihlaste se k [ https://www.videoindexer.ai/ ](https://www.videoindexer.ai/) a klikněte na **připojit se k Azure** tlačítka:
+1. Přejděte [Video Indexer](https://www.videoindexer.ai/) web a přihlaste se.
+
+2. Klikněte na **připojit se k Azure** tlačítka:
 
     ![Připojení k Azure](./media/create-account/connect-to-azure.png)
 
-2. Jakmile se zobrazí seznam předplatných, vyberte předplatné, které chcete použít. 
+3. Jakmile se zobrazí seznam předplatných, vyberte předplatné, které chcete použít. 
 
     ![Video Indexer připojení k Azure](./media/create-account/connect-vi-to-azure-subscription.png)
 
-3. Vyberte oblast Azure z podporovaných umístění: západní USA 2, Severní Evropa nebo jihovýchodní Asie.
-4. V části **účtu Azure Media Services**, zvolte jednu z těchto možností:
+4. Vyberte oblast Azure z podporovaných umístění: západní USA 2, Severní Evropa nebo jihovýchodní Asie.
+5. V části **účtu Azure Media Services**, zvolte jednu z těchto možností:
 
     * Chcete-li vytvořit nový účet Media Services, vyberte **vytvořit novou skupinu prostředků**. Zadejte název vaší skupiny prostředků.
 
@@ -85,13 +87,13 @@ Tento článek ukazuje, jak vytvořit účet služby Video Indexer, který je pr
         |ID aplikace|ID aplikace Azure AD s oprávněními pro zadaný účet Media Services. Další informace najdete v tématu [použití ověřování instančních objektů](../../media-services/previous/media-services-portal-get-started-with-aad.md#service-principal-authentication).|
         |Klíč aplikace|Další informace najdete v tématu [použití ověřování instančních objektů](../../media-services/previous/media-services-portal-get-started-with-aad.md#service-principal-authentication).|
 
-5. Jakmile budete hotovi, zvolte **připojit**. Tato operace může trvat až několik minut. 
+6. Jakmile budete hotovi, zvolte **připojit**. Tato operace může trvat až několik minut. 
 
     Po připojení k Azure, se zobrazí v seznamu účtů váš nový účet služby Video Indexer:
 
     ![nový účet](./media/create-account/new-account.png)
 
-6. Přejděte do svého nového účtu služby: 
+7. Přejděte do svého nového účtu služby: 
 
     ![Účet služby video Indexer](./media/create-account/vi-account.png)
 

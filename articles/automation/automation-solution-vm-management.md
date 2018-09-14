@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 08/1/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f272ac7ee6432b43d0c9a72daf620a46e52366f8
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 99329dd812ad47cf98845ba794bc108d26d85352
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399045"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45543691"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Spuštění/zastavení virtuálních počítačů v době mimo špičku řešení ve službě Azure Automation
 
@@ -53,14 +53,14 @@ Proveďte následující kroky pro přidání spouštění/zastavování virtuá
 
    ![Stránka Přidat řešení správy virtuálních počítačů](media/automation-solution-vm-management/azure-portal-add-solution-01.png)
 
-1. Na **přidat řešení** stránce **pracovní prostor**. Vyberte pracovní prostor Log Analytics, který je propojený s předplatným Azure, který obsahuje příslušný účet Automation. Pokud nemáte pracovní prostor, vyberte **vytvořit nový pracovní prostor**. Na **pracovní prostor OMS** stránce, proveďte následující kroky:
-   - Zadejte název pro nový **pracovní prostor OMS**.
+1. Na **přidat řešení** stránce **pracovní prostor**. Vyberte pracovní prostor Log Analytics, který je propojený s předplatným Azure, který obsahuje příslušný účet Automation. Pokud nemáte pracovní prostor, vyberte **vytvořit nový pracovní prostor**. Na **pracovní prostor Log Analytics** stránce, proveďte následující kroky:
+   - Zadejte název pro nový **pracovní prostor Log Analytics**.
    - Vyberte **předplatné** k propojení, výběrem z rozevíracího seznamu, pokud výchozí vybrané není vhodné.
    - Pro **skupiny prostředků**, můžete vytvořit novou skupinu prostředků nebo vyberte existující.
    - Vyberte **Umístění**. V současné době jsou k dispozici pouze umístění **Austrálie – jihovýchod**, **Kanada – střed**, **střed Indie**, **USA – východ**, **Japonsko – východ**, **jihovýchodní Asie**, **Velká Británie – jih**, a **západní Evropa**.
    - Vyberte možnost u položky **Cenová úroveň**. Zvolte **Per GB (Standalone)** možnost. Log Analytics se aktualizovala [ceny](https://azure.microsoft.com/pricing/details/log-analytics/) a úroveň Per GB je jedinou možností.
 
-1. Po zadání požadovaných informací v **pracovní prostor OMS** klikněte na **vytvořit**. Můžete sledovat jeho průběh **oznámení** z nabídky, která se vrátíte na **přidat řešení** stránce až budete hotovi.
+1. Po zadání požadovaných informací v **pracovní prostor Log Analytics** klikněte na **vytvořit**. Můžete sledovat jeho průběh **oznámení** z nabídky, která se vrátíte na **přidat řešení** stránce až budete hotovi.
 1. Na **přidat řešení** stránce **účtu Automation**. Pokud vytváříte nový pracovní prostor Log Analytics, můžete vytvořit nový účet Automation, který se má přidružit ho nebo vyberte existující účet Automation, který není již propojený s pracovním prostorem Log analýza. Vyberte existující účet Automation, nebo klikněte na tlačítko **vytvořit účet Automation**a na **přidat účet Automation** stránky, zadejte následující informace:
    - Do pole **Název** zadejte název účtu služby Automation.
 

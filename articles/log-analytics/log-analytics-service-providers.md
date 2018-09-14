@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: meirm
 ms.component: na
-ms.openlocfilehash: 7898af1a8d516fa74deef5614b5373f1dbd22f5a
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: ec35cece8da8eaaa89b11a35b0fc1e55d0cdfee8
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44378598"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45573487"
 ---
 # <a name="log-analytics-for-service-providers"></a>Log Analytics pro poskytovatele služeb
 Log Analytics může pomoct, poskytovatelům spravovaných služeb (MSP), pro velké podniky, nezávislí výrobci softwaru (ISV) a poskytovatelů hostitelských služeb spravovat a monitorovat servery v jeho místní nebo cloudovou infrastrukturu. 
@@ -31,16 +31,16 @@ Pro partnery a poskytovatelé, kteří jsou součástí nástroje [Cloud Solutio
 
 ## <a name="architectures-for-service-providers"></a>Architektury pro poskytovatele služeb
 
-Pracovní prostory log Analytics poskytuje metodu pro správce k řízení toku a izolace protokolů a vytvořit protokol architektura, která řeší její konkrétní obchodní potřeby. [Tento článek](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-manage-access) vysvětluje Obecné aspekty kolem pracovního prostoru Správa. Poskytovatelé služeb mají další aspekty.
+Pracovní prostory log Analytics poskytuje metodu pro správce k řízení toku a izolace protokolů a vytvořit protokol architektura, která řeší její konkrétní obchodní potřeby. [Tento článek](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-access) vysvětluje Obecné aspekty kolem pracovního prostoru Správa. Poskytovatelé služeb mají další aspekty.
 
 Existují tři možné architektury pro poskytovatele služeb týkající se pracovních prostorů Log Analytics:
 
 ### <a name="1-distributed---logs-are-stored-in-workspaces-located-in-the-customers-tenant"></a>1. Distribuované – protokoly se ukládají v pracovních prostorech umístěný v tenantovi zákazníka 
 
-V této architektuře pracovního prostoru se nasadí do tenanta zákazníka, který se používá pro všechny protokoly daného zákazníka. Správci poskytovatele služeb je udělen přístup k této pracovní prostor pomocí [Azure Active Directory uživatele typu Host (B2B)](https://docs.microsoft.com/en-us/azure/active-directory/b2b/what-is-b2b). Přejděte do adresáře zákazníků na webu Azure Portal bude mít přístup k těmto pracovním prostorům bude mít správci poskytovatele služeb.
+V této architektuře pracovního prostoru se nasadí do tenanta zákazníka, který se používá pro všechny protokoly daného zákazníka. Správci poskytovatele služeb je udělen přístup k této pracovní prostor pomocí [Azure Active Directory uživatele typu Host (B2B)](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b). Přejděte do adresáře zákazníků na webu Azure Portal bude mít přístup k těmto pracovním prostorům bude mít správci poskytovatele služeb.
 
 Výhody této architektury jsou:
-* Zákazník může spravovat přístup k protokolům pomocí vlastních [přístupu podle rolí](https://docs.microsoft.com/en-us/azure/role-based-access-control/overview).
+* Zákazník může spravovat přístup k protokolům pomocí vlastních [přístupu podle rolí](https://docs.microsoft.com/azure/role-based-access-control/overview).
 * Každý zákazník může mít různá nastavení pro jejich pracovní prostor, jako jsou uchovávání a malá a velká data.
 * Izolace mezi zákazníky pro regulační a dodržování předpisů.
 * Poplatek za každý pracovní prostor se začne do předplatného zákazníka.
@@ -74,7 +74,7 @@ Třetí architektura poměr mezi těmito dvěma možnostmi. Je založen na prvn�
 
 Existují dvě možnosti, jak implementovat centrální umístění ve službě Log Analytics:
 
-1. Centrální pracovního prostoru: poskytovatel služeb můžete vytvořit pracovní prostor v jeho tenantovi a použít skript, který využívá [rozhraní API pro dotazy](https://dev.loganalytics.io/) s [rozhraní API kolekce dat](log-analytics-data-collector-api.md) k načítání dat z různých pracovních prostorů k této centrální umístění. Další možností, než skript, je použití [Azure Logic Apps](https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-overview).
+1. Centrální pracovního prostoru: poskytovatel služeb můžete vytvořit pracovní prostor v jeho tenantovi a použít skript, který využívá [rozhraní API pro dotazy](https://dev.loganalytics.io/) s [rozhraní API kolekce dat](log-analytics-data-collector-api.md) k načítání dat z různých pracovních prostorů k této centrální umístění. Další možností, než skript, je použití [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview).
 
 2. Power BI jako centrální umístění: Power BI může fungovat jako centrální umístění, pokud různé pracovní prostory export dat pomocí integraci mezi službou Log Analytics a [Power BI](log-analytics-powerbi.md). 
 

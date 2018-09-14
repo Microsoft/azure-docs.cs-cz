@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: ellacroi
-ms.openlocfilehash: 76448f57bf710dcb8b3b220cc06b3833a22a6295
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 236859cca623643b9bc7a4484f6ce4e6aa11aad6
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39059771"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579781"
 ---
 # <a name="office-365-dynamics-365-power-apps-and-power-bi-offer-publishing-guide"></a>Příručka pro Office 365, Dynamics 365, Powerapps a Power BI nabídka publikování
 
@@ -31,7 +31,7 @@ AppSource je seznam a zkušební verze nabídky, s výzvou k akci "Kontaktujte m
 
 ### <a name="office-365"></a>Office 365
 
-Zkontrolujte [procesu a pokyny k publikování](https://docs.microsoft.com/en-us/office/dev/store/submit-to-the-office-store)
+Zkontrolujte [procesu a pokyny k publikování](https://docs.microsoft.com/office/dev/store/submit-to-the-office-store)
 
 ### <a name="power-apps"></a>Power Apps
 
@@ -39,15 +39,15 @@ Další informace o tom, jak zákazníci mohou [vyzkoušet si vaše aplikace na 
 
 ### <a name="power-bi"></a>Power BI
 
-Zkontrolujte [procesu a pokyny pro publikování.](https://docs.microsoft.com/en-us/power-bi/developer/office-store)
+Zkontrolujte [procesu a pokyny pro publikování.](https://docs.microsoft.com/power-bi/developer/office-store)
 
 ### <a name="dynamics-365"></a>Dynamics 365
 
 #### <a name="dynamics-365-for-finance-and-operations"></a>Dynamics 365 for Finance and Operations
-Při sestavování pro Enterprise Edition, zkontrolujte [procesu a pokyny k publikování](https://docs.microsoft.com/en-us/dynamics365/unified-operations/dev-itpro/lcs-solutions/lcs-solutions-app-source)
+Při sestavování pro Enterprise Edition, zkontrolujte [procesu a pokyny k publikování](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/lcs-solutions/lcs-solutions-app-source)
 
 ### <a name="dynamics-365-for-customer-engagement"></a>Dynamics 365 for Customer Engagement
-Zkontrolujte [procesu a pokyny k publikování](https://docs.microsoft.com/en-us/dynamics365/customer-engagement/developer/publish-app-appsource)
+Zkontrolujte [procesu a pokyny k publikování](https://docs.microsoft.com/dynamics365/customer-engagement/developer/publish-app-appsource)
 
 ## <a name="next-steps"></a>Další kroky
 

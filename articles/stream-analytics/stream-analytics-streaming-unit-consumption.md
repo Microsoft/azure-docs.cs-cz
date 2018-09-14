@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/12/2018
-ms.openlocfilehash: 482f0403cfd4bbd6587ba7e3e936cdac7f82b54a
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: b7abbd486e9c357a5bdba093214a3801f88c39ab
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39227984"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45575894"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Principy a úpravy jednotek streamování
 
@@ -46,7 +46,7 @@ Vypočítá očekávané propustnosti zatížení. Pokud se propustnost je menš
 
 Volba počet požadovaných SUs pro konkrétní úlohy závisí na konfiguraci oddílů pro vstupy a dotaz, který je definován v rámci úlohy. **Škálování** stránka umožňuje nastavit správný počet su. Doporučuje se přidělit další su, než je potřeba. Modul pro zpracování Stream Analytics optimalizuje latenci a propustnost za cenu přidělování další paměti.
 
-Obecně platí, osvědčeným postupem je začít s 6 SUs pro dotazy, které nepoužívají **PARTITION BY**. Pak zjistěte sladkost místě pomocí omyl a metody, ve kterém můžete upravit počet SUs po předání reprezentativního objemu dat a zkontrolovat metriku % využití SU. Maximální počet jednotek streamování, které je možné úlohu Stream Analytics, závisí na počtu kroků v dotazu definovaném pro úlohy a počtu oddílů v každém kroku. Další informace o omezeních [tady](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-parallelization#calculate-the-maximum-streaming-units-of-a-job).
+Obecně platí, osvědčeným postupem je začít s 6 SUs pro dotazy, které nepoužívají **PARTITION BY**. Pak zjistěte sladkost místě pomocí omyl a metody, ve kterém můžete upravit počet SUs po předání reprezentativního objemu dat a zkontrolovat metriku % využití SU. Maximální počet jednotek streamování, které je možné úlohu Stream Analytics, závisí na počtu kroků v dotazu definovaném pro úlohy a počtu oddílů v každém kroku. Další informace o omezeních [tady](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#calculate-the-maximum-streaming-units-of-a-job).
 
 Další informace o výběru správné číslo su, najdete na této stránce: [úloh škálování Azure Stream Analytics pro zvýšení prostupnosti](stream-analytics-scale-jobs.md)
 
@@ -85,7 +85,7 @@ Pokud chcete zmírnit potíže způsobené vysokou kardinalitou v předchozím d
 
    ```sql
    SELECT count(*) 
-   FROM PARTITION BY PartitionId
+   FROM input PARTITION BY PartitionId
    GROUP BY PartitionId, clusterid, tumblingwindow (minutes, 5)
    ```
 

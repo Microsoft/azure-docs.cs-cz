@@ -8,12 +8,12 @@ ms.date: 07/3/2018
 ms.topic: article
 ms.prod: azure-iot-central
 manager: peterpr
-ms.openlocfilehash: 3ca2bc56c03e5bbabbd9b2f17edc621bdd94b02f
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 5defbf7021936e3cc77250ccc453cb3887c77617
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622479"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576438"
 ---
 # <a name="export-your-data-in-azure-iot-central"></a>Exportujte data v Azure IoT Central
 
@@ -33,7 +33,7 @@ Tento článek popisuje, jak používat souvislá datová funkce exportu v Azure
 
 ### <a name="measurements"></a>Měření
 
-Měření, která zařízení odesílají, jsou exportovány do vašeho účtu úložiště jednou za minutu. Data obsahují všechny nové zprávy přijaté službou IoT Central ze všech zařízení během této doby. Exportované soubory AVRO používají stejný formát jako soubory zpráv exportované sadou [směrování zpráv služby IoT Hub](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-csharp-csharp-process-d2c) do úložiště objektů Blob.
+Měření, která zařízení odesílají, jsou exportovány do vašeho účtu úložiště jednou za minutu. Data obsahují všechny nové zprávy přijaté službou IoT Central ze všech zařízení během této doby. Exportované soubory AVRO používají stejný formát jako soubory zpráv exportované sadou [směrování zpráv služby IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-csharp-csharp-process-d2c) do úložiště objektů Blob.
 
 > [!NOTE]
 > Zařízení, které odesílají měření jsou reprezentovány v ID zařízení (viz následující části). Pokud chcete získat názvy zařízení, exportujte snímky zařízení. Porovnat všechny záznamy zpráv pomocí **connectionDeviceId** , která odpovídá ID zařízení.

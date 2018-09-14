@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: mattcon
 author: matthewconners
 ms.date: 07/13/2018
-ms.openlocfilehash: 60eecf134f067d68326fc23ade8ed2a5a7ae7ac4
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 9bdda67f08b9fbee20bdcc11186b97a3d942b778
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39070330"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45580663"
 ---
 # <a name="build-and-deploy-forecasting-models-with-azure-machine-learning"></a>Vytváření a nasazování modelů prognóz službou Azure Machine Learning
 
@@ -106,7 +106,7 @@ print('imports done')
 
 ## <a name="load-data-and-explore"></a>Načtení dat a prozkoumejte
 
-Tento fragment kódu ukazuje typické proces od nezpracovaných datové sady, v tomto případě [data z vaší Dominick jemnější Foods](https://research.chicagobooth.edu/kilts/marketing-databases/dominicks).  Můžete použít také funkce usnadnění [load_dominicks_oj_data](https://docs.microsoft.com/en-us/python/api/ftk.data.dominicks_oj.load_dominicks_oj_data).
+Tento fragment kódu ukazuje typické proces od nezpracovaných datové sady, v tomto případě [data z vaší Dominick jemnější Foods](https://research.chicagobooth.edu/kilts/marketing-databases/dominicks).  Můžete použít také funkce usnadnění [load_dominicks_oj_data](https://docs.microsoft.com/python/api/ftk.data.dominicks_oj.load_dominicks_oj_data).
 
 
 ```python
@@ -337,7 +337,7 @@ print('{} time series in the data frame.'.format(nseries))
 
 Data obsahují přibližně 250 různých kombinací úložiště a značky v datovém rámci. Každá kombinace definuje vlastní časové řady prodeje. 
 
-Můžete použít [TimeSeriesDataFrame](https://docs.microsoft.com/en-us/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest) třídy pohodlně více řad pomocí struktura single – datový model _intervalem_. Je určená interval `store` a `brand` sloupce.
+Můžete použít [TimeSeriesDataFrame](https://docs.microsoft.com/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest) třídy pohodlně více řad pomocí struktura single – datový model _intervalem_. Je určená interval `store` a `brand` sloupce.
 
 Rozdíl mezi _intervalem_ a _skupiny_ je skutečnost, že interval vždy fyzicky smysl v praxi, zatímco skupina nemusí být. Interní balíček funkcí pomocí skupiny můžete sestavit jeden model z několika časovými řadami, když uživatel domnívá, že toto seskupení pomáhá zlepšit výkon modelů. Ve výchozím nastavení skupina nastavena rovná intervalem a jednoho modelu je sestaven pro každý úsek. 
 
@@ -499,7 +499,7 @@ whole_tsdf.loc[pd.IndexSlice['1990-06':'1990-09', 2, 'dominicks'], ['Quantity']]
 
 
 
-[TimeSeriesDataFrame.ts_report](https://docs.microsoft.com/en-us/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest#ts-report) funkce generuje komplexní sestavu časový interval, data řady. Zpráva obsahuje popis obecných dat i statistiky, které jsou specifické pro data časových řad. 
+[TimeSeriesDataFrame.ts_report](https://docs.microsoft.com/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest#ts-report) funkce generuje komplexní sestavu časový interval, data řady. Zpráva obsahuje popis obecných dat i statistiky, které jsou specifické pro data časových řad. 
 
 
 ```python
@@ -886,14 +886,14 @@ whole_tsdf.head()
 
 ## <a name="preprocess-data-and-impute-missing-values"></a>Předzpracování dat a dává chybějící hodnoty
 
-Začněte tím, že rozdělení dat do sady pro trénování a testování sadu s [last_n_periods_split](https://docs.microsoft.com/en-us/python/api/ftk.ts_utils?view=azure-ml-py-latest) pomocnou funkci. Výsledná sada testování obsahuje poslední 40 pozorování každá Časová řada. 
+Začněte tím, že rozdělení dat do sady pro trénování a testování sadu s [last_n_periods_split](https://docs.microsoft.com/python/api/ftk.ts_utils?view=azure-ml-py-latest) pomocnou funkci. Výsledná sada testování obsahuje poslední 40 pozorování každá Časová řada. 
 
 
 ```python
 train_tsdf, test_tsdf = last_n_periods_split(whole_tsdf, 40)
 ```
 
-Základní čas řady modely vyžadují souvislých časových řad. Zkontrolujte, jestli jsou pravidelné, což znamená, že mají čas index odebírána data v pravidelných intervalech pomocí řady [check_regularity_by_grain](https://docs.microsoft.com/en-us/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest#check-regularity-by-grain) funkce.
+Základní čas řady modely vyžadují souvislých časových řad. Zkontrolujte, jestli jsou pravidelné, což znamená, že mají čas index odebírána data v pravidelných intervalech pomocí řady [check_regularity_by_grain](https://docs.microsoft.com/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest#check-regularity-by-grain) funkce.
 
 
 ```python
@@ -968,7 +968,7 @@ print(ts_regularity[ts_regularity['regular'] == False])
     [213 rows x 2 columns]
     
 
-Uvidíte, že většina řady (213 z 249) je nestandardní. [Imputace transformace](https://docs.microsoft.com/en-us/python/api/ftk.transforms.ts_imputer.timeseriesimputer?view=azure-ml-py-latest) je potřeba vyplnit chybějící hodnoty prodeje množství. Přestože existuje mnoho možností imputace, následující vzorový kód používá lineární interpolace.
+Uvidíte, že většina řady (213 z 249) je nestandardní. [Imputace transformace](https://docs.microsoft.com/python/api/ftk.transforms.ts_imputer.timeseriesimputer?view=azure-ml-py-latest) je potřeba vyplnit chybějící hodnoty prodeje množství. Přestože existuje mnoho možností imputace, následující vzorový kód používá lineární interpolace.
 
 
 ```python
@@ -1034,7 +1034,7 @@ arima_model = Arima(oj_series_freq, arima_order)
 
 ### <a name="combine-multiple-models"></a>Kombinovat více modelů
 
-[ForecasterUnion](https://docs.microsoft.com/en-us/python/api/ftk.models.forecaster_union?view=azure-ml-py-latest) estimator umožňuje kombinovat více odhady a přizpůsobit/předpověď na nich pomocí jeden řádek kódu.
+[ForecasterUnion](https://docs.microsoft.com/python/api/ftk.models.forecaster_union?view=azure-ml-py-latest) estimator umožňuje kombinovat více odhady a přizpůsobit/předpověď na nich pomocí jeden řádek kódu.
 
 
 ```python
@@ -1248,7 +1248,7 @@ print(train_feature_tsdf.head())
 
  **RegressionForecaster**
 
-[RegressionForecaster](https://docs.microsoft.com/en-us/python/api/ftk.models.regression_forecaster.regressionforecaster?view=azure-ml-py-latest) funkce zabalí skriptu sklearn regrese odhady tak, aby může být trénovaných na TimeSeriesDataFrame. Zabalená uživatel taky umisťuje každou skupinu v tomto případě úložišti do stejného modelu. Uživatel další jeden model pro skupinu série, která se považují za podobný a můžete ve fondu společně. Jeden model pro skupinu řad často používá data z řady delší ke zlepšení předpovědi pro krátké řady. Můžete nahradit tyto modely pro všechny ostatní modely v knihovně, které podporují regrese. 
+[RegressionForecaster](https://docs.microsoft.com/python/api/ftk.models.regression_forecaster.regressionforecaster?view=azure-ml-py-latest) funkce zabalí skriptu sklearn regrese odhady tak, aby může být trénovaných na TimeSeriesDataFrame. Zabalená uživatel taky umisťuje každou skupinu v tomto případě úložišti do stejného modelu. Uživatel další jeden model pro skupinu série, která se považují za podobný a můžete ve fondu společně. Jeden model pro skupinu řad často používá data z řady delší ke zlepšení předpovědi pro krátké řady. Můžete nahradit tyto modely pro všechny ostatní modely v knihovně, které podporují regrese. 
 
 
 ```python
@@ -1372,7 +1372,7 @@ Na následujícím obrázku představuje každý čtvereček data z jednoho bodu
 ![PNG](./media/how-to-build-deploy-forecast-models/cv_figure.PNG)
 
 **Parametr Sweeping**  
-[TSGridSearchCV](https://docs.microsoft.com/en-us/python/api/ftk.model_selection.search.tsgridsearchcv?view=azure-ml-py-latest) třídy vyčerpávajícím způsobem vyhledá prostřednictvím hodnoty zadaný parametr a použije `RollingOriginValidator` k vyhodnocení parametru výkon při hledání nejlepších parametrů.
+[TSGridSearchCV](https://docs.microsoft.com/python/api/ftk.model_selection.search.tsgridsearchcv?view=azure-ml-py-latest) třídy vyčerpávajícím způsobem vyhledá prostřednictvím hodnoty zadaný parametr a použije `RollingOriginValidator` k vyhodnocení parametru výkon při hledání nejlepších parametrů.
 
 
 ```python

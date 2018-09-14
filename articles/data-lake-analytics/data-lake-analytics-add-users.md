@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: db35f16e-1565-4873-a851-bd987accdc58
 ms.topic: conceptual
 ms.date: 05/24/2018
-ms.openlocfilehash: 0386406f5fc81a007d55bd5358e7a6b333f63b04
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: f48dc07e27c6cb01a842f1f6d720ed6476028ef7
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048329"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542308"
 ---
 # <a name="adding-a-user-in-the-azure-portal"></a>Přidání uživatele na webu Azure Portal
 
@@ -31,12 +31,12 @@ ms.locfileid: "43048329"
 Udělit "R-X" nebo "RWX", podle potřeby na složky obsahující vstupní data a výstupní data.
 
 
-## <a name="optionally-add-the-user-to-the-azure-data-lake-store-role-reader-role"></a>Volitelně můžete přidat uživatele do role Azure Data Lake Store **čtečky** role.
-1.  Vyhledejte svůj účet Azure Data Lake Store.
+## <a name="optionally-add-the-user-to-the-azure-data-lake-storage-gen1-role-reader-role"></a>Volitelně můžete přidat uživatele do role Azure Data Lake Storage Gen1 **čtečky** role.
+1.  Vyhledejte svůj účet Azure Data Lake Storage Gen1.
 2.  Klikněte na **uživatelé**.
 3. Klikněte na tlačítko **Add** (Přidat).
 4.  Vyberte roli Azure RBAC k přiřazení této skupiny.
-5.  Přiřadíte role Čtenář. Tato role má minimální sadu oprávnění potřebná k procházení a spravovat data uložená v ADLS. Přiřadíte k této roli, pokud není určena skupině pro správu služeb Azure.
+5.  Přiřadíte role Čtenář. Tato role má minimální sadu oprávnění potřebná k procházení a spravovat data uložená v ADLSGen1. Přiřadíte k této roli, pokud není určena skupině pro správu služeb Azure.
 6.  Zadejte název skupiny.
 7.  Klikněte na **OK**.
 

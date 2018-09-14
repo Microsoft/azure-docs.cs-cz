@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: 4cf04ceeb8650b2978389cefb561ae31e88bc853
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: af8c0b6a4aa0c3b6e25f92dc450faa22a01ee374
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39282432"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579163"
 ---
 # <a name="log-analytics-data-security"></a>Zabezpečení dat analýzy protokolů
 Účelem tohoto dokumentu je poskytnout konkrétní informace o Azure Log Analytics k doplnění informací na [Centrum zabezpečení Azure](../security/security-microsoft-trust-center.md).  
@@ -51,9 +51,9 @@ Nedoporučujeme explicitním nastavením agenta na používat jenom TLS 1.2, pok
 |Platformu nebo jazyk | Podpora | Další informace |
 | --- | --- | --- |
 |Linux | Linuxové distribuce mají tendenci přináší setrvávání u [OpenSSL](https://www.openssl.org) pro podporu protokolu TLS 1.2.  | Zkontrolujte [protokolu změn OpenSSL](https://www.openssl.org/news/changelog.html) pro potvrzení, vaše verze OpenSSL není podporovaná.|
-| Windows 8.0 10 | Podporované a ve výchozím nastavení povolená. | Potvrďte, že stále používáte [výchozí nastavení](https://docs.microsoft.com/en-us/windows-server/security/tls/tls-registry-settings).  |
-| Windows Server 2012 – 2016 | Podporované a ve výchozím nastavení povolená. | Potvrďte, že stále používáte [výchozí nastavení](https://docs.microsoft.com/en-us/windows-server/security/tls/tls-registry-settings) |
-| Windows 7 SP1 a Windows Server 2008 R2 SP1 | Podporované, ale není ve výchozím nastavení povolená. | Najdete v článku [zabezpečení TLS (Transport Layer), nastavení registru](https://docs.microsoft.com/en-us/windows-server/security/tls/tls-registry-settings) stránku Podrobnosti o tom, jak povolit.  |
+| Windows 8.0 10 | Podporované a ve výchozím nastavení povolená. | Potvrďte, že stále používáte [výchozí nastavení](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings).  |
+| Windows Server 2012 – 2016 | Podporované a ve výchozím nastavení povolená. | Potvrďte, že stále používáte [výchozí nastavení](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) |
+| Windows 7 SP1 a Windows Server 2008 R2 SP1 | Podporované, ale není ve výchozím nastavení povolená. | Najdete v článku [zabezpečení TLS (Transport Layer), nastavení registru](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) stránku Podrobnosti o tom, jak povolit.  |
 | Windows Server 2008 SP2 | Podpora protokolu TLS 1.2 vyžaduje aktualizaci. | Zobrazit [aktualizace přidává funkce pro protokol TLS 1.2](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s) v systému Windows Server 2008 SP2. |
 
 ## <a name="data-segregation"></a>oddělení dat
@@ -86,7 +86,7 @@ V následující tabulce jsou uvedeny příklady typů dat:
 | Stav |StateChangeEventId, StateId, NewHealthState, OldHealthState, Context, TimeGenerated, TimeAdded, StateId2, BaseManagedEntityId, MonitorId, HealthState, LastModified, LastGreenAlertGenerated, DatabaseTimeModified |
 
 ## <a name="physical-security"></a>Fyzické zabezpečení
-Služba Log Analytics je spravovaná zaměstnanců společnosti Microsoft a všechny aktivity jsou zaznamenávány a dají auditovat. Log Analytics je provozována jako služba Azure a splňuje všechny požadavky na zabezpečení a dodržování předpisů Azure. Můžete zobrazit podrobnosti o fyzické zabezpečení prostředků Azure na stránce 18 [Přehled zabezpečení služby Microsoft Azure](http://download.microsoft.com/download/6/0/2/6028B1AE-4AEE-46CE-9187-641DA97FC1EE/Windows%20Azure%20Security%20Overview%20v1.01.pdf). Fyzické přístupová práva k zabezpečení oblasti se mění v rámci jednoho pracovního dne pro každého, kdo není k dispozici odpovědnost za službu Log Analytics, včetně převodu a ukončení. Informace o globální fyzické infrastruktury, které používáme v [Datacenters Microsoftu](https://azure.microsoft.com/en-us/global-infrastructure/).
+Služba Log Analytics je spravovaná zaměstnanců společnosti Microsoft a všechny aktivity jsou zaznamenávány a dají auditovat. Log Analytics je provozována jako služba Azure a splňuje všechny požadavky na zabezpečení a dodržování předpisů Azure. Můžete zobrazit podrobnosti o fyzické zabezpečení prostředků Azure na stránce 18 [Přehled zabezpečení služby Microsoft Azure](http://download.microsoft.com/download/6/0/2/6028B1AE-4AEE-46CE-9187-641DA97FC1EE/Windows%20Azure%20Security%20Overview%20v1.01.pdf). Fyzické přístupová práva k zabezpečení oblasti se mění v rámci jednoho pracovního dne pro každého, kdo není k dispozici odpovědnost za službu Log Analytics, včetně převodu a ukončení. Informace o globální fyzické infrastruktury, které používáme v [Datacenters Microsoftu](https://azure.microsoft.com/global-infrastructure/).
 
 ## <a name="incident-management"></a>Správa incidentů
 Log Analytics má správy incidentů proces, který dodržovat všechny služby společnosti Microsoft. Souhrnně řečeno, jsme:

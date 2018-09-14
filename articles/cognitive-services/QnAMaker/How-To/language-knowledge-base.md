@@ -1,49 +1,50 @@
 ---
-title: Postup vytvoření jiných než anglických znalostní báze knowledge base - QnA Maker - Azure kognitivní Services | Microsoft Docs
-description: Postup vytvoření jiných než anglických znalostní bázi knowledge base.
+title: Jiné než anglické znalostní báze – QnA Maker
+titleSuffix: Azure Cognitive Services
+description: Nástroj QnA Maker podporuje obsah znalostní báze v řadě jazyků. Každá služba QnA Maker však by měl být vyhrazen pro jeden jazyk. První znalostní báze vytvořen cílení na konkrétní služba QnA Maker nastaví jazyk této služby.
 services: cognitive-services
 author: nstulasi
-manager: sangitap
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 09/12/2018
 ms.author: saneppal
-ms.openlocfilehash: 3fbd590229044af0daa60968fd8d556d539a58c9
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 9f5ece2b996f922437d36a6087c63859f89e0c55
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343254"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45543500"
 ---
-# <a name="language-support-of-knowledge-base-content-for-qna-maker"></a>Jazyková podpora obsahu znalostní báze knowledge base QnA Maker
-QnA Maker podporuje obsah znalostní báze knowledge base v mnoha jazycích. Každá služba QnA Maker však by mělo být vyhrazeno pro jeden jazyk. První znalostní báze vytvořen cílení na konkrétní službu QnA Maker nastaví jazyk této služby. V tématu [sem](../Overview/languages-supported.md) pro seznam podporovaných jazyků.
+# <a name="language-support-of-knowledge-base-content-for-qna-maker"></a>Podpora jazyků znalostní báze obsahu pro nástroj QnA Maker
+Nástroj QnA Maker podporuje obsah znalostní báze v řadě jazyků. Každá služba QnA Maker však by měl být vyhrazen pro jeden jazyk. První znalostní báze vytvořen cílení na konkrétní služba QnA Maker nastaví jazyk této služby. Zobrazit [tady](../Overview/languages-supported.md) pro seznam podporovaných jazyků.
 
-Jazyk je automaticky rozpozná z obsahu zdroje dat se extrahují. Jakmile vytvoříte novou službu Maker QnA a nové báze Knowledge Base v této službě, můžete ověřit správně nastavené jazyk.
+Jazyk je automaticky rozpoznán obsah ze zdrojů dat extrahují. Jakmile vytvoříte novou službu QnA Maker a nové Knowledge Base dané služby, můžete ověřit, že jazyk byla nastavena správně.
 
-1. Přejděte na [portál Azure](https://portal.azure.com/).
+1. Přejděte [webu Azure Portal](https://portal.azure.com/).
 
-2. Vyberte **skupiny prostředků** a přejděte do skupiny prostředků, kde je služba QnA Maker nasazené a vyberte **Azure Search** prostředků.
+2. Vyberte **skupiny prostředků** a přejděte do skupiny prostředků, ve kterém je služba QnA Maker nasazené a vyberte **Azure Search** prostředků.
 
     ![Vyberte prostředek Azure Search](../media/qnamaker-how-to-language-kb/select-azsearch.png)
 
-3. Vyberte **testkb** index. Tento index Azure Search je vždy první z nich vytvořit a obsahuje uložený obsah znalostních bází v dané služby. 
+3. Vyberte **testkb** indexu. Tento index Azure Search je vždy první z nich vytvoří a obsahuje uložený obsah znalostních bází v dané služby. 
 
-    ![Vyberte testovací KB](../media/qnamaker-how-to-language-kb/select-testkb.png)
+    ![Vyberte Test KB](../media/qnamaker-how-to-language-kb/select-testkb.png)
 
-4. Vyberte **pole** část s podrobnostmi testkb.
+4. Vyberte **pole** části zobrazující podrobnosti testkb.
 
     ![Vybrat pole](../media/qnamaker-how-to-language-kb/selectfields.png)
 
-5. Zaškrtněte políčko pro **analyzátor** zobrazíte podrobnosti jazyk.
+5. Zaškrtněte políčko u **analyzátor** zobrazíte podrobností o jazycích.
 
     ![Vyberte analyzátor](../media/qnamaker-how-to-language-kb/select-analyzer.png)
 
-6. By měl zjistit, zda Analyzátor je nastavena na konkrétního jazyka. Tento jazyk byla automaticky zjištěna během kroku vytvoření znalostní báze knowledge base. Tento jazyk nelze změnit po vytvoření prostředku.
+6. Měli byste najít, zda analyzátor nastaven na konkrétní jazyk. Tento jazyk byla automaticky zjištěna během kroku vytvoření znalostní báze knowledge base. Tento jazyk nelze změnit po vytvoření prostředku.
 
-    ![Vybrané analyzátor](../media/qnamaker-how-to-language-kb/selected-analyzer.png)
+    ![Vybrané analyzátoru](../media/qnamaker-how-to-language-kb/selected-analyzer.png)
 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Vytvořit QnA robota robota službou Azure](../Tutorials/create-qna-bot.md)
+> [Vytváření robotů QnA pomocí služby Azure Bot Service](../Tutorials/create-qna-bot.md)

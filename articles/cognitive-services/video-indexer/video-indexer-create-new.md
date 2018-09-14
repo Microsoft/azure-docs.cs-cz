@@ -7,20 +7,20 @@ author: juliako
 manager: erikre
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 07/25/2018
+ms.date: 09/09/2018
 ms.author: juliako
-ms.openlocfilehash: 161a47f72a0f8038a515c09f25ec2a8e8a520547
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: a713a85a3301b211f922268d6afc4d047bd12023
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390836"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45541696"
 ---
 # <a name="create-highlights-from-existing-videos"></a>Vytvoření vybraná vystoupení z existujících videí
 
 Toto téma ukazuje, jak vytvářet a publikovat nové poznatky z videí podle některých jiných video.
 
-1. Přihlaste se k vaší [Video Indexer](https://api-portal.videoindexer.ai/) účtu.
+1. Přejděte [Video Indexer](https://www.videoindexer.ai/) web a přihlaste se.
 2. Vyhledejte video, ve kterém chcete vytvořit vaše nové poznatky z videí.
 3. Stisknutím klávesy **Přehrát**.
 
@@ -53,7 +53,7 @@ Toto téma ukazuje, jak vytvářet a publikovat nové poznatky z videí podle n�
 Jakmile vytvoříte nový seznam testů, můžete pokračovat, zpracování, jak je popsáno v některém z těchto témat: 
 
 - [Zpracování obsahu pomocí rozhraní REST API služby Video Indexer](video-indexer-use-apis.md)
-- [Vložení widgetů visual ve vaší aplikaci](video-indexer-embed-widgets.md)
+- [Vložení vizuálních widgetů do vaší aplikace](video-indexer-embed-widgets.md)
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 

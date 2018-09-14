@@ -16,17 +16,17 @@ ms.topic: article
 ms.date: 08/25/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: ff1d51021038909c132bef4cb680589b9951f218
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 7aa7cd2e5b1cf1346a5a7b1f82ec9c7933dd1112
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041421"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542476"
 ---
 # <a name="how-to-manage-devices-using-the-azure-portal"></a>Správa zařízení pomocí webu Azure portal
 
 
-Se správou zařízení ve službě Azure Active Directory (Azure AD) můžete zajistit, že vaši uživatelé přistupují ze zařízení, která splňují vaše standardy zabezpečení a dodržování předpisů vašich prostředků. 
+Díky správě zařízení v Azure Active Directory (Azure AD) můžete zajistit, aby uživatelé přistupovali k vašim prostředkům ze zařízení, která splňují vaše standardy zabezpečení a dodržování předpisů. 
 
 Tento článek:
 
@@ -123,7 +123,7 @@ Jako správce můžete spravovat zařízení registrovaná nebo připojené k do
 
 ### <a name="manage-an-intune-device"></a>Správa zařízení s Intune
 
-Pokud jste správce služby Intune, můžete spravovat zařízení, které jsou označeny jako **Microsoft Intune**. Správce můžete zobrazit další zařízení 
+Pokud jste správce služby Intune, můžete spravovat zařízení, které jsou označeny jako **Microsoft Intune**. 
 
 ![Správa zařízení s Intune](./media/device-management-azure-portal/31.png)
 
@@ -251,7 +251,7 @@ Kromě filtrů můžete vyhledat specifické položky.
 
 ## <a name="next-steps"></a>Další postup
 
-* [Úvod do správy zařízení ve službě Azure Active Directory](overview.md)
+* [Úvod do správy zařízení v Azure Active Directory](overview.md)
 
 
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 1bfc70680ecef2ee4fe162f81aac71430c773740
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: c5f251f2de938d4441672c8aa1a6dbc6bd616155
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005074"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45575487"
 ---
 # <a name="azure-active-directory-identity-protection---how-to-unblock-users"></a>Azure Active Directory Identity Protection – jak odblokovat uživatele
 S Azure Active Directory Identity Protection můžete nakonfigurovat zásady pro blokování uživatelů jsou při splnění nakonfigurovaných podmínek. Obvykle blokovaný uživatel kontakty technické podpory o budou odblokována. Tento článek vysvětluje kroky můžete provést pro odblokování blokovaný uživatel.
@@ -52,8 +52,8 @@ K blokování podezřelých přihlášení, máte následující možnosti:
 ## <a name="unblocking-accounts-at-risk"></a>Účty, odblokování
 Odblokování účtu ohroženy, máte následující možnosti:
 
-1. **Resetovat heslo** – může resetovat heslo uživatele. Další informace najdete v tématu [ruční zabezpečené heslo resetovat](overview.md#manual-secure-password-reset).
-2. **Skrýt všechny rizikové události** – bloky zásady rizik uživatelů uživatele Pokud uživatel nakonfigurovaný rizika úroveň pro zablokování přístupu se dosáhlo. Uživatele můžete snížit na úroveň rizika ručně ukončením hlášené rizikové události. Další informace najdete v tématu [ručnímu zavření rizikových událostí](overview.md#closing-risk-events-manually).
+1. **Resetovat heslo** – může resetovat heslo uživatele. 
+2. **Skrýt všechny rizikové události** – bloky zásady rizik uživatelů uživatele Pokud uživatel nakonfigurovaný rizika úroveň pro zablokování přístupu se dosáhlo. Uživatele můžete snížit na úroveň rizika ručně ukončením hlášené rizikové události. 
 3. **Vyloučit ze zásad** – Pokud se domníváte, že aktuální konfigurace zásady přihlášení způsobuje problémy pro konkrétní uživatele, můžete vyloučit uživatele z něj. Další informace najdete v tématu [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
 4. **Zakázat zásadu** – Pokud se domníváte, že vaše konfigurace zásad způsobuje problémy pro všechny uživatele, můžete zakázat zásadu. Další informace najdete v tématu [Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
 

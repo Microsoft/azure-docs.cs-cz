@@ -1,6 +1,6 @@
 ---
-title: Odebrání poskytovatele prostředků SQL v Azure zásobníku | Microsoft Docs
-description: Zjistěte, jak odebrat poskytovatele prostředků SQL ze zásobníku Azure nasazení.
+title: Odebrání poskytovatele prostředků SQL ve službě Azure Stack | Dokumentace Microsoftu
+description: Zjistěte, jak odebrat poskytovatele prostředků SQL z nasazení služby Azure Stack.
 services: azure-stack
 documentationCenter: ''
 author: jeffgilb
@@ -11,50 +11,51 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/27/2018
+ms.date: 09/13/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: b73deebb10d0c81a06df9cd192eaa2ef28de744d
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 42d8a5a8073d2650b9e023305472f28d4f1c738f
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37083035"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45580095"
 ---
-# <a name="remove-the-sql-resource-provider"></a>Odebrat zprostředkovatele prostředků SQL
+# <a name="remove-the-sql-resource-provider"></a>Odebrat poskytovatele prostředků SQL
 
-Před odebráním poskytovatele prostředků SQL, musíte odebrat všechny závislosti zprostředkovatele. Budete také potřebovat kopii balíček nasazení, který byl použitý k instalaci zprostředkovatele prostředků.
+Před odebráním poskytovatele prostředků SQL, musíte odebrat všechny závislosti zprostředkovatele. Budete také potřebovat kopii balíčku pro nasazení, který byl použit k instalaci zprostředkovatele prostředků.
 
-Různé úlohy čištění provést před spuštěním _DeploySqlProvider.ps1_ skript pro odebrání zprostředkovatele prostředků.
-Klienti jsou zodpovědní za následující úlohy čištění:
+Několik úkolů čištění udělat předtím, než spustíte _DeploySqlProvider.ps1_ skript pro odebrání poskytovatele prostředků.
+Klienti jsou zodpovědné za tyto úlohy čištění:
 
-* Odstraňte všechny své databáze od zprostředkovatele prostředků. (Odstranit databáze klienta neodstraní data.)
-* Zrušení registrace obor názvů zprostředkovatele prostředků.
+* Odstraňte všechny své databáze od zprostředkovatele prostředků. (Při odstranění databáze tenantů neodstraní data.)
+* Zrušit registraci obor názvů zprostředkovatele prostředků.
 
 Správce zodpovídá za tyto úlohy čištění:
 
-* Odstraní hostitelskými servery od zprostředkovatele prostředků SQL.
-* Odstraní všechny plány, které odkazují poskytovatele prostředků SQL.
-* Odstraní všechny kvóty, které jsou spojeny s poskytovatelem prostředků SQL.
+* Odstraní hostitelské servery z poskytovatele prostředků SQL.
+* Odstraní všechny plány, které odkazují na poskytovatele prostředků SQL.
+* Odstraní všechny kvóty, které jsou spojeny s poskytovateli prostředků SQL.
 
 ## <a name="to-remove-the-sql-resource-provider"></a>Chcete-li odebrat poskytovatele prostředků SQL
 
-1. Ověřte, že jste odebrali všechny existující SQL zprostředkovatele závislosti prostředků.
+1. Ověřte, že jste odebrali všechny existující SQL poskytovatele závislosti prostředků.
 
    > [!NOTE]
-   > Odinstalace zprostředkovatele prostředků SQL bude pokračovat i v případě, že zprostředkovatel prostředků aktuálně používáte závislé prostředky.
+   > Odinstalace poskytovatele prostředků SQL bude pokračovat i v případě poskytovatele prostředků aktuálně používají závislé prostředky.
   
-2. Získat binární kopie poskytovatele prostředků SQL a poté spusťte Self-Extractor extrahujte obsah do dočasného adresáře.
+2. Získat binární kopii tohoto poskytovatele prostředků SQL a pak spusťte Self-Extractor extrahujte obsah do dočasného adresáře.
 
-3. Otevřete okno konzoly prostředí PowerShell nové zvýšenými oprávněními a přejděte do adresáře, které jste extrahovali binární soubory zprostředkovatele prostředků SQL.
+3. Otevřete okno konzole Powershellu s nová se zvýšenými oprávněními a přejděte do adresáře, které jste extrahovali binární soubory poskytovatele prostředků SQL.
 
 4. Spusťte skript DeploySqlProvider.ps1 s následujícími parametry:
 
-    * **Odinstalace**. Odebere poskytovatele prostředků a všechny přidružené prostředky.
-    * **PrivilegedEndpoint**. IP adresa nebo název DNS privilegované koncového bodu.
-    * **CloudAdminCredential**. Přihlašovací údaje pro správce cloudu potřebné pro přístup k privilegované koncový bod.
-    * **AzCredential**. Přihlašovací údaje pro účet správce služby Azure zásobníku. Pomocí stejných přihlašovacích údajů, které jste použili pro nasazení Azure zásobníku.
+    * **Odinstalujte**. Odebere poskytovatele prostředků a všechny související prostředky.
+    * **PrivilegedEndpoint**. IP adresa nebo název DNS privileged koncového bodu.
+    * **AzureEnvironment**. Prostředí Azure používá pro nasazení Azure Stack. Vyžaduje se jenom pro nasazení služby Azure AD.
+    * **CloudAdminCredential**. Přihlašovací údaje pro správce cloudu potřebné pro přístup k privilegovaným koncový bod.
+    * **AzCredential**. Přihlašovací údaje pro účet správce služby Azure Stack. Použijte stejné přihlašovací údaje, které jste použili k nasazení Azure Stack.
 
 ## <a name="next-steps"></a>Další postup
 
-[Nabídka aplikační služby jako PaaS](azure-stack-app-service-overview.md)
+[Nabídka App Service jako PaaS](azure-stack-app-service-overview.md)

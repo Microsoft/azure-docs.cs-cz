@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/06/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 412872e607f62f710e013d88822cddc59255992e
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 0e9d57c224150454677a03462368038ed8c63edf
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859948"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576489"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>Podporované scénáře pro velké instance HANA
 Tento dokument popisuje podporované scénáře a jejich podrobnosti architektury pro HANA velké instance (HLI).
@@ -198,7 +198,7 @@ Je předem nakonfigurované následující přípojné body:
 
 ### <a name="key-considerations"></a>Klíčové aspekty
 - /USR/SAP/SID je symbolický odkaz na /hana/shared/SID.
-- Rozdělení velikosti svazku je založená velikosti databáze v paměti. Odkazovat [přehled a architektura](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-architecture) multisid prostředí podporuje části se dozvíte, jaké databáze o velikosti v paměti.
+- Rozdělení velikosti svazku je založená velikosti databáze v paměti. Odkazovat [přehled a architektura](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) multisid prostředí podporuje části se dozvíte, jaké databáze o velikosti v paměti.
 
 ## <a name="3-single-node-with-dr-normal"></a>3. Jeden uzel a zotavení po Havárii (normální)
  
@@ -235,9 +235,9 @@ Je předem nakonfigurované následující přípojné body:
 
 ### <a name="key-considerations"></a>Klíčové aspekty
 - /USR/SAP/SID je symbolický odkaz na /hana/shared/SID.
-- U MCOS: Distribuce velikost svazku závisí vypnout velikost databáze v paměti. Odkazovat [přehled a architektura](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-architecture) multisid prostředí podporuje části se dozvíte, jaké databáze o velikosti v paměti.
+- U MCOS: Distribuce velikost svazku závisí vypnout velikost databáze v paměti. Odkazovat [přehled a architektura](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) multisid prostředí podporuje části se dozvíte, jaké databáze o velikosti v paměti.
 - Na zotavení po Havárii: svazky a přípojné body se konfigurují (označené jako "Vyžadované pro instalaci HANA") pro produkční prostředí instalace HANA Instance na jednotku HLI zotavení po Havárii. 
-- Na zotavení po Havárii: data, logbackups a sdílené svazky (označené jako "Replikace úložiště") se replikují pomocí snímků z pracoviště. Jsou tyto svazky připojené během doby převzetí služeb při selhání. Další informace najdete v dokumentu [postup převzetí služeb při selhání pro zotavení po havárii](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure) další podrobnosti.
+- Na zotavení po Havárii: data, logbackups a sdílené svazky (označené jako "Replikace úložiště") se replikují pomocí snímků z pracoviště. Jsou tyto svazky připojené během doby převzetí služeb při selhání. Další informace najdete v dokumentu [postup převzetí služeb při selhání pro zotavení po havárii](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure) další podrobnosti.
 - Spouštěcí svazek pro **typ SKU můžu třídy** se replikuje do uzlu zotavení po Havárii.
 
 
@@ -284,9 +284,9 @@ Je předem nakonfigurované následující přípojné body:
 
 ### <a name="key-considerations"></a>Klíčové aspekty
 - /USR/SAP/SID je symbolický odkaz na /hana/shared/SID.
-- U MCOS: Distribuce velikost svazku závisí vypnout velikost databáze v paměti. Odkazovat [přehled a architektura](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-architecture) multisid prostředí podporuje části se dozvíte, jaké databáze o velikosti v paměti.
+- U MCOS: Distribuce velikost svazku závisí vypnout velikost databáze v paměti. Odkazovat [přehled a architektura](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) multisid prostředí podporuje části se dozvíte, jaké databáze o velikosti v paměti.
 - Na zotavení po Havárii: svazky a přípojné body se konfigurují (označené jako "Vyžadované pro instalaci HANA") pro produkční prostředí instalace HANA Instance na jednotku HLI zotavení po Havárii. 
-- Na zotavení po Havárii: data, logbackups a sdílené svazky (označené jako "Replikace úložiště") se replikují pomocí snímků z pracoviště. Jsou tyto svazky připojené během doby převzetí služeb při selhání. Další informace najdete v dokumentu [postup převzetí služeb při selhání pro zotavení po havárii](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure) další podrobnosti. 
+- Na zotavení po Havárii: data, logbackups a sdílené svazky (označené jako "Replikace úložiště") se replikují pomocí snímků z pracoviště. Jsou tyto svazky připojené během doby převzetí služeb při selhání. Další informace najdete v dokumentu [postup převzetí služeb při selhání pro zotavení po havárii](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure) další podrobnosti. 
 - Na zotavení po Havárii: data, logbackups, log, sdílené svazky pro kontrolu kvality (označené jako "QA Instance instalace") jsou nakonfigurované pro instalaci instance dotazů a odpovědí.
 - Spouštěcí svazek pro **typ SKU můžu třídy** se replikuje do uzlu zotavení po Havárii.
 
@@ -335,7 +335,7 @@ Je předem nakonfigurované následující přípojné body:
 
 ### <a name="key-considerations"></a>Klíčové aspekty
 - /USR/SAP/SID je symbolický odkaz na /hana/shared/SID.
-- U MCOS: Distribuce velikost svazku závisí vypnout velikost databáze v paměti. Odkazovat [přehled a architektura](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-architecture) multisid prostředí podporuje části se dozvíte, jaké databáze o velikosti v paměti.
+- U MCOS: Distribuce velikost svazku závisí vypnout velikost databáze v paměti. Odkazovat [přehled a architektura](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) multisid prostředí podporuje části se dozvíte, jaké databáze o velikosti v paměti.
 - Využitím techniky STONITH: SBD je nakonfigurován pro instalační program využitím techniky STONITH. Nicméně použití využitím techniky STONITH je volitelný.
 
 
@@ -391,11 +391,11 @@ Je předem nakonfigurované následující přípojné body:
 
 ### <a name="key-considerations"></a>Klíčové aspekty
 - /USR/SAP/SID je symbolický odkaz na /hana/shared/SID.
-- U MCOS: Distribuce velikost svazku závisí vypnout velikost databáze v paměti. Odkazovat [přehled a architektura](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-architecture) multisid prostředí podporuje části se dozvíte, jaké databáze o velikosti v paměti.
+- U MCOS: Distribuce velikost svazku závisí vypnout velikost databáze v paměti. Odkazovat [přehled a architektura](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) multisid prostředí podporuje části se dozvíte, jaké databáze o velikosti v paměti.
 - Využitím techniky STONITH: SBD je nakonfigurován pro instalační program využitím techniky STONITH. Nicméně použití využitím techniky STONITH je volitelný.
 - Na zotavení po Havárii: **dvě sady úložiště svazky jsou požadovány** pro replikaci primárního a sekundárního uzlu.
 - Na zotavení po Havárii: svazky a přípojné body se konfigurují (označené jako "Vyžadované pro instalaci HANA") pro produkční prostředí instalace HANA Instance na jednotku HLI zotavení po Havárii. 
-- Na zotavení po Havárii: data, logbackups a sdílené svazky (označené jako "Replikace úložiště") se replikují pomocí snímků z pracoviště. Jsou tyto svazky připojené během doby převzetí služeb při selhání. Další informace najdete v dokumentu [postup převzetí služeb při selhání pro zotavení po havárii](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure) další podrobnosti. 
+- Na zotavení po Havárii: data, logbackups a sdílené svazky (označené jako "Replikace úložiště") se replikují pomocí snímků z pracoviště. Jsou tyto svazky připojené během doby převzetí služeb při selhání. Další informace najdete v dokumentu [postup převzetí služeb při selhání pro zotavení po havárii](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure) další podrobnosti. 
 - Na zotavení po Havárii: data, logbackups, log, sdílené svazky pro kontrolu kvality (označené jako "QA Instance instalace") jsou nakonfigurované pro instalaci instance dotazů a odpovědí.
 - Spouštěcí svazek pro **typ SKU můžu třídy** se replikuje do uzlu zotavení po Havárii.
 
@@ -559,10 +559,10 @@ Je předem nakonfigurované následující přípojné body:
 ### <a name="key-considerations"></a>Klíčové aspekty
 - /USR/SAP/SID je symbolický odkaz na /hana/shared/SID.
 -  Na zotavení po Havárii: svazky a přípojné body se konfigurují (označené jako "Vyžadované pro instalaci HANA") pro produkční prostředí instalace HANA Instance na jednotku HLI zotavení po Havárii. 
-- Na zotavení po Havárii: data, logbackups a sdílené svazky (označené jako "Replikace úložiště") se replikují pomocí snímků z pracoviště. Jsou tyto svazky připojené během doby převzetí služeb při selhání. Další informace najdete v dokumentu [postup převzetí služeb při selhání pro zotavení po havárii](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure) další podrobnosti. 
+- Na zotavení po Havárii: data, logbackups a sdílené svazky (označené jako "Replikace úložiště") se replikují pomocí snímků z pracoviště. Jsou tyto svazky připojené během doby převzetí služeb při selhání. Další informace najdete v dokumentu [postup převzetí služeb při selhání pro zotavení po havárii](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure) další podrobnosti. 
 - Spouštěcí svazek pro **typ SKU můžu třídy** se replikuje do uzlu zotavení po Havárii.
 
 
 ## <a name="next-steps"></a>Další postup
-- Přečtěte si [infrastruktura a možnosti připojení](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-infrastructure-connectivity) pro HLI
-- Přečtěte si [vysokou dostupnost a zotavení po havárii](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery) pro HLI
+- Přečtěte si [infrastruktura a možnosti připojení](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-infrastructure-connectivity) pro HLI
+- Přečtěte si [vysokou dostupnost a zotavení po havárii](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery) pro HLI

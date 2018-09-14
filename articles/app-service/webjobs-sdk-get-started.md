@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: glenga
-ms.openlocfilehash: 72f7090c285e629149519920ac82f0fe962abc48
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: e2f9bee2adcebfd47ca088a1bbe76b870e285044
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577301"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45580428"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Začínáme se sadou Azure WebJobs SDK pro zpracování na pozadí založený na událostech
 
@@ -102,7 +102,7 @@ Tento článek předpokládá, že máte [účet Azure](https://azure.microsoft.
 
 ## <a name="enable-console-logging"></a>Povolení protokolování konzoly
 
-Existuje několik možností pro protokolování v projektu sady WebJobs SDK. Doporučujeme, abyste je jeden [protokolovacího rozhraní, který byl vyvinut pro ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging). Tento systém nabízí lepší výkon a větší flexibilitu v úložných médií a filtrování. 
+Existuje několik možností pro protokolování v projektu sady WebJobs SDK. Doporučujeme, abyste je jeden [protokolovacího rozhraní, který byl vyvinut pro ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/logging). Tento systém nabízí lepší výkon a větší flexibilitu v úložných médií a filtrování. 
 
 V této části nastavíte konzoly protokolování, který používá novou architekturu.
 

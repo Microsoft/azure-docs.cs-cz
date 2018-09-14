@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 04afd71183bcb8001d017b0027f29338b8d67ddb
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 50de43fd6f9ca579b501c47514c9f8fca4f53ae8
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42442363"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45540964"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Povolit a zkontrolovat Kubernetes hlavní uzel protokolů ve službě Azure Kubernetes Service (AKS)
 
@@ -75,8 +75,7 @@ Může trvat několik minut, než se diagnostické protokoly povolena a zobrazí
 Na levé straně zvolte **prohledávání protokolů**. Chcete-li zobrazit *kube apiserver*, v textovém poli zadejte následující dotaz:
 
 ```
-search *
-| where Type == "AzureDiagnostics"
+AzureDiagnostics
 | where Category == "kube-apiserver"
 | project log_s
 ```
@@ -84,8 +83,7 @@ search *
 Mnoho protokolů jsou pravděpodobně vrátil serveru rozhraní API. K určení oboru dolů dotazu k zobrazení protokolů o pod NGINX vytvořili v předchozím kroku, přidat další *kde* příkazu k vyhledání *podů/nginx* jak ukazuje následující příklad dotazu:
 
 ```
-search *
-| where Type == "AzureDiagnostics"
+AzureDiagnostics
 | where Category == "kube-apiserver"
 | where log_s contains "pods/nginx"
 | project log_s

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/05/2018
 ms.author: gwallace
 ms.custom: include file
-ms.openlocfilehash: e0ab3476713b1fc491c7c8f2e02263c283d42440
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 34cae9172d9b024bd6866742d39d82ad496bfc52
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "43435601"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45570460"
 ---
 | Prostředek | Maximální omezení |Poznámky|
 | --- | --- |---|
@@ -29,6 +29,7 @@ ms.locfileid: "43435601"
 | Maximální počet účtů Automation v rámci předplatného |Bez omezení ||
 |Maximální počet souběžných úloh, která spustíte ve službě jednoho procesu Hybrid Runbook Worker|50 ||
 | Úloha Runbooku maximální velikost parametry   | 512 kb||
+| Maximální počet parametrů   | 50|Můžete předat parametr řetězec JSON nebo XML a analyzovat pomocí sady runbook, pokud dosáhnete limitu 50 parametr|
 | Maximální velikost datové části webhooku |  512 kb|
 
 **<sup>1</sup>**  izolovaný prostor je sdíleném prostředí, které mohou být využívána více úloh a úloh pomocí stejné izolovaného prostoru zavazujete se k jejich omezení prostředků izolovaného prostoru.

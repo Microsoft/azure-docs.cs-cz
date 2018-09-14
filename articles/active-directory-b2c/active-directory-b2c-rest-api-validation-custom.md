@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/24/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b4fda38834782be502e2581b7b3d1097000b07bb
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 0ac9b98a9dfe06492775481cd590bfb4d0db4b55
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37440659"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542578"
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-on-user-input"></a>Návod: Integrace rozhraní REST API služby výměny deklarací identity na vaší cestě uživatele Azure AD B2C, jako na vstup uživatele
 
@@ -118,7 +118,7 @@ Přidání výměna deklarací identit s vlastním potvrzením technický profil
 
 1. Otevřete soubor TrustFrameworkBase.xml a vyhledejte `<TechnicalProfile Id="SelfAsserted-ProfileUpdate">`.
 2. Zkontrolujte konfiguraci této technického profilu. Sledujte, jak je exchange s uživatelem definovaný jako deklarace identity, které vyzve uživatele (vstupními deklaracemi identity) a deklarace identity, které se dají očekávat zpět od s vlastním potvrzením zprostředkovatele (výstupní deklarace identit).
-3. Vyhledejte `TechnicalProfileReferenceId="SelfAsserted-ProfileUpdate`a Všimněte si, že tento profil je vyvolán jako krok Orchestrace 4 `<UserJourney Id="ProfileEdit">`.
+3. Vyhledejte `TechnicalProfileReferenceId="SelfAsserted-ProfileUpdate`a Všimněte si, že tento profil je vyvolán jako krok Orchestrace 5 `<UserJourney Id="ProfileEdit">`.
 
 ## <a name="step-4-upload-and-test-the-profile-edit-rp-policy-file"></a>Krok 4: Nahrání a testovací soubor zásad RP úpravy profilu
 

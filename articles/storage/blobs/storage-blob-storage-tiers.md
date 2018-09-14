@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/11/2017
 ms.author: kuhussai
 ms.component: blobs
-ms.openlocfilehash: b3279006d1ff947b76dd8fbba1438972e5f3ad8b
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: d7d7a6d67efd5ed230750be87450760498f9b877
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630958"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576235"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-storage-tiers"></a>Azure Blob Storage: Horká, studená a archivní úroveň úložiště
 
@@ -73,7 +73,7 @@ V rámci jednoho účtu mohou současně existovat objekty blob ve všech třech
 > Úložiště archivu a ovládání datových vrstev na úrovni objektů blob podporují jenom objekty blob bloku. Nejde také změnit úroveň objektu blob bloku, který má snímky.
 
 ### <a name="blob-lifecycle-management"></a>Správa životního cyklu objektu BLOB
-Správa životního cyklu úložiště objektů BLOB (Preview) nabízí bohatě vybaveným a založený na pravidlech zásad, který můžete použít se převést vaše data, aby nejlepší úroveň přístupu a vypršení platnosti dat na konci svého životního cyklu. Zobrazit [Správa životního cyklu úložiště objektů Blob v Azure](https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts) Další informace.  
+Správa životního cyklu úložiště objektů BLOB (Preview) nabízí bohatě vybaveným a založený na pravidlech zásad, který můžete použít se převést vaše data, aby nejlepší úroveň přístupu a vypršení platnosti dat na konci svého životního cyklu. Zobrazit [Správa životního cyklu úložiště objektů Blob v Azure](https://docs.microsoft.com/azure/storage/common/storage-lifecycle-managment-concepts) Další informace.  
 
 ### <a name="blob-level-tiering-billing"></a>Fakturace ovládání datových vrstev na úrovni objektů blob
 
@@ -191,7 +191,7 @@ Limit úložiště dat je společně s dalšími limity nastavený na úrovni ú
 
 [Ověření dostupnosti horké, studené a archivní úrovně v jednotlivých oblastech](https://azure.microsoft.com/regions/#services)
 
-[Správa životního cyklu úložiště objektů Blob v Azure](https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts)
+[Správa životního cyklu úložiště objektů Blob v Azure](https://docs.microsoft.com/azure/storage/common/storage-lifecycle-managment-concepts)
 
 [Zapnutí metrik Azure Storage a vyhodnocení používání aktuálních účtů úložiště](../common/storage-enable-and-view-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 

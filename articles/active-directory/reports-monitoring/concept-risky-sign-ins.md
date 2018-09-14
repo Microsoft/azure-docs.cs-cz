@@ -14,12 +14,12 @@ ms.component: report-monitor
 ms.date: 11/14/2017
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 4546734cd1b5bf2f4aaddc6477310128c9e62d51
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 3fab0648a2ad0e0a4c193d37875913dd27bf9af4
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42060068"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574266"
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Sestavy rizikových přihlášení na portálu Azure Active Directory
 
@@ -29,9 +29,9 @@ Azure AD detekuje podezřelé akce, které souvisejí s vašimi uživatelskými 
 
 Zjištěné rizikové události se použijí k výpočtu těchto údajů:
 
-- **Riziková přihlášení** – Rizikové přihlášení je indikátorem pokusu o přihlášení, který mohl provést někdo, kdo není legitimním vlastníkem uživatelského účtu. Další podrobnosti najdete v tématu [Riziková přihlášení](../identity-protection/overview.md#risky-sign-ins). 
+- **Riziková přihlášení** –Rizikové přihlášení je indikátorem pokusu o přihlášení, který mohl provést někdo, kdo není legitimním vlastníkem uživatelského účtu. Další podrobnosti najdete v tématu [jak nakonfigurovat zásady rizik přihlašování](../identity-protection/howto-sign-in-risk-policy.md). 
 
-- **Uživatelé označení příznakem rizika** – Rizikový uživatel je indikátorem uživatelského účtu, který mohl být ohrožený. Další podrobnosti najdete v tématu [Uživatelé označení příznakem rizika](../identity-protection/overview.md#users-flagged-for-risk).  
+- **Uživatelé označení příznakem rizika** – Rizikový uživatel je indikátorem uživatelského účtu, který mohl být ohrožený. Další podrobnosti najdete v tématu [jak nakonfigurovat zásady rizik uživatelů](../identity-protection/howto-user-risk-policy.md).  
 
 Na webu [Azure Portal](https://portal.azure.com) najdete sestavy zabezpečení v okně **Azure Active Directory** v části **Zabezpečení**. 
 
@@ -73,7 +73,7 @@ Na základě prošetření rizikového přihlášení můžete službě Azure Ac
 
 ![Riziková přihlášení](./media/concept-risky-sign-ins/21.png)
 
-další informace najdete v tématu věnovaném [ručnímu zavření rizikových událostí](../identity-protection/overview.md#closing-risk-events-manually).
+
 
 V tomto dialogovém okně máte možnost:
 
@@ -98,13 +98,13 @@ Sestavy rizikových přihlášení v edicích Premium služby Azure Active Direc
 
 Při výběru rizikové události získáte zobrazení podrobné sestavy pro tuto rizikovou událost, které umožňuje následující akce:
 
-- Výběr možnosti konfigurace [zásad odstraňování rizik uživatelů](../identity-protection/overview.md#user-risk-security-policy)  
+- Výběr možnosti konfigurace [zásad odstraňování rizik uživatelů](../identity-protection/howto-user-risk-policy.md)  
 
 - Kontrola časové osy zjištění pro rizikové události  
 
 - Kontrola seznamu uživatelů, pro které byla riziková událost zjištěná
 
-- [Ruční zavření rizikových událostí](../identity-protection/overview.md#closing-risk-events-manually) nebo reaktivace ručně zavřené rizikové události 
+- Ruční zavření rizikové události. 
 
 
 ![Riziková přihlášení](./media/concept-risky-sign-ins/457.png)
@@ -124,7 +124,7 @@ Po výběru uživatele získáte podrobné zobrazení sestavy pro tohoto uživat
 
 
 Pokud chcete vyšetřovat rizikovou událost, vyberte ji ze seznamu.  
-Tím otevřete okno **Podrobnosti** pro tuto rizikovou událost. V okně **Podrobnosti** můžete zvolit [ruční zavření rizikové události](../identity-protection/overview.md#closing-risk-events-manually) nebo reaktivaci ručně zavřené rizikové události. 
+Tím otevřete okno **Podrobnosti** pro tuto rizikovou událost. Na **podrobnosti** okně máte možnost buď ruční zavření rizikové události a znovu aktivovat ručně zavřené rizikové události. 
 
 
 ![Riziková přihlášení](./media/concept-risky-sign-ins/325.png)

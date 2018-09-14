@@ -7,41 +7,45 @@ author: juliako
 manager: erikre
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 08/25/2018
+ms.date: 09/09/2018
 ms.author: juliako
-ms.openlocfilehash: b8de9e8d73ba899fb7f3036d871c5d30daf101de
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 6ee87b6d7c89745472bf6000de66f682cbf2cca9
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43049352"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45544110"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>Vložení widgetů Video Indexer do vašich aplikací
 
-Video Indexer podporuje dva typy vkládání widgetů do aplikace: **kognitivní přehledy** a **Player**. 
+Tento článek popisuje, jak můžete vložit Video Indexer widgetů do svých aplikací. Video Indexer podporuje dva typy vkládání widgetů do aplikace: **kognitivní přehledy** a **Player**. 
+## <a name="widget-types"></a>Typy widgetu
 
-* A **kognitivní přehledy** pomůcka zahrnuje všechny vizuální přehledy, které se extrahují z videa indexování procesu. 
-    Ve widgetu insights podporuje následující volitelné parametry adresy URL:
+### <a name="cognitive-insights-widget"></a>Kognitivní přehledy widgetu
 
-    |Název|Definice|Popis|
-    |---|---|---|
-    |pomůcky|Řetězců oddělené čárkami|Umožňuje řídit insights, který chcete vykreslit. <br/>Příklad: **widgety lidí, značky =** budou vykreslovat pouze lidé a značky insights uživatelského rozhraní<br/>Dostupné možnosti: uživatelé, klíčová slova, poznámky, značky, zabarvení, přepis, hledání | 
-* A **Player** widgetu umožňuje Streamovat videa pomocí adaptivní přenosové rychlosti.
+A **kognitivní přehledy** pomůcka zahrnuje všechny vizuální přehledy, které se extrahují z videa indexování procesu. Ve widgetu insights podporuje následující volitelné parametry adresy URL:
 
-    Ve widgetu player podporuje následující volitelné parametry adresy URL:
+|Název|Definice|Popis|
+|---|---|---|
+|pomůcky|Řetězců oddělené čárkami|Umožňuje řídit insights, který chcete vykreslit. <br/>Příklad: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` budou vykreslovat pouze lidé a značky insights uživatelského rozhraní<br/>Dostupné možnosti: uživatelé, kteří, klíčová slova, poznámky, značky, zabarvení, přepis, hledání.<br/>prostřednictvím adresy URL není podporována verze = 2<br/><br/>**Poznámka:** **widgety** param adresa URL není podporováno, pokud **verze = 2** se používá. |
+|verze|Verze **kognitivní přehledy** widgetu|Abyste získali přehledy toho nejnovější aktualizace widgetů, přidejte `?version=2` dotazů odesílaných na adresu url vložení. Například `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?version=2`. <br/> Pokud chcete získat starší verzi, odeberte `version=2` z adresy URL.
 
-    |Název|Definice|Popis|
-    |---|---|---|
-    |t|Počet sekund od začátku|Díky player začít přehrávat v daném časovém bodu.<br/>Příklad: t = 60|
-    |titulky|Kód jazyka|Během načítání k dispozici v nabídce titulky widgetu načte titulek v daném jazyce.<br/>Příklad: popisky = en-Us|
-    |showCaptions|Hodnotu typu boolean|Díky hráč načíst data pomocí popisků již povoleno.<br/>Příklad: showCaptions = true|
-    |type||Aktivuje zvukový přehrávač vzhledu (video část odebrána).<br/>Příklad: Zadejte = zvuku|
-    |Automatické přehrávání|Hodnotu typu boolean|Rozhodněte, zda hráč začínat přehrávání videa při načtení (výchozí hodnota je true).<br/>Příklad: přehrávání = false|
-    |Jazyk|Kód jazyka|Ovládací prvek hráč řídí lokalizace (výchozí hodnota je en US)<br/>Příklad: jazyk = de-DE|
+### <a name="player-widget"></a>Přehrávač widgetu
+
+A **Player** widgetu umožňuje Streamovat videa pomocí adaptivní přenosové rychlosti. Ve widgetu player podporuje následující volitelné parametry adresy URL:
+
+|Název|Definice|Popis|
+|---|---|---|
+|t|Počet sekund od začátku|Díky player začít přehrávat v daném časovém bodu.<br/>Příklad: t = 60|
+|titulky|Kód jazyka|Během načítání k dispozici v nabídce titulky widgetu načte titulek v daném jazyce.<br/>Příklad: popisky = en US|
+|showCaptions|Hodnotu typu boolean|Díky hráč načíst data pomocí popisků již povoleno.<br/>Příklad: showCaptions = true|
+|type||Aktivuje zvukový přehrávač vzhledu (video část odebrána).<br/>Příklad: Zadejte = zvuku|
+|Automatické přehrávání|Hodnotu typu boolean|Označuje, zda hráč začínat přehrávání videa při načtení (výchozí hodnota je true).<br/>Příklad: přehrávání = false|
+|jazyk|Kód jazyka|Určuje jazyk player (výchozí hodnota je en US)<br/>Příklad: jazyk = de-DE|
 
 ## <a name="embedding-public-content"></a>Vkládání veřejného obsahu
 
-1. Přihlaste se k vaší [Video Indexer](https://api-portal.videoindexer.ai/) účtu. 
+1. Přejděte [Video Indexer](https://www.videoindexer.ai/) web a přihlaste se.
 2. Klikněte na tlačítko "Vložit", který se zobrazí pod videem.
 
     ![Widget](./media/video-indexer-embed-widgets/video-indexer-widget01.png)
@@ -60,9 +64,9 @@ Můžete získat Vložit kódy pro vložení automaticky otevíraná okna (jak j
 
 Pokud chcete vložit **privátní** videa, musíte předat přístupového tokenu v **iframe**společnosti **src** atribut:
 
-     https://www.videoindexer.ai/embed/[insights | player]/<accountId>/<VideoId>/?accessToken=<accessToken>
+     https://www.videoindexer.ai/embed/[insights | player]/<accountId>/<videoId>/?accessToken=<accessToken>
     
-Použít [ **získat přehledy widgetu** ](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-insights-widget?) rozhraní API k získání obsahu widgetu kognitivní přehledy, nebo použijte [ **Get Video přístup na Token** ](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?) a přidejte ho jako dotazování odesílaných na adresu url, jak je znázorněno výše. Zadejte tuto adresu URL jako **iframe**společnosti **src** hodnotu.
+Použít [ **získat přehledy widgetu** ](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-insights-widget?) rozhraní API a získat obsah widgetu kognitivní přehledy, nebo použít [ **Get Video přístup na Token** ](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?) a přidejte ho jako dotazování odesílaných na adresu URL, jak je znázorněno výše. Zadejte tuto adresu URL jako **iframe**společnosti **src** hodnotu.
 
 Pokud chcete poskytnout přehledy funkce pro úpravy (jako máme v našich webové aplikace) v vloženého widgetu, budete muset předat přístupový token s oprávnění k úpravám. Použití [ **získat přehledy widgetu** ](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-insights-widget?) nebo [ **Get Video přístup na Token** ](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?) s **& allowEdit = true**. 
 
@@ -216,24 +220,24 @@ Můžete zvolit typy přehledů, které chcete, aby tak, že zadáte jako hodnot
 
 Možné hodnoty jsou: uživatelé, kteří, klíčová slova, zabarvení, přepis, hledání.
 
-Například pokud chcete pro vložení widgetu, který obsahuje pouze lidé a vyhledávání informací adresu URL vložení prvku iframe bude vypadat například takto: https://www.videoindexer.ai/embed/insights/c4c1ad4c9a/?widgets=people, hledání
+Například pokud chcete pro vložení widgetu, který obsahuje pouze lidé a vyhledávání informací adresu URL vložení prvku iframe bude vypadat například takto: https://www.videoindexer.ai/embed/insights/ <accountId> / <videoId>/? pomůcky = uživatelů, vyhledávání
 
-Záhlaví okna iframe se taky dají upravit poskytnutím **& název =** <YourTitle> na adresu url elementu iframe. (Přizpůsobí html \<title > hodnota).
-Například pokud chcete poskytnout název "MyInsights" okno iframe, adresa url bude vypadat například takto: https://www.videoindexer.ai/embed/insights/c4c1ad4c9a/?title=MyInsights. Všimněte si, že je tato možnost je relevantní pouze v případech, když budete muset otevřít přehledy v novém okně.
+Záhlaví okna iframe se taky dají upravit poskytnutím **& název =** <YourTitle> na adresu URL elementu iframe. (Přizpůsobí html \<title > hodnota).
+Například pokud chcete poskytnout název "MyInsights" okno iframe, adresa URL bude vypadat například takto: https://www.videoindexer.ai/embed/insights/ <accountId> / <videoId>/? název = MyInsights. Všimněte si, že je tato možnost je relevantní pouze v případech, když budete muset otevřít přehledy v novém okně.
 
 ### <a name="player-widget"></a>Přehrávač widgetu
 Je-li vložit Video Indexer player můžete velikost hráč tak, že určíte velikost elementu iframe.
 
 Příklad:
 
-    <iframe width="640" height="360" src="https://www.videoindexer.ai/embed/player/{id}” frameborder="0" allowfullscreen />
+    <iframe width="640" height="360" src="https://www.videoindexer.ai/embed/player/<accountId>/<videoId>/" frameborder="0" allowfullscreen />
 
 Ve výchozí přehrávač Video Indexer bude mít automaticky generované skryté titulky založené na přepisu videa, která se extrahují z videa s Zdrojový jazyk, který byl vybrán při videa na server nebyl nahrán.
 
-Pokud chcete vložit v jiném jazyce můžete přidat **& popisky = < jazyka | "vše" | "false" >** player vloženou adresu URL nebo put "all" jako hodnotu, pokud budete chtít mít všechny dostupné jazyky titulky.
-Pokud chcete, aby popisky, který se má zobrazit ve výchozím nastavení můžete předat **& showCaptions = true**
+Pokud chcete vložit v jiném jazyce, můžete přidat **& popisky = < jazyka | "vše" | "false" >** player vloženou adresu URL nebo put "all" jako hodnotu, pokud budete chtít mít všechny dostupné jazyky titulky.
+Pokud chcete popisky, který se má zobrazit ve výchozím nastavení, můžete předat **& showCaptions = true**
 
-Adresa URL vložení pak bude vypadat například takto: https://www.videoindexer.ai/embed/player/9a296c6ec3/?captions=italian. Pokud chcete zakázat popisky můžete předat jako hodnota parametru titulky "false".
+Adresa URL vložení pak bude vypadat například takto: https://www.videoindexer.ai/embed/player/ <accountId> / <videoId>/? titulky = italština. Pokud chcete vypnout popisky, můžete předat jako hodnota parametru titulky "false".
 
 Auto play – ve výchozím nastavení, které hráč se spustí přehrávání videa. Můžete také nikoli k předání & automatické přehrávání = false výše na adresu URL vložení.
 

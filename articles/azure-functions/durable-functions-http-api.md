@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 29fd4e62c13852e23e15f89ab6b4e2976fc42b25
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: c6d7268a8501c602354d21edc5a0feaae9b1a0b2
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44377136"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45575470"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>Rozhraní API protokolu HTTP v Durable Functions (Azure Functions)
 
@@ -266,7 +266,7 @@ Tady je příklad z datové části odpovědi včetně stavové Orchestrace (ve 
 ```
 
 > [!NOTE]
-> Tato operace může být velmi náročné z hlediska vstupně-výstupních operací Azure Storage, pokud obsahuje mnoho řádků v tabulce instancí. Další podrobnosti o instanci tabulky najdete v [výkon a škálování v Durable Functions (Azure Functions)](https://docs.microsoft.com/en-us/azure/azure-functions/durable-functions-perf-and-scale#instances-table) dokumentaci.
+> Tato operace může být velmi náročné z hlediska vstupně-výstupních operací Azure Storage, pokud obsahuje mnoho řádků v tabulce instancí. Další podrobnosti o instanci tabulky najdete v [výkon a škálování v Durable Functions (Azure Functions)](https://docs.microsoft.com/azure/azure-functions/durable-functions-perf-and-scale#instances-table) dokumentaci.
 > 
 
 ### <a name="raise-event"></a>Vyvolání události

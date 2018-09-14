@@ -12,12 +12,12 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 10/17/2017
-ms.openlocfilehash: 48c21638fe5756e6527288ed0fdc73dd9e331afd
-ms.sourcegitcommit: baed5a8884cb998138787a6ecfff46de07b8473d
+ms.openlocfilehash: 667636aac49d2622ba1a6b45d7c8af61b9609c55
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "35622214"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579174"
 ---
 # <a name="image-classification-using-azure-machine-learning-workbench"></a>Klasifikace obrázků s využitím Azure Machine Learning Workbench
 
@@ -95,7 +95,7 @@ Provádějící tyto kroky vytvoří strukturu projektu je uvedeno níže. Adres
 
 ## <a name="data-description"></a>Popis dat
 
-Tento kurz používá jako příklad spuštěn dataset textury oblečení horní tělo skládající se z až 428 imagí. Každé image je označena jako jeden ze tří různých textury (tečkovaná, prokládané leopard). Jsme udržováno počet obrázků malé tak, aby v tomto kurzu lze rychle spustit. Kód je však dobře otestovaný a funguje s desítkami tisíc obrázků nebo více. Všechny bitové kopie byly získaný pomocí Bingu pro vyhledávání obrázků a označena popsaná v dolním [část 3](#using-a-custom-dataset). Obrázek adresy URL s jejich příslušných atributů jsou uvedené v */resources/fashionTextureUrls.tsv* souboru.
+Tento kurz používá jako příklad spuštěn dataset textury oblečení horní tělo skládající se z až 428 imagí. Každé image je označena jako jeden ze tří různých textury (tečkovaná, prokládané leopard). Jsme udržováno počet obrázků malé tak, aby v tomto kurzu lze rychle spustit. Kód je však dobře otestovaný a funguje s desítkami tisíc obrázků nebo více. Všechny bitové kopie byly anotována popsaná v dolním [část 3](#using-a-custom-dataset). Obrázek adresy URL s jejich příslušných atributů jsou uvedené v */resources/fashionTextureUrls.tsv* souboru.
 
 Skript `0_downloadData.py` stáhne všechny bitové kopie do *DATA_DIR/Image/fashionTexture/* adresáře. Některé z 428 adresy URL jsou pravděpodobně poškozený. Není problém a to pouze znamená, že máme o něco méně bitových kopií pro trénování a testování. Všechny skripty, které jsou k dispozici v této ukázce musí být spuštěn lokálně a ne na například vzdáleném prostředí dockeru.
 
@@ -263,11 +263,11 @@ Mezi největší slibně cesty vedoucí k vylepšení patří:
 
 ## <a name="part-3---custom-dataset"></a>Část 3 – vlastní datové sady
 
-V části 1 a 2 jsme trénují a vyhodnocují model klasifikace obrázků pomocí imagí zadaná horní hlavní oblečení textury. Nyní vám ukážeme, jak místo toho použít vlastní uživatelské datové sady. Nebo, pokud není k dispozici, jak vygenerovat a opatřit poznámkami, například datové sady pomocí Bingu Image hledání.
+V části 1 a 2 jsme trénují a vyhodnocují model klasifikace obrázků pomocí imagí zadaná horní hlavní oblečení textury. Nyní vám ukážeme, jak místo toho použít vlastní uživatelské datové sady. 
 
 ### <a name="using-a-custom-dataset"></a>Použití vlastní datové sady
 
-Nejprve dopřejeme si pohled na strukturu složek pro data oblečení textury. Všimněte si, jak všechny Image pro různé atributy jsou v příslušné podsložky *tečkovaná*, * leopard, a *prokládané* na *DATA_DIR/Image/fashionTexture/*. Všimněte si také, jak název složky image také probíhá `PARAMETERS.py` souboru:
+Nejprve dopřejeme si pohled na strukturu složek pro data oblečení textury. Všimněte si, jak všechny Image pro různé atributy jsou v příslušné podsložky *tečkovaná*, *nejnovější verzí leopard*, a *prokládané* na *DATA_DIR nebo imagí / fashionTexture /*. Všimněte si také, jak název složky image také probíhá `PARAMETERS.py` souboru:
 ```python
 datasetName = "fashionTexture"
 ```
@@ -280,14 +280,23 @@ Je důležité, že každé image je možné přiřadit na přesně jeden atribu
 
 ### <a name="image-scraping-and-annotation"></a>Automatizované získávání dat bitové kopie a poznámky
 
-Shromažďování dostatečně velký počet imagí s poznámkami pro trénování a testování může být obtížné. Jedním způsobem, jak tento problém vyřešit, je scrape imagí z Internetu. Například níže jsou uvedeny výsledky vyhledávání obrázků Bingu dotazu *trička prokládané*. Podle očekávání, většina imagí ve skutečnosti jsou rozdělené trička. Několik nesprávný nebo je nejednoznačný obrázků (jako je například sloupec 1, 1; řádek nebo sloupec 3, řádek 2) můžete identifikovat a snadno odebrat:
+Shromažďování dostatečně velký počet imagí s poznámkami pro trénování a testování může být obtížné. Jedním způsobem, jak tento problém vyřešit, je scrape imagí z Internetu.
+
+> [!IMPORTANT] 
+> Pro všechny Image, které používáte, ujistěte se, že není porušení autorských práv. 
+
+<!--
+For example, see below the Bing Image Search results for the query *t-shirt striped*. As expected, most images indeed are striped t-shirts. The few incorrect or ambiguous images (such as column 1, row 1; or column 3, row 2) can be identified and removed easily:
 <p align="center">
 <img src="media/scenario-image-classification-using-cntk/bing_search_striped.jpg" alt="alt text" width="600"/>
 </p>
+-->
 
 Pokud chcete generovat velké a různorodé datové sady, by měla sloužit více dotazů. Například 7\*dotazy můžete syntetizovat automaticky všechny kombinace oblečení položky {halenka, hoodie, pulovru, svetr, tričko, tričko, vestě} a atributy {prokládaný, tečkovaná, leopard} pomocí 3 = 21. Stahování imagí prvních 50 každý dotaz by vést k maximálně 21 * 50 = 1050 bitové kopie.
 
-Místo ručního stahování imagí z Bingu pro vyhledávání obrázků, je mnohem jednodušší použít namísto toho [API vyhledávání obrázků Bingu služeb Cognitive Services](https://www.microsoft.com/cognitive-services/bing-image-search-api) který vrátí sadu zadaný řetězec dotazu adresy URL obrázků.
+<!--
+Rather than manually downloading images from Bing Image Search, it is much easier to instead use the [Cognitive Services Bing Image Search API](https://www.microsoft.com/cognitive-services/bing-image-search-api) which returns a set of image URLs given a query string.
+-->
 
 Některé z stažené obrázky jsou přesné nebo blízko ní. duplicitní položky (například lišit jednoduše tak, že image artefakty řešení nebo jpg). Tyto duplikáty byste měli odebrat tak, aby rozdělení trénování a testování neobsahují stejnou Image. Odebírání duplicitních obrázků lze dosáhnout pomocí přístupu na základě výpočtu hodnoty hash, který pracuje ve dvou krocích: (i) nejprve řetězec hash je vypočítán všechny Image, (ii) v druhého průchodu přes imagí jsou řetězce hash, která ještě nebyla udržuje pouze těchto imagí. Další Image se zahodí. Našli jsme `dhash` přístup v knihovně Python `imagehash` a popsané v tomto [blogu](http://www.hackerfactor.com/blog/index.php?/archives/529-Kind-of-Like-That.html) provádět také pomocí parametru `hash_size` nastaven na hodnotu 16. Je OK nesprávně odebrat některé obrázky neduplicitní tak dlouho, dokud odebírají většinou skutečné duplicitní položky.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/14/2018
 ms.author: aljo
-ms.openlocfilehash: 52730ae24f4917ab593914c390df798f7f58dbde
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: e791ddd3ade2ff486f1c3ec123695ecc155353d6
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42055077"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45541900"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Scénáře zabezpečení clusteru Service Fabric
 Cluster Azure Service Fabric je prostředek, který vlastníte. Je vaší odpovědností zajistit clusterům pomáhá zabránit neoprávněným uživatelům v připojení k nim. Zabezpečení clusteru je obzvláště důležité při spouštění úloh v produkčním prostředí v clusteru. I když je možné vytvořit nezabezpečenému clusteru, pokud clusteru zpřístupní koncových bodů správy do veřejného Internetu, můžete k němu připojit anonymním uživatelům. Nezabezpečené clustery nejsou podporovány pro produkční úlohy. 
@@ -92,6 +92,7 @@ Některé důležité věci k uvážení:
 * K vytvoření certifikátů pro clustery, na kterých běží úlohy v produkčním prostředí, použijte správně nakonfigurovaná služba certifikátů systému Windows Server, nebo jedno z schváleném [certifikační autority (CA)](https://en.wikipedia.org/wiki/Certificate_authority).
 * Nikdy nepoužívejte všechny dočasné nebo testovací certifikáty, které vytvoříte pomocí nástrojů, jako je MakeCert.exe v produkčním prostředí.
 * Můžete použít certifikát podepsaný svým držitelem, ale pouze v clusteru testu. Nepoužívejte certifikát podepsaný svým držitelem v produkčním prostředí.
+* Při generování kryptografický otisk certifikátu, je potřeba vygenerovat kryptografický otisk SHA1. SHA1 se používá při konfiguraci klienta a Cluster kryptografické otisky certifikátu.
 
 ### <a name="cluster-and-server-certificate-required"></a>Certifikát clusteru a serverem (povinné)
 Tyto certifikáty (jeden primární a volitelně sekundární) je potřeba zabezpečit cluster a zabránit neoprávněnému přístupu k němu. Tyto certifikáty poskytovat clusteru a serverem ověřování.

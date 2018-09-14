@@ -1,41 +1,41 @@
 ---
-title: Postup publikování znalostní báze – kognitivní služby Microsoft | Microsoft Docs
-titleSuffix: Azure
-description: Postup publikování znalostní bázi knowledge base
+title: Publikování znalostní báze – QnA Maker
+titleSuffix: Azure Cognitive Services
+description: Publikování znalostní báze je posledním krokem při zpřístupnění znalostní bázi jako koncový bod odpovídání na otázku. Při publikování znalostní báze QnA obsah znalostní báze přesune z indexu testovacího do produkčního prostředí indexu ve službě Azure search.
 services: cognitive-services
 author: nstulasi
-manager: sangitap
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 04/21/2018
+ms.date: 09/12/2018
 ms.author: saneppal
-ms.openlocfilehash: e9dbeacfb0df98c6b8f084c263690c05fe966cdc
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 0a43c54db7af61b72a8e8e6188fd13ad1159271e
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343222"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45540904"
 ---
 # <a name="publish-a-knowledge-base"></a>Publikování znalostní báze
 
-Publikování znalostní báze je v posledním kroku zpřístupnění znalostní báze jako koncový bod odpovědi na otázky. 
+Publikování znalostní báze je posledním krokem při zpřístupnění znalostní bázi jako koncový bod odpovídání na otázku. 
 
-Při publikování znalostní bázi knowledge base QnA obsah znalostní báze přesune z indexu test na produkční index ve službě Azure search.
+Při publikování znalostní báze QnA obsah znalostní báze přesune z indexu testovacího do produkčního prostředí indexu ve službě Azure search.
 
-![Publikování index produkčnímu testu](../media/qnamaker-how-to-publish-kb/publish-prod-test.png)
+![Publikování index prod testu](../media/qnamaker-how-to-publish-kb/publish-prod-test.png)
 
 ## <a name="publish-a-knowledge-base"></a>Publikování znalostní báze
 
-1. Po dokončení změn ve vašem KB, vyberte **publikovat** v horním navigačním panelu. Do přiděleného počtu znalostních bází, které můžete publikovat pro službu Azure Search. 
+1. Po dokončení změn v znalostní BÁZÍ, vyberte **publikovat** v horním navigačním panelu. Až do přiděleného počtu znalostních bází můžete publikovat pro službu Azure Search. 
 
-    ![Publikování znalostní báze knowledge base](../media/qnamaker-how-to-publish-kb/publish.png)
+    ![Publikování znalostní báze](../media/qnamaker-how-to-publish-kb/publish.png)
 
-2. Vyberte **publikovat** znovu a zobrazit podrobnosti koncový bod, které lze použít v kódu aplikace nebo robota.
+2. Vyberte **publikovat** znovu zobrazíte podrobnosti o koncovém bodu, které lze použít v aplikaci nebo robotovi kódu.
 
-    ![Publikování znalostní báze knowledge base](../media/qnamaker-how-to-publish-kb/publish-success.png)
+    ![Publikování znalostní báze](../media/qnamaker-how-to-publish-kb/publish-success.png)
     
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Získat analytics na znalostní báze](./get-analytics-knowledge-base.md)
+> [Získat analýzy na znalostní báze](./get-analytics-knowledge-base.md)

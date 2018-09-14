@@ -1,21 +1,21 @@
 ---
-title: Znalostní báze – Microsoft Cognitive Services | Dokumentace Microsoftu
-titleSuffix: Azure
-description: O znalostní báze
+title: Znalostní báze – QnA Maker
+titleSuffix: Azure Cognitive Services
+description: Znalostní báze QnA Maker se skládá ze sady páry otázek a odpovědí (QnA) a volitelná metadata spojená s každou dvojici QnA.
 services: cognitive-services
 author: nstulasi
-manager: sangitap
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 09/12/2018
 ms.author: saneppal
-ms.openlocfilehash: 5dfb96f454bf5ce3f030ebfc6a97482fcfc9469b
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: e1ac7bd3322f613888ca82cbd3c23c726f0c0e15
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35760224"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45541177"
 ---
 # <a name="knowledge-base"></a>Znalostní báze
 

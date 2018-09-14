@@ -11,20 +11,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/10/2018
+ms.date: 09/12/2018
 ms.author: bwren
-ms.openlocfilehash: 0e513cc4f6a7d5d030ded807870de9eb0fdc0ed8
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 97cf5c06372d416037b875078809aebb7e633456
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972639"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542833"
 ---
 # <a name="data-ingestion-time-in-log-analytics"></a>Doba příjem dat v Log Analytics
 Azure Log Analytics je služba data velkém měřítku, která slouží tisíce zákazníků odesílání terabajty dat měsíčně rostoucí tempem. Jsou často dotazy týkající se čas potřebný pro data k dispozici ve službě Log Analytics po shromáždění zpracovat. Tento článek vysvětluje různé faktory ovlivňující tuto latenci.
 
 ## <a name="typical-latency"></a>Typické latence
-Latence odkazuje na čas, který data se vytvoří v monitorovaném systému a čas, který je k dispozici pro analýzy ve službě Log Analytics. Typické latenci ingestovat data do Log Analytics je od 3 do 10 minut, s 95 % dat přijatých za méně než 7 minut. Konkrétní latence pro všechna data, zejména se liší v závislosti na řadě faktorů, které je popsáno níže.
+Latence odkazuje na čas, který data se vytvoří v monitorovaném systému a čas, který je k dispozici pro analýzy ve službě Log Analytics. Typické latenci ingestovat data do Log Analytics je mezi 2 až 5 minut. Konkrétní latence pro všechna data, zejména se liší v závislosti na řadě faktorů, které je popsáno níže.
 
 ## <a name="sla-for-log-analytics"></a>Smlouva SLA pro službu Log Analytics
 [Log Analytics Service smlouva o úrovni (SLA)](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_1/) je smlouva právní vazby, který definuje, kdy Microsoft náhrad zákazníkům Pokud služba nesplňuje svých cílů. To není založena na typické výkonu systému, ale jeho nejhorším případě účty pro potenciální katastrofické situacích.
@@ -60,7 +60,7 @@ Některá řešení neshromažďují svá data z agenta a mohou používat metod
 Naleznete v dokumentaci pro každé řešení určit její interval shromažďování.
 
 ### <a name="pipeline-process-time"></a>Čas zpracování kanálu
-Jakmile jsou záznamy protokolu přijatých do kanálu Log Analytics, jsou napsaná do dočasného úložiště zajistit izolaci klientů a ujistěte se, že data nejsou ztracena. Tento postup přidá obvykle 5 až 15 sekund. Některá řešení pro správu implementují těžší algoritmy ke shromáždění dat a vyvoďte z nich jako streamování dat v. Například monitorování výkonu sítě agreguje příchozích dat přes 3minutové intervaly efektivně přidání 3minutové latence.
+Jakmile jsou záznamy protokolu přijatých do kanálu Log Analytics, jsou napsaná do dočasného úložiště zajistit izolaci klientů a ujistěte se, že data nejsou ztracena. Tento postup přidá obvykle 5 až 15 sekund. Některá řešení pro správu implementují těžší algoritmy ke shromáždění dat a vyvoďte z nich jako streamování dat v. Například monitorování výkonu sítě agreguje příchozích dat přes 3minutové intervaly efektivně přidání 3minutové latence. Jiný proces, který zvyšuje latenci je proces, který zpracuje vlastní protokoly. V některých případech může tento proces přidat několik minut, latenci na protokoly, které se shromažďují ze souborů pomocí agenta.
 
 ### <a name="new-custom-data-types-provisioning"></a>Nové vlastní datové typy zřizování
 Při vytvoření nového typu vlastních dat z [vlastního protokolu](../log-analytics/log-analytics-data-sources-custom-logs.md) nebo [rozhraní API kolekce dat](../log-analytics/log-analytics-data-collector-api.md), systém vytvoří kontejner vyhrazeného úložiště. Toto je jednorázová režijní náklady, ke které dochází pouze na první výskyt tento typ dat.

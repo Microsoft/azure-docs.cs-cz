@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 83e1fbfeee75534757dcb3c0275ca881e1eea517
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 0bcb6262201b3399ca4d759bb306a570bea33b00
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44297991"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45578765"
 ---
 # <a name="how-to-deploy-a-conversation-learner-bot"></a>Jak nasadit robota Learner konverzace
 
@@ -94,7 +94,7 @@ Robot je nyní spuštěna místně.  Můžete k němu přístup s emulátorem Bo
 
 Publikování podobné stejným způsobem, jakým bude publikována libovolnému robotu konverzace Learner robota. Na vysoké úrovni Nahrajte svůj kód na hostovaný web, nastavte odpovídající konfiguraci hodnoty a pak zaregistrujte robot s různými kanály. Podrobné pokyny jsou toto video ukazuje, jak publikovat robotů pomocí služeb Azure Bot Service.
 
-Po nasazení robota a spuštěná, můžete různé kanály k němu můžete připojit například Facebook, Teams, Skype atd pomocí Azure Bot kanálu registrace. Dokumentaci najdete v tématu proces: https://docs.microsoft.com/en-us/bot-framework/bot-service-quickstart-registration
+Po nasazení robota a spuštěná, můžete různé kanály k němu můžete připojit například Facebook, Teams, Skype atd pomocí Azure Bot kanálu registrace. Dokumentaci najdete v tématu proces: https://docs.microsoft.com/bot-framework/bot-service-quickstart-registration
 
 Níže jsou uvedeny podrobné pokyny pro nasazení do Azure Bot Learner konverzace.  Tyto pokyny předpokládají, že váš robot zdroj je k dispozici z cloudové zdroje, jako Azure DevOps Services, GitHub, BitBucket nebo OneDrive a nakonfiguruje svého robota pro průběžné nasazování.
 

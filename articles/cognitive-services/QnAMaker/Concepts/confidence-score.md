@@ -1,68 +1,68 @@
 ---
-title: Skóre spolehlivosti - kognitivní služby Microsoft | Microsoft Docs
-titleSuffix: Azure
-description: Vysvětlení spolehlivosti skóre
+title: Skóre spolehlivosti – QnA Maker
+titleSuffix: Azure Cognitive Services
+description: Skóre spolehlivosti určuje míru shody mezi uživatele otázky a odpovědi vrácené.
 services: cognitive-services
 author: nstulasi
-manager: sangitap
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 04/21/2018
+ms.date: 09/12/2018
 ms.author: saneppal
-ms.openlocfilehash: c97bdb7e57275ebd1893bc28248c4ecc6b35c153
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 30a29bdcb56eb39bcd004b5a7bf8f3526e2d5c75
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343257"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45541730"
 ---
 # <a name="confidence-score"></a>Skóre spolehlivosti
 
-Skóre spolehlivosti označuje stupeň shody mezi uživatele otázku a odpověď vrácenou.
+Skóre spolehlivosti určuje míru shody mezi uživatele otázky a odpovědi vrácené.
 
-Pokud dotaz uživatele je nalezena shoda obsahu znalostní báze knowledge base, může být více než jeden odpovědi vrácené. Odpovědi se vrátí seřazený podle sestupný spolehlivosti skóre.
+Pokud uživatelský dotaz je hledána obsah znalostní báze, může být více než jeden odpovědi vrácené. Odpovědi se vrátí seřazený podle sestupný skóre spolehlivosti.
 
-Skóre spolehlivosti je od 0 do 100.
+Je skóre spolehlivosti mezi 0 a 100.
 
 |Hodnota skóre|Spolehlivost|
 |--|--|
-|100|Přesná shoda dotaz uživatele a dotaz KB|
-|90|Shodovat s vysoce důvěryhodných - většinu slova|
-|40-60|Odpovídat správného spolehlivosti - důležité slova|
-|10|Nízká spolehlivosti - důležité: slova se neshodují.|
+|100|Přesnou shodu uživatele dotazu a dotaz KB|
+|90|Shodovat s vysokou spolehlivostí - většinu slova|
+|40-60|Veletrh spolehlivosti - odpovídat důležité slova|
+|10|S nízkou spolehlivostí - důležité slova se neshodují|
 |0|Žádná shoda aplikace word|
 
 
-## <a name="similar-confidence-scores"></a>Podobně jako spolehlivosti skóre
-Pokud více odpovědí podobné skóre jistotu, je pravděpodobné, že dotaz byl příliš obecný a proto odpovídající pomocí stejnou pravděpodobnost, že s více odpovědi. Pokuste se struktury vaší QnAs lépe tak, aby každý QnA entita má odlišné záměr.
+## <a name="similar-confidence-scores"></a>Podobně jako skóre spolehlivosti
+Když ukládat více odpovědí mají podobné skóre spolehlivosti, je pravděpodobné, že dotaz byl příliš obecný a proto shodné s stejnou pravděpodobnost, že s více odpovědí. Vystavět strukturu vaší maximálně lépe tak, aby každá entita QnA obsahuje různé záměr.
 
 
-## <a name="improving-confidence-scores"></a>Vylepšení spolehlivosti skóre
-Pokud chcete zvýšit důvěru skóre konkrétní odpověď na dotaz uživatele, můžete přidat dotaz uživatele do znalostní báze jako alternativní otázku na této odpovědi.
+## <a name="improving-confidence-scores"></a>Zvýšení skóre spolehlivosti
+Pro zvýšení skóre spolehlivosti konkrétní odpovědi na dotaz uživatele, můžete přidat uživatelský dotaz ve znalostní bázi jako alternativní dotaz na odpověď.
    
-## <a name="confidence-score-differences"></a>Rozdíly skóre spolehlivosti
-Skóre spolehlivosti odpověď může změnit zanedbatelně mezi test a publikovanou verzi znalostní báze i v případě, že obsah je stejný. Je to proto, že obsah test a publikovaná znalostní báze se nacházejí v různých indexů Azure Search.
+## <a name="confidence-score-differences"></a>Skóre rozdíly spolehlivosti
+Skóre spolehlivosti odpověď může změnit zanedbatelně mezi testu a publikovanou verzi znalostní báze i v případě, obsah je stejný. Je to proto, že obsah testu a publikované znalostní báze jsou umístěné v různých indexů Azure Search.
 
-Tady vidíte jak [publikování](../How-To/publish-knowledge-base.md) operace funguje.
+Tady uvidíte jak [publikovat](../How-To/publish-knowledge-base.md) operace funguje.
 
 
-## <a name="no-match-found"></a>Nebyla nalezena
-Když pomocí ranker není nalezena žádná shoda funkční, je vrácen spolehlivosti skóre 0,0 nebo "Žádný" a "Žádné dobrý nalezena shoda v KB" je odpověď na výchozí. Můžete přepsat toto výchozí odpovědi v kódu robota nebo aplikace, volání koncový bod. Alternativně odpovědi přepsání lze nastavit i v Azure a tato operace změní na výchozí hodnoty pro všechny znalostních bází, které jsou nasazené v určité službě QnA Maker.
+## <a name="no-match-found"></a>Nebyla nalezena žádná odpovídající
+Když dobré shoda nenajde ve klasifikátor, vrátí se skóre spolehlivosti 0,0 nebo "None" a výchozí odpověď je "Dobrá nebyla nalezena žádná odpovídající v KB". Můžete přepsat toto výchozí odpověď v kódu bot nebo aplikaci volání koncového bodu. Alternativně přepsání odpovědi můžete také nastavit v Azure a tím se změní na výchozí hodnoty pro všechny znalostních bází nasazených v konkrétní služba QnA Maker.
 
-1. Přejděte na [portál Azure](http://portal.azure.com) a přejděte do skupiny prostředků, který představuje QnA Maker službu, kterou jste vytvořili.
+1. Přejděte [webu Azure portal](http://portal.azure.com) a přejděte do skupiny prostředků, který představuje službu QnA Maker, kterou jste vytvořili.
 
 2. Kliknutím otevřete **služby App Service**.
 
-    ![Přístup k aplikaci služby](../media/qnamaker-concepts-confidencescore/set-default-response.png)
+    ![Přístup ke službě App service](../media/qnamaker-concepts-confidencescore/set-default-response.png)
 
-3. Klikněte na **nastavení aplikace** a upravit **DefaultAnswer** pole požadované výchozí odpovědi. Klikněte na **Uložit**.
+3. Klikněte na **nastavení aplikace** a upravit **DefaultAnswer** do požadovaného výchozí odpověď. Klikněte na **Uložit**.
 
-    ![Změňte výchozí odpověď](../media/qnamaker-concepts-confidencescore/change-response.png)
+    ![Změnit výchozí odpověď](../media/qnamaker-concepts-confidencescore/change-response.png)
 
-4. Restartovat App service
+4. Restartujte službu App service
 
-    ![Restartování služby App Service QnA Maker](../media/qnamaker-faq/qnamaker-appservice-restart.png)
+    ![Nástroj QnA Maker restartování služby App Service](../media/qnamaker-faq/qnamaker-appservice-restart.png)
 
 
 ## <a name="next-steps"></a>Další postup
@@ -72,4 +72,4 @@ Když pomocí ranker není nalezena žádná shoda funkční, je vrácen spolehl
 
 ## <a name="see-also"></a>Další informace najdete v tématech 
 
-[Přehled QnA Maker](../Overview/overview.md)
+[Přehled nástroje QnA Maker](../Overview/overview.md)

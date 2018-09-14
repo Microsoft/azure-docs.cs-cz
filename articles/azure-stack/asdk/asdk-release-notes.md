@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/12/2018
 git ms.author: brenduns
 ms.reviewer: misainat
-ms.openlocfilehash: 1d3e4724820f7109eb9b695fe06d221a2796c26f
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 9c9b93b5e7877d853a2f27678af61774171c01cb
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44722195"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45543323"
 ---
 # <a name="azure-stack-development-kit-release-notes"></a>Zpráva k vydání verze Azure Stack Development Kit  
 Tento článek obsahuje informace o vylepšení, oprav a známé problémy v Azure Stack Development Kit. Pokud si nejste jistí, kterou verzi používáte, můžete si [použití portálu ke kontrole](.\.\azure-stack-updates.md#determine-the-current-version).
@@ -65,7 +65,7 @@ Toto sestavení obsahuje následující vylepšení a oprav pro Azure Stack.
 
 - <!-- 2515955   | IS ,ASDK--> *Všechny služby* nahradí *další služby* na portálech správce a uživatele Azure stacku. Teď můžete použít *všechny služby* jako alternativu k navigaci na portálech Azure Stack stejným způsobem jako v Azure Portal.
 
-- <!-- TBD | IS, ASDK --> **+ Vytvořit prostředek** nahradí **+ nová** na portálech správce a uživatele Azure stacku.  Teď můžete použít *+ vytvořit prostředek* jako alternativu k navigaci na portálech Azure Stack stejným způsobem jako v Azure Portal. 
+- <!-- TBD | IS, ASDK --> *+ Vytvořit prostředek* nahradí *+ nová* na portálech správce a uživatele Azure stacku.  Teď můžete použít *+ vytvořit prostředek* jako alternativu k navigaci na portálech Azure Stack stejným způsobem jako v Azure Portal. 
 
 - <!--  TBD – IS, ASDK --> *Základní A* velikostí virtuálních počítačů byly ukončeny pro [vytvoření škálovací sady virtuálních počítačů](.\.\azure-stack-compute-add-scalesets.md) (VMSS) prostřednictvím portálu. Pokud chcete vytvořit VMSS se tato velikost, pomocí Powershellu nebo šablony. 
 

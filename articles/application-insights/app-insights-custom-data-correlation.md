@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/08/2018
 ms.reviewer: mbullwin
 ms.author: Evgeny.Ternovsky
-ms.openlocfilehash: 31e37efc1aad3d355bdd8391535f317ec137f5d7
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 6d19c64c74a01a012bac3d867e2d65393ae21cd3
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "40161976"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45577767"
 ---
 # <a name="correlating-application-insights-data-with-custom-data-sources"></a>Usnadňuje korelování dat Application Insights s vlastním zdrojům dat
 
@@ -51,7 +51,7 @@ Chcete-li začít odesílat data do Log Analytics. Existuje několik možností:
 
 ## <a name="correlating-data"></a>Korelace dat
 
-Application Insights je založen na datové platformě Log Analytics. Můžete proto používáme [spojení napříč prostředky](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-cross-workspace-search) ke korelaci žádná data, můžeme pomocí našich dat Application Insights ingestuje do Log Analytics.
+Application Insights je založen na datové platformě Log Analytics. Můžete proto používáme [spojení napříč prostředky](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search) ke korelaci žádná data, můžeme pomocí našich dat Application Insights ingestuje do Log Analytics.
 
 Můžeme například ingestování naše inventáře testovacího prostředí a umístění do tabulky nazvané "LabLocations_CL" v pracovním prostoru Log Analytics volá "myLA". Pokud chceme potom projděte si naše požadavky v Application Insights aplikaci označovanou jako "myAI" sledovány a korelovat názvy počítačů, které se obsluhovat požadavky na umístění tyto počítače uložené v tabulce výše uvedené vlastní, můžeme spustit následující dotaz z Application Insights nebo Log Analytics kontextu:
 
@@ -66,4 +66,4 @@ app('myAI').requests
 ## <a name="next-steps"></a>Další kroky
 
 - Podívejte se [rozhraní API kolekce dat](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api) odkaz.
-- Další informace o [spojení napříč prostředky](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-cross-workspace-search).
+- Další informace o [spojení napříč prostředky](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search).

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 07a5c378ddf73f245104f64e1dae945525a1e01a
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: f08d5732939e853785e2cce1d1e9ed8eea7f9ad7
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381135"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45543135"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Technický profil ověření definování ve vlastních zásadách pro Azure Active Directory B2C
 
@@ -53,8 +53,8 @@ S vlastním potvrzením technický profil může definovat profil technické ov�
 | Atribut | Požaduje se | Popis |
 | --------- | -------- | ----------- |
 | referenceId | Ano | Identifikátor technického profilu již definována v zásadách nebo nadřazené zásady. |
-|ContinueOnError –|Ne| Označující, zda ověření žádné další ověření technické profily by měly pokračovat, pokud tento profil technické validaiton vyvolá chybu. Hodnoty překročila povolený: `ture` nebo `false` (výchozí, se zastaví zpracování další ověření profilů a vrátí chyba). 
-|ContinueOnSuccess | Ne | Označující, zda ověření jakékoli následné ověření profilů by měly pokračovat, pokud tento profil technické ověření proběhne úspěšně. Hodnoty překročila povolený: `ture` nebo `false`. Výchozí hodnota je `true`, což znamená, že zpracování další ověření profily bude pokračovat. |
+|ContinueOnError –|Ne| Označující, zda ověření žádné další ověření technické profily by měly pokračovat, pokud tento profil technické validaiton vyvolá chybu. Hodnoty překročila povolený: `true` nebo `false` (výchozí, se zastaví zpracování další ověření profilů a vrátí chyba). 
+|ContinueOnSuccess | Ne | Označující, zda ověření jakékoli následné ověření profilů by měly pokračovat, pokud tento profil technické ověření proběhne úspěšně. Hodnoty překročila povolený: `true` nebo `false`. Výchozí hodnota je `true`, což znamená, že zpracování další ověření profily bude pokračovat. |
 
 **ValidationTechnicalProfile** prvek obsahuje následující element:
 

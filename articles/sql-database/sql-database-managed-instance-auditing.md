@@ -4,18 +4,18 @@ description: Zjistěte, jak začít pracovat s auditování Azure SQL Database M
 services: sql-database
 author: giladm
 manager: craigg
-ms.reviewer: carlrab
+ms.reviewer: vanto
 ms.service: sql-database
 ms.custom: security
 ms.topic: conceptual
 ms.date: 08/28/2018
 ms.author: giladm
-ms.openlocfilehash: a43ca95717c712c932d29a619b7f1a0671c500bf
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 7671b49921799e63b01d0eb85e90a8b75b2d5a48
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125437"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45544290"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Začínáme s Azure auditem SQL Database Managed Instance
 

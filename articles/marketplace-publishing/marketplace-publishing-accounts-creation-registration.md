@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/04/2017
 ms.author: hascipio
-ms.openlocfilehash: 642e4a2d11ef5a92f5ab46bc4872414966b04c0d
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 24dc50a6c78769877bdc07b9521a9d2e33837937
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715654"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579611"
 ---
 # <a name="create-a-microsoft-developer-account"></a>Vytvoření účtu Microsoft Developer
 Tento článek vás provede vytváření nezbytné účtu a proces registrace schválené Microsoft Developer pro Azure Marketplace.
@@ -38,7 +38,7 @@ Adresa, která tvoří uživatelské jméno by měly být ve vaší doméně a �
 Při vytváření účtu společnosti, postupujte podle následujících pokynů, pokud pro přístup k účtu po přihlášení pomocí účtu Microsoft, které se otevřelo účet bude potřebovat víc než jedna osoba.
 
 > [!Important]
-> Důležité, pokud chcete povolit více uživatelů pro přístup k účtu Dev Center, doporučujeme, abyste pomocí Azure Active Directory pro přiřazení rolí pro jednotlivé uživatele, kteří můžou přístup k účtu, když se přihlásíte pomocí svých osobních přihlašovacích údajů Azure AD. Další informace najdete v tématu [spravovat uživatele účtu](https://msdn.microsoft.com/en-us/windows/uwp/publish/manage-account-users).
+> Důležité, pokud chcete povolit více uživatelů pro přístup k účtu Dev Center, doporučujeme, abyste pomocí Azure Active Directory pro přiřazení rolí pro jednotlivé uživatele, kteří můžou přístup k účtu, když se přihlásíte pomocí svých osobních přihlašovacích údajů Azure AD. Další informace najdete v tématu [spravovat uživatele účtu](https://msdn.microsoft.com/windows/uwp/publish/manage-account-users).
 
 * Vytvoření účtu Microsoft pomocí e-mailovou adresu, která patří do domény vaší společnosti, ale ne k někdo – například windowsapps@fabrikam.com.
 * Omezit přístup k tomuto účtu Microsoft na nejmenší možný počet vývojářů.
@@ -50,7 +50,7 @@ Při vytváření účtu společnosti, postupujte podle následujících pokynů
 
 Váš účet vývojáře by měla přístupná především z důvěryhodných počítačů. To je důležité, protože není omezený počet kódů generovaných každý účet za týden. Taky umožňuje bezproblémové přihlašování.
 
-Další informace o zabezpečení a další vývojářské účet pokyny, klikněte na tlačítko [tady](https://msdn.microsoft.com/en-us/windows/uwp/publish/opening-a-developer-account#additional-guidelines-for-company-accounts).
+Další informace o zabezpečení a další vývojářské účet pokyny, klikněte na tlačítko [tady](https://msdn.microsoft.com/windows/uwp/publish/opening-a-developer-account#additional-guidelines-for-company-accounts).
 
 ### <a name="instructions"></a>Pokyny
 1. Otevřete nový Chrome Incognito nebo Internet Explorer se službou InPrivate relaci procházení k zajištění, že nejste přihlášení k existujícímu účtu.

@@ -9,12 +9,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: carlrab
-ms.openlocfilehash: afc82ea666fdbef89348e7453df92b8d8e1adc86
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 6f160965f11f94c39e823724b192169c3712974d
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39493668"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45575370"
 ---
 # <a name="azure-sql-database-connectivity-architecture"></a>Architektura připojení k Azure SQL Database 
 
@@ -51,7 +51,7 @@ Pokud se chcete připojit z mimo Azure, vaše připojení mají zásady připoje
 ![Přehled architektury](./media/sql-database-connectivity-architecture/connectivity-from-outside-azure.png)
 
 > [!IMPORTANT]
-> Při používání koncových bodů služby s Azure SQL Database je vaše zásady **Proxy** ve výchozím nastavení. Pokud chcete povolit připojení z uvnitř virtuální sítě, povolte odchozí připojení k Azure SQL Database brány IP adresy určené v níže uvedeném seznamu. Při použití koncové body služby, důrazně doporučujeme změna zásad připojení k **přesměrování** umožňuje lepší příjem. Pokud změníte připojení zásadu **přesměrování** nebude stačit povolit odchozí na vaše skupiny zabezpečení sítě k bráně Azure SQLDB níže uvedených IP adres, musíte povolit odchozí ke všem IP adresám SQLDB Azure. To lze provést pomocí značky služeb skupiny zabezpečení sítě (skupiny zabezpečení sítě). Další informace najdete v tématu [značky služeb](https://docs.microsoft.com/en-us/azure/virtual-network/security-overview#service-tags).
+> Při používání koncových bodů služby s Azure SQL Database je vaše zásady **Proxy** ve výchozím nastavení. Pokud chcete povolit připojení z uvnitř virtuální sítě, povolte odchozí připojení k Azure SQL Database brány IP adresy určené v níže uvedeném seznamu. Při použití koncové body služby, důrazně doporučujeme změna zásad připojení k **přesměrování** umožňuje lepší příjem. Pokud změníte připojení zásadu **přesměrování** nebude stačit povolit odchozí na vaše skupiny zabezpečení sítě k bráně Azure SQLDB níže uvedených IP adres, musíte povolit odchozí ke všem IP adresám SQLDB Azure. To lze provést pomocí značky služeb skupiny zabezpečení sítě (skupiny zabezpečení sítě). Další informace najdete v tématu [značky služeb](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
 
 ## <a name="azure-sql-database-gateway-ip-addresses"></a>IP adresy brány Azure SQL Database
 
@@ -81,9 +81,9 @@ V následující tabulce jsou uvedeny primárních a sekundárních IP adresy br
 | Severní Evropa | 191.235.193.75 | 40.113.93.91 |
 | Střed USA – jih | 23.98.162.75 | 13.66.62.124 |
 | Jihovýchodní Asie | 23.100.117.95 | 104.43.15.0 |
-| Spojené království – sever | 13.87.97.210 | |
+| Velká Británie – sever | 13.87.97.210 | |
 | Velká Británie – jih 1 | 51.140.184.11 | |
-| Spojené království – jih 2 | 13.87.34.7 | |
+| Velká Británie – jih 2 | 13.87.34.7 | |
 | Spojené království – západ | 51.141.8.11  | |
 | Západní střed USA | 13.78.145.25 | |
 | Západní Evropa | 191.237.232.75 | 40.68.37.158 |

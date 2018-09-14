@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 0408b26e687dd31c408dbccc68f56e8198016c8f
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 17c67cc07f2bbdee3d71e69068cca6cbcfe3a104
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43664784"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579815"
 ---
 # <a name="deploy-cloud-based-azure-multi-factor-authentication"></a>Nasazení cloudového ověřování Azure Multi-Factor Authentication
 
@@ -30,7 +30,7 @@ Než začnete, ujistěte se, že jsou splněné následující požadavky:
 
 **Povolené zásady podmíněného přístupu** – tato metoda je popsána v tomto článku. Je nejflexibilnější způsob, jak zapnout dvoustupňové ověřování pro vaše uživatele. Povolení používat pouze zásady podmíněného přístupu se dá použít pro Azure MFA v cloudu a je Prémiová funkce služby Azure AD.
 
-Povolená služba Azure AD Identity Protection - Tato metoda používá zásady rizik služby Azure AD Identity Protection a vyžadovat dvoustupňové ověřování jen podle rizika přihlašování pro všechny cloudové aplikace. Tato metoda vyžaduje licencování Azure Active Directory P2. Další informace o této metody můžete najít v [Azure Active Directory Identity Protection](../identity-protection/overview.md#risky-sign-ins).
+Povolená služba Azure AD Identity Protection - Tato metoda používá zásady rizik služby Azure AD Identity Protection a vyžadovat dvoustupňové ověřování jen podle rizika přihlašování pro všechny cloudové aplikace. Tato metoda vyžaduje licencování Azure Active Directory P2. Další informace o této metody můžete najít v [jak nakonfigurovat zásady rizik uživatelů](../identity-protection/howto-user-risk-policy.md).
 
 Povolené tak, že změníte uživatele stav - Toto je tradiční metody pro vyžadováním dvoustupňového ověřování. Funguje to i Azure MFA v cloudu a Azure MFA serveru. Pomocí této metody vyžaduje, aby uživatelé dvoustupňové ověřování **pokaždé, když** přihlásit a přepisuje zásady podmíněného přístupu. Další informace o této metody můžete najít v [vyžadování dvoustupňového ověřování pro uživatele](howto-mfa-userstates.md).
 

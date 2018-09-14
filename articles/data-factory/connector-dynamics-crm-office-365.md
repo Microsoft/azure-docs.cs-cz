@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: jingwang
-ms.openlocfilehash: e4ebddc35b402d7a8997d899ce97577e93a27b84
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: e8e106bc71b87af8cd36f7edb0fe64fcddd6133e
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42444856"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574670"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Kopírování dat z a do Dynamics 365 (Common Data Service) nebo Dynamics CRM pomocí služby Azure Data Factory
 
@@ -279,7 +279,7 @@ Ke zkopírování dat do Dynamics, nastavte typ jímky v aktivitě kopírování
 >[!NOTE]
 >Výchozí hodnota jímka "**writeBatchSize**"a aktivita kopírování"**[parallelCopies](copy-activity-performance.md#parallel-copy)**" Dynamics jímka jsou obě 10. Proto se 100 záznamů odesílají na Dynamics současně.
 
-Pro Dynamics 365 online je stanovený limit [2 batch souběžných volání na organizaci](https://msdn.microsoft.com/en-us/library/jj863631.aspx#Run-time%20limitations). Pokud dojde k překročení tohoto limitu, chybu "Zaneprázdněný Server", je vyvolána předtím, než je někdy spustí první požadavek. Udržování "writeBatchSize" menší než nebo rovno 10 by se vyhnout takové omezení souběžných volání.
+Pro Dynamics 365 online je stanovený limit [2 batch souběžných volání na organizaci](https://msdn.microsoft.com/library/jj863631.aspx#Run-time%20limitations). Pokud dojde k překročení tohoto limitu, chybu "Zaneprázdněný Server", je vyvolána předtím, než je někdy spustí první požadavek. Udržování "writeBatchSize" menší než nebo rovno 10 by se vyhnout takové omezení souběžných volání.
 
 Ideální kombinaci "**writeBatchSize**"a"**parallelCopies**" závisí na schéma vaší entity třeba číslo sloupce, velikost řádku, počet aktivit moduly plug-in a pracovních postupů a pracovních postupů připojili Tato volání atd. Ve výchozím nastavení 10 writeBatchSize * 10 parallelCopies je doporučení podle služby Dynamics, která bude fungovat pro většinu entit Dynamics ale nemusí být nejlepší výkon. Optimalizaci výkonu úpravou kombinaci v nastavení aktivity kopírování.
 

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: jasonh
-ms.openlocfilehash: 5078ee68e559959390d439ed1ef9f8e199d2f083
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 898feee916168792c155190064200555b8331c0f
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43090146"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45577237"
 ---
 # <a name="release-notes-for-azure-hdinsight"></a>Zpráva k vydání verze pro Azure HDInsight
 
@@ -41,7 +41,7 @@ Nové aktualizace a funkce spadají do následujících kategorií:
 
 3.  ***Podpora pro Azure Data Lake Storage Gen2*** – HDInsight bude podporovat verzi Preview služby Azure Data Lake Storage Gen2. Zákazníci budou moct zvolit účet ADLS Gen2 jako primární nebo sekundární úložiště pro svých clusterů HDInsight v oblasti k dispozici.
 
-4.  ***Aktualizace balíčků zabezpečení organizace HDInsight (Preview)*** – (Preview) [koncové body služeb virtuální sítě](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-service-endpoints-overview) podporu pro Azure Blob Storage, ADLS Gen1, Cosmos DB a Azure DB.
+4.  ***Aktualizace balíčků zabezpečení organizace HDInsight (Preview)*** – (Preview) [koncové body služeb virtuální sítě](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) podporu pro Azure Blob Storage, ADLS Gen1, Cosmos DB a Azure DB.
 
 ## <a name="component-versions"></a>Verze součástí
 
@@ -1420,6 +1420,6 @@ Opravené problémy představují vybrané problémy, které byly dříve nahlá
 
 ## <a name="upgrading"></a>Upgrade
 
-Všechny tyto funkce jsou dostupné v HDInsight 3.6. Pokud chcete získat nejnovější verzi Sparku, Kafka a R Server (Machine Learning Services), zvolte prosím Spark, Kafka, verze služby ML když jste [vytvořit cluster HDInsight 3.6](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters). Jak získat podporu pro ADLS, můžete zvolit typ úložiště ADLS jako možnost. Stávajících clusterů nebude automaticky upgradovat na tyto verze.
+Všechny tyto funkce jsou dostupné v HDInsight 3.6. Pokud chcete získat nejnovější verzi Sparku, Kafka a R Server (Machine Learning Services), zvolte prosím Spark, Kafka, verze služby ML když jste [vytvořit cluster HDInsight 3.6](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters). Jak získat podporu pro ADLS, můžete zvolit typ úložiště ADLS jako možnost. Stávajících clusterů nebude automaticky upgradovat na tyto verze.
 
-Všechny nové clustery vytvořené po. června 2018, automaticky získá opravy 1000 ve všech projektech open source. Postupujte prosím podle [to](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-upgrade-cluster) Průvodce pro upgrade na novější verzi HDInsight osvědčené postupy.
+Všechny nové clustery vytvořené po. června 2018, automaticky získá opravy 1000 ve všech projektech open source. Postupujte prosím podle [to](https://docs.microsoft.com/azure/hdinsight/hdinsight-upgrade-cluster) Průvodce pro upgrade na novější verzi HDInsight osvědčené postupy.

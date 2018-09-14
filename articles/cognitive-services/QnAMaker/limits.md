@@ -1,27 +1,28 @@
 ---
-title: Nástroj QnA Maker omezení – Azure Cognitive Services | Dokumentace Microsoftu
-description: Omezení nástroje QnA Maker
+title: Omezení a hranice – QnA Maker
+titleSuffix: Azure Cognitive Services
+description: Úplný seznam omezení napříč QnA Maker.
 services: cognitive-services
 author: nstulasi
-manager: sangitap
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 05/07/2018
-ms.author: saneppal
-ms.openlocfilehash: 93471faab9aac94616c770cbee21fb0364f73639
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.date: 09/12/2018
+ms.author: nstulasi
+ms.openlocfilehash: da1de0c36033823bd8f615411eed183ffe9701b6
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39501856"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574543"
 ---
 # <a name="qna-maker-limits"></a>Omezení nástroje QnA Maker
 Úplný seznam omezení napříč QnA Maker.
 
 ## <a name="knowledge-bases"></a>Znalostních bází
 
-* Maximální počet znalostních bází na základě [omezení vrstvy Azure Search](https://docs.microsoft.com/en-us/azure/search/search-limits-quotas-capacity)
+* Maximální počet znalostních bází na základě [omezení vrstvy Azure Search](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)
 
 |**Vrstva Azure Search** | **Free** | **Basic** |**S1** | **S2**| **S3** |**S3 HD, HIGH DENSITY**|
 |---|---|---|---|---|---|----|
@@ -32,7 +33,7 @@ ms.locfileid: "39501856"
 * Maximální počet hloubkové odkazy, které je možné procházet ze stránek HTML – nejčastější dotazy pro extrakci maximálně: 20
 
 ## <a name="metadata-limits"></a>Omezení metadat
-* Maximální počet polí metadat za znalostní báze podle [omezení vrstvy Azure Search](https://docs.microsoft.com/en-us/azure/search/search-limits-quotas-capacity)
+* Maximální počet polí metadat za znalostní báze podle [omezení vrstvy Azure Search](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)
 
 |**Vrstva Azure Search** | **Free** | **Basic** |**S1** | **S2**| **S3** |**S3 HD, HIGH DENSITY**|
 |---|---|---|---|---|---|----|

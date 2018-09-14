@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 09/11/2018
+ms.date: 09/12/2018
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
-ms.openlocfilehash: b6b7f6f51e848223adcf618ebbc47df08e7ea7ef
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: c9728b63545450fe9160c3e4a79bace254ccc533
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44392231"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45543841"
 ---
 # <a name="user-consent-and-linkedin-account-connections-data-sharing"></a>Souhlas uživatele a sdílení dat prostřednictvím připojení se účet LinkedIn
 
@@ -31,7 +31,7 @@ Pokud chcete zobrazit informace Linkedinu v aplikacím a službám Microsoftu, m
 
 Přístup k informacím o Linkedinu v rámci aplikacím a službám Microsoftu usnadňuje uživatelům připojení, zapojení a vytvářet profesionální vztahy s kolegy, zákazníky a partnery uvnitř i mimo vaši organizaci. Noví uživatelé mohou rychle začít rychlejší připojení s kolegy, získání informací o nich a snadného přístupu k další informace. Tady je příklad toho, jak se zobrazuje na kartě profil v aplikacích Microsoft, LinkedIn informace:
 
-![Povolení s účtem LinkedIn](./media/linkedin-user-consent/display-example-02.png)
+![Povolení s účtem LinkedIn](./media/linkedin-user-consent/display-example.png)
 
 ## <a name="enable-and-announce-linkedin-account-connections"></a>Povolit a oznamujeme s účtem LinkedIn
 

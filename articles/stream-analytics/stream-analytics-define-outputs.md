@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.openlocfilehash: 4fd85135ea16a5183b1b0d5220d1c160044e8841
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: d717737bc2b15e57ae32faffaece96f78a7cc013
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43701010"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45577816"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Vysvětlení vytvořené jako výstupy z Azure Stream Analytics
 Tento článek popisuje různé typy výstupy, které jsou k dispozici pro úlohy Azure Stream Analytics. Výstupy umožňují ukládat a uložit výsledky úlohy Stream Analytics. Pomocí výstupní data, můžete provést další obchodní analýzy a skladování dat vaše data. 
@@ -299,7 +299,7 @@ Následující tabulka shrnuje podporu oddílu a počet modulů pro zápis výst
 | Azure Data Lake Store | Ano | Použijte {date} a {time} tokeny v vzor předpony cesty. Vyberte formát data, jako je rrrr/MM/DD, DD/MM/RRRR MM-DD-RRRR. HH se používá pro formát času. | Následuje vstupní dělení pro [plně paralelizovat dotazy](stream-analytics-scale-jobs.md). | 
 | Azure SQL Database | Ne | Žádný | Není k dispozici. | 
 | Azure Blob Storage | Ano | Použijte {date} a {time} tokeny z polí událostí v vzor cesty. Vyberte formát data, jako je rrrr/MM/DD, DD/MM/RRRR MM-DD-RRRR. HH se používá pro formát času. Jako součást [ve verzi preview](https://aka.ms/ASAPreview), můžete rozdělit na oddíly výstupního objektu blob atributem jednu vlastní událost {pole fieldname} nebo {data a času:\<specifikátor >}. | Následuje vstupní dělení pro [plně paralelizovat dotazy](stream-analytics-scale-jobs.md). | 
-| Centrum událostí Azure | Ano | Ano | Se liší v závislosti na zarovnání oddílu.</br> Výstupem, který klíč oddílu je stejně v souladu s nadřazeného (předchozí) kroku dotazu, počet zapisovače centra událostí je stejný počet výstupu oddílů centra událostí. Každý writer používá pro EventHub [EventHubSender třídy](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet) k odesílání událostí do konkrétních oddílů. </br> Pokud výstup Eventhub klíč oddílu není zarovnána s nadřazeného (předchozí) kroku dotazu, počet modulů pro zápis je stejný jako počet oddílů v tomto dřívějším kroku. Každý writer používá EventHubClient [SendBatchAsync třídy](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet) k odesílání událostí do všech oddílů výstup. |
+| Centrum událostí Azure | Ano | Ano | Se liší v závislosti na zarovnání oddílu.</br> Výstupem, který klíč oddílu je stejně v souladu s nadřazeného (předchozí) kroku dotazu, počet zapisovače centra událostí je stejný počet výstupu oddílů centra událostí. Každý writer používá pro EventHub [EventHubSender třídy](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet) k odesílání událostí do konkrétních oddílů. </br> Pokud výstup Eventhub klíč oddílu není zarovnána s nadřazeného (předchozí) kroku dotazu, počet modulů pro zápis je stejný jako počet oddílů v tomto dřívějším kroku. Každý writer používá EventHubClient [SendBatchAsync třídy](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet) k odesílání událostí do všech oddílů výstup. |
 | Power BI | Ne | Žádný | Není k dispozici. | 
 | Azure Table Storage | Ano | Výstup je sloupec.  | Následuje vstupní dělení pro [plně paralelizovaná dotazy](stream-analytics-scale-jobs.md). | 
 | Služby Azure Service Bus | Ano | Automaticky zvolí. Počet oddílů je založen na [SKU služby Service Bus a velikost](../service-bus-messaging/service-bus-partitioning.md). Klíč oddílu je jedinečné celé číslo pro každý oddíl.| Stejný jako počet oddílů tématu výstup.  |

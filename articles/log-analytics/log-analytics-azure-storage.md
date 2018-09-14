@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: dec2abdf68b3a38706549b4b655e33bc7abca1a3
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7633d00c24a18763d414b1a2595073753d651a50
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38452667"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579016"
 ---
 # <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>Shromažďovat protokoly služby Azure a metriky pro použití v Log Analytics
 
@@ -45,7 +45,7 @@ Existují různé způsoby shromažďování protokolů a metrik pro služby Azu
 | Obor názvů centra událostí     | Microsoft.EventHub/namespaces           | Diagnostika | Diagnostika | |
 | IoT Huby                | Microsoft.Devices/IotHubs               |             | Diagnostika | |
 | Key Vault               | Microsoft.KeyVault/vaults               | Diagnostika |             | [Analýza služby KeyVault](log-analytics-azure-key-vault.md) |
-| Služby vyrovnávání zatížení          | Microsoft.Network/loadBalancers         | Diagnostika |             |  |
+| Nástroje pro vyrovnávání zatížení          | Microsoft.Network/loadBalancers         | Diagnostika |             |  |
 | Logic Apps              | Microsoft.Logic/workflows <br> Microsoft.Logic/integrationAccounts | Diagnostika | Diagnostika | |
 | Network Security Groups (Skupiny zabezpečení sítě) | Microsoft.Network/networksecuritygroups | Diagnostika |             | [Analýzy skupin zabezpečení sítě Azure](log-analytics-azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-log-analytics) |
 | Trezory služby Recovery         | Microsoft.RecoveryServices/vaults       |             |             | [Analýza (Preview) služby Azure Recovery Services](https://github.com/krnese/AzureDeploy/blob/master/OMS/MSOMS/Solutions/recoveryservices/)|
@@ -57,7 +57,7 @@ Existují různé způsoby shromažďování protokolů a metrik pro služby Azu
 | Virtuální počítače        | Microsoft.Compute/virtualMachines       | Linka   | Linka <br> Diagnostika  | |
 | Škálovací sady virtuálních počítačů | Microsoft.Compute/virtualMachines <br> Microsoft.Compute/virtualMachineScaleSets/virtualMachines |             | Diagnostika | |
 | Farmy webových serverů        | Microsoft.Web/serverfarms               |             | Diagnostika | |
-| Weby               | Microsoft.Web/sites <br> Microsoft.Web/sites/slots |             | Diagnostika | [Azure Web Apps Analytics (Náhled)](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-web-apps-analytics) |
+| Weby               | Microsoft.Web/sites <br> Microsoft.Web/sites/slots |             | Diagnostika | [Azure Web Apps Analytics (Náhled)](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-web-apps-analytics) |
 
 
 > [!NOTE]

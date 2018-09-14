@@ -1,6 +1,6 @@
 ---
-title: Doručování obsahu Číně s Azure CDN | Microsoft Docs
-description: Další informace o použití Azure sítě pro doručování obsahu (CDN) při doručování obsahu uživatelům Číně.
+title: Čína doručování obsahu s Azure CDN | Dokumentace Microsoftu
+description: Další informace o použití Azure Content Delivery Network (CDN) k doručování obsahu uživatelům v Číně.
 services: cdn
 documentationcenter: ''
 author: dksimpson
@@ -15,55 +15,55 @@ ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: 59788f301bb501103babd55a2ac37102932f4dcf
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 12a29e5af287c5cc68c3bd9d7069534ff16c496f
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34260050"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45573225"
 ---
-# <a name="china-content-delivery-with-azure-cdn"></a>Doručování obsahu Číně s Azure CDN
+# <a name="china-content-delivery-with-azure-cdn"></a>Čína doručování obsahu s Azure CDN
 
-Azure obsah Delivery Network (CDN) globální může obsluhovat obsahu uživatelům Číně se umístění point of presence (POP) téměř Číně nebo všechny POP, který poskytuje nejlepší výkon na požadavky pocházejících z Číny. Ale pokud Čína je důležité trhu pro vaše zákazníky a potřebují vysoký výkon, zvažte, místo toho pomocí Azure CDN China.
+Azure Content Delivery Network (CDN) globální může obsluhovat obsah uživatelům Čína se umístění point-of-presence (POP) v Číně nebo jakékoli POP, která poskytuje nejlepší výkon pro žádosti pocházející z Číny. Pokud Čína významné trhu pro vaše zákazníky a potřebují rychlý výkon, zvažte ale místo toho použití Azure CDN China.
 
-Azure CDN Číně se liší od Azure CDN globální v tom, že zajišťuje obsah z bodů POP v Číně prostřednictvím partnerských několik místní poskytovatelů. Z důvodu čínština dodržování předpisů a nařízení je třeba zaregistrovat samostatné předplatné použít Azure CDN China a vaše weby musí mít licenci ICP. Rozhraní API a portálu prostředí povolit a správě obsahu je stejný jako mezi globální CDN Azure a Azure CDN China doručení.
+Azure CDN (Čína) se liší od Azure CDN je globální, doručuje obsah z bodů POP v Číně Díky partnerství s celou řadou místních poskytovatelů. Z důvodu čínský dodržování předpisů a nařízení je třeba zaregistrovat samostatné předplatné pro použití Azure CDN China a vaše weby musí mít licenci ICP. Prostředí portálu a rozhraní API povolit a spravovat obsah doručování je stejný jako mezi Azure CDN je globální a Azure CDN China.
 
-## <a name="comparison-of-azure-cdn-global-and-azure-cdn-china"></a>Porovnání Azure CDN globální a Číně Azure CDN
+## <a name="comparison-of-azure-cdn-global-and-azure-cdn-china"></a>Porovnání Azure CDN je globální a Azure CDN China
 
-Azure CDN globální a Číně CDN Azure mají následující funkce:
+Azure CDN je globální a Azure CDN China mají tyto funkce:
 
-- Globální Azure CDN:
+- Azure CDN je globální:
 
      - Portál: https://portal.azure.com  
 
-     - Provede doručování obsahu mimo Čína
+     - Provádí doručování obsahu mimo Čína
 
-     - Čtyři cenové úrovně: Microsoft standard, Verizon standard, Verizon premium a Akamai standard
+     - Čtyři cenové úrovně: Microsoft standard, Verizon úrovně standard, Verizon úrovně premium a Akamai standard
 
-     - [Dokumentace](https://docs.microsoft.com/en-us/azure/cdn/)
+     - [Dokumentace ke službě](https://docs.microsoft.com/azure/cdn/)
 
-- Čína Azure CDN:
+- Azure CDN Čína:
 
      - Portál: https://portal.azure.cn
 
-     - Provede doručování obsahu v Číně
+     - Provádí doručování obsahu v Číně
 
      - Dvě cenové úrovně: Standard a premium
 
-     - [Dokumentace](https://docs.azure.cn/en-us/cdn/)
+     - [Dokumentace ke službě](https://docs.azure.cn/en-us/cdn/)
  
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o Azure CDN China najdete v tématu:
+Další informace o Azure CDN China, naleznete v tématu:
 
-- [Funkce sítě pro doručování obsahu](https://www.azure.cn/en-us/home/features/cdn/)
+- [Funkce síť pro doručování obsahu](https://www.azure.cn/en-us/home/features/cdn/)
 
-- [Přehled sítě pro doručování obsahu Azure](https://docs.azure.cn/en-us/cdn/cdn-overview)
+- [Přehled služby Azure Content Delivery Network](https://docs.azure.cn/en-us/cdn/cdn-overview)
 
-- [Použijte síť pro doručování obsahu Azure](https://docs.azure.cn/en-us/cdn/cdn-how-to-use)
+- [Použití Azure Content Delivery Network](https://docs.azure.cn/en-us/cdn/cdn-how-to-use)
 
-- [Dostupnost služby Azure v Číně](https://docs.microsoft.com/en-us/azure/china/china-get-started-service-availability)
+- [Dostupnost služeb Azure v Číně](https://docs.microsoft.com/azure/china/china-get-started-service-availability)
 
 
 

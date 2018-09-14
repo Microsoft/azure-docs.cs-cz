@@ -6,16 +6,16 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 09/13/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
 keywords: ''
-ms.openlocfilehash: 26ee1c8f02a0a4e5aa5048a7a02929c448106ffd
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 253598373512b1508482235be028b12163a85a9a
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44024954"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45580680"
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Azure Stack – integrace datových center – publikování koncových bodů
 
@@ -32,9 +32,8 @@ Sada infrastrukturu virtuálních IP adres je vyžadován pro publikování konc
 
 Interní infrastrukturu virtuálních IP adres nejsou uvedené, protože nejsou požadovány pro publikování Azure Stack.
 
-> [!NOTE]
+> [!Note]  
 > Uživatel virtuální IP adresy je dynamická a určené samotných uživatelů s žádnou kontrolu operátorem služby Azure Stack.
-
 
 |Koncový bod (VIP)|Záznam hostitele DNS|Protocol (Protokol)|Porty|
 |---------|---------|---------|---------|
@@ -66,6 +65,8 @@ Interní infrastrukturu virtuálních IP adres nejsou uvedené, protože nejsou 
 
 Azure Stack podporuje pouze transparentní proxy servery. V nasazení tam, kde transparentní proxy server odchozí připojení k tradiční proxy server, musíte povolit následující porty a adresy URL pro odchozí komunikaci:
 
+> [!Note]  
+> Azure Stack nepodporuje použití Expressroute pro dosažení služby Azure, které jsou uvedeny v následující tabulce.
 
 |Účel|zprostředkovatele identity|Protocol (Protokol)|Porty|
 |---------|---------|---------|---------|

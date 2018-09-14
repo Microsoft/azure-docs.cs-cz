@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 5b31188eb5618d0ec5ac1f89c590913e4e284d9f
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 1b8b680736c49c0036600bf4337da6952cf38afb
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36337832"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45573635"
 ---
 # <a name="account-management-operations-on-azure-data-lake-store-using-rest-api"></a>Operace správy účtů v Azure Data Lake Store pomocí rozhraní REST API
 > [!div class="op_single_selector"]
@@ -42,7 +42,7 @@ Ověřování pomocí služby Azure Active Directory můžete provádět dvěma 
 
 
 ## <a name="create-a-data-lake-store-account"></a>Vytvoření účtu Data Lake Store
-Tato operace je založená na volání rozhraní REST API, které je definované [tady](https://docs.microsoft.com/en-us/rest/api/datalakestore/accounts/create).
+Tato operace je založená na volání rozhraní REST API, které je definované [tady](https://docs.microsoft.com/rest/api/datalakestore/accounts/create).
 
 Použijte následující příkaz cURL. Položku **\<yourstorename>** nahraďte názvem Data Lake Store.
 
@@ -59,7 +59,7 @@ Ve výše uvedeném příkazu nahraďte položku \<`REDACTED`\> autorizačním t
     }    
 
 ## <a name="delete-a-data-lake-store-account"></a>Odstranění účtu Data Lake Store
-Tato operace je založená na volání rozhraní REST API, které je definované [tady](https://docs.microsoft.com/en-us/rest/api/datalakestore/accounts/delete).
+Tato operace je založená na volání rozhraní REST API, které je definované [tady](https://docs.microsoft.com/rest/api/datalakestore/accounts/delete).
 
 Pokud chcete odstranit účet Data Lake Store, použijte následující příkaz cURL. Položku **\<yourstorename>** nahraďte názvem Data Lake Store.
 

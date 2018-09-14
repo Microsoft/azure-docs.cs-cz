@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: 361905b4c1e0c9e596cb7cf1cd5a730268d81bd0
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 706e946e61f7d5f48ce5071e90d724af717449d9
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413405"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45575214"
 ---
 # <a name="azure-operational-security-overview"></a>Přehled provozního zabezpečení Azure
 [Azure operational security](https://docs.microsoft.com/azure/security/azure-operational-security) odkazuje na služby, ovládací prvky a funkce, které jsou dostupné pro uživatele k ochraně svých dat, aplikací a dalších prostředků ve službě Microsoft Azure. Je architektura, která zahrnuje poznatky získané prostřednictvím různých možností, které jsou jedinečné pro Microsoft. Mezi tyto možnosti patří Microsoft Security Development Lifecycle (SDL), programu Microsoft Security Response Center a hloubkové povědomí o zabezpečení.
@@ -68,7 +68,7 @@ Azure AD zahrnuje také plnohodnotné sadě [možnosti správy identit](https://
 S Azure Active Directory, všechny aplikace, které publikujete pro partnery a zákazníky (firmy nebo spotřebitele) mají stejnou identitu a přístup k funkcím správy. To umožňuje výrazně snížit provozní náklady.
 
 ## <a name="azure-security-center"></a>Azure Security Center
-[Azure Security Center](https://docs.microsoft.com/en-us/azure/security-center/security-center-intro) pomáhá zabránit, detekci a reakce na ně prostřednictvím zvýšené viditelnosti (a kontrolu nad) zabezpečení vašich prostředků Azure. Poskytuje integrované bezpečnostní sledování a správu zásad ve vašich předplatných. To pomáhá detekovat hrozby, které jinak nevšimli, a spolupracuje s řadou řešení zabezpečení.
+[Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) pomáhá zabránit, detekci a reakce na ně prostřednictvím zvýšené viditelnosti (a kontrolu nad) zabezpečení vašich prostředků Azure. Poskytuje integrované bezpečnostní sledování a správu zásad ve vašich předplatných. To pomáhá detekovat hrozby, které jinak nevšimli, a spolupracuje s řadou řešení zabezpečení.
 
 [Chránit data virtuálních počítačů (VM)](https://docs.microsoft.com/azure/security-center/security-center-linux-virtual-machine) v Azure tak, že poskytuje vhled do nastavení zabezpečení vašich virtuálních počítačů a monitoruje hrozby. Security Center může u virtuálních počítačů monitorovat:
 

@@ -9,12 +9,13 @@ ms.custom: security
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: giladm
-ms.openlocfilehash: 918c7e023de8f25975b898fdfb86d541e02879f3
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.reviewer: vanto
+ms.openlocfilehash: 935baf791d9244f2fa4f5be9c02d4778244754de
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44720989"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45543742"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Začínáme s auditem databáze SQL
 Auditování Azure SQL database sleduje události databáze a zapisuje je do auditu protokolu ve vašem účtu úložiště Azure. Také auditování:

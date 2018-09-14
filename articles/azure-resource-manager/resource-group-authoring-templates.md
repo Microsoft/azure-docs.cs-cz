@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: e1964b7f46259e54c65aeb46aa795713922c3504
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 129d02bea6fe3668a308da0ab2a46ca8b59928e7
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39114608"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542240"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Princip struktury a syntaxe šablon Azure Resource Manageru
 Tento článek popisuje strukturu šablony Azure Resource Manageru. Představuje různé části šablony a vlastnosti, které jsou k dispozici v těchto oddílech. Šablona se skládá z JSON a z výrazů, které můžete použít k vytvoření hodnot pro vaše nasazení. Podrobný kurz k vytvoření šablony najdete v tématu [vytvoření první šablony Azure Resource Manageru](resource-manager-create-first-template.md).
@@ -33,7 +33,7 @@ Ve své nejjednodušší struktury šablony obsahuje následující prvky:
     "contentVersion": "",
     "parameters": {  },
     "variables": {  },
-    "functions": {  },
+    "functions": [  ],
     "resources": [  ],
     "outputs": {  }
 }
@@ -46,7 +46,7 @@ Ve své nejjednodušší struktury šablony obsahuje následující prvky:
 | parameters |Ne |Hodnoty, které jsou k dispozici při spuštění nasazení přizpůsobení nasazení prostředků. |
 | Proměnné |Ne |Hodnoty, které se používají jako fragmentů JSON v šabloně pro zjednodušení výrazy jazyka šablony. |
 | functions |Ne |Uživatelem definované funkce, které jsou k dispozici v rámci šablony. |
-| zdroje |Ano |Typy prostředků, které jsou nasazené nebo aktualizují ve skupině prostředků. |
+| prostředků |Ano |Typy prostředků, které jsou nasazené nebo aktualizují ve skupině prostředků. |
 | výstupy |Ne |Hodnoty, které se vrátí po nasazení. |
 
 Každý prvek má vlastnosti, které můžete nastavit. Následující příklad ukazuje úplnou syntaxi šablony:
@@ -313,4 +313,4 @@ Některá omezení šablony mohou překročit pomocí vnořené šablony. Dalš�
 * Hotové šablony pro mnoho různých typů řešení najdete na stránce [Šablony Azure pro rychlý start](https://azure.microsoft.com/documentation/templates/).
 * Podrobnosti o funkce, které můžete použít z v rámci šablony najdete v tématu [funkce šablon Azure Resource Manageru](resource-group-template-functions.md).
 * Kombinovat více šablon během nasazení, najdete v článku [použití propojených šablon s Azure Resource Managerem](resource-group-linked-templates.md).
-* Doporučení týkající se vytvoření šablony Resource Manageru, které můžete použít pro globální Azure, Azure suverénních cloudech a Azure Stack, najdete v tématu [šablon vývoj Azure Resource Manageru pro cloud konzistence](templates-cloud-consistency.md).
+* Doporučení týkající se vytváření šablon Resource Manageru, které můžete používat v globálních oblastech Azure, suverénních cloudech Azure a ve službě Azure Stack, najdete v článku o [vývoji šablon Azure Resource Manageru pro konzistenci cloudu](templates-cloud-consistency.md).

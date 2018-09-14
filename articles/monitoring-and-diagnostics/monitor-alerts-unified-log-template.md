@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 588a0686eda1966582b82a4673a8b6805453c94c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6096833381db7ef0d2f011d517aaad4ae63ce4d6
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441438"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576863"
 ---
 # <a name="create-a-log-alert-with-a-resource-manager-template"></a>Vytvoření upozornění na protokol pomocí šablony Resource Manageru
 Tento článek popisuje, jak můžete spravovat [upozornění protokolů](monitor-alerts-unified-log.md) prostřednictvím kódu programu ve velkém měřítku v Azure s využitím [šablony Azure Resource Manageru](..//azure-resource-manager/resource-group-authoring-templates.md) prostřednictvím [prostředí Azure Powershell](../azure-resource-manager/resource-group-template-deploy.md) a [Rozhraní příkazového řádku azure](../azure-resource-manager/resource-group-template-deploy-cli.md). Aktuálně Azure Alerts, podporuje upozornění protokolů na dotazy z [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) a [Azure Application Insights](../application-insights/app-insights-analytics-tour.md).
@@ -35,12 +35,12 @@ Log Analytics výstrah REST API je RESTful a je přístupný prostřednictvím r
 Další informace o [vytvářet a spravovat pravidla výstrah ve službě Log Analytics pomocí rozhraní REST API](../log-analytics/log-analytics-api-alerts.md), včetně příkladů přístup k rozhraní API z Powershellu.
 
 ## <a name="managing-log-alert-on-application-insights"></a>Správa upozornění protokolu v Application Insights
-Upozornění protokolů pro Azure Application Insights byly zavedeny jako součást nové výstrahy Azure v části Azure Monitor. Proto poběží v rámci rozhraní API služby Azure Monitor jako [naplánované pravidla dotazu](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/) skupina operace REST.
+Upozornění protokolů pro Azure Application Insights byly zavedeny jako součást nové výstrahy Azure v části Azure Monitor. Proto poběží v rámci rozhraní API služby Azure Monitor jako [naplánované pravidla dotazu](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) skupina operace REST.
 
 ### <a name="using-azure-resource-manager-template"></a>Pomocí šablony Azure Resource Manageru
-Upozornění protokolu pro prostředky Application Insights má typ `Microsoft.Insights/scheduledQueryRules/`. Další informace v tomto typu prostředku, naleznete v tématu [Azure Monitor – reference k rozhraní API naplánované pravidla dotazu](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/).
+Upozornění protokolu pro prostředky Application Insights má typ `Microsoft.Insights/scheduledQueryRules/`. Další informace v tomto typu prostředku, naleznete v tématu [Azure Monitor – reference k rozhraní API naplánované pravidla dotazu](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/).
 
-Tady je struktury [vytváření pravidel dotazu naplánované](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/createorupdate) na základě šablony prostředků s ukázkovou datovou sadu jako proměnné.
+Tady je struktury [vytváření pravidel dotazu naplánované](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate) na základě šablony prostředků s ukázkovou datovou sadu jako proměnné.
 
 ```json
 {
@@ -113,7 +113,7 @@ Tady je struktury [vytváření pravidel dotazu naplánované](https://docs.micr
 }
 ```
 > [!IMPORTANT]
-> Značka pole Skrytá odkazy na cílový prostředek je povinné použití [naplánované pravidla dotazu ](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/) šablonu volání nebo prostředku rozhraní API. 
+> Značka pole Skrytá odkazy na cílový prostředek je povinné použití [naplánované pravidla dotazu ](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) šablonu volání nebo prostředku rozhraní API. 
 
 Výše uvedené ukázky json se dají uložit jako (Řekněme) sampleScheduledQueryRule.json pro účely tohoto návodu a je možné nasadit s použitím [Azure Resource Manageru na webu Azure portal](../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template).
 

@@ -8,18 +8,18 @@ ms.reviewer: vanto
 ms.service: sql-database
 ms.custom: security
 ms.topic: conceptual
-ms.date: 07/10/2018
+ms.date: 09/10/2018
 ms.author: giladm
-ms.openlocfilehash: a69142ebabc4af8b8543dc5dd276b99130620470
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: aca01e67339d5f6d003021cb17f1787093b79eda
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714968"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45543958"
 ---
 # <a name="azure-sql-database-data-discovery-and-classification"></a>Azure SQL Database Data zjišťování a klasifikace
 Data zjišťování a klasifikace (aktuálně ve verzi preview) nabízí rozšířené možnosti, které jsou integrované do Azure SQL Database pro **zjišťování**, **klasifikace**, **označování**  &  **ochrana** citlivá data ve vašich databázích.
-Zjišťování a klasifikace vaše nejcitlivější data (business, finanční, zdravotní péče, identifikovatelné osobní údaje, atd.) můžete přehrát velmi důležitou roli v zásadní roli. ochrany vaší organizace. Může sloužit jako infrastruktura pro:
+Zjišťování a klasifikace nejcitlivější data (obchodní finanční, zdravotní péče, identifikovatelné osobní údaje (PII) a atd.) můžete přehrát velmi důležitou roli v zásadní roli. ochrany vaší organizace. Může sloužit jako infrastruktura pro:
 * Pomáhá splnit požadavky na dodržování legislativních předpisů a data standardy ochrany osobních údajů.
 * Různé scénáře zabezpečení, jako je například monitorování (auditování) a upozorňuje na neobvyklé přístup k citlivým datům.
 * Řízení přístupu k a posílení zabezpečení databáze, které obsahují hodně citlivá data.
@@ -42,6 +42,17 @@ Následující část popisuje kroky pro zjišťování, klasifikace a označov�
 Klasifikace obsahuje dva atributy metadat:
 * Popisky – atributy hlavní klasifikace se používá k definování úroveň citlivosti dat uložených ve sloupci.  
 * Typy informací – poskytují další členitosti do typ dat uložených ve sloupci.
+
+## <a name="define-and-customize-your-classification-taxonomy"></a>Definování a přizpůsobení taxonomii klasifikace
+
+SQL zjišťování a klasifikace dat se dodává s integrovanou sadou popisků citlivosti a integrovaná sada typů informací a logiku zjišťování. Teď máte možnost přizpůsobit tato taxonomie a definovat sadu a pořadí konstrukce klasifikace speciálně pro vaše prostředí.
+
+Definice a přizpůsobení taxonomie klasifikace se provádí v jednom centrálním místě pro celého tenanta Azure. Umístění, které se nachází v [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro), jako součást zásad zabezpečení. Tuto úlohu jde provést jenom uživatel s oprávněním Tenanta kořenové skupiny pro správu.
+
+V rámci správy zásad služby Information Protection můžete definovat vlastní popisky, Ohodnoťte je a přidružit vybranou sadu typů informací. Můžete také přidat vlastní typy vlastních informací a nakonfigurovat řetězec vzory, které se přidají do logiky zjišťování pro identifikaci tohoto typu dat ve vašich databázích.
+Další informace o přizpůsobení a správa vašich zásad v [příručky s postupy zásady služby Information Protection](https://go.microsoft.com/fwlink/?linkid=2009845&clcid=0x409).
+
+Po definování zásady pro celého tenanta, můžete pokračovat s klasifikací jednotlivé databáze pomocí vlastní zásady.
 
 ## <a name="classify-your-sql-database"></a>Klasifikace vaše databáze SQL
 

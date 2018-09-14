@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: 9f7fb5009468dccae50190ee40a53d11040d0348
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: debefb329304235818b7b441122b90ae9a2834a9
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37903743"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45578306"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Analýza provozu – nejčastější dotazy
 
@@ -58,7 +58,7 @@ Kontrola role přiřazené uživateli pro předplatné:
 
 3. K zobrazení seznamu všech rolí, které jsou přiřazeny k zadané uživatele, použijte **Get-AzureRmRoleAssignment - SignInName [e-mail uživatele] - IncludeClassicAdministrators**. 
 
-Pokud nevidíte žádný výstup, obraťte se na příslušného předplatného správce získat přístup ke spuštění příkazů. Další podrobnosti najdete v tématu [spravovat řízení přístupu podle role pomocí prostředí Azure PowerShell](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-powershell).
+Pokud nevidíte žádný výstup, obraťte se na příslušného předplatného správce získat přístup ke spuštění příkazů. Další podrobnosti najdete v tématu [spravovat řízení přístupu podle role pomocí prostředí Azure PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell).
 
 
 ## <a name="in-which-azure-regions-are-traffic-analytics-available"></a>Ve které oblasti jsou analýzu provozu dostupné?
@@ -196,7 +196,7 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
 
 Analýza provozu se měří. Měření je založen na zpracování dat protokolů toku službou a ukládání výsledný rozšířené protokoly v pracovním prostoru Log Analytics. 
 
-Příklad, jak je uvedeno [cenový plán](https://azure.microsoft.com/en-us/pricing/details/network-watcher/), vzhledem k tomu oblasti střed USA – Západ, pokud protokolů toku dat uložených v účtu úložiště, zpracování analýzy provozu je 10 GB a vylepšené protokoly v pracovním prostoru Log Analytics je 1 GB pak bude příslušné poplatky jsou: 10 x 2.3$ + 1 × 2.76$ = 25.76$
+Příklad, jak je uvedeno [cenový plán](https://azure.microsoft.com/pricing/details/network-watcher/), vzhledem k tomu oblasti střed USA – Západ, pokud protokolů toku dat uložených v účtu úložiště, zpracování analýzy provozu je 10 GB a vylepšené protokoly v pracovním prostoru Log Analytics je 1 GB pak bude příslušné poplatky jsou: 10 x 2.3$ + 1 × 2.76$ = 25.76$
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-geo-map-view"></a>Jak můžete Navigovat pomocí klávesnice v zobrazení geografické mapy?
 

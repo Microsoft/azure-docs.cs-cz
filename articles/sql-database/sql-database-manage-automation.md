@@ -9,12 +9,12 @@ ms.custom: monitor & tune
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 43476cfcae2035c3b8e94b4a5e264a0c8ff424e0
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 0636a4daf06e4d476935773e65cd388f94d99986
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44715444"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45578256"
 ---
 # <a name="managing-azure-sql-databases-using-azure-automation"></a>Správa databází Azure SQL Database pomocí Azure Automation.
 Tato příručka vás seznámí s služby Azure Automation a jak ho lze zjednodušit správu vašich databází Azure SQL.
@@ -27,7 +27,7 @@ Azure Automation poskytuje s vysoce spolehlivé a vysoce dostupného prováděc�
 Snižte operační režii a uvolnit tak IT / pracovníci DevOps a zaměřte se na práci, která vytváří obchodní hodnota přesunutím úkoly správy cloudu ke spuštění automaticky službou Azure Automation.
 
 ## <a name="how-can-azure-automation-help-manage-azure-sql-databases"></a>Jak pomáhá Azure Automation. Správa databází Azure SQL Database?
-Azure SQL Database můžete spravovat ve službě Azure Automation s použitím [rutin Powershellu pro službu Azure SQL Database](https://docs.microsoft.com/en-us/powershell/module/servicemanagement/azure/?view=azuresmps-4.0.0#sql) , které jsou k dispozici v [prostředí Azure PowerShell nástroje](/powershell/azure/overview). Tak, aby bylo možné provádět všechny úlohy správy vaší databáze SQL ve službě Azure Automation obsahuje tyto rutiny Powershellu pro službu Azure SQL Database k dispozici hned po spuštění. Můžete také spárovat tyto rutiny ve službě Azure Automation s rutinami pro dalšími službami Azure, automatizují komplexní úlohy napříč službami Azure a systémech 3. stran.
+Azure SQL Database můžete spravovat ve službě Azure Automation s použitím [rutin Powershellu pro službu Azure SQL Database](https://docs.microsoft.com/powershell/module/servicemanagement/azure/?view=azuresmps-4.0.0#sql) , které jsou k dispozici v [prostředí Azure PowerShell nástroje](/powershell/azure/overview). Tak, aby bylo možné provádět všechny úlohy správy vaší databáze SQL ve službě Azure Automation obsahuje tyto rutiny Powershellu pro službu Azure SQL Database k dispozici hned po spuštění. Můžete také spárovat tyto rutiny ve službě Azure Automation s rutinami pro dalšími službami Azure, automatizují komplexní úlohy napříč službami Azure a systémech 3. stran.
 
 Azure Automation má také možnost ke komunikaci se servery SQL přímo, pomocí příkazů SQL pomocí prostředí PowerShell.
 

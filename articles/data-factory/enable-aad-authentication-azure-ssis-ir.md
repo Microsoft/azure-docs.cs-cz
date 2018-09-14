@@ -1,6 +1,6 @@
 ---
-title: Povolení ověřování Azure Active Directory pro modul runtime integrace Azure SSIS | Microsoft Docs
-description: Tento článek popisuje postup konfigurace modulu runtime integrace Azure SSIS povolit připojení, které používají ověřování Azure Active Directory.
+title: Povolit ověřování Azure Active Directory pro prostředí Azure-SSIS integration runtime | Dokumentace Microsoftu
+description: Tento článek popisuje, jak nakonfigurovat prostředí Azure-SSIS integration runtime umožňující připojení, která používají ověřování Azure Active Directory.
 services: data-factory
 documentationcenter: ''
 author: douglaslMS
@@ -12,29 +12,29 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 06/21/2018
 ms.author: douglasl
-ms.openlocfilehash: 93d3e25957fb1f04400fa78423a5658d32f7d5fd
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: aa06110a6f6fe668388c6aecd98c1ddeeae37edd
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36749714"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576625"
 ---
-# <a name="enable-azure-active-directory-authentication-for-the-azure-ssis-integration-runtime"></a>Povolení ověřování Azure Active Directory pro modul runtime integrace Azure SSIS
+# <a name="enable-azure-active-directory-authentication-for-the-azure-ssis-integration-runtime"></a>Povolit ověřování Azure Active Directory pro prostředí Azure-SSIS integration runtime
 
-Tento článek ukazuje, jak vytvořit Azure SSIS IR s identitou služby Azure Data Factory. Ověřování Azure Active Directory (Azure AD) se na spravované služby Identity (MSI) pro modul runtime integrace Azure SSIS umožňuje používali k vytváření modulu runtime integrace Azure SSIS MSI objekt pro vytváření dat místo ověřování SQL.
+V tomto článku se dozvíte, jak vytvořit prostředí Azure-SSIS IR s identitou služby Azure Data Factory. Ověřování Azure Active Directory (Azure AD) se Identity spravované služby (MSI) pro Azure-SSIS integration runtime vám umožní používat MSI objekt pro vytváření dat namísto ověřování SQL pro vytvoření prostředí Azure-SSIS integration runtime.
 
-Další informace o MSI objekt pro vytváření dat najdete v tématu [identita služby Azure Data Factory](https://docs.microsoft.com/en-us/azure/data-factory/data-factory-service-identity).
+Další informace o Data Factory MSI najdete v tématu [identitu služby Azure Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity).
 
 > [!NOTE]
-> Pokud jste již vytvořili modulu runtime integrace Azure SSIS pomocí ověřování SQL, nelze změnit konfiguraci IR používat ověřování Azure AD pomocí prostředí PowerShell v tuto chvíli.
+> Pokud jste již vytvořili prostředí Azure-SSIS integration runtime pomocí ověřování SQL, nelze změnit konfiguraci prostředí IR používat ověřování Azure AD pomocí prostředí PowerShell v tuto chvíli.
 
 ## <a name="create-a-group-in-azure-ad-and-make-the-data-factory-msi-a-member-of-the-group"></a>Vytvoření skupiny ve službě Azure AD a nastavte MSI objekt pro vytváření dat jako člena skupiny
 
-Můžete použít existující skupinu pro Azure AD, nebo vytvořte novou pomocí Azure AD PowerShell.
+Můžete vytvořit stávající skupinu Azure AD nebo pomocí Azure AD PowerShellu vytvořit novou.
 
 1.  Nainstalujte [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) modulu.
 
-2.  Přihlaste se pomocí `Connect-AzureAD`a spusťte následující příkaz pro vytvoření skupiny a uložte ho do proměnné:
+2.  Přihlaste se pomocí `Connect-AzureAD`a spusťte následující příkaz k vytvoření skupiny a uložte ho jako proměnnou:
 
     ```powershell
     $Group = New-AzureADGroup -DisplayName "SSISIrGroup" `
@@ -43,7 +43,7 @@ Můžete použít existující skupinu pro Azure AD, nebo vytvořte novou pomoc�
                               -MailNickName "NotSet"
     ```
 
-    Výstup bude vypadat jako v následujícím příkladu, který také zkoumá hodnotu proměnné:
+    Výstup bude vypadat podobně jako v následujícím příkladu, který také zkontroluje hodnotu proměnné:
 
     ```powershell
     $Group
@@ -53,55 +53,55 @@ Můžete použít existující skupinu pro Azure AD, nebo vytvořte novou pomoc�
     6de75f3c-8b2f-4bf4-b9f8-78cc60a18050 SSISIrGroup
     ```
 
-3.  Přidejte soubor MSI objekt pro vytváření dat do skupiny. Můžete postupovat podle [identita služby Azure Data Factory](https://docs.microsoft.com/en-us/azure/data-factory/data-factory-service-identity) získat ID objektu zabezpečení IDENTITY služby (například 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc, ale pro tento účel nepoužívejte ID aplikace IDENTITY služby).
+3.  Přidejte Instalační služby MSI objekt pro vytváření dat do skupiny. Můžete postupovat podle [identitu služby Azure Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) k získání ID objektu zabezpečení IDENTITY služby (například 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc, ale není pro tento účel použít ID aplikace IDENTITY služby).
 
     ```powershell
     Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc
     ```
 
-    Také můžete zkontrolovat členství ve skupině i později.
+    Také můžete zkontrolovat členství ve skupinách i později.
 
     ```powershell
     Get-AzureAdGroupMember -ObjectId $Group.ObjectId
     ```
 
-## <a name="enable-azure-ad-on-azure-sql-database"></a>Povolení služby Azure AD na databázi Azure SQL
+## <a name="enable-azure-ad-on-azure-sql-database"></a>Povolení služby Azure AD pro službu Azure SQL Database
 
-Azure SQL Database podporuje vytváření databáze pomocí uživatele Azure AD. V důsledku toho můžete nastavit uživatele Azure AD jako správce Active Directory a pak se přihlaste do aplikace SSMS pomocí uživatele Azure AD. Potom můžete vytvořit uživatele Azure AD skupiny pro povolení IR vytvoření katalogu integrační služby SSIS (SQL Server) na serveru.
+Azure SQL Database podporuje vytváření databáze pomocí uživatele Azure AD. V důsledku toho můžete nastavit uživatele služby Azure AD jako správce Active Directory a pak připojte se k SSMS s využitím uživatele Azure AD. Potom můžete vytvořit uživatele pro skupiny služby Azure AD umožňuje prostředí IR k vytvoření katalogu SQL Server Integration Services (SSIS) na serveru.
 
-### <a name="enable-azure-ad-authentication-for-the-azure-sql-database"></a>Povolení ověřování Azure AD pro databázi SQL Azure
+### <a name="enable-azure-ad-authentication-for-the-azure-sql-database"></a>Povolit ověřování Azure AD pro Azure SQL Database
 
-Můžete [nakonfigurovat ověřování Azure AD pro databázi SQL](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-aad-authentication-configure) pomocí následujících kroků:
+Je možné [konfigurovat ověřování Azure AD pro službu SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure) pomocí následujících kroků:
 
-1.  Na portálu Azure vyberte **všechny služby** -> **servery SQL** z levé navigaci.
+1.  Na webu Azure Portal, vyberte **všechny služby** -> **SQL servery** v levém navigačním panelu.
 
-2.  Vyberte databázi SQL, aby byl povolen pro ověřování Azure AD.
+2.  Vyberte databázi SQL, aby byla povolená pro ověřování Azure AD.
 
 3.  V **nastavení** části okna vyberte **správce Active Directory**.
 
 4.  Na panelu příkazů vyberte **nastavit správce**.
 
-5.  Vyberte uživatelský účet služby Azure AD budou správce serveru, a potom vyberte **vyberte.**
+5.  Vyberte uživatelský účet služby Azure AD provádí správce serveru a potom vyberte **vyberte.**
 
 6.  Na panelu příkazů vyberte **uložit.**
 
-### <a name="create-a-contained-user-in-the-database-that-represents-the-azure-ad-group"></a>Vytvořte uživatele v databázi, která reprezentuje skupinu Azure AD
+### <a name="create-a-contained-user-in-the-database-that-represents-the-azure-ad-group"></a>Vytvoření uživatele v databázi reprezentujícího skupinu Azure AD
 
-Pro tento další krok, je nutné [Microsoft SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS).
+Tento další krok, budete potřebovat [Microsoft SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) (SSMS).
 
 1.  Spusťte aplikaci SQL Server Management Studio.
 
-2.  V **připojit k serveru** dialogové okno, zadejte název serveru SQL v **název serveru** pole.
+2.  V **připojit k serveru** dialogové okno, zadejte název vašeho SQL serveru v **název serveru** pole.
 
-3.  V **ověřování** pole, vyberte **Universal s podpora vícefaktorového ověřování služby Active Directory -**. (Můžete také použít další dva typy ověřování služby Active Directory. V tématu [konfigurovat a spravovat ověřování Azure Active Directory s databází SQL, spravované Instance](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-aad-authentication-configure).)
+3.  V poli **Ověřování** vyberte **Active Directory – univerzální s podporou vícefaktorového ověřování**. (Můžete také použít další dva typy ověřování služby Active Directory. Zobrazit [konfigurovat a spravovat ověřování Azure Active Directory s využitím SQL Database Managed Instance](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure).)
 
-4.  V **uživatelské jméno** pole, zadejte název účtu Azure AD, které jste nastavili jako správce serveru – například testuser@xxxonline.com.
+4.  V **uživatelské jméno** pole, zadejte název účtu služby Azure AD, kterou jste nastavili jako správce serveru – například testuser@xxxonline.com.
 
-5.  Vyberte **Connect**. Dokončete proces přihlášení.
+5.  Vyberte **připojit**. Dokončete proces přihlašování.
 
-6.  V **Průzkumník objektů**, rozbalte **databáze** -> složku systémové databáze.
+6.  V **Průzkumník objektů**, rozbalte **databází** -> složku systémové databáze.
 
-7.  Vyberte práva na **hlavní** databáze a vyberte **nový dotaz**.
+7.  Stisknutém pravém tlačítku vyberte na **hlavní** databáze a vyberte **nový dotaz**.
 
 8.  V okně dotazu zadejte následující řádek a vyberte **Execute** na panelu nástrojů:
 
@@ -109,49 +109,49 @@ Pro tento další krok, je nutné [Microsoft SQL Server Management Studio](https
     CREATE USER [SSISIrGroup] FROM EXTERNAL PROVIDER
     ```
 
-    Příkaz je úspěšně dokončena, vytvoření obsažené uživatele pro skupinu.
+    Příkaz by se měl úspěšně provést a vytvořit uživatele pro skupinu.
 
-9.  Vymazat okno dotazu, zadejte následující řádek a vybrat **Execute** na panelu nástrojů:
+9.  Zrušte v okně dotazu zadejte následující řádek a vyberte **Execute** na panelu nástrojů:
 
     ```sql
     ALTER ROLE dbmanager ADD MEMBER [SSISIrGroup]
     ```
 
-    Příkaz je úspěšně dokončena, udělení obsažené uživateli možnost pro vytvoření databáze.
+    Příkaz je úspěšně dokončena, poskytování omezením uživateli možnost vytvářet databáze.
 
-## <a name="enable-azure-ad-on-azure-sql-database-managed-instance"></a>Povolení služby Azure AD na spravované Instance databáze Azure SQL
+## <a name="enable-azure-ad-on-azure-sql-database-managed-instance"></a>Povolení služby Azure AD na spravované instanci Azure SQL Database
 
-Azure SQL Database spravované Instance nepodporuje vytvoření databáze pomocí žádné uživatele Azure AD, než správce AD. V důsledku toho je nutné nastavit skupiny AD Azure jako správce služby Active Directory. Nemusíte vytvořit obsažené uživatele.
+Azure SQL Database Managed Instance nepodporuje vytvoření databáze pomocí jakéhokoli uživatele Azure AD, než správce AD. V důsledku toho je nutné nastavit skupiny Azure AD jako správce služby Active Directory. Není nutné pro vytvoření uživatele s omezením.
 
-Můžete [konfigurovat ověřování služby Azure AD pro spravované Instance databáze SQL serveru](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-aad-authentication-configure) pomocí následujících kroků:
+Je možné [konfigurovat ověřování Azure AD pro server SQL Database Managed Instance](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication-configure) pomocí následujících kroků:
 
-7.  Na portálu Azure vyberte **všechny služby** -> **servery SQL** z levé navigaci.
+7.  Na webu Azure Portal, vyberte **všechny služby** -> **SQL servery** v levém navigačním panelu.
 
-8.  Vyberte SQL server, aby byl povolen pro ověřování Azure AD.
+8.  Vyberte SQL server, aby byla povolená pro ověřování Azure AD.
 
 9.  V **nastavení** části okna vyberte **správce Active Directory**.
 
 10. Na panelu příkazů vyberte **nastavit správce**.
 
-11. Hledání a vyberte skupiny AD Azure (například SSISIrGroup) a vyberte **vyberte.**
+11. Hledání a vyberte skupiny Azure AD (například SSISIrGroup) a vyberte **vyberte.**
 
 12. Na panelu příkazů vyberte **uložit.**
 
-## <a name="provision-the-azure-ssis-ir-in-the-portal"></a>Zřízení Azure SSIS Reakcí na portálu
+## <a name="provision-the-azure-ssis-ir-in-the-portal"></a>Zřízení prostředí Azure-SSIS IR na portálu
 
-Při přidělení vaší IR Azure SSIS pomocí portálu Azure, na **nastavení SQL** stránka, zkontrolujte "použití AAD ověřování s vaší ADF MSI" možnost. (Následující snímek obrazovky ukazuje nastavení pro reakcí na Incidenty s Azure SQL Database. Pro IR s spravované Instance vlastnost "Katalogu databáze služby vrstvy" není k dispozici. Další nastavení jsou stejné.)
+Při zřízení prostředí Azure-SSIS IR pomocí webu Azure portal, na **nastavení SQL** stránky, zkontrolujte "použití AAD ověřování pomocí vašeho ADF MSI" možnost. (Na následujícím snímku obrazovky ukazuje nastavení pro prostředí IR s Azure SQL Database. Pro prostředí IR Managed instance není k dispozici; vlastnost "Vrstvy služeb databáze katalogu" Další nastavení jsou stejné.)
 
-Další informace o tom, jak vytvořit modulu runtime integrace Azure SSIS najdete v tématu [v Azure Data Factory vytvořit modulu runtime integrace Azure SSIS](https://docs.microsoft.com/en-us/azure/data-factory/create-azure-ssis-integration-runtime).
+Další informace o tom, jak vytvořit prostředí Azure-SSIS integration runtime najdete v tématu [vytvořit prostředí Azure-SSIS integration runtime ve službě Azure Data Factory](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
 
-![Nastavení pro modul runtime integrace Azure SSIS](media/enable-aad-authentication-azure-ssis-ir/enable-aad-authentication.png)
+![Nastavení prostředí Azure-SSIS integration runtime](media/enable-aad-authentication-azure-ssis-ir/enable-aad-authentication.png)
 
-## <a name="provision-the-azure-ssis-ir-with-powershell"></a>Zřídit IR Azure SSIS pomocí prostředí PowerShell
+## <a name="provision-the-azure-ssis-ir-with-powershell"></a>Zřízení prostředí Azure-SSIS IR pomocí Powershellu
 
-Pokud chcete zřídit vaší IR Azure SSIS pomocí prostředí PowerShell, proveďte následující akce:
+Ke zřízení prostředí Azure-SSIS IR pomocí Powershellu, proveďte následující akce:
 
 1.  Nainstalujte [prostředí Azure PowerShell](https://github.com/Azure/azure-powershell/releases/tag/v5.5.0-March2018) modulu.
 
-2.  Ve vašem skriptu, nenastavujte *CatalogAdminCredential* parametr. Příklad:
+2.  Ve skriptu, nenastavujte *CatalogAdminCredential* parametru. Příklad:
 
     ```powershell
     Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `

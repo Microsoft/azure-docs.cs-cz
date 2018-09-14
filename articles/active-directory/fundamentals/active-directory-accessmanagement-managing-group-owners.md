@@ -1,11 +1,9 @@
 ---
-title: Další kroky pro správu přístupu pomocí skupin, Azure AD | Dokumentace Microsoftu
-description: Jak pokročilé – pro správu skupin zabezpečení a jak používat tyto skupiny pro správu přístupu k prostředku.
+title: Postup přidání nebo odebrání vlastníků skupin Azure Active Directory | Dokumentace Microsoftu
+description: Zjistěte, jak přidat nebo odebrat vlastníky skupiny pomocí služby Azure Active Directory.
 services: active-directory
-documentationcenter: ''
 author: eross-msft
 manager: mtillman
-editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.component: fundamentals
@@ -13,35 +11,61 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: lizross
 ms.custom: it-pro
-ms.openlocfilehash: d84c3b556f27366c249382a37e0a8227726110cf
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 5ca2115e8f5f2e18c31477135aa94bc04d6d9256
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714680"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45577391"
 ---
-# <a name="managing-owners-for-a-group"></a>Správa vlastníků pro skupinu
-Jakmile vlastníka prostředku má přidělený přístup k prostředku na skupiny Azure AD, členství ve skupině spravuje ho vlastník skupiny. Vlastník prostředku deleguje efektivní oprávnění pro přiřazení uživatelů k prostředku na vlastníka skupiny.
+# <a name="how-to-add-or-remove-group-owners-in-azure-active-directory"></a>Postupy: Přidání nebo odebrání vlastníků skupin v Azure Active Directory
+Skupiny Azure Active Directory (Azure AD) je vlastněna a řízena vlastníky skupiny. Vlastníci skupiny jsou přiřazeny ke správě skupiny a její členy podle vlastníka prostředku (správce). Vlastníci skupiny nemusejí být členy skupiny. Po přiřazení vlastníka skupiny jenom vlastník prostředku můžete přidat nebo odebrat vlastníky.
+
+V některých případech se jako správce může rozhodnete přiřadit jako vlastníka skupiny. V tomto případě stát vlastníkem skupiny. Vlastníci kromě toho můžete přiřadit další vlastníky do skupiny, pokud jste to omezuje v nastavení skupiny.
 
 ## <a name="add-an-owner-to-a-group"></a>Přidání vlastníka do skupiny
+Přidáte vlastníky skupiny. Další skupiny pomocí služby Azure AD.
 
-1. V [centrum pro správu Azure AD](https://aad.portal.azure.com)vyberte **uživatelů a skupin**.
-2. Vyberte **všechny skupiny**a pak otevřete skupinu, kterou chcete přidat vlastníky.
-3. Vyberte **přidat vlastníky**.
-4. Na **přidat vlastníky** vyberte uživatele, který chcete přidat jako vlastníka této skupiny a ujistěte se, že toto jméno přidat i do **vybrané** podokně.
+### <a name="to-add-a-group-owner"></a>Chcete-li přidat vlastníka skupiny.
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com) pomocí účtu globálního správce adresáře.
+
+2. Vyberte **Azure Active Directory**vyberte **skupiny**a pak vyberte skupinu, pro který chcete přidat jako vlastníka (v tomto příkladu _zásady MDM - západní_).
+
+3. Na **zásady MDM – přehled – západ** stránce **vlastníky**.
+
+    ![Zásady MDM – stránka s přehledem – západ se zvýrazněnou možností vlastníky](media/active-directory-accessmanagement-managing-group-owners/add-owners-option-overview-blade.png)
+
+4. Na **MDM policy - západ - Owners** stránce **přidat vlastníky**a poté vyhledejte a vyberte uživatele, který bude nový vlastník skupiny a klikněte na tlačítko **vyberte**.
+
+    ![Stránky vlastníky - západ - zásad MDM se zvýrazněnou možností přidat vlastníky](media/active-directory-accessmanagement-managing-group-owners/add-owners-owners-blade.png)
+
+    Po vybrání nového vlastníka, můžete aktualizovat **vlastníky** stránce a podívat se na jméno přidán do seznamu vlastníků.
 
 ## <a name="remove-an-owner-from-a-group"></a>Odebrání vlastníka ze skupiny
+Odebrání vlastníka ze skupiny pomocí služby Azure AD.
 
-1. V [centrum pro správu Azure AD](https://aad.portal.azure.com)vyberte **uživatelů a skupin**.
-2. Vyberte **všechny skupiny**a pak otevřete skupinu, ze kterého chcete odebrat vlastníky.
-3. Vyberte **vlastníky** kartu.
-4. Vyberte vlastníka, který chcete z této skupiny odebrat a pak vyberte **odebrat**.
+### <a name="to-remove-an-owner"></a>Chcete-li odebrat jako vlastníka
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com) pomocí účtu globálního správce adresáře.
 
-## <a name="additional-information"></a>Další informace
-Následující články poskytují další informace o službě Azure Active Directory.
+2. Vyberte **Azure Active Directory**vyberte **skupiny**a pak vyberte skupinu, pro který chcete přidat jako vlastníka (v tomto příkladu _zásady MDM - západní_).
 
-* [Správa přístupu k prostředkům pomocí skupin služby Azure Active Directory](active-directory-manage-groups.md)
-* [Rutiny služby Azure Active Directory pro konfiguraci nastavení skupiny](../users-groups-roles/groups-settings-cmdlets.md)
-* [Správa aplikací v Azure Active Directory](../manage-apps/what-is-application-management.md)
-* [Představení služby Azure Active Directory](active-directory-whatis.md)
-* [Integrování místních identit do služby Azure Active Directory](../connect/active-directory-aadconnect.md)
+3. Na **zásady MDM – přehled – západ** stránce **vlastníky**.
+
+    ![Zásady MDM – stránka s přehledem – západ se zvýrazněnou možností vlastníky](media/active-directory-accessmanagement-managing-group-owners/remove-owners-option-overview-blade.png)
+
+4. Na **MDM policy - západ - Owners** stránky, vyberte uživatele, kterou chcete odebrat jako vlastníka skupiny, zvolte **odebrat** ze stránky informace uživatele a vyberte **Ano** k potvrzení vaše rozhodnutí.
+
+    ![Stránka informace o uživatele se zvýrazněnou možností odstranit](media/active-directory-accessmanagement-managing-group-owners/remove-owner-info-blade.png)
+
+    Po odebrání vlastníka, můžete se vrátit **vlastníky** stránce a podívejte se název je odebraná ze seznamu vlastníků.
+
+## <a name="next-steps"></a>Další postup
+- [Správa přístupu k prostředkům pomocí skupin služby Azure Active Directory](active-directory-manage-groups.md)
+
+- [Rutiny služby Azure Active Directory pro konfiguraci nastavení skupiny](../users-groups-roles/groups-settings-cmdlets.md)
+
+- [Použití skupin pro přiřazení přístupu k aplikaci SaaS integrované](../users-groups-roles/groups-saasapps.md)
+
+- [Integrování místních identit do služby Azure Active Directory](../connect/active-directory-aadconnect.md)
+
+- [Rutiny služby Azure Active Directory pro konfiguraci nastavení skupiny](../users-groups-roles/groups-settings-v2-cmdlets.md)

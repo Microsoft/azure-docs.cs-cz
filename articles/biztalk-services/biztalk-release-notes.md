@@ -1,6 +1,6 @@
 ---
-title: Poznámky k verzi pro služby Azure BizTalk Services | Microsoft Docs
-description: Jsou uvedené známé problémy pro služby Azure BizTalk Services
+title: Poznámky k verzi pro služby Azure BizTalk Services | Dokumentace Microsoftu
+description: Jsou uvedené známé problémy pro Azure BizTalk Services
 services: biztalk-services
 documentationcenter: ''
 author: msftman
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
-ms.openlocfilehash: 5c05c7c4c0f8f0b3619b36390c8a0224a03c900a
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: db79ee85c19e5f3cdced9b894aca48de4d7d1c42
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063538"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576466"
 ---
 # <a name="release-notes-for-azure-biztalk-services"></a>Poznámky k verzi pro služby Azure BizTalk Services
 
@@ -29,99 +29,99 @@ ms.locfileid: "37063538"
 
 Poznámky k verzi pro služby Microsoft Azure BizTalk Services obsahují známé problémy v této verzi.
 
-## <a name="whats-new-in-the-november-update-of-biztalk-services"></a>Co je nového v aktualizaci listopadu služby BizTalk Services
-* Na portálu služby BizTalk lze povolit šifrování v klidovém stavu. V tématu [povolit šifrování v klidovém stavu portálu služby BizTalk](https://msdn.microsoft.com/library/azure/dn874052.aspx).
+## <a name="whats-new-in-the-november-update-of-biztalk-services"></a>Co je nového v aktualizaci z listopadu BizTalk Services
+* Šifrování v klidovém stavu lze povolit v portálu BizTalk Services. Zobrazit [povolit šifrování v klidovém stavu portálu BizTalk Services](https://msdn.microsoft.com/library/azure/dn874052.aspx).
 
-## <a name="update-history"></a>Aktualizace historie
+## <a name="update-history"></a>Historie aktualizace
 ### <a name="october-update"></a>Říjen aktualizace
-* Účty organizace nejsou podporované:  
-  * **Scénář**: jste zaregistrovali nasazení služby BizTalk pomocí účtu Microsoft (jako je user@live.com). V tomto scénáři můžete spravovat pouze uživatelé s Account Microsoft službu BizTalk pomocí portálu služby BizTalk Services. Nelze použít účet organizace.  
-  * **Scénář**: jste zaregistrovali nasazení služby BizTalk pomocí organizačního účtu v Azure Active Directory (například user@fabrikam.com nebo user@contoso.com). V tomto scénáři můžete spravovat pouze uživatelé Azure Active Directory v rámci stejné organizace službu BizTalk pomocí portálu služby BizTalk Services. Nelze použít účet Microsoft.  
-* Při vytváření služby BizTalk se automaticky registruje v portálu služby BizTalk.
-  * **Scénář**: přihlásit k Azure, vytvoření služby BizTalk a potom vyberte **spravovat** velmi poprvé. Když se otevře na portálu služby BizTalk Services, služba BizTalk automaticky zaregistruje a je připravený pro vaše nasazení.  
-    V tématu [registrace a aktualizace nasazení služby BizTalk v BizTalk Services portál](https://msdn.microsoft.com/library/azure/hh689837.aspx).  
+* Jsou podporovány účty organizace:  
+  * **Scénář**: zaregistrovaný nasazení služby BizTalk pomocí účtu Microsoft (třeba user@live.com). V tomto scénáři můžete spravovat pouze uživatelé s Account Microsoft službu BizTalk pomocí portálu BizTalk Services. Nelze použít účet organizace.  
+  * **Scénář**: zaregistrovaný nasazení služby BizTalk pomocí účtu organizace v Azure Active Directory (například user@fabrikam.com nebo user@contoso.com). V tomto scénáři můžete spravovat pouze uživatelé Azure Active Directory v rámci stejné organizace služby BizTalk pomocí portálu BizTalk Services. Nelze použít účet Microsoft.  
+* Při vytváření služby BizTalk, budete automaticky zaregistrováni v portálu BizTalk Services.
+  * **Scénář**: přihlášení k Azure, vytvořte službu BizTalk a pak vyberte **spravovat** velmi poprvé. Při otevření portálu BizTalk Services, služba BizTalk automaticky zaregistruje a je připravená pro vaše nasazení.  
+    Zobrazit [registrace a aktualizace nasazení služby BizTalk na BizTalk Services – portál](https://msdn.microsoft.com/library/azure/hh689837.aspx).  
 
-### <a name="august-14-update"></a>Srpen 14 aktualizace
-* Na portálu služby BizTalk teď odpojené smlouvy a most oddělení – obchodní partnery smlouvy a mostů. Teď vytvoříte smlouvy a mostů samostatně a v době běhu mostů odkazující na smlouvu na základě hodnot v EDI zprávy. V tématu [vytvoření smluv ve službě Azure BizTalk Services](https://msdn.microsoft.com/library/azure/hh689908.aspx), [vytvořit mostu EDI pomocí portálu služby BizTalk](https://msdn.microsoft.com/library/azure/dn793986.aspx), [vytvořit mostu AS2 pomocí portálu služby BizTalk](https://msdn.microsoft.com/library/azure/dn793993.aspx)a [ Jak mostů vyřešit smlouvy za běhu?](https://msdn.microsoft.com/library/azure/dn794001.aspx)  
+### <a name="august-14-update"></a>14. srpna aktualizace
+* V portálu BizTalk Services jsou teď oddělení smlouvy a most oddělení – obchodní partner smluv a přemostění. Teď vytvoříte smluv a přemostění samostatně a za běhu mosty řešení smlouvy na základě hodnot v zpráv EDI. Naleznete v tématu [vytvoření smluv ve službě Azure BizTalk Services](https://msdn.microsoft.com/library/azure/hh689908.aspx), [vytvořit most EDI pomocí portálu BizTalk Services](https://msdn.microsoft.com/library/azure/dn793986.aspx), [vytvořit most AS2 pomocí portálu BizTalk Services](https://msdn.microsoft.com/library/azure/dn793993.aspx)a [ Jak vyřešit mosty smlouvy za běhu?](https://msdn.microsoft.com/library/azure/dn794001.aspx)  
 * Možnost vytvoření šablony pro smlouvy je přerušeno.  
-* Smlouvy na straně odesílání nyní můžete určit jiný oddělovač sady pro každé schéma. Tato konfigurace je zadaný v nastavení protokolu pro smlouvu straně odeslání. Další informace najdete v tématu [vytvořit na X12 smluv ve službě Azure BizTalk Services](https://msdn.microsoft.com/library/azure/hh689847.aspx) a [vytvořili smlouvu EDIFACT v Azure BizTalk Services](https://msdn.microsoft.com/library/azure/dn606267.aspx). Dva nové entity jsou také přidat do rozhraní API OM čip TPM k tomuto účelu. V tématu [X12DelimiterOverrides](https://msdn.microsoft.com/library/azure/dn798749.aspx) a [EDIFACTDelimiterOverride](https://msdn.microsoft.com/library/azure/dn798748.aspx).  
-* Standardní XSD konstrukce, včetně odvozené typy jsou nyní podporovány. V tématu [použijte standardní XSD vytvoří ve vašem mapy](https://msdn.microsoft.com/library/azure/dn793987.aspx) a [použití odvozené typy v mapování scénáře a příklady](https://msdn.microsoft.com/library/azure/dn793997.aspx).  
-* AS2 podporuje nových algoritmů povinná kontrola úrovně Důvěryhodnosti pro podepisování zpráv a nový šifrovací algoritmus. V tématu [vytvořit ve službě Azure BizTalk Services smlouvu AS2](https://msdn.microsoft.com/library/azure/hh689890.aspx).  
-  ## <a name="know-issues"></a>Vědět problémy
+* Straně odesílání smlouvy teď můžete zadat jiné oddělovače skupin pro každé schéma. Tato konfigurace je zadaný v nastavení protokolu pro dohody straně odeslání. Další informace najdete v tématu [vytvořit příslušný X12 smlouvy o utajení, služby Azure BizTalk Services](https://msdn.microsoft.com/library/azure/hh689847.aspx) a [vytvořili ve službě Azure BizTalk Services smlouvu EDIFACT](https://msdn.microsoft.com/library/azure/dn606267.aspx). Dvě nové entity, které jsou také přidány do rozhraní API TPM OM ke stejnému účelu. Zobrazit [X12DelimiterOverrides](https://msdn.microsoft.com/library/azure/dn798749.aspx) a [EDIFACTDelimiterOverride](https://msdn.microsoft.com/library/azure/dn798748.aspx).  
+* Standardní XSD konstrukcím, včetně odvozené typy jsou nyní podporovány. Zobrazit [použijte standardní XSD vytvoří v mapách](https://msdn.microsoft.com/library/azure/dn793987.aspx) a [použijte odvozené typy v mapování scénářů a příklady](https://msdn.microsoft.com/library/azure/dn793997.aspx).  
+* AS2 podporuje nový algoritmus MIC pro podepisování zpráv a nových šifrovacích algoritmů. Zobrazit [vytvořili ve službě Azure BizTalk Services smlouvu AS2](https://msdn.microsoft.com/library/azure/hh689890.aspx).  
+  ## <a name="know-issues"></a>Zjistit problémy
 
-### <a name="connectivity-issues-after-biztalk-services-portal-update"></a>Problémy s připojením k po aktualizaci portálu služby BizTalk Services
-  Pokud máte na portálu služby BizTalk otevřete během upgradu služby BizTalk Services vrátit změny ve službě, může čelí problémy s připojením pomocí portálu služby BizTalk.  
-  Jako řešení může znovu spustit prohlížeč, odstraňte mezipaměti prohlížeče nebo spuštění portálu v privátním režimu.  
+### <a name="connectivity-issues-after-biztalk-services-portal-update"></a>Problémy s připojením po aktualizaci portálu služby BizTalk Services
+  Pokud máte portálu BizTalk Services, otevřít, zatímco služby BizTalk Services se upgraduje na vrácení se změnami do služby, může setkat problémy s připojením pomocí portálu BizTalk Services.  
+  Jako alternativní řešení může restartujte prohlížeč, odstraníte mezipaměť prohlížeče nebo spustit na portálu v privátním režimu.  
 
-### <a name="visual-studio-ide-cannot-locate-the-artifact-if-you-click-an-error-or-warning-in-a-biztalk-services-project"></a>Visual Studio IDE nelze najít artefakt, pokud kliknete na tlačítko chybě nebo upozornění v projektu služby BizTalk Services
-Nainstalujte Visual Studio 2012 Update 3 RC 1 vyřešit problém.  
+### <a name="visual-studio-ide-cannot-locate-the-artifact-if-you-click-an-error-or-warning-in-a-biztalk-services-project"></a>IDE sady Visual Studio nemůže najít artefakt, vyberete-li chybu nebo upozornění v projektu služby BizTalk Services
+Nainstalujte Visual Studio 2012 Update 3 RC 1 k vyřešení problému.  
 
 ### <a name="custom-binding-project-reference"></a>Odkaz na projekt vlastní vazby
-Vezměte v úvahu následující situace s projektem v řešení sady Visual Studio BizTalk Services:  
+Vezměte v úvahu s BizTalk Services projektu v řešení sady Visual Studio v následujících případech:  
 
-* Ve stejném řešení sady Visual Studio je projektu služby BizTalk Services a projekt vlastní vazby. Projektu služby BizTalk obsahuje odkaz na tento soubor projektu vlastní vazby.
-* Projektu služby BizTalk obsahuje odkaz na vlastní vazby/chování knihovny DLL.
+* Ve stejném řešení sady Visual Studio je projekt služby BizTalk Services a vlastních vazeb projektu. Služba BizTalk projekt obsahuje odkaz na tento soubor projektu vlastní vazby.
+* Služba BizTalk projekt obsahuje odkaz na vlastní vazby a chování knihovny DLL.
 
-Sestavování, řešení v sadě Visual Studio úspěšně. Pak 'Znovu sestavte' nebo Vyčistit řešení. Poté když znovu sestavit nebo znovu vyčistit, dojde k následující chybě:  
-  Nelze zkopírovat soubor <Path to DLL> na "bin\Debug\FileName.dll". Proces nemá přístup k souboru 'bin\Debug\FileName.dll', protože je stále používán jiným procesem.  
+"Sestavování" řešení v sadě Visual Studio úspěšně. Potom "Sestavení" nebo Vyčistit řešení. Potom když znovu sestavit nebo znovu, vyčistit došlo k následující chybě:  
+  Nelze zkopírovat soubor <Path to DLL> na "bin\Debug\FileName.dll". Proces nemá přístup k souboru 'bin\Debug\FileName.dll', protože je používán jiným procesem.  
 
 #### <a name="workaround"></a>Alternativní řešení
-* Pokud [Visual Studio 2012 Update 3](https://docs.microsoft.com/en-us/visualstudio/releasenotes/vs2012-update3-vs) je nainstalovaná, máte následující dvě možnosti:
+* Pokud [Visual Studio 2012 Update 3](https://docs.microsoft.com/visualstudio/releasenotes/vs2012-update3-vs) je nainstalovaný, máte následující dvě možnosti:
   
   * Restartujte Visual Studio, nebo
-  * Restartujte řešení. Potom proveďte pouze sestavení v řešení.  
-* Pokud [Visual Studio 2012 Update 3](https://docs.microsoft.com/en-us/visualstudio/releasenotes/vs2012-update3-vs) není nainstalovaná, otevřete Správce úloh, klikněte na tlačítko procesy, klikněte proces MSBuild.exe a potom klikněte na tlačítko Ukončit proces.  
+  * Znovu spusťte řešení. Potom proveďte pouze sestavení řešení.  
+* Pokud [Visual Studio 2012 Update 3](https://docs.microsoft.com/visualstudio/releasenotes/vs2012-update3-vs) není nainstalovaná, otevřete Správce úloh, procesy, které kartu, a klepněte na procesů MSBuild.exe, klikněte na tlačítko Ukončit proces.  
 
-### <a name="routing-to-basichttprelay-endpoints-is-not-supported-from-bridges-and-biztalk-services-portal-if-non-printable-characters-are-promoted-as-http-headers"></a>Směrování do koncových bodů BasicHttpRelay není podporován z mostů a portál služeb BizTalk povýšené netisknutelné znaky jako hlavičky protokolu HTTP
-Pokud používáte netisknutelné znaky jako součást propagovaných vlastností pro zprávy, tyto zprávy nelze směrovat do předávání cílových míst, které používají BasicHttpRelay vazby. Navíc propagovaných vlastnosti které jsou k dispozici jako součást sledování jsou kódování URL pro objekty BLOB a zrušení kódovaného pro cílů.  
+### <a name="routing-to-basichttprelay-endpoints-is-not-supported-from-bridges-and-biztalk-services-portal-if-non-printable-characters-are-promoted-as-http-headers"></a>Směrování do koncových bodů BasicHttpRelay není podporován z přemostění a portálu BizTalk Services netisknutelné znaky jsou povýšeny jako hlavičky protokolu HTTP
+Pokud používáte netisknutelné znaky jako součást propagované vlastnosti zprávy, tyto zprávy nejde směrovat do cíle relay, používající BasicHttpRelay vazby. Navíc propagované vlastnosti, které jsou k dispozici jako součást sledování se zakódovanými do adresy URL pro objekty BLOB a zrušení kódovaného pro cíle.  
 
-### <a name="mdn-is-sent-asynchronously-even-if-the-send-asynchronous-mdn-option-is-unchecked"></a>MDN je odeslán asynchronně, i když není zaškrtnuta možnost MDN asynchronní odesílání
-Vezměte v úvahu tento scénář – Pokud vyberete **odesílat asynchronní MDN** zaškrtávací políčko a zadejte adresu URL k odesílání asynchronní MDN na a potom zrušte zaškrtnutí políčka **odesílat asynchronní MDN** políčko znovu, MDN stále posílá Zadaná adresa URL, i když není vybrána možnost odesílat asynchronní MDNs.  
-Jako alternativní řešení, musíte před zaškrtnutí políčka vymazat zadaná adresa URL **odesílat asynchronní MDN** zaškrtávací políčko a potom nasadíte smlouvy AS2.  
+### <a name="mdn-is-sent-asynchronously-even-if-the-send-asynchronous-mdn-option-is-unchecked"></a>Zprávy MDN je odeslán asynchronně, i v případě, že není zaškrtnuta možnost odeslat asynchronní zprávu MDN
+Vezměte v úvahu tento scénář – Pokud vyberete **odesílat asynchronní zprávy MDN** zaškrtávací políčko a zadejte adresu URL odeslat asynchronní zprávu MDN a potom zrušte zaškrtnutí políčka **odesílat asynchronní zprávy MDN** zaškrtávací políčko znovu MDN stále posílá Zadaná adresa URL i v případě, že není vybraná možnost odesílat asynchronní něho.  
+Jako alternativní řešení, musí před zrušením zaškrtnutí zrušte zadanou adresu URL **odesílat asynchronní zprávy MDN** zaškrtávací políčko a potom nasaďte smlouvy AS2.  
 
-### <a name="whitespace-characters-beyond-a-valid-interchange-cause-an-empty-message-to-be-sent-to-the-suspend-endpoint"></a>Prázdné znaky následující po platný výměnu způsobit prázdný zprávu k odeslání do koncového bodu pozastavit
-Pokud jsou prázdné znaky nad rámec IEA segment, disassembler považován za konec aktuální výměnu a vypadá na další sadu prázdné znaky jako další zprávy. Vzhledem k tomu, že to není platný výměnu, můžete všimnout, že jednu úspěšné zprávu do cíle trasy jednu prázdnou zprávu je posílat a koncový bod pozastavit.  
+### <a name="whitespace-characters-beyond-a-valid-interchange-cause-an-empty-message-to-be-sent-to-the-suspend-endpoint"></a>Prázdné znaky nad rámec platný výměny způsobit prázdný zprávy k odeslání do koncového bodu pozastavení
+Pokud jsou prázdné znaky nad rámec segmentu IEA, disassembler považován za konec aktuální výměny a zobrazuje další sadu prázdnými znaky jako další zpráva. Protože toto není platný výměny, všimnout, že jeden úspěšné zpráva se odešle do cíle trasy a jedna prázdná zpráva přijde koncového bodu pozastavení.  
 
-### <a name="tracking-in-biztalk-services-portal"></a>Sledování na portálu služby BizTalk
-Sledování události zaznamenání až zpracování EDI zprávy a všechny korelace. V případě selhání zprávu mimo fázi protokol sledování se zobrazí jako úspěšně dokončený. V této situaci, naleznete v části protokolu v části **podrobnosti** sloupec v **sledování** podrobnosti chyby.
-X12 příjem a odesílání nastavení ([vytvořit na X12 smluv ve službě Azure BizTalk Services](https://msdn.microsoft.com/library/azure/hh689847.aspx)) poskytují informace o fázi protokolu.  
+### <a name="tracking-in-biztalk-services-portal"></a>Sledování portálu BizTalk Services
+Sledování události mají zachytávat až po zpracování zprávy EDI a jakákoli korelace. Pokud zpráva neprojde mimo fázi protokolu, se zobrazí jako úspěšně dokončený sledování. V této situaci, přečtěte si část protokolu v části **podrobnosti** sloupec v **sledování** pro podrobnosti o chybě.
+X12 příjem a odesílání nastavení ([vytvořit příslušný X12 smlouvy o utajení, služby Azure BizTalk Services](https://msdn.microsoft.com/library/azure/hh689847.aspx)) poskytují informace o fázi protokolu.  
 
-### <a name="update-agreement"></a>Smlouva pro aktualizaci
-Na portálu služby BizTalk můžete upravit kvalifikátor Identity, pokud je nakonfigurován smlouvu. Výsledkem může být inconsistence vlastnosti. Například je smlouvu pomocí ZZ:1234567 a ZZ:7654321 kvalifikátor. V nastavení profilu portál služby BizTalk můžete změnit ZZ:1234567 být 01:ChangedValue. Otevřete smlouvu a zobrazí se místo ZZ:1234567 01:ChangedValue.
-Chcete-li upravit kvalifikátor identity, smlouvu odstranit, aktualizovat **identity** v profilu partnera a pak znovu vytvořte smlouvy.  
+### <a name="update-agreement"></a>Aktualizace smlouvy
+Portálu BizTalk Services umožňuje změnit kvalifikátor identitu, pokud je nakonfigurovaná smlouvu. To může způsobit inconsistence vlastnosti. Například je pomocí ZZ:1234567 a ZZ:7654321 kvalifikátor smlouvu. V nastavení profilu portálu BizTalk Services můžete změnit ZZ:1234567 bude 01:ChangedValue. Otevřete smlouvu a zobrazí se místo ZZ:1234567 01:ChangedValue.
+Upravit kvalifikátor identitu, odstranit smlouvu, aktualizujte **identit** profil partnera a pak znovu vytvořte smlouvy.  
 
-> AZURE. UPOZORNĚNÍ toto chování ovlivňuje X12 a AS2.  
+> AZURE. Upozornění: Toto chování má vliv na X12 a AS2.  
 > 
 > 
 
-### <a name="as2-attachments"></a>AS2 příloh
-Příloh pro AS2 zprávy nejsou podporovány v odeslat nebo přijmout. Konkrétně přílohy jsou bezobslužně ignorována a tělo zprávy zpracovávány jako regulární zprávu AS2.  
+### <a name="as2-attachments"></a>Přílohy AS2
+Přílohy pro AS2 zpráv nejsou podporovány v odeslání nebo přijetí. Konkrétně jsou přílohy tiše ignorováno a text zprávy je zpracovávat jako regulární zpráva AS2.  
 
-### <a name="resources-remembering-path"></a>Zdroje: Zapamatování cestu
-Při přidávání **prostředky**, dialogového okna nemusí pamatovat cestu dříve použít k přidání prostředku. Pamatovat cestu dřív používal, zkuste přidat webové stránky portálu služeb BizTalk na **Důvěryhodné servery** v aplikaci Internet Explorer.  
+### <a name="resources-remembering-path"></a>Zdroje: Pamatovat cestu
+Při přidávání **prostředky**, dialogové okno nemusí si vzpomenout na cestu dříve použít k přidání prostředku. Pamatovat cestu dříve používali, zkuste přidat k webu portálu BizTalk Services **Důvěryhodné servery** v aplikaci Internet Explorer.  
 
-### <a name="if-you-rename-the-entity-name-of-a-bridge-and-close-the-project-without-saving-changes-opening-the-entity-again-results-in-an-error"></a>Pokud název entity mostu přejmenovat a zavřít projekt bez uložení změn, znovu otevřít entity výsledkem chyba
+### <a name="if-you-rename-the-entity-name-of-a-bridge-and-close-the-project-without-saving-changes-opening-the-entity-again-results-in-an-error"></a>Je-li přejmenovat název entity most a zavřít projekt bez uložení změn, znovu otevřete entitu způsobí chybu
 Představte si třeba situaci v následujícím pořadí:  
 
-* Přidejte do projektu služby BizTalk mostu (například most XML One-Way)  
-* Přejmenujte most a zadat hodnotu pro vlastnost název Entity. To přidružené .bridgeconfig soubor přejmenuje pomocí názvu, který jste zadali.  
-* Zavřete soubor .bcs (ukončením kartě v sadě Visual Studio) bez uložení změn.  
-* Znovu otevřete soubor .bcs v Průzkumníku řešení.  
-  Si všimnete, že soubor přidružené .bridgeconfig se nový název, který jste zadali, název entity na návrhovou plochu, která je stále starý název. Pokud se pokusíte otevřít konfiguraci mostu poklepáním na komponentu most, zobrazí se následující chyba:  
-  `‘<old name>’ Entity’s associated file ‘<old name>.bridgeconfig’ does not exist` Abyste se vyhnuli spuštěna v tomto scénáři, zkontrolujte, zda že po přejmenování entity v projektu služby BizTalk se uložit změny.  
+* Most (například most XML One-Way) přidejte do projektu služby BizTalk  
+* Most přejmenujte a zadat hodnotu pro vlastnost název Entity. To přejmenuje přidružené .bridgeconfig soubor s názvem, který jste zadali.  
+* Zavřete soubor .bcs (když zavřete kartu v sadě Visual Studio) bez uložení změn.  
+* Z Průzkumníku řešení otevřete soubor .bcs znovu.  
+  Můžete si všimnout, že zatímco přidružené .bridgeconfig soubor má název, který jste zadali, názvu entity na návrhové ploše je stále starý název. Pokud se pokusíte spustit nástroj konfigurace mostu dvojitým kliknutím na součást most, zobrazí se následující chyba:  
+  `‘<old name>’ Entity’s associated file ‘<old name>.bridgeconfig’ does not exist` Aby se zabránilo spouštění v tomto scénáři, zkontrolujte, zda že po přejmenování entity v projektu služby BizTalk se uložit změny.  
   
-### <a name="biztalk-service-project-builds-successfully-even-if-an-artifact-has-been-excluded-from-a-visual-studio-project"></a>Sestavení projektu služby BizTalk se úspěšně, i když artefakt byl vyloučen z projektu sady Visual Studio
-Představte si třeba situaci, kdy přidáte artefakt (například soubor XSD) do projektu služby BizTalk, zahrnují tento artefaktů v konfiguraci most? víc informací (například zadáním ji jako typ zprávy požadavku) a vyloučíte je z projektu sady Visual Studio. V takovém případě sestavení projektu poskytovat všechny chyby, dokud odstraněné artefaktů je k dispozici na disku na stejné umístění, ze kterých je zahrnutý v projektu sady Visual Studio.
+### <a name="biztalk-service-project-builds-successfully-even-if-an-artifact-has-been-excluded-from-a-visual-studio-project"></a>Služba BizTalk projekt vytvoří úspěšně i v případě, že artefakt byl vyloučen z projektu sady Visual Studio
+Představte si třeba situaci, kde můžete přidávat artefakt (například soubor XSD) do projektu služby BizTalk, do konfigurace mostu zahrnout tento artefakt (například tak, že zadáte jeho jako typu požadavku zprávy) a vyloučit ho z projektu sady Visual Studio. V takovém případě se sestavení projektu nebude dát všechny chyby jako odstraněné artefakt je k dispozici na disku na stejné umístění, ve kterém je zahrnutý v projektu sady Visual Studio.
   
-### <a name="the-biztalk-service-project-does-not-check-for-schema-availability-while-configuring-the-bridges"></a>Projektu služby BizTalk nekontroluje dostupnost schématu při konfiguraci mostů
-V projektu služby BizTalk Pokud schéma, které se přidá do projektu importuje jiné schéma projektu služby BizTalk nekontroluje, jestli importované schéma se přidá do projektu. Pokud se pokusíte sestavení tohoto projektu, se nezobrazí žádné chyby sestavení.
+### <a name="the-biztalk-service-project-does-not-check-for-schema-availability-while-configuring-the-bridges"></a>Projekt služby BizTalk nekontroluje dostupnost schématu při konfiguraci přemostění
+V projektu služby BizTalk Pokud schéma, které se přidá do projektu importuje jiného schématu projektu služby BizTalk nekontroluje, jestli je importovaného schématu přidat do projektu. Pokud se pokusíte k vytvoření tohoto projektu, se nezobrazí žádné chyby buildu.
   
-### <a name="the-response-message-for-a-xml-request-reply-bridge-is-always-of-charset-utf-8"></a>Zpráva odpovědi pro požadavek-odpověď mostu XML je vždy charset UTF-8
-U tohoto vydání je znaková sada zprávy s odpovědí z požadavku a odpovědi mostu XML vždycky nastavený na UTF-8.
+### <a name="the-response-message-for-a-xml-request-reply-bridge-is-always-of-charset-utf-8"></a>Zpráva odpovědi pro požadavek-odpověď most XML je vždy znaková sada UTF-8
+U tohoto vydání je znaková sada zprávy s odpovědí z most požadavku a odpovědi XML vždycky nastavený na UTF-8.
   
 ### <a name="user-defined-datatypes"></a>Uživatelem definované datové typy
-Sady BizTalk Adapter Pack adaptéry v rámci funkce služba BizTalk Adapter Service můžete využít uživatelem definované datové typy pro operace adaptéru.
-Při použití uživatelem definované datové typy, zkopírujte soubory (.dll) na jednotku: \Program Files\Microsoft Service\BAServiceRuntime\bin\ adaptér BizTalk nebo k globální mezipaměti sestavení (GAC) na serveru, který hostuje službu služba BizTalk Adapter Service. K následující chybě může dojít v klientovi:  
+Sady BizTalk Adapter Pack adaptéry v rámci funkci služby BizTalk Adapter Service se můžou využívat uživatelem definované datové typy pro operace adaptéru.
+Při použití uživatelem definované datové typy, zkopírujte soubory (.dll) na disku: \Program Files\Microsoft Service\BAServiceRuntime\bin\ adaptér BizTalk nebo chcete globální mezipaměti sestavení (GAC) na serveru, který hostuje službu BizTalk Adapter service. V opačném případě může dojít k následující chybě na straně klienta:  
 ```
 <s:Fault xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
 <faultcode>s:Client</faultcode>
@@ -135,92 +135,92 @@ Při použití uživatelem definované datové typy, zkopírujte soubory (.dll) 
 ```  
   
 > [!IMPORTANT]
-> Doporučujeme používat GACUtil.exe instalovat soubor do globální mezipaměti sestavení. GACUtil.exe dokumentů. použití tohoto nástroje a možnosti příkazového řádku Visual Studio.  
+> Je doporučeno použití GACUtil.exe k instalaci souboru do globální mezipaměti sestavení. GACUtil.exe dokumenty o použití tohoto nástroje a možnosti příkazového řádku sady Visual Studio.  
 > 
 > 
 
-### <a name="restarting-the-biztalk-adapter-service-web-site"></a>Restartování webu BizTalk adaptér služby
-Instalace **běh služby BizTalk adaptér*** vytvoří **služba BizTalk Adapter Service** web služby IIS, který obsahuje **BAService** aplikace. **BAService** aplikace interně používá předávací vazby k rozšiřují využitelnost místní koncový bod služby do cloudu. Jenom v případě, že spuštění místní služby, bude pro služby hostované na místních počítačích registrovaná odpovídající koncový bod předávání na Service Bus.  
+### <a name="restarting-the-biztalk-adapter-service-web-site"></a>Restartování webu služby adaptér BizTalk
+Instalace **běhu služby adaptér BizTalk*** vytvoří **služby BizTalk Adapter Service** webovou stránku služby IIS, který obsahuje **BAService** aplikace. **BAService** vazby přenosu aplikace interně používá k rozšíření dosahu místních koncového bodu služby do cloudu. Služby hostované v místním odpovídající koncový bod relay zaregistruje ve službě Service Bus pouze při spuštění místní služby.  
 
-Je-li zastavit a spustit aplikaci, není dodržení konfiguraci pro automatické spuštění aplikace. Takže když **BAService** je zastavena, vždy je nutné restartovat **služba BizTalk Adapter Service** místo webový server. Spuštění nebo zastavení **BAService** aplikace.
+Je-li zastavit a spustit aplikaci, konfiguraci automatického spuštění aplikace není podporována. Takže když **BAService** je zastaven, vždy je nutné restartovat **služby BizTalk Adapter Service** webu místo. Spuštění nebo zastavení **BAService** aplikace.
 
-### <a name="special-characters-should-not-be-used-for-address-and-entity-names-of-lob-components"></a>Speciální znaky se nesmí používat pro adresu a entity názvy součástí LOB
-Pro adresu a entity názvy součástí LOB byste neměli používat speciální znaky. Pokud tak učiníte, zobrazí se chyba při nasazení projektu služby BizTalk. Pro některé znaků jako "%", služba BizTalk Adapter Service Web může přejít do stavu ukončeno a budete muset spustit ručně.
+### <a name="special-characters-should-not-be-used-for-address-and-entity-names-of-lob-components"></a>Speciální znaky by neměla používat pro názvy adresu a entit LOB komponent
+Pro názvy adresu a entit LOB součásti byste neměli používat speciální znaky. Pokud tak učiníte, zobrazí se chyba při nasazování projektu služby BizTalk. Pro některé znaky, jako je '%', na webu služby BizTalk Adapter Service je možné dát do stavu Zastaveno a budete muset spustit ručně.
 
-### <a name="test-map-with-get-context-property"></a>Mapa test s vlastností kontextu Get
-Pokud obsahuje transformace **získat vlastností kontextu** operace mapy, **testovací mapy** se nezdaří. Jako dočasné řešení, nahraďte **získat vlastností kontextu** mapy operaci s operací řetězení mapy řetězec obsahující fiktivní data. Tato akce naplnit je cílové schéma a povolit, že byste otestovat další funkce transformace.
+### <a name="test-map-with-get-context-property"></a>Test mapy se vlastnost kontextu Get
+Pokud obsahuje transformace **získat kontextové vlastnosti** mapy operace **Test mapování** se nezdaří. Dočasným řešením nahradit **získat vlastnost Context** mapy operace s operací zřetězit mapy řetězec obsahující fiktivní data. Tím naplnit na cílové schéma a umožní že otestovat další funkce transformace.
 
-### <a name="test-map-property-does-not-display"></a>Vlastnost mapy testovací nezobrazí.
-**Testovací mapy** vlastnosti nezobrazovat v sadě Visual Studio. Tato situace může nastat, pokud **vlastnosti** okno a **Průzkumníku řešení** okno nejsou ukotveno současně. Chcete-li tento problém vyřešíte ukotvení **vlastnosti** a **Průzkumníku řešení** systému windows.  
+### <a name="test-map-property-does-not-display"></a>Vlastnost testu mapy nezobrazí.
+**Test mapování** vlastnosti se nezobrazí v sadě Visual Studio. Tato situace může nastat, pokud **vlastnosti** okno a **Průzkumníka řešení** nejsou okno ukotveno současně. Chcete-li tento problém vyřešit, ukotvit **vlastnosti** a **Průzkumníka řešení** systému windows.  
 
-### <a name="datetime-reformat-drop-down-is-grayed-out"></a>Je zobrazeno šedě rozevíracího seznamu přeformátujte data a času
-Když mapy operace přeformátujte DateTime je přidán do návrhové plochy a nakonfigurované, může šedě formátu rozevíracího seznamu. K tomu může dojít, pokud počítače zobrazení **Střední – 125 %** nebo **větší – 150 %**. Chcete-li vyřešit, nastavte zobrazení **menší – 100 % (výchozí)** pomocí následujících kroků:  
+### <a name="datetime-reformat-drop-down-is-grayed-out"></a>Datum a čas přeformátovat rozevíracího seznamu nejde aktivovat.
+Při operaci mapy opakovaně formátovat datum a čas je přidán na návrhovou plochu a nakonfigurované, může šedě formátu rozevíracího seznamu. K tomu může dojít, pokud počítač zobrazení nastavený **Střední – 125 %** nebo **větší – 150 %**. Pokud chcete vyřešit, nastavte zobrazení na **menší – 100 % (výchozí)** pomocí následujících kroků:  
 
-1. Otevřete **ovládací panely** a klikněte na tlačítko **vzhled a přizpůsobení**.
+1. Otevřít **ovládací panely** a klikněte na tlačítko **vzhled a přizpůsobení**.
 2. Klikněte na tlačítko **zobrazení**.
 3. Klikněte na tlačítko **menší – 100 % (výchozí)** a klikněte na tlačítko **použít**.
 
-**Formát** rozevíracího seznamu by měl nyní fungovat podle očekávání.
+**Formátu** rozevírací seznam by měl nyní fungovat podle očekávání.
 
-### <a name="duplicate-agreements-in-the-biztalk-services-portal"></a>Duplicitní smluv na portálu služby BizTalk
+### <a name="duplicate-agreements-in-the-biztalk-services-portal"></a>Duplicitní smluv v portálu BizTalk Services
 Vezměte v úvahu následující scénář:
 
-1. Vytvořte smlouvu pomocí Trading Partner Management OM API.
-2. Otevřete smlouvu na portálu služby BizTalk ve dvou různých kartách.
-3. Nasaďte smlouvy z obou karty.
-4. V důsledku toho obě smlouvy nasadí výsledkem duplicitní položky na portálu služby BizTalk
+1. Vytvořili smlouvu pomocí obchodní Partner objektový model rozhraní API pro správu.
+2. Otevřete smlouvu v portálu BizTalk Services na dvou různých kartách.
+3. Nasazení smlouvy z obou kartách.
+4. V důsledku toho obou smlouvy nasadí, což vede k duplicitní položky v portálu BizTalk Services
 
-**Alternativní řešení**. Otevřete některého duplicitní smlouvy na portálu služby BizTalk a zrušit nasazení.  
+**Alternativní řešení**. Otevřete kterékoli z duplicitních smluv v portálu BizTalk Services a zrušení.  
 
-### <a name="bridges-do-not-use-updated-certificate-even-after-a-certificate-has-been-updated-in-the-artifact-store"></a>Mosty nepoužívejte aktualizovaný certifikát i po aktualizaci se certifikát v úložišti artefaktů
+### <a name="bridges-do-not-use-updated-certificate-even-after-a-certificate-has-been-updated-in-the-artifact-store"></a>Mosty nepoužívejte aktualizovaný certifikát, i když byl aktualizován certifikát v úložišti artefaktů
 Zvažte následující scénáře:  
 
-**Scénář 1: Použití certifikátů na základě kryptografického otisku pro přenos zpráv z mostu pro koncový bod služby zabezpečení**  
-Vezměte v úvahu scénář, kde používat certifikáty založené na kryptografický otisk ve vašem projektu služby BizTalk. Aktualizovat certifikát na portálu služby BizTalk se stejným názvem, ale jiný kryptografický otisk, ale neaktualizují projektu služby BizTalk odpovídajícím způsobem. V takové situaci most může pokračovat ve zpracování zpráv, protože starší data certifikátu může být v mezipaměti kanálu. Potom se nezdaří zpracování zprávy.  
+**Scénář 1: Použití certifikátů na základě kryptografického otisku pro přenos zpráv z most do koncového bodu služby zabezpečení**  
+Představte si třeba situaci, kdy používat certifikáty založené na kryptografický otisk v projektu služby BizTalk. Aktualizace certifikátu v portálu BizTalk Services se stejným názvem, ale jiný kryptografický otisk, ale neaktualizují projektu služby BizTalk odpovídajícím způsobem. V takovém scénáři může nadále most zpracování zpráv, protože starší data certifikátu může být stále v mezipaměti kanálu. Potom se nezdaří zpracování zpráv.  
 
-**Alternativní řešení**: aktualizovat certifikát v projektu služby BizTalk a znovu nasaďte projekt.  
+**Alternativní řešení**: aktualizace certifikátu v projektu služby BizTalk a projekt znovu nasadit.  
 
-**Scénář 2: Pomocí chování na základě názvu k identifikaci certifikáty pro přenos zpráv z mostu pro koncový bod služby zabezpečení**
+**Scénář 2: Použití chování na základě název k identifikaci certifikáty pro zabezpečení přenosu zpráv z most do koncového bodu služby**
 
-Představte si třeba situaci, kdy používáte chování na základě názvu k identifikaci certifikáty ve vašem projektu služby BizTalk. Aktualizovat certifikát na portálu služby BizTalk však neaktualizují projektu služby BizTalk odpovídajícím způsobem. V takové situaci most může pokračovat ve zpracování zpráv, protože starší data certifikátu může být v mezipaměti kanálu. Potom se nezdaří zpracování zprávy.  
+Představte si třeba situaci, kde používáte chování na základě název pro identifikaci certifikáty v projektu služby BizTalk. Aktualizace certifikátu v portálu BizTalk Services, ale neaktualizují projektu služby BizTalk odpovídajícím způsobem. V takovém scénáři může nadále most zpracování zpráv, protože starší data certifikátu může být stále v mezipaměti kanálu. Potom se nezdaří zpracování zpráv.  
 
-**Alternativní řešení**: aktualizovat certifikát v projektu služby BizTalk a znovu nasaďte projekt.  
+**Alternativní řešení**: aktualizace certifikátu v projektu služby BizTalk a projekt znovu nasadit.  
 
 ### <a name="bridges-continue-to-process-messages-even-when-the-sql-database-is-offline"></a>Mosty pokračovat ve zpracování zprávy i v případě, že databáze SQL je offline
-BizTalk Services mostů pokračovat ve zpracování zprávy nějakou dobu, i v případě, že službě Microsoft Azure SQL Database (které se ukládají informace o spuštěných jako nasazené artefaktů a kanály), je offline. Je to proto, že služba BizTalk Services používá v mezipaměti artefakty a most konfigurace.
-Pokud nechcete, aby mostů zpracovat všechny zprávy, když databáze SQL je offline, můžete použít rutiny prostředí PowerShell služby BizTalk pro zastavení nebo pozastavení služby BizTalk. V tématu [Ukázka správy služby Azure BizTalk](http://go.microsoft.com/fwlink/p/?LinkID=329019) pro rutiny prostředí Windows PowerShell ke správě operací.  
+Mosty BizTalk Services i nadále zpracovávat zprávy na dobu, i v případě, že Microsoft Azure SQL Database (která obsahuje provozní informace, například nasazené artefakty a kanály), je offline. Toto je vzhledem k tomu BizTalk Services se používá v mezipaměti artefakty a konfigurace mostu.
+Pokud nechcete, aby mosty zpracovávat všechny zprávy, když databáze SQL je offline, můžete použít rutiny prostředí PowerShell BizTalk Services pro zastavení nebo pozastavení služby BizTalk. Zobrazit [Ukázka správy služby Azure BizTalk](http://go.microsoft.com/fwlink/p/?LinkID=329019) pro rutiny Windows Powershellu ke správě operací.  
 
-### <a name="reading-the-xml-message-within-a-bridges-custom-code-component-includes-an-extra-bom-character"></a>Čtení zprávy XML v rámci komponenty vlastního kódu most obsahuje znak navíc BOM
-Vezměte v úvahu scénář, kde chcete číst zprávu XML v rámci vlastního kódu most. Pokud používáte System.Text.Encoding.UTF8.GetString(bytes) rozhraní API .NET je jeden znak navíc BOM součástí výstup na začátku zprávy. Ano, pokud nechcete, aby výstup zahrnout další znak BOM, musíte použít ```System.IO.StreamReader().ReadToEnd()```.
+### <a name="reading-the-xml-message-within-a-bridges-custom-code-component-includes-an-extra-bom-character"></a>Čtení zprávy XML v rámci komponenty mostu vlastní kód obsahuje znak navíc BOM
+Představte si třeba situaci, kdy si chcete přečíst zprávu XML v rámci mostu vlastní kód. Pokud používáte System.Text.Encoding.UTF8.GetString(bytes) rozhraní API .NET je znak navíc BOM součástí výstupu na začátek zprávy. Ano, pokud nechcete, aby výstup do další znak BOM, je nutné použít ```System.IO.StreamReader().ReadToEnd()```.
 
-### <a name="sending-messages-to-a-bridge-using-wcf-does-not-scale"></a>Odesílání zpráv do mostu pomocí WCF se nedá použít.
-Zprávy odeslané do mostu pomocí WCF se nedá použít. Místo toho byste měli používat HttpWebRequest – Pokud chcete, aby škálovatelné klienta.
+### <a name="sending-messages-to-a-bridge-using-wcf-does-not-scale"></a>Odesílání zprávy na most pomocí technologie WCF škálování
+Zprávy odeslané do most pomocí technologie WCF škálování. Pokud chcete škálovatelné klient je vhodné použít HttpWebRequest.
 
-### <a name="upgrade-token-provider-error-after-upgrading-from-biztalk-services-preview-to-general-availability-ga"></a>UPGRADE: Informace o chybě zprostředkovatele tokenu po provedení upgradu z verze Preview služby BizTalk k obecné dostupnosti (GA)
-S active dávky je EDI nebo smlouvy AS2. Když služba BizTalk je upgrade z verze Preview na GA, může dojít následující:
+### <a name="upgrade-token-provider-error-after-upgrading-from-biztalk-services-preview-to-general-availability-ga"></a>UPGRADE: Chyba zprostředkovatele tokenu po upgradu portálu BizTalk Services ve verzi Preview do obecné dostupnosti (GA)
+Existuje smlouvy AS2 nebo EDI s aktivní dávky. Když službu BizTalk se upgraduje z verze Preview verzi GA, může dojít k následující:
 
-* Chyba: Poskytovatel tokenu se nepodařilo poskytnout token zabezpečení. Zprostředkovatel tokenu vrátil zprávu: vzdálený název nelze rozpoznat.
-* Úkoly služby batch, se zruší.
+* Chyba: Poskytovatel tokenu nemohl poskytnout token zabezpečení. Poskytovatel tokenů vrátil zprávu: vzdálený název nelze rozpoznat.
+* Úkoly služby batch se zruší.
 
-**Alternativní řešení**: po služba BizTalk Service se aktualizuje na obecné dostupnosti (GA), znovu nasaďte smlouvu.  
+**Alternativní řešení**: za službu BizTalk se aktualizuje na obecné dostupnosti (GA), smlouva znovu nasadit.  
 
-### <a name="upgrade-toolbox-shows-the-old-bridge-icons-after-upgrading-the-biztalk-services-sdk"></a>UPGRADE: Sada nástrojů zobrazí původní ikony most po upgradu sady SDK služby BizTalk
-Po upgradu starší verzi sady SDK služby BizTalk měl původní ikony představující mostů, i nadále zobrazit staré ikony mostů sady nástrojů. Ale pokud přidáte mostu na plochu návrháře projektu služby BizTalk, povrchu zobrazuje na ikonu nový.  
+### <a name="upgrade-toolbox-shows-the-old-bridge-icons-after-upgrading-the-biztalk-services-sdk"></a>UPGRADE: Panelu nástrojů zobrazí staré ikony most po upgradu sadu SDK pro BizTalk Services
+Poté, co upgradujete dřívější verzi sady SDK služby BizTalk měli staré ikony reprezentující překročení mostu, panelu pořád zobrazovat staré ikony přemostění. Ale pokud přidáte mostu na plochu návrháře projektu služby BizTalk, na plochu ukazuje na ikonu nový.  
 
-**Alternativní řešení**. Tento problém můžete vyřešit odstraněním .tbd souborů v části <system drive>: \Users\<uživatele > \AppData\Local\Microsoft\VisualStudio\11.0.  
+**Alternativní řešení**. Tento problém můžete obejít tak, že odstraníte soubory do .tbd <system drive>: \Users\<uživatele > \AppData\Local\Microsoft\VisualStudio\11.0.  
 
-### <a name="upgrade-biztalk-portal-update-from-preview-to-ga-might-show-an-error-indicating-that-the-edi-capability-is-not-available"></a>UPGRADE: Aktualizace BizTalk portálu z verze Preview GA může zobrazit chyba oznamující, že není k dispozici možnost EDI
-Pokud jste přihlášení k portálu služby BizTalk BizTalk Services je upgradu z verze Preview do GA, může se na portálu zobrazí následující chyba:  
+### <a name="upgrade-biztalk-portal-update-from-preview-to-ga-might-show-an-error-indicating-that-the-edi-capability-is-not-available"></a>UPGRADE: Aktualizace BizTalk portálu z verze Preview verzi GA, může zobrazit chyba oznamující, že není k dispozici možnost EDI
+Pokud jste přihlášení do portálu BizTalk Services a BizTalk Services se upgraduje z verze Preview verzi GA, může na portálu zobrazí následující chyba:  
 
-Tato funkce není k dispozici jako součást této edici služby Microsoft Azure BizTalk Services. Chcete-li použít tyto možnosti přepněte na příslušnou verzi.  
+Tato možnost není k dispozici jako součást této edici systému Microsoft Azure BizTalk Services. Chcete-li použít tyto možnosti přepnout na příslušnou verzi.  
 
-**Řešení**: při odhlášení z na portálu, zavřete a otevřete prohlížeč a přihlaste se k portálu.  
+**Rozlišení**: při odhlášení z portálu, zavřít a otevřít v prohlížeči a pak přihlásit se do portálu.  
 
-### <a name="upgrade-new-tracking-data-does-not-show-up-after-biztalk-services-is-upgraded-to-ga"></a>UPGRADE: Nová data sledování nezobrazuje po upgradu služby BizTalk Services na GA
-Předpokládejme situaci, kdy máte XML most nasazené v předplatném Preview služby BizTalk. Odeslání zprávy do mostu a odpovídající sledování dat je k dispozici na portálu služby BizTalk. Nyní pokud modul runtime bits portál služby BizTalk a BizTalk Services upgradují na GA a odeslat zprávu na stejný koncový bod most předtím, data sledování nezobrazuje pro zprávy odeslané po upgradu.  
+### <a name="upgrade-new-tracking-data-does-not-show-up-after-biztalk-services-is-upgraded-to-ga"></a>UPGRADE: Nová data sledování nezobrazuje po BizTalk Services se upgraduje na verzi GA
+Účely Předpokládejme scénář, kde se nachází XML most nasazené v předplatném BizTalk Services ve verzi Preview. Odesílat zprávy na most a odpovídající sledování dat je k dispozici na portálu BizTalk Services. Nyní pokud modul runtime bits portálu BizTalk Services a BizTalk Services jsou upgradovány na verzi GA a odeslat zprávu o stejný koncový bod most předtím nasadili, data sledování není uveden pro zprávy odeslané po upgradu.  
 
-### <a name="pipelines-versus-bridges"></a>Kanály versus mostů
-V tomto dokumentu se termín 'kanálů' a 'mostů' používají zcela zaměnitelným významem. I v podstatě mají stejný význam, který je nasazen na služby BizTalk Services jednotku zpracování zprávy.  
+### <a name="pipelines-versus-bridges"></a>Kanály a přemostění
+V tomto dokumentu termín "kanály" a "edice" zaměňují. I v podstatě stejný význam, který je nasazený na BizTalk Services jednotka zpracování zprávy.  
 
 ### <a name="concepts"></a>Koncepty
 [BizTalk Services](https://msdn.microsoft.com/library/azure/hh689864.aspx)   

@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: ede76e8161cc15d6a87041ef5ef9525570fec794
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 672e31109b71a8a4238a05851a58a7c83e275b19
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42745877"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576305"
 ---
 # <a name="azure-event-hubs-event-processor-host-overview"></a>Přehled služby Azure Event Hubs Event Processor Host
 
 Azure Event Hubs je služba pro ingestování výkonné telemetrická data, která slouží k streamujte miliony událostí za nízkou cenu. Tento článek popisuje, jak využívat přijaté události pomocí *Event Processor Host* (EPH); inteligentní agent příjemce, který zjednodušuje správu vytváření kontrolních bodů, pronájem a čtenáři paralelní události.  
 
-Klíč, který chcete škálovat pro službu Event Hubs je dělené příjemců. Rozdíl od [konkurenčních spotřebitelů](http://msdn.microsoft.com/en-us/library/dn568101.aspx) vzor, vzor oddělených příjemců je pravidlo umožňuje vysoce škálované odebráním kritický bod kolize a usnadnění začátku do konce paralelismu.
+Klíč, který chcete škálovat pro službu Event Hubs je dělené příjemců. Rozdíl od [konkurenčních spotřebitelů](http://msdn.microsoft.com/library/dn568101.aspx) vzor, vzor oddělených příjemců je pravidlo umožňuje vysoce škálované odebráním kritický bod kolize a usnadnění začátku do konce paralelismu.
 
 ## <a name="home-security-scenario"></a>Scénář domácí zabezpečení
 

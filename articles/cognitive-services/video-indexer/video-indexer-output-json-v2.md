@@ -7,14 +7,14 @@ author: juliako
 manager: cfowler
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 07/25/2018
+ms.date: 09/09/2018
 ms.author: juliako
-ms.openlocfilehash: 43cc02417fad8a2fa46bd309235951393cd55b8a
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 14e308f04450999fcec91a7882a22868c8c824ce
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41987652"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579000"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-v2-api"></a>Prozkoumání výstupu funkce Video Indexer vytvořené metodou rozhraní API v2
 
@@ -23,7 +23,7 @@ ms.locfileid: "41987652"
 
 Při volání **získat Index Video** rozhraní API a stav odpovědi je v pořádku, získejte podrobný výstup JSON jako obsah odpovědi. Obsah JSON obsahuje podrobné informace o zadané nové poznatky z videí. Informace zahrnují dimenzí, jako jsou: záznamy o studiu, ocrs, tváří, témat, bloky, atd. Dimenze mít instancí časových rozsahů, které ukazují jednotlivých rozměrů zobrazené ve videu.  
 
-Souhrnný přehled videa můžete také vizuálně zkoumat stisknutím kombinace kláves **Přehrát** tlačítko na video na portálu pro Video Indexer. Další informace najdete v tématu [prohlížení a úpravy nové poznatky z videí](video-indexer-view-edit.md).
+Souhrnný přehled videa můžete také vizuálně zkoumat stisknutím kombinace kláves **Přehrát** tlačítko na video [Video Indexer](https://www.videoindexer.ai/) webu. Další informace najdete v tématu [prohlížení a úpravy nové poznatky z videí](video-indexer-view-edit.md).
 
 ![Insights](./media/video-indexer-output-json/video-indexer-summarized-insights.png)
 
@@ -82,7 +82,7 @@ Tato část uvádí přehled informací.
 |privacyMode|Vaše rozpis může mít jednu z těchto režimů: **privátní**, **veřejné**. **Veřejné** – video je viditelné všem uživatelům v účtu a každý uživatel, který obsahuje odkaz na video. **Privátní** – video je viditelné všem uživatelům ve vašem účtu.|
 |doba trvání|Obsahuje jeden dobu, po kterou popisuje čas, kdy došlo k chybě přehledů. Doba trvání je během několika sekund.|
 |thumbnailVideoId|ID videa, ze kterého bylo převedeno na miniaturu.
-|thumbnailId|ID miniatury videa. Chcete-li získat skutečný miniatur volání Get-Miniatura (https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-thumbnail) a předejte jí thumbnailVideoId a thumbnailId.|
+|thumbnailId|ID miniatury videa. Chcete-li získat skutečný miniaturu, volání Get-miniaturu (https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-thumbnail) a předejte jí thumbnailVideoId a thumbnailId.|
 |tváří|Může obsahovat nula nebo více ploch. Další informace najdete v tématu [tváří](#faces).|
 |klíčová slova|Může obsahovat nula nebo více klíčových slov. Další informace najdete v tématu [klíčová slova](#keywords).|
 |zabarvení|Může obsahovat nula nebo více mínění. Další informace najdete v tématu [zabarvení](#sentiments).|
@@ -90,6 +90,8 @@ Tato část uvádí přehled informací.
 |popisky| Může obsahovat nula nebo více štítků. Další informace najdete v tématu [popisky](#labels).|
 |značky| Může obsahovat nula nebo více značek. Další informace najdete v tématu [značky](#brands).|
 |statistiky | Další informace najdete v tématu [statistiky](#statistics).|
+|emocí| Může obsahovat nula nebo více emocí. Další informace najdete v tématu [emoce](#emotions).|
+|témata|Může obsahovat nula nebo více témata. [Témata](#topics) dimenze.|
 
 ## <a name="videos"></a>videa
 
@@ -112,7 +114,7 @@ Tato část uvádí přehled informací.
 |publishedUrlProxy|Adresa url pro streamování videa z (pro zařízení Apple).|
 |viewToken|Krátkodobý zobrazení token pro streamování videa.|
 |sourceLanguage|Zdrojový jazyk videa.|
-|Jazyk|Aktuální jazyk videa (překlad).|
+|jazyk|Aktuální jazyk videa (překlad).|
 |indexingPreset|Přednastavení, použít k indexování videa.|
 |streamingPreset|Přednastavení k publikování videa.|
 |linguisticModelId|Model CRIS používaný k přepisy videa.|
@@ -152,7 +154,7 @@ Přehledy jsou sadu dimenzí (například přepisu řádky, tváří, značky, a
 |Verze|Kód verze|
 |---|---|
 |sourceLanguage|Zdrojový jazyk videa (za předpokladu, že jeden hlavní jazyk). Ve formuláři [BCP-47](https://tools.ietf.org/html/bcp47) řetězec.|
-|Jazyk|Jazyk insights (přeloženého ze zdrojového jazyka). Ve formuláři [BCP-47](https://tools.ietf.org/html/bcp47) řetězec.|
+|jazyk|Jazyk insights (přeloženého ze zdrojového jazyka). Ve formuláři [BCP-47](https://tools.ietf.org/html/bcp47) řetězec.|
 |přepis|[Přepisu](#transcript) dimenze.|
 |optické rozpoznávání znaků|[Ocr](#ocr) dimenze.|
 |klíčová slova|[Klíčová slova](#keywords) dimenze.|
@@ -165,6 +167,8 @@ Přehledy jsou sadu dimenzí (například přepisu řádky, tváří, značky, a
 |zabarvení|[Zabarvení](#sentiments) dimenze.|
 |visualContentModeration|[VisualContentModeration](#visualcontentmoderation) dimenze.|
 |textualConentModeration|[TextualConentModeration](#textualconentmoderation) dimenze.|
+|emocí| [Emoce](#emotions) dimenze.|
+|témata|[Témata](#topics) dimenze.|
 
 Příklad:
 
@@ -200,7 +204,7 @@ instance|Seznam časových rozsahů tento blok.|
 |---|---|
 |id|ID řádku.|
 |text|Přepis samotný.|
-|Jazyk|Jazyk přepisu. Určené pro podporu přepisu, kde každý řádek může mít jiný jazyk.|
+|jazyk|Jazyk přepisu. Určené pro podporu přepisu, kde každý řádek může mít jiný jazyk.|
 |instance|Seznam časových rozsahů, ve kterém se tento řádek. Pokud je instance přepisu, bude mít jenom 1 instance.|
 
 Příklad:
@@ -239,7 +243,7 @@ Příklad:
 |id|ID OCR řádku.|
 |text|OCR textu.|
 |spolehlivosti|Rozpoznávání spolehlivosti.|
-|Jazyk|OCR jazyk.|
+|jazyk|OCR jazyk.|
 |instance|Seznam časových rozsahů, ve kterém se objevil tento OCR (stejné OCR může objevit více než jednou).|
 
 ```json
@@ -282,7 +286,7 @@ Příklad:
 |id|ID – klíčové slovo.|
 |text|Text – klíčové slovo.|
 |spolehlivosti|Klíčové slovo rozpoznávání spolehlivosti.|
-|Jazyk|Jazyk – klíčové slovo (při překladu).|
+|jazyk|Jazyk – klíčové slovo (při překladu).|
 |instance|Seznam časových rozsahů, ve kterém se nacházela toto klíčové slovo (klíčové slovo může objevit více než jednou).|
 
 ```json
@@ -320,7 +324,6 @@ Příklad:
     ]
 }
 ] 
-
 ```
 
 #### <a name="faces"></a>tváří
@@ -374,7 +377,7 @@ Příklad:
 |---|---|
 |id|ID popisku.|
 |jméno|Název popisku (například "Computer", "TV").|
-|Jazyk|Popisek názvu jazyka (při překladu). BCP-47|
+|jazyk|Popisek názvu jazyka (při překladu). BCP-47|
 |instance|Seznam časových rozsahů, ve kterém se tento popisek (popisek se může objevit více než jednou). Každá instance má pole jistotou. |
 
 
@@ -444,7 +447,7 @@ Příklad:
           "id": 0,
           "instances": [
             {
-          "thumbnailId": "00000000-0000-0000-0000-000000000000",
+                "thumbnailId": "00000000-0000-0000-0000-000000000000",
               "start": "00: 00: 00.1670000",
               "end": "00: 00: 00.2000000"
             }
@@ -453,7 +456,7 @@ Příklad:
       ],
       "instances": [
         {
-       "thumbnailId": "00000000-0000-0000-0000-000000000000",   
+            "thumbnailId": "00000000-0000-0000-0000-000000000000",  
           "start": "00: 00: 00.2000000",
           "end": "00: 00: 05.0330000"
         }
@@ -466,7 +469,7 @@ Příklad:
           "id": 1,
           "instances": [
             {
-          "thumbnailId": "00000000-0000-0000-0000-000000000000",        
+                "thumbnailId": "00000000-0000-0000-0000-000000000000",      
               "start": "00: 00: 05.2670000",
               "end": "00: 00: 05.3000000"
             }
@@ -667,10 +670,144 @@ Videa, které se nacházejí na obsah pro dospělé nebo pikantního mohou být 
 |bannedWordsCount |Počet zakázaných slov v příspěvcích.|
 |bannedWordsRatio |Poměr z celkového počtu slov.|
 
+#### <a name="emotions"></a>emocí
+
+Video Indexer identifikuje emoce podle pomůcky pro zpracování řeči a zvuku. Můžou být identifikované pro rozpoznávání emocí: radosti a velkou, smutek, hněv nebo strach.
+
+|Název|Popis|
+|---|---|
+|id|ID pro rozpoznávání emocí.|
+|type|Rozpoznávání emocí chvíli, kdy byl identifikován na základě rozpoznávání řeči a zvuku pomůcky. Může být rozhraním pro rozpoznávání emocí: radosti a velkou, smutek, hněv nebo strach.|
+|instance|Seznam časových rozsahů, ve kterém se objevil tento pro rozpoznávání emocí.|
+
+```json
+"emotions": [{
+    "id": 0,
+    "type": "Fear",
+    "instances": [{
+      "adjustedStart": "0:00:39.47",
+      "adjustedEnd": "0:00:45.56",
+      "start": "0:00:39.47",
+      "end": "0:00:45.56"
+    },
+    {
+      "adjustedStart": "0:07:19.57",
+      "adjustedEnd": "0:07:23.25",
+      "start": "0:07:19.57",
+      "end": "0:07:23.25"
+    }]
+  },
+  {
+    "id": 1,
+    "type": "Anger",
+    "instances": [{
+      "adjustedStart": "0:03:55.99",
+      "adjustedEnd": "0:04:05.06",
+      "start": "0:03:55.99",
+      "end": "0:04:05.06"
+    },
+    {
+      "adjustedStart": "0:04:56.5",
+      "adjustedEnd": "0:05:04.35",
+      "start": "0:04:56.5",
+      "end": "0:05:04.35"
+    }]
+  },
+  {
+    "id": 2,
+    "type": "Joy",
+    "instances": [{
+      "adjustedStart": "0:12:23.68",
+      "adjustedEnd": "0:12:34.76",
+      "start": "0:12:23.68",
+      "end": "0:12:34.76"
+    },
+    {
+      "adjustedStart": "0:12:46.73",
+      "adjustedEnd": "0:12:52.8",
+      "start": "0:12:46.73",
+      "end": "0:12:52.8"
+    },
+    {
+      "adjustedStart": "0:30:11.29",
+      "adjustedEnd": "0:30:16.43",
+      "start": "0:30:11.29",
+      "end": "0:30:16.43"
+    },
+    {
+      "adjustedStart": "0:41:37.23",
+      "adjustedEnd": "0:41:39.85",
+      "start": "0:41:37.23",
+      "end": "0:41:39.85"
+    }]
+  },
+  {
+    "id": 3,
+    "type": "Sad",
+    "instances": [{
+      "adjustedStart": "0:13:38.67",
+      "adjustedEnd": "0:13:41.3",
+      "start": "0:13:38.67",
+      "end": "0:13:41.3"
+    },
+    {
+      "adjustedStart": "0:28:08.88",
+      "adjustedEnd": "0:28:18.16",
+      "start": "0:28:08.88",
+      "end": "0:28:18.16"
+    }]
+  }
+],
+```
+
+#### <a name="topics"></a>témata
+
+Video Indexer umožňuje odvození hlavní témata z záznamy o studiu. Pokud je to možné, 1. úrovně [IPTC](https://iptc.org/standards/media-topics/) taxonomie zahrnuje epics zahrnuté. 
+
+|Název|Popis|
+|---|---|
+|id|ID tématu.|
+|jméno|Název tématu, například: "Pharmaceuticals".|
+|referenceId|Odráží hierarchii témata s popisem cesty. Příklad: "stavu a wellbeing / lékařství a zdravotní péče / Pharmaceuticals".|
+|spolehlivosti|Skóre spolehlivosti v rozsahu [0,1]. Vyšší je větší jistotu.|
+|jazyk|Jazyk použitý v tomto tématu.|
+|iptcName|IPTC média kódu název, pokud se zjistí.|
+|instance |V současné době Video Indexer neindexujte tématu se časové intervaly, takže celý video se používá jako interval.|
+
+```json
+"topics": [{
+    "id": 0,
+    "name": "INTERNATIONAL RELATIONS",
+    "referenceId": "POLITICS AND GOVERNMENT/FOREIGN POLICY/INTERNATIONAL RELATIONS",
+    "referenceType": "VideoIndexer",
+    "confidence": 1,
+    "language": "en-US",
+    "instances": [{
+        "adjustedStart": "0:00:00",
+        "adjustedEnd": "0:03:36.25",
+        "start": "0:00:00",
+        "end": "0:03:36.25"
+    }]
+}, {
+    "id": 1,
+    "name": "Politics and Government",
+    "referenceType": "VideoIndexer",
+    "iptcName": "Politics",
+    "confidence": 0.9041,
+    "language": "en-US",
+    "instances": [{
+        "adjustedStart": "0:00:00",
+        "adjustedEnd": "0:03:36.25",
+        "start": "0:00:00",
+        "end": "0:03:36.25"
+    }]
+}]
+. . .
+```
 
 ## <a name="next-steps"></a>Další postup
 
-[Video Indexer API](https://api-portal.videoindexer.ai)
+[Portál pro vývojáře video Indexer](https://api-portal.videoindexer.ai)
 
 Informace o tom, jak vložení widgetů do aplikace najdete v tématu [Video Indexer vložení widgetů do svých aplikací](video-indexer-embed-widgets.md). 
 

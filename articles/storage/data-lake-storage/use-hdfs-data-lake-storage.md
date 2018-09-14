@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: artek
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: ef28468c7aa420c145f5e6d79e2b079bd1d094f4
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: c59331c772e140fccfefb89eef086a35837171e1
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523678"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576971"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>Pomocí rozhraní příkazového řádku HDFS s Data Lake Storage Gen2
 
@@ -37,7 +37,7 @@ Pokud chcete odstranit soubor nebo adresář:
     hdfs dfs -rm [-skipTrash] URI [URI ...]
 
 
-Nyní Pojďme se cluster HDInsight Hadoop na Linuxu jako příklad. Pokud chcete používat rozhraní příkazového řádku HDFS, musíte nejprve vytvořit [vzdálený přístup ke službám](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-linux-information#remote-access-to-services). Pokud vyberete [SSH](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix) ukázkový kód Powershellu vypadá takto:
+Nyní Pojďme se cluster HDInsight Hadoop na Linuxu jako příklad. Pokud chcete používat rozhraní příkazového řádku HDFS, musíte nejprve vytvořit [vzdálený přístup ke službám](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-information#remote-access-to-services). Pokud vyberete [SSH](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix) ukázkový kód Powershellu vypadá takto:
 ```PowerShell
 #Connect to the cluster via SSH.
 ssh sshuser@clustername-ssh.azurehdinsight.net

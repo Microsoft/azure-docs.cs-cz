@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 72bc0408ed1eba2d959d246a55677ee9964ef106
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 0810aff364f8a015e93d7513b13ac7dcb5379556
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44718810"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45544094"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Řízení přístupu v Azure Data Lake Storage Gen1
 
@@ -170,19 +170,20 @@ def access_check( user, desired_perms, path ) :
       return ( (desired_perms & e.permissions) == desired_perms )
 
   # Handle the named users. Note that mask IS used.
-  entries = get_acl_entries( path, NAMED_USERS )
+  entries = get_acl_entries( path, NAMED_USER )
   for entry in entries:
       if (user == entry.identity ) :
           mask = get_mask( path )
           return ( (desired_perms & entry.permmissions & mask) == desired_perms)
 
-  # Handle groups (named groups and owning group)
+  # Handle named groups and owning group
   member_count = 0
   perms = 0
-  for g in get_groups(path) :
-    if (user_is_member_of_group(user, g)) :
+  entries = get_acl_entries( path, NAMED_GROUP | OWNING_GROUP )
+  for entry in entries:
+    if (user_is_member_of_group(user, entry.identity)) :
       member_count += 1
-      perms | =  get_perms_for_group(path,g)
+      perms | =  entry.permissions
   if (member_count>0) :
     return ((desired_perms & perms & mask ) == desired_perms)
  

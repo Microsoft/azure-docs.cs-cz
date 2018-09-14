@@ -12,12 +12,12 @@ ms.date: 12/14/2017
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: ''
-ms.openlocfilehash: 55de3cd8830834a2af512661d5389952d927ef9f
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 49000d4fd61e7cd061b415d50545a7f5ee56f3fb
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094311"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579119"
 ---
 # <a name="call-a-function-from-powerapps"></a>Volání funkce z PowerApps
 [PowerApps](https://powerapps.microsoft.com) platformy je určená pro obchodní specialisty k vytváření aplikací bez kódu pro tradiční aplikace. Profesionální vývojáři mohou pomocí Azure Functions rozšířit možnosti PowerApps, při stínění tvůrci aplikace PowerApps z technické podrobnosti.
@@ -41,7 +41,7 @@ V tomto tématu se dozvíte, jak:
 
 ## <a name="prerequisites"></a>Požadavky
 
-+ Aktivní [obchodního vztahu v PowerApps](https://docs.microsoft.com/en-us/powerapps/maker/signup-for-powerapps) pomocí stejné přihlašovací údaje jako váš účet Azure. 
++ Aktivní [obchodního vztahu v PowerApps](https://docs.microsoft.com/powerapps/maker/signup-for-powerapps) pomocí stejné přihlašovací údaje jako váš účet Azure. 
 + Aplikace Excel a [Excelový ukázkový soubor](https://procsi.blob.core.windows.net/docs/turbine-data.xlsx) , kterou použijete jako zdroj dat pro vaši aplikaci.
 + Dokončení tohoto kurzu [vytvoření definice OpenAPI pro funkci](functions-openapi-definition.md).
 

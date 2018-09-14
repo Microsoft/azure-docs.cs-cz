@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 3eca9e416a18e7389a6ce45cccd3cc99707e9806
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: ffc2a9fb7b0ed516645c833f87c9ef5c95ca20ff
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39070430"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45580748"
 ---
 # <a name="register-in-dev-center"></a>Registrace ve službě Dev Center  
 K ověření, že nejste přihlášeni k účtu osobní prohlížeče, otevřete nový Internet Explorer InPrivate nebo Incognito Chrome relaci procházení.  
@@ -108,11 +108,11 @@ Pokud máte problémy s registrací Dev Center, postupujte podle těchto kroků 
 > Vydavatele, kteří publikují v typ seznamu příkazů jazyka Transact: virtuálního počítače, aplikace Azure: řešení šablony a spravované aplikace.  
 
 *   **Proč je potřeba účet vývojáře pro?**
-> Je vyžaduje aby Microsoft mohl fakturovat zákazníka jménem vydavatele pro typ seznamu příkazů jazyka Transact účtu dev Center. Účtu centra vývojářů pro registraci umožňuje společnosti Microsoft pro ověření právní, daňové a bankovní informace pro vaši společnost. Další informace klikněte [tady.](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher#register-in-dev-center)
+> Je vyžaduje aby Microsoft mohl fakturovat zákazníka jménem vydavatele pro typ seznamu příkazů jazyka Transact účtu dev Center. Účtu centra vývojářů pro registraci umožňuje společnosti Microsoft pro ověření právní, daňové a bankovní informace pro vaši společnost. Další informace klikněte [tady.](https://docs.microsoft.com/azure/marketplace/become-publisher#register-in-dev-center)
 
 *   **Jak mám začít s registrací Dev Center?**
 > Aby se zabránilo duplikování, ověřte, že vaše společnost ještě nemá účet Dev Center zaregistrovaný. Musíte být přihlášeni pomocí účtu Microsoft, který chcete přidružit k svému vývojářskému účtu. Pokud ještě nemáte účet Microsoft, můžete vytvořit nový účet [tady.](https://signup.live.com/signup?contextid=AEB123C8F2B1DA7A&bk=1529968434&ru=https%3a%2f%2flogin.live.com%2flogin.srf%3fcontextid%3dAEB123C8F2B1DA7A%26mkt%3dEN-US%26lc%3d1033%26bk%3d1529968434&uiflavor=web&uaid=9987e727fedb459780d95c1b9e46c82c&mkt=EN-US&lc=1033&lic=1) (Příklad: contoso_marketplace@live.com) pro přihlášení a registraci, přejděte na https://dev.windows.com/en-us/registration?accountProgram=Azure
-<br>Další informace o procesu registrace klikněte na tlačítko [tady.](https://docs.microsoft.com/en-us/azure/marketplace/register-dev-center)</br>
+<br>Další informace o procesu registrace klikněte na tlačítko [tady.](https://docs.microsoft.com/azure/marketplace/register-dev-center)</br>
 
 *   **By měl vybrat "Osoba" nebo "Společnost" typ účtu?**
 > K publikování transact nabídky na webu Marketplace, musíte vybrat firemní účet při registraci účtu Dev Center.
@@ -143,7 +143,7 @@ Pokud máte problémy s registrací Dev Center, postupujte podle těchto kroků 
 > Přiřazení názvu dočasného společnosti, kontaktujte podporu na [developer.microsoft.com/windows/support](https://developer.microsoft.com/windows/support) a poskytněte vaše firemní dokumenty registrace.
 
 *   **Jak mohu přidat informace o tomto výplata a daň?**
-> Nebude možné publikovat transact nabídky bez dokončení daňové a bankovní informace ve svém účtu centra vývojářů.  Další informace o přidání informací o účtu [jak informace přidat bance a daň.](https://docs.microsoft.com/en-us/azure/marketplace/register-dev-center#how-to-add-bank-and-tax-information)
+> Nebude možné publikovat transact nabídky bez dokončení daňové a bankovní informace ve svém účtu centra vývojářů.  Další informace o přidání informací o účtu [jak informace přidat bance a daň.](https://docs.microsoft.com/azure/marketplace/register-dev-center#how-to-add-bank-and-tax-information)
 
 *   **Můžete změnit přihlašovací účet Dev Center Microsoft?**
 > Ne. Po vytvoření Dev Center vlastníka účtu nejde změnit. Je třeba začít úplně účtu Dev Center s požadovaný účet Microsoft.

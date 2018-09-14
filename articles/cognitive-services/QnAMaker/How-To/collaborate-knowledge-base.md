@@ -1,35 +1,35 @@
 ---
-title: Spolupráce na znalostní báze - kognitivní služby Microsoft | Microsoft Docs
-titleSuffix: Azure
-description: Jak spolupracovat na QnA Maker znalostní báze
+title: Spolupráce na znalostní báze – Qna Maker
+titleSuffix: Azure Cognitive Services
+description: Nástroj QnA Maker umožňuje více uživatelům ke spolupráci na znalostní bázi. Tato funkce je součástí řízení přístupu.
 services: cognitive-services
 author: nstulasi
-manager: sangitap
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 09/12/2018
 ms.author: saneppal
-ms.openlocfilehash: e18d656236276595fc5186a6656349bf28974ead
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 52cac0d73dd75f400c9777b9cc9c0b3ca101df58
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343221"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579798"
 ---
-# <a name="collaborate-on-your-knowledge-base"></a>Spolupracujte na znalostní báze
+# <a name="collaborate-on-your-knowledge-base"></a>Spolupráce na znalostní báze
 
-QnA Maker umožňuje více uživatelů ke spolupráci na bázi knowledge base. Tato funkce je k dispozici s Azure [řízení přístupu na základě Role](https://docs.microsoft.com/en-us/azure/active-directory/role-based-access-control-configure). 
+Nástroj QnA Maker umožňuje více uživatelům ke spolupráci na znalostní bázi. Tato funkce je součástí Azure [řízení přístupu na základě Role](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure). 
 
-Proveďte následující postup služby QnA Maker můžete sdílet s někým:
+Proveďte následující kroky a sdílet s někým, vaše služba QnA Maker:
 
-1. Přihlaste se k portálu Azure a přejděte do programu QnA Maker zdroje.
+1. Přihlaste se k webu Azure portal a přejděte do prostředku nástroje QnA Maker.
 
-    ![Seznam zdrojů QnA Maker](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-resource-list.PNG)
+    ![Seznam prostředků nástroje QnA Maker](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-resource-list.PNG)
 
-2. Přejděte na **řízení přístupu (IAM)** kartě.
+2. Přejděte **řízení přístupu (IAM)** kartu.
 
-    ![QnA Maker IAM](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam.PNG)
+    ![Nástroj QnA Maker IAM](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam.PNG)
 
 3. Vyberte **Přidat**.
 
@@ -37,17 +37,17 @@ Proveďte následující postup služby QnA Maker můžete sdílet s někým:
 
 4. Vyberte **vlastníka** nebo **Přispěvatel** role.
 
-    ![Přidání role QnA Maker IAM](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add-role.PNG)
+    ![Nástroj QnA Maker IAM přidat roli](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add-role.PNG)
 
-5. Zadejte e-mailu, kterou chcete sdílet a kliknutím na tlačítko Uložit.
+5. Zadejte e-mailu, který chcete sdílet a kliknutím na tlačítko Uložit.
 
-    ![QnA Maker IAM přidat e-mailu](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add-email.PNG)
+    ![Nástroj QnA Maker IAM přidat e-mailu](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add-email.PNG)
 
-Nyní když osoba, která jste sdíleli služby QnA Maker prostřednictvím, zaznamená do [QnA Maker portál](https://qnamaker.ai) uvidí znalostních bází v dané služby.
+Nyní když osoba sdílí vaší služby QnA Maker, protokoly do [portál QnA Maker](https://qnamaker.ai) vidí všechny znalostních bází v dané služby.
 
-Pamatujte si, že se konkrétní znalostní bázi knowledge base v službě QnA Maker nelze sdílet. Pokud chcete podrobnějšímu řízení přístupu, vezměte v úvahu distribucí znalostních bází mezi různými QnA Maker službami.
+Nezapomeňte, že nemůžete sdílet určité znalostní báze v služba QnA Maker. Pokud chcete podrobnější řízení přístupu, vezměte v úvahu distribuce znalostních bází napříč různými službami QnA Maker.
 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Testování znalostní bázi knowledge base](./test-knowledge-base.md)
+> [Testování znalostní báze](./test-knowledge-base.md)

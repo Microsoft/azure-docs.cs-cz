@@ -1,210 +1,212 @@
 ---
-title: 'Řešení potíží s Azure Backup selhání: hosta stavu agenta není k dispozici'
-description: Příznaky, příčiny a řešení Azure Backup chyby související s agenta, rozšíření a disky.
+title: 'Řešení potíží se selháním Azure Backup: hostovaného agenta stav nedostupný'
+description: Příznaky, příčiny a řešení Azure Backup chyby týkající se agenta, rozšíření a disky.
 services: backup
 author: genlin
 manager: cshepard
-keywords: Zálohování Azure; Agent virtuálního počítače; Připojení k síti;
+keywords: Služba Azure backup; Agent virtuálního počítače; Připojení k síti;
 ms.service: backup
 ms.topic: troubleshooting
 ms.date: 06/25/2018
 ms.author: genli
-ms.openlocfilehash: 09cfda3c2c790297b0961ecac92cba61c9e6de6f
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: ce4a889cae852d333ea9862138f4d44471677c26
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36754452"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45544009"
 ---
-# <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Řešení potíží s Azure Backup selhání: problémy s agenta nebo rozšíření
+# <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Řešení potíží se selháním Azure Backup: problémy s agentů nebo rozšíření
 
-Tento článek obsahuje kroky řešení potíží, které vám mohou pomoci vyřešit Azure Backup chyby související s komunikaci s agenta virtuálního počítače a rozšíření.
+Tento článek popisuje postup řešení potíží, které vám může pomoct vyřešit Azure Backup chyby týkající se komunikace s agentem virtuálního počítače a rozšíření.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="vm-agent-unable-to-communicate-with-azure-backup"></a>Nelze navázat komunikaci s Azure Backup agent virtuálního počítače
+## <a name="vm-agent-unable-to-communicate-with-azure-backup"></a>Agent virtuálního počítače moci komunikovat se službou Azure Backup
 
-Chybová zpráva: "Nelze navázat komunikaci s Azure Backup Agent virtuálního počítače"<br>
+Chybová zpráva: "Agent virtuálního počítače moci komunikovat se službou Azure Backup"<br>
 Kód chyby: "UserErrorGuestAgentStatusUnavailable"
 
-Po registraci a naplánovat virtuálního počítače pro službu zálohování, zálohování spustí úlohu komunikaci s agentem virtuálních počítačů k pořízení snímku v daném okamžiku. Snímek některý z následujících podmínek může zabránit se aktivuje. Při aktivaci snímku není zálohování může selhat. Proveďte následující kroky odstraňování potíží v uvedeném pořadí a poté operaci:
+Po registraci a plánování virtuálních počítačů za službu Backup zahájí zálohování úlohy tím, že komunikuje s agentem virtuálního počítače k vytvoření snímku bodu v čase. Snímek některý z následujících podmínek může zabránit se aktivuje. Když se aktivuje snímku, zálohování se nemusí podařit. Proveďte následující kroky odstraňování potíží v uvedeném pořadí a opakujte operaci:
 
-**Příčina 1: [virtuální počítač nemá přístup k Internetu](#the-vm-has-no-internet-access)**  
-**Příčina 2: [je agent nainstalován ve virtuálním počítači, ale jeho reagovat (pro virtuální počítače Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**    
-**Příčina 3: [agent nainstalovaný ve virtuálním počítači je zastaralý (pro virtuální počítače s Linuxem)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
-**Příčina 4: [nelze načíst stav snímku ani snímku nelze provést.](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**    
-**Příčina 5: [rozšíření zálohování se nezdaří aktualizace nebo zatížení](#the-backup-extension-fails-to-update-or-load)**  
+**1. příčina: [virtuální počítač nemá přístup k Internetu](#the-vm-has-no-internet-access)**  
+**2. příčina: [agent je nainstalovaný ve virtuálním počítači, ale jeho reagovat (pro virtuální počítače s Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**    
+**3. příčina: [agent nainstalovaný na virtuálním počítači je zastaralý (pro virtuální počítače s Linuxem)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
+**4. příčina: [stavu snímku nelze načíst ani nemůže být pořídí snímek](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**    
+**5 příčina: [rozšíření zálohování se nezdaří pro aktualizaci nebo načtení](#the-backup-extension-fails-to-update-or-load)**  
 
-## <a name="snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a>Operace snímku se nezdaří, protože virtuální počítač není připojený k síti
+## <a name="snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a>Operace vytvoření snímku selhala, protože virtuální počítač není připojený k síti
 
 Chybová zpráva: "Snímku operace se nezdařila z důvodu žádné připojení k síti na virtuálním počítači"<br>
 Kód chyby: "ExtensionSnapshotFailedNoNetwork"
 
-Po registraci a naplánovat virtuálního počítače pro službu Azure zálohování, zálohování spustí úlohu komunikaci s rozšíření zálohování virtuálních počítačů k pořízení snímku v daném okamžiku. Snímek některý z následujících podmínek může zabránit se aktivuje. Pokud není aktivované snímku, může dojít k selhání zálohování. Proveďte následující kroky odstraňování potíží v uvedeném pořadí a poté operaci:    
-**Příčina 1: [virtuální počítač nemá přístup k Internetu](#the-vm-has-no-internet-access)**  
-**Příčina 2: [nelze načíst stav snímku ani snímku nelze provést.](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
-**Příčina 3: [rozšíření zálohování se nezdaří aktualizace nebo zatížení](#the-backup-extension-fails-to-update-or-load)**  
+Po registraci a naplánovat virtuálního počítače pro služby Azure Backup zahájí zálohování úlohy tím, že komunikuje s virtuálního počítače rozšíření zálohování k vytvoření snímku bodu v čase. Snímek některý z následujících podmínek může zabránit se aktivuje. Pokud se snímek se aktivuje, může dojít k selhání zálohování. Proveďte následující kroky odstraňování potíží v uvedeném pořadí a opakujte operaci:    
+**1. příčina: [virtuální počítač nemá přístup k Internetu](#the-vm-has-no-internet-access)**  
+**2. příčina: [stavu snímku nelze načíst ani nemůže být pořídí snímek](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
+**3. příčina: [rozšíření zálohování se nezdaří pro aktualizaci nebo načtení](#the-backup-extension-fails-to-update-or-load)**  
 
-## <a name="vmsnapshot-extension-operation-failed"></a>Dojde k selhání operace rozšíření VMSnapshot
+## <a name="vmsnapshot-extension-operation-failed"></a>Operace rozšíření vmsnapshot selhala
 
-Chybová zpráva: "VMSnapshot rozšíření operace se nezdařilo"<br>
+Chybová zpráva: "operace rozšíření VMSnapshot selhala"<br>
 Kód chyby: "ExtentionOperationFailed"
 
-Po registraci a naplánovat virtuálního počítače pro službu Azure zálohování, zálohování spustí úlohu komunikaci s rozšíření zálohování virtuálních počítačů k pořízení snímku v daném okamžiku. Snímek některý z následujících podmínek může zabránit se aktivuje. Pokud není aktivované snímku, může dojít k selhání zálohování. Proveďte následující kroky odstraňování potíží v uvedeném pořadí a poté operaci:  
-**Příčina 1: [nelze načíst stav snímku ani snímku nelze provést.](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
-**Příčina 2: [rozšíření zálohování se nezdaří aktualizace nebo zatížení](#the-backup-extension-fails-to-update-or-load)**  
-**Příčina 3: [je agent nainstalován ve virtuálním počítači, ale jeho reagovat (pro virtuální počítače Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
-**Příčina 4: [agent nainstalovaný ve virtuálním počítači je zastaralý (pro virtuální počítače s Linuxem)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**
+Po registraci a naplánovat virtuálního počítače pro služby Azure Backup zahájí zálohování úlohy tím, že komunikuje s virtuálního počítače rozšíření zálohování k vytvoření snímku bodu v čase. Snímek některý z následujících podmínek může zabránit se aktivuje. Pokud se snímek se aktivuje, může dojít k selhání zálohování. Proveďte následující kroky odstraňování potíží v uvedeném pořadí a opakujte operaci:  
+**1. příčina: [stavu snímku nelze načíst ani nemůže být pořídí snímek](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
+**2. příčina: [rozšíření zálohování se nezdaří pro aktualizaci nebo načtení](#the-backup-extension-fails-to-update-or-load)**  
+**3. příčina: [agent je nainstalovaný ve virtuálním počítači, ale jeho reagovat (pro virtuální počítače s Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
+**4. příčina: [agent nainstalovaný na virtuálním počítači je zastaralý (pro virtuální počítače s Linuxem)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**
 
-## <a name="backup-fails-because-the-vm-agent-is-unresponsive"></a>Zálohování se nezdaří, protože agent virtuálního počítače je reagovat
+## <a name="backup-fails-because-the-vm-agent-is-unresponsive"></a>Zálohování selhalo, protože agent virtuálního počítače nereaguje
 
-Chybová zpráva: "Nemohl komunikovat se serverem agenta virtuálního počítače pro snímek stavu" <br>
+Chybová zpráva: "Nejde komunikovat s agentem virtuálního počítače kvůli stavu snímku" <br>
 Kód chyby: "GuestAgentSnapshotTaskStatusError"
 
-Po registraci a naplánovat virtuálního počítače pro službu Azure zálohování, zálohování spustí úlohu komunikaci s rozšíření zálohování virtuálních počítačů k pořízení snímku v daném okamžiku. Snímek některý z následujících podmínek může zabránit se aktivuje. Pokud není aktivované snímku, může dojít k selhání zálohování. Proveďte následující kroky odstraňování potíží v uvedeném pořadí a poté operaci:  
-**Příčina 1: [je agent nainstalován ve virtuálním počítači, ale jeho reagovat (pro virtuální počítače Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
-**Příčina 2: [agent nainstalovaný ve virtuálním počítači je zastaralý (pro virtuální počítače s Linuxem)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
-**Příčina 3: [virtuální počítač nemá přístup k Internetu](#the-vm-has-no-internet-access)**  
+Po registraci a naplánovat virtuálního počítače pro služby Azure Backup zahájí zálohování úlohy tím, že komunikuje s virtuálního počítače rozšíření zálohování k vytvoření snímku bodu v čase. Snímek některý z následujících podmínek může zabránit se aktivuje. Pokud se snímek se aktivuje, může dojít k selhání zálohování. Proveďte následující kroky odstraňování potíží v uvedeném pořadí a opakujte operaci:  
+**1. příčina: [agent je nainstalovaný ve virtuálním počítači, ale jeho reagovat (pro virtuální počítače s Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
+**2. příčina: [agent nainstalovaný na virtuálním počítači je zastaralý (pro virtuální počítače s Linuxem)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
+**3. příčina: [virtuální počítač nemá přístup k Internetu](#the-vm-has-no-internet-access)**  
 
-## <a name="backup-fails-with-an-internal-error"></a>Zálohování se nezdaří, k interní chybě
+## <a name="backup-fails-with-an-internal-error"></a>Zálohování selhalo s interní chybou
 
-Chybová zpráva: "zálohování došlo k vnitřní chybě - opakujte operaci za několik minut." <br>
-Kód chyby: "BackUpOperationFailed" nebo "BackUpOperationFailedV2"
+Chybová zpráva: "Zálohování selhalo s interní chybou – Zkuste prosím tuto operaci za několik minut." <br>
+Kód chyby: "BackUpOperationFailed" / "BackUpOperationFailedV2"
 
-Po registraci a naplánovat virtuálního počítače pro službu Azure zálohování, zálohování spustí úlohu komunikaci s rozšíření zálohování virtuálních počítačů k pořízení snímku v daném okamžiku. Snímek některý z následujících podmínek může zabránit se aktivuje. Pokud není aktivované snímku, může dojít k selhání zálohování. Proveďte následující kroky odstraňování potíží v uvedeném pořadí a poté operaci:  
-**Příčina 1: [virtuální počítač nemá přístup k Internetu](#the-vm-has-no-internet-access)**  
-**Příčina 2: [agent nainstalovaný v virtuálního počítače, ale je reagovat (pro virtuální počítače Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
-**Příčina 3: [agent nainstalovaný ve virtuálním počítači je zastaralý (pro virtuální počítače s Linuxem)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
-**Příčina 4: [nelze načíst stav snímku ani snímku nelze provést.](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
-**Příčina 5: [rozšíření zálohování se nezdaří aktualizace nebo zatížení](#the-backup-extension-fails-to-update-or-load)**  
-**Příčina 6: [zálohování služby nemá oprávnění k odstranění staré body obnovení z důvodu zámek skupiny prostředků](#backup-service-does-not-have-permission-to-delete-the-old-restore-points-due-to-resource-group-lock)**
+Po registraci a naplánovat virtuálního počítače pro služby Azure Backup zahájí zálohování úlohy tím, že komunikuje s virtuálního počítače rozšíření zálohování k vytvoření snímku bodu v čase. Snímek některý z následujících podmínek může zabránit se aktivuje. Pokud se snímek se aktivuje, může dojít k selhání zálohování. Proveďte následující kroky odstraňování potíží v uvedeném pořadí a opakujte operaci:  
+**1. příčina: [virtuální počítač nemá přístup k Internetu](#the-vm-has-no-internet-access)**  
+**2. příčina: [nereaguje agent nainstalovaný ve virtuálním počítači, ale (pro virtuální počítače s Windows)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
+**3. příčina: [agent nainstalovaný na virtuálním počítači je zastaralý (pro virtuální počítače s Linuxem)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
+**4. příčina: [stavu snímku nelze načíst ani nemůže být pořídí snímek](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
+**5 příčina: [rozšíření zálohování se nezdaří pro aktualizaci nebo načtení](#the-backup-extension-fails-to-update-or-load)**  
+**Příčina 6: [služba zálohování nemá oprávnění odstranit staré body obnovení z důvodu zámku skupiny prostředků](#backup-service-does-not-have-permission-to-delete-the-old-restore-points-due-to-resource-group-lock)**
 
 ## <a name="causes-and-solutions"></a>Příčiny a řešení
 
 ### <a name="the-vm-has-no-internet-access"></a>Virtuální počítač nemá přístup k Internetu
-Virtuální počítač na požadavcích nasazení nemá přístup k Internetu. Nebo může mít omezení, která umožňují přístup na infrastrukturu Azure.
+Za požadavek na nasazení virtuální počítač nemá přístup k Internetu. Nebo může mít omezení, které brání přístupu infrastrukturou Azure.
 
-Správné fungování rozšíření Backup vyžaduje připojení k veřejným IP adresám Azure. Rozšíření odešle příkazy do úložiště Azure koncový bod (adresy URL HTTPs) ke správě snímky virtuálního počítače. Pokud rozšíření nemá přístup do veřejného Internetu, zálohování se nakonec nezdaří.
+Správné fungování rozšíření Backup vyžaduje připojení k veřejným IP adresám Azure. Rozšíření odesílá příkazy do služby Azure storage koncový bod (adresy URL HTTPs) ke správě snímky virtuálního počítače. Pokud přípona nemá přístup k veřejným Internetem, zálohování nakonec dojde k chybě.
 
-Je možné nasadit proxy server směrovat přenosy virtuálních počítačů.
+Je možné nasadit proxy server pro směrování provozu virtuálního počítače.
 ##### <a name="create-a-path-for-https-traffic"></a>Vytvoření cesty pro komunikaci přes protokol HTTPs
 
-1. Pokud máte omezení síťového na místě (například skupinu zabezpečení sítě), nasaďte HTTPs proxy server směrovat provoz.
-2. Povolit přístup k Internetu prostřednictvím serveru proxy protokolu HTTPs, přidejte pravidla na skupinu zabezpečení sítě, pokud nemáte.
+1. Pokud máte síťových omezení na místě (například skupinu zabezpečení sítě), nasadíte server proxy HTTPs ke směrování provozu.
+2. Pokud chcete povolit přístup k Internetu prostřednictvím serveru proxy protokolu HTTPs, přidáte pravidla skupiny zabezpečení sítě, pokud nemáte.
 
-Pokud chcete dozvědět, jak nastavit server proxy protokolu HTTPs pro zálohování virtuálních počítačů, přečtěte si téma [Příprava prostředí pro zálohování virtuálních počítačů Azure](backup-azure-arm-vms-prepare.md#establish-network-connectivity).
+Informace o nastavení serveru proxy protokolu HTTPs pro zálohy virtuálních počítačů najdete v tématu [Příprava prostředí pro zálohování virtuálních počítačů Azure](backup-azure-arm-vms-prepare.md#establish-network-connectivity).
 
-Zálohovaná virtuálního počítače nebo serveru proxy, přes který se směruje provoz vyžaduje přístup k Azure veřejné IP adresy
+Zálohované virtuální počítač nebo proxy server, přes který se směruje provoz vyžaduje přístup k Azure, veřejné IP adresy
 
 ####  <a name="solution"></a>Řešení
-Chcete-li vyřešit tento problém, zkuste jeden z následujících metod:
+Chcete-li vyřešit tento problém, zkuste použijte jeden z následujících metod:
 
-##### <a name="allow-access-to-azure-storage-that-corresponds-to-the-region"></a>Povolit přístup k úložišti Azure, která odpovídá oblasti
+##### <a name="allow-access-to-azure-storage-that-corresponds-to-the-region"></a>Povolit přístup k úložišti Azure, která odpovídá na oblast
 
-Můžete použít [služby značky](../virtual-network/security-overview.md#service-tags) umožňující připojení k úložišti určité oblasti. Zkontrolujte, zda pravidlo, které umožňuje přístup k účtu úložiště má vyšší prioritu než pravidlo tento přístup k Internetu bloky. 
+Můžete použít [značky služeb](../virtual-network/security-overview.md#service-tags) umožňující připojení k úložišti určité oblasti. Ujistěte se, že pravidlo, které umožňuje přístup k účtu úložiště má vyšší prioritu než pravidla, která zablokuje přístup internet. 
 
-![Skupina zabezpečení sítě se značky úložiště pro oblast](./media/backup-azure-arm-vms-prepare/storage-tags-with-nsg.png)
+![Skupina zabezpečení sítě se značkami úložiště pro oblast](./media/backup-azure-arm-vms-prepare/storage-tags-with-nsg.png)
 
-Pochopení podrobný postup konfigurace služby značky, můžete sledovat [toto video](https://youtu.be/1EjLQtbKm1M).
+Podívejte se na informace o tom postup krok za krokem konfigurace značky služeb, [toto video](https://youtu.be/1EjLQtbKm1M).
 
 > [!WARNING]
-> Značky služby úložiště jsou ve verzi preview. Jsou k dispozici pouze v určitých oblastí. Seznam oblastí naleznete v tématu [služby značky pro úložiště](../virtual-network/security-overview.md#service-tags).
+> Značky služeb úložiště jsou ve verzi preview. Jsou k dispozici pouze v konkrétní oblasti. Seznam oblastí naleznete v tématu [značky pro úložiště služeb](../virtual-network/security-overview.md#service-tags).
 
-Pokud používáte Azure spravované disky, bude pravděpodobně nutné počáteční další port (port 8443) na bránu firewall.
+Pokud používáte Azure Managed Disks, může být nutné počáteční další portu (port 8443) na bránu firewall.
 
-### <a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>Agent byl nainstalován ve virtuálním počítači, ale je reagovat (pro virtuální počítače Windows)
+Kromě toho pokud podsíť nemá trasy pro odchozí přenosy z Internetu, musíte přidat koncový bod služby se značka služby "Microsoft.Storage" pro vaši podsíť. 
+
+### <a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>Agent je nainstalovaný na virtuálním počítači, ale přestane reagovat (pro virtuální počítače s Windows)
 
 #### <a name="solution"></a>Řešení
-Agent virtuálního počítače může dojít k poškození nebo služba může byla zastavena. Opětovné instalace agenta virtuálního počítače pomáhá získat nejnovější verzi. Pomáhá také restartovat komunikace se službou.
+Agent virtuálního počítače může být poškozený nebo služba zastavila. Opětovná instalace agenta virtuálního počítače pomáhá získat nejnovější verzi. Pomáhá také restartovat komunikaci se službou.
 
-1. Zjistěte, zda v služby virtuálních počítačů (services.msc) spouští službu systému Windows agenta hosta. Pokuste se restartovat službu systému Windows agenta hosta a zahájit zálohování.    
-2. Pokud není viditelná v služby v Ovládacích panelech službu agenta hosta Windows přejděte do **programy a funkce** k určení, zda je nainstalována služba Windows agenta hosta.
-4. Pokud se zobrazí v agentovi hosta Windows **programy a funkce**, odinstalujte agenta hosta systému Windows.
-5. Stáhněte a nainstalujte [nejnovější verzi MSI agenta](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Musí mít oprávnění správce k dokončení instalace.
-6. Ověřte, že služby agenta hosta Windows zobrazují v služby.
+1. Určení, zda se službou Windows agenta hosta virtuálního počítače službami (services.msc). Pokuste se restartovat službu agenta hosta Windows a zahajte zálohování.    
+2. Pokud službu agenta hosta Windows nejsou viditelná ve službách, v Ovládacích panelech, přejděte na **programy a funkce** k určení, zda je nainstalována služba Windows agenta hosta.
+4. Pokud se zobrazí v agentovi hosta Windows **programy a funkce**, odinstalujte agenta hosta Windows.
+5. Stáhněte a nainstalujte [nejnovější verzi MSI agenta](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Musíte mít oprávnění správce k dokončení instalace.
+6. Ověřte, že služby agenta hosta Windows služby.
 7. Spusťte zálohu na vyžádání: 
-    * Na portálu, vyberte **zálohovat nyní**.
+    * Na portálu vyberte **zálohovat nyní**.
 
-Také ověřte, že [je nainstalované rozhraní Microsoft .NET 4.5](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) ve virtuálním počítači. Rozhraní .NET 4.5 je vyžadována pro agenta virtuálního počítače ke komunikaci se službou.
+Kromě toho ověřte, že [je nainstalované rozhraní Microsoft .NET 4.5](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) ve virtuálním počítači. Rozhraní .NET 4.5 je vyžadován pro agenta virtuálního počítače ke komunikaci se službou.
 
-### <a name="the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>Agent nainstalovaný ve virtuálním počítači je zastaralý (pro virtuální počítače s Linuxem)
+### <a name="the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>Agent nainstalovaný na virtuálním počítači je zastaralý (pro virtuální počítače s Linuxem)
 
 #### <a name="solution"></a>Řešení
-Většina související s agenta nebo rozšíření selhání pro virtuální počítače s Linuxem jsou způsobeny problémy, které ovlivňují zastaralé agenta virtuálního počítače. Chcete-li vyřešit tento problém, postupujte podle následujících obecných pokynů:
+Většina souvisejících s agenty nebo souvisejících s rozšířením selhání pro virtuální počítače s Linuxem jsou způsobeny problémy, které ovlivňují zastaralé agenta virtuálního počítače. Chcete-li tento problém vyřešit, postupujte podle následujících obecných pokynů:
 
 1. Postupujte podle pokynů pro [aktualizace agenta virtuálního počítače s Linuxem](../virtual-machines/linux/update-agent.md).
 
  > [!NOTE]
- > Jsme *důrazně doporučujeme* aktualizovat agenta pouze prostřednictvím distribuční úložiště. Nedoporučujeme stáhne kód agenta přímo z Githubu a jeho aktualizaci. Pokud nejnovější verzi agenta pro distribuční není k dispozici, obraťte distribuční podporu pokyny o tom, jak ji nainstalovat. Chcete-li vyhledat nejnovější agenta, přejděte na [Windows Azure Linux agent](https://github.com/Azure/WALinuxAgent/releases) stránky v úložišti GitHub.
+ > Jsme *důrazně doporučujeme* , že aktualizujete agenta pouze prostřednictvím distribuce úložiště. Nedoporučujeme stažením kódu agenta přímo z Githubu a aktualizacích. Pokud nejnovější verzi agenta pro vaši distribuci není k dispozici, požádejte distribuce podporu pokyny o tom, jak ji nainstalovat. Vyhledat nejnovější agent, přejděte [Windows Azure Linux agent](https://github.com/Azure/WALinuxAgent/releases) stránky v úložišti GitHub.
 
-2. Ujistěte se, že Azure agent běží ve virtuálním počítači tak, že spustíte následující příkaz: `ps -e`
+2. Ujistěte se, že Azure agent běží na virtuálním počítači spuštěním následujícího příkazu: `ps -e`
 
- Pokud proces není spuštěná, restartujte ji pomocí následujících příkazů:
+ Pokud proces není spuštěn, můžete ji restartujte pomocí následujících příkazů:
 
  * Pro Ubuntu: `service walinuxagent start`
- * Pro ostatní distribuce: `service waagent start`
+ * Pro jiné distribuce: `service waagent start`
 
 3. [Konfigurace automatického restartování agenta](https://github.com/Azure/WALinuxAgent/wiki/Known-Issues#mitigate_agent_crash).
-4. Spusťte nové zálohování testu. Je-li chyba přetrvávat, shromážděte tyto protokoly z virtuálního počítače:
+4. Spusťte nové zálohování testu. Pokud chyba přetrvává, shromážděte následující protokoly z virtuálního počítače:
 
    * /var/lib/waagent/*.XML
    * /var/log/waagent.log
    * / var/protokolu/azure / *
 
-Pokud jsme vyžadovat podrobné protokolování pro příkaz waagent, postupujte podle těchto kroků:
+Pokud pro waagent vyžadujeme podrobné protokolování, postupujte podle těchto kroků:
 
 1. V souboru /etc/waagent.conf vyhledejte následující řádek: **zapnout podrobné protokolování (y | n)**
-2. Změna **Logs.Verbose** z hodnoty *n* k *y*.
-3. Změnu uložíte a znovu spusťte příkaz waagent pomocí kroků popsaných výše v této části.
+2. Změnit **Logs.Verbose** hodnotu *n* k *y*.
+3. Uložte změny a potom restartujte waagent provedením kroků popsaných dříve v této části.
 
-###  <a name="the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>Nelze načíst stav snímku ani snímku nelze provést.
-Zálohování virtuálních počítačů spoléhá na vydání snímku příkazu k základní účtu úložiště. Zálohování může selhat, protože nemá žádný přístup k účtu úložiště nebo protože provádění úlohy snímku je zpožděno.
+###  <a name="the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>Nelze načíst stav snímku, nebo nelze pořídí snímek
+Zálohování virtuálních počítačů se spoléhá na vydání příkazu snímku do podkladového účtu úložiště. Zálohování může selhat, protože nemá přístup k účtu úložiště, nebo zpoždění spuštění úlohy snímku.
 
 #### <a name="solution"></a>Řešení
-Úlohu snímku k chybě může dojít k následující podmínky:
+Následující podmínky mohou způsobit selhání úlohy snímku:
 
 | Příčina | Řešení |
 | --- | --- |
-| Stav virtuálního počítače je nesprávně uvést, protože virtuální počítač je vypnutý v protokolu RDP (Remote Desktop). | Pokud se vypnout virtuální počítač v protokolu RDP, zkontrolujte portálu k určení, zda je správný stav virtuálního počítače. Pokud není správný, vypněte virtuální počítač na portálu pomocí **vypnutí** možnost na řídicím panelu virtuálních počítačů. |
-| Virtuální počítač nemůže získat adresu hostitele nebo z prostředků infrastruktury z DHCP. | DHCP musí být povolen v hosta pro zálohování virtuálních počítačů IaaS pracovat. Pokud virtuální počítač nemůže získat adresu hostitele nebo z prostředků infrastruktury z odpovědi DHCP 245, nemůže stáhnout nebo spustit libovolné rozšíření. Pokud potřebujete statickou privátní IP adresu, můžete ho nakonfigurujte prostřednictvím platformy. Možnost DHCP ve virtuálním počítači by měly být vlevo povoleny. Další informace najdete v tématu [nastavit statickou privátní IP interní](../virtual-network/virtual-networks-reserved-private-ip.md). |
+| Stav virtuálního počítače je uvedena nesprávně, protože virtuální počítač je vypnutý v protokolu RDP (Remote Desktop). | Pokud vypnete virtuální počítač v protokolu RDP, podívejte se na portál k určení, zda je stav virtuálního počítače správný. Pokud není správný, vypněte virtuální počítač na portálu pomocí **vypnutí** možnost na řídicím panelu virtuálních počítačů. |
+| Virtuální počítač nelze získat adresu hostitele nebo prostředků infrastruktury ze serveru DHCP. | DHCP musí být povolené uvnitř hosta pro zálohování virtuálních počítačů IaaS pro práci. Pokud virtuální počítač nemůže získat adresu hostitele nebo prostředků infrastruktury z odpovědi DHCP 245, se nedá stáhnout nebo ji spustit žádná rozšíření. Pokud potřebujete statickou privátní IP adresu, můžete ji nakonfigurujte prostřednictvím platformy. Možnosti DHCP ve virtuálním počítači musí být povolené vlevo. Další informace najdete v tématu [nastavit statickou privátní IP interní](../virtual-network/virtual-networks-reserved-private-ip.md). |
 
-### <a name="the-backup-extension-fails-to-update-or-load"></a>Rozšíření zálohování se nezdaří aktualizace nebo zatížení
-Pokud rozšíření nelze načíst, zálohování se nezdaří, protože snímek nemůže být provedeny.
+### <a name="the-backup-extension-fails-to-update-or-load"></a>Rozšíření zálohování se nezdaří pro aktualizaci nebo načtení
+Pokud rozšíření nelze načíst, zálohování se nezdaří, protože nelze pořídí snímek.
 
 #### <a name="solution"></a>Řešení
 
-Odinstalujte rozšíření vynutit rozšíření VMSnapshot znovu načíst. Další zálohování pokus znovu načte rozšíření.
+Odinstalujte rozšíření přinutit rozšíření VMSnapshot znovu načíst. Další pokus o zálohování znovu načte rozšíření.
 
 Chcete-li odinstalovat rozšíření:
 
-1. V [portál Azure](https://portal.azure.com/), přejděte k virtuálnímu počítači, kde dochází k selhání zálohování.
+1. V [webu Azure portal](https://portal.azure.com/), přejděte k virtuálnímu počítači, na kterém dochází k selhání zálohování.
 2. Vyberte **nastavení**.
 3. Vyberte **rozšíření**.
-4. Vyberte **Vmsnapshot rozšíření**.
+4. Vyberte **rozšíření Vmsnapshot**.
 5. Vyberte **odinstalovat**.
 
-Pro virtuální počítač s Linuxem, pokud rozšíření VMSnapshot nezobrazuje na webu Azure portal [aktualizovat Azure Linux Agent](../virtual-machines/linux/update-agent.md), a spusťte zálohování. 
+Pro virtuální počítač s Linuxem, pokud rozšíření VMSnapshot není uveden na webu Azure Portal [aktualizace agenta Azure Linux](../virtual-machines/linux/update-agent.md), a pak spusťte zálohování. 
 
-Dokončení tohoto postupu způsobí, že rozšíření nutné přeinstalovat během příští zálohování.
+Dokončení tohoto postupu způsobí, že rozšíření znovu při dalším zálohování.
 
-### <a name="backup-service-does-not-have-permission-to-delete-the-old-restore-points-due-to-resource-group-lock"></a>Služba zálohování nemá oprávnění k odstranění staré body obnovení z důvodu zámek skupiny prostředků
-Tento problém je specifická pro spravovaných virtuálních počítačů, ve kterých uživatel uzamkne skupině prostředků. V takovém případě služby zálohování nelze odstranit starší body obnovení. Protože je omezeno na 18 body obnovení, nových záloh začnou mít problémy.
+### <a name="backup-service-does-not-have-permission-to-delete-the-old-restore-points-due-to-resource-group-lock"></a>Služba Backup nemá oprávnění k odstranění staré body obnovení z důvodu zámku skupiny prostředků
+Tento problém je specifický pro spravované virtuální počítače, ve kterých se uživatel uzamkne skupinu prostředků. Služba backup v tomto případě nelze odstranit starší body obnovení. Protože je limit 18 bodů obnovení, začínají selhávat nových záloh.
 
 #### <a name="solution"></a>Řešení
 
-Chcete-li vyřešit tento problém, odebrat zámek ze skupiny prostředků a proveďte následující kroky odebrání kolekce bodu obnovení: 
+Chcete-li problém vyřešit, odeberte zámek ze skupiny prostředků a proveďte následující kroky, chcete-li odebrat kolekci bodů obnovení: 
  
-1. Odebere se zámek ve skupině prostředků, ve kterém je umístěn virtuální počítač. 
-2. Pomocí Chocolatey nainstalujte ARMClient: <br>
+1. Odeberte zámek proti ve skupině prostředků, ve kterém se nachází virtuální počítač. 
+2. Instalace ARMClient pomocí Chocolatey: <br>
    https://github.com/projectkudu/ARMClient
 3. Přihlaste se k ARMClient: <br>
     `.\armclient.exe login`
-4. Získání kolekce bodu obnovení, která odpovídá virtuální počítač: <br>
+4. Získáte kolekci bodů obnovení, odpovídající virtuální počítač: <br>
     `.\armclient.exe get https://management.azure.com/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Compute/restorepointcollections/AzureBackup_<VM-Name>?api-version=2017-03-30`
 
     Příklad: `.\armclient.exe get https://management.azure.com/subscriptions/f2edfd5d-5496-4683-b94f-b3588c579006/resourceGroups/winvaultrg/providers/Microsoft.Compute/restorepointcollections/AzureBackup_winmanagedvm?api-version=2017-03-30`
-5. Odstraňte kolekci bodu obnovení: <br>
+5. Odstraňte kolekci bodů obnovení: <br>
     `.\armclient.exe delete https://management.azure.com/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Compute/restorepointcollections/AzureBackup_<VM-Name>?api-version=2017-03-30` 
-6. Další naplánované zálohování automaticky vytvoří kolekci bod obnovení a nové body obnovení.
+6. Další naplánované zálohování automaticky vytvoří kolekci bodů obnovení a nové body obnovení.
 
-Po dokončení můžete znovu umístit zpět zámek na skupině prostředků virtuálních počítačů. 
+Až to bude hotové, můžete znovu do zpět zámek skupina prostředků virtuálního počítače. 

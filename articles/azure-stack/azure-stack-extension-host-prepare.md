@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-stack
 ms.reviewer: thoroet
 manager: femila
-ms.openlocfilehash: 02ff83b41af47492a67bea94c5e5deecec42d15e
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 930bd37ceef2f379a3967eae17a8c82e84644022
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44025987"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542138"
 ---
 # <a name="prepare-for-extension-host-for-azure-stack"></a>Příprava pro rozšíření hostitele pro Azure Stack
 
@@ -93,9 +93,9 @@ Použijte počítač, který lze připojit ke koncovému bodu Azure Stack privil
 
     $CloudAdminCred = Get-Credential -UserName <Privileged endpoint credentials> -Message "Enter the cloud domain credentials to access the privileged endpoint."
 
-    [Byte[]] $AdminHostingCertContent = [Byte[]](Get-Content c:\certificate\myadminhostingcertificate.pfx -Encoding Byte)
+    [Byte[]]$AdminHostingCertContent = [Byte[]](Get-Content c:\certificate\myadminhostingcertificate.pfx -Encoding Byte)
 
-    Invoke-Command -ComputeName <PrivilegedEndpoint computer name> `
+    Invoke-Command -ComputerName <PrivilegedEndpoint computer name> `
     -Credential $CloudAdminCred `
     -ConfigurationName "PrivilegedEndpoint" `
     -ArgumentList @($AdminHostingCertContent, $CertPassword) `
@@ -110,9 +110,9 @@ Použijte počítač, který lze připojit ke koncovému bodu Azure Stack privil
 
     $CloudAdminCred = Get-Credential -UserName <Privileged endpoint credentials> -Message "Enter the cloud domain credentials to access the privileged endpoint."
 
-    [Byte[]] $HostingCertContent = [Byte[]](Get-Content c:\certificate\myhostingcertificate.pfx  -Encoding Byte)
+    [Byte[]]$HostingCertContent = [Byte[]](Get-Content c:\certificate\myhostingcertificate.pfx  -Encoding Byte)
 
-    Invoke-Command -ComputeName <PrivilegedEndpoint computer name> `
+    Invoke-Command -ComputerName <PrivilegedEndpoint computer name> `
     -Credential $CloudAdminCred `
     -ConfigurationName "PrivilegedEndpoint" `
     -ArgumentList @($HostingCertContent, $CertPassword) `

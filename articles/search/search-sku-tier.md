@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 06/19/2018
 ms.author: heidist
-ms.openlocfilehash: f7cf471a69395cef0aef7d5dd2e3c77218bf97a3
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 140daf4903c64d734182545cd4dc58db60274852
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715276"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576116"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Zvolte cenovou úroveň pro službu Azure Search
 
@@ -104,7 +104,7 @@ Předpokládáme, že byla ukázka zástupce a 10 % celý zdroj dat. a 30 MB ind
 
 Zákazníci, kteří dávají přednost začínat vyhrazených prostředcích, které může pojmout větší vzorkování a časy zpracování a pak vytvářet realistické odhady množství index, velikost a svazků dotazu během vývoje. Zpočátku služba se zřizuje podle odhad nejlepší odhad a pak zrání vývojového projektu, týmy obvykle zjistit, zda existující službu nad nebo pod kapacity pro předpokládané produkční úlohy. 
 
-1. [Zkontrolujte limity pro služby v jednotlivých vrstvách](https://docs.microsoft.com/en-us/azure/search/search-limits-quotas-capacity#index-limits) můžete určit, zda nižší úrovně můžou podporovat množství indexy, které potřebujete. Mezi **základní**-**S1**- **S2** úrovně, omezení indexu jsou 15-50-200, v uvedeném pořadí.
+1. [Zkontrolujte limity pro služby v jednotlivých vrstvách](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#index-limits) můžete určit, zda nižší úrovně můžou podporovat množství indexy, které potřebujete. Mezi **základní**-**S1**- **S2** úrovně, omezení indexu jsou 15-50-200, v uvedeném pořadí.
 
 1. [Vytvoření služby na fakturovatelné úrovni](search-create-service-portal.md):
 

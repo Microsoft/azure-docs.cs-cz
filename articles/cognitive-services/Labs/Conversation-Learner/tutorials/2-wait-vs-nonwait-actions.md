@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: a8f7ccf79e750c9f3c21c25c50c3e275db7e4195
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: f349dab23b9156d3a5656e8275533ebe6a82cdf9
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173080"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45540896"
 ---
 # <a name="wait-and-non-wait-actions"></a>Počkejte a bez čekání akce
 
@@ -33,7 +33,7 @@ Tento kurz vyžaduje, zda je spuštěna obecné kurz bot
 ## <a name="details"></a>Podrobnosti
 
 - Počkejte, akce: poté, co systém provede akci "Čekání", to zastaví provádění akcí a počkat na vstup uživatele.
-- Akce non-wait: poté, co systém provede akci "bez čekání", bude okamžitě použit jinou akci (bez čekání na uživatele inpu nejprve).
+- Akce non-wait: poté, co systém provede akci "bez čekání", bude okamžitě použit jiná akce (bez čekání na vstup nejprve uživatele).
 
 ## <a name="steps"></a>Kroky
 
