@@ -1,5 +1,5 @@
 ---
-title: Koncové body služby virtuální sítě Azure | Dokumentace Microsoftu
+title: Koncové body služby virtuální sítě Azure | Microsoft Docs
 description: Zjistěte, jak povolit přímý přístup k prostředkům Azure z virtuální sítě pomocí koncových bodů služby.
 services: virtual-network
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: anithaa
 ms.custom: ''
-ms.openlocfilehash: d10525e6fd2cc55007a5abe1f5d61f0d6ef9d68a
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: a4824cadfaad2115a64427df618bac5e6c6df6ee
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41918314"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382293"
 ---
 # <a name="virtual-network-service-endpoints"></a>Koncové body služby virtuální sítě
 
@@ -30,11 +30,11 @@ Tato funkce je dostupná pro následující služby a oblasti Azure:
 
 - **[Azure Storage](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)**: Obecná dostupnost ve všech oblastech Azure
 - **[Azure SQL Database](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: Obecná dostupnost ve všech oblastech Azure
-- **[Azure Cosmos DB](../cosmos-db/vnet-service-endpoint.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: Obecná dostupnost ve všech oblastech veřejného cloudu Azure 
+- **[Azure Cosmos DB](../cosmos-db/vnet-service-endpoint.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: Obecná dostupnost ve všech oblastech veřejného cloudu Azure
+- **[Azure Key Vault](https://blogs.technet.microsoft.com/kv/2018/06/25/announcing-virtual-network-service-endpoints-for-key-vault-preview/)**: Obecná dostupnost ve všech oblastech veřejného cloudu Azure
 - **[Azure SQL Data Warehouse:](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** Dostupnost verze Preview ve všech oblastech veřejného cloudu Azure
 - **[Azure Service Bus](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: Dostupnost ve verzi Preview
 - **[Azure Event Hubs](../event-hubs/event-hubs-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: Dostupnost ve verzi Preview
-- **[Azure Key Vault](https://blogs.technet.microsoft.com/kv/2018/06/25/announcing-virtual-network-service-endpoints-for-key-vault-preview/)**: Dostupnost ve verzi Preview
 - **[Server Azure Database for PostgreSQL:](../postgresql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** Obecná dostupnost v oblastech Azure, ve kterých je dostupná databázová služba
 - **[Server Azure Database for MySQL:](../mysql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** Obecná dostupnost v oblastech Azure, ve kterých je dostupná databázová služba
 

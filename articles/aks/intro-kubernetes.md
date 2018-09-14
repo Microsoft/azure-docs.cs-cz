@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 06/13/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 161ea6698ecc46e50d1c70f922e2fb505e78278c
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 294ccd70e0339ed5ad68022f002e4864fc52b452
+ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43087700"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43286716"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
 
@@ -104,7 +104,7 @@ Azure Kubernetes Service (AKS) má certifikaci CNFC a je tedy v souladu s Kubern
 
 ## <a name="regulatory-compliance"></a>Dodržování legislativní předpisů
 
-Azure Kubernetes Service (AKS) dodržuje předpisy SOC a ISO.
+Azure Kubernetes Service (AKS) je kompatibilní s normami SOC, ISO a PCI DSS.
 
 ## <a name="next-steps"></a>Další kroky
 

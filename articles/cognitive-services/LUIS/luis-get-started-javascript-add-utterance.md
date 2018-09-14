@@ -1,53 +1,48 @@
 ---
-title: Kurz přidávání promluv do aplikace LUIS pomocí JavaScriptu | Microsoft Docs
-description: V tomto kurzu zjistíte, jak volat aplikaci LUIS pomocí JavaScriptu.
+title: Rychlý start k přidávání promluv do aplikace LUIS pomocí JavaScriptu – Azure Cognitive Services | Microsoft Docs
+description: V tomto rychlém startu zjistíte, jak volat aplikaci LUIS pomocí JavaScriptu.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
-ms.topic: tutorial
-ms.date: 12/18/2017
-ms.author: v-geberr
-ms.openlocfilehash: b6d021dcfdddb5449aa989c6aa06d7faf326befb
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.topic: quickstart
+ms.date: 08/24/2018
+ms.author: diberry
+ms.openlocfilehash: ffc19d12c1d3fbb24c514ac87f298d1a52d23eb8
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265455"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43769233"
 ---
-# <a name="tutorial-add-utterances-to-app-using-javascript"></a>Kurz: Přidávání promluv do aplikace pomocí JavaScriptu
-V tomto kurzu napíšete program, který do záměru přidá promluvu pomocí rozhraní API pro vytváření v JavaScriptu.
+# <a name="quickstart-change-model-using-javascript"></a>Rychlý start: Změna modelu pomocí JavaScriptu
 
-<!-- green checkmark -->
-> [!div class="checklist"]
-> * Vytvoření projektu konzoly v sadě Visual Studio 
-> * Přidání metody pro volání rozhraní API služby LUIS za účelem přidání promluvy a trénování aplikace
-> * Přidání souboru JSON s ukázkovými promluvami pro záměr BookFlight (Rezervovat let)
-> * Spuštění konzoly a zobrazení stavu trénování pro promluvy
-
-Další informace najdete v technické dokumentaci k rozhraním API pro [přidání ukázkové promluvy do záměru](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c08), [trénování](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c45) a [stav trénování](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c46).
-
-Pro účely tohoto článku potřebujete bezplatný účet [LUIS][LUIS], abyste mohli vytvořit svou aplikaci LUIS.
+[!include[Quickstart introduction for change model](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
 
 ## <a name="prerequisites"></a>Požadavky
-* [**Klíč pro vytváření**](luis-concept-keys.md#authoring-key) pro službu LUIS. 
-* **ID stávající aplikace** LUIS a její **ID verze**. 
-* Ve VSCode vytvořte nový soubor `add-utterances.html`.
 
-> [!NOTE] 
-> Kompletní soubor `add-utterances.html` je dostupný v [úložišti **LUIS-Samples** na GitHubu](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/authoring-api-samples/javascript/add-utterance.html).
+[!include[Quickstart prerequisites for changing model](../../../includes/cognitive-services-luis-qs-change-model-prereq.md)]
+* [Visual Studio Code](https://code.visualstudio.com/).
+
+[!include[Code is available in LUIS-Samples Github repo](../../../includes/cognitive-services-luis-qs-change-model-luis-repo-note.md)]
+
+## <a name="example-utterances-json-file"></a>Soubor JSON s ukázkovými promluvami
+
+[!include[Quickstart explanation of example utterance JSON file](../../../includes/cognitive-services-luis-qs-change-model-json-ex-utt.md)]
 
 
-## <a name="write-the-code"></a>Psaní kódu
+## <a name="create-quickstart-code"></a>Vytvoření kódu rychlého startu
+
 Vytvořte soubor `add-utterances.html` a přidejte do něj následující kód:
 
-   [!code-javascript[Java Dependencies](~/samples-luis/documentation-samples/authoring-api-samples/javascript/add-utterance.html "Java Dependencies")]
+   [!code-html[Html code](~/samples-luis/documentation-samples/quickstarts/change-model/javascript/add-utterance.html "Javascript code")]
 
-## <a name="view-in-browser"></a>Zobrazení v prohlížeči
+## <a name="run-code"></a>Spuštění kódu
+
 1. Otevřete soubor v prohlížeči.
 
-2. Přidejte své ID pro vytváření pro službu LUIS, ID vaší aplikace LUIS a změňte verzi, pokud není `0.1`.
+2. Přidejte ID vytváření obsahu služby LUIS, ID aplikace LUIS.
 
 3. Upravte **pole promluv**, které se mají přidat do vaší aplikace. Promluvy jsou uložené v proměnné utteranceJSON. Změňte tyto hodnoty pro vaši vlastní doménu a potřeby promluv. 
 
@@ -80,13 +75,11 @@ Vytvořte soubor `add-utterances.html` a přidejte do něj následující kód:
 
 6. Výběrem tlačítka `Train Status` zobrazte stav trénování. 
 
-![Add-utterances.html](./media/luis-quickstart-javascript-add-utterance/add-utterance.png)
+    ![Add-utterances.html](./media/luis-quickstart-javascript-add-utterance/add-utterance.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Jakmile budete s kurzem hotovi, odeberte sadu Visual Studio a konzolovou aplikaci, pokud už je nepotřebujete. 
+Jakmile tento rychlý start dokončíte, odeberte všechny soubory, které jste v něm vytvořili. 
 
 ## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"]
 > [Integrace služby LUIS s chatbotem](luis-csharp-tutorial-build-bot-framework-sample.md)
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

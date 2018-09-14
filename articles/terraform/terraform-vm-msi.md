@@ -1,103 +1,105 @@
 ---
-title: Pomocí image Azure Marketplace můžete vytvořit virtuální počítač s Linuxem Terraform s identita spravované služby
-description: Použijte bitovou kopii Marketplace k vytvoření virtuálního počítače Terraform Linux s identita spravované služby a vzdálenou správu stavu snadno nasadit prostředky do Azure.
-keywords: terraform, devops, MSI, virtuální počítač, vzdálené stav, azure
-author: VaijanathB
-manager: rloutlaw
+title: Použití image z Azure Marketplace k vytvoření virtuálního počítače Terraform s Linuxem pomocí identity spravované služby
+description: Použijte image z webu Marketplace k vytvoření virtuálního počítače Terraform s Linuxem pomocí identity spravované služby a vzdálené správy stavu ke snadnému nasazení prostředků do Azure.
+services: terraform
+ms.service: terraform
+keywords: terraform, devops, MSI, virtuální počítač, vzdálený stav, azure
+author: tomarcher
+manager: jeconnoc
 ms.author: tarcher
+ms.topic: tutorial
 ms.date: 3/12/2018
-ms.topic: article
-ms.openlocfilehash: 5f0ee2904c1072a5ad8c5f7ae1c90e649cc4813c
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 0136966576e3fbb22855d74cc1866e48b4ac24c9
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31413792"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43669383"
 ---
-# <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-service-identity"></a>Pomocí image Azure Marketplace můžete vytvořit virtuální počítač s Linuxem Terraform s identita spravované služby
+# <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-service-identity"></a>Použití image z Azure Marketplace k vytvoření virtuálního počítače Terraform s Linuxem pomocí identity spravované služby
 
-V tomto článku se dozvíte, jak používat [image Terraform Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.terraform?tab=Overview) k vytvoření virtuálního počítače s Ubuntu Linux (16.04 LTS) s nejnovější [Terraform](https://www.terraform.io/intro/index.html) verze nainstalovaný a nakonfigurovaný pomocí [spravované Služba Identity (MSI)](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview). Tuto bitovou kopii nakonfiguruje taky vzdálené back-end, chcete-li povolit [vzdáleného stavu](https://www.terraform.io/docs/state/remote.html) správu pomocí Terraform. 
+V tomto článku se dozvíte, jak pomocí nejnovější verze [Terraformu](https://www.terraform.io/intro/index.html) nakonfigurované pomocí [Identity spravované služby (MSI)](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) použít [image Terraformu z webu Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.terraform?tab=Overview) k vytvoření virtuálního počítače s Ubuntu Linuxem (16.04 LTS). Tato image nakonfiguruje i vzdálený back-end, aby prostřednictvím Terraformu umožnil správu [vzdáleného stavu](https://www.terraform.io/docs/state/remote.html). 
 
-Bitovou kopii Terraform Marketplace snadno začít používat Terraform v Azure, aniž by bylo nutné nainstalovat a nakonfigurovat Terraform ručně. 
+Image Terraformu z webu Marketplace usnadňuje začátky používání Terraformu v Azure bez nutnosti manuální instalace a konfigurace Terraformu. 
 
-Neexistují žádné poplatky softwaru pro tuto bitovou kopii Terraform virtuálních počítačů. Platíte jenom využití poplatků Azure hardwaru, které jsou hodnotí na základě velikosti virtuálního počítače, který je zřízený. Další informace o poplatcích výpočetní najdete v tématu [stránce s cenami virtuální počítače s Linuxem](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
+Za tuto image virtuálního počítače Terraform se neúčtují žádné poplatky. Platíte pouze poplatky za použití hardwaru Azure, které se počítají podle velikosti zřízeného virtuálního počítače. Další informace o poplatcích za výpočetní prostředky najdete na [stránce s cenami virtuálních počítačů s Linuxem](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
 
 ## <a name="prerequisites"></a>Požadavky
-Před vytvořením Linux Terraform virtuálního počítače, musí mít předplatné Azure. Pokud jste již nemáte, přečtěte si téma [vytvořit účet Azure zdarma Dnes](https://azure.microsoft.com/free/).  
+Než vytvoříte virtuální počítač Terraform s Linuxem, musíte mít předplatné Azure. Pokud ho ještě nemáte, přejděte na stránku [Vytvořte si bezplatný účet Azure ještě dnes](https://azure.microsoft.com/free/).  
 
 ## <a name="create-your-terraform-virtual-machine"></a>Vytvoření virtuálního počítače Terraform 
 
-Tady jsou kroky k vytvoření instance virtuálního počítače Linux Terraform: 
+Tady jsou kroky k vytvoření instance virtuálního počítače Terraform s Linuxem: 
 
-1. V portálu Azure přejděte do [vytvořit prostředek](https://ms.portal.azure.com/#create/hub) výpis.
+1. Na webu Azure Portal přejděte na záznam [Vytvořit prostředek](https://ms.portal.azure.com/#create/hub).
 
-2. V **vyhledávání na webu Marketplace** panelu vyhledávání, hledání **Terraform**. Vyberte **Terraform** šablony. 
+2. Do vyhledávacího pole **Hledat na Marketplace** zadejte **Terraform**. Vyberte šablonu **Terraform**. 
 
-3. Na kartě Podrobnosti Terraform vpravo dole vyberte **vytvořit** tlačítko.
+3. Na kartě podrobností Terraformu vyberte v pravém dolním rohu tlačítko **Vytvořit**.
 
     ![Vytvoření virtuálního počítače Terraform](media\terraformmsi.png)
 
-4. Vstupy pro všechny kroky v průvodci vytvořit virtuální počítač Terraform Linux v následujících částech. V následující části jsou uvedeny vstupních hodnot, které jsou potřeba ke konfiguraci jednotlivých kroků.
+4. Následující oddíly obsahují vstupy ke každému z kroků v průvodci vytvořením virtuálního počítače Terraform s Linuxem. Následující část uvádí vstupy potřebné ke konfiguraci každého kroku.
 
-## <a name="details-on-the-create-terraform-tab"></a>Podrobnosti v kartě vytvořit Terraform
+## <a name="details-on-the-create-terraform-tab"></a>Podrobnosti na kartě Vytvořit Terraform
 
-Zadejte následující podrobnosti **vytvořit Terraform** karty:
+Na kartě **Vytvořit Terraform** zadejte následující podrobnosti:
 
 1. **Základy**
     
-   * **Název**: název Terraform virtuálního počítače.
-   * **Uživatelské jméno**: první účet přihlásit ID.
-   * **Heslo**: první heslo účtu. (Veřejný klíč SSH můžete místo hesla.)
-   * **Předplatné**: předplatné, na kterém se tento počítač je vytvořen a účtují. Musíte mít oprávnění vytvoření prostředku pro toto předplatné.
-   * **Skupina prostředků**: skupinu nový nebo existující prostředek.
-   * **Umístění**: datacenter, která je nejvhodnější. Obvykle je datacenter, která obsahuje většinu dat nebo ten, který je nejblíže vašemu fyzické umístění pro nejrychlejší přístup k síti.
+   * **Název**: název virtuálního počítače Terraform
+   * **Uživatelské jméno**: přihlašovací ID prvního účtu
+   * **Heslo**: heslo první účtu (Místo hesla můžete použít veřejný klíč SSH.)
+   * **Předplatné**: předplatné, ve kterém se má počítač vytvořit a kterému se bude fakturovat. Toto předplatné musí mít oprávnění vytvářet prostředky.
+   * **Skupina prostředků**: nová nebo existující skupina prostředků
+   * **Umístění**: nejvhodnější datacentrum (Obvykle jde o datacentrum s většinou dat nebo nejbližší datacentrum kvůli co nejrychlejšímu síťovému přístupu.)
 
 2. **Další nastavení**
 
-   * **Velikost**: velikost virtuálního počítače. 
-   * **Typ disku virtuálního počítače**: SSD nebo pevný disk.
+   * **Velikost**: velikost virtuálního počítače 
+   * **Typ disku virtuálního počítače**: SSD nebo HDD
 
-3. **Souhrn Terraform**
+3. **Souhrn Terraformu**
 
-   * Ověřte, že veškeré informace, které jste zadali správný. 
+   * Ověřte správnost všech zadaných informací. 
 
-4. **Kupte si**
+4. **Koupě**
 
-   * Chcete-li zahájit proces zřizování, vyberte **koupit**. Je k dispozici odkaz na podmínky transakce. Virtuální počítač nemá žádné další poplatky za výpočetní pro velikost serveru, který jste si zvolili v kroku velikost.
+   * Pokud chcete proces zřizování spustit, vyberte **Koupit**. Zobrazí se odkaz na podmínky transakce. Virtuální počítač nebude kromě poplatků za výpočetní prostředky (podle velikosti serveru, kterou jste zvolili v kroku velikost) účtovat žádné další poplatky.
 
 Image virtuálního počítače Terraform provede následující kroky:
 
-* Vytvoří virtuální počítač s identitou systému přiřazen, založený na bitovou kopii Ubuntu 16.04 LTS.
-* Nainstaluje příponou MSI ve virtuálním počítači povolit tokenů OAuth pro vystavování pro prostředky Azure.
-* Přiřadí oprávnění RBAC spravované identitu, udělení oprávnění vlastníka pro skupinu prostředků.
-* Vytvoří složku šablony Terraform (tfTemplate).
-* Předem nakonfiguruje Terraform vzdáleného stavu s Azure back end.
+* Vytvoří virtuální počítač s identitou přiřazenou systémem, která je založena na imagi Ubuntu 16.04 LTS.
+* Nainstaluje na virtuální počítač rozšíření MSI, aby se prostředkům Azure mohly vydávat tokeny OAuth.
+* Přiřadí spravované identitě oprávnění RBAC, která udělí skupině prostředků oprávnění vlastníka.
+* Vytvoří složku pro šablonu Terraformu (tfTemplate).
+* Předem nakonfiguruje vzdálený stav Terraformu s back-endem Azure.
 
-## <a name="access-and-configure-a-linux-terraform-virtual-machine"></a>Přístup a konfigurace virtuálního počítače Linux Terraform
+## <a name="access-and-configure-a-linux-terraform-virtual-machine"></a>Přístup a konfigurace virtuálního počítače Terraform s Linuxem
 
-Po vytvoření virtuálního počítače, se můžete přihlásit se pomocí protokolu SSH. Pomocí pověření účtu, které jste vytvořili v části "Základy" krok 3 pro rozhraní prostředí text. V systému Windows, si můžete stáhnout nástroj pro klienta na SSH jako [Putty](http://www.putty.org/).
+Po vytvoření virtuálního počítače se k němu můžete pomocí SSH přihlásit. V rozhraní textového prostředí použijte přihlašovací údaje, které jste vytvořili v kroku 3 v části „Základy“. Ve Windows můžete stáhnout klientský nástroj SSH, jako je [Putty](http://www.putty.org/).
 
-Po připojení k virtuálnímu počítači pomocí protokolu SSH, budete muset dát oprávnění Přispěvatel pro celé předplatné identita spravované služby ve virtuálním počítači. 
+Až se pomocí SSH k virtuálnímu počítači připojíte, budete muset identitě spravované služby na virtuálním počítači dát oprávnění přispěvatele pro celé předplatné. 
 
-Oprávnění přispěvatele pomáhá MSI ve virtuálním počítači pomocí Terraform vytvářet prostředky mimo skupinu prostředků virtuálních počítačů. Tato akce můžete snadno dosáhnout jednou spuštěním skriptu. Použijte následující příkaz:
+Oprávnění přispěvatele pomůže identitě spravované služby na virtuálním počítači používat Terraform k vytváření prostředků mimo skupinu prostředků virtuálního počítače. Stačí k tomu jednou spustit skript. Použijte následující příkaz:
 
 `. ~/tfEnv.sh`
 
-Předchozí skript používá [AZ rozhraní příkazového řádku v 2.0 interaktivní přihlašování](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest#interactive-log-in) mechanismus pro ověření pomocí Azure a přiřaďte oprávnění přispěvatele identita spravované služby v celé předplatné virtuálního počítače. 
+Předchozí skript používá k ověření pomocí Azure a přiřazení oprávnění přispěvatele pro celé předplatné identitě spravované služby na virtuálním počítači mechanismus [interaktivního přihlášení AZ CLI v 2.0](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest#interactive-log-in). 
 
- Virtuální počítač má Terraform vzdáleného stavu back-end. K jeho povolení pro vaše nasazení Terraform, zkopírujte soubor remoteState.tf z adresáře tfTemplate do kořenového adresáře Terraform skripty.  
+ Virtuální počítač má back-end vzdáleného stavu Terraformu. Pokud ho chcete povolit při nasazení Terraformu, zkopírujte soubor remoteState.tf z adresáře tfTemplate do kořenového adresáře skriptů Terraformu.  
 
  `cp  ~/tfTemplate/remoteState.tf .`
 
- Další informace o vzdálené správě stavu najdete v tématu [tuto stránku týkající se stavu vzdáleného Terraform](https://www.terraform.io/docs/state/remote.html). Přístupový klíč úložiště je vystaven v tomto souboru a je potřeba vyloučit před potvrzení Terraform konfigurační soubory do správy zdrojového kódu.
+ Další informace o vzdálené správě stavu najdete na [této stránce týkající se vzdáleného stavu Terraformu](https://www.terraform.io/docs/state/remote.html). Přístupový klíč úložiště je v tomto souboru zveřejněný a před zápisem konfiguračních souborů Terraformu do správy zdrojového kódu je potřeba ho vyloučit.
 
-## <a name="next-steps"></a>Další postup
-V tomto článku jste zjistili, jak nastavit virtuální počítač s Linuxem Terraform v Azure. Zde jsou některé další zdroje, které obsahují další informace o Terraform v Azure: 
+## <a name="next-steps"></a>Další kroky
+V tomto článku jste zjistili, jak v Azure nastavit virtuální počítač Terraform s Linuxem. Pokud chcete o nástroji Terraform v Azure získat více informací, můžou vám pomoct následující prostředky: 
 
- [Centrum Terraform v doméně Microsoft.com](https://docs.microsoft.com/azure/terraform/)  
- [Dokumentaci k Terraform Azure zprostředkovatele](http://aka.ms/terraform)  
- [Zprostředkovatel zdroje Terraform Azure](http://aka.ms/tfgit)  
- [Moduly Terraform Azure](http://aka.ms/tfmodules)
+ [Dokumentace k Terraformu v Azure](https://docs.microsoft.com/azure/terraform/)  
+ [Dokumentace k Terraformu zprostředkovatele Azure](http://aka.ms/terraform)  
+ [Zdrojová data k Terraformu zprostředkovatele Azure](http://aka.ms/tfgit)  
+ [Moduly Terraformu pro Azure](http://aka.ms/tfmodules)
  
 
 

@@ -8,14 +8,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: quickstart
-ms.date: 08/13/2018
+ms.date: 08/31/2018
 ms.author: jovanpop-msft
-ms.openlocfilehash: cb378c2d2773096992ef688653fd77b2625f8754
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 4271f0cef31b0e028ed1f9408166c37d4cbbe109
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42022667"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43381994"
 ---
 # <a name="create-an-azure-sql-managed-instance"></a>Vytvoření spravované instance Azure SQL
 
@@ -60,7 +60,7 @@ Následující kroky ukazují, jak po schválení pro verzi Preview vytvořit Ma
 2. Vyhledejte **Managed Instance** a pak vyberte **Azure SQL Database Managed Instance (Preview)**.
 3. Klikněte na možnost **Vytvořit**.
 
-   ![Vytvoření spravované instance](./media/sql-database-managed-instance-tutorial/managed-instance-create.png)
+   ![Vytvoření spravované instance](./media/sql-database-managed-instance-get-started/managed-instance-create.png)
 
 4. Vyberte své předplatné a ověřte, že se u podmínek verze Perview zobrazuje **Přijato**.
 
@@ -77,26 +77,21 @@ Následující kroky ukazují, jak po schválení pro verzi Preview vytvořit Ma
    |**Umístění**|Umístění, které jste vybrali dříve|Informace o oblastech najdete v tématu [Oblasti služeb Azure](https://azure.microsoft.com/regions/).|
    |**Virtuální síť**|Virtuální síť, kterou jste vytvořili dříve| Pokud jste v předchozím kroku nezměnili názvy, zvolte položku **MyNewVNet/ManagedInstances**. Jinak zvolte název virtuální sítě a podsítě spravované instance, které jste zadali v předchozí části. **Nepoužívejte výchozí podsíť, protože není nakonfigurovaná pro hostování spravovaných instancí**. |
 
-   ![formulář pro vytvoření Managed Instance](./media/sql-database-managed-instance-tutorial/managed-instance-create-form.png)
+   ![formulář pro vytvoření Managed Instance](./media/sql-database-managed-instance-get-started/managed-instance-create-form.png)
 
 6. Klikněte na **Cenová úroveň** a určete velikost výpočetních prostředků a prostředků úložiště a prohlédněte si možnosti cenové úrovně. Ve výchozím nastavení vaše instance získá bezplatně 32 GB prostoru úložiště, **což pro vaše aplikace nemusí být dostatečné**.
 7. Pomocí posuvník nebo textových polí zadejte velikost úložiště a počet virtuálních jader. 
-   ![spravovaná instance cenové úrovně](./media/sql-database-managed-instance-tutorial/managed-instance-pricing-tier.png)
+   ![spravovaná instance cenové úrovně](./media/sql-database-managed-instance-get-started/managed-instance-pricing-tier.png)
 
 8. Jakmile budete hotovi, kliknutím na **Použít** uložte provedený výběr.  
 9. Kliknutím na **Vytvořit** nasaďte Managed Instance.
 10. Kliknutím na ikonu **Oznámení** zobrazte stav nasazení.
- 
-   ![průběh nasazení](./media/sql-database-managed-instance-tutorial/deployment-progress.png)
-
 11. Kliknutím na **Probíhá nasazení** otevřete okno Managed Instance, kde můžete dále monitorovat průběh nasazení.
- 
-   ![průběh nasazení 2](./media/sql-database-managed-instance-tutorial/managed-instance.png)
 
 Jakmile dojde k nasazení, pokračujte k dalšímu postupu.
 
 > [!IMPORTANT]
-> Čas nasazení první instance v podsíti je obvykle mnohem delší než v případě dalších instancí – dokončení někdy může trvat déle než 24 hodin. Nerušte operaci nasazování jenom proto, že trvá déle, než jste očekávali. Dlouhá doba potřebná k nasazení první instance je pouze dočasná. Očekávejte výrazné zkrácení doby nasazení krátce po zahájení verze Public Preview. Vytvoření druhé spravované instance v podsíti bude trvat několik minut.
+> Čas nasazení první instance v podsíti je obvykle mnohem delší než v případě dalších instancí. Nerušte operaci nasazování jenom proto, že trvá déle, než jste očekávali. Vytvoření druhé spravované instance v podsíti bude trvat několik minut.
 
 ## <a name="prepare-client-machine"></a>Příprava klientského počítače
 

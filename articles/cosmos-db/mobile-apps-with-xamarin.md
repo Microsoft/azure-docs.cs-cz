@@ -9,14 +9,23 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/15/2017
 ms.author: sngun
-ms.openlocfilehash: b70a16c2f4c17a8cee008bee342a9c3693d1eb4b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0bd3a00e643965a7bc2e79e1af4712705940ecfd
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34614488"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43698821"
 ---
 # <a name="build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>Vytváření mobilních aplikací s Xamarinem a Azure Cosmos DB
+
+> [!div class="op_single_selector"]
+> * [.NET](sql-api-dotnet-application.md)
+> * [Java](sql-api-java-application.md)
+> * [Node.js](sql-api-nodejs-application.md)
+> * [Node.js – v2](sql-api-nodejs-application-preview.md)
+> * [Python](sql-api-python-application.md)
+> * [Xamarin](mobile-apps-with-xamarin.md)
+> 
 
 Většina mobilních aplikací potřebuje ukládat data v cloudu a Azure Cosmos DB je cloudová databáze pro mobilní aplikace. Obsahuje vše, co vývojář mobilních aplikací potřebuje. Jedná se o plně spravovanou databázi jako službu, která se škáluje na vyžádání. Dokáže transparentně přinést data do aplikace, ať jsou uživatelé kdekoli na světě. Pomocí [sady SDK služby Azure Cosmos DB pro .NET Core](sql-api-sdk-dotnet-core.md) můžete mobilním aplikacím Xamarin umožnit přímou komunikaci se službou Azure Cosmos DB bez střední vrstvy.
 

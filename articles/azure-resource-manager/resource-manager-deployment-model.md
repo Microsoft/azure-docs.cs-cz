@@ -13,14 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: 2fd128ce04ac883396948e6114582dd15288390a
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 704bbe5cc566833ef1279e84f0fab9f363dfaa11
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359736"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841622"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Nasazení Azure Resource Manager vs. Classic: Vysvětlení modelů nasazení a stavu prostředků
+
+> [!NOTE]
+> Informace uvedené v tomto článku budete potřebovat pouze při migraci z klasického nasazení do nasazení Azure Resource Manageru.
+
 Tento článek vysvětluje model nasazení Azure Resource Manager a model nasazení Classic. Modely Resource Manager a Classic představují dva různé způsoby nasazení a správy vašich řešení Azure. Práce s nimi probíhá prostřednictvím dvou různých sad rozhraní API a nasazené prostředky můžou obsahovat důležité rozdíly. Tyto dva modely nejsou navzájem kompatibilní. Tento článek popisuje rozdíly mezi nimi.
 
 V zájmu zjednodušení nasazení a správy prostředků Microsoft doporučuje používat pro všechny nové prostředky model Resource Manager. Pokud je to možné, Microsoft doporučuje znovu nasadit existující prostředky prostřednictvím Resource Manageru.

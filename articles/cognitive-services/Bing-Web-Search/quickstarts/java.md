@@ -1,147 +1,172 @@
 ---
-title: Volání a odpověď – rychlý start Java pro kognitivní služby Azure, rozhraní API služby Bing webové Search | Microsoft Docs
-description: Get informace a ukázky kódu můžete rychle začít používat rozhraní API služby Bing webové Search v kognitivní služby společnosti Microsoft na platformě Azure.
+title: 'Rychlý start: Použití jazyka Java k volání rozhraní API Bingu pro vyhledávání na webu'
+description: V tomto rychlém startu poprvé zavoláte rozhraní API Bingu pro vyhledávání na webu. Použijete k tomu Javu a jako odpověď dostanete objekt JSON.
 services: cognitive-services
-documentationcenter: ''
-author: v-jerkin
+author: erhopf
 ms.service: cognitive-services
 ms.component: bing-web-search
-ms.topic: article
-ms.date: 9/18/2017
-ms.author: v-jerkin
-ms.openlocfilehash: 275c21738b563f9408115f88eafde92695f72fa7
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.topic: quickstart
+ms.date: 8/16/2018
+ms.author: erhopf
+ms.openlocfilehash: 8d3e01aef8efdf1503ad7056220e0cba9fb38ed3
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342708"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42888220"
 ---
-# <a name="call-and-response-your-first-bing-web-search-query-in-java"></a>Volání a odpovědi: první Bing webové vyhledávací dotaz v jazyce Java
+# <a name="quickstart-use-java-to-call-the-bing-web-search-api"></a>Rychlý start: Použití jazyka Java k volání rozhraní API Bingu pro vyhledávání na webu  
 
-Rozhraní API služby Bing webové Search nabízí prostředí podobné Bing.com/Search vrácením, že výsledky hledání, které určuje Bing jsou relevantní pro dotaz uživatele. Výsledky mohou zahrnovat webové stránky, obrázků, videí, zprávy a entitami, spolu s související vyhledávací dotazy, pravopisu, časových pásem, převod jednotek, překladů a výpočty. Typy výsledků, které máte jsou založené na jejich významu a úroveň rozhraní API pro vyhledávání Bingu které odebíráte.
+V tomto rychlém startu poprvé zavoláte rozhraní API Bingu pro vyhledávání na webu a dostanete odpověď ve formátu JSON.  
 
-Tento článek obsahuje jednoduché konzolové aplikace, která provede dotaz rozhraní API služby Bing webové Search a zobrazí výsledky vrácené nezpracovaná hledání, které jsou ve formátu JSON. Při této aplikace je napsána v jazyce Java, rozhraní API je kompatibilní s žádný programovací jazyk, který můžete nastavit požadavků HTTP a analyzovat JSON RESTful webová služba. 
+[!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
-Budete potřebovat [JDK 7 nebo 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) pro zkompilování a spuštění tohoto kódu. Pokud máte Oblíbené, ale bude stačit textového editoru můžete používat Java IDE.
+Tady je pár věcí, které budete potřebovat na začátku tohoto rychlého startu:
 
-Musíte mít [kognitivní rozhraní API služby účet](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s **rozhraní API pro Bing vyhledávání**. [Bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) stačí pro tento rychlý start. Je nutné přístupový klíč zadaný při aktivaci bezplatné zkušební verze, nebo může použít klíč placené předplatné z řídicího panelu Azure.
+* [JDK 7 nebo 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+* [Knihovna Gson](https://github.com/google/gson)
+* Klíč předplatného
 
-## <a name="running-the-application"></a>Spouštění aplikace.
+## <a name="create-a-project-and-import-dependencies"></a>Vytvoření projektu a import závislostí
 
-Ke spuštění této aplikace, postupujte podle těchto kroků.
-
-1. Stáhnout nebo nainstalovat [gson knihovny](https://github.com/google/gson). Může je také získat prostřednictvím Maven.
-2. Vytvoření nového projektu Java vaše oblíbené IDE nebo editoru.
-3. Zadaný kód přidejte do souboru s názvem `BingWebSearch.java`.
-4. Nahraďte `subscriptionKey` hodnotu s přístupový klíč platný pro vaše předplatné.
-5. Spusťte program.
+V oblíbeném integrovaném vývojovém prostředí nebo editoru vytvořte nový projekt Java a naimportujte následující knihovny. Knihovna Gson je potřeba k převodu objektů Java na formát JSON.
 
 ```java
 import java.net.*;
 import java.util.*;
 import java.io.*;
 import javax.net.ssl.HttpsURLConnection;
-
-/*
- * Gson: https://github.com/google/gson
- * Maven info:
- *     groupId: com.google.code.gson
- *     artifactId: gson
- *     version: 2.8.1
- *
- * Once you have compiled or downloaded gson-2.8.1.jar, assuming you have placed it in the
- * same folder as this file (BingWebSearch.java), you can compile and run this program at
- * the command line as follows.
- *
- * javac BingWebSearch.java -classpath .;gson-2.8.1.jar -encoding UTF-8
- * java -cp .;gson-2.8.1.jar BingWebSearch
- */
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+```
 
+### <a name="declare-gson-in-the-maven-pom-file"></a>Deklarace knihovny Gson v souboru Maven POM
+
+Pokud používáte Maven, deklarujte Gson v souboru `POM.xml`. Pokud jste knihovnu Gson nainstalovali lokálně, můžete tento krok přeskočit.
+
+```xml
+<dependency>
+    <groupId>com.google.code.gson</groupId>
+    <artifactId>gson</artifactId>
+    <version>2.8.1</version>
+</dependency>
+```
+
+## <a name="declare-the-bingwebsearch-class"></a>Deklarace třídy BingWebSearch
+
+Deklarujte třídu `BingWebSearch`. Bude zahrnovat většinu kódu, se kterým jsme se v tomto rychlém startu setkali, včetně metody `main`.  
+
+```java
 public class BingWebSearch {
 
-// ***********************************************
-// *** Update or verify the following values. ***
-// **********************************************
+// The code in the following sections goes here.
 
-    // Replace the subscriptionKey string value with your valid subscription key.
-    static String subscriptionKey = "enter key here";
+}
+```
 
-    // Verify the endpoint URI.  At this writing, only one endpoint is used for Bing
-    // search APIs.  In the future, regional endpoints may be available.  If you
-    // encounter unexpected authorization errors, double-check this value against
-    // the endpoint for your Bing Web search instance in your Azure dashboard.
-    static String host = "https://api.cognitive.microsoft.com";
-    static String path = "/bing/v7.0/search";
+## <a name="define-variables"></a>Definování proměnných
 
-    static String searchTerm = "Microsoft Cognitive Services";
+Tento kód nastaví `subscriptionKey`, `host`, `path` a `searchTerm`. Ověřte správnost koncového bodu a nahraďte hodnotu `subscriptionKey` platným klíčem předplatného ze svého účtu Azure. Vyhledávací dotaz můžete přizpůsobit. Stačí místo `searchTerm` zadat jinou hodnotu.
 
-    public static SearchResults SearchWeb (String searchQuery) throws Exception {
-        // construct URL of search request (endpoint + query string)
-        URL url = new URL(host + path + "?q=" +  URLEncoder.encode(searchQuery, "UTF-8"));
-        HttpsURLConnection connection = (HttpsURLConnection)url.openConnection();
-        connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
+```java
+// Enter a valid subscription key.
+static String subscriptionKey = "enter key here";
 
-        // receive JSON body
-        InputStream stream = connection.getInputStream();
-        String response = new Scanner(stream).useDelimiter("\\A").next();
+/*
+ * If you encounter unexpected authorization errors, double-check these values
+ * against the endpoint for your Bing Web search instance in your Azure
+ * dashboard.
+ */
+static String host = "https://api.cognitive.microsoft.com";
+static String path = "/bing/v7.0/search";
+static String searchTerm = "Microsoft Cognitive Services";
+```
 
-        // construct result object for return
-        SearchResults results = new SearchResults(new HashMap<String, String>(), response);
+## <a name="construct-a-request"></a>Vytvoření požadavku
 
-        // extract Bing-related HTTP headers
-        Map<String, List<String>> headers = connection.getHeaderFields();
-        for (String header : headers.keySet()) {
-            if (header == null) continue;      // may have null key
-            if (header.startsWith("BingAPIs-") || header.startsWith("X-MSEdge-")) {
-                results.relevantHeaders.put(header, headers.get(header).get(0));
-            }
+Tato metoda žije ve třídě `BingWebSearch`, vytvoří `url`, přijme odpověď a parsuje ji a extrahuje hlavičky protokolu HTTP týkající se Bingu.  
+
+```java
+public static SearchResults SearchWeb (String searchQuery) throws Exception {
+    // Construct the URL.
+    URL url = new URL(host + path + "?q=" +  URLEncoder.encode(searchQuery, "UTF-8"));
+
+    // Open the connection.
+    HttpsURLConnection connection = (HttpsURLConnection)url.openConnection();
+    connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
+
+    // Receive the JSON response body.
+    InputStream stream = connection.getInputStream();
+    String response = new Scanner(stream).useDelimiter("\\A").next();
+
+    // Construct the result object.
+    SearchResults results = new SearchResults(new HashMap<String, String>(), response);
+
+    // Extract Bing-related HTTP headers.
+    Map<String, List<String>> headers = connection.getHeaderFields();
+    for (String header : headers.keySet()) {
+        if (header == null) continue;      // may have null key
+        if (header.startsWith("BingAPIs-") || header.startsWith("X-MSEdge-")){
+            results.relevantHeaders.put(header, headers.get(header).get(0));
         }
+    }
+    stream.close();
+    return results;
+}
+```
 
-        stream.close();
-        return results;
+## <a name="handle-the-response"></a>Zpracování odpovědi
+
+K parsování a opětovné serializaci odpovědi použijte knihovnu Gson.
+
+```java
+public static String prettify(String json_text) {
+    JsonParser parser = new JsonParser();
+    JsonObject json = parser.parse(json_text).getAsJsonObject();
+    Gson gson = new GsonBuilder().setPrettyPrinting().create();
+    return gson.toJson(json);
+}
+```
+
+## <a name="declare-the-main-method"></a>Deklarace hlavní metody
+
+Tato metoda je povinná. Při spuštění programu se volá jako první. V této aplikaci obsahuje kód, který ověří hodnotu `subscriptionKey`, vytvoří požadavek a vytiskne odpověď JSON.
+
+```java
+public static void main (String[] args) {
+    // Confirm the subscriptionKey is valid.
+    if (subscriptionKey.length() != 32) {
+        System.out.println("Invalid Bing Search API subscription key!");
+        System.out.println("Please paste yours into the source code.");
+        System.exit(1);
     }
 
-    // pretty-printer for JSON; uses GSON parser to parse and re-serialize
-    public static String prettify(String json_text) {
-        JsonParser parser = new JsonParser();
-        JsonObject json = parser.parse(json_text).getAsJsonObject();
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        return gson.toJson(json);
+    // Call the SearchWeb method and print the response.
+    try {
+        System.out.println("Searching the Web for: " + searchTerm);
+        SearchResults result = SearchWeb(searchTerm);
+        System.out.println("\nRelevant HTTP Headers:\n");
+        for (String header : result.relevantHeaders.keySet())
+        System.out.println(header + ": " + result.relevantHeaders.get(header));
+        System.out.println("\nJSON Response:\n");
+        System.out.println(prettify(result.jsonResponse));
     }
-
-    public static void main (String[] args) {
-        if (subscriptionKey.length() != 32) {
-            System.out.println("Invalid Bing Search API subscription key!");
-            System.out.println("Please paste yours into the source code.");
-            System.exit(1);
-        }
-
-        try {
-            System.out.println("Searching the Web for: " + searchTerm);
-
-            SearchResults result = SearchWeb(searchTerm);
-
-            System.out.println("\nRelevant HTTP Headers:\n");
-            for (String header : result.relevantHeaders.keySet())
-                System.out.println(header + ": " + result.relevantHeaders.get(header));
-
-            System.out.println("\nJSON Response:\n");
-            System.out.println(prettify(result.jsonResponse));
-        }
-        catch (Exception e) {
-            e.printStackTrace(System.out);
-            System.exit(1);
-        }
+    catch (Exception e) {
+        e.printStackTrace(System.out);
+        System.exit(1);
     }
 }
+```
 
-// Container class for search results encapsulates relevant headers and JSON data
+## <a name="create-a-container-class-for-search-results"></a>Vytvoření třídy kontejneru pro výsledky hledání
+
+Třída kontejneru `SearchResults` není ve třídě `BingWebSearch`. Obsahuje příslušné hlavičky a data JSON odpovědi.
+
+```java
 class SearchResults{
     HashMap<String, String> relevantHeaders;
     String jsonResponse;
@@ -152,9 +177,20 @@ class SearchResults{
 }
 ```
 
-## <a name="json-response"></a>Odpověď JSON
+## <a name="put-it-all-together"></a>Spojení všech součástí dohromady
 
-Následuje ukázková odpověď. Pokud chcete omezit délku JSON, se zobrazí pouze jeden výsledek a dalšími částmi odpovědi byl pravděpodobně zkrácen. 
+Posledním krokem je kompilace kódu a jeho spuštění. Tady jsou příkazy:
+
+```powershell
+javac BingWebSearch.java -classpath ./gson-2.8.1.jar -encoding UTF-8
+java -cp ./gson-2.8.1.jar BingWebSearch
+```
+
+Pokud chcete porovnat svůj kód s naším, najdete [ukázkový kód na GitHubu](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingWebSearchv7.java).
+
+## <a name="sample-response"></a>Ukázková odpověď
+
+Odpovědi rozhraní API Bingu pro vyhledávání na webu se vrátí jako objekt JSON. Ukázková odpověď je zkrácená, aby zobrazovala jenom jeden výsledek.
 
 ```json
 {
@@ -278,14 +314,9 @@ Následuje ukázková odpověď. Pokud chcete omezit délku JSON, se zobrazí po
 }
 ```
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Kurz vývoje webové služby Bing vyhledávání jednostránkové aplikace](../tutorial-bing-web-search-single-page-app.md)
+> [Webové vyhledávání Bingu – kurz jednostránkové aplikace](../tutorial-bing-web-search-single-page-app.md)
 
-## <a name="see-also"></a>Další informace najdete v tématech 
-
-[Hledání webové služby Bing – přehled](../overview.md)  
-[Vyzkoušet](https://azure.microsoft.com/services/cognitive-services/bing-web-search-api/)  
-[Získat bezplatnou zkušební verzi přístupový klíč](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)  
-[Referenční dokumentace rozhraní API vyhledávání webové služby Bing](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference)
+[!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]  

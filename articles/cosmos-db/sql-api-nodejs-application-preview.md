@@ -11,21 +11,22 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 07/31/2018
 ms.author: sngun
-ms.openlocfilehash: 43c5b8beef523684a405f1396ad0a9d862c123e8
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.openlocfilehash: 8e788207e99a87e9635fbf668ad99c21ca101ecf
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "41918194"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697111"
 ---
 # <a name="_Toc395783175"></a>Vytvoření webové aplikace Node.js s využitím služby Azure Cosmos DB a sady Node.js SDK (Preview)
+
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
-> * [Node.js](sql-api-nodejs-application.md)
-> * [Node.js – verze 2.0 Preview](sql-api-nodejs-application-preview.md)
 > * [Java](sql-api-java-application.md)
+> * [Node.js](sql-api-nodejs-application.md)
+> * [Node.js – v2](sql-api-nodejs-application-preview.md)
 > * [Python](sql-api-python-application.md)
-> 
+> * [Xamarin](mobile-apps-with-xamarin.md)
 > 
 
 Tento kurz Node.js ukazuje, jak pomocí účtu rozhraní SQL API služby Azure Cosmos DB ukládat data a přistupovat k nim z aplikace Node.js Express hostované ve službě Azure Websites. V tomto kurzu vytvoříte jednoduchou webovou aplikaci (aplikace seznamu úkolů) umožňující vytváření, načítání a dokončování úkolů. Úkoly se ve službě Azure Cosmos DB ukládají jako dokumenty JSON. Následující obrázek ukazuje snímek obrazovky aplikace seznamu úkolů:

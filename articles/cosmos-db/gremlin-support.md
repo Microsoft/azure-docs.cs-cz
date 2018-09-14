@@ -10,19 +10,19 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 01/02/2018
 ms.author: lbosq
-ms.openlocfilehash: c675f37e50f5b8a259048d9a92fcdbe5b947068c
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 593b7ac636b92db5c72cfad8f73fc2c418639358
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34797613"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43700208"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Podpora grafu Gremlin ve službě Azure Cosmos DB
-Azure Cosmos DB podporuje [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) – jazyk pro procházení grafu od společnosti [Apache Tinkerpop](http://tinkerpop.apache.org), což je rozhraní Graph API pro vytváření grafových entit a provádění operací dotazování grafu. Pomocí jazyka Gremlin můžete vytvářet grafové entity (vrcholy a okraje), upravovat vlastnosti v rámci těchto entit, provádět dotazy a přechody a odstraňovat entity. 
+Azure Cosmos DB podporuje [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) – jazyk pro procházení grafu od společnosti [Apache Tinkerpop](http://tinkerpop.apache.org), což je rozhraní Gremlin API pro vytváření grafových entit a provádění operací dotazování grafu. Pomocí jazyka Gremlin můžete vytvářet grafové entity (vrcholy a okraje), upravovat vlastnosti v rámci těchto entit, provádět dotazy a přechody a odstraňovat entity. 
 
 Azure Cosmos DB přidává ke grafovým databázím funkce připravené pro podniky. Tyto funkce zahrnují globální distribuci, nezávislé škálování úložiště a propustnosti, předvídatelné latence v řádu jednotek milisekund, automatické indexování, smlouvy SLA nebo dostupnost čtení databázových účtů pokrývajících dvě a více oblastí Azure. Vzhledem k tomu, že Azure Cosmos DB podporuje TinkerPop/Gremlin, můžete snadno migrovat aplikace napsané s využitím jiné grafové databáze bez nutnosti měnit kód. Díky podpoře jazyka Gremlin se Azure Cosmos DB také bez problémů integruje s analytickými architekturami s podporou standardu TinkerPop, například [Apache Spark GraphX](http://spark.apache.org/graphx/). 
 
-V tomto článku vás rychle provedeme jazykem Gremlin a seznámíme vás s jeho funkcemi a kroky, které podporuje Graph API.
+V tomto článku vás rychle provedeme jazykem Gremlin a seznámíme vás s jeho funkcemi a kroky, které podporuje Gremlin API.
 
 ## <a name="gremlin-by-example"></a>Ukázka jazyka Gremlin
 Ukázkový graf vám pomůže pochopit, jak lze v jazyce Gremlin vyjádřit dotazy. Na následujícím obrázku je znázorněna obchodní aplikace, která spravuje data o uživatelích, zájmech a zařízeních v podobě grafu.  

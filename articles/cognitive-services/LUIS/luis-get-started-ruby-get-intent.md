@@ -1,76 +1,86 @@
 ---
-title: Kurz volání aplikace LUIS (Language Understanding Intelligent Service) pomocí Ruby | Microsoft Docs
-description: V tomto kurzu zjistíte, jak volat aplikaci LUIS pomocí Ruby.
+title: Analýza textu v přirozeném jazyce ve službě Language Understanding (LUIS) pomocí Ruby – Cognitive Services – Azure Cognitive Services | Microsoft Docs
+description: V tomto rychlém startu použijete dostupnou veřejnou aplikaci LUIS ke zjištění záměru uživatele z textu konverzace. Pomocí Ruby odešlete záměr uživatele jako text do koncového bodu předpovědi HTTP veřejné aplikace. Služba LUIS použije v koncovém bodě model veřejné aplikace k analýze smyslu textu v přirozeném jazyce, zjištění celkového záměru a extrakci dat, která jsou relevantní pro doménu subjektu aplikace.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
-ms.topic: tutorial
-ms.date: 12/13/2017
-ms.author: v-geberr
-ms.openlocfilehash: 683f17df29388e9d645dc813785f1c545c1506dc
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.topic: quickstart
+ms.date: 08/23/2018
+ms.author: diberry
+ms.openlocfilehash: 7344d0e4d649134b7d928daec99fa79d0644a7e4
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265105"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "43769207"
 ---
-# <a name="tutorial-call-a-luis-endpoint-using-ruby"></a>Kurz: Volání koncového bodu služby LUIS pomocí Ruby
-Do koncového bodu služby LUIS můžete předávat promluvy a získávat zpět záměr a entity.
+# <a name="quickstart-analyze-text-using-ruby"></a>Rychlý start: Analýza textu pomocí Ruby
 
-<!-- green checkmark -->
-> [!div class="checklist"]
-> * Vytvoření předplatného LUIS a zkopírování hodnoty klíče pro pozdější použití
-> * Zobrazení výsledků z koncového bodu služby LUIS ve veřejné ukázkové aplikaci IoT v prohlížeči
-> * Vytvoření konzolové aplikace jazyka C# v sadě Visual Studio pro volání koncového bodu služby LUIS přes protokol HTTPS
+[!include[Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
 
-Pro účely tohoto článku potřebujete bezplatný účet [LUIS][LUIS], abyste mohli vytvořit svou aplikaci LUIS.
+## <a name="prerequisites"></a>Požadavky
 
-## <a name="create-luis-subscription-key"></a>Vytvoření klíče předplatného LUIS
-Abyste mohli volat ukázkovou aplikaci LUIS použitou v tomto návodu, potřebujete klíč rozhraní API služeb Cognitive Services. 
-
-Klíč rozhraní API získáte následujícím způsobem: 
-
-1. Nejprve musíte na webu Azure Portal vytvořit [účet rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account). Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
-
-2. Přihlaste se k webu Azure Portal na adrese https://portal.azure.com. 
-
-3. Získejte klíč podle postupu v tématu věnovaném [vytváření klíčů předplatného pomocí Azure](./luis-how-to-azure-subscription.md).
-
-4. Vraťte se na web [LUIS](luis-reference-regions.md) a přihlaste se pomocí svého účtu Azure. 
-
-    [![](media/luis-get-started-node-get-intent/app-list.png "Snímek obrazovky se seznamem aplikací")](media/luis-get-started-node-get-intent/app-list.png)
-
-## <a name="understand-what-luis-returns"></a>Vysvětlení toho, co služba LUIS vrací
-
-Pokud chcete zjistit, co aplikace LUIS vrací, můžete vložit adresu URL ukázkové aplikace LUIS do okna prohlížeče. Ukázková aplikace je aplikace IoT, která rozpozná, jestli chce uživatel zapnout nebo vypnout světlo.
-
-1. Koncový bod ukázkové aplikace má tento formát: `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?subscription-key=<YOUR_API_KEY>&verbose=false&q=turn%20on%20the%20bedroom%20light` Zkopírujte adresu URL a nahraďte hodnotu v poli `subscription-key` klíčem vašeho předplatného.
-2. Vložte adresu URL do okna prohlížeče a stiskněte Enter. V prohlížeči se zobrazí výsledek JSON, který značí, že služba LUIS rozpoznala záměr `HomeAutomation.TurnOn` a entitu `HomeAutomation.Room` s hodnotou `bedroom`.
-
-    ![Výsledek JSON s rozpoznaným záměrem TurnOn (Zapnout)](./media/luis-get-started-node-get-intent/turn-on-bedroom.png)
-3. Změňte hodnotu parametru `q=` v adrese URL na `turn off the living room light` a stiskněte Enter. Výsledek teď značí, že služba LUIS rozpoznala záměr `HomeAutomation.TurnOff` a entitu `HomeAutomation.Room` s hodnotou `living room`. 
-
-    ![Výsledek JSON s rozpoznaným záměrem TurnOff (Vypnout)](./media/luis-get-started-node-get-intent/turn-off-living-room.png)
+* Programovací jazyk [Ruby](https://www.ruby-lang.org/)
+* [Visual Studio Code](https://code.visualstudio.com/)
+* ID veřejné aplikace: df67dcdb-c37d-46af-88e1-8b97951ca1c2
 
 
-## <a name="consume-a-luis-result-using-the-endpoint-api-with-ruby"></a>Využití výsledku ze služby LUIS pomocí rozhraní API pro koncové body a Ruby 
+[!include[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-luis-repo-note.md)]
+
+<a name="create-luis-subscription-key"></a>
+
+## <a name="get-luis-key"></a>Získání klíče LUIS
+
+[!include[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-get-key-para.md)]
+
+## <a name="analyze-text-with-browser"></a>Analýza textu pomocí prohlížeče
+
+[!include[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-browser-para.md)]
+
+## <a name="analyze-text-with-ruby"></a>Analýza textu pomocí Ruby 
 
 Pomocí Ruby můžete získat přístup ke stejným výsledkům, jako jste viděli v okně prohlížeče v předchozím kroku. 
-1. Zkopírujte následující kód a uložte ho do souboru HTML:
 
-   [!code-ruby[Ruby code that calls a LUIS endpoint](~/samples-luis/documentation-samples/endpoint-api-samples/ruby/endpoint-call.rb)]
-2. V následujícím řádku kódu nahraďte `"YOUR-SUBSCRIPTION-KEY"` klíčem vašeho předplatného: `subscriptionKey = "YOUR-SUBSCRIPTION-KEY"`
+1. Zkopírujte následující kód a uložte ho do souboru s názvem `endpoint-call.rb`:
 
-3. Spusťte aplikaci Ruby. Zobrazí se stejný JSON, jako jste viděli dříve v okně prohlížeče.
+   [!code-ruby[Ruby code that calls a LUIS endpoint](~/samples-luis/documentation-samples/quickstarts/analyze-text/ruby/endpoint-call.rb)]
+
+2. Nahraďte `"YOUR-KEY"` klíčem koncového bodu.
+
+3. Spusťte aplikaci Ruby v příkazovém řádku pomocí `ruby endpoint-call.rb`. Zobrazí se stejný JSON, jako jste viděli dříve v okně prohlížeče.
+
+    ```
+    LUIS query: turn on the left light
+    
+    Request URI: https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?q=turn+on+the+left+light&timezoneOffset=0&verbose=false&spellCheck=false&staging=false
+    
+    JSON Response:
+    
+    {
+      "query": "turn on the left light",
+      "topScoringIntent": {
+        "intent": "HomeAutomation.TurnOn",
+        "score": 0.933549
+      },
+      "entities": [
+        {
+          "entity": "left",
+          "type": "HomeAutomation.Room",
+          "startIndex": 12,
+          "endIndex": 15,
+          "score": 0.540835142
+        }
+      ]
+    }
+```
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-V tomto kurzu se vytvořily dva prostředky: klíč předplatného LUIS a projekt jazyka C#. Na webu Azure Portal odstraňte klíč předplatného LUIS. Zavřete projekt sady Visual Studio a odeberte příslušný adresář ze systému souborů. 
+
+Odstraňte soubor Ruby.
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
 > [Přidání projevů](luis-get-started-ruby-add-utterance.md)
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: fffffbf7ce654c263976378da01f032599145a94
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 4953cb0db428de19268cdd90661f7818b06b6945
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39591563"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43343858"
 ---
 # <a name="tutorial-enable-single-page-app-authentication-with-accounts-using-azure-active-directory-b2c"></a>Kurz: Povolení ověřování účtů pomocí Azure Active Directory B2C pro jednostránkovou aplikaci
 
@@ -24,24 +24,24 @@ V tomto kurzu se dozvíte, jak použít Azure Active Directory (Azure AD) B2C k 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Zaregistrovat ukázkovou jednostránkovou aplikaci ve vašem tenantovi Azure AD B2C.
+> * Zaregistrovat ukázkovou jednostránkovou aplikaci ve vašem adresáři Azure AD B2C
 > * Vytvořit zásady pro registraci a přihlašování uživatelů, úpravy profilu a resetování hesla.
-> * Nakonfigurovat ukázkovou aplikaci pro použití vašeho tenanta Azure AD B2C.
+> * Nakonfigurovat ukázkovou aplikaci pro použití vašeho adresáře Azure AD B2C
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Vytvořte si vlastního [tenanta Azure AD B2C](active-directory-b2c-get-started.md).
+* Vytvořte si vlastní [adresář Azure AD B2C](active-directory-b2c-get-started.md).
 * Nainstalujte sadu [Visual Studio 2017](https://www.visualstudio.com/downloads/) se sadou funkcí **Vývoj pro ASP.NET a web**.
 * Sada [.NET Core SDK 2.0.0](https://www.microsoft.com/net/core) nebo novější
 * Instalovat [Node.js](https://nodejs.org/en/download/)
 
 ## <a name="register-single-page-app"></a>Registrace jednostránkové aplikace
 
-Aby aplikace mohly přijímat [přístupové tokeny](../active-directory/develop/developer-glossary.md#access-token) z Azure Active Directory, musí být [zaregistrované](../active-directory/develop/developer-glossary.md#application-registration) ve vašem tenantovi. Registrací se pro aplikaci vytvoří [ID aplikace](../active-directory/develop/developer-glossary.md#application-id-client-id) ve vašem tenantovi. 
+Aby aplikace mohly přijímat [přístupové tokeny](../active-directory/develop/developer-glossary.md#access-token) z Azure Active Directory, musí být [zaregistrované](../active-directory/develop/developer-glossary.md#application-registration) ve vašem adresáři. Registrací se pro aplikaci vytvoří [ID aplikace](../active-directory/develop/developer-glossary.md#application-id-client-id) ve vašem adresáři. 
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/) jako globální správce vašeho tenanta Azure AD B2C.
+Přihlaste se k portálu [Azure Portal](https://portal.azure.com/) jako globální správce vašeho adresáře Azure AD B2C.
 
 [!INCLUDE [active-directory-b2c-switch-b2c-tenant](../../includes/active-directory-b2c-switch-b2c-tenant.md)]
 
@@ -49,7 +49,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/) jako globální s
 
 2. V nastavení B2C klikněte na **Aplikace** a pak klikněte na **Přidat**. 
 
-    K registraci ukázkové webové aplikace ve vašem tenantovi použijte následující nastavení:
+    K registraci ukázkové webové aplikace ve vašem adresáři použijte tato nastavení:
     
     ![Přidání nové aplikace](media/active-directory-b2c-tutorials-spa/spa-registration.png)
     
@@ -63,7 +63,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/) jako globální s
     
 3. Kliknutím na **Vytvořit** svou aplikaci zaregistrujte.
 
-Zaregistrované aplikace se zobrazí v seznamu aplikací pro příslušného tenanta Azure AD B2C. Vyberte ze seznamu vaši jednostránkovou aplikaci. Zobrazí se podokno vlastností zaregistrované jednostránkové aplikace.
+Zaregistrované aplikace se zobrazí v seznamu aplikací pro příslušný adresář Azure AD B2C. Vyberte ze seznamu vaši jednostránkovou aplikaci. Zobrazí se podokno vlastností zaregistrované jednostránkové aplikace.
 
 ![Vlastnosti jednostránkové aplikace](./media/active-directory-b2c-tutorials-spa/b2c-spa-properties.png)
 
@@ -127,25 +127,25 @@ Pokud chcete ve své aplikaci povolit resetování hesla, musíte vytvořit **z�
 
 ## <a name="update-single-page-app-code"></a>Aktualizace kódu jednostránkové aplikace
 
-Když teď máte zaregistrovanou aplikaci a vytvořené zásady, musíte svou aplikaci nakonfigurovat tak, aby používala vašeho tenanta Azure AD B2C. V tomto kurzu nakonfigurujete ukázkovou jednostránkovou aplikaci v JavaScriptu, kterou si můžete stáhnout z GitHubu. 
+Když teď máte zaregistrovanou aplikaci a vytvořené zásady, musíte svou aplikaci nakonfigurovat tak, aby používala váš adresář Azure AD B2C. V tomto kurzu nakonfigurujete ukázkovou jednostránkovou aplikaci v JavaScriptu, kterou si můžete stáhnout z GitHubu. 
 
 [Stáhněte soubor .zip](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp/archive/master.zip) nebo naklonujte ukázkovou webovou aplikaci z GitHubu.
 
 ```
 git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp.git
 ```
-Ukázková aplikace předvádí, jak může jednostránková aplikace pomocí Azure AD B2C registrovat a přihlašovat uživatele a volat chráněné rozhraní API. Aplikaci musíte změnit tak, aby používala registraci aplikace ve vašem tenantovi, a nakonfigurovat zásady, které jste vytvořili. 
+Ukázková aplikace předvádí, jak může jednostránková aplikace pomocí Azure AD B2C registrovat a přihlašovat uživatele a volat chráněné rozhraní API. Aplikaci musíte změnit tak, aby používala registraci aplikace ve vašem adresáři, a nakonfigurovat zásady, které jste vytvořili. 
 
 Nastavení aplikace můžete změnit následujícím způsobem:
 
 1. Otevřete soubor `index.html` v ukázce jednostránkové aplikace Node.js.
-2. Nakonfigurujte ukázku s použitím informací o registraci tenanta Azure AD B2C. Změňte následující řádky kódu:
+2. Nakonfigurujte ukázku s použitím informací o registraci adresáře Azure AD B2C. Změňte následující řádky kódu (nezapomeňte hodnoty nahradit názvy vašeho adresáře a rozhraní API):
 
     ```javascript
-    // The current application coordinates were pre-registered in a B2C tenant.
+    // The current application coordinates were pre-registered in a B2C directory.
     var applicationConfig = {
         clientID: '<Application ID for your SPA obtained from portal app registration>',
-        authority: "https://login.microsoftonline.com/tfp/<your-tenant-name>.onmicrosoft.com/B2C_1_SiUpIn",
+        authority: "https://fabrikamb2c.b2clogin.com/tfp/fabrikamb2c.onmicrosoft.com/B2C_1_SiUpIn",
         b2cScopes: ["https://fabrikamb2c.onmicrosoft.com/demoapi/demo.read"],
         webApi: 'https://fabrikamb2chello.azurewebsites.net/hello',
     };
@@ -185,20 +185,20 @@ Ukázková aplikace podporuje registraci, přihlašování, úpravy profilu a re
 
     ![Pracovní postup registrace](media/active-directory-b2c-tutorials-desktop-app/sign-up-workflow.png)
 
-4. Kliknutím na **Create** (Vytvořit) vytvořte místní účet v tenantovi Azure AD B2C.
+4. Kliknutím na **Create** (Vytvořit) vytvořte místní účet v adresáři Azure AD B2C.
 
 Teď se uživatel může přihlásit pomocí své e-mailové adresy a používat jednostránkovou aplikaci.
 
 > [!NOTE]
-> Po přihlášení aplikace zobrazí chybu Nedostatečná oprávnění. Tato chyba se zobrazí, protože se pokoušíte o přístup k prostředku z ukázkového tenanta. Vzhledem k tomu, že je váš přístupový token platný pouze pro vašeho tenanta Azure AD, je toto volání rozhraní API neautorizované. Pokračujte k dalšímu kurzu, kde pro svého tenanta vytvoříte chráněné webové rozhraní API. 
+> Po přihlášení aplikace zobrazí chybu Nedostatečná oprávnění. Tato chyba se zobrazí, protože se pokoušíte o přístup k prostředku z ukázkového adresáře. Vzhledem k tomu, že je váš přístupový token platný jenom pro váš adresář Azure AD, je toto volání rozhraní API neautorizované. Pokračujte k dalšímu kurzu, kde pro svůj adresář vytvoříte chráněné webové rozhraní API. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Svého tenanta Azure AD B2C můžete použít i k vyzkoušení dalších kurzů k Azure AD B2C. Jakmile už ho nebudete potřebovat, můžete [svého tenanta Azure AD B2C odstranit](active-directory-b2c-faqs.md#how-do-i-delete-my-azure-ad-b2c-tenant).
+Svůj adresář Azure AD B2C můžete použít i k vyzkoušení dalších kurzů k Azure AD B2C. Jakmile už ho nebudete potřebovat, můžete [svůj adresář Azure AD B2C odstranit](active-directory-b2c-faqs.md#how-do-i-delete-my-azure-ad-b2c-tenant).
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste zjistili, jak vytvořit tenanta Azure AD B2C, vytvořit zásady a aktualizovat ukázkovou jednostránkovou aplikaci tak, aby používala vašeho tenanta Azure AD B2C. V dalším kurzu zjistíte, jak zaregistrovat, nakonfigurovat a volat chráněné webové rozhraní API z desktopové aplikace.
+V tomto kurzu jste zjistili, jak vytvořit adresář Azure AD B2C, vytvořit zásady a aktualizovat ukázkovou jednostránkovou aplikaci tak, aby používala váš adresář Azure AD B2C. V dalším kurzu zjistíte, jak zaregistrovat, nakonfigurovat a volat chráněné webové rozhraní API z desktopové aplikace.
 
 > [!div class="nextstepaction"]
 > 

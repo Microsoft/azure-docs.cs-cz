@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 4c850cd98280940c53a07c70c9c478f9e20e2963
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: a2601f55bbc7e99321689afdafcab3135b94bd5b
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41919494"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43702540"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>Kurz: Definování nového typu zařízení v aplikaci Azure IoT Central
 
@@ -280,43 +280,43 @@ Nastavení, vlastnosti a vlastnosti zařízení a příkazy jsou různé hodnoty
 
 ## <a name="use-properties--device-properties"></a>Použití vlastností nebo vlastností zařízení
 
-*Vlastnosti* použijete k uložení informací o vašem zařízení v aplikaci. V této části do šablony zařízení **Connected Air Conditioner** (Připojená klimatizace) přidáte vlastnosti zařízení pro uložení sériového čísla a verze firmwaru zařízení. Všimněte si, že obě tyto vlastnosti jsou jen pro čtení a jsou hlášené zařízením. Nemůžete jim přiřadit hodnoty. Můžete chtít použít vlastnosti, kterým můžete přiřadit hodnoty, tak aby zahrnovaly umístění zařízení, informace o vlastnictví a datum a čas posledního servisu zařízení.
+*Vlastnosti* použijete k uložení informací o vašem zařízení v aplikaci. V této části do šablony zařízení **Connected Air Conditioner** (Připojená klimatizace) přidáte vlastnosti cloudu pro uložení umístění zařízení a data poslední údržby. Všimněte si, že obě tyto vlastnosti zařízení jsou upravitelné. Zařízení odesílá i vlastnosti jen pro čtení, které nelze měnit, jako je sériové číslo a verze firmwaru zařízení.
  
 1. Přejděte ke stránce **Properties** (Vlastnosti) vaší šablony **Connected Air Conditioner**:
 
     ![Příprava pro přidání vlastnosti](./media/tutorial-define-device-type/deviceaddproperty.png)
 
-    Můžete vytvořit vlastnosti zařízení různých typů, například čísla nebo text. Pokud chcete do šablony zařízení přidat vlastnost sériového čísla, zvolte **Text**.
+    Můžete vytvořit vlastnosti zařízení různých typů, například čísla nebo text. Pokud chcete do šablony zařízení přidat vlastnost umístění, zvolte **Location** (Umístění).
 
-2. Ke konfiguraci vlastnosti sériového čísla použijte informace v následující tabulce:
+2. Ke konfiguraci vlastnosti umístění použijte informace v následující tabulce:
 
     | Pole                | Hodnota                |
     | -------------------- | -------------------- |
-    | Zobrazovaný název         | Sériové číslo        |
-    | Název pole           | serialNumber         |
-    | Počáteční hodnota        | cac00001             |
-    | Popis          | Sériové číslo zařízení |
+    | Zobrazovaný název         | Umístění             |
+    | Název pole           | location             |
+    | Počáteční hodnota        | Seattle, WA          |
+    | Popis          | Device location (Umístění zařízení)      |
 
     Ostatní pole nechte nastavená na výchozí hodnoty.
 
     ![Konfigurace vlastností zařízení](./media/tutorial-define-device-type/configureproperties.png)
 
-    Zvolte **Uložit**.
+    Zvolte **Save** (Uložit).
 
-3. Pokud chcete do vlastností zařízení pro šablonu zařízení přidat verzi firmwaru, zvolte **Text**.
+3. Pokud chcete do šablony zařízení přidat vlastnost data poslední údržby, zvolte **Date** (Datum).
 
-4. Ke konfiguraci vlastnosti zařízení verze firmwaru použijte informace v následující tabulce:
+4. Ke konfiguraci vlastnosti data poslední údržby použijte informace v následující tabulce:
 
     | Pole                | Hodnota                   |
     | -------------------- | ----------------------- |
-    | Zobrazovaný název         | Verze firmwaru        |
-    | Název pole           | firmwareVersion         |
-    | Počáteční hodnota        | 0.1                     |
-    | Popis          | Verze firmwaru zařízení |
+    | Zobrazovaný název         | Last Service Date (Datum poslední údržby)       |
+    | Název pole           | serviceDate             |
+    | Počáteční hodnota        | 1. 1. 2018                |
+    | Popis          | Last serviced (Poslední údržba)           |
 
     ![Konfigurace vlastností zařízení](./media/tutorial-define-device-type/configureproperties2.png)
 
-    Zvolte **Uložit**.
+    Zvolte **Save** (Uložit).
 
 5. Rozložení stránky **Properties** (Vlastnosti) můžete přizpůsobit přesunutím dlaždic vlastností a změnou jejich velikosti:
 

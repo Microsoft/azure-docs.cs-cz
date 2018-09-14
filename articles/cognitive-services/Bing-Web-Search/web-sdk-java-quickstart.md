@@ -1,337 +1,300 @@
 ---
-title: 'Rychlý start: Použití vyhledávání na webu Bingu sady SDK pro Javu'
-description: Instalační program pro sadu SDK webové vyhledávání konzolové aplikace.
-titleSuffix: Azure Cognitive Services
+title: 'Rychlý start: Použití sady SDK Bingu pro vyhledávání a webu pro jazyk Java'
+description: Zjistěte, jak používat sadu SDK Bingu pro vyhledávání na webu pro jazyk Java.
 services: cognitive-services
-author: mikedodaro
-manager: rosh
+author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
-ms.topic: article
-ms.date: 08/16/2018
-ms.author: v-gedod, erhopf
-ms.openlocfilehash: 1cad3c6ea3e670d214c05e9e61acd566c85c2eb7
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
-ms.translationtype: MT
+ms.topic: quickstart
+ms.date: 08/22/2018
+ms.author: erhopf
+ms.openlocfilehash: cc7335b9f8b5596edef895ff5a42a1018b06a381
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42888487"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43186723"
 ---
-# <a name="quickstart-use-the-bing-web-search-sdk-for-java"></a>Rychlý start: Použití vyhledávání na webu Bingu sady SDK pro Javu
+# <a name="quickstart-use-the-bing-web-search-sdk-for-java"></a>Rychlý start: Použití sady SDK Bingu pro vyhledávání a webu pro jazyk Java
 
-Sady SDK webové vyhledávání Bingu obsahuje funkce rozhraní REST API pro dotazy a analýzy výsledků.
+Sada SDK Bingu pro vyhledávání na webu usnadňuje integraci webového vyhledávání Bingu do vaší aplikace v jazyce Java. V tomto rychlém startu se naučíte poslat požadavek, přijmout odpověď JSON, filtrovat a parsovat výsledky.
 
-[Zdrojový kód pro sadu SDK Java Bingu webové vyhledávání ukázek](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingWebSearch) je k dispozici na Githubu.
+Chcete se rovnou podívat na kód? [Ukázky sady SDK Bingu pro vyhledávání na webu v jazyce Java](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/) jsou k dispozici na GitHubu.
+
+[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Nainstalujte sadu SDK vyhledávání Bingu webové závislosti pomocí Maven, Gradle nebo váš systém správy závislostí Oblíbené. Souboru Maven POM vyžaduje:
-```
+Tady je pár věcí, které budete potřebovat na začátku tohoto rychlého startu:
+
+* [JDK 7 nebo 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+* [Apache Maven](https://maven.apache.org/download.cgi) nebo jiný oblíbený nástroj na automatické sestavení
+* Klíč předplatného
+
+## <a name="create-a-project-and-configure-your-pom-file"></a>Vytvoření projektu a konfigurace souboru POM
+
+Vytvořte nový projekt Java. Použijte Maven nebo jiný oblíbený nástroj na automatické sestavení. Pokud používáte Maven, přidejte do souboru POM následující řádky. Všechny instance `mainClass` nahraďte svou aplikací.
+
+```xml
+<build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.4.0</version>
+        <configuration>
+          <!--Your comment
+            Replace the mainClass with the path to your java application.
+            It should begin with com and doesn't require the .java extension.
+            For example: com.bingwebsearch.app.BingWebSearchSample. This maps to
+            The following directory structure:
+            src/main/java/com/bingwebsearch/app/BingWebSearchSample.java.
+          -->
+          <mainClass>com.path.to.your.app.APP_NAME</mainClass>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.0</version>
+        <configuration>
+          <source>1.7</source>
+          <target>1.7</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>attached</goal>
+            </goals>
+            <configuration>
+              <descriptorRefs>
+                <descriptorRef>jar-with-dependencies</descriptorRef>
+              </descriptorRefs>
+              <archive>
+                <manifest>
+                  <!--Your comment
+                    Replace the mainClass with the path to your java application.
+                    For example: com.bingwebsearch.app.BingWebSearchSample.java.
+                    This maps to the following directory structure:
+                    src/main/java/com/bingwebsearch/app/BingWebSearchSample.java.
+                  -->
+                  <mainClass>com.path.to.your.app.APP_NAME.java</mainClass>
+                </manifest>
+              </archive>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
   <dependencies>
     <dependency>
-        <groupId>com.microsoft.azure.cognitiveservices</groupId>
-        <artifactId>azure-cognitiveservices-websearch</artifactId>
-        <version>0.0.1-beta-SNAPSHOT</version>
+      <groupId>com.microsoft.azure</groupId>
+      <artifactId>azure</artifactId>
+      <version>1.9.0</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-net</groupId>
+      <artifactId>commons-net</artifactId>
+      <version>3.3</version>
+    </dependency>
+    <dependency>
+      <groupId>com.microsoft.azure.cognitiveservices</groupId>
+      <artifactId>azure-cognitiveservices-websearch</artifactId>
+      <version>1.0.1</version>
     </dependency>
   </dependencies>
 ```
 
-## <a name="web-search-client"></a>Webový klient vyhledávání
+## <a name="declare-dependencies"></a>Deklarace závislostí
 
-Implementace třídy přidáte importy:
+Otevřete projekt v oblíbeném integrovaném vývojovém prostředí nebo editoru a naimportujte tyto závislosti:
+
+```java
+import com.microsoft.azure.cognitiveservices.search.websearch.BingWebSearchAPI;
+import com.microsoft.azure.cognitiveservices.search.websearch.BingWebSearchManager;
+import com.microsoft.azure.cognitiveservices.search.websearch.models.ImageObject;
+import com.microsoft.azure.cognitiveservices.search.websearch.models.NewsArticle;
+import com.microsoft.azure.cognitiveservices.search.websearch.models.SearchResponse;
+import com.microsoft.azure.cognitiveservices.search.websearch.models.VideoObject;
+import com.microsoft.azure.cognitiveservices.search.websearch.models.WebPage;
 ```
-import com.microsoft.azure.cognitiveservices.websearch.*;
-import com.microsoft.azure.cognitiveservices.websearch.implementation.SearchResponseInner;
-import com.microsoft.azure.cognitiveservices.websearch.implementation.WebSearchAPIImpl;
-import com.microsoft.rest.credentials.ServiceClientCredentials;
-import okhttp3.Interceptor;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+Pokud jste k vytvoření projektu použili Maven, balíček by měl být deklarovaný. Pokud není, deklarujte ho teď. Příklad:
+
+```java
+package com.bingwebsearch.app
 ```
-Implementace `WebSearchAPIImpl` klienta, která vyžaduje instanci `ServiceClientCredentials`:
-```
-public static WebSearchAPIImpl getClient(final String subscriptionKey) {
-    return new WebSearchAPIImpl("https://api.cognitive.microsoft.com/bing/v7.0/",
-            new ServiceClientCredentials() {
-                @Override
-                public void applyCredentialsFilter(OkHttpClient.Builder builder) {
-                    builder.addNetworkInterceptor(
-                            new Interceptor() {
-                                @Override
-                                public Response intercept(Chain chain) throws IOException {
-                                    Request request = null;
-                                    Request original = chain.request();
-                                    // Request customization: add request headers
-                                    Request.Builder requestBuilder = original.newBuilder()
-                                            .addHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
-                                    request = requestBuilder.build();
-                                    return chain.proceed(request);
-                                }
-                            });
-                }
-            });
-}
 
-```
-Hledání výsledků.  Následující metoda vyhledávání pomocí jediného dotazu a "zařízení", Xbox a vytiskne `name`, a `URL` první web, image, zpráv a videí výsledků.
-```
-public static void WebSearchResultTypesLookup(String subscriptionKey)
-{
-    WebSearchAPIImpl client = getClient(subscriptionKey);
+## <a name="declare-the-bingwebsearchsample-class"></a>Deklarace třídy BingWebSearchSample
 
-    try
-    {
-        SearchResponseInner webData = client.webs().search("Yosemite");
-        System.out.println("\r\nSearched for Query# \" Yosemite \"");
+Deklarujte třídu `BingWebSearchSample`. Bude obsahovat většinu kódu, včetně metody `main`.  
 
-        //WebPages
-        if (webData.webPages().value().size() > 0)
-        {
-            // find the first web page
-            WebPage firstWebPagesResult = webData.webPages().value().get(0);
+```java
+public class BingWebSearchSample {
 
-            if (firstWebPagesResult != null)
-            {
-                System.out.println(String.format("Webpage Results#%d", webData.webPages().value().size()));
-                System.out.println(String.format("First web page name: %s ", firstWebPagesResult.name()));
-                System.out.println(String.format("First web page URL: %s ", firstWebPagesResult.url()));
-            }
-            else
-            {
-                System.out.println("Couldn't find web results!");
-            }
-        }
-        else
-        {
-            System.out.println("Didn't see any Web data..");
-        }
-
-        //Images
-        if (webData.images().value().size() > 0)
-        {
-            // find the first image result
-            ImageObject firstImageResult = webData.images().value().get(0);
-
-            if (firstImageResult != null)
-            {
-                System.out.println(String.format("Image Results#%d", webData.images().value().size()));
-                System.out.println(String.format("First Image result name: %s ", firstImageResult.name()));
-                System.out.println(String.format("First Image result URL: %s ", firstImageResult.contentUrl()));
-            }
-            else
-            {
-                System.out.println("Couldn't find first image results!");
-            }
-        }
-        else
-        {
-            System.out.println("Didn't see any image data..");
-        }
-
-        //News
-        if (webData.news().value().size() > 0)
-        {
-            // find the first news result
-            NewsArticle firstNewsResult = webData.news().value().get(0);
-
-            if (firstNewsResult != null)
-            {
-                System.out.println(String.format("News Results#%d", webData.news().value().size()));
-                System.out.println(String.format("First news result name: %s ", firstNewsResult.name()));
-                System.out.println(String.format("First news result URL: %s ", firstNewsResult.url()));
-            }
-            else
-            {
-                System.out.println("Couldn't find any News results!");
-            }
-        }
-        else
-        {
-            System.out.println("Didn't see first news data..");
-        }
-
-        //Videos
-        if (webData.videos() != null && webData.videos().value().size() > 0)
-        {
-            // find the first video result
-            VideoObject firstVideoResult = webData.videos().value().get(0);
-
-            if (firstVideoResult != null)
-            {
-                System.out.println(String.format("Video Results#%s", webData.videos().value().size()));
-                System.out.println(String.format("First Video result name: %s ", firstVideoResult.name()));
-                System.out.println(String.format("First Video result URL: %s ", firstVideoResult.contentUrl()));
-            }
-            else
-            {
-                System.out.println("Couldn't find first video results!");
-            }
-        }
-        else
-        {
-            System.out.println("Didn't see any video data..");
-        }
-    }
-
-    catch (ErrorResponseException ex)
-    {
-        System.out.println("Encountered exception. " + ex.getLocalizedMessage());
-    }
+// The code in the following sections goes here.
 
 }
-
 ```
-Vyhledejte "Nejlepší restaurace v Praze" Zkontrolujte počet výsledků a vytiskne `name` a `URL` první výsledku:
+
+## <a name="construct-a-request"></a>Vytvoření požadavku
+
+Požadavek vytvoří metoda `runSample`, která žije ve třídě `BingWebSearchSample`. Zkopírujte do své aplikace tento kód:
+
+```java
+public static boolean runSample(BingWebSearchAPI client) {
+    /*
+     * This function performs the search.
+     *
+     * @param client instance of the Bing Web Search API client
+     * @return true if sample runs successfully
+     */
+    try {
+        /*
+         * Performs a search based on the .withQuery and prints the name and
+         * url for the first web pages, image, news, and video result
+         * included in the response.
+         */
+        System.out.println("Searched Web for \"Xbox\"");
+        // Construct the request.
+        SearchResponse webData = client.bingWebs().search()
+            .withQuery("Xbox")
+            .withMarket("en-us")
+            .withCount(10)
+            .execute();
+
+// Code continues in the next section...
 ```
-public static void WebResultsWithCountAndOffset(String subscriptionKey)
-{
-    WebSearchAPIImpl client = getClient(subscriptionKey);
 
-    try
-    {
-        SearchResponseInner webData = client.webs().search(
-                "Best restaurants in Seattle", null, null, null, null, null, 10, null, 20, null, "en-us", null,
-                        null, null, SafeSearch.STRICT, null, null, null);
-        System.out.println("\r\nSearched for Query# \" Best restaurants in Seattle \"");
+## <a name="handle-the-response"></a>Zpracování odpovědi
 
-        if (webData.webPages().value().size() > 0)
-        {
-            // find the first web page
-            WebPage firstWebPagesResult = webData.webPages().value().get(0);
+Dále přidáme kód, který parsuje odpověď a vytiskne výsledky. Vytiskne se `name` a `url` první webové stránky, obrázku, článku nebo videa, pokud objekt odpovědi tuto položku obsahuje.
 
-            if (firstWebPagesResult != null)
-            {
-                System.out.println(String.format("Web Results#%d", webData.webPages().value().size()));
-                System.out.println(String.format("First web page name: %s ", firstWebPagesResult.name()));
-                System.out.println(String.format("First web page URL: %s ", firstWebPagesResult.url()));
-            }
-            else
-            {
-                System.out.println("Couldn't find first web result!");
-            }
-        }
-        else
-        {
-            System.out.println("Didn't see any Web data..");
-        }
+```java
+/*
+* WebPages
+* If the search response contains web pages, the first result's name
+* and url are printed.
+*/
+if (webData != null && webData.webPages() != null && webData.webPages().value() != null &&
+        webData.webPages().value().size() > 0) {
+    // find the first web page
+    WebPage firstWebPagesResult = webData.webPages().value().get(0);
+
+    if (firstWebPagesResult != null) {
+        System.out.println(String.format("Webpage Results#%d", webData.webPages().value().size()));
+        System.out.println(String.format("First web page name: %s ", firstWebPagesResult.name()));
+        System.out.println(String.format("First web page URL: %s ", firstWebPagesResult.url()));
+    } else {
+        System.out.println("Couldn't find the first web result!");
     }
-    catch (ErrorResponseException ex)
-    {
-        System.out.println("Encountered exception. " + ex.getLocalizedMessage());
+} else {
+    System.out.println("Didn't find any web pages...");
+}
+/*
+ * Images
+ * If the search response contains images, the first result's name
+ * and url are printed.
+ */
+if (webData != null && webData.images() != null && webData.images().value() != null &&
+        webData.images().value().size() > 0) {
+    // find the first image result
+    ImageObject firstImageResult = webData.images().value().get(0);
+
+    if (firstImageResult != null) {
+        System.out.println(String.format("Image Results#%d", webData.images().value().size()));
+        System.out.println(String.format("First Image result name: %s ", firstImageResult.name()));
+        System.out.println(String.format("First Image result URL: %s ", firstImageResult.contentUrl()));
+    } else {
+        System.out.println("Couldn't find the first image result!");
     }
+} else {
+    System.out.println("Didn't find any images...");
+}
+/*
+ * News
+ * If the search response contains news articles, the first result's name
+ * and url are printed.
+ */
+if (webData != null && webData.news() != null && webData.news().value() != null &&
+        webData.news().value().size() > 0) {
+    // find the first news result
+    NewsArticle firstNewsResult = webData.news().value().get(0);
+    if (firstNewsResult != null) {
+        System.out.println(String.format("News Results#%d", webData.news().value().size()));
+        System.out.println(String.format("First news result name: %s ", firstNewsResult.name()));
+        System.out.println(String.format("First news result URL: %s ", firstNewsResult.url()));
+    } else {
+        System.out.println("Couldn't find the first news result!");
+    }
+} else {
+    System.out.println("Didn't find any news articles...");
 }
 
-```
-Vyhledejte "Microsoft" s filtry odezev přiřazená `news`. Vytisknout podrobnosti první položky zpráv.
-```
-public static void WebSearchWithResponseFilter(String subscriptionKey)
-{
-    WebSearchAPIImpl client = getClient(subscriptionKey);
+/*
+ * Videos
+ * If the search response contains videos, the first result's name
+ * and url are printed.
+ */
+if (webData != null && webData.videos() != null && webData.videos().value() != null &&
+        webData.videos().value().size() > 0) {
+    // find the first video result
+    VideoObject firstVideoResult = webData.videos().value().get(0);
 
-    try
-    {
-        List<AnswerType> responseFilterstrings = new ArrayList<AnswerType>();
-        responseFilterstrings.add(AnswerType.NEWS);
-        SearchResponseInner webData = client.webs().search(
-        "Best restaurants in Seattle", null, null, null, null, null, 10, null, 20, null, "en-us", null,
-                null, responseFilterstrings, SafeSearch.STRICT, null, null, null);
-
-        System.out.println("\\r\\nSearched for Query# \" Microsoft \" with response filters \"news\"");
-
-        //News
-        if (webData.news() != null && webData.news().value().size() > 0)
-        {
-            // find the first news result
-            NewsArticle firstNewsResult = webData.news().value().get(0);
-
-            if (firstNewsResult != null)
-            {
-                System.out.println(String.format("News Results#%d", webData.news().value().size()));
-                System.out.println(String.format("First news result name: %s ", firstNewsResult.name()));
-                System.out.println(String.format("First news result URL: %s ", firstNewsResult.url()));
-            }
-            else
-            {
-                System.out.println("Couldn't find first News results!");
-            }
-        }
-        else
-        {
-            System.out.println("Didn't see any News data..");
-        }
-
+    if (firstVideoResult != null) {
+        System.out.println(String.format("Video Results#%s", webData.videos().value().size()));
+        System.out.println(String.format("First Video result name: %s ", firstVideoResult.name()));
+        System.out.println(String.format("First Video result URL: %s ", firstVideoResult.contentUrl()));
+    } else {
+        System.out.println("Couldn't find the first video result!");
     }
-    catch (ErrorResponseException ex)
-    {
-        System.out.println("Encountered exception. " + ex.getLocalizedMessage());
-    }
-}
-
-```
-Vyhledejte pomocí výrazu dotazu "Niagara spadá", pomocí `answerCount` a `promote` parametry. Vytisknout podrobnosti výsledků.
-```
-public static void WebSearchWithAnswerCountPromoteAndSafeSearch(String subscriptionKey)
-{
-    WebSearchAPIImpl client = getClient(subscriptionKey);
-
-    try
-    {
-        List<AnswerType> promoteAnswertypeStrings = new ArrayList<AnswerType>();
-        promoteAnswertypeStrings.add(AnswerType.VIDEOS);
-        SearchResponseInner webData = client.webs().search(
-            "Niagara Falls", null, null, null, null, null, 10, null, 20, null, "en-us", null,
-            promoteAnswertypeStrings, null, SafeSearch.STRICT, null, null, null);
-        System.out.println("\r\nSearched for Query# \" Niagara Falls \"");
-
-        if (webData.videos().value().size() > 0)
-        {
-            VideoObject firstVideosResult = webData.videos().value().get(0);
-
-            if (firstVideosResult != null)
-            {
-                System.out.println(String.format("Video Results#%d", webData.videos().value().size()));
-                System.out.println(String.format("First Video result name: %s ", firstVideosResult.name()));
-                System.out.println(String.format("First Video result URL: %s ", firstVideosResult.contentUrl()));
-            }
-            else
-            {
-                System.out.println("Couldn't find videos results!");
-            }
-        }
-        else
-        {
-            System.out.println("Didn't see any data..");
-        }
-    }
-    catch (ErrorResponseException ex)
-    {
-        System.out.println("Encountered exception. " + ex.getLocalizedMessage());
-    }
-}
-
-```
-Přidejte předchozích metod do třídy s hlavní funkci chcete kód spustit:
-```
-package javaWebSDK;
-import com.microsoft.azure.cognitiveservices.websearch.*;
-public class webSDK{
-
-    public static void main(String [ ] args) {
-
-        WebSearchResultTypesLookup("YOUR-SUBSCRIPTION-KEY");
-        WebResultsWithCountAndOffset("YOUR-SUBSCRIPTION-KEY");
-        WebSearchWithResponseFilter("YOUR-SUBSCRIPTION-KEY");
-        WebSearchWithAnswerCountPromoteAndSafeSearch("YOUR-SUBSCRIPTION-KEY");
-
-    }
-    // Add methods previoiusly documented.
+} else {
+    System.out.println("Didn't find any videos...");
 }
 ```
-## <a name="next-steps"></a>Další postup
 
-[Ukázky služby cognitive Services Java SDK](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)
+## <a name="declare-the-main-method"></a>Deklarace hlavní metody
+
+V této aplikaci obsahuje hlavní metoda kód, který vytvoří instanci klienta, ověří `subscriptionKey` a volá `runSample`. Než budete pokračovat, ujistěte se, že jste zadali platný klíč předplatného k účtu Azure.
+
+```java
+public static void main(String[] args) {
+    try {
+        // Enter a valid subscription key for your account.
+        final String subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
+        // Instantiate the client.
+        BingWebSearchAPI client = BingWebSearchManager.authenticate(subscriptionKey);
+        // Make a call to the Bing Web Search API.
+        runSample(client);
+    } catch (Exception e) {
+        System.out.println(e.getMessage());
+        e.printStackTrace();
+    }
+}
+```
+
+## <a name="run-the-program"></a>Spuštění programu
+
+Posledním krokem je spuštění programu.
+
+```console
+mvn compile exec:java
+```
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Až projekt dokončíte, nezapomeňte z kódu programu odebrat klíč předplatného.
+
+## <a name="next-steps"></a>Další kroky
+
+> [!div class="nextstepaction"]
+> [Ukázky kognitivních služeb sady Java SDK](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingWebSearch)
+
+## <a name="see-also"></a>Viz také
+
+* [Referenční informace k sadě Azure Java SDK](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/websearch)

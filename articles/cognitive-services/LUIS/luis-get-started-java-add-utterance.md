@@ -1,192 +1,93 @@
 ---
-title: Kurz přidávání promluv do aplikace LUIS pomocí Javy | Microsoft Docs
-description: V tomto kurzu zjistíte, jak volat aplikaci LUIS pomocí Javy.
+title: Rychlý start ke změně modelu a trénování aplikace LUIS pomocí Javy – Azure Cognitive Services | Microsoft Docs
+description: V tomto rychlém startu pro Javu přidáte příklady promluv do aplikace domácí automatizace a budete aplikaci trénovat. Ukázkové promluvy jsou konverzačním textem uživatele namapovaným na záměr. Tím, že poskytnete ukázkové promluvy pro záměry, naučíte službu LUIS, které typy uživatelem zadaného textu patří do kterého záměru.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
-ms.topic: tutorial
-ms.date: 12/13/2017
-ms.author: v-geberr
-ms.openlocfilehash: 5b9c7b90ca96b23fbabfeb1e1d06e4124e65a0dc
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.topic: quickstart
+ms.date: 08/24/2018
+ms.author: diberry
+ms.openlocfilehash: 2554854507d127a7cf3ce016ed38310049b2c958
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266035"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43769232"
 ---
-# <a name="tutorial-add-utterances-to-app-using-java"></a>Kurz: Přidávání promluv do aplikace pomocí Javy 
-V tomto kurzu napíšete program, který do záměru přidá promluvu pomocí rozhraní API pro vytváření v Javě.
+# <a name="quickstart-change-model-using-java"></a>Rychlý start: Změna modelu pomocí Javy 
 
-<!-- green checkmark -->
-> [!div class="checklist"]
-> * Vytvoření projektu konzoly v sadě Visual Studio 
-> * Přidání metody pro volání rozhraní API služby LUIS za účelem přidání promluvy a trénování aplikace
-> * Přidání souboru JSON s ukázkovými promluvami pro záměr BookFlight (Rezervovat let)
-> * Spuštění konzoly a zobrazení stavu trénování pro promluvy
-
-Další informace najdete v technické dokumentaci k rozhraním API pro [přidání ukázkové promluvy do záměru](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c08), [trénování](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c45) a [stav trénování](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c46).
-
-Pro účely tohoto článku potřebujete bezplatný účet [LUIS][LUIS], abyste mohli vytvořit svou aplikaci LUIS.
+[!include[Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Nejnovější verze [**Java/JDK**](http://www.oracle.com/technetwork/java/javase/downloads/index.html) Oracle.
+[!include[Quickstart prerequisites for endpoint](../../../includes/cognitive-services-luis-qs-change-model-prereq.md)]
+* [JDK SE](http://www.oracle.com/technetwork/java/javase/downloads/index.html) (Java Development Kit, Standard Edition)
 * [Knihovna GSON JSON od Googlu](https://github.com/google/gson).
-* **[Klíč pro vytváření](luis-concept-keys.md#authoring-key)** pro službu LUIS. Tento klíč najdete v části Account Settings (Nastavení účtu) na webu [LUIS](luis-reference-regions.md).
-* [**ID stávající aplikace**](./luis-get-started-create-app.md) LUIS. ID aplikace je uvedené na řídicím panelu aplikace. Před spuštěním kódu v souboru `AddUtterances.java` musí existovat aplikace LUIS se záměry a entitami použitými v souboru `utterances.json`. Kód v tomto článku nevytvoří záměry ani entity. Pouze přidá promluvy pro existující záměry a entity. 
-* **ID verze** aplikace, která přijímá promluvy. Výchozí ID je 0.1.
-* Vytvořte nový textový soubor `AddUtterances.java`.
 
-> [!NOTE] 
-> Kompletní soubor `add-utterances.cs` a ukázkový soubor `utterances.json` jsou dostupné v [úložišti **LUIS-Samples** na GitHubu](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/authoring-api-samples/java).
+[!include[Quickstart note about code repository](../../../includes/cognitive-services-luis-qs-change-model-luis-repo-note.md)]
 
+## <a name="example-utterances-json-file"></a>Soubor JSON s ukázkovými promluvami
 
-## <a name="write-the-java-code"></a>Psaní kódu Java
+[!include[Quickstart explanation of example utterance JSON file](../../../includes/cognitive-services-luis-qs-change-model-json-ex-utt.md)]
 
-Přidejte do souboru závislosti Java.
+## <a name="create-quickstart-code"></a>Vytvoření kódu rychlého startu
 
-   [!code-java[Java Dependencies](~/samples-luis/documentation-samples/authoring-api-samples/java/AddUtterances.java?range=31-34 "Java Dependencies")]
+1. Přidejte do souboru s názvem `AddUtterances.java` závislosti Java.
 
-Vytvořte třídu `AddUtterances`.
+   [!code-java[Java Dependencies](~/samples-luis/documentation-samples/quickstarts/change-model/java/AddUtterances.java?range=23-26 "Java Dependencies")]
 
-```Java
-public class AddUtterances {
-    // Insert code here
-}
-```
+2. Vytvořte třídu `AddUtterances`. Tato třída bude obsahovat všechny následující fragmenty kódu.
 
-Tato třída bude obsahovat všechny následující fragmenty kódu.
-
-Přidejte do třídy konstanty LUIS. Zkopírujte následující kód a použijte vlastní klíč pro vytváření, ID aplikace a ID verze.
-
-   [!code-java[LUIS-based IDs](~/samples-luis/documentation-samples/authoring-api-samples/java/AddUtterances.java?range=41-53 "LUIS-based IDs")]
-
-Přidejte metodu pro volání rozhraní API služby LUIS. 
-
-   [!code-java[HTTP request to LUIS](~/samples-luis/documentation-samples/authoring-api-samples/java/AddUtterances.java?range=55-178 "HTTP request to LUIS")]
-
-Přidejte metodu pro odpověď HTTP z rozhraní API služby LUIS.
-
-   [!code-java[HTTP response from LUIS](~/samples-luis/documentation-samples/authoring-api-samples/java/AddUtterances.java?range=180-226 "HTTP response from LUIS")]
-
-
-Přidejte zpracování výjimek. 
-
-   [!code-java[Exception Handling](~/samples-luis/documentation-samples/authoring-api-samples/java/AddUtterances.java?range=228-256 "Exception Handling")]
-
-Přidejte zpracování výstupu/výpisu.
-
-   [!code-java[Add output handling](~/samples-luis/documentation-samples/authoring-api-samples/java/AddUtterances.java?range=258-267 "Add configuration information for adding utterance")]
-
-Přidejte hlavní funkci.
-
-   [!code-java[Add main function](~/samples-luis/documentation-samples/authoring-api-samples/java/AddUtterances.java?range=269-345 "Add main function")]
-
-
-## <a name="specify-utterances-to-add"></a>Určení promluv, které se mají přidat
-Vytvořte soubor `utterances.json` a upravte ho tím, že určíte **pole promluv**, které chcete přidat do aplikace LUIS. Záměr a entity již **musí** být v aplikaci LUIS.
-
-> [!NOTE]
-> Před spuštěním kódu v souboru `AddUtterances.java` musí existovat aplikace LUIS se záměry a entitami použitými v souboru `utterances.json`. Kód v tomto článku nevytvoří záměry ani entity. Pouze přidá promluvy pro existující záměry a entity.
-
-Pole `text` obsahuje text promluvy. Pole `intentName` musí odpovídat názvu záměru v aplikaci LUIS. Pole `entityLabels` je povinné. Pokud nechcete označovat žádné entity, zadejte prázdný seznam, jak je znázorněno v následujícím příkladu.
-
-Pokud seznam entityLabels není prázdný, hodnoty `startCharIndex` a `endCharIndex` musí označovat entitu, na kterou odkazuje pole `entityName`. Oba indexy se počítají od nuly, což znamená, že číslo 6 v horním příkladu označuje písmeno S ve slově Seattle, a ne mezeru před velkým S.
-
-```json
-[
-    {
-        "text": "go to Seattle",
-        "intentName": "BookFlight",
-        "entityLabels": [
-            {
-                "entityName": "Location::LocationTo",
-                "startCharIndex": 6,
-                "endCharIndex": 12
-            }
-        ]
-    },
-    {
-        "text": "book a flight",
-        "intentName": "BookFlight",
-        "entityLabels": []
+    ```Java
+    public class AddUtterances {
+        // Insert code here
     }
-]
-```
+    ```
 
-## <a name="add-an-utterance-from-the-command-line"></a>Přidání promluvy z příkazového řádku
+3. Přidejte do třídy konstanty LUIS. Zkopírujte následující kód a použijte vlastní klíč pro vytváření, ID aplikace a ID verze.
+
+   [!code-java[LUIS-based IDs](~/samples-luis/documentation-samples/quickstarts/change-model/java/AddUtterances.java?range=33-44 "LUIS-based IDs")]
+
+4. Přidejte metodu volání do rozhraní API služby LUIS do třídy AddUtterances. 
+
+   [!code-java[HTTP request to LUIS](~/samples-luis/documentation-samples/quickstarts/change-model/java/AddUtterances.java?range=46-168 "HTTP request to LUIS")]
+
+5. Přidejte metodu volání pro odpověď HTTP z rozhraní API služby LUIS do třídy AddUtterances.
+
+   [!code-java[HTTP response from LUIS](~/samples-luis/documentation-samples/quickstarts/change-model/java/AddUtterances.java?range=170-202 "HTTP response from LUIS")]
+
+6. Přidejte zpracování výjimek do třídy AddUtterances. 
+
+   [!code-java[Exception Handling](~/samples-luis/documentation-samples/quickstarts/change-model/java/AddUtterances.java?range=205-243 "Exception Handling")]
+
+7. Přidejte hlavní funkci do třídy AddUtterances.
+
+   [!code-java[Add main function](~/samples-luis/documentation-samples/quickstarts/change-model/java/AddUtterances.java?range=245-278 "Add main function")]
+
+## <a name="build-code"></a>Vytvoření kódu
 
 Zkompilujte AddUtterance se závislostmi.
 
-```
+```CMD
 > javac -classpath gson-2.8.2.jar AddUtterances.java
 ```
 
+## <a name="run-code"></a>Spuštění kódu
 Zavoláním `AddUtterance` bez argumentů se do aplikace přidají promluvy LUIS, ale nepoužijí se k trénování.
-````
+
+```CMD
 > java -classpath .;gson-2.8.2.jar AddUtterances
-````
-
-Tato ukázka vytvoří soubor `results.json`, který bude obsahovat výsledky volání rozhraní API pro přidávání promluv. Pole `response` obsahuje promluvy, které se přidaly, v následujícím formátu. Hodnota `hasError` je false, což značí, že se promluva přidala.  
-
-```json
-    "response": [
-        {
-            "value": {
-                "UtteranceText": "go to seattle",
-                "ExampleId": -5123383
-            },
-            "hasError": false
-        },
-        {
-            "value": {
-                "UtteranceText": "book a flight",
-                "ExampleId": -169157
-            },
-            "hasError": false
-        }
-    ]
 ```
 
-## <a name="add-an-utterance-and-train-from-the-command-line"></a>Přidání promluvy a trénování z příkazového řádku
-Zavoláním `add-utterance` s argumentem `-train` odešlete požadavek na trénování. 
+Tento příkazový řádek ukazuje výsledky volání rozhraní API pro přidávání promluv. 
 
-````
-> java -classpath .;gson-2.8.2.jar AddUtterances -train
-````
-
-> [!NOTE]
-> Duplicitní promluvy se nepřidají znovu, ale ani nezpůsobí chybu. Pole `response` bude obsahovat ID původní promluvy.
-
-Když zavoláte aplikaci s argumentem `-train`, vytvoří se soubor `training-results.json`, který značí úspěšné zařazení požadavku na trénování aplikace LUIS do fronty. 
-
-Následující příklad ukazuje výsledek úspěšného požadavku na trénování:
-```json
-{
-    "request": null,
-    "response": {
-        "statusId": 9,
-        "status": "Queued"
-    }
-}
-```
-
-Po zařazení požadavku na trénování do fronty může dokončení trénování chvíli trvat.
-
-## <a name="get-training-status-from-the-command-line"></a>Získání stavu trénování z příkazového řádku
-Zavoláním aplikace s argumentem `-status` zkontrolujte stav trénování a zapište podrobnosti o stavu do souboru.
-
-````
-> java -classpath .;gson-2.8.2.jar AddUtterances -status
-````
+[!include[Quickstart response from API calls](../../../includes/cognitive-services-luis-qs-change-model-json-results.md)]
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Jakmile budete s kurzem hotovi, odeberte sadu Visual Studio a konzolovou aplikaci, pokud už je nepotřebujete. 
+Jakmile tento rychlý start dokončíte, odeberte všechny soubory, které jste v něm vytvořili. 
 
 ## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"] 
 > [Sestavení aplikace LUIS prostřednictvím kódu programu](luis-tutorial-node-import-utterances-csv.md) 
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

@@ -1,5 +1,5 @@
 ---
-title: Vytvoření první funkce v Azure pomocí Javy a Mavenu | Dokumentace Microsoftu
+title: Vytvoření první funkce v Azure pomocí Javy a Mavenu | Microsoft Docs
 description: Vytvořte a publikujte do Azure jednoduchou funkci aktivovanou protokolem HTTP pomocí Javy a Mavenu.
 services: functions
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.workload: na
 ms.date: 08/10/2018
 ms.author: routlaw, glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: aeb00bf55c578f61e5e1edbaab11c7773b9eab94
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 3840d8d1e18e73c1f08c450859032c07e441cff2
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42024226"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43699171"
 ---
 # <a name="create-your-first-function-with-java-and-maven-preview"></a>Vytvoření první funkce pomocí Javy a Mavenu (Preview)
 
@@ -175,11 +175,37 @@ curl -w '\n' -d AzureFunctionsTest https://fabrikam-functions-20170920120101928.
 Hello, AzureFunctionsTest
 ```
 
+## <a name="make-changes-and-redeploy"></a>Provedení změn a opětovné nasazení
+
+Abyste upravili text vrácený aplikací funkcí, upravte ve vygenerovaném projektu zdrojový soubor `src/main.../Function.java`. Změňte tento řádek:
+
+```java
+return request.createResponse(200, "Hello, " + name);
+```
+
+Na následující:
+
+```java
+return request.createResponse(200, "Hi, " + name);
+```
+
+Změny uložte a stejně jako předtím proveďte opětovné nasazení spuštěním příkazu `azure-functions:deploy`. Aplikace funkcí se aktualizuje a tento požadavek:
+
+```bash
+curl -w '\n' -d AzureFunctionsTest https://fabrikam-functions-20170920120101928.azurewebsites.net/api/HttpTrigger-Java
+```
+
+Bude mít aktualizovaný výstup:
+
+```Output
+Hi, AzureFunctionsTest
+```
+
 ## <a name="next-steps"></a>Další kroky
 
 Vytvořili jste aplikaci funkcí v Javě s jednoduchým triggerem HTTP a nasadili jste ji do služby Azure Functions.
 
 - V [příručce pro vývojáře funkcí v Javě](functions-reference-java.md) najdete další informace o vývoji funkcí v Javě.
 - Do svého projektu můžete přidat další funkce s jinými triggery s použitím cíle Maven `azure-functions:add`.
-- Funkce můžete ladit místně pomocí Visual Studio Code. S nainstalovaným [balíčkem rozšíření Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack) a projektem Functions otevřeným ve Visual Studio Code [připojte ladicí program](https://code.visualstudio.com/Docs/editor/debugging#_launch-configurations) k portu 5005. Pak v editoru nastavte zarážku a aktivujte vaši funkci, zatímco je místně spuštěná: ![Ladění funkcí ve Visual Studio Code](media/functions-create-java-maven/vscode-debug.png).
-- Funkce můžete ladit vzdáleně pomocí Visual Studio Code. Pokyny najdete v dokumentaci popisující [psaní aplikací bez serveru v Javě](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud).
+- Funkce můžete psát a ladit místně pomocí nástrojů [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions), [IntelliJ](functions-create-maven-intellij.md) a [Eclipse](functions-create-maven-eclipse.md). 
+- Funkce ladění můžete do Azure nasadit pomocí editoru Visual Studio Code. Pokyny najdete v dokumentaci editoru Visual Studio Code o [aplikacích bez serveru v Javě](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud).

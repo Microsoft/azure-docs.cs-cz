@@ -1,39 +1,39 @@
 ---
-title: Použijte moduly Terraform k vytvoření clusteru virtuálních počítačů v Azure
-description: Další informace o použití modulů Terraform k vytvoření virtuálního počítače clusteru systému Windows v Azure
-keywords: terraform, devops, virtuálního počítače, sítě, moduly
-author: rloutlaw
-ms.service: virtual-machines-linux
-ms.topic: article
-ms.workload: infrastructure
+title: Použití modulů Terraformu k vytvoření clusteru virtuálních počítačů v Azure
+description: Zjistěte, jak použít moduly Terraformu k vytvoření clusteru virtuálních počítačů s Windows v Azure.
+services: terraform
+ms.service: terraform
+keywords: terraform, devops, virtuální počítač, síť, moduly
+author: tomarcher
+manager: jeconnoc
+ms.author: tarcher
+ms.topic: tutorial
 ms.date: 10/19/2017
-ms.custom: devops
-ms.author: routlaw
-ms.openlocfilehash: e33aef252413eeb243b03543f171d5f1e2385b48
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
-ms.translationtype: MT
+ms.openlocfilehash: 03c09e190fce9cbbd98cea3565dd2437f79dadf1
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29952213"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666629"
 ---
-# <a name="create-a-vm-cluster-with-terraform-using-the-module-registry"></a>Vytvoření clusteru s podporou virtuálních počítačů s Terraform pomocí klíče registru modulu
+# <a name="create-a-vm-cluster-with-terraform-using-the-module-registry"></a>Vytvoření clusteru virtuálních počítačů pomocí Terraformu s využitím registru modulů
 
-Tento článek vás provede procesem vytvoření clusteru s podporou malých virtuálních počítačů s Terraform [Azure výpočetní modulu](https://registry.terraform.io/modules/Azure/compute/azurerm/1.0.2). V tomto kurzu se naučíte: 
+Tento článek vás provede vytvořením malého clusteru virtuálních počítačů pomocí [výpočetního modulu Terraform Azure](https://registry.terraform.io/modules/Azure/compute/azurerm/1.0.2). V tomto kurzu se naučíte: 
 
 > [!div class="checklist"]
-> * Nastavení ověřování s Azure
-> * Vytvoření šablony Terraform
-> * Vizualizace změny s plánem
+> * Nastavit ověřování pomocí Azure
+> * Vytvořit šablonu Terraformu
+> * Vizualizovat změny pomocí plánu
 > * Použít konfiguraci k vytvoření clusteru virtuálních počítačů
 
-Další informace o Terraform najdete v tématu [Terraform dokumentaci](https://www.terraform.io/docs/index.html).
+Další informace o Terraformu najdete v [dokumentaci Terraformu](https://www.terraform.io/docs/index.html).
 
-## <a name="set-up-authentication-with-azure"></a>Nastavení ověřování s Azure
+## <a name="set-up-authentication-with-azure"></a>Nastavení ověřování pomocí Azure
 
 > [!TIP]
-> Pokud jste [použití proměnných prostředí Terraform](/azure/virtual-machines/linux/terraform-install-configure#set-environment-variables) nebo spustit tomto kurzu [prostředí cloudu Azure](/azure/cloud-shell/overview), tento krok přeskočit.
+> Pokud [používáte proměnné prostředí nástroje Terraform](/azure/virtual-machines/linux/terraform-install-configure#set-environment-variables) nebo tento kurz spouštíte ve službě [Azure Cloud Shell](/azure/cloud-shell/overview), tento krok přeskočte.
 
- Zkontrolujte [Terraform instalovat a konfigurovat přístup k Azure](/azure/virtual-machines/linux/terraform-install-configure) k vytvoření objektu služby Azure. Použití tohoto objektu služby k naplnění nový soubor `azureProviderAndCreds.tf` v prázdného adresáře s následujícím kódem:
+ Projděte si článek o [instalaci Terraformu a konfiguraci přístupu k Azure](/azure/virtual-machines/linux/terraform-install-configure) a vytvořte objekt služby Azure. Tento objekt služby použijte k naplnění nového souboru `azureProviderAndCreds.tf` v prázdném adresáři následujícím kódem:
 
 ```tf
 variable subscription_id {}
@@ -51,7 +51,7 @@ provider "azurerm" {
 
 ## <a name="create-the-template"></a>Vytvoření šablony
 
-Vytvořte novou šablonu Terraform s názvem `main.tf` následujícím kódem:
+Pomocí následujícího kódu vytvořte novou šablonu Terraform s názvem `main.tf`:
 
 ```tf
 module mycompute {
@@ -85,24 +85,24 @@ output "vm_private_ips" {
 }
 ```
 
-Spustit `terraform init` ve vašem adresáři konfigurace. Používáte verzi Terraform alespoň 0.10.6 uvádí následující výstup:
+V adresáři konfigurace spusťte `terraform init`. Pokud používáte Terraform alespoň ve verzi 0.10.6, zobrazí se následující výstup:
 
-![Init – Terraform](media/terraformInitWithModules.png)
+![Příkaz terraform init](media/terraformInitWithModules.png)
 
-## <a name="visualize-the-changes-with-plan"></a>Vizualizace změny s plánem
+## <a name="visualize-the-changes-with-plan"></a>Vizualizace změn pomocí plánu
 
-Spustit `terraform plan` náhled infrastrukturu virtuálních počítačů, které jsou vytvořené pomocí šablony.
+Spusťte `terraform plan`, abyste si zobrazili náhled infrastruktury virtuálního počítače, kterou vytvořila šablona.
 
-![Plán Terraform](media/terraform-create-vm-cluster-with-infrastructure/terraform-plan.png)
+![Příkaz terraform plan](media/terraform-create-vm-cluster-with-infrastructure/terraform-plan.png)
 
 
-## <a name="create-the-virtual-machines-with-apply"></a>Vytvoření virtuálních počítačů s použít
+## <a name="create-the-virtual-machines-with-apply"></a>Vytvoření virtuálních počítačů pomocí příkazu apply
 
-Spustit `terraform apply` ke zřízení virtuálních počítačů v Azure.
+Virtuální počítače v Azure zřídíte spuštěním příkazu `terraform apply`.
 
-![Použít Terraform](media/terraform-create-vm-cluster-with-infrastructure/terraform-apply.png)
+![Příkaz terraform apply](media/terraform-create-vm-cluster-with-infrastructure/terraform-apply.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-- Procházet seznam [Azure Terraform moduly](https://registry.terraform.io/modules/Azure)
-- Vytvoření [škálovací sady virtuálních počítačů s Terraform](terraform-create-vm-scaleset-network-disks-hcl.md)
+- Projděte si seznam [modulů Terraformu pro Azure](https://registry.terraform.io/modules/Azure).
+- Vytvořte [pomocí Terraformu škálovací sadu virtuálních počítačů](terraform-create-vm-scaleset-network-disks-hcl.md).

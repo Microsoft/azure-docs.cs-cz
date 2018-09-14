@@ -1,0 +1,59 @@
+---
+title: Souhrn rychlých startů k počítačovému zpracování obrazu | Microsoft Docs
+titleSuffix: Microsoft Cognitive Services
+description: V těchto rychlých startech analyzujete obrázek, vytvoříte miniaturu obrázku a extrahujete tištěný a ručně psaný text pomocí počítačového zpracování obrazu ve službách Cognitive Services.
+services: cognitive-services
+author: noellelacharite
+manager: nolachar
+ms.service: cognitive-services
+ms.component: computer-vision
+ms.topic: quickstart
+ms.date: 08/28/2018
+ms.author: v-deken
+ms.openlocfilehash: 94424de3f175e82cf8490bad98f4a775761979e4
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43769330"
+---
+# <a name="quickstart-summary"></a>Rychlý start: Souhrn
+
+Tyto rychlé starty obsahují informace a ukázky kódu, které vám pomůžou rychle začít používat službu počítačového zpracování obrazu.
+
+Ukázky provádí přímé volání HTTP do rozhraní API pro počítačové zpracování obrazu. V části *rychlých startů sad SDK* najdete ukázky použití klientských knihoven počítačového zpracování obrazu, se kterými můžete snadno využívat volání HTTP.
+
+Pokud chcete rychle vyzkoušet rozhraní API pro počítačové zpracování obrazu, vyzkoušejte [testovací konzolu Open API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console).
+
+Službu počítačového zpracování obrazu můžete použít k provedení následujících úkolů:
+
+* Analýza vzdáleného obrázku
+* Analýza místního obrázku
+* Rozpoznání celebrit a památek (doménové modely)
+* Inteligentní vygenerování miniatury
+* Rozpoznání a extrakce tištěného textu (OCR) z obrázku
+* Rozpoznání a extrakce ručně psaného textu z obrázku
+
+Kód jednotlivých ukázek je podobný. Zdůrazňují ale různé funkce počítačového zpracování obrazu společně s různými technikami pro výměnu dat se službou, například:
+
+* _Vygenerování miniatury_ vrátí obrázek jako pole bajtů v textu odpovědi.
+* _Analýza místního obrázku_ vyžaduje, aby obrázek byl součástí žádosti jako pole bajtů.
+* _Extrakce ručně psaného textu_ vyžaduje k získání textu dvě volání.
+
+## <a name="summary"></a>Souhrn
+
+| Rychlý start               | Parametry žádosti                          | Odpověď          |
+| ------------------------ | ------------------------------------------- | ----------------  |
+| Analýza vzdáleného obrázku   | visualFeatures=Categories,Description,Color | Řetězec ve formátu JSON       |
+| Analýza místního obrázku    | data=image_data (pole bajtů)                | Řetězec ve formátu JSON       |
+| Rozpoznání celebrit       | model=celebrities                           | Řetězec ve formátu JSON       |
+| Vytvoření miniatury     | width=200&height=150&smartCropping=true     | pole bajtů        |
+| Extrakce tištěného textu     | language=unk&detectOrientation=true         | Řetězec ve formátu JSON       |
+| Extrakce rukou psaného textu | handwriting=true                            | URL, řetězec JSON  |
+
+## <a name="next-steps"></a>Další kroky
+
+Prozkoumejte rozhraní API pro počítačové zpracování obrazu používané pro analýzu obrázku, zjišťování celebrit a památek, vytvoření miniatury a extrahování tištěného a ručně psaného textu.
+
+> [!div class="nextstepaction"]
+> [Prozkoumat rozhraní API pro počítačové zpracování obrazu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)

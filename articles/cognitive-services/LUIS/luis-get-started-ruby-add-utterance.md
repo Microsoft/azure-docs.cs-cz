@@ -1,117 +1,79 @@
 ---
-title: Kurz přidávání promluv do aplikace LUIS pomocí Ruby | Microsoft Docs
-description: V tomto kurzu zjistíte, jak volat aplikaci LUIS pomocí Ruby.
+title: Rychlý start ke změně modelu a trénování aplikace LUIS pomocí Ruby – Azure Cognitive Services | Microsoft Docs
+description: V tomto rychlém startu pro Ruby přidáte příklady promluv do aplikace domácí automatizace a budete aplikaci trénovat. Ukázkové promluvy jsou konverzačním textem uživatele namapovaným na záměr. Tím, že poskytnete ukázkové promluvy pro záměry, naučíte službu LUIS, které typy uživatelem zadaného textu patří do kterého záměru.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
-ms.topic: tutorial
-ms.date: 12/13/2017
-ms.author: v-geberr
-ms.openlocfilehash: 7a470fd551a58978e6f2be0450a2e2a6cd471fc4
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.topic: quickstart
+ms.date: 08/24/2018
+ms.author: diberry
+ms.openlocfilehash: 4df6352c140328b93044fd2340fb7c46d44e1b04
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266052"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43769221"
 ---
-# <a name="tutorial-add-utterances-to-app-using-ruby"></a>Kurz: Přidávání promluv do aplikace pomocí Ruby 
-V tomto kurzu napíšete program, který do záměru přidá promluvu pomocí rozhraní API pro vytváření v Ruby.
+# <a name="quickstart-change-model-using-ruby"></a>Rychlý start: Změna modelu pomocí Ruby
 
-<!-- green checkmark -->
-> [!div class="checklist"]
-> * Vytvoření projektu konzoly v sadě Visual Studio 
-> * Přidání metody pro volání rozhraní API služby LUIS za účelem přidání promluvy a trénování aplikace
-> * Přidání souboru JSON s ukázkovými promluvami pro záměr BookFlight (Rezervovat let)
-> * Spuštění konzoly a zobrazení stavu trénování pro promluvy
-
-Další informace najdete v technické dokumentaci k rozhraním API pro [přidání ukázkové promluvy do záměru](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c08), [trénování](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c45) a [stav trénování](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c46).
-
-Pro účely tohoto článku potřebujete bezplatný účet [LUIS][LUIS], abyste mohli vytvořit svou aplikaci LUIS.
+[!include[Quickstart introduction for change model](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
+[!include[Quickstart prerequisites for changing model](../../../includes/cognitive-services-luis-qs-change-model-prereq.md)]
 * [Ruby](http://rubyinstaller.org/) 
-* **[Klíč pro vytváření](luis-concept-keys.md#authoring-key)** pro službu LUIS. Tento klíč najdete v části Account Settings (Nastavení účtu) na webu [LUIS](luis-reference-regions.md).
-* [**ID stávající aplikace**](./luis-get-started-create-app.md) LUIS. ID aplikace je uvedené na řídicím panelu aplikace. Před spuštěním kódu v souboru `add-utterances.rb` musí existovat aplikace LUIS se záměry a entitami použitými v souboru `utterances.json`. Kód v tomto článku nevytváří záměry ani entity. Pouze přidává promluvy pro existující záměry a entity. 
-* **ID verze** aplikace, která přijímá promluvy. Výchozí ID je 0.1.
-* Ve VSCode vytvořte nový soubor `add-utterances.rb`.
+* [Visual Studio Code](https://code.visualstudio.com/)
 
-> [!NOTE] 
-> Kompletní soubor `add-utterances.cs` a ukázkový soubor `utterances.json` jsou dostupné v [úložišti **LUIS-Samples** na GitHubu](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/authoring-api-samples/ruby/).
+[!include[Code is available in LUIS-Samples Github repo](../../../includes/cognitive-services-luis-qs-change-model-luis-repo-note.md)]
 
+## <a name="example-utterances-json-file"></a>Soubor JSON s ukázkovými promluvami
 
-## <a name="write-the-ruby-code"></a>Psaní kódu Ruby
+[!include[Quickstart explanation of example utterance JSON file](../../../includes/cognitive-services-luis-qs-change-model-json-ex-utt.md)]
 
-Přidejte do souboru závislosti.
+## <a name="create-quickstart-code"></a>Vytvoření kódu rychlého startu 
 
-   [!code-ruby[Ruby and LUIS Dependencies](~/samples-luis/documentation-samples/authoring-api-samples/ruby/add-utterances.rb?range=1-28 "Ruby and LUIS Dependencies")]
+Přidejte závislosti do souboru s názvem `add-utterances.rb`.
+
+   [!code-ruby[Ruby and LUIS Dependencies](~/samples-luis/documentation-samples/quickstarts/change-model/ruby/add-utterances.rb?range=1-21 "Ruby and LUIS Dependencies")]
 
 Přidejte požadavek GET sloužící k získání stavu trénování.
 
-   [!code-ruby[SendGet](~/samples-luis/documentation-samples/authoring-api-samples/ruby/add-utterances.rb?range=30-40 "SendGet")]
+   [!code-ruby[SendGet](~/samples-luis/documentation-samples/quickstarts/change-model/ruby/add-utterances.rb?range=23-33 "SendGet")]
 
 Přidejte požadavek POST sloužící k vytváření promluv nebo zahájení trénování. 
 
-   [!code-ruby[SendPost](~/samples-luis/documentation-samples/authoring-api-samples/ruby/add-utterances.rb?range=42-54 "SendPost")]
+   [!code-ruby[SendPost](~/samples-luis/documentation-samples/quickstarts/change-model/ruby/add-utterances.rb?range=35-47 "SendPost")]
 
 Přidejte funkci `AddUtterances`.
 
-   [!code-ruby[AddUtterances method](~/samples-luis/documentation-samples/authoring-api-samples/ruby/add-utterances.rb?range=56-61 "AddUtterances method")]
+   [!code-ruby[AddUtterances method](~/samples-luis/documentation-samples/quickstarts/change-model/ruby/add-utterances.rb?range=49-54 "AddUtterances method")]
 
 
 Přidejte funkci `Train`. 
 
-   [!code-ruby[Train](~/samples-luis/documentation-samples/authoring-api-samples/ruby/add-utterances.rb?range=63-69 "Train")]
+   [!code-ruby[Train](~/samples-luis/documentation-samples/quickstarts/change-model/ruby/add-utterances.rb?range=56-62 "Train")]
 
 Přidejte funkci `Status`.
 
-   [!code-ruby[Status](~/samples-luis/documentation-samples/authoring-api-samples/ruby/add-utterances.rb?range=71-75 "Status")]
+   [!code-ruby[Status](~/samples-luis/documentation-samples/quickstarts/change-model/ruby/add-utterances.rb?range=64-68 "Status")]
 
 Pokud chcete spravovat argumenty, přidejte hlavní kód.
 
-   [!code-ruby[Main code](~/samples-luis/documentation-samples/authoring-api-samples/ruby/add-utterances.rb?range=77-93 "Main code")]
+   [!code-ruby[Main code](~/samples-luis/documentation-samples/quickstarts/change-model/ruby/add-utterances.rb?range=70-72 "Main code")]
 
-## <a name="specify-utterances-to-add"></a>Určení promluv, které se mají přidat
-Vytvořte soubor `utterances.json` a upravte ho tím, že určíte **pole promluv**, které chcete přidat do aplikace LUIS. Záměr a entity již **musí** být v aplikaci LUIS.
-
-> [!NOTE]
-> Před spuštěním kódu v souboru `add-utterances.rb` musí existovat aplikace LUIS se záměry a entitami použitými v souboru `utterances.json`. Kód v tomto článku nevytváří záměry ani entity. Pouze přidává promluvy pro existující záměry a entity.
-
-Pole `text` obsahuje text promluvy. Pole `intentName` musí odpovídat názvu záměru v aplikaci LUIS. Pole `entityLabels` je povinné. Pokud nechcete označovat žádné entity, zadejte prázdný seznam, jak je znázorněno v následujícím příkladu:
-
-Pokud seznam entityLabels není prázdný, hodnoty `startCharIndex` a `endCharIndex` musí označovat entitu, na kterou odkazuje pole `entityName`. Oba indexy se počítají od nuly, což znamená, že číslo 6 v horním příkladu označuje písmeno S ve slově Seattle, a ne mezeru před velkým S.
-
-```json
-[
-    {
-        "text": "go to Seattle",
-        "intentName": "BookFlight",
-        "entityLabels": [
-            {
-                "entityName": "Location::LocationTo",
-                "startCharIndex": 6,
-                "endCharIndex": 12
-            }
-        ]
-    },
-    {
-        "text": "book a flight",
-        "intentName": "BookFlight",
-        "entityLabels": []
-    }
-]
-```
-
-## <a name="add-an-utterance-from-the-command-line"></a>Přidání promluvy z příkazového řádku
+## <a name="run-code"></a>Spuštění kódu
 
 Spusťte aplikaci z příkazového řádku s Ruby.
 
-Zavoláním souboru `add-utterances.rb` pouze s argumentem utterance.json se přidají nové promluvy, ale nepoužijí se k trénování služby LUIS.
-````
-> ruby add-utterances.rb ./utterances.json
-````
+### <a name="add-an-utterance-from-the-command-line"></a>Přidání promluvy z příkazového řádku
+
+Volání `add-utterances.rb` přidá promluvy, trénuje a získá stav školení.
+
+```CMD
+> ruby add-utterances.rb 
+```
 
 Tento výsledek ukazuje výsledky volání rozhraní API pro přidávání promluv. Pole `response` obsahuje promluvy, které se přidaly, v následujícím formátu. Hodnota `hasError` je false, což značí, že se promluva přidala.  
 
@@ -134,35 +96,7 @@ Tento výsledek ukazuje výsledky volání rozhraní API pro přidávání proml
     ]
 ```
 
-## <a name="add-an-utterance-and-train-from-the-command-line"></a>Přidání promluvy a trénování z příkazového řádku
-Zavoláním add-utterance s argumentem `-train` odešlete požadavek na trénování.
-
-````
-> ruby add-utterances.rb ./utterances.json -train
-````
-
-> [!NOTE]
-> Duplicitní promluvy se nepřidají znovu, ale ani nezpůsobí chybu. Pole `response` bude obsahovat ID původní promluvy.
-
-Následující příklad ukazuje výsledek úspěšného požadavku na trénování:
-```json
-{
-    "request": null,
-    "response": {
-        "statusId": 9,
-        "status": "Queued"
-    }
-}
-```
-
-Po zařazení požadavku na trénování do fronty může dokončení trénování chvíli trvat.
-
-## <a name="get-training-status-from-the-command-line"></a>Získání stavu trénování z příkazového řádku
-Zavoláním ukázky s argumentem `-status` zkontrolujte stav trénování.
-
-````
-> ruby add-utterances.rb ./utterances.json -status
-````
+Další odpověď zobrazí trénování ve frontě. Další odpověď pak zobrazí stav jednotlivých záměrů. 
 
 ```
 Requested training status.
@@ -261,10 +195,8 @@ Requested training status.
 ```
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Jakmile budete s kurzem hotovi, odeberte sadu Visual Studio a konzolovou aplikaci, pokud už je nepotřebujete.
+Jakmile tento rychlý start dokončíte, odeberte všechny soubory, které jste v něm vytvořili. 
 
 ## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"] 
 > [Sestavení aplikace LUIS prostřednictvím kódu programu](luis-tutorial-node-import-utterances-csv.md)
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

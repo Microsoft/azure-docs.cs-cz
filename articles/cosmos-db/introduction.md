@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 04/08/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 488ec66eb485761d484e305c298dfb9117745a42
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: b9c4c2595bb7d5347397bff95c90fbdc91902bcd
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39145277"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43696444"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Vítá vás Azure Cosmos DB
 
@@ -40,7 +40,7 @@ Azure Cosmos DB jakožto globálně distribuovaná databázová služba s více 
         * [SQL API:](sql-api-introduction.md) Databázový stroj JSON bez schématu s bohatými možnostmi dotazování SQL.
         * [MongoDB API](mongodb-introduction.md): Masivně škálovatelné rozhraní *MongoDB jako služba* s využitím platformy Azure Cosmos DB. Kompatibilní se stávajícími knihovnami, ovladači, nástroji a aplikacemi MongoDB.
         * [Cassandra API](cassandra-introduction.md): Globálně distribuovatelné rozhraní Cassandra jako služba s využitím platformy Azure Cosmos DB. Kompatibilní se stávajícími knihovnami, ovladači, nástroji a aplikacemi [Apache Cassandra](https://cassandra.apache.org/).
-        * [Gremlin API](graph-introduction.md): Plně spravovaná, horizontálně škálovatelná služba databáze grafů usnadňující vytváření a spouštění aplikací, které pracují s vysoce propojenými datovými sadami podporujícími rozhraní Open Graph API (na základě [specifikace Apache TinkerPop](http://tinkerpop.apache.org/), Apache Gremlin).
+        * [Gremlin API](graph-introduction.md): Plně spravovaná, horizontálně škálovatelná služba databáze grafů usnadňující vytváření a spouštění aplikací, které pracují s vysoce propojenými datovými sadami podporujícími rozhraní Open Gremlin API (na základě [specifikace Apache TinkerPop](http://tinkerpop.apache.org/), Apache Gremlin).
         * [Table API](table-introduction.md): Databázová služba pro páry klíč-hodnota vytvořená pro poskytování prémiových možností (například automatické indexování, garantovaná nízká latence, globální distribuce) existujícím aplikacím Azure Table Storage, a to bez nutnosti jakýchkoli změn těchto aplikací.
         * Další datové modely a rozhraní API se připravují.
 

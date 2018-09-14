@@ -1,5 +1,5 @@
 ---
-title: Zabezpečení trezoru klíčů | Dokumentace Microsoftu
+title: Zabezpečení trezoru klíčů | Microsoft Docs
 description: Spravujte přístupová oprávnění pro trezor klíčů pro správu trezorů, klíčů a tajných klíčů. Model ověřování a autorizace pro trezor klíčů a jak trezor klíčů zabezpečit
 services: key-vault
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 05/10/2017
+ms.date: 08/31/2018
 ms.author: ambapat
-ms.openlocfilehash: df577222fb8f9d13bd33c5705e6234362519d351
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 9b8b0da6e1572ab79ffb369497f64aad2cd249b9
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41920292"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43343458"
 ---
 # <a name="secure-your-key-vault"></a>Zabezpečení trezoru klíčů
 Azure Key Vault je cloudová služba, která chrání šifrovací klíče a tajné klíče (například certifikáty, připojovací řetězce a hesla) a pro vaše cloudové aplikace. Jelikož tato data jsou citlivá a zcela klíčová pro vaši obchodní (i jinou) činnost, je na místě zabezpečit přístup k trezorům klíčů tak, aby k nim mohli přistupovat jen autorizované aplikace a autorizovaní uživatelé. Tento článek představuje model přístupu k trezoru klíčů, vysvětluje ověření a autorizaci a na příkladu názorně popisuje, jak lze zabezpečit přístup k trezoru klíčů pro vaše cloudové aplikace.
@@ -94,8 +94,8 @@ Zásady přístupu trezoru klíčů udělují odděleně oprávnění pro klíč
 
 > [!IMPORTANT]
 > Zásady přístupu trezoru klíčů se aplikuj a úrovni trezoru. Když má například uživatel oprávnění vytvářet a odstraňovat klíče, může tyto operace provádět na všech klíčích v daném trezoru klíčů.
-> 
-> 
+
+Kromě zásad přístupu můžete přístup k rovině dat omezit [koncovými body služby Virtual Network pro Azure Key Vault](key-vault-overview-vnet-service-endpoints.md) tím, že nakonfigurujete [brány firewall a pravidla virtuální sítě](key-vault-network-security.md) a tím přidáte další vrstvu zabezpečení.
 
 ## <a name="example"></a>Příklad
 Řekněme, že vyvíjíte aplikaci, která používá certifikát pro SSL, službu Azure Storage k ukládání dat a používá 2048bitový klíč RSA pro podpisové operace. A tato aplikace běží ve virtuálním počítači (nebo ve škálovací sadě virtuálních počítačů). Můžete použít trezor klíčů, ve kterém budou uloženy všechny tajné klíče aplikace, a použít tento trezor klíčů k uložení zaváděcího certifikátu, který aplikace používá k ověření v Azure Active Directory.
@@ -201,8 +201,8 @@ Tento příklad znázorňuje jednoduchý scénář. Reálné scénáře v praxi 
 
 > [!NOTE]
 > Poznámka: Tento příklad ukazuje, jak bude přístup k trezoru klíčů uzamčen v produkčním prostředí. Vývojáři by měli mít vedle toho vlastní předplatné nebo skupinu prostředků, ve kterých budou mít oprávnění k plné správě svých trezorů, virtuálních počítačů a účtů úložiště při vývoji aplikace.
-> 
-> 
+
+Důrazně doporučujeme ještě více zabezpečit přístup k trezoru klíčů tím, že [pro Key Vault nakonfigurujete brány firewall a virtuální sítě](key-vault-network-security.md).
 
 ## <a name="resources"></a>Zdroje a prostředky
 * [Řízení přístupu na základě role v Azure Active Directory](../role-based-access-control/role-assignments-portal.md)
@@ -243,6 +243,8 @@ Tento příklad znázorňuje jednoduchý scénář. Reálné scénáře v praxi 
   Odkazy na referenční dokumentaci pro rutiny PowerShell na správu zásad přístupu trezoru klíčů.
 
 ## <a name="next-steps"></a>Další kroky
+[Konfigurace bran firewall a virtuálních sítí pro Key Vault](key-vault-network-security.md)
+
 Úvodní kurz pro správce najdete v tématu [Začínáme s Azure Key Vault](key-vault-get-started.md).
 
 Další informace o protokolování využití trezoru klíčů najdete v tématu [Protokolování Azure Key Vault](key-vault-logging.md).

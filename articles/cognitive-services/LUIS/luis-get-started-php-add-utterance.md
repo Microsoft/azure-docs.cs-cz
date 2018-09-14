@@ -1,118 +1,81 @@
 ---
-title: Kurz přidávání promluv do aplikace LUIS pomocí PHP | Microsoft Docs
-description: V tomto kurzu zjistíte, jak volat aplikaci LUIS pomocí PHP.
+title: Rychlý start ke změně modelu a trénování aplikace LUIS pomocí PHP – Azure Cognitive Services | Microsoft Docs
+description: V tomto rychlém startu pro PHP přidáte příklady promluv do aplikace domácí automatizace a budete aplikaci trénovat. Ukázkové promluvy jsou konverzačním textem uživatele namapovaným na záměr. Tím, že poskytnete ukázkové promluvy pro záměry, naučíte službu LUIS, které typy uživatelem zadaného textu patří do kterého záměru.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
-ms.topic: tutorial
-ms.date: 12/13/2017
-ms.author: v-geberr
-ms.openlocfilehash: 59150b7ed6782c28f243041be2ed6aa17e69cc01
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.topic: quickstart
+ms.date: 08/24/2018
+ms.author: diberry
+ms.openlocfilehash: ae2d3624cb3f8314a613af356730fb1d8b5d4b29
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36263776"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43769225"
 ---
-# <a name="tutorial-add-utterances-to-app-using-php"></a>Kurz: Přidávání promluv do aplikace pomocí PHP 
-V tomto kurzu napíšete program, který do záměru přidá promluvu pomocí rozhraní API pro vytváření v PHP.
+# <a name="quickstart-change-model-using-php"></a>Rychlý start: Změna modelu pomocí PHP 
 
-<!-- green checkmark -->
-> [!div class="checklist"]
-> * Vytvoření projektu konzoly v sadě Visual Studio 
-> * Přidání metody pro volání rozhraní API služby LUIS za účelem přidání promluvy a trénování aplikace
-> * Přidání souboru JSON s ukázkovými promluvami pro záměr BookFlight (Rezervovat let)
-> * Spuštění konzoly a zobrazení stavu trénování pro promluvy
-
-Další informace najdete v technické dokumentaci k rozhraním API pro [přidání ukázkové promluvy do záměru](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c08), [trénování](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c45) a [stav trénování](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c46).
-
-Pro účely tohoto článku potřebujete bezplatný účet [LUIS][LUIS], abyste mohli vytvořit svou aplikaci LUIS.
+[!include[Quickstart introduction for change model](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
 
 ## <a name="prerequisites"></a>Požadavky
 
+[!include[Quickstart prerequisites for changing model](../../../includes/cognitive-services-luis-qs-change-model-prereq.md)]
 * Nejnovější verze [**PHP**](http://php.net/).
 * Ujistěte se, že je k dispozici openssl jako závislost pro PHP.  
-* **[Klíč pro vytváření](luis-concept-keys.md#authoring-key)** pro službu LUIS. Tento klíč najdete v části Account Settings (Nastavení účtu) na webu [LUIS](luis-reference-regions.md).
-* [**ID stávající aplikace**](./luis-get-started-create-app.md) LUIS. ID aplikace je uvedené na řídicím panelu aplikace. Před spuštěním kódu v souboru `add-utterances.php` musí existovat aplikace LUIS se záměry a entitami použitými v souboru `utterances.json`. Kód v tomto článku nevytváří záměry ani entity. Pouze přidává promluvy pro existující záměry a entity. 
-* **ID verze** aplikace, která přijímá promluvy. Výchozí ID je 0.1.
-* Ve VSCode vytvořte nový soubor `add-utterances.php`.
 
-> [!NOTE] 
-> Kompletní soubor `add-utterances.cs` a ukázkový soubor `utterances.json` jsou dostupné v [úložišti **LUIS-Samples** na GitHubu](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/authoring-api-samples/php/).
+[!include[Code is available in LUIS-Samples Github repo](../../../includes/cognitive-services-luis-qs-change-model-luis-repo-note.md)]
 
+## <a name="example-utterances-json-file"></a>Soubor JSON s ukázkovými promluvami
 
-## <a name="write-the-php-code"></a>Psaní kódu PHP
+[!include[Quickstart explanation of example utterance JSON file](../../../includes/cognitive-services-luis-qs-change-model-json-ex-utt.md)]
 
-Přidejte do souboru závislosti.
+## <a name="create-quickstart-code"></a>Vytvoření kódu rychlého startu 
 
-   [!code-php[PHP and LUIS Dependencies](~/samples-luis/documentation-samples/authoring-api-samples/php/add-utterances.php?range=10-29 "PHP and LUIS Dependencies")]
+Přidejte závislosti do souboru s názvem `add-utterances.php`.
+
+   [!code-php[PHP and LUIS Dependencies](~/samples-luis/documentation-samples/quickstarts/change-model/php/add-utterances.php?range=1-22 "PHP and LUIS Dependencies")]
 
 Přidejte požadavek GET sloužící k získání stavu trénování.
 
-   [!code-php[SendGet](~/samples-luis/documentation-samples/authoring-api-samples/php/add-utterances.php?range=31-50 "SendGet")]
+   [!code-php[SendGet](~/samples-luis/documentation-samples/quickstarts/change-model/php/add-utterances.php?range=24-43 "SendGet")]
 
 Přidejte požadavek POST sloužící k vytváření promluv nebo zahájení trénování. 
 
-   [!code-php[SendPost](~/samples-luis/documentation-samples/authoring-api-samples/php/add-utterances.php?range=52-72 "SendPost")]
+   [!code-php[SendPost](~/samples-luis/documentation-samples/quickstarts/change-model/php/add-utterances.php?range=45-65 "SendPost")]
 
 Přidejte funkci `AddUtterances`.
 
-   [!code-php[AddUtterances method](~/samples-luis/documentation-samples/authoring-api-samples/php/add-utterances.php?range=74-79 "AddUtterances method")]
+   [!code-php[AddUtterances method](~/samples-luis/documentation-samples/quickstarts/change-model/php/add-utterances.php?range=67-72 "AddUtterances method")]
 
 
 Přidejte funkci `Train`. 
 
-   [!code-php[Train](~/samples-luis/documentation-samples/authoring-api-samples/php/add-utterances.php?range=81-88 "Train")]
+   [!code-php[Train](~/samples-luis/documentation-samples/quickstarts/change-model/php/add-utterances.php?range=74-81 "Train")]
 
 Přidejte funkci `Status`.
 
-   [!code-php[Status](~/samples-luis/documentation-samples/authoring-api-samples/php/add-utterances.php?range=90-94 "Status")]
+   [!code-php[Status](~/samples-luis/documentation-samples/quickstarts/change-model/php/add-utterances.php?range=83-87 "Status")]
 
 Pokud chcete spravovat argumenty příkazového řádku, přidejte hlavní blok kódu.
 
-   [!code-php[Main code](~/samples-luis/documentation-samples/authoring-api-samples/php/add-utterances.php?range=96-120 "Main code")]
+   [!code-php[Main code](~/samples-luis/documentation-samples/quickstarts/change-model/php/add-utterances.php?range=89-93 "Main code")]
 
-## <a name="specify-utterances-to-add"></a>Určení promluv, které se mají přidat
-Vytvořte soubor `utterances.json` a upravte ho tím, že určíte **pole promluv**, které chcete přidat do aplikace LUIS. Záměr a entity již **musí** být v aplikaci LUIS.
-
-> [!NOTE]
-> Před spuštěním kódu v souboru `add-utterances.php` musí existovat aplikace LUIS se záměry a entitami použitými v souboru `utterances.json`. Kód v tomto článku nevytváří záměry ani entity. Pouze přidává promluvy pro existující záměry a entity.
-
-Pole `text` obsahuje text promluvy. Pole `intentName` musí odpovídat názvu záměru v aplikaci LUIS. Pole `entityLabels` je povinné. Pokud nechcete označovat žádné entity, zadejte prázdný seznam, jak je znázorněno v následujícím příkladu:
-
-Pokud seznam entityLabels není prázdný, hodnoty `startCharIndex` a `endCharIndex` musí označovat entitu, na kterou odkazuje pole `entityName`. Oba indexy se počítají od nuly, což znamená, že číslo 6 v horním příkladu označuje písmeno S ve slově Seattle, a ne mezeru před velkým S.
-
-```json
-[
-    {
-        "text": "go to Seattle",
-        "intentName": "BookFlight",
-        "entityLabels": [
-            {
-                "entityName": "Location::LocationTo",
-                "startCharIndex": 6,
-                "endCharIndex": 12
-            }
-        ]
-    },
-    {
-        "text": "book a flight",
-        "intentName": "BookFlight",
-        "entityLabels": []
-    }
-]
-```
-
-## <a name="add-an-utterance-from-the-command-line"></a>Přidání promluvy z příkazového řádku
+## <a name="run-code"></a>Spuštění kódu
 
 Spusťte aplikaci z příkazového řádku s PHP.
 
-Zavoláním souboru `add-utterances.php` pouze s argumentem utterance.json se přidají nové promluvy, ale nepoužijí se k trénování služby LUIS.
-````
-> php add-utterances.php ./utterances.json
-````
+### <a name="add-an-utterance-from-the-command-line"></a>Přidání promluvy z příkazového řádku
+
+Spusťte aplikaci z příkazového řádku s PHP.
+
+Volání `add-utterances.php` přidá promluvy, trénuje a získá stav školení.
+
+```CMD
+> php add-utterances.php 
+```
 
 Z volání rozhraní API pro přidávání promluv se vrátí následující JSON. Pole `response` obsahuje promluvy, které se přidaly, v následujícím formátu. Hodnota `hasError` je false, což značí, že se promluva přidala.  
 
@@ -135,17 +98,8 @@ Z volání rozhraní API pro přidávání promluv se vrátí následující JSO
     ]
 ```
 
-## <a name="add-an-utterance-and-train-from-the-command-line"></a>Přidání promluvy a trénování z příkazového řádku
-Zavoláním souboru `add-utterance.php` s argumentem `-train` odešlete požadavek na trénování. 
-
-````
-> php add-utterances.php ./utterances.json -train
-````
-
-> [!NOTE]
-> Duplicitní promluvy se nepřidají znovu, ale ani nezpůsobí chybu. Pole `response` bude obsahovat ID původní promluvy.
-
 Následující příklad ukazuje výsledek úspěšného požadavku na trénování:
+
 ```json
 {
     "request": null,
@@ -156,16 +110,8 @@ Následující příklad ukazuje výsledek úspěšného požadavku na trénová
 }
 ```
 
-Po zařazení požadavku na trénování do fronty může dokončení trénování chvíli trvat.
 
-## <a name="get-training-status-from-the-command-line"></a>Získání stavu trénování z příkazového řádku
-Zavoláním aplikace s argumentem `-status` zkontrolujte stav trénování a zobrazte podrobnosti o stavu.
-
-````
-> php add-utterances.php -status
-````
-
-```
+```JSON
 Requested training status.
 [
    {
@@ -262,10 +208,9 @@ Requested training status.
 ```
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Jakmile budete s kurzem hotovi, odeberte sadu Visual Studio a konzolovou aplikaci, pokud už je nepotřebujete. 
+
+Jakmile tento rychlý start dokončíte, odeberte všechny soubory, které jste v něm vytvořili. 
 
 ## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"] 
 > [Sestavení aplikace LUIS prostřednictvím kódu programu](luis-tutorial-node-import-utterances-csv.md)
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

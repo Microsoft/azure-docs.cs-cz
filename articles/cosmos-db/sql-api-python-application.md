@@ -1,5 +1,5 @@
 ---
-title: Kurz webové aplikace Python Flask pro službu Azure Cosmos DB | Dokumentace Microsoftu
+title: Kurz webové aplikace Python Flask pro službu Azure Cosmos DB | Microsoft Docs
 description: Projděte si databázový kurz na téma, jak pomocí služby Azure Cosmos DB ukládat data a přistupovat k nim z webové aplikace Python Flask hostované v Azure. Naleznete zde řešení pro vývoj aplikací.
 keywords: Vývoj aplikací, python flask, webová aplikace python, vývoj pro web python
 services: cosmos-db
@@ -12,21 +12,22 @@ ms.topic: tutorial
 ms.date: 02/23/2017
 ms.author: sngun
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8d12beaaad58fe772dfe2840ae6c3f1414c45d8a
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 725260e25a2df01ee0231fa724b13e51f6a7e788
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39595956"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43698277"
 ---
 # <a name="build-a-python-flask-web-application-using-azure-cosmos-db"></a>Sestavení webové aplikace Python Flask využívající službu Azure Cosmos DB
+
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
-> * [Node.js](sql-api-nodejs-application.md)
-> * [Node.js – verze 2.0 Preview](sql-api-nodejs-application-preview.md)
 > * [Java](sql-api-java-application.md)
+> * [Node.js](sql-api-nodejs-application.md)
+> * [Node.js – v2](sql-api-nodejs-application-preview.md)
 > * [Python](sql-api-python-application.md)
-> 
+> * [Xamarin](mobile-apps-with-xamarin.md)
 > 
 
 Tento kurz ukazuje, jak pomocí služby Azure Cosmos DB ukládat data a přistupovat k nim z webové aplikace Python Flask hostované ve službě Azure App Service. V tomto kurzu se předpokládá, že již máte zkušenosti s používáním Pythonu a webů Azure.

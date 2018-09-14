@@ -1,5 +1,5 @@
 ---
-title: Úvod do rozhraní Graph API služby Azure Cosmos DB | Microsoft Docs
+title: 'Úvod do Azure Cosmos DB: rozhraní Gremlin API | Microsoft Docs'
 description: Zjistěte, jak můžete Azure Cosmos DB použít k ukládání, dotazování a procházení ohromných grafů s nízkou latencí pomocí dotazovacího jazyka grafů Gremlin produktu Apache TinkerPop.
 services: cosmos-db
 author: LuisBosquez
@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 01/05/2017
 ms.author: lbosq
-ms.openlocfilehash: 333bb4074ac741e854ff56c7c397b0e3be247f1b
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: a0eec8aec315eefcbcc859828fa68ea0ccee6190
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857146"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43695346"
 ---
-# <a name="introduction-to-azure-cosmos-db-graph-api"></a>Úvod do služby Azure Cosmos DB: rozhraní Graph API
+# <a name="introduction-to-azure-cosmos-db-gremlin-api"></a>Úvod do služby Azure Cosmos DB: rozhraní Gremlin API
 
 [Azure Cosmos DB](introduction.md) je globálně distribuovaná databázová služba s více modely od Microsoftu pro klíčové aplikace. Azure Cosmos DB poskytuje následující funkce, které jsou zajištěné [nejlepšími smlouvami SLA v oboru](https://azure.microsoft.com/support/legal/sla/cosmos-db/):
 
@@ -29,13 +29,7 @@ ms.locfileid: "37857146"
 
 Azure Cosmos DB [automaticky indexuje data](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf), aniž by vyžadovala zapojení správy schémat a indexů. Zahrnuje více modelů a podporuje modely dokumentů, klíčových hodnot, grafů a sloupcových dat.
 
-Doporučujeme zhlédnout následující video, ve kterém Kirill Gavrylyuk vysvětluje, jak začít s grafy ve službě Azure Cosmos DB:
-
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Graphs-with-Azure-Cosmos-DB-Gremlin-API/player]
-> 
-> 
-
-Rozhraní Graph API služby Azure Cosmos DB poskytuje:
+Rozhraní Gremlin API služby Azure Cosmos DB poskytuje:
 
 - Modelování grafů
 - Rozhraní API pro procházení
@@ -47,7 +41,7 @@ Rozhraní Graph API služby Azure Cosmos DB poskytuje:
 
 K dotazování služby Azure Cosmos DB můžete použít jazyk pro procházení grafů [Apache TinkerPop](http://tinkerpop.apache.org) nebo [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps).
 
-Tento článek obsahuje přehled rozhraní Graph API služby Azure Cosmos DB a vysvětluje, jak ho můžete použít k ukládání ohromných grafů s miliardami vrcholů a hran. Grafy můžete dotazovat s latencí v řádu milisekund a snadno rozvíjet strukturu a schéma grafu.
+Tento článek obsahuje přehled rozhraní Gremlin API služby Azure Cosmos DB a vysvětluje, jak ho můžete použít k ukládání ohromných grafů s miliardami vrcholů a hran. Grafy můžete dotazovat s latencí v řádu milisekund a snadno rozvíjet strukturu a schéma grafu.
 
 ## <a name="graph-database"></a>Databáze grafu
 Data, která existují v reálném světě, jsou přirozeně propojená. Tradiční modelování dat se zaměřuje na entity. U mnoha aplikací je také zapotřebí přirozeně modelovat jak entity, tak vztahy.
@@ -102,7 +96,7 @@ Služba Azure Cosmos DB nabízí následující možnosti, kterými se odlišuje
 Azure Cosmos DB dokáže ve stejných kontejnerech/databázích použít několik modelů, například dokument a graf. Kontejner dokumentů můžete použít k uložení dat grafu a zároveň dokumentů. K dotazování stejných dat ve formě grafu můžete použít dotazy SQL přes JSON i dotazy Gremlin.
 
 ## <a name="get-started"></a>Začínáme
-Účty Azure Cosmos DB se dají vytvořit pomocí rozhraní příkazového řádku Azure, Azure PowerShellu nebo Azure Portalu s podporu rozhraní Graph API. Po vytvoření účtů poskytne Azure Portal koncový bod služby (například `https://<youraccount>.gremlin.cosmosdb.azure.com`), který slouží jako front-end webového soketu pro Gremlin. Nástroje kompatibilní s TinkerPop (například [konzolu Gremlin](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console)) můžete nakonfigurovat tak, aby se k tomuto koncovému bodu připojily, a vytvořit aplikace v jazyku Java, Node.js nebo klientský ovladač Gremlin.
+Účty Azure Cosmos DB se dají vytvořit pomocí rozhraní příkazového řádku Azure, Azure PowerShellu nebo webu Azure Portal s podporu rozhraní Gremlin API. Po vytvoření účtů poskytne Azure Portal koncový bod služby (například `https://<youraccount>.gremlin.cosmosdb.azure.com`), který slouží jako front-end webového soketu pro Gremlin. Nástroje kompatibilní s TinkerPop (například [konzolu Gremlin](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console)) můžete nakonfigurovat tak, aby se k tomuto koncovému bodu připojily, a vytvořit aplikace v jazyku Java, Node.js nebo klientský ovladač Gremlin.
 
 Následující tabulka ukazuje oblíbené ovladače Gremlin, které můžete použít vůči Azure Cosmos DB:
 

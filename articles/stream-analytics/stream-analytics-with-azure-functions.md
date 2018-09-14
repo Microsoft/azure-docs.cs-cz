@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.date: 04/09/2018
 ms.author: jasonh
 ms.reviewer: jasonh
-ms.openlocfilehash: 1d33c3f0a4c36dc681aaa42bc68ae56eec234401
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 0408ea6ead1ddf482ce0a07c21859af80ab6ca43
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31416019"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697811"
 ---
 # <a name="run-azure-functions-from-azure-stream-analytics-jobs"></a>Spouštění Azure Functions z úloh Azure Stream Analytics 
 
@@ -27,7 +27,7 @@ Stream Analytics volá službu Functions prostřednictvím triggerů HTTP. Adapt
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Vytvářet úlohy Stream Analytics
+> * Vytvoření úlohy Stream Analytics
 > * Vytvořit funkci Azure
 > * Nakonfigurovat funkci Azure jako výstup pro vaši úlohu
 
@@ -62,7 +62,7 @@ Postupem uvedeným v kurzu [Zjišťování možných podvodů v reálném čase]
 
 1. Podívejte se v dokumentaci k Functions na část věnovanou [vytváření aplikací funkcí](../azure-functions/functions-create-first-azure-function.md#create-a-function-app). Provede vás postupem vytvoření aplikace funkcí a [funkce aktivované přes HTTP v Azure Functions](../azure-functions/functions-create-first-azure-function.md#create-function) pomocí jazyka CSharp.  
 
-2. Vyhledejte funkci **run.csx**. Aktualizujte ji následujícím kódem. (Nezapomeňte nahradit text \<your redis cache connection string goes here\> primárním připojovacím řetězcem pro Azure Redis Cache, který jste získali v předchozí části.)  
+2. Vyhledejte funkci **run.csx**. Aktualizujte ji následujícím kódem. (Nezapomeňte nahradit text „\<your redis cache connection string goes here\>“ primárním připojovacím řetězcem pro Azure Redis Cache, který jste získali v předchozí části.)  
 
    ```csharp
    using System;
@@ -166,7 +166,7 @@ Postupem uvedeným v kurzu [Zjišťování možných podvodů v reálném čase]
 
 3. Zadejte název aliasu pro výstup. V tomto kurzu používáme název **saop1** (můžete použít libovolný název). Zadejte další podrobnosti.  
 
-4. Otevřete úlohu Stream Analytics a aktualizujte dotaz následujícím způsobem. (Pokud jste určili pro výstupní jímku jiný název, nezapomeňte nahradit název saop1.)  
+4. Otevřete úlohu Stream Analytics a aktualizujte dotaz následujícím způsobem. (Pokud jste určili pro výstupní jímku jiný název, nezapomeňte nahradit název „saop1“.)  
 
    ```sql
     SELECT 

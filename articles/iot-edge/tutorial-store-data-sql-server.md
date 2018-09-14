@@ -5,16 +5,16 @@ services: iot-edge
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 08/22/2018
+ms.date: 08/30/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 7e02caf9706a5127d3729256fcc238f467eb2991
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: 2b393a5b60ba534fba8115ab3ef0f35a26ad3ed4
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43143496"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43300349"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>Kurz: Ukládání dat na hraničních zařízeních s využitím databází SQL Serveru
 
@@ -176,7 +176,11 @@ Následující kroky ukazují, jak vytvořit funkci IoT Edge pomocí Visual Stud
 
 1. V průzkumníku Visual Studio Code otevřete soubor **deployment.template.json**. 
 2. Vyhledejte část **moduleContent.$edgeAgent.properties.desired.modules**. Měla by obsahovat dva moduly: modul**tempSensor**, který generuje simulovaná data, a váš modul **sqlFunction**.
-3. Přidáním následujícího kódu deklarujte třetí modul:
+3. Pokud používáte kontejnery Windows, upravte sekci **sqlFunction.settings.image**.
+    ```json
+    "image": "${MODULES.sqlFunction.windows-amd64}"
+    ```
+4. Přidáním následujícího kódu deklarujte třetí modul. Za sekci sqlFunction přidejte čárku a vložte:
 
    ```json
    "sql": {
@@ -191,16 +195,18 @@ Následující kroky ukazují, jak vytvořit funkci IoT Edge pomocí Visual Stud
    }
    ```
 
-4. V závislosti na operačním systému vašeho zařízení IoT Edge aktualizujte parametry **sql.settings** následujícím kódem:
+   Tady je příklad, pokud by vznikly nejasnosti ohledně přidání prvku JSON. ![Přidání kontejneru SQL Serveru](./media/tutorial-store-data-sql-server/view_json_sql.png)
 
-   * Windows:
+5. V závislosti na typu kontejnerů Docker vašeho zařízení IoT Edge aktualizujte parametry **sql.settings** tímto kódem:
+
+   * Kontejnery Windows:
 
       ```json
       "image": "microsoft/mssql-server-windows-developer",
-      "createOptions": "{\"Env\": [\"ACCEPT_EULA=Y\",\"MSSQL_SA_PASSWORD=Strong!Passw0rd\"],\"HostConfig\": {\"Mounts\": [{\"Target\": \"C:\\\\mssql\",\"Source\": \"sqlVolume\",\"Type\": \"volume\"}],\"PortBindings\": {\"1433/tcp\": [{\"HostPort\": \"1401\"}]}}}"
+      "createOptions": "{\"Env\": [\"ACCEPT_EULA=Y\",\"SA_PASSWORD=Strong!Passw0rd\"],\"HostConfig\": {\"Mounts\": [{\"Target\": \"C:\\\\mssql\",\"Source\": \"sqlVolume\",\"Type\": \"volume\"}],\"PortBindings\": {\"1433/tcp\": [{\"HostPort\": \"1401\"}]}}}"
       ```
 
-   * Linux:
+   * Linuxové kontejnery:
 
       ```json
       "image": "microsoft/mssql-server-linux:2017-latest",
@@ -210,28 +216,20 @@ Následující kroky ukazují, jak vytvořit funkci IoT Edge pomocí Visual Stud
    >[!Tip]
    >Po vytvoření kontejneru SQL Serveru v produkčním prostředí byste vždy měli [změnit výchozí heslo správce systému](https://docs.microsoft.com/sql/linux/quickstart-install-connect-docker#change-the-sa-password).
 
-5. Uložte soubor **deployment.template.json**. 
+6. Uložte soubor **deployment.template.json**.
 
 ## <a name="build-your-iot-edge-solution"></a>Sestavení řešení IoT Edge
 
 V předchozích částech jste vytvořili řešení s jedním modulem a pak jste přidali další modul do šablony manifestu nasazení. Teď je potřeba sestavit řešení, vytvořit pro moduly image kontejnerů a odeslat tyto image do registru kontejneru. 
 
-1. V souboru deployment.template.json zadejte pro modul runtime IoT Edge své přihlašovací údaje k registru, aby získal přístup k imagím vašich modulů. Vyhledejte část **moduleContent.$edgeAgent.properties.desired.runtime.settings**. 
-2. Za **loggingOptions** vložte následující kód JSON:
+1. V souboru .env zadejte pro modul runtime IoT Edge své přihlašovací údaje k registru, aby získal přístup k imagím vašich modulů. Najděte sekce **CONTAINER_REGISTRY_USERNAME** a **CONTAINER_REGISTRY_PASSWORD** a vložte své přihlašovací údaje za symbol rovnítka: 
 
-   ```JSON
-   "registryCredentials": {
-       "myRegistry": {
-           "username": "",
-           "password": "",
-           "address": ""
-       }
-   }
+   ```env
+   CONTAINER_REGISTRY_USERNAME_yourContainerReg=<username>
+   CONTAINER_REGISTRY_PASSWORD_yourContainerReg=<password>
    ```
-
-3. Do polí **username** (Uživatelské jméno), **password** (Heslo) a **address** (Adresa) zadejte své přihlašovací údaje k registru. Použijte hodnoty, které jste zkopírovali při vytváření služby Azure Container Registry na začátku tohoto kurzu.
-4. Uložte soubor **deployment.template.json**.
-5. Ve Visual Studio Code se přihlaste ke svému registru kontejneru, abyste do něj mohli odeslat své image. Použijte stejné přihlašovací údaje, které jste právě přidali do manifestu nasazení. V integrovaném terminálu zadejte následující příkaz: 
+2. Uložte soubor .env.
+3. Ve Visual Studio Code se přihlaste ke svému registru kontejneru, abyste do něj mohli odeslat své image. Použijte stejné přihlašovací údaje, které jste přidali do souboru .env. V integrovaném terminálu zadejte následující příkaz:
 
     ```csh/sh
     docker login -u <ACR username> <ACR login server>
@@ -243,7 +241,7 @@ V předchozích částech jste vytvořili řešení s jedním modulem a pak jste
     Login Succeeded
     ```
 
-6. V průzkumníku VS Code klikněte pravým tlačítkem na soubor **deployment.template.json** a vyberte **Build IoT Edge solution** (Vytvořit řešení IoT Edge). 
+4. V průzkumníku VS Code klikněte pravým tlačítkem na soubor **deployment.template.json** a vyberte **Build and Push IoT Edge solution** (Vytvořit a odeslat řešení IoT Edge). 
 
 ## <a name="deploy-the-solution-to-a-device"></a>Nasazení řešení do zařízení
 
@@ -287,7 +285,7 @@ Tato část vás provede nastavením databáze SQL pro ukládání údajů o tep
    * Kontejner Windows:
 
       ```cmd
-      sqlcmd -S localhost -U SA -P 'Strong!Passw0rd'
+      sqlcmd -S localhost -U SA -P "Strong!Passw0rd"
       ```
 
    * Kontejner Linuxu: 

@@ -1,5 +1,5 @@
 ---
-title: 'Kurz k ASP.NET MVC pro službu Azure Cosmos DB: Vývoj webové aplikace | Dokumentace Microsoftu'
+title: 'Kurz k ASP.NET MVC pro službu Azure Cosmos DB: Vývoj webové aplikace | Microsoft Docs'
 description: Kurz k ASP.NET MVC, v rámci kterého se vytvoří webová aplikace MVC s použitím služby Azure Cosmos DB. Budete ukládat JSON a přístupová data z aplikace seznamu úkolů hostované na Webech Azure – podrobný kurz ASP.NET MVC.
 keywords: kurz asp.net mvc, vývoj webových aplikací, aplikace mvc web, kurz asp net mvc krok za krokem
 services: cosmos-db
@@ -13,21 +13,22 @@ ms.topic: tutorial
 ms.date: 08/03/2017
 ms.author: sngun
 ms.custom: devcenter, vs-azure
-ms.openlocfilehash: f62388c649d576cc4b52ebea0af1e9c8743f3127
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 6fbe043e0232701d2aabcbc09606864b5cc27450
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42440285"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43702506"
 ---
 # <a name="_Toc395809351"></a>Kurz k ASP.NET MVC: Vývoj webové aplikace s použitím služby Azure Cosmos DB
+
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
-> * [Node.js](sql-api-nodejs-application.md)
-> * [Node.js – verze 2.0 Preview](sql-api-nodejs-application-preview.md)
 > * [Java](sql-api-java-application.md)
+> * [Node.js](sql-api-nodejs-application.md)
+> * [Node.js – v2](sql-api-nodejs-application-preview.md)
 > * [Python](sql-api-python-application.md)
-> 
+> * [Xamarin](mobile-apps-with-xamarin.md)
 > 
 
 Pro větší názornost, jak lze pomocí služby Azure Cosmos DB efektivně ukládat dokumenty JSON a zadávat na ně dotazy, obsahuje tento článek úplný podrobný návod, jak pomocí služby Azure Cosmos DB vytvořit aplikaci seznamu úkolů. Úkoly se budou ve službě Azure Cosmos DB ukládat jako dokumenty JSON.

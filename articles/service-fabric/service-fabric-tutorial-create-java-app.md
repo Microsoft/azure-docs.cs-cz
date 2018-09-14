@@ -12,15 +12,15 @@ ms.devlang: java
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/26/2018
+ms.date: 09/01/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: a8522dbe20f302a1819b89eaea92562a2dcf43a5
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: e4552157cab846356c57a135d4e273f5a545bce9
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37114121"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43667213"
 ---
 # <a name="tutorial-create-an-application-with-a-java-web-api-front-end-service-and-a-stateful-back-end-service-on-service-fabric"></a>Kurz: Vytvoření aplikace s front-end službou webového rozhraní API pro Javu a stavovou back-end službou na platformě Service Fabric
 
@@ -55,9 +55,9 @@ Než začnete s tímto kurzem:
 
 Nejprve vytvořte webový front-end hlasovací aplikace. Bezstavová služba v Javě představuje jednoduchý server HTTP, který je hostitelem webového uživatelského rozhraní využívajícího AngularJS. Požadavky od uživatele se zpracovávají v této bezstavové službě a odesílají jako vzdálené volání procedury do stavové služby, která ukládá hlasy. 
 
-1. Spuštění Eclipse
+1. Spusťte Eclipse.
 
-2. Vytvořte projekt postupným výběrem **File** (Soubor) -> **New** (Nový) -> **Other** (Jiné) -> **Service Fabric** -> **Service Fabric Project** (Projekt Service Fabric).
+2. Vytvořte projekt postupným výběrem **File** (Soubor)->**New** (Nový)->**Other** (Jiné)->**Service Fabric**->**Service Fabric Project** (Projekt Service Fabric).
 
     ![Dialogové okno New Project (Nový projekt) v Eclipse](./media/service-fabric-tutorial-create-java-app/create-sf-proj-wizard.png)
 
@@ -89,9 +89,9 @@ Pokud chcete přidat uživatelské rozhraní, které může bezstavová služba 
 
 1. Rozbalte adresář *VotingApplication* a přejděte do adresáře *VotingApplication/VotingWebPkg/Code*.
 
-2. Klikněte pravým tlačítkem na adresář *Code* a pak klikněte na **New** (Nový) -> **Other** (Jiné).
+2. Klikněte pravým tlačítkem na adresář *Code* a pak klikněte na **New** (Nový)->**Folder** (Složka).
 
-3. Vytvořte složku *wwwroot* a klikněte na **Finish** (Dokončit).
+3. Složku pojmenujte *wwwroot* a klikněte na **Finish** (Dokončit).
 
     ![Vytvoření složky wwwroot v Eclipse](./media/service-fabric-tutorial-create-java-app/create-wwwroot-folder.png)
 
@@ -205,9 +205,9 @@ app.controller("VotingAppController", ['$rootScope', '$scope', '$http', '$timeou
 </html>
 ```
 
-### <a name="update-the-votingwebservicejava-file"></a>Aktualizace souboru VotingWebService.java
+### <a name="update-the-votingwebjava-file"></a>Aktualizace souboru VotingWeb.java
 
-V podprojektu **VotingWeb** otevřete soubor *VotingWeb/src/statelessservice/VotingWebService.java*. Soubor **VotingWebService** představuje bránu k bezstavové službě a je zodpovědný za nastavení naslouchacího procesu komunikace pro front-end rozhraní API.
+V podprojektu **VotingWeb** otevřete soubor *VotingWeb/src/statelessservice/VotingWeb.java*. Služba **VotingWeb** představuje bránu k bezstavové službě a je zodpovědná za nastavení naslouchacího procesu komunikace pro front-endové rozhraní API.
 
 V souboru nahraďte obsah metody **createServiceInstanceListeners** následujícím kódem a uložte provedené změny.
 
@@ -226,7 +226,7 @@ protected List<ServiceInstanceListener> createServiceInstanceListeners() {
 
 ### <a name="add-the-httpcommunicationlistenerjava-file"></a>Přidání souboru HTTPCommunicationListener.java
 
-Naslouchací proces komunikace protokolu HTTP funguje jako kontroler, který nastaví server HTTP a zveřejní rozhraní API definující akce hlasování. Klikněte pravým tlačítkem na balíček *statelessservice* ve složce *VotingWeb/src/statelessservice*, vyberte **New –> Other... –> General –> File** (Nový –> Jiné... –> Obecné –> Soubor) a klikněte na **Next** (Další).  Pojmenujte soubor *HttpCommunicationListener.java* a klikněte na **Finish** (Dokončit).
+Naslouchací proces komunikace protokolu HTTP funguje jako kontroler, který nastaví server HTTP a zveřejní rozhraní API definující akce hlasování. Ve složce *VotingWeb/src/statelessservice* klikněte pravým tlačítkem na balíček *statelessservice* a potom vyberte **New -> File** (Nový -> Soubor).  Pojmenujte soubor *HttpCommunicationListener.java* a klikněte na **Finish** (Dokončit).
 
 Nahraďte obsah souboru následujícím kódem a pak uložte provedené změny.  V pozdější části [Aktualizace souboru HttpCommunicationListener.java](#updatelistener_anchor) se tento soubor upraví tak, aby vykresloval, načítal a zapisoval data hlasování z back-end služby.  Prozatím naslouchací událost jednoduše vrací statický kód HTML hlasovací aplikace.
 
@@ -387,7 +387,7 @@ public class HttpCommunicationListener implements CommunicationListener {
 
 ### <a name="configure-the-listening-port"></a>Konfigurace portu pro naslouchání
 
-Po vytvoření front-end služby VotingWebService vybere Service Fabric port, na kterém bude služba naslouchat.  Služba VotingWebService funguje jako front-end této aplikace a přijímá externí provoz, takže tuto službu svážeme s pevným a dobře známým portem. V průzkumníku balíčků otevřete soubor *VotingWebService/VotingWebServicePkg/ServiceManifest.xml*.  V části **Resources** (Prostředky) vyhledejte prostředek **Endpoint** (Koncový bod) a změňte hodnotu **Port** na 8080 nebo jiný port. Pokud chcete aplikaci nasadit a spustit místně, port pro naslouchání aplikace musí být otevřený a dostupný na vašem počítači. Pod značku **ServiceManifest** vložte následující fragment kódu.
+Po vytvoření front-endové služby VotingWeb vybere Service Fabric port, na kterém bude služba naslouchat.  Služba VotingWeb se chová jako front-end této aplikace a přijímá externí provoz, takže tuto službu svážeme s pevným a dobře známým portem. V průzkumníku balíčků otevřete soubor *VotingApplication/VotingWebPkg/ServiceManifest.xml*.  V části **Resources** (Prostředky) vyhledejte prostředek **Endpoint** (Koncový bod) a změňte hodnotu **Port** na 8080 nebo jiný port. Pokud chcete aplikaci nasadit a spustit místně, port pro naslouchání aplikace musí být otevřený a dostupný na vašem počítači. Do prvku **ServiceManifest** vložte následující fragment kódu (například přímo pod prvek ```<DataPackage>```).
 
 ```xml
 <Resources>
@@ -408,9 +408,7 @@ Service Fabric umožňuje konzistentně a spolehlivě ukládat data přímo v r�
 
 1. V průzkumníku balíčků klikněte pravým tlačítkem na **Voting** v rámci projektu aplikace a zvolte **Service Fabric > Add Service Fabric Service** (Service Fabric > Přidat službu Service Fabric).
 
-2. V dialogovém okně **Add Service** (Přidat službu) zvolte **Stateful Service** (Bezstavová služba), pojmenujte službu **VotingData** a klikněte na **Add Service** (Přidat službu).
-
-    ![Přidání nové služby do stávající aplikace](./media/service-fabric-tutorial-create-java-app/addstatefuljava.png)
+2. V dialogovém okně **Add Service** (Přidat službu) zvolte **Stateful Service** (Bezstavová služba), službu pojmenujte jako **VotingDataService** a klikněte na **Add Service** (Přidat službu).
 
     Po vytvoření projektu služby budete mít ve své aplikaci dvě služby. V průběhu vytváření aplikace můžete stejným způsobem přidávat další služby. Každou z nich je možné nezávisle označovat verzí a upgradovat.
 
@@ -420,7 +418,7 @@ Service Fabric umožňuje konzistentně a spolehlivě ukládat data přímo v r�
 
 ### <a name="add-the-votingdataservicejava-file"></a>Přidání souboru VotingDataService.java
 
-Soubor *VotingDataService.java* obsahuje metody obsahující logiku pro načítání, přidávání a odebírání hlasů ze spolehlivých kolekcí. Do třídy **VotingDataService** ve vytvořeném souboru *VotingDataService/src/statefulservice/VotingDataService.java* přidejte následující metody.
+Soubor *VotingDataService.java* obsahuje metody obsahující logiku pro načítání, přidávání a odebírání hlasů ze spolehlivých kolekcí. Do souboru *VotingDataService/src/statefulservice/VotingDataService.java* přidejte následující metody třídy **VotingDataService**.
 
 ```java
 package statefulservice;
@@ -553,9 +551,7 @@ class VotingDataService extends StatefulService implements VotingRPC {
 
 Teď už jsou vytvořené kostry bezstavové front-end služby a back-end služby. Dalším krokem je propojení těchto dvou služeb. Front-end i back-end služba využívají rozhraní VotingRPC, které definuje operace hlasovací aplikace. Toto rozhraní se implementuje ve front-end i back-end službě za účelem umožnění vzdálených volání procedur (RPC) mezi těmito dvěma službami. Vzhledem k tomu, že Eclipse nepodporuje přidávání podprojektů Gradle, je potřeba přidat balíček obsahující toto rozhraní ručně.
 
-1. Klikněte pravým tlačítkem na projekt **Voting** v průzkumníku balíčků a klikněte na **New –> Other...** (Nový –> Jiné...).
-
-2. V průvodci klikněte na **General –> Folder** (Obecné –>Složka) a pojmenujte složku **VotingRPC/src/rpcmethods** 
+1. V průzkumníku balíčků klikněte pravým tlačítkem na projekt **Voting** a potom klikněte na **New -> Folder** (Nový -> Složka). Složku pojmenujte **VotingRPC/src/rpcmethods**.
 
     ![Vytvoření balíčku VotingRPC](./media/service-fabric-tutorial-create-java-app/createvotingrpcpackage.png)
 
@@ -632,7 +628,7 @@ Teď už jsou vytvořené kostry bezstavové front-end služby a back-end služb
     include ':VotingRPC'
     ```
 
-6. V souboru *Voting/VotingWebService/src/statelessservice/HttpCommunicationListener.java* nahraďte blok komentáře následujícím kódem.  
+6. V souboru *Voting/VotingWeb/src/statelessservice/HttpCommunicationListener.java* nahraďte blok komentáře následujícím kódem.  
 
     ```java
     server.createContext("/getStatelessList", new HttpHandler() {
@@ -746,7 +742,7 @@ V této části se pro projekt nakonfigurují skripty Gradle.
     defaultTasks 'clean', 'jar', 'copyDeps'
     ```
 
-2. Nahraďte obsah souboru *Voting/VotingWeb/build.gradle*.
+2. Nahraďte obsah souboru *Voting/VotingWeb/build.gradle* následujícím kódem.
 
     ```gradle
     apply plugin: 'java'
@@ -816,7 +812,7 @@ V této části se pro projekt nakonfigurují skripty Gradle.
     defaultTasks 'clean', 'jar', 'copyDeps'
     ``` 
 
-3. Nahraďte obsah souboru *Voting/VotingData/build.gradle*. 
+3. Nahraďte obsah souboru *Voting/VotingDataService/build.gradle*. 
 
     ```gradle
     apply plugin: 'java'

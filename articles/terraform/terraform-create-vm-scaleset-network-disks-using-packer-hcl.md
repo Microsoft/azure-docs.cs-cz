@@ -1,53 +1,56 @@
 ---
-title: Nastavte Terraform použijte k vytvoření škálování virtuálního počítače Azure ze balírna vlastní image
-description: Terraform použijte ke konfiguraci a verze Azure škálovací sady virtuálních počítačů z vlastní image generované balírna (dokončení se virtuální sítě a spravovaných připojených disků).
-keywords: terraform, devops, škálovat nastaveno, virtuální počítače, sítě, úložiště, moduly, vlastních bitových kopií, balírna
-author: VaijanathB
+title: Použití Terraformu k vytvoření škálovací sady virtuálních počítačů Azure z vlastní image Packeru
+description: Použijte Terraform ke konfiguraci a správě verzí škálovací sady virtuálních počítačů Azure z vlastní image vygenerované v Packeru (s virtuální sítí a spravovanými připojenými disky).
+services: terraform
+ms.service: terraform
+keywords: terraform, devops, škálovací sada, virtuální počítač, síť, úložiště, moduly, vlastní image, packer
+author: tomarcher
+manager: jeconnoc
 ms.author: tarcher
+ms.topic: tutorial
 ms.date: 10/29/2017
-ms.topic: article
-ms.openlocfilehash: 284eae93de36986e41ba80f98f86495d8f34f57b
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
-ms.translationtype: MT
+ms.openlocfilehash: 9e999ba8a36edd990bbab4648d9d4d98e3301153
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/01/2017
-ms.locfileid: "23945853"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43668627"
 ---
-# <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image"></a>Nastavte Terraform použijte k vytvoření škálování virtuálního počítače Azure ze balírna vlastní image
+# <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image"></a>Použití Terraformu k vytvoření škálovací sady virtuálních počítačů Azure z vlastní image Packeru
 
-V tomto kurzu použijete [Terraform](https://www.terraform.io/) vytvoření a nasazení [škálovací sadu virtuálních počítačů Azure](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview) vytvořené pomocí vlastní image vytvořeného pomocí [balírna](https://www.packer.io/intro/index.html) s spravované disky pomocí [HashiCorp konfigurace jazyk](https://www.terraform.io/docs/configuration/syntax.html) (kompatibilního hardwaru).  
+V tomto kurzu použijete [Terraform](https://www.terraform.io/) k vytvoření a nasazení [škálovací sady virtuálních počítačů Azure](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview) vytvořené pomocí vlastní image, kterou vytvoříte v [Packeru](https://www.packer.io/intro/index.html) pomocí spravovaných disků používajících [jazyk konfigurace společnosti HashiCorp](https://www.terraform.io/docs/configuration/syntax.html) (HCL).  
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Nastavení nasazení Terraform
-> * Použití proměnných a výstupy Terraform nasazení 
-> * Vytvoření a nasazení síťové infrastruktury
-> * Vytvoření vlastního virtuálního počítače image pomocí balírna
-> * Vytvoření a nasazení škálování virtuálních počítačů, nastavit pomocí vlastní image
-> * Vytvoření a nasazení jumpbox 
+> * Nastavit nasazení Terraformu
+> * Použít proměnné a výstupy u nasazení Terraformu 
+> * Vytvořit a nasadit síťovou infrastrukturu
+> * Vytvořit vlastní image virtuálního počítače pomocí Packeru
+> * Vytvořit a nasadit škálovací sady virtuálních počítačů pomocí vlastní image
+> * Vytvořit a nasadit jumpbox 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
 ## <a name="before-you-begin"></a>Než začnete
-> * [Terraform instalace a konfigurace přístupu k Azure](https://docs.microsoft.com/azure/virtual-machines/linux/terraform-install-configure)
-> * [Vytvořte dvojici klíčů SSH](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys) Pokud jste již nemáte
-> * [Nainstalujte balírna](https://www.packer.io/docs/install/index.html) Pokud ještě nemáte balírna nainstalována na místním počítači
+> * [Nainstalujte Terraform a nakonfigurujte přístup k Azure](https://docs.microsoft.com/azure/virtual-machines/linux/terraform-install-configure).
+> * [Vytvořte pár klíčů SSH](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys), pokud ho ještě nemáte.
+> * [Nainstalujte Packer](https://www.packer.io/docs/install/index.html), pokud ho ještě na svém místním počítači nainstalovaný nemáte.
 
 
-## <a name="create-the-file-structure"></a>Vytvořit strukturu souborů
+## <a name="create-the-file-structure"></a>Vytvoření struktury souboru
 
-Vytvořte tři nové soubory v prázdného adresáře s těmito názvy:
+V prázdném adresáři vytvořte tři nové soubory s následujícími názvy:
 
-- ```variables.tf```Tento soubor obsahuje hodnoty proměnných použité v šabloně.
-- ```output.tf```Tento soubor popisuje nastavení, která se zobrazí po nasazení.
-- ```vmss.tf```Tento soubor obsahuje kód infrastrukturu, kterou nasazujete.
+- ```variables.tf``` tento soubor bude obsahovat hodnoty proměnných používaných v šabloně.
+- ```output.tf``` tento soubor bude popisovat nastavení, která se zobrazí po nasazení.
+- ```vmss.tf``` tento soubor bude obsahovat kód infrastruktury, kterou nasazujete.
 
-##  <a name="create-the-variables"></a>Vytvořte proměnné 
+##  <a name="create-the-variables"></a>Vytvoření proměnných 
 
-V tomto kroku definujete proměnné, které prostředky vytvořené Terraform přizpůsobit.
+V tomto kroku definujete proměnné, které přizpůsobí prostředky vytvořené nástrojem Terraform.
 
-Upravit `variables.tf` souboru, zkopírujte následující kód a potom uložte změny.
+Upravte soubor `variables.tf`, zkopírujte následující kód a potom změny uložte.
 
 ```tf 
 variable "location" {
@@ -63,13 +66,13 @@ variable "resource_group_name" {
 ```
 
 > [!NOTE]
-> Výchozí hodnota proměnné resource_group_name je unset, definujte vlastní hodnotu.
+> Výchozí hodnota proměnné resource_group_name (název skupiny prostředků) není nastavená, definujte si vlastní.
 
 Uložte soubor.
 
-Při nasazení šablony Terraform, budete chtít získat název plně kvalifikované domény, který se používá pro přístup k aplikaci. Použití ```output``` typ prostředku Terraform a get ```fqdn``` vlastnost prostředku. 
+Při nasazování šablony Terraformu budete chtít získat plně kvalifikovaný název domény, který se používá pro přístup k aplikaci. Použijte typ prostředku ```output``` nástroje Terraform a získejte vlastnost ```fqdn``` tohoto prostředku. 
 
-Upravit `output.tf` soubor a zkopírujte následující kód ke zveřejnění plně kvalifikovaný název domény pro virtuální počítače. 
+Upravte soubor `output.tf` a zkopírujte následující kód, abyste virtuálním počítačům zveřejnili plně kvalifikovaný název domény. 
 
 ```hcl 
 output "vmss_public_ip" {
@@ -77,16 +80,16 @@ output "vmss_public_ip" {
 }
 ```
 
-## <a name="define-the-network-infrastructure-in-a-template"></a>Definování síťové infrastruktury v šabloně 
+## <a name="define-the-network-infrastructure-in-a-template"></a>Definování infrastruktury sítě v šabloně 
 
-V tomto kroku vytvoříte následující síťové infrastruktury do nové skupiny prostředků Azure: 
-  - Jedna virtuální síť s adresním prostorem 10.0.0.0/16 
+V tomto kroku vytvoříte v nové skupině prostředků Azure následující síťovou infrastrukturu: 
+  - Jednu virtuální síť (VNET) s adresním prostorem 10.0.0.0/16 
   - Jednu podsíť s adresním prostorem 10.0.2.0/24
-  - Dvě veřejné IP adresy. Jeden používá Vyrovnávání zatížení virtuálního počítače škálování sadu; druhá používá pro připojení k SSH jumpbox
+  - Dvě veřejné IP adresy – jednu pro nástroj pro vyrovnávání zatížení škálovací sady virtuálních počítačů a druhou pro připojení k jumpboxu SSH
 
-Musíte taky skupinu prostředků, kde jsou všechny prostředky vytvořeny. 
+Budete také potřebovat skupinu prostředků, ve které se budou všechny prostředky vytvářet. 
 
-Upravit a zkopírujte následující kód v ```vmss.tf``` souboru: 
+Do souboru ```vmss.tf``` zkopírujte následující kód: 
 
 ```tf 
 
@@ -132,55 +135,55 @@ resource "azurerm_public_ip" "vmss" {
 ``` 
 
 > [!NOTE]
-> Doporučujeme označování prostředky nasazované v Azure a usnadnění jejich identifikace v budoucnu.
+> Doporučujeme prostředky nasazované do Azure označovat, abyste si do budoucna usnadnili jejich identifikaci.
 
-## <a name="create-the-network-infrastructure"></a>Vytvořit síťovou infrastrukturu
+## <a name="create-the-network-infrastructure"></a>Vytvoření síťové infrastruktury
 
-Inicializace Terraform prostředí tak, že spustíte následující příkaz v adresáři, kde jste vytvořili `.tf` soubory:
+Spuštěním následujícího příkazu v adresáři, ve kterém jste vytvořili soubory `.tf`, inicializujte prostředí Terraformu:
 
 ```bash
 terraform init 
 ```
  
-Moduly plug-in zprostředkovatele stáhnout z registru Terraform do ```.terraform``` složky v adresáři, kde jste spustili příkaz.
+Moduly plug-in poskytovatele se z registru Terraformu stáhnou do složky ```.terraform``` adresáře, ve kterém jste příkaz spustili.
 
-Spusťte následující příkaz pro nasazení infrastruktury v Azure.
+Spuštěním následujícího příkazu nasaďte infrastrukturu do Azure.
 
 ```bash
 terraform apply
 ```
 
-Ověřte, že plně kvalifikovaný název domény veřejné IP adresy odpovídá konfiguraci.
+Ověřte, zda plně kvalifikovaný název domény veřejné IP adresy odpovídá vaší konfiguraci.
 
-![Škálovací sady virtuálních počítačů Terraform plně kvalifikovaný název domény pro veřejnou IP adresu](./media/terraform-create-vm-scaleset-network-disks-using-packer-hcl/tf-create-vmss-step4-fqdn.png)
+![Plně kvalifikovaný název domény škálovací sady virtuálních počítačů Terraform pro veřejnou IP adresu](./media/terraform-create-vm-scaleset-network-disks-using-packer-hcl/tf-create-vmss-step4-fqdn.png)
 
 Skupina prostředků obsahuje následující prostředky:
 
-![Škálovací sady virtuálních počítačů Terraform síťové prostředky](./media/terraform-create-vm-scaleset-network-disks-using-packer-hcl/tf-create-vmss-step4-rg.png)
+![Síťové prostředky škálovací sady virtuálních počítačů Terraform](./media/terraform-create-vm-scaleset-network-disks-using-packer-hcl/tf-create-vmss-step4-rg.png)
 
 
-## <a name="create-an-azure-image-using-packer"></a>Vytvoření image Azure pomocí balírna
-Vytvoření vlastní image Linux pomocí kroků uvedených v tomto kurzu [postup k vytvoření bitové kopie virtuálních počítačů Linux v Azure použijte balírna](https://docs.microsoft.com/azure/virtual-machines/linux/build-image-with-packer).
+## <a name="create-an-azure-image-using-packer"></a>Vytvoření image Azure pomocí Packeru
+Vytvořte vlastní image Linuxu pomocí postupu uvedeném v kurzu o tom, [jak v Azure vytvořit pomocí Packeru image virtuálních počítačů s Linuxem](https://docs.microsoft.com/azure/virtual-machines/linux/build-image-with-packer).
  
-Postupujte podle kurzu Vytvoření bitové kopie deprovisioned Ubuntu pomocí NGINX nainstalována.
+Postupujte podle kurzu a vytvořte image Ubuntu se zrušeným zřízením a nainstalovaným serverem NGINX.
 
-![Po vytvoření bitové kopie balírna mít bitovou kopii](./media/terraform-create-vm-scaleset-network-disks-using-packer-hcl/packerimagecreated.png)
+![Po vytvoření image Packeru budete mít vlastní image.](./media/terraform-create-vm-scaleset-network-disks-using-packer-hcl/packerimagecreated.png)
 
 > [!NOTE]
-> Pro účely tohoto kurzu, v imagi balírna příkaz spustí se nainstaluje nginx. Při vytváření můžete použít také vlastní skript.
+> Pro účely tohoto kurzu se v imagi Packeru spouští příkaz k instalaci serveru NGINX. Při vytváření si také můžete spustit vlastní skript.
 
-## <a name="edit-the-infrastructure-to-add-the-virtual-machine-scale-set"></a>Upravit infrastrukturu k přidání sady škálování virtuálního počítače
+## <a name="edit-the-infrastructure-to-add-the-virtual-machine-scale-set"></a>Úprava infrastruktury pro přidání škálovací sady virtuálních počítačů
 
-V tomto kroku vytvoříte v síti, který byl dříve nasazen v následujících zdrojích informací:
-- Nástroje pro vyrovnávání zatížení Azure aplikace a připojte ji k veřejnou IP adresu, který byl nasazen v kroku 4
-- Jeden Azure zatížení vyrovnávání a pravidla aplikace a připojte ji k dříve nakonfigurovali veřejnou IP adresu.
-- Azure back-end fondu adres a přiřaďte ho ke službě Vyrovnávání zatížení 
-- Port testu stavu používá aplikace a nakonfigurovat na Vyrovnávání zatížení 
-- Nastavit uložený za nástroj pro vyrovnávání zatížení, systémem virtuální sítě předtím škálování virtuálního počítače
-- [Nginx](http://nginx.org/) na uzlech škálování virtuálních počítačů nainstalovat z vlastní image
+V tomto kroku vytvoříte v síti, kterou jste dříve nasadili, následující prostředky:
+- Nástroj pro vyrovnávání zatížení Azure, který bude obsluhovat aplikaci a připojí ji k veřejné IP adrese nasazené v kroku 4.
+- Jeden nástroj pro vyrovnávání zatížení Azure a pravidla, která budou obsluhovat aplikaci a připojí ji k veřejné IP adrese nakonfigurované dříve.
+- Backendový fond adres Azure, který přiřadíte k nástroji pro vyrovnávání zatížení. 
+- Port sondy stavu, který používá aplikace a konfiguruje se v nástroji pro vyrovnávání zatížení. 
+- Škálovací sada virtuálních počítačů, která se nachází za nástrojem pro vyrovnávání zatížení a běží na virtuální síti nasazené dříve v tomto článku.
+- Server [Nginx](http://nginx.org/) na uzlech škálovací sady virtuálních počítačů nainstalované z vlastní image
 
 
-Přidejte následující kód do konce `vmss.tf` souboru.
+Na konec souboru `vmss.tf` přidejte následující kód.
 
 ```tf
 
@@ -297,7 +300,7 @@ resource "azurerm_virtual_machine_scale_set" "vmss" {
 
 ```
 
-Přizpůsobení nasazení přidáním následující kód do `variables.tf`:
+Přidáním následujícího kódu do souboru `variables.tf` přizpůsobte nasazení:
 
 ```tf 
 variable "application_port" {
@@ -312,19 +315,19 @@ variable "admin_password" {
 ``` 
 
 
-## <a name="deploy-the-virtual-machine-scale-set-in-azure"></a>Nasadit v Azure sad škálování virtuálního počítače
+## <a name="deploy-the-virtual-machine-scale-set-in-azure"></a>Nasazení škálovací sady virtuálních počítačů do Azure
 
-Spusťte následující příkaz k vizualizaci nasazení sady škálování virtuálního počítače:
+Vizualizujte nasazení škálovací sady virtuálních počítačů spuštěním následujícího příkazu:
 
 ```bash
 terraform plan
 ```
 
-Výstup příkazu vypadá jako na následujícím obrázku:
+Výstup tohoto příkazu bude vypadat podobně jako následující obrázek:
 
-![Terraform přidat plán sady škálování virtuálního počítače](./media/terraform-create-vm-scaleset-network-disks-using-packer-hcl/tf-create-vmss-step6-plan.png)
+![Přidání plánu Terraformu škálovací sady virtuálních počítačů](./media/terraform-create-vm-scaleset-network-disks-using-packer-hcl/tf-create-vmss-step6-plan.png)
 
-Nasaďte další prostředky v Azure: 
+Nasaďte do Azure další prostředky: 
 
 ```bash
 terraform apply 
@@ -332,20 +335,20 @@ terraform apply
 
 Obsah skupiny prostředků vypadá jako na následujícím obrázku:
 
-![Terraform škálovací sady virtuálních počítačů skupiny prostředků](./media/terraform-create-vm-scaleset-network-disks-using-packer-hcl/tf-create-vmss-step6-apply.png)
+![Skupina prostředků Terraformu škálovací sady virtuálních počítačů](./media/terraform-create-vm-scaleset-network-disks-using-packer-hcl/tf-create-vmss-step6-apply.png)
 
-Otevřete prohlížeč a připojte se k názvu plně kvalifikované domény, který byl vrácen příkazem. 
+Otevřete prohlížeč a připojte se k plně kvalifikovanému názvu domény vrácenému příkazem. 
 
 
-## <a name="add-a-jumpbox-to-the-existing-network"></a>Přidání jumpbox do existující síť 
+## <a name="add-a-jumpbox-to-the-existing-network"></a>Přidání jumpboxu do stávající sítě 
 
-Tento volitelný krok umožňuje přístup SSH k instance pomocí jumpbox sad škálování virtuálního počítače.
+Tento volitelný krok povolí použitím jumpboxu přístup prostřednictvím protokolu SSH k instancím škálovací sady virtuálních počítačů.
 
-Následující prostředky přidáte do stávajícího nasazení:
-- Síťové rozhraní připojený ke stejné podsíti než škálovací sadu virtuálních počítačů
-- Virtuální počítač s toto síťové rozhraní
+Přidejte do stávajícího nasazení následující prostředky:
+- Síťové rozhraní připojené ke stejné podsíti jako škálovací sada virtuálních počítačů
+- Virtuální počítač s tímto síťovým rozhraním
 
-Přidejte následující kód do konce `vmss.tf` souboru:
+Na konec souboru `vmss.tf` přidejte následující kód:
 
 ```hcl 
 resource "azurerm_public_ip" "jumpbox" {
@@ -419,7 +422,7 @@ resource "azurerm_virtual_machine" "jumpbox" {
 }
 ```
 
-Upravit `outputs.tf` přidat následující kód, který zobrazí název hostitele jumpbox po dokončení nasazení:
+Upravte soubor `outputs.tf` a přidejte do něj následující kód, který po dokončení nasazení zobrazí název hostitele jumpboxu:
 
 ```
 output "jumpbox_public_ip" {
@@ -427,7 +430,7 @@ output "jumpbox_public_ip" {
 }
 ```
 
-## <a name="deploy-the-jumpbox"></a>Nasazení jumpbox
+## <a name="deploy-the-jumpbox"></a>Nasazení jumpboxu
 
 Nasaďte jumpbox.
 
@@ -435,31 +438,31 @@ Nasaďte jumpbox.
 terraform apply 
 ```
 
-Po dokončení nasazení obsahu skupiny prostředků vypadá jako na následujícím obrázku:
+Po dokončení nasazení se bude obsah skupiny prostředků podobat následujícímu obrázku:
 
-![Terraform škálovací sady virtuálních počítačů skupiny prostředků](./media/terraform-create-vm-scaleset-network-disks-using-packer-hcl/tf-create-create-vmss-step8.png)
+![Skupina prostředků Terraformu škálovací sady virtuálních počítačů](./media/terraform-create-vm-scaleset-network-disks-using-packer-hcl/tf-create-create-vmss-step8.png)
 
 > [!NOTE]
-> Přihlášení pomocí hesla je zakázána na jumpbox a škálování virtuálního počítače nastavit, že jste nasadili. Přihlaste se pomocí SSH pro přístup virtuálních počítačů.
+> Možnost přihlásit se pomocí hesla je u nasazeného jumpboxu a škálovací sady virtuálních počítačů zakázaná. Přihlaste se pomocí SSH, abyste k virtuálním počítačům získali přístup.
 
-## <a name="clean-up-the-environment"></a>Vyčistěte prostředí.
+## <a name="clean-up-the-environment"></a>Vyčištění prostředí
 
-Následující příkazy odstranit prostředky vytvořené v tomto kurzu:
+Následující příkazy odstraní prostředky vytvořené v tomto kurzu:
 
 ```bash
 terraform destroy
 ```
 
-Typ `yes` Pokud budete vyzváni k potvrzení pro odstranění prostředků. Proces odstraňování může trvat několik minut.
+Když se zobrazí výzva k potvrzení odstranění skupiny prostředků, zadejte `yes`. Odstranění můžete trvat i několik minut.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste nasadili škálovací sadu virtuálních počítačů a jumpbox v Azure pomocí Terraform. Naučili jste se tyto postupy:
+V tomto kurzu jste pomocí Terraformu nasadili do Azure škálovací sadu virtuálních počítačů a jumpbox. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]
-> * Inicializace Terraform nasazení
-> * Použití proměnných a výstupy Terraform nasazení 
-> * Vytvoření a nasazení síťové infrastruktury
-> * Vytvoření vlastního virtuálního počítače image pomocí balírna
-> * Vytvoření a nasazení škálování virtuálních počítačů, nastavit pomocí vlastní image
-> * Vytvoření a nasazení jumpbox 
+> * Inicializovat nasazení Terraformu
+> * Použít proměnné a výstupy u nasazení Terraformu 
+> * Vytvořit a nasadit síťovou infrastrukturu
+> * Vytvořit vlastní image virtuálního počítače pomocí Packeru
+> * Vytvořit a nasadit škálovací sady virtuálních počítačů pomocí vlastní image
+> * Vytvořit a nasadit jumpbox 

@@ -1,5 +1,5 @@
 ---
-title: Rychlý start pro Azure Application Insights | Dokumentace Microsoftu
+title: Rychlý start pro Azure Application Insights | Microsoft Docs
 description: Pokyny pro rychlé nastavení mobilní aplikace pro monitorování s využitím Application Insights a App Center
 services: application-insights
 keywords: ''
@@ -11,12 +11,12 @@ ms.reviewer: daviste
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: fd594e65de79844720462996a89477e0a6237ceb
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: e69cf8753fb0cc9326e047ec97cbe08ee6f26610
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38988921"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43668457"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>Začínáme s analýzou mobilní aplikace pomocí App Center a Application Insights
 
@@ -68,9 +68,9 @@ Pokud chcete ověřit přijímání vlastních událostí, přejděte v App Cent
 Jakmile vaše aplikace odesílá vlastní události a App Center tyto události přijímá, je potřeba na webu Azure Portal vytvořit prostředek Application Insights typu App Center:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. Vyberte **Vytvořit prostředek** > **Monitorování a správa** > **Application Insights**.
+2. Vyberte **Vytvořit prostředek** > **Nástroje pro správu** > **Application Insights**.
 
-    ![Přidání prostředku Application Insights](./media/app-insights-mobile-center-quickstart/add.png)
+    ![Přidání prostředku Application Insights](./media/app-insights-mobile-center-quickstart/add-b.png)
 
     Zobrazí se konfigurační pole. K vyplnění vstupních polí použijte následující tabulku.
 

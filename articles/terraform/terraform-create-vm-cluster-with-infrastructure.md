@@ -1,50 +1,50 @@
 ---
-title: Vytvoření clusteru s podporou virtuálních počítačů s Terraform a kompatibilního hardwaru
-description: Použití Terraform a jazyk kompatibilního (HashiCorp konfigurace hardwaru), chcete-li vytvořit virtuální počítač s Linuxem clusteru pro vyrovnávání zatížení v Azure
-keywords: terraform, devops, virtuálního počítače, sítě, moduly
+title: Vytvoření clusteru virtuálních počítačů pomocí Terraformu a HCL
+description: Použijte Terraform a jazyk konfigurace společnosti HashiCorp (HCL) k vytvoření clusteru virtuálních počítačů s Linuxem a nástrojem pro vyrovnávání zatížení v Azure.
+services: terraform
+ms.service: terraform
+keywords: terraform, devops, virtuální počítač, síť, moduly
 author: tomarcher
-manager: routlaw
-ms.service: virtual-machines-linux
-ms.custom: devops
-ms.topic: article
-ms.date: 11/13/2017
+manager: jeconnoc
 ms.author: tarcher
-ms.openlocfilehash: 2435d694e6a1671a234d02f90860e5cafe98c2df
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
-ms.translationtype: MT
+ms.topic: tutorial
+ms.date: 11/13/2017
+ms.openlocfilehash: fffaf275a98791885b87ee8ffdc275e911b26341
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 11/13/2017
-ms.locfileid: "24518796"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43667596"
 ---
-# <a name="create-a-vm-cluster-with-terraform-and-hcl"></a>Vytvoření clusteru s podporou virtuálních počítačů s Terraform a kompatibilního hardwaru
+# <a name="create-a-vm-cluster-with-terraform-and-hcl"></a>Vytvoření clusteru virtuálních počítačů pomocí Terraformu a HCL
 
-Tento kurz představuje vytváření malé výpočetního clusteru pomocí [HashiCorp konfigurace jazyk](https://www.terraform.io/docs/configuration/syntax.html) (kompatibilního hardwaru). Vytvoří nástroj pro vyrovnávání zatížení, dva virtuální počítače s Linuxem v konfiguraci [skupinu dostupnosti](/azure/virtual-machines/windows/manage-availability#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy)a všechny potřebné síťové prostředky.
+Tento kurz ukazuje, jak pomocí [jazyka konfigurace společnosti HashiCorp](https://www.terraform.io/docs/configuration/syntax.html) (HCL) vytvořit malý výpočetní cluster. Konfigurace vytvoří nástroj pro vyrovnávání zatížení, dva virtuální počítače s Linuxem ve [skupině dostupnosti](/azure/virtual-machines/windows/manage-availability#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) a všechny potřebné síťové prostředky.
 
-V tomto kurzu jste:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Nastavení ověřování Azure
-> * Vytvoření konfiguračního souboru Terraform
-> * Inicializace Terraform
-> * Vytvoření plánu Terraform provádění
-> * Použít plán spuštění Terraform
+> * Nastavit ověřování Azure
+> * Vytvořit konfigurační soubor Terraformu
+> * Inicializovat Terraform
+> * Vytvořit plán provádění Terraformu
+> * Použít plán provádění Terraformu
 
 ## <a name="1-set-up-azure-authentication"></a>1. Nastavení ověřování Azure
 
 > [!NOTE]
-> Pokud jste [použití proměnných prostředí Terraform](/azure/virtual-machines/linux/terraform-install-configure#set-environment-variables), nebo spustit tomto kurzu [prostředí cloudu Azure](terraform-cloud-shell.md), tuto část přeskočit.
+> Pokud [používáte proměnné prostředí nástroje Terraform](/azure/virtual-machines/linux/terraform-install-configure#set-environment-variables) nebo tento kurz spouštíte ve službě [Azure Cloud Shell](terraform-cloud-shell.md), tuto část přeskočte.
 
-V této části můžete generovat služby Azure hlavní a dva soubory Terraform konfigurace obsahující pověření z objektu zabezpečení.
+V této části vygenerujete instanční objekt Azure a dva konfigurační soubory Terraformu obsahující přihlašovací údaje z objektu zabezpečení.
 
-1. [Nastavení služby Azure AD instanční objekt](/azure/virtual-machines/linux/terraform-install-configure#set-up-terraform-access-to-azure) umožňující Terraform zřídit prostředky do Azure. Při vytváření objektu zabezpečení, poznamenejte si hodnoty pro ID předplatného, klienty, appId a heslo.
+1. [Nastavte instanční objekt Azure AD](/azure/virtual-machines/linux/terraform-install-configure#set-up-terraform-access-to-azure), abyste Terraformu umožnili zřizovat prostředky do Azure. Při vytváření objektu zabezpečení si poznamenejte hodnoty ID předplatného, tenanta, appId a hesla.
 
 2. Otevřete příkazový řádek.
 
-3. Vytvoření prázdného adresáře pro uložení souborů Terraform.
+3. Vytvořte prázdný adresář, do kterého budete ukládat soubory Terraformu.
 
-4. Vytvořte nový soubor, který obsahuje vaše deklarace proměnné. Tento soubor můžete pojmenovat jakkoli chcete s `.tf` rozšíření.
+4. Vytvořte nový soubor, který bude obsahovat deklarace proměnných. Tento soubor můžete pojmenovat libovolně, ale přípona názvu souboru musí být `.tf`.
 
-5. Zkopírujte následující kód do souboru deklarace proměnné:
+5. Do souboru deklarace proměnných zkopírujte následující kód:
 
   ```tf
   variable subscription_id {}
@@ -60,9 +60,9 @@ V této části můžete generovat služby Azure hlavní a dva soubory Terraform
   }
   ```
 
-6. Vytvořte nový soubor, který obsahuje hodnoty pro Terraform proměnných. Je běžné název proměnné souboru Terraform `terraform.tfvars` jako Terraform automaticky načte všechny soubory s názvem `terraform.tfvars` (nebo následující vzorec `*.auto.tfvars`) Pokud je dostupná v aktuálním adresáři. 
+6. Vytvořte nový soubor, který bude obsahovat hodnoty proměnných Terraformu. Běžně se soubor proměnných Terraformu pojmenovává `terraform.tfvars`, protože Terraform soubor pojmenovaný `terraform.tfvars` (nebo s tvarem `*.auto.tfvars`) načte automaticky, pokud se nachází v aktuálním adresáři. 
 
-7. Zkopírujte následující kód do souboru proměnné. Ujistěte se, zda jste nahradili zástupné symboly následujícím způsobem: pro `subscription_id`, použijte ID předplatného Azure, který jste zadali při spuštění `az account set`. Pro `tenant_id`, použijte `tenant` hodnota vrácená z `az ad sp create-for-rbac`. Pro `client_id`, použijte `appId` hodnota vrácená z `az ad sp create-for-rbac`. Pro `client_secret`, použijte `password` hodnota vrácená z `az ad sp create-for-rbac`.
+7. Do souboru proměnných zkopírujte následující kód. Nezapomeňte následovně nahradit zástupné hodnoty: U `subscription_id` použijte ID předplatného Azure, které jste zadali při spuštění `az account set`. U `tenant_id` použijte hodnotu `tenant` vrácenou příkazem `az ad sp create-for-rbac`. U `client_id` použijte hodnotu `appId` vrácenou příkazem `az ad sp create-for-rbac`. U `client_secret` použijte hodnotu `password` vrácenou příkazem `az ad sp create-for-rbac`.
 
   ```tf
   subscription_id = "<azure-subscription-id>"
@@ -71,13 +71,13 @@ V této části můžete generovat služby Azure hlavní a dva soubory Terraform
   client_secret = "<password-returned-from-creating-a-service-principal>"
   ```
 
-## <a name="2-create-a-terraform-configuration-file"></a>2. Vytvoření konfiguračního souboru Terraform
+## <a name="2-create-a-terraform-configuration-file"></a>2. Vytvoření konfiguračního souboru Terraformu
 
-V této části vytvoříte soubor, který obsahuje definice prostředků pro vaši infrastrukturu.
+V této části vytvoříte soubor obsahující definice prostředků pro vaši infrastrukturu.
 
 1. Vytvořte nový soubor s názvem `main.tf`. 
 
-2. Následující ukázka definice prostředků do nově vytvořený kopie `main.tf` souboru: 
+2. Do nově vytvořeného souboru `main.tf` zkopírujte následující ukázkové definice prostředku: 
 
   ```tf
   resource "azurerm_resource_group" "test" {
@@ -218,64 +218,64 @@ V této části vytvoříte soubor, který obsahuje definice prostředků pro va
   }
   ```
 
-## <a name="3-initialize-terraform"></a>3. Inicializace Terraform 
+## <a name="3-initialize-terraform"></a>3. Inicializace Terraformu 
 
-[Terraform init příkaz](https://www.terraform.io/docs/commands/init.html) slouží k inicializaci adresář, který obsahuje konfigurační soubory Terraform – soubory, které jste vytvořili v předchozích částech. Vždy byste měli spustit `terraform init` příkaz po napsání novou konfiguraci Terraform. 
+[Příkaz terraform init](https://www.terraform.io/docs/commands/init.html) se používá k inicializaci adresáře, který obsahuje konfigurační soubory Terraformu – soubory vytvořené v předchozích částech. Příkaz `terraform init` je dobrým zvykem spouštět vždy po zapsání nové konfigurace Terraformu. 
 
 > [!TIP]
-> `terraform init` Příkaz je idempotent, což znamená, že může být volána opakovaně při vytváření stejného výsledku. Proto pokud pracujete v prostředí založeném na a si myslíte, že konfigurační soubory, které může být změněna, je vždy vhodné volání `terraform init` příkazu před provedením nebo použití plánu.
+> Příkaz `terraform init` je idempotentní, což znamená, že ho můžete opakovaně volat a vždy dojde ke stejnému výsledku. Proto pokud pracujete v prostředí podporujícím spolupráci a myslíte si, že konfigurační soubory mohl někdo změnit, je vždy vhodné před provedením nebo použitím plánu příkaz `terraform init` zavolat.
 
-K chybě při inicializaci Terraform, spusťte následující příkaz:
+Terraform inicializujete spuštěním následujícího příkazu:
 
   ```cmd
   terraform init
   ```
 
-  ![Inicializace Terraform](media/terraform-create-vm-cluster-with-infrastructure/terraform-init.png)
+  ![Inicializace Terraformu](media/terraform-create-vm-cluster-with-infrastructure/terraform-init.png)
 
-## <a name="4-create-a-terraform-execution-plan"></a>4. Vytvoření plánu Terraform provádění
+## <a name="4-create-a-terraform-execution-plan"></a>4. Vytvoření plánu provádění Terraformu
 
-[Terraform plán příkaz](https://www.terraform.io/docs/commands/plan.html) se používá k vytvoření plánu provádění. Generovat plán spuštění, Terraform slučuje všechny `.tf` soubory v aktuálním adresáři. 
+[Příkaz terraform plan](https://www.terraform.io/docs/commands/plan.html) se používá k vytvoření plánu provádění. Když chcete vygenerovat plán provádění, Terraform agreguje všechny soubory `.tf` do aktuálního adresáře. 
 
-Pokud pracujete v prostředí spolupráce, kde mohou změnit konfiguraci mezi časem vytvoříte plán spuštění a čas použít plán spuštění, měli byste použít [příkaz plán terraform-vnější parametr](https://www.terraform.io/docs/commands/plan.html#out-path)plán spuštění uložit do souboru. Jinak, pokud pracujete v prostředí s jednou osobou, můžete vynechat `-out` parametr.
+Pokud pracujete v prostředí podporujícím spolupráci, kde se konfigurace může změnit mezi dobou, kdy plán provádění vytvoříte a dobou, kdy plán provádění použijete, měli byste u [příkazu terraform plan použít parametr -out](https://www.terraform.io/docs/commands/plan.html#out-path), abyste plán provádění uložili do souboru. Pokud ale v prostředí pracujete sami, můžete parametr `-out` vynechat.
 
-Pokud není název souboru proměnné Terraform `terraform.tfvars` a nemá postupujte podle pokynů `*.auto.tfvars` vzor, je třeba zadat název souboru pomocí [parametr - var-souboru terraform plán příkaz](https://www.terraform.io/docs/commands/plan.html#var-file-foo) při spuštění `terraform plan`příkaz.
+Pokud se soubor proměnných Terraformu nejmenuje `terraform.tfvars` a není ve formátu `*.auto.tfvars`, musíte název souboru při spuštění příkazu `terraform plan` zadat pomocí [parametru -var-file příkazu terraform plan](https://www.terraform.io/docs/commands/plan.html#var-file-foo).
 
-Při zpracování `terraform plan` příkaz Terraform provede aktualizaci a určuje, jaké akce jsou nezbytné k dosažení požadované stav zadaný v konfiguračních souborech.
+Když se příkaz `terraform plan` zpracovává, Terraform provede aktualizaci a určí, jaké akce jsou potřeba k dosažení požadovaného stavu zadaného v konfiguračních souborech.
 
-Pokud není nutné pro uložení plánu provádění, spusťte následující příkaz:
+Pokud svůj plán provádění ukládat nepotřebujete, spusťte následující příkaz:
 
   ```cmd
   terraform plan
   ```
 
-Pokud je nutné uložit plán spuštění, spusťte následující příkaz (nahrazení &lt;cesta > zástupný symbol požadovaný výstupní cesta):
+Pokud plán provádění uložit potřebujete, spusťte tento příkaz (zástupný text &lt;path> nahraďte požadovanou výstupní cestou):
 
   ```cmd
   terraform plan -out=<path>
   ```
 
-![Vytváření plánu Terraform provádění](media/terraform-create-vm-cluster-with-infrastructure/terraform-plan.png)
+![Vytvoření plánu provádění Terraformu](media/terraform-create-vm-cluster-with-infrastructure/terraform-plan.png)
 
-## <a name="5-apply-the-terraform-execution-plan"></a>5. Použít plán spuštění Terraform
+## <a name="5-apply-the-terraform-execution-plan"></a>5. Použití plánu provádění Terraformu
 
-Posledním krokem v tomto kurzu se má používat [terraform použít příkaz](https://www.terraform.io/docs/commands/apply.html) použít sadu akcí vygenerovaných `terraform plan` příkaz.
+Posledním krokem tohoto kurzu je spuštění [příkazu terraform apply](https://www.terraform.io/docs/commands/apply.html), který sadu akcí vygenerovanou příkazem `terraform plan` použije.
 
-Pokud chcete použít nejnovější plán spuštění, spusťte následující příkaz:
+Pokud chcete nejnovější plán provádění použít, spusťte následující příkaz:
 
   ```cmd
   terraform apply
   ```
 
-Pokud chcete použít plán spuštění dříve uložili, spusťte následující příkaz (nahrazení &lt;cesta > zástupný symbol cestu, která obsahuje plán uložené spuštění):
+Pokud chcete použít dříve uložený plán provádění, spusťte tento příkaz (zástupný text &lt;path> nahraďte cestou, kde se uložený plán provádění nachází):
 
   ```cmd
   terraform apply <path>
   ```
 
-![Použití plánu Terraform provádění](media/terraform-create-vm-cluster-with-infrastructure/terraform-apply.png)
+![Použití plánu provádění Terraformu](media/terraform-create-vm-cluster-with-infrastructure/terraform-apply.png)
 
 ## <a name="next-steps"></a>Další kroky
 
-- Procházet seznam [Azure Terraform moduly](https://registry.terraform.io/modules/Azure)
-- Vytvoření [škálovací sady virtuálních počítačů s Terraform](terraform-create-vm-scaleset-network-disks-hcl.md)
+- Projděte si seznam [modulů Terraformu pro Azure](https://registry.terraform.io/modules/Azure).
+- Vytvořte [pomocí Terraformu škálovací sadu virtuálních počítačů](terraform-create-vm-scaleset-network-disks-hcl.md).

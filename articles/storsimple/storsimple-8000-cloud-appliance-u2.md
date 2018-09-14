@@ -1,5 +1,5 @@
 ---
-title: StorSimple Cloud Appliance s aktualizací Update 3| Dokumentace Microsoftu
+title: StorSimple Cloud Appliance s aktualizací Update 3| Microsoft Docs
 description: Naučte se vytvářet, nasazovat a spravovat řešení StorSimple Cloud Appliance ve virtuální síti Microsoft Azure. (Platí pro StorSimple s aktualizací Update 3 a novější).
 services: storsimple
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 4d47b5426da5d857085991767faa5fb227476408
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 77154d596eb9202c4f9d1063ba7f4e1ec4855181
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29852332"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43665001"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>Nasazení a správa řešení StorSimple Cloud Appliance v Azure (s aktualizací Update 3 a novější)
 
@@ -44,7 +44,7 @@ Tento kurz se vztahuje na všechna řešení StorSimple Cloud Appliance s aktual
 | --- | --- | --- |
 | **Maximální kapacita** |30 TB |64 TB |
 | **Virtuální počítač Azure** |Standard_A3 (4 jádra, 7 GB paměti)| Standard_DS3 (4 jádra, 14 GB paměti)|
-| **Dostupnost v oblastech** |Všechny oblasti Azure |Oblasti Azure, které podporují službu Storage úrovně Premium a virtuální počítače Azure DS3<br></br>Použijte [tento seznam](https://azure.microsoft.com/regions/services/), abyste zjistili, jestli jsou ve vaší oblasti dostupné obě možnosti **Virtuální počítače > DS-series** a **Úložiště > Diskové úložiště**. |
+| **Dostupnost v oblastech** |Všechny oblasti Azure |Oblasti Azure, které podporují službu Premium Storage a virtuální počítače Azure DS3<br></br>Použijte [tento seznam](https://azure.microsoft.com/regions/services/), abyste zjistili, jestli jsou ve vaší oblasti dostupné obě možnosti **Virtuální počítače > DS-series** a **Úložiště > Diskové úložiště**. |
 | **Typ úložiště** |Pro místní disky používá službu Azure Standard Storage<br></br> Zjistěte, jak [vytvořit účet služby Standard Storage](../storage/common/storage-create-storage-account.md) |Pro místní disky používá Azure Premium Storage.<sup>2</sup> <br></br>Zjistěte, jak [vytvořit účet služby Premium Storage](../virtual-machines/windows/premium-storage.md) |
 | **Pokyny týkající se úloh** |Načítání souborů ze zálohy na úrovni položek |Scénáře vývoje a testování v cloudu <br></br>Úlohy s vyšším výkonem a nízkou latencí<br></br>Sekundární zařízení pro zotavení po havárii |
 
@@ -79,7 +79,7 @@ Následující části popisují požadavky na konfiguraci pro řešení StorSim
 Než zřídíte cloudové zařízení, je třeba provést následující přípravy v prostředí Azure:
 
 * Ujistěte se, že ve svém datovém centru máte nasazené a spuštěné fyzické zařízení StorSimple řady 8000 (model 8100 nebo 8600). Zaregistrujte toto zařízení ve stejné službě Správce zařízení StorSimple, pro kterou chcete vytvořit řešení StorSimple Cloud Appliance.
-* Pro cloudové zařízení [nakonfigurujte virtuální síť v Azure](../virtual-network/manage-virtual-network.md#create-a-virtual-network). Používáte-li službu Premium Storage, musíte vytvořit virtuální síť v oblasti Azure, která podporuje službu Premium Storage. Oblasti služby Storage úrovně Premium jsou oblasti, které odpovídají řádku pro Diskové úložiště v [seznamu služeb Azure podle oblasti](https://azure.microsoft.com/regions/services/).
+* Pro cloudové zařízení [nakonfigurujte virtuální síť v Azure](../virtual-network/manage-virtual-network.md#create-a-virtual-network). Používáte-li službu Premium Storage, musíte vytvořit virtuální síť v oblasti Azure, která podporuje službu Premium Storage. Oblasti služby Premium Storage jsou oblasti, které odpovídají řádku pro Diskové úložiště v [seznamu služeb Azure podle oblasti](https://azure.microsoft.com/regions/services/).
 * Doporučujeme použít výchozí server DNS poskytovaný platformou Azure místo zadávání vlastního názvu serveru DNS. Pokud název serveru DNS není platný nebo pokud server DNS není schopen správně přeložit IP adresy, vytvoření cloudového zařízení se nezdaří.
 * Připojení point-to-site a site-to-site jsou volitelná, ale nejsou vyžadována. Pokud chcete, můžete nastavit tyto možnosti pro pokročilejší scénáře.
 * Můžete ve virtuální síti vytvořit [virtuální počítače Azure](../virtual-machines/virtual-machines-windows-quick-create-portal.md) (hostitelské servery), které můžou používat svazky vystavené cloudovým zařízením. Tyto servery musí splňovat následující požadavky:
@@ -94,7 +94,7 @@ Než zřídíte cloudové zařízení, je třeba provést následující přípr
 Před vytvořením cloudového zařízení aktualizujte službu Správce zařízení StorSimple následujícím způsobem:
 
 * Přidejte [záznamy řízení přístupu](storsimple-8000-manage-acrs.md) pro virtuální počítače, které budou představovat hostitelské servery pro cloudové zařízení.
-* Nastavte používání [účtu úložiště](storsimple-8000-manage-storage-accounts.md#add-a-storage-account) ve stejné oblasti jako cloudové zařízení. Účty úložiště v jiných oblastech mohou vést k nižšímu výkonu. U cloudového zařízení můžete použít účet služby Storage úrovně Standard nebo Premium. Další informace o tom, jak vytvořit [účet služby Standard Storage](../storage/common/storage-create-storage-account.md) nebo [účet služby Premium Storage](../virtual-machines/windows/premium-storage.md)
+* Nastavte používání [účtu úložiště](storsimple-8000-manage-storage-accounts.md#add-a-storage-account) ve stejné oblasti jako cloudové zařízení. Účty úložiště v jiných oblastech mohou vést k nižšímu výkonu. U cloudového zařízení můžete použít účet služby Standard Storage nebo Premium Storage. Další informace o tom, jak vytvořit [účet služby Standard Storage](../storage/common/storage-create-storage-account.md) nebo [účet služby Premium Storage](../virtual-machines/windows/premium-storage.md)
 * Pro vytvoření cloudového zařízení použijte jiný účet úložiště, než jaký se používá pro vaše data. Použití stejného účtu úložiště může vést k nižšímu výkonu.
 
 Před zahájením se ujistěte, že máte k dispozici následující informace:
@@ -251,7 +251,7 @@ Požadavky pro zotavení po havárii jsou následující:
 * Kontejner svazků, u kterého provádíte převzetí služeb při selhání, má přiřazený snímek v cloudu.
 
 > [!NOTE]
-> * Při použití cloudové zařízení jako sekundárního zařízení pro zotavení po havárii mějte na paměti, že zařízení 8010 má k dispozici službu Storage úrovně Standard s 30 TB úložiště a zařízení 8020 službu Storage úrovně Premium s 64 TB úložiště. Vyšší kapacita cloudového zařízení 8020 může být pro scénář zotavení po havárii vhodnější.
+> * Při použití cloudové zařízení jako sekundárního zařízení pro zotavení po havárii mějte na paměti, že zařízení 8010 má k dispozici službu Storage úrovně Standard s 30 TB úložiště a zařízení 8020 službu Premium Storage s 64 TB úložiště. Vyšší kapacita cloudového zařízení 8020 může být pro scénář zotavení po havárii vhodnější.
 
 Podrobný postup najdete v tématu popisujícím [převzetí služeb při selhání do cloudového zařízení](storsimple-8000-device-failover-cloud-appliance.md).
 
@@ -265,7 +265,7 @@ Pokud chcete zastavit nabíhání všech poplatků, musíte cloudové zařízen�
 ## <a name="troubleshoot-internet-connectivity-errors"></a>Řešení potíží s připojením k internetu
 Pokud během vytváření cloudového zařízení není k dispozici připojení k internetu, daný krok vytváření se nezdaří. Pokud chcete řešit potíže se selháním připojení k internetu, proveďte na webu Azure Portal následující kroky:
 
-1. [Vytvořte v Azure virtuální počítač s Windows Serverem 2012](/articles/virtual-machines/windows/quick-create-portal.md). Tento virtuální počítač by měl používat stejný účet úložiště, virtuální síť a podsíť jako cloudové zařízení. Pokud již v Azure je hostitel s Windows Serverem, který používá stejný účet úložiště, virtuální síť a podsíť, můžete jej také použít pro řešení potíží s připojením k internetu.
+1. [Vytvořte virtuální počítač s Windows na portálu Azure Portal](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-portal). Tento virtuální počítač by měl používat stejný účet úložiště, virtuální síť a podsíť jako cloudové zařízení. Pokud již v Azure je hostitel s Windows Serverem, který používá stejný účet úložiště, virtuální síť a podsíť, můžete jej také použít pro řešení potíží s připojením k internetu.
 2. Vzdáleně se přihlaste k virtuálnímu počítači, který jste vytvořili v předchozím kroku.
 3. Na virtuálním počítači otevřete okno příkazového řádku (stiskněte Win + R a zadejte `cmd`).
 4. V příkazovém řádku spusťte následující příkaz.

@@ -12,19 +12,19 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/17/2018
+ms.date: 09/04/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: f46a3ecb3c4ef6ace31b7010ba9068ab04a43315
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 37130e946aad00ef4eca14b7ce7942a8e435e6cd
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126537"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782324"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk-preview"></a>Kurz: Objednání služby Azure Data Box Disk (Preview)
 
-Azure Data Box Disk je cloudové řešení, které umožňuje rychle, bezpečně a spolehlivě importovat místní data do Azure. Svoje data přesunete na disky SSD (Solid-State Disk), které dostanete od Microsoftu, a tyto disky pak pošlete zpět. Data se potom nahrají do Azure. 
+Azure Data Box Disk je řešení hybridního cloudu, které vám umožňuje rychle, snadno a spolehlivě importovat místní data do Azure. Svoje data přesunete na disky SSD (Solid-State Disk), které dostanete od Microsoftu, a tyto disky pak pošlete zpět. Data se potom nahrají do Azure. 
 
 Tento kurz popisuje, jak Azure Data Box Disk objednat. V tomto kurzu získáte informace o těchto tématech:
 
@@ -38,7 +38,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 > [!IMPORTANT]
 > - Data Box Disk je ve verzi Preview. Před objednáním a nasazením tohoto řešení si přečtěte [podmínky užívání pro předběžné verze systému Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
-> - Po dobu platnosti verze Preview je možné disky poslat zákazníkům služby Data Box Disk v USA a Evropské unii. Další informace najdete v části [Regionální dostupnost](data-box-disk-overview.md#region-availability).
+> - Po dobu platnosti verze Preview je možné disky poslat zákazníkům služby Data Box Disk v USA, Západní Evropě, Severní Evropě, Kanadě a Austrálii. Další informace najdete v části [Regionální dostupnost](data-box-disk-overview.md#region-availability).
 
 ## <a name="sign-up"></a>Registrace 
 
@@ -80,7 +80,7 @@ Službu Data Box Disk si objednejte na portálu [Azure Portal](https://aka.ms/az
     |---|---|
     |Název|Zadejte popisný název pro sledování objednávky.<br> Název může být tvořen 3 až 24 písmeny, číslicemi a spojovníky. <br> Název musí začínat a končit písmenem nebo číslicí. |
     |Skupina prostředků| Použijte existující skupinu prostředků, nebo vytvořte novou. <br> Skupina prostředků je logický kontejner prostředků, které lze spravovat nebo nasadit společně. |
-    |Cílová oblast Azure| K účtu úložiště přiřaďte oblast.<br> V současné době se podporují účty úložiště ve všech oblastech USA a západní a severní Evropy. |
+    |Cílová oblast Azure| K účtu úložiště přiřaďte oblast.<br> V současné době se podporují účty úložiště ve všech oblastech USA, Západní Evropě, Severní Evropě, Kanadě a Austrálii. |
     |Účty úložiště|Na základě zadané oblasti Azure vyberte účet z filtrovaného seznamu existujících účtů úložiště. <br>Můžete si také vytvořit nový účet pro obecné účely v1 nebo obecné účely v2. |
     |Odhadovaná velikost dat v TB| Zadejte odhad v TB. <br>Podle objemu dat vám Microsoft pošle odpovídající počet 8TB disků SSD (s využitelnou kapacitou 7 TB). <br>Maximální využitelná kapacita 5 disků je 35 TB. |
 

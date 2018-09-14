@@ -1,40 +1,42 @@
 ---
-title: Terraform s Azure zprostředkovatele nasazovací sloty
-description: Kurz týkající se použití Terraform s Azure zprostředkovatele nasazovací sloty
-keywords: terraform, devops, virtuální počítač Azure, nasazovací sloty
+title: Terraform se sloty nasazení zprostředkovatele Azure
+description: Kurz o používání Terraformu se sloty nasazení zprostředkovatele Azure
+services: terraform
+ms.service: terraform
+keywords: terraform, devops, virtuální počítač, Azure, sloty nasazení
 author: tomarcher
 manager: jeconnoc
 ms.author: tarcher
+ms.topic: tutorial
 ms.date: 4/05/2018
-ms.topic: article
-ms.openlocfilehash: 3a018dbaf90801604b13efcf8bd7afb6dbc68659
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: bbd06ae8927e6c21607ac1c997f1e5cf37f092bf
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31416859"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43667232"
 ---
-# <a name="use-terraform-to-provision-infrastructure-with-azure-deployment-slots"></a>Použít Terraform zřízení infrastruktury s slotů nasazení Azure
+# <a name="use-terraform-to-provision-infrastructure-with-azure-deployment-slots"></a>Použití Terraformu ke zřízení infrastruktury pomocí slotů nasazení Azure
 
-Můžete použít [Azure nasazovací sloty](/azure/app-service/web-sites-staged-publishing) chcete Prohodit mezi různými verzemi aplikace. Tuto možnost můžete minimalizovat dopad porušený nasazení. 
+[Sloty nasazení Azure](/azure/app-service/web-sites-staged-publishing) můžete použít k přepínání mezi různými verzemi aplikace. Tato možnost vám pomůže minimalizovat dopad přerušených nasazení. 
 
-Tento článek ukazuje příklad použití nasazovací sloty rámci můžete prostřednictvím nasazení dvou aplikací prostřednictvím Githubu a Azure. Jednu aplikaci je hostován v produkční slot. Druhý aplikace je hostitelem přípravný slot. (Názvy "výroba" a "pracovní" jsou libovolný a může být jakýkoli chcete, která představuje váš scénář.) Po dokončení konfigurace nasazovací sloty, můžete Terraform Prohodit mezi dvěma sloty podle potřeby.
+Tento článek vám použití slotů nasazení ukáže na nasazením dvou aplikací prostřednictvím GitHubu a Azure. Jedna aplikace je hostovaná v produkčním slotu. Druhá aplikace je hostovaná v přípravném slotu. (Názvy "produkční" a "přípravný" jsou nahodilé a můžou se jmenovat i jinak, aby se hodily do vašeho scénáře.) Po dokončení konfigurace nasazovacích slotů můžete Terraform použít k přepínání mezi dvěma sloty podle potřeby.
 
 ## <a name="prerequisites"></a>Požadavky
 
 - **Předplatné Azure:** Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.
 
-- **Účet GitHub**: budete potřebovat [Githubu](http://www.github.com) účet rozvětvovat a použití testu úložiště GitHub.
+- **Účet GitHub**: účet [GitHub](http://www.github.com) potřebujete k vytvoření forku a použití testovacího úložiště GitHub.
 
-## <a name="create-and-apply-the-terraform-plan"></a>Vytvoření a použití plánu Terraform
+## <a name="create-and-apply-the-terraform-plan"></a>Vytvoření a použití plánu Terraformu
 
-1. Vyhledejte [portál Azure](http://portal.azure.com).
+1. Přejděte na web [Azure Portal](http://portal.azure.com).
 
-1. Otevřete [prostředí cloudu Azure](/azure/cloud-shell/overview). Pokud jste nevybrali prostředí dříve, vyberte **Bash** jako vaše prostředí.
+1. Otevřete službu [Azure Cloud Shell](/azure/cloud-shell/overview). Pokud jste prostředí ještě nevybrali, vyberte prostředí **Bash**.
 
-    ![Řádku prostředí cloudu](./media/terraform-slot-walkthru/azure-portal-cloud-shell-button-min.png)
+    ![Příkazový řádek Cloud Shellu](./media/terraform-slot-walkthru/azure-portal-cloud-shell-button-min.png)
 
-1. Přejděte do adresáře `clouddrive` adresáře.
+1. Přejděte do adresáře `clouddrive`.
 
     ```bash
     cd clouddrive
@@ -52,25 +54,25 @@ Tento článek ukazuje příklad použití nasazovací sloty rámci můžete pro
     mkdir swap
     ```
 
-1. Použití `ls` bash příkazu ověřte, že jste úspěšně vytvořili oba adresáře.
+1. Použijte příkaz Bash `ls`, abyste ověřili, že se oba adresáře úspěšně vytvořily.
 
-    ![Cloudové prostředí po vytvoření adresáře](./media/terraform-slot-walkthru/cloud-shell-after-creating-dirs.png)
+    ![Cloud Shell po vytvoření adresářů](./media/terraform-slot-walkthru/cloud-shell-after-creating-dirs.png)
 
-1. Přejděte do adresáře `deploy` adresáře.
+1. Přejděte do adresáře `deploy`.
 
     ```bash
     cd deploy
     ```
 
-1. Pomocí [vi editor](https://www.debian.org/doc/manuals/debian-tutorial/ch-editor.html), vytvořte soubor s názvem `deploy.tf`. Tento soubor bude obsahovat [Terraform konfigurace](https://www.terraform.io/docs/configuration/index.html).
+1. Pomocí [editoru vi](https://www.debian.org/doc/manuals/debian-tutorial/ch-editor.html) vytvořte soubor s názvem `deploy.tf`. Tento soubor bude obsahovat [konfiguraci Terraformu](https://www.terraform.io/docs/configuration/index.html).
 
     ```bash
     vi deploy.tf
     ```
 
-1. Zadejte režim vložení výběrem I klíč.
+1. Stisknutím klávesy I přejděte do režimu vkládání.
 
-1. Vložte následující kód do editoru:
+1. Do editoru vložte následující kód:
 
     ```JSON
     # Configure the Azure provider
@@ -107,15 +109,15 @@ Tento článek ukazuje příklad použití nasazovací sloty rámci můžete pro
     }
     ```
 
-1. Vyberte, chcete-li ukončit režim vložení klávesy Esc.
+1. Stisknutím klávesy Esc ukončete režim vkládání.
 
-1. Uložte tento soubor a ukončete vi editor tak, že zadáte následující příkaz:
+1. Uložte soubor a zadáním následujícího příkazu ukončete editor vi:
 
     ```bash
     :wq
     ```
 
-1. Teď, když jste vytvořili soubor, zkontrolujte jeho obsah.
+1. Když máte soubor vytvořený, ověřte jeho obsah.
 
     ```bash
     cat deploy.tf
@@ -127,128 +129,128 @@ Tento článek ukazuje příklad použití nasazovací sloty rámci můžete pro
     terraform init
     ```
 
-1. Vytvořte plán Terraform.
+1. Vytvořte plán Terraformu.
 
     ```bash
     terraform plan
     ```
 
-1. Zřízení prostředků, které jsou definovány v `deploy.tf` konfigurační soubor. (Tuto akci potvrďte zadáním `yes` příkazového řádku.)
+1. Zřiďte prostředky definované v konfiguračním souboru `deploy.tf`. (Akci potvrďte zadáním `yes` po vyzvání.)
 
     ```bash
     terraform apply
     ```
 
-1. Zavřete okno cloudové prostředí.
+1. Zavřete okno Cloud Shellu.
 
-1. V hlavní nabídce portálu Azure vyberte **skupiny prostředků**.
+1. Na webu Azure Portal vyberte v hlavní nabídce možnost **Skupiny prostředků**.
 
-    ![Výběr "Prostředku skupiny" v portálu](./media/terraform-slot-walkthru/resource-groups-menu-option.png)
+    ![Výběr skupin prostředků na webu Azure Portal](./media/terraform-slot-walkthru/resource-groups-menu-option.png)
 
-1. Na **skupiny prostředků** vyberte **slotDemoResourceGroup**.
+1. Na kartě **Skupiny prostředků** vyberte **slotDemoResourceGroup**.
 
-    ![Skupiny prostředků vytvořené Terraform](./media/terraform-slot-walkthru/resource-group.png)
+    ![Skupina prostředků vytvořená nástrojem Terraform](./media/terraform-slot-walkthru/resource-group.png)
 
-Zobrazí všechny prostředky, které vytvořil Terraform.
+Teď uvidíte všechny prostředky vytvořené nástrojem Terraform.
 
-![Prostředky, které jsou vytvořené Terraform](./media/terraform-slot-walkthru/resources.png)
+![Prostředky vytvořené nástrojem Terraform](./media/terraform-slot-walkthru/resources.png)
 
-## <a name="fork-the-test-project"></a>Rozvětvení k testovacímu projektu
+## <a name="fork-the-test-project"></a>Vytvoření forku projektu testů
 
-Před vytvořením a vzájemná záměna směřující nasazovací sloty můžete otestovat, budete muset rozvětvit k testovacímu projektu z Githubu.
+Než budete moct otestovat, co jste vytvořili, a prohazovat sloty nasazení, musíte na GitHubu vytvořit fork projektu testů.
 
-1. Vyhledejte [Super terraform úložišti na Githubu](https://github.com/Azure/awesome-terraform).
+1. Přejděte do [úložiště awesome-terraform na GitHubu](https://github.com/Azure/awesome-terraform).
 
-1. Rozvětvení **Super terraform** úložišti.
+1. Vytvořte fork úložiště **awesome-terraform**.
 
-    ![Rozvětvení Super terraform úložiště GitHub](./media/terraform-slot-walkthru/fork-repo.png)
+    ![Vytvoření forku úložiště awesome-terraform](./media/terraform-slot-walkthru/fork-repo.png)
 
-1. Postupujte podle výzev, chcete-li rozvětvit pro vaše prostředí.
+1. Postupujte podle výzev pro vytvoření forku do vašeho prostředí.
 
-## <a name="deploy-from-github-to-your-deployment-slots"></a>Nasazení z webu GitHub na nasazovací sloty
+## <a name="deploy-from-github-to-your-deployment-slots"></a>Nasazení z GitHubu do slotů nasazení
 
-Poté, co jste rozvětvit úložišti projekt testu, nakonfigurujte nasazovací sloty prostřednictvím následujících kroků:
+Po vytvoření forku úložiště projektu testů nakonfigurujte sloty nasazení následujícím způsobem:
 
-1. V hlavní nabídce portálu Azure vyberte **skupiny prostředků**.
+1. Na webu Azure Portal vyberte v hlavní nabídce možnost **Skupiny prostředků**.
 
 1. Vyberte **slotDemoResourceGroup**.
 
 1. Vyberte **slotAppService**.
 
-1. Vyberte **možnosti nasazení**.
+1. Vyberte **Možnosti nasazení**.
 
-    ![Možnosti nasazení pro prostředek služby App Service](./media/terraform-slot-walkthru/deployment-options.png)
+    ![Možnosti nasazení pro prostředky App Service](./media/terraform-slot-walkthru/deployment-options.png)
 
-1. Na **možnost nasazení** vyberte **zvolit zdroj**a potom vyberte **Githubu**.
+1. Na kartě **Možnost nasazení** zvolte možnost **Vyberte zdroj** a pak vyberte **GitHub**.
 
-    ![Vyberte zdroj nasazení.](./media/terraform-slot-walkthru/select-source.png)
+    ![Výběr zdroje nasazení](./media/terraform-slot-walkthru/select-source.png)
 
-1. Jakmile Azure umožňuje připojení a zobrazí všechny možnosti, vyberte **autorizace**.
+1. Jakmile Azure naváže spojení a zobrazí všechny možnosti, vyberte možnost **Autorizace**.
 
-1. Na **autorizace** vyberte **Authorize**a zadejte přihlašovací údaje, které Azure potřebuje pro přístup k účtu GitHub. 
+1. Na kartě **Autorizace** vyberte **Autorizovat** a zadejte přihlašovací údaje, které Azure potřebuje pro přístup k účtu GitHub. 
 
-1. Po Azure ověřuje přihlašovací údaje Githubu, objeví se zpráva uvádí, že se dokončil proces autorizace. Vyberte **OK** zavřete **autorizace** kartě.
+1. Jakmile Azure přihlašovací údaje GitHubu ověří, zobrazí se zpráva potvrzující, že se autorizace dokončila. Vyberte **OK** a kartu **Autorizace** zavřete.
 
-1. Vyberte **zvolte organizaci** a vyberte svoji organizaci.
+1. Vyberte **Zvolte si organizaci** a vyberte svou organizaci.
 
-1. Vyberte **projektu zvolte**.
+1. Vyberte **Zvolte projekt**.
 
-1. Na **projektu zvolte** vyberte **Super terraform** projektu.
+1. Na kartě **Zvolte projekt** vyberte projekt **awesome-terraform**.
 
-    ![Zvolte Super terraform projektu](./media/terraform-slot-walkthru/choose-project.png)
+    ![Volba projektu awesome-terraform](./media/terraform-slot-walkthru/choose-project.png)
 
-1. Vyberte **zvolte větve**.
+1. Vyberte **Zvolte větev**.
 
-1. Na **zvolte větve** vyberte **hlavní**.
+1. Na kartě **Zvolte větev** vyberte **master**.
 
-    ![Vyberte hlavní větve](./media/terraform-slot-walkthru/choose-branch-master.png)
+    ![Volba větve master](./media/terraform-slot-walkthru/choose-branch-master.png)
 
-1. Na **možnost nasazení** vyberte **OK**.
+1. Na kartě **Možnosti nasazení** vyberte **OK**.
 
-V tomto okamžiku jste nasadili produkční slot. Pokud chcete nasadit přípravný slot, proveďte všechny předchozí kroky v této části s těmito změnami:
+Momentálně máte nasazený produkční slot. Pokud chcete nasadit přípravný slot, proveďte všechny předchozí kroky v této části s těmito změnami:
 
-- V kroku 3, vyberte **slotAppServiceSlotOne** prostředků.
+- V kroku 3 vyberte prostředek **slotAppServiceSlotOne**.
 
-- V kroku 13 vyberte pracovní větev místo hlavní větve.
+- V kroku 13 vyberte místo větve master pracovní větev.
 
-    ![Vyberte pracovní větev](./media/terraform-slot-walkthru/choose-branch-working.png)
+    ![Volba pracovní větve](./media/terraform-slot-walkthru/choose-branch-working.png)
 
-## <a name="test-the-app-deployments"></a>Testovací nasazení aplikace
+## <a name="test-the-app-deployments"></a>Test nasazení aplikací
 
-V předchozích sekcích nastavíte dvě sloty –**slotAppService** a **slotAppServiceSlotOne**– k nasazení z různých větve na Githubu. Umožňuje zobrazit náhled webové aplikace k ověření, že byly úspěšně nasazeny.
+V předchozích částech jste nastavili dva sloty – **slotAppService** a **slotAppServiceSlotOne** – které se nasadí z různých větví na GitHubu. Pojďme si zobrazit náhled webových aplikací, abychom si ověřili, že se úspěšně nasadily.
 
-Proveďte následující kroky dvakrát. V kroku 3, můžete vybrat **slotAppService** poprvé a potom vyberte **slotAppServiceSlotOne** druhém.
+Následující kroky proveďte dvakrát. V kroku 3 vyberete poprvé **slotAppService** a podruhé vyberte **slotAppServiceSlotOne**.
 
-1. V hlavní nabídce portálu Azure vyberte **skupiny prostředků**.
+1. Na webu Azure Portal vyberte v hlavní nabídce možnost **Skupiny prostředků**.
 
 1. Vyberte **slotDemoResourceGroup**.
 
-1. Vyberte buď **slotAppService** nebo **slotAppServiceSlotOne**.
+1. Vyberte buď **slotAppService**, nebo **slotAppServiceSlotOne**.
 
-1. Na stránce Přehled vyberte **URL**.
+1. Na stránce přehledu vyberte **URL**.
 
-    ![Vyberte adresu URL na kartě Přehled k vykreslení aplikace](./media/terraform-slot-walkthru/resource-url.png)
+    ![Výběr URL na kartě přehledu pro vykreslení aplikace](./media/terraform-slot-walkthru/resource-url.png)
 
 > [!NOTE]
-> Ho může trvat několik minut, než Azure k vytváření a nasazování webu z Githubu.
+> Může to trvat několik minut, než Azure web z GitHubu sestaví a nasadí.
 >
 >
 
-Pro **slotAppService** webové aplikace, můžete blue se nezobrazí stránka název stránky o **Slot ukázkové aplikace 1**. Pro **slotAppServiceSlotOne** webové aplikace, zobrazí zelené stránka s názvem stránky z **Slot ukázkové aplikace 2**.
+U webové aplikace **slotAppService** uvidíte modrou stránku s nadpisem **Slot Demo App 1**. U webové aplikace **slotAppServiceSlotOne** uvidíte zelenou stránku s nadpisem **Slot Demo App 2**.
 
-![Náhled aplikace pro testování, aby byly nasazeny správně](./media/terraform-slot-walkthru/app-preview.png)
+![Náhled aplikací pro otestování správného nasazení](./media/terraform-slot-walkthru/app-preview.png)
 
-## <a name="swap-the-two-deployment-slots"></a>Prohodit sloty dvě nasazení
+## <a name="swap-the-two-deployment-slots"></a>Prohození dvou slotů nasazení
 
-Pokud chcete otestovat, odkládací dvě nasazovací sloty, proveďte následující kroky:
+Prohození dvou slotů nasazení otestujete následovně:
  
-1. Přepnout na záložce prohlížeče, který běží **slotAppService** (aplikace s stránce modré). 
+1. Přepněte se na kartu prohlížeče, na které běží **slotAppService** (aplikace s modrou stránkou). 
 
-1. Vraťte se k portálu Azure na samostatné kartě.
+1. Na jiné kartě se vraťte na web Azure Portal.
 
-1. Otevřete prostředí cloudu.
+1. Otevřete Cloud Shell.
 
-1. Přejděte do adresáře **clouddrive/swap** adresáře.
+1. Přejděte do adresáře **clouddrive/swap**.
 
     ```bash
     cd clouddrive/swap
@@ -260,9 +262,9 @@ Pokud chcete otestovat, odkládací dvě nasazovací sloty, proveďte následuj�
     vi swap.tf
     ```
 
-1. Zadejte režim vložení výběrem I klíč.
+1. Stisknutím klávesy I přejděte do režimu vkládání.
 
-1. Vložte následující kód do editoru:
+1. Do editoru vložte následující kód:
 
     ```JSON
     # Configure the Azure provider
@@ -276,9 +278,9 @@ Pokud chcete otestovat, odkládací dvě nasazovací sloty, proveďte následuj�
     }
     ```
 
-1. Vyberte, chcete-li ukončit režim vložení klávesy Esc.
+1. Stisknutím klávesy Esc ukončete režim vkládání.
 
-1. Uložte tento soubor a ukončete vi editor tak, že zadáte následující příkaz:
+1. Uložte soubor a zadáním následujícího příkazu ukončete editor vi:
 
     ```bash
     :wq
@@ -290,28 +292,28 @@ Pokud chcete otestovat, odkládací dvě nasazovací sloty, proveďte následuj�
     terraform init
     ```
 
-1. Vytvořte plán Terraform.
+1. Vytvořte plán Terraformu.
 
     ```bash
     terraform plan
     ```
 
-1. Zřízení prostředků, které jsou definovány v `swap.tf` konfigurační soubor. (Tuto akci potvrďte zadáním `yes` příkazového řádku.)
+1. Zřiďte prostředky definované v konfiguračním souboru `swap.tf`. (Akci potvrďte zadáním `yes` po vyzvání.)
 
     ```bash
     terraform apply
     ```
 
-1. Po dokončení Terraform prohození slotů, vraťte se do prohlížeče, který je vykreslování **slotAppService** webová aplikace a aktualizujte stránku. 
+1. Jakmile Terraform prohození slotů dokončí, přejděte na kartu prohlížeče, která vykresluje webovou aplikaci **slotAppService** a stránku aktualizujte. 
 
-Webové aplikace ve vaší **slotAppServiceSlotOne** pracovní pozici byla si místo, se produkční slot a je nyní vykreslí zeleně. 
+Webová aplikace v přípravném slotu **slotAppServiceSlotOne** se nyní prohodila s aplikací v produkčním slotu a je nyní vykreslená zeleně. 
 
-![Nasazovací sloty byla vzájemně zaměněny](./media/terraform-slot-walkthru/slots-swapped.png)
+![Sloty nasazení se prohodily](./media/terraform-slot-walkthru/slots-swapped.png)
 
-Chcete-li vrátit na původní produkční verzi aplikace, použijte znovu Terraform plán, který jste vytvořili z `swap.tf` konfigurační soubor.
+Pokud se chcete vrátit k původní produkční verzi aplikace, použijte znovu plán Terraformu, který jste vytvořili z konfiguračního souboru `swap.tf`.
 
 ```bash
 terraform apply
 ```
 
-Po aplikaci je prohodily, zobrazí se původní konfiguraci.
+Po prohození aplikace uvidíte původní konfiguraci.
