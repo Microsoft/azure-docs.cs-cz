@@ -6,7 +6,7 @@
 ## [Porovnání služeb Data Lake Storage Gen1 a Azure Storage](data-lake-store-comparison-with-blob-storage.md)
 ## [Data Lake Storage Gen1 pro zpracování velkého objemu dat](data-lake-store-data-scenarios.md)
 ## [Opensourcové aplikace využívající Data Lake Storage Gen1](data-lake-store-compatible-oss-other-applications.md)
-## [Osvědčené postupy při používání Data Lake Storage Gen1](data-lake-store-best-practices.md)
+## [Osvědčené postupy](data-lake-store-best-practices.md)
 
 # Začínáme
 ## [Pomocí portálu](data-lake-store-get-started-portal.md)
@@ -26,8 +26,8 @@
 
 ## Zabezpečení dat
 ### [Přehled zabezpečení](data-lake-store-security-overview.md)
-### [Řízení přístupu ve službě Data Lake Storage Gen1](data-lake-store-access-control.md)
-### [Zabezpečení dat ve službě Data Lake Storage Gen1](data-lake-store-secure-data.md)
+### [Řízení přístupu](data-lake-store-access-control.md)
+### [Zabezpečení uložených dat](data-lake-store-secure-data.md)
 ### [Šifrování](data-lake-store-encryption.md)
 
 ## Ověřování s využitím služby Data Lake Storage Gen1
@@ -55,12 +55,12 @@
 #### [Pomocí Pythonu](data-lake-store-data-operations-python.md)
 
 ## Výkon
-### [Průvodce laděním výkonu pro Azure Data Lake Storage Gen1](data-lake-store-performance-tuning-guidance.md)
-### [Průvodce laděním výkonu pro použití PowerShellu se službou Data Lake Storage Gen1](data-lake-store-performance-tuning-powershell.md)
-### [Průvodce laděním výkonu pro Spark ve službě HDInsight a Data Lake Storage Gen1](data-lake-store-performance-tuning-spark.md)
-### [Průvodce laděním výkonu pro Hive ve službě HDInsight a Data Lake Storage Gen1](data-lake-store-performance-tuning-hive.md)
-### [Průvodce laděním výkonu pro MapReduce ve službě HDInsight a Data Lake Storage Gen1](data-lake-store-performance-tuning-mapreduce.md)
-### [Průvodce laděním výkonu pro Storm ve službě HDInsight a Azure Data Lake Storage Gen1](data-lake-store-performance-tuning-storm.md)
+### [Přehled](data-lake-store-performance-tuning-guidance.md)
+### [Použití Azure PowerShellu](data-lake-store-performance-tuning-powershell.md)
+### [Použití Sparku v HDInsightu](data-lake-store-performance-tuning-spark.md)
+### [Použití Hivu v HDInsightu](data-lake-store-performance-tuning-hive.md)
+### [Použití v HDInsightu](data-lake-store-performance-tuning-mapreduce.md)
+### [Použití Stormu v HDInsightu](data-lake-store-performance-tuning-storm.md)
 
 ## Integrace se službami Azure
 ### Pomocí HDInsight

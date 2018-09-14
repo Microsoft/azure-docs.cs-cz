@@ -1,284 +1,291 @@
+items:
 - name: Dokumentace ke službě App Service
   href: index.yml
 - name: Přehled
   items:
-    - name: Informace o funkci Web Apps
-      href: app-service-web-overview.md
-    - name: Informace o App Service v Linuxu
-      href: containers/app-service-linux-intro.md
-    - name: Informace o službách App Service Environment
-      href: environment/intro.md
-    - name: Porovnání možností hostování
-      href: choose-web-site-cloud-service-vm.md
+  - name: Informace o funkci Web Apps
+    href: app-service-web-overview.md
+  - name: Informace o App Service v Linuxu
+    href: containers/app-service-linux-intro.md
+  - name: Informace o službách App Service Environment
+    href: environment/intro.md
+  - name: Porovnání možností hostování
+    href: choose-web-site-cloud-service-vm.md
 - name: Šablony Rychlý start
-  expanded: true
   items:
-    - name: Vytvoření aplikace v .NET Core
-      href: app-service-web-get-started-dotnet.md
-    - name: Vytvoření aplikace v .NET Frameworku
-      href: app-service-web-get-started-dotnet-framework.md
-    - name: Vytvoření aplikace v Node.js
-      href: app-service-web-get-started-nodejs.md
-    - name: Vytvoření aplikace v PHP
-      href: app-service-web-get-started-php.md
-    - name: Vytvoření aplikace v Javě
-      href: app-service-web-get-started-java.md
-    - name: Vytvoření webu ve statickém HTML
-      href: app-service-web-get-started-html.md
-    - name: Spuštění vlastního kontejneru s Windows
-      href: app-service-web-get-started-windows-container.md
+  - name: Vytvoření aplikace v .NET Core
+    href: app-service-web-get-started-dotnet.md
+  - name: Vytvoření aplikace v .NET Frameworku
+    href: app-service-web-get-started-dotnet-framework.md
+  - name: Vytvoření aplikace v Node.js
+    href: app-service-web-get-started-nodejs.md
+  - name: Vytvoření aplikace v PHP
+    href: app-service-web-get-started-php.md
+  - name: Vytvoření aplikace v Javě
+    href: app-service-web-get-started-java.md
+  - name: Vytvoření webu ve statickém HTML
+    href: app-service-web-get-started-html.md
+  - name: Spuštění vlastního kontejneru s Windows
+    href: app-service-web-get-started-windows-container.md
+  expanded: true
 - name: Kurzy
   items:
-    - name: Aplikace s DB
-      items:
-        - name: .NET Core s SQL DB
-          href: app-service-web-tutorial-dotnetcore-sqldb.md
-        - name: .NET s SQL DB
-          href: app-service-web-tutorial-dotnet-sqldatabase.md
-        - name: PHP s MySQL
-          href: app-service-web-tutorial-php-mysql.md
-        - name: Node.js s MongoDB
-          href: app-service-web-tutorial-nodejs-mongodb-app.md
-        - name: Java s MySQL
-          href: app-service-web-tutorial-java-mysql.md
-    - name: Zabezpečený přístup k SQL DB
-      href: app-service-web-tutorial-connect-msi.md
-    - name: Hostování rozhraní RESTful API
-      href: app-service-web-tutorial-rest-api.md
-    - name: Mapování vlastní domény
-      href: app-service-web-tutorial-custom-domain.md
-    - name: Vytvoření vazby certifikátu SSL
-      href: app-service-web-tutorial-custom-ssl.md
-    - name: Přidání sítě CDN
-      href: ../cdn/cdn-add-to-web-app.md?toc=%2fazure%2fcdn%2ftoc.json
-    - name: Ověřování uživatelů
-      href: app-service-web-tutorial-auth-aad.md
+  - name: Aplikace s DB
+    items:
+    - name: .NET Core s SQL DB
+      href: app-service-web-tutorial-dotnetcore-sqldb.md
+    - name: .NET s SQL DB
+      href: app-service-web-tutorial-dotnet-sqldatabase.md
+    - name: PHP s MySQL
+      href: app-service-web-tutorial-php-mysql.md
+    - name: Node.js s MongoDB
+      href: app-service-web-tutorial-nodejs-mongodb-app.md
+    - name: Java s MySQL
+      href: app-service-web-tutorial-java-mysql.md
+  - name: Zabezpečený přístup k SQL DB
+    href: app-service-web-tutorial-connect-msi.md
+  - name: Hostování rozhraní RESTful API
+    href: app-service-web-tutorial-rest-api.md
+  - name: Mapování vlastní domény
+    href: app-service-web-tutorial-custom-domain.md
+  - name: Vytvoření vazby certifikátu SSL
+    href: app-service-web-tutorial-custom-ssl.md
+  - name: Přidání sítě CDN
+    href: ../cdn/cdn-add-to-web-app.md?toc=%2fazure%2fcdn%2ftoc.json
+  - name: Ověřování uživatelů
+    href: app-service-web-tutorial-auth-aad.md
 - name: Ukázky
   items:
-    - name: Azure CLI
-      href: app-service-cli-samples.md
-    - name: Azure PowerShell
-      href: app-service-powershell-samples.md
-    - name: Šablony Resource Manageru
-      href: app-service-rm-template-samples.md
+  - name: Azure CLI
+    href: app-service-cli-samples.md
+  - name: Azure PowerShell
+    href: app-service-powershell-samples.md
+  - name: Šablony Resource Manageru
+    href: app-service-rm-template-samples.md
 - name: Koncepty
   items:
-    - name: Jak funguje App Service
-      href: app-service-how-works-readme.md
-    - name: Plány služby App Service
-      href: azure-web-sites-web-hosting-plans-in-depth-overview.md
-    - name: Funkce operačního systému
-      href: web-sites-available-operating-system-functionality.md
-    - name: Zabezpečení
-      href: app-service-security.md
-      items:
-        - name: Ověřování a autorizace
-          href: app-service-authentication-overview.md
-        - name: Opravy operačního systému a modulů runtime
-          href: app-service-patch-os-runtime.md
-    - name: Příchozí a odchozí IP adresy
-      href: app-service-ip-addresses.md
-    - name: Hybridní připojení
-      href: app-service-hybrid-connections.md
-    - name: Integrace Traffic Manageru
-      href: web-sites-traffic-manager.md
-    - name: Místní mezipaměť
-      href: app-service-local-cache-overview.md
-    - name: Diagnostika
-      href: app-service-diagnostics.md
+  - name: Jak funguje App Service
+    href: app-service-how-works-readme.md
+  - name: Plány služby App Service
+    href: azure-web-sites-web-hosting-plans-in-depth-overview.md
+  - name: Funkce operačního systému
+    href: web-sites-available-operating-system-functionality.md
+  - name: Zabezpečení
+    href: app-service-security.md
+    items:
+    - name: Ověřování a autorizace
+      href: app-service-authentication-overview.md
+    - name: Opravy operačního systému a modulů runtime
+      href: app-service-patch-os-runtime.md
+  - name: Příchozí a odchozí IP adresy
+    href: app-service-ip-addresses.md
+  - name: Hybridní připojení
+    href: app-service-hybrid-connections.md
+  - name: Integrace Traffic Manageru
+    href: web-sites-traffic-manager.md
+  - name: Místní mezipaměť
+    href: app-service-local-cache-overview.md
+  - name: Diagnostika
+    href: app-service-diagnostics.md
 - name: Návody
   items:
-    - name: Konfigurace aplikace
+  - name: Konfigurace aplikace
+    items:
+    - name: Použití nastavení aplikace
+      href: web-sites-configure.md
+    - name: Nahrání existující aplikace v Javě
+      href: web-sites-java-add-app.md
+    - name: Konfigurace PHP
+      href: web-sites-php-configure.md
+    - name: Python
+      href: web-sites-python-configure.md
+    - name: Připojení k místním prostředkům
+      href: web-sites-integrate-with-vnet.md
+  - name: Nasazení do Azure
+    items:
+    - name: Nasazení aplikace
       items:
-        - name: Použití nastavení aplikace
-          href: web-sites-configure.md
-        - name: Nahrání existující aplikace v Javě
-          href: web-sites-java-add-app.md
-        - name: Konfigurace PHP
-          href: web-sites-php-configure.md
-        - name: Python
-          href: web-sites-python-configure.md
-        - name: Připojení k místním prostředkům
-          href: web-sites-integrate-with-vnet.md
-    - name: Nasazení do Azure
+      - name: Nasazení souboru ZIP nebo WAR
+        href: app-service-deploy-zip.md
+      - name: Nasazení prostřednictvím FTP
+        href: app-service-deploy-ftp.md
+      - name: Nasazení prostřednictvím cloudové synchronizace
+        href: app-service-deploy-content-sync.md
+      - name: Průběžné nasazování
+        href: app-service-continuous-deployment.md
+      - name: Nasazení z místního Gitu
+        href: app-service-deploy-local-git.md
+      - name: Nasazení pomocí šablony
+        href: app-service-deploy-complex-application-predictably.md
+    - name: Nastavení přihlašovacích údajů nasazení
+      href: app-service-deployment-credentials.md
+    - name: Vytvoření přípravných prostředí
+      href: web-sites-staged-publishing.md
+    - name: Pokyny pro šablony Resource Manageru
+      href: web-sites-rm-template-guidance.md
+  - name: Mapování vlastní domény
+    items:
+    - name: Zakoupení domény
+      href: custom-dns-web-site-buydomains-web-app.md
+    - name: Mapování domén s Traffic Managerem
+      href: web-sites-traffic-manager-custom-domain-name.md
+    - name: Migrace aktivní domény
+      href: app-service-custom-domain-name-migrate.md
+  - name: Zabezpečená aplikace
+    items:
+    - name: Zakoupení certifikátů SSL
+      href: web-sites-purchase-ssl-web-site.md
+    - name: Ověřování uživatelů
       items:
-        - name: Nasazení aplikace
-          items:
-            - name: Nasazení souboru ZIP nebo WAR
-              href: app-service-deploy-zip.md
-            - name: Nasazení prostřednictvím FTP
-              href: app-service-deploy-ftp.md
-            - name: Nasazení prostřednictvím cloudové synchronizace
-              href: app-service-deploy-content-sync.md
-            - name: Průběžné nasazování
-              href: app-service-continuous-deployment.md
-            - name: Nasazení z místního Gitu
-              href: app-service-deploy-local-git.md
-            - name: Nasazení pomocí šablony
-              href: app-service-deploy-complex-application-predictably.md
-        - name: Nastavení přihlašovacích údajů nasazení
-          href: app-service-deployment-credentials.md
-        - name: Vytvoření přípravných prostředí
-          href: web-sites-staged-publishing.md
-        - name: Pokyny pro šablony Resource Manageru
-          href: web-sites-rm-template-guidance.md
-    - name: Mapování vlastní domény
-      items:
-        - name: Zakoupení domény
-          href: custom-dns-web-site-buydomains-web-app.md
-        - name: Mapování domén s Traffic Managerem
-          href: web-sites-traffic-manager-custom-domain-name.md
-        - name: Migrace aktivní domény
-          href: app-service-custom-domain-name-migrate.md
-    - name: Zabezpečená aplikace
-      items:
-        - name: Zakoupení certifikátů SSL
-          href: web-sites-purchase-ssl-web-site.md
-        - name: Ověřování uživatelů
-          items:
-            - name: Ověřování pomocí Azure AD
-              href: app-service-mobile-how-to-configure-active-directory-authentication.md
-            - name: Ověřování pomocí Facebooku
-              href: app-service-mobile-how-to-configure-facebook-authentication.md
-            - name: Ověřování pomocí Googlu
-              href: app-service-mobile-how-to-configure-google-authentication.md
-            - name: Ověřování pomocí účtu Microsoft
-              href: app-service-mobile-how-to-configure-microsoft-authentication.md
-            - name: Ověřování pomocí Twitteru
-              href: app-service-mobile-how-to-configure-twitter-authentication.md
-        - name: Přizpůsobení ověřování
-          href: app-service-authentication-how-to.md
-        - name: Omezení IP adres
-          href: app-service-ip-restrictions.md
-        - name: Použití služby Managed Service Identity
-          href: app-service-managed-service-identity.md
-        - name: Použití certifikátu SSL v kódu aplikace
-          href: app-service-web-ssl-cert-load.md
-        - name: Konfigurace vzájemného ověřování TLS
-          href: app-service-web-configure-tls-mutual-auth.md
-    - name: Škálování aplikace
-      items:
-        - name: Vertikální navýšení kapacity serveru
-          href: web-sites-scale.md
-        - name: Konfigurace úrovně PremiumV2
-          href: app-service-configure-premium-tier.md
-        - name: Horizontální navýšení kapacity na několik instancí
-          href: ../monitoring-and-diagnostics/monitoring-autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json
-        - name: Hostování s vysokou hustotou
-          href: app-service-high-density-hosting.md
-    - name: Monitorování aplikace
-      items:
-        - name: Kvóty a výstrahy
-          href: web-sites-monitor.md
-        - name: Povolení protokolů
-          href: web-sites-enable-diagnostic-log.md
-    - name: Správa aplikace
-      items:
-        - name: Správa plánu hostování
-          href: app-service-plan-manage.md
-        - name: Zálohování aplikace
-          href: web-sites-backup.md
-        - name: Obnovení zálohy
-          href: web-sites-restore.md
-        - name: Obnovení snímku
-          href: app-service-web-restore-snapshots.md
-        - name: Klonování aplikace
-          href: app-service-web-app-cloning.md
-        - name: Přesunutí prostředků
-          href: '../azure-resource-manager/resource-group-move-resources.md?toc=%2fazure%2fapp-service%2ftoc.json#app-service-limitations'
-    - name: Spouštění úloh na pozadí
-      items:
-        - name: Vytvoření webových úloh
-          href: web-sites-create-web-jobs.md
-        - name: Vývoj webových úloh pomocí VS
-          href: websites-dotnet-deploy-webjobs.md
-        - name: Začínáme se sadou WebJobs SDK
-          href: webjobs-sdk-get-started.md
-        - name: Použití sady WebJobs SDK
-          href: webjobs-sdk-how-to.md
+      - name: Ověřování pomocí Azure AD
+        href: app-service-mobile-how-to-configure-active-directory-authentication.md
+      - name: Ověřování pomocí Facebooku
+        href: app-service-mobile-how-to-configure-facebook-authentication.md
+      - name: Ověřování pomocí Googlu
+        href: app-service-mobile-how-to-configure-google-authentication.md
+      - name: Ověřování pomocí účtu Microsoft
+        href: app-service-mobile-how-to-configure-microsoft-authentication.md
+      - name: Ověřování pomocí Twitteru
+        href: app-service-mobile-how-to-configure-twitter-authentication.md
+    - name: Přizpůsobení ověřování
+      href: app-service-authentication-how-to.md
+    - name: Omezení IP adres
+      href: app-service-ip-restrictions.md
+    - name: Použití spravované identity
+      href: app-service-managed-service-identity.md
+    - name: Použití certifikátu SSL v kódu aplikace
+      href: app-service-web-ssl-cert-load.md
+    - name: Konfigurace vzájemného ověřování TLS
+      href: app-service-web-configure-tls-mutual-auth.md
+  - name: Škálování aplikace
+    items:
+    - name: Vertikální navýšení kapacity serveru
+      href: web-sites-scale.md
+    - name: Konfigurace úrovně PremiumV2
+      href: app-service-configure-premium-tier.md
+    - name: Horizontální navýšení kapacity na několik instancí
+      href: ../monitoring-and-diagnostics/monitoring-autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json
+    - name: Hostování s vysokou hustotou
+      href: app-service-high-density-hosting.md
+  - name: Monitorování aplikace
+    items:
+    - name: Kvóty a výstrahy
+      href: web-sites-monitor.md
+    - name: Povolení protokolů
+      href: web-sites-enable-diagnostic-log.md
+  - name: Správa aplikace
+    items:
+    - name: Správa plánu hostování
+      href: app-service-plan-manage.md
+    - name: Zálohování aplikace
+      href: web-sites-backup.md
+    - name: Obnovení zálohy
+      href: web-sites-restore.md
+    - name: Obnovení snímku
+      href: app-service-web-restore-snapshots.md
+    - name: Klonování aplikace
+      href: app-service-web-app-cloning.md
+    - name: Přesunutí prostředků
+      href: ../azure-resource-manager/resource-group-move-resources.md?toc=%2fazure%2fapp-service%2ftoc.json#app-service-limitations
+  - name: Spouštění úloh na pozadí
+    items:
+    - name: Vytvoření webových úloh
+      href: web-sites-create-web-jobs.md
+    - name: Vývoj webových úloh pomocí VS
+      href: websites-dotnet-deploy-webjobs.md
+    - name: Začínáme se sadou WebJobs SDK
+      href: webjobs-sdk-get-started.md
+    - name: Použití sady WebJobs SDK
+      href: webjobs-sdk-how-to.md
 - name: Referenční informace
   items:
-    - name: Azure CLI
-      href: /cli/azure/appservice
-    - name: Azure PowerShell
-      href: /powershell
-    - name: REST API
-      href: /rest/api/appservice/
+  - name: Azure CLI
+    href: /cli/azure/appservice
+  - name: Azure PowerShell
+    href: /powershell
+  - name: REST API
+    href: /rest/api/appservice/
 - name: Zdroje a prostředky
   items:
-    - name: Plány Azure do budoucna
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: Ceny
-      href: 'https://azure.microsoft.com/pricing/details/app-service/'
-    - name: Informace o kvótách
-      href: '../azure-subscription-service-limits.md#app-service-limits'
-    - name: Aktualizace služeb a poznámky k verzi
+  - name: Plány Azure do budoucna
+    href: https://azure.microsoft.com/roadmap/
+  - name: Ceny
+    href: https://azure.microsoft.com/pricing/details/app-service/
+  - name: Informace o kvótách
+    href: ../azure-subscription-service-limits.md#app-service-limits
+  - name: Aktualizace služeb a poznámky k verzi
+    items:
+    - name: Aktualizace Azure
+      href: https://azure.microsoft.com/updates/?product=app-service
+    - name: Azure SDK pro .NET 3.0
+      href: azure-sdk-dotnet-release-notes-3-0.md
+    - name: Azure SDK pro .NET 2.9
+      href: azure-sdk-dotnet-release-notes-2-9.md
+    - name: Azure SDK pro .NET 2.8
+      href: azure-sdk-dotnet-release-notes-2-8.md
+    - name: Azure SDK pro .NET 2.7
+      href: azure-sdk-dotnet-release-notes-2-7.md
+    - name: Azure SDK pro .NET 2.6
+      href: azure-sdk-dotnet-release-notes-2-6.md
+    - name: Azure SDK pro .NET 2.5.1
+      href: app-service-release-notes.md
+    - name: Azure SDK pro .NET 2.5
+      href: https://msdn.microsoft.com/library/azure/dn873976.aspx
+    - name: Azure SDK pro .NET 2.4
+      href: https://msdn.microsoft.com/library/azure/dn794167.aspx
+    - name: Azure SDK pro .NET 2.3
+      href: https://msdn.microsoft.com/library/azure/dn655054.aspx
+    - name: Azure SDK pro .NET 2.2
+      href: https://msdn.microsoft.com/library/azure/dn459835.aspx
+    - name: Azure SDK pro .NET 2.1
+      href: https://msdn.microsoft.com/library/azure/dn407359.aspx
+    - name: Azure SDK pro .NET 2.0
+      href: https://msdn.microsoft.com/library/azure/dn169556.aspx
+  - name: Osvědčené postupy
+    href: app-service-best-practices.md
+  - name: Ukázky
+    href: https://azure.microsoft.com/resources/samples/?service=app-service
+  - name: Videa
+    href: https://azure.microsoft.com/resources/videos/index/?services=app-service
+  - name: Podrobné návody
+    items:
+    - name: Referenční architektury
+      href: https://docs.microsoft.com/azure/architecture/reference-architectures/#web-applications
+    - name: Skripty nasazení
+      href: https://azure.microsoft.com/documentation/scripts/
+  - name: Řešení potíží
+    items:
+    - name: Řešení potíží se sadou Visual Studio
+      href: web-sites-dotnet-troubleshoot-visual-studio.md
+    - name: Řešení potíží s aplikací v Node.js
+      href: app-service-web-nodejs-best-practices-and-troubleshoot-guide.md
+    - name: Řešení chyb HTTP 502 a 503
+      href: app-service-web-troubleshoot-http-502-http-503.md
+    - name: Řešení potíží s výkonem
+      href: app-service-web-troubleshoot-performance-degradation.md
+    - name: Řešení potíží s doménami a certifikáty
+      href: app-service-web-troubleshoot-domain-ssl-certificates.md
+    - name: Nejčastější dotazy
       items:
-        - name: Aktualizace Azure
-          href: 'https://azure.microsoft.com/updates/?product=app-service'
-        - name: Azure SDK pro .NET 3.0
-          href: azure-sdk-dotnet-release-notes-3-0.md
-        - name: Azure SDK pro .NET 2.9
-          href: azure-sdk-dotnet-release-notes-2-9.md
-        - name: Azure SDK pro .NET 2.8
-          href: azure-sdk-dotnet-release-notes-2-8.md
-        - name: Azure SDK pro .NET 2.7
-          href: azure-sdk-dotnet-release-notes-2-7.md
-        - name: Azure SDK pro .NET 2.6
-          href: azure-sdk-dotnet-release-notes-2-6.md
-        - name: Azure SDK pro .NET 2.5.1
-          href: app-service-release-notes.md
-        - name: Azure SDK pro .NET 2.5
-          href: 'https://msdn.microsoft.com/library/azure/dn873976.aspx'
-        - name: Azure SDK pro .NET 2.4
-          href: 'https://msdn.microsoft.com/library/azure/dn794167.aspx'
-        - name: Azure SDK pro .NET 2.3
-          href: 'https://msdn.microsoft.com/library/azure/dn655054.aspx'
-        - name: Azure SDK pro .NET 2.2
-          href: 'https://msdn.microsoft.com/library/azure/dn459835.aspx'
-        - name: Azure SDK pro .NET 2.1
-          href: 'https://msdn.microsoft.com/library/azure/dn407359.aspx'
-        - name: Azure SDK pro .NET 2.0
-          href: 'https://msdn.microsoft.com/library/azure/dn169556.aspx'
-    - name: Osvědčené postupy
-      href: app-service-best-practices.md
-    - name: Ukázky
-      href: 'https://azure.microsoft.com/resources/samples/?service=app-service'
-    - name: Videa
-      href: 'https://azure.microsoft.com/resources/videos/index/?services=app-service'
-    - name: Podrobné návody
-      items:
-        - name: Referenční architektury
-          href: 'https://docs.microsoft.com/azure/architecture/reference-architectures/#web-applications'
-        - name: Skripty nasazení
-          href: 'https://azure.microsoft.com/documentation/scripts/'
-    - name: Řešení potíží
-      items:
-        - name: Řešení potíží se sadou Visual Studio
-          href: web-sites-dotnet-troubleshoot-visual-studio.md
-        - name: Řešení potíží s aplikací v Node.js
-          href: app-service-web-nodejs-best-practices-and-troubleshoot-guide.md
-        - name: Řešení chyb HTTP 502 a 503
-          href: app-service-web-troubleshoot-http-502-http-503.md
-        - name: Řešení potíží s výkonem
-          href: app-service-web-troubleshoot-performance-degradation.md
-        - name: Řešení potíží s doménami a certifikáty
-          href: app-service-web-troubleshoot-domain-ssl-certificates.md
-        - name: Nejčastější dotazy
-          items:
-            - name: 'Nejčastější dotazy k dostupnosti, výkonu a aplikacím'
-              href: app-service-web-availability-performance-application-issues-faq.md
-            - name: Nejčastější dotazy k nasazení
-              href: app-service-web-deployment-faq.md
-            - name: Nejčastější dotazy k opensourcovým technologiím
-              href: app-service-web-open-source-technologies-faq.md
-            - name: Nejčastější dotazy ke konfiguraci a správě
-              href: app-service-web-configuration-and-management-faq.md
-    - name: Změna IP adresy
-      items:
-        - name: Příchozí IP adresa
-          href: ip-address-change-inbound.md
-        - name: Odchozí IP adresa
-          href: ip-address-change-outbound.md
-        - name: Adresa SSL
-          href: ip-address-change-ssl.md
+      - name: Nejčastější dotazy k dostupnosti, výkonu a aplikacím
+        href: app-service-web-availability-performance-application-issues-faq.md
+      - name: Nejčastější dotazy k nasazení
+        href: app-service-web-deployment-faq.md
+      - name: Nejčastější dotazy k opensourcovým technologiím
+        href: app-service-web-open-source-technologies-faq.md
+      - name: Nejčastější dotazy ke konfiguraci a správě
+        href: app-service-web-configuration-and-management-faq.md
+  - name: Změna IP adresy
+    items:
+    - name: Příchozí IP adresa
+      href: ip-address-change-inbound.md
+    - name: Odchozí IP adresa
+      href: ip-address-change-outbound.md
+    - name: Adresa SSL
+      href: ip-address-change-ssl.md
+ms.openlocfilehash: 76411487d956b107097453a157993351c2ca8b1d
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44715240"

@@ -1,0 +1,63 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 99ddb641cefc0f31316a8de2f363b95afff0d053
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35624178"
+documentType: LandingData
+title: Dokumentace k vizuálnímu vyhledávání Bingu
+metadata:
+  document_id: 230494A6-34F9-416D-A6C0-57E69E1C2590
+  title: Dokumentace k Vizuálnímu vyhledávání Bingu – kurzy, reference k rozhraní API
+  description: Naučte se používat rozhraní API pro vizuální vyhledávání Bingu k získání podrobných informací o obrázku. Kurzy vám ukážou, jak vytvářet aplikace, které tuto službu používají.
+  services: cognitive-services
+  author: swhite-msft
+  manager: rosh
+  ms.service: bing-visual-search
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 04/24/2018
+  ms.author: scottwhi
+abstract:
+  description: Rozhraní API pro vizuální vyhledávání Bingu poskytuje prostředí podobné jako Bing.com/images. Vrací podrobné informace o obrázku, jako jsou vizuálně podobné obrázky, možnosti nákupu produktů nalezených v obrázku a související hledání.
+sections:
+- title: Zprovoznění během 5 minut
+  items:
+  - type: paragraph
+    text: 'Začněte využívat rozhraní API pro vizuální vyhledávání Bingu. Odešlete obrázek do Bingu a získejte o něm podrobné informace:'
+  - type: table
+    style: dataMatrix
+    columns:
+    - image:
+        src: media/index/logo_csharp.svg
+    - image:
+        src: media/index/logo_java.svg
+    - image:
+        src: media/index/logo_nodejs.svg
+    - image:
+        src: media/index/logo_python.svg
+    rows:
+    - title: Váš první dotaz
+      values:
+      - href: quickstarts/csharp
+      - href: quickstarts/java
+      - href: quickstarts/nodejs
+      - href: quickstarts/python
+- title: Podrobné kurzy
+  items:
+  - type: paragraph
+    text: 'Naučte se vyvíjet aplikace s využitím rozhraní API pro vizuální vyhledávání Bingu:'
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="tutorial-bing-visual-search-single-page-app">Jednostránková webová aplikace</a> | <a href="tutorial-bing-visual-search-single-page-app-source">zdrojový kód</a>
+- title: Referenční informace
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: REST v7 API
+      html: <p><a href="https://aka.ms/bingvisualsearchreferencedoc">Referenční materiály k rozhraní API</a></p>

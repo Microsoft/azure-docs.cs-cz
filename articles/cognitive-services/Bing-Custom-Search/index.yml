@@ -1,0 +1,64 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 85613f24d7bfed03a94733509aa5cb91e59f4333
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35624158"
+documentType: LandingData
+title: Dokumentace k Vlastnímu vyhledávání Bingu
+metadata:
+  title: Dokumentace k Vlastnímu vyhledávání Bingu – kurzy, reference k rozhraní API – Microsoft Cognitive Services | Microsoft Docs
+  description: Naučte se používat portál Vlastní vyhledávání Bingu k vytváření vlastních instancí vyhledávání.
+  services: cognitive-services
+  author: v-deken
+  manager: cgronlun
+  layout: LandingPage
+  ms.service: cognitive-services
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 05/07/2018
+  ms.author: v-deken
+abstract:
+  description: Naučte se používat Vlastní vyhledávání Bingu k vytváření přizpůsobených vyhledávacích prostředí pro témata, o která máte zájem. Pokud například vlastníte web jízdních kol, který poskytuje možnosti vyhledávání, můžete určit domény, podřízené weby a webové stránky, které Bing prohledává. Rychlá zprovoznění, kurzy a referenční příručky k rozhraním API vám ukážou, jak postupovat.
+sections:
+- title: Zprovoznění během 5 minut
+  items:
+  - type: paragraph
+    text: 'Prohledání vlastního zobrazení webu s využitím:'
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: media/logo_Csharp.svg
+      href: call-endpoint-csharp
+      text: C&#35;
+    - image:
+        src: media/logo_java.svg
+      href: call-endpoint-java
+      text: Java
+    - image:
+        src: media/logo_nodejs.svg
+      href: call-endpoint-nodejs
+      text: Node.js
+    - image:
+        src: media/logo_python.svg
+      href: call-endpoint-python
+      text: Python
+- title: Podrobný kurz
+  items:
+  - type: paragraph
+    text: 'Naučte se vyvíjet aplikace s využitím rozhraní API pro vlastní vyhledávání Bingu:'
+  - type: paragraph
+    text: <a href="tutorials/custom-search-web-page">Vytvoření webové stránky pro vlastní vyhledávání</a>
+- title: Referenční informace
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: Rozhraní API
+      html: <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference">Rozhraní API pro vlastní vyhledávání Bingu v7</a></p><p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-autosuggest-api-v7-reference">Rozhraní API pro automatické návrhy Bingu v7</a></p><p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-images-api-v7-reference">Rozhraní API Bingu pro vyhledávání obrázků v7</a></p>
+    - title: Sady SDK
+      html: <p><a href="sdk.md">Sada SDK pro Vyhledávání Bingu</a></p>

@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: fd3b48648ca0b8f7ce1d134bc7a40a7b1f5ed348
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35759197"
 documentType: LandingData
 title: Dokumentace ke službě Azure Media Services
 metadata:
@@ -14,12 +20,6 @@ metadata:
   ms.topic: landing-page
   ms.date: 04-21-2018
   ms.author: juliako
-  ms.openlocfilehash: 781cd8eb2796062b3cebb6b848ee5f1fe204f460
-  ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
-  ms.translationtype: HT
-  ms.contentlocale: cs-CZ
-  ms.lasthandoff: 05/20/2018
-  ms.locfileid: "34361280"
 abstract:
   description: Azure Media Services je cloudová platforma, která umožňuje vytvářet řešení zajišťující streamování videa ve vysílací kvalitě, vylepšovat dostupnost a distribuci, analyzovat obsah a nejenom to.
 sections:
@@ -32,34 +32,29 @@ sections:
     - href: /azure/media-services/latest/
       html: <p>Naučíte se kódovat, streamovat na vyžádání, živě vysílat a analyzovat vaše videa pomocí Media Services v3.</p>
       image:
-        src: media/index/media-services-v3.png
+        src: media/index/AMSIcons-media_servicesV3.svg
       title: Azure Media Services v3 (Preview)
     - href: /azure/media-services/previous/
       html: <p>Naučíte se kódovat, streamovat na vyžádání a živě vysílat vaše videa pomocí Media Services v2.</p>
       image:
-        src: media/index/media-services-v2.png
+        src: media/index/AMSIcons-media_servicesV2.svg
       title: Azure Media Services v2 (GA)
 - title: Zprovoznění během 5 minut
   items:
   - type: paragraph
-    text: 'Naučte se stremovat živě i na vyžádání s využitím Media Services:'
+    text: 'Další informace o kódování a streamování pomocí Media Services:'
   - type: table
     style: dataMatrix
     columns:
     - image:
-        src: media/index/stream.png
-      title: Živé streamování
-    - image:
-        src: media/index/stream.png
+        src: media/index/AMSIcons-encoding.svg
       title: Streamování souborů
     rows:
     - title: Media Services v3
       values:
-      - href: https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/tree/master/NETCore/Live
       - href: /azure/media-services/latest/stream-files-dotnet-quickstart
     - title: Media Services v2
       values:
-      - href: /azure/media-services/previous/media-services-portal-live-passthrough-get-started
       - href: /azure/media-services/previous/media-services-portal-vod-get-started
 - title: Podrobné kurzy
   items:
@@ -69,17 +64,22 @@ sections:
     style: dataMatrix
     columns:
     - image:
-        src: media/index/encode.png
+        src: media/index/AMSIcons-encoding.svg
       title: Kódování a streamování
     - image:
-        src: media/index/analyze.png
+        src: media/index/AMSIcons-live.svg
+      title: Živé streamování
+    - image:
+        src: media/index/AMSIcons-media_analytics.svg
       title: Analýza videí
     rows:
     - title: Media Services v3
       values:
       - href: /azure/media-services/latest/stream-files-tutorial-with-api
+      - href: /azure/media-services/latest/stream-live-tutorial-with-api
       - href: /azure/media-services/latest/analyze-videos-tutorial-with-api
     - title: Media Services v2
       values:
       - href: /azure/media-services/previous/media-services-dotnet-get-started
+      - href: /azure/media-services/previous/media-services-portal-live-passthrough-get-started
       - href: 
