@@ -1,51 +1,27 @@
 ---
-title: Dávky k testování používejte ke zlepšení LUIS předpovědi | Microsoft Docs
-titleSuffix: Azure
-description: Zátěžový batch test, zkontrolujte výsledky a zlepšit LUIS předpovědi s změny.
+title: 'Tutoriál 2: Dávkové testovací sadu 1000 projevy '
+titleSuffix: Azure Cognitive Services
+description: Tento kurz ukazuje, jak pomocí služby batch testu najít utterance předpovědi problémy ve vaší aplikaci a opravte je.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 08/02/2018
+ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 5abaeaee87d54e82df29e75b89c83522b8746730
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 1f1055b84a83d71931ebd0ca11b5bcd1bd16ad02
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44158241"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45630969"
 ---
-# <a name="improve-app-with-batch-test"></a>Vylepšit aplikaci s testováním služby batch
+# <a name="tutorial--2-batch-test-data-sets"></a>Kurz: č. 2. Batch testovací datové sady
 
-Tento kurz ukazuje, jak najít utterance předpovědi problémy pomocí služby batch testu.  
-
-V tomto kurzu se naučíte:
-
-<!-- green checkmark -->
-> [!div class="checklist"]
-* Vytvořte dávkový soubor testu 
-* Spuštění testu služby batch
-* Kontrola výsledků testu
-* Opravit chyby 
-* Opětovné testování služby batch
-
-[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
-
-## <a name="before-you-begin"></a>Než začnete
-
-Pokud nemáte aplikaci lidských zdrojů [zkontrolujte projevy koncový bod](luis-tutorial-review-endpoint-utterances.md) kurzu [importovat](luis-how-to-start-new-app.md#import-new-app) JSON do nové aplikace ve [LUIS](luis-reference-regions.md#luis-website) webu. Aplikaci k importování najdete v úložišti [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-review-HumanResources.json) na Githubu.
-
-Pokud chcete zachovat původní aplikaci pro lidské zdroje, naklonujte verzi na stránce [Settings](luis-how-to-manage-versions.md#clone-a-version) (Nastavení) a pojmenujte ji `batchtest`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. 
-
-Trénování aplikace.
-
-## <a name="purpose-of-batch-testing"></a>Účelem testování služby batch
+Tento kurz ukazuje, jak pomocí služby batch testu najít utterance předpovědi problémy ve vaší aplikaci a opravte je.  
 
 Testování služby batch vám pomůže ověřit aktivní, Trénink modelu stavu se známou sadou s popiskem projevy a entit. V souboru ve formátu JSON služby batch přidejte projevy a nastavte popisky entity, které potřebujete předpovědět uvnitř utterance. 
-
-<!--The recommended test strategy for LUIS uses three separate sets of data: example utterances provided to the model, batch test utterances, and endpoint utterances. --> Při používání aplikace než tento kurz, ujistěte se, že jste *není* pomocí příkladu projevy již byla přidána do záměru. Chcete-li ověřit váš test projevy batch proti projevy příklad [exportovat](luis-how-to-start-new-app.md#export-app) aplikace. Porovnání aplikace příklad utterance k projevy testovací služby batch. 
 
 Požadavky pro testování služby batch:
 
@@ -53,13 +29,42 @@ Požadavky pro testování služby batch:
 * Žádné duplicity. 
 * Povolené typy entit: pouze entity se naučili obrobeny použití jednoduchých, hierarchické (pouze nadřazené) a složené. Testování služby batch je užitečná pouze pro obrobeny zjistili záměry a entity.
 
-## <a name="create-a-batch-file-with-utterances"></a>Vytvořte dávkový soubor se projevy
+Při používání aplikace než v tomto kurzu, proveďte *není* pomocí příkladu projevy již byla přidána do záměru. 
 
-1. Vytvoření `HumanResources-jobs-batch.json` v textovém editoru, jako [VSCode](https://code.visualstudio.com/). 
+**V tomto kurzu se dozvíte, jak:**
+
+<!-- green checkmark -->
+> [!div class="checklist"]
+> * Použít existující ukázková aplikace
+> * Vytvořte dávkový soubor testu 
+> * Spuštění testu služby batch
+> * Kontrola výsledků testu
+> * Opravit chyby 
+> * Opětovné testování služby batch
+
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+
+## <a name="use-existing-app"></a>Použití existující aplikace
+
+Pokračovat s aplikací vytvořili v posledním kurzu s názvem **Lidskézdroje**. 
+
+Pokud nemáte aplikaci lidských zdrojů z předchozí kurz o službě, použijte následující kroky:
+
+1.  Stáhněte a uložte [souboru JSON aplikace](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-review-HumanResources.json).
+
+2. Importujte ve formátu JSON do nové aplikace.
+
+3. Z **spravovat** části na **verze** kartu, naklonujte na verzi a pojmenujte ho `batchtest`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. Název verze, protože se používají jako součást trasu adresy URL název nesmí obsahovat žádné znaky, které nejsou platné v adrese URL. 
+
+4. Trénování aplikace.
+
+## <a name="batch-file"></a>Dávkový soubor
+
+1. Vytvoření `HumanResources-jobs-batch.json` v textovém editoru nebo [Stáhnout](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/HumanResources-jobs-batch.json) ho. 
 
 2. V souboru ve formátu JSON batch přidání projevů s **záměr** chcete předpokládané v testu. 
 
-   [!code-json[Add the intents to the batch test file](~/samples-luis/documentation-samples/tutorial-batch-testing/HumanResources-jobs-batch.json "Add the intents to the batch test file")]
+   [!code-json[Add the intents to the batch test file](~/samples-luis/documentation-samples/tutorials/HumanResources-jobs-batch.json "Add the intents to the batch test file")]
 
 ## <a name="run-the-batch"></a>Spusťte dávku
 
@@ -73,13 +78,13 @@ Požadavky pro testování služby batch:
 
     [![Aplikace LUIS snímek obrazovky s datovou sadou Import zvýrazněnou](./media/luis-tutorial-batch-testing/hr-import-dataset-button.png)](./media/luis-tutorial-batch-testing/hr-import-dataset-button.png#lightbox)
 
-4. Vyberte umístění systému souboru `HumanResources-jobs-batch.json` souboru.
+4. Zvolit umístění souboru `HumanResources-jobs-batch.json` souboru.
 
 5. Zadejte název datové sady `intents only` a vyberte **provádí**.
 
     ![Výběr souboru](./media/luis-tutorial-batch-testing/hr-import-new-dataset-ddl.png)
 
-6. Vyberte tlačítko **Spustit**. Počkejte, dokud se provádí test.
+6. Vyberte tlačítko **Spustit**. 
 
 7. Vyberte **zobrazit výsledky**.
 
@@ -109,7 +114,7 @@ Všimněte si, že oba záměry mají stejný počet chyb. Nesprávný predikce 
 
 K časovému okamžiku projevy odpovídající nahoře **falešně pozitivní** jsou části `Can I apply for any database jobs with this resume?` a `Can I apply for any database jobs with this resume?`. Pro první utterance slovo `resume` pouze se použil **ApplyForJob**. Pro druhý utterance slovo `apply` pouze se použil **ApplyForJob** záměr.
 
-## <a name="fix-the-app-based-on-batch-results"></a>Oprava aplikace na základě výsledků služby batch
+## <a name="fix-the-app"></a>Oprava aplikace
 
 Cílem této části je, aby všechny projevy správně předpovědět pro **GetJobInformation** po opravě aplikace. 
 
@@ -119,7 +124,7 @@ Může vás také zajímat o odebrání projevy z **ApplyForJob** dokud množstv
 
 První opravu, je přidat další projevy do **GetJobInformation**. Druhý oprava je omezení hmotnosti slova, jako je `resume` a `apply` směrem k **ApplyForJob** záměr. 
 
-### <a name="add-more-utterances-to-getjobinformation"></a>Přidat další projevy do **GetJobInformation**
+### <a name="add-more-utterances"></a>Přidání další projevů
 
 1. Zavřít panel dávky testů tak, že vyberete **testování** tlačítko v horním navigačním panelu. 
 
@@ -149,7 +154,7 @@ První opravu, je přidat další projevy do **GetJobInformation**. Druhý oprav
 
 4. Trénování aplikace tak, že vyberete **Train** v pravém horním navigačním panelu.
 
-## <a name="verify-the-fix-worked"></a>Ověření opravy pracoval
+## <a name="verify-the-new-model"></a>Ověřte nový model
 
 Pokud chcete ověřit, že jsou správně předpovědět projevy v testu služby batch, znovu spusťte test služby batch.
 
@@ -171,12 +176,12 @@ Při prvním psaní a testování dávkové soubory, je nejlepší začít s ně
 
 Hodnota **úlohy** entita, součástí projevy testu je obvykle jedno nebo dvě slova s pár příkladů se další slova. Pokud _vlastní_ lidských zdrojů, aplikace obvykle obsahuje názvy úlohy řada výrazů, příklad projevy označené **úlohy** entity v této aplikaci nebude fungovat správně.
 
-1. Vytvoření `HumanResources-entities-batch.json` v textovém editoru, jako [VSCode](https://code.visualstudio.com/). Nebo si stáhněte [soubor](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorial-batch-testing/HumanResources-entities-batch.json) z úložiště Githubu ukázky LUIS.
+1. Vytvoření `HumanResources-entities-batch.json` v textovém editoru, jako [VSCode](https://code.visualstudio.com/) nebo [Stáhnout](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/HumanResources-entities-batch.json) ho.
 
 
 2. V souboru ve formátu JSON služby batch, přidejte pole objektů, které zahrnují projevy s **záměr** chcete předpokládané v testu, stejně jako umístění všech entit v utterance. Entita je založená na tokenech, ujistěte se, že ke spouštění a zastavování Každá entita na znak. Začínat nebo končit utterance v prostoru. To způsobí chybu při importu souboru služby batch.  
 
-   [!code-json[Add the intents and entities to the batch test file](~/samples-luis/documentation-samples/tutorial-batch-testing/HumanResources-entities-batch.json "Add the intents and entities to the batch test file")]
+   [!code-json[Add the intents and entities to the batch test file](~/samples-luis/documentation-samples/tutorials/HumanResources-entities-batch.json "Add the intents and entities to the batch test file")]
 
 
 ## <a name="run-the-batch-with-entities"></a>Spusťte dávku s entitami
@@ -222,15 +227,13 @@ Tyto úlohy jsou ponechána musíte udělat.
 
 Přidávání [vzor](luis-concept-patterns.md) před entity je správně předpovědět, nebude tento problém vyřešit. Je to proto, že vzor nebudou odpovídat, dokud se zjistí všechny entity ve vzoru. 
 
-## <a name="what-has-this-tutorial-accomplished"></a>Co bylo účelem tohoto kurzu?
-
-Nalezení chyby v dávce a opravu modelu se zvýšila přesnost předpovědi aplikace. 
-
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Další postup
+
+Tento kurz používá testovací služby batch k najít problémy s aktuální model. Model bylo opraveno a podrobeny novému testování s dávkový soubor, pokud chcete ověřit že správné provedení změny.
 
 > [!div class="nextstepaction"]
 > [Další informace o vzorech](luis-tutorial-pattern.md)

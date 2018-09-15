@@ -6,13 +6,13 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 09/10/2018
-ms.openlocfilehash: ea72e4ac778e52d4f6e4f5597d38a1de59ba43fc
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.date: 09/14/2018
+ms.openlocfilehash: 193aa8f87a90eb7bbf1e2c49132ad480881d41fe
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44348935"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45633465"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms"></a>Azure Disk Encryption pro virtuální počítače IaaS 
 Microsoft Azure platí závazek k zajištění ochrany osobních údajů, suverenita dat a umožňuje řízení hostované v Azure celou řadu technologie šifrování, řídit a spravovat šifrovací klíče dat a dat přístup k řízení a auditu. Tento ovládací prvek poskytuje zákazníkům Azure vybrat řešení, které nejlíp vyhovují jejich potřebám firmy. Tento článek vás seznámí s technologických řešeních "Disk Encryption pro Windows a Linux virtuálních počítačů Azure IaaS", k ochraně a chránit vaše data ke splnění požadavků vaší organizace na zabezpečení a závazky dodržování předpisů. 
@@ -78,7 +78,10 @@ Toto řešení nepodporuje následující scénáře, funkce a technologie:
 * Virtuální počítače IaaS, které jsou vytvořeny pomocí klasické metody vytvoření virtuálního počítače
 * Povolení šifrování na vlastních imagích virtuálních počítačů IaaS s Linuxem zákazníka
 * Integrace s vaší místní služba správy klíčů
-* Služba soubory Azure (sdílený systém souborů), Network File System (NFS), dynamických svazků a virtuálních počítačů s Windows, které jsou nakonfigurované pro systémy založené na softwaru diskového pole RAID
+* Služba soubory Azure (sdílený systém souborů)
+* Network File System (NFS)
+* Dynamické svazky
+* Virtuální počítače s Windows, které jsou nakonfigurované pro systémy založené na softwaru diskového pole RAID
 
 ## <a name="encryption-features"></a>Funkce šifrování
 Když povolíte a nasadíte Azure Disk Encryption pro virtuální počítače Azure IaaS, jsou povoleny následující funkce, v závislosti na konfiguraci k dispozici:

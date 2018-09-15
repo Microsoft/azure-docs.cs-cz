@@ -1,5 +1,6 @@
 ---
-title: Spravovat předplatné koncový bod Azure | Dokumentace Microsoftu
+title: Koncový bod správy předplatného ve LUIS
+titleSuffix: Azure Cognitive Services
 description: V tomto článku vytvoříte klíč monitorovaný koncový bod pro váš účet služby LUIS k poskytování neomezené přenosy do vašeho koncového bodu po platební plán.
 services: cognitive-services
 author: diberry
@@ -7,14 +8,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 0b735499ae589e44c2ce5076fce38ec47ddd69c7
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: dcee5ce7ce103db734cf4b63c26944945efed0ea
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223275"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45630898"
 ---
 # <a name="manage-azure-endpoint-subscription-keys"></a>Spravovat klíče předplatného koncový bod Azure
 
@@ -26,7 +27,7 @@ Pro účely testování a prototypu pouze úroveň free (F0) můžete použijte.
 <a name="create-luis-service"></a>
 ## <a name="create-luis-endpoint-key"></a>Vytvoření klíče koncového bodu služby LUIS
 
-1. Přihlaste se k  **[Microsoft Azure](https://ms.portal.azure.com/)** 
+1. Přihlaste se k  **[Microsoft Azure](https://ms.portal.azure.com/)**. 
 2. Klikněte na zelené **+** přihlášení v horní panel vlevo a vyhledejte položku "LUIS" na webu Marketplace a potom klikněte na **Language Understanding** a postupujte podle pokynů **vytvořit prostředí**  k vytvoření účtu předplatného služba LUIS. 
 
     ![Azure Search](./media/luis-azure-subscription/azure-search.png) 
@@ -40,8 +41,7 @@ Pro účely testování a prototypu pouze úroveň free (F0) můžete použijte.
     ![Azure klíče](./media/luis-azure-subscription/azure-keys.png)
 
     > [!Note] 
-    > * Přihlaste se k vaší oblasti [LUIS](luis-reference-regions.md) webu a [přidejte nový klíč koncového bodu služby LUIS](luis-how-to-manage-keys.md#assign-endpoint-key). 
-    > * Je potřeba si vzpomenout název služby Azure jste vytvořili, abyste mohli vybrat ve vaší oblasti [LUIS](luis-reference-regions.md) stránka publikovat.  
+    > Přihlaste se k vaší oblasti [LUIS](luis-reference-regions.md) webu a [přiřadit nový LUIS klíče koncového bodu](luis-how-to-manage-keys.md#assign-endpoint-key). Budete potřebovat název předplatného služby LUIS z kroku 3.
 
 ## <a name="change-luis-pricing-tier"></a>Změna LUIS cenová úroveň
 

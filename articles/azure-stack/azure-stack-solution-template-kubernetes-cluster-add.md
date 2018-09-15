@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/12/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: c9429f5909e5ba3fd66681fa62cf16125922d075
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: ded2aa17fe9b8de2d8c8f662f5d99b1ce33a2b25
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721768"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634196"
 ---
 # <a name="add-a-kubernetes-cluster-to-the-azure-stack-marketplace"></a>Přidání clusteru Kubernetes do Tržiště Azure Stack
 
@@ -110,7 +110,7 @@ Přidání clusteru Kubernetes z Marketplace:
 
 1. Otevřít [portál pro správu](https://adminportal.local.azurestack.external).
 
-1. Vyberte **A; služby** a potom v části **správu** vyberte **Marketplace správu**.
+1. Vyberte **přidat služby** a potom v části **správu** vyberte **Marketplace správu**.
 
 1. Vyberte **+ přidat z Azure**.
 

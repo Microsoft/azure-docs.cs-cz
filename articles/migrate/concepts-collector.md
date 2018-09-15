@@ -4,15 +4,15 @@ description: Poskytuje přehled zařízení Kolektoru a jeho konfiguraci.
 author: ruturaj
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 09/14/2018
 ms.author: ruturajd
 services: azure-migrate
-ms.openlocfilehash: dae6cc9a55049e2b44291eb105288b33a1db9e7b
-ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
+ms.openlocfilehash: 6822bd149d5542d577fa18db3c9f50007ae48d35
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44325528"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605058"
 ---
 # <a name="collector-appliance"></a>Zařízení kolektoru
 
@@ -30,12 +30,17 @@ Pomocí následujících kroků můžete vytvořit kolektor zde - [vytvoření v
 
 Existují dvě metody, ve kterých zjistíte v místním prostředí:
 
-a. **Jednorázově:** kolekcí tohoto modelu komunikuje s vCenter Server ke shromažďování metadat virtuální počítače. Pro shromažďování dat o výkonu virtuálních počítačů závisí na výkonu historických datech uložených v systému vCenter Server a shromažďuje historie výkonu za poslední měsíc. V tomto modelu Azure Migrate shromažďuje čítač Průměrná (oproti čítače ve špičce) pro jednotlivé metriky, [Další informace] (https://docs.microsoft.com/azure/migrate/concepts-collector#what-data-is-collected) o čítače výkonu shromážděné službou Azure Migrate. Protože jde o jednorázovou zjišťování, zařízení v tomto případě není nepřetržitě připojeny k projektu. Proto se neprojeví změny v místním prostředí ve službě Azure Migrate, po dokončení zjišťování. Pokud chcete změny tak, aby odrážely, budete muset provést opakované zjišťování stejného prostředí do stejného projektu.
+a. **Jednorázově:** kolekcí tohoto modelu komunikuje s vCenter Server ke shromažďování metadat virtuální počítače. Pro shromažďování dat o výkonu virtuálních počítačů závisí na výkonu historických datech uložených v systému vCenter Server a shromažďuje historie výkonu za poslední měsíc. V tomto modelu Azure Migrate počítadlo průměrné (oproti čítače ve špičce) pro jednotlivé metriky. Protože jde o jednorázovou zjišťování, zařízení v tomto případě není nepřetržitě připojeny k projektu. Proto se neprojeví změny v místním prostředí ve službě Azure Migrate, po dokončení zjišťování. Pokud chcete změny tak, aby odrážely, budete muset provést opakované zjišťování stejného prostředí do stejného projektu.
+
+> [!NOTE]
+> Tato metoda vyžaduje, abyste nastavení statistiky v systému vCenter Server na úroveň 3 a počkat aspoň jeden den před zahájením zjišťování ke shromažďování metrik výkonu vyžaduje.
 
 b. **Průběžná zjišťování:** zařízení kolektoru pro tento model je trvalým připojením k projektu Azure Migrate. Průběžně profily v místním prostředí pro shromažďování dat o využití v reálném čase na každých 20 sekund. Zařízení potom zobrazí – až 20 sekund ukázky a vytvoří jeden datový bod pro každých 15 minut výběrem maximální hodnotu, která se posílají do Azure. Tento model není závislý na nastavení statistiky systému vCenter Server pro shromažďování dat o výkonu. Můžete zastavit průběžné kdykoli profilace ze zařízení.
 
 > [!NOTE]
-> Průběžná zjišťování funkce je ve verzi preview.
+> Průběžná zjišťování funkce je ve verzi preview. Pokud server vCenter Server statistiky, které nastavení nastavené na úroveň 3, doporučujeme použít tuto metodu.
+
+[Další informace] (https://docs.microsoft.com/azure/migrate/concepts-collector#what-data-is-collected) o čítače výkonu shromážděné službou Azure Migrate.
 
 ## <a name="collector-communication-diagram"></a>Diagram komunikace kolekcí
 

@@ -8,17 +8,17 @@ ms.topic: include
 ms.date: 06/12/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c681e5f68299c03685dd7722f8dc671e49026f78
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: ad75b333fc7d5d37a4ac074727e4d54b67bd0321
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43305091"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45636985"
 ---
 #### <a name="expressroute-limits"></a>Limity pro ExpressRoute
 Následující omezení platí pro prostředky ExpressRoute na jedno předplatné.
 
-| Prostředek | Výchozí omezení |
+| Prostředek | Výchozí/maximálního limitu |
 | --- | --- |
 | Okruhy ExpressRoute podle předplatného |10 |
 | Okruhy ExpressRoute na oblast a předplatné (Azure Resource Manageru) |10 |

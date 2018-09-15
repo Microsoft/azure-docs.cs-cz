@@ -3,7 +3,7 @@ title: Aktualizace služby Azure Stack. 1808 | Dokumentace Microsoftu
 description: Další informace o co je nového v aktualizaci. 1808 pro integrované systémy Azure Stack, včetně známých problémů a kde se stáhnout aktualizaci.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: cb8f88721495376ba1bf31ac5781e4037cc3d16a
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 921e9df11cd79e9d2558d9ca6a490a8da064deb8
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45544256"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45630337"
 ---
 # <a name="azure-stack-1808-update"></a>Aktualizace služby Azure Stack. 1808
 

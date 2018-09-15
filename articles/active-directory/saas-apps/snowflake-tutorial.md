@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/07/2018
+ms.date: 09/10/2018
 ms.author: jeedes
-ms.openlocfilehash: 247d18eb13f7bad10cbfd89891a80d2d1c6135c3
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: c611fd7893a96113a4a9f2454bcd0b11db02be29
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44160539"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605098"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-snowflake"></a>Kurz: Integrace Azure Active Directory se službou Snowflake
 

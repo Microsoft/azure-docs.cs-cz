@@ -10,12 +10,12 @@ ms.custom: security
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: vanto
-ms.openlocfilehash: d8f8a823f19ff233d05d09c126cf2524a0aa532e
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 5149b4cbd1e86bfca3ad7d628d129a08aff60a98
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45542189"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45604297"
 ---
 # <a name="always-encrypted-protect-sensitive-data-in-sql-database-and-store-your-encryption-keys-in-azure-key-vault"></a>Funkce Always Encrypted: Ochrana citlivých dat ve službě SQL Database a ukládání šifrovacích klíčů ve službě Azure Key Vault
 
@@ -595,7 +595,9 @@ Uvidíte, že šifrované sloupce nebudou obsahovat žádná data ve formátu pr
 
    ![Novou konzolovou aplikaci](./media/sql-database-always-encrypted-azure-key-vault/ssms-encrypted.png)
 
-Použití SSMS k přístupu k datům ve formátu prostého textu, můžete přidat *nastavení šifrování sloupce = povoleno* parametr připojení.
+Použití SSMS k přístupu k datům ve formátu prostého textu, je nejprve potřeba zajistit, že uživatel má příslušná oprávnění ke službě Azure Key Vault: *získat*, *unwrapKey*, a *ověřte*. Podrobné informace najdete v tématu [vytvořit a hlavních klíčů sloupce pro Store (Always Encrypted)](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted?view=sql-server-2017).
+
+Pak přidejte *nastavení šifrování sloupce = povoleno* parametr během připojení.
 
 1. V aplikaci SSMS klikněte pravým tlačítkem na váš server v **Průzkumník objektů** a zvolte **odpojit**.
 2. Klikněte na tlačítko **připojit** > **databázový stroj** otevřít **připojit k serveru** okno a klikněte na tlačítko **možnosti**.

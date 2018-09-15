@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 06/30/2018
-ms.openlocfilehash: 1fd5905b8ea3f87fe6cfc2a830b73b8120a717dd
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: c18faa94f207b98400fece366a23a68c3d7bc58c
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37341473"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45633176"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Omezení ve službě Azure Database for MySQL
 Následující části popisují kapacitu, podpora modulu úložiště, oprávnění podpory, podpora příkaz manipulace dat a funkční omezení v databázi služby. Viz také [obecná omezení](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) pro databázového stroje MySQL.
@@ -72,7 +72,7 @@ Při připojení překročí limit, může se zobrazit následující chyba:
 - Snížení velikosti úložiště serveru se nepodporuje.
 
 ### <a name="server-version-upgrades"></a>Upgrady verze serveru
-- Automatizovaný přenos mezi verzí vyhledávacích strojů hlavní databáze se aktuálně nepodporuje.
+- Automatizovaný přenos mezi verzí vyhledávacích strojů hlavní databáze se aktuálně nepodporuje. Pokud chcete upgradovat na novou hlavní verzi, [výpisu a obnovení](./concepts-migrate-dump-restore.md) ho na server, který byl vytvořen v nové verzi modulu.
 
 ### <a name="point-in-time-restore"></a>Obnovení do bodu v čase
 - Při použití funkce PITR se vytvoří nový server se stejnou konfiguraci jako server, který je založen na.

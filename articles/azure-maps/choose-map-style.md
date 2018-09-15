@@ -8,14 +8,15 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 160752cd0467ef307f7a45b1e0d703c7ddd5d773
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 9122a349fd81cf723e21cd17e09e15d1d9f64503
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44720799"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634757"
 ---
 # <a name="choose-a-map-style-in-azure-maps"></a>Vyberte styl map ve službě Azure Maps
+
 Azure Maps má čtyři různé mapy styly lze vybírat. Další informace o mapování stylů, najdete v článku [podporován styly mapy ve službě Azure Maps](./supported-map-styles.md). Tento článek ukazuje, jak můžete nastavit styl na mapě zatížení, nastavit nový styl a pomocí ovládacího prvku pro výběr stylu funkce související se stylem.
 
 ## <a name="setting-style-on-map-load"></a>Nastavení stylu na mapě zatížení
@@ -47,14 +48,17 @@ Styl ovládacího prvku pro výběr umožňuje výběr stylu pro mapu. Třetí b
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o třídy a metody používané v tomto článku: 
-* [Mapa](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
-    * [setStyle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setstyle)
-    * [addControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol)
+Další informace o třídách a metodách použité v tomto článku:
 
-* [Atlas](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas?view=azure-iot-typescript-latest)
-    * [StyleControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.stylecontrol?view=azure-iot-typescript-latest#stylecontrol)
-    
-Další příklady kódu pro přidání do vaše mapy najdete v následujících článcích:
-* [Přidat ovládací prvky mapy](./map-add-controls.md)
-* [Přidání špendlíku](./map-add-pin.md)
+> [!div class="nextstepaction"]
+> [Mapa](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+
+Přidejte ovládací prvek pro vaše mapy:
+
+> [!div class="nextstepaction"]
+> [Přidat ovládací prvky mapy](./map-add-controls.md)
+
+Přidání špendlíku mapy:
+
+> [!div class="nextstepaction"]
+> [Přidání špendlíku](./map-add-pin.md)

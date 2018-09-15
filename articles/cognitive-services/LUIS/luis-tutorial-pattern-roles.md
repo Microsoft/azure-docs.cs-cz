@@ -1,80 +1,70 @@
 ---
-title: Kurz použití vzoru rolí k vylepšení predikce služby LUIS – Azure | Dokumentace Microsoftu
-titleSuffix: Cognitive Services
-description: V tomto kurzu používá k vylepšení predikce služby LUIS vzor role pro kontextově související entity.
+title: 'Tutoriál 4: Role vzor pro kontext souvisejících dat'
+titleSuffix: Azure Cognitive Services
+description: Extrahovat data z utterance správně naformátovaný šablony pomocí vzoru. Šablona utterance používá jednoduché entity a role extrahovat související data, jako je původní umístění a cílové umístění.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
-ms.technology: luis
+ms.technology: language-understanding
 ms.topic: article
-ms.date: 08/03/2018
+ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 6f3e7c9db7bbdb6bc24d123208355fc7a1d8e7e8
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: f3ddbad350ed42823ca95136ae2a507c46c3c763
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44161930"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634536"
 ---
-# <a name="tutorial-improve-app-with-pattern-roles"></a>Kurz: Vylepšit aplikaci pomocí vzoru role
+# <a name="tutorial-4-extract-contextually-related-patterns"></a>Kurz: 4. Extrahovat kontextově související vzory
 
-V tomto kurzu použijte jednoduchou entitu s rolemi v kombinaci s modely ke zvýšení predikcí záměr a entity.  Při použití vzorů, jsou potřeba méně projevy příklad záměr.
+V tomto kurzu pomocí vzoru extrahovat data z utterance správně naformátovaný šablony. Šablona utterance používá jednoduché entity a role extrahovat související data, jako je původní umístění a cílové umístění.  Při použití vzorů, jsou potřeba méně projevy příklad záměr.
 
-> [!div class="checklist"]
-* Principy role modelu
-* Použití jednoduché entity s rolemi 
-* Vytvoření vzor pro projevy pomocí jednoduchých entit s rolemi
-* Postup ověření vylepšení predikce modelu
-
-[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
-
-## <a name="before-you-begin"></a>Než začnete
-Pokud nemáte aplikaci lidských zdrojů [vzor](luis-tutorial-pattern.md) kurzu [importovat](luis-how-to-start-new-app.md#import-new-app) JSON do nové aplikace ve [LUIS](luis-reference-regions.md#luis-website) webu. App k importu se nachází v [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-patterns-HumanResources-v2.json) úložiště GitHub.
-
-Pokud chcete zachovat původní aplikaci pro lidské zdroje, naklonujte verzi na stránce [Settings](luis-how-to-manage-versions.md#clone-a-version) (Nastavení) a pojmenujte ji `roles`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. 
-
-## <a name="the-purpose-of-roles"></a>Účel role
 Účelem role je extrahovat kontextově související entity v utterance. V utterance `Move new employee Robert Williams from Sacramento and San Francisco`, Město původu a Město cílové hodnoty se vztahují k sobě navzájem a použijte společný jazyk pro každé umístění. 
 
-Při použití vzorů, musí být rozpoznány všechny entity ve vzoru _před_ vzor odpovídá utterance. 
 
-Když vytvoříte vzor, prvním krokem je vybrat záměr pro vzor. Tak, že vyberete záměr, pokud vzor odpovídá, správné záměr je vždy vrátí s vysokým skóre (obvykle 99 100 %). 
-
-### <a name="compare-hierarchical-entity-to-simple-entity-with-roles"></a>Porovnání hierarchické entita, která má jednoduchou entitu s rolemi
-
-V [hierarchické kurzu](luis-quickstart-intent-and-hier-entity.md), **MoveEmployee** záměr zjistila, kdy se má přesunout existující zaměstnance z jednoho sestavení a office do jiného. Projevy příklad měl zdroj a cíl umístění, ale nepoužívá role. Místo toho zdroj a cíl byly podřízené prvky hierarchické entity. 
-
-V tomto kurzu zjistí aplikaci lidských zdrojů projevy informace o přesunu do jiného Noví zaměstnanci z jedno z měst. Tyto dva druhy projevy jsou podobné, ale s různými schopnostmi LUIS vyřešit.
-
-|Kurz|Příklad utterance|Zdroj a cíl umístění|
-|--|--|--|
-|[Hierarchické (žádné role)](luis-quickstart-intent-and-hier-entity.md)|MV Jill Jones z **a-2349** k **b-1298**|a-2349 b-1298|
-|Tento kurz (s rolemi)|Přesunout Billy Patterson z **Yuma** k **Denver**.|Yuma, Denver|
-
-Hierarchické entity ve vzoru nelze použít, protože pouze hierarchické nadřazených objektů se používají ve vzorcích. Aby bylo možné vrátit pojmenovaná umístění, původu a cíl, muse použití vzoru.
-
-### <a name="simple-entity-for-new-employee-name"></a>Jednoduchou entitu pro nové jméno zaměstnance
 Název nového zaměstnance Billy Patterson, není součástí seznamu entity **zaměstnance** ještě. Název nového zaměstnance je extrahován nejprve, aby bylo možné odeslat název do externího systému k vytvoření přihlašovacích údajů společnosti. Po vytvoření přihlašovacích údajů společnosti pověření zaměstnanec jsou přidány do seznamu entit **zaměstnance**.
 
-**Zaměstnance** seznam byl vytvořen v [seznamu kurzu](luis-quickstart-intent-and-list-entity.md).
-
-**Novýzaměstnanec** entita je jednoduché entity se žádné role. 
-
-### <a name="simple-entity-with-roles-for-relocation-cities"></a>Jednoduché entity s rolemi pro přemístění města
 Nové zaměstnance a řady musí přesunout z aktuální Město ve městě, kde se nachází fiktivní společnosti. Protože nového zaměstnance můžou pocházet z libovolné Město, umístění musí být zjištěny. Nastavit seznam jako je například seznam entit nebude fungovat, protože by být extrahována pouze města v seznamu.
 
-Názvy rolí přidružený zdroj a cíl měst musí být jedinečný mezi všechny entity. Snadný způsob, jak zajistit, aby že byly jedinečné role je a jejich spárování obsahující entity prostřednictvím strategie vytváření názvů. **NewEmployeeRelocation** entita je jednoduchou entitu s dvě role: **NewEmployeeReloOrigin** a **NewEmployeeReloDestination**.
+Názvy rolí přidružený zdroj a cíl měst musí být jedinečný mezi všechny entity. Snadný způsob, jak zajistit, aby že byly jedinečné role je a jejich spárování obsahující entity prostřednictvím strategie vytváření názvů. **NewEmployeeRelocation** entita je jednoduchou entitu s dvě role: **NewEmployeeReloOrigin** a **NewEmployeeReloDestination**. Relo je zkratka pro přemístění.
 
-### <a name="simple-entities-need-enough-examples-to-be-detected"></a>Jednoduché entity potřebovat dostatek příklady detekovanou
 Protože příklad utterance `Move new employee Robert Williams from Sacramento and San Francisco` má pouze entity se naučili počítače je potřeba zajistit dostatek příklad projevy k příslušnému záměru, takže entity, které jsou zjištěny.  
 
 **Zatímco vzorky umožňují poskytovat méně příklad projevy, pokud nejsou zjištěny entity, neodpovídá vzoru.**
 
 Pokud máte potíže s jednoduchou entitu zjišťování, protože je název, například města, zvažte přidání frázi seznam hodnoty jsou podobné. To pomáhá zjistit název města tím, že služba LUIS další signál o tomto typu slova nebo fráze. Fráze seznamy jenom pomohou vzor tím, že pomáhá s detekcí entity, která je nezbytná pro odpovídající vzor. 
 
+**V tomto kurzu se dozvíte, jak:**
+
+> [!div class="checklist"]
+> * Použít existující ukázková aplikace
+> * Vytvoří nové entity
+> * Vytvořit nový záměr
+> * Trénování
+> * Publikování
+> * Získat záměry a entity z koncového bodu
+> * Vytvoření modelu s rolemi
+> * Vytvoření seznamu frázi měst
+> * Získat záměry a entity z koncového bodu
+
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+
+## <a name="use-existing-app"></a>Použití existující aplikace
+Pokračovat s aplikací vytvořili v posledním kurzu s názvem **Lidskézdroje**. 
+
+Pokud nemáte aplikaci lidských zdrojů z předchozí kurz o službě, použijte následující kroky:
+
+1.  Stáhněte a uložte [souboru JSON aplikace](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-patterns-HumanResources-v2.json).
+
+2. Importujte ve formátu JSON do nové aplikace.
+
+3. Z **spravovat** části na **verze** kartu, naklonujte na verzi a pojmenujte ho `roles`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. Název verze, protože se používají jako součást trasu adresy URL název nesmí obsahovat žádné znaky, které nejsou platné v adrese URL.
+
 ## <a name="create-new-entities"></a>Vytvoří nové entity
-1. Vyberte **sestavení** v horní nabídce.
+
+1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Vyberte **entity** z levé navigace. 
 
@@ -124,15 +114,15 @@ Označování entit v následujícím postupu může být jednodušší, pokud p
 
     Pokud jste odebrali keyPhrase entity, přidejte ji do aplikace nyní.
 
-## <a name="train-the-luis-app"></a>Trénování aplikace LUIS
+## <a name="train"></a>Trénování
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish-the-app-to-get-the-endpoint-url"></a>Publikování aplikace a získání adresy URL koncového bodu
+## <a name="publish"></a>Publikování
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="query-the-endpoint-without-pattern"></a>Koncový bod bez vzor dotazu
+## <a name="get-intent-and-entities-from-endpoint"></a>Získání záměru a entity z koncového bodu
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)] 
 
@@ -224,9 +214,12 @@ Označování entit v následujícím postupu může být jednodušší, pokud p
 
 Skóre záměru předpovědi je pouze o 50 %. Pokud vaše klientská aplikace vyžaduje větší číslo, to je potřeba opravit. Entity, které nebyly buď předpovědět.
 
+Jeden z míst získané, ale se jiné umístění. 
+
 Vzory vám pomohou skóre predikcí, však entity musí být správně předpovědět před vzor odpovídá utterance. 
 
-## <a name="add-a-pattern-that-uses-roles"></a>Přidejte vzor, který používá role
+## <a name="pattern-with-roles"></a>Vzor s rolemi
+
 1. Vyberte **sestavení** v horním navigačním panelu.
 
 2. Vyberte **vzory** v levém navigačním panelu.
@@ -237,8 +230,8 @@ Vzory vám pomohou skóre predikcí, však entity musí být správně předpov�
 
     Pokud trénování, publikovat a dotazování na koncový bod, může být uspokojivých výsledků zobrazíte, že entity, které nebyly nalezeny, takže vzorek neodpovídal, proto neměli zlepšit do predikce. Toto je důsledkem nedostatek projevy příklad s entitami s popiskem. Nepřidávat Další příklady přidáte frázi seznamu pro odstranění tohoto problému.
 
-## <a name="create-a-phrase-list-for-cities"></a>Vytvoření seznamu frázi pro města
-Měst, jako jsou jména osob jsou velmi obtížné, mohou být libovolné kombinaci slova a interpunkční znaménka. Ale měst oblasti a svět jsou známé, takže LUIS musí frázi seznam měst začít učit. 
+## <a name="cities-phrase-list"></a>Seznam měst frází
+Měst, jako jsou jména osob jsou velmi obtížné, mohou být libovolné kombinaci slova a interpunkční znaménka. Jsou známé měst oblasti a world, takže LUIS musí frázi seznam měst začít učit. 
 
 1. Vyberte **seznam frází** z **zvýšit výkon aplikace** část v levé nabídce. 
 
@@ -255,16 +248,13 @@ Měst, jako jsou jména osob jsou velmi obtížné, mohou být libovolné kombin
     |Miami|
     |Dallas|
 
-    Nepřidávejte každé město v celém světě nebo dokonce každé město v oblasti. Služba LUIS musí být schopen generalize městě je v seznamu. 
-
-    Ujistěte se, že aby **tyto hodnoty jsou zaměnitelné** vybrané. Toto nastavení znamená, že slova v seznamu na považován za synonym. To je přesně jak by zpracovávat ve vzoru.
-
-    Mějte na paměti [posledního](luis-quickstart-primary-and-secondary-data.md) vytvořili seznam frázi série kurzů jste také a zvýšit tak detekci entity jednoduché entity.  
+    Nepřidávejte každé město v celém světě nebo dokonce každé město v oblasti. Služba LUIS musí být schopen generalize městě je v seznamu. Ujistěte se, že aby **tyto hodnoty jsou zaměnitelné** vybrané. Toto nastavení znamená, že slova v seznamu na považován za synonym. 
 
 3. Trénování a publikování aplikace.
 
-## <a name="query-endpoint-for-pattern"></a>Koncový bod dotazu pro model
-1. V dolní části stránky **Publish** (Publikovat) vyberte odkaz na **koncový bod**. Tato akce otevře další okno prohlížeče s adresou URL koncového bodu v adresním řádku. 
+## <a name="get-intent-and-entities-from-endpoint"></a>Získání záměru a entity z koncového bodu
+
+1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Na konec adresy URL zadejte `Move wayne berry from miami to mount vernon`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. 
 
@@ -380,11 +370,24 @@ Měst, jako jsou jména osob jsou velmi obtížné, mohou být libovolné kombin
 
 Záměru skóre je teď mnohem vyšší a názvy rolí jsou součástí odpovědi entity.
 
+## <a name="hierarchical-entities-versus-roles"></a>Hierarchické entity a role
+
+V [hierarchické kurzu](luis-quickstart-intent-and-hier-entity.md), **MoveEmployee** záměr zjistila, kdy se má přesunout existující zaměstnance z jednoho sestavení a office do jiného. Projevy příklad měl zdroj a cíl umístění, ale nepoužívá role. Místo toho zdroj a cíl byly podřízené prvky hierarchické entity. 
+
+V tomto kurzu zjistí aplikaci lidských zdrojů projevy informace o přesunu do jiného Noví zaměstnanci z jedno z měst. Tyto dva druhy projevy jsou stejné, ale s různými schopnostmi LUIS vyřešit.
+
+|Kurz|Příklad utterance|Zdroj a cíl umístění|
+|--|--|--|
+|[Hierarchické (žádné role)](luis-quickstart-intent-and-hier-entity.md)|MV Jill Jones z **a-2349** k **b-1298**|a-2349 b-1298|
+|Tento kurz (s rolemi)|Přesunout Billy Patterson z **Yuma** k **Denver**.|Yuma, Denver|
+
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Další postup
+
+V tomto kurzu Přidat entitu s rolemi a záměru s projevy příklad. První koncový bod předpovědi pomocí entity správně předpovědět záměru ale s nízkou spolehlivostí skóre. Byl zjištěn jenom jeden z těchto dvou entitách. V dalším kroku výukového programu přidáte vzor, který používá entity role a seznam frázi a zvýšit tak hodnotu názvy měst v projevy. Druhý předpovědi koncový bod vrátil vysokou pravděpodobnost a najít obě role entity. 
 
 > [!div class="nextstepaction"]
 > [Přečtěte si osvědčené postupy pro aplikace LUIS](luis-concept-best-practices.md)

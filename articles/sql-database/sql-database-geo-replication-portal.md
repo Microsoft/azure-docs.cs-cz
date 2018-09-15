@@ -2,19 +2,20 @@
 title: 'Azure portal: geografická replikace SQL Database | Dokumentace Microsoftu'
 description: Konfigurace geografické replikace pro Azure SQL Database webu Azure portal a zahájit převzetí služeb při selhání
 services: sql-database
-author: CarlRabeler
+author: anosov1960
 manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
 ms.date: 07/16/2018
-ms.author: carlrab
-ms.openlocfilehash: 27fb8f369ad23592902c05fe5275fc54bc6cf148
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.author: sashan
+ms.reviewer: carlrab
+ms.openlocfilehash: 8faf6713a5fd8287b5f9e30976e80172c2c42f05
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39090465"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45631289"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Konfigurace aktivní geografické replikace pro Azure SQL Database webu Azure portal a zahájit převzetí služeb při selhání
 

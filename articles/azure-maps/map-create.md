@@ -3,18 +3,18 @@ title: Vytvořte mapu s Azure Maps | Dokumentace Microsoftu
 description: Jak vytvořit mapu jazyka Javascript
 author: jingjing-z
 ms.author: jinzh
-ms.date: 05/07/2018
+ms.date: 09/14/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: c5d48e2e7316f33a565fc61a769a29c00834eed5
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 0e292bfd38402d5a36be217746fd352ce4627177
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43343365"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45633312"
 ---
 # <a name="create-a-map"></a>Vytvoření mapy
 
@@ -42,21 +42,23 @@ Ve výše uvedeném kódu [objekt map](https://docs.microsoft.com/javascript/api
 
 Ve výše uvedeném kódu [objekt map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) je vytvořená prostřednictvím `new atlas.Map()`. Vlastnosti mapy, jako je například ohraničující rámeček jsou součástí [CameraBoundsOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.cameraboundsoptions?view=azure-iot-typescript-latest). CameraBoundsOptions lze definovat prostřednictvím [setCameraBounds](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamerabounds) funkce třídy map.
 
-## <a name="try-out-the-code"></a>Vyzkoušejte si kód 
+## <a name="try-out-the-code"></a>Vyzkoušejte si kód
 
-Podívejte se na výše uvedeném ukázkovém kódu. Můžete upravit jeho kód JavaScript na kartě JS na levé straně a podívat se na změny zobrazení mapy na kartě výsledek na pravé straně. Můžete také kliknutím na tlačítko "Upravit na CodePen" a úpravy kódu v CodePen. 
+Podívejte se na výše uvedeném ukázkovém kódu. Můžete upravit jeho kód JavaScript na kartě JS na levé straně a podívat se na změny zobrazení mapy na kartě výsledek na pravé straně. Můžete také kliknutím na tlačítko "Upravit na CodePen" a úpravy kódu v CodePen.
 
 <a id="relatedReference"></a>
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o třídy a metody používané v tomto článku: 
-* [Mapa](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
-    * [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera)
-    * [setCameraBounds](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamerabounds)
-    
-Další příklady kódu pro přidání do vaše mapy najdete v následujících článcích: 
-* [Vyberte styl mapy](choose-map-style.md)
-* [Přidat ovládací prvky mapy](map-add-controls.md)
-    
+Další informace o třídy a metody používané v tomto článku:
 
+> [!div class="nextstepaction"]
+> [Mapa](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+
+Příklady kódu pro přidání funkce do vaší aplikace:
+
+> [!div class="nextstepaction"]
+> [Vyberte styl mapy](choose-map-style.md)
+
+> [!div class="nextstepaction"]
+> [Přidat ovládací prvky mapy](map-add-controls.md)

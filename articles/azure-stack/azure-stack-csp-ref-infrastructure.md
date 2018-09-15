@@ -3,7 +3,7 @@ title: Využití sestav infrastruktury pro poskytovatele cloudových služeb pro
 description: Azure Stack zahrnuje infrastrukturu potřebnou ke sledování využití u klientů, které jsou obsluhovány pomocí Cloud Service Provider (CSP) nastane a předá ji do Azure.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: sethmanheim
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -12,14 +12,14 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: alfredo
-ms.openlocfilehash: 5a38f504a881662c19fe881058622392cf1bced0
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 9526385eaea8a88f0c22e6420ba39a33f7166f96
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39576351"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45633720"
 ---
 ## <a name="usage-reporting-infrastructure-for-cloud-service-providers"></a>Využití sestav infrastruktury pro poskytovatele cloudových služeb
 

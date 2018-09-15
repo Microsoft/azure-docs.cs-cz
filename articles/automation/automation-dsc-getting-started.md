@@ -4,17 +4,17 @@ description: Vysvětlení a příklady zvládnout běžné úkoly v Azure Automa
 services: automation
 ms.service: automation
 ms.component: dsc
-author: DCtheGeek
-ms.author: dacoulte
+author: bobbytreed
+ms.author: robreed
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9a18855d11c0b367b7d58ffb0f4c62e752c05b89
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: fc1c870d06d6bf4a0db941b261e9aebd317fdcb1
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40004228"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634351"
 ---
 # <a name="getting-started-with-azure-automation-state-configuration"></a>Začínáme s Azure Automation stavu konfigurace
 
@@ -123,7 +123,7 @@ Po spuštění kompilace můžete zobrazit v **úlohy kompilace** v dlaždici **
 
 ## <a name="viewing-node-configurations"></a>Zobrazení konfigurace uzlu
 
-Úspěšné dokončení úlohy kompilace vytvoří jednu nebo více nové konfigurace uzlu. Konfigurace uzlu je dokument MOF, který je nasazen na serveru vyžádané replikace a připraven k načíst a použít jeden nebo více uzlů. Můžete zobrazit konfigurace uzlů ve vašem účtu Automation v **konfigurace stavu (DSC)** stránky. Konfigurace uzlu má název s formuláři *ConfigurationName*.* NodeName*.
+Úspěšné dokončení úlohy kompilace vytvoří jednu nebo více nové konfigurace uzlu. Konfigurace uzlu je dokument MOF, který je nasazen na serveru vyžádané replikace a připraven k načíst a použít jeden nebo více uzlů. Můžete zobrazit konfigurace uzlů ve vašem účtu Automation v **konfigurace stavu (DSC)** stránky. Konfigurace uzlu má název s formuláři *ConfigurationName*. *NodeName*.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Na levé straně klikněte na tlačítko **všechny prostředky** a potom na název vašeho účtu Automation.

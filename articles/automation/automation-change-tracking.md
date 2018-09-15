@@ -10,12 +10,12 @@ ms.date: 08/31/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0707726ec86b0a0c69d1ec752ebd6761327f3f0f
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 713c0f676067cb32a84361dd7801031295e2244f
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669479"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634434"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Sledování změn ve vašem prostředí pomocí řešení Change Tracking
 
@@ -33,13 +33,23 @@ Pro agenta Windows se oficiálně podporuje následující verze operačního sy
 
 Následující Linuxových distribucích se oficiálně podporuje. Agenta pro Linux může také spustit na jiné distribuce není uvedená. Pokud není uvedeno jinak, jsou podporovány všechny dílčí verze pro všechny hlavní verze uvedené.  
 
-* Linux Amazon 2012.09 k 2015.09 (x86/x64)
-* Linux centOS 5, 6 a 7 (x86/x64)  
-* Oracle Linux 5, 6 a 7 (x86/x64)
-* Red Hat Enterprise Linux Server 5, 6 a 7 (x86/x64)
-* Debian GNU/Linux 6, 7 a 8 (x86/x64)
-* Ubuntu 12.04 LTS, 14.04 LTS, 16.04 LTS (x86/x64)
-* SUSE Linux Enterprise Server 11 a 12 (x86/x64)
+### <a name="64-bit"></a>64 bitů
+
+* CentOS 6 a 7
+* Amazon Linux 2017.09
+* Oracle Linux 6 a 7
+* Red Hat Enterprise Linux Server 6 a 7
+* Debian GNU/Linux 8 a 9
+* Ubuntu Linux 14.04 LTS, 16.04 LTS a 18.04 LTS
+* SUSE Linux Enterprise Server 12
+
+### <a name="32-bit"></a>32 bitů
+
+* CentOS 6
+* Oracle Linux 6
+* Red Hat Enterprise Linux Server 6
+* Debian GNU/Linux 8 a 9
+* Ubuntu Linux 14.04 LTS a 16.04 LTS
 
 ## <a name="enable-change-tracking-and-inventory"></a>Povolení řešení Change Tracking a Inventory
 
@@ -93,7 +103,7 @@ Použijte následující postup ke konfiguraci soubory sledování na počítač
 |Povoleno     | Určuje, pokud je použito nastavení.        |
 |Název položky     | Popisný název souboru, který má být sledovány.        |
 |Skupina     | Název skupiny pro logické seskupení souborů.        |
-|Zadat cestu     | Cesta ke kontrole souboru: "c:\temp\\\*.txt"<br>Můžete také použít proměnné prostředí, jako "%winDir%\System32\\\*. *"       |
+|Zadat cestu     | Cesta, ve které se má soubor hledat, například: c:\temp\\\*.txt.<br>Můžete použít také proměnnou prostředí, například %winDir%\System32\\\*.*.       |
 |Rekurze     | Určuje, jestli se při hledání položky, která se má sledovat, používá rekurze.        |
 |Nahrát obsah souboru pro všechna nastavení| Zapne nebo vypne u sledovaných změn nahrávání obsahu souboru. Dostupné možnosti: **True** nebo **False**.|
 
@@ -146,6 +156,7 @@ Další omezení:
 Řešení Change Tracking chvíli dochází k následujícím problémům:
 
 * Aktualizace hotfix se neshromažďují pro počítače s Windows 10 Creators Update a Windows Server 2016 Core RS3.
+* Pro soubory Windows Change Tracking nezjistí aktuálně při přidání nového souboru do sledované složky cesty
 
 ## <a name="change-tracking-data-collection-details"></a>Změnit podrobnosti sledování dat kolekce
 

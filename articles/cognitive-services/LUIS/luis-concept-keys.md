@@ -1,20 +1,21 @@
 ---
-title: Principy klíčů LUIS – Azure | Dokumentace Microsoftu
-description: Použití klíčů Language Understanding (LUIS) k vytváření vaší aplikace a vaše endpoing dotazování.
+title: Principy klíčů LUIS
+titleSuffix: Azure Cognitive Services
+description: Služba LUIS používá dva klíče, pro tvorbu a koncový bod. Vytváření klíč je vytvořen automaticky při vytvoření účtu služby LUIS. Až budete připravení k publikování aplikace LUIS, můžete k vytvoření klíče koncového bodu přiřadit aplikace LUIS a použít je s dotazem koncový bod.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/23/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: b40ca74999be1821ffa329224ff419646591960e
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 3049d073c691fca69844f68e8d70234c331ae152
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39225172"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45629161"
 ---
 # <a name="keys-in-luis"></a>Klíče v LUIS
 Služba LUIS používá dva klíče: [vytváření](#programmatic-key) a [koncový bod](#endpoint-key). Vytváření klíč je vytvořen automaticky při vytvoření účtu služby LUIS. Až budete připraveni k publikování aplikace LUIS, budete muset [vytvořit klíče koncového bodu](luis-how-to-azure-subscription.md#create-luis-endpoint-key), [ji přiřadit](luis-how-to-manage-keys.md#assign-endpoint-key) do vaší aplikace LUIS a [pomocí dotazu koncový bod](#use-endpoint-key-in-query). 
@@ -35,15 +36,15 @@ Najít klíč pro vytváření, přihlaste se k [LUIS](luis-reference-regions.md
 
 ![Klíč pro tvorbu](./media/luis-concept-keys/programatic-key.png)
 
-Pokud chcete provést **produkční koncový bod dotazy**, vytvoření Azure [LUIS předplatné](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/). 
+Pokud chcete provést **produkční koncový bod dotazy**, vytvořit Azure [LUIS předplatné](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/). 
 
 > [!CAUTION]
 > Pro usnadnění práce z ukázky používat klíč pro tvorbu vzhledem k tomu, že poskytuje několik volání koncového bodu v jeho [kvóty](luis-boundaries.md#key-limits).  
 
 ## <a name="endpoint-key"></a>Klíč koncového bodu
- Pokud potřebujete **produkční koncový bod dotazy**, vytvořit [LUIS klíč](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) na webu Azure Portal. Mějte na paměti název používaný k vytvoření klíče, budete potřebovat při přidávání klíče do aplikace...
+ Pokud potřebujete **produkční koncový bod dotazy**, vytvořit [LUIS klíč](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) na webu Azure Portal. Mějte na paměti název používaný k vytvoření klíče, budete potřebovat při přidávání klíče do aplikace.
 
-Po dokončení procesu předplatné LUIS [přidat klíč](luis-how-to-manage-keys.md#assign-endpoint-key) do aplikace na **publikovat** stránky. 
+Po dokončení procesu předplatné LUIS [přiřadit klíč](luis-how-to-manage-keys.md#assign-endpoint-key) do aplikace. 
 
 Klíč koncového bodu umožňuje kvótu přístupů do koncového bodu na základě plánu využití, které jste zadali při vytváření klíče. Zobrazit [ceny služby Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/?v=17.23h) informace o cenách.
 
@@ -73,6 +74,10 @@ Publikování oblastech se liší od vytváření oblastí. Ujistěte se, že vy
 
 ## <a name="key-limit-errors"></a>Omezení klíče chyby
 Při překročení vaší za druhé kvóty, obdržíte chybu HTTP 429. Při překročení vaší za měsíc kvóty, obdržíte chybu HTTP 403. Tyto chyby opravit tím, že získáme LUIS [koncový bod](#endpoint-key) klíč, [přiřazení](luis-how-to-manage-keys.md#assign-endpoint-key) klíč do aplikace na **publikovat** stránku [LUIS](luis-reference-regions.md#luis-website) webu.
+
+## <a name="automating-assignment-of-the-endpoint-key"></a>Automatizace přiřazení klíče koncového bodu
+
+Klíč koncového bodu přiřadit aplikace LUIS, je nutné použít LUIS webu pro správné pro vytváření a publikování [oblastech](luis-reference-regions.md). Je **žádné** automatizované metoda způsobem, bez ohledu na mechanismu, jako s Azure resource manager skriptu, rozhraní příkazového řádku Azure, SDK prostřednictvím kódu programu, nebo s rozhraními API.
 
 ## <a name="next-steps"></a>Další postup
 

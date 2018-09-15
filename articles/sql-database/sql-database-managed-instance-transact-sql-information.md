@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 0813/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: 57c6b52df3e8f6c47eb794cda4b47bfa2d7de374
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: c35fdb391f3ec3f0af3a7c916cb22cb58c90dd64
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44051234"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45604654"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Rozdíly ve službě Azure SQL Database Managed Instance T-SQL z SQL serveru 
 
@@ -267,7 +267,7 @@ Odkazování na soubory v HDFS nebo Azure blob storage externí tabulky nejsou p
 
 ### <a name="replication"></a>Replikace 
  
-Replikace se nepodporuje na Managed Instance. Informace o replikaci najdete v tématu [replikace systému SQL Server](http://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance).
+Replikace je dostupná ve veřejné verzi preview na Managed Instance. Informace o replikaci najdete v tématu [replikace systému SQL Server](http://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance).
  
 ### <a name="restore-statement"></a>OBNOVENÍ – příkaz 
  
@@ -335,23 +335,24 @@ Informace o příkazech obnovení najdete v tématu [obnovit příkazy](https://
 - `sp_attach_db`, `sp_attach_single_file_db`, a `sp_detach_db` nejsou podporovány. Zobrazit [sp_attach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql), [sp_attach_single_file_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql), a [sp_detach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql).
 - `sp_renamedb` není podporováno. Zobrazit [sp_renamedb](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-renamedb-transact-sql).
 
-### <a name="sql-server-agent"></a>Agent SQL Server 
- 
+### <a name="sql-server-agent"></a>Agent SQL Server
+
 - Nastavení agenta SQL jsou jen pro čtení. Postup `sp_set_agent_properties` není ve spravované instanci podporováno.  
-- Úlohy – pouze kroky úlohy T-SQL jsou aktuálně podporované (Další kroky budou přidány ve verzi public preview).
- - Služby SSIS se ještě nepodporuje. 
- - Replikace se ještě nepodporuje.  
-  - Čtečky protokolů transakcí se ještě nepodporuje.  
-  - Snímek se ještě nepodporuje.  
-  - Distributor není dosud podporován.  
-  - Sloučení se nepodporuje.  
+- V současnosti jsou podporované úlohy - kroky úlohy T-SQL
+- Jiné typy úloh kroky nejsou aktuálně podporované (typy bude přidána během období public preview další krok).
+  - Úlohy replikace není podporována včetně:
+    - Čtečky protokolů transakcí.  
+    - Pořízení snímku.
+    - Distributor.  
+    - Sloučení.  
+  - Služby SSIS se ještě nepodporuje. 
   - Čtečky fronty se nepodporuje.  
- - Příkazové okno se ještě nepodporuje. 
+  - Příkazové okno se ještě nepodporuje. 
   - Spravovaná Instance nelze přístup k externím prostředkům (například sdílené síťové složky prostřednictvím nástroje robocopy).  
- - Prostředí PowerShell se ještě nepodporuje.
- - Analysis Services nejsou podporovány.  
+  - Prostředí PowerShell se ještě nepodporuje.
+  - Analysis Services nejsou podporovány.  
 - Oznámení jsou podporovány jen částečně.
- - E-mailových oznámení je podporováno, vyžaduje konfiguraci profil databázového e-mailu. Může existovat pouze jedna databáze profil e-mailu a musí být volána `AzureManagedInstance_dbmail_profile` ve verzi public preview (dočasné omezení).  
+- E-mailových oznámení je podporováno, vyžaduje konfiguraci profil databázového e-mailu. Může existovat pouze jedna databáze profil e-mailu a musí být volána `AzureManagedInstance_dbmail_profile` ve verzi public preview (dočasné omezení).  
  - Operátor není podporován.  
  - Příkazu není podporován. 
  - Výstrahy se ještě nepodporuje.

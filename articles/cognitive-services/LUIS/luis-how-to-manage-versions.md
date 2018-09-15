@@ -1,108 +1,66 @@
 ---
-title: Správa verzí služby LUIS aplikací v Azure | Dokumentace Microsoftu
-description: Zjistěte, jak spravovat verze v aplikacích Language Understanding (LUIS).
+title: Správa verzí v aplikace LUIS
+titleSuffix: Azure Cognitive Services
+description: Verze umožňují sestavovat a publikovat různých modelů. Dobrým postupem je klonovat aktuální active vzor na jinou verzi aplikace před prováděním změn do modelu.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/29/2017
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 4941cf533f1b860ead07a416d5af6f62a1978305
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: dcb7f47ae7ade4ee0a18801934f36576fc75f4ae
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226590"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45629470"
 ---
 # <a name="manage-versions"></a>Správa verzí
 
-Pokaždé, když pracujete na modelu, vytvořit jiný [verze](luis-concept-version.md) aplikace. 
+Verze umožňují sestavovat a publikovat různých modelů. Dobrým postupem je klonovat aktuální active vzor na jiný [verze](luis-concept-version.md) aplikace před prováděním změn do modelu. 
 
-## <a name="set-active-version"></a>Nastavit aktivní verzi
-Pro práci s verzí, otevřete aplikaci tak, že vyberete jeho název na **Moje aplikace** stránce a pak vyberte **nastavení** v horním panelu.
+Pro práci s verzí, otevřete aplikaci tak, že vyberete jeho název na **Moje aplikace** stránce a pak vyberte **spravovat** v horním pruhu vyberte **verze** v levém navigačním panelu. 
 
-![Verze stránky](./media/luis-how-to-manage-versions/settings.png)
+Seznam verzí zobrazit, jaké verze jsou publikovány, kde jsou publikovány, a kterou verzi je aktuálně aktivní. 
 
-**Nastavení** stránce umožňuje nakonfigurovat nastavení pro celou aplikaci, včetně verzí a spolupracovníky. 
+[![](./media/luis-how-to-manage-versions/versions-import.png "Správa části, stránka verze")](./media/luis-how-to-manage-versions/versions-import.png#lightbox)
 
 ## <a name="clone-a-version"></a>Klonovat verze
-1. Na **nastavení** stránky, po nastavení aplikací a spolupracovníci oddíly, vyhledejte řádek s verzí, které chcete naklonovat. Vyberte tři tečky (***...*** ) tlačítko v pravém rohu. 
 
-    ![Vlastnosti verze řádku](./media/luis-how-to-manage-versions/version-section.png)
+1. Vyberte verzi, které chcete naklonovat vyberte **klonování** z panelu nástrojů. 
 
-2. Vyberte **klonování** ze seznamu.
-
-    ![Volba vlastnosti verze řádku](./media/luis-how-to-manage-versions/version-three-dots-modal.png)
-
-3. V **klonování verze** dialogové okno, zadejte název pro novou verzi, jako je například "0.2".
+2. V **klonování verze** dialogové okno, zadejte název pro novou verzi, jako je například "0.2".
 
    ![Dialogové okno verze klonování](./media/luis-how-to-manage-versions/version-clone-version-dialog.png)
  
- > [!NOTE]
- > Verze ID může obsahovat pouze znaky, číslice nebo '.' a nesmí být delší než 10 znaků.
+     > [!NOTE]
+     > Verze ID může obsahovat pouze znaky, číslice nebo '.' a nesmí být delší než 10 znaků.
  
  Nová verze se zadaným názvem je vytvořen a nastavit jako aktivní verze.
- 
-  ![Verze je vytvořen a přidán do seznamu](./media/luis-how-to-manage-versions/new-version.png)
-
- > [!NOTE]
- > Jak je znázorněno na předchozím obrázku, publikovanou verzi souvisí s barevné značky, určující typ slot, kde se publikoval: produkčního prostředí (zelená), pracovní (červený) a obě (černá). Školení a publikování kalendářní data se zobrazí pro každou publikovanou verzi.
 
 ## <a name="set-active-version"></a>Nastavit aktivní verzi
-1. Na **nastavení** stránku, **verze** seznamu, vyberte tři tečky (***...*** ) tlačítko úplně vpravo.
 
-2. V rozevíracím seznamu vyberte **nastavit jako aktivní**.
+Ze seznamu vyberte verzi a potom vyberte **zkontrolujte aktivní** z panelu nástrojů. 
 
-    ![Nastavit aktivní verzi](./media/luis-how-to-manage-versions/set-active-version.png)
-
-    Aktivní verze je zvýrazněná světle modrou barvou, jak je znázorněno na následujícím snímku obrazovky:
-
-    ![Aktivní verze](./media/luis-how-to-manage-versions/set-active-version-done.png) 
-
+[![](./media/luis-how-to-manage-versions/versions-other.png "Správa části, stránka verze")](./media/luis-how-to-manage-versions/versions-other.png#lightbox)
 
 ## <a name="import-version"></a>Import verze
-Verze můžete importovat ze souboru JSON. Jakmile dokončíte import verze, nová verze stane aktivní verze.
 
-**Chcete-li importovat verze:**
+1. Vyberte **Import verze** z panelu nástrojů. 
 
-1. Na **nastavení** stránce **Import nové verze** tlačítko.
+2. V **Import nové verze** automaticky otevírané okno, zadejte název nové verze deset znaků. Stačí nastavit ID verze, pokud už existuje verze v souboru JSON v aplikaci.
 
-    ![Tlačítko Import](./media/luis-how-to-manage-versions/import-version.png)
+    ![Správa části, stránka verze](./media/luis-how-to-manage-versions/versions-import-pop-up.png)
 
-2. Vyberte **Procházet** a zvolte soubor JSON.
+    Jakmile dokončíte import verze, nová verze stane aktivní verze.
 
-    ![Dialogové okno importu verze](./media/luis-how-to-manage-versions/import-version-dialog.png)
+<a name = "export-version"></a>
 
-Stačí nastavit ID verze, pokud už existuje verze v souboru JSON v aplikaci.
+## <a name="other-actions"></a>Další akce
 
-## <a name="export-version"></a>Export verze
-Verze můžete exportovat do souboru JSON.
+* K **odstranit** verze, ze seznamu vyberte verzi a potom vyberte **odstranit** z panelu nástrojů. Vyberte **OK**. 
+* K **přejmenovat** verze, ze seznamu vyberte verzi a potom vyberte **přejmenovat** z panelu nástrojů. Zadejte nový název a vyberte **provádí**. 
+* K **exportovat** verze, ze seznamu vyberte verzi a potom vyberte **Export aplikace** z panelu nástrojů. Soubor se stáhne do místního počítače. 
 
-**Chcete-li exportovat verze:**
-
-1. Na **nastavení** stránku, **verze** seznamu, vyberte tři tečky (***...*** ) tlačítko úplně vpravo.
-
-2. Vyberte **exportovat** v rozbalovací seznam akcí a vyberte, kam chcete soubor uložit.
-
-## <a name="delete-a-version"></a>Odstranit verzi
-Můžete odstranit verze, ale budete muset mít alespoň jednu verzi aplikace. Můžete odstranit všechny verze, s výjimkou aktivní verze. 
-
-1. Na **nastavení** stránku, **verze** seznamu, vyberte tři tečky (***...*** ) tlačítko úplně vpravo.
-
-2. Vyberte **odstranit** v rozbalovací seznam akcí a vyberte, kam chcete soubor uložit.
-
-    ![Verze potvrzení odstranění](./media/luis-how-to-manage-versions/delete-menu.png) 
-
-
-## <a name="rename-a-version"></a>Přejmenovat na verzi
-Verze můžete přejmenovat, jako název verze již není používán.  
-
-1. Na **nastavení** stránku, **verze** seznamu, vyberte tři tečky (***...*** ) tlačítko úplně vpravo.
-
-2. Vyberte **přejmenovat** v rozbalovací seznam akcí.
-
-3. Zadejte název nové verze a vyberte **provádí**.
-
-    ![Přejmenovat potvrzení verze](./media/luis-how-to-manage-versions/rename-popup.png) 

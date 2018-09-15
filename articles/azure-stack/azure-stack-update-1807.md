@@ -3,7 +3,7 @@ title: Aktualizace služby Azure Stack 1807 | Dokumentace Microsoftu
 description: Další informace o co je nového v aktualizaci 1807 pro integrované systémy Azure Stack, včetně známých problémů a kde se stáhnout aktualizaci.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: eabd6fdd643f7f8e1795f791e8a66e612651dee2
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: c55667e61e35186f63f49082db0c3adadd66ff68
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44159499"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45633377"
 ---
 # <a name="azure-stack-1807-update"></a>Aktualizace služby Azure Stack 1807
 
@@ -82,7 +82,7 @@ Tato aktualizace zahrnuje následující vylepšení pro službu Azure Stack.
 - <!-- TBD | IS, ASDK -->  **Vylepšení použitelnosti Azure Stack Capacity Planner**. Azure Stack [Capacity Planner](http://aka.ms/azstackcapacityplanner) teď nabízí zjednodušené prostředí pro vkládání mezipaměti S2D a S2D kapacitu při definování skladové položky řešení. Odebrali jsme limit 1 000 virtuálních počítačů.
 
 
-### <a name="fixed-issues"></a>Opravené problémy
+### <a name="fixed-issues"></a>Oprava potíží
 
 - <!-- TBD | ASDK, IS --> Různá vylepšení provedly se proces aktualizace provádět spolehlivější. Kromě toho opravy byly provedeny na základní infrastrukturu, která minimalizovat potenciální výpadek pro úlohy během aktualizace.
 

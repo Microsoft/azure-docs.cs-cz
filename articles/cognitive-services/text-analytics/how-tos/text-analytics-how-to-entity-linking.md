@@ -1,43 +1,44 @@
 ---
-title: Postupy použití propojení Entity v textu Analytics REST API (kognitivní služeb pro Microsoft v Azure) | Microsoft Docs
-description: Zjistěte, jak identifikovat a řešit pomocí Text Analytics REST API v kognitivní služby společnosti Microsoft na platformě Azure v tomto kurzu návod entity.
+title: Použití rozhraní entity linking pomocí rozhraní API pro analýzu textu
+titleSuffix: Azure Cognitive Services
+description: Zjistěte, jak identifikovat a vyřešit entit pomocí REST API pro analýzu textu.
 services: cognitive-services
 author: ashmaka
 manager: cgronlun
 ms.service: cognitive-services
-ms.technology: text-analytics
+ms.component: text-analytics
 ms.topic: article
-ms.date: 5/02/2018
+ms.date: 09/12/2018
 ms.author: ashmaka
-ms.openlocfilehash: 55bec1a0223b70749a97a30e2da92ef15128038c
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: ad2168806f9ddd124faf66cdb5a0f51ed13dfadc
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342808"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45604735"
 ---
-# <a name="how-to-identify-linked-entities-in-text-analytics-preview"></a>Jak identifikovat propojené entity v Analýza textu (Preview)
+# <a name="how-to-identify-linked-entities-in-text-analytics-preview"></a>Zjištění propojených entit v rozhraní Text Analytics (Náhled)
 
-[API propojení Entity](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634) trvá nestrukturovaných text a pro každý dokument JSON vrátí seznam hodnot od sebe jednoznačně rozlišeny entity s odkazy na další informace na webu (Web Wikipedia a Bing). 
+[Rozhraní API služby Entity Linking](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634) převezme nestrukturovaného textu a pro každý dokument JSON vrátí seznam jednoznačně rozlišit entit s odkazy na další informace na webu (Wikipedia a Bing). 
 
-## <a name="entity-linking-vs-named-entity-recognition"></a>Propojování vs entity. Rozpoznávání pojmenovaných entit
+## <a name="entity-linking-vs-named-entity-recognition"></a>Entity Linking vs. Rozpoznávání pojmenovaných entit
 
-V přirozeném jazyce zpracování, můžete snadno nezaměňovat koncepty propojení entity a pojmenované entity rozpoznávání (NER). Ve verzi preview Analýza textu `entities` koncový bod, jenom entity propojení je podporována.
+Při zpracování přirozeného jazyka, lze snadno zaměnitelná koncepty propojování entit a rozpoznávání pojmenovaných entit (NER). Ve verzi preview pro analýzu textu `entities` koncový bod, jenom rozhraní entity linking se nepodporuje.
 
-Entita propojení je schopnost určit a odstranit nejednoznačnost identity entity nalezen text (například určení, zda "Mars" je používán jako planety nebo Roman vyšší moci z war). Tento proces vyžaduje přítomnost základní který rozpoznána entity jsou propojeny – Wikipedia slouží jako znalostní báze pro znalosti `entities` koncový bod Analýza textu.
+Rozhraní entity linking je schopnost identifikovat a rozpoznat identity entity v textu (například určující, zda "Mars" je používán jako globální úrovni nebo Roman i war). Tento proces vyžaduje přítomnost který rozpoznáno entity jsou propojeny – Wikipedia slouží jako znalostní báze pro základní znalosti `entities` koncový bod pro analýzu textu.
 
 ### <a name="language-support"></a>Podpora jazyků
 
-Použití entity propojení v různých jazycích vyžaduje použití odpovídající znalostní bázi v jednotlivé jazyky. Pro entitu propojení v Analýza textu, to znamená, každý jazyk, který je podporován `entities` koncový bod odkaz na odpovídající Wikipedia souhrnu v daném jazyce. Vzhledem k tomu, že velikost souborů corpora se liší mezi jazyky, očekává se, že propojení pro vyvolání funkce na entity se bude lišit.
+Použití rozhraní entity linking v různých jazycích vyžaduje použití odpovídající znalostní báze v každém jazyce. Pro rozhraní entity linking v rozhraní Text Analytics, to znamená, že každý jazyk, který je podporován `entities` koncový bod bude propojovat odpovídající Wikipedia souhrnu v daném jazyce. Protože velikost hromadných datech se pohybuje mezi jazyky, očekává se, že rozhraní entity linking odvolání funkce se bude lišit.
 
 
 ## <a name="preparation"></a>Příprava
 
 Dokumenty JSON musí mít v tomto formátu: id, text, jazyk
 
-Aktuálně podporované jazyky, najdete v tématu [tento seznam](../text-analytics-supported-languages.md).
+Seznam aktuálně podporovaných jazyků najdete v tématu [tento seznam](../text-analytics-supported-languages.md).
 
-Velikost dokumentu musí být v části 5 000 znaků na jednu dokumentu, a může mít až 1 000 položek (ID) na kolekci. Kolekce je odeslán v textu požadavku. V následujícím příkladu je obrázek obsahu, který může odeslat do serveru linking koncové entity.
+Velikost dokumentu musí být v jednom dokumentu v části 5 000 znaků a může mít až 1 000 položek (ID) na kolekci. Kolekce je v textu požadavku odeslán. V následujícím příkladu je ilustraci obsah, který může odeslat za účelem vytváření odkazů entit.
 
 ```
 {"documents": [{"id": "1",
@@ -54,32 +55,32 @@ Velikost dokumentu musí být v části 5 000 znaků na jednu dokumentu, a můž
     
 ## <a name="step-1-structure-the-request"></a>Krok 1: Struktury požadavku
 
-Podrobnosti o definice žádosti lze nalézt v [jak volat rozhraní API Analytics Text](text-analytics-how-to-call-api.md). Pro usnadnění práce se revidovat následující body:
+Podrobnosti o definice požadavku najdete v [volání rozhraní Text Analytics API](text-analytics-how-to-call-api.md). Pro usnadnění práce jsou revidovat následující body:
 
-+ Vytvoření **POST** požadavku. Přečtěte si dokumentaci k rozhraní API pro tuto žádost: [Entity propojení rozhraní API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634)
++ Vytvoření **příspěvek** požadavku. Projděte si dokumentaci k rozhraní API pro tuto žádost: [rozhraní API služby Entity Linking](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634)
 
-+ Nastavte koncový bod HTTP pro extrakci klíče frázi. Musí zahrnovat `/entities` prostředků: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/entities`
++ Nastavení koncového bodu HTTP pro extrakci klíčových frází. Musí zahrnovat `/entities` prostředků: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/entities`
 
-+ Nastavte hlavičku požadavku zahrnout přístupový klíč pro operace Analýza textu. Další informace najdete v tématu [jak najít koncových bodů a přístupové klíče](text-analytics-how-to-access-key.md).
++ Nastavte hlavičku požadavku zahrnout přístupový klíč pro operace pro analýzu textu. Další informace najdete v tématu [jak najít koncových bodů a přístupové klíče](text-analytics-how-to-access-key.md).
 
-+ V těle žádosti zadejte kolekci dokumentů JSON, který jste připravili pro tuto analýzu
++ V textu požadavku zadejte kolekci dokumentů JSON, který jste připravili pro tuto analýzu
 
 > [!Tip]
-> Použití [Postman](text-analytics-how-to-call-api.md) nebo otevřít **rozhraní API testování konzoly** v [dokumentace](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634) a struktury požadavek POST do služby.
+> Použití [Postman](text-analytics-how-to-call-api.md) nebo otevřít **testovací rozhraní API konzoly** v [dokumentaci](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634) struktury žádost a PUBLIKUJE je do služby.
 
-## <a name="step-2-post-the-request"></a>Krok 2: Odeslat požadavek
+## <a name="step-2-post-the-request"></a>Krok 2: Odeslání žádosti
 
-Po přijetí žádosti o provedení analýzy. Služba přijímá až 100 požadavky za minutu. Každý požadavek může být maximálně 1 MB.
+Analýza je provedena při přijetí požadavku. Služba přijímá až 100 požadavků za minutu. Každý požadavek může být maximálně 1 MB.
 
-Odvolat, zda je služba bezstavové. Žádná data se ukládají ve vašem účtu. Výsledky jsou vráceny okamžitě v odpovědi.
+Připomínáme, že je Bezstavová služba. Žádná data uložená ve vašem účtu. Výsledky se vrátí okamžitě v odpovědi.
 
 ## <a name="step-3-view-results"></a>Krok 3: Zobrazení výsledků
 
-Všech požadavků POST vrátí JSON formátu odpovědi ID a zjistila vlastnosti.
+Všech požadavků POST vrátit odpověď s ID ve formátu JSON a byly zjištěny vlastnosti.
 
-Výstup se vrátí okamžitě. Stream výsledky do aplikace, která přijímá JSON nebo uložte si výstup do souboru na lokálním systému a následně ho naimportovat do aplikace, která umožňuje řazení, vyhledávání a manipulovat s daty.
+Výstup se vrátí okamžitě. Můžete Streamovat výsledky do aplikace, která přijímá JSON nebo uložte výstup do souboru v místním systému a následně ji naimportovat do aplikace, která umožňuje řazení, hledání a manipulaci s daty.
 
-Příklad výstupu pro entitu, propojení se zobrazí další:
+Příklad výstupu pro rozhraní entity linking se zobrazí následující:
 
 ```
 {
@@ -141,25 +142,25 @@ Příklad výstupu pro entitu, propojení se zobrazí další:
 }
 ```
 
-Pokud je k dispozici, odpověď obsahuje Wikipedia ID, adresa URL Wikipedia a Bing ID pro každé zjištěné entity. Ty lze dále vylepšit aplikace o informace týkající se propojené entity.
+Pokud je k dispozici, odpověď obsahuje Wikipedia ID, adresu URL Wikipedie a Bing ID pro každou zjištěnou entitu. Ty je použít k dalšímu vylepšení vaší aplikace s informacemi o propojené entitě.
 
 
 ## <a name="summary"></a>Souhrn
 
-V tomto článku jste se dozvěděli koncepty a pracovní postup pro entity propojení pomocí Analýza textu v kognitivní služby. Shrnutí:
+V tomto článku jste zjistili, koncepty a pracovní postup pro propojování entit pomocí analýzy textu ve službě Cognitive Services. V souhrnu:
 
-+ [Rozhraní API propojení entity](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634) je k dispozici pro vybrané jazyky.
-+ Dokumenty JSON v textu požadavku zahrnují id, text a jazyk kódu.
-+ Je požadavek POST `/entities` koncový bod, pomocí přizpůsobené [přístup klíč a koncový bod](text-analytics-how-to-access-key.md) , je platný pro vaše předplatné.
-+ Výstup odezvy, který se skládá z propojených entit (včetně jistotu, že skóre, odsazení a webové odkazy pro každý dokumentu ID) lze použít v jakékoli aplikace
++ [Rozhraní API služby entity Linking](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634) je k dispozici pro vybrané jazyky.
++ Dokumenty JSON v textu požadavku zahrnují id, text a jazyka kódu.
++ Je požadavek POST `/entities` koncový bod, pomocí firemního [přístup ke key a koncového bodu](text-analytics-how-to-access-key.md) , který je platný pro vaše předplatné.
++ Výstup odezvy, který se skládá z propojené entity (včetně jistotu, že skóre, posuny a webové odkazy pro každý dokument ID) lze použít v jakékoli aplikace
 
 ## <a name="see-also"></a>Další informace najdete v tématech 
 
- [Přehled analýzy textu](../overview.md)  
- [Nejčastější dotazy (FAQ)](../text-analytics-resource-faq.md)</br>
- [Stránka produktu Analýza textu](//go.microsoft.com/fwlink/?LinkID=759712) 
+ [Přehled rozhraní API pro analýzu textu](../overview.md)  
+ [Nejčastější dotazy](../text-analytics-resource-faq.md)</br>
+ [Stránka produktu text Analytics](//go.microsoft.com/fwlink/?LinkID=759712) 
 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Analýza textu rozhraní API](//westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6)
+> [Rozhraní text Analytics API](//westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6)

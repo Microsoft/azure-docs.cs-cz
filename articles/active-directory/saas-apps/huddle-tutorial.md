@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 09/13/2018
 ms.author: jeedes
-ms.openlocfilehash: 08114fc52665eb336844a1072df8bd3f2591dd07
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: fc4ea2538ebe5876e8f3572ab8ad76c4b3b44b8c
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093460"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634332"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-huddle"></a>Kurz: Integrace Azure Active Directory s tlačí se k
 
@@ -56,6 +56,7 @@ V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím pro
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-huddle-from-the-gallery"></a>Přidání tlačí se k z Galerie
+
 Pokud chcete nakonfigurovat integraci tlačí se k Azure AD, musíte doplnit tlačí se k z Galerie váš seznam spravovaných aplikací SaaS.
 
 **Chcete-li přidat tlačí se k z galerie, postupujte následovně:**
@@ -67,7 +68,7 @@ Pokud chcete nakonfigurovat integraci tlačí se k Azure AD, musíte doplnit tla
 2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
-    
+
 3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Aplikace][3]
@@ -80,24 +81,18 @@ Pokud chcete nakonfigurovat integraci tlačí se k Azure AD, musíte doplnit tla
 
     ![Vytváří se testovací uživatele služby Azure AD](./media/huddle-tutorial/tutorial_huddle_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
+## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
 
 V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s tlačí se k podle testovacího uživatele nazývá "Britta Simon."
 
 Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšky v tlačí se k je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a související uživatelské v tlačí se k musí být vytvořeno.
 
-V tlačí se k, přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** a tím vytvoří vztah odkazu.
-
 Ke konfiguraci a Azure AD jednotné přihlašování s tlačí se k testování, které potřebujete k dokončení následujících stavebních bloků:
 
 1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
-
 2. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-
 3. **[Vytvoření zkušebního uživatele tlačí se k](#creating-a-huddle-test-user)**  – Pokud chcete mít protějšek Britta Simon tlačí, který je propojený s Azure AD reprezentace uživatel se k.
-
 4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
-
 5. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
@@ -111,10 +106,13 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     ![Konfigurace jednotného přihlašování][4]
 
 2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
- 
+
     ![Konfigurace jednotného přihlašování](./media/huddle-tutorial/tutorial_huddle_samlbase.png)
 
 3. Na **tlačí se k doméně a adresy URL** části, proveďte následující kroky, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu:
+
+    > [!NOTE]
+    > Tlačí se k instanci se zjišťují automaticky z domény, které zadáte níže.
 
     ![Tlačí se k doméně a adresy URL jednotné přihlašování – informace](./media/huddle-tutorial/tutorial_huddle_url.png)
 
@@ -122,16 +120,16 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     | | |
     |--|--|
-    | `https://<customsubdomain>.huddle.com`|
-    | `https://us.huddle.com` |
+    | `https://<customsubdomain>.huddle.net`|
+    | `https://my.huddle.net` |
     | |
 
     b. V **adresy URL odpovědi** textového pole zadejte některou z adresy URL, pomocí následujícího vzorce:
 
     | | |
     |--|--|
-    | `https://<customsubdomain>.huddle.com/saml/idp-initiated-sso`|
-    | `https://us.huddle.com/saml/idp-initiated-sso`|
+    | `https://<customsubdomain>.huddle.net/saml/idp-initiated-sso`|
+    | `https://my.huddle.net/saml/idp-initiated-sso`|
     | |
 
 4. Zkontrolujte **zobrazit pokročilé nastavení URL** a provést následující krok, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
@@ -139,15 +137,14 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
     ![Tlačí se k doméně a adresy URL jednotné přihlašování – informace](./media/huddle-tutorial/tutorial_huddle_url1.png)
 
     V **přihlašovací adresa URL** textového pole zadejte některou z adresy URL, pomocí následujícího vzorce:
-    
+
     | | |
     |--|--|
-    | `https://<customsubdomain>.huddle.com`|
-    | `https://us.huddle.com`|
+    | `https://<customsubdomain>.huddle.net`|
     | |
 
-    > [!NOTE] 
-    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte skutečné identifikátor, adresa URL odpovědi a přihlašovací adresa URL. Kontakt [klienta tlačí se k týmu podpory](https://huddle.zendesk.com) k získání těchto hodnot. 
+    > [!NOTE]
+    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte skutečné identifikátor, adresa URL odpovědi a přihlašovací adresa URL. Kontakt [klienta tlačí se k týmu podpory](https://huddle.zendesk.com) k získání těchto hodnot.
 
 5. Na **podpisový certifikát SAML** klikněte na tlačítko **Certificate(Base64)** a uložte soubor certifikátu v počítači.
 
@@ -157,15 +154,15 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace jednotného přihlašování](./media/huddle-tutorial/tutorial_general_400.png)
 
-7. Na **tlačí se k konfigurace** klikněte na tlačítko **konfigurace tlačí se k** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.** 
+7. Na **tlačí se k konfigurace** klikněte na tlačítko **konfigurace tlačí se k** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **SAML Entity ID a SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
 
     ![Konfigurace jednotného přihlašování](./media/huddle-tutorial/tutorial_huddle_configure.png) 
-    
+
 8. Pokud chcete nakonfigurovat jednotné přihlašování na straně tlačí se k, je nutné odeslat na stažený **certifikát**, **SAML jednotné přihlašování – adresa URL služby**, a **SAML Entity ID** k [ Tlačí se k týmu podpory klienta](https://huddle.zendesk.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.  
-   
+
     >[!NOTE]
-    > Jednotné přihlašování je potřeba povolit tlačí se k tým podpory. Po dokončení konfigurace, dostanete oznámení. 
-    > 
+    > Jednotné přihlašování je potřeba povolit tlačí se k tým podpory. Po dokončení konfigurace, dostanete oznámení.
+    >
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
 

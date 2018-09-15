@@ -1,20 +1,21 @@
 ---
-title: Projevy LUIS aplikací v Azure | Dokumentace Microsoftu
-description: Přidání projevů v aplikacích Language Understanding Intelligent Service (LUIS).
+title: Projevy v aplikace LUIS
+titleSuffix: Azure Cognitive Services
+description: Projevy jsou vstupy od uživatele, který vaše aplikace potřebuje k interpretaci. Shromážděte frázích, které si myslíte, že budou uživatelé zadávat. Zahrňte projevy, které mají stejný význam, ale jsou vytvořeny jinak než délka slova a umístění aplikace word.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 02/13/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 6f962d0aaf631051c841be29d2854a89bf58ac25
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: c455296348e3b4378a2912fa5388098b206b3ea4
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224411"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45632309"
 ---
 # <a name="utterances-in-luis"></a>Projevy v LUIS
 
@@ -35,12 +36,14 @@ Při výběru projevy, mějte na paměti, co si myslíte je běžný pojem nebo 
 Zjistíte, že i v případě, že provedete snahy o vytvoření různých věty vzorů, bude stále zopakujete některé slovníku.
 
 Využijte tyto projevy příkladu:
-```
-how do I get a computer?
-Where do I get a computer?
-I want to get a computer, how do I go about it?
-When can I have a computer? 
-```
+
+|Ukázkové promluvy|
+|--|
+|Jak získám počítače?|
+|Kde můžu získat počítače?|
+|Chci získat do počítače, jak se mám obrátit o něm?|
+|Pokud mají počítače?| 
+
 Termín core tady není různorodé "počítač". Slibují může stolní počítač, přenosných počítačů, pracovní stanice nebo dokonce pouze počítače. Služba LUIS inteligentně odvodí synonyma z kontextu, ale při vytváření projevy pro vzdělávání se liší je stále lepší.
 
 ## <a name="example-utterances-in-each-intent"></a>Příklad projevy v každé záměr

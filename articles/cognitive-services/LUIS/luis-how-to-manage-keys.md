@@ -1,24 +1,25 @@
 ---
-title: Spravovat klíče koncového bodu v LUIS | Dokumentace Microsoftu
-description: Language Understanding (LUIS) použijte ke správě programových rozhraní API, koncový bod a externí klíče.
-titleSuffix: Azure
+title: Spravovat klíče pro vytváření a koncový bod v LUIS
+titleSuffix: Azure Cognitive Services
+description: Po vytvoření klíče koncového bodu služby LUIS na webu Azure Portal se přiřadit aplikaci LUIS klíč a získat adresu URL správný koncový bod. Pomocí této adresy URL koncového bodu můžete získat LUIS předpovědi.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 127c09a022f5efb95ab6a5ec2db0de633b437a54
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 6d3f487fd64744fa390291d7e23d95cd9632cd23
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223034"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634935"
 ---
-# <a name="manage-your-luis-endpoint-keys"></a>Spravovat klíče pro koncový bod služby LUIS
-Klíč umožňuje vytvářet a publikovat aplikace LUIS nebo dotazu váš koncový bod. 
+# <a name="add-an-azure-luis-resource-to-app"></a>Přidat prostředek Azure LUIS do aplikace
+
+Po vytvoření služby LUIS prostředků na webu Azure Portal, přiřazení prostředku k aplikaci LUIS a získat adresu URL správný koncový bod. Pomocí této adresy URL koncového bodu můžete získat LUIS předpovědi.
 
 <a name="programmatic-key" ></a>
 <a name="authoring-key" ></a>
@@ -27,48 +28,95 @@ Klíč umožňuje vytvářet a publikovat aplikace LUIS nebo dotazu váš koncov
 <a name="api-usage-of-ocp-apim-subscription-key" ></a>
 <a name="key-limits" ></a>
 <a name="key-limit-errors" ></a>
-## <a name="key-concepts"></a>Klíčové koncepty
-V tématu [klíče v LUIS](luis-concept-keys.md) koncepce LUIS vytváření obsahu a koncový bod klíče.
-
+<a name="key-concepts"></a>
+<a name="authoring-key"></a>
 <a name="create-and-use-an-endpoint-key"></a>
-## <a name="assign-endpoint-key"></a>Přiřazení klíče koncového bodu
-Na **publikovat aplikaci** stránky, je už klíč v **prostředky a klíče** tabulky. Jedná se o vytváření klíč (starter). 
+<a name="assign-endpoint-key"></a>
+
+## <a name="assign-resource"></a>Přiřazení prostředků
 
 1. Vytvoření klíče služby LUIS na [webu Azure portal](https://portal.azure.com). Další pokyny najdete v tématu [vytvořit klíč koncového bodu pomocí Azure](luis-how-to-azure-subscription.md).
  
-2. Chcete-li přidat LUIS klíč vytvořený v předchozím kroku, klikněte na tlačítko **přidat klíč** tlačítko Otevřít **přiřadit klíč k vaší aplikaci** dialogového okna. 
+2. Vyberte **spravovat** v pravé horní nabídce vyberte **klíče a koncových bodů**.
 
-    ![Přiřazení klíče do vaší aplikace](./media/luis-manage-keys/assign-key.png)
-3. V dialogovém okně vyberte Tenanta. 
- 
-    > [!Note]
-    > V Azure představuje tenanta Azure Active Directory ID klient nebo organizace, které jsou spojené se službou. Pokud jste již dříve zaregistrovali předplatné Azure pomocí svého individuálního Account Microsoft, již klienta máte! Po přihlášení k webu Azure portal budete automaticky přihlášeni k [svému výchozímu tenantu](https://docs.microsoft.com/azure/active-directory/develop/active-directory-howto-tenant). Můžete libovolně udělovat tohoto klienta použít, ale můžete chtít vytvořit účet správce organizace.
+    [ ![Stránku klíče a koncových bodů](./media/luis-manage-keys/keys-and-endpoints.png) ](./media/luis-manage-keys/keys-and-endpoints.png#lightbox)
 
-4. Zvolte předplatné Azure spojené s klíčem služby LUIS Azure, které chcete přidat.
+3. Chcete-li přidat LUIS, vybrat **přiřazení prostředků +**.
 
-5. Vyberte účet Azure LUIS. Oblast účtu se zobrazí v závorkách. 
+    ![Přiřadit prostředek vaší aplikace](./media/luis-manage-keys/assign-key.png)
 
-    ![Zvolte klávesu](./media/luis-manage-keys/assign-key-filled-out.png)
+4. Vyberte Tenanta v dialogovém okně přidružené k e-mailovou adresu, kterou se přihlašujete pomocí webu služby LUIS.  
 
-6. Po přiřazení tohoto klíče koncového bodu, můžete jej použijte v všechny dotazy na koncový bod. 
+5. Zvolte **název předplatného** spojené s prostředky Azure, které chcete přidat.
+
+6. Vyberte **název prostředku služby LUIS**. 
+
+7. Vyberte **přiřazení prostředků**. 
+
+8. Nalezení nový řádek v tabulce a zkopírujte adresu URL koncového bodu. Je vytvořen správně provést požadavek HTTP GET na koncový bod služby LUIS pro předpověď. 
 
 <!-- content moved to luis-reference-regions.md, need replacement links-->
 <a name="regions-and-keys"></a>
 <a name="publishing-to-europe"></a>
 <a name="publishing-to-australia"></a>
 
+## <a name="unassign-resource"></a>Zrušit přiřazení prostředků
+Při její přiřazení zrušit klíče koncového bodu není odstraněn z Azure. Je jenom byl odpojen od služby LUIS. 
+
+Pokud klíče rozhraní koncového bodu je nepřiřazené nebo není přiřazená k aplikaci, některá z žádostí do koncového bodu adresy URL vrátí chybu: `401 This application cannot be accessed with the current subscription`. 
+
+## <a name="include-all-predicted-intent-scores"></a>Zahrnout všechny predikovaného hodnocení záměru
+**Zahrnout všechny předpovědět záměru skóre** odpověď na dotaz koncový bod zahrnout skóre předpovědi pro každý záměru umožňuje zaškrtávací políčko. 
+
+Toto nastavení umožňuje chatovací robot nebo LUIS volající aplikace pro programové rozhodnutí podle skóre vrácené záměry. Horní dva příkazy jsou obecně zajímá nejvíce. Pokud hlavní skóre již není žádný záměru, že váš robot můžete položit dotaz zpracování zajistíte, aby konečná možností volby mezi záměru žádný a vysokým skóre záměr. 
+
+Příkazů a jejich výsledky jsou také zahrnuté protokoly koncového bodu. Je možné [exportovat](luis-how-to-start-new-app.md#export-app) tyto protokoly a analyzovat výsledky. 
+
+```JSON
+{
+  "query": "book a flight to Cairo",
+  "topScoringIntent": {
+    "intent": "None",
+    "score": 0.5223427
+  },
+  "intents": [
+    {
+      "intent": "None",
+      "score": 0.5223427
+    },
+    {
+      "intent": "BookFlight",
+      "score": 0.372391433
+    }
+  ],
+  "entities": []
+}
+```
+
+## <a name="enable-bing-spell-checker"></a>Povolit kontrolu pravopisu Bingu 
+V **nastavení adresy url koncového bodu**, **kontrolu pravopisu Bingu** přepínač umožňuje LUIS opravovat slova s překlepem před předpovědi. Vytvoření  **[kontrolu pravopisu Bingu klíč](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)**. 
+
+Přidat **kontrola pravopisu = true** parametr querystring a **Bingu – pravopisu – kontrola subscription-key = {YOUR_BING_KEY_HERE}** . Nahradit `{YOUR_BING_KEY_HERE}` vaším klíčem kontrolu pravopisu Bingu.
+
+```JSON
+{
+  "query": "Book a flite to London?",
+  "alteredQuery": "Book a flight to London?",
+  "topScoringIntent": {
+    "intent": "BookFlight",
+    "score": 0.780123
+  },
+  "entities": []
+}
+```
+
+
 ## <a name="publishing-regions"></a>Publikování oblastí
-Další informace o publikování [oblastech](luis-reference-regions.md) včetně publikování v [Evropa](luis-reference-regions.md#publishing-to-europe), a [Austrálie](luis-reference-regions.md#publishing-to-australia). Publikování oblastech se liší od vytváření oblastí. Ujistěte se, že vytvoříte aplikaci pro vytváření oblasti odpovídajících k publikování oblast, kterou chcete.
 
-## <a name="unassign-key"></a>Zrušit přiřazení klíč
-
-* V **seznam prostředků a klíče**, klikněte na ikony koše vedle entity, které chcete zrušit přiřazení. Potom klikněte na **OK** v potvrzovací zprávě potvrďte odstranění.
- 
-    ![Zrušit přiřazení Entity](./media/luis-manage-keys/unassign-key.png)
-
-> [!NOTE]
-> Zrušení přiřazení klíč LUIS neodstraní z vašeho předplatného Azure.
+Další informace o publikování [oblastech](luis-reference-regions.md) včetně publikování v [Evropa](luis-reference-regions.md#publishing-to-europe), a [Austrálie](luis-reference-regions.md#publishing-to-australia). Publikování oblastech se liší od vytváření oblastí. Vytvoření aplikace ve zdrojové oblasti odpovídající publikování oblast, kterou chcete použít pro koncový bod dotazu.
 
 ## <a name="next-steps"></a>Další postup
 
 Publikování aplikace v pomocí svého klíče **publikovat aplikaci** stránky. Pokyny k publikování najdete v tématu [publikovat aplikaci](luis-how-to-publish-app.md).
+
+V tématu [klíče v LUIS](luis-concept-keys.md) koncepce LUIS vytváření obsahu a koncový bod klíče.

@@ -1,20 +1,21 @@
 ---
-title: Pomocí Microsoft Azure Traffic Manager o zvýšení kvóty koncový bod v Language Understanding (LUIS) – Azure | Dokumentace Microsoftu
-description: Pomocí Microsoft Azure Traffic Manager koncový bod kvóty rozložit napříč několika předplatnými v Language Understanding (LUIS) o zvýšení kvóty koncového bodu
+title: Použití Microsoft Azure Traffic Manager o zvýšení kvóty koncový bod v Language Understanding (LUIS)
+titleSuffix: Azure Cognitive Services
+description: Language Understanding (LUIS) nabízí možnost zvýšení kvóty požadavku koncového bodu nad rámec kvót jeden klíč. Uděláte to pomocí vytváření více klíčů pro LUIS a jejich přidání do aplikace LUIS na **publikovat** stránku **prostředky a klíče** oddílu.
 author: diberry
 manager: cjgronlund
 services: cognitive-services
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 06/07/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 909c32452db216f79633b94c31f39350b7a6ee20
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 69e9ad14dd2efaecd587140f6d49550e6daf5e5c
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248624"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634949"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>Microsoft Azure Traffic Manager můžete používat ke správě kvóty koncový bod napříč klíče
 Language Understanding (LUIS) nabízí možnost zvýšení kvóty požadavku koncového bodu nad rámec kvót jeden klíč. Uděláte to pomocí vytváření více klíčů pro LUIS a jejich přidání do aplikace LUIS na **publikovat** stránku **prostředky a klíče** oddílu. 
@@ -44,9 +45,7 @@ New-AzureRmResourceGroup -Name luis-traffic-manager -Location "West US"
 
     ![Snímek obrazovky Azure Portalu se dva klíče LUIS ve skupině prostředků luis. traffic Manageru](./media/traffic-manager/luis-keys.png)
 
-2. V [LUIS] [ LUIS] webu na **publikovat** stránce, přidejte klíče pro aplikaci a znovu publikovat aplikaci. 
-
-    ![Snímek obrazovky LUIS portál dva LUIS klíče na stránce publikování](./media/traffic-manager/luis-keys-in-luis.png)
+2. V [LUIS] [ LUIS] webu v **spravovat** části na **klíče a koncových bodů** stránce, přiřaďte klíče aplikace a publikovat aplikace tím, že Výběr **publikovat** tlačítko v pravé horní nabídce. 
 
     Příklad adresy URL v **koncový bod** sloupec používá požadavek GET s klíče koncového bodu jako parametr dotazu. Zkopírování adresy URL koncových bodů dvě nové klíče. Používají se jako součást konfigurace Traffic Manageru dále v tomto článku.
 
@@ -350,7 +349,7 @@ dns.resolveAny('luis-dns-parent.trafficmanager.net', (err, ret) => {
 
 Úspěšná odpověď s koncovým bodem služby LUIS je:
 
-```cmd
+```json
 [
     {
         value: 'westus.api.cognitive.microsoft.com', 

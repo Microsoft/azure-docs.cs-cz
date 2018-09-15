@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: 8a4b29cf8f2a5a79c68bad3631a54449d3ada09a
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 69dea0aa3eaa9de3ed94b934e5fa3c6e6a3ec24d
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44717858"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45632836"
 ---
-# <a name="virtual-machine-serial-console-preview"></a>Virtuální počítač sériová konzola (preview) 
+# <a name="virtual-machine-serial-console"></a>Konzola sériového portu virtuálního počítače
 
 
 Konzole sériového portu virtuálního počítače v Azure poskytuje přístup ke konzole založený na textu pro virtuální počítače s Linuxem. Toto sériové připojení je COM1 sériového portu virtuálního počítače, poskytování přístupu k virtuálnímu počítači, který je nezávislý na síti nebo stav operačního systému virtuálního počítače. Přístup ke konzole sériového portu pro virtuální počítač momentálně můžete pouze to udělat pomocí webu Azure portal a je povolená jenom pro uživatele, kteří mají Přispěvatel virtuálních počítačů nebo vyšší než přístup k virtuálnímu počítači. 
@@ -29,7 +29,7 @@ Konzole sériového portu virtuálního počítače v Azure poskytuje přístup 
 Pro dokumentaci ke konzole sériového portu pro virtuální počítače s Windows [kliknutím sem](../windows/serial-console.md).
 
 > [!Note] 
-> Verze Preview jsou dostupné pro vás, za předpokladu, že budete souhlasit s podmínkami použití. Další informace najdete v tématu [Microsoft Azure dodatečných podmínkách použití systémů Microsoft Azure Preview.] (https://azure.microsoft.com/support/legal/preview-supplemental-terms/) Aktuálně je tato služba v **ve verzi public preview** a přístup ke konzole sériového portu pro virtuální počítače je k dispozici globálními oblastmi Azure. Konzola sériového portu v tuto chvíli není k dispozici cloudu Azure Government, Azure Germany a Azure China.
+> Konzola sériového portu u virtuálních počítačů je obecně dostupná v globálními oblastmi Azure. V tomto okamžiku konzoly sériového portu ještě není k dispozici cloudu Azure Government nebo Azure China.
 
 
 ## <a name="prerequisites"></a>Požadavky 
@@ -54,7 +54,7 @@ Konzola sériového portu pro virtuální počítače je k dispozici pouze prost
   1. Otevřete na webu Azure portal
   2. V nabídce vlevo vyberte virtuální počítače.
   3. Klikněte na virtuální počítač v seznamu. Otevře se stránka s přehledem pro virtuální počítač.
-  4. Posuňte se dolů části Podpora a řešení potíží s části a klikněte na možnost sériová konzola (Preview). Otevře se nové podokno s sériové konzoly a spustit připojení.
+  4. Posuňte se dolů části Podpora a řešení potíží s části a klikněte na možnost "Konzoly sériového portu". Otevře se nové podokno s sériové konzoly a spustit připojení.
 
 ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-connect.gif)
 
@@ -62,7 +62,7 @@ Konzola sériového portu pro virtuální počítače je k dispozici pouze prost
 > [!NOTE] 
 > Konzola sériového portu vyžaduje místního uživatele s heslem nakonfigurovaným. V tuto chvíli virtuální počítače nakonfigurované pouze veřejný klíč SSH, nebudete mít přístup ke konzole sériového portu. Chcete-li vytvořit místní uživatele s heslem, použijte [rozšíření přístupu virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machines/linux/using-vmaccess-extension) (k dispozici na portálu klikněte na "Resetovat heslo") a vytvořte místní uživatele s heslem.
 
-## <a name="access-serial-console-for-linux"></a>Konzoly sériového portu přístup pro Linux
+## <a name="serial-console-linux-distro-availability"></a>Sériový dostupnosti distribuce Linuxu konzoly
 Aby konzoly sériového portu, aby správně fungoval hostovaného operačního systému nastavené pro čtení a zápis zpráv konzoly sériového portu. Většina [Linuxových distribucí doporučených pro Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) mají ve výchozím nastavení nakonfigurované konzoly sériového portu. Jednoduše kliknutím v části konzoly sériového portu, na webu Azure Portal bude poskytovat přístup ke konzole. 
 
 Distribuce      | Sériový přístup ke konzole
@@ -73,7 +73,7 @@ Ubuntu      | Imagemi Ubuntu v Azure k dispozici máte přístup ke konzole ve v
 CoreOS      | CoreOS imagí dostupných v Azure mají přístup ke konzole ve výchozím nastavení povolená.
 SUSE        | Novější imagí SLES dostupných v Azure máte přístup ke konzole ve výchozím nastavení povolená. Pokud používáte starší verze SLES (10 nebo pod) v Azure, postupujte [článku znalostní BÁZE](https://www.novell.com/support/kb/doc.php?id=3456486) umožňující konzoly sériového portu. 
 Oracle Linux        | Linuxové Image Oracle v Azure k dispozici máte přístup ke konzole ve výchozím nastavení povolená.
-Vlastní Linuxové Image     | Pokud chcete povolit konzoly sériového portu pro vaši vlastní image virtuálního počítače s Linuxem, povolte přístup ke konzole v `/etc/inittab` ke spuštění v terminálu `ttyS0`. Tady je příklad, který to přidejte do souboru inittab: `S0:12345:respawn:/sbin/agetty -L 115200 console vt102`. Další informace o správně vytváření vlastních imagí najdete v části [vytvoření a nahrání VHD s Linuxem v Azure](https://aka.ms/createuploadvhd).
+Vlastní Linuxové Image     | Pokud chcete povolit konzoly sériového portu pro vaši vlastní image virtuálního počítače s Linuxem, povolte přístup ke konzole v `/etc/inittab` ke spuštění v terminálu `ttyS0`. Tady je příklad, který to přidejte do souboru inittab: `S0:12345:respawn:/sbin/agetty -L 115200 console vt102`. Další informace o správně vytváření vlastních imagí najdete v části [vytvoření a nahrání VHD s Linuxem v Azure](https://aka.ms/createuploadvhd). Pokud vytváříte vlastní jádra, jsou některé jádra příznaky, které byste měli zvážit povolení `CONFIG_SERIAL_8250=y` a `CONFIG_MAGIC_SYSRQ_SERIAL=y`. Konfigurační soubor je často přidávaném /boot/ pro další zkoumání.
 
 ## <a name="common-scenarios-for-accessing-serial-console"></a>Časté scénáře pro přístup ke konzole sériového portu 
 Scénář          | Akce v konzole sériového portu                
@@ -165,20 +165,22 @@ Virtuální počítač je v zastaveném stavu Uvolněno. Spusťte virtuální po
 Nemáte požadovaná oprávnění ke konzole sériového portu tento virtuální počítač použít. Ujistěte se, máte alespoň oprávnění role Přispěvatel virtuálních počítačů.| Přístup ke konzole sériového portu vyžaduje určitá oprávnění pro přístup. Zobrazit [požadavky na přístup](#prerequisites) podrobnosti
 Nepovedlo se určit skupinu prostředků pro účet úložiště diagnostiky spouštění '<STORAGEACCOUNTNAME>". Ověřte, že Diagnostika spouštění je povolená pro tento virtuální počítač a máte přístup k tomuto účtu úložiště. | Přístup ke konzole sériového portu vyžaduje určitá oprávnění pro přístup. Zobrazit [požadavky na přístup](#prerequisites) podrobnosti
 Webové sokety je uzavřený nebo nelze otevřít. | Možná budete muset povolit `*.console.azure.com`. Podrobnější ale delší přístup je na seznamu povolených IP adres [rozsahy IP adres Datacentra Microsoft Azure](https://www.microsoft.com/en-us/download/details.aspx?id=41653), které mění poměrně.
+Při přístupu k tomuto virtuálnímu počítači účet úložiště diagnostiky spouštění došlo k odpovědi "Zakázáno". | Zajistěte, aby že tuto diagnostiku spouštění nemá žádné brány firewall účtu. Účet úložiště diagnostiky dostupné spouštěcí je nezbytné pro konzoly sériového portu funkce.
+
 ## <a name="known-issues"></a>Známé problémy 
-Jak jsme jsou stále ve verzi preview fázích pro přístup ke konzole sériového portu, pracujeme na tom prostřednictvím některým známým problémům. Níže je seznam těchto prvků s možná řešení:
+Víme o některé problémy s konzole sériového portu. Tady je seznam těchto problémů a kroky pro omezení rizik.
 
 Problém                           |   Omezení rizik 
 :---------------------------------|:--------------------------------------------|
 Dosažení zadejte po banner připojení není uveden do protokolu v řádku | Podrobnosti najdete na této stránce: [Hitting zadejte nemá žádný účinek,](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md). K tomu může dojít, pokud používáte vlastní virtuální počítač, Posílená zařízení nebo konfigurace GRUB, který způsobí, že Linux selhání správně připojení do sériového portu.
-Při přístupu k tomuto virtuálnímu počítači účet úložiště diagnostiky spouštění došlo k odpovědi "Zakázáno". | Zajistěte, aby že tuto diagnostiku spouštění nemá žádné brány firewall účtu. Účet úložiště diagnostiky dostupné spouštěcí je nezbytné pro konzoly sériového portu funkce.
 Text konzoly sériového portu potrvá jenom část na velikost obrazovky (často po pomocí textového editoru) | Konzoly sériového portu nepodporují vyjednávání o velikost okna ([RFC 1073](https://www.ietf.org/rfc/rfc1073.txt)), což znamená, že bude bez signálu SIGWINCH odesílat aktualizace velikosti obrazovky a virtuální počítač bude nemají žádné informace o velikosti svého terminálu. Doporučujeme, abyste instaling xterm nebo některé podobné nástroj, který obsahuje příkaz "Změna velikosti". Spuštění "Změna velikosti" opravu provedete.
+Vkládání velmi dlouhých řetězců nefunguje | Konzola sériového portu omezení délky řetězce do terminálu na 2 048 znaků. Toto je zabránit zahlcení šířky pásma sériového portu.
 
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy 
 **Q. Jak můžu poslat svůj názor?**
 
-A. Poskytnout zpětnou vazbu jako problém tak, že přejdete do https://aka.ms/serialconsolefeedback. Můžete také menší (upřednostňované) pošlete zpětnou vazbu prostřednictvím azserialhelp@microsoft.com nebo v kategorii virtuálního počítače http://feedback.azure.com
+A. Poskytnout zpětnou vazbu jako problém tak, že přejdete do https://aka.ms/serialconsolefeedback. Můžete také (menší upřednostňované), odeslat zpětnou vazbu prostřednictvím azserialhelp@microsoft.com nebo v kategorii virtuálního počítače http://feedback.azure.com
 
 **Q. Podporuje konzoly sériového portu, kopírování a vkládání?**
 

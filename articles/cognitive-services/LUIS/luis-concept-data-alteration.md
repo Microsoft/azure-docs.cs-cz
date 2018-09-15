@@ -1,5 +1,5 @@
 ---
-title: Koncepty změnu dat v LUIS – Principy termínů
+title: Koncepty změnu dat v LUIS – Language Understanding
 titleSuffix: Azure Cognitive Services
 description: Zjistěte, jak lze změnit data před predikce v Language Understanding (LUIS)
 services: cognitive-services
@@ -8,17 +8,17 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/26/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 2949f7afa5d04d9f7ea738ad6f7b9333bfaf958f
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: f3caac697bad0bdb1401e85ac032fe167c25e112
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44023013"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45631255"
 ---
 # <a name="data-alterations"></a>Změny dat
-Služba LUIS poskytuje možnosti pro manipulaci s utterance před nebo během do predikce. 
+Služba LUIS poskytuje možnosti pro manipulaci s utterance před nebo během do predikce. Patří mezi ně opravuje pravopis a opravit problémy časové pásmo pro události prebuild datetimeV2. 
 
 ## <a name="correct-spelling-errors-in-utterance"></a>Psaní opravovat pravopisné chyby v utterance
 Služba LUIS používá [API V7 kontrola pravopisu Bingu](https://azure.microsoft.com/services/cognitive-services/spell-check/) opravte pravopisné chyby utterance. Služba LUIS, musí klíč spojený s touto službou. Vytvoření klíče a pak přidejte klíč jako parametr řetězce dotazu na [koncový bod](https://aka.ms/luis-endpoint-apis). 
@@ -48,6 +48,9 @@ Když [API V7 kontrola pravopisu Bingu](https://azure.microsoft.com/services/cog
 }
 ```
  
+### <a name="whitelist-words"></a>Slova v seznamu povolených IP adres
+Rozhraní API používané LUIS nepodporuje prázdný seznam slova, která chcete ignorovat během pravopisu pro kontrolu pravopisu Bingu zkontrolovat změny. Pokud potřebujete slova v seznamu povolených nebo zkratky, proces utterance v klientské aplikaci pomocí seznamu povolených před odesláním utterance LUIS k záměru předpovědi.
+
 ## <a name="change-time-zone-of-prebuilt-datetimev2-entity"></a>Změna časového pásma datetimeV2 předem připravených entit
 Pokud aplikace LUIS používá datetimeV2 předem připravených entit, hodnotu data a času mohou být vráceny v předpověď odpovědi. Časové pásmo požadavku se používá k určení správné datum a čas k vrácení. Pokud požadavek pochází z robota nebo jiné centralizované aplikace před získáním LUIS, opravte časové pásmo, které používá služba LUIS. 
 

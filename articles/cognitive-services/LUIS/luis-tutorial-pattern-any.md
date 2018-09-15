@@ -1,42 +1,29 @@
 ---
-title: Kurz použití pattern.any entity k vylepšení predikce služby LUIS – Azure | Dokumentace Microsoftu
-titleSuffix: Cognitive Services
-description: V tomto kurzu používá k vylepšení predikce služby LUIS záměr a entity pattern.any entity.
+title: 'Kurz 5: Pattern.any entity pro textu volného tvaru'
+titleSuffix: Azure Cognitive Services
+description: Použijte pattern.any entity extrahovat data z projevy, kde je správně naformátovaný projevy a kde konec dat může snadno zaměnitelná s zbývající slova utterance.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
-ms.technology: luis
+ms.technology: language-understanding
 ms.topic: article
-ms.date: 08/02/2018
+ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 43f169ae11191c2e98c4538189bce781821de980
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: dce75710137f4d4160cb2f55f856066c7c93ac78
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44157850"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45628977"
 ---
-# <a name="tutorial-improve-app-with-patternany-entity"></a>Kurz: Zlepšení aplikace s entitou pattern.any
+# <a name="tutorial-5-extract-free-form-data"></a>Kurz: 5. Extrahovat data volného tvaru
 
-V tomto kurzu použijte ke zvýšení záměr a entity předpovědi pattern.any entity.  
+V tomto kurzu použijte pattern.any entity extrahovat data z projevy, kde jsou správně naformátovaný projevy a kde konec dat může snadno zaměnitelná s zbývající slova utterance. 
 
-> [!div class="checklist"]
-* Zjistěte, kdy a jak používat pattern.any
-* Vytvoření vzor, který využívá pattern.any
-* Postup ověření vylepšení predikce
+Pattern.any entity umožňuje najít data volného tvaru, kde znění entity ztěžuje zjistit koncové entity od zbytku utterance. 
 
-[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
-
-## <a name="before-you-begin"></a>Než začnete
-Pokud nemáte aplikaci lidských zdrojů [vzorku role](luis-tutorial-pattern-roles.md) kurzu [importovat](luis-how-to-start-new-app.md#import-new-app) JSON do nové aplikace ve [LUIS](luis-reference-regions.md#luis-website) webu. App k importu se nachází v [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-roles-HumanResources.json) úložiště GitHub.
-
-Pokud chcete zachovat původní aplikaci pro lidské zdroje, naklonujte verzi na stránce [Settings](luis-how-to-manage-versions.md#clone-a-version) (Nastavení) a pojmenujte ji `patt-any`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. 
-
-## <a name="the-purpose-of-patternany"></a>Účelem pattern.any
-Pattern.any entity umožňuje najít data volnou formou kde znění entity ztěžuje zjistit koncové entity od zbytku utterance. 
-
-Tuto aplikaci lidských zdrojů pomáhá zaměstnancům najít firemní formuláře. Formuláře byly přidány ve [regulárního výrazu kurzu](luis-quickstart-intents-regex-entity.md). Názvy formulářů v tomto kurzu používá regulárních výrazů k extrakci název formuláře, který byl správně naformátovaný jako jsou názvy formulářů tučně v následující tabulce utterance:
+Tuto aplikaci lidských zdrojů pomáhá zaměstnancům najít firemní formuláře. 
 
 |Promluva|
 |--|
@@ -54,11 +41,38 @@ Projevy s názvem popisný formulář vypadat takto:
 |Autora **"Žádat přemístění zaměstnance nové verze 5 společnosti 2018"**?|
 |**Žádat nová verze 5 společnosti 2018 zaměstnance přemístění** je publikovaná ve francouzštině?|
 
-Různé délky zahrnuje fráze, které může matou LUIS o ukončení entity. Použijete Pattern.any entitu ve vzorci můžete zadat začátek a konec název formuláře, LUIS správně extrahuje název formuláře.
+Různé délky obsahuje slova, které může matou LUIS o ukončení entity. Použijete Pattern.any entitu ve vzorci můžete zadat začátek a konec název formuláře, LUIS správně extrahuje název formuláře.
 
-**Zatímco vzorky umožňují poskytovat méně příklad projevy, pokud nejsou zjištěny entity, neodpovídá vzoru.**
+|Příklad utterance šablony|
+|--|
+|Kde je {FormName} [?]|
+|Autora {FormName} [?]|
+|{FormName} je publikovaná ve francouzštině [?]|
 
-## <a name="add-example-utterances-to-the-existing-intent-findform"></a>Přidání projevů příklad na existující záměr FindForm 
+**V tomto kurzu se dozvíte, jak:**
+
+> [!div class="checklist"]
+> * Použít existující ukázková aplikace
+> * Přidání projevů příklad do existující entity
+> * Vytvoření Pattern.any entity
+> * Vytvoření modelu
+> * Trénování
+> * Nový vzor testu
+
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+
+## <a name="use-existing-app"></a>Použití existující aplikace
+Pokračovat s aplikací vytvořili v posledním kurzu s názvem **Lidskézdroje**. 
+
+Pokud nemáte aplikaci lidských zdrojů z předchozí kurz o službě, použijte následující kroky:
+
+1.  Stáhněte a uložte [souboru JSON aplikace](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-roles-HumanResources.json).
+
+2. Importujte ve formátu JSON do nové aplikace.
+
+3. Z **spravovat** části na **verze** kartu, naklonujte na verzi a pojmenujte ho `patt-any`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. Název verze, protože se používají jako součást trasu adresy URL název nesmí obsahovat žádné znaky, které nejsou platné v adrese URL.
+
+## <a name="add-example-utterances"></a>Přidání projevů příklad 
 Odeberte keyPhrase předem připravených entit, pokud je těžké vytvořit a označovat FormName entity. 
 
 1. Vyberte **sestavení** v horním navigačním panelu vyberte **záměry** z levého navigačního panelu.
@@ -128,6 +142,8 @@ Pattern.any entity extrahuje entity různou délku. Funguje pouze v vzor protož
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Další postup
+
+V tomto kurzu přidá příklad projevy na existující záměr, pak vytvoří nové Pattern.any pro název formuláře. Tento kurz vytvoří vzor pro existující záměr s novou příklad projevy a entity. Interaktivní testování jsme si ukázali, že vzor a jejímu záměru byly předvídat, protože entita byla nalezena. 
 
 > [!div class="nextstepaction"]
 > [Další informace o použití rolí pomocí vzoru](luis-tutorial-pattern-roles.md)

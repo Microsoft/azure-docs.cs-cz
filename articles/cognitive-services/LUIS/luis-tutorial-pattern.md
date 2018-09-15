@@ -1,76 +1,56 @@
 ---
-title: Kurz použití vzorců k vylepšení predikce služby LUIS – Azure | Dokumentace Microsoftu
-titleSuffix: Cognitive Services
-description: V tomto kurzu používá vzor pro příkazy k vylepšení predikce služby LUIS záměr a entity.
+title: 'Tutoriál 3: Vzory pro vylepšení predikce služby LUIS'
+titleSuffix: Azure Cognitive Services
+description: Zvyšte záměr a entity předpovědi současně méně projevy příklad pomocí vzorce. Vzor je k dispozici prostřednictvím utterance příkladu šablony, zahrnující syntaxi k identifikaci entity a textového ignorable.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
-ms.technology: luis
+ms.technology: language-understanding
 ms.topic: article
-ms.date: 07/30/2018
+ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 9c14f2121cd83cec802f4fd4a92661d58eb7efb3
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 3b41105a20b765abd084fc387370a49b657d1cba
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44159567"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634723"
 ---
-# <a name="tutorial-improve-app-with-patterns"></a>Kurz: Vylepšit aplikaci pomocí vzorů
+# <a name="tutorial-3-add-common-utterance-formats"></a>Kurz: 3. Přidat společné utterance formáty
 
-V tomto kurzu pomocí vzorů zvýšit předpovědi záměr a entity.  
+V tomto kurzu použijte ke zvýšení záměr a entity předpovědi současně méně projevy příklad vzory. Vzor je k dispozici prostřednictvím utterance příkladu šablony, zahrnující syntaxi k identifikaci entity a textového ignorable. Vzorek je kombinací odpovídající výraz a strojové učení.  Příklad utterance šablony, spolu s záměr projevů poskytnout LUIS lepší představu, z jaké projevy přizpůsobit záměr. 
+
+**V tomto kurzu se dozvíte, jak:**
 
 > [!div class="checklist"]
-* Jak určit, že vzor by umožňují, aby aplikace
-* Postup vytvoření vzoru
-* Postup ověření vylepšení predikce modelu
+> * Použít existující ukázková aplikace 
+> * Vytvořit záměr
+> * Trénování
+> * Publikování
+> * Získat záměry a entity z koncového bodu
+> * Společně tvoří masku
+> * Ověřte vylepšení predikce modelu
+> * Označení textu jako ignorable a vnořené v rámci vzoru
+> * Ověření úspěšné vzor pomocí panelu testu
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="use-existing-app"></a>Použití existující aplikace
 
-Pokud nemáte aplikaci lidských zdrojů [dávky testů](luis-tutorial-batch-testing.md) kurzu [importovat](luis-how-to-start-new-app.md#import-new-app) JSON do nové aplikace ve [LUIS](luis-reference-regions.md#luis-website) webu. App k importu se nachází v [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-batchtest-HumanResources.json) úložiště GitHub.
+Pokračovat s aplikací vytvořili v posledním kurzu s názvem **Lidskézdroje**. 
 
-Pokud chcete zachovat původní aplikaci pro lidské zdroje, naklonujte verzi na stránce [Settings](luis-how-to-manage-versions.md#clone-a-version) (Nastavení) a pojmenujte ji `patterns`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. 
+Pokud nemáte aplikaci lidských zdrojů z předchozí kurz o službě, použijte následující kroky:
 
-## <a name="patterns-teach-luis-common-utterances-with-fewer-examples"></a>Vzory běžných projevy s menším počtem příklady naučit LUIS
+1.  Stáhněte a uložte [souboru JSON aplikace](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-batchtest-HumanResources.json).
 
-Vzhledem k povaze domény lidských zdrojů existuje pár běžné způsoby s žádostí o relacích zaměstnancům v organizacích. Příklad:
+2. Importujte ve formátu JSON do nové aplikace.
 
-|Projevy|
-|--|
-|Kdo nehlásí Jill Jones do?|
-|Kdo ohlásí Jill Jones?|
-
-Tyto projevy jsou příliš zavřít do určit kontextové jedinečnost jednotlivých bez zadání mnoho příkladů utterance. Přidáním vzor záměru LUIS zjišťuje běžné vzory utterance pro záměru bez poskytnutí mnoho příkladů utterance. 
-
-Příklad šablony projevy záměru zahrnují:
-
-|Příklad šablony projevy|
-|--|
-|Kdo dělá {zaměstnance} zprávu?|
-|Kdo ohlásí {zaměstnance}?|
-
-Vzor je k dispozici prostřednictvím utterance příkladu šablony, zahrnující syntaxi k identifikaci entity a textového ignorable. Vzorek je kombinací porovnávání regulárních výrazů a strojové učení.  Příklad utterance šablony, spolu s záměr projevů poskytnout LUIS lepší představu, z jaké projevy přizpůsobit záměr.
-
-V pořadí pro vzor lze porovnat utterance entity v rámci utterance muset nejprve srovnat entity v šabloně utterance. Šablony ale nepomůže, předpovídat entity, pouze záměry. 
-
-**Zatímco vzorky umožňují poskytovat méně příklad projevy, pokud nejsou zjištěny entity, neodpovídá vzoru.**
-
-Mějte na paměti, že zaměstnanci byly vytvořeny [seznam entit kurzu](luis-quickstart-intent-and-list-entity.md).
+3. Z **spravovat** části na **verze** kartu, naklonujte na verzi a pojmenujte ho `patterns`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. Název verze, protože se používají jako součást trasu adresy URL název nesmí obsahovat žádné znaky, které nejsou platné v adrese URL.
 
 ## <a name="create-new-intents-and-their-utterances"></a>Vytvořit nový záměry a jejich projevy
 
-Přidejte dva nové záměry: `OrgChart-Manager` a `OrgChart-Reports`. Jednou LUIS vrací předpověď na klientskou aplikaci, záměru název lze použít jako název funkce v klientské aplikaci a entitou zaměstnanců může použít jako parametr této funkce.
-
-```Javascript
-OrgChart-Manager(employee){
-    ///
-}
-```
-
-1. Ujistěte se, že je vaše aplikace pro lidské zdroje uvedená v části **Build** (Sestavení) služby LUIS. Do této části můžete přejít výběrem možnosti **Build** (Sestavit) v pravém horním řádku nabídek. 
+1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Na stránce **Intents** (Záměry) vyberte **Create new intent** (Vytvořit nový záměr). 
 
@@ -110,17 +90,17 @@ OrgChart-Manager(employee){
 
 ## <a name="caution-about-example-utterance-quantity"></a>Upozornění o příklad utterance množství
 
-Množství projevy příklad v tyto záměry není dostatečně tak moct trénovat LUIS správně. V reálné aplikaci každý záměr by měl mít aspoň 15 projevy s širokou škálu možností a utterance Délka slova. Těchto několik projevy vybraných speciálně pro zvýraznění vzory. 
+[!include[Too few examples](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]
 
-## <a name="train-the-luis-app"></a>Trénování aplikace LUIS
+## <a name="train"></a>Trénování
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish-the-app-to-get-the-endpoint-url"></a>Publikování aplikace a získání adresy URL koncového bodu
+## <a name="publish"></a>Publikování
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="query-the-endpoint-with-a-different-utterance"></a>Odeslání dotazu na koncový bod s jinou promluvou
+## <a name="get-intent-and-entities-from-endpoint"></a>Získání záměru a entity z koncového bodu
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
@@ -215,13 +195,53 @@ Vzory používejte k zajištění správného záměr skóre výrazně vyšší 
 
 Ponechte otevřené, druhý okna prohlížeče. Použijete ji později v tomto kurzu. 
 
-## <a name="add-the-template-utterances"></a>Přidání projevů šablony
+## <a name="template-utterances"></a>Projevy šablony
+Vzhledem k povaze domény lidských zdrojů existuje pár běžné způsoby s žádostí o relacích zaměstnancům v organizacích. Příklad:
+
+|Projevy|
+|--|
+|Kdo nehlásí Jill Jones do?|
+|Kdo ohlásí Jill Jones?|
+
+Tyto projevy jsou příliš zavřít do určit kontextové jedinečnost jednotlivých bez zadání mnoho příkladů utterance. Přidáním vzor záměru LUIS zjišťuje běžné vzory utterance pro záměru bez poskytnutí mnoho příkladů utterance. 
+
+Příklady šablon utterance záměru zahrnují:
+
+|V příkladech šablon projevy|Syntaxe význam|
+|--|--|
+|Kdo dělá {zaměstnance} hlásit [?]|zaměňovat {zaměstnance} ignorujte [?]}|
+|Kdo ohlásí {zaměstnance} [?]|zaměňovat {zaměstnance} ignorujte [?]}|
+
+`{Employee}` Syntaxe označí entitu umístění v rámci šablony utterance jako i které entitě je. Volitelné syntaxe `[?]`, označí slova nebo interpunkční znaménka, která jsou volitelné. Služba LUIS odpovídá utterance, Nepovinný text v závorkách se ignoruje.
+
+Přestože syntaxe vypadá jako regulární výrazy, není regulární výrazy. Pouze složená závorka `{}`a hranatá závorka `[]`, syntaxe je podporovaná. Mohou být vnořené až dvě úrovně.
+
+V pořadí pro vzor lze porovnat utterance entity v rámci utterance muset nejprve srovnat entity v šabloně utterance. Šablony ale nepomůže, předpovídat entity, pouze záměry. 
+
+**Zatímco vzorky umožňují poskytovat méně příklad projevy, pokud nejsou zjištěny entity, neodpovídá vzoru.**
+
+V tomto kurzu, přidejte dva nové záměry: `OrgChart-Manager` a `OrgChart-Reports`. 
+
+|Záměr|Promluva|
+|--|--|
+|Organizační diagram – správce|Kdo nehlásí Jill Jones do?|
+|Organizační diagram – sestavy|Kdo ohlásí Jill Jones?|
+
+Jednou LUIS vrací předpověď na klientskou aplikaci, záměru název lze použít jako název funkce v klientské aplikaci a entitou zaměstnanců může použít jako parametr této funkce.
+
+```Javascript
+OrgChartManager(employee){
+    ///
+}
+```
+
+Mějte na paměti, že zaměstnanci byly vytvořeny [seznam entit kurzu](luis-quickstart-intent-and-list-entity.md).
 
 1. Vyberte **sestavení** v horní nabídce.
 
 2. V levém navigačním panelu v části **zvýšit výkon aplikace**vyberte **vzory** z levé navigace.
 
-3. Vyberte **organizačního diagramu správce** záměr, pak zadejte následující projevy šablony, jeden po druhém, vyberete zadejte po každé šablony utterance:
+3. Vyberte **organizačního diagramu správce** záměr, pak zadejte následující projevy šablony:
 
     |Projevy šablony|
     |:--|
@@ -232,17 +252,13 @@ Ponechte otevřené, druhý okna prohlížeče. Použijete ji později v tomto k
     |Kdo je {} [v] vedoucího. [?]|
     |Kdo je nadřízeného {zaměstnance} [?]|
 
-    `{Employee}` Syntaxe označí entitu umístění v rámci šablony utterance jako i které entitě je. 
-
     Entity s rolemi použít syntaxi, která obsahuje název role a jsou popsané v [samostatné kurz pro role](luis-tutorial-pattern-roles.md). 
-
-    Volitelné syntaxe `[]`, označí slova nebo interpunkční znaménka, která jsou volitelné. Služba LUIS odpovídá utterance, Nepovinný text v závorkách se ignoruje.
 
     Pokud zadáte utterance šablony, LUIS pomáhá vyplnění v entitě při zadání levá složená závorka `{`.
 
     [![Snímek obrazovky zadání projevy šablony pro záměr](./media/luis-tutorial-pattern/hr-pattern-missing-entity.png)](./media/luis-tutorial-pattern/hr-pattern-missing-entity.png#lightbox)
 
-4. Vyberte **organizačního diagramu sestavy** záměr, pak zadejte následující projevy šablony, jeden po druhém, vyberete zadejte po každé šablony utterance:
+4. Vyberte **organizačního diagramu sestavy** záměr, pak zadejte následující projevy šablony:
 
     |Projevy šablony|
     |:--|
@@ -427,6 +443,8 @@ Všechny tyto projevy nalezené entity uvnitř, proto shodují stejný vzor a ma
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Další postup
+
+V tomto kurzu přidá dva příkazy pro projevy, které byly obtížné předpovědi s vysokou přesností bez nutnosti mnoho projevy příklad. Přidání vzory pro tyto povolené LUIS lépe předpovědět záměr s výrazně vyšší ohodnocení. LUIS použití vzoru širší projevy označování entit a ignorable textu povoleno.
 
 > [!div class="nextstepaction"]
 > [Další informace o použití rolí pomocí vzoru](luis-tutorial-pattern-roles.md)

@@ -3,7 +3,7 @@ title: Zveřejnění položky marketplace vlastní ve službě Azure Stack (oper
 description: Jako operátory Azure stacku zjistěte, jak publikovat vlastní marketplace položku ve službě Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: 60871cbb-eed2-433c-a76d-d605c7aec06c
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: jeffgo
-ms.openlocfilehash: c16d8a282d489e7a2b5ee9908f52224aea6118d6
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 12310c088777d65bef211747806f942433857e40
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44713387"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45632344"
 ---
 # <a name="the-azure-stack-marketplace-overview"></a>Přehled Azure Stack Marketplace
 

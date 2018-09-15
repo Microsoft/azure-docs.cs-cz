@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory Identity Protection – jak odblokovat uživatele | Dokumentace Microsoftu
+title: Jak odblokovat uživatele s Azure Active Directory Identity Protection | Dokumentace Microsoftu
 description: Zjistěte, jak odblokovat uživatele, kteří se zablokoval pomocí zásad Azure Active Directory Identity Protection.
 services: active-directory
 keywords: Azure active directory identity protection odblokování uživatele
@@ -13,17 +13,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2018
+ms.date: 09/13/2018
 ms.author: markvi
-ms.reviewer: nigu
-ms.openlocfilehash: c5f251f2de938d4441672c8aa1a6dbc6bd616155
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.reviewer: raluthra
+ms.openlocfilehash: f8bf983033407bbf597af15f18f28ecf33b7558f
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45575487"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45631680"
 ---
-# <a name="azure-active-directory-identity-protection---how-to-unblock-users"></a>Azure Active Directory Identity Protection – jak odblokovat uživatele
+# <a name="how-to-unblock-users"></a>Postupy: Odblokování uživatelů
+
 S Azure Active Directory Identity Protection můžete nakonfigurovat zásady pro blokování uživatelů jsou při splnění nakonfigurovaných podmínek. Obvykle blokovaný uživatel kontakty technické podpory o budou odblokována. Tento článek vysvětluje kroky můžete provést pro odblokování blokovaný uživatel.
 
 ## <a name="determine-the-reason-for-blocking"></a>Zjistěte důvod pro blokování

@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 09/14/2018
 ms.author: mabrigg
-ms.openlocfilehash: 3d856f4fad845dfdd4d9a30fa176a4c0bfbc875b
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: b6196ec434d00a6fbc6714095fa4182ede98ce91
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44024338"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45633431"
 ---
 # <a name="how-to-consume-monitoring-data-from-azure-stack"></a>Jak používat data monitorování z Azure Stack
 
@@ -35,7 +35,7 @@ Můžete najít data monitorování na jednom místě s kanálem monitorování 
 | Metriky úložiště | Metriky | Azure Storage | Tabulka úložiště:<br>Storage Analytics |
 | Protokol aktivit | Události | Všechny služby Azure | ROZHRANÍ REST API:<br>Azure Monitor událostí rozhraní API |
 | COMPUTE protokoly operačního systému hosta (například služby IIS, trasování událostí pro Windows, syslogy) | Události | Windows a virtuální počítače s Linuxem | Storage table nebo blob:<br>Windows nebo Linux Azure Diagnostics <br>Centrum událostí:<br>Diagnostika Azure pro Windows |
-| Protokoly úložiště | Události | Azure Storage | Tabulka úložiště:<br>Storage Analytics<br>`Vita: how about hybrid OMS/AppInsights, shall we mention?` |
+| Protokoly úložiště | Události | Azure Storage | Tabulka úložiště:<br>Storage Analytics |
 
 ## <a name="next-steps"></a>Další postup
 

@@ -1,20 +1,21 @@
 ---
-title: Pochopení funkce v aplikacích LUIS v Azure | Dokumentace Microsoftu
-description: Další informace o funkcích, které pomůže zlepšit výkon aplikace LUIS. Funkce zahrnují seznamy frázi a vzory pro rozpoznání regulární výrazy.
+title: Funkce v aplikacích Azure Cognitive Services LUIS
+titleSuffix: Azure Cognitive Services
+description: Přidání funkcí do jazykového modelu poskytnout nápovědu, jak rozpoznat vstup, který chcete klasifikovat a označovat. Funkce pomáhají LUIS rozpoznat záměry a entity.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 04/18/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 8d3f006f27d1d728f89458deba27e1c1a63b6de5
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 906e63c94666d2e24b486f5ae34f99133408c4dc
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224924"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45628705"
 ---
 # <a name="phrase-list-features-in-luis"></a>Seznam funkcí frázi v LUIS
 

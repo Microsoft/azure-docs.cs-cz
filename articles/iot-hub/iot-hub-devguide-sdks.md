@@ -6,22 +6,24 @@ manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 03/12/2018
+ms.date: 09/14/2018
 ms.author: dobett
-ms.openlocfilehash: b57a448459101150363d595910cefcde991f1f92
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: f5d493628df68e0afbe05137b0d7386d6c40f7d4
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721804"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605738"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>Pochopit a používat sady SDK služby Azure IoT Hub
 
-Existují dvě kategorie software development Kit (SDK) pro práci se službou IoT Hub:
+Existují tři kategorie software development Kit (SDK) pro práci se službou IoT Hub:
 
 * **Sady SDK pro zařízení** umožňují vývoj aplikací pro zařízení IoT pomocí klienta zařízení nebo modul klienta. Tyto aplikace odesílat telemetrická data do služby IoT hub a volitelně přijímat zprávy, úlohu, metody nebo aktualizace dvojčat ze služby IoT hub.  Modul klienta můžete použít také k vytváření [moduly](https://docs.microsoft.com/azure/iot-edge/iot-edge-modules) pro [modul runtime Azure IoT Edge](https://docs.microsoft.com/en-us/azure/iot-edge/about-iot-edge).
 
 * **Sady SDK pro služby** vám umožní spravovat vaše Centrum IoT a volitelně zasílání zpráv, plánování úloh, vyvolání přímých metod nebo odeslání požadovanou vlastnost aktualizací do zařízení IoT nebo moduly.
+
+* **Sady SDK zařízení pro zřizování** umožňují zřizovat zařízení do služby IoT Hub pomocí [služby Device Provisioning](../iot-dps/about-iot-dps.md).
 
 Seznamte se s vývojem pomocí sad SDK Azure IoT výhody [tady][lnk-benefits-blog].
 
@@ -107,7 +109,29 @@ Azure IoT Hub služba SDK pro iOS:
 > [!NOTE]
 > Prohlédněte si soubory readme v úložištích GitHub. informace o používání jazyka a správců balíčků specifických pro platformu nainstalovat binární soubory a závislosti na vývojovém počítači.
 
+## <a name="device-provisioning-sdks"></a>Zřizování sady SDK pro zařízení
 
+**Sadami SDK zřizování služby Microsoft Azure** umožňují zřizovat zařízení do služby IoT Hub pomocí [služby Device Provisioning](../iot-dps/about-iot-dps.md).
+
+Azure zřizování zařízení a služby sady SDK pro jazyk C#:
+* [Klientská sada SDK zařízení pro zřizování](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/provisioning/device)
+* [Klientská sada SDK služby zřizování](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/provisioning/service)
+
+Azure zřizování zařízení a služby sady SDK pro Javu:
+* [Klientská sada SDK zařízení pro zřizování](https://github.com/Azure/azure-iot-sdk-java/blob/master/provisioning-device-client)
+* [Klientská sada SDK služby zřizování](https://github.com/Azure/azure-iot-sdk-java/blob/master/provisioning/provisioning-service-client)
+
+Azure zřizování zařízení a služby sady SDK pro Node.js:
+* [Klientská sada SDK zařízení pro zřizování](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/device)
+* [Klientská sada SDK služby zřizování](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/service)
+
+Azure zřizování zařízení a služby sady SDK pro Python:
+* [Klientská sada SDK zařízení pro zřizování](https://github.com/Azure/azure-iot-sdk-python/blob/master/provisioning_device_client)
+* [Klientská sada SDK služby zřizování](https://github.com/Azure/azure-iot-sdk-python/tree/master/provisioning_service_client)
+
+Azure zřizování zařízení a služby sady SDK pro jazyk C:
+* [Klientská sada SDK zařízení pro zřizování](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client)
+* [Klientská sada SDK služby zřizování](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning/service)
 
 ## <a name="next-steps"></a>Další postup
 

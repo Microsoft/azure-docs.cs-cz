@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 238f411ca1a1bb1aa3c89a515edd2091162512a2
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 02a12cc9fc614a642a5dad37e21bd8343c669aad
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44379755"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45631136"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise Server pro aplikace SAP
 
@@ -73,7 +73,7 @@ Přečtěte si následující poznámky SAP a Paper nejprve
 * Poznámka SAP [1999351] obsahuje další informace o odstraňování potíží pro rozšířené monitorování rozšíření Azure pro SAP.
 * [WIKI komunity SAP](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) má všechny požadované poznámky SAP pro Linux.
 * [Azure Virtual Machines, plánování a implementace SAP na platformě Linux][planning-guide]
-* [Nasazení virtuálních počítačů Azure pro SAP na platformě Linux (Tento článek)][deployment-guide]
+* [Nasazení virtuálních počítačů Azure pro SAP na platformě Linux][deployment-guide]
 * [Nasazení Azure Virtual Machines DBMS pro SAP na platformě Linux][dbms-guide]
 * [SUSE SAP HA příručky s osvědčenými postupy] [ suse-ha-guide] vodítka obsahovat všechny požadované informace k nastavení Netweaver HA a SAP HANA System Replication místní. Pomocí těchto návodů jako obecné směrného plánu. Poskytují mnohem podrobnější informace.
 
@@ -149,7 +149,7 @@ Můžete některou ze šablon quickstart na Githubu nasadit všechny požadovan�
    9. Uživatelské jméno Admin a heslo správce  
       Je vytvořen nový uživatel, který lze použít k přihlášení k počítači.
    10. ID podsítě  
-   ID podsítě, ke kterému musí být připojené k virtuálním počítačům.  Ponechte prázdné, pokud chcete vytvořit novou virtuální síť nebo vyberte stejné podsíti, který používá nebo vytvořen jako součást nasazení serveru systému souborů NFS. ID obvykle vypadá /subscriptions/**&lt;ID předplatného&gt;**/resourceGroups/**&lt;název skupiny prostředků&gt;**/poskytovatelé/ Microsoft.Network/virtualNetworks/**&lt;název virtuální sítě&gt;**/subnets/**&lt;název podsítě&gt;**
+   Pokud chcete nasadit virtuální počítač do existující virtuální síť ve kterých máte definované podsíti virtuálního počítače by se měla přiřadit k pojmenování ID tuto konkrétní podsíť. ID obvykle vypadá /subscriptions/**&lt;ID předplatného&gt;**/resourceGroups/**&lt;název skupiny prostředků&gt;**/poskytovatelé/ Microsoft.Network/virtualNetworks/**&lt;název virtuální sítě&gt;**/subnets/**&lt;název podsítě&gt;**
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>Ruční nasazení Linuxu prostřednictvím webu Azure portal
 

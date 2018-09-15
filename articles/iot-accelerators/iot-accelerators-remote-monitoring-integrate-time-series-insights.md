@@ -8,12 +8,12 @@ ms.date: 09/12/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 6d41b4347eac29144743a22cb83e508cdab9b164
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: ba6d79661a2c07ba3eef1f16a117992a858830b5
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45552359"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605925"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Integrace služby Azure Time Series Insights pomocí vzdáleného monitorování
 
@@ -22,7 +22,7 @@ Azure Time Series Insights je plně spravovaná služba pro analýzy, ukládán�
 Akcelerátor řešení vzdálené monitorování nyní poskytuje automatického nasazení a integraci s Time Series Insights. V tomto návodu se dozvíte, jak nakonfigurovat služby Time Series Insights pro existující řešení vzdáleného monitorování, které již neobsahuje Time Series Insights.
 
 > [!NOTE]
-> Time Series Insights není zatím k dispozici v Azure China Cloud. Nová nasazení v cloudu Azure Čína dál používat pro všechna úložiště Cosmos DB.
+> Time Series Insights není aktuálně k dispozici v cloud Azure China. Nové vzdálené monitorování akcelerátoru nasazení řešení v cloudu Azure China pomocí služby Cosmos DB pro všechna úložiště.
 
 ## <a name="prerequisites"></a>Požadavky
 

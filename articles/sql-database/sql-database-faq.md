@@ -9,12 +9,12 @@ ms.custom: reference
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: carlrab
-ms.openlocfilehash: a7837ac6af82b5c67ea5779340aedc16cb78d156
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 218bd9031193d4987fdc1e0ae2bf302bdb028673
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43286328"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45604497"
 ---
 # <a name="sql-database-faq"></a>SQL Database – Nejčastější dotazy
 
@@ -71,7 +71,7 @@ Zákazníci SQL Database bude mít následující práva spojená s programem Az
 Náklady na výpočetní odráží celkové výpočetní kapacitu, pro kterého je zřízené pro aplikaci. V rámci úrovně služeb pro důležité obchodní informace můžeme automaticky přidělit nejméně 3 repliky Always ON. Cena vCore tak, aby odrážela tuto další přidělování výpočetních prostředků, je přibližně 2.7 x vyšší v pro důležité obchodní informace. Ze stejného důvodu vyšší úložiště cen za GB na úrovni pro důležité obchodní informace odráží vysoké vstupně-výstupní operace a úložiště SSD s nízkou latencí. Ve stejnou dobu náklady na úložiště pro zálohování není různých vzhledem k tomu v obou případech používáme třídu úložiště úrovně standard.
 
 ## <a name="how-am-i-charged-for-storage---based-on-what-i-configure-upfront-or-on-what-the-database-uses"></a>Jak mi budete účtovat úložiště – na základě můžu nakonfigurovat předem nebo databáze používá?
-Různé typy úložiště se účtují různě. Pro ukládání dat bude vám účtována zřízeného úložiště na základě maximální velikost databáze nebo fondu, které vyberete. Náklady nemění, není-li snížit nebo zvýšit maximální. Úložiště zálohování je přidružené k automatickým zálohám vaší instance. Prodloužení doby uchovávání záloh zvyšuje požadavky na úložiště zálohování vaší instance. Za úložiště zálohování do 100 % celkového zajišťovaného úložiště serveru se neplatí žádné dodatečné poplatky. Využití úložiště zálohování je účtovat GB za měsíc. Když například máte databázové úložiště velikosti 100 GB, získáte 100 GB úložiště zálohování zdarma. Ale pokud je záloha mít objem 110 GB, zaplatíte za dalších 10 GB.
+Různé typy úložiště se účtují různě. Pro ukládání dat bude vám účtována zřízeného úložiště na základě maximální velikost databáze nebo fondu, které vyberete. Náklady nemění, není-li snížit nebo zvýšit maximální. Úložiště zálohování je spojen s automatickým zálohám vaší instance a dynamicky přidělit. Prodloužení doby uchovávání záloh zvyšuje požadavky na úložiště zálohování vaší instance. Za úložiště zálohování do 100 % celkového zajišťovaného úložiště serveru se neplatí žádné dodatečné poplatky. Využití úložiště zálohování je účtovat GB za měsíc. Když například máte databázové úložiště velikosti 100 GB, získáte 100 GB úložiště zálohování zdarma. Ale pokud je záloha mít objem 110 GB, zaplatíte za dalších 10 GB. 
 
 Pro úložiště záloh u jediné databáze bude se vám účtovat na základě průběžné pro úložiště, která byla přidělena k zálohování databáze minus velikosti databáze. Pro úložiště záloh elastického fondu bude se vám účtovat na základě průběžné pro úložiště, která byla přidělena k zálohování databáze všech databází ve fondu minus maximální velikost dat elastického fondu. Libovolný nárůst velikosti databáze nebo elastického fondu nebo zvýšení rychlost transakcí vyžaduje další úložiště a zvyšuje se tím vaše faktura za úložiště zálohování.  Pokud zvýšíte maximální velikost dat, je toto nové množství odečte od velikost úložiště pro zálohování se fakturuje.
 

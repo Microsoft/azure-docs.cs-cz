@@ -1,20 +1,21 @@
 ---
-title: Vysvětlení, používání role na základě vzoru entit – Azure | Dokumentace Microsoftu
-description: Přečtěte si použití role v entity na základě vzoru pojmenovat podtyp kontextové entity.
+title: Vysvětlení, používání rolí v založené na modelu entity
+titleSuffix: Azure Cognitive Services
+description: Role jsou pojmenované, kontextové podtypy entity použít jenom ve vzorcích. Například v utterance nákup lístků z New Yorku do Londýna Praha i Brno měst jsou ale každý má jiný význam ve větě. New York city původu a Londýn je město cílové.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
-ms.technology: luis
+ms.component: language-understanding
 ms.topic: article
-ms.date: 06/08/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: d2692cdce9da7428bd7b30c4feaf7347792618f5
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: aabd3a22498e0e33993d715e7a5882dde7aacf37
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39222699"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45632479"
 ---
 # <a name="entity-roles-in-patterns-are-contextual-subtypes"></a>Entita role ve vzorech jsou kontextové subtypes
 Role jsou pojmenované, kontextové podtypy entity používá pouze v [vzory](luis-concept-patterns.md).
@@ -31,9 +32,10 @@ Role zadejte název těchto rozdílů:
 ## <a name="how-are-roles-used-in-patterns"></a>Jak se používají role ve vzorech?
 Role v utterance vzor šablony, se používají v rámci utterance: 
 
-```
-buy a ticket from {Location:origin} to {Location:destination}
-```
+|Vzor s rolemi entity|
+|--|
+|`buy a ticket from {Location:origin} to {Location:destination}`|
+
 
 ## <a name="role-syntax-in-patterns"></a>Syntaxe role ve vzorcích
 Entity a role jsou uzavřeny v závorkách, `{}`. Entity a role jsou odděleny dvojtečkou. 

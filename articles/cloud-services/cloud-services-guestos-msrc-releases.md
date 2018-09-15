@@ -3,8 +3,7 @@ title: Seznam aktualizací nainstalovaných do hostovaného operačního systém
 description: Seznam aktualizací nainstalovaných do hostovaného operačního systému verze
 services: cloud-services
 documentationcenter: na
-author: RichardScheel
-manager: timlt
+author: raiye
 editor: ''
 ms.assetid: d0a272a9-ed01-4f4c-a0b3-bd5e841bdd77
 ms.service: cloud-services
@@ -12,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 9/12/2018
-ms.author: RichardScheel
-ms.openlocfilehash: 4ef49fe978db5c9b04bf9c8271e192fa60433d4b
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.date: 9/13/2018
+ms.author: raiye
+ms.openlocfilehash: c0eff5054b186ebc701e88d793992c8729408b7d
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44722295"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605993"
 ---
 # <a name="azure-guest-os"></a>Azure hostovaného operačního systému
 Microsoft Security Response Center (MSRC) aktualizací nainstalovaných do hostovaného operačního systému Azure v následujících tabulkách. Hledání Tento článek k určení, pokud platí konkrétní aktualizace do hostovaného operačního systému, kterou používáte. Aktualizace vždy převést do dalšího období pro konkrétní [řady] [ family-explain] byly zavedeny v.

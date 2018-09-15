@@ -1,24 +1,24 @@
 ---
-title: Zjistěte, jak zvýšit přesnost předpovědi vzory | Dokumentace Microsoftu
-titleSuffix: Azure
-description: Zjistěte, jak navrhnout schémata pro zvýšení skóre záměru předpovědi a najít entity.
+title: Zjistěte, jak zvýšit přesnost předpovědi vzory
+titleSuffix: Azure Cognitive Services
+description: Vzory jsou navržené pro zlepšení přesnosti, když několik projevy jsou velmi podobné. Vzor umožňuje získat vyšší přesnost pro záměru bez zadání projevy mnoho více.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
-ms.technology: luis
+ms.component: language-understanding
 ms.topic: article
-ms.date: 06/08/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: c08419e3fb5b25284121a0eac30c38c8ba7570f1
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 0a61ec4407a23e8cc515c2343a92bd77460d424b
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39225213"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45631408"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Vzory zvyšte přesnost předpovědi
-Vzory jsou navržené pro zlepšení přesnosti, když několik projevy jsou velmi podobné. Poskytnutím vzor pro utterance LUIS, může mít vysokou spolehlivostí do predikce. 
+Vzory jsou navržené pro zlepšení přesnosti, když několik projevy jsou velmi podobné.  Vzor umožňuje získat vyšší přesnost pro záměru bez zadání projevy mnoho více. 
 
 ## <a name="patterns-solve-low-intent-confidence"></a>Způsoby řešení s nízkou spolehlivostí záměru
 Vezměte v úvahu aplikaci lidských zdrojů, která generuje sestavy v organizační grafu ve vztahu k zaměstnance. Zadaný název a relace zaměstnance, LUIS vrátí zaměstnanci zahrnuté. Vezměte v úvahu zaměstnanec Petr, se správcem název Alice a tým s názvem podřízené uzly: Michael Milena a Carl.
@@ -60,25 +60,25 @@ Entity ve vzorech jsou ohraničeny složených závorek, `{}`. Vzory mohou zahrn
 ### <a name="syntax-to-add-an-entity-to-a-pattern-template"></a>Syntaxe pro přidání entity do modelu šablony
 Přidání entity do modelu šablony, uzavřete název entity se složenými závorkami, `Who does {Employee} manage?`. 
 
-```
-Who does {Employee} manage?
-```
+|Vzor s entitou|
+|--|
+|`Who does {Employee} manage?`|
 
 ### <a name="syntax-to-add-an-entity-and-role-to-a-pattern-template"></a>Syntaxe pro vzor šablony přidat entitu a role
 Roli entity je označena jako `{entity:role}` s názvem entity, za nímž následuje dvojtečka, potom název role. Přidat entitu s rolí do šablony vzor, před a za název entity a názvu role pomocí složených závorek, například `Book a ticket from {Location:Origin} to {Location:Destination}`. 
 
-```
-Book a ticket from {Location:Origin} to {Location:Destination}
-```
+|Vzor s rolemi entity|
+|--|
+|`Book a ticket from {Location:Origin} to {Location:Destination}`|
 
 ### <a name="syntax-to-add-a-patternany-to-pattern-template"></a>Syntaxe pro přidání pattern.any vzor šablony
 Pattern.any entity umožňuje přidat entitu různé délky se vzorem. Za předpokladu, následuje vzor šablony, může být pattern.any jakékoli délky. 
 
 Chcete-li přidat **Pattern.any** entity do modelu šablony obklopit Pattern.any entity pomocí složených závorek, například `How much does {Booktitle} cost and what format is it available in?`.  
 
-```
-How much does {Booktitle} cost and what format is it available in?
-```
+|Vzor s entitou Pattern.any|
+|--|
+|`How much does {Booktitle} cost and what format is it available in?`|
 
 |Názvů knih ve vzoru|
 |--|
@@ -107,9 +107,9 @@ Chcete-li vyřešit tato výjimka se vzorem, přidejte `the man from la mancha` 
 ### <a name="syntax-to-mark-optional-text-in-a-template-utterance"></a>Syntaxe pro označení volitelný text, který v šabloně utterance
 Označit volitelný text, který v utterance pomocí syntaxe regulárních výrazů hranatá závorka, `[]`. Nepovinný text můžete vnořit hranaté závorky až pouze dvě závorky.
 
-```
-[find] email about {subject} [from {person}]
-```
+|Vzor s volitelným textem|
+|--|
+|`[find] email about {subject} [from {person}]`|
 
 Interpunkčních znamének, jako `.`, `!`, a `?` můžete ignorovat pomocí hranatých závorek. Pokud chcete ignorovat těchto známky, každá značka musí být v samostatné vzor. Volitelné syntaxe v současné době nepodporuje ignoruje se položka v seznamu několik položek.
 

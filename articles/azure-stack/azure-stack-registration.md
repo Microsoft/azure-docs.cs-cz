@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/10/2018
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: 6f406f63f4ae7518b93153db30c9ca51564b848c
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 92c0ad6dfde4fc83a912b4a3387d8b586e72809c
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44720136"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45630439"
 ---
 # <a name="register-azure-stack-with-azure"></a>Registrace Azure Stack s Azure
 
@@ -52,7 +52,7 @@ Před zaregistrováním služby Azure Stack s Azure, musíte mít:
 
 - Uživatelské jméno a heslo pro účet, který je vlastníkem předplatného (účty MSA/2FA jsou podporovány).
 
-- Uživatelský účet musí mít oprávnění správce v tenantovi Azure AD, ke kterému Azure Stack je zaregistrovaný, například `yourazurestacktenant.onmicrosoft.com`.
+- Uživatelský účet musí mít přístup k předplatnému Azure a máte oprávnění k vytváření aplikací identity a instanční objekty v adresáři spojený s tímto předplatným.
 
 - Zaregistrovat poskytovatele prostředků služby Azure Stack (viz zaregistrovat poskytovatele prostředků Azure Stack níže v části Podrobnosti).
 
@@ -106,7 +106,7 @@ Propojené prostředí můžete přístup k Internetu a z Azure. U těchto prost
 
 1. Registraci poskytovatele prostředků služby Azure Stack v Azure, spusťte prostředí PowerShell ISE jako správce a pomocí následujících rutin prostředí PowerShell s **EnvironmentName** parametr nastaven na typ příslušné předplatné Azure (viz níže uvedené parametry).
 
-2. Přidáte účet Azure, který používáte k registraci Azure Stack. Chcete-li přidat účet, spusťte **Add-AzureRmAccount** rutiny. Zobrazí se výzva k zadání přihlašovacích údajů k účtu globálního správce služby Azure a budete muset použít 2 ověřování na základě konfigurace vašeho účtu.
+2. Přidáte účet Azure, který používáte k registraci Azure Stack. Chcete-li přidat účet, spusťte **Add-AzureRmAccount** rutiny. Zobrazí se výzva k zadání přihlašovacích údajů k účtu Azure a budete muset použít 2 ověřování na základě konfigurace vašeho účtu.
 
    ```PowerShell  
       Add-AzureRmAccount -EnvironmentName "<AzureCloud, AzureChinaCloud, or AzureUSGovernment>"
@@ -166,7 +166,7 @@ Propojené prostředí můžete přístup k Internetu a z Azure. U těchto prost
 
 1. Registraci poskytovatele prostředků služby Azure Stack v Azure, spusťte prostředí PowerShell ISE jako správce a pomocí následujících rutin prostředí PowerShell s **EnvironmentName** parametr nastaven na typ příslušné předplatné Azure (viz níže uvedené parametry).
 
-2. Přidáte účet Azure, který používáte k registraci Azure Stack. Chcete-li přidat účet, spusťte **Add-AzureRmAccount** rutiny. Zobrazí se výzva k zadání přihlašovacích údajů k účtu globálního správce služby Azure a budete muset použít 2 ověřování na základě konfigurace vašeho účtu.
+2. Přidáte účet Azure, který používáte k registraci Azure Stack. Chcete-li přidat účet, spusťte **Add-AzureRmAccount** rutiny. Zobrazí se výzva k zadání přihlašovacích údajů k účtu Azure a budete muset použít 2 ověřování na základě konfigurace vašeho účtu.
 
    ```PowerShell  
       Add-AzureRmAccount -EnvironmentName "<AzureCloud, AzureChinaCloud, or AzureUSGovernment>"

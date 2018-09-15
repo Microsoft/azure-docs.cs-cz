@@ -8,17 +8,17 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 06/27/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: e1d0e0a0205190846612d727fbf34404e33c3ad4
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 58f08c13bd10ae96a3490a15d765df82df8ed021
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44027074"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45631544"
 ---
 # <a name="data-conversion-concepts-in-luis"></a>Koncepce převodu dat při LUIS
-Služba LUIS poskytuje způsob, jak převést projevy projevy mluvené slovo na text projevy před předpovědi. 
+LUIS pomocí služby Cognitive Services řeči převést projevy projevy mluvené slovo na text projevy před předpovědi. 
 
 ## <a name="speech-to-intent-conversion-concepts"></a>Převod řeči na záměr převod koncepty
 Převod řeči na text v LUIS umožňuje odeslat mluvené slovo projevy na koncový bod a trvá příjem odpovědi na predikce služby LUIS. Tento proces je integrace produktů [řeči](https://docs.microsoft.com/azure/cognitive-services/Speech) service pomocí služby LUIS. 

@@ -1,5 +1,6 @@
 ---
-title: Glosář služby Language Understanding (LUIS) API | Dokumentace Microsoftu
+title: Glosář služby Language Understanding (LUIS) API
+titleSuffix: Azure Cognitive Services
 description: Glosář vysvětluje pojmy, které můžete narazit při práci se službou LUIS rozhraní API.
 services: cognitive-services
 author: diberry
@@ -7,16 +8,17 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 3f99e58a38bbe9ecc87165b5e6fa24a5a49e5e4a
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: a66eb42ac03b96757a0363c9dd442adc5ca75023
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390054"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634355"
 ---
 # <a name="glossary"></a>Glosář
+Language Understanding (LUIS) Glosář vysvětluje podmínky, které můžete narazit při práci se službou LUIS rozhraní API.
 
 ## <a name="active-version"></a>Aktivní verze
 
@@ -72,7 +74,7 @@ V rámci služby LUIS **domény** je oblast znalostní báze. Vaše doména je s
 
 ## <a name="endpoint"></a>Koncový bod
 
-[Koncový bod služby LUIS](https://aka.ms/luis-endpoint-apis) je adresa URL, kde odesílání dotazů LUIS po [aplikace LUIS](#luis-app) je vytvořili a publikovali. Adresa URL koncového bodu obsahuje oblast publikované aplikace i ID aplikace. Koncový bod můžete najít na **[publikovat](luis-how-to-publish-app.md)** stránky vaší aplikace v tabulce prostředky a klíčů nebo je můžete získat adresu URL koncového bodu z [získat informace o aplikaci](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c37) rozhraní API.
+[Koncový bod služby LUIS](https://aka.ms/luis-endpoint-apis) je adresa URL, kde odesílání dotazů LUIS po [aplikace LUIS](#luis-app) je vytvořili a publikovali. Adresa URL koncového bodu obsahuje oblast publikované aplikace i ID aplikace. Koncový bod můžete najít na **[klíče a koncových bodů](/luis-how-to-manage-keys.md)** stránka aplikace, nebo můžete získat adresu URL koncového bodu z [získat informace o aplikaci](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c37) rozhraní API.
 
 Příkladem koncového bodu vypadá takto:
 
@@ -167,7 +169,7 @@ Dočištění řeči umožňuje službě řeči se naplní LUIS model.
 
 ## <a name="spelling-correction"></a>Opravy pravopisu
 
-Na stránce publikování povolit [kontrolu pravopisu Bingu](luis-how-to-publish-app.md#enable-bing-spell-checker) k opravovat slova s překlepem v projevy před předpovědi. 
+Povolte kontrolu pravopisu Bingu k opravovat slova s překlepem v projevy před předpovědi. 
 
 ## <a name="starter-key"></a>Klíč Starter
 
@@ -175,7 +177,7 @@ Stejné jako [programový klíč](#programmatic-key), přejmenováno na klíč p
 
 ## <a name="subscription-key"></a>Klíč předplatného
 
-Klíč předplatného je **koncový bod** klíč související se službou LUIS [jste vytvořili v Azure](luis-how-to-azure-subscription.md). Tento klíč není [vytváření klíč](#programmatic-key). Pokud máte klíč koncového bodu, by měla použít pro libovolný koncový bod požadavky na místo vytváření klíče. Zobrazí aktuální klíč koncového bodu uvnitř adresu URL koncového bodu v dolní části [ **publikovat aplikace** stránky](luis-how-to-publish-app.md) v [LUIS](luis-reference-regions.md) webu. Je hodnota **klíč předplatného** dvojici název/hodnota. 
+Klíč předplatného je **koncový bod** klíč související se službou LUIS [jste vytvořili v Azure](luis-how-to-azure-subscription.md). Tento klíč není [vytváření klíč](#programmatic-key). Pokud máte klíč koncového bodu, by měla použít pro libovolný koncový bod požadavky na místo vytváření klíče. Zobrazí aktuální klíč koncového bodu uvnitř adresu URL koncového bodu v dolní části [ **klíče a koncových bodů** stránky](luis-how-to-manage-keys.md) v [LUIS](luis-reference-regions.md) webu. Je hodnota **klíč předplatného** dvojici název/hodnota. 
 
 ## <a name="test"></a>Test
 

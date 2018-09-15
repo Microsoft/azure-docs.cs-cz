@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: 1bb6e464b748f2558cec35a95554bb3e08b667f0
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 785b0137624cc6d940f4944e0357d0a5774561df
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44378325"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634706"
 ---
-# <a name="virtual-machine-serial-console-preview"></a>Virtuální počítač sériová konzola (preview) 
+# <a name="virtual-machine-serial-console"></a>Konzola sériového portu virtuálního počítače
 
 
 Konzole sériového portu virtuálního počítače v Azure poskytuje přístup ke konzole založený na textu pro virtuální počítače s Windows. Toto sériové připojení je COM1 sériového portu virtuálního počítače, poskytování přístupu k virtuálnímu počítači, který je nezávislý na síti nebo stav operačního systému virtuálního počítače. Přístup ke konzole sériového portu pro virtuální počítač momentálně můžete pouze to udělat pomocí webu Azure portal a je povolená jenom pro uživatele, kteří mají Přispěvatel virtuálních počítačů nebo vyšší než přístup k virtuálnímu počítači. 
@@ -29,7 +29,7 @@ Konzole sériového portu virtuálního počítače v Azure poskytuje přístup 
 Dokumentaci konzoly sériového portu pro virtuální počítače s Linuxem [kliknutím sem](../linux/serial-console.md).
 
 > [!Note] 
-> Verze Preview jsou dostupné pro vás, za předpokladu, že budete souhlasit s podmínkami použití. Další informace najdete v tématu [Microsoft Azure dodatečných podmínkách použití systémů Microsoft Azure Preview.] (https://azure.microsoft.com/support/legal/preview-supplemental-terms/) Aktuálně je tato služba v **ve verzi public preview** a přístup ke konzole sériového portu pro virtuální počítače je k dispozici globálními oblastmi Azure. Konzola sériového portu v tuto chvíli není k dispozici cloudu Azure Government, Azure Germany a Azure China.
+> Konzola sériového portu u virtuálních počítačů je obecně dostupná v globálními oblastmi Azure. V tomto okamžiku konzoly sériového portu ještě není k dispozici cloudu Azure Government nebo Azure China.
 
  
 
@@ -51,7 +51,7 @@ Konzola sériového portu pro virtuální počítače je k dispozici pouze prost
   1. Otevřete na webu Azure portal
   2. V nabídce vlevo vyberte virtuální počítače.
   3. Klikněte na virtuální počítač v seznamu. Otevře se stránka s přehledem pro virtuální počítač.
-  4. Posuňte se dolů části Podpora a řešení potíží s části a klikněte na možnost sériová konzola (Preview). Otevře se nové podokno s sériové konzoly a spustit připojení.
+  4. Posuňte se dolů části Podpora a řešení potíží s části a klikněte na možnost "Konzoly sériového portu". Otevře se nové podokno s sériové konzoly a spustit připojení.
 
 ![](../media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect.gif)
 
@@ -187,18 +187,18 @@ Nemáte požadovaná oprávnění k použití této konzoly sériového portu vi
 Nepovedlo se určit skupinu prostředků pro účet úložiště diagnostiky spouštění '<STORAGEACCOUNTNAME>". Ověřte, že Diagnostika spouštění je povolená pro tento virtuální počítač a máte přístup k tomuto účtu úložiště. | Přístup ke konzole sériového portu vyžaduje určitá oprávnění pro přístup. Zobrazit [požadavky na přístup](#prerequisites) podrobnosti
 Při přístupu k tomuto virtuálnímu počítači účet úložiště diagnostiky spouštění došlo k odpovědi "Zakázáno". | Zajistěte, aby že tuto diagnostiku spouštění nemá žádné brány firewall účtu. Účet úložiště diagnostiky dostupné spouštěcí je nezbytné pro konzoly sériového portu funkce.
 Webové sokety je uzavřený nebo nelze otevřít. | Možná budete muset povolit `*.console.azure.com`. Podrobnější ale delší přístup je na seznamu povolených IP adres [rozsahy IP adres Datacentra Microsoft Azure](https://www.microsoft.com/en-us/download/details.aspx?id=41653), které mění poměrně.
+Pouze informace o stavu se zobrazuje při připojení k virtuálnímu počítači s Windows| Tím se zobrazí-li Speciální konzoly pro správu nebyl povolen pro vaši image Windows. Zobrazit [přístup sériové konzoly pro Windows](#access-serial-console-for-windows) pokyny o tom, jak ručně povolit SAC na vašem virtuálním počítači Windows. Další podrobnosti najdete v [signálů stavu Windows](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Windows_Health_Info.md).
 
 ## <a name="known-issues"></a>Známé problémy 
-Jak jsme jsou stále ve verzi preview fázích pro přístup ke konzole sériového portu, jsme práci prostřednictvím některým známým problémům, níže je seznam těchto prvků s možná řešení 
+Víme o některé problémy s konzole sériového portu. Tady je seznam těchto problémů a kroky pro omezení rizik.
 
 Problém                             |   Omezení rizik 
 :---------------------------------|:--------------------------------------------|
 Dosažení zadejte po banner připojení není uveden do protokolu v řádku | Podrobnosti najdete na této stránce: [Hitting zadejte nemá žádný účinek,](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md). To může dojít, pokud používáte vlastní virtuální počítač, Posílená zařízení nebo kontrole konfigurace této causers Windows nepodaří správně připojit do sériového portu.
-Pouze informace o stavu se zobrazuje při připojení k virtuálnímu počítači s Windows| Tím se zobrazí-li Speciální konzoly pro správu nebyl povolen pro vaši image Windows. Zobrazit [přístup sériové konzoly pro Windows](#access-serial-console-for-windows) pokyny o tom, jak ručně povolit SAC na vašem virtuálním počítači Windows. Další podrobnosti najdete v [signálů stavu Windows](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Windows_Health_Info.md).
 Nelze zadat v SAC řádku, pokud je povoleno ladění jádra | Připojení RDP k virtuálnímu počítači a spusťte `bcdedit /debug {current} off` z příkazového řádku se zvýšenými oprávněními. Pokud nelze pomocí protokolu RDP můžete místo toho připojit disk s operačním systémem k jinému virtuálnímu počítači Azure a upravit ho během připojený jako datový disk pomocí `bcdedit /store <drive letter of data disk>:\boot\bcd /debug <identifier> off`, pak Prohodit zpět na disku.
 Vložení do prostředí PowerShell ve výsledcích SAC ve třetí znaku, pokud původní obsah měli opakující se znak | Alternativní řešení je k uvolnění modulu PSReadLine z aktuální relace. Spustit `Remove-Module PSReadLine` uvolnění modulu PSReadLine z aktuální relace – tím neodstraní ani odinstalace modulu.
 Některé klávesnice vstupy generovat výstup strangeová SAC (třeba `[A`, `[3~`) | [VT100](https://aka.ms/vtsequences) řídicí sekvence nejsou podporovány SAC řádku.
-Při přístupu k tomuto virtuálnímu počítači účet úložiště diagnostiky spouštění došlo k odpovědi "Zakázáno". | Zajistěte, aby že tuto diagnostiku spouštění nemá žádné brány firewall účtu. Účet úložiště diagnostiky dostupné spouštěcí je nezbytné pro konzoly sériového portu funkce.
+Vkládání velmi dlouhých řetězců nefunguje | Konzola sériového portu omezení délky řetězce do terminálu na 2 048 znaků. Toto je zabránit zahlcení šířky pásma sériového portu.
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy 
 **Q. Jak můžu poslat svůj názor?**

@@ -2,19 +2,19 @@
 title: Architektura připojení k Azure SQL Database | Dokumentace Microsoftu
 description: Tento dokument popisuje architekturu připojení k Azure SQLDB z v rámci Azure nebo z mimo Azure.
 services: sql-database
-author: CarlRabeler
+author: DhruvMsft
 manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 01/24/2018
-ms.author: carlrab
-ms.openlocfilehash: 6f160965f11f94c39e823724b192169c3712974d
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.author: dhruv
+ms.openlocfilehash: 8159a9eb8d8829ed01609cebc3ae41713892f6cf
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45575370"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45630170"
 ---
 # <a name="azure-sql-database-connectivity-architecture"></a>Architektura připojení k Azure SQL Database 
 

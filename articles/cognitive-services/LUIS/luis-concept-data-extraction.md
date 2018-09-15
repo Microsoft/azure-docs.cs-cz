@@ -8,19 +8,19 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 40c7e0744825697779e6bd19a78d8d3512b5d63e
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: d857767e5d94daa0a32997474722cec608e513b0
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44023456"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45630541"
 ---
 # <a name="data-extraction"></a>Extrakce dat
-Služba LUIS umožňuje získat informace z projevy přirozeného jazyka uživatele. Informace je extrahován tak, že jej lze použít program, aplikace nebo chatovací robot k akci.
+Služba LUIS umožňuje získat informace z projevy přirozeného jazyka uživatele. Informace je extrahován tak, že jej lze použít program, aplikace nebo chatovací robot k akci. V následující částech se dozvíte, jaká data jsou vrácena z záměry a entity s příklady JSON. 
 
-V následující částech se dozvíte, jaká data jsou vrácena z záměry a entity s příklady JSON. Nejtěžší data k extrakci jsou data zjištěné počítače, protože se neshoduje přesný text. Extrakce dat z počítače zjistili [entity](luis-concept-entity-types.md) musí být součástí [vytváření cyklu](luis-concept-app-iteration.md) dokud jste si jisti, můžete přijímat data očekáváte, že. 
+Nejtěžší data k extrakci jsou data zjištěné počítače, protože se neshoduje přesný text. Extrakce dat z počítače zjistili [entity](luis-concept-entity-types.md) musí být součástí [vytváření cyklu](luis-concept-app-iteration.md) dokud jste si jisti, můžete přijímat data očekáváte, že. 
 
 ## <a name="data-location-and-key-usage"></a>Umístění a klíč využití dat
 Služba LUIS poskytuje data z publikovanému [koncový bod](luis-glossary.md#endpoint). **Požadavek HTTPS** (POST nebo GET), obsahuje utterance, jakož i některé volitelné konfigurace, jako je pracovní nebo produkční prostředí. 
@@ -29,7 +29,7 @@ Služba LUIS poskytuje data z publikovanému [koncový bod](luis-glossary.md#end
 
 `appID` Je k dispozici na **nastavení** stránky vaší aplikace LUIS stejně jako část adresy URL (po `/apps/`) při úpravách aplikace LUIS. `subscription-key` Je koncový bod klíče použitého k dotazování vaší aplikace. Při vytváření/starter bezplatný klíč můžete použít během výuky LUIS, je potřeba změnit klíč koncového bodu na klíč, který podporuje vaši [očekávané využití LUIS](luis-boundaries.md#key-limits). `timezoneOffset` Jednotka je minut.
 
-**Odpovědi HTTP** obsahuje všechny informace o záměru a entity LUIS můžete zjistit na základě aktuální publikované modelu buď koncový bod přípravném nebo produkčním prostředí. Adresa URL se nachází na koncový bod [LUIS](luis-reference-regions.md) webu **publikovat** stránky. 
+**Odpovědi HTTP** obsahuje všechny informace o záměru a entity LUIS můžete zjistit na základě aktuální publikované modelu buď koncový bod přípravném nebo produkčním prostředí. Koncový bod adresy URL se nachází na [LUIS](luis-reference-regions.md) webu v **spravovat** části na **klíče a koncových bodů** stránky. 
 
 ## <a name="data-from-intents"></a>Data, od záměrů
 Primární data jsou nahoře vyhodnocování **záměru název**. Použití `MyStore` [rychlý Start](luis-quickstart-intents-only.md), je odpověď na koncový bod:
@@ -568,13 +568,37 @@ Pro všechny jiné jazykové verze odpověď je:
 ### <a name="key-phrase-extraction-entity-data"></a>Data entity extrakce klíčových frází
 Entity extrakce klíčových frází vrací klíčové fráze v utterance, poskytuje [rozhraní Text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/).
 
-<!-- TBD: verify JSON-->
 ```JSON
-"keyPhrases": [
-    "places",
-    "beautiful views",
-    "favorite trail"
-]
+{
+  "query": "Is there a map of places with beautiful views on a favorite trail?",
+  "topScoringIntent": {
+    "intent": "GetJobInformation",
+    "score": 0.764368951
+  },
+  "intents": [
+    ...
+  ],
+  "entities": [
+    {
+      "entity": "beautiful views",
+      "type": "builtin.keyPhrase",
+      "startIndex": 30,
+      "endIndex": 44
+    },
+    {
+      "entity": "map of places",
+      "type": "builtin.keyPhrase",
+      "startIndex": 11,
+      "endIndex": 23
+    },
+    {
+      "entity": "favorite trail",
+      "type": "builtin.keyPhrase",
+      "startIndex": 51,
+      "endIndex": 64
+    }
+  ]
+}
 ```
 
 ## <a name="data-matching-multiple-entities"></a>Data odpovídající více entit

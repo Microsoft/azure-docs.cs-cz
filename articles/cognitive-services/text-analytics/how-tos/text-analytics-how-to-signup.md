@@ -1,22 +1,23 @@
 ---
-title: Registrace rozhraní API pro analýzu textu (Microsoft Cognitive Services v Azure) | Microsoft Docs
+title: Zaregistrujte si rozhraní API pro analýzu textu
+titleSuffix: Azure Cognitive Services
 description: Pokyny pro registraci k používání analýzy textu a fungování v rámci omezení.
 services: cognitive-services
 author: HeidiSteen
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: text-analytics
-ms.topic: get-started-article
-ms.date: 3/07/2018
+ms.topic: conceptual
+ms.date: 09/12/2018
 ms.author: heidist
-ms.openlocfilehash: dfa5ba138a2e0db75dfc097ca2430fe9c82e826f
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
-ms.translationtype: HT
+ms.openlocfilehash: a369d6028cc2957113de01dab0371ad5305a0c68
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39623246"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605521"
 ---
-# <a name="how-to-sign-up-for-text-analytics-api"></a>Postup registrace rozhraní API pro analýzu textu
+# <a name="how-to-sign-up-for-the-text-analytics-api"></a>Jak se zaregistrovat pro rozhraní Text Analytics API
 
 Prostředky rozhraní API pro analýzu textu jsou k dispozici nepřetržitě v cloudu. Před nahráním obsahu k analýze se musíte zaregistrovat a získat přístupový klíč. Požadavek každého volání rozhraní API musí obsahovat přístupový klíč.
 
@@ -51,12 +52,12 @@ Další informace najdete na [stránce s cenami](https://azure.microsoft.com/pri
 ### <a name="what-constitutes-a-transaction-in-the-text-analytics-api"></a>Co tvoří transakci v rozhraní API pro analýzu textu?
 Jako transakce se počítá jakákoli poznámka k dokumentu. Volání dávkového vyhodnocování také zohlední počet dokumentů, které je třeba v transakci vyhodnotit. Takže pokud je například v jednom volání rozhraní API odesláno 1 000 dokumentů pro analýzu mínění, počítá se to jako 1 000 transakcí.
 
-## <a name="see-also"></a>Viz také 
+## <a name="see-also"></a>Další informace najdete v tématech 
 
  [Přehled rozhraní API pro analýzu textu](../overview.md)  
  [Nejčastější dotazy](../text-analytics-resource-faq.md)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
 > [Získání přístupového klíče](text-analytics-how-to-access-key.md)

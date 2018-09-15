@@ -1,26 +1,24 @@
 ---
-title: Služba luis - Azure umožňuje využít řeč SDK jazyk C# | Dokumentace Microsoftu
-titleSuffix: Azure
-description: Pomocí ukázky řeči C# SDK do mikrofon a získání záměru a entity predikcí služby LUIS vrátila.
+title: Služba luis umožňuje využít řeč C# SDK
+titleSuffix: Azure Cognitive Services
+description: Služba Speech umožňuje používat jeden požadavek přijímat zvuk a vrátit LUIS předpovědi objekty JSON. V tomto článku stažení a použití projektu v jazyce C# v sadě Visual Studio mluvit utterance do mikrofon a přijímat informace predikcí služby LUIS. Projekt používá balíček NuGet řeči, již zahrnut jako odkaz.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
-ms.technology: luis
+ms.technology: language-understanding
 ms.topic: article
-ms.date: 06/26/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: aadca428fa076d697cc0f893673672850ddc27d4
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 8eff6ff3d0263708158f2fea82380e88ba4638ad
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124392"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45633623"
 ---
 # <a name="integrate-speech-service"></a>Integrace Speech service
-[Speech service](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/) umožňuje použití jednoho požadavku a přijímat zvuk vrátit LUIS předpovědi objekty JSON.
-
-V tomto článku stažení a použití projektu v jazyce C# v sadě Visual Studio mluvit utterance do mikrofon a přijímat informace predikcí služby LUIS. Projekt používá Řeč [NuGet](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/) balíčku již zahrnut jako odkaz. 
+[Speech service](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/) umožňuje použití jednoho požadavku a přijímat zvuk vrátit LUIS předpovědi objekty JSON. V tomto článku stažení a použití projektu v jazyce C# v sadě Visual Studio mluvit utterance do mikrofon a přijímat informace predikcí služby LUIS. Projekt používá Řeč [NuGet](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/) balíčku již zahrnut jako odkaz. 
 
 Pro účely tohoto článku budete potřebovat bezplatný [LUIS] [ LUIS] webu účtu, aby bylo možné importovat aplikaci.
 
@@ -32,12 +30,13 @@ Záměry a projevy pro účely tohoto článku pocházejí z aplikace LUIS lidsk
 
 Tato aplikace nemá záměrů, entit a projevy související s domény lidských zdrojů. Příklad projevy patří:
 
-```
-Who is John Smith's manager?
-Who does John Smith manage?
-Where is Form 123456?
-Do I have any paid time off?
-```
+|Ukázkové promluvy|
+|--|
+|Kdo je správce John Smith?|
+|Tím, kdo spravovat John Smith?|
+|Kde je formulář 123456?|
+|Mám placené kdykoli?|
+
 
 ## <a name="add-keyphrase-prebuilt-entity"></a>Přidat KeyPhrase předem připravených entit
 Po importu aplikace, vyberte **entity**, pak **spravovat předem připravených entit**. Přidat **KeyPhrase** entity. KeyPhrase entity extrahuje klíče odborník na danou z utterance.
@@ -45,19 +44,18 @@ Po importu aplikace, vyberte **entity**, pak **spravovat předem připravených 
 ## <a name="train-and-publish-the-app"></a>Trénování a publikování aplikace
 1. V horní, pravé navigační panel, vyberte **trénování** tlačítko tak moct trénovat aplikace LUIS.
 
-2. Vyberte **publikovat** přejděte na stránku publikovat. 
+2. Vyberte **spravovat** v pravém horním rohu panelu, vyberte **klíče a koncových bodů** v levém navigačním panelu. 
 
-3. V dolní části **publikovat** stránce, přidejte LUIS klíče vytvořeného v [klíče koncového bodu služby LUIS vytvořit](#create-luis-endpoint-key) oddílu.
+3. Na **klíče a koncových bodů** stránce, přiřaďte LUIS klíče vytvořeného v [klíče koncového bodu služby LUIS vytvořit](#create-luis-endpoint-key) oddílu.
 
-4. Publikování aplikace LUIS tak, že vyberete **publikovat** tlačítko vpravo od publikování slot. 
-
-  Na **publikovat** stránce, shromažďovat ID aplikace, oblasti a ID předplatného služby LUIS klíče vytvořeného v publikování [klíče koncového bodu služby LUIS vytvořit](#create-luis-endpoint-key) oddílu. Budete muset upravit kód, který použije tyto hodnoty dále v tomto článku. 
-
-  Tyto hodnoty jsou zahrnuty v adresu URL koncového bodu v dolní části **publikovat** stránky pro klíč, který jste vytvořili. 
+  Na této stránce shromažďování ID aplikace, publikovat oblasti a ID předplatného služby LUIS klíče vytvořené v [klíče koncového bodu služby LUIS vytvořit](#create-luis-endpoint-key) oddílu. Budete muset upravit kód, který použije tyto hodnoty dále v tomto článku. 
   
   Proveďte **není** použít bezplatnou úvodní klíč pro toto cvičení. Pouze **Language Understanding** klíče vytvořeného na webu Azure Portal bude fungovat pro účely tohoto cvičení. 
 
   https://**oblasti**.api.cognitive.microsoft.com/luis/v2.0/apps/**APPID**? klíč předplatného =**LUISKEY**& q =
+
+
+4. Publikování aplikace LUIS tak, že vyberete **publikovat** tlačítko v horní části pravého panelu. 
 
 ## <a name="audio-device"></a>Zvukové zařízení
 Tento článek používá zvukové zařízení ve vašem počítači. Který může být sluchátka s mikrofonem mikrofon nebo integrované zvukové zařízení. Zkontrolujte vstupní úrovně hlasitosti zobrazíte, pokud jste měli mluvit hlasitost, než byste obvykle mají řeč detekoval zvukové zařízení. 

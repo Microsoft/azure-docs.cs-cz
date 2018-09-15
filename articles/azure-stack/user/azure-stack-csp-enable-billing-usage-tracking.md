@@ -3,7 +3,7 @@ title: Povolit poskytovatele cloudové služby ke správě vašich předplatnýc
 description: Povolte poskytovatele služby pro přístup k předplatnému ve službě Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -12,14 +12,14 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: alfredop
-ms.openlocfilehash: f309b86578f340040927735c067656158f3198fc
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: fca08ef1d803c3bd47b0ae925c4dd12255175f2c
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42057181"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45630711"
 ---
 # <a name="enable-a-cloud-service-provider-to-manage-your-azure-stack-subscription"></a>Povolit poskytovatele cloudové služby ke správě vašich předplatných Azure Stack
 

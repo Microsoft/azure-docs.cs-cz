@@ -1,20 +1,21 @@
 ---
-title: Principy záměry LUIS aplikací v Azure | Dokumentace Microsoftu
-description: Popisuje, co jsou příkazy v aplikacích Language Understanding Intelligent Service (LUIS).
+title: Principy záměry v aplikace LUIS
+titleSuffix: Azure Cognitive Services
+description: Záměru představuje úkol nebo akci uživatel chce provést. Jedná o účely nebo cíl vyjádřeny utterance uživatele. Definujte sadu příkazů, který odpovídá na akce, které uživatelé chtějí využít ve vaší aplikaci.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 06/04/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 456f28191161c9a2fac223bf2a31e62e54ae28ae
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: fcc14d2a7273a586386dc4da1f218d50d8aa9aef
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39225784"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45629708"
 ---
 # <a name="intents-in-luis"></a>Příkazy v LUIS
 
@@ -24,8 +25,8 @@ Definujte sadu příkazů, který odpovídá na akce, které uživatelé chtěj�
 
 Cestovní záměry aplikace   |   Ukázkové promluvy   | 
 ------|------|
- BookFlight     |   "Rezervovat mě cestě a Rio příští týden" <br/> "Plout mě na Rio na 24th" <br/> "Potřebuji lístek roviny další pondělí až Rio de Janeiro"    |
- Pozdrav     |   "Hi" <br/>"Hello" <br/>"Dobrým ráno"  |
+ BookFlight (Rezervovat let)     |   "Rezervovat mě cestě a Rio příští týden" <br/> "Plout mě na Rio na 24th" <br/> "Potřebuji lístek roviny další pondělí až Rio de Janeiro"    |
+ Pozdrav.     |   "Hi" <br/>"Hello" <br/>"Dobrým ráno"  |
  CheckWeather | "Jak se o počasí v Bostonu jako"? <br/> "Zobrazit předpovědi pro tento víkendu" |
  Žádný         | "Si předpisu soubor cookie"<br>"Lakers win?" |
 

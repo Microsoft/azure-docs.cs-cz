@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
-ms.openlocfilehash: eb2b26333647d464a3a18cd07bf1576251fb3830
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: a2daf75e5a75a4fb0be06986903a2f4f9be8adf0
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715399"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634842"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Nasazení virtuálních počítačů pro SAP NetWeaver v Azure
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -483,7 +483,7 @@ Na webu Azure Portal zadejte následující parametry pro šablonu:
   * **Uživatelské jméno správce** a **heslo správce**: uživatelské jméno a heslo.
     Nový uživatel je vytvořený pro přihlášení k virtuálnímu počítači.
   * **Nové nebo existující podsíti**: Určuje, jestli se vytvoří nová virtuální síť a podsíť, nebo použít existující podsítě. Pokud již máte virtuální síť, která je připojená k vaší místní síti, vyberte **existující**.
-  * **ID podsítě**: ID podsítě virtuálních počítačů se připojí k. Vyberte podsíť virtuální sítě Azure ExpressRoute pro připojení k vaší místní síti virtuálního počítače nebo virtuální privátní sítě (VPN). ID obvykle vypadá takto: /subscriptions/&lt;id předplatného > /resourceGroups/&lt;název skupiny prostředků > /providers/Microsoft.Network/virtualNetworks/&lt;název virtuální sítě > /subnets/&lt;název podsítě >
+  * **ID podsítě**: Pokud chcete nasadit virtuální počítač do existující virtuální síť ve kterých máte definované podsíti virtuálního počítače by se měla přiřadit k pojmenování ID tuto konkrétní podsíť. ID obvykle vypadá takto: /subscriptions/&lt;id předplatného > /resourceGroups/&lt;název skupiny prostředků > /providers/Microsoft.Network/virtualNetworks/&lt;název virtuální sítě > /subnets/&lt;název podsítě >
 
 1. **Podmínky a ujednání**:  
     Přečtěte si a přijměte právní podmínky.
@@ -614,9 +614,7 @@ Na webu Azure Portal zadejte následující parametry pro šablonu:
 
     Nový uživatel je vytvořený pro přihlášení k virtuálnímu počítači.
   * **Nové nebo existující podsíti**: Určuje, jestli se vytvoří nová virtuální síť a podsíť, nebo použít existující podsítě. Pokud již máte virtuální síť, která je připojená k vaší místní síti, vyberte **existující**.
-  * **ID podsítě**: ID podsítě, ke kterým se připojí virtuální počítače k. Vyberte podsíť virtuální sítě VPN nebo ExpressRoute můžete použít pro připojení k místní síti virtuálního počítače. ID obvykle vypadá takto:
-
-    /subscriptions/&lt;id předplatného > /resourceGroups/&lt;název skupiny prostředků > /providers/Microsoft.Network/virtualNetworks/&lt;název virtuální sítě > /subnets/&lt;název podsítě >
+  * **ID podsítě**: Pokud chcete nasadit virtuální počítač do existující virtuální síť ve kterých máte definované podsíti virtuálního počítače by se měla přiřadit k pojmenování ID tuto konkrétní podsíť. ID obvykle vypadá takto: /subscriptions/&lt;id předplatného > /resourceGroups/&lt;název skupiny prostředků > /providers/Microsoft.Network/virtualNetworks/&lt;název virtuální sítě > /subnets/&lt;název podsítě >
 
 1. **Podmínky a ujednání**:  
     Přečtěte si a přijměte právní podmínky.
@@ -697,9 +695,7 @@ Na webu Azure Portal zadejte následující parametry pro šablonu:
   * **Identifikátor URI VHD disku operačního systému** (pouze šablona nespravovaných disků): identifikátor URI soukromý disk s operačním systémem, třeba https://&lt;accountname >.blob.core.windows.net/vhds/osdisk.vhd.
   * **Id disku spravovaného disku operačního systému** (pouze šablona spravovaného disku): Id spravovaného disku operačního systému disku /subscriptions/92d102f7-81a5-4df7-9877-54987ba97dd9/resourceGroups/group/providers/Microsoft.Compute/disks/WIN
   * **Nové nebo existující podsíti**: Určuje, jestli se vytvoří nová virtuální síť a podsíť, nebo použít existující podsítě. Pokud již máte virtuální síť, která je připojená k vaší místní síti, vyberte **existující**.
-  * **ID podsítě**: ID podsítě, ke kterým se připojí virtuální počítače k. Vyberte podsíť virtuální sítě Azure ExpressRoute nebo VPN můžete použít pro připojení k místní síti virtuálního počítače. ID obvykle vypadá takto:
-
-    /subscriptions/&lt;id předplatného > /resourceGroups/&lt;název skupiny prostředků > /providers/Microsoft.Network/virtualNetworks/&lt;název virtuální sítě > /subnets/&lt;název podsítě >
+  * **ID podsítě**: Pokud chcete nasadit virtuální počítač do existující virtuální síť ve kterých máte definované podsíti virtuálního počítače by se měla přiřadit k pojmenování ID tuto konkrétní podsíť. ID obvykle vypadá takto: /subscriptions/&lt;id předplatného > /resourceGroups/&lt;název skupiny prostředků > /providers/Microsoft.Network/virtualNetworks/&lt;název virtuální sítě > /subnets/&lt;název podsítě >
 
 1. **Podmínky a ujednání**:  
     Přečtěte si a přijměte právní podmínky.
@@ -835,7 +831,7 @@ Kroky, jak nakonfigurovat proxy server ve Windows se liší od tak, jak nakonfig
 Nastavení proxy serveru musí být zařídit správné nastavení pro místní systémový účet pro přístup k Internetu. Pokud vaše nastavení proxy serveru nejsou nastavené v zásadách skupiny, můžete nakonfigurovat nastavení pro účet místního systému.
 
 1. Přejděte na **Start**, zadejte **gpedit.msc**a pak vyberte **Enter**.
-1. Vyberte **konfigurace počítače** > **šablony pro správu** > **součásti Windows**  >  ** Aplikace Internet Explorer**. Ujistěte se, že nastavení **vytvořit proxy nastavení vázaná na počítač (a ne na uživatele)** je zakázaná nebo není nakonfigurováno.
+1. Vyberte **konfigurace počítače** > **šablony pro správu** > **součásti Windows**  >   **Aplikace Internet Explorer**. Ujistěte se, že nastavení **vytvořit proxy nastavení vázaná na počítač (a ne na uživatele)** je zakázaná nebo není nakonfigurováno.
 1. V **ovládací panely**, přejděte na stránku **Centrum sítí a sdílení** > **Možnosti Internetu**.
 1. Na **připojení** kartu, vyberte **nastavení místní sítě** tlačítko.
 1. Zrušte **automaticky zjišťovat nastavení** zaškrtávací políčko.

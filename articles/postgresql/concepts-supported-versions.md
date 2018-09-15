@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 09/07/2018
-ms.openlocfilehash: f209aa201dafb3383ae71dd4ebff3d2ab76a9020
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: f337679279f4a3eb6d01808f15a59fee4c8f3cd1
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44345060"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45630571"
 ---
 # <a name="supported-postgresql-database-versions"></a>Verze podporovaných databáze PostgreSQL
 Microsoft se zaměřuje na podporu n-2 verze stroje PostgreSQL služba Azure Database for PostgreSQL, to znamená aktuálně vydané hlavní verzi (n) a dvě předchozí hlavní verze (-2).
@@ -31,7 +31,7 @@ Odkazovat [PostgreSQL dokumentaci](https://www.postgresql.org/docs/9.6/static/re
 Odkazovat [PostgreSQL dokumentaci](https://www.postgresql.org/docs/9.5/static/release-9-5-13.html) se dozvíte o vylepšení a opravy v tomto podverze.
 
 ## <a name="managing-updates-and-upgrades"></a>Správa aktualizací a upgradů
-Azure Database for PostgreSQL automaticky spravuje opravy vedlejší verze aktualizace. Upgrade hlavní verze v současné době se nepodporuje. Například upgrade z PostgreSQL 9.5 PostgreSQL 9.6 není podporován.
+Azure Database for PostgreSQL automaticky spravuje opravy vedlejší verze aktualizace. Upgrade hlavní verze v současné době se nepodporuje. Například upgrade z PostgreSQL 9.5 PostgreSQL 9.6 není podporován. Pokud chcete upgradovat na novou hlavní verzi, [výpisu a obnovení](./howto-migrate-using-dump-and-restore.md) ho na server, který byl vytvořen v nové verzi modulu.
 
 ## <a name="next-steps"></a>Další postup
 Informace o podpoře různých rozšíření PostgreSQL najdete v tématu [rozšíření PostgreSQL](concepts-extensions.md).

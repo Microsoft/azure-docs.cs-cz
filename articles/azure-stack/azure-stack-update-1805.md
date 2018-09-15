@@ -3,7 +3,7 @@ title: Aktualizace služby Azure Stack 1805 | Dokumentace Microsoftu
 description: Další informace o co je nového v aktualizaci 1805 pro integrované systémy Azure Stack, včetně známých problémů a kde se stáhnout aktualizaci.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/27/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 4db0ce5e877f3054cc41e8940e8d9e672f7632c6
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 60b4658d18d39797d30055e86cb21689cfb661fa
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43110344"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45631652"
 ---
 # <a name="azure-stack-1805-update"></a>Aktualizace služby Azure Stack 1805
 
@@ -57,7 +57,7 @@ Tato aktualizace zahrnuje následující vylepšení pro službu Azure Stack.
 
 
 
-### <a name="fixed-issues"></a>Opravené problémy
+### <a name="fixed-issues"></a>Oprava potíží
 
 <!-- # - applicability -->
 - Opravili jsme problém, který blokovaný [otevřete novou žádost o podporu z rozevíracího seznamu](azure-stack-manage-portals.md#quick-access-to-help-and-support) z portálu pro správu. Tato možnost teď funguje očekávaným způsobem. 

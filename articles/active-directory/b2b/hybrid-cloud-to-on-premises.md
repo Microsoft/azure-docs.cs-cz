@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: b7b1279dbb1256269705da3f8be6f6d2c1151368
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 9b04f6bc2158f88b54bb4ed086c2f74b5a28eedd
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346334"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605211"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Uživatelům udělit B2B v Azure AD přístup k místním aplikacím
 
@@ -63,7 +63,7 @@ Následující diagram představuje podrobný přehled Azure AD Application Prox
 Můžete spravovat objekty uživatele B2B v místním prostřednictvím zásad správy životního cyklu. Příklad:
 
 - Zásady ověřování službou Multi-Factor Authentication (MFA) pro uživatele typu Host můžete nastavit tak, aby používalo vícefaktorového ověřování během ověřování Proxy aplikací. Další informace najdete v tématu [podmíněného přístupu pro uživatele spolupráce B2B](conditional-access.md).
-- Žádné sponsorship, kontroly přístupu, ověřování účtu, atd., které se provádějí v cloudu B2B uživatelů platí pro místní uživatele. Například pokud prostřednictvím zásad správy životního cyklu odstranění uživatele cloud, místní uživatel se odstraní také MIM Sync nebo prostřednictvím synchronizace Azure AD Connect. Další informace najdete v tématu [kontroly přístupu hostů spravovat pomocí služby Azure AD access](../active-directory-azure-ad-controls-manage-guest-access-with-access-reviews.md).
+- Žádné sponsorship, kontroly přístupu, ověřování účtu, atd., které se provádějí v cloudu B2B uživatelů platí pro místní uživatele. Například pokud prostřednictvím zásad správy životního cyklu odstranění uživatele cloud, místní uživatel se odstraní také MIM Sync nebo prostřednictvím synchronizace Azure AD Connect. Další informace najdete v tématu [kontroly přístupu hostů spravovat pomocí služby Azure AD access](../governance/manage-guest-access-with-access-reviews.md).
 
 ### <a name="create-b2b-guest-user-objects-through-mim-preview"></a>Vytvořit objekty uživatelů typu Host B2B prostřednictvím MIM (Preview)
 

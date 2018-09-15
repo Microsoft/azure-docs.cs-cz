@@ -8,14 +8,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 06/28/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: d6d68842b5e519201f7990a9c361710115de7fea
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: ec149b0f100ae3e170f39911eafc399f24509dfa
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44022946"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45630388"
 ---
 # <a name="entities-in-luis"></a>Entity v LUIS
 
@@ -46,10 +46,10 @@ Pokud volba slovo nebo slovo uspořádání je stejný, ale není to samé, nen�
 
 Následující projevy, slovo `fair` je homograf. Je napsána stejný, ale má odlišný význam:
 
-```
-What kind of county fairs are happening in the Seattle area this summer?
-Is the current rating for the Seattle review fair?
-```
+|Promluva|
+|--|
+|Jaký druh county veletrhů se dějí v Seattlu toto léto?|
+|Je aktuální hodnocení ke kontrole Seattle přiměřená?|
 
 Pokud byste chtěli entity událost najít všechna data událostí, popisek slovo `fair` v první utterance, ale nikoli do druhého.
 

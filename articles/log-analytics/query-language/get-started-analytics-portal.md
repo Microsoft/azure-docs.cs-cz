@@ -1,6 +1,6 @@
 ---
-title: Začínáme s Log Analytics stránky na webu Azure Portal | Dokumentace Microsoftu
-description: Tento článek obsahuje kurz pro psaní dotazů na stránce Log Analytics.
+title: Začínáme se službou Log Analytics na portálu Azure portal | Dokumentace Microsoftu
+description: Tento článek obsahuje kurz pro psaní dotazů pomocí Log Analytics na portálu Azure portal.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -15,14 +15,16 @@ ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 493497476fdfe7d96d6f2dde735bab0147e547a7
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 2c35d71d127903a67dce2280b2d0ab335079b480
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42060128"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45604463"
 ---
-# <a name="get-started-with-the-log-analytics-page-in-the-azure-portal"></a>Začínáme s Log Analytics stránky na webu Azure Portal
+# <a name="get-started-with-log-analytics-in-the-azure-portal"></a>Začínáme se službou Log Analytics na portálu Azure portal
+
+[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
 V tomto kurzu se dozvíte, jak psát dotazy Log Analytics pomocí Log Analytics stránky na webu Azure Portal (aktuálně ve verzi preview). To se dozvíte, jak do:
 
@@ -45,7 +47,7 @@ Na stránce Log Analytics je webový nástroj pro zápis a spouštění dotazů 
 ## <a name="basic-queries"></a>Základní dotazy
 Hledané termíny, rozpoznávejte trendy, analyzovat vzory a poskytují mnoho přehledy na základě vašich dat je možné dotazy. Začínáme s základní dotazy:
 
-```OQL
+```KQL
 Event | search "error"
 ```
 
@@ -55,7 +57,7 @@ Dotazy můžete spustit buď pomocí názvu tabulky nebo **hledání** příkazu
 
 Jiný způsob psaní tohoto stejného dotazu by byl:
 
-```OQL
+```KQL
 search in (Event) "error"
 ```
 
@@ -79,7 +81,7 @@ V každé tabulce dat uspořádány do sloupce s různými datovými typy je ur�
 ## <a name="filter-the-results"></a>Filtrování výsledků
 Začněte tím, že tu být všechno _události_ tabulky.
 
-```OQL
+```KQL
 Event
 ```
 
@@ -133,7 +135,7 @@ Pokud dotaz obsahuje explicitně filtr pro _TimeGenerated_, se zobrazí název v
 ## <a name="charts"></a>Grafy
 Kromě vracení výsledků v tabulce, můžete výsledky dotazu uvedené v visual formátů. Jako příklad použijte následující dotaz:
 
-```OQL
+```KQL
 Event 
 | where EventLevelName == "Error" 
 | where TimeGenerated > ago(1d) 

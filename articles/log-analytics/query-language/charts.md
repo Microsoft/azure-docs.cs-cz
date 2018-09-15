@@ -15,24 +15,26 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 359e5e671287c4d330deeb2d3573877d9ee5d1c5
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: acf51056a084abc08bda2d7f73b561f442f57784
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40190056"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605520"
 ---
 # <a name="creating-charts-and-diagrams-from-log-analytics-queries"></a>Vytváření grafů a diagramů z dotazy Log Analytics
 
 > [!NOTE]
 > By se měla Dokončit [Advanced agregace v dotazy Log Analytics](advanced-aggregations.md) před dokončením v této lekci.
 
+[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
+
 Tento článek popisuje různé vizualizace ve službě Azure Log Analytics k zobrazení dat různými způsoby.
 
 ## <a name="charting-the-results"></a>Vytvoření grafu výsledků
 Nejdřív si prostudujte kolika počítačích během poslední hodiny na operační systém, jsou:
 
-```OQL
+```KQL
 Heartbeat
 | where TimeGenerated > ago(1h)
 | summarize count(Computer) by OSType  
@@ -50,7 +52,7 @@ Chcete-li získat lepší zobrazení, vyberte **grafu**a zvolte **výsečový** 
 ## <a name="timecharts"></a>Timecharts
 Zobrazit průměr, 50. a 95. percentily čas procesoru v přihrádky 1 hodina. Vygeneruje více řad dotaz a pak vyberete, které řady znázornit v grafu čas:
 
-```OQL
+```KQL
 Perf
 | where TimeGenerated > ago(1d) 
 | where CounterName == "% Processor Time" 
@@ -65,7 +67,7 @@ Vyberte **řádku** graf možnosti zobrazení:
 
 Referenční čáry můžete snáze identifikovat metriku překročení konkrétních mezních hodnot. Přidání řádku do grafu, rozšiřte datovou sadu s konstantní sloupce:
 
-```OQL
+```KQL
 Perf
 | where TimeGenerated > ago(1d) 
 | where CounterName == "% Processor Time" 
@@ -78,7 +80,7 @@ Perf
 ## <a name="multiple-dimensions"></a>Více dimenzí
 Více výrazů v `by` klauzuli `summarize` vytvořit více řádků ve výsledcích, jeden pro každou kombinaci hodnot.
 
-```OQL
+```KQL
 SecurityEvent
 | where TimeGenerated > ago(1d)
 | summarize count() by tostring(EventID), AccountType, bin(TimeGenerated, 1h)

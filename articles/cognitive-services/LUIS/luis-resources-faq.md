@@ -1,20 +1,21 @@
 ---
-title: Language Understanding (LUIS) v Azure – nejčastější dotazy | Dokumentace Microsoftu
-description: Získejte odpovědi na nejčastější dotazy o Language Understanding (LUIS)
+title: Časté otázky – Language Understanding (LUIS)
+titleSuffix: Azure Cognitive Services
+description: Tento článek obsahuje odpovědi na nejčastější dotazy o Language Understanding (LUIS).
 author: diberry
 manager: cjgronlund
 services: cognitive-services
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 07/26/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: a266055c7685dca87d985775584a9ea7a4bda883
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: c338f874f426eef047f29e958877368c61db7e62
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128516"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45630252"
 ---
 # <a name="language-understanding-faq"></a>Language Understanding – nejčastější dotazy
 
@@ -63,7 +64,7 @@ Cortana, které předem sestavených aplikací byla vyřazena jako zastaralá v 
 Služba LUIS [tokenizes](luis-glossary.md#token) na základě utterance [jazykovou verzi](luis-supported-languages.md#tokenization). Jsou k dispozici pro původní hodnotu a hodnotu tokenizovaná [extrakce dat](luis-concept-data-extraction.md#tokenized-entity-returned).
 
 ### <a name="how-do-i-create-and-assign-a-luis-endpoint-key"></a>Jak vytvořit a přiřadit klíče koncového bodu LUIS?
-[Vytvoření klíče koncového bodu](luis-how-to-azure-subscription.md#create-luis-endpoint-key) v Azure pro vaše [služby](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) úroveň. [Přiřazení klíče](luis-how-to-manage-keys.md#assign-endpoint-key) na **[publikovat](luis-how-to-publish-app.md)** stránky. Neexistuje žádná odpovídající rozhraní API pro tuto akci. Pak musíte změnit požadavek HTTP na koncový bod, který [používání nového klíče koncového bodu](luis-concept-keys.md#use-endpoint-key-in-query).
+[Vytvoření klíče koncového bodu](luis-how-to-azure-subscription.md#create-luis-endpoint-key) v Azure pro vaše [služby](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) úroveň. [Přiřazení klíče](luis-how-to-manage-keys.md#assign-endpoint-key) na **[klíče a koncových bodů](luis-how-to-manage-keys.md)** stránky. Neexistuje žádná odpovídající rozhraní API pro tuto akci. Pak musíte změnit požadavek HTTP na koncový bod, který [používání nového klíče koncového bodu](luis-concept-keys.md#use-endpoint-key-in-query).
 
 ### <a name="how-do-i-interpret-luis-scores"></a>Jak se interpretují skóre, které se služba LUIS? 
 Systém by měl používat nejvyšší hodnocení záměr bez ohledu na jeho hodnotu. Například skóre pod 0,5 (méně než 50 %) nemusí nutně znamenat, že má služba LUIS s nízkou spolehlivostí. Poskytuje další trénovacích dat můžete zvýšit skóre nejpravděpodobnější záměr.
@@ -115,13 +116,18 @@ Zobrazit [předpovědi rozdíly mezi kopie stejnou aplikaci](luis-concept-predic
 ## <a name="app-publishing"></a>Publikování aplikací
 
 ### <a name="what-is-the-tenant-id-in-the-add-a-key-to-your-app-window"></a>Co je ID tenanta v okně "Přidání klíče do vaší aplikace"?
-V Azure představuje tenanta klient nebo organizace, který je spojen s využitím služby. Svoje ID tenanta zjistíte na webu Azure Portal v **ID adresáře** pole tak, že vyberete **Azure Active Directory** > **spravovat**  >  **Vlastnosti**.
+V Azure představuje tenanta klient nebo organizace, která souvisí se službou. Svoje ID tenanta zjistíte na webu Azure Portal v **ID adresáře** pole tak, že vyberete **Azure Active Directory** > **spravovat**  >  **Vlastnosti**.
 
 ![ID tenanta na portálu Azure portal](./media/luis-manage-keys/luis-assign-key-tenant-id.png)
 
 <a name="why-are-there-more-subscription-keys-on-my-apps-publish-page-than-i-assigned-to-the-app"></a>
-### <a name="why-are-there-more-endpoint-keys-on-my-apps-publish-page-than-i-assigned-to-the-app"></a>Proč jsou existuje více klíčů koncový bod v mé aplikaci publikovat stránku než přiřadí aplikaci? 
-Každá aplikace LUIS má klíč pro vytváření/starter. Klíče koncového bodu služby LUIS vytvořené během časového rámce všeobecné dostupnosti jsou zobrazeny na stránce publikování, bez ohledu na to, pokud jste přidali do aplikace. To se pro usnadnění migrace všeobecné dostupnosti. Všechny nové klíče koncového bodu služby LUIS se nezobrazí na stránce publikovat. 
+<a name="why-are-there-more-endpoint-keys-on-my-apps-publish-page-than-i-assigned-to-the-app"></a>
+
+
+### <a name="why-are-there-more-endpoint-keys-assigned-to-my-app-than-i-assigned"></a>Proč existují další klíče koncového bodu přiřadit do mojí aplikace než přiřazená? 
+Každá aplikace LUIS má klíč pro vytváření/starter v seznamu koncových bodů v zájmu usnadnění práce. Tento klíč umožňuje pouze několik přístupů koncový bod tak, že budete moct vyzkoušet LUIS.  
+
+Pokud vaše aplikace existovala předtím, než služba LUIS je všeobecně dostupná (GA), jsou automaticky přiřadit klíče koncového bodu služby LUIS ve vašem předplatném. To se pro usnadnění migrace všeobecné dostupnosti. Jsou nějaké nové klíče koncového bodu služby LUIS na webu Azure Portal _není_ automaticky přiřazená k LUIS. 
 
 ## <a name="app-management"></a>Správa aplikací
 

@@ -9,15 +9,17 @@ ms.reviewer: jasonwhowell
 ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.topic: conceptual
 ms.date: 07/14/2017
-ms.openlocfilehash: bf98562224c2da770541f731ba93ec2e5dc1718d
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 42982e3fa0a854109a6b887640604498ac68847c
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041316"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45632255"
 ---
 # <a name="run-u-sql-and-debug-locally-in-visual-studio-code"></a>Spuštění U-SQL a místní ladění ve Visual Studio Code
-Tento článek popisuje, jak spouštět úlohy U-SQL na místním vývojovém počítači, ke zrychlení kódování počátečních fázích nebo chcete-li ladit kód místně v aplikaci Visual Studio Code. Pokyny pro nástroj Azure Data Lake pro Visual Studio Code najdete v tématu [použití Azure Data Lake Tools pro Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md). 
+Tento článek popisuje, jak spouštět úlohy U-SQL na místním vývojovém počítači, ke zrychlení kódování počátečních fázích nebo chcete-li ladit kód místně v aplikaci Visual Studio Code. Pokyny pro nástroj Azure Data Lake pro Visual Studio Code najdete v tématu [použití Azure Data Lake Tools pro Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md).
+
+Pouze Windows instalace nástrojů Azure Data Lake pro Visual Studio podporují akci spuštění U-SQL místně a ladění U-SQL místně. Instalace v systémech založených na Linuxu a macOS nepodporují tuto funkci.
 
 ## <a name="set-up-the-u-sql-local-run-environment"></a>Nastavení prostředí pro místní spuštění U-SQL
 

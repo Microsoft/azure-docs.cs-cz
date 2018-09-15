@@ -1,6 +1,6 @@
 ---
-title: Přidání entity do aplikace LUIS | Dokumentace Microsoftu
-titleSuffix: Azure
+title: Přidání entity do aplikace LUIS
+titleSuffix: Azure Cognitive Services
 description: Přidání entity (klíčových dat v doméně vaší aplikace) v aplikacích Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
@@ -8,14 +8,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: e97f9a5391799849983bd98db5400e0a842627b7
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 3fe76afca2eb8b14641589e4e29fc20b5d3de7fa
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224122"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45632277"
 ---
 # <a name="manage-entities"></a>Správa entit
 Po identifikaci vaší aplikace [záměry](luis-concept-intent.md), budete muset [popisek příklad projevy](luis-concept-utterance.md) s [entity](luis-concept-entity-types.md). Entity jsou důležité části příkaz nebo dotaz a může být důležitá pro vaši klientskou aplikaci k provedení svých úkolů. 
@@ -31,9 +31,7 @@ Předem připravených entit, které jsou definovány v [rozpoznávání textu](
  
 2. Na **entity** stránce **spravovat předem připravených entit**.
 
-    ![Snímek obrazovky přidání předem připravených entit na stránce entity](./media/add-entities/manage-prebuilt-entities-button.png)
-
-3. V **přidat nebo odebrat předem připravených entit** dialogové okno, vyberte **číslo** a **datetimeV2** předem připravených entit. Potom vyberte **provádí**.
+3. V **přidat nebo odebrat předem připravených entit** dialogové okno, vyberte **číslo** a **datetimeV2** předem připravených entit. Potom vyberte **Done** (Hotovo).
 
     ![Dialogové okno snímek obrazovky přidání předem připravených entit](./media/add-entities/list-of-prebuilt-entities.png)
 
@@ -43,8 +41,6 @@ Předem připravených entit, které jsou definovány v [rozpoznávání textu](
 Jednoduché entita je obecné entity, která popisuje jeden koncept. 
 
 1. Ve vaší aplikaci z **sestavení** části a potom klikněte na tlačítko **entity** v levém panelu a pak vyberte **vytvořit novou entitu**.
-
-    ![Snímek obrazovky s entitami stránku vytvořit nové entity tlačítkem](./media/add-entities/create-new-entity-button.png)
 
 2. V místním dialogovém okně zadejte `Airline` v **název Entity** vyberte **jednoduché** z **typ Entity** seznamu a pak vyberte **provádí**.
 
@@ -57,7 +53,7 @@ Regulární výraz entita se používá vyžádá si data z utterance podle regu
 
 1. Ve vaší aplikaci, vyberte **entity** v levém navigačním panelu a pak vyberte **vytvořit novou entitu**.
 
-2. V místní nabídce dialogové okno, zadejte `AirFrance Flight` v **název Entity** vyberte **regulárního výrazu** z **typ Entity** seznamu, zadejte regulární výraz `AFR[0-9]{3,4}`a pak vyberte **provádí**. 
+2. V místním dialogovém okně zadejte `AirFrance Flight` v **název Entity** vyberte **regulárního výrazu** z **typ Entity** seznamu, zadejte regulární výraz `AFR[0-9]{3,4}`a pak vyberte **provádí**. 
 
     Tento regulární výraz let AirFrance očekává tři znaky, doslova `AFR`, pak 3 nebo 4 číslic. Číslice může být jakékoli číslo od 0 do 9. Odpovídá regulárnímu výrazu AirFrance letu čísla jako: "AFR101", "ARF1302" a "AFR5006". Zobrazit [extrakce dat](luis-concept-data-extraction.md) Další informace o extrahování entity z koncového bodu odpověď na dotaz JSON.
 

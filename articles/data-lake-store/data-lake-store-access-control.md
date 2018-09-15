@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 0810aff364f8a015e93d7513b13ac7dcb5379556
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 335c3fe4e27ce6025ad889cc7958a32223dc85f8
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45544094"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45629919"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Řízení přístupu v Azure Data Lake Storage Gen1
 
@@ -40,18 +40,6 @@ Přístupové seznamy ACL i výchozí seznamy ACL mají stejnou strukturu.
 > Změna výchozího seznamu ACL u nadřazené položky nemá vliv na přístupový seznam ACL ani na výchozí seznam ACL u podřízených položek, které již existují.
 >
 >
-
-## <a name="users-and-identities"></a>Uživatelé a identity
-
-Každý soubor a složka má samostatná oprávnění pro tyto identity:
-
-* Vlastnící uživatel
-* Vlastnící skupina
-* Pojmenovaní uživatelé
-* Pojmenované skupiny
-* Všichni ostatní uživatelé
-
-Identity uživatelů a skupin jsou identity Azure Active Directory (Azure AD). Takže pokud není uvedeno jinak, "user," v kontextu Data Lake Storage Gen1, může znamenat buď uživatele služby Azure AD nebo skupiny zabezpečení služby Azure AD.
 
 ## <a name="permissions"></a>Oprávnění
 
@@ -100,7 +88,19 @@ Níže jsou uvedeny některé obvyklé scénáře, které vám pomohou pochopit,
 >
 
 
-## <a name="the-super-user"></a>Superuživatel
+## <a name="users-and-identities"></a>Uživatelé a identity
+
+Každý soubor a složka má samostatná oprávnění pro tyto identity:
+
+* Vlastnící uživatel
+* Vlastnící skupina
+* Pojmenovaní uživatelé
+* Pojmenované skupiny
+* Všichni ostatní uživatelé
+
+Identity uživatelů a skupin jsou identity Azure Active Directory (Azure AD). Takže pokud není uvedeno jinak, "user," v kontextu Data Lake Storage Gen1, může znamenat buď uživatele služby Azure AD nebo skupiny zabezpečení služby Azure AD.
+
+### <a name="the-super-user"></a>Superuživatel
 
 Superuživatel má většina oprávnění ze všech uživatelů v účtu Data Lake Storage Gen1. Superuživatel:
 
@@ -115,7 +115,7 @@ Pokud chcete vytvořit vlastní roli řízení přístupu na základě role (RBA
 - Microsoft.Authorization/roleAssignments/write
 
 
-## <a name="the-owning-user"></a>Vlastnící uživatel
+### <a name="the-owning-user"></a>Vlastnící uživatel
 
 Uživatel, který položku vytvořil, je automaticky jejím vlastníkem. Vlastnící uživatel může:
 
@@ -127,7 +127,7 @@ Uživatel, který položku vytvořil, je automaticky jejím vlastníkem. Vlastn�
 >
 >
 
-## <a name="the-owning-group"></a>Vlastnící skupina
+### <a name="the-owning-group"></a>Vlastnící skupina
 
 **Na pozadí**
 
@@ -234,7 +234,7 @@ Následujícím pseudokódu ukazuje, jak vlastnost umask se použije při vytvá
 ```
 def set_default_acls_for_new_child(parent, child):
     child.acls = []
-    foreach entry in parent.acls :
+    for entry in parent.acls :
         new_entry = None
         if (entry.type == OWNING_USER) :
             new_entry = entry.clone(perms = entry.perms & (~umask.owning_user))

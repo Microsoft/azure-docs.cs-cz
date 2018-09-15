@@ -1,20 +1,21 @@
 ---
-title: Exportu a odstranění dat zákazníků - LUIS - služeb Azure Cognitive Services || Dokumentace Microsoftu
-description: Referenční informace k exportu a odstranění zákaznických dat ze služby Language Understanding (LUIS).
+title: Exportu a odstranění dat zákazníků – Language Understanding - LUIS
+titleSuffix: Azure Cognitive Services
+description: Zachová obsah zákazníka pro provoz služby Language Understanding Intelligent Service (LUIS), ale má plnou kontrolu nad zobrazení, exportu a odstranění jejich dat uživatel LUIS. To lze provést prostřednictvím webového portálu služby LUIS nebo rozhraním API LUIS prostřednictvím kódu programu.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
-ms.technology: luis
+ms.technology: language-understanding
 ms.topic: article
-ms.date: 05/23/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: c6fba28ea3a4b24f02b62b6c3f124569378e5bc8
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 5b4b7a746a6a5f7e849777dedca9193455e1cc6c
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43130543"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45630813"
 ---
 # <a name="export-and-delete-your-customer-data-in-language-understanding-luis-in-cognitive-services"></a>Exportovat a odstraňovat vaše zákaznická data v Language Understanding (LUIS) ve službě Cognitive Services
 

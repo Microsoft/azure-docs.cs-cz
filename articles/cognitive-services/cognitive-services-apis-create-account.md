@@ -1,9 +1,10 @@
 ---
-title: Na webu Azure Portal vytvořit účet rozhraní API služeb Cognitive Services | Dokumentace Microsoftu
-description: Jak vytvořit účet Microsoft API služeb Cognitive Services na webu Azure Portal.
+title: 'Rychlý start: Vytvoření účtu služeb Cognitive Services na webu Azure Portal'
+titleSuffix: Microsoft Docs
+description: Zjistěte, jak vytvořit účet pro přístup k Azure Cognitive Services.
 services: cognitive-services
 documentationcenter: ''
-author: garyericson
+author: aahill
 manager: cgronlun
 editor: ''
 ms.assetid: b6176bb2-3bb6-4ebf-84d1-3598ee6e01c6
@@ -11,68 +12,62 @@ ms.service: cognitive-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/01/2018
-ms.author: garye
+ms.date: 09/06/2018
+ms.author: aahi
 ms.reviewer: gibattag
-ms.openlocfilehash: ed5f19b23375ecb83e19274c7405e9a1208a7985
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 232e0aa64eef4f6829813efff6e0abffd0a78518
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036148"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605126"
 ---
-# <a name="create-a-cognitive-services-apis-account-in-the-azure-portal"></a>Na webu Azure Portal vytvořit účet rozhraní API služeb Cognitive Services
+# <a name="quickstart-create-a-cognitive-services-account-in-the-azure-portal"></a>Rychlý start: Vytvoření účtu služeb Cognitive Services na webu Azure Portal
 
-Pokud chcete používat rozhraní API služeb Cognitive Microsoftu, musíte nejprve vytvořit účet na webu Azure Portal.
+Pokud chcete začít používat Azure Cognitive Services použijte v tomto rychlém startu. Tyto služby jsou reprezentované prostřednictvím Azure [prostředky](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal), které umožňují připojení k nejméně jeden mnoho API služeb Cognitive Services k dispozici.
 
-1. Přihlaste se k [portálu Azure](http://portal.azure.com).
+## <a name="prerequisites"></a>Požadavky
 
-2. Klikněte na tlačítko **+ vytvořit prostředek**.
+* Platné předplatné Azure. je možné [vytvořit účet](https://azure.microsoft.com/free/) zdarma.
 
-3. V části webu Azure Marketplace vyberte **AI a Cognitive Services** a seznam dostupných rozhraní API. Klikněte na **zobrazit všechny** zobrazíte úplný seznam sady rozhraní API služeb Cognitive Services. Klikněte na rozhraní API podle vašeho výběru, aby bylo možné pokračovat.
+## <a name="create-and-subscribe-to-an-azure-cognitive-services-resource"></a>Vytvoření a přihlášení k odběru k prostředku Azure Cognitive Services
 
-    ![Vyberte rozhraní API služeb Cognitive Services](media/cognitive-services-apis-create-account/select-cognitive-services-apis.png)
+1. Přihlaste se k [webu Azure portal](http://portal.azure.com)a klikněte na tlačítko **+ vytvořit prostředek**.
+    
+    ![Vyberte rozhraní API služeb Cognitive Services](media/cognitive-services-apis-create-account/azurePortalScreen.png)
 
-4. Na **vytvořit** stránky, zadejte následující informace:
+2. V části webu Azure Marketplace vyberte **AI a strojové učení**. Pokud nevidíte službu, která vás zajímá, klikněte na **zobrazit všechny** Chcete-li zobrazit celý katalog rozhraní API služeb Cognitive Services.
 
-   - **Název účtu:** název účtu. Doporučujeme použít popisný název, například *AFaceAPIAccount*.
+    ![Vyberte rozhraní API služeb Cognitive Services](media/cognitive-services-apis-create-account/azureMarketplace.png)
 
-   - **Předplatné:** vyberte jednu z dostupných předplatných Azure, ve kterých máte alespoň oprávnění přispěvatele.
+3. Na **vytvořit** stránky, zadejte následující informace:
 
-   - **Typ rozhraní API:** zvolte Cognitive Services API, kterou chcete použít. Další informace o různých Cognitive Services API k dispozici, najdete [služeb Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) lokality.
+    |    |    |
+    |--|--|
+    | **Název** | Popisný název pro váš prostředek služeb cognitive services. Doporučujeme použít popisný název, například *MyNameFaceAPIAccount*. |
+    | **Předplatné** | Vyberte jednu z dostupných předplatných Azure. |
+    | **Umístění** | Umístění vaší instanci služby cognitive Services. Různá umístění mohou zavést latence, ale mít vliv na běhovou dostupnost vašeho prostředku. |
+    | **Cenová úroveň** | Náklady na váš účet služeb Cognitive Services závisí na zvolené možnosti a využití. Další informace najdete v tématu rozhraní API [podrobnosti o cenách](https://azure.microsoft.com/pricing/details/cognitive-services/).
+    | **Skupina prostředků** | [Skupiny prostředků Azure](https://docs.microsoft.com/azure/architecture/cloud-adoption/getting-started/azure-resource-access#what-is-an-azure-resource-group) , která bude obsahovat váš prostředek služeb Cognitive Services. Můžete vytvořit novou skupinu nebo ho přidat do stávající skupiny. |
 
-   - **Cenová úroveň:** náklady na váš účet služeb Cognitive Services závisí na skutečném využití a možností, můžete zvolit. Další informace o cenách pro každé rozhraní API najdete [stránkách s cenami](https://azure.microsoft.com/pricing/details/cognitive-services/).
+    ![Vytvoření obrazovky prostředků](media/cognitive-services-apis-create-account/resource_create_screen.png)
 
-   - **Skupina prostředků:** skupina prostředků je kolekce prostředků, které sdílejí stejný životní cyklus, oprávnění a zásady. Další informace o skupinách prostředků najdete v tématu [Správa prostředků Azure prostřednictvím portálu](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal).
+## <a name="access-your-resource"></a>Přístup k prostředku 
 
-   - **Umístění skupiny prostředků:** to je nutné pouze v případě, že je rozhraní API vybraná globální (bez vazby na umístění). Pokud rozhraní API je globální a není vázaná na místo, ale musíte zadat umístění pro skupinu prostředků, ve kterém se budou metadata spojená s účtem rozhraní API služeb Cognitive Services nachází. Toto umístění nemá žádný vliv na běhovou dostupnost vašeho účtu. Další informace o skupině prostředků najdete v tématu [Správa prostředků Azure prostřednictvím portálu](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal).
+Po vytvoření prostředku můžete přistupovat ji z řídicího panelu Azure Pokud je připnutý. V opačném případě se nachází v **skupiny prostředků**.
 
-   - **Výslovné potvrzení Online podmínek použití služby:** Chcete-li vytvořit účet, předplatné vlastníky nebo přispěvateli (podle definice [řízení přístupu](https://docs.microsoft.com/azure/role-based-access-control/overview)) nutné explicitně potvrdit podmínky, které použít na služby Cognitive Services v [Online podmínek použití služby](https://www.microsoft.com/en-us/Licensing/product-licensing/products.aspx). 
+V prostředku služeb Cognitive Services, můžete použít adresu URL koncového bodu a klíče **přehled** části a začněte s vytvářením rozhraní API volá ve svých aplikacích.
 
-     Vlastník předplatného můžete zakázat vytvoření účtu služeb Cognitive Services pro konkrétní skupině prostředků nebo předplatného prostřednictvím [zásady Azure](../azure-policy/azure-policy-introduction.md) podle článku [pomocí Azure portal a přiřazování a správu zásady prostředků](../azure-policy/assign-policy-definition.md) a přiřazení definice zásady "není povolené typy prostředků" a určení **Microsoft.CognitiveServices/accounts** jako typ cílového prostředku.
+![Obrazovka prostředky](media/cognitive-services-apis-create-account/resourceScreen.png)
 
-     Když vytvoření účtu byla zakázaná, by v době vytvoření účtu zobrazit následující chyba:
+## <a name="next-steps"></a>Další kroky
 
-     ![Chyba při vytváření účtu](media/cognitive-services-apis-create-account/error-message.png)
+> [!div class="nextstepaction"]
+> [Počítač Vision API C# – tutoriál](https://docs.microsoft.com/azure/cognitive-services/computer-vision/tutorials/csharptutorial)
 
-5. Chcete-li připnout účet na řídicím panelu portálu Azure, klikněte na tlačítko **připnout na řídicí panel**.
+## <a name="see-also"></a>Další informace najdete v tématech
 
-6. Kliknutím na **Vytvořit** vytvořte účet.
-
-Po úspěšném nasazení účtu služeb Cognitive Services, klikněte na dlaždici na řídicím panelu zobrazíte informace o účtu.
-
-Můžete použít **adresu URL koncového bodu** v **přehled** oddílu a klíče **klíče** části a začněte s vytvářením rozhraní API volá ve svých aplikacích.
-
-![Zobrazit informace o účtu](media/cognitive-services-apis-create-account/display-account.png)
-
-![Zobrazení klíče účtu](media/cognitive-services-apis-create-account/account-keys.png)
-
-### <a name="next-steps"></a>Další kroky
-
-Další informace o všech Microsoft Cognitive Services k dispozici, najdete v části [služeb Cognitive Services](https://azure.microsoft.com/services/cognitive-services/).
-
-Pro příručky rychlý úvod k používání některé ukázkové rozhraní API služeb Cognitive Services:
-
- - [Rychlé starty počítače pro zpracování obrazu C#](computer-vision/quickstarts/csharp.md)
- - [Analýza textu s využitím Pythonu](text-analytics/quickstarts/python.md)
- - [Rozhraní face API s použitím jazyka JavaScript](face/quickstarts/javascript.md)
+* [Rychlý start: Extrahujte rukou psaný text z obrázku](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/csharp-hand-text)
+* [Kurz: Vytvoření aplikace pro zjišťování a rámečku tváří v obrázku](https://docs.microsoft.com/azure/cognitive-services/Face/Tutorials/FaceAPIinCSharpTutorial)
+* [Vytvořit webovou stránku pro vlastní vyhledávání](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search/tutorials/custom-search-web-page)
+* [Integrace s využitím botu pomocí rozhraní Bot Framework Language Understanding (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/luis-nodejs-tutorial-build-bot-framework-sample)

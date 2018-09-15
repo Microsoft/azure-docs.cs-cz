@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dobett
-ms.openlocfilehash: 227723ecea1401247f0df87bccfe058fb2273647
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: 4e9a5808a718909b21698b551f516a238e3934b0
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39145345"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605772"
 ---
 # <a name="control-access-to-iot-hub"></a>Řízení přístupu k IoT Hubu
 
@@ -42,8 +42,8 @@ Můžete udělit [oprávnění](#iot-hub-permissions) následujícími způsoby:
   | iothubowner | Oprávnění All |
   | služba | **ServiceConnect** oprávnění |
   | zařízení | **DeviceConnect** oprávnění |
-  | RegistryRead | **RegistryRead** oprávnění |
-  | RegistryReadWrite | **RegistryRead** a **RegistryWrite** oprávnění |
+  | registryRead | **RegistryRead** oprávnění |
+  | registryReadWrite | **RegistryRead** a **RegistryWrite** oprávnění |
 
 * **Zabezpečovací přihlašovací údaje zařízení**. Každé centrum IoT obsahuje [registr identit][lnk-identity-registry]. Pro každé zařízení v registru identit můžete nakonfigurovat přihlašovací údaje zabezpečení, které udělují **DeviceConnect** oprávnění oboru ke koncovým bodům odpovídající zařízení.
 
@@ -328,7 +328,7 @@ Jako příklad služby generování předem vytvořené využitím sdílené zá
 
 ```nodejs
 var endpoint ="myhub.azure-devices.net/devices";
-var policyName = 'device';
+var policyName = 'registryRead';
 var policyKey = '...';
 
 var token = generateSasToken(endpoint, policyKey, policyName, 60);
@@ -431,8 +431,8 @@ V následující tabulce jsou uvedeny oprávnění, která slouží k řízení 
 
 | Oprávnění | Poznámky |
 | --- | --- |
-| **RegistryRead** |Uděluje přístup pro čtení k registru identit. Další informace najdete v tématu [registr identit][lnk-identity-registry]. <br/>Toto oprávnění je použít cloudové back endové služby. |
-| **RegistryReadWrite** |Uděluje přístup čtení a zápis do registru identit. Další informace najdete v tématu [registr identit][lnk-identity-registry]. <br/>Toto oprávnění je použít cloudové back endové služby. |
+| **registryRead** |Uděluje přístup pro čtení k registru identit. Další informace najdete v tématu [registr identit][lnk-identity-registry]. <br/>Toto oprávnění je použít cloudové back endové služby. |
+| **registryReadWrite** |Uděluje přístup čtení a zápis do registru identit. Další informace najdete v tématu [registr identit][lnk-identity-registry]. <br/>Toto oprávnění je použít cloudové back endové služby. |
 | **ServiceConnect** |Uděluje přístup ke cloudovým komunikace a monitorování koncových bodů služby přístupem. <br/>Uděluje oprávnění pro příjem zpráv typu zařízení cloud, odesílat zprávy typu cloud zařízení a načtení odpovídajícího doručení potvrzení. <br/>Uděluje oprávnění k načtení potvrzení o doručení pro soubor nahraje. <br/>Uděluje oprávnění k přístupu dvojčat aktualizovat značky a požadované vlastnosti, načtení ohlášených vlastností a spouštět dotazy. <br/>Toto oprávnění je použít cloudové back endové služby. |
 | **DeviceConnect** |Uděluje přístup ke koncovým bodům přístupem k zařízení. <br/>Uděluje oprávnění k odesílání zpráv typu zařízení cloud a příjem zpráv typu cloud zařízení. <br/>Uděluje oprávnění k provedení nahrávání souborů ze zařízení. <br/>Uděluje oprávnění přijímat oznámení vlastnost požadovaného dvojče zařízení a aktualizovat dvojče zařízení ohlášené vlastnosti. <br/>Uděluje oprávnění k provedení soubor nahraje. <br/>Toto oprávnění se používají zařízení. |
 

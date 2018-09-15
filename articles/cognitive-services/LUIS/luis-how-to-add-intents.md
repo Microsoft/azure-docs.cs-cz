@@ -1,25 +1,26 @@
 ---
-title: Přidání záměrů aplikace LUIS | Dokumentace Microsoftu
-description: Language Understanding (LUIS) použijte k přidání záměrů, což umožní aplikace porozumět uživatelských požadavků a reagovat na ně správně.
+title: Přidání záměrů aplikace LUIS
+titleSuffix: Azure Cognitive Services
+description: Přidání záměrů do vaší aplikace LUIS k identifikaci skupin dotazy nebo příkazy, které mají stejné záměry.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 09/10/2018
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: 0ebf15ea49467674ab3c56aa7983131593cf5c9a
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 687cbad9d1e493e07fc5f813fdd7c52dee3b97d4
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39225882"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634621"
 ---
 # <a name="manage-intents"></a>Správa záměrů 
 Přidat [záměry](luis-concept-intent.md) do vaší aplikace LUIS k identifikaci skupin dotazy nebo příkazy, které mají stejné záměry. 
 
-Přidávat a spravovat vaše záměry z **záměry** stránky k dispozici z **záměry** LUIS na levém panelu. 
+Záměry spravují **sestavení** části v horním panelu nástrojů. Přidávat a spravovat vaše záměry z **záměry** stránky k dispozici na levém panelu. 
 
 Následující postup ukazuje, jak přidat "Bookflight" záměr v aplikaci TravelAgent.
 
@@ -28,7 +29,6 @@ Následující postup ukazuje, jak přidat "Bookflight" záměr v aplikaci Trave
 1. Otevřete aplikaci (například TravelAgent) kliknutím na název na **Moje aplikace** stránce a potom klikněte na tlačítko **záměry** na levém panelu. 
 2. Na **záměry** klikněte na **vytvořit nové záměr**.
 
-    ![Seznam příkazů](./media/luis-how-to-add-intents/IntentsList.png)
 3. V **vytvořit nové záměr** dialogové okno, zadejte název "BookFlight" záměr a klikněte na **provádí**.
 
     ![Přidat záměr](./media/luis-how-to-add-intents/Addintent-dialogbox.png)
@@ -105,7 +105,7 @@ Pokud chcete odstranit několik projevy:
 2. Vyberte **provádí** v **odstranit projevy?** automaticky otevíraná okna.
 
 ## <a name="search-in-utterances-on-intent-page"></a>Hledat v projevy na stránce záměru
-V záměru můžou vyhledejte projevy, které obsahují text (slova nebo fráze). Například můžete si všimnout chybu, která zahrnuje určité slovo a chcete najít všechny příklady, které zahrnují toto konkrétní slovo. 
+Projevy, které obsahují text (slova nebo fráze) můžete vyhledat záměr utterance seznamu certifikačních autorit. Například můžete si všimnout chybu, která zahrnuje určité slovo a chcete najít všechny příklady, které zahrnují toto konkrétní slovo. 
 
 1. V panelu nástrojů vyberte ikonu lupy.
 

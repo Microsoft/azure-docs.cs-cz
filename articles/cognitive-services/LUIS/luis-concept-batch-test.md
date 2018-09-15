@@ -8,14 +8,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 6c621d3cfc56b20511b16d014f7925cb92ccc279
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 1f26b82c5d92631e201ab243d2d49d3b4eb87391
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44025859"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45630207"
 ---
 # <a name="batch-testing-in-luis"></a>Testování v LUIS služby batch
 

@@ -3,7 +3,7 @@ title: Přidání tenantů pro využití a fakturaci ke službě Azure Stack | D
 description: Kroky přidání koncového uživatele do Azure stacku spravované pomocí Cloud Service Provider (CSP).
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: sethmanheim
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -12,14 +12,14 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: alfredo
-ms.openlocfilehash: d3fc3ef6c5fdcf5a87c691c73169ef2bec95805e
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: af28bff0a9826bb96451ae944a377ad0ee284d87
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382684"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45633992"
 ---
 # <a name="add-tenant-for-usage-and-billing-to-azure-stack"></a>Přidání tenanta pro využití a fakturaci ke službě Azure Stack
 

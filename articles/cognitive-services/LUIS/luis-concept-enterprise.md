@@ -8,14 +8,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 010efdf0fbfabb92b7465e37cb678a64810c8979
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 80d73620d11312a386a406d9a49d9223295b42f3
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44025244"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45631374"
 ---
 # <a name="enterprise-strategies-for-a-luis-app"></a>Podnikové strategie pro aplikace LUIS
 Projděte si tyto strategie návrhu pro podnikové aplikace.
@@ -51,9 +51,7 @@ Použití [odeslání] [ dispatch-tool] nástroje příkazového řádku v [BotB
 
 ![Koncepční obrázek architektury odeslání](./media/luis-concept-enterprise/dispatch-architecture.png)
 
-Nadřazené doméně, je uvedena v LUIS jako **V odesílání** aplikace. 
-
-![Snímek obrazovky LUIS seznam aplikací s vytvořené nástrojem odeslání aplikace LUIS](./media/luis-concept-enterprise/dispatch.png)
+Nadřazené doméně, je uvedena v LUIS s verzí s názvem `Dispatch` v seznamu aplikací. 
 
 Chatovací robot přijímá utterance pak odešle nadřazená aplikace LUIS pro předpovědi. Hlavní záměr předpokládané z nadřazené aplikace určuje, které podřízené aplikace LUIS se nazývá dále. Chatovací robot odešle do aplikace podřízené pro konkrétnější predikcí utterance.
 
@@ -67,4 +65,4 @@ Odeslání aplikace má 500 odeslání zdrojů, odpovídá 500 záměrů, jako m
 * Zjistěte, jak [testování dávky](luis-how-to-batch-test.md)
 
 [dispatcher-application-tutorial]: https://aka.ms/bot-dispatch
-[dispatch-tool]: https://github.com/Microsoft/botbuilder-tools/tree/master/Dispatch
+[dispatch-tool]: https://aka.ms/dispatch-tool

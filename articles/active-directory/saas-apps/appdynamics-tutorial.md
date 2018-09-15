@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/09/2018
+ms.date: 09/13/2018
 ms.author: jeedes
-ms.openlocfilehash: 3600e83d18f8cabd03c46af2ef47445c588cbdb5
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7f24dad3cfefd5ecb0b1c78f4a2b242c99a01239
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38548270"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605823"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appdynamics"></a>Kurz: Integrace Azure Active Directory s AppDynamics
 
@@ -36,7 +36,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 
 Konfigurace integrace Azure AD s AppDynamics, potřebujete následující položky:
 
-- S předplatným služby Azure AD
+- Předplatné Azure AD
 - AppDynamics jednotného přihlašování povolená předplatného
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Konfigurace integrace AppDynamics do služby Azure AD, budete muset přidat AppD
 
 **Chcete-li přidat AppDynamics z galerie, postupujte následovně:**
 
-1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
+1. V **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
@@ -112,7 +112,7 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Konfigurace jednotného přihlašování](./media/appdynamics-tutorial/tutorial_appdynamics_url.png)
 
-    a. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<companyname>.saas.appdynamics.com`
+    a. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<companyname>.saas.appdynamics.com?accountName=<companyname>`
 
     b. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<companyname>.saas.appdynamics.com/controller`
 
@@ -189,6 +189,7 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
 ### <a name="creating-an-appdynamics-test-user"></a>Vytvoření uživatele s AppDynamics testu
 
 Cílem této části je vytvořte uživatele Britta Simon v AppDynamics. AppDynamics podporuje just-in-time zřizování, který je ve výchozím nastavení povolená. Neexistuje žádná položka akce pro vás v této části. Nový uživatel se vytvoří během pokusu o přístup k AppDynamics, pokud ještě neexistuje.
+
 >[!Note]
 >Pokud je potřeba ručně vytvořit uživatele, obraťte se na [tým podpory AppDynamics klienta](https://www.appdynamics.com/support/).
 
@@ -231,7 +232,7 @@ Po kliknutí na dlaždici AppDynamics na přístupovém panelu, vám by měl zí
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

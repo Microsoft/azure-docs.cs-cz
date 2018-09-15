@@ -8,14 +8,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 07/31/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: b867d2c6c2bd586e0844d4ad149ac4a73399ed7b
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 215f8305c19f0b12a8b240abb16a30f0ce852502
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44023230"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45629011"
 ---
 # <a name="luis-boundaries"></a>Služba LUIS hranice
 Služba LUIS má několik oblasti hranic. První je [modelu hranice](#model-boundaries), který určuje záměrů, entit a funkcí v LUIS. Druhá oblast je [kvóty](#key-limits) podle typu klíče. Je třetí oblasti hranic [klávesové kombinace](#keyboard-controls) pro řízení webu LUIS. Je čtvrtý oblast [mapování oblasti world](luis-reference-regions.md) mezi LUIS vytváření webu a LUIS [koncový bod](luis-glossary.md#endpoint) rozhraní API. 
@@ -30,7 +30,7 @@ Služba LUIS má několik oblasti hranic. První je [modelu hranice](#model-boun
 | **[Složené](./luis-concept-entity-types.md)|100 s až 10 podřízených objektů |
 | Explicitní seznam | 50 na aplikaci.|
 | **[Hierarchické](./luis-concept-entity-types.md) |100 s až 10 podřízených objektů |
-| [Záměrů][intents]|500 na aplikaci.<br>[Na základě odeslání](https://github.com/Microsoft/botbuilder-tools/tree/master/Dispatch) aplikace nemá odpovídající 500 odeslání zdroje|
+| [Záměrů][intents]|500 na aplikaci.<br>[Na základě odeslání](https://aka.ms/dispatch-tool) aplikace nemá odpovídající 500 odeslání zdroje|
 | [Seznam entit](./luis-concept-entity-types.md) | Nadřízený: 50, podřízený: 20 000 položek. Název v kanonickém tvaru je * výchozí maximální počet znaků. Synonymum hodnoty mají žádné omezení délky. |
 | [Vzory](luis-concept-patterns.md)|500 vzory na jednu žádost.<br>Maximální délka vzor je až 400 znaků.<br>3 entity Pattern.any za vzor<br>Maximálně 2 vnořené volitelné texty ve vzoru|
 | [Pattern.Any](./luis-concept-entity-types.md)|100 na aplikaci, 3 entity pattern.any za vzor |
