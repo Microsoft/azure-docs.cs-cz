@@ -1,36 +1,37 @@
 ---
-title: Podporované jazyky v rozhraní API Analytics Text - kognitivní služeb Azure | Microsoft Docs
-description: Seznam všeobecně dostupná a jazyk preview podporu pro operace rozhraní API Analytics Text. Platí pro analýzy postojích, extrakce klíče frázi a zjišťování jazyka.
+title: Podporované jazyky v rozhraní Text Analytics API
+titleSuffix: Azure Cognitive Services
+description: Seznam obecně dostupná a jazyka ve verzi preview podporu pro operace rozhraní API pro analýzu textu. Platí pro analýzu mínění, extrakci klíčových frází a rozpoznání jazyka.
 services: cognitive-services
 author: ashmaka
 manager: cgronlun
 ms.service: cognitive-services
 ms.technology: text-analytics
 ms.topic: conceptual
-ms.date: 05/02/2018
+ms.date: 09/12/2018
 ms.author: ashmaka
-ms.openlocfilehash: 2d341cfaf261bea6367bb55dd5d322f419e22d34
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 984947903a91837910493618bd7abc2cdfe0da71
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343632"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45603239"
 ---
-# <a name="supported-languages-in-the-text-analytics-api"></a>Podporované jazyky v rozhraní API Analýza textu
+# <a name="supported-languages-in-the-text-analytics-cognitive-service"></a>Podporované jazyky v Text Analytics služby Cognitive Services
 
-Tento článek vysvětluje podporované jazyky pro každou operaci: postojích analýzy, extrakce klíče frázi a zjišťování jazyka.
+Tento článek vysvětluje, jaké jazyky jsou podporovány pro každou operaci: analýzu mínění, extrakci klíčových frází a rozpoznání jazyka.
 
 ## <a name="language-detection"></a>Rozpoznávání jazyka
 
-Rozhraní API Analytics Text může rozpoznat až 120 různé jazyky. Zjišťování jazyka vrátí "skript" jazyka. Například pro frázi "Je nutné PSA" vrátí `en` místo `en-US`. Pouze zvláštním případem je čínština, kde vrátí funkce zjišťování jazyk `zh_CHS` nebo `zh_CHT` pokud ji můžete určit skript zadaný text šablony. V situacích, kde nelze identifikovat specifického skriptu pro čínštinu dokument, vrátí jednoduše `zh`.
+Rozhraní Text Analytics API můžete zjišťovat až 120 jazyků. Rozpoznávání jazyka vrátí "skript" jazyk. Například pro frázi "Mám pes" vrátí `en` místo `en-US`. Pouze zvláštním případem je čínština, kde funkci zjišťování jazyka vrátí `zh_CHS` nebo `zh_CHT` pokud ji určit skript zadaného textu k dispozici. V situacích, kdy nelze identifikovat specifického skriptu pro čínské dokument, ho jednoduše vrátí `zh`.
 
-## <a name="sentiment-analysis-key-phrase-extraction-and-entity-linking"></a>Analýza postojích, extrakce klíče frázi a Entity propojení
+## <a name="sentiment-analysis-key-phrase-extraction-and-entity-linking"></a>Analýza mínění, extrakci klíčových frází a propojování entit
 
-Pro analýzu postojích, extrakce klíče frázi a propojování entity je více selektivní jsou přesnějších zohlednit lingvistické pravidla další jazyky analyzátory seznam podporovaných jazyků.
+Seznam podporovaných jazyků je pro analýzu mínění, extrakci klíčových frází a propojování entit, zvažte, jak analyzátory jsou kontrast pro přizpůsobení jazykových pravidel další jazyky.
 
 ## <a name="language-list-and-status"></a>Seznam jazyků a stav
 
-Jazyková podpora je původně nasazuje ve verzi preview, přechod na všeobecně dostupná (GA) stav, nezávisle na sobě navzájem a celkové Analýza textu služby. Je možné pro jazyky, zůstanou ve verzi preview, i když Text Analytics API přechodů k všeobecně dostupná.
+Podpora jazyků je zpočátku nasazeny ve verzi preview, přechod na všeobecně dostupná (GA) stav, nezávisle na sobě a celkové služby pro analýzu textu. Je možné pro jazyky, které zůstává ve verzi preview, i když přechody rozhraní Text Analytics API na obecně k dispozici.
 
 | Jazyk    | Kód jazyka | Mínění | Klíčové fráze | Entity Linking |   Poznámky  |
 |:----------- |:-------------:|:---------:|:-----------:|:-----------:|:-----------:
@@ -44,18 +45,18 @@ Jazyková podpora je původně nasazuje ve verzi preview, přechod na všeobecn�
 | italština     | `it`          | ✔ \*     | ✔           |             |     |
 | Japonština    | `ja`          |          | ✔           |            |     |
 | Korejština      | `ko`          |          | ✔           |            |     |
-| Norština (Bokmål) | `no`          | ✔ \*     |  ✔          |             |     |
+| Norština (Bokmal) | `no`          | ✔ \*     |  ✔          |             |     |
 | polština      | `pl`          | ✔ \*     |  ✔          |             |     |
-| Portugalština (Portugalsko) | `pt-PT`| ✔        |  ✔          |       |`pt` také přijata.|
+| Portugalština (Portugalsko) | `pt-PT`| ✔        |  ✔          |       |`pt` také přijetí|
 | Portugalština (Brazílie)   | `pt-BR`|          |  ✔   |         |     |
 | ruština     | `ru`          | ✔ \*     | ✔           |             |     |
 | Španělština     | `es`          | ✔        | ✔           |     |     |
 | švédština     | `sv`          | ✔ \*     | ✔           |             |     |
 | turečtina     | `tr`          | ✔ \*     |             |             |     |
 
-\* Určuje jazyk podpora ve verzi preview
+\* Určuje jazykovou podporu ve verzi preview
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-[Kognitivní stránky dokumentace služby](https://docs.microsoft.com/azure/cognitive-services/)   
-[Kognitivní stránka služby produktu](https://azure.microsoft.com/services/cognitive-services/)
+[Cognitive Services dokumentaci stránky](https://docs.microsoft.com/azure/cognitive-services/)   
+[Produktová stránka služeb Cognitive Services](https://azure.microsoft.com/services/cognitive-services/)

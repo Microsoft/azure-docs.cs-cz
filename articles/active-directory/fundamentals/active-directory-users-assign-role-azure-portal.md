@@ -1,44 +1,68 @@
 ---
-title: Přiřazení uživatele k rolím správce v Azure Active Directory | Microsoft Docs
-description: Změna informací pro správu pro uživatele v Azure Active Directory
+title: Přiřazení role adresáře pro uživatele se službou Azure Active Directory | Dokumentace Microsoftu
+description: Jak přiřadit role adresáře pro uživatele se službou Azure Active Directory.
 services: active-directory
-documentationcenter: ''
 author: eross-msft
 manager: mtillman
-editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.component: fundamentals
-ms.topic: quickstart
-ms.date: 06/25/2018
+ms.topic: conceptual
+ms.date: 09/06/2018
 ms.author: lizross
 ms.reviewer: jeffsta
-ms.openlocfilehash: ec30f1507bfa45c29709a7f4b7dc1e91aa25ca57
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
-ms.translationtype: HT
+ms.openlocfilehash: 02eb55509a3708517dff4c14640826a3a21f1df0
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37440744"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45603715"
 ---
-# <a name="assign-a-user-to-administrator-roles-in-azure-active-directory"></a>Přiřazení uživatele k rolím správce v Azure Active Directory
-Tento článek vysvětluje, jak uživateli přiřadit roli správce v Azure Active Directory (Azure AD). Informace o přidávání nových uživatelů v organizaci najdete v tématu [Přidávání nových uživatelů do služby Azure Active Directory](../add-users-azure-active-directory.md). Přidaní uživatelé nemají ve výchozím nastavení oprávnění správce, ale příslušné role jim můžete kdykoli přiřadit.
+# <a name="how-to-assign-roles-and-administrators-to-users-with-azure-active-directory"></a>Postupy: přiřazení role a správci pro uživatele se službou Azure Active Directory
+Pokud uživatel ve vaší organizaci potřebuje oprávnění ke správě prostředků Azure Active Directory (Azure AD), musíte přiřadit uživateli příslušné role ve službě Azure AD podle akce, které uživatel potřebuje oprávnění k provedení.
 
-## <a name="assign-a-role-to-a-user"></a>Přiřazení role uživateli
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com) prostřednictvím účtu, který má k adresáři oprávnění globálního správce nebo správce privilegovaných rolí.
+Další informace o dostupných rolí najdete v tématu [přiřazení rolí správce v Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md). Další informace o přidávání uživatelů najdete v tématu [přidání nových uživatelů do služby Azure Active Directory](add-users-azure-active-directory.md).
 
-2. Vyberte **Azure Active Directory**, pak **Uživatelé** a pak v seznamu vyberte konkrétního uživatele.
+## <a name="assign-roles"></a>Přiřazení rolí
+Běžný způsob, jak přiřadit role Azure AD pro uživatele je na **role adresáře** stránky pro uživatele.
 
-    ![Otevírání správy uživatelů](./media/active-directory-users-assign-role-azure-portal/create-users-user-management.png)
+Můžete také přiřadit role pomocí Privileged Identity Management (PIM). Podrobné informace o tom, jak používat PIM, naleznete v tématu [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management).
 
-3. Pro vybraného uživatele vyberte **Role adresáře**, pak **Přidat roli** a pak v seznamu **Role adresáře** vyberte příslušné role správce, například **Správce podmíněného přístupu**. Další informace o rolích správce najdete v tématu [Přiřazování rolí správce ve službě Azure AD](../users-groups-roles/directory-assign-admin-roles.md). 
+### <a name="to-assign-a-role-to-a-user"></a>Přiřazení role uživateli
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) pomocí účtu globálního správce adresáře.
 
-    ![Přiřazení uživatele k roli](./media/active-directory-users-assign-role-azure-portal/create-users-assign-role.png)
+2. Vyberte **Azure Active Directory**vyberte **uživatelé**a poté vyhledejte a vyberte uživatele, získávání přiřazení role. Například _Alain Charon_.
 
-1. Stisknutím **Vybrat** uložte nastavení.
+3. Na **Alain Charon – profil** stránce **role adresáře**.
 
-## <a name="next-steps"></a>Další kroky
-* [Rychlý start: Přidání nebo odstranění uživatelů v Azure Active Directory](add-users-azure-active-directory.md)
-* [Správa uživatelských profilů](active-directory-users-profile-azure-portal.md)
-* [Přidání uživatelů typu host z jiného adresáře](../b2b/what-is-b2b.md) 
-* [Přiřazení uživatele k roli ve službě Azure AD](active-directory-users-assign-role-azure-portal.md)
-* [Obnovení odstraněného uživatele](active-directory-users-restore.md)
+    **Alain Charon - role adresáře** se zobrazí stránka.
+
+4. Vyberte **přidat roli**, vyberte roli, kterou chcete přiřadit k Alain (například _správce aplikace_) a klikněte na tlačítko **vyberte**.
+
+    ![Stránka role adresáře, zobrazující vybranou roli](media/active-directory-users-assign-role-azure-portal/directory-role-select-role.png)
+
+    Role správce aplikace je přiřazená Alain Charon a zobrazí se na **Alain Charon - role adresáře** stránky.
+
+## <a name="remove-a-role-assignment"></a>Odebrání přiřazení role
+Pokud je potřeba odebrat přiřazení role od uživatele, můžete také provést z **Alain Charon - role adresáře** stránky.
+
+### <a name="to-remove-a-role-assignment-from-a-user"></a>Odebrání uživateli přiřazení role
+
+1. Vyberte **Azure Active Directory**vyberte **uživatelé**a poté vyhledejte a vyberte uživatele, získávání odebrat přiřazení role. Například _Alain Charon_.
+
+2. Vyberte **role adresáře**vyberte **správce aplikace**a pak vyberte **odebrat roli**.
+
+    ![Stránka role adresáře, zobrazující vybranou roli a možnost odebrat](media/active-directory-users-assign-role-azure-portal/directory-role-remove-role.png)
+
+    Role správce aplikace se odebere z Alain Charon a již nezobrazuje v **Alain Charon - role adresáře** stránky.
+
+## <a name="next-steps"></a>Další postup
+- [Přidání nebo odstranění uživatelů](add-users-azure-active-directory.md)
+
+- [Přidání nebo změně informací profilu](active-directory-users-profile-azure-portal.md)
+
+- [Přidání uživatelů typu host z jiného adresáře](../b2b/what-is-b2b.md)
+
+Nebo můžete provádět další úkoly při správě uživatelů, jako je například přiřazení delegáty, pomocí zásad, sdílení a uživatelské účty. Další informace o dalších dostupných akcí najdete v tématu [dokumentace ke službě Azure Active Directory uživatele management](../users-groups-roles/index.yml).
+
+

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 09/05/2018
 ms.author: bryanla
-ms.openlocfilehash: b8b51ed8cbaaaaaa463dd1ed841e6d5193fec40a
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 3dc80c97a43c35295deacefc37a76471912c9b42
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301911"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45603987"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Příručka pro vývojáře Azure Key Vault
 
@@ -129,7 +129,7 @@ Následující články a scénáře obsahují pokyny týkající se úloh pro p
 - [Nasazení certifikátů do virtuálních počítačů ze služby Key Vault](https://blogs.technet.microsoft.com/kv/2015/07/14/deploy-certificates-to-vms-from-customer-managed-key-vault/) – Cloudová aplikace spuštěná ve virtuálním počítači Azure potřeb certifikát. Jak můžete získat tento certifikát do tohoto virtuálního počítače už dnes?
 - [Jak nastavit službu Key Vault s kompletní obměny klíčů a auditování](key-vault-key-rotation-log-monitoring.md) – Toto provede procesem nastavení obměny klíčů a auditování pomocí služby Azure Key Vault.
 - [Nasazení certifikát webové aplikace Azure pomocí služby Key Vault]( https://blogs.msdn.microsoft.com/appserviceteam/2016/05/24/deploying-azure-web-app-certificate-through-key-vault/) poskytuje podrobné pokyny pro nasazení certifikátů uložených v Key Vault v rámci [App Service Certificate](https://azure.microsoft.com/blog/internals-of-app-service-certificate/) nabídky.
-- [Udělení oprávnění k velkému počtu aplikací pro přístup k trezoru klíčů](key-vault-group-permissions-for-apps.md) zásad řízení přístupu služby Key Vault podporuje jenom 16 položek. Ale můžete vytvořit skupiny zabezpečení služby Azure Active Directory. Přidejte všechny přidružené instanční objekty do této skupiny zabezpečení a potom jim udělit přístup k této skupině zabezpečení do služby Key Vault.
+- [Udělení oprávnění k velkému počtu aplikací pro přístup k trezoru klíčů](key-vault-group-permissions-for-apps.md) zásady řízení přístupu k trezoru klíčů podporuje až 1 024 položky. Ale můžete vytvořit skupiny zabezpečení služby Azure Active Directory. Přidejte všechny přidružené instanční objekty do této skupiny zabezpečení a potom jim udělit přístup k této skupině zabezpečení do služby Key Vault.
 - Další pokyny týkající se úloh na integraci a pomocí Azure Key Vault, naleznete v tématu [Ryanem Jones Příklady šablon Azure Resource Manageru pro službu Key Vault](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples).
 - [Jak používat obnovitelné odstranění Key Vault pomocí rozhraní příkazového řádku](key-vault-soft-delete-cli.md) provede vás procesem použití a životní cyklus služby key vault a různé objekty služby key vault s obnovitelným odstraněním povolena.
 - [Jak používat obnovitelné odstranění Key Vaultu s využitím Powershellu](key-vault-soft-delete-powershell.md) provede vás procesem použití a životní cyklus služby key vault a různé objekty služby key vault s obnovitelným odstraněním povolena.

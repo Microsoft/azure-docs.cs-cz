@@ -15,24 +15,26 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 4f2d49233a6eb92f567d4265210fcab394aa6461
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 661ff7c07ba2bb17eb5830b38bb39e1c3e80bb55
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40190060"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45602902"
 ---
 # <a name="advanced-aggregations-in-log-analytics-queries"></a>Pokročilé agregace v dotazy Log Analytics
 
 > [!NOTE]
 > By se měla Dokončit [agregace v dotazy Log Analytics](./aggregations.md) před dokončením v této lekci.
 
+[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
+
 Tento článek popisuje některé pokročilejší možnosti agregace, která je k dispozici pro dotazy Log Analytics.
 
 ## <a name="generating-lists-and-sets"></a>Generování seznamy a sad
 Můžete použít `makelist` kontingenční data pořadím hodnot v určitém sloupci. Můžete třeba prozkoumat nejběžnější pořadí událostí se provádějí na počítačích. V podstatě můžete přesouvat data pořadím identifikátory EventID v rozmezí na každém počítači. 
 
-```OQL
+```KQL
 Event
 | where TimeGenerated > ago(12h)
 | order by TimeGenerated desc
@@ -48,7 +50,7 @@ Event
 
 Je také užitečné vytvořit seznam pouze jedinečné hodnoty. Tento postup se nazývá _nastavit_ a dá vygenerovat pomocí `makeset`:
 
-```OQL
+```KQL
 Event
 | where TimeGenerated > ago(12h)
 | order by TimeGenerated desc
@@ -65,7 +67,7 @@ Stejně jako `makelist`, `makeset` také pracuje s seřazených dat a bude gener
 ## <a name="expanding-lists"></a>Rozbalování seznamů
 Inverzní operace k `makelist` nebo `makeset` je `mvexpand`, který rozbalí seznam hodnot k oddělení řádků. Můžete rozbalit napříč libovolným počtem dynamické sloupce, JSON a pole. Například můžete zkontrolovat *prezenčního signálu* tabulky pro odesílání dat z počítačů, které odeslaly prezenční signál za poslední hodinu řešení:
 
-```OQL
+```KQL
 Heartbeat
 | where TimeGenerated > ago(1h)
 | project Computer, Solutions
@@ -95,7 +97,7 @@ Prezenční signál | kde TimeGenerated > ago(1h) | Projekt počítače, rozděl
 
 Můžete pak použít `makelist` znovu k seskupení položek najednou a tentokrát naleznete v seznamu počítačů podle řešení:
 
-```OQL
+```KQL
 Heartbeat
 | where TimeGenerated > ago(1h)
 | project Computer, split(Solutions, ",")
@@ -113,7 +115,7 @@ Heartbeat
 ## <a name="handling-missing-bins"></a>Chybějící přihrádek zpracování
 Užitečné použití `mvexpand` je potřeba vyplnit výchozí hodnoty pro chybějící přihrádky. Předpokládejme například, že se díváte provozuschopnost konkrétní počítač, ve kterých prezenčního signálu. Chcete také zobrazit prezenčního signálu, který je ve zdroji _kategorie_ sloupce. Za normálních okolností bychom použili jednoduchý příkaz shrnout takto:
 
-```OQL
+```KQL
 Heartbeat
 | where TimeGenerated > ago(12h)
 | summarize count() by Category, bin(TimeGenerated, 1h)
@@ -129,7 +131,7 @@ Heartbeat
 
 V těchto výsledků ale sady přidružené k "2017-06-06T19:00:00Z" chybí, protože není k dispozici žádná data prezenčního signálu pro určitou hodinu. Použití `make-series` funkci přiřadí výchozí hodnotu prázdných kbelíků. Tím se vygeneruje řádek pro každou kategorii se dvěma sloupci další pole, jeden pro hodnoty a jeden pro odpovídající časovým intervalům:
 
-```OQL
+```KQL
 Heartbeat
 | make-series count() default=0 on TimeGenerated in range(ago(1d), now(), 1h) by Category 
 ```
@@ -141,7 +143,7 @@ Heartbeat
 
 Třetího prvku pole *count_* pole má hodnotu 0, podle očekávání a neexistuje odpovídající razítko "2017-06-06T19:00:00.0000000Z" v _TimeGenerated_ pole. Formát tohoto pole je obtížné číst ale. Použití `mvexpand` rozbalte pole a vytvořit stejný formát výstupu vygenerovanými `summarize`:
 
-```OQL
+```KQL
 Heartbeat
 | make-series count() default=0 on TimeGenerated in range(ago(1d), now(), 1h) by Category 
 | mvexpand TimeGenerated, count_
@@ -163,7 +165,7 @@ Heartbeat
 Běžný scénář, kdy je výběr názvy některé konkrétní entity založené na sadě kritérií a potom filtrování jinou sadu dat do této sady entit. Například můžete najít počítače, na kterých je známo, že jim chybí aktualizace a identifikovat IP adresy, které uvádějí tyto počítače k:
 
 
-```OQL
+```KQL
 let ComputersNeedingUpdate = toscalar(
     Update
     | summarize makeset(Computer)

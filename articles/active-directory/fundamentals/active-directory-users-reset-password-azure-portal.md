@@ -1,50 +1,59 @@
 ---
-title: Resetování hesla ve službě Azure Active Directory | Dokumentace Microsoftu
-description: Správce iniciované resetování hesla pro uživatele v Azure Active Directory
+title: Jak resetovat heslo uživatele v Azure Active Directory | Dokumentace Microsoftu
+description: Resetovat heslo uživatele pomocí služby Azure Active Directory.
 services: active-directory
-documentationcenter: ''
-author: MicrosoftGuyJFlo
+author: eross-msft
 manager: mtillman
-editor: ''
 ms.assetid: fad5624b-2f13-4abc-b3d4-b347903a8f16
 ms.service: active-directory
 ms.component: fundamentals
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 11/01/2017
-ms.author: joflore
-ms.reviewer: sahenry
+ms.topic: conceptual
+ms.date: 09/05/2018
+ms.author: lizross
+ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: 689ab264e56bc8559db6237eee19566e9e3c429f
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: e6f937063832e6b2a5f301d6d61aec4b3426ea28
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35643105"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45603086"
 ---
-# <a name="reset-the-password-for-a-user-in-azure-active-directory"></a>Resetování hesla pro uživatele v Azure Active Directory
+# <a name="how-to-reset-a-users-password-using-azure-active-directory"></a>Postupy: resetování hesla uživatele pomocí služby Azure Active Directory
+Pokud zapomenete heslo, pokud uživatel získá uzamčení a vyloučení z zařízení nebo uživatele nebylo doručeno heslo, můžete resetovat heslo uživatele.
 
-Správce může být potřeba resetovat heslo uživatele v případech, kde se zapomněli, byly zamknuté na více instancí nebo jiné scénáře. Následující kroky vás provedou resetování hesla uživatele.
+>[!Note]
+>Pokud váš tenant Azure AD je domovský adresář pro uživatele, nebude možné obnovit své heslo. To znamená, že pokud se uživatel přihlašuje pro vaši organizaci pomocí účtu z jiné organizace, účet Microsoft nebo účet Google, nebudete mít k resetování hesla.<br><br>Pokud váš uživatel má zdroj autority jako Windows Server Active Directory, pouze budete moct resetovat heslo, pokud jste zapnuli zpětný zápis hesla.<br><br>Pokud váš uživatel má zdroj autority jako externí služby Azure AD, nebude možné resetovat heslo. Jenom na uživatele nebo správce v externí službě Azure AD můžou resetovat heslo.
 
-## <a name="how-to-reset-the-password-for-a-user"></a>Jak resetovat heslo pro uživatele
+## <a name="to-reset-a-password"></a>Resetování hesla.
 
-1. Přihlaste se k [centra pro správu Azure AD](https://aad.portal.azure.com) pomocí účtu, který má oprávnění adresáře k resetování uživatelských hesel.
-2. Vyberte **Azure Active Directory** > **uživatelů a skupin** > **všichni uživatelé**.
-3. Vyberte uživatele, který chcete resetovat heslo.
-2. Pro vybraného uživatele vyberte **resetovat heslo**.
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com/) jako globální správce, uživatele správce nebo správce hesel. Další informace o dostupných rolí najdete v tématu [přiřazení rolí správce v Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md#available-roles)
 
-    ![Resetování hesla pro uživatele z profilu uživatele ve službě Azure AD](./media/active-directory-users-reset-password-azure-portal/user-password-reset.png)
-    
-6. Na **resetovat heslo**vyberte **resetovat heslo**.
-7. Dočasné heslo se zobrazí, že jste jim pak můžou uživateli. Potom změnit své heslo při příštím přihlášení, vyzve uživatele. 
+2. Vyberte **Azure Active Directory**vyberte **uživatelé**, vyhledejte a vyberte uživatele, který potřebuje obnovení a pak vyberte **resetovat heslo**.
 
-   > [!NOTE]
-   > Toto dočasné heslo není nastavený čas vypršení platnosti tak bude platit, dokud přihlášení a jsou pak se vynutilo ho změnit. 
+    **Alain Charon – profil** se zobrazí stránka s **resetovat heslo** možnost.
+
+    ![Stránka profilu uživatele, se zvýrazněnou možností resetování hesla](media/active-directory-users-reset-password-azure-portal/user-profile-reset-password-link.png)
+
+3. V **resetovat heslo** stránce **resetovat heslo**.
+
+    Dočasné heslo je automaticky generovaná pro daného uživatele.
+
+4. Zkopírujte heslo a předat uživateli. Uživatel muset změnit heslo při další proces přihlašování.
+
+    >[!Note]
+    >Dočasné heslo je platné stále. Při příštím přihlášení uživatele hesla budou i nadále fungovat, bez ohledu na to kolik času uplynulo od vygeneroval dočasné heslo.
 
 ## <a name="next-steps"></a>Další postup
-* [Přidání uživatele](../add-users-azure-active-directory.md)
-* [Přiřazení role správce uživateli](active-directory-users-assign-role-azure-portal.md)
-* [Správa uživatelských profilů](active-directory-users-profile-azure-portal.md)
-* [Odstranění uživatele ve službě Azure AD](../add-users-azure-active-directory.md)
+Poté, co jsme resetovali heslo uživatele, můžete provést následující základní procesy:
+
+- [Přidání nebo odstranění uživatelů](add-users-azure-active-directory.md)
+
+- [Přiřazení rolí uživatelům](active-directory-users-assign-role-azure-portal.md)
+
+- [Přidání nebo změně informací profilu](active-directory-users-profile-azure-portal.md)
+
+- [Vytvoření základní skupiny a přidání členů](active-directory-groups-create-azure-portal.md)
+
+Nebo můžete provést složitější uživatelské scénáře, jako je například přiřazení delegáty, pomocí zásad, sdílení a uživatelské účty. Další informace o dalších dostupných akcí najdete v tématu [dokumentace ke službě Azure Active Directory uživatele management](../users-groups-roles/index.yml).

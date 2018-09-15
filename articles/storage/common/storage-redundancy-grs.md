@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/20/2018
 ms.author: jeking
 ms.component: common
-ms.openlocfilehash: be3d0d32e60e23b2b2d7d414d2297b86dec62f1d
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: eee9998280f2105fee5144b520bc8000b086f941
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576829"
+ms.locfileid: "45603921"
 ---
 # <a name="geo-redundant-storage-grs-cross-regional-replication-for-azure-storage"></a>Geograficky redundantní úložiště (GRS): replikace mezi zónami pro službu Azure Storage
 [!INCLUDE [storage-common-redundancy-GRS](../../../includes/storage-common-redundancy-grs.md)]
@@ -41,7 +41,7 @@ Některé aspekty, mějte na paměti při použití RA-GRS:
    * Čas, aby Microsoftu určit, zda data můžete obnovit v primární lokalitě nebo pokud je nutné převzetí služeb při selhání.
    * Čas k provedení převzetí služeb při selhání z účtu úložiště tak, že změníte primární záznamy DNS tak, aby odkazoval na sekundární lokalitě.
 
-   Společnost Microsoft má na starost zachování vašich dat vážně. Pokud je pravděpodobné, že obnovení dat v primární oblasti, Microsoft zpoždění převzetí služeb při selhání a zaměřit se na obnovení dat. Budoucí verze služby vám umožní aktivovat převzetí služeb při selhání na úrovni účtu, takže můžete řídit RTO sami.
+   Společnost Microsoft má na starost zachování vašich dat vážně. Pokud je pravděpodobné, že obnovení dat v primární oblasti, Microsoft zpoždění převzetí služeb při selhání a zaměřit se na obnovení dat. 
 
 ## <a name="paired-regions"></a>Spárované oblasti 
 Při vytváření účtu úložiště vyberte primární oblast pro účet. Spárované oblasti sekundární závisí na primární oblasti a nelze změnit. Aktuální informace o oblasti, které podporuje Azure najdete v tématu [obchodní kontinuity podnikových procesů a zotavení po havárii (BCDR): spárované oblasti Azure](../../best-practices-availability-paired-regions.md).

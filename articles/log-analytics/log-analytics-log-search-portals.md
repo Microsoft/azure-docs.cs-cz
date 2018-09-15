@@ -11,21 +11,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/20/2018
+ms.date: 09/13/2018
 ms.author: magoedte; bwren
 ms.component: na
-ms.openlocfilehash: 386aad94461fa3f2ceafb7564342797eefa2f086
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 996502ffe5a31fcfa1b73dab9a041c336c4ea98f
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42054265"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45602627"
 ---
 # <a name="viewing-and-analyzing-data-in-log-analytics"></a>Zobrazení a analýza dat v Log Analytics
 Existují dvě možnosti k dispozici na webu Azure Portal pro analýzu dat uložených ve službě Log analytics a k vytváření dotazů ad hoc analýzy. Pro další funkce, jako je například výstrahy a řídicí panely je možné dotazy, které vytvoříte pomocí těchto portálů.
 
-## <a name="log-analytics-page-preview"></a>Stránka log Analytics (preview)
-Otevřete stránku Log Analytics z **protokoly (preview)** v nabídce Log Analytics. Jedná se o nové prostředí pro práci s daty protokolů a vytváření dotazů. Můžete získat Úvod k tomuto portálu a zkontrolujte jeho funkce v [Začínáme s Log Analytics stránky na webu Azure Portal](query-language/get-started-analytics-portal.md).
+## <a name="log-analytics-page"></a>Stránka log Analytics
+Otevřete stránku Log Analytics z **protokoly** v nabídce Log Analytics. Jedná se o nové prostředí pro práci s daty protokolů a vytváření dotazů. Můžete získat Úvod k tomuto portálu a zkontrolujte jeho funkce v [Začínáme s Log Analytics stránky na webu Azure Portal](query-language/get-started-analytics-portal.md).
 
 Na stránce Log Analytics nabízí následující vylepšení v porovnání [prohledávání protokolů](#log-search) prostředí.
 
@@ -55,8 +55,8 @@ Váš prohlížeč vyžaduje přístup k následující adresy, které mají př
 | docs.loganalytics.io   | Dynamická | 80,443 |
 
 
-## <a name="log-search"></a>Prohledávání protokolů
-Otevřete stránku vyhledávání protokolu z **protokoly** v nabídce Log Analytics nebo z **Log Analytics** v nabídce Azure Monitor. Toto je vhodný pro analýzu dat protokolu pomocí základní dotazy. Poskytuje několik funkcí pro úpravy dotazů bez nutnosti úplné znalost dotazovacího jazyka.  Můžete se souhrnné informace o těchto funkcích v [vytvořit prohledávání protokolů v Azure Log Analytics s využitím prohledávání protokolů](log-analytics-log-search-log-search-portal.md). 
+## <a name="log-search-classic"></a>Prohledávání protokolu (Classic)
+Otevřete stránku vyhledávání protokolu z **protokoly (Classic)** v nabídce Log Analytics nebo z **Log Analytics** v nabídce Azure Monitor. Toto je vhodný pro analýzu dat protokolu pomocí základní dotazy. Poskytuje několik funkcí pro úpravy dotazů bez nutnosti úplné znalost dotazovacího jazyka.  Můžete se souhrnné informace o těchto funkcích v [vytvořit prohledávání protokolů v Azure Log Analytics s využitím prohledávání protokolů](log-analytics-log-search-log-search-portal.md). 
 
 
 ![Stránka hledání protokolů](media/log-analytics-log-search-portals/log-search-portal.png)

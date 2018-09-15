@@ -8,21 +8,22 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 5b8703c218790549a0cf5a319345132a0eca66ce
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 45890b4bd474c010b2b086be0405b79d340aeebd
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44025185"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45603155"
 ---
-# <a name="how-to-use-the-azure-maps-map-control"></a>Jak používat mapový ovládací prvek Azure Maps
-Knihovna Javascript na straně klienta mapový ovládací prvek umožňuje vykreslit mapy a vložené funkce Azure Maps do vašich webových nebo mobilních aplikací. 
+# <a name="use-the-azure-maps-map-control"></a>Použití mapového ovládacího prvku Azure Maps
+
+Knihovna Javascript na straně klienta mapový ovládací prvek umožňuje vykreslit mapy a vložené funkce Azure Maps do vašich webových nebo mobilních aplikací.
 
 ## <a name="create-a-new-map-in-a-web-page"></a>Vytvoření nové mapy na webové stránce
 
 Mapě můžete vložit na webové stránce pomocí knihovny Javascript na straně klienta mapový ovládací prvek.
 
-1. Vytvořte nový soubor a pojmenujte ho MapSearch.html.
+1. Vytvořte nový soubor s názvem **MapSearch.html**.
 
 2. Azure Maps šablony stylů a skripty zdroje do přidejte odkazy `<head>` prvek souboru:
 
@@ -30,17 +31,19 @@ Mapě můžete vložit na webové stránce pomocí knihovny Javascript na stran�
     <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=1" type="text/css" />
     <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=1"></script>
     ```
-    
-3. K vykreslení v prohlížeči nové mapování, přidejte **#map** odkazovat v `<style>` elementu.
+
+3. K vykreslení v prohlížeči nové mapování, přidejte **#map** odkazovat v `<style>` element:
 
     ```html
-    #map {
-                width: 100%;
-                height: 100%;
-            }
-    ``` 
-    
-4. Abyste inicializovali mapový ovládací prvek, definujte nový oddíl v textu html a vytvořit skript. Ve skriptu použijte vlastní klíč účtu Azure Maps. Pokud potřebujete k vytvoření účtu služby nebo najít vaše klíče najdete v tématu [jak spravovat účet Azure Maps a klíčů](how-to-manage-account-keys.md)
+    <style>
+        #map {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    ```
+
+4. Abyste inicializovali mapový ovládací prvek, definujte nový oddíl v textu html a vytvořit skript. Ve skriptu použijte vlastní klíč účtu Azure Maps. Pokud potřebujete k vytvoření účtu služby nebo najít vaše klíče najdete v tématu [jak spravovat účet Azure Maps a klíče](how-to-manage-account-keys.md).
 
     ```html
     <div id="map">
@@ -54,12 +57,17 @@ Mapě můžete vložit na webové stránce pomocí knihovny Javascript na stran�
         </script>
     </div>
     ```
-    
+
 5. Otevřete soubor ve webovém prohlížeči a zobrazení vykreslené mapy.
 
 ## <a name="next-steps"></a>Další postup
 
-Tento článek vám ukázali, jak vytvořit základní mapu klíčem Azure Maps. Další příklady kódu pro přidání do vaše mapy najdete v následujících článcích: 
+Další informace o vytvoření mapy pomocí Úplný příklad:
 
-* [Vytvoření mapy](map-create.md)
-* [Vyberte styl mapy](choose-map-style.md)
+> [!div class="nextstepaction"]
+> [Vytvoření mapy](map-create.md)
+
+Další informace o stylu mapy:
+
+> [!div class="nextstepaction"]
+> [Vyberte styl mapy](choose-map-style.md)

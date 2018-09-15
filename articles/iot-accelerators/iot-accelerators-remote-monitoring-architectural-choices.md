@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 09/12/2018
 ms.topic: conceptual
-ms.openlocfilehash: 709886e77819adca961a44f65fe6402dd7d20d53
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 09c5981701ffdee5f2e5dba47cc98c91d5df7526
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44716294"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45603902"
 ---
 # <a name="remote-monitoring-architectural-choices"></a>Volby architektury vzdáleného monitorování
 
@@ -43,7 +43,7 @@ Pro datový proud používá řešení vzdáleného monitorování pro zpracová
 Akcelerátor řešení vzdálené monitorování pro úložiště, používá Azure Time Series Insights a Azure Cosmos DB. Azure Time Series Insights ukládá zprávy přicházející z připojených zařízení prostřednictvím služby IoT Hub. Akcelerátor řešení využívá Azure Cosmos DB pro všechna úložiště, jako je například studeného úložiště, definice pravidla, alarmy a nastavení konfigurace. Azure Cosmos DB je doporučené úložiště pro obecné účely teplé řešení pro aplikace IoT, i když jsou vhodné pro mnoho případy použití řešení, jako je Azure Time Series Insights a Azure Data Lake. S Azure Time Series Insights můžete získat podrobnější přehled o datech časových řad ze zjišťování trendy a anomálie, které umožňuje provádět analýzy původních příčin a vyhnout se nákladným prostojům. 
 
 > [!NOTE]
-> Azure Time Series Insights pro akcelerátor řešení vzdálené monitorování je aktuálně ve verzi preview a je dostupná jenom [vybrat oblasti](https://azure.microsoft.com/global-infrastructure/services/). Pokud provádíte nasazení akcelerátoru řešení vzdáleného monitorování mimo tyto oblasti, Cosmos DB je výchozí možnost úložiště.
+> Time Series Insights není aktuálně k dispozici v cloud Azure China. Nové vzdálené monitorování akcelerátoru nasazení řešení v cloudu Azure China pomocí služby Cosmos DB pro všechna úložiště.
 
 ### <a name="business-integration"></a>Obchodní integrace
 Integrace obchodních v řešení vzdáleného monitorování je omezená na generování poplachů, které jsou umístěny v záložním úložišti. Další obchodní integrace lze provést integrací řešení s Azure Logic Apps.

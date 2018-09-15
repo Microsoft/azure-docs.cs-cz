@@ -3,33 +3,26 @@ title: Zásady opakování pro odběry služby Azure Event Grid a nedoručené z
 description: Popisuje, jak přizpůsobit možnosti doručování událostí služby Event Grid. Nastavte cíl onta nedoručených zpráv a určit, jak dlouho to chcete zkusit znovu doručování.
 services: event-grid
 author: tfitzmac
-manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 08/03/2018
+ms.date: 09/13/2018
 ms.author: tomfitz
-ms.openlocfilehash: 5a37fadc179157ba590b31a79fcd98f223cb1869
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 5db53567b1df9e726fb0c507f0302536ea45b7f4
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39501945"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45603766"
 ---
 # <a name="dead-letter-and-retry-policies"></a>Zásady opakování a nedoručené zprávy
 
-Při vytváření odběru událostí, můžete přizpůsobit nastavení pro doručování událostí. Můžete nastavit, jak dlouho pokusí doručit zprávu služby Event Grid. Můžete nastavit účet úložiště, který chcete použít pro ukládání událostí, které nelze doručit do koncového bodu.
+Při vytváření odběru událostí, můžete přizpůsobit nastavení pro doručování událostí. V tomto článku se dozvíte, jak nastavit umístění nedoručených zpráv a přizpůsobit nastavení opakování. Informace o těchto funkcích najdete v tématu [doručování zpráv služby Event Grid a zkuste to znovu](delivery-and-retry.md).
 
 [!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
 ## <a name="set-dead-letter-location"></a>Nastavit umístění onta nedoručených zpráv
 
-Když Event Grid doručit událost, kterou může odesílat nedoručené událostí do účtu úložiště. Tento proces se označuje jako dead-lettering. Ve výchozím nastavení služby Event Grid nebude zapnout dead-lettering. Ho Pokud chcete povolit, musíte zadat účet úložiště pro uložení nedoručené události při vytváření odběru událostí. O přijetí změn události z tohoto účtu úložiště, chcete-li vyřešit doručení.
-
-Pokud se všechny jeho opakované pokusy, nebo pokud obdrží chybovou zprávu, která určuje doručování uspějí nikdy služby Event Grid odešle událost dead-letter umístění. Například pokud Event Grid přijme chybu nesprávný formát při doručování událostí, odešle tuto událost dead-letter umístění. Existuje pět minut, než mezi poslední pokus o události a kdy se doručí do umístění onta nedoručených zpráv. Toto zpoždění má snížit počet operací úložiště objektů Blob. Pokud umístění onta nedoručených zpráv není k dispozici čtyři hodiny, události se zahodí.
-
-Před nastavením umístění onta nedoručených zpráv, musíte mít účet úložiště s kontejnerem. Zadejte koncový bod pro tento kontejner, při vytváření odběru událostí. Koncový bod je ve formátu: `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-name>/blobServices/default/containers/<container-name>`
-
-Následující skript načte ID prostředku pro existující účet úložiště a vytvoří odběr událostí, který používá kontejner v účtu úložiště pro koncový bod onta nedoručených zpráv.
+Pokud chcete nastavit umístění nedoručených zpráv, potřebujete účet úložiště pro uchování událostí, které nelze doručit do koncového bodu. Následující skript načte ID prostředku pro existující účet úložiště a vytvoří odběr událostí, který používá kontejner v účtu úložiště pro koncový bod onta nedoručených zpráv.
 
 ```azurecli-interactive
 # if you have not already installed the extension, do it now.
@@ -48,8 +41,6 @@ az eventgrid event-subscription create \
   --endpoint <endpoint_URL> \
   --deadletter-endpoint $storageid/blobServices/default/containers/$containername
 ```
-
-Použití služby Event Grid pro reakci na nedoručené události [vytvoření odběru událostí](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) pro úložiště objektů blob onta nedoručených zpráv. Pokaždé, když vaše úložiště objektů blob onta nedoručených zpráv přijme nedoručené událost, Event Grid oznámí obslužnou rutinu. Obslužné rutiny jsou reaguje s akcemi, které chcete provést pro vyřešení nedoručené události. 
 
 Chcete-li vypnout dead-lettering, spusťte znovu příkaz pro vytvoření odběru událostí, ale neposkytují hodnotu `deadletter-endpoint`. Není nutné odstranit odběr události.
 

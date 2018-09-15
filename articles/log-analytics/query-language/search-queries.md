@@ -15,17 +15,19 @@ ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 6a375da3c97790bd6a7a6fa505de82b2fc298385
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 2ccef960378190f10e64318f91039871657a1a46
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42058345"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45603749"
 ---
 # <a name="search-queries-in-log-analytics"></a>Vyhledávací dotazy v Log Analytics
 
 > [!NOTE]
-> By se měla Dokončit [Začínáme s dotazy v Log Analytics](get-started-queries.md) před tímto kurzem.
+> By se měla Dokončit [Začínáme s dotazy v Log Analytics](get-started-queries.md) před dokončením v této lekci.
+
+[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
 Dotazy služby Azure Log Analytics můžete začít pomocí názvu tabulky nebo příkaz pro hledání. Tento kurz se zabývá vyhledávacích dotazů. Existují výhody každé metody.
 
@@ -34,7 +36,7 @@ Dotazy založené na tabulce začněte tím, že vytváření oboru dotazu a pro
 ## <a name="search-a-term"></a>Hledání pojmu
 **Hledání** příkazu se obvykle používá k vyhledání konkrétní období. V následujícím příkladu jsou všechny sloupce všech tabulek vyhledávat termín "Chyba":
 
-```OQL
+```KQL
 search "error"
 | take 100
 ```
@@ -44,13 +46,13 @@ Když jsou snadno použitelné, bez ohledu na obor dotazy jako ten výše jsme s
 ### <a name="table-scoping"></a>Rozsah tabulky
 Chcete-li vyhledat termín v určité tabulce, přidejte `in (table-name)` hned za **hledání** operátor:
 
-```OQL
+```KQL
 search in (Event) "error"
 | take 100
 ```
 
 nebo ve více tabulkách:
-```OQL
+```KQL
 search in (Event, SecurityEvent) "error"
 | take 100
 ```
@@ -58,7 +60,7 @@ search in (Event, SecurityEvent) "error"
 ### <a name="table-and-column-scoping"></a>Tabulky a sloupce oborů
 Ve výchozím nastavení **hledání** vyhodnotí všechny sloupce v datové sadě. K vyhledání pouze v určitém sloupci, použijte následující syntaxi:
 
-```OQL
+```KQL
 search in (Event) Source:"error"
 | take 100
 ```
@@ -69,7 +71,7 @@ search in (Event) Source:"error"
 ## <a name="case-sensitivity"></a>Rozlišování
 Ve výchozím nastavení je velká a malá písmena, termín vyhledávání, takže vyhledávání dns."může vést k výsledkům, například"DNS","dns"nebo"Dns". Chcete-li do hledání velká a malá písmena, použijte `kind` možnost:
 
-```OQL
+```KQL
 search kind=case_sensitive in (Event) "DNS"
 | take 100
 ```
@@ -78,26 +80,26 @@ search kind=case_sensitive in (Event) "DNS"
 **Hledání** zástupnými znaky na začátku, end nebo střední termín, který podporuje příkaz.
 
 Chcete-li hledat podmínky, které začínají řetězcem "win":
-```OQL
+```KQL
 search in (Event) "win*"
 | take 100
 ```
 
 Chcete-li hledat podmínky, které končí řetězcem ".com":
-```OQL
+```KQL
 search in (Event) "*.com"
 | take 100
 ```
 
 Chcete-li hledat podmínky, které obsahují "www":
-```OQL
+```KQL
 search in (Event) "*www*"
 | take 100
 ```
 
 Chcete-li hledat podmínky, které začíná "corp" a končí na ".com", jako je například "corp.mydomain.com" "
 
-```OQL
+```KQL
 search in (Event) "corp*.com"
 | take 100
 ```
@@ -110,21 +112,21 @@ Můžete také získáte všechno, co v tabulce s použitím pouze zástupný zn
 ## <a name="add-and--or-to-search-queries"></a>Přidat *a* / *nebo* hledání dotazů
 Použití **a** k vyhledání záznamů, které obsahují více sad podmínek:
 
-```OQL
+```KQL
 search in (Event) "error" and "register"
 | take 100
 ```
 
 Použití **nebo** získat záznamy, které obsahují alespoň jeden podmínek:
 
-```OQL
+```KQL
 search in (Event) "error" or "register"
 | take 100
 ```
 
 Pokud máte více podmínek vyhledávání, můžete je zkombinovat do stejného dotazu pomocí závorek:
 
-```OQL
+```KQL
 search in (Event) "error" and ("register" or "marshal*")
 | take 100
 ```
@@ -134,7 +136,7 @@ Výsledky v tomto příkladu by záznamy, které obsahují pojem "Chyba" a také
 ## <a name="pipe-search-queries"></a>Kanál vyhledávacích dotazů
 Stejně jako jakýkoli příkaz **hledání** lze přesměrovat tak, aby výsledky hledání můžete filtrovat, řazení a agregovat. Například, chcete-li získat číslo *události* záznamy, které obsahují "win":
 
-```OQL
+```KQL
 search in (Event) "win"
 | count
 ```

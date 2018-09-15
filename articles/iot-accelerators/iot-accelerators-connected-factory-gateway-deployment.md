@@ -1,6 +1,6 @@
 ---
-title: Nasazení brány připojené Factory - Azure | Microsoft Docs
-description: Postup nasazení brány na pro umožnění připojení k akcelerátoru řešení připojen objekt pro vytváření systému Windows nebo Linux.
+title: Nasazení brány připojené továrny – Azure | Dokumentace Microsoftu
+description: Jak nasadit bránu na umožnění konektivity k akcelerátor řešení připojená továrna Windows nebo Linux.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -8,163 +8,163 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: dobett
-ms.openlocfilehash: c2805ddf7627ad520f6cc6585baedc7f5194aad6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3a68a4a132302051b04b69cc794f5327a82f7639
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34626900"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45604047"
 ---
-# <a name="deploy-an-edge-gateway-for-the-connected-factory-solution-accelerator-on-windows-or-linux"></a>Nasazení vstupní brána pro připojení objektu pro vytváření řešení akcelerátor v systému Windows nebo Linux
+# <a name="deploy-an-edge-gateway-for-the-connected-factory-solution-accelerator-on-windows-or-linux"></a>Nasazení brány edge pro akcelerátor řešení připojená továrna ve Windows nebo Linuxu
 
-Budete potřebovat dvě součásti softwaru k nasazení hraniční brány pro *připojen objekt pro vytváření* akcelerátoru řešení:
+Budete potřebovat dvě součásti softwaru k nasazení brány edge pro *připojená továrna* akcelerátor řešení:
 
-- *OPC Proxy* naváže připojení k připojené pro vytváření. Proxy server OPC potom počká, než pro příkazy a ovládání zprávy z integrované OPC prohlížeče, který běží na portálu řešení připojen objekt pro vytváření.
+- *Proxy serveru OPC* naváže připojení k připojené továrny. Proxy server OPC a čeká na příkazy a ovládání zpráv z rozhraní integrované OPC v prohlížeči, na kterém běží na portálu řešení připojené továrny.
 
-- *OPC vydavatele* připojí k existující místní OPC UA servery a předává telemetrické zprávy z nich připojený objekt pro vytváření. Můžete připojit k OPC classic zařízení pomocí [OPC classic adaptér OPC UA](https://github.com/OPCFoundation/UA-.NETStandard/blob/master/ComIOP/README.md).
+- *Vydavatel OPC* připojí k existující místní servery OPC UA a předává telemetrické zprávy z nich pro propojenou továrnu. Můžete připojit pomocí klasické zařízení OPC [OPC classic adaptér pro OPC UA](https://github.com/OPCFoundation/UA-.NETStandard/blob/master/ComIOP/README.md).
 
-Obě součásti jsou open source a jsou k dispozici jako zdroj na Githubu a jako kontejnery Docker na DockerHub:
+Obě komponenty jsou open source a jsou k dispozici jako source na Githubu a jako kontejnery Dockeru na Dockerhubu:
 
-| GitHubu | DockerHub |
+| GitHubu | Dockerhubu |
 | ------ | --------- |
 | [Vydavatel OPC](https://github.com/Azure/iot-edge-opc-publisher) | [Vydavatel OPC](https://hub.docker.com/r/microsoft/iot-edge-opc-publisher/)   |
-| [OPC Proxy](https://github.com/Azure/iot-edge-opc-proxy)         | [OPC Proxy](https://hub.docker.com/r/microsoft/iot-edge-opc-proxy/) |
+| [Proxy server OPC](https://github.com/Azure/iot-edge-opc-proxy)         | [Proxy server OPC](https://hub.docker.com/r/microsoft/iot-edge-opc-proxy/) |
 
-Není nutné veřejnou IP adresu nebo otevřít příchozí porty v bráně firewall pro žádné komponenty. Komponenty OPC Proxy a OPC vydavatele používat jenom odchozí port 443.
+Není nutné veřejnou IP adresu nebo otevřené příchozí porty v bráně firewall pro žádné komponenty. Proxy server OPC a vydavatel OPC součásti používat jenom odchozí port 443.
 
-Kroky v tomto článku ukazují, jak nasadit vstupní brána pomocí Docker v systému Windows nebo Linux. Brána umožňuje připojení k akcelerátoru řešení připojen objekt pro vytváření. Můžete taky komponenty bez připojen objekt pro vytváření.
+Kroky v tomto článku ukazují, jak nasazení hraniční brány pomocí Docker ve Windows nebo Linuxu. Brána umožňuje připojení k akcelerátor řešení připojená továrna. Můžete také komponenty bez připojené továrny.
 
 > [!NOTE]
-> Obě součásti lze použít jako moduly v [Azure IoT Edge](https://github.com/Azure/iot-edge).
+> Obě komponenty je možné použít jako moduly v [Azure IoT Edge](https://github.com/Azure/iot-edge).
 
 ## <a name="choose-a-gateway-device"></a>Vyberte zařízení brány
 
-Pokud ještě nemáte zařízení brány, Microsoft doporučuje že zakoupit komerční brány jednoho z jeho partnerů. Seznam zařízení brány, které jsou kompatibilní s připojen objekt pro vytváření řešení, najdete v článku [katalogu zařízení Azure IoT](https://catalog.azureiotsuite.com/?q=opc). Postupujte podle pokynů, které jsou součástí zařízení nastavit bránu.
+Pokud ještě nemáte zařízení brány, Microsoft doporučuje že koupit komerčních bran jednoho z jeho partnerů. Seznam zařízení brány, které jsou kompatibilní s řešení připojená továrna, přejděte [katalog zařízení Azure IoT](https://catalog.azureiotsuite.com/?q=opc). Postupujte podle pokynů, které jsou součástí zařízení nastavit bránu.
 
-Alternativně použijte následující pokyny k ruční konfiguraci ze stávajících zařízení brány.
+Alternativně použijte následující pokyny k ručnímu ze stávajících zařízení brány.
 
-## <a name="install-and-configure-docker"></a>Instalace a konfigurace Docker
+## <a name="install-and-configure-docker"></a>Instalace a konfigurace Dockeru
 
-Nainstalujte [Docker pro systém Windows](https://www.docker.com/docker-windows) vaše zařízení brány se systémem Windows nebo použijete Správce balíčků pro instalaci docker na zařízení brány se systémem Linux.
+Nainstalujte [Docker pro Windows](https://www.docker.com/docker-windows) na zařízení brány založené na Windows nebo pomocí Správce balíčků pro instalaci dockeru na vašem zařízení brány založené na Linuxu.
 
-Během instalace Docker pro systém Windows vyberte jednotku na počítači hostitele sdílet s Docker. Následující snímek obrazovky ukazuje sdílení **D** jednotky v systému Windows pro povolení přístupu k hostitelskou jednotku z uvnitř kontejner docker:
+Během instalace Dockeru pro Windows vyberte jednotku na počítači hostitele se sdílet s Dockerem. Následující snímek obrazovky ukazuje sdílení **D** jednotky v systému Windows pro povolení přístupu k jednotce hostitele z uvnitř kontejneru dockeru:
 
-![Nainstalujte Docker pro Windows](./media/iot-accelerators-connected-factory-gateway-deployment/image1.png)
+![Nainstalovat Docker for Windows](./media/iot-accelerators-connected-factory-gateway-deployment/image1.png)
 
 > [!NOTE]
-> Můžete také provést tento krok po instalaci dockerem **nastavení** dialogové okno. Klikněte pravým tlačítkem na **Docker** ikonu na hlavním panelu systému Windows a vyberte **nastavení**. Pokud hlavní aktualizace systému Windows se nasadilo do systému, například aktualizaci Creators patří Windows, zrušení sdílení jednotky a sdílet je znovu a aktualizujte přístupová práva.
+> Můžete také provést tento krok po instalaci dockeru z **nastavení** dialogového okna. Klikněte pravým tlačítkem na **Docker** ikonu na hlavním panelu systému Windows a zvolte **nastavení**. Pokud hlavní aktualizace Windows se nasadilo do systému, jako je Windows Fall Creators update, zrušení sdílení jednotek a sdílejte je znovu k aktualizaci přístupová práva.
 
-Pokud používáte Linux, není nutná žádná další konfigurace pro povolení přístupu k systému souborů.
+Pokud používáte Linux, není nutná žádná další konfigurace k umožnění přístupu k systému souborů.
 
-V systému Windows vytvořte složku na jednotku, kterou jste sdíleli s Docker, v systému Linux vytvořte složku kořenové systému souborů. Tento názorný postup odkazuje na složku jako `<SharedFolder>`.
+Na Windows vytvořte složku na disku, který sdílíte s Dockerem, v Linuxu vytvořte ve složce kořenovému systému souborů. Tento návod odkazuje na tuto složku jako `<SharedFolder>`.
 
-Když odkazujete `<SharedFolder>` v příkazu Docker, je nutné používat správnou syntaxi pro operační systém. Zde jsou dva příklady, jednu pro systém Windows a druhou pro Linux:
+Když odkazujete `<SharedFolder>` v příkazu Docker, nezapomeňte použít správnou syntaxi pro váš operační systém. Tady jsou dva příklady, jeden pro Windows a jeden pro Linux:
 
-- Pokud vaše jsou pomocí složce `D:\shared` v systému Windows jako vaše `<SharedFolder>`, tady je syntax příkazu Docker `d:/shared`.
+- Pokud se pomocí složky `D:\shared` na Windows jako vaše `<SharedFolder>`, je syntaxe příkazu Docker `d:/shared`.
 
-- Pokud vaše jsou pomocí složce `/shared` v systému Linux jako vaše `<SharedFolder>`, tady je syntax příkazu Docker `/shared`.
+- Pokud se pomocí složky `/shared` v Linuxu jako vaše `<SharedFolder>`, je syntaxe příkazu Docker `/shared`.
 
-Další informace najdete v článku [použít svazky](https://docs.docker.com/engine/admin/volumes/volumes/) docker odkaz na modul.
+Další informace najdete v článku [použít svazky](https://docs.docker.com/engine/admin/volumes/volumes/) odkaz na modul docker.
 
-## <a name="configure-the-opc-components"></a>Konfigurovat součásti OPC
+## <a name="configure-the-opc-components"></a>Konfigurace komponent OPC
 
-Před instalací komponenty OPC, proveďte následující kroky při přípravě svého prostředí:
+Před instalací komponenty OPC, proveďte následující kroky k přípravě vašeho prostředí:
 
-1. K dokončení nasazení brány, potřebujete **iothubowner** připojovací řetězec služby IoT Hub ve vašem nasazení připojen objekt pro vytváření. V [portál Azure](http://portal.azure.com/), přejděte do služby IoT Hub ve skupině prostředků vytvořili při nasazení řešení připojen objekt pro vytváření. Klikněte na tlačítko **zásady sdíleného přístupu** k přístupu **iothubowner** připojovací řetězec:
+1. K dokončení nasazení brány, je potřeba **iothubowner** připojovací řetězec služby IoT Hub v nasazení připojené továrny. V [webu Azure portal](http://portal.azure.com/), přejděte do služby IoT Hub ve skupině prostředků vytvořili při nasazení řešení připojené továrny. Klikněte na tlačítko **zásady sdíleného přístupu** přístup **iothubowner** připojovací řetězec:
 
     ![Najděte připojovací řetězec služby IoT Hub](./media/iot-accelerators-connected-factory-gateway-deployment/image2.png)
 
-    Kopírování **připojovací řetězec primární klíč** hodnotu.
+    Kopírovat **připojovací řetězec – primární klíč** hodnotu.
 
-1. Povolit komunikaci mezi docker kontejnery, je třeba síťový most definovaný uživatelem. Pokud chcete vytvořit síť most pro vaše kontejnery, spusťte následující příkazy v příkazovém řádku:
+1. Pokud chcete povolit komunikaci mezi kontejnery dockeru, musíte síťovým mostem uživatelem definované. K vytvoření síťového mostu pro vaše kontejnery, spusťte následující příkazy z příkazového řádku:
 
     ```cmd/sh
     docker network create -d bridge iot_edge
     ```
 
-    Chcete-li ověřit **iot_edge** síťový most byl vytvořen, spusťte následující příkaz:
+    Chcete-li ověřit **iot_edge** síťového mostu byl vytvořen, spusťte následující příkaz:
 
     ```cmd/sh
     docker network ls
     ```
 
-    Vaše **iot_edge** síťový most je obsažena v seznamu sítí.
+    Vaše **iot_edge** síťovým mostem je zahrnuta v seznamu sítí.
 
-Pokud chcete spustit OPC vydavatele, spusťte následující příkaz na příkazovém řádku:
+Pokud chcete spustit vydavatele OPC, spusťte následující příkaz z příkazového řádku:
 
 ```cmd/sh
-docker run --rm -it -v <SharedFolder>:/docker -v x509certstores:/root/.dotnet/corefx/cryptography/x509stores --network iot_edge --name publisher -h publisher -p 62222:62222 --add-host <OpcServerHostname>:<IpAddressOfOpcServerHostname> microsoft/iot-edge-opc-publisher:2.1.3 publisher "<IoTHubOwnerConnectionString>" --lf /docker/publisher.log.txt --as true --si 1 --ms 0 --tm true --vc true --di 30
+docker run --rm -it -v <SharedFolder>:/docker -v x509certstores:/root/.dotnet/corefx/cryptography/x509stores --network iot_edge --name publisher -h publisher -p 62222:62222 --add-host <OpcServerHostname>:<IpAddressOfOpcServerHostname> microsoft/iot-edge-opc-publisher:2.1.4 publisher "<IoTHubOwnerConnectionString>" --lf /docker/publisher.log.txt --as true --si 1 --ms 0 --tm true --vc true --di 30
 ```
 
-- [OPC vydavatele Githubu](https://github.com/Azure/iot-edge-opc-publisher) a [docker spustit odkaz](https://docs.docker.com/engine/reference/run/) poskytují další informace o:
+- [Githubu vydavatele OPC](https://github.com/Azure/iot-edge-opc-publisher) a [docker spusťte odkaz](https://docs.docker.com/engine/reference/run/) poskytují další informace o:
 
-  - Možnosti příkazového řádku dockeru zadaný před název kontejneru (`microsoft/iot-edge-opc-publisher:2.1.3`).
-  - Význam parametry příkazového řádku OPC vydavatele zadaný po název kontejneru (`microsoft/iot-edge-opc-publisher:2.1.3`).
+  - Možnosti příkazového řádku dockeru, zadat před název kontejneru (`microsoft/iot-edge-opc-publisher:2.1.4`).
+  - Význam parametry příkazového řádku vydavatel OPC zadán za názvem kontejneru (`microsoft/iot-edge-opc-publisher:2.1.4`).
 
-- `<IoTHubOwnerConnectionString>` Je **iothubowner** sdílené připojovací řetězec s přístupem zásady z portálu Azure. Tento připojovací řetězec jste zkopírovali v předchozím kroku. Potřebujete jenom tento připojovací řetězec pro první spuštění OPC vydavatele. Při dalším spuštění by měl vynechejte ho zaškrtávací bezpečnostní riziko.
+- `<IoTHubOwnerConnectionString>` Je **iothubowner** sdíleného přístupu zásad připojovací řetězec z portálu Azure portal. Tento připojovací řetězec jste si zkopírovali v předchozím kroku. Potřebujete pouze tento připojovací řetězec pro první spuštění vydavatele OPC. Při dalším spuštění by ho vynecháte protože představuje bezpečnostní riziko.
 
-- `<SharedFolder>` Používáte a jeho syntaxe je popsaný v části [nainstalovat a nakonfigurovat Docker](#install-and-configure-docker). OPC vydavatel používá `<SharedFolder>` ke čtení a zápis do konfiguračního souboru OPC vydavatele, zapisovat do souboru protokolu a zpřístupnit oba tyto soubory mimo kontejneru.
+- `<SharedFolder>` Používáte a jeho syntaxe je popsaný v části [instalaci a konfiguraci Dockeru](#install-and-configure-docker). Vydavatel OPC používá `<SharedFolder>` číst a zapisovat do konfiguračního souboru vydavatele OPC, zapisovat do souboru protokolu a zpřístupnit obou těchto souborů mimo svůj kontejner.
 
-- OPC vydavatele načte konfiguraci z **publishednodes.json** souboru, který je číst z a zapisovat do `<SharedFolder>/docker` složky. Tento konfigurační soubor definuje, která data uzlu OPC UA na daném serveru OPC UA, které se musí přihlásit k odběru OPC vydavatele. Úplná syntaxe **publishednodes.json** souboru je popsaný v [OPC vydavatele](https://github.com/Azure/iot-edge-opc-publisher) stránky na Githubu. Když přidáváte bránu, put prázdnou **publishednodes.json** do složky:
+- Vydavatel OPC načte konfiguraci z **publishednodes.json** soubor, který se čtou a zapisují do `<SharedFolder>/docker` složky. Tento konfigurační soubor definuje, která data uzlu OPC UA na daném serveru OPC UA, kterou vydavatel OPC Přihlaste se k odběru. Úplná syntaxe **publishednodes.json** souboru je popsaný na [vydavatel OPC](https://github.com/Azure/iot-edge-opc-publisher) stránku na Githubu. Když chcete přidat bránu, vložit prázdnou **publishednodes.json** do složky:
 
     ```json
     [
     ]
     ```
 
-- Vždy, když server OPC UA upozorní OPC vydavatel změny dat, nová hodnota se odesílají do služby IoT Hub. V závislosti na nastavení dávkování nejprve OPC vydavatele shromažďovat data předtím, než odešle data do služby IoT Hub v dávce.
+- Pokaždé, když se server OPC UA upozorní vydavatel OPC změny dat, nová hodnota je odeslána do služby IoT Hub. V závislosti na nastavení dávkování vydavatele OPC nejdřív shromažďují data předtím, než odešle data do služby IoT Hub v dávce.
 
-- Docker nepodporuje překlad názvů pro rozhraní NetBIOS, pouze překlad názvu DNS. Pokud nemáte DNS server v síti, můžete použít alternativní řešení v předchozím příkladu příkazového řádku. Předchozí příklad příkazového řádku používá `--add-host` parametr přidání položky do souboru hostitelů kontejnery. Umožňuje vyhledávání název hostitele pro tuto položku daném `<OpcServerHostname>`, řešení pro danou adresu IP `<IpAddressOfOpcServerHostname>`.
+- Docker nepodporuje překladu názvů NetBIOS, pouze překlad názvů DNS. Pokud nemáte DNS server v síti, můžete použít zástupné řešení uvedené v předchozím příkladu příkazového řádku. Předchozí příklad příkazového řádku používá `--add-host` parametru se přidá záznam do souboru hostitelů kontejnerů. Tato položka umožňuje vyhledávání názvu hostitele daném `<OpcServerHostname>`, řešení pro danou adresu IP `<IpAddressOfOpcServerHostname>`.
 
-- OPC UA používá X.509 – certifikáty pro ověřování a šifrování. Je nutné umístit OPC vydavatel certifikátu na server OPC UA, ke kterému se připojujete, a zda že důvěřovat OPC vydavatele. Úložiště certifikátů OPC vydavatele je umístěn ve `<SharedFolder>/CertificateStores` složky. Můžete najít certifikát vydavatele OPC v `trusted/certs` složku `CertificateStores` složky.
+- OPC UA k ověřování a šifrování používá certifikáty X.509. Je třeba umístit na serveru OPC UA, které se připojujete, ujistěte se, že důvěřuje vydavatel OPC certifikát vydavatele OPC. Úložiště certifikátů vydavatel OPC se nachází v `<SharedFolder>/CertificateStores` složky. Můžete vyhledat certifikát vydavatele OPC v `trusted/certs` složky `CertificateStores` složky.
 
-  Postup konfigurace serveru OPC UA závisí na zařízení, které používáte. Tyto kroky jsou obvykle popsané v uživatelské příručce OPC UA serveru.
+  Postup pro konfiguraci serveru OPC UA závisí na zařízení, které používáte. Tyto kroky jsou obvykle popsané v uživatelské příručce serveru OPC UA.
 
-K instalaci OPC Proxy, spusťte na příkazovém řádku následující příkaz:
-
-```cmd/sh
-docker run -it --rm -v <SharedFolder>:/mapped --network iot_edge --name proxy --add-host <OpcServerHostname>:<IpAddressOfOpcServerHostname> microsoft/iot-edge-opc-proxy:1.0.2 -i -c "<IoTHubOwnerConnectionString>" -D /mapped/cs.db
-```
-
-Potřebujete jenom jednou spustit instalaci v systému.
-
-Ke spuštění OPC proxy serveru použijte následující příkaz:
+Pokud chcete nainstalovat proxy serveru OPC, spusťte následující příkaz z příkazového řádku:
 
 ```cmd/sh
-docker run -it --rm -v <SharedFolder>:/mapped --network iot_edge --name proxy --add-host <OpcServerHostname>:<IpAddressOfOpcServerHostname> microsoft/iot-edge-opc-proxy:1.0.2 -D /mapped/cs.db
+docker run -it --rm -v <SharedFolder>:/mapped --network iot_edge --name proxy --add-host <OpcServerHostname>:<IpAddressOfOpcServerHostname> microsoft/iot-edge-opc-proxy:1.0.4 -i -c "<IoTHubOwnerConnectionString>" -D /mapped/cs.db
 ```
 
-OPC Proxy uloží připojovací řetězec během instalace. Při dalším spuštění by měl vynechejte připojovací řetězec, protože ji ale představuje riziko zabezpečení.
+Stačí jednou spustit instalaci v systému.
+
+Použijte následující příkaz pro spuštění proxy serveru OPC:
+
+```cmd/sh
+docker run -it --rm -v <SharedFolder>:/mapped --network iot_edge --name proxy --add-host <OpcServerHostname>:<IpAddressOfOpcServerHostname> microsoft/iot-edge-opc-proxy:1.0.4 -D /mapped/cs.db
+```
+
+Proxy server OPC uloží připojovací řetězec během instalace. Při dalším spuštění by měly vynechat připojovací řetězec, protože představuje bezpečnostní riziko.
 
 ## <a name="enable-your-gateway"></a>Povolit bránu
 
-Proveďte následující kroky k povolení bránu ve akcelerátoru připojen objekt pro vytváření řešení:
+Proveďte následující kroky, aby vaše brány v akcelerátor řešení připojená továrna:
 
-1. Když obě komponenty běží, přejdete **připojit vlastní OPC UA Server** na portálu řešení připojen objekt pro vytváření. Tato stránka je dostupný jenom pro správce v řešení. Zadejte adresu URL koncového bodu vydavatele (opc.tcp://publisher: 62222) a klikněte na tlačítko **Connect**.
+1. Když obě komponenty jsou spuštěné, přejděte **připojit svůj vlastní Server OPC UA** stránky na portálu řešení připojená továrna. Tato stránka je pouze pro správce dostupný v řešení. Zadejte adresu URL koncového bodu vydavatele (opc.tcp://publisher: 62222) a klikněte na tlačítko **připojit**.
 
-1. Vytvořte vztah důvěryhodnosti mezi portálem připojen objekt pro vytváření a OPC vydavatele. Když se zobrazí varování týkající se certifikátu, klikněte na tlačítko **pokračovat**. V dalším kroku, zobrazí chyba, není OPC vydavateli důvěřujete webového uživatelský Agent klienta. Chcete-li tuto chybu vyřešit, zkopírujte **uživatelský Agent webového klienta** certifikátu z `<SharedFolder>/CertificateStores/rejected/certs` složku pro `<SharedFolder>/CertificateStores/trusted/certs` složky na bráně. Není nutné restartovat bránu.
+1. Navázání vztahu důvěryhodnosti mezi portálem propojenou továrnu a vydavatel OPC. Když se zobrazí upozornění certifikátu, klikněte na tlačítko **pokračovat**. V dalším kroku se zobrazí chyba, že nedůvěřuje vydavatele OPC UA webového klienta. Chcete-li tuto chybu vyřešit, zkopírujte **UA webový klient** certifikátu `<SharedFolder>/CertificateStores/rejected/certs` složku `<SharedFolder>/CertificateStores/trusted/certs` složky na bráně. Není nutné restartovat bránu.
 
-Již se můžete připojit k bráně z cloudu a jste připraveni přidat servery OPC UA k řešení.
+Je možné připojit se k bráně z cloudu a budete chtít do řešení přidat servery OPC UA.
 
-## <a name="add-your-own-opc-ua-servers"></a>Přidat vlastní OPC UA servery
+## <a name="add-your-own-opc-ua-servers"></a>Přidat vlastní servery OPC UA
 
-Přidání vlastního OPC UA serverů do akcelerátor připojen objekt pro vytváření řešení:
+Chcete-li přidat vlastní servery OPC UA na akcelerátor řešení připojená továrna:
 
-1. Vyhledejte **připojit serverem OPC UA** na portálu řešení připojen objekt pro vytváření.
+1. Přejděte **připojit vlastní server OPC UA** stránky na portálu řešení připojená továrna.
 
-    1. Spuštění, které chcete připojit k serveru OPC UA. Ujistěte se, že váš server OPC UA dostupný z OPC vydavatele a Proxy OPC spuštěné v kontejneru (viz předchozí komentáře o překladu názvů).
-    1. Zadejte adresu URL koncového bodu serveru OPC UA (`opc.tcp://<host>:<port>`) a klikněte na tlačítko **Connect**.
-    1. Jako součást instalace připojení je vytvořen vztah důvěryhodnosti mezi portálem připojen objekt pro vytváření (OPC UA klienta) a OPC UA serveru, který se pokoušíte připojit. V řídicím panelu Factory připojený dostanete **nelze ověřit certifikát serveru se chcete připojit** upozornění. Když se zobrazí varování týkající se certifikátu, klikněte na tlačítko **pokračovat**.
-    1. Obtížnější instalační program je konfiguraci certifikátu, který se pokoušíte připojit k serveru OPC UA. Pro počítače na základě OPC UA serverů, můžete v řídicím panelu můžete potvrdit obdržet právě dialog s upozorněním. Pro systémy embedded OPC UA server najdete v dokumentaci OPC UA serveru k vyhledání jak tento úkol probíhá. Tuto úlohu dokončit, musíte certifikát klienta OPC UA portálu připojen objekt pro vytváření. Správce můžete na stáhnout tento certifikát **připojit serverem OPC UA** stránky:
+    1. Spuštění, který chcete připojit k serveru OPC UA. Ujistěte se, že váš server OPC UA dosažitelný z vydavatele OPC a proxy serveru OPC, které běží v kontejneru (viz předchozí komentáře o překlad).
+    1. Zadejte adresu URL koncového bodu serveru OPC UA (`opc.tcp://<host>:<port>`) a klikněte na tlačítko **připojit**.
+    1. Jako součást nastavení připojení se naváže vztah důvěryhodnosti mezi portálem připojená továrna (klienta OPC UA) a server OPC UA, které se pokoušíte připojit. Na řídicím panelu připojená továrna získáte **nelze ověřit certifikát serveru chcete připojit** upozornění. Když se zobrazí upozornění certifikátu, klikněte na tlačítko **pokračovat**.
+    1. Obtížnější instalační program je konfiguraci certifikátu, který se pokoušíte připojit k serveru OPC UA. Pro počítače na základě serverů OPC UA, může zobrazit dialogové okno upozornění jen na řídicím panelu můžete potvrdit. For embedded systems serveru OPC UA najdete v dokumentaci serveru OPC UA k vyhledání jak tuto úlohu lze provést. K dokončení této úlohy, budete potřebovat certifikát klienta OPC UA portál připojené továrny. Správce můžete stáhnout tento certifikát **připojit vlastní server OPC UA** stránky:
 
         ![Portál řešení](./media/iot-accelerators-connected-factory-gateway-deployment/image4.png)
 
-1. Procházet uzlů stromu OPC UA OPC UA serveru, klikněte pravým tlačítkem na OPC uzly, které chcete odeslat hodnoty pro vytváření připojení a vyberte **publikování**.
+1. Procházet stromu OPC UA uzlů serveru OPC UA, klikněte pravým tlačítkem na uzly OPC, které mají k odesílání hodnoty pro propojenou továrnu a vyberte **publikovat**.
 
-1. Telemetrická data jsou nyní z zařízení brány. Můžete zobrazit telemetrii v **umístění objektu pro vytváření** zobrazení připojen objekt pro vytváření portálu pod **nový objekt pro vytváření**.
+1. Telemetrie toky teď ze zařízení brány. Můžete zobrazit telemetrii v **umístění továren** zobrazení portálu na připojená továrna **nový objekt pro vytváření**.
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o architektuře akcelerátor připojen objekt pro vytváření řešení najdete v tématu [připojen objekt pro vytváření řešení akcelerátoru návod](iot-accelerators-connected-factory-sample-walkthrough.md).
+Další informace o architektuře akcelerátor řešení připojená továrna najdete v tématu [seznámení s akcelerátory řešení připojená továrna](iot-accelerators-connected-factory-sample-walkthrough.md).
 
-Další informace o [OPC vydavatele odkaz na implementaci](https://docs.microsoft.com/azure/iot-suite/iot-suite-connected-factory-publisher).
+Další informace o [referenční implementace vydavatele OPC](https://docs.microsoft.com/azure/iot-suite/iot-suite-connected-factory-publisher).

@@ -15,22 +15,24 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 72c151fec0637822411f8cac44f4e13a8df96445
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: f7594b7d1eb7d41508be435cdd0a6203433727c1
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40190070"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45603052"
 ---
 # <a name="writing-advanced-queries-in-log-analytics"></a>Zápis pokročilé dotazy v Log Analytics
 
 > [!NOTE]
 > By se měla Dokončit [začít používat portál Analytics](get-started-analytics-portal.md) a [Začínáme s dotazy](get-started-queries.md) před dokončením v této lekci.
 
+[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
+
 ## <a name="reusing-code-with-let"></a>Opětovné použití kódu pomocí let
 Použití `let` přiřadit výsledky k proměnné a si ji později v dotazu:
 
-```OQL
+```KQL
 // get all events that have level 2 (indicates warning level)
 let warning_events=
 Event
@@ -42,7 +44,7 @@ warning_events
 
 Můžete také přiřadit konstantní hodnoty pro proměnné. Tento atribut podporuje metodu nastavit parametry pro pole, která je třeba změnit pokaždé, když dotaz spustíte. Podle potřeby upravte tyto parametry. Chcete-li například vypočítat volné místo na disku a volné paměti (v percentil), v rámci daného časového intervalu:
 
-```OQL
+```KQL
 let startDate = datetime(2018-08-01T12:55:02);
 let endDate = datetime(2018-08-02T13:21:35);
 let FreeDiskSpace =
@@ -63,7 +65,7 @@ To umožňuje snadno změnit počáteční čas ukončení při příštím spu�
 ### <a name="local-functions-and-parameters"></a>Parametry a lokální funkce
 Použití `let` příkazy k vytvoření funkce, které lze použít ve stejném dotazu. Například Definujte funkci, která přijímá pole Datum a čas (ve formátu UTC) a převede ho na standardní formát USA. 
 
-```OQL
+```KQL
 let utc_to_us_date_format = (t:datetime)
 {
   strcat(getmonth(t), "/", dayofmonth(t),"/", getyear(t), " ",
@@ -78,7 +80,7 @@ Event
 ## <a name="functions"></a>Functions
 Můžete uložit dotaz s alias funkce, takže jej lze odkazovat pomocí jiných dotazů. Například následující standardní dotaz vrátí všechny chybějící aktualizace zabezpečení v poslední den:
 
-```OQL
+```KQL
 Update
 | where TimeGenerated > ago(1d) 
 | where Classification == "Security Updates" 
@@ -87,7 +89,7 @@ Update
 
 Můžete uložit tento dotaz jako funkce a pojmenujte ji jako alias _security_updates_last_day_. Pak vám pomůže ho v jiném dotazu vyhledat související SQL požadovaných aktualizací zabezpečení:
 
-```OQL
+```KQL
 security_updates_last_day | where Title contains "SQL"
 ```
 
@@ -100,7 +102,7 @@ Uložit dotaz jako funkce, vyberte **Uložit** tlačítko v portálu a změnit *
 ## <a name="print"></a>Vytisknout
 `print` Vrátí tabulku s jedním sloupcem a jeden řádek, zobrazuje výsledek výpočtu. To se často používá v případech, kdy potřebujete jednoduché calcuation. Chcete-li například najít aktuální čas v PST a přidat sloupec s ESTU:
 
-```OQL
+```KQL
 print nowPst = now()-8h
 | extend nowEst = nowPst+3h
 ```
@@ -108,7 +110,7 @@ print nowPst = now()-8h
 ## <a name="datatable"></a>Objekt DataTable
 `datatable` Umožňuje definovat sadu data. Zadejte schéma a sadu hodnot a potom přesměrujte tabulky do jiné elementy dotazu. Například k vytvoření tabulky využití paměti RAM a výpočet jejich průměrné hodnoty za hodinu:
 
-```OQL
+```KQL
 datatable (TimeGenerated: datetime, usage_percent: double)
 [
   "2018-06-02T15:15:46.3418323Z", 15.5,
@@ -125,7 +127,7 @@ datatable (TimeGenerated: datetime, usage_percent: double)
 
 Objekt DataTable konstrukce jsou velmi užitečné také při vytvoření vyhledávací tabulky. Například pro mapování tabulky dat, jako je například ID událostí z _SecurityEvent_ tabulky pro typy událostí uvedená jinde, vytvoření vyhledávací tabulky s typy událostí pomocí `datatable` a připojte se k tohoto objektu datatable s  _SecurityEvent_ dat:
 
-```OQL
+```KQL
 let eventCodes = datatable (EventID: int, EventType:string)
 [
     4625, "Account activity",

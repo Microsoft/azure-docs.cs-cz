@@ -1,56 +1,57 @@
 ---
-title: Nejčastější dotazy o Analýza textu rozhraní API - kognitivní služby Azure | Microsoft Docs
-description: Získejte odpovědi na časté otázky týkající se Microsoft kognitivní Services Text Analytics API v Azure.
+title: Nejčastější dotazy k rozhraní Text Analytics API
+titleSuffix: Azure Cognitive Services
+description: Získejte odpovědi na běžné dotazy týkající se rozhraní API pro analýzu textu.
 services: cognitive-services
 author: HeidiSteen
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: conceptual
-ms.date: 3/07/2018
+ms.date: 09/12/2018
 ms.author: heidist
-ms.openlocfilehash: bf82899b4317f0f5ce0f6ca5096dccef7cddd931
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: aa1c5b048c3ef339d01a3a63fd1d565b888ffbbb
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343628"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45603392"
 ---
-# <a name="frequently-asked-questions-faq-about-the-text-analytics-api"></a>Nejčastější dotazy (FAQ) o rozhraní API Analýza textu
+# <a name="frequently-asked-questions-faq-about-the-text-analytics-cognitive-service"></a>O Text Analytics služby Cognitive Services – nejčastější dotazy (FAQ)
 
- Odpovědi na nejčastější dotazy o konceptech, kód a scénáře související s rozhraní API Analytics Text pro kognitivní služby společnosti Microsoft na platformě Azure.
+ Najděte odpovědi na nejčastější dotazy o konceptech, kód a scénáře týkající se rozhraní API pro analýzu textu služeb Microsoft Cognitive Services v Azure.
 
-## <a name="can-text-analytics-identify-sarcasm"></a>Analýza textu můžete identifikovat sarcasm?
+## <a name="can-text-analytics-identify-sarcasm"></a>Rozhraní Text Analytics můžete identifikovat jízlivosti?
 
-Analýza je kladné záporné postojích, nikoli vyznění detekce.
+Analýza je záporná pozitivní mínění, nikoli náladu zjišťování.
 
-Je vždy určitý stupeň nepřesnosti analýzou postojích, ale modelu je nejužitečnější, pokud není skrytý význam nebo subtext k obsahu. Irony, sarcasm, humor a podobně nuanced obsah závisí na kulturního kontextu a norem pro vyjádření záměr. Tento typ obsahu je mezi nejnáročnější k analýze. Obvykle je největší nesoulad mezi danou skóre vytvářených nástroje analyzer a subjektivní assessment uživatelem pro obsah s nuanced význam.
+Je vždy určitý stupeň nepřesnost v analýzu mínění, ale model je nejužitečnější, pokud neexistuje žádný význam skrytý nebo získat jeho část obsahu. Irony, jízlivosti, si a podobně odlišování obsah závisí na kontextu jazykové verze a norem vyjádřit záměr. Tento typ obsahu je mezi nejnáročnějších způsobů na analyzovat. Obvykle je největší rozdíl mezi skóre vytvářené analyzátor a subjektivní hodnocení uživatelem pro obsah s odlišování význam.
 
-## <a name="can-i-add-my-own-training-data-or-models"></a>Můžete přidat vlastní Cvičná data nebo modely?
+## <a name="can-i-add-my-own-training-data-or-models"></a>Můžete přidat vlastní trénovacích dat nebo modely?
 
-Ne, jsou pretrained modely. Jsou k dispozici jenom operace na odeslaná data vyhodnocování, extrakce klíče frázi a zjišťování jazyka. Vlastní modely jsme nejsou hostiteli. Pokud chcete vytvořit a hostovat vlastní machine learning modely, zvažte [strojového učení možnosti v Microsoft R Server](https://docs.microsoft.com/r-server/r/concept-what-is-the-microsoftml-package).
+Ne, tyto modely jsou které je předem vytrénované. Pouze operace dostupné na nahraných dat jsou hodnocení, extrakce klíčových frází a rozpoznání jazyka. Společnost Microsoft není hostitelem vlastních modelů. Pokud chcete vytvářet a hostovat vlastní machine learning modely, vezměte v úvahu [strojového učení v Microsoft R Server](https://docs.microsoft.com/r-server/r/concept-what-is-the-microsoftml-package).
 
-## <a name="can-i-request-additional-languages"></a>Může požádat o další jazyky?
+## <a name="can-i-request-additional-languages"></a>Můžete požádat o další jazyky?
 
-Jsou k dispozici pro postojích analýzy a rozbalení klíčů frázi [vyberte počet jazyků](text-analytics-supported-languages.md). Zpracování přirozeného jazyka je složitý a vyžaduje významné testování před nové funkce, se uvolní. Z tohoto důvodu jsme Vyhněte se předem uvedení podporu tak, aby měla žádná závislost na funkce, které vyžaduje více času pro dospělé. 
+Jsou k dispozici pro analýzu subjektivního hodnocení a extrakci klíčových frází [vyberte počet jazyků](text-analytics-supported-languages.md). Zpracování přirozeného jazyka je složitá a vyžaduje podstatné testování před nové funkce mohou být vydány. Z tohoto důvodu jsme vyhnout tak, aby nikdo je závislá na funkci, která vyžaduje více času na vyspělejší předem oznamujeme podpory. 
 
-Z důvodu stanovení priorit jazyky, které mají pracovat na další, hlasování pro konkrétní jazyky o [User Voice](https://cognitive.uservoice.com/forums/555922-text-analytics). 
+Pokud chcete nám pomohou určit prioritu jazyky, které mají pracovat na další, Hlasujte pro konkrétní jazyky [User Voice](https://cognitive.uservoice.com/forums/555922-text-analytics). 
 
-## <a name="why-does-key-phrase-extraction-return-some-words-but-not-others"></a>Proč klíče frázi extrakce vrátit některé slova a jiné ne?
+## <a name="why-does-key-phrase-extraction-return-some-words-but-not-others"></a>Proč extrakce klíčových frází vrací některé slova, ale ne pro jiné?
 
-Rozbalení klíče frázi eliminuje slova není nezbytné a přídavných samostatné jmen. Kombinace přídavných jmen-podstatné jméno, například "spectacular zobrazení" nebo "zamlženého počasí" jsou vráceny společně.
+Extrakce klíčových frází eliminuje nepodstatné slova a přídavných samostatné jmen. Kombinace přídavného jména-podstatné jméno, například "efektivními zobrazení" nebo "vám není jasné, počasí" jsou vráceny společně.
 
-Obecně platí výstup se skládá z podstatná jména a objekty věty. Výstup je uvedena v pořadí podle důležitost, se první fráze se nejdůležitější. Důležitost se měří počet, který je uveden konkrétní koncept nebo vztah tohoto prvku do další prvky v textu.
+Obecně platí výstup se skládá z podstatných jmen a objekty věty. Výstup je uvedena v pořadí podle důležitosti, se první frázi je nejdůležitější. Důležitost se měří počet pokusů, které je uvedeno konkrétní koncept nebo vztah daného prvku s ostatními prvky v textu.
 
 ## <a name="why-does-output-vary-given-identical-inputs"></a>Proč výstup liší, daný identické vstupy?
 
-Vylepšení modely a algoritmy jsou oznámeno, pokud změny hlavní nebo tiše opravami do služby, pokud je aktualizace menší. V čase možná zjistíte, že stejné výsledky vstupní text v různých postojích skóre nebo klíče frázi výstup. To je normální a záměrné důsledků použití materiály spravovaného počítače v cloudu.
+Vylepšení moduly a algoritmy odesílány, pokud změna hlavní nebo tiše opravami do služby, pokud je dílčí aktualizace. V průběhu času můžete zjistit, která stejné výsledky vstupní text v různých zabarvení nebo klíčových frází výstup. To je normální a úmyslné důsledků používání spravovaného počítače studijní materiály v cloudu.
 
 ## <a name="next-steps"></a>Další postup
 
-Je váš dotaz o chybějící funkce nebo funkce? Zvažte požaduje nebo volíte se naše [webu UserVoice](https://cognitive.uservoice.com/forums/555922-text-analytics).
+Je vaše otázky týkající se chybějící funkce nebo funkce? Vezměte v úvahu požádat nebo pro ni hlasovat o našich [webovou stránku UserVoice](https://cognitive.uservoice.com/forums/555922-text-analytics).
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
- [StackOverflow: Analýza textu rozhraní API](https://stackoverflow.com/questions/tagged/text-analytics-api)   
- [StackOverflow: Kognitivní služby](http://stackoverflow.com/questions/tagged/microsoft-cognitive)
+ [StackOverflow: Text Analytics API](https://stackoverflow.com/questions/tagged/text-analytics-api)   
+ [StackOverflow: Cognitive Services](http://stackoverflow.com/questions/tagged/microsoft-cognitive)
