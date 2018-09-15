@@ -1,13 +1,13 @@
 | Prostředek | Výchozí omezení |
 | --- | :--- |
-| Skupiny kontejnerů na [předplatné](../articles/billing-buy-sign-up-azure-subscription.md) | 20<sup>1</sup> |
+| Skupiny kontejnerů na [předplatné](../articles/billing-buy-sign-up-azure-subscription.md) | 100<sup>1</sup> |
 | Počet kontejnerů na skupinu kontejnerů | 60 |
 | Počet svazků na skupinu kontejnerů | 20 |
 | Počet portů na IP adresu | 5 |
-| Vytvoření kontejneru za hodinu |60<sup>1</sup> |
-| Vytvoření kontejneru za 5 minut | 20<sup>1</sup> |
-| Odstranění kontejneru za hodinu | 150<sup>1</sup> |
-| Odstranění kontejneru za 5 minut | 50<sup>1</sup> |
+| Vytvoření kontejneru za hodinu |300<sup>1</sup> |
+| Vytvoření kontejneru za 5 minut | 100<sup>1</sup> |
+| Odstranění kontejneru za hodinu | 300<sup>1</sup> |
+| Odstranění kontejneru za 5 minut | 100<sup>1</sup> |
 | Více kontejnerů na skupinu kontejnerů | Jenom Linux<sup>2</sup> |
 | Svazky Azure Files | Jenom Linux<sup>2</sup> |
 | Svazky GitRepo | Jenom Linux<sup>2</sup> |
