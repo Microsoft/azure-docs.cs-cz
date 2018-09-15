@@ -122,9 +122,7 @@ items:
         href: https://docs.loganalytics.io
       - name: Začínáme
         items:
-        - name: Začínáme s portálem služby Log Analytics
-          href: log-analytics-log-search-log-search-portal.md
-        - name: Začínáme se stránkou služby Log Analytics
+        - name: Začínáme se službou Log Analytics
           href: query-language/get-started-analytics-portal.md
         - name: Začínáme s dotazy
           href: query-language/get-started-queries.md
@@ -342,9 +340,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=log-analytics
   - name: Analýzy ve Windows
     href: https://www.microsoft.com/en-us/WindowsForBusiness/windows-analytics
-ms.openlocfilehash: 6f6eb0ef663bb4d38a04ab8273d80bafcdeab130
-ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
+ms.openlocfilehash: 891630fc5e6815f20090c6d27e752bb38a1f091f
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44324678"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605687"
