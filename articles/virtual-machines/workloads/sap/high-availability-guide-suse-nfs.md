@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 6ad943d2ae98093f7e5b94df59757ff603083cfe
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 99b7b83ca2d7f6f19df137e6ecf5deaf411e9a5e
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43668951"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634740"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>Vysoká dostupnost pro NFS na virtuálních počítačích Azure na SUSE Linux Enterprise Server
 
@@ -119,7 +119,7 @@ Můžete některou ze šablon quickstart na Githubu nasadit všechny požadovan�
    4. Uživatelské jméno Admin a heslo správce  
       Je vytvořen nový uživatel, který lze použít k přihlášení k počítači.
    5. ID podsítě  
-      ID podsítě, ke kterému musí být připojené k virtuálním počítačům. Ponechte prázdné, pokud chcete vytvořit novou virtuální síť nebo vyberte podsíť virtuální sítě VPN nebo Express Route pro připojení k místní síti virtuálního počítače. ID obvykle vypadá /subscriptions/**&lt;ID předplatného&gt;**/resourceGroups/**&lt;název skupiny prostředků&gt;**/poskytovatelé/ Microsoft.Network/virtualNetworks/**&lt;název virtuální sítě&gt;**/subnets/**&lt;název podsítě&gt;**
+      Pokud chcete nasadit virtuální počítač do existující virtuální síť ve kterých máte definované podsíti virtuálního počítače by se měla přiřadit k pojmenování ID tuto konkrétní podsíť. ID obvykle vypadá /subscriptions/**&lt;ID předplatného&gt;**/resourceGroups/**&lt;název skupiny prostředků&gt;**/poskytovatelé/ Microsoft.Network/virtualNetworks/**&lt;název virtuální sítě&gt;**/subnets/**&lt;název podsítě&gt;**
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>Ruční nasazení Linuxu prostřednictvím webu Azure portal
 

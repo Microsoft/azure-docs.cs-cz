@@ -11,11 +11,11 @@ ms.custom: include file
 ms.date: 08/02/2018
 ms.author: diberry
 ms.openlocfilehash: dd99218765c873120c4117a3ec1712fe0a605e66
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480366"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45637587"
 ---
 **Dotaz**: byste měli použít hierarchická entity nebo vzor s jednoduchou entitu s rolemi? 
 

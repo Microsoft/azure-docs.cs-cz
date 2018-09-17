@@ -323,34 +323,8 @@
 
 ### [Konfigurace životnosti tokenů](active-directory-configurable-token-lifetimes.md)
 
-## Kontroly přístupu
-### [Přehled kontrol přístupu](active-directory-azure-ad-controls-access-reviews-overview.md)
-### [Dokončení kontroly přístupu](active-directory-azure-ad-controls-complete-access-review.md)
-### [Vytvoření kontroly přístupu](active-directory-azure-ad-controls-create-access-review.md)
-### [Provádění kontroly přístupu](active-directory-azure-ad-controls-perform-access-review.md)
-### [Jak kontrolovat přístup](active-directory-azure-ad-controls-how-to-review-your-access.md)
-### [Přístup hosta pomocí kontrol přístupu](active-directory-azure-ad-controls-manage-guest-access-with-access-reviews.md)
-### [Správa přístupu uživatelů pomocí kontrol](active-directory-azure-ad-controls-manage-user-access-with-access-reviews.md)
-### [Správa programů a ovládacích prvků](active-directory-azure-ad-controls-manage-programs-controls.md)
-### [Načtení výsledků kontroly přístupu](active-directory-azure-ad-controls-retrieve-access-review.md)
-
-## [Podmínky použití](active-directory-tou.md)
-
 ## Zabezpečení identit
 
-### Azure AD Identity Protection
-#### [Přehled](identity-protection/overview.md)
-#### [Povolení](identity-protection/enable.md)
-#### [Rozpoznání ohrožení zabezpečení](identity-protection/vulnerabilities.md)
-#### [Rizikové události](active-directory-identity-protection-risk-events.md)
-#### [Oznámení](identity-protection/notifications.md)
-#### [Přihlašovací prostředí](identity-protection/flows.md)
-#### [Simulace rizikových událostí](identity-protection/playbook.md)
-#### [Odblokování uživatelů](identity-protection/howto-unblock-user.md)
-#### [Blokování přístupu, pokud se zjistí riziko relace](identity-protection/quickstart-sign-in-risk-policy.md)
-#### [Nejčastější dotazy](identity-protection/faqs.md)
-#### [Glosář](identity-protection/glossary.md)
-#### [Microsoft Graph](identity-protection/graph-get-started.md)
 ### [Privileged Identity Management](privileged-identity-management/pim-configure.md?toc=%2fazure%2factive-directory%2ftoc.json)
 
 ## [Nasazení AD FS v Azure](active-directory-aadconnect-azure-adfs.md)
