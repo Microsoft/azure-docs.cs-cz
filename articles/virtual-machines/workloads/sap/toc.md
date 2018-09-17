@@ -54,6 +54,19 @@
 ## [Průvodce nasazením SAP IDES na Windows/SQL Server SAP CAL](cal-ides-erp6-erp7-sp3-sql.md)
 ## [SAP NetWeaver ve virtuálních počítačích Azure s Linuxem](suse-quickstart.md)
 ## [Plánování a implementace SAP NetWeaveru v Azure](planning-guide.md)
+## [Průvodce nasazením SAP NetWeaveru](deployment-guide.md)
+## [Konektor SAP LaMa pro Azure](lama-installation.md)
+## Průvodci nasazením DBMS pro úlohy SAP
+### [Nasazení DBMS v obecných počítačích Azure Virtual Machines pro úlohy SAP](dbms_guide_general.md)
+### [Nasazení DBMS v počítačích Azure Virtual Machines s SQL Serverem pro úlohy SAP](dbms_guide_sqlserver.md)
+### [Nasazení DBMS v počítačích Azure Virtual Machines s Oraclem pro úlohy SAP](dbms_guide_oracle.md)
+### [Nasazení DBMS v počítačích Azure Virtual Machines s IBM DB2 pro úlohy SAP](dbms_guide_ibm.md)
+### [Nasazení DBMS v počítačích Azure Virtual Machines se SAP ASE pro úlohy SAP](dbms_guide_sapase.md)
+### [Nasazení SAP MaxDB, liveCache a Content Serveru v Azure](dbms_guide_maxdb.md)
+### Dostupnost SAP HANA ve službě Azure Virtual Machines
+### [Přehled dostupnosti SAP HANA v Azure](sap-hana-availability-overview.md)
+### [Dostupnost SAP HANA v Azure v rámci jedné oblasti Azure](sap-hana-availability-one-region.md)
+### [Dostupnost SAP HANA v Azure napříč oblastmi Azure](sap-hana-availability-across-regions.md)
 ## Vysoká dostupnost (HA) ve Windows a Linuxu
 ### [Přehled](sap-high-availability-guide-start.md)
 ### Architektura pro vysokou dostupnost
@@ -74,21 +87,7 @@
 ### SAP s několika SID
 #### [Windows se sdíleným diskem pro instanci (A)SCS](sap-ascs-ha-multi-sid-wsfc-shared-disk.md)
 #### [Windows se sdílenou složkou SOFS pro instanci (A)SCS](sap-ascs-ha-multi-sid-wsfc-file-share.md)
-## [Průvodce nasazením SAP NetWeaveru](deployment-guide.md)
-## Průvodci nasazením DBMS pro úlohy SAP
-### [Nasazení DBMS v obecných počítačích Azure Virtual Machines pro úlohy SAP](dbms_guide_general.md)
-### [Nasazení DBMS v počítačích Azure Virtual Machines s SQL Serverem pro úlohy SAP](dbms_guide_sqlserver.md)
-### [Nasazení DBMS v počítačích Azure Virtual Machines s Oraclem pro úlohy SAP](dbms_guide_oracle.md)
-### [Nasazení DBMS v počítačích Azure Virtual Machines s IBM DB2 pro úlohy SAP](dbms_guide_ibm.md)
-### [Nasazení DBMS v počítačích Azure Virtual Machines se SAP ASE pro úlohy SAP](dbms_guide_sapase.md)
-### [Nasazení SAP MaxDB, liveCache a Content Serveru v Azure](dbms_guide_maxdb.md)
-### [Průvodce provozem SAP HANA v Azure](hana-vm-operations.md)
-#### Dostupnost SAP HANA ve službě Azure Virtual Machines
-##### [Přehled dostupnosti SAP HANA v Azure](sap-hana-availability-overview.md)
-##### [Dostupnost SAP HANA v Azure v rámci jedné oblasti Azure](sap-hana-availability-one-region.md)
-##### [Dostupnost SAP HANA v Azure napříč oblastmi Azure](sap-hana-availability-across-regions.md)
-## [Azure Site Recovery pro zotavení po havárii SAPu](../../../site-recovery/site-recovery-workload.md#protect-sap)
-## [Konektor SAP LaMa pro Azure](lama-installation.md)
+##  [Azure Site Recovery pro zotavení po havárii SAPu](../../../site-recovery/site-recovery-workload.md#protect-sap)
 # Jednotné přihlašování a integrace identit AAD SAP
 ## [Integrace se SAP Cloudem](../../../active-directory/saas-apps/sap-customer-cloud-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
 ## [Integrace AAD s ověřováním identit cloudové platformy SAP](../../../active-directory/saas-apps/sap-hana-cloud-platform-identity-authentication-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
@@ -97,5 +96,10 @@
 ## [Integrace AAD se SAP Business ByDesign](../../../active-directory/saas-apps/sapbusinessbydesign-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
 ## [Integrace AAD se SAP HANA DBMS](../../../active-directory/saas-apps/saphana-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json)
 ##[Jednotné přihlašování pomocí SAP Fiori Launchpad SAML s Azure AD](https://blogs.sap.com/2017/02/20/your-s4hana-environment-part-7-fiori-launchpad-saml-single-sing-on-with-azure-ad)
+# Integrace služeb Azure do SAPu
+## [Použití SAP HANA v Power BI Desktopu](https://docs.microsoft.com/power-bi/desktop-sap-hana)
+## [DirectQuery a SAP HANA](https://docs.microsoft.com/power-bi/desktop-directquery-sap-hana)
+## [Použití konektoru SAP BW v Power BI Desktopu](https://docs.microsoft.com/power-bi/desktop-sap-bw-connector)
+## [Azure Data Factory nabízí integraci dat pro SAP HANA a Business Warehouse](https://azure.microsoft.com/blog/azure-data-factory-offer-sap-hana-and-business-warehouse-data-integration)
 # Zdroje a prostředky
 ## [Plány Azure do budoucna](https://azure.microsoft.com/roadmap/)

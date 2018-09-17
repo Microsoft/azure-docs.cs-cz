@@ -3,14 +3,14 @@
 
 # Přehled
 ## [Přehled Data Lake Storage Gen1](data-lake-store-overview.md)
-## [Porovnání služeb Data Lake Storage Gen1 a Azure Storage](data-lake-store-comparison-with-blob-storage.md)
-## [Data Lake Storage Gen1 pro zpracování velkého objemu dat](data-lake-store-data-scenarios.md)
-## [Opensourcové aplikace využívající Data Lake Storage Gen1](data-lake-store-compatible-oss-other-applications.md)
+## [Porovnání se službou Azure Storage](data-lake-store-comparison-with-blob-storage.md)
+## [Zpracování velkých objemů dat](data-lake-store-data-scenarios.md)
+## [Práce s opensourcovými aplikacemi](data-lake-store-compatible-oss-other-applications.md)
 ## [Osvědčené postupy](data-lake-store-best-practices.md)
 
 # Začínáme
-## [Pomocí portálu](data-lake-store-get-started-portal.md)
-## [Pomocí PowerShellu](data-lake-store-get-started-powershell.md)
+## [Pomocí webu Azure Portal](data-lake-store-get-started-portal.md)
+## [Použití Azure PowerShellu](data-lake-store-get-started-powershell.md)
 ## [Použití Azure CLI 2.0](data-lake-store-get-started-cli-2.0.md)
 
 

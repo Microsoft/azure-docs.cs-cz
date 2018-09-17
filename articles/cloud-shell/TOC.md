@@ -7,16 +7,19 @@
 # Funkce a nástroje
 ## [Funkce a nástroje](features.md)
 
-# Postupy
+# Kurzy
+## Ansible
+### [Spuštění playbooku Ansible](/azure/ansible/ansible-run-playbook-in-cloudshell?toc=/azure/cloud-shell/toc.json&bc=/azure/bread/toc.json)
+### [Správa dynamického inventáře Azure](/azure/ansible/ansible-manage-azure-dynamic-inventories?toc=/azure/cloud-shell/toc.json&bc=/azure/bread/toc.json)
+## Terraform
+### [Vytvoření plánu provádění](example-terraform-bash.md)
+
+# Návody
 ## [PowerShell Cloud Shell pro uživatele Windows](cloud-shell-windows-users.md)
 ## [Trvalé uložení souborů v úložišti](persisting-shell-storage.md)
 ## [Použití okna](using-the-shell-window.md)
 ## [Použití Instalační služby MSI ve službě Cloud Shell](msi-authorization.md)
 ## [Vložení služby Cloud Shell](embed-cloud-shell.md)
-
-# Příklady
-## [Bash – vytváření prostředků s využitím Terraformu](example-terraform-bash.md)
-## [Bash – spouštění runbooků Ansible](../ansible/ansible-run-playbook-in-cloudshell.md)
 
 # [Použití editoru Cloud Shell](using-cloud-shell-editor.md)
 

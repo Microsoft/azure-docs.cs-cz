@@ -83,6 +83,7 @@
 
 ## [Správa skupin a členů](fundamentals/active-directory-manage-groups.md)
 ### [Správa skupin](fundamentals/active-directory-groups-create-azure-portal.md)
+### [Odstranění skupiny a jejích členů](fundamentals/active-directory-groups-delete-group.md)
 ### [Správa nastavení skupin](fundamentals/active-directory-groups-settings-azure-portal.md)
 ## [Správa sestav](reports-monitoring/overview-reports.md)
 ### [Aktivita přihlášení](reports-monitoring/concept-sign-ins.md)
@@ -346,6 +347,7 @@
 #### [Přihlašovací prostředí](identity-protection/flows.md)
 #### [Simulace rizikových událostí](identity-protection/playbook.md)
 #### [Odblokování uživatelů](identity-protection/howto-unblock-user.md)
+#### [Blokování přístupu, pokud se zjistí riziko relace](identity-protection/quickstart-sign-in-risk-policy.md)
 #### [Nejčastější dotazy](identity-protection/faqs.md)
 #### [Glosář](identity-protection/glossary.md)
 #### [Microsoft Graph](identity-protection/graph-get-started.md)

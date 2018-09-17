@@ -1,6 +1,6 @@
 ---
-title: Nastavení systémové replikace SAP HANA na Azure virtual machines (VMs) | Dokumentace Microsoftu
-description: Vytvoření vysoké dostupnosti SAP Hana na Azure virtual machines (VM).
+title: Vysoká dostupnost SAP HANA na virtuálních počítačích Azure na SUSE Linux Enterprise Server | Dokumentace Microsoftu
+description: Vysoká dostupnost SAP HANA na virtuálních počítačích Azure na SUSE Linux Enterprise Server
 services: virtual-machines-linux
 documentationcenter: ''
 author: MSSedusch
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 7a0797d79da95db77174a3e067a1e84276f286a5
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: dfcb5c7c0b487b8379d89a9b285bae1ca1a9c774
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42060090"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634519"
 ---
-# <a name="high-availability-of-sap-hana-on-azure-virtual-machines"></a>Vysoká dostupnost SAP HANA na virtuálních počítačích Azure
+# <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>Vysoká dostupnost SAP HANA na virtuálních počítačích Azure na SUSE Linux Enterprise Server
 
 [dbms-guide]:dbms-guide.md
 [deployment-guide]:deployment-guide.md
@@ -110,7 +110,7 @@ Pokud chcete nasadit šablonu, postupujte podle těchto kroků:
     - **Dostupnost systému**: vyberte **HA**.
     - **Uživatelské jméno Admin a heslo správce**: je vytvořen nový uživatel, který lze použít k přihlášení k počítači.
     - **Nové nebo existující podsíti**: Určuje, zda má být vytvořena nová virtuální síť a podsíť, nebo použít existující podsítě. Pokud již máte virtuální síť, která je připojená k vaší místní síti, vyberte **existující**.
-    - **ID podsítě**: ID podsítě, ke které má být připojen virtuální počítače. Virtuální počítač připojit k místní síti, vyberte podsíť virtuální sítě Azure ExpressRoute nebo VPN. ID obvykle vypadá jako **/subscriptions/\<ID předplatného > /resourceGroups/\<název skupiny prostředků > /providers/Microsoft.Network/virtualNetworks/\<název virtuální sítě > /subnets/ \<název podsítě >**.
+    - **ID podsítě**: Pokud chcete nasadit virtuální počítač do existující virtuální síť ve kterých máte definované podsíti virtuálního počítače by se měla přiřadit k pojmenování ID tuto konkrétní podsíť. ID obvykle vypadá jako **/subscriptions/\<ID předplatného > /resourceGroups/\<název skupiny prostředků > /providers/Microsoft.Network/virtualNetworks/\<název virtuální sítě > /subnets/ \<název podsítě >**.
 
 ### <a name="manual-deployment"></a>Ruční nasazení
 
@@ -969,7 +969,7 @@ Poznámka: Následující testy mají spouštět v pořadí a závisí na stavu 
    <pre><code>hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> HDB stop
    </code></pre>
 
-   Pacemaker zjistí zastavená instance HANA a označit prostředek jako neúspěšný na uzlu hn1-db-1. Spusťte následující příkaz k vyčištění stavu selhání. Pacemaker by pak automaticky restartovat instanci HANA.
+   Pacemaker zjistí zastavená instance HANA a označit prostředek jako neúspěšný na uzlu hn1-db-1. Pacemaker by měl automaticky restartovat instanci HANA. Spusťte následující příkaz k vyčištění stavu selhání.
 
    <pre><code># run as root
    hn1-db-1:~ # crm resource cleanup msl_SAPHana_HN1_HDB03 hn1-db-1

@@ -1,227 +1,234 @@
+items:
 - name: Dokumentace k zasílání zpráv služby Service Bus
   href: index.yml
 - name: Přehled
   items:
-    - name: Co je zasílání zpráv Service Bus?
-      href: service-bus-messaging-overview.md
-    - name: Porovnání služeb zasílání zpráv
-      href: ../event-grid/compare-messaging-services.md
-      maintainContext: true
+  - name: Co je zasílání zpráv Service Bus?
+    href: service-bus-messaging-overview.md
+  - name: Porovnání služeb zasílání zpráv
+    href: ../event-grid/compare-messaging-services.md
+    maintainContext: true
 - name: Šablony Rychlý start
   items:
-    - name: Odeslání zpráv – PowerShell
+  - name: Fronty služby Service Bus
+    items:
+    - name: Odesílání a příjem zpráv – PowerShell
       href: service-bus-quickstart-powershell.md
-    - name: Odeslání zpráv – portál
+    - name: Odesílání a příjem zpráv – portál
       href: service-bus-quickstart-portal.md
-    - name: Odeslání zpráv – CLI
+    - name: Odesílání a příjem zpráv – rozhraní příkazového řádku
       href: service-bus-quickstart-cli.md
+    - name: Odesílání a příjem zpráv – .NET
+      href: service-bus-dotnet-get-started-with-queues.md
+    - name: Odesílání a příjem zpráv – Java
+      href: service-bus-java-how-to-use-queues.md
+    - name: Odesílání a příjem zpráv – Node.js
+      href: service-bus-nodejs-how-to-use-queues.md
+    - name: Odesílání a příjem zpráv – PHP
+      href: service-bus-php-how-to-use-queues.md
+    - name: Odesílání a příjem zpráv – Python
+      href: service-bus-python-how-to-use-queues.md
+    - name: Odesílání a příjem zpráv – Ruby
+      href: service-bus-ruby-how-to-use-queues.md
+    - name: Odesílání a příjem zpráv – REST
+      href: /rest/api/servicebus/queues
+  - name: Odběry a témata služby Service Bus
+    items:
+    - name: Publikování a přihlášení k odběru zpráv – .NET
+      href: service-bus-dotnet-how-to-use-topics-subscriptions.md
+    - name: Publikování a přihlášení k odběru zpráv – Java
+      href: service-bus-java-how-to-use-topics-subscriptions.md
+    - name: Publikování a přihlášení k odběru zpráv – Node.js
+      href: service-bus-nodejs-how-to-use-topics-subscriptions.md
+    - name: Publikování a přihlášení k odběru zpráv – PHP
+      href: service-bus-php-how-to-use-topics-subscriptions.md
+    - name: Publikování a přihlášení k odběru zpráv – Python
+      href: service-bus-python-how-to-use-topics-subscriptions.md
+    - name: Publikování a přihlášení k odběru zpráv – Ruby
+      href: service-bus-ruby-how-to-use-topics-subscriptions.md
 - name: Kurzy
   items:
-    - name: Aktualizace inventáře – PowerShell
-      href: service-bus-tutorial-topics-subscriptions-powershell.md
-    - name: Aktualizace inventáře – portál
-      href: service-bus-tutorial-topics-subscriptions-portal.md
-    - name: Aktualizace inventáře – CLI
-      href: service-bus-tutorial-topics-subscriptions-cli.md
+  - name: Aktualizace inventáře – PowerShell
+    href: service-bus-tutorial-topics-subscriptions-powershell.md
+  - name: Aktualizace inventáře – portál
+    href: service-bus-tutorial-topics-subscriptions-portal.md
+  - name: Aktualizace inventáře – CLI
+    href: service-bus-tutorial-topics-subscriptions-cli.md
 - name: Ukázky
   items:
-    - name: Ukázky služby Service Bus
-      href: service-bus-samples.md
+  - name: Ukázky služby Service Bus
+    href: service-bus-samples.md
 - name: Koncepty
   items:
-    - name: Identita spravované služby (Preview)
-      href: service-bus-managed-service-identity.md
-    - name: Řízení přístupu na základě rolí (Preview)
-      href: service-bus-role-based-access-control.md
-    - name: Zasílání zpráv úrovně Premium
-      href: service-bus-premium-messaging.md
-    - name: Srovnání front Azure a front Service Bus
-      href: service-bus-azure-and-service-bus-queues-compared-contrasted.md
-    - name: Optimalizace výkonu
-      href: service-bus-performance-improvements.md
-    - name: Geografické zotavení po havárii a geografická replikace
-      href: service-bus-geo-dr.md
-    - name: "Asynchronní zasílání zpráv a\_vysoká dostupnost"
-      href: service-bus-async-messaging.md
-    - name: Zvládání výpadků a havárií
-      href: service-bus-outages-disasters.md
+  - name: Identita spravované služby (Preview)
+    href: service-bus-managed-service-identity.md
+  - name: Řízení přístupu na základě rolí (Preview)
+    href: service-bus-role-based-access-control.md
+  - name: Zasílání zpráv úrovně Premium
+    href: service-bus-premium-messaging.md
+  - name: Srovnání front Azure a front Service Bus
+    href: service-bus-azure-and-service-bus-queues-compared-contrasted.md
+  - name: Optimalizace výkonu
+    href: service-bus-performance-improvements.md
+  - name: Geografické zotavení po havárii a geografická replikace
+    href: service-bus-geo-dr.md
+  - name: Asynchronní zasílání zpráv a vysoká dostupnost
+    href: service-bus-async-messaging.md
+  - name: Zvládání výpadků a havárií
+    href: service-bus-outages-disasters.md
 - name: Návody
   items:
-    - name: Vytvoření oboru názvů
-      href: service-bus-create-namespace-portal.md
-    - name: Použití front
+  - name: Vytvoření oboru názvů
+    href: service-bus-create-namespace-portal.md
+  - name: Vývoj
+    items:
+    - name: Zpracování zpráv
       items:
-        - name: .NET
-          href: service-bus-dotnet-get-started-with-queues.md
-        - name: Java
-          href: service-bus-java-how-to-use-queues.md
-        - name: Node.js
-          href: service-bus-nodejs-how-to-use-queues.md
-        - name: PHP
-          href: service-bus-php-how-to-use-queues.md
-        - name: Python
-          href: service-bus-python-how-to-use-queues.md
-        - name: Ruby
-          href: service-bus-ruby-how-to-use-queues.md
-        - name: REST
-          href: /rest/api/servicebus/queues
-    - name: Použití témat a předplatných
+      - name: Fronty, témata a odběry
+        href: service-bus-queues-topics-subscriptions.md
+      - name: Zprávy, datové části a serializace
+        href: service-bus-messages-payloads.md
+      - name: Přenosy zpráv, zámky a vyrovnání
+        href: message-transfers-locks-settlement.md
+      - name: Určování pořadí zpráv a časová razítka
+        href: message-sequencing.md
+      - name: Vypršení platnosti zpráv (hodnota TTL)
+        href: message-expiration.md
+      - name: Zpracování zpráv pomocí Azure Event Gridu
+        href: service-bus-to-event-grid-integration-concept.md
+      - name: Příklady Azure Event Gridu
+        href: service-bus-to-event-grid-integration-example.md
+    - name: Ověřování a autorizace
+      href: service-bus-authentication-and-authorization.md
       items:
-        - name: .NET
-          href: service-bus-dotnet-how-to-use-topics-subscriptions.md
-        - name: Java
-          href: service-bus-java-how-to-use-topics-subscriptions.md
-        - name: Node.js
-          href: service-bus-nodejs-how-to-use-topics-subscriptions.md
-        - name: PHP
-          href: service-bus-php-how-to-use-topics-subscriptions.md
-        - name: Python
-          href: service-bus-python-how-to-use-topics-subscriptions.md
-        - name: Ruby
-          href: service-bus-ruby-how-to-use-topics-subscriptions.md
-    - name: Vývoj
+      - name: Migrace z ACS do SAS
+        href: service-bus-migrate-acs-sas.md
+      - name: Ověřování pomocí sdílených přístupových podpisů
+        href: service-bus-sas.md
+    - name: Akce a filtry témat
+      href: topic-filters.md
+    - name: Dělené fronty a témata
+      href: service-bus-partitioning.md
+    - name: Relace zpráv
+      href: message-sessions.md
+    - name: AMQP
       items:
-        - name: Zpracování zpráv
-          items:
-            - name: 'Fronty, témata a odběry'
-              href: service-bus-queues-topics-subscriptions.md
-            - name: 'Zprávy, datové části a serializace'
-              href: service-bus-messages-payloads.md
-            - name: 'Přenosy zpráv, zámky a vyrovnání'
-              href: message-transfers-locks-settlement.md
-            - name: Určování pořadí zpráv a časová razítka
-              href: message-sequencing.md
-            - name: Vypršení platnosti zpráv (hodnota TTL)
-              href: message-expiration.md
-            - name: Zpracování zpráv pomocí Azure Event Gridu
-              href: service-bus-to-event-grid-integration-concept.md
-            - name: Příklady Azure Event Gridu
-              href: service-bus-to-event-grid-integration-example.md
-        - name: Ověřování a autorizace
-          href: service-bus-authentication-and-authorization.md
-          items:
-            - name: Migrace z ACS do SAS
-              href: service-bus-migrate-acs-sas.md
-            - name: Ověřování pomocí sdílených přístupových podpisů
-              href: service-bus-sas.md
-        - name: Akce a filtry témat
-          href: topic-filters.md
-        - name: Dělené fronty a témata
-          href: service-bus-partitioning.md
-        - name: Relace zpráv
-          href: message-sessions.md
-        - name: AMQP
-          items:
-            - name: Přehled AMQP
-              href: service-bus-amqp-overview.md
-            - name: .NET
-              href: service-bus-amqp-dotnet.md
-            - name: Java
-              href: service-bus-amqp-java.md
-            - name: Java Message Service a AMQP
-              href: service-bus-java-how-to-use-jms-api-amqp.md
-            - name: Průvodce protokolem AMQP
-              href: service-bus-amqp-protocol-guide.md
-            - name: Operace na základě odpovědí na požadavky AMQP
-              href: service-bus-amqp-request-response.md
-        - name: Pokročilé funkce
-          items:
-            - name: Filtry připojení IP
-              href: service-bus-ip-filtering.md
-            - name: Koncové body služby virtuální sítě
-              href: service-bus-service-endpoints.md
-            - name: Fronty nedoručených zpráv
-              href: service-bus-dead-letter-queues.md
-            - name: Předběžné načtení zpráv
-              href: service-bus-prefetch.md
-            - name: Detekce duplicitních zpráv
-              href: duplicate-detection.md
-            - name: Čítače zpráv
-              href: message-counters.md
-            - name: Odložení zpráv
-              href: message-deferral.md
-            - name: Procházení zpráv
-              href: message-browsing.md
-            - name: Spojení entit s automatickým přeposíláním
-              href: service-bus-auto-forwarding.md
-            - name: Zpracování transakcí
-              href: service-bus-transactions.md
-            - name: Implementace spárovaného oboru názvů
-              href: service-bus-paired-namespaces.md
-        - name: Kompletní trasování a diagnostika
-          href: service-bus-end-to-end-tracing.md
-        - name: Sestavení vícevrstvé aplikace Service Bus
-          href: service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
-    - name: Spravovat
+      - name: Přehled AMQP
+        href: service-bus-amqp-overview.md
+      - name: .NET
+        href: service-bus-amqp-dotnet.md
+      - name: Java
+        href: service-bus-amqp-java.md
+      - name: Java Message Service a AMQP
+        href: service-bus-java-how-to-use-jms-api-amqp.md
+      - name: Průvodce protokolem AMQP
+        href: service-bus-amqp-protocol-guide.md
+      - name: Operace na základě odpovědí na požadavky AMQP
+        href: service-bus-amqp-request-response.md
+    - name: Pokročilé funkce
       items:
-        - name: Použití Azure PowerShellu ke zřizování entit
-          href: service-bus-manage-with-ps.md
-        - name: Monitorování služby Service Bus s využitím Azure Monitoru
-          href: service-bus-metrics-azure-monitor.md
-        - name: Knihovny pro správu služby Service Bus
-          href: service-bus-management-libraries.md
-        - name: Diagnostické protokoly
-          href: service-bus-diagnostic-logs.md
-        - name: Pozastavení a opětovná aktivace entit zasílání zpráv
-          href: entity-suspend.md
-        - name: Použití šablon Azure Resource Manageru
-          href: service-bus-resource-manager-overview.md
-          items:
-            - name: Vytvoření oboru názvů
-              href: service-bus-resource-manager-namespace.md
-            - name: Vytvoření oboru názvů a fronty
-              href: service-bus-resource-manager-namespace-queue.md
-            - name: Vytvoření oboru názvů s tématem a předplatným
-              href: service-bus-resource-manager-namespace-topic.md
-            - name: Vytvoření autorizačního pravidla pro obor názvů a frontu
-              href: service-bus-resource-manager-namespace-auth-rule.md
-            - name: 'Vytvoření oboru názvů s tématem, předplatným a pravidlem'
-              href: service-bus-resource-manager-namespace-topic-with-rule.md
+      - name: Filtry připojení IP
+        href: service-bus-ip-filtering.md
+      - name: Koncové body služby virtuální sítě
+        href: service-bus-service-endpoints.md
+      - name: Fronty nedoručených zpráv
+        href: service-bus-dead-letter-queues.md
+      - name: Předběžné načtení zpráv
+        href: service-bus-prefetch.md
+      - name: Detekce duplicitních zpráv
+        href: duplicate-detection.md
+      - name: Čítače zpráv
+        href: message-counters.md
+      - name: Odložení zpráv
+        href: message-deferral.md
+      - name: Procházení zpráv
+        href: message-browsing.md
+      - name: Spojení entit s automatickým přeposíláním
+        href: service-bus-auto-forwarding.md
+      - name: Zpracování transakcí
+        href: service-bus-transactions.md
+      - name: Implementace spárovaného oboru názvů
+        href: service-bus-paired-namespaces.md
+    - name: Kompletní trasování a diagnostika
+      href: service-bus-end-to-end-tracing.md
+    - name: Sestavení vícevrstvé aplikace Service Bus
+      href: service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
+  - name: Spravovat
+    items:
+    - name: Použití Azure PowerShellu ke zřizování entit
+      href: service-bus-manage-with-ps.md
+    - name: Monitorování služby Service Bus s využitím Azure Monitoru
+      href: service-bus-metrics-azure-monitor.md
+    - name: Knihovny pro správu služby Service Bus
+      href: service-bus-management-libraries.md
+    - name: Diagnostické protokoly
+      href: service-bus-diagnostic-logs.md
+    - name: Pozastavení a opětovná aktivace entit zasílání zpráv
+      href: entity-suspend.md
+    - name: Použití šablon Azure Resource Manageru
+      href: service-bus-resource-manager-overview.md
+      items:
+      - name: Vytvoření oboru názvů
+        href: service-bus-resource-manager-namespace.md
+      - name: Vytvoření oboru názvů a fronty
+        href: service-bus-resource-manager-namespace-queue.md
+      - name: Vytvoření oboru názvů s tématem a předplatným
+        href: service-bus-resource-manager-namespace-topic.md
+      - name: Vytvoření autorizačního pravidla pro obor názvů a frontu
+        href: service-bus-resource-manager-namespace-auth-rule.md
+      - name: Vytvoření oboru názvů s tématem, předplatným a pravidlem
+        href: service-bus-resource-manager-namespace-topic-with-rule.md
 - name: Referenční informace
   items:
-    - name: .NET
-      items:
-        - name: Microsoft.ServiceBus.Messaging (.NET Framework)
-          href: /dotnet/api/microsoft.servicebus.messaging
-        - name: Microsoft.Azure.ServiceBus (.NET Standard)
-          href: /dotnet/api/microsoft.azure.servicebus
-    - name: Java
-      href: /java/api/overview/azure/servicebus
-    - name: Azure PowerShell
-      href: /powershell/module/azurerm.servicebus
-    - name: REST
-      href: /rest/api/servicebus
-    - name: Výjimky
-      href: service-bus-messaging-exceptions.md
-    - name: Kvóty
-      href: service-bus-quotas.md
-    - name: Syntaxe SQLFilter
-      href: service-bus-messaging-sql-filter.md
-    - name: Syntaxe SQLRuleAction
-      href: service-bus-messaging-sql-rule-action.md
+  - name: .NET
+    items:
+    - name: Microsoft.ServiceBus.Messaging (.NET Framework)
+      href: /dotnet/api/microsoft.servicebus.messaging
+    - name: Microsoft.Azure.ServiceBus (.NET Standard)
+      href: /dotnet/api/microsoft.azure.servicebus
+  - name: Java
+    href: /java/api/overview/azure/servicebus
+  - name: Azure PowerShell
+    href: /powershell/module/azurerm.servicebus
+  - name: REST
+    href: /rest/api/servicebus
+  - name: Výjimky
+    href: service-bus-messaging-exceptions.md
+  - name: Kvóty
+    href: service-bus-quotas.md
+  - name: Syntaxe SQLFilter
+    href: service-bus-messaging-sql-filter.md
+  - name: Syntaxe SQLRuleAction
+    href: service-bus-messaging-sql-rule-action.md
 - name: Zdroje a prostředky
   items:
-    - name: Nejčastější dotazy
-      href: service-bus-faq.md
-    - name: Plány Azure do budoucna
-      href: 'https://azure.microsoft.com/roadmap/?category=enterprise-integration'
-    - name: Blog
-      href: 'https://blogs.msdn.microsoft.com/servicebus/'
-    - name: Fóra MSDN
-      href: 'https://social.msdn.microsoft.com/forums/home?forum=servbus'
-    - name: Ceny
-      href: 'https://azure.microsoft.com/pricing/details/service-bus/'
-    - name: Cenová kalkulačka
-      href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Podrobnosti o cenách
-      href: service-bus-pricing-billing.md
-    - name: ServiceBus360
-      href: 'https://www.servicebus360.com/'
-    - name: Service Bus Explorer
-      href: 'https://github.com/paolosalvatori/ServiceBusExplorer'
-    - name: Aktualizace služeb
-      href: 'https://azure.microsoft.com/updates/?product=service-bus'
-    - name: Stack Overflow
-      href: 'http://stackoverflow.com/questions/tagged/azureservicebus'
-    - name: Videa
-      href: 'https://azure.microsoft.com/documentation/videos/index/?services=service-bus'
+  - name: Nejčastější dotazy
+    href: service-bus-faq.md
+  - name: Plány Azure do budoucna
+    href: https://azure.microsoft.com/roadmap/?category=enterprise-integration
+  - name: Blog
+    href: https://blogs.msdn.microsoft.com/servicebus/
+  - name: Fóra MSDN
+    href: https://social.msdn.microsoft.com/forums/home?forum=servbus
+  - name: Ceny
+    href: https://azure.microsoft.com/pricing/details/service-bus/
+  - name: Cenová kalkulačka
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: Podrobnosti o cenách
+    href: service-bus-pricing-billing.md
+  - name: ServiceBus360
+    href: https://www.servicebus360.com/
+  - name: Service Bus Explorer
+    href: https://github.com/paolosalvatori/ServiceBusExplorer
+  - name: Aktualizace služeb
+    href: https://azure.microsoft.com/updates/?product=service-bus
+  - name: Stack Overflow
+    href: http://stackoverflow.com/questions/tagged/azureservicebus
+  - name: Videa
+    href: https://azure.microsoft.com/documentation/videos/index/?services=service-bus
+ms.openlocfilehash: 752834f195b3f98b4030aa1b17cb724eddbaab16
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574942"
