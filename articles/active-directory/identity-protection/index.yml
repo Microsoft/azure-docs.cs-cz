@@ -1,0 +1,46 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 04de34624a7902849d42ad62ed4e6a813157ddd9
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45606673"
+documentType: LandingData
+title: Azure AD Identity Protection
+metadata:
+  document_id: 
+  title: Dokumentace ke službě Azure AD Identity Protection – rychlá zprovoznění, koncepce, reference | Microsoft Docs
+  description: Přečtěte si, jak nakonfigurovat a otestovat službu Azure Active Directory Identity Protection.
+  services: active-directory
+  ms.component: identity-protection
+  author: MarkusVi
+  manager: mtillman
+  ms.service: active-directory
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 09/14/2018
+  ms.author: markvi
+abstract:
+  description: Zjistěte, jak funguje detekce potenciálně ohrožených identit a jak implementovat automatizované odpovědi pro jejich řešení. Azure Active Directory Identity Protection je funkce verze Azure AD Premium P2, která umožňuje:<ul><li>Detekovat potenciální ohrožení zabezpečení, která mají dopad na identity vaší organizace</li><li>Konfigurovat zásady podmíněného přístupu, které umožňují automaticky reagovat na podezřelé akce související s identitami vaší organizace</li><li>Zkoumat podezřelé incidenty a přijímat vhodná opatření k jejich řešení</li></ul><br> Následující informační materiály vám umožní rychle začít.
+  aside:
+    image:
+      alt: 
+      height: 110
+      src: ./media/index/video.png
+      width: 246
+    title: Seznámení se službou Azure AD Identity Protection
+    href: https://www.youtube.com/watch?v=zI3jn_G0_Ns
+    width: 246
+sections:
+- title: Zprovoznění během 5 minut
+  items:
+  - type: paragraph
+    text: Zjistěte, jak nakonfigurovat zásady podmíněného přístupu rizik přihlašování pro běžné scénáře přístupu.
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: ./media/index/i_security-management.png
+      text: Blokování přístupu, pokud se zjistí riziko relace
+      href: quickstart-sign-in-risk-policy.md

@@ -48,7 +48,7 @@ items:
     href: monitoring-action-groups.md
   - name: Rozšíření Azure Diagnostics
     href: azure-diagnostics.md
-  - name: Přehledy skupiny prostředků
+  - name: Monitorování skupin prostředků
     href: resource-group-insights.md
   - name: Zabezpečení a oprávnění rolí
     href: monitoring-roles-permissions-security.md
@@ -217,9 +217,9 @@ items:
     href: https://azure.microsoft.com/resources/samples/?service=monitor
   - name: Využití a odhadované náklady
     href: monitoring-usage-and-estimated-costs.md
-ms.openlocfilehash: 92b69fd2e3d299f88a3f08a42bfe4667bce59da0
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 7634f735e1724fb96294f07dd587bdcac538f2e6
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43336555"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45604446"

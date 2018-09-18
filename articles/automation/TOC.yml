@@ -136,6 +136,8 @@ items:
       href: automation-dsc-onboarding.md
     - name: Kompilace konfigurací DSC
       href: automation-dsc-compile.md
+    - name: Vytváření konfigurací DSC s využitím složených prostředků
+      href: compose-configurationwithcompositeresources.md
     - name: Nepřetržité nasazování pomocí Chocolatey
       href: automation-dsc-cd-chocolatey.md
     - name: Předání dat sestav konfigurace stavu do Log Analytics
@@ -230,9 +232,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-automation
   - name: Videa
     href: https://azure.microsoft.com/documentation/videos/index/?services=automation
-ms.openlocfilehash: 79efc2e809f8793405591ea0c54eadc101332d3f
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 9cede828d0ec62562f3f3c2fc0627f5505f21fd9
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44303478"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45603953"

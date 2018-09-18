@@ -1,0 +1,91 @@
+items:
+- name: Základní dokumentace
+  href: index.yml
+- name: Přehled
+  items:
+  - name: Představení služby Azure Active Directory
+    href: active-directory-whatis.md
+  - name: Novinky ve službě Azure Active Directory
+    href: whats-new.md
+  expanded: true
+- name: Šablony Rychlý start
+  items:
+  - name: Přístup k portálu a vytvoření tenanta
+    href: active-directory-access-create-new-tenant.md
+  - name: Zobrazení skupin s přiřazenými členy
+    href: active-directory-groups-view-azure-portal.md
+- name: Koncepty
+  items:
+  - name: Správa identit Azure
+    href: identity-fundamentals.md
+  - name: Správa přístupu a skupin
+    href: active-directory-manage-groups.md
+  - name: Licencování na základě skupin
+    href: active-directory-licensing-whatis-azure-portal.md
+  - name: Architektura Azure AD
+    href: active-directory-architecture.md
+  - name: Výchozí uživatelská oprávnění
+    href: users-default-permissions.md
+  - name: Úložiště dat identity pro EU
+    href: active-directory-data-storage-eu.md
+- name: Návody
+  items:
+  - name: Organizace
+    items:
+    - name: Registrace do Azure AD Premium
+      href: active-directory-get-started-premium.md
+    - name: Registrace do Azure AD jako organizace
+      href: sign-up-organization.md
+    - name: Přidání vlastního názvu domény
+      href: add-custom-domain.md
+    - name: Přidání značky společnosti
+      href: customize-branding.md
+    - name: Přidružení předplatného Azure
+      href: active-directory-how-subscriptions-associated-directory.md
+  - name: Skupiny
+    items:
+    - name: Vytvoření skupiny a přidání členů
+      href: active-directory-groups-create-azure-portal.md
+    - name: Přidání nebo odebrání členů skupin
+      href: active-directory-groups-members-azure-portal.md
+    - name: Odstranění skupiny a jejích členů
+      href: active-directory-groups-delete-group.md
+    - name: Přidání nebo odebrání skupiny z jiné skupiny
+      href: active-directory-groups-membership-azure-portal.md
+    - name: Úprava informací o skupině
+      href: active-directory-groups-settings-azure-portal.md
+    - name: Přidání nebo odebrání vlastníků skupin
+      href: active-directory-accessmanagement-managing-group-owners.md
+  - name: Uživatelé
+    items:
+    - name: Přidání nebo odstranění nového uživatele
+      href: add-users-azure-active-directory.md
+    - name: Přidání nebo změna informací profilu uživatele
+      href: active-directory-users-profile-azure-portal.md
+    - name: Resetování hesla uživatele
+      href: active-directory-users-reset-password-azure-portal.md
+    - name: Přiřazení rolí uživatelům
+      href: active-directory-users-assign-role-azure-portal.md
+    - name: Přiřazení licencí uživatelům nebo jejich odebrání
+      href: license-users-groups.md
+    - name: Obnovit odstraněného uživatele
+      href: active-directory-users-restore.md
+  expanded: true
+- name: Zdroje a prostředky
+  items:
+  - name: Získání podpory pro Azure Active Directory
+    href: active-directory-troubleshooting-support-howto.md
+  - name: Nejčastější dotazy ke službě Azure Active Directory
+    href: active-directory-faq.md
+  - name: Plány nasazení Azure Active Directory
+    href: active-directory-deployment-plans.md
+  - name: Správa Azure AD Directory
+    href: active-directory-administer.md
+  - name: Řešení identit Azure
+    href: understand-azure-identity-solutions.md
+ms.openlocfilehash: 70f51f82b34423cdde57109f384dcae851dc0d50
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45636287"
