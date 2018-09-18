@@ -119,7 +119,7 @@ items:
   items:
   - name: Dokumentace k rozhraní SQL API
     items:
-    - name: Přehled
+    - name: Úvod
       href: sql-api-introduction.md
     - name: Psaní dotazů SQL
       href: sql-api-sql-query.md
@@ -221,7 +221,7 @@ items:
         href: sql-api-sql-query-reference.md
   - name: Dokumentace k rozhraní MongoDB API
     items:
-    - name: Přehled
+    - name: Úvod
       href: mongodb-introduction.md
     - name: Podpora MongoDB
       href: mongodb-feature-support.md
@@ -271,7 +271,7 @@ items:
         href: mongodb-indexing.md
   - name: Dokumentace k rozhraní Gremlin API
     items:
-    - name: Přehled
+    - name: Úvod
       href: graph-introduction.md
     - name: Podpora Gremlin
       href: gremlin-support.md
@@ -285,7 +285,7 @@ items:
         href: bulk-executor-graph-dotnet.md
   - name: Dokumentace k rozhraní Cassandra API
     items:
-    - name: Přehled
+    - name: Úvod
       href: cassandra-introduction.md
     - name: Kurzy
       items:
@@ -295,7 +295,7 @@ items:
         href: cassandra-import-data.md
   - name: Dokumentace k rozhraní Table API
     items:
-    - name: Přehled
+    - name: Úvod
       href: table-introduction.md
     - name: Kurzy
       items:
@@ -460,9 +460,9 @@ items:
       href: use-cases.md
     - name: Aplikace sociálních médií
       href: social-media-apps.md
-ms.openlocfilehash: d36c53605ad79fcb6d2d54dac27894691f8398e8
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 2bc1fcfab7399cc52500b832721e7ca7509758fd
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44720867"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45737273"
