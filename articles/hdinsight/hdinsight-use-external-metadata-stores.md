@@ -8,13 +8,13 @@ ms.author: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/14/2018
-ms.openlocfilehash: a2c992a47e40a4f8764f5950c65bb90f1cd9e066
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.date: 09/14/2018
+ms.openlocfilehash: 7c58162048de341468b69a29c55edf346b376e9b
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43045139"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45733810"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Použití externích úložišť metadat v Azure HDInsight
 
@@ -29,9 +29,9 @@ Existují dva způsoby, které můžete nastavit metastoru clusterů HDInsight:
 
 ## <a name="default-metastore"></a>Výchozí metastore
 
-Ve výchozím nastavení zřídí HDInsight metastore s každý typ clusteru. Místo toho můžete určit vlastní úložiště metadat. Výchozí metastore zahrnuje následující aspekty:
-- Bez dalších poplatků. HDInsight zřídí metastore s každý typ clusteru bez žádné další poplatky.
-- Každý výchozí metastore je součástí životního cyklu clusteru. Při odstranění clusteru také odstranit metastore a metadata.
+Ve výchozím nastavení vytvoří HDInsight metastoru s každý typ clusteru. Místo toho můžete určit vlastní úložiště metadat. Výchozí metastore zahrnuje následující aspekty:
+- Bez dalších poplatků. HDInsight vytváří metastoru s každý typ clusteru bez žádné další poplatky.
+- Každý výchozí metastore je součástí životního cyklu clusteru. Při odstranění clusteru se odstraní také odpovídající metastore a metadata.
 - Výchozí metastore nelze sdílet s další clustery.
 - Výchozí metastore používá základní databáze SQL Azure, který má limit 5 DTU (jednotek transakce databáze).
 Tento výchozí metastore se obvykle používá pro relativně jednoduché úlohy, které nevyžadují více clusterů které nevyžadují metadata zachovány nad rámec životního cyklu clusteru.
@@ -46,11 +46,7 @@ HDInsight také podporuje vlastní metaúložiště, které se doporučují pro 
 - Platíte za cenu podle úrovně výkonu, které zvolíte metastoru (databáze SQL Azure).
 - Můžete vertikálně navýšit kapacitu metastore podle potřeby.
 
-
 ![Případ použití Store metadat Hive HDInsight](./media/hdinsight-use-external-metadata-stores/metadata-store-use-case.png)
-
-<!-- Image – Typical shared custom Metastore scenario in HDInsight (?) -->
-
 
 
 ### <a name="select-a-custom-metastore-during-cluster-creation"></a>Vyberte vlastní úložiště metadat během vytváření clusteru
@@ -67,12 +63,14 @@ Můžete také přidat další clustery na vlastní úložiště metadat z webu 
 
 Tady jsou některé obecné HDInsight Hive metastore osvědčených postupů:
 
-- Použijte vlastní úložiště metadat, kdykoli je to možné, jak to vám pomůže samostatné výpočetní prostředky (spuštěného clusteru) a metadata (uložená v metastore).
+- Použijte vlastní úložiště metadat, kdykoli je to možné, aby samostatné výpočetní prostředky (spuštěného clusteru) a metadata (uložená v metastore).
 - Začněte s vrstvou S2, která poskytuje 50 DTU a 250 GB úložiště. Pokud se kritický bod, databázi můžete škálovat.
-- Ujistěte se, že metastore vytvořit pro jednu verzi clusteru HDInsight se sdílet mezi různými verzemi clusteru HDInsight. Různé verze Hive pomocí různých schémat. Například nemůžete sdílet metastoru Hive 1.2 a Hive 2.1 clustery.
-- Pravidelně zálohujte vlastní úložiště metadat.
-- Udržujte metastore a HDInsight cluster ve stejné oblasti.
+- Pokud máte v úmyslu více clusterů HDInsight pro přístup k datům samostatný, použijte samostatné databáze pro metastore v každém clusteru. Pokud metastoru sdílíte mezi více clusterů HDInsight, znamená to, že clustery používají stejný metadat a základní uživatelských dat souborů.
+- Pravidelně zálohujte vlastní úložiště metadat. Azure SQL Database automaticky generuje zálohování, ale období uchování zálohy se liší. Další informace najdete v tématu [přečtěte si víc o automatické zálohování SQL Database](../sql-database/sql-database-automated-backups.md).
+- Vyhledejte metastore a HDInsight cluster ve stejné oblasti, pro nejvyšší výkon a nejnižší poplatky za výchozí přenos dat sítě.
 - Monitorování vaší metastore výkonu a dostupnosti s využitím Azure SQL Database monitorování nástroje, jako je Azure portal nebo Azure Log Analytics.
+- Po vytvoření nové, vyšší verzi Azure HDInsight na stávající databázi vlastní úložiště metadat systému upgraduje schématu metaúložiště, které je nevratná operace bez obnovení ze zálohy databáze.
+- Pokud metastoru sdílíte mezi více clusterů, ujistěte se, že všechny clustery jsou na stejné verzi HDInsight. Různé verze Hive pomocí různých metastore databázových schématech. Například nemůžete sdílet metastoru napříč clustery Hive 1.2 a Hive 2.1 systémovou správou verzí. 
 
 ## <a name="oozie-metastore"></a>Úložiště metadat Oozie
 

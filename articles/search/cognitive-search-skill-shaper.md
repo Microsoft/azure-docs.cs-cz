@@ -1,6 +1,6 @@
 ---
-title: Službě Shaper kognitivní vyhledávání odborností (Azure Search) | Microsoft Docs
-description: Extrakce metadat a strukturovaných informace z nestrukturovaných dat a utvářejí jako komplexní typ v obohacení kanál služby Azure Search.
+title: Dovednosti Shaper kognitivního vyhledávání (Azure Search) | Dokumentace Microsoftu
+description: Extrahování metadat a strukturovaných informací z nestrukturovaných dat a převeďte ji jako komplexní typ v rozšíření kanálu služby Azure Search.
 services: search
 manager: pablocas
 author: luiscabrer
@@ -10,32 +10,34 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 311f4bd67081de567763783a9d86540eda36d9f8
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 286e1f9d6f6ae09d98aa87b447df7a7524642a1f
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33791004"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45728993"
 ---
-#   <a name="shaper-cognitive-skill"></a>Službě Shaper kognitivní dovedností
+#   <a name="shaper-cognitive-skill"></a>Shaper kognitivních dovedností
 
-**Službě Shaper** odborností vytvoří komplexní typ pro podporu složeného pole (také označované jako pole s více částmi). Komplexní typ pole má více částí, ale je považován za jednu položku v indexu Azure Search. Konsolidované pole užitečný ve scénářích, hledání příklady kombinování název první a poslední do jednoho pole, města a stavu do jednoho pole, nebo název a datum narození do jednoho pole pro vytvoření jedinečné identity.
+**Shaper** dovednosti umožňuje vytvořit komplexní typ pro podporu složeného pole (označované také jako pole s více částmi.). Komplexní typ pole má více částí, ale je považován za jednu položku v indexu Azure Search. Konsolidované pole, které jsou užitečné v situacích, hledání příklady zkombinují název první a poslední do jednoho pole, Město a stát do jednoho pole, nebo název a datum narození do jednoho pole ke zjištění jedinečné identity.
 
-Službě Shaper odborností umožňuje v podstatě vytvořit strukturu, zadejte název členů této struktury a přiřadit hodnoty pro každého člena.
+Dovednosti Shaper umožňuje v podstatě vytvořit strukturu, definování názvu členem struktury a přiřadit hodnoty k jednotlivým členům.
 
-Ve výchozím nastavení tato technika podporuje objekty, které jsou jednu úroveň. Pro složitější objekty můžete zřetězené několik kroků službě Shaper.
+Ve výchozím nastavení tato technika podporuje objekty, které jsou jednu úroveň. Pro složitější objektů můžete zřetězit několik kroků Shaper.
 
-V odpovědi název výstupu je vždy "výstupní". Interně kanálu můžete namapovat jiný název, jako je například "analyzedText" v následujících příkladech k "výstupní", ale službě Shaper odborností, samotné vrátí hodnotu "výstupní" v odpovědi. To může být důležité, pokud jsou ladění provádět rozšířené dokumenty a Všimněte si pojmenování nesoulad mezi databází nebo sestavení vlastní dovedností a jsou strukturování odpovědi, sami.
+V odpovědi výstupní název je vždy "výstupní". Interně kanálu můžete namapovat jiný název, jako je například "analyzedText" v následujících příkladech "výstupní", ale Shaper dovednosti, samotný vrátí hodnotu "výstupní" v odpovědi. To může být důležité Pokud ladíte bohatších možností dokumenty a Všimněte si názvů nesrovnalosti, nebo pokud při vývoji vlastních dovedností a jsou strukturování odpovědi, sami.
 
+> [!NOTE]
+> Cognitive Search je ve veřejné verzi Preview. Spuštění dovednosti a extrakce image a normalizace se momentálně nabízí zdarma. Později cenách za tyto funkce bude oznámena. 
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Util.ShaperSkill
 
 ## <a name="sample-1-complex-types"></a>Příklad 1: komplexní typy
 
-Vezměte v úvahu scénář, kde chcete vytvořit strukturu s názvem *analyzedText* , má dva členy: *text* a *postojích*, v uvedeném pořadí. Ve službě Azure Search, se nazývá vícedílné prohledávatelné pole *komplexní typ*, a není dosud podporován mimo pole. V této verzi preview službě Shaper odborností slouží ke generování komplexního typu pole v indexu. 
+Představte si třeba situaci, ve kterém chcete vytvořit strukturu s názvem *analyzedText* , který má dva členy: *text* a *mínění*v uvedeném pořadí. Ve službě Azure Search je vícedílný prohledávatelná pole s názvem *komplexní typ*, a je ještě není podporovaný úprav. V této verzi preview je možné Shaper dovednosti k vygenerování složitého typu pole v indexu. 
 
-Následující příklad uvádí člen názvy jako vstup. Struktura výstup (vaše komplexní pole ve službě Azure Search) se specifikuje prostřednictvím *targetName*. 
+Následující příklad obsahuje člen názvy jako vstup. Výstupní struktury (vaše komplexní pole ve službě Azure Search) se specifikuje prostřednictvím *targetName*. 
 
 
 ```json
@@ -61,8 +63,8 @@ Následující příklad uvádí člen názvy jako vstup. Struktura výstup (va�
 }
 ```
 
-### <a name="sample-input"></a>Ukázka vstup
-Dokument JSON poskytuje použitelné vstup pro tento službě Shaper odborností může být:
+### <a name="sample-input"></a>Ukázkový vstup
+Dokument JSON poskytuje použitelné vstup pro tuto Shaper dovednost může být:
 
 ```json
 {
@@ -80,7 +82,7 @@ Dokument JSON poskytuje použitelné vstup pro tento službě Shaper odborností
 
 
 ### <a name="sample-output"></a>Ukázkový výstup
-Službě Shaper odborností generuje nový prvek s názvem *analyzedText* kombinované elementy *text* a *postojích*. 
+Dovednosti Shaper vygeneruje nový prvek s názvem *analyzedText* kombinované elementy *text* a *mínění*. 
 
 ```json
 {
@@ -102,9 +104,9 @@ Službě Shaper odborností generuje nový prvek s názvem *analyzedText* kombin
 
 ## <a name="sample-2-input-consolidation"></a>Příklad 2: vstupní konsolidace
 
-Jiný příklad Představte si, že v různých fázích zpracování kanálu, jste extrahovali název knihy a názvy kapitol na různých stránkách knihy. Nyní můžete vytvořit jeden struktura skládá z těchto různých vstupy.
+V jiném příkladu Představte si, že v různých fázích zpracování kanálu, můžete extrahovat název knihy a názvy kapitol na různých stránkách knihy. Nyní můžete vytvořit jednu strukturu skládá z těchto různých vstupy.
 
-Definici službě Shaper dovednosti pro tento scénář může vypadat jako v následujícím příkladu:
+Definici Shaper dovedností pro tento scénář může vypadat jako v následujícím příkladu:
 
 ```json
 {
@@ -130,7 +132,7 @@ Definici službě Shaper dovednosti pro tento scénář může vypadat jako v n�
 ```
 
 ### <a name="sample-output"></a>Ukázkový výstup
-V takovém případě službě Shaper vyrovná všechny názvy kapitol vytvořit do jednoho pole. 
+V takovém případě Shaper sloučí všechny názvy kapitol vytvořte jedno pole. 
 
 ```json
 {
@@ -155,5 +157,5 @@ V takovém případě službě Shaper vyrovná všechny názvy kapitol vytvořit
 ## <a name="see-also"></a>Další informace najdete v tématech
 
 + [Předdefinované dovednosti](cognitive-search-predefined-skills.md)
-+ [Jak definovat skillset](cognitive-search-defining-skillset.md)
++ [Definování dovedností](cognitive-search-defining-skillset.md)
 

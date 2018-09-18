@@ -8,12 +8,12 @@ ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
 ms.component: blobs
-ms.openlocfilehash: c6dfb8ac36f3b5d51cc1d6126449b458f8f4946c
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 0f726769b9e4266e310f9f50b1a7ef768c0c1d55
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44377425"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45735880"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reakce na události služby Blob storage
 
@@ -28,7 +28,7 @@ Podívejte se na [událostí služby směrování Blob storage do vlastního web
 ![Event Grid modelu](./media/storage-blob-event-overview/event-grid-functional-model.png)
 
 ## <a name="blob-storage-accounts"></a>Účty úložiště Blob
-Události služby BLOB storage jsou k dispozici v [účty Blob storage](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-storage-accounts) a [účty úložiště pro obecné účely v2](../common/storage-account-options.md#general-purpose-v2-accounts). Účty pro **obecné účely v2 (GPv2)** jsou účty úložiště, které podporují všechny funkce všech služeb úložiště, včetně objektů blob, souborů, front a tabulek. **Účet úložiště objektů blob** je specializovaný účet úložiště pro ukládání nestrukturovaných dat v podobě objektů blob do služby Azure Storage. Účty úložiště objektů blob jsou podobné účtům úložiště pro obecné účely a mají stejně vysokou odolnost, dostupnost, škálovatelnost a výkonnost, a navíc mají 100% konzistentnost rozhraní API pro objekty blob bloku a doplňovací objekty blob. V případě aplikací, které vyžadují jenom úložiště objektů blob bloku nebo objektů blob doporučujeme používat účty úložiště objektů blob. 
+Události služby BLOB storage jsou k dispozici v účtech úložiště pro obecné účely v2 a účty Blob storage. **Pro obecné účely v2** účty úložiště podporují všechny funkce všech služeb úložiště, včetně objektů BLOB, soubory, fronty a tabulky. **Účet úložiště objektů blob** je specializovaný účet úložiště pro ukládání nestrukturovaných dat v podobě objektů blob do služby Azure Storage. Účty úložiště objektů blob jsou podobné účtům úložiště pro obecné účely a mají stejně vysokou odolnost, dostupnost, škálovatelnost a výkonnost, a navíc mají 100% konzistentnost rozhraní API pro objekty blob bloku a doplňovací objekty blob. Další informace najdete v tématu [přehled účtu Azure storage](../common/storage-account-overview.md).
 
 ## <a name="available-blob-storage-events"></a>K dispozici události služby Blob storage
 Pomocí služby Event grid [odběry událostí](../../event-grid/concepts.md#event-subscriptions) pro směrování zpráv událostí pro předplatitele.  Odběry událostí pro úložiště objektů BLOB může obsahovat dva typy událostí:  

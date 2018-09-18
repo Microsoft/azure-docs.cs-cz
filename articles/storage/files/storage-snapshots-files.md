@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/17/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: b261ec5fb0ad437202df1a8fd8683a095cb1bb96
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 03280f87b4b49b3e42091c6b1572a7f050afb336
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42060532"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983138"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Přehled snímků sdílených složek pro soubory Azure 
 Služba soubory Azure umožňuje využít snímky sdílené složky nebo sdílené složky. Sdílejte zachytávání snímků sdílené složky stavu v daném okamžiku v čase. V tomto článku popisujeme, jaké možnosti poskytuje snímky sdílené složky a jak můžete využít z nich ve vašem případě vlastní použití.
@@ -32,7 +32,7 @@ Po vytvoření sdílené složky můžete pravidelně vytvářet sdílené slož
 ## <a name="capabilities"></a>Možnosti
 Snímek sdílené složky je kopii dat bodu v čase, jen pro čtení. Můžete vytvářet, odstraňovat a spravovat snímky pomocí rozhraní REST API. Stejné možnosti jsou dostupné v klientské knihovny, rozhraní příkazového řádku Azure a webu Azure portal. 
 
-Snímky sdílené složky můžete zobrazit pomocí protokolu SMB i rozhraní REST API. Můžete načíst seznam verzí adresáře nebo souboru a konkrétní verzi přímo jako jednotku můžete připojit. 
+Snímky sdílené složky můžete zobrazit pomocí protokolu SMB i rozhraní REST API. Můžete načíst seznam verzí adresář nebo soubor, a můžete připojit za použití konkrétní verzi přímo jako jednotka (k dispozici pouze na Windows - naleznete v tématu [omezení](#limits)). 
 
 Po vytvoření snímku sdílené složky ho můžete číst, kopírovat, nebo odstranit, ale nedojde ke změně. Snímek celé sdílené složky nelze zkopírovat do jiného účtu úložiště. Budete muset provést to soubor po souboru, pomocí nástroje AzCopy nebo jiných mechanismů kopírování.
 
@@ -62,6 +62,8 @@ Snímky se nepočítají směrem k vaší sdílené složky 5 TB omezení. Neexi
 Maximální počet snímků sdílené složky, které Azure Files umožňuje ještě dnes je 200. Po snímků 200 sdílených složek je nutné odstranit starší snímků sdílené složky chcete-li vytvořit nové. 
 
 Neexistuje žádné omezení souběžných volání pro vytvoření snímků sdílené složky. Neexistuje žádné omezení množství místa na tuto sdílenou složku, kterou můžete využívat snímky sdílené složky konkrétní. 
+
+V současné době není možné připojit snímků sdílené složky v Linuxu. Je to proto, že klient Linux SMB nepodporuje připojení snímků jako Windows.
 
 ## <a name="copying-data-back-to-a-share-from-share-snapshot"></a>Kopírování dat zpět do sdílené složky ze snímku sdílené složky
 Operace kopírování, které zahrnují soubory a sdílet snímky dodržovat tato pravidla:

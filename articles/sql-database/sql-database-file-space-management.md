@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: how-to
 ms.topic: conceptual
-ms.date: 08/15/2018
+ms.date: 09/14/2018
 ms.author: moslake
-ms.openlocfilehash: 498e83e7c312480af6d2eff7d44bd13aee9c55fd
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 09b7df861f65a5fb4b3c9727f61f73a0ff4e0d65
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42054634"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45730227"
 ---
 # <a name="manage-file-space-in-azure-sql-database"></a>Správa místo souborů ve službě Azure SQL Database
 Tento článek popisuje různé druhy prostoru úložiště v Azure SQL Database a kroky, které mohou být provedeny, když přidělené místo souborů databáze a elastické fondy je potřeba explicitně spravovat.
@@ -27,7 +27,7 @@ Většina metrik úložiště prostor zobrazí portálu Azure portal a následuj
 - T-SQL: [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
 - T-SQL: [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)
 
-Existují vzorce úlohy kde přidělení podkladové datové soubory pro databáze, mívá větší než velikost stránek používaná data.  Tato situace může nastat, když používá zvyšuje prostor a následně se odstraní data.  Je to proto přidělené místo souboru neuvolní automaticky, když se odstraní data.  V takových scénářích do přiděleného místa pro databáze nebo fondu může podporované limity a zabránit nárůstu objemu dat nebo zabraňují změně úrovně výkonu a vyžadují zmenšení datové soubory ke zmírnění.
+Existují vzorce úlohy kde přidělení podkladové datové soubory pro databáze, mívá větší než velikost stránek používaná data.  Tato situace může nastat, když používá zvyšuje prostor a následně se odstraní data.  Je to proto přidělené místo souboru neuvolní automaticky, když se odstraní data.  V takových scénářích do přiděleného místa pro databáze nebo fondu může podporované limity a zabránit nárůstu objemu dat nebo zabránit úroveň služby compute změny velikosti a vyžadují zmenšení datové soubory ke zmírnění.
 
 Služba SQL DB automaticky nezmenší datové soubory uvolnění nevyužívaného místa přiděleného kvůli možnému dopadu na výkon databáze.  Zákazníci však může zmenšit datových souborů prostřednictvím samoobslužné v době podle vlastního uvážení pomocí následujících kroků popsaných v [Reclaim nevyužité přidělené místo na](#reclaim-unused-allocated-space). 
 

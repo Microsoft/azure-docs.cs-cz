@@ -1,6 +1,6 @@
 ---
-title: Řešení Agent Health v OMS | Dokumentace Microsoftu
-description: Tento článek vám objasní, jak pomocí tohoto řešení monitorovat stav agentů odesílajících sestavy přímo do OMS nebo nástroje System Center Operations Manager.
+title: Řešení Agent Health v Azure | Dokumentace Microsoftu
+description: Tento článek je určený k vám pomůžou porozumět způsobu použití tohoto řešení monitorovat stav agentů odesílajících sestavy přímo do Log Analytics nebo System Center Operations Manager.
 services: operations-management-suite
 documentationcenter: ''
 author: MGoedtel
@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2017
 ms.author: magoedte
-ms.openlocfilehash: 8a6275748c82fbb448a767af690121abbd1f669a
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: f0737c6a6ff228b92a030242faf7f4d634bdd9f2
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346920"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45733175"
 ---
-#  <a name="agent-health-solution-in-oms"></a>Řešení Agent Health v OMS
-Řešení Agent Health v OMS vám pomůže rozpoznat, kteří z agentů, odesílajících sestavy přímo do pracovního prostoru OMS nebo do skupiny pro správu nástroje System Center Operations Manager připojené k OMS, nereagují a odesílají provozní data.  Můžete také sledovat, kolik agentů je nasazených a jak jsou geograficky distribuováni, a provádět další dotazy, abyste si udrželi přehled o distribuci agentů nasazených v Azure, dalších cloudových prostředích nebo místně.    
+#  <a name="agent-health-solution-in-azure"></a>Řešení Agent Health v Azure
+Řešení Agent Health v Azure vám pomůže pochopit, u všech agentů odesílajících sestavy přímo do pracovního prostoru Log Analytics nebo skupinu pro správu System Center Operations Manager připojení k Log Analytics, která jsou reagovat a odešlete provozní data.  Můžete také sledovat, kolik agentů je nasazených a jak jsou geograficky distribuováni, a provádět další dotazy, abyste si udrželi přehled o distribuci agentů nasazených v Azure, dalších cloudových prostředích nebo místně.    
 
 ## <a name="prerequisites"></a>Požadavky
-Před nasazením tohoto řešení potvrďte, že aktuálně podporujete [agenty systému Windows](../log-analytics/log-analytics-windows-agent.md) odesílající sestavy to pracovního prostoru OMS nebo do [skupiny pro správu nástroje Operations Manager](../log-analytics/log-analytics-om-agents.md) integrované s pracovním prostorem OMS.    
+Před nasazením tohoto řešení potvrďte, že aktuálně podporujete [agentů Windows](../log-analytics/log-analytics-windows-agent.md) sestavy do pracovního prostoru Log Analytics nebo odesílajících sestavy do [skupinu pro správu Operations Manageru](../log-analytics/log-analytics-om-agents.md) integrované s váš pracovní prostor.    
 
 ## <a name="solution-components"></a>Součásti řešení
 Toto řešení se skládá z následujících prostředků, které se přidají do vašeho pracovního prostoru, a přímo připojených agentů nebo skupiny pro správu připojené k nástroji Operations Manager.
 
 ### <a name="management-packs"></a>Sady Management Pack
-Pokud je vaše skupina pro správu System Center Operations Manageru připojená k pracovnímu prostoru OMS, do Operations Manageru se nainstalují následující sady Management Pack.  Tyto sady Management Pack se po přidání tohoto řešení nainstalují také na přímo připojené počítače s Windows. U těchto sad Management Pack není nutné nic konfigurovat ani spravovat.
+Pokud vaší skupině pro správu System Center Operations Manageru je připojený k pracovnímu prostoru Log Analytics, nainstaluje se následující sady management Pack v nástroji Operations Manager.  Tyto sady Management Pack se po přidání tohoto řešení nainstalují také na přímo připojené počítače s Windows. U těchto sad Management Pack není nutné nic konfigurovat ani spravovat.
 
 * Microsoft System Center Advisor HealthAssessment Direct Channel Intelligence Pack (Microsoft.IntelligencePacks.HealthAssessmentDirect)
 * Microsoft System Center Advisor HealthAssessment Server Channel Intelligence Pack (Microsoft.IntelligencePacks.HealthAssessmentViaServer).  
@@ -39,7 +39,7 @@ Pokud je vaše skupina pro správu System Center Operations Manageru připojená
 Další informace o způsobu, jakým se aktualizují sady pro správu řešení, najdete v tématu [Připojení Operations Manageru ke službě Log Analytics](../log-analytics/log-analytics-om-agents.md).
 
 ## <a name="configuration"></a>Konfigurace
-Přidejte řešení Agent Health do pracovního prostoru OMS pomocí procesu popsaného v tématu o [přidání řešení](../log-analytics/log-analytics-add-solutions.md). Není nutná žádná další konfigurace.
+Přidejte řešení Agent Health do pracovního prostoru Log Analytics pomocí postupu popsaného v [přidat řešení](../log-analytics/log-analytics-add-solutions.md). Není nutná žádná další konfigurace.
 
 
 ## <a name="data-collection"></a>Shromažďování dat
@@ -52,7 +52,7 @@ Následující tabulka popisuje připojené zdroje, které toto řešení podpor
 | Skupina pro správu nástroje System Center Operations Manager | Ano | Události prezenčního signálu se shromažďují z agentů odesílajících sestavy do skupiny pro správu každých 60 sekund a pak se předávají do Log Analytics. Přímé připojení z agentů nástroje Operations Manager ke službě Log Analytics není potřeba. Data událostí prezenčního signálu se předávají ze skupiny pro správu do úložiště Log Analytics.|
 
 ## <a name="using-the-solution"></a>Použití řešení
-Když přidáte řešení do pracovního prostoru OMS, na řídicí panel OMS se přidá dlaždice **Agent Health**. Tato dlaždice ukazuje celkový počet agentů a počet nereagujících agentů za posledních 24 hodin.<br><br> ![Dlaždice řešení Agent Health na řídicím panelu](./media/monitoring-solution-agenthealth/agenthealth-solution-tile-homepage.png)
+Když přidáte řešení do pracovního prostoru Log Analytics **stav agenta** se přidá dlaždice na řídicí panel. Tato dlaždice ukazuje celkový počet agentů a počet nereagujících agentů za posledních 24 hodin.<br><br> ![Dlaždice řešení Agent Health na řídicím panelu](./media/monitoring-solution-agenthealth/agenthealth-solution-tile-homepage.png)
 
 Kliknutím na dlaždici **Agent Health** otevřete řídicí panel **Agent Health**.  Řídicí panel obsahuje sloupce v následující tabulce. Každý sloupec obsahuje seznam prvních deseti událostí podle počtu, které splňují kritéria sloupce pro zadaný časový rozsah. Výběrem možnosti **Zobrazit všechno** v pravé dolní části každého sloupce nebo kliknutím na záhlaví sloupce můžete spustit prohledávání protokolu, které vám poskytne úplný seznam.
 
@@ -65,12 +65,12 @@ Kliknutím na dlaždici **Agent Health** otevřete řídicí panel **Agent Healt
 | Distribuce podle kategorie agenta | Rozdělení různých kategorií agentů, kteří odesílají události prezenčního signálu: přímí agenti, agenti nástroje Operations Manager nebo server pro správu nástroje Operations Manager.|
 | Distribuce podle skupiny pro správu | Rozdělení různých skupin pro správu nástroje SCOM ve vašem prostředí.|
 | Geografické umístění agentů | Rozdělení různých zemí, ve kterých máte agenty, a celkový počet agentů nainstalovaných v každé zemi.|
-| Počet nainstalovaných bran | Počet serverů s nainstalovanou bránou OMS a seznam těchto serverů.|
+| Počet nainstalovaných bran | Počet serverů, které mají nainstalovanou bránu analýzy protokolů a seznam těchto serverů.|
 
 ![Ukázka řídicího panelu řešení Agent Health](./media/monitoring-solution-agenthealth/agenthealth-solution-dashboard.png)  
 
 ## <a name="log-analytics-records"></a>Záznamy služby Log Analytics
-Řešení vytváří v úložišti OMS jeden typ záznamu.  
+Toto řešení vytvoří jeden typ záznamu v pracovním prostoru Log Analytics.  
 
 ### <a name="heartbeat-records"></a>Záznamy prezenčního signálu
 Vytvoří se záznam typu **Prezenční signál**.  Vlastnosti záznamů tohoto typu uvádí následující tabulka.  
@@ -83,9 +83,9 @@ Vytvoří se záznam typu **Prezenční signál**.  Vlastnosti záznamů tohoto 
 | OSType | Operační systém Windows nebo Linux.|
 | OSMajorVersion | Hlavní verze operačního systému.|
 | OSMinorVersion | Podverze operačního systému.|
-| Verze | Verze agenta OMS nebo agenta nástroje Operations Manager.|
+| Verze | Verze agenta log Analytics nebo agenta nástroje Operations Manager.|
 | SCAgentChannel | Hodnota je *Direct* (Přímý) nebo *SCManagementServer* (Server pro správu nástroje SCOM).|
-| IsGatewayInstalled | Pokud je nainstalovaná brána OMS, hodnota je *true*, jinak je hodnota *false*.|
+| IsGatewayInstalled | Pokud je nainstalovaná brána Log Analytics, je hodnota *true*, v opačném případě je hodnota *false*.|
 | ComputerIP | IP adresa počítače.|
 | RemoteIPCountry | Zeměpisné umístění, kde je počítač nasazený.|
 | ManagementGroupName | Název skupiny pro správu nástroje Operations Manager.|
@@ -93,7 +93,7 @@ Vytvoří se záznam typu **Prezenční signál**.  Vlastnosti záznamů tohoto 
 | RemoteIPLongitude | Zeměpisná délka zeměpisného umístění počítače.|
 | RemoteIPLatitude | Zeměpisná šířka zeměpisného umístění počítače.|
 
-Každý agent odesílající sestavy na server pro správu nástroje Operations Manager bude odesílat dva prezenční signály a hodnota vlastnosti SCAgentChannel bude zahrnovat **Direct** i **SCManagementServer** v závislosti na tom, jaká řešení a jaké zdroje dat Log Analytics jste ve svém předplatném OMS povolili. Jestli si vzpomínáte, data z řešení se buď odesílají přímo ze serveru pro správu nástroje Operations Manager do webové služby OMS, nebo se kvůli objemu dat shromážděných v agentovi odesílají přímo z agenta do webové služby OMS. U událostí prezenčního signálu, které mají hodnotu **SCManagementServer**, je hodnota ComputerIP IP adresou serveru pro správu, protože ten data ve skutečnosti odesílá.  U prezenčních signálů, které mají vlastnost SCAgentChannel nastavenou na hodnotu **Direct**, to je veřejná IP adresa agenta.  
+Každý agent generování sestav použít server pro správu nástroje Operations Manager bude odesílat dva prezenční signály a hodnota vlastnosti SCAgentChannel bude zahrnovat **přímé** a **SCManagementServer** v závislosti na tom, jaký protokol Zdroje dat Analytics a řešení, které jste povolili ve vašem předplatném. Pokud jste si možná Vzpomínáte, data z řešení se buď odesílají přímo ze serveru pro správu Operations Manageru ke službě Log Analytics nebo z důvodu objem dat shromážděných v agentovi, se odesílají přímo z agenta ke službě Log Analytics. U událostí prezenčního signálu, které mají hodnotu **SCManagementServer**, je hodnota ComputerIP IP adresou serveru pro správu, protože ten data ve skutečnosti odesílá.  U prezenčních signálů, které mají vlastnost SCAgentChannel nastavenou na hodnotu **Direct**, to je veřejná IP adresa agenta.  
 
 ## <a name="sample-log-searches"></a>Ukázky hledání v protokolech
 V následující tabulce jsou uvedeny ukázky prohledávání protokolu pro záznamy shromážděné tímto řešením.
@@ -111,7 +111,7 @@ V následující tabulce jsou uvedeny ukázky prohledávání protokolu pro záz
 | Heartbeat &#124; summarize AggregatedValue = count() by Category |Distribuce podle kategorie agenta |
 | Heartbeat &#124; summarize AggregatedValue = dcount(Computer) by ManagementGroupName | Distribuce podle skupiny pro správu |
 | Heartbeat &#124; summarize AggregatedValue = dcount(Computer) by RemoteIPCountry |Geografické umístění agentů |
-| Heartbeat &#124; where iff(isnotnull(toint(IsGatewayInstalled)), IsGatewayInstalled == true, IsGatewayInstalled == "true") == true &#124; distinct Computer |Počet nainstalovaných bran OMS |
+| Heartbeat &#124; where iff(isnotnull(toint(IsGatewayInstalled)), IsGatewayInstalled == true, IsGatewayInstalled == "true") == true &#124; distinct Computer |Počet nainstalovaných bran Log Analytics |
 
 
 

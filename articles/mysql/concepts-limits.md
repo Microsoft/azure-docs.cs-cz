@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 06/30/2018
-ms.openlocfilehash: c18faa94f207b98400fece366a23a68c3d7bc58c
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: d73c0cc6416145fa3764d2ef938d6de7a4195c1b
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45633176"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982874"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Omezení ve službě Azure Database for MySQL
 Následující části popisují kapacitu, podpora modulu úložiště, oprávnění podpory, podpora příkaz manipulace dat a funkční omezení v databázi služby. Viz také [obecná omezení](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) pro databázového stroje MySQL.
@@ -80,9 +80,6 @@ Při připojení překročí limit, může se zobrazit následující chyba:
 
 ### <a name="vnet-service-endpoints"></a>Koncové body služby virtuální sítě
 - Podpora pro koncové body služby virtuální sítě je pouze pro servery pro obecné účely a optimalizovaný pro paměť.
-
-### <a name="subscription-management"></a>Správa předplatného
-- Dynamicky přesunutí předem vytvořené servery v předplatném a skupině prostředků se momentálně nepodporuje.
 
 ## <a name="current-known-issues"></a>Aktuální známé problémy
 - Instanci MySQL serveru zobrazuje verze serveru měla špatný po navázání připojení. Chcete-li získat správný server verze modulu instance, použijte `select version();` příkazu.

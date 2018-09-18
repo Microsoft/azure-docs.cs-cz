@@ -1,26 +1,20 @@
 ---
-title: 'Rychlý start: Vytvoření účtu služeb Cognitive Services na webu Azure Portal'
-titleSuffix: Microsoft Docs
-description: Zjistěte, jak vytvořit účet pro přístup k Azure Cognitive Services.
+title: Na webu Azure Portal vytvořit účet rozhraní API služeb Cognitive Services
+titlesuffix: Azure Cognitive Services
+description: Jak vytvořit účet Microsoft API služeb Cognitive Services na webu Azure Portal.
 services: cognitive-services
-documentationcenter: ''
-author: aahill
+author: garyericson
 manager: cgronlun
-editor: ''
-ms.assetid: b6176bb2-3bb6-4ebf-84d1-3598ee6e01c6
 ms.service: cognitive-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 09/06/2018
-ms.author: aahi
-ms.reviewer: gibattag
-ms.openlocfilehash: 232e0aa64eef4f6829813efff6e0abffd0a78518
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.topic: conceptual
+ms.date: 02/01/2018
+ms.author: garye
+ms.openlocfilehash: bab88c00b8c429bc604c4606d2db72df6b694243
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45605126"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982789"
 ---
 # <a name="quickstart-create-a-cognitive-services-account-in-the-azure-portal"></a>Rychlý start: Vytvoření účtu služeb Cognitive Services na webu Azure Portal
 

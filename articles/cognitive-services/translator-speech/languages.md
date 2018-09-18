@@ -1,25 +1,26 @@
 ---
-title: Podporované jazyky v rozhraní API pro rozpoznávání řeči překladač Microsoft | Microsoft Docs
-description: Zobrazení jazyků – podpora rozhraní API pro rozpoznávání řeči překladač společnosti Microsoft.
+title: Podporované jazyky – Translator Speech API
+titlesuffix: Azure Cognitive Services
+description: Zobrazit jazyky podporovanými rozhraní Translator Speech API.
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-speech
-ms.topic: article
+ms.topic: conceptual
 ms.date: 3/5/2018
 ms.author: v-jansko
-ms.openlocfilehash: 0d33033442a012290baa78d80f1b8bde0499b3f1
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 216a3caf9b4e6f3f512ba13361de9f3933f83b13
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343790"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985141"
 ---
-# <a name="languages-supported-by-the-microsoft-translator-speech-api"></a>Jazyky podporované rozhraním API řeči překladač Microsoft
-Pro překlad řeči jsou podporovány následující jazyky. Pokud oba jazyky jsou podporovány pro překlad rozpoznávání řeči, řeči na rozpoznávání řeči nebo řeči na text je k dispozici. Pokud cílový jazyk není podporován pro překlad rozpoznávání řeči, je k dispozici pouze převod řeči na text překlad. 
+# <a name="languages-supported-by-the-translator-speech-api"></a>Jazyky podporované rozhraní Translator Speech API
+Pro překlad řeči se podporují tyto jazyky. Pokud oba jazyky jsou podporovány pro překlad řeči, převod řeči na řeč a převod řeči na text je k dispozici. Pokud cílový jazyk není podporován pro překlad řeči, je k dispozici pouze převod řeči na text překladu. 
 
-| Rozpoznávání řeči jazyk    |
+| Rozpoznávání řeči, jazyka    |
 |:----------- |
 | Arabština (moderní Standard)      |
 | Čínština (Mandarínština)      |
@@ -32,7 +33,7 @@ Pro překlad řeči jsou podporovány následující jazyky. Pokud oba jazyky js
 | ruština      |
 | Španělština      | 
 
-Rozhraní API pro rozpoznávání řeči překladač Microsoft podporuje následující jazyky jako cílový jazyk pro převod řeči na text překlad. 
+Translator Speech API podporuje následující jazyky jako cílový jazyk pro převod řeči na text překladu. 
 
 | Jazyk textu    | Kód jazyka |
 |:----------- |:-------------:|
@@ -72,7 +73,7 @@ Rozhraní API pro rozpoznávání řeči překladač Microsoft podporuje násled
 | Korejština      | `ko`          |
 | Lotyština      | `lv`          |
 | Litevština      | `lt`          |
-| Madagaskarskému      | `mg`          |
+| Malgašský      | `mg`          |
 | Malajština      | `ms`          |
 | Maltština      | `mt`          |
 | norština      | `nb`          |
@@ -92,7 +93,7 @@ Rozhraní API pro rozpoznávání řeči překladač Microsoft podporuje násled
 | Tahitian      | `ty`          |
 | Tamilština      | `ta`          |
 | Thajština      | `th`          |
-| Tongan      | `to`          |
+| Tonžská      | `to`          |
 | turečtina      | `tr`          |
 | Ukrajinština      | `uk`          |
 | Urdština      | `ur`          |
@@ -100,16 +101,16 @@ Rozhraní API pro rozpoznávání řeči překladač Microsoft podporuje násled
 | Velština      | `cy`          |
 | Yucatec Maya      | `yua`          |
 
-## <a name="access-the-list-programmatically"></a>Přístup k seznamu prostřednictvím kódu programu
+## <a name="access-the-list-programmatically"></a>Programový přístup k seznamu
 
-Seznam podporovaných jazyků, programově pomocí jazyků prostředků můžete přistupovat. Kód jazyka, jakož i název jazyka v angličtině nebo dalších podporovaných jazyků naleznete v seznamu. Tento seznam je automaticky aktualizovat pomocí služby Microsoft Translator dostupná nové jazyky.
+Seznam podporovaných jazyků programově pomocí jazyků prostředku můžete přistupovat. V seznamu jsou uvedeny kód jazyka, jakož i název jazyka v angličtině nebo libovolného podporovaného jazyka. Tento seznam se aktualizuje automaticky službou Translator Speech, jakmile budou k dispozici. nové jazyky.
 
-Prostředek jazyky vrátí seznam podporovaných jazyků pro rozpoznávání řeči, text a převod textu na řeč. Jazyky prostředků nevyžaduje ověření.
+Prostředek jazyky vrátí seznam podporovaných jazyků pro řeč, text a převod textu na řeč. Jazyky prostředků nevyžaduje ověření.
 
-[Navštivte referenční dokumentace rozhraní API můžete vyzkoušet na metodu jazyky](languages-reference.md)
+[Navštivte referenční rozhraní API můžete vyzkoušet na jazyky – metoda](languages-reference.md)
 
-## <a name="access-the-list-on-the-microsoft-translator-website"></a>Přístup k seznamu na webu Microsoft Translator
+## <a name="access-the-list-on-the-microsoft-translator-website"></a>Přístup k seznamu na webu Microsoft Translatoru
 
-Pro rychlý přehled jazyky na webu Microsoft Translator zobrazí všech jazyků podporovaných překladač textu a rozhraní API pro rozpoznávání řeči. Tento seznam neobsahuje informace specifické pro vývojáře například kódy jazyků.
+Pro rychlý přehled jazyků na webu Microsoft Translatoru zobrazí všechny jazyky podporované Translator Text API a rozhraní API pro rozpoznávání řeči. Tento seznam nezahrnuje informace specifické pro vývojáře, jako je jazyk kódy.
 
 [Zobrazit seznam jazyků](https://www.microsoft.com/translator/languages.aspx) 

@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/06/2018
+ms.date: 09/15/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: dc362dba62e8fd41b33e10368483577d8166f300
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 4ef50e1a027c0109b4e076e5f1dbbb1ba4ce2950
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44722329"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45737494"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Operace poskytovatele prostředků Azure Resource Manageru
 
@@ -34,6 +34,9 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Typ akce | Operace | Popis |
 > | --- | --- | --- |
 > | Akce | Microsoft.AAD/domainServices/delete | Odstranit doménu služby |
+> | Akce | Microsoft.AAD/domainServices/oucontainer/delete | Odstranění kontejneru organizační jednotky |
+> | Akce | Microsoft.AAD/domainServices/oucontainer/read | Kontejnery organizační jednotky pro čtení |
+> | Akce | Microsoft.AAD/domainServices/oucontainer/write | Zápis kontejneru organizační jednotky |
 > | Akce | Microsoft.AAD/domainServices/read | Čtení Domain Services |
 > | Akce | Microsoft.AAD/domainServices/write | Zápis Domain Services |
 > | Akce | Microsoft.AAD/locations/operationresults/read |  |
@@ -699,7 +702,9 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.Cache/redis/patchSchedules/read | Získá plán oprav mezipaměti Redis Cache. |
 > | Akce | Microsoft.Cache/redis/patchSchedules/write | Upraví plán oprav mezipaměti Redis Cache. |
 > | Akce | Microsoft.Cache/redis/read | Zobrazit nastavení a konfiguraci Redis Cache na portálu pro správu |
+> | Akce | Microsoft.Cache/redis/recommendations/read | Přečtěte si doporučení pro Azure Redis Cache |
 > | Akce | Microsoft.Cache/redis/regenerateKey/action | Změnit hodnotu přístupových klíčů služby Redis Cache na portálu pro správu |
+> | Akce | Microsoft.Cache/redis/start/action | Spuštění instance mezipaměti |
 > | Akce | Microsoft.Cache/redis/start/action | Spuštění instance mezipaměti |
 > | Akce | Microsoft.Cache/redis/stop/action | Zastavení instance mezipaměti |
 > | Akce | Microsoft.Cache/redis/write | Upravit nastavení a konfiguraci služby Redis Cache na portálu pro správu |
@@ -825,8 +830,12 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.ClassicCompute/domainNames/capabilities/read | Ukazuje možnosti názvu domény |
 > | Akce | Microsoft.ClassicCompute/domainNames/delete | Umožňuje odebrat názvy domén pro prostředky. |
 > | Akce | Microsoft.ClassicCompute/domainNames/deploymentslots/read | Umožňuje zobrazit sloty pro nasazení. |
+> | Akce | Microsoft.ClassicCompute/domainNames/deploymentslots/roles/read | Získat role slotu nasazení názvu domény |
+> | Akce | Microsoft.ClassicCompute/domainNames/deploymentslots/roles/roleinstances/read | Načíst instanci role pro roli v nasazovací slot názvu domény |
 > | Akce | Microsoft.ClassicCompute/domainNames/deploymentslots/state/read | Získá stav slotu nasazení |
 > | Akce | Microsoft.ClassicCompute/domainNames/deploymentslots/state/write | Přidá stav slotu nasazení. |
+> | Akce | Microsoft.ClassicCompute/domainNames/deploymentslots/upgradedomain/read | Získat upgradovací doména pro slot nasazení na název domény |
+> | Akce | Microsoft.ClassicCompute/domainNames/deploymentslots/upgradedomain/write | Aktualizační doména upgrade pro slot nasazení na název domény |
 > | Akce | Microsoft.ClassicCompute/domainNames/deploymentslots/write | Umožňuje vytvořit nebo aktualizovat slot pro nasazení. |
 > | Akce | Microsoft.ClassicCompute/domainNames/extensions/delete | Odebere rozšíření názvu domény. |
 > | Akce | Microsoft.ClassicCompute/domainNames/extensions/operationStatuses/read | Přečte stav operace pro rozšíření názvů domén. |
@@ -1173,6 +1182,9 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.Compute/virtualMachineScaleSets/osUpgradeHistory/read | Získat historii upgradů operačního systému pro škálovací sadu virtuálních počítačů |
 > | Akce | Microsoft.Compute/virtualMachineScaleSets/performMaintenance/action | Provede plánovanou údržbu instancí škálovací sady virtuálních počítačů. |
 > | Akce | Microsoft.Compute/virtualMachineScaleSets/powerOff/action | Umožňuje vypnout instance škálovací sady virtuálních počítačů. |
+> | Akce | Microsoft.Compute/virtualMachineScaleSets/providers/Microsoft.Insights/diagnosticSettings/read | Získá nastavení diagnostiky pro škálovací sadu virtuálních počítačů. |
+> | Akce | Microsoft.Compute/virtualMachineScaleSets/providers/Microsoft.Insights/diagnosticSettings/write | Vytvoří nebo aktualizuje nastavení diagnostiky pro škálovací sadu virtuálních počítačů. |
+> | Akce | Microsoft.Compute/virtualMachineScaleSets/providers/Microsoft.Insights/logDefinitions/read | Získá dostupné protokoly pro škálovací sady virtuálních počítačů. |
 > | Akce | Microsoft.Compute/virtualMachineScaleSets/providers/Microsoft.Insights/metricDefinitions/read | Přečte definice metriky Škálovací sada virtuálních počítačů. |
 > | Akce | Microsoft.Compute/virtualMachineScaleSets/publicIPAddresses/read | Získá vlastnosti všech veřejných IP adres škálovací sady virtuálních počítačů. |
 > | Akce | Microsoft.Compute/virtualMachineScaleSets/read | Umožňuje získat vlastnosti škálovací sady virtuálních počítačů. |
@@ -2164,6 +2176,9 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.Insights/AlertRules/Throttled/Action | Klasické metriky pravidlo výstrahy je omezené |
 > | Akce | Microsoft.Insights/AlertRules/Write | Vytvořit nebo aktualizovat klasických upozornění na metriku |
 > | Akce | Microsoft.Insights/AutoscaleSettings/Delete | Odstranit nastavení automatického škálování |
+> | Akce | Microsoft.Insights/AutoscaleSettings/providers/Microsoft.Insights/diagnosticSettings/Read | Čtení nastavení diagnostiky prostředků |
+> | Akce | Microsoft.Insights/AutoscaleSettings/providers/Microsoft.Insights/diagnosticSettings/Write | Vytvoří nebo aktualizuje nastavení diagnostiky prostředků |
+> | Akce | Microsoft.Insights/AutoscaleSettings/providers/Microsoft.Insights/logDefinitions/Read | Číst definice protokolů |
 > | Akce | Microsoft.Insights/AutoscaleSettings/providers/Microsoft.Insights/MetricDefinitions/Read | Číst definice metrik |
 > | Akce | Microsoft.Insights/AutoscaleSettings/Read | Čtení nastavení automatického škálování |
 > | Akce | Microsoft.Insights/AutoscaleSettings/Scaledown/Action | Automatické škálování vertikálně snížit kapacitu spuštěné |
@@ -2257,7 +2272,6 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.Insights/Logs/ContainerInventory/Read | Přečte data z tabulky ContainerInventory. |
 > | Akce | Microsoft.Insights/Logs/ContainerLog/Read | Přečte data z tabulky ContainerLog. |
 > | Akce | Microsoft.Insights/Logs/ContainerServiceLog/Read | Přečte data z tabulky ContainerServiceLog. |
-> | Akce | Microsoft.Insights/Logs/CustomLogs/Read | Přečte data z jakéhokoli vlastního protokolu. |
 > | Akce | Microsoft.Insights/Logs/DeviceAppCrash/Read | Přečte data z tabulky DeviceAppCrash. |
 > | Akce | Microsoft.Insights/Logs/DeviceAppLaunch/Read | Přečte data z tabulky DeviceAppLaunch. |
 > | Akce | Microsoft.Insights/Logs/DeviceCalendar/Read | Přečte data z tabulky DeviceCalendar. |
@@ -2496,9 +2510,6 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.LabServices/labAccounts/labs/users/write | Přidat nebo změnit uživatele. |
 > | Akce | Microsoft.LabServices/labAccounts/labs/write | Přidání a úpravy testovacích prostředí. |
 > | Akce | Microsoft.LabServices/labAccounts/read | Čtení účtů testovacího prostředí. |
-> | Akce | Microsoft.LabServices/labAccounts/sizes/GetRegionalAvailability/action | Získejte informace o místní dostupnosti pro každou kategorii velikost konfigurují v rámci účtu testovacího prostředí |
-> | Akce | Microsoft.LabServices/labAccounts/sizes/read | Přečtěte si velikosti. |
-> | Akce | Microsoft.LabServices/labAccounts/sizes/ResetOverrides/action | Obnoví na výchozí nastavení konfigurace velikosti tohoto účtu testovacího prostředí |
 > | Akce | Microsoft.LabServices/labAccounts/write | Přidat nebo upravit účtů testovacího prostředí. |
 > | Akce | Microsoft.LabServices/locations/operations/read | Operace čtení. |
 > | Akce | Microsoft.LabServices/register/action | Zaregistruje předplatné. |
@@ -3742,6 +3753,7 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.OperationalInsights/workspaces/query/OutboundConnection/read | Přečte data z tabulky OutboundConnection. |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/Perf/read | Přečte data z tabulky Perf. |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/ProtectionStatus/read | Přečte data z tabulky ProtectionStatus. |
+> | Akce | Microsoft.OperationalInsights/workspaces/query/read | Spouštění dotazů nad daty v pracovním prostoru |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/ReservedAzureCommonFields/read | Přečte data z tabulky ReservedAzureCommonFields. |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/ReservedCommonFields/read | Přečte data z tabulky ReservedCommonFields. |
 > | Akce | Microsoft.OperationalInsights/workspaces/query/SCCMAssessmentRecommendation/read | Přečte data z tabulky SCCMAssessmentRecommendation. |
@@ -4280,11 +4292,6 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.ServiceBus/namespaces/messagingPlan/read | Získá plán pro zasílání zpráv pro obor názvů.<br>Toto rozhraní API je zastaralé.<br>Vlastnosti zveřejněné přes prostředek MessagingPlan přesunuly do (nadřazeného) prostředku Namespace v pozdějších verzích rozhraní API...<br>Tato operace není podporována v rozhraní API verze 2017-04-01. |
 > | Akce | Microsoft.ServiceBus/namespaces/messagingPlan/write | Aktualizuje se plán pro zasílání zpráv pro obor názvů.<br>Toto rozhraní API je zastaralé.<br>Vlastnosti zveřejněné přes prostředek MessagingPlan přesunuly do (nadřazeného) prostředku Namespace v pozdějších verzích rozhraní API...<br>Tato operace není podporována v rozhraní API verze 2017-04-01. |
 > | Akce | Microsoft.ServiceBus/namespaces/migrate/action | Operace migrace oboru názvů |
-> | Akce | Microsoft.ServiceBus/namespaces/migrationConfigurations/delete | Odstraní konfiguraci migrace. |
-> | Akce | Microsoft.ServiceBus/namespaces/migrationConfigurations/read | Získá konfiguraci migrace, která označuje stav migrace a čekající operace replikace. |
-> | Akce | Microsoft.ServiceBus/namespaces/migrationConfigurations/revert/action | Obrátí migraci oboru názvů Standard na Premium. |
-> | Akce | Microsoft.ServiceBus/namespaces/migrationConfigurations/upgrade/action | Přiřadí službu DNS přidruženou k oboru názvů Standard do oboru názvů Premium, čímž se dokončí migrace a zastaví se synchronizace prostředků z oboru názvů Standard do oboru názvů Premium. |
-> | Akce | Microsoft.ServiceBus/namespaces/migrationConfigurations/write | Vytvoří nebo konfiguraci migrace aktualizace. Tato akce spustí synchronizaci prostředky z standardu pro obor názvů úrovně premium |
 > | Akce | Microsoft.ServiceBus/namespaces/operationresults/read | Získá stav operace Namespace. |
 > | Akce | Microsoft.ServiceBus/namespaces/providers/Microsoft.Insights/diagnosticSettings/read | Získá seznam popisů prostředků Namespace nastavení diagnostiky |
 > | Akce | Microsoft.ServiceBus/namespaces/providers/Microsoft.Insights/diagnosticSettings/write | Získá seznam popisů prostředků Namespace nastavení diagnostiky |
@@ -4455,7 +4462,7 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.Sql/managedInstances/delete | Odstraní existující spravované instance. |
 > | Akce | Microsoft.Sql/managedInstances/encryptionProtector/read | Vrátí seznam hodnot ochrany pomocí šifrování serveru nebo načte vlastnosti pro zadaný server ochrana šifrování. |
 > | Akce | Microsoft.Sql/managedInstances/encryptionProtector/write | Aktualizací vlastností pro zadaný šifrování Ochrana serveru. |
-> | Akce | Microsoft.Sql/managedInstances/keys/delete | Odstraní existující klíč Azure SQL Database Managed Instance. |
+> | Akce | Microsoft.Sql/managedInstances/keys/delete | Odstraní existující klíč spravované Instance Azure SQL. |
 > | Akce | Microsoft.Sql/managedInstances/keys/read | Vrátí seznam spravovanou instanci klíče nebo načte vlastnosti klíče určené spravované instance. |
 > | Akce | Microsoft.Sql/managedInstances/keys/write | Vytvoří klíč se zadanými parametry nebo aktualizovat vlastnosti a značky pro klíč zadaný spravované instance. |
 > | Akce | Microsoft.Sql/managedInstances/metricDefinitions/read | Získat definice metriky pro spravovanou instanci |
@@ -4712,7 +4719,7 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.Storage/storageAccounts/blobServices/containers/read | Vrátí kontejner nebo seznam kontejnerů. |
 > | Akce | Microsoft.Storage/storageAccounts/blobServices/containers/setLegalHold/action | Nastavit blokování kontejneru objektů blob z právních důvodů |
 > | Akce | Microsoft.Storage/storageAccounts/blobServices/containers/write | Vrátí výsledek vložení nebo vypůjčení kontejneru objektů blob. |
-> | Hodnotu DataAction | Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey/action | Vrátí klíč uživatele delegování pro službu blob service |
+> | Akce | Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey/action | Vrátí klíč uživatele delegování pro službu blob service |
 > | Akce | Microsoft.Storage/storageAccounts/blobServices/providers/Microsoft.Insights/diagnosticSettings/read | Získá nastavení diagnostiky prostředku. |
 > | Akce | Microsoft.Storage/storageAccounts/blobServices/providers/Microsoft.Insights/diagnosticSettings/write | Vytvoří nebo aktualizuje nastavení diagnostiky prostředku. |
 > | Akce | Microsoft.Storage/storageAccounts/blobServices/providers/Microsoft.Insights/logDefinitions/read | Získá definici protokolu pro objekt blob. |
@@ -4724,7 +4731,7 @@ Operace poskytovatele prostředků se vždy vyvíjejí. Chcete-li získat nejnov
 > | Akce | Microsoft.Storage/storageAccounts/fileServices/providers/Microsoft.Insights/diagnosticSettings/write | Vytvoří nebo aktualizuje nastavení diagnostiky prostředku. |
 > | Akce | Microsoft.Storage/storageAccounts/fileServices/providers/Microsoft.Insights/logDefinitions/read | Získá definici protokolu pro soubor. |
 > | Akce | Microsoft.Storage/storageAccounts/fileServices/providers/Microsoft.Insights/metricDefinitions/read | Získá seznam definic Metrik úložišť Microsoft. |
-> | Akce | Microsoft.Storage/storageAccounts/lastsynctime/read |  |
+> | Akce | Microsoft.Storage/storageAccounts/lastsynctime/read | Vrátí čas poslední synchronizace účtu úložiště |
 > | Akce | Microsoft.Storage/storageAccounts/listAccountSas/action | Vrátí token SAS určeného účtu úložiště. |
 > | Akce | Microsoft.Storage/storageAccounts/listkeys/action | Vrátí přístupové klíče pro zadaný účet úložiště. |
 > | Akce | Microsoft.Storage/storageAccounts/listServiceSas/action | Vrátí token SAS služby pro určený účet úložiště. |

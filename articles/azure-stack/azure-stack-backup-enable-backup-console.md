@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: jeffgilb
-ms.openlocfilehash: 1373e98b8edac81ebdb15aaf36d8bbfc910029fe
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: fdcc4f51f49e8eb133deeeecd070c55511cda464
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44026181"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985792"
 ---
 # <a name="enable-backup-for-azure-stack-from-the-administration-portal"></a>Povolení zálohování pro Azure Stack z portálu pro správu
 Povolte službu Backup infrastruktury prostřednictvím portálu pro správu Azure stacku vytvářet zálohy. Tyto zálohy lze použít k obnovení svého prostředí pomocí cloudu obnovení v případě [závažnému selhání](.\azure-stack-backup-recover-data.md). Účelem zotavení cloudu je zajistit, že uživatelé a operátoři může přihlásit zpátky na portálu po dokončení obnovení. Uživatelé budou mít svá předplatná obnovit včetně oprávnění k přístupu na základě rolí a rolí, původní plány, nabídky a dříve definované výpočetní prostředky, úložiště a síťové kvóty.
@@ -62,7 +62,7 @@ Pro zálohování a obnovení prostředky IaaS a PaaS odděleně od procesů zá
 ## <a name="start-backup"></a>Spustit zálohování
 Pokud chcete spustit zálohování, klikněte na **zálohovat nyní** spustit zálohu na vyžádání. Zálohu na vyžádání nezmění čas příští plánované zálohování. Po dokončení úlohy můžete potvrdit nastavení v **Essentials**:
 
-![Azure Stack – zálohování na vyžádání](media\azure-stack-backup\scheduled-backup.png).
+![Azure Stack – zálohování na vyžádání](media\azure-stack-backup\scheduled-backup.png)
 
 Můžete taky spustit rutinu prostředí PowerShell **Start AzsBackup** ve vašem počítači pro správu služby Azure Stack. Další informace najdete v tématu [zálohování Azure stacku](azure-stack-backup-back-up-azure-stack.md).
 

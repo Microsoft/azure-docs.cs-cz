@@ -6,15 +6,15 @@ author: CarlRabeler
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 08/30/2018
+ms.date: 09/14/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: 8266d9e3530969154ac9c8c877badda9f8b4fed3
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 93b017482006507d616d9125cd17fd2f14389d59
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307268"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983042"
 ---
 # <a name="choosing-a-vcore-service-tier-compute-memory-storage-and-io-resources"></a>Výběr úrovně služeb vCore, výpočty, paměť, úložiště a vstupně-VÝSTUPNÍCH prostředků
 
@@ -26,7 +26,7 @@ modelu virt. jader také umožňuje používat [zvýhodněné hybridní využit�
 
 ## <a name="service-tier-characteristics"></a>Vlastnosti úrovně služeb
 
-Modelu virt. jader nabízí dvě úrovně služeb pro obecné účely a pro důležité obchodní informace. Úrovně služby jsou rozlišené pomocí rozsah úrovně výkonu, vysoká dostupnost, izolaci chyb, typy úložiště a vstupně-výstupních operací. Zákazník musí zvlášť nakonfigurovat požadované období úložiště a uchovávání dat pro zálohování.
+Modelu virt. jader nabízí dvě úrovně služeb pro obecné účely a pro důležité obchodní informace. Úrovně služby jsou rozlišené pomocí rozsah velikostí výpočetních, vysoká dostupnost, izolaci chyb, typy úložiště a vstupně-výstupních operací. Zákazník musí zvlášť nakonfigurovat požadované období úložiště a uchovávání dat pro zálohování.
 
 Následující tabulka vám pomůže pochopit rozdíly mezi těmito dvěma vrstvami:
 
@@ -53,10 +53,10 @@ Zobrazit [nejčastější dotazy k SQL Database](sql-database-faq.md) odpovědi 
 
 Zvažte použití těchto zdrojů:
 - Přidělené úložiště využívané datové soubory (MDF) a soubory protokolu souborů (LDF).
-- Každá úroveň výkonu izolované databáze podporuje maximální velikost databáze, s výchozí maximální velikost 32 GB.
+- Každou izolovanou databázi vypočítat velikost podporuje maximální velikost databáze, s výchozí maximální velikost 32 GB.
 - Když konfigurujete velikost požadované izolovanou databázi (velikost MDF), 30 % dalšího úložiště, je automaticky přidaná kvůli podpoře LDF
 - Velikost úložiště ve spravované instanci musí být určena v násobcích po 32 GB.
-- Můžete vybrat libovolné velikosti databáze typu singleton mezi 10 GB a podporované maximum
+- Můžete vybrat libovolné velikosti izolované databáze mezi 10 GB a podporované maximum
  - Pro úložiště úrovně Standard zvětšit nebo zmenšit velikost v přírůstcích po 10 GB
  - Pro Premium storage zvětšit nebo zmenšit velikost v přírůstcích po 250 GB
 - V úrovni General Purpose služby `tempdb` používá připojené SSD a náklady na toto úložiště je zahrnutá v ceně vCore.
@@ -113,13 +113,13 @@ Migrace skupin převzetí služeb při selhání s více databázemi vyžaduje j
 
 ### <a name="creation-of-a-geo-replication-secondary"></a>Vytvoření sekundární geografické replikace
 
-Můžete vytvořit pouze typu geo-secondary pomocí stejné úrovně služeb jako primární. Pro databázi s protokolu vysokou míru generování doporučujeme, že se vytvoří sekundární se stejnou úrovní výkonu jako primární. Při vytváření typu geo-secondary v elastickém fondu pro jednu primární databázi, doporučuje se, že má fond `maxVCore` nastavení, která odpovídá primární databázi úrovně výkonu. Pokud vytváříte typu geo-secondary v elastickém fondu pro primární do druhého elastického fondu, se doporučuje že fondy mají stejné `maxVCore` nastavení
+Můžete vytvořit pouze typu geo-secondary pomocí stejné úrovně služeb jako primární. Pro databázi s protokolu vysokou míru generování doporučujeme, že se vytvoří sekundární se stejnou velikostí výpočetních jako primární. Při vytváření typu geo-secondary v elastickém fondu pro jednu primární databázi, doporučuje se, že má fond `maxVCore` nastavení, která odpovídá výpočetní velikost primární databáze. Pokud vytváříte typu geo-secondary v elastickém fondu pro primární do druhého elastického fondu, se doporučuje že fondy mají stejné `maxVCore` nastavení
 
 ### <a name="using-database-copy-to-convert-a-dtu-based-database-to-a-vcore-based-database"></a>Převést databázi založený na DTU na databázi založený na virtuálních jádrech, pomocí kopie databáze.
 
-Všechny databáze s úrovní výkonu založený na DTU můžete zkopírovat do databáze s založený na virtuálních jádrech výkonu úrovně bez omezení nebo speciální, pořadí úloh jako cílovou úrovní výkonu podporuje maximální velikost zdrojové databáze. Je to proto, že kopie databáze vytvoří snímek dat od počáteční čas operace kopírování a neprovede synchronizace dat mezi zdrojem a cílem. 
+Můžete zkopírovat libovolnou databázi s velikostí výpočetními prostředky na základě jednotek DTU na databázi s velikostí výpočetních založený na virtuálních jádrech bez omezení nebo speciální pořadí úloh, tak dlouho, dokud výpočty velikost cíle podporuje maximální velikost zdrojové databáze. Je to proto, že kopie databáze vytvoří snímek dat od počáteční čas operace kopírování a neprovede synchronizace dat mezi zdrojem a cílem. 
 
 ## <a name="next-steps"></a>Další postup
 
-- Podrobnosti o konkrétní úrovně výkonu a možnosti velikosti úložiště dostupné pro izolované databáze, najdete v části [limity prostředků založený na virtuálních jádrech SQL Database pro izolované databáze](sql-database-vcore-resource-limits-single-databases.md#single-database-storage-sizes-and-performance-levels)
-- Podrobnosti o konkrétní úrovně výkonu a úložiště možnosti velikosti k dispozici pro elastické fondy najdete v části [limity pro elastické fondy SQL Database založené na virtuálních jádrech prostředků](sql-database-vcore-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-performance-levels).
+- Podrobnosti o konkrétní výpočetní prostředky, velikosti a možnosti velikosti úložiště dostupné pro izolované databáze, najdete v části [limity prostředků založený na virtuálních jádrech SQL Database pro izolované databáze](sql-database-vcore-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes)
+- Podrobnosti o konkrétní výpočetní velikosti a možnosti velikosti úložiště dostupné pro elastické fondy najdete v článku [limity pro elastické fondy SQL Database založené na virtuálních jádrech prostředků](sql-database-vcore-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes).

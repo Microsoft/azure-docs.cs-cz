@@ -1,23 +1,23 @@
 ---
-title: Zjišťování typy obrázků
-titleSuffix: Computer Vision - Cognitive Services - Azure
-description: Koncepty související se zjišťováním typy obrázků pomocí služeb Azure Cognitive Services pro počítačové zpracování obrazu.
+title: Zjišťování typy obrázků – pro počítačové zpracování obrazu
+titleSuffix: Azure Cognitive Services
+description: Koncepty související se zjišťováním typy obrázků pomocí rozhraní API pro počítačové zpracování obrazu.
 services: cognitive-services
 author: deken
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: v-deken
-ms.openlocfilehash: 6c0280959e82eaa2da4927b48af7ebc28db25a7d
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 1a76106caed514f56e897203fba5215b7e93d4ff
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44725372"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984819"
 ---
-# <a name="detecting-image-types"></a>Zjišťování typy obrázků
+# <a name="detecting-image-types"></a>Rozpoznávání typů obrázků
 
 Počítačové zpracování obrazu můžete analyzovat typ obsahu imagí podle určující, zda je bitové klipart, hodnocení pravděpodobnost, že na škálovací nebo perokresba.
 

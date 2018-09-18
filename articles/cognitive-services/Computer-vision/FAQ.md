@@ -1,89 +1,91 @@
 ---
-title: Časté otázky k počítači vizi rozhraní API | Microsoft Docs
-description: Získejte odpovědi na nejčastější dotazy týkající se rozhraní API vize počítače v kognitivní služby společnosti Microsoft.
+title: Nejčastější dotazy k Computer Vision API
+titlesuffix: Azure Cognitive Services
+description: Získejte odpovědi na nejčastější dotazy týkající se rozhraní API pro počítačové zpracování obrazu ve službě Azure Cognitive Services.
 services: cognitive-services
 author: KellyDF
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/26/2017
 ms.author: kefre
-ms.openlocfilehash: 5c862dd2fb26a005f4e785673a4e9358ecf9286f
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 5c0a4e981a290b9a758c8401a75e546c61618b45
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342418"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983897"
 ---
-# <a name="computer-vision-api-frequently-asked-questions"></a>Nejčastější dotazy k počítači vize rozhraní API
-### <a name="if-you-cant-find-answers-to-your-questions-in-this-faq-try-asking-the-computer-vision-api-community-on-stackoverflowhttpsstackoverflowcomquestionstaggedproject-oxfordormicrosoft-cognitive-or-contact-help-and-support-on-uservoicehttpscognitiveuservoicecom"></a>Pokud nenajdete odpovědi na otázky v tohoto článku, zkuste žádostí počítače vize API komunity na [StackOverflow](https://stackoverflow.com/questions/tagged/project-oxford+or+microsoft-cognitive) nebo se obraťte na [Nápověda a podpora na UserVoice](https://cognitive.uservoice.com/)
+# <a name="computer-vision-api-frequently-asked-questions"></a>Computer Vision API na nejčastější dotazy
+
+### <a name="if-you-cant-find-answers-to-your-questions-in-this-faq-try-asking-the-computer-vision-api-community-on-stackoverflowhttpsstackoverflowcomquestionstaggedproject-oxfordormicrosoft-cognitive-or-contact-help-and-support-on-uservoicehttpscognitiveuservoicecom"></a>Pokud nemůžete najít odpovědi na své dotazy v tomto dokumentu, zkuste se zeptat v komunitě rozhraní API pro počítačové zpracování obrazu na [StackOverflow](https://stackoverflow.com/questions/tagged/project-oxford+or+microsoft-cognitive) nebo se obraťte na [Nápověda a podpora na UserVoice](https://cognitive.uservoice.com/)
 
 -----
 
-**Otázka**: *můžete cvičení API vize počítače mají používat vlastní značky?  Například nastavit jako ke kanálu v obrázcích plemen cat cvičení AI a pak zobrazí hodnota plemeno na požadavek AI.*
+**Dotaz**: *můžete trénování rozhraní API pro počítačové zpracování obrazu používat vlastní značky?  Například chci informačního kanálu obrázky plemen cat trénování AI a pak zobrazí hodnotu generace v požadavku AI.*
 
-**Odpověď**: Tato funkce není momentálně k dispozici. Naše technici však pracují zobrazíte tuto funkci můžete vize počítače.
-
------
-
-**Otázka**: *vize počítače můžete použít místně bez připojení k Internetu?*
-
-**Odpověď**: aktuálně nenabízíme místní nebo místní řešení.
+**Odpověď**: Tato funkce momentálně není k dispozici. Naši technici jsou však práce zpřístupnit tuto funkci pro počítačové zpracování obrazu.
 
 -----
 
-**Otázka**: *podporované jazyky s vize počítače?*
+**Dotaz**: *můžete pro počítačové zpracování obrazu se dá používat místně bez připojení k Internetu?*
 
-**Odpověď**: mezi podporované jazyky patří:
+**Odpověď**: aktuálně nenabízíme místní nebo místního řešení.
+
+-----
+
+**Dotaz**: *jazyky, které podporují pro počítačové zpracování obrazu?*
+
+**Odpověď**: podporované jazyky patří:
 
 | | | Podporované jazyky | | |
 |---------------- |------------------ |------------------ |--------------------------- |--------------------
 | Dánština (da-DK)  | Holandština (nl-NL)     | Angličtina           | Finština (fi-FI)            |Francouzština (fr-FR)
 | Němčina (de-DE)  | Řečtina (el-GR)     | Maďarština (hu-HU) | Italština (it-IT)            | Japonština (ja-JP)
 | Korejština (ko-KR)  | Norština (nb-NO) | Polština (pl-PL)    | Portugalština (pt-BR) (pt-PT) | Ruština (ru-RU)
-| Španělština (es-ES)   | Švédština (sv-SV)     | Turečtina (tr-TU)   |                            |
+| Španělština (es-ES)   | Švédština (sv-SV)     | Turečtina (tr jednotek Propustnosti)   |                            |
 
 -----
 
-**Otázka**: *vize počítače můžete použít ke čtení desky licence?*
+**Dotaz**: *můžete pro počítačové zpracování obrazu použít ke čtení talířů licence?*
 
-**Odpověď**: rozhraní API vize nabízí dobrý text vyhledávání s rozpoznávání znaků, ale není aktuálně optimalizované pro desky licence. Neustále Snažíme se zlepšování našich služeb a přidali rozpoznávání znaků pro automatické rozpoznávání registrační na našem seznamu požadovaných funkcí.
-
------
-
-**Otázka:** *podporované jazyky pro rozpoznávání rukopisu?*
-
-**Odpověď**: v současné době podporuje pouze angličtina.
+**Odpověď**: rozhraní API pro zpracování obrazu nabízí dobrý duplicit text pomocí technologie OCR, ale není aktuálně optimalizované pro licence talířů. Pokoušíme se neustále vylepšovat naše služby a přidali OCR pro automatické rozpoznávání registrační na našem seznamu požadovaných funkcí.
 
 -----
 
-**Otázka**: *jaké typy zápis povrchy jsou podporovány pro rozpoznávání rukopisu?*
+**Otázka:** *jazyky, které podporují rozpoznávání textu psaného rukou?*
 
-**Odpověď**: technologie funguje s různými druhy povrchy, včetně Tabule, dokument white paper a žlutý rychlé poznámky.
-
------
-
-**Otázka**: *jak dlouho operaci rozpoznávání rukopisu trvá?*
-
-**Odpověď**: množství času potřebného závisí na délku textu. Pro delší texty může trvat až na několik sekund. Proto po dokončení operace rozpoznat rukou Text, můžete počkat, než můžete načíst výsledky pomocí operace získání rukou výsledek operace Text.
+**Odpověď**: v současné době se podporuje jenom v angličtině.
 
 -----
 
-**Otázka**: *jak funguje text popisovač technologie rozpoznávání rukopisu, který byl vložen pomocí šipka nahoru uprostřed řádku?*
+**Dotaz**: *jaké typy psaní plochy jsou podporovány pro rozpoznávání textu psaného rukou?*
 
-**Odpověď**: takový text se vrátí jako samostatný řádek operace rozpoznávání rukopisu.
-
------
-
-**Otázka**: *jak technologii rozpoznávání rukopisu přeškrtnutý slova nebo popisovače řádky?*
-
-**Odpověď**: Pokud slova se překročí s více řádky k vykreslení je nelze rozpoznat, operace rozpoznávání rukopisu se vyzvedávat je. Ale pokud slova se překročí pomocí jeden řádek, že překročení se považuje za šumu a slova stále získat zachyceny operace rozpoznávání rukopisu.
+**Odpověď**: Tato technologie funguje s různými druhy zařízení Surface, včetně bločky nebo Tabule, dokument white paper a žluté.
 
 -----
 
-**Otázka**: *jakou směrů text jsou podporovány pro technologii rozpoznávání rukopisu?*
+**Dotaz**: *jak dlouho operace rozpoznávání textu psaného rukou trvá?*
 
-**Odpověď**: Text zaměřené na konkrétní na úhly až přibližně 30 stupňů do 40 stupňů může získat zachyceny operace rozpoznávání rukopisu.
+**Odpověď**: množství času potřebného závisí na délce textu. Pro delší text může trvat až na několik sekund. Proto po dokončení operace rozpoznat rukou Text, budete muset počkat, než můžete načíst pomocí operace získat rukou výsledek operace Text.
+
+-----
+
+**Dotaz**: *jak text popisovač technologie rozpoznávání rukopisu, který byl vložen pomocí stříška uprostřed řádku?*
+
+**Odpověď**: takového textu se vrátí jako samostatný řádek operací rozpoznávání rukopisu.
+
+-----
+
+**Dotaz**: *jak technologii rozpoznávání rukopisu zpracovává přeškrtnutý slova nebo řádky?*
+
+**Odpověď**: překročení slova s více řádky k vykreslení je nelze rozpoznat, operace rozpoznávání textu psaného rukou nebude sesbírejte je. Ale překročení slova pomocí jeden řádek, tento přechod je považován za šumu a slova stále získat vyzvednou operace rozpoznávání rukopisu.
+
+-----
+
+**Dotaz**: *jaké orientace textu podporují technologii rozpoznávání rukopisu?*
+
+**Odpověď**: Text orientovaný na úhly až přibližně 30 stupňů na 40 stupně může získat vyzvednou operace rozpoznávání rukopisu.
 
 -----

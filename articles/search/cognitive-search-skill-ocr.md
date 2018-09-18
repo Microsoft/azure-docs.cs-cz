@@ -1,6 +1,6 @@
 ---
-title: Odborností kognitivní vyhledávání rozpoznávání znaků (Azure Search) | Microsoft Docs
-description: Rozbalte text z souborů bitové kopie v obohacení kanál služby Azure Search.
+title: Kognitivní vyhledávání dovedností OCR (Azure Search) | Dokumentace Microsoftu
+description: Rozbalte text z obrázku soubory v rozšíření kanálu služby Azure Search.
 services: search
 manager: pablocas
 author: luiscabrer
@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 478afe81ed739b98487973eb092ee9cad0aa17fd
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 234651ad3672982e4de9617561a926712697945a
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37058899"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45734029"
 ---
-# <a name="ocr-cognitive-skill"></a>Kognitivní odborností rozpoznávání znaků
+# <a name="ocr-cognitive-skill"></a>OCR kognitivních dovedností
 
-**Rozpoznávání znaků** odborností extrahuje text z soubory obrázků. Podporované formáty souborů patří:
+**OCR** dovednosti extrahuje text z obrazových souborů. Podporované formáty souborů patří:
 
 + . JPEG
 + . JPG
@@ -28,32 +28,34 @@ ms.locfileid: "37058899"
 + . BMP
 + . GIF
 
+> [!NOTE]
+> Cognitive Search je ve veřejné verzi Preview. Spuštění dovednosti a extrakce image a normalizace se momentálně nabízí zdarma. Později cenách za tyto funkce bude oznámena. 
 
 ## <a name="skill-parameters"></a>Parametry dovedností
 
-Parametry jsou malá a velká písmena.
+Parametry rozlišují malá a velká písmena.
 
 | Název parametru     | Popis |
 |--------------------|-------------|
 | detectOrientation | Umožňuje automatické zjištění orientaci obrázku. <br/> Platné hodnoty: true / false.|
-|defaultLanguageCode | <p>  Kód jazyka ze vstupního textu. Mezi podporované jazyky patří: <br/> zh-Hans (ChineseSimplified) <br/> zh-Hant (ChineseTraditional) <br/>CS (čeština) <br/>da (dánština) <br/>NL (holandština) <br/>en (angličtina) <br/>Fi (finština)  <br/>FR (francouzština) <br/>  Německo (němčina) <br/>El (řečtina) <br/> hu (maďarština) <br/> ho (italština) <br/>  Japonsko (japonština) <br/> Ko (korejština) <br/> NB (norština) <br/>   PL (polština) <br/> PT (portugalština) <br/>  RU (ruština) <br/>  ES (španělština) <br/>  SV (švédština) <br/>  TR (turečtina) <br/> ar (Arabské) <br/> ro (rumunština) <br/> SR-Cyrl (SerbianCyrillic) <br/> SR-Latn (SerbianLatin) <br/>  Sk (slovenština). <br/>  UNK (neznámé) <br/><br/> Pokud kód jazyka je určena nebo hodnotu null, je jazyk autodetected. </p> |
-| textExtractionAlgorithm | "vytištěno" nebo "psané". Algoritmus "ručně psaný" text rozpoznávání rozpoznávání znaků je aktuálně ve verzi preview a podporována pouze v angličtině. |
+|defaultLanguageCode | <p>  Kód jazyka vstupního textu. Mezi podporované jazyky patří: <br/> zh-Hans (ChineseSimplified) <br/> zh-Hant (ChineseTraditional) <br/>CS (čeština) <br/>da (dánština) <br/>Nizozemsko (holandština) <br/>en (v angličtině) <br/>Fi (finština)  <br/>Francie (francouzština) <br/>  Německo (němčina) <br/>El (řečtina) <br/> FU (holandština) <br/> to (italština) <br/>  Japonsko (japonština) <br/> Ko (korejština) <br/> NB (norština) <br/>   PL (polština) <br/> PT (portugalština) <br/>  RU (ruština) <br/>  ES (španělština) <br/>  SV (švédština) <br/>  TR (turečtina) <br/> ar (Arabské písmo) <br/> ro (rumunština) <br/> rozhraní SR-Cyrl (SerbianCyrillic) <br/> rozhraní SR-Latn (SerbianLatin) <br/>  Sk (slovenština). <br/>  UNK (neznámé) <br/><br/> Pokud je kód jazyka neurčené nebo mít hodnotu null, je jazyk autodetected. </p> |
+| textExtractionAlgorithm | "Tisk" nebo "rukou psaný". Algoritmus OCR rozpoznávání "rukou psaný" text je aktuálně ve verzi preview a podporuje jenom v angličtině. |
 
 ## <a name="skill-inputs"></a>Vstupy dovedností
 
 | Název vstupu      | Popis                                          |
 |---------------|------------------------------------------------------|
-| image         | Komplexního typu. Aktuálně jedinou funguje s pole "/ dokumentu/normalized_images" vyprodukované indexeru objektů Blob v Azure při ```imageAction``` je nastaven na ```generateNormalizedImages```. Najdete v článku [ukázka](#sample-output) Další informace.|
+| image         | Komplexního typu. Momentálně se podporuje jenom spolupracuje s poli "/ dokument/normalized_images" vytvářených objektů Blob v Azure indexer při ```imageAction``` je nastavena na ```generateNormalizedImages```. Zobrazit [ukázka](#sample-output) Další informace.|
 
 
 ## <a name="skill-outputs"></a>Výstupy dovedností
-| Název výstupu     | Popis                   |
+| Název výstupního     | Popis                   |
 |---------------|-------------------------------|
-| text          | Prostý text extrahovat z bitové kopie.   |
-| layoutText    | Komplexní typ, který popisuje extrahované text a také umístění, kde byl nalezen text.|
+| text          | Prostý text extrahovaný z image.   |
+| layoutText    | Komplexní typ, který popisuje byl extrahován text, stejně jako umístění, ve kterém byl nalezen text.|
 
 
-## <a name="sample-definition"></a>Ukázka definice
+## <a name="sample-definition"></a>Ukázková definice
 
 ```json
 {
@@ -124,11 +126,11 @@ Parametry jsou malá a velká písmena.
 }
 ```
 
-## <a name="sample-merging-text-extracted-from-embedded-images-with-the-content-of-the-document"></a>Ukázka: Sloučení text extrahoval z vložené obrázky s obsah dokumentu.
+## <a name="sample-merging-text-extracted-from-embedded-images-with-the-content-of-the-document"></a>Ukázka: Sloučení text extrahovaný z vložené obrázky s obsahem dokumentu.
 
-Běžně používá pro Text fúze je možnost sloučení textovou reprezentaci bitových kopií (text ze znalostí rozpoznávání znaků nebo popisek bitové kopie) do pole obsahu dokumentu. 
+Běžným případem použití pro sloučení textu je možnost sloučit textovou reprezentaci řetězce obrázků (text ze OCR dovedností nebo popisek image) do pole obsahu dokumentu. 
 
-Následující příklad skillset vytvoří *merged_text* vložených pole tak, aby obsahovala textový obsah dokumentu a také text OCRed z každé bitové kopie v tomto dokumentu. 
+Následující příklad dovednosti vytvoří *merged_text* pole obsahující textový obsah dokumentu, jakož i OCRed text ze všech obrázků, které jsou součástí tohoto dokumentu. 
 
 #### <a name="request-body-syntax"></a>Syntaxe textu požadavku
 ```json
@@ -181,7 +183,7 @@ Následující příklad skillset vytvoří *merged_text* vložených pole tak, 
   ]
 }
 ```
-Výše uvedený příklad skillset předpokládá, že pole normalized-bitové kopie existuje. Chcete-li vygenerovat toto pole, nastavte *imageAction* konfigurace v indexeru definici *generateNormalizedImages* jak je uvedeno níže:
+Výše uvedený příklad dovednosti předpokládá, že existuje pole normalized bitové kopie. Chcete-li generovat toto pole, nastavte *imageAction* konfigurace definice indexeru pro *generateNormalizedImages* jak je znázorněno níže:
 
 ```json
 {  
@@ -198,5 +200,5 @@ Výše uvedený příklad skillset předpokládá, že pole normalized-bitové k
 ## <a name="see-also"></a>Další informace najdete v tématech
 + [Předdefinované dovednosti](cognitive-search-predefined-skills.md)
 + [TextMerger dovedností](cognitive-search-skill-textmerger.md)
-+ [Jak definovat skillset](cognitive-search-defining-skillset.md)
-+ [Vytvoření Indexer (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
++ [Definování dovedností](cognitive-search-defining-skillset.md)
++ [Vytvoření indexeru (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)

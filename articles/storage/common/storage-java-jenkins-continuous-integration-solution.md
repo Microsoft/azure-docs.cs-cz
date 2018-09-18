@@ -8,12 +8,12 @@ services: devops
 custom: jenkins
 ms.date: 07/31/2018
 ms.component: common
-ms.openlocfilehash: 549150abc630cd247927b4ba7042d0bdf0e8b88a
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: b7ac5c277b45ae5c005a284d5c38e55099c11e33
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39524385"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45735558"
 ---
 # <a name="using-azure-storage-with-a-jenkins-continuous-integration-solution"></a>Použití služby Azure Storage s řešením Jenkins kontinuální integrace
 
@@ -48,7 +48,7 @@ Výhody použití služby Blob service pro hostování artefakty sestavení agil
      
       Během typického řešení Jenkins CI by nastavit tak, aby se spouštěl jako služba, systémem Jenkins war na příkazovém řádku jsou dostatečné pro účely tohoto kurzu.
 * Účet Azure. Můžete se zaregistrovat pro účet Azure na <http://www.azure.com>.
-* Účet úložiště Azure. Pokud ještě nemáte účet úložiště, můžete vytvořit pomocí postupu v [vytvořit účet úložiště](../common/storage-create-storage-account.md#create-a-storage-account).
+* Účet úložiště Azure. Pokud ještě nemáte účet úložiště, můžete vytvořit pomocí postupu v [vytvořit účet úložiště](../common/storage-quickstart-create-account.md).
 * Znalost řešení Jenkins CI je doporučeno, avšak není nutné, protože následující obsah bude používat jako základní příklad zobrazit kroky potřebné při použití služby Blob service pro Jenkins CI jako úložiště artefaktů sestavení.
 
 ## <a name="how-to-use-the-blob-service-with-jenkins-ci"></a>Použití služby Blob service s Jenkins CI

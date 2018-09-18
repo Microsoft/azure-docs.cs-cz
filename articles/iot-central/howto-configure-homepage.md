@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 1b4d97c1e8c4360028cb249b7e1a61f9fc26e9f2
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 609dc8aa1305833fb3677de6fbe95cf490237a4a
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44300524"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45731117"
 ---
 ## <a name="configuring-homepage"></a>Konfigurace domovské stránky
 
@@ -27,7 +27,7 @@ Výběr **upravit**, knihovna řídicího panelu se otevře do panelu na levé s
 
 ![Knihovna řídicího panelu](media\howto-configure-homepage\image2.png)
 
-Například můžete přidat **nastavením a vlastnostem** dlaždici zobrazíte výběr aktuální hodnoty vlastností a nastavení. Uděláte to tak, nejdřív vyberte **šablona zařízení** vyberte **Instance zařízení**. Po na dlaždici, která poskytnout název a vyberte **nastavení** nebo **vlastnost** k zobrazení. V tomto případě jsme vybrali **ventilátor rychlost**. Kliknutím na **provádí** způsobí, že tato dlaždice se zobrazí na domovské stránce.
+Například můžete přidat **nastavením a vlastnostem** dlaždici zobrazíte výběr aktuální hodnoty vlastností a nastavení. Uděláte to tak, nejdřív vyberte **šablona zařízení** vyberte **Instance zařízení**. Po na dlaždici, která poskytnout název a vyberte **nastavení** nebo **vlastnost** k zobrazení. V tomto případě jsme vybrali **nastavit teploty**. Kliknutím na **provádí** způsobí, že tato dlaždice se zobrazí na domovské stránce.
 
 !["Konfigurace podrobnosti o zařízení" formulář s podrobnostmi o nastavení a vlastnosti](media\howto-configure-homepage\image3.png)
 

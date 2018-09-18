@@ -9,12 +9,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: carlrab
-ms.openlocfilehash: af9d34b0c3b59cbf012d16de27bb4c60a809f619
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 19693e394b0bd3a589ead25e2ddfa2fa88e92bad
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45630951"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45730375"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-elastic-pools"></a>Založený na virtuálních jádrech zakoupení modelu limity pro elastické fondy Azure SQL Database
 
@@ -25,17 +25,17 @@ Založený na DTU nákupní model omezení najdete v tématu [omezení prostřed
 > [!IMPORTANT]
 > Za určitých okolností budete muset zmenšit databázi uvolnění nevyužívaného místa. Další informace najdete v tématu [spravovat místo souborů ve službě Azure SQL Database](sql-database-file-space-management.md).
 
-## <a name="elastic-pool-storage-sizes-and-performance-levels"></a>Elastický fond: velikosti úložiště a úrovně výkonu
+## <a name="elastic-pool-storage-sizes-and-compute-sizes"></a>Elastický fond: velikosti úložiště a výpočty velikostí
 
-Pro elastické fondy SQL Database následující tabulky popisují prostředky dostupné na všech úrovních úrovni a výkonu služby. Můžete nastavit úroveň služby, úroveň výkonu a úložiště pomocí částka [webu Azure portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](sql-database-elastic-pool-manage.md#powershell-manage-elastic-pools-and-pooled-databases), [rozhraní příkazového řádku Azure](sql-database-elastic-pool-manage.md#azure-cli-manage-elastic-pools-and-pooled-databases), nebo [rozhraníRESTAPI](sql-database-elastic-pool-manage.md#rest-api-manage-elastic-pools-and-pooled-databases).
+Následující tabulky pro elastické fondy SQL Database, zobrazit prostředky dostupné na jednotlivých úrovních služby a vypočítat velikost. Můžete nastavit úroveň služby, výpočetního prostředí a pomocí velikost úložiště [webu Azure portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](sql-database-elastic-pool-manage.md#powershell-manage-elastic-pools-and-pooled-databases), [rozhraní příkazového řádku Azure](sql-database-elastic-pool-manage.md#azure-cli-manage-elastic-pools-and-pooled-databases), nebo [rozhraní REST API](sql-database-elastic-pool-manage.md#rest-api-manage-elastic-pools-and-pooled-databases).
 
 > [!NOTE]
-> Omezení prostředků jednotlivých databází v elastických fondech jsou obvykle stejné jako u izolovaných databází mimo fondy, které se stejnou úrovní výkonu. Maximální počet souběžných pracovních procesů pro databázi GP_Gen4_1 je například 200 pracovních procesů. Maximální počet souběžných pracovních procesů pro databáze ve fondu GP_Gen4_1 je tedy také 200 pracovních procesů. Všimněte si, že se celkový počet souběžných pracovních procesů ve fondu GP_Gen4_1 je 210.
+> Omezení prostředků jednotlivých databází v elastických fondech jsou obvykle stejné jako u izolovaných databází mimo fondy, které má stejnou výpočetní velikost. Maximální počet souběžných pracovních procesů pro databázi GP_Gen4_1 je například 200 pracovních procesů. Maximální počet souběžných pracovních procesů pro databáze ve fondu GP_Gen4_1 je tedy také 200 pracovních procesů. Všimněte si, že se celkový počet souběžných pracovních procesů ve fondu GP_Gen4_1 je 210.
 
 ### <a name="general-purpose-service-tier"></a>Obecné účely úrovně služeb
 
 #### <a name="generation-4-compute-platform"></a>Výpočetní platforma běžící generace 4
-|Úroveň výkonu|GP_Gen4_1|GP_Gen4_2|GP_Gen4_4|GP_Gen4_8|GP_Gen4_16|GP_Gen4_24|
+|Vypočítat velikost|GP_Gen4_1|GP_Gen4_2|GP_Gen4_4|GP_Gen4_8|GP_Gen4_16|GP_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |
 |Generování H/W|4|4|4|4|4|4|
 |Virtuální jádra|1|2|4|8|16|24|
@@ -59,7 +59,7 @@ Pro elastické fondy SQL Database následující tabulky popisují prostředky d
 |||
 
 #### <a name="generation-5-compute-platform"></a>Výpočetní platforma běžící generace 5
-|Úroveň výkonu|GP_Gen5_2|GP_Gen5_4|GP_Gen5_8|GP_Gen5_16|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40|GP_Gen5_80|
+|Vypočítat velikost|GP_Gen5_2|GP_Gen5_4|GP_Gen5_8|GP_Gen5_16|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40|GP_Gen5_80|
 |:--- | --: |--: |--: |--: |--: |--: |--: |--: |
 |Generování H/W|5|5|5|5|5|5|5|5|
 |Virtuální jádra|2|4|8|16|24|32|40|80|
@@ -85,7 +85,7 @@ Pro elastické fondy SQL Database následující tabulky popisují prostředky d
 ### <a name="business-critical-service-tier"></a>Obchodní vrstvy kritické služby
 
 #### <a name="generation-4-compute-platform"></a>Výpočetní platforma běžící generace 4
-|Úroveň výkonu|BC_Gen4_1|BC_Gen4_2|BC_Gen4_4|BC_Gen4_8|BC_Gen4_16|BC_Gen4_24|
+|Vypočítat velikost|BC_Gen4_1|BC_Gen4_2|BC_Gen4_4|BC_Gen4_8|BC_Gen4_16|BC_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |
 |Generování H/W|4|4|4|4|4|4|
 |Virtuální jádra|1|2|4|8|16|24|
@@ -100,7 +100,7 @@ Pro elastické fondy SQL Database následující tabulky popisují prostředky d
 |Vstupně-výstupní latence (přibližné)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|1 až 2 ms (zápis)<br>1 až 2 ms (čtení)|
 |Maximální počet souběžných pracovních procesů (požadavků)|210|420|840|1680|3360|5040|
 |Maximální povolené relace|30000|30000|30000|30000|30000|30000|
-|Maximální počet databází pro každý fond|Nepodporuje se|50|100|100|100|100|
+|Maximální počet databází pro každý fond|Pro tato velikost výpočetních jsou podporovány pouze jedné databáze|50|100|100|100|100|
 |Volby pro elastické fondy – vcore min/max na databázi|neuvedeno|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1, 2, 4|0, 0,25, 0,5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|0, 0,25, 0,5, 1, 2, 4, 8, 16, 24|
 |Počet replik|3|3|3|3|3|3|
 |Více AZ|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|neuvedeno|
@@ -109,7 +109,7 @@ Pro elastické fondy SQL Database následující tabulky popisují prostředky d
 |||
 
 #### <a name="generation-5-compute-platform"></a>Výpočetní platforma běžící generace 5
-|Úroveň výkonu|BC_Gen5_2|BC_Gen5_4|BC_Gen5_8|BC_Gen5_16|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
+|Vypočítat velikost|BC_Gen5_2|BC_Gen5_4|BC_Gen5_8|BC_Gen5_16|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
 |:--- | --: |--: |--: |--: |--: |--: |--: |--: |
 |Generování H/W|5|5|5|5|5|5|5|5|
 |Virtuální jádra|2|4|8|16|24|32|40|80|

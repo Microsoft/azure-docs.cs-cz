@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/31/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1bf20ebec5792fc01c62966a0454c37c3c950182
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 554434e57c5c67809f79aab21054e6ad60fe8491
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35899175"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45729377"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect uživatelské možnosti přihlášení
 Azure Active Directory (Azure AD) Connect umožňuje uživatelům se přihlásit k cloudových a místních prostředků pomocí přihlašovali stejnými hesly. Tento článek popisuje klíčové koncepty pro každý model identit vám pomůže vybrat identitu, která chcete použít pro přihlášení k Azure AD.
@@ -114,7 +114,7 @@ Hlavní název uživatele uživatele má formát username@domain. Pro doménu Ac
 ### <a name="user-principal-name-in-azure-ad"></a>Hlavní název uživatele ve službě Azure AD
 Průvodce Azure AD Connect používá atribut userPrincipalName, nebo vám umožní určit atribut (ve vlastní instalaci) pro použití v místním jako hlavní název uživatele ve službě Azure AD. Jedná se o hodnotu, která se používá pro přihlášení k Azure AD. Pokud hodnota atributu userPrincipalName neodpovídá ověřené domény ve službě Azure AD, Azure AD nahradí ho s výchozím. onmicrosoft.com hodnotu.
 
-Každý adresář služby Azure Active Directory se dodává s názvem integrované domény, formátu contoso.onmicrosoft.com, díky tomu můžete začít používat Azure nebo jiné služby Microsoftu. Můžete zlepšit a zjednodušit přihlašovací prostředí s použitím vlastních domén. Informace o vlastních názvů domén ve službě Azure AD a jak ověření domény najdete v tématu [přidání vlastního názvu domény do Azure Active Directory](../fundamentals/add-custom-domain.md#add-the-custom-domain-name-to-your-directory).
+Každý adresář služby Azure Active Directory se dodává s názvem integrované domény, formátu contoso.onmicrosoft.com, díky tomu můžete začít používat Azure nebo jiné služby Microsoftu. Můžete zlepšit a zjednodušit přihlašovací prostředí s použitím vlastních domén. Informace o vlastních názvů domén ve službě Azure AD a jak ověření domény najdete v tématu [přidání vlastního názvu domény do Azure Active Directory](../fundamentals/add-custom-domain.md#add-a-custom-domain-name).
 
 ## <a name="azure-ad-sign-in-configuration"></a>Konfigurace přihlášení k Azure AD
 ### <a name="azure-ad-sign-in-configuration-with-azure-ad-connect"></a>Konfigurace Azure AD přihlášení s využitím Azure AD Connect
@@ -126,7 +126,7 @@ Na přihlašovací stránku Azure AD najdete přípony UPN, které jsou definov�
 | Stav | Popis | Vyžaduje se akce |
 |:--- |:--- |:--- |
 | Ověřeno |Azure AD Connect nalezena že odpovídající ověřené domény ve službě Azure AD. Všechny uživatele pro tuto doménu můžete přihlásit pomocí svých místních přihlašovacích údajů. |Není vyžadována žádná akce. |
-| Neověřeno |Azure AD Connect nalezena odpovídající vlastní domény ve službě Azure AD, ale není ověřený. Přípona UPN uživatelů tato doména se změní na výchozí hodnotu. přípona onmicrosoft.com po synchronizaci, pokud doména není ověřený. | [Ověření vlastní domény ve službě Azure AD.](../fundamentals/add-custom-domain.md#verify-the-custom-domain-name-in-azure-ad) |
+| Neověřeno |Azure AD Connect nalezena odpovídající vlastní domény ve službě Azure AD, ale není ověřený. Přípona UPN uživatelů tato doména se změní na výchozí hodnotu. přípona onmicrosoft.com po synchronizaci, pokud doména není ověřený. | [Ověření vlastní domény ve službě Azure AD.](../fundamentals/add-custom-domain.md#verify-your-custom-domain-name) |
 | Nepřidáno |Azure AD Connect se nepovedlo najít vlastní doménu, která odpovídaly přípona UPN. Přípona UPN uživatelů tato doména se změní na výchozí hodnotu. přípona onmicrosoft.com, pokud doména není přidat a ověřit v Azure. | [Přidání a ověření vlastní domény, který odpovídá přípona UPN.](../fundamentals/add-custom-domain.md) |
 
 Na přihlašovací stránku Azure AD najdete přípony UPN, které jsou definovány pro místní služby Active Directory a odpovídající vlastní domény ve službě Azure AD zobrazí aktuální stav ověření. Vlastní instalace, teď můžete vybrat atribut pro zadaný hlavní název uživatele na **přihlášení Azure AD** stránky.

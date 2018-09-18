@@ -1,46 +1,46 @@
 ---
-title: Migrace počítačů po vyhodnocení s Azure migrovat | Microsoft Docs
-description: Popisuje, jak získat doporučení k migraci počítačů po spuštění posouzení se službou Azure migrovat.
+title: Migrace počítačů po posouzení pomocí Azure Migrate | Dokumentace Microsoftu
+description: Popisuje, jak získat doporučení pro migrace počítačů po spuštění posouzení pomocí služby Azure Migrate.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 06/19/2018
+ms.date: 09/17/2018
 ms.author: raynew
-ms.openlocfilehash: 571bd2424d1d38e6c0048a95b263dda000477e44
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 0b02ae4b75426b379ad7c124f5ddeb053c142ce6
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36221875"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45730290"
 ---
 # <a name="migrate-machines-after-assessment"></a>Migrace počítačů po posouzení
 
 
-[Azure migrací](migrate-overview.md) vyhodnocuje místní počítače, zkontrolujte, zda jsou vhodné pro migraci na Azure a poskytuje velikost a cenově odhady pro spuštění na počítač v Azure. V současné době Azure migrovat vyhodnocuje pouze počítače pro migraci. Migrace samotné právě probíhá, pomocí jiných služeb Azure.
+[Azure Migrate](migrate-overview.md) posuzuje vhodnost místních počítačů ke kontrole, jestli jsou vhodné k migraci do Azure a poskytuje odhady velikostí a nákladů pro spuštění počítače v Azure. V současné době Azure Migrate posuzuje pouze počítačů pro migraci. Samotné migrace se aktuálně provádí pomocí dalších služeb Azure.
 
-Tento článek popisuje, jak získat návrhy pro nástroj pro migraci po spuštění migrace hodnocení.
+Tento článek popisuje, jak získat návrhy pro nástroj pro migraci, až spustíte posouzení migrace.
 
 ## <a name="migration-tool-suggestion"></a>Návrh nástroj pro migraci
 
-Chcete-li získat návrhy týkající se nástrojů pro migraci, musíte udělat hloubkové zjišťování v místním prostředí. Hloubkové zjišťování je potřeba instalaci agentů na počítačích na místě.  
+Pokud chcete získat návrhy týkající se nástroje pro migraci, je potřeba hloubkové zjišťování v místním prostředí. Hloubkové zjišťování provádí instalaci agentů na místních počítačích.  
 
-1. Vytvoření projektu Azure migrovat, zjistit místní počítače a vytvořte assessment migrace. [Další informace](tutorial-assessment-vmware.md).
-2. Stáhněte a nainstalujte agenty Azure migrovat na každém počítači v místě, pro který chcete zobrazit doporučené migrace metoda. [Pomocí následujícího postupu](how-to-create-group-machine-dependencies.md#prepare-machines-for-dependency-mapping) k instalaci agentů.
-2. Identifikujte vaše místní počítače, které jsou vhodné pro migraci navýšení a shift. Toto jsou virtuální počítače, které nevyžadují žádné změny aplikace běžící na ně a můžete migrovat, protože je.
-3. Pro migraci navýšení a shift doporučujeme pomocí Azure Site Recovery. [Další informace](../site-recovery/tutorial-migrate-on-premises-to-azure.md). Alternativně můžete použít nástroje jiných výrobců, které podporují migraci na Azure.
-4. Pokud máte místní počítače, které nejsou vhodné pro migraci navýšení a shift, to znamená, pokud chcete migrovat konkrétní aplikaci, nikoli celý virtuální počítač, můžete další nástroje pro migraci. Například doporučujeme [migrace databáze Azure](https://azure.microsoft.com/campaigns/database-migration/) Pokud chcete migrovat místní databáze takové SQL Server, MySQL nebo Oracle do Azure.
+1. Vytvoření projektu Azure Migrate, zjišťování místních počítačů a vytvořit posouzení migrace. [Další informace](tutorial-assessment-vmware.md).
+2. Stáhněte a nainstalujte agenty Azure Migrate na každém počítači v místním, pro kterou chcete zobrazit metody doporučené migrace. [Tento postup](how-to-create-group-machine-dependencies.md#prepare-for-dependency-visualization) nainstalovat agenty.
+2. Identifikujte své místní počítače, které jsou vhodné k migraci lift and shift. Toto jsou virtuální počítače, které nevyžadují žádné změny aplikace, které běží na nich a je možné migrovat, protože je.
+3. Pro migraci lift and shift doporučujeme pomocí služby Azure Site Recovery. [Další informace](../site-recovery/tutorial-migrate-on-premises-to-azure.md). Alternativně můžete použít nástroje třetích stran, které podporují migraci do Azure.
+4. Pokud máte místní počítače, které nejsou vhodné pro migraci lift and shift to znamená, pokud chcete migrovat konkrétní aplikaci, nikoli celý virtuální počítač, můžete použít jiné nástroje pro migraci. Například, doporučujeme [Azure Database Migration service](https://azure.microsoft.com/campaigns/database-migration/) Pokud budete chtít migrovat místní databáze takové SQL serveru, MySQL nebo Oracle do Azure.
 
 
 ## <a name="review-suggested-migration-methods"></a>Zkontrolujte navrhované migrace metody
 
-1. Než získáte metoda navrhované migrace, budete muset vytvoření projektu Azure migrovat, zjistit místní počítače a spustit migraci hodnocení. [Další informace](tutorial-assessment-vmware.md).
-2. Po vytvoření hodnocení ji zobrazit v projektu > **přehled** > **řídicí panel**. Klikněte na tlačítko **hodnocení připravenosti**
+1. Než budete moct získat metodu navrhované migrace, budete muset vytvořit projekt Azure Migrate, přečtěte si na místních počítačích a spusťte posouzení migrace. [Další informace](tutorial-assessment-vmware.md).
+2. Jakmile bude posouzení hotové, zobrazit ho v projektu > **přehled** > **řídicí panel**. Klikněte na tlačítko **posouzení připravenosti**
 
     ![Posouzení připravenosti](./media/tutorial-assessment-vmware/assessment-report.png)  
 
-3. V **nástroj navržený**, zkontrolujte návrhy pro nástroje pro migraci můžete použít.
+3. V **navrhovaný nástroj**, zkontrolujte návrhy pro nástroje, které můžete použít pro migraci.
 
-    ![Navrhovaný nástroj](./media/tutorial-assessment-vmware/assessment-suitability.png) 
+    ![Navrhovaný nástroj](./media/tutorial-assessment-vmware/assessment-suitability.png)
 
 
 

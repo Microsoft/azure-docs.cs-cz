@@ -4,18 +4,18 @@ description: Spolupráce B2B ve službě Azure Active Directory podporuje vaše 
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
-ms.topic: article
+ms.topic: reference
 ms.date: 04/11/2017
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: a41eadaecc203f9371da3eee05367a4f77747253
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 20c824da82d6e3e66bfa2d7447c8a9573cbdce69
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35642758"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985809"
 ---
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Azure Active Directory s B2B spolupráce rozhraní API a přizpůsobení
 

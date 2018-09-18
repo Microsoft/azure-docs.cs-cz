@@ -28,6 +28,8 @@ items:
     href: azure-stack-tutorial-sql-server.md
   - name: Nabídka webových aplikací
     href: azure-stack-tutorial-app-service.md
+  - name: Ethereum během nasazení
+    href: azure-stack-ethereum.md
 - name: Koncepty
   items:
   - name: Integrace datových center
@@ -99,18 +101,28 @@ items:
     href: azure-stack-manage-basics.md
 - name: Návody
   items:
-  - name: Konfigurace shromažďování telemetrie
-    href: azure-stack-telemetry.md
-  - name: Registrace Azure Stack
-    href: azure-stack-registration.md
-  - name: Spravovat
+  - name: Správa služby Azure Stack
     items:
+    - name: Konfigurace shromažďování telemetrie
+      href: azure-stack-telemetry.md
+    - name: Registrace Azure Stack
+      href: azure-stack-registration.md
     - name: Správa oblastí
       href: azure-stack-region-management.md
     - name: Použití portálu správce
       href: azure-stack-manage-portals.md
     - name: Připojení ke službě Azure Stack
       href: azure-stack-connect-azure-stack.md
+    - name: Připojení k Azure
+      items:
+      - name: Připojení pomocí VPN
+        href: azure-stack-connect-vpn.md
+      - name: Informace o službě VPN gateway
+        href: azure-stack-vpn-gateway-about-vpn-gateways.md
+      - name: Nastavení služby VPN gateway
+        href: azure-stack-vpn-gateway-settings.md
+      - name: Připojení pomocí ExpressRoute
+        href: azure-stack-connect-expressroute.md
     - name: Povolení rozhraní příkazového řádku pro uživatele
       href: azure-stack-cli-admin.md
     - name: Nastavení prostředí pro správu
@@ -149,6 +161,8 @@ items:
         href: azure-stack-manage-storage-physical-memory-capacity.md
       - name: Přidání uzlů jednotky škálování
         href: azure-stack-add-scale-node.md
+      - name: Přidání veřejné IP adresy
+        href: azure-stack-add-ips.md
     - name: Výměna hardwaru
       items:
       - name: Uzel akce
@@ -159,25 +173,6 @@ items:
         href: azure-stack-replace-disk.md
       - name: Nahraďte komponenty
         href: azure-stack-replace-component.md
-    - name: Zálohování Azure stacku
-      href: azure-stack-backup-infrastructure-backup.md
-      items:
-      - name: Povolení zálohování pro Azure Stack z konzoly pro správu
-        href: azure-stack-backup-enable-backup-console.md
-      - name: Povolit zálohování pro Azure Stack pomocí Powershellu
-        href: azure-stack-backup-enable-backup-powershell.md
-      - name: Zálohování Azure stacku
-        href: azure-stack-backup-back-up-azure-stack.md
-      - name: Zálohování souborů a aplikací ve službě Azure Stack
-        href: ../backup/backup-mabs-files-applications-azure-stack.md?toc=/azure/azure-stack/toc.json&bc=/azure/azure-stack/breadcrumb/toc.json
-      - name: Replikace virtuálních počítačů Azure stacku pro Azure
-        href: ../site-recovery/azure-stack-site-recovery.md?toc=/azure/azure-stack/toc.json&bc=/azure/azure-stack/breadcrumb/toc.json
-      - name: Obnovit ze ztráty dat
-        href: azure-stack-backup-recover-data.md
-      - name: Osvědčené postupy zálohování
-        href: azure-stack-backup-best-practices.md
-      - name: Odkaz na zálohování
-        href: azure-stack-backup-reference.md
   - name: Zabezpečení, dodržování předpisů a identita
     items:
     - name: Přehled zabezpečení
@@ -202,144 +197,150 @@ items:
       href: azure-stack-rotate-secrets.md
     - name: Aktualizace antivirových
       href: azure-stack-security-av.md
-  - name: Nabídka služeb
+  - name: Naplnění webu Marketplace
     items:
-    - name: Přehled nabízených služeb
-      href: azure-stack-offer-services-overview.md
-    - name: Vytvoření plánů, nabídek a kvót
+    - name: Přehled webu Marketplace
+      href: azure-stack-marketplace.md
+    - name: Stažení položek z Marketplace
+      href: azure-stack-download-azure-marketplace-item.md
+    - name: Položky Azure Marketplace pro Azure Stack
+      href: azure-stack-marketplace-azure-items.md
+    - name: Vytvoření a publikování položky Marketplace
+      href: azure-stack-create-and-publish-marketplace-item.md
+    - name: Použijte nástroj pro publikování webu marketplace
+      href: azure-stack-marketplace-publisher.md
+    - name: Podporované hostované operační systémy pro Azure Stack
+      href: azure-stack-supported-os.md
+    - name: Přidání vlastní image virtuálního počítače
+      href: azure-stack-add-vm-image.md
+    - name: Nabízejí škálovací sadu virtuálních počítačů
+      href: azure-stack-compute-add-scalesets.md
+    - name: Nabízejí virtuální počítače s Linuxem
+      href: azure-stack-linux.md
+    - name: Přidání virtuálního počítače Red Hat
+      href: azure-stack-redhat-create-upload-vhd.md
+    - name: Nabízejí clusteru Kubernetes
+      href: azure-stack-solution-template-kubernetes-cluster-add.md
+  - name: Nabídka služeb
+    href: azure-stack-offer-services-overview.md
+  - name: Přehled služeb PaaS
+    href: azure-stack-tools-paas-services.md
+  - name: Nabídka SQL jako PaaS
+    href: azure-stack-sql-resource-provider.md
+    items:
+    - name: Nasazení poskytovatele prostředků SQL serveru
+      href: azure-stack-sql-resource-provider-deploy.md
+    - name: Přidat hostitelské servery SQL
+      href: azure-stack-sql-resource-provider-hosting-servers.md
+    - name: Vytvoření databáze SQL
+      href: azure-stack-sql-resource-provider-databases.md
+    - name: Aktualizace poskytovatele prostředků SQL serveru
+      href: azure-stack-sql-resource-provider-update.md
+    - name: Spravovat poskytovatele prostředků SQL serveru
+      href: azure-stack-sql-resource-provider-maintain.md
+    - name: Odebrat poskytovatele prostředků SQL serveru
+      href: azure-stack-sql-resource-provider-remove.md
+  - name: Nabídka MySQL jako PaaS
+    href: azure-stack-mysql-resource-provider.md
+    items:
+    - name: Nasazení poskytovatele prostředků MySQL serveru
+      href: azure-stack-mysql-resource-provider-deploy.md
+    - name: Přidat hostitelské servery MySQL
+      href: azure-stack-mysql-resource-provider-hosting-servers.md
+    - name: Vytvoření databáze MySQL
+      href: azure-stack-mysql-resource-provider-databases.md
+    - name: Aktualizace poskytovatele prostředků MySQL serveru
+      href: azure-stack-mysql-resource-provider-update.md
+    - name: Spravovat poskytovatele prostředků MySQL serveru
+      href: azure-stack-mysql-resource-provider-maintain.md
+    - name: Odebrat poskytovatele prostředků MySQL serveru
+      href: azure-stack-mysql-resource-provider-remove.md
+  - name: Nabídka App Service jako PaaS
+    href: azure-stack-app-service-overview.md
+    items:
+    - name: Plánování kapacity služby App Service
+      href: azure-stack-app-service-capacity-planning.md
+    - name: Než začnete
+      href: azure-stack-app-service-before-you-get-started.md
+    - name: Jak distribuovat napříč doménami selhání služby Azure App Service ve službě Azure Stack
+      href: azure-stack-app-service-fault-domain-update.md
+    - name: Nasazení poskytovatele prostředků App Service
+      href: azure-stack-app-service-deploy.md
+    - name: Nasazení App Service offline
+      href: azure-stack-app-service-deploy-offline.md
+    - name: Aktualizace služby App Service
+      href: azure-stack-app-service-update.md
+    - name: Aktualizace služby App Service Offline
+      href: azure-stack-app-service-update-offline.md
+    - name: Přidání dalších webových rolí pracovního procesu
+      href: azure-stack-app-service-add-worker-roles.md
+    - name: Konfigurace zdrojů nasazení
+      href: azure-stack-app-service-configure-deployment-sources.md
+    - name: App Service na zprávu k vydání verze Azure Stack
       items:
-      - name: Přehled plánů, nabídek, kvót a předplatných
-        href: azure-stack-plan-offer-quota-overview.md
-      - name: Vytvoření plánu
-        href: azure-stack-create-plan.md
-      - name: Vytvoření plánu služby doplněk
-        href: create-add-on-plan.md
-      - name: Vytvoření nabídky
-        href: azure-stack-create-offer.md
-      - name: Přihlášení k odběru nabídky
-        href: azure-stack-subscribe-plan-provision-vm.md
-      - name: Delegování nabídek v Azure Stacku
-        href: azure-stack-delegated-provider.md
-      - name: Typy kvót
-        href: azure-stack-quota-types.md
-    - name: Přehled služeb PaaS
-      href: azure-stack-tools-paas-services.md
-    - name: Nabídka SQL jako PaaS
-      href: azure-stack-sql-resource-provider.md
-      items:
-      - name: Nasazení poskytovatele prostředků SQL serveru
-        href: azure-stack-sql-resource-provider-deploy.md
-      - name: Přidat hostitelské servery SQL
-        href: azure-stack-sql-resource-provider-hosting-servers.md
-      - name: Vytvoření databáze SQL
-        href: azure-stack-sql-resource-provider-databases.md
-      - name: Aktualizace poskytovatele prostředků SQL serveru
-        href: azure-stack-sql-resource-provider-update.md
-      - name: Spravovat poskytovatele prostředků SQL serveru
-        href: azure-stack-sql-resource-provider-maintain.md
-      - name: Odebrat poskytovatele prostředků SQL serveru
-        href: azure-stack-sql-resource-provider-remove.md
-    - name: Nabídka MySQL jako PaaS
-      href: azure-stack-mysql-resource-provider.md
-      items:
-      - name: Nasazení poskytovatele prostředků MySQL serveru
-        href: azure-stack-mysql-resource-provider-deploy.md
-      - name: Přidat hostitelské servery MySQL
-        href: azure-stack-mysql-resource-provider-hosting-servers.md
-      - name: Vytvoření databáze MySQL
-        href: azure-stack-mysql-resource-provider-databases.md
-      - name: Aktualizace poskytovatele prostředků MySQL serveru
-        href: azure-stack-mysql-resource-provider-update.md
-      - name: Spravovat poskytovatele prostředků MySQL serveru
-        href: azure-stack-mysql-resource-provider-maintain.md
-      - name: Odebrat poskytovatele prostředků MySQL serveru
-        href: azure-stack-mysql-resource-provider-remove.md
-    - name: Nabídka App Service jako PaaS
-      items:
-      - name: Přehled App Service v Azure Stacku
-        href: azure-stack-app-service-overview.md
-      - name: Plánování kapacity
-        href: azure-stack-app-service-capacity-planning.md
-      - name: Než začnete
-        href: azure-stack-app-service-before-you-get-started.md
-      - name: Jak distribuovat napříč doménami selhání služby Azure App Service ve službě Azure Stack
-        href: azure-stack-app-service-fault-domain-update.md
-      - name: Nasazení poskytovatele prostředků App Service
-        href: azure-stack-app-service-deploy.md
-      - name: Nasazení App Service offline
-        href: azure-stack-app-service-deploy-offline.md
-      - name: Aktualizace služby App Service
-        href: azure-stack-app-service-update.md
-      - name: Aktualizace služby App Service Offline
-        href: azure-stack-app-service-update-offline.md
-      - name: Přidání dalších webových rolí pracovního procesu
-        href: azure-stack-app-service-add-worker-roles.md
-      - name: Konfigurace zdrojů nasazení
-        href: azure-stack-app-service-configure-deployment-sources.md
       - name: App Service v Azure stacku update 1 poznámky
         href: azure-stack-app-service-release-notes-update-one.md
       - name: App Service v Azure stacku zpráva k vydání verze update 2
         href: azure-stack-app-service-release-notes-update-two.md
       - name: App Service v Azure stacku zpráva k vydání verze update 3
         href: azure-stack-app-service-release-notes-update-three.md
-    - name: Ethereum během nasazení
-      href: azure-stack-ethereum.md
-    - name: Naplnění webu Marketplace
+  - name: Vytvoření plánů, nabídek a kvót
+    items:
+    - name: Přehled plánů, nabídek, kvót a předplatných
+      href: azure-stack-plan-offer-quota-overview.md
+    - name: Vytvoření plánu
+      href: azure-stack-create-plan.md
+    - name: Vytvoření plánu služby doplněk
+      href: create-add-on-plan.md
+    - name: Vytvoření nabídky
+      href: azure-stack-create-offer.md
+    - name: Přihlášení k odběru nabídky
+      href: azure-stack-subscribe-plan-provision-vm.md
+    - name: Delegování nabídek v Azure Stacku
+      href: azure-stack-delegated-provider.md
+    - name: Typy kvót
+      href: azure-stack-quota-types.md
+  - name: Využití a fakturace
+    href: azure-stack-billing-and-chargeback.md
+    items:
+    - name: Spravovat využití a fakturace jako zprostředkovatel kryptografických služeb
+      href: azure-stack-add-manage-billing-as-a-csp.md
       items:
-      - name: Přehled webu Marketplace
-        href: azure-stack-marketplace.md
-      - name: Stažení položek z Marketplace
-        href: azure-stack-download-azure-marketplace-item.md
-      - name: Položky Azure Marketplace pro Azure Stack
-        href: azure-stack-marketplace-azure-items.md
-      - name: Vytvoření a publikování položky Marketplace
-        href: azure-stack-create-and-publish-marketplace-item.md
-      - name: Použijte nástroj pro publikování webu marketplace
-        href: azure-stack-marketplace-publisher.md
-      - name: Podporované hostované operační systémy pro Azure Stack
-        href: azure-stack-supported-os.md
-      - name: Přidání vlastní image virtuálního počítače
-        href: azure-stack-add-vm-image.md
-      - name: Nabízejí škálovací sadu virtuálních počítačů
-        href: azure-stack-compute-add-scalesets.md
-      - name: Nabízejí virtuální počítače s Linuxem
-        href: azure-stack-linux.md
-      - name: Přidání virtuálního počítače Red Hat
-        href: azure-stack-redhat-create-upload-vhd.md
-      - name: Nabízejí clusteru Kubernetes
-        href: azure-stack-solution-template-kubernetes-cluster-add.md
-    - name: Využití a fakturace
-      href: azure-stack-billing-and-chargeback.md
+      - name: Přidání tenantů pro využití a fakturace
+        href: azure-stack-csp-howto-register-tenants.md
+      - name: Správa registrace tenanta
+        href: azure-stack-csp-ref-operations.md
+    - name: Využití a fakturace odkaz
       items:
-      - name: Spravovat využití a fakturace jako zprostředkovatel kryptografických služeb
-        href: azure-stack-add-manage-billing-as-a-csp.md
-        items:
-        - name: Přidání tenantů pro využití a fakturace
-          href: azure-stack-csp-howto-register-tenants.md
-        - name: Správa registrace tenanta
-          href: azure-stack-csp-ref-operations.md
-      - name: Využití a fakturace odkaz
-        items:
-        - name: Generování sestav dat využití
-          href: azure-stack-usage-reporting.md
-        - name: Využití sestav infrastruktury pro poskytovatele cloudových služeb
-          href: azure-stack-csp-ref-infrastructure.md
-        - name: Rozhraní API využití zprostředkovatele
-          href: azure-stack-provider-resource-api.md
-        - name: Rozhraní API využití tenanta
-          href: azure-stack-tenant-resource-usage-api.md
-        - name: Nejčastější dotazy k využití
-          href: azure-stack-usage-related-faq.md
-    - name: Připojení k Azure
-      items:
-      - name: Připojení pomocí VPN
-        href: azure-stack-connect-vpn.md
-      - name: Informace o službě VPN gateway
-        href: azure-stack-vpn-gateway-about-vpn-gateways.md
-      - name: Nastavení služby VPN gateway
-        href: azure-stack-vpn-gateway-settings.md
-      - name: Připojení pomocí ExpressRoute
-        href: azure-stack-connect-expressroute.md
+      - name: Generování sestav dat využití
+        href: azure-stack-usage-reporting.md
+      - name: Využití sestav infrastruktury pro poskytovatele cloudových služeb
+        href: azure-stack-csp-ref-infrastructure.md
+      - name: Rozhraní API využití zprostředkovatele
+        href: azure-stack-provider-resource-api.md
+      - name: Rozhraní API využití tenanta
+        href: azure-stack-tenant-resource-usage-api.md
+      - name: Nejčastější dotazy k využití
+        href: azure-stack-usage-related-faq.md
+  - name: Zálohování Azure stacku
+    href: azure-stack-backup-infrastructure-backup.md
+    items:
+    - name: Povolení zálohování pro Azure Stack z konzoly pro správu
+      href: azure-stack-backup-enable-backup-console.md
+    - name: Povolit zálohování pro Azure Stack pomocí Powershellu
+      href: azure-stack-backup-enable-backup-powershell.md
+    - name: Zálohování Azure stacku
+      href: azure-stack-backup-back-up-azure-stack.md
+    - name: Zálohování souborů a aplikací ve službě Azure Stack
+      href: ../backup/backup-mabs-files-applications-azure-stack.md?toc=/azure/azure-stack/toc.json&bc=/azure/azure-stack/breadcrumb/toc.json
+    - name: Replikace virtuálních počítačů Azure stacku pro Azure
+      href: ../site-recovery/azure-stack-site-recovery.md?toc=/azure/azure-stack/toc.json&bc=/azure/azure-stack/breadcrumb/toc.json
+    - name: Obnovit ze ztráty dat
+      href: azure-stack-backup-recover-data.md
+    - name: Osvědčené postupy zálohování
+      href: azure-stack-backup-best-practices.md
+    - name: Odkaz na zálohování
+      href: azure-stack-backup-reference.md
   - name: Řešení potíží
     items:
     - name: Známé problémy
@@ -372,9 +373,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-stack
   - name: Školení a certifikace
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: 2334accb56409bf77b52153a9e0d279cddd1d352
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: c6032eb4482dafaebcc376f3f22102a15f6f4cf4
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44026660"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985609"

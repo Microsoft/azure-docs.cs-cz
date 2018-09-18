@@ -4,18 +4,18 @@ description: Odkaz na token uživatele pro spolupráci Azure Active Directory s 
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/28/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: ff28943ba4f7b0eda5733783a14d1cc2f025f01b
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: df6250da5f7f989ccb2082c448786cce68abe22b
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35642786"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45981792"
 ---
 # <a name="understand-user-tokens-in-azure-ad-b2b-collaboration"></a>Vysvětlení tokeny uživatele v spolupráce B2B ve službě Azure AD
 

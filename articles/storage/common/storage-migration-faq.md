@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/11/2018
 ms.author: genli
 ms.component: common
-ms.openlocfilehash: ecc5948c84f7659e950c360c3b19d1985b0ab81c
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 3c671fe6dcb1af25bfb0aa09fecf8ad5e5ceb97b
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521485"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45732256"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Nejčastější dotazy ohledně migrace úložiště Azure
 
@@ -256,7 +256,7 @@ Chcete-li poskytnout ostatním přístup k prostředkům úložiště:
 
 -   Použijte token sdíleného přístupového podpisu (SAS) k poskytnutí přístupu k prostředku. 
 
--   Zadejte uživatele s primární nebo sekundární klíč pro účet úložiště. Další informace najdete v tématu [Správa účtu úložiště](storage-create-storage-account.md#manage-your-storage-account).
+-   Zadejte uživatele s primární nebo sekundární klíč pro účet úložiště. Další informace najdete v tématu [Správa účtu úložiště](storage-account-manage.md#access-keys).
 
 -   Změňte zásady přístupu k povolení anonymního přístupu. Další informace najdete v tématu [anonymním uživatelům uděluje oprávnění ke kontejnerům a objektům blob](../blobs/storage-manage-access-to-resources.md#grant-anonymous-users-permissions-to-containers-and-blobs).
 

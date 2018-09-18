@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 08/14/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 6a9897e94bf8f58ca4000f68ff30bfc6eece6249
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: a2b6b3334176cb6fdd86c17b4d11cb03a42dd4bf
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44057070"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45731798"
 ---
 # <a name="store-batch-ai-job-input-and-output-with-azure-storage"></a>Store vstup úlohy služby Batch AI a výstup s Azure Storage
 
@@ -30,7 +30,7 @@ Azure Storage je řešení cloudového úložiště Microsoftu. Batch AI podporu
 
 Při výběru úložiště Azure pro vaše prostředí služby Batch AI, doporučujeme ukládat vstupních souborů (třeba datových sad) v kontejneru objektů Blob, který má vyšší propustnost, a ukládání výstupu školení ve sdílené složce, která podporuje datové proudy (povoluje čtení protokolů výstup úlohy je spuštěn současně). 
 
-Než budete moct použít Azure Storage, je potřeba [vytvoření účtu služby Azure Storage](../storage/common/storage-create-storage-account.md#create-a-storage-account). Služba batch AI podporuje připojení svazků z obou pro obecné účely v1 (GPv1) a pro obecné účely v2 (GPv2) a Azure Storage účty. Účet služby Azure Storage může obsahovat více kontejnerů objektů Blob nebo soubor instance sdílené složky. Při výběru účtu úložiště zvažte vaše požadavky na náklady a výkon [možnost](../storage/common/storage-account-options.md). 
+Než budete moct použít Azure Storage, je potřeba [vytvoření účtu služby Azure Storage](../storage/common/storage-quickstart-create-account.md). Služba batch AI podporuje připojení svazků z obou pro obecné účely v1 (GPv1) a pro obecné účely v2 (GPv2) a Azure Storage účty. Účet služby Azure Storage může obsahovat více kontejnerů objektů Blob nebo soubor instance sdílené složky. Zvažte své požadavky na náklady a výkon, když vyberete typ účtu úložiště vytvořit. Další informace najdete v tématu [přehled účtu Azure storage](../storage/common/storage-account-overview.md). 
 
 Vytvořte kontejner objektů Blob a nahrajte vaše datová sada na kontejner objektů Blob v Azure, vyberte jednu z následujících metod:
 - [Azure portal](../storage/blobs/storage-quickstart-blobs-portal.md) pro nahrávání pomocí grafického uživatelského rozhraní založeného na webu. Pokud chcete nahrát malý počet souborů, webu Azure portal poskytuje nejjednodušší operaci.

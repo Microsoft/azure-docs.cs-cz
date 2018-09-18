@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: yzheng
 ms.component: common
-ms.openlocfilehash: edc0cf7c8700e1ab728109bc9cbfda8135a59ee9
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 6b7a361213a0236d71fe41566ba71c28b2958cd7
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574727"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45736338"
 ---
 # <a name="managing-the-azure-blob-storage-lifecycle-preview"></a>Správa životního cyklu úložiště objektů Blob v Azure (Preview)
 
@@ -30,7 +30,7 @@ Vezměte v úvahu sadu dat, která se přistupuje často během v rané fázi ž
 
 ## <a name="storage-account-support"></a>Podpora účtu úložiště
 
-Zásady správy životního cyklu jsou k dispozici obě obecné účely v2 (GPv2) a účet úložiště objektů Blob. Účet pro obecné účely (GPv1) můžete převést na účet GPv2 prostřednictvím prostého jedním kliknutím na webu Azure Portal. Další informace najdete v tématu [Možnosti účtu úložiště Azure](../common/storage-account-options.md).  
+Zásady správy životního cyklu jsou k dispozici obě obecné účely v2 (GPv2) a účet úložiště objektů Blob. Účet pro obecné účely (GPv1) můžete převést na účet GPv2 prostřednictvím prostého jedním kliknutím na webu Azure Portal. Další informace o účtech úložiště najdete v tématu [přehled účtu Azure storage](../common/storage-account-overview.md) Další informace.  
 
 ## <a name="pricing"></a>Ceny 
 

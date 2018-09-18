@@ -1,6 +1,6 @@
 ---
 title: Jak obnovit nebo trvale odebrat nedávno odstraněného uživatele v Azure Active Directory | Dokumentace Microsoftu
-description: Postup zobrazení obnovitelné uživatelů, obnovení odstraněného uživatele nebo trvale odstranit uživatele v Azure Active Directory.
+description: Zjistěte, jak zobrazit obnovitelné uživatele, obnovení odstraněného uživatele nebo trvale odstranit uživatele v Azure Active Directory.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -12,12 +12,12 @@ ms.date: 09/06/2018
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: fb6045f8175215436f963c810b6a1f1f2a115e54
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 88d3c672cd072cd4b252f7ce4ede3a4c7b13a7db
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604395"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45736168"
 ---
 # <a name="how-to-restore-or-permanently-remove-a-recently-deleted-user-with-azure-active-directory"></a>Postupy: obnovení nebo trvale odebrat nedávno odstraněného uživatele pomocí služby Azure Active Directory
 Po odstranění uživatele účet zůstane v pozastaveném stavu po dobu 30 dnů. Během tohoto časového období 30 dnů uživatelský účet můžete obnovit, spolu se všemi vlastnostmi. Po uplynutí 30 dnů okno uživatele je automaticky a chcete trvale odstranit.

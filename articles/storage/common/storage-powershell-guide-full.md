@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/13/2018
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: f0f20a4ceac2f0b79d4ae3bbf3cf82eb761bceb8
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: c20ffcca17f8b0521bac3b6131e963bbecbdc6e1
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782667"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45736950"
 ---
 # <a name="using-azure-powershell-with-azure-storage"></a>Použití Azure Powershell s Azure Storage
 
@@ -159,7 +159,7 @@ Chcete-li obnovit jiné klíč, použijte `key2` jako název klíče místo `key
 Znovu generovat jeden ze svých klíčů a potom ho znovu a podívejte se na novou hodnotu načíst.
 
 > [!NOTE] 
-> Měli byste provést pečlivé plánování před obnovuje se klíč pro účet úložiště produkčního prostředí. Znova se generuje jeden nebo oba klíče skončí platnost přístupu pro každou aplikaci pomocí klíče, který se znovu vygeneroval. Další informace najdete v tématu [opětovné vygenerování přístupových klíčů k úložišti](storage-create-storage-account.md#regenerate-storage-access-keys).
+> Měli byste provést pečlivé plánování před obnovuje se klíč pro účet úložiště produkčního prostředí. Znova se generuje jeden nebo oba klíče skončí platnost přístupu pro každou aplikaci pomocí klíče, který se znovu vygeneroval. Další informace najdete v tématu [přístupové klíče](storage-account-manage.md#access-keys).
 
 
 ### <a name="delete-a-storage-account"></a>Odstranění účtu úložiště 

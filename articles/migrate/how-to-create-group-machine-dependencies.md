@@ -4,24 +4,39 @@ description: Popisuje, jak vytvořit posouzení závislostí počítačů pomoc�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 07/05/2018
+ms.date: 09/17/2018
 ms.author: raynew
-ms.openlocfilehash: 4b83380558c10bc4f96d56f89a5cc2b7b53edc2e
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 31cbec8eab499fac116eac6fa2addac4ec2a340b
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621075"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45737088"
 ---
 # <a name="group-machines-using-machine-dependency-mapping"></a>Seskupení počítačů s využitím mapování závislostí počítačů
 
 Tento článek popisuje, jak vytvořit skupinu počítačů pro [Azure Migrate](migrate-overview.md) posouzení vizualizací závislostí počítačů. Obvykle použijete tuto metodu, pokud chcete posouzení skupiny virtuálních počítačů s vyšší úrovní spolehlivosti mezi Kontrola závislostí počítačů, před spuštěním posouzení. Vizualizace závislostí můžete efektivně naplánovat migraci do Azure. To vám pomůže zajistit, že nic se zachovají a překvapením, že není dojde k výpadku při migraci do Azure. Je možné vyhledat všechny vzájemně závislých systémů, které je potřeba migrovat společně a zjistit, jestli spuštěný systém stále poskytuje uživatelům nebo je kandidátem pro vyřazení z provozu místo migrace.
 
 
-## <a name="prepare-machines-for-dependency-mapping"></a>Příprava počítačů pro mapování závislostí
-Chcete-li zobrazit závislosti počítačů, budete muset stáhnout a nainstalovat agenty na každém v místním počítači, který chcete vyhodnotit. Kromě toho, pokud máte počítače bez připojení k Internetu, musíte stáhnout a nainstalovat [bránu OMS](../log-analytics/log-analytics-oms-gateway.md) na ně.
+## <a name="prepare-for-dependency-visualization"></a>Příprava pro vizualizace závislostí
+Azure Migrate využívá řešení Service Map ve službě Log Analytics umožňuje vizualizace závislostí počítačů.
+
+### <a name="associate-a-log-analytics-workspace"></a>Přiřadit pracovní prostor Log Analytics
+Využití vizualizace závislostí, je potřeba přiřadit pracovní prostor Log Analytics, novou nebo existující s projekt Azure Migrate. Můžete pouze vytvářet nebo připojit pracovní prostor v rámci stejného předplatného, ve kterém se vytvoří projekt migrace.
+
+- K připojení do pracovního prostoru Log Analytics do projektu, v **přehled**, přejděte na stránku **Essentials** části projektu klikněte na tlačítko **vyžaduje konfiguraci**
+
+    ![Přiřadit pracovní prostor Log Analytics](./media/concepts-dependency-visualization/associate-workspace.png)
+
+- Když vytvoříte nový pracovní prostor, musíte zadat název pracovního prostoru. Pracovní prostor se pak vytvoří ve stejném předplatném jako projekt migrace a v oblasti, ve stejném [zeměpisná oblast Azure](https://azure.microsoft.com/global-infrastructure/geographies/) jako projekt migrace.
+- **Použít existující** možnost uvádí pouze tyto pracovní prostory, které jsou vytvořené v oblastech, kde je k dispozici řešení Service Map. Pokud máte pracovní prostor v oblasti, kde není k dispozici řešení Service Map, nebudou uvedené v rozevíracím seznamu.
+
+> [!NOTE]
+> Nelze změnit pracovní prostor, přidružené k projektu migrace.
 
 ### <a name="download-and-install-the-vm-agents"></a>Stažení a instalace agentů virtuálního počítače
+Po konfiguraci pracovního prostoru, budete muset stáhnout a nainstalovat agenty na každém v místním počítači, který chcete vyhodnotit. Kromě toho, pokud máte počítače bez připojení k Internetu, musíte stáhnout a nainstalovat [bránu OMS](../log-analytics/log-analytics-oms-gateway.md) na ně.
+
 1. V **přehled**, klikněte na tlačítko **spravovat** > **počítače**a vyberte požadovaný počítač.
 2. V **závislosti** sloupce, klikněte na tlačítko **instalovat agenty**.
 3. Na **závislosti** stránce, stáhněte a nainstalujte Microsoft Monitoring Agent (MMA) a agenta závislostí na každém virtuálním počítači, na kterou chcete vyhodnotit.

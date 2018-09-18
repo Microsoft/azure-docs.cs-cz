@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2018
 ms.author: alkohli
-ms.openlocfilehash: d54394a8dc74d04f1922a78826b10a4a421d193b
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: aad5b2d2e451f33a3f4f365fa0702eef5d698e4e
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42814586"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45729159"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-azure-file-sync"></a>Migrovat data z StorSimple 5000 – 7000 series do Azure File Sync
 
@@ -56,8 +56,7 @@ Tady najdete požadavky migrace pro starší verze zařízení řady 5000 a 7000
 - Svazky zařízení StorSimple jsou připojené na hostiteli a obsahují sdílené složky.
 - Hostitel má dostatečnou místní úložiště pro uložení vašich dat místně uložených v mezipaměti.
 - Vlastník úroveň přístupu k předplatnému Azure, který použijete k nasazení služby Azure File Sync. Při vytváření koncového bodu cloudu pro vaši skupinu synchronizace, pokud máte vlastníka nebo oprávnění na úrovni správce, může docházet k problémům.
-- Přístup k [účet úložiště pro obecné účely v2](https://docs.microsoft.com/azure/storage/common/storage-account-options) s sdílené složky Azure, který chcete synchronizovat. Další informace najdete v části 
- - Jak [vytvořit účet úložiště General Purpose v2](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=portal#create-a-general-purpose-storage-account).
+- Přístup k [účet úložiště pro obecné účely v2](https://docs.microsoft.com/azure/storage/common/storage-account-overview) s sdílené složky Azure, který chcete synchronizovat. Další informace najdete v tématu [vytvořit účet úložiště](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account).
  - Jak [vytvořit sdílenou složku Azure](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share#create-file-share-through-the-azure-portal).
 
 ## <a name="migration-process"></a>Proces migrace

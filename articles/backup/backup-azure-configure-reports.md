@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: adigan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4839b1aaa56be1ad93fa1dd685ca3176d1cc8a27
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: c59653bf3709f7798fd92a44fa420b99f2cbc6b6
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42057220"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45733550"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurace sestav Azure Backup
 Tento článek se hovoří o krocích, které chcete konfigurovat sestavy Azure Backup pomocí trezoru služby Recovery Services a chcete dostat k sestavám pomocí Power BI. Po provedení těchto kroků, můžete přejít přímo do Power BI k zobrazení všech sestav, přizpůsobení a vytváření sestav. 
@@ -83,7 +83,7 @@ Po konfiguraci účtu úložiště pro sestavy pomocí trezoru služby recovery 
 4. Zadejte název účtu úložiště, který je nakonfigurovaný v kroku 5 výše a klikněte na tlačítko **Další** tlačítko.
 
     ![Zadejte název účtu úložiště.](./media/backup-azure-configure-reports/content-pack-storage-account-name.png)    
-5. Zadejte klíč účtu úložiště pro tento účet úložiště. Je možné [zobrazení a zkopírování přístupových klíčů k úložišti](../storage/common/storage-create-storage-account.md#manage-your-storage-account) tak, že přejdete do účtu úložiště na webu Azure portal. 
+5. Zadejte klíč účtu úložiště pro tento účet úložiště. Je možné [zobrazení a zkopírování přístupových klíčů k úložišti](../storage/common/storage-account-manage.md#access-keys) tak, že přejdete do účtu úložiště na webu Azure portal. 
 
      ![Zadejte účet úložiště](./media/backup-azure-configure-reports/content-pack-storage-account-key.png) <br/>
      

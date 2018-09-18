@@ -1,60 +1,65 @@
 ---
-title: Instalace úlohy elastické databáze | Microsoft Docs
-description: Provede procesem instalace funkce elastické úlohy.
+title: Instalace úloh elastické databáze | Dokumentace Microsoftu
+description: Instalace elastických úloh funkci provede.
 services: sql-database
 manager: craigg
 author: ddove
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 09/14/2018
 ms.author: sstein
-ms.openlocfilehash: 5760ca693f347068e03770b348d88b3b2adbf678
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: e59fc7caf0fa9f02a2182f86295f1a9e59d98788
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34645608"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45733551"
 ---
-# <a name="installing-elastic-database-jobs-overview"></a>Instalace úlohy elastické databáze – přehled
-[**Elastické databáze úlohy** ](sql-database-elastic-jobs-overview.md) lze nainstalovat pomocí prostředí PowerShell nebo prostřednictvím portálu Azure. Můžete získat přístup k vytvářet a spravovat úlohy pomocí rozhraní API prostředí PowerShell, pouze v případě, že budete instalovat balíček prostředí PowerShell. Kromě toho rozhraní API prostředí PowerShell poskytuje výrazně víc funkcí než portálu v daném okamžiku.
+# <a name="installing-elastic-database-jobs-overview"></a>Přehled instalace úloh elastické databáze
 
-Pokud jste již nainstalovali **úlohy elastické databáze** prostřednictvím portálu ze stávajícího **elastický fond**, nejnovější prostředí Powershell preview zahrnuje skripty, které upgradovat existující instalaci. Důrazně doporučujeme pro upgrade na nejnovější instalace **úlohy elastické databáze** součásti, aby bylo možné využívat nové funkce, které jsou zveřejňovány prostřednictvím rozhraní API prostředí PowerShell.
+[!INCLUDE [elastic-database-jobs-deprecation](../../includes/sql-database-elastic-jobs-deprecate.md)]
+
+
+
+[**Úlohy elastic Database** ](sql-database-elastic-jobs-overview.md) lze nainstalovat pomocí Powershellu nebo na webu Azure portal. Můžete získat přístup k vytváření a Správa úloh pomocí rozhraní API prostředí PowerShell, pouze v případě, že balíček nainstalujete, prostředí PowerShell. Kromě toho rozhraní API prostředí PowerShell poskytuje výrazně víc funkcí než na portálu v daném okamžiku.
+
+Pokud jste již nainstalovali **úlohy elastické databáze** prostřednictvím portálu ze stávajícího **elastického fondu**, nejnovější verze prostředí Powershell preview obsahuje skripty pro upgrade existující instalace. Důrazně doporučujeme upgradovat na nejnovější verzi vaší instalace **úlohy elastické databáze** komponenty, abyste mohli využívat nové funkce, které jsou zveřejňovány prostřednictvím rozhraní API Powershellu.
 
 ## <a name="prerequisites"></a>Požadavky
 * Předplatné Azure. Bezplatná zkušební verze, najdete v části [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
-* Azure Powershell Nainstalujte nejnovější verzi pomocí [instalačního programu webové platformy](http://go.microsoft.com/fwlink/p/?linkid=320376). Podrobné informace najdete v tématu [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
-* [Nástroj příkazového řádku NuGet](https://nuget.org/nuget.exe) slouží k instalaci balíčku úlohy elastické databáze. Další informace najdete v tématu http://docs.nuget.org/docs/start-here/installing-nuget.
+* Azure PowerShell Nainstalujte nejnovější verzi pomocí [instalačního programu webové platformy](http://go.microsoft.com/fwlink/p/?linkid=320376). Podrobné informace najdete v tématu [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
+* [Nástroje příkazového řádku NuGet](https://nuget.org/nuget.exe) se používá k instalaci balíčku úlohy elastické databáze. Další informace naleznete v tématu http://docs.nuget.org/docs/start-here/installing-nuget.
 
-## <a name="download-and-import-the-elastic-database-jobs-powershell-package"></a>Stahování a import balíčku prostředí PowerShell úlohy elastické databáze
-1. Spusťte příkazové okno prostředí PowerShell Microsoft Azure a přejděte do adresáře, kam jste stáhli Nástroj příkazového řádku NuGet (nuget.exe).
-2. Stahování a import **úlohy elastické databáze** balíček do aktuální adresář pomocí následujícího příkazu:
+## <a name="download-and-import-the-elastic-database-jobs-powershell-package"></a>Stažení a import balíčků Elastic Database úlohy Powershellu
+1. Spusťte okno příkazového řádku Microsoft Azure Powershellu a přejděte do adresáře, kam jste stáhli nástroje příkazového řádku NuGet (nuget.exe).
+2. Stáhnout a naimportovat **úlohy elastické databáze** balíček do aktuálního adresáře pomocí následujícího příkazu:
    
         PS C:\>.\nuget install Microsoft.Azure.SqlDatabase.Jobs -prerelease
    
-    **Úlohy elastické databáze** soubory jsou umístěny do místního adresáře do složky s názvem **Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x** kde *x.x.xxxx.x* zobrazuje číslo verze. Rutiny prostředí PowerShell (včetně klienta knihoven DLL) jsou umístěné v **tools\ElasticDatabaseJobs** podadresář a skriptů prostředí PowerShell k instalaci, upgrade a odinstalaci jsou taky umístěné ve **nástroje** podadresář.
-3. Přejděte do nástroje podadresář ve složce Microsoft.Azure.SqlDatabase.Jobs.x.x.xxx.x zadáním disk cd nástroje, například:
+    **Úlohy elastické databáze** soubory jsou umístěny v místním adresáři ve složce s názvem **Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x** kde *x.x.xxxx.x* odráží číslo verze. Rutiny Powershellu (včetně klienta knihovny DLL debuggle) jsou umístěné v **tools\ElasticDatabaseJobs** podadresář a skripty prostředí PowerShell k instalaci, upgradu a odinstalaci taky umístěné ve **nástroje** podadresáře.
+3. Přejděte na nástroje podadresář ve složce Microsoft.Azure.SqlDatabase.Jobs.x.x.xxx.x zadáním disk cd nástroje, například:
    
         PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*>cd tools
 
-4. Spusťte skript.\InstallElasticDatabaseJobsCmdlets.ps1 chcete zkopírovat do adresáře ElasticDatabaseJobs do $home\Documents\WindowsPowerShell\Modules. To také automaticky importuje modul pro použití, například:
+4. Spusťte skript.\InstallElasticDatabaseJobsCmdlets.ps1 zkopírovat do $home\Documents\WindowsPowerShell\Modules ElasticDatabaseJobs adresáře. To také automaticky importuje modul pro použití, například:
    
         PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>Unblock-File .\InstallElasticDatabaseJobsCmdlets.ps1
         PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>.\InstallElasticDatabaseJobsCmdlets.ps1
 
-## <a name="install-the-elastic-database-jobs-components-using-powershell"></a>Nainstalujte komponenty úlohy elastické databáze pomocí prostředí PowerShell
-1. Spusťte příkazové okno Microsoft Azure PowerShell a přejděte na \tools podadresář ve složce Microsoft.Azure.SqlDatabase.Jobs.x.x.xxx.x: Zadejte \tools disku cd
+## <a name="install-the-elastic-database-jobs-components-using-powershell"></a>Nainstalujte součásti úlohy elastické databáze pomocí Powershellu
+1. Spusťte příkazové okno Microsoft Azure Powershellu a přejděte na \tools podadresář ve složce Microsoft.Azure.SqlDatabase.Jobs.x.x.xxx.x: zadejte cd \tools
    
         PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*>cd tools
 
-2. Spustit.\InstallElasticDatabaseJobs.ps1 skript prostředí PowerShell a zadejte hodnoty pro její požadované proměnné. Tento skript vytvoří komponent popsaných v [úlohy elastické databáze součásti a ceny](sql-database-elastic-jobs-overview.md#components-and-pricing) společně s konfigurací Azure Cloud Service odpovídajícím způsobem používat závislé součásti.
+2. Spustí.\InstallElasticDatabaseJobs.ps1 skript prostředí PowerShell a zadejte hodnoty pro jeho požadované proměnné. Tento skript vytvoří komponent popsaných v [úlohy elastické databáze komponenty a ceny](sql-database-elastic-jobs-overview.md#components-and-pricing) spolu s konfigurací cloudové služby Azure odpovídajícím způsobem používat závislé součásti.
 
         PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>Unblock-File .\InstallElasticDatabaseJobs.ps1
         PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>.\InstallElasticDatabaseJobs.ps1
 
-Když spustíte tento příkaz, okno otevře požadující **uživatelské jméno** a **heslo**. Toto není vaše přihlašovací údaje Azure, zadejte uživatelské jméno a heslo, které budou přihlašovací údaje správce, kterou chcete vytvořit pro nový server.
+Když spustíte tento příkaz, okno se otevře s žádostí o **uživatelské jméno** a **heslo**. Toto není vaše přihlašovací údaje Azure, zadejte uživatelské jméno a heslo, které se budou přihlašovací údaje správce, kterou chcete vytvořit pro nový server.
 
-Parametry zadané na toto ukázkové volání lze upravit pro požadovaná nastavení. Následující poskytuje další informace o chování jednotlivých parametrů:
+Pro požadované nastavení, lze upravit parametry uvedené v této ukázkové volání. Následující poskytuje další informace o chování každého parametru:
 
 <table style="width:100%">
   <tr>
@@ -64,55 +69,55 @@ Parametry zadané na toto ukázkové volání lze upravit pro požadovaná nasta
 
 <tr>
     <td>ResourceGroupName</td>
-    <td>Poskytuje název skupiny prostředků Azure k vytvoření, která obsahují nově vytvořený Azure komponenty. Tento parametr výchozí "__ElasticDatabaseJob". Není doporučeno tuto hodnotu změnit.</td>
+    <td>Poskytuje název skupiny prostředků Azure vytvořené tak, aby obsahovala nově vytvořený komponenty Azure. Tento parametr výchozí hodnotu "__ElasticDatabaseJob". Nedoporučujeme tuto hodnotu změnit.</td>
     </tr>
 
 </tr>
 
     <tr>
     <td>ResourceGroupLocation</td>
-    <td>Poskytuje umístění Azure, který se má použít pro nově vytvořený Azure součásti. Tento parametr výchozí umístění střed USA.</td>
+    <td>Poskytuje umístění Azure, který má být použit pro nově vytvořený komponenty Azure. Tento parametr nastaví jako výchozí umístění střed USA.</td>
 </tr>
 
 <tr>
     <td>ServiceWorkerCount</td>
-    <td>Obsahuje počet pracovních procesů služby pro instalaci. Tento parametr výchozí hodnotu 1. Vyšší počet pracovních procesů lze škálovat službu a pro zajištění vysoké dostupnosti. Doporučujeme použít pro nasazení, která vyžadují vysokou dostupnost služby "2".</td>
+    <td>Obsahuje počet pracovních procesů služby k instalaci. Tento parametr výchozí hodnotu 1. Vyšší počet pracovních procesů lze použít pro horizontální navýšení kapacity služby a k zajištění vysoké dostupnosti. Doporučujeme použít pro nasazení, které vyžadují vysokou dostupnost služby "2".</td>
     </tr>
 
 </tr>
     <tr>
     <td>ServiceVmSize</td>
-    <td>Poskytuje velikost virtuálního počítače pro použití v rámci cloudové služby. Tento parametr výchozí A0. Hodnoty parametrů A0 nebo A1 nebo A2 nebo A3, jsou přijaty které způsobit role pracovního procesu sloužící velikost: mimořádně malý nebo malá nebo střední nebo velké v uvedeném pořadí. Další informace o velikosti role pracovního procesu, viz Fo [úlohy elastické databáze součásti a ceny](sql-database-elastic-jobs-overview.md#components-and-pricing).</td>
+    <td>Poskytuje velikost virtuálního počítače pro použití v rámci cloudové služby. Výchozí hodnota tohoto parametru A0. Hodnoty parametrů A0/A1 a A2 a A3 nepřijmou, které způsobují roli pracovního procesu, který chcete použít pro velikost ExtraSmall/malé/střední/velký v uvedeném pořadí. Další informace o velikosti rolí pracovního procesu, viz Fo [úlohy elastické databáze komponenty a ceny](sql-database-elastic-jobs-overview.md#components-and-pricing).</td>
 </tr>
 
 </tr>
     <tr>
     <td>SqlServerDatabaseSlo</td>
-    <td>Poskytuje cíle na úrovni služby pro Standard edition. Tento parametr výchozí hodnotu S0. Hodnoty parametru S0/S1 nebo S2/S3 nebo S4/S6/S9/S12, které způsobují databáze SQL Azure používat příslušné SLO jsou přijaty. Další informace o slo databáze SQL najdete v tématu [úlohy elastické databáze součásti a ceny](sql-database-elastic-jobs-overview.md#components-and-pricing).</td>
+    <td>Poskytuje výpočetního prostředí pro edici Standard. Tento parametr výchozí hodnotu S0. Hodnoty parametru findwebconfigpath S0/S1/S2/S3/S4/S6/S9 a S12 na úrovni Standard jsou přijímány, které způsobují Azure SQL Database k použití příslušného výpočetního prostředí. Další informace o velikostech výpočetních SQL Database, najdete v části [úlohy elastické databáze komponenty a ceny](sql-database-elastic-jobs-overview.md#components-and-pricing).</td>
 </tr>
 
 </tr>
     <tr>
     <td>SqlServerAdministratorUserName</td>
-    <td>Poskytuje uživatelské jméno správce pro nově vytvořený serveru Azure SQL Database. Není-li zadána, bude vyžadovat přihlašovací údaje otevřete okno přihlašovací údaje prostředí PowerShell.</td>
+    <td>Poskytuje uživatelské jméno správce pro nově vytvořený server Azure SQL Database. Pokud není zadán, otevře se okno přihlašovacích údajů prostředí PowerShell na výzvu k zadání přihlašovacích údajů.</td>
 </tr>
 
 </tr>
     <tr>
     <td>SqlServerAdministratorPassword</td>
-    <td>Poskytuje heslo správce pro nově vytvořený serveru Azure SQL Database. Když není zadaná, bude vyžadovat přihlašovací údaje otevřete okno přihlašovací údaje prostředí PowerShell.</td>
+    <td>Poskytuje heslo správce pro nově vytvořený server Azure SQL Database. Pokud není zadaný, otevře se okno přihlašovacích údajů prostředí PowerShell na výzvu k zadání přihlašovacích údajů.</td>
 </tr>
 </table>
 
-Pro systémy, které cílí má velký počet úloh spuštěných současně pro velký počet databází, se doporučuje zadejte parametry, jako například: - ServiceWorkerCount 2 - ServiceVmSize A2 - SqlServerDatabaseSlo S2.
+Pro systémy, které se zaměřují s velkým počtem úloh běžících paralelně s velkým počtem databází, se doporučuje zadejte parametry, například: - ServiceWorkerCount 2 - ServiceVmSize A2 - SqlServerDatabaseSlo S2.
 
     PS C:\*Microsoft.Azure.SqlDatabase.Jobs.dll.x.x.xxx.x*\tools>Unblock-File .\InstallElasticDatabaseJobs.ps1
     PS C:\*Microsoft.Azure.SqlDatabase.Jobs.dll.x.x.xxx.x*\tools>.\InstallElasticDatabaseJobs.ps1 -ServiceWorkerCount 2 -ServiceVmSize A2 -SqlServerDatabaseSlo S2
 
-## <a name="update-an-existing-elastic-database-jobs-components-installation-using-powershell"></a>Aktualizace stávající elastické databáze úlohy součásti instalace pomocí prostředí PowerShell
-**Elastické databáze úlohy** můžete aktualizovat v rámci existující instalace pro škálování a vysokou dostupností. Tento proces umožňuje pro budoucí upgrady kódu služby bez nutnosti vyřadit a znovu vytvořte databázi ovládacího prvku. Tento proces lze také v rámci stejné verze a změňte velikost virtuálního počítače služby nebo počet pracovního procesu serveru.
+## <a name="update-an-existing-elastic-database-jobs-components-installation-using-powershell"></a>Aktualizace stávající Elastic Database úlohy součásti instalace pomocí Powershellu
+**Úlohy elastic Database** je aktualizovat v rámci stávající instalace pro škálování a vysokou dostupnost. Díky tomuto procesu si pro budoucí aktualizace kódu služby bez nutnosti vyřadit a znovu vytvořit databázi ovládacího prvku. Tento proces je také možné v rámci stejné verze upravit velikost virtuálního počítače. službu nebo počet pracovních procesů serveru.
 
-Pokud chcete aktualizovat velikost virtuálního počítače instalace, spusťte následující skript s parametry aktualizovány na hodnoty podle svého výběru.
+Velikost virtuálního počítače při instalaci aktualizace, spusťte následující skript s parametry aktualizovány hodnoty podle vašeho výběru.
 
     PS C:\*Microsoft.Azure.SqlDatabase.Jobs.dll.x.x.xxx.x*\tools>Unblock-File .\UpdateElasticDatabaseJobs.ps1
     PS C:\*Microsoft.Azure.SqlDatabase.Jobs.dll.x.x.xxx.x*\tools>.\UpdateElasticDatabaseJobs.ps1 -ServiceVmSize A1 -ServiceWorkerCount 2
@@ -125,7 +130,7 @@ Pokud chcete aktualizovat velikost virtuálního počítače instalace, spusťte
 
   <tr>
     <td>ResourceGroupName</td>
-    <td>Určuje název skupiny prostředků Azure používá při byly původně nainstalované komponenty úlohy elastické databáze. Tento parametr výchozí "__ElasticDatabaseJob". Vzhledem k tomu, že není doporučeno tuto hodnotu změnit, není nutné, zadejte tento parametr.</td>
+    <td>Určuje název skupiny prostředků Azure při byly původně nainstalované komponenty úlohy elastické databáze. Tento parametr výchozí hodnotu "__ElasticDatabaseJob". Protože nedoporučuje se tuto hodnotu změnit, není nutné tento parametr zadán.</td>
     </tr>
 </tr>
 
@@ -133,44 +138,44 @@ Pokud chcete aktualizovat velikost virtuálního počítače instalace, spusťte
 
   <tr>
     <td>ServiceWorkerCount</td>
-    <td>Obsahuje počet pracovních procesů služby pro instalaci.  Tento parametr výchozí hodnotu 1.  Vyšší počet pracovních procesů lze škálovat službu a pro zajištění vysoké dostupnosti.  Doporučujeme použít pro nasazení, která vyžadují vysokou dostupnost služby "2".</td>
+    <td>Obsahuje počet pracovních procesů služby k instalaci.  Tento parametr výchozí hodnotu 1.  Vyšší počet pracovních procesů lze použít pro horizontální navýšení kapacity služby a k zajištění vysoké dostupnosti.  Doporučujeme použít pro nasazení, které vyžadují vysokou dostupnost služby "2".</td>
 </tr>
 
 </tr>
 
     <tr>
     <td>ServiceVmSize</td>
-    <td>Poskytuje velikost virtuálního počítače pro použití v rámci cloudové služby. Tento parametr výchozí A0. Hodnoty parametrů A0 nebo A1 nebo A2 nebo A3, jsou přijaty které způsobit role pracovního procesu sloužící velikost: mimořádně malý nebo malá nebo střední nebo velké v uvedeném pořadí. Další informace o velikosti role pracovního procesu, viz Fo [úlohy elastické databáze součásti a ceny](sql-database-elastic-jobs-overview.md#components-and-pricing).</td>
+    <td>Poskytuje velikost virtuálního počítače pro použití v rámci cloudové služby. Výchozí hodnota tohoto parametru A0. Hodnoty parametrů A0/A1 a A2 a A3 nepřijmou, které způsobují roli pracovního procesu, který chcete použít pro velikost ExtraSmall/malé/střední/velký v uvedeném pořadí. Další informace o velikosti rolí pracovního procesu, viz Fo [úlohy elastické databáze komponenty a ceny](sql-database-elastic-jobs-overview.md#components-and-pricing).</td>
 </tr>
 
 </table>
 
-## <a name="install-the-elastic-database-jobs-components-using-the-portal"></a>Nainstalujte komponenty úlohy elastické databáze pomocí portálu
-Jakmile máte [vytvoření fondu elastické databáze](sql-database-elastic-pool-manage-portal.md), můžete nainstalovat **úlohy elastické databáze** součásti povolit spouštění úlohy správy na každou databázi v elastickém fondu. Na rozdíl od při použití **úlohy elastické databáze** rozhraní API prostředí PowerShell, rozhraní portálu je momentálně omezené do pouze prováděných na existující fond.
+## <a name="install-the-elastic-database-jobs-components-using-the-portal"></a>Nainstalujte součásti úlohy elastické databáze pomocí portálu
+Jakmile budete mít [vytvoření elastického fondu](sql-database-elastic-pool-manage-portal.md), můžete nainstalovat **úlohy elastické databáze** komponenty umožňují provádění úloh správy na každou databázi v elastickém fondu. Na rozdíl od při použití **úlohy elastické databáze** rozhraní API Powershellu, rozhraní portálu je momentálně omezené jenom na pouze spuštěním s existující fond.
 
 **Odhadovaný čas dokončení:** 10 minut.
 
-1. Z elastického fondu pomocí zobrazení řídicího panelu [portál Azure](https://portal.azure.com/#) , klikněte na tlačítko **vytvořit úlohu**.
-2. Pokud vytváříte úlohu poprvé, musíte nainstalovat **úlohy elastické databáze** kliknutím **podmínky**.
+1. V zobrazení řídicí panel elastického fondu pomocí [webu Azure portal](https://portal.azure.com/#) , klikněte na tlačítko **vytvořit úlohu**.
+2. Pokud vytváříte úlohu poprvé, musíte nainstalovat **úlohy elastické databáze** kliknutím **podmínky verze PREVIEW**.
 3. Přijměte podmínky kliknutím na zaškrtávací políčko.
-4. V zobrazení "Instalace služby", klikněte na **úlohy pověření**.
+4. V zobrazení "Instalace služby", klikněte na tlačítko **přihlašovací údaje k úloze**.
    
     ![Instalace služby][1]
-5. Zadejte uživatelské jméno a heslo pro správce databáze Jako součást instalace se vytvoří nový server Azure SQL Database. V rámci tohoto serveru je novou databázi, označuje jako databázi řízení vytvořit a používat tak, aby obsahovala metadata pro úlohy elastické databáze. Uživatelské jméno a heslo vytvořená zde se používají pro účely přihlášení k databázi řízení. Samostatné přihlašovací údaje se používá pro spuštění skriptu s databázemi, v rámci fondu.
+5. Zadejte uživatelské jméno a heslo správce databáze Jako součást instalace je vytvořen nový server Azure SQL Database. V rámci tohoto nového serveru novou databázi, označovanou jako databáze ovládací prvek se a použít tak, aby obsahovala metadata pro úlohy elastické databáze. Uživatelské jméno a heslo, které vytvořili tady se používají pro účely protokolování databázi správy. Samostatné přihlašovací údaje se používá pro spuštění skriptu s databázemi, v rámci fondu.
    
     ![Vytvořte uživatelské jméno a heslo][2]
-6. Klikněte na tlačítko OK. Součásti jsou vytvořeny pro vás za pár minut v nové [skupiny prostředků](../azure-resource-manager/resource-group-overview.md). Novou skupinu prostředků je připnutý na úvodní panel, jak je uvedeno níže. Úlohy po vytvoření, elastické databáze (Cloudová služba, databáze SQL, Service Bus a úložiště) jsou vytvořeny ve skupině.
+6. Klikněte na tlačítko OK. Součásti jsou vytvořeny pro vás za několik minut v novém [skupiny prostředků](../azure-resource-manager/resource-group-overview.md). Novou skupinu prostředků je připnutý na úvodní panel, jak je znázorněno níže. Úlohy po vytvoření, elastic database (cloudové služby, SQL Database, Service Bus a úložiště) se vytvoří ve skupině.
    
-    ![Skupina prostředků v Tabule start][3]
-7. Pokud se pokusíte vytvořit ani spravovat úlohu při instalaci úlohy elastické databáze, pokud poskytuje **pověření** zobrazí se následující zpráva.
+    ![Skupina prostředků v úvodní panel][3]
+7. Pokud se pokusíte vytvořit nebo spravovat úlohu, když je instalace úloh elastické databáze, při zadávání **pověření** se zobrazí následující zpráva.
    
     ![Stále probíhá nasazení][4]
 
-Pokud odinstalaci je potřeba, odstraňte skupinu prostředků. V tématu [postup odinstalace komponenty úlohy elastické databáze](sql-database-elastic-jobs-uninstall.md).
+Pokud odinstalaci je potřeba, odstraňte skupinu prostředků. Zobrazit [odinstalování součásti úlohy elastické databáze](sql-database-elastic-jobs-uninstall.md).
 
 ## <a name="next-steps"></a>Další postup
-Zkontrolujte přihlašovací údaj se příslušná oprávnění pro spuštění skriptu se vytvoří na každou databázi ve skupině, další informace najdete v tématu [zabezpečení databáze SQL](sql-database-manage-logins.md).
-V tématu [vytváření a Správa úloh elastické databáze](sql-database-elastic-jobs-create-and-manage.md) začít pracovat.
+Zkontrolujte přihlašovací údaj se příslušná oprávnění pro spuštění skriptu se vytvoří pro každou databázi ve skupině pro další informace najdete v tématu [zabezpečení služby SQL Database](sql-database-manage-logins.md).
+Zobrazit [vytváření a správa úlohy Elastic Database](sql-database-elastic-jobs-create-and-manage.md) začít.
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-jobs-service-installation/screen-1.png

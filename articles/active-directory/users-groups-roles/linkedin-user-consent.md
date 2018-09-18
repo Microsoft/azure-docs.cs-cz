@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 09/13/2018
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
-ms.openlocfilehash: c9728b63545450fe9160c3e4a79bace254ccc533
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 3f11ae3d5f6e686133b0f5ef355734ce09c00fed
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45543841"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45734637"
 ---
 # <a name="user-consent-and-linkedin-account-connections-data-sharing"></a>Souhlas uživatele a sdílení dat prostřednictvím připojení se účet LinkedIn
 

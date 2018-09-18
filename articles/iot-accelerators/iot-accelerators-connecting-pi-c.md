@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.date: 03/14/2018
+ms.date: 09/17/2018
 ms.author: dobett
-ms.openlocfilehash: 23e84a8d577bb1c4950de3acd76b0f8528551ae0
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: add49aaf96190f782d2133e2a5f620a340f05eaf
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38611437"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45733827"
 ---
 # <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-c"></a>Připojte Raspberry Pi zařízení k akcelerátor řešení vzdálené monitorování (C)
 
@@ -53,137 +53,29 @@ Následující kroky ukazují, jak připravit Raspberry Pi pro vytváření apli
     sudo apt-get update
     ```
 
-1. Chcete-li přidat požadované vývojářské nástroje a knihovny pro Raspberry Pi, použijte následující příkaz:
+1. K dokončení kroků v této příručce s postupy, postupujte podle kroků v [nastavení vývojového prostředí Linux](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#linux) doplnit Raspberry Pi požadované vývojářské nástroje a knihovny.
 
-    ```sh
-    sudo apt-get install g++ make cmake gcc git libssl1.0-dev build-essential curl libcurl4-openssl-dev uuid-dev
-    ```
+## <a name="view-the-code"></a>Zobrazení kódu
 
-1. Stáhnout, sestavit a nainstalovat klientské knihovny pro centra IoT na Raspberry Pi, použijte následující příkazy:
+[Ukázkový kód](https://github.com/Azure/azure-iot-sdk-c/tree/master/samples/solutions/remote_monitoring) použitý v tomto průvodci je k dispozici v úložišti Azure IoT C SDK na Githubu.
 
-    ```sh
-    cd ~
-    git clone --recursive https://github.com/azure/azure-iot-sdk-c.git
-    mkdir cmake
-    cd cmake
-    cmake ..
-    make
-    sudo make install
-    ```
+### <a name="download-the-source-code-and-prepare-the-project"></a>Stáhněte si zdrojový kód a příprava projektu
 
-## <a name="create-a-project"></a>Vytvoření projektu
+Příprava projektu, klonovat nebo stáhnout [úložiště sad SDK Azure IoT C](https://github.com/Azure/azure-iot-sdk-c) z Githubu.
 
-Proveďte následující kroky pomocí **ssh** připojení na Raspberry Pi:
+Tato ukázka se nachází v **ukázky a řešení/remote_monitoring** složky.
 
-1. Vytvořte složku s názvem `remote_monitoring` ve vaší domovské složky na Raspberry Pi. Přejděte do této složky ve vašem prostředí:
+Otevřít **remote_monitoring.c** soubor **ukázky a řešení/remote_monitoring** složky v textovém editoru.
 
-    ```sh
-    cd ~
-    mkdir remote_monitoring
-    cd remote_monitoring
-    ```
-
-1. Vytvořit čtyři soubory **main.c**, **remote_monitoring.c**, **remote_monitoring.h**, a **CMakeLists.txt** v `remote_monitoring` složka.
-
-1. V textovém editoru otevřete **remote_monitoring.c** souboru. Na Raspberry Pi, můžete použít buď **nano** nebo **vi** textového editoru. Přidejte následující příkazy `#include`:
-
-    ```c
-    #include "iothubtransportmqtt.h"
-    #include "schemalib.h"
-    #include "iothub_client.h"
-    #include "serializer_devicetwin.h"
-    #include "schemaserializer.h"
-    #include "azure_c_shared_utility/threadapi.h"
-    #include "azure_c_shared_utility/platform.h"
-    #include <string.h>
-    ```
-
-[!INCLUDE [iot-suite-connecting-code](../../includes/iot-suite-connecting-code.md)]
-
-Uložit **remote_monitoring.c** soubor a ukončete editor.
-
-## <a name="add-code-to-run-the-app"></a>Přidejte kód pro spuštění aplikace
-
-V textovém editoru otevřete **remote_monitoring.h** souboru. Přidejte následující kód:
-
-```c
-void remote_monitoring_run(void);
-```
-
-Uložit **remote_monitoring.h** soubor a ukončete editor.
-
-V textovém editoru otevřete **main.c** souboru. Přidejte následující kód:
-
-```c
-#include "remote_monitoring.h"
-
-int main(void)
-{
-  remote_monitoring_run();
-
-  return 0;
-}
-```
-
-Uložit **main.c** soubor a ukončete editor.
+[!INCLUDE [iot-accelerators-connecting-code](../../includes/iot-accelerators-connecting-code.md)]
 
 ## <a name="build-and-run-the-application"></a>Sestavení a spuštění aplikace
 
-Následující kroky popisují způsob použití *CMake* k vytvoření klientské aplikace.
+Následující kroky popisují způsob použití *CMake* k vytvoření klientské aplikace. Vzdálené monitorování klientské aplikace je vytvořený jako součást procesu sestavení sady SDK.
 
-1. V textovém editoru otevřete **CMakeLists.txt** soubor `remote_monitoring` složky.
+1. Upravit **remote_monitoring.c** souboru nahraďte `<connectionstring>` připojovacím řetězcem zařízení, které jste si poznamenali na začátku příručky s postupy po přidání zařízení do akcelerátoru řešení.
 
-1. Přidejte následující pokyny k definování, jak vytvořit klientskou aplikaci:
-
-    ```cmake
-    macro(compileAsC99)
-      if (CMAKE_VERSION VERSION_LESS "3.1")
-        if (CMAKE_C_COMPILER_ID STREQUAL "GNU")
-          set (CMAKE_C_FLAGS "--std=c99 ${CMAKE_C_FLAGS}")
-          set (CMAKE_CXX_FLAGS "--std=c++11 ${CMAKE_CXX_FLAGS}")
-        endif()
-      else()
-        set (CMAKE_C_STANDARD 99)
-        set (CMAKE_CXX_STANDARD 11)
-      endif()
-    endmacro(compileAsC99)
-
-    cmake_minimum_required(VERSION 2.8.11)
-    compileAsC99()
-
-    set(AZUREIOT_INC_FOLDER "${CMAKE_SOURCE_DIR}" "/usr/local/include/azureiot")
-
-    include_directories(${AZUREIOT_INC_FOLDER})
-
-    set(sample_application_c_files
-        ./remote_monitoring.c
-        ./main.c
-    )
-
-    set(sample_application_h_files
-        ./remote_monitoring.h
-    )
-
-    add_executable(sample_app ${sample_application_c_files} ${sample_application_h_files})
-
-    target_link_libraries(sample_app
-      serializer
-      iothub_client_mqtt_transport
-      umqtt
-      iothub_client
-      aziotsharedutil
-      parson
-      pthread
-      curl
-      ssl
-      crypto
-      m
-    )
-    ```
-
-1. Uložit **CMakeLists.txt** soubor a ukončete editor.
-
-1. V `remote_monitoring` složce vytvořte složku pro uložení *Ujistěte se,* soubory, které generuje CMake. Spusťte **cmake** a **zkontrolujte** příkazy následujícím způsobem:
+1. Přejděte do kořenového adresáře naklonované kopie [úložiště sad SDK Azure IoT C](https://github.com/Azure/azure-iot-sdk-c) úložiště a spusťte následující příkazy k vytvoření klientské aplikace:
 
     ```sh
     mkdir cmake
@@ -195,7 +87,12 @@ Následující kroky popisují způsob použití *CMake* k vytvoření klientsk�
 1. Spuštění klientské aplikace a odesílání telemetrických dat do služby IoT Hub:
 
     ```sh
-    ./sample_app
+    ./samples/solutions/remote_monitoring/remote_monitoring_client
     ```
+
+    Této konzole se zobrazují zprávy jako:
+
+    - Aplikace odesílá telemetrii ukázka akcelerátor řešení.
+    - Reaguje na metody vyvolané z řídicího panelu řešení.
 
 [!INCLUDE [iot-suite-visualize-connecting](../../includes/iot-suite-visualize-connecting.md)]

@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 09/13/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 1c3df6aa8b4080cbd70b53a994f743fb82d896b5
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 3ec7f6043c1d2e8e8f090ffc60822768ab9bc9d9
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45542359"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983997"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-c-modules-for-azure-iot-edge"></a>Použití Visual Studio Code pro vývoj a ladění modulů jazyka C pro Azure IoT Edge
 
@@ -111,7 +111,7 @@ VS Code uchovává informace o konfiguraci v ladění `launch.json` soubor umís
 
 1. Přejděte do zobrazení ladění VS Code. Vyberte konfigurační soubor ladění pro modul. Název možnosti ladění by měl být podobný **ModuleName Remote Debug (C)**
 
-   ![Ladění vyberte konfiguraci](./media/how-to-develop-c-module/debug-config.png).
+   ![Ladění vyberte konfiguraci](./media/how-to-develop-c-module/debug-config.png)
 
 2. Přejděte na adresu `main.c`. Přidejte zarážku v tomto souboru.
 

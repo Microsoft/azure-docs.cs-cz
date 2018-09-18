@@ -8,14 +8,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: develop apps
 ms.topic: conceptual
-ms.date: 07/16/2018
+ms.date: 09/14/2018
 ms.author: sstein
-ms.openlocfilehash: d97ec2cc67da7c4bc1479c55a9a7c35c0c754532
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 643add4e0e4732734e9ef763a587755bf8700605
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092524"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45730998"
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>Kódy chyb SQL pro klientské aplikace SQL Database: chyby připojení a dalších problémů databáze
 
@@ -111,7 +111,7 @@ Tyto chyby se vztahují k vytváření a používání elastických fondů:
 | 40857 |EX_USER |Elastický fond pro server se nepodařilo najít: "%ls", název elastického fondu: "%ls". |název serveru. Název elastického fondu |Zadaný elastického fondu v zadaný server neexistuje. |Zadejte název platné elastického fondu. |
 | 40858 |EX_USER |Elastický fond "%ls" již existuje v serveru: "%ls. |Název elastického fondu, název serveru |Zadaný elastického fondu v zadané logické serveru již existuje. |Zadejte nový název elastického fondu. |
 | 40859 |EX_USER |Elastický fond nepodporuje úroveň služby "%ls". |úrovně služby elastického fondu |Zadaná služba úroveň se nepodporuje pro zřizování elastického fondu. |Zadejte správnou verzi nebo nechte prázdné, použije se výchozí úroveň služby úrovně služby. |
-| 40860 |EX_USER |Kombinace elastického fondu. %ls"a služby cíl"%ls"je neplatná. |Název elastického fondu. Název cílové úrovně služby |Elastického fondu a služba cíle lze zadat současně pouze v případě, že je zadaný cíl služby jako "ElasticPool". |Zadejte správné kombinace elastického fondu a cíle služby. |
+| 40860 |EX_USER |Kombinace elastického fondu. %ls"a služby cíl"%ls"je neplatná. |Název elastického fondu. úrovně služeb |Elastického fondu a služba úrovně lze zadat současně pouze v případě, že je jako 'ElasticPool' zadaný typ prostředku. |Zadejte správné kombinace elastického fondu a úrovně služeb. |
 | 40861 |EX_USER |Edice databáze ' %. *ls se nemůže lišit od úrovně služby elastického fondu, což je ' %.* ls. |edice databáze úrovně služby elastického fondu |Edice databáze se liší od úrovně služby elastického fondu. |Nezadávejte edici databáze, které se liší od úrovně služby elastického fondu.  Všimněte si, že není nutné nastavit edici databáze. |
 | 40862 |EX_USER |Název elastického fondu musí být zadán, pokud je zadaný cíl služby elastického fondu. |Žádný |Cíl služby elastického fondu jednoznačně neidentifikuje elastického fondu. |Zadejte název elastického fondu, pokud používáte cíl služby elastického fondu. |
 | 40864 |EX_USER |Počet jednotek Dtu pro elastický fond musí být minimálně (%d) Dtu, pro úroveň služby "%. * ls. |Počet jednotek Dtu pro elastický fond; úrovně služby elastického fondu. |Došlo k pokusu o nastavení počet jednotek Dtu pro elastický fond nižší než minimální limit. |Opakovat nastavení počet jednotek Dtu elastického fondu alespoň minimální limit. |

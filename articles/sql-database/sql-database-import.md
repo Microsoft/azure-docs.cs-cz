@@ -6,19 +6,19 @@ author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: load & move data
-ms.date: 09/04/2018
+ms.date: 09/14/2018
 ms.author: carlrab
 ms.topic: conceptual
-ms.openlocfilehash: 6df71f50129ec6901d0b8688b0a6d3619260cf22
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: eefffdc425a300a8a4caa358494fbdc4fd84e356
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634220"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983980"
 ---
 # <a name="import-a-bacpac-file-to-a-new-azure-sql-database"></a>Import souboru BACPAC do nové databáze SQL Azure
 
-Když je potřeba importovat databázi z archivu nebo při migraci z jiné platformy, můžete importovat schéma databáze a dat z [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) souboru. Soubor BACPAC je soubor ZIP s příponou souboru BACPAC, který obsahuje metadata i data z databáze SQL serveru. Soubor BACPAC je možné importovat z Azure blob storage (jenom standardní úložiště) nebo z místního úložiště do místního umístění. Maximalizovat rychlost import, doporučujeme zadat vyšší služby vrstvu a úroveň výkonu, jako je například P6 a pak škálovat dolů podle potřeby a po úspěšném importu. Navíc úroveň kompatibility databáze po dokončení importu podle zdrojové databáze úroveň kompatibility. 
+Když je potřeba importovat databázi z archivu nebo při migraci z jiné platformy, můžete importovat schéma databáze a dat z [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) souboru. Soubor BACPAC je soubor ZIP s příponou souboru BACPAC, který obsahuje metadata i data z databáze SQL serveru. Soubor BACPAC je možné importovat z Azure blob storage (jenom standardní úložiště) nebo z místního úložiště do místního umístění. Maximalizovat rychlost import, doporučujeme zadat vyšší úroveň služby a vypočítat velikost, například P6 a pak škálovat dolů podle potřeby a po úspěšném importu. Navíc úroveň kompatibility databáze po dokončení importu podle zdrojové databáze úroveň kompatibility. 
 
 > [!IMPORTANT] 
 > Po dokončení migrace databáze do služby Azure SQL Database můžete provozovat databázi na její aktuální úroveň kompatibility (úroveň 100 pro databázi AdventureWorks2008R2) nebo vyšší úrovni. Další informace o důsledcích a možnostech provozu databáze na konkrétní úrovni kompatibility najdete v tématu [Úroveň kompatibility ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level). V tématu věnovaném příkazu [ALTER DATABASE SCOPED CONFIGURATION](https://docs.microsoft.com/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql) najdete také informace o dalších nastaveních na úrovni databáze souvisejících s úrovněmi kompatibility.   >
@@ -104,7 +104,7 @@ $importStatus
 Další příklad skriptu, naleznete v tématu [Import databáze ze souboru BACPAC](scripts/sql-database-import-from-bacpac-powershell.md).
 
 ## <a name="limitations"></a>Omezení
-- Importovat do databáze v elastickém fondu se nepodporuje. Můžete importovat data do databáze typu singleton a potom přesunutí databáze do fondu.
+- Importovat do databáze v elastickém fondu se nepodporuje. Můžete importovat data do izolované databáze a potom přesunutí databáze do fondu.
 
 ## <a name="import-using-other-methods"></a>Import pomocí jiné metody
 

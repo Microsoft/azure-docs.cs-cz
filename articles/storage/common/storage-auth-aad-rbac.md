@@ -1,6 +1,6 @@
 ---
-title: RBAC umožňuje spravovat přístupová práva ke kontejnerům služby Azure Storage a fronty (Preview) | Dokumentace Microsoftu
-description: Použití řízení přístupu na základě rolí (RBA) k přiřazování rolí pro přístup k datům služby Azure Storage na uživatele, skupiny, instančních objektů aplikace nebo identity spravovaných služeb. Azure Storage podporuje předdefinované a vlastní role pro oprávnění ke kontejnerům a fronty.
+title: RBAC umožňuje spravovat přístupová práva ke kontejnerům a front (preview) – služby Azure Storage | Dokumentace Microsoftu
+description: Použití řízení přístupu na základě role (RBAC) k přiřazování rolí pro přístup k datům objektu blob a fronty na uživatele, skupiny, instančních objektů aplikace nebo identity spravovaných služeb. Azure Storage podporuje předdefinované a vlastní role pro oprávnění ke kontejnerům a fronty.
 services: storage
 author: tamram
 ms.service: storage
@@ -8,20 +8,20 @@ ms.topic: article
 ms.date: 09/07/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 2a85277c72b63f248fa6d2b06cc1daa1ccbf5ce5
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: c26eee05a59a10036138f81086b3f6a9e0de6d5d
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44298671"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45737290"
 ---
 # <a name="manage-access-rights-to-azure-storage-data-with-rbac-preview"></a>Správa přístupových práv k datům služby Azure Storage pomocí RBAC (Preview)
 
 Azure Active Directory (Azure AD) autorizuje přístupová práva k zabezpečeným prostředkům prostřednictvím [řízení přístupu na základě role (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview). Azure Storage definuje sadu předdefinované role RBAC, které zahrnuje společné sady oprávnění pro přístup k kontejnery nebo fronty. Když roli RBAC se přiřadí identity Azure AD, že identita je udělen přístup k těmto prostředkům podle zadaného oboru. Přístup se dají vymezit na úrovni předplatného, skupinu prostředků, účet úložiště nebo kontejner nebo fronty. Můžete přiřadit přístupová práva pro prostředky služby Azure Storage pomocí webu Azure portal, nástrojů příkazového řádku Azure a rozhraní API pro správu Azure. 
 
-Identity Azure AD může být uživatele, skupinu nebo instanční objekt služby aplikace nebo může být *se identita spravované služby*. Objekt zabezpečení může být uživatele, skupinu nebo instanční objekt služby aplikace. A [se identita spravované služby](../../active-directory/managed-identities-azure-resources/overview.md) je automaticky spravované identity používá k ověření z aplikace běžící v Azure virtuální počítače, aplikace function App, škálovací sady virtuálních počítačů a dalších. Přehled identity ve službě Azure AD najdete v tématu [řešení identit Azure pochopit](https://docs.microsoft.com/azure/active-directory/understand-azure-identity-solutions).
+Identity Azure AD může být uživatele, skupiny nebo instanční objekt aplikace, nebo může být spravovaná identita pro prostředky Azure. Objekt zabezpečení může být uživatele, skupinu nebo instanční objekt služby aplikace. A [spravované identity pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md) je automaticky spravované identity používá k ověření z aplikace běžící v Azure virtuální počítače, aplikace function App, škálovací sady virtuálních počítačů a dalších. Přehled identity ve službě Azure AD najdete v tématu [řešení identit Azure pochopit](https://docs.microsoft.com/azure/active-directory/understand-azure-identity-solutions).
 
-## <a name="rbac-roles-for-azure-storage"></a>Role RBAC pro Azure Storage
+## <a name="rbac-roles-for-blobs-and-queues"></a>Role RBAC pro objekty BLOB a fronty
 
 Azure Storage podporuje předdefinované i vlastní role RBAC. Azure Storage nabízí tyto předdefinované role RBAC pro použití se službou Azure AD:
 

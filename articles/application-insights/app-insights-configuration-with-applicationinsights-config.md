@@ -11,20 +11,20 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/05/2018
+ms.date: 09/17/2018
 ms.reviewer: olegan
 ms.author: mbullwin
-ms.openlocfilehash: 9e53fa896f1d958e505d26af430b262be9195605
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: fa7115e651cf1b5c4533675cc2b2194b36d773f8
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859679"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45730173"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Konfigurace sady Application Insights SDK pomocí souboru ApplicationInsights.config nebo .xml
-Application Insights .NET SDK se skládá z počtu balíčků NuGet. [Balíčku core](http://www.nuget.org/packages/Microsoft.ApplicationInsights) poskytuje rozhraní API pro odesílání telemetrických dat ze služby Application Insights. [Další balíčky](http://www.nuget.org/packages?q=Microsoft.ApplicationInsights) poskytují telemetrie *moduly* a *inicializátory* pro automatické sledování telemetrie z vaší aplikace a jeho kontextu. Úpravou konfiguračního souboru, můžete povolit nebo zakázat inicializátory a moduly telemetrie a nastavit parametry pro některé z nich.
+Sady SDK služby Application Insights se skládá z počtu balíčků NuGet. [Balíčku core](http://www.nuget.org/packages/Microsoft.ApplicationInsights) poskytuje rozhraní API pro odesílání telemetrických dat ze služby Application Insights. [Další balíčky](http://www.nuget.org/packages?q=Microsoft.ApplicationInsights) poskytují telemetrie *moduly* a *inicializátory* pro automatické sledování telemetrie z vaší aplikace a jeho kontextu. Úpravou konfiguračního souboru, můžete povolit nebo zakázat inicializátory a moduly telemetrie a nastavit parametry pro některé z nich.
 
-Konfigurační soubor má název `ApplicationInsights.config` nebo `ApplicationInsights.xml`, v závislosti na typu aplikace. Je automaticky přidán do projektu při vám [nainstalovat většině verzí sady SDK][start]. Je taky přidaný do webové aplikace pomocí [monitorování stavu na serveru služby IIS][redfield], nebo když vyberete Application Insights [rozšíření webu Azure nebo na virtuálním počítači](app-insights-azure-web-apps.md).
+Konfigurační soubor má název `ApplicationInsights.config` (.NET) nebo `ApplicationInsights.xml` (Java), v závislosti na typu aplikace. Je automaticky přidán do projektu při vám [nainstalovat většině verzí sady SDK][start]. Je taky přidaný do webové aplikace pomocí [monitorování stavu na serveru služby IIS][redfield], nebo když vyberete Application Insights [rozšíření webu Azure nebo na virtuálním počítači](app-insights-azure-web-apps.md).
 
 Není k dispozici odpovídající soubor do ovládacího prvku [SDK na webové stránce][client].
 
@@ -173,8 +173,6 @@ K dispozici je také standardní [vzorkování procesoru telemetrie](app-insight
 
 ```
 
-
-
 ## <a name="channel-parameters-java"></a>Parametry kanálu (Java)
 Tyto parametry mají vliv, jak ukládat a vyprázdnění, který shromažďuje telemetrická data sady Java SDK.
 
@@ -232,7 +230,20 @@ Určuje maximální velikost v Megabajtech, která je vymezena do trvalého úlo
    </ApplicationInsights>
 ```
 
+#### <a name="local-forwarder"></a>Místní server pro předávání
 
+[Místní server pro předávání](https://docs.microsoft.com/azure/application-insights/local-forwarder) je agenta, který shromažďuje Application Insights nebo [OpenCensus](https://opencensus.io/) telemetrická data z různých sad SDK a architektur a směruje je do služby Application Insights. Je schopný běžet pod Windows a Linux. 
+
+```Java
+<Channel type="com.microsoft.applicationinsights.channel.concrete.localforwarder.LocalForwarderTelemetryChannel">
+   <DeveloperMode>false</DeveloperMode>
+   <EndpointAddress><!-- put the hostname:port of your LocalForwarder instance here --></EndpointAddress>
+
+   <!-- The properties below are optional. The values shown are the defaults for each property -->
+   <FlushIntervalInSeconds>5</FlushIntervalInSeconds><!-- must be between [1, 500]. values outside the bound will be rounded to nearest bound -->
+   <MaxTelemetryBufferCapacity>500</MaxTelemetryBufferCapacity><!-- units=number of telemetry items; must be between [1, 1000] -->
+</Channel>
+```
 
 ## <a name="instrumentationkey"></a>InstrumentationKey
 Určuje, ve kterém se zobrazí data prostředku Application Insights. Obvykle vytvoříte samostatný prostředek s samostatný klíč pro každý z vašich aplikací.

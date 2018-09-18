@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
-ms.openlocfilehash: bc1f1dd577231f5b22474f6cd3dc622480209dd9
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 1a7fcc11bf1b98d5feaeae07264e556acce2b14b
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042914"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45736069"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-spark-applications-remotely-in-hdinsight-through-vpn"></a>Ladění aplikací Spark v HDInsight pomocí sítě VPN vzdáleně pomocí sady Azure Toolkit pro IntelliJ
 
@@ -132,7 +132,7 @@ Doporučujeme také vytvořit cluster Apache Spark v Azure HDInsight, který je 
     Chcete-li přidat tyto soubory do projektu, zkopírujte je v části **/src** složky vašeho projektu stromu, například `<your project directory>\src`.
 1. Aktualizace `core-site.xml` souboru provést následující změny:
 
-   a. Nahraďte šifrovaný klíč. `core-site.xml` Soubor obsahuje šifrovaný klíč k účtu úložiště přidruženého clusteru. V `core-site.xml` soubor, který jste přidali do projektu, nahraďte šifrovaný klíč skutečného úložiště klíč přidružený k výchozí účet úložiště. Další informace najdete v tématu [Správa přístupových klíčů úložiště](../../storage/common/storage-create-storage-account.md#manage-your-storage-account).
+   a. Nahraďte šifrovaný klíč. `core-site.xml` Soubor obsahuje šifrovaný klíč k účtu úložiště přidruženého clusteru. V `core-site.xml` soubor, který jste přidali do projektu, nahraďte šifrovaný klíč skutečného úložiště klíč přidružený k výchozí účet úložiště. Další informace najdete v tématu [Správa přístupových klíčů úložiště](../../storage/common/storage-account-manage.md#access-keys).
 
            <property>
                  <name>fs.azure.account.key.hdistoragecentral.blob.core.windows.net</name>

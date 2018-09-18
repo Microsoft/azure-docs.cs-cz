@@ -1,21 +1,21 @@
 ---
-title: Integrace nástroje QnA Maker a LUIS – Microsoft Cognitive Services | Dokumentace Microsoftu
-titleSuffix: Azure
-description: podrobný návod k integraci nástroje QnA Maker a LUIS
+title: Služba LUIS a QnA maker – integrace robota
+titleSuffix: Azure Cognitive Services
+description: Podrobný návod k integraci nástroje QnA Maker a LUIS v robota.
 services: cognitive-services
 author: nstulasi
-manager: sangitap
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 04/21/2018
-ms.author: saneppal
-ms.openlocfilehash: b923e7c39ccd96bd9b158c98507f961ea2dc3e02
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.date: 09/12/2018
+ms.author: nstulasi
+ms.openlocfilehash: cfadaa836eef0763c9dd56c71d177995ab658c3e
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576761"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45736032"
 ---
 # <a name="integrate-qna-maker-and-luis-to-distribute-your-knowledge-base"></a>Integrace nástroje QnA Maker a LUIS distribuovat znalostní báze
 Jak QnA Maker znalostní báze případu dostatečného růstu, bude obtížné spravovat jako jeden monolitické nastavit a je potřeba rozdělit do menších logické bloků ve znalostní bázi.

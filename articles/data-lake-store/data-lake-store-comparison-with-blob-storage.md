@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 3cc38e7ede9882e78e509738351696a64c938c40
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: d24a268cf389dfe9dec914b2d27bbe8e466ea675
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391404"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45737188"
 ---
 # <a name="comparing-azure-data-lake-storage-gen1-and-azure-blob-storage"></a>Porovnání Azure Data Lake Storage Gen1 a Azure Blob Storage
 Tabulky v tomto článku shrnuje rozdíly mezi Azure Data Lake Storage Gen1 a Azure Blob Storage podél některé klíčové aspekty zpracování velkých objemů dat. Azure Blob Storage je obecný, škálovatelné úložiště objektů, která je navržená pro širokou škálu scénářů úložiště. Azure Data Lake Storage Gen1 je vysoce škálovatelné úložiště, která je optimalizována pro úlohy analýzy velkých objemů dat.
@@ -31,9 +31,9 @@ Tabulky v tomto článku shrnuje rozdíly mezi Azure Data Lake Storage Gen1 a Az
 | Rozhraní API |Rozhraní REST API přes protokol HTTPS |Rozhraní REST API přes HTTP/HTTPS |
 | Rozhraní API na straně serveru |[Kompatibilních s WebHDFS REST API](https://msdn.microsoft.com/library/azure/mt693424.aspx) |[Rozhraní REST API služby Azure Blob Storage](https://msdn.microsoft.com/library/azure/dd135733.aspx) |
 | Klienta systému souborů Hadoop |Ano |Ano |
-| Operace s daty – ověření |Na základě [identit Azure Active Directory](../active-directory/develop/authentication-scenarios.md) |Podle sdílené tajné klíče - [přístupové klíče účtu](../storage/common/storage-create-storage-account.md#manage-your-storage-account) a [klíče podpisu pro sdílený přístup](../storage/common/storage-dotnet-shared-access-signature-part-1.md). |
+| Operace s daty – ověření |Na základě [identit Azure Active Directory](../active-directory/develop/authentication-scenarios.md) |Podle sdílené tajné klíče - [přístupové klíče účtu](../storage/common/storage-account-manage.md#access-keys) a [klíče podpisu pro sdílený přístup](../storage/common/storage-dotnet-shared-access-signature-part-1.md). |
 | Operace s daty – ověřovací protokol |OAuth 2.0. Volání musí obsahovat platný token JWT (JSON Web Token) vydané službou Azure Active Directory |Hash-based Message Authentication Code (metoda HMAC). Volání musí obsahovat hodnotu hash SHA-256 s kódováním Base64 přes část požadavku HTTP. |
-| Operace s daty – autorizace |POSIX seznamy řízení přístupu (ACL).  Seznamy řízení přístupu na základě Azure Active Directory identit můžete nastavit na úrovni souborů a složek. |Pro autorizaci na úrovni účtu – použijte [přístupové klíče účtu](../storage/common/storage-create-storage-account.md#manage-your-storage-account)<br>Pro účet, kontejner nebo objekt blob autorizace – použijte [sdílené přístupové klíče podpisu](../storage/common/storage-dotnet-shared-access-signature-part-1.md) |
+| Operace s daty – autorizace |POSIX seznamy řízení přístupu (ACL).  Seznamy řízení přístupu na základě Azure Active Directory identit můžete nastavit na úrovni souborů a složek. |Pro autorizaci na úrovni účtu – použijte [přístupové klíče účtu](../storage/common/storage-account-manage.md#access-keys)<br>Pro účet, kontejner nebo objekt blob autorizace – použijte [sdílené přístupové klíče podpisu](../storage/common/storage-dotnet-shared-access-signature-part-1.md) |
 | Operace s daty – auditování |K dispozici. Zobrazit [tady](data-lake-store-diagnostic-logs.md) informace. |K dispozici. |
 | Šifrování neaktivních uložených dat |<ul><li>Transparentní, na straně serveru</li> <ul><li>S použitím klíčů spravovaných služeb</li><li>Pomocí klíčů spravovaných zákazníkem v Azure Key Vaultu</li></ul></ul> |<ul><li>Transparentní, na straně serveru</li> <ul><li>S použitím klíčů spravovaných služeb</li><li>Pomocí klíčů spravovaných zákazníkem v Azure Key Vaultu (preview)</li></ul><li>Šifrování na straně klienta</li></ul> |
 | Operace správy (například účet vytvořit) |[Řízení přístupu na základě rolí](../role-based-access-control/overview.md) (RBAC) poskytovaný platformou Azure pro správu účtu |[Řízení přístupu na základě rolí](../role-based-access-control/overview.md) (RBAC) poskytovaný platformou Azure pro správu účtu |

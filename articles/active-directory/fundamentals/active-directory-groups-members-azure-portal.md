@@ -1,6 +1,6 @@
 ---
 title: Postup přidání nebo odebrání členů skupiny pomocí služby Azure Active Directory | Dokumentace Microsoftu
-description: Postup přidání nebo odebrání uživatelů a zařízení ze skupiny pomocí služby Azure Active Directory.
+description: Zjistěte, jak přidat nebo odebrat uživatele a zařízení ze skupiny pomocí služby Azure Active Directory.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -12,12 +12,12 @@ ms.date: 08/23/2018
 ms.author: lizross
 ms.custom: it-pro
 ms.reviewer: krbain
-ms.openlocfilehash: f9244e1285396a2d5de40b596d47e311efa50b83
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 7c1a83d83dcbf247550c66602a6f53d4ef0d7930
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574229"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45733360"
 ---
 # <a name="how-to-add-or-remove-group-members-using-azure-active-directory"></a>Postupy: Přidání nebo odebrání členů skupiny pomocí služby Azure Active Directory
 Pomocí Azure Active Directory, můžete pokračovat k přidání a odebrání členů skupiny.

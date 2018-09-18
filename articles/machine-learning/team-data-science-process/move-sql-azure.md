@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/04/2018
 ms.author: deguhath
-ms.openlocfilehash: d3a7bc59654ace8dbe647b5a780985fa1556f1da
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: f9e456ec28695c63384f1c4fdd4b04ec37fefc14
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42060763"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45728807"
 ---
 # <a name="move-data-to-an-azure-sql-database-for-azure-machine-learning"></a>Přesun dat do služby SQL Database pro Azure Machine Learning
 Toto téma popisuje možnosti pro přesun dat z plochých souborů (sdíleného svazku clusteru nebo TSV formátů) nebo z dat uložených v k místním SQL serveru do Azure SQL database. Tyto úlohy pro přesun dat do cloudu jsou součástí vědecké zpracování týmových dat.
@@ -42,7 +42,7 @@ Následující tabulka shrnuje možnosti pro přesun dat do služby Azure SQL Da
 Postupy, podle zde uvedeného vyžadují, abyste měli:
 
 * **Předplatného Azure**. Pokud předplatné nemáte, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
-* **Účtu služby Azure storage**. Pro ukládání dat v tomto kurzu použijete účet úložiště Azure. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../../storage/common/storage-quickstart-create-account.md). Po vytvoření účtu úložiště je třeba získat klíč účtu, který se používá pro přístup k účtu. Zobrazit [Správa přístupových klíčů úložiště](../../storage/common/storage-create-storage-account.md#manage-your-storage-access-keys).
+* **Účtu služby Azure storage**. Pro ukládání dat v tomto kurzu použijete účet úložiště Azure. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../../storage/common/storage-quickstart-create-account.md). Po vytvoření účtu úložiště je třeba získat klíč účtu, který se používá pro přístup k účtu. Zobrazit [Správa přístupových klíčů úložiště](../../storage/common/storage-account-manage.md#access-keys).
 * Přístup **Azure SQL Database**. Pokud je nutné nastavit Azure SQL Database, [Začínáme s Microsoft Azure SQL Database](../../sql-database/sql-database-get-started.md) poskytuje informace o tom, jak zřídit novou instanci služby Azure SQL Database.
 * Nainstalovaný a nakonfigurovaný **prostředí Azure PowerShell** místně. Pokyny najdete v tématu [instalace a konfigurace Azure Powershellu](/powershell/azure/overview).
 

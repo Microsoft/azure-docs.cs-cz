@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/31/2018
 ms.author: cshoe
 ms.component: common
-ms.openlocfilehash: 912ae17fb7bb5d5cecad0af5b53d817b2faeef02
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 268459fde7a622079656e637d2c51562cea358a4
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522197"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45730945"
 ---
 # <a name="azure-storage-security-guide"></a>Průvodci zabezpečením Azure Storage
 
@@ -142,20 +142,13 @@ Pomocí služby Azure Key Vault také přidává další úroveň zabezpečení 
 
 Další výhodou používání služby Azure Key Vault je, že můžete také řídit přístup k svoje klíče pomocí služby Azure Active Directory. To znamená, že můžete udělit přístup k několika málo až po aplikace, které potřebují k načtení klíče ze služby Azure Key Vault a vědět, že jiné aplikace nebudou moct bez nutnosti přidělit jim konkrétně oprávnění pro přístup.
 
-Poznámka: doporučujeme používat pouze jeden z klíčů ve všech vašich aplikací ve stejnou dobu. Pokud používáte klíč 1 na některých místech a klíč 2 v jiných, nebude možné obměna klíčů bez některé aplikace došlo ke ztrátě přístupu.
+> [!NOTE]
+> Microsoft doporučuje používat pouze jeden z klíčů ve všech vašich aplikací ve stejnou dobu. Pokud používáte klíč 1 na některých místech a klíč 2 v jiných, nebude možné obměna klíčů bez některé aplikace došlo ke ztrátě přístupu.
 
 #### <a name="resources"></a>Zdroje a prostředky
-* [Informace o účtech Azure Storage](storage-create-storage-account.md#regenerate-storage-access-keys)
 
-  Tento článek poskytuje přehled o účtech úložiště a tento článek popisuje zobrazení, kopírování a opětovné generování přístupových klíčů k úložišti.
+* [Spravovat nastavení účtu úložiště na webu Azure Portal](storage-account-manage.md)
 * [Reference k REST API služby Azure Storage Resource Provider](https://msdn.microsoft.com/library/mt163683.aspx)
-
-  Tento článek obsahuje odkazy na konkrétní články o načtení klíčů účtu úložiště a obnovování klíčů účtu úložiště pro účet Azure pomocí rozhraní REST API. Poznámka: Toto je pro účty úložiště Resource Manageru.
-* [Operací pro účty úložiště.](https://msdn.microsoft.com/library/ee460790.aspx)
-
-  Tento článek v referenci rozhraní API REST úložiště Service Manageru obsahuje odkazy na konkrétní články týkající se načítání a obnovování klíčů účtu úložiště pomocí rozhraní REST API. Poznámka: Toto je pro účty úložiště Classic.
-
-  Tento článek ukazuje, jak pomocí služby Active Directory pro řízení přístupu na klíče Azure Storage v Azure Key Vault. Také ukazuje, jak použít úlohu Azure Automation se znovu vygenerovat klíče po hodinách.
 
 ## <a name="data-plane-security"></a>Zabezpečení roviny dat
 Zabezpečení roviny dat odkazuje na metody používané k zabezpečení datové objekty uložené ve službě Azure Storage – objekty BLOB, fronty, tabulky a soubory. Zaznamenali jsme metody k šifrování dat a zabezpečení během přenosu dat, ale jak do můžete přejít o řízení přístupu k objektům?

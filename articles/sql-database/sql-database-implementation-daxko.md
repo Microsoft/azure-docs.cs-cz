@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: reference
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 09/14/2018
 ms.author: carlrab
-ms.openlocfilehash: ee06039242afe5b5e92cf2fecc4c3fa9bff0b78b
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 10720f42f7a9b10b42ccaaaad81acca369592f6a
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214365"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45731206"
 ---
 # <a name="daxkocsi-used-azure-to-accelerate-its-development-cycle-and-to-enhance-its-customer-services-and-performance"></a>Daxko/CSI používá Azure ke zrychlení jeho vývojový cyklus a ke zvýšení jeho zákaznické a výkon
 ![Daxko/CSI Logo](./media/sql-database-implementation-daxko/csidaxkologo25.png)
@@ -59,7 +59,7 @@ V současné době přibližně 99 % CSI softwaru zákazníků jsou hostované v
 ## <a name="azure-elastic-pools-free-up-it-resources"></a>Elastické fondy Azure osvoboďte IT zdroje
 Několik funkcí Azure pomohly CSI softwaru odklon od infrastruktury a operací, zaměřuje na funkce a vývoj, zaměřuje. Možná největší výhody byl z elastických fondů.
 
-CSI Software aktuálně poskytuje přibližně 550 databází pro zákazníky. Před elastické fondy bylo obtížné spravovat daný počet databází v rámci úrovně struktury. OPS manažeři se museli přiřaďte úrovně výkonu na základě potřeb burst zákazníků, které vyžadují významné IT prostředků režie. S elastickými fondy se správci můžete přiřadit tenantů premium nebo standard fondu podle potřeby a potom přesunutí zákazníků na základě velikosti a potřebujete. Zákazníci téměř okamžitě; popisovač účinky elastických fondů před elastické fondy zákazníci došlo k vypršení časového limitu a další potíže během období využití rozšíření, ale s elastickými fondy mohou zákazníci nárůstům aktivity podle potřeby a může i nadále bez problémů používat SpectrumNG.
+CSI Software aktuálně poskytuje přibližně 550 databází pro zákazníky. Před elastické fondy bylo obtížné spravovat daný počet databází v rámci úrovně struktury. OPS manažeři se museli přiřaďte úrovně služeb a výpočet velikosti na základě potřeb burst zákazníků, které vyžadují významné IT prostředků režie. S elastickými fondy se správci můžete přiřadit tenantů premium nebo standard fondu podle potřeby a potom přesunutí zákazníků na základě velikosti a potřebujete. Zákazníci téměř okamžitě; popisovač účinky elastických fondů před elastické fondy zákazníci došlo k vypršení časového limitu a další potíže během období využití rozšíření, ale s elastickými fondy mohou zákazníci nárůstům aktivity podle potřeby a může i nadále bez problémů používat SpectrumNG.
 
 ## <a name="azure-active-geo-replication-accelerates-reporting"></a>Aktivní geografickou replikaci Azure zrychlí vytváření sestav
 Několik zákazníků CSI Software se také využít Azure aktivní geografickou replikaci. S aktivní geografickou replikaci až čtyři čitelné sekundární databáze se dá nakonfigurovat v oblastech stejných nebo různých datových center. CSI Software používá aktivní geografickou replikaci dvěma způsoby: první, sekundární databáze jsou k dispozici v případě výpadku datacentra nebo neschopnost připojení na primární databázi. a za druhé, čitelné sekundární databáze a slouží k přesměrování zpracování úlohy jen pro čtení jako úlohy vytváření sestav. Zákazníci, kteří CSI softwaru použijte tuto výhodu k urychlení pracovní postupy vytváření sestav.

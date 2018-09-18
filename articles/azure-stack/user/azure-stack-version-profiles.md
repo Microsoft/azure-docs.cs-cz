@@ -10,15 +10,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 09/17/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: db60aaacfb2ba60dbe73663cb415e2a3baea5400
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 270587f484216d130848ee3c7bdc8ae1c1df0afc
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42745795"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982136"
 ---
 # <a name="manage-api-version-profiles-in-azure-stack"></a>Správa profilů verzí API ve službě Azure Stack
 
@@ -46,7 +46,7 @@ Toto téma vám pomůže:
     Na pololetní tempo vydání této verze se zaměřuje na konzistenci a stabilitu napříč několika cloudy. Tento profil, zaměřuje optimální kompatibility služby Azure Stack.
     - **rrrr mm-dd-profile** umístěná mezi optimální stabilitu a nejnovější funkce.
 
-### <a name="azure-api-profiles-and-azure-stack-compatibility"></a>Azure API profily a kompatibility služby Azure Stack
+## <a name="azure-api-profiles-and-azure-stack-compatibility"></a>Azure API profily a kompatibility služby Azure Stack
 
 Nejnovější rozhraní API služby Azure profily nejsou kompatibilní s Azure Stack. Tyto zásady vytváření názvů můžete použít k identifikaci profily, které chcete použít pro svá řešení Azure Stack.
 

@@ -8,15 +8,15 @@ manager: craigg
 ms.service: sql-database
 ms.subservice: elastic-pool
 ms.custom: DBs & servers
-ms.date: 07/27/2018
+ms.date: 09/14/2018
 ms.author: ninarn
 ms.topic: conceptual
-ms.openlocfilehash: ffc74eafed81c3dad836cfe70050244cb66a820b
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 39c127569ea3ea5339c90554e1e899212f1b3f6a
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003735"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45735508"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Elastické fondy umožňují spravovat a škálovat několika databázemi Azure SQL
 
@@ -55,7 +55,7 @@ Na následujícím obrázku je příklad databáze, která je většinu doby ne�
 
    ![izolovaná databáze vhodná pro fond](./media/sql-database-elastic-pool/one-database.png)
 
-Po uvedená pětiminutová období DB1 využívá až 90 jednotek DTU, ale celkové průměrné využití nedosahuje ani pěti jednotek DTU. Ke spuštění této úlohy v izolované databázi se vyžaduje úroveň výkonu S3. To ale znamená, že v období nízké aktivity je většina prostředků nevyužitá.
+Po uvedená pětiminutová období DB1 využívá až 90 jednotek DTU, ale celkové průměrné využití nedosahuje ani pěti jednotek DTU. Pro velikost výpočetních S3 se vyžaduje ke spuštění této úlohy v jedné databázi, ale to znamená většina prostředků nevyužitá období nízké aktivity.
 
 Fond umožňuje sdílet tyto nevyužité jednotky DTU napříč několika databázemi a snižuje tak počet potřebných jednotek DTU a celkové náklady.
 
@@ -65,7 +65,7 @@ Využijeme předchozí příklad a budeme předpokládat, že existují další 
 
    ![Dvacet databází se vzorem využití, který je vhodný pro fond](./media/sql-database-elastic-pool/twenty-databases.png)
 
-Agregované využití DTU napříč všemi 20 databázemi je na předchozím obrázku znázorněné černou čárou. Ukazuje se, že agregované využití DTU nikdy nepřekračuje 100 jednotek DTU. Znamená to, že těchto 20 databází může v průběhu tohoto časového období sdílet 100 jednotek eDTU. Výsledkem je 20krát nižší počet DTU a 13krát nižší cena ve srovnání se zařazením jednotlivých databází do úrovní výkonu S3 pro izolované databáze.
+Agregované využití DTU napříč všemi 20 databázemi je na předchozím obrázku znázorněné černou čárou. Ukazuje se, že agregované využití DTU nikdy nepřekračuje 100 jednotek DTU. Znamená to, že těchto 20 databází může v průběhu tohoto časového období sdílet 100 jednotek eDTU. Výsledkem je 20krát nižší v jednotkách Dtu a 13krát nižší cena ve srovnání se zařazením jednotlivých databází do S3 výpočtu velikosti pro izolované databáze.
 
 Tento příklad je ideální z následujících důvodů:
 
@@ -75,21 +75,21 @@ Tento příklad je ideální z následujících důvodů:
 
 Cena za fond závisí na jednotkách eDTU fondu. Přestože je cena ze jednotku eDTU pro fond 1,5krát vyšší než cena za jednotku DTU pro izolovanou databázi, **jednotky eDTU fondu může sdílet velký počet databází, a proto stačí menší celkový počet jednotek eDTU**. Tyto rozdíly v cenách a sdílení jednotek eDTU jsou základem potenciálních úspor, které fondy mohou nabídnout.
 
-Následující hrubé odhady související s počtem databází a jejich využitím pomáhají zajistit, že fond ve srovnání s použitím úrovní výkonu pro izolované databáze poskytuje snížení nákladů.
+Následující hrubé odhady související s počtem databází a jejich využitím pomáhají zajistit, že fond poskytuje snížení nákladů ve srovnání s použitím velikostí výpočetních pro izolované databáze.
 
 ### <a name="minimum-number-of-databases"></a>Maximální počet databází
 
 Pokud agregační objem prostředků pro izolované databáze je více než 1, 5násobek prostředků potřebných pro fond, je elastický fond cenově výhodnější.
 
 ***Založený na DTU nákupní model příklad***<br>
-K tomu, aby fond se 100 jednotkami eDTU byl cenově výhodnější než použití úrovní výkonu pro izolované databáze, jsou potřeba nejméně dvě databáze S3 nebo nejméně 15 databází S0.
+100 jednotkami eDTU fond cenově výhodnější než použití velikostí výpočetních pro izolované databáze jsou potřeba nejméně dvě databáze S3 nebo nejméně 15 databází S0.
 
 ### <a name="maximum-number-of-concurrently-peaking-databases"></a>Maximální počet databází se souběžnými špičkami
 
 Prostřednictvím sdílení prostředků, ne všechny databáze ve fondu současně používat prostředky až po limit dostupný pro izolované databáze. Čím méně databází má současně špičku, tím nižší prostředků fondu můžete nastavit a tím výhodnější fond bude. Obecně platí by měla více než 2/3 (nebo 67 %) databází ve fondu současně vrcholu do svého limitu prostředků.
 
 ***Založený na DTU nákupní model příklad***<br>
-Aby bylo možné snížit náklady pro tři databáze S3 ve fondu s 200 jednotkami eDTU, mohou nejvýše dvě z těchto databází dosahovat špičky svého využití současně. Pokud současně dosahují špičky více než dvě z těchto čtyř databází S3, bylo by nutné velikost fondu nastavit na více než 200 jednotek eDTU. Pokud se velikost fondu nastaví na více než 200 jednotek eDTU, bude nutné do fondu přidat další databáze S3, jinak náklady nebudou nižší než při použití úrovní výkonu pro izolované databáze.
+Aby bylo možné snížit náklady pro tři databáze S3 ve fondu s 200 jednotkami eDTU, mohou nejvýše dvě z těchto databází dosahovat špičky svého využití současně. Pokud současně dosahují špičky více než dvě z těchto čtyř databází S3, bylo by nutné velikost fondu nastavit na více než 200 jednotek eDTU. Pokud je velikost fondu nastaví na více než 200 jednotek Edtu, další databáze S3, jinak bude nutné přidat do fondu náklady nebudou nižší než výpočtu velikosti pro izolované databáze.
 
 Všimněte si, tento příklad nebere v úvahu využití ostatních databází ve fondu. Pokud se v libovolném konkrétním časovém okamžiku do určité míry využívají všechny databáze, může méně než 2/3 (nebo 67 %) z nich dosahovat špičky současně.
 
@@ -123,7 +123,7 @@ V případech, kdy nejde používat nástroje, vám při odhadování, jestli je
 2. Odhadněte potřebnou velikost úložiště pro fond (sečtěte počet bajtů potřebných pro všechny databáze ve fondu). Potom určete velikost fondu v jednotkách eDTU, která toto úložiště poskytuje.
 3. Pro nákupní model založený na DTU trvat větší z odhadovaného počtu eDTU z kroku 1 a 2. Pro nákupní model založený na virtuálních jádrech trvat vCore odhad z kroku 1.
 4. Zobrazit [stránce s cenami SQL Database](https://azure.microsoft.com/pricing/details/sql-database/) a najděte fondu nejmenší velikost, která je větší než odhad z kroku 3.
-5. Porovnejte cenu fondu z kroku 5 s cenou při použití odpovídajících úrovní výkonu pro izolované databáze.
+5. Porovnejte cenu fondu z kroku 5 s cenou při použití odpovídajícími výpočetními velikosti pro izolované databáze.
 
 ## <a name="using-other-sql-database-features-with-elastic-pools"></a>Další funkce služby SQL Database pomocí elastických fondů
 
@@ -151,7 +151,7 @@ Existují dva způsoby elastický fond můžete vytvořit na webu Azure Portal.
 > [!NOTE]
 > Můžete vytvořit více fondů na serveru, ale nemůžete přidat databáze z různých serverů do stejného fondu.
 
-Úrovně služeb fondu určuje funkce, které jsou k dispozici elastických ve fondu a maximální dobu, prostředky dostupné pro každou databázi. Podrobnosti najdete v tématu limity pro elastické fondy v prostředků [DTU modelu](sql-database-dtu-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-performance-levels). Prostředek založený na virtuálních jádrech omezení pro elastické fondy najdete v tématu [omezení prostředků založený na virtuálních jádrech - elastických fondů](sql-database-vcore-resource-limits-elastic-pools.md).
+Úrovně služeb fondu určuje funkce, které jsou k dispozici elastických ve fondu a maximální dobu, prostředky dostupné pro každou databázi. Podrobnosti najdete v tématu limity pro elastické fondy v prostředků [DTU modelu](sql-database-dtu-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes). Prostředek založený na virtuálních jádrech omezení pro elastické fondy najdete v tématu [omezení prostředků založený na virtuálních jádrech - elastických fondů](sql-database-vcore-resource-limits-elastic-pools.md).
 
 Ke konfiguraci prostředků a ceny ve fondu, klikněte na tlačítko **konfigurace fondu**. Vyberte úroveň služby, přidejte databáze do fondu a nakonfigurovat omezení prostředků pro fond a jeho databázím.
 

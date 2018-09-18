@@ -1,23 +1,23 @@
 ---
-title: Zjišťování barevná schémata
-titleSuffix: Computer Vision - Cognitive Services - Azure
-description: Koncepty související se zjišťováním barevné schéma v obrázcích pomocí služeb Azure Cognitive Services pro počítačové zpracování obrazu.
+title: Zjišťování barevná schémata - pro počítačové zpracování obrazu
+titleSuffix: Azure Cognitive Services
+description: Koncepty související se zjišťováním barevné schéma v obrázků s využitím rozhraní API pro počítačové zpracování obrazu.
 services: cognitive-services
 author: deken
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: v-deken
-ms.openlocfilehash: 66abab93ba9c1152d18428e66d648c6ba690aaa0
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: c01433ed3ef1279bf3db9bdcf76e57aad2208895
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44725317"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983593"
 ---
-# <a name="detecting-color-schemes"></a>Zjišťování barevná schémata
+# <a name="detecting-color-schemes"></a>Rozpoznávání barevných schémat
 
 Počítačové zpracování obrazu extrahuje barvy z obrázku. Barvy se analyzují pak ve třech různých kontextech: popředí dominantní barva, barvu pozadí dominantní a dominantní barvy pro bitovou kopii jako celek. Jsou seskupené do 12 dominantních doplňkových barev. Tyto barvy zvýraznění jsou černá, modrá, brown, šedá, zelená, orange, růžová, nachová, červená, šedozelená, prázdné a žlutou barvou. Počítačové zpracování obrazu analyzuje extrahovat z obrázků se vraťte barvu motivu, který představuje nejvíce živý barvu na obrázku se divákům prostřednictvím kombinace dominantní barvy a sytost barev. V závislosti na barvy v obrázku mohou být vráceny jednoduché černobílý nebo barvy zvýraznění v šestnáctkové kódy. Počítačové zpracování obrazu také vrátí logickou hodnotu, která určuje, jestli obrázek je černá a bílá.
 

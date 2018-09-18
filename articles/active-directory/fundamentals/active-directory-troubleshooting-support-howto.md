@@ -1,6 +1,6 @@
 ---
-title: Získat podporu pro Azure AD | Dokumentace Microsoftu
-description: Jak získat podporu pro Azure Active Directory
+title: Jak získat podporu pro Azure Active Directory | Dokumentace Microsoftu
+description: Zjistěte, jak získat podporu pro Azure Active Directory.
 services: active-directory
 documentationcenter: na
 author: eross-msft
@@ -14,16 +14,14 @@ ms.date: 08/28/2017
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: 72212d2d47ff0290ee541c1ffeab6d73dbf3185d
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: d7d499ed43ee2eab03e46e408104eca4af6a2945
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35903316"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45729379"
 ---
-# <a name="how-to-get-support-for-azure-active-directory"></a>Jak získat podporu pro Azure Active Directory
-
-
+# <a name="how-to-get-support-for-azure-active-directory"></a>Postupy: získání podpory pro Azure Active Directory
 Společnost Microsoft poskytuje globální technickou, před prodejem, fakturaci a předplatné podpory pro Azure Active Directory (Azure AD). Podpora je k dispozici online a po telefonu pro placené Microsoft Azure a zkušebních verzí předplatného. Telefonické podpory a online podporu fakturace jsou dostupné v dalších jazycích. 
 
 ## <a name="find-help-without-opening-a-support-ticket"></a>Získání pomoci bez otevření lístku podpory

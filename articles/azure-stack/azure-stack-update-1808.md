@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 09/17/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 921e9df11cd79e9d2558d9ca6a490a8da064deb8
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 877ea4c143d74414c3d733c446da57060322b11d
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45630337"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982091"
 ---
 # <a name="azure-stack-1808-update"></a>Aktualizace služby Azure Stack. 1808
 
@@ -57,7 +57,7 @@ Tato aktualizace zahrnuje následující vylepšení pro službu Azure Stack.
 
 - <!-- | IS ASDK--> **Blockchain šablony**. Teď můžete spustit [ethereum během nasazení consortium](azure-stack-ethereum.md) ve službě Azure Stack. Tři nové šablony v můžete najít [Azure Stack šablon pro rychlý Start](https://github.com/Azure/AzureStack-QuickStart-Templates). Povolit uživatele k nasazení a konfiguraci sítě konsorcia několika člen ethereum během s minimálními znalostmi Azure a Etherea. Účelem šablony je usnadňují uživatelům, aby instalační program pro vývoj/testování Blockchain nasazení v několika krocích.
 
-
+- <!-- | IS ASDK--> **Rozhraní API verze profilu 2017-03-09-profile byla aktualizována na 2018-03-01hybridní**. Profily rozhraní API zadejte poskytovatel prostředků Azure a verze rozhraní API pro koncové body Azure REST. Další informace o profilech najdete v tématu [profilů verzí API spravovat ve službě Azure Stack](/azure/azure-stack/user/azure-stack-version-profiles).
 
  ### <a name="fixed-issues"></a>Oprava potíží
 - <!-- IS ASDK--> Opravili jsme problém pro vytvoření dostupnosti na portálu, což vedlo sada domény selhání a aktualizační doména 1. 
@@ -142,6 +142,17 @@ Tato aktualizace obsahuje také ke zmírnění chyby zabezpečení spekulativní
 Toto jsou známé problémy této verze sestavení po instalaci.
 
 ### <a name="portal"></a>Portál
+
+- <!-- TBD - IS ASDK --> Může se zobrazit prázdný řídicí panel portálu. Obnovit řídicí panel, klikněte na tlačítko **upravit řídicí panel**, klikněte pravým tlačítkem myši a vyberte **resetovat do výchozího stavu**.
+
+- <!-- 2930718 - IS ASDK --> Na portálu správce při přístupu k podrobnosti libovolné předplatné uživatele po zavření okna a kliknutím na **poslední**, se nezobrazí název předplatného uživatele.
+
+- <!-- 3060156 - IS ASDK --> Na portálech správce i uživatele, kliknutím na nastavení portálu a následným výběrem **odstranit všechna nastavení a privátní řídicí panely** nefunguje podle očekávání. Zobrazí se oznámení o chybě. 
+
+- <!-- 2930799 - IS ASDK --> Na portálech pro správce i uživatele v části **všechny služby**, asset **plány DDoS protection** je nesprávně uveden. Není ve skutečnosti k dispozici ve službě Azure Stack. Pokud se pokusíte k jeho vytvoření, zobrazí se chyba s informacemi o tom, že na portálu nepovedlo vytvořit položku marketplace. 
+
+- <!-- 2930820 - IS ASDK --> Na portálech pro správce i uživatele Pokud dáte vyhledat "Dockeru," položka je nesprávně vrátila. Není ve skutečnosti k dispozici ve službě Azure Stack. Pokud se pokusíte k jeho vytvoření, zobrazí se okno s uvedením chyby. 
+
 - <!-- 2967387 – IS, ASDK --> Účet, který používáte k přihlášení k portálu Azure Stack správce nebo uživatel zobrazí jako **neidentifikovaný uživatel**. K tomu dojde, pokud nemá buď *první* nebo *poslední* zadaný název. Chcete-li tento problém obejít, upravte uživatelský účet první nebo poslední název. Musíte pak Odhlásit se a přihlaste se zpět na portál. 
 
 -  <!--  2873083 - IS ASDK --> Při použití na portálu vytvořit škálovací sadu virtuálních počítačů (VMSS), nastavte *velikost instance* rozevírací seznam nenačte správně při použití aplikace Internet Explorer. Chcete-li tento problém vyřešit, použijte jiný prohlížeč při použití portálu k vytvoření VMSS.  
@@ -151,8 +162,6 @@ Toto jsou známé problémy této verze sestavení po instalaci.
 - <!--2760466 – IS  ASDK --> Při instalaci nového prostředí Azure Stack, na kterém běží tato verze, upozornění, která informuje o *vyžadována aktivace* se nemusí zobrazit. [Aktivace](azure-stack-registration.md) se vyžaduje, abyste mohli používat marketplace syndikace.  
 
 - <!-- TBD - IS ASDK --> Dva typy pro správu předplatného, které byly [představený poprvé ve verzi 1804](azure-stack-update-1804.md#new-features) by se neměly. Typy předplatného jsou **měření předplatné**, a **využití předplatného**. Tyto typy předplatného jsou viditelné v novým prostředím Azure Stack od verze 1804, ale ještě nejsou připravené k použití. By měla dál používat **výchozí zprostředkovatel** typu předplatného.
-
-- <!-- TBD - IS --> Může se zobrazit prázdný řídicí panel portálu. Obnovit řídicí panel, vyberte ikonu ozubeného kolečka v pravém horním rohu portálu a pak vyberte **obnovit výchozí nastavení**.
 
 - <!-- TBD - IS ASDK --> Odstraňuje se předplatné uživatele za následek osamocené prostředky. Jako alternativní řešení nejprve odstranit prostředky uživatele nebo celou skupinu prostředků a pak odstraňte předplatná uživatelů.
 

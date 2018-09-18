@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/31/2017
 ms.author: wesmc
-ms.openlocfilehash: 6733891213f15e9ceaf08ef7fb50380db47a695f
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: b48235b1c1912ac767070d5890d4768138a9db8b
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39259190"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45732087"
 ---
 # <a name="import-and-export-data-in-azure-redis-cache"></a>Import a Export dat ve službě Azure Redis Cache
 Import/Export je operace správy Azure Redis Cache dat, který umožňuje importovat data do Azure Redis Cache a export dat z Azure Redis Cache pomocí importu a exportu snímku databáze Redis Cache (RDB) z mezipaměti premium do objektu blob v Azure Účet úložiště. 
@@ -78,7 +78,7 @@ Export umožňuje exportovat data uložená ve službě Azure Redis Cache k Redi
 2. Klikněte na tlačítko **vyberte kontejner úložiště** a vyberte požadovaný účet úložiště. Účet úložiště musí být ve stejném předplatném a oblasti jako mezipaměť.
 
    > [!IMPORTANT]
-   > Export funguje s objekty BLOB stránky, které jsou podporovány v modelu classic a účty úložiště Resource Manageru, ale nejsou podporovány [účty Blob storage](../storage/common/storage-account-options.md#blob-storage-accounts) v tuto chvíli.
+   > Exportujte funguje s objekty BLOB stránky, které jsou podporovány v modelu classic a účty úložiště Resource Manageru, ale nejsou v tuto chvíli nepodporuje účty úložiště Blob. Další informace najdete v tématu [přehled účtu Azure storage](../storage/common/storage-account-overview.md).
    >
    >
 
@@ -156,7 +156,7 @@ Pokud zůstanou na **importovat data** nebo **exportovat data** okno déle než 
 Chcete-li tento problém vyřešit, spusťte import nebo export fungování předtím, než 15 minut uplynul.
 
 ### <a name="i-got-an-error-when-exporting-my-data-to-azure-blob-storage-what-happened"></a>Zobrazila se chyba při exportu dat do úložiště objektů Blob v Azure. Co se stalo?
-Export funguje jenom s RDB soubory uložené jako objekty BLOB stránky. Jiné typy objektů blob se aktuálně nepodporují, včetně účty blob storage s vrstvami hot a cool. Další informace najdete v tématu [účty Blob storage](../storage/common/storage-account-options.md#blob-storage-accounts).
+Export funguje jenom s RDB soubory uložené jako objekty BLOB stránky. Jiné typy objektů blob se aktuálně nepodporují, včetně účty Blob storage s vrstvami hot a cool. Další informace najdete v tématu [přehled účtu Azure storage](../storage/common/storage-account-overview.md).
 
 ## <a name="next-steps"></a>Další postup
 Další informace o použití další prémiových funkcí mezipaměti.

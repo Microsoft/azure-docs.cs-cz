@@ -1,6 +1,6 @@
 ---
-title: Nahrát, nebo můžete zkopírovat vlastní virtuální počítač s Linuxem pomocí Azure CLI 2.0 | Microsoft Docs
-description: Nahrát, nebo můžete zkopírovat vlastní virtuální počítač pomocí modelu nasazení Resource Manager a Azure CLI 2.0
+title: Uložit nebo zkopírovat vlastní virtuální počítač s Linuxem pomocí Azure CLI 2.0 | Dokumentace Microsoftu
+description: Uložit nebo zkopírovat vlastní virtuální počítač pomocí modelu nasazení Resource Manageru a rozhraní příkazového řádku Azure CLI 2.0
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -15,28 +15,28 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/06/2017
 ms.author: cynthn
-ms.openlocfilehash: fc3d72ace6398b69a5efa5543c590bba166baaf0
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 3fb6957cf6af5c09a355b61c7c2440a929d1b837
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30918570"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45736663"
 ---
-# <a name="create-a-linux-vm-from-custom-disk-with-the-azure-cli-20"></a>Vytvoření virtuálního počítače s Linuxem z vlastní disk s 2.0 rozhraní příkazového řádku Azure
+# <a name="create-a-linux-vm-from-custom-disk-with-the-azure-cli-20"></a>Vytvoření virtuálního počítače s Linuxem z vlastního disku pomocí rozhraní příkazového řádku Azure CLI 2.0
 
 <!-- rename to create-vm-specialized -->
 
-Tento článek ukazuje, jak nahrát vlastní virtuální pevný disk (VHD) nebo kopírování existující virtuální pevný disk v Azure a vytvoření nových Linux virtuálních počítačů (VM) z vlastní disku. Můžete nainstalovat a nakonfigurovat Linux distro svých požadavků a použije tento virtuální pevný disk rychle vytvořit nový virtuální počítač Azure.
+V tomto článku se dozvíte, jak nahrát vlastní virtuální pevný disk (VHD) nebo kopírování existujícího virtuálního pevného disku v Azure a vytvořte nový Linuxové virtuální počítače (VM) z vlastního disku. Můžete nainstalovat a nakonfigurovat distribuce Linuxu svých požadavků a pak použít tento virtuální pevný disk můžete rychle vytvořit nový virtuální počítač Azure.
 
-Pokud chcete vytvořit víc virtuálních počítačů z přizpůsobené disku, měli byste vytvořit bitovou kopii z virtuálního počítače nebo virtuální pevný disk. Další informace najdete v tématu [vytvořit vlastní image virtuálního počítače Azure pomocí rozhraní příkazového řádku](tutorial-custom-images.md).
+Pokud chcete vytvořit několik virtuálních počítačů z vlastní disku, měli byste vytvořit bitovou kopii z virtuálního počítače nebo virtuální pevný disk. Další informace najdete v tématu [vytvořit vlastní image virtuálního počítače Azure pomocí rozhraní příkazového řádku](tutorial-custom-images.md).
 
 Máte dvě možnosti:
 * [Nahrání virtuálního pevného disku](#option-1-upload-a-specialized-vhd)
-* [Zkopírujte existující virtuální počítač Azure](#option-2-copy-an-existing-azure-vm)
+* [Zkopírovat existující virtuální počítač Azure](#option-2-copy-an-existing-azure-vm)
 
 ## <a name="quick-commands"></a>Rychlé příkazy
 
-Při vytváření nového virtuálního počítače pomocí [az virtuální počítač vytvořit](/cli/azure/vm#az_vm_create) z přizpůsobené nebo specializované disku můžete **připojit** disku (– připojit disk operačního systému) místo zadávání vlastního nebo marketplace image (--bitové kopie). Následující příklad vytvoří virtuální počítač s názvem *Můjvp* pomocí spravovaného disku s názvem *myManagedDisk* vytvořené z vaší vlastní virtuální pevný disk:
+Při vytváření nového virtuálního počítače pomocí [vytvořit az vm](/cli/azure/vm#az_vm_create) z přizpůsobené nebo specializovaného disku můžete **připojit** disku (– připojit disk operačního systému) místo zadávání vlastního prostředku nebo marketplace image (--bitové kopie). Následující příklad vytvoří virtuální počítač s názvem *myVM* použití spravovaného disku s názvem *myManagedDisk* vytvořen z vlastní virtuální pevné disky:
 
 ```azurecli
 az vm create --resource-group myResourceGroup --location eastus --name myVM \
@@ -44,53 +44,53 @@ az vm create --resource-group myResourceGroup --location eastus --name myVM \
 ```
 
 ## <a name="requirements"></a>Požadavky
-Chcete-li provést následující kroky, je třeba:
+K dokončení následujících kroků, potřebujete:
 
-* Virtuální počítač Linux, který je připravena pro použití v Azure. [Příprava virtuálního počítače](#prepare-the-vm) tohoto článku popisuje jak najít distro konkrétní informace o instalaci Azure Linux Agent (příkaz waagent), který je nutný pro virtuální počítač fungovat správně v Azure a abyste mohli připojit se pomocí SSH.
-* Soubor virtuálního pevného disku z existující [distribuce schválené pro Azure Linux](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (nebo v tématu [informace pro neschválené distribuce](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)) na virtuální disk ve formátu virtuálního pevného disku. Existuje několik nástrojů k vytvoření virtuálního počítače a virtuálního pevného disku:
-  * Instalace a konfigurace [QEMU](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) nebo [KVM](http://www.linux-kvm.org/page/RunningKVM), aby byl používáte formát bitové kopie virtuálního pevného disku. V případě potřeby můžete [převést bitovou kopii](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) pomocí **qemu img převést**.
-  * Můžete také použít technologie Hyper-V [ve Windows 10](https://msdn.microsoft.com/virtualization/hyperv_on_windows/quick_start/walkthrough_install) nebo [v systému Windows Server 2012 nebo 2012 R2](https://technet.microsoft.com/library/hh846766.aspx).
+* Virtuální počítač s Linuxem, která byla připravena pro použití v Azure. [Počítač připravit tak](#prepare-the-vm) části tohoto článku popisuje, jak najít distribuce konkrétní informace o instalaci agenta Azure Linux (waagent) který se vyžaduje pro správné fungování v Azure virtuální počítač a pro vás bude moct připojit pomocí SSH.
+* Soubor virtuálního pevného disku z existující [distribucí Linuxu schválených pro Azure](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (nebo se podívejte [informace pro neschválené distribuce](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)) na virtuální disk ve formátu virtuálního pevného disku. Existují více nástroje k vytvoření virtuálního počítače a virtuálního pevného disku:
+  * Instalace a konfigurace [QEMU](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) nebo [KVM](http://www.linux-kvm.org/page/RunningKVM), nezapomeňte použít virtuální pevný disk jako formát obrázku. V případě potřeby můžete [převedení obrázku](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) pomocí **převést qemu img**.
+  * Můžete také použít technologie Hyper-V [ve Windows 10](https://msdn.microsoft.com/virtualization/hyperv_on_windows/quick_start/walkthrough_install) nebo [v systému Windows Server 2012/2012 R2](https://technet.microsoft.com/library/hh846766.aspx).
 
 > [!NOTE]
-> Novější formát VHDX není podporovaný v Azure. Když vytvoříte virtuální počítač, zadejte jako formát virtuálního pevného disku. V případě potřeby můžete převést disků VHDX virtuální pevný disk pomocí [qemu img převést](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) nebo [Convert-VHD](https://technet.microsoft.com/library/hh848454.aspx) rutiny prostředí PowerShell. Navíc Azure nepodporuje odesílání dynamické virtuální pevné disky, takže je nutné převést tyto disky na virtuální pevné disky statické před nahráním. Můžete použít nástroje, jako [nástroje Azure virtuálního pevného disku pro přejděte](https://github.com/Microsoft/azure-vhd-utils-for-go) převést dynamické disky během procesu odesílání do Azure.
+> Novější formát VHDX nepodporuje v Azure. Při vytváření virtuálního počítače, zadejte jako formát virtuálního pevného disku. V případě potřeby můžete převést disky VHDX na virtuální pevný disk pomocí [převést qemu img](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) nebo [Convert-VHD](https://technet.microsoft.com/library/hh848454.aspx) rutiny Powershellu. Kromě toho Azure nepodporuje odesílání dynamických virtuálních pevných disků, takže budete muset převést těmito disky na statické virtuální pevné disky, před nahráním. Můžete použít nástroje jako [virtuálního pevného disku nástroje Azure pro GO](https://github.com/Microsoft/azure-vhd-utils-for-go) pro převod dynamických disků během procesu nahrávání do Azure.
 > 
 > 
 
 
-* Ujistěte se, že máte nejnovější [Azure CLI 2.0](/cli/azure/install-az-cli2) nainstalován a přihlášení k účtu Azure pomocí [az přihlášení](/cli/azure/reference-index#az_login).
+* Ujistěte se, že máte nejnovější [příkazového řádku Azure CLI 2.0](/cli/azure/install-az-cli2) nainstalovaný a přihlášení k účtu Azure pomocí [az login](/cli/azure/reference-index#az_login).
 
-V následujících příkladech nahraďte názvy parametrů příklad vlastní hodnoty. Názvy parametrů příklad zahrnuté *myResourceGroup*, *můj_účet_úložiště*, a *mydisks*.
+V následujících příkladech nahraďte ukázkové názvy parametrů s vlastními hodnotami. Ukázkové názvy parametrů zahrnutých *myResourceGroup*, *mystorageaccount*, a *mydisks*.
 
 <a id="prepimage"> </a>
 
 ## <a name="prepare-the-vm"></a>Příprava virtuálního počítače
 
-Azure podporuje různé Linuxových distribucích (viz [distribuce schválené](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)). Postup přípravy různé distribuce systému Linux, které jsou podporovány v Azure vás provede v následujících článcích:
+Azure podporuje distribuce Linuxu (viz [distribuce schválené pro](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)). Následující články vás provedou postup přípravy různých Linuxových distribucí, které jsou podporovány v Azure:
 
-* [Na základě centOS distribuce](create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Distribuce založené na centOS](create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Debian Linux](debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Oracle Linux](oracle-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Red Hat Enterprise Linux](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [SLES & openSUSE](suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Ubuntu](create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Další - neschválené distribuce](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Jiné – neschválené distribuce](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-Viz také [poznámky k instalaci Linux](create-upload-generic.md#general-linux-installation-notes) Příprava bitové kopie systému Linux na Azure další Obecné tipy pro.
+Viz také [poznámky k instalaci Linux](create-upload-generic.md#general-linux-installation-notes) pro další Obecné tipy pro Příprava imagí Linuxu na Azure.
 
 > [!NOTE]
-> [Platformy Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) se vztahují na virtuální počítače se systémem Linux jenom v případě, že jeden z potvrzená distribuce se používá s podrobností konfigurace uvedeného v části "podporované verze [Linux na Azure-Endorsed distribuce](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+> [Platformy Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) platí pro virtuální počítače s Linuxem, pouze v případě, že jednu z doporučených distribucích se používá s podrobnosti o konfiguraci, jak je uvedeno v části "podporované verze [Linux na schválené pro Azure Distribuce](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 > 
 > 
 
 ## <a name="option-1-upload-a-vhd"></a>Možnost 1: Nahrání virtuálního pevného disku
 
-Můžete nahrát vlastní virtuální pevný disk, ke které máte spuštěné v místním počítači nebo který jste exportovali z jiného cloudu. Chcete-li použít virtuální pevný disk k vytvoření nového virtuálního počítače Azure, potřebujete nahrání virtuálního pevného disku do účtu úložiště a vytvoření spravovaného disku z virtuálního pevného disku. 
+Můžete nahrát vlastní virtuální pevný disk, které máte spuštěné na místním počítači nebo které jste vyexportovali z jiného cloudu. Virtuální pevný disk použít k vytvoření nového virtuálního počítače Azure, potřebujete k nahrání virtuálního pevného disku do účtu úložiště a vytvoření spravovaného disku z virtuálního pevného disku. 
 
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
-Před nahráním váš vlastní disk a vytváření virtuálních počítačů, musíte nejprve vytvořit skupinu prostředků s [vytvořit skupinu az](/cli/azure/group#az_group_create).
+Před nahráním vlastního disku a vytvoření virtuálních počítačů, musíte nejprve vytvořit skupinu prostředků pomocí [vytvořit skupiny az](/cli/azure/group#az_group_create).
 
-Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v *eastus* umístění: [disky spravované Azure – přehled](../windows/managed-disks-overview.md)
+Následující příklad vytvoří skupinu prostředků s názvem *myResourceGroup* v *eastus* umístění: [Přehled služby Azure Managed Disks](../windows/managed-disks-overview.md)
 ```azurecli
 az group create \
     --name myResourceGroup \
@@ -99,9 +99,9 @@ az group create \
 
 ### <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
-Vytvoření účtu úložiště vlastní disk a virtuální počítače s [vytvořit účet úložiště az](/cli/azure/storage/account#az_storage_account_create). 
+Vytvoření účtu úložiště pro váš vlastní disk a virtuální počítače s [vytvořit účet úložiště az](/cli/azure/storage/account#az_storage_account_create). 
 
-Následující příklad vytvoří účet úložiště s názvem *můj_účet_úložiště* ve skupině prostředků vytvořili:
+Následující příklad vytvoří účet úložiště s názvem *mystorageaccount* ve skupině prostředků vytvořili dříve:
 
 ```azurecli
 az storage account create \
@@ -113,9 +113,9 @@ az storage account create \
 ```
 
 ### <a name="list-storage-account-keys"></a>Vypsat klíče účtu úložiště
-Vygeneruje Azure dva 512bitové přístupové klíče pro každý účet úložiště. Tyto přístupové klíče se používají při ověřování k účtu úložiště, jako je provádění operace zápisu. Další informace o [Správa přístupu k úložišti zde](../../storage/common/storage-create-storage-account.md#manage-your-storage-account). Zobrazit přístupové klíče s [seznam klíčů účtu úložiště az](/cli/azure/storage/account/keys#az_storage_account_keys_list).
+Vygeneruje Azure dva 512bitové přístupové klíče pro každý účet úložiště. Tyto přístupové klíče se používají při ověřování k účtu úložiště, jako je provádění operací zápisu. Další informace o [Správa přístupu k úložišti zde](../../storage/common/storage-account-manage.md#access-keys). Zobrazení přístupových klíčů pomocí [seznamu klíčů účtu úložiště az](/cli/azure/storage/account/keys#az_storage_account_keys_list).
 
-Zobrazte přístupové klíče pro účet úložiště, který jste vytvořili:
+Zobrazení přístupových klíčů pro účet úložiště, který jste vytvořili:
 
 ```azurecli
 az storage account keys list \
@@ -134,10 +134,10 @@ data:    key1  d4XAvZzlGAgWdvhlWfkZ9q4k9bYZkXkuPCJ15NTsQOeDeowCDAdB80r9zA/tUINAp
 data:    key2  Ww0T7g4UyYLaBnLYcxIOTVziGAAHvU+wpwuPvK4ZG0CDFwu/mAxS/YYvAQGHocq1w7/3HcalbnfxtFdqoXOw8g==  Full
 info:    storage account keys list command OK
 ```
-Poznamenejte si **key1** jako použije k interakci se svým účtem úložiště v dalších krocích.
+Poznamenejte si **key1** protože budete ho používat k interakci se svým účtem úložiště v dalších krocích.
 
 ### <a name="create-a-storage-container"></a>Vytvoření kontejneru úložiště
-V stejným způsobem, který vytvoříte různé adresáře, které logicky uspořádat do místního systému souborů můžete vytvořit kontejnery v účtu úložiště pro uspořádání vaše disky. Účet úložiště může obsahovat libovolný počet kontejnerů. Vytvořit kontejner s [vytvořit kontejner úložiště az](/cli/azure/storage/container#az_storage_container_create).
+Stejným způsobem, který vytvoříte různým adresářům logicky tak uspořádat vašeho místního systému souborů můžete vytvořit kontejnery v rámci účtu úložiště pro uspořádání disků. Účet úložiště může obsahovat libovolný počet kontejnerů. Vytvořte kontejner s [vytvořit kontejner úložiště az](/cli/azure/storage/container#az_storage_container_create).
 
 Následující příklad vytvoří kontejner s názvem *mydisks*:
 
@@ -148,9 +148,9 @@ az storage container create \
 ```
 
 ### <a name="upload-the-vhd"></a>Nahrání virtuálního pevného disku
-Teď nahrát vlastní disk s [az úložiště objektů blob nahrávání](/cli/azure/storage/blob#az_storage_blob_upload). Nahrání a ukládat vlastní disk jako objekt blob stránky.
+Teď nahrajte vlastní disku s [az storage blob nahrávání](/cli/azure/storage/blob#az_storage_blob_upload). Nahrávat a ukládat vlastní disk jako objekt blob stránky.
 
-Zadejte přístupový klíč, kontejner, který jste vytvořili v předchozím kroku a pak cestu k vlastní disku v místním počítači:
+Zadejte přístupový klíč, kontejner, který jste vytvořili v předchozím kroku a cesta k disku vlastní v místním počítači:
 
 ```azurecli
 az storage blob upload --account-name mystorageaccount \
@@ -165,7 +165,7 @@ Nahrání virtuálního pevného disku, může chvíli trvat.
 ### <a name="create-a-managed-disk"></a>Vytvoření spravovaného disku
 
 
-Vytvoření spravovaného disku z virtuálního pevného disku pomocí [vytvoření disku az](/cli/azure/disk#az_disk_create). Následující příklad vytvoří spravované disk s názvem *myManagedDisk* z virtuálního pevného disku, který jste nahráli k účtu s názvem úložiště a kontejneru:
+Vytvoření spravovaného disku z virtuálního pevného disku pomocí [az disk vytvořit](/cli/azure/disk#az_disk_create). Následující příklad vytvoří spravovaný disk s názvem *myManagedDisk* z virtuálního pevného disku jste nahráli do účtu s názvem úložiště a kontejneru:
 
 ```azurecli
 az disk create \
@@ -173,13 +173,13 @@ az disk create \
     --name myManagedDisk \
   --source https://mystorageaccount.blob.core.windows.net/mydisks/myDisk.vhd
 ```
-## <a name="option-2-copy-an-existing-vm"></a>Možnost 2: Zkopírujte existující virtuální počítač
+## <a name="option-2-copy-an-existing-vm"></a>Možnost 2: Kopírování existujícího virtuálního počítače
 
-Můžete také vytvořit vlastní virtuální počítač v Azure a pak zkopírujte disk operačního systému a připojte ji k vytvoření nového virtuálního počítače vytvořit další kopii. To je v pořádku pro testování, ale pokud chcete použít existující virtuální počítač Azure jako model pro více nové virtuální počítače, ve skutečnosti měli byste vytvořit **image** místo. Další informace o vytvoření bitové kopie ze stávajícího virtuálního počítače Azure najdete v tématu [vytvořit vlastní image virtuálního počítače Azure pomocí rozhraní příkazového řádku](tutorial-custom-images.md)
+Můžete také vytvořit vlastní virtuální počítač v Azure a potom zkopírujte disk s operačním systémem a připojí nový virtuální počítač vytvořit další kopii. To je v pořádku pro testování, ale pokud chcete použít existující virtuální počítač Azure jako model pro více nových virtuálních počítačů, ve skutečnosti by měl vytvořit **image** místo. Další informace o vytváření image z existujícího virtuálního počítače Azure, najdete v části [vytvořit vlastní image virtuálního počítače Azure pomocí rozhraní příkazového řádku](tutorial-custom-images.md)
 
 ### <a name="create-a-snapshot"></a>Vytvoření snímku
 
-Tento příklad vytvoří snímek virtuálního počítače s názvem *Můjvp* ve skupině prostředků *myResourceGroup* a vytvoří snímek s názvem *osDiskSnapshot*.
+Tento příklad vytvoří snímek virtuálního počítače s názvem *myVM* ve skupině prostředků *myResourceGroup* a vytvoří snímek s názvem *osDiskSnapshot*.
 
 ```azure-cli
 osDiskId=$(az vm show -g myResourceGroup -n myVM --query "storageProfile.osDisk.managedDisk.id" -o tsv)
@@ -192,13 +192,13 @@ az snapshot create \
 
 Vytvoření nového spravovaného disku ze snímku.
 
-Získáte Identifikátor snímku. V tomto příkladu je název snímku *osDiskSnapshot* a je v *myResourceGroup* skupinu prostředků.
+Získejte ID snímku. V tomto příkladu je název snímku *osDiskSnapshot* a má *myResourceGroup* skupinu prostředků.
 
 ```azure-cli
 snapshotId=$(az snapshot show --name osDiskSnapshot --resource-group myResourceGroup --query [id] -o tsv)
 ```
 
-Vytvoření spravovaného disku. V tomto příkladu vytvoříme spravované disk s názvem *myManagedDisk* ze naše snímek, který je 128 GB velikost ve standardní úložiště.
+Vytvoření spravovaného disku. V tomto příkladu vytvoříme spravovaný disk s názvem *myManagedDisk* z našich snímek, který je 128 GB velikost v storage úrovně standard.
 
 ```azure-cli
 az disk create \
@@ -211,7 +211,7 @@ az disk create \
 
 ## <a name="create-the-vm"></a>Vytvořte virtuální počítač.
 
-Teď vytvořte virtuální počítač s [vytvořit virtuální počítač az](/cli/azure/vm#az_vm_create) a připojte (--připojit disk operačního systému) spravovaných disk jako disk operačního systému. Následující příklad vytvoří virtuální počítač s názvem *myNewVM* pomocí spravovaného disku vytvořené z vaší nahraný virtuální pevný disk:
+Teď vytvořte virtuální počítač s [az vm vytvořit](/cli/azure/vm#az_vm_create) a připojení (– připojení disku operačního systému) spravovaného disku jako disku s operačním systémem. Následující příklad vytvoří virtuální počítač s názvem *myNewVM* použití spravovaného disku vytvořené z nahraný virtuální pevný disk:
 
 ```azurecli
 az vm create \
@@ -222,8 +222,8 @@ az vm create \
     --attach-os-disk myManagedDisk
 ```
 
-Nyní byste měli mít k SSH do virtuálního počítače pomocí přihlašovacích údajů, ze zdrojového virtuálního počítače. 
+Měli byste být schopni SSH k virtuálnímu počítači pomocí přihlašovacích údajů ze zdrojového virtuálního počítače. 
 
 ## <a name="next-steps"></a>Další postup
-Po připravené a nahrát vlastní virtuální disk, si můžete přečíst více o [pomocí Resource Manageru a šablony](../../azure-resource-manager/resource-group-overview.md). Můžete také chtít [přidat datový disk](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) na nové virtuální počítače. Pokud máte aplikace spuštěné na vaše virtuální počítače, které potřebujete získat přístup, je nutné [otevřete porty a koncové body](nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Jakmile připraven a nahrát vlastní virtuální disk, si můžete přečíst více o [pomocí Resource Manageru a šablony](../../azure-resource-manager/resource-group-overview.md). Můžete také chtít [přidat datový disk](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) na nové virtuální počítače. Pokud máte aplikace běžící na virtuálních počítačích, které potřebujete získat přístup, je potřeba [otevření portů a koncových bodů](nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: 10e8fb6ac5bcce278de3924ebd3a0d9f90392217
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 18c27e4059ea06fcc52863b2d7671c14167dae75
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528050"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45732749"
 ---
 # <a name="azure-importexport-system-requirements"></a>Požadavky na systém Azure Import/Export
 
@@ -32,12 +32,15 @@ Pro přípravu pevných disků pomocí nástroje WAImportExport následující *
 
 ## <a name="supported-storage-accounts"></a>Účty úložiště podporuje
 
-Služba Import/Export Azure podporuje následující [účty služby Azure storage](storage-account-options.md).
+Služba Import/Export Azure podporuje následující typy účtů úložiště:
+
+- Účty storage v2 pro obecné účely
 - Obecné účely v1 úložiště účtů (nasazení Classic nebo Azure Resource Manager)
 - Účty služby Blob Storage
-- Účty storage v2 pro obecné účely
 
-Každá úloha slouží k přenosu dat do nebo z pouze jeden účet úložiště. Jinými slovy úlohu importu/exportu jedné nemůžou zahrnovat napříč několika účty úložiště. Informace o vytvoření nového účtu úložiště najdete v tématu [způsob vytvoření účtu úložiště](storage-create-storage-account.md#create-a-storage-account).
+Další informace o účtech úložiště najdete v tématu [účtů úložiště Azure, přehled](storage-account-overview.md).
+
+Každá úloha slouží k přenosu dat do nebo z pouze jeden účet úložiště. Jinými slovy úlohu importu/exportu jedné nemůžou zahrnovat napříč několika účty úložiště. Informace o vytvoření nového účtu úložiště najdete v tématu [způsob vytvoření účtu úložiště](storage-quickstart-create-account.md).
 
 > [!IMPORTANT] 
 > Služba Azure Import Export nepodporuje účty úložiště ve kterém [koncové body služeb virtuální sítě](../../virtual-network/virtual-network-service-endpoints-overview.md) se povolila funkce. 

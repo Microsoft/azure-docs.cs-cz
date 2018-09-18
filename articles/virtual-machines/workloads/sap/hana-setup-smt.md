@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5e729c2e3a802df15973fc6a43ee42265d1de654
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: f387c1afe88f2bba476309b2e2e01942d2b7ae5b
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44164710"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982621"
 ---
 # <a name="setting-up-smt-server-for-suse-linux"></a>Nastavení serveru SMT operačním systémem SUSE Linux
 Velké instance SAP HANA nemají přímé připojení k Internetu. Proto není jednoduchý proces registrace jako jednotek s operačním systémem zprostředkovatele a ke stažení a použití opravy. Pokud operačním systémem SUSE Linux jedním řešením může být nastavení serveru SMT ve Virtuálním počítači Azure. Vzhledem k tomu virtuálního počítače Azure musí být hostované ve virtuální síti Azure, která je připojena k velká Instance HANA. Pomocí těchto SMT serveru může velká Instance HANA jednotku zaregistrujte a stažení oprav. 
@@ -33,11 +33,11 @@ Jako předpoklad instalace SMT serveru, který splňuje požadavky úlohy pro ve
 
 ## <a name="installation-of-smt-server-on-azure-vm"></a>Instalace SMT serveru na virtuálním počítači Azure
 
-V tomto kroku nainstalujete server SMT ve Virtuálním počítači Azure. První z měr se pro přihlášení k [centrum zákazníků SUSE](https://scc.suse.com/)
+V tomto kroku nainstalujete server SMT ve Virtuálním počítači Azure. První z měr se pro přihlášení k [centrum zákazníků SUSE](https://scc.suse.com/).
 
 Protože jste přihlášeni, přejděte na organizaci--> přihlašovacími údaji organizace. V této části byste měli najít přihlašovací údaje, které jsou potřebné k nastavení SMT serveru.
 
-Třetím krokem je instalace virtuálního počítače s operačním systémem SUSE Linux ve virtuální síti Azure. Pokud chcete nasadit virtuální počítač, proveďte SLES 12 SP2 image z Galerie Azure. V procesu nasazení nebudete definovat název DNS a nepoužívejte statické IP adresy, jak je vidět na tomto snímku obrazovky
+Třetím krokem je instalace virtuálního počítače s operačním systémem SUSE Linux ve virtuální síti Azure. Pokud chcete nasadit virtuální počítač, proveďte SLES 12 SP2 image z Galerie Azure (vyberte image operačního systému SUSE BYOS). V procesu nasazení nebudete definovat název DNS a nepoužívejte statické IP adresy, jak je vidět na tomto snímku obrazovky
 
 ![nasazení virtuálního počítače pro SMT server](./media/hana-installation/image3_vm_deployment.png)
 
@@ -56,7 +56,28 @@ echo "export NCURSES_NO_UTF8_ACS=1" >> .bashrc
 
 Po spuštění těchto příkazů, restartujte vaše prostředí bash a aktivovat nastavení. Potom spusťte YAST.
 
-V YAST přejděte na údržbu softwaru a vyhledejte smt. Vyberte smt, automaticky přepnout do yast2 smt, jak je znázorněno níže
+Připojte svůj virtuální počítač (smtserver) k webu SUSE.
+
+```
+smtserver:~ # SUSEConnect -r <registration code> -e s<email address> --url https://scc.suse.com
+Registered SLES_SAP 12.2 x86_64
+To server: https://scc.suse.com
+Using E-Mail: email address
+Successfully registered system.
+```
+
+Jakmile se virtuální počítač je připojen k serveru SUSE, nainstalujte balíčky smt. Použijte následující příkaz putty smt balíčky nainstalovat.
+
+```
+smtserver:~ # zypper in smt
+Refreshing service 'SUSE_Linux_Enterprise_Server_for_SAP_Applications_12_SP2_x86_64'.
+Loading repository data...
+Reading installed packages...
+Resolving package dependencies...
+```
+
+
+YAST nástroj můžete použít také k instalaci balíčků smt. V YAST přejděte na údržbu softwaru a vyhledejte smt. Vyberte smt, automaticky přepnout do yast2 smt, jak je znázorněno níže
 
 ![SMT v yast](./media/hana-installation/image5_smt_in_yast.PNG)
 

@@ -1,25 +1,25 @@
 ---
-title: Popis bitové kopie
-titleSuffix: Computer Vision - Cognitive Services - Azure
-description: Koncepty související s popisem obrázků s využitím Azure Cognitive Services pro počítačové zpracování obrazu.
+title: Popis Image - pro počítačové zpracování obrazu
+titleSuffix: Azure Cognitive Services
+description: Koncepty související s popisem obrázků s využitím rozhraní API pro počítačové zpracování obrazu.
 services: cognitive-services
 author: deken
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: v-deken
-ms.openlocfilehash: be59055a2c6cd1366c8c52370fa97158ab8d6c88
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: a65e3ea2fb28ca8a2250fb3e39860eb5e08c18f4
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44725323"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45981976"
 ---
-# <a name="describing-images"></a>Popis bitové kopie
+# <a name="describing-images"></a>Popisování obrázků
 
-Počítačové zpracování obrazu algoritmy analyzovat obsah v obrázku. Tato analýza tvoří základ pro "popisu" zobrazí jako čitelný jazyk v úplných větách. Popis shrnuje, co se nachází na obrázku. Počítačové zpracování obrazu algoritmy generovat různé popisy podle vizuální funkce identifikované v bitové kopii. Jednotlivé popisy se vyhodnotí a vygeneruje se pro ně skóre spolehlivosti. Pak se vrátí seznam seřazený od nejvyššího skóre spolehlivosti po nejnižší.
+Počítačové zpracování obrazu algoritmy analyzovat obsah v obrázku. Tato analýza tvoří základ pro "popisu" zobrazí jako čitelný jazyk v úplných větách. Popis shrnuje, co se nachází na obrázku. Počítačové zpracování obrazu algoritmy generovat různé popisy podle vizuální funkce identifikované v bitové kopii. Každý popis je vyhodnocen a generované skóre spolehlivosti. Pak se vrátí seznam seřazený od nejvyššího skóre spolehlivosti po nejnižší.
 
 ## <a name="image-description-example"></a>Příklad popis obrázku
 

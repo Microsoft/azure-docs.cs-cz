@@ -1,18 +1,18 @@
 ---
 title: Použití služby Azure Storage jako back-end Terraformu
-description: Úvod k ukládání stavu Terrafom ve službě Azure Storage.
+description: Úvod k ukládání stavu Terraformu v Azure Storage.
 services: terraform
 author: neilpeterson
 ms.service: terraform
 ms.topic: article
 ms.date: 09/13/2018
 ms.author: nepeters
-ms.openlocfilehash: c27c6bc5f2071203c9a9dd5a94e73c0cb4626598
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 2bee9f73f430e18fe159eed142b265cc1934860e
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45608302"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984962"
 ---
 # <a name="store-terraform-state-in-azure-storage"></a>Stav Terraformu Store ve službě Azure Storage
 
@@ -26,7 +26,7 @@ Terraform zahrnuje koncept stavu back-endu, což je vzdálené úložiště pro 
 
 ## <a name="configure-storage-account"></a>Konfigurace účtu úložiště
 
-Než začnete používat Azure Storage jako back-endu, musí být vytvořený účet úložiště. Účet úložiště může být vytvořen pomocí na webu Azure portal, Powershellu, rozhraní příkazového řádku Azure nebo Terraformu, samotného. Podle následující ukázky použijte ke konfiguraci účtu úložiště pomocí Azure CLI.
+Než začnete používat Azure Storage jako back-endu, musí být vytvořený účet úložiště. Účet úložiště může být vytvořen pomocí na webu Azure portal, Powershellu, rozhraní příkazového řádku Azure nebo Terraformu, samotného. Jak nakonfigurovat účet úložiště pomocí Azure CLI, použijte následující ukázku.
 
 ```azurecli-interactive
 #!/bin/bash
@@ -35,7 +35,7 @@ RESOURCE_GROUP_NAME=tfstatestorage
 STORAGE_ACCOUNT_NAME=tfstatestorage$RANDOM
 CONTAINER_NAME=tfstatestorage
 
-# Ceeate resoruce group
+# Create resource group
 az group create --name $RESOURCE_GROUP_NAME --location eastus
 
 # Create storage account
@@ -49,7 +49,7 @@ az storage container create --name $CONTAINER_NAME --account-name $STORAGE_ACCOU
 
 echo "storage_account_name: $STORAGE_ACCOUNT_NAME"
 echo "container_name: $CONTAINER_NAME"
-echo "ARM_ACCESS_KEY: $ACCOUNT_KEY"
+echo "access_key: $ACCOUNT_KEY"
 ```
 
 Poznamenejte si název účtu úložiště, název kontejneru a přístupový klíč k úložišti. Tyto hodnoty jsou potřeba při konfiguraci vzdáleného stavu.
@@ -79,7 +79,7 @@ export ARM_ACCESS_KEY=$(az keyvault secret show --name terraform-backend-key --v
 
 Nakonfigurujte Terraform používat back-end, zahrňte *back-endu* konfigurace s typem *azurerm* uvnitř konfigurace Terraformu. Přidat *název_účtu_úložiště*, *container_name*, a *klíč* hodnoty konfigurace bloku.
 
-Následující příklad nakonfiguruje back-end Terraform a vytvoří a skupiny prostředků Azure.
+Následující příklad nakonfiguruje Terraformu back-endu. a vytvoří a skupinu prostředků Azure.
 
 ```json
 terraform {
@@ -91,7 +91,7 @@ terraform {
 }
 
 resource "azurerm_resource_group" "state-demo-secure" {
-  name     = "state-demoe"
+  name     = "state-demo"
   location = "eastus"
 }
 ```
@@ -102,7 +102,7 @@ Teď se inicializovat konfiguraci s *Terraformu init* a pak spusťte konfigurac�
 
 Při použití Azure Storage Blob pro úložiště stavu, objekt blob automatickým zamčením před jakoukoli operaci, která zapíše stavu. Tato konfigurace zabraňuje více souběžná stát operací, které mohou způsobit poškození. Další informace najdete v tématu [zamykání stavu] [ terraform-state-lock] o Terraformu dokumentaci.
 
-Zámek může být naleznete při zkoumání objektu blob i když na webu Azure portal nebo jiné nástroje pro správu Azure.
+Zámek uvidíte při zkoumání objektu blob i když na webu Azure portal nebo jiné nástroje pro správu Azure.
 
 ![Azure blob se zámek](media/terraform-backend/lock.png)
 

@@ -1,6 +1,6 @@
 ---
-title: S názvem Entity rozpoznávání kognitivní vyhledávání odborností (Azure Search) | Microsoft Docs
-description: Extrahuje pojmenované entity pro uživatele, umístění a organizace, z textu v kognitivní vyhledávání kanál služby Azure Search.
+title: S názvem dovednosti kognitivního vyhledávání rozpoznávání entit (Azure Search) | Dokumentace Microsoftu
+description: Extrahujte pojmenované entity pro uživatele, umístění a organizace z textu v kanálu služby Azure Search kognitivního vyhledávání.
 services: search
 manager: pablocas
 author: luiscabrer
@@ -10,47 +10,50 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 73ffcf5e2ced63fddaf0f5ef2ca7e72a7d94b966
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 653a4675d546432eea8478ba6203be1df71ec4f4
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33791039"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45731389"
 ---
-#    <a name="named-entity-recognition-cognitive-skill"></a>Pojmenované kognitivní odborností rozpoznávání Entity
+#    <a name="named-entity-recognition-cognitive-skill"></a>Pojmenované rozpoznávání entit kognitivních dovedností
 
-**s názvem rozpoznávání Entity** odborností extrahuje pojmenované entity z textu. Dostupné entity zahrnují `person`, `location`, a `organization`.
+**Rozpoznávání entit s názvem** dovednosti z textu extrahuje pojmenované entity. Dostupné entity zahrnují `person`, `location`, a `organization`.
+
+> [!NOTE]
+> Cognitive Search je ve veřejné verzi Preview. Spuštění dovednosti a extrakce image a normalizace se momentálně nabízí zdarma. Později cenách za tyto funkce bude oznámena. 
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.NamedEntityRecognitionSkill
 
 ## <a name="skill-parameters"></a>Parametry dovedností
 
-Parametry jsou malá a velká písmena.
+Parametry rozlišují malá a velká písmena.
 
 | Název parametru     | Popis |
 |--------------------|-------------|
-| Kategorie    | Pole kategorie, které by měla být rozbalena.  Kategorie možné typy: `"Person"`, `"Location"`, `"Organization"`. Pokud je k dispozici žádné kategorie, vrátí se všechny typy.|
-|defaultLanguageCode |  Kód jazyka ze vstupního textu. Jsou podporovány následující jazyky: `ar, cs, da, de, en, es, fi, fr, he, hu, it, ko, pt-br, pt`|
-| minimumPrecision  | Číslo mezi 0 a 1. Pokud přesnost je nižší než tato hodnota, nebudou vyhledány entity. Výchozí hodnota je 0.|
+| Kategorie    | Pole kategorií, které má být extrahován.  Typy možných kategorií: `"Person"`, `"Location"`, `"Organization"`. Pokud je k dispozici žádná kategorie, budou vráceny všechny typy.|
+|defaultLanguageCode |  Kód jazyka vstupního textu. Jsou podporovány následující jazyky: `ar, cs, da, de, en, es, fi, fr, he, hu, it, ko, pt-br, pt`|
+| minimumPrecision  | Číslo mezi 0 a 1. Pokud přesnost je menší než tato hodnota, se vrátí entity. Výchozí hodnota je 0.|
 
 ## <a name="skill-inputs"></a>Vstupy dovedností
 
 | Název vstupu      | Popis                   |
 |---------------|-------------------------------|
 | languageCode  | Volitelné. Výchozí hodnota je `"en"`.  |
-| Text          | Text k analýze.          |
+| text          | Text, který se má analyzovat          |
 
 ## <a name="skill-outputs"></a>Výstupy dovedností
 
-| Název výstupu     | Popis                   |
+| Název výstupního     | Popis                   |
 |---------------|-------------------------------|
-| osob      | Pole řetězců, kde každý řetězec představuje jméno osoby. |
-| Umístění  | Pole řetězců, kde každý řetězec představuje umístění. |
-| Organizace  | Pole řetězců, kde každý řetězec představuje organizace. |
-| entity | Pole komplexní typy. Každý komplexní typ zahrnuje následující pole: <ul><li>kategorie (`"person"`, `"organization"`, nebo `"location"`)</li> <li>hodnota (název skutečné entity)</li><li>posun (umístění, kde se nachází v textu)</li><li>spolehlivosti (hodnotu mezi 0 a 1, který představuje tuto jistota, že hodnota je skutečné entity)</li></ul> |
+| osoby      | Pole řetězců, přičemž každý řetězec představuje jméno osoby. |
+| umístění  | Pole řetězců, kde každý řetězec představuje umístění. |
+| organizations  | Pole řetězců, přičemž každý řetězec představuje organizace. |
+| entity | Pole komplexních typů. Každý komplexní typ obsahuje následující pole: <ul><li>kategorie (`"person"`, `"organization"`, nebo `"location"`)</li> <li>hodnota (název skutečné entity)</li><li>posun (umístění, kde se nachází v textu)</li><li>spolehlivosti (hodnotu mezi 0 a 1, který představuje tuto jistotu, že hodnota je skutečné entity)</li></ul> |
 
-##  <a name="sample-definition"></a>Ukázka definice
+##  <a name="sample-definition"></a>Ukázková definice
 
 ```json
   {
@@ -71,7 +74,7 @@ Parametry jsou malá a velká písmena.
     ]
   }
 ```
-##  <a name="sample-input"></a>Ukázka vstup
+##  <a name="sample-input"></a>Ukázkový vstup
 
 ```json
 {
@@ -134,10 +137,10 @@ Parametry jsou malá a velká písmena.
 ```
 
 
-## <a name="error-cases"></a>Případech chyb
-Pokud zadejte kód nepodporovaný jazyk, nebo pokud obsah neodpovídá jazyk zadaný, je návratový chybu a jsou extrahovány žádné entity.
+## <a name="error-cases"></a>Případy chyb
+Pokud zadáte kód nepodporovaný jazyk, nebo pokud obsah neodpovídá jazyk je zadán, je Vrácená chyba a jsou extrahovány žádné entity.
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
 + [Předdefinované dovednosti](cognitive-search-predefined-skills.md)
-+ [Jak definovat skillset](cognitive-search-defining-skillset.md)
++ [Definování dovedností](cognitive-search-defining-skillset.md)

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/17/2018
 ms.author: nberdy
-ms.openlocfilehash: 4d55c152bdc938d943c90a3e51af37b45f6a8eb5
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: c1684ce28cd52ac1891804ebb490b8b59d6fcccc
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301392"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45729769"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Pochopení a vyvolání přímých metod ze služby IoT Hub
 IoT Hub vám umožňuje vyvolání přímých metod v zařízení z cloudu. Přímé metody představují požadavek odpověď interakce se zařízením podobný volání protokolu HTTP, úspěch nebo selhání okamžitě (po uživatelem zadaný časový). Tento přístup je užitečný pro scénáře, ve kterém se liší v závislosti na tom, jestli je zařízení schopné reagovat kurzu okamžitý zásah.
@@ -112,7 +112,7 @@ Pro tento účel použít `ServiceClient.InvokeDeviceMethodAsync()` metoda a př
 ## <a name="handle-a-direct-method-on-a-device"></a>Popisovač přímé metody v zařízení
 ### <a name="mqtt"></a>MQTT
 #### <a name="method-invocation"></a>Volání metody
-Zařízení přijímat požadavky na přímou metodu MQTT tématu: `$iothub/methods/POST/{method name}/?$rid={request id}`
+Zařízení přijímat žádosti o přímé metody v tématu MQTT: `$iothub/methods/POST/{method name}/?$rid={request id}`. Počet předplatných za zařízení, která je omezena na 5. Proto doporučujeme se přihlaste se k odběru každého přímé metody jednotlivě. Místo toho zvažte přihlášení k odběru `$iothub/methods/POST/#` a vyfiltrujte doručené zprávy založené na názvy požadovanou metodu.
 
 Text, který se má zařízení přijímat je v následujícím formátu:
 

@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 08/22/2018
+ms.date: 09/16/2018
 ms.author: glenga
-ms.openlocfilehash: 9f6746f1bf8fb65e39933afa00b74a2b8266a1a9
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: f7299b9193c5ab24431feb9c73a0a3cf97596da3
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44095432"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45734937"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Reference k nastavení aplikací pro službu Azure Functions
 
@@ -152,18 +152,15 @@ Výchozí hodnota je "6.5.0".
 |---|------------|
 |WEB\_UZEL\_DEFAULT_VERSION|6.5.0|
 
-## <a name="websiterunfromzip"></a>WEB\_SPUSTIT\_FROM\_ZIP
+## <a name="websiterunfrompackage"></a>WEB\_SPUSTIT\_FROM\_BALÍČKU
 
 Umožňuje aplikaci function app pro spuštění ze souboru balíčku připojené.
 
-> [!NOTE]
-> Toto nastavení je pro funkci ve verzi preview.
-
 |Klíč|Ukázková hodnota|
 |---|------------|
-|WEB\_SPUSTIT\_FROM\_ZIP|1|
+|WEB\_SPUSTIT\_FROM\_BALÍČKU|1|
 
-Platné hodnoty jsou buď adresu URL, který se přeloží do umístění souboru balíčku nasazení, nebo `1`. Pokud je nastavena na `1`, velikost balíčku musí být v `d:\home\data\SitePackages` složky. Při použití s tímto nastavením zip nasazení, balíček je automaticky odeslána do tohoto umístění.  Další informace najdete v tématu [spouštět funkce ze souboru balíčku](run-functions-from-deployment-package.md).
+Platné hodnoty jsou buď adresu URL, který se přeloží do umístění souboru balíčku nasazení, nebo `1`. Pokud je nastavena na `1`, velikost balíčku musí být v `d:\home\data\SitePackages` složky. Při použití s tímto nastavením zip nasazení, balíček je automaticky odeslána do tohoto umístění. Ve verzi preview, se toto nastavení s názvem `WEBSITE_RUN_FROM_ZIP`. Další informace najdete v tématu [spouštět funkce ze souboru balíčku](run-functions-from-deployment-package.md).
 
 ## <a name="next-steps"></a>Další postup
 

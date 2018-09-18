@@ -1,24 +1,24 @@
 ---
 title: Úrovně služby Azure SQL Database – DTU | Dokumentace Microsoftu
-description: Další informace o úrovních služeb pro zadání jedné a fond databází do úrovní výkonu a velikosti úložiště.
+description: Další informace o úrovních služeb pro zadání jedné a databází fond poskytnout velikostí výpočetních a velikosti úložiště.
 services: sql-database
 author: sachinpMSFT
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 08/01/2018
+ms.date: 09/14/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: d0250d508ca6d21ee09c9402e10d2fdb025529ac
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 27e6e12efc28bb8ee1cdaa9ec62d7ca8c4c68f38
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42056844"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45729735"
 ---
-# <a name="choosing-a-dtu-based-service-tier-performance-level-and-storage-resources"></a>Výběr úrovně služeb založený na DTU, úroveň výkonu a prostředků úložiště 
+# <a name="choosing-a-dtu-based-service-tier-compute-size-and-storage-resources"></a>Výběr úrovně služeb na základě DTU, výpočetních, velikost a prostředků úložiště 
 
-Úrovně služby jsou rozlišené pomocí rozsahu úrovní výkonu s pevnou velikost zahrnutého úložiště, pevné období uchování zálohy a pevnou cenu. Všechny úrovně služby poskytují flexibilitu změna úrovní výkonu bez výpadků. Izolované databáze a elastické fondy se účtují po hodinách podle služby vrstvu a úroveň výkonu.
+Úrovně služby jsou rozlišené pomocí celou řadu velikostí výpočetních s pevnou velikost zahrnutého úložiště, pevné období uchování zálohy a pevnou cenu. Všechny úrovně služby poskytují flexibilitu změny velikosti výpočetních bez jakýchkoli prostojů. Izolované databáze a elastické fondy se účtují po hodinách na základě úrovně služeb a výpočetního prostředí.
 
 > [!IMPORTANT]
 > SQL Database Managed Instance aktuálně ve verzi public preview nepodporuje nákupní model založený na DTU. Další informace najdete v tématu [Azure SQL Database Managed Instance](sql-database-managed-instance.md). 
@@ -40,7 +40,7 @@ Výběr úrovně služeb závisí primárně na obchodní kontinuity podnikovýc
 
 ## <a name="single-database-dtu-and-storage-limits"></a>Omezení úložiště a jednotek DTU izolované databáze
 
-Úrovně výkonu se vyjadřují v jednotkách transakcí databáze (DTU) pro samostatné databáze a jednotkách transakcí elastické databáze (eDTU) pro elastické fondy. Další informace o jednotkách Dtu a Edtu najdete v tématu [co jsou jednotky Dtu a Edtu](sql-database-service-tiers.md#what-are-database-transaction-units-dtus)?
+Výpočetní velikosti se vyjadřují v jednotky transakcí databáze (Dtu) pro izolované databáze a elastické databáze jednotky transakce (Edtu) pro elastické fondy. Další informace o jednotkách Dtu a Edtu najdete v tématu [co jsou jednotky Dtu a Edtu](sql-database-service-tiers.md#what-are-database-transaction-units-dtus)?
 
 ||Basic|Standard|Premium|
 | :-- | --: | --: | --: | --: |
@@ -73,7 +73,7 @@ Výběr úrovně služeb závisí primárně na obchodní kontinuity podnikovýc
 Fyzické charakteristiky (procesoru, paměti, vstupně-výstupních operací) přidružené k každá míra DTU se kalibrují srovnávací test, který simuluje skutečná databázové úlohy.
 
 ### <a name="correlating-benchmark-results-to-real-world-database-performance"></a>Korelace výsledky srovnávacích testů výkonu databáze reálného světa
-Je důležité pochopit, že všechny srovnávací testy jsou pouze reprezentativní a orientační. Rychlost transakcí s srovnávací test aplikace nesmí být stejné jako ty, které může dosáhnout s jinými aplikacemi. Test výkonnosti se skládá z kolekce různých transakce typech spustit proti schématu obsahující celou řadu tabulek a datové typy. Během testu využije stejné základní operace, které jsou společné pro všechny úlohy OLTP, nepředstavuje žádné konkrétní třídu databáze nebo aplikace. Cílem testu je poskytovat přiměřenou Průvodce relativní výkon databáze, která může očekávat, že při škálování směrem nahoru nebo dolů mezi úrovněmi výkonu. Ve skutečnosti jsou různé velikosti a složitosti databáze, nastat různé mix úloh a bude odpovídat různými způsoby. Například aplikace náročné na vstupně-výstupní operace narazit na limity vstupně-výstupní operace dříve, nebo aplikace náročné na CPU narazit na omezení procesoru dříve. Neexistuje žádná záruka, že se stejným způsobem jako srovnávací test v rámci zvýšení zatížení výkonu škálovaly jakékoli konkrétní databáze.
+Je důležité pochopit, že všechny srovnávací testy jsou pouze reprezentativní a orientační. Rychlost transakcí s srovnávací test aplikace nesmí být stejné jako ty, které může dosáhnout s jinými aplikacemi. Test výkonnosti se skládá z kolekce různých transakce typech spustit proti schématu obsahující celou řadu tabulek a datové typy. Během testu využije stejné základní operace, které jsou společné pro všechny úlohy OLTP, nepředstavuje žádné konkrétní třídu databáze nebo aplikace. Cílem testu je poskytovat přiměřenou Průvodce relativní výkon databáze, která může očekávat, že při škálování směrem nahoru nebo dolů mezi velikostí výpočetních. Ve skutečnosti jsou různé velikosti a složitosti databáze, nastat různé mix úloh a bude odpovídat různými způsoby. Například aplikace náročné na vstupně-výstupní operace narazit na limity vstupně-výstupní operace dříve, nebo aplikace náročné na CPU narazit na omezení procesoru dříve. Neexistuje žádná záruka, že se stejným způsobem jako srovnávací test v rámci zvýšení zatížení výkonu škálovaly jakékoli konkrétní databáze.
 
 Test výkonnosti a jeho metodologie jsou popsány podrobněji níže.
 
@@ -155,5 +155,5 @@ Klíčové metriky na test výkonnosti se propustnost a dobu odezvy.
 
 ## <a name="next-steps"></a>Další postup
 
-- Podrobnosti o konkrétní úrovně výkonu a možnosti velikosti úložiště dostupné pro izolované databáze, najdete v části [omezení prostředků založený na DTU databáze SQL pro izolované databáze](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-performance-levels).
-- Podrobnosti o konkrétní úrovně výkonu a možnosti velikosti úložiště dostupné pro elastické fondy najdete v tématu [omezení prostředků na základě DTU databáze SQL](sql-database-dtu-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-performance-levels).
+- Podrobnosti o konkrétní výpočetní prostředky, velikosti a možnosti velikosti úložiště dostupné pro izolované databáze, najdete v části [omezení prostředků založený na DTU databáze SQL pro izolované databáze](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes).
+- Podrobnosti o konkrétní výpočetní prostředky, velikosti a možnosti velikosti úložiště dostupné pro elastické fondy, najdete v části [omezení prostředků na základě DTU databáze SQL](sql-database-dtu-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes).

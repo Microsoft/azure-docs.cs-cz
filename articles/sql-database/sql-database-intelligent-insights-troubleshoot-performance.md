@@ -8,14 +8,14 @@ ms.reviewer: carlrab
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
-ms.date: 04/04/2018
+ms.date: 09/14/2018
 ms.author: v-daljep
-ms.openlocfilehash: 100cb939c0d7297b92af3255382745355aa8d271
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 9c2bb85d9c0bb02b7eb698dbee07f488c2ad0b62
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44722108"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45733176"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Řešení problémů s výkonem Azure SQL Database s Intelligent Insights
 
@@ -283,7 +283,7 @@ Změny konfigurace s rozsahem databáze můžete nastavit pro každé jednotliv�
 
 ### <a name="troubleshooting"></a>Řešení potíží
 
-Diagnostika protokolů výstupů s rozsahem databáze konfigurace provedené změny nedávno způsobující snížení výkonu ve srovnání s předchozím chování úloh sedm dní. Můžete vracet změny konfigurace na předchozí hodnoty. Také můžete vyladit hodnoty hodnotou dokud není dosaženo úrovně požadovaného výkonu. Obor databáze konfigurační hodnoty můžete zkopírovat z podobně jako databáze s vyhovující výkon. Pokud nemůžete vyřešit výkon, vrátit k výchozí databázi SQL výchozí hodnoty a pokuste se vyladění od těchto standardních hodnot.
+Diagnostika protokolů výstupů s rozsahem databáze konfigurace provedené změny nedávno způsobující snížení výkonu ve srovnání s předchozím chování úloh sedm dní. Můžete vracet změny konfigurace na předchozí hodnoty. Také můžete vyladit hodnoty hodnotou až do dosažení požadovaného výpočetního prostředí. Obor databáze konfigurační hodnoty můžete zkopírovat z podobně jako databáze s vyhovující výkon. Pokud nemůžete vyřešit výkon, vrátit k výchozí databázi SQL výchozí hodnoty a pokuste se vyladění od těchto standardních hodnot.
 
 Další informace o optimalizaci s rozsahem databáze konfigurace a syntaxi T-SQL na změnu konfigurace najdete v tématu [Alter database scoped configuration (Transact-SQL)](https://msdn.microsoft.com/library/mt629158.aspx).
 

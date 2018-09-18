@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: 785b0137624cc6d940f4944e0357d0a5774561df
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 1597e850219ddbab1a0714072c47e12016aa2069
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634706"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45736884"
 ---
 # <a name="virtual-machine-serial-console"></a>Konzola sériového portu virtuálního počítače
 
@@ -64,9 +64,8 @@ Novější Image Windows serveru v Azure budou mít [Speciální konzoly pro spr
 * `bcdedit /emssettings EMSPORT:1 EMSBAUDRATE:115200`
 3. Restartujte systém pro konzolu SAC povolení
 
-![](../media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect.gif)
 
-Pokud potřebná SAC lze povolit v režimu offline 
+V případě potřeby SAC se dá nastavit v offline režimu také:
 
 1. Připojte disk systému windows chcete SAC nakonfigurovaný jako datového disku k existujícímu virtuálnímu počítači. 
 2. Z příkazového řádku pro správu spusťte následující příkazy 

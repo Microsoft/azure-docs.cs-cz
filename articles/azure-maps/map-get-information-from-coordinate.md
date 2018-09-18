@@ -9,64 +9,63 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 993d1da4b2a99ec0f30a5a685835d9f6b6d35a9e
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: bf44437f4d0b60a5d56c2be29418b7132346da2e
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44302890"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45732290"
 ---
 # <a name="get-information-from-a-coordinate"></a>Získání informací ze souřadnice
 
-Tento článek popisuje, jak telefonování adresa zpětného vyhledávání, a při kliknutí myší zobrazí adresu kliknutí na umístění v automaticky otevíraném okně.
+Tento článek ukazuje, jak provést adresa zpětného vyhledávání, který zobrazuje adresu kliknutí na místní umístění.
 
-Existují dva způsoby, jak vytvořit adresu zpětného vyhledávání, jednou je pomocí dotazu [mapy zpětná adresa rozhraní API Azure Search](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) prostřednictvím služby modulu a druhý je tím, že [XMLHttpRequest](https://xhr.spec.whatwg.org/) rozhraní API k dotazování Adresa. Můžeme probírat i níže.
+Existují dva způsoby, jak vytvořit adresu zpětného vyhledávání. Jedním ze způsobů je dotaz [mapy zpětná adresa rozhraní API Azure Search](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) prostřednictvím modulu service. Druhý způsob je, aby [XMLHttpRequest](https://xhr.spec.whatwg.org/) rozhraní API najít adresu. Oba způsoby, jak jsou zkoumány níže.
 
-## <a name="making-a-reverse-search-request-via-service-module"></a>Provádění zpětného vyhledávání požadavku prostřednictvím modulu service
-
-### <a name="understand-the-code"></a>Vysvětlení kódu
+## <a name="make-a-reverse-search-request-via-service-module"></a>Vytvořit žádost o zpětné vyhledávání prostřednictvím modulu service
 
 <iframe height='500' scrolling='no' title='Získání informací ze souřadnice (modulu Service)' src='//codepen.io/azuremaps/embed/ejEYMZ/?height=265&theme-id=0&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobrazit pera <a href='https://codepen.io/azuremaps/pen/ejEYMZ/'>získání informací ze souřadnice (modulu Service)</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Ve výše uvedeném kódu první blok kódu vytvoří objekt map. Můžete zobrazit [Vytvořte mapu](./map-create.md) pokyny.
+První blok kódu vytvoří objekt Map. Můžete zobrazit [Vytvořte mapu](./map-create.md) pokyny.
 
 Řádek v druhé bloku kódu vytváří instanci služby klienta.
 
 Třetí bloku kódu aktualizuje stylu ukazatele myši na ukazatel.
 
-Čtvrtý blok kódu vytvoří automaticky otevíraného okna. Můžete zobrazit [přidání vyskakovacího okna na mapě](./map-add-popup.md) pokyny.
+Čtvrtý blok kódu vytvoří automaticky otevírané okno pomocí [otevřete](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#open). Můžete zobrazit [přidání vyskakovacího okna na mapě](./map-add-popup.md) pokyny.
 
-Poslední blok kódu přidá naslouchací proces událostí pro kliknutí myší. Při kliknutí myší vytvoří vyhledávací dotaz s souřadnice místem kliknutí. Potom použije na mapě [getSearchAddressReverse](https://docs.microsoft.com/javascript/api/azure-maps-rest/services.search?view=azure-iot-typescript-latest#getsearchaddressreverse) koncový bod pro dotazování adresu souřadnice.
+Poslední blok kódu [přidá naslouchací proces událostí](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addeventlistener) pro kliknutí myší. Při kliknutí myší vytvoří vyhledávací dotaz s souřadnice místem kliknutí. Potom použije na mapě [getSearchAddressReverse](https://docs.microsoft.com/javascript/api/azure-maps-rest/services.search?view=azure-iot-typescript-latest#getsearchaddressreverse) koncový bod pro dotazování adresu souřadnice.
 
 Pro úspěšné odpovědi shromažďuje adresy pro kliknutí na umístění a definuje obsah automaticky otevíraného okna a umístění prostřednictvím [setPopupOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#setpopupoptions) funkce třídy automaticky otevíraného okna.
 
-## <a name="making-a-reverse-search-request-via-xmlhttprequest"></a>Provádění zpětného vyhledávání požadavku prostřednictvím XMLHttpRequest
-
-### <a name="understand-the-code"></a>Vysvětlení kódu
+## <a name="make-a-reverse-search-request-via-xmlhttprequest"></a>Vytvořit žádost o zpětné vyhledávání prostřednictvím XMLHttpRequest
 
 <iframe height='500' scrolling='no' title='Získání informací ze souřadnice' src='//codepen.io/azuremaps/embed/ddXzoB/?height=516&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobrazit pera <a href='https://codepen.io/azuremaps/pen/ddXzoB/'>získání informací ze souřadnice</a> pomocí Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Ve výše uvedeném kódu první blok kódu vytvoří objekt map. Můžete zobrazit [Vytvořte mapu](./map-create.md) pokyny.
+První blok kódu vytvoří objekt Map. Můžete zobrazit [Vytvořte mapu](./map-create.md) pokyny.
 
 Druhý bloku kódu aktualizuje stylu ukazatele myši na ukazatel.
 
-Třetí bloku kódu vytvoří automaticky otevíraného okna. Můžete zobrazit [přidání vyskakovacího okna na mapě](./map-add-popup.md) pokyny.
+Třetí bloku kódu vytvoří automaticky otevírané okno pomocí [otevřete](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#open). Můžete zobrazit [přidání vyskakovacího okna na mapě](./map-add-popup.md) pokyny.
 
 Poslední blok kódu přidá naslouchací proces událostí pro kliknutí myší. Po kliknutí myší, odešle [XMLHttpRequest](https://xhr.spec.whatwg.org/) k [mapy zpětná adresa rozhraní API Azure Search](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse). Pro úspěšné odpovědi shromažďuje adresy pro kliknutí na umístění a definuje obsah automaticky otevíraného okna a umístění prostřednictvím [setPopupOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#setpopupoptions) funkce třídy automaticky otevíraného okna
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o třídy a metody používané v tomto článku: 
-* [Adresa zpětného vyhledávání](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)
-* [Mapa](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
-    * [addEventListener](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addeventlistener)
-* [Automaticky otevíraného okna](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
-    * [setPopupOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#setpopupoptions)
-    * [Otevřít](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#open)
-    * [Zavřít](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest#close)
+Další informace o třídy a metody používané v tomto článku:
 
-Další příklady kódu pro přidání do vaše mapy najdete v následujících článcích:
-* [Zobrazení pokynů pro trasu z A do B](./map-route.md)
-* [Zobrazení provozu](./map-show-traffic.md)
+> [!div class="nextstepaction"]
+> [Mapa](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+
+> [!div class="nextstepaction"]
+> [Automaticky otevíraného okna](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.popup?view=azure-iot-typescript-latest)
+
+Naleznete v následujících článcích pro úplné příklady:
+
+> [!div class="nextstepaction"]
+> [Zobrazení pokynů pro trasu z A do B](./map-route.md)
+
+> [!div class="nextstepaction"]
+> [Zobrazení provozu](./map-show-traffic.md)

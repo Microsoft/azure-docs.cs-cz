@@ -9,16 +9,19 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: cf02946c772ce2dfd04fcd0ae478a560d095c092
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: c342eca8f27db713e139c187147abddd80eb854e
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35899228"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45734530"
 ---
 # <a name="predefined-skills-for-content-enrichment-azure-search"></a>Předdefinované dovednosti pro rozšiřování obsahu (Azure Search)
 
 V tomto článku se dozvíte o kognitivní dovednosti s Azure Search. A *kognitivní dovednosti* je operace, která transformuje obsah nějakým způsobem. Často je součást, která extrahuje data nebo struktura odvodí a proto argumentech naše Principy vstupní data. Výstup je téměř vždy založený na textu. A *dovednosti* je kolekce dovednosti, které definují rozšíření kanálu. 
+
+> [!NOTE]
+> Cognitive Search je ve veřejné verzi Preview. Spuštění dovednosti a extrakce image a normalizace se momentálně nabízí zdarma. Později cenách za tyto funkce bude oznámena. 
 
 ## <a name="predefined-skills"></a>Předdefinované dovednosti
 

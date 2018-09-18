@@ -12,23 +12,21 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 09/17/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 994893eb73356fde9acc593569dc5fb1c5a0106f
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 87052b39524ae7e3a789cada4ef9720f080726a6
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391126"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985477"
 ---
 # <a name="use-api-version-profiles-for-powershell-in-azure-stack"></a>Použití profilů verzí rozhraní API pro prostředí PowerShell ve službě Azure Stack
 
 *Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
-Profilů verzí API poskytují způsob, jak spravovat verze rozdíly mezi Azure a Azure Stack. Profilu verze rozhraní API je sada moduly AzureRM Powershellu s konkrétní verzí rozhraní API. Každá Cloudová platforma obsahuje sadu podporovaných profilů verzí API. Například Azure Stack podporuje verzi konkrétní průkaz s datem profilu, jako **2017-03-09-profile**, a podporuje Azure **nejnovější** profilu verze rozhraní API. Při instalaci profilu jsou nainstalovány moduly AzureRM Powershellu, které odpovídají zadaný profil.
-
- 
+Profilů verzí API poskytují způsob, jak spravovat verze rozdíly mezi Azure a Azure Stack. Profilu verze rozhraní API je sada moduly AzureRM Powershellu s konkrétní verzí rozhraní API. Každá Cloudová platforma obsahuje sadu podporovaných profilů verzí API. Například Azure Stack podporuje verzi konkrétní průkaz s datem profilu, jako **2018-03-01hybridní**, a podporuje Azure **nejnovější** profilu verze rozhraní API. Při instalaci profilu jsou nainstalovány moduly AzureRM Powershellu, které odpovídají zadaný profil.
 
 ## <a name="install-the-powershell-module-required-to-use-api-version-profiles"></a>Nainstalujte modul prostředí PowerShell vyžaduje použití profilů verzí API
 
@@ -38,13 +36,27 @@ Profilů verzí API poskytují způsob, jak spravovat verze rozdíly mezi Azure 
 Install-Module -Name AzureRm.BootStrapper
 ```
 
+## <a name="azure-stack-version-and-profile-versions"></a>Verze služby Azure Stack a verze profilu
+
+V následující tabulce jsou uvedeny požadovaná verze rozhraní API profilu a správce zástupný název modulu prostředí PowerShell pro nejnovější verze služby Azure Stack. Pokud používáte tento článek před. 1808 s verzí, aktualizace verze profilu a moniker správnou hodnotu.
+
+| Číslo verze. | Profilu verze rozhraní API | PS zástupný název modulu Správce |
+| --- | --- | --- |
+| 1808 nebo novější | 2018-03-01hybridní | 1.5.0 |
+| 1804 nebo novější | 2017-03-09-profile | 1.4.0 |
+| Verze starší než 1804 | 2017-03-09-profile | 1.2.11 |
+
+> [!Note]  
+> K upgradu portálu 1.2.11 verze, najdete v článku [Průvodce migrací](https://aka.ms/azpsh130migration).
+
 ## <a name="install-a-profile"></a>Instalace profilu
 
-Použití **rutina Install-AzureRmProfile** rutinu s **2017-03-09-profile** profilu verze rozhraní API pro instalaci požadované moduly AzureRM ve službě Azure Stack. S tímto profilem verze rozhraní API nejsou nainstalované moduly operátor Azure stacku. By měly být nainstalovány samostatně uvedené v kroku 3 [instalace Powershellu pro Azure Stack](azure-stack-powershell-install.md) článku.
+Použití **rutina Install-AzureRmProfile** rutinu s **2018-03-01hybridní** profilu verze rozhraní API pro instalaci požadované moduly AzureRM ve službě Azure Stack. S tímto profilem verze rozhraní API nejsou nainstalované moduly operátor Azure stacku. By měly být nainstalovány samostatně uvedené v kroku 3 [instalace Powershellu pro Azure Stack](../azure-stack-powershell-install.md) článku.
 
 ```PowerShell 
-Install-AzureRMProfile -Profile 2017-03-09-profile
+Install-AzureRMProfile -Profile 2018-03-01-hybrid
 ```
+
 ## <a name="install-and-import-modules-in-a-profile"></a>Nainstalovat a importovat moduly v profilu
 
 Použití **použijte-AzureRmProfile** k instalaci a importovat moduly, které jsou spojeny s profilem verze rozhraní API. V relaci Powershellu můžete importovat pouze v jednom profilu verze rozhraní API. Chcete-li importovat profil různé verze rozhraní API, musíte otevřít novou relaci Powershellu. Použití-AzureRMProfile spustí následující úlohy:  
@@ -54,17 +66,17 @@ Použití **použijte-AzureRmProfile** k instalaci a importovat moduly, které j
 
 ```PowerShell
 # Installs and imports the specified API version profile into the current PowerShell session.
-Use-AzureRmProfile -Profile 2017-03-09-profile -Scope CurrentUser
+Use-AzureRmProfile -Profile 2018-03-01-hybrid -Scope CurrentUser
 
 # Installs and imports the specified API version profile into the current PowerShell session without any prompts
-Use-AzureRmProfile -Profile 2017-03-09-profile -Scope CurrentUser -Force
+Use-AzureRmProfile -Profile 2018-03-01-hybrid -Scope CurrentUser -Force
 ```
 
 Nainstalujte a importujte vybrané moduly AzureRM profilu verze rozhraní API, spusťte rutinu použití-AzureRMProfile se **modulu** parametr:
 
 ```PowerShell
 # Installs and imports the compute, Storage and Network modules from the specified API version profile into your current PowerShell session.
-Use-AzureRmProfile -Profile 2017-03-09-profile -Module AzureRM.Compute, AzureRM.Storage, AzureRM.Network
+Use-AzureRmProfile -Profile 2018-03-01-hybrid -Module AzureRM.Compute, AzureRM.Storage, AzureRM.Network
 ```
 
 ## <a name="get-the-installed-profiles"></a>Získání nainstalovaných profily
@@ -78,6 +90,7 @@ Get-AzureRmProfile -ListAvailable
 # lists the API version profiles which are installed on your machine
 Get-AzureRmProfile
 ```
+
 ## <a name="update-profiles"></a>Aktualizovat profily
 
 Použití **rutina Update-AzureRmProfile** rutina pro aktualizaci na nejnovější verzi modulů, které jsou k dispozici v PSGallery moduly v profilu verze rozhraní API. Doporučuje se vždycky spouštět **rutina Update-AzureRmProfile** rutiny v nové relaci Powershellu, aby nedocházelo ke konfliktům, při importu modulů. Rutina Update-AzureRmProfile spustí následující úlohy:
@@ -87,14 +100,14 @@ Použití **rutina Update-AzureRmProfile** rutina pro aktualizaci na nejnovějš
 3. Nainstaluje a importuje aktualizovaných modulů do aktuální relace prostředí PowerShell.  
 
 ```PowerShell
-Update-AzureRmProfile -Profile 2017-03-09-profile
+Update-AzureRmProfile -Profile 2018-03-01-hybrid
 ```
 
-Odebrat dříve nainstalovaných verzí modulů před aktualizací na nejnovější dostupnou verzi, použijte rutinu Update-AzureRmProfile spolu s **- RemovePreviousVersions** parametr:
+<!-- To remove the previously installed versions of the modules before updating to the latest available version, use the Update-AzureRmProfile cmdlet along with the **-RemovePreviousVersions** parameter:
 
 ```PowerShell 
-Update-AzureRmProfile -Profile 2017-03-09-profile -RemovePreviousVersions
-```
+Update-AzureRmProfile -Profile 2018-03-01-hybrid -RemovePreviousVersions
+``` --> 
 
 Tato rutina spustí následující úlohy:  
 
@@ -108,7 +121,7 @@ Tato rutina spustí následující úlohy:
 Použití **Uninstall-AzureRmProfile** rutiny odinstalace zadaného profilu verze rozhraní API.
 
 ```PowerShell 
-Uninstall-AzureRmProfile -Profile 2017-03-09-profile
+Uninstall-AzureRmProfile -Profile  2018-03-01-hybrid
 ```
 
 ## <a name="next-steps"></a>Další postup

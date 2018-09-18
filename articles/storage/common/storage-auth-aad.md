@@ -1,6 +1,6 @@
 ---
-title: Ověření přístupu ke službě Azure Storage pomocí Azure Active Directory (Preview) | Dokumentace Microsoftu
-description: Ověření přístupu ke službě Azure Storage pomocí Azure Active Directory (Preview).
+title: Ověření přístupu k objektům BLOB Azure a fronty pomocí Azure Active Directory (Preview) | Dokumentace Microsoftu
+description: Ověření přístupu k objektům BLOB Azure a fronty pomocí Azure Active Directory (Preview).
 services: storage
 author: tamram
 ms.service: storage
@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 09/07/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 802eefb7ed8191525a8a4a6601b620ca5dfd5faa
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: d48eee711e5d43c2113c3a21d87386b350c6b01f
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44300609"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45731888"
 ---
-# <a name="authenticate-access-to-azure-storage-using-azure-active-directory-preview"></a>Ověření přístupu ke službě Azure Storage pomocí Azure Active Directory (Preview)
+# <a name="authenticate-access-to-azure-blobs-and-queues-using-azure-active-directory-preview"></a>Ověření přístupu k objektům BLOB Azure a fronty pomocí Azure Active Directory (Preview)
 
 Azure Storage podporuje ověřování a autorizace pomocí Azure Active Directory (AD) pro služby objektů Blob a fronty. S Azure AD můžete použít řízení přístupu na základě role (RBAC) k udělení přístupu uživatelům, skupinám nebo instančních objektů aplikace. 
 
-Autorizace aplikace s přístupem k Azure Storage pomocí Azure AD poskytuje nejvyšší zabezpečení a snadné použití přes jiné možnosti autorizace. Když můžete nadále používat povolení sdíleného klíče s vašimi aplikacemi, používání služby Azure AD obchází potřebou ukládání přístupový klíč k účtu s vaším kódem. Podobně můžete nadále používat sdílené přístupové podpisy (SAS) k udělení velice přesně kontrolovat přístup k prostředkům ve vašem účtu úložiště, ale Azure AD nabízí podobné funkce bez nutnosti spravovat tokeny SAS nebo si dělat starosti o odvolání SAS ohrožení zabezpečení.
+Ověřování uživatelů a aplikací s použitím přihlašovacích údajů Azure AD poskytuje nejvyšší zabezpečení a snadné použití přes jiným způsobem autorizace. Když můžete nadále používat povolení sdíleného klíče s vašimi aplikacemi, používání služby Azure AD obchází potřebou ukládání přístupový klíč k účtu s vaším kódem. Můžete taky dál používat sdílené přístupové podpisy (SAS) k udělení velice přesně kontrolovat přístup k prostředkům ve vašem účtu úložiště, ale Azure AD nabízí podobné funkce bez nutnosti spravovat tokeny SAS nebo si dělat starosti o odvolání SAS ohrožení zabezpečení. Microsoft doporučuje používat ověřování Azure AD pro vaše aplikace Azure Storage, pokud je to možné.
 
 ## <a name="about-the-preview"></a>Informace o verzi preview
 

@@ -6,15 +6,15 @@ author: jovanpop-msft
 manager: craigg
 ms.service: sql-database
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 09/14/2018
 ms.author: jovanpop
 ms.reviewer: carlrab, sashan
-ms.openlocfilehash: 1aab8dfd3a4bcc33cddb71dec08157ee7eb68f8d
-ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
+ms.openlocfilehash: b35eafd8c154b6550104a87bfadce6ec528e911a
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44324644"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45732512"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Vysoká dostupnost a Azure SQL Database
 
@@ -23,8 +23,8 @@ Azure SQL Database je vysoce dostupné databáze platforma jako služba, která 
 Platforma Azure plně spravuje každou databází SQL Azure a garantuje ke ztrátě dat a vysoké procento dostupnosti údajů. Použití dílčích oprav, zálohování, replikace, detekce chyb, základní potenciální hardwaru, selhání softwaru nebo sítě, opravy chyb nasazení, převzetí služeb při selhání, upgrade databáze a další úlohy údržby automaticky postará Azure. Systému SQL Server technici implementovali nejznámějších postupy zajistit, že všechny operace údržby jsou dokončeny za méně než 0,01 % dobu životnosti vaší databáze. Tato architektura je navržená tak, aby potvrzených dat se nikdy ztraceny a aby byly provedeny operace údržby bez ovlivnění pracovního vytížení. Neexistují žádné časová období údržby nebo prostoje, které by měl vyžadují, abyste k zastavení úlohy a databáze je upgradovat nebo udržovat. Integrovaná vysoká dostupnost ve službě Azure SQL Database zaručuje, že databáze nebude nikdy jediným bodem selhání v softwarové architektuře.
 
 Azure SQL Database je založené na architektuře databázový stroj SQL serveru, která je upravená pro cloudové prostředí, aby bylo možné zajistit 99,99 % dostupnost i v případě selhání infrastruktury. Existují dva modely architektury vysoké dostupnosti, které se používají ve službě Azure SQL Database (obou z nich zajišťující 99,99 % dostupnost):
-- Model/standard pro obecné účely, který je založen na oddělení výpočetního výkonu a úložiště. Tento Architektonický model spoléhá na vysokou dostupnost a spolehlivost vrstvy úložiště, ale může mít některé potenciální snížení výkonu během údržby nevyžadovala.
-- Úrovně Premium/obchodní kritické model, který je založen na cluster procesy modulu databáze. Tento Architektonický model závisí na skutečnost, že existuje, bude vždy Kvorum uzlů k dispozici databáze modul a má minimální vliv zatížení vliv na vaši sadu funkcí i během údržby nevyžadovala.
+- Model vrstev service/standard pro obecné účely, který je založen na oddělení výpočetního výkonu a úložiště. Tento Architektonický model spoléhá na vysokou dostupnost a spolehlivost vrstvy úložiště, ale může mít některé potenciální snížení výkonu během údržby nevyžadovala.
+- Model vrstev kritické úrovně Premium/firemní službu, která je založena na cluster procesy modulu databáze. Tento Architektonický model závisí na skutečnost, že existuje, bude vždy Kvorum uzlů k dispozici databáze modul a má minimální vliv zatížení vliv na vaši sadu funkcí i během údržby nevyžadovala.
 
 Azure upgradů a oprav základního operačního systému, ovladačů a databázový stroj SQL serveru transparentně s minimálními výpadkům pro koncové uživatele. Azure SQL Database běží na nejnovější stabilní verze databázového stroje SQL Server a operační systém Windows a většinu uživatelů by Všimněte si, že je aktualizován se provádí nepřetržitě.
 
@@ -59,7 +59,7 @@ Kromě toho pro důležité obchodní informace clusteru poskytuje předdefinova
 
 Repliky nastavení kvora pro konfigurace místní úložiště jsou ve výchozím nastavení vytvoří ve stejném datacentru. Se zavedením [zóny dostupnosti Azure](../availability-zones/az-overview.md), máte možnost mají být umístěny různých replik sady kvora do různých zón dostupnosti ve stejné oblasti. Chcete-li odstranit jediný bod selhání, je aktualizační kanál, který ovládací prvek duplicitní napříč několika zónami jako tři prstence brány (gs) také. Směrování do aktualizačního kanálu konkrétní gateway řídí [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) (ATM). Protože redundantní konfigurace zóny nevytváří redundance další databáze, je použití zón dostupnosti (preview) v úrovních služeb úrovně Premium nebo pro důležité obchodní informace k dispozici bez dalších nákladů. Vyberte zónu databáze redundantní, můžete provádět databází Premium nebo pro důležité obchodní informace odolné mnohem větší sadě chyb, včetně výpadků katastrofickými datacenter, bez nutnosti jakkoli měnit aplikace logiky. Můžete také převést libovolný existující Premium nebo pro důležité obchodní informace databáze nebo fondy redundantní konfigurace zóny.
 
-Vzhledem k tomu zóny redundantní kvora sady replik v různých datových centrech některé vzdálenost mezi nimi, latence sítě může prodloužit dobu potvrzení a tedy mít vliv na výkon některé úlohy OLTP. Můžete se kdykoli vrátit v konfiguraci s jednou zónou zakázáním nastavení redundance zóny. Tento proces je velikost operace s daty a je podobné aktualizace cíle na úrovni (SLO) regulární služby. Na konci procesu databáze nebo fondu migrován z kanál redundantní zóny v jedné zóně kanál nebo naopak.
+Vzhledem k tomu zóny redundantní kvora sady replik v různých datových centrech některé vzdálenost mezi nimi, latence sítě může prodloužit dobu potvrzení a tedy mít vliv na výkon některé úlohy OLTP. Můžete se kdykoli vrátit v konfiguraci s jednou zónou zakázáním nastavení redundance zóny. Tento proces je velikost operace s daty a je podobné aktualizace úroveň regulární služby. Na konci procesu databáze nebo fondu migrován z kanál redundantní zóny v jedné zóně kanál nebo naopak.
 
 > [!IMPORTANT]
 > Zóna redundantní databáze a elastické fondy jsou aktuálně podporuje jenom v rámci úrovně služeb Premium. Během veřejné verzi preview, zálohování a auditu záznamy se ukládají v úložišti RA-GRS a proto nemusí být automaticky dostupná i v případě výpadku celé zóny. 
@@ -69,7 +69,7 @@ Zóna redundantní verzi architektury vysoké dostupnosti je znázorněn v násl
 ![Vysoká dostupnost architektura zónově redundantní](./media/sql-database-high-availability/high-availability-architecture-zone-redundant.png)
 
 ## <a name="read-scale-out"></a>Horizontální navýšení kapacity pro čtení
-Jak je popsáno, úrovně služeb Premium a pro důležité obchodní informace kvora sady a využít technologii AlwaysOn pro vysokou dostupnost v jedné oblasti a zóny redundantní konfigurace. Jednou z výhod technologie AlwaysOn serveru je, že tyto repliky jsou vždy transakčně konzistentní stav. Vzhledem k tomu, že repliky na stejnou úroveň výkonu jako primární, aplikace můžou využít výhod této dodatečnou kapacitu pro obsluhu úlohy jen pro čtení bez dalších nákladů (čtení horizontální navýšení kapacity). Tímto způsobem dotazy jen pro čtení budou z hlavní úlohy čtení a zápis izolovaných a nebude mít vliv na jeho výkon. Čtení funkce úpravy rozsahu je určená pro aplikace, které zahrnují logicky oddělené úlohy jen pro čtení, jako jsou analýzy a proto může využívat tuto dodatečnou kapacitu bez připojení k primární. 
+Jak je popsáno, úrovně služeb Premium a pro důležité obchodní informace kvora sady a využít technologii AlwaysOn pro vysokou dostupnost v jedné oblasti a zóny redundantní konfigurace. Jednou z výhod technologie AlwaysOn serveru je, že tyto repliky jsou vždy transakčně konzistentní stav. Vzhledem k tomu, že repliky se stejnou velikostí jako primární výpočetní prostředky, aplikace můžou využít výhod této dodatečnou kapacitu pro obsluhu úlohy jen pro čtení bez dalších nákladů (čtení horizontální navýšení kapacity). Tímto způsobem dotazy jen pro čtení budou z hlavní úlohy čtení a zápis izolovaných a nebude mít vliv na jeho výkon. Čtení funkce úpravy rozsahu je určená pro aplikace, které zahrnují logicky oddělené úlohy jen pro čtení, jako jsou analýzy a proto může využívat tuto dodatečnou kapacitu bez připojení k primární. 
 
 Jak používat funkci horizontální navýšení kapacity pro čtení s danou databází, je nutné explicitně aktivovat ho při vytváření databáze nebo později změnou jeho konfigurace přes PowerShell voláním [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) nebo [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) rutiny nebo přes rozhraní REST API Azure Resource Manageru pomocí [databází – vytvořit nebo aktualizovat](/rest/api/sql/databases/createorupdate) metody.
 

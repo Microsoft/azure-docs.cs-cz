@@ -1,23 +1,23 @@
 ---
-title: Zjišťování obsahu specifického pro doménu
-titleSuffix: Computer Vision - Cognitive Services - Azure
-description: Koncepty související s popisem obrázků s využitím Azure Cognitive Services pro počítačové zpracování obrazu.
+title: Zjišťování obsahu specifického pro doménu – pro počítačové zpracování obrazu
+titleSuffix: Azure Cognitive Services
+description: Koncepty související s popisem obrázků s využitím rozhraní API pro počítačové zpracování obrazu.
 services: cognitive-services
 author: deken
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: v-deken
-ms.openlocfilehash: 699698d8235d8fa53050a67491ee4f0e1c336d0e
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: b197227b6550703e4cc303fc800839dc48bf2d1c
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44725336"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985205"
 ---
-# <a name="detecting-domain-specific-content"></a>Zjišťování obsahu specifického pro doménu
+# <a name="detecting-domain-specific-content"></a>Rozpoznávání obsahu specifického pro doménu
 
 Kromě toho kategorizace značek a nejvyšší úrovně, pro počítačové zpracování obrazu také podporuje speciální (nebo specifický pro doménu) informací. Specializované informace je možné implementovat jako samostatnou metodu nebo pomocí kategorizace vysoké úrovně. Funguje jako prostředky pro další upřesnění taxonomie kategorií 86 prostřednictvím přidání doménově specifické modely.
 

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/07/2018
 ms.author: tomfitz
-ms.openlocfilehash: 807026d2de40de1b14d2eb1d9eeb9da0aade4ad7
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 0b0ddedde49208a85628cdfc226f870a32ff7170
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44297749"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985860"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Přesunutí prostředků do nové skupiny prostředků nebo předplatného
 
@@ -218,7 +218,7 @@ Následující seznam obsahuje obecný přehled služby Azure, které lze přesu
 * Service Fabric
 * Service Fabric sítě
 * Služby SignalR
-* Úložiště
+* Úložiště – účty úložiště v různých oblastech se nedají přesouvat v rámci jedné operace. Místo toho použijte samostatné operace pro každou oblast.
 * Úložiště (classic) – viz [omezení klasického nasazení](#classic-deployment-limitations)
 * Stream Analytics – Stream Analytics úlohy nelze přesunout, při spuštění ve stavu.
 * Server služby SQL Database – databáze a serveru se musí nacházet ve stejné skupině prostředků. Přesunete-li SQL server, přesunou také všechny jeho databáze. Toto chování platí pro databáze Azure SQL Database a Azure SQL Data Warehouse.

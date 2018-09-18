@@ -1,6 +1,6 @@
 ---
 title: Přiřazení role adresáře pro uživatele se službou Azure Active Directory | Dokumentace Microsoftu
-description: Jak přiřadit role adresáře pro uživatele se službou Azure Active Directory.
+description: Zjistěte, jak přiřadit role adresáře uživatele se službou Azure Active Directory.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: lizross
 ms.reviewer: jeffsta
-ms.openlocfilehash: 02eb55509a3708517dff4c14640826a3a21f1df0
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: b73df5ec0381e83c54c8cd9f8c0335448def0c6d
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45603715"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45733038"
 ---
 # <a name="how-to-assign-roles-and-administrators-to-users-with-azure-active-directory"></a>Postupy: přiřazení role a správci pro uživatele se službou Azure Active Directory
 Pokud uživatel ve vaší organizaci potřebuje oprávnění ke správě prostředků Azure Active Directory (Azure AD), musíte přiřadit uživateli příslušné role ve službě Azure AD podle akce, které uživatel potřebuje oprávnění k provedení.

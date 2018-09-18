@@ -4,18 +4,18 @@ description: Ukazuje, jak správce může pomocí webu Azure portal nebo prostř
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/19/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 271371515e881fda4fb81d844bf84689e29b1e6b
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 563b2d6393533a86305213b6cdec6ca901e53257
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35642781"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985375"
 ---
 # <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Povolování nebo blokování pozvánek uživatelů B2B z konkrétních organizací
 

@@ -3,7 +3,7 @@ title: Přidat škálování uzlů Azure Stack | Dokumentace Microsoftu
 description: Přidáte uzly do jednotek škálování ve službě Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: jeffgilb
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
-ms.author: brenduns
+ms.date: 09/17/2018
+ms.author: jeffgilb
 ms.reviewer: thoroet
-ms.openlocfilehash: 0899b1784c796e5f6265dda842ca8955615a1584
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 3ce74cdb610f2902133459b913f53bb7809cb4b7
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44718085"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982993"
 ---
 # <a name="add-additional-scale-unit-nodes-in-azure-stack"></a>Přidat další škálovací jednotku uzly ve službě Azure Stack
 
@@ -142,4 +142,4 @@ Tady jsou běžné problémy, kterým dochází při přidávání uzlu.
 
 
 ## <a name="next-steps"></a>Další postup 
-Kontrola [uzlu akce](azure-stack-node-actions.md) 
+[Přidání veřejné IP adresy](azure-stack-add-ips.md) 

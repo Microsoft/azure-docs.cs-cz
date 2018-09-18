@@ -7,17 +7,17 @@ manager: craigg
 ms.service: sql-database
 ms.custom: migrate
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 09/14/2018
 ms.author: josack
 ms.suite: sql
 ms.prod_service: sql-database
 ms.component: data-movement
-ms.openlocfilehash: d82cc3ee1074e326c9e4dee7fd65e338cb95e19f
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 4b48f360c95170a36d1e79b075403d541c8b66ed
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44722227"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983929"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>Nové DBA v cloudu – Správa vaší databáze ve službě Azure SQL Database
 
@@ -36,9 +36,9 @@ Tento článek popisuje některé ze základních vlastností služby Azure SQL 
 Možnosti obnovení obchodní kontinuity podnikových procesů a po havárii umožňují pokračovat vaši firmu obvyklým způsobem, v případě havárie. Po havárii může být událostí na úrovni databáze (například někdo omylem zahodí zásadní tabulka) nebo datové centrum událostí na úrovni (místní pohromě, třeba tsunami). 
 
 ### <a name="how-do-i-create-and-manage-backups-on-sql-database"></a>Jak vytvořit a spravovat zálohy vytvořené pro službu SQL Database?
-Nevytvářejte záloh ve službě Azure SQL DB a důvodem je, že není nutné. SQL Database automaticky zálohuje databáze za vás, tak už se musí starat o plánování, provádění a správa záloh. Platformu trvá úplné zálohování každý týden, rozdílové že zálohování každých pár hodin a do protokolu zálohování každých 5 minut, ujistěte se, že je efektivní zotavení po havárii a ztrátě dat, minimální. Co nejdříve po vytvoření databáze se stane první úplná záloha. Tyto zálohy jsou k dispozici po určitou dobu nazývá "Doba uchování" a se liší podle úrovně výkonu, které zvolíte.  SQL Database poskytuje možnost obnovit do libovolného bodu v čase během období uchovávání dat pomocí [bodu v čase obnovení (PITR)](sql-database-recovery-using-backups.md#point-in-time-restore).
+Nevytvářejte záloh ve službě Azure SQL DB a důvodem je, že není nutné. SQL Database automaticky zálohuje databáze za vás, tak už se musí starat o plánování, provádění a správa záloh. Platformu trvá úplné zálohování každý týden, rozdílové že zálohování každých pár hodin a do protokolu zálohování každých 5 minut, ujistěte se, že je efektivní zotavení po havárii a ztrátě dat, minimální. Co nejdříve po vytvoření databáze se stane první úplná záloha. Tyto zálohy jsou k dispozici po určitou dobu nazývá "Doba uchování" a se liší podle úrovně služby, kterou zvolíte. SQL Database poskytuje možnost obnovit do libovolného bodu v čase během období uchovávání dat pomocí [bodu v čase obnovení (PITR)](sql-database-recovery-using-backups.md#point-in-time-restore).
 
-|Úroveň výkonu|Doba uchování ve dnech|
+|Úroveň služeb|Doba uchování ve dnech|
 |---|:---:|
 |Basic|7|
 |Standard|35|
@@ -202,7 +202,7 @@ Ve službě SQL Database můžete využít intelligent insights platformy monito
 
    ![Monitorování graf 2](./media/sql-database-manage-after-migration/chart.png)
 
-Z tohoto grafu můžete také nastavit upozornění podle prostředků. Tyto výstrahy umožní reagovat na podmínky prostředku s e-mailu, zapsat do koncového bodu HTTPS nebo HTTP nebo provedení akce. Zobrazit [monitorování výkonu databáze ve službě SQL Database](sql-database-single-database-monitor.md) podrobné pokyny.
+Z tohoto grafu můžete také nastavit upozornění podle prostředků. Tyto výstrahy umožní reagovat na podmínky prostředku s e-mailu, zapsat do koncového bodu HTTPS nebo HTTP nebo provedení akce. Další informace najdete v tématu [vytvářet upozornění](sql-database-insights-alerts-portal.md).
 
 - **Zobrazení dynamické správy**: můžete zadat dotaz [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) zobrazení dynamické správy k vrácení historie statistiky využití prostředků od poslední hodiny a [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) zobrazení katalogu systému vrátit historie za posledních 14 dní.
 - **Query Performance Insight**: [Query Performance Insight](sql-database-query-performance.md) umožňuje zobrazit historii hlavní dotazy využívání prostředků a dlouho běžící dotazy na konkrétní databáze. Můžete rychle identifikovat hlavní dotazy podle využití prostředků a doby trvání, četnosti provádění. Můžete sledovat dotazy a zjišťovat regrese. Tato funkce vyžaduje [Query Store](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) bude povoleným a aktivním pro databázi.
@@ -218,21 +218,21 @@ Váš přístup k řešení potíží s problémy s výkonem pomocí inteligentn
 
 Pomocí řešení potíží s výkonem, je důležité určit, jestli je to jenom aplikace nebo databáze jejich zálohování, který je vliv na výkon vašich aplikací. Často problému s výkonem, spočívá v aplikační vrstvě. Může to být architekturu nebo vzor přístupu k datům. Představte si třeba, že máte aplikaci přetížených, který je citlivý na latenci sítě. V tomto případě aplikace odkážete vzhledem k tomu, že by existovat mnoho krátký požadavků přejdete vpřed a zpět (příliš "upovídaným") mezi aplikací a serveru a v přetížené síti, přidejte těchto výměn dat rychle. Chcete-li v tomto případě zlepšit výkon, můžete použít [dávkové dotazy](sql-database-performance-guidance.md#batch-queries). Použití dávek vám pomůže výrazně vzhledem k tomu, že teď vaše žádosti zpracovat v dávce; To znamená což pomáhá omezit latenci umožňujícím zpětnou transformaci a zvýšit výkon vašich aplikací. 
 
-Kromě toho pokud zjistíte pokles celkový výkon vaší databáze, můžete monitorovat [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) a [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) za účelem zobrazení dynamické správy pochopení spotřeby procesoru, vstupně-výstupní operace a paměti. Výkon možná vliv, protože databáze je nedostatek prostředků. Je možné, že budete muset změnit úroveň výkonu a/nebo podle zvětšování a zmenšování vytížení úroveň služby. 
+Kromě toho pokud zjistíte pokles celkový výkon vaší databáze, můžete monitorovat [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) a [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) za účelem zobrazení dynamické správy pochopení spotřeby procesoru, vstupně-výstupní operace a paměti. Výkon možná vliv, protože databáze je nedostatek prostředků. Je možné, že budete muset změnit velikost výpočetních a/nebo podle zvětšování a zmenšování vytížení úroveň služby. 
 
 Komplexní sadu doporučení pro ladění problémů s výkonem, naleznete v tématu: [vyladit vaše databáze](sql-database-performance-guidance.md#tune-your-database).
 
-### <a name="how-do-i-ensure-i-am-using-the-appropriate-service-tier-and-performance-level"></a>Jak zajistit, že používám příslušnou službu vrstvu a úroveň výkonu?
-SQL Database nabízí různé úrovně služeb Basic, Standard a Premium. Každá úroveň služby získáte zaručené předvídatelný výkon vázané na této úrovni služby. V závislosti na velikosti pracovní zátěže může mít nárůstům aktivity kde využití prostředků pravděpodobně dojde k aktuální úroveň výkonu, které jsou v horní mez. V takových případech je užitečné začít vyhodnocovat, jestli všechny ladění může pomoci (například přidáním nebo změnou indexu atd.). Pokud budete mít stále omezit problémy, zvažte přechod na vyšší úroveň výkonu nebo rozsahu služeb. 
+### <a name="how-do-i-ensure-i-am-using-the-appropriate-service-tier-and-compute-size"></a>Jak zajistím, aby mi teď při použití úrovně příslušnou službu a vypočítat velikost?
+SQL Database nabízí různé úrovně služeb Basic, Standard a Premium. Každá úroveň služby získáte zaručené předvídatelný výkon vázané na úrovně služby. V závislosti na velikosti pracovní zátěže může mít nárůstům aktivity kde využití prostředků pravděpodobně dojde k aktuální velikost výpočetní prostředky, které jsou v horní mez. V takových případech je užitečné začít vyhodnocovat, jestli všechny ladění může pomoci (například přidáním nebo změnou indexu atd.). Pokud budete mít stále omezit problémy, zvažte přechod na vyšší úroveň služby nebo vypočítat velikost. 
 
-|**Úrovně služeb**|**Běžné scénáře použití**|
+|**Úroveň služeb**|**Běžné scénáře použití**|
 |---|---|
 |**Basic**|Aplikace s několika uživateli a databázi, která nemá vysoké požadavky na souběžnost, škálování a výkonu. |
 |**Standard**|Aplikace s značné požadavky na souběžnost, škálování a výkonu s velkou provázaností s nízkým až středním požadavky na vstupně-výstupních operací. |
 |**Premium**|Aplikací s velkým množstvím souběžných uživatelů, vysoké využití procesoru/paměti a vysoké požadavky na vstupně-výstupních operací. Úroveň Premium můžete využít vysokou souběžnosti, vysoké propustnosti a latence aplikace s citlivými informacemi. |
 |||
 
-Za to, že jste na úroveň výkonu správný, můžete monitorovat využití prostředků dotazu a databáze prostřednictvím jednoho z výše uvedených způsobů, jak v "Jak je možné sledovat využití výkonu a prostředků ve službě SQL Database". By pro vás, vaše dotazy databáze běží trvale aktivní na procesoru nebo paměti atd. zvažte možnost škálování na vyšší úroveň výkonu. Podobně pokud Pamatujte, že i během hodiny ve špičce, můžete nevypadají používat příslušné prostředky největší; Zvažte snížení kapacity na aktuální úrovni výkonu. 
+Za to, že jste na správné výpočetního prostředí, můžete monitorovat využití prostředků dotazu a databáze prostřednictvím jednoho z výše uvedených způsobů, jak v "Jak je možné sledovat využití výkonu a prostředků ve službě SQL Database". By pro vás, vaše dotazy databáze běží konzistentně hot na procesoru nebo paměti atd. zvažte možnost škálování na vyšší výpočetní velikost. Podobně pokud Pamatujte, že i během hodiny ve špičce, můžete nevypadají používat příslušné prostředky největší; Vezměte v úvahu škálování z aktuální výpočty velikosti. 
 
 Pokud máte vzor pro aplikace SaaS nebo scénáře konsolidace databáze, zvažte použití elastického fondu pro optimalizaci nákladů. Elastický fond je skvělý způsob, jak dosáhnout databázi konsolidace a optimalizaci nákladů. Další informace o správě více databází pomocí Elastických fondů, naleznete v tématu: [Správa fondů a databází](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases). 
 

@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: andrl
-ms.openlocfilehash: 2c3e4806aef506ef9016699b46eadd5f8a187224
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 2da00f700f5cc234455cc686377e5863f1c35bdd
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42059064"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45734467"
 ---
 # <a name="set-and-get-throughput-for-azure-cosmos-db-containers-and-database"></a>Nastavení a zjištění propustnosti pro kontejnery služby Azure Cosmos DB a databázi
 
@@ -61,7 +61,7 @@ V následujících částech se dozvíte kroky potřebnými ke konfiguraci propu
 2. V levém navigačním podokně, vyberte **všechny prostředky** a vyhledejte svůj účet služby Azure Cosmos DB.  
 3. Propustnost můžete nakonfigurovat při vytváření databáze nebo aktualizace propustnost pro existující databázi.  
 4. Chcete-li přiřadit propustnost při vytváření databáze, otevřete **Průzkumník dat** okna a vyberte **nová databáze**  
-5. Zadejte **id databáze** hodnotu, zaškrtněte **zřídit propustnost** řádku a nakonfigurovat hodnoty propustnosti. Databázi je možné zřídit s hodnotou minimální propustnost 50 000 RU/s.  
+5. Zadejte **id databáze** hodnotu, zaškrtněte **zřídit propustnost** řádku a nakonfigurovat hodnoty propustnosti.  
 
    ![Nastavte propustnost s novou možností databáze](./media/set-throughput/set-throughput-with-new-database-option.png)
 
@@ -74,7 +74,7 @@ V následujících částech se dozvíte kroky potřebnými ke konfiguraci propu
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).  
 2. V levém navigačním podokně, vyberte **všechny prostředky** a vyhledejte svůj účet služby Azure Cosmos DB.  
 3. Vytvoření databáze a přiřadit propustnost. Otevřít **Průzkumník dat** okna a vyberte **nová databáze**  
-4. Zadejte **id databáze** hodnotu, zaškrtněte **zřídit propustnost** řádku a nakonfigurovat hodnoty propustnosti. Databázi je možné zřídit s hodnotou minimální propustnost 50 000 RU/s.  
+4. Zadejte **id databáze** hodnotu, zaškrtněte **zřídit propustnost** řádku a nakonfigurovat hodnoty propustnosti.  
 
    ![Nastavte propustnost s novou možností databáze](./media/set-throughput/set-throughput-with-new-database-option.png)
 
@@ -107,33 +107,6 @@ Zvažte zřízení propustnost za kontejner v následujících případech:
 * Pokud máte menší počet kontejnerů Azure Cosmos DB.  
 
 * Pokud chcete získat garantovanou propustnost na daném kontejneru zajištěné smlouvou SLA.
-
-## <a name="throughput-ranges"></a>Rozsahy propustnost
-
-Následující tabulka uvádí dostupné pro kontejnery propustnost:
-
-<table border="0" cellspacing="0" cellpadding="0">
-    <tbody>
-        <tr>
-            <td valign="top"><p></p></td>
-            <td valign="top"><p><strong>Jeden oddíl kontejneru</strong></p></td>
-            <td valign="top"><p><strong>Dělený kontejner</strong></p></td>
-            <td valign="top"><p><strong>Sadu kontejnerů</strong></p></td>
-        </tr>
-        <tr>
-            <td valign="top"><p>Minimální propustnost</p></td>
-            <td valign="top"><p>400 jednotek žádostí za sekundu</p></td>
-            <td valign="top"><p>1 000 jednotek žádostí za sekundu</p></td>
-            <td valign="top"><p>50 000 jednotek žádostí za sekundu</p></td>
-        </tr>
-        <tr>
-            <td valign="top"><p>Maximální propustnost</p></td>
-            <td valign="top"><p>10 000 jednotek žádostí za sekundu</p></td>
-            <td valign="top"><p>Unlimited</p></td>
-            <td valign="top"><p>Unlimited</p></td>
-        </tr>
-    </tbody>
-</table>
 
 <a id="set-throughput-sdk"></a>
 

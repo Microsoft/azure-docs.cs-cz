@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: yuemlu
 ms.custom: include file
-ms.openlocfilehash: 70f80b880fadaeb4d5859524b3ba3b55ececbdda
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: ab085d6a5cb38c46cf46a51da6d294732e2fd879
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40260015"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45979256"
 ---
 # <a name="cost-effective-standard-storage-and-unmanaged-and-managed-azure-vm-disks"></a>Nákladově efektivní úložiště úrovně Standard a spravované a nespravované disky virtuálních počítačů Azure
 
@@ -148,7 +148,7 @@ Také vám pomůže služba Azure Backup se službou Managed Disks vytváření 
 
 * [Seznámení se službou Azure Storage](../articles/storage/common/storage-introduction.md)
 
-* [vytvořit účet úložiště](../articles/storage/common/storage-create-storage-account.md)
+* [vytvořit účet úložiště](../articles/storage/common/storage-quickstart-create-account.md)
 
 * [Přehled služby Managed Disks](../articles/virtual-machines/linux/managed-disks-overview.md)
 

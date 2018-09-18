@@ -3,18 +3,18 @@ title: Nastavení replikace clusteru HBase ve virtuálních sítích Azure
 description: Zjistěte, jak nastavit HBase replikace z jedné verze HDInsight do jiné služby Vyrovnávání zatížení, vysokou dostupnost, migrace s nulovými výpadky a aktualizace a zotavení po havárii.
 services: hdinsight,virtual-network
 author: jasonwhowell
+ms.author: jasonh
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/11/2018
-ms.author: jasonh
-ms.openlocfilehash: 624165f5ee1140ade9b9ce03c5249d297c8d83f1
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.date: 09/15/2018
+ms.openlocfilehash: 0d675b3efa165f36b93d791975a8007a68b02e12
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047479"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45734754"
 ---
 # <a name="set-up-hbase-cluster-replication-in-azure-virtual-networks"></a>Nastavení replikace clusteru HBase ve virtuálních sítích Azure
 
@@ -135,7 +135,7 @@ K instalaci vazby, použijte následující postup:
     sudo apt-get install bind9 -y
     ```
 
-3. Ke konfiguraci vazby pro předávání žádosti o překlad názvu na místní server DNS, použijte následující text jako obsah `/etc/bind/named.conf.options` souboru:
+3. Konfigurace vazby předávat požadavky na název řešení na místní server DNS. K tomu použít následující text jako obsah `/etc/bind/named.conf.options` souboru:
 
     ```
     acl goodclients {
@@ -151,7 +151,7 @@ K instalaci vazby, použijte následující postup:
         allow-query { goodclients; };
 
         forwarders {
-            168.63.129.16 #This is the Azure DNS server
+            168.63.129.16; #This is the Azure DNS server
         };
 
         dnssec-validation auto;

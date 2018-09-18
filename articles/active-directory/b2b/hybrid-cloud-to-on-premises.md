@@ -4,18 +4,18 @@ description: Ukazuje, jak poskytnout cloudu přístupu uživatelům B2B k aplika
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 9b04f6bc2158f88b54bb4ed086c2f74b5a28eedd
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 7363a4f78faaae77a8ee476921ade9d3b1368929
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45605211"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983025"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Uživatelům udělit B2B v Azure AD přístup k místním aplikacím
 

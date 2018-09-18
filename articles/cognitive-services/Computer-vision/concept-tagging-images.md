@@ -1,23 +1,23 @@
 ---
-title: Označování imagí
-titleSuffix: Computer Vision - Cognitive Services - Azure
-description: Koncepty související s označení obrázků s využitím Azure Cognitive Services pro počítačové zpracování obrazu.
+title: Označování imagí - pro počítačové zpracování obrazu
+titleSuffix: Azure Cognitive Services
+description: Koncepty související s označení obrázků s využitím rozhraní API pro počítačové zpracování obrazu.
 services: cognitive-services
 author: deken
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: v-deken
-ms.openlocfilehash: b06265bbdd5ba642c5395823e98a6a76171baff4
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 159a1b9404f6ce635dcc8bb6007e52b7346ef98d
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44725340"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982960"
 ---
-# <a name="tagging-images"></a>Označování imagí
+# <a name="tagging-images"></a>Označování obrázků značkami
 
 Počítačové zpracování obrazu vrací značky na základě na více než 2 000 rozpoznatelných objektů, živých bytostí, krajin a akcí. Při značky jsou nejednoznačný nebo není, rozhraní API poskytne "pomocné parametry" pro objasnění významu značky v kontextu známé nastavení. Značky nejsou uspořádaná jako taxonomie a neexistuje žádná hierarchie dědičnosti. Kolekce obsahu značek tvoří základ pro bitovou kopii "popisu" zobrazí jako lidského čitelné jazyk, ve formátu v úplných větách. Všimněte si, že v tomto okamžiku angličtina je jediný podporovaný jazyk pro popis obrázku.
 

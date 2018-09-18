@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 06/02/2017
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: d09505e4738243576dbde64fa6daba22d054bc8e
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 10b0d475113e5fcd413c7e62f88dcd434fc72a52
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053263"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45732767"
 ---
 # <a name="using-the-azure-cli-20-with-azure-storage"></a>Použití Azure CLI 2.0 s Azure Storage
 
@@ -31,7 +31,7 @@ Tento průvodce to předpokládá, že chápete základní koncepty služby Azur
 
 ### <a name="accounts"></a>Účty
 * **Účet Azure**: Pokud ještě nemáte předplatné Azure, [vytvořit si bezplatný účet Azure](https://azure.microsoft.com/free/).
-* **Účet Storage**: Viz část [Vytvoření účtu úložiště](storage-create-storage-account.md#create-a-storage-account) v článku [Informace o účtech Azure Storage](storage-create-storage-account.md).
+* **Účet Storage**: Viz část [Vytvoření účtu úložiště](storage-quickstart-create-account.md) v článku [Informace o účtech Azure Storage](storage-create-storage-account.md).
 
 ### <a name="install-the-azure-cli-20"></a>Instalace Azure CLI 2.0
 

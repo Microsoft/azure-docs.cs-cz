@@ -10,16 +10,19 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: d90a9f8bd32924eef6533e602957aa1704cfdae9
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 5bd1b534386f38f8dd3a78bbd98ffd012875351f
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190469"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45736151"
 ---
 #    <a name="text-merge-cognitive-skill"></a>Kognitivní dovednosti sloučení textu
 
 **Sloučení textu** dovednosti konsoliduje text z kolekce polí do jednoho pole. 
+
+> [!NOTE]
+> Cognitive Search je ve veřejné verzi Preview. Spuštění dovednosti a extrakce image a normalizace se momentálně nabízí zdarma. Později cenách za tyto funkce bude oznámena. 
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.MergeSkill

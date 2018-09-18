@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/10/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: 6cbaaeed75f160a2281fdce0949397b9a14bf981
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 1be7dd9ce537d0999ace01eafa46318e42df9f20
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347915"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45732443"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Import dat do služby soubory Azure pomocí služby Azure Import/Export
 
@@ -26,7 +26,7 @@ Podporuje služba importu/exportu importovat pouze soubory Azure do služby Azur
 Než začnete vytvářet úlohy importu přenášet data do soubory Azure, pečlivě zkontrolujte a dokončete následující seznam všech požadovaných součástí. Musíte mít:
 
 - Máte aktivní předplatné Azure pomocí služby Import/Export.
-- Máte alespoň jeden účet služby Azure Storage. Zobrazit seznam [nepodporuje účty úložiště a typy úložiště pro službu Import/Export](storage-import-export-requirements.md). Informace o vytvoření nového účtu úložiště najdete v tématu [způsob vytvoření účtu úložiště](storage-create-storage-account.md#create-a-storage-account).
+- Máte alespoň jeden účet služby Azure Storage. Zobrazit seznam [nepodporuje účty úložiště a typy úložiště pro službu Import/Export](storage-import-export-requirements.md). Informace o vytvoření nového účtu úložiště najdete v tématu [způsob vytvoření účtu úložiště](storage-quickstart-create-account.md).
 - Používejte odpovídající počet disků [podporované typy](storage-import-export-requirements.md#supported-disks). 
 - K dispozici systém Windows [verze operačního systému nepodporuje](storage-import-export-requirements.md#supported-operating-systems).
 - [Stáhněte si WAImportExport verze 2](https://www.microsoft.com/download/details.aspx?id=55280) v systému Windows. Rozbalte do výchozí složky `waimportexport`. Například, `C:\WaImportExport`.

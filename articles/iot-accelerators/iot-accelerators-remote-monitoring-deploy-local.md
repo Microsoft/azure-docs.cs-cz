@@ -3,17 +3,17 @@ title: Nasazení řešení vzdáleného monitorování místní – Azure | Doku
 description: Tato příručka ukazuje, jak do svého místního počítače pro vývoj a testování nasazení akcelerátoru řešení vzdáleného monitorování.
 author: dominicbetts
 manager: timlt
-ms.author: dobett
+ms.author: asdonald
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 09/06/2018
+ms.date: 09/17/2018
 ms.topic: conceptual
-ms.openlocfilehash: aaaf31d5c1faae8176dd9909f74c70300c3f0b4e
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: e29a21639d3d7c7acb6093bcd8eb9947721273bc
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44716419"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982538"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally"></a>Nasazení akcelerátoru řešení vzdáleného monitorování místně
 
@@ -42,13 +42,13 @@ K dokončení místní nasazení, budete potřebovat následující nástroje na
 Nainstalovat Java implementace mikroslužby, spusťte:
 
 ```cmd/sh
-git clone --recurse-submodules -j8 https://github.com/Azure/azure-iot-pcs-remote-monitoring-java
+git clone --recurse-submodules  https://github.com/Azure/azure-iot-pcs-remote-monitoring-java.git
 ```
 
 Pokud chcete nainstalovat implementace .net mikroslužeb, spusťte:
 
 ```cmd\sh
-git clone --recurse-submodules -j8 https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet
+git clone --recurse-submodules  https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet.git
 ```
 
 > [!NOTE]
@@ -58,18 +58,38 @@ git clone --recurse-submodules -j8 https://github.com/Azure/azure-iot-pcs-remote
 
 I když v tomto článku se dozvíte, jak spouštět mikroslužby lokálně, jsou závislé na spouštění v cloudu služby Azure. Tyto služby Azure můžete nasadit [ručně na webu Azure portal](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Manual-steps-to-create-azure-resources-for-local-setup), nebo pomocí dodávaného skriptu. Následující příklady skriptu se předpokládá, že používáte úložiště .NET na počítači s Windows. Pokud pracujete s jiným prostředím, cesty, přípony souboru a oddělovače cest odpovídajícím způsobem nastavte. Použití skriptu:
 
-1. Ve vašem prostředí příkazového řádku, přejděte **azure-iot-pcs-remote-monitoring-dotnet\services\scripts\local\launch** složky v klonovaném kopii úložiště.
+### <a name="new-users"></a>Noví uživatelé
+Pro uživatele, kteří mají **dosud** vytvořili požadované prostředky Azure, pokračujte podle následujících pokynů:
 
-1. Spustit **start.cmd** skriptu a postupujte podle zobrazených výzev. Skript vyzve k zadání následujících informací:
+ 1. Ve vašem prostředí příkazového řádku, přejděte **azure-iot-pcs-remote-monitoring-dotnet\services\scripts\local\launch** složky v klonovaném kopii úložiště.
+
+ 2. Spustit **start.cmd nebo start.sh** skriptu a postupujte podle zobrazených výzev. Skript vyzve k zadání následujících informací:
     * Název řešení.
     * Předplatné Azure, které se má použít.
     * Umístění datového centra Azure používat.
 
     Tento skript vytvoří skupinu prostředků v Azure s názvem řešení.
 
-1. Ve vašem prostředí příkazového řádku, přejděte **azure-iot-pcs-remote-monitoring-dotnet\services\scripts\local\launch\os\win** složky v klonovaném kopii úložiště.
+ 3. Ve vašem prostředí příkazového řádku, přejděte **azure-iot-pcs-remote-monitoring-dotnet\services\scripts\local\launch\os\win** složky v klonovaném kopii úložiště.
 
-1. Spustit **set-env uri.cmd** skriptu.
+ 4. Spustit **set-env uri.cmd nebo set-env uri.sh** skriptu.
+ 
+ 5. Aktualizovat váš dílčí moduly gitu, abyste měli jistotu, že máte ty nejnovější: ```cd <repo-name>``` a pak spusťte následující příkaz ```git submodule foreach git pull origin master```
+
+> [!NOTE]
+> Pokud jste naklonovali úložiště azure-iot-pcs-remote-monitoring-dotnet, složka skripty je k dispozici v rámci služby dílčího modulu (složka).
+Spouštěcí skript vyžaduje **Node.js** ke spuštění, nainstalujte nejnovější stabilní Node 8 (neupravíte použijte uzel 10) před použitím tohoto skriptu. Kromě toho tento skript může vyžadovat oprávnění pro správu nebo oprávnění sudo při pokusu o instalaci [počítače rozhraní příkazového řádku](https://github.com/Azure/pcs-cli) rozhraní příkazového řádku pro vzdálené monitorování nasazení.  
+
+### <a name="existing-users"></a>Existující uživatele
+Pro uživatele, kteří si předem vytvořili požadované prostředky azure a právě je muset aktualizovat, proveďte pouze **jeden** z následujících kroků:
+
+ * Globální nastavení proměnných prostředí na svém počítači.
+ * **VS Code:** nastavení proměnných prostředí v konfiguracích spuštění rozhraní IDE to znamená launch.json
+ * **Visual Studio:** nastavit proměnné prostředí pro webovou službu projekt mikroslužby přidáním do vlastnosti proměnné ladit → prostředí →
+ 
+Nakonec aktualizujte váš dílčí moduly gitu, abyste měli jistotu, že máte ty nejnovější: ```cd <repo-name>``` a pak spusťte následující příkaz ```git submodule foreach git pull origin master```
+ 
+Však není doporučena, proměnné prostředí můžete také nastavit v souboru appsettings.ini nachází ve složce webové služby pro jednotlivých mikroslužeb.
 
 ## <a name="run-the-microservices-in-docker"></a>Spuštění mikroslužby v Dockeru
 

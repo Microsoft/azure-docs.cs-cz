@@ -3,7 +3,7 @@ title: Co jsou zóny dostupnosti Azure? | Dokumenty Microsoft
 description: Zóny dostupnosti v Azure vytvořit vysoce dostupné a odolné aplikace, poskytují fyzicky oddělená umístění, které lze použít ke spuštění vašich prostředků.
 services: ''
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: ''
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/27/2018
-ms.author: iainfou
+ms.date: 08/31/2018
+ms.author: cynthn
 ms.custom: mvc I am an ITPro and application developer, and I want to protect (use Availability Zones) my applications and data against data center failure (to build Highly Available applications).
-ms.openlocfilehash: 6a4dcc2cd3b196221b881783c79ddb0adaa6f38b
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 488f7fa123692a908c36619e17166cee27d17612
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42060531"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45735862"
 ---
 # <a name="what-are-availability-zones-in-azure"></a>Co jsou zóny dostupnosti v Azure?
 Zóny dostupnosti je vysoká dostupnost služeb, které chrání vaše aplikace a data z datacenter selhání. Zóny dostupnosti jsou jedinečná fyzická umístění v rámci oblasti Azure. Každá zóna se skládá z jednoho nebo více datových Center vybavených nezávislým napájením, chlazením a sítí. K zajištění odolnosti proti chybám, je minimálně tří samostatných zón ve všech oblastech, povolené. Fyzické oddělení zón dostupnosti v rámci oblasti chrání aplikace a data před selháními datových center. Zónově redundantní služby replikaci vašich aplikací a dat napříč zónami dostupnosti pro zajištění ochrany z jednoho body z chyby. Zóny dostupnosti Azure nabízí odvětví nejlepší 99,99 % doby provozu SLA k virtuálním počítačům. Úplná smlouva [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) vysvětluje garantovanou dostupnost Azure jako celku.
@@ -40,10 +40,13 @@ Pokud chcete dosáhnout komplexní obchodní kontinuity podnikových procesů v 
 ## <a name="regions-that-support-availability-zones"></a>Oblasti, které podporují zóny dostupnosti
 
 - USA – střed
-- Francie – střed
 - USA – východ 2 (Preview)
-- Západní Evropa
+- Francie – střed
+- Severní Evropa
 - Jihovýchodní Asie (Preview)
+- Západní Evropa
+- USA – západ 2
+
 
 
 ## <a name="services-that-support-availability-zones"></a>Služby, které podporují zóny dostupnosti

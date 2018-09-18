@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/17/2018
 ms.author: v-jerkin
-ms.openlocfilehash: a0ff6c09eb0a6fffe0ce82fe9ccb3bc43970ad68
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 5ae57764e2950d027e832eccec5393d4aec4486a
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44024614"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45981828"
 ---
 # <a name="try-the-speech-service-for-free"></a>Vyzkoušejte si službu Speech zdarma
 
@@ -130,7 +130,7 @@ Chcete-li přidat prostředek služby řeči ke svému účtu Azure:
 1. V části **rychlý Start**, vyberte **klíče** odkaz v kroku 1, chcete-li zobrazit klíče předplatného. Každé předplatné má dva klíče; ani jeden klíč můžete použít ve vaší aplikaci. Klikněte na tlačítko vedle každého klíče ho zkopírovat do schránky pro vkládání do kódu.
 
 > [!NOTE]
-> Neomezený počet předplatných úrovně standard můžete vytvořit v jedné nebo víc oblastech. Můžete však vytvořit jenom jedno předplatné bezplatné úrovně.
+> Neomezený počet předplatných úrovně standard můžete vytvořit v jedné nebo víc oblastech. Můžete však vytvořit jenom jedno předplatné bezplatné úrovně. Nasazení modelu na úrovni free, která nepoužíval. po dobu 7 dní se vyřadil automaticky.
 
 ## <a name="next-steps"></a>Další postup
 

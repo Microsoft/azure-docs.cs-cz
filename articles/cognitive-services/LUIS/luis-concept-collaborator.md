@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: ac1c3b4ac49cd8934316eb5653af8f5af2cf801a
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 5573bd36761fb56f0731f886bd705327625f06fe
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45630150"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45734501"
 ---
 # <a name="collaborating"></a>Spolupráce
 
@@ -34,7 +34,7 @@ Zobrazit [uživatel tenanta Azure Active Directory](luis-how-to-collaborate.md#a
 ## <a name="authorization-roles"></a>Povolení role
 Služba LUIS nepodporuje různé role pro vlastníky a spolupracovníci s jednou výjimkou. Vlastník je jediný účet, který může odstranit aplikace.
 
-Pokud vás zajímá při řízení přístupu k modelu, vezměte v úvahu dělení modelu do menších LUIS aplikací, kde každá menší aplikace má omezenější sadu spolupracovníky. Použití [odeslání](https://github.com/Microsoft/botbuilder-tools/tree/master/Dispatch) umožňující nadřazená aplikace LUIS ke správě koordinaci mezi nadřazenými a podřízenými aplikace.
+Pokud vás zajímá při řízení přístupu k modelu, vezměte v úvahu dělení modelu do menších LUIS aplikací, kde každá menší aplikace má omezenější sadu spolupracovníky. Použití [odeslání](https://aka.ms/dispatch-tool) umožňující nadřazená aplikace LUIS ke správě koordinaci mezi nadřazenými a podřízenými aplikace.
 
 ## <a name="transfer-ownership"></a>Převod vlastnictví
 Služba LUIS neposkytuje převod vlastnictví, ale žádné spolupracovníka můžete exportovat aplikace a pak vytvořit aplikace metodou importování, se. Mějte na paměti, že nová aplikace má jiné ID aplikace. Nová aplikace potřebuje školení, publikování a nový koncový bod používá.

@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 09/17/2018
 git ms.author: sethm
 ms.reviewer: misainat
-ms.openlocfilehash: ad596e2f63d3ef5fb82fe52699fef3a79e835274
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 7770f4c45d974e8ce5750dbd3aee0d8393281151
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634808"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984437"
 ---
 # <a name="azure-stack-development-kit-release-notes"></a>Zpráva k vydání verze Azure Stack Development Kit  
 Tento článek obsahuje informace o vylepšení, oprav a známé problémy v Azure Stack Development Kit. Pokud si nejste jistí, kterou verzi používáte, můžete si [použití portálu ke kontrole](.\.\azure-stack-updates.md#determine-the-current-version).
@@ -46,6 +46,8 @@ Toto sestavení obsahuje následující vylepšení a oprav pro Azure Stack.
 - <!-- | IS ASDK--> **Položka marketplace Kubernetes**. Teď můžete nasadit clustery Kubernetes pomocí [položky Kubernetes Marketplace](/azure/azure-stack/azure-stack-solution-template-kubernetes-cluster-add). Uživatele můžete vybrat položku Kubernetes a vyplňte několik parametrů k nasazení clusteru Kubernetes do služby Azure Stack. Účelem šablony je usnadňují uživatelům, aby instalační program nasazení Kubernetes pro vývoj/testování v několika krocích.
 
 - <!-- | IS ASDK--> **Blockchain šablony**. Teď můžete spustit [ethereum během nasazení consortium](/azure/azure-stack/azure-stack-ethereum) ve službě Azure Stack. Tři nové šablony v můžete najít [Azure Stack šablon pro rychlý Start](https://github.com/Azure/AzureStack-QuickStart-Templates). Povolit uživatele k nasazení a konfiguraci sítě konsorcia několika člen ethereum během s minimálními znalostmi Azure a Etherea. Účelem šablony je usnadňují uživatelům, aby instalační program pro vývoj/testování Blockchain nasazení v několika krocích.
+
+- <!-- | IS ASDK--> **Rozhraní API verze profilu 2017-03-09-profile byla aktualizována na 2018-03-01hybridní**. Profily rozhraní API zadejte poskytovatel prostředků Azure a verze rozhraní API pro koncové body Azure REST. Další informace o profilech najdete v tématu [profilů verzí API spravovat ve službě Azure Stack](/azure/azure-stack/user/azure-stack-version-profiles).
 
 
 ### <a name="fixed-issues"></a>Oprava potíží

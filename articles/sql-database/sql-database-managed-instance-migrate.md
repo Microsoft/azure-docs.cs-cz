@@ -11,12 +11,12 @@ ms.custom: managed instance
 ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: bonova
-ms.openlocfilehash: 276d36562aece7101465752528f59008e1ee7607
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: cf3f7e131b177634318a6114b4f1efefcb9a9cec
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44050319"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985656"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Migrace instance SQL serveru do Azure SQL Database Managed Instance
 
@@ -39,7 +39,7 @@ Na vysoké úrovni procesu migrace databáze vypadá takto:
 
 Nejdřív zjistěte, jestli je kompatibilní s požadavky na databázi aplikace Managed Instance. Spravovaná Instance je navržené pro poskytování snadno výtah a posunout migrace pro většinu z existující aplikace, které používají místní SQL Server nebo na virtuálních počítačích. Však můžete někdy potřebovat funkce nebo funkce, které se zatím nepodporují a náklady na implementaci řešení jsou příliš vysoká. 
 
-Použití [Data Migration Assistant (DMA)](https://docs.microsoft.com/sql/dma/dma-overview) kompatibility detekovat potenciální problémy s ovlivňuje funkčnost databází na Azure SQL Database. DMA zatím nepodporuje Managed Instance jako cíl migrace, ale doporučuje se spustit posouzení na databázi SQL Azure a pečlivě projděte si seznam paritu funkcí ohlášené a problémy s kompatibilitou proti dokumentaci k produktu. Najdete v článku [rozdíly mezi Azure SQL Database Singleton a Managed Instance](sql-database-features.md) ke kontrole existují některé nahlášené blokující problémy, které blockers není ve spravované instanci, protože většina blokující problémy brání migrace do Byly odebrány Azure SQL Database Managed instance. Pro instanci, funkce, jako jsou dotazy napříč databázemi, mezidatabázové transakce v rámci stejné instance propojený server do jiných zdrojů, CLR, globální dočasné tabulky SQL, jsou k dispozici ve spravovaných instancí úrovně zobrazení instance, služba Service Broker a podobně. 
+Použití [Data Migration Assistant (DMA)](https://docs.microsoft.com/sql/dma/dma-overview) kompatibility detekovat potenciální problémy s ovlivňuje funkčnost databází na Azure SQL Database. DMA zatím nepodporuje Managed Instance jako cíl migrace, ale doporučuje se spustit posouzení na databázi SQL Azure a pečlivě projděte si seznam paritu funkcí ohlášené a problémy s kompatibilitou proti dokumentaci k produktu. Zobrazit [funkce služby Azure SQL Database](sql-database-features.md) ke kontrole existují některé nahlášené blokující problémy, že není blockers ve spravované instanci, protože většina blokující problémy brání migrace do Azure SQL Database byly odebrány s spravované Instance. Pro instanci, funkce, jako jsou dotazy napříč databázemi, mezidatabázové transakce v rámci stejné instance propojený server do jiných zdrojů, CLR, globální dočasné tabulky SQL, jsou k dispozici ve spravovaných instancí úrovně zobrazení instance, služba Service Broker a podobně. 
 
 Pokud jsou některé hlášené omezujícím problémům, které se neodeberou ve spravované instanci SQL Azure, můžete zvážit alternativní možnosti, jako například potřebovat [systému SQL Server na virtuálních počítačích v Azure](https://azure.microsoft.com/services/virtual-machines/sql-server/). Zde je několik příkladů:
 

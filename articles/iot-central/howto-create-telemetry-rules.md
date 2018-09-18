@@ -8,14 +8,16 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 5913df2d4dc286fad63760c95f54e0dbc717acdc
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 1b82ac3bf67370a2c39e85bf5691da38539edb74
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42058694"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45729304"
 ---
 # <a name="create-a-telemetry-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Vytvořit pravidlo telemetrická data a nastavení oznámení v aplikaci Azure IoT Central
+
+*Tento článek se týká, tvůrci, správci a operátoři.*
 
 Azure IoT Central můžete použít pro vzdálené monitorování připojených zařízení. Pravidla ve službě Azure IoT Central umožňují monitorujte svoje zařízení téměř v reálném čase a automaticky vyvolat akce, jako například odeslat e-mailu nebo aktivovat Microsoft Flow. Pomocí několika kliknutí můžete definovat podmínky pro kterou chcete monitorovat data zařízení a nakonfigurujte odpovídající akci. Tento článek vysvětluje, jak vytvořit pravidla, která monitorování telemetrická data odesílaná ze zařízení.
 
@@ -36,9 +38,9 @@ K vytvoření pravidla telemetrie, šablona zařízení musí mít definován al
 
     ![Zatím žádná pravidla](media\howto-create-telemetry-rules\Rules_Landing_Page.png)
 
-1. Na **pravidla** klikněte na tlačítko **+ nové pravidlo** zobrazíte typy pravidel, můžete vytvořit.
+1. Na **pravidla** klikněte na tlačítko **upravit šablonu** a potom **+ nové pravidlo** zobrazíte typy pravidel, můžete vytvořit.
 
-1. Klikněte na **Telemetrie** dlaždice k vytvoření pravidla monitorování telemetrie zařízení.
+1. Klikněte na tlačítko **Telemetrie** k vytvoření pravidla monitorování telemetrie zařízení.
 
     ![Typy pravidel](media\howto-create-telemetry-rules\Rule_Types.png)
 
@@ -87,6 +89,8 @@ V této části se dozvíte, jak vytvořit akce má provést, když se aktivuje 
 
 1. Chcete-li uložit pravidlo, zvolte **Uložit**. Pravidlo uvedete během několika minut a zahájí monitorování telemetrických dat odesílaných do vaší aplikace. Když se podmínka uvedená v pravidle shoduje, pravidlo aktivuje nakonfigurovaná e-mailové akce.
 
+1. Zvolte **provádí** ukončíte **upravit šablonu** režimu.
+
 Pravidla, jako je Microsoft Flow a webhooky, můžete přidat další akce. Můžete přidat až 5 akcí na jedno pravidlo.
 
 - [Microsoft Flow akce](howto-add-microsoft-flow.md) aktivovala pracovního postupu v Microsoft Flow, když se aktivuje pravidlo 
@@ -100,7 +104,7 @@ Pomocí parametrů je účinný způsob, jak snížit počet pravidel pro správ
 
 Akce lze konfigurovat také pomocí **vlastnosti zařízení** jako parametr. Pokud se e-mailová adresa je uložená jako vlastnost a potom je možné použít při definování **k** adresu.
 
-## <a name="delete-a-rule"></a>Odstranit pravidlo
+## <a name="delete-a-rule"></a>Odstranění pravidla
 
 Pokud pravidlo již nepotřebujete, odstraňte otevřením pravidlo a výběr **odstranit**. Odstraňuje se pravidlo odebere z šablony zařízení a všechna přidružená zařízení.
 

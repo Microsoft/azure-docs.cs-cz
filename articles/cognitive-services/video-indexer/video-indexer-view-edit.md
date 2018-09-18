@@ -1,19 +1,21 @@
 ---
-title: Zobrazení a úprava přehledů funkce Video Indexer pro Azure | Dokumentace Microsoftu
+title: Zobrazení a úprava přehledů služby Video Indexer
+titlesuffix: Azure Cognitive Services
 description: Toto téma popisuje postup zobrazení a úprava přehledů funkce Video Indexer.
 services: cognitive services
-documentationcenter: ''
 author: juliako
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
-ms.date: 09/09/2018
+ms.component: video-indexer
+ms.topic: conceptual
+ms.date: 09/15/2018
 ms.author: juliako
-ms.openlocfilehash: 11bd61387bfe6fe07cd41806f165eed9575622b4
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: c9b229e2fb3297d724ec8de02bf54e9765689ab7
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45540890"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984534"
 ---
 # <a name="view-and-edit-video-indexer-insights"></a>Zobrazení a úprava přehledů služby Video Indexer
 

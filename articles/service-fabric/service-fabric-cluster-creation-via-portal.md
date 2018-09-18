@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/06/2018
 ms.author: aljo
-ms.openlocfilehash: e56c60f67dcfe5c11191942a812d2c670055dfd8
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: fbca9c746863b852a9ddd46d00a65d4133961718
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092644"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984369"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Vytvoření clusteru Service Fabric v Azure pomocí webu Azure portal
 > [!div class="op_single_selector"]
@@ -123,7 +123,7 @@ Nakonfigurujte uzly clusteru. Typy uzlů definují velikosti virtuálních poč�
 7. **Povolit reverzní proxy server**.  [Service Fabric reverzní proxy server](service-fabric-reverseproxy.md) spuštěného v clusteru Service Fabric mikroslužeb pomáhá zjistit a komunikovat s ostatními službami, které mají koncových bodů http.
 8. V části **+ Zobrazit volitelná nastavení**, konfigurace clusteru **diagnostiky**. Ve výchozím nastavení je povolená Diagnostika ve vašem clusteru jako pomoc při řešení potíží. Pokud chcete zakázat diagnostiku změnit **stav** přepnutím **vypnout**. Když vypnete diagnostiku je **není** nedoporučuje. Pokud již jste vytvořili projekt Application Insights a pak zadejte svůj klíč tak, aby trasování aplikací jsou směrovány do ní.
 9. **Zahrnout službu DNS**.  [Služba DNS](service-fabric-dnsservice.md) volitelnou službu, která umožňuje najít další služby pomocí protokolu DNS.
-10. Vyberte **režim upgradu prostředků infrastruktury** , které chcete nastavit váš cluster. Vyberte **automatické**, pokud má systém automaticky vyzvednutí na nejnovější dostupnou verzi a zkuste cluster upgradovat na ni. Nastavte režim na **ruční**, pokud chcete zvolit podporovanou verzi. Podrobné informace o režim upgradu prostředků infrastruktury najdete v článku [service fabric cluster upgrade dokumentu.] [service-fabric--upgradu clusteru]
+10. Vyberte **režim upgradu prostředků infrastruktury** , které chcete nastavit váš cluster. Vyberte **automatické**, pokud má systém automaticky vyzvednutí na nejnovější dostupnou verzi a zkuste cluster upgradovat na ni. Nastavte režim na **ruční**, pokud chcete zvolit podporovanou verzi. Pro další informace o prostředcích infrastruktury upgradu viz režim [service fabric cluster upgrade dokumentu.][service-fabric-cluster-upgrade]
 
 > [!NOTE]
 > Podporujeme pouze clustery, na kterých běží podporované verze systému Service Fabric. Výběrem **ruční** režimu, můžete je možné na odpovědnost cluster upgradovat na podporovanou verzi.
@@ -225,7 +225,8 @@ V tomto okamžiku máte zabezpečeného clusteru s použitím certifikátů pro 
 [service-fabric-connect-and-communicate-with-services]: service-fabric-connect-and-communicate-with-services.md
 [service-fabric-health-introduction]: service-fabric-health-introduction.md
 [service-fabric-reliable-services-backup-restore]: service-fabric-reliable-services-backup-restore.md
-<!--[remote-connect-to-a-vm-scale-set]: service-fabric-cluster-nodetypes.md#remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node --> [remote-connect-to-a-vm-scale-set]: service-fabric-cluster-nodetypes.md [service-fabric--upgradu clusteru]: service-fabric-cluster-upgrade.mdd
+[remote-connect-to-a-vm-scale-set]: service-fabric-cluster-nodetypes.md
+[service-fabric-cluster-upgrade]: service-fabric-cluster-upgrade.md
 
 <!--Image references-->
 [SearchforServiceFabricClusterTemplate]: ./media/service-fabric-cluster-creation-via-portal/SearchforServiceFabricClusterTemplate.png

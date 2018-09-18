@@ -1,74 +1,74 @@
 ---
-title: Exportovat do souboru BACPAC souboru Azure SQL database | Microsoft Docs
-description: Azure SQL database exportovat do souboru BACPAC souboru pomocí portálu Azure
+title: Exportovat do souboru BACPAC s Azure SQL database | Dokumentace Microsoftu
+description: Exportovat databázi Azure SQL do souboru BACPAC s použitím webu Azure portal
 services: sql-database
 author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: load & move data
-ms.date: 04/01/2018
+ms.date: 09/14/2018
 ms.author: carlrab
 ms.topic: conceptual
-ms.openlocfilehash: c2f29d8c660e3d39f91bcdd97209d2e88f5ae864
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c117b3d56e6b032bff5983a707621d649e608d98
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647948"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45732155"
 ---
-# <a name="export-an-azure-sql-database-to-a-bacpac-file"></a>Exportovat do souboru BACPAC souboru Azure SQL database
+# <a name="export-an-azure-sql-database-to-a-bacpac-file"></a>Exportovat databázi Azure SQL do souboru BACPAC
 
-Pokud budete potřebovat na export databáze pro archivaci nebo pro přesun na jiné platformě, můžete exportovat schéma databáze a dat [souboru BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) souboru. Soubor souboru BACPAC je soubor ZIP s příponou souboru BACPAC obsahující metadata a data z databáze systému SQL Server. Soubor souboru BACPAC lze uložená v úložišti objektů blob Azure nebo v místním úložišti v místní umístění a později importovat zpět do Azure SQL Database nebo do místní instalace SQL serveru. 
+Když je potřeba vyexportovat databázi pro archivaci nebo pro přesun do jiné platformy, můžete exportovat schéma databáze a dat [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) souboru. Soubor BACPAC je soubor ZIP s příponou souboru BACPAC, který obsahuje metadata i data z databáze SQL serveru. Do souboru BACPAC můžete uložená v úložišti objektů blob v Azure nebo v místním úložišti v místním umístěním a později importovat zpátky do Azure SQL Database nebo místní instalace SQL serveru. 
 
 > [!IMPORTANT] 
-> Azure SQL Database automatizované exportovat vyřazenou na 1. března 2017. Můžete použít [dlouhodobé uchovávání záloh](sql-database-long-term-retention.md
-) nebo [Azure Automation](https://github.com/Microsoft/azure-docs/blob/2461f706f8fc1150e69312098640c0676206a531/articles/automation/automation-intro.md) pravidelně archivovat SQL databáze pomocí prostředí PowerShell podle plánu, podle vašeho výběru. Ukázku, stáhněte si [ukázkový skript prostředí PowerShell](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-automation-automated-export) z Githubu.
+> Azure SQL Database automatický Export skončil na 1. března 2017. Můžete použít [dlouhodobého uchovávání záloh](sql-database-long-term-retention.md
+) nebo [Azure Automation](https://github.com/Microsoft/azure-docs/blob/2461f706f8fc1150e69312098640c0676206a531/articles/automation/automation-intro.md) pravidelné archivace SQL databáze pomocí prostředí PowerShell podle plánu podle vašeho výběru. Ukázku, stáhněte si [ukázkový skript Powershellu](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-automation-automated-export) z Githubu.
 >
 
-## <a name="considerations-when-exporting-an-azure-sql-database"></a>Aspekty při exportu Azure SQL database
+## <a name="considerations-when-exporting-an-azure-sql-database"></a>Důležité informace při exportu služby Azure SQL database
 
-* Pro export být stavu transakční konzistence, je nutné zajistit buď žádné zápisu aktivity dochází při exportu nebo které exportujete z [stavu transakční konzistence kopie](sql-database-copy.md) vaší databáze Azure SQL.
-* Pokud chcete exportovat do úložiště objektů blob, je maximální velikost souboru BACPAC souboru 200 GB. K archivaci větší soubor souboru BACPAC, exportovat do místního úložiště.
-* Export souboru BACPAC souboru na Azure premium storage pomocí metody popsané v tomto článku není podporován.
-* Pokud operace exportu z databáze SQL Azure je větší než 20 hodin, může být zrušena. Chcete-li zvýšit výkon při exportu, můžete:
-  * Dočasně zvýšit úroveň vaší služby.
-  * Ukončí všechny čtení a zápisu aktivit během exportu.
-  * Použití [clusterovaný index](https://msdn.microsoft.com/library/ms190457.aspx) s nenulové hodnoty pro všechny velké tabulky. Bez Clusterované indexy exportu může selhat, pokud trvá déle než 6 – 12 hodin. Je to proto, že služba export potřebuje k dokončení tabulky vyhledávání s cílem při exportu celou tabulku. Dobrým způsobem, jak určit, pokud vaše tabulky jsou optimalizované pro export je spuštění **DBCC SHOW_STATISTICS** a ujistěte se, že *RANGE_HI_KEY* není null a jeho hodnota má správné distribuční. Podrobnosti najdete v tématu [DBCC SHOW_STATISTICS](https://msdn.microsoft.com/library/ms174384.aspx).
+* Pro export transakčně konzistentní, je nutné zajistit buď bez zápisu aktivity dochází při exportu nebo, který jste exportovali z [transakčně konzistentní kopie](sql-database-copy.md) pro Azure SQL database.
+* Pokud exportujete do úložiště objektů blob, maximální velikost souboru BACPAC je 200 GB. Pro archivaci souboru BACPAC s větší, exportovat do místního úložiště.
+* Export souboru BACPAC do Azure premium storage pomocí metody popsané v tomto článku se nepodporuje.
+* Pokud operace exportu ze služby Azure SQL Database je větší než 20 hodin, může být zrušena. Chcete-li zvýšit výkon při exportu, můžete:
+  * Velikost výpočetních dočasně zvýšit.
+  * Ukončení všech čtení a zápis aktivit během exportu.
+  * Použití [clusterovaný index](https://msdn.microsoft.com/library/ms190457.aspx) s nenulovou hodnoty na všech velké tabulky. Bez Clusterované indexy export může selhat, pokud to trvá déle, než 6 až 12 hodin. Je to proto, že služba export musí dokončit prohledávání tabulky k pokusu o export celou tabulku. Dobrým způsobem, jak určit, pokud vaše tabulky jsou optimalizované pro export, je spustit **DBCC SHOW_STATISTICS** a ujistěte se, že *RANGE_HI_KEY* nemá hodnotu null a jeho hodnota má dobré distribuci. Podrobnosti najdete v tématu [DBCC SHOW_STATISTICS](https://msdn.microsoft.com/library/ms174384.aspx).
 
 > [!NOTE]
-> BACPACs nejsou určeny k použít pro zálohování a obnovení operací. Databáze SQL Azure automaticky vytvoří zálohy pro každé uživatelské databáze. Podrobnosti najdete v tématu [obchodní kontinuity přehled](sql-database-business-continuity.md) a [zálohy databáze SQL](sql-database-automated-backups.md).  
+> U souborů Bacpac nejsou určeny k použít pro zálohování a obnovení operací. Azure SQL Database automaticky vytvoří zálohy pro každé uživatelské databázi. Podrobnosti najdete v tématu [přehled zajištění provozní kontinuity firmy](sql-database-business-continuity.md) a [záloh SQL Database](sql-database-automated-backups.md).  
 > 
 
-## <a name="export-to-a-bacpac-file-using-the-azure-portal"></a>Exportovat do souboru BACPAC souboru pomocí portálu Azure
+## <a name="export-to-a-bacpac-file-using-the-azure-portal"></a>Exportovat do souboru BACPAC s použitím webu Azure portal
 
-Export databáze pomocí [portál Azure](https://portal.azure.com), otevřete stránku pro vaši databázi a klikněte na **exportovat** na panelu nástrojů. Zadejte název souboru BACPAC souboru, zadejte účet úložiště Azure a kontejner pro export a zadejte přihlašovací údaje pro připojení k databázi zdrojové.  
+Chcete-li exportovat databázi pomocí [webu Azure portal](https://portal.azure.com), otevřete stránku pro vaši databázi a klikněte na tlačítko **exportovat** na panelu nástrojů. Zadejte název souboru BACPAC, zadejte účet služby Azure storage a kontejner pro export a zadejte přihlašovací údaje pro připojení k databázi zdrojové.  
 
-![Export databáze.](./media/sql-database-export/database-export.png)
+![export databáze](./media/sql-database-export/database-export.png)
 
-Pokud chcete sledovat průběh operace exportu, otevřete stránku pro logický server obsahující databáze, která je exportována. Přejděte dolů k položce **operace** a pak klikněte na **importu a exportu** historie.
+Pokud chcete monitorovat průběh operace exportu, otevřete stránku pro logický server, který obsahuje exportovanou databázi. Přejděte dolů k položce **operace** a potom klikněte na tlačítko **Import/Export** historie.
 
 ![Export historie](./media/sql-database-export/export-history.png)
-![exportovat historie stavu](./media/sql-database-export/export-history2.png)
+![export historie stavu](./media/sql-database-export/export-history2.png)
 
-## <a name="export-to-a-bacpac-file-using-the-sqlpackage-utility"></a>Exportovat do souboru BACPAC souboru pomocí nástroje SQLPackage
+## <a name="export-to-a-bacpac-file-using-the-sqlpackage-utility"></a>Exportovat do souboru BACPAC s použitím nástroje SQLPackage
 
-Export databáze SQL pomocí [SqlPackage](https://msdn.microsoft.com/library/hh550080.aspx) nástroj příkazového řádku najdete v části [exportovat parametry a vlastnosti](https://msdn.microsoft.com/library/hh550080.aspx#Export Parameters and Properties). Nástroj SQLPackage se dodává s nejnovější verze [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) a [SQL Server Data Tools pro sadu Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx), nebo si můžete stáhnout nejnovější verzi [SqlPackage ](https://www.microsoft.com/download/details.aspx?id=53876) přímo z webu Microsoft download center.
+Export databáze SQL pomocí [SqlPackage](https://msdn.microsoft.com/library/hh550080.aspx) nástroj příkazového řádku, naleznete v tématu [exportovat parametry a vlastnosti](https://msdn.microsoft.com/library/hh550080.aspx#Export Parameters and Properties). Nástroj SQLPackage se dodává s nejnovější verzí [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) a [SQL Server Data Tools pro Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx), nebo si můžete stáhnout nejnovější verzi [SqlPackage ](https://www.microsoft.com/download/details.aspx?id=53876) přímo z webu Microsoft download center.
 
-Doporučujeme použít nástroj SQLPackage pro škálování a výkon ve většině produkční prostředí. Příspěvek na blogu zákaznického poradního týmu SQL Serveru o migraci pomocí souborů BACPAC najdete v tématu popisujícím [migraci z SQL Serveru do služby SQL Database pomocí souborů BACPAC](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).
+Doporučujeme používat nástroj SQLPackage pro škálování a výkonu ve většině produkčních prostředí. Příspěvek na blogu zákaznického poradního týmu SQL Serveru o migraci pomocí souborů BACPAC najdete v tématu popisujícím [migraci z SQL Serveru do služby SQL Database pomocí souborů BACPAC](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).
 
-Tento příklad ukazuje, jak exportovat databázi pomocí SqlPackage.exe Universal ověřování služby Active Directory:
+Tento příklad ukazuje, jak exportovat databázi SqlPackage.exe pomocí univerzálního ověřování Active Directory:
 
 ```cmd
 SqlPackage.exe /a:Export /tf:testExport.bacpac /scs:"Data Source=apptestserver.database.windows.net;Initial Catalog=MyDB;" /ua:True /tid:"apptest.onmicrosoft.com"
 ```
 
-## <a name="export-to-a-bacpac-file-using-sql-server-management-studio-ssms"></a>Exportovat do souboru BACPAC souboru pomocí SQL Server Management Studio (SSMS)
+## <a name="export-to-a-bacpac-file-using-sql-server-management-studio-ssms"></a>Exportovat do souboru BACPAC s použitím SQL Server Management Studio (SSMS)
 
-Nejnovější verze SQL Server Management Studio také poskytují Průvodce exportovat do souboru BACPAC soubor databáze SQL Azure. Najdete v článku [exportovat aplikace na datové vrstvě](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application).
+Nejnovější verze aplikace SQL Server Management Studio také poskytuje průvodce export do souboru BACPAC s Azure SQL Database. Zobrazit [exportem aplikace datové vrstvy](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application).
 
-## <a name="export-to-a-bacpac-file-using-powershell"></a>Exportovat do souboru BACPAC soubor pomocí prostředí PowerShell
+## <a name="export-to-a-bacpac-file-using-powershell"></a>Exportovat do souboru BACPAC s použitím prostředí PowerShell
 
-Použití [New-AzureRmSqlDatabaseExport](/powershell/module/azurerm.sql/new-azurermsqldatabaseexport) rutiny odeslání žádosti o export databáze ke službě Azure SQL Database. V závislosti na velikosti vaší databáze operace exportu může trvat delší dobu.
+Použití [New-AzureRmSqlDatabaseExport](/powershell/module/azurerm.sql/new-azurermsqldatabaseexport) rutinu k odeslání žádosti o export databáze do služby Azure SQL Database. V závislosti na velikosti databáze operace exportu může trvat nějakou dobu.
 
  ```powershell
  $exportRequest = New-AzureRmSqlDatabaseExport -ResourceGroupName $ResourceGroupName -ServerName $ServerName `
@@ -76,7 +76,7 @@ Použití [New-AzureRmSqlDatabaseExport](/powershell/module/azurerm.sql/new-azur
    -AdministratorLogin $creds.UserName -AdministratorLoginPassword $creds.Password
  ```
 
-Chcete-li zkontrolovat stav žádosti exportu, použijte [Get-AzureRmSqlDatabaseImportExportStatus](/powershell/module/azurerm.sql/get-azurermsqldatabaseimportexportstatus) rutiny. Spuštění to hned po dokončení žádosti o obvykle vrátí **stav: InProgress**. Až se zobrazí **stav: úspěšné** dokončení exportu.
+Chcete-li zkontrolovat stav žádosti o export, použijte [Get-AzureRmSqlDatabaseImportExportStatus](/powershell/module/azurerm.sql/get-azurermsqldatabaseimportexportstatus) rutiny. Spuštěna ihned po žádosti obvykle vrátí **stav: Probíhá zpracování**. Když se zobrazí **stav: úspěšné** export byl dokončen.
 
 ```powershell
 $exportStatus = Get-AzureRmSqlDatabaseImportExportStatus -OperationStatusLink $exportRequest.OperationStatusLink
@@ -93,9 +93,9 @@ $exportStatus
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o dlouhodobé uchovávání záloh zálohy databáze Azure SQL, jako alternativu k exportovány databázi pro účely archivace, najdete v části [dlouhodobé uchovávání záloh](sql-database-long-term-retention.md).
+* Další informace o dlouhodobém uchovávání záloh zálohy Azure SQL database jako alternativu k exportovat databázi pro účely archivace, naleznete v tématu [dlouhodobého uchovávání záloh](sql-database-long-term-retention.md).
 - Příspěvek na blogu zákaznického poradního týmu SQL Serveru o migraci pomocí souborů BACPAC najdete v tématu popisujícím [migraci z SQL Serveru do služby SQL Database pomocí souborů BACPAC](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).
-* Další informace o import souboru BACPAC k databázi systému SQL Server najdete v tématu [importovat do databáze serveru SQL BACPCAC](https://msdn.microsoft.com/library/hh710052.aspx).
-* Další informace o export souboru BACPAC z databáze SQL serveru najdete v tématu [exportovat aplikace na datové vrstvě](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application) a [migrovat svoji první databázi](sql-database-migrate-your-sql-server-database.md).
-* Chcete-li exportovat ze serveru SQL Server jako prelude migrace do Azure SQL Database, najdete v části [migrovat do databáze SQL serveru do Azure SQL Database](sql-database-cloud-migrate.md).
-* Další informace o správě a sdílení úložiště klíčů a sdíleného přístupu signitures bezpečně, najdete v [Průvodce zabezpečením úložiště Azure](https://docs.microsoft.com/azure/storage/common/storage-security-guide).
+* Další informace o import souboru BACPAC do databáze SQL serveru najdete v tématu [importovat do databáze SQL serveru BACPCAC](https://msdn.microsoft.com/library/hh710052.aspx).
+* Další informace o export souboru BACPAC z databáze SQL serveru najdete v tématu [exportem aplikace datové vrstvy](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application) a [migrovat svoji první databázi](sql-database-migrate-your-sql-server-database.md).
+* Pokud exportujete z SQL serveru jako prelude migrace do Azure SQL Database, přečtěte si téma [migrace databáze SQL serveru do služby Azure SQL Database](sql-database-cloud-migrate.md).
+* Informace o správě a sdílení klíčů k úložišti a sdíleného přístupu bezpečně, naleznete v tématu signitures [Průvodci zabezpečením Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-security-guide).

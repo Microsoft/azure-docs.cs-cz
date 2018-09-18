@@ -9,12 +9,12 @@ ms.custom: develop databases
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: jodebrui
-ms.openlocfilehash: f4e056e9f8461085df6ae447672e2c9ec91aa3ca
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 5fd0d487371acdf8d0b3301cc881aa2f059a9f41
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092399"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984148"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>Optimalizace výkonu pomocí v začleňování paměťových technologií ve službě SQL Database
 
@@ -72,7 +72,7 @@ Podrobná videa o technologiích:
 
 OLTP v paměti obsahuje paměťově optimalizované tabulky, které se používají k ukládání dat uživatelů. Tyto tabulky jsou nutné přizpůsobit v paměti. Vzhledem k tomu, že budete spravovat paměti přímo ve službě SQL Database, máme koncept kvótu pro data uživatelů. Tento nápad se označuje jako *úložiště OLTP v paměti*.
 
-Každý podporovaný samostatnou databázi cenová úroveň a každý elastický fond cenová úroveň zahrnuje množství úložiště OLTP v paměti. V tématu [omezení prostředků založený na DTU – izolované databáze](sql-database-dtu-resource-limits-single-databases.md), [omezení prostředků založený na DTU - elastické fondy](sql-database-dtu-resource-limits-elastic-pools.md),[omezení prostředků na základě virtuálních jader – izolované databáze](sql-database-vcore-resource-limits-single-databases.md) a [omezení prostředků založený na virtuálních jádrech - elastických fondů](sql-database-vcore-resource-limits-elastic-pools.md).
+Každý podporovaný izolované databáze cenová úroveň a každý elastický fond cenová úroveň zahrnuje množství úložiště OLTP v paměti. V tématu [omezení prostředků založený na DTU – izolované databáze](sql-database-dtu-resource-limits-single-databases.md), [omezení prostředků založený na DTU - elastické fondy](sql-database-dtu-resource-limits-elastic-pools.md),[omezení prostředků na základě virtuálních jader – izolované databáze](sql-database-vcore-resource-limits-single-databases.md) a [omezení prostředků založený na virtuálních jádrech - elastických fondů](sql-database-vcore-resource-limits-elastic-pools.md).
 
 Následující položky se počítají vaše kapacita úložiště OLTP v paměti:
 

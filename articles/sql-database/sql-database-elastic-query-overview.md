@@ -7,14 +7,14 @@ author: MladjoA
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 09/14/2018
 ms.author: mlandzic
-ms.openlocfilehash: 52fce1cf1acb5e084c629c9cad6486d6a599b4fd
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: a57e354651255e2d3ff723e978222d1a5a9fa002
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435760"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45733342"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Přehled služby Azure SQL Database elastic query (preview)
 
@@ -28,7 +28,7 @@ Dotazování napříč databázemi Azure SQL zcela v T-SQL. To umožňuje jen pr
 
 ### <a name="available-on-standard-tier"></a>K dispozici na úrovni standard
 
-Elastický dotaz se podporuje na úroveň výkonu Standard a Premium. V části o omezení verze Preview níže na omezení výkonu pro nižší úrovně výkonu.
+Elastický dotaz je podporována v úrovních Standard a Premium. V části na omezení verze Preview níže na omezení výkonu pro nižší úrovně.
 
 ### <a name="push-parameters-to-remote-databases"></a>Vložit parametry do vzdálené databáze
 
@@ -101,7 +101,7 @@ Použitím elastického dotazu se provedly horizontálně dělené úlohám gene
 
 > [!NOTE]
 > Elastický dotaz na databázi (hlavní uzel) může být samostatné databáze nebo může být stejné databáze, který je hostitelem mapy horizontálních oddílů.
-> Libovolné konfigurace, které si zvolíte, ujistěte se, že tuto úroveň služby a výkonu této databáze je dostatečný pro zpracování očekávaného počtu požadavků na přihlášení/dotazy.
+> Libovolné konfigurace, zvolte možnost, ujistěte se, že úrovně služby a vypočítat velikost této databáze je dostatečný pro zpracování očekávaného počtu požadavků na přihlášení/dotazy.
 
 Následující kroky konfigurace dotazy elastických databází pro horizontální dělení scénáře, které vyžadují přístup k sadě tabulek na (obvykle) několik vzdálené databáze SQL:
 
@@ -133,7 +133,7 @@ Elastický dotaz je zahrnuté do ceny za databází Azure SQL Database. Všimně
 
 ## <a name="preview-limitations"></a>Omezení verze Preview
 
-* Spuštění vaší první elastického dotazu může trvat několik minut, než na úrovni Standard výkonu. Tentokrát je nezbytný pro načtení elastický dotaz funkce. výkon při načítání se zvyšuje s vyšší úrovně výkonu.
+* Spuštění vaší první elastického dotazu může trvat několik minut, než na úrovni Standard služby. Tentokrát je nezbytný pro načtení elastický dotaz funkce. výkon při načítání se zvyšuje s vyšší úrovní služeb a výpočty velikostí.
 * Skriptování z externích zdrojů dat nebo externích tabulek z aplikace SSMS a SSDT se ještě nepodporuje.
 * Import/Export pro SQL DB zatím nepodporuje externí zdroje dat a externí tabulky. Pokud je potřeba použít Import/Export, vyřadit tyto objekty před exportem a potom je znovu vytvořit po importu.
 * Elastický dotaz aktuálně podporuje pouze přístup jen pro čtení pro externí tabulky. Můžete však použít všechny funkce jazyka T-SQL v databázi ve kterém je definována externí tabulky. To může být užitečné, například zachovat dočasné použití, například výsledky, vyberte < column_list > do < local_table >, nebo k definování uložené procedury v databázi elastický dotaz odkazující na externí tabulky.

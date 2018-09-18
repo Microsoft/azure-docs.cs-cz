@@ -11,26 +11,30 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 06/08/2018
+ms.date: 09/16/2018
 ms.author: mbullwin
-ms.openlocfilehash: 5c33e1a5568de5fffb5ea9cedb43bdc04aeaeba7
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: c975b3e03f0293e4ef2464451b4c72fb709a1895
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38306756"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45730492"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Rozhraní API pro Application Insights pro vlastní události a metriky
 
 Ve vaší aplikaci a zjistěte, jak uživatelé pracují s ním, nebo pro usnadnění diagnostiky potíží stačí vložte několik řádků kódu. Odesílat telemetrická data z aplikací pro zařízení a desktop, webovými klienty a webové servery. Použití [Azure Application Insights](app-insights-overview.md) core API telemetrie k odesílání vlastních událostí a metrik a verze standard telemetrická data. Toto rozhraní API je stejného rozhraní API, použít standardní kolekce dat Application Insights.
 
+> [!NOTE]
+> `TrackMetric()` už není upřednostňovaný způsob odesílání vlastních metrik pro jazyk C# na základě aplikací. V [verze 2,60 beta 3](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/CHANGELOG.md#version-260-beta3) sady .NET SDK Application Insights novou metodu [ `TelemetryClient.GetMetric()` ](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.getmetric?view=azure-dotnet) byla zavedena. Od .NET Application Insights SDK [verze 2.72](https://docs.microsoft.com/en-us/dotnet/api/microsoft.applicationinsights.telemetryclient.getmetric?view=azure-dotnet) tato funkce je teď součástí stabilní verzi.
+
 ## <a name="api-summary"></a>Souhrn rozhraní API
-Na všech platformách, kromě několika malé odchylky je jednotné rozhraní API.
+Na všech platformách, kromě několik variant, jako je jednotné základního rozhraní API `GetMetric`(C# pouze).
 
 | Metoda | Používá pro |
 | --- | --- |
 | [`TrackPageView`](#page-views) |Stránky, obrazovky, okna nebo formuláře. |
 | [`TrackEvent`](#trackevent) |Akce uživatele a další události. Používá ke sledování chování uživatelů nebo k monitorování výkonu. |
+| [`GetMetric`](#getmetric) |Nula a vícedimenzionálních metrik, centrálně nakonfigurované agregace, jenom v C#. |
 | [`TrackMetric`](#trackmetric) |Měření výkonu, jako je například délky front, které nesouvisí s konkrétní události. |
 | [`TrackException`](#trackexception) |Protokolování výjimek pro diagnostiku. Trasování, kde k nim dojde ve vztahu k jiné události a zkontrolovat trasování zásobníku. |
 | [`TrackRequest`](#trackrequest) |Protokolování četnost a doba trvání požadavků na serveru pro analýzu výkonu. |
@@ -121,29 +125,138 @@ Například herní aplikaci odeslat událost pokaždé, když se uživatel služ
 
     telemetry.trackEvent({name: "WinGame"});
 
-### <a name="view-your-events-in-the-microsoft-azure-portal"></a>Zobrazit události na portálu Microsoft Azure
-Pokud chcete zobrazit počet událostí, otevřete [Průzkumníka metrik](app-insights-metrics-explorer.md) okně přidejte nový graf a vyberte **události**.  
-
-![Zobrazí počet vlastních událostí](./media/app-insights-api-custom-events-metrics/01-custom.png)
-
-Pro porovnání počty různých událostí, nastavte typ grafu **mřížky**a skupiny podle název události:
-
-![Nastavit typ grafu a seskupování](./media/app-insights-api-custom-events-metrics/07-grid.png)
-
-V mřížce klikněte na tlačítko prostřednictvím názvu události zobrazit jednotlivé výskyty této události. Pro zobrazení dalších podrobností – klikněte na libovolné výskytu v seznamu.
-
-![Procházet na podrobnosti události](./media/app-insights-api-custom-events-metrics/03-instances.png)
-
-Zaměřit se na konkrétní události v hledání nebo Průzkumník metrik, nastavte filtr v okně Názvy událostí, které vás zajímají:
-
-![Otevřete filtry, rozbalte název události a vyberte jednu nebo více hodnot](./media/app-insights-api-custom-events-metrics/06-filter.png)
-
 ### <a name="custom-events-in-analytics"></a>Vlastní události v Analytics
 
 Je k dispozici v telemetrii `customEvents` tabulku v [Application Insights Analytics](app-insights-analytics.md). Každý řádek představuje volání `trackEvent(..)` ve vaší aplikaci. 
 
 Pokud [vzorkování](app-insights-sampling.md) je v provozu, vlastnost itemCount zobrazuje hodnotu větší než 1. Příklad itemCount == 10 znamená, že 10 volání funkce trackEvent(), proces vzorkování přenášena pouze jeden z nich. Chcete-li získat správný počet vlastních událostí, používejte proto použít kód například `customEvent | summarize sum(itemCount)`.
 
+## <a name="getmetric"></a>GetMetric
+
+### <a name="examples"></a>Příklady:
+
+Níže je právě výňatek z příkladů z většímu kurzech naši vývojáři dohromady. Úplný soubor s další příklady je v našem [úložiště .NET GitHub](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/Test/Microsoft.ApplicationInsights.Test/Shared/Metrics/MetricsExamples.cs
+).
+
+*C#*
+
+```csharp
+#pragma warning disable CA1716  // Namespace naming
+
+namespace User.Namespace.Example01
+{
+    using System;
+    using Microsoft.ApplicationInsights;
+    using TraceSeveretyLevel = Microsoft.ApplicationInsights.DataContracts.SeverityLevel;
+
+    /// <summary>
+    /// Most simple cases are one-liners.
+    /// This is all possible without even importing an additional namespace.
+    /// </summary>
+
+    public class Sample01
+    {
+        /// <summary />
+        public static void Exec()
+        {
+            // *** SENDING METRICS ***
+
+            // Recall how you send custom telemetry with Application Insights in other cases, e.g. Events.
+            // The following will result in an EventTelemetry object to be sent to the cloud right away.
+            TelemetryClient client = new TelemetryClient();
+            client.TrackEvent("SomethingInterestingHappened");
+
+            // Metrics work very similar. However, the value is not sent right away.
+            // It is aggregated with other values for the same metric, and the resulting summary (aka "aggregate" is sent automatically every minute.
+            // To mark this difference, we use a pattern that is similar, but different from the established TrackXxx(..) pattern that sends telemetry right away:
+
+            client.GetMetric("CowsSold").TrackValue(42);
+
+            // *** MEASUREMENTS AND ACCUMULATORS ***
+
+            // We support different kinds of aggregation types. For now, we include two: Measurements and Accumulators.
+            // Measurements aggregate tracked values and reduce them to {Count, Sum, Min, Max, StdDev} of all values tracked during each minute. 
+            // They are particularly useful if you are measuring something like the number of items sold, the completion time of an operation, or similar.
+
+            // Accumulators are also sent to the cloud each minute.
+            // But rather than aggregating values across a time period, they aggregate values across their entire life time (or until you reset them).
+            // They are particularly useful when you are counting the number of items in a data structure.
+
+            // By default, metrics are aggregated as Measurements. Here is how you can define a metric to be aggregated as an Accumulator instead:
+
+            // Using the Microsoft.ApplicationInsights.Metrics.Extensions package:
+            // Metric itemsInDatastructure = client.GetMetric("ItemsInDatastructure", MetricConfigurations.Common.Accumulator());
+
+            // Using a private implementation:
+            Metric itemsInDatastructure = client.GetMetric(
+                    "ItemsInDatastructure",
+                    new Microsoft.ApplicationInsights.Metrics.MetricConfiguration(
+                            1000,
+                            100,
+                            new Microsoft.ApplicationInsights.Metrics.TestUtility.MetricSeriesConfigurationForTestingAccumulatorBehavior()));
+
+            int itemsAdded = AddItemsToDataStructure();
+            itemsInDatastructure.TrackValue(itemsAdded);
+            int itemsRemoved = AddItemsToDataStructure();
+            itemsInDatastructure.TrackValue(-itemsRemoved);
+
+            // Here is how you can reset an accumulator:
+            ResetDataStructure();
+
+            itemsInDatastructure.GetAllSeries()[0].Value.ResetAggregation();
+
+            // *** MULTI-DIMENSIONAL METRICS ***
+
+            // The above example shows a zero-dimensional metric.
+            // Metrics can also be multi-dimensional.
+            // In the initial version we are supporting up to 2 dimensions, and we will add support for more in the future as needed.
+            // Here is an example for a one-dimensional metric:
+
+            Metric animalsSold = client.GetMetric("AnimalsSold", "Species");
+
+            animalsSold.TrackValue(42, "Pigs");
+            animalsSold.TrackValue(24, "Horses");
+
+            // The values for Pigs and Horses will be aggregated separately from each other and will result in two distinct aggregates.
+            // You can control the maximum number of number data series per metric (and thus your resource usage and cost).
+            // The default limits are no more than 1000 total data series per metric, and no more than 100 different values per dimension.
+            // We discuss elsewhere how to change them.
+            // We use a common .Net pattern: TryXxx(..) to make sure that the limits are observed.
+            // If the limits are already reached, Metric.TrackValue(..) will return False and the value will not be tracked. Otherwise it will return True.
+            // This is particularly useful if the data for a metric originates from user input, e.g. a file:
+
+            Tuple<int, string> countAndSpecies = ReadSpeciesFromUserInput();
+            int count = countAndSpecies.Item1;
+            string species = countAndSpecies.Item2;
+
+            if (!animalsSold.TrackValue(count, species))
+
+            {
+                client.TrackTrace($"Data series or dimension cap was reached for metric {animalsSold.Identifier.MetricId}.", TraceSeveretyLevel.Error);
+            }
+
+            // You can inspect a metric object to reason about its current state. For example:
+            int currentNumberOfSpecies = animalsSold.GetDimensionValues(1).Count;
+        }
+
+        private static void ResetDataStructure()
+        {
+            // Do stuff
+        }
+
+        private static Tuple<int, string> ReadSpeciesFromUserInput()
+        {
+            return Tuple.Create(18, "Cows");
+        }
+
+        private static int AddItemsToDataStructure()
+        {
+            // Do stuff
+            return 5;
+        }
+    }
+}
+```
 
 ## <a name="trackmetric"></a>TrackMetric
 
@@ -190,163 +303,6 @@ Odeslání jedné hodnoty metrik:
      telemetry.trackMetric({name: "queueLength", value: 42.0});
  ```
 
-#### <a name="aggregating-metrics"></a>Agregace metrik
-
-Doporučuje se agregovaná metrika před jejich odesláním z vaší aplikace, ke snížení šířky pásma, náklady a zvýšit výkon.
-Tady je příklad agregovat kódu:
-
-*C#*
-
-```csharp
-using System;
-using System.Threading;
-using System.Threading.Tasks;
-
-using Microsoft.ApplicationInsights;
-using Microsoft.ApplicationInsights.DataContracts;
-
-namespace MetricAggregationExample
-{
-    /// <summary>
-    /// Aggregates metric values for a single time period.
-    /// </summary>
-    internal class MetricAggregator
-    {
-        private SpinLock _trackLock = new SpinLock();
-
-        public DateTimeOffset StartTimestamp    { get; }
-        public int Count                        { get; private set; }
-        public double Sum                       { get; private set; }
-        public double SumOfSquares              { get; private set; }
-        public double Min                       { get; private set; }
-        public double Max                       { get; private set; }
-        public double Average                   { get { return (Count == 0) ? 0 : (Sum / Count); } }
-        public double Variance                  { get { return (Count == 0) ? 0 : (SumOfSquares / Count)
-                                                                                  - (Average * Average); } }
-        public double StandardDeviation         { get { return Math.Sqrt(Variance); } }
-
-        public MetricAggregator(DateTimeOffset startTimestamp)
-        {
-            this.StartTimestamp = startTimestamp;
-        }
-
-        public void TrackValue(double value)
-        {
-            bool lockAcquired = false;
-
-            try
-            {
-                _trackLock.Enter(ref lockAcquired);
-
-                if ((Count == 0) || (value < Min))  { Min = value; }
-                if ((Count == 0) || (value > Max))  { Max = value; }
-                Count++;
-                Sum += value;
-                SumOfSquares += value * value;
-            }
-            finally
-            {
-                if (lockAcquired)
-                {
-                    _trackLock.Exit();
-                }
-            }
-        }
-    }   // internal class MetricAggregator
-
-    /// <summary>
-    /// Accepts metric values and sends the aggregated values at 1-minute intervals.
-    /// </summary>
-    public sealed class Metric : IDisposable
-    {
-        private static readonly TimeSpan AggregationPeriod = TimeSpan.FromSeconds(60);
-
-        private bool _isDisposed = false;
-        private MetricAggregator _aggregator = null;
-        private readonly TelemetryClient _telemetryClient;
-
-        public string Name { get; }
-
-        public Metric(string name, TelemetryClient telemetryClient)
-        {
-            this.Name = name ?? "null";
-            this._aggregator = new MetricAggregator(DateTimeOffset.UtcNow);
-            this._telemetryClient = telemetryClient ?? throw new ArgumentNullException(nameof(telemetryClient));
-
-            Task.Run(this.AggregatorLoopAsync);
-        }
-
-        public void TrackValue(double value)
-        {
-            MetricAggregator currAggregator = _aggregator;
-            if (currAggregator != null)
-            {
-                currAggregator.TrackValue(value);
-            }
-        }
-
-        private async Task AggregatorLoopAsync()
-        {
-            while (_isDisposed == false)
-            {
-                try
-                {
-                    // Wait for end end of the aggregation period:
-                    await Task.Delay(AggregationPeriod).ConfigureAwait(continueOnCapturedContext: false);
-
-                    // Atomically snap the current aggregation:
-                    MetricAggregator nextAggregator = new MetricAggregator(DateTimeOffset.UtcNow);
-                    MetricAggregator prevAggregator = Interlocked.Exchange(ref _aggregator, nextAggregator);
-
-                    // Only send anything is at least one value was measured:
-                    if (prevAggregator != null && prevAggregator.Count > 0)
-                    {
-                        // Compute the actual aggregation period length:
-                        TimeSpan aggPeriod = nextAggregator.StartTimestamp - prevAggregator.StartTimestamp;
-                        if (aggPeriod.TotalMilliseconds < 1)
-                        {
-                            aggPeriod = TimeSpan.FromMilliseconds(1);
-                        }
-
-                        // Construct the metric telemetry item and send:
-                        var aggregatedMetricTelemetry = new MetricTelemetry(
-                                Name,
-                                prevAggregator.Count,
-                                prevAggregator.Sum,
-                                prevAggregator.Min,
-                                prevAggregator.Max,
-                                prevAggregator.StandardDeviation);
-                        aggregatedMetricTelemetry.Properties["AggregationPeriod"] = aggPeriod.ToString("c");
-
-                        _telemetryClient.Track(aggregatedMetricTelemetry);
-                    }
-                }
-                catch(Exception ex)
-                {
-                    // log ex as appropriate for your application
-                }
-            }
-        }
-
-        void IDisposable.Dispose()
-        {
-            _isDisposed = true;
-            _aggregator = null;
-        }
-    }   // public sealed class Metric
-}
-```
-
-### <a name="custom-metrics-in-metrics-explorer"></a>Vlastní metriky v Průzkumníku metrik
-
-Pokud chcete zobrazit výsledky, otevřete Průzkumníka metrik a přidejte nový graf. Upravte graf a zobrazte vaše metriky.
-
-> [!NOTE]
-> Vlastní Metrika může trvat několik minut, než se zobrazí v seznamu dostupných metrik.
->
-
-![Přidejte nový graf nebo vyberte graf a v části vlastní, vyberte vaše metriky](./media/app-insights-api-custom-events-metrics/03-track-custom.png)
-
 ### <a name="custom-metrics-in-analytics"></a>Vlastní metriky v Analytics
 
 Je k dispozici v telemetrii `customMetrics` tabulku v [Application Insights Analytics](app-insights-analytics.md). Každý řádek představuje volání `trackMetric(..)` ve vaší aplikaci.
@@ -355,8 +311,6 @@ Je k dispozici v telemetrii `customMetrics` tabulku v [Application Insights Anal
 
 ## <a name="page-views"></a>Zobrazení stránek
 V aplikaci na zařízení nebo webové stránky je odeslána telemetrie zobrazení stránky ve výchozím nastavení při načtení každou obrazovku nebo stránku. Ale můžete výběr změnit ke sledování zobrazení stránek v další nebo v různých časech. Například v aplikaci, která zobrazí karty a okna, můžete chtít sledovat na stránce pokaždé, když uživatel otevře nové okno.
-
-![Použití přehledu v okně přehledu](./media/app-insights-api-custom-events-metrics/appinsights-47usage-2.png)
 
 Data uživatele a relace se odešle jako vlastnosti spolu s zobrazení stránek, proto po telemetrie zobrazení stránky poutavější grafy uživatelů a relací.
 
@@ -472,7 +426,7 @@ Ve službě Search je kontext operace slouží k vytvoření **související pol
 
 Zobrazit [sledování vlastních operací pomocí Application Insights .NET SDK](application-insights-custom-operations-tracking.md) Další informace o sledování vlastních operací.
 
-### <a name="requests-in-analytics"></a>Požadavky v Analytics 
+### <a name="requests-in-analytics"></a>Požadavky v Analytics
 
 V [Application Insights Analytics](app-insights-analytics.md), požadavků zobrazit až za `requests` tabulky.
 
@@ -860,26 +814,6 @@ Zde jsou některé [omezení počtu metriky, vlastnosti a hodnoty vlastností](#
 >
 >
 
-*Pokud jste použili metriky*, otevřete Průzkumníka metrik a vyberte metriky z **vlastní** skupiny:
-
-![Otevřete Průzkumníka metrik, vyberte graf a vyberte metriku](./media/app-insights-api-custom-events-metrics/03-track-custom.png)
-
-> [!NOTE]
-> Pokud vaše metrika se nezobrazuje nebo **vlastní** záhlaví tam není, toto okno zavřete, výběru a zkuste to znovu později. Metriky může někdy trvat hodiny agregace prostřednictvím kanálu.
-
-*Pokud jste použili vlastnosti a metriky*, segmentovat podle vlastnost metrika:
-
-![Nastavení seskupování a potom vyberte vlastnost pod Seskupit podle](./media/app-insights-api-custom-events-metrics/04-segment-metric-event.png)
-
-*V diagnostickém vyhledávání*, můžete zobrazit vlastnosti a metriky jednotlivých výskytů události.
-
-![Vyberte instanci a pak vyberte "..."](./media/app-insights-api-custom-events-metrics/appinsights-23-customevents-4.png)
-
-Použití **hledání** pole zobrazíte výskytu událostí, které mají konkrétní hodnotu vlastnosti.
-
-![Zadejte termín, který do vyhledávání](./media/app-insights-api-custom-events-metrics/appinsights-23-customevents-5.png)
-
-[Další informace o hledaných výrazů](app-insights-diagnostic-search.md).
 
 ### <a name="alternative-way-to-set-properties-and-metrics"></a>Alternativní způsob, jak nastavit vlastnosti a metriky
 Pokud je pohodlnější, můžete shromažďovat parametry události v samostatném objektu:
@@ -1174,5 +1108,3 @@ Chcete-li zjistit, jak dlouho se data ukládají, přečtěte si téma [uchováv
 * [Hledat události a protokoly](app-insights-diagnostic-search.md)
 
 * [Řešení potíží](app-insights-troubleshoot-faq.md)
-
-

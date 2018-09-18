@@ -1,51 +1,49 @@
 ---
-title: Kontinuita podnikových procesů – Microsoft Genomics | Microsoft Docs
+title: Kontinuita podnikových procesů – Microsoft Genomics | Dokumentace Microsoftu
 titleSuffix: Azure
-description: Zjistěte, jak Microsoft Genomics podporuje kontinuity podnikových procesů
-keywords: kontinuita podnikových procesů zotavení po havárii
-services: microsoft-genomics
+description: Tento přehled popisuje možnosti, které poskytuje Microsoft Genomics pro provozní kontinuitu a zotavení po havárii. Další informace o možnosti pro zotavení z ničivých událostí, jako je například kvůli výpadku oblasti Azure, který by mohl způsobit ztrátu dat.
+keywords: kontinuita podnikových procesů, zotavení po havárii
+services: genomics
 author: grhuynh
-manager: jhubbard
-editor: jasonwhowell
+manager: cgronlun
 ms.author: grhuynh
-ms.service: microsoft-genomics
-ms.workload: genomics
+ms.service: genomics
 ms.topic: article
 ms.date: 04/06/2018
-ms.openlocfilehash: cb3825cb89aff386c4f7c3f3b0d771d73fe637b1
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: be678648ab93fcbdfd0a0baa1b01dcb273060ce2
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31426904"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45729448"
 ---
-# <a name="overview-of-business-continuity-with-microsoft-genomics"></a>Přehled kontinuity podnikových procesů s Genomics Microsoft
-Tento přehled popisuje možnosti, které poskytuje Microsoft Genomics pro provozní kontinuitu a zotavení po havárii. Informace o možnostech pro obnovení z rušivý událostmi, například výpadek oblast Azure, který by mohl způsobit ztrátu dat. 
+# <a name="overview-of-business-continuity-with-microsoft-genomics"></a>Přehled kontinuity se službou Microsoft Genomics
+Tento přehled popisuje možnosti, které poskytuje Microsoft Genomics pro provozní kontinuitu a zotavení po havárii. Další informace o možnosti pro zotavení z ničivých událostí, jako je například kvůli výpadku oblasti Azure, který by mohl způsobit ztrátu dat. 
 
 
-## <a name="microsoft-genomics-features-that-support-business-continuity"></a>Microsoft Genomics funkce kontinuity podnikových procesů tohoto podpory 
-I když je taková situace vzácná, může mít datové centrum Azure k výpadku, což by mohlo způsobit narušení firmy, která může trvat několik minut po několik hodin. Když dojde k výpadku, všechny úlohy, které jsou aktuálně spuštěny v datovém centru se nezdaří a službu Microsoft Genomics nebude automaticky znovu úloh v sekundární oblasti. 
+## <a name="microsoft-genomics-features-that-support-business-continuity"></a>Microsoft Genomics funkce kontinuity této podpory 
+I když se taková situace vzácná, datové centrum Azure může dojít k výpadku, což by mohlo způsobit narušení provozu, které může trvat několik minut až několik hodin. Když dojde k výpadku, všechny úlohy aktuálně spuštěné v datovém centru se nezdaří a ve službě Microsoft Genomics nebude automaticky znovu úlohy do sekundární oblasti. 
 
-* Jednou z možností je čekat na datovém centru vrátí do režimu online, když datovém centru výpadku je přes. Pokud se výpadek krátký, službu Microsoft Genomics automaticky zjistí neúspěšných úloh a pracovní postup bude automaticky restartován.
+* Jednou z možností je počkat datové centrum vrátí do režimu online, když výpadek datového centra je nad. Pokud je krátký výpadek, ve službě Microsoft Genomics automaticky zjistí neúspěšné úlohy a pracovní postup se automaticky restartuje.
 
-* Další možností je proaktivně odeslání pracovního postupu v jiné oblasti data. Microsoft Genomics nasadí instancí v několika [oblastí Azure](https://azure.microsoft.com/regions/services/), a je nezávislý na každou instanci oblast. Pokud jedna z instancí Microsoft Genomics dojde k selhání místní oblast, jiných oblastí spuštěné instance Microsoft Genomics bude pokračovat ve zpracování úlohy. Tento přenos do alternativní oblasti se pod kontrolou uživatele a k dispozici v okamžiku.
+* Další možností je aktivně odešlete pracovní postup v jiné oblasti dat. Microsoft Genomics nasadí instance v několika [oblastí Azure](https://azure.microsoft.com/regions/services/), a každá instance oblast je nezávislé. Pokud některé z instancí Microsoft Genomics docházet k selhání místní oblasti, ostatní oblasti spuštěné instance Microsoft Genomics budou dál ke zpracování úloh. Kdykoli je tento přenos do alternativní oblast pod kontrolou uživatele a k dispozici.
 
 
-### <a name="manually-failover-microsoft-genomics-workflows-to-another-region"></a>Ruční převzetí služeb při selhání Microsoft Genomics pracovní postupy pro jiné oblasti
-V případě místní výpadku datacentra může zvolit odeslat Microsoft Genomics pracovních postupů v sekundární oblasti, podle potřeb jednotlivých datových suverenity a business kontinuity. Chcete ručně převzetí služeb při selhání Microsoft Genomics pracovní postupy použijte jiný konkrétní oblasti. Genomika účet a odeslání úlohy s příslušnou oblast genomika a přihlašovací údaje účtu úložiště.
+### <a name="manually-failover-microsoft-genomics-workflows-to-another-region"></a>Ruční převzetí služeb při selhání Microsoft Genomics pracovních postupů do jiné oblasti
+V případě výpadku oblasti datového centra můžete se rozhodnout pro odeslání Microsoft Genomics pracovních postupů v sekundární oblasti, na základě požadavků jednotlivé datové suverenity a obchodní kontinuity podnikových procesů. Ruční převzetí služeb při selhání Microsoft Genomics pracovní postupy můžete využít různé konkrétní oblasti. Genomics účtu a odeslání úlohy s příslušnou oblast Genomics a přihlašovací údaje účtu úložiště.
 
-Konkrétně budete muset:
-* Vytvořte účet genomika v sekundární oblasti, pomocí portálu Azure. 
-* Přenést vstupní data na účtu úložiště v sekundární oblasti a nastavit výstupní složky v sekundární oblasti.
-* Odešlete pracovního postupu v sekundární oblasti.
+Konkrétně je potřeba:
+* V sekundární oblasti, pomocí webu Azure portal vytvořte účet Genomics. 
+* Migrovat vstupní data do účtu úložiště v sekundární oblasti a nastavit výstupní složka v sekundární oblasti.
+* Odeslání pracovního postupu v sekundární oblasti.
 
-Když se obnoví původní oblast službu Microsoft Genomics neprovádí migraci dat ze sekundární oblasti zpět do původní oblasti. Rozhodnete přesunout vstupní a výstupní soubory ze sekundární oblasti zpět do původní oblasti.  Pokud se rozhodnete přesunout svá data, to je mimo službu genomika a všechny poplatky související s přesun dat by vaší povinností. 
+Když se obnoví původní oblast, ve službě Microsoft Genomics neprovádí migraci dat ze sekundární oblasti zpět do původní oblasti. Můžete se rozhodnout pro přesunutí vstupní a výstupní soubory ze sekundární oblasti zpět do původní oblast.  Pokud se rozhodnete přesunout svá data, toto je mimo službu Genomics a všechny poplatky za související s přesouvání dat by vaše odpovědnosti. 
 
-### <a name="preparing-for-a-possible-region-specific-outage"></a>Příprava možný výpadek oblast
-Pokud máte obavy o rychlejší obnovení v případě výpadku datacentra, existuje několik kroků, které můžete použít ke snížení doby trvání můžete ručně znovu odeslat vaše pracovní postupy Microsoft Genomics do sekundární oblasti:
+### <a name="preparing-for-a-possible-region-specific-outage"></a>Příprava na možný výpadek oblast
+Pokud máte obavy o rychlejší obnovení v případě výpadku datového centra, existuje několik kroků, které si můžete zkrátit čas potřebný pro vás se ručně znovu spustit pracovní postupy Microsoft Genomics do sekundární oblasti:
 
-* Určit příslušné sekundární oblasti a aktivně vytvořit účet genomika v této oblasti
-* Duplicitní data v oblasti primární a sekundární tak, aby vaše data jsou okamžitě k dispozici v sekundární oblasti. Důvodem může být done ručně nebo pomocí [geograficky redundantní úložiště](https://docs.microsoft.com/azure/storage/common/storage-redundancy) funkce, které jsou k dispozici v úložišti Azure. 
+* Určit příslušné sekundární oblasti a aktivně v dané oblasti vytvořit účet Genomics
+* Duplicitní vašich dat v primární a sekundární oblasti tak, aby vaše data jsou okamžitě dostupná v sekundární oblasti. Důvodem může být Hotovo ručně nebo pomocí [geograficky redundantní úložiště](https://docs.microsoft.com/azure/storage/common/storage-redundancy) funkce je k dispozici ve službě Azure storage. 
 
 ## <a name="next-steps"></a>Další postup
-V tomto článku jste se dozvěděli o možnosti kontinuity podnikových procesů a zotavení po havárii při používání služby Microsoft Genomics. Další informace o kontinuity podnikových procesů a zotavení po havárii v rámci Azure v obecné najdete v tématu [technické pokyny Azure odolnost proti chybám.](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region) 
+V tomto článku jste zjistili, jaké máte možnosti pro provozní kontinuitu a zotavení po havárii při použití služby Microsoft Genomics. Další informace o provozní kontinuitu a zotavení po havárii v rámci Azure obecně najdete v tématu [technické pokyny k odolnosti Azure.](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region) 

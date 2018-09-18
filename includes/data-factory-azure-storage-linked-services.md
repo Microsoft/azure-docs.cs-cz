@@ -6,7 +6,7 @@
 | type |Vlastnost type musí být nastavená na: **AzureStorage** |Ano |
 | připojovací řetězec |Zadejte informace potřebné pro připojení k Azure storage pro vlastnost připojovací řetězec. |Ano |
 
-Přečtěte si článek postup zobrazení nebo kopírování klíč účtu pro službu Azure Storage: [zobrazení, kopírování a znovu vygenerovat přístupové klíče úložiště](../articles/storage/common/storage-create-storage-account.md#manage-your-storage-account).
+Naleznete v následující části najdete postup zobrazení nebo kopírování klíč účtu pro službu Azure Storage: [přístupové klíče](../articles/storage/common/storage-account-manage.md#access-keys).
 
 **Příklad:**  
 

@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/10/2018
+ms.date: 09/17/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 912d4e1af3e1a4d07efddafa38bda5697b226787
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: cca9a12b0512ca502d143f4a88c959e1bfc4f90e
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44392237"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985877"
 ---
 # <a name="backup-and-restore"></a>Zálohování a obnovení
 
@@ -456,8 +456,8 @@ Následuje příklad plán cron v/etc/crontab:
 ```
 00 1-23 * * * ./azure_hana_backup.pl hana hourlyhana 15min 46
 10 00 * * *  ./azure_hana_backup.pl hana dailyhana 15min 28
-00,05,10,15,20,25,30,35,40,45,50,55 * * * *  Perform SAP HANA transaction log backup
-22 12 * * *  ./azure_hana_backup.pl log dailylogback 3min 28
+00,05,10,15,20,25,30,35,40,45,50,55 * * * * ./azure_hana_backup.pl logs regularlogback 3min 28
+22 12 * * *  ./azure_hana_backup.pl logs dailylogback 3min 28
 30 00 * * *  ./azure_hana_backup.pl boot TypeI dailyboot 15min 28
 ```
 V předchozím příkladu se po hodinách kombinované snímku, pokrývající svazky, které obsahují data/hana/a /hana/shared (včetně/usr/sap) umístění. Pomocí tohoto typu snímku pro rychlejší obnovení bodu v čase během posledních dvou dnů. Na těchto svazcích je navíc denní snímek. Ano máte dva dny pokrytí podle hodinových snímky a čtyři týdny pokrytí podle denní snímky. Kromě toho svazek zálohování protokolu transakcí zálohovat denně. Tyto zálohy se uchovávají i čtyři týdny. Jak vidíte na třetím řádku crontab, zálohování protokolu transakcí HANA je naplánován ke spuštění každých 5 minut. Rozloženo jsou časy zahájení cron různé úlohy, které jsou spouštěny snímků úložiště, takže tyto snímky nejsou provedeny všechny najednou v určitém bodě v čase. 
@@ -466,8 +466,8 @@ V následujícím příkladu je provést kombinované snímků, které pokrývá
 
 ```
 10 0-23 * * * ./azure_hana_backup.pl hana hourlyhana 15min 48
-0,5,10,15,20,25,30,35,40,45,50,55 * * * *  Perform SAP HANA transaction log backup
-2,7,12,17,22,27,32,37,42,47,52,57 * * * *  ./azure_hana_backup.pl log logback 3min 48
+0,5,10,15,20,25,30,35,40,45,50,55 * * * * ./azure_hana_backup.pl logs regularlogback 3min 28
+2,7,12,17,22,27,32,37,42,47,52,57 * * * *  ./azure_hana_backup.pl logs logback 3min 48
 30 00 * * *  ./azure_hana_backup.pl boot TypeII dailyboot 15min 28
 ```
 

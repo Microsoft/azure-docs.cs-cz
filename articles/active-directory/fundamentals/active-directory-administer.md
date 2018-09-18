@@ -1,26 +1,25 @@
 ---
-title: Přehled použití adresáře tenanta Azure AD | Microsoft Docs
-description: Vysvětluje, co je tenant služby Azure AD a jak spravovat Azure pomocí Azure Active Directory.
+title: Správa vašeho tenanta Azure Active Directory | Dokumentace Microsoftu
+description: Další informace o jaké tenanta služby Azure AD je a jak spravovat Azure pomocí Azure Active Directory.
 services: active-directory
-documentationcenter: ''
 author: eross-msft
 manager: mtillman
 ms.service: active-directory
-ms.workload: identity
 ms.component: fundamentals
-ms.topic: overview
-ms.date: 08/23/2017
+ms.workload: identity
+ms.topic: conceptual
+ms.date: 08/23/2018
 ms.author: lizross
 ms.reviewer: jeffsta
-ms.custom: it-pro;oldportal
-ms.openlocfilehash: b18ff1f59a46e98544159b488294e2d3f7bd9cd7
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
-ms.translationtype: HT
+custom: it-pro
+ms.openlocfilehash: 2a548a16a6b896ae1c1297badcef6154b64977f1
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37767370"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45737171"
 ---
-# <a name="manage-your-azure-ad-directory"></a>Správa adresáře služby Azure AD
+# <a name="manage-your-azure-active-directory-tenant"></a>Správa vašeho tenanta Azure Active Directory
 
 ## <a name="what-is-an-azure-ad-tenant"></a>Co je klient služby Azure AD?
 V Azure Active Directory (Azure AD) je tenant vyhrazenou instancí služby Azure AD, kterou vaše organizace obdrží, když se přihlásí ke cloudové službě Microsoftu, jako je Azure nebo Office 365. Každý adresář služby Azure AD je oddělený od ostatních adresářů služby Azure AD. Adresář služby Azure AD byl navržen tak, aby se jednalo o zabezpečený prostředek k použití pouze pro vaši organizaci – stejně jako je podniková kancelářská budova zabezpečeným prostředkem výhradně vaší organizace. Architektura služby Azure AD izoluje data zákazníků a informace o identitě.To znamená, že se uživatelé a správci jednoho adresáře služby Azure AD nemohou dostat – ať už omylem nebo záměrně – k datům v jiném adresáři.
@@ -114,7 +113,7 @@ Kontrolují se následující podmínky:
 * K adresáři nesmí být přidruženo žádné předplatné online služby Microsoft, jako jsou Microsoft Azure, Office 365 nebo Azure AD Premium. Například pokud byl váš výchozí adresář vytvořený v Azure, nemůžete ho odstranit, pokud stále slouží k ověřování přihlášení k předplatnému služby Azure. Podobně nelze odstranit adresář, pokud k němu má přidružené předplatné jiný uživatel. 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Fórum služby Azure AD](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=windowsazuread)
 * [Fórum služby Azure Multi-Factor Authentication](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=windowsazureactiveauthentication)
 * [StackOverflow pro dotazy ohledně Azure](https://stackoverflow.com/questions/tagged/azure-active-directory)

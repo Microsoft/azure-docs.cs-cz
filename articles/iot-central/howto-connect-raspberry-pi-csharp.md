@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 63843797cca7fe84cdb9ce91d2282b1c0c288f0c
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: a9390ac9046ad1e0ec5a1689052ee99bf76ec6f4
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205132"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45734231"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>Připojte Raspberry Pi do aplikace Azure IoT Central (C#)
 
@@ -262,6 +262,9 @@ Dokončete následující postup můžete použít Visual Studio Code. Další i
 ## <a name="run-your-net-application"></a>Spustit aplikaci v .NET
 
 Přidání konkrétní zařízení připojovací řetězec do kódu pro zařízení pro ověřování pomocí Azure IoT Central. Jste si poznamenali připojovacího řetězce při přidání skutečné zařízení do aplikace Azure IoT Central.
+
+  > [!NOTE]
+   > Azure IoT Central převedl na používání služby Azure IoT Hub Device Provisioning (DPS) pro všechna připojení zařízení, postupujte podle těchto instrustions k [získat připojovací řetězec zařízení](concepts-connectivity.md#getting-device-connection-string) a pokračujte se zbývající část tohoto kurzu.
 
 1. Nahraďte `{your device connection string}` v **Program.cs** soubor s připojovacím řetězcem, který jste si poznamenali dříve.
 

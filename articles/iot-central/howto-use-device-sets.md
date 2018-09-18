@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: d0b802842d60d68bab36e87913a84c5e40b8e431
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 28706ad77f48ae826b621ebdd920d26f3b87178a
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39206067"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45731970"
 ---
 # <a name="use-device-sets-in-your-azure-iot-central-application"></a>Pomocí sady zařízení ve vaší aplikaci Azure IoT Central
 
@@ -50,7 +50,7 @@ Po vytvoření sady zařízení, můžete nakonfigurovat jeho **řídicí panel*
 
 1. Zvolte **řídicí panel** kartu.
 
-1. Zapnout **návrhovém režimu**.
+1. Klikněte na tlačítko **upravit šablonu**.
 
     ![Režim návrhu](media/howto-use-device-sets/image3.png)
 
@@ -58,9 +58,6 @@ Po vytvoření sady zařízení, můžete nakonfigurovat jeho **řídicí panel*
 
 1. Přidání dlaždice odkaz:
     1. Zvolte **odkaz** v pravém podokně.
-
-        ![Zvolte odkaz](media/howto-use-device-sets/image6.png)
-
     1. Zadejte odkaz **Title**.
     1. Zvolte adresu URL otevřít po kliknutí na odkaz.
     1. Zadejte popis, který zobrazuje následující odkaz **Title**.
@@ -87,38 +84,26 @@ Po vytvoření sady zařízení, můžete nakonfigurovat jeho **řídicí panel*
     > [!NOTE]
     > Můžete přidat více imagí, odkazy a mřížky.
   
-    1. Vypnout **režimu návrhu**.
+    1. Klikněte na **Done** (Hotovo).
 
     ![Návrh režimu mimo](media/howto-use-device-sets/image10.png)
 
 
 ### <a name="configuring-location-map-in-your-device-sets-dashboard"></a>Konfigurace mapování umístění vašeho zařízení nastaví řídicí panel 
-Můžete přidat mapu umístění, která bude vizualizovat umístění zařízení nastaví v objektu Map. 
+Můžete přidat mapu umístění, která bude vizualizovat umístění zařízení nastaví v objektu Map.
 
 Pokud chcete přidat mapu umístění, která bude zařízení nastaví řídicí panel, musíte mít vlastnost nakonfigurovaného umístění ve vaší šabloně zařízení, najdete v článku [vytvoření vlastnosti umístění používá technologii Azure Maps](howto-set-up-template.md).
 
 
-1. Na řídicím panelu sady zařízení vyberte mapování z knihovny. 
+1. Na zařízení nastavit řídicím panelu vyberte mapování z knihovny.
 
     ![Nastaví mapy řídicího panelu zařízení](media/howto-use-device-sets/LocationMaps1.png)
 
-
 2. Zadejte název a vyberte vlastnost umístění, které jste dříve nakonfigurovali v rámci vlastnosti zařízení.
-
-    ![Nakonfigurujte mapování řídicí panel](media/howto-use-device-sets/LocationMaps2.png)
-
 3. Uložit a můžete se zobrazí na mapě dlaždici zobrazení umístění zařízení v nastavení zařízení.
-
-    ![Uložit řídicí panel mapy](media/howto-use-device-sets/LocationMaps3.png)
-
-
-5. Teď když operátor řídicí panel sady zařízení, tak může vidět všechny dlaždice jste nakonfigurovali, včetně umístění mapu, která bude vizualizovat všechna umístění zařízení na první pohled! 
-
-    ![Operátor mapy zobrazení řídicího panelu](media/howto-use-device-sets/LocationMaps4.png)
-
-    Budete moct změnit velikost mapování na požadovanou velikost.
-
-    Kliknutím na kód pin na mapě zobrazíte informace o zařízení, název a umístění. Můžete kliknout na automaticky otevírané okno, přejděte na stránku vlastností zařízení.  
+4. Teď když operátor řídicí panel sady zařízení, tak může vidět všechny dlaždice jste nakonfigurovali, včetně umístění mapu, která bude vizualizovat všechna umístění zařízení na první pohled! 
+    
+[!NOTE] Budete moct změnit velikost mapování na požadovanou velikost. Kliknutím na kód pin na mapě zobrazíte informace o zařízení, název a umístění. Můžete kliknout na automaticky otevírané okno, přejděte na stránku vlastností zařízení.  
 
 
 ## <a name="configure-the-list-for-your-device-set"></a>Proveďte konfiguraci seznamu pro vaši sadu zařízení

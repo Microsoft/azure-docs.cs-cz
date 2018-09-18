@@ -6,15 +6,15 @@ author: jovanpop-msft
 ms.reviewer: carlrab
 ms.service: sql-database
 ms.topic: conceptual
-ms.date: 07/16/2018
+ms.date: 09/14/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: 2378a4d5bb7d7f52ee2e96224db01e5e386b4c46
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 0a1077acf5e436dd5fc49e65876ed65bf4c95b9c
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42054844"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45731752"
 ---
 # <a name="scale-database-resources"></a>Škálování databáze prostředků
 
@@ -29,7 +29,7 @@ Nemusíte se starat o nákup hardwaru a změnou základní infrastruktury. Šká
 ![Škálování výkonu databáze](media/sql-database-scalability/scale-performance.svg)
 
 Azure SQL Database nabízí [nákupní model založený na DTU](sql-database-service-tiers-dtu.md) nebo [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md). 
--   [Nákupní model založený na DTU](sql-database-service-tiers-dtu.md) nabízí kombinaci výpočetních, paměťových a vstupně-VÝSTUPNÍCH prostředků ve třech úrovních služeb pro podporu nejlehčích k těm nejnáročnějším: Basic, Standard a Premium. Úrovně výkonu na jednotlivých úrovních poskytují různou kombinaci těchto prostředků, ke kterým můžete přidat další prostředky úložiště.
+-   [Nákupní model založený na DTU](sql-database-service-tiers-dtu.md) nabízí kombinaci výpočetních, paměťových a vstupně-VÝSTUPNÍCH prostředků ve třech úrovních služeb pro podporu nejlehčích k těm nejnáročnějším: Basic, Standard a Premium. Výpočetní velikosti na jednotlivých úrovních poskytují různou kombinaci těchto prostředků, na které můžete přidat další prostředky úložiště.
 -   [Nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md) umožňuje výběr počtu virtuálních jader, velikost nebo paměti a množství a rychlosti úložiště.
 S nízkými měsíčními náklady můžete sestavit svou první aplikaci s malou izolovanou databází a později ručně nebo programově změnit úroveň služby, aby splňovala požadavky vašeho řešení. Můžete upravit úroveň výkonu bez přerušení provozu aplikace a bez dopadu na vaše zákazníky. Dynamická škálovatelnost umožňuje databázím transparentně reagovat na rychle se měnící požadavky na prostředky a vy díky tomu platíte pouze za prostředky, které potřebujete, když je potřebujete.
 
@@ -52,7 +52,7 @@ Všechny tři typy služby Azure SQL Database nabízí některé schopnost dynam
 
 ## <a name="alternative-scale-methods"></a>Škálování alternativní metody
 Škálování prostředků je nejjednodušší a nejúčinnější způsob, jak zlepšit výkon vaší databáze beze změny kódu databáze nebo aplikace.
-V některých případech nemusí zpracovávat i nejvyšší úrovně výkonu a optimalizace výkonu vašich úloh na úspěšné a nákladově efektivní způsob, jak. V tomto případě máte další možnosti škálování databáze:
+V některých případech se nemusí zvládnutí úloh na úspěšné a nákladově efektivní způsob, jak i nejvyšší úrovně služeb, velikostí výpočetních a optimalizace výkonu. V tomto případě máte těchto dalších možnostech škálování databáze:
 -   [Horizontální navýšení kapacity pro čtení](sql-database-read-scale-out.md) je funkce k dispozici ve kterém se zobrazuje jednu repliku pouze pro čtení dat ve kterém můžete spustit vyhovovat i vašim náročným dotazy jen pro čtení, jako je například sestavy. Repliku pouze Red bude zpracovávat úlohy jen pro čtení bez ovlivnění využití prostředků u primární databáze.
 -   [Horizontální dělení databází](sql-database-elastic-scale-introduction.md) je sadu technik, které vám umožní rozdělit data do několika databází a nezávisle škálovat.
 

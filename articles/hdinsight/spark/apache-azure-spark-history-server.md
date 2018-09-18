@@ -8,30 +8,30 @@ ms.author: jejiang
 ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 07/12/2018
-ms.openlocfilehash: b514f23f2e8a43f99fd5bf5c3afb5ed625ad4472
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.date: 09/14/2018
+ms.openlocfilehash: 65617aa87ec8f28b13951f1a2196eb2ccedf5c85
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43046571"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45729752"
 ---
 # <a name="use-extended-spark-history-server-to-debug-and-diagnose-spark-applications"></a>Použít rozšířený Server historie Sparku k ladění a Diagnostika aplikací Spark
 
-Tento článek poskytuje pokyny, jak používat rozšířené Server historie Sparku k ladění a Diagnostika aplikací Spark dokončení a spuštěná. Rozšíření aktuálně obsahuje kartu data a graf. Na kartě data uživatelů můžete zkontrolovat vstupní a výstupní data úlohy Spark. V grafu kartu uživatelé kontrolovat tok dat a přehrát graf úlohy.
+Tento článek poskytuje pokyny, jak používat rozšířené Server historie Sparku k ladění a Diagnostika aplikací Spark dokončení a spuštěná. Rozšíření obsahuje na kartu data a grafu kartu a karta Diagnostika. Na **Data** kartě uživatele můžete zkontrolovat vstupní a výstupní data úlohy Spark. Na **grafu** kartě uživatele můžete zkontrolovat tok dat a přehrát graf úlohy. Na **diagnostiku** kartu, uživatel může odkazovat na **Nerovnoměrná distribuce dat**, **časového posunu** a **prováděcí modul analýzy využití**.
 
-## <a name="open-the-spark-history-server"></a>Otevřete Server historie Sparku
+## <a name="get-access-to-spark-history-server"></a>Získejte přístup k Server historie Sparku
 
 Server historie Sparku je ve webovém uživatelském rozhraní pro dokončené a spuštěné aplikace Spark. 
 
-### <a name="to-open-the-spark-history-server-web-ui-from-azure-portal"></a>Chcete-li otevřít rozhraní Web Server historie Sparku z webu Azure portal
+### <a name="open-the-spark-history-server-web-ui-from-azure-portal"></a>Otevřete rozhraní Web Server historie Sparku z webu Azure portal
 
 1. Z [webu Azure portal](https://portal.azure.com/), otevřete Spark cluster. Další informace najdete v tématu [výpisu a zobrazení clusterů](../hdinsight-administer-use-portal-linux.md#list-and-show-clusters).
 2. Z **rychlé odkazy**, klikněte na tlačítko **řídicí panel clusteru**a potom klikněte na tlačítko **Server historie Sparku**. Po zobrazení výzvy zadejte přihlašovací údaje Správce clusteru Spark. 
 
     ![Server historie sparku](./media/apache-azure-spark-history-server/launch-history-server.png "Server historie Sparku")
 
-### <a name="to-open-the-spark-history-server-web-ui-by-url"></a>Chcete-li otevřít Spark historie serveru webového uživatelského rozhraní pomocí adresy URL
+### <a name="open-the-spark-history-server-web-ui-by-url"></a>Otevřete webový Server historie Sparku uživatelského rozhraní pomocí adresy URL
 Otevřete Server historie Sparku tak, že přejdete na následující adresu URL, nahraďte <ClusterName> s názvem clusteru Spark zákazníka.
 
    ```
@@ -43,7 +43,7 @@ Server historie Sparku webové uživatelské rozhraní vypadá takto:
 ![Server historie Sparku pro HDInsight](./media/apache-azure-spark-history-server/hdinsight-spark-history-server.png)
 
 
-## <a name="open-the-data-tab-from-spark-history-server"></a>Otevřete kartu dat z Server historie Sparku
+## <a name="data-tab-in-spark-history-server"></a>Server historie Sparku na kartu data
 Vyberte ID úlohy klikněte **Data** získat zobrazení dat v nabídce Nástroje.
 
 + Zkontrolujte **vstupy**, **výstupy**, a **operace s tabulkou** výběrem karty samostatně.
@@ -87,7 +87,7 @@ Vyberte ID úlohy klikněte **Data** získat zobrazení dat v nabídce Nástroje
     ![zpětnou vazbu grafu](./media/apache-azure-spark-history-server/sparkui-graph-feedback.png)
 
 
-## <a name="open-the-graph-tab-from-spark-history-server"></a>Otevřete kartu grafu z Server historie Sparku
+## <a name="graph-tab-in-spark-history-server"></a>Graf kartu Server historie Sparku
 Vyberte ID úlohy klikněte **grafu** získat zobrazení grafu úlohy v nabídce Nástroje.
 
 + Graf úlohy generované a zkontrolujte přehled vaší úlohy. 
@@ -108,16 +108,19 @@ Vyberte ID úlohy klikněte **grafu** získat zobrazení grafu úlohy v nabídce
 
     + Zelená pro úspěšné: Úloha byla úspěšně dokončena.
     + Oranžové pro opakované: instance úlohy, které selhaly, ale nemají vliv na konečný výsledek úlohy. Tyto úlohy měl duplicitní nebo instance opakování, které mohou být úspěšně dokončeny později.
-    + Červené se nezdařilo: úloha se nezdařila.
     + Modrá pro spuštění: Úloha je spuštěna.
-    + Bílé pro přeskočeno nebo čeká: Úloha čeká na spuštění nebo fázi byl přeskočen.
+    + Bílé čekání nebo přeskočené: Úloha čeká na spuštění nebo fázi byl přeskočen.
+    + Červené se nezdařilo: úloha se nezdařila.
 
     ![ukázka barvy grafu, spuštění](./media/apache-azure-spark-history-server/sparkui-graph-color-running.png)
  
+    Zobrazení bylo přeskočeno fáze v prázdné.
+    ![Graf vzorek barvy, přeskočit](./media/apache-azure-spark-history-server/sparkui-graph-color-skip.png)
+
     ![ukázka barvy Graph, se nezdařilo](./media/apache-azure-spark-history-server/sparkui-graph-color-failed.png)
  
     > [!NOTE]
-    > Je povolené přehrávání pro každou úlohu. Pokud úloha nemá žádné fáze nebo nebyla dokončena, přehrávání se nepodporuje.
+    > Je povolené přehrávání pro každou úlohu. Nedokončená úloha přehrávání nepodporuje.
 
 
 + Posune myši přiblížení vstup a výstup graf úlohy, nebo klikněte na **přizpůsobit** k němu přizpůsobit na obrazovku.
@@ -127,6 +130,12 @@ Vyberte ID úlohy klikněte **grafu** získat zobrazení grafu úlohy v nabídce
 + Najeďte myší na uzlu grafu zobrazíte popis tlačítka, když nejsou úloh, které selhaly a klikněte na fázi otevřete stránku fázi.
 
     ![Popis grafu](./media/apache-azure-spark-history-server/sparkui-graph-tooltip.png)
+
++ Na kartě Graf úlohy, budou mít fáze popisek a malé ikony se zobrazí, pokud mají úlohy, které splňují následující podmínky:
+    + Nerovnoměrná distribuce dat: velikost čtení dat > průměr dat číst velikost všech úkolů v této fázi * 2 a data načtená velikost > 10 MB
+    + Nerovnoměrné rozdělení času: doba provádění > Průměrná doba provádění všech úloh v této fázi * 2 a doba provádění > 2 minut
+
+    ![zkosení ikonou grafu](./media/apache-azure-spark-history-server/sparkui-graph-skew-icon.png)
 
 + Uzel grafu úlohy se zobrazí následující informace každou z fází:
     + ID.
@@ -147,6 +156,47 @@ Vyberte ID úlohy klikněte **grafu** získat zobrazení grafu úlohy v nabídce
 + Kliknutím na odeslat zpětnou vazbu s problémy **nám poskytnout zpětnou vazbu**.
 
     ![zpětnou vazbu grafu](./media/apache-azure-spark-history-server/sparkui-graph-feedback.png)
+
+
+## <a name="diagnosis-tab-in-spark-history-server"></a>Karta Diagnostika v Server historie Sparku
+Vyberte ID úlohy klikněte **diagnostiku** v nabídce Nástroje k dosažení zobrazení diagnostiky. Karta Diagnostika obsahuje **Nerovnoměrná distribuce dat**, **časového posunu**, a **prováděcí modul analýzy využití**.
+    
++ Zkontrolujte **Nerovnoměrná distribuce dat**, **časového posunu**, a **prováděcí modul analýzy využití** výběrem karty v uvedeném pořadí.
+
+    ![Diagnostika karty](./media/apache-azure-spark-history-server/sparkui-diagnosis-tabs.png)
+
+### <a name="data-skew"></a>Nerovnoměrná distribuce dat
+Klikněte na tlačítko **Nerovnoměrná distribuce dat** kartě odpovídající výrazně nerovnoměrnou distribucí úlohy jsou zobrazeny v závislosti na zadaných parametrů. 
+
++ **Zadejte parametry** – parametry, které se používají ke zjištění Nerovnoměrná distribuce dat se zobrazí v první části. Je předdefinovaných pravidel: přečtených dat úkolu je vyšší než 3 x průměrná úkolů data načtená a číst data úloh je víc než 10MB. Pokud chcete definovat vlastní pravidla pro úlohy s výrazně nerovnoměrnou distribucí, můžete použít parametry, **zkosený fázi**, a **zkosení Char** oddílu se aktualizují odpovídajícím způsobem.
+
++ **Zešikmená fázi** – druhá část ukazuje fází, které mít posunutá kritériím výše uvedené úlohy. Pokud existuje více než jeden úkol výrazně nerovnoměrnou distribucí ve fázi, fáze zešikmení tabulky zobrazí pouze nejvíce výrazně nerovnoměrnou distribucí úlohy (například největší data pro data zkosení).
+
+    ![Sekci 2 Nerovnoměrná distribuce dat](./media/apache-azure-spark-history-server/sparkui-diagnosis-dataskew-section2.png)
+
++ **Zkosit osu grafu** – při výběru řádku v tabulce zkosení fázi zkosení grafu zobrazí další podrobnosti rozdělení úkolů na základě data načtená a čas spuštění. Výrazně nerovnoměrnou distribucí úkoly jsou označeny červeně a běžné úkoly jsou označená modrou barvu. Pro posouzení výkonu grafu se zobrazují pouze až 100 ukázkové úkoly. Podrobnosti úlohy se zobrazí v pravé spodní panel.
+
+    ![Section3 Nerovnoměrná distribuce dat](./media/apache-azure-spark-history-server/sparkui-diagnosis-dataskew-section3.png)
+
+### <a name="time-skew"></a>Nerovnoměrné rozdělení času
+**Časového posunu** karta zobrazuje výrazně nerovnoměrnou distribucí úlohy, které jsou založené na čase spuštění úlohy. 
+
++ **Zadejte parametry** – první část zobrazí parametry, které se používají ke zjištění časového posunu. Je výchozí kritéria ke zjištění nerovnoměrné rozdělení času: doba provádění úloh je vyšší než 3 x Průměrná doba spuštění a čas spuštění úlohy je větší než 30 sekund. Můžete změnit parametry podle svých potřeb. **Zkosený fázi** a **zkosit osu grafu** zobrazit odpovídající fází a informace o úkolech stejně jako **Nerovnoměrná distribuce dat** nahoře kartu.
+
++ Klikněte na tlačítko **časového posunu**, pak filtrovaných výsledků se zobrazí v **zkosený fázi** části podle parametrů nastavuje v části **zadání parametrů**. Klikněte na jednu položku v **zkosený fázi** části, pak odpovídající graf je navržené v section3 a podrobnosti úlohy se zobrazí v pravé spodní panel.
+
+    ![Sekci 2 nerovnoměrné rozdělení času](./media/apache-azure-spark-history-server/sparkui-diagnosis-timeskew-section2.png)
+
+### <a name="executor-usage-analysis"></a>Analýza využití prováděcího modulu
+Graf využití prováděcí modul vizualizuje Spark skutečné prováděcí modul přidělení a spuštění stav úlohy.  
+
++ Klikněte na tlačítko **prováděcí modul analýzy využití**, pak jsou zpracovávány čtyři typy křivky o použití prováděcího modulu, včetně **přidělené prováděcí moduly**, **spuštěn prováděcí moduly**, **nečinné prováděcí moduly**, a **maximální počet instancí prováděcí modul**. Ohledně přidělené moduly provádění a každé "Prováděcí modul přidá" nebo "Prováděcí modul odebrané" události se zvýšit nebo snížit přidělenou prováděcí moduly, "Časová osa událostí" můžete zkontrolovat na kartě "Úloha" pro další porovnání.
+
+    ![Karta prováděcí moduly](./media/apache-azure-spark-history-server/sparkui-diagnosis-executors.png)
+
++ Kliknutím na ikonu Barva zaškrtněte nebo zrušte všechny koncepty odpovídající obsah.
+
+    ![Vyberte graf](./media/apache-azure-spark-history-server/sparkui-diagnosis-select-chart.png)
 
 
 ## <a name="faq"></a>Nejčastější dotazy
@@ -268,7 +318,7 @@ Pokud chcete provést upgrade pomocí opravy hotfix, použijte níže uvedený s
     ![Nahrát protokoly nebo upgrade opravy hotfix](./media/apache-azure-spark-history-server/sparkui-upload2.png)
 
 
-## <a name="known-issue"></a>Známý problém
+## <a name="known-issues"></a>Známé problémy
 
 1.  V současné době to funguje jenom pro cluster Spark 2.3.
 

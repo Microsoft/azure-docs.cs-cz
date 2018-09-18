@@ -15,12 +15,12 @@ ms.date: 05/04/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 618df9b4bcc4a1b6f44d9cabc29c797a2cabcc80
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 0d139437a069406db2ae0f189480072f8063a327
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39366788"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982268"
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Přesměrovat odkazy pevně zakódované k aplikacím publikovaným pomocí Proxy aplikací Azure AD
 
@@ -109,7 +109,7 @@ Začínáme s překladu odkazu je stejně snadné jako kliknutí na tlačítko:
 2. Přejděte na **Azure Active Directory** > **podnikové aplikace** > **všechny aplikace** > vyberte aplikaci, kterou chcete spravovat >  **Proxy aplikací**.
 3. Zapnout **překládat adresy URL v těle žádosti** k **Ano**.
 
-   ![Vyberte Ano. Pokud chcete překlad adres URL v těle žádosti](./media/application-proxy-configure-hard-coded-link-translation/select_yes.png).
+   ![Vyberte Ano. Pokud chcete překlad adres URL v těle žádosti](./media/application-proxy-configure-hard-coded-link-translation/select_yes.png)
 4. Vyberte **Uložit** změny.
 
 Teď když uživatelé přistoupí k této aplikaci, proxy automaticky vyhledá interní adresy URL, které byly publikované prostřednictvím Proxy aplikace ve svém tenantovi.

@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: dafa58c5356c89351ab0eb711e4095b767aee1ae
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 1cff44e8430af0a544da948b33a15439fae56d8e
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44298162"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45735644"
 ---
-# <a name="set-up-a-device-template"></a>Nastavit šablonu zařízení
+# <a name="set-up-a-device-template"></a>Nastavení šablony zařízení
 
 Šablona zařízení je podrobný plán, který definuje charakteristiky a chování zařízení, která se připojuje k aplikaci Microsoft Azure IoT Central.
 
@@ -74,8 +74,6 @@ Například můžete přidat nové měření teploty telemetrická data:
 
 Po výběru **provádí**, **teploty** měření se zobrazí v seznamu měření. Operátor můžete zobrazit vizualizaci, která zařízení shromažďuje data o teplotě.
 
-![Měření grafu](./media/howto-set-up-template/measurementsgraph.png)
-
 ### <a name="create-an-event-measurement"></a>Vytvoření měření událostí
 Chcete-li přidat novou událost měření **upravit šablonu**a potom klikněte na tlačítko **a nové měření** tlačítko. Vyberte **události** jako měření typ a zadejte podrobnosti **vytvořit událost** formuláře.
 
@@ -89,7 +87,7 @@ Po výběru **provádí**, **Motor chyba ventilátor** měření se zobrazí v s
 
 ![Měření grafu události](./media/howto-set-up-template/eventmeasurementschart.png)
 
-Chcete-li zobrazit další podrobnosti o události, vyberte ikonu události v grafu:
+Chcete-li zobrazit další podrobnosti o události, vyberte ikonu události v grafu.
 
 ![Podrobnosti o události "Ventilátor Motor chyba"](./media/howto-set-up-template/eventmeasurementsdetail.png)
 
@@ -108,9 +106,6 @@ Po výběru **provádí**, **ventilátor režimu** měření stavu se zobrazí v
 ![Měření stavu grafu](./media/howto-set-up-template/statemeasurementschart.png)
 
 Pokud zařízení pošle příliš mnoho datových bodů v malých dobu trvání, zobrazí se měření stavu s jiný vizuál, jak je znázorněno na následujícím snímku obrazovky. Pokud kliknete na graf, všechny datové body v rámci tohoto časového období se zobrazují v chronologickém pořadí. Také můžete zúžit rozsah času zobrazíte měření vykreslit v grafu.
-
-![Podrobnosti pro měření stavu "Statické ventilátor režim"](./media/howto-set-up-template/statemeasurementsdetail.png)
-
 
 ## <a name="settings"></a>Nastavení
 
@@ -182,11 +177,7 @@ Můžete vytvořit umístění vlastnost jako vlastnost aplikace s využitím ma
    - **Umístění jako adresa**
    - **Umístění jako souřadnice** 
 
-4. Vyberte **Uložit** a **provádí**. 
-
-   ![Vlastnost Location se přidá Adresa instalace](./media/howto-set-up-template/locationcloudproperty3.png)
-
-Operátor teď můžete aktualizovat hodnotu umístění ve formě pole umístění. 
+4. Vyberte **Uložit** a **provádí**. Operátor teď můžete aktualizovat hodnotu umístění ve formě pole umístění. 
 
 #### <a name="add-location-as-a-device-property"></a>Přidat umístění jako vlastnosti zařízení 
 
@@ -261,11 +252,7 @@ Pokud jste nakonfigurovali umístění vlastnost dříve v [vytvoření vlastnos
 
    ![Mapovou dlaždici s vybrané umístění](./media/howto-set-up-template/locationcloudproperty6map.png) 
 
-Na mapě můžete změnit velikost na požadovanou velikost.
-
-Nyní když operátor zobrazení řídicího panelu, uvidí všechny dlaždice řídicího panelu, které jste nakonfigurovali, včetně Mapa umístění.
-
-![Dlaždice na řídicím panelu](./media/howto-set-up-template/locationcloudproperty7map.png) 
+Na mapě můžete změnit velikost na požadovanou velikost. Nyní když operátor zobrazení řídicího panelu, uvidí všechny dlaždice řídicího panelu, které jste nakonfigurovali, včetně Mapa umístění.
 
 ## <a name="next-steps"></a>Další postup
 

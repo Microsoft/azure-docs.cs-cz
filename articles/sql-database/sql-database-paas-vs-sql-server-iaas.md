@@ -8,14 +8,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 08/01/2018
+ms.date: 09/14/2018
 ms.author: carlrab
-ms.openlocfilehash: 3ba1f7a5759f037ce4bcfafcef40d0b247692f58
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 57e83376747b9a3e2d30dec37d4a378a167580e5
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45577033"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45733106"
 ---
 # <a name="choose-a-cloud-sql-server-option-azure-sql-paas-database-or-sql-server-on-azure-vms-iaas"></a>Volba cloudového řešení systému SQL Server: Azure SQL (PaaS) Database nebo SQL Server na virtuálních počítačích Azure (IaaS)
 
@@ -89,7 +89,7 @@ Ať už jste začínající společnost, která nemá mnoho peněz, nebo tým v 
 
 #### <a name="billing-and-licensing-basics"></a>Základy fakturace a licencování
 
-V současné době **SQL Database** se prodává jako služba a je k dispozici na několika úrovních služby s různými cenami pro prostředky, které se účtují po hodinách s pevnou sazbou na základě úrovni a výkonu úrovně služby zvolíte. S SQL Database Managed Instance můžete také přinést vlastní licenci. Další informace o používání vlastní licence (BYOL) najdete v tématu [Mobilita licencí v rámci programu Software Assurance na Azure](https://azure.microsoft.com/pricing/license-mobility/). Kromě toho se vám účtuje odchozí přenos přes internet podle běžných [sazeb za přenos dat](https://azure.microsoft.com/pricing/details/data-transfers/). Můžete dynamicky upravit úrovně služeb a úrovně výkonu tak, aby odpovídaly potřebám různých propustnosti vaší aplikace. Nejnovější informace o aktuálně podporovaných cenových úrovních služeb najdete v tématu [nákupní model založený na DTU](sql-database-service-tiers-dtu.md) a [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md). Můžete také vytvořit [elastické fondy](sql-database-elastic-pool.md) sdílení prostředků mezi různými instancemi databáze ke snížení nákladů a využití zohlednit špičky.
+V současné době **SQL Database** se prodává jako služba a je k dispozici na několika úrovních služby s různými cenami pro prostředky, které se účtují po hodinách s pevnou sazbou na základě úrovně služeb a velikost výpočetního zvolíte. S SQL Database Managed Instance můžete také přinést vlastní licenci. Další informace o používání vlastní licence (BYOL) najdete v tématu [Mobilita licencí v rámci programu Software Assurance na Azure](https://azure.microsoft.com/pricing/license-mobility/). Kromě toho se vám účtuje odchozí přenos přes internet podle běžných [sazeb za přenos dat](https://azure.microsoft.com/pricing/details/data-transfers/). Můžete dynamicky upravit úrovně služeb a vypočítat velikost tak, aby odpovídaly potřebám různých propustnosti vaší aplikace. Nejnovější informace o aktuálně podporovaných cenových úrovních služeb najdete v tématu [nákupní model založený na DTU](sql-database-service-tiers-dtu.md) a [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md). Můžete také vytvořit [elastické fondy](sql-database-elastic-pool.md) sdílení prostředků mezi různými instancemi databáze ke snížení nákladů a využití zohlednit špičky.
 
 V případě **SQL Database** je databázový software konfigurován, opravován a upgradován automaticky společností Microsoft, což snižuje náklady na správu. Kromě toho vám [integrované funkce zálohování](sql-database-automated-backups.md) pomůžou dosáhnout výrazných úspor nákladů, hlavně v případě, že máte velký počet databází. 
 

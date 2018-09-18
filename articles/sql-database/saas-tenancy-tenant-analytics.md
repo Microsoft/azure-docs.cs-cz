@@ -1,6 +1,6 @@
 ---
-title: Spustit analytics mezi klienta pomocí extrahovaná data | Microsoft Docs
-description: Mezi klienta analytické dotazy pomocí dat extrahovaných z více databází Azure SQL Database.
+title: Spouštět analýzy napříč tenanty pomocí extrahovaných dat | Dokumentace Microsoftu
+description: Mezi tenanty analytických dotazů pomocí dat extrahovaných z několika databází Azure SQL Database.
 keywords: kurz k sql database
 services: sql-database
 author: stevestein
@@ -8,59 +8,59 @@ manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 09/14/2018
 ms.author: sstein
 ms.reviewer: anjangsh; billgib; genemi
-ms.openlocfilehash: 68057a2ae5925aa16288844759a34592aa7c7573
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b887572e7c2bdf22c8a6cc8ffa1641e402fd6a58
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34644956"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45736423"
 ---
-# <a name="cross-tenant-analytics-using-extracted-data"></a>Analytics mezi klienta pomocí extrahovaná data
+# <a name="cross-tenant-analytics-using-extracted-data"></a>Extrahovaná data pomocí analýzy napříč tenanty
 
-V tomto kurzu provede scénáři dokončení analýzy. Tento scénář ukazuje, jak povolit analytics firmám umožňuje efektivní rozhodování. Pomocí dat extrahovaných z každého klienta databáze, použijte analýzy a získáte přehled o klienta využití chování a aplikace. Tento scénář zahrnuje tři kroky: 
+V tomto kurzu si projdete scénáři dokončení analýzy. Tento scénář předvádí, jak analytics můžete povolit firmám inteligentní rozhodování. Použití dat extrahovaných z každé databázi tenantů, pomocí analytics získat přehled o tenantovi využití chování a aplikace. Tento scénář zahrnuje tři kroky: 
 
-1.  **Extrahování** data z databáze každého klienta a **zatížení** do úložiště služby analýzy.
-2.  **Transformace extrahovaná data** pro zpracování analýzy.
-3.  Použití **business intelligence** nástrojů pro kreslení na užitečné přehledy, které můžete Průvodce přijímání rozhodnutí. 
+1.  **Extrahovat** data z každé databázi tenantů a **zatížení** do analýzy úložiště.
+2.  **Transformace dat extrahovaných** pro zpracování analýzy.
+3.  Použití **business intelligence** nástrojů pro kreslení na užitečné přehledy, které můžete Průvodce rozhodování. 
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> - Vytvoření klienta, které analytics uložit extrahovat data do.
-> - Elastické úlohy použijte k extrahování dat z databáze každého klienta do úložiště analýzy.
-> - Optimalizujte extrahovaná data (reorganize do hvězdičky schématu).
-> - Dotaz na databázi analýzy.
-> - Pomocí Power BI pro vizualizaci dat zvýrazněte trendů v datech klienta a vytvořit doporučení pro zlepšení.
+> - Vytvoření tenant, ke kterému analýza ukládat extrahovat data.
+> - Extrahovat data z všechny databáze tenantů do analýzy úložiště pomocí elastických úloh.
+> - Optimalizujte extrahovaná data (reorganize do hvězdicového schématu).
+> - Dotazování databáze analýzy.
+> - Pomocí Power BI pro vizualizace dat zvýrazněte trendy v datech tenanta a zkontrolujte doporučení pro vylepšení.
 
 ![architectureOverView](media/saas-tenancy-tenant-analytics/architectureOverview.png)
 
-## <a name="offline-tenant-analytics-pattern"></a>Vzor analytics offline klienta
+## <a name="offline-tenant-analytics-pattern"></a>Vzor analýzy tenanta offline
 
-Víceklientské aplikace SaaS mají obvykle velká množství dat klienta uložená v cloudu. Tato data poskytují bohaté zdroj přehledy o operaci a využití vaší aplikace a chování vašim klientům. Tyto přehledy můžete Průvodce vývoj funkce, vylepšení použitelnost a další investice do aplikace a platformy.
+Víceklientské aplikace SaaS mají obvykle velké množství dat tenantů, uložená v cloudu. Tato data poskytují bohatou příčiny přehledy o operaci a využití vaší aplikace a chování vašich klientů. Vývoj funkcí, vylepšení použitelnosti a další investice do aplikace a platformy můžete průvodce tyto přehledy.
 
-Přístup k datům pro všechny klienty je jednoduché, když všechna data v právě jednu databázi více klientů. Ale přístup se složitější při distribuci škálované napříč potenciálně tisíce databází. Jedním ze způsobů tame složitost a minimalizovat dopad analytické dotazy na transakčních dat je pro extrahování dat do skladu účel určené analytics databáze nebo data.
+Všechna data umístěná v jediné databázi s více tenanty je přístup k datům pro všechny tenanty jednoduché. Ale přístup je složitější, když distribuovat ve velkém měřítku napříč potenciálně tisíce databází. Jedním ze způsobů zkrotit složitost a minimalizovat dopad analytických dotazů na transakční data je extrakce dat do skladu analytics účel určená databáze nebo data.
 
-Tento kurz představuje scénář dokončení analýza pro aplikace SaaS lístky Wingtip. První, *elastické úlohy* se používá k extrahovat data z databáze každého klienta a načtěte ho do pracovní tabulky v úložišti analytics. Analýza úložiště může být buď k SQL Database nebo SQL Data Warehouse. Pro rozsáhlé datové extrakci [Azure Data Factory](../data-factory/introduction.md) se doporučuje.
+Tento kurz představuje scénář dokončena analýza pro aplikace SaaS aplikace Wingtip Tickets. Nejprve je potřeba *Elastic Jobs* umožňuje extrahovat data z každé databázi tenantů a jejich načtení do pracovních tabulek v úložišti analytics. Analýza úložiště může být buď služby SQL Database nebo SQL Data Warehouse. Pro extrahování velkých objemů dat [Azure Data Factory](../data-factory/introduction.md) se doporučuje.
 
-V dalším kroku agregovaná data transformována do sady [hvězdičky schématu](https://www.wikipedia.org/wiki/Star_schema) tabulky. V tabulkách obsahovat tabulku faktů centrální a dimenze související tabulky.  Pro adresář Wingtip lístky:
+V dalším kroku agregovaná data se transformuje na sadu [hvězdicového schématu](https://www.wikipedia.org/wiki/Star_schema) tabulky. Tabulky se skládají z tabulky faktů centrální a související tabulky dimenzí.  Pro aplikace Wingtip Tickets:
 
-- Tabulky faktů centrální ve schématu hvězdičky obsahuje data lístku.
-- Tabulky dimenzí popisují místa, události, zákazníků a nákupech kalendářní data.
+- Tabulky faktů centrální v hvězdicové schéma obsahuje data lístku.
+- Tabulky dimenzí popisují místa, události, zákazníky a koupit data.
 
-Centrální tabulkami faktů a dimenzí společně umožňují efektivní analytické zpracování. Schéma hvězdičky použili v tomto kurzu je znázorněno na následujícím obrázku:
+Centrální tabulkami faktů a dimenzí společně umožňují efektivní analytické zpracování. Hvězdicové schéma používané v tomto kurzu můžete vidět na následujícím obrázku:
  
 ![architectureOverView](media/saas-tenancy-tenant-analytics/StarSchema.png)
 
-Nakonec úložišti analytics je dotazován pomocí **PowerBI** zvýrazněte přehledy chování klienta a jejich použití aplikace Wingtip lístků. Spuštění dotazů který:
+Nakonec je analýzy úložiště dotazovat pomocí **PowerBI** zvýrazněte přehled o chování tenantů a jejich použití aplikace Wingtip Tickets. Spuštění dotazů, které:
  
-- Zobrazit relativní době Oblíbené každý místo
-- Zvýrazněte vzorců prodej lístků pro jednotlivé události
-- Zobrazit relativní úspěch různých místa v prodávané se jejich událostí
+- Zobrazit relativní oblíbenost každé místo
+- Zvýrazněte vzory v prodeji lístků pro jednotlivé události
+- Zobrazit relativní úspěch různých místech v prodej, jejich události
 
-Pochopení, jak je každého klienta pomocí služby se používá k prozkoumejte možnosti monetizing služby a zlepšení služby ke klientům úspěchu. Tento kurz obsahuje základní příklady různých druhů přehledy, které může shromažďovat informace z dat klienta.
+Vysvětlení, jak je každý tenant pomocí služby se používá k prozkoumat možnosti pro zhodnocovat služby a zlepšování služby, které pomůžou tenantů úspěšnější. Tento kurz obsahuje základní příklady typů přehledy, které mohou být úsporách získaných dat tenanta.
 
 ## <a name="setup"></a>Nastavení
 
@@ -68,94 +68,94 @@ Pochopení, jak je každého klienta pomocí služby se používá k prozkoumejt
 
 Předpokladem dokončení tohoto kurzu je splnění následujících požadavků:
 
-- Nasazení aplikace Wingtip lístky SaaS databáze za klienta. Nasazení za méně než pět minut najdete v tématu [nasazení a seznamte se s Wingtip SaaS aplikace](saas-dbpertenant-get-started-deploy.md)
-- Adresář Wingtip lístky SaaS databáze za klienta skripty a aplikace [zdrojový kód](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant/) se stáhnou z Githubu. Najdete pokyny ke stahování. Nezapomeňte *odblokovat soubor zip* před extrahování její obsah. Podívejte se [obecné pokyny](saas-tenancy-wingtip-app-guidance-tips.md) kroky, jak stáhnout a odblokování skripty Wingtip lístky SaaS.
-- Power BI Desktop je nainstalována. [Stáhněte si Power BI Desktop](https://powerbi.microsoft.com/downloads/)
-- Zřízená dávku další klienty, najdete v článku [ **kurzu zřizování klientů**](saas-dbpertenant-provision-and-catalog.md).
-- Účtu úlohy a úlohy účtu databáze byly vytvořeny. Najdete v příslušné kroky [ **schématu správu kurzu**](saas-tenancy-schema-management.md#create-a-job-agent-database-and-new-job-agent).
+- Nasazení aplikace Wingtip Tickets SaaS databáze na Tenanta. Nasazení za méně než pět minut najdete v tématu [nasazení a zkoumání SaaS aplikace Wingtip aplikace](saas-dbpertenant-get-started-deploy.md)
+- Skriptů aplikace Wingtip Tickets SaaS databáze na Tenanta a aplikace [zdrojový kód](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant/) se stáhnou z Githubu. Zobrazit pokyny ke stažení. Nezapomeňte *odblokovat soubor zip* před extrahováním jeho obsah. Podívejte se [obecné pokyny](saas-tenancy-wingtip-app-guidance-tips.md) pokyny ke stažení a odblokování SaaS aplikace Wingtip Tickets skripty.
+- Power BI Desktopu je nainstalovaná. [Stáhněte si Power BI Desktopu](https://powerbi.microsoft.com/downloads/)
+- Zřízení dávku dalších tenantů, najdete v článku [ **kurz zřízení tenantů**](saas-dbpertenant-provision-and-catalog.md).
+- Byl vytvořen účet úlohy a databáze účtu úlohy. Naleznete v příslušné kroky [ **kurzu Správa schématu**](saas-tenancy-schema-management.md#create-a-job-agent-database-and-new-job-agent).
 
-### <a name="create-data-for-the-demo"></a>Vytvořit data pro ukázku
+### <a name="create-data-for-the-demo"></a>Vytvoření dat pro tuto ukázku
 
-V tomto kurzu provedení analýzy na prodejní data lístku. V aktuální krok generuje data lístku pro všechny klienty.  Tato data se později extrahuje pro analýzu. *Ujistěte se, když máte zřízenou dávky klientů, jak je popsáno výše, tak, aby smysluplný množství dat*. Dostatečně velké množství dat můžete zpřístupnit celou řadu různých lístku zakoupení vzory.
+V tomto kurzu se provádí analýzu na prodejní data lístku. V aktuální krok Generovat data lístku pro všechny tenanty.  Později je extrahován tato data pro analýzu. *Ujistěte se, jste zřídili dávku tenantů jak je popsáno výše, abyste docílili smysluplné množství dat*. Dostatečně velký objem dat můžete zpřístupnit celou řadu různých vzorcích nákupu lístků.
 
-1. V prostředí PowerShell ISE otevřete *...\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1*a nastavte následující hodnotu:
-    - **$DemoScenario** = **1** zakoupit lístky pro události na všechna místa
-2. Stiskněte klávesu **F5** vytvoření lístku zakoupení historie pro každou událost v každé místo a spusťte skript.  Skript se spustí pro generování desetitisíce lístků několik minut.
+1. Otevřít v PowerShell ISE *...\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1*a nastavte následující hodnotu:
+    - **$DemoScenario** = **1** nákup lístků na akce na všech místech
+2. Stisknutím klávesy **F5** ke spuštění skriptu a vytvoření historie pro každou událost v každé místo nákupu lístků.  Skript se spustí na několik minut a můžete generovat desítky tisíc lístků.
 
-### <a name="deploy-the-analytics-store"></a>Nasazení úložišti analytics
-Často jsou množství transakcí databáze, které drží všechna data klientů. Musí agregovat data klienta z mnoha transakční databáze do jednoho analytics úložiště. Agregace umožňuje efektivní dotazování data. V tomto kurzu databázi Azure SQL Database slouží k uložení agregovaná data.
+### <a name="deploy-the-analytics-store"></a>Nasazení analýzy úložiště
+Často se mnoho pro transakční databáze, které společně obsahují všechny data tenanta. Data tenanta z mnoha transakční databáze musíte agregovat do jednoho analýzy úložiště. Agregace umožňuje efektivní dotaz data. V tomto kurzu se používá databázi Azure SQL Database k ukládání agregovaná data.
 
-V následujících krocích nasazení úložišti analýzy, která se nazývá **tenantanalytics**. Můžete také nasadit předdefinovaných tabulek, které jsou naplněny později v tomto kurzu:
-1. V prostředí PowerShell ISE otevřete *...\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1* 
-2. Nastavte proměnnou $DemoScenario ve skriptu tak, aby odpovídaly zvoleného analytics úložiště:
-    - Chcete-li použít SQL database bez úložiště sloupce, nastavte **$DemoScenario** = **2**
-    - Chcete-li použít SQL database s úložištěm sloupce, nastavte **$DemoScenario** = **3**  
-3. Stiskněte klávesu **F5** spustit ukázkový skript (, který volá *nasadit TenantAnalytics<XX>.ps1* skriptu) vytváří úložišti analytics klienta. 
+V následujících krocích nasazení analýzy úložiště, která se nazývá **tenantanalytics**. Můžete také nasadit předdefinovaných tabulek, které se vyplní později v tomto kurzu:
+1. Otevřít v PowerShell ISE *...\Learning Modules\Operational Analytics\Tenant Analytics\Demo-TenantAnalytics.ps1* 
+2. Nastavte proměnnou $DemoScenario ve skriptu, tak, aby odpovídaly podle vašeho výběru analýzy úložiště:
+    - Chcete-li používat SQL database bez úložiště sloupců, nastavte **$DemoScenario** = **2**
+    - Chcete-li používat SQL database prostřednictvím úložiště sloupců, nastavte **$DemoScenario** = **3**  
+3. Stisknutím klávesy **F5** spustit ukázkový skript (, která volá *nasadit TenantAnalytics<XX>.ps1* skript) vytváří úložišti analýzy tenanta. 
 
-Teď, když máte nasazené aplikace a vyplněnou zajímavé údaje klienta, použijte [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) připojit **tenants1-dpt -&lt;uživatele&gt;**  a **katalogu-dpt -&lt;uživatele&gt;**  servery pomocí přihlášení = *vývojáře*, heslo = *P@ssword1*. Najdete v článku [úvodní kurz](saas-dbpertenant-wingtip-app-overview.md) další pokyny.
+Teď, když nasadíte aplikaci a naplní se zajímavá data tenanta, použijte [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) připojit **tenants1-dpt -&lt;uživatele&gt;**  a **katalogu-dpt -&lt;uživatele&gt;**  servery pomocí přihlášení = *developer*, heslo = *P@ssword1*. Zobrazit [úvodní tutoriál](saas-dbpertenant-wingtip-app-overview.md) další pokyny.
 
 ![architectureOverView](media/saas-tenancy-tenant-analytics/ssmsSignIn.png)
 
 V Průzkumníku objektů proveďte následující kroky:
 
 1. Rozbalte *tenants1-dpt -&lt;uživatele&gt;*  serveru.
-2. Rozbalte uzel databáze a zobrazit seznam databází klienta.
+2. Rozbalte uzel databáze a zobrazit seznam databází tenantů.
 3. Rozbalte *katalogu-dpt -&lt;uživatele&gt;*  serveru.
-4. Ověřte, uvidíte úložišti analýzy a jobaccount databáze.
+4. Ověřte, jestli analýzy úložiště a databázi jobaccount.
 
-Zobrazit následující položky databáze v Průzkumníku objektů aplikace SSMS rozbalením uzlu úložiště analytics:
+Viz následující položky databáze v Průzkumníku objektů aplikace SSMS rozbalením uzlu úložiště analytics:
 
-- Tabulky **TicketsRawData** a **EventsRawData** uložení nezpracovaná extrahovaná data z databáze klienta.
-- Hvězdičky schématu tabulky se **fact_Tickets**, **dim_Customers**, **dim_Venues**, **dim_Events**, a **dim_Dates** .
-- Uložená procedura se používá k naplnění hvězdičky schéma tabulky z tabulky nezpracovaná data.
+- Tabulky **TicketsRawData** a **EventsRawData** obsahovat nezpracované extrahovaných dat z databáze tenantů.
+- Hvězdicové schéma tabulky jsou **fact_Tickets**, **dim_Customers**, **dim_Venues**, **dim_Events**, a **dim_Dates** .
+- Uložené procedury slouží k naplnění hvězdicového schématu tabulky z nezpracovaných dat tabulky.
 
 ![architectureOverView](media/saas-tenancy-tenant-analytics/tenantAnalytics.png)
 
 ## <a name="data-extraction"></a>Extrakce dat 
 
-### <a name="create-target-groups"></a>Vytvoření cílové skupiny 
+### <a name="create-target-groups"></a>Vytvoření cílových skupin 
 
-Než budete pokračovat, ujistěte se, že jste nasadili databázi účet a jobaccount úlohy. V sadě další kroky elastické úlohy slouží k extrahování dat z databáze každého klienta a k uložení dat v úložišti analytics. Potom úlohu druhý Skartuje data a ukládá je do tabulek ve schématu hvězdičky. Tyto dvě úlohy dvou různé cílové skupiny, spouštění konkrétně **TenantGroup** a **AnalyticsGroup**. Úlohy extrahování spouští TenantGroup, který obsahuje všechny databáze klienta. Skartace úloha spouští AnalyticsGroup, obsahující jenom úložišti analytics. Vytvoření cílové skupiny pomocí následujících kroků:
+Než budete pokračovat, ujistěte se, že jste nasadili databáze účtu a jobaccount úloh. V další sadů kroků Elastických úloh používá extrahovat data z každé databázi tenantů a k uložení dat v úložišti analytics. Druhá úloha Skartuje data a uloží jej do tabulek v hvězdicové schéma. Tyto dvě úlohy spouštět dvě různé cílové skupiny, a to **TenantGroup** a **AnalyticsGroup**. Úloha extrahování spouští TenantGroup, který obsahuje všechny databáze tenantů. Skartace úloha spouští AnalyticsGroup, který obsahuje pouze analýzy úložiště. Vytvoření cílové skupiny pomocí následujících kroků:
 
-1. V aplikaci SSMS, připojte k **jobaccount** databáze v katalogu-dpt -&lt;uživatele&gt;.
-2. V aplikaci SSMS, otevřete *...\Learning Modules\Operational Analytics\Tenant Analytics\ TargetGroups.sql* 
-3. Změnit @User proměnné v horní části na skript, nahraďte <User> s hodnotou uživatel používá při nasazení aplikace Wingtip SaaS.
-4. Stiskněte klávesu **F5** spustit skript, který vytvoří dva cílové skupiny.
+1. V aplikaci SSMS připojit k **jobaccount** databáze v katalogu-dpt -&lt;uživatele&gt;.
+2. V aplikaci SSMS otevřete *...\Learning Modules\Operational Analytics\Tenant Analytics\ TargetGroups.sql* 
+3. Upravit @User proměnné v horní části skriptu, nahrazení <User> hodnotou uživatele jste použili při nasazení SaaS aplikace Wingtip.
+4. Stisknutím klávesy **F5** pro spuštění skriptu, který vytvoří dvě cílové skupiny.
 
-### <a name="extract-raw-data-from-all-tenants"></a>Extrahování nezpracovaná data ze všech klientů
+### <a name="extract-raw-data-from-all-tenants"></a>Extrahovat nezpracovaná data ze všech tenantů
 
-Úpravy rozsáhlého datového mohou vyskytovat častěji u *lístku a k zákaznickým* dat, než pro *událostí a místo* data. Zvažte proto extrahování dat lístků a zákazník samostatně a častěji, než budete extrahovat data události a místo. V této části definují a plánování dvou samostatných úloh:
+Podrobné údaje úpravy mohou vyskytovat častěji u *lístků a zákazníka* dat než pro *událostí a místní příslušností* data. Proto zvažte extrahování dat lístků a zákazníka odděleně a častěji, než extrahovat data události a místní příslušností. V této části definují a plánování dvou samostatných úloh:
 
-- Extrahujte data lístku a zákazníka.
-- Extrahujte data události a místo.
+- Extrahujte lístků a zákaznická data.
+- Extrahujte data události a místní příslušností.
 
-Každá úloha extrahuje data a odešle ji do úložiště analýzy. Samostatná úloha existuje Skartuje extrahovaná data do analytics hvězdičky schema.
+Každá úloha extrahuje data a publikuje do úložiště analytics. Samostatná úloha existuje Skartuje extrahovaná data do analýzy hvězdicového schématu.
 
-1. V aplikaci SSMS, připojte k **jobaccount** databáze v katalogu-dpt -&lt;uživatele&gt; serveru.
-2. V aplikaci SSMS, otevřete *...\Learning Modules\Operational Analytics\Tenant Analytics\ExtractTickets.sql*.
-3. Upravit @User v horní části skriptu a nahradit <User> s uživatelským jménem použít při nasazení aplikace Wingtip SaaS 
-4. Stisknutím klávesy F5 spusťte skript, který vytvoří a spustí úlohu, která extrahuje lístků a zákazníky data z databáze každého klienta. Úloha uloží data do úložiště analytics.
-5. Dotaz TicketsRawData tabulky v databázi tenantanalytics zajistit, že je v tabulce naplněný lístky informace od všech klientů.
+1. V aplikaci SSMS připojit k **jobaccount** databáze v katalogu-dpt -&lt;uživatele&gt; serveru.
+2. V aplikaci SSMS otevřete *...\Learning Modules\Operational Analytics\Tenant Analytics\ExtractTickets.sql*.
+3. Upravit @User v horní části skriptu a nahraďte <User> s uživatelským jménem, které jste použili při nasazení SaaS aplikace Wingtip 
+4. Stisknutím klávesy F5 spusťte skript, který vytvoří a spustí úlohu, který extrahuje data lístků a zákazníkům z všechny databáze tenantů. Úloha uloží data do úložiště analytics.
+5. Dotaz TicketsRawData tabulku v databázi tenantanalytics, ujistěte se, že v tabulce se vyplní informace lístků ze všech tenantů.
 
 ![ticketExtracts](media/saas-tenancy-tenant-analytics/ticketExtracts.png)
 
-Opakujte předchozí kroky, s výjimkou nahraďte tento čas **\ExtractTickets.sql** s **\ExtractVenuesEvents.sql** v kroku 2.
+Zopakujte předchozí kroky, s výjimkou nahradit tento čas **\ExtractTickets.sql** s **\ExtractVenuesEvents.sql** v kroku 2.
 
-Úspěšně spustit úlohu naplní EventsRawData tabulky v úložišti analytics s informacemi o místa od všech klientů a nové události. 
+Úspěšně spustit úlohu naplní EventsRawData tabulky v úložišti analytics s nové události a venues informacemi ze všech tenantů. 
 
-## <a name="data-reorganization"></a>Reorganizaci dat
+## <a name="data-reorganization"></a>Opětovné uspořádání dat
 
-### <a name="shred-extracted-data-to-populate-star-schema-tables"></a>Skartování extrahovaná data k naplnění hvězdičky schématu tabulek
+### <a name="shred-extracted-data-to-populate-star-schema-tables"></a>Skartování extrahovaná data k vyplnění tabulky hvězdicového schématu
 
-Dalším krokem je skartovat extrahované nezpracovaná data do sady tabulek, které jsou optimalizované pro analytické dotazy. Hvězdičky – schéma se používá. Tabulka faktů centrální obsahuje jednotlivých lístků prodeje záznamy. Ostatní tabulky se naplní související data o místa, události a zákazníků. A je čas na tabulky dimenzí. 
+Dalším krokem je odstranění extrahované nezpracovaná data do sady tabulek, které jsou optimalizované pro analytické dotazy. Hvězdicové schéma se používá. Tabulku faktů centrální obsahuje prodejní záznamů jednotlivých lístků. Další tabulky se vyplní se souvisejícími daty o místa, události a zákazníky. A jsou tabulky dimenzí čas. 
 
-V této části kurzu definovat a spusťte úlohu, která sloučí extrahované nezpracovaná data s daty v tabulkách hvězdičky schématu. Po dokončení úlohy sloučení nezpracovaná data jsou odstraněna, ponechat připravení naplnit daty další klienta tabulky extrahovat úlohy.
+V této části kurzu definovat a spustit úlohu, která sloučí extrahované nezpracovaná data s daty v hvězdicové schéma tabulky. Po dokončení úlohy sloučení se nezpracovaná data se odstraní, byste museli opustit připravení vyplněn prostředkem další data tenanta tabulky extrahovat úlohy.
 
-1. V aplikaci SSMS, připojte k **jobaccount** databáze v katalogu-dpt -&lt;uživatele&gt;.
-2. V aplikaci SSMS, otevřete *...\Learning Modules\Operational Analytics\Tenant Analytics\ShredRawExtractedData.sql*.
-3. Stiskněte klávesu **F5** spustit skript, který chcete definovat úlohu, která volá sp_ShredRawExtractedData uložené procedury v úložišti analytics.
+1. V aplikaci SSMS připojit k **jobaccount** databáze v katalogu-dpt -&lt;uživatele&gt;.
+2. V aplikaci SSMS otevřete *...\Learning Modules\Operational Analytics\Tenant Analytics\ShredRawExtractedData.sql*.
+3. Stisknutím klávesy **F5** spustit skript, který chcete definovat úlohu, která volá sp_ShredRawExtractedData uloženou proceduru v úložišti analytics.
 4. Povolit dostatek času pro úlohu úspěšně spustit.
-    - Zkontrolujte **životního cyklu** sloupec tabulky jobs.jobs_execution pro stav úlohy. Ujistěte se, že úloha **úspěšné** než budete pokračovat. Spuštění úspěšné zobrazí data podobně jako v následujícím grafu:
+    - Zkontrolujte **životního cyklu** sloupec tabulky jobs.jobs_execution pro stav úlohy. Ujistěte se, že úloha **Succeeded** než budete pokračovat. Úspěšné spuštění zobrazí data, podobně jako v následující tabulce:
 
 ![Skartace](media/saas-tenancy-tenant-analytics/shreddingJob.PNG)
 
@@ -163,81 +163,81 @@ V této části kurzu definovat a spusťte úlohu, která sloučí extrahované 
 
 ### <a name="visualize-tenant-data"></a>Vizualizace dat klienta
 
-Data v tabulce hvězdičky schéma poskytuje všechny lístku prodejní data potřebná pro analýzy. Aby bylo snazší zobrazíte trendy ve velkých datových sad, potřebujete je vizualizovat graficky.  V této části se dozvíte, jak používat **Power BI** manipulaci a vizualizaci dat klienta jste extrahovali a uspořádány.
+Data v tabulce hvězdicového schématu obsahuje všechny prodejní data lístku potřeby vaší analýzy. Aby bylo snazší zobrazit trendy ve velkých sadách dat, budete muset vizualizovat graficky.  V této části se dozvíte, jak používat **Power BI** pracovat a vizualizace dat tenanta máte extrahována a uspořádané.
 
-Pomocí následujících kroků pro připojení k Power BI a k importu zobrazení, která jste vytvořili dříve:
+Následující kroky použijte pro připojení k Power BI a k importování zobrazení, která jste vytvořili dříve:
 
-1. Spusťte Power BI desktop.
-2. Na pásu karet Domů vyberte **načíst Data**a vyberte **více...** v nabídce.
-3. V **načíst Data** okně vyberte Azure SQL Database.
-4. V okně databáze přihlášení, zadejte název serveru (katalogu-dpt -&lt;uživatele&gt;. database.windows.net). Vyberte **Import** pro **režim připojení dat**a pak klikněte na tlačítko OK. 
+1. Spusťte Power BI desktopu.
+2. Z pásu karet Domů vyberte **získat Data**a vyberte **více...** v nabídce.
+3. V **získat Data** okna, vyberte databázi SQL Azure.
+4. V okně databáze přihlášení, zadejte název serveru (catalog-dpt -&lt;uživatele&gt;. database.windows.net). Vyberte **Import** pro **režim připojení dat**a potom klikněte na tlačítko OK. 
 
     ![signinpowerbi](./media/saas-tenancy-tenant-analytics/powerBISignIn.PNG)
 
-5. Vyberte **databáze** v levém podokně, pak zadejte uživatelské jméno = *vývojáře*a zadejte heslo = *P@ssword1*. Klikněte na **Připojit**.  
+5. Vyberte **databáze** v levém podokně, zadejte uživatelské jméno = *developer*a zadejte heslo = *P@ssword1*. Klikněte na **Připojit**.  
 
     ![databasesignin](./media/saas-tenancy-tenant-analytics/databaseSignIn.PNG)
 
-6. V **Navigátor** podokně v části databáze analýzy, vyberte hvězdičky schéma tabulky: fact_Tickets dim_Events, dim_Venues, dim_Customers a dim_Dates. Potom vyberte **zatížení**. 
+6. V **Navigátor** podokně v části analytickou databázi, vyberte hvězdicového schématu tabulky: fact_Tickets dim_Events, dim_Venues, dim_Customers a dim_Dates. Potom vyberte **zatížení**. 
 
-Blahopřejeme! Mít úspěšně načtena data do Power BI. Nyní můžete začít seznamovat se zajímavé vizualizace, se kterými získáte přehled o vašich klientů. Dále můžete provede analytics můžete povolit jak poskytovat řízené daty doporučení obchodní oddělení Wingtip lístků. K optimalizaci obchodní model a zákazník prostředí může pomoci doporučení.
+Blahopřejeme! Úspěšně jste načtení dat do Power BI. Nyní můžete začít zkoumat zajímavé vizualizace, se kterými získáte přehled o vašich klientů. Dále si projdete analytics můžete povolit jak poskytovat doporučení na základě dat týmu obchodní aplikace Wingtip Tickets. Doporučení může pomoct optimalizovat prostředí obchodní model a zákazníků.
 
-Můžete začít analýza data prodeje lístků zobrazíte variace využití napříč místa. Vyberte následující možnosti v Power BI k vykreslení pruhový graf z celkového počtu lístků za účelem prodeje podle jednotlivých místo. Z důvodu náhodné variace v lístku generátoru může být odlišné výsledky.
+Začnete tím, že analýza prodejních dat lístku zobrazíte změnu ve využití napříč registrují. Vyberte následující možnosti v Power BI k vykreslení pruhový graf z celkového počtu lístků prodávaný společností každé místo. Z důvodu náhodných kolísání generátor lístek výsledky mohou být jiný.
  
 ![TotalTicketsByVenues](./media/saas-tenancy-tenant-analytics/TotalTicketsByVenues.PNG)
 
-Předchozí výkresu potvrdí, že počet lístků za účelem prodeje podle jednotlivých místo se liší. Místa, které prodej lístků další se intenzivněji než místa, které prodej lístků méně pomocí služby. Může mít příležitost Zde můžete nastavit, přidělení prostředků podle potřeb různých klienta.
+Předchozí diagram potvrdí, že počet lístky prodávaný společností každé místo se liší. Místa, které prodej lístků další nevyčerpáte než místa, které prodej lístků méně používání služby. Můžou existovat příležitost zde přizpůsobit přidělení prostředků podle potřeb jiného tenanta.
 
-Dále můžete analyzovat dat a zjistit, jak prodej lístků lišit v průběhu času. Vyberte následující možnosti v Power BI k vykreslení celkový počet lístků prodaných každý den po dobu 60 dnů.
+Můžete hlouběji analyzovat data chcete zobrazit, jak prodej lístků mění v čase. Vyberte následující možnosti v Power BI k vykreslení celkový počet lístky prodává každý den po dobu 60 dnů.
  
 ![SaleVersusDate](./media/saas-tenancy-tenant-analytics/SaleVersusDate.PNG)
 
-Předchozí grafu zobrazí prodejní Špička pro některé místa tohoto lístku. Tyto špičky posílit představu, že některé místa může být využívá systémové prostředky nepřiměřeně. Pokud není žádná zřejmé vzor dojít, když špičky.
+Předchozí graf zobrazuje prodeje zásobníku pro některé venues tohoto lístku. Čelí posílit myšlenkou, že některé venues může spotřebovávat systémové prostředky nepřiměřeně. V kdy provozní špičky uplatňují zatím není žádný zřejmý vzor.
 
-Dále budete chtít podrobněji význam dní prodej ve špičce. Když tyto vrcholů se provádějí až po lístků, přejděte na prodej? K vykreslení lístky za účelem prodeje za den, vyberte následující možnosti v Power BI.
+Další chcete hlouběji analyzovat významu těchto dnů prodej ve špičce. Kdy tyto špičky nastat po tickets přechod na prodej? K vykreslení lístky prodaných za den, vyberte následující možnosti v Power BI.
 
 ![SaleDayDistribution](./media/saas-tenancy-tenant-analytics/SaleDistributionPerDay.PNG)
 
-Předchozí výkresu ukazuje, že některé místa prodeje spoustu lístků na první den prodej. Jakmile lístky přejděte do prodeje za tyto místa, nejspíš MAD – expresní. Tato shluků aktivita podle místa několik může mít vliv na služby u jiných klientů.
+Předchozí diagram znázorňuje, že některé venues prodávat velké množství lístků na první den v prodeji. Jakmile tickets přechod na prodej na těchto místech, zřejmě MAD – špičce. Toto rozšíření aktivita podle místa několik může vliv na služby u jiných klientů.
 
-Můžete rozbalit dat znovu a zjistit, pokud tato MAD – expresní platí pro všechny události hostované tyto místa. V předchozí pozemků jste zaznamenali, že Contoso vzájemné součinnosti Hall prodává spoustu lístků, a že Contoso také Špička v lístku prodej v určité dny. Přehrání s možnostmi Power BI k vykreslení prodej kumulativní lístek pro vzájemné součinnosti Hall Contoso, zaměřené na prodej trendy pro jednotlivé události. Všechny události postupují stejným způsobem prodej?
+Můžete zobrazit podrobnosti o datech znovu a zjistit, jestli tento MAD – špičce hodnotu true pro všechny události, které jsou hostitelem těchto místa. V předchozí graf jste zaznamenali, že Contoso koncertní Hall prodává velké množství lístků a také, že Contoso je prudký nárůst v prodeji lístků v určité dny. Pohrajte si s možnostmi Power BI k vykreslení prodeje kumulativní lístků na vzájemné součinnosti Hall Contoso, zaměřený na vývoj prodeje pro každý z jeho události. Všechny události postupujte podle stejného vzoru prodej?
 
 ![ContosoSales](media/saas-tenancy-tenant-analytics/EventSaleTrends.PNG)
 
-Předchozí výkresu pro vzájemné součinnosti Hall Contoso ukazuje, že MAD – expresní neodehrává pro všechny události. Přehrání s nastavením filtru zobrazíte prodej trendy pro další místa.
+Předchozí diagram pro Contoso koncertní Hall ukazuje MAD – špičce se neodehrává pro všechny události. Pohrajte si s možností filtrování zobrazit trendy prodeji pro jiné místa.
 
-Přehled o lístek prodávané vzory může vést Wingtip lístky za účelem optimalizace svůj obchodní model. Místo ukládání všichni klienti stejně, možná Wingtip vhodné zavést úrovně služeb s úrovně různých výkonu. Větší místa, které je potřeba prodej lístků další za den může být nabízí vyšší úroveň s vyšší smlouvu o úrovni služeb (SLA). Své databáze umístěna ve fondu s vyššími limity prostředků jednotlivé databáze může mít tyto místa. Jednotlivých úrovních služby může mít hodinové prodeje přidělení, s další poplatky za překročení přidělení. Větší místa, které mají pravidelné shluky prodeje by využívat vyšší úrovně a Wingtip lístky monetizovat své služby efektivněji.
+Přehled vzorů pro prodej lístků může vést Wingtip Tickets optimalizovat svůj obchodní model. Místo účtování za všechny tenanty stejně, možná byste Wingtip zavést úrovně služby s různých velikostech výpočetních prostředků. Větší místa, které je potřeba prodej lístků další každý den může nabízet vyšší úroveň s vyšším smlouvy o úrovni služeb (SLA). Tyto toho může mít své databáze umístěn ve fondu s vyššími limity prostředků na databázi. Jednotlivé úrovně služby může mít hodinové prodejní přidělení, se poplatky účtují se poplatky za překročení přidělení. Větší místa, které mají pravidelné nárůstům prodeje, budou těžit z vyšší úrovně a Wingtip Tickets efektivněji monetizovat své služby.
 
-Někteří zákazníci Wingtip lístky stížnost mezitím se čtením prodej dostatek lístků k odůvodnění, náklady na služby. Možná v tyto přehledy není příležitost zvýšit prodej lístků pro nevedou podle očekávání místa. Vyšší prodej by zvýšit dosahovaný hodnotu této služby. Klikněte pravým tlačítkem na fact_Tickets a vyberte **novou measure**. Zadejte následující výraz pro nový míru názvem **AverageTicketsSold**:
+Zákazníci, kteří Wingtip Tickets stěžovat mezitím si, že se snaží prodej dostatek lístků k odůvodnění, náklady na služby. Třeba v těchto přehledů je příležitost k posílení prodeje lístků na nevedou místa podle očekávání. Vyšší sales by zvýšila vnímaná hodnotu této služby. Fact_Tickets klikněte pravým tlačítkem a vyberte **novou míru**. Zadejte následující výraz pro novou míru volá **AverageTicketsSold**:
 
 ```
 AverageTicketsSold = DIVIDE(DIVIDE(COUNTROWS(fact_Tickets),DISTINCT(dim_Venues[VenueCapacity]))*100, COUNTROWS(dim_Events))
 ```
 
-Vyberte následující možnosti vizualizace k vykreslení lístky procento za účelem prodeje podle jednotlivých místo k určení jejich relativní úspěch.
+Vyberte následující možnosti vizualizace k vykreslení lístky procento prodávaný společností každé místo pro určení jejich relativního úspěchu.
 
 ![AvgTicketsByVenues](media/saas-tenancy-tenant-analytics/AvgTicketsByVenues.PNG)
 
-Předchozí výkresu ukazuje, že i když většina místa prodeje více než 80 % jejich lístků, některé jsou naopak obtížně zvládá vyplnění víc než poloviny licencí. Přehrání s hodnoty dobře vybrat maximální nebo minimální procento lístků prodaných pro každý místo.
+Předchozí diagram ukazuje, i když většina venues prodávat více než 80 % svoje lístky, některé jsou jenom vyplnit více než polovinu licencovaných míst. Pohrajte si s hodnoty a vyberte maximální nebo minimální procento lístky prodává pro každé místo.
 
-Dříve prohloubit analýzy chcete zjistit, že prodej lístků mívají sklony dodržovat předvídatelný vzory. Toto zjišťování může umožní Wingtip lístků nápovědy nevedou podle očekávání místa zvyšte lístku prodej doporučením dynamické ceny. Toto zjišťování může odhalit příležitost využívat machine learning postupy k předvídání prodej lístků pro každou jednotlivou událost. Predikce může rovněž pro dopad na výnosy nabídky slevy na prodej lístků. Power BI Embedded může integrovat do aplikace událostí správy. Integrace může pomoct vizualizovat předpokládaných prodeje a účinek různých slevy. Aplikace by mohla pomoci navrhnout optimální slevu má být použita přímo ze zobrazení analýzy.
+Dříve prohloubit vaše analýza ke zjištění, že prodej lístků mívají sklony dodržovat předvídatelným způsobem. Toto zjišťování může umožnit Wingtip Tickets nápovědy nevedou podle očekávání prodej lístků boost venues doporučením dynamické ceny. Toto zjišťování může odhalit příležitosti využívat machine learning postupy k předpovědi prodej lístků pro každou jednotlivou událost. Predikce může rovněž dopadu na výnosy z nabídky slevy na prodej lístků. Power BI Embedded může integrovat do aplikace správu událostí. Integrace může pomáhají vizualizovat předpokládané prodeje a vliv jiné slevy. Aplikace může pomoci navrhnout optimální slevy uplatňovat přímo ze zobrazení analytics.
 
-Jste zaznamenali trendů v datech klienta z aplikací WingTip. Můžete zamýšlené další způsoby, které aplikace může informovat obchodních rozhodnutí pro dodavatele aplikací SaaS. Dodavatelé můžete lépe nahrazovat potřebám svým klientům. Zpravidla v tomto kurzu má vybavený můžete pomocí nástrojů, které jsou potřeba provádět analýzy dat klienta na základě kterých vaše firmám rozhodnutí řízené daty.
+Trendy v datech tenanta z aplikace WingTip jste zaznamenali. Můžete tento další způsoby, jak aplikace může informovat obchodní rozhodnutí pro dodavatele aplikací SaaS. Dodavatelé můžete lépe vyhovovaly potřebám svým klientům. Snad v tomto kurzu má vybavené vám nástroje potřebné k provedení analýzy na data tenanta pro vaši podnikům datově řízená rozhodnutí.
 
 ## <a name="next-steps"></a>Další postup
 
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
-> - Nasazení databáze analýzy klienta s tabulkami předem definované hvězdicového schématu
-> - Použít elastické úlohy extrahovat data z databáze nástroje klienta
-> - Sloučit extrahovaná data do tabulky ve schématu hvězdičky určený pro analýzu
-> - Dotaz na databázi analýzy 
-> - Sledovat trendy v datech klienta pomocí Power BI pro vizualizaci dat 
+> - Nasazení analytické databáze tenantů s předem definovaných hvězdicového schématu tabulky
+> - Elastické úlohy umožňují extrahovat data z všechny databáze tenantů
+> - Sloučit extrahovaná data do tabulek v hvězdicové schéma navržená pro analýzy
+> - Dotazování databáze analýzy 
+> - Pomocí Power BI pro vizualizace dat můžete sledovat trendy v datech tenanta 
 
 Blahopřejeme!
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-- Další [návodů, které aplikace pro adresář Wingtip SaaS](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials).
+- Další [kurzy, které vycházejí z aplikace SaaS aplikace Wingtip](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials).
 - [Elastické úlohy](sql-database-elastic-jobs-overview.md).

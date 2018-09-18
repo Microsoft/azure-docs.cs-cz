@@ -1,22 +1,24 @@
 ---
-title: 86 kategorie taxonomii pro rozhraní API vize počítače | Microsoft Docs
-description: Získáte 86 kategorie taxonomii pro rozhraní API vize počítače v kognitivní služby společnosti Microsoft.
+title: 86 kategorie taxonomii pro rozhraní API pro počítačové zpracování obrazu
+titlesuffix: Azure Cognitive Services
+description: Získejte 86 kategorie taxonomii pro rozhraní API pro počítačové zpracování obrazu ve službě Azure Cognitive Services.
 services: cognitive-services
 author: KellyDF
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
-ms.topic: article
+ms.topic: reference
 ms.date: 12/19/2016
 ms.author: kefre
-ms.openlocfilehash: c44345ac1829f09cc855483278198883ca021159
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: b5da9a19d51bef6ae31b89c5b8fc8ae4b7c5177e
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342442"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984903"
 ---
-##<a name="86-categories-taxonomy"></a>Taxonomii 86 kategorií
+# <a name="86-categories-taxonomy"></a>Taxonomie kategorií 86
+
 abstract_
 
 abstract_net

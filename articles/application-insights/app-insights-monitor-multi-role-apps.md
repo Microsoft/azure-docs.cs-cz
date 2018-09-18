@@ -10,20 +10,20 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/17/2017
+ms.date: 09/17/2018
 ms.author: mbullwin
-ms.openlocfilehash: 191913500daf7f1ab20f92c7e951f58598d5d14e
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: bf247748415822d5ba1a0e652fdeff384d8e8db1
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35642925"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982047"
 ---
 # <a name="monitor-multi-component-applications-with-application-insights-preview"></a>Monitorování aplikace s více komponentami pomocí Application Insights (preview)
 
 Můžete monitorovat aplikace, které se skládají z několika součástí serveru, role nebo služby s [Azure Application Insights](app-insights-overview.md). Stav součásti a vztahy mezi nimi jsou zobrazeny v rámci jedné mapy aplikace. Můžou sledovat jednotlivé operace, ať už několik součástí automatické korelace HTTP. Diagnostiky kontejnerů můžete integrovat a korelují s telemetrie application. Použijte jeden prostředek Application Insights pro všechny součásti vaší aplikace. 
 
-![Mapa aplikace s více komponentami](./media/app-insights-monitor-multi-role-apps/app-map.png)
+![Mapa aplikace s více komponentami](./media/app-insights-monitor-multi-role-apps/application-map-001.png)
 
 K označení jakékoli funkční součást rozsáhlé aplikace tady používáme "součást". Například typické obchodní aplikace se může skládat z kódu klienta, které jsou spuštěné v prohlížečích s jeden nebo další webové aplikace služby, které pak použijte zpět ukončení služby. Součásti serveru může být hostovaná místně na v cloudu, nebo může být Azure webové a pracovní role nebo může spustit v kontejnerech, jako je Docker nebo Service Fabric. 
 
@@ -33,7 +33,7 @@ Klíčovou techniku má odesílat telemetrická data z každé komponenty v apli
 
 Přepsání pro další informace o tom, `cloud_RoleName` viz vlastnost [přidat vlastnosti: ITelemetryInitializer](app-insights-api-filtering-sampling.md#add-properties-itelemetryinitializer).  
 
-V některých případech to nemusí být vhodné a možná dáte přednost použití samostatné prostředky pro různé skupiny součástí. Například budete muset použít různé prostředky pro účely fakturace nebo správy. Použití samostatné prostředky znamená, že se všechny součásti, na které se zobrazí v rámci jedné mapy aplikace; a že se nelze dotazovat komponentami v [Analytics](app-insights-analytics.md). Také budete muset nastavit samostatný prostředky.
+V některých případech to nemusí být vhodné a možná dáte přednost použití samostatné prostředky pro různé skupiny součástí. Například budete muset použít různé prostředky pro účely fakturace nebo správy.
 
 S výstrahou budeme předpokládat ve zbývající části tohoto dokumentu, který chcete odeslat data z několika součástí na jeden prostředek Application Insights.
 

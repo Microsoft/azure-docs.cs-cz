@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: 19e47e0dba1a89ea32f42ef0bafc26f8c59b4ad7
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 4defdabde19b2dcf7f9872fd6da1b63b0d244913
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43288298"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983814"
 ---
 # <a name="how-to-distribute-data-globally-with-azure-cosmos-db"></a>Globální distribuce dat pomocí služby Azure Cosmos DB
 Azure je všudypřítomná – to globální stopu napříč více než 50 geografických oblastí a pokus se neustále rozšiřuje. Globální přítomnost služeb jeden diferencované možnosti, které Azure nabízí svým vývojářům se schopnost vytvářet, nasazovat a spravovat snadno globálně distribuované aplikace. 
@@ -28,7 +28,7 @@ Azure je všudypřítomná – to globální stopu napříč více než 50 geogr
 
 Protože jsme zjistili při vytváření služby Azure Cosmos DB, přidávání globální distribuce nemůže být opomíjet. Nemůže být "přišroubovány na" imitovaná databázový systém "jedna lokalita". Funkce nabízené globálně distribuovanou databázi span nad rámec, tradiční zeměpisné katastrofě obnovení (Geo-DR) nabízených databází "jednou lokalitou". Nabízí možnost Geo-DR databáze jedné lokality jsou striktní podmnožinou globálně distribuované databáze. 
 
-S globální distribuce služby Azure Cosmos DB na klíč, vývojáři není nutné vytvářet své vlastní generování uživatelského rozhraní replikace buď když vzor Lambda (například [AWS DynamoDB replikace](https://github.com/awslabs/dynamodb-cross-region-library/blob/master/README.md)) přes protokol databáze nebo podle provádění "double zápisy" napříč několika oblastmi. Děláme *není* doporučujeme tyto přístupy, protože jde o neuskutečnitelnou zajistili její správnost tyto přístupy a poskytovat zvukové smlouvy o úrovni služeb. 
+S globální distribuce služby Azure Cosmos DB na klíč nemají vývojářům vytvářet své vlastní replikace generování uživatelského rozhraní pomocí vzoru Lambda přes protokol databáze nebo provedením "double zápisy" napříč několika oblastmi. Děláme *není* doporučujeme tyto přístupy, protože jde o neuskutečnitelnou zajistili její správnost tyto přístupy a poskytovat zvukové smlouvy o úrovni služeb. 
 
 Tento článek poskytuje přehled o možnosti globální distribuce služby Azure Cosmos DB. Také popisujeme jedinečný přístup služby Azure Cosmos DB k poskytování komplexní smlouvy SLA. 
 

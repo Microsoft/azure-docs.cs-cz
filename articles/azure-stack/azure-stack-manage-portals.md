@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: mabrigg
-ms.openlocfilehash: 975c5c2c5f0da7a6db946c6d1032b485947134d2
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 058e1f9abbf094fb49a21191f60195df53615451
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44717694"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985290"
 ---
 # <a name="using-the-administrator-portal-in-azure-stack"></a>Použití portálu správce ve službě Azure Stack
 
@@ -71,6 +71,8 @@ Portály správce a uživatele se zálohují na samostatných instancí služby 
 ### <a name="customize-the-dashboard"></a>Přizpůsobení řídicího panelu
 
 Řídicí panel obsahuje sadu výchozích dlaždic. Můžete vybrat **upravit řídicí panel** změnit výchozí řídicí panel, nebo vyberte **nový řídicí panel** přidáte vlastní řídicí panel. Dlaždice můžete snadno přidat na řídicí panel. Například můžete vybrat **+ vytvořit prostředek**, klikněte pravým tlačítkem na **nabízí + plány**a pak vyberte **připnout na řídicí panel**.
+
+V některých případech se může zobrazit prázdný řídicí panel portálu. Obnovit řídicí panel, klikněte na tlačítko **upravit řídicí panel**a pak klikněte pravým tlačítkem myši a vyberte **resetovat do výchozího stavu**.
 
 ### <a name="quick-access-to-online-documentation"></a>Rychlý přístup k online dokumentaci
 

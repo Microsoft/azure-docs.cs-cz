@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/17/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: a7456bedeb6bc870ad5d6892fe697fb2dfcd3bc1
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: a85fb6ce211e6089f67cb2e2f265fbda06a25b10
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39527800"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45735081"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Export dat z úložiště objektů Blob v Azure pomocí služby Azure Import/Export
 Tento článek obsahuje podrobné pokyny o tom, jak bezpečně export velkých objemů dat z úložiště objektů Blob v Azure pomocí služby Azure Import/Export. Služba vyžaduje, abyste zasílejte prázdné disky do datacentra Azure. Službu exportuje data z vašeho účtu úložiště do jednotky a potom odešle zpět jednotky.
@@ -23,7 +23,7 @@ Tento článek obsahuje podrobné pokyny o tom, jak bezpečně export velkých o
 Než začnete vytvářet úlohy exportu pro přenos dat z Azure Blob Storage, pečlivě zkontrolujte a dokončete následující seznam požadovaných součástí pro tuto službu. Musíte mít:
 
 - Máte aktivní předplatné Azure, který lze použít pro službu Import/Export.
-- Máte alespoň jeden účet služby Azure Storage. Zobrazit seznam [nepodporuje účty úložiště a typy úložiště pro službu Import/Export](storage-import-export-requirements.md). Informace o vytvoření nového účtu úložiště najdete v tématu [způsob vytvoření účtu úložiště](storage-create-storage-account.md#create-a-storage-account).
+- Máte alespoň jeden účet služby Azure Storage. Zobrazit seznam [nepodporuje účty úložiště a typy úložiště pro službu Import/Export](storage-import-export-requirements.md). Informace o vytvoření nového účtu úložiště najdete v tématu [způsob vytvoření účtu úložiště](storage-quickstart-create-account.md).
 - Používejte odpovídající počet disků [podporované typy](storage-import-export-requirements.md#supported-disks).
 - Máte účet FedEx/DHL.  
     - Účet musí být platná, by měl mít vyrovnávání a musí mít vrácení funkce.

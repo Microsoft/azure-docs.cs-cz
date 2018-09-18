@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 07/13/2018
+ms.date: 09/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 489d9c430db000710368a65f3100bb175ad00eae
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 988f77dd0f8f31f6e31e5371ed263d4c4195c105
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39041174"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984869"
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Galerie modulů a Runbooků Azure Automation
 Místo vytváření vlastních modulů a runbooků ve službě Azure Automation, můžete přistupovat širokou škálu scénářů, které již byly vytvořeny od Microsoftu a komunity.  Můžete použít tyto scénáře bez jakýchkoli úprav nebo můžete použít jako výchozí bod a upravit je pro vaše konkrétní požadavky.
@@ -94,6 +94,10 @@ Moduly prostředí PowerShell obsahují rutiny, které můžete použít v runbo
 
 > [!NOTE]
 > Moduly, které podporují jenom prostředí PowerShell core nejsou podporované ve službě Azure Automation a se nepovedlo importovat na webu Azure Portal, nebo se nasadí přímo z Galerie prostředí PowerShell.
+
+## <a name="python-runbooks"></a>Sady Runbook Pythonu
+
+Jsou k dispozici v sadách Runbook Python [Galerie centra skriptů](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&f%5B0%5D.Value=WindowsAzure&f%5B1%5D.Type=ProgrammingLanguage&f%5B1%5D.Value=Python&f%5B1%5D.Text=Python&sortBy=Date&username=). Runbook Python do Galerie centra skriptů můžete přispívat. Když, zajistíte tím, že přidáte značku **Python** při odesílání vašeho příspěvku.
 
 ## <a name="requesting-a-runbook-or-module"></a>Vyžádání do sady runbook nebo modulu
 Můžete odesílat žádosti o [User Voice](https://feedback.azure.com/forums/246290-azure-automation/).  Pokud potřebujete pomoc, zápis sady runbook nebo máte dotaz týkající se prostředí PowerShell, odeslat dotaz do našich [fórum](http://social.msdn.microsoft.com/Forums/windowsazure/en-US/home?forum=azureautomation&filter=alltypes&sort=lastpostdesc).

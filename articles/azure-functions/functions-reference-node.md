@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 03/04/2018
 ms.author: glenga
-ms.openlocfilehash: d80914fcd1f667924b52122b39f95871c1e21532
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: a8ee92d117a416d638f62b573dfb155f67bf66e0
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44298008"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983134"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Příručka pro vývojáře Azure Functions JavaScript
 
@@ -94,6 +94,13 @@ context.bindings.myOutput = {
 ```
 
 Všimněte si, že můžete také definujte výstupní vazby dat pomocí `context.done` metoda místo `context.binding` objektu (viz níže).
+
+### <a name="contextbindingdata-property"></a>Vlastnost context.bindingData
+
+```
+context.bindingData
+```
+Vrátí objekt s názvem, který obsahuje data volání triggeru metadata a funkce (`invocationId`, `sys.methodName`, `sys.utcNow`, `sys.randGuid`). Například aktivační událost metadat najdete v tomto [služby event hubs – příklad](functions-bindings-event-hubs.md#trigger---javascript-example).
 
 ### <a name="contextdone-method"></a>Context.Done – metoda
 ```
@@ -262,8 +269,9 @@ Při práci s triggerů HTTP, můžete přístup k objektům HTTP požadavků a 
     ```javascript
     context.bindings.response = { status: 201, body: "Insert succeeded." };
     ```
++ _[Pouze odpovědi]_  Voláním `context.res.send(body?: any)`. Je vytvořen odpověď HTTP se vstupem `body` jako text odpovědi. `context.done()` je implicitně volána.
 
-+ [Pouze odpovědi] Voláním `context.done()`. Zvláštní druh vazby HTTP vrátí odpověď, která je předána `context.done()` metody. Následující HTTP výstupní vazby definuje `$return` výstupní parametr:
++ _[Pouze odpovědi]_  Voláním `context.done()`. Zvláštní druh vazby HTTP vrátí odpověď, která je předána `context.done()` metody. Následující HTTP výstupní vazby definuje `$return` výstupní parametr:
 
     ```json
     {

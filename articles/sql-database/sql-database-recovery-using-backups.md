@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 09/14/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 75805cad43f015f1741193ec5a1ead1fa7603f41
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: bcb533fbaa788498734776147c9bd053d35bef60
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42059112"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45733558"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Obnovit databázi Azure SQL pomocí automatizovaných záloh databáze
 SQL Database nabízí tyto možnosti pro databázi pomocí obnovení [automatizovaných záloh databáze](sql-database-automated-backups.md) a [v rámci dlouhodobého uchovávání záloh](sql-database-long-term-retention.md). Můžete obnovit ze zálohy databáze do:
@@ -32,7 +32,7 @@ Obnovené databáze s sebou nese náklady náklady na úložiště za následuj�
 - Obnovení P11 – P15 a S4 až S12, P1 – P6, pokud je maximální velikost databáze větší než 500 GB.
 - Obnovení P1 – P6 pro S4 až S12, pokud je maximální velikost databáze větší než 250 GB.
 
-Dodatečné náklady jsou, protože maximální velikost obnovené databáze je větší než velikost zahrnutého úložiště pro úrovně výkonu a dodatečné úložiště zřízené nad rámec objemu zahrnutého v se navíc účtuje.  Podrobnosti o cenách dodatečného úložiště, najdete v článku [stránce s cenami SQL Database](https://azure.microsoft.com/pricing/details/sql-database/).  Pokud se skutečné množství využité je menší než velikost zahrnutého úložiště, pak toho dalších poplatků se lze vyvarovat snížením maximální velikost databáze na objemu zahrnutého v ceně.  
+Nadbytečné je náklady, protože maximální velikost obnovené databáze je větší než velikost zahrnutého úložiště pro výpočetního prostředí a dodatečné úložiště zřízené nad rámec objemu zahrnutého v se navíc účtuje.  Podrobnosti o cenách dodatečného úložiště, najdete v článku [stránce s cenami SQL Database](https://azure.microsoft.com/pricing/details/sql-database/).  Pokud se skutečné množství využité je menší než velikost zahrnutého úložiště, pak toho dalších poplatků se lze vyvarovat snížením maximální velikost databáze na objemu zahrnutého v ceně.  
 
 > [!NOTE]
 > [Automatizované zálohování databáze](sql-database-automated-backups.md) se používají při vytváření [kopírování databáze](sql-database-copy.md). 
@@ -43,7 +43,7 @@ Dodatečné náklady jsou, protože maximální velikost obnovené databáze je 
 Čas obnovení obnovíte databázi pomocí automatizovaných záloh databáze má vliv několika různými faktory: 
 
 * Velikost databáze
-* Úrovně výkonu databáze
+* Výpočty velikosti databáze
 * Počet zahrnutých protokoly transakcí
 * Množství aktivit, které je potřeba znovu přehrát obnovení do bodu obnovení
 * Šířka pásma sítě při obnovení do jiné oblasti 
@@ -72,11 +72,11 @@ Existující databázi můžete obnovit k dřívějšímu bodu v čase jako novo
 > Ukázkový skript prostředí PowerShell ukazuje, jak provést obnovení bodu v čase databáze, najdete v části [obnovení databáze SQL pomocí prostředí PowerShell](scripts/sql-database-restore-database-powershell.md).
 >
 
-Databázi můžete obnovit jakékoli služby vrstvy nebo úrovně výkonu a jako izolovanou databázi nebo do elastického fondu. Ujistěte se, že máte dostatek prostředků na logickém serveru nebo v elastickém fondu, na který provádíte obnovení databáze. Jakmile budete hotovi, obnovené databáze je normální, plně přístupné, online databáze. Obnovené databáze se účtuje za běžné sazby založené na jeho služby vrstvu a úroveň výkonu. Není účtovat poplatky, dokud se nedokončí obnovení databáze.
+Databázi můžete obnovit pro všechny úrovně služeb a velikosti výpočetní prostředky a jako izolovanou databázi nebo do elastického fondu. Ujistěte se, že máte dostatek prostředků na logickém serveru nebo v elastickém fondu, na který provádíte obnovení databáze. Jakmile budete hotovi, obnovené databáze je normální, plně přístupné, online databáze. Obnovená databáze se účtuje za běžné sazby podle úrovně služeb a jeho velikost výpočetních. Není účtovat poplatky, dokud se nedokončí obnovení databáze.
 
 Obecně obnovení databáze k dřívějšímu bodu pro účely obnovení. Pokud tak učiníte, můžete považovat za náhradu za původní databázi obnovené databáze nebo ho použít k načtení dat z a pak aktualizujte původní databáze. 
 
-* ***Databáze nahrazení:*** Pokud obnovené databáze je určena k nahrazení původní databáze, měli byste ověřit úrovně výkonu a/nebo úroveň služby jsou vhodné a škálovat databáze v případě potřeby. Můžete přejmenovat původní databáze a poté poskytnout obnovené databáze na původní název pomocí [ALTER DATABASE](/sql/t-sql/statements/alter-database-azure-sql-database) v T-SQL. 
+* ***Databáze nahrazení:*** Pokud obnovené databáze je určena k nahrazení původní databáze, měli byste ověřit výpočetního prostředí a/nebo úroveň služby jsou vhodné a škálovat databáze v případě potřeby. Můžete přejmenovat původní databáze a poté poskytnout obnovené databáze na původní název pomocí [ALTER DATABASE](/sql/t-sql/statements/alter-database-azure-sql-database) v T-SQL. 
 * ***Obnovení dat:*** Pokud budete chtít načíst data z obnovené databáze pro obnovení po chybě uživatele nebo aplikace, budete muset psát a spustit skripty pro zotavení potřebná data extrahovat data z obnovené databáze do původní databáze. I když operace obnovení může trvat dlouhou dobu pro dokončení, obnovení databáze je zobrazen v seznamu databází v průběhu procesu obnovení. Pokud během obnovení odstraníte databáze, operace obnovení byla zrušena a se vám neúčtují poplatky pro databáze, která nebyla dokončena, obnovení. 
 
 ### <a name="azure-portal"></a>portál Azure
@@ -146,7 +146,7 @@ Jak bylo uvedeno výše, kromě webu Azure portal je možné provádět obnoven�
 |  | |
 
 ## <a name="summary"></a>Souhrn
-Automatické zálohování ochrana vaší databáze od uživatele a chyb aplikací a database náhodné odstranění dlouhotrvající výpadků. Tato integrovaná funkce je dostupná pro všechny úrovně služeb a úrovně výkonu. 
+Automatické zálohování ochrana vaší databáze od uživatele a chyb aplikací a database náhodné odstranění dlouhotrvající výpadků. Tato integrovaná funkce je dostupná pro všechny úrovně služeb a velikostí výpočetních. 
 
 ## <a name="next-steps"></a>Další postup
 * Přehled zajištění provozní kontinuity podnikání a scénáře, naleznete v tématu [přehled zajištění provozní kontinuity firmy](sql-database-business-continuity.md).

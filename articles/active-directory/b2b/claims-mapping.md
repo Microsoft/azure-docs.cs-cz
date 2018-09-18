@@ -4,18 +4,18 @@ description: Přizpůsobení deklarací identity uživatele, které jsou vystave
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/06/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 50dccd91b35fabae4f54c361eedf4c98dbd4995c
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: fd18af3cca200813ba447e642ab678c3c1a8900a
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35642889"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985673"
 ---
 # <a name="b2b-collaboration-user-claims-mapping-in-azure-active-directory"></a>Uživatele spolupráce B2B mapování deklarací v Azure Active Directory
 

@@ -8,14 +8,16 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 40c7b2865795f8c6a5cfbabe4d59aea1715d4a57
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 889f3928ee72c035035abb635eb71ec0b06a3b45
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42054673"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45730148"
 ---
-# <a name="create-an-eevent-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Vytvoření eEvent pravidla a nastavení oznámení v aplikaci Azure IoT Central
+# <a name="create-an-event-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Vytvoření události pravidla a nastavení oznámení v aplikaci Azure IoT Central
+
+*Tento článek se týká, tvůrci, správci a operátoři.*
 
 Azure IoT Central můžete použít pro vzdálené monitorování připojených zařízení. Pravidla ve službě Azure IoT Central umožňují monitorujte svoje zařízení téměř v reálném čase a automaticky vyvolat akce, jako například odeslat e-mailu nebo aktivovat Microsoft Flow. Pomocí několika kliknutí můžete definovat podmínky pro kterou chcete monitorovat data zařízení a nakonfigurujte odpovídající akci. Tento článek vysvětluje, jak vytvořit pravidla, která sledovat události odeslané ze zařízení.
 
@@ -37,10 +39,10 @@ Pokud chcete vytvořit pravidlo události, šablona zařízení musí mít alesp
     ![Zatím žádná pravidla](media\howto-create-event-rules\Rules_Landing_Page.png)
 
 
-1. Na **pravidla** klikněte na tlačítko **+ nové pravidlo** zobrazíte typy pravidel, můžete vytvořit.
+1. Na **pravidla** klikněte na tlačítko **upravit šablonu** a potom **+ nové pravidlo** zobrazíte typy pravidel, můžete vytvořit.
 
 
-1. Klikněte na **události** dlaždice a vytvořte pravidlo.
+1. Klikněte na **události** dlaždici vytvořit událost pravidlo monitorování.
 
     ![Typy pravidel](media\howto-create-event-rules\Rule_Types.png)
 
@@ -93,6 +95,8 @@ V této části se dozvíte, jak vytvořit akce má provést, když se aktivuje 
 
 1. Chcete-li uložit pravidlo, zvolte **Uložit**. Pravidlo uvedete během několika minut a zahájí monitorování událostí odesílaných do vaší aplikace. Když se podmínka uvedená v pravidle shoduje, pravidlo aktivuje nakonfigurovaná e-mailové akce.
 
+1. Zvolte **provádí** ukončíte **upravit šablonu** režimu.
+
 Pravidla, jako je Microsoft Flow a webhooky, můžete přidat další akce. Můžete přidat až 5 akcí na jedno pravidlo.
 
 - [Microsoft Flow akce](howto-add-microsoft-flow.md) aktivovala pracovního postupu v Microsoft Flow, když se aktivuje pravidlo 
@@ -102,7 +106,7 @@ Pravidla, jako je Microsoft Flow a webhooky, můžete přidat další akce. Mů�
 
 Akce lze konfigurovat také pomocí **vlastnosti zařízení** jako parametr. Pokud e-mailovou adresu se ukládá jako vlastnosti zařízení, pak je možné použít při definování **k** adresu.
 
-## <a name="delete-a-rule"></a>Odstranit pravidlo
+## <a name="delete-a-rule"></a>Odstranění pravidla
 
 Pokud pravidlo již nepotřebujete, odstraňte otevřením pravidlo a výběr **odstranit**. Odstraňuje se pravidlo odebere z šablony zařízení a všechna přidružená zařízení.
 

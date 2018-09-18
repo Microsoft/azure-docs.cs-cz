@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/27/2017
 ms.author: seguler
 ms.component: common
-ms.openlocfilehash: ee24a055c6a3c53b9753728e13a7687e722c1c91
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: e62023f5aeca73973598430ed357e8e9800a17f8
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39526211"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45732239"
 ---
 # <a name="transfer-data-with-the-microsoft-azure-storage-data-movement-library"></a>Přenos dat pomocí knihovna pro přesun dat úložiště Microsoft Azure
 
@@ -35,10 +35,10 @@ Tento dokument ukazuje, jak vytvořit konzolovou aplikaci .NET Core, který bě�
 **Co budete potřebovat:**
 
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [Účet úložiště Azure](storage-create-storage-account.md#create-a-storage-account)
+* [Účet úložiště Azure](storage-quickstart-create-account.md)
 
 > [!NOTE]
-> Tato příručka předpokládá, že jste už obeznámení s [služby Azure Storage](https://azure.microsoft.com/services/storage/). Pokud ne, čtení [Úvod do služby Azure Storage](storage-introduction.md) dokumentace je užitečné. Co je nejdůležitější, budete muset [vytvořit účet úložiště](storage-create-storage-account.md#create-a-storage-account) chcete začít používat knihovna pro přesun dat.
+> Tato příručka předpokládá, že jste už obeznámení s [služby Azure Storage](https://azure.microsoft.com/services/storage/). Pokud ne, čtení [Úvod do služby Azure Storage](storage-introduction.md) dokumentace je užitečné. Co je nejdůležitější, budete muset [vytvořit účet úložiště](storage-quickstart-create-account.md) chcete začít používat knihovna pro přesun dat.
 > 
 > 
 

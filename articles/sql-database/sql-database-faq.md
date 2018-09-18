@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: reference
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 09/14/2018
 ms.author: carlrab
-ms.openlocfilehash: 218bd9031193d4987fdc1e0ae2bf302bdb028673
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 479f7df740e75ae44a5198414036ff0b0c216471
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604497"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45730643"
 ---
 # <a name="sql-database-faq"></a>SQL Database – Nejčastější dotazy
 
@@ -41,7 +41,7 @@ V mnoha případech může aplikace využít jednoduchost předem nakonfigurovan
 Modely založené na DTU a na virtuálních jádrech budou i nadále koexistovat. Spouštíme model založený na virtuálních jádrech v reakci na požadavky zákazníků o zajištění větší transparentnosti databázových prostředků a schopnost škálovat své výpočetní a úložnou kapacitu nezávisle. Model založený na virtuálních jádrech také umožňuje další úspory pro zákazníky s aktivním programem Software Assurance prostřednictvím zvýhodněné hybridní využití Azure pro SQL Server.
 
 ## <a name="how-should-i-choose-between-the-dtu-based-purchasing-model-vs-the-vcore-based-purchasing-model"></a>Čeho si mám vybrat mezi vs založený na DTU nákupní model nákupní model založený na virtuálních jádrech? 
-Jednotka přenosu dat (DTU) se měří na základě výkonu procesoru, paměti a operací čtení a zápisu. Úrovně výkonu založené na DTU představují předem nakonfigurované sady prostředků pro zajištění různých úrovní výkonu aplikací. Zákazníci, kteří nechtějí starat o podkladové prostředky a dáváte přednost jednoduchosti, kterou nabízejí předem nakonfigurované sady prostředků při placení pevnou měsíční zjistit model založený na DTU více odpovídají jejich potřebám. Pro zákazníky, kteří potřebovat lepší přehled o příslušné prostředky nebo se škálovat nezávisle pro zajištění optimálního výkonu, ale model založený na virtuálních jádrech budou nejlepší volbou.  Kromě toho pokud zákazník má aktivní Software Assurance (SA) pro SQL Server, mohou využít své stávající investice a ušetřit až 30 % s [zvýhodněné hybridní využití Azure pro SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md).  Možnosti v rámci každé tyto modely nákupu poskytují výhody plně spravované služby, jako jsou automatizované zálohy, opravy a aktualizace softwaru. 
+Jednotka přenosu dat (DTU) se měří na základě výkonu procesoru, paměti a operací čtení a zápisu. Velikosti výpočetních založený na DTU představují předem nakonfigurované sady prostředků jednotky různé úrovně výkonu aplikace. Zákazníci, kteří nechtějí starat o podkladové prostředky a dáváte přednost jednoduchosti, kterou nabízejí předem nakonfigurované sady prostředků při placení pevnou měsíční zjistit model založený na DTU více odpovídají jejich potřebám. Pro zákazníky, kteří potřebovat lepší přehled o příslušné prostředky nebo se škálovat nezávisle pro zajištění optimálního výkonu, ale model založený na virtuálních jádrech budou nejlepší volbou.  Kromě toho pokud zákazník má aktivní Software Assurance (SA) pro SQL Server, mohou využít své stávající investice a ušetřit až 30 % s [zvýhodněné hybridní využití Azure pro SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md).  Možnosti v rámci každé tyto modely nákupu poskytují výhody plně spravované služby, jako jsou automatizované zálohy, opravy a aktualizace softwaru. 
 
 ## <a name="what-is-the-azure-hybrid-benefit-for-sql-server"></a>Co je Zvýhodněné hybridní využití Azure pro SQL Server? 
 [Zvýhodněné hybridní využití Azure pro SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md) pomáhá maximalizovat využití stávajících investic do licencí a Zrychlete svůj přechod do cloudu. Zvýhodněné hybridní využití Azure pro SQL Server je benefit založené na Azure, umožňující využijte svoje licence SQL Server s programem Software Assurance a platit tak sníženou sazbu ("základní tarif") pro službu SQL Database. Zvýhodněné hybridní využití Azure pro SQL Server je k dispozici ve verzi public preview založený na virtuálních jádrech nákupní model pro izolované databáze SQL Database a elastické fondy. Může použít tuto výhodu, i v případě, že SKU není aktivní, ale mějte na paměti, že se základní sazba se použije od okamžiku, vyberte na portálu Azure portal. Kredity se nevydávají zpětně.
@@ -78,8 +78,8 @@ Pro úložiště záloh u jediné databáze bude se vám účtovat na základě 
 ## <a name="how-do-i-select-the-right-sku-when-converting-an-existing-database-to-the-new-service-tiers"></a>Jak se při převodu existující databáze na nové úrovně služeb vyberte správné SKU? 
 Pro stávající aplikace SQL Database s použitím modelu založeného na DTU služba úrovni General Purpose je srovnatelná se na úrovni Standard. Úroveň pro důležité obchodní informace služby je srovnatelné s úrovní Premium. V obou případech byste měli přidělit nejméně 1 virtuální jádro pro každý 100 DTU, které vaše aplikace používá v modelu založeném na DTU.
 
-## <a name="do-the-new-vcore-based-service-tiers-offer-the-performance-levels-compatible-with-all-existing-service-level-objectives-slos"></a>Úrovně výkonu, která je kompatibilní s všechny stávající cíle na úrovni služby (slo) nabízí nové úrovně služeb založený na virtuálních jádrech?
-Nové úrovně služeb založený na virtuálních jádrech nabízet srovnatelné výkonu pro všechny elastických fondů a databází pomocí 100 Dtu nebo více.  Budeme postupně přidávat další objekty slo postupně tak, aby vyhovovaly dílčí úlohy 100 DTU.
+## <a name="do-the-new-vcore-based-service-tiers-offer-the-compute-sizes-compatible-with-all-existing-compute-sizes"></a>Nové úrovně služeb založený na virtuálních jádrech nabízí kompatibilní se stávajícími všech velikostí výpočetních výpočtů velikostí?
+Nové úrovně služeb založený na virtuálních jádrech nabízet srovnatelné výkonu pro všechny elastických fondů a databází pomocí 100 Dtu nebo více.  Budeme nadále přidat že další výpočetní velikosti postupně tak, aby vyhovovaly dílčí úlohy 100 DTU.
 
 ## <a name="are-there-any-database-feature-differences-between-the-existing-dtu-based-and-new-vcore-based-service-tiers"></a>Existují jakékoli databázi rozdíly ve funkcích mezi stávající úrovně založený na DTU a nové služby založený na virtuálních jádrech? 
 Nové úrovně služeb pro podporu nadmnožinu funkcí dostupných prostřednictvím aktuální založený na DTU nabídek. Další funkce zahrnují sadu zobrazení další dynamické správy (DMV) a možnosti konfigurace dalších prostředků. 
@@ -110,7 +110,7 @@ Vzhledem k tomu modelu virt. jader umožňuje nezávislé řízení množství z
 ## <a name="how-often-can-i-adjust-the-resources-per-pool"></a>Jak často můžu měnit prostředky na fond?
 Tak často, jak chcete. Zobrazit [Správa elastických fondů](sql-database-elastic-pool.md).
 
-## <a name="how-long-does-it-take-to-change-the-service-tier-or-performance-level-of-a-single-database-or-move-a-database-in-and-out-of-an-elastic-pool"></a>Jak dlouho trvá Změna služby vrstvy nebo úrovně výkonu izolované databáze nebo přesunutí databáze do elastického fondu?
+## <a name="how-long-does-it-take-to-change-the-service-tier-or-compute-size-of-a-single-database-or-move-a-database-in-and-out-of-an-elastic-pool"></a>Jak dlouho trvá Změna úrovně služby nebo vypočítat velikost u jediné databáze nebo přesunutí databáze do elastického fondu?
 Změna úrovně služby databáze a přesuny fondu vyžaduje databáze, které se mají zkopírovat na platformě jako operaci na pozadí. Změna úrovně služby může trvat pár minut i několik hodin v závislosti na velikosti databáze. V obou případech se databáze zůstat online a dostupné během přesunu. Podrobnosti o změně izolované databáze najdete v tématu [Změna úrovně služby databáze](sql-database-service-tiers-dtu.md). 
 
 ## <a name="when-should-i-use-a-single-database-vs-elastic-databases"></a>Kdy mám použít izolované databáze a elastické databáze?
@@ -120,7 +120,7 @@ Obecně platí, elastické fondy jsou navrženy pro typické [software jako slu�
 SQL Database účtuje předvídatelná hodinová sazba na základě [zakoupení modelu](sql-database-service-tiers-dtu.md). Skutečné využití je vypočítán a poměrně po hodinách, takže na faktuře můžou objevit necelé hodiny. Například pokud databáze existuje po dobu 12 hodin v měsíci, zobrazí faktuře využití 0,5. 
 
 ## <a name="what-if-a-single-database-is-active-for-less-than-an-hour-or-uses-a-higher-service-tier-for-less-than-an-hour"></a>Co když izolované databáze je aktivní kratší dobu než hodinu nebo využívá vyšší úroveň služby pro kratší dobu než hodinu?
-Se vám účtovat každá hodina existence databáze pomocí nejvyšší úroveň služby a úroveň výkonu, která během této hodiny využívalo, bez ohledu na využití nebo na to, jestli byl databáze aktivní kratší dobu než hodinu. Například pokud vytvoření izolované databáze a po pěti minutách ji odstraníte vyúčtování projeví účtovat jedna hodina používání databáze. 
+Se vám účtovat každá hodina existence databáze pomocí nejvyšší úroveň služby a vypočítat velikost, která během této hodiny využívalo, bez ohledu na využití nebo na to, jestli byl databáze aktivní kratší dobu než hodinu. Například pokud vytvoření izolované databáze a po pěti minutách ji odstraníte vyúčtování projeví účtovat jedna hodina používání databáze. 
 
 Příklady:
 
@@ -141,8 +141,8 @@ Založený na DTU nákupní model příklady:
 Elastické fondy se účtují po následující vlastnosti:
 
 * Elastický fond se účtuje po jeho vytvoření, i když nejsou žádné databáze ve fondu.
-* Elastický fond se účtuje po hodinách. Jedná se o stejné měření četnost jako u úrovně výkonu izolované databáze.
-* Pokud je velikost elastického fondu, není až do dokončení operace změny velikosti fondu účtovat podle nové množství prostředků. To se používá stejný vzor jako v případě změny úrovně výkonu izolované databáze.
+* Elastický fond se účtuje po hodinách. Jedná se o stejné měření četnost jako u velikostí výpočetních izolovaných databází.
+* Pokud je velikost elastického fondu, není až do dokončení operace změny velikosti fondu účtovat podle nové množství prostředků. To se používá stejný vzor jako v případě změny velikosti výpočetního izolovaných databází.
 * Cena elastického fondu je založená na prostředky ve fondu. Cena elastického fondu nezávisí na počtu a využívání elastických databází v rámci něj.
 
 Podrobnosti najdete v tématu [SQL Database – ceny](https://azure.microsoft.com/pricing/details/sql-database/), [nákupní model založený na DTU](sql-database-service-tiers-dtu.md), a [nákupní model založený na virtuálních jádrech](sql-database-service-tiers-vcore.md).

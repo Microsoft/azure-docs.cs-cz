@@ -7,12 +7,12 @@ ms.date: 06/24/2018
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 571aa5a080ae4622a23fdb20d712327d4ec6fbf9
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: 5eb0ba659961d809d0ae471034b03263f87e3894
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42054229"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985494"
 ---
 # <a name="best-practices-for-device-configuration-within-an-iot-solution"></a>Osvědčené postupy pro konfiguraci zařízení v rámci řešení IoT
 
@@ -55,7 +55,7 @@ Tady jsou osvědčené postupy pro výrobce hardwaru a integrátory pracující 
 
 Tady jsou osvědčené postupy pro vývojáře řešení IoT, kteří zodpovídají za tvorbu systémů v Azure:
 
-* **Implementace [dvojčata zařízení](iot-hub-devguide-device-twins.md):** dvojčata zařízení povolit synchronizaci požadovaných konfigurací z cloudu a za ohlašování aktuální vlastnosti konfigurace a zařízení. Nejlepší způsob, jak implementovat dvojčata zařízení v rámci cloudové řešení pro aplikace je prostřednictvím [sad SDK Azure IoT](https://github.com/Azure/azure-iot-sdks.) dvojčata zařízení jsou nejvhodnější pro konfiguraci, protože jsou:
+* **Implementace [dvojčata zařízení](iot-hub-devguide-device-twins.md):** dvojčata zařízení povolit synchronizaci požadovaných konfigurací z cloudu a za ohlašování aktuální vlastnosti konfigurace a zařízení. Nejlepší způsob, jak implementovat dvojčata zařízení v rámci cloudové řešení pro aplikace je prostřednictvím [sad SDK Azure IoT](https://github.com/Azure/azure-iot-sdks). Dvojčata zařízení jsou nejvhodnější pro konfiguraci, protože jsou:
 
     * Podpora obousměrnou komunikaci.
     * Povolit pro oba stavy zařízení připojené a odpojené. 

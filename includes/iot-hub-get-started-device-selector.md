@@ -3,6 +3,7 @@
 > * [Simulované zařízení s .NET](../articles/iot-hub/quickstart-send-telemetry-dotnet.md)
 > * [Simulované zařízení s Javou](../articles/iot-hub/quickstart-send-telemetry-java.md)
 > * [Simulované zařízení s Node.js](../articles/iot-hub/quickstart-send-telemetry-node.md)
+> * [Simulované zařízení s využitím Pythonu](../articles/iot-hub/quickstart-send-telemetry-python.md)
 > * [IoT DevKit AZ3166 se sadou VSCode](../articles/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started.md)
 > * [Raspberry Pi s Node.js](../articles/iot-hub/iot-hub-raspberry-pi-kit-node-get-started.md)
 > * [Raspberry Pi s Pythonem](../articles/iot-hub/iot-hub-raspberry-pi-kit-python-get-started.md)
@@ -12,3 +13,4 @@
 > * [Adafruit Feather HUZZAH ESP8266 s rozhraním Arduino IDE](../articles/iot-hub/iot-hub-arduino-huzzah-esp8266-get-started.md)
 > * [Sparkfun ESP8266 Thing Dev s rozhraním Arduino IDE](../articles/iot-hub/iot-hub-sparkfun-esp8266-thing-dev-get-started.md)
 > * [Adafruit Feather M0 s rozhraním Arduino IDE](../articles/iot-hub/iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md)
+> * [iOS s Swift](../articles/iot-hub/quickstart-send-telemetry-ios.md)

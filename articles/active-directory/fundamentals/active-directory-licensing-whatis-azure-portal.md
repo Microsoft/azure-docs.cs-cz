@@ -1,28 +1,26 @@
 ---
-title: Co je licencování na základě skupin v Azure AD? | Microsoft Docs
-description: Popis licencování na základě skupin v Azure Active Directory, principy fungování a osvědčené postupy
+title: Co je skupina založená na licencování v Azure Active Directory? | Dokumenty Microsoft
+description: Další informace o licencování na základě skupin Azure Active Directory, včetně jeho fungování a osvědčené postupy.
 services: active-directory
 keywords: Licencování Azure AD
-documentationcenter: ''
 author: eross-msft
 manager: mtillman
-editor: ''
 ms.service: active-directory
 ms.component: fundamentals
-ms.topic: overview
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/13/2018
 ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 5f5aab6a8514636e8be09deb773748080871b9d4
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
-ms.translationtype: HT
+ms.openlocfilehash: 7848b52bcf5204a871920cbfab8a0e95223654d4
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39005227"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45735897"
 ---
-# <a name="group-based-licensing-basics-in-azure-active-directory"></a>Základní informace o licencování na základě skupin v Azure Active Directory
+# <a name="what-is-group-based-licensing-in-azure-active-directory"></a>Co je skupina založená na licencování v Azure Active Directory?
 
 Placené cloudové služby Microsoftu, jako jsou Office 365, Enterprise Mobility + Security, Dynamics 365 a další podobné produkty, vyžadují licence. Tyto licence se přiřazují jednotlivým uživatelům, kteří potřebují přístup k těmto službám. Ke správě licencí používají správci některý z portálů pro správu (Office nebo Azure) a rutiny PowerShellu. Azure Active Directory (Azure AD) je základní infrastruktura, která podporuje správu identit pro všechny cloudové služby Microsoftu. Azure AD uchovává informace o stavu přiřazení licencí uživatelům.
 
@@ -57,7 +55,7 @@ Toto jsou hlavní znaky licencování na základě skupin:
 
 Pokud máte požadavky k připomínkám nebo funkcím, napište nám je prosím na [fórum pro správu Azure AD](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=162510).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o jiných scénářích pro správu licencí pomocí licencování na základě skupin najdete v tématech:
 

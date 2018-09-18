@@ -5,18 +5,18 @@ services: active-directory
 documentationcenter: ''
 ms.service: active-directory
 ms.component: B2B
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 3d18f3751be1ce2b00d83ecae0eebb27f240b53c
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: e7d76138f9d3701fa7e3177227fbeb4386434126
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35642760"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983797"
 ---
 # <a name="add-b2b-collaboration-guest-users-without-an-invitation"></a>Přidání uživatelů typu Host pro spolupráci B2B bez pozvánky
 

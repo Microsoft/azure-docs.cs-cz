@@ -10,12 +10,12 @@ ms.custom: scale out apps
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: genemi
-ms.openlocfilehash: cc3e870d67f3c38fe4173275b6fd210d0c4ee05a
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 87560f3fb34c281b6802ef5079fd1445caba6db8
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423539"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983627"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>Nasazení a zkoumání víceklientské aplikace SaaS, která používá vzor databáze na tenanta s využitím SQL Database
 
@@ -83,7 +83,7 @@ Při nasazení aplikace, stáhněte si zdrojový kód a správu skripty.
 > Spustitelného obsahu (skriptů a knihovny DLL) mohou být blokovány Windows, když jsou stažené z externího zdroje a rozbalené soubory .zip. Postupujte podle kroků odblokujete soubor ZIP, před extrahovat skripty. Odblokování zajistí, že je povolené spouštět skripty.
 
 1. Přejděte [úložiště GitHub WingtipTicketsSaaS DbPerTenant][github-wingtip-dpt].
-1. Vyberte **klonovat nebo stáhnout**.
+1. Vyberte **Clone or download** (Naklonovat nebo stáhnout).
 1. Vyberte **stáhnout ZIP**a pak soubor uložte.
 1. Klikněte pravým tlačítkem myši **WingtipTicketsSaaS-DbPerTenant-master.zip** souboru a pak vyberte **vlastnosti**.
 1. Na **Obecné** kartu, vyberte možnost **Odblokovat** > **použít**.
@@ -242,7 +242,7 @@ Přejděte na server **tenants1-dpt -&lt;uživatele&gt;** a vyberte **Pool1** zo
 - První graf s popiskem **využití prostředků**, zobrazuje fond využití eDTU.
 - Druhý graf ukazuje využití eDTU pět Nejaktivnější databází ve fondu.
 
-Dva grafy znázorňují, elastické fondy a databáze SQL se skvěle hodí pro nepředvídatelnými úlohami aplikace SaaS. Grafy ukazují, že jsou čtyři databáze, každý s nárazovým zatížením až 40 Edtu a všechny databáze jsou pohodlně podporován 50 eDTU fondu. 50 eDTU fondu může podporovat těžší úlohy. Pokud databáze jsou zřízené jako samostatné databáze, každý z nich musí mít úroveň S2 (50 DTU) pro podporu nárazové. Náklady na čtyřech samostatných databází S2 jsou téměř třikrát cena fondu. V reálných situacích zákazníci SQL Database provozovat až 500 databází ve fondech s 200 eDTU. Další informace najdete v tématu [kurz o monitorování výkonu](saas-dbpertenant-performance-monitoring.md).
+Dva grafy znázorňují, elastické fondy a databáze SQL se skvěle hodí pro nepředvídatelnými úlohami aplikace SaaS. Grafy ukazují, že jsou čtyři databáze, každý s nárazovým zatížením až 40 Edtu a všechny databáze jsou pohodlně podporován 50 eDTU fondu. 50 eDTU fondu může podporovat těžší úlohy. Pokud databáze jsou zřízené jako izolované databáze, každý z nich musí mít úroveň S2 (50 DTU) pro podporu nárazové. Náklady na čtyřech samostatných databází S2 jsou téměř třikrát cena fondu. V reálných situacích zákazníci SQL Database provozovat až 500 databází ve fondech s 200 eDTU. Další informace najdete v tématu [kurz o monitorování výkonu](saas-dbpertenant-performance-monitoring.md).
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 

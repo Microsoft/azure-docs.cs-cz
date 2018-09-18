@@ -1,27 +1,25 @@
 ---
-title: Vysvětlení identity v Azure | Microsoft Docs
-description: Získejte základní informace o podmínkách, řešení identity Microsoft Azure, souvisejících konceptech a doporučeních, která vám pomohou rozhodnout o nejlepším řešení řízení identity pro vaši organizaci.
-keywords: ''
+title: Co je Microsoft Azure Identity? | Dokumenty Microsoft
+description: Další informace o řešení podmínky služby Microsoft Azure identity, koncepty a doporučení, abyste mohli vytvořit nejlepší rozhodnutí zásad správného řízení identit pro vaši organizaci.
+services: active-directory
 author: eross-msft
 manager: mtillman
-ms.reviewer: jsnow
-ms.author: lizross
-ms.date: 7/17/2017
-ms.topic: overview
-ms.prod: ''
-ms.service: azure-directory
+ms.service: active-directory
 ms.component: fundamentals
-ms.technology: ''
-ms.assetid: ''
-ms.custom: it-pro
-ms.openlocfilehash: ec84cdb4e226eea4d16d28d63acd7be59241b973
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
-ms.translationtype: HT
+ms.workload: identity
+ms.topic: conceptual
+ms.date: 7/17/2017
+ms.author: lizross
+ms.reviewer: jsnow
+custom: it-pro
+ms.openlocfilehash: db14dbf298596a9fdc189c27ea8608d472c58a35
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346912"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45737239"
 ---
-# <a name="understand-azure-identity-solutions"></a>Vysvětlení řešení identit Azure
+# <a name="what-is-microsoft-azure-identity"></a>Co je Microsoft Azure identity?
 Microsoft Azure Active Directory (Azure AD) je cloudové řešení správy identit a přístupu, které poskytuje adresářové služby, správu identit a správu přístupu k aplikacím. Azure AD rychle [umožní jednotné přihlašování](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-sso) k tisícům předem integrovaných komerčních i vlastních aplikací v [galerii aplikací Azure AD](https://azure.microsoft.com/marketplace/active-directory/all/). Řadu těchto aplikací už nejspíš používáte, třeba Office 365, Salesforce.com, Box, ServiceNow a Workday.
 
 Při vytvoření předplatného Azure dojde k automatickému přiřazení jednoho adresáře Azure AD. Azure AD jako služba identit v Azure potom poskytuje všechny funkce správy identit a přístupu pro cloudové prostředky. Mezi tyto prostředky můžou patřit uživatelé, aplikace a skupiny pro jednotlivého tenanta (organizaci), jak ukazuje následující diagram:
@@ -119,7 +117,7 @@ Máme spoustu skvělých materiálů online, ze kterých se o Azure AD dozvíte 
 * [Co je licencování Microsoft Azure Active Directory?](active-directory-licensing-whatis-azure-portal.md)
 * [Jak odhalím neschválené cloudové aplikace, které se používají v mé organizaci?](../manage-apps/cloud-app-discovery.md)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Seznámili jste se s koncepty identity Azure a možnostmi, které jsou vám dostupné. Teď můžete pomocí následujících zdrojů začít implementovat vybranou možnost:
 

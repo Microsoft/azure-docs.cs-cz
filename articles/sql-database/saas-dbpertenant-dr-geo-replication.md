@@ -10,18 +10,18 @@ ms.custom: saas apps
 ms.topic: conceptual
 ms.date: 04/09/2018
 ms.author: ayolubek
-ms.openlocfilehash: f2ad92118c00f08e5dcdd4a8a12f007308b3fbd1
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 1af13857bdde06b70cb8d01db8d9668cc6ce99e6
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "34645789"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983963"
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>Zotavení po havárii pro aplikace SaaS s více tenanty pomocí geografické replikace databáze
 
 V tomto kurzu si projít úplné zotavení po havárii pro aplikace SaaS s více tenanty implementované pomocí model databáze na tenanta. K ochraně aplikace před výpadku, můžete použít [ _geografickou replikaci_ ](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview) v oblasti obnovení alternativního vytvoření repliky pro databáze katalogu a tenanta. Pokud dojde k výpadku, rychlé převzetí služeb při selhání na tyto repliky obnovit normální obchodní operace. Na převzetí služeb při selhání databáze v původní oblasti budou sekundární repliky databáze v oblasti obnovení. Jakmile tyto repliky přejdou do režimu online, automaticky dohnat na stav databáze v oblasti obnovení. Jakmile se výpadek vyřeší, převezme služby při zpět do databáze v oblasti původní produkčního prostředí.
 
-Tento kurz se věnuje na převzetí služeb při selhání a navrácení služeb po obnovení pracovních postupů. Se dozvíte, jak:
+Tento kurz se věnuje na převzetí služeb při selhání a navrácení služeb po obnovení pracovních postupů. Dozvíte se, jak provést tyto akce:
 > [!div classs="checklist"]
 
 >* Synchronizace databáze a elastický fond konfigurační informace do katalogu tenanta
@@ -51,9 +51,9 @@ Založené na geografické replikace plánu zotavení po Havárii A zahrnuje tř
 Všechny části považuje pečlivě, zejména v případě, že provoz ve velkém měřítku. Celkově plánu musí provádět několik cílů:
 
 * Nastavení
-    * Vybudování a udržování zrcadlový prostředí v oblasti obnovení. Vytváření elastických fondů a které se replikují všechny samostatné databáze v tomto prostředí obnovení rezervuje kapacitu v oblasti obnovení. Správa tohoto prostředí zahrnuje replikaci nových databází tenantů, jako jsou zřízené.  
+    * Vybudování a udržování zrcadlový prostředí v oblasti obnovení. Vytváření elastických fondů a replikuje všechny izolované databáze v tomto prostředí obnovení rezervuje kapacitu v oblasti obnovení. Správa tohoto prostředí zahrnuje replikaci nových databází tenantů, jako jsou zřízené.  
 * Obnovení
-    * Použití prostředí škálovat dolů obnovení minimalizovat náklady na každodenní fondy a samostatné databáze musí se dá škálovat získat plně funkční kapacity v oblasti obnovení
+    * Použití prostředí škálovat dolů obnovení minimalizovat náklady na každodenní fondy a izolované databáze musí se dá škálovat získat plně funkční kapacity v oblasti obnovení
     * Povolit zřizování v oblasti obnovení co nejdříve nového tenanta  
     * Optimalizované obnovení tenantů v pořadí podle priority
     * Optimalizovat pro získání tenantů online tak rychle tam, kde je to praktické, a to provedením kroků paralelně
@@ -158,7 +158,7 @@ Skript pro obnovení provádí následující úlohy:
 
 1. Označí všechny stávajících tenantů v katalogu obnovení jako v režimu offline chcete zabránit přístupu do databází tenantů, než při selhání.
 
-1. Aktualizuje konfiguraci všech elastických fondů a replikované samostatných databází v oblasti pro zotavení pro zrcadlení jejich konfigurace v původní oblast. (Tato úloha je potřeba pouze v případě fondů nebo replikované databáze v prostředí obnovení jsou kapacitu vertikálně snížit během normální provoz a snižovat náklady).
+1. Aktualizuje konfiguraci všech elastických fondů a replikované izolované databáze v oblasti pro zotavení pro zrcadlení jejich konfigurace v původní oblast. (Tato úloha je potřeba pouze v případě fondů nebo replikované databáze v prostředí obnovení jsou kapacitu vertikálně snížit během normální provoz a snižovat náklady).
 
 1. Umožňuje koncových bodů Traffic Manageru pro webovou aplikaci v oblasti obnovení. Povolení tohoto koncového bodu umožňuje, aby aplikace ke zřízení nových tenantů. V této fázi jsou stále v režimu offline tenantům.
 
@@ -185,7 +185,7 @@ Nyní imagine, dojde k výpadku v oblasti, ve kterém je aplikace nasazené a sp
     * Oblast pro obnovení je _spárované oblasti_ přidružené k oblasti Azure, ve které jste nasadili aplikaci. Další informace najdete v tématu [spárovaných oblastech Azure](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). 
 
 3. Monitorování stavu procesu obnovení v okně Powershellu.
-    ![proces převzetí služeb při selhání](media/saas-dbpertenant-dr-geo-replication/failover-process.png)
+    ![Proces převzetí služeb při selhání](media/saas-dbpertenant-dr-geo-replication/failover-process.png)
 
 > [!Note]
 > Prozkoumejte kód pro úlohy obnovení, najdete v tématu Powershellových skriptů v složce ...\Learning Modules\Business kontinuity podnikových procesů a Recovery\DR-FailoverToReplica\RecoveryJobs po havárii.

@@ -8,15 +8,15 @@ ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
 ms.workload: Active
-ms.date: 07/25/2018
+ms.date: 09/14/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: ce7c41730bec4e014225fb8c744d029493f5ec2c
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 3a9a81154a7ae03b524ca13da3b4576841c3cab3
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43246782"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45736763"
 ---
 # <a name="learn-about-automatic-sql-database-backups"></a>Další informace o automatických zálohách databáze SQL
 
@@ -26,7 +26,7 @@ SQL Database automaticky vytvoří zálohy databáze a používá Azure geografi
 
 ## <a name="what-is-a-sql-database-backup"></a>Co je SQL Database zálohy?
 
-SQL Database využívá technologii SQL Server k vytvoření [úplné](https://msdn.microsoft.com/library/ms186289.aspx), [rozdílové](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server), a [transakční protokol](https://msdn.microsoft.com/library/ms191429.aspx) obnovení zálohy pro účely bodu v čase (PITR). Zálohy protokolu transakce obvykle k dojde každých 5 až 10 minut a rozdílové zálohování obvykle každých 12 hodin, s frekvencí podle úrovně výkonu a objem databázové aktivity. Zálohy transakčního protokolu, s úplné a rozdílové zálohy, bylo možné obnovit databázi konkrétního bodu za běhu na stejný server, který je hostitelem databáze. Zálohy jsou uložené v objektech BLOB úložiště RA-GRS, které se replikují do [spárovaném datovém centru](../best-practices-availability-paired-regions.md) pro ochranu před výpadku datového centra. Při obnovování databáze služby přijde na to, které úplného, rozdílového a transakce protokolu zálohy je nutné obnovit.
+SQL Database využívá technologii SQL Server k vytvoření [úplné](https://msdn.microsoft.com/library/ms186289.aspx), [rozdílové](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server), a [transakční protokol](https://msdn.microsoft.com/library/ms191429.aspx) obnovení zálohy pro účely bodu v čase (PITR). Zálohy protokolu transakce obvykle k dojde každých 5 až 10 minut a rozdílové zálohování obvykle každých 12 hodin, s frekvencí podle výpočetního prostředí a objem databázové aktivity. Zálohy transakčního protokolu, s úplné a rozdílové zálohy, bylo možné obnovit databázi konkrétního bodu za běhu na stejný server, který je hostitelem databáze. Zálohy jsou uložené v objektech BLOB úložiště RA-GRS, které se replikují do [spárovaném datovém centru](../best-practices-availability-paired-regions.md) pro ochranu před výpadku datového centra. Při obnovování databáze služby přijde na to, které úplného, rozdílového a transakce protokolu zálohy je nutné obnovit.
 
 
 Můžete použít tyto zálohy na:
@@ -66,7 +66,7 @@ Pokud zvýšíte aktuální dobu uchovávání PITR, SQL Database budete mít ex
 
 ## <a name="how-often-do-backups-happen"></a>Jak často k dochází zálohy?
 ### <a name="backups-for-point-in-time-restore"></a>Zálohy pro obnovení k určitému bodu v čase
-SQL Database podporuje samoobslužné funkce pro obnovení k určitému bodu v čase (PITR) automaticky vytváří úplné zálohy, rozdílové zálohování a zálohování protokolů transakcí. Úplné zálohy databáze se vytvoří každý týden, rozdílovými zálohami prováděnými obecně vytvářejí každých 12 hodin a zálohy protokolu transakce obvykle vytvářejí každých 5 až 10 minut, s frekvencí podle úrovně výkonu a objem databázové aktivity. Bude první úplná záloha je naplánováno ihned po vytvoření databáze. Obvykle hotové během 30 minut, ale může trvat déle, když je databáze významnou velikostí. Například prvotní zálohování může trvat déle v obnovené databáze nebo kopie databáze. Po dokončení první úplné zálohování všechny další zálohy jsou automaticky naplánované a spravované tiše na pozadí. Služba SQL Database určuje přesné načasování všechny zálohy databáze jako vyrovnává celkové zatížení systému.
+SQL Database podporuje samoobslužné funkce pro obnovení k určitému bodu v čase (PITR) automaticky vytváří úplné zálohy, rozdílové zálohování a zálohování protokolů transakcí. Úplné zálohy databáze se vytvoří každý týden, rozdílovými zálohami prováděnými obecně vytvářejí každých 12 hodin a zálohy protokolu transakce obvykle vytvářejí každých 5 až 10 minut, s frekvencí podle výpočetního prostředí a objem databázové aktivity. Bude první úplná záloha je naplánováno ihned po vytvoření databáze. Obvykle hotové během 30 minut, ale může trvat déle, když je databáze významnou velikostí. Například prvotní zálohování může trvat déle v obnovené databáze nebo kopie databáze. Po dokončení první úplné zálohování všechny další zálohy jsou automaticky naplánované a spravované tiše na pozadí. Služba SQL Database určuje přesné načasování všechny zálohy databáze jako vyrovnává celkové zatížení systému.
 
 Zálohy PITR jsou geograficky redundantní a chráněný [mezi zónami replikace Azure Storage](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)
 

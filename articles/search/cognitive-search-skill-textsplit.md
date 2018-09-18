@@ -1,6 +1,6 @@
 ---
-title: Text rozdělení odborností kognitivní vyhledávání (Azure Search) | Microsoft Docs
-description: Rozdělte text na bloky dat nebo stránek textu podle délku v obohacení kanál služby Azure Search.
+title: Text rozdělit dovednosti kognitivního vyhledávání (Azure Search) | Dokumentace Microsoftu
+description: Rozdělte text do bloků dat nebo stránek textu na základě délky v rozšíření kanálu služby Azure Search.
 services: search
 manager: pablocas
 author: luiscabrer
@@ -10,46 +10,49 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: dbb9261cfce0a8437cfe76121fa16aa87c4b3393
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 583d2ac5a8ac4c236612cdfe78595da1812c56fa
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33791025"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45730762"
 ---
-#   <a name="text-split-cognitive-skill"></a>Text rozdělení kognitivní dovedností
+#   <a name="text-split-cognitive-skill"></a>Text rozdělit kognitivních dovedností
 
-**Text rozdělení** odborností dělí text do bloků textu. Můžete zadat, zda chcete rozdělit text do věty nebo do stránky určité délky. Tato znalostí je obzvláště užitečné, pokud existují požadavky na délku v jiných dovednosti po proudu maximální text. 
+**Rozdělení textu** dovednosti rozdělí text na bloky textu. Můžete určit, zda chcete provést přerušení textu do věty nebo do stránky určité délky. Tato dovednosti je obzvláště užitečné, pokud existují maximální text požadavky na délku ve směru server-klient další dovednosti. 
+
+> [!NOTE]
+> Cognitive Search je ve veřejné verzi Preview. Spuštění dovednosti a extrakce image a normalizace se momentálně nabízí zdarma. Později cenách za tyto funkce bude oznámena. 
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.SplitSkill 
 
 ## <a name="skill-parameters"></a>Parametry dovedností
 
-Parametry jsou malá a velká písmena.
+Parametry rozlišují malá a velká písmena.
 
 | Název parametru     | Popis |
 |--------------------|-------------|
-| textSplitMode      | "Stránky" nebo "věty" | 
-| maximumPageLength | Pokud textSplitMode nastavena na "stránky", vztahuje se na stránce maximální délku měřený podle `String.Length`. Minimální hodnota je 100. | 
-| defaultLanguageCode   | (volitelné) Jeden z následujících kódů jazyk: `da, de, en, es, fi, fr, it, ko, pt`. Výchozí hodnota je angličtina (en). Několik co je třeba zvážit:<ul><li>Pokud předáte formátu languagecode countrycode, se používá jenom část languagecode formátu.</li><li>Pokud jazyk není v předchozím seznamu, rozdělení odborností dělí text na znak hranice.</li><li>Poskytnutí kód jazyka je užitečné, aby se zabránilo vyjímání slova v polovině jazyků není mezera, například čínština, japonština nebo korejština.</li></ul>  |
+| textSplitMode      | "Výraz stránky" nebo "věty" | 
+| maximumPageLength | Pokud textSplitMode nastavená na výraz "stránky", to se vztahuje na délku maximální stránky naměřenou podle `String.Length`. Minimální hodnota je 100. | 
+| defaultLanguageCode   | (volitelné) Jeden z následujících kódů jazyka: `da, de, en, es, fi, fr, it, ko, pt`. Výchozí hodnota je angličtina (en). Vezměte v úvahu několik věcí:<ul><li>Pokud předáte formátu languagecode countrycode, se používá jenom část languagecode formátu.</li><li>Pokud jazyk není v předchozím seznamu, přestane fungovat dovednosti rozdělit na znak hranice.</li><li>Poskytuje kód jazyka je vhodné vyhnout cutting slova na polovinu jiný než mezera jazyků, jako jsou čínštiny, japonštiny a korejštiny.</li></ul>  |
 
 
 ## <a name="skill-inputs"></a>Vstupy dovedností
 
 | Název parametru       | Popis      |
 |----------------------|------------------|
-| Text  | Text, který chcete rozdělit na dílčí řetězec. |
+| text  | Text, který rozdělit na dílčí řetězec. |
 | languageCode  | (Volitelné) Kód jazyka pro dokument.  |
 
 ## <a name="skill-outputs"></a>Výstupy dovedností 
 
 | Název parametru     | Popis |
 |--------------------|-------------|
-| textItems | Pole dílčích řetězců, které se extrahují. |
+| textItems | Pole dílčích řetězců, které byly extrahovány. |
 
 
-##  <a name="sample-definition"></a>Ukázka definice
+##  <a name="sample-definition"></a>Ukázková definice
 
 ```json
 {
@@ -76,7 +79,7 @@ Parametry jsou malá a velká písmena.
 }
 ```
 
-##  <a name="sample-input"></a>Ukázka vstup
+##  <a name="sample-input"></a>Ukázkový vstup
 
 ```json
 {
@@ -126,10 +129,10 @@ Parametry jsou malá a velká písmena.
 }
 ```
 
-## <a name="error-cases"></a>Případech chyb
-Pokud není podporován jazyk, se generuje upozornění a text je rozdělená na znak hranice.
+## <a name="error-cases"></a>Případy chyb
+Pokud jazyk není podporován, je vygenerováno upozornění a text je rozdělený na znak hranice.
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
 + [Předdefinované dovednosti](cognitive-search-predefined-skills.md)
-+ [Jak definovat skillset](cognitive-search-defining-skillset.md)
++ [Definování dovedností](cognitive-search-defining-skillset.md)

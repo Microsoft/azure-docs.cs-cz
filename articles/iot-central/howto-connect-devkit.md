@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: ea9ff8f93ede3b9ec5e7eed83c6049b0c23de7e8
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 94de5566db2395a3daf24c99a43cca6853e12cce
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205455"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45736967"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Připojení MXChip IoT DevKit zařízení do aplikace Azure IoT Central
 
@@ -43,26 +43,34 @@ Všechny podrobnosti o konfiguraci najdete [Podrobnosti šablony MXChip zaříze
 
 ## <a name="add-a-real-device"></a>Přidání skutečného zařízení
 
-V aplikaci Azure IoT Central přidat z reálného zařízení **MXChip** šablona zařízení a zkontrolujte poznamenejte si připojovací řetězec zařízení. Další informace najdete v tématu [skutečné zařízení přidat do aplikace Azure IoT Central](tutorial-add-device.md).
+V aplikaci Azure IoT Central přidat z reálného zařízení **MXChip** šablona zařízení a zaznamenání podrobností o připojení zařízení (**ID oboru, ID zařízení a primární klíč**).
+
+1. Přidat **skutečné zařízení** z Device Explorer, klikněte na **+ nový > skutečné** skutečné zařízení přidat.
+    * Zadejte Id zařízení **<span style="color:Red">(by měl být malými písmeny)</span>** nebo použijte navrhovaný ID zařízení.
+    * Zadejte název zařízení nebo použijte navrhovaný název
+    
+    ![Přidání zařízení](media\concepts-connectivity\add-device.png)
+
+
+1. Získat podrobnosti o připojení, jako **ID oboru, ID zařízení a primární klíč** pro přidání zařízení kliknutím **připojit** na stránce zařízení.
+ 
+    ![Podrobnosti připojení](media\concepts-connectivity\device-connect.PNG)
+
+3. Ujistěte se, že chcete uložit tyto podrobnosti, jako je bude temporaritly získat odpojení od Internetu během přípravy zařízení DevKit. 
+
 
 ### <a name="prepare-the-devkit-device"></a>Připravte zařízení DevKit
 
 > [!NOTE]
 > Pokud jste už dřív použili zařízení a máte Wi-Fi přihlašovací údaje uloženy a chcete změnit konfiguraci zařízení používat jinou síť Wi-Fi, připojovací řetězec nebo telemetrická data měření, stiskněte klávesu i **A** a **B** tlačítka na panelu současně. Pokud to nepomůže, stiskněte **resetování** tlačítko a zkuste to znovu.
 
-#### <a name="before-you-start-configuring-the-device"></a>Před zahájením konfigurace zařízení:
-1. V IoT Central **ukázka Devkits** přejděte na `Device Explorer` ->  `select MXChip Template`  ->  `Click on +New and choose **Real** Device`  ->  `Connect this device` (v pravém horním rohu) 
-2. Zkopírujte primární připojovací řetězec
-3. Ujistěte se, že chcete uložit připojovací řetězec, jako je bude temporaritly získat odpojení od Internetu během přípravy zařízení DevKit. 
 
 
 #### <a name="to-prepare-the-devkit-device"></a>K přípravě DevKit zařízení:
 
 
-1. Stáhněte si nejnovější předem sestavených Azure IoT Central firmware pro MXChip z [uvolní](https://github.com/Azure/iot-central-firmware/releases) stránku na Githubu. Název souboru ke stažení na stránce vydání vypadá jako `AZ3166-IoT-Central-X.X.X.bin`.
-
+1. Stáhněte si nejnovější předem sestavených Azure IoT Central firmware pro MXChip z [uvolní](http://aka.ms/iotcentral-docs-MXChip-releases) stránku na Githubu.
 1. Připojte zařízení DevKit na vývojovém počítači pomocí kabelu USB. Ve Windows otevře se okno Průzkumníka souborů na jednotce namapované na úložiště na zařízení DevKit. Například může být volán na jednotce **AZ3166 (D:)**.
-
 1. Přetáhněte **iotCentral.bin** soubor do okna jednotky. Po dokončení kopírování s novým firmwarem restartování zařízení.
 
 1. Po restartu zařízení DevKit, zobrazí se následující obrazovka:
@@ -75,7 +83,7 @@ V aplikaci Azure IoT Central přidat z reálného zařízení **MXChip** šablon
     ```
 
     > [!NOTE]
-    > Pokud na obrazovce se zobrazí cokoli jiného, stiskněte **A** a **B** tlačítka na zařízení ve stejnou dobu až po restartování zařízení. 
+    > Pokud se na obrazovce se zobrazí cokoli jiného, obnovit zařízení a stiskněte klávesu **A** a **B** tlačítka na zařízení ve stejnou dobu až po restartování zařízení. 
 
 1. Zařízení je nyní v režimu přístupu bod (přístupový bod). Můžete se připojit k této přístupový bod Wi-Fi ze svého počítače nebo mobilního zařízení.
 
@@ -89,7 +97,7 @@ V aplikaci Azure IoT Central přidat z reálného zařízení **MXChip** šablon
     - Přidat název sítě Wi-Fi 
     - vaše heslo sítě Wi-Fi
     - KÓD PIN, zobrazí na zařízení LCD 
-    - připojovací řetězec zařízení (by již uložení tohoto postupu) můžete najít v připojovacím řetězci `https://apps.iotcentral.com` -> `Device Explorer` -> `Device` -> `Select or Create a new Real Device` -> `Connect this device` (v pravém horním rohu)
+    - Podrobnosti o připojení **Id oboru, Id zařízení a primární klíč** vašeho zařízení (by již uložení tohoto postupu)      
     - Vyberte všechny dostupné telemetrie měření! 
 
 1. Po zvolení **konfigurovat zařízení**, zobrazí tato stránka:
@@ -99,7 +107,6 @@ V aplikaci Azure IoT Central přidat z reálného zařízení **MXChip** šablon
 1. Stisknutím klávesy **resetování** tlačítko na vašem zařízení.
 
 
-
 ## <a name="view-the-telemetry"></a>Zobrazení telemetrických dat
 
 Po restartu zařízení DevKit obrazovku na zařízení zobrazí:
@@ -107,6 +114,9 @@ Po restartu zařízení DevKit obrazovku na zařízení zobrazí:
 * Počet telemetrické zprávy odesílané.
 * Počet chyb.
 * Počet přijatých požadované vlastnosti a počet ohlášených vlastností odeslaných.
+
+> [!NOTE]
+> Pokud se zařízení zobrazí na opakování při kontrole připojení, pokud je zařízení *blokováno* v IoT Central a *Odblokovat* zařízení, aby se mohl připojit k aplikaci.
 
 Zatřeste zařízením přírůstek počet ohlášených vlastností odeslaných. Zařízení odesílá náhodné číslo jako **kostka číslo** vlastnosti zařízení.
 

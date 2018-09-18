@@ -1,23 +1,23 @@
 ---
-title: Uvědomili si vytisknout a rukou psaný text
-titleSuffix: Computer Vision - Cognitive Services - Azure
-description: Koncepty související s uznání tištěné a rukou psaný text v obrázků s využitím Azure Cognitive Services pro počítačové zpracování obrazu.
+title: Uvědomili si tištěné a rukou psaný text – pro počítačové zpracování obrazu
+titleSuffix: Azure Cognitive Services
+description: Koncepty související s uznání tištěné a rukou psaný text v obrázků s využitím rozhraní API pro počítačové zpracování obrazu.
 services: cognitive-services
 author: deken
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: v-deken
-ms.openlocfilehash: bdfef668eddc712d2637dcf53a01f193a3204880
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 49cba0e9b6958beb07b6f074e6dc748679514525
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44725327"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985307"
 ---
-# <a name="recognizing-printed-and-handwritten-text"></a>Uvědomili si vytisknout a rukou psaný text
+# <a name="recognizing-printed-and-handwritten-text"></a>Rozpoznávání tištěného a ručně psaného textu
 
 Pro počítačové zpracování obrazu můžete detekovat a extrahovat tištěné nebo rukou psaný text z obrázků různé objekty s různými povrchy a pozadími, jako je potvrzení, plakáty, vizitek, písmena samolepicí bločky nebo Tabule.
 

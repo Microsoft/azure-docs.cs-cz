@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/22/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: 08cd67e86666cdc9c9fc1b0f4ef98cf3ea7a156c
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 2d0fa179e7d1ae87372536d315175f1406baf21a
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "43435584"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45979405"
 ---
 | Prostředek | Výchozí omezení | Maximální omezení |
 | --- | --- | --- |
@@ -21,7 +21,7 @@ ms.locfileid: "43435584"
 | Celkový počet jader virtuálního počítače na [předplatné](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> na oblast | Kontaktování podpory |
 | Počet jader virtuálního počítače podle řady (Dv2, F atd.) na [předplatné](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> na oblast | Kontaktování podpory |
 | Počet [spolusprávců](../articles/billing-add-change-azure-subscription-administrator.md) na předplatné |Unlimited |Unlimited |
-| [Účty úložiště](../articles/storage/common/storage-create-storage-account.md) na oblast a předplatné |200 |200<sup>2</sup> |
+| [Účty úložiště](../articles/storage/common/storage-quickstart-create-account.md) na oblast a předplatné |200 |200<sup>2</sup> |
 | [Skupiny prostředků](../articles/azure-resource-manager/resource-group-overview.md) na předplatné |980 |980 |
 | [Skupiny dostupnosti](../articles/virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) na předplatné |2 000 na oblast |2 000 na oblast |
 | Čtení rozhraní API Resource Manageru |15 000 za hodinu |15 000 za hodinu |

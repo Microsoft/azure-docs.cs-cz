@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 06/30/2018
-ms.openlocfilehash: e096a67d953860ec2e9601f25dbd9ca92a8fb4a3
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 0bd894e99fd575fca734a101a1cde0f0a2979682
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45633773"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983738"
 ---
 # <a name="limitations-in-azure-database-for-postgresql"></a>Omezení ve službě Azure Database for PostgreSQL
 Následující části popisují kapacitu a limity funkční ve službě database.
@@ -48,9 +48,6 @@ Systému Azure vyžaduje pět připojení ke sledování serveru Azure Database 
 
 ### <a name="server-version-upgrades"></a>Upgrady verze serveru
 - Automatizovaný přenos mezi verzí vyhledávacích strojů hlavní databáze se aktuálně nepodporuje. Pokud chcete upgradovat na novou hlavní verzi, [výpisu a obnovení](./howto-migrate-using-dump-and-restore.md) ho na server, který byl vytvořen v nové verzi modulu.
-
-### <a name="subscription-management"></a>Správa předplatného
-- Dynamicky přesunu serverů napříč skupiny prostředků a předplatná se aktuálně nepodporuje.
 
 ### <a name="vnet-service-endpoints"></a>Koncové body služby virtuální sítě
 - Podpora pro koncové body služby virtuální sítě je pouze pro servery pro obecné účely a optimalizovaný pro paměť.

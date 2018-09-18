@@ -6,15 +6,15 @@ author: CarlRabeler
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 08/17/2018
+ms.date: 09/14/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: a4bf21f972da1aa92d6f127e8cbabb89a9c31489
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 4fe75d8d350ee2d2a97b9d7efb10ff3c1675168d
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44719949"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45737093"
 ---
 # <a name="azure-sql-database-purchasing-models-and-resources"></a>Azure SQL Database nákupu modely a prostředky 
 
@@ -26,7 +26,7 @@ Následující tabulku a graf porovnání a kontrast tyto dva modely nákupu.
 
 |**Nákupní model**|**Popis**|**Nejlepší pro**|
 |---|---|---|
-|Model na základě DTU|Tento model je založen na připojené míře výpočetní prostředky, úložiště a vstupně-VÝSTUPNÍCH prostředků. Úrovně výkonu se vyjadřují v jednotkách transakcí databáze (DTU) pro samostatné databáze a jednotkách transakcí elastické databáze (eDTU) pro elastické fondy. Další informace o jednotkách Dtu a Edtu najdete v tématu [co jsou jednotky Dtu a Edtu](sql-database-service-tiers.md#what-are-database-transaction-units-dtus)?|Nejvhodnější pro zákazníky, kteří chtějí jednoduché, předem nakonfigurované možnosti prostředku.| 
+|Model na základě DTU|Tento model je založen na připojené míře výpočetní prostředky, úložiště a vstupně-VÝSTUPNÍCH prostředků. Výpočetní velikosti se vyjadřují v jednotky transakcí databáze (Dtu) pro izolované databáze a elastické databáze jednotky transakce (Edtu) pro elastické fondy. Další informace o jednotkách Dtu a Edtu najdete v tématu [co jsou jednotky Dtu a Edtu](sql-database-service-tiers.md#what-are-database-transaction-units-dtus)?|Nejvhodnější pro zákazníky, kteří chtějí jednoduché, předem nakonfigurované možnosti prostředku.| 
 |Model na základě virtuálních jader|Tento model umožňuje zvolit nezávisle na sobě výpočetní a úložnou kapacitu. Také umožňuje používat zvýhodněné hybridní využití Azure pro SQL Server k získání úspory nákladů.|Nejvhodnější pro zákazníky, kteří hodnota flexibilitu, řízení a transparentnost.|
 ||||  
 
@@ -50,22 +50,22 @@ Nákupní model založený na virtuálních jádrech umožňuje nezávisle na so
 > Výpočetní prostředky, IOs, data a úložiště protokolů se bude fakturovat za databázi nebo elastický fond. Úložiště záloh se účtuje za každou databázi. Podrobné informace o Managed Instance poplatky, najdete v tématu [Azure SQL Database Managed Instance](sql-database-managed-instance.md).
 > **Omezení oblasti:** nákupní model založený na virtuálních jádrech ještě není k dispozici v následujících oblastech: západní Evropa, Francie – střed, Velká Británie – Jih, Velká Británie – západ a Austrálie – jihovýchod.
 
-Pokud vaše databáze nebo elastického fondu využívá víc než 300 DTU převod na vCore může snížit vaše náklady. Můžete převést pomocí rozhraní API podle výběru nebo na webu Azure portal, bez výpadků. Převod však není povinné. Pokud model nákupu DTU splňuje výkonu a obchodních požadavcích, měli byste pokračovat, jeho použití. Pokud se rozhodnete převést z modelu jednotek DTU na modelu virt. jader, by měl vybrat úroveň výkonu pomocí následující pravidlo: vyžaduje minimálně 1 virtuální jádro v úrovni General Purpose; každý 100 DTU na úrovni Standard Každý 125 DTU na úrovni Premium vyžaduje alespoň 1 virtuální jádro v úrovni pro důležité obchodní informace.
+Pokud vaše databáze nebo elastického fondu využívá víc než 300 DTU převod na vCore může snížit vaše náklady. Můžete převést pomocí rozhraní API podle výběru nebo na webu Azure portal, bez výpadků. Převod však není povinné. Pokud model nákupu DTU splňuje výkonu a obchodních požadavcích, měli byste pokračovat, jeho použití. Pokud se rozhodnete převést z modelu jednotek DTU na modelu virt. jader, by měl vybrat velikost výpočetního pomocí následující pravidlo: vyžaduje minimálně 1 virtuální jádro v úrovni General Purpose; každý 100 DTU na úrovni Standard Každý 125 DTU na úrovni Premium vyžaduje alespoň 1 virtuální jádro v úrovni pro důležité obchodní informace.
 
 ## <a name="dtu-based-purchasing-model"></a>Nákupní model založený na DTU
 
 Jednotky transakcí databáze (DTU) představuje kombinaci měření procesoru, paměti, čte a zapisuje. Nákupní model založený na DTU nabízí sadu předem nakonfigurované sady výpočetních prostředků a zahrnuté úložiště na jednotce různé úrovně výkonu aplikace. Zákazníci, kteří dávají přednost jednoduchosti, kterou nabízejí předem nakonfigurované sady prostředků a pevných plateb každý měsíc, může se stát model založený na DTU více odpovídají jejich potřebám. V nákupní model založený na DTU Zákazníci si mohou vybrat mezi **základní**, **standardní**, a **Premium** úrovně služeb pro obě [izolované databáze](sql-database-single-database-scale.md) a [elastické fondy](sql-database-elastic-pool.md). Tento model nákupu není k dispozici v [spravované instance](sql-database-managed-instance.md).
 
 ### <a name="what-are-database-transaction-units-dtus"></a>Co jsou jednotky databázové transakce (Dtu)?
-Pro izolované databáze Azure SQL na konkrétní úroveň výkonu v rámci [úroveň služby](sql-database-single-database-scale.md), Microsoft zaručuje určité úrovně prostředků pro tuto databázi (nezávisle na jakékoli jiné databáze v cloudu Azure), poskytování předvídatelný úroveň výkonu. Objem prostředků se počítá jako počet jednotek databázové transakce nebo počet jednotek Dtu a je jako součást balíčku míra výpočty, úložiště a vstupně-VÝSTUPNÍCH prostředků. Poměr mezi těmito prostředky byl původně určené [úlohou srovnávacího testu OLTP](sql-database-benchmark-overview.md), navržená tak, aby jako typická pro úlohy OLTP v reálném světě. Pokud vaše úloha překračuje množství některý z těchto prostředků, propustnost je omezené – následek pomalejší výkon a časové limity. Prostředky využívané třídou úlohy nemají vliv na prostředky dostupné pro jiné databáze SQL v cloudu Azure a prostředky využívané třídou jiné úlohy nemají vliv na prostředky dostupné pro vaši službu SQL database.
+Pro izolované databáze Azure SQL na daném vypočítat velikost v rámci [úroveň služby](sql-database-single-database-scale.md), Microsoft zaručuje určité úrovně prostředků pro tuto databázi (nezávisle na jakékoli jiné databáze v cloudu Azure), předvídatelný poskytnutí úroveň výkonu. Objem prostředků se počítá jako počet jednotek databázové transakce nebo počet jednotek Dtu a je jako součást balíčku míra výpočty, úložiště a vstupně-VÝSTUPNÍCH prostředků. Poměr mezi těmito prostředky byl původně určené [úlohou srovnávacího testu OLTP](sql-database-benchmark-overview.md), navržená tak, aby jako typická pro úlohy OLTP v reálném světě. Pokud vaše úloha překračuje množství některý z těchto prostředků, propustnost je omezené – následek pomalejší výkon a časové limity. Prostředky využívané třídou úlohy nemají vliv na prostředky dostupné pro jiné databáze SQL v cloudu Azure a prostředky využívané třídou jiné úlohy nemají vliv na prostředky dostupné pro vaši službu SQL database.
 
 ![ohraničujícího rámečku](./media/sql-database-what-is-a-dtu/bounding-box.png)
 
-Počet jednotek Dtu jsou zvláště užitečná pro pochopení relativní množství prostředků mezi databázemi Azure SQL na různé úrovně výkonu a úrovně služeb. Například zdvojnásobení jednotek Dtu zvýšením úrovně výkonu databáze odpovídá zdvojnásobení sady prostředků, které jsou k dispozici pro tuto databázi. Například databáze Premium P11 se 1 750 DTU nabízí 350x více DTU výpočetního výkonu než databáze Basic s 5 DTU.  
+Počet jednotek Dtu jsou zvláště užitečná pro pochopení relativní množství prostředků mezi databázemi Azure SQL v různých velikostech výpočetních prostředků a úrovně služeb. Například zdvojnásobení jednotek Dtu zvýšením výpočetní velikost databáze odpovídá zdvojnásobení sady prostředků, které jsou k dispozici pro tuto databázi. Například databáze Premium P11 se 1 750 DTU nabízí 350x více DTU výpočetního výkonu než databáze Basic s 5 DTU.  
 
 Chcete-li získat podrobnější přehled o spotřebě prostředků (DTU) vašich úloh, použijte [Azure SQL Database Query Performance Insight](sql-database-query-performance.md) na:
 
-- Identifikujte hlavní dotazy podle počtu CPU/doba trvání/spuštění, který může být potenciálně vyladěný za účelem vylepšení výkonu. Například dotaz náročné na vstupně-výstupních operací by mohlo prospět použití [techniky optimalizace v paměti](sql-database-in-memory.md) lepší využití paměti k dispozici na na určité služby vrstvu a úroveň výkonu.
+- Identifikujte hlavní dotazy podle počtu CPU/doba trvání/spuštění, který může být potenciálně vyladěný za účelem vylepšení výkonu. Například dotaz náročné na vstupně-výstupních operací by mohlo prospět použití [techniky optimalizace v paměti](sql-database-in-memory.md) lepší využití paměti k dispozici na určitou úroveň služby a vypočítat velikost.
 - Přejít na podrobnosti o dotazu, zobrazit jeho historii využití prostředků a text.
 - Doporučení, které ukazují akce prováděné pro optimalizaci výkonu přístupu [služby SQL Database Advisor](sql-database-advisor.md).
 

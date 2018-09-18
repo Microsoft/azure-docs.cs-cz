@@ -4,18 +4,18 @@ description: Místně spravované externím partnerům poskytněte přístup k i
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/24/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 84d967dfc8ce09500aec2dfc7a10b4b42cadf4b1
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 0cbcb6095c59089008bd9a95b9bb0a3ddaa70a58
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35642952"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984038"
 ---
 # <a name="grant-locally-managed-partner-accounts-access-to-cloud-resources-using-azure-ad-b2b-collaboration"></a>Udělit partnera místně spravované účty přístup ke cloudovým prostředkům využitím spolupráce Azure AD B2B
 

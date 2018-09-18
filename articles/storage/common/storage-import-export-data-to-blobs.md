@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/17/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: 2484d01c268757ef612ba7b397b80b8ea4c4e76a
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 39287e4d90e4f6f42dd1f79d5457853e253bd736
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528135"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45737052"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Import dat do úložiště objektů Blob v Azure pomocí služby Azure Import/Export
 
@@ -25,7 +25,7 @@ Než začnete vytvářet úlohy importu pro přenos dat do služby Azure Blob St
 
 - Máte aktivní předplatné Azure, který lze použít pro službu Import/Export.
 - Máte alespoň jeden účet úložiště Azure se kontejner úložiště. Zobrazit seznam [nepodporuje účty úložiště a typy úložiště pro službu Import/Export](storage-import-export-requirements.md). 
-    - Informace o vytvoření nového účtu úložiště najdete v tématu [způsob vytvoření účtu úložiště](storage-create-storage-account.md#create-a-storage-account). 
+    - Informace o vytvoření nového účtu úložiště najdete v tématu [způsob vytvoření účtu úložiště](storage-quickstart-create-account.md). 
     - Informace o kontejneru úložiště, přejděte na [vytvořit kontejner úložiště](../blobs/storage-quickstart-blobs-portal.md#create-a-container).
 - Používejte odpovídající počet disků [podporované typy](storage-import-export-requirements.md#supported-disks). 
 - K dispozici systém Windows [verze operačního systému nepodporuje](storage-import-export-requirements.md#supported-operating-systems). 

@@ -14,12 +14,12 @@ ms.component: report-monitor
 ms.date: 12/06/2017
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 752e71f3c6b22a6d9f1e2392b58c01deef9de89c
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 2cfdd5b903b8ffd9702745df150fe578d42e5a11
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782156"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45735828"
 ---
 # <a name="how-to-use-the-azure-active-directory-power-bi-content-pack"></a>Jak používat balíček obsahu Azure Active Directory Power BI Content Pack
 
@@ -28,50 +28,11 @@ ms.locfileid: "43782156"
 |V současné době balíček obsahu Azure AD Power BI používá Azure AD Graph API k načtení dat z vašeho tenanta Azure AD. V důsledku toho může se zobrazit některé rozdíly mezi daty, které jsou k dispozici v balíčku obsahu a data načtená pomocí [rozhraní Microsoft Graph API pro generování sestav](concept-reporting-api.md). |
 |  |
 
-Pro vás jako správce IT je naprosto nezbytné pochopit, jakým způsobem uživatelé přijímají a používají funkce služby Azure Active Directory. Umožní vám to plánovat infrastrukturu IT a komunikaci za účelem zvýšení míry využití a získání maxima z funkcí AAD. Balíček obsahu Power BI pro Azure Active Directory vám umožňuje podrobněji analyzovat data, abyste pochopili, jakým způsobem je můžete používat k získání lepšího přehledu o tom, jak služba Azure Active Directory funguje s různými možnostmi, na které spoléháte.  Integrace rozhraní Azure Active Directory API do Power BI umožňuje snadné stažení předem vytvořených balíčků obsahu a získání přehledu o veškerých aktivitách v rámci služby Azure Active Directory pomocí bohatých funkcí vizualizace, které Power BI nabízí. Můžete si vytvořit vlastní řídicí panel a snadno ho sdílet se všemi uživateli ve vaší organizaci. 
+Jako IT správce musíte pochopit, jakým způsobem uživatelé přijímají a používat funkce služby Azure Active Directory. To umožňuje plánovat infrastrukturu IT a komunikaci se zvýší využití a využili co nejvíce funkcí Azure AD. Balíček obsahu Power BI pro Azure Active Directory vám umožňuje podrobněji analyzovat data, chcete-li získat podrobnější přehled o co se děje s adresářem. Díky integraci Azure Active Directory API do Power BI můžete snadno stáhnout předem sestavených balíček obsahu a získat přehled o všech aktivitách v rámci služby Azure Active Directory pomocí bohatých funkcí vizualizace prostředí, který nabízí Power BI. Můžete si vytvořit vlastní řídicí panel a snadno ho sdílet se všemi uživateli ve vaší organizaci. 
 
-Toto téma obsahuje podrobné pokyny pro instalaci a použití balíčku obsahu ve vašem prostředí.
+## <a name="install-the-content-pack"></a>Nainstalujte balíček obsahu
 
-## <a name="installation"></a>Instalace  
-
-**Instalace balíčku obsahu Power BI:**
-
-1. Přihlaste se k [Power BI](https://app.powerbi.com/groups/me/getdata/services) pomocí svého účtu Power BI (jedná se o stejný účet jako pro O365 nebo Azure AD).
-
-2. V dolní části levého navigačního podokna vyberte **Získat data**.
-
-    ![Balíček obsahu Azure Active Directory Power BI Content Pack](./media/howto-power-bi-content-pack/01.png)
- 
-3. V okně **Služby** klikněte na **Získat**.
-   
-    ![Balíček obsahu Azure Active Directory Power BI Content Pack](./media/howto-power-bi-content-pack/02.png)
-
-4.  Vyhledejte **Azure Active Directory**.
-
-    ![Balíček obsahu Azure Active Directory Power BI Content Pack](./media/howto-power-bi-content-pack/03.png)
- 
-5.  Po zobrazení výzvy zadejte ID klienta služby Azure AD a pak klikněte na **Další**.
-
-    > [!TIP] 
-    > ID tenanta Office 365 nebo Azure AD můžete rychle získat tak, že se přihlásíte k portálu Azure AD, přejdete do adresáře a ze [stránky **Vlastnosti**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties) zkopírujete **ID adresáře**.
-
-    ![Balíček obsahu Azure Active Directory Power BI Content Pack](./media/howto-power-bi-content-pack/04.png) 
-
-6.  Klikněte na **Přihlášení**. 
- 
-    ![Balíček obsahu Azure Active Directory Power BI Content Pack](./media/howto-power-bi-content-pack/05.png) 
-
-
-
-7.  Zadejte uživatelské jméno a heslo a pak klikněte na **Přihlášení**.
- 
-    ![Balíček obsahu Azure Active Directory Power BI Content Pack](./media/howto-power-bi-content-pack/06.png) 
-
-8.  V dialogovém okně souhlasu aplikace klikněte na **Přijmout**.
- 
-9.  Jakmile řídicí panel protokolů aktivity služby Azure Active Directory vytvoříte, klikněte na něj.
- 
-    ![Balíček obsahu Azure Active Directory Power BI Content Pack](./media/howto-power-bi-content-pack/08.png) 
+Podívejte se [rychlý Start](quickstart-install-power-bi-content-pack.md) k instalaci balíčku obsahu Azure AD Power BI.
 
 ## <a name="what-can-i-do-with-this-content-pack"></a>Co můžu s tímto balíčkem obsahu dělat?
 
@@ -155,4 +116,6 @@ Podívejte se na [průvodce odstraňováním potíží](troubleshoot-content-pac
 
 ## <a name="next-steps"></a>Další postup
 
-Přehled generování sestav najdete v tématu [Generování sestav v Azure Active Directory](overview-reports.md).
+* [Nainstalujte balíček obsahu Power BI](quickstart-install-power-bi-content-pack.md).
+* [Řešení potíží s chybami balíčku obsahu](troubleshoot-content-pack.md).
+* [Co jsou sestavy Azure AD? ](overview-reports.md).
