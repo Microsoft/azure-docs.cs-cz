@@ -1,5 +1,5 @@
 ---
-title: Speech service podporované jazyky – Microsoft Cognitive Services
+title: Speech service podporované jazyky – Azure Cognitive Services
 description: Seznam jazyků podporovaných službou řeči.
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 04/28/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 704534ed50e12e7f9290cb321ad3b9e1b99117d5
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: a4307ee0ff210dafee5afe51bd9cb90db9be22e5
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44377884"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295424"
 ---
 # <a name="supported-languages-for-speech-service"></a>Podporované jazyky pro Speech service
 
@@ -105,24 +105,24 @@ ja-JP | Japonština |Žena | "Microsoft Server řeči převod textu na řeč hla
 | | |Muž | "Microsoft Server řeči převod textu na řeč hlasové (ja-JP, Ichiro, Apollo)"
 | | |Žena | "Microsoft Server řeči převod textu na řeč hlasové (ja-JP, HarukaRUS)"
 ko-KR | Korejština |Žena | "Microsoft serveru řeči Text na řeč hlas (ko-KR, HeamiRUS)"
-Moje MS | Malajština|Muž | "Microsoft Server řeči převod textu na řeč hlasové (ms Moje, Rizwan)"
-nb-NO | norština|Žena | "Microsoft Server řeči převod textu na řeč hlasové (nb-NO HuldaRUS)"
-NL-NL | Holandština|Žena | "Microsoft Server řeči převod textu na řeč hlasové (nl-NL, HannaRUS)"
-pl-PL | polština|Žena | "Microsoft Server řeči převod textu na řeč hlasové (pl-PL, PaulinaRUS)"
-pt-BR | Portugalština (Brazílie)|Žena | "Microsoft Server řeči převod textu na řeč hlasové (pt-BR, HeloisaRUS)"
+Moje MS | Malajština | Muž | "Microsoft Server řeči převod textu na řeč hlasové (ms Moje, Rizwan)"
+nb-NO | norština | Žena | "Microsoft Server řeči převod textu na řeč hlasové (nb-NO HuldaRUS)"
+NL-NL | Holandština | Žena | "Microsoft Server řeči převod textu na řeč hlasové (nl-NL, HannaRUS)"
+pl-PL | polština | Žena | "Microsoft Server řeči převod textu na řeč hlasové (pl-PL, PaulinaRUS)"
+pt-BR | Portugalština (Brazílie) | Žena | "Microsoft Server řeči převod textu na řeč hlasové (pt-BR, HeloisaRUS)"
 | | |Muž | "Microsoft Server řeči převod textu na řeč hlasové (pt-BR, ADAM, Apollo)"
-pt-PT | Portugalština (Portugalsko)|Žena | "Microsoft Server řeči převod textu na řeč hlasové (pt-PT, HeliaRUS)"
-ro RO | Rumunština|Muž | "Microsoft serveru řeči Text na řeč hlas (ro-RO, Andrei)"
+pt-PT | Portugalština (Portugalsko) | Žena | "Microsoft Server řeči převod textu na řeč hlasové (pt-PT, HeliaRUS)"
+ro RO | Rumunština | Muž | "Microsoft serveru řeči Text na řeč hlas (ro-RO, Andrei)"
 ru-RU |ruština| Žena | "Microsoft Server řeči převod textu na řeč hlasové (ru-RU, Irina, Apollo)"
 | | |Muž | "Microsoft Server řeči převod textu na řeč hlasové (ru-RU, Pavel, Apollo)"
 | | |Žena | "Microsoft Server řeči převod textu na řeč hlasové (ru-RU, EkaterinaRUS)"
-sk-SK | Slovenština|Muž | "Microsoft Server řeči převod textu na řeč hlasové (sk-SK, Filip)"
-sl SI | Slovinština|Muž | "Microsoft Server řeči převod textu na řeč hlasové (sl Incidentech Lado)"
-sv-SE | švédština|Žena | "Microsoft serveru řeči Text na řeč hlas (sv-SE, HedvigRUS)"
-ta v | tamilština (Indie) |Muž | "Microsoft serveru řeči Text na řeč hlas, (ta v, Valluvar)"
-th TH | Thajština|Muž | "Microsoft Server řeči převod textu na řeč hlasové (th TÝ, Pattara)"
-tr-TR |turečtina| Žena | "Microsoft Server řeči převod textu na řeč hlasové (tr-TR, SedaRUS)"
-vi-VN | Vietnamština|Muž | "Microsoft Server řeči převod textu na řeč hlasové (vi VN)"
+sk-SK | Slovenština | Muž | "Microsoft Server řeči převod textu na řeč hlasové (sk-SK, Filip)"
+sl SI | Slovinština | Muž | "Microsoft Server řeči převod textu na řeč hlasové (sl Incidentech Lado)"
+sv-SE | švédština | Žena | "Microsoft serveru řeči Text na řeč hlas (sv-SE, HedvigRUS)"
+ta v | tamilština (Indie) | Muž | "Microsoft serveru řeči Text na řeč hlas, (ta v, Valluvar)"
+th TH | Thajština | Muž | "Microsoft Server řeči převod textu na řeč hlasové (th TÝ, Pattara)"
+tr-TR |turečtina | Žena | "Microsoft Server řeči převod textu na řeč hlasové (tr-TR, SedaRUS)"
+vi-VN | Vietnamština | Muž | "Microsoft Server řeči převod textu na řeč hlasové (vi VN)"
 zh-CN | Čínština (Španělsko)|Žena | "Microsoft serveru řeči Text na řeč hlas (zh-CN, HuihuiRUS)"
 | | |Žena | "Microsoft serveru řeči Text na řeč hlas (zh-CN, Yaoyao, Apollo)"
 | | |Muž | "Microsoft serveru řeči Text na řeč hlas (zh-CN, Kangkang, Apollo)"
@@ -140,13 +140,13 @@ zh-TW | Čínština (Tchaj-wan)|Žena | "Microsoft serveru řeči Text na řeč 
 Přizpůsobení hlasu je k dispozici pro Americkou angličtinu (en US), Španělsko čínština (zh-CN) a italština (it-IT).
 
 > [!NOTE]
-> Školení italsky začíná u datové sady projevy 2 000 +. Čínština – angličtina dvojjazyčné modely jsou podporovány také počáteční datovou sadu 2 000 + projevy.
+> Školení italsky začíná u datové sady z 2 000 + projevy. Dvojjazyčné modely čínština – angličtina jsou také podporovány s počáteční sadu 2 000 + projevy data.
 
 ## <a name="speech-translation"></a>Překlad řeči
 
-**Překlad řeči** rozhraní API podporuje různé jazyky pro překlad řeči řeči a rozpoznávání řeči na text. Zdrojový jazyk musí být vždy v následující tabulce řeči, jazyka. Dostupné jazyky cílové závisí na tom, zda cílový překlad řeči nebo text.
+**Překlad řeči** rozhraní API podporuje různé jazyky pro překlad řeči řeči a rozpoznávání řeči na text. Zdrojový jazyk musí být vždy z následující tabulky jazyka řeči. Dostupné jazyky cílové závisí na tom, zda cílový překlad řeči nebo text.
 
-Můžete získat seznam jazyků programově pomocí rozhraní REST API jazyků koncový bod. V seznamu jsou uvedeny každý kód jazyka, jakož i název jazyka v angličtině, nebo v jakýkoli jiný podporovaný jazyk. Tento seznam se aktualizuje pomocí služby Microsoft Translator pokaždé, když bude k dispozici nový jazyk.
+Seznam jazyků, můžete získat prostřednictvím kódu programu pomocí koncového bodu rozhraní REST API jazyků. V seznamu jsou uvedeny každý kód jazyka, jakož i název jazyka v angličtině, nebo libovolného podporovaného jazyka. Tento seznam se aktualizuje pomocí služby Microsoft Translator pokaždé, když bude k dispozici nový jazyk.
 
 ### <a name="speech-languages"></a>Jazyků pro řeč
 

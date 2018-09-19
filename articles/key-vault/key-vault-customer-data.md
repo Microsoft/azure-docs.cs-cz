@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 05/22/2018
 ms.author: barclayn
-ms.openlocfilehash: 359648a843375477ea56ab791533208c11af9c81
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: 807b8a17570dfdcefa07a42719b7b0b24e4f31d7
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42056594"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297158"
 ---
 # <a name="azure-key-vault-customer-data-features"></a>Funkce dat zákazníků Azure Key Vault
 
@@ -37,7 +37,7 @@ Následující informace uvádí zákaznická data v rámci služby Azure Key Va
 - Kontakty certifikátu může obsahovat uživatele e-mailové adresy, názvy nebo telefonních čísel
 - Může obsahovat vystavitelů certifikátů, e-mailové adresy, názvy, telefonní čísla, přihlašovací údaje k účtu a údaje o organizaci
 - Libovolné značky lze použít k objektům ve službě Azure Key Vault. Mezi tyto objekty patří trezorů, klíčů, tajných kódů, certifikáty a účty úložiště. Značky použité mohou obsahovat osobní data
-- Azure Key Vault přístup k protokolům obsahovat ID objektů [UPN](../active-directory/connect/active-directory-aadconnect-userprincipalname.md)a IP adresy pro každé volání rozhraní REST API
+- Azure Key Vault přístup k protokolům obsahovat ID objektů [UPN](../active-directory/hybrid/plan-connect-userprincipalname.md)a IP adresy pro každé volání rozhraní REST API
 - Diagnostické protokoly služby Azure Key Vault může obsahovat ID objektů a IP adresy pro volání rozhraní REST API
 
 ## <a name="deleting-customer-data"></a>Odstraňuje se zákaznická data

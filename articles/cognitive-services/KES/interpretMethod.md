@@ -1,53 +1,58 @@
 ---
-title: Interpretace metoda v rozhraní API služby zkoumání znalostní báze | Microsoft Docs
-description: Zjistěte, jak lze pomocí této metody Interpret v znalostní báze zkoumání služby (KES) rozhraní API v kognitivní služby.
+title: Interpretace metoda – Knowledge Exploration Service API
+titlesuffix: Azure Cognitive Services
+description: Zjistěte, jak použít metodu interpretaci v znalostní báze zkoumání služby (KES) rozhraní API.
 services: cognitive-services
 author: bojunehsu
-manager: stesp
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: knowledge-exploration
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: ef68d98dacf393abf8d030b9312217ea380947d2
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 45badbdbe1a7e1f2028a00d54458db35a4f7d440
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342475"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127999"
 ---
-# <a name="interpret-method"></a>Interpretace – metoda
-*Interpretovat* metoda přebírá řetězec dotazu přirozeného jazyka a vrátí formátovaný interpretace záměru uživatele na základě dat gramatika a index.  Zajistit interaktivní vyhledávání prostředí, může být tato metoda volána, jak každý znak je zadán uživatel s *dokončení* parametr nastavit na hodnotu 1 pro povolení automatického dokončování návrhy.
+# <a name="interpret-method"></a>interpretace – metoda
+
+*Interpretovat* metoda přebírá řetězec dotazu v přirozeném jazyce a vrátí formátovaný interpretace záměru uživatele na základě dat gramatiky a index.  Poskytnout prostředí pro interaktivní hledání, může tuto metodu volat jako jednotlivé znaky je zadané uživatelem s *kompletní* parametr nastaven na hodnotu 1, aby návrhy automatického dokončování.
 
 ## <a name="request"></a>Žádost
+
 `http://<host>/interpret?query=<query>[&<options>]`
 
 Název|Hodnota| Popis
 ----|----|----
-query    | Textový řetězec | Dotaz zadaný uživatelem.  Pokud dokončení nastavena na hodnotu 1, dotaz, bude vyhodnocen jako předponu pro generování návrhy automatické dokončování dotazů.        
-dokončení | 0 (výchozí) nebo 1 | 1 znamená, že jsou automatické doplňování návrzích vydány na základě dat gramatika a index.         
+query    | Textový řetězec | Dotazu zadaného uživatelem.  Pokud dokončení je nastavená na 1, dotaz bude interpretovat jako předponu pro generování návrhy automatického dokončování dotazů.        
+Dokončení | 0 (výchozí) nebo 1 | 1 znamená, že návrhy automatického dokončování jsou generovány na základě dat gramatiky a index.         
 count    | Číslo (výchozí = 10) | Maximální počet interpretace vrátit.         
-Posun   | Číslo (výchozí = 0) | Index prvního interpretace vrátit.  Například *počet = 2 & Posun = 0* vrátí interpretace 0 a 1. *Počet = 2 & Posun = 2* vrátí interpretace 2 a 3.       
-timeout  | Číslo (výchozí = 1 000) | Časový limit v milisekundách. Vrátí se pouze interpretace nalezen předtím, než je časový limit uplynul.
+Posun   | Číslo (výchozí = 0) | Index prvního interpretace vrátit.  Například *počet = 2 & UN přenosu = 0* vrátí interpretace 0 a 1. *Počet = 2 & UN přenosu = 2* vrátí interpretace 2 a 3.       
+timeout  | Číslo (výchozí = 1000) | Časový limit v milisekundách. Jsou vráceny pouze interpretace nalezen předtím, než vypršel časový limit.
 
-Pomocí *počet* a *posun* parametry, může být velkého počtu výsledků získat přírůstkově více požadavků.
+Použití *počet* a *posun* parametry, může být velký počet výsledků získávají postupně prostřednictvím více požadavků.
 
 ## <a name="response-json"></a>Odpověď (JSON)
+
 JSONPath     | Popis
 ---------|---------
 $.query |*dotaz* parametr z požadavku.
-$.interpretations   |Pole 0 nebo další způsoby, jak odpovídají vstupní dotaz gramatiky.
-$.interpretations [\*] .logprob   |Relativní protokolu pravděpodobnosti rozdělení se výklad (< = 0).  Vyšší hodnoty budou s větší pravděpodobností.
-$.interpretations [\*] .parse |Řetězec XML, který ukazuje, jak byl interpretován jednotlivých součástí dotazu.
-$.interpretations [\*] .rules |Pole je definováno v gramatika volána při interpretaci 1 nebo více pravidel.
-$.interpretations [\*] .rules [\*] .název    |Název pravidla.
+$.interpretations   |Pole 0 nebo více způsobů, jak odpovídají vstupní dotaz vůči gramatiky.
+$.interpretations [\*] .logprob   |Relativní protokolu pravděpodobnost výklad (< = 0).  Vyšší hodnoty budou pravděpodobně.
+$.interpretations [\*] .parse |Řetězec XML, který ukazuje, jak byl interpretován každá část dotazu.
+$.interpretations [\*] .rules |Pole 1 nebo více pravidel definovaných v gramatice vyvolána při interpretaci.
+$.interpretations [\*] .rules [\*] .name    |Název pravidla.
 $.interpretations [\*] .rules [\*] .output  |Sémantické výstup pravidla.
 $.interpretations [\*] .rules [\*]. output.type |Datový typ sémantického výstupu.
-$.interpretations [\*] .rules [\*]. output.value|Hodnota sémantického výstupu.  
-$.aborted | Hodnota TRUE, pokud vypršel časový limit požadavku.
+$.interpretations [\*] .rules [\*]. output.value|Hodnota sémantické výstupu.  
+$.aborted | True, pokud vypršel časový limit žádosti.
 
 ### <a name="parse-xml"></a>Analyzovat soubor XML
-Analýzy XML označí (dokončené) dotaz s informacemi o tom, jak odpovídá proti pravidla v gramatiky a atributů v indexu.  Dole je příklad z domény academic publikace:
+
+Analýzy XML označí (dokončený) dotazu s informacemi o tom, jak odpovídá proti pravidla v gramatice a atributy v indexu.  Tady je příklad z akademického publikace domény:
 
 ```xml
 <rule name="#GetPapers">
@@ -60,16 +65,17 @@ Analýzy XML označí (dokončené) dotaz s informacemi o tom, jak odpovídá pr
 </rule>
 ```
 
-`<rule>` Element vymezuje rozsahu v dotazu odpovídající zadané pravidlo podle jeho `name` atribut.  Může být vnořena analýzy součástí je pravidlo odkazy v gramatice.
+`<rule>` Element vymezuje rozsahu v dotazu odpovídající zadané pravidlo podle jeho `name` atribut.  Může být vnořena v případě odkazů pravidlo v gramatice zahrnuje analýzu.
 
-`<attr>` Element vymezuje rozsahu v dotazu odpovídající atribut index určeného jeho `name` atribut.  V případě shody zahrnuje synonymum ve vstupní dotaz `canonical` atribut bude obsahovat kanonický hodnotu odpovídající synonymum z indexu.
+`<attr>` Element vymezuje rozsahu v dotazu odpovídající atribut index určené jeho `name` atribut.  Při porovnávání zahrnuje synonym ve vstupní dotaz `canonical` atribut bude obsahovat Kanonická hodnota odpovídající synonymum z indexu.
 
 ## <a name="example"></a>Příklad:
-V příkladu academic publikace vrátí následující požadavek až 2 Automatické dokončování návrhy pro dotaz předponu "dokumenty Paper podle jaime":
+
+V příkladu academic publikace vrátí následující požadavek až 2 návrhy automatického dokončování pro dotaz předponu "Paper podle jaime":
 
 `http://<host>/interpret?query=papers by jaime&complete=1&count=2`
 
-Odpověď obsahuje horních dvou ("count = 2") pravděpodobně interpretace, která dokončí částečné dotaz "dokumenty Paper podle jaime": "papíry podle jaime teevan" a "papíry podle jaime zelená".  Dokončování dotazů služby generované místo pouze s přesnou odpovídá od autora "jaime", protože zadaný požadavek "dokončení = 1". Všimněte si, že kanonické hodnoty "zelená j l" odpovídá prostřednictvím synonymum "jamie green", jak je uvedeno v analýzy.
+Odpověď obsahuje dva ("počet = 2") pravděpodobně interpretace, které dokončení částečné dotazu "Paper podle jaime": "papíry podle jaime teevan" a "papíry zelenou barvou jaime".  Dokončování dotazů služby generované místo vzhledem k tomu jenom přesné shody autora "jaime", protože zadaný požadavek "dokončení = 1". Všimněte si, že Kanonická hodnota "zelené j l" odpovídá prostřednictvím synonymum "jamie green", jak je uvedeno v analýzy.
 
 
 ```json
@@ -106,7 +112,7 @@ Odpověď obsahuje horních dvou ("count = 2") pravděpodobně interpretace, kte
 }
 ```  
 
-Pokud je typ sémantického výstupu "dotaz", jako v následujícím příkladě odpovídajících objektů může načíst předávání *output.value* k [ *vyhodnotit* ](evaluateMethod.md) rozhraní API prostřednictvím *expr* parametr.
+Pokud je typ sémantického výstupu "dotazování", jako v následujícím příkladu odpovídajících objektů lze načíst předáním *output.value* k [ *vyhodnotit* ](evaluateMethod.md) API prostřednictvím *expr* parametru.
 
 `http://<host>/evaluate?expr=Composite(AA.AuN=='jaime teevan')`
   

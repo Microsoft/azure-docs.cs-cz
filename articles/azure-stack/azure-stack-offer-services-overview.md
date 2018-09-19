@@ -1,9 +1,9 @@
 ---
-title: Nabídka služeb v zásobníku Azure | Microsoft Docs
+title: Nabídka služeb ve službě Azure Stack | Dokumentace Microsoftu
 description: Jako operátor cloudu můžete nabízet služby pro vaše uživatele.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: jeffgilb
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -12,38 +12,47 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/07/2018
-ms.author: brenduns
+ms.date: 09/17/2018
+ms.author: jeffgilb
 ms.reviewer: ''
-ms.openlocfilehash: 042e65cfe350cb61124ed8920ae3616502e6553d
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: e4e1701a145a36fce93db3812b67c307b342da5c
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248839"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127478"
 ---
-# <a name="overview-of-offering-services-in-azure-stack"></a>Přehled nabídky služeb v Azure zásobníku
+# <a name="overview-of-offering-services-in-azure-stack"></a>Přehled nabízených služeb ve službě Azure Stack
 
-*Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
+*Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
-[Microsoft Azure zásobníku](azure-stack-poc.md) je hybridní Cloudová platforma, která umožňuje poskytovat služby z vašeho datového centra. Jako poskytovatel služby můžete nabízet služby vašim klientům. V rámci obchodní nebo státní úřad můžete nabídnout místních služeb zaměstnancům. Služby, které může poskytnout zahrnovat, ale nejsou omezeny na:
+[Microsoft Azure Stack](azure-stack-poc.md) je hybridní Cloudová platforma, která vám umožní doručovat služby z vašeho datového centra. Jako poskytovatel služeb můžou nabízet služby vašim klientům. V rámci firmy nebo státním úřadu může nabídnout místních služeb na svoje zaměstnance. 
 
-- Platforma jako služba (PaaS) služby jako aplikační služby, aplikace API, funkce rozhraní API, SQL a MySQL.
+Můžete nabídnout [infrastruktura jako služba](https://azure.microsoft.com/overview/what-is-iaas/) služby (IaaS), které umožňují uživatelům vytvářet výpočetní infrastrukturu na vyžádání, zřídit a spravovat na portálu user portal Azure Stack.
 
-Dokonce můžete kombinovat služeb a integrovat sestavení komplexní řešení pro různé uživatele.
+Můžete taky nasadit [platforma jako služba](https://azure.microsoft.com/overview/what-is-paas/) služby (PaaS) pro Azure Stack od Microsoftu a dalších poskytovatelů 3. stran. Služby, které můžete doručovat patří, ale nejsou omezené na:
 
-Chcete-li tyto služby poskytovat uživatelům, musíte vytvořit [plánům, nabídky a kvóty](azure-stack-plan-offer-quota-overview.md). Uživatelé mohou potom přihlásit k vaší nabídky k použití služby.
+- [Přidání poskytovatele prostředků App Service do Azure Stacku](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-overview)
 
-## <a name="plan-your-service-offers"></a>Plánování vaší nabídky služeb
+- [Přidat poskytovatele prostředků SQL serveru do služby Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-sql-resource-provider-deploy)
 
-Pokud už plánujete vaší nabídky, uvědomte si následující body:
+- [Přidat poskytovatele prostředků MySQL serveru do služby Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-mysql-resource-provider-deploy)
 
-**Nabídkách zkušebních verzí**: můžete nabídkách zkušebních verzí přilákat noví uživatelé, kteří můžete poté upgradovat na další služby. Chcete-li vytvořit zkušební nabídku, vytvořit malá [základního plánu](azure-stack-plan-offer-quota-overview.md#base-plan) s plán volitelné rozšíření větší.
 
-**Plánování kapacity**: je možné, že se zajímá uživatele, kteří získat velké množství prostředků a zdokonaleným systému pro všechny uživatele. Chcete-li vám pomůže zvýšit výkon, můžete [nakonfigurovat kvóty plánu](azure-stack-plan-offer-quota-overview.md#plans) využití zakončení.
+Můžete dokonce kombinovat služby integrovat a vytvářet komplexní řešení pro různé uživatele.
 
-**Delegovaná zprostředkovatelé**: ostatním uživatelům můžete udělit možnost vytvoření nabídky ve vašem prostředí. Například pokud jste poskytovatel služeb, můžete [delegovat](azure-stack-delegated-provider.md) tato schopnost váš prodejce. Nebo, pokud jste v organizaci, můžete delegovat na ostatní rozdělení pobočky.
+Chcete-li tyto služby poskytovat vašim uživatelům, musíte vytvořit [plánů, nabídek a kvót](azure-stack-plan-offer-quota-overview.md). Uživatelé můžou potom přihlásit k odběru nabídek, aby mohli využívat služby.
+
+## <a name="plan-your-service-offers"></a>Plánování vaší nabídky služby
+
+Když máte v plánu vaší nabídky, berte v úvahu následující body:
+
+**Nabídky zkušebních verzí**: nabídky zkušebních verzí můžete použít jak zaujmout nové uživatele, kteří potom můžete upgradovat na další služby. Vytvořit nabídku na zkušební verzi, vytvořte malé [základní plán](azure-stack-plan-offer-quota-overview.md#base-plan) s volitelné větší doplňkový plán.
+
+**Plánování kapacity**: je možné dotyčného o uživatelích, které vzít velké množství prostředků a zdokonaleným systému pro všechny uživatele. Chcete-li vám pomůže zvýšit výkon, můžete [nakonfigurovat své plány s kvótami](azure-stack-plan-offer-quota-overview.md#plans) limit využití.
+
+**Delegované poskytovatele**: ostatním uživatelům můžete udělit možnost vytvoření nabídky ve vašem prostředí. Například pokud jste poskytovatel služeb, můžete [delegovat](azure-stack-delegated-provider.md) tato schopnost váš prodejce. Nebo, pokud už organizace, můžete delegovat na jiné oddělení a pobočky.
 
 ## <a name="next-steps"></a>Další postup
 
-[Vytvořit nabídku v Azure zásobníku](azure-stack-create-offer.md)
+[Vytvoření nabídky ve službě Azure Stack](azure-stack-create-offer.md)

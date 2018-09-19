@@ -1,5 +1,5 @@
 ---
-title: 'Prostředí PowerShell: Clusteru Azure HDInsight s Data Lake Store jako přídavná služba storage | Microsoft Docs'
+title: 'Prostředí PowerShell: Clusteru Azure HDInsight s Azure Data Lake Storage Gen1 jako doplňkové úložiště | Dokumentace Microsoftu'
 services: data-lake-store,hdinsight
 documentationcenter: ''
 author: nitinme
@@ -11,58 +11,58 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: a68e6a076bb27626c100594de011cf07ff361768
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: fe742156ccff4325ab6b9f9fc9619093784ccc03
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34627378"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129790"
 ---
-# <a name="use-azure-powershell-to-create-an-hdinsight-cluster-with-data-lake-store-as-additional-storage"></a>Pomocí prostředí Azure PowerShell k vytvoření clusteru HDInsight s Data Lake Store (jako další úložiště)
+# <a name="use-azure-powershell-to-create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-as-additional-storage"></a>Pomocí prostředí Azure PowerShell k vytvoření clusteru služby HDInsight s Azure Data Lake Storage Gen1 (jako další úložiště)
 
 > [!div class="op_single_selector"]
 > * [Pomocí portálu](data-lake-store-hdinsight-hadoop-use-portal.md)
-> * [Pomocí prostředí PowerShell (pro výchozí úložiště)](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
-> * [Pomocí prostředí PowerShell (pro další úložiště)](data-lake-store-hdinsight-hadoop-use-powershell.md)
-> * [Pomocí Správce prostředků](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
+> * [Použití prostředí PowerShell (pro výchozí úložiště)](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
+> * [Použití prostředí PowerShell (pro další úložiště)](data-lake-store-hdinsight-hadoop-use-powershell.md)
+> * [Pomocí Resource Manageru](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
 >
 >
 
-Další informace o použití prostředí Azure PowerShell ke konfiguraci clusteru HDInsight s Azure Data Lake Store, **jako další úložiště**. Pokyny k vytvoření clusteru HDInsight s Azure Data Lake Store jako výchozí úložiště najdete v tématu [vytvoření clusteru HDInsight s Data Lake Store jako výchozí úložiště](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md).
+Zjistěte, jak pomocí Azure Powershellu ke konfiguraci clusteru služby HDInsight s Azure Data Lake Storage Gen1 **jako další úložiště**. Pokyny o tom, jak vytvořit HDInsight cluster s Data Lake Storage Gen1 jako výchozí úložiště najdete v tématu [vytvoření clusteru HDInsight s Data Lake Storage Gen1 jako výchozím úložištěm](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md).
 
 > [!NOTE]
-> Pokud plánujete službu Azure Data Lake Store používat jako další úložiště pro cluster HDInsight, důrazně doporučujeme to provést během vytváření clusteru, jak je popsáno v tomto článku. Přidání služby Azure Data Lake Store jako dalšího úložiště do existujícího clusteru HDInsight je složitý proces, při kterém může docházet k chybám.
+> Pokud se chystáte použít Data Lake Storage Gen1 jako další úložiště pro HDInsight cluster, důrazně doporučujeme, abyste to udělali při vytváření clusteru, jak je popsáno v tomto článku. Přidání Data Lake Storage Gen1 jako další úložiště k existující HDInsight je cluster složitý proces a náchylná k chybám.
 >
 
-Pro typy podporované clusteru slouží jako výchozí úložiště nebo účtu další úložiště Data Lake Store. Když se Data Lake Store se použije jako další úložiště, výchozí účet úložiště pro clustery budou mít pořád Azure úložiště objektů BLOB (WASB) a soubory související s clusteru (například protokoly atd.) se stále zapisují do výchozí úložiště, při data, která chcete zpracovat mohou být uloženy v účtu Data Lake Store. Pomocí Data Lake Store jako další úložiště účet nemá negativní vliv na výkon nebo možnost čtení/zápisu do úložiště z clusteru.
+Pro typy podporovaných clusterů Data Lake Storage Gen1 může sloužit jako výchozí úložiště nebo dalšího účtu úložiště. Pokud Data Lake Storage Gen1 slouží jako další úložiště, výchozí účet úložiště pro clustery bude stále objekty BLOB Azure Storage (WASB) a soubory související s clusterem (jako jsou protokoly atd.) jsou stále zapsány do výchozího úložiště dat, který chcete proces mohou být uloženy v účtu Data Lake Storage Gen1. Pomocí Data Lake Storage Gen1 jako dalšího účtu úložiště nemá vliv na výkon ani schopnost čtení a zápis do úložiště z clusteru.
 
-## <a name="using-data-lake-store-for-hdinsight-cluster-storage"></a>Pro úložiště clusteru HDInsight pomocí Data Lake Store
+## <a name="using-data-lake-storage-gen1-for-hdinsight-cluster-storage"></a>Pro úložiště clusteru HDInsight pomocí Data Lake Storage Gen1
 
-Zde jsou některé důležité informace týkající se používání HDInsight s Data Lake Store:
+Tady jsou některé důležité informace týkající se použití HDInsight s Data Lake Storage Gen1:
 
-* Možnost k vytvoření clusterů HDInsight s přístupem k Data Lake Store, jako je k dispozici pro HDInsight verze 3.2, 3,4, 3.5 a 3.6 Další úložiště.
+* Možnost k vytvoření clusterů HDInsight s přístupem k Data Lake Storage Gen1 jako další úložiště je k dispozici pro HDInsight verze 3.2, 3.4, 3.5 a 3.6.
 
-Konfigurace HDInsight pro práci s Data Lake Store pomocí prostředí PowerShell zahrnuje následující kroky:
+Konfigurace HDInsight pro práci s Data Lake Storage Gen1 pomocí prostředí PowerShell zahrnuje následující kroky:
 
-* Vytvoření Azure Data Lake Store
-* Nastavení ověřování pro přístup na základě rolí k Data Lake Store
-* Vytvoření clusteru HDInsight pomocí ověřování do Data Lake Store
-* V clusteru spustit testovací úlohy
+* Vytvoření účtu Data Lake Storage Gen1
+* Nastavení ověřování pro přístup na základě rolí k Data Lake Storage Gen1
+* Vytvoření clusteru HDInsight při ověřování vůči službě Data Lake Storage Gen1
+* Na tomto clusteru spustí testovací úlohy
 
 ## <a name="prerequisites"></a>Požadavky
 Je nutné, abyste před zahájením tohoto kurzu měli tyto položky:
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 * **Azure PowerShell 1.0 nebo vyšší**. Viz téma [Instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
-* **Windows SDK**. Můžete si ho nainstalovat [odtud](https://dev.windows.com/en-us/downloads). To použijete k vytvoření certifikátu zabezpečení.
-* **Azure Active Directory instanční objekt**. Kroky v tomto kurzu poskytují pokyny o tom, jak vytvořit objekt služby ve službě Azure AD. Ale musí být správce Azure AD mohli vytvořit objekt služby. Pokud jste správce Azure AD, můžete přeskočit tento požadavek a pokračujte v tomto kurzu.
+* **Windows SDK**. Můžete si ho nainstalovat [odtud](https://dev.windows.com/en-us/downloads). Můžete použít pro vytvoření certifikátu zabezpečení.
+* **Azure Active Directory Service Principal**. Kroky v tomto kurzu poskytují pokyny o tom, jak vytvořit instanční objekt ve službě Azure AD. Však musí být správce Azure AD mohli vytvořit instanční objekt. Pokud jste správce Azure AD, můžete tuto požadovanou součást přeskočit a pokračovat v tomto kurzu.
 
-    **Pokud si nejste správce Azure AD**, nebudete moci provádět kroky potřebné k vytvoření instančního objektu. V takovém případě musíte vám správce Azure AD nejdřív vytvořit objekt služby, před vytvořením clusteru HDInsight s Data Lake Store. Navíc instanční objekt musí být vytvořen pomocí certifikátu, jak je popsáno v [vytvořit objekt služby pomocí certifikátu](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-certificate-from-certificate-authority).
+    **Pokud si nejste správce Azure AD**, nebudete moci provádět kroky potřebné k vytvoření instančního objektu. V takovém případě musí správce Azure AD nejprve vytvořit instanční objekt služby, než vytvoříte HDInsight cluster s Data Lake Storage Gen1. Navíc instanční objekt musí být vytvořen pomocí certifikátu, jak je popsáno v [vytvoření instančního objektu s certifikátem](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-certificate-from-certificate-authority).
 
-## <a name="create-an-azure-data-lake-store"></a>Vytvoření Azure Data Lake Store
-Postupujte podle těchto kroků můžete vytvořit Data Lake Store.
+## <a name="create-a-data-lake-storage-gen1-account"></a>Vytvoření účtu Data Lake Storage Gen1
+Postupujte podle těchto kroků a vytvořte účet Data Lake Storage Gen1.
 
-1. Z plochy otevřete nové okno Azure PowerShell a zadejte následující fragment kódu. Po zobrazení výzvy k přihlášení, nezapomeňte že přihlásit jako jeden správce nebo vlastníka předplatného:
+1. Z plochy otevřete nové okno Azure PowerShell a zadejte následující fragment kódu. Po zobrazení výzvy k přihlášení, ujistěte se, že se že přihlásíte jako správce/vlastníka předplatného:
 
         # Log in to your Azure account
         Connect-AzureRmAccount
@@ -73,19 +73,19 @@ Postupujte podle těchto kroků můžete vytvořit Data Lake Store.
         # Select a subscription
         Set-AzureRmContext -SubscriptionId <subscription ID>
 
-        # Register for Data Lake Store
+        # Register for Data Lake Storage Gen1
         Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
 
    > [!NOTE]
-   > Pokud se zobrazí zpráva podobná `Register-AzureRmResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` při registraci zprostředkovatele prostředků Data Lake Store, je možné, že vaše předplatné není povolený pro Azure Data Lake Store. Ujistěte se, aktivujte předplatné Azure pro verzi public preview služby Data Lake Store pomocí následujících tyto [pokyny](data-lake-store-get-started-portal.md).
+   > Pokud se zobrazí zpráva podobná `Register-AzureRmResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` při registraci poskytovatele prostředků Data Lake Storage Gen1, je možné, že vaše předplatné není na seznamu povolených pro Data Lake Storage Gen1. Ujistěte se, že vaše předplatné Azure pro Data Lake Storage Gen1 povolíte pomocí těchto [pokyny](data-lake-store-get-started-portal.md).
    >
    >
-2. Účet Azure Data Lake Store je přidružený ke skupině prostředků Azure. Začněte vytvořením skupiny prostředků Azure.
+2. Účet Data Lake Storage Gen1 souvisí s skupiny prostředků Azure. Začněte vytvořením skupiny prostředků Azure.
 
         $resourceGroupName = "<your new resource group name>"
         New-AzureRmResourceGroup -Name $resourceGroupName -Location "East US 2"
 
-    Měli byste vidět výstup takto:
+    Měli byste vidět výstup podobný tomuto:
 
         ResourceGroupName : hdiadlgrp
         Location          : eastus2
@@ -93,10 +93,10 @@ Postupujte podle těchto kroků můžete vytvořit Data Lake Store.
         Tags              :
         ResourceId        : /subscriptions/<subscription-id>/resourceGroups/hdiadlgrp
 
-3. Vytvořte účet Azure Data Lake Store. Název účtu, který zadáte musí obsahovat jenom malá písmena a číslice.
+3. Vytvoření účtu Data Lake Storage Gen1. Název účtu, který zadáte musí obsahovat jenom malá písmena a číslice.
 
-        $dataLakeStoreName = "<your new Data Lake Store name>"
-        New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeStoreName -Location "East US 2"
+        $dataLakeStorageGen1Name = "<your new Data Lake Storage Gen1 account name>"
+        New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeStorageGen1Name -Location "East US 2"
 
     Zobrazený výstup by měl vypadat asi takto:
 
@@ -115,44 +115,44 @@ Postupujte podle těchto kroků můžete vytvořit Data Lake Store.
         Location                    : East US 2
         Tags                        : {}
 
-5. Nahrajte ukázková data do Azure Data Lake. Použijeme ho později v tomto článku k ověření, že data jsou přístupná z clusteru služby HDInsight. Pokud hledáte ukázková data, která byste mohli nahrát, můžete použít složku **Ambulance Data** z [úložiště Git Azure Data Lake](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData).
+5. Nahrání ukázkových dat do Data Lake Storage Gen1. Použijeme dále v tomto článku ověřit, že data jsou přístupná z clusteru HDInsight. Pokud hledáte ukázková data, která byste mohli nahrát, můžete použít složku **Ambulance Data** z [úložiště Git Azure Data Lake](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData).
 
         $myrootdir = "/"
-        Import-AzureRmDataLakeStoreItem -AccountName $dataLakeStoreName -Path "C:\<path to data>\vehicle1_09142014.csv" -Destination $myrootdir\vehicle1_09142014.csv
+        Import-AzureRmDataLakeStoreItem -AccountName $dataLakeStorageGen1Name -Path "C:\<path to data>\vehicle1_09142014.csv" -Destination $myrootdir\vehicle1_09142014.csv
 
 
-## <a name="set-up-authentication-for-role-based-access-to-data-lake-store"></a>Nastavení ověřování pro přístup na základě rolí k Data Lake Store
+## <a name="set-up-authentication-for-role-based-access-to-data-lake-storage-gen1"></a>Nastavení ověřování pro přístup na základě rolí k Data Lake Storage Gen1
 
-Každé předplatné služby Azure souvisí s Azure Active Directory. Uživatelů a služeb, která přistupují k prostředkům odběru pomocí portálu Azure nebo rozhraní API služby Azure Resource Manager, musí nejprve ověřit pomocí této služby Azure Active Directory. Udělením přístupu k předplatných Azure a služby přiřazením příslušné role na prostředek služby Azure.  Objekt služby pro služby, identifikuje službu v Azure Active Directory (AAD). Tato část ukazuje postup udělení aplikační služba, stejně jako HDInsight, přístup k prostředku Azure (účet Azure Data Lake Store jste vytvořili dříve) vytvořením objekt služby pro aplikaci a přiřazení rolí k, pomocí prostředí Azure PowerShell.
+Každé předplatné služby Azure souvisí s Azure Active Directory. Uživatelům a službám přístup k prostředkům předplatného pomocí webu Azure portal nebo rozhraní API Azure Resource Manageru, musí nejdřív ověřit pomocí služby Azure Active Directory. Udělením přístupu k předplatným Azure a služby přiřazením příslušné role v prostředku Azure.  Pro služby identifikuje instančního objektu služby v Azure Active Directory (AAD). Tato část ukazuje, jak udělit aplikační služba, jako je HDInsight, přístup k prostředku Azure (účet Data Lake Storage Gen1 jste vytvořili dříve) tak, že vytvoření instančního objektu pro aplikaci a přiřazení rolí, která prostřednictvím Azure Powershellu.
 
-Nastavení ověřování služby Active Directory pro Azure Data Lake, musíte provést následující úlohy.
+Pokud chcete nastavit ověřování služby Active Directory pro Data Lake Storage Gen1, musí provádět následující úlohy.
 
 * Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
-* Vytvoření aplikace v Azure Active Directory a objektu služby
+* Vytvoření aplikace v Azure Active Directory a instančního objektu
 
 ### <a name="create-a-self-signed-certificate"></a>Vytvořit certifikát podepsaný svým držitelem (self-signed certificate)
 
-Zajistěte, aby byla [Windows SDK](https://dev.windows.com/en-us/downloads) nainstalovat před provedením kroků v této části. Musíte také vytvořit adresář, jako například **C:\mycertdir**, kde bude certifikát vytvořen.
+Ujistěte se, že máte [sady Windows SDK](https://dev.windows.com/en-us/downloads) nainstalované před provedením kroků v této části. Musíte mít také vytvořený adresář, jako například **C:\mycertdir**, kde se vytvoří certifikát.
 
-1. V okně PowerShell přejděte do umístění, kam jste nainstalovali Windows SDK (obvykle `C:\Program Files (x86)\Windows Kits\10\bin\x86` a použít [MakeCert] [ makecert] nástroj vytvořit certifikát podepsaný svým držitelem a privátní klíč. Použijte následující příkazy.
+1. V okně Powershellu přejděte do umístění, kam jste nainstalovali sadu Windows SDK (obvykle `C:\Program Files (x86)\Windows Kits\10\bin\x86` a použít [MakeCert] [ makecert] nástroj k vytvoření certifikátu podepsaného svým držitelem a privátní klíč. Pomocí následujících příkazů.
 
         $certificateFileDir = "<my certificate directory>"
         cd $certificateFileDir
 
         makecert -sv mykey.pvk -n "cn=HDI-ADL-SP" CertFile.cer -r -len 2048
 
-    Zobrazí se výzva k zadání heslo soukromého klíče. Až se příkaz úspěšně provede, měli byste vidět **CertFile.cer** a **mykey.pvk** v adresáři certifikát, který jste zadali.
-2. Použití [Pvk2Pfx] [ pvk2pfx] nástroj pro převod pvk a .cer soubory, které vytvořili MakeCert do souboru .pfx. Spusťte následující příkaz.
+    Jste vyzváni k zadání hesla privátního klíče. Jakmile se příkaz úspěšně provede, měli byste vidět **CertFile.cer** a **mykey.pvk** v adresáři certifikát, který jste zadali.
+2. Použití [Pvk2Pfx] [ pvk2pfx] nástroj pro převod souborů .pvk a .cer, vytvořené pomocí nástroje MakeCert do souboru .pfx. Spusťte následující příkaz.
 
         pvk2pfx -pvk mykey.pvk -spc CertFile.cer -pfx CertFile.pfx -po <password>
 
-    Po zobrazení výzvy zadejte dříve zadaný heslo soukromého klíče. Hodnota zadaná **-SP** parametr je heslo, které souvisí s soubor .pfx. Po úspěšném dokončení příkazu, měli byste taky vidět CertFile.pfx v adresáři certifikát, který jste zadali.
+    Po zobrazení výzvy zadejte heslo soukromého klíče jste zadali dříve. Hodnota zadaná **-No** parametr je heslo, které je přidružený k souboru .pfx. Po úspěšném dokončení příkazu, měli byste vidět CertFile.pfx v adresáři certifikát, který jste zadali.
 
-### <a name="create-an-azure-active-directory-and-a-service-principal"></a>Vytvoření služby Azure Active Directory a objektu služby
+### <a name="create-an-azure-active-directory-and-a-service-principal"></a>Vytvoření aplikace Azure Active Directory a instančního objektu
 
-V této části provedete kroky k vytvoření služby hlavní pro aplikaci Azure Active Directory, přiřaďte roli instanční objekt a ověřit jako objekt služby tím, že poskytuje certifikát. Spusťte následující příkazy k vytvoření aplikace v Azure Active Directory.
+V této části provedete postup vytvořit instanční objekt pro aplikaci Azure Active Directory, přiřazení role pro instanční objekt a ověřit jako instanční objekt služby tím, že poskytuje certifikát. Spusťte následující příkazy k vytvoření aplikace v Azure Active Directory.
 
-1. Vložte následující rutiny v okně konzoly prostředí PowerShell. Ujistěte se, hodnota zadaná **– DisplayName** vlastnost je jedinečný. Navíc hodnoty **– Domovská stránka** a **- IdentiferUris** jsou zástupné hodnoty a nejsou ověřené.
+1. Vložte následující rutiny v okně konzoly Powershellu. Ujistěte se, že hodnota zadaná **- DisplayName** vlastnost je jedinečný. Navíc hodnoty **– Domovská stránka** a **- IdentiferUris** zástupné hodnoty jsou a nejsou ověřeny.
 
         $certificateFilePath = "$certificateFileDir\CertFile.pfx"
 
@@ -173,24 +173,24 @@ V této části provedete kroky k vytvoření služby hlavní pro aplikaci Azure
             -EndDate $certificatePFX.NotAfter
 
         $applicationId = $application.ApplicationId
-2. Vytvořit objekt služby pomocí ID aplikace.
+2. Vytvoření instančního objektu pomocí ID aplikace.
 
         $servicePrincipal = New-AzureRmADServicePrincipal -ApplicationId $applicationId
 
         $objectId = $servicePrincipal.Id
-3. Udělte přístup k hlavní službě Data Lake Store složku a soubor, který bude využívat z clusteru HDInsight. Následující fragment poskytuje přístup ke kořenovému adresáři účtu Data Lake Store (které jste zkopírovali ukázkový datový soubor) a v samotném souboru.
+3. Udělení přístupu instančního objektu služby Data Lake Storage Gen1 složky a souboru, ke kterému bude přístup z clusteru HDInsight. Následující fragment poskytuje přístup ke kořenové složce účtu Data Lake Storage Gen1 (kde jste zkopírovali soubor ukázkových dat) a samotný soubor.
 
-        Set-AzureRmDataLakeStoreItemAclEntry -AccountName $dataLakeStoreName -Path / -AceType User -Id $objectId -Permissions All
-        Set-AzureRmDataLakeStoreItemAclEntry -AccountName $dataLakeStoreName -Path /vehicle1_09142014.csv -AceType User -Id $objectId -Permissions All
+        Set-AzureRmDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path / -AceType User -Id $objectId -Permissions All
+        Set-AzureRmDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path /vehicle1_09142014.csv -AceType User -Id $objectId -Permissions All
 
-## <a name="create-an-hdinsight-linux-cluster-with-data-lake-store-as-additional-storage"></a>Vytvoření clusteru služby HDInsight Linux s Data Lake Store jako další úložiště
+## <a name="create-an-hdinsight-linux-cluster-with-data-lake-storage-gen1-as-additional-storage"></a>Vytvoření clusteru HDInsight s Linuxem s Data Lake Storage Gen1 jako další úložiště
 
-V této části vytvoříme cluster služby HDInsight Hadoop Linux s Data Lake Store jako další úložiště. Pro tuto verzi clusteru HDInsight a Data Lake Store musí být ve stejném umístění.
+V této části vytvoříme cluster HDInsight Hadoop Linux s Data Lake Storage Gen1 jako další úložiště. Pro tuto verzi clusteru HDInsight a účet Data Lake Storage Gen1 musí být ve stejném umístění.
 
-1. Začněte s načítání ID předplatného klienta. Budete potřebovat, který později.
+1. Začněte s načítání ID předplatného tenanta. Budete potřebovat, který později.
 
         $tenantID = (Get-AzureRmContext).Tenant.TenantId
-2. Pro tuto verzi pro Hadoop cluster, Data Lake Store se použít jenom jako další úložiště pro cluster. Výchozí úložiště budou mít pořád úložiště Azure BLOB (WASB). Proto nejdřív vytvoříme účet úložiště a kontejnery úložiště potřebné pro cluster.
+2. Pro tuto verzi pro Hadoop cluster, Data Lake Storage Gen1 jde použít jenom jako další úložiště pro cluster. Výchozí úložiště bude nadále objekty BLOB služby Azure storage (WASB). Proto nejdřív vytvoříme účet úložiště a kontejnery úložiště potřebné pro cluster.
 
         # Create an Azure storage account
         $location = "East US 2"
@@ -213,24 +213,24 @@ V této části vytvoříme cluster služby HDInsight Hadoop Linux s Data Lake S
 
         New-AzureRmHDInsightCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName -HttpCredential $httpCredentials -Location $location -DefaultStorageAccountName "$storageAccountName.blob.core.windows.net" -DefaultStorageAccountKey $storageAccountKey -DefaultStorageContainer $containerName  -ClusterSizeInNodes $clusterNodes -ClusterType Hadoop -Version "3.4" -OSType Linux -SshCredential $sshCredentials -ObjectID $objectId -AadTenantId $tenantID -CertificateFilePath $certificateFilePath -CertificatePassword $password
 
-    Po úspěšném dokončení rutiny, měli byste vidět výstup výpis podrobnosti o clusteru.
+    Po úspěšném dokončení rutina byste měli vidět výstup výpisu podrobnosti o clusteru.
 
 
-## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-the-data-lake-store"></a>Spuštění testu úloh na clusteru HDInsight pomocí Data Lake Store
-Po dokončení konfigurace clusteru služby HDInsight, můžete spustit testovací úlohy v clusteru k testování clusteru HDInsight můžete získat přístup k Data Lake Store. To pokud chcete udělat, budeme se spustí úlohy Hive vzorku, který vytvoří tabulku pomocí ukázkových dat, který jste dříve nahráli do Data Lake Store.
+## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-the-data-lake-storage-gen1-account"></a>Spouštění testů úloh na clusteru HDInsight pro použití účtu Data Lake Storage Gen1
+Po dokončení konfigurace clusteru služby HDInsight, můžete spustit testovací úlohy na clusteru pro testování, aby mohli získat přístup ke clusteru HDInsight Gen1 úložiště Data Lake. Uděláte to tak, provedeme ukázkové úlohy Hive, který vytvoří tabulku pomocí ukázkových dat, který jste dříve nahráli do svého účtu Data Lake Storage Gen1.
 
 V této části se SSH do clusteru HDInsight Linux můžete vytvořit a spustit ukázkový dotaz Hive.
 
-* Pokud používáte klienta Windows do SSH do clusteru, přečtěte si téma [použití SSH se systémem Linux Hadoop v HDInsight ze systému Windows](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md).
-* Pokud používáte klienta Linux tak, aby SSH do clusteru, přečtěte si téma [použití SSH se systémem Linux Hadoop v HDInsight ze systému Linux](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)
+* Pokud používáte Windows klient SSH do clusteru, přečtěte si téma [použití SSH se systémem Linux Hadoop v HDInsight z Windows](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md).
+* Pokud používáte Linux klienta SSH do clusteru, přečtěte si téma [použití SSH se systémem Linux Hadoop v HDInsight z Linuxu](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)
 
-1. Po připojení, spusťte rozhraní příkazového řádku Hive pomocí následujícího příkazu:
+1. Jakmile budete připojeni, pomocí následujícího příkazu spusťte rozhraní příkazového řádku Hive:
 
         hive
-2. Pomocí rozhraní příkazového řádku, zadejte následující příkazy, čímž umožňuje vytvořit novou tabulku s názvem **vozidel** pomocí ukázkových dat v Data Lake Store:
+2. Pomocí rozhraní příkazového řádku zadejte následující příkazy, čímž umožňuje vytvořit novou tabulku s názvem **vozidel** pomocí ukázkových dat v Data Lake Storage Gen1:
 
         DROP TABLE vehicles;
-        CREATE EXTERNAL TABLE vehicles (str string) LOCATION 'adl://<mydatalakestore>.azuredatalakestore.net:443/';
+        CREATE EXTERNAL TABLE vehicles (str string) LOCATION 'adl://<mydatalakestoragegen1>.azuredatalakestore.net:443/';
         SELECT * FROM vehicles LIMIT 10;
 
     Zobrazený výstup by měl vypadat přibližně takto:
@@ -246,29 +246,29 @@ V této části se SSH do clusteru HDInsight Linux můžete vytvořit a spustit 
         1,9,2014-09-14 00:00:27,46.81006,-92.08174,4,NE,1
         1,10,2014-09-14 00:00:30,46.81006,-92.08174,31,N,1
 
-## <a name="access-data-lake-store-using-hdfs-commands"></a>Přístup k Data Lake Store pomocí příkazů HDFS
-Po konfiguraci clusteru HDInsight pomocí Data Lake Store, můžete pro přístup do obchodu příkazů HDFS prostředí.
+## <a name="access-data-lake-storage-gen1-using-hdfs-commands"></a>Přístup k Data Lake Storage Gen1 pomocí příkazů HDFS
+Po konfiguraci clusteru HDInsight pro použití služby Data Lake Storage Gen1, můžete použít příkazy prostředí HDFS pro přístup k úložišti.
 
-V této části se SSH do clusteru HDInsight Linux můžete vytvořit a spustit příkazy HDFS.
+V této části se SSH do clusteru HDInsight Linux vytvořili a spustili příkazů HDFS.
 
-* Pokud používáte klienta Windows do SSH do clusteru, přečtěte si téma [použití SSH se systémem Linux Hadoop v HDInsight ze systému Windows](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md).
-* Pokud používáte klienta Linux tak, aby SSH do clusteru, přečtěte si téma [použití SSH se systémem Linux Hadoop v HDInsight ze systému Linux](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)
+* Pokud používáte Windows klient SSH do clusteru, přečtěte si téma [použití SSH se systémem Linux Hadoop v HDInsight z Windows](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md).
+* Pokud používáte Linux klienta SSH do clusteru, přečtěte si téma [použití SSH se systémem Linux Hadoop v HDInsight z Linuxu](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)
 
-Po připojení, použijte následující příkaz systému souborů HDFS zobrazte seznam souborů v Data Lake Store.
+Jakmile budete připojeni, použijte následující příkaz systému souborů HDFS zobrazte seznam souborů v účtu Data Lake Storage Gen1.
 
-    hdfs dfs -ls adl://<Data Lake Store account name>.azuredatalakestore.net:443/
+    hdfs dfs -ls adl://<Data Lake Storage Gen1 account name>.azuredatalakestore.net:443/
 
-To by měl seznam soubor, který jste dříve nahráli do Data Lake Store.
+Tento soubor, který jste dříve nahráli do Data Lake Storage Gen1 zveřejnit.
 
     15/09/17 21:41:15 INFO web.CaboWebHdfsFileSystem: Replacing original urlConnectionFactory with org.apache.hadoop.hdfs.web.URLConnectionFactory@21a728d6
     Found 1 items
-    -rwxrwxrwx   0 NotSupportYet NotSupportYet     671388 2015-09-16 22:16 adl://mydatalakestore.azuredatalakestore.net:443/mynewfolder
+    -rwxrwxrwx   0 NotSupportYet NotSupportYet     671388 2015-09-16 22:16 adl://mydatalakestoragegen1.azuredatalakestore.net:443/mynewfolder
 
-Můžete také `hdfs dfs -put` příkazu do Data Lake Store nahrát některé soubory a pak použijte `hdfs dfs -ls` ověřit, zda soubory byly úspěšně nahrál.
+Můžete také použít `hdfs dfs -put` příkazu některé soubory nahrát do Data Lake Storage Gen1 a pak použijte `hdfs dfs -ls` ověřit, zda soubory byly úspěšně nahrány.
 
 ## <a name="see-also"></a>Viz také
-* [Použití Data Lake Store s clustery Azure HDInsight](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)
-* [Portálu: Vytvoření clusteru HDInsight do Data Lake Store pomocí](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Pomocí Data Lake Storage Gen1 s využitím clusterů Azure HDInsight](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)
+* [Portál: Vytvoření clusteru HDInsight pro použití Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)
 
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx
 [pvk2pfx]: https://msdn.microsoft.com/library/windows/desktop/ff550672(v=vs.85).aspx

@@ -1,28 +1,29 @@
 ---
-title: Vrátí N-nejvhodnější překlady textem Microsoft překladač rozhraní API | Microsoft Docs
-description: Vrátí N-nejvhodnější překlady pomocí rozhraní API služby Microsoft překladač Text.
+title: Vrátí N-Best překlady – Translator Text API
+titlesuffix: Azure Cognitive Services
+description: Vrátí N-Best překlady pomocí rozhraní Microsoft Translator Text API.
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: 3eafe50f69ae1a6748342e64a414ecee4467d0d1
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: e1d310cecb41de00c1d3e3986fe715d1519ceeff
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342770"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123449"
 ---
-# <a name="how-to-return-n-best-translations"></a>Postup vrátí N-nejvhodnější překlady
+# <a name="how-to-return-n-best-translations"></a>Jak vracet N-Best překlady
 
 > [!NOTE]
-> Tato metoda je zastaralá. Není k dispozici v V3.0 rozhraní API Text překladač.
+> Tato metoda je zastaralá. Není k dispozici v V3.0 Translator Text API.
 
-GetTranslations() a GetTranslationsArray() metod rozhraní API služby Microsoft překladač zahrnují volitelný logický příznak "IncludeMultipleMTAlternatives".
-Metoda vrátí až maxTranslations alternativy kde delta pochází ze seznamu N nejvhodnější překladač stroje.
+Metody GetTranslations() a GetTranslationsArray() rozhraní Microsoft Translator API zahrnují volitelný logický příznak "IncludeMultipleMTAlternatives".
+Metoda vrátí až maxTranslations alternativy kde rozdílového pochází ze seznamu N-Best translator stroje.
 
 Podpis je:
 
@@ -36,24 +37,24 @@ Podpis je:
 
 | Parametr | Popis |
 |:---|:---|
-| appId | **Požadované** Pokud se používá k hlavičce autorizace, ponechejte pole appid prázdný jinak zadejte řetězec obsahující "Nosiče" + "" + přístupový token.|
-| text | **Požadované** řetězec představující text přeložit. Velikost textu nesmí být delší než 10000 znaků.|
-| od | **Požadované** řetězec představující kód jazyka textu přeložit. |
-| na | **Požadované** řetězec představující kód jazyka přeložit text do. |
-| maxTranslations | **Požadované** int představující maximální počet překladů vrátit. |
-| Možnosti | **Volitelné** A TranslateOptions objekt, který obsahuje níže uvedené hodnoty. Jsou všechny volitelné a výchozí nejběžnější nastavení.
+| ID aplikace | **Vyžaduje** Pokud hlavička autorizace se používá, ponechejte tuto položku appid pole prázdné jinak zadat řetězec obsahující "Nosiče" + "" + přístupový token.|
+| text | **Vyžaduje** řetězec představující text k přeložení. Velikost textu nesmí být delší než 10000 znaků.|
+| od | **Vyžaduje** řetězec představující kód jazyka textu pro převod. |
+| na | **Vyžaduje** řetězec představující kód jazyka můžete přeložit text do. |
+| maxTranslations | **Vyžaduje** celé číslo představující maximální počet překlady se vraťte. |
+| Možnosti | **Volitelné** A TranslateOptions objekt, který obsahuje níže uvedené hodnoty. Jsou nepovinné a nejběžnější nastavení ve výchozím nastavení.
 
-* Kategorie: Jediný podporovaný, a výchozí hodnota, je možnost "Obecné".
+* Kategorie: Jediný podporovaný a výchozí možnost je "general".
 * Jediný podporovaný ContentType: A výchozí hodnota, je možnost "text/plain".
-* Stav: Stav uživatele při correlate požadavku a odpovědi. Stejný obsah, bude vrácen v odpovědi.
-* IncludeMultipleMTAlternatives: Příznak k určení, jestli se mají vracet víc než jeden z modulu MT alternativy. Výchozí je hodnota false a obsahuje pouze 1 alternativní.
+* Stav: Stav uživatele korelovat požadavku a odpovědi. Vrátí se stejným obsahem v odpovědi.
+* IncludeMultipleMTAlternatives: Příznak k určení, jestli se má vrátit více než jeden modul MT alternativy. Výchozí hodnotu false a obsahuje pouze 1 alternativu.
 
 ## <a name="ratings"></a>Hodnocení
-Hodnocení se používají takto: nejlepší automatické překlad má hodnocení 5.
-Automaticky generovaný překlad alternativy (N-nejlepší) mají hodnocení 0 a mají určitý stupeň shody 100.
+Hodnocení se použijí následujícím způsobem: nejlepší automatický překlad má hodnocení 5.
+Automaticky generované alternativy překladu (N-Best) mají hodnocení 0 a shoda stupeň 100.
 
 ## <a name="number-of-alternatives"></a>Počet alternativy
-Počet vrácených alternativy je až maxTranslations, ale může být nižší.
+Počet vrácených alternativy záleží maxTranslations, ale může být nižší.
 
 ## <a name="language-pairs"></a>Dvojice jazyků
-Tato funkce není k dispozici pro překlad mezi zjednodušená a tradiční čínštině, obou směrech. Je k dispozici pro všechny ostatní dvojice jazyka Microsoft Translator podporována.
+Tato funkce není k dispozici pro překlad mezi zjednodušená a tradiční čínštiny, obou směrech. Je k dispozici pro všechny ostatní dvojice jazyků Microsoft Translatoru podporována.

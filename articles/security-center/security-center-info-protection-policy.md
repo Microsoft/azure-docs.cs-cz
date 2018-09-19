@@ -1,5 +1,5 @@
 ---
-title: Přizpůsobení zásady služby information protection ve službě Azure Security Center | Dokumentace Microsoftu
+title: Vlastní nastavení zásad ochrany informací SQL ve službě Azure Security Center | Dokumentace Microsoftu
 description: Zjistěte, jak přizpůsobit zásad ochrany informací ve službě Azure Security Center.
 services: security-center
 documentationcenter: na
@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/12/2018
+ms.date: 09/20/2018
 ms.author: rkarlin
-ms.openlocfilehash: 4b454f712b8cb65c69b183979a2fe2e97495d12e
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: ac4aa3c8aafae24736cc7b48a9ca4e8ba9fd0742
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44724023"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46125183"
 ---
-# <a name="customize-the-information-protection-policy-in-azure-security-center-preview"></a>Upravit zásady služby information protection ve službě Azure Security Center (Preview)
+# <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Vlastní nastavení zásad ochrany informací SQL ve službě Azure Security Center (Preview)
  
-Zásady služby information protection je možné definovat a přizpůsobená pro váš celého tenanta Azure, ve službě Azure Security Center.
+Zásady služby SQL information protection je možné definovat a přizpůsobená pro váš celého tenanta Azure, ve službě Azure Security Center.
 
 Služby Information protection je schopností pokročilé zabezpečení pro zjišťování, klasifikaci, označování popisky a ochranu citlivých dat ve vašich prostředcích Azure data. Zjišťování a klasifikace vaše nejcitlivější data (business, finanční, zdravotní péče, identifikovatelné osobní údaje, atd.) můžete přehrát velmi důležitou roli v zásadní roli. ochrany vaší organizace. Může sloužit jako infrastruktura pro:
 - Pomáhá splnit požadavky na dodržování legislativních předpisů a standardy ochrany osobních údajů dat
@@ -38,7 +38,7 @@ Klasifikace mechanismus je založen na dvě primární konstrukce, které tvoř�
  
 Information Protection se dodává s integrovanou sadou popisky a typy informací, které se používají ve výchozím nastavení. Chcete-li přizpůsobit, můžete upravit zásady služby information protection ve službě Azure Security Center.
  
-## <a name="customize-the-information-protection-policy"></a>Upravit zásady služby information protection
+## <a name="customize-the-information-protection-policy"></a>Přizpůsobení zásad Information Protection
 Chcete-li upravit zásady služby information protection pro vašeho tenanta Azure, musíte mít [oprávnění správce pro vašeho tenanta skupinu root management](security-center-management-groups.md). 
  
 1. V hlavní nabídce služby Security Center, vyberte **zásady zabezpečení**.

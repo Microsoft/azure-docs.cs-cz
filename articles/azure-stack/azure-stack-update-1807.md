@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/17/2018
+ms.date: 09/18/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: b46e365ea3903a8f2c805717df13d361c823148d
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 53f01ad6e8a801c69ea93c54e805807cb8eed34d
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985592"
+ms.locfileid: "46127818"
 ---
 # <a name="azure-stack-1807-update"></a>Aktualizace služby Azure Stack 1807
 
@@ -158,14 +158,10 @@ Další informace o těchto ohrožení zabezpečení, klikněte na výše uveden
 - <!-- 2830461 - IS --> V některých případech při aktualizaci vyžaduje pozornost, odpovídající nemusí být vygenerována výstraha. Přesné stavu se stále projeví na portálu a není ovlivněn.
 
 ### <a name="post-update-steps"></a>Postup po aktualizaci
+Po instalaci této aktualizace nainstalujte všechny příslušné opravy hotfix. Další informace naleznete následující články znalostní báze, stejně jako naše [zásady obsluhy](azure-stack-servicing-policy.md). 
+- [KB 4464231 – Azure Stack opravu Hotfix Azure Stack Hotfix 1.1807.1.78]( https://support.microsoft.com/help/4464231)
 
-- <!-- 2933866 – IS --> **Vylepšený stav instalace aktualizace se nezdařila.** Tato verze přináší dvě nové kategorie stavu operátory přineseme další informace o instalaci aktualizace se nezdařila. Jsou dvě kategorie *PreparationFailed*, a *InstallationFailed*. Po instalaci této verze, může se zobrazit informace pro chyby při předchozí instalaci aktualizace revize tak, aby odrážela tyto nové kategorie. 
-
-<!-- *There are no post-update steps for update 1807.* -->
-
-<!-- After the installation of this update, install any applicable Hotfixes. For more information view the following knowledge base articles, as well as our [Servicing Policy](azure-stack-servicing-policy.md).  
- - Link to KB  
- -->
+ <!-- 2933866 – IS --> Po instalaci této aktualizace můžete zobrazit **vylepšené stav instalace aktualizace se nezdařila.** To může zahrnovat informace o předchozích chybách instalace aktualizace, která byla změněna tak, aby odrážely dvě nové kategorie stavu. Nová kategorie stavu jsou *PreparationFailed*, a *InstallationFailed*.  
 
 ## <a name="known-issues-post-installation"></a>Známé problémy (po instalaci)
 

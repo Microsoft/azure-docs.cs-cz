@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: lizross
-ms.openlocfilehash: 53c38eee1befe7c83f739deeb0e85711e7313e60
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: eb9eebb4f5fff4a0c3dc7729387cfbc4b13a12f1
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45730105"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294899"
 ---
 # <a name="azure-active-directory-faq"></a>Nejčastější dotazy ke službě Azure Active Directory
 Azure Active Directory (Azure AD) je komplexní řešení Identity jako služby (IDaaS), které pokrývá všechny prvky identity, řízení přístupu a zabezpečení.
@@ -72,7 +72,7 @@ Kromě toho placené služby AD Azure, jako je Enterprise Mobility + Security, d
 
 **Odpověď:** Místní adresář můžete připojit ke službě Azure AD pomocí služby Azure AD Connect.
 
-Další informace najdete v článku [Integrování místních identit do služby Azure Active Directory](../connect/active-directory-aadconnect.md).
+Další informace najdete v článku [Integrování místních identit do služby Azure Active Directory](../hybrid/whatis-hybrid-identity.md).
 
 - - -
 **Otázka: Jak mám nastavit jednotné přihlašování mezi místním adresářem a cloudovými aplikacemi?**
@@ -81,7 +81,7 @@ Další informace najdete v článku [Integrování místních identit do služb
 
 Implementaci jednotného přihlašování z místního prostředí lze snadno nastavit pomocí federačních řešení, jako je například služba Active Directory Federation Services (AD FS), nebo konfigurací synchronizace hodnot hash hesel. Obě možnosti můžete snadno nasadit pomocí průvodce konfigurací služby Azure AD Connect.
 
-Další informace najdete v článku [Integrování místních identit do služby Azure Active Directory](../connect/active-directory-aadconnect.md).
+Další informace najdete v článku [Integrování místních identit do služby Azure Active Directory](../hybrid/whatis-hybrid-identity.md).
 
 - - -
 **Otázka: Poskytuje Azure AD samoobslužný portál pro uživatele v naší organizaci?**
@@ -95,7 +95,7 @@ Další informace najdete v tématu [Úvod do přístupového panelu](../user-he
 
 **Odpověď:** Ano. Edice Azure AD Premium nabízí službu Azure AD Connect Health. Služba Azure AD Connect Health pomáhá monitorovat místní infrastrukturu identity a synchronizační služby a lépe proniknout do jejich funkce.  
 
-Další informace najdete v tématu [Sledování infrastruktury místních identit a synchronizačních služeb v cloudu](../connect-health/active-directory-aadconnect-health.md).  
+Další informace najdete v tématu [Sledování infrastruktury místních identit a synchronizačních služeb v cloudu](../hybrid/whatis-hybrid-identity-health.md).  
 
 - - -
 ## <a name="password-management"></a>Správa hesel

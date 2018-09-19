@@ -3,7 +3,7 @@ title: zahrnout soubor
 description: zahrnout soubor
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
+author: navyasric
 manager: mtillman
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
@@ -12,49 +12,49 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/19/2018
-ms.author: andret
+ms.date: 09/17/2018
+ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: 24a5baade2168df603f5505baeaaf8e1c3ea2411
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 724166d402f81fa3a2c977d107111f5a0c32571d
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "36205223"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46293471"
 ---
 ## <a name="setting-up-your-web-server-or-project"></a>Nastavení webového serveru nebo projektu
 
-> Stáhněte si tento ukázkový projekt místo dávají přednost? 
-> - [Stáhněte si projekt sady Visual Studio](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/VisualStudio.zip)
+> Stáhněte si tento ukázkový projekt místo toho raději?
+> - [Stáhněte si Visual Studio projekt](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/VisualStudio.zip)
 >
 > nebo
-> - [Stažení souborů projektu](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/core.zip) pro místní webový server, jako je například Python
+> - [Stáhnout soubory projektu](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/core.zip) pro místní webový server, jako je například uzel
 >
-> A potom přejděte na [krok konfigurace](#register-your-application) konfigurace ukázka kódu před jeho provedením.
+> A potom přejděte ke [potřeba provádět krok konfigurace](#register-your-application) konfigurace ukázkového kódu před jeho provedením.
 
 ## <a name="prerequisites"></a>Požadavky
-Místní webový server jako [Python http.server](https://www.python.org/downloads/), [http server](https://www.npmjs.com/package/http-server/), [.NET Core](https://www.microsoft.com/net/core), nebo služba IIS Express integrace s [Visual Studio 2017](https://www.visualstudio.com/downloads/) je potřeba spustit tuto s průvodcem instalací. 
+Místní webový server jako [Node.js](https://nodejs.org/en/download/), [.NET Core](https://www.microsoft.com/net/core), nebo integrace služby IIS Express s [Visual Studio 2017](https://www.visualstudio.com/downloads/) se vyžaduje pro spuštění v tomto kurzu.
 
-Pokyny v této příručce jsou založené na Python a Visual Studio 2017, ale Nebojte se použít jakékoli jiné vývojové prostředí nebo webový Server.
+Pokyny v této příručce jsou založené na Node.js a sadě Visual Studio 2017, ale můžete použít jiné prostředí pro vývoj nebo webového serveru.
 
-## <a name="create-your-project"></a>Vytvoření projektu 
+## <a name="create-your-project"></a>Vytvoření projektu
 
-> ### <a name="option-1-visual-studio"></a>Možnost 1: Visual Studio 
-> Pokud používáte Visual Studio a vytvořit nový projekt, postupujte podle následujících kroků a vytvořte nové řešení sady Visual Studio:
+> ### <a name="option-1-visual-studio"></a>Možnost 1: Visual Studio
+> Pokud používáte Visual Studio a vytvořit nový projekt, postupujte podle pokynů můžete vytvořit nové řešení sady Visual Studio:
 > 1.    V sadě Visual Studio:  `File` > `New` > `Project`
-> 2.    V části `Visual C#\Web`, vyberte možnost `ASP.NET Web Application (.NET Framework)`
-> 3.    Název aplikace a klikněte na tlačítko *OK*
-> 4.    V části `New ASP.NET Web Application`, vyberte možnost `Empty`
+> 2.    V části `Visual C#\Web`vyberte `ASP.NET Web Application (.NET Framework)`
+> 3.    Pojmenujte svoji aplikaci a klikněte na tlačítko *OK*
+> 4.    V části `New ASP.NET Web Application`vyberte `Empty`
 
 <p/><!-- -->
 
-> ### <a name="option-2-python-other-web-servers"></a>Možnost 2: Python / jiné webové servery
-> Ujistěte se, že máte nainstalovanou [Python](https://www.python.org/downloads/), postupujte podle níže uvedených kroků:
+> ### <a name="option-2-node-other-web-servers"></a>Možnost 2: Uzel nebo jiné webové servery
+> Ujistěte se, že jste si nainstalovali [Node.js](https://nodejs.org/en/download/), postupujte podle níže uvedených kroků:
 > - Vytvořte složku pro hostování vaší aplikace.
 
 
-## <a name="create-your-single-page-applications-ui"></a>Vytvoření uživatelského rozhraní aplikace jediné stránce
-1.  Vytvoření *index.html* soubor pro vaše SPA JavaScript. Pokud používáte Visual Studio, vyberte projekt (projektu do kořenové složky), klikněte pravým tlačítkem a vyberte: `Add`  >  `New Item`  >  `HTML page` a pojmenujte ji index.html
+## <a name="create-your-single-page-applications-ui"></a>Vytvoření uživatelského rozhraní jednostránkové aplikace
+1.  Vytvoření *index.html* soubor pro vaše aplikace SPA v JavaScriptu. Pokud používáte Visual Studio, vyberte projekt (Kořenová složka projektu), klikněte pravým tlačítkem myši a vyberte: `Add`  >  `New Item`  >  `HTML page` a pojmenujte ho index.html
 2.  Přidejte následující kód na stránku:
 ```html
 <!DOCTYPE html>

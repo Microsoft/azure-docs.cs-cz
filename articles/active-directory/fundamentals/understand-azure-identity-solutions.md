@@ -12,12 +12,12 @@ ms.date: 7/17/2017
 ms.author: lizross
 ms.reviewer: jsnow
 custom: it-pro
-ms.openlocfilehash: db14dbf298596a9fdc189c27ea8608d472c58a35
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: e22f5ced30e30d6f53a1d29c8be2f318161d4fc0
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45737239"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294845"
 ---
 # <a name="what-is-microsoft-azure-identity"></a>Co je Microsoft Azure identity?
 Microsoft Azure Active Directory (Azure AD) je cloudové řešení správy identit a přístupu, které poskytuje adresářové služby, správu identit a správu přístupu k aplikacím. Azure AD rychle [umožní jednotné přihlašování](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-sso) k tisícům předem integrovaných komerčních i vlastních aplikací v [galerii aplikací Azure AD](https://azure.microsoft.com/marketplace/active-directory/all/). Řadu těchto aplikací už nejspíš používáte, třeba Office 365, Salesforce.com, Box, ServiceNow a Workday.
@@ -106,7 +106,7 @@ Tady najdete několik běžných scénářů souvisejících s identitou a pří
 ## <a name="where-can-i-learn-more"></a>Kde získám další informace?
 Máme spoustu skvělých materiálů online, ze kterých se o Azure AD dozvíte všechno. Pro začátek si můžete projít tyto zajímavé články:
 
-* [Povolení hybridní správy adresáře pomocí služby Azure AD Connect](../connect/active-directory-aadconnect.md)
+* [Povolení hybridní správy adresáře pomocí služby Azure AD Connect](../hybrid/whatis-hybrid-identity.md)
 * [Dodatečné zabezpečení pro dokonale propojený svět](../authentication/multi-factor-authentication.md)
 * [Automatizace zřizování uživatelů a jeho rušení pro aplikace SaaS ve službě Azure Active Directory](../manage-apps/user-provisioning.md)
 * [Správa hesel odkudkoli](../user-help/active-directory-passwords-update-your-own-password.md)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 846b76bddbc771a924a1d710cd333dfa4623f5ec
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: a629c598c94e44713f8990871c46272dc48b1359
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37449768"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296273"
 ---
 # <a name="authentication-and-user-permissions"></a>Ověřování a uživatelská oprávnění
 Služba Azure Analysis Services použije Azure Active Directory (Azure AD) pro ověření identity management a uživatele. Každý uživatel vytváření, Správa nebo připojení k Azure Analysis Services server musí mít platné uživatelské identity [tenanta Azure AD](../active-directory/fundamentals/active-directory-administer.md) ve stejném předplatném.
@@ -33,7 +33,7 @@ Podle klientská aplikace nebo nástroj, který používáte může být jiný t
 
 Power BI Desktopu, SSDT a SSMS podporují univerzálního ověřování Active Directory, je interaktivní metoda také podporuje Azure Multi-Factor Authentication (MFA). Azure MFA pomáhá chránit přístup k datům a aplikacím poskytuje jednoduchý proces přihlašování. Nabízí silné ověřování s několika možnostmi ověřování (telefonní hovor, textová zpráva, čipové karty s PIN kódu nebo oznámení přes mobilní aplikaci). Interaktivní MFA s Azure AD může vést k místní dialogové okno pro ověření. **Univerzální ověřování se doporučuje**.
 
-Pokud se přihlášení do Azure pomocí účtu Windows a univerzální ověřování není vybraná nebo k dispozici (Excel), [Active Directory Federation Services (AD FS)](../active-directory/connect/active-directory-aadconnect-azure-adfs.md) je povinný. S federací Azure AD a ověření pomocí místních přihlašovacích údajů uživatele služeb Office 365 a mít přístup k prostředkům Azure.
+Pokud se přihlášení do Azure pomocí účtu Windows a univerzální ověřování není vybraná nebo k dispozici (Excel), [Active Directory Federation Services (AD FS)](../active-directory/hybrid/how-to-connect-fed-azure-adfs.md) je povinný. S federací Azure AD a ověření pomocí místních přihlašovacích údajů uživatele služeb Office 365 a mít přístup k prostředkům Azure.
 
 ### <a name="sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS)
 Servery služby Azure Analysis Services podporují připojení od [SSMS V17.1](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) a vyšší s použitím ověřování Windows, ověřování hesla Active Directory a univerzálního ověřování Active Directory. Obecně se doporučuje, že protože se pomocí univerzálního ověřování Active Directory:

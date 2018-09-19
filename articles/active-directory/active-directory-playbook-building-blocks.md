@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 4c8f2966df9c33ec227b14c00996f84f39043cdb
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: c8517114f51b5aed8f8e31a19b672721b109775e
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44349224"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46298298"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory doklad o playbook koncept: stavební bloky
 
@@ -46,7 +46,7 @@ Tady jsou některé požadavky potřebné pro všechny POC s Azure AD Premium.
 | Azure AD Premium nebo EMS zkušební povoleno | [Azure Active Directory Premium zdarma po dobu jednoho měsíce](https://azure.microsoft.com/trial/get-started-active-directory/) |
 | PoC uživatelům přiřadíte licence EMS nebo Azure AD Premium | [Licence sami sebe i vaše uživatele v Azure Active Directory](active-directory-licensing-get-started-azure-portal.md) |
 | Přihlašovací údaje Azure AD globálního správce | [Přiřazení rolí správce v Azure Active Directory](users-groups-roles/directory-assign-admin-roles.md) |
-| Volitelné, ale důrazně ho doporučujeme: paralelní testovacího prostředí jako záložní | [Požadavky pro Azure AD Connect](./connect/active-directory-aadconnect-prerequisites.md) |
+| Volitelné, ale důrazně ho doporučujeme: paralelní testovacího prostředí jako záložní | [Požadavky pro Azure AD Connect](hybrid/how-to-connect-install-prerequisites.md) |
 
 ## <a name="directory-synchronization---password-hash-sync-phs---new-installation"></a>Nová instalace synchronizace - synchronizace hodnot Hash hesel (PHS) - Directory
 
@@ -56,23 +56,23 @@ Přibližný čas dokončení: jednu hodinu, než méně než 1000 uživateli so
 
 | Předpoklad | Zdroje a prostředky |
 | --- | --- |
-| Připojte server ke spuštění služby Azure AD | [Požadavky pro Azure AD Connect](./connect/active-directory-aadconnect-prerequisites.md) |
-| Cíloví uživatelé POC ve stejné doméně a součást zabezpečení skupiny a organizační jednotky | [Vlastní instalace služby Azure AD Connect](./connect/active-directory-aadconnect-get-started-custom.md#domain-and-ou-filtering) |
-| Azure AD Connect funkce, která je potřebné pro testování Konceptu jsou označeny. | [Připojení Active Directory s Azure Active Directory – konfigurace synchronizace funkcí](./connect/active-directory-aadconnect.md#configure-sync-features) |
-| Požadovaná pověření pro místní a cloudové prostředí  | [Azure AD Connect: Účty a oprávnění](./connect/active-directory-aadconnect-accounts-permissions.md) |
+| Připojte server ke spuštění služby Azure AD | [Požadavky pro Azure AD Connect](hybrid/how-to-connect-install-prerequisites.md) |
+| Cíloví uživatelé POC ve stejné doméně a součást zabezpečení skupiny a organizační jednotky | [Vlastní instalace služby Azure AD Connect](hybrid/how-to-connect-install-custom.md#domain-and-ou-filtering) |
+| Azure AD Connect funkce, která je potřebné pro testování Konceptu jsou označeny. | [Připojení Active Directory s Azure Active Directory – konfigurace synchronizace funkcí](hybrid/how-to-connect-install-roadmap.md#configure-sync-features) |
+| Požadovaná pověření pro místní a cloudové prostředí  | [Azure AD Connect: Účty a oprávnění](hybrid/reference-connect-accounts-permissions.md) |
 
 ### <a name="steps"></a>Kroky
 
 | Krok | Zdroje a prostředky |
 | --- | --- |
 | Stáhněte si nejnovější verzi Azure AD Connect | [Stáhněte si Microsoft Azure Active Directory Connect](https://www.microsoft.com/download/details.aspx?id=47594) |
-| Instalace služby Azure AD Connect pomocí nejjednodušší cesta: Express <br/>1. Filtrovat k cíli organizační jednotky, aby se minimalizoval čas cyklus synchronizace<br/>2. Zvolte cíl sadu uživatelů v místní skupině.<br/>3. Nasazení funkce vyžadované jiné POC motivy | [Azure AD Connect: Vlastní instalace: domény a organizační jednotky filtrování](./connect/active-directory-aadconnect-get-started-custom.md#domain-and-ou-filtering) <br/>[Azure AD Connect: Vlastní instalace: filtrování na základě skupiny](./connect/active-directory-aadconnect-get-started-custom.md#sync-filtering-based-on-groups)<br/>[Azure AD Connect: Integrování místních identit Azure Active Directory: Konfigurace synchronizačních funkcí](./connect/active-directory-aadconnect.md#configure-sync-features) |
-| Otevřete Azure AD Connect uživatelského rozhraní a zobrazit spuštěné profily dokončené (Import, synchronizace a export) | [Synchronizace Azure AD Connect: Plánovač](./connect/active-directory-aadconnectsync-feature-scheduler.md) |
+| Instalace služby Azure AD Connect pomocí nejjednodušší cesta: Express <br/>1. Filtrovat k cíli organizační jednotky, aby se minimalizoval čas cyklus synchronizace<br/>2. Zvolte cíl sadu uživatelů v místní skupině.<br/>3. Nasazení funkce vyžadované jiné POC motivy | [Azure AD Connect: Vlastní instalace: domény a organizační jednotky filtrování](hybrid/how-to-connect-install-custom.md#domain-and-ou-filtering) <br/>[Azure AD Connect: Vlastní instalace: filtrování na základě skupiny](hybrid/how-to-connect-install-custom.md#sync-filtering-based-on-groups)<br/>[Azure AD Connect: Integrování místních identit Azure Active Directory: Konfigurace synchronizačních funkcí](hybrid/how-to-connect-install-roadmap.md#configure-sync-features) |
+| Otevřete Azure AD Connect uživatelského rozhraní a zobrazit spuštěné profily dokončené (Import, synchronizace a export) | [Synchronizace Azure AD Connect: Plánovač](hybrid/how-to-connect-sync-feature-scheduler.md) |
 | Otevřít [portálu pro správu Azure AD](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/UserManagementMenuBlade/), přejděte do okna "Všechny uživatele", přidejte sloupec "Zdroj autority" a, že se zobrazí uživatelům, správně označené jako pocházející z "Windows Server AD" | [Portál pro správu Azure AD](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) |
 
 ### <a name="considerations"></a>Požadavky
 
-1. Podívejte se na aspekty zabezpečení synchronizace hodnot hash hesel [tady](./connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md).  Pokud synchronizace hodnot hash hesel pro uživatele pilotního nasazení produkčního prostředí není platností možnost, pak zvažte následující možnosti:
+1. Podívejte se na aspekty zabezpečení synchronizace hodnot hash hesel [tady](hybrid/how-to-connect-password-hash-synchronization.md).  Pokud synchronizace hodnot hash hesel pro uživatele pilotního nasazení produkčního prostředí není platností možnost, pak zvažte následující možnosti:
    * Vytvoření testovacích uživatelů do domény v produkčním prostředí. Ujistěte se, že nesynchronizovat jiný účet
    * Přesunout do prostředí UAT
 2.  Pokud chcete vykonávat federation, je vhodné pochopit, že náklady na přidružený k federované řešení místního zprostředkovatele Identity nad rámec testování Konceptu a vyhodnocování, které podle výhod, které hledáte:
@@ -277,7 +277,7 @@ Přibližný čas dokončení: 60 minut
 | --- | --- |
 | Azure AD Connect, instalace a konfigurace | Stavebním blokem: [synchronizace adresáře – synchronizace hodnot Hash hesel](#directory-synchronization--password-hash-sync-phs--new-installation) |
 | Požadavky na schůzku ADLDS instance | [Technické reference pro obecný konektor LDAP: přehled obecný konektor LDAP](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericldap#overview-of-the-generic-ldap-connector) |
-| Seznam úloh, které uživatelé používají a atributy přidružené k tyto úlohy | [Synchronizace Azure AD Connect: atributy synchronizované do Azure Active Directory](./connect/active-directory-aadconnectsync-attributes-synchronized.md) |
+| Seznam úloh, které uživatelé používají a atributy přidružené k tyto úlohy | [Synchronizace Azure AD Connect: atributy synchronizované do Azure Active Directory](hybrid/reference-connect-sync-attributes-synchronized.md) |
 
 
 ### <a name="steps"></a>Kroky
@@ -285,11 +285,11 @@ Přibližný čas dokončení: 60 minut
 | Krok | Zdroje a prostředky |
 | --- | --- |
 | Přidat obecný konektor LDAP | [Technické reference pro obecný konektor LDAP: vytvořit nový konektor](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericldap#create-a-new-connector) |
-| Vytvoření profilů spuštění pro vytvořený konektor (úplný import, Rozdílový import, úplná synchronizace, rozdílová synchronizace, export) | [Vytvoření profilu spuštění agenta správy](https://technet.microsoft.com/library/jj590219(v=ws.10).aspx)<br/> [Používání konektorů s Azure AD Connect Sync Service Manager](./connect/active-directory-aadconnectsync-service-manager-ui-connectors.md)|
-| Spustit úplný import profilu a ověřte, že jsou objekty v prostoru konektoru | [Vyhledejte objekt prostoru konektoru](https://technet.microsoft.com/library/jj590287(v=ws.10).aspx)<br/>[Používání konektorů s Azure AD Connect Sync Service Manager: Search Connector Space](./connect/active-directory-aadconnectsync-service-manager-ui-connectors.md#search-connector-space) |
-| Vytvoření pravidla synchronizace tak, aby objektů v Metaverse atributy vyžadované pro úlohy | [Synchronizace Azure AD Connect: osvědčené postupy pro změnu výchozí konfigurace: změní na synchronizační pravidla](./connect/active-directory-aadconnectsync-best-practices-changing-default-configuration.md#changes-to-synchronization-rules)<br/>[Synchronizace Azure AD Connect: Principy deklarativní zřizování](./connect/active-directory-aadconnectsync-understanding-declarative-provisioning.md)<br/>[Synchronizace Azure AD Connect: Principy výrazů deklarativního zřizování](./connect/active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md) |
-| Spustí cyklus úplné synchronizace | [Synchronizace Azure AD Connect: Plánovač: spustit Plánovač](./connect/active-directory-aadconnectsync-feature-scheduler.md#start-the-scheduler) |
-| V případě problémů se řešení potíží | [Řešení potíží s objektem, který se nesynchronizuje do Azure AD](./connect/active-directory-aadconnectsync-troubleshoot-object-not-syncing.md) |
+| Vytvoření profilů spuštění pro vytvořený konektor (úplný import, Rozdílový import, úplná synchronizace, rozdílová synchronizace, export) | [Vytvoření profilu spuštění agenta správy](https://technet.microsoft.com/library/jj590219(v=ws.10).aspx)<br/> [Používání konektorů s Azure AD Connect Sync Service Manager](hybrid/how-to-connect-sync-service-manager-ui-connectors.md)|
+| Spustit úplný import profilu a ověřte, že jsou objekty v prostoru konektoru | [Vyhledejte objekt prostoru konektoru](https://technet.microsoft.com/library/jj590287(v=ws.10).aspx)<br/>[Používání konektorů s Azure AD Connect Sync Service Manager: Search Connector Space](hybrid/how-to-connect-sync-service-manager-ui-connectors.md#search-connector-space) |
+| Vytvoření pravidla synchronizace tak, aby objektů v Metaverse atributy vyžadované pro úlohy | [Synchronizace Azure AD Connect: osvědčené postupy pro změnu výchozí konfigurace: změní na synchronizační pravidla](hybrid/how-to-connect-sync-best-practices-changing-default-configuration.md#changes-to-synchronization-rules)<br/>[Synchronizace Azure AD Connect: Principy deklarativní zřizování](hybrid/concept-azure-ad-connect-sync-declarative-provisioning.md)<br/>[Synchronizace Azure AD Connect: Principy výrazů deklarativního zřizování](hybrid/concept-azure-ad-connect-sync-declarative-provisioning-expressions.md) |
+| Spustí cyklus úplné synchronizace | [Synchronizace Azure AD Connect: Plánovač: spustit Plánovač](hybrid/how-to-connect-sync-feature-scheduler.md#start-the-scheduler) |
+| V případě problémů se řešení potíží | [Řešení potíží s objektem, který se nesynchronizuje do Azure AD](hybrid/tshoot-connect-object-not-syncing.md) |
 | Ověřte, že LDAP uživatel může přihlásit a přístup k aplikaci | https://myapps.microsoft.com |
 
 ### <a name="considerations"></a>Požadavky
@@ -552,7 +552,7 @@ Přibližný čas dokončení: 20 minut
 | Předpoklad | Zdroje a prostředky |
 | --- | --- |
 | Zařízení s uživatelský certifikát zřízení (Windows, iOS nebo Android) z infrastruktury veřejných KLÍČŮ rozlehlé sítě | [Nasazení uživatelských certifikátů](https://msdn.microsoft.com/library/cc770857.aspx) |
-| Doména služby Azure AD Federovaná pomocí služby AD FS | [Azure AD Connect a federace](./connect/active-directory-aadconnectfed-whatis.md)<br/>[Přehled služby Active Directory Certificate Services](https://technet.microsoft.com/library/hh831740.aspx)|
+| Doména služby Azure AD Federovaná pomocí služby AD FS | [Azure AD Connect a federace](hybrid/how-to-connect-fed-whatis.md)<br/>[Přehled služby Active Directory Certificate Services](https://technet.microsoft.com/library/hh831740.aspx)|
 | Pro zařízení s Iosem mají nainstalovanou aplikaci Microsoft Authenticator | [Začínáme s aplikací Microsoft Authenticator](user-help/microsoft-authenticator-app-how-to.md) |
 
 ### <a name="steps"></a>Kroky

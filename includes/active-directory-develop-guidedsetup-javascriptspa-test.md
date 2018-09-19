@@ -1,49 +1,74 @@
-## <a name="test-your-code"></a>Otestujte svůj kód
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: active-directory
+documentationcenter: dev-center-name
+author: navyasric
+manager: mtillman
+editor: ''
+ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 09/17/2018
+ms.author: nacanuma
+ms.custom: include file
+ms.openlocfilehash: 9817e94ba77c83b8620274ba41f9d862b6a5ce6d
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46293615"
+---
+## <a name="test-your-code"></a>Testování kódu
 
-### <a name="test-with-visual-studio"></a>Test pomocí sady Visual Studio
-Pokud používáte Visual Studio, stiskněte klávesu **F5** ke spuštění projektu. Prohlížeči se otevře http://<span></span>localhost: {port} umístění a zobrazí **volání Microsoft Graph API** tlačítko.
+### <a name="test-with-visual-studio"></a>Testování pomocí sady Visual Studio
+Pokud používáte Visual Studio, stiskněte **F5** ke spuštění projektu. V prohlížeči se otevře http://<span></span>localhost: {port} umístění a **volat Microsoft Graph API** tlačítko.
 
-<p/><!-- --> 
+<p/><!-- -->
 
-### <a name="test-with-python-or-other-web-server"></a>Test s Pythonem nebo jiný webový server
-Pokud nepoužíváte Visual Studio, ujistěte se, že váš webový server je spuštěna. Konfigurace serveru pro naslouchání na portu TCP, který je založen na umístění vaší **index.html** souboru. Pro jazyk Python spusťte pro naslouchání na portu spuštěním terminálu příkazového řádku ve složce aplikace:
- 
+### <a name="test-with-node-or-other-web-server"></a>Test uzlu, nebo jiný webový server
+Pokud nepoužíváte Visual Studio, ujistěte se, že váš webový server je spuštěna. Konfigurace serveru tak, aby naslouchala na portu TCP, který je založen na umístění vašeho **index.html** souboru. U uzlu spusťte webový server tak, aby naslouchala na port spuštěním následujících příkazů na příkazovém řádku ve složce aplikace:
+
 ```bash
-python -m http.server 8080
+npm install
+node server.js
 ```
-Otevřete prohlížeč a zadejte http://<span></span>localhost: 8080 nebo http://<span></span>localhost: {port} kde **portu** je port, který váš webový server naslouchá. Měli byste vidět obsah souboru index.html a **volání Microsoft Graph API** tlačítko.
+Otevřete prohlížeč a zadat http://<span></span>localhost:30662 nebo http://<span></span>localhost: {port} kde **port** je port, který váš webový server naslouchá. Zobrazí se obsah souboru index.html a **volat Microsoft Graph API** tlačítko.
 
-## <a name="test-your-application"></a>Testování vaší aplikace
+## <a name="test-your-application"></a>Testování aplikace
 
-Po načtení souboru index.html prohlížeče vyberte **volání Microsoft Graph API**. Při prvním spuštění aplikace, prohlížeč vás přesměruje na koncový bod v2.0 Microsoft Azure Active Directory (Azure AD) a se zobrazí výzva k přihlášení:
- 
+Po načtení souboru index.html prohlížeči vyberte **volat Microsoft Graph API**. Při prvním spuštění aplikace, prohlížeč vás přesměruje na koncový bod v2.0 Microsoft Azure Active Directory (Azure AD) a zobrazí se výzva k přihlášení:
+
 ![Přihlaste se ke svému účtu JavaScript SPA](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspascreenshot1.png)
 
 
-### <a name="provide-consent-for-application-access"></a>Zadejte souhlasu pro přístup k aplikaci
+### <a name="provide-consent-for-application-access"></a>Zadejte svůj souhlas pro přístup k aplikaci
 
-Při prvním přihlášení do aplikace, se zobrazí výzva k souhlasíte s tím, aby aplikaci pro váš profil přístup a pro přihlášení:
+Při prvním přihlášení do aplikace, budete vyzváni k souhlasíte s tím, aby aplikace k profilu a pro přihlášení:
 
-![Zadejte váš souhlas pro přístup k aplikaci](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspaconsent.png)
+![Zadejte svůj souhlas pro přístup k aplikaci](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspaconsent.png)
 
 ### <a name="view-application-results"></a>Zobrazení výsledků aplikace
-Po přihlášení, měli byste vidět informace z vašeho profilu uživatele v **odpovědi volání rozhraní API grafu** pole.
+Po přihlášení, zobrazí se informace z vašeho profilu uživatele v **odpověď volání rozhraní API Graph** pole.
  
-![Očekávané výsledky z volání Microsoft Graph API](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptsparesults.png)
+![Očekávané výsledky z volání rozhraní Microsoft Graph API](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptsparesults.png)
 
-By se měla zobrazit základní informace o token, který byl získán v **tokenu přístupu** a **ID tokenu deklarací** polí.
+Zobrazí se také základní informace o tokenu, který se získal v **přístupový Token** a **deklarací identity tokenu ID** polí.
 
 <!--start-collapse-->
-### <a name="more-information-about-scopes-and-delegated-permissions"></a>Další informace o oborech a přidělená oprávnění
+### <a name="more-information-about-scopes-and-delegated-permissions"></a>Další informace o oborech a delegovaná oprávnění
 
-Vyžaduje rozhraní Microsoft Graph API **user.read** obory a čtení profilu uživatele. Tento obor je automaticky přidán ve výchozím nastavení každou aplikaci, která je zaregistrovaná na portálu pro registraci. Ostatní rozhraní API pro Microsoft Graph, jakož i vlastní rozhraní API pro váš server back-end může vyžadovat další obory. Vyžaduje rozhraní Microsoft Graph API **Calendars.Read** oboru seznam kalendářích uživatele.
+Vyžaduje rozhraní Microsoft Graph API **user.read** obory a čtení profilu uživatele. Tento obor se automaticky přidá ve výchozím nastavení v každé aplikaci, která je zaregistrovaná na portálu pro registraci. Další rozhraní API pro Microsoft Graph, stejně jako vlastní rozhraní API pro back endového serveru může vyžadovat další obory. Vyžaduje rozhraní Microsoft Graph API **Calendars.Read** oboru seznam kalendářů uživatele.
 
-Chcete-li získat přístup k kalendářům uživatele v rámci aplikace, přidejte **Calendars.Read** delegovaná oprávnění k registraci informace o aplikaci. Poté, přidejte **Calendars.Read** obor na **acquireTokenSilent** volání. 
+Chcete-li přístup ke kalendářům uživatele v rámci aplikace, přidejte **Calendars.Read** delegovaná oprávnění aplikace informace o registraci. Pak přidejte **Calendars.Read** rozsah **acquireTokenSilent** volání. 
 
 >[!NOTE]
->Uživatel může být vyzvání pro další souhlas všech uživatelů, jak zvýšit počet oborů.
+>Uživatel může zobrazit výzva pro další souhlasy zvýšit počet oborů.
 
-Pokud rozhraní API back-end nevyžaduje obor (nedoporučuje se), můžete použít **clientId** jako obor v **acquireTokenSilent** a **acquireTokenRedirect** volání.
+Pokud back endového rozhraní API nevyžaduje oboru (nedoporučuje se), můžete použít **clientId** jako obor v **acquireTokenSilent** a **acquireTokenRedirect** volání.
 
 <!--end-collapse-->
 

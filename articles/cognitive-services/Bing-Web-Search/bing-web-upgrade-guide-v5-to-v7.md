@@ -1,54 +1,55 @@
 ---
-title: Upgrade ze služby Bing webové v5 vyhledávání rozhraní API pro v7 | Microsoft Docs
-description: Identifikuje části aplikace, které je potřeba aktualizovat na použití verze 7.
+title: Upgrade z rozhraní API v5 na v7 – rozhraní API webové vyhledávání Bingu
+titleSuffix: Azure Cognitive Services
+description: Určíte, které části vaší aplikace vyžadovat aktualizace se mají použít rozhraní API Bingu pro vyhledávání na webu v7.
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
+manager: cgronlun
 ms.assetid: E8827BEB-4379-47CE-B67B-6C81AD7DAEB1
 ms.service: cognitive-services
 ms.component: bing-web-search
-ms.topic: article
+ms.topic: reference
 ms.date: 01/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 155297f230c0ee02d6fa49d6d35eb24d9941f29b
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: eb84c961d13c5abac7a0c9f426f099d21f034f20
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343414"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129739"
 ---
-# <a name="web-search-api-upgrade-guide"></a>Průvodce upgradem webové rozhraní API pro hledání
+# <a name="upgrade-from-bing-web-search-api-v5-to-v7"></a>Upgrade ze služby Bing webové rozhraní API pro vyhledávání v5 na v7
 
-Tento průvodce upgradem identifikuje změny mezi 5 a verze 7 rozhraní API pro vyhledávání webové služby Bing. Pomocí Tento průvodce vám pomůže identifikovat části aplikace, které je potřeba aktualizovat na použití verze 7.
+Tento průvodce upgradem identifikuje změny mezi verzí 5 a rozhraní API webové vyhledávání Bingu verze 7. Tento průvodce vám pomůže identifikovat části aplikace, které je potřeba aktualizovat na použití verze 7.
 
 ## <a name="breaking-changes"></a>Změny způsobující chyby
 
 ### <a name="endpoints"></a>Koncové body
 
-- Číslo verze pro koncový bod změněn z v5 na v7. Například https:\/\/api.cognitive.microsoft.com/bing/**v7.0**  /vyhledávání.
+- Číslo verze koncový bod se změní z v5 na v7. Například https:\/\/api.cognitive.microsoft.com/bing/**v7.0**  /hledání.
 
-### <a name="error-response-objects-and-error-codes"></a>Chyba odpovědi objekty a kódy chyb
+### <a name="error-response-objects-and-error-codes"></a>Objekty odpovědi chyby a chybové kódy
 
-- Teď by měla obsahovat všechny neúspěšné žádosti `ErrorResponse` objektu v textu odpovědi.
+- Všechny neúspěšné žádosti by teď měl obsahovat `ErrorResponse` objektu v textu odpovědi.
 
-- Přidat následující pole do `Error` objektu.  
-  - `subCode`&mdash;Oddíly. kód chyby do diskrétní sad, pokud je to možné
-  - `moreDetails`&mdash;Další informace o této chybě podrobněji popsaná `message` pole
-   
+- Přidat následující pole `Error` objektu.  
+  - `subCode`&mdash;Oddíly kód chyby: do samostatných sad, tj. Pokud je to možné
+  - `moreDetails`&mdash;Další informace o chybě popsaných v `message` pole
 
-- Kódy chyb v5 nahradí následující možné `code` a `subCode` hodnoty.
 
-|Kód|Dílčí|Popis
+- Nahradí chybové kódy v5 následujícího `code` a `subCode` hodnoty.
+
+|Kód|Podřízeného|Popis
 |-|-|-
-|ServerError|UnexpectedError<br/>ResourceError<br/>Neimplementováno|Bing vrátí ServerError vždy, když nastane některá z podmínek dílčí kódu. Odpověď bude obsahovat tyto chyby, pokud je stavový kód protokolu HTTP 500.
-|InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Blokováno|Bing vrátí InvalidRequest vždy, když libovolná součást žádosti není platný. Například chybí povinný parametr nebo hodnota parametru není platný.<br/><br/>Pokud je chyba ParameterMissing nebo ParameterInvalidValue, je stavový kód HTTP 400.<br/><br/>Pokud je chyba HttpNotAllowed, stavový kód protokolu HTTP 410.
-|RateLimitExceeded||Bing vrátí RateLimitExceeded vždy, když překročí dotazů za sekundu (QPS) nebo dotazů za měsíc (QPM) kvóty.<br/><br/>Bing vrátí stavový kód HTTP 429, pokud se překročí QPS a 403 překračování QPM.
-|InvalidAuthorization|AuthorizationMissing<br/>AuthorizationRedundancy|Bing vrátí InvalidAuthorization, pokud Bing nemůže ověřit volající. Například `Ocp-Apim-Subscription-Key` chybí hlavička nebo klíč předplatného není platný.<br/><br/>Pokud zadáte více než jednu metodu ověřování, dojde k redundance.<br/><br/>Pokud je chyba InvalidAuthorization, je stavový kód HTTP 401.
-|InsufficientAuthorization|AuthorizationDisabled<br/>AuthorizationExpired|Bing vrátí InsufficientAuthorization, pokud má volající nemá oprávnění pro přístup k prostředku. Této chybě může dojít, pokud klíč předplatného je zakázané nebo vypršela platnost. <br/><br/>Pokud je chyba InsufficientAuthorization, je stavový kód HTTP 403.
+|ServerError|UnexpectedError<br/>ResourceError<br/>Neimplementováno|Bing vrátí ServerError pokaždé, když dojde k některé z podmínek dílčí kód. Odpověď bude obsahovat tyto chyby, pokud je stavový kód HTTP 500.
+|InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Blokováno|Bing vrátí InvalidRequest pokaždé, když libovolnou část žádosti není platný. Například povinný parametr chybí nebo není platná hodnota parametru.<br/><br/>Pokud je chyba ParameterMissing nebo ParameterInvalidValue, je stavový kód HTTP 400.<br/><br/>Pokud je chyba HttpNotAllowed, stavový kód HTTP 410.
+|RateLimitExceeded||Bing vrátí RateLimitExceeded pokaždé, když překročíte dotazů za sekundu (QPS) nebo dotazů za měsíc (QPM) kvóty.<br/><br/>Bing vrátí stavový kód HTTP 429, pokud se překročí QPS a 403 překročení QPM.
+|InvalidAuthorization|AuthorizationMissing<br/>AuthorizationRedundancy|Bing vrátí InvalidAuthorization při Bingu se nemůže ověřit volající. Například `Ocp-Apim-Subscription-Key` záhlaví chybí nebo není platný klíč předplatného.<br/><br/>Redundance nastane, pokud zadáte více než jednu metodu ověřování.<br/><br/>Pokud je chyba InvalidAuthorization, je stavový kód HTTP 401.
+|InsufficientAuthorization|AuthorizationDisabled<br/>AuthorizationExpired|Bing vrátí InsufficientAuthorization volající nemá oprávnění k přístupu k prostředku. Této chybě může dojít, pokud klíč předplatného se zakázalo, nebo vypršela platnost. <br/><br/>Pokud je chyba InsufficientAuthorization, je stavový kód HTTP 403.
 
-- Následující mapuje předchozí kódy chyb nové kódy. Pokud jste prováděné závislost na kódy chyb v5, aktualizujte kód odpovídajícím způsobem.
+- Následující mapuje předchozích kódů chyb nové kódy. Pokud jste pořídili závislost na kódy chyb v5, aktualizujte svůj kód odpovídajícím způsobem.
 
-|Verze 5 kódu|Verze 7 code.subCode
+|Kód verze 5|Verze 7 code.subCode
 |-|-
 |RequestParameterMissing|InvalidRequest.ParameterMissing
 RequestParameterInvalidValue|InvalidRequest.ParameterInvalidValue
@@ -70,19 +71,18 @@ InsufficientScope|InsufficientAuthorization
 Blokováno|InvalidRequest.Blocked
 
 
-## <a name="non-breaking-changes"></a>Bez nejnovější změny  
+## <a name="non-breaking-changes"></a>Non nejnovější změny  
 
-### <a name="headers"></a>Záhlaví
+### <a name="headers"></a>Hlavičky
 
-- Přidat volitelné [– direktiva Pragma](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#pragma) hlavičky žádosti. Ve výchozím nastavení Bing vrátí obsah uložený v mezipaměti, pokud je k dispozici. Chcete-li Bing nedošlo k vrácení obsahu v mezipaměti, nastavte na hodnotu no cache hlavičku – direktiva Pragma (například – direktiva Pragma: Ne mezipaměti).
+- Přidat nepovinný [– direktiva Pragma](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#pragma) hlavičky žádosti. Ve výchozím nastavení Bing vrátí obsah uložený v mezipaměti, pokud je k dispozici. Abyste zabránili Bing vrátí obsah uložený v mezipaměti, hlavičku – direktiva Pragma nastavit na hodnotu no-cache (například – direktiva Pragma: no-cache).
 
 ### <a name="query-parameters"></a>Parametry dotazu
 
-- Přidat [answerCount](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#answercount) parametr dotazu. Tento parametr použijte k určení počtu odpovědi, které chcete odpověď na zahrnout. Odpovědi jsou zvolen v závislosti na hodnocení. Například, pokud tento parametr nastavte na tří (3), odpověď obsahuje tři hlavní seřazený odpovědi.  
-  
-- Přidat [povýšit](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#promote) parametr dotazu. Pomocí tohoto parametru spolu s `answerCount` explicitně zahrnout jeden nebo více typů odpovědí, bez ohledu na jejich pořadí. Například pro podporu videa a bitové kopie do odpovědi, by nastavení povýšení na *videa, bitové kopie*. Seznam odpovědí, které chcete zvýšit úroveň nepočítá proti `answerCount` limit. Například pokud `answerCount` 2 a `promote` je nastaven na *videa, bitové kopie*, odpověď může zahrnovat webové stránky, zprávy, videa a obrázků.
+- Přidá [answerCount](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#answercount) parametr dotazu. Tento parametr použijte k určení počtu odpovědí, které má odpověď obsahovat. Odpovědi jsou zvolena podle pořadí. Například, pokud je tento parametr nastavit tři (3), odpověď obsahuje tři hlavní seřazený odpovědi.  
+
+- Přidá [podporovat](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#promote) parametr dotazu. Použijte tento parametr spolu s `answerCount` explicitně zahrnout jeden nebo více typů odpovědí bez ohledu na jejich pořadí. Například pro podporu videa a obrázků do odpovědi, nastavíte povýšit na *videí, obrázků*. Seznam odpovědí, které chcete zvýšit úroveň není započítávat `answerCount` limit. Například pokud `answerCount` je 2 a `promote` je nastavena na *videí, obrázků*, odpověď může obsahovat webové stránky, zprávy, videa a obrázků.
 
 ### <a name="object-changes"></a>Změny objektu
 
-- Přidat `someResultsRemoved` do [WebAnswer](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#webanswer) objektu. Pole obsahuje logickou hodnotu, která určuje, zda odpovědi z webové odpověď vyloučit některé výsledky.  
-
+- Přidá `someResultsRemoved` pole [WebAnswer](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#webanswer) objektu. Pole obsahuje hodnotu typu Boolean označující, zda odpovědi vyloučit některé výsledky z webových odpovědí.  

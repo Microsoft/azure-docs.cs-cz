@@ -6,53 +6,77 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 1d2f194eb6a2186fc1e8451a7022d26cd1013bb2
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 8877234502ff662954dc6fe0c19d8252db42d7d6
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44022392"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123552"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vms"></a>Správa konfiguračního serveru pro virtuální počítače VMware
 
 Nastavíte místní konfigurační server, když použijete [Azure Site Recovery](site-recovery-overview.md) pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do Azure. Konfigurační server koordinuje komunikaci mezi místní VMware a Azure a spravuje replikaci dat. Tento článek shrnuje běžné úlohy správy serveru konfigurace po nasazení.
 
-
-
-## <a name="modify-vmware-settings"></a>Úprava nastavení VMware
+## <a name="access-configuration-server"></a>Přístup konfigurační server
 
 Konfigurační server je možné otevřít následujícím způsobem:
-    - Přihlaste se k virtuálnímu počítači, na kterém je nasazená a spustit Azure Site Recovery Configuration Manageru ze zástupce na ploše.
-    - Alternativně můžete přístup ke konfigurační server vzdáleně z **https://*ConfigurationServerName*/:44315 /**. Přihlaste se pomocí přihlašovacích údajů správce.
 
-### <a name="modify-vmware-server-settings"></a>Úprava nastavení serveru VMware
+* Přihlaste se k virtuálnímu počítači, na kterém je nasazená a spusťte **Azure Site Recovery Configuration Manageru** ze zástupce na ploše.
+* Alternativně můžete přistupovat konfigurační server vzdáleně z https://*ConfigurationServerName*/:44315 /. Přihlaste se pomocí přihlašovacích údajů správce.
 
-1. Chcete-li přiřadit jinému serveru VMware s konfiguračním serverem, po přihlášení, vyberte **přidat vCenter serveru nebo serveru vSphere ESXi**.
+## <a name="modify-vmware-server-settings"></a>Úprava nastavení serveru VMware
+
+1. Chcete-li přidružit jiný server VMware s konfiguračním serverem, po [přihlášení](#access-configuration-server)vyberte **přidat vCenter serveru nebo serveru vSphere ESXi**.
 2. Zadejte podrobnosti a pak vyberte **OK**.
 
+## <a name="modify-credentials-for-automatic-discovery"></a>Upravit přihlašovací údaje pro automatické zjišťování
 
-### <a name="modify-credentials-for-automatic-discovery"></a>Upravit přihlašovací údaje pro automatické zjišťování
-
-1. Chcete-li aktualizovat přihlašovací údaje použité pro připojení k serveru VMware pro automatické zjišťování virtuálních počítačů VMware po přihlášení, vyberte **upravit**.
+1. Chcete-li aktualizovat přihlašovací údaje použité pro připojení k serveru VMware pro automatické zjišťování virtuálních počítačů VMware po [přihlášení](#access-configuration-server), zvolte účet a klikněte na tlačítko **upravit**.
 2. Zadejte nové přihlašovací údaje a pak vyberte **OK**.
 
     ![Upravit VMware](./media/vmware-azure-manage-configuration-server/modify-vmware-server.png)
 
+Můžete také upravit přihlašovací údaje prostřednictvím CSPSConfigtool.exe.
+
+1. Přihlaste se ke konfiguračnímu serveru a spuštění CSPSConfigtool.exe
+2. Vyberte účet, který chcete upravit a klikněte na tlačítko **upravit**.
+3. Zadejte přihlašovací údaje, změny a klikněte na tlačítko **Ok**
 
 ## <a name="modify-credentials-for-mobility-service-installation"></a>Upravit přihlašovací údaje pro instalaci služby Mobility
 
 Upravte přihlašovací údaje použité pro automatickou instalaci služby Mobility na virtuální počítače VMware pro replikaci povolíte.
 
-1. Po přihlášení vyberte **spravovat přihlašovací údaje virtuálního počítače**
-2. Zadejte nové přihlašovací údaje a pak vyberte **OK**.
+1. Po [přihlášení](#access-configuration-server)vyberte **spravovat přihlašovací údaje virtuálního počítače**
+2. Vyberte účet, který chcete upravit a klikněte na tlačítko **upravit**
+3. Zadejte nové přihlašovací údaje a pak vyberte **OK**.
 
     ![Upravit přihlašovací údaje služby Mobility](./media/vmware-azure-manage-configuration-server/modify-mobility-credentials.png)
+
+Můžete také upravit přihlašovací údaje prostřednictvím CSPSConfigtool.exe.
+
+1. Přihlaste se ke konfiguračnímu serveru a spuštění CSPSConfigtool.exe
+2. Vyberte účet, který chcete upravit a klikněte na tlačítko **upravit**
+3. Zadejte nové přihlašovací údaje a klikněte na tlačítko **Ok**.
+
+## <a name="add-credentials-for-mobility-service-installation"></a>Přidat přihlašovací údaje pro instalaci služby Mobility
+
+Pokud jste během nasazování OVF konfiguračního serveru, přidání přihlašovacích údajů
+
+1. Po [přihlášení](#access-configuration-server)vyberte **spravovat přihlašovací údaje virtuálního počítače**.
+2. Klikněte na **přidat přihlašovací údaje virtuálního počítače**.
+    ![Přidejte pověření mobility](media/vmware-azure-manage-configuration-server/add-mobility-credentials.png)
+3. Zadejte nové přihlašovací údaje a klikněte na **přidat**.
+
+Můžete také přidat přihlašovací údaje prostřednictvím CSPSConfigtool.exe.
+
+1. Přihlaste se ke konfiguračnímu serveru a spuštění CSPSConfigtool.exe
+2. Klikněte na tlačítko **přidat**, zadejte nové přihlašovací údaje a klikněte na tlačítko **Ok**.
 
 ## <a name="modify-proxy-settings"></a>Upravit nastavení proxy serveru
 
 Upravte nastavení proxy serveru konfigurace počítače serveru pro internetový přístup k Azure. Pokud máte počítače s procesu serverem kromě výchozí procesový server běží na počítači serveru konfigurace, upravte nastavení v obou počítačích.
 
-1. Po přihlášení ke konfiguračnímu serveru, vyberte **spravovat připojení**.
+1. Po [přihlášení](#access-configuration-server) ke konfiguračnímu serveru, vyberte **spravovat připojení**.
 2. Aktualizujte hodnoty proxy. Potom vyberte **Uložit** a aktualizujte nastavení.
 
 ## <a name="add-a-network-adapter"></a>Přidání síťového adaptéru
@@ -60,7 +84,7 @@ Upravte nastavení proxy serveru konfigurace počítače serveru pro internetov�
 Formát OVF (Open Virtualization) šablona nasadí konfigurační server virtuálního počítače s jedním síťovým adaptérem.
 
 - Je možné [přidání dalšího adaptéru k virtuálnímu počítači](vmware-azure-deploy-configuration-server.md#add-an-additional-adapter), ale je nutné přidat předtím, než konfigurační server zaregistrujete v trezoru.
-- Chcete-li přidat adaptér po registraci konfiguračního serveru v trezoru, přidáte adaptér ve vlastnostech virtuálního počítače. Pak budete muset znovu zaregistrujte server v trezoru.
+- Chcete-li přidat adaptér po registraci konfiguračního serveru v trezoru, přidáte adaptér ve vlastnostech virtuálního počítače. Pak budete muset [přeregistrovat](#reregister-a-configuration-server-in-the-same-vault) server v trezoru.
 
 
 ## <a name="reregister-a-configuration-server-in-the-same-vault"></a>Znovu zaregistrujte konfigurační server ve stejném trezoru
@@ -87,7 +111,8 @@ Pokud je potřeba, můžete znovu zaregistrujte konfigurační server ve stejné
   ```
           net stop obengine
           net start obengine
-  ```
+   ```
+
 
 ## <a name="register-a-configuration-server-with-a-different-vault"></a>Registrace konfiguračního serveru pomocí jiného trezoru
 

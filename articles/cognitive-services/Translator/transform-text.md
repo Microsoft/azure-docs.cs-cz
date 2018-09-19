@@ -1,42 +1,43 @@
 ---
-title: Transformace textu pomocí rozhraní API služby Microsoft překladač Text | Microsoft Docs
-description: Transformace textu s použitím rozhraní API služby Microsoft překladač Text.
+title: Transformace textu – Translator Text API
+titlesuffix: Azure Cognitive Services
+description: Transformace textu s použitím rozhraní Translator Text API.
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: 5aa88f471a33a668b8385e46c2105a3139c142cb
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: e5061e322b4f0edb416f321cefef73776b9165ff
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342764"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123942"
 ---
-# <a name="how-to-use-the-transformtext-method"></a>Jak lze pomocí metody TransformText
+# <a name="how-to-use-the-transformtext-method"></a>Jak používat TransformText – metoda
 
 > [!NOTE]
-> Tato metoda je zastaralá. Není k dispozici v V3.0 rozhraní API Text překladač.
+> Tato metoda je zastaralá. Není k dispozici v V3.0 Translator Text API.
 
-Metoda TransformText je funkce normalizaci text pro sociálních médií, která vrátí hodnotu normalizovaný formuláře vstupu. Metodu lze použít jako předběžného zpracování krok v strojový překlad nebo jiné aplikace, které očekávají čistou vstupní text, který nebyl nalezen obvykle v sociálních sítích nebo na uživatelem generovaný obsah. Funkce v současné době používá pouze anglické vstup. 
+Metoda TransformText je funkce normalizace text pro sociální média, které vrací normalizovaná forma vstupu. Metoda může sloužit jako předzpracování krok strojového překladu nebo k jiným aplikacím, které očekávají čisté vstupní text, který není obvykle nachází v sociálních sítích nebo na uživatelem generovaný obsah. Funkce v současné době používá pouze anglické vstup. 
 
-Metoda je služba RESTful pomocí GET přes HTTP. Podporuje jednoduchý serializace XML a JSON.
+Metoda je služba RESTful pomocí protokolu HTTP GET. Podporuje jednoduchý serializace XML a JSON.
 
 ## <a name="parameters"></a>Parametry
 
 | Parametr | Popis |
 |:---|:---|
-| Autorizační hlavička | **Požadované** hlavičky protokolu HTTP se používá k identifikaci aplikace. Použití klíče: "Autorizace" a hodnoty: "Nosiče" + "" + přístupový token. Podrobnosti najdete tady.|
-| jazyk | **Požadované** řetězec představující kód jazyka. Tento parametr podporuje pouze angličtina s **en** jako název jazyka.|
+| Autorizační hlavička | **Vyžaduje** hlavičky protokolu HTTP slouží k identifikaci aplikace. Použít klíč: "Autorizace" a hodnota: "Nosiče" + "" + přístupový token. Podrobnosti najdete tady.|
+| jazyk | **Vyžaduje** řetězec představující kód jazyka. Tento parametr podporuje jenom v angličtině s **en** jako název jazyka.|
 | category | **Volitelné** řetězec obsahující kategorie nebo domény překladu. Tento parametr podporuje pouze výchozí možnost **Obecné**.|
-| věty | **Požadované** věty, které chcete opravit. |
+| větu | **Vyžaduje** věty, kterou chcete opravit. |
 
 ## <a name="return-value"></a>Návratová hodnota
 
-Návratová hodnota poskytuje transformovaných věty.
+Návratová hodnota obsahuje transformovaný věty.
 
 > [!div class="tabbedCodeSnippets"]
 ```json

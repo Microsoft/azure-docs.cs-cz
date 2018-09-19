@@ -1,55 +1,58 @@
 ---
-title: Vyhodnocení metoda v rozhraní API služby zkoumání znalostní báze | Microsoft Docs
-description: Zjistěte, jak lze pomocí této metody Evaluate v znalostní báze zkoumání služby (KES) rozhraní API v kognitivní služby.
+title: Vyhodnocení metody – Knowledge Exploration Service API
+titlesuffix: Azure Cognitive Services
+description: Zjistěte, jak použít metodu vyhodnotit v znalostní báze zkoumání služby (KES) rozhraní API.
 services: cognitive-services
 author: bojunehsu
-manager: stesp
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: knowledge-exploration
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: fc3d73b326b565cfe40d1b82cc419357b28a801a
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 45b25ec5cfc6e198b9b125675f4942463cef247a
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342458"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46128260"
 ---
-# <a name="evaluate-method"></a>Vyhodnocení – metoda
-*Vyhodnotit* metoda vyhodnotí a vrátí její výstup výrazu strukturovaných dotazu na základě dat indexu.
+# <a name="evaluate-method"></a>vyhodnocení metody
 
-Výraz obvykle budou získány z odpovědí na metodu interpret.  Ale můžete také vytvořit výrazy dotazů sami (viz [strukturovaných výrazu dotazu](Expressions.md)).  
+*Vyhodnotit* metoda vyhodnotí a vrátí její výstup výrazu strukturovaných dotazů založené na datech indexu.
+
+Výraz obvykle budou získány z odpovědí na metodu interpretaci.  Ale můžete také vytvářet – výrazy dotazů sami (viz [strukturovaných výrazu dotazu](Expressions.md)).  
 
 ## <a name="request"></a>Žádost 
+
 `http://<host>/evaluate?expr=<expr>&attributes=<attrs>[&<options>]`   
 
 Název|Hodnota|Popis
 ----|----|----
-Expr       | Textový řetězec | Strukturované dotazu výraz, který vybere podmnožinu index entity.
+výraz       | Textový řetězec | Výraz strukturovaných dotazů, který vybere podmnožinu index entity.
 Atributy | Textový řetězec | Čárkami oddělený seznam atributů, které chcete zahrnout do odpovědi.
-count      | Číslo (výchozí = 10) | Maximální počet výsledků vrátit.
-Posun     | Číslo (výchozí = 0) | Index prvního výsledku vrátit.
-Řadit podle |   Textový řetězec | Název atribut použitý k řazení výsledků, za nímž následuje volitelné řazení (výchozí = asc): "*%{attrname/*[: (asc&#124;desc)]".  Pokud není zadáno, budou vráceny výsledky, a tím snižují pravděpodobnosti přirozené protokolu.
-timeout  | Číslo (výchozí = 1 000) | Časový limit v milisekundách. Se vrátí jenom výsledky počítaný předtím, než je časový limit uplynul.
+count      | Číslo (výchozí = 10) | Maximální počet výsledků k vrácení.
+Posun     | Číslo (výchozí = 0) | Index první výsledek vrátit.
+Řadit podle |   Textový řetězec | Název atributu použitého k řazení výsledků, za nímž následuje nepovinný řazení (výchozí = asc): "*%{attrname/*[: (asc&#124;desc)]".  Pokud není zadán, jsou výsledky vrácené snižuje pravděpodobnost přirozený protokolu.
+timeout  | Číslo (výchozí = 1000) | Časový limit v milisekundách. Se vrátí pouze výsledky vypočítán dříve, než vypršel časový limit.
 
-Pomocí *počet* a *posun* parametry, může být velkého počtu výsledků získat přírůstkově více požadavků.
+Použití *počet* a *posun* parametry, může být velký počet výsledků získávají postupně prostřednictvím více požadavků.
   
 ## <a name="response-json"></a>Odpověď (JSON)
 JSONPath|Popis
 ----|----
-$.expr | *Expr* parametr z požadavku.
-$.entities | Pole 0 nebo více entit objekt odpovídající výrazu strukturovaných dotazů. 
-$.aborted | Hodnota TRUE, pokud vypršel časový limit požadavku.
+$.expr | *výraz* parametr z požadavku.
+$.entities | Pole 0 nebo více entit objektu odpovídající výraz strukturovaných dotazů. 
+$.aborted | True, pokud vypršel časový limit žádosti.
 
-Každá entita obsahuje *logprob* hodnota a hodnoty požadované atributy.
+Každá entita obsahuje *logprob* hodnoty a hodnoty požadovaných atributů.
 
 ## <a name="example"></a>Příklad:
-V příkladu academic publikace následující požadavek předá výrazu strukturovaných dotazu (potenciálně z výstupu *interpretovat* požadavek) a načte několik atributů pro horní 2 odpovídající entity:
+V příkladu academic publikace následující požadavek předá výrazu strukturovaných dotazů (potenciálně z výstupu *interpretovat* žádosti) a načte několik atributů pro začátek 2 odpovídající entity:
 
 `http://<host>/evaluate?expr=Composite(Author.Name=='jaime teevan')&attributes=Title,Y,Author.Name,Author.Id&count=2`
 
-Odpověď obsahuje horní části 2 ("count = 2") s největší pravděpodobností odpovídající entity.  Pro každou entitu jsou vráceny title, rok, jméno autora a atributy ID autora.  Všimněte si, že jak hodnoty strukturu složené atributu odpovídá způsob, jakým jsou uvedené v datovém souboru. 
+Odpověď obsahuje 2 největší ("počet = 2") pravděpodobně odpovídající entity.  Pro každou entitu jsou vráceny title, rok, jméno autora a atributy ID autora.  Všimněte si, jak Struktura složeného hodnoty atributů odpovídá způsob, jakým jsou určené v datovém souboru. 
 
 ```json
 {

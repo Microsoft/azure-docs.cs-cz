@@ -1,6 +1,6 @@
 ---
-title: 'Java SDK: Operace systému souborů v Azure Data Lake Store | Dokumentace Microsoftu'
-description: Použití sady Java SDK pro Azure Data Lake Store k provádění operací systému souborů ve službě Data Lake Store, jako je například vytváření složek atd.
+title: 'Java SDK: operace systému souborů v Azure Data Lake Storage Gen1 | Dokumentace Microsoftu'
+description: Použití Azure Data Lake Storage Gen1 Java SDK k provádění operací systému souborů v Data Lake Storage Gen1, jako je vytváření složek atd.
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 8f2dd4d001ae7322a351844146925c23b90f0916
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: a91593c1bae3002be8b7e423b627f1baf19e86e2
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35643569"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129182"
 ---
-# <a name="filesystem-operations-on-data-lake-store-using-java-sdk"></a>Operace systému souborů ve službě Data Lake Store pomocí sady Java SDK
+# <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-java-sdk"></a>Operace systému souborů v Azure Data Lake Storage Gen1 pomocí sady Java SDK
 > [!div class="op_single_selector"]
 > * [.NET SDK](data-lake-store-data-operations-net-sdk.md)
 > * [Java SDK](data-lake-store-get-started-java-sdk.md)
@@ -28,13 +28,13 @@ ms.locfileid: "35643569"
 >
 > 
 
-Naučte se používat sadu Java SDK pro Azure Data Lake Store k provádění základních operací, jako je vytváření složek, nahrávání a stahování datových souborů atd. Další informace týkající se Data Lake najdete v tématu [Azure Data Lake Store](data-lake-store-overview.md).
+Další informace o použití Azure Data Lake Storage Gen1 Java SDK k provádění základních operací, jako je vytváření složek, nahrávání a stahování datových souborů atd. Další informace o Data Lake Storage Gen1 najdete v tématu [Azure Data Lake Storage Gen1](data-lake-store-overview.md).
 
-Dokumentaci rozhraní API sady Java SDK pro Azure Data Lake Store najdete v tématu [Dokumentace rozhraní API sady Java SDK pro Azure Data Lake Store](https://azure.github.io/azure-data-lake-store-java/javadoc/).
+Přistupujete k dokumentaci rozhraní API sady Java SDK pro Data Lake Storage Gen1 na [Java API služby Azure Data Lake Storage Gen1 dokumentace](https://azure.github.io/azure-data-lake-store-java/javadoc/).
 
 ## <a name="prerequisites"></a>Požadavky
 * Java Development Kit (JDK 7 nebo vyšší s využitím Java verze 1.7 nebo vyšší)
-* Účet Azure Data Lake Store. Postupujte podle pokynů v tématu [Začínáme s Azure Data Lake Store s použitím webu Azure Portal](data-lake-store-get-started-portal.md).
+* Účet data Lake Storage Gen1. Postupujte podle pokynů na adrese [Začínáme s Azure Data Lake Storage Gen1 pomocí webu Azure portal](data-lake-store-get-started-portal.md).
 * [Maven](https://maven.apache.org/install.html). V tomto kurzu se používá Maven pro závislosti sestavení a projektu. I když je možné sestavení vytvářet bez použití systému pro sestavení, jako je Maven a Gradle, tyto systémy podstatně usnadňují správu závislostí.
 * (Volitelné) Rozhraní IDE, jako je například [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) nebo [Eclipse](https://www.eclipse.org/downloads/) nebo podobné.
 
@@ -58,7 +58,7 @@ Ukázka kódu, která je k dispozici [na GitHubu](https://azure.microsoft.com/do
           </dependency>
         </dependencies>
    
-    První závislostí je použití sady SDK pro Data Lake Store (`azure-data-lake-store-sdk`) z úložiště maven. Druhou závislostí je zadání protokolovacího rozhraní (`slf4j-nop`), které se pro tuto aplikaci použije. Sada SDK pro službu Data Lake Store používá při protokolování [slf4j](http://www.slf4j.org/), takže máte možnost si vybrat z řady oblíbených protokolovacích rozhraní, jako je log4j, Java, logback atd., nebo nemusíte použít žádné protokolování. Pro tento příklad zakážeme protokolování a použijeme tedy vazbu **slf4j-nop**. Pokud chcete ve své aplikaci použít jiné možnosti protokolování, přečtěte si informace [zde](http://www.slf4j.org/manual.html#projectDep).
+    První závislostí je použití sady SDK pro Data Lake Storage Gen1 (`azure-data-lake-store-sdk`) z úložiště maven. Druhou závislostí je zadání protokolovacího rozhraní (`slf4j-nop`), které se pro tuto aplikaci použije. Používá sadu SDK pro Data Lake Storage Gen1 [slf4j](http://www.slf4j.org/) průčelí protokolování, které umožňuje vybrat z řady oblíbených protokolovacích rozhraní, jako je log4j, Java, logback atd., protokolování nebo žádné protokolování. Pro tento příklad zakážeme protokolování a použijeme tedy vazbu **slf4j-nop**. Pokud chcete ve své aplikaci použít jiné možnosti protokolování, přečtěte si informace [zde](http://www.slf4j.org/manual.html#projectDep).
 
 3. Přidejte do své aplikace následující příkazy pro import.
 
@@ -75,20 +75,20 @@ Ukázka kódu, která je k dispozici [na GitHubu](https://azure.microsoft.com/do
 
 ## <a name="authentication"></a>Authentication
 
-* Pokud chcete ve své aplikaci ověřování koncového uživatele, přečtěte si téma [Ověřování koncového uživatele pomocí služby Data Lake Store s použitím Javy](data-lake-store-end-user-authenticate-java-sdk.md).
-* Pokud chcete ve své aplikaci ověřování služba-služba, přečtěte si téma [Ověřování služba-služba pomocí služby Data Lake Store s použitím Javy](data-lake-store-service-to-service-authenticate-java.md).
+* Své aplikaci ověřování koncového uživatele, najdete v části [koncového uživatele ověřování-s Data Lake Storage Gen1 pomocí Javy](data-lake-store-end-user-authenticate-java-sdk.md).
+* Své aplikaci ověřování služba služba, naleznete v tématu [ověřování služba služba s Data Lake Storage Gen1 s využitím Javy](data-lake-store-service-to-service-authenticate-java.md).
 
-## <a name="create-an-azure-data-lake-store-client"></a>Vytvoření klienta Azure Data Lake Store
-Pokud chcete vytvořit objekt [ADLStoreClient](https://azure.github.io/azure-data-lake-store-java/javadoc/), musíte zadat název účtu Data Lake Store a poskytovatele tokenu, kterého jste vygenerovali při ověření pomocí služby Data Lake Store (viz část [Ověřování](#authentication)). Název účtu Data Lake Store musí být plně kvalifikovaný název domény. Například **FILL-IN-HERE** nahraďte něčím jako **mydatalakestore.azuredatalakestore.net**.
+## <a name="create-a-data-lake-storage-gen1-client"></a>Vytvoření klienta Data Lake Storage Gen1
+Vytváření [ADLStoreClient](https://azure.github.io/azure-data-lake-store-java/javadoc/) objekt je potřeba zadat název účtu Data Lake Storage Gen1 a poskytovatele tokenu, kterého jste vygenerovali při ověření pomocí služby Data Lake Storage Gen1 (viz [ověřování](#authentication) části). Název účtu Data Lake Storage Gen1 musí být použitím plně kvalifikovaného názvu domény. Nahraďte třeba **Fill-in-HERE** nahraďte něčím jako **mydatalakestoragegen1.azuredatalakestore.net**.
 
     private static String accountFQDN = "FILL-IN-HERE";  // full account FQDN, not just the account name
     ADLStoreClient client = ADLStoreClient.createClient(accountFQDN, provider);
 
-Fragmenty kódu v následujících částech obsahují příklady některých běžných operací systému souborů. Na další operace se můžete podívat v kompletní [Dokumentaci rozhraní API sady Java SDK pro Azure Data Lake Store](https://azure.github.io/azure-data-lake-store-java/javadoc/) k objektu **ADLStoreClient**.
+Fragmenty kódu v následujících částech obsahují příklady některých běžných operací systému souborů. Můžete se podívat na kompletní [dokumentace rozhraní Data Lake Storage Gen1 Java SDK API](https://azure.github.io/azure-data-lake-store-java/javadoc/) z **ADLStoreClient** objekt můžete zobrazit další operace.
 
 ## <a name="create-a-directory"></a>Vytvoření adresáře
 
-Následující fragment kódu vytvoří adresářovou strukturu v kořenovém adresáři zadaného účtu Data Lake Store.
+Následující fragment kódu vytvoří adresářovou strukturu v kořenovém adresáři účtu Data Lake Storage Gen1, který jste zadali.
 
     // create directory
     client.createDirectory("/a/b/w");
@@ -134,7 +134,7 @@ Definice funkce `getSampleContent` použité v předchozím fragmentu kódu je k
 
 ## <a name="read-a-file"></a>Čtení souboru
 
-Následující fragment kódu přečte obsah souboru v účtu Data Lake Store.
+Následující fragment kódu přečte obsah souboru v účtu Data Lake Storage Gen1.
 
     // Read File
     InputStream in = client.getReadStream(filename);
@@ -149,7 +149,7 @@ Následující fragment kódu přečte obsah souboru v účtu Data Lake Store.
 
 ## <a name="concatenate-files"></a>Řetězení souborů
 
-Následující fragment kódu zřetězí dva soubory v účtu Data Lake Store. V případě úspěchu se dva existující soubory nahradí zřetězeným souborem.
+Následující fragment kódu zřetězí dva soubory v účtu Data Lake Storage Gen1. V případě úspěchu se dva existující soubory nahradí zřetězeným souborem.
 
     // concatenate the two files into one
     List<String> fileList = Arrays.asList("/a/b/c.txt", "/a/b/d.txt");
@@ -158,7 +158,7 @@ Následující fragment kódu zřetězí dva soubory v účtu Data Lake Store. V
 
 ## <a name="rename-a-file"></a>Přejmenování souboru
 
-Následující fragment kódu přejmenuje soubor v účtu Data Lake Store.
+Následující fragment kódu přejmenuje soubor v účtu Data Lake Storage Gen1.
 
     //rename the file
     client.rename("/a/b/f.txt", "/a/b/g.txt");
@@ -166,7 +166,7 @@ Následující fragment kódu přejmenuje soubor v účtu Data Lake Store.
 
 ## <a name="get-metadata-for-a-file"></a>Získání metadat souboru
 
-Následující fragment kódu načte metadata souboru v účtu Data Lake Store.
+Následující fragment kódu načte metadata souboru v účtu Data Lake Storage Gen1.
 
     // get file metadata
     DirectoryEntry ent = client.getDirectoryEntry(filename);
@@ -197,7 +197,7 @@ Definice funkce `printDirectoryInfo` použité v předchozím fragmentu kódu je
 
 ## <a name="delete-files-and-folders"></a>Odstranění souborů a složek
 
-Následující fragment kódu rekurzivně odstraní zadané soubory a složky v účtu Data Lake Store.
+Následující fragment kódu odstraní zadané soubory a složky v účtu Data Lake Storage Gen1 rekurzivně.
 
     // delete directory along with all the subdirectories and files in it
     client.deleteRecursive("/a");
@@ -210,6 +210,6 @@ Následující fragment kódu rekurzivně odstraní zadané soubory a složky v 
 
 ## <a name="next-steps"></a>Další postup
 * [Prozkoumání JavaDoc k sadě Java SDK](https://azure.github.io/azure-data-lake-store-java/javadoc/)
-* [Zabezpečení dat ve službě Data Lake Store](data-lake-store-secure-data.md)
+* [Zabezpečení dat ve službě Data Lake Storage Gen1](data-lake-store-secure-data.md)
 
 

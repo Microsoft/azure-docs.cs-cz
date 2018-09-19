@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: 468c6486274b8bf1dc202716f525c39face91862
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: f8aa37dbc2d3fb5f560d899626a84a2ab86ff223
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44297294"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294573"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Úvodní příručka pro vývojáře v Azure
 
@@ -261,7 +261,7 @@ Jako vývojáři rádi Ponořte se hlouběji do kódu a pokuste se začít praco
 
 ### <a name="what-is-an-azure-account"></a>Co je účet Azure?
 
-Aby bylo možné vytvořit nebo pracovat s předplatným Azure, musíte mít účet Azure. Účet Azure je jednoduše identitu ve službě Azure AD nebo v adresáři, jako je pracovní nebo školní organizace, který je důvěryhodný pro Azure AD. Pokud jste nepatří do této organizace, můžete vždy vytvořit odběr pomocí Account Microsoft, která je důvěryhodná pro Azure AD. Další informace o integraci místní Windows Server Active Directory se službou Azure AD najdete v tématu [integrace místních identit s Azure Active Directory](../../active-directory/active-directory-aadconnect.md).
+Aby bylo možné vytvořit nebo pracovat s předplatným Azure, musíte mít účet Azure. Účet Azure je jednoduše identitu ve službě Azure AD nebo v adresáři, jako je pracovní nebo školní organizace, který je důvěryhodný pro Azure AD. Pokud jste nepatří do této organizace, můžete vždy vytvořit odběr pomocí Account Microsoft, která je důvěryhodná pro Azure AD. Další informace o integraci místní Windows Server Active Directory se službou Azure AD najdete v tématu [integrace místních identit s Azure Active Directory](../../active-directory/hybrid/whatis-hybrid-identity.md).
 
 Každé předplatné služby Azure má vztah důvěryhodnosti s instancí služby Azure AD. To znamená, že tomuto adresáři svěřuje ověřování uživatelů, služeb i zařízení. Několik předplatných může důvěřovat stejnému adresáři, ale jedno předplatné důvěřuje pouze jednomu adresáři. Další informace najdete v tématu [předplatné Azure propojeno se službou Azure Active Directory](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 

@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Načtení z Azure Data Lake Store do Azure SQL Data Warehouse | Dokumentace Microsoftu'
-description: Načtení dat z Azure Data Lake Store do Azure SQL Data Warehouse pomocí PolyBase externí tabulky.
+title: 'Kurz: Načtení z Azure Data Lake Storage Gen1 do služby Azure SQL Data Warehouse | Dokumentace Microsoftu'
+description: Načtení dat z Azure Data Lake Storage Gen1 do Azure SQL Data Warehouse pomocí PolyBase externí tabulky.
 services: sql-data-warehouse
 author: ckarst
 manager: craigg
@@ -10,19 +10,19 @@ ms.component: implement
 ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
-ms.openlocfilehash: 04676db3048cf747e9a20d91a404f29c6cfc6853
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: c3902061264b75ba177ba150176d784ad5384a9f
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306389"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297192"
 ---
-# <a name="load-data-from-azure-data-lake-store-to-sql-data-warehouse"></a>Načtení dat z Azure Data Lake Store do SQL Data Warehouse
-Načtení dat z Azure Data Lake Store do Azure SQL Data Warehouse pomocí PolyBase externí tabulky. I když s daty uloženými v ADLS můžete spouštět dotazy ad hoc, doporučujeme importování dat do SQL Data Warehouse pro zajištění nejlepšího výkonu.
+# <a name="load-data-from-azure-data-lake-storage-gen1-to-sql-data-warehouse"></a>Načtení dat z Azure Data Lake Storage Gen1 do SQL Data Warehouse
+Načtení dat z Azure Data Lake Storage Gen1 do Azure SQL Data Warehouse pomocí PolyBase externí tabulky. Ačkoli můžete spustit ad hoc dotazy na datech uložených v Data Lake Storage Gen1, doporučujeme importování dat do SQL Data Warehouse pro zajištění nejlepšího výkonu.
 
 > [!div class="checklist"]
-> * Vytváření databázových objektů, které jsou nutné k načtení z Azure Data Lake Store.
-> * Připojení k adresáři služby Azure Data Lake Store.
+> * Vytváření databázových objektů, které jsou nutné k načtení z Data Lake Storage Gen1.
+> * Připojení k adresáři Data Lake Storage Gen1.
 > * Načtení dat do Azure SQL Data Warehouse.
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
@@ -35,17 +35,17 @@ Ke spuštění v tomto kurzu, budete potřebovat:
 * Azure Active Directory aplikace pro použití ověřování služba-služba. Pokud chcete vytvořit, postupujte podle [ověřování služby Active directory](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)
 
 >[!NOTE] 
-> Potřebujete ID klienta, klíče a OAuth 2.0 Token Endpoint hodnotu aplikace Active Directory pro připojení k vaší Azure Data Lake z SQL Data Warehouse. Podrobnosti o tom, jak tyto hodnoty jsou v výše uvedený odkaz. Pro registrace Azure Active Directory aplikace pomocí ID aplikace jako ID klienta.
+> Potřebujete ID klienta, klíče a OAuth 2.0 Token Endpoint hodnotu aplikace Active Directory pro připojení k vašemu účtu Data Lake Storage Gen1 z SQL Data Warehouse. Podrobnosti o tom, jak tyto hodnoty jsou v výše uvedený odkaz. Pro registrace Azure Active Directory aplikace pomocí ID aplikace jako ID klienta.
 > 
 
 * Službu Azure SQL Data Warehouse. Zobrazit [vytvořit a dotaz a Azure SQL Data Warehouse](create-data-warehouse-portal.md).
 
-* Azure Data Lake Store. Zobrazit [Začínáme s Azure Data Lake Store](../data-lake-store/data-lake-store-get-started-portal.md). 
+* Účet Data Lake Storage Gen1. Zobrazit [Začínáme s Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-get-started-portal.md). 
 
 ##  <a name="create-a-credential"></a>Vytvoření přihlašovacích údajů
-Pro přístup k vaší Azure Data Lake Store, musíte vytvořit hlavní klíč databáze k zašifrování vaší tajného kódu přihlašovacích údajů použít v dalším kroku. Pak vytvoříte Database Scoped Credential, která uloží pověření instančního objektu služby nastavení v adresáři AAD. Pro ty z vás, kteří použili PolyBase pro připojení k Windows Azure Storage Blobs Všimněte si, že syntaxe přihlašovacích údajů se liší.
+Přístup ke svému účtu Data Lake Storage Gen1, musíte vytvořit hlavní klíč databáze k zašifrování vaší tajného kódu přihlašovacích údajů použít v dalším kroku. Pak vytvoříte Database Scoped Credential, která uloží pověření instančního objektu služby nastavení v adresáři AAD. Pro ty z vás, kteří použili PolyBase pro připojení k Windows Azure Storage Blobs Všimněte si, že syntaxe přihlašovacích údajů se liší.
 
-Pro připojení k Azure Data Lake Store, musíte **první** vytvoření aplikace Azure Active Directory, vytvořte přístupový klíč a umožnit aplikaci přístup k prostředku Azure Data Lake. Pokyny najdete v tématu [ověřování pro Azure Data Lake Store pomocí služby Active Directory](../data-lake-store/data-lake-store-authenticate-using-active-directory.md).
+Pro připojení k Data Lake Storage Gen1, je nutné **první** vytvoření aplikace Azure Active Directory, vytvořte přístupový klíč a umožnit aplikaci přístup k Data Lake Storage Gen1 prostředku. Pokyny najdete v tématu [ověřování pro Azure Data Lake Storage Gen1 pomocí služby Active Directory](../data-lake-store/data-lake-store-authenticate-using-active-directory.md).
 
 ```sql
 -- A: Create a Database Master Key.
@@ -61,14 +61,14 @@ CREATE MASTER KEY;
 -- SECRET: Provide your AAD Application Service Principal key.
 -- For more information on Create Database Scoped Credential: https://msdn.microsoft.com/library/mt270260.aspx
 
-CREATE DATABASE SCOPED CREDENTIAL ADLCredential
+CREATE DATABASE SCOPED CREDENTIAL ADLSG1Credential
 WITH
     IDENTITY = '<client_id>@<OAuth_2.0_Token_EndPoint>',
     SECRET = '<key>'
 ;
 
 -- It should look something like this:
-CREATE DATABASE SCOPED CREDENTIAL ADLCredential
+CREATE DATABASE SCOPED CREDENTIAL ADLSG1Credential
 WITH
     IDENTITY = '536540b4-4239-45fe-b9a3-629f97591c0c@https://login.microsoftonline.com/42f988bf-85f1-41af-91ab-2d2cd011da47/oauth2/token',
     SECRET = 'BjdIlmtKp4Fpyh9hIvr8HJlUida/seM5kQ3EpLAmeDI='
@@ -80,20 +80,20 @@ Použijte tento [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-exter
 
 ```sql
 -- C: Create an external data source
--- TYPE: HADOOP - PolyBase uses Hadoop APIs to access data in Azure Data Lake Store.
--- LOCATION: Provide Azure Data Lake accountname and URI
+-- TYPE: HADOOP - PolyBase uses Hadoop APIs to access data in Azure Data Lake Storage Gen1.
+-- LOCATION: Provide Data Lake Storage Gen1 account name and URI
 -- CREDENTIAL: Provide the credential created in the previous step.
 
-CREATE EXTERNAL DATA SOURCE AzureDataLakeStore
+CREATE EXTERNAL DATA SOURCE AzureDataLakeStorageGen1
 WITH (
     TYPE = HADOOP,
-    LOCATION = 'adl://<AzureDataLake account_name>.azuredatalakestore.net',
-    CREDENTIAL = ADLCredential
+    LOCATION = 'adl://<datalakestoregen1accountname>.azuredatalakestore.net',
+    CREDENTIAL = ADLSG1Credential
 );
 ```
 
 ## <a name="configure-data-format"></a>Konfigurovat formát dat
-Pro import dat ze služby ADLS, budete muset zadat External File Format. Tento objekt definuje, jak soubory jsou zapsány v ADLS.
+Chcete-li importovat data z Data Lake Storage Gen1, musíte zadat External File Format. Tento objekt definuje, jak soubory jsou zapsány v Data Lake Storage Gen1.
 Úplný seznam najdete v naší dokumentaci jazyka T-SQL [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql)
 
 ```sql
@@ -119,7 +119,7 @@ Teď, když zadáte zdroj a soubor formátu data, jste připraveni k vytvoření
 
 ```sql
 -- D: Create an External Table
--- LOCATION: Folder under the ADLS root folder.
+-- LOCATION: Folder under the Data Lake Storage Gen1 root folder.
 -- DATA_SOURCE: Specifies which Data Source Object to use.
 -- FILE_FORMAT: Specifies which File Format Object to use
 -- REJECT_TYPE: Specifies how you want to deal with rejected rows. Either Value or percentage of the total
@@ -134,7 +134,7 @@ CREATE EXTERNAL TABLE [dbo].[DimProduct_external] (
 WITH
 (
     LOCATION='/DimProduct/'
-,   DATA_SOURCE = AzureDataLakeStore
+,   DATA_SOURCE = AzureDataLakeStorageGen1
 ,   FILE_FORMAT = TextFileFormat
 ,   REJECT_TYPE = VALUE
 ,   REJECT_VALUE = 0
@@ -151,10 +151,10 @@ Pokud řádek neodpovídá definici schématu, řádek zamítnuto zatížení.
 
 Možnosti REJECT_TYPE a REJECT_VALUE umožňují definovat, kolik řádků nebo jaké procento dat musí být k dispozici v konečné tabulky. Během procesu načítání Pokud je dosaženo hodnoty odmítnout, zatížení se nezdaří. Nejčastější příčinou pozice zamítnutých řádků se neshodují definice schématu. Například pokud sloupec je nesprávně přiřazena schématu int, když data v souboru je řetězec, každý řádek se nepovedlo se načíst.
 
- Azure Data Lake store používá k řízení přístupu k datům na základě řízení přístupu Role (RBAC). To znamená, že instanční objekt musí mít oprávnění ke čtení adresáře, které jsou definované v parametru umístění a podřízených prvků konečné adresáře a soubory. To umožňuje PolyBase k ověření a načíst data. 
+Data Lake Storage Gen1 používá k řízení přístupu k datům na základě řízení přístupu Role (RBAC). To znamená, že instanční objekt musí mít oprávnění ke čtení adresáře, které jsou definované v parametru umístění a podřízených prvků konečné adresáře a soubory. To umožňuje PolyBase k ověření a načíst data. 
 
 ## <a name="load-the-data"></a>Načtení dat
-K načtení dat z Azure Data Lake Store použijte [CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) příkazu. 
+K načtení dat z Data Lake Storage Gen1 použití [CREATE TABLE AS SELECT (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) příkazu. 
 
 Funkce CTAS vytvoří novou tabulku a naplní ji výsledky příkazu select. Funkce CTAS definuje novou tabulku pro mají stejné sloupce a datové typy jako výsledky příkazu select. Je-li vybrat všechny sloupce z externí tabulky, je nová tabulka repliky sloupců a datové typy v externí tabulky.
 
@@ -192,12 +192,12 @@ V následujícím příkladu je dobrým výchozím bodem pro vytváření statis
 Úspěšně jste načetli data do Azure SQL Data Warehouse. Skvělá práce!
 
 ## <a name="next-steps"></a>Další postup 
-V tomto kurzu jste vytvořili externí tabulky pro definici struktury dat uložených v Azure Data Lake Store a pak použít příkazu PolyBase CREATE TABLE AS SELECT k načtení dat do datového skladu. 
+V tomto kurzu jste vytvořili externí tabulky pro definici struktury dat uložených v Data Lake Storage Gen1 a pak použít příkazu PolyBase CREATE TABLE AS SELECT k načtení dat do datového skladu. 
 
 Provedli jste tyto akce:
 > [!div class="checklist"]
-> * Vytvořené databázové objekty nezbytné k načtení z Azure Data Lake Store.
-> * Připojení k adresáři služby Azure Data Lake Store.
+> * Vytvořené databázové objekty nezbytné k načtení z Data Lake Storage Gen1.
+> * Připojení k adresáři Data Lake Storage Gen1.
 > * Načtená data do Azure SQL Data Warehouse.
 > 
 

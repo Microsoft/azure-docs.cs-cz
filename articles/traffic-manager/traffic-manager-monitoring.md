@@ -3,8 +3,8 @@ title: Monitorování koncových bodů v Azure Traffic Manager | Dokumentace Mic
 description: V tomto článku vám pomůžou pochopit, jak Traffic Manager pomocí monitorování koncových bodů a koncový bod automatické převzetí služeb při selhání pomáhá zákazníkům Azure nasazovat aplikací s vysokou dostupností
 services: traffic-manager
 documentationcenter: ''
-author: kumudd
-manager: timlt
+author: KumudD
+manager: jeconnoc
 editor: ''
 ms.assetid: fff25ac3-d13a-4af9-8916-7c72e3d64bc7
 ms.service: traffic-manager
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/22/2017
 ms.author: kumud
-ms.openlocfilehash: 0124c70916d1c9a6f6b818a68f13d7a189a1b70f
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: c28b0ccfb565cb6bd4809a321d5e57f04475dceb
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398831"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123883"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Monitorování koncových bodů Traffic Manageru
 
@@ -32,17 +32,19 @@ Pokud chcete nakonfigurovat monitorování koncových bodů, je nutné zadat ná
 * **Protokol**. Zvolte možnost protokolu HTTP, HTTPS nebo TCP jako protokol pro Traffic Manager používá při zjišťování váš koncový bod zkontrolovat její stav. Monitorování protokolu HTTPS neověřuje, že zda váš certifikát SSL není platný – pouze zkontroluje, že certifikát je k dispozici.
 * **Port**. Zvolte port používaný pro daný požadavek.
 * **Cesta**. Toto nastavení konfigurace je platná pouze pro protokoly HTTP a HTTPS, u které určení cesty je požadované nastavení. Poskytuje toto nastavení pro protokol TCP monitorování protokolu dojde k chybě. Pro protokol HTTP a HTTPS zadejte relativní cestu a název webové stránky nebo soubor, který přistupuje k monitorování. Lomítkem (/) je platná položka pro relativní cestu. Tato hodnota znamená, že se soubor nachází v kořenovém adresáři (výchozí).
+* **Nastavení vlastních hlaviček** tato nastavení vám pomůžou přidat přidejte konkrétní hlavičky protokolu HTTP pro stav kontroluje, že Traffic Manager odešle do koncových bodů v rámci profilu. Vlastní hlavičky se dá nastavit na úrovni profilu použitelný pro všechny koncové body v profilu and / or úrovni koncového bodu lze použít pouze na tento koncový bod. Můžete použít vlastní záhlaví pro kontroly stavu koncových bodů v prostředí s více tenanty správně směroval do své cíle zadáním hlavičku hostitele s. Toto nastavení lze také použít přidáním jedinečný hlavičky, které lze použít k identifikaci Traffic Manageru pochází požadavky HTTP (S) a zpracuje je jinak.
+* **Byl očekáván stavový kód rozsahy** toto nastavení umožňuje určit více rozsahů úspěchu kód ve formátu 200 299, 301 301. Pokud tyto stavové kódy jsou přijata jako odpověď od koncového bodu, když je zahájeno kontrolou stavu, Traffic Manager označí těchto koncových bodů, jako v pořádku. Můžete zadat maximálně 8 rozsah kódu stavu. Toto nastavení platí jenom pro protokol HTTP a HTTPS a pro všechny koncové body. Toto nastavení je na úrovni profilu Traffic Manageru a ve výchozím nastavení je hodnota 200 definována jako stavový kód úspěchu.
 * **Interval testování**. Tato hodnota určuje, jak často se kontroluje jeho stav od agenta testování Traffic Manager koncový bod. Můžete zadat dvě hodnoty tady: 30 sekund (běžné zjišťování) a 10 sekund (rychlé zjišťování). Pokud se nezadají žádné hodnoty, profil, který nastaví na výchozí hodnota je 30 sekund. Přejděte [ceny za Traffic Manager](https://azure.microsoft.com/pricing/details/traffic-manager) stránku a další informace o cenách rychlé zjišťování.
 * **Tolerovaný počet selhání**. Tato hodnota určuje, kolik chyb agenta testování Traffic Manageru toleruje před označením tohoto koncového bodu jako není v pořádku. Jeho hodnota musí být mezi 0 a 9 rozsahu. Hodnota 0 znamená, že tento koncový bod se označí jako špatný může způsobit selhání jednoho monitorování. Pokud není zadána žádná hodnota, použije výchozí hodnotu 3.
-* **Časový limit monitorování**. Tato vlastnost určuje množství času, agent zjišťování Traffic Manageru měli počkat, předtím, než kontrolu selhání při odeslání ke koncovému bodu sondu stavu zaškrtnutí. Pokud Interval zjišťování je nastavené na 30 sekund, můžete nastavit hodnotu časového limitu 5 – 10 sekund. Pokud není zadána žádná hodnota, použije se výchozí hodnota je 10 sekund. Pokud Interval zjišťování je nastaven na 10 sekund, můžete nastavit hodnotu časového limitu od 9 do 5 sekund. Pokud není zadána žádná hodnota časového limitu, použije výchozí hodnotu 9 sekund.
+* **Časový limit testu**. Tato vlastnost určuje množství času, agent zjišťování Traffic Manageru měli počkat, předtím, než kontrolu selhání při odeslání ke koncovému bodu sondu stavu zaškrtnutí. Pokud Interval zjišťování je nastavené na 30 sekund, můžete nastavit hodnotu časového limitu 5 – 10 sekund. Pokud není zadána žádná hodnota, použije se výchozí hodnota je 10 sekund. Pokud Interval zjišťování je nastaven na 10 sekund, můžete nastavit hodnotu časového limitu od 9 do 5 sekund. Pokud není zadána žádná hodnota časového limitu, použije výchozí hodnotu 9 sekund.
 
-![Monitorování koncových bodů Traffic Manageru](./media/traffic-manager-monitoring/endpoint-monitoring-settings.png)
+    ![Monitorování koncových bodů Traffic Manageru](./media/traffic-manager-monitoring/endpoint-monitoring-settings.png)
 
-**Obrázek 1: Monitorování koncových bodů Traffic Manageru**
+    **Obrázek: Monitorování koncových bodů Traffic Manageru**
 
 ## <a name="how-endpoint-monitoring-works"></a>Jak funguje monitorování koncových bodů
 
-Pokud protokol monitorování je nastavená na HTTP nebo HTTPS, agent zjišťování Traffic Manager odešle požadavek GET na koncový bod pomocí protokol, port a relativní cestě uvedené. Získá zpět odpověď 200 OK, pak tento koncový bod se považuje za v pořádku. Pokud je odpověď na jinou hodnotu, nebo pokud není žádná odpověď v časovém limitu zadán, pak Traffic Manageru, testování, agent se pokusí opětovně podle nastavení Tolerovaný počet selhání (znovu pokusí se provést Pokud toto nastavení je 0). Pokud počet po sobě jdoucích selhání je vyšší než nastavení Tolerovaný počet selhání, se označí jako špatný tohoto koncového bodu. 
+Pokud protokol monitorování je nastavená na HTTP nebo HTTPS, agent zjišťování Traffic Manager odešle požadavek GET na koncový bod pomocí protokol, port a relativní cestě uvedené. Pokud získá zpět odpověď 200 OK nebo některý z odpovědi gurovaný ** byl očekáván stavový kód * rozsahy **, pak tento koncový bod se považuje za v pořádku. Pokud je odpověď na jinou hodnotu, nebo pokud není žádná odpověď v časovém limitu zadán, pak Traffic Manageru, testování, agent se pokusí opětovně podle nastavení Tolerovaný počet selhání (znovu pokusí se provést Pokud toto nastavení je 0). Pokud počet po sobě jdoucích selhání je vyšší než nastavení Tolerovaný počet selhání, se označí jako špatný tohoto koncového bodu. 
 
 Pokud je monitorovací protokol TCP, agent zjišťování Traffic Manageru zahájí žádost o připojení TCP přes port zadaný. Pokud koncový bod odpoví na požadavek odpovědí k navázání připojení, kontroly stavu je označen jako úspěšný a agent zjišťování Traffic Manager resetuje připojení TCP. Pokud je odpověď na jinou hodnotu, nebo pokud je přijata žádná odpověď v časovém limitu zadán, Traffic Manager, testování, agent se pokusí opětovně podle nastavení Tolerovaný počet selhání (znovu pokusí probíhají Pokud toto nastavení je 0). Pokud počet po sobě jdoucích selhání je vyšší než nastavení Tolerovaný počet selhání, se označí není v pořádku tohoto koncového bodu.
 
@@ -101,7 +103,7 @@ Traffic Manager pravidelně kontroluje stav každé koncového bodu, včetně ko
 
 Koncový bod není v pořádku, když dojde k některé z následujících událostí:
 - Pokud je monitorovací protokol HTTP nebo HTTPS:
-    - Než 200 odezvu obdrží (včetně kódu různé 2xx nebo přesměrovat 301/302).
+    - Než 200 odpovědi nebo odpovědi, která neobsahuje stav rozsahu zadaného v **byl očekáván stavový kód rozsahy** nastavení, přijetí (včetně kódu různé 2xx nebo přesměrovat 301/302).
 - Pokud je monitorovací protokol TCP: 
     - V reakci na žádost o SYNCHRONIZACI odeslán Traffic Managerem pokusu o navázání připojení je přijata odpověď než PĚT nebo SYN potvrzení.
 - Vypršel časový limit. 
@@ -109,14 +111,14 @@ Koncový bod není v pořádku, když dojde k některé z následujících udál
 
 Další informace o řešení problémů s neúspěšné kontroly najdete v tématu [řešení potíží s Degradovaným stavem Azure Traffic Manageru](traffic-manager-troubleshooting-degraded.md). 
 
-Následující časové osy na obrázku 2 je podrobný popis procesu monitorování koncových bodů Traffic Manageru, který má následující nastavení: sledování protokol je HTTP, interval zjišťování je 30 sekund, počet neúspěšných přípustný je 3, hodnota časového limitu je 10 sekund a hodnotu TTL pro DNS je 30 sekund.
+Časová osa na následujícím obrázku je podrobný popis procesu monitorování koncových bodů Traffic Manageru, který má následující nastavení: sledování protokol je HTTP, interval zjišťování je 30 sekund, počet neúspěšných přípustný je 3, hodnota časového limitu je 10 sekund a hodnotu TTL pro DNS je 30 sekund.
 
 ![Pořadí převzetí služeb při selhání a navrácení služeb po obnovení koncových bodů Traffic Manageru](./media/traffic-manager-monitoring/timeline.png)
 
-**Obrázek 2: Traffic manager koncový bod převzetí služeb při selhání a obnovení pořadí**
+**Obrázek: Traffic manager koncový bod převzetí služeb při selhání a obnovení pořadí**
 
 1. **ZÍSKAT**. Pro každý koncový bod monitorování systému Traffic Manageru provede požadavek GET na cestě zadané v nastavení monitorování.
-2. **200 OK**. Systém monitorování očekává, že zprávu HTTP 200 OK, který se má vrátit do 10 sekund. Když tuto odpověď přijme, rozpozná, že služba je k dispozici.
+2. **Zadaný profil služby Traffic Manager nastavení sledování rozsahu 200 OK nebo vlastní kód** . Systém monitorování očekává, že HTTP 200 OK nebo nebo vlastní kód rozsah zadaný profil služby Traffic Manager monitorování nastavení zpráv, který se má vrátit do 10 sekund. Když tuto odpověď přijme, rozpozná, že služba je k dispozici.
 3. **30 sekundách mezi kontrolami**. Kontrola stavu koncového bodu je opakovat každých 30 sekund.
 4. **Služba není k dispozici**. Služba přestane být k dispozici. Traffic Manager nebude vědět, až do další kontroly stavu.
 5. **Pokusí o přístup k cestě monitorování**. Monitorovací systém provádí požadavek GET, ale neobdrží odpověď v časovém limitu 10 sekund (případně než 200 může být přijata odpověď). Zkusí třikrát více každých 30 sekund. Pokud pokusy je úspěšné, pak počet pokusů se vynuluje.
@@ -137,6 +139,8 @@ Koncový bod má stav snížený, se už vrátila v odpovědi na dotazy DNS. Alt
 * **Váha**. Žádný dostupný koncový bod je vybrán náhodně podle jejich přiřazené váhy a váhy k dispozici koncové body.
 * **Výkon**. Koncový bod nejblíže koncového uživatele se vrátí. Pokud tohoto koncového bodu není k dispozici, Traffic Manager přesune provozu do koncových bodů v dalším nejbližší oblasti Azure. Plány alternativní převzetí služeb při selhání pro směrování provozu výkonu můžete nakonfigurovat pomocí [vnořené profily Traffic Manageru](traffic-manager-nested-profiles.md#example-4-controlling-performance-traffic-routing-between-multiple-endpoints-in-the-same-region).
 * **Geografické**. Mapovat k obsluze zeměpisné polohy na základě dotazu požadavku koncového bodu je vrácena IP adresy. Pokud je tento koncový bod není k dispozici, jiný koncový bod nebude vybrán převzetí služeb při selhání, protože zeměpisnou polohu lze mapovat pouze na jeden koncový bod v profilu (Další podrobnosti najdete v [nejčastější dotazy k](traffic-manager-FAQs.md#traffic-manager-geographic-traffic-routing-method)). Jako osvědčený postup, při použití geografické směrování doporučujeme zákazníkům umožňují použít vnořené profily Traffic Manageru s více než jeden koncový bod jako koncové body profilu.
+* **Více hodnot** několik koncových bodů namapované na IPv4/IPv6 adres se vrátí. Po přijetí dotaz pro tento profil se vrátí v dobrém stavu koncových bodů na základě **maximální počet záznamů v odpovědi** hodnotu, která jste zadali. Výchozí počet odpovědí je dva koncové body.
+* **Podsíť** koncový bod mapovány na skupinu rozsahů IP adres je vrácena. Při přijetí požadavku z této IP adresy, koncový bod vrátil, je ten mapovány pro tuto IP adresu. 
 
 Další informace najdete v tématu [metody směrování provozu Traffic Manageru](traffic-manager-routing-methods.md).
 

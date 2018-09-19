@@ -1,23 +1,26 @@
 ---
-title: Rozhraní příkazového řádku Knowledge Exploration Service | Dokumentace Microsoftu
-description: Sestavení indexu a gramatiky souborů z strukturovaných dat pomocí rozhraní příkazového řádku KES a nasazovat je jako webové služby Microsoft Cognitive Services.
+title: Rozhraní příkazového řádku – Knowledge Exploration Service API
+titlesuffix: Azure Cognitive Services
+description: Sestavení indexu a gramatiky souborů z strukturovaných dat pomocí rozhraní příkazového řádku a potom je můžete nasadit jako webové služby.
 services: cognitive-services
 author: bojunehsu
-manager: stesp
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: knowledge-exploration
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/24/2016
 ms.author: paulhsu
-ms.openlocfilehash: 71a6f5ac93e5605182a55de1bae9a99c5c3eddf4
-ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
+ms.openlocfilehash: 7ec2282317019275b15a8e506753408c75a68561
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39136351"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127133"
 ---
 # <a name="command-line-interface"></a>Command Line Interface
-Rozhraní příkazového řádku KES poskytuje možnost vytvářet index a gramatiky soubory ze strukturovaných dat a jejich nasazení jako webové služby.  Používá Obecná syntaxe: `kes.exe <command> <required_args> [<optional_args>]`.  Můžete spustit `kes.exe` bez argumentů, chcete-li zobrazit seznam příkazů, nebo `kes.exe <command>` zobrazíte seznam argumentů, která je k dispozici pro zadaný příkaz.  Níže je seznam dostupných příkazů:
+
+Rozhraní příkazového řádku Knowledge Exploration Service (KES) poskytuje možnost vytvářet index a gramatiky soubory ze strukturovaných dat a jejich nasazení jako webové služby.  Používá Obecná syntaxe: `kes.exe <command> <required_args> [<optional_args>]`.  Můžete spustit `kes.exe` bez argumentů, chcete-li zobrazit seznam příkazů, nebo `kes.exe <command>` zobrazíte seznam argumentů, která je k dispozici pro zadaný příkaz.  Níže je seznam dostupných příkazů:
+
 * build_index
 * build_grammar
 * host_service

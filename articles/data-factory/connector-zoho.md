@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 35e3b4f6c86121152901789dabc09e9404315a02
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 1e052b656f12a9059a5ee9d3ea21d0fa20fc00c6
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45632711"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123058"
 ---
-# <a name="copy-data-from-zoho-using-azure-data-factory"></a>Kopírování dat z Zoho pomocí Azure Data Factory
+# <a name="copy-data-from-zoho-using-azure-data-factory-preview"></a>Kopírování dat z Zoho pomocí Azure Data Factory (Preview)
 
 Tento článek popisuje, jak pomocí aktivity kopírování ve službě Azure Data Factory ke zkopírování dat z Zoho. Je nástavbou [přehled aktivit kopírování](copy-activity-overview.md) článek, který nabízí obecný přehled o aktivitě kopírování.
 

@@ -12,21 +12,53 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 03/04/2018
 ms.author: glenga
-ms.openlocfilehash: a8ee92d117a416d638f62b573dfb155f67bf66e0
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 72b93de029af750f55bf53fcc82e22ad91b45f69
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983134"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296341"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Příručka pro vývojáře Azure Functions JavaScript
+Tato příručka obsahuje informace o složitými rozhraními vytváření Azure Functions s použitím jazyka JavaScript.
 
-Prostředí jazyka JavaScript pro službu Azure Functions umožňuje snadno exportovat funkce, která je předána jako `context` objektu pro komunikaci s modulem runtime a pro příjem a odesílání dat prostřednictvím vazeb.
+Funkce jazyka JavaScript je exportovaná `function` , která se spustí při aktivaci ([aktivační události jsou nakonfigurované v function.json](functions-triggers-bindings.md)). Každá funkce je předána `context` objekt, který se používá pro příjem a odesílání vazby dat, protokolování a komunikaci s modulem runtime.
 
-Tento článek předpokládá, že jste už čtete [referenční informace pro vývojáře Azure Functions](functions-reference.md).
+Tento článek předpokládá, že jste si už přečetli [referenční informace pro vývojáře Azure Functions](functions-reference.md). Doporučuje se také, že jste postupovali podle kurzu v části "Šablon rychlý start" k [vytvoření první funkce](functions-create-first-function-vs-code.md).
+
+## <a name="folder-structure"></a>struktura složek
+
+Struktura složek požadované pro projekt jazyka JavaScript vypadá takto. Všimněte si, že je možné změnit toto výchozí nastavení: najdete v článku [Soubor_skriptu](functions-reference-node.md#using-scriptfile) níže v části Další podrobnosti.
+
+```
+FunctionsProject
+ | - MyFirstFunction
+ | | - index.js
+ | | - function.json
+ | - MySecondFunction
+ | | - index.js
+ | | - function.json
+ | - SharedCode
+ | | - myFirstHelperFunction.js
+ | | - mySecondHelperFunction.js
+ | - node_modules
+ | - host.json
+ | - package.json
+ | - extensions.csproj
+ | - bin
+```
+
+V kořenovém adresáři projektu neexistuje sdílené [host.json](functions-host-json.md) soubor, který můžete použít ke konfiguraci aplikace function app. Každá funkce má složku s vlastními souboru s kódem (.js) a vazbu konfigurační soubor (function.json).
+
+Rozšíření vazby vyžaduje [verze 2.x](functions-versions.md) funkce modulu runtime jsou definovány v `extensions.csproj` souboru se soubory knihovny v `bin` složky. Při vývoji místně, musíte [registraci rozšíření vazby](functions-triggers-bindings.md#local-development-azure-functions-core-tools). Při vytváření funkcí na webu Azure Portal, je tato registrace provede za vás.
 
 ## <a name="exporting-a-function"></a>Funkce exportu
-Každá funkce JavaScript, musíte exportovat jeden `function` prostřednictvím `module.exports` pro modul runtime vyhledat funkci a spustit ho. Tuto funkci nutné vždy provést `context` objekt jako první parametr.
+
+Funkce jazyka JavaScript, musí být exportován prostřednictvím [ `module.exports` ](https://nodejs.org/api/modules.html#modules_module_exports) (nebo [ `exports` ](https://nodejs.org/api/modules.html#modules_exports)). Ve výchozím nastavení, exportované funkce by měl být jediným export z jeho souboru exportu s názvem `run`, nebo exportovat pojmenované `index`. Výchozí umístění vaší funkce `index.js`, kde `index.js` sdílí stejné nadřazený adresář jako odpovídající `function.json`. Všimněte si, že název `function.json`jeho nadřazený adresář je vždy název vaší funkce. 
+
+Nakonfigurujte umístění souboru a exportujte název vaší funkce, přečtěte si informace o [konfigurace vstupní bod vaše funkce](functions-reference-node.md#configure-function-entry-point) níže.
+
+Vaším vstupním bodem exportované funkce nutné vždy provést `context` objekt jako první parametr.
 
 ```javascript
 // You must include a context, other arguments are optional
@@ -45,7 +77,7 @@ module.exports = function(context) {
 };
 ```
 
-Trigger a vstupní vazby (vazby `direction === "in"`) lze předat jako parametry funkce. Jsou předávány do funkce ve stejném pořadí, ve kterém jsou definovány v *function.json*. Můžete dynamicky zpracovávat vstupy pomocí jazyka JavaScript [ `arguments` ](https://msdn.microsoft.com/library/87dw3w1k.aspx) objektu. Pokud máte například `function(context, a, b)` a změňte ho na `function(context, a)`, stále můžete získat hodnotu `b` v kódu funkce rekapitulací `arguments[2]`.
+Aktivační události a vstupní vazby (vazby `direction === "in"`) lze předat jako parametry funkce. Jsou předávány do funkce ve stejném pořadí, ve kterém jsou definovány v *function.json*. Můžete taky dynamicky zpracovávat vstupy pomocí jazyka JavaScript [ `arguments` ](https://msdn.microsoft.com/library/87dw3w1k.aspx) objektu. Pokud máte například `function(context, a, b)` a změňte ho na `function(context, a)`, stále můžete získat hodnotu `b` v kódu funkce rekapitulací `arguments[2]`.
 
 Všechny vazby, bez ohledu na směru, jsou také předají `context` pomocí `context.bindings` vlastnost.
 
@@ -56,9 +88,9 @@ Modul runtime používá `context` objekt k předávání dat do a z vaší funk
 
 ```javascript
 // You must include a context, but other arguments are optional
-module.exports = function(context) {
+module.exports = function(ctx) {
     // function logic goes here :)
-    context.done();
+    ctx.done();
 };
 ```
 
@@ -109,7 +141,7 @@ context.done([err],[propertyBag])
 
 Informuje o modulu runtime, který váš kód bylo dokončeno. Pokud funkce používá jazyk JavaScript [ `async function` ](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Statements/async_function) deklarace (k dispozici prostřednictvím uzlu 8 + funkce verze 2.x), není potřeba použít `context.done()`. `context.done` Zpětného volání je implicitně volána.
 
-Pokud funkce není asynchronní funkci **musí volat `context.done`**  informovat modul runtime dokončení vaší funkce. Provedení příkazu vyprší časový limit, pokud není nalezena.
+Pokud funkce není asynchronní funkci **musí volat** `context.done` informovat modul runtime dokončení vaší funkce. Provedení příkazu vyprší časový limit, pokud není nalezena.
 
 `context.done` Metoda umožňuje předat zpět oba uživatelem definované chybové modul runtime a objekt JSON obsahující výstupní vazbu data. Předat vlastnosti `context.done` přepíše nic nastavit `context.bindings` objektu.
 
@@ -164,7 +196,7 @@ Možnosti pro `dataType` jsou: `binary`, `stream`, a `string`.
 
 ## <a name="writing-trace-output-to-the-console"></a>Zápisu výstupu sledování do konzoly 
 
-Ve službě Functions použijete `context.log` metody zapsat výstup trasování do konzoly. Funkce v1.x, nemůžete použít `console.log` k zápisu do konzoly. V v2.x funkce trasování výstupy prostřednictvím `console.log` jsou zachyceny na úrovni aplikace Function App. To znamená, že výstupem z `console.log` nejsou vázané na volání určité funkce.
+Ve službě Functions použijete `context.log` metody zapsat výstup trasování do konzoly. V v2.x funkce trasování výstupy prostřednictvím `console.log` jsou zachyceny na úrovni aplikace Function App. To znamená, že výstupem z `console.log` nejsou vázané na volání určité funkce a proto nejsou zobrazeny v protokolech určité funkce. Budou se však rozšířit do Application Insights. Funkce v1.x, nemůžete použít `console.log` k zápisu do konzoly. 
 
 Při volání `context.log()`, vaše zapíše se do konzoly na výchozí úrovni trasování, který je _informace_ úroveň trasování. Následující kód, zapíše do konzoly na úroveň trasování informace:
 
@@ -295,22 +327,10 @@ V následující tabulce jsou uvedeny verze Node.js používá každá hlavní v
 | 1.x | 6.11.2 (uzamčeno modulem runtime) |
 | 2.x  | _Aktivní LTS_ a _aktuální_ verze Node.js (8.11.1 a 10.6.0 doporučeno). Nastavení verze s použitím WEBSITE_NODE_DEFAULT_VERSION [nastavení aplikace, které](functions-how-to-use-azure-function-app-settings.md#settings).|
 
-Zobrazí aktuální verzi, která používá modul runtime s tiskem `process.version` z jakékoli funkce.
+Zobrazí aktuální verzi, která používá modul runtime kontrolou nad nastavení aplikace nebo tisk `process.version` z jakékoli funkce.
 
-## <a name="package-management"></a>Správa balíčků
-Následující kroky umožňují zahrnout balíčky ve vaší aplikaci funkcí: 
-
-1. Přejděte do části `https://<function_app_name>.scm.azurewebsites.net` (Soubor > Nový > Jiné).
-
-2. Klikněte na tlačítko **konzole ladění** > **CMD**.
-
-3. Přejděte na `D:\home\site\wwwroot`a pak přetáhněte soubor package.json **wwwroot** složky v horní polovině stránky.  
-    Soubory můžete nahrát také aplikaci function App jinými způsoby. Další informace najdete v tématu [aktualizace souborů aplikace funkce](functions-reference.md#fileupdate). 
-
-4. Po nahrání souboru package.json, spusťte `npm install` v příkaz **vzdálené spuštění konzoly Kudu**.  
-    Tato akce stáhne balíčky uvedené v souboru package.json a restartuje aplikaci function app.
-
-Po instalaci balíčky, které potřebujete, můžete je importovat do funkce voláním `require('packagename')`, jako v následujícím příkladu:
+## <a name="dependency-management"></a>Správa závislostí
+Chcete-li použít komunity knihovny do Javascriptového kódu, jak je popsáno následujícím příkladu, je nutné se ujistit, že jsou nainstalovány všechny závislosti na vaší aplikace funkcí v Azure.
 
 ```javascript
 // Import the underscore.js library
@@ -323,7 +343,26 @@ module.exports = function(context) {
         .where(context.bindings.myInput.names, {first: 'Carla'});
 ```
 
-Byste měli definovat `package.json` souboru v kořenovém adresáři aplikace function App. Definování souboru umožňuje všechny funkce v aplikaci sdílet stejné balíčky uložené v mezipaměti, která poskytuje nejlepší výkon. Pokud nastane konflikt verzí ho mohli vyřešit tak, že přidáte `package.json` soubor do složky na konkrétní funkce.  
+Všimněte si, že byste měli definovat `package.json` souboru v kořenovém adresáři aplikace function App. Definování souboru umožňuje všechny funkce v aplikaci sdílet stejné balíčky uložené v mezipaměti, která poskytuje nejlepší výkon. Pokud nastane konflikt verzí ho mohli vyřešit tak, že přidáte `package.json` soubor do složky na konkrétní funkce.  
+
+Existují dva způsoby, jak nainstalovat balíčky na aplikace Function App: 
+
+### <a name="deploying-with-dependencies"></a>Nasazení se závislostmi
+1. Nainstalujte všechny potřebné balíčky místně spuštěním `npm install`.
+
+2. Nasaďte svůj kód a ujistěte se, že `node_modules` složky je součástí nasazení. 
+
+
+### <a name="using-kudu"></a>Pomocí Kudu
+1. Přejděte do části `https://<function_app_name>.scm.azurewebsites.net` (Soubor > Nový > Jiné).
+
+2. Klikněte na tlačítko **konzole ladění** > **CMD**.
+
+3. Přejděte na `D:\home\site\wwwroot`a pak přetáhněte soubor package.json **wwwroot** složky v horní polovině stránky.  
+    Soubory můžete nahrát také aplikaci function App jinými způsoby. Další informace najdete v tématu [aktualizace souborů aplikace funkce](functions-reference.md#fileupdate). 
+
+4. Po nahrání souboru package.json, spusťte `npm install` v příkaz **vzdálené spuštění konzoly Kudu**.  
+    Tato akce stáhne balíčky uvedené v souboru package.json a restartuje aplikaci function app.
 
 ## <a name="environment-variables"></a>Proměnné prostředí
 Chcete-li získat proměnnou prostředí nebo nastavení hodnoty aplikace, použijte `process.env`, jak je znázorněno zde `GetEnvironmentVariable` funkce:
@@ -344,9 +383,74 @@ function GetEnvironmentVariable(name)
     return name + ": " + process.env[name];
 }
 ```
+
+## <a name="configure-function-entry-point"></a>Konfigurace funkce vstupního bodu
+
+`function.json` Vlastnosti `scriptFile` a `entryPoint` je možné nakonfigurovat umístění a název exportované funkce. Toto může být důležité, pokud je transpiled JavaScript.
+
+### <a name="using-scriptfile"></a>použití `scriptFile`
+
+Ve výchozím nastavení, funkce jazyka JavaScript je spouštěna z `index.js`, soubor, který sdílí stejné nadřazený adresář jako odpovídající `function.json`.
+
+`scriptFile` je možné získat strukturu složek, který vypadá takto:
+```
+FunctionApp
+ | - host.json
+ | - myNodeFunction
+ | | - function.json
+ | - lib
+ | | - nodeFunction.js
+ | - node_modules
+ | | - ... packages ...
+ | - package.json
+```
+
+`function.json` Pro `myNodeFunction` by měl obsahovat `scriptFile` vlastnosti odkazující na soubor s exportovanou funkci spustit.
+```json
+{
+  "scriptFile": "../lib/nodeFunction.js",
+  "bindings": [
+    ...
+  ]
+}
+```
+
+### <a name="using-entrypoint"></a>použití `entryPoint`
+
+V `scriptFile` (nebo `index.js`), funkce musí být exportovány pomocí `module.exports` aby bylo možné najít a spustit. Ve výchozím nastavení, je funkce, která se spustí při aktivaci jenom export ze souboru, export s názvem `run`, nebo exportovat pojmenované `index`.
+
+To lze konfigurovat pomocí `entryPoint` v `function.json`:
+```json
+{
+  "entryPoint": "logFoo",
+  "bindings": [
+    ...
+  ]
+}
+```
+
+V v2.x funkce, která podporuje `this` parametr uživatele funkcí, kód funkce by pak měl vypadat takto:
+```javascript
+class MyObj {
+    constructor() {
+        this.foo = 1;
+    };
+    
+    function logFoo(context) { 
+        context.log("Foo is " + this.foo); 
+        context.done(); 
+    }
+}
+
+const myObj = new MyObj();
+module.exports = myObj;
+```
+
+V tomto příkladu je důležité si uvědomit, že probíhá Export objektu, neobejde se to ale bez guarantess kolem zachování stavu mezi spuštěními.
+
 ## <a name="considerations-for-javascript-functions"></a>Důležité informace pro funkce jazyka JavaScript
 
-Při práci s funkcí jazyka JavaScript, mějte na paměti aspekty uvedené v následujících dvou částech.
+Při práci s funkcí jazyka JavaScript, mějte na paměti aspekty uvedené v následujících částech.
 
 ### <a name="choose-single-vcpu-app-service-plans"></a>Zvolte jeden virtuální procesor plány služby App Service
 
@@ -354,6 +458,9 @@ Když vytvoříte aplikaci function app, který používá plán služby App Ser
 
 ### <a name="typescript-and-coffeescript-support"></a>Podpora TypeScript a CoffeeScript
 Protože přímou podporu ještě neexistuje pro automatické kompilaci TypeScript nebo CoffeeScript prostřednictvím modulu runtime, musí být zpracována mimo modul runtime v době nasazení těchto podpory. 
+
+### <a name="cold-start"></a>Studený Start
+Při spuštění vývoj Azure Functions bez serveru hostování modelu cold jsou realitou. "Studený start" odkazuje na skutečnost, že při spuštění aplikace Function App poprvé po určité době nečinnosti, bude trvat delší dobu spouštění. Pro funkce jazyka JavaScript s stromové struktury velké závislost zejména to může způsobit zpomalení hlavní. Aby bylo možné urychlí proces, pokud je to možné, [spouštět funkce jako soubor balíčku](run-functions-from-deployment-package.md). Mnoho metod nasazení účast v tomto modelu ve výchozím nastavení, ale pokud jste dochází k souvisejícím s úplným spuštěním velké a neběží ze souboru balíčku, může to být obrovské vylepšení.
 
 ## <a name="next-steps"></a>Další postup
 Další informace najdete v následujících materiálech:

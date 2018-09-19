@@ -1,25 +1,25 @@
 ---
-title: Změna velikosti a oříznout miniatury Bingu | Dokumentace Microsoftu
-description: Ukazuje, jak změnit velikost a oříznout miniatury zahrnutý v odpovědi Bingu.
+title: Změna velikosti a oříznout miniatury Bingu – rozhraní API pro vyhledávání obrázků Bingu
+description: Zjistěte, jak změnit velikost a oříznout zahrnutý v odpovědi z rozhraní API Bingu pro vyhledávání obrázků miniatur.
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
+manager: cgronlun
 ms.assetid: F4FFAE91-A003-4F7C-8E60-83A142485E28
 ms.service: cognitive-services
 ms.component: bing-image-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 98c4caa50ca5e861f4276e26983ef501d17bd349
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: de82cc5554af91294dda3826dfb394cc94dbf3d0
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "41987526"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296223"
 ---
 # <a name="resizing-and-cropping-thumbnail-images"></a>Změna velikosti a oříznutí obrázků miniatur
 
-Při zpracování vyhledávací dotaz Bingu vygenerují miniatury informace pro všechny Image v jeho [odpovědi](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-get-images#bing-image-search-response-format). Tyto informace slouží k zobrazení všech nebo podmnožinu vrácené miniatury. Pokud zobrazíte dílčí poskytují možnost, chcete-li zobrazit zbývající bitové kopie. 
+Při zpracování vyhledávací dotaz Bingu vygenerují miniatury informace pro všechny Image v jeho [odpovědi](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-get-images#bing-image-search-response-format). Tyto informace slouží k zobrazení všech nebo podmnožinu vrácené miniatury. Pokud zobrazíte dílčí poskytují možnost, chcete-li zobrazit zbývající bitové kopie.
 
 
 <!-- Removing image until we can replace it with a sanatized version.
@@ -38,8 +38,8 @@ Pokud chcete získat informace o obrázku, například webové stránky, které 
 
 ## <a name="resizing-and-cropping-thumbnails"></a>Změna velikosti a oříznutí miniatury
 
-Můžete také změnit velikost a rozbalte miniatury, například když najede uživatele kurzoru nad ním. 
+Můžete také změnit velikost a rozbalte miniatury, například když najede uživatele kurzoru nad ním.
 > [!NOTE]
-> Pokud obrázek zvětšíte, nezapomeňte mu přiřadit atribut. Můžete například extrahovat název hostitele z hodnoty [hostPageDisplayUrl](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#image-hostpagedisplayurl) a zobrazit ho pod obrázkem. 
+> Pokud obrázek zvětšíte, nezapomeňte mu přiřadit atribut. Můžete například extrahovat název hostitele z hodnoty [hostPageDisplayUrl](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#image-hostpagedisplayurl) a zobrazit ho pod obrázkem.
 
 [!INCLUDE [cognitive-services-bing-resize-crop-thumbnails](../../../includes/cognitive-services-bing-resize-crop-thumbnails.md)]

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: c1247dfca6dea638da2113fef940b97ad3348b9a
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 0754b13704810816b1650010a00185031ca41f5d
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160276"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297567"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Integrovat vaše infrastruktura sítě VPN s Azure MFA pomocí rozšíření Server NPS pro Azure
 
@@ -122,7 +122,7 @@ Pokud se modul Microsoft Azure Active Directory PowerShell ještě není k dispo
 
 Místní uživatelé musí použít rozšíření serveru NPS, synchronizaci se službou Azure Active Directory a povoleným vícefaktorovým Ověřováním. Tento průvodce to předpokládá, že místních uživatelů se synchronizují se službou Azure Active Directory prostřednictvím služby Azure AD Connect. Níže jsou uvedené pokyny pro povolení uživatelů pro MFA.
 
-Informace o Azure AD Connect najdete v tématu [integrace místních adresářů se službou Azure Active Directory](../connect/active-directory-aadconnect.md). 
+Informace o Azure AD Connect najdete v tématu [integrace místních adresářů se službou Azure Active Directory](../hybrid/whatis-hybrid-identity.md). 
 
 ### <a name="azure-active-directory-guid-id"></a>Identifikátor GUID služby Azure Active Directory 
 
@@ -393,7 +393,7 @@ Pokud chcete použít skript, poskytnout rozšíření správce přihlašovacíc
 
 6. Restartujte server.
 
-### <a name="verify-the-configuration"></a>Zkontrolujte konfiguraci
+### <a name="verify-the-configuration"></a>Ověření konfigurace
 Pokud chcete ověřit konfiguraci, je potřeba vytvořit nové připojení VPN se serverem VPN. Po zadání svých přihlašovacích údajů úspěšně pro primární ověřování, počká, připojení k síti VPN pro sekundární ověřování úspěšné předtím, než se naváže připojení, jak je znázorněno níže. 
 
 ![V okně Windows Nastavení VPN](./media/howto-mfa-nps-extension-vpn/image42.png)
@@ -453,5 +453,5 @@ Další informace najdete v tématu [integrace vaší stávající infrastruktur
 
 [Brána vzdálené plochy Azure Multi-Factor Authentication Server pomocí protokolu RADIUS](howto-mfaserver-nps-rdg.md)
 
-[Integrace místních adresářů do služby Azure Active Directory](../connect/active-directory-aadconnect.md)
+[Integrace místních adresářů do služby Azure Active Directory](../hybrid/whatis-hybrid-identity.md)
 

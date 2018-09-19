@@ -1,25 +1,26 @@
 ---
-title: Vyhledávání na webu trendů obrázků | Microsoft Docs
-description: Ukazuje, jak používat rozhraní API služby Bing bitové kopie Search vyhledávání na webu pro trendů bitové kopie.
+title: Hledat na webu pro populárních obrázků – rozhraní API pro vyhledávání obrázků Bingu
+titleSuffix: Azure Cognitive Services
+description: Další informace o použití rozhraní API pro vyhledávání obrázků Bingu pro vyhledávání na webu populárních obrázků.
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
+manager: cgronlun
 ms.assetid: EAB92D35-5C0B-4A0A-8F49-02DF7FAD44B4
 ms.service: cognitive-services
 ms.component: bing-image-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: b12524cd4c1896501820209b3a45746b8f38b210
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 00d992da1d061ddbbee59e93898a92b6701f1ffb
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342395"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296307"
 ---
-# <a name="get-trending-images"></a>Získat trendů bitové kopie  
+# <a name="get-trending-images-from-the-bing-image-search-api"></a>Získání populárních obrázků z rozhraní API Bingu pro vyhledávání obrázků
 
-Získat dnešní trendů obrázky, odešlete následující požadavek GET:  
+Chcete-li získat dnešní populárních obrázků, poslat následující požadavek GET:  
 
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/trending?mkt=en-us HTTP/1.1  
@@ -30,15 +31,15 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com  
 ```  
 
-Rozhraní API bitové kopie trendů aktuálně podporuje pouze následující trhy:  
+Rozhraní API pro obrázky vzroste zájem o aktuálně podporuje pouze následujících zemích:  
 
 - en US (angličtina, USA)  
-- en-CA (angličtina, Kanada)  
-- en-AU (angličtina, Austrálie)  
+- cs CA (angličtina, Kanada)  
+- cs Austrálie (angličtina, Austrálie)  
 - zh-CN (čínština, Čína)
 
-Obsahuje odpovědi [TrendingImages](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#trendingimages) objekt, který uvádí Image podle kategorie. Použít kategorie `title` k seskupení obrázků v prostředí uživatele. Kategorie mohou změnit denně.  
-  
+Odpověď obsahuje [TrendingImages](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#trendingimages) objekt, který obsahuje seznam imagí podle kategorie. Kategorie se používá `title` k seskupení imagí v činnost koncového uživatele. Kategorie může každý den vznikají.  
+
 ```json
 {
     "_type" : "TrendingImages",  
@@ -85,12 +86,12 @@ Obsahuje odpovědi [TrendingImages](https://docs.microsoft.com/rest/api/cognitiv
     }]  
 }  
 ```  
-  
-Každou dlaždici obsahuje bitovou kopii a možnosti pro získání související bitové kopie. Pokud chcete získat související bitové kopie, můžete použít dotaz `text` k volání [rozhraní API pro vyhledávání bitové kopie](./search-the-web.md) a zobrazit související obrázky sami. Nebo můžete použít adresu URL v `webSearchUrl` provést uživateli na Bing bitové kopie stránky s výsledky hledání, který obsahuje související bitových kopií. 
 
-Při volání rozhraní API pro vyhledávání Image získat související bitové kopie, nastavte [id](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#id) parametr ID v dotazu `id` pole. Zadání ID zajišťuje, že odpověď obsahuje bitovou kopii (je v odpovědi první obrázek) a jeho souvisejících bitové kopie. Také nastavena [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#q) parametr na text v dotazu `query` objektu `text` pole.
+Každá dlaždice obsahuje bitovou kopii a možnosti pro získání související obrázky. Chcete-li získat související obrázky, můžete použít dotaz `text` volat [API pro vyhledávání obrázků](./search-the-web.md) a zobrazit související obrázky sami. Nebo můžete použít na adresu URL v `webSearchUrl` umožní uživateli Bingu imagí stránky s výsledky hledání, který obsahuje související obrázky.
 
-Následující příklad ukazuje, jak používat ID bitové kopie k získání související bitové kopie pan Smith v předchozí odpovědi trendů API bitové kopie.
+Při volání rozhraní API pro vyhledávání obrázků získat související obrázky, nastavte [id](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#id) parametr ID v dotazu `id` pole. Určení ID zajistí, že odpověď obsahuje bitovou kopii (je to první obrázek v odpovědi) a související obrázky. Navíc nastavte [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#q) parametr na text v dotazu `query` objektu `text` pole.
+
+Následující příklad ukazuje, jak získat související obrázky pan Smith v předchozí odpovědi vzroste zájem o rozhraní Image API pomocí ID bitové kopie.
 
 ```  
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=Smith&id=77FDE4A1C6529A23C7CF0EC073FAA64843E828F2&mkt=en-us HTTP/1.1  

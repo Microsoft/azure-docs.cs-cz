@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 1ce03c55a346adf846619c50f09eb063e6b6f639
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 2201455477af2bd871f8e8e401536d45af4a02f7
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45734620"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294643"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Přihlaste se k virtuální počítač s Linuxem v Azure pomocí ověřování Azure Active Directory (Preview)
 
@@ -35,7 +35,7 @@ Existuje mnoho výhod používání ověřování Azure AD k přihlášení do v
   - Díky snížení vaše umožňující místní účty správců, není potřeba starat o ztrátu/metodám krádeže přihlašovacích údajů, uživatelé konfigurace slabé pověření atd.
   - Složitost hesla a doby života zásady hesel nakonfigurované pro váš adresář Azure AD pomáhají zabezpečené virtuální počítače s Linuxem i.
   - Na další zabezpečení přihlášení pro virtuální počítače Azure můžete nakonfigurovat ověřování Multi-Factor Authentication.
-  - Schopnost přihlášení do virtuálních počítačů s Linuxem pomocí Azure Active Directory funguje i pro zákazníky používající [Federation Services](../../active-directory/connect/active-directory-aadconnectfed-whatis.md).
+  - Schopnost přihlášení do virtuálních počítačů s Linuxem pomocí Azure Active Directory funguje i pro zákazníky používající [Federation Services](../../active-directory/hybrid/how-to-connect-fed-whatis.md).
 
 - **Bezproblémová spolupráce:** řízení přístupu With Role-Based (RBAC), můžete určit, kdo může přihlásit k daného virtuálního počítače jako běžný uživatel nebo s oprávněním správce. Když uživatelé připojit nebo opustit váš tým, můžete aktualizovat zásady RBAC pro virtuální počítač k udělení přístupu podle potřeby. Toto prostředí je mnohem jednodušší než by bylo nutné procházení virtuálních počítačů odebrat nepotřebné veřejné klíče SSH. Když zaměstnanci opustí organizaci a jeho uživatelský účet je zakázán nebo odebrány ze služby Azure AD, že už nebude mít přístup k vašim prostředkům.
 

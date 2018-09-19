@@ -12,47 +12,44 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/19/2018
+ms.date: 09/13/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 23b7ca44b72b8840579f369954f41f554d4c8852
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 7e7e9d078bf9339beb2ad5ac53ea858e843242ce
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36943415"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46293596"
 ---
-# <a name="sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Přihlášení uživatele a volat rozhraní Microsoft Graph API z aplikace pro Android
+# <a name="sign-in-users-and-call-the-microsoft-graph-from-an-android-app"></a>Přihlašování uživatelů a volání Microsoft Graphu z aplikace pro Android
 
-Tato příručka ukazuje, jak získat přístupový token a volání rozhraní Graph API Microsoft nebo jiná rozhraní API, které vyžadují přístupové tokeny z koncového bodu Azure Active Directory v2 nativní aplikace pro Android.
+V tomto kurzu se dozvíte, jak vytvářet aplikace pro Android a integrovat do společnosti Microsoft identity platform. Konkrétně tato aplikace se přihlásit uživatele získání přístupového tokenu pro volání rozhraní Microsoft Graph API a vytvořte žádost na základní rozhraní Microsoft Graph API.  
 
-Po dokončení průvodce, vaše aplikace bude moci přijímat přihlášení osobní účty (včetně outlook.com, live.com a dalších) a pracovním a školním účtům v jakémkoli společnosti nebo organizace, která využívá Azure Active Directory. Aplikace pak zavolá rozhraní API, který je chráněný službou Azure Active Directory koncový bod v2.  
+Po dokončení průvodce bude vaše aplikace akceptovat přihlášení osobní účty Microsoft (včetně outlook.com, live.com a další) a pracovní nebo školní účty z jakéhokoli společnosti nebo organizace, která používá Azure Active Directory. 
 
-## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Jak funguje ukázková aplikace generované tímto průvodcem
+## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Jak funguje ukázkové aplikace vygenerované v této příručce
 ![Fungování této ukázky](media/active-directory-develop-guidedsetup-android-intro/android-intro.png)
 
-Ukázkové aplikace, které vytvoříte v této příručce je založena na scénář, kde aplikace pro Android se používá k dotazování webové rozhraní API, které přijímá tokeny z koncového bodu Azure Active Directory v2 (Microsoft Graph API, v tomto případě). V tomto scénáři aplikace přidá získal token na požadavky HTTP přes autorizační hlavičky. Knihovna ověřování společnosti Microsoft (MSAL) zpracovává získání tokenu a obnovení pro vás.
+Aplikace v této ukázce se přihlásit uživatele a jejich jménem získat data.  Tato data budou mít přístup přes vzdálenou API (Microsoft Graph API v tomto případě), který vyžaduje ověření a je také chráněný platformou identit společnosti Microsoft. 
+
+Přesněji řečeno, 
+* Vaše aplikace se spustí webovou stránku pro přihlášení uživatele.
+* Vaše aplikace budou vydány lístky přístupového tokenu pro rozhraní Microsoft Graph API.
+* Požadavek HTTP do webového rozhraní API zahrne přístupový token.
+* Zpracování odpovědi Microsoft Graphu. 
+
+Tato ukázka používá Microsoft Authentication library pro Android (MSAL) pro koordinaci a pomáhá s ověřeného Knihovna MSAL automaticky obnovit tokeny, poskytovat jednotné přihlašování mezi jinými aplikacemi na zařízení, pomáhá spravovat účty a zpracování většinou podmíněného přístupu. 
 
 ## <a name="prerequisites"></a>Požadavky
-* Tato instalace na základě se zaměřuje na Android Studio, ale žádné jiné vývojové prostředí Android aplikace je také přijatelné. 
-* Je vyžadován Android SDK 21 nebo novější (SDK 25 je doporučeno).
+* Tento instalační program s asistencí používá Android Studio 3.0. 
+* Vyžaduje se Android 21 nebo novější (25 + je doporučeno).
 * Google Chrome nebo webový prohlížeč, který používá vlastní karty je požadovaný pro tuto verzi MSAL pro Android.
 
-> [!NOTE]
-> Google Chrome není součástí Visual Studio Emulator for Android. Doporučujeme, abyste otestovali tento kód na emulátoru s 25 rozhraní API nebo bitovou kopii s 21 rozhraní API nebo novější s Google Chrome nainstalována.
+## <a name="library"></a>Knihovna
 
-## <a name="handling-token-acquisition-for-accessing-protected-web-apis"></a>Zpracování získání tokenu pro přístup k chráněné webové rozhraní API
-
-Po ověření uživatele je ukázková aplikace obdrží přístupový token, který slouží k dotazu Microsoft Graph API nebo webového rozhraní API, která je zabezpečená službou Azure Active Directory v2.
-
-Rozhraní API, jako je například Microsoft Graph vyžadují token přístupu povolit přístup ke konkrétním prostředkům. Přístupový token je například potřeba čtení profilu uživatele, přístup k kalendáře uživatele nebo odeslání e-mailu. Aplikace může požadovat token přístupu pomocí MSAL k těmto prostředkům přistupovat tak, že zadáte obory rozhraní API. Tento přístupový token se pak přidá do hlavičky HTTP autorizace pro každé volání, které se provádí před k chráněnému prostředku. 
-
-MSAL spravuje ukládání do mezipaměti a obnovení přístupových tokenů pro vás, tak, aby vaše aplikace nemusí.
-
-## <a name="libraries"></a>Knihovny
-
-Tato příručka používá následující knihovny:
+Tato příručka používá následující knihovny pro ověřování:
 
 |Knihovna|Popis|
 |---|---|
-|[com.microsoft.identity.client](http://javadoc.io/doc/com.microsoft.identity.client/msal)|Knihovna Microsoft ověřování (MSAL)|
+|[com.microsoft.identity.client](http://javadoc.io/doc/com.microsoft.identity.client/msal)|Knihovna Microsoft Authentication Library (MSAL)|

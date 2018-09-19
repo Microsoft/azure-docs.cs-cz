@@ -14,17 +14,40 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2017
 ms.author: terrylan
-ms.openlocfilehash: 0b3b8082412b12a0fffbaea04409a8bbb3f4ac15
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 45f5dc840f015793912e314ab3d47e54a409708e
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44295373"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46126662"
 ---
 # <a name="protecting-azure-sql-service-and-data-in-azure-security-center"></a>Ochrana služby Azure SQL a dat ve službě Azure Security Center
 Azure Security Center analyzuje stav zabezpečení vašich prostředků Azure. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří se doporučení, která vás provede procesem konfigurace potřebných kontrol.  Doporučení platí pro typy prostředků Azure: virtuální počítače (VM), sítě, SQL a datům a aplikacím.
 
 Tento článek se zabývá doporučení, která se vztahují na služby Azure SQL a data. System center doporučení týkající se povolení auditování pro servery Azure SQL Server a databáze, povolení šifrování databází SQL a povolení šifrování účtu úložiště Azure.  V následující tabulce použijte jako odkaz vám pomůžou pochopit dostupné doporučení služby a dat SQL a každý z nich, co dělá když je použijete.
+### <a name="monitor-data-security"></a>Monitorování zabezpečení dat
+
+Po kliknutí na **Zabezpečení dat** v části **Prevence** se otevře okno **Datové prostředky** s doporučeními pro SQL a službu Storage. Také obsahuje [doporučení](security-center-sql-service-recommendations.md) pro obecný stav databáze. Další informace o šifrování úložiště najdete v tématu [Povolení šifrování účtu úložiště Azure v Azure Security Center](security-center-enable-encryption-for-storage-account.md).
+
+![Datové prostředky](./media/security-center-monitoring/security-center-monitoring-fig13-newUI-2017.png)
+
+V části **Doporučení SQL** můžete kliknout na jakékoli doporučení a získáte další podrobnosti o další akci pro řešení problému. Následující příklad ukazuje rozbalení doporučení **Auditování databáze a detekce hrozeb u databází SQL**.
+
+![Podrobnosti o doporučení SQL](./media/security-center-monitoring/security-center-monitoring-fig14-ga-new.png)
+
+Okno **Povolit auditování a detekci hrozeb u databází SQL** obsahuje následující informace:
+
+* Seznam databází SQL
+* Server, na kterém jsou umístěné
+* Informace o tom, zda bylo toto nastavení zděděno ze serveru nebo zda je v této databázi jedinečné
+* Aktuální stav
+* Závažnosti problému
+
+Když kliknete na databázi, abyste vyřešili toto doporučení, otevře se okno **Auditování a detekce hrozeb**, jak je znázorněno na následující obrazovce.
+
+![Auditování a detekce hrozeb](./media/security-center-monitoring/security-center-monitoring-fig15-ga.png)
+
+Pokud chcete povolit auditování, vyberte **Zapnuto** pod možností **Auditování**.
 
 ## <a name="available-sql-service-and-data-recommendations"></a>K dispozici doporučení služby a dat SQL
 | Doporučení | Popis |

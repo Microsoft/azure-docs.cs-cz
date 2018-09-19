@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/07/2018
 ms.author: mireks
 ms.reviewer: vanto
-ms.openlocfilehash: d123cb2d272f1c360d12e9d71eec6dc5ca508ebd
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: f04846275fbad1673a00d820e8b44adc402b0242
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44718742"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294199"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql-database-managed-instance-or-sql-data-warehouse"></a>Konfigurace a Správa ověřování služby Azure Active Directory s SQL Database, mi nebo SQL Data Warehouse
 
@@ -31,7 +31,7 @@ V tomto článku se dozvíte, jak vytvořit a naplnit Azure AD a Azure AD pomoc�
 ## <a name="create-and-populate-an-azure-ad"></a>Vytvoření a naplnění Azure AD
 Vytvoření Azure AD a přidání uživatelů a skupin. Azure AD může být počáteční Azure AD spravované domény. Azure AD může být také v místním Active Directory Domain Services, která se federuje s Azure AD.
 
-Další informace najdete v tématech [Integrování místních identit do služby Azure Active Directory](../active-directory/active-directory-aadconnect.md), [Přidání vlastního názvu domény do Azure AD](../active-directory/active-directory-domains-add-azure-portal.md), [Microsoft Azure podporuje federaci s Windows Server Active Directory](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/), [Správa adresáře služby Azure AD](../active-directory/fundamentals/active-directory-administer.md), [Správa služby Azure AD pomocí rozhraní Windows PowerShell](/powershell/azure/overview?view=azureadps-2.0) a [Porty a protokoly, které vyžaduje hybridní identita](..//active-directory/connect/active-directory-aadconnect-ports.md).
+Další informace najdete v tématech [Integrování místních identit do služby Azure Active Directory](../active-directory/hybrid/whatis-hybrid-identity.md), [Přidání vlastního názvu domény do Azure AD](../active-directory/active-directory-domains-add-azure-portal.md), [Microsoft Azure podporuje federaci s Windows Server Active Directory](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/), [Správa adresáře služby Azure AD](../active-directory/fundamentals/active-directory-administer.md), [Správa služby Azure AD pomocí rozhraní Windows PowerShell](/powershell/azure/overview?view=azureadps-2.0) a [Porty a protokoly, které vyžaduje hybridní identita](../active-directory/hybrid/reference-connect-ports.md).
 
 ## <a name="associate-or-add-an-azure-subscription-to-azure-active-directory"></a>Přiřazení nebo přidání předplatného Azure ke službě Azure Active Directory
 

@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: d2b05c83f77a58e224760d90d111b270d71a6514
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: d97766b0a8c0df3b414d78f563406530f67c313b
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092423"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46125367"
 ---
 # <a name="azure-functions-developers-guide"></a>Příručka pro vývojáře Azure Functions
 Ve službě Azure Functions konkrétní funkce sdílet několik klíčových technických konceptech a komponenty, bez ohledu na jazyk nebo vazby, kterou používáte. Před přechodem do učení podrobnosti specifické pro daný jazyk nebo vazby, ujistěte se, že jste si tento přehled, který se vztahuje na všechny z nich.
@@ -62,15 +62,13 @@ Modul runtime nebo hostitel skriptu, je základní sada WebJobs SDK hostitele, k
 
 Pro usnadnění triggerů HTTP, je zde také webového hostitele, který je navržený tak před hostitel skriptu v produkčních scénářích. S dvěma hostiteli pomáhá izolovat hostitel skriptu z přední ukončit provoz spravuje webového hostitele.
 
-## <a name="folder-structure"></a>Struktura složek
+## <a name="folder-structure"></a>struktura složek
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
 
-Při vytváření projektu pro nasazení funkce do aplikace function app v Azure App Service, můžete tuto strukturu složek považovat váš kód lokality. Můžete použít stávající nástroje, jako jsou průběžná integrace a nasazování nebo vlastního nasazení skripty pro postup nasazení čas instalace balíčku nebo code transpilation.
+Při vytváření projektu pro nasazení funkce do aplikace function app v Azure, můžete tuto strukturu složek považovat váš kód lokality. Doporučujeme používat [balíček nasazení](deployment-zip-push.md) nasazení projektu do vaší aplikace funkcí v Azure. Můžete také použít stávající nástroje, jako je [průběžnou integraci a nasazování](functions-continuous-deployment.md) a Azure DevOps.
 
 > [!NOTE]
-> Ujistěte se, že k nasazení vaší `host.json` souborů a složek přímo do funkce `wwwroot` složky. Nejsou zahrnuté `wwwroot` složky v nasazeních. Jinak můžete skončit s `wwwroot\wwwroot` složek. 
-> 
-> 
+> Ujistěte se, že k nasazení vaší `host.json` souborů a složek přímo do funkce `wwwroot` složky. Nejsou zahrnuté `wwwroot` složky v nasazeních. Jinak můžete skončit s `wwwroot\wwwroot` složek.
 
 ## <a id="fileupdate"></a> Postup aktualizace souborů aplikace – funkce
 Funkce v editoru kódu postaveném na web Azure Portal umožňuje aktualizovat *function.json* soubor a soubor kódu pro funkci. K nahrání nebo aktualizace dalších souborů, jako *package.json* nebo *project.json* nebo závislosti, budete muset použít jiné metody nasazení.

@@ -1,40 +1,45 @@
 ---
-title: Tom, jak odinstalovat nástroj úlohy elastické databáze
-description: Další informace o odinstalaci komponenty úlohy elastické databáze pomocí portálu Azure PowerShell.
+title: Postup odinstalace nástroje úlohy elastické databáze
+description: Zjistěte, jak odinstalovat součásti úlohy elastické databáze pomocí webu Azure portal, prostředí PowerShell.
 services: sql-database
 manager: craigg
 author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 06/14/2018
 ms.author: sstein
-ms.openlocfilehash: e1089db848b30945e5e61765c762262f5478450e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: 395bbf50373d3a6e3848fba9fd3db0d6989023f4
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34645884"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "35643444"
 ---
-# <a name="uninstall-elastic-database-jobs-components"></a>Odinstalace součástí úlohy elastické databáze
-**Elastické databáze úlohy** součásti lze odinstalovat pomocí portálu Azure nebo Powershellu.
+# <a name="uninstall-elastic-database-jobs-components"></a>Odinstalovat součásti úlohy elastické databáze
 
-## <a name="uninstall-elastic-database-jobs-components-using-the-azure-portal"></a>Odinstalace součástí úlohy elastické databáze pomocí portálu Azure
+
+[!INCLUDE [elastic-database-jobs-deprecation](../../includes/sql-database-elastic-jobs-deprecate.md)]
+
+
+**Úlohy elastic Database** komponenty lze odinstalovat pomocí webu Azure portal nebo Powershellu.
+
+## <a name="uninstall-elastic-database-jobs-components-using-the-azure-portal"></a>Odinstalovat součásti úlohy elastické databáze pomocí webu Azure portal
 1. Otevřete web [Azure Portal](https://portal.azure.com/).
-2. Přejděte na předplatné, které obsahuje **úlohy elastické databáze** součásti, konkrétně předplatné, ve které elastické databáze součásti úlohy nebyly nainstalovány.
+2. Přejděte na předplatné, které obsahuje **úlohy elastické databáze** komponent, konkrétně předplatné, ve které Elastic Database byly nainstalované komponenty úlohy.
 3. Klikněte na tlačítko **Procházet** a klikněte na tlačítko **skupiny prostředků**.
 4. Vyberte skupinu prostředků s názvem "__ElasticDatabaseJob".
-5. Odstraňte skupinu prostředků.
+5. Odstraníte skupinu prostředků.
 
-## <a name="uninstall--elastic-database-jobs-components-using-powershell"></a>Odinstalace součástí úlohy elastické databáze pomocí prostředí PowerShell
-1. Spusťte příkazové okno Microsoft Azure PowerShell a přejděte na nástroje podadresář ve složce Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x: typ **cd nástroje**.
+## <a name="uninstall--elastic-database-jobs-components-using-powershell"></a>Odinstalovat součásti úlohy elastické databáze pomocí Powershellu
+1. Spusťte příkazové okno Microsoft Azure Powershellu a přejděte na nástroje podadresář ve složce Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x: typ **nástroje průběžného nasazování**.
    
-     PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x* > disk cd nástroje
+     PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x* > Nástroje průběžného nasazování
 2. Spusťte.\UninstallElasticDatabaseJobs.ps1 skript prostředí PowerShell.
    
      PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>Unblock-File .\UninstallElasticDatabaseJobs.ps1   PS C:\*Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools>.\UninstallElasticDatabaseJobs.ps1
 
-Nebo jednoduše, spusťte následující skript, za předpokladu, že výchozí hodnoty, kde je použít pro instalaci součástí:
+Nebo jednoduše řečeno, spusťte následující skript, za předpokladu, že výchozí hodnoty, kde se používá na instalaci komponenty:
 
         $ResourceGroupName = "__ElasticDatabaseJob"
         Switch-AzureMode AzureResourceManager
@@ -51,9 +56,9 @@ Nebo jednoduše, spusťte následující skript, za předpokladu, že výchozí 
         Write-Host "Completed removing the Azure Resource Group: $ResourceGroupName.  Elastic database job compoennts are now uninstalled."
 
 ## <a name="next-steps"></a>Další postup
-Pokud chcete znovu nainstalovat úlohy elastické databáze, přečtěte si téma [nainstalovat službu úlohy elastické databáze](sql-database-elastic-jobs-service-installation.md)
+Znovu nainstalujte úlohy elastické databáze, najdete v článku [instalace úlohy služby Elastic Database](sql-database-elastic-jobs-service-installation.md)
 
-Přehled úlohy elastické databáze najdete v tématu [přehled úlohy elastické databáze](sql-database-elastic-jobs-overview.md).
+Přehled úloh Elastických databází najdete v tématu [přehled úloh Elastických databází](sql-database-elastic-jobs-overview.md).
 
 <!--Image references-->
 

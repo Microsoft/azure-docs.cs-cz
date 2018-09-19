@@ -1,83 +1,90 @@
 ---
-title: Strukturovaná výrazy dotazů v rozhraní API služby zkoumání znalostní báze | Microsoft Docs
-description: Další informace o použití výrazy strukturovaných dotazů v znalostní báze zkoumání služby (KES) rozhraní API v kognitivní služby.
+title: Výrazy strukturovaných dotazů – Knowledge Exploration Service API
+titlesuffix: Azure Cognitive Services
+description: Zjistěte, jak používat strukturované výrazy dotazu v znalostní báze zkoumání služby (KES) rozhraní API.
 services: cognitive-services
 author: bojunehsu
-manager: stesp
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: knowledge-exploration
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 070ee311a1153bc9fb59870dce68f385a43b15f1
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: bdde2dfc9ab8e8ffdf7123c916538a8c98ecfce9
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342474"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129161"
 ---
-# <a name="structured-query-expression"></a>Výraz Structured Query
-Výraz strukturovaných dotazů určuje sadu operací vyhodnotit proti index datových.  Obsahuje atribut – výrazy dotazů a vyšší úrovně funkce.  Použití [ *vyhodnotit* ](evaluateMethod.md) metodu za účelem výpočtu objekty odpovídající výraz.  Následuje příklad z domény academic publikace, která vrací publikace autorem Jaime Teevan od roku 2013.
+# <a name="structured-query-expression"></a>Výraz strukturovaných dotazů
+
+Výraz strukturovaných dotazů určuje sadu operací s data indexu.  Zahrnuje atribut – výrazy dotazů a funkce vyšší úrovně.  Použití [ *vyhodnotit* ](evaluateMethod.md) metodu za účelem výpočtu objektů, které odpovídají výrazu.  Následuje příklad z akademického publikace domény, který vrací publikace autorem Jaime Teevan od roku 2013.
 
 `And(Composite(Author.Name=='jaime teevan'),Y>=2013)`
 
-Výrazy strukturovaných dotazů je možné získat od [ *interpretovat* ](interpretMethod.md) požadavků, kde je sémantický výstup každé interpretace strukturovaných dotazů výraz, který vrátí index objektů, které odpovídají vstupní přirozeného jazyka dotazů.  Případně se může být ručně vytvořené pomocí syntaxe popsaných v této části.
+Výrazy strukturovaných dotazů mohou pocházet od [ *interpretovat* ](interpretMethod.md) žádosti, kde sémantické výstup každé vyhodnocení je výraz strukturovaných dotazů, který vrací index objektů, které odpovídají přirozený jazyk dotazu.  Případně se může být ručně vytvořené pomocí syntaxe popsané v této části.
 
 ## <a name="attribute-query-expression"></a>Atribut výrazu dotazu
-Výraz dotazu atribut identifikuje sadu objektů na základě shody s určitým atributem.  Různé odpovídající operace jsou podporovány v závislosti na typu atributu a indexované operaci zadané v [schématu](SchemaFormat.md):
+
+Výraz dotazu atribut identifikuje sadu objektů na základě shody s konkrétním atributem.  Podporovány jsou různé odpovídající operace v závislosti na typu atributu a indexované operaci zadané v [schématu](SchemaFormat.md):
 
 | Typ | Operace | Příklady |
 |------|-------------|------------|
-| Řetězec | rovná se | Title = "latentní sémantického analýzy" (kanonický + synonyma) |
-| Řetězec | rovná se | Author.Name=='susan t dumais (kanonický pouze)|
-| Řetězec | starts_with | Název = 'latentní s'... |
-| Int32, Int64 nebo Double | rovná se | Rok = 2000 |
-| Int32, Int64 nebo Double | starts_with | Rok = "20"... (všechny Desítková hodnota počínaje "20") |
-| Int32, Int64 nebo Double | is_between | Rok&lt;2000 <br/> Rok&lt;= 2000 <br/> Rok&gt;2000 <br/> Rok&gt;= 2000 <br/> Year=[2010,2012) *(obsahuje hodnotu pouze levé hranic: 2010, 2011)* <br/> Rok = [2000,2012] *(zahrnuje obě hodnoty hranic: 2010, 2011, 2012)* |
-| Datum | rovná se | Datum narození ='1984-05-14. |
-| Datum | is_between | Datum narození&lt;= "2008/03/14' <br/> PublishDate = ['2000-01-01', ' 2009-12-31'] |
+| Řetězec | rovná se | Název = "skryté sémantické analýzy" (canonical + synonym) |
+| Řetězec | rovná se | Author.Name=='susan t dumais (canonical jenom)|
+| Řetězec | starts_with | Název = 'skryté s'... |
+| Datový typ Int32 nebo Int64/Double | rovná se | Rok = 2000 |
+| Datový typ Int32 nebo Int64/Double | starts_with | Rok = "20"... (žádné Desítková hodnota začíná "20") |
+| Datový typ Int32 nebo Int64/Double | is_between | Rok&lt;2000 <br/> Rok&lt;= 2000 <br/> Rok&gt;2000 <br/> Rok&gt;= 2000 <br/> Year=[2010,2012) *(obsahuje hodnotu hranice pouze vlevo: 2010, 2011)* <br/> Rok = [2000,2012] *(zahrnuje obě hodnoty hranic: 2010, 2011, 2012)* |
+| Datum | rovná se | Datum narození = "1984-05-14. |
+| Datum | is_between | Datum narození&lt;= "2008/03/14' <br/> PublishDate = ["2000-01-01", "2009-12-31'] |
 | Guid | rovná se | ID = "602DD052-CC47-4B23-A16A-26B52D30C05B. |
 
 
-Například výraz "Title ="latentní s"..." odpovídá všechny academic publikace, jejichž název začíná řetězcem "latentní s".  Aby bylo možné vyhodnotit tento výraz, atribut název zadejte "starts_with" operaci ve schématu použit k vytvoření indexu.
+Například výraz "Title = 'latentní s'..." odpovídá všechny academic publikace, jejichž název začíná řetězcem "latentní s".  Aby bylo možné vyhodnotit tento výraz, musíte zadat atribut název operace "starts_with" ve schématu použit k vytvoření indexu.
 
-Pro atributy s přidružené synonyma může výrazu dotazu určete objekty, jejichž kanonický hodnota odpovídá dané řetězce pomocí "==" operátor nebo objekty, kde některé z jeho kanonickém nebo synonymum hodnoty shodují pomocí operátoru "=".  Musí být zadaný v definici atribut operátorovi "je rovno".
+Pro atributy se přidružené synonyma výrazu dotazu může určit objekty, jejichž Kanonická hodnota odpovídá dané řetězec za použití "==" operátor nebo objekty, kde některé z jeho canonical synonymum/hodnoty shodují pomocí operátoru "=".  Oba vyžadují operátor "je rovno" pro zadaný v definici atributu.
 
 
 ## <a name="functions"></a>Functions
-Není integrovanou sadu funkcí, které umožňuje vytváření sofistikovanější výrazy dotazu z základní atribut dotazů.
+
+Je integrovaná sada funkce umožňující vytváření sofistikovanějších – výrazy dotazů z dotazů základní atribut.
 
 ### <a name="and-function"></a>A funkce
+
 `And(expr1, expr2)`
 
 Vrací průnik dvou výrazů vstupní dotaz.
 
-Následující příklad vrací academic publikace, které jsou publikovány v roce 2000 o načtení informací:
+Následující příklad vrátí academic publikace publikované v roce 2000 o načítání informací:
 
 `And(Year=2000, Keyword=='information retrieval')`
 
 ### <a name="or-function"></a>Nebo – funkce
+
 `Or(expr1, expr2)`
 
 Vrátí sjednocení dvou výrazů vstupní dotaz.
 
-Následující příklad vrací academic publikace, které jsou publikovány v roce 2000 o načtení informací nebo modelování uživatele:
+Následující příklad vrátí academic publikace publikované v roce 2000 o načítání informací nebo uživatel modelování:
 
 `And(Year=2000, Or(Keyword='information retrieval', Keyword='user modeling'))`
 
-### <a name="composite-function"></a>Složené – funkce
+### <a name="composite-function"></a>Složený – funkce
+
 `Composite(expr)`
 
-Vrací výraz, který zapouzdřuje vnitřní výrazu tvořený dotazy pro dílčí atributy společný atribut složené.  Zapouzdření vyžaduje atribut složené žádné odpovídající datový objekt do mají alespoň jednu hodnotu, která splňuje jednotlivě vnitřní výraz.  Všimněte si, že výrazu dotazu na dílčí atributy složené atributu musí být zapouzdřené pomocí funkce Composite() před kombinaci s jinými výrazy dotazu.
+Vrátí výraz, který zapouzdřuje vnitřní výraz se skládá z dotazy na dílčí atributy složené společný atribut.  Zapouzdření vyžaduje atribut složené žádné odpovídající datového objektu má alespoň jednu hodnotu, která splňuje jednotlivě vnitřní výraz.  Všimněte si, že výrazu dotazu na dílčí atributy složené atributu musí být zapouzdřeny pomocí funkce Composite() předtím, než se dá se kombinovat s jinými výrazy dotazu.
 
-Například následující výraz vrací academic publikace podle "harry shum" při mu byl v "microsoft":
+Například následující výraz vrátí academic publikace podle "harry shum" zatímco pracoval bruno v "microsoft":
 
 ```
 Composite(And(Author.Name="harry shum", 
               Author.Affiliation="microsoft"))
 ```
 
-Následující výraz na druhé straně vrátí academic publikace, kde jeden autorů je "harry shum" a jeden názorům uživatele je "společnost microsoft":
+Na druhé straně následující výraz vrací academic publikací, kde jedním z autorů je "harry shum" a jeden umístění je "microsoft":
 
 ```
 And(Composite(Author.Name="harry shum"), 

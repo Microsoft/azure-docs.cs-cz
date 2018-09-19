@@ -1,6 +1,6 @@
 ---
-title: 'Ověřování služby služby: Python s Data Lake Store pomocí Azure Active Directory | Microsoft Docs'
-description: Zjistěte, jak dosáhnout service-to-service ověřování s Data Lake Store pomocí Azure Active Directory používá Python
+title: 'Ověřování služba služba: Python s Azure Data Lake Storage Gen1 pomocí Azure Active Directory | Dokumentace Microsoftu'
+description: Zjistěte, jak dokončit ověřování služba služba s Azure Data Lake Storage Gen1 pomocí Azure Active Directory pomocí Pythonu
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: f2ebd9228b9fa7861527dab20277ceb09f61b544
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a8e2cb090b2ee02301c54697db9edadeaebd9cd3
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34626228"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295407"
 ---
-# <a name="service-to-service-authentication-with-data-lake-store-using-python"></a>Service-to-service ověřování s Data Lake Store pomocí jazyka Python
+# <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-python"></a>Ověřování služba služba s Azure Data Lake Storage Gen1 pomocí Pythonu
 > [!div class="op_single_selector"]
 > * [Pomocí Javy](data-lake-store-service-to-service-authenticate-java.md)
 > * [Pomocí sady .NET SDK](data-lake-store-service-to-service-authenticate-net-sdk.md)
@@ -27,7 +27,7 @@ ms.locfileid: "34626228"
 > 
 >  
 
-V tomto článku se dozvíte o tom, jak použít Python SDK k těmto service-to-service ověřování s Azure Data Lake Store. Pro ověřování koncového uživatele s Data Lake Store pomocí jazyka Python, najdete v části [ověřování koncového uživatele s Data Lake Store pomocí Python](data-lake-store-end-user-authenticate-python.md).
+V tomto článku najdete informace o tom, jak provádět ověřování služba služba s Azure Data Lake Storage Gen1 pomocí sady Python SDK. Ověřování koncového uživatele s Data Lake Storage Gen1 pomocí Pythonu, přečtěte si téma [ověřování koncového uživatele s Data Lake Storage Gen1 pomocí Pythonu](data-lake-store-end-user-authenticate-python.md).
 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -36,15 +36,15 @@ V tomto článku se dozvíte o tom, jak použít Python SDK k těmto service-to-
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Vytvoření aplikace Azure Active Directory "Web"**. Musí mít dokončili postup v [Service-to-service ověřování s Data Lake Store pomocí Azure Active Directory](data-lake-store-service-to-service-authenticate-using-active-directory.md).
+* **Vytvoření aplikace Azure Active Directory "Web"**. Je nutné dokončit kroky v [ověřování služba služba Data Lake Storage Gen1 pomocí Azure Active Directory](data-lake-store-service-to-service-authenticate-using-active-directory.md).
 
 ## <a name="install-the-modules"></a>Instalace modulů
 
-Abyste mohli pracovat se službou Data Lake Store pomocí Pythonu, je nutné nainstalovat tři moduly.
+Pro práci s Data Lake Storage Gen1 pomocí Pythonu, je nutné nainstalovat tři moduly.
 
 * Modul `azure-mgmt-resource`, který zahrnuje moduly Azure pro Active Directory atd.
-* Modul `azure-mgmt-datalake-store`, který zahrnuje operace správy účtů Azure Data Lake Store. Další informace o tomto modulu najdete v [referenčních informacích k modulu Azure Data Lake Store Management](https://docs.microsoft.com/python/api/azure.mgmt.datalake.store?view=azure-python).
-* Modul `azure-datalake-store`, který zahrnuje operace systému souborů Azure Data Lake Store. Další informace o tomto modulu najdete v [referenčních informacích k modulu Azure Data Lake Store Filesystem](http://azure-datalake-store.readthedocs.io/en/latest/).
+* `azure-mgmt-datalake-store` Modul, který zahrnuje operace správy účtů Data Lake Storage Gen1. Další informace o tomto modulu najdete v tématu [odkazu na modul Azure Data Lake Storage Gen1 Management](https://docs.microsoft.com/python/api/azure.mgmt.datalake.store?view=azure-python).
+* `azure-datalake-store` Modul, který zahrnuje operace systému souborů Data Lake Storage Gen1. Další informace o tomto modulu najdete v tématu [odkazu na modul azure-datalake-store Filesystem](http://azure-datalake-store.readthedocs.io/en/latest/).
 
 Pomocí následujících příkazů tyto moduly nainstalujte.
 
@@ -64,11 +64,11 @@ pip install azure-datalake-store
     ## Use this for Azure AD authentication
     from msrestazure.azure_active_directory import AADTokenCredentials
 
-    ## Required for Azure Data Lake Store account management
+    ## Required for Data Lake Storage Gen1 account management
     from azure.mgmt.datalake.store import DataLakeStoreAccountManagementClient
     from azure.mgmt.datalake.store.models import DataLakeStoreAccount
 
-    ## Required for Azure Data Lake Store filesystem management
+    ## Required for Data Lake Storage Gen1 filesystem management
     from azure.datalake.store import core, lib, multithread
 
     # Common Azure imports
@@ -84,7 +84,7 @@ pip install azure-datalake-store
 
 ## <a name="service-to-service-authentication-with-client-secret-for-account-management"></a>Ověřování služba-služba s tajným klíčem klienta pro správu účtu
 
-Použijte tento fragment kódu k ověření s Azure AD pro operace správy účtů v Data Lake uložit, například jako vytvoření účtu Data Lake Store, odstranění účtu Data Lake Store atd. Následující fragment kódu můžete použít k ověřování aplikace interaktivně, pomocí tajný klíč klienta pro aplikace / service principal existující Azure AD "Webovou aplikaci" aplikace.
+Použijte tento fragment kódu k ověření ve službě Azure AD pro operace správy účtů ve službě Data Lake Storage Gen1, jako je například vytvoření účtu Data Lake Storage Gen1, Data Lake Storage Gen1 odstranění účtu atd. Následující fragment kódu můžete použít k neinteraktivnímu ověřování vaší aplikace pomocí tajného klíče klienta pro aplikaci nebo instančního objektu služby existující Azure AD "Webovou aplikaci" aplikace.
 
     authority_host_uri = 'https://login.microsoftonline.com'
     tenant = '<TENANT>'
@@ -99,7 +99,7 @@ Použijte tento fragment kódu k ověření s Azure AD pro operace správy účt
 
 ## <a name="service-to-service-authentication-with-client-secret-for-filesystem-operations"></a>Ověřování služba-služba s tajným klíčem klienta pro operace se systémem souborů
 
-Použijte následující fragment kódu k ověření s Azure AD pro operace systému souborů v Data Lake Store, jako například vytvořit složku, nahrávání souborů atd. Následující fragment kódu lze použít k neinteraktivnímu ověřování vaší aplikace pomocí tajného klíče klienta pro aplikaci nebo instančního objektu. Použijte tento fragment kódu se stávající aplikací Azure AD Webová aplikace.
+Použít následující fragment kódu pro ověřování pomocí Azure AD pro operace systému souborů v Data Lake Storage Gen1 například vytváření složek, nahrávání souborů atd. Následující fragment kódu lze použít k neinteraktivnímu ověřování vaší aplikace pomocí tajného klíče klienta pro aplikaci nebo instančního objektu. Použijte tento fragment kódu se stávající aplikací Azure AD Webová aplikace.
 
     tenant = '<TENANT>'
     RESOURCE = 'https://datalake.azure.net/'
@@ -113,7 +113,7 @@ Použijte následující fragment kódu k ověření s Azure AD pro operace syst
 
 <!-- ## Service-to-service authentication with certificate for account management
 
-Use this snippet to authenticate with Azure AD for account management operations on Data Lake Store such as create Data Lake Store account, delete Data Lake Store account, etc. The following snippet can be used to authenticate your application non-interactively, using the certificate of an existing Azure AD "Web App" application. For instructions on how to create an Azure AD application, see [Create service principal with certificates](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-self-signed-certificate).
+Use this snippet to authenticate with Azure AD for account management operations on Data Lake Storage Gen1 such as create a Data Lake Storage Gen1 account, delete a Data Lake Storage Gen1 account, etc. The following snippet can be used to authenticate your application non-interactively, using the certificate of an existing Azure AD "Web App" application. For instructions on how to create an Azure AD application, see [Create service principal with certificates](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-self-signed-certificate).
 
     authority_host_uri = 'https://login.microsoftonline.com'
     tenant = '<TENANT>'
@@ -128,9 +128,9 @@ Use this snippet to authenticate with Azure AD for account management operations
     credentials = AADTokenCredentials(mgmt_token, client_id) -->
 
 ## <a name="next-steps"></a>Další postup
-V tomto článku jste zjistili, jak používat ověřování service-to-service k ověřování s Azure Data Lake Store pomocí jazyka Python. Teď můžete prohlédnout v následujících článcích, které mluvit o tom, jak používat jazyk Python pro práci s Azure Data Lake Store.
+V tomto článku jste zjistili, jak používat k ověření pomocí Data Lake Storage Gen1 ověřování služba služba pomocí Pythonu. Teď můžete prohlédnout v následujících článcích, které mluvit o tom, jak používat Python pro práci s Data Lake Storage Gen1.
 
-* [Operace správy účtů v Data Lake Store pomocí jazyka Python](data-lake-store-get-started-python.md)
-* [Operace dat v Data Lake Store pomocí jazyka Python](data-lake-store-data-operations-python.md)
+* [Operace správy účtů v Data Lake Storage Gen1 pomocí Pythonu](data-lake-store-get-started-python.md)
+* [Operace s daty v Data Lake Storage Gen1 pomocí Pythonu](data-lake-store-data-operations-python.md)
 
 

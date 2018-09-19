@@ -8,93 +8,94 @@ ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
 ms.author: ramamill
-ms.date: 07/06/2018
-ms.openlocfilehash: 8d5db03eeebb659414ea1f554e5b34c938fd2795
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.date: 09/17/2018
+ms.openlocfilehash: d77b252351c15bea13b0fa1fb42fa062d508fbdc
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37952905"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46126985"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>Řešení potíží s nabízenou instalací služby Mobility
 
-Tento článek popisuje, jak řešit běžné chyby, které může setkat při pokusu o instalaci služby Mobility Azure Site Recovery na zdrojovém serveru pro povolení ochrany.
+Instalace služby Mobility je klíče krokem při povolení replikace. Úspěch tento krok závisí výhradně na splnění požadavků a práci s podporovanou konfigurací. Většina běžných chyb, které se zabývají během instalace služby Mobility se z důvodu
 
-## <a name="error-78007---the-requested-operation-could-not-be-completed"></a>Chyba 78007 – požadovanou operaci nešlo dokončit.
-Tato chyba může být vyvolána službou z několika důvodů. Zvolte řešení potíží s další odpovídající chybě zprostředkovatele.
+* Chyby připojení a přihlašovacích údajů
+* Nepodporovaný operační systémy
 
-* [Chyba 95103](#error-95103---protection-could-not-be-enabled-ep0854) 
-* [Chyba 95105](#error-95105---protection-could-not-be-enabled-ep0856) 
-* [Chyba 95107](#error-95107---protection-could-not-be-enabled-ep0858) 
-* [Chyba 95108](#error-95108---protection-could-not-be-enabled-ep0859) 
-* [Chyba 95117](#error-95117---protection-could-not-be-enabled-ep0865) 
-* [Chyba 95213](#error-95213---protection-could-not-be-enabled-ep0874) 
-* [Chyba 95224](#error-95224---protection-could-not-be-enabled-ep0883) 
-* [Chyba 95265](#error-95265---protection-could-not-be-enabled-ep0902) 
+Při povolení replikace Azure Site Recovery se pokusí vložit instalace agenta služby mobility na virtuálním počítači. Jako součást tohoto konfiguračního serveru pokusí připojit k virtuálnímu počítači a zkopírujte agenta. Pokud chcete povolit úspěšnou instalaci, postupujte podrobné pokyny k odstraňování uvedena níže
 
+## <a name="credentials-check-errorid-95107--95108"></a>Zkontrolujte přihlašovací údaje (ID chyby: 95107 & 95108)
 
-## <a name="error-95105---protection-could-not-be-enabled-ep0856"></a>Chyba 95105 - ochranu nebylo možné povolené (EP0856)
+* Ověřte, jestli uživatelský účet vybrána při povolení replikace **platný, přesné**.
+* Azure Site Recovery vyžaduje **oprávnění správce** k provedení nabízené instalace.
+  * Pro Windows, ověření, pokud uživatelský účet nemá přístup pro správu, místní nebo doméně na zdrojovém počítači.
+  * Pokud nepoužíváte účet domény, je nutné zakázat vzdálené řízení přístupu uživatele v místním počítači.
+    * Chcete-li zakázat vzdálené řízení přístupu uživatele, pod klíčem registru HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System přidat novou hodnotu DWORD: LocalAccountTokenFilterPolicy. Nastavte hodnotu na 1. K provedení tohoto kroku, spusťte následující příkaz z příkazového řádku:
 
-**Kód chyby:** | **Možné příčiny** | **Chyba konkrétní doporučení**
---- | --- | ---
-95105 </br>**Zpráva:** nabízenou instalaci služby Mobility na zdrojovém počítači se nezdařilo s kódem chyby **EP0856**. <br> Buď **sdílení souborů a tiskáren** není povolena na zdrojovém počítači nebo že jsou síťové potíže s připojením mezi procesovým serverem a zdrojovým počítačem.| **Sdílení souborů a tiskáren** není povolená. | Povolit **sdílení souborů a tiskáren** na zdrojovém počítači v bráně Windows Firewall. Na zdrojovém počítači v části **brány Windows Firewall** > **povolit aplikaci nebo funkci průchod bránou Firewall**vyberte **sdílení souborů a tiskáren pro všechny profily**. </br> Kromě toho zkontrolujte následující požadavky pro úspěšné dokončení nabízené instalace.<br> Další informace o [řešení potíží s WMI vydá](#troubleshoot-wmi-issues).
+         `REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1`
+  * Pro Linux musíte zvolit účet root pro úspěšnou instalaci agenta mobility.
 
+Pokud chcete upravit přihlašovací údaje účtu pro vybrané uživatele, postupujte podle pokynů [tady](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation).
 
-## <a name="error-95107---protection-could-not-be-enabled-ep0858"></a>Chyba 95107 - ochranu nebylo možné povolené (EP0858)
+## <a name="connectivity-check-errorid-95117--97118"></a>**Kontrola připojení (ID chyby: 95117 & 97118)**
 
-**Kód chyby:** | **Možné příčiny** | **Chyba konkrétní doporučení**
---- | --- | ---
-95107 </br>**Zpráva:** nabízenou instalaci služby Mobility na zdrojovém počítači se nezdařilo s kódem chyby **EP0858**. <br> Buď nejsou správné přihlašovací údaje zadané pro instalaci služby Mobility nebo uživatelský účet nemá dostatečná oprávnění. | Pověření uživatele zadané pro instalaci služby Mobility na zdrojovém počítači nejsou správné. | Ujistěte se, že jsou správné přihlašovací údaje uživatele k dispozici u tohoto zdrojového počítače na konfiguračním serveru. <br> Můžete přidat nebo upravit přihlašovací údaje uživatele, přejděte na konfigurační server a vyberte **Cspsconfigtool** > **spravovat účet**. </br> Kromě toho zkontrolujte následující [požadavky](vmware-azure-install-mobility-service.md#install-mobility-service-by-push-installation-from-azure-site-recovery) úspěšné dokončení nabízené instalace.
+* Ujistěte se, že můžete provádět na příkaz ping zdrojový počítač z konfiguračního serveru. Pokud jste vybrali horizontální navýšení kapacity procesového serveru při povolení replikace, ujistěte se, že můžete provádět na příkaz ping zdrojový počítač z procesového serveru.
+  * Ze zdrojového serveru počítače příkazového řádku pomocí Telnetu odešlete zprávu ping konfigurační server / horizontální navýšení kapacity procesový server s port https (standardně 9443), jak vidíte níže, jestli jsou všechny problémy se síťovým připojením nebo brány firewall portu blokující problémy.
 
+     `telnet <CS/ scale-out PS IP address> <port>`
 
-## <a name="error-95117---protection-could-not-be-enabled-ep0865"></a>Chyba 95117 - ochranu nebylo možné povolené (EP0865)
+  * Pokud se nemůžete připojit, povolte příchozí port 9443 na konfiguračním serveru / horizontální navýšení kapacity procesového serveru.
+  * Zkontrolujte, že stav služby **InMage Scout VX Agent – Sentinel/Outpost**. Spusťte službu, pokud není spuštěná.
 
-**Kód chyby:** | **Možné příčiny** | **Chyba konkrétní doporučení**
---- | --- | ---
-95117 </br>**Zpráva:** nabízenou instalaci služby Mobility na zdrojovém počítači se nezdařilo s kódem chyby **EP0865**. <br> Buď zdrojový počítač není spuštěný nebo jsou mezi procesovým serverem a zdrojovým počítačem problémy s připojením k síti. | Problémy s připojením k síti mezi procesovým serverem a zdrojovém serveru. | Zkontrolujte připojení mezi procesovým serverem a zdrojovém serveru. </br> Kromě toho zkontrolujte následující [požadavky](vmware-azure-install-mobility-service.md#install-mobility-service-by-push-installation-from-azure-site-recovery) úspěšné dokončení nabízené instalace.|
+* Kromě toho **virtuálního počítače s Linuxem**,
+  * Zkontrolujte, jestli jsou nainstalovaná nejnovější balíčky openssh, openssh-server a openssl.
+  * Zkontrolujte a ujistěte se, že Secure Shell (SSH) zapnutá a běží na portu 22.
+  * By měl běžet služba SFTP. Pokud chcete povolit ověřování SFTP subsystému a heslo v souboru sshd_config
+    * Přihlaste se jako uživatel root.
+    * Přejděte k souboru /etc/ssh/sshd_config, vyhledejte řádek, který začíná PasswordAuthentication.
+    * Zrušte na řádku komentář a změňte hodnotu na hodnotu Ano
+    * Vyhledejte řádek, který začíná subsystému a zrušte na řádku komentář
+    * Restartujte službu sshd.
+* Pokus o připojení může mít se nezdařilo, pokud neexistuje žádná správná odpověď po určitou dobu nebo navázané připojení se nezdařila, protože připojený hostitel se nepodařilo odpovědět.
+* Připojení/sítě nebo domény může být problém související s. Může být také způsobena název DNS, které řeší problém nebo problém vyčerpání portů TCP. Prosím zkontrolujte, jestli jsou ve vaší doméně všech známých problémů.
 
-## <a name="error-95103---protection-could-not-be-enabled-ep0854"></a>Chyba 95103 - ochranu nebylo možné povolené (EP0854)
+## <a name="file-and-printer-sharing-services-check-errorid-95105--95106"></a>Kontrola služby Sdílení souborů a tiskáren (ID chyby: 95105 & 95106)
 
-**Kód chyby:** | **Možné příčiny** | **Chyba konkrétní doporučení**
---- | --- | ---
-95103 </br>**Zpráva:** nabízenou instalaci služby Mobility na zdrojovém počítači se nezdařilo s kódem chyby **EP0854**. <br> Na zdrojovém počítači není povolená Windows Management Instrumentation (WMI) nebo existují problémy s připojením k síti mezi procesovým serverem a zdrojovým počítačem.| Rozhraní WMI je blokována v bráně Windows Firewall. | Povolit rozhraní WMI v bráně Windows Firewall. V části **brány Windows Firewall** > **povolit aplikaci nebo funkci průchod bránou Firewall**vyberte **rozhraní WMI pro všechny profily**. </br> Kromě toho zkontrolujte následující [požadavky](vmware-azure-install-mobility-service.md#install-mobility-service-by-push-installation-from-azure-site-recovery) úspěšné dokončení nabízené instalace.|
+Po kontrole připojení Ujistěte se, že je ve vašem virtuálním počítači povolit služby Sdílení souborů a tiskáren.
 
-## <a name="error-95213---protection-could-not-be-enabled-ep0874"></a>Chyba 95213 - ochranu nebylo možné povolené (EP0874)
+Pro **windows 2008 R2 a v předchozích verzích**,
 
-**Kód chyby:** | **Možné příčiny** | **Chyba konkrétní doporučení**
---- | --- | ---
-95213 </br>**Zpráva:** instalace služby Mobility na zdrojový počítač % SourceIP; selhalo s kódem chyby **EP0874**. <br> | Verze operačního systému na zdrojovém počítači není podporovaná. <br>| Ujistěte se, že zdrojový počítač je podporována verze operačního systému. Přečtěte si [systém podpory replikace z](https://aka.ms/asr-os-support). </br> Kromě toho zkontrolujte následující [požadavky](https://aka.ms/pushinstallerror) úspěšné dokončení nabízené instalace.| 
+* Povolit sdílení souborů a tiskáren přes bránu Windows Firewall
+  * Otevřete ovládací panely -> systém a zabezpečení -> Brána Windows Firewall. -> v levém podokně, klikněte na tlačítko Upřesnit nastavení -> klikněte ve stromu konzoly na příchozí pravidla.
+  * Vyhledejte pravidla a sdílení tiskáren (NB-Session-In) a soubor sdílení souborů a tiskáren (SMB-In). Pro každé pravidlo, klikněte pravým tlačítkem na pravidlo a pak klikněte na tlačítko **Povolit pravidlo**.
+* Povolit sdílení pomocí zásad skupiny souborů
+  * Přejít na začátek zadejte gpmc.msc a hledání.
+  * V navigačním podokně otevřete následující složky: zásady místního počítače, konfigurace uživatele, šablony pro správu, součásti Windows a sdílení v síti.
+  * V podokně podrobností klikněte dvakrát na **zabránit uživatelům ve sdílení souborů v rámci jejich profilu**. Zakázání nastavení zásad skupiny a povolení uživatele umožňují sdílet soubory, klikněte na možnost zakázáno. Klikněte na tlačítko OK uložte provedené změny. Další informace, klikněte na tlačítko [tady](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754359(v=ws.10)).
 
+Pro **novější verze**, postupujte podle pokynů uvedených [tady](vmware-azure-install-mobility-service.md#install-mobility-service-by-push-installation-from-azure-site-recovery) umožňující sdílení souborů a tiskáren
 
-## <a name="error-95108---protection-could-not-be-enabled-ep0859"></a>Chyba 95108 - ochranu nebylo možné povolené (EP0859)
+## <a name="windows-management-instrumentation-wmi-configuration-check"></a>Kontrola konfigurace Windows Management Instrumentation (WMI)
 
-**Kód chyby:** | **Možné příčiny** | **Chyba konkrétní doporučení**
---- | --- | ---
-95108 </br>**Zpráva:** nabízenou instalaci služby Mobility na zdrojovém počítači se nezdařilo s kódem chyby **EP0859**. <br>| Buď nejsou správné přihlašovací údaje zadané pro instalaci služby Mobility nebo uživatelský účet nemá dostatečná oprávnění. <br>| Ujistěte se, že jsou zadané přihlašovací údaje **kořenové** přihlašovací údaje účtu. Můžete přidat nebo upravit přihlašovací údaje uživatele, přejděte na konfigurační server a vyberte **Cspsconfigtool** ikonu zástupce na ploše. Vyberte **spravovat účet** můžete přidat nebo upravit přihlašovací údaje.|
+Po kontrole služby souborů a tiskáren, povolte službu WMI přes bránu firewall.
 
-## <a name="error-95265---protection-could-not-be-enabled-ep0902"></a>Chyba 95265 - ochranu nebylo možné povolené (EP0902)
+* V Ovládacích panelech klikněte na tlačítko zabezpečení a pak klikněte na možnost Brána Windows Firewall.
+* Klikněte na změnit nastavení a potom klikněte na kartu výjimky.
+* V okně Výjimky zaškrtněte políčko pro Windows Management Instrumentation (WMI) pro povolení provozu služby WMI přes bránu firewall. 
 
-**Kód chyby:** | **Možné příčiny** | **Chyba konkrétní doporučení**
---- | --- | ---
-95265 </br>**Zpráva:** nabízenou instalaci služby Mobility na zdrojovém počítači byla úspěšná, ale na zdrojovém počítači vyžaduje restartování pro některé změny systému, než se projeví. <br>| Starší verze služby Mobility byl již nainstalován na serveru.| Replikace virtuálního počítače bude bez problémů pokračovat.<br> Restartujte server během dalšího období údržby získáte výhody nových vylepšení služby Mobility.|
+Můžete také povolit provoz WMI přes bránu firewall na příkazovém řádku. Pomocí následujícího příkazu `netsh advfirewall firewall set rule group="windows management instrumentation (wmi)" new enable=yes`
+Další články pro řešení problémů WMI nelze nalézt v následujících článcích.
 
-
-## <a name="error-95224---protection-could-not-be-enabled-ep0883"></a>Chyba 95224 - ochranu nebylo možné povolené (EP0883)
-
-**Kód chyby:** | **Možné příčiny** | **Chyba konkrétní doporučení**
---- | --- | ---
-95224 </br>**Zpráva:** nabízená instalace služby Mobility na zdrojovém počítači % SourceIP; nebyla úspěšná, kód chyby **EP0883**. Restart systému z předchozí instalace nebo aktualizace čeká na vyřízení.| Při odinstalaci starší nebo nekompatibilní verze služby Mobility nebyla restartování systému.| Ujistěte se, že neexistuje žádná verze služby Mobility na serveru. <br> Restartujte server a spusťte znovu úlohu zapnutí ochrany.|
-
-## <a name="resource-to-troubleshoot-push-installation-problems"></a>Prostředek k odstraňování problémů instalace push
-
-#### <a name="troubleshoot-file-and-print-sharing-issues"></a>Řešení potíží s souboru a tisku sdílení problémy
-* [Povolení nebo zakázání sdílení se zásadami skupiny souborů](https://technet.microsoft.com/library/cc754359(v=ws.10).aspx)
-* [Povolit sdílení souborů a tiskáren přes bránu Windows Firewall](https://technet.microsoft.com/library/ff633412(v=ws.10).aspx)
-
-#### <a name="troubleshoot-wmi-issues"></a>Řešení potíží s WMI
 * [Základní testování služby WMI](https://blogs.technet.microsoft.com/askperf/2007/06/22/basic-wmi-testing/)
 * [Řešení problémů WMI](https://msdn.microsoft.com/library/aa394603(v=vs.85).aspx)
 * [Poradce při potížích se skripty WMI a služby rozhraní WMI](https://technet.microsoft.com/library/ff406382.aspx#H22)
+
+## <a name="unsupported-operating-systems"></a>Nepodporovaný operační systémy
+
+Další nejčastější příčinou selhání může být způsobeno nepodporovaný operační systém. Ujistěte se, že používáte podporovanou verzi operačního systému nebo jádra pro úspěšnou instalaci služby Mobility.
+
+Další informace o operačních systémech, které jsou podporovány službou Azure Site Recovery, najdete v našich [dokument matice podpory](vmware-physical-azure-support-matrix.md#replicated-machines).
 
 ## <a name="next-steps"></a>Další postup
 

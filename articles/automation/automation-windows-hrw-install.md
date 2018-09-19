@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/25/2018
+ms.date: 09/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0d98aef3e75130bbab7871733f709bf5e2ffdbcb
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 62c171381201f3cedee869aba301859a7047f5ce
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45541245"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294900"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Nasazení Windows Hybrid Runbook Worker
 
@@ -30,7 +30,7 @@ Instalace a konfigurace Windows Hybrid Runbook Worker, můžete použít dvě me
 Minimální požadavky pro Windows Hybrid Runbook Worker jsou:
 
 * Windows Server 2012 nebo novější.
-* Prostředí Windows PowerShell 4.0 nebo novější ([stáhnout WMF 4.0](https://www.microsoft.com/download/details.aspx?id=40855)). Doporučujeme vám Windows PowerShell 5.1 ([stáhnout WMF 5.1](https://www.microsoft.com/download/details.aspx?id=54616)) pro zvýšení spolehlivosti.
+* Prostředí Windows PowerShell 5.1 nebo novější ([stáhnout WMF 5.1](https://www.microsoft.com/download/details.aspx?id=54616)).
 * Rozhraní .NET framework 4.6.2 nebo novější.
 * Dvě jádra.
 * 4 GB paměti RAM.
@@ -63,8 +63,8 @@ Proveďte následující kroky k automatizaci instalace a konfigurace role Windo
      > [!NOTE]
      > V současné době pouze oblasti služby Automation, které podporuje integraci s Log Analytics jsou **Austrálie – jihovýchod**, **USA – východ 2**, **jihovýchodní Asie**, a  **Západní Evropa**. Pokud váš účet Automation není v těchto oblastech, skript vytvoří pracovní prostor Log Analytics ale vás upozorní, že jej nelze propojit dohromady.
 
-1. V počítači, otevřete **prostředí Windows PowerShell** z **Start** obrazovku v režimu správce.
-1. Z prostředí příkazového řádku Powershellu přejděte do složky, která obsahuje skript, který jste stáhli. Změňte hodnoty pro parametry *- AutomationAccountName*, *- AAResourceGroupName*, *- OMSResourceGroupName*, *- HybridGroupName*, *- SubscriptionId*, a *- WorkspaceName*. Potom spusťte skript.
+2. V počítači, otevřete **prostředí Windows PowerShell** z **Start** obrazovku v režimu správce.
+3. Z prostředí příkazového řádku Powershellu přejděte do složky, která obsahuje skript, který jste stáhli. Změňte hodnoty pro parametry *- AutomationAccountName*, *- AAResourceGroupName*, *- OMSResourceGroupName*, *- HybridGroupName*, *- SubscriptionId*, a *- WorkspaceName*. Potom spusťte skript.
 
      > [!NOTE]
      > Budete vyzváni k ověření pomocí Azure po spuštění skriptu. Můžete *musí* Přihlaste se pomocí účtu, který je členem role správců předplatného a spolusprávcem předplatného.
@@ -75,9 +75,9 @@ Proveďte následující kroky k automatizaci instalace a konfigurace role Windo
    -SubscriptionId <AzureSubscriptionId> -WorkspaceName <NameOfLogAnalyticsWorkspace>
    ```
 
-1. Budete vyzváni k instalaci balíčku NuGet svůj souhlas, a budete vyzváni k ověření pomocí přihlašovacích údajů Azure.
+4. Budete vyzváni k instalaci balíčku NuGet svůj souhlas, a budete vyzváni k ověření pomocí přihlašovacích údajů Azure.
 
-1. Po dokončení skriptu **skupiny hybridních pracovních procesů** stránka zobrazuje nové skupiny a počet členů. Pokud je existující skupiny, se zvýší počet členů. Můžete vybrat skupinu ze seznamu na **skupiny hybridních pracovních procesů** stránku a vybrat **hybridní pracovní procesy** dlaždici. Na **hybridní pracovní procesy** stránku, uvidíte každého člena skupiny uvedeny.
+5. Po dokončení skriptu **skupiny hybridních pracovních procesů** stránka zobrazuje nové skupiny a počet členů. Pokud je existující skupiny, se zvýší počet členů. Můžete vybrat skupinu ze seznamu na **skupiny hybridních pracovních procesů** stránku a vybrat **hybridní pracovní procesy** dlaždici. Na **hybridní pracovní procesy** stránku, uvidíte každého člena skupiny uvedeny.
 
 ### <a name="manual-deployment"></a>Ruční nasazení
 

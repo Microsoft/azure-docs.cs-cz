@@ -1,75 +1,69 @@
 ---
-title: Implementace převzetí služeb při selhání streamování pomocí služby Azure Media Services | Microsoft Docs
+title: Provádění převzetí služeb při selhání streamování pomocí služby Azure Media Services | Dokumentace Microsoftu
 description: Toto téma ukazuje, jak implementovat převzetí služeb při selhání, streamování scénář.
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
-ms.assetid: fc45d849-eb0d-4739-ae91-0ff648113445
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2017
+ms.date: 09/17/2018
 ms.author: juliako
-ms.openlocfilehash: 9ea18d4131705ac1e7ba12ed6af6d8202e766abd
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 618316b6b5979c65bc8906ea7d07c4f4fdf0930d
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788855"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124606"
 ---
-# <a name="implement-failover-streaming-with-azure-media-services"></a>Implementace převzetí služeb při selhání streamování pomocí služby Azure Media Services
+# <a name="implement-failover-streaming-with-azure-media-services"></a>Provádění převzetí služeb při selhání streamování pomocí služby Azure Media Services
 
-Tento návod ukazuje, jak kopírovat obsah (objektů BLOB) z jednoho majetku do jiné ke zpracování redundance pro streaming na vyžádání. Tento scénář je vhodný, pokud chcete nastavit Azure Content Delivery Network k převzetí služeb při selhání mezi dvěma datovými centry, v případě výpadku jednoho datového centra. Tento návod používá Azure Media Services SDK, REST API služby Azure Media Services a sady SDK úložiště Azure za účelem ukázky následující úlohy:
+Tento návod ukazuje, jak kopírovat obsah (objektů BLOB) z jednoho prostředku do jiného ke zpracování redundance pro streamování na vyžádání. Tento scénář je vhodný, pokud budete chtít nastavit síť Azure Content Delivery Network pro převzetí služeb při selhání mezi dvěma datacentry, i v případě výpadku v jednom datacentru. Tento návod používá Azure Media Services SDK, REST API služby Azure Media Services a sady SDK služby Azure Storage, na které si předvedeme následující úkoly:
 
-1. Nastavit účet Media Services v "Datového centra a"
-2. Nahrajte soubor mezzanine do zdroje asset.
-3. Zakódujte asset do více chvíli míra MP4 souborů. 
-4. Vytvořte podpis sdíleného přístupu jen pro čtení. Toto je pro prostředek zdroj tak, aby měl přístup pro čtení ke kontejneru v účtu úložiště, který je přidružený asset zdroje.
-5. Získání názvu kontejneru prostředku zdroje z Lokátor podpis sdíleného přístupu jen pro čtení, vytvořili v předchozím kroku. To je nezbytné pro kopírování objektů BLOB mezi účty úložiště (vysvětluje dále v tomto tématu.)
-6. Vytvořte Lokátor původu pro prostředek, který byl vytvořen kódování úloh. 
+1. Nastavení účtu Azure Media Services v "Datovém centru společnosti A."
+2. Odeslat soubor mezzanine do assetu zdroje.
+3. Kódování prostředku do více bit míra MP4 souborů. 
+4. Vytvoření lokátoru jen pro čtení sdíleného přístupového podpisu. Toto je zdroj Asset mít přístup pro čtení do kontejneru v účtu úložiště, který je přidružený asset zdroje.
+5. Získání názvu kontejneru zdrojového prostředku z lokátoru jen pro čtení sdíleného přístupového podpisu vytvořili v předchozím kroku. To je nezbytné pro kopírování objektů BLOB mezi účty úložiště (vysvětleno dále v tomto tématu.)
+6. Vytvořte Lokátor původu pro prostředek, který vytvořil úlohu kódování. 
 
-Potom pro zpracování převzetí služeb při selhání:
+Poté ke zpracování převzetí služeb při selhání:
 
-1. Nastavit účet Media Services v "Data Center B."
-2. Vytvoření prostředku prázdný cíl v cílovém účtu Media Services.
-3. Vytvořte Lokátor podpis zápisu sdíleného přístupu. Toto je pro prostředek prázdný cíl mít oprávnění k zápisu do kontejneru v cílový účet úložiště, který je přidružený asset cíl.
-4. Pomocí sady SDK úložiště Azure zkopírovat objekty BLOB (soubory asset) mezi zdrojový účet úložiště "Datového centra A" a cílový účet úložiště v "Data Center B." Tyto účty úložiště jsou spojeny s prostředky, které vás zajímají.
-5. Přidružte objekty BLOB (soubory prostředku), které byly zkopírovány do cílový kontejner objektů blob s cílový prostředek. 
-6. Vytvořte Lokátor původu pro prostředek v "Data Center B" a zadejte ID Lokátor, který byl vytvořen pro prostředek v "Datového centra a"
+1. Nastavení účtu Azure Media Services v "Data Center B."
+2. Vytvořte asset prázdný cíl v cílovém účtu Media Services.
+3. Vytvořte Lokátor podpis zápisu sdíleného přístupu. Toto je pro prostředek prázdný cíl mít oprávnění k zápisu do kontejneru v účtu cílového úložiště, který je přidružený cílový prostředek.
+4. Kopírování objektů BLOB (soubory prostředků) mezi zdrojového účtu úložiště v "Datového centra A" a cílový účet úložiště v "Data Center B." pomocí sady SDK služby Azure Storage Tyto účty úložiště jsou spojeny s prostředky, které vás zajímají.
+5. Přidružte objektů BLOB (soubory prostředků), které byly zkopírovány do kontejneru objektů blob cílové cíl assetu. 
+6. Vytvořte Lokátor původu pro prostředek v "Data Center B" a zadejte ID Lokátor, který byl vygenerován pro prostředek v "Datového centra a"
 
-To vám dává adresy URL streamování kde relativní cesty adresy URL jsou stejné (jen základní adresy URL se liší). 
+Získáte tak adresy URL pro streamování kde relativní cesty adresy URL jsou stejné (pouze základní adresy URL se liší). 
 
-Zpracovat žádné výpadky, potom můžete vytvořit Content Delivery Network nad těchto lokátory původu. 
+Potom pro zpracování nedošlo k výpadkům, můžete vytvořit Content Delivery Network nad tyto lokátory původu. 
 
 Platí následující aspekty:
 
-* Aktuální verze sady Media Services SDK nepodporuje prostřednictvím kódu programu generování IAssetFile informace, které by prostředek přidružit soubory prostředků. Místo toho k tomu použijte CreateFileInfos Media Services REST API. 
-* Šifrování úložiště prostředky (AssetCreationOptions.StorageEncrypted) nejsou podporovány pro replikaci (protože šifrovací klíč se liší v oba účty služby Media Services). 
+* Aktuální verze sady SDK služby Media nepodporuje prostřednictvím kódu programu generování IAssetFile informace, které by prostředek přidružení souborů prostředků. K tomu použijte místo toho rozhraní REST API CreateFileInfos Media Services. 
+* Šifrování úložiště prostředků (AssetCreationOptions.StorageEncrypted) nejsou podporovány pro replikaci (protože šifrovacího klíče se liší v obou účtů Media Services). 
 * Pokud chcete využít výhod dynamického balení, ujistěte se, že koncový bod streamování, ze kterého chcete Streamovat obsah je v **systémem** stavu.
 
-> [!NOTE]
-> Zvažte použití Media Services [Replikátor nástroj](http://replicator.codeplex.com/) jako alternativu k implementaci převzetí služeb při selhání, streamování scénář ručně. Tento nástroj umožňuje replikovat prostředky pomocí dva účty služby Media Services.
-> 
-> 
-
 ## <a name="prerequisites"></a>Požadavky
-* Dva účty služby Media Services v nových nebo existujících předplatného Azure. V tématu [účet služeb postup vytvoření média](media-services-portal-create-account.md).
+* Dva účty Media Services v nové nebo stávající předplatné Azure. Zobrazit [účet služeb vytvoření média](media-services-portal-create-account.md).
 * Operační systém: Windows 7, Windows 2008 R2 nebo Windows 8.
-* Rozhraní .NET framework 4.5 nebo rozhraní .NET Framework 4.
-* Visual Studio 2010 SP1 nebo novější verzi (Professional, Premium, Ultimate nebo Express).
+* Rozhraní .NET framework 4.5 nebo .NET Framework 4.
+* Visual Studio 2010 SP1 nebo novější verze (Professional, Premium, Ultimate nebo Express).
 
 ## <a name="set-up-your-project"></a>Nastavení projektu
-V této části vytvořte a nastavte projekt konzolové aplikace v C#.
+V této části vytvoříte a nastavte projekt konzolové aplikace jazyka C#.
 
-1. Vytvořte nové řešení, která obsahuje projekt konzolové aplikace v C# pomocí sady Visual Studio. Zadejte **HandleRedundancyForOnDemandStreaming** pro název a pak klikněte na tlačítko **OK**.
-2. Vytvořte **SupportFiles** složky na stejné úrovni jako **HandleRedundancyForOnDemandStreaming.csproj** souboru projektu. V části **SupportFiles** složky, vytvořte **OutputFiles** a **MP4Files** složky. Zkopírujte soubor .mp4 do **MP4Files** složky. (V tomto příkladu **BigBuckBunny.mp4** soubor je používán.) 
-3. Použití **Nuget** přidat ke službě Media Services související s odkazy na knihovny DLL. V **Visual Studio hlavní nabídky**, vyberte **nástroje** > **Správce balíčků knihoven** > **Konzola správce balíčků**. V okně konzoly zadejte **Install-Package windowsazure.mediaservices**, a stiskněte klávesu Enter.
-4. Přidejte další reference, které jsou požadovány pro tento projekt: System.Configuration System.Runtime.Serialization a System.Web.
-5. Nahraďte **pomocí** příkazy, které byly přidány do **Programs.cs** soubor ve výchozím nastavení s následující výsledky:
+1. Vytvořit nové řešení, které obsahuje projekt konzolové aplikace jazyka C# pomocí sady Visual Studio. Zadejte **HandleRedundancyForOnDemandStreaming** pro název a pak klikněte na tlačítko **OK**.
+2. Vytvořte **SupportFiles** složky na stejné úrovni jako **HandleRedundancyForOnDemandStreaming.csproj** souboru projektu. V části **SupportFiles** složku, vytvořte **OutputFiles** a **MP4Files** složek. Zkopírujte si soubor .mp4 do **MP4Files** složky. (V tomto příkladu **BigBuckBunny.mp4** soubor je používán.) 
+3. Použití **Nuget** přidání souvisejících s odkazy na knihovny DLL ke službě Media Services. V **Visual Studio hlavní nabídky**vyberte **nástroje** > **Správce balíčků knihoven** > **Konzola správce balíčků**. V okně konzoly zadejte **Install-Package windowsazure.mediaservices**, a stiskněte klávesu Enter.
+4. Přidat další odkazy, které jsou požadovány pro tento projekt: System.Configuration System.Runtime.Serialization a System.Web.
+5. Nahraďte **pomocí** příkazy, které jste přidali **Programs.cs** ve výchozím nastavení se následující dotazy:
    
         using System;
         using System.Configuration;
@@ -88,7 +82,7 @@ V této části vytvořte a nastavte projekt konzolové aplikace v C#.
         using Microsoft.WindowsAzure.Storage;
         using Microsoft.WindowsAzure.Storage.Blob;
         using Microsoft.WindowsAzure.Storage.Auth;
-6. Přidat **appSettings** části k **.config** souboru a aktualizace hodnoty na základě vašeho Media Services a úložiště klíč a název hodnoty. 
+6. Přidat **appSettings** části **.config** souboru a aktualizaci hodnoty založenou na vaše služby Media Services a úložiště klíčů a hodnot. 
    
         <appSettings>
           <add key="MediaServicesAccountNameSource" value="Media-Services-Account-Name-Source"/>
@@ -101,10 +95,10 @@ V této části vytvořte a nastavte projekt konzolové aplikace v C#.
           <add key="MediaServicesStorageAccountKeyTarget" value=" Media-Services-Storage-Account-Key-Target" />
         </appSettings>
 
-## <a name="add-code-that-handles-redundancy-for-on-demand-streaming"></a>Přidejte kód, který zpracovává redundance pro streaming na vyžádání
-V této části vytvoříte schopnost zvládat redundance.
+## <a name="add-code-that-handles-redundancy-for-on-demand-streaming"></a>Přidejte kód, který zpracovává redundance pro streamování na vyžádání
+V této části vytvoříte zpracovávat redundance.
 
-1. Přidejte následující pole úrovni tříd do třídy Program.
+1. Přidejte následující pole třídu úrovně do třídy Program.
        
         // Read values from the App.config file.
         private static readonly string MediaServicesAccountNameSource = ConfigurationManager.AppSettings["MediaServicesAccountNameSource"];
@@ -131,7 +125,7 @@ V této části vytvoříte schopnost zvládat redundance.
         static private MediaServicesCredentials _cachedCredentialsSource = null;
         static private MediaServicesCredentials _cachedCredentialsTarget = null;
 
-2. Nahraďte definici výchozí hlavní metoda s následujícím kódem. Metoda definice, které se nazývají z hlavní jsou definovány níže.
+2. Nahraďte následující definici metody Main výchozí. Definice metod, které se volají z hlavní jsou definována níže.
         
         static void Main(string[] args)
         {
@@ -209,10 +203,10 @@ V této části vytvoříte schopnost zvládat redundance.
                 writeSasLocator.Delete();
         }
 
-3. Následující definice metod jsou volat z hlavní.
+3. Následující definice metod jsou volány z hlavní.
 
     >[!NOTE]
-    >Existuje omezení 1 000 000 zásad pro různé zásady Media Services (například pro Lokátor zásady nebo ContentKeyAuthorizationPolicy). Pokud používáte vždy pomocí stejné dny a oprávnění k přístupu, měli byste použít stejné ID zásad. Například použijte stejné ID pro zásady pro lokátory, které jsou určeny k zůstat na místě po dlouhou dobu (bez odeslání zásady). Další informace najdete v tématu [v tomto tématu](media-services-dotnet-manage-entities.md#limit-access-policies).
+    >Je stanovený limit 1 000 000 různých zásad Media Services (třeba zásady lokátoru nebo ContentKeyAuthorizationPolicy). Pokud vždycky používáte stejné dny a oprávnění k přístupu, měli byste použít stejné ID zásad. Například použijte stejné ID zásady pro lokátory, které mají zůstat na místě po dlouhou dobu (zásady bez odesílání). Další informace najdete v tématu [v tomto tématu](media-services-dotnet-manage-entities.md#limit-access-policies).
 
         public static IAsset CreateAssetAndUploadSingleFile(CloudMediaContext context,
                                                         AssetCreationOptions assetCreationOptions,
@@ -941,7 +935,7 @@ V této části vytvoříte schopnost zvládat redundance.
         }
 
 ## <a name="next-steps"></a>Další postup
-Nyní můžete traffic Manageru ke směrování žádostí dvou Datacenter a proto převzetí služeb při selhání v případě žádné výpadky.
+Nyní můžete traffic Manageru směrovat požadavky mezi dvěma datacentry a proto převzetí služeb při selhání v případě nedošlo k výpadkům.
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

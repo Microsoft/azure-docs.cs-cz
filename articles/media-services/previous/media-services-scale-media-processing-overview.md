@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/30/2018
 ms.author: juliako
-ms.openlocfilehash: 81fab8903c0101d0e4aae8a392f05129651cd762
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: a17c08cc66b13a5ec15d32be7e9ec738da73e219
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39369139"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129050"
 ---
 # <a name="scaling-media-processing-overview"></a>Přehled škálování zpracování médií
 Tato stránka poskytuje přehled toho, jak a proč ke škálování zpracování médií. 
@@ -35,7 +35,7 @@ V následující tabulce umožňuje rozhodování při výběru mezi různými r
 | Scénáře | **S1** | **S2** | **S3** |
 | --- | --- | --- | --- |
 | Zamýšlený případ použití |Kódování s jednou přenosovou rychlostí. <br/>Soubory na SD nebo nižší rozlišení, není čas citlivé, s nízkými náklady. |S jednou přenosovou rychlostí a více s přenosovou rychlostí s kódováním.<br/>Normální využívání SD a HD, High Density kódování. |S jednou přenosovou rychlostí a více s přenosovou rychlostí s kódováním.<br/>Úplné HD, High Density a 4 kB videa s rozlišením. Čas, po vyřízení citlivé a rychlejší kódování. |
-| Srovnávací test |Kódování s jednou přenosovou rychlostí soubor MP4, ve stejném rozlišení trvá přibližně 11 minut. |Kódování pomocí "H264 s jednou přenosovou rychlostí 720p" přednastavení trvá přibližně 5 minut.<br/><br/>Kódování pomocí "H264 Multiple Bitrate 720p" přednastavení trvá přibližně 11.5 minut. |Kódování pomocí "H264 s jednou přenosovou rychlostí 1080p" přednastavení trvá přibližně 2.7 minut.<br/><br/>Kódování pomocí "H264 Multiple Bitrate 1080p" přednastavení trvá přibližně 5.7 minut. |
+| Srovnávací test pro video 5 minut |Kódování s jednou přenosovou rychlostí soubor MP4, ve stejném rozlišení trvá přibližně 11 minut. |Kódování pomocí "H264 s jednou přenosovou rychlostí 720p" přednastavení trvá přibližně 5 minut.<br/><br/>Kódování pomocí "H264 Multiple Bitrate 720p" přednastavení trvá přibližně 11.5 minut. |Kódování pomocí "H264 s jednou přenosovou rychlostí 1080p" přednastavení trvá přibližně 2.7 minut.<br/><br/>Kódování pomocí "H264 Multiple Bitrate 1080p" přednastavení trvá přibližně 5.7 minut. |
 
 
 ## <a name="considerations"></a>Požadavky

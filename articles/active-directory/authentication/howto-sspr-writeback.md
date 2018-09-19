@@ -10,28 +10,28 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: e613ff742096077fe1765d4b855b6c7d409cc228
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 1ae74f7c43e763962224683954b28e5941136c08
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39158943"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295814"
 ---
 # <a name="how-to-configure-password-writeback"></a>Postupy: Konfigurace zpětného zápisu hesla
 
-Doporučujeme používat funkci Automatické aktualizace [Azure AD Connect](./../connect/active-directory-aadconnect-get-started-express.md) při použití zpětný zápis hesla.
+Doporučujeme používat funkci Automatické aktualizace [Azure AD Connect](../hybrid/how-to-connect-install-express.md) při použití zpětný zápis hesla.
 
-Následující postup předpokládá, že jste už nakonfigurovali Azure AD Connect ve vašem prostředí s použitím [Express](./../connect/active-directory-aadconnect-get-started-express.md) nebo [vlastní](./../connect/active-directory-aadconnect-get-started-custom.md) nastavení.
+Následující postup předpokládá, že jste už nakonfigurovali Azure AD Connect ve vašem prostředí s použitím [Express](../hybrid/how-to-connect-install-express.md) nebo [vlastní](../hybrid/how-to-connect-install-custom.md) nastavení.
 
-1. Ke konfiguraci a povolení zpětného zápisu hesla, přihlaste se k serveru Azure AD Connect a spustit **Azure AD Connect** Průvodce konfigurací.
-2. Na **úvodní** stránce **konfigurovat**.
-3. Na **další úkoly** stránce **přizpůsobit možnosti synchronizace**a pak vyberte **Další**.
-4. Na **připojit ke službě Azure AD** stránky, zadejte přihlašovací údaje globálního správce a pak vyberte **Další**.
-5. Na **připojení adresáře** a **domén/organizačních jednotek** filtrování stránky, vyberte **Další**.
-6. Na **volitelné funkce** stránce, zaškrtněte políčko vedle položky **zpětný zápis hesla** a vyberte **Další**.
+1. Pokud chcete zpětný zápis hesla nakonfigurovat a zapnout, přihlaste se ke svému serveru Azure AD Connect a spusťte průvodce konfigurací služby **Azure AD Connect**.
+2. Na **úvodní** stránce vyberte **Konfigurovat**.
+3. Na stránce **Další úlohy** vyberte **Přizpůsobit možnosti synchronizace** a potom vyberte **Další**.
+4. Na stránce **Připojení k Azure AD** zadejte přihlašovací údaje globálního správce a pak vyberte **Další**.
+5. Na stránkách filtrování **Připojení adresářů** a **Doména či organizační jednotka** vyberte **Další**.
+6. Na stránce **Volitelné funkce** vyberte políčko vedle **Zpětný zápis hesla** a vyberte **Další**.
    ![Povolení zpětného zápisu hesla ve službě Azure AD Connect][Writeback]
-7. Na **připraveno ke konfiguraci** stránce **konfigurovat** a počkejte na dokončení procesu.
-8. Až se dokončit konfiguraci, vyberte **ukončovací**.
+7. Na stránce **Připraveno ke konfiguraci** vyberte **Konfigurovat** a počkejte na dokončení procesu.
+8. Až se konfigurace dokončí, vyberte **Ukončit**.
 
 Související se zpětným zápisem hesla, běžné úloh odstraňování potíží naleznete v části [řešení potíží se zpětným zápisem hesla](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) v našem článku Poradce při potížích.
 

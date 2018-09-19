@@ -1,32 +1,32 @@
 ---
-title: Přehledné image | Microsoft Docs
-titleSuffix: Bing Web Search APIs - Cognitive Services
-description: Ukazuje, jak používat rozhraní API služby Bing Image Search získat další informace o bitovou kopii.
+title: Získejte přehledy obrázků - API pro vyhledávání obrázků Bingu
+titleSuffix: Azure Cognitive Services
+description: Další informace o použití rozhraní API Bingu pro vyhledávání obrázků, chcete-li získat další informace o obrázku.
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
+manager: cgronlun
 ms.assetid: 0BCD936E-D4C0-472D-AE40-F4B2AB6912D5
 ms.service: cognitive-services
 ms.component: bing-image-search
 ms.topic: article
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: f651d9f773f475e633aed698e134aa6a7c07393b
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 280c646a3265ff7ab9a3d32412a2be2e3989e22e
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343434"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297465"
 ---
-# <a name="get-insights-about-an-image"></a>Získat informace o obrázku
+# <a name="get-image-insights-with-the-bing-image-search-api"></a>Získání přehledů image pomocí rozhraní API Bingu pro vyhledávání obrázků
 
 > [!IMPORTANT]
-> Místo použití nebo bitové kopie nebo podrobnosti koncového bodu získáte přehledy bitové kopie, měli byste použít [Visual vyhledávání](../bing-visual-search/overview.md) vzhledem k tomu, že poskytuje komplexní přehled.
+> Namísto použití podrobnosti endpoint/imagí a získat přehledy obrázků, byste měli použít [vizuálního vyhledávání](../bing-visual-search/overview.md) vzhledem k tomu, že nabízí komplexnější přehledy.
 
 
-Každý image obsahuje token statistiky, který vám pomůže získat informace o bitové kopii. Například můžete získat kolekci související Image, webové stránky, které zahrnují bitovou kopii nebo seznam obchodníků níž můžete zakoupit produktu znázorněno na obrázku.  
-  
-Pokud chcete získat přehled o bitovou kopii, zachycení image [imageInsightsToken](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#image-imageinsightstoken) tokenu v odpovědi. 
+Každý image obsahuje token insights, který vám pomůže získat informace o imagi. Například můžete získat kolekce imagí souvisejících, webové stránky, které obsahují image, nebo seznam si obchodníci můžou kterého si můžete koupit produktu je znázorněno na obrázku.  
+
+Chcete-li získat přehled o bitovou kopii, zachycení image [imageInsightsToken](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#image-imageinsightstoken) tokenu v odpovědi.
 
 ```json
 "value" : [{
@@ -41,11 +41,11 @@ Pokud chcete získat přehled o bitovou kopii, zachycení image [imageInsightsTo
 }],
 ```
 
-V dalším kroku volání koncový bod podrobnosti bitové kopie a nastavení [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#insightstoken) parametr k tokenu v dotazu `imageInsightsToken`.  
+V dalším kroku volání Image podrobnosti koncového bodu a nastavit [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#insightstoken) parametr k tokenu v dotazu `imageInsightsToken`.  
 
-Chcete-li zadat přehledy, které chcete získat, nastavte `modules` parametr dotazu. Chcete-li přehledné, nastavte `modules` k `All`. Chcete-li získat pouze přehledy titulku a kolekce, nastavte `modules` k `Caption%2CCollection`. Úplný seznam možných statistiky, najdete v části [moduly](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#modulesrequested). Ne všechny statistiky jsou k dispozici pro všechny Image. Odpověď obsahuje všechny přehledy, které jste požádali, pokud je k dispozici.
+K určení přehledy, které chcete načíst, nastavit `modules` parametr dotazu. Chcete-li získat všechny přehledy, nastavte `modules` k `All`. Chcete-li získat jenom titulek a shromažďování přehledů, nastavte `modules` k `Caption%2CCollection`. Úplný seznam možných insights najdete v tématu [moduly](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#modulesrequested). Ne všechny přehledy jsou k dispozici pro všechny bitové kopie. Odpověď obsahuje všechny přehledy, které jste požádali, pokud je k dispozici.
 
-Následující příklad požádá o všechny dostupné statistiky pro předchozí bitovou kopii.
+Následující příklad požádá o všechny přehledy k dispozici pro na předchozím obrázku.
 
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/details?q=sailing+dinghy&insightsToken=mid_D6426898706EC7...&modules=All&mkt=en-us HTTP/1.1  
@@ -55,13 +55,13 @@ X-MSEdge-ClientIP: 999.999.999.999
 X-Search-Location: lat:47.60357;long:-122.3295;re:100  
 X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>  
 Host: api.cognitive.microsoft.com
-``` 
+```
 
-## <a name="getting-insights-of-a-known-image"></a>Analyzovat známé bitové kopie
+## <a name="getting-insights-of-a-known-image"></a>Získávají se přehledy známé bitové kopie
 
-Pokud máte adresu URL pro bitovou kopii, kterou chcete získat informace o, použijte [imgUrl](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imgurl) parametr místo dotazu [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#insightstoken) parametru určete bitovou kopii. Nebo, pokud je soubor bitové kopie, může odesílat binárního souboru bitové kopie v textu požadavku POST. Pokud používáte požadavek POST `Content-Type` záhlaví musí být nastavena na `multipart/data-form`. U obou možností nesmí překročit velikost obrázku 1 MB.  
-  
-Pokud máte adresu URL do bitové kopie, následující příklad ukazuje, jak požádat o Statistika bitové kopie.
+Pokud máte adresu URL pro bitovou kopii, kterou chcete získat poznatky o, použijte [imgUrl](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imgurl) parametr místo dotazu [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#insightstoken) parametr určete bitovou kopii. Nebo, pokud máte soubor bitové kopie, může odesílat binární soubor bitové kopie v těle požadavku POST. Pokud používáte požadavek POST `Content-Type` záhlaví musí být nastaveno na `multipart/data-form`. Obě možnosti velikost bitové kopie nesmí překročit 1 MB.  
+
+Pokud máte adresu URL obrázku, následující příklad ukazuje, jak požádat o poznatky o bitovou kopii.
 
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/details?q=sailing+dinghy&imgUrl=https%3A%2F%2Fwww.mydomain.com%2Fimages%2Fsunflower.png&modules=All&mkt=en-us HTTP/1.1  
@@ -71,12 +71,12 @@ X-MSEdge-ClientIP: 999.999.999.999
 X-Search-Location: lat:47.60357;long:-122.3295;re:100  
 X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>  
 Host: api.cognitive.microsoft.com
-``` 
-  
-## <a name="getting-all-image-insights"></a>Analyzovat bitové kopie  
+```
 
-Chcete-li požádat o všechny statistiky bitové kopie, nastavte [moduly](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#modulesrequested) parametr k dotazu `All`. Chcete-li získat související hledání, žádost musí obsahovat řetězec dotazu uživatele. Tento příklad ukazuje, pomocí [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#insightstoken) bitovou kopii.  
-  
+## <a name="getting-all-image-insights"></a>Získání všech přehledy obrázků  
+
+Chcete-li požádat o všechny přehledy bitovou kopii, nastavte [moduly](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#modulesrequested) parametr do dotazu `All`. Chcete-li získat související hledání, žádost musí obsahovat řetězec dotazu. Tento příklad ukazuje použití [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#insightstoken) k zadání image.  
+
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/details?q=sailing+dinghy&insightsToken=mid_68364D764J...&modules=All&mkt=en-us HTTP/1.1  
 Ocp-Apim-Subscription-Key: 123456789ABCDE  
@@ -87,8 +87,8 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-Objekt nejvyšší úrovně je [ImageInsightsResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imageinsightsresponse) objektu místo [bitové kopie](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#images) objektu.  
-  
+Objekt nejvyšší úrovně je [ImageInsightsResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imageinsightsresponse) místo objektu [Imagí](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#images) objektu.  
+
 ```json
 {
     "_type" : "ImageInsights",
@@ -172,15 +172,15 @@ Objekt nejvyšší úrovně je [ImageInsightsResponse](https://docs.microsoft.co
 }
 ```
 
-## <a name="recognizing-entities-in-an-image"></a>Rozpozná entity v obrázku  
+## <a name="recognizing-entities-in-an-image"></a>Rozpoznávání entit v obrázku  
 
-Funkce rozpoznávání entita identifikuje entity v bitové kopii, aktuálně jenom lidé. Chcete-li identifikovat entity v bitovou kopii, nastavte [moduly](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#modulesrequested) parametr k dotazu `RecognizedEntities`.  
+Funkce rozpoznávání entit identifikuje entity v bitové kopie, aktuálně jenom lidé. K identifikaci entity v bitovou kopii, nastavte [moduly](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#modulesrequested) parametr do dotazu `RecognizedEntities`.  
 
 > [!NOTE]
-> Tento modul nelze zadat s ostatní moduly. Pokud zadáte tento modul jiné moduly, odpověď neobsahuje rozpoznaný entity.  
-  
-Následující ukazuje, jak určit bitovou kopii pomocí [imgUrl](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imgurl) parametr. Mějte na paměti, na adresu URL kódování parametry dotazu.  
-  
+> Tento modul nelze zadat s ostatní moduly. Pokud zadáte tento modul s ostatními moduly, odpověď neobsahuje rozpoznaný entity.  
+
+Následující ukazuje, jak pomocí určete bitovou kopii [imgUrl](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imgurl) parametru. Pamatovat si adresy URL kódování parametry dotazu.  
+
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/details?q=faith+hill&insightsToken=mid_68364D764J...&modules=RecognizedEntities&mkt=en-us HTTP/1.1  
 Ocp-Apim-Subscription-Key: 123456789ABCDE  
@@ -190,9 +190,9 @@ X-Search-Location: lat:47.60357;long:-122.3295;re:100
 X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>  
 Host: api.cognitive.microsoft.com
 ```  
-  
-Následující obrázek znázorňuje odpověď na předchozí požadavek. Vzhledem k tomu, že bitová kopie obsahuje dvou osob, odpověď identifikuje oblast pro každou osobu. V tomto případě byly ve skupině CelebrityAnnotations a CelebRecognitionAnnotations rozpoznány osoby. Bing obsahuje seznam uživatelů v každé skupině podle pravděpodobnost, že budou odpovídat osoby v původní bitové kopie. V seznamu je v sestupném pořadí spolehlivosti. Skupina CelebRecognitionAnnotations poskytuje nejvyšší úroveň spolehlivosti správnost shody.  
-  
+
+Následující příklad ukazuje odpověď na předchozí požadavek. Vzhledem k tomu, že bitová kopie obsahuje dva uživatelé, odpověď identifikuje oblast pro každou osobu. V takovém případě lidé nebyly rozpoznány ve skupinách CelebrityAnnotations a CelebRecognitionAnnotations. Bing obsahuje seznam uživatelů v každé skupině na základě pravděpodobnosti, že budou odpovídat osoby v původní bitové kopie. V seznamu je v sestupném pořadí výrazné zvýšení sebedůvěry. Skupina CelebRecognitionAnnotations poskytuje nejvyšší úroveň spolehlivosti, že shoda není správný.  
+
 ```json
 {
     "_type" : "ImageInsights",
@@ -211,29 +211,29 @@ Následující obrázek znázorňuje odpověď na předchozí požadavek. Vzhled
     }
 }
 ```
-  
-`region` Pole identifikuje oblasti obrázku kde Bing rozpoznána entity. Pro osoby představuje oblast obličeje.  
-  
-Hodnoty rámeček jsou relativní vzhledem k šířce a výšce původní bitové kopie a jsou v rozsahu 0,0 až 1,0. Například pokud bitovou kopii je 300 x 200 a oblasti top, rohu je v bodě (10, 20) a dolní pravém rohu je v bodě (290, 150), pak normalizovaný rámeček je:  
-  
--   Doleva: 10 / 300 = 0.03333...  
--   Horní: 20 / 200 = 0,1  
--   Práva: 290 / 300 = 0.9667...  
--   Dolní: 150 / 200 = 0,75  
-  
-Můžete použít oblast, která vrátí Bing v následných Statistika volání. Chcete-li například získat vizuálně podobné obrázky rozpoznaný entity. Další informace najdete v tématu [oříznutí obrázků pro použití s vizuálně podobné a moduly rozpoznávání Entity](#croppingimages). Následující ukazuje mapování mezi pole oblast a parametry dotazu, že byste použili k oříznutí obrázků.  
-  
--   Se mapuje na levé straně [kalendáře](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#cal)  
+
+`region` Pole označuje oblast obrázku, kde Bingu rozpoznán entity. U lidí představuje oblast tváře osoby.  
+
+Hodnoty obdélník jsou relativní vzhledem k šířku a výšku původní bitové kopie a jsou v rozmezí 0,0 až 1,0. Například pokud bitová kopie je 300 x 200 a zároveň klauzuli top oblasti, levém rohu se v okamžiku (10, 20) a dolního okraje, pravém rohu v okamžiku (290, 150), pak normalizované obdélníku je:  
+
+-   Left: 10 / 300 = 0.03333...  
+-   TOP: 20 / 200 = 0,1  
+-   Right: 290 / 300 = 0.9667...  
+-   Bottom: 150 / 200 = 0,75.  
+
+Můžete použít oblast, která vrací Bingu ve voláních další přehledy. Chcete-li například získat vizuálně podobné obrázky rozpoznaný entity. Další informace najdete v tématu [oříznutí Image na použití s moduly rozpoznávání entit a vizuálně podobné](#croppingimages). Následuje ukázka mapování polí oblast a parametry dotazu, můžete použít k oříznutí obrázků.  
+
+-   Vlevo se mapuje na [cal](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#cal)  
 -   TOP mapuje [cat](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#cat)  
--   Mapuje vpravo [car](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#car)  
--   Dolů mapuje [souboru cab](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#cab)  
+-   Vpravo se mapuje na [Auto](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#car)  
+-   Mapuje se na dolní [souboru cab](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#cab)  
 
-## <a name="finding-visually-similar-images"></a>Hledání vizuálně podobné bitové kopie  
+## <a name="finding-visually-similar-images"></a>Hledání vizuálně podobné obrázky  
 
-Chcete-li najít bitové kopie, které jsou vizuálně podobná původní bitové kopie, nastavte [moduly](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#modulesrequested) parametr k SimilarImages dotazu.  
-  
-Následující požadavek ukazuje, jak získat vizuálně podobné bitové kopie. V požadavku použita [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#insightstoken) dotaz k identifikaci původní bitové kopie. Pokud chcete zlepšit relevance, by měla obsahovat řetězec dotazu uživatele.  
-  
+Chcete-li najít Image, které jsou vizuálně podobné původní bitové kopie, nastavte [moduly](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#modulesrequested) parametr k SimilarImages dotazu.  
+
+Následující požadavek ukazuje, jak získat vizuálně podobné obrázky. Požadavek používá [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#insightstoken) parametr k identifikaci původní bitové kopie dotazu. Pokud chcete zlepšit relevanci, by měl obsahovat řetězec dotazu.  
+
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/details?insightsToken=mid_68364D764J...&modules=SimilarImages&mkt=en-us HTTP/1.1  
 Ocp-Apim-Subscription-Key: 123456789ABCDE  
@@ -244,9 +244,9 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-  
-Následující obrázek znázorňuje odpověď na předchozí požadavek.  
-  
+
+Následující příklad ukazuje odpověď na předchozí požadavek.  
+
 ```json
 {
     "_type" : "ImageInsights",
@@ -262,15 +262,15 @@ Následující obrázek znázorňuje odpověď na předchozí požadavek.
         ]
     }
 ```
-  
-## <a name="cropping-images-to-use-with-visually-similar-and-entity-recognition-modules"></a>Oříznutí obrázků pro použití s vizuálně podobné a moduly rozpoznávání entity  
 
-Chcete-li určit oblasti bitové kopie Bingu používá pro určení, zda jsou obrázky vizuálně podobné nebo provedení rozpoznávání entity, použijte [cal](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#cal), [cat](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#cat), [souboru cab](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#cab)a [car](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#car) parametrů dotazu. Ve výchozím nastavení používá Bing celého obrázku.  
-  
-Parametry zadejte horního, levém horním a dolním, pravém rohu oblasti, kterou používá Bing pro porovnání. Zadejte hodnoty jako zlomků šířky a výšky původní bitové kopie. Začínat desetinné číslo (0,0, 0,0) v horní, rohu a končit (1.0, 1.0) v pravém horním rohu. Například k určení, že top, levém dolním začne čtvrtletí způsob, jakým dolů z horní části a čtvrtletí způsobem z levé strany, nastavte `cal` k 0,25 a `cat` 0,25.  
-  
-K následujícímu pořadí volání ukazuje účinek zadání oblasti oříznutí. První volání nezahrnuje oříznutí a Bing rozpozná dvou osob stálého vedle sebe uprostřed bitovou kopii.  
-  
+## <a name="cropping-images-to-use-with-visually-similar-and-entity-recognition-modules"></a>Oříznutí obrázků pro použití s vizuálně podobné a moduly rozpoznávání entit  
+
+Chcete-li zadat tuto oblast obrázku, který Bing používá k určení, zda jsou vizuálně podobné obrázky nebo k provádění rozpoznávání entit, použijte [cal](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#cal), [cat](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#cat), [cab](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#cab)a [car](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#car) parametrů dotazu. Ve výchozím nastavení používá Bing celého obrázku.  
+
+Parametry zadejte horní, levého horního a dolního, pravém rohu oblasti, které Bing používá k porovnání. Zadejte hodnoty jako podíly šířky a výšky původní bitové kopie. Desetinné hodnoty začínat (0.0, 0.0) nahoře, levém rohu a končí (1.0; 1,0) v pravém dolním rohu. Například pokud chcete určit, že horním levém horním začne čtvrtletí způsob, jakým dolů z horní části a čtvrtletí způsob na levé straně, nastavte `cal` na 0,25 a `cat` 0,25.  
+
+Následující sekvence volání demonstruje účinek zadání oříznutí oblasti. První volání nezahrnuje oříznutí a Bing rozpozná dva lidé vedle sebe, abyste se uprostřed bitovou kopii.  
+
 ```  
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/details?modules=RecognizedEntities&imgurl=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.M0cbee6fadb43f35b2344e53da7a23ec1o0%26pid%3DApi&mkt=en-us HTTP/1.1  
 Ocp-Apim-Subscription-Key: 123456789ABCDE  
@@ -281,9 +281,9 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```  
 
-Odpověď obsahuje dvě rozpoznaný entity.  
-  
-```json 
+Odpověď ukazuje dvě entity, které rozpoznaná.  
+
+```json
 {  
     "_type" : "ImageInsights",  
     "recognizedEntityGroups" : {
@@ -327,9 +327,9 @@ Odpověď obsahuje dvě rozpoznaný entity.
     }  
 }  
 ```  
-  
-Druhé volání ořízne obrázek ve svislém směru dolů středu a Bing rozpoznány jedna osoba na pravé straně bitové kopie.  
-  
+
+Druhé volání obrázek ořízne tak, svisle dolů střed a Bing rozpoznán na pravé straně bitové kopie jedné osobě.  
+
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/details?cal=0.5&cat=0.0&car=1.0&cab=1.0&modules=RecognizedEntities&imgurl=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.M0cbee6fadb43f35b2344e53da7a23ec1o0%26pid%3DApi&mkt=en-us HTTP/1.1    
 Ocp-Apim-Subscription-Key: 123456789ABCDE  
@@ -340,8 +340,8 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-Odpověď obsahuje jednu entitu platný.  
-  
+Odpověď ukazuje rozpoznaný jednu entitu.  
+
 ```json  
 {  
     "_type" : "ImageInsights",  
@@ -371,13 +371,13 @@ Odpověď obsahuje jednu entitu platný.
     }
 }  
 ```  
-  
+
 ## <a name="finding-visually-similar-products"></a>Hledání vizuálně podobné produkty  
 
-Nastavením bitové kopie, které obsahují produkty, které jsou podobné vizuálně produkty najít v původní bitové kopie najdete [modueles](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#modulesrequested) parametr k SimilarProducts dotazu.  
-  
-Následující požadavek ukazuje, jak získat bitové kopie vizuálně podobných produktů. V požadavku použita [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#insightstoken) dotaz k identifikaci původní bitové kopie, kterou vrátil v předchozí požadavek. Pokud chcete zlepšit relevance, by měla obsahovat řetězec dotazu uživatele.  
-  
+Chcete-li najít Image, které obsahují produkty, které jsou vizuálně podobné produkty v původní bitové kopie, nastavte [modueles](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#modulesrequested) parametr k SimilarProducts dotazu.  
+
+Následující požadavek ukazuje, jak získat Image vizuálně podobných produktů. Požadavek používá [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#insightstoken) dotazu parametr k identifikaci původní obrázek, který byl vrácen do předchozí žádosti. Pokud chcete zlepšit relevanci, by měl obsahovat řetězec dotazu.  
+
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/details?q=anne+klein+dresses&modules=SimilarProducts&insightsToken=ccid_WOeyfoSp*mid_4B0A357&mkt=en-us HTTP/1.1    
 Ocp-Apim-Subscription-Key: 123456789ABCDE  
@@ -387,9 +387,9 @@ X-Search-Location: lat:47.60357;long:-122.3295;re:100
 X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>  
 Host: api.cognitive.microsoft.com
 ```
-  
-Následující obrázek znázorňuje odpověď na předchozí požadavek. Odpověď obsahuje obrázek podobné produktu a určuje, kolik obchodníků nabízejí produktu online, jestli existují hodnocení produktu a najít nejnižší cenu (najdete v článku `aggregateOffer` pole).  
-  
+
+Následující příklad ukazuje odpověď na předchozí požadavek. Odpověď obsahuje obrázek podobné produktu a označuje, kolik si obchodníci můžou nabízet produktu online, zda existují hodnocení produktu a najít nejnižší cenu (viz `aggregateOffer` pole).  
+
 ```json
 {
     "_type" : "ImageInsights",
@@ -407,9 +407,9 @@ Následující obrázek znázorňuje odpověď na předchozí požadavek. Odpov�
     }
 }
 ```
-  
-Získat seznam obchodníků, které nabízejí produktu online (najdete v článku [offerCount](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#offer-offercount) pole), volání rozhraní API znovu a nastavte `modules` k ShoppingSources. Potom nastavte `insightsToken` parametr dotazu na token nalezen v souhrnu bitovou kopii produktu.  
-  
+
+Chcete-li získat seznam obchodníci, které nabízejí online produktu (naleznete v tématu [offerCount](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#offer-offercount) pole), volání rozhraní API znovu a nastavte `modules` k ShoppingSources. Potom nastavte `insightsToken` parametru dotazu na token součástí produktu souhrnného obrázku.  
+
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/details?modules=ShoppingSources&insightsToken=ccid_hb3uRvUk*mid_BF5C252A47F2C765...&mkt=en-us HTTP/1.1    
 Ocp-Apim-Subscription-Key: 123456789ABCDE  
@@ -420,8 +420,8 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-Toto je odpověď na předchozí požadavek.  
-  
+Tady je odpověď na předchozí požadavek.  
+
 ```json  
 {  
     "_type" : "ImageInsights",  

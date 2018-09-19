@@ -1,22 +1,22 @@
 ---
-title: Analýza Bing pro API pro webové vyhledávání Bingu | Dokumentace Microsoftu
-titleSuffix: Cognitive Services
+title: Analýza vyhledávání obrázků Bingu – rozhraní API pro vyhledávání obrázků Bingu
+titleSuffix: Azure Cognitive Services
 description: Popisuje, jak získat analýzy pro rozhraní API Bingu pro bitové kopie.
 services: cognitive-services
 author: swhite-msft
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: bing-image-search
 ms.topic: article
 ms.date: 04/10/2018
 ms.author: scottwhi
-ms.openlocfilehash: d75d0156ab44dcbc626a222b5539f61bf5b7b81f
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: e0e7362873d566ec9bbe4dadfdaf3b1d34cc1d8c
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38582646"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46293967"
 ---
-# <a name="how-to-get-analytics-for-bing-images-api"></a>Získání analýzy pro rozhraní API Bingu pro obrázky
+# <a name="how-to-get-analytics-for-the-bing-image-search-api"></a>Získání analýzy pro rozhraní API Bingu pro vyhledávání obrázků
 
 [!INCLUDE [cognitive-services-bing-statistics](../../../includes/cognitive-services-bing-statistics.md)]

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/23/2018
+ms.date: 09/20/2018
 ms.author: rkarlin
-ms.openlocfilehash: 9043c6583a15d3be9d0d468e83a4bf79b3121794
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 313697d73d1e269691f1af4f021545049a907d66
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304114"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127087"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Shromažďování dat ve službě Azure Security Center
 Security Center shromažďuje data z Azure virtual machines (VM) a počítače mimo Azure monitorovat ohrožení zabezpečení a hrozby. Data se shromažďují pomocí agenta Microsoft Monitoring Agent, který z počítače načítá různé protokoly událostí a konfigurace související se zabezpečením a kopíruje data k analýze do vašeho pracovního prostoru. Příkladem takových dat jsou: operační systém typu a verzi, protokoly operačního systému (protokoly událostí Windows), spuštěné procesy, název počítače, IP adresy a přihlášeného uživatele. Microsoft Monitoring Agent také zkopíruje soubory se stavem systému do pracovního prostoru.
@@ -34,7 +34,8 @@ Tento článek obsahuje pokyny o tom, jak nainstalovat agenta Microsoft Monitori
 > - Shromažďování dat pro škálovací sadu virtuálních počítačů se momentálně nepodporuje.
 
 
-## <a name="enable-automatic-provisioning-of-microsoft-monitoring-agent"></a>Povolit automatické zřizování agenta Microsoft Monitoring Agent     
+## Povolit automatické zřizování agenta Microsoft Monitoring Agent <a name="auto-provision-mma"></a>
+
 Ke shromažďování dat z počítačů, měli byste mít agenta Microsoft Monitoring Agent nainstalována.  Instalace agenta může být automaticky (doporučeno) nebo si můžou nainstalovat agenta ručně.  
 
 >[!NOTE]
@@ -296,9 +297,9 @@ Microsoft Monitoring Agent, můžete nainstalovat ručně, můžete shromažďov
 -   K identifikaci problémů s instalací automatického zřizování, najdete v článku [problémy se stavem agenta monitorování](security-center-troubleshooting-guide.md#mon-agent).
 
 -  K identifikaci požadavků na monitorování sítě agenta, najdete v článku [řešení potíží se síťovými požadavky na agenta monitorování](security-center-troubleshooting-guide.md#mon-network-req).
--   Umožní identifikovat problémy s ruční registraci, najdete v článku [řešení potíží registrace pro Operations Management Suite](https://support.microsoft.com/help/3126513/how-to-troubleshoot-operations-management-suite-onboarding-issues)
+-   Umožní identifikovat problémy s ruční registraci, najdete v článku [řešení potíží registrace pro Operations Management Suite](https://support.microsoft.com/help/3126513/how-to-troubleshoot-operations-management-suite-onboarding-issues).
 
-- K identifikaci Nemonitorované virtuální počítače a počítače problémy, najdete v článku [Nemonitorované virtuální počítače a počítače](security-center-virtual-machine-protection.md#unmonitored-vms-and-computers)
+- K identifikaci Nemonitorované virtuální počítače a počítače problémy, najdete v článku [Nemonitorované virtuální počítače a počítače](security-center-virtual-machine-protection.md#unmonitored-vms-and-computers).
 
 ## <a name="next-steps"></a>Další postup
 Tento článek vám ukázali, jak shromažďování dat a automatické zřizování v Security Center funguje. Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:

@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2018
+ms.date: 09/14/2018
 ms.author: jeedes
-ms.openlocfilehash: b742f3eb9124093bcf0c3c912bbae0367cdcce56
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 5b1099e46cf1aa2fd4b948fee8407cfd859390ce
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053835"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129110"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-slack"></a>Kurz: Integrace Azure Active Directory se službou Slack
 
@@ -217,6 +217,9 @@ Cílem této části je vytvořte uživatele Britta Simon v Slack. Slack podporu
 
 > [!NOTE]
 > Pokud je potřeba ručně vytvořit uživatele, budete muset požádat [tým podpory Slack](https://slack.com/help/contact).
+
+> [!NOTE]
+> Azure AD Connect je nástroj pro synchronizaci, které můžete synchronizovat místní Active Directory identity do služby Azure AD a pak tyto synchronizovaných uživatelů můžete také použít aplikace, jak ostatní uživatelé v cloudu.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: asmalser
-ms.openlocfilehash: 930ca49a63e34214ec197d8dd37f38361b34fe90
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 917baa4b0d983df858c64cd0fa5b697b0fbb316c
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347031"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46298264"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning-preview"></a>Kurz: Konfigurace Workday pro uživatele automatické zřizování (preview)
 
@@ -75,7 +75,7 @@ Scénář popsaný v tomto kurzu se předpokládá, že máte následující pol
 * Implementace klienta Workday pro účely testování a integrace
 * Oprávnění správce ve Workday a vytvořte uživatele systému integrace, provést změny k testování daty o zaměstnancích pro účely testování
 * Pro zřizování uživatelů služby Active Directory, je potřeba hostitelský server připojený k doméně se službou Windows 2012 nebo vyšší [místního agenta synchronizace](https://go.microsoft.com/fwlink/?linkid=847801)
-* [Azure AD Connect](../connect/active-directory-aadconnect.md) synchronizace mezi službami Active Directory a Azure AD
+* [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) synchronizace mezi službami Active Directory a Azure AD
 
 ### <a name="solution-architecture"></a>Architektury řešení
 
@@ -504,11 +504,11 @@ Jak nakonfigurovat zřizování do služby Azure Active Directory závisí na po
 
 | Scénář | Řešení |
 | -------- | -------- |
-| **Uživatelé musí být zřízená služby Active Directory a Azure AD** | Použití  **[AAD Connect](../connect/active-directory-aadconnect.md)** |
-| **Uživatelé musí zřídit pouze do služby Active Directory** | Použití  **[AAD Connect](../connect/active-directory-aadconnect.md)** |
+| **Uživatelé musí být zřízená služby Active Directory a Azure AD** | Použití  **[AAD Connect](../hybrid/whatis-hybrid-identity.md)** |
+| **Uživatelé musí zřídit pouze do služby Active Directory** | Použití  **[AAD Connect](../hybrid/whatis-hybrid-identity.md)** |
 | **Uživatelé musí být zřízená pouze Azure AD (jenom v cloudu)** | Použití **Workday do Azure Active Directory zřizování** aplikace v galerii aplikací |
 
-Pokyny k nastavení služby Azure AD Connect najdete v článku [dokumentace ke službě Azure AD Connect](../connect/active-directory-aadconnect.md).
+Pokyny k nastavení služby Azure AD Connect najdete v článku [dokumentace ke službě Azure AD Connect](../hybrid/whatis-hybrid-identity.md).
 
 Následující části popisují nastavení připojení mezi Workday a Azure AD ke zřízení uživatelů pouze cloudu.
 

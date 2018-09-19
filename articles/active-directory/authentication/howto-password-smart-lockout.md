@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: rogoya
-ms.openlocfilehash: b0fded9f5543d151091955c0b0d645bf9db16b7d
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 9ea91f70a72b812803a20244bb4445b76b133b0c
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39158579"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296155"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory inteligentní uzamčení
 
@@ -27,7 +27,7 @@ Inteligentní uzamčení je vždy pro všechny zákazníky Azure AD se tato výc
 
 Inteligentní uzamčení lze integrovat s hybridní nasazení pomocí synchronizace hodnot hash hesel nebo předávací ověřování ochrana místních účtů služby Active Directory zamknutí útočníci. Inteligentní uzamčení zásady nastavíte odpovídajícím způsobem ve službě Azure AD, dají se útoky odfiltrovat dřív, než dorazí v místní službě Active Directory.
 
-Při použití [předávací ověřování](../connect/active-directory-aadconnect-pass-through-authentication.md), je třeba Ujistěte se, že:
+Při použití [předávací ověřování](../hybrid/how-to-connect-pta.md), je třeba Ujistěte se, že:
 
    * Prahová hodnota pro uzamčení Azure AD je **méně** než prahovou hodnotu uzamknutí účtu služby Active Directory. Nastavte hodnoty tak, aby prahovou hodnotu uzamknutí účtu služby Active Directory je minimálně dvakrát nebo třikrát déle než prahová hodnota pro uzamčení Azure AD. 
    * Doba trvání uzamčení Azure AD **během několika sekund** je **delší** než Active Directory Vynulovat čítač uzamčení účtu po dobu trvání **minut**.

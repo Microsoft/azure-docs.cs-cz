@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/26/2017
 ms.author: maheshu
-ms.openlocfilehash: 4467c193b5ff70a304b4ec5f632276ca14551b08
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: d30d164a3e2896b1a300bf665ca09f57ce97fdf3
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39501987"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295865"
 ---
 # <a name="azure-active-directory-ad-domain-services"></a>Doména služby Azure Active Directory (AD)
 ## <a name="overview"></a>Přehled
@@ -65,7 +65,7 @@ Několik nejdůležitějšími aspekty spravované domény, zřízenou se služb
 ### <a name="azure-ad-domain-services-for-hybrid-organizations"></a>Azure AD Domain Services pro hybridní organizace
 Organizace s hybridní infrastruktury IT využívat kombinaci prostředků cloudu a místních prostředků. Tyto organizace synchronizovat informace o identitě ze svého místního adresáře do svého tenanta Azure AD. Jak hybridní organizace vypadat více migraci místních aplikací do cloudu, zejména starší verze adresářové aplikace, může být užitečné k nim Azure AD Domain Services.
 
-Společnost litware má nasazený [Azure AD Connect](../active-directory/active-directory-aadconnect.md), synchronizovat informace o identitě ze svého místního adresáře do svého tenanta Azure AD. Informace o identitě, který je synchronizován obsahuje uživatelské účty, jejich hodnoty hash přihlašovacích údajů pro ověřování (synchronizace hesla) a členství ve skupinách.
+Společnost litware má nasazený [Azure AD Connect](../active-directory/hybrid/whatis-hybrid-identity.md), synchronizovat informace o identitě ze svého místního adresáře do svého tenanta Azure AD. Informace o identitě, který je synchronizován obsahuje uživatelské účty, jejich hodnoty hash přihlašovacích údajů pro ověřování (synchronizace hesla) a členství ve skupinách.
 
 > [!NOTE]
 > **Synchronizace hesla je povinné pro hybridní organizace používat službu Azure AD Domain Services**. Tento požadavek je vzhledem k tomu, že jsou vyžadována pověření uživatelů ve spravované doméně poskytovaných službou Azure AD Domain Services k ověřování těchto uživatelů prostřednictvím metody pro ověřování protokolů NTLM nebo Kerberos.

@@ -8,12 +8,12 @@ ms.date: 08/13/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f832b05969c028880f6e375ff4a2ee8dc7a7eaf4
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 3f3a8c8a8bce59d1757e9ad53c8ebdbd06a7f33f
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42057172"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294165"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Pochopení runtime Azure IoT Edge a jeho architektura
 
@@ -23,7 +23,7 @@ Modul runtime IoT Edge zajišťuje následující funkce na zařízeních IoT Ed
 
 * Instaluje a aktualizuje na zařízení úlohy.
 * Udržuje na zařízení standardy zabezpečení Azure IoT Edge.
-* Zajišťuje, že [moduly IoT Edge] [ lnk-modules] nepřetržitý provoz.
+* Zajišťuje, že [moduly IoT Edge] [lnk moduly] nepřetržitý provoz.
 * Hlásí do cloudu stav modulů pro účely vzdáleného monitorování.
 * Usnadňuje komunikaci mezi podřízenými zařízeními typu list a zařízení IoT Edge.
 * Usnadňuje komunikaci mezi moduly v příslušném hraničním zařízení IoT.
@@ -117,7 +117,7 @@ Další informace o rozhraní zabezpečení Azure IoT Edge, přečtěte si infor
 
 ## <a name="next-steps"></a>Další postup
 
-[Vysvětlení modulů Azure IoT Edge][lnk-modules]
+[Vysvětlení, že se certifikáty Azure IoT Edge][lnk-certs]
 
 <!-- Images -->
 [1]: ./media/iot-edge-runtime/Pipeline.png
@@ -126,4 +126,4 @@ Další informace o rozhraní zabezpečení Azure IoT Edge, přečtěte si infor
 [4]: ./media/iot-edge-runtime/ModuleEndpointsWithRoutes.png
 
 <!-- Links -->
-[lnk-modules]: iot-edge-modules.md
+[lnk-certs]: iot-edge-certs.md

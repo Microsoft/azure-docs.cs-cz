@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: annaba
-ms.openlocfilehash: 62ee6aae825d822a1d87858ea6a7eab953a33318
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 2f6b9ee7a23341f27272a4614bed6be5ae422ce0
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43345167"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297263"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Začínáme s ověřováním na základě certifikátů v Azure Active Directory
 
@@ -29,7 +29,7 @@ Tuto funkci konfiguruje eliminuje nutnost zadat kombinace uživatelského jména
 V tomto tématu:
 
 - Nabízí postup pro konfiguraci a využít ověřování pomocí certifikátů pro uživatele tenantů v plánech Office 365 Enterprise, obchodní, vzdělávání a státní správu USA. Tato funkce je dostupná ve verzi preview v plánech Office 365 China, obrany státní správy USA a US Government federální.
-- Předpokládá, že už máte [infrastruktury veřejných klíčů (PKI)](https://go.microsoft.com/fwlink/?linkid=841737) a [služby AD FS](../connect/active-directory-aadconnectfed-whatis.md) nakonfigurované.
+- Předpokládá, že už máte [infrastruktury veřejných klíčů (PKI)](https://go.microsoft.com/fwlink/?linkid=841737) a [služby AD FS](../hybrid/how-to-connect-fed-whatis.md) nakonfigurované.
 
 ## <a name="requirements"></a>Požadavky
 

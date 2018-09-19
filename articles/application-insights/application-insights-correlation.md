@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/09/2018
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 057e47c19f6405bec9e1fa80dd7097476876baa9
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 696843363bc6617bb11c01cdccb9dbbb7b719a82
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35643185"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46298196"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Korelace telemetrie v Application Insights
 
@@ -74,6 +74,34 @@ Pracujeme na RFC návrh [korelační protokol HTTP](https://github.com/lmolkova/
 Standardní definuje také dvě schémata `Request-Id` generování - bez stromové struktury a hierarchické. Plochý schématu je dobře známé `Id` definovaný pro klíč `Correlation-Context` kolekce.
 
 Definuje Application Insights [rozšíření](https://github.com/lmolkova/correlation/blob/master/http_protocol_proposal_v2.md) pro korelaci protokolu HTTP. Používá `Request-Context` název dvojice šíření kolekci vlastností používané okamžité volající nebo volaný. Application Insights SDK používá této hlavičky k nastavení `dependency.target` a `request.source` pole.
+
+### <a name="w3c-distributed-tracing"></a>W3C distribuované trasování
+
+Přeneseme do (formátu W3C distribuované trasování) [https://w3c.github.io/distributed-tracing/report-trace-context.html]. Definuje:
+- `traceparent` -provádí operace globálně jedinečné id a jedinečný identifikátor hovoru
+- `tracestate` -představuje konkrétní kontext trasování systému.
+
+#### <a name="enable-w3c-distributed-tracing-support-for-aspnet-classic-apps"></a>Povolit podporu W3C distribuované trasování pro aplikace ASP.NET Classic
+
+Tato funkce je dostupná v balíčcích Microsoft.ApplicationInsights.Web a Microsoft.ApplicationInsights.DependencyCollector počínaje 2.8.0-beta1 verze.
+Je **vypnout** ve výchozím nastavení, chcete-li ji povolit, změňte `ApplicationInsights.config`:
+
+* v části `RequestTrackingTelemetryModule` přidat `EnableW3CHeadersExtraction` element s hodnotou nastavenou `true`
+* v části `DependencyTrackingTelemetryModule` přidat `EnableW3CHeadersInjection` element s hodnotou nastavenou `true`
+
+#### <a name="enable-w3c-distributed-tracing-support-for-aspnet-core-apps"></a>Povolit podporu W3C distribuované trasování pro aplikace ASP.NET Core
+
+Tato funkce je ve Microsoft.ApplicationInsights.AspNetCore 2.5.0-beta1 verze a verze 2.8.0-beta1 Microsoft.ApplicationInsights.DependencyCollector.
+Je **vypnout** ve výchozím nastavení, aby je `ApplicationInsightsServiceOptions.RequestCollectionOptions.EnableW3CDistributedTracing` k `true`:
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddApplicationInsightsTelemetry(o => 
+        o.RequestCollectionOptions.EnableW3CDistributedTracing = true );
+    // ....
+}
+```
 
 ## <a name="open-tracing-and-application-insights"></a>Otevřít trasování a Application Insights
 
@@ -137,3 +165,5 @@ telemetry.getContext().getDevice().setRoleName("My Component Name");
 - Připojit všechny součásti micro služby Application insights. Podívejte se na [podporované platformy](app-insights-platforms.md).
 - Zobrazit [datový model](application-insights-data-model.md) pro typy a datový model Application Insights.
 - Zjistěte, jak [rozšířit a filtrování telemetrie](app-insights-api-filtering-sampling.md).
+- [Referenční informace k confg Application Insights](app-insights-configuration-with-applicationinsights-config.md)
+

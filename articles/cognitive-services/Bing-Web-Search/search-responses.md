@@ -1,23 +1,23 @@
 ---
-title: Odpovědi rozhraní API webové vyhledávání Bingu | Dokumentace Microsoftu
-titleSuffix: Microsoft Cognitive Services
-description: Další informace o typů odpovědí a poskytuje rozhraní API Bingu pro vyhledávání webu odpovědi.
+title: Odpovědi na vyhledávání – rozhraní API webové vyhledávání Bingu
+titleSuffix: Azure Cognitive Services
+description: Další informace o typech odpovědí a odpovědí z rozhraní API webové vyhledávání Bingu.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 8/13/2018
 ms.author: erhopf
-ms.openlocfilehash: 13e9792f3d5765047dabb4cdef59e85a47a69aba
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: f3a4c8bb024aa5e92365b72b8cc2180cc6f4d6d4
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42889445"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123772"
 ---
-# <a name="bing-web-search-responses"></a>Odpovědi na vyhledávání na webu Bingu  
+# <a name="bing-web-search-api-response-structure-and-answer-types"></a>Typy struktury a odpověď odezvy API vyhledávání na webu Bingu  
 
 Pokud odešlete žádost o vyhledávání Bingu pro vyhledávání na webu, vrátí [ `SearchResponse` ](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#searchresponse) objektu v textu odpovědi. Objekt obsahuje pole pro každou odpověď, která určuje Bingu je relevantní pro dotaz. Tento příklad ukazuje objektu odpovědi, pokud Bing vrátí všechny odpovědi:
 

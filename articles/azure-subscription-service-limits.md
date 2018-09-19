@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 09/11/2018
 ms.author: byvinyal
-ms.openlocfilehash: d179acae2053b2365c010c33cc061d29559be0cf
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: a24fc56bf455fbc487cb6f93e06678d52e5b1c0b
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45577679"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295753"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity, kvóty a omezení předplatného a služeb Azure
 Tento dokument uvádí některé nejčastějšími omezeními Microsoft Azure, které se taky říká se jim kvóty. Tento dokument nepopisuje aktuálně všech služeb Azure. V průběhu času v seznamu rozbalit a doplněn o popis další platformy.
@@ -158,10 +158,14 @@ Následující tabulka obsahuje podrobnosti o funkcích a omezení Basic, Standa
 [!INCLUDE [azure-firewall-limits](../includes/firewall-limits.md)]
 
 ### <a name="storage-limits"></a>Omezení úložiště
-Další podrobnosti o omezení účtu úložiště, najdete v části [Azure Storage škálovatelnost a cíle výkonnosti](storage/common/storage-scalability-targets.md).
-
 <!--like # storage accts -->
 [!INCLUDE [azure-storage-limits](../includes/azure-storage-limits.md)]
+
+[!INCLUDE [storage-limits-increase-include](../includes/storage-limits-increase-include.md)]
+
+Další podrobnosti o omezení účtu úložiště, najdete v části [Azure Storage škálovatelnost a cíle výkonnosti](storage/common/storage-scalability-targets.md).
+
+#### <a name="storage-resource-provider-limits"></a>Omezení poskytovatele prostředků úložiště 
 
 [!INCLUDE [azure-storage-limits-azure-resource-manager](../includes/azure-storage-limits-azure-resource-manager.md)]
 

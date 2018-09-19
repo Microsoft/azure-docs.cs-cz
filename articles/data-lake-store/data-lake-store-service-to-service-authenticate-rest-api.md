@@ -1,6 +1,6 @@
 ---
-title: 'Ověřování služby služby: REST API s Data Lake Store pomocí Azure Active Directory | Microsoft Docs'
-description: Zjistěte, jak dosáhnout service-to-service ověřování s Data Lake Store pomocí Azure Active Directory pomocí rozhraní REST API
+title: 'Ověřování služba služba: rozhraní REST API s Azure Data Lake Storage Gen1 pomocí Azure Active Directory | Dokumentace Microsoftu'
+description: Zjistěte, jak dokončit ověřování služba služba s Azure Data Lake Storage Gen1 pomocí Azure Active Directory pomocí rozhraní REST API
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: ffa9b7408475820735e35a82edc0b1751abeb08a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: dd282091d41538b7e3dc08eb0b3d82539fa0bb4f
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34624845"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295593"
 ---
-# <a name="service-to-service-authentication-with-data-lake-store-using-rest-api"></a>Service-to-service ověřování s Data Lake Store pomocí rozhraní REST API
+# <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>Ověřování služba služba s Azure Data Lake Storage Gen1 pomocí rozhraní REST API
 > [!div class="op_single_selector"]
 > * [Pomocí Javy](data-lake-store-service-to-service-authenticate-java.md)
 > * [Pomocí sady .NET SDK](data-lake-store-service-to-service-authenticate-net-sdk.md)
@@ -27,15 +27,15 @@ ms.locfileid: "34624845"
 > 
 > 
 
-V tomto článku se dozvíte o tom, jak proveďte service-to-service ověřování s Azure Data Lake Store pomocí rozhraní REST API. Pro ověřování koncového uživatele s Data Lake Store pomocí rozhraní REST API, najdete v části [ověřování koncového uživatele s Data Lake Store pomocí rozhraní REST API](data-lake-store-end-user-authenticate-rest-api.md).
+V tomto článku se dozvíte o tom, jak pomocí rozhraní REST API, provádět ověřování služba služba s Azure Data Lake Storage Gen1. Ověřování koncového uživatele s Data Lake Storage Gen1 pomocí rozhraní REST API, přečtěte si téma [ověřování koncového uživatele s Data Lake Storage Gen1 pomocí rozhraní REST API](data-lake-store-end-user-authenticate-rest-api.md).
 
 ## <a name="prerequisites"></a>Požadavky
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Vytvoření aplikace Azure Active Directory "Web"**. Musí mít dokončili postup v [Service-to-service ověřování s Data Lake Store pomocí Azure Active Directory](data-lake-store-service-to-service-authenticate-using-active-directory.md).
+* **Vytvoření aplikace Azure Active Directory "Web"**. Je nutné dokončit kroky v [ověřování služba služba Data Lake Storage Gen1 pomocí Azure Active Directory](data-lake-store-service-to-service-authenticate-using-active-directory.md).
 
 ## <a name="service-to-service-authentication"></a>Ověřování služba-služba
-V tomto scénáři aplikace poskytuje svoje vlastní přihlašovací údaje k provedení operace. V takovém případě musíte vydat požadavek POST jako je uvedeno v následující fragment kódu: 
+V tomto scénáři aplikace poskytuje svoje vlastní přihlašovací údaje k provedení operací. V takovém případě musíte vydat požadavek POST podobný následujícímu fragmentu kódu: 
 
     curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token  \
       -F grant_type=client_credentials \
@@ -43,15 +43,15 @@ V tomto scénáři aplikace poskytuje svoje vlastní přihlašovací údaje k pr
       -F client_id=<CLIENT-ID> \
       -F client_secret=<AUTH-KEY>
 
-Výstup požadavku bude obsahovat autorizační token (odlišené `access-token` níže ve výstupu), budete předávat s voláními rozhraní REST API. Uložit ověřovací token do textového souboru; je nutné ho při volání REST do Data Lake Store.
+Výstup tohoto požadavku obsahuje autorizační token (udávají `access-token` ve výstupu níže), že budete předávat s voláními rozhraní REST API. Uložit ověřovací token do textového souboru; budete je potřebovat při volání REST Gen1 úložiště Data Lake.
 
     {"token_type":"Bearer","expires_in":"3599","expires_on":"1458245447","not_before":"1458241547","resource":"https://management.core.windows.net/","access_token":"<REDACTED>"}
 
 Tento článek používá **neinteraktivní** přístup. Další informace o neinteraktivním přístupu (volání služba-služba) najdete v tématu [Volání služba-služba pomocí přihlašovacích údajů](https://msdn.microsoft.com/library/azure/dn645543.aspx). 
 
 ## <a name="next-steps"></a>Další postup
-V tomto článku jste zjistili, jak používat ověřování service-to-service k ověřování s Azure Data Lake Store pomocí rozhraní REST API. Teď můžete prohlédnout v následujících článcích, které mluvit o tom, jak používat rozhraní REST API pro práci s Azure Data Lake Store.
+V tomto článku jste zjistili, jak používat k ověření pomocí Data Lake Storage Gen1 ověřování služba služba pomocí rozhraní REST API. Teď můžete prohlédnout v následujících článcích, které mluvit o tom, jak používat rozhraní REST API pro práci s Data Lake Storage Gen1.
 
-* [Operace správy účtů v Data Lake Store pomocí rozhraní REST API](data-lake-store-get-started-rest-api.md)
-* [Operace dat v Data Lake Store pomocí rozhraní REST API](data-lake-store-data-operations-rest-api.md)
+* [Operace správy účtů v Data Lake Storage Gen1 pomocí rozhraní REST API](data-lake-store-get-started-rest-api.md)
+* [Operace s daty v Data Lake Storage Gen1 pomocí rozhraní REST API](data-lake-store-data-operations-rest-api.md)
 

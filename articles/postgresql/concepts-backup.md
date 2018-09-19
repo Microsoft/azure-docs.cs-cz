@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: aafe474ef23d499f505f0e1dab7623e5d032cc84
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 707803e1f69a3146772e71ff711a48b510d8c9fc
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391704"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127563"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql"></a>Zálohování a obnovení ve službě Azure Database for PostgreSQL
 
@@ -66,6 +66,8 @@ Budete muset počkat na další zálohování protokolu transakcí mají být pr
 ### <a name="geo-restore"></a>Geografické obnovení
 
 Server můžete obnovit do jiné oblasti Azure, kde je k dispozici služba, pokud jste nakonfigurovali pro geograficky redundantní zálohy vašeho serveru. Geografické obnovení je výchozí možnost zotavení, kdy je server není k dispozici z důvodu incidentu v oblasti, kde je hostovaný na serveru. Pokud ve velkém měřítku incidentů v oblasti výsledky v nedostupnost databázovou aplikaci, můžete obnovit server z geograficky redundantní zálohy k serveru v kterékoli jiné oblasti. Dochází ke zpoždění mezi pořizování zálohy a kdy se replikuje do jiné oblasti. Toto zpoždění může být až hodinu, proto, pokud dojde k havárii, může trvat jednu hodinu ztrátu.
+
+Během geografické obnovení, které zahrnují konfigurace serveru, které lze změnit compute generace, vCore, období uchování zálohy a možnosti redundance zálohy. Změna cenovou úroveň (Basic, obecné účely nebo k paměťově optimalizovaným) nebo velikosti úložiště se nepodporuje.
 
 ### <a name="perform-post-restore-tasks"></a>Proveďte úkoly po obnovení
 

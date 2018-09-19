@@ -13,12 +13,12 @@ ms.workload: identity
 ms.component: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: ead6202b0365df770382077618795cd6b6e57cd2
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 55ce6398d89e56f92874d0ec135377d2a08cf075
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346725"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297805"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpečení privilegovaného přístupu pro hybridní a cloudové nasazení ve službě Azure AD
 
@@ -159,7 +159,7 @@ Ujistěte se, že všichni uživatelé mají přihlášení do svých účtů sp
 
 #### <a name="turn-on-password-hash-synchronization"></a>Zapnutí synchronizace hodnot hash hesel
 
-Synchronizace hodnot hash hesel je funkce používá k synchronizaci hodnoty hash hodnot hash hesel uživatelů z místní instance Active Directory do Azure založené na cloudu instancí AD. I že pokud se rozhodnete federace pomocí služby Active Directory Federation Services (AD FS) nebo u jiných poskytovatelů identit, můžete volitelně nastavit synchronizaci hodnot hash hesel jako záložní v případě vaší místní infrastruktury, jako je AD nebo servery služby AD FS selhat nebo se stane dočasně nedostupné. To umožňuje uživatelům umožní přihlásit ke službě s použitím stejné heslo, které používají pro přihlášení k jejich místní AD instance. Také umožňuje k detekci zneužití přihlašovacích údajů porovnáním hodnoty hash těchto hesel s hesly známé došlo k narušení, pokud uživatel díky jejich stejnou e-mailovou adresu a heslo v jiné službě, není připojen ke službě Azure AD Identity Protection.  Další informace najdete v tématu [implementace synchronizace hodnot hash hesel pomocí synchronizace Azure AD Connect](./../connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md).
+Synchronizace hodnot hash hesel je funkce používá k synchronizaci hodnoty hash hodnot hash hesel uživatelů z místní instance Active Directory do Azure založené na cloudu instancí AD. I že pokud se rozhodnete federace pomocí služby Active Directory Federation Services (AD FS) nebo u jiných poskytovatelů identit, můžete volitelně nastavit synchronizaci hodnot hash hesel jako záložní v případě vaší místní infrastruktury, jako je AD nebo servery služby AD FS selhat nebo se stane dočasně nedostupné. To umožňuje uživatelům umožní přihlásit ke službě s použitím stejné heslo, které používají pro přihlášení k jejich místní AD instance. Také umožňuje k detekci zneužití přihlašovacích údajů porovnáním hodnoty hash těchto hesel s hesly známé došlo k narušení, pokud uživatel díky jejich stejnou e-mailovou adresu a heslo v jiné službě, není připojen ke službě Azure AD Identity Protection.  Další informace najdete v tématu [implementace synchronizace hodnot hash hesel pomocí synchronizace Azure AD Connect](../hybrid/how-to-connect-password-hash-synchronization.md).
 
 #### <a name="require-multi-factor-authentication-mfa-for-users-in-all-privileged-roles-as-well-as-exposed-users"></a>Vyžadovat vícefaktorové ověřování (MFA) u uživatelů v všech privilegovaných rolích, jakož i odhalených uživatelů
 

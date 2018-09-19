@@ -1,71 +1,72 @@
 ---
-title: Věty a tokeny v lingvistické Analysis API | Microsoft Docs
-description: Další informace o větu oddělení a tokenizaci v lingvistické API analýzy v kognitivní služby.
+title: Věty a tokeny – rozhraní API pro jazykovou analýzu
+titlesuffix: Azure Cognitive Services
+description: Další informace o rozdělení a Tokenizace v rozhraní API pro jazykovou analýzu vět.
 services: cognitive-services
 author: DavidLiCIG
-manager: wkwok
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: linguistic-analysis
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/21/2016
 ms.author: davl
-ms.openlocfilehash: 78e539f365728ad540308e9cfb07af44bf6d8fe7
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: b31ca8f88d1e8d5710c3a6a6cfccbb167fdd762a
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37084038"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46126271"
 ---
-# <a name="sentence-separation-and-tokenization"></a>Věty oddělení a tokenizaci
+# <a name="sentence-separation-and-tokenization"></a>Rozdělení a Tokenizace vět
 
-## <a name="background-and-motivation"></a>Pozadí a motivace
+## <a name="background-and-motivation"></a>Na pozadí a motivace
 
-Zadaný text textu, prvním krokem lingvistické analýzy je rozdělit ho na věty a tokeny.
+Zadaný textu, jeho rozdělení na věty a tokeny je prvním krokem pro jazykovou analýzu.
 
-### <a name="sentence-separation"></a>Věty oddělení
+### <a name="sentence-separation"></a>Oddělení větu
 
-Na první pohled se zdá být že rozdělení text na věty je jednoduchý: právě najít end větu značek a rozdělit věty existuje.
+Na první pohled to vypadá, že text rozdělení na věty je jednoduché: stačí najít koncový věty značky a konce věty existuje.
 Tyto značky jsou však často složité a nejednoznačný.
 
-Zvažte například následující text:
+Vezměte v úvahu následující příklad:
 
-> Co povídáš?!? Nebyla slyšet o ředitel společnosti "nové návrh." Je důležité pane a paní Smith.
+> Co povídáš?!? Můžu žádnou odpověď o ředitel "nový návrh." Je důležité PAN a paní Smith.
 
 Tento text obsahuje tři věty:
 
 - Co povídáš?!?
-- Nebyla slyšet o ředitel společnosti "nové návrh."
-- Je důležité pane a paní Smith.
+- Můžu žádnou odpověď o ředitel "nový návrh."
+- Je důležité PAN a paní Smith.
 
-Všimněte si, jak jsou označené konce vět velmi různými způsoby.
-První končí v kombinace otazníky a vykřičníky (někdy nazývané vykřičník s otazníkem).
-Druhé končí tečkou nebo s tečkou, ale následující uvozovky by měl být vyžádány do předchozí věty.
-Ve třetí větě uvidíte použití tento znak stejné období zkratky také označit.
-Prohlížení právě interpunkce poskytuje sadu vhodným kandidátem, ale vyžaduje další práce k identifikaci hranice true věty.
+Všimněte si, jak jsou označené konce věty zcela novými způsoby.
+První končí v kombinaci otazníky a vykřičník (říká se jim vykřičník s otazníkem).
+Do předchozí věta by měl být vyžádány druhé končí tečkou nebo full stop, ale následující znak uvozovek.
+Ve třetí věty uvidíte, jak lze pomocí tohoto stejného znak tečky označte také zkratky.
+Hledání pouze na interpunkční znaménka poskytuje sadu dobrým kandidátem, ale je další práci potřebnou k identifikaci hranice true věty.
 
-### <a name="tokenization"></a>Tokenizaci
+### <a name="tokenization"></a>Tokenizace
 
-Dalším krokem je rozdělit tyto věty na tokeny.
+Další úlohou je rozdělit tyto věty na tokeny.
 Ve většině případů anglické tokeny jsou odděleny mezer.
-(Hledání tokeny nebo slova je mnohem snazší v angličtině než v Čínské, většinou není použití mezery mezi slovy.
-První věta může zapsat jako "Whatdidyousay?")
+(Hledání tokeny nebo slova je mnohem jednodušší v anglickém jazyce než v čínštině, většinou není použití mezery mezi slovy.
+První věta může být napsán jako "Whatdidyousay?")
 
-Existuje několik případů obtížná.
-Nejprve interpunkce často (ale ne vždy) by měl rozdělit od jeho kolem kontextu.
-Druhý, má Angličtina *staženiny*, jako jsou "nebylo" nebo "je", kde byly slova komprimované a orientaci na menší části. Cílem tokenizátoru je rozdělit slova posloupnost znaků.
+Existuje několik případů obtížné.
+Nejprve, interpunkční znaménka často (ale ne vždy) by měl dají rozdělit mimo jeho kolem kontextu.
+Za druhé, má Angličtina *staženiny*, jako je "neměli" nebo "je", ve kterém byly slova komprimované a se zkracuje na menší části. Cílem tokenizátoru je přerušit sekvence znaků slova.
 
-Pojďme se vraťte k ukázkové věty z výše.
-Nyní jsme jste umístili "center tečku" (&middot;) mezi každý odlišné token.
+Vraťme se k věty příkladu výše.
+Nyní jsme jste umístili tečku"centra" (&middot;) mezi každý jedinečných token.
 
-- Co &middot; nebyla &middot; jste &middot; vyslovení &middot; ?!?
-- I &middot; nebyla &middot; n't &middot; uslyšíme &middot; o &middot; &middot; ředitel &middot; na &middot; " &middot; nové &middot; návrh &middot; . &middot; "
-- Ho &middot; na &middot; důležité &middot; k &middot; PAN &middot; a &middot; paní. &middot; Smith &middot; .
+- Co &middot; nebyla &middot; vám &middot; Řekněme, že &middot; ?!?
+- Můžu &middot; nebyla &middot; nezobrazovat &middot; slyšet &middot; o &middot; &middot; ředitel &middot; společnosti &middot; " &middot; nové &middot; návrh &middot; . &middot; "
+- To &middot; společnosti &middot; důležité &middot; k &middot; PAN&middot; a &middot; Mrs. &middot; Smith &middot; .
 
-Všimněte si, jak většina tokeny jsou slova by najít ve slovníku (například *důležité*, *ředitel*).
+Všimněte si, jak většina tokeny jsou slova lze najít ve slovníku (například *důležité*, *ředitel*).
 Ostatní výhradně obsahovat interpunkce.
-Nakonec jsou více neobvyklou tokeny představují staženiny jako *n't* pro *není*, jako Přivlastňovací pád *na*atd. Tato tokenizaci umožňuje zpracovat slovo *nebyla* a fráze *nebyla* ve více konzistentní způsob, pro instanci.
+Dostupné jsou i další neobvyklé tokeny k reprezentaci staženiny jako *nezobrazovat* pro *není*, Přivlastňovací pád jako *společnosti*atd. Tento Tokenizace umožňuje slovo *neměli* a frázi *ne* více konzistentním způsobem, například.
 
 ## <a name="specification"></a>Specifikace
 
-Je důležité zajistit konzistentní rozhodnutí o co zahrnuje věty a token.
-Spoléháme na specifikaci z [členem této Treebank](https://catalog.ldc.upenn.edu/ldc99t42) (některé další podrobnosti jsou dostupné na ftp://ftp.cis.upenn.edu/pub/treebank/public_html/tokenization.html).
+Je důležité, aby konzistentní rozhodnutí o co zahrnuje věty a token.
+Spoléháme na specifikaci od [diskutují Treebank](https://catalog.ldc.upenn.edu/ldc99t42) (některé další podrobnosti najdete na adrese ftp://ftp.cis.upenn.edu/pub/treebank/public_html/tokenization.html).

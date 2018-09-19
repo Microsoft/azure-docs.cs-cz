@@ -12,12 +12,12 @@ ms.workload: On Demand
 ms.date: 07/25/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: c653f1f5366e7dac43f51d5daf1f0b13d93674ce
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 5e45bff827a8c376d4b35ee88f1f000c2b122443
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721978"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46298230"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Přehled provozní kontinuity se službou Azure SQL Database
 
@@ -59,11 +59,11 @@ Následující tabulka porovnává ERT a RPO pro každou vrstvu služby pro tři
 
 ## <a name="recover-a-database-to-the-existing-server"></a>Obnovení databáze do existujícího serveru
 
-SQL Database automaticky provádí kombinaci zálohování úplné databáze každý týden, rozdílovými zálohami prováděnými každou hodinu a transakce zálohu protokolu každých 5 – 10 minut na chránit vaši firmu před ztrátou dat. Zálohy jsou uložené v úložišti RA-GRS po dobu 35 dní pro všechny úrovně služby s výjimkou základních jednotek DTU úrovně služeb ukládat zálohy po dobu 7 dní. Další informace najdete v tématu [automatické zálohování databází](sql-database-automated-backups.md). Můžete obnovit existující databáze formulář automatizovaných záloh k dřívějšímu bodu v čase jako novou databázi na stejném logickém serveru pomocí webu Azure portal, Powershellu nebo rozhraní REST API. Další informace najdete v tématu [v daném okamžiku obnovení](sql-database-recovery-using-backups.md#point-in-time-restore).
+SQL Database automaticky provádí kombinaci zálohování úplné databáze každý týden, všeobecně přijatá každých 12 hodin rozdílovými zálohami a zálohami protokolů každých 5 až 10 minut. Chcete-li chránit vaši firmu před ztrátou dat transakcí. Zálohy jsou uložené v úložišti RA-GRS po dobu 35 dní pro všechny úrovně služby s výjimkou základních jednotek DTU úrovně služeb ukládat zálohy po dobu 7 dní. Další informace najdete v tématu [automatické zálohování databází](sql-database-automated-backups.md). Můžete obnovit existující databáze formulář automatizovaných záloh k dřívějšímu bodu v čase jako novou databázi na stejném logickém serveru pomocí webu Azure portal, Powershellu nebo rozhraní REST API. Další informace najdete v tématu [v daném okamžiku obnovení](sql-database-recovery-using-backups.md#point-in-time-restore).
 
 Pokud maximální podporované v daném okamžiku obnovit (PITR) doba uchovávání není pro vaši aplikaci dostatečná, můžete ji rozšířit konfigurací zásad dlouhodobého uchovávání (LTR) pro databáze. Další informace najdete v tématu [dlouhodobého uchovávání záloh](sql-database-long-term-retention.md).
 
-Tyto automatické zálohy databáze můžete použít k obnovení databáze po různých ničivých událostech, a to jak v rámci vašeho datového centra, tak do jiného datového centra. Při použití automatických záloh databáze závisí odhadovaný čas obnovení na několika faktorech. Patří mezi ně celkový počet obnovovaných databází ve stejném regionu a ve stejnou dobu, velikost databáze, velikost protokolu transakcí a šířka pásma sítě. Čas obnovení je obvykle méně než 12 hodin. Může trvat delší dobu velmi velký nebo aktivní databázi obnovit. Další informace o čase obnovení najdete v tématu [databáze čas obnovení](sql-database-recovery-using-backups.md#recovery-time). Při obnovování do jiné oblasti dat je potenciální ztráta dat omezena na 1 hodinu díky geograficky redundantnímu úložišti s rozdílovými zálohami prováděnými každou hodinu.
+Tyto automatické zálohy databáze můžete použít k obnovení databáze po různých ničivých událostech, a to jak v rámci vašeho datového centra, tak do jiného datového centra. Při použití automatických záloh databáze závisí odhadovaný čas obnovení na několika faktorech. Patří mezi ně celkový počet obnovovaných databází ve stejném regionu a ve stejnou dobu, velikost databáze, velikost protokolu transakcí a šířka pásma sítě. Čas obnovení je obvykle méně než 12 hodin. Může trvat delší dobu velmi velký nebo aktivní databázi obnovit. Další informace o čase obnovení najdete v tématu [databáze čas obnovení](sql-database-recovery-using-backups.md#recovery-time). Při obnovování do jiné oblasti dat je potenciální ztráta dat je omezena na 1 hodinu s využitím geograficky redundantní zálohy.
 
 Automatizované zálohování použijte a [obnovení k určitému bodu v čase](sql-database-recovery-using-backups.md#point-in-time-restore) jako obchodní kontinuity podnikových procesů a zotavení mechanismus Pokud vaše aplikace:
 
@@ -122,7 +122,7 @@ Pokud používáte jako mechanismus obnovení aktivní geografickou replikaci a 
 > 
 
 ### <a name="perform-a-geo-restore"></a>Provedení geografického obnovení
-Pokud používáte automatizované zálohování s replikací geograficky redundantního úložiště jako mechanismus obnovení, [zahajte obnovení databáze pomocí geografického obnovení](sql-database-disaster-recovery.md#recover-using-geo-restore). K obnovení obvykle dojde během 12 hodin – se ztrátou dat až za jednu hodinu v závislosti na času pořízení a replikace poslední hodinové rozdílové zálohy. Dokud se obnovení nedokončí, databáze není schopná zaznamenávat žádné transakce ani reagovat na dotazy. Při obnovení databáze na poslední dostupný bod v čase, obnovení geo-secondary do libovolného bodu v čase se momentálně nepodporuje.
+Pokud používáte automatizované zálohování s replikací geograficky redundantního úložiště jako mechanismus obnovení, [zahajte obnovení databáze pomocí geografického obnovení](sql-database-disaster-recovery.md#recover-using-geo-restore). Obnovení obvykle dojde během 12 hodin – se ztrátou dat až jedné hodiny vzhledem k pořizování poslední záloha protokolu a geograficky replikované do jiné oblasti. Dokud se obnovení nedokončí, databáze není schopná zaznamenávat žádné transakce ani reagovat na dotazy. Při obnovení databáze na poslední dostupný bod v čase, obnovení geo-secondary do libovolného bodu v čase se momentálně nepodporuje.
 
 > [!NOTE]
 > Pokud datové centrum vrátí do režimu online předtím, než přepnete aplikace k obnovené databázi, můžete zrušit obnovení.  

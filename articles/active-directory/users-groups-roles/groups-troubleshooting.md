@@ -14,12 +14,12 @@ ms.date: 09/11/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: c616618df0ef3a7b97a8d90977559889022db232
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: e189fb8b2bc5079d1560d3b7a54fea2db7366fe7
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44718470"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46293963"
 ---
 # <a name="troubleshooting-dynamic-memberships-for-groups"></a>Řešení potíží s dynamickým členstvím ve skupinách
 
@@ -44,4 +44,4 @@ Následující články poskytují další informace o službě Azure Active Dir
 * [Správa přístupu k prostředkům pomocí skupin služby Azure Active Directory](../fundamentals/active-directory-manage-groups.md)
 * [Správa aplikací v Azure Active Directory](../manage-apps/what-is-application-management.md)
 * [Představení služby Azure Active Directory](../fundamentals/active-directory-whatis.md)
-* [Integrování místních identit do služby Azure Active Directory](../connect/active-directory-aadconnect.md)
+* [Integrování místních identit do služby Azure Active Directory](../hybrid/whatis-hybrid-identity.md)

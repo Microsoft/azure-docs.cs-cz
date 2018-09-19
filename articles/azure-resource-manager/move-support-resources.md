@@ -9,14 +9,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/07/2018
+ms.date: 09/18/2018
 ms.author: tomfitz
-ms.openlocfilehash: 45adce48e64ba185e3bb30ec5385ca8f8c523972
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 4ec09f5ed57dca89934efa750eed05e1ebcb1216
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44164712"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46298281"
 ---
 # <a name="move-operation-support-for-resources"></a>Přesunout operace podporu pro prostředky
 
@@ -269,13 +269,13 @@ Po nalezení poskytovatele prostředků a typ prostředku, použijte k určení,
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
-| serverů | Ne | Ne |
+| serverů | Ano | Ano |
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
 | Typ prostředku | Skupina prostředků | Předplatné |
 | ------------- | -------------- | ------------ |
 | servergroups | Ne | Ne |
-| serverů | Ne | Ne |
+| serverů | Ano | Ano |
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
 | Typ prostředku | Skupina prostředků | Předplatné |

@@ -1,25 +1,26 @@
 ---
-title: Analyzátory metoda v rozhraní API Lingistic Analysis | Microsoft Docs
-description: Analyzátory REST API poskytuje seznam analyzátory, které jsou aktuálně podporovány službou v kognitivní služby společnosti Microsoft.
+title: Metoda Analyzers - Lingistic rozhraní API pro analýzu
+titlesuffix: Azure Cognitive Services
+description: Analyzátory rozhraní REST API poskytuje seznam analyzátory, které jsou aktuálně podporuje rozhraní API pro jazykovou analýzu.
 services: cognitive-services
 author: RichardSunMS
-manager: wkwok
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: linguistic-analysis
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/30/2016
 ms.author: lesun
-ms.openlocfilehash: 3fc243a0da77c5bae9009929f2b82e1353347752
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: b443bbd6377f0720c8be86bbe2b7a3e8ab8cb880
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342391"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129008"
 ---
-# <a name="analyzers-method"></a>Analyzátory – metoda
+# <a name="analyzers-method"></a>Metoda analyzers
 
-**Analyzátorů** obsahuje seznam analyzátorů aktuálně nepodporuje službu rozhraní REST API.
-Odpověď obsahuje jejich [názvy](Analyzer-Names.md) a jazyky podporované každou (např. "en" pro angličtinu).
+**Analyzátory** rozhraní REST API poskytuje seznam aktuálně podporované službou analyzátory.
+Odpověď obsahuje jejich [názvy](Analyzer-Names.md) a jazyky podporované jednotlivými (například "en" pro angličtinu).
 
 ## <a name="request-parameters"></a>Parametry žádosti
 Žádný
@@ -29,11 +30,11 @@ Odpověď obsahuje jejich [názvy](Analyzer-Names.md) a jazyky podporované kaž
 ## <a name="response-parameters"></a>Parametry odpovědi
 Název | Typ | Popis
 -----|------|--------------
-jazyky | seznam řetězců | seznam kódů dvě písmeno ISO jazyků, pro které je možné tento analyzátor.
+Jazyky | seznam řetězců | seznam kódů dvě písmeno ISO jazyků, pro které je možné tento analyzátor.
 id   | řetězec | Jedinečné ID pro tento analyzátor
-Typ | řetězec | široká typ analyzátor sem
+Typ | řetězec | široký typ analyzátoru zde
 Specifikace | řetězec | Název specifikace použité pro tento analyzátor
-implementace | řetězec | Popis modelu a/nebo algoritmus za tento analyzátor
+Implementace | řetězec | Popis modelu a/nebo algoritmus za tento analyzátor
 
 <br>
 ## <a name="example"></a>Příklad:

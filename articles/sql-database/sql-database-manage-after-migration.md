@@ -12,12 +12,12 @@ ms.author: josack
 ms.suite: sql
 ms.prod_service: sql-database
 ms.component: data-movement
-ms.openlocfilehash: 4b48f360c95170a36d1e79b075403d541c8b66ed
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 9ca8c42d99f3bd7548c685f03328084865a09906
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983929"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295780"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>Nové DBA v cloudu – Správa vaší databáze ve službě Azure SQL Database
 
@@ -73,12 +73,12 @@ Existují [dvě metody ověřování](sql-database-control-access.md#authenticat
 - [Ověřování pomocí Azure Active Directory](sql-database-aad-authentication.md)
 - Ověřování SQL. 
 
-Tradiční windows ověřování není podporováno. Azure Active Directory (AD) je centralizovaná služba správy identit a přístupu. To velmi jednoduše zadáte jednotné přihlašování přístup (SSO) na všechny zaměstnance ve vaší organizaci. To znamená, že přihlašovací údaje jsou sdíleny napříč všemi službami Azure pro jednodušší ověřování. Podporuje AAD [MFA (Vícefaktorové ověřování)](sql-database-ssms-mfa-authentication.md) a s [několika kliknutími](../active-directory/connect/active-directory-aadconnect-get-started-express.md) AAD je možné integrovat se službou Windows Server Active Directory. Ověřování SQL funguje úplně stejně, jako jste používali ho v minulosti. Zadejte uživatelské jméno a heslo a uživatele k jakékoli databázi na daném logický server, můžete ověřovat. Umožňuje také SQL Database a SQL Data Warehouse, která nabízí služby Multi-Factor authentication a uživatelské účty hostů v doméně služby Azure AD. Pokud už máte Active Directory v místním, může provést federaci adresář s Azure Active Directory pro rozšíření adresáře do Azure.
+Tradiční windows ověřování není podporováno. Azure Active Directory (AD) je centralizovaná služba správy identit a přístupu. To velmi jednoduše zadáte jednotné přihlašování přístup (SSO) na všechny zaměstnance ve vaší organizaci. To znamená, že přihlašovací údaje jsou sdíleny napříč všemi službami Azure pro jednodušší ověřování. Podporuje AAD [MFA (Vícefaktorové ověřování)](sql-database-ssms-mfa-authentication.md) a s [několika kliknutími](../active-directory/hybrid/how-to-connect-install-express.md) AAD je možné integrovat se službou Windows Server Active Directory. Ověřování SQL funguje úplně stejně, jako jste používali ho v minulosti. Zadejte uživatelské jméno a heslo a uživatele k jakékoli databázi na daném logický server, můžete ověřovat. Umožňuje také SQL Database a SQL Data Warehouse, která nabízí služby Multi-Factor authentication a uživatelské účty hostů v doméně služby Azure AD. Pokud už máte Active Directory v místním, může provést federaci adresář s Azure Active Directory pro rozšíření adresáře do Azure.
 
 |**Pokud jste...**|**SQL Database nebo SQL Data Warehouse**|
 |---|---|
 |Nechcete použít Azure Active Directory (AD) ve službě Azure|Použití [ověřování SQL](sql-database-security-overview.md)|
-|Využité AD v systému SQL Server on-premises|[Vytvoření federace AD se službou Azure AD](../active-directory/connect/active-directory-aadconnect.md)a využít ověřování Azure AD. Díky tomu můžete použít jednotné přihlašování.|
+|Využité AD v systému SQL Server on-premises|[Vytvoření federace AD se službou Azure AD](../active-directory/hybrid/whatis-hybrid-identity.md)a využít ověřování Azure AD. Díky tomu můžete použít jednotné přihlašování.|
 |Potřebujete vynutit ověřování Multi-Factor Authentication (MFA)|Vyžadovat vícefaktorové ověřování jako zásady prostřednictvím [podmíněný přístup Microsoft](sql-database-conditional-access.md)a použijte [Azure AD univerzální ověřování s podporou MFA](sql-database-ssms-mfa-authentication.md).|
 |Účty hostů z účtů Microsoft (live.com, outlook.com) nebo v jiných doménách (gmail.com)|Použití [Azure AD univerzální ověřování](sql-database-ssms-mfa-authentication.md) ve službě SQL Database/Data Warehouse, která využívá [spolupráce B2B ve službě Azure AD](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md).|
 |Přihlášení k Windows pomocí přihlašovacích údajů Azure AD z federované domény|Použití [integrované ověřování Azure AD](sql-database-aad-authentication-configure.md).|

@@ -1,20 +1,21 @@
 ---
 title: Země, oblasti a jazyky podporované rozhraní API webové vyhledávání Bingu
+titleSuffix: Azure Cognitive Services
 description: Zjistěte, které země/oblasti a jazyky podporují rozhraní API webové vyhledávání Bingu.
 services: cognitive-services
 author: v-jerkin
-manager: jhubbard
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: article
 ms.date: 8/16/2018
 ms.author: erhopf
-ms.openlocfilehash: 87384a8aeabfe0c4a178344235debcc586cdf3de
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: b954814d1c26e8afd24e0bb13e74c493f0fd2c55
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42888467"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46125115"
 ---
 # <a name="countries-regions-and-languages-supported-by-the-bing-web-search-api"></a>Země, oblasti a jazyky podporované rozhraní API webové vyhledávání Bingu
 

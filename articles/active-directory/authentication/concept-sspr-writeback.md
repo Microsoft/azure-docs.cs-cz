@@ -10,22 +10,22 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 4f4c2ada08c69b6602ff5a300a15c4ca57090a8e
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 8440d8a492105365417190ad286798e0bdf47a0c
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42816049"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295831"
 ---
 # <a name="what-is-password-writeback"></a>Co je zpětný zápis hesla?
 
-Nástroj pro resetování hesla cloudové je skvělé, ale většina společností má stále v místním adresáři, kde existují svým uživatelům. Jak funguje zachování podpory Microsoft tradiční místní Active Directory (AD) synchronizované s změny hesla v cloudu? Zpětný zápis hesla je povolená funkce [Azure AD Connect](./../connect/active-directory-aadconnect.md) , která umožňuje změny hesla v cloudu a možné zpětně zapsat do existujícího místního adresáře v reálném čase.
+Nástroj pro resetování hesla cloudové je skvělé, ale většina společností má stále v místním adresáři, kde existují svým uživatelům. Jak funguje zachování podpory Microsoft tradiční místní Active Directory (AD) synchronizované s změny hesla v cloudu? Zpětný zápis hesla je povolená funkce [Azure AD Connect](../hybrid/whatis-hybrid-identity.md) , která umožňuje změny hesla v cloudu a možné zpětně zapsat do existujícího místního adresáře v reálném čase.
 
 Zpětný zápis hesla je podporována v prostředí, které používá:
 
-* [Active Directory Federation Services (AD FS)](../connect/active-directory-aadconnect-federation-management.md)
-* [Synchronizace hodnoty hash hesel](../connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md)
-* [Předávací ověřování](../connect/active-directory-aadconnect-pass-through-authentication.md)
+* [Active Directory Federation Services (AD FS)](../hybrid/how-to-connect-fed-management.md)
+* [Synchronizace hodnoty hash hesel](../hybrid/how-to-connect-password-hash-synchronization.md)
+* [Předávací ověřování](../hybrid/how-to-connect-pta.md)
 
 Zpětný zápis hesla nabízí:
 

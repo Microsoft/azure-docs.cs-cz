@@ -9,14 +9,14 @@ keywords: Azure functions, functions, zpracování událostí, webhook, dynamick
 ms.service: azure-functions
 ms.devlang: java
 ms.topic: conceptual
-ms.date: 08/10/2018
+ms.date: 09/14/2018
 ms.author: routlaw
-ms.openlocfilehash: f0dc471e8875ad0d738fce10421c3586752148b9
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: f6c5eb4a3ace1fcca1bbbef321371d55a0ce8da9
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092305"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123483"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Příručka pro vývojáře Azure Functions Java
 
@@ -26,7 +26,35 @@ ms.locfileid: "44092305"
 
 Funkce Azure by měl být metoda bezstavové třídy, která zpracovává vstup a výstup. I když můžete napsat metody instance, nesmí funkce závisí na všechna pole instancí třídy. Všechny funkce metody musí mít `public` modifikátor přístupu.
 
-Můžete vložit více než jedna funkce v projektu. Vyhněte se vložení vašich funkcí do samostatných souborů JAR.
+## <a name="folder-structure"></a>struktura složek
+
+Struktura složek projektu jazyka Java vypadá takto:
+
+```
+FunctionsProject
+ | - src
+ | | - main
+ | | | - java
+ | | | | - FunctionApp
+ | | | | | - MyFirstFunction.java
+ | | | | | - MySecondFunction.java
+ | - target
+ | | - azure-functions
+ | | | - FunctionApp
+ | | | | - FunctionApp.jar
+ | | | | - host.json
+ | | | | - MyFirstFunction
+ | | | | | - function.json
+ | | | | - MySecondFunction
+ | | | | | - function.json
+ | | | | - bin
+ | | | | - lib
+ | - pom.xml
+```
+
+Existuje soubor sdílený [host.json] (funkce json.md hostitele), který můžete použít ke konfiguraci aplikace function app. Každá funkce má svůj vlastní soubor s kódem (.Java, který) a vazbu konfigurační soubor (function.json).
+
+Můžete vložit více než jedna funkce v projektu. Vyhněte se vložení vašich funkcí do samostatných souborů JAR. FunctionApp v cílovém adresáři je, co se nasadí do vaší aplikace funkcí v Azure.
 
 ## <a name="triggers-and-annotations"></a>Aktivační události a poznámky
 

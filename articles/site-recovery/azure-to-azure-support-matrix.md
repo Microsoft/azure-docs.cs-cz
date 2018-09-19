@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: sujayt
-ms.openlocfilehash: 105c1d97a812841e82a0c364ec7dda097c0dd399
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 1fa5451b852a564ef3f0858fdfe0ab0091117508
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44717365"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296018"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Matice podpory pro které se replikují z jedné oblasti Azure do jiné
 
@@ -171,7 +171,8 @@ Standard Managed disks | Podporované v oblastech Azure, ve kterých je Azure Si
 Premium Managed disks | Podporované v oblastech Azure, ve kterých je Azure Site Recovery nepodporuje. |
 Prostory úložiště | Podporováno |         
 Šifrování v klidovém stavu (SSE) | Podporováno | SSE je výchozí nastavení u účtů úložiště.   
-Azure Disk Encryption (ADE) | Nepodporuje se |
+Azure Disk Encryption (ADE) pro operační systém Windows | Povoleno pro virtuální počítače [šifrování pomocí aplikace Azure AD](https://aka.ms/ade-aad-app) jsou podporovány |
+Azure Disk Encryption (ADE) pro operační systém Linux | Nepodporuje se |
 Přidání nebo odebrání horké disku | Nepodporuje se | Je-li přidat nebo odebrat datový disk na virtuálním počítači, musíte zakázat replikaci a povolte replikaci pro virtuální počítač znovu.
 Vyloučení disku | Nepodporuje se|   Dočasný disk je ve výchozím nastavení vyloučen.
 Prostory úložiště s přímým přístupem  | Nepodporuje se|

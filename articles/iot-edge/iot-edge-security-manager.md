@@ -9,12 +9,12 @@ ms.author: eustacea
 ms.date: 07/30/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 9b4801048c391aae6e95f4181464255ecf6151fc
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: 4594685291396b8b80e62abe57be109f0abbd81d
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39359948"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46126339"
 ---
 # <a name="azure-iot-edge-security-manager"></a>Správce zabezpečení služby Azure IoT Edge
 
@@ -109,7 +109,7 @@ Modul runtime IoT Edge sleduje a sestavy verzi démona zabezpečení IoT Edge. V
 
 ### <a name="hardware-security-module-platform-abstraction-layer-hsm-pal"></a>Zabezpečení modulu platformy HAL (PAL modulu hardwarového zabezpečení)
 
-HSM PAL abstrahuje všechny kořenové důvěryhodnosti hardwaru Izolovat uživatele služby IoT Edge z jejich složitosti nebo vývojáře.  To se skládá z kombinace programátora rozhraní API (Application) a trans domény komunikace postupy, například komunikace mezi standardní spouštěcí prostředí a zabezpečenou enklávy.  Skutečná implementace HSM PAL, závisí na konkrétní zabezpečený hardware používá.  Jeho existenci umožňuje použití prakticky jakoukoli zabezpečené silicon hardwaru v ekosystému IoT.
+HSM PAL abstrahuje všechny kořenové důvěryhodnosti hardwaru Izolovat uživatele služby IoT Edge z jejich složitosti nebo vývojáře.  To se skládá z kombinace rozhraní API (Application Programming) a trans domény komunikace postupy, například komunikace mezi standardní spouštěcí prostředí a zabezpečenou enklávy.  Skutečná implementace HSM PAL, závisí na konkrétní zabezpečený hardware používá.  Jeho existenci umožňuje použití prakticky jakoukoli zabezpečené silicon hardwaru v ekosystému IoT.
 
 ## <a name="secure-silicon-root-of-trust-hardware"></a>Zabezpečené silicon kořenové důvěryhodnosti hardwaru
 

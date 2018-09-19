@@ -17,12 +17,12 @@ ms.date: 09/11/2018
 ms.author: celested
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: ba4d8d46a6423a932eceea7fbe20ae985445c6a3
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 08e817b24d4190b6d7f774dd8c812d04e89c1e5a
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44718878"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296749"
 ---
 # <a name="customizing-claims-issued-in-the-saml-token-for-enterprise-applications-in-azure-active-directory"></a>Přizpůsobování deklarací identity vystavených v tokenu SAML pro podnikové aplikace v Azure Active Directory
 V dnešní době Azure Active Directory podporuje jednotné přihlašování na se většina podnikových aplikací, včetně obě aplikace předem integrované v galerii aplikací Azure AD, jakož i vlastních aplikací. Při ověření uživatele k aplikaci prostřednictvím služby Azure AD pomocí protokolu SAML 2.0, Azure AD odešle token do aplikace (přes HTTP POST). A potom aplikaci ověří a použije token k přihlášení uživatele místo vás vyzve k zadání uživatelského jména a hesla. Tyto tokeny SAML obsahují informace o uživateli, známé jako "deklarace".
@@ -73,7 +73,7 @@ Například budete muset odeslat oddělení, které uživatel patří do jejich 
 > Pokud pro daného uživatele neexistuje převáděná hodnota uložena pro vybraný atribut, není právě tento deklarací identity vystavených v tokenu.
 
 > [!TIP]
-> **User.onpremisesecurityidentifier** a **user.onpremisesamaccountname** jsou podporovány pouze při synchronizaci dat uživatele z místní služby Active Directory pomocí [Azure AD Připojení nástroje](../active-directory-aadconnect.md).
+> **User.onpremisesecurityidentifier** a **user.onpremisesamaccountname** jsou podporovány pouze při synchronizaci dat uživatele z místní služby Active Directory pomocí [Azure AD Připojení nástroje](../hybrid/whatis-hybrid-identity.md).
 
 ## <a name="restricted-claims"></a>Deklarace identity s omezeným přístupem
 

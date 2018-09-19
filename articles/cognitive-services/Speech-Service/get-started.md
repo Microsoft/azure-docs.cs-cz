@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/17/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 5ae57764e2950d027e832eccec5393d4aec4486a
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: cbb73b199255af7e7a91b1586b331acde035bfd7
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/18/2018
-ms.locfileid: "45981828"
+ms.locfileid: "46124508"
 ---
 # <a name="try-the-speech-service-for-free"></a>Vyzkoušejte si službu Speech zdarma
 
@@ -26,7 +26,7 @@ Nakonec Speech service nabízí na úrovni free, s nízkým objemem, který je v
 
 ## <a name="free-trial"></a>Bezplatná zkušební verze
 
-30denní bezplatná zkušební verze poskytuje přístup k po omezenou dobu cenová úroveň standard S0. 
+30denní bezplatná zkušební verze poskytuje přístup k po omezenou dobu cenová úroveň standard.
 
 Chcete-li zaregistrovat 30denní bezplatnou zkušební verzi:
 
@@ -44,56 +44,28 @@ Chcete-li zaregistrovat 30denní bezplatnou zkušební verzi:
 
    ![Souhlas s podmínkami](media/index/try-speech-api-free-trial3.png)
 
-1. Přihlaste se pomocí účtu Microsoft, Facebook, LinkedIn nebo GitHub. Nebo si můžete zaregistrovat si bezplatný účet Microsoft:
+1. Přihlaste se pomocí účtu Microsoft, Facebook, LinkedIn nebo GitHub.
 
-    * Přejděte [portálu účtů Microsoft](https://account.microsoft.com/account).
-    * Vyberte **přihlásit se účtem Microsoft**.
+    Můžete se zaregistrovat si bezplatný účet Microsoft na [portálu účtů Microsoft](https://account.microsoft.com/account). Abyste mohli začít, klikněte na tlačítko **přihlásit se účtem Microsoft** a když se zobrazí výzva k přihlášení, klepněte na tlačítko **ho vytvořit.** Postupujte podle kroků k vytvoření a ověřte svůj nový účet Microsoft.
 
-    ![Přihlášení](media/index/try-speech-api-free-trial4.png)
-
-    * Když se zobrazí výzva k přihlášení, vyberte **vytvořit**.
-
-    ![Vytvořit nový účet](media/index/try-speech-api-free-trial5.png)
-
-    * V krocích, které řídí, zadejte e-mailovou adresu nebo telefonní číslo přiřaďte heslo a postupujte podle pokynů k ověření svůj nový účet Microsoft.
-
-Po přihlášení, začne bezplatné zkušební verze. Zobrazená webová stránka obsahuje seznam všech služeb Azure Cognitive Services, pro které máte aktuálně zkušebních verzí předplatného. Vedle položky jsou uvedeny dva klíče předplatného **hlasové služby**. Ani jeden klíč můžete použít ve svých aplikacích.
+Po přihlášení k zkuste služby Cognitive Services, začne bezplatné zkušební verze. Zobrazená webová stránka obsahuje seznam všech služeb Azure Cognitive Services, pro které máte aktuálně zkušebních verzí předplatného. Vedle položky jsou uvedeny dva klíče předplatného **hlasové služby**. Ani jeden klíč můžete použít ve svých aplikacích.
 
 > [!NOTE]
-> Všechny bezplatných zkušebních verzí předplatného se v oblasti západní USA. Pokud provedete požadavky, je potřeba použít koncový bod, který odpovídá vaší oblasti.
+> Všechny bezplatných zkušebních verzí předplatného se v oblasti západní USA. Pokud provedete požadavky, je potřeba použít `westus` koncového bodu.
 
 ## <a name="new-azure-account"></a>Nový účet Azure
 
 Nové účty Azure získáte kredit 200 USD, služby, který je k dispozici po dobu až 30 dnů. Tento kredit můžete podrobněji prozkoumat Speech service nebo začátek vývoje aplikace.
 
-Chcete-li zaregistrovat nový účet Azure:
+Si zaregistrovat nový účet Azure, přejděte [Azure registrační stránku](https://azure.microsoft.com/free/ai/), klikněte na tlačítko **začít zdarma** a vytvořit nový účet Azure pomocí účtu Microsoft.
 
-1. Přejděte [Azure registrační stránku](https://azure.microsoft.com/free/ai/). 
+Můžete se zaregistrovat si bezplatný účet Microsoft na [portálu účtů Microsoft](https://account.microsoft.com/account). Abyste mohli začít, klikněte na tlačítko **přihlásit se účtem Microsoft** a když se zobrazí výzva k přihlášení, klepněte na tlačítko **ho vytvořit.** Postupujte podle kroků k vytvoření a ověřte svůj nový účet Microsoft.
 
-1. Vyberte **začít zdarma**.
-
-    ![Začněte zdarma](media/index/try-speech-api-new-azure1.png)
-
-1. Přihlaste se pomocí svého účtu Microsoft. Pokud nemáte:
-
-    * Přejděte [portálu účtů Microsoft](https://account.microsoft.com/account).
-    * Vyberte **přihlásit se účtem Microsoft**.
-    * Když se zobrazí výzva k přihlášení, vyberte **ho vytvořit.**
-    * V krocích, které řídí, zadejte e-mailovou adresu nebo telefonní číslo přiřaďte heslo a postupujte podle pokynů k ověření svůj nový účet Microsoft.
-
-1. Zadejte zbývající informace, které vyžaduje se přihlásit k účtu. Zadejte svou zemi a vaše jméno a zadejte telefonní číslo a e-mailovou adresu.
-
-    ![Zadejte informace](media/index/try-speech-api-new-azure2.png)
-
-    Ověřte vaši identitu po telefonu a tím, že poskytuje číslo kreditní karty. (Vaši kreditní kartu nebude nic účtováno.) Poto, přijměte podmínky smlouvy Azure uživatele. 
-
-    ![Přijměte podmínky smlouvy](media/index/try-speech-api-new-azure3.png)
-
-Vytvoření bezplatného účtu Azure. Postupujte podle kroků v další části, kde zahájíte předplatné ke službě řeči.
+Po vytvoření účtu Azure, postupujte podle kroků v další části, kde zahájíte předplatné ke službě řeči.
 
 ## <a name="create-a-speech-resource-in-azure"></a>Vytvořit prostředek řeči v Azure
 
-Chcete-li přidat prostředek služby řeči ke svému účtu Azure:
+Chcete-li přidat prostředek služby řeči (bezplatné nebo placené úrovně) ke svému účtu Azure:
 
 1. Přihlaste se k [webu Azure portal](https://ms.portal.azure.com/) pomocí účtu Microsoft.
 
@@ -107,7 +79,7 @@ Chcete-li přidat prostředek služby řeči ke svému účtu Azure:
 
     ![Výběr řeči (preview)](media/index/try-speech-api-create-speech2.png)
 
-1. V části **řeči (preview)**, vyberte **vytvořit** tlačítko.
+1. V části **řeči (preview)**, klikněte na tlačítko **vytvořit** tlačítko.
 
     ![Vyberte tlačítko Vytvořit](media/index/try-speech-api-create-speech3.png)
 
@@ -116,21 +88,33 @@ Chcete-li přidat prostředek služby řeči ke svému účtu Azure:
     * Název pro nový prostředek. Název umožňuje rozlišit několik předplatných ve stejné službě.
     * Zvolte předplatné Azure, se nový prostředek je přidružený k určení, jak se účtují poplatky.
     * Vyberte oblast, kde se budou používat zdroj. Speech service je aktuálně dostupná v oblastech východní Asie, Severní Evropa a západní USA.
-    * Vyberte cenovou úroveň buď F0 (omezené bezplatné předplatné) nebo S0 (standardní předplatné). Vyberte **zobrazit všechny podrobnosti o cenách** podrobnější informace o cenách a využití kvóty pro jednotlivé úrovně.
+    * Zvolte buď bezplatné i placené cenové úrovně. Klikněte na tlačítko **zobrazit všechny podrobnosti o cenách** podrobnější informace o cenách a využití kvóty pro jednotlivé úrovně.
     * Vytvořit novou skupinu prostředků pro toto předplatné řeči nebo předplatné přiřadit existující skupinu prostředků. Pomáhají udržovat vaše různých předplatných Azure, které jsou uspořádány skupiny zdrojů.
     * Pohodlný přístup k vašemu předplatnému v budoucnu, vyberte **připnout na řídicí panel** zaškrtávací políčko.
     * Vyberte **vytvořit.**
 
     ![Vyberte tlačítko Vytvořit](media/index/try-speech-api-create-speech4.png)
 
-    Může trvat okamžiku vytvoření a nasazení vašeho nového prostředku řeči. Vyberte **rychlý Start** zobrazíte informace o nový prostředek.
+    Trvá okamžiku vytvoření a nasazení vašeho nového prostředku řeči. Vyberte **rychlý Start** zobrazíte informace o nový prostředek.
 
     ![Rychlý start panel](media/index/try-speech-api-create-speech5.png)
 
-1. V části **rychlý Start**, vyberte **klíče** odkaz v kroku 1, chcete-li zobrazit klíče předplatného. Každé předplatné má dva klíče; ani jeden klíč můžete použít ve vaší aplikaci. Klikněte na tlačítko vedle každého klíče ho zkopírovat do schránky pro vkládání do kódu.
+1. V části **rychlý Start**, klikněte na tlačítko **klíče** odkaz v kroku 1, chcete-li zobrazit klíče předplatného. Každé předplatné má dva klíče; ani jeden klíč můžete použít ve vaší aplikaci. Klikněte na tlačítko vedle každého klíče ho zkopírovat do schránky pro vkládání do kódu.
 
 > [!NOTE]
 > Neomezený počet předplatných úrovně standard můžete vytvořit v jedné nebo víc oblastech. Můžete však vytvořit jenom jedno předplatné bezplatné úrovně. Nasazení modelu na úrovni free, která nepoužíval. po dobu 7 dní se vyřadil automaticky.
+
+## <a name="switch-to-a-new-subscription"></a>Přepnout do nového předplatného
+
+Přepínání z jednoho předplatného do jiného, například kdy vyprší platnost bezplatné zkušební verze nebo když publikujete aplikaci, nahraďte oblast a předplatné klíče ve vašem kódu oblast a předplatné klíč nového prostředku Azure.
+
+> [!NOTE]
+> Bezplatná zkušební verze klíče vytvořené v oblasti západní USA (`westus`) oblasti. Předplatné vytvořili prostřednictvím řídicího panelu Azure může být v některé oblasti, pokud se pro to rozhodnete.
+
+* Pokud vaše aplikace používá [sadou SDK pro řeč](speech-sdk.md), zadejte kód oblasti, jako třeba `westus`, při vytváření instance `RecognizerFactory`. 
+* Pokud vaše aplikace používá jednu z Speech service [rozhraní REST API](rest-apis.md), oblast je součástí koncového bodu identifikátor URI, které používáte při zasílání požadavků.
+
+Klíče vytvořené pro oblasti jsou platné pouze v dané oblasti. Pokus o použití s jinými oblastmi způsobí chyby ověřování.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -1,6 +1,6 @@
 ---
-title: 'Ověřování služby služby: Java s Data Lake Store pomocí Azure Active Directory | Microsoft Docs'
-description: Zjistěte, jak dosáhnout service-to-service ověřování s Data Lake Store pomocí Azure Active Directory s Javou
+title: 'Ověřování služba služba: Java s Azure Data Lake Storage Gen1 pomocí Azure Active Directory | Dokumentace Microsoftu'
+description: Zjistěte, jak dokončit ověřování služba služba s Azure Data Lake Storage Gen1 používání Javy v Azure Active Directory
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: c8ef983871f3fb1ec47522571ce95843bdd2d313
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 86cc5148c862c18c01cec2951fc58e2932c17ca8
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34625861"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46298145"
 ---
-# <a name="service-to-service-authentication-with-data-lake-store-using-java"></a>Service-to-service ověřování s Data Lake Store pomocí jazyka Java
+# <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-java"></a>Ověřování služba služba s Azure Data Lake Storage Gen1 s využitím Javy
 > [!div class="op_single_selector"]
 > * [Pomocí Javy](data-lake-store-service-to-service-authenticate-java.md)
 > * [Pomocí sady .NET SDK](data-lake-store-service-to-service-authenticate-net-sdk.md)
@@ -27,16 +27,16 @@ ms.locfileid: "34625861"
 > 
 >  
 
-V tomto článku se dozvíte o použití sady Java SDK udělat service-to-service ověřování s Azure Data Lake Store. Ověření koncových uživatelů s Data Lake Store pomocí sady Java SDK není podporováno.
+V tomto článku se dozvíte o tom, jak pomocí sady Java SDK provádět ověřování služba služba s Azure Data Lake Storage Gen1. Ověřování koncového uživatele s Data Lake Storage Gen1 pomocí sady Java SDK se nepodporuje.
 
 ## <a name="prerequisites"></a>Požadavky
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Vytvoření aplikace Azure Active Directory "Web"**. Musí mít dokončili postup v [Service-to-service ověřování s Data Lake Store pomocí Azure Active Directory](data-lake-store-service-to-service-authenticate-using-active-directory.md).
+* **Vytvoření aplikace Azure Active Directory "Web"**. Je nutné dokončit kroky v [ověřování služba služba Data Lake Storage Gen1 pomocí Azure Active Directory](data-lake-store-service-to-service-authenticate-using-active-directory.md).
 
 * [Maven](https://maven.apache.org/install.html). V tomto kurzu se používá Maven pro závislosti sestavení a projektu. I když je možné sestavení vytvářet bez použití systému pro sestavení, jako je Maven a Gradle, tyto systémy podstatně usnadňují správu závislostí.
 
-* (Volitelné) Rozhraní IDE, jako je například [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) nebo [Eclipse](https://www.eclipse.org/downloads/) nebo podobné.
+* (Volitelné) Integrované vývojové prostředí, jako jsou [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) nebo [Eclipse](https://www.eclipse.org/downloads/) nebo podobného.
 
 ## <a name="service-to-service-authentication"></a>Ověřování služba-služba
 1. Vytvořte projekt Maven pomocí příkazu [mvn archetype](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html) z příkazového řádku nebo pomocí integrovaného vývojového rozhraní (IDE). Pokyny k vytvoření projektu jazyka Java s použitím IntelliJ najdete [zde](https://www.jetbrains.com/help/idea/2016.1/creating-and-running-your-first-java-application.html). Pokyny k vytvoření projektu s použitím Eclipse najdete [zde](http://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2FgettingStarted%2Fqs-3.htm).
@@ -56,7 +56,7 @@ V tomto článku se dozvíte o použití sady Java SDK udělat service-to-servic
           </dependency>
         </dependencies>
    
-    První závislostí je použití sady SDK pro Data Lake Store (`azure-data-lake-store-sdk`) z úložiště maven. Druhou závislostí je zadání protokolovacího rozhraní (`slf4j-nop`), které se pro tuto aplikaci použije. Sada SDK pro službu Data Lake Store používá při protokolování [slf4j](http://www.slf4j.org/), takže máte možnost si vybrat z řady oblíbených protokolovacích rozhraní, jako je log4j, Java, logback atd., nebo nemusíte použít žádné protokolování. Pro tento příklad zakážeme protokolování a použijeme tedy vazbu **slf4j-nop**. Pokud chcete ve své aplikaci použít jiné možnosti protokolování, přečtěte si informace [zde](http://www.slf4j.org/manual.html#projectDep).
+    První závislostí je použití sady SDK pro Data Lake Storage Gen1 (`azure-data-lake-store-sdk`) z úložiště maven. Druhou závislostí je zadání protokolovacího rozhraní (`slf4j-nop`), které se pro tuto aplikaci použije. Používá sadu SDK pro Data Lake Storage Gen1 [slf4j](http://www.slf4j.org/) průčelí protokolování, které umožňuje vybrat z řady oblíbených protokolovacích rozhraní, jako je log4j, Java, logback atd., protokolování nebo žádné protokolování. Pro tento příklad zakážeme protokolování a použijeme tedy vazbu **slf4j-nop**. Pokud chcete ve své aplikaci použít jiné možnosti protokolování, přečtěte si informace [zde](http://www.slf4j.org/manual.html#projectDep).
 
 3. Přidejte do své aplikace následující příkazy pro import.
 
@@ -67,7 +67,7 @@ V tomto článku se dozvíte o použití sady Java SDK udělat service-to-servic
         import com.microsoft.azure.datalake.store.oauth2.AccessTokenProvider;
         import com.microsoft.azure.datalake.store.oauth2.ClientCredsTokenProvider;
 
-4. Použít následující fragment kódu v aplikaci Java se získat token pro Active Directory webovou aplikaci jste vytvořili dříve pomocí jedné z podřízené třídy `AccessTokenProvider` (následující příklad používá `ClientCredsTokenProvider`). Poskytovatel tokenu má uložené přihlašovací údaje v mezipaměti a automaticky token obnovuje, pokud má vypršet jeho platnost. Je možné vytvořit vlastní měly podtřídy `AccessTokenProvider` tak tokeny jsou získány kódem vašeho zákazníka. Prozatím se právě použijeme zadanému v sadě SDK.
+4. Použít následující fragment kódu v aplikaci Java k získání tokenu pro aplikaci webové služby Active Directory, které jste předtím vytvořili pomocí jednu z podtříd třídy `AccessTokenProvider` (následující příklad používá `ClientCredsTokenProvider`). Poskytovatel tokenu má uložené přihlašovací údaje v mezipaměti a automaticky token obnovuje, pokud má vypršet jeho platnost. Je možné vytvořit vlastní podtřídy třídy `AccessTokenProvider` takže tokeny se získávají pomocí zákaznického kódu. Teď použijeme je k dispozici v sadě SDK.
 
     Místo **FILL-IN-HERE** zadejte skutečné hodnoty pro webovou aplikaci Azure Active Directory.
 
@@ -77,11 +77,11 @@ V tomto článku se dozvíte o použití sady Java SDK udělat service-to-servic
     
         AccessTokenProvider provider = new ClientCredsTokenProvider(authTokenEndpoint, clientId, clientKey);   
 
-V sadě SDK pro Data Lake Store jsou vhodné metody, které umožňují spravovat tokeny zabezpečení potřebné ke komunikaci s účtem služby Data Lake Store. Není ale povinné použít tuto sadu SDK a tyto metody. Můžete použít také jakýkoliv jiný způsob získání tokenu, například sadu [Azure Active Directory SDK](https://github.com/AzureAD/azure-activedirectory-library-for-java) nebo vlastní kód.
+Sady SDK pro Data Lake Storage Gen1 jsou vhodné metody, které umožňují spravovat tokeny zabezpečení potřebné ke komunikaci s účtem Data Lake Storage Gen1. Není ale povinné použít tuto sadu SDK a tyto metody. Můžete použít také jakýkoliv jiný způsob získání tokenu, například sadu [Azure Active Directory SDK](https://github.com/AzureAD/azure-activedirectory-library-for-java) nebo vlastní kód.
 
 ## <a name="next-steps"></a>Další postup
-V tomto článku jste zjistili, jak používat ověřování koncových uživatelů k ověřování s Azure Data Lake Store pomocí sady Java SDK. Teď můžete prohlédnout v následujících článcích, kteří komunikují o použití sady Java SDK pro práci s Azure Data Lake Store.
+V tomto článku jste zjistili, jak používat ověřování koncového uživatele k ověření pomocí Data Lake Storage Gen1 pomocí sady Java SDK. Teď můžete prohlédnout v následujících článcích, které mluvit o tom, jak používat sadu Java SDK pro práci s Data Lake Storage Gen1.
 
-* [Operace dat v Data Lake Store pomocí sady Java SDK](data-lake-store-get-started-java-sdk.md)
+* [Operace s daty v Data Lake Storage Gen1 pomocí sady Java SDK](data-lake-store-get-started-java-sdk.md)
 
 

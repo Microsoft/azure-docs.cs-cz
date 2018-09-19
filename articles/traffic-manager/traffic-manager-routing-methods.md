@@ -4,26 +4,24 @@ description: Tento článek vám pomůže pochopit metody směrování provozu r
 services: traffic-manager
 documentationcenter: ''
 author: KumudD
-manager: timlt
-editor: ''
-ms.assetid: db1efbf6-6762-4c7a-ac99-675d4eeb54d0
+manager: jpconnock
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/13/2017
+ms.date: 09/17/2018
 ms.author: kumud
-ms.openlocfilehash: 03f1cc3a34fa8a472dcab9654b65cc97b8473993
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 797f97b9c1548484d72f518ae1d2c56633b7b5b3
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398613"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46126764"
 ---
 # <a name="traffic-manager-routing-methods"></a>Metody směrování Traffic Manageru
 
-Azure Traffic Manager podporuje čtyři metody směrování provozu a zjistěte, jak směrovat síťový provoz do různých koncových bodů služby. Metody směrování provozu Traffic Manageru platí pro každý dotaz DNS, které obdrží. Metoda směrování provozu určuje, který koncový bod vrácená v odpovědi DNS.
+Azure Traffic Manager podporuje šest metod směrování provozu a zjistěte, jak směrovat síťový provoz do různých koncových bodů služby. Pro žádný profil Traffic Manageru platí metodu směrování provozu přidružený k každý dotaz DNS, které obdrží. Metoda směrování provozu určuje, který koncový bod je vrácená v odpovědi DNS.
 
 Nejsou k dispozici v Traffic Manageru čtyři metody směrování provozu:
 
@@ -31,6 +29,9 @@ Nejsou k dispozici v Traffic Manageru čtyři metody směrování provozu:
 * **[Vážená](#weighted):** vyberte **vážená** Pokud chcete provoz distribuovat mezi sadu koncových bodů, buď rovnoměrně, nebo podle váhy, které můžete definovat.
 * **[Výkon](#performance):** vyberte **výkonu** Pokud máte koncové body v různých geografických umístěních a chcete, aby koncoví uživatelé použít "nejbližší" koncový bod z hlediska nejnižší síťovou latencí.
 * **[Geografické](#geographic):** vyberte **geografické** tak, aby uživatelé jsou přesměrováni na konkrétní koncové body (Azure, externí nebo vnořené) na základě které geografického umístění mohou být jejich dotazu DNS. To dává zákazníkům Traffic Manageru, aby se povolily scénáře, ve kterém je důležité vědět, geografické oblasti uživatele a směrování je na základě. Mezi příklady patří vyhovující pověření suverenita dat, lokalizace obsahu & uživatelské prostředí a měření přenosů z různých oblastí.
+* **[Více hodnot](#multivalue):** vyberte **hodnot** pro profily Traffic Manageru, které může mít jenom adresy IPv4/IPv6 jako koncové body. Po přijetí dotaz pro tento profil se vrátí všechny koncové body v pořádku.
+* **[Podsíť](#subnet):** vyberte **podsítě** metody směrování provozu do mapování sad rozsahy IP adres koncových uživatelů na určitý koncový bod v rámci profilu Traffic Manageru. Při přijetí požadavku koncový bod vrátil, bude je mapován tento požadavek zdrojové IP adresy. 
+
 
 Všechny profily Traffic Manageru patří monitorování koncových bodů a koncový bod automatické převzetí služeb při selhání. Další informace najdete v tématu [monitorování koncových bodů Traffic Manageru](traffic-manager-monitoring.md). Jeden profil služby Traffic Manager můžete použít pouze jednu metodu směrování provozu. Kdykoli můžete vybrat metodu směrování provozu různých pro svůj profil. Změny se použijí během jedné minuty a vzniknou nedojde k žádnému výpadku. Metody směrování provozu můžete kombinovat pomocí vnořené profily Traffic Manageru. Vnoření umožňuje propracované a flexibilního směrování provozu konfigurace, které splnění požadavků větších a složité aplikace. Další informace najdete v tématu [vnořené profily Traffic Manageru](traffic-manager-nested-profiles.md).
 
@@ -38,7 +39,7 @@ Všechny profily Traffic Manageru patří monitorování koncových bodů a konc
 
 Organizace často chce zajistit spolehlivost pro své služby a nasadit jeden nebo více služeb zálohování v případě, že jejich primární služba přestane fungovat. Metody směrování provozu "Priority" umožňuje zákazníkům Azure snadno implementace tohoto modelu převzetí služeb při selhání.
 
-![Azure Traffic Manager "Priority" metody směrování provozu][1]
+! [Azure Traffic Manager "Priority" metody směrování provozu] [1]
 
 Profil služby Traffic Manager obsahuje seznam seřazený podle priority koncových bodů služby. Ve výchozím nastavení Traffic Manageru odesílá veškerý provoz na primární koncový bod (nejvyšší priorita). Pokud primární koncový bod není k dispozici, Traffic Manager směruje provoz do druhé koncového bodu. Pokud obě primární a sekundární koncových bodů nejsou k dispozici, provoz směrován na třetí a tak dále. Dostupnost koncového bodu závisí na nakonfigurovaných stavu (povoleno nebo zakázáno) a monitorování probíhající koncových bodů.
 
@@ -49,7 +50,7 @@ S Azure Resource Manageru, můžete nakonfigurovat Priorita koncového bodu expl
 ##<a name = "weighted"></a>Metody váženého směrování provozu
 Metody směrování provozu 'Váženého' umožňuje rovnoměrně distribuovat provoz nebo použít předem definované váhu.
 
-![Azure Traffic Manageru 'vážená: metody směrování provozu][2]
+! [Azure Traffic Manager "" směrování provozu metody váženého] [2]
 
 Do metody váženého směrování provozu přiřaďte váhu každý koncový bod v konfigurace profilu Traffic Manageru. Váha je celé číslo od 1 do 1000. Tento parametr je nepovinný. Pokud tento parametr vynechán, Traffic Manager používá výchozí tloušťka '1'. Váha vyšší, tím vyšší je priorita.
 
@@ -61,7 +62,7 @@ Metody váženého umožňuje některé užitečné scénáře:
 * Migrace aplikací do Azure: vytvoření profilu s Azure a externí koncové body. Nastavte váhu koncové body preferovat nové koncové body.
 * Shlukování cloudu pro další kapacitu: rychle rozšířit místní nasazení do cloudu tak, že ji vložíte za profil služby Traffic Manager. Pokud potřebujete víc kapacity v cloudu, můžete přidat nebo povolit další koncové body a určit, jaká část provoz směrován na každý koncový bod.
 
-Na portálu Azure Resource Manager podporuje konfiguraci služby směrování vážený provozu.  Nakonfigurujete váhy pomocí Resource Manageru verze prostředí Azure PowerShell, rozhraní příkazového řádku a rozhraní REST API.
+Kromě webu Azure portal můžete nakonfigurovat váhy pomocí Azure Powershellu, rozhraní příkazového řádku a rozhraní REST API.
 
 Je důležité pochopit, že odpovědí DNS v mezipaměti klienty a strany rekurzivních serverů DNS, které budou klienti používat k překladu názvů DNS. Tato ukládání do mezipaměti může mít vliv na vážený provoz distribucí. Když je velký počet klientů a rekurzivních serverů DNS, distribuce provozu funguje podle očekávání. Ale při malém počtu klientů nebo serverů DNS rekurzivní ukládání do mezipaměti může výrazně zkosení distribuce provozu.
 
@@ -77,11 +78,11 @@ Tyto účinky ukládání do mezipaměti DNS jsou společné pro všechny, přen
 
 Nasazení koncových bodů ve dvou nebo více míst po celém světě můžete rychlejší odezvu u mnoha aplikací můžete provoz nasměrovat na umístění, které je nejblíže k vám. Tuto možnost nabízí a metodu směrování provozu "Výkon".
 
-![Azure Traffic Manager "Výkonu" metody směrování provozu][3]
+! [Azure Traffic Manager "Výkonu" metody směrování provozu] [3]
 
 'Co nejblíže' koncový bod není nutně co nejblíž koncovým měřený podle geografické vzdálenosti. Místo toho metodu směrování provozu "Výkonu" Určuje koncový bod nejblíže na základě měření latence sítě. Traffic Manager udržuje tabulku Internet latence sledovat dobu odezvy mezi rozsahy IP adres a každé datové centrum Azure.
 
-Traffic Manager vyhledá zdrojové IP adresy příchozí žádosti DNS v tabulce latence sítě Internet. Traffic Manager vybere dostupný koncový bod v datovém centru Azure, který má nejnižší latenci pro tento rozsah IP adres a potom vrátí tohoto koncového bodu v odpovědi DNS.
+Traffic Manager vyhledá zdrojové IP adresy příchozí žádosti DNS v tabulce latence sítě Internet. Traffic Manager potom vybere dostupný koncový bod v datovém centru Azure, který má nejnižší latenci pro tento rozsah IP adres a vrátí tohoto koncového bodu v odpovědi DNS.
 
 Jak je vysvětleno v [jak funguje Traffic Manager](traffic-manager-how-it-works.md), Traffic Manager neobdrží dotazy DNS přímo z klientů. Místo toho dotazy DNS pocházejí z rekurzivní službu DNS, že klienti jsou nakonfigurovány pro použití. Proto, IP adresa použitá k určení 'co nejblíže' koncový bod není IP adresa klienta, ale je IP adresa rekurzivní službu DNS. Tato IP adresa v praxi, je dobré proxy pro klienta.
 
@@ -124,17 +125,18 @@ Traffic Manager načte zdrojové IP adresy dotazu DNS a určuje, na které geogr
 
 Jak je vysvětleno v [jak funguje Traffic Manager](traffic-manager-how-it-works.md), Traffic Manager neobdrží dotazy DNS přímo z klientů. Místo toho dotazy DNS pocházejí z rekurzivní službu DNS, že klienti jsou nakonfigurovány pro použití. Proto IP adresa použitá k určení oblasti není IP adresa klienta, ale je IP adresa rekurzivní službu DNS. Tato IP adresa v praxi, je dobré proxy pro klienta.
 
+## <a name = "multivalue"></a>Vícehodnotový metody směrování provozu
+**Hodnot** metody směrování provozu umožňuje získat více koncových bodů v dobrém stavu v odpovědi na jeden dotaz DNS. To umožňuje volajícímu provedete opakování na straně klienta pomocí dalších koncových bodů v případě koncový bod vrácené nereagovaly. Tento model může zvýšit dostupnost služby a snižuje latenci přidružené nový dotaz DNS získat funkční koncový bod. Metody směrování s více hodnotami funguje pouze v případě, že všechny koncové body typu "Externí" a jsou zadané jako IPv4 nebo IPv6 adresy. Po přijetí dotaz pro tento profil se vrátí všechny koncové body v pořádku a podléhají konfigurovatelné maximální počet vrácení.
+
+## <a name = "subnet"></a>Metody směrování provozu podsítě
+**Podsítě** metody směrování provozu umožňuje mapování sadu rozsahů IP adres koncového uživatele ke konkrétním koncovým bodům v profilu. Poté, pokud obdrží dotaz DNS pro tento profil Traffic Manageru ho bude kontrolovat zdroj IP adresa této žádosti (ve většině případů to bude odchozí IP adresa DNS překladač volajícího), určení koncového bodu je namapovaná na a vrátí t koncový bod Hat odpovědi na dotaz. IP adresu, která namapovat na koncový bod se dá nastavit jako rozsahy CIDR (např. 1.2.3.0/24) nebo jako rozsah adres (třeba 1.2.3.4-5.6.7.8). Rozsahy IP adres spojeném s koncovým bodem musí být jedinečný v rámci tohoto profilu a nemůže mít k překrytí sadu IP adres jiný koncový bod v jednom profilu.
+Pokud neexistují žádné koncové body, na které je možné mapovat tuto IP adresu, Traffic Manager odešle odpověď NODATA. Proto důrazně doporučujeme zajistit všechny možné rozsahy IP adres jsou určené ve vašich koncových bodů.
+Směrování podsítě je možné k zajištění jiné prostředí pro připojení z konkrétní IP prostoru uživatele. Například používající směrování na podsíť, zákazník provést všechny žádosti od jejich podnikové směrovat na jiný koncový bod kde, může být testování interní pouze verzi své aplikace. Další možností je, pokud chcete jiné poskytovat uživatelé, kteří se připojují konkrétní poskytovatele internetových služeb (například blokovat uživatele z daného poskytovatele internetových služeb).
 
 ## <a name="next-steps"></a>Další postup
 
 Informace o vývoji aplikací s vysokou dostupností pomocí [monitorování koncových bodů Traffic Manageru](traffic-manager-monitoring.md)
 
-Zjistěte, jak [vytvořit profil služby Traffic Manager](traffic-manager-create-profile.md)
-
-<!--Image references-->
-[1]: ./media/traffic-manager-routing-methods/priority.png
-[2]: ./media/traffic-manager-routing-methods/weighted.png
-[3]: ./media/traffic-manager-routing-methods/performance.png
 
 
 

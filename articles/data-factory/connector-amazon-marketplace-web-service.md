@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 0213adbb10b69e7f3aa71698a67948d66d9c4e7f
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: bcda662790c1af72e28b8968142bab15f62e83bf
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45631596"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127163"
 ---
-# <a name="copy-data-from-amazon-marketplace-web-service-using-azure-data-factory"></a>Kopírování dat z webová služba Amazon Marketplace pomocí Azure Data Factory
+# <a name="copy-data-from-amazon-marketplace-web-service-using-azure-data-factory-preview"></a>Kopírování dat z webová služba Amazon Marketplace pomocí Azure Data Factory (Preview)
 
 Tento článek popisuje, jak pomocí aktivity kopírování ve službě Azure Data Factory ke zkopírování dat z webová služba Amazon Marketplace. Je nástavbou [přehled aktivit kopírování](copy-activity-overview.md) článek, který nabízí obecný přehled o aktivitě kopírování.
 

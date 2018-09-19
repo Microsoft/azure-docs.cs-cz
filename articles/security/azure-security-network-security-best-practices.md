@@ -1,6 +1,6 @@
 ---
-title: Osvědčené postupy zabezpečení sítě Azure | Microsoft Docs
-description: Tento článek obsahuje sadu osvědčené postupy pro použití zabezpečení síťových součástí možnosti Azure.
+title: Osvědčené postupy zabezpečení sítě Azure | Dokumentace Microsoftu
+description: Tento článek obsahuje sadu osvědčené postupy při používání zabezpečení sítě vytvořené v možnosti Azure.
 services: security
 documentationcenter: na
 author: TomShinder
@@ -12,226 +12,170 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 09/17/2018
 ms.author: TomSh
-ms.openlocfilehash: 5ebeadd9c0805ac5f6ac543a49cb9ff63d8ded3f
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: d89972ff0f7e3035fa20f8d9ee2863b68fa52e9f
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34367320"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124061"
 ---
 # <a name="azure-network-security-best-practices"></a>Osvědčené postupy zabezpečení sítě Azure
-Microsoft Azure umožňuje připojit virtuální počítače a zařízení k další síťová zařízení tím, že je na virtuálních sítí Azure. Virtuální síť Azure je konstrukce, která umožňuje připojit virtuální síťové karty k virtuální síti a povolit založené na protokolu TCP komunikaci mezi síťových zařízení. Virtuální počítače Azure připojené k virtuální síti Azure může připojit k zařízení na stejné Azure virtuální síti, jinou virtuální sítí Azure, na Internetu nebo dokonce na vlastní místní sítě.
+Můžete se připojit [Azure virtuální počítače (VM)](https://azure.microsoft.com/services/virtual-machines/) a zařízení tak, aby jejich umístěním na jiná síťová zařízení [virtuálním sítím Azure](https://azure.microsoft.com/documentation/services/virtual-network/). To znamená můžete připojit adaptéry virtuální sítě k virtuální síti a povolit založené na TCP/IP komunikaci mezi síťové zařízení. Virtuální počítače připojené ke službě Azure virtual network můžete připojit k zařízení ve stejné virtuální síti, různých virtuálních sítích, Internetu nebo vaše vlastní místní sítě.
 
-Tento článek popisuje kolekci osvědčené postupy zabezpečení sítě Azure. Tyto doporučené postupy jsou odvozeny od našich zkušeností s prací v síti Azure a prostředí zákazníků, jako sami.
+Tento článek popisuje kolekci osvědčené postupy zabezpečení sítě Azure. Tyto osvědčené postupy, které jsou odvozeny z našich zkušenostech s Azure networking a prostředí zákazníků, jako je sami.
 
 Pro každý osvědčený postup Tento článek vysvětluje:
 
-* Co je osvědčeným postupem
+* Jaký je doporučený postup
 * Proč chcete povolit tento osvědčený postup
-* Pokud se nepodaří povolit osvědčený postup, co může být výsledkem
-* Možné alternativy doporučené postupy
-* Jak můžete informace o povolení osvědčený postup
+* Pokud chcete povolit osvědčený postup, co mohou být způsobeny
+* Je to možné alternativy doporučené postupy
+* Jak lze zjistíte, jak povolit osvědčený postup
 
-Tento článek osvědčené postupy zabezpečení sítě Azure je založen na konsenzu stanovisko a možnostech platformy Azure a sady funkcí, které jsou v době, kdy byla zapsána v tomto článku. Názory a technologie v průběhu času mění a v tomto článku budeme je aktualizovat v pravidelných intervalech, aby odrážela tyto změny.
+Tento článek osvědčené postupy zabezpečení sítě Azure je založen na stanovisko shody a možnostech platformy Azure a sady funkcí, protože existují v okamžiku, kdy byla zapsána v tomto článku. Názory a technologie v průběhu času měnit a tento článek bude aktualizován v pravidelných intervalech, aby tyto změny projevily.
 
-Azure sítě osvědčené postupy zabezpečení popsané v tomto článku patří:
+Následující části popisují doporučené postupy pro zabezpečení sítě.
 
-* Logicky segment podsítě
-* Řízení chování směrování
-* Povolení vynuceného tunelování
-* Pomocí virtuálních síťových zařízení
-* Nasazení zóny DMZ pro rozdělení na zóny zabezpečení
-* Vyhněte se ohrožení k Internetu pomocí vyhrazené linky WAN
-* Optimalizovat výkon a provozuschopnost
-* Použít globální zátěže
-* Zakázat přístup protokolu RDP pro virtuální počítače Azure
-* Povolit Azure Security Center
-* Rozšíření vašeho datového centra do Azure
+## <a name="logically-segment-subnets"></a>Logicky segmentu podsítě
+Virtuální sítě Azure jsou podobné sítě LAN ve vaší místní síti. Myšlenku za služby Azure virtual network je, že vytvoříte jeden privátní síť IP adres na základě místa ve kterém můžete umístit všechny virtuální počítače Azure. Privátní adresní prostory IP adres k dispozici jsou ve třídě A (10.0.0.0/8), třídy B (172.16.0.0/12), a rozsahy adres třídy C (192.168.0.0/16).
 
-## <a name="logically-segment-subnets"></a>Logicky segment podsítě
-[Virtuální sítě Azure](https://azure.microsoft.com/documentation/services/virtual-network/) jsou podobné k místní síti ve vaší místní síti. Cílem virtuální síť Azure je vytvoření jedné privátní IP adresy na základě místa sítě ve kterém můžete umístit všechny vaše [virtuální počítače Azure](https://azure.microsoft.com/services/virtual-machines/). Privátní adresní prostory IP adres k dispozici jsou ve A třídy (10.0.0.0/8), třídy B (172.16.0.0/12), a rozsahy adres třídy C (192.168.0.0/16).
+Osvědčené postupy k segmentaci logicky podsítě patří:
 
-Podobně jako do místní, větší adresní prostor by měl segmentovat do podsítí. Můžete použít [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) na základě zásady podsítí k vytvoření podsítě.
+**Osvědčený postup**: segmentovat do podsítí větší adresní prostor.   
+**Podrobnosti o**: použití [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)– na základě podsítě zásady k vytvoření podsítě.
 
-Směrování mezi podsítěmi dojde automaticky a není nutné ručně nakonfigurovat směrovacích tabulek. Výchozí nastavení je ale, že neexistují žádná opatření přístup k síti mezi podsítěmi, které vytvoříte ve virtuální síti Azure. Chcete-li vytvořit ovládací prvky pro přístup k síti mezi podsítěmi, budete muset uvést něco mezi podsítěmi.
+**Osvědčený postup**: vytvořit řízení přístupu k síti mezi podsítěmi. Směrování mezi podsítěmi dojde automaticky a není nutné ručně nakonfigurovat směrovací tabulky. Ve výchozím nastavení nejsou žádné řízení přístupu k síti mezi podsítěmi, které vytvoříte ve službě Azure virtual network.   
+**Podrobnosti o**: použití [skupinu zabezpečení sítě](../virtual-network/virtual-networks-nsg.md) (NSG). Skupiny Nsg se dají snadno, zařízení kontrolu paketů, které používají 5-řazené kolekce členů (Zdrojová IP adresa, zdrojový port, cílová IP adresa, cílový port a protokol vrstvy 4) přístup k vytváření pravidel povolení/zákazu pro síťový provoz. Povolí nebo zakážou provoz do a z jednu IP adresu, na a z více IP adres, nebo do a z celé podsítě.
 
-Jednou z věcí, můžete použít k provedení této úlohy je [skupinu zabezpečení sítě](../virtual-network/security-overview.md) (NSG). Skupiny Nsg jsou jednoduché stavové paketu kontroly zařízení, která používají 5-n-tice (zdrojové IP adresy, zdrojového portu, cílové adresy IP, cílový port a protokol vrstvy 4) přístup k vytvoření, povolit nebo odepřít pravidla pro provoz v síti. Můžete povolit nebo odepřít provoz do a z jednu IP adresu, na a z více IP adres nebo i do a z celé podsítě.
-
-Pomocí skupin Nsg pro řízení přístupu k síti mezi podsítěmi umožňuje umístění prostředky, které patří do stejné zóny zabezpečení nebo role ve svých vlastních podsítích. Například vezměte v úvahu jednoduché 3vrstvé aplikace, které má webovou vrstvu, aplikační vrstvy logiky a databázové vrstvy. Můžete uvést virtuální počítače, které patří do každé z těchto úrovní do svých vlastních podsítích. Pak použijete skupiny Nsg k řízení provozu mezi podsítí:
-
-* Virtuální počítače vrstvy webové můžou jenom iniciovat připojení k počítačům logiku aplikace a můžete akceptovat jenom připojení z Internetu
-* Aplikace logiky virtuálních počítačů může spustit pouze připojení s databázové vrstvy a můžete akceptovat jenom připojení z webová vrstva
-* Virtuální počítače vrstvy databáze nelze navázat spojení s nic mimo vlastní podsítě a můžete pouze přijmou připojení z vrstvy logiku aplikace
-
-Další informace o skupinách zabezpečení sítě a jak je můžete využít logicky segmentovat virtuálních sítí Azure, najdete v části [co je skupina zabezpečení sítě](../virtual-network/security-overview.md) (NSG).
+Při použití skupin zabezpečení sítě pro řízení přístupu k síti mezi podsítěmi, stačí vložit prostředky, které patří do stejné zóně zabezpečení nebo role v jejich vlastní podsítě.
 
 ## <a name="control-routing-behavior"></a>Řízení chování směrování
-Při umístění virtuálního počítače na virtuální síť Azure, můžete si všimnout, že se virtuální počítač může připojit k žádným jiným virtuálním počítačem ve stejné virtuální síti Azure, i když jsou ostatní virtuální počítače v různých podsítích. To je možné, protože je kolekce tras systému, které jsou ve výchozím nastavení povolené, umožňujících tento typ komunikace. Tyto výchozí trasy měly virtuální počítače ve stejné virtuální síti Azure k zahájení připojení mezi sebou a s Internetem (pro odchozí komunikace k Internetu jenom).
+Při umístění virtuálního počítače ve službě Azure virtual network virtuální počítač může připojit k jinému virtuálnímu počítači ve stejné virtuální síti, i když jsou ostatní virtuální počítače v různých podsítích. To je možné, protože tento typ komunikace umožňuje shromažďování systémových tras ve výchozím nastavení povolená. Tyto výchozí trasy mohly virtuální počítače ve stejné virtuální síti k zahájení připojení mezi sebou a s Internetem (pro odchozí komunikaci na Internetu).
 
-Výchozí systémové trasy, které jsou užitečné pro mnoho scénářů nasazení, jsou časy, kdy chcete přizpůsobit konfigurace směrování pro vaše nasazení. Toto vlastní nastavení vám umožní nakonfigurovat adresa dalšího směrování k dosažení určitým příjemcům.
+I když výchozí systémové trasy, které jsou užitečné pro řadu scénářů nasazení, jsou časy, kdy budete chtít přizpůsobit konfigurace směrování pro vaše nasazení. Můžete nakonfigurovat adresu dalšího směrování k dosažení určitým příjemcům.
 
-Doporučujeme nakonfigurovat trasy definované uživatelem, když nasazujete virtuální síťové zařízení zabezpečení, která je popsána v novější osvědčený postup.
+Doporučujeme, abyste nakonfigurovali [trasy definované uživatelem](../virtual-network/virtual-networks-udr-overview.md) při nasazování zařízení pro zabezpečení virtuální sítě. Mluvíme o to v pozdější části s názvem [zabezpečit vaše důležité prostředky služeb Azure pro vaše virtuální sítě](azure-security-network-security-best-practices.md#secure-your-critical-azure-service-resources-to-only-your-virtual-networks).
 
 > [!NOTE]
-> Trasy definované uživatelem nejsou vyžadovány, a ve většině případů lze použít výchozí systémové trasy.
+> Trasy definované uživatelem nejsou nutné a výchozí systémové trasy, které obvykle pracovat.
 >
 >
 
-Další informace o uživatele definovaná trasy a způsob jejich konfigurace přečíst v článku [co jsou trasy definované uživatelem a předávání IP](../virtual-network/virtual-networks-udr-overview.md).
+## <a name="enable-forced-tunneling"></a>Povolit vynucené tunelové propojení
+Abyste lépe pochopili, vynucené tunelování, je užitečné vědět, jaké "rozdělit tunelové propojení" je. Nejběžnějším příkladem dělené tunelové propojení se používá u připojení virtuální privátní sítě (VPN). Představte si navázat připojení k síti VPN z vaší pokoje v hotelu k vaší podnikové síti. Toto připojení umožňuje přístup k firemním prostředkům. Přejděte veškerá komunikace s vaší podnikové síti pomocí tunelového připojení sítě VPN.
 
-## <a name="enable-forced-tunneling"></a>Povolení vynuceného tunelování
-Abyste lépe pochopili, vynucené tunelování, je vhodné pochopit, jaké "rozdělení tunelování" je.
-Nejběžnější příkladu dělené tunelové propojení se seznámili s připojeními VPN typu. Představte si vytvořit připojení VPN z vaší místnosti hotelů k podnikové síti. Toto připojení umožní, že vám přístup k podnikovým prostředkům a veškerá komunikace se k podnikové síti přejděte prostřednictvím tunelu VPN.
+Co se stane, když chcete připojit k prostředkům na Internetu? Pokud je povoleno dělené tunelové propojení, tato připojení přejít přímo k Internetu a ne prostřednictvím tunelového připojení sítě VPN. Odborníci na zabezpečení, zvažte toto představuje potenciální riziko. Se doporučuje zakázat dělené tunelové propojení a ujistěte se, že všechna připojení, jsou určené k Internetu a jsou určené pro podnikové prostředky, přejděte pomocí tunelového připojení sítě VPN. Výhodou zakázat dělené tunelové propojení je, že jsou připojení k Internetu, potom nuceně prostřednictvím zabezpečení zařízení k podnikové síti. Pokud klient VPN připojený k Internetu mimo tunelového připojení sítě VPN, který by se tento případ.
 
-Co se stane, když se chcete připojit k prostředkům na Internetu? Pokud je povoleno dělené tunelové propojení, tato připojení přejděte přímo k Internetu a ne prostřednictvím tunelového připojení sítě VPN. Některé odborníky zabezpečení zvažte to představuje potenciální riziko a proto doporučujeme, aby bylo zakázané dělené tunelové propojení a všechna připojení. Připojení, které jsou určené pro připojení, které jsou určené pro podnikové prostředky a Internetu by měl projít tunelového připojení sítě VPN. Výhodou to je, že připojení k Internetu jsou pak vynutit prostřednictvím zabezpečovací zařízení podnikové sítě, které by být v případě, pokud klient VPN není připojený k Internetu mimo tunelového připojení sítě VPN.
+Nyní Pojďme vrácení tomto k virtuálním počítačům ve virtuální síti Azure. Výchozí trasy pro služby Azure virtual network mohly virtuální počítače iniciovat provoz do Internetu. To moc může představovat bezpečnostní riziko, protože tato odchozí připojení může zvýšit prostor pro útoky virtuálního počítače a používají útočníci. Z tohoto důvodu doporučujeme, aby vám [povolit vynucené tunelování](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md) na vašich virtuálních počítačů, když máte připojení mezi místními sítěmi mezi virtuální sítí Azure a vaší místní síti. Mluvíme o připojení mezi místními sítěmi později v síti osvědčené postupy.
 
-Nyní Pojďme navrácení tomto pro virtuální počítače na virtuální síti Azure. Výchozí trasy pro virtuální síť Azure měly virtuální počítače zahájíte provoz do Internetu. To příliš může představovat bezpečnostní riziko, jak tyto odchozí připojení může zvýšit prostor pro útoky virtuálního počítače a útočníci využít.
-Z tohoto důvodu doporučujeme, abyste povolili vynucené tunelování na virtuálních počítačích, když máte připojení mezi různými místy mezi vaší virtuální sítě Azure a v místní síti. Mezi místní připojení popsané dál v tomto Azure sítě osvědčené postupy dokumentu.
+Pokud nemáte připojení mezi různými místy, ujistěte se, abyste mohli využívat skupin zabezpečení sítě (vysvětlení výše) nebo Azure virtual network zabezpečovací zařízení (věnujeme se jí) aby odchozí připojení k Internetu z virtuálních počítačů Azure.
 
-Pokud nemáte připojení mezi více místy, ujistěte se, můžete využít výhod skupin zabezpečení sítě (popsané výše) nebo Azure virtuální sítě zabezpečovací zařízení (popsáno vedle) aby odchozí připojení k Internetu z vaší virtuální Azure Počítače.
+## <a name="use-virtual-network-appliances"></a>Použijte virtuální síťová zařízení
+Skupiny zabezpečení sítě a směrování definovaného uživatelem můžete zadat míru zabezpečení sítě na síť a přenosové vrstvy [modelu OSI](https://en.wikipedia.org/wiki/OSI_model). Ale v některých situacích chcete nebo potřebujete povolit zabezpečení na vysoké úrovni zásobníku. V takových situacích doporučujeme, že nasazujete virtuální síťová zabezpečovací zařízení partnery Azure k dispozici.
 
-Další informace o vynucené tunelování a jak ji povolit, najdete v části [nakonfigurujte vynucené tunelování prostřednictvím Powershellu a Azure Resource Manager](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md).
+Síť Azure zabezpečovací zařízení může poskytovat lepší zabezpečení než co poskytuje ovládací prvky nejvyšší úrovně sítě. Možnosti zabezpečení síťového zařízení zabezpečení virtuální sítě patří:
 
-## <a name="use-virtual-network-appliances"></a>Pomocí virtuálních síťových zařízení
-Při skupiny zabezpečení sítě a směrování definované uživatelem může poskytnout míru zabezpečení sítě v síti a přenosu vrstvy [OSI model](https://en.wikipedia.org/wiki/OSI_model), budou existovat být situace, kdy budete má nebo třeba povolit zabezpečení na vysoké úrovni zásobníku. V takových situacích doporučujeme nasadit virtuální sítě zabezpečovací zařízení poskytovaných Azure partnery.
 
-Síť Azure zabezpečovací zařízení doručovat rozšířené úrovně zabezpečení přes zajišťuje řízení na úrovni sítě. Mezi možnosti zabezpečení sítě poskytované virtuální sítě zabezpečovací zařízení patří:
+* Funkce brány firewall
+* Neoprávněného vniknutí zjišťování/narušení ochrany před únikem informací
+* Správa ohrožení zabezpečení
+* Řízení aplikací
+* Detekce anomálií založená na síti
+* Filtrování webů
+* Antivirová ochrana v programu
+* Ochrana Botnetu
 
-* Fungující brána firewall může
-* Zjišťování neoprávněných vniknutí/narušení prevence
-* Ohrožení zabezpečení správy
-* Řízení aplikace
-* Detekce anomálií založený na síti
-* Filtrování webových
-* Antivirové
-* Botnet ochrany
+K dispozici virtuální síť Azure zabezpečovací zařízení, najdete [Azure Marketplace](https://azure.microsoft.com/marketplace/) a vyhledejte položku "zabezpečení" a "zabezpečení sítě."
 
-Pokud potřebujete vyšší úroveň zabezpečení sítě, než lze získat pomocí řízení přístupu na úrovni sítě, pak doporučujeme prozkoumat a nasadit virtuální síť Azure zabezpečovací zařízení.
+## <a name="deploy-perimeter-networks-for-security-zones"></a>Nasadit hraniční sítí pro zóny zabezpečení
+A [hraniční síti](https://docs.microsoft.com/azure/best-practices-network-security) (označované také jako DMZ) je segment fyzické nebo logické sítě, která poskytuje další vrstvu zabezpečení mezi vašimi prostředky a Internetem. Specializované síťová zařízení řízení přístupu na okraji hraniční síti povolit jenom požadované přenosy do vaší virtuální sítě.
 
-Další informace o jaké virtuální síť Azure zabezpečovací zařízení jsou k dispozici a o jejich možnosti naleznete [Azure Marketplace](https://azure.microsoft.com/marketplace/) a vyhledejte "zabezpečení" a "zabezpečení sítě."
+Hraniční sítě jsou užitečné, protože správu řízení přístupu vaší sítě vám umožní soustředit se monitorování, protokolování a vytváření sestav na zařízení na hranici vaší virtuální sítí Azure. Tady je obvykle povolit distribuované s cílem odepření služeb (DDoS) ochrany před únikem informací, vniknutí zjišťování/narušení ochrany před únikem informací systémy (IDS/IPS), pravidla brány firewall a zásad, filtrování webů, antimalwaru sítě a dalších. Síťová zařízení zabezpečení nacházejí mezi Internetem a virtuální sítí Azure a rozhraní v obou sítích.
 
-## <a name="deploy-dmzs-for-security-zoning"></a>Nasazení zóny DMZ pro rozdělení na zóny zabezpečení
-DMZ, nebo "hraniční sítě" segment fyzické nebo logické sítě, který poskytuje další vrstvu zabezpečení mezi vaše prostředky a Internetem. Účelem hraniční síti je umístit specializované síťová zařízení řízení přístupu na okraji sítě hraniční sítě tak, aby pouze požadované provoz je povolený za zařízení pro zabezpečení sítě a do virtuální sítě Azure.
+I když se jedná o základní koncepci hraniční síti, existuje mnoho různých návrzích, jako je například back-to-back troj adresami a s více adresami.
 
-Zóny DMZ jsou užitečné, protože sledování, protokolování a vytváření sestav v zařízeních na hranici službě Azure Virtual Network se můžou zaměřit správu řízení přístupu vaší sítě. Tady by obvykle povolit DDoS prevence, zjišťování/narušení prevence vniknutí systémy (ID nebo IP adresy), pravidla brány firewall a zásady, filtrování webových, antimalwarových sítě a další. Zařízení zabezpečení sítě nacházejí mezi Internetu a virtuální sítí Azure a rozhraní na obě sítě.
+Pro všechna nasazení vysoké zabezpečení doporučujeme, zvažte použití hraniční síti k vylepšení úrovně zabezpečení sítě pro vaše prostředky Azure.
 
-I když jde o základní koncepci DMZ, existuje mnoho různých návrzích DMZ, například typu back-to-back tři adresami, více adresami a další.
+## <a name="avoid-exposure-to-the-internet-with-dedicated-wan-links"></a>Vyhněte se na Internetu s vyhrazené linky WAN
+Mnoho organizací zvolili hybridní IT trasy. V hybridním IT některé informace ve firmě jsou v Azure, ostatní budou i nadále místní. V mnoha případech některé součásti služby provozovaná v Azure v místním i nadále další komponenty.
 
-Doporučujeme pro všechny vysoce zabezpečených nasazeních zvažte nasazení DMZ k vylepšení úrovně zabezpečení sítě pro vaše prostředky Azure.
+V hybridním scénáři IT je obvykle nějaký typ připojení mezi místními sítěmi. Připojení mezi místními sítěmi umožňuje společnosti připojení svých místních sítí k virtuálním sítím Azure. K dispozici jsou dvě řešení pro připojení mezi různými místy:
 
-Další informace o zóny DMZ a jak je nasadit v Azure najdete v tématu [cloudové služby Microsoftu a zabezpečení sítě](../best-practices-network-security.md).
+* **Site-to-site VPN**: je důvěryhodné, spolehlivé a navážete technologie, ale připojení probíhá přes internet. Šířka pásma je omezen na maximálně o 200 MB/s. Site-to-site VPN je žádoucí možností v některých scénářích a je popsána dále v části [RDP/SSH zakázat přístup k virtuálním počítačům](#disable-rdpssh-access-to-virtual-machines).
+* **Azure ExpressRoute**: doporučujeme používat [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) pro vaše připojení mezi místními sítěmi. ExpressRoute je vyhrazené sítě WAN propojení mezi místním umístěním nebo poskytovatele hostingu serveru Exchange. Protože telco připojení vašich dat nebude procházet přes internet a proto není vystavený potenciální rizika internetové komunikace.
 
-## <a name="avoid-exposure-to-the-internet-with-dedicated-wan-links"></a>Vyhněte se ohrožení k Internetu pomocí vyhrazené linky WAN
-Mnoho organizací rozhodli hybridního IT trasy. V hybridní IT některé prostředky informace společnosti jsou v Azure, zatímco ostatní zůstanou místně. V mnoha případech,, některé součásti služby bude používat v Azure při další součásti zůstanou místní.
+## <a name="optimize-uptime-and-performance"></a>Optimalizovat výkon a dostupnost
+Pokud služba je vypnutý, není přístupná informace. Pokud je tak, že data nepoužitelné nízký výkon, můžete zvážit data, která mají být nepřístupné. Z hlediska zabezpečení je potřeba cokoli, co můžete vaše služby mít optimální provozuschopnost a výkon.
 
-V hybridním scénáři IT je obvykle nějaký typ připojení mezi různými místy. To mezi různými místy, připojení umožňuje společnosti své místní sítě připojit k virtuálním sítím Azure. Nejsou k dispozici dvě řešení připojení mezi různými místy:
+Oblíbené a efektivní způsob pro zlepšení dostupnosti a výkonu je Vyrovnávání zatížení. Vyrovnávání zatížení je způsob distribuce síťového provozu mezi servery, které jsou součástí služby. Například pokud máte front-end webové servery jako součást služby, můžete použít vyrovnávání zatížení a distribuuje provoz mezi několik front-endové webové servery.
 
-* Site-to-site VPN
-* ExpressRoute
+Toto rozdělení provozu, zvýšíte dostupnost, protože pokud jeden z webových serverů přestane být dostupný, nástroj pro vyrovnávání zatížení zastaví odesílání provozu k danému serveru a přesměruje na servery, které jsou stále online. Vyrovnávání zatížení vám také pomůže výkon, protože režie procesoru, síť a paměť obsluze žádostí se distribuuje mezi všechny servery s vyrovnáváním zatížení.
 
-[Site-to-site VPN](../vpn-gateway/vpn-gateway-site-to-site-create.md) představuje virtuální privátní připojení mezi místní sítí a virtuální síti Azure. Toto připojení probíhá přes Internet a umožňuje informace "tunel" uvnitř šifrované odkaz mezi vaší sítí a Azure. Site-to-site VPN je zabezpečený, Vyspělá technologie, která byla nasazena podniky všech velikostí pro dekád. Tunelové propojení šifrování se provádí pomocí [režimu tunelového připojení IPsec](https://technet.microsoft.com/library/cc786385.aspx).
+Doporučujeme vám, že nepoužijete Vyrovnávání zatížení, kdykoli je to možné a v závislosti na vašich služeb. Následují scénáře na všech úrovních virtuální sítě Azure a na globální úrovni, spolu s možností služby Vyrovnávání zatížení pro každý.
 
-Při site-to-site VPN je důvěryhodné, spolehlivým a zavedených technologie, provoz v rámci tunelu procházení Internetu. Kromě toho šířka pásma je relativně omezená na maximálně přibližně 200 MB/s.
+**Scénář**: když máte aplikaci, která:
 
-Pokud budete potřebovat výjimečných úroveň zabezpečení a výkonu pro připojení mezi různými místy, doporučujeme použít Azure ExpressRoute pro připojení mezi různými místy. ExpressRoute je vyhrazené sítě WAN propojení mezi místní umístění nebo poskytovatele hostingu serveru Exchange. Protože se jedná o telco připojení, vaše data není přenášet přes Internet a proto není viditelné na potenciální rizika spojená s internetovou komunikaci.
+- Vyžaduje ze stejné uživatelské/klientské relace přenosu žádostí do stejného virtuálního počítače back-end. Příklady jsou aplikace nákupních košíků a servery webové pošty.
+- Přijímá pouze zabezpečené připojení, takže nešifrovaná komunikace se serverem není nepřijatelnou možností.
+- Vyžaduje více požadavků protokolu HTTP na stejné připojení TCP dlouhotrvající směrovat nebo načíst balanced na různé back-end servery.
 
-Další informace o tom, jak funguje Azure ExpressRoute a postup nasazení najdete v tématu [technický přehled ExpressRoute](../expressroute/expressroute-introduction.md).
+**Vyrovnávání zatížení možnost**: použití [Azure Application Gateway](../application-gateway/application-gateway-introduction.md), protokolu HTTP webové provoz nástroje pro vyrovnávání zatížení. Služba Application Gateway podporuje šifrování SSL začátku do konce a [ukončení protokolu SSL](../application-gateway/application-gateway-introduction.md) v bráně. Webové servery může potom dešifrováním šifrování a dešifrování režii a provoz dešifrovat do back-end serverů.
 
-## <a name="optimize-uptime-and-performance"></a>Optimalizovat výkon a provozuschopnost
-Utajení, integrita a dostupnost (c oddílu) tvoří chaloupka dnešní nejvíce míry modelu zabezpečení. Důvěrnost je o šifrování a ochrany osobních údajů, integritu je o tom, jak se, že data se nezmění neoprávněným uživatelem a dostupnosti je o tom, jak se, že jsou autorizované jednotlivce mít přístup k informacím, které mají oprávnění k přístupu. Selhání v některém z těchto oblastí představuje případný průnik v zabezpečení.
+**Scénář**: je potřeba načíst vyrovnávat příchozí připojení z Internetu mezi servery umístěné ve službě Azure virtual network. Jsou scénáře, kdy jste:
 
-Dostupnost můžete představit jako o provozu a výkonu. Pokud služba je vypnutý, není přístupná informace. Pokud je tak nízký, nepoužitelnost data výkonu, můžete považujeme za data, která mají být nedostupné. Proto z hlediska zabezpečení budeme muset udělat ať můžeme zajistěte, aby našich služeb optimální dostupnost a výkon.
-Ke zvýšení dostupnosti a výkonu použít metodu oblíbených a efektivní je použití služby Vyrovnávání zatížení. Vyrovnávání zatížení je metoda distribucí síťový provoz mezi servery, které jsou součástí služby. Například pokud máte front-end webové servery jako součást služby, můžete Vyrovnávání zatížení pro distribuci provoz napříč více front-endu webových serverů.
+- Máte bezstavové aplikace, které přijímají příchozí požadavky z Internetu.
+- Nevyžadují rychlé relace a přesměrování zpracování SSL. Rychlé relace je metoda využívají k dosažení serveru spřažení s vyrovnáváním zatížení aplikace.
 
-Této distribuce přenosů zvýšíte dostupnost, protože jeden z webových serverů přestane být dostupný, nástroje pro vyrovnávání zatížení zastaví odesílání provozu k danému serveru a přesměruje na servery, které jsou stále online. Vyrovnávání zatížení taky pomáhá výkonu, protože procesor, sítě a paměti, že nároků na obsluhovat požadavky je distribuován do všech zatížení vyrovnáváním servery.
+**Vyrovnávání zatížení možnost**: pomocí webu Azure portal k [vytvořit externím vyrovnáváním zatížení](../load-balancer/quickstart-create-basic-load-balancer-portal.md) se šíří příchozí požadavky na víc virtuálních počítačů pro zajištění vyšší úrovně dostupnosti.
 
-Doporučujeme vám, že nepoužijete Vyrovnávání zatížení, kdykoli je to možné a podle potřeby pro vaše služby. Budete nevyřešíme vhodnost v následujících částech: na úrovni virtuální síť Azure, Azure poskytuje k tři primární možnostech Vyrovnávání zatížení:
+**Scénář**: je potřeba načíst zůstatek připojení z virtuálních počítačů, které nejsou na Internetu. Ve většině případů se inicializuje připojení, která jsou přijati pro vyrovnávání zatížení zařízení ve virtuální síti Azure, jako je instance systému SQL Server nebo interní webové servery.   
+**Vyrovnávání zatížení možnost**: pomocí webu Azure portal k [vytvořit interní nástroj](../load-balancer/quickstart-create-basic-load-balancer-powershell.md) se šíří příchozí požadavky na víc virtuálních počítačů pro zajištění vyšší úrovně dostupnosti.
 
-* Vyrovnávání zatížení založené na protokolu HTTP
-* Externí Vyrovnávání zatížení
-* Interní vyrovnávání zatížení
+**Scénář**: musíte globální zátěže, protože jste:
 
-## <a name="http-based-load-balancing"></a>Vyrovnávání zatížení založené na protokolu HTTP
-Vyrovnávání zatížení založené na protokolu HTTP základny rozhodnutí o jaké server k odeslání připojení pomocí vlastnosti protokolu HTTP. Azure má Vyrovnávání zatížení HTTP, který prochází podle názvu aplikační brány.
+- Máte cloudové řešení, která je hromadně distribuují napříč několika oblastmi a vyžaduje nejvyšší úroveň dostupnosti (dostupnost) je to možné.
+- Třeba nejvyšší úroveň dostupnosti je to možné, aby se zajistilo, že je vaše služba dostupná i v případě, že celé datové centrum přestane být k dispozici.
 
-Doporučujeme použít Azure Application Gateway při:
+**Vyrovnávání zatížení možnost**: použijte Azure Traffic Manageru. Traffic Manager umožňuje načíst zůstatek připojení k vašim službám na základě umístění uživatele.
 
-* Aplikace, které vyžadují, aby se požadavky ze stejné uživatelské/klientské relace pokaždé dostaly ke stejnému back-endovému virtuálnímu počítači. Příklady tohoto by nákupního košíku aplikace a webové servery e-mailu.
-* Aplikace, které chcete uvolnit farmy webových serverů z ukončení protokolu SSL režie využitím Application Gateway [přesměrování zpracování SSL](https://f5.com/glossary/ssl-offloading) funkce.
-* Aplikace, jako je například síť pro doručování obsahu, které vyžadují, aby bylo během jednoho dlouhotrvajícího připojení TCP více požadavků HTTP směrováno nebo směrováno s vyrovnáváním zatížení na různé back-endové servery.
+Například pokud uživatel odešle požadavek do služby z EU, připojení se směřuje do vaší služby umístěné v datovém centru EU. Tato část Traffic Manageru globální načíst vyrovnávání pomáhá zlepšit výkon, protože připojení k nejbližší datové centrum je rychlejší než připojení k datovým centrům, která jsou daleko.
 
-Další informace o tom, jak funguje Azure Application Gateway a jak můžete použít v nasazeních, najdete v části [Přehled brány aplikace](../application-gateway/application-gateway-introduction.md).
+## <a name="disable-rdpssh-access-to-virtual-machines"></a>Zakázat přístup RDP/SSH k virtuálním počítačům
+Je možné dosáhnout virtuální počítače Azure s použitím [Remote Desktop Protocol](https://en.wikipedia.org/wiki/Remote_Desktop_Protocol) (RDP) a [Secure Shell](https://en.wikipedia.org/wiki/Secure_Shell) protokol (SSH). Tyto protokoly umožňuje správu virtuálních počítačů ze vzdálených umístění a jsou standardní ve výpočetním prostředí datacenter.
 
-## <a name="external-load-balancing"></a>Externí Vyrovnávání zatížení
-Vyrovnávání zatížení externí probíhá při příchozí připojení z Internetu jsou mezi vaše servery umístěné v Azure Virtual Network skupinu s vyrovnáváním zatížení. Nástroje pro vyrovnávání zatížení Azure externí můžete zadat, tato funkce a doporučujeme vám, že slouží jako nevyžadují trvalé relace nebo snižování zátěže protokolu SSL.
+Potenciální problém zabezpečení s použitím těchto protokolů přes internet je, že útočníci můžou používat [útok hrubou silou](https://en.wikipedia.org/wiki/Brute-force_attack) techniky k získání přístupu k Azure virtual machines. Po útočníci získají přístup, mohou použít váš virtuální počítač jako bod spuštění pro ohrožení ostatní počítače ve vaší virtuální síti nebo dokonce napadení síťovými zařízeními mimo Azure.
 
-Vyrovnávání zatížení založené na protokolu HTTP, na rozdíl od externí Vyrovnávání zatížení používá informace v síti a přenosu vrstvy sítě model OSI rozhoduje o jaké server vyrovnávání připojení k načtení.
+Doporučujeme zakázat přímý přístup pomocí protokolu RDP a SSH pro virtuální počítače Azure z Internetu. Po zakázání je přímý přístup pomocí protokolu RDP a SSH z Internetu, máte další možnosti, které můžete použít pro přístup k těmto virtuálním počítačům pro vzdálenou správu.
 
-Doporučujeme použít vyrovnávání zatížení externí vždy, když máte [bezstavové aplikace](http://whatis.techtarget.com/definition/stateless-app) přijímá příchozí žádosti z Internetu.
+**Scénář**: Povolit u jednoho uživatele pro připojení ke službě Azure virtual network přes internet.   
+**Možnost**: [Point-to-site VPN](../vpn-gateway/vpn-gateway-point-to-site-create.md) je jiný termín pro připojení k síti VPN klienta nebo serveru pro vzdálený přístup. Po navázání připojení point-to-site slouží uživatele pomocí protokolu RDP nebo SSH pro připojení k žádné virtuální počítače na virtuální síť Azure, které se uživatel připojil přes point-to-site VPN. Předpokladem je, že je uživatel oprávnění k dosažení ty virtuální počítače.
 
-Další informace o tom, jak funguje Azure externí nástroj pro vyrovnávání zatížení a jak je můžete nasadit, najdete v části [začínáte s vytvářením k Internetu čelí pro vyrovnávání zatížení ve Správci prostředků pomocí prostředí PowerShell](../load-balancer/load-balancer-get-started-internet-arm-ps.md).
+Point-to-site VPN je bezpečnější než přímé spojení přes protokol RDP nebo SSH, protože uživatel nemá k ověření dvakrát před připojením k virtuálnímu počítači. Nejprve, uživatel musí ověřit (a autorizovat) k navázání připojení VPN typu point-to-site. Za druhé, uživatel musí ověřit (a autorizovat) k vytvoření relace protokolu RDP nebo SSH.
 
-## <a name="internal-load-balancing"></a>Interní vyrovnávání zatížení
-Vyrovnávání zatížení interní je podobná externí zátěže a používá stejný mechanismus načíst vyrovnávání připojení k serverům za ně. Jediným rozdílem je, že nástroj pro vyrovnávání zatížení v tomto případě přijímá připojení z virtuálních počítačů, které nejsou na Internetu. Ve většině případů připojení, která jsou podmínky přijaty ve Vyrovnávání zatížení zahájili zařízení v Azure Virtual Network.
+**Scénář**: Povolit uživatelům ve vaší místní síti připojit k virtuálním počítačům ve vaší virtuální sítí Azure.   
+**Možnost**: A [site-to-site VPN](../vpn-gateway/vpn-gateway-site-to-site-create.md) celá síť se připojuje k jiné síti přes internet. Síť site-to-site VPN můžete použít k připojení místní sítě ke službě Azure virtual network. Uživatelé ve vaší místní síti připojit pomocí protokolu RDP nebo SSH přes připojení VPN typu site-to-site. Není nutné povolit přímý přístup protokolu RDP nebo SSH přes internet.
 
-Doporučujeme vám, že používáte interní Vyrovnávání zatížení pro scénáře využívající tato funkce, například když potřebujete načíst vyrovnávání připojení k SQL serverům nebo interní webové servery.
+**Scénář**: poskytuje funkce podobné site-to-site VPN pomocí vyhrazené propojení WAN.   
+**Možnost**: použití [ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/). Poskytuje funkce podobné k síti VPN site-to-site. Hlavními rozdíly jsou:
 
-Další informace o tom, jak funguje Azure interní Vyrovnávání zatížení a jak ji nasadit, najdete v části [začínáte s vytvářením interní pro vyrovnávání zatížení pomocí prostředí PowerShell](../load-balancer/load-balancer-get-started-ilb-arm-ps.md).
+- Vyhrazená propojení WAN nebude procházení Internetu.
+- Vyhrazené linky WAN jsou obvykle více stabilní a poskytují větší výkon.
 
-## <a name="use-global-load-balancing"></a>Použít globální zátěže
-Díky výpočetní veřejného cloudu, je možné nasadit globálně distribuované aplikace, které mají součásti, které jsou umístěné v datových centrech po celém světě. To je možné v Microsoft Azure z důvodu přítomnosti globální datového centra Azure. Na rozdíl od již bylo zmíněno dříve technologie Vyrovnávání zatížení globální Vyrovnávání zatížení umožňuje zpřístupnit služeb i v případě, že celá datová centra může být k dispozici.
+## <a name="secure-your-critical-azure-service-resources-to-only-your-virtual-networks"></a>Zabezpečte vaše důležité prostředky služeb Azure pro vaše virtuální sítě
+Pomocí koncových bodů služby virtuální sítě rozšiřují privátní adresní prostor vaší virtuální sítě a její identitu vaší virtuální sítě do služeb Azure přes přímé připojení. Koncové body umožňují svázat vaše důležité prostředky služeb Azure pouze s vašimi virtuálními sítěmi. Provoz z vaší virtuální sítě do služby Azure vždy zůstává v páteřní síti Microsoft Azure.
 
-Tento typ globální Vyrovnávání zatížení v Azure a využívají můžete získat [Azure Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/). Díky Traffic Manager je možné načíst vyrovnávání připojení k vašim službám podle umístění uživatele.
+Koncové body služby poskytují následující výhody:
 
-Například pokud uživatel je vytváření požadavku služby z Evropské unie, připojení se přesměruje k vašim službám umístěný v datacentrum Evropa. Tato část služby Traffic Manager globální načíst vyrovnávání pomáhá zlepšit výkon, protože připojení k nejbližší datového centra je rychlejší než připojení k datových center, které jsou daleko.
+- **Zlepšení zabezpečení prostředků služeb Azure:** Pomocí koncových bodů služby je možné svázat prostředky služeb Azure s vaší virtuální sítí. Svázání prostředků služeb virtual network poskytuje lepší zabezpečení díky úplnému odebrání veřejného internetového přístupu k prostředkům a povolení provozu pouze z vaší virtuální sítě.
+- **Optimální směrování provozu služeb Azure z vaší virtuální sítě**: všechny trasy ve virtuální síti, které vynucují internetový provoz přes místní nebo virtuální zařízení, což se označuje jako vynucené tunelování, také vynutit provoz služeb Azure má provést stejného postupu jako internetový provoz. Koncové body služby poskytují optimální směrování provozu Azure.
 
-Na straně dostupnosti Vyrovnávání zatížení globální zajišťuje, že vaše služba je k dispozici i v případě, že by měl k dispozici celého datového centra.
+  Koncové body vždy směrují provoz služby přímo z vaší virtuální sítě do služby v páteřní síti Azure. Udržování provozu na páteřní síti Azure umožňuje pokračovat v auditování a monitorování odchozího internetového provozu z vašich virtuálních sítí prostřednictvím vynuceného tunelování, aniž by to ovlivnilo provoz služeb. Další informace o [trasy definované uživatelem a vynuceném tunelování](../virtual-network/virtual-networks-udr-overview.md).
 
-Například pokud datovém centru Azure by měl k dispozici z prostředí důvodů nebo kvůli výpadku (například selhání k místní síti), připojení k službě by přesměrována na nejbližší online datacenter. Tato služba Vyrovnávání zatížení globální dosahuje využitím DNS zásady, které můžete vytvořit v Traffic Manageru.
+- **Snadné nastavení menším režie na správu**: už nepotřebujete vyhrazené veřejné IP adresy ve vaší virtuální sítě k zabezpečení prostředků Azure prostřednictvím brány firewall protokolu IP. K nastavení koncových bodů služby se nevyžaduje překlad adres ani zařízení brány. Koncové body služby se konfigurují pouhým kliknutím na podsíť. Není spojena žádná další režie udržovat koncových bodů.
 
-Doporučujeme, abyste používali Traffic Manager pro řešení cloudu, které vyvíjíte a které má obor široce distribuované nad několika oblastmi a vyžaduje nejvyšší úroveň provozu možná.
+Další informace o koncových bodů služby a služby Azure a oblasti, které jsou k dispozici pro koncové body služby, najdete v článku [koncové body služeb virtuální sítě](../virtual-network/virtual-network-service-endpoints-overview.md).
 
-Další informace o Azure Traffic Manager a jak se dá nasadit, najdete v části [co je Traffic Manager](../traffic-manager/traffic-manager-overview.md).
-
-## <a name="disable-rdpssh-access-to-azure-virtual-machines"></a>Zakázat přístup RDP/SSH pro virtuální počítače Azure
-Je možné připojit virtuální počítače Azure pomocí [Remote Desktop Protocol](https://en.wikipedia.org/wiki/Remote_Desktop_Protocol) (RDP) a [Secure Shell](https://en.wikipedia.org/wiki/Secure_Shell) protokoly (SSH). Tyto protokoly umožňují spravovat virtuální počítače ze vzdálených umístění a jsou v datovém centru computing standardní.
-
-Potenciální problém zabezpečení s použitím těchto protokolů přes Internet se útočníci mohou používat různé [hrubou silou](https://en.wikipedia.org/wiki/Brute-force_attack) techniky k získání přístupu k Azure Virtual Machines. Jakmile útočníci získají přístup, mohou použít virtuální počítač jako bod spuštění pro ostatní počítače v Azure Virtual Network narušení nebo i útokům síťová zařízení mimo Azure.
-
-Z toho důvodu doporučujeme zakázat přímý přístup RDP a SSH pro virtuální počítače Azure z Internetu. Po zakázání je přímý přístup RDP a SSH z Internetu, máte další možnosti, které můžete použít pro přístup k těchto virtuálních počítačů pro vzdálenou správu:
-
-* Point-to-site VPN
-* Site-to-site VPN
-* ExpressRoute
-
-[Point-to-site VPN](../vpn-gateway/vpn-gateway-point-to-site-create.md) je jiný termín pro připojení klienta nebo serveru sítě VPN pro vzdálený přístup. Síť VPN point-to-site umožňuje jenom jednoho konkrétního uživatele pro připojení k virtuální síti Azure přes Internet. Po navázání připojení point-to-site, bude uživatel moci připojit k žádné virtuální počítače nachází ve virtuální síti Azure, které uživatel připojené prostřednictvím point-to-site VPN pomocí protokolu RDP nebo SSH. Předpokladem je, že je uživatel autorizovaný k dosažení těchto virtuálních počítačů.
-
-Point-to-site VPN je bezpečnější než přímé připojení protokolu RDP nebo SSH, protože uživatel nemá k ověření dvakrát před připojením k virtuálnímu počítači. První, uživatel musí ověřit (a autorizaci) k navázání připojení VPN typu point-to-site; druhý, uživatel musí ověřit (a autorizaci) k vytvoření relace protokolu RDP nebo SSH.
-
-A [site-to-site VPN](../vpn-gateway/vpn-gateway-site-to-site-create.md) celá síť se připojuje k jiné síti přes Internet. Můžete se připojit k virtuální síti Azure do místní sítě site-to-site VPN. Pokud nasazujete site-to-site VPN, uživatelé na vaší místní síti bude moct připojit k virtuálním počítačům ve vaší virtuální síti Azure pomocí protokolu RDP nebo SSH přes připojení VPN typu site-to-site a nevyžaduje povolit přímý přístup protokolu RDP nebo SSH přes Internet.
-
-Můžete taky vyhrazené propojení WAN nakonfigurovánu podobná site-to-site VPN. Hlavní rozdíly jsou 1. vyhrazené propojení WAN není procházení Internetu a 2. vyhrazené linky WAN jsou obvykle další stabilní a původce. Azure poskytuje řešení vyhrazené propojení WAN ve formě [ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/).
-
-## <a name="enable-azure-security-center"></a>Povolit Azure Security Center
-Azure Security Center pomáhá zabránit, zjistit a reagovat na hrozby a poskytuje že vyšší přehled a kontrolu nad, zabezpečení vašich prostředků Azure. Poskytuje integrované bezpečnostní sledování a správu zásad ve vašich předplatných Azure, pomáhá zjišťovat hrozby, kterých byste si jinak nevšimli, a spolupracuje s řadou řešení zabezpečení.
-
-Azure Security Center pomáhá optimalizovat a monitorování zabezpečení sítě podle:
-
-* Poskytuje doporučení zabezpečení sítě
-* Monitorování stavu konfigurace zabezpečení sítě
-* Výstrahy upozorňující na základě hrozeb pro síť i na úrovni koncového bodu a sítě
-
-Důrazně doporučujeme, abyste povolili pro všechna vaše nasazení Azure Azure Security Center.
-
-Další informace o službě Azure Security Center a jak ji povolit pro vaše nasazení najdete v tématu [Úvod do Azure Security Center](../security-center/security-center-intro.md).
-
-## <a name="securely-extend-your-datacenter-into-azure"></a>Bezpečně rozšířit vašeho datového centra do Azure
-Mnoho podnikových IT organizace jsou chtějí rozšířit do cloudu místo narůstají jejich místní datacentra. Toto rozšíření představuje rozšíření stávající infrastruktury IT do veřejného cloudu. Využitím mezi různými místy možnosti připojení, je možné považovat za jakékoli jiné podsítě v síťové infrastruktuře místní virtuálních sítí Azure.
-
-Existují však plánování a návrhu problémy, které je třeba vzít v úvahu nejprve. To je obzvláště důležité v oblasti zabezpečení sítě. Jedním z nejlepší způsoby, abyste pochopili, jak postupovat takový návrh je příklad.
-
-Společnost Microsoft vytvořila [Diagram architektury odkaz rozšíření Datacenter](https://gallery.technet.microsoft.com/Datacenter-extension-687b1d84#content) a podpůrné vedlejších vám pomohou pochopit, co bude vypadat takové příponu datového centra. To poskytuje příklad implementace odkaz, můžete použít k plánování a návrh příponu zabezpečené enterprise datacentra do cloudu. Doporučujeme, abyste si prošli tohoto dokumentu představu o klíčové komponenty bezpečné řešení.
-
-Další informace o tom, jak bezpečně rozšířit vašeho datového centra do Azure, zobrazit video [rozšíření vašeho Datacentra do Microsoft Azure](https://www.youtube.com/watch?v=Th1oQQCb2KA).
+## <a name="next-step"></a>Další krok
+Zobrazit [osvědčené postupy zabezpečení Azure a vzory](security-best-practices-and-patterns.md) pro další doporučené postupy zabezpečení, mají použít, když jste návrhu, nasazení a správa cloudových řešení pomocí služby Azure.

@@ -1,21 +1,22 @@
 ---
-title: Pomocí pořadí zobrazíte výsledky hledání | Dokumentace Microsoftu
+title: Použití pořadí pro zobrazení výsledků hledání
+titleSuffix: Azure Cognitive Services
 description: Ukazuje, jak použít odpovědí Bing RankingResponse k zobrazení výsledků hledání v pořadí řazení.
 services: cognitive-services
 author: bradumbaugh
-manager: bking
+manager: cgronlun
 ms.assetid: 2575A80C-FC74-4631-AE5D-8101CF2591D3
 ms.service: cognitive-services
 ms.component: bing-web-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/08/2017
 ms.author: brumbaug
-ms.openlocfilehash: 0dd3a2057e73adda3224e7cebe7c492572f94105
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 3e55830fcfdbea91581a75fcfc343fd522485c5a
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41987595"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123398"
 ---
 # <a name="build-a-console-app-search-client-in-c"></a>Vytvoření konzolového klienta vyhledávací aplikaci v jazyce C#
 
@@ -45,8 +46,8 @@ Pojmenujte aplikaci **MyConsoleSearchApp**a potom klikněte na tlačítko **OK**
 
 JSON.net umožňuje pracovat s odpověďmi ve formátu JSON vrácená rozhraním API. Přidejte svůj balíček NuGet do projektu:
 
-- V **Průzkumníka řešení** klikněte pravým tlačítkem na projekt a vyberte **spravovat balíčky NuGet...** . 
-- Na **Procházet** kartu, vyhledejte `Newtonsoft.Json`. Vyberte nejnovější verzi a potom klikněte na tlačítko **nainstalovat**. 
+- V **Průzkumníka řešení** klikněte pravým tlačítkem na projekt a vyberte **spravovat balíčky NuGet...** .
+- Na **Procházet** kartu, vyhledejte `Newtonsoft.Json`. Vyberte nejnovější verzi a potom klikněte na tlačítko **nainstalovat**.
 - Klikněte na tlačítko **OK** tlačítko **změny vyplývající z revize** okna.
 - Zavřete Visual Studio karta s názvem **NuGet: MyConsoleSearchApp**.
 
@@ -60,7 +61,7 @@ Tento kurz se spoléhá na `System.Web` sestavení. Do projektu přidejte odkaz 
 
 ## <a name="add-some-necessary-using-statements"></a>Přidat některé potřebné příkazy using
 
-Kód v tomto kurzu vyžaduje tři další příkazy using. Přidat tyto příkazy pod řádek `using` příkazů v horní části **Program.cs**: 
+Kód v tomto kurzu vyžaduje tři další příkazy using. Přidat tyto příkazy pod řádek `using` příkazů v horní části **Program.cs**:
 
 ```csharp
 using System.Web;
@@ -145,7 +146,7 @@ Nezapomeňte nastavit hodnotu `Ocp-Apim-Subscription-Key` pro váš klíč před
 
 ## <a name="display-ranked-results"></a>Zobrazení seřazených výsledků
 
-Před zobrazením jak zobrazit výsledky podle seřazený, podívejte se na ukázkové webové vyhledávání odpovědi: 
+Před zobrazením jak zobrazit výsledky podle seřazený, podívejte se na ukázkové webové vyhledávání odpovědi:
 
 ```json
 {
@@ -171,7 +172,7 @@ Před zobrazením jak zobrazit výsledky podle seřazený, podívejte se na uká
         },
 
         ...
-        
+
         ],
         "someResultsRemoved" : true
     },
@@ -184,7 +185,7 @@ Před zobrazením jak zobrazit výsledky podle seřazený, podívejte se na uká
         }
 
         ...
-        
+
         ]
     },
     "rankingResponse" : {
@@ -220,7 +221,7 @@ Před zobrazením jak zobrazit výsledky podle seřazený, podívejte se na uká
 }
 ```
 
-`rankingResponse` JSON – objekt ([dokumentaci](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse)) popisuje pořadí odpovídající zobrazení pro výsledky hledání. Zahrnuje jednu nebo více skupin následující, seřazený podle priority: 
+`rankingResponse` JSON – objekt ([dokumentaci](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse)) popisuje pořadí odpovídající zobrazení pro výsledky hledání. Zahrnuje jednu nebo více skupin následující, seřazený podle priority:
 
 - `pole`: Výsledky hledání získat nejviditelnější zpracování (například zobrazený nad hlavní linie a boční panel).
 - `mainline`: Výsledky hledání pro zobrazení v hlavní linii.
@@ -273,7 +274,7 @@ static void DisplayAllRankedResults(Newtonsoft.Json.Linq.JObject responseObjects
 Tuto metodu:
 
 - Cyklickému `rankingResponse` skupin, které obsahuje odpověď
-- Zobrazí položky v každé skupině voláním `DisplaySpecificResults(...)` 
+- Zobrazí položky v každé skupině voláním `DisplaySpecificResults(...)`
 
 V **Program.cs**, přidejte následující dvě metody:
 

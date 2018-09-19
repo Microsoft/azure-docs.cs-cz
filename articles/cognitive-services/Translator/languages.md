@@ -1,24 +1,25 @@
 ---
-title: Podporované jazyky v rozhraní Microsoft Translator API | Dokumentace Microsoftu
-description: Zobrazit jazyky podporovanými Microsoft Translator Text API.
+title: Translator Text API podporované jazyky
+titlesuffix: Azure Cognitive Services
+description: Zobrazit jazyky podporovanými Translator Text API.
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: v-jansko
-ms.openlocfilehash: 15e01dd55a0fe297eab69417074dc58a15b469c4
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 9318a562fad00f61d50fdce19b8b84b62c294cba
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43783208"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124844"
 ---
-# <a name="supported-languages-in-the-microsoft-translator-text-api"></a>Podporované jazyky v rozhraní Microsoft Translator Text API
+# <a name="supported-languages-in-the-translator-text-api"></a>Podporované jazyky v rozhraní Translator Text API
 
-Microsoft Translator Text API podporuje následující jazyky pro překlad textu do textu. Neurální strojový překlad sítí (NMT) je novým standardem pro strojový překlad s využitím AI vysoce kvalitní a je k dispozici jako výchozí používá Translator Text API V3 neuronových sítí systému je k dispozici. Neurální strojový překlad je k dispozici ve verzi V2 prostřednictvím kategorie "generalnn".
+Translator Text API podporuje následující jazyky pro překlad textu do textu. Neurální strojový překlad sítí (NMT) je novým standardem pro strojový překlad s využitím AI vysoce kvalitní a je k dispozici jako výchozí používá Translator Text API V3 neuronových sítí systému je k dispozici. Neurální strojový překlad je k dispozici ve verzi V2 prostřednictvím kategorie "generalnn".
 
 [Další informace o tom, jak funguje strojový překlad](https://www.microsoft.com/translator/mt.aspx)
 

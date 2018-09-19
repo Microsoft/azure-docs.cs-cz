@@ -3,7 +3,7 @@ title: Ve službě Azure Security Center monitorování Integrity souborů | Dok
 description: " Zjistěte, jak povolit monitorování Integrity souborů ve službě Azure Security Center. "
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/06/2018
-ms.author: terrylan
-ms.openlocfilehash: e8455dddf62c16cb5ebcf20622580fad82d783a7
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.date: 09/21/2018
+ms.author: rkarlin
+ms.openlocfilehash: 56aa756230dc908157a5a3d244d379215935cd2f
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296224"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124112"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Ve službě Azure Security Center monitorování Integrity souborů
 Zjistěte, jak nakonfigurovat monitorování Integrity souborů (FIM) ve službě Azure Security Center pomocí tohoto názorného postupu.
@@ -182,6 +182,14 @@ V části **upravit pro řešení Change Tracking** můžete:
   ![Sada povoleno na hodnotu false][19]
 
 6. Vyberte **Uložit**.
+
+## <a name="folder-and-path-monitoring-using-wildcards"></a>Složky a cesta k monitorování použití zástupných znaků
+
+Použijte zástupné znaky zjednodušit sledování mezi adresáře. Při konfiguraci monitorování složky pomocí zástupných znaků, platí následující pravidla:
+-   Zástupné znaky jsou požadovány pro sledování více souborů.
+-   Zástupné znaky lze použít pouze v posledním segmentu cesty, jako je například C:\folder\file nebo /etc/*.conf
+-   Pokud proměnná prostředí obsahuje cestu, která není platná, ověření proběhne úspěšně, ale cesta se nezdaří spuštění inventáře.
+-   Při nastavování cestu, vyhněte se obecné cesty, jako je například c:\*. * se budou účtovat příliš mnoho složek se procházet.
 
 ## <a name="disable-fim"></a>Zakázat FIM
 Můžete zakázat FIM. FIM pomocí řešení Azure Change Tracking sleduje a identifikuje změny ve vašem prostředí. Tím, že zakážete FIM, odeberete řešení Change Tracking z vybraného pracovního prostoru.

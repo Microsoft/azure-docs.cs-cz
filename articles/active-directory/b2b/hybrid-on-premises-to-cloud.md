@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 0cbcb6095c59089008bd9a95b9bb0a3ddaa70a58
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 722ab51d0f591b8f16924d1d5661385267b7f0e6
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45984038"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295151"
 ---
 # <a name="grant-locally-managed-partner-accounts-access-to-cloud-resources-using-azure-ad-b2b-collaboration"></a>Udělit partnera místně spravované účty přístup ke cloudovým prostředkům využitím spolupráce Azure AD B2B
 
@@ -32,17 +32,17 @@ Jsou dvě běžné metody pro toto:
 - Určete nevyužitých místních atributů služby Active Directory (například extensionAttribute1) použít jako zdrojový atribut. 
 - Můžete také odvodit hodnotu pro atribut UserType z dalších vlastností. Například chcete synchronizujeme všechny uživatele jako hosta, pokud jejich místní atribut Active Directory UserPrincipalName skončí s doménou *@partners.contoso.com*.
  
-Atribut podrobné požadavky najdete v tématu [povolení synchronizace hodnot UserType](../connect/active-directory-aadconnectsync-change-the-configuration.md#enable-synchronization-of-usertype). 
+Atribut podrobné požadavky najdete v tématu [povolení synchronizace hodnot UserType](../hybrid/how-to-connect-sync-change-the-configuration.md#enable-synchronization-of-usertype). 
 
 ## <a name="configure-azure-ad-connect-to-sync-users-to-the-cloud"></a>Konfigurace služby Azure AD Connect pro synchronizaci uživatelů do cloudu
 
 Po identifikaci jedinečný atribut, můžete nakonfigurovat synchronizaci tito uživatelé do cloudu jako uživatele Azure AD B2B Azure AD Connect (to znamená, že uživatelé s UserType = hosta). Z autorizační hlediska jsou tito uživatelé nerozeznatelná od uživatele B2B, které jsou vytvořené pomocí proces pozvánky spolupráce B2B ve službě Azure AD.
 
-Pokyny k implementaci, najdete v části [povolení synchronizace hodnot UserType](../connect/active-directory-aadconnectsync-change-the-configuration.md#enable-synchronization-of-usertype).
+Pokyny k implementaci, najdete v části [povolení synchronizace hodnot UserType](../hybrid/how-to-connect-sync-change-the-configuration.md#enable-synchronization-of-usertype).
 
 ## <a name="next-steps"></a>Další postup
 
 - [Spolupráce Azure Active Directory s B2B pro hybridní organizace](hybrid-organizations.md)
 - [Uživatelům udělit B2B v Azure AD přístup k místním aplikacím](hybrid-cloud-to-on-premises.md)
-- Přehled služby Azure AD Connect, naleznete v tématu [integrace místních adresářů se službou Azure Active Directory](../connect/active-directory-aadconnect.md).
+- Přehled služby Azure AD Connect, naleznete v tématu [integrace místních adresářů se službou Azure Active Directory](../hybrid/whatis-hybrid-identity.md).
 

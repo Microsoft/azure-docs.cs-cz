@@ -3,19 +3,21 @@ title: Vytváření webhooků v pravidlech v Azure IoT Central | Dokumentace Mic
 description: Vytváření webhooků v Azure IoT Central automatické zaslání oznámení jiné aplikace při vyvolat pravidla.
 author: viv-liu
 ms.author: viviali
-ms.date: 07/17/2018
+ms.date: 09/17/2018
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 1e21076cafe21e6c0efcdf5a8146278eabd9ebc4
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 896d4e9c775fa0b0c8eb062d11d141901daa7242
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39227982"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295971"
 ---
 # <a name="create-webhook-actions-on-rules-in-azure-iot-central"></a>Vytvoření akce webhooku pro pravidla v Azure IoT Central
+
+*Toto téma platí pro tvůrce a správce.*
 
 Webhooky umožňují propojení aplikace IoT Central pro další aplikace a služby pro vzdálené monitorování a oznámení. Webhooky upozorňují automaticky další aplikace a služby, ke kterým se připojujete pokaždé, když se aktivuje pravidlo v aplikaci pro IoT Central. Aplikace IoT Central odešle požadavek POST do koncového bodu HTTP jiná aplikace pokaždé, když se aktivuje pravidlo. Datová část bude obsahovat podrobnosti o zařízení a podrobnosti o triggeru pravidlo. 
 
@@ -25,9 +27,9 @@ V tomto příkladu se připojí k RequestBin nechte se informovat pravidla vyvol
 1. Otevřít [RequestBin](http://requestbin.net/). 
 1. Vytvořte nový RequestBin a zkopírujte **URL přihrádky**. 
 1. Vytvoření [telemetrie pravidlo](howto-create-telemetry-rules.md) nebo [pravidlo události](howto-create-event-rules.md). Uložte pravidlo a přidejte novou akci.
-![Vytvoření obrazovky Webhooku](media/howto-create-webhooks/webhookcreate.png)
+![Vytvoření obrazovky Webhooku](media/howto-create-webhooks/webhookcreate.PNG)
 1. Zvolte Akce webhooku a zadat zobrazovaný název a vložte adresu URL přihrádky jako adresu URL zpětného volání. 
-1. Uložte pravidlo
+1. Uložte pravidlo.
 
 Teď, když se pravidlo aktivuje, měli byste vidět novou žádost o joinkind RequestBin.
 
@@ -42,6 +44,7 @@ Když se aktivuje pravidlo požadavku HTTP POST se provede na adresu URL zpětn�
         "id":"ID",
         "name":  "Refrigerator1",
         "simulated" : true,
+        "deviceId": "deviceID",
         "deviceTemplate":{
             "id": "ID",
             "version":"1.0.0"

@@ -4,37 +4,42 @@ description: zahrnout soubor
 services: functions
 author: ggailey777
 manager: jeconnoc
-ms.service: functions
+ms.service: azure-functions
 ms.topic: include
-ms.date: 08/12/2018
+ms.date: 09/12/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 3cbe634d862682a5f6b06c2cfc77a4d3b03954f9
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 2808264b4641bda49a53677ebe216a3b53b7d0d9
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42811605"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46293682"
 ---
-Kód pro všechny funkce v aplikaci konkrétní funkce je umístěn v kořenové složce (`wwwroot`), která obsahuje konfigurační soubor hostitele a jeden nebo více podsložky. Každá podsložka obsahuje kód pro samostatnou funkci, jako v následujícím příkladu:
+Kód pro všechny funkce v aplikaci konkrétní funkce je umístěn v kořenové složky projektu, který obsahuje konfigurační soubor hostitele a jeden nebo více jejích podsložkách. Každá podsložka obsahuje kód pro samostatnou funkci, jako v následující reprezentaci:
 
 ```
-wwwroot
+FunctionApp
  | - host.json
- | - mynodefunction
+ | - Myfirstfunction
  | | - function.json
- | | - index.js
- | | - node_modules
- | | | - ... packages ...
- | | - package.json
- | - mycsharpfunction
+ | | - ...  
+ | - mysecondfunction
  | | - function.json
- | | - run.csx
+ | | - ...  
+ | - SharedCode
  | - bin
- | | - mycompiledcsharp.dll
 ```
 
-Host.json souboru obsahuje některé konfigurace specifické pro modul runtime a je umístěn v kořenové složce aplikace function app. Informace o nastavení, které jsou k dispozici, najdete v článku [referenční materiály k host.json](../articles/azure-functions/functions-host-json.md).
+Ve verzi 2.x modul runtime služby Functions, všechny funkce do aplikace function App musí sdílet stejný jazyk pracovního procesu.  
 
-Každá funkce má složku, která obsahuje jeden nebo více souborů kódu, konfigurace function.json a dalších závislostí. Pro C# projekt knihovny tříd, je nasazen zkompilovaný soubor knihovny tříd (.dll) na `bin` podsložky.
+[Host.json](../articles/azure-functions/functions-host-json.md) soubor, který obsahuje některé konfigurace specifické pro modul runtime, je v kořenové složce aplikace function app. A `bin` složka obsahuje balíčky a další soubory knihovny vyžadují aplikace function app. Projděte si požadavky na konkrétní jazyk pro projekt aplikace funkcí:
+
+* [Knihovny tříd C# (.csproj)](../articles/azure-functions/functions-dotnet-class-library.md#functions-class-library-project)
+* [C# skript (.csx)](../articles/azure-functions/functions-reference-csharp.md#folder-structure)
+* [Skript F #](../articles/azure-functions/functions-reference-fsharp.md#folder-structure)
+* [Java](../articles/azure-functions/functions-reference-java.md#folder-structure)
+* [JavaScript](../articles/azure-functions/functions-reference-node.md#folder-structure)
+
+
 

@@ -1,6 +1,6 @@
 ---
-title: Vytváření sestav napříč instancemi cloudu databáze | Microsoft Docs
-description: jak nastavit elastické dotazy přes vodorovné oddíly
+title: Vytváření sestav napříč databázemi s horizontálním navýšením kapacity | Dokumentace Microsoftu
+description: jak vytvořit elastické dotazy nad horizontální oddíly
 services: sql-database
 documentationcenter: ''
 manager: craigg
@@ -10,38 +10,38 @@ ms.custom: scale out apps
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: mlandzic
-ms.openlocfilehash: fcb498542a496e4a887c825808642d3f586ef1d9
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6efc9da60017914eeeb06bdf3309cae79fac36d6
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34646350"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "35643593"
 ---
-# <a name="reporting-across-scaled-out-cloud-databases-preview"></a>Vytváření sestav napříč instancemi cloudu databází (preview)
-![Dotazování mezi horizontálních oddílů][1]
+# <a name="reporting-across-scaled-out-cloud-databases-preview"></a>Vytváření sestav napříč databázemi s horizontálním navýšením kapacity (preview)
+![Dotazování napříč horizontálními oddíly][1]
 
-Horizontálně dělené databáze distribuovat řádky napříč škálovaný dat vrstvy. Schéma je stejná na všechny zúčastněné databáze, také známé jako vodorovné rozdělení do oddílů. Pomocí elastické dotazu, můžete vytvořit sestavy, které jsou rozmístěny všechny databáze v horizontálně dělené databázi.
+Horizontálně dělené databáze distribuovat řádky mezi škálovaném datové vrstvy. Schéma je shodné pro všechny zúčastněné databáze, označované také jako horizontální dělení. Použitím elastického dotazu, můžete vytvořit sestavy, které jsou rozmístěny všech databází v horizontálně dělené databáze.
 
-Rychle začít, najdete v části [vytváření sestav napříč instancemi cloudu databáze](sql-database-elastic-query-getting-started.md).
+Rychlý start, naleznete v tématu [vytváření sestav napříč databázemi s horizontálním navýšením kapacity](sql-database-elastic-query-getting-started.md).
 
-Horizontálně dělené databází, najdete v části [dotazu mezi databázemi cloudu s různými schématy](sql-database-elastic-query-vertical-partitioning.md). 
+Horizontálně dělené databáze, najdete v části [dotaz přes cloudové databáze s různými schématy](sql-database-elastic-query-vertical-partitioning.md). 
 
 ## <a name="prerequisites"></a>Požadavky
-* Vytvoření mapy horizontálního oddílu pomocí klientské knihovny elastické databáze. v tématu [horizontálního oddílu mapy správu](sql-database-elastic-scale-shard-map-management.md). Nebo použijte ukázkovou aplikaci v [začít pracovat s nástroji elastické databáze](sql-database-elastic-scale-get-started.md).
-* Alternativně si zobrazte [migrovat existující databáze do databází upraveným](sql-database-elastic-convert-to-use-elastic-tools.md).
+* Vytvoření mapy horizontálních oddílů pomocí Klientská knihovna elastic database. Zobrazit [správy mapování horizontálních oddílů](sql-database-elastic-scale-shard-map-management.md). Nebo použijte ukázkovou aplikaci v [Začínáme s nástroji elastic database](sql-database-elastic-scale-get-started.md).
+* Alternativně si zobrazte [migrace existujících databází do databází s horizontálním navýšením kapacity](sql-database-elastic-convert-to-use-elastic-tools.md).
 * Uživatel musí mít oprávnění ALTER ANY EXTERNAL DATA SOURCE. Toto oprávnění je součástí oprávnění ALTER DATABASE.
 * K odkazování na podkladový zdroj dat jsou potřeba oprávnění ALTER ANY EXTERNAL DATA SOURCE.
 
 ## <a name="overview"></a>Přehled
-Tyto příkazy vytvoření metadat reprezentace horizontálně dělené datové vrstvě v databázi elastické dotazu. 
+Tyto příkazy vytvořit reprezentaci metadat úrovně horizontálně dělených dat v databázi elastického dotazu. 
 
-1. [VYTVOŘENÍ HLAVNÍHO KLÍČE](https://msdn.microsoft.com/library/ms174382.aspx)
-2. [VYTVOŘENÍ DATABÁZE OBOR PŘIHLAŠOVACÍCH ÚDAJŮ](https://msdn.microsoft.com/library/mt270260.aspx)
+1. [VYTVOŘTE HLAVNÍ KLÍČ](https://msdn.microsoft.com/library/ms174382.aspx)
+2. [VYTVOŘENÍ DATABASE SCOPED CREDENTIAL](https://msdn.microsoft.com/library/mt270260.aspx)
 3. [VYTVOŘENÍ EXTERNÍHO ZDROJE DAT](https://msdn.microsoft.com/library/dn935022.aspx)
 4. [CREATE EXTERNAL TABLE](https://msdn.microsoft.com/library/dn935021.aspx) 
 
-## <a name="11-create-database-scoped-master-key-and-credentials"></a>1.1 vytvořit hlavní klíč databáze obor a přihlašovací údaje
-Přihlašovací údaje se používá v elastické dotazu pro připojení k vzdálené databáze.  
+## <a name="11-create-database-scoped-master-key-and-credentials"></a>1.1 Vytvoření hlavního klíče s rozsahem databáze a přihlašovacích údajů
+Přihlašovací údaje, které používá elastický dotaz pro připojení k vzdálené databáze.  
 
     CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'password';
     CREATE DATABASE SCOPED CREDENTIAL <credential_name>  WITH IDENTITY = '<username>',  
@@ -49,11 +49,11 @@ Přihlašovací údaje se používá v elastické dotazu pro připojení k vzdá
     [;]
 
 > [!NOTE]
-> Ujistěte se, že *"\<uživatelské jméno\>"* neobsahuje žádné *"@servername"* příponu. 
+> Ujistěte se, že *"\<uživatelské jméno\>"* neobsahuje žádné *"\@název_serveru"* příponu. 
 > 
 > 
 
-## <a name="12-create-external-data-sources"></a>1.2 Vytvoření externích zdrojů dat.
+## <a name="12-create-external-data-sources"></a>1.2 vytvořit externí zdroje dat
 Syntaxe:
 
     <External_Data_Source> ::=    
@@ -76,11 +76,11 @@ Syntaxe:
         SHARD_MAP_NAME='ShardMap' 
     );
 
-Načtěte seznam aktuálních zdrojů dat externí: 
+Načte seznam aktuální externí zdroje dat: 
 
     select * from sys.external_data_sources; 
 
-Externí zdroj dat odkazuje na mapě horizontálního oddílu. Dotaz elastické pak používá externí zdroj dat a základní mapy horizontálního oddílu výčet databází, které jsou součástí datové vrstvy. Stejné přihlašovací údaje se používají ke čtení mapy horizontálního oddílu a k přístupu k datům na horizontálních oddílů během zpracování elastické dotazu. 
+Externí zdroj dat odkazuje mapa horizontálních oddílů. Elastický dotaz použije externí zdroj dat a podkladové mapy horizontálních oddílů k zobrazení výčtu databází, které jsou součástí datové vrstvy. Stejné přihlašovací údaje se používají ke čtení mapy horizontálních oddílů a získat přístup k datům na horizontální oddíly během zpracování elastický dotaz. 
 
 ## <a name="13-create-external-tables"></a>1.3 Vytvoření externí tabulky
 Syntaxe:  
@@ -119,7 +119,7 @@ Syntaxe:
         DISTRIBUTION=SHARDED(ol_w_id)
     ); 
 
-Načtení seznamu externí tabulky z aktuální databáze: 
+Načíst seznam externích tabulek z aktuální databáze: 
 
     SELECT * from sys.external_tables; 
 
@@ -128,25 +128,25 @@ Chcete-li vyřadit externí tabulky:
     DROP EXTERNAL TABLE [ database_name . [ schema_name ] . | schema_name. ] table_name[;]
 
 ### <a name="remarks"></a>Poznámky
-DATA\_zdroj klauzule definuje zdroj externích dat (horizontálních map), který se používá pro externí tabulky.  
+DATA\_zdroj klauzule definuje externí zdroj dat (mapy horizontálních oddílů), který se používá pro externí tabulky.  
 
-SCHÉMA\_název a OBJEKT\_název klauzule mapování definici externí tabulky do tabulky v jiném schématu. Pokud tento parametr vynechán, je schéma ke vzdálenému objektu předpokládá se "dbo" a její název se považuje za stejný jako název externí tabulky definovaný. To je užitečné, když se název vzdálené tabulky se už používá v databázi kde chcete vytvořit externí tabulky. Například můžete definovat externí tabulku získat agregované zobrazení katalogu zobrazení nebo zobrazení dynamické správy na škálovaný dat vrstvy. Vzhledem k tomu, že zobrazení katalogu a zobrazení dynamické správy již existují místně, nemůžete použít jejich názvy pro definici externí tabulky. Místo toho použijte jiný název a použijte zobrazení katalogu nebo DMV název ve schématu\_název nebo OBJEKT\_klauzule název. (Viz následující příklad.) 
+SCHÉMA\_název a OBJEKT\_název klauzule namapovat definici externí tabulky do tabulky v jiné schéma. Pokud tento parametr vynechán, schéma vzdáleného objektu je předpokládá se, že "dbo" a jeho název je považován za shodný s názvem externí tabulky, je definována. To je užitečné, pokud název vzdálené tabulky se už používá v databázi místo vytvoření externí tabulky. Například můžete definovat externí tabulky k získání agregované zobrazení zobrazení katalogu nebo zobrazení dynamických zpráv na horizontálně dat vrstvy. Protože zobrazení katalogu a zobrazení dynamické správy už místně, nelze použít jejich názvy pro definici externí tabulky. Místo toho použijte jiný název a použijte zobrazení katalogu nebo zobrazení dynamické správy název ve schématu\_název a/nebo OBJEKT\_klauzule název. (Viz následující příklad). 
 
-V klauzuli distribuční Určuje distribuci dat použít pro tuto tabulku. Procesor dotazů využívá informací uvedených v klauzuli distribuční k vytvoření nejúčinnější plány dotazů.  
+DISTRIBUČNÍ klauzule určuje distribuci dat použít pro tuto tabulku. Procesor dotazů využívá informace uvedené v distribuční klauzule pro sestavení nejúčinnější plány dotazů.  
 
-1. **Horizontálně DĚLENÉ** znamená data vodorovně rozdělena mezi databází. Klíč rozdělení pro distribuci dat je **< sharding_column_name >** parametr.
-2. **REPLIKOVAT** znamená, že jsou identické kopií tabulky na každou databázi. Je vaší povinností ujistit, že repliky jsou identické mezi databází.
-3. **ZAOKROUHLÍ\_každý s každým** znamená, že v tabulce je vodorovně rozdělena na oddíly pomocí metody distribuce závislé aplikace. 
+1. **Horizontálně DĚLENÉ** znamená, že data se horizontálně dělené do oddílů napříč databázemi. Dělení klíč pro distribuci dat je **< sharding_column_name >** parametru.
+2. **REPLIKOVANÉ** znamená, že jsou k dispozici v každé databázi totožné kopie v tabulce. Je vaší povinností ujistit, že tyto repliky jsou identické napříč databázemi.
+3. **ROUND\_ROBIN** znamená, že v tabulce je horizontálně dělené do oddílů pomocí metody distribuce závislých na aplikaci. 
 
-**Datové vrstvy odkaz**: DDL odkazuje na externí zdroj dat externí tabulky. Externí zdroj dat určuje horizontálního oddílu mapy, které poskytuje informace potřebné k vyhledání všechny databáze v datové vrstvě externí tabulky. 
+**Data úrovně odkaz**: DDL odkazuje na externí zdroj dat externí tabulky. Externí zdroj dat určuje mapy horizontálních oddílů, který poskytuje informace potřebné k vyhledání všech databází ve vaší datové vrstvě externí tabulky. 
 
 ### <a name="security-considerations"></a>Aspekty zabezpečení
-Uživatelé s přístupem k externí tabulky automaticky získají přístup k základní vzdálených tabulek v části přihlašovací údaje zadané v definici zdrojové externí data. Vyhněte se nežádoucí zvýšení oprávnění pomocí přihlašovacích údajů zdroje dat externí. Pomocí GRANT nebo REVOKE pro externí tabulky stejně, jako by šlo o běžnou tabulku.  
+Uživatelé s přístupem k externí tabulky automaticky získáte přístup k podkladové vzdálených tabulek v části přihlašovací údaje zadané v definici zdroje externí data. Vyhněte se nežádoucí zvýšení oprávnění prostřednictvím přihlašovacích údajů zdroje dat externí. Pomocí GRANT nebo REVOKE pro externí tabulky, stejně, jako by šlo o běžnou tabulku.  
 
-Jakmile definujete zdroj externích dat a externí tabulky, teď můžete použít úplnou T-SQL na externí tabulky.
+Po definování externího zdroje dat. a externích tabulek, můžete nyní použít úplné T-SQL na externí tabulky.
 
-## <a name="example-querying-horizontal-partitioned-databases"></a>Příklad: dotazy na vodorovné oddílů databáze
-Následující dotaz spojí třícestný sklady a pořadí řádky objednávek a používá několik agregace a selektivní filtru. Předpokládá (1) vodorovné rozdělení (horizontálního dělení) a (2), sklady, objednávek a pořadí řádky jsou horizontálně dělené podle id sloupce skladu, a zda elastické dotaz můžete společně umísťovat spojení na horizontálních oddílů zpracovat nákladné část dotazu na horizontálních oddílů v paralelní. 
+## <a name="example-querying-horizontal-partitioned-databases"></a>Příklad: dotazování vodorovné dělenou databází
+Následující dotaz spojí trojcestných sklady, objednávky a řádky a používá několik agregace a selektivní filtru. Předpokládá (1) horizontální dělení (sharding) a (2), sklady, objednávky a řádky jsou horizontálně dělené podle sloupce id skladu a že elastický dotaz můžete společně umísťovat spojení na horizontální oddíly a zpracovávat náročná část dotazu na horizontální oddíly takovým paralelní. 
 
     select  
          w_id as warehouse,
@@ -163,15 +163,15 @@ Následující dotaz spojí třícestný sklady a pořadí řádky objednávek a
     where w_id > 100 and w_id < 200 
     group by w_id, o_c_id 
 
-## <a name="stored-procedure-for-remote-t-sql-execution-spexecuteremote"></a>Uložené procedury pro vzdálené spuštění T-SQL: sp\_execute_remote
-Elastické dotazu také zavádí uložené procedury, která poskytuje přímý přístup k horizontálních oddílů. Uložená procedura je volána [sp\_provést \_vzdáleného](https://msdn.microsoft.com/library/mt703714) a můžete použít ke spuštění vzdálené uložené procedury nebo kód T-SQL na vzdálené databáze. Ji používá následující parametry: 
+## <a name="stored-procedure-for-remote-t-sql-execution-spexecuteremote"></a>Uložené procedury pro vzdálené spuštění T-SQL: aktualizace sp\_execute_remote
+Elastický dotaz také zavádí uloženou proceduru, která poskytuje přímý přístup k horizontální oddíly. Volání uložené procedury [sp\_provést \_vzdálené](https://msdn.microsoft.com/library/mt703714) a je možné ke spouštění uložené procedury vzdálený nebo kód T-SQL na vzdálené databáze. Ji používá následující parametry: 
 
-* Název zdroje dat (nvarchar): název zdroje externích dat typu relační. 
-* Dotaz (nvarchar): na každý horizontálního oddílu provedení dotazu T-SQL. 
-* Deklarace parametru (nvarchar) - volitelné: řetězec s definice typu dat pro parametry použité v parametru dotazu (např. sp_executesql). 
-* Seznam hodnot parametru - volitelné: čárkami oddělený seznam hodnot parametrů (např. sp_executesql).
+* Název zdroje dat (nvarchar): název externí zdroj dat typu relační databázový systém. 
+* Dotaz (nvarchar): dotaz T-SQL k provedení na jednotlivých horizontálních oddílů. 
+* Deklarace parametru (nvarchar) – volitelné: řetězec s definice typu dat pro parametry použité v parametru dotazu (např. sp_executesql). 
+* Seznam hodnot parametru - volitelné: čárkami oddělený seznam hodnot parametrů (jako je sp_executesql).
 
-Sp\_provést\_vzdálené používá externí zdroj dat součástí Parametry vyvolání daný příkaz T-SQL nelze provést na vzdálené databáze. Přihlašovací údaje z externí zdroj dat používá pro připojení k databázi správce shardmap a vzdálené databáze.  
+Sp\_provést\_vzdálené externí zdroj dat součástí Parametry vyvolání používá ke spouštění daný příkaz T-SQL na vzdálené databáze. Přihlašovací údaje z externí zdroj dat používá pro připojení k databázi manager shardmap a vzdálené databáze.  
 
 Příklad: 
 
@@ -180,21 +180,21 @@ Příklad:
         N'select count(w_id) as foo from warehouse' 
 
 ## <a name="connectivity-for-tools"></a>Připojení nástroje
-Používat regulární připojovací řetězce SQL serveru pro připojení vaší aplikace, vaše data a BI nástrojů pro integraci do databáze s definic externí tabulky. Ujistěte se, že systém SQL Server je podporovaný jako zdroj dat pro vaše nástroje. Pak odkaz databáze elastické dotazu jako jakékoli jiné databáze systému SQL Server připojen k nástroj a použijte externí tabulky z nástroje nebo aplikace jako kdyby byly místní tabulky. 
+Použít regulární systému SQL Server připojovací řetězce k připojení aplikace, nástrojům integrace BI a data do databáze s vaší definice externí tabulky. Ujistěte se, že systém SQL Server je podporovaný jako zdroj dat pro nástroj. Potom odkaz dotaz na elastic database stejně jako jakékoli jiné databáze systému SQL Server připojen k nástroje a použijte externí tabulky z nástroje nebo aplikace jako kdyby byly místní tabulky. 
 
 ## <a name="best-practices"></a>Osvědčené postupy
-* Ujistěte se, že koncový bod databáze elastické dotazu byl udělen přístup k databázi shardmap a všechny horizontálních oddílů přes brány firewall SQL DB.  
-* Ověřit nebo vynutit distribuci dat definované externí tabulky. Pokud distribuční skutečná data se liší od rozdělení zadaný v definici vaší tabulky, vaše dotazy mohou vést k neočekávaným výsledkům. 
-* Elastické dotazu momentálně neprovádí odstranění horizontálních při predikáty nad klíčem horizontálního dělení by mohla bezpečně vyloučit některé horizontálních oddílů z zpracování.
-* Elastické dotazu je nejvhodnější pro dotazy kde většinu výpočet lze provést na horizontálních oddílů. Obvykle získáte nejlepší výkon dotazů s predikáty selektivní filtru, které lze vyhodnotit na horizontálních oddílů nebo spojení přes rozdělení klíčů, které lze provést tak oddílu zarovnaný na všechny horizontálních oddílů. Ostatní typy dotazů možná muset načíst velkých objemů dat z horizontálních oddílů k hlavnímu uzlu a může být špatná
+* Ujistěte se, že koncový bod databáze elastický dotaz byl udělen přístup k databázi shardmap a všemi horizontálními oddíly přes brány firewall databáze SQL.  
+* Ověřit nebo vynutit distribuci dat určené externí tabulky. Pokud vaše skutečná data distribuce se liší od zadané v definici tabulky distribuci, může vaše dotazy vést k neočekávaným výsledkům. 
+* Elastický dotaz momentálně neprovádí horizontálních oddílů odstranění při predikáty přes klíč horizontálního dělení by mohla bezpečně vyloučení některých horizontálních oddílů z zpracování.
+* Elastický dotaz je nejvhodnější pro dotazy kde většinu výpočtu lze provést na horizontální oddíly. Obvykle získejte nejlepší výkon dotazů pomocí predikátů selektivní filtru, které lze vyhodnotit na horizontální oddíly nebo spojení přes dělení klíčů, které lze provést tak zarovnání oddílu na všechny horizontální oddíly. Další vzory dotazů může potřebovat načítání velkých objemů dat z horizontální oddíly k hlavnímu uzlu a může být špatná
 
 ## <a name="next-steps"></a>Další postup
 
-* Přehled elastické dotazů najdete v tématu [elastické dotazu přehled](sql-database-elastic-query-overview.md).
-* Vertikální dělení kurzu, najdete v části [Začínáme s mezidatabázové dotazu (vertikální dělení)](sql-database-elastic-query-getting-started-vertical.md).
-* Syntaxe a ukázkové dotazy pro svisle oddílů data, najdete v části [dotazování svisle na oddíly dat)](sql-database-elastic-query-vertical-partitioning.md)
-* Podívejte se kurz vodorovné rozdělení do oddílů (horizontálního dělení) [Začínáme s elastické dotazu pro vodorovné rozdělení do oddílů (horizontálního dělení)](sql-database-elastic-query-getting-started.md).
-* V tématu [sp\_provést \_vzdáleného](https://msdn.microsoft.com/library/mt703714) pro uloženou proceduru, který spouští příkaz jazyka Transact-SQL na jedné vzdálené databáze SQL Azure nebo sadu databází, které slouží jako horizontálních oddílů v vodorovné schéma rozdělení oddílů.
+* Přehled elastický dotaz, naleznete v tématu [elastický dotaz přehled](sql-database-elastic-query-overview.md).
+* Vertikální dělení kurz najdete v tématu [Začínáme s mezidatabázovými dotazy (vertikální oddíly)](sql-database-elastic-query-getting-started-vertical.md).
+* Syntaxe a ukázkové dotazy na vertikálně dělená data, najdete v části [dotazování na vertikálně dělené data)](sql-database-elastic-query-vertical-partitioning.md)
+* Horizontální dělení (sharding) kurz najdete v tématu [Začínáme se službou elastický dotaz pro horizontální dělení (sharding)](sql-database-elastic-query-getting-started.md).
+* Naleznete v tématu [sp\_provést \_vzdálené](https://msdn.microsoft.com/library/mt703714) pro uloženou proceduru, která provádí příkaz jazyka Transact-SQL na jeden vzdálený Azure SQL Database nebo sadu databází, které slouží jako horizontální oddíly takovým vodorovné schéma vytváření oddílů.
 
 
 <!--Image references-->

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/13/2018
 ms.author: mireks
 ms.reviewer: vanto
-ms.openlocfilehash: 504b20dfddb5984c17bba9842fbc1a08671c4175
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 2008fdc5b3b6a5263821f6b0a603ae45dad19f9e
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44719031"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297311"
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>Konfigurace vícefaktorového ověřování pro SQL Server Management Studio a Azure AD
 
@@ -27,7 +27,7 @@ V tomto tématu se dozvíte, jak pomocí Azure Active Directory vícefaktorové 
 
 ## <a name="configuration-steps"></a>Postup konfigurace
 
-1. **Konfigurovat Azure Active Directory** – Další informace najdete v tématu [správě adresáře Azure AD](https://msdn.microsoft.com/library/azure/hh967611.aspx), [integrace místních identit s Azure Active Directory](../active-directory/active-directory-aadconnect.md), [ Přidání vlastního názvu domény do Azure AD](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/), [Microsoft Azure teď podporuje federace se službou Windows Server Active Directory](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/), a [spravovat Azure AD pomocí prostředí Windows PowerShell](https://msdn.microsoft.com/library/azure/jj151815.aspx).
+1. **Konfigurovat Azure Active Directory** – Další informace najdete v tématu [správě adresáře Azure AD](https://msdn.microsoft.com/library/azure/hh967611.aspx), [integrace místních identit s Azure Active Directory](../active-directory/hybrid/whatis-hybrid-identity.md), [ Přidání vlastního názvu domény do Azure AD](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/), [Microsoft Azure teď podporuje federace se službou Windows Server Active Directory](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/), a [spravovat Azure AD pomocí prostředí Windows PowerShell](https://msdn.microsoft.com/library/azure/jj151815.aspx).
 2. **Konfigurace vícefaktorového ověřování** – podrobné pokyny najdete v tématu [co je Azure Multi-Factor Authentication?](../active-directory/authentication/multi-factor-authentication.md), [podmíněný přístup (MFA) s Azure SQL Database a datovým skladem vykazovaných](sql-database-conditional-access.md). (Vyžaduje úplné podmíněného přístupu Premium služby Azure Active Directory (Azure AD). Omezené MFA je k dispozici s standard služby Azure AD.)
 3. **Konfigurace SQL Database nebo SQL Data Warehouse pro Azure AD Authentication** – podrobné pokyny najdete v tématu [připojení k SQL Database nebo SQL Data Warehouse pomocí Active Directory ověřování služby Azure](sql-database-aad-authentication.md).
 4. **Stáhnout aplikaci SSMS** – v klientském počítači, stáhněte si nejnovější verze aplikace SSMS z [stáhnout SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx). Pro všechny funkce v tomto tématu použijte alespoň verzi 17.2. července 2017.  

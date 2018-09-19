@@ -1,6 +1,6 @@
 ---
-title: Protokoly serveru pro databázi Azure pro databázi MySQL
-description: Popisuje protokolů dostupných v databázi Azure pro MySQL a dostupné parametry pro povolení protokolování různé úrovně.
+title: Protokoly serveru Azure Database for MySQL
+description: Popisuje protokoly, které jsou k dispozici ve službě Azure Database for MySQL a parametry dostupnými pro povolení úrovní různých protokolování.
 services: mysql
 author: rachel-msft
 ms.author: raagyema
@@ -8,43 +8,43 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: 50e4b9b8b8f9433ec725aaa982e969cec7afb91c
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.date: 09/17/2018
+ms.openlocfilehash: ac5be20815b552c08e5cd1054bf24d7a10b56498
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265781"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124265"
 ---
-# <a name="server-logs-in-azure-database-for-mysql"></a>V protokolech serveru v Azure databáze pro databázi MySQL
-V databázi Azure pro databázi MySQL je k dispozici uživatelům protokol pomalé dotazu. Přístup k protokolu transakcí není podporována. Protokol pomalé dotazu slouží k identifikaci kritické body pro řešení potíží. 
+# <a name="server-logs-in-azure-database-for-mysql"></a>Protokolů serveru ve službě Azure Database for MySQL
+Ve službě Azure Database for MySQL je k dispozici uživatelům v protokolu pomalých dotazů. Přístup k protokolu transakcí se nepodporuje. Protokol pomalých dotazů je možné identifikovat kritické body výkonu pro řešení potíží. 
 
-Další informace o protokolu pomalé dotazu MySQL, naleznete v příručce odkaz MySQL [zpomalit části protokolu dotazu](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html).
+Další informace o protokolu pomalých dotazů MySQL, naleznete v tématu Referenční příručce MySQL [zpomalit část protokol dotazu](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html).
 
 ## <a name="access-server-logs"></a>Přístup k protokolům serveru
-Můžete zobrazit seznam a stáhnout databáze Azure pro protokoly MySQL serveru pomocí portálu Azure a rozhraní příkazového řádku Azure.
+Můžete seznam a stažení protokolů serveru MySQL pomocí webu Azure portal a rozhraní příkazového řádku Azure – Azure Database.
 
-Na portálu Azure vyberte svou databázi Azure pro server databáze MySQL. V části **monitorování** záhlaví, vyberte **protokoly serveru** stránky.
+Na webu Azure Portal vyberte váš server Azure Database for MySQL. V části **monitorování** záhlaví, vyberte **protokoly serveru** stránky.
 
-Další informace o rozhraní příkazového řádku Azure najdete v tématu [konfigurace a přístup protokolů serveru pomocí rozhraní příkazového řádku Azure](howto-configure-server-logs-in-cli.md).
+Další informace o Azure CLI najdete v tématu [server protokoly konfigurace a přístup pomocí rozhraní příkazového řádku Azure](howto-configure-server-logs-in-cli.md).
 
-## <a name="log-retention"></a>Uchování protokolu
-Protokoly jsou k dispozici až sedm dní od jejich vytvoření. Pokud celková velikost dostupné protokoly překračuje 7.5 GB, odstraní se nejstarší soubory dokud místa je k dispozici. 
+## <a name="log-retention"></a>Uchovávání protokolů
+Protokoly jsou k dispozici po dobu až sedmi dní od jejich vytvoření. Pokud celková velikost dostupné protokoly překročí 7 GB, se odstraní nejstarší soubory, dokud je k dispozici místo. 
 
-Protokoly otáčejí každých 24 hodin nebo 7.5 GB, co nastane dříve.
+Protokoly jsou otočeny každých 24 hodin nebo 7 GB, co nastane dříve.
 
 
 ## <a name="configure-logging"></a>Konfigurace protokolování 
-Ve výchozím nastavení je zakázán protokol pomalé dotazu. Chcete-li ji povolit, nastavte slow_query_log na hodnotu ON.
+Ve výchozím nastavení je zakázaný protokol pomalých dotazů. Ji Pokud chcete povolit, nastavte slow_query_log na ON.
 
 Další parametry, které můžete upravit patří:
 
-- **long_query_time**: Pokud dotaz trvá déle, než long_query_time (v sekundách) se zaprotokoluje takový dotaz. Výchozí hodnota je 10 sekund.
-- **log_slow_admin_statements**: Pokud ON zahrnuje správu příkazy, jako je třeba ALTER_TABLE a ANALYZE_TABLE v příkazech zapsána do slow_query_log.
+- **long_query_time**: Pokud dotaz trvá déle než long_query_time (v sekundách) se přihlásí daný dotaz. Výchozí hodnota je 10 sekund.
+- **log_slow_admin_statements**: Pokud dále zahrnuje příkazy pro správu jako ALTER_TABLE a ANALYZE_TABLE v příkazech napsané slow_query_log.
 - **log_queries_not_using_indexes**: Určuje, zda dotazy, které nepoužívají indexy jsou protokolovány slow_query_log
-- **log_throttle_queries_not_using_indexes**: Tento parametr omezuje počet jiný index dotazy, které je možné zapsat do protokolu pomalé dotazu. Tento parametr se projeví log_queries_not_using_indexes nastavena na hodnotu ON.
+- **log_throttle_queries_not_using_indexes**: Tento parametr omezuje počet jiných indexu dotazů, které se dají zapisovat do protokolu pomalých dotazů. Tento parametr se projeví při log_queries_not_using_indexes nastavená na ON.
 
-Najdete v článku MySQL [zpomalit dokumentaci protokolu dotazu](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html) pro úplný popis pomalé protokolu parametry dotazu.
+Zobrazit MySQL [zpomalit dokumentace ke službě log dotazu](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html) úplný popis parametrů protokol pomalých dotazů.
 
 ## <a name="next-steps"></a>Další kroky
-- [Postup konfigurace a přístup k protokolům serveru z příkazového řádku Azure](howto-configure-server-logs-in-cli.md).
+- [Jak nakonfigurovat a přístup k protokolům server z příkazového řádku Azure](howto-configure-server-logs-in-cli.md).

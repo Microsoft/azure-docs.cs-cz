@@ -9,14 +9,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
-ms.date: 08/23/2018
+ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: 6d15405ef22f47dc8a94c07d9d09d343a743408e
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: a52ba16d7c8548d378d1b13a85fc1fd1070144e8
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094548"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46128379"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Trigger služby Event Grid pro službu Azure Functions
 
@@ -308,23 +308,40 @@ Další informace o tom, jak vytvořit odběry s využitím webu Azure portal na
 
 Vytvoření odběru s použitím [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest), použijte [az eventgrid-odběr události vytvoření](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-create) příkazu.
 
-Příkaz vyžaduje adresu URL koncového bodu, která volá funkci. Následující příklad ukazuje vzor adresy URL:
+Příkaz vyžaduje adresu URL koncového bodu, která volá funkci. Následující příklad ukazuje vzor adresy URL specifické pro verzi:
 
-```
-https://{functionappname}.azurewebsites.net/admin/extensions/EventGridExtensionConfig?functionName={functionname}&code={systemkey}
-```
+#### <a name="version-2x-runtime"></a>Modul runtime verze 2.x
+
+    https://{functionappname}.azurewebsites.net/runtime/webhooks/eventgrid?functionName={functionname}&code={systemkey}
+
+#### <a name="version-1x-runtime"></a>Modul runtime verze 1.x
+
+    https://{functionappname}.azurewebsites.net/admin/extensions/EventGridExtensionConfig?functionName={functionname}&code={systemkey}
 
 Klíč systému je autorizačního klíče, který musí být uvedený v adrese URL koncového bodu pro trigger Event Grid. Následující část vysvětluje, jak získat klíč systému.
 
 Tady je příklad, který se přihlásí k účtu úložiště objektů blob (s zástupný symbol pro systémový klíč):
 
+#### <a name="version-2x-runtime"></a>Modul runtime verze 2.x
+
 ```azurecli
 az eventgrid resource event-subscription create -g myResourceGroup \
 --provider-namespace Microsoft.Storage --resource-type storageAccounts \
---resource-name glengablobstorage --name myFuncSub  \
+--resource-name myblobstorage12345 --name myFuncSub  \
 --included-event-types Microsoft.Storage.BlobCreated \
 --subject-begins-with /blobServices/default/containers/images/blobs/ \
---endpoint https://glengastorageevents.azurewebsites.net/admin/extensions/EventGridExtensionConfig?functionName=imageresizefunc&code=LUwlnhIsNtSiUjv/sNtSiUjvsNtSiUjvsNtSiUjvYb7XDonDUr/RUg==
+--endpoint https://mystoragetriggeredfunction.azurewebsites.net/runtime/webhooks/eventgrid?functionName=imageresizefunc&code=<key>
+```
+
+#### <a name="version-1x-runtime"></a>Modul runtime verze 1.x
+
+```azurecli
+az eventgrid resource event-subscription create -g myResourceGroup \
+--provider-namespace Microsoft.Storage --resource-type storageAccounts \
+--resource-name myblobstorage12345 --name myFuncSub  \
+--included-event-types Microsoft.Storage.BlobCreated \
+--subject-begins-with /blobServices/default/containers/images/blobs/ \
+--endpoint https://mystoragetriggeredfunction.azurewebsites.net/admin/extensions/EventGridExtensionConfig?functionName=imageresizefunc&code=<key>
 ```
 
 Další informace o tom, jak vytvoříte odběr, naleznete v tématu [rychlému startu pro úložiště objektů blob](../storage/blobs/storage-blob-event-quickstart.md#subscribe-to-your-storage-account) nebo v jiných rychlých startech služby Event Grid.
@@ -334,10 +351,10 @@ Další informace o tom, jak vytvoříte odběr, naleznete v tématu [rychlému 
 Klíč systému můžete získat pomocí následující rozhraní API (HTTP GET):
 
 ```
-http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextensionconfig_extension?code={adminkey}
+http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextensionconfig_extension?code={masterkey}
 ```
 
-Toto je správce rozhraní API, takže vyžaduje vaši aplikaci function app [hlavní klíč](functions-bindings-http-webhook.md#authorization-keys). Nepleťte si klíč systému (pro volání funkce triggeru Event Grid) s hlavním klíčem (pro provádění úloh správy v aplikaci function app). Když se přihlásíte k odběru téma Event gridu, nezapomeňte použít systémový klíč. 
+Toto je správce rozhraní API, takže vyžaduje vaši aplikaci function app [hlavní klíč](functions-bindings-http-webhook.md#authorization-keys). Nepleťte si klíč systému (pro volání funkce triggeru Event Grid) s hlavním klíčem (pro provádění úloh správy v aplikaci function app). Když se přihlásíte k odběru téma Event gridu, nezapomeňte použít systémový klíč.
 
 Tady je příklad, který obsahuje klíč systému odpovědi:
 
@@ -354,7 +371,12 @@ Tady je příklad, který obsahuje klíč systému odpovědi:
 }
 ```
 
-Další informace najdete v tématu [autorizace klíče](functions-bindings-http-webhook.md#authorization-keys) v referenční článek triggeru HTTP. 
+Získáte hlavní klíč pro aplikaci function app z **fungovat nastavení aplikace** karta na portálu.
+
+> [!IMPORTANT]
+> Hlavní klíč poskytuje přístup správce ke své aplikaci function app. Není tento klíč sdílet s třetími stranami nebo distribuovat v nativní klientské aplikace.
+
+Další informace najdete v tématu [autorizace klíče](functions-bindings-http-webhook.md#authorization-keys) v referenční článek triggeru HTTP.
 
 Alternativně můžete odeslat HTTP PUT se zadat hodnotu klíče sami.
 
@@ -475,7 +497,7 @@ https://{subdomain}.ngrok.io/admin/extensions/EventGridExtensionConfig?functionN
 ``` 
 Tento model koncový bod se používá pro funkce 2.x:
 ```
-https://{subdomain}.ngrok.io/runtime/webhooks/EventGridExtensionConfig?functionName={functionName}
+https://{subdomain}.ngrok.io/runtime/webhooks/eventgrid?functionName={functionName}
 ``` 
 `functionName` Parametr musí být název zadaný v `FunctionName` atribut.
 

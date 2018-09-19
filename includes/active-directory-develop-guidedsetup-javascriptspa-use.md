@@ -1,7 +1,31 @@
-## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-the-user"></a>Přihlášení uživatele pomocí knihovny ověřování společnosti Microsoft (MSAL)
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: active-directory
+documentationcenter: dev-center-name
+author: navyasric
+manager: mtillman
+editor: ''
+ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 09/17/2018
+ms.author: nacanuma
+ms.custom: include file
+ms.openlocfilehash: 94d57abc95dabf1da579f6d2105ca6c74140a86f
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46293700"
+---
+## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-the-user"></a>Přihlásit uživatele pomocí knihovny Microsoft Authentication Library (MSAL)
 
-1.  Vytvořte soubor s názvem `app.js`. Pokud používáte Visual Studio, vyberte projekt (projektu do kořenové složky), klikněte pravým tlačítkem a vyberte: `Add`  >  `New Item`  >  `JavaScript File`:
-2.  Přidejte následující kód do vaší `app.js` souboru:
+1.  Vytvořte soubor s názvem `app.js`. Pokud používáte Visual Studio, vyberte projekt (Kořenová složka projektu), klikněte pravým tlačítkem myši a vyberte: `Add`  >  `New Item`  >  `JavaScript File`:
+2.  Přidejte následující kód, který vaše `app.js` souboru:
 
 ```javascript
 // Graph API endpoint to show user profile
@@ -113,32 +137,32 @@ function showError(endpoint, error, errorDesc) {
 <!--start-collapse-->
 ### <a name="more-information"></a>Další informace
 
-Po kliknutí *'volání Microsoft Graph API,* tlačítko poprvé, `callGraphApi` volání metod `loginRedirect` k přihlášení uživatele. Výsledkem této metody přesměrování uživateli *koncového bodu Microsoft Azure Active Directory v2* k řádku a ověření přihlašovacích údajů uživatele. V důsledku úspěšného přihlášení, bude uživatel přesměrován zpět do původního *index.html* stránky a token byl přijat zpracovává `msal.js` a informací obsažených v tokenu se uloží do mezipaměti. Tento token se označuje jako *ID token* a obsahuje základní informace o uživateli, jako je například zobrazované uživatelské jméno. Pokud máte v plánu používat žádná data poskytované tento token k jakýmkoli jiným účelům, budete muset Ujistěte se, že tento token je ověřen back-end serveru zaručit, že byl token vydán pro platného uživatele pro vaši aplikaci.
+Po kliknutí *"Volat Microsoft Graph API"* tlačítko poprvé, `callGraphApi` volání metody `loginRedirect` k přihlášení uživatele. Výsledkem přesměrování uživatele do této metody *koncového bodu Microsoft Azure Active Directory v2* výzvu a ověření přihlašovacích údajů uživatele. V důsledku u úspěšné přihlášení, bude uživatel přesměrován zpět na původní *index.html* stránky a token pro přijetí zpracovány `msal.js` a informací obsažených v tokenu se uloží do mezipaměti. Tento token se označuje jako *ID token* a obsahuje základní informace o uživateli, jako je zobrazované jméno uživatele. Pokud máte v plánu používat data poskytuje tento token pro účely, musíte zajistit, aby že tento token je potvrzen v back-end serveru k zajištění, že byl token vydán platnému uživateli služby pro vaši aplikaci.
 
-SPA generované tímto průvodcem neprovede používat přímo z tokenu ID – místo toho volá `acquireTokenSilent` nebo `acquireTokenRedirect` získat *přístupový token* používá k dotazování Microsoft Graph API. Pokud potřebujete vzorku, který ověří ID token, podívejte se na [to](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "Githubu active-directory-javascript-singlepageapp-dotnet-webapi-v2 ukázka") ASP používá ukázkovou aplikaci v Githubu – ukázka Rozhraní .NET webového rozhraní API pro ověření tokenu.
+Jednostránková aplikace vygenerované Tato příručka neposkytuje využívání ID token – místo toho, které volá `acquireTokenSilent` a/nebo `acquireTokenRedirect` získat *přístupový token* používá k dotazování na rozhraní Microsoft Graph API. Pokud potřebujete vzorku, který ověří ID token, podívejte se na [to](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "active-directory-javascript-singlepageapp-dotnet-webapi-v2 ukázky Githubu") ukázková aplikace v Githubu – Ukázka používá ASP .NET webového rozhraní API pro ověřování tokenů.
 
 #### <a name="getting-a-user-token-interactively"></a>Získání tokenu uživatele interaktivně
 
-Po počáteční přihlášení, nechcete požádejte uživatele k novému ověření pokaždé, když potřebují k vyžádání tokenu pro přístup k prostředkům – tak *acquireTokenSilent* se používá ve většině případů k získávat tokeny. Existují však situace, budete muset vynutit uživatelům interakci s koncovým bodem v2 Azure Active Directory – mezi příklady patří:
-- Uživatelé možná muset znovu zadat své přihlašovací údaje, protože vypršela platnost hesla
-- Vaše aplikace požaduje přístup k prostředku, který uživatel musí souhlasit s
-- Není třeba dvoufaktorové ověřování
+Po počátečním přihlášení, nechcete žádat uživatele nutnost opakovaného ověření příslušných pokaždé, když potřebují k vyžádání tokenu pro přístup k prostředku – tedy *acquireTokenSilent* by ve většině případů použít k získání tokenů. Existují však situace, že je potřeba vynutit uživatelům, aby komunikovali s koncovým bodem služby Azure Active Directory v2 – mezi příklady patří:
+- Uživatelé mohou muset znovu zadat své přihlašovací údaje, protože vypršela platnost hesla
+- Aplikace žádá o přístup k prostředku, který uživatel musí vyjádřit souhlas
+- Dvoufaktorové ověřování je povinné
 
-Volání *acquireTokenRedirect(scope)* mít za následek uživatele přesměrují na koncový bod služby Azure Active Directory v2 (nebo *acquireTokenPopup(scope)* výsledek v automaticky otevíraném okně) kdy je potřeba interakci uživatelů potvrzení jejich přihlašovacích údajů, udělení souhlasu pro požadovaný prostředek, nebo dokončení dvoufaktorové ověřování.
+Volání *acquireTokenRedirect(scope)* výsledkem přesměrování uživatelů na koncový bod Azure Active Directory v2 (nebo *acquireTokenPopup(scope)* výsledky v automaticky otevíraném okně) Pokud uživatelé potřebují pracovat potvrzení přihlašovacích údajů, udělení souhlasu pro požadovaný prostředek, nebo dokončení dvoufaktorové ověřování.
 
 #### <a name="getting-a-user-token-silently"></a>Získání tokenu uživatele bez upozornění
-` acquireTokenSilent` Metoda zpracovává tokenu pořízení a obnovení bez nutnosti zásahu uživatele. Po `loginRedirect` (nebo `loginPopup`) se spustí poprvé, `acquireTokenSilent` je metoda běžně používají k získání tokeny použít přístup k chráněným prostředkům pro následující volání - volání na vyžádání nebo obnovení tokeny jsou vytvářeny bezobslužně.
-`acquireTokenSilent` může dojít k selhání v některých případech – třeba hesla vypršela. Aplikace může zpracovat výjimku dvěma způsoby:
+` acquireTokenSilent` Obsluhovala token pořízení a obnovení bez nutnosti zásahu uživatele. Po `loginRedirect` (nebo `loginPopup`) provádí poprvé, `acquireTokenSilent` je metoda běžně používá k získání tokenů použít pro přístup k chráněným prostředkům pro pozdější volání – jako volání na vyžádání nebo tokeny obnovení probíhají bezobslužně.
+`acquireTokenSilent` nemusí v některých případech – třeba hesla vypršela. Vaše aplikace dokáže zpracovat tuto výjimku dvěma způsoby:
 
-1.  Ujistěte se, volání `acquireTokenRedirect` okamžitě, výsledkem výzvy pro uživatele k přihlášení. Tento vzor se často používá v online aplikace tam, kde není žádná neověřené obsah v aplikaci k dispozici pro uživatele. Ukázka generované touto s průvodcem instalací používá tento vzor.
+1.  Volání `acquireTokenRedirect` okamžitě, jehož výsledkem výzvy k přihlášení. Tento model se běžně používá v online aplikace tam, kde není žádná neověřená obsah v aplikaci k dispozici pro uživatele. Ukázka vygeneroval tento instalační program s asistencí používá tento model.
 
-2. Aplikace můžete udělat taky vizuální označení uživateli, které interaktivní přihlášení je povinné, tak, aby si uživatel může vybrat správný čas pro přihlášení, nebo můžete zkusit aplikaci `acquireTokenSilent` později. To se často používá, když uživatel může použít další funkce aplikace bez narušení – například není neověřené obsah k dispozici v aplikaci. V takovém případě uživatel můžete rozhodnout, pokud se chcete přihlásit k chráněnému prostředku nebo aktualizovat zastaralé informace.
+2. Aplikace lze také nastavit vizuální označení pro uživatele, který interaktivnímu přihlášení je nutné, takže uživatel může vybrat správný čas pro přihlášení, nebo aplikace může pokus zopakovat, `acquireTokenSilent` později. To se běžně používá, když uživatel může používat další funkce aplikace bez narušení – například je neověřené obsah k dispozici v aplikaci. V takovém případě se uživatel může rozhodnout, pokud chtějí přihlášení pro přístup k chráněnému prostředku nebo aktualizujte zastaralé informace.
 
 <!--end-collapse-->
 
-## <a name="call-the-microsoft-graph-api-using-the-token-you-just-obtained"></a>Volání rozhraní Graph API Microsoft pomocí tokenu, který jste obdrželi
+## <a name="call-the-microsoft-graph-api-using-the-token-you-just-obtained"></a>Volání rozhraní Microsoft Graph API pomocí tokenu, který jste získali
 
-Přidejte následující kód do vaší `app.js` souboru:
+Přidejte následující kód, který vaše `app.js` souboru:
 
 ```javascript
 /**
@@ -192,15 +216,15 @@ function callWebApiWithToken(endpoint, token, responseElement, showTokenElement)
 ```
 <!--start-collapse-->
 
-### <a name="more-information-on-making-a-rest-call-against-a-protected-api"></a>Další informace o volání REST chráněné rozhraní API
+### <a name="more-information-on-making-a-rest-call-against-a-protected-api"></a>Další informace o provádění volání REST chráněné rozhraní API
 
-V ukázkové aplikaci vytvořit v této příručce `callWebApiWithToken()` metoda se používá k zajištění HTTP `GET` požadavku pro chráněný prostředek, který vyžaduje token a pak se vraťte obsah volajícímu. Tato metoda přidá získal token v *HTTP autorizační hlavičky*. Pro ukázkovou aplikaci vytvořit v této příručce, prostředek je rozhraní Microsoft Graph API *mi* koncového bodu – zobrazí informace o profilu uživatele.
+V ukázkové aplikaci vytvořil tento průvodce `callWebApiWithToken()` aby protokolu HTTP se používá metoda `GET` požadavku na chráněný prostředek, který se vyžaduje token a potom vrátí obsah volajícímu. Tato metoda přidá tokenu získaného v *hlavičku protokolu HTTP ověřování*. Pro ukázkovou aplikaci vytvořené v této příručce, prostředek je v rozhraní Microsoft Graph API *mě* koncový bod – zobrazí informace o profilu uživatele.
 
 <!--end-collapse-->
 
-## <a name="add-a-method-to-sign-out-the-user"></a>Přidání metody se odhlásit uživatele
+## <a name="add-a-method-to-sign-out-the-user"></a>Přidejte metodu k neodhlásí uživatele
 
-Přidejte následující kód do vaší `app.js` souboru:
+Přidejte následující kód, který vaše `app.js` souboru:
 
 ```javascript
 /**

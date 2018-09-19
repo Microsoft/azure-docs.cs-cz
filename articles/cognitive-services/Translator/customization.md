@@ -1,31 +1,34 @@
 ---
-title: Přizpůsobení překladu Microsoft Translator Text API | Dokumentace Microsoftu
+title: Přizpůsobení překladu Translator Text API
+titlesuffix: Azure Cognitive Services
 description: Pomocí Microsoft Translatoru Hub můžete vytvářet strojový překlad systému pomocí upřednostňované terminologie a stylu.
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: v-jansko
-ms.openlocfilehash: 9c7083ed0147b221d3d400afe83bb3bd6b6db86e
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: d71158bc74ffe15f133cc637371ddc840ef9df9e
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574019"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124322"
 ---
 # <a name="customize-your-text-translations"></a>Upravte svoje textové překlady
 
-Microsoft Translatoru Custom ve verzi preview je funkce služby Microsoft Translator, který umožňuje uživatelům přizpůsobit Microsoft Translatoru pokročilé Neurální strojový překlad, při překladu textu s použitím rozhraní Microsoft Translator Text API (pouze verze 3). 
+Microsoft Translatoru Custom ve verzi preview je funkce služby Microsoft Translator, který umožňuje uživatelům přizpůsobit Microsoft Translatoru pokročilé Neurální strojový překlad, při překladu textu s použitím rozhraní Translator Text API (pouze verze 3). 
 
 Funkci lze použít také k přizpůsobení překladu řeči při použití s [řeči Cognitive Services ve verzi preview](https://docs.microsoft.com/azure/cognitive-services/speech-service/).
 
 ## <a name="custom-translator"></a>Vlastní Translator
+
 S vlastní překlady můžete vytvořit Neurální překladové systémy, které rozuměli technologiím použitým v obchodních a oboru. Systém přizpůsobených překladových pak integrovat do stávajících aplikací, pracovní postupy a websites. 
 
 ### <a name="how-does-it-work"></a>Jak to funguje?
+
 Použijte dříve přeložené dokumentů (letáků, webové stránky, dokumentaci, atd.) na sestavovací systém překladu, který odráží specifického pro doménu terminologie a stylu, lepší výsledky než obecné překladový systém. Uživatelé můžou nahrávat dokumenty, TMX XLIFF, TXT, DOCX a XLSX.  
 
 Systém přijímá také data, která je paralelní na úrovni dokumentu, ale zatím není zarovnána na úrovni vět. Pokud mají uživatelé přístup k verzím stejný obsah ve více jazycích, ale v samostatných dokumentech vlastní Translator budou moci automaticky odpovídat věty v dokumentech.  Systém můžete také jeden jazyk data v těchto jazycích k doplnění paralelní trénovacích dat do vylepšovat překlady. 
@@ -60,5 +63,6 @@ Starší verze centra Microsoft Translator umožňuje překládat statistické s
 >Podobně jako funkce jsou dostupné v rozhraní Translator API rozbočovače. Zobrazit [ https://hub.microsofttranslator.com/swagger ](https://hub.microsofttranslator.com/swagger). 
 
 ## <a name="next-steps"></a>Další postup
+
 > [!div class="nextstepaction"]
 > [Nastavení vlastní jazyk systému pomocí Translatoru Custom](http://aka.ms/CustomTranslatorDocs)

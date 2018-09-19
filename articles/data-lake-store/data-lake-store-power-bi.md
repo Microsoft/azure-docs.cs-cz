@@ -1,6 +1,6 @@
 ---
-title: Analýza dat v Data Lake Store pomocí Power BI | Microsoft Docs
-description: Pomocí Power BI k analýze dat uložených v Azure Data Lake Store
+title: Pomocí Power BI analyzovat data v Azure Data Lake Storage Gen1 | Dokumentace Microsoftu
+description: Pomocí Power BI analyzovat data uložená v Azure Data Lake Storage Gen1
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
@@ -12,90 +12,90 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 37cde17703a15ba5659814e1b65a54d24b67edad
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5db9d18a31af4d6b407fcd9172ac80fc6f93f085
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34624783"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297175"
 ---
-# <a name="analyze-data-in-data-lake-store-by-using-power-bi"></a>Analýza dat v Data Lake Store pomocí Power BI
-V tomto článku se dozvíte, jak analyzovat a vizualizovat data uložená v Azure Data Lake Store pomocí Power BI Desktop.
+# <a name="analyze-data-in-azure-data-lake-storage-gen1-by-using-power-bi"></a>Pomocí Power BI analyzovat data v Azure Data Lake Storage Gen1
+V tomto článku se dozvíte, jak analyzovat a vizualizovat data uložená v Azure Data Lake Storage Gen1 pomocí Power BI Desktopu.
 
 ## <a name="prerequisites"></a>Požadavky
 Je nutné, abyste před zahájením tohoto kurzu měli tyto položky:
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Účet Azure Data Lake Store**. Postupujte podle pokynů v tématu [Začínáme s Azure Data Lake Store s použitím webu Azure Portal](data-lake-store-get-started-portal.md). Tento článek předpokládá, že jste již vytvořili účet Data Lake Store, názvem **mybidatalakestore**a odesláno ukázkový datový soubor (**Drivers.txt**) k němu. Tento ukázkový soubor je k dispozici ke stažení [úložiště Git Azure Data Lake](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt).
-* **Power BI Desktop**. Si můžete stáhnout z [Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=45331). 
+* **Účet Data Lake Storage Gen1**. Postupujte podle pokynů na adrese [Začínáme s Azure Data Lake Storage Gen1 pomocí webu Azure portal](data-lake-store-get-started-portal.md). Tento článek předpokládá, že jste již vytvořili účet Data Lake Storage Gen1 volá **myadlsg1**a nahrát ukázkový datový soubor (**Drivers.txt**) k němu. Tento ukázkový soubor je k dispozici ke stažení z [úložiště Git Azure Data Lake](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt).
+* **Power BI Desktop**. Můžete stáhnout z [Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=45331). 
 
 ## <a name="create-a-report-in-power-bi-desktop"></a>Vytvoření sestavy v Power BI Desktopu
-1. Power BI Desktop spustíte ve vašem počítači.
-2. Z **Domů** pásu karet, klikněte na tlačítko **načíst Data**a pak klikněte na tlačítko Další. V **načíst Data** dialogové okno, klikněte na tlačítko **Azure**, klikněte na tlačítko **Azure Data Lake Store**a potom klikněte na **Connect**.
+1. Spusťte Power BI Desktopu ve vašem počítači.
+2. Z **Domů** pásu karet, klikněte na tlačítko **získat Data**a potom klikněte na tlačítko Další. V **získat Data** dialogové okno, klikněte na tlačítko **Azure**, klikněte na tlačítko **Azure Data Lake Store**a potom klikněte na tlačítko **připojit**.
    
-    ![Připojení k Data Lake Store](./media/data-lake-store-power-bi/get-data-lake-store-account.png "připojení k Data Lake Store")
-3. Pokud se zobrazí dialogové okno o konektoru se ve fázi vývoje, rozhodnout pokračovat.
-4. V **Microsoft Azure Data Lake Store** dialogové okno, zadejte adresu URL k vašemu účtu Data Lake Store a pak klikněte na tlačítko **OK**.
+    ![Připojte se k Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account.png "připojení k Data Lake Storage Gen1")
+3. Pokud se zobrazí dialogové okno o konektoru ve fázi vývoje, rozhodnout pokračovat.
+4. V **Azure Data Lake Store** dialogové okno, zadejte adresu URL k vašemu účtu Data Lake Storage Gen1 a potom klikněte na tlačítko **OK**.
    
-    ![Adresa URL pro Data Lake Store](./media/data-lake-store-power-bi/get-data-lake-store-account-url.png "adresu URL pro Data Lake Store")
-5. V dialogovém okně Další klikněte na **přihlášení** pro přihlášení do účtu Data Lake Store. Budete přesměrováni na přihlašovací stránku vaší organizace. Postupujte podle výzev a přihlaste se k účtu.
+    ![Adresa URL pro Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account-url.png "adresu URL pro Data Lake Storage Gen1")
+5. V dalším dialogovém okně klikněte na tlačítko **přihlášení** k přihlašování do účtu Data Lake Storage Gen1. Budete přesměrováni na přihlašovací stránce vaší organizace. Postupujte podle pokynů k přihlásit k účtu.
    
-    ![Přihlaste se k Data Lake Store](./media/data-lake-store-power-bi/get-data-lake-store-account-signin.png "přihlásit ke službě Data Lake Store")
-6. Po úspěšném přihlášení, klikněte na tlačítko **Connect**.
+    ![Přihlaste se k Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account-signin.png "přihlásit ke službě Data Lake Storage Gen1")
+6. Po úspěšném přihlášení, klikněte na tlačítko **připojit**.
    
-    ![Připojení k Data Lake Store](./media/data-lake-store-power-bi/get-data-lake-store-account-connect.png "připojení k Data Lake Store")
-7. Dialogové okno Další ukazuje soubor, který jste nahráli do účtu Data Lake Store. Ověřte informace a pak klikněte na tlačítko **zatížení**.
+    ![Připojte se k Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account-connect.png "připojení k Data Lake Storage Gen1")
+7. Další dialogové okno zobrazuje soubor, který jste nahráli do svého účtu Data Lake Storage Gen1. Zkontrolujte informace a klikněte na **zatížení**.
    
-    ![Načtení dat z Data Lake Store](./media/data-lake-store-power-bi/get-data-lake-store-account-load.png "načtení dat z Data Lake Store")
-8. Po data byla úspěšně načtena do Power BI, zobrazí se následující pole v **pole** kartě.
+    ![Načtení dat z Data Lake Storage Gen1](./media/data-lake-store-power-bi/get-data-lake-store-account-load.png "načítat data z Data Lake Storage Gen1")
+8. Po data byla úspěšně načtena do Power BI, zobrazí se následující pole v **pole** kartu.
    
     ![Importovat pole](./media/data-lake-store-power-bi/imported-fields.png "importovat pole")
    
-    Však k vizualizaci a analýzu dat, můžeme dáváte přednost data, která mají být k dispozici pro následující pole
+    Nicméně umožňuje vizualizovat a analyzovat data, můžeme dáváte přednost data, která mají být k dispozici pro následující pole
    
-    ![Požadovaného pole](./media/data-lake-store-power-bi/desired-fields.png "požadovaných polí")
+    ![Požadované pole](./media/data-lake-store-power-bi/desired-fields.png "požadované pole")
    
-    V dalších krocích budeme aktualizovat dotaz převést importovaných dat v požadovaném formátu.
+    V dalších krocích budeme aktualizovat dotaz převést importovaná data v požadovaném formátu.
 9. Z **Domů** pásu karet, klikněte na tlačítko **upravit dotazy**.
    
-    ![Upravit dotazy](./media/data-lake-store-power-bi/edit-queries.png "úpravy dotazů")
+    ![Upravit dotazy](./media/data-lake-store-power-bi/edit-queries.png "upravit dotazy")
 10. V editoru dotazů v rámci **obsahu** sloupce, klikněte na tlačítko **binární**.
     
-    ![Upravit dotazy](./media/data-lake-store-power-bi/convert-query1.png "úpravy dotazů")
-11. Zobrazí se ikona souboru, který představuje **Drivers.txt** soubor, který jste nahráli. Klikněte pravým tlačítkem na soubor a klikněte na tlačítko **CSV**.    
+    ![Upravit dotazy](./media/data-lake-store-power-bi/convert-query1.png "upravit dotazy")
+11. Se zobrazuje ikona souboru, který představuje **Drivers.txt** soubor, který jste nahráli. Klikněte pravým tlačítkem na soubor a klikněte na tlačítko **sdíleného svazku clusteru**.    
     
-    ![Upravit dotazy](./media/data-lake-store-power-bi/convert-query2.png "úpravy dotazů")
-12. Měli byste vidět výstup, jak je uvedeno níže. Vaše data jsou nyní k dispozici ve formátu, který slouží k vytváření vizualizací.
+    ![Upravit dotazy](./media/data-lake-store-power-bi/convert-query2.png "upravit dotazy")
+12. Výstup byste měli vidět, jak je znázorněno níže. Vaše data jsou teď k dispozici ve formátu, který vám umožní vytvářet vizualizace.
     
-    ![Upravit dotazy](./media/data-lake-store-power-bi/convert-query3.png "úpravy dotazů")
-13. Z **Domů** pásu karet, klikněte na tlačítko **zavřete a použít**a potom klikněte na **zavřete a použít**.
+    ![Upravit dotazy](./media/data-lake-store-power-bi/convert-query3.png "upravit dotazy")
+13. Z **Domů** pásu karet, klikněte na tlačítko **zavřít a použít**a potom klikněte na tlačítko **zavřít a použít**.
     
-    ![Upravit dotazy](./media/data-lake-store-power-bi/load-edited-query.png "úpravy dotazů")
-14. Po aktualizaci dotazu **pole** se zobrazí nová pole, které jsou k dispozici pro vizualizaci.
+    ![Upravit dotazy](./media/data-lake-store-power-bi/load-edited-query.png "upravit dotazy")
+14. Po aktualizaci dotazu **pole** kartě se zobrazí nová pole, které jsou k dispozici pro vizualizaci.
     
     ![Aktualizovat pole](./media/data-lake-store-power-bi/updated-query-fields.png "aktualizovat pole")
-15. Dejte nám vytvořte výsečový graf představující ovladače v každé město pro dané země. To pokud chcete udělat, vyberte následující možnosti.
+15. Dejte nám prosím vytvořte výsečový graf představující ovladače v každé město pro danou zemi. Uděláte to tak, proveďte následující výběr.
     
-    1. Na kartě vizualizace kliknutím na symbol pro výsečového grafu.
+    1. Na kartě vizualizace klikněte na symbol ve výsečovém grafu.
        
-        ![Vytvoření výsečového grafu](./media/data-lake-store-power-bi/create-pie-chart.png "vytvořit výsečového grafu")
-    2. Sloupce, které jsme se chystáte použít **sloupec 4** (název města) a **7 sloupci** (název země). Přetáhněte tyto sloupce z **pole** kartu k **vizualizace** kartě, jak je uvedeno níže.
+        ![Vytvořte výsečový graf](./media/data-lake-store-power-bi/create-pie-chart.png "vytvořte výsečový graf")
+    2. Sloupce, které budeme používat **4 sloupci** (název města) a **7 sloupci** (název země). Přetáhněte tyto sloupce z **pole** záložku **vizualizace** kartu, jak je znázorněno níže.
        
-        ![Vytváření vizualizací](./media/data-lake-store-power-bi/create-visualizations.png "vytváření vizualizací")
+        ![Vytvoření vizualizace](./media/data-lake-store-power-bi/create-visualizations.png "vytvářet vizualizace")
     3. Výsečový graf by měl nyní vypadat podobně jako následující.
        
-        ![Výsečový graf](./media/data-lake-store-power-bi/pie-chart.png "vytváření vizualizací")
-16. Výběrem konkrétní země ze stránky úrovně filtry, uvidíte nyní počet ovladačů v každé město vybrané země. Například v položce **vizualizace** v části **stránky úrovně filtry**, vyberte **Brazílie**.
+        ![Výsečový graf](./media/data-lake-store-power-bi/pie-chart.png "vytvářet vizualizace")
+16. Tak, že vyberete určitou zemi filtry na úrovni stránek, můžete nyní zobrazit počet ovladačů v každé město vybrané zemi. Například pod položkou **vizualizace** ve skupině **filtry na úrovni stránek**vyberte **Brazílie**.
     
-    ![Vyberte zemi](./media/data-lake-store-power-bi/select-country.png "vyberte zemi")
-17. Výsečový graf se automaticky aktualizuje a zobrazí ovladače ve městech Brazílie.
+    ![Vyberte zemi](./media/data-lake-store-power-bi/select-country.png "vyberte zemi.")
+17. Výsečový graf se automaticky aktualizuje a zobrazí ve městech Brazílie ovladače.
     
     ![Ovladače v určité zemi](./media/data-lake-store-power-bi/driver-per-country.png "ovladače podle země")
-18. Z **soubor** nabídky, klikněte na tlačítko **Uložit** uložit vizualizaci jako soubor Power BI Desktop.
+18. Z **souboru** nabídky, klikněte na tlačítko **Uložit** vizualizaci uložit jako soubor Power BI Desktopu.
 
-## <a name="publish-report-to-power-bi-service"></a>Publikovat sestavy do služby Power BI
-Po vytvoření vizualizacemi v Power BI Desktop, můžete ji sdílet s ostatními ji publikujete do služby Power BI. Pokyny o tom, jak to udělat najdete v tématu [publikování z Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-upload-desktop-files/).
+## <a name="publish-report-to-power-bi-service"></a>Publikování sestavy do služby Power BI
+Po vytvoření vizualizací v Power BI Desktopu, budete ho sdílet s ostatními ji publikujete do služby Power BI. Pokyny, jak to provést, najdete v části [publikování z Power BI Desktopu](https://powerbi.microsoft.com/documentation/powerbi-desktop-upload-desktop-files/).
 
 ## <a name="see-also"></a>Další informace najdete v tématech
-* [Analýza dat v Data Lake Store pomocí Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
+* [Analýza dat v Data Lake Storage Gen1 pomocí služby Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 

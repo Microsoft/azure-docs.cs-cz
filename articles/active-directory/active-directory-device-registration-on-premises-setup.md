@@ -17,12 +17,12 @@ ms.date: 07/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
 ms.custom: seohack1
-ms.openlocfilehash: 38d024de0fd2490d33f7c06498d3ff8d0d06e503
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 3b4c9de16c7248cbd3087689544d70fe22c858fd
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42056815"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296409"
 ---
 # <a name="setting-up-on-premises-conditional-access-by-using-azure-active-directory-device-registration"></a>Nastavení místního podmíněného přístupu pomocí registrace zařízení služby Azure Active Directory
 Pokud požadujete uživatelům připojení k pracovní ploše svoje osobní zařízení pro službu registrace zařízení služby Azure Active Directory (Azure AD), můžete svoje zařízení označit jako známé pro vaši organizaci. Toto je podrobný návod k povolení podmíněného přístupu k místním aplikacím pomocí služby Active Directory Federation Services (AD FS) v systému Windows Server 2012 R2.
@@ -88,7 +88,7 @@ Postupujte podle kroků v seznamu úkolů povolit a nakonfigurovat služba Azure
 ## <a name="part-3-enable-device-writeback-in-azure-ad"></a>3. část: Zpětný zápis zařízení povolit ve službě Azure AD
 | Úkol | Referenční informace |
 | --- | --- |
-| Dokončení druhé části "Povolení zpětného zápisu zařízení ve službě Azure AD Connect." Po dokončení se vraťte do tohoto průvodce. |[Povolení zpětného zápisu zařízení v Azure AD Connect](./connect/active-directory-aadconnect-feature-device-writeback.md) |
+| Dokončení druhé části "Povolení zpětného zápisu zařízení ve službě Azure AD Connect." Po dokončení se vraťte do tohoto průvodce. |[Povolení zpětného zápisu zařízení v Azure AD Connect](hybrid/how-to-connect-device-writeback.md) |
 
 ## <a name="optional-part-4-enable-multi-factor-authentication"></a>[Volitelné] 4. část: Povolení služby Multi-Factor Authentication
 Důrazně doporučujeme konfigurovat jednu z několika možností pro ověřování službou Multi-Factor Authentication. Pokud chcete vyžadovat Vícefaktorové ověřování, přečtěte si téma [vyberte řešení zabezpečení Multi-Factor Authentication vám](authentication/concept-mfa-whichversion.md). Obsahuje popis jednotlivých řešení a odkazy, které vám pomohou nakonfigurovat řešení podle vašeho výběru.
@@ -107,9 +107,9 @@ Nasazení je nyní dokončen a můžete vyzkoušet některé scénáře. Pomocí
 
 **Přejděte na téma:**
 
-- [Integrace místních adresářů se službou Azure Active Directory](./connect/active-directory-aadconnect.md) – Pokud chcete zkontrolovat koncepční informace.
+- [Integrace místních adresářů se službou Azure Active Directory](hybrid/whatis-hybrid-identity.md) – Pokud chcete zkontrolovat koncepční informace.
 
-- [Vlastní instalace služby Azure AD Connect](./connect/active-directory-aadconnect-get-started-custom.md) – pokyny k instalaci.
+- [Vlastní instalace služby Azure AD Connect](hybrid/how-to-connect-install-custom.md) – pokyny k instalaci.
 
 
 ## <a name="upgrade-your-active-directory-domain-services-schema"></a>Upgradu vašeho schématu Active Directory Domain Services

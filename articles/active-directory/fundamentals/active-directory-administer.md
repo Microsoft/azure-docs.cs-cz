@@ -12,12 +12,12 @@ ms.date: 08/23/2018
 ms.author: lizross
 ms.reviewer: jeffsta
 custom: it-pro
-ms.openlocfilehash: 2a548a16a6b896ae1c1297badcef6154b64977f1
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: eb9cf7c21613ab91cc0b8e41a4454835d18f2c34
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45737171"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297924"
 ---
 # <a name="manage-your-azure-active-directory-tenant"></a>Správa vašeho tenanta Azure Active Directory
 
@@ -42,7 +42,7 @@ Při registraci dalších služeb společnosti Microsoft doporučujeme použít 
 
 Pokud jste si například zaregistrovali předplatné Microsoft Intune a potom synchronizujete místní služby Active Directory s adresářem Azure AD, můžete si zaregistrovat další službu společnosti Microsoft, jako je třeba Office 365, a snadno dosáhnout stejných výhod integrace adresáře, které máte při využití Microsoft Intune.
 
-Další informace o integraci místního adresáře se službou Azure AD najdete v článku o [integraci adresáře s Azure AD Connect](../connect/active-directory-aadconnect.md).
+Další informace o integraci místního adresáře se službou Azure AD najdete v článku o [integraci adresáře s Azure AD Connect](../hybrid/whatis-hybrid-identity.md).
 
 ### <a name="associate-an-existing-azure-ad-directory-with-a-new-azure-subscription"></a>Přidružení stávajícího adresáře služby Azure AD k novému předplatnému služby Azure
 Nové předplatné služby Azure můžete přidružit ke stejnému adresáři, který používáte k ověřování přihlášení k existujícímu předplatnému služby Office 365 nebo Microsoft Intune. Další informace o tomto scénáři najdete v tématu [Přenos vlastnictví předplatného služby Azure na jiný účet](../../billing/billing-subscription-transfer.md).

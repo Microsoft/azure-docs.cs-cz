@@ -14,12 +14,12 @@ ms.date: 03/14/2017
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 45882e4d107ffd9ece2bfa6caac43b3bb2f60add
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 5d8e6c0db2ce6c35935c2b00aa40de2a5d5a050f
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44720238"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297618"
 ---
 # <a name="using-a-group-to-manage-access-to-saas-applications"></a>Použití skupiny ke správě přístupu k aplikacím SaaS
 Pomocí Azure Active Directory (Azure AD) s licencí Azure AD Premium nebo Azure AD Basic, můžete použít skupiny k přiřazení přístupu k aplikaci SaaS, která je integrovaná s Azure AD. Například pokud chcete přiřadit přístup pro marketingové oddělení k použití pěti různým aplikacím SaaS, můžete vytvořit skupinu, která obsahuje uživatelé v marketingovém oddělení a potom přidělit této skupině na těchto pět SaaS aplikací, které jsou vyžadované marketingové oddělení. Tímto způsobem můžete ušetřit čas tím, že spravuje členství v marketingovém oddělení na jednom místě. Uživatelé pak jsou přiřazeni k aplikaci při jsou přidány jako členové skupiny marketing a jejich přiřazení odebrali z aplikace, když jsou odebrány ze skupiny marketing. Tato funkce je možné se stovkami aplikací, které můžete přidat z v rámci Galerie aplikací Azure AD.
@@ -43,4 +43,4 @@ Následující články poskytují další informace o službě Azure Active Dir
 * [Správa aplikací v Azure Active Directory](../manage-apps/what-is-application-management.md)
 * [Rutiny služby Azure Active Directory pro konfiguraci nastavení skupiny](groups-settings-cmdlets.md)
 * [Představení služby Azure Active Directory](../fundamentals/active-directory-whatis.md)
-* [Integrování místních identit do služby Azure Active Directory](../connect/active-directory-aadconnect.md)
+* [Integrování místních identit do služby Azure Active Directory](../hybrid/whatis-hybrid-identity.md)

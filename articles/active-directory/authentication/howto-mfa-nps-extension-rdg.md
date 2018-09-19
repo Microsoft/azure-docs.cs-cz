@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 6348a6d003aa3efcd1b9c45e61438e0ac4b4c8d5
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 14607e01c0bd51ca9ae98f969c9cd6e1c8c62bb9
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42060127"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294267"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Integrace služby Brána vzdálené plochy infrastrukturu s použitím rozšíření serveru NPS (Network Policy Server) a Azure AD
 
@@ -82,7 +82,7 @@ Službu role NPS poskytuje server protokolu RADIUS a klientské funkce, jakož i
 Informace o instalaci role Server NPS Windows Server 2012 nebo starší, podívejte se sem [nainstalovat Server zásad stavu NAP](https://technet.microsoft.com/library/dd296890.aspx). Popis osvědčených postupů pro server NPS, včetně doporučení pro instalaci serveru NPS na řadiči domény, najdete v části [osvědčené postupy pro server NPS](https://technet.microsoft.com/library/cc771746).
 
 ### <a name="azure-active-directory-synched-with-on-premises-active-directory"></a>Azure Active Directory synchronizovat s místní služby Active Directory
-Použití rozšíření serveru NPS, musí být místním uživatelům synchronizaci se službou Azure AD a povolené pro vícefaktorové ověřování. V této části se předpokládá, že jsou v místním uživatelům synchronizovat s Azure AD pomocí AD Connect. Informace o službě Azure AD connect najdete v tématu [integrace místních adresářů se službou Azure Active Directory](../connect/active-directory-aadconnect.md). 
+Použití rozšíření serveru NPS, musí být místním uživatelům synchronizaci se službou Azure AD a povolené pro vícefaktorové ověřování. V této části se předpokládá, že jsou v místním uživatelům synchronizovat s Azure AD pomocí AD Connect. Informace o službě Azure AD connect najdete v tématu [integrace místních adresářů se službou Azure Active Directory](../hybrid/whatis-hybrid-identity.md). 
 
 ### <a name="azure-active-directory-guid-id"></a>Identifikátor GUID služby Azure Active Directory
 Pokud chcete nainstalovat rozšíření serveru NPS, je potřeba vědět identifikátor GUID služby Azure AD. Níže jsou uvedené pokyny, jak najít identifikátor GUID služby Azure AD.
@@ -374,4 +374,4 @@ Na obrázku níže z Microsoft Message Analyzer znázorňuje přenos v síti fil
 
 [Brána vzdálené plochy Azure Multi-Factor Authentication Server pomocí protokolu RADIUS](howto-mfaserver-nps-rdg.md)
 
-[Integrace místních adresářů do služby Azure Active Directory](../connect/active-directory-aadconnect.md)
+[Integrace místních adresářů do služby Azure Active Directory](../hybrid/whatis-hybrid-identity.md)

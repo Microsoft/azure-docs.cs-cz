@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: shared-capabilities
 author: georgewallace
 ms.author: gwallace
-ms.date: 05/08/2018
+ms.date: 09/18/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 211d79f387697ce850ac645ef65338c216e2bd76
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: 3d8492d2a8982c9c85bfc91867f7eb6c2da04e58
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382191"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294760"
 ---
 # <a name="scheduling-a-runbook-in-azure-automation"></a>Naplánování runbooku v Azure Automation
 
@@ -50,7 +50,10 @@ Nový plán pro sady runbook můžete vytvořit na webu Azure Portal nebo pomoc�
 1. Na portálu Azure ve svém účtu automation vyberte **plány** části **sdílené prostředky** na levé straně.
 1. Klikněte na tlačítko **přidat plán** v horní části stránky.
 1. Na **nový plán** podokně zadejte **název** a volitelně **popis** nového plánu.
-1. Vyberte, jestli plán se spustí jednorázově nebo podle plánu opakované tak, že vyberete **jednou** nebo **opakování**. Pokud vyberete **jednou** zadat **počáteční čas**a potom klikněte na tlačítko **vytvořit**. Pokud vyberete **opakování**, zadejte **počáteční čas** a jak často chcete runbooku opakovat - podle frekvence **hodinu**, **den**, **týden**, nebo **měsíc**. Pokud vyberete **týden** nebo **měsíc** z rozevíracího seznamu **možnost opakování** se zobrazí v podokně a po výběru **možnost opakování** podokně se zobrazí a můžete vybrat den v týdnu, pokud jste vybrali **týden**. Pokud jste vybrali **měsíc**, můžete použít podle **dny v týdnu** nebo konkrétní dny v měsíci v kalendáři a nakonec chcete spustit poslední den v měsíci, nebo Ne a potom klikněte na **OK**.
+1. Vyberte, jestli plán se spustí jednorázově nebo podle plánu opakované tak, že vyberete **jednou** nebo **periodický**. Pokud vyberete **jednou** zadat **počáteční čas**a potom klikněte na tlačítko **vytvořit**. Pokud vyberete **periodický**, zadejte **počáteční čas** a pro **opakovat každých**, vyberte frekvenci, jak často chcete sadu runbook opakujte – podle **hodinu**, **den**, **týden**, nebo **měsíc**.
+    1. Pokud vyberete **týden**, jsou k dispozici seznam dny v týdnu lze vybírat. Vyberte libovolný počet dní, jak chcete. První spuštění vašeho plánu se stane první den vybrané po času zahájení.
+    2. Pokud vyberete **měsíc**, jsou uvedeny různé možnosti. Pro **měsíční occurrances** , vyberte buď **dny v měsíci** nebo **dnech**. Pokud se rozhodnete **dny v měsíci** kalendáře, se zobrazí, který umožňuje zvolit libovolný počet dní, jak chcete. Pokud zvolíte datum třeba 31, nedojde v aktuálním měsíci, plán se nespustí. Pokud chcete plán pro spuštění poslední den, zvolte **Ano** pod **spustit poslední den v měsíci**. Pokud se rozhodnete **dnech**, **opakovat každých** možnost se zobrazí. Zvolte **první**, **druhý**, **třetí**, **čtvrtý**, nebo **poslední**. A nakonec zvolte den na opakovat.
+1. Po dokončení klikněte na tlačítko **vytvořit**.
 
 ### <a name="to-create-a-new-schedule-with-windows-powershell"></a>K vytvoření nového plánu pomocí prostředí Windows PowerShell
 
@@ -73,9 +76,9 @@ Sady runbook lze propojit s více plánů a plán může mít víc runbooků k n
 ### <a name="to-link-a-schedule-to-a-runbook-with-the-azure-portal"></a>Připojení plánu k runbooku pomocí portálu Azure portal
 
 1. Na portálu Azure ve svém účtu automation vyberte **sady Runbook** části **automatizace procesů** na levé straně.
-1. Klikněte na název runbooku, naplánování.
-1. Pokud sada runbook není aktuálně propojený s plánu, jsou nabízí možnost vytvořit nový plán nebo odkaz k existujícímu plánu.
-1. Pokud má runbook parametry, můžete vybrat možnost **upravit nastavení spouštění (výchozí: Azure)** a **parametry** podokně se zobrazí, ve kterém můžete zadat informace odpovídajícím způsobem.
+2. Klikněte na název runbooku, naplánování.
+3. Pokud sada runbook není aktuálně propojený s plánu, jsou nabízí možnost vytvořit nový plán nebo odkaz k existujícímu plánu.
+4. Pokud má runbook parametry, můžete vybrat možnost **upravit nastavení spouštění (výchozí: Azure)** a **parametry** podokně se zobrazí, ve kterém můžete zadat informace odpovídajícím způsobem.
 
 ### <a name="to-link-a-schedule-to-a-runbook-with-windows-powershell"></a>Připojení plánu k runbooku pomocí prostředí Windows PowerShell
 

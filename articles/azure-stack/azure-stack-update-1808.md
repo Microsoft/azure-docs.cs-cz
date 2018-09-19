@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/17/2018
+ms.date: 09/18/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 877ea4c143d74414c3d733c446da57060322b11d
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 1e2a3221b6db5becbea49aa6ec5fee7b145e8e03
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45982091"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295386"
 ---
 # <a name="azure-stack-1808-update"></a>Aktualizace služby Azure Stack. 1808
 
@@ -112,16 +112,18 @@ Tato aktualizace obsahuje také ke zmírnění chyby zabezpečení spekulativní
 
 - Instalace služby Azure Stack [1807 aktualizovat](azure-stack-update-1807.md) před instalací aktualizace. 1808 Azure Stack. 
 
-- Nainstalujte nejnovější dostupné [aktualizaci nebo opravu hotfix pro verzi 1805](azure-stack-update-1805.md#post-update-steps).  
+- Nainstalujte nejnovější dostupné [aktualizaci nebo opravu hotfix pro verzi 1807](azure-stack-update-1807.md#post-update-steps).  
   > [!TIP]  
   > Předplatit následující *RRS* nebo *Atom* kanály, držet krok s Azure Stack opravy hotfix:
   > - RRS: https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss ... 
   > - Atom: https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom ...
 
 
-- Před instalací této aktualizace, spusťte [testovací AzureStack](azure-stack-diagnostic-test.md) ověřit stav služby Azure Stack a vyřešte všechny provozní problémy zjištěné, včetně všech upozornění a chyby. Také aktivní výstrahy můžete zkontrolovat a vyřešit všechny, které vyžadují nějakou akci.
+- Před instalací této aktualizace, spusťte [testovací AzureStack](azure-stack-diagnostic-test.md) ověřit stav služby Azure Stack a vyřešte všechny provozní problémy zjištěné, včetně všech upozornění a chyby. Také aktivní výstrahy můžete zkontrolovat a vyřešit všechny, které vyžadují nějakou akci.  
 
 ### <a name="known-issues-with-the-update-process"></a>Známé problémy s proces aktualizace
+
+- Při spuštění [testovací AzureStack](azure-stack-diagnostic-test.md) po 1808 aktualizaci, zobrazí se zpráva s upozorněním z řadič správy základní desky (BMC). Toto upozornění můžete ignorovat.
 
 - <!-- 2468613 - IS --> Při instalaci této aktualizace, může se zobrazit upozornění s názvem *chyba – šablona pro typ FaultType UserAccounts.New chybí.*  Tyto výstrahy můžete bezpečně ignorovat. Tyto výstrahy se automaticky zavře po dokončení instalace této aktualizace.
 
@@ -130,12 +132,9 @@ Tato aktualizace obsahuje také ke zmírnění chyby zabezpečení spekulativní
 - <!-- 2830461 - IS --> V některých případech při aktualizaci vyžaduje pozornost, odpovídající nemusí být vygenerována výstraha. Přesné stavu se stále projeví na portálu a není ovlivněn.
 
 ### <a name="post-update-steps"></a>Postup po aktualizaci
+Po instalaci této aktualizace nainstalujte všechny příslušné opravy hotfix. Další informace naleznete následující články znalostní báze, stejně jako naše [zásady obsluhy](azure-stack-servicing-policy.md). 
+- [KB 4464226 – Azure Stack opravu Hotfix Azure Stack Hotfix 1.1808.1.99]( https://support.microsoft.com/help/4464226)
 
-*Nejsou žádné kroky po aktualizaci pro aktualizaci. 1808.*
-
-<!-- After the installation of this update, install any applicable Hotfixes. For more information view the following knowledge base articles, as well as our [Servicing Policy](azure-stack-servicing-policy.md).  
- - [Link to KB]()  
- -->
 
 ## <a name="known-issues-post-installation"></a>Známé problémy (po instalaci)
 

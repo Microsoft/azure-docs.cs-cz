@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/28/2017
 ms.author: lizross
 ms.reviewer: piotrci
-ms.openlocfilehash: 437831736d80214ce569b41de7b13c2d051aaf40
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 3ec8472285ecc7512e2eedc8b9ac850ef8e9cf87
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45572817"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46298016"
 ---
 # <a name="learn-about-access-management-using-azure-active-directory-groups"></a>Další informace o správě přístupu pomocí skupin Azure Active Directory
 Azure Active Directory (Azure AD) umožňuje spravovat vaše cloudové aplikace, místním aplikacím a prostředkům pomocí skupin vaší organizace. Vaše prostředky můžou být součástí adresáře, jako je například oprávnění ke správě objektů pomocí rolí v adresáři, nebo externí vzhledem k adresáři, jako jsou pro Software jako služba (SaaS) aplikací Azure services, Sharepointové weby a místním prostředkům.
@@ -58,4 +58,4 @@ Teď, když máte hodně Úvod ke správě přístupu pomocí skupin, je spustit
 
 - [Použití skupin pro přiřazení přístupu k aplikaci SaaS integrované](../users-groups-roles/groups-saasapps.md)
 
-- [Synchronizovat místní skupině do Azure pomocí služby Azure AD Connect](../connect/active-directory-aadconnect.md)
+- [Synchronizovat místní skupině do Azure pomocí služby Azure AD Connect](../hybrid/whatis-hybrid-identity.md)

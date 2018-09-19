@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/09/2018
+ms.date: 09/18/2018
 ms.author: kumud
-ms.openlocfilehash: 6c196d16258e4bf000f998899086c7a6d0197fba
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 8c3d632063c8ed9347aa870d0971cc09dc1a658e
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42058029"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129535"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager – nejčastější dotazy (FAQ)
 
@@ -72,7 +72,7 @@ Chcete-li tento problém obejít, doporučujeme používat přesměrování HTTP
 Plnou podporu pro základní domény ve službě Traffic Manager je sledována v backlogu a funkce. Můžete zaregistrovat vaše podpora pro tuto žádost o funkci ve [pro ni hlasovat o náš web pro zasílání názorů komunity](https://feedback.azure.com/forums/217313-networking/suggestions/5485350-support-apex-naked-domains-more-seamlessly).
 
 ### <a name="does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries"></a>Traffic Manageru zvažte adresa podsítě klienta při zpracování dotazů DNS 
-Ano, kromě IP adresu zdrojového dotazu DNS obdrží (což obvykle je IP adresa překladače DNS), když provádíte vyhledávání pro Geographic a výkonu metod směrování, traffic Manageru také bere v úvahu adresa podsítě klienta Pokud je zahrnutý v dotazu pomocí překladače, který zadal žádost jménem koncového uživatele.  
+Ano, kromě IP adresu zdrojového dotazu DNS obdrží (což obvykle je IP adresa překladače DNS), když provádíte vyhledávání pro Geographic, výkonu a podsítě metod směrování, traffic Manageru také bere v úvahu adresa podsítě klienta Pokud pomocí překladače, který zadal žádost jménem koncového uživatele je zahrnutý v dotazu.  
 Konkrétně [RFC 7871 – klientské podsíti v dotazech DNS](https://tools.ietf.org/html/rfc7871) poskytující [mechanismus rozšíření pro službu DNS (EDNS0)](https://tools.ietf.org/html/rfc2671) které můžete předat na adresu podsítě klienta z překladače, kteří jej podporují.
 
 ### <a name="what-is-dns-ttl-and-how-does-it-impact-my-users"></a>Co je hodnotu TTL pro DNS a jak to ovlivní Moji uživatelé?
@@ -133,6 +133,39 @@ V oblasti lze přiřadit pouze jeden koncový bod v rámci profilu, pokud jeho p
 ### <a name="are-there-any-restrictions-on-the-api-version-that-supports-this-routing-type"></a>Existují nějaká omezení na verzi rozhraní API, která podporuje tento typ směrování?
 
 Ano, geografické směrování zadejte pouze verze rozhraní API 2017-03-01 a novější podporuje. Všechny starší verze rozhraní API nelze použít k vytvořené profily geografické směrování typu nebo přiřadit geografických oblastí na koncové body. Pokud starší verze rozhraní API slouží k načtení profily z předplatného Azure, nevrátí se žádný profil geografické směrování typu. Kromě toho, jestli používáte starší verze rozhraní API vrácen žádný profil, který má koncové body s přiřazením geografické oblasti, nemá jeho přiřazení geografické oblasti.
+
+## <a name="traffic-manager-subnet-traffic-routing-method"></a>Metody směrování provozu Traffic Manageru podsítě
+
+### <a name="what-are-some-use-cases-where-subnet-routing-is-useful"></a>Jaké jsou některé případy použití, ve kterém směrování podsítě je užitečné?
+Podsíť směrování vám umožní rozlišovat prostředí, které poskytujete pro konkrétní skupiny uživatelů identifikovaný Zdrojová IP adresa z jejich IP adresa žádosti DNS. Příkladem může být zobrazení jiný obsah, pokud se uživatelé připojují k webu z podnikové Sídel. Jiné by omezení uživatelů z určitých poskytovatelů internetových služeb jenom přístup k koncové body, které podporují jenom IPv4 připojení, pokud tyto poskytovatelů internetových služeb budou mít dílčí par výkon při použití protokolu IPv6.
+Dalším důvodem pro použití metody směrování pro podsíť ve spojení s další profily v profilu vnořené nastavena. Například pokud chcete použít metody geografického směrování pro geograficky monitorování geografických zón uživatele, ale pro konkrétního poskytovatele internetových služeb, kterou chcete provést jinou metodu směrování, můžete mít profil withy podsítě metody směrování jako nadřazený profil a přepsání tohoto poskytovatele použít konkrétní podřízené pro soubor a mají pro všechny ostatní standardní zeměpisného profilu.
+
+### <a name="how-does-traffic-manager-know-the-ip-address-of-the-end-user"></a>Jak Traffic Manager znát IP adresu koncového uživatele?
+Zařízení pro koncové uživatele obvykle pomocí překladače DNS provádět vyhledávání DNS jejich jménem. Odchozí IP takové překladače se Traffic Manager vnímá jako zdrojová IP adresa. Kromě toho metodu směrování podsítě vypadá také jestli se informace o EDNS0 rozšířené klientské podsíti (ECS), který byl předán s požadavkem. Pokud ECS informace jsou k dispozici, je to adresa použitá k určení směrování. Chybí informace ECS Zdrojová IP adresa dotazu se používá pro účely směrování.
+
+### <a name="how-can-i-specify-ip-addresses-when-using-subnet-routing"></a>Jak lze zadat IP adresy, při použití směrování podsítí?
+IP adresy, které mají přidružit k koncový bod se dá nastavit dvěma způsoby. Nejprve vám pomůže zápis čtverčíku tečkovaná desítkové octet s počáteční a koncovou adresu zadejte rozsah (např. 1.2.3.4-5.6.7.8 nebo 3.4.5.6-3.4.5.6). Za druhé vám pomůže zápisu CIDR zadejte rozsah (např. 1.2.3.0/24). Můžete určit více rozsahů a sady rozsahu můžete použít oba typy zápis. Platí několik omezení.
+-   Nelze se překrývají rozsahů adres, protože každý IP musí být namapován pouze jeden koncový bod
+-   Počáteční adresa nesmí být delší než koncová adresa
+-   V případě notaci CIDR, IP adresa před '/' by měla být počáteční adresa rozsahu (třeba 1.2.3.0/24 platí ale 1.2.3.4.4/24 není platný)
+
+### <a name="how-can-i-specify-a-fallback-endpoint-when-using-subnet-routing"></a>Jak může určit koncový bod záložního při použití směrování podsítí?
+V profilu se směrováním podsítě Pokud máte koncový bod s žádné podsítě mapována, všechny požadavky, které se liší od ostatních koncových bodů budete přesměrováni do tohoto místa. Důrazně doporučujeme mít záložní endpoint ve vašem profilu, protože vrátí odpovědi NXDOMAIN Traffic Manageru, pokud požadavek je k dispozici ve a není mapována na žádné koncové body nebo pokud je mapován na koncový bod, ale, že koncový bod není v pořádku.
+
+### <a name="what-happens-if-an-endpoint-is-disabled-in-a-subnet-routing-type-profile"></a>Co se stane, když je v profilu typ směrování pro podsíť zakázaný koncový bod?
+V profilu se směrováním podsítě Pokud máte koncový bod s, který je zakázaný, Traffic Manager se bude chovat, jako kdyby tohoto koncového bodu a mapování podsítě, která má buď neexistuje. Pokud je přijat dotaz, který by zjišťována shoda s jeho mapování IP adres a koncový bod je zakázaná, Traffic Manager vrátí záložního koncového bodu (jedna žádná mapování) nebo pokud takové koncového bodu není k dispozici, bude vrácení odpovědi NXDOMAIN
+
+## <a name="traffic-manager-multivalue-traffic-routing-method"></a>Metody směrování provozu Traffic Manageru hodnot
+
+### <a name="what-are-some-use-cases-where-multivalue-routing-is-useful"></a>Jaké jsou některé případy použití, ve kterém routing vícehodnotový je užitečné?
+Routing vícehodnotový vrátí více koncových bodů v dobrém stavu v odpovědi na jeden dotaz. Hlavní výhodou je, že pokud koncový bod není v pořádku, má klient několik možností, zkuste to znovu bez provedení další volání DNS (která může vrátit stejnou hodnotu z nadřazeného mezipaměti). To se vztahuje dostupnost citlivých aplikací, které chce minimalizovat prostoje.
+Další možností použití pro metody směrování s více hodnotami je, pokud koncový bod je "dvěma adresami" na protokolech IPv4 a IPv6 adresy a chcete poskytnout volající obě možnosti můžete vybírat z při zahájení připojení ke koncovému bodu.
+
+### <a name="how-many-endpoints-are-returned-when-multivalue-routing-is-used"></a>Kolik koncových bodů se vrátí, když routing vícehodnotový slouží?
+Můžete určit maximální počet endopints má být vrácen a vícehodnotové nevrátí nesmí být větší než, který mnoho koncových bodů v pořádku po přijetí dotazu. Maximální možná hodnota pro tuto konfiguraci je 10.
+
+### <a name="will-i-get-the-same-set-of-endpoints-when-multivalue-routing-is-used"></a>Budou týkat stejnou sadu koncových bodů, když routing vícehodnotový slouží?
+Nelze zaručit, že budou vráceny stejnou sadu koncových bodů v obou dotazech. To zároveň tím, že některé z koncových bodů je možné dát v tomto okamžiku by se nezahrnuly v odpovědi není v pořádku
 
 ## <a name="real-user-measurements"></a>Měření reálných uživatelů
 
@@ -257,7 +290,7 @@ Ano. Cloudová služba, přípravné sloty lze nakonfigurovat v Traffic Manageru
 
 Traffic Manager aktuálně neposkytuje IPv6 addressible názvové servery. Ale Traffic Manageru můžete stále využívat IPv6 klientů připojujících se ke koncovým bodům protokol IPv6. Klient Nedovolte, aby byly žádosti DNS přímo na Traffic Manager. Klient místo toho použije rekurzivní službu DNS. Pouze protokol IPv6 klient zasílá požadavky na rekurzivní službu DNS prostřednictvím protokolu IPv6. Rekurzivní službu pak by měl být schopen kontaktovat názvové servery Traffic Manageru pomocí protokolu IPv4.
 
-Traffic Manager jsou reaguje s názvem DNS koncového bodu. Pro podporu koncový bod IPv6, musí existovat záznam AAAA služby DNS, přejděte na adresu IPv6 DNS název koncového bodu. Kontroly stavu Traffic Manageru se podporují jenom adresy IPv4. Služba je potřeba zveřejnit koncový bod protokolu IPv4 na stejný název DNS.
+Traffic Manager jsou reaguje s názvem DNS nebo IP adresu koncového bodu. Pro podporu koncový bod IPv6, existují dvě možnosti. Přidat koncový bod jako DNA název, který má přidružený záznam AAAA a Traffic Manager tento koncový bod a vraťte jej jako záznam CNAME, který zadejte odpovědi na dotaz bude kontrola stavu. Můžete také přidat tento koncový bod přímo pomocí adresy IPv6 a Traffic Manager v odpovědi na dotaz vrátí záznam AAAA typu. 
 
 ### <a name="can-i-use-traffic-manager-with-more-than-one-web-app-in-the-same-region"></a>Můžete použít Traffic Manageru s více než jednu webovou aplikaci ve stejné oblasti?
 
@@ -300,6 +333,46 @@ Traffic manager neposkytuje žádné ověření certifikátu, včetně:
 * SNI certifikáty na straně serveru nejsou podporovány.
 * Klientské certifikáty nejsou podporovány.
 
+### <a name="do-i-use-an-ip-address-or-a-dns-name-when-adding-an-endpoint"></a>Používá adresu IP nebo název DNS při přidání koncového bodu?
+Traffic Manager podporuje přidání koncových bodů pomocí tři způsoby, jak odkazovat způsobem – jako název DNS, jako adresu IPv4 a IPv6 adresu. Pokud koncový bod se přidá jako adresu IPv4 nebo IPv6 odpověď na dotaz bude mít typ záznamu A nebo AAAA, v uvedeném pořadí. Pokud koncový bod byl přidán jako název DNS, odpověď na dotaz budou typu záznamu CNAME. Všimněte si, že přidání koncových bodů, jako je povolená adresa IPv4 nebo IPv6 pouze koncový bod je prosím typu "Externí".
+Všechny metody směrování a monitorování nastavení podporuje tři typy koncových bodů adresování.
+
+### <a name="what-types-of-ip-addresses-can-i-use-when-adding-an-endpoint"></a>Jaké typy IP adres můžete použít při přidávání koncový bod?
+Traffic Manageru můžete určovat koncové body pomocí adresy IPv4 nebo IPv6. Existuje několik omezení, které jsou uvedeny níže:
+- Adresy, které odpovídají vyhrazené privátní adresní prostory IP adres nejsou povoleny. Tyto adresy obsahovat těch v dokumentu RFC 1918, RFC 6890, RFC 5737,. RFC 3068, RFC 2544 a RFC 5771
+- Adresa nesmí obsahovat žádné čísla portů (můžete zadat porty pro použití v nastavení profilu konfigurace) 
+- Žádné dva koncové body v jednom profilu může mít stejnou cílovou IP adresu
+
+### <a name="can-i-use-different-endpoint-addressing-types-within-a-single-profile"></a>Můžete použít jiný koncový bod adresování typy v rámci jediného profilu?
+Ne, Traffic Manager neumožňuje kombinovat adresování typy koncových bodů v rámci profilu, s výjimkou nástrojů profil s více hodnotami směrování typu, ve kterém můžete kombinovat IPv4 a IPv6 adres typy
+
+### <a name="what-happens-when-an-incoming-querys-record-type-is-different-from-the-record-type-associated-with-the-addressing-type-of-the-endpoints"></a>Co se stane, když typ záznamu příchozí dotaz se liší od typu záznamu. přidružené k adresování typu koncové body?
+Po přijetí dotaz vůči profilu Traffic Manageru vyhledá první koncový bod, který je vrácen podle metodu směrování zadat a stav koncových bodů. Poté hledá v typu záznamu. požadovaný v příchozí dotaz a typ záznamu spojená s koncovým bodem před vrácením odpovědi na základě následující tabulky.
+
+Pro profily s kteroukoli metodu směrování, než je hodnot:
+|Příchozí požadavek dotazu|    Typ koncového bodu|  K dispozici odpověď|
+|--|--|--|
+|VŠECHNY |  A / AAAA / CNAME |  Cílový koncový bod| 
+|A |    A / CNAME | Cílový koncový bod|
+|A |    AAAA |  NODATA |
+|AAAA | AAAA / CNAME |  Cílový koncový bod|
+|AAAA | A | NODATA |
+|CNAME |    CNAME | Cílový koncový bod|
+|CNAME  |A / AAAA | NODATA |
+|
+Profily pomocí metody směrování nastavený na více hodnot:
+
+|Příchozí požadavek dotazu|    Typ koncového bodu | K dispozici odpověď|
+|--|--|--|
+|VŠECHNY |  Kombinace A a AAAA | Cílové koncové body|
+|A |    Kombinace A a AAAA | Pouze cílové koncové body typu objekt|
+|AAAA   |Kombinace A a AAAA|     Pouze cílové koncové body typu AAAA|
+|CNAME |    Kombinace A a AAAA | NODATA |
+
+### <a name="can-i-use-a-profile-with-ipv4--ipv6-addressed-endpoints-in-a-nested-profile"></a>Můžete použít profil s podporou protokolu IPv4 / IPv6 řeší koncových bodů v vnořeného profilu?
+Ano, s tím rozdílem, že profil více hodnot typu nemůže mít nadřazený profilu v vnořeného profilu nastavíte.
+
+
 ### <a name="i-stopped-an-azure-cloud-service--web-application-endpoint-in-my-traffic-manager-profile-but-i-am-not-receiving-any-traffic-even-after-i-restarted-it-how-can-i-fix-this"></a>Zastavení cloudové služby Azure / web koncového bodu aplikace v mém profilu Traffic Manageru, ale i poté, co jsem restartování veškerý provoz doručována. Jak to mohu napravit?
 
 Při Azure cloud service / web koncového bodu aplikace je zastavený Traffic Manageru zastaví kontrola jeho stavu a restartuje kontroly stavu až poté, co zjistí, že má restartovat koncový bod. Abyste zabránili tomuto zpoždění dochází, zakázat a pak znovu povolit tohoto koncového bodu v profilu služby Traffic Manager po restartování koncový bod.   
@@ -326,9 +399,13 @@ Pomocí těchto nastavení Traffic Manageru umožňuje převzetí služeb při s
 
 Nastavení monitorování se v Traffic Manageru na úroveň profilu. Pokud budete muset použít jiné nastavení monitorování pro pouze jeden koncový bod, lze provést tak, že tento koncový bod jako [vnořené profilu](traffic-manager-nested-profiles.md) nastavení, jejíž monitorování se liší od nadřazené profilu.
 
-### <a name="what-host-header-do-endpoint-health-checks-use"></a>Jaké stav koncového bodu hlavičky hostitele kontroluje použití?
+### <a name="how-can-i-assign-http-headers-to-the-traffic-manager-health-checks-to-my-endpoints"></a>Jak můžu přiřazovat hlavičky protokolu HTTP na Traffic Manager doplněk pro kontroly stavu pro své koncové body?
+Traffic Manager umožňuje určit vlastní hlavičky v protokolu HTTP (S) doplněk pro kontroly stavu, že zahájení koncových bodů. Pokud chcete zadat vlastní hlavičky, můžete to udělat na úrovni profilu (platí pro všechny koncové body) nebo zadat na úrovni koncového bodu. Pokud hlavička je definován na obou úrovních, je uvedeno na úrovni koncového bodu přepíše jednu úroveň profilu.
+Jeden běžným případem použití pro tuto je určení hlavičky hostitele tak, aby požadavky Traffic Manager může získat správně směrovat do koncového bodu hostované v prostředí s více tenanty. Jiné případem použití tohoto objektu je k identifikaci požadavků Traffic Manageru z protokolů požadavku koncového bodu HTTP (S)
 
-Traffic Manager používá hlavičky hostitele v kontroly stavu protokolu HTTP a HTTPS. Hlavička hostitele používaná Traffic Managerem je název cílového koncového bodu nakonfigurovali v profilu. Hodnota hlavičky hostitele nemůže zadávají samostatně z cílové vlastnosti.
+## <a name="what-host-header-do-endpoint-health-checks-use"></a>Jaké stav koncového bodu hlavičky hostitele kontroluje použití?
+Pokud je k dispozici žádné nastavení, záhlaví vlastního hostitele, hlavičku hostitele používaná Traffic Managerem je název DNS cílového koncového bodu nakonfigurovali v profilu, pokud, který je k dispozici. 
+
 
 ### <a name="what-are-the-ip-addresses-from-which-the-health-checks-originate"></a>Co jsou IP adresy, ze kterých doplněk pro kontroly stavu pocházejí?
 

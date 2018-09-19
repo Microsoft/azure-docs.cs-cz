@@ -1,95 +1,96 @@
 ---
-title: Volebním analýza v lingvistické Analysis API | Microsoft Docs
-description: Informace o tom, jak volebním analýza, také známé jako "fráze analýzy struktura" identifikuje frází v textu.
+title: Složková analýza – rozhraní API pro jazykovou analýzu
+titlesuffix: Azure Cognitive Services
+description: Další informace o způsobu, jakým složková analýza, označované také jako "frázi parsování struktura" identifikuje fráze v textu.
 services: cognitive-services
 author: RichardSunMS
-manager: wkwok
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: linguistic-analysis
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/21/2016
 ms.author: lesun
-ms.openlocfilehash: bff5e587621e1278c260d555aec280a0f4c7c8a1
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 83ea72e7c5c880ecab7d165e029f948144506271
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37082168"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127688"
 ---
-# <a name="constituency-parsing"></a>Volebním analýza
+# <a name="constituency-parsing"></a>Analýza konstituentů
 
-Cílem volebním analýza (také označované jako "struktura fráze analýza") je k identifikaci frází v textu.
+Cílem složková analýza (označované také jako "struktura fráze parsování") je k identifikaci fráze v textu.
 To může být užitečné při extrahování informací z textu.
-Zákazníci může být vhodné k vyhledání názvů funkcí nebo klíče frází z velkých textu textu a zobrazíte modifikátory a akce, které obaluje každé takové frázi.
+Zákazníkům může být vhodné k vyhledání názvů funkcí nebo klíčových frází z velkých objemů textu a zobrazíte modifikátorů a vlastností akce kolem každé takové frázi.
 
 ## <a name="phrases"></a>Fráze
 
-K linguist *frázi* je více než jen pořadí slova.
-Skupina slov být fráze, musí k přehrání určité role ve větě použít současně.
-Této skupiny slova můžete přesunout společně nebo nahrazena jako celek, a věty by měla zůstat fluent a gramatické.
+K prostudoval *frázi* je víc než jenom posloupností slov.
+Být fráze, musí skupina slov setkávají, aby se přehrát určité role ve větě.
+Tuto skupinu slov můžete přesunout najednou nebo nahradit jako celek, a věty by měla zůstat fluent a gramatické.
 
-Vezměte v úvahu příkaze
+Vezměte v úvahu větu
 
-> Chci najít nové automobilu hybridní s Bluetooth.
+> Chci najít nové hybridní automobil s připojením Bluetooth.
 
-Fráze podstatné jméno obsahuje tuto větu: "nové hybridní automobilu s Bluetooth".
-Jak jsme si vědomi, že se jedná o fráze?
-Jsme (poněkud poetically) revize se věta přesunutím této celou frázi před:
+Fráze podstatné jméno obsahuje tuto větu: "nové hybridní automobil s připojením Bluetooth,".
+Jak jsme si vědomi, že se jedná o nějakou frázi?
+Jsme (poněkud poetically) revize věty tak, že celá fráze do popředí:
 
-> Nové hybridní automobilu s Bluetooth, které chcete najít.
+> Nová hybridní automobil s připojením Bluetooth, které má být nalezena.
 
-Nebo frázi podobné funkce a význam, například "zvláštní nové auto" jsme může nahradit tuto frázi:
+Nebo může nahradíme danou frázi s frází podobně jako funkce a význam, jako je "nápadité nové car":
 
-> Chci najít zvláštní nové auto.
+> Chci najít nápadité nové auto.
 
-Pokud místo toho jsme zachyceny jinou podmnožinou slova, tyto úlohy nahrazení by vedlo k neobvyklé či nečitelných věty.
-Zvažte, co se stane, když jsme přesunout "najít novou" na stránce do popředí:
+Pokud místo výběru různé podmnožiny slova, tyto úlohy nahrazení by mohlo dojít k neobvyklé či nečitelných věty.
+Zvažte, co se stane, když jsme přesunout "najít nové" do popředí:
 
-> Zjistí, který chcete hybridní automobilu s Bluetooth nový.
+> Najdete nové, které chci hybridní automobil s připojením Bluetooth.
 
-Výsledky je velmi obtížné číst a pochopit.
+Výsledky jsou velmi obtížné si a porozuměli jim.
 
-Cílem Analyzátor je najít všechny takové věty.
-Interestingly v přirozeném jazyce, frází zpravidla vnořit do sebe navzájem.
-Fyzická reprezentace těchto frází je strom, například následující:
+Cílem je analyzátor je najít všechny takové věty.
+Zajímavé v přirozeném jazyce věty mají být vnořena do jiné.
+Přirozené vyjádření tyto věty je stromové struktury, jako je následující:
 
 ![Strom](./Images/tree.png)
 
-V tomto stromu jsou větvích označené "NP" frází podstatné jméno.
-Existuje několik takové věty: *I*, *nové hybridní automobilu*, *Bluetooth*, a *nové automobilu hybridní s Bluetooth*.
+Ve stromu větve označené "NP" jsou věty podstatné jméno.
+Existuje několik takových frází: *můžu*, *nové hybridní automobile*, *Bluetooth*, a *nové hybridní auto s Bluetooth*.
 
 ## <a name="phrase-types"></a>Typy fráze
 
 | Štítek | Popis | Příklad: |
 |-------|-------------|---------|
-|ADJP   | Tvary přídavných jmen fráze | "proto článku neslušní" |
-|ADVP   | Příslovce fráze | "Vymazat prostřednictvím" |
-|CONJP  | Spojení fráze | "a také" |
-|KŘEH   | Fragment, použít pro vstupy neúplný nebo fragmentary | "Důrazně doporučujeme..." |
-|INTJ   | interjection | "Veselé Vánoce" |
+|ADJP   | Tvary přídavných jmen fráze | "proto hrubé" |
+|ADVP   | Příslovce fráze | "clear prostřednictvím" |
+|CONJP  | Fráze spojení | "i" |
+|KŘEH   | Fragment pro neúplné nebo fragmentary vstupy | "Důrazně doporučujeme..." |
+|INTJ   | interjection | "Radostných" |
 |OBRÁZKŮ    | Seznam značek, včetně interpunkce | "#4)" |
-|NAC    | Není A základní, slouží k určení zaměření frázi technická dokumentace |  "a pro dobrý pozornosti" v "můžete získat věcí a správné řešení" |
-|NP | Podstatné jméno fráze | "tasty určené masopustní" |
-|NX | Používá se v rámci určitých komplexní NPs k označení hlavičky| |
-|PP | Prepositional fráze| "ve fondu" |
-|PRN    | Shod| "(takže nazývané)" |
-|PRT    | částice| "na" v "zkopírované out" |
-|QP | Množství frázi (tj, komplexní měr nebo velikost) v rámci frázi podstatné jméno| "kolem $75" |
-|KÓD DŮVODU REGISTRACE    | Snížené relativní klauzule.| "stále nepřeložené" v "Mnohé problémy s stále nepřeložené" |
-|S  | Klauzule nebo věty. | "Toto je věty."
-|SBAR   | Podřízená klauzule, často zaváděné subordinating spojení | "jako I vlevo" v "I hledá jak I zanechali."|
-|SBARQ  | Přímý dotaz zaváděné shod slova nebo - fráze | "Co se bodem?" |
-|SINV   | Obráceným deklarativní větu | "Současně byli jejich vědět." (Všimněte si, jak předmětu normálním "jejich" byla přesunuta do po příkaz "byli") |
-|SQ | Obrácený Ano/Ne otázku nebo hlavní klauzule shod – otázky | "Se dostaly auto?" |
-|UCP    | Na rozdíl od koordinované fráze| "malé, s chyby" (Všimněte si, jak conjoined přídavné jméno a heslo mezerami s "a")|
-|VP | Příkaz fráze | "narazili woods" |
-|WHADJP | Přídavných shod jmen fráze | "jak nepříjemně" |
-|WHADVP | Fráze příslovce shod| "Pokud" |
-|WHNP   | Fráze shod-podstatné jméno| "které určené", "kolik polévky"|
-|WHPP   | Shod prepositional fráze| "v která země"|
-|X  | Neznámý, neví nebo unbracketable.| první "na" v "... polévky" |
+|NAC    | Není A základní, slouží k určení nastavení rozsahu bez rozložený fráze |  "a pro mnoho" v "získáte věci a dobrého řešení" |
+|NP | Fráze podstatné jméno | "tasty brambory masopustní" |
+|NX | V některých složitých server NPs používá k označení hlavičky| |
+|STR | Prepositional fráze| "ve fondu" |
+|PRN    | Kulatých závorek| "(tedy volána)" |
+|PRT    | částicový| "out" v "zkopírované si" |
+|QP | Množství fráze (například komplexní míry/Částka) v rámci podstatné jméno fráze| "around $75" |
+|KÓD DŮVODU REGISTRACE    | Snížení relativní klauzule.| "stále nevyřešené" v "mnoho problémů stále nevyřešené" |
+|S  | Věty nebo klauzuli. | "Toto je větu."
+|SBAR   | Klauzule podřízené, často zavedené subordinating spojení | "Jak mám left" v "I trochu jak mi zbývá."|
+|SBARQ  | Přímý dotaz zavedených v co slova nebo - fráze | "Jak se bod?" |
+|SINV   | Obráceným deklarativní větu | "Současně tato nabídka neunikne jejich." (Všimněte si, jak normální předmět "," byl přesunut do po operaci "byly") |
+|SQ. | Převrátí Ano/Ne otázku nebo klauzuli hlavní otázky shod | "Se dostaly auta?" |
+|UCP    | Na rozdíl od koordinovaného fráze| "malý a s chybami" (Všimněte si, jak conjoined přídavné a frází mezerami s "a")|
+|VICEPREZIDENT | Příkaz fráze | "narazili lese" |
+|WHADJP | Co přídavného jména fráze | "jak nepříjemně" |
+|WHADVP | Co příslovce fráze| "when" |
+|WHNP   | Co-podstatné jméno fráze| "které brambory", "kolik polévky"|
+|WHPP   | Co prepositional fráze| "v zemi"|
+|X  | Neznámý stav nebo unbracketable.| první "the" v "... polévky" |
 
 
 ## <a name="specification"></a>Specifikace
 
-Zde stromy použít S výrazy z [členem této Treebank](https://catalog.ldc.upenn.edu/ldc99t42).
+Stromy tady použít výrazy z [diskutují Treebank](https://catalog.ldc.upenn.edu/ldc99t42).

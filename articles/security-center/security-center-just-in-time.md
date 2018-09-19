@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/05/2018
+ms.date: 09/21/2018
 ms.author: rkarlin
-ms.openlocfilehash: 2a079456813a67eb40d5cf42bcdd2c91fbc631d3
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: cb13da7ad9387b7170882752b1620c2756bc3675
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44297035"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124146"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Správa přístupu k virtuálním počítačům pomocí metody právě včas
 
@@ -108,6 +108,9 @@ V části **konfigurace přístupu k virtuálnímu počítači podle potřeby**,
 
 3. Vyberte **OK**.
 
+> [!NOTE]
+>Pokud přístup k virtuálnímu počítači JIT je povolena pro virtuální počítač, Azure Security Center vytvoří zakázat všechna pravidla pro příchozí provoz pro vybrané porty ve skupinách zabezpečení sítě s ním spojená. Pravidla budou buď skupiny zabezpečení sítě s nejvyšší prioritou, nebo nižší prioritu než mají existující pravidla, které jsou již existuje. To závisí na analýzu provádí Azure Security Center, která určuje, zda je pravidlo zabezpečení nebo ne.
+>
 ## <a name="requesting-access-to-a-vm"></a>Žádost o přístup k virtuálnímu počítači
 
 Chcete-li požádat o přístup k virtuálnímu počítači:
@@ -162,8 +165,6 @@ Můžete získat přehled o aktivitách virtuálního počítače pomocí prohle
 
   **Protokol aktivit** poskytuje filtrované zobrazení předchozích operací pro tento virtuální počítač spolu s čas, datum a předplatné.
 
-  ![Zobrazení protokolu aktivit][5]
-
 Informace protokolu můžete stáhnout tak, že vyberete **kliknutím sem stáhnete všechny položky jako CSV**.
 
 Upravit filtry a vybrat **použít** vytvoříte vyhledávání a protokolu.
@@ -172,15 +173,62 @@ Upravit filtry a vybrat **použít** vytvoříte vyhledávání a protokolu.
 
 Podle potřeby přístup podle potřeby funkce se dá použít prostřednictvím rozhraní API služby Azure Security Center. Můžete získat informace o nakonfigurovaných virtuálních počítačů, přidat nové, požádejte o přístup k virtuálnímu počítači a další, přes toto rozhraní API. Zobrazit [zásad přístupu k síti Jit](https://docs.microsoft.com/rest/api/securitycenter/jitnetworkaccesspolicies), další informace o podle potřeby v čase rozhraní REST API.
 
-### <a name="configuring-a-just-in-time-policy-for-a-vm"></a>Konfigurace zásad čas pro virtuální počítač
+## <a name="using-just-in-time-vm-access-via-powershell"></a>Pomocí metody právě včas přístup k virtuálnímu počítači přes PowerShell 
 
-Nakonfigurujte čas zásad na konkrétní virtuální počítač, budete potřebovat ke spuštění tohoto příkazu v relaci prostředí PowerShell: Set-ASCJITAccessPolicy.
-Postupujte podle dokumentace k rutinám Další informace.
+Použití podle potřeby v čas řešení přístupu k virtuálnímu počítači přes PowerShell, pomocí oficiální rutiny prostředí PowerShell Azure Security Center a to konkrétně `Set-AzureRmJitNetworkAccessPolicy`.
+
+Následující příklad nastaví počítačům přístupu k virtuálnímu počítači zásady na konkrétní virtuální počítač a nastaví následující:
+1.  Zavřít porty 22 a 3389.
+2.  Nastavte maximální časový interval pro každé 3 hodiny, lze je otevřít na schválení žádosti.
+3.  Umožňuje uživateli, který žádá o přístup k řídícímu zdrojové IP adresy a umožňuje uživateli vytvořit relaci úspěšné při schváleném pouze v době žádost o přístup.
+
+Spuštěním následujícího příkazu v Powershellu k provedení této:
+
+1.  Proměnná, která obsahuje podle potřeby přiřadit virtuálnímu počítači zásady přístupu pro virtuální počítač:
+
+        $JitPolicy = (@{
+         id="/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME"
+        ports=(@{
+             number=22;
+             protocol="*";
+             allowedSourceAddressPrefix=@("*");
+             maxRequestAccessDuration="PT3H"},
+             @{
+             number=3389;
+             protocol="*";
+             allowedSourceAddressPrefix=@("*");
+             maxRequestAccessDuration="PT3H"})})
+
+2.  Vložte tento virtuální počítač jenom v zásadách přístupu čas virtuálního počítače do pole:
+    
+        $JitPolicyArr=@($JitPolicy)
+
+3.  Nakonfigurujte podle potřeby přístupu k virtuálnímu počítači zásady na vybraný virtuální počítač:
+    
+        Set-AzureRmJitNetworkAccessPolicy -Kind "Basic" -Location "LOCATION" -Name "default" -ResourceGroupName "RESOURCEGROUP" -VirtualMachine $JitPolicyArr 
 
 ### <a name="requesting-access-to-a-vm"></a>Žádost o přístup k virtuálnímu počítači
 
-Pro přístup k konkrétní virtuální počítač, který je pak chráněn rozhraním podle potřeby v době řešení, budete potřebovat ke spuštění tohoto příkazu v relaci prostředí PowerShell: vyvolat ASCJITAccess.
-Postupujte podle dokumentace k rutinám Další informace.
+V následujícím příkladu vidíte počítačům v čase žádost o přístup virtuálních počítačů pro konkrétní virtuální počítač, ve kterém portu 22 požaduje otevřít pro konkrétní IP adresy a pro určité množství času:
+
+Spuštěním následujícího příkazu v Powershellu:
+1.  Konfigurace vlastností virtuálního počítače žádost o přístup
+
+        $JitPolicyVm1 = (@{
+          id="/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME"
+        ports=(@{
+           number=22;
+           endTimeUtc="2018-09-17T17:00:00.3658798Z";
+           allowedSourceAddressPrefix=@("IPV4ADDRESS")})})
+2.  Vložte parametry žádosti o přístup virtuálního počítače v poli:
+
+        $JitPolicyArr=@($JitPolicyVm1)
+3.  Odeslat žádost o přístup (použijte ID prostředku v jste získali v kroku 1)
+
+        Start-AzureRmJitNetworkAccessPolicy -ResourceId "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Security/locations/LOCATION/jitNetworkAccessPolicies/default" -VirtualMachine $JitPolicyArr
+
+Další informace najdete v článku dokumentace k rutinám prostředí PowerShell.
+
 
 ## <a name="next-steps"></a>Další postup
 V tomto článku jste zjistili, jak za běhu přístup k virtuálním počítačům v Security Center pomáhá, že se že můžete řídit přístup k vašim virtuálním počítačům Azure.

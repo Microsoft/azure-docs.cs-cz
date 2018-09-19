@@ -9,14 +9,14 @@ keywords: funkce azure, funkce, zpracování událostí, webhook, dynamické vý
 ms.service: azure-functions
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 12/12/2017
+ms.date: 09/12/2018
 ms.author: glenga
-ms.openlocfilehash: 9f538b48918bdde923c6dbf3999302e45b955035
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 54ac616f97ba034893721ff62fc6157dd045b5f8
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092406"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46126816"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Funkce jazyka C# pro vývojáře referenční informace k Azure
 
@@ -36,10 +36,24 @@ Tento článek předpokládá, že jste již přečíst následující články:
 V sadě Visual Studio **Azure Functions** vytvoří šablonu projektu C# projekt knihovny tříd, který obsahuje následující soubory:
 
 * [Host.JSON](functions-host-json.md) – ukládá nastavení konfigurace, které ovlivňují všechny funkce v projektu při spuštění místně nebo v Azure.
-* [Local.Settings.JSON](functions-run-local.md#local-settings-file) – ukládá nastavení aplikace a připojovacích řetězců, které se používají při místním spuštění.
+* [Local.Settings.JSON](functions-run-local.md#local-settings-file) – ukládá nastavení aplikace a připojovacích řetězců, které se používají při místním spuštění. Tento soubor obsahuje tajných kódů a není publikována do vaší aplikace funkcí v Azure. Místo toho musíte [přidat nastavení aplikace pro vaši aplikaci function app](functions-develop-vs.md#function-app-settings).
+
+Při sestavování projektu strukturu složek, který bude vypadat jako následující vygenerované v sestavení výstupního adresáře:
+
+```
+<framework.version>
+ | - bin
+ | - MyFirstFunction
+ | | - function.json
+ | - MySecondFunction
+ | | - function.json
+ | - host.json
+```
+
+Tento adresář je, co se nasadí do vaší aplikace funkcí v Azure. Rozšíření vazby vyžaduje [verze 2.x](functions-versions.md) funkce modulu runtime jsou [přidány do projektu jako balíčky NuGet](functions-triggers-bindings.md#c-class-library-with-visual-studio-2017).
 
 > [!IMPORTANT]
-> Vytvoří proces sestavení *function.json* souboru pro každou funkci. To *function.json* souboru neměl být upravován přímo. Nelze změnit konfiguraci vazby nebo zakázat funkci úpravou tohoto souboru. Chcete-li zakázat funkce, použijte [zakázat](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/DisableAttribute.cs) atribut. Například přidat nastavení MY_TIMER_DISABLED logické aplikaci a použít `[Disable("MY_TIMER_DISABLED")]` vaší funkce. Pak můžete povolit a zakázat tak, že změníte nastavení aplikace.
+> Vytvoří proces sestavení *function.json* souboru pro každou funkci. To *function.json* souboru neměl být upravován přímo. Nelze změnit konfiguraci vazby nebo zakázat funkci úpravou tohoto souboru. Zjistěte, jak zakázat funkce, najdete v článku [zakázání funkce](disable-function.md#functions-2x---c-class-libraries).
 
 ## <a name="methods-recognized-as-functions"></a>Metody, které jsou rozpoznány jako funkce
 

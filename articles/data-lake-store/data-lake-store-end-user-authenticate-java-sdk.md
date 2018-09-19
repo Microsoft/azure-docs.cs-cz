@@ -1,6 +1,6 @@
 ---
-title: 'Ověřování koncového uživatele: Java s Data Lake Store pomocí Azure Active Directory | Microsoft Docs'
-description: Zjistěte, jak zajistit ověření koncového uživatele s Data Lake Store pomocí Azure Active Directory s Javou
+title: 'Ověřování koncového uživatele: Java s Azure Data Lake Storage Gen1 pomocí Azure Active Directory | Dokumentace Microsoftu'
+description: Zjistěte, jak dokončit ověřování koncového uživatele pomocí Azure Data Lake Storage Gen1 používání Javy v Azure Active Directory
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 633bf87d1e02a1132cfc5cd151b1e58418de8152
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 47b975b3ea0cfa9d2fb2536236b0a8dfaef14503
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34625014"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46126934"
 ---
-# <a name="end-user-authentication-with-data-lake-store-using-java"></a>Ověření koncových uživatelů s Data Lake Store pomocí jazyka Java
+# <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-java"></a>Ověřování koncových uživatelů s Azure Data Lake Storage Gen1 s využitím Javy
 > [!div class="op_single_selector"]
 > * [Pomocí Javy](data-lake-store-end-user-authenticate-java-sdk.md)
 > * [Pomocí sady .NET SDK](data-lake-store-end-user-authenticate-net-sdk.md)
@@ -27,12 +27,12 @@ ms.locfileid: "34625014"
 > 
 >   
 
-V tomto článku se dozvíte o použití sady Java SDK chcete ověření koncových uživatelů s Azure Data Lake Store. Service-to-service ověřování s Data Lake Store pomocí sady Java SDK, naleznete v části [Service-to-service ověřování s Data Lake Store pomocí jazyka Java](data-lake-store-service-to-service-authenticate-java.md).
+V tomto článku se dozvíte o tom, jak pomocí sady Java SDK provádět ověřování koncového uživatele pomocí Azure Data Lake Storage Gen1. Ověřování služba služba s Data Lake Storage Gen1 pomocí sady Java SDK, přečtěte si téma [ověřování služba služba s Data Lake Storage Gen1 s využitím Javy](data-lake-store-service-to-service-authenticate-java.md).
 
 ## <a name="prerequisites"></a>Požadavky
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Vytvoření aplikace Azure Active Directory "Nativní"**. Musí mít dokončili postup v [ověřování koncového uživatele s Data Lake Store pomocí Azure Active Directory](data-lake-store-end-user-authenticate-using-active-directory.md).
+* **Vytvoření aplikace Azure Active Directory "Nativní"**. Je nutné dokončit kroky v [ověřování koncového uživatele s Data Lake Storage Gen1 pomocí Azure Active Directory](data-lake-store-end-user-authenticate-using-active-directory.md).
 
 * [Maven](https://maven.apache.org/install.html). V tomto kurzu se používá Maven pro závislosti sestavení a projektu. I když je možné sestavení vytvářet bez použití systému pro sestavení, jako je Maven a Gradle, tyto systémy podstatně usnadňují správu závislostí.
 
@@ -56,7 +56,7 @@ V tomto článku se dozvíte o použití sady Java SDK chcete ověření koncov�
           </dependency>
         </dependencies>
    
-    První závislostí je použití sady SDK pro Data Lake Store (`azure-data-lake-store-sdk`) z úložiště maven. Druhou závislostí je zadání protokolovacího rozhraní (`slf4j-nop`), které se pro tuto aplikaci použije. Sada SDK pro službu Data Lake Store používá při protokolování [slf4j](http://www.slf4j.org/), takže máte možnost si vybrat z řady oblíbených protokolovacích rozhraní, jako je log4j, Java, logback atd., nebo nemusíte použít žádné protokolování. Pro tento příklad zakážeme protokolování a použijeme tedy vazbu **slf4j-nop**. Pokud chcete ve své aplikaci použít jiné možnosti protokolování, přečtěte si informace [zde](http://www.slf4j.org/manual.html#projectDep).
+    První závislostí je použití sady SDK pro Data Lake Storage Gen1 (`azure-data-lake-store-sdk`) z úložiště maven. Druhou závislostí je zadání protokolovacího rozhraní (`slf4j-nop`), které se pro tuto aplikaci použije. Používá sadu SDK pro Data Lake Storage Gen1 [slf4j](http://www.slf4j.org/) průčelí protokolování, které umožňuje vybrat z řady oblíbených protokolovacích rozhraní, jako je log4j, Java, logback atd., protokolování nebo žádné protokolování. Pro tento příklad zakážeme protokolování a použijeme tedy vazbu **slf4j-nop**. Pokud chcete ve své aplikaci použít jiné možnosti protokolování, přečtěte si informace [zde](http://www.slf4j.org/manual.html#projectDep).
 
 3. Přidejte do své aplikace následující příkazy pro import.
 
@@ -67,17 +67,17 @@ V tomto článku se dozvíte o použití sady Java SDK chcete ověření koncov�
         import com.microsoft.azure.datalake.store.oauth2.AccessTokenProvider;
         import com.microsoft.azure.datalake.store.oauth2.DeviceCodeTokenProvider;
 
-4. Použít následující fragment kódu v aplikaci Java se získat token pro nativní aplikaci služby Active Directory vytvořili pomocí `DeviceCodeTokenProvider`. Nahraďte **doplňovat zde** a skutečné hodnoty pro nativní aplikaci Azure Active Directory.
+4. Použít následující fragment kódu v aplikaci Java k získání tokenu pro nativní aplikace služby Active Directory, které jste předtím vytvořili pomocí `DeviceCodeTokenProvider`. Nahraďte **Fill-in-HERE** skutečnými hodnotami pro nativní aplikaci Azure Active Directory.
 
         private static String nativeAppId = "FILL-IN-HERE";
             
         AccessTokenProvider provider = new DeviceCodeTokenProvider(nativeAppId);   
 
-V sadě SDK pro Data Lake Store jsou vhodné metody, které umožňují spravovat tokeny zabezpečení potřebné ke komunikaci s účtem služby Data Lake Store. Není ale povinné použít tuto sadu SDK a tyto metody. Můžete použít také jakýkoliv jiný způsob získání tokenu, například sadu [Azure Active Directory SDK](https://github.com/AzureAD/azure-activedirectory-library-for-java) nebo vlastní kód.
+Sady SDK pro Data Lake Storage Gen1 jsou vhodné metody, které umožňují spravovat tokeny zabezpečení potřebné ke komunikaci s účtem Data Lake Storage Gen1. Není ale povinné použít tuto sadu SDK a tyto metody. Můžete použít také jakýkoliv jiný způsob získání tokenu, například sadu [Azure Active Directory SDK](https://github.com/AzureAD/azure-activedirectory-library-for-java) nebo vlastní kód.
 
 ## <a name="next-steps"></a>Další postup
-V tomto článku jste zjistili, jak používat ověřování koncových uživatelů k ověřování s Azure Data Lake Store pomocí sady Java SDK. Teď můžete prohlédnout v následujících článcích, kteří komunikují o použití sady Java SDK pro práci s Azure Data Lake Store.
+V tomto článku jste zjistili, jak používat ověřování koncového uživatele k ověření pomocí Azure Data Lake Storage Gen1 pomocí sady Java SDK. Teď můžete prohlédnout v následujících článcích, které mluvit o tom, jak používat sadu Java SDK pro práci s Azure Data Lake Storage Gen1.
 
-* [Operace dat v Data Lake Store pomocí sady Java SDK](data-lake-store-get-started-java-sdk.md)
+* [Operace s daty v Data Lake Storage Gen1 pomocí sady Java SDK](data-lake-store-get-started-java-sdk.md)
 
 

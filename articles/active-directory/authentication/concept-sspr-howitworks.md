@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 54e6b4f5804e7390b7574aa60b4d3a76df15da11
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 5416c8ada8fcc7f630d68f223b88c50209d14438
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42055639"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296392"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Jak to funguje: resetování hesla pomocí samoobslužné služby Azure AD
 
@@ -161,8 +161,8 @@ Pokud instalace, konfigurace a povolení služby Azure AD Connect, máte násled
 Tato stránka poskytuje rychlé stav v místním klientovi zpětného zápisu, jeden z následujících zpráv se zobrazí na základě aktuální konfigurace:
 
 * On-premises klienta zpětného zápisu je zprovozněný.
-* Azure AD je online a je připojený k vašemu klientovi zpětného zápisu místní. Ale pravděpodobně nainstalovanou verzi Azure AD Connect je zastaralá. Vezměte v úvahu [Azure AD Connect upgradovat](./../connect/active-directory-aadconnect-upgrade-previous-version.md) abyste měli jistotu, že máte nejnovější funkce připojení a důležité opravy chyb.
-* Bohužel jsme nemůže zjistit stav klienta zpětného zápisu v místním, protože nainstalovaná verze služby Azure AD Connect je zastaralá. [Upgrade služby Azure AD Connect](./../connect/active-directory-aadconnect-upgrade-previous-version.md) být schopni zkontrolovat stav připojení.
+* Azure AD je online a je připojený k vašemu klientovi zpětného zápisu místní. Ale pravděpodobně nainstalovanou verzi Azure AD Connect je zastaralá. Vezměte v úvahu [Azure AD Connect upgradovat](../hybrid/how-to-upgrade-previous-version.md) abyste měli jistotu, že máte nejnovější funkce připojení a důležité opravy chyb.
+* Bohužel jsme nemůže zjistit stav klienta zpětného zápisu v místním, protože nainstalovaná verze služby Azure AD Connect je zastaralá. [Upgrade služby Azure AD Connect](../hybrid/how-to-upgrade-previous-version.md) být schopni zkontrolovat stav připojení.
 * Bohužel to vypadá nemůžeme připojit k vašemu klientovi zpětného zápisu v místním hned teď. [Řešení potíží s Azure AD Connect](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity) obnovení připojení.
 * Bohužel nemůžeme připojit k vašemu klientovi zpětného zápisu v místním protože zpětný zápis hesla není nakonfigurovaná správně. [Nakonfigurovat zpětný zápis hesla](howto-sspr-writeback.md) obnovení připojení.
 * Bohužel to vypadá nemůžeme připojit k vašemu klientovi zpětného zápisu v místním hned teď. To může být dočasné problémy na naší straně. Pokud se problém nevyřeší, [Poradce při potížích s Azure AD Connect](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity) obnovení připojení.

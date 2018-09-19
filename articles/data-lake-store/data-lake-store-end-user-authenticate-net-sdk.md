@@ -1,6 +1,6 @@
 ---
-title: 'Ověřování koncového uživatele: .NET SDK s Data Lake Store pomocí Azure Active Directory | Microsoft Docs'
-description: Zjistěte, jak zajistit ověření koncového uživatele s Data Lake Store pomocí sady .NET SDK služby Azure Active Directory
+title: 'Ověřování koncového uživatele: sady .NET SDK s Azure Data Lake Storage Gen1 pomocí Azure Active Directory | Dokumentace Microsoftu'
+description: Zjistěte, jak dokončit ověřování koncového uživatele pomocí Azure Data Lake Storage Gen1 pomocí Azure Active Directory pomocí .NET SDK
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: cbb0f703f61b6c15b3a827dc75821286b7914c21
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 65672d5dc42ae1e584a36bcc72c16911f6c1f6e2
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34623957"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46122821"
 ---
-# <a name="end-user-authentication-with-data-lake-store-using-net-sdk"></a>Ověřování koncového uživatele s Data Lake Store pomocí sady .NET SDK
+# <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>Ověřování koncového uživatele pomocí Azure Data Lake Storage Gen1 pomocí sady .NET SDK
 > [!div class="op_single_selector"]
 > * [Pomocí Javy](data-lake-store-end-user-authenticate-java-sdk.md)
 > * [Pomocí sady .NET SDK](data-lake-store-end-user-authenticate-net-sdk.md)
@@ -27,14 +27,14 @@ ms.locfileid: "34623957"
 > 
 >  
 
-V tomto článku se dozvíte o tom, jak používat sadu .NET SDK chcete ověření koncových uživatelů s Azure Data Lake Store. Service-to-service ověřování s Data Lake Store pomocí sady .NET SDK, naleznete v části [Service-to-service ověřování s Data Lake Store pomocí sady .NET SDK](data-lake-store-service-to-service-authenticate-net-sdk.md).
+V tomto článku najdete informace o tom, jak pomocí sady .NET SDK provádět ověřování koncového uživatele pomocí Azure Data Lake Storage Gen1. Ověřování služba služba s Data Lake Storage Gen1 pomocí sady .NET SDK, přečtěte si téma [ověřování služba služba Data Lake Storage Gen1 pomocí sady .NET SDK](data-lake-store-service-to-service-authenticate-net-sdk.md).
 
 ## <a name="prerequisites"></a>Požadavky
 * **Visual Studio 2013, 2015 nebo 2017**. Níže uvedené pokyny používají sadu Visual Studio 2017.
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Vytvoření aplikace Azure Active Directory "Nativní"**. Musí mít dokončili postup v [ověřování koncového uživatele s Data Lake Store pomocí Azure Active Directory](data-lake-store-end-user-authenticate-using-active-directory.md).
+* **Vytvoření aplikace Azure Active Directory "Nativní"**. Je nutné dokončit kroky v [ověřování koncového uživatele s Data Lake Storage Gen1 pomocí Azure Active Directory](data-lake-store-end-user-authenticate-using-active-directory.md).
 
 ## <a name="create-a-net-application"></a>Vytvoření aplikace .NET
 1. Otevřete Visual Studio a vytvořte konzolovou aplikaci.
@@ -61,8 +61,8 @@ V tomto článku se dozvíte o tom, jak používat sadu .NET SDK chcete ověřen
         ![Přidání zdroje NuGet](./media/data-lake-store-get-started-net-sdk/data-lake-store-install-nuget-package.png "Vytvoření nového účtu Azure Data Lake")
    4. Zavřete **Správce balíčků NuGet**.
 
-6. Otevřete **Program.cs**
-7. Nahradit bránu pomocí příkazů s následujícími řádky:
+6. Otevřít **Program.cs**
+7. Nahraďte na pomocí příkazů s následujícími řádky:
 
     ```csharp
     using System;
@@ -80,9 +80,9 @@ V tomto článku se dozvíte o tom, jak používat sadu .NET SDK chcete ověřen
     ```     
 
 ## <a name="end-user-authentication"></a>Ověřování koncových uživatelů
-Přidejte tento fragment kódu do klientské aplikace .NET. Zástupné hodnoty nahraďte hodnoty získané z nativní aplikaci Azure AD (uvedené jako požadavek). Tento fragment kódu umožňuje aplikaci ověřovat **interaktivně** s Data Lake Store, což znamená, zobrazí se výzva k zadání přihlašovacích údajů Azure.
+Přidejte tento fragment kódu do klientské aplikace .NET. Nahraďte zástupné hodnoty hodnotami, které je načten z nativní aplikaci Azure AD (uvedené jako předpoklad). Tento fragment kódu umožňuje ověřování vaší aplikace **interaktivně** s Data Lake Storage Gen1, což znamená, že budete vyzváni k zadání přihlašovacích údajů Azure.
 
-Následující fragment kódu pro snadné použití, používá výchozí hodnoty pro ID klienta a identifikátor URI, které jsou platné pro jakéhokoli předplatného Azure pro přesměrování. V následující fragment kódu potřebujete jenom zadejte hodnotu pro vaše ID klienta. Můžete načíst ID klienta pomocí pokynů uvedených v [získání ID tenanta](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-tenant-id).
+Následující fragment kódu pro snadnější použití používá výchozí hodnoty pro ID klienta a jsou platné pro jakékoli předplatné identifikátor URI pro přesměrování. V následujícím fragmentu kódu stačí zadat hodnotu vašeho ID tenanta. Můžete získat ID klienta pomocí pokynů uvedených v [získání ID tenanta](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-tenant-id).
     
 - Funkce Main() nahraďte následujícím kódem:
 
@@ -104,14 +104,14 @@ Následující fragment kódu pro snadné použití, používá výchozí hodnot
 
 Několik věcí, které potřebujete vědět o předchozím fragmentu kódu:
 
-* Podpůrné funkce používá fragmentu předcházející `GetTokenCache` a `GetCreds_User_Popup`. Kód pro tyto pomocné funkce je k dispozici [sem na Githubu](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#gettokencache).
-* Fragment vám pomohou dokončit tento kurz rychleji, používá ID klienta nativní aplikace, která je k dispozici ve výchozím nastavení pro všechny odběry služby Azure. Můžete tedy **použít ve své aplikaci tento fragment kódu bez jakýchkoli úprav**.
-* Pokud však chcete používat vlastní doménu a ID klienta aplikace Azure AD, musíte vytvořit nativní aplikaci Azure AD a pak pro vytvořenou aplikaci použít příslušné ID tenanta, ID klienta a identifikátor URI přesměrování Azure AD. Pokyny najdete v tématu [Vytvoření aplikace Active Directory pro ověřování koncového uživatele pomocí služby Data Lake Store](data-lake-store-end-user-authenticate-using-active-directory.md).
+* Předchozí fragment kódu používá pomocné funkce `GetTokenCache` a `GetCreds_User_Popup`. Kód pro tyto pomocné funkce je k dispozici [si na Githubu](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#gettokencache).
+* Můžete projít tento kurz rychleji, fragment kódu používá ID klienta nativní aplikace, která je k dispozici ve výchozím nastavení pro všechna předplatná Azure. Můžete tedy **použít ve své aplikaci tento fragment kódu bez jakýchkoli úprav**.
+* Pokud však chcete používat vlastní doménu a ID klienta aplikace Azure AD, musíte vytvořit nativní aplikaci Azure AD a pak pro vytvořenou aplikaci použít příslušné ID tenanta, ID klienta a identifikátor URI přesměrování Azure AD. Zobrazit [vytvoření aplikace Active Directory pro ověřování koncového uživatele s Data Lake Storage Gen1](data-lake-store-end-user-authenticate-using-active-directory.md) pokyny.
 
   
 ## <a name="next-steps"></a>Další postup
-V tomto článku jste zjistili, jak používat ověřování koncových uživatelů k ověřování s Azure Data Lake Store pomocí sady .NET SDK. Teď můžete prohlédnout v následujících článcích, které mluvit o tom, jak používat sadu .NET SDK pro práci s Azure Data Lake Store.
+V tomto článku jste zjistili, jak používat ověřování koncového uživatele k ověření pomocí Azure Data Lake Storage Gen1 pomocí sady .NET SDK. Teď můžete prohlédnout v následujících článcích, které mluvit o tom, jak používat sadu .NET SDK pro práci s Azure Data Lake Storage Gen1.
 
-* [Operace správy účtů ve službě Data Lake Store pomocí sady .NET SDK](data-lake-store-get-started-net-sdk.md)
-* [Operace dat v Data Lake Store pomocí sady .NET SDK](data-lake-store-data-operations-net-sdk.md)
+* [Operace správy účtů v Data Lake Storage Gen1 pomocí sady .NET SDK](data-lake-store-get-started-net-sdk.md)
+* [Operace s daty v Data Lake Storage Gen1 pomocí sady .NET SDK](data-lake-store-data-operations-net-sdk.md)
 

@@ -1,6 +1,6 @@
 ---
-title: 'Ověřování služby služby: .NET SDK s Data Lake Store pomocí Azure Active Directory | Microsoft Docs'
-description: Zjistěte, jak dosáhnout service-to-service ověřování s Data Lake Store pomocí Azure Active Directory pomocí sady .NET SDK
+title: 'Ověřování služba služba: sady .NET SDK s Azure Data Lake Storage Gen1 pomocí Azure Active Directory | Dokumentace Microsoftu'
+description: Zjistěte, jak dokončit ověřování služba služba pomocí Azure Data Lake Storage Gen1 pomocí Azure Active Directory pomocí sady .NET SDK
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 388b84024a031a181625404ec1429087982dffbe
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: bd03c0801fed0da6d9a87466bc33819f6afa4578
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34625487"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296919"
 ---
-# <a name="service-to-service-authentication-with-data-lake-store-using-net-sdk"></a>Service-to-service ověřování s Data Lake Store pomocí sady .NET SDK
+# <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>Ověřování služba služba s Azure Data Lake Storage Gen1 pomocí sady .NET SDK
 > [!div class="op_single_selector"]
 > * [Pomocí Javy](data-lake-store-service-to-service-authenticate-java.md)
 > * [Pomocí sady .NET SDK](data-lake-store-service-to-service-authenticate-net-sdk.md)
@@ -27,7 +27,7 @@ ms.locfileid: "34625487"
 > 
 >  
 
-V tomto článku se dozvíte o tom, jak používat sadu .NET SDK udělat service-to-service ověřování s Azure Data Lake Store. Pro ověřování koncového uživatele s Data Lake Store pomocí sady .NET SDK, najdete v části [ověřování koncového uživatele s Data Lake Store pomocí sady .NET SDK](data-lake-store-end-user-authenticate-net-sdk.md).
+V tomto článku se dozvíte o tom, jak pomocí sady .NET SDK provádět ověřování služba služba s Azure Data Lake Storage Gen1. Ověřování koncového uživatele s Data Lake Storage Gen1 pomocí sady .NET SDK, přečtěte si téma [ověřování koncového uživatele s Data Lake Storage Gen1 pomocí sady .NET SDK](data-lake-store-end-user-authenticate-net-sdk.md).
 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -35,7 +35,7 @@ V tomto článku se dozvíte o tom, jak používat sadu .NET SDK udělat service
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Vytvoření aplikace Azure Active Directory "Web"**. Musí mít dokončili postup v [Service-to-service ověřování s Data Lake Store pomocí Azure Active Directory](data-lake-store-service-to-service-authenticate-using-active-directory.md).
+* **Vytvoření aplikace Azure Active Directory "Web"**. Je nutné dokončit kroky v [ověřování služba služba Data Lake Storage Gen1 pomocí Azure Active Directory](data-lake-store-service-to-service-authenticate-using-active-directory.md).
 
 ## <a name="create-a-net-application"></a>Vytvoření aplikace .NET
 1. Otevřete Visual Studio a vytvořte konzolovou aplikaci.
@@ -77,8 +77,8 @@ V tomto článku se dozvíte o tom, jak používat sadu .NET SDK udělat service
         using Microsoft.Azure.Management.DataLake.Store.Models;
         using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
-## <a name="service-to-service-authentication-with-client-secret"></a>Service-to-service ověřování s tajný klíč klienta
-Přidejte tento fragment kódu do klientské aplikace .NET. Zástupné hodnoty nahraďte hodnoty získané z webové aplikace služby Azure AD (uvedené jako předpoklad).  Tento fragment kódu umožňuje aplikaci ověřovat **neinteraktivně** s Data Lake Store pomocí tajný klíč nebo klíč klienta pro Azure AD webové aplikace. 
+## <a name="service-to-service-authentication-with-client-secret"></a>Ověřování služba služba s tajným klíčem klienta
+Přidejte tento fragment kódu do klientské aplikace .NET. Nahraďte zástupné hodnoty pomocí hodnot načtených z webové aplikace Azure AD (uvedené jako předpoklad).  Tento fragment kódu umožňuje ověřování vaší aplikace **neinteraktivně** s Data Lake Storage Gen1 pomocí klíč/tajný kód klienta pro webovou aplikaci Azure AD. 
 
     private static void Main(string[] args)
     {    
@@ -93,11 +93,11 @@ Přidejte tento fragment kódu do klientské aplikace .NET. Zástupné hodnoty n
         var adlCreds = GetCreds_SPI_SecretKey(TENANT, ADL_TOKEN_AUDIENCE, CLIENTID, secret_key);
     }
 
-Fragment kódu předcházející používá pomocné funkce `GetCreds_SPI_SecretKey`. Kód pro tato pomocná funkce je k dispozici [sem na Githubu](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#getcreds_spi_secretkey).
+Předchozí fragment kódu používá pomocnou funkci `GetCreds_SPI_SecretKey`. Kód pro tato pomocná funkce je k dispozici [si na Githubu](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#getcreds_spi_secretkey).
 
-## <a name="service-to-service-authentication-with-certificate"></a>Service-to-service ověřování pomocí certifikátu
+## <a name="service-to-service-authentication-with-certificate"></a>Ověřování služba služba s certifikátem
 
-Přidejte tento fragment kódu do klientské aplikace .NET. Zástupné hodnoty nahraďte hodnoty získané z webové aplikace služby Azure AD (uvedené jako předpoklad). Tento fragment kódu umožňuje aplikaci ověřovat **neinteraktivně** s Data Lake Store pomocí certifikátu pro Azure AD webové aplikace. Pokyny o tom, jak vytvořit aplikaci Azure AD najdete v tématu [vytvoření instančního objektu s certifikáty](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-self-signed-certificate).
+Přidejte tento fragment kódu do klientské aplikace .NET. Nahraďte zástupné hodnoty pomocí hodnot načtených z webové aplikace Azure AD (uvedené jako předpoklad). Tento fragment kódu umožňuje ověřování vaší aplikace **neinteraktivně** s Data Lake Storage Gen1 pomocí certifikátu pro webovou aplikaci Azure AD. Pokyny o tom, jak vytvořit aplikaci Azure AD najdete v tématu [vytvoření instančního objektu s certifikáty](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-self-signed-certificate).
 
     
     private static void Main(string[] args)
@@ -113,12 +113,12 @@ Přidejte tento fragment kódu do klientské aplikace .NET. Zástupné hodnoty n
         var adlCreds = GetCreds_SPI_Cert(TENANT, ADL_TOKEN_AUDIENCE, CLIENTID, cert);
     }
 
-Fragment kódu předcházející používá pomocné funkce `GetCreds_SPI_Cert`. Kód pro tato pomocná funkce je k dispozici [sem na Githubu](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#getcreds_spi_cert).
+Předchozí fragment kódu používá pomocnou funkci `GetCreds_SPI_Cert`. Kód pro tato pomocná funkce je k dispozici [si na Githubu](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#getcreds_spi_cert).
 
 ## <a name="next-steps"></a>Další postup
-V tomto článku jste zjistili, jak používat ověřování service-to-service k ověřování s Azure Data Lake Store pomocí sady .NET SDK. Teď můžete prohlédnout v následujících článcích, které mluvit o tom, jak používat sadu .NET SDK pro práci s Azure Data Lake Store.
+V tomto článku jste zjistili, jak používat k ověření pomocí Data Lake Storage Gen1 ověřování služba služba pomocí sady .NET SDK. Teď můžete prohlédnout v následujících článcích, které mluvit o tom, jak používat sadu .NET SDK pro práci s Data Lake Storage Gen1.
 
-* [Operace správy účtů ve službě Data Lake Store pomocí sady .NET SDK](data-lake-store-get-started-net-sdk.md)
-* [Operace dat v Data Lake Store pomocí sady .NET SDK](data-lake-store-data-operations-net-sdk.md)
+* [Operace správy účtů v Data Lake Storage Gen1 pomocí sady .NET SDK](data-lake-store-get-started-net-sdk.md)
+* [Operace s daty v Data Lake Storage Gen1 pomocí sady .NET SDK](data-lake-store-data-operations-net-sdk.md)
 
 

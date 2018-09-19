@@ -10,18 +10,18 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 5d8fe6282d956d7f399aff9f7aa250c5061dc887
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: eb3c1177f86f4c595280521f4dbcbe8081f68895
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159562"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296240"
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>Nasazení resetování hesla bez vyžadování registrace koncového uživatele
 
 Ověřovací data pro nasazení služby Azure Active Directory (Azure AD) samoobslužné resetování hesla (SSPR), musí být k dispozici. Některé organizace mají své uživatele zadejte ověřovací data sami. Ale mnoho organizací raději synchronizovat s daty, která již existuje ve službě Active Directory. Synchronizace dat je k dispozici pro Azure AD a samoobslužné resetování HESLA bez nutnosti zásahu uživatele, pokud jste:
    * Správně formátování dat v místním adresáři.
-   * Konfigurace [Azure AD Connect s použitím expresního nastavení](./../connect/active-directory-aadconnect-get-started-express.md).
+   * Konfigurace [Azure AD Connect s použitím expresního nastavení](../hybrid/how-to-connect-install-express.md).
 
 Pro vše správně fungovalo, musí být telefonní čísla ve formátu *+ CountryCode PhoneNumber*, například 4255551234 + 1.
 

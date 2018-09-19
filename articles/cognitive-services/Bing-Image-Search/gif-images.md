@@ -1,22 +1,24 @@
 ---
-title: Získání obrázků GIF – Microsoft Cognitive Services | Dokumentace Microsoftu
+title: Získání obrázků GIF – rozhraní API pro vyhledávání obrázků Bingu
+titleSuffix: Azure Cognitive Services
 description: Jak používat rozhraní API Bingu pro vyhledávání obrázků zobrazíte další informace o imagích .gif.
 services: cognitive-services
 author: MikeDodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-image-search
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 7f1d02067d2ef31f56eefe40736b6f02b58940b8
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 30a266a1dc0441485b4f6ba70876ac32c3de0e14
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45577145"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296464"
 ---
-# <a name="search-for-gif-images"></a>Vyhledávání obrázků GIF
+# <a name="search-for-gif-images-using-the-bing-image-search-api"></a>Hledání obrázků GIF pomocí rozhraní API Bingu pro vyhledávání obrázků
+
 Rozhraní API Bingu pro vyhledávání obrázků můžete také prohledat napříč celým webovým nejrelevantnější obrázků GIF.  Vývojáři mohou integrovat poutavé GIF v různých scénářích konverzace. 
 
 Následující adresa URL je dotaz pro Image animovaný obrázek GIF.
@@ -27,7 +29,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=interesting&imageT
 
 Pokud chcete zobrazit příklady výsledků, použijte následující adresu URL pro hledání bing.com.
 ````
-https://www.bing.com/images/search?q=interesting&qft=%20filterui%3Aphoto-animatedgif 
+https://www.bing.com/images/search?q=interesting&qft=%20filterui%3Aphoto-animatedgif
 
 ````
 ## <a name="query-parameters"></a>Parametry dotazu
@@ -39,7 +41,7 @@ Další informace o možnostech a parametrech dotazů najdete v článku [odkaz 
 - Můžete zadat [maxFileSize](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#maxfilesize) a [minFileSize](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#minfilesize) parametry. Doporučujeme nastavit maxFileSize = 2000000, protože většina GIF v indexu je v části 2MB.  Také vám pomáhají řídit velikost dat, pokud šířka pásma je problém, jako třeba v mobilních situacích, mobilní.
 - Chcete-li zvýšit dosahovaný výkon, načtěte miniaturu nejprve před načítání zdrojová adresa url.  
 - Pro první spuštění nebo cílová stránka prostředí, kde uživatelský dotaz ještě nemáte, zkuste použít naše populární gif hledání umožňující z [vzroste zájem o Image API](trending-images.md).
-- Existují tři nastavení [bezpečné hledání](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#safesearch) parametru.  `strict` Zablokuje možnost obsahu pro dospělé. 
+- Existují tři nastavení [bezpečné hledání](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#safesearch) parametru.  `strict` Zablokuje možnost obsahu pro dospělé.
 - Zobrazit [mkt](supported-countries-markets.md) úplný seznam jazyků podporovaných umístění.
 - *AnimatedGifHttps* pouze vrátí animovat obrázků gif, které jsou z adresy protokolu https. Mnoho aplikací pro zabezpečení, vyžadují připojení k externí webové odkazy přes protokol https. Například App Store společnosti Apple vyžaduje připojení k webovým službám přes protokol HTTPS, který šifruje zabezpečení v průběhu přenosu dat uživatele.
 

@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 09/17/2018
 ms.author: jeedes
-ms.openlocfilehash: e100859a184db2b6298dd02a1bb7bb238de27d51
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: e7cb3049f680f81026e09388066001413922600a
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44096192"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123842"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-silverback"></a>Kurz: Integrace Azure Active Directory se službou Silverback
 
@@ -38,7 +38,7 @@ Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, 
 Konfigurace integrace Azure AD s Silverback, potřebujete následující položky:
 
 - Předplatné Azure AD
-- Silverback jednotného přihlašování povolená předplatného
+- Aktivní předplatné Silverback
 
 > [!NOTE]
 > Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
@@ -107,11 +107,11 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Silverback domény a adresy URL jednotného přihlašování – informace](./media/silverback-tutorial/tutorial_silverback_url.png)
 
-    a. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<YOURSILVERBACKURL>/ssp`
+    a. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<YOURSILVERBACKURL>.com/ssp`
 
-    b. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<YOURSILVERBACKURL>`
+    b. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru: `<YOURSILVERBACKURL>.com`
 
-    c. V **adresy URL odpovědi** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<YOURSILVERBACKURL>/sts/authorize/login`
+    c. V **adresy URL odpovědi** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<YOURSILVERBACKURL>.com/sts/authorize/login`
 
     > [!NOTE] 
     > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL, identifikátoru a adresa URL odpovědi. Kontakt [tým podpory Silverback klienta](mailto:helpdesk@matrix42.com) k získání těchto hodnot. 
@@ -124,7 +124,31 @@ V této části Povolení služby Azure AD jednotného přihlašování na port�
 
     ![Nakonfigurovat jednotné přihlašování uložit tlačítko](./media/silverback-tutorial/tutorial_general_400.png)
 
-6. Ke konfiguraci jednotného přihlašování na **Silverback** straně, je nutné odeslat **adresa Url federačních metadat aplikace** k [tým podpory Silverback](mailto:helpdesk@matrix42.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
+6.  Přihlaste se k serveru Silverback jako správce a proveďte následující kroky:
+
+    a.  Přejděte do **správce** > **zprostředkovatele ověřování**.
+
+    b. Na **nastavení poskytovatele ověřování** stránce, proveďte následující kroky:
+
+    ![Správce ](./media/silverback-tutorial/tutorial_silverback_admin.png)
+
+    c.  Klikněte na **importovat z adresy URL**.
+    
+    d.  Vložte zkopírovanou adresu URL metadat a klikněte na tlačítko **OK**.
+    
+    e.  Potvrzení pro **OK** pak hodnoty vyplní automaticky.
+    
+    f.  Povolit **zobrazit na přihlašovací stránce**.
+    
+    g.  Povolit **dynamické vytvoření uživatele** Pokud chcete přidat uživatele Azure AD oprávnění automaticky (volitelné).
+    
+    h.  Vytvoření **Title** pro tlačítko na samoobslužný portál.
+
+    i.  Nahrání **ikonu** po kliknutí na **zvolit soubor**.
+    
+    j.  Vyberte na pozadí **barva** pro tlačítko.
+    
+    k.  Klikněte na **Uložit**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovacího uživatele Azure AD
 
@@ -160,7 +184,34 @@ Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal
  
 ### <a name="create-a-silverback-test-user"></a>Vytvoření zkušebního uživatele Silverback
 
-V této části vytvoříte uživatele v Silverback jako Britta Simon. Práce s [tým podpory Silverback](mailto:helpdesk@matrix42.com) přidat uživatele na platformě Silverback. Uživatelé musí vytvořit a aktivovat, než použití jednotného přihlašování.
+Přihlaste se k Silverback Azure AD uživatelům umožnit, musí být poskytnuty do Silverback. Zřizování v Silverback, je ruční úlohy.
+
+**K poskytnutí uživatelského účtu, postupujte následovně:**
+
+1. Přihlaste se k serveru Silverback jako správce.
+
+2. Přejděte do **uživatelé** a **přidat nového uživatele zařízení**.
+
+3. Na **základní** stránce, proveďte následující kroky:
+
+    ![Uživatel ](./media/silverback-tutorial/tutorial_silverback_user.png)
+
+    a. V **uživatelské jméno** textové pole, zadejte jméno uživatele, jako je **Britta**.
+
+    b. V **křestní jméno** textové pole, zadejte jméno uživatele, jako je **Britta**.
+
+    c. V **příjmení** textové pole, zadejte příjmení uživatele, jako je **Simon**.
+
+    d. V **e-mailovou adresu** textové pole, zadejte e-mailu uživatele, jako je **Brittasimon@contoso.com**.
+
+    e. V **heslo** textové pole, zadejte své heslo.
+    
+    f. V **potvrzení hesla** textového pole zadejte znovu své heslo a potvrďte.
+
+    g. Klikněte na **Uložit**.
+
+>[!NOTE]
+>Pokud nechcete vytvořit každý uživatel ručně povolit **dynamické vytvoření uživatele** zaškrtávací políčko **správce** > **zprostředkovatele ověřování**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit uživatele Azure AD
 

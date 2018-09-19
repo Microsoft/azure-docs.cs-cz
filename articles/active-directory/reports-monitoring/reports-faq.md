@@ -15,12 +15,12 @@ ms.component: report-monitor
 ms.date: 05/10/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: f1683321e23eff82e73dc9bb44941fc390633b8c
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: c2e131776fb9f2c5e87c363d0d57e655bc34448f
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42061314"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294216"
 ---
 # <a name="azure-active-directory-reporting-faq"></a>Generování sestav nejčastější dotazy k Azure Active Directory.
 
@@ -169,3 +169,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy ohledně služby Azu
 **Otázka: název zásady v sestavě všechna přihlášení neodpovídá názvu zásady v certifikační Autoritě. Proč?**
 
 **Odpověď:** název zásady v sestavě všechna přihlášení podle názvu certifikační Autority zásad v době přihlášení. To může být konzistentní se název zásady v certifikační Autoritě, pokud jste aktualizovali název zásady později, tedy po přihlášení.
+
+**Otázka: Moje přihlášení se zablokovala, protože zásady podmíněného přístupu, ale v sestavě aktivit přihlašování se zobrazí, že přihlášení bylo úspěšné. Proč?**
+
+**Odpověď:** aktuálně přihlášení se v sestavě nemusí zobrazovat přesné výsledky pro Exchange ActiveSync scénáře při použití podmíněného přístupu. Můžou nastat případy, když výsledek přihlášení v sestavě se zobrazuje úspěšné přihlášení, ale přihlášení ve skutečnosti selhala z důvodu zásad podmíněného přístupu. 

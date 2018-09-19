@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 12/12/2017
 ms.author: glenga
-ms.openlocfilehash: 3bdb5bc2aa47a51cc95a4274fbf20ba5d0515130
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 9a75e7ed8ce25384d39afb22ef50b5453ef543ba
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094277"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129671"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Functions C# (.csx) pro vývojáře odkaz na skript
 
@@ -34,7 +34,30 @@ Je na základě zkušeností skriptu C# pro službu Azure Functions [Azure WebJo
 
 *.Csx* formátu umožňuje psát méně "standardní" a zaměřit se na psaní pouze funkce C#. Namísto obtékání všechno, co v oboru názvů a třídy, stačí definovat `Run` metoda. Zahrnout všechny odkazy na sestavení a obory názvů na začátku souboru jako obvykle.
 
-Aplikace funkcí *.csx* soubory jsou zkompilovány při inicializaci instance. Tento krok kompilace znamená, že kroky, jako je úplné spuštění může trvat delší dobu skript funkcí jazyka C# ve srovnání s knihoven tříd C#. Tento krok kompilace je také proč funkce skriptu jazyka C# lze upravit na webu Azure Portal, nejsou knihovny tříd jazyka C#.
+Aplikace funkcí *.csx* soubory jsou zkompilovány při inicializaci instance. Tento krok kompilace znamená, že kroky, jako je úplné spuštění může trvat delší dobu skript funkcí jazyka C# ve srovnání s knihoven tříd C#. Tento krok kompilace je také Proč jsou funkce skriptu jazyka C# upravit na webu Azure Portal, zatímco nejsou knihovny tříd jazyka C#.
+
+## <a name="folder-structure"></a>struktura složek
+
+Struktura složek projektu skriptu jazyka C# vypadá takto:
+
+```
+FunctionsProject
+ | - MyFirstFunction
+ | | - run.csx
+ | | - function.json
+ | | - function.proj
+ | - MySecondFunction
+ | | - run.csx
+ | | - function.json
+ | | - function.proj
+ | - host.json
+ | - extensions.csproj
+ | - bin
+```
+
+Existuje soubor sdílený [host.json] (funkce json.md hostitele), který můžete použít ke konfiguraci aplikace function app. Každá funkce má svůj vlastní soubor s kódem (.csx) a vazbu konfigurační soubor (function.json).
+
+Rozšíření vazby vyžaduje [verze 2.x](functions-versions.md) funkce modulu runtime jsou definovány v `extensions.csproj` souboru se soubory knihovny v `bin` složky. Při vývoji místně, musíte [registraci rozšíření vazby](functions-triggers-bindings.md#local-development-azure-functions-core-tools). Při vytváření funkcí na webu Azure Portal, je tato registrace provede za vás.
 
 ## <a name="binding-to-arguments"></a>Vytvoření vazby na argumenty
 
@@ -336,8 +359,10 @@ Následující sestavení mohou být odkazovány jednoduchý název (například
 ## <a name="referencing-custom-assemblies"></a>Odkazování na vlastní sestavení
 
 Odkazovat na vlastní sestavení, můžete použít buď *sdílené* sestavení nebo *privátní* sestavení:
-- Sdílená sestavení jsou sdíleny napříč všechny funkce v rámci aplikace function app. Odkazovat na vlastní sestavení, nahrajte do složky s názvem sestavení `bin` ve vašich [funkce aplikace kořenové složky](functions-reference.md#folder-structure) (wwwroot). 
-- Soukromá sestavení jsou součástí kontextu dané funkce a podpory různých verzí bokem. Soukromá sestavení musí být nahrán v `bin` složky v adresáři funkce. Odkazovat na sestavení pomocí názvu souboru, například `#r "MyAssembly.dll"`. 
+
+* Sdílená sestavení jsou sdíleny napříč všechny funkce v rámci aplikace function app. Odkazovat na vlastní sestavení, nahrajte do složky s názvem sestavení `bin` ve vašich [funkce aplikace kořenové složky](functions-reference.md#folder-structure) (wwwroot).
+
+* Soukromá sestavení jsou součástí kontextu dané funkce a podpory různých verzí bokem. Soukromá sestavení musí být nahrán v `bin` složky v adresáři funkce. Odkazovat na sestavení pomocí názvu souboru, například `#r "MyAssembly.dll"`.
 
 Informace o tom, jak nahrávat soubory do složky funkce, najdete v části na [Správa balíčků](#using-nuget-packages).
 
