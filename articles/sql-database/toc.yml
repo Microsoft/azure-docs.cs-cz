@@ -309,44 +309,46 @@ items:
         href: sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md
   - name: Porovnání funkcí SQL
     href: sql-database-features.md
-  - name: Monitorování a ladění
+  - name: Výkon a ladění
     items:
-    - name: Monitorování a ladění
-      href: sql-database-troubleshoot-performance.md
-    - name: Monitorování výkonu
-      href: sql-database-single-database-monitor.md
-    - name: Doporučení k výkonu
-      href: sql-database-advisor.md
-    - name: Inteligentní zpracování dotazů
+    - name: Inteligentní výkon
       items:
-      - name: Inteligentní zpracování dotazů
-        href: https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json
-      - name: Adaptivní zpracování dotazů
-        href: https://docs.microsoft.com/sql/relational-databases/performance/adaptive-query-processing?toc=/azure/sql-database/toc.json
-    - name: Automatické ladění
-      items:
-      - name: Automatické ladění
-        href: sql-database-automatic-tuning.md
-      - name: Povolení automatického ladění
-        href: sql-database-automatic-tuning-enable.md
-      - name: Povolení e-mailových oznámení
-        href: sql-database-automatic-tuning-email-notifications.md
-    - name: Užitečné přehledy
-      items:
+      - name: Dotazování
+        items:
+        - name: Inteligentní zpracování dotazů
+          href: https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json
+        - name: Adaptivní zpracování dotazů
+          href: https://docs.microsoft.com/sql/relational-databases/performance/adaptive-query-processing?toc=/azure/sql-database/toc.json
+      - name: Sledování a ladění
+        items:
+        - name: Přehled sledování a ladění
+          href: sql-database-monitor-tune-overview.md
+        - name: Doporučení ohledně výkonu pro nástroj Database Advisor
+          href: sql-database-advisor.md
+        - name: Doporučení a akce ladění
+          href: sql-database-performance.md
+        - name: Použití doporučení k výkonu
+          href: sql-database-advisor-portal.md
       - name: Užitečné přehledy
-        href: sql-database-intelligent-insights.md
-      - name: Protokolování diagnostiky
-        href: sql-database-metrics-diag-logging.md
-      - name: Použití protokolu diagnostiky
-        href: sql-database-intelligent-insights-use-diagnostics-log.md
-      - name: Řešení potíží s výkonem
-        href: sql-database-intelligent-insights-troubleshoot-performance.md
-    - name: Doporučení k výkonu
-      href: sql-database-performance.md
-    - name: Použití nástroje Query Performance Insight
-      href: sql-database-query-performance.md
-    - name: Použití doporučení k výkonu
-      href: sql-database-advisor-portal.md
+        items:
+        - name: Intelligent Insights – přehled
+          href: sql-database-intelligent-insights.md
+        - name: Protokolování diagnostiky
+          href: sql-database-metrics-diag-logging.md
+        - name: Použití diagnostického protokolu
+          href: sql-database-intelligent-insights-use-diagnostics-log.md
+        - name: Řešení potíží s výkonem
+          href: sql-database-intelligent-insights-troubleshoot-performance.md
+      - name: Query Performance Insight
+        href: sql-database-query-performance.md
+      - name: Automatická optimalizace výkonu
+        items:
+        - name: Přehled automatického ladění
+          href: sql-database-automatic-tuning.md
+        - name: Povolení automatického ladění
+          href: sql-database-automatic-tuning-enable.md
+        - name: Povolení e-mailových oznámení
+          href: sql-database-automatic-tuning-email-notifications.md
     - name: Ruční ladění
       items:
       - name: Ruční ladění
@@ -355,16 +357,16 @@ items:
         href: sql-database-monitoring-with-dmvs.md
       - name: Provozování úložiště dotazů
         href: sql-database-operate-query-store.md
-    - name: Monitorování v paměti
-      href: sql-database-in-memory-oltp-monitoring.md
-    - name: Rozšířené události
-      items:
+      - name: V paměti
+        href: sql-database-in-memory-oltp-monitoring.md
       - name: Rozšířené události
-        href: sql-database-xevent-db-diff-from-svr.md
-      - name: Rozšířené události – soubor událostí
-        href: sql-database-xevent-code-event-file.md
-      - name: Rozšířené události – cyklická vyrovnávací paměť
-        href: sql-database-xevent-code-ring-buffer.md
+        items:
+        - name: Rozšířené události
+          href: sql-database-xevent-db-diff-from-svr.md
+        - name: Rozšířené události – soubor událostí
+          href: sql-database-xevent-code-event-file.md
+        - name: Rozšířené události – cyklická vyrovnávací paměť
+          href: sql-database-xevent-code-ring-buffer.md
     - name: Vytváření upozornění
       href: sql-database-insights-alerts-portal.md
     - name: Řešení potíží s připojením
@@ -616,9 +618,9 @@ items:
     href: /azure/architecture/
   - name: Příběhy zákazníků
     href: http://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc
-ms.openlocfilehash: 97b7f99440510e8a4a72cb0e3b18c54839f0c0c6
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: cfb52fa79f85ed1a382e0aa715d3239c84860678
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634468"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983766"

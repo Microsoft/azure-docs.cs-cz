@@ -20,7 +20,7 @@
 #### [Containers](./marketplace-containers.md)
 #### [Konzultační služba](./consulting-services.md)  
 #### [Průvodce publikováním pro Office 365, Dynamics 365 a Power BI](./appsource-offer-publishing-guide.md)
-#### [Povolení zkušebního prostředí na Marketplace s využitím Azure Active Directory](./enable-trial-using-azure-ad.md)
+#### [Povolení uvedení na Microsoft AppSource a Azure Marketplace s využitím Azure Active Directory](./enable-appsource-marketplace-using-azure-ad.md)
 
 ### [Rozvoj vašeho podnikání prostřednictvím marketplace](./grow-your-business-with-azure-marketplace.md)  
 #### [Upřednostňovaná řešení](./preferred-solutions.md) 

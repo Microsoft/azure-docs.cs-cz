@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 03/30/2018
 ms.author: angrobe
-ms.openlocfilehash: 803f87b1e764d4c3704a5260b8fbe46eaef34e24
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 64bf734543825284db29790fc3c1f7c9ef89ff59
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43840362"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45737110"
 ---
 # <a name="azure-security-documentation"></a>Dokumentace ke službě Azure Security
 
@@ -197,6 +197,9 @@ Zabezpečení je integrované do všech oblastí Azure. Azure nabízí jedinečn
                         <div class="ico64Link"><img src="https://docs.microsoft.com/media/common/i_guidelines.svg" alt="" /></div>
                         <h3>Osvědčené postupy</h3>
                         <ul class="noBullet">
+                            <li style="list-style: none;">
+                                <a class="barLink" href="https://azure.microsoft.com/resources/security-best-practices-for-azure-solutions/">Osvědčené postupy zabezpečení pro Azure</a>
+                            </li>
                             <li style="list-style: none;">
                                 <a class="barLink" href="/azure/security/azure-security-network-security-best-practices">Zabezpečení sítě</a>
                             </li>

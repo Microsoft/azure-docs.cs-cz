@@ -1,246 +1,258 @@
+items:
 - name: Přehled
   items:
-    - name: Úvod
-      href: storage-files-introduction.md
-    - name: 'Výběr objektů blob, souborů nebo datových disků'
-      href: ../common/storage-decide-blobs-files-disks.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: Nejčastější dotazy
-      href: storage-files-faq.md
+  - name: Úvod
+    href: storage-files-introduction.md
+  - name: Výběr objektů blob, souborů nebo datových disků
+    href: ../common/storage-decide-blobs-files-disks.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+  - name: Nejčastější dotazy
+    href: storage-files-faq.md
 - name: Začínáme
   items:
-    - name: vytvořit účet úložiště
-      href: ../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: Vytvoření sdílené složky
-      href: storage-how-to-create-file-share.md
-    - name: Připojení v systému Windows
-      href: storage-how-to-use-files-windows.md
-    - name: Připojení v systému Linux
-      href: storage-how-to-use-files-linux.md
-    - name: Připojení v systému macOS
-      href: storage-how-to-use-files-mac.md
-    - name: Správa pomocí webu Azure Portal
-      href: storage-how-to-use-files-portal.md
-    - name: Správa pomocí PowerShellu
-      href: storage-how-to-use-files-powershell.md
-    - name: Správa pomocí Azure CLI
-      href: storage-how-to-use-files-cli.md
-    - name: Správa pomocí Průzkumníka služby Storage
-      href: storage-how-to-use-files-storage-explorer.md
+  - name: vytvořit účet úložiště
+    href: ../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+  - name: Vytvoření sdílené složky
+    href: storage-how-to-create-file-share.md
+  - name: Připojení v systému Windows
+    href: storage-how-to-use-files-windows.md
+  - name: Připojení v systému Linux
+    href: storage-how-to-use-files-linux.md
+  - name: Připojení v systému macOS
+    href: storage-how-to-use-files-mac.md
+  - name: Správa pomocí webu Azure Portal
+    href: storage-how-to-use-files-portal.md
+  - name: Správa pomocí PowerShellu
+    href: storage-how-to-use-files-powershell.md
+  - name: Správa pomocí Azure CLI
+    href: storage-how-to-use-files-cli.md
+  - name: Správa pomocí Průzkumníka služby Storage
+    href: storage-how-to-use-files-storage-explorer.md
 - name: Postup
   items:
-    - name: Plánování
+  - name: Plánování
+    items:
+    - name: Plánování nasazení služby Soubory Azure
+      href: storage-files-planning.md
+    - name: Plánování nasazení Synchronizace souborů Azure
+      href: storage-sync-files-planning.md
+    - name: Vysvětlení účtů úložiště
+      href: ../common/storage-account-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
       items:
-        - name: Plánování nasazení služby Soubory Azure
-          href: storage-files-planning.md
-        - name: Plánování nasazení služby Azure File Sync
-          href: storage-sync-files-planning.md
-        - name: Vysvětlení účtů úložiště
-          href: ../common/storage-account-options.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Vysvětlení snímků sdílených složek
-          href: storage-snapshots-files.md
-        - name: Data redundancy
-          items:
-            - name: Přehled redundance
-              href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-            - name: Místně redundantní úložiště
-              href: ../common/storage-redundancy-lrs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-            - name: Zónově redundantní úložiště
-              href: ../common/storage-redundancy-zrs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-            - name: Geograficky redundantní úložiště
-              href: ../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Škálovatelnost a cíle výkonnosti
-          href: storage-files-scale-targets.md
-        - name: Pokyny pro zotavení po havárii
-          href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Poznámky k verzi Azure File Sync
-          href: storage-files-release-notes.md
-    - name: Nasazení
+      - name: Správa účtu úložiště
+        href: ../common/storage-account-manage.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+      - name: Upgrade účtu úložiště
+        href: ../common/storage-account-upgrade.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: Vysvětlení snímků sdílených složek
+      href: storage-snapshots-files.md
+    - name: Data redundancy
       items:
-        - name: Nasazení služby Soubory Azure
-          href: storage-files-deployment-guide.md
-        - name: Nasazení služby Azure File Sync
-          href: storage-sync-files-deployment-guide.md
-        - name: Nastavení proxy a firewallu služby Azure File Sync
-          href: storage-sync-files-firewall-and-proxy.md
-    - name: Spravovat
-      items:
-        - name: Registrace serveru pomocí služby Azure File Sync
-          href: storage-sync-files-server-registration.md
-        - name: Přidání koncového bodu serveru Azure File Sync
-          href: storage-sync-files-server-endpoint.md
-        - name: 'PowerShell pro cloudy China, Government a Germany'
-          href: ../common/storage-powershell-independent-clouds.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Azure Automation
-          href: ../common/storage-manage-with-automation.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: Vývoj
-      items:
-        - name: Správa souběžnosti
-          href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: .NET
-          href: storage-dotnet-how-to-use-files.md
-        - name: Java
-          href: storage-java-how-to-use-file-storage.md
-        - name: C++
-          href: storage-c-plus-plus-how-to-use-files.md
-        - name: Python
-          href: storage-python-how-to-use-file-storage.md
-        - name: Ukázky
-          items:
-            - name: .NET
-              href: ../common/storage-samples-dotnet.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-            - name: Java
-              href: ../common/storage-samples-java.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Konfigurace připojovacích řetězců
-          href: ../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: Zabezpečení
-      items:
-        - name: Příručka zabezpečení
-          href: ../common/storage-security-guide.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Konfigurace bran firewall a virtuálních sítí
-          href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Šifrování pro neaktivní uložená data
-          href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Vyžádání bezpečného přenosu
-          href: ../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Ověřování pomocí sdíleného klíče
-          href: /rest/api/storageservices/Authorization-for-the-Azure-Storage-Services
-        - name: Sdílené přístupové podpisy (SAS)
-          href: ../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Povolení zabezpečeného TLS pro klienta Azure Storage
-          href: ../common/storage-security-tls.md
-        - name: Nabídky pro dodržování předpisů
-          href: ../common/storage-compliance-offerings.md
-    - name: Monitorování a odstraňování potíží
-      items:
-        - name: Řešení problémů s připojeními služby Soubory Azure – Windows
-          href: storage-troubleshoot-windows-file-connection-problems.md
-        - name: Řešení problémů s připojeními služby Soubory Azure – Linux
-          href: storage-troubleshoot-linux-file-connection-problems.md
-        - name: Řešení problémů se službou Azure File Sync
-          href: storage-sync-files-troubleshoot.md
-        - name: Kurz odstraňování potíží
-          href: ../common/storage-e2e-troubleshooting.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: 'Monitorování, diagnostika a řešení potíží'
-          href: ../common/storage-monitoring-diagnosing-troubleshooting.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Metriky a protokolování
-          items:
-            - name: Metriky na platformě Azure Monitor
-              href: ../common/storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Migrace na novou metriku
-              href: ../common/storage-metrics-migration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Storage Analytics
-              href: ../common/storage-analytics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Povolení a zobrazení metrik (Classic)
-              href: ../common/storage-enable-and-view-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-    - name: Přenos dat
-      items:
-        - name: Přesouvání dat do a ze Storage
-          href: ../common/storage-moving-data.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: AzCopy ve Windows
-          href: ../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: AzCopy v Linuxu
-          href: ../common/storage-use-azcopy-linux.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+      - name: Přehled redundance
+        href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+      - name: Místně redundantní úložiště
+        href: ../common/storage-redundancy-lrs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+      - name: Zónově redundantní úložiště
+        href: ../common/storage-redundancy-zrs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+      - name: Geograficky redundantní úložiště
+        href: ../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: Škálovatelnost a cíle výkonnosti
+      href: storage-files-scale-targets.md
+    - name: Pokyny pro zotavení po havárii
+      href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: Poznámky k verzi Synchronizace souborů Azure
+      href: storage-files-release-notes.md
+  - name: Nasazení
+    items:
+    - name: Nasazení služby Soubory Azure
+      href: storage-files-deployment-guide.md
+    - name: Nasazení Synchronizace souborů Azure
+      href: storage-sync-files-deployment-guide.md
+    - name: Nastavení proxy a firewallu Synchronizace souborů Azure
+      href: storage-sync-files-firewall-and-proxy.md
+  - name: Spravovat
+    items:
+    - name: Registrace serveru pomocí Synchronizace souborů Azure
+      href: storage-sync-files-server-registration.md
+    - name: Přidání koncového bodu serveru Synchronizace souborů Azure
+      href: storage-sync-files-server-endpoint.md
+    - name: PowerShell pro cloudy China, Government a Germany
+      href: ../common/storage-powershell-independent-clouds.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: Azure Automation
+      href: ../common/storage-manage-with-automation.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+  - name: Vývoj
+    items:
+    - name: Správa souběžnosti
+      href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: .NET
+      href: storage-dotnet-how-to-use-files.md
+    - name: Java
+      href: storage-java-how-to-use-file-storage.md
+    - name: C++
+      href: storage-c-plus-plus-how-to-use-files.md
+    - name: Python
+      href: storage-python-how-to-use-file-storage.md
     - name: Ukázky
-      href: 'https://azure.microsoft.com/documentation/samples/?service=storage&term=file'
+      items:
+      - name: .NET
+        href: ../common/storage-samples-dotnet.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+      - name: Java
+        href: ../common/storage-samples-java.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: Konfigurace připojovacích řetězců
+      href: ../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+  - name: Zabezpečení
+    items:
+    - name: Příručka zabezpečení
+      href: ../common/storage-security-guide.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: Konfigurace bran firewall a virtuálních sítí
+      href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: Šifrování pro neaktivní uložená data
+      href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: Vyžádání bezpečného přenosu
+      href: ../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: Ověřování pomocí sdíleného klíče
+      href: /rest/api/storageservices/Authorization-for-the-Azure-Storage-Services
+    - name: Sdílené přístupové podpisy (SAS)
+      href: ../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: Povolení zabezpečeného TLS pro klienta Azure Storage
+      href: ../common/storage-security-tls.md
+    - name: Nabídky pro dodržování předpisů
+      href: ../common/storage-compliance-offerings.md
+  - name: Monitorování a odstraňování potíží
+    items:
+    - name: Řešení problémů s připojeními služby Soubory Azure – Windows
+      href: storage-troubleshoot-windows-file-connection-problems.md
+    - name: Řešení problémů s připojeními služby Soubory Azure – Linux
+      href: storage-troubleshoot-linux-file-connection-problems.md
+    - name: Řešení problémů se Synchronizací souborů Azure
+      href: storage-sync-files-troubleshoot.md
+    - name: Kurz odstraňování potíží
+      href: ../common/storage-e2e-troubleshooting.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: Monitorování, diagnostika a řešení potíží
+      href: ../common/storage-monitoring-diagnosing-troubleshooting.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: Metriky a protokolování
+      items:
+      - name: Metriky na platformě Azure Monitor
+        href: ../common/storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+      - name: Migrace na novou metriku
+        href: ../common/storage-metrics-migration.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+      - name: Storage Analytics
+        href: ../common/storage-analytics.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+      - name: Povolení a zobrazení metrik (Classic)
+        href: ../common/storage-enable-and-view-metrics.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+  - name: Přenos dat
+    items:
+    - name: Přesouvání dat do a ze Storage
+      href: ../common/storage-moving-data.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: AzCopy ve Windows
+      href: ../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: AzCopy v Linuxu
+      href: ../common/storage-use-azcopy-linux.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+  - name: Ukázky
+    href: https://azure.microsoft.com/documentation/samples/?service=storage&term=file
 - name: Referenční informace
   items:
-    - name: PowerShell
-      href: /powershell/module/azure.storage
-    - name: Azure CLI
-      href: /cli/azure/storage
-    - name: .NET
-      items:
-        - name: 'Objekty blob, tabulky, fronty a soubory'
-          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/client'
-        - name: Přesuny dat
-          href: 'https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.datamovement'
-        - name: Resource Manager
-          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/management'
-    - name: Java
-      items:
-        - name: 'Objekty blob, tabulky, fronty a soubory'
-          href: 'https://docs.microsoft.com/java/api/overview/azure/storage/client'
-        - name: Resource Manager
-          href: 'https://docs.microsoft.com/java/api/overview/azure/storage/management'
-    - name: Node.js
-      href: 'https://docs.microsoft.com/javascript/api/overview/azure/storage'
-    - name: Ruby
-      href: 'http://azure.github.io/azure-storage-ruby'
-    - name: PHP
-      href: 'http://azure.github.io/azure-storage-php/'
-    - name: Python
-      href: 'https://docs.microsoft.com/python/api/overview/azure/storage'
-    - name: C++
-      href: 'http://azure.github.io/azure-storage-cpp'
-    - name: iOS
-      href: 'http://azure.github.io/azure-storage-ios/'
-    - name: Android
-      href: 'http://azure.github.io/azure-storage-android'
-    - name: REST
-      items:
-        - name: 'Objekty blob, tabulky, fronty a soubory'
-          href: /rest/api/storageservices
-        - name: Poskytovatel prostředků
-          href: /rest/api/storagerp
-        - name: Import/export
-          href: /rest/api/storageimportexport
+  - name: PowerShell
+    href: /powershell/module/azure.storage
+  - name: Azure CLI
+    href: /cli/azure/storage
+  - name: .NET
+    items:
+    - name: Objekty blob, tabulky, fronty a soubory
+      href: https://docs.microsoft.com/dotnet/api/overview/azure/storage/client
+    - name: Přesuny dat
+      href: https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.datamovement
+    - name: Resource Manager
+      href: https://docs.microsoft.com/dotnet/api/overview/azure/storage/management
+  - name: Java
+    items:
+    - name: Objekty blob, tabulky, fronty a soubory
+      href: https://docs.microsoft.com/java/api/overview/azure/storage/client
+    - name: Resource Manager
+      href: https://docs.microsoft.com/java/api/overview/azure/storage/management
+  - name: Node.js
+    href: https://docs.microsoft.com/javascript/api/overview/azure/storage
+  - name: Ruby
+    href: http://azure.github.io/azure-storage-ruby
+  - name: PHP
+    href: http://azure.github.io/azure-storage-php/
+  - name: Python
+    href: https://docs.microsoft.com/python/api/overview/azure/storage
+  - name: C++
+    href: http://azure.github.io/azure-storage-cpp
+  - name: iOS
+    href: http://azure.github.io/azure-storage-ios/
+  - name: Android
+    href: http://azure.github.io/azure-storage-android
+  - name: REST
+    items:
+    - name: Objekty blob, tabulky, fronty a soubory
+      href: /rest/api/storageservices
+    - name: Poskytovatel prostředků
+      href: /rest/api/storagerp
+    - name: Import/export
+      href: /rest/api/storageimportexport
 - name: Zdroje a prostředky
   items:
-    - name: Plány Azure do budoucna
-      href: 'https://azure.microsoft.com/roadmap/?category=storage'
-    - name: Klientské nástroje pro Azure Storage
-      href: ../common/storage-explorers.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: Stack Overflow
-      href: 'http://stackoverflow.com/questions/tagged/windows-azure-storage'
-    - name: Fórum
-      href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata'
-    - name: Ceny
-      href: 'https://azure.microsoft.com/pricing/details/storage/blobs/'
-    - name: Cenová kalkulačka
-      href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Aktualizace služeb
-      href: 'https://azure.microsoft.com/updates/?product=storage'
-    - name: Videa
-      href: 'https://azure.microsoft.com/documentation/videos/index/?services=storage'
-    - name: Azure Storage Explorer
+  - name: Plány Azure do budoucna
+    href: https://azure.microsoft.com/roadmap/?category=storage
+  - name: Klientské nástroje pro Azure Storage
+    href: ../common/storage-explorers.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+  - name: Stack Overflow
+    href: http://stackoverflow.com/questions/tagged/windows-azure-storage
+  - name: Fórum
+    href: https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata
+  - name: Ceny
+    href: https://azure.microsoft.com/pricing/details/storage/blobs/
+  - name: Cenová kalkulačka
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: Aktualizace služeb
+    href: https://azure.microsoft.com/updates/?product=storage
+  - name: Videa
+    href: https://azure.microsoft.com/documentation/videos/index/?services=storage
+  - name: Azure Storage Explorer
+    items:
+    - name: Storage Explorer
+      href: ../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: Poznámky k verzi Storage Exploreru
+      href: ../../vs-azure-tools-storage-explorer-relnotes.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: Řešení potíží se Storage Explorerem
+      href: ../common/storage-explorer-troubleshooting.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: Dostupnost Storage Exploreru
+      href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+  - name: Balíčky NuGet
+    items:
+    - name: Klientská knihovna pro úložiště Azure pro .NET
+      href: https://www.nuget.org/packages/WindowsAzure.Storage/
+    - name: Knihovna pro přesun dat v Azure Storage
+      href: https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/
+    - name: Azure Configuration Manager
+      href: https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/
+  - name: Zdrojový kód
+    items:
+    - name: .NET
       items:
-        - name: Storage Explorer
-          href: ../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Poznámky k verzi Storage Exploreru
-          href: ../../vs-azure-tools-storage-explorer-relnotes.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Řešení potíží se Storage Explorerem
-          href: ../common/storage-explorer-troubleshooting.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Dostupnost Storage Exploreru
-          href: ../../vs-azure-tools-storage-explorer-accessibility.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: Balíčky NuGet
-      items:
-        - name: Klientská knihovna pro úložiště Azure pro .NET
-          href: 'https://www.nuget.org/packages/WindowsAzure.Storage/'
-        - name: Knihovna pro přesun dat v Azure Storage
-          href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/'
-        - name: Azure Configuration Manager
-          href: 'https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/'
-    - name: Zdrojový kód
-      items:
-        - name: .NET
-          items:
-            - name: 'Objekty blob, fronty, tabulky a soubory'
-              href: 'https://github.com/Azure/azure-storage-net'
-            - name: Přesuny dat
-              href: 'https://github.com/Azure/azure-storage-net-data-movement'
-            - name: Poskytovatel prostředků
-              href: 'https://github.com/Azure/azure-sdk-for-net'
-        - name: Node.js
-          href: 'http://azure.github.io/azure-storage-node/'
-        - name: Java
-          href: 'https://github.com/Azure/azure-storage-java'
-        - name: C++
-          href: 'https://github.com/Azure/azure-storage-cpp'
-        - name: PHP
-          href: 'https://github.com/Azure/azure-storage-php'
-        - name: Python
-          href: 'https://github.com/Azure/azure-storage-python'
-        - name: Ruby
-          href: 'https://github.com/Azure/azure-storage-ruby'
-        - name: iOS
-          href: 'https://github.com/Azure/azure-storage-ios'
+      - name: Objekty blob, fronty, tabulky a soubory
+        href: https://github.com/Azure/azure-storage-net
+      - name: Přesuny dat
+        href: https://github.com/Azure/azure-storage-net-data-movement
+      - name: Poskytovatel prostředků
+        href: https://github.com/Azure/azure-sdk-for-net
+    - name: Node.js
+      href: http://azure.github.io/azure-storage-node/
+    - name: Java
+      href: https://github.com/Azure/azure-storage-java
+    - name: C++
+      href: https://github.com/Azure/azure-storage-cpp
+    - name: PHP
+      href: https://github.com/Azure/azure-storage-php
+    - name: Python
+      href: https://github.com/Azure/azure-storage-python
+    - name: Ruby
+      href: https://github.com/Azure/azure-storage-ruby
+    - name: iOS
+      href: https://github.com/Azure/azure-storage-ios
+ms.openlocfilehash: 9de934ffb0ce898a54a405ff953123513e713c60
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45730694"

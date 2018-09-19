@@ -1,0 +1,59 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 45ce7413a3974ec8018db3c5287aa922a76f072b
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45986677"
+documentType: LandingData
+title: Dokumentace k Azure Active Directory B2B
+metadata:
+  document_id: 
+  title: Dokumentace k Azure Active Directory B2B – kurzy, šablony Rychlý start, koncepce, reference | Microsoft Docs
+  description: Naučte se, jak využívat přístup uživatelů typu host B2B, abyste mohli bezpečně sdílet prostředky a spolupracovat s externími partnery.
+  services: active-directory
+  ms.component: authentication
+  author: msmimart
+  manager: mtillman
+  ms.service: active-directory
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 09/10/2018
+  ms.author: mimart
+abstract:
+  description: Naučte se, jak využívat spolupráci B2B (business-to-business) v Azure AD k zabezpečenému sdílení vašich firemních aplikací a služeb s uživateli typu host a externími partnery z libovolné organizace a zachovat si přitom kontrolu nad vlastními podnikovými daty.  Toto jsou některé klíčové funkce:<ul><li>Prostřednictvím jednoduchého procesu pozvání a jeho využití mohou uživatelé typu host začít spolupracovat na prostředcích, ke kterým jim chcete umožnit přístup.</li><li>Vaši uživatelé typu host a externí partneři mohou spravovat svoje vlastní identity prostřednictvím Azure AD, účtů na sociálních sítích nebo libovolného zprostředkovatele identity.</li><li>K ochraně vašich firemních prostředků můžete využít funkce Azure AD, jako je vícefaktorové ověřování.</li><li>Rozhraní API můžete využít k přizpůsobení vašeho prostředí, například přes portál se samoobslužnou registrací.</li></ul>Následující informační materiály vám umožní rychle začít.
+  aside:
+    image:
+      alt: 
+      height: 110
+      src: ./media/index/video.png
+      width: 246
+    title: Vysvětlení Azure AD B2B
+    href: https://www.youtube.com/watch?v=AhwrweCBdsc
+    width: 246
+sections:
+- title: Zprovoznění během 5 minut
+  items:
+  - type: paragraph
+    text: Naučte se, jak pozvat uživatele typu host a začít se spoluprací B2B.
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: ./media/index/i_security-management.png
+      text: Přidání uživatelů typu host na webu Azure Portal
+      href: b2b-quickstart-add-guest-users-portal.md
+    - image:
+        src: ./media/index/i_security-management.png
+      text: Přidání uživatele typu host s využitím PowerShellu
+      href: b2b-quickstart-invite-powershell.md
+- title: Podrobné kurzy
+  items:
+  - type: paragraph
+    text: Přečtěte si víc o nastavení spolupráce B2B a zabezpečení prostředků vaší společnosti.
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/active-directory/b2b/tutorial-bulk-invite">Hromadné pozvání uživatelů typu host B2B s využitím PowerShellu</a>
+    - html: <a href="/azure/active-directory/b2b/b2b-tutorial-require-mfa">Vynucení vícefaktorového ověřování pro uživatele typu host B2B</a>

@@ -7,9 +7,9 @@ items:
     tocHref: /azure/active-directory/
     topicHref: /azure/active-directory/
     items:
-    - name: Základy
-      tocHref: /azure/active-directory/fundamentals/
-      topicHref: /azure/active-directory/fundamentals/
+    - name: Hybridní identita
+      tocHref: /azure/active-directory/hybrid/
+      topicHref: /azure/active-directory/hybrid/
     - name: Identity Protection
       tocHref: /azure/active-directory/identity-protection/
       topicHref: /azure/active-directory/identity-protection/
@@ -22,12 +22,6 @@ items:
     - name: Authentication
       tocHref: /azure/active-directory/authentication/
       topicHref: /azure/active-directory/authentication/
-    - name: Připojení
-      tocHref: /azure/active-directory/connect/
-      topicHref: /azure/active-directory/connect/
-    - name: Stav připojení
-      tocHref: /azure/active-directory/connect-health/
-      topicHref: /azure/active-directory/connect-health/
     - name: Vývoj
       tocHref: /azure/active-directory/develop/
       topicHref: /azure/active-directory/develop/
@@ -55,6 +49,9 @@ items:
     - name: Správa aplikací
       tocHref: /azure/active-directory/manage-apps/
       topicHref: /azure/active-directory/manage-apps/
+    - name: Sestavy a sledování
+      tocHref: /azure/active-directory/reports-monitoring/
+      topicHref: /azure/active-directory/reports-monitoring/
   - name: Analysis Services
     tocHref: /azure/analysis-services/
     topicHref: /azure/analysis-services/
@@ -610,9 +607,9 @@ items:
   - name: VPN Gateway
     tocHref: /azure/vpn-gateway/
     topicHref: /azure/vpn-gateway/
-ms.openlocfilehash: abdb32ac2ea3522ad88a1c4146fbbd807f356513
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 46f14d45050c6f21a992894bb1c380669c62afbf
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45630048"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296868"

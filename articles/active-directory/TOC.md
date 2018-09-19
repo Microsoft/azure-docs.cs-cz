@@ -12,7 +12,6 @@
 
 
 # Začínáme
-## [Začínáme s Azure AD](fundamentals/get-started-azure-ad.md)
 ## [Registrace do Azure AD Premium](fundamentals/active-directory-get-started-premium.md)
 ## [Přidání vlastního názvu domény](fundamentals/add-custom-domain.md)
 ## [Konfigurace značky společnosti](fundamentals/customize-branding.md)
@@ -20,28 +19,29 @@
 ## [Přiřazení licencí k uživatelům](fundamentals/license-users-groups.md)
 ## [Konfigurace samoobslužného resetování hesla](authentication/quickstart-sspr.md)
 ## [Přidání informací o ochraně osobních údajů vaší organizace do Azure AD](active-directory-properties-area.md)
+## [Přístup ke službě Azure Active Directory a vytvoření nového tenanta](fundamentals/active-directory-access-create-new-tenant.md)
 
 
 # Postup
 ## Plánování a návrh
 ### [Pochopení architektury Azure AD](fundamentals/active-directory-architecture.md)
 ### [Mapování deklarací v Azure Active Directory](active-directory-claims-mapping.md)
-### [Nasazení řešení s hybridní identitou](active-directory-hybrid-identity-design-considerations-overview.md)
+### [Nasazení řešení s hybridní identitou](hybrid/plan-hybrid-identity-design-considerations-overview.md)
 #### Určení požadavků
-##### [Identita](active-directory-hybrid-identity-design-considerations-business-needs.md)
-##### [Synchronizace adresářů](active-directory-hybrid-identity-design-considerations-directory-sync-requirements.md)
-##### [Vícefaktorové ověřování](active-directory-hybrid-identity-design-considerations-multifactor-auth-requirements.md)
-##### [Strategie životního cyklu identit](active-directory-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md)
-#### [Plánování zabezpečení dat](active-directory-hybrid-identity-design-considerations-data-protection-strategy.md)
-##### [Ochrana dat](active-directory-hybrid-identity-design-considerations-dataprotection-requirements.md)
-##### [Správa obsahu](active-directory-hybrid-identity-design-considerations-contentmgt-requirements.md)
-##### [Řízení přístupu](active-directory-hybrid-identity-design-considerations-accesscontrol-requirements.md)
-##### [Reakce na incidenty](active-directory-hybrid-identity-design-considerations-incident-response-requirements.md)
+##### [Identita](hybrid/plan-hybrid-identity-design-considerations-business-needs.md)
+##### [Synchronizace adresářů](hybrid/plan-hybrid-identity-design-considerations-directory-sync-requirements.md)
+##### [Vícefaktorové ověřování](hybrid/plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md)
+##### [Strategie životního cyklu identit](hybrid/plan-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md)
+#### [Plánování zabezpečení dat](hybrid/plan-hybrid-identity-design-considerations-data-protection-strategy.md)
+##### [Ochrana dat](hybrid/plan-hybrid-identity-design-considerations-dataprotection-requirements.md)
+##### [Správa obsahu](hybrid/plan-hybrid-identity-design-considerations-contentmgt-requirements.md)
+##### [Řízení přístupu](hybrid/plan-hybrid-identity-design-considerations-accesscontrol-requirements.md)
+##### [Reakce na incidenty](hybrid/plan-hybrid-identity-design-considerations-incident-response-requirements.md)
 #### Plánování životního cyklu identity
-##### [Úlohy](active-directory-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)
-##### [Strategie přijetí](active-directory-hybrid-identity-design-considerations-identity-adoption-strategy.md)
-#### [Další kroky](active-directory-hybrid-identity-design-considerations-nextsteps.md)
-#### [Porovnání nabídek](active-directory-hybrid-identity-design-considerations-tools-comparison.md)
+##### [Úlohy](hybrid/plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)
+##### [Strategie přijetí](hybrid/plan-hybrid-identity-design-considerations-identity-adoption-strategy.md)
+#### [Další kroky](hybrid/plan-hybrid-identity-design-considerations-nextsteps.md)
+#### [Porovnání nabídek](hybrid/plan-hybrid-identity-design-considerations-tools-comparison.md)
 
 ## Správa uživatelů
 ### [Přidání nových uživatelů do Azure AD](fundamentals/add-users-azure-active-directory.md)
@@ -91,11 +91,13 @@
 ### [Ohrožení uživatelé](reports-monitoring/concept-user-at-risk.md)
 ### [Riziková přihlášení](reports-monitoring/concept-risky-sign-ins.md)
 ### [Rizikové události](reports-monitoring/concept-risk-events.md)
-### [Monitorování protokolů pomocí Azure Monitoru](reports-monitoring/overview-activity-logs-in-azure-monitor.md)
+### [Monitorování protokolů pomocí Azure Monitoru](reports-monitoring/concept-activity-logs-in-azure-monitor.md)
 ### [Nejčastější dotazy](reports-monitoring/reports-faq.md)
 
 ### Úlohy
-#### [Konfigurace pojmenovaných umístění](active-directory-named-locations.md)
+#### [Stažení sestavy přihlašování](reports-monitoring/quickstart-download-sign-in-report.md)
+#### [Stažení sestavy auditu](reports-monitoring/quickstart-download-audit-report.md)
+#### [Konfigurace pojmenovaných umístění](reports-monitoring/quickstart-configure-named-locations.md)
 #### [Vyhledávání sestav aktivit](reports-monitoring/howto-find-activity-reports.md)
 #### [Použití balíčku obsahu Power BI služby Azure AD](reports-monitoring/howto-power-bi-content-pack.md)
 #### [Oprava uživatelů označených příznakem rizika](reports-monitoring/howto-remediate-users-flagged-for-risk.md)
@@ -307,7 +309,7 @@
 
 
 ## Správa adresáře
-### [Azure AD Connect](./connect/active-directory-aadconnect.md)
+### [Azure AD Connect](hybrid/whatis-hybrid-identity.md)
 ### Vlastní názvy domén
 #### [Rychlý start](fundamentals/add-custom-domain.md)
 ### [Správa adresáře](fundamentals/active-directory-administer.md)
@@ -319,7 +321,7 @@
 #### [Řešení problémů](active-directory-windows-enterprise-state-roaming-troubleshooting.md)
 
 
-### [Integrace místních identit pomocí Azure AD Connect](./connect/active-directory-aadconnect.md)
+### [Integrace místních identit pomocí Azure AD Connect](hybrid/whatis-hybrid-identity.md)
 
 ### [Konfigurace životnosti tokenů](active-directory-configurable-token-lifetimes.md)
 
@@ -327,7 +329,7 @@
 
 ### [Privileged Identity Management](privileged-identity-management/pim-configure.md?toc=%2fazure%2factive-directory%2ftoc.json)
 
-## [Nasazení AD FS v Azure](active-directory-aadconnect-azure-adfs.md)
+## [Nasazení AD FS v Azure](hybrid/how-to-connect-fed-azure-adfs.md)
 ### [Vysoká dostupnost](active-directory-adfs-in-azure-with-azure-traffic-manager.md)
 ### [Změna podpisového hashovacího algoritmu](active-directory-federation-sha256-guidance.md)
 
@@ -347,8 +349,8 @@
 
 # Související
 ## [Multi-Factor Authentication](/azure/multi-factor-authentication/)
-## [Azure AD Connect](./connect/active-directory-aadconnect.md)
-## [Azure AD Connect Health](./connect-health/active-directory-aadconnect-health.md)
+## [Azure AD Connect](hybrid/whatis-hybrid-identity.md)
+## [Azure AD Connect Health](hybrid/whatis-hybrid-identity-health.md)
 ## [Azure AD pro vývojáře](./develop/active-directory-how-to-integrate.md)
 ## [Azure AD Privileged Identity Management](./privileged-identity-management/pim-configure.md)
 

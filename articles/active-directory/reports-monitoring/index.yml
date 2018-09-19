@@ -1,0 +1,54 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 2217adbbb9e5222e6c33bfcdce41c30396c7f231
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45740316"
+documentType: LandingData
+title: Sestavy a sledování Azure AD
+metadata:
+  document_id: 
+  title: Dokumentace k sestavám a sledování Azure AD – kurzy, šablony Rychlý start, koncepce | Microsoft Docs
+  description: Přečtěte si, jak nakonfigurovat a otestovat řešení sledování a sestavy Azure Active Directory.
+  services: active-directory
+  ms.component: report-monitor
+  author: priyamohanram
+  manager: mtillman
+  ms.service: active-directory
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 08/14/2018
+  ms.author: priyamo
+abstract:
+  description: Naučte se, jak prohlížet sestavy auditu a zabezpečení pro vaše prostředí nebo je průběžně sledovat a získat přehled o vzorech využití. Sestavy Azure AD vám umožní získat přehled o vzorech využití a zabezpečení ve vašem prostředí. Dokážete například odpovědět na následující otázky:<ul><li>Jak uživatelé využívají jednotlivé aplikace nebo služby?</li><li>Jaká jsou potenciální rizika ovlivňující stav vašeho prostředí?</li><li>Jak řešit problémy, které brání uživatelům v práci?</li>
+sections:
+- title: Zprovoznění během 5 minut
+  items:
+  - type: paragraph
+    text: Zjistěte, jak stahovat sestavy aktivit a směrovat vaše protokoly do účtu služby Azure Storage.
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/active-directory/reports-monitoring/quickstart-download-sign-in-report">Stažení sestavy přihlašování</a>
+    - html: <a href="/azure/active-directory/reports-monitoring/quickstart-download-audit-report">Stažení sestavy auditu</a>
+    - html: <a href="/azure/active-directory/reports-monitoring/quickstart-install-power-bi-content-pack">Instalace balíčku obsahu Power BI pro sestavy</a>
+    - html: <a href="/azure/active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account">Směrování protokolů do účtu úložiště</a>
+- title: Podrobné kurzy
+  items:
+  - type: paragraph
+    text: Zjistěte, jak získat přístup k sestavám a streamovat protokoly aktivit do monitorovacího systému podle vašeho výběru.
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/active-directory/reports-monitoring/tutorial-access-api-with-certificates">Programový přístup k rozhraní API pro generování sestav pomocí certifikátů</a>
+    - html: <a href="/azure/active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub">Streamování protokolů aktivit do centra událostí</a>
+- title: Referenční informace
+  items:
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/active-directory/reports-monitoring/reference-sign-ins-error-codes">Kódy chyb přihlašování</a>
+    - html: <a href="/azure/active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema">Schéma protokolu auditu Azure AD ve službě Azure Monitor</a>
+    - html: <a href="/azure/active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema">Schéma přihlašování Azure AD ve službě Azure Monitor</a>

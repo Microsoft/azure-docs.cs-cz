@@ -1,0 +1,124 @@
+items:
+- name: Dokumentace k Azure Active Directory B2B
+  href: index.yml
+  items:
+  - name: Přehled
+    items:
+    - name: Co je přístup uživatele typu host B2B?
+      href: what-is-b2b.md
+    - name: Porovnání B2B a B2C
+      href: compare-with-b2c.md
+  - name: Šablony Rychlý start
+    items:
+    - name: Přidání uživatelů typu host na portálu
+      href: b2b-quickstart-add-guest-users-portal.md
+    - name: Přidání uživatelů typu host s využitím PowerShellu
+      href: b2b-quickstart-invite-powershell.md
+  - name: Kurzy
+    items:
+    - name: Hromadné pozvání uživatelů typu host B2B
+      href: b2b-tutorial-bulk-invite.md
+    - name: Vynucení vícefaktorového ověřování
+      href: b2b-tutorial-require-mfa.md
+  - name: Ukázky
+    items:
+    - name: Ukázka portálu se samoobslužnou registrací
+      href: self-service-portal.md
+    - name: Ukázky kódu a Azure PowerShellu
+      href: code-samples.md
+  - name: Koncepty
+    items:
+    - name: Licencování B2B
+      href: licensing-guidance.md
+    - name: Externí sdílení Office 365 a B2B
+      href: o365-external-user.md
+    - name: Uplatnění pozvánky
+      href: redemption-experience.md
+    - name: E-mail s pozváním
+      href: invitation-email-elements.md
+    - name: Principy uživatelů B2B
+      href: user-properties.md
+    - name: Mapování deklarací identity uživatelů B2B
+      href: claims-mapping.md
+    - name: Token uživatele B2B
+      href: user-token.md
+    - name: Podmíněný přístup pro B2B
+      href: conditional-access.md
+    - name: B2B pro hybridní organizace
+      href: hybrid-organizations.md
+    - name: Aktuální omezení
+      href: current-limitations.md
+    expanded: false
+  - name: Návody
+    items:
+    - name: Správa pozvánek
+      items:
+      - name: Správci přidávají uživatele B2B
+        href: add-users-administrator.md
+      - name: Informační pracovníci přidávají uživatele B2B
+        href: add-users-information-worker.md
+      - name: Federace Googlu
+        href: google-federation.md
+      - name: Zásady sdílení B2B
+        href: delegate-invitations.md
+      - name: Povolení nebo blokování pozvánek
+        href: allow-deny-list.md
+      - name: Přidání uživatelů B2B bez pozvánky
+        href: add-user-without-invite.md
+      - name: Rozhraní API a přizpůsobení
+        href: customize-invitation-api.md
+    - name: Správa účtů hostů
+      items:
+      - name: Přidání uživatele B2B do role
+        href: add-guest-to-role.md
+      - name: Dynamické skupiny a uživatelé B2B
+        href: use-dynamic-groups.md
+      - name: Principy uživatelů B2B
+        href: user-properties.md
+      - name: B2B pro integrované aplikace Azure AD
+        href: configure-saas-apps.md
+    - name: Správa přístupu v hybridní organizaci
+      items:
+      - name: Udělení přístupu místním uživatelům ke cloudovým aplikacím
+        href: hybrid-on-premises-to-cloud.md
+      - name: Udělení přístupu uživatelům B2B k místním aplikacím
+        href: hybrid-cloud-to-on-premises.md
+    - name: Opuštění organizace
+      href: leave-the-organization.md
+    - name: Auditování a sestavy
+      href: auditing-and-reporting.md
+    - name: Řešení potíží s B2B
+      href: troubleshoot.md
+    expanded: true
+  - name: Referenční informace
+    items:
+    - name: Rozhraní API správce pozvánek
+      href: customize-invitation-api.md
+  - name: Zdroje a prostředky
+    items:
+    - name: Nejčastější dotazy
+      href: faq.md
+    - name: Získání podpory pro B2B
+      href: get-support.md
+    - name: Fórum Azure pro názory
+      href: https://feedback.azure.com/forums/169401-azure-active-directory
+    - name: Plány Azure do budoucna
+      href: https://azure.microsoft.com/roadmap/?category=security-identity
+    - name: Fórum MSDN
+      href: https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD
+    - name: Ceny
+      href: https://azure.microsoft.com/pricing/details/active-directory/
+    - name: Cenová kalkulačka
+      href: https://azure.microsoft.com/pricing/calculator/
+    - name: Aktualizace služeb
+      href: https://azure.microsoft.com/updates/?product=active-directory
+    - name: Stack Overflow
+      href: http://stackoverflow.com/questions/tagged/azure-active-directory
+    - name: Videa
+      href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
+ms.openlocfilehash: e3517af7c8cf84834a7487089f426c5c5ff4a80f
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45986694"

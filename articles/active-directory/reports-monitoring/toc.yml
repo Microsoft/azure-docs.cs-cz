@@ -1,0 +1,110 @@
+items:
+- name: Dokumentace k monitorování a sestavám
+  href: index.yml
+- name: Přehled
+  items:
+  - name: Co jsou sestavy Azure AD?
+    href: overview-reports.md
+- name: Šablony Rychlý start
+  items:
+  - name: Reports
+    items:
+    - name: Stažení sestavy přihlašování
+      href: quickstart-download-sign-in-report.md
+    - name: Stažení sestavy auditu
+      href: quickstart-download-audit-report.md
+    - name: Konfigurace pojmenovaných umístění
+      href: quickstart-configure-named-locations.md
+    - name: Instalace balíčku obsahu Power BI
+      href: quickstart-install-power-bi-content-pack.md
+  - name: Monitorování
+    items:
+    - name: Směrování protokolů do účtu úložiště
+      href: quickstart-azure-monitor-route-logs-to-storage-account.md
+  expanded: true
+- name: Kurzy
+  items:
+  - name: Reports
+    items:
+    - name: Přístup k rozhraní API pro generování sestav s certifikáty
+      href: tutorial-access-api-with-certificates.md
+  - name: Monitorování
+    items:
+    - name: Streamování protokolů do centra událostí
+      href: tutorial-azure-monitor-stream-logs-to-event-hub.md
+    - name: Integrace protokolů aktivit s využitím Splunku
+      href: tutorial-integrate-activity-logs-with-splunk.md
+- name: Koncepty
+  items:
+  - name: Reports
+    items:
+    - name: Protokoly auditu
+      href: concept-audit-logs.md
+    - name: Protokoly přihlašování
+      href: concept-sign-ins.md
+    - name: Riziková přihlášení
+      href: concept-risky-sign-ins.md
+    - name: Rizikové události
+      href: concept-risk-events.md
+    - name: Ohrožení uživatelé
+      href: concept-user-at-risk.md
+    - name: Rozhraní API pro generování sestav
+      href: concept-reporting-api.md
+  - name: Monitorování
+    items:
+    - name: Protokoly Azure AD v Azure Monitoru
+      href: concept-activity-logs-in-azure-monitor.md
+- name: Návody
+  items:
+  - name: Reports
+    items:
+    - name: Vyhledávání sestav aktivit
+      href: howto-find-activity-reports.md
+    - name: Oprava uživatelů označených příznakem rizika
+      href: howto-remediate-users-flagged-for-risk.md
+    - name: Použití balíčku obsahu Power BI pro sestavy Azure AD
+      href: howto-power-bi-content-pack.md
+    - name: Konfigurace požadavků pro rozhraní API pro generování sestav
+      href: howto-configure-prerequisites-for-reporting-api.md
+  - name: Monitorování
+    items:
+    - name: Integrace protokolů aktivit s využitím SumoLogic
+      href: howto-integrate-activity-logs-with-sumologic.md
+  - name: Řešení potíží
+    items:
+    - name: Chybějící data auditu
+      href: troubleshoot-missing-audit-data.md
+    - name: Chybějící data v souborech ke stažení
+      href: troubleshoot-missing-data-download.md
+    - name: Nedá se získat přístup k rozhraní Graph API pro generování sestav
+      href: troubleshoot-graph-api.md
+    - name: Chyby v balíčku obsahu Power BI
+      href: troubleshoot-content-pack.md
+  expanded: true
+- name: Referenční informace
+  items:
+  - name: Reports
+    items:
+    - name: Aktivity auditu
+      href: reference-audit-activities.md
+    - name: Zásady uchovávání dat
+      href: reference-reports-data-retention.md
+    - name: Latence generování sestav
+      href: reference-reports-latencies.md
+    - name: Kódy chyb přihlašování
+      href: reference-sign-ins-error-codes.md
+    - name: Nejčastější dotazy
+      href: reports-faq.md
+  - name: Monitorování
+    items:
+    - name: Schéma protokolu auditu
+      href: reference-azure-monitor-audit-log-schema.md
+    - name: Schéma protokolu přihlašování
+      href: reference-azure-monitor-sign-ins-log-schema.md
+  expanded: true
+ms.openlocfilehash: 20321358f74157bda02740d536dd30e7a21f5588
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45740282"

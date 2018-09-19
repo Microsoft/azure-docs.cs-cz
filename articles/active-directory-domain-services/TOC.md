@@ -43,6 +43,7 @@
 ### [Vytvoření OU ve spravované doméně](active-directory-ds-admin-guide-create-ou.md)
 ### [Vytvoření skupinového účtu spravované služby ve spravované doméně](active-directory-ds-create-gmsa.md)
 ### [Správa zásad skupiny ve spravované doméně](active-directory-ds-admin-guide-administer-group-policy.md)
+### [Konfigurace zásad hesel ve spravované doméně](active-directory-ds-password-policy.md)
 ## [Výběr virtuální sítě](active-directory-ds-networking.md)
 ## Nasazení aplikací
 ### [Konfigurace podpory pro synchronizaci profilu pro SharePoint Server](active-directory-ds-enable-sharepoint-profile-sync.md)
