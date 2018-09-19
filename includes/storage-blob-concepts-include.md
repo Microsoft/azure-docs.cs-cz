@@ -8,14 +8,16 @@ ms.topic: include
 ms.date: 04/09/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 63593ff5f02f5e37fc25c988c4cef071a03a00b4
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: a934a1b75e85e03b6803be5c8afcd8fe74b0fad5
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37066029"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45739194"
 ---
 Azure Blob Storage je řešení úložiště objektů Microsoftu pro cloud. Blob Storage je optimalizované pro ukládání velkých objemů nestrukturovaných dat, jako jsou textová nebo binární data.
+
+Masivně škálovatelné úložiště objektů pro nestrukturovaná data
 
 Blob Storage je ideální pro:
 
@@ -36,7 +38,7 @@ Blob Storage zveřejňuje tři prostředky: váš účet úložiště, kontejner
 
 ### <a name="storage-account"></a>Účet úložiště
 
-Veškerý přístup k datovým objektům v Azure Storage se děje přes účet úložiště. Další informace najdete v článku o [účtech Azure Storage](../articles/storage/common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Veškerý přístup k datovým objektům v Azure Storage se děje přes účet úložiště. Další informace najdete v tématu [Přehled účtu Azure Storage](../articles/storage/common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 ### <a name="container"></a>Kontejner
 

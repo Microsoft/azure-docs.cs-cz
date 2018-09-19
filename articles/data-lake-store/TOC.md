@@ -22,7 +22,7 @@
 ### [Pomocí DistCp](data-lake-store-copy-data-wasb-distcp.md)
 ### [Pomocí Sqoop](data-lake-store-data-transfer-sql-sqoop.md)
 ### [Nahrávání dat z offline zdrojů](data-lake-store-offline-bulk-data-upload.md)
-### [Migrace Data Lake Store napříč oblastmi](data-lake-store-migration-cross-region.md)
+### [Migrace Data Lake Storage Gen1 napříč oblastmi](data-lake-store-migration-cross-region.md)
 
 ## Zabezpečení dat
 ### [Přehled zabezpečení](data-lake-store-security-overview.md)
