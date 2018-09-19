@@ -39,7 +39,6 @@ items:
   - name: Ochrana serveru pomocí programu Windows Defender ATP (Preview)
     href: security-center-wdatp.md
   - name: Nastavení zásad zabezpečení
-  - name: Nastavení zásad zabezpečení
     href: security-center-azure-policy.md
   - name: Přizpůsobení zásad Information Protection
     href: security-center-info-protection-policy.md
@@ -224,9 +223,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=security-center
   - name: Regionální dostupnost
     href: https://azure.microsoft.com/regions/services/
-ms.openlocfilehash: ca2bf44ebb7e5c6752daa75963ff06119d0815d7
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 93407b8b90f31d9297e32eaa4215efc5f57b1b0a
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124724"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294292"
