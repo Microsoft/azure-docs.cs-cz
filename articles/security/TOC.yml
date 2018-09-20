@@ -16,8 +16,6 @@ items:
     href: abstract-container-security-microsoft-azure.md
   - name: Povolení provozního zabezpečení
     href: abstract-azure-operational-security.md
-  - name: Zásady správného řízení v Azure
-    href: governance-in-azure.md
   - name: Izolace v cloudu Azure
     href: azure-isolation.md
   - name: Zabezpečení hybridní síťové architektury
@@ -38,6 +36,7 @@ items:
   - name: Šifrování disku
     items:
     - name: Osvědčené postupy
+      displayName: transit
       href: azure-security-data-encryption-best-practices.md
     - name: Šifrování neaktivních dat
       href: azure-security-encryption-atrest.md
@@ -64,12 +63,16 @@ items:
       - name: Řešení potíží
         href: azure-security-disk-encryption-tsg.md
       - name: Azure Disk Encryption s využitím aplikace Azure AD (předchozí vydaná verze)
+        displayName: active directory
         items:
         - name: Šifrování disků s využitím aplikace Azure AD – požadavky
+          displayName: active directory
           href: azure-security-disk-encryption-prerequisites-aad.md
         - name: Šifrování disků s využitím aplikace Azure AD pro virtuální počítače s Windows
+          displayName: active directory
           href: azure-security-disk-encryption-windows-aad.md
         - name: Šifrování disků s využitím aplikace Azure AD pro virtuální počítače s Linuxem
+          displayName: active directory
           href: azure-security-disk-encryption-linux-aad.md
   - name: Zabezpečení služby Azure Storage
     href: security-storage-overview.md
@@ -113,12 +116,16 @@ items:
     href: security-identity-management-overview.md
     items:
     - name: Výběr ověřování Azure AD
+      displayName: identity, active directory
       href: azure-ad-choose-authn.md
     - name: Kontrolní seznam zabezpečení
+      displayName: identity, active directory, password
       href: azure-ad-secure-steps.md
     - name: Osvědčené postupy
+      displayName: password, identity, active directory
       href: azure-security-identity-management-best-practices.md
     - name: Vynucení vícefaktorového ověřování u správců předplatných
+      displayName: identity
       href: azure-security-global-admin.md
   - name: Zabezpečení sítě
     href: security-network-overview.md
@@ -172,10 +179,12 @@ items:
       - name: Začínáme
         href: security-azure-log-integration-get-started.md
       - name: Integrace protokolů auditu Azure AD
+        displayName: active directory
         href: security-azure-log-integration-ad.md
       - name: Integrace výstrah služby Security Center
         href: security-azure-log-integration-security-center.md
       - name: Integrace protokolů ze služby Key Vault
+        displayName: keyvault
         href: security-azure-log-integration-keyvault-eventhub.md
       - name: Nejčastější dotazy
         href: security-azure-log-integration-faq.md
@@ -187,14 +196,17 @@ items:
     - name: Kontrolní seznam zabezpečení
       href: azure-operational-security-checklist.md
 - name: Zásady správného řízení a dodržování předpisů
+  displayName: blueprint
   items:
   - name: OCHRANA AU
+    displayName: blueprint
     items:
     - name: Webová aplikace IaaS
       href: ./blueprints/au-protected-iaaswa-overview.md
     - name: Webová aplikace PaaS
       href: ./blueprints/au-protected-paaswa-overview.md
   - name: FedRAMP
+    displayName: blueprint
     items:
     - name: Analýzy dat
       href: ./blueprints/fedramp-analytics-overview.md
@@ -205,6 +217,7 @@ items:
     - name: Webová aplikace PaaS
       href: ./blueprints/fedramp-paaswa-overview.md
   - name: FFIEC
+    displayName: blueprint
     items:
     - name: Analýzy dat
       href: ./blueprints/ffiec-analytics-overview.md
@@ -215,6 +228,7 @@ items:
     - name: Webová aplikace PaaS
       href: ./blueprints/ffiec-paaswa-overview.md
   - name: GDPR
+    displayName: blueprint
     items:
     - name: Analýzy dat
       href: ./blueprints/gdpr-analytics-overview.md
@@ -225,10 +239,12 @@ items:
     - name: Webová aplikace PaaS
       href: ./blueprints/gdpr-paaswa-overview.md
   - name: HIPAA/HITRUST
+    displayName: blueprint
     items:
     - name: Stavová data a umělá inteligence
       href: ./blueprints/azure-health.md
   - name: NIST SP 800-171
+    displayName: blueprint
     items:
     - name: Analýzy dat
       href: ./blueprints/nist171-analytics-overview.md
@@ -239,6 +255,7 @@ items:
     - name: Webová aplikace PaaS
       href: ./blueprints/nist171-paaswa-overview.md
   - name: PCI DSS
+    displayName: blueprint
     items:
     - name: Analýzy dat
       href: ./blueprints/pcidss-analytics-overview.md
@@ -249,10 +266,12 @@ items:
     - name: Webová aplikace PaaS
       href: ./blueprints/pcidss-paaswa-overview.md
   - name: TIC
+    displayName: blueprint
     items:
     - name: Trusted Internet Connection a Azure
       href: ./compliance/compliance-tic.md
   - name: UK NHS
+    displayName: blueprint
     items:
     - name: Analýzy dat
       href: ./blueprints/uknhs-analytics-overview.md
@@ -263,6 +282,7 @@ items:
     - name: Webová aplikace PaaS
       href: ./blueprints/uknhs-paaswa-overview.md
   - name: UK OFFICIAL
+    displayName: blueprint
     items:
     - name: Webová aplikace IaaS
       href: ./blueprints/ukofficial-iaaswa-overview.md
@@ -318,9 +338,9 @@ items:
         href: azure-security-threat-modeling-tool-sensitive-data.md
       - name: Správa relací
         href: azure-security-threat-modeling-tool-session-management.md
-ms.openlocfilehash: 2e0bdab31a721c5b55488ac21579f0cb9ac45151
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 99ff7a6ba5a2289855739ce8b269c4b3aae10e61
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841560"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364852"
