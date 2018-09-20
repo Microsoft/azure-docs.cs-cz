@@ -26,6 +26,8 @@ items:
     href: active-directory-architecture.md
   - name: Výchozí uživatelská oprávnění
     href: users-default-permissions.md
+  - name: Nasazení 30, 90 a dál
+    href: active-directory-deployment-checklist-p2.md
   - name: Úložiště dat identity pro EU
     href: active-directory-data-storage-eu.md
 - name: Návody
@@ -83,9 +85,9 @@ items:
     href: active-directory-administer.md
   - name: Řešení identit Azure
     href: understand-azure-identity-solutions.md
-ms.openlocfilehash: 70f51f82b34423cdde57109f384dcae851dc0d50
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 3a0024bd72138bf48a844bd183ac15abdd90cc22
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45636287"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297979"

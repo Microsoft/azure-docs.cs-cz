@@ -1,0 +1,68 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: ab917279244d9b15da3b246b05a94fcd55e6d733
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46300506"
+documentType: LandingData
+title: Dokumentace k hybridní identitě
+metadata:
+  document_id: 44409b3f-ab8c-053d-cdf4-5d7e823a275e
+  title: Dokumentace k hybridní identitě
+  meta.description: Azure AD Connect will integrate your on-premises directories with Azure Active Directory. This allows you to provide a common identity for your users for Office 365, Azure, and SaaS applications integrated with Azure AD.
+  services: active-directory
+  author: billmath
+  manager: mtillman
+  ms.service: active-directory
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 05/18/2018
+  ms.author: billmath
+abstract:
+  description: Řešení pro správu identit od Microsoftu pokrývá místní i cloudové funkce a vytvářejí jedinou identitu uživatele pro ověřování a autorizaci u všech prostředků bez ohledu na umístění. Tomu se říká hybridní identita.</br></br></br>Azure AD Connect integruje vaše místní adresáře do služby Azure Active Directory. To umožní poskytovat společnou identitu pro uživatele pro aplikace Office 365, Azure a SaaS integrované s Azure AD. V tomto tématu vás provedeme kroky plánování, nasazení a provozu. Jedná se o kolekci odkazů na témata, která souvisejí s touto oblastí.
+  aside:
+    image:
+      alt: 
+      height: 110
+      src: media/index/video2.png
+      width: 250
+    title: Rozšíření místních adresářů do cloudu (1:11:12)
+    href: https://channel9.msdn.com/Events/Ignite/2015/BRK3862/player
+    width: 250
+sections:
+- title: Podrobné kurzy
+  items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/active-directory/hybrid/tutorial-password-hash-sync
+      html: <p>Zjistěte, jak začít rozšiřovat vaše identity do cloudu s využitím synchronizace hodnot hash hesel</p>
+      image:
+        src: media/index/azuread2.png
+      title: Integrace jedné doménové struktury AD s využitím synchronizace hodnot hash hesel (PHS)
+    - href: /azure/active-directory/hybrid/tutorial-passthrough-authentication
+      html: <p>Zjistěte, jak začít rozšiřovat vaše identity do cloudu s využitím předávacího ověřování.</p>
+      image:
+        src: media/index/manage2.png
+      title: Integrace jedné doménové struktury AD s využitím předávacího ověřování (PTA)
+    - href: /azure/active-directory/hybrid/tutorial-federation
+      html: <p>Podívejte se, jak federovat službu Azure Active Directory (Azure AD) Connect s místními službami Active Directory Federation Services (AD FS) a Azure AD.</p>
+      image:
+        src: media/index/federate2.png
+      title: Integrace jedné doménové struktury AD s využitím federace
+- title: Návody
+  items:
+  - type: paragraph
+    text: Další informace o provádění různých úloh pro hybridní identitu
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/active-directory/hybrid/how-to-connect-install-custom">Instalace služby Azure AD Connect v prostředí hybridních identit</a>
+    - html: <a href="/azure/active-directory/hybrid/how-to-connect-sso">Bezproblémové jednotné přihlašování s využitím služby Azure AD Connect</a>
+    - html: <a href="/azure/active-directory/hybrid/how-to-connect-install-prerequisites">Požadavky na Azure AD Connect</a>
+    - html: <a href="/azure/active-directory/hybrid/reference-connect-version-history">Historie vydaných verzí služby Azure AD Connect</a>
+    - html: <a href="/azure/active-directory/hybrid/how-to-connect-sync-feature-scheduler">Správa plánovače synchronizace služby Azure AD Connect</a>

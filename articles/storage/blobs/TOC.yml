@@ -196,7 +196,7 @@ items:
       href: ../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Přístup k objektům blob s použitím vlastních domén přes protokol HTTPS pomocí Azure CDN
       href: storage-https-custom-domain-cdn.md
-    - name: Funkce Immutable Storage služby Azure Blob Storage (Preview)
+    - name: Neměnné objekty blob
       href: storage-blob-immutable-storage.md
     - name: Povolení zabezpečeného TLS pro klienta Azure Storage
       href: ../common/storage-security-tls.md
@@ -457,9 +457,9 @@ items:
       href: https://github.com/Azure/azure-storage-ruby
     - name: iOS
       href: https://github.com/Azure/azure-storage-ios
-ms.openlocfilehash: 7edc2a3ca90e22b3907ac7ea71d9c55362f9026b
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 23ebd6f4c44e75883d948359b94811649674c49b
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45736916"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127308"

@@ -22,6 +22,10 @@ items:
   expanded: true
 - name: Kurzy
   items:
+  - name: Vytvoření vysoce dostupné databáze SQL
+    href: azure-stack-tutorial-sql.md
+  - name: Vytvoření vysoce dostupné databáze MySQL
+    href: azure-stack-tutorial-mysql.md
   - name: Nasazení aplikací na platformy Azure a Azure Stack
     href: azure-stack-solution-pipeline.md
   - name: Konfigurace hybridní Cloudová identita
@@ -50,7 +54,7 @@ items:
     items:
     - name: Klíčové aspekty
       href: azure-stack-considerations.md
-    - name: Výpočetní prostředky
+    - name: Compute
       items:
       - name: Přehled
         href: azure-stack-compute-overview.md
@@ -88,7 +92,7 @@ items:
         href: azure-stack-understanding-dns.md
       - name: DNS v Azure Stacku
         href: azure-stack-dns.md
-    - name: Trezor klíčů
+    - name: Key Vault
       items:
       - name: Přehled
         href: azure-stack-kv-intro.md
@@ -129,12 +133,12 @@ items:
       - name: Stáhnout nástroje pro Azure Stack
         href: ../azure-stack-powershell-download.md
         maintainContext: true
-      - name: Nainstalovat Visual Studio
+      - name: Instalace sady Visual Studio
         href: azure-stack-install-visual-studio.md
       - name: Použití profilů verzí API
         href: azure-stack-version-profiles.md
         items:
-        - name: Prostředí Power Shell
+        - name: PowerShell
           href: azure-stack-version-profiles-powershell.md
         - name: Azure CLI 2.0
           href: azure-stack-version-profiles-azurecli2.md
@@ -178,7 +182,7 @@ items:
     href: /azure/azure-stack/
   - name: Dokumentace ke službě ASDK
     href: /azure/azure-stack/asdk/
-- name: Prostředky
+- name: Zdroje a prostředky
   items:
   - name: Plán služby Azure Stack
     href: https://azure.microsoft.com/roadmap/?tag=azure-stack
@@ -188,13 +192,13 @@ items:
     href: https://feedback.azure.com/forums/344565-azure-stack?category_id=160275
   - name: Informace o cenách
     href: https://azure.microsoft.com/overview/azure-stack/how-to-buy/
-  - name: Přetečení zásobníku
+  - name: Stack Overflow
     href: http://stackoverflow.com/questions/tagged/azure-stack
   - name: Školení a certifikace
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: a86b36d3734898d80e40e43f7c7f8a24ce87eb0f
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 56bcdb6606c09c7d81d52a44e6e36f7900ec82e9
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44717690"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46366892"

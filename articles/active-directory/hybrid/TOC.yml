@@ -1,0 +1,291 @@
+items:
+- name: Dokumentace k hybridní identitě
+  href: index.yml
+- name: Přehled
+  items:
+  - name: Co je hybridní identita?
+    href: whatis-hybrid-identity.md
+    maintainContext: true
+- name: Kurzy
+  items:
+  - name: Integrace prostředí jedné doménové struktury služby AD do cloudu s využitím PHS
+    href: tutorial-password-hash-sync.md
+  - name: Integrace prostředí jedné doménové struktury služby AD do cloudu s využitím PTA
+    href: tutorial-passthrough-authentication.md
+  - name: Federace prostředí jedné doménové struktury služby AD do cloudu
+    href: tutorial-federation.md
+  expanded: true
+- name: Koncepty
+  items:
+  - name: Synchronizace služby Azure AD Connect
+    items:
+    - name: Technické koncepty synchronizace služby Azure AD Connect
+      href: how-to-connect-sync-technical-concepts.md
+    - name: Principy architektury synchronizace služby Azure AD Connect
+      href: concept-azure-ad-connect-sync-architecture.md
+    - name: Principy deklarativního zřizování
+      href: concept-azure-ad-connect-sync-declarative-provisioning.md
+    - name: Principy výrazů deklarativního zřizování
+      href: concept-azure-ad-connect-sync-declarative-provisioning-expressions.md
+    - name: Principy výchozí konfigurace
+      href: concept-azure-ad-connect-sync-default-configuration.md
+    - name: Principy uživatelů a kontaktů
+      href: concept-azure-ad-connect-sync-user-and-contacts.md
+    - name: Principy stínových atributů
+      href: how-to-connect-syncservice-shadow-attributes.md
+  - name: Synchronizace identit a odolnost duplicitních atributů
+    href: how-to-connect-syncservice-duplicate-attribute-resiliency.md
+- name: Návody
+  items:
+  - name: Instalace a upgrade
+    items:
+    - name: Plán instalace
+      href: how-to-connect-install-roadmap.md
+    - name: Požadavky pro instalaci
+      href: how-to-connect-install-prerequisites.md
+    - name: Volba typu instalace
+      href: how-to-connect-install-select-installation.md
+    - name: Instalace služby Azure AD Connect s využitím expresního nastavení (synchronizace hodnot hash hesel)
+      href: how-to-connect-install-express.md
+    - name: Instalace federace služby Azure AD Connect nebo jiných vlastních nastavení
+      href: how-to-connect-install-custom.md
+    - name: Instalace služby Azure AD Connect s využitím předávacího ověřování (PTA)
+      href: how-to-connect-pta-quick-start.md
+    - name: Instalace služby Azure AD Connect Health
+      href: how-to-connect-health-agent-install.md
+    - name: Automatický upgrade
+      href: how-to-connect-install-automatic-upgrade.md
+    - name: Druhé spuštění průvodce instalací
+      href: how-to-connect-installation-wizard.md
+    - name: Upgrade na novou verzi služby Azure AD Connect
+      href: how-to-upgrade-previous-version.md
+    - name: Upgrade z nástroje DirSync nebo z Azure AD Sync
+      href: how-to-dirsync-upgrade-get-started.md
+    - name: Instalace s využitím existující databáze ADSync
+      href: how-to-connect-install-existing-database.md
+    - name: Instalace s využitím oprávnění delegovaného správce SQL
+      href: how-to-connect-install-sql-delegation.md
+    - name: Upgrade agentů Preview pro PTA
+      href: how-to-connect-pta-upgrade-preview-authentication-agents.md
+    - name: Přesun databáze Azure AD Connect z SQL Express na SQL Server
+      href: how-to-connect-install-move-db.md
+    - name: Pokud už máte Azure AD
+      href: how-to-connect-install-existing-tenant.md
+    - name: Úlohy po skončení instalace
+      href: how-to-connect-post-installation.md
+  - name: Plánování a návrh
+    items:
+    - name: Koncepty návrhu
+      href: plan-connect-design-concepts.md
+    - name: Topologie pro Azure AD Connect
+      href: plan-connect-topologies.md
+    - name: Jak se uživatelé budou přihlašovat
+      href: plan-connect-user-signin.md
+    - name: Speciální aspekty pro instance
+      href: reference-connect-instances.md
+    - name: Aspekty návrhu hybridní identity
+      items:
+      - name: Přehled aspektů návrhu hybridní identity
+        href: plan-hybrid-identity-design-considerations-overview.md
+      - name: Určení požadavků na identitu
+        href: plan-hybrid-identity-design-considerations-business-needs.md
+      - name: Určení požadavků na synchronizaci
+        href: plan-hybrid-identity-design-considerations-directory-sync-requirements.md
+      - name: Určení požadavků na vícefaktorové ověřování
+        href: plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md
+      - name: Určení strategie přijetí životního cyklu identit
+        href: plan-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md
+      - name: Definování strategie ochrany dat
+        href: plan-hybrid-identity-design-considerations-data-protection-strategy.md
+      - name: Plánování požadavků na ochranu dat
+        href: plan-hybrid-identity-design-considerations-dataprotection-requirements.md
+      - name: Určení požadavků na správu obsahu
+        href: plan-hybrid-identity-design-considerations-contentmgt-requirements.md
+      - name: Určení požadavků na řízení přístupu
+        href: plan-hybrid-identity-design-considerations-accesscontrol-requirements.md
+      - name: Určení požadavků na reakce na incidenty
+        href: plan-hybrid-identity-design-considerations-incident-response-requirements.md
+      - name: Plánování životního cyklu hybridní identity
+        href: plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md
+      - name: Definování strategie přijetí
+        href: plan-hybrid-identity-design-considerations-identity-adoption-strategy.md
+      - name: Aspekty návrhu hybridní identity – další kroky
+        href: plan-hybrid-identity-design-considerations-nextsteps.md
+      - name: Porovnání nástrojů pro hybridní identity
+        href: plan-hybrid-identity-design-considerations-tools-comparison.md
+  - name: Správa služby Azure AD Connect
+    items:
+    - name: Co je synchronizace hodnot hash hesel?
+      href: how-to-connect-password-hash-synchronization.md
+    - name: Povolení zpětného zápisu zařízení
+      href: how-to-connect-device-writeback.md
+    - name: Možnosti zařízení
+      href: how-to-connect-device-options.md
+    - name: Další funkce ve službě Azure AD Connect
+      href: how-to-connect-preview.md
+    - name: Prevence náhodného odstranění
+      href: how-to-connect-sync-feature-prevent-accidental-deletes.md
+    - name: Povolení odpadkového koše AD
+      href: how-to-connect-sync-recycle-bin.md
+    - name: Změna hesla účtu služby Azure AD Sync
+      href: how-to-connect-sync-change-serviceacct-pass.md
+    - name: Změna účtu konektoru služby Azure AD
+      href: how-to-connect-azureadaccount.md
+    - name: Změna hesla účtu služby AD DS
+      href: how-to-connect-sync-change-addsacct-pass.md
+  - name: Správa federačních služeb
+    items:
+    - name: Co je federace s využitím služby Azure AD Connect?
+      href: how-to-connect-fed-whatis.md
+    - name: Správa federace s využitím služby Azure AD Connect
+      href: how-to-connect-fed-management.md
+    - name: Podpora více domén pro federaci
+      href: how-to-connect-install-multiple-domains.md
+    - name: Vytvoření federace několika instancí Azure AD s jednou instancí AD FS
+      href: how-to-connect-fed-single-adfs-multitenant-federation.md
+    - name: Obnovení federačních certifikátů pro O365 a Azure AD
+      href: how-to-connect-fed-o365-certs.md
+    - name: Aktualizace certifikátu SSL pro AD FS
+      href: how-to-connect-fed-ssl-update.md
+    - name: Správa vztahu důvěryhodnosti služby AD FS s využitím Azure AD
+      href: how-to-connect-azure-ad-trust.md
+    - name: Seznam kompatibilit pro federaci Azure AD
+      href: how-to-connect-fed-compatibility.md
+    - name: Použití serveru SAML 2.0 jako vašeho bodu IDP
+      href: how-to-connect-fed-saml-idp.md
+    - name: Úlohy po dokončení konfigurace pro hybridní připojení k Azure AD
+      href: how-to-connect-fed-hybrid-azure-ad-join-post-config-tasks.md
+  - name: Správa předávacího ověřování
+    items:
+    - name: Co je předávací ověřování?
+      href: how-to-connect-pta.md
+    - name: Začínáme s předávacím ověřováním
+      href: how-to-connect-pta-quick-start.md
+    - name: Jak předávací ověřování funguje
+      href: how-to-connect-pta-how-it-works.md
+    - name: Podrobné informace o zabezpečení pro předávací ověřování
+      href: how-to-connect-pta-security-deep-dive.md
+    - name: Předávací ověřování a ochrana osobních údajů uživatelů
+      href: how-to-connect-pta-user-privacy.md
+    - name: Aktuální omezení předávacího ověřování
+      href: how-to-connect-pta-security-deep-dive.md
+    - name: Nejčastější dotazy k předávacímu ověřování
+      href: how-to-connect-pta-faq.md
+  - name: Správa jednotného přihlašování
+    items:
+    - name: Co je jednotné přihlašování?
+      href: how-to-connect-sso.md
+    - name: Začínáme s jednotným přihlašováním
+      href: how-to-connect-sso-quick-start.md
+    - name: Jak jednotné přihlašování funguje
+      href: how-to-connect-sso-how-it-works.md
+    - name: Jednotné ověřování a ochrana osobních údajů uživatelů
+      href: how-to-connect-sso-user-privacy.md
+    - name: Nejčastější dotazy k jednotnému přihlašování
+      href: how-to-connect-sso-faq.md
+  - name: Správa služby Azure AD Connect Health
+    items:
+    - name: Operace služby Azure AD Connect Health
+      href: how-to-connect-health-operations.md
+    - name: Použití služby Azure AD Connect Health se službou AD FS
+      href: how-to-connect-health-adfs.md
+    - name: Použití služby Azure AD Connect Health k synchronizaci
+      href: how-to-connect-health-sync.md
+    - name: Použití služby Azure AD Connect Health se službou AD DS
+      href: how-to-connect-health-adds.md
+    - name: Zastaralá data služby Health Service
+      href: how-to-connect-health-data-freshness.md
+    - name: Diagnostika chyb synchronizace duplicitních atributů
+      href: how-to-connect-health-diagnose-sync-errors.md
+    - name: Katalog upozornění služby Azure AD Connect Health
+      href: how-to-connect-health-alert-catalog.md
+  - name: Správa synchronizace Azure AD Connect
+    items:
+    - name: Co je Azure AD Connect Sync?
+      href: how-to-connect-sync-whatis.md
+    - name: Funkce služby Azure AD Connect Sync
+      href: how-to-connect-syncservice-features.md
+    - name: Správa provozních úloh
+      href: how-to-connect-sync-operations.md
+    - name: Osvědčené postupy pro změnu výchozí konfigurace
+      href: how-to-connect-sync-best-practices-changing-default-configuration.md
+    - name: Změna výchozí konfigurace
+      href: how-to-connect-sync-change-the-configuration.md
+    - name: Konfigurace rozšíření adresáře
+      href: how-to-connect-sync-feature-directory-extensions.md
+    - name: Konfigurace upřednostňovaného umístění dat
+      href: how-to-connect-sync-feature-preferreddatalocation.md
+    - name: Konfigurace filtrování
+      href: how-to-connect-sync-configure-filtering.md
+    - name: Správa plánovače
+      href: how-to-connect-sync-feature-scheduler.md
+    - name: Správce služeb synchronizace Azure AD Connect
+      items:
+      - name: Co je správce služeb synchronizace Azure AD Connect?
+        href: how-to-connect-sync-service-manager-ui.md
+      - name: Správa pomocí karty operací správce služeb
+        href: how-to-connect-sync-service-manager-ui-operations.md
+      - name: Použití konektorů se správcem služeb
+        href: how-to-connect-sync-service-manager-ui-connectors.md
+      - name: Návrhář Metaverse
+        href: how-to-connect-sync-service-manager-ui-mvdesigner.md
+      - name: Vyhledávání Metaverse
+        href: how-to-connect-sync-service-manager-ui-mvsearch.md
+  - name: Řešení potíží
+    items:
+    - name: Připojení
+      href: tshoot-connect-connectivity.md
+    - name: Chyby při synchronizaci
+      href: tshoot-connect-sync-errors.md
+    - name: Objekt není synchronizovaný
+      href: tshoot-connect-object-not-syncing.md
+    - name: Synchronizace objektů pomocí úlohy řešení potíží
+      href: tshoot-connect-objectsync.md
+    - name: Synchronizace hodnot hash hesel
+      href: tshoot-connect-password-hash-synchronization.md
+    - name: Předávací ověřování
+      href: tshoot-connect-pass-through-authentication.md
+    - name: Jednotné přihlašování
+      href: tshoot-connect-sso.md
+    - name: Chyba LargeObject způsobená certifikátem userCertificate
+      href: tshoot-connect-largeobjecterror-usercertificate.md
+    - name: Jak provést obnovení při dosažení 10GB limitu pro LocalDB
+      href: tshoot-connect-recover-from-localdb-10gb-limit.md
+    - name: Možnosti připojení SQL
+      href: tshoot-connect-tshoot-sql-connectivity.md
+- name: Referenční informace
+  items:
+  - name: Porty a protokoly, které vyžaduje hybridní identita
+    href: reference-connect-ports.md
+  - name: Historie verzí služby Azure AD Connect
+    href: reference-connect-version-history.md
+  - name: Historie verzí služby Azure AD Connect Health
+    href: reference-connect-health-version-history.md
+  - name: Historie verzí konektoru
+    href: reference-connect-sync-connector-version-history.md
+  - name: Účty a oprávnění
+    href: reference-connect-accounts-permissions.md
+  - name: Azure AD Connect – nejčastější dotazy
+    href: reference-connect-faq.md
+  - name: Azure AD Connect Health – nejčastější dotazy
+    href: reference-connect-health-faq.md
+  - name: Ochrana osobních údajů uživatelů služby Azure AD Connect
+    href: reference-connect-user-privacy.md
+  - name: Ochrana osobních údajů uživatelů služby Azure AD Connect Health
+    href: reference-connect-health-user-privacy.md
+  - name: Azure AD Connect v Německu
+    href: reference-connect-germany.md
+  - name: Zastarání DirSync
+    href: reference-connect-dirsync-deprecated.md
+  - name: Synchronizované atributy
+    href: reference-connect-sync-attributes-synchronized.md
+  - name: Reference k funkcím
+    href: reference-connect-sync-functions-reference.md
+  - name: Seznam kompatibilit pro federaci Azure AD
+    href: how-to-connect-fed-compatibility.md
+ms.openlocfilehash: e0485c86f365c93362fed792a41ec835680a1ee7
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.translationtype: HT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46300472"
