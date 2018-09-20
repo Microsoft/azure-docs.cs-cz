@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 09/18/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: b2f4fbca2dcbdd537302746c7b6109e467ea31d7
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 4013b7136fd365b1d37348cfc1f0b46cce787ce2
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44720221"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46363119"
 ---
 # <a name="deploy-templates-using-the-azure-stack-portal"></a>Nasazení šablon pomocí portálu Azure Stack
 
@@ -40,4 +40,6 @@ Na portálu můžete použít k nasazení šablony Azure Resource Manageru ke sl
 
 ## <a name="next-steps"></a>Další postup
 
-* [Nasazení šablon pomocí PowerShellu](azure-stack-deploy-template-powershell.md)
+Další informace o nasazení šablony najdete v tématu:
+
+[Nasazení šablon pomocí PowerShellu](azure-stack-deploy-template-powershell.md)

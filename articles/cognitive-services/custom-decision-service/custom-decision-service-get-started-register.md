@@ -1,41 +1,43 @@
 ---
-title: Registrace vaší aplikace - kognitivní služeb Azure | Microsoft Docs
-description: Jak registrovat nové aplikace vlastní rozhodnutí službou Azure podrobný Průvodce
+title: Registrace vaší aplikace – Custom Decision Service
+titlesuffix: Azure Cognitive Services
+description: Krok za krokem provede postup registrace nové aplikace pomocí služby Azure Custom Decision Service.
 services: cognitive-services
 author: slivkins
-manager: slivkins
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
+ms.component: custom-decision-service
+ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: slivkins
-ms.reviewer: marcozo;alekh;marossi
-ms.openlocfilehash: 2aa8fbe77c11df4434eefa4c92d8529d5ca1d885
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.reviewer: marcozo
+ms.openlocfilehash: 598300597856d858095ff7c2e2cf9e9264190a9d
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343409"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46365396"
 ---
 # <a name="register-your-application"></a>Registrace vaší aplikace
 
-Pomocí vlastního rozhodnutí služby pro vaši aplikaci, zaregistrujte ji na portálu. Tento článek vysvětluje, jak.
+Použití služby Custom Decision Service pro vaši aplikaci, zaregistrujte ho na portálu. Tento článek vysvětluje, jak.
 
-1. Přejděte na [titulní stránky](https://ds.microsoft.com/) služby vlastního rozhodnutí. Na pásu karet klikněte na tlačítko **Moje portál**, jako zvýrazněných v bitové kopii:
+1. Přejděte [přední stránce](https://ds.microsoft.com/) ze služby Custom Decision Service. Na pásu karet klikněte na tlačítko **Moje portál**, jak již bylo zdůrazněno na obrázku:
 
     ![Můj portál](./media/portal.png)
 
-    Pokud ještě nejste přihlášeni, portálu vás vyzve, abyste Přihlaste se pomocí vaší [účtu Microsoft](https://account.microsoft.com/account). Po přihlášení, zobrazí na portálu účtu Microsoft v pravém horním rohu stránky.
+    Pokud už nejste přihlášení, na portálu zobrazí výzvu se přihlásit pomocí vašeho [účtu Microsoft](https://account.microsoft.com/account). Po přihlášení, na portálu se zobrazí váš účet Microsoft v pravém horním rohu stránky.
 
 2. Chcete-li zaregistrovat aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko.
 
-3. V dialogovém okně vyberte ID aplikace pro vaši aplikaci. Vlastní rozhodnutí služba vyžaduje jedinečné ID pro každou aplikaci. Když se někdo se už používá toto ID, systému se žádostí o vyberte jiné.
+3. V dialogovém okně vyberte ID aplikace pro vaši aplikaci. Custom Decision Service vyžaduje jedinečný ID pro každou aplikaci. Když se někdo jiný se už používá toto ID, systém vás požádá o vyberte jiné.
 
-4. Zadejte sadu akce rozhraní API. Toto nastavení je informačního kanálu RSS nebo Atom kanálu, který komunikuje dostupný obsah pro vaši aplikaci službě vlastní rozhodnutí. Zadejte název pro informační kanál a zadejte adresu URL, ze kterého je zpracovat. Chcete-li provést tento krok později, klikněte na tlačítko **kanály** tlačítko a pak klikněte na tlačítko **nový kanál** tlačítko. Příklad, který vytvoří informačního kanálu RSS je popsán později.
+4. Určete skupinu akcí rozhraní API. Toto nastavení je RSS nebo informační kanál Atom, který komunikuje dostupný obsah pro vaši aplikaci do služby Custom Decision Service. Zadejte název pro kanál a zadejte adresu URL, ze kterého je obsloužen. Chcete-li tento krok udělat později, klikněte na tlačítko **informační kanály** tlačítko a pak klikněte na tlačítko **nový informační kanál** tlačítko. Příklad, který vytvoří kanál RSS je popsaný níže.
 
-5. Chcete-li zaregistrovat aplikaci, vyberte **vlastní aplikace** políčko v levém dolním rohu. Zadejte [připojovací řetězec](../../storage/common/storage-configure-connection-string.md) pro účet úložiště Azure, kde je zaznamenané data aplikací. Další informace o tom, jak vytvořit účet úložiště najdete v tématu [jak vytvořit, spravovat nebo odstranit účet úložiště](../../storage/common/storage-create-storage-account.md).
+5. Chcete-li zaregistrovat aplikaci, vyberte **vlastní aplikace** zaškrtávací políčko v levém dolním rohu. Zadejte [připojovací řetězec](../../storage/common/storage-configure-connection-string.md) pro účet úložiště Azure, ve kterém se protokolují tato data vaší aplikace. Další informace o tom, jak vytvořit účet úložiště najdete v tématu [jak vytvořit, spravovat nebo odstranit účet úložiště](../../storage/common/storage-create-storage-account.md).
 
 ### <a name="next-steps"></a>Další postup
 
-* Začínáme za účelem optimalizace [webové stránky](custom-decision-service-get-started-browser.md) nebo [aplikace pro smartphone](custom-decision-service-get-started-app.md).
-* Na spolupracovat [kurzu](custom-decision-service-tutorial-news.md) podrobnější příklad.
-* Obrátit [referenční dokumentace rozhraní API](custom-decision-service-api-reference.md) Další informace o funkci zadané.
+* Začínáme se optimalizovat [webovou stránku](custom-decision-service-get-started-browser.md) nebo [aplikace pro smartphone](custom-decision-service-get-started-app.md).
+* Seznámení se základními [kurzu](custom-decision-service-tutorial-news.md) podrobnější příklad.
+* Poraďte [reference k rozhraní API](custom-decision-service-api-reference.md) Další informace o funkcích, které zadaná.

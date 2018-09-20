@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 09/19/2018
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: 92c0ad6dfde4fc83a912b4a3387d8b586e72809c
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 6a929c0226734a95e088e78307f2bbcc0571adef
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45630439"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364597"
 ---
 # <a name="register-azure-stack-with-azure"></a>Registrace Azure Stack s Azure
 
@@ -45,18 +45,18 @@ Předtím, než zaregistrujete, budete potřebovat následující na místě:
 
 Před zaregistrováním služby Azure Stack s Azure, musíte mít:
 
-- ID předplatného pro předplatné Azure. K získání ID, přihlaste se k Azure, klikněte na tlačítko **všechny služby**. Potom v části **Obecné** vyberte **předplatná**, klikněte na předplatné, které chcete použít, a v části **Essentials** najdete ID předplatného.
+- ID předplatného pro předplatné Azure. Pouze EA, CSP nebo CSP sdílené služby, který odběry podporují registrace. Poskytovatelé CSP se muset rozhodnout, jestli se má [použít jiné předplatné, CSP nebo CSPSS](azure-stack-add-manage-billing-as-a-csp.md#create-a-csp-or-cspss-subscription).<br><br>K získání ID, přihlaste se k Azure, klikněte na tlačítko **všechny služby**. Potom v části **Obecné** vyberte **předplatná**, klikněte na předplatné, které chcete použít, a v části **Essentials** najdete ID předplatného.
 
   > [!Note]  
   > Německo Cloudová předplatná se momentálně nepodporují.
 
-- Uživatelské jméno a heslo pro účet, který je vlastníkem předplatného (účty MSA/2FA jsou podporovány).
+- Uživatelské jméno a heslo pro účet, který je vlastníkem předplatného.
 
 - Uživatelský účet musí mít přístup k předplatnému Azure a máte oprávnění k vytváření aplikací identity a instanční objekty v adresáři spojený s tímto předplatným.
 
 - Zaregistrovat poskytovatele prostředků služby Azure Stack (viz zaregistrovat poskytovatele prostředků Azure Stack níže v části Podrobnosti).
 
-Po registraci není potřeba oprávnění globálního správce Azure Active Directory. Některé operace však může vyžadovat přihlašovací údaje globálního správce. Například skript instalační program zprostředkovatele prostředků nebo nová funkce vyžaduje oprávnění bylo uděleno. Můžete buď dočasně znovu vytvořit oprávnění účtu globálního správce nebo použijte samostatné globální správce účtu, který je vlastníkem *výchozí předplatné poskytovatele*.
+Po registraci není potřeba oprávnění globálního správce Azure Active Directory. Některé operace však může vyžadovat přihlašovací údaje globálního správce. Například skript instalační program zprostředkovatele prostředků nebo nová funkce vyžaduje oprávnění bylo uděleno. Můžete dočasně obnovit oprávnění globálního správce účtu, nebo použít samostatné globální správce účtu, který je vlastníkem *výchozí předplatné poskytovatele*.
 
 Pokud nemáte předplatné Azure, které splňuje tyto požadavky, můžete si [vytvořit bezplatný účet Azure zde](https://azure.microsoft.com/free/?b=17.06). Registrace Azure Stack se neúčtují žádné poplatky na vaše předplatné Azure.
 

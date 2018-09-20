@@ -8,15 +8,15 @@ author: DhruvMsft
 manager: craigg
 ms.custom: VNet Service endpoints
 ms.topic: conceptual
-ms.date: 08/28/2018
+ms.date: 09/18/2018
 ms.reviewer: vanto
 ms.author: dmalik
-ms.openlocfilehash: e1c05b56a1a7cc57b4d85d696df324438d916f11
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 51a9c1e2528833f0931e0bff30a9ec8a78eb99e0
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44720716"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46367334"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database-and-sql-data-warehouse"></a>Použití koncové body služeb virtuální sítě a pravidel pro Azure SQL Database a SQL Data Warehouse
 
@@ -125,7 +125,7 @@ Máte možnost použití [řízení přístupu na základě role (RBAC)] [ rbac-
 
 Funkce pravidel virtuální sítě pro službu Azure SQL Database má následující omezení:
 
-- Webové aplikace lze mapovat na privátní IP adresu ve virtuální síti nebo podsíti. I v případě, že koncové body služby se zapnutým z dané virtuální sítě nebo podsítě, budou mít připojení k serveru z webové aplikace Azure veřejné IP zdroj, ne zdroj virtuálních sítí/podsítí. Pokud chcete povolit připojení z webové aplikace na server, který má pravidla brány firewall virtuální sítě, je nutné **povoluje všem službám Azure** na serveru.
+- Webové aplikace lze mapovat na privátní IP adresu ve virtuální síti nebo podsíti. I v případě, že koncové body služby se zapnutým z dané virtuální sítě nebo podsítě, budou mít připojení k serveru z webové aplikace Azure veřejné IP zdroj, ne zdroj virtuálních sítí/podsítí. Pokud chcete povolit připojení z webové aplikace na server, který má pravidla brány firewall virtuální sítě, je nutné **služby Azure umožňují přístup k serveru** na serveru.
 
 - Každé pravidlo virtuální sítě v bráně firewall pro SQL Database, odkazuje na podsíť. Všechny odkazované podsítě musí být hostovaný ve stejné zeměpisné oblasti, který je hostitelem databáze SQL.
 
@@ -157,23 +157,23 @@ FYI: Re ARM, 'Azure Service Management (ASM)' was the old name of 'classic deplo
 When searching for blogs about ASM, you probably need to use this old and now-forbidden name.
 -->
 
-## <a name="impact-of-removing-allow-all-azure-services"></a>Dopady odebrání "umožnit všem službám Azure.
+## <a name="impact-of-removing-allow-azure-services-to-access-server"></a>Dopady odebrání "Povolit Azure services pro přístup k serveru.
 
-Mnoho uživatelů chcete odebrat **povolit všechny služby Azure** ze svých serverů SQL Azure a nahraďte ji metodou pravidlo brány Firewall virtuální sítě.
+Mnoho uživatelů chcete odebrat **služby Azure umožňují přístup k serveru** ze svých serverů SQL Azure a nahraďte ji metodou pravidlo brány Firewall virtuální sítě.
 Ale odebrání to ovlivní následující funkce Azure SQLDB:
 
 #### <a name="import-export-service"></a>Služba import exportu
-Azure SQLDB Import exportovat služba běží na virtuálních počítačích v Azure. Tyto virtuální počítače nejsou ve vaší virtuální síti a proto získat integrační balíček Azure při připojování k vaší databázi. Na odebrání **povolit všechny služby Azure** tyto virtuální počítače nebudou moci přistupovat k vaší databáze.
+Azure SQLDB Import exportovat služba běží na virtuálních počítačích v Azure. Tyto virtuální počítače nejsou ve vaší virtuální síti a proto získat integrační balíček Azure při připojování k vaší databázi. Na odebrání **služby Azure umožňují přístup k serveru** tyto virtuální počítače nebudou moci přistupovat k vaší databáze.
 Tento problém můžete obejít. Spustit import souboru BACPAC nebo exportovat přímo v kódu s použitím rozhraní API DACFx. Ujistěte se, že to je nasazen ve virtuálním počítači, který je v podsíti virtuální sítě, u kterého nastavíte pravidlo brány firewall.
 
 #### <a name="sql-database-query-editor"></a>Editor dotazů SQL Database
-Editor dotazů Azure SQL Database se nasadí na virtuálních počítačích v Azure. Tyto virtuální počítače nejsou ve vaší virtuální síti. Proto virtuální počítače získají integrační balíček Azure při připojování k vaší databázi. Na odebrání **povolit všechny služby Azure**, tyto virtuální počítače nebudou moci přistupovat k vaší databáze.
+Editor dotazů Azure SQL Database se nasadí na virtuálních počítačích v Azure. Tyto virtuální počítače nejsou ve vaší virtuální síti. Proto virtuální počítače získají integrační balíček Azure při připojování k vaší databázi. Na odebrání **služby Azure umožňují přístup k serveru**, tyto virtuální počítače nebudou moci přistupovat k vaší databáze.
 
 #### <a name="table-auditing"></a>Auditování tabulek
 V současné době existují dva způsoby, jak povolit auditování pro SQL Database. Auditování tabulek selže po povolení koncových bodů služby na serveru SQL Azure. Zmírnění dopadů zde je přejít na auditování objektů Blob.
 
 #### <a name="impact-on-data-sync"></a>Dopad na synchronizace dat
-Azure SQLDB má funkce synchronizace dat, která se připojuje k vaší databáze pomocí IP adresy Azure. Při použití koncové body služby, je pravděpodobné, že se vypne **povolit všechny služby Azure** přístup ke svému logickému serveru. Tímto přerušíte funkce synchronizace Data.
+Azure SQLDB má funkce synchronizace dat, která se připojuje k vaší databáze pomocí IP adresy Azure. Při použití koncové body služby, je pravděpodobné, že se vypne **služby Azure umožňují přístup k serveru** přístup ke svému logickému serveru. Tímto přerušíte funkce synchronizace Data.
 
 ## <a name="impact-of-using-vnet-service-endpoints-with-azure-storage"></a>Dopad koncové body služby virtuální sítě pomocí služby Azure storage
 

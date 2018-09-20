@@ -1,5 +1,6 @@
 ---
 title: Microsoft Bing Speech Service | Dokumentace Microsoftu
+titlesuffix: Azure Cognitive Services
 description: Pomocí Microsoft Speech API přidejte do svých aplikací, včetně v reálném čase interakci ze strany uživatelů akce ovládané řečí.
 services: cognitive-services
 author: zhouwangzw
@@ -7,16 +8,16 @@ manager: wolfma
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 09/15/2017
+ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: d58642b95a60d4f1c83dfd969d0c76511dca4653
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 637259b2fac46cf2c903c1986e6dfb303fe89408
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43097391"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46366250"
 ---
-# <a name="microsoft-bing-speech-api-overview"></a>Přehled Microsoft Bing Speech API
+# <a name="what-is-bing-speech"></a>Co je pro zpracování řeči Bingu?
 
 Založené na cloudu Microsoft Bing Speech API poskytuje vývojářům snadný způsob, jak vytvořit výkonné funkce, které podporou řeči ve svých aplikacích, stejně jako ovládací prvek hlasových příkazů, dialogové okno uživatele pomocí konverzace přirozené řeči a přepis řeči a diktování. Rozhraní Speech API Microsoft podporuje obě *převod řeči na Text* a *převod textu na řeč* převodu.
 

@@ -1,6 +1,6 @@
 ---
 title: Azure Site Recovery řešení potíží z VMware do Azure | Dokumentace Microsoftu
-description: Řešení chyb při replikaci virtuálních počítačů Azure.
+description: Řešení potíží mobility service nebo nabízená instalace při replikaci virtuálních počítačů Azure.
 services: site-recovery
 author: Rajeswari-Mamilla
 manager: rochakm
@@ -8,22 +8,23 @@ ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
 ms.author: ramamill
-ms.date: 09/17/2018
-ms.openlocfilehash: d77b252351c15bea13b0fa1fb42fa062d508fbdc
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.date: 09/19/2018
+ms.openlocfilehash: 32b579ac680204a909c19e7125711d298b08b26a
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126985"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46365481"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>Řešení potíží s nabízenou instalací služby Mobility
 
 Instalace služby Mobility je klíče krokem při povolení replikace. Úspěch tento krok závisí výhradně na splnění požadavků a práci s podporovanou konfigurací. Většina běžných chyb, které se zabývají během instalace služby Mobility se z důvodu
 
-* Chyby připojení a přihlašovacích údajů
+* Přihlašovací údaje nebo oprávnění chyby
+* Chyby připojení
 * Nepodporovaný operační systémy
 
-Při povolení replikace Azure Site Recovery se pokusí vložit instalace agenta služby mobility na virtuálním počítači. Jako součást tohoto konfiguračního serveru pokusí připojit k virtuálnímu počítači a zkopírujte agenta. Pokud chcete povolit úspěšnou instalaci, postupujte podrobné pokyny k odstraňování uvedena níže
+Při povolení replikace Azure Site Recovery se pokusí vložit instalace agenta služby mobility na virtuálním počítači. Jako součást tohoto konfiguračního serveru pokusí připojit k virtuálnímu počítači a zkopírujte agenta. Pokud chcete povolit úspěšnou instalaci, postupujte podrobné pokyny k odstraňování uvedena níže.
 
 ## <a name="credentials-check-errorid-95107--95108"></a>Zkontrolujte přihlašovací údaje (ID chyby: 95107 & 95108)
 

@@ -10,14 +10,22 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 04/09/2018
-ms.openlocfilehash: b05b824d8d35351030ca466566f14e4249d4b99d
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 399c7b000360a73a9bab06b046be21c9d93a1c70
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626616"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46367117"
 ---
 # <a name="diagnose-and-solve-problems-in-your-time-series-insights-environment"></a>Diagnostikovat a řešit problémy ve vašem prostředí Time Series Insights
+
+Tento článek popisuje některé problémy, které se můžou objevovat ve vašem prostředí Time Series Insights. Nabízí možné příčiny a řešení pro řešení.
+
+## <a name="video"></a>Video: 
+
+### <a name="in-this-video-we-cover-common-time-series-insights-customer-challenges-and-mitigationsbr"></a>V tomto videu se budeme zabývat běžné problémy zákazníků služby Time Series Insights a způsoby zmírnění rizik.</br>
+
+> [!VIDEO https://www.youtube.com/embed/7U0SwxAVSKw]
 
 ## <a name="problem-1-no-data-is-shown"></a>Problém č. 1: Žádná data se zobrazí.
 Několik běžných důvodů, proč se nemusí zobrazovat data v [Průzkumník služby Azure Time Series Insights](https://insights.timeseries.azure.com):
@@ -31,7 +39,7 @@ Azure Time Series Insights podporuje jenom data JSON. Ukázky JSON najdete v té
    ![Povolení pro připojení služby Azure IoT Hub](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)
 
    Jak je znázorněno na předchozím obrázku, buď zásady **iothubowner** a **služby** bude fungovat, protože obě mají **služba připojit** oprávnění.
-   
+
 * Pro Centrum událostí, je potřeba zadat klíč, který má **naslouchání** oprávnění.
 
    ![Oprávnění naslouchat centra událostí](media/diagnose-and-solve-problems/eventhub-listen-permissions.png)

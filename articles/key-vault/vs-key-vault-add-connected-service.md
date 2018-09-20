@@ -11,12 +11,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 04/15/2018
 ms.author: ghogen
-ms.openlocfilehash: d2ab34b3737ec00e4adc464f6d2255203fb6ae08
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 9cf49ae97da3bf67300bdc222c86bb712aeaed37
+ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43840615"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46465788"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Přidání služby Key Vault do vaší webové aplikace pomocí připojených služeb sady Visual Studio
 
@@ -39,7 +39,8 @@ Podrobnosti o změnách, připojené služby umožňuje ve vašem projektu povol
 
    ![Zvolte možnost "Zabezpečené tajné klíče pomocí služby Azure Key Vault"](media/vs-key-vault-add-connected-service/KeyVaultConnectedService1.PNG)
 
-   Pokud jste se přihlašovali do sady Visual Studio a mít předplatné Azure spojené s vaším účtem, se zobrazí stránka s rozevíracím seznamu k vašemu předplatnému.
+   Pokud jste se přihlašovali do sady Visual Studio a mít předplatné Azure spojené s vaším účtem, se zobrazí stránka s rozevíracím seznamu k vašemu předplatnému. Ujistěte se, že jste přihlášení do sady Visual Studio a že účet, jste zaregistrovaní v s se o stejný účet, který používáte pro vaše předplatné Azure.
+
 1. Vyberte předplatné, které chcete použít a pak zvolte nový nebo existující Key Vault, nebo zvolte odkaz pro úpravy k úpravě automaticky vygenerovaným názvem.
 
    ![Vyberte své předplatné.](media/vs-key-vault-add-connected-service/KeyVaultConnectedService3.PNG)

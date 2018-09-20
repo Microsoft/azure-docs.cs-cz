@@ -1,20 +1,21 @@
 ---
-title: Začínáme s rozhraním API pro rozpoznávání řeči Microsoftu s využitím klientské knihovny pro zpracování řeči Bingu | Dokumentace Microsoftu
-description: Pomocí klientských knihoven Microsoft Speech Service ve službě Microsoft Cognitive Services pro vývoj aplikací, které převést mluvené slovo na text.
+title: Začínáme s využitím klientské knihovny s rozhraní API pro rozpoznávání řeči Bingu | Dokumentace Microsoftu
+titlesuffix: Azure Cognitive Services
+description: Použití klientské knihovny pro zpracování řeči Bingu ve službě Microsoft Cognitive Services k vývoji aplikací, které převést mluvené slovo na text.
 services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 09/15/2017
+ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 6fb490def6807204943a1ce3ba3c53186055102b
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 8e0c95b73db057c429c57da8c026822436c6c3b4
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048453"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46367270"
 ---
 # <a name="get-started-with-bing-speech-service-client-libraries"></a>Začínáme s klientskými knihovnami Speech Service Bingu
 
@@ -43,3 +44,4 @@ V květnu 2018 jsme také vydali novou [Speech Service](../../speech-service/ind
 ## <a name="license"></a>Licence
 
 Všechny Cognitive Services SDK a ukázky jsou licencovány s licencí MIT. Další informace najdete v tématu [licence](https://github.com/Microsoft/Cognitive-Speech-STT-JavaScript/blob/master/LICENSE.md).
+

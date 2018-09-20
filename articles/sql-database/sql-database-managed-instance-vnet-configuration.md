@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: conceptual
-ms.date: 09/12/2018
+ms.date: 09/18/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: 559859e1f844cae37b0baaf48b0ad7c5cc2d4b0a
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: c2caa9ebbc3a4e6b9180466950775524986fd244
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45542427"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364563"
 ---
 # <a name="configure-a-vnet-for-azure-sql-database-managed-instance"></a>Konfigurace virtuální sítě pro spravovanou instanci Azure SQL Database
 
@@ -42,7 +42,7 @@ K vytvoření Managed Instance, vytvořte vyhrazenou podsíť (podsíť Managed 
 - **Vyhrazené podsíti**: podsíť Managed Instance nesmí obsahovat jiné cloudové služby s ním spojená, a nesmí se jednat o podsíť brány. Nebudete mít k vytvoření Managed Instance v podsíti, která obsahuje prostředky než Managed Instance a dalších prostředků nelze přidat později v podsíti.
 - **Skupina zabezpečení kompatibilní sítě (NSG)**: skupiny zabezpečení sítě přidružená k podsíti Managed Instance musí obsahovat pravidla je znázorněno v následujících tabulkách (pravidla povinné zabezpečení příchozích dat a povinná odchozí pravidla zabezpečení) před všechna pravidla. Skupina zabezpečení sítě můžete použít plně řídit přístup ke koncovému bodu data Managed Instance pomocí filtrování provozu na portu 1433. 
 - **Tabulku kompatibilní trasy definované uživatelem (UDR)**: podsíť Managed Instance musí mít uživatel směrovací tabulku s **0.0.0.0/0 dalšího segmentu směrování Internetu** jako povinné přiřazené uživatelem definovaná TRASA. Kromě toho můžete přidat trasu UDR této směruje provoz, který má místní rozsahy privátních IP jako cíl přes bránu virtuální sítě nebo virtuální síťové zařízení (NVA). 
-- **Volitelné vlastní DNS**: Pokud vlastní DNS je zadáno na síťové leží, Azure rekurzivní překladač IP adresu (například adresy 168.63.129.16) musí být přidaný do seznamu. Další informace najdete v tématu [konfigurace vlastního DNS](sql-database-managed-instance-custom-dns.md). Vlastní server DNS musí být schopen překladu názvů hostitelů na následující domény a jejich subdomény: *microsoft.com*, *windows.net*, *windows.com*, *msocsp.com*, *digicert.com*, *live.com*, *microsoftonline.com*, a *microsoftonline-p.com*. 
+- **Volitelné vlastní DNS**: Pokud se na virtuální síťové zadal vlastní DNS, Azure rekurzivní překladač IP adresu (například adresy 168.63.129.16) musí být přidaný do seznamu. Další informace najdete v tématu [konfigurace vlastního DNS](sql-database-managed-instance-custom-dns.md). Vlastní server DNS musí být schopen překladu názvů hostitelů na následující domény a jejich subdomény: *microsoft.com*, *windows.net*, *windows.com*, *msocsp.com*, *digicert.com*, *live.com*, *microsoftonline.com*, a *microsoftonline-p.com*. 
 - **Žádné koncové body služby**: podsíť Managed Instance nesmí mít přiřazen koncový bod služby. Ujistěte se, že při vytváření virtuální sítě je zakázána možnost koncových bodů služby.
 - **Dostatek IP adres**: podsíť Managed Instance musí mít minimální 16 IP adres (Doporučená minimální je 32 IP adresy). Další informace najdete v tématu [určit velikost podsítě pro Managed instance](#determine-the-size-of-subnet-for-managed-instances)
 

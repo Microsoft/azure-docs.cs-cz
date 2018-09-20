@@ -12,12 +12,12 @@ ms.date: 09/14/2018
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: ac9783d970af96242266a787071ec831ef5c0df8
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: ccff64b88787291832b9d2ed84eb81919152d887
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296902"
+ms.locfileid: "46364767"
 ---
 # <a name="how-to-sign-up-for-azure-active-directory-as-an-organization"></a>Postupy: registrace pro Azure Active Directory jako organizace
 Zaregistrujte do služby Azure Active Directory (Azure AD) pomocí nového předplatného Microsoft Azure:
@@ -26,9 +26,12 @@ Zaregistrujte do služby Azure Active Directory (Azure AD) pomocí nového před
 
 - **Pracovní nebo školní účet.** Chcete-li získat přístup k malým, středním nebo podnikových cloudových služeb od Microsoftu, jako je například Azure, Microsoft Intune nebo Office 365 pomocí pracovní nebo školní účet. Po registraci pro jednu z těchto služeb jako organizace, Azure AD automaticky zřídí cloudový adresář, který reprezentuje vaši organizaci. Další informace najdete v tématu [Správa adresáře služby Azure AD](active-directory-administer.md).
 
+    >[!Note]
+    Doporučujeme, abyste pomocí pracovního nebo školního účtu, pokud již máte přístup ke službě Azure AD. Ale by měl použít, jaký typ účtu je přidružený k vašemu předplatnému Azure.
+
 ## <a name="next-steps"></a>Další postup
 
-- [Registrace organizace](https://azure.microsoft.com/pricing/purchase-options/)
+- [Jak koupit Azure](https://azure.microsoft.com/pricing/purchase-options/)
 
 - [Zaregistrujte si edice Azure Active Directory Premium](active-directory-get-started-premium.md)
 
@@ -36,11 +39,5 @@ Zaregistrujte do služby Azure Active Directory (Azure AD) pomocí nového před
 
 - [Použití vaší místní infrastruktury identit v cloudu](../connect/active-directory-aadconnect.md)
 
-<<<<<<< HEAD
-* [Blog Microsoft Azure](https://azure.microsoft.com/blog/)
-* [Co je Azure AD?](active-directory-whatis.md)
-* [Použití vaší místní infrastruktury identit v cloudu](../hybrid/whatis-hybrid-identity.md)
-=======
 - [Navštivte blog Microsoft Azure](https://azure.microsoft.com/blog/)
->>>>>>> 73f447b1499ba1f189efb6832ad759f1230e55a2
 

@@ -1,19 +1,21 @@
 ---
-title: Vlastní pracovní postup Decision Service - služeb Azure Cognitive Services | Dokumentace Microsoftu
-description: Tento článek obsahuje přehled služby Azure Custom Decision Service pracovního postupu.
+title: Pracovní postup Custom Decision Service
+titlesuffix: Azure Cognitive Services
+description: Tento článek poskytuje doporučený pracovní postup pro Azure Custom Decision Service.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
+ms.component: custom-decision-service
+ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: nolachar
-ms.openlocfilehash: 32d5939e9adb4d98ae0c38a32ded0e0b6dec8256
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: b3bc7f90c9238ce58fd9dc8ac630987803d79bfd
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45580629"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46368014"
 ---
 # <a name="custom-decision-service-workflow"></a>Pracovní postup Custom Decision Service
 

@@ -10,15 +10,22 @@ ms.reviewer: jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/09/2018
-ms.openlocfilehash: 204a9d64d14fe190cb0de73c964bb95b4b9b475f
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: e265a66b841530d1133d760ebdcdf56046d1aee1
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628762"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364102"
 ---
 # <a name="understand-data-retention-in-time-series-insights"></a>Vysvětlení uchovávání dat v Time Series Insights
+
 Tento článek popisuje dvě nastavení, které ovlivňují uchovávání dat ve vašem prostředí Time Series Insights (TSI).
+
+## <a name="video"></a>Video: 
+
+### <a name="in-this-video-we-cover-time-series-insights-data-retention-and-how-to-plan-for-itbr"></a>V tomto videu se budeme zabývat uchovávání dat Time Series Insights a jak ji plánovat.</br>
+
+> [!VIDEO https://www.youtube.com/embed/03x6zKDQ6DU]
 
 Každé prostředí TSI má nastavení, které řídí **doby uchování dat**. Hodnota sahá od 1 až 400 dnů. Data se odstraní podle prostředí kapacity nebo uchovávání doba trvání úložiště (1 až 400), podle toho, co nastane dřív.
 

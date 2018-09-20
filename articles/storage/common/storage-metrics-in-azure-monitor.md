@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/05/2017
 ms.author: fryu
 ms.component: common
-ms.openlocfilehash: 849253dd4a2e66acc6a509a0515a22309c90e081
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 99a1832d82005fabd6f8b62aea6ad7722b317a13
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42057161"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46367878"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Metriky Azure Storage na platformě Azure Monitor
 
@@ -25,7 +25,7 @@ Azure Monitor nabízí jednotné uživatelské rozhraní pro monitorování nap�
 
 Azure Monitor poskytuje několik způsobů přístupu metriky. Dostanete z [webu Azure portal](https://portal.azure.com), rozhraní API služby Azure Monitor (REST a .net) a řešení pro analýzu, jako je například Operations Management Suite a Služba Event Hubs. Další informace najdete v tématu [metrik Azure monitoru](../../monitoring-and-diagnostics/monitoring-overview-metrics.md).
 
-Ve výchozím nastavení jsou povolené metriky a za posledních 30 dnů dat můžete přistupovat. Pokud je potřeba data uchovávat po delší dobu, můžete archivovat data metrik do účtu služby Azure Storage. Toto je nakonfigurováno v [nastavení diagnostiky](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#diagnostic-settings) ve službě Azure Monitor.
+Ve výchozím nastavení jsou povolené metriky a můžou k poslední data 93 dnů. Pokud je potřeba data uchovávat po delší dobu, můžete archivovat data metrik do účtu služby Azure Storage. Toto je nakonfigurováno v [nastavení diagnostiky](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) ve službě Azure Monitor.
 
 ### <a name="access-metrics-in-the-azure-portal"></a>Přístup metrik na webu Azure Portal
 
@@ -51,7 +51,7 @@ Následující příklad ukazuje, jak zobrazit seznam definice metriky na úrovn
 # Login to Azure and enter your credentials when prompted.
 > armclient login
 
-> armclient GET /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/providers/microsoft.insights/metricdefinitions?api-version=2017-05-01-preview
+> armclient GET /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/providers/microsoft.insights/metricdefinitions?api-version=2018-01-01
 
 ```
 
@@ -95,7 +95,7 @@ Odpověď obsahuje definice metriky ve formátu JSON:
 Následující příklad ukazuje, jak načíst data metriky na úrovni účtu:
 
 ```
-> armclient GET "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/providers/microsoft.insights/metrics?metric=Availability&api-version=2017-05-01-preview&aggregation=Average&interval=PT1H"
+> armclient GET "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/providers/microsoft.insights/metrics?metricnames=Availability&api-version=2018-01-01&aggregation=Average&interval=PT1H"
 
 ```
 
@@ -312,7 +312,7 @@ Následuje ukázka formátu pro určení ID prostředku pro každou ze služeb �
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/queueServices/default
 `
 * ID prostředku služby souborů `
-/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/default
+/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/fileServices/default
 `
 
 ### <a name="resource-id-in-azure-monitor-rest-api"></a>ID prostředku ve službě Azure Monitor, rozhraní REST API

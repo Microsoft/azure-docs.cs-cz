@@ -13,12 +13,12 @@ ms.component: pim
 ms.date: 07/23/2018
 ms.author: rolyon
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
-ms.openlocfilehash: cf0c9b76a7edace9f2a9147823b292e218e20bf7
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 63f4c4c48dd0fed3130dc99929a0e84c3cba2026
+ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44300269"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46466043"
 ---
 # <a name="azure-ad-directory-roles-you-can-manage-in-pim"></a>Role adresáře Azure AD, která spravujete v PIM
 <!-- **PLACEHOLDER: Need description of how this works. Azure PIM uses roles from MSODS objects.**-->
@@ -35,18 +35,18 @@ Není žádný rozdíl v přístupu k někdo s trvalou oproti přiřazení oprá
 Privileged Identity Management umožňuje přiřadit uživatele k běžné rolí správce, včetně:
 
 * **Globální správce** (taky označovaný jako správce společnosti) má přístup ke všem funkcím pro správu. Můžete mít více než jednoho globálního správce ve vaší organizaci. Osoba, která se zaregistruje k nákupu předplatného Office 365 automaticky stane globálním správcem.
-* **Správce privilegovaných rolí** spravuje Azure AD PIM a aktualizuje přiřazení rolí pro ostatní uživatele.  
+* **Privilegované Role správce** spravuje Azure AD PIM a aktualizuje přiřazení rolí pro ostatní uživatele.  
 * **Správce fakturace** může dělat nákupy, spravovat předplatná, spravovat lístky podpory a sledovat stav služeb.
-* **Správce hesel** může resetovat hesla, spravovat žádosti o služby a sledovat stav služeb. Správci hesel můžou resetovat hesla pro uživatele jenom.
+* **Správce hesel** může resetovat hesla, spravovat žádosti o služby a sledovat stav služeb. Správci hesel jsou omezené na resetování hesla pro uživatele.
 * **Správce služeb** spravovat žádosti o služby a sledovat stav služeb.
   
   > [!NOTE]
-  > Pokud používáte Office 365, pak před přiřazením role Správce služby pro uživatele, nejdříve uživatele přiřaďte oprávnění pro správu služby, jako je Exchange Online.
+  > Pokud používáte Office 365, pak před přiřazením role Správce služby pro uživatele, mu nejdřív přiřadíte oprávnění pro správu uživatelů služby, jako je Exchange Online.
   > 
   > 
-* **Správce správy uživatelů** může resetovat hesla, sledovat stav služeb a spravuje uživatelské účty, skupiny uživatelů a žádostí o služby. Správce správy uživatelů nelze odstranit globálního správce, vytvářet další role správců ani resetovat hesla správců fakturace, globálních a správců služeb.
+* **Správce uživatelů** může resetovat hesla, sledovat stav služeb a spravuje uživatelské účty, skupiny uživatelů a žádostí o služby. Správce uživatelů nelze odstranit globálního správce, vytvářet další role správců ani resetovat hesla fakturace, globálních správců a správců služeb.
 * **Správce Exchange** má přístup k Exchangi Online pro správu prostřednictvím centra pro správu Exchange (EAC) a můžete provést téměř jakoukoli úlohu v Exchangi Online.
-* **Správce služby SharePoint (Preview)** má přístupová oprávnění k Sharepointu Online prostřednictvím centra pro správu Sharepointu Online a můžete provádět skoro všechny úlohy v Sharepointu Online. Tato role je aktuálně ve verzi preview. Oprávnění uživatelé setkat zpoždění až po dokončení aktivace v PIM pomocí této role v rámci služby SharePoint.
+* **Správce služeb Sharepointu** má přístupová oprávnění k Sharepointu Online prostřednictvím centra pro správu Sharepointu Online a můžete provádět skoro všechny úlohy v Sharepointu Online. Oprávnění uživatelé setkat zpoždění až po dokončení aktivace v PIM pomocí této role v rámci služby SharePoint.
 * **Správce Skypu pro firmy** má přístup správce ke Skypu pro firmy pomocí Skypu pro firmy centra pro správu a můžete provádět skoro všechny úlohy ve Skypu for Business Online.
 
 Přečtěte si tyto články pro další podrobnosti o [přiřazení rolí správce ve službě Azure AD](../users-groups-roles/directory-assign-admin-roles.md) a [přiřazení rolí správce v Office 365](https://support.office.com/article/Assigning-admin-roles-in-Office-365-eac4d046-1afd-4f1a-85fc-8219c79e1504).

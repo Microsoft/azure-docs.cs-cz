@@ -3,7 +3,7 @@ title: Co dělat v případě Azure služby přerušení, které má vliv na slu
 description: Zjistěte, co můžete dělat v případě výpadku služby Azure, který má vliv na služby Azure Key Vault.
 services: key-vault
 documentationcenter: ''
-author: adamglick
+author: barclayn
 manager: mbaldwin
 editor: ''
 ms.assetid: 19a9af63-3032-447b-9d1a-b0125f384edb
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/07/2017
-ms.author: aglick
-ms.openlocfilehash: 1e3da7bee0211380b31e1c8ae2f1de45ade8a5f6
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.author: barclayn
+ms.openlocfilehash: 5ab6fc207d8a7732062a51a6215c25a4a0fac006
+ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296835"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46465839"
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Azure Key Vault dostupnost a redundance
 Služba Azure Key Vault nabízí několik vrstev redundance, aby se zajistilo, že vaše klíče a tajné kódy nadále k dispozici aplikace i v případě selhání jednotlivých součástí služby.

@@ -9,12 +9,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: dhruv
-ms.openlocfilehash: 8159a9eb8d8829ed01609cebc3ae41713892f6cf
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 6066462d0a7f31698745275c3c6d65c4e09d9cc5
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45630170"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364121"
 ---
 # <a name="azure-sql-database-connectivity-architecture"></a>Architektura připojení k Azure SQL Database 
 
@@ -51,13 +51,16 @@ Pokud se chcete připojit z mimo Azure, vaše připojení mají zásady připoje
 ![Přehled architektury](./media/sql-database-connectivity-architecture/connectivity-from-outside-azure.png)
 
 > [!IMPORTANT]
-> Při používání koncových bodů služby s Azure SQL Database je vaše zásady **Proxy** ve výchozím nastavení. Pokud chcete povolit připojení z uvnitř virtuální sítě, povolte odchozí připojení k Azure SQL Database brány IP adresy určené v níže uvedeném seznamu. Při použití koncové body služby, důrazně doporučujeme změna zásad připojení k **přesměrování** umožňuje lepší příjem. Pokud změníte připojení zásadu **přesměrování** nebude stačit povolit odchozí na vaše skupiny zabezpečení sítě k bráně Azure SQLDB níže uvedených IP adres, musíte povolit odchozí ke všem IP adresám SQLDB Azure. To lze provést pomocí značky služeb skupiny zabezpečení sítě (skupiny zabezpečení sítě). Další informace najdete v tématu [značky služeb](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
+> Při používání koncových bodů služby s Azure SQL Database je vaše zásady **Proxy** ve výchozím nastavení. Pokud chcete povolit připojení z uvnitř virtuální sítě, musíte také povolit odchozí připojení k Azure SQL Database brány IP adresy určené v níže uvedeném seznamu. Při použití koncové body služby, důrazně doporučujeme změna zásad připojení k **přesměrování** umožňuje lepší příjem. Pokud změníte připojení zásadu **přesměrování** nebude stačit povolit odchozí na vaše skupiny zabezpečení sítě k bráně Azure SQLDB níže uvedených IP adres, musíte povolit odchozí ke všem IP adresám SQLDB Azure. To lze provést pomocí značky služeb skupiny zabezpečení sítě (skupiny zabezpečení sítě). Další informace najdete v tématu [značky služeb](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
 
 ## <a name="azure-sql-database-gateway-ip-addresses"></a>IP adresy brány Azure SQL Database
 
 Pro připojení k databázi Azure SQL z místních prostředků, budete muset povolit odchozí síťový provoz do Azure SQL Database brány pro vaši oblast Azure. Připojení, jdou pouze přes bránu pro připojení v režimu proxy serveru, což je výchozí hodnota při připojování z místních prostředků.
 
 V následující tabulce jsou uvedeny primárních a sekundárních IP adresy brány Azure SQL Database pro všechny datové oblasti. V některých oblastech existují dvě IP adresy. V těchto oblastech primární IP adresa je aktuální IP adresu brány a druhou IP adresu je IP adresa převzetí služeb při selhání. Převzetí služeb při selhání adresa je adresa, do kterého jsme může přesunout vašeho serveru, abyste měli vysokou dostupnost služeb. Pro tyto oblasti doporučujeme vám povolit odchozí IP adresy. Druhá IP adresa není ve vlastnictví společnosti Microsoft a není naslouchání žádné služby, dokud je aktivovaná služba Azure SQL Database tak, aby přijímal připojení.
+
+> [!IMPORTANT]
+> Pokud se chcete připojit z v rámci Azure zásad připojení bude **přesměrování** ve výchozím nastavení (s výjimkou případů, pokud použijete koncové body služby). Nebude stačit povolit následující IP adresy. Musíte také povolit všechny Azure SQL Database IP adresy. Pokud se chcete připojit z v rámci virtuální sítě, můžete to provést pomocí značky služeb skupiny zabezpečení sítě (skupiny zabezpečení sítě). Další informace najdete v tématu [značky služeb](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
 
 | Název oblasti | Primární IP adresu | Sekundární adresa IP |
 | --- | --- |--- |

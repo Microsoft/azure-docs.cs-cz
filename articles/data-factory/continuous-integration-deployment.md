@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/16/2018
+ms.date: 09/18/2018
 ms.author: douglasl
-ms.openlocfilehash: 57c691271c2b2673ade40d600162934341e18a81
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 94c4a3fbd1c854401c42af5787c22db0e5dd6083
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44300236"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364973"
 ---
 # <a name="continuous-integration-and-deployment-in-azure-data-factory"></a>Průběžná integrace a nasazování ve službě Azure Data Factory
 
@@ -69,7 +69,7 @@ Tady je celý životní cyklus pro průběžnou integraci a nasazení, které m�
 
 ## <a name="automate-continuous-integration-with-azure-devops-services-releases"></a>Automatizovat průběžné integrace s verzemi služby Azure DevOps
 
-Tady je postup nastavení vydání verze služby Azure DevOps, abyste mohli automatizovat nasazení služby data factory do různých prostředí.
+Tady je postup nastavení o verzi služby Azure DevOps, abyste mohli automatizovat nasazení služby data factory do různých prostředí.
 
 ![Diagram průběžné integrace se službami Azure DevOps](media/continuous-integration-deployment/continuous-integration-image12.png)
 
@@ -81,7 +81,7 @@ Tady je postup nastavení vydání verze služby Azure DevOps, abyste mohli auto
 
 -   [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) obsahující tajné klíče.
 
-### <a name="set-up-a-azure-devops-services-release"></a>Nastavení verze služby Azure DevOps
+### <a name="set-up-an-azure-devops-services-release"></a>Nastavit o verzi služby Azure DevOps
 
 1.  Přejděte na stránku služby Azure DevOps ve stejném projektu, jako je nakonfigurovaný pomocí služby Data Factory.
 
@@ -799,9 +799,9 @@ else {
 
 ## <a name="use-custom-parameters-with-the-resource-manager-template"></a>Pomocí vlastních parametrů šablony Resource Manageru
 
-Můžete definovat vlastní parametry pro šablonu Resource Manageru. Chcete-li soubor s názvem `arm-template-parameters-definition.json` v kořenové složce úložiště. (Název souboru musí odpovídat názvu právě ukázali.) Data Factory se pokusí přečíst soubor z toho větve, kterou právě pracujete, ne jenom z větve spolupráci. Pokud se nenajde žádný soubor, datová továrna používá výchozí definice.
+Můžete definovat vlastní parametry pro šablonu Resource Manageru. Chcete-li soubor s názvem `arm-template-parameters-definition.json` v kořenové složce úložiště. (Název souboru musí odpovídat názvu právě ukázali.) Data Factory se pokusí přečíst soubor z toho větve, kterou právě pracujete, ne jenom z větve spolupráci. Pokud se nenajde žádný soubor, datová továrna používá výchozí parametry a hodnoty.
 
-Následující příklad ukazuje ukázkové parametry souboru. Tuto ukázku použijte jako odkaz na vytvořte svůj vlastní soubor vlastní parametry. Pokud soubor, který zadáte, není ve správném formátu JSON, Data Factory výstup chybovou zprávu v konzole prohlížeče a vrátí na výchozí definice zobrazí v Uživatelském rozhraní služby Data Factory.
+Následující příklad ukazuje ukázkové parametry souboru. Tuto ukázku použijte jako odkaz na vytvořte svůj vlastní soubor vlastní parametry. Pokud soubor, který zadáte, není ve správném formátu JSON, Data Factory výstup chybovou zprávu v konzole prohlížeče a vrátí na výchozí parametry a hodnoty zobrazené v Uživatelském rozhraní služby Data Factory.
 
 ```json
 {

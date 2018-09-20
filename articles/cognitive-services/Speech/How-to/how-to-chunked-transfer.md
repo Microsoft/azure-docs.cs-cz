@@ -1,31 +1,32 @@
 ---
-title: Postup zvukový datový proud bloku přenos | Microsoft Docs
-description: Postup použití bloku trasfer pro rozpoznávání řeči službě odesílat datový proud zvuku
+title: Způsob přenosu bloků zvukový Stream | Dokumentace Microsoftu
+titlesuffix: Azure Cognitive Services
+description: Použití bloku trasfer odesílat zvukový datový proud do služby pro zpracování řeči Bingu
 services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 09/15/2017
+ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 7d02340932dfc547893c4c40cbe08978b7b93756
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 1796a82b85182e6d231cb0bf1536cda2406e2c53
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342627"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364903"
 ---
 # <a name="chunked-transfer-encoding"></a>Blokové kódování přenosu
 
-K transcribe řeči na text, rozpoznávání řeči Microsoft rozhraní API můžete pro odesílání zvukovém souboru jako jeden celý bloku nebo rozdělení na malé bloky zvukovém souboru. Pro efektivní zvuk streamování a sníží se latence přepis, je doporučeno používat [blokové kódování přenosu](https://en.wikipedia.org/wiki/Chunked_transfer_encoding) k vysílání datového proudu zvuk ke službě. Jiných implementacích může vést k vyšší latence pohledu uživatele. Další informace najdete v tématu [datové proudy zvuk](../concepts.md#audio-streams) stránky.
+Pro přepisy převod řeči na text, rozhraní API pro rozpoznávání řeči Microsoft vám umožní odeslat zvuk jako jeden celý blok dat nebo jej zvuku do malých bloků. Pro efektivní streamování zvuku a snížení latence přepis, se doporučuje použít [blokového kódování přenosu](https://en.wikipedia.org/wiki/Chunked_transfer_encoding) ke streamování zvuku a služby. V jiných implementacích může vést k vyšší latencí vnímané uživatele. Další informace najdete v tématu [zvukové datové proudy](../concepts.md#audio-streams) stránky.
 
 > [!NOTE]
-> Nemusí nahrát více než 10 sekund zvuk v jakékoli jeden požadavek a doba trvání celkový požadavek nesmí překročit 14 sekund.
+> Nemusí nahrávat zvuk v jedné žádosti více než 10 sekund a doba trvání celkový požadavek nemůže být delší než 14 sekund.
 > [!NOTE]
-> Je třeba zadat bloku přenos kódování, pouze pokud používáte [rozhraní REST API](../GetStarted/GetStartedREST.md) volat službu řeči. Aplikace, které používají [klientské knihovny](../GetStarted/GetStartedClientLibraries.md) není potřeba konfigurovat blokové kódování přenosu.
+> Je třeba zadat blokového kódování pouze v případě, že používáte přenosu [rozhraní REST API](../GetStarted/GetStartedREST.md) volat službu rozpoznávání řeči. Aplikace, které používají [klientské knihovny](../GetStarted/GetStartedClientLibraries.md) není potřeba konfigurovat blokového kódování přenosu.
 
-Následující kód ukazuje, jak nastavit blokové kódování přenosu a k odeslání zvukový soubor se blokové do bloků, 1024 bajtů.
+Následující kód ukazuje, jak nastavit blokového kódování přenosu a posílat zvukový soubor se blokové do 1024 bajtů bloků.
 
 ```cs
 

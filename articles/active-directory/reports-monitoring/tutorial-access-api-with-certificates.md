@@ -15,12 +15,12 @@ ms.component: report-monitor
 ms.date: 05/07/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 3529de1e4a06c9c7f386a9fbd06470ce03cd84a6
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 5c54af76fc1e145ea062c6bcb37f354a7de94781
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45729803"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364169"
 ---
 # <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Kurz: Získání dat pomocí Azure Active Directory API pro vytváření sestav s certifikáty
 

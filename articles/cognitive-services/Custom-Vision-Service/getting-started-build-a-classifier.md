@@ -1,20 +1,21 @@
 ---
-title: Sestavení klasifikátoru pomocí služby Custom Vision Service - služeb Azure Cognitive Services | Dokumentace Microsoftu
+title: Sestavení klasifikátoru – Custom Vision Service
+titlesuffix: Azure Cognitive Services
 description: Informace o používání služby Custom Vision Service k vytvoření klasifikátor, který lze rozpoznat objektů v fotografie.
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: anroth
-ms.openlocfilehash: c5183078d2f9d5eb16abef4f5df240f77eea6b8b
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 998900e72511a95336e4a94289c794e2a8e59feb
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223365"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364231"
 ---
 # <a name="how-to-build-a-classifier-with-custom-vision"></a>Sestavení klasifikátoru s Custom Vision
 
@@ -55,7 +56,7 @@ Chcete-li vytvořit nový projekt, použijte následující kroky:
 
 3. Zadejte název a popis pro projekt. Vyberte jednu z dostupných domén. Každá doména optimalizuje třídění pro konkrétní typy obrázků, jak je popsáno v následující tabulce:
 
-    |Doména|Účel|
+    |Domain (Doména)|Účel|
     |---|---|
     |__Obecné__| Optimalizovaná pro širokou škálu obrázek úlohy klasifikace. Pokud žádný z jiných domén není vhodné nebo si nejste jistí, ve které doméně zvolit, vyberte doménu, Obecné. |
     |__Potravin__|Optimalizované pro fotografie si pochutnává, při které byste měli v nabídka restaurace. Pokud chcete klasifikovat fotografie jednotlivá ovoce nebo zeleniny, použijte potravin domény.|

@@ -7,14 +7,16 @@ author: viv-liu
 ms.author: viviali
 ms.date: 07/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 5cb55e73b379b909811bde728d2ab39e29635bf5
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 6f8bed8aba43d77cdfad49f4fe62a4c7aa2c5ce3
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190695"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46368065"
 ---
 # <a name="visualize-and-analyze-your-azure-iot-central-data-in-a-power-bi-dashboard"></a>Vizualizace a analýza Azure IoT Central dat na řídicím panelu Power BI
+
+*Toto téma se vztahuje na správce.*
 
 ![Kanál šablony řešení Power BI](media/howto-connect-powerbi/iot-continuous-data-export.png)
 
@@ -25,9 +27,9 @@ Použijte šablonu řešení Azure IoT Central analýzy Power BI k vytvoření v
 - Sledovat historické trendy měření zařízení
 - Identifikace problematické zařízení, které posílají velké množství kritické události
 
-Tato šablona řešení nastaví kanál, který přijímá data ve vašem účtu úložiště objektů Blob v Azure z [nepřetržitý export dat](howto-export-data.md). Tento tok dat do Azure Functions, Azure Data Factory a Azure SQL Database, které zpracovávat a transformovat data, která mají být vizualizovat a analyzovat v sestavě Power BI, který si můžete stáhnout jako soubor .PBIX. Všechny tyto prostředky se vytvoří ve vašem předplatném Azure, takže si můžete přizpůsobit tak, aby odpovídala vašim potřebám jednotlivých komponent. Tato šablona řešení je zcela open source, takže můžete další informace o architektuře a rozšířit řešení najdete [úložiště Github se vzorovými](https://aka.ms/iotcentralgithubpowerbisolutiontemplate).
+Tato šablona řešení nastaví kanál, který přijímá data ve vašem účtu úložiště objektů Blob v Azure z [nepřetržitý export dat](howto-export-data.md). Tento tok dat do Azure Functions, Azure Data Factory a Azure SQL Database pro zpracování a transformaci dat. Výstup můžete vizualizovat a analyzovat v sestavě Power BI, který si můžete stáhnout jako soubor .PBIX. Všechny tyto prostředky se vytvoří ve vašem předplatném Azure, takže si můžete přizpůsobit tak, aby odpovídala vašim potřebám jednotlivých komponent. Tato šablona řešení je zcela open source, takže můžete další informace o architektuře a rozšířit řešení najdete [úložiště GitHub se vzorovými](https://aka.ms/iotcentralgithubpowerbisolutiontemplate).
 
-**[Získání šablony řešení Azure IoT Central analýz z Microsoft AppSource.](https://aka.ms/iotcentralpowerbisolutiontemplate)**
+## <a name="get-the-azure-iot-central-analytics-solution-templatehttpsakamsiotcentralpowerbisolutiontemplate-from-microsoft-appsource"></a>Získejte [šablonu řešení Azure IoT Central Analytics](https://aka.ms/iotcentralpowerbisolutiontemplate) z Microsoft AppSource
 
 ## <a name="prerequisites"></a>Požadavky
 Nastavení šablony vyžaduje následující:
@@ -52,7 +54,7 @@ Druhá sestava věnuje hlouběji do událostí a zobrazí Historický přehled p
 
 Navštivte web AppSource a získat [šablonu řešení Azure IoT Central Analytics](https://aka.ms/iotcentralpowerbisolutiontemplate).
 
-Přejděte [úložiště Github se vzorovými](https://aka.ms/iotcentralgithubpowerbisolutiontemplate) Další informace o architektuře a rozšířit řešení.
+Přejděte [úložiště GitHub se vzorovými](https://aka.ms/iotcentralgithubpowerbisolutiontemplate) Další informace o architektuře a rozšířit řešení.
 
 ## <a name="next-steps"></a>Další postup
 

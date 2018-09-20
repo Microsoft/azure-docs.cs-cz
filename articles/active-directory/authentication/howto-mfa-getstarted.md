@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 17c67cc07f2bbdee3d71e69068cca6cbcfe3a104
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: e8d4286e282ebbe727941712f3f3c4d3ea749cb5
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579815"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46366586"
 ---
 # <a name="deploy-cloud-based-azure-multi-factor-authentication"></a>Nasazení cloudového ověřování Azure Multi-Factor Authentication
 
@@ -24,7 +24,7 @@ Začínáme se službou Azure Multi-Factor Authentication (Azure MFA) je jednodu
 Než začnete, ujistěte se, že jsou splněné následující požadavky:
 
 * Účet globálního správce ve vašem tenantovi Azure AD. Pokud potřebujete pomoc při dokončení tohoto kroku, najdete v našem článku [Začínáme s Azure AD](../get-started-azure-ad.md).
-* Správné licence přiřazené uživatelům. Pokud potřebujete další informace najdete v tématu [jak získat Azure Multi-Factor Authentication](concept-mfa-licensing.md).
+* Správné licence přiřazené uživatelům. Pokud potřebujete další informace, přečtěte si článek [jak získat Azure Multi-Factor Authentication](concept-mfa-licensing.md).
 
 ## <a name="choose-how-to-enable"></a>Zvolte, jak povolit
 
@@ -40,11 +40,11 @@ Povolené tak, že změníte uživatele stav - Toto je tradiční metody pro vy�
 
 ## <a name="choose-authentication-methods"></a>Zvolit metody ověřování
 
-Povolte alespoň jednu metodu ověřování pro uživatele na základě požadavků vaší organizace. Zjistíme, že pokud je povolená pro uživatele aplikaci Microsoft Authenticator poskytuje nejlepší uživatelské prostředí. Pokud je potřeba pochopit, jaké metody jsou k dispozici a jak je nastavit, naleznete v článku [jaké metody ověřování jsou](concept-authentication-methods.md).
+Povolte alespoň jednu metodu ověřování pro uživatele na základě požadavků vaší organizace. Zjistíme, že pokud je povolená pro uživatele aplikaci Microsoft Authenticator poskytuje nejlepší uživatelské prostředí. Pokud je potřeba pochopit, které metody jsou k dispozici a jak je nastavit, najdete v článku [jaké metody ověřování jsou](concept-authentication-methods.md).
 
 ## <a name="get-users-to-enroll"></a>Získat uživatele k registraci
 
-Jakmile povolíte zásady podmíněného přístupu, uživatelé si bude muset zaregistrovat při příštím používají aplikaci chráněnou zásadami. Pokud povolíte zásadu vyžadující vícefaktorové ověřování pro všechny uživatele na všechny cloudové aplikace tato akce může způsobit, že starostí pro vaše uživatele a helpdesk. Doporučuje se uživatele požádejte, aby zaregistrovat metody ověřování, které jsou předem pomocí portálu pro registraci v [ https://aka.ms/mfasetup ](https://aka.ms/mfasetup). Mnoho organizací zjišťuje, že vytváření plakáty, karty tabulky a e-mailové zprávy pomáhá dokázal(a).
+Jakmile povolíte zásady podmíněného přístupu, uživatelé si bude muset zaregistrovat při příštím používají aplikaci chráněnou zásadami. Pokud povolíte zásadu vyžadující vícefaktorové ověřování pro všechny uživatele na všechny cloudové aplikace, tato akce může způsobit, že starostí pro vaše uživatele a helpdesk. Doporučuje se uživatele požádejte, aby zaregistrovat metody ověřování, které jsou předem pomocí portálu pro registraci v [ https://aka.ms/mfasetup ](https://aka.ms/mfasetup). Mnoho organizací zjišťuje, že vytváření plakáty, karty tabulky a e-mailové zprávy pomáhá dokázal(a).
 
 ## <a name="enable-multi-factor-authentication-with-conditional-access"></a>Povolení služby Multi-Factor Authentication s podmíněným přístupem
 
@@ -54,40 +54,40 @@ Přihlaste se k [webu Azure portal](https://portal.azure.com) pomocí účtu glo
 
 Než povolíte ověřování Azure Multi-Factor Authentication, vaše organizace musíte určit, jaké možnosti ověřování umožňují. Pro účely tohoto cvičení povolit volání na telefon a text zprávy na telefon jsou obecné možnosti, že většina je možné použít. Další informace o metodách ověřování a jejich využití najdete v článku, [co jsou metody ověřování?](concept-authentication-methods.md)
 
-1. Přejděte do **Azure Active Directory**, **uživatelé**, **ověřování službou Multi-Factor Authentication**
-   ![přístup k ověřování službou Multi-Factor Authentication portál v okně uživatelé Azure AD na webu Azure portal](media/howto-mfa-getstarted/users-mfa.png) 
-2. V nové záložce, která se otevře procházením **nastavení služby**
-3. V části **možnosti ověření**, zaškrtněte následující políčka pro metody dostupné pro uživatele
-   * Telefonní hovor
-   * Textová zpráva na telefon
+1. Přejděte do **Azure Active Directory**, **uživatelé**, **ověřování službou Multi-Factor Authentication**.
+
+   ![Přístup k portálu Multi-Factor Authentication v okně uživatelé Azure AD na webu Azure portal](media/howto-mfa-getstarted/users-mfa.png)
+
+1. V nové záložce, která se otevře procházením **nastavení služby**.
+1. V části **možnosti ověření**, zkontrolujte všechna pole pro metody dostupné pro uživatele.
 
    ![Konfigurace metody ověření v kartě nastavení služby Multi-Factor Authentication](media/howto-mfa-getstarted/mfa-servicesettings-verificationoptions.png)
 
 4. Klikněte na **Uložit**.
-5. Zavřít **nastavení služby** kartu
+5. Zavřít **nastavení služby** kartu.
 
 ### <a name="create-conditional-access-policy"></a>Vytvoření zásad podmíněného přístupu
 
 1. Přihlaste se k [webu Azure portal](https://portal.azure.com) pomocí účtu globálního správce.
 1. Přejděte na **Azure Active Directory** a potom na **Podmíněný přístup**.
-1. Vyberte **Nová zásada**.
-1. Zadejte výstižný název zásady
-1. V části **uživatelů a skupin**
+1. Vyberte **nové zásady**.
+1. Zadejte výstižný název zásady.
+1. V části **uživatelů a skupin**:
    * Na **zahrnout** kartu, vyberte **všichni uživatelé** přepínací tlačítko
    * DOPORUČENO: Na **vyloučit** kartu, zaškrtněte políčko u **uživatelů a skupin** a zvolte skupinu, která má být použit pro vyloučení, když uživatelé nebudou mít přístup ke své metody ověřování.
-   * Klikněte na **Hotovo**.
-1. V části **cloudové aplikace**, vyberte **všechny cloudové aplikace** přepínací tlačítko
+   * Klikněte na **Done** (Hotovo).
+1. V části **cloudové aplikace**, vyberte **všechny cloudové aplikace** přepínač.
    * VOLITELNĚ: Na **vyloučit** , vyberte cloudové aplikace, které vaše organizace nevyžaduje vícefaktorové ověřování pro.
-   * Klikněte na **Hotovo**.
-1. V části **podmínky** oddílu
+   * Klikněte na **Done** (Hotovo).
+1. V části **podmínky** části:
    * VOLITELNĚ: Pokud jste povolili službu Azure Identity Protection, můžete vyhodnotit riziko přihlášení jako součást této zásady.
    * VOLITELNĚ: Pokud jste nakonfigurovali důvěryhodných umístění nebo pojmenovaná umístění, můžete zahrnout nebo vyloučit ze zásad těchto umístěních.
-1. Přesvědčte se, že přepínač **Udělit přístup** v části **Udělení** je vybraný.
-    * Zaškrtněte políčko **Vyžadovat vícefaktorové ověřování**.
+1. V části **udělení**, ujistěte se, že **udělit přístup** je přepínač vybrán.
+    * Zaškrtněte políčko u **vyžadovat vícefaktorové ověřování**.
     * Klikněte na **Vybrat**.
-1. Oddíl **Relace** přeskočte.
-1. **Zapněte** přepínač **Povolit zásadu**.
-1. Klikněte na **Vytvořit**
+1. Přeskočit **relace** oddílu.
+1. Nastavte **povolit zásady** přepnutím **na**.
+1. Klikněte na možnost **Vytvořit**.
 
 ![Vytvoření zásad podmíněného přístupu povolit MFA pro uživatele Azure portal v pilotní skupině](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
 
@@ -96,18 +96,18 @@ Než povolíte ověřování Azure Multi-Factor Authentication, vaše organizace
 Potvrďte, že funguje své zásady podmíněného přístupu, otestujte přihlášení na prostředek, který by neměla vyžadovat vícefaktorové ověřování a potom na webu Azure portal, který vyžaduje vícefaktorové ověřování.
 
 1. Otevřete nové okno prohlížeče v režimu InPrivate nebo Incognito a přejděte na adresu [https://account.activedirectory.windowsazure.com](https://account.activedirectory.windowsazure.com).
-   * Přihlaste se pomocí testovacího účtu uživatele, který jste vytvořili jako součást požadavků tohoto článku, a všimněte si, že by se neměla zobrazit výzva k vícefaktorovému ověřování.
-   * Zavřete okno prohlížeče
+   * Přihlaste se pomocí testovacího uživatele vytvořených jako součást oddílu požadavky v tomto článku a Všimněte si, že ho neměli vás vyzve k dokončit vícefaktorové ověřování.
+   * Zavřete okno prohlížeče.
 2. Otevřete nové okno prohlížeče v režimu InPrivate nebo Incognito a přejděte na adresu [https://portal.azure.com](https://portal.azure.com).
-   * Přihlaste se pomocí testovacího účtu uživatele, který jste vytvořili jako součást požadavků tohoto článku, a všimněte si, že nyní by se výzva k vícefaktorovému ověřování zobrazit měla.
-   * Zavřete okno prohlížeče
+   * Přihlaste se pomocí testovacího uživatele vytvořených jako součást oddílu požadavky v tomto článku a Všimněte si, že by měla nyní být potřebné k registraci pro a ověřování Azure Multi-Factor Authentication.
+   * Zavřete okno prohlížeče.
 
 ## <a name="next-steps"></a>Další postup
 
 Blahopřejeme, jste nastavili Azure Multi-Factor Authentication v cloudu.
 
-Chcete-li nakonfigurovat další nastavení, jako jsou důvěryhodné IP adresy, vlastní hlasové zprávy a upozornění na podvod, najdete v článku [nastavení konfigurace Azure Multi-Factor Authentication](howto-mfa-mfasettings.md)
+Chcete-li nakonfigurovat další nastavení, jako jsou důvěryhodné IP adresy, vlastní hlasové zprávy a upozornění na podvod, najdete v článku [nastavení konfigurace Azure Multi-Factor Authentication](howto-mfa-mfasettings.md).
 
-Informace o správě nastavení pro ověřování Azure Multi-Factor Authentication najdete v článku [spravovat uživatelská nastavení pomocí ověřování Azure Multi-Factor Authentication v cloudu](howto-mfa-userdevicesettings.md)
+Informace o správě nastavení pro ověřování Azure Multi-Factor Authentication najdete v článku [spravovat uživatelská nastavení pomocí ověřování Azure Multi-Factor Authentication v cloudu](howto-mfa-userdevicesettings.md).
 
-[Povolit sblížené registraci pro resetování hesla pomocí samoobslužné služby Azure Multi-Factor Authentication a Azure AD](concept-registration-mfa-sspr-converged.md)
+[Povolit sblížené registraci pro resetování hesla pomocí samoobslužné služby Azure Multi-Factor Authentication a Azure AD](concept-registration-mfa-sspr-converged.md).

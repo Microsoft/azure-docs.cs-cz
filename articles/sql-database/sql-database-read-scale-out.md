@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
-ms.date: 09/14/2018
+ms.date: 09/18/2018
 ms.author: sashan
-ms.openlocfilehash: d7c3a672224bd7a167956d7699541880de11bef9
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: d29886b5c8693e4465053c8816fc38376a51fafc
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45737035"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46363596"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads-preview"></a>Použít repliky jen pro čtení k načtení vyrovnávat zatížení dotazu jen pro čtení (preview)
 
@@ -119,7 +119,7 @@ Další informace najdete v tématu [databází – vytvořit nebo aktualizovat]
 Pokud používáte další horizontální navýšení kapacity pro načtení vyrovnávat zatížení jen pro čtení na databázi, která je geograficky replikovaný (například jako člen skupiny převzetí služeb při selhání), ujistěte se, že čtení horizontální navýšení kapacity je povolena na primární a geograficky replikované sekundární databáze. Tím se zajistí stejný účinek Vyrovnávání zatížení, když vaše aplikace připojuje k nové primární po převzetí služeb při selhání. Pokud se chcete připojit do geograficky replikované sekundární databáze se Škálováním pro čtení povolené, vaše relace `ApplicationIntent=ReadOnly` se budou směrovat na jednu z replik stejným způsobem můžeme směrovat připojení na primární databázi.  Relace bez `ApplicationIntent=ReadOnly` se budou směrovat na primární repliku geograficky replikované sekundární, což je také jen pro čtení. Protože geograficky replikované sekundární databáze má jiný koncový bod než primární databázi, v minulosti pro přístup k sekundární ho nebyl vyžadují `ApplicationIntent=ReadOnly`. K zajištění zpětné kompatibility `sys.geo_replication_links` zobrazení dynamické správy ukazuje `secondary_allow_connections=2` (nepovoluje se žádné připojení klienta).
 
 > [!NOTE]
-> Ve verzi preview provádíme nebude kruhové dotazování nebo jakékoli jiné vyrovnaným směrování mezi místní repliky sekundární databázi. 
+> Během verze preview, kruhové dotazování nebo jiné zatížení vyvážené směrování mezi místní replik sekundární databáze není podporováno. 
 
 
 ## <a name="next-steps"></a>Další postup

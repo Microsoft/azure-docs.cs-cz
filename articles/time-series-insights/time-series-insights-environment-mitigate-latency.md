@@ -11,12 +11,12 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 11/27/2017
-ms.openlocfilehash: a404eb1393f9e99c2e2932c2d23724051f1b72a0
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: e301afaa2fed2b00599fbdde8178203965280c0d
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628483"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364978"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Monitorování a zmírnění omezování snížit latenci v Azure Time Series Insights
 Pokud objem příchozích dat překročí konfiguraci vašeho prostředí, můžete setkat s latencí nebo omezení využití sítě v Azure Time Series Insights.
@@ -30,6 +30,11 @@ Které bývají nejčastějším docházet k latenci a omezování, když jste:
 - Nahrání velkého množství historických událostí do zdroje událostí, což vede k prodlevě (Time Series Insights potřebovat dohnat).
 - Připojte se k referenčních dat pomocí telemetrie, což vede k větší velikost události.  Z hlediska omezení paket ingressed data s velikost paketu 32 kB považuje za 32 události, každý velikosti 1 KB. Události maximální povolená velikost je 32 KB; datových paketů větší než 32 KB se oříznou.
 
+## <a name="video"></a>Video: 
+
+### <a name="in-this-video-we-cover-time-series-insights-data-ingress-behavior-and-how-to-plan-for-itbr"></a>V tomto videu se budeme zabývat chování příchozího přenosu dat Time Series Insights a jak ji plánovat.</br>
+
+> [!VIDEO https://www.youtube.com/embed/npeZLAd9lxo]
 
 ## <a name="monitor-latency-and-throttling-with-alerts"></a>Monitorování latenci a omezování s výstrahami
 

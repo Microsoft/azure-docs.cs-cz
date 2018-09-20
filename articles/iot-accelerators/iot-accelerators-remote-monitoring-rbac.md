@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 08/06/2018
 ms.topic: conceptual
-ms.openlocfilehash: fccdc4ac40878060b94d495b8895e2a128c9477c
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: a56cb92dc8870bf3fff6de0b1d5d907a0898c216
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44716107"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364291"
 ---
 # <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>Konfigurace řízení přístupu na základě rolí v akcelerátoru řešení vzdáleného monitorování
 
@@ -240,6 +240,8 @@ public async Task DeleteAsync(string id)
 ## <a name="next-steps"></a>Další postup
 
 V tomto článku jste zjistili, jak na základě rolí přístup ovládací prvky jsou implementovány v akcelerátoru řešení vzdáleného monitorování.
+
+Zobrazit [konfigurovat řízení přístupu pro Průzkumníka služby Time Series Insights](iot-accelerators-remote-monitoring-rbac-tsi.md) informace o správě přístupu k Průzkumníka Time Series Insights v akcelerátoru řešení vzdáleného monitorování.
 
 Další koncepční informace o akcelerátoru řešení vzdáleného monitorování najdete v tématu [architektura vzdáleného monitorování](iot-accelerators-remote-monitoring-sample-walkthrough.md)
 

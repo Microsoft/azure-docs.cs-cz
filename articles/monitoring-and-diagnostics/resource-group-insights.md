@@ -9,15 +9,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 09/19/2018
 ms.reviewer: mbullwin
 ms.author: daviste
-ms.openlocfilehash: 723006d37ed0570e32790a0bb70a3dce5a87ade8
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 7e0a68efc93d0f907edfb38dbc548ac95a35b3e1
+ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43345227"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46465805"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Sledování skupiny prostředků pomocí Azure monitoru (preview)
 
@@ -109,6 +109,11 @@ Výkon nabízí svůj vlastní galerie sešity. Pro službu App Service nabízí
 V takovém případě Pokud zvolíte možnost úpravy uvidíte, že tuto sadu vizualizace používá technologii Azure monitorování metrik.
 
  ![Snímek obrazovky zobrazení výkonu s metrikami Azure](.\media\resource-group-insights\0012-performance-metrics.png)
+
+## <a name="troubleshooting"></a>Řešení potíží
+
+### <a name="enabling-access-to-alerts"></a>Povolení přístupu k upozornění
+Azure Monitor pro skupiny prostředků musí určitá oprávnění pro přístup k upozornění stavu prostředků ve vaší skupině prostředků. Pokud se zobrazí chybová zpráva při načítání výstrahy, nemáte dostatečná oprávnění. Požádejte správce, aby vám udělil **vlastníka** nebo **Přispěvatel** role pro předplatné obsahující skupiny prostředků.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -8,13 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 07/19/2018
-ms.openlocfilehash: 94d196ceecc0b63b9f0b0fe94f71363dc2086c30
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.date: 09/22/2018
+ms.openlocfilehash: b8d5208992e8f12fae3c010748b2c494e0d50ee8
+ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213646"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46465653"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>Migrace vaší databáze PostgreSQL pomocí výpisu a obnovení.
 Můžete použít [pg_dump](https://www.postgresql.org/docs/9.3/static/app-pgdump.html) extrahovat databázi PostgreSQL do souboru s výpisem paměti a [pg_restore](https://www.postgresql.org/docs/9.3/static/app-pgrestore.html) obnovit ze souboru archivu vytvořené pg_dump databázi PostgreSQL.
@@ -41,7 +41,7 @@ pg_dump -Fc -v --host=localhost --username=masterlogin --dbname=testdb > testdb.
 > 
 
 ## <a name="restore-the-data-into-the-target-azure-database-for-postrgesql-using-pgrestore"></a>Obnovení dat do cílové databáze Azure pro použití pg_restore PostrgeSQL
-Po vytvoření cílové databáze můžete použít příkaz pg_restore a -d, parametr--dbname k obnovení dat do cílové databáze ze souboru s výpisem paměti.
+Po vytvoření cílové databázi, můžete použít příkaz pg_restore a -d, parametr--dbname k obnovení dat do cílové databáze ze souboru s výpisem paměti.
 ```bash
 pg_restore -v --no-owner –-host=<server name> --port=<port> --username=<user@servername> --dbname=<target database name> <database>.dump
 ```
@@ -57,6 +57,34 @@ V tomto příkladu, obnovte data ze souboru s výpisem paměti **testdb.dump** d
 ```bash
 pg_restore -v --no-owner --host=mydemoserver.postgres.database.azure.com --port=5432 --username=mylogin@mydemoserver --dbname=mypgsqldb testdb.dump
 ```
+
+## <a name="optimizing-the-migration-process"></a>Optimalizace procesu migrace
+
+Jeden způsob, jak migrovat existující databázi PostgreSQL do služby Azure Database pro služba PostgreSQL je zálohování databáze na zdroji a obnovení v Azure. Chcete-li minimalizovat čas potřebný k dokončení migrace, zvažte použití následujících parametrů pomocí zálohování a obnovení příkazů.
+
+> [!NOTE]
+> Podrobné informace o syntaxi, najdete v článcích [pg_dump](https://www.postgresql.org/docs/9.6/static/app-pgdump.html) a [pg_restore](https://www.postgresql.org/docs/9.6/static/app-pgrestore.html).
+>
+
+### <a name="for-the-backup"></a>Pro zálohování
+- Proveďte zálohu s přepínačem -Fc, tak, aby obnovení můžete provádět paralelně urychlit. Příklad:
+
+    ```
+    pg_dump -h MySourceServerName -U MySourceUserName -Fc -d MySourceDatabaseName > Z:\Data\Backups\MyDatabaseBackup.dump
+    ```
+
+### <a name="for-the-restore"></a>Pro obnovení
+- Zkopírujte záložní soubory do Azure blob a úložiště a proveďte obnovení z něj. Měla by být rychlejší než provádění obnovení na Internetu. 
+- By mělo být provedeno již ve výchozím nastavení, ale otevřete soubor s výpisem paměti a ověřte, že příkazy create index se po vložení dat. Pokud není tento případ, přesuňte po vložení dat příkazy create index.
+- Obnovit pomocí přepínače -Fc a -j *#* pro paralelní zpracování obnovení. *#* je počet jader na cílovém serveru. Můžete také zkusit s *#* nastavte zobrazení dopadů na dvojnásobný počet jader na cílový server. Příklad:
+
+    ```
+    pg_restore -h MyTargetServer.postgres.database.azure.com -U MyAzurePostgreSQLUserName -Fc -j 4 -d MyTargetDatabase Z:\Data\Backups\MyDatabaseBackup.dump
+    ```
+
+- Soubor s výpisem paměti můžete také upravit tak, že přidáte příkaz *nastavit synchronous_commit = off;* na začátku a příkaz *nastavit synchronous_commit = on;* na konci. Není jeho zapnutím na konci, než aplikace změnit data, může způsobit ztrátu dalších údajů.
+
+Nezapomeňte otestovat a ověřit tyto příkazy v testovacím prostředí před použitím v produkčním prostředí.
 
 ## <a name="next-steps"></a>Další postup
 - Pokud chcete migrovat databázi PostgreSQL pomocí exportu a importu, naleznete v tématu [migrovat vaše databáze PostgreSQL pomocí exportu a importu](howto-migrate-using-export-and-import.md).

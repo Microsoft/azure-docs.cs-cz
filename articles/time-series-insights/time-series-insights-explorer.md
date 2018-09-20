@@ -11,17 +11,27 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/30/2017
-ms.openlocfilehash: dfdc538719b0c7571ba04f4134819d7142f109d3
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: f4a9d09aa701d490e8391d68435e672ff49c771c
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39629136"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364224"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Průzkumník služby Azure Time Series Insights
 Tento článek popisuje různé funkce a možnosti dostupné v rámci webové aplikace Průzkumníka Time Series Insights. Pomocí Průzkumníka časové řady Insights ve webovém prohlížeči vytvořit vizualizacemi vašich dat.
  
 Azure Time Series Insights je plně spravovaná služba pro analýzy, ukládání a vizualizace, která usnadňuje zkoumání a analýzy miliard událostí IoT současně. Poskytuje globální přehled o vašich dat, která umožňuje rychle ověřit vaše řešení IoT a vyhnout se nákladným prostojům důležitých zařízení. Můžete odhalovat skryté trendy, detekovat anomálie a provádět analýzy hlavních příčin téměř v reálném čase. V Průzkumníku Time Series Insights je momentálně ve verzi public preview.
+
+## <a name="video"></a>Video:
+
+V tomto videu se budeme zabývat dotazování na data pomocí Průzkumníka služby Time Series Insights. 
+
+Toto video je založena na videí služby Time Series Insights:  
+<span style="color:blue">Začínáme s Time Series Insights pomocí akcelerátor řešení Azure IoT spustí.</span>
+</br>
+
+> [!VIDEO https://www.youtube.com/embed/SHFPZvrR71s]
 
 ## <a name="prerequisites"></a>Požadavky
 

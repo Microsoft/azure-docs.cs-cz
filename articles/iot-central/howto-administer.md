@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: a43febf1e78f80451b6aeed19e095b2c313d3216
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: adcc0b741cac0ac5038243c80b3da2e0ff872c95
+ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284849"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46466094"
 ---
 # <a name="how-to-administer-your-application"></a>Jak spravovat aplikace
 
@@ -168,6 +168,23 @@ Ve výchozím nastavení všechny bezplatné zkušební verze jsou k dispozici p
 1. Klikněte na tlačítko **prodloužit platnost zkušební verze**. V místní nabídce vyberte odpovídající tenanta Azure Active Directory a potom předplatné Azure pro vaše aplikace IoT Central:
 
 1. Pak klikněte na tlačítko **rozšířit**. Platnost svojí zkušební verze je teď platný po dobu 30 dnů.
+
+## <a name="utilize-the-azure-sdks-to-do-control-plane-operations"></a>Využití sady Azure SDK pro operace roviny řízení.
+
+IoT Central Azure Resource Manageru SDK balíčky jsou k dispozici pro uzel, Python, C#, Ruby, Java a Go. Tyto knihovny podpory operace roviny řízení pro IoT Central, což umožňuje vytváření, výpis, aktualizovat nebo odstranit aplikace IoT Central. Obsahují taky pomocné rutiny pro práci s ověřováním a Chyba zpracování, která je specifická pro jednotlivé jazyky. 
+
+Příklady použití sady SDK Azure Resource Manageru najdete v [ https://github.com/emgarten/iotcentral-arm-sdk-examples ](https://github.com/emgarten/iotcentral-arm-sdk-examples).
+
+Další informace podívejte se na tyto balíčky na Githubu.
+
+| Jazyk | Úložiště | Balíček |
+| ---------| ---------- | ------- |
+| Node | [https://github.com/Azure/azure-sdk-for-node](https://github.com/Azure/azure-sdk-for-node) | [https://www.npmjs.com/package/azure-arm-iotcentral](https://www.npmjs.com/package/azure-arm-iotcentral)
+| Python |[https://github.com/Azure/azure-sdk-for-python](https://github.com/Azure/azure-sdk-for-python) | [https://pypi.org/project/azure-mgmt-iotcentral](https://pypi.org/project/azure-mgmt-iotcentral)
+| C# | [https://github.com/Azure/azure-sdk-for-net](https://github.com/Azure/azure-sdk-for-net) | [https://www.nuget.org/packages/Microsoft.Azure.Management.IotCentral](https://www.nuget.org/packages/Microsoft.Azure.Management.IotCentral)
+| Ruby | [https://github.com/Azure/azure-sdk-for-ruby](https://github.com/Azure/azure-sdk-for-ruby) | [https://rubygems.org/gems/azure_mgmt_iot_central](https://rubygems.org/gems/azure_mgmt_iot_central)
+| Java | [https://github.com/Azure/azure-sdk-for-java](https://github.com/Azure/azure-sdk-for-java) | [https://search.maven.org/search?q=a:azure-mgmt-iotcentral](https://search.maven.org/search?q=a:azure-mgmt-iotcentral)
+| Přejít | [https://github.com/Azure/azure-sdk-for-go](https://github.com/Azure/azure-sdk-for-go) | [https://github.com/Azure/azure-sdk-for-go](https://github.com/Azure/azure-sdk-for-go)
 
 ## <a name="next-steps"></a>Další postup
 

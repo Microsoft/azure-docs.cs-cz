@@ -12,12 +12,12 @@ ms.author: josack
 ms.suite: sql
 ms.prod_service: sql-database
 ms.component: data-movement
-ms.openlocfilehash: 9ca8c42d99f3bd7548c685f03328084865a09906
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 7cad09a3fc02d0c25f164f7e45974019ff9bbb71
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295780"
+ms.locfileid: "46367912"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>Nové DBA v cloudu – Správa vaší databáze ve službě Azure SQL Database
 
@@ -98,7 +98,7 @@ Brána firewall brání přístupu ke svému serveru z externí entitu tím, že
 Můžete vytvořit pravidla brány firewall na úrovni serveru nebo na úrovni databáze. Pravidla brány firewall na úrovni serveru. můžete buď vytvořit na portálu nebo prostřednictvím aplikace SSMS. Získání informací o tom, jak nastavit pravidlo brány firewall na úrovni databáze a serveru, naleznete v tématu: [vytvořit pravidla brány firewall ve službě SQL Database](sql-database-security-tutorial.md#create-a-server-level-firewall-rule-in-the-azure-portal).
 
 #### <a name="service-endpoints"></a>Koncové body služby
-Ve výchozím nastavení není vaše databáze SQL nakonfigurovat tak, aby "Povoluje všem službám Azure" – to znamená, že všechny virtuální počítače v Azure může pokus o připojení k vaší databázi. Tyto pokusy ještě získá ověření. Nicméně pokud nechcete databáze jako přístupné pro všechny IP adresy Azure, můžete zakázat "Povoluje všem službám Azure". Kromě toho můžete nakonfigurovat [koncové body služby virtuální sítě](sql-database-vnet-service-endpoint-rule-overview.md).
+Ve výchozím nastavení, databáze SQL je nakonfigurovaná na "Povolit službám Azure přístup k serveru" – to znamená, že všechny virtuální počítače v Azure může pokus o připojení k vaší databázi. Tyto pokusy ještě získá ověření. Nicméně pokud by například vaše databáze bude přístupný pro všechny IP adresy Azure, můžete zakázat "Povolit službám Azure přístup k serveru". Kromě toho můžete nakonfigurovat [koncové body služby virtuální sítě](sql-database-vnet-service-endpoint-rule-overview.md).
 
 Koncové body služby (SE) umožňují vám umožní vystavit důležité prostředky Azure pouze pro vaše vlastní privátní virtuální síť v Azure. Tímto způsobem, v podstatě eliminovat veřejný přístup k vašim prostředkům. Provoz mezi vaší virtuální sítě do Azure zůstává v páteřní síti Azure. Bez SE dostanete vynuceného tunelování používá směrování paketů. Službě virtual network vynutí přenosy z Internetu do vaší organizace a provoz služeb Azure si projít stejným trasy. S koncovými body služby můžete optimalizovat to od toku paketů přímo z vaší virtuální sítě do služby v páteřní síti Azure.
 

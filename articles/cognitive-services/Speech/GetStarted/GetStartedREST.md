@@ -1,64 +1,65 @@
 ---
-title: Začínáme s rozhraním API pro rozpoznávání řeči Microsoft pomocí REST | Microsoft Docs
-description: REST použijte pro přístup k rozhraní API pro rozpoznávání řeči v na mluvené zvuk převedeno na text kognitivní služby společnosti Microsoft.
+title: Začínáme s využitím REST pomocí rozhraní API pro rozpoznávání řeči Bingu | Dokumentace Microsoftu
+titlesuffix: Azure Cognitive Services
+description: Použití REST pro přístup k rozhraní API pro rozpoznávání řeči v Microsoft Cognitive Services k převést mluvené slovo na text.
 services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 09/15/2017
+ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 53785cdfd75c23910802f2be20e6305817b3b097
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: ed1624648d668f392ed854cccf0843809b7e0e5e
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342660"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46365132"
 ---
-# <a name="get-started-with-speech-recognition-by-using-the-rest-api"></a>Začínáme s rozpoznávání řeči pomocí rozhraní REST API
+# <a name="quickstart-use-the-bing-speech-recognition-rest-api"></a>Rychlý start: Použití rozpoznávání řeči Bingu rozhraní REST API
 
-Aplikace s cloudovou službou řeči můžete vyvíjet pomocí rozhraní REST API mluvené zvuk převést na text.
+Založené na cloudu Speech Service Bingu vám umožní vytvářet aplikace pomocí rozhraní REST API k převést mluvené slovo na text.
 
 ## <a name="prerequisites"></a>Požadavky
 
-### <a name="subscribe-to-the-speech-api-and-get-a-free-trial-subscription-key"></a>Přihlášení k odběru do rozhraní API pro rozpoznávání řeči a získat klíč bezplatné předplatné zkušební verze
+### <a name="subscribe-to-the-speech-api-and-get-a-free-trial-subscription-key"></a>Přihlaste se k rozhraní API pro rozpoznávání řeči odběru a získejte klíč bezplatné předplatné zkušební verze
 
-Rozhraní API pro rozpoznávání řeči je součástí služby kognitivní (dříve Oxford projektu). Můžete získat zkušební předplatné klíče z [kognitivní služby předplatného](https://azure.microsoft.com/try/cognitive-services/) stránky. Po výběru rozhraní API pro rozpoznávání řeči, vyberte **získat klíč rozhraní API** k získání klíče. Vrátí primární a sekundární klíč. Oba klíče jsou svázané s stejné kvótu, takže můžete použít buď klíč.
+Rozhraní Speech API je součástí služeb Cognitive Services (dříve Project Oxford). Můžete získat bezplatné předplatné zkušební verze klíče z [předplatné služeb Cognitive Services](https://azure.microsoft.com/try/cognitive-services/) stránky. Po výběru rozhraní API pro rozpoznávání řeči, vyberte **získat klíč rozhraní API** získat klíč. Vrátí primární a sekundární klíč. Oba klíče jsou svázány se stejnou kvótu, abyste mohli používat ani jeden klíč.
 
 > [!IMPORTANT]
->* Získáte klíč předplatného. Než se dostanete k rozhraní REST API, musíte mít [klíč předplatného](https://azure.microsoft.com/try/cognitive-services/).
+>* Získáte klíč předplatného. Pro přístup k rozhraní REST API, musíte mít [klíč předplatného](https://azure.microsoft.com/try/cognitive-services/).
 >
->* Použijte svůj klíč předplatného. V následující ukázky REST nahraďte YOUR_SUBSCRIPTION_KEY svůj vlastní klíč předplatného. 
+>* Použijte váš klíč předplatného. V následující ukázky REST nahraďte YOUR_SUBSCRIPTION_KEY klíč předplatného. 
 >
->* Odkazovat [ověřování](../how-to/how-to-authentication.md) stránku jak získat klíč předplatného.
+>* Odkazovat [ověřování](../how-to/how-to-authentication.md) stránky pro získání klíč předplatného.
 
 ### <a name="prerecorded-audio-file"></a>Zvukový soubor připraveného obsahu
 
-V tomto příkladu používáme zaznamenaný zvukový soubor pro ilustraci použití rozhraní REST API. Zaznamenejte zvukový soubor sami oznámením krátké věty. Řekněme například, "Co je počasí jako dnes?" nebo "Najít zábavného filmy si chcete přehrát." Rozpoznávání řeči rozhraní API podporuje také externí mikrofon vstup.
+V tomto příkladu používáme zaznamenané zvukový soubor si ukážeme, jak používat rozhraní REST API. Zaznamenejte zvukový soubor fotku říká krátkých frází. Předpokládejme například, že "Jak se počasí, stejně jako dnes?" nebo "Najít zábavných filmy a sledujte." Rozhraní API pro rozpoznávání řeči podporuje také externí mikrofon vstup.
 
 > [!NOTE]
-> Příklad vyžaduje, že zvuk se zaznamenává jako soubor WAV s **PCM jeden kanál (mono), 16 KHz**.
+> V příkladu vyžaduje, že zvuk se zaznamenává jako soubor WAV s **PCM jeden kanál (mono), 16 KHz**.
 
-## <a name="build-a-recognition-request-and-send-it-to-the-speech-recognition-service"></a>Vytvořit žádost o rozpoznávání a odeslat do služby rozpoznávání řeči
+## <a name="build-a-recognition-request-and-send-it-to-the-speech-recognition-service"></a>Žádost o rozpoznávání sestavení a jejich odesílání do službu rozpoznávání řeči
 
-Další krok pro rozpoznávání řeči je odeslat požadavek POST na koncové body HTTP řeči s hlavičky správné žádosti a text.
+Dalším krokem pro rozpoznávání řeči je odeslat požadavek POST do koncových bodů HTTP řeči se správnou žádost hlavička a tělo zprávy.
 
 ### <a name="service-uri"></a>Identifikátor URI služby
 
-Služba rozpoznávání řeči identifikátor URI je definovaný na základě [režimy rozpoznávání](../concepts.md#recognition-modes) a [jazyky rozpoznávání](../concepts.md#recognition-languages):
+Službu rozpoznávání řeči, který je definován identifikátor URI na základě [rozpoznávání režimy](../concepts.md#recognition-modes) a [rozpoznávání jazyků](../concepts.md#recognition-languages):
 
 ```HTTP
 https://speech.platform.bing.com/speech/recognition/<RECOGNITION_MODE>/cognitiveservices/v1?language=<LANGUAGE_TAG>&format=<OUTPUT_FORMAT>
 ```
 
-`<RECOGNITION_MODE>` Určuje režim rozpoznávání a musí mít jednu z následujících hodnot: `interactive`, `conversation`, nebo `dictation`. Je cesta požadovaný prostředek v identifikátoru URI. Další informace najdete v tématu [režimy rozpoznávání](../concepts.md#recognition-modes).
+`<RECOGNITION_MODE>` Určuje režim rozpoznávání a musí být jeden z následujících hodnot: `interactive`, `conversation`, nebo `dictation`. To je cesta požadovaný prostředek v identifikátoru URI. Další informace najdete v tématu [rozpoznávání režimy](../concepts.md#recognition-modes).
 
-`<LANGUAGE_TAG>` je povinný parametr v řetězci dotazu. Definuje cílový jazyk pro převod zvuk: například `en-US` pro angličtinu (Spojené státy). Další informace najdete v tématu [jazyky rozpoznávání](../concepts.md#recognition-languages).
+`<LANGUAGE_TAG>` je povinný parametr v řetězci dotazu. Definuje cílový jazyk pro převod zvuku: například `en-US` pro angličtinu (Spojené státy). Další informace najdete v tématu [rozpoznávání jazyků](../concepts.md#recognition-languages).
 
-`<OUTPUT_FORMAT>` je volitelný parametr v řetězci dotazu. Jeho povolené hodnoty jsou `simple` a `detailed`. Ve výchozím nastavení, služba vrátí výsledky v `simple` formátu. Další informace najdete v tématu [výstupní formát](../concepts.md#output-format).
+`<OUTPUT_FORMAT>` je volitelný parametr v řetězci dotazu. Povolené hodnoty jsou `simple` a `detailed`. Ve výchozím nastavení, tato služba vrátí výsledky v `simple` formátu. Další informace najdete v tématu [výstupní formát](../concepts.md#output-format).
 
-Některé příklady služby identifikátory URI jsou uvedené v následující tabulce.
+V následující tabulce jsou uvedeny některé příklady identifikátorů URI služby.
 
 | Režim rozpoznávání  | Jazyk | Výstupní formát | Identifikátor URI služby |
 |---|---|---|---|
@@ -67,18 +68,18 @@ Některé příklady služby identifikátory URI jsou uvedené v následující 
 | `dictation` | fr-FR | Jednoduchý | https://speech.platform.bing.com/speech/recognition/dictation/cognitiveservices/v1?language=fr-FR&format=simple |
 
 > [!NOTE]
-> URI služby je potřeba jenom v případě, že vaše aplikace používá rozhraní REST API pro volání služby rozpoznávání řeči. Pokud použijete jednu z [klientské knihovny](GetStartedClientLibraries.md), obvykle nemusíte vědět, které URI se používá. Knihovny klienta může použít jinou službu identifikátory URI, které jsou k dispozici pouze pro konkrétního klienta knihovny. Další informace najdete v knihovně klienta podle vašeho výběru.
+> Identifikátor URI služby je potřeba pouze v případě, že vaše aplikace používá rozhraní REST API pro volání službu rozpoznávání řeči. Pokud použijete jeden z [klientské knihovny](GetStartedClientLibraries.md), obvykle není nutné vědět, jaké identifikátor URI se používá. Tyto klientské knihovny může používat jinou službu identifikátory URI, které se dají použít jenom pro konkrétní klientské knihovny. Další informace najdete v klientské knihovně podle vašeho výběru.
 
 ### <a name="request-headers"></a>Hlavičky požadavku
 
-Následující pole musí být nastavena v hlavičce žádosti:
+Následující pole musí být nastaveny v hlavičce žádosti:
 
-- `Ocp-Apim-Subscription-Key`: Při každém volání služby, je nutné předat svůj klíč předplatného v `Ocp-Apim-Subscription-Key` záhlaví. Služba rozpoznávání řeči také podporuje předávání autorizace tokeny místo předplatné klíče. Další informace najdete v tématu [ověřování](../How-to/how-to-authentication.md).
-- `Content-type`: `Content-type` Pole popisuje formát a kodeků zvuk datového proudu. V současné době pouze WAV soubor a je podporováno kódování PCM Mono 16000. Hodnota Content-type pro tento formát je `audio/wav; codec=audio/pcm; samplerate=16000`.
+- `Ocp-Apim-Subscription-Key`: Při každém volání služby, je nutné předat klíč předplatného. v `Ocp-Apim-Subscription-Key` záhlaví. Speech Service podporuje také povolení předávání tokenů místo klíče předplatného. Další informace najdete v tématu [ověřování](../How-to/how-to-authentication.md).
+- `Content-type`: `Content-type` Pole popisuje formátu a kodek zvukový datový proud. V současné době pouze soubor WAV a PCM Mono 16000 kódování je podporováno. Hodnota Content-type pro tento formát je `audio/wav; codec=audio/pcm; samplerate=16000`.
 
-`Transfer-Encoding` Pole je nepovinné. Pokud nastavíte toto pole na `chunked`, můžete jej zvukovém souboru na malé bloky. Další informace najdete v tématu [blokové přenos](../How-to/how-to-chunked-transfer.md).
+`Transfer-Encoding` Pole je volitelné. Pokud nastavíte toto pole na `chunked`, můžete jej zvuku do malých bloků. Další informace najdete v tématu [přenos rozdělený do bloků dat](../How-to/how-to-chunked-transfer.md).
 
-Zde je ukázka hlavička požadavku:
+Hlavička požadavku vzorku je následující:
 
 ```HTTP
 POST https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=en-US&format=detailed HTTP/1.1
@@ -90,12 +91,12 @@ Transfer-Encoding: chunked
 Expect: 100-continue
 ```
 
-### <a name="send-a-request-to-the-service"></a>Poslat žádost o službu
+### <a name="send-a-request-to-the-service"></a>Odeslat žádost o službu
 
-Následující příklad ukazuje, jak k odeslání požadavku na rozpoznávání řeči ke koncovým bodům řeči REST. Použije `interactive` rozpoznávání režimu.
+Následující příklad ukazuje, jak odeslat žádost o rozpoznávání řeči pro koncové body REST řeči. Používá `interactive` rozpoznávání režimu.
 
 > [!NOTE]
-> Nahraďte `YOUR_AUDIO_FILE` s cestou k souboru připraveného obsahu zvuk. Nahraďte `YOUR_SUBSCRIPTION_KEY` s svůj vlastní klíč předplatného.
+> Nahraďte `YOUR_AUDIO_FILE` cestou k souboru připraveného obsahu zvuku. Nahraďte `YOUR_SUBSCRIPTION_KEY` s klíči předplatného.
 
 # <a name="powershelltabpowershell"></a>[PowerShell](#tab/Powershell)
 
@@ -121,12 +122,12 @@ $RecoResponse
 
 ```
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# <a name="curltabcurl"></a>[Curl](#tab/curl)
 
-Tento příklad používá curl v systému Linux s bash. Pokud není k dispozici na vaši platformu, možná muset nainstalovat curl. Tento příklad funguje taky na emulaci ve Windows, Git Bash, zsh a další součásti pro.
+V příkladu používá curl v Linuxu pomocí prostředí bash. Pokud není dostupný na vaší platformě, může být potřeba nainstalovat nástroj curl. Tento příklad funguje taky na Cygwin na Windows, Git Bash, zsh a jiné prostředí.
 
 > [!NOTE]
-> Zachovat `@` před název souboru zvuk při nahrazování `YOUR_AUDIO_FILE` s cestou k souboru připraveného obsahu zvuk, jako je znamená, že hodnota `--data-binary` je název souboru místo data.
+> Zachovat `@` před názvem zvukového souboru při nahrazování `YOUR_AUDIO_FILE` cestou k souboru připraveného obsahu zvuku, jako to znamená, že hodnota `--data-binary` je název souboru, ne data.
 
 ```
 curl -v -X POST "https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=en-us&format=detailed" -H "Transfer-Encoding: chunked" -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY" -H "Content-type: audio/wav; codec=audio/pcm; samplerate=16000" --data-binary @YOUR_AUDIO_FILE
@@ -174,12 +175,12 @@ using (FileStream fs = new FileStream(YOUR_AUDIO_FILE, FileMode.Open, FileAccess
 
 ## <a name="process-the-speech-recognition-response"></a>Zpracování odpovědi rozpoznávání řeči
 
-Po zpracování požadavku, služba rozpoznávání řeči vrátí výsledky v odpovědi jako formátu JSON.
+Speech Service po zpracování požadavku, vrátí výsledky v odpovědi ve formátu JSON.
 
 > [!NOTE]
-> Pokud předchozí kód vrátí chybu, najdete v části [Poradce při potížích s](../troubleshooting.md) vyhledejte možnou příčinu.
+> Pokud předchozí kód vrátí chybu, přečtěte si téma [Poradce při potížích s](../troubleshooting.md) vyhledejte možnou příčinu.
 
-Následující fragment kódu ukazuje příklad jak přečíst odpověď z datového proudu.
+Následující fragment kódu ukazuje příklad, jak si můžete přečíst odpověď z datového proudu.
 
 # <a name="powershelltabpowershell"></a>[PowerShell](#tab/Powershell)
 
@@ -188,9 +189,9 @@ Následující fragment kódu ukazuje příklad jak přečíst odpověď z datov
 ConvertTo-Json $RecoResponse
 ```
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# <a name="curltabcurl"></a>[Curl](#tab/curl)
 
-V tomto příkladu curl přímo vrátí zprávu odpovědi v řetězci. Pokud chcete zobrazit ve formátu JSON, můžete další nástroje, například jq.
+V tomto příkladu vrátí curl přímo zprávy s odpovědí v řetězci. Pokud chcete zobrazit ve formátu JSON, můžete použít další nástroje, například jq.
 
 ```
 curl -X POST "https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=en-us&format=detailed" -H "Transfer-Encoding: chunked" -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY" -H "Content-type: audio/wav; codec=audio/pcm; samplerate=16000" --data-binary @YOUR_AUDIO_FILE | jq
@@ -241,17 +242,17 @@ OK
 
 Rozhraní REST API má určitá omezení:
 
-- Datový proud zvuku podporuje pouze do 15 sekund.
-- Při rozpoznávání nepodporuje mezilehlých výsledků. Uživatelé obdrží pouze poslední rozpoznávání výsledek.
+- Zvukový datový proud podporuje pouze do 15 sekund.
+- Při rozpoznávání nepodporuje mezilehlých výsledků. Uživatelé dostanou jenom poslední rozpoznávání výsledek.
 
-Chcete-li odebrat tato omezení, použijte řeči [klientské knihovny](GetStartedClientLibraries.md). Nebo může spolupracovat přímo s [protokol WebSocket řeči](../API-Reference-REST/websocketprotocol.md).
+Chcete-li odebrat tato omezení, umožňuje využít řeč [klientské knihovny](GetStartedClientLibraries.md). Nebo může spolupracovat přímo s [protokol WebSocket řeči](../API-Reference-REST/websocketprotocol.md).
 
 ## <a name="whats-next"></a>Kam dál
 
-- Chcete-li zjistit, jak používat rozhraní API REST v C#, Java, atd., podívejte na tyto [ukázkové aplikace](../samples.md).
-- Vyhledejte a opravte chyby, přečtěte si téma [Poradce při potížích s](../troubleshooting.md).
-- Použití dalších pokročilých funkcí naleznete v tématu jak začít pracovat s použitím řeči [klientské knihovny](GetStartedClientLibraries.md).
+- Chcete-li zjistit, jak používat rozhraní REST API v jazyce C#, Java, atd., informace najdete v těchto [ukázkové aplikace](../samples.md).
+- Účelem vypátrání a opravení chyb, naleznete v tématu [Poradce při potížích s](../troubleshooting.md).
+- Pokud chcete používat pokročilejší funkce, zjistit, jak začít tím, že pomocí řeči [klientské knihovny](GetStartedClientLibraries.md).
 
 ### <a name="license"></a>Licence
 
-Všechny sady SDK kognitivní služeb a ukázky licenci s licencí MIT. Další informace najdete v tématu [licence](https://github.com/Microsoft/Cognitive-Speech-STT-JavaScript/blob/master/LICENSE.md).
+Všechny Cognitive Services SDK a ukázky jsou licencovány s licencí MIT. Další informace najdete v tématu [licence](https://github.com/Microsoft/Cognitive-Speech-STT-JavaScript/blob/master/LICENSE.md).

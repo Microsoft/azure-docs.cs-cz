@@ -1,32 +1,33 @@
 ---
-title: Jak vybrat režim rozpoznávání | Microsoft Docs
-description: Jak zvolit nejlepší rozpoznávání režim.
+title: Jak zvolit režim rozpoznávání řeči Bingu | Dokumentace Microsoftu
+titlesuffix: Azure Cognitive Services
+description: Jak zvolit nejlepší režim rozpoznávání ve zpracování řeči Bingu.
 services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 09/15/2017
+ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 4f02b683dde16b537ae5554e6435c068f0fcb808
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6ea11054e3062c0a265701f6d7fdd136cb692213
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342628"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46366399"
 ---
-# <a name="speech-recognition-modes"></a>Režimy rozpoznávání řeči
+# <a name="bing-speech-recognition-modes"></a>Režimy rozpoznávání řeči Bingu
 
-Společnosti Microsoft *řeči na Text* rozhraní API podporují více režimů rozpoznávání řeči. Vyberte režim, který poskytne nejlepší výsledky rozpoznávání pro vaši aplikaci.
+Bing Speech to Text API podporovat více režimů rozpoznávání řeči. Zvolte režim, který poskytne nejlepší výsledky rozpoznávání pro vaši aplikaci.
 
 | Mode | Popis |
 |---|---|
-| *interaktivní* | "Příkazy a ovládání" rozpoznávání pro scénáře interaktivního uživatele aplikace. Uživatelé řeči krátké fráze určený jako příkazy k aplikaci. |
-| *diktování* | Průběžné rozpoznávání pro diktování scénáře. Uživatelé řeči delší věty, které se zobrazují jako text. Uživatelé přijmout více formální hovořícího stylu. |
-| *konverzace* | Průběžné rozpoznávání pro přepisování konverzace mezi člověka. Uživatelé přijmout méně formální hovořícího styl a může alternativní mezi delší věty a kratší slovní spojení.
+| *Interaktivní* | "Příkazy a ovládání" rozpoznávání pro interaktivní uživatelské scénáře aplikací. Uživatelům číst obsah krátké fráze určené jako příkazy, které aplikace. |
+| *Diktování* | Průběžné rozpoznávání pro scénáře diktování. Uživatelé mluvit delší věty, které se zobrazují jako text. Uživatelé přijmou formálnější styl mluvy. |
+| *Konverzace* | Průběžné rozpoznávání zdlouhavého přepisování pořídili konverzace mezi lidi. Uživatelé přijmou méně formální styl mluvy a může přepínat mezi delší věty a kratší frází.
 
 > [!NOTE]
-> Při použití těchto režimech platí [rozhraní REST API](../GetStarted/GetStartedREST.md). [Klientské knihovny](../GetStarted/GetStartedClientLibraries.md) použít jiné parametry k určení režimu rozpoznávání. Další informace najdete v knihovně klienta podle vašeho výběru.
+> Při použití těchto režimech platí [rozhraní REST API](../GetStarted/GetStartedREST.md). [Klientské knihovny](../GetStarted/GetStartedClientLibraries.md) použít jiné parametry pro určení režimu rozpoznávání. Další informace najdete v klientské knihovně podle vašeho výběru.
 
-Další informace najdete v tématu [režimy rozpoznávání](../concepts.md#recognition-modes) stránky.
+Další informace najdete v tématu [rozpoznávání režimy](../concepts.md#recognition-modes) stránky.

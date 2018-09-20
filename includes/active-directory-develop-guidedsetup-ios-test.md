@@ -1,3 +1,27 @@
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: active-directory
+documentationcenter: dev-center-name
+author: andretms
+manager: mtillman
+editor: ''
+ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: ios
+ms.workload: identity
+ms.date: 09/19/2018
+ms.author: andret
+ms.custom: include file
+ms.openlocfilehash: eb56712610266d974d2a646412700da5806e9c30
+ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46466139"
+---
 ## <a name="test-querying-the-microsoft-graph-api-from-your-ios-application"></a>Testování dotazů na rozhraní Microsoft Graph API z aplikace pro iOS
 
 Chcete-li spustit kód v simulátoru, stiskněte **příkaz** + **R**.

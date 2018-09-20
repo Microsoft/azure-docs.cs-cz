@@ -9,15 +9,15 @@ ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
 ms.workload: On Demand
-ms.date: 07/25/2018
+ms.date: 09/19/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 5e45bff827a8c376d4b35ee88f1f000c2b122443
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 803dddd13ab3b18b6f161be9c0004d18c8d69f1e
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/19/2018
-ms.locfileid: "46298230"
+ms.locfileid: "46364190"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Přehled provozní kontinuity se službou Azure SQL Database
 
@@ -122,12 +122,10 @@ Pokud používáte jako mechanismus obnovení aktivní geografickou replikaci a 
 > 
 
 ### <a name="perform-a-geo-restore"></a>Provedení geografického obnovení
-Pokud používáte automatizované zálohování s replikací geograficky redundantního úložiště jako mechanismus obnovení, [zahajte obnovení databáze pomocí geografického obnovení](sql-database-disaster-recovery.md#recover-using-geo-restore). Obnovení obvykle dojde během 12 hodin – se ztrátou dat až jedné hodiny vzhledem k pořizování poslední záloha protokolu a geograficky replikované do jiné oblasti. Dokud se obnovení nedokončí, databáze není schopná zaznamenávat žádné transakce ani reagovat na dotazy. Při obnovení databáze na poslední dostupný bod v čase, obnovení geo-secondary do libovolného bodu v čase se momentálně nepodporuje.
+Pokud používáte automatizovaných záloh s geograficky redundantní úložiště (standardně povoleno), můžete obnovit pomocí databáze [geografické obnovení](sql-database-disaster-recovery.md#recover-using-geo-restore). Obnovení obvykle dojde během 12 hodin – se ztrátou dat až jednu hodinu v závislosti při poslední hodinové rozdílové zálohy byla přijata a replikovat. Dokud se obnovení nedokončí, databáze není schopná zaznamenávat žádné transakce ani reagovat na dotazy. Mějte na paměti, geografické obnovení pouze obnoví databázi k poslední dostupný bod v čase.
 
 > [!NOTE]
 > Pokud datové centrum vrátí do režimu online předtím, než přepnete aplikace k obnovené databázi, můžete zrušit obnovení.  
->
->
 
 ### <a name="perform-post-failover--recovery-tasks"></a>Provedení úloh po převzetí služeb při selhání nebo obnovení
 Po obnovení s použitím libovolného mechanismu musíte provést následující dodatečné úlohy, abyste pro uživatele zprovoznili své aplikace:

@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/19/2018
+ms.date: 09/19/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: c5d61da61f6ec98a1cac37ce9b12b28019ce2ae1
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 7f8e9e8d333b87113783c566222b2d7ea57c411e
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44058382"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46368449"
 ---
 ## <a name="set-up-your-project"></a>Nastavení projektu
 
@@ -33,27 +33,26 @@ Aplikace, kterou vytvoříte v této příručce se zobrazí tlačítko, které 
 >
 
 Jak vytvořit aplikaci, postupujte takto:
+
 1. V sadě Visual Studio, vyberte **souboru** > **nový** > **projektu**.
 2. V části **šablony**vyberte **Visual C#**.
-3. Vyberte **aplikace WPF** nebo **aplikace WPF**, v závislosti na verzi verze sady Visual Studio, kterou používáte.
+3. Vyberte **aplikace WPF (.NET Framework)**, v závislosti na verzi verze sady Visual Studio, kterou používáte.
 
 ## <a name="add-msal-to-your-project"></a>Do projektu přidejte MSAL
+
 1. V sadě Visual Studio, vyberte **nástroje** > **Správce balíčků NuGet**> **Konzola správce balíčků**.
 2. V okně konzoly Správce balíčků vložte následující příkaz prostředí Azure PowerShell:
 
     ```powershell
-    Install-Package Microsoft.Identity.Client -Pre -Version 1.1.4-preview0002
+    Install-Package Microsoft.Identity.Client -Pre
     ```
 
     > [!NOTE] 
-    > Tento příkaz nainstaluje knihovny Microsoft Authentication Library. Knihovna MSAL zpracovává načítání, ukládání do mezipaměti a aktualizaci tokeny uživatele, které se používají pro přístup k rozhraní API, která jsou chráněné službou Azure Active Directory v2.
+    > Tento příkaz nainstaluje knihovny Microsoft Authentication Library. Knihovna MSAL zpracovává načítání, ukládání do mezipaměti a aktualizaci tokeny uživatele, které se používají pro přístup k rozhraní API, která jsou chráněné službou Azure Active Directory v2.0
     >
 
-    > [!NOTE]
-    > V tomto rychlém startu tak není, ale použijte nejnovější verzi MSAL.NET, ale pracujeme na jeho aktualizace
-    > 
-
 ## <a name="add-the-code-to-initialize-msal"></a>Přidejte kód pro inicializaci MSAL
+
 V tomto kroku vytvoříte třídu pro zpracování interakci s MSAL, jako je zpracování tokenů.
 
 1. Otevřít *App.xaml.cs* soubor a přidejte odkaz na MSAL do třídy:
@@ -97,4 +96,3 @@ A *souboru MainWindow.xaml* soubor by měl být automaticky vytvoří jako souč
     </StackPanel>
 </Grid>
 ```
-

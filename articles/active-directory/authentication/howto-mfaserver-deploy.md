@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: b882f8d8ffc818de5ec459f504965015f55897a3
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: d69addac0647513e00663110ac82eef343b77983
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159722"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364614"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Začínáme s Azure Multi-Factor Authentication Serverem
 
@@ -49,6 +49,7 @@ Ujistěte se, že server, který používáte pro Azure Multi-Factor Authenticat
 |:--- |:--- |
 | Hardware |<li>200 MB volného místa na pevném disku</li><li>Procesor kompatibilní s x32 nebo x64</li><li>1 GB RAM nebo víc</li> |
 | Software |<li>Windows Server 2016</li><li>Windows Server 2012 R2</li><li>Windows Server 2012</li><li>Windows Server 2008 R2</li><li>Windows Server 2008, aktualizace SP1, SP2</li><li>Windows Server 2003 R2</li><li>Windows Server 2003, aktualizace SP1, SP2</li><li>Windows 10</li><li>Windows 8.1, všechny edice</li><li>Windows 8, všechny edice</li><li>Windows 7, všechny edice</li><li>Windows Vista, všechny edice, aktualizace SP1, SP2</li><li>Microsoft .NET 4.0 Framework</li><li>IIS 7.0 nebo novější, pokud instalujete uživatelský portál nebo sadu SDK webové služby</li> |
+| Oprávnění | Účet správce domény nebo správce podnikové sítě k registraci ve službě Active Directory |
 
 ### <a name="azure-mfa-server-components"></a>Komponenty Azure MFA Serveru
 

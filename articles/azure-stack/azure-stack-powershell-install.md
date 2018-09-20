@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.author: sethm
 ms.reviewer: thoroet
-ms.openlocfilehash: c87b7f18ff5bf94bf842fa7a7e31cad4c7f47dfe
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 3603ec1aa8fa6f76cb6b7a75fa7df334b4102aec
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46128032"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46367743"
 ---
 # <a name="install-powershell-for-azure-stack"></a>Instalace Powershellu pro Azure Stack
 
@@ -100,7 +100,7 @@ Spusťte následující skript prostředí PowerShell k instalaci těchto modul�
     # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
     Use-AzureRmProfile -Profile 2018-03-01-hybrid -Force
 
-    Install-Module -Name AzureStack -RequiredVersion 1.5.0 -Force
+    Install-Module -Name AzureStack -RequiredVersion 1.5.0
     ```
 
 > [!Note]  
@@ -111,7 +111,7 @@ Spusťte následující skript prostředí PowerShell k instalaci těchto modul�
     ```PowerShell  
     Install-Module -Name AzureRm.BootStrapper
     Use-AzureRmProfile -Profile 2017-03-09-profile -Force
-    Install-Module -Name AzureStack -RequiredVersion 1.4.0 -Force
+    Install-Module -Name AzureStack -RequiredVersion 1.4.0
     ```
 
   - Azure Stack 1804 nebo starší.
@@ -119,7 +119,7 @@ Spusťte následující skript prostředí PowerShell k instalaci těchto modul�
     ```PowerShell  
     Install-Module -Name AzureRm.BootStrapper
     Use-AzureRmProfile -Profile 2017-03-09-profile -Force
-    Install-Module -Name AzureStack -RequiredVersion 1.2.11 -Force
+    Install-Module -Name AzureStack -RequiredVersion 1.2.11
     ```
 
 Potvrďte instalaci spuštěním následujícího příkazu:

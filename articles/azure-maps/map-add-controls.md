@@ -3,17 +3,17 @@ title: Přidat ovládací prvky mapy ve službě Azure Maps | Dokumentace Micros
 description: Jak přidat ovládací prvek lupy, výška ovládacího prvku, otáčení ovládacího prvku a styl ovládacího prvku pro výběr do mapy ve službě Azure Maps.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 08/29/2018
+ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: ddbb621561d8fcef3637e036be004d17aea76f40
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 4410c2ec5851ff210ca8a5fb4f482e5e12d0b8e8
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129297"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46367793"
 ---
 # <a name="add-map-controls-to-azure-maps"></a>Přidání ovládacích prvků mapa ke službě Azure Maps
 
@@ -63,7 +63,7 @@ Třetí bloku kódu vytvoří objekt Lupa pomocí atlas [ZoomControl](https://do
 
 Čtvrtý blok kódu vytvoří objekt výšku ovládacího prvku pomocí atlas [PitchControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.pitchcontrol?view=azure-iot-typescript-latest) a přidá je do mapy pomocí mapy [addControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol) metody.
 
-Poslední blok kódu přidá objekt Style výběr do mapy pomocí atlas [StyleControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.stylecontrol?view=azure-iot-typescript-latest#stylecontrol) a přidá je do mapy pomocí mapy [addControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol) metody.
+Poslední blok kódu vytvoří objekt pro výběr stylu s použitím atlas [StyleControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.stylecontrol?view=azure-iot-typescript-latest#stylecontrol) a přidá je do mapy pomocí mapy [addControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol) metody.
 
 ## <a name="next-steps"></a>Další postup
 

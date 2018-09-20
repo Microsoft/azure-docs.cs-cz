@@ -8,16 +8,22 @@ ms.service: time-series-insights
 ms.topic: article
 ms.date: 05/24/2018
 ms.author: anshan
-ms.openlocfilehash: 11bea78315ff7ebb4b0c167dbb687ce940907527
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: b9d5e922a9a0a5f50e2ced896f5957fbc90d7eb4
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628908"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364359"
 ---
 # <a name="how-to-shape-json-to-maximize-query-performance"></a>Jak tvarovat JSON pro zajištění maximálního výkonu dotazů 
 
 Tento článek obsahuje pokyny pro úpravu JSON pro maximalizaci efektivity vašich dotazů Azure Time Series Insights (TSI).
+
+## <a name="video"></a>Video: 
+
+### <a name="in-this-video-we-cover-best-practices-around-shaping-json-to-meet-your-storage-needsbr"></a>V tomto videu si probereme osvědčené postupy tvarování JSON podle svých potřeb úložiště.</br>
+
+> [!VIDEO https://www.youtube.com/embed/b2BD5hwbg5I]
 
 ## <a name="best-practices"></a>Osvědčené postupy
 
@@ -181,7 +187,7 @@ Mějte na paměti následující v předchozím příkladu a podobně jako v prv
 
 - z důvodů uvedených v prvním příkladu se vyhnout zbytečné vlastnosti.
 
-- referenční data slouží k omezení počtu bajtů přenesených v síti Představujeme **deviceId**, jedinečné dvojice **messageId** a **deviceLocation**. Je použit složený klíč, **series.tagId**, jedinečné dvojice **typ** a **jednotku**. Složený klíč umožňuje aplikaci **deviceId** a **series.tagId** pár se použije k odkazování na čtyři hodnoty: **zadejte ID zprávy, deviceLocation,** a **jednotky **. Tato data je spojen s telemetrická data v době příchozího přenosu dat a následně uložená ve službě TSI pro dotazování.
+- referenční data slouží k omezení počtu bajtů přenesených v síti Představujeme **deviceId**, jedinečné dvojice **messageId** a **deviceLocation**. Je použit složený klíč, **series.tagId**, jedinečné dvojice **typ** a **jednotku**. Složený klíč umožňuje aplikaci **deviceId** a **series.tagId** pár se použije k odkazování na čtyři hodnoty: **zadejte ID zprávy, deviceLocation,** a **jednotky** . Tato data je spojen s telemetrická data v době příchozího přenosu dat a následně uložená ve službě TSI pro dotazování.
 
 - z důvodů uvedených v prvním příkladu se používají dvě vrstvy vnoření.
 

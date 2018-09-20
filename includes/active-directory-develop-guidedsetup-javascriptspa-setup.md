@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: 724166d402f81fa3a2c977d107111f5a0c32571d
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: cc5272ed133f4fa5c99eb3b3a397ac2c53b93b7c
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46293471"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46473887"
 ---
 ## <a name="setting-up-your-web-server-or-project"></a>Nastavení webového serveru nebo projektu
 
@@ -81,9 +81,9 @@ Pokyny v této příručce jsou založené na Node.js a sadě Visual Studio 2017
     </div>
     <button id="signOutButton" type="button" class="btn btn-primary hidden" onclick="signOut()">Sign out</button>
 
-    <!-- This app uses cdn to reference msal.js (recommended). 
+    <!-- This app uses cdn to reference msal.js (recommended).
          You can also download it from: https://github.com/AzureAD/microsoft-authentication-library-for-js -->
-    <script src="https://secure.aadcdn.microsoftonline-p.com/lib/0.1.3/js/msal.min.js"></script>
+    <script src="https://secure.aadcdn.microsoftonline-p.com/lib/0.2.3/js/msal.min.js"></script>
 
     <!-- The 'bluebird' and 'fetch' references below are required if you need to run this application on Internet Explorer -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.4/bluebird.min.js"></script>

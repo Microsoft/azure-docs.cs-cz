@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 09/19/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: af8c0b6a4aa0c3b6e25f92dc450faa22a01ee374
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 42b157a63b76474f6c9482da75072878fe9291e0
+ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579163"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46465992"
 ---
 # <a name="log-analytics-data-security"></a>Zabezpečení dat analýzy protokolů
 Účelem tohoto dokumentu je poskytnout konkrétní informace o Azure Log Analytics k doplnění informací na [Centrum zabezpečení Azure](../security/security-microsoft-trust-center.md).  
@@ -44,9 +44,9 @@ Kontaktujte nás s dotazy, návrhy nebo potíže některý z následujících in
 
 [PCI Security Standards Council](https://www.pcisecuritystandards.org/) nastavil [termínu 30. června 2018](https://www.pcisecuritystandards.org/pdfs/PCI_SSC_Migrating_from_SSL_and_Early_TLS_Resource_Guide.pdf) zakázat starší verze protokolu TLS/SSL a upgrade bezpečnější protokoly. Jakmile Azure sníží stále podporuje starší verze, pokud vaši agenti nemohou komunikovat přes alespoň TLS 1.2, nemohli odesílat data do Log Analytics. 
 
-Nedoporučujeme explicitním nastavením agenta na používat jenom TLS 1.2, pokud není zcela nezbytné jako Toto může rozbít funkce zabezpečení na úrovni platformy, které vám umožní automaticky zjistit a využít výhod novější bezpečnější protokoly, jakmile budou dostupné jako TLS 1.3. 
+Nedoporučujeme explicitním nastavením agenta na používat jenom TLS 1.2, pokud není nezbytně nutné, protože může dojít k narušení zabezpečení na úrovni funkce platformy, které umožňují automaticky rozpoznat a využijte výhod, jakmile budou k dispozici, například novější bezpečnější protokoly jako TLS 1.3. 
 
-### <a name="platform-specific-guidance"></a>Konkrétní pokyny k platformě
+### <a name="platform-specific-guidance"></a>Pokyny pro konkrétní platformu
 
 |Platformu nebo jazyk | Podpora | Další informace |
 | --- | --- | --- |
@@ -117,11 +117,11 @@ Log Analytics software development a služba týmu informace o zabezpečení a z
 
 Každý člen týmu vývoje obdrží školení o zabezpečení formální aplikace. Interně používáme systém správy verzí pro vývoj softwaru. Každý projekt software je chráněn systém správy verzí.
 
-Microsoft má tým zabezpečení a dodržování předpisů, který dohlíží a vyhodnocuje všechny služby v Microsoftu. Informace o zabezpečení vedoucí pracovníci pověření ochranou tvoří tým a nejsou spojené s technické oddělení, které vyvíjí Log Analytics. Pracovníci zabezpečení mají své vlastní řetězec správy a chování nezávislé hodnocení produktů a služeb k zajištění zabezpečení a dodržování předpisů.
+Microsoft má tým zabezpečení a dodržování předpisů, který dohlíží a vyhodnocuje všechny služby v Microsoftu. Informace o zabezpečení vedoucí pracovníci pověření ochranou tvoří tým a nejsou spojené s technické týmy, které vyvíjí Log Analytics. Pracovníci zabezpečení mají své vlastní řetězec správy a chování nezávislé hodnocení produktů a služeb k zajištění zabezpečení a dodržování předpisů.
 
 Zprávy o všech programy zabezpečení informací v Microsoftu se dostávat oznámení od Microsoftu správní rady.
 
-Týmový vývoj a služby softwaru Log Analytics aktivně pracuje s týmy Microsoft Legal a dodržování předpisů a další oborových partnerů k získání různých certifikace.
+Vývoj softwaru Log Analytics a týmu service jsou aktivně pracuje s týmy Microsoft Legal a dodržování předpisů a další oborových partnerů získat různé certifikáty.
 
 ## <a name="certifications-and-attestations"></a>Certifikací a atestací
 Azure Log Analytics splňuje následující požadavky:
@@ -176,7 +176,7 @@ Jak je popsáno výše, data ze serveru pro správu nebo přímo připojených a
 ## <a name="3-the-log-analytics-service-receives-and-processes-data"></a>3. Služba Log Analytics přijímá a zpracovává data
 Služba Log Analytics zajišťuje, že příchozí data z důvěryhodného zdroje pomocí ověřování certifikátů a integritu dat s ověřováním Azure. Nezpracované nezpracovaná data se pak ukládá v Centru událostí Azure v oblasti, které nakonec se uloží data v klidovém stavu. Typ dat, která je uložena závisí na typech řešení, které byly naimportovány a používá ke shromažďování dat. Log Analytics pak služby procesy nezpracovaných dat a ingestuje do databáze.
 
-Doba uchování shromážděná data uložená v databázi, závisí na vybrané cenového plánu. Pro *Free* vrstvy, shromážděná data se po dobu 7 dní k dispozici. Pro *Paid* úrovni shromažďovat data po dobu 31 dnů ve výchozím nastavení je k dispozici, ale je možné rozšířit na 730 dnů. Data se ukládají v klidovém stavu ve službě Azure storage k zajištění důvěrnosti data zašifrovaná. Poslední dva týdny dat jsou také uloženy v mezipaměti založené na jednotkách SSD a tato mezipaměť není aktuálně zašifrovaný.  Plánujeme podporu šifrování v pozdější polovině roku 2018.  
+Doba uchování shromážděná data uložená v databázi, závisí na vybrané cenového plánu. Pro *Free* vrstvy, shromážděných dat je k dispozici sedm dní. Pro *Paid* úrovni shromažďovat data po dobu 31 dnů ve výchozím nastavení je k dispozici, ale je možné rozšířit na 730 dnů. Data jsou uložena v klidovém stavu ve službě Azure storage k zajištění důvěrnosti data zašifrovaná a data se replikují v rámci místní oblasti pomocí místně redundantního úložiště (LRS). Poslední dva týdny dat jsou také uloženy v mezipaměti založené na jednotkách SSD a tato mezipaměť není aktuálně zašifrovaný.  Aktuálně pracujeme na podporují šifrování mezipaměti založené na jednotkách SSD.      
 
 ## <a name="4-use-log-analytics-to-access-the-data"></a>4. Přístup k datům pomocí Log Analytics
 Pro přístup k pracovním prostoru Log Analytics, přihlášení k webu Azure portal pomocí účtu organizace nebo účtu Microsoft, který jste dřív nastavili. Všechny přenosy mezi portálem a službou Log Analytics se odesílají prostřednictvím zabezpečeného kanálu protokolu HTTPS. Během používání portálu, se vygeneruje ID relace na straně klienta uživatelské (webový prohlížeč) a data se ukládají do místní mezipaměti, dokud nebude ukončena relace. Když byla ukončena, odstraní se mezipaměť. Soubory cookie na straně klienta, které neobsahují identifikovatelné osobní údaje, se automaticky neodeberou. Soubory cookie relací jsou označeny HTTPOnly, která jsou zabezpečená. Po předem určené období nečinnosti je Azure portal relace ukončena.
