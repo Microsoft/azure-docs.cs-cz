@@ -10,12 +10,12 @@ ms.reviewer: jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/15/2018
-ms.openlocfilehash: 2cf9c8baf715acf0eef36d640c22f355435c9ca5
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 45520a556d109158987dd47e33a1efb52a1cd356
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39631040"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364733"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Vytvoření referenční sady dat pro prostředí Time Series Insights pomocí webu Azure portal
 
@@ -24,6 +24,12 @@ Tento článek popisuje postup přidání referenční sady dat do prostředí A
 Referenční sady dat je kolekce položek, které rozšiřují události ze zdroje událostí. Modul příchozího přenosu dat čas Series Insights spojí každé události ze zdroje událostí s odpovídající řádek dat v referenční sadě dat. Tato rozšířená událost je pak k dispozici pro dotaz. Toto připojení je založené na sloupců primárního klíče, které jsou definované v referenční sadě dat.
 
 Referenční data není připojený zpětně. To znamená, že pouze aktuální a budoucí příchozího přenosu dat je odpovídající a připojený k sady referenční data, jakmile byl nakonfigurován a nahráli.
+
+## <a name="video"></a>Video: 
+
+### <a name="in-this-video-we-cover-time-series-insights-reference-data-modelbr"></a>V tomto videu se budeme zabývat Time Series Insights odkaz na datový model.</br>
+
+> [!VIDEO https://www.youtube.com/embed/Z0NuWQUMv1o]
 
 ## <a name="add-a-reference-data-set"></a>Přidání referenční sady dat
 
@@ -63,7 +69,7 @@ Referenční data není připojený zpětně. To znamená, že pouze aktuální 
 
    ![Přidejte referenční data](media/add-reference-data-set/parse_data.png)
 
-9. Projděte si jednotlivé sloupce do viz předpokládá, že datový typ a změnit datový typ v případě potřeby.  Vyberte datový typ symbol v záhlaví sloupce: ** # ** pro double (číselná data), **T | F** pro logickou hodnotu, nebo **Abc** řetězce.
+9. Projděte si jednotlivé sloupce do viz předpokládá, že datový typ a změnit datový typ v případě potřeby.  Vyberte datový typ symbol v záhlaví sloupce: **#** pro double (číselná data), **T | F** pro logickou hodnotu, nebo **Abc** řetězce.
 
    ![Vyberte datové typy na záhlaví sloupce.](media/add-reference-data-set/choose_datatypes.png)
 
@@ -71,7 +77,7 @@ Referenční data není připojený zpětně. To znamená, že pouze aktuální 
 
 11. Klikněte na tlačítko **přidejte řádek** nebo **přidat sloupec** přidat více hodnot dat odkaz, podle potřeby.
 
-12. Zadejte hodnotu do **filtrovat řádky... ** pole, které chcete zkontrolovat konkrétní řádky podle potřeby. Filtr je užitečné při data, ale není použita, když data nahrávají.
+12. Zadejte hodnotu do **filtrovat řádky...**  pole, které chcete zkontrolovat konkrétní řádky podle potřeby. Filtr je užitečné při data, ale není použita, když data nahrávají.
  
 13. Název datové sady, vyplněním **název datové sady** pole nad datové mřížce.
 
@@ -81,7 +87,7 @@ Referenční data není připojený zpětně. To znamená, že pouze aktuální 
 
    ![Vyberte sloupce klíče.](media/add-reference-data-set/set_primary_key.png)
 
-   Volitelně můžete vybrat ** + ** tlačítko pro přidání sekundární klíčový sloupec jako složený primární klíč. Pokud je potřeba zrušit výběr, zvolte prázdnou hodnotu z rozevíracího seznamu k odebrání sekundární klíč.
+   Volitelně můžete vybrat **+** tlačítko pro přidání sekundární klíčový sloupec jako složený primární klíč. Pokud je potřeba zrušit výběr, zvolte prázdnou hodnotu z rozevíracího seznamu k odebrání sekundární klíč.
 
 15.  Pokud chcete nahrát data, vyberte **nahrát řádky** tlačítko.
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/31/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 33072732053325f29dc44e4a46b809c1afaa93f4
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 38086d0e975956aefe4fcde4eda67d939d58f617
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312645"
+ms.locfileid: "46365838"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect uživatelské možnosti přihlášení
 Azure Active Directory (Azure AD) Connect umožňuje uživatelům se přihlásit k cloudových a místních prostředků pomocí přihlašovali stejnými hesly. Tento článek popisuje klíčové koncepty pro každý model identit vám pomůže vybrat identitu, která chcete použít pro přihlášení k Azure AD.
@@ -114,7 +114,7 @@ Hlavní název uživatele uživatele má formát username@domain. Pro doménu Ac
 ### <a name="user-principal-name-in-azure-ad"></a>Hlavní název uživatele ve službě Azure AD
 Průvodce Azure AD Connect používá atribut userPrincipalName, nebo vám umožní určit atribut (ve vlastní instalaci) pro použití v místním jako hlavní název uživatele ve službě Azure AD. Jedná se o hodnotu, která se používá pro přihlášení k Azure AD. Pokud hodnota atributu userPrincipalName neodpovídá ověřené domény ve službě Azure AD, Azure AD nahradí ho s výchozím. onmicrosoft.com hodnotu.
 
-Každý adresář služby Azure Active Directory se dodává s názvem integrované domény, formátu contoso.onmicrosoft.com, díky tomu můžete začít používat Azure nebo jiné služby Microsoftu. Můžete zlepšit a zjednodušit přihlašovací prostředí s použitím vlastních domén. Informace o vlastních názvů domén ve službě Azure AD a jak ověření domény najdete v tématu [přidání vlastního názvu domény do Azure Active Directory](../fundamentals/add-custom-domain.md#add-a-custom-domain-name).
+Každý adresář služby Azure Active Directory se dodává s názvem integrované domény, formátu contoso.onmicrosoft.com, díky tomu můžete začít používat Azure nebo jiné služby Microsoftu. Můžete zlepšit a zjednodušit přihlašovací prostředí s použitím vlastních domén. Informace o vlastních názvů domén ve službě Azure AD a jak ověření domény najdete v tématu [přidání vlastního názvu domény do Azure Active Directory](../fundamentals/add-custom-domain.md).
 
 ## <a name="azure-ad-sign-in-configuration"></a>Konfigurace přihlášení k Azure AD
 ### <a name="azure-ad-sign-in-configuration-with-azure-ad-connect"></a>Konfigurace Azure AD přihlášení s využitím Azure AD Connect

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: f069134c0665769316b794122cc077b05941f635
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: c645b0a99493c71a9fa1416c16876da30bcff891
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346164"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46367646"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>Kurz: Konfigurace Githubu pro automatické zřizování uživatelů
 
@@ -80,7 +80,7 @@ Tato část vás provede připojením služby Azure AD na Githubu uživatelský 
 
     ![Dialogové okno autorizace](./media/github-provisioning-tutorial/GitHub2.png)
 
-7. Na webu Azure Portal, vstup **adresy URL Tenanta** a klikněte na tlačítko **Test připojení** aby Azure AD můžete připojit k aplikaci Githubu. Pokud se nepovede, ověřte účet GitHub má oprávnění správce a **adresy URl Tenanta** je detekován správně a pak opakujte krok "Ověřit" (mohou představovat **adresy URL Tenanta** pravidlem: `https://api.github.com/scim/v2/<Organizations_name>` vaše organizace najdete pod vaším účtem Githubu: **nastavení** > **organizace**).
+7. Na webu Azure Portal, vstup **adresy URL Tenanta** a klikněte na tlačítko **Test připojení** aby Azure AD můžete připojit k aplikaci Githubu. Pokud se nepovede, ověřte účet GitHub má oprávnění správce a **adresy URl Tenanta** je detekován správně a pak opakujte krok "Ověřit" (mohou představovat **adresy URL Tenanta** pravidlem: `https://api.github.com/scim/v2/organizations/<Organization_name>` vaše organizace najdete pod vaším účtem Githubu: **nastavení** > **organizace**).
 
     ![Dialogové okno autorizace](./media/github-provisioning-tutorial/GitHub3.png)
 

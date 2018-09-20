@@ -1,21 +1,25 @@
 ---
-title: Vytvořit vlastní analýza pro aplikace Azure IoT Central | Dokumentace Microsoftu
-description: Jako operátor jak vytvořit vlastní analýza pro aplikace Azure IoT Central.
+title: Analýza dat zařízení v aplikaci Azure IoT Central | Dokumentace Microsoftu
+description: Analýza dat zařízení v aplikaci Azure IoT Central.
 author: lmasieri
 ms.author: lmasieri
-ms.date: 08/26/2018
+ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 0a78c534605b6eab08d5b12674689f0459e80b26
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: bf86e769aff4a9b03d5df1b1aef702814c605fa4
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247092"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46368082"
 ---
 # <a name="how-to-use-analytics-to-analyze-your-device-data"></a>Jak používat analýzu k analýze dat zařízení
+
+
+*Tento článek se týká, tvůrci, správci a operátoři.*
+
 
 Microsoft Azure IoT Central poskytuje bohaté analytické funkce dávat smysl velkých objemů dat z vašich zařízení. Abyste mohli začít, navštivte **Analytics** v levé navigační nabídce. 
 

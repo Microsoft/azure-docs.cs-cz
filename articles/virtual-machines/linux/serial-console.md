@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: 6fb60955f1d436e13234243c0e83f1487cb7f7d0
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 1ede114f670dc7b1f610dff7cf076329e50f9240
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127716"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46367776"
 ---
 # <a name="virtual-machine-serial-console"></a>Konzola sériového portu virtuálního počítače
 
@@ -44,7 +44,7 @@ Pro dokumentaci ke konzole sériového portu pro virtuální počítače s Windo
 
     ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-reset-password.png)
 
-* Nastavení specifická pro distribuce Linuxu najdete v části [přístup ke konzole sériového portu pro Linux](#access-serial-console-for-linux)
+* Nastavení specifická pro distribuce Linuxu najdete v části [přístup ke konzole sériového portu pro Linux](#Serial-Console-Linux-distro-availability)
 
 
 
@@ -52,15 +52,18 @@ Pro dokumentaci ke konzole sériového portu pro virtuální počítače s Windo
 Konzola sériového portu pro virtuální počítače je k dispozici pouze prostřednictvím [webu Azure portal](https://portal.azure.com). Níže je uvedený postup pro přístup ke konzole sériového portu pro virtuální počítače prostřednictvím portálu 
 
   1. Otevřete na webu Azure portal
-  2. V nabídce vlevo vyberte virtuální počítače.
-  3. Klikněte na virtuální počítač v seznamu. Otevře se stránka s přehledem pro virtuální počítač.
-  4. Posuňte se dolů části Podpora a řešení potíží s části a klikněte na možnost "Konzoly sériového portu". Otevře se nové podokno s sériové konzoly a spustit připojení.
+  1. (Přeskočte to, pokud má virtuální počítač jako uživatel, který používá ověřování pomocí hesla) Kliknutím na okno "Resetovat heslo" Přidání uživatele s ověřováním
+  1. V nabídce vlevo vyberte virtuální počítače.
+  1. Klikněte na virtuální počítač v seznamu. Otevře se stránka s přehledem pro virtuální počítač.
+  1. Posuňte se dolů části Podpora a řešení potíží s části a klikněte na možnost "Konzoly sériového portu". Otevře se nové podokno s sériové konzoly a spustit připojení.
 
 ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-connect.gif)
 
+### 
 
 > [!NOTE] 
-> Konzola sériového portu vyžaduje místního uživatele s heslem nakonfigurovaným. V tuto chvíli virtuální počítače nakonfigurované pouze veřejný klíč SSH, nebudete mít přístup ke konzole sériového portu. Chcete-li vytvořit místní uživatele s heslem, použijte [rozšíření přístupu virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machines/linux/using-vmaccess-extension) (k dispozici na portálu klikněte na "Resetovat heslo") a vytvořte místní uživatele s heslem.
+> Konzola sériového portu vyžaduje místního uživatele s heslem nakonfigurovaným. V tuto chvíli nebudou moct přihlásit ke konzole sériového portu virtuální počítače nakonfigurované pouze veřejný klíč SSH. Chcete-li vytvořit místní uživatele s heslem, použijte [rozšíření přístupu virtuálních počítačů](https://docs.microsoft.com/azure/virtual-machines/linux/using-vmaccess-extension), která je dostupná na portálu klikněte na "Resetovat heslo" na portálu a vytvořte místní uživatele s heslem.
+> Můžou také resetovat heslo správce v účtu podle [pomocí GRUB vyřadit do režimu jednoho uživatele](./serial-console-grub-single-user-mode.md).
 
 ## <a name="serial-console-linux-distro-availability"></a>Sériový dostupnosti distribuce Linuxu konzoly
 Aby konzoly sériového portu, aby správně fungoval hostovaného operačního systému nastavené pro čtení a zápis zpráv konzoly sériového portu. Většina [Linuxových distribucí doporučených pro Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) mají ve výchozím nastavení nakonfigurované konzoly sériového portu. Jednoduše kliknutím v části konzoly sériového portu, na webu Azure Portal bude poskytovat přístup ke konzole. 
@@ -208,6 +211,8 @@ A. Vaše image je pravděpodobně nesprávně nakonfigurované pro přístup ke 
 **Q. Je k dispozici konzoly sériového portu pro Virtual Machine Scale Sets?**
 
 A. V současné době se nepodporuje přístup ke konzole sériového portu pro instance škálovací sady virtuálních počítačů.
+
+**Q. Nastavit virtuální počítač pomocí jenom ověřování pomocí klíče SSH, můžu dál používat konzoly sériového portu pro připojení k virtuálnímu počítači?** Odpověď: Ano. Konzola sériového portu nevyžaduje klíče SSH, takže všechno, co musíte udělat zajišťuje kombinace uživatelského jména a hesla. To lze provést pomocí okna "Resetovat heslo" na portálu a pomocí těchto přihlašovacích údajů pro přihlášení ke konzole sériového portu.
 
 ## <a name="next-steps"></a>Další postup
 * Použití konzoly sériového portu k [spustí v GRUB a do režimu jednoho uživatele](serial-console-grub-single-user-mode.md)

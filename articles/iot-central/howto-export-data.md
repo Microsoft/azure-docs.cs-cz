@@ -4,18 +4,20 @@ description: Jak exportovat data z aplikace Azure IoT Central
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 07/3/2018
+ms.date: 09/18/2018
 ms.topic: article
-ms.prod: azure-iot-central
+ms.service: azure-iot-central
 manager: peterpr
-ms.openlocfilehash: 5defbf7021936e3cc77250ccc453cb3887c77617
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: a1a7e6a62a88057cc8bc512a0c46de79a55ccd53
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576438"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46368133"
 ---
 # <a name="export-your-data-in-azure-iot-central"></a>Exportujte data v Azure IoT Central
+
+*Toto téma se vztahuje na správce.*
 
 Tento článek popisuje, jak používat souvislá datová funkce exportu v Azure IoT Central pravidelně export dat do účtu úložiště objektů Blob v Azure. Můžete to taky **měření**, **zařízení**, a **šablon** do souborů pomocí [Apache AVRO](https://avro.apache.org/docs/current/index.html) formátu. Exportovaná data je možné pro studené cesty analytics jako trénování modelů ve službě Azure Machine Learning nebo dlouhodobé analýzy trendů v Microsoft Power BI.
 
@@ -36,7 +38,7 @@ Tento článek popisuje, jak používat souvislá datová funkce exportu v Azure
 Měření, která zařízení odesílají, jsou exportovány do vašeho účtu úložiště jednou za minutu. Data obsahují všechny nové zprávy přijaté službou IoT Central ze všech zařízení během této doby. Exportované soubory AVRO používají stejný formát jako soubory zpráv exportované sadou [směrování zpráv služby IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-csharp-csharp-process-d2c) do úložiště objektů Blob.
 
 > [!NOTE]
-> Zařízení, které odesílají měření jsou reprezentovány v ID zařízení (viz následující části). Pokud chcete získat názvy zařízení, exportujte snímky zařízení. Porovnat všechny záznamy zpráv pomocí **connectionDeviceId** , která odpovídá ID zařízení.
+> Zařízení, které odesílají měření jsou reprezentovány v ID zařízení (viz následující části). Pokud chcete získat názvy zařízení, exportujte snímky zařízení. Porovnat všechny záznamy zpráv pomocí **connectionDeviceId** , který odpovídá **deviceId** záznamu zařízení.
 
 Následující příklad ukazuje záznam v dekódovaný soubor AVRO:
 
@@ -45,9 +47,9 @@ Následující příklad ukazuje záznam v dekódovaný soubor AVRO:
     "EnqueuedTimeUtc": "2018-06-11T00:00:08.2250000Z",
     "Properties": {},
     "SystemProperties": {
-        "connectionDeviceId": "2383d8ba-c98c-403a-b4d5-8963859643bb",
+        "connectionDeviceId": "<connectionDeviceId>",
         "connectionAuthMethod": "{\"scope\":\"hub\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}",
-        "connectionDeviceGenerationId": "636614021491644195",
+        "connectionDeviceGenerationId": "<generationId>",
         "enqueuedTime": "2018-06-11T00:00:08.2250000Z"
     },
     "Body": "{\"humidity\":80.59100954598546,\"magnetometerX\":0.29451796907056726,\"magnetometerY\":0.5550332126050068,\"magnetometerZ\":-0.04116681874733441,\"connectivity\":\"connected\",\"opened\":\"triggered\"}"
@@ -56,12 +58,13 @@ Následující příklad ukazuje záznam v dekódovaný soubor AVRO:
 
 ### <a name="devices"></a>Zařízení
 
-Pokud je první nepřetržitý export dat zapnuté, se exportují jednoho snímku se všemi zařízeními. Snímek zahrnuje:
-- ID zařízení.
-- Názvy zařízení.
-- ID zařízení šablon.
-- Hodnoty vlastností.
-- Nastavení hodnot.
+Pokud je první nepřetržitý export dat zapnuté, se exportují jednoho snímku se všemi zařízeními. Každé zařízení zahrnuje:
+- `id` zařízení v IoT Central
+- `name` zařízení
+- `deviceId` z [Device Provisioning Service](https://aka.ms/iotcentraldocsdps)
+- Informace o šabloně zařízení
+- Hodnoty vlastností
+- Nastavení hodnot
 
 Nový snímek se zapíše jednou za minutu. Snímek zahrnuje:
 
@@ -73,15 +76,16 @@ Nový snímek se zapíše jednou za minutu. Snímek zahrnuje:
 >
 > Šablonu zařízení, každé zařízení patří, je reprezentována ID zařízení šablony. Název šablony zařízení získáte exportujte šablonu snímky zařízení.
 
-Každý záznam v dekódovaný soubor AVRO vypadá takto:
+Záznam v dekódovaný soubor AVRO může vypadat:
 
 ```json
 {
-    "id": "2383d8ba-c98c-403a-b4d5-8963859643bb",
+    "id": "<id>",
     "name": "Refrigerator 2",
     "simulated": true,
+    "deviceId": "<deviceId>",
     "deviceTemplate": {
-        "id": "c318d580-39fc-4aca-b995-843719821049",
+        "id": "<template id>",
         "version": "1.0.0"
     },
     "properties": {
@@ -104,8 +108,10 @@ Každý záznam v dekódovaný soubor AVRO vypadá takto:
 
 ### <a name="device-templates"></a>Šablony zařízení
 
-Pokud nepřetržitý export dat zapnutý, je exportován jeden snímek pomocí všech zařízení šablon. Snímek zahrnuje: 
-- ID zařízení šablon.
+Pokud nepřetržitý export dat zapnutý, je exportován jeden snímek pomocí všech zařízení šablon. Každá šablona zařízení obsahuje:
+- `id` šablony zařízení
+- `name` šablony zařízení
+- `version` šablony zařízení
 - Měření datových typů a minimální/maximální hodnoty.
 - Vlastnost datové typy a výchozí hodnoty.
 - Nastavení datových typů a výchozí hodnoty.
@@ -118,11 +124,11 @@ Nový snímek se zapíše jednou za minutu. Snímek zahrnuje:
 > [!NOTE]
 > Šablony zařízení odstranit, protože poslední snímek se neexportují. V současné době snímky nemají ukazatele pro šablony odstraněné zařízení.
 
-Každý záznam v dekódovaný soubor AVRO vypadá takto:
+Záznam v dekódovaný soubor AVRO může vypadat například takto:
 
 ```json
 {
-    "id": "c318d580-39fc-4aca-b995-843719821049",
+    "id": "<id>",
     "name": "Refrigerated Vending Machine",
     "version": "1.0.0",
     "measurements": {
@@ -209,16 +215,16 @@ Každý záznam v dekódovaný soubor AVRO vypadá takto:
 
 4. V části **správu**vyberte **Export dat**.
 
-   ![Nepřetržitý export dat konfigurace](media/howto-export-data/continuousdataexport.PNG)
-
 5. V **účtu úložiště** rozevíracího seznamu vyberte svůj účet úložiště. V **kontejneru** rozevíracího seznamu vyberte kontejner. V části **Data pro export**, určete každý typ hledaných dat exportovat na základě nastavení typu na **na**.
 
 6. Nepřetržitý export dat zapnout, nastavte **export dat** k **na**. Vyberte **Uložit**.
 
+  ![Nepřetržitý export dat konfigurace](media/howto-export-data/continuousdataexport.PNG)
+
 7. Po několika minutách se zobrazí vaše data ve vašem účtu úložiště. Přejděte do účtu úložiště. Vyberte **procházet objekty BLOB** > vašeho kontejneru. Uvidíte tři složky pro data exportu. Výchozí cesty k souborů AVRO s export dat jsou:
-    - Zprávy: {container}/measurements/{hubname}/{YYYY}/{MM}/{dd}/{hh}/{mm}/00.avro
-    - Zařízení: {container}/devices/{hubname}/{YYYY}/{MM}/{dd}/{hh}/{mm}/00.avro
-    - Zařízení šablony: {container}/deviceTemplates/{hubname}/{YYYY}/{MM}/{dd}/{hh}/{mm}/00.avro
+    - Zprávy: {container}/measurements/{hubname}/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
+    - Zařízení: {container}/devices/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
+    - Zařízení šablony: {container}/deviceTemplates/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
 
 ## <a name="read-exported-avro-files"></a>Čtení exportovaných souborů AVRO
 
@@ -280,7 +286,7 @@ def parse(filePath):
     transformed = pd.DataFrame()
 
     # The device ID is available in the id column.
-    transformed["device_id"] = devices["id"]
+    transformed["device_id"] = devices["deviceId"]
 
     # The template ID and version are present in a dictionary under
     # the deviceTemplate column.
@@ -395,7 +401,7 @@ public static async Task Run(string filePath)
                 {
                     // Get the field value directly. You can also yield return
                     // records and make the function IEnumerable<AvroRecord>.
-                    var deviceId = record.GetField<string>("id");
+                    var deviceId = record.GetField<string>("deviceId");
 
                     // The device template information is stored in a sub-record
                     // under the deviceTemplate field.
@@ -411,7 +417,7 @@ public static async Task Run(string filePath)
                     var fanSpeed = deviceSettingsRecord["fanSpeed"];
                     
                     Console.WriteLine(
-                        "ID: {0}, Template ID: {1}, Template Version: {2}, Fan Speed: {3}",
+                        "Device ID: {0}, Template ID: {1}, Template Version: {2}, Fan Speed: {3}",
                         deviceId,
                         templateId,
                         templateVersion,
@@ -524,8 +530,8 @@ const avro = require('avsc');
 async function parse(filePath) {
     const records = await load(filePath);
     for (const record of records) {
-        // Fetch the device ID from the id property.
-        const deviceId = record.id;
+        // Fetch the device ID from the deviceId property.
+        const deviceId = record.deviceId;
 
         // Fetch the template ID and version from the deviceTemplate property.
         const deviceTemplateId = record.deviceTemplate.id;
@@ -535,7 +541,7 @@ async function parse(filePath) {
         const fanSpeed = record.settings.device.fanSpeed;
 
         // Log the retrieved device ID and humidity.
-        console.log(`ID: ${deviceId}, Template ID: ${deviceTemplateId}, Template Version: ${deviceTemplateVersion}, Fan Speed: ${fanSpeed}`);
+        console.log(`deviceID: ${deviceId}, Template ID: ${deviceTemplateId}, Template Version: ${deviceTemplateVersion}, Fan Speed: ${fanSpeed}`);
     }
 }
 

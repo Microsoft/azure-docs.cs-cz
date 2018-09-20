@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/19/2018
 ms.author: jingwang
-ms.openlocfilehash: f47e85b47f262e30e9160f11604220aa8055be5d
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 10867974c6f1c3fae6965b1888db3c4448b26a38
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43701713"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364086"
 ---
 # <a name="copy-data-from-hbase-using-azure-data-factory"></a>Kopírování dat z HBase pomocí Azure Data Factory 
 
@@ -45,7 +45,7 @@ HBase propojené služby jsou podporovány následující vlastnosti:
 | type | Vlastnost type musí být nastavená na: **HBase** | Ano |
 | hostitel | IP adresu nebo název hostitele serveru HBase. (tj.)  `[clustername].azurehdinsight.net`, "192.168.222.160·)  | Ano |
 | port | Port TCP, která HBase instance používá k naslouchání pro připojení klientů. Výchozí hodnota je 9090. Pokud se připojíte k Azure HDInsights, zadejte port 443. | Ne |
-| httpPath | Částečné adresa URL odpovídající serveru HBase. (to znamená `/hbaserest0`)  | Ne |
+| httpPath | Částečné adresa URL odpovídající serveru HBase, třeba `/hbaserest0` při použití HDInsights clusteru. | Ne |
 | authenticationType. | Mechanismus ověřování, který se má použít pro připojení k serveru HBase. <br/>Povolené hodnoty jsou: **anonymní**, **základní** | Ano |
 | uživatelské jméno | Uživatelské jméno pro připojení k instanci HBase.  | Ne |
 | heslo | Heslo odpovídající uživatelskému jménu. Označte toto pole jako SecureString bezpečně uložit ve službě Data Factory nebo [odkazovat tajného klíče do služby Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
@@ -56,7 +56,7 @@ HBase propojené služby jsou podporovány následující vlastnosti:
 | connectVia | [Prostředí Integration Runtime](concepts-integration-runtime.md) se použije k připojení k úložišti. Můžete použít modul Integration Runtime nebo prostředí Azure Integration Runtime (Pokud vaše úložiště dat je veřejně dostupná). Pokud není zadán, použije výchozí prostředí Azure Integration Runtime. |Ne |
 
 >[!NOTE]
->Pokud váš cluster nepodporuje rychlé relace, jako je HDInsight, explicitně přidat index uzlu na konci nastavení cesty k protokolu http, zadejte třeba znak `/hbaserest0` místo `/hbaserest`.
+>Pokud váš cluster nepodporuje rychlé relace například HDInsight, explicitně přidat index uzlu na konci nastavení cesty k protokolu http, zadejte třeba znak `/hbaserest0` místo `/hbaserest`.
 
 **Příklad pro HDInsights HBase:**
 

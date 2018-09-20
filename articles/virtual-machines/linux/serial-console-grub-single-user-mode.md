@@ -14,22 +14,40 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 9952720e917dc9202630b2feda0fadd0402d9eb6
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: e3745efdd0d0ea159afcda177c306f5865ac2aad
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44377866"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46366830"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Použít pro přístup k GRUB a Jednouživatelský režim konzoly sériového portu
-Režim jednoho uživatele je minimální prostředí s minimálním funkce. Může být užitečné pro prozkoumat problémy s spouštěcí nebo problémů se sítí a méně services může běžet na pozadí, v závislosti na runlevel, systém souborů nemusí i připojit automaticky. To je užitečné v situacích, například poškozený systém souborů, porušení fstab prošetření nebo síťového připojení (nesprávná iptables konfigurace).
+GRUB je součet spouštěcí zavaděč Unified. Z GRUB budete moci změnit konfiguraci spuštění pro spuštění do režimu jednoho uživatele, mimo jiné. 
 
-Pro přístup k GRUB, je potřeba restartování vašeho virtuálního počítače přitom otevřete okno konzoly sériového portu. To lze provést pomocí SysRq `'b'` příkaz, nebo kliknutím na restartování tlačítka v okně Přehled. Některé distribuce bude vyžadovat vstup z klávesnice zobrazíte GRUB, zatímco jiné se automaticky zobrazit GRUB na několik sekund na spouštěcí a povolit vstup uživatele zrušit vypršení časového limitu se vstup z klávesnice. 
+Režim jednoho uživatele je minimální prostředí s minimálním funkce. Může být užitečné k prošetření spouštěcí problémy, problémy systému souborů nebo problémů se sítí. Méně services může běžet na pozadí a v závislosti na runlevel, systém souborů nemusí i připojit automaticky.
 
-Některé distribuce automaticky vyřadí je v jednouživatelském režimu nebo nouzového režimu Pokud je virtuální počítač nelze spustit. Jiné, ale vyžadují další nastavení, před jejich lze přetáhnout je do režimu jednoho uživatele nebo nouzové situace to automaticky.
+Je také užitečné v situacích, kde váš virtuální počítač může se dá nakonfigurovat jenom tak, aby přijímal klíče SSH pro přihlášení režimu jednoho uživatele. V takovém případě může být možné použít k vytvoření účtu pomocí ověřování hesla režimu jednoho uživatele. 
 
-Můžete zajistit, že GRUB je povoleno na virtuálním počítači mohli do režimu jednoho uživatele přístup. V závislosti na vaší distribuce může být Ujistěte se, že je povoleno GRUB nějakou práci navíc instalační program. 
+Do režimu jednoho uživatele, je potřeba zadat GRUB, když váš virtuální počítač spouští a změny konfigurace spouštění v GRUB. To lze provést pomocí konzoly sériového portu virtuálního počítače.
 
+## <a name="general-grub-access"></a>Obecné GRUB přístup
+Pro přístup k GRUB, je potřeba restartování vašeho virtuálního počítače přitom otevřete okno konzoly sériového portu. Některé distribuce bude vyžadovat vstup z klávesnice zobrazíte GRUB, zatímco jiné se automaticky zobrazit GRUB na několik sekund a povolit vstup z klávesnice pro zrušení časový limit. 
+
+Můžete zajistit, že GRUB je povoleno na virtuálním počítači mohli do režimu jednoho uživatele přístup. V závislosti na vaší distribuce může být Ujistěte se, že je povoleno GRUB nějakou práci navíc instalační program. Distribuce specifické informace jsou k dispozici níže.
+
+### <a name="reboot-your-vm-to-access-grub-in-serial-console"></a>Restartování vašeho virtuálního počítače pro přístup k GRUB v konzole sériového portu
+Restartování vašeho virtuálního počítače s otevřete okno konzoly sériového portu se provádí pomocí SysRq `'b'` příkaz Pokud [SysRq](./serial-console-nmi-sysrq.md) je povolená, nebo kliknutím na restartování tlačítko v okně Přehled (otevřít virtuální počítač na nové kartě prohlížeče restartovat bez zavření v okně konzoly sériového portu). Postupujte podle pokynů specifických distribuce níže se dozvíte, co můžete očekávat od GRUB po restartování.
+
+## <a name="general-single-user-mode-access"></a>Obecné Jednouživatelský režim přístupu
+Ruční přístupu na Jednouživatelský režim může být nutné v situacích, kde nenakonfigurovali účet s ověřováním heslem. Je potřeba upravit konfigurace GRUB ručně vstoupit do režimu jednoho uživatele. Jakmile to uděláte, naleznete v tématu [použití Jednouživatelský režim na resetovat nebo přidáte heslo](#-Use-Single-User-Mode-to-reset-or-add-a-password) sdělil další pokyny.
+
+V případech, kdy je virtuální počítač nelze spustit distribuce často automaticky vyřadí je v jednouživatelském režimu nebo nouzového režimu. Jiné, ale vyžadují další nastavení, předtím, než lze je přetáhnout do režimu jednoho uživatele nebo nouzové situace to automaticky (například nastavení kořenové heslo).
+
+### <a name="use-single-user-mode-to-reset-or-add-a-password"></a>Pomocí Jednouživatelský režim můžete resetovat nebo přidat heslo
+Jakmile jsou v režimu jednoho uživatele, proveďte následující příkaz pro přidání nového uživatele s oprávněními sudo:
+1. Spustit `useradd <username>` přidat uživatele
+1. Spustit `sudo usermod -a -G sudo <username>` udělit oprávnění root nového uživatele
+1. Použití `passwd <username>` nastavit heslo pro nového uživatele. Potom budete moct přihlásit jako nový uživatel
 
 ## <a name="access-for-red-hat-enterprise-linux-rhel"></a>Přístup pro Red Hat Enterprise Linux (RHEL)
 RHEL vyřadí je do režimu jednoho uživatele automaticky pokud ji nemůže normálně. Pokud jste nenastavili kořenový přístup pro režimu jednoho uživatele, ale nebudou mít kořenové heslo a nebude moci přihlásit. Existuje alternativní řešení (viz "Ručním zadáním režimu jednoho uživatele" níže), ale návrh je zpočátku nastavený přístup uživatele root.
@@ -101,7 +119,14 @@ Postupujte podle pokynů pro RHEL výše pro povolení režimu jednoho uživatel
 Image Ubuntu nevyžadují kořenové heslo. Pokud systém spustí do režimu jednoho uživatele, můžete bez další přihlašovací údaje. 
 
 ### <a name="grub-access-in-ubuntu"></a>GRUB přístup v Ubuntu
-Pro přístup k GRUB, stiskněte a podržte "Esc", a spouští virtuální počítač.
+Pro přístup k GRUB, stiskněte a podržte "Esc", a spouští virtuální počítač. 
+
+Ve výchozím nastavení imagemi Ubuntu nezobrazí automaticky GRUB obrazovky. To se dá změnit v následujících pokynech:
+1. Otevřít `/etc/default/grub.d/50-cloudimg-settings.cfg` v textovém editoru podle vašeho výběru
+1. Změnit `GRUB_TIMEOUT` hodnotu s nenulovou hodnotou
+1. Otevřít `/etc/default/grub` v textovém editoru podle vašeho výběru
+1. Okomentujte `GRUB_HIDDEN_TIMEOUT=1` řádku
+1. Spusťte `sudo update-grub`.
 
 ### <a name="single-user-mode-in-ubuntu"></a>Režimu jednoho uživatele v Ubuntu
 Ubuntu vyřadí je do režimu jednoho uživatele automaticky pokud ji nemůže normálně. Ruční zadání režimu jednoho uživatele, použijte následující pokyny:

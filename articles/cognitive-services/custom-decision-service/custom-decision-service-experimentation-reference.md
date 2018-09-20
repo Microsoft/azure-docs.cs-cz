@@ -1,66 +1,68 @@
 ---
-title: Experimentování - kognitivní služby Azure | Microsoft Docs
-description: Tento článek je Průvodce pro Azure Service rozhodnutí vlastní experimenty.
+title: Experimentování ve službě – Custom Decision Service
+titlesuffix: Azure Cognitive Services
+description: Tento článek představuje příručku pro experimentování s využitím služby Custom Decision Service.
 services: cognitive-services
 author: marco-rossi29
-manager: marco-rossi29
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
+ms.component: custom-decision-service
+ms.topic: conceptual
 ms.date: 05/10/2018
 ms.author: marossi
-ms.openlocfilehash: b0ac0bc049d556423493f0c48dd9a548929bcd41
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: eec2c82b779fa5421bc9ac58107ef56f8c71bd1e
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343555"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46366543"
 ---
 # <a name="experimentation"></a>Experimentování
 
-Následující teorie [kontextové bandits (CB)](https://www.microsoft.com/en-us/research/blog/contextual-bandit-breakthrough-enables-deeper-personalization/), vlastní rozhodnutí služby opakovaně dodržuje kontextu, provede akci a dodržuje potřebu pro zvolené akci. Příkladem je obsahu přizpůsobení: Popisuje kontextu uživatele, akce jsou candidate scénářů, a potřebu opatření, kolik uživatele líbilo Doporučené scénáře.
+Následující teorie [kontextové bandits (CB)](https://www.microsoft.com/en-us/research/blog/contextual-bandit-breakthrough-enables-deeper-personalization/), Custom Decision Service opakovaně dodržuje kontextu, provede akci a dodržuje reward pro zvolené akci. Příkladem je přizpůsobení obsahu: Popisuje kontextu uživatele, akce jsou scénáře Release candidate a potřebu opatření, kolik uživatel líbilo Doporučené scénáře.
 
-Vlastní rozhodnutí služba vytvoří zásadu, jak mapuje z kontextu akce. Pomocí zásad konkrétní cíl budete chtít vědět jeho očekávané potřebu. Jedním ze způsobů k zjištění přibližné hodnoty potřebu je online pomocí zásad a nechat ji zvolte akce (například doporučujeme scénářů pro uživatele). Takové online vyhodnocení však může být drahé dvou důvodů:
+Custom Decision Service vytvoří zásadu, jak mapuje z kontextu akce. S konkrétní cílovou zásady potřebujete vědět jeho očekávaný potřebu. Jeden způsob, jak odhadnout potřebu je online pomocí zásad a ten zvolte akce (například doporučuje scénářů pro uživatele). Tyto online vyhodnocení však může být nákladné dvou důvodů:
 
-* Poskytuje uživatelům zásadu netestované, experimentální.
-* Není škálovat vyhodnocení víc zásad cíl.
+* Poskytuje uživatelům neotestovaný, experimentální zásady.
+* Neškáluje se na vaše rozhodnutí vyzkoušet několik cílit zásady.
 
-Vyhodnocení vypnout zásad je alternativní zlepší. Pokud máte protokoly ze stávajícího systému online, které postupujte podle zásad protokolování, můžete odhadnout vyhodnocení vypnout zásad očekávané výnosu nové zásady cíl.
+Alternativní paradigma se vyžaduje vyhodnocení za vypnutí zásad. Pokud máte protokoly ze stávajícího systému online, postupujte podle zásad protokolování, vyhodnocení vypnutí zásad odhadnout očekávané výhody nové cílové zásady.
 
-Pomocí souboru protokolu experimentování snaží najít zásada s nejvyšší potřebu odhadované, očekávané. Cíl zásad jsou parametry podle [Vowpal k dispozici](https://github.com/JohnLangford/vowpal_wabbit/wiki) argumenty. Ve výchozím režimu skript testy připojením k celou řadu argumenty Vowpal k dispozici `--base_command`. Skript provede následující akce:
+Pomocí souboru protokolu služby experimentování ve službě snaží najít zásada s nejvyšší reward odhadované, očekávané. Cílit zásady jsou parametrizován [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit/wiki) argumenty. Ve výchozím režimu skript testuje širokou škálu Vowpal Wabbit argumenty přidáním `--base_command`. Skript provede následující akce:
 
-* Automaticky zjistí funkce obory názvů v první `--auto_lines` řádky vstupní soubor.
-* Provede první oblouku prostřednictvím technologie hyper parametry (`learning rate`, `L1 regularization`, a `power_t`).
-* Testy vyhodnocení zásad `--cb_type` (inverzní tendenci skóre (`ips`) nebo dvakrát robustní (`dr`). Další informace najdete v tématu [příklad kontextové Bandit](https://github.com/JohnLangford/vowpal_wabbit/wiki/Contextual-Bandit-Example).
+* Automaticky zjistí funkce obory názvů od prvního `--auto_lines` řádky vstupní soubor.
+* Provádí první úklidu hyperparametry (`learning rate`, `L1 regularization`, a `power_t`).
+* Testuje vyhodnocení zásad `--cb_type` (inverzní tendence skóre (`ips`) nebo dvakrát robustní (`dr`). Další informace najdete v tématu [kontextové Bandit příklad](https://github.com/JohnLangford/vowpal_wabbit/wiki/Contextual-Bandit-Example).
 * Testy slova.
-* Testy kvadratické interakce funkce:
-   * **fáze hrubou silou**: testy všechny kombinací s `--q_bruteforce_terms` páry nebo méně.
-   * **fáze typu greedy**: Přidá nejlepší dvojici, dokud není k dispozici žádné zlepšení pro `--q_greedy_stop` zaokrouhlí.
-* Provádí druhý oblouku prostřednictvím technologie hyper parametry (`learning rate`, `L1 regularization`, a `power_t`).
+* Funkce kvadratické interakce testy:
+   * **fáze útoku hrubou silou**: Testuje všechny kombinace s `--q_bruteforce_terms` dvojice nebo méně.
+   * **greedy fáze**: Přidá nejlepší dvojici, dokud nedojde k žádné vylepšení pro `--q_greedy_stop` zaokrouhlí.
+* Provádí druhý úklidu hyperparametry (`learning rate`, `L1 regularization`, a `power_t`).
 
-Parametry, které řídí tyto kroky zahrnují některé argumenty Vowpal k dispozici:
-- Možnosti manipulace s příklad:
+Parametry, které řídí tyto kroky zahrnují některé Vowpal Wabbit argumenty:
+- Možnosti manipulace s příkladu:
   - sdílené obory názvů
   - obory názvů akce
-  - okrajového obory názvů
+  - okrajový obory názvů
   - kvadratické funkce
-- Možnosti aktualizace pravidel
+- Aktualizovat pravidlo možnosti
   - rychlost učení
-  - Regulaci L1
-  - hodnota t napájení
+  - L1 regularizace
+  - Hodnota napájení t
 
-Podrobné vysvětlení výše argumentů najdete v tématu [argumenty příkazového řádku k dispozici Vowpal](https://github.com/JohnLangford/vowpal_wabbit/wiki/Command-line-arguments).
+Podrobné vysvětlení výše uvedené argumenty, najdete v článku [argumenty příkazového řádku Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit/wiki/Command-line-arguments).
 
 ## <a name="prerequisites"></a>Požadavky
-- K dispozici Vowpal: Nainstalovat a na trase.
+- Vowpal Wabbit: Instalaci a na vaší cestě.
   - Windows: [použití `.msi` instalační program](https://github.com/eisber/vowpal_wabbit/releases).
   - Jiné platformy: [získat zdrojový kód](https://github.com/JohnLangford/vowpal_wabbit/releases).
-- Jazyk Python 3: Nainstalován a na trase.
-- NumPy: Pomocí Správce balíčků podle svého výběru.
+- Python 3: Nainstalovat a na vaší cestě.
+- NumPy: Použití Správce balíčků podle vašeho výběru.
 - *Microsoft/mwt-ds* úložiště: [Naklonujte úložiště](https://github.com/Microsoft/mwt-ds).
-- Soubor protokolu služby JSON rozhodnutí: ve výchozím nastavení, základní příkaz obsahuje `--dsjson`, což umožňuje JSON služby rozhodnutí Analýza souboru vstupní data. [Příkladem tohoto formátu získat](https://github.com/JohnLangford/vowpal_wabbit/blob/master/test/train-sets/decisionservice.json).
+- Soubor protokolu služby JSON rozhodnutí: ve výchozím nastavení, zahrnuje základní příkaz `--dsjson`, umožňující analýza formátu JSON služby rozhodnutí o vstupní data. [Získat příkladem tento formát](https://github.com/JohnLangford/vowpal_wabbit/blob/master/test/train-sets/decisionservice.json).
 
 ## <a name="usage"></a>Využití
-Přejděte na `mwt-ds/DataScience` a spusťte `Experimentation.py` s relevantní argumenty, jak je podrobně uvedeno v následujícím kódu:
+Přejděte na `mwt-ds/DataScience` a spusťte `Experimentation.py` s příslušnými argumenty, jak je uvedeno v následujícím kódu:
 
 ```cmd
 python Experimentation.py [-h] -f FILE_PATH [-b BASE_COMMAND] [-p N_PROC]
@@ -72,38 +74,38 @@ python Experimentation.py [-h] -f FILE_PATH [-b BASE_COMMAND] [-p N_PROC]
                           [--q_greedy_stop Q_GREEDY_STOP]
 ```
 
-Připojí se k protokolu výsledky *mwt-ds/DataScience/experiments.csv* souboru.
+Protokol výsledků se připojí *mwt-ds/DataScience/experiments.csv* souboru.
 
 ### <a name="parameters"></a>Parametry
 | Vstup | Popis | Výchozí |
 | --- | --- | --- |
-| `-h`, `--help` | Zobrazte zprávu nápovědy a ukončení. | |
+| `-h`, `--help` | Zobrazte zprávu nápovědy a ukončit program. | |
 | `-f FILE_PATH`, `--file_path FILE_PATH` | Cesta k souboru dat (`.json` nebo `.json.gz` formát: každý řádek představuje `dsjson`). | Požaduje se |  
-| `-b BASE_COMMAND`, `--base_command BASE_COMMAND` | Základní příkaz Vowpal k dispozici.  | `vw --cb_adf --dsjson -c` |  
+| `-b BASE_COMMAND`, `--base_command BASE_COMMAND` | Základní příkaz Vowpal Wabbit.  | `vw --cb_adf --dsjson -c` |  
 | `-p N_PROC`, `--n_proc N_PROC` | Počet paralelních procesů používat. | Logické procesory |  
-| `-s SHARED_NAMESPACES, --shared_namespaces SHARED_NAMESPACES` | Sdílené funkce obory názvů (například `abc` znamená obory názvů `a`, `b`, a `c`).  | Automaticky rozpoznat z datového souboru |  
+| `-s SHARED_NAMESPACES, --shared_namespaces SHARED_NAMESPACES` | Sdílené funkce obory názvů (například `abc` znamená, že obory názvů `a`, `b`, a `c`).  | Automaticky rozpoznat z datového souboru |  
 | `-a ACTION_NAMESPACES, --action_namespaces ACTION_NAMESPACES` | Funkce obory názvů akce. | Automaticky rozpoznat z datového souboru |  
-| `-m MARGINAL_NAMESPACES, --marginal_namespaces MARGINAL_NAMESPACES` | Okrajového funkce obory názvů. | Automaticky rozpoznat z datového souboru |  
+| `-m MARGINAL_NAMESPACES, --marginal_namespaces MARGINAL_NAMESPACES` | Obory názvů okrajového funkce. | Automaticky rozpoznat z datového souboru |  
 | `--auto_lines AUTO_LINES` | Počet řádků dat souboru se prohledat k automatické rozpoznání funkce obory názvů. | `100` |  
-| `--only_hp` | Oblouku jen přes technologie hyper parametry (`learning rate`, `L1 regularization`, a `power_t`). | `False` |  
-| `-l LR_MIN_MAX_STEPS`, `--lr_min_max_steps LR_MIN_MAX_STEPS` | Učení rozsah rychlost jako kladné hodnoty `min,max,steps`. | `1e-5,0.5,4` |  
-| `-r REG_MIN_MAX_STEPS`, `--reg_min_max_steps REG_MIN_MAX_STEPS` | Rozsah regulaci L1 jako kladné hodnoty `min,max,steps`. | `1e-9,0.1,5` |  
+| `--only_hp` | Jenom přes hyperparametry oblouku (`learning rate`, `L1 regularization`, a `power_t`). | `False` |  
+| `-l LR_MIN_MAX_STEPS`, `--lr_min_max_steps LR_MIN_MAX_STEPS` | Frekvence rozsahu Learning jako kladné hodnoty `min,max,steps`. | `1e-5,0.5,4` |  
+| `-r REG_MIN_MAX_STEPS`, `--reg_min_max_steps REG_MIN_MAX_STEPS` | Rozsah regularizace L1 jako kladné hodnoty `min,max,steps`. | `1e-9,0.1,5` |  
 | `-t PT_MIN_MAX_STEPS`, `--pt_min_max_steps PT_MIN_MAX_STEPS` | Rozsah Power_t jako kladné hodnoty `min,max,step`. | `1e-9,0.5,5` |  
-| `--q_bruteforce_terms Q_BRUTEFORCE_TERMS` | Počet dvojic kvadratické a otestovat ve fázi hrubou silou. | `2` |  
-| `--q_greedy_stop Q_GREEDY_STOP` | Zaokrouhlí bez vylepšení, po které fáze kvadratické typu greedy vyhledávání zastavit. | `3` |  
+| `--q_bruteforce_terms Q_BRUTEFORCE_TERMS` | Počet dvojic kvadratické testování do fáze útoku hrubou silou. | `2` |  
+| `--q_greedy_stop Q_GREEDY_STOP` | Zaokrouhlí číslo bez vylepšení, po jejichž uplynutí je zastaveno fáze kvadratické greedy vyhledávání. | `3` |  
 
 ### <a name="examples"></a>Příklady
-Chcete-li přednastavené výchozí hodnoty:
+Použití předvolby výchozí hodnoty:
 ```cmd
 python Experimentation.py -f D:\multiworld\data.json
 ```
 
-Ekvivalentně, můžete k dispozici Vowpal také ingestování `.json.gz` soubory:
+Ekvivalentně, můžete také přijímat Vowpal Wabbit `.json.gz` soubory:
 ```cmd
 python Experimentation.py -f D:\multiworld\data.json.gz
 ```
 
-K oblouku jen přes technologie hyper parametry (`learning rate`, `L1 regularization`, a `power_t`, ukončení po kroku 2):
+Na čištění jenom přes hyperparametry (`learning rate`, `L1 regularization`, a `power_t`, zastavuje po provedení kroku 2):
 ```cmd
 python Experimentation.py -f D:\multiworld\data.json --only_hp
 ```

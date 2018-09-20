@@ -1,197 +1,306 @@
-## <a name="use-the-microsoft-authentication-library-msal-to-get-a-token-for-the-microsoft-graph-api"></a>Použití knihovny ověřování společnosti Microsoft (MSAL) k získání tokenu pro rozhraní Microsoft Graph API
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: active-directory
+documentationcenter: dev-center-name
+author: andretms
+manager: mtillman
+editor: ''
+ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: ios
+ms.workload: identity
+ms.date: 09/19/2018
+ms.author: andret
+ms.custom: include file
+ms.openlocfilehash: c6d5fab6ff065dee336c510e3f94583cb0c4960b
+ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46466150"
+---
+## <a name="use-the-microsoft-authentication-library-msal-to-get-a-token-for-the-microsoft-graph-api"></a>Pomocí knihovny Microsoft Authentication Library (MSAL) k získání tokenu pro rozhraní Microsoft Graph API
 
-Otevřete `ViewController.swift` a nahraďte kód:
+Otevřít `ViewController.swift` a nahraďte kód:
 
 ```swift
 import UIKit
 import MSAL
 
+/// 😃 A View Controller that will respond to the events of the Storyboard.
 class ViewController: UIViewController, UITextFieldDelegate, URLSessionDelegate {
     
+    // Update the below to your client ID you received in the portal. The below is for running the demo only
     let kClientID = "Your_Application_Id_Here"
-    let kAuthority = "https://login.microsoftonline.com/common/v2.0"
-
+    
+    // These settings you don't need to edit unless you wish to attempt deeper scenarios with the app.
     let kGraphURI = "https://graph.microsoft.com/v1.0/me/"
     let kScopes: [String] = ["https://graph.microsoft.com/user.read"]
+    let kAuthority = "https://login.microsoftonline.com/common"
     
     var accessToken = String()
-    var applicationContext = MSALPublicClientApplication.init()
+    var applicationContext : MSALPublicClientApplication?
 
     @IBOutlet weak var loggingText: UITextView!
     @IBOutlet weak var signoutButton: UIButton!
 
-     // This button will invoke the call to the Microsoft Graph API. It uses the
-     // built in Swift libraries to create a connection.
-    
-    @IBAction func callGraphButton(_ sender: UIButton) {
-        
-        
-        do {
-            
-            // We check to see if we have a current signed-in user. If we don't, then we need to sign someone in.
-            // We throw an interactionRequired so that we trigger the interactive sign-in.
-            
-            if  try self.applicationContext.users().isEmpty {
-                throw NSError.init(domain: "MSALErrorDomain", code: MSALErrorCode.interactionRequired.rawValue, userInfo: nil)
-            } else {
-            
-            // Acquire a token for an existing user silently
-            
-            try self.applicationContext.acquireTokenSilent(forScopes: self.kScopes, user: applicationContext.users().first) { (result, error) in
-    
-                    if error == nil {
-                        self.accessToken = (result?.accessToken)!
-                        self.loggingText.text = "Refreshing token silently)"
-                        self.loggingText.text = "Refreshed Access token is \(self.accessToken)"
-                        
-                        self.signoutButton.isEnabled = true;
-                        self.getContentWithToken()
-    
-                    } else {
-                        self.loggingText.text = "Could not acquire token silently: \(error ?? "No error information" as! Error)"
-    
-                    }
-                }
-            }
-        }  catch let error as NSError {
-            
-            // interactionRequired means we need to ask the user to sign in. This usually happens
-            // when the user's Refresh Token is expired or if the user has changed their password
-            // among other possible reasons.
-            
-            if error.code == MSALErrorCode.interactionRequired.rawValue {
-                
-                self.applicationContext.acquireToken(forScopes: self.kScopes) { (result, error) in
-                        if error == nil {
-                            self.accessToken = (result?.accessToken)!
-                            self.loggingText.text = "Access token is \(self.accessToken)"
-                            self.signoutButton.isEnabled = true;
-                            self.getContentWithToken()
-                            
-                        } else  {
-                            self.loggingText.text = "Could not acquire token: \(error ?? "No error information" as! Error)"
-                        }
-                }
-                
-            }
-            
-        } catch {
-            
-            // This is the catch all error.
-            
-            self.loggingText.text = "Unable to acquire token. Got error: \(error)"
-            
-        }
-    }
+    /**
+        Setup public client application in viewDidLoad
+    */
 
     override func viewDidLoad() {
+
         super.viewDidLoad()
-        
+
         do {
-             // Initialize a MSALPublicClientApplication with a given clientID and authority
-            self.applicationContext = try MSALPublicClientApplication.init(clientId: kClientID, authority: kAuthority)
-        } catch {
-            self.loggingText.text = "Unable to create Application Context. Error: \(error)"
+
+            /**
+             Initialize a MSALPublicClientApplication with a given clientID and authority
+             - clientId:            The clientID of your application, you should get this from the app portal.
+             - authority:           A URL indicating a directory that MSAL can use to obtain tokens. In Azure AD
+                                    it is of the form https://<instance/<tenant>, where <instance> is the
+                                    directory host (e.g. https://login.microsoftonline.com) and <tenant> is a
+                                    identifier within the directory itself (e.g. a domain associated to the
+                                    tenant, such as contoso.onmicrosoft.com, or the GUID representing the
+                                    TenantID property of the directory)
+             - error                The error that occurred creating the application object, if any, if you're
+                                    not interested in the specific error pass in nil.
+             */
+
+            guard let authorityURL = URL(string: kAuthority) else {
+                self.loggingText.text = "Unable to create authority URL"
+                return
+            }
+
+            let authority = try MSALAuthority(url: authorityURL)
+            self.applicationContext = try MSALPublicClientApplication(clientId: kClientID, authority: authority)
+
+        } catch let error {
+            self.loggingText.text = "Unable to create Application Context \(error)"
         }
     }
 
+    override func viewWillAppear(_ animated: Bool) {
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        super.viewWillAppear(animated)
+        signoutButton.isEnabled = !self.accessToken.isEmpty
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        
-        if self.accessToken.isEmpty {
-            signoutButton.isEnabled = false; 
+    /**
+     This button will invoke the authorization flow.
+    */
+
+    @IBAction func callGraphButton(_ sender: UIButton) {
+
+        if self.currentAccount() == nil {
+            // We check to see if we have a current logged in account.
+            // If we don't, then we need to sign someone in.
+            self.acquireTokenInteractively()
+        } else {
+            self.acquireTokenSilently()
         }
     }
-}
+
+    func acquireTokenInteractively() {
+
+        guard let applicationContext = self.applicationContext else { return }
+
+        applicationContext.acquireToken(forScopes: kScopes) { (result, error) in
+
+            if let error = error {
+
+                self.updateLogging(text: "Could not acquire token: \(error)")
+                return
+            }
+
+            guard let result = result else {
+
+                self.updateLogging(text: "Could not acquire token: No result returned")
+                return
+            }
+
+            self.accessToken = result.accessToken!
+            self.updateLogging(text: "Access token is \(self.accessToken)")
+            self.updateSignoutButton(enabled: true)
+            self.getContentWithToken()
+        }
+    }
+
+    func acquireTokenSilently() {
+
+        guard let applicationContext = self.applicationContext else { return }
+
+        /**
+         Acquire a token for an existing account silently
+         - forScopes:           Permissions you want included in the access token received
+                                in the result in the completionBlock. Not all scopes are
+                                guaranteed to be included in the access token returned.
+         - account:             An account object that we retrieved from the application object before that the
+                                authentication flow will be locked down to.
+         - completionBlock:     The completion block that will be called when the authentication
+                                flow completes, or encounters an error.
+         */
+
+        applicationContext.acquireTokenSilent(forScopes: kScopes, account: self.currentAccount()) { (result, error) in
+
+            if let error = error {
+
+                let nsError = error as NSError
+
+                // interactionRequired means we need to ask the user to sign-in. This usually happens
+                // when the user's Refresh Token is expired or if the user has changed their password
+                // among other possible reasons.
+                if (nsError.domain == MSALErrorDomain
+                    && nsError.code == MSALErrorCode.interactionRequired.rawValue) {
+
+                    DispatchQueue.main.async {
+                        self.acquireTokenInteractively()
+                    }
+
+                } else {
+                    self.updateLogging(text: "Could not acquire token silently: \(error)")
+                }
+
+                return
+            }
+
+            guard let result = result else {
+
+                self.updateLogging(text: "Could not acquire token: No result returned")
+                return
+            }
+
+            self.accessToken = result.accessToken!
+            self.updateLogging(text: "Refreshed Access token is \(self.accessToken)")
+            self.updateSignoutButton(enabled: true)
+            self.getContentWithToken()
+        }
+    }
+
+    func currentAccount() -> MSALAccount? {
+
+        guard let applicationContext = self.applicationContext else { return nil }
+
+        // We retrieve our current account by getting the first account from cache
+        // In multi-account applications, account should be retrieved by home account identifier or username instead
+        do {
+
+            let cachedAccounts = try applicationContext.allAccounts()
+
+            if !cachedAccounts.isEmpty {
+                return cachedAccounts.first
+            }
+
+        } catch let error as NSError {
+
+            self.updateLogging(text: "Didn't find any accounts in cache: \(error)")
+        }
+
+        return nil
+    }
 ```
 
 <!--start-collapse-->
 ### <a name="more-information"></a>Další informace
 #### <a name="getting-a-user-token-interactively"></a>Získání tokenu uživatele interaktivně
-Volání `acquireToken` metoda výsledky v okně prohlížeče uživatele vyzve k přihlášení. Aplikace obvykle vyžadují uživatel interaktivní přihlášení při prvním potřebují přístup k chráněnému prostředku nebo když tichou operaci získat token selže (například heslo uživatele jeho platnost).
+Volání `acquireToken` metoda výsledky v okně prohlížeče výzvy k přihlášení. Aplikace obvykle vyžadují uživateli umožní přihlásit interaktivně poprvé, které potřebují přístup k chráněnému prostředku, nebo při bezobslužném operaci získat token selže (třeba heslo uživatele s prošlou platností).
 
 #### <a name="getting-a-user-token-silently"></a>Získání tokenu uživatele bez upozornění
-`acquireTokenSilent` Metoda zpracovává tokenu pořízení a obnovení bez nutnosti zásahu uživatele. Po `acquireToken` se spustí poprvé, `acquireTokenSilent` je metoda běžně používají k získání tokeny použít přístup k chráněným prostředkům pro následující volání - volání na vyžádání nebo obnovení tokeny jsou vytvářeny bezobslužně.
+`acquireTokenSilent` Obsluhovala token pořízení a obnovení bez nutnosti zásahu uživatele. Po `acquireToken` provádí poprvé, `acquireTokenSilent` je metoda běžně používá k získání tokenů použít pro přístup k chráněným prostředkům pro pozdější volání – jako volání na vyžádání nebo tokeny obnovení probíhají bezobslužně.
 
-Nakonec `acquireTokenSilent` selže – např. uživatel má odhlášení, nebo došlo ke změně hesla na jiném zařízení. Když MSAL zjistí, že problém lze vyřešit tím, že vyžaduje interaktivní akce, aktivuje se ho `MSALErrorCode.interactionRequired` výjimka. Aplikace může zpracovat výjimku dvěma způsoby:
+Nakonec `acquireTokenSilent` selže – například uživatel odhlásil nebo došlo ke změně hesla na jiném zařízení. Knihovna MSAL zjistí, že problém lze vyřešit tak, že vyžaduje interaktivní akci, vyvolá-li `MSALErrorCode.interactionRequired` výjimky. Vaše aplikace dokáže zpracovat tuto výjimku dvěma způsoby:
 
-1.  Volání proti `acquireToken` okamžitě, výsledkem výzvy pro uživatele k přihlášení. Tento vzor se obvykle používá v online aplikace tam, kde není žádná offline v aplikaci k dispozici obsah pro uživatele. Ukázková aplikace generované touto s průvodcem instalací používá tento vzor: Zobrazí se v čase akce při prvním spuštění aplikace. Vzhledem k tomu, že žádný uživatel nikdy použili aplikaci, `applicationContext.users().first` bude obsahovat hodnotu null a ` MSALErrorCode.interactionRequired ` dojde k výjimce. Kód v ukázce pak ošetří výjimku voláním `acquireToken` výsledkem výzvy pro uživatele k přihlášení.
+1.  Volání proti `acquireToken` okamžitě, jehož výsledkem výzvy k přihlášení. Tento model se obvykle používá v online aplikace tam, kde není žádný offline obsah v aplikaci k dispozici pro uživatele. Tento instalační program s průvodcem vygenerovaná ukázková aplikace používá tento vzor: můžete pozorování v akci první čas spuštění aplikace. Vzhledem k tomu, že žádný uživatel nikdy nepoužil aplikace, `applicationContext.allAccounts().first` bude obsahovat hodnotu null a ` MSALErrorCode.interactionRequired ` , bude vyvolána výjimka. Kód v ukázce pak zpracovává výjimku při volání `acquireToken` výsledkem výzvy k přihlášení.
 
-2.  Aplikace můžete udělat taky vizuální označení uživateli, které interaktivní přihlášení je povinné, tak, aby si uživatel může vybrat správný čas pro přihlášení, nebo můžete zkusit aplikaci `acquireTokenSilent` později. To se obvykle používá při uživatel může použít další funkce aplikace bez narušení – například je offline obsah k dispozici v aplikaci. V takovém případě se můžete rozhodnout uživatele, když chtějí přihlášení pro přístup k chráněnému prostředku nebo aktualizovat zastaralé informace, nebo aplikaci můžete rozhodnout opakujte `acquireTokenSilent` obnovení po síti poté, co byla dočasně nedostupná.
+2.  Aplikace lze také nastavit vizuální označení pro uživatele, který interaktivnímu přihlášení je nutné, takže uživatel může vybrat správný čas pro přihlášení, nebo aplikace může pokus zopakovat, `acquireTokenSilent` později. To se obvykle používá, když uživatel může používat další funkce aplikace bez narušení – například je offline obsah k dispozici v aplikaci. V takovém případě se uživatel může rozhodnout při chtějí přihlášení pro přístup k chráněnému prostředku nebo aktualizujte zastaralé informace, nebo aplikace se můžete rozhodnout používat opakovat `acquireTokenSilent` obnovení po síti po se dočasně není k dispozici.
 
 <!--end-collapse-->
 
-## <a name="call-the-microsoft-graph-api-using-the-token-you-just-obtained"></a>Volání rozhraní Graph API Microsoft pomocí tokenu, který jste obdrželi
+## <a name="call-the-microsoft-graph-api-using-the-token-you-just-obtained"></a>Volání rozhraní Microsoft Graph API pomocí tokenu, který jste získali
 
-Přidejte novou metodu níže do `ViewController.swift`. Tato metoda se používá, chcete-li `GET` požadavku vůči pomocí Microsoft Graph API *HTTP autorizační hlavičky*:
+Přidat novou metodu níže pro `ViewController.swift`. Tato metoda se používá, aby `GET` požadavku pomocí rozhraní Microsoft Graph API *hlavičku protokolu HTTP ověřování*:
 
 ```swift
-func getContentWithToken() {
+ func getContentWithToken() {
+
+        // Specify the Graph API endpoint
+        let url = URL(string: kGraphURI)
+        var request = URLRequest(url: url!)
     
-    let sessionConfig = URLSessionConfiguration.default
-    
-    // Specify the Graph API endpoint
-    let url = URL(string: kGraphURI)
-    var request = URLRequest(url: url!)
-    
-    // Set the Authorization header for the request. We use Bearer tokens, so we specify Bearer + the token we got from the result
-    request.setValue("Bearer \(self.accessToken)", forHTTPHeaderField: "Authorization")
-    let urlSession = URLSession(configuration: sessionConfig, delegate: self, delegateQueue: OperationQueue.main)
-    
-    urlSession.dataTask(with: request) { data, response, error in
-        let result = try? JSONSerialization.jsonObject(with: data!, options: [])
-                    if result != nil {
-                
-                self.loggingText.text = result.debugDescription
+        // Set the Authorization header for the request. We use Bearer tokens, so we specify Bearer + the token we got from the result
+        request.setValue("Bearer \(self.accessToken)", forHTTPHeaderField: "Authorization")
+
+        URLSession.shared.dataTask(with: request) { data, response, error in
+
+            if let error = error {
+                self.updateLogging(text: "Couldn't get graph result: \(error)")
+                return
             }
+
+            guard let result = try? JSONSerialization.jsonObject(with: data!, options: []) else {
+
+                self.updateLogging(text: "Couldn't deserialize result JSON")
+                return
+            }
+
+            self.updateLogging(text: "Result from Graph: \(result))")
+
         }.resume()
-}
+    }
 ```
 
 <!--start-collapse-->
 ### <a name="making-a-rest-call-against-a-protected-api"></a>Volání REST chráněné rozhraní API
 
-V této ukázkové aplikaci `getContentWithToken()` metoda se používá k zajištění HTTP `GET` požadavku pro chráněný prostředek, který vyžaduje token a pak se vraťte obsah volajícímu. Tato metoda přidá získal token v *HTTP autorizační hlavičky*. Tato ukázka je prostředek Microsoft Graph API *mi* koncového bodu – zobrazí informace o profilu uživatele.
+V této ukázkové aplikaci `getContentWithToken()` aby protokolu HTTP se používá metoda `GET` požadavku na chráněný prostředek, který se vyžaduje token a potom vrátí obsah volajícímu. Tato metoda přidá tokenu získaného v *hlavičku protokolu HTTP ověřování*. Pro tuto ukázku, prostředek je v rozhraní Microsoft Graph API *mě* koncový bod – zobrazí informace o profilu uživatele.
 <!--end-collapse-->
 
 ## <a name="set-up-sign-out"></a>Nastavení odhlášení
 
-Přidejte následující metodu do `ViewController.swift` se odhlásit uživatele:
+Přidejte následující metodu do `ViewController.swift` odhlášení uživatele:
 
 ```swift 
-@IBAction func signoutButton(_ sender: UIButton) {
+ @IBAction func signoutButton(_ sender: UIButton) {
 
-    do {
-        
-        // Removes all tokens from the cache for this application for the provided user
-        // first parameter:   The user to remove from the cache
-        
-        try self.applicationContext.remove(self.applicationContext.users().first)
-        self.signoutButton.isEnabled = false;
-        
-    } catch let error {
-        self.loggingText.text = "Received error signing user out: \(error)"
+        guard let applicationContext = self.applicationContext else { return }
+
+        guard let account = self.currentAccount() else { return }
+
+        do {
+
+            /**
+             Removes all tokens from the cache for this application for the provided account
+             - account:    The account to remove from the cache
+             */
+
+            try applicationContext.remove(account)
+            self.loggingText.text = ""
+            self.signoutButton.isEnabled = false
+
+        } catch let error as NSError {
+
+            self.updateLogging(text: "Received error signing account out: \(error)")
+        }
     }
+
 }
 ```
 <!--start-collapse-->
 ### <a name="more-info-on-sign-out"></a>Další informace o odhlášení
 
-`signoutButton` Metoda odebere uživatele z mezipaměti uživatele MSAL – se efektivně tak dozví, MSAL zapomenutí aktuálního uživatele, takže budoucí žádost o získání tokenu bude úspěšné pouze v případě, že je k interaktivní.
+`signoutButton` Metoda odebere uživatele z mezipaměti uživatele MSAL – se efektivně tak dozví, MSAL tak budoucí požadavek na získání tokenu bude úspěšné pouze v případě, že je k interaktivní zapomenout aktuálního uživatele.
 
-I když aplikace v této ukázce podporuje jenom jednoho konkrétního uživatele, MSAL podporuje scénáře, kde může být přihlášeni více účtů ve stejnou dobu – příklad je e-mailové aplikace, které má uživatel více účtů.
+I když aplikace v této ukázce se podporuje jenom jednoho konkrétního uživatele, MSAL podporuje scénáře, ve kterém může být přihlášeni více účtů ve stejnou dobu – příkladem je e-mailové aplikace, kde má uživatel více účtů.
 <!--end-collapse-->
 
 ## <a name="register-the-callback"></a>Registrovat zpětné volání
 
-Jakmile se uživatel ověřuje, prohlížeč přesměruje uživatele zpět do aplikace. Postupujte podle pokynů dole zaregistrujte tento zpětného volání:
+Jakmile se uživatel ověřuje, prohlížeč přesměruje uživatele zpět do aplikace. Postupujte podle pokynů dole zaregistrujte toto zpětné volání:
 
-1.  Otevřete `AppDelegate.swift` a import MSAL:
+1.  Otevřít `AppDelegate.swift` a importovat MSAL:
 
 ```swift
 import MSAL
@@ -199,7 +308,7 @@ import MSAL
 <!-- Workaround for Docs conversion bug -->
 <ol start="2">
 <li>
-Přidejte následující metodu do vaší <code>AppDelegate</code> třídy pro zpracování zpětná volání:
+Přidejte následující metodu do vaší <code>AppDelegate</code> třídy pro zpracování zpětných volání:
 </li>
 </ol>
 
@@ -216,4 +325,3 @@ func application(_ application: UIApplication, open url: URL, sourceApplication:
     return true
 }
 ```
-

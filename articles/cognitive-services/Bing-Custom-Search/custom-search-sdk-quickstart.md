@@ -1,7 +1,7 @@
 ---
-title: Vlastní vyhledávání SDK jazyka C# rychlý start | Microsoft Docs
+title: Vlastní vyhledávání SDK jazyka C# quickstart | Dokumentace Microsoftu
 titleSuffix: Cognitive Services
-description: Instalační program konzolovou aplikaci vlastní vyhledávání SDK C#.
+description: Nastavení vlastního vyhledávání SDK jazyka C# konzolové aplikace.
 services: cognitive-services
 author: mikedodaro
 manager: rosh
@@ -10,47 +10,48 @@ ms.component: bing-custom-search
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: rosh
-ms.openlocfilehash: 59b208b53bec974433c50c0e2304dc96bd9bd09e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6b41dfbde0c2af776ee2c35220f731e40de334a0
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342378"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46367844"
 ---
-# <a name="custom-search-sdk-c-quickstart"></a>Vlastní vyhledávání SDK jazyka C# rychlý start
+# <a name="custom-search-sdk-c-quickstart"></a>Rychlé zprovoznění sady SDK pro vlastní vyhledávání v C#
 
-SDK služby Bing vlastní Search obsahuje funkci rozhraní REST API pro vyhledávání entity a analýza výsledků.
+Sady SDK vlastní vyhledávání Bingu obsahuje funkce rozhraní REST API pro vyhledávání entit a parsování výsledků.
 
-## <a name="application-dependencies"></a>Závislosti aplikací
+Zdrojový kód pro tuto ukázku je k dispozici z [Githubu](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingCustomWebSearch).
+## <a name="application-dependencies"></a>Závislosti aplikace
 
-Pokud chcete nastavit konzolovou aplikaci pomocí sady SDK Bing vlastní vyhledávání, vyhledejte `Manage NuGet Packages` možnost v Průzkumníku řešení v sadě Visual Studio. Přidat `Microsoft.Azure.CognitiveServices.Search.CustomSearch` balíčku.
+Nastavit aplikaci konzoly pomocí sady SDK vlastní vyhledávání Bingu, přejděte na `Manage NuGet Packages` možnost z Průzkumníku řešení v sadě Visual Studio. Přidejte balíček `Microsoft.Azure.CognitiveServices.Search.CustomSearch`.
 
-Instalace [NuGet vlastní vyhledávání](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0) balíček nainstaluje taky závislosti, včetně následujících sestavení:
+Instalace [NuGet vlastního vyhledávání](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0) balíček nainstaluje také závislosti, včetně následující sestavení:
 * Microsoft.Rest.ClientRuntime
 * Microsoft.Rest.ClientRuntime.Azure
 * Newtonsoft.Json
 
-## <a name="entity-search-client"></a>Klienta vyhledávání entity
+## <a name="entity-search-client"></a>Klient hledat entity
 
-K vytvoření instance CustomSearchAPI klienta, přidání direktivy using:
+Pokud chcete vytvořit instanci klienta CustomSearchAPI, přidání direktiv using:
 ```
 using Microsoft.Azure.CognitiveServices.Search.CustomSearch;
 
 ```
 
-Vytváření instancí klienta vlastní vyhledávání: Nahraďte `YOUR-CUSTOM-SEARCH-KEY` a `YOUR-CUSTOM-CONFIG-ID` s vaším přístupovým klíčem a konfiguraci koncového bodu rozhraní API v přiřazen ID [instance Moje](https://www.customsearch.ai/).
+Vytvoření instance vlastního vyhledávání klienta: nahradit `YOUR-CUSTOM-SEARCH-KEY` a `YOUR-CUSTOM-CONFIG-ID` se přístupový klíč a ID přiřazené při konfiguraci koncového bodu rozhraní API [Moje instance](https://www.customsearch.ai/).
 ```
 var client = new CustomSearchAPI(new ApiKeyServiceClientCredentials("YOUR-CUSTOM-SEARCH-KEY"));
 
 ```
-Klient použijte při hledání se text dotazu:
+Pomocí klienta na hledání text dotazu:
 ```
 var webData = client.CustomInstance.SearchAsync(query: "Xbox", customConfig: Int32.Parse("YOUR-CUSTOM-CONFIG-ID")).Result;
 
 ```
-## <a name="parse-the-results"></a>Analýza výsledků
+## <a name="parse-the-results"></a>Analyzovat výsledky
 
-`SearchAsync` Metoda vrátí `WebData` objekt, který obsahuje `WebPages` li nějaké nalezeny pro dotaz. Tento kód najde první výsledek a získá jeho `Name` a `URL`.
+`SearchAsync` Metoda vrátí hodnotu `WebData` objekt, který obsahuje `WebPages` li nějaké nalezeny pro dotaz. Tento kód najde první výsledek a získá jeho `Name` a `URL`.
 ```
 var webData = client.CustomInstance.SearchAsync(query: "Xbox", customConfig: Int32.Parse("YOUR-CUSTOM-CONFIG-ID")).Result;
  
@@ -79,9 +80,9 @@ else
 }
 
 ```
-## <a name="complete-console-application"></a>Dokončení konzolové aplikace
+## <a name="complete-console-application"></a>Kompletní konzolová aplikace
 
-Následující kód prohledá na dotaz "Xbox" a vytiskne `Name` a `URL` pro první webovou výsledek.
+Následující kód vyhledá na dotaz "Xbox" a vytiskne `Name` a `URL` pro první výsledek web.
 ```
 using System;
 using System.Linq;
@@ -141,4 +142,4 @@ namespace CustomSrchSDK
 
 ## <a name="next-steps"></a>Další postup
 
-[Kognitivní services .NET SDK ukázky](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)
+[Ukázky kognitivních služeb sady .NET SDK](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)
