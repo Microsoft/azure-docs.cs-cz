@@ -1,26 +1,25 @@
 ---
-title: Porovnání výchozích uživatelských oprávnění v Azure AD | Microsoft Docs
-description: Porovnání oprávnění člena, hosta, vlastníka aplikace a vlastníka skupiny
+title: Co jsou výchozí oprávnění uživatelů ve službě Azure Active Directory? | Dokumenty Microsoft
+description: Další informace o různých uživatelských oprávnění k dispozici v Azure Active Directory.
 services: active-directory
-documentationcenter: ''
 author: eross-msft
 manager: mtillman
-editor: ''
 ms.service: active-directory
-ms.workload: identity
 ms.component: fundamentals
-ms.topic: overview
+ms.workload: identity
+ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: lizross
 ms.reviewer: vincesm
-ms.openlocfilehash: e2571a6854d2c3de2425547b69c5435286182ef7
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
-ms.translationtype: HT
+custom: it-pro
+ms.openlocfilehash: 9a9bd33dce4b2be9e15df2745dd25338cdb42702
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448148"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45730475"
 ---
-# <a name="default-user-permissions-in-azure-active-directory"></a>Výchozí uživatelská oprávnění v Azure Active Directory
+# <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Co jsou výchozí oprávnění uživatelů ve službě Azure Active Directory?
 
 V Azure Active Directory (Azure AD) mají všichni uživatelé udělenou sadu výchozích oprávnění. Přístup uživatele se skládá z typu uživatele, jeho [členství v rolích](https://docs.microsoft.com/azure/active-directory/active-directory-users-assign-role-azure-portal) a vlastnictví jednotlivých objektů. Tento článek popisuje tato výchozí oprávnění a obsahuje porovnání výchozích nastavení člena a uživatele typu host.
 
@@ -52,7 +51,7 @@ Oprávnění | Vysvětlení nastavení
 ---------- | ------------
 Možnost vytvářet skupiny zabezpečení | Nastavení této možnosti na hodnotu Ne zabrání uživatelům vytvářet skupiny zabezpečení. Globální správci a správci uživatelských účtů budou moct skupiny zabezpečení vytvářet i nadále. Informace o postupu najdete v tématu [Rutiny Azure Active Directory pro konfiguraci nastavení skupiny](../users-groups-roles/groups-settings-cmdlets.md).
 Možnost vytvářet skupiny Office 365 | Nastavení této možnosti na hodnotu Ne zabrání uživatelům vytvářet skupiny Office 365. Nastavení této možnosti na hodnotu Někteří umožní vytvářet skupiny Office 365 vybrané skupině uživatelů. Globální správci a správci uživatelských účtů budou moct skupiny Office 365 vytvářet i nadále. Informace o postupu najdete v tématu [Rutiny Azure Active Directory pro konfiguraci nastavení skupiny](../users-groups-roles/groups-settings-cmdlets.md).
-Omezení přístupu k portálu pro správu Azure AD | Nastavení této možnosti na hodnotu Ne zabrání uživatelům v přístupu k portálu Azure Active Directory.
+Omezení přístupu k portálu pro správu Azure AD | Nastavení této možnosti na Ne zabraňuje uživatelům v přístupu k Azure Active Directory.
 Možnost číst ostatní uživatele | Toto nastavení je k dispozici pouze v PowerShellu. Nastavení této možnosti na hodnotu $false zabrání všem uživatelům, kteří nejsou správci, číst z adresáře informace o uživatelích. Toto nastavení nebrání čtení informací o uživatelích v ostatních službách Microsoftu, jako je například Exchange Online. Toto nastavení je určené pro zvláštní okolnosti a jeho nastavení na hodnotu $false se nedoporučuje.
 
 ## <a name="object-ownership"></a>Vlastnictví objektů
@@ -68,9 +67,9 @@ When a user adds a new enterprise application, they are automatically added as a
 
 Když uživatel vytvoří skupinu, automaticky se přidá jako vlastník této skupiny. Jako vlastník může spravovat vlastnosti skupiny, například její název, a také spravovat členství ve skupině. Vlastník může také přidat nebo odebrat další vlastníky. Na rozdíl od globálních správců a správců uživatelských účtů můžou vlastníci spravovat pouze skupiny, které vlastní. Pokud chcete přiřadit vlastníka skupiny, přečtěte si téma [Správa vlastníků skupiny](active-directory-accessmanagement-managing-group-owners.md).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-* Další informace o tom, jak změnit správce pro předplatné služby Azure naleznete v tématu [Postup přidání nebo změna role správce služby Azure](../../billing/billing-add-change-azure-subscription-administrator.md)
+* Další informace o tom, jak přiřadit role správce Azure AD najdete v tématu [uživatele přiřadit do rolí správce ve službě Azure Active Directory](active-directory-users-assign-role-azure-portal.md)
 * Další informace o tom, jak se přístup k prostředkům řídí ve službě Microsoft Azure, najdete v části [Principy přístupu k prostředkům ve službě Azure](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 * Další informace o vztahu Azure Active Directory k předplatnému Azure najdete v tématu [Jak je předplatné Azure propojeno se službou Azure Active Directory](active-directory-how-subscriptions-associated-directory.md).
 * [Správa uživatelů](add-users-azure-active-directory.md)

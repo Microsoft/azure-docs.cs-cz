@@ -1,20 +1,21 @@
 ---
-title: Začínáme s API pro rozpoznávání řeči Microsoft v jazyce JavaScript | Dokumentace Microsoftu
-description: Použití rozhraní API pro rozpoznávání řeči Microsoft ve službě Cognitive Services k vývoji aplikací, které plynule převést mluvené slovo na text.
+title: Začínáme s API pro rozpoznávání řeči Bingu v jazyce JavaScript | Dokumentace Microsoftu
+titlesuffix: Azure Cognitive Services
+description: K vývoji aplikací, které průběžně převést mluvené slovo na text pomocí rozhraní API pro rozpoznávání řeči Bingu ve službách Cognitive Services.
 services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 12/21/2017
+ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 04332c453d22122e65a758a65b09e17300e07f02
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 024f359362aba3f7d4f99b7dd36954a755c4d1f2
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39040534"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46366076"
 ---
 # <a name="get-started-with-the-speech-recognition-api-in-javascript"></a>Začínáme s rozhraním API pro rozpoznávání řeči v jazyce JavaScript
 
@@ -38,7 +39,7 @@ V této části jsme vás provede kroky potřebné ke načíst ukázkovou strán
 
 ### <a name="open-the-sample-directly"></a>Otevřete ukázku přímo
 
-Získejte klíč předplatného, jak je popsáno výše. Otevřete [odkaz na ukázku](https://htmlpreview.github.io/?https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript/blob/preview/samples/browser/Sample.html). Tím se načtou do svého výchozího prohlížeče na stránce (vykreslen pomocí [htmlPreview](https://github.com/htmlpreview/htmlpreview.github.com)).
+Získejte klíč předplatného, jak je popsáno výše. Otevřete [odkaz na ukázku](https://htmlpreview.github.io/? https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript/blob/preview/samples/browser/Sample.html). Tím se načtou do svého výchozího prohlížeče na stránce (vykreslen pomocí [htmlPreview](https://github.com/htmlpreview/htmlpreview.github.com)).
 
 ### <a name="open-the-sample-from-a-local-copy"></a>Otevřete ukázku z místní kopie
 

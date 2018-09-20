@@ -1,6 +1,6 @@
 ---
-title: Přiřazení rolí správce v Azure Active Directory | Dokumentace Microsoftu
-description: Roli správce můžete přidat uživatele, přiřazovat role správců, resetovat hesla uživatelů, spravovat uživatelské licence nebo spravovat domény. Uživatel, který má přiřazenou roli správce má stejná oprávnění ve všech cloudových služeb, u kterých vaše organizace předplatila.
+title: Role správce odkazovat ve službě Azure Active Directory | Dokumentace Microsoftu
+description: Roli správce můžete přidat uživatele, přiřazovat role správců, resetovat hesla uživatelů, spravovat uživatelské licence nebo spravovat domény.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 09/07/2018
+ms.date: 09/19/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 985fd559c0af0306dc5b0868a8d7ccc66ca790f8
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 04deb1168c8c5c0977d0f20c9307ce10d2d12d35
+ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296698"
+ms.locfileid: "46466111"
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Přiřazení rolí správce v Azure Active Directory
 
@@ -327,7 +327,8 @@ Může vytvářet a spravovat všechny aspekty registrací aplikací a podnikov�
 | **Akce** | **Popis** |
 | --- | --- |
 | Microsoft.aad.Directory/Devices/DELETE | Umožňuje odstraňte devices v Azure Active Directory. |
-| Microsoft.aad.Directory/Devices/Update | Umožňuje aktualizovat vlastnost accountEnabled na zařízení ve službě Azure Active Directory |
+| Microsoft.aad.Directory/Devices/disable | Zakážete devices v Azure Active Directory. |
+| Microsoft.aad.Directory/Devices/enable | Povolte zařízení v Azure Active Directory. |
 | microsoft.aad.reports/allEntities/read | Umožňuje číst sestavy Azure AD. |
 | microsoft.azure.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat služby Azure Service Health. |
 | Microsoft.Office365.serviceHealth/allEntities/allTasks | Umožňuje číst a konfigurovat stav služby Office 365. |
