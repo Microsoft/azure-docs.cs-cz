@@ -56,6 +56,8 @@ items:
       href: howto-set-up-template.md
     - name: správu zařízení
       href: howto-manage-devices.md
+    - name: Spuštění úlohy
+      href: howto-run-a-job.md
     - name: Použití sad zařízení
       href: howto-use-device-sets.md
     - name: Vytváření verzí šablon zařízení
@@ -66,7 +68,7 @@ items:
       href: howto-create-telemetry-rules.md
     - name: Vytvoření pravidla událostí
       href: howto-create-event-rules.md
-    - name: Vytvoření vlastní analýzy
+    - name: Analýza dat zařízení
       href: howto-create-analytics.md
   - name: Akce a rozšiřitelnost
     items:
@@ -82,14 +84,12 @@ items:
       href: howto-connect-powerbi.md
   - name: Správa
     items:
-    - name: Správa vaší aplikace
-      href: howto-administer.md
+    - name: Správa řešení IoT Central z Portálu pro správu Azure
+      href: howto-manage-iot-central-from-portal.md
     - name: Vytvoření a správa aplikace jako odběratel CSP
       href: howto-create-and-manage-applications-as-CSP.md
     - name: Konfigurace domovské stránky
       href: howto-configure-homepage.md
-    - name: Příprava a nahrávání obrázků
-      href: howto-prepare-images.md
 - name: Související
   items:
   - name: Řešení
@@ -122,9 +122,9 @@ items:
     href: iot-central-customer-data-requests.md
   - name: Stack Overflow
     href: https://stackoverflow.com/questions/tagged/azure-iot-central
-ms.openlocfilehash: 103bbb59a20194447d49e11327df1d984ccb0a8a
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 3e8292ce6780381f4e8ead009002959fe42a9d02
+ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983100"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46465670"

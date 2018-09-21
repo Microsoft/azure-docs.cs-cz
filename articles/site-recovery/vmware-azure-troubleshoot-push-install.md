@@ -1,5 +1,5 @@
 ---
-title: Azure Site Recovery řešení potíží z VMware do Azure | Dokumentace Microsoftu
+title: Řešení potíží s selhání nabízená instalace služby Mobility při povolení Replication(VMware to Azure) | Dokumentace Microsoftu
 description: Řešení potíží mobility service nebo nabízená instalace při replikaci virtuálních počítačů Azure.
 services: site-recovery
 author: Rajeswari-Mamilla
@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: article
 ms.author: ramamill
 ms.date: 09/19/2018
-ms.openlocfilehash: 32b579ac680204a909c19e7125711d298b08b26a
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 22c01f2bd9c763eeb681bf2d60e0ccffe1154d85
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46365481"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46497616"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>Řešení potíží s nabízenou instalací služby Mobility
 

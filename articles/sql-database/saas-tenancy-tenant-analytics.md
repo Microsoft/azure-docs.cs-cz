@@ -1,6 +1,6 @@
 ---
 title: Spouštět analýzy napříč tenanty pomocí extrahovaných dat | Dokumentace Microsoftu
-description: Mezi tenanty analytických dotazů pomocí dat extrahovaných z několika databází Azure SQL Database.
+description: Mezi tenanty analytických dotazů pomocí dat extrahovaných z více databází Azure SQL Database v aplikaci s jedním tenantem.
 keywords: kurz k sql database
 services: sql-database
 author: stevestein
@@ -8,19 +8,19 @@ manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: conceptual
-ms.date: 09/14/2018
+ms.date: 09/19/2018
 ms.author: sstein
 ms.reviewer: anjangsh; billgib; genemi
-ms.openlocfilehash: b887572e7c2bdf22c8a6cc8ffa1641e402fd6a58
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: a838630e3423ca5ec26893597e2bb2b6e36ede2e
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45736423"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498047"
 ---
-# <a name="cross-tenant-analytics-using-extracted-data"></a>Extrahovaná data pomocí analýzy napříč tenanty
-
-V tomto kurzu si projdete scénáři dokončení analýzy. Tento scénář předvádí, jak analytics můžete povolit firmám inteligentní rozhodování. Použití dat extrahovaných z každé databázi tenantů, pomocí analytics získat přehled o tenantovi využití chování a aplikace. Tento scénář zahrnuje tři kroky: 
+# <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>Pomocí analýzy napříč tenanty extrahovaná data – aplikace s jedním tenantem
+ 
+V tomto kurzu si projdete analytics kompletní scénář pro jednoho tenanta implementatoin. Tento scénář předvádí, jak analytics můžete povolit firmám inteligentní rozhodování. Použití dat extrahovaných z každé databázi tenantů, pomocí analytics získat přehled o chování klienta, včetně jejich použití ukázkové SaaS aplikace Wingtip Tickets aplikace. Tento scénář zahrnuje tři kroky: 
 
 1.  **Extrahovat** data z každé databázi tenantů a **zatížení** do analýzy úložiště.
 2.  **Transformace dat extrahovaných** pro zpracování analýzy.
@@ -241,3 +241,4 @@ Blahopřejeme!
 
 - Další [kurzy, které vycházejí z aplikace SaaS aplikace Wingtip](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials).
 - [Elastické úlohy](sql-database-elastic-jobs-overview.md).
+- [Pomocí analýzy napříč tenanty extrahovaná data – aplikace s více tenanty](saas-multitenantdb-tenant-analytics.md)

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/11/2017
 ms.author: juluk
-ms.openlocfilehash: 0bd5382e5ea37f7c3c52d119e9d39fe7e0bfdc7c
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 37ad0adf01172fadc6d9845576045a4542bdae19
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42056788"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46497786"
 ---
 # <a name="embed-azure-cloud-shell"></a>Vložení služby Azure Cloud Shell
 
@@ -27,11 +27,11 @@ Využitím vkládání služby Cloud Shell umožňuje vývojářům a autory obs
 
 Běžné velikosti tlačítko
 
-[![](https://shell.azure.com/images/launchcloudshell.png "Spustit Azure Cloud Shell")](https://shell.azure.com)
+[![Pravidelné spouštění](https://shell.azure.com/images/launchcloudshell.png "spustit Azure Cloud Shell")](https://shell.azure.com)
 
 Velké velikosti tlačítko
 
-[![](https://shell.azure.com/images/launchcloudshell@2x.png "Spustit Azure Cloud Shell")](https://shell.azure.com)
+[![Velké spuštění](https://shell.azure.com/images/launchcloudshell@2x.png "spustit Azure Cloud Shell")](https://shell.azure.com)
 
 ## <a name="how-to"></a>Postupy
 

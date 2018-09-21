@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 08/29/2018
+ms.date: 09/18/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9cb2b0bdb036b26fbd355ff4bd84885b7e15507d
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 23f86581b5ecc5257ccb246c7199eef4246efb08
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45541969"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498228"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Správa aktualizací pro několik počítačů
 
@@ -127,6 +127,7 @@ V **nové nasazení aktualizací** podokně zadejte následující informace:
 
 - **Název**: Zadejte jedinečný název pro identifikaci nasazení aktualizace.
 - **Operační systém**: vyberte **Windows** nebo **Linux**.
+- **Skupiny, které se aktualizace (preview)**: definování dotazu na základě kombinace předplatného, skupiny prostředků, míst a značky vytvářet dynamické skupiny virtuálních počítačů Azure má zahrnout do vašeho nasazení. Další informace najdete tady [dynamické skupiny](automation-update-management.md#using-dynamic-groups)
 - **Počítače k aktualizaci**: Zvolte Uložit hledání, importované skupiny, nebo vybrat počítače, které chcete vybrat počítače, které chcete aktualizovat. Pokud zvolíte možnost **Počítače**, ve sloupci **PŘIPRAVENOST AGENTA AKTUALIZACE** se zobrazí připravenost počítačů. Zobrazí se stav počítače a před naplánovat nasazení aktualizace. Další informace o různých způsobech vytváření skupin počítačů v Log Analytics najdete v tématu [Skupiny počítačů v Log Analytics](../log-analytics/log-analytics-computer-groups.md).
 
   ![Podokno nasazení nové aktualizace](./media/manage-update-multi/update-select-computers.png)
@@ -141,13 +142,15 @@ V **nové nasazení aktualizací** podokně zadejte následující informace:
   - Nástroje
   - Aktualizace
 
-- **Aktualizace k vyloučení**: Tato volba otevře **vyloučit** stránky. Zadejte článků znalostní báze KB nebo názvy balíčků, které chcete vyloučit.
+- **Aktualizace pro zahrnutí a vyloučení** – tím se otevře **zahrnout/vyloučit** stránky. Aktualizace zahrnuty nebo vyloučeny jsou v samostatných kartách. Další informace o zpracování zařazení, naleznete v tématu [zahrnutí chování](automation-update-management.md#inclusion-behavior)
 
 - **Nastavení plánu:** Můžete přijmout výchozí datum a čas, což je 30 minut od aktuálního času. Můžete také zadat jiný čas.
 
    Můžete také určit, jestli nasazení proběhne jednou nebo opakovaně. V části Nastavení plánu opakování **opakování**vyberte **periodický**.
 
    ![Dialogové okno Nastavení plánu](./media/manage-update-multi/update-set-schedule.png)
+
+- **Skripty před a po skripty**: Vyberte skripty spouštěné před a po nasazení. Další informace najdete v tématu [spravovat před a po skripty](pre-post-scripts.md).
 - **Časové období údržby (minuty)**: Zadejte dobu, po které má dojít k nasazení aktualizací. Toto nastavení pomůže zajistit, že se změny provedou v rámci definovaných časových intervalů pro správu a údržbu.
 
 - **Restartovat ovládací prvek** – toto nastavení určuje, jak se zpracovává restartování počítače pro nasazení aktualizace.

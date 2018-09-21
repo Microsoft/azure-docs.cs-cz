@@ -1,6 +1,6 @@
 ---
-title: Automatické ladění e-mailem oznámení s postupy Průvodce – Azure SQL Database | Microsoft Docs
-description: Azure SQL Database analyzuje dotazu SQL a automaticky přizpůsobí zatížení uživatele.
+title: Automatické ladění e-mailová oznámení s postupy Průvodce – Azure SQL Database | Dokumentace Microsoftu
+description: Povolení e-mailová oznámení pro ladění automatické dotazů Azure SQL Database.
 services: sql-database
 author: danimir
 manager: craigg
@@ -8,84 +8,84 @@ ms.reviewer: carlrab
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
-ms.date: 02/05/2018
+ms.date: 09/19/2018
 ms.author: v-daljep
-ms.openlocfilehash: 643740ea76769f857e8c99ebaa6d27eceed99067
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 546a21c4be13fdd0d06e29253d73c6b67cb8c91c
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34644327"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498466"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>E-mailová oznámení pro automatické ladění
 
-Databáze SQL Azure SQL Database generované vyladění doporučení [automatické ladění](sql-database-automatic-tuning.md). Toto řešení nepřetržitě monitoruje a analyzuje zatížení poskytnout databází SQL přizpůsobit ladění doporučení pro každé jednotlivé databáze týkající se vytvoření indexu, odstranění indexu a optimalizace plány provádění dotazů.
+SQL Database, Azure SQL Database jsou generovány doporučení pro vyladění [automatické ladění](sql-database-automatic-tuning.md). Toto řešení nepřetržitě monitoruje a analyzuje úloh SQL Database poskytuje přizpůsobená doporučení pro každé jednotlivé databáze týkající se vytváření indexů, odstranění indexu a optimalizace plánů spouštění dotazu pro optimalizaci.
 
-SQL databáze automatické ladění doporučení lze zobrazit v [portál Azure](sql-database-advisor-portal.md), načtené s [REST API](https://docs.microsoft.com/rest/api/sql/databaserecommendedactions/listbydatabaseadvisor) volá, nebo pomocí [T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/) a [ Prostředí PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabaserecommendedaction) příkazy. Tento článek je založena na pomocí skriptu prostředí PowerShell k načtení automatické ladění doporučení.
+SQL Database doporučení automatického ladění můžete zobrazit v [webu Azure portal](sql-database-advisor-portal.md), načtený pomocí [rozhraní REST API](https://docs.microsoft.com/rest/api/sql/databaserecommendedactions/listbydatabaseadvisor) volá, nebo pomocí [T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/) a [ Prostředí PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabaserecommendedaction) příkazy. Tento článek je založen na pomocí Powershellového skriptu se načíst doporučení automatického ladění.
 
-## <a name="automate-email-notifications-for-automatic-tuning-recommendations"></a>Automatizovat e-mailová oznámení pro automatické ladění doporučení
+## <a name="automate-email-notifications-for-automatic-tuning-recommendations"></a>Automatizace e-mailová oznámení pro doporučení automatického ladění
 
-Následující řešení automatizuje odesílání e-mailová oznámení obsahující automatické ladění doporučení. Popisuje řešení se skládá z automatizaci provádění skriptu prostředí PowerShell pro získání vyladění doporučení pomocí [Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro), a automatizace plánování pomocí úlohy doručení e-mailu [Flow Microsoft ](https://flow.microsoft.com).
+Toto řešení automatizuje odesílání e-mailová oznámení, který obsahuje doporučení automatického ladění. Popisuje řešení se skládá z automatizace pro spuštění skriptu prostředí PowerShell pro načtení pomocí doporučení pro vyladění [Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro), a automatizaci plánování pomocí úlohy doručování e-mailu [Microsoft Flow ](https://flow.microsoft.com).
 
 ## <a name="create-azure-automation-account"></a>Vytvoření účtu Azure Automation.
 
-Pokud chcete používat Azure Automation, prvním krokem je vytvoření účtu automation a konfigurace s prostředky Azure pro spuštění skriptu prostředí PowerShell. Další informace o Azure Automation a jeho funkce, najdete v části [Začínáme s Azure automation](https://docs.microsoft.com/azure/automation/automation-offering-get-started).
+Pomocí Azure Automation, prvním krokem je vytvoření účtu automation a konfigurace s prostředky Azure pro účely provádění skriptu prostředí PowerShell. Další informace o službě Azure Automation a možnosti najdete v tématu [Začínáme s Azure automation](https://docs.microsoft.com/azure/automation/automation-offering-get-started).
 
 Postupujte podle těchto kroků můžete vytvořit účet Azure Automation prostřednictvím metody výběru a konfigurace automatizace aplikace z Marketplace:
 
-- Přihlaste se k portálu Azure
+- Přihlaste se na webu Azure portal
 - Klikněte na "**+ vytvořit prostředek**" v levém horním rohu
-- Vyhledejte "**automatizace**" (stiskněte klávesu enter)
-- Klikněte na aplikaci automatizace ve výsledcích hledání
+- Vyhledejte "**automatizace**" (stisknutím klávesy enter)
+- Klikněte na tlačítko v aplikaci automatizace ve výsledcích hledání
 
 ![Přidání služby Azure automation](./media/sql-database-automatic-tuning-email-notifications/howto-email-01.png)
 
-- Jednou v podokně "Vytvořit automatizace účet", klikněte na "**vytvořit**"
-- Naplnění požadované informace: Zadejte název pro tento účet služby automation, vyberte předplatné Azure ID a Azure prostředky má být použit pro provádění skriptu prostředí PowerShell
-- Pro "**vytvořit Azure účet Spustit jako**" Vyberte možnost **Ano** nakonfigurovat typ účtu, pod které PowerShell skript se spustí pomocí Azure Automation. Další informace o typech účtů najdete v tématu [účet Spustit jako](https://docs.microsoft.com/azure/automation/automation-create-runas-account)
-- Vytvoření účtu automation dokončete kliknutím na **vytvořit**
+- Jednou v podokně "Vytvoření účet služby Automation" klikněte na "**vytvořit**"
+- Vyplnění požadovaných informací: Zadejte název pro tento účet automation, vyberte předplatné Azure ID a Azure prostředky použitého pro spuštění skriptu prostředí PowerShell
+- Pro "**vytvoření účtu Azure spustit jako**" možnost, vyberte **Ano** nakonfigurovat typ účtu, pod kterou Powershellu skript se spustí pomocí služby Azure Automation. Další informace o typech účtů najdete v tématu [účet Spustit jako](https://docs.microsoft.com/azure/automation/automation-create-runas-account)
+- Vytvoření účtu automation uzavřít po kliknutí na **Create**
 
 > [!TIP]
-> Zaznamenejte přesně tak, jak zadat při vytváření aplikace automatizace váš název účtu Azure Automation, ID předplatného a prostředky (například kopírování vložením programu Poznámkový blok). Je třeba tyto informace později.
+> Zaznamenejte název účtu služby Azure Automation, ID předplatného a prostředky (například kopírování a vkládání do poznámkového bloku) přesně tak, jak zadat při vytváření aplikací automatizace. Tyto informace později budete potřebovat.
 >
 
-Pokud máte několik předplatných Azure, pro které chcete sestavit automatizaci stejné, musíte tento postup opakujte pro jiné předplatné.
+Pokud máte několik předplatných Azure, pro které chcete sestavení stejné služby automation, musíte tento postup opakujte pro vaše předplatná.
 
-## <a name="update-azure-automation-modules"></a>Aktualizovat moduly Azure Automation.
+## <a name="update-azure-automation-modules"></a>Aktualizace modulů Azure Automation.
 
-Skript prostředí PowerShell k načtení automatické ladění doporučení používá [Get-AzureRmResource](https://docs.microsoft.com/powershell/module/AzureRM.Resources/Get-AzureRmResource) a [Get-AzureRmSqlDatabaseRecommendedAction](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Get-AzureRmSqlDatabaseRecommendedAction) příkazy, pro které aktualizaci moduly Azure verze 4 a novější je nutné.
+Skript prostředí PowerShell k načtení automatického ladění doporučení používá [Get-AzureRmResource](https://docs.microsoft.com/powershell/module/AzureRM.Resources/Get-AzureRmResource) a [Get-AzureRmSqlDatabaseRecommendedAction](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Get-AzureRmSqlDatabaseRecommendedAction) příkazy aktualizací modulů Azure verze 4 a novější.
 
-Postupujte podle těchto kroků provedete aktualizaci modulů prostředí Azure PowerShell:
+Postupujte podle těchto kroků provedete aktualizaci modulů Azure Powershellu:
 
-- Přístup k podoknu automatizace aplikace a vyberte "**moduly**" v nabídce na levé straně (přejděte dolů tuto položku nabídky je pod sdílené prostředky).
-- V podokně moduly, klikněte na "**aktualizace Azure moduly**" v horní a počkejte, až se zobrazí zpráva "Azure moduly byly aktualizovány". Dokončení tohoto procesu může trvat několik minut.
+- Přístup k podoknu aplikace automatizace a vyberte "**moduly**" v levé nabídce (přejděte dolů je tato položka nabídky v části sdílené prostředky).
+- V podokně moduly, klikněte na "**aktualizace modulů Azure**" v horní a počkejte, až se zobrazí zpráva "moduly Azure se aktualizovaly". Dokončení tohoto procesu může trvat několik minut.
 
-![Aktualizovat moduly Azure automation](./media/sql-database-automatic-tuning-email-notifications/howto-email-02.png)
+![Aktualizace modulů Azure automation](./media/sql-database-automatic-tuning-email-notifications/howto-email-02.png)
 
-Požadovaná verze z AzureRM.Resources a AzureRM.Sql moduly musí být verze 4 a vyšší.
+Požadovaná verze azurerm.resources zavedla a AzureRM.Sql moduly musí být verze 4 a vyšší.
 
-## <a name="create-azure-automation-runbook"></a>Vytvoření služby Azure Automation Runbook
+## <a name="create-azure-automation-runbook"></a>Vytvoření Runbooku Azure Automation
 
-Dalším krokem je vytvoření sady Runbook ve službě Azure Automation, která se nachází skript prostředí PowerShell k načtení ladění doporučení.
+Dalším krokem je vytvoření sady Runbook ve službě Azure Automation, které se nachází skript prostředí PowerShell pro načítání doporučení pro optimalizaci.
 
-Postupujte podle těchto kroků můžete vytvořit novou sadu runbook automatizace Azure:
+Postupujte podle těchto kroků a vytvořte novou sadu runbook Azure Automation:
 
-- Přístup k účtu Azure Automation, kterou jste vytvořili v předchozím kroku
-- Jednou v podokně účet automation, klikněte na "**Runbooky**" položku nabídky na levé straně, chcete-li vytvořit novou sadu runbook automatizace Azure pomocí skriptu prostředí PowerShell. Další informace o vytváření runbooků služeb automatizace najdete v tématu [vytváření nových runbooků](../automation/automation-creating-importing-runbook.md).
-- Chcete-li přidat novou sadu runbook, klikněte na "**+ přidat runbook**" možnost nabídky a klikněte na "**rychlé vytvoření – vytvořit nový runbook**".
-- V podokně sady Runbook, zadejte název vaší sady runbook (pro účely tohoto příkladu "**AutomaticTuningEmailAutomation**" se používá), vyberte typ runbook jako **prostředí PowerShell** a zápis popis Tato sada runbook k popisu jeho účel.
-- Klikněte na **vytvořit** tlačítko dokončete vytváření nové sady runbook
+- Přístup k účtu Azure Automation, který jste vytvořili v předchozím kroku
+- Jednou v podokně účtu automation, klikněte na "**sady Runbook**" položky nabídky na levé straně, chcete-li vytvořit novou sadu runbook Azure Automation pomocí skriptu prostředí PowerShell. Další informace o vytváření runbooků služeb automatizace, najdete v článku [vytváří se nový runbook](../automation/automation-creating-importing-runbook.md).
+- Pokud chcete přidat novou sadu runbook, klikněte na "**+ přidat runbook**" možnost nabídky a potom kliknout na "**rychlé vytvoření – vytvořit nový runbook**".
+- V podokně sady Runbook, zadejte název vaší sady runbook (pro účely tohoto příkladu "**AutomaticTuningEmailAutomation**" se používá), vyberte typ runbooku jako **Powershellu** a napište popis Tato sada runbook popisující její účel.
+- Klikněte na **vytvořit** tlačítko Dokončit vytváření nové sady runbook
 
-![Přidání služby Azure automation runbook](./media/sql-database-automatic-tuning-email-notifications/howto-email-03.png)
+![Přidat runbook Azure automation.](./media/sql-database-automatic-tuning-email-notifications/howto-email-03.png)
 
 Použijte následující postup načtení skriptu prostředí PowerShell v runbooku vytvořit:
 
-- Uvnitř "**upravit Runbook Powershellu**"podokně, vyberte možnost"**RUNBOOKY**" v nabídce stromu a rozbalte zobrazení, dokud neuvidíte název sady runbook (v tomto příkladu " **AutomaticTuningEmailAutomation**"). Vyberte tuto sadu runbook.
-- Na první řádek "Upravit prostředí PowerShell sady runbook" (počínaje číslem 1) zkopírujte vložte následující kód skriptu prostředí PowerShell. Tento skript prostředí PowerShell je k dispozici jako-se, abyste mohli začít. Upravte skript tak, aby sada vašim potřebám.
+- Uvnitř "**upravit Powershellový Runbook**"podokně, vyberte možnost"**sady RUNBOOK**" v nabídce stromu a rozbalte položku zobrazení, dokud se nezobrazí název sady runbook (v tomto příkladu " **AutomaticTuningEmailAutomation**"). Vyberte tuto sadu runbook.
+- Na prvním řádku "upravit Powershellový Runbook" (počínaje číslem 1) kopírování a vkládání následující kód skriptu prostředí PowerShell. Tento skript Powershellu se poskytuje jako-je vám pomůžou začít. Upravte skript tak suite vašim potřebám.
 
-V hlavičce poskytnutého skriptu prostředí PowerShell, je třeba nahradit `<SUBSCRIPTION_ID_WITH_DATABASES>` s vaším ID předplatného Azure. Zjistěte, jak zjistit ID předplatného Azure, najdete v tématu [získávání vaší GUID předplatného Azure](https://blogs.msdn.microsoft.com/mschray/2016/03/18/getting-your-azure-subscription-guid-new-portal/).
+V záhlaví dodaný skript Powershellu, budete muset nahradit `<SUBSCRIPTION_ID_WITH_DATABASES>` s ID vašeho předplatného Azure. Zjistěte, jak načíst ID vašeho předplatného Azure, najdete v článku [získání vaší GUID předplatného Azure](https://blogs.msdn.microsoft.com/mschray/2016/03/18/getting-your-azure-subscription-guid-new-portal/).
 
-V případě několik předplatných může přidejte je jako oddělených čárkou pro vlastnost "$subscriptions" v hlavičce skriptu.
+V případě několika předplatných přidáním jako oddělených čárkou pro vlastnost "$subscriptions" v hlavičce skriptu.
 
 ```PowerShell
 # PowerShell script to retrieve Azure SQL Database Automatic tuning recommendations.
@@ -172,83 +172,83 @@ $table = $results | Format-List
 Write-Output $table
 ```
 
-Klikněte "**Uložit**" tlačítko v pravém horním rohu Uložte skript. Jakmile budete spokojeni pomocí skriptu, klikněte "**publikovat**" tlačítko Publikovat tuto sadu runbook. 
+Klikněte "**Uložit**" tlačítko v pravém horním rohu skript uložte. Pokud jste spokojeni s skriptu, klikněte "**publikovat**" tlačítko Publikovat tuto sadu runbook. 
 
-V podokně hlavní runbook můžete kliknout na "**spustit**" tlačítko pro **testování** skript. Klikněte na "**výstup**" pro zobrazení výsledků skript spustit. Tento výstup bude obsah e-mailu. Ukázkový výstup ze skriptu můžete vidět na následujícím snímku obrazovky.
+V podokně hlavní runbook můžete kliknout na "**Start**" tlačítko **testování** skript. Klikněte na "**výstup**" pro zobrazení výsledků spuštění skriptu. Tento výstup se má být obsah e-mailu. Ukázkový výstup ze skriptu můžete vidět na následujícím snímku obrazovky.
 
-![Spuštění zobrazení Automatické ladění doporučení s Azure Automation.](./media/sql-database-automatic-tuning-email-notifications/howto-email-04.png)
+![Spuštění zobrazení doporučení s využitím Azure Automation automatického ladění](./media/sql-database-automatic-tuning-email-notifications/howto-email-04.png)
 
-Je třeba upravit obsah přizpůsobením skript prostředí PowerShell vašim potřebám.
+Nezapomeňte upravit obsah přizpůsobením skript Powershellu pro vaše potřeby.
 
-Pomocí výše uvedené kroky je skript prostředí PowerShell k načtení automatické ladění doporučení načten ve službě Azure Automation. Dalším krokem je automatizovat a plán úlohy doručení e-mailu.
+Pomocí výše uvedených kroků načtení skriptu prostředí PowerShell načíst doporučení automatického ladění ve službě Azure Automation. Dalším krokem je k automatizaci a naplánovat úlohu doručování e-mailu.
 
-## <a name="automate-the-email-jobs-with-microsoft-flow"></a>Automatizovat úlohy e-mailu s Microsoft Flow
+## <a name="automate-the-email-jobs-with-microsoft-flow"></a>Automatizace úloh e-mailu s Microsoft Flow
 
-K dokončení tohoto řešení jako poslední krok, vytvořte tok automatizace v Flow Microsoft, který se skládá ze tří akcí (úlohy): 
+K dokončení řešení, jako poslední krok, vytvoření automatizace toku v Microsoft Flow složený ze tří akcí (úlohy): 
 
-1. "**Azure Automation - vytvořit úlohu**" – používá se pro spuštění skriptu prostředí PowerShell k načtení automatické ladění doporučení uvnitř runbook automatizace Azure.
-2. "**Azure Automation - Get výstup úlohy**" – používá se pro načíst výstup z spustit skript prostředí PowerShell
-3. "**Office 365 Outlook – e-mailu**" – používá se k odeslání e-mailu. E-maily jsou odeslány se pomocí účtu Office 365 jednotlivých vytváření toku.
+1. "**Azure Automation – vytvoření úlohy**" – používá se ke spuštění skriptu prostředí PowerShell k načtení automatického ladění doporučení v runbooku Azure Automation
+2. "**Azure Automation – získat výstup úlohy**" – používá se k načtení výstupu z provedený skript prostředí PowerShell
+3. "**Office 365 Outlook – odeslat e-mail**" – používá se pro odeslání e-mailu. Odeslání e-mailů pomocí účtu Office 365 vytváří se tok uživatele.
 
-Další informace o možnostech Flow Microsoft najdete v tématu [Začínáme se službou Microsoft Flow](https://docs.microsoft.com/flow/getting-started).
+Další informace o funkcích Microsoft Flow, najdete v článku [Začínáme s Microsoft Flow](https://docs.microsoft.com/flow/getting-started).
 
-Předpokladem pro tento krok je, aby si zaregistrovat [Microsoft Flow](https://flow.microsoft.com) účtu a k přihlášení. Jednou uvnitř řešení, postupujte podle těchto kroků provedete nastavení **nové toku**:
+Předpokladem pro tento krok je zaregistrovat [Microsoft Flow](https://flow.microsoft.com) účtu a k přihlášení. Jednou v řešení, použijte následující postup nastavení **nový tok**:
 
 - Přístup "**Moje toky**" položky nabídky
-- Uvnitř Moje toky, vyberte "**+ vytvořit z prázdné**" odkaz v horní části stránky
-- Klikněte na odkaz "**vyhledávání ve velkém množství konektory a aktivační události**" v dolní části stránky
-- V typu pole hledání "**opakování**" a vyberte možnost "**plán - opakování**" ve výsledcích hledání naplánovat spuštění úlohy doručení e-mailu.
-- V podokně opakování v poli Frekvence vyberte plánování četnost pro tento postup provést, jako je odesílání automatizovaných e-mailu každou minutu, hodinu, den, týden, atd.
+- Uvnitř Moje toky, vyberte "**+ vytvořit z prázdné**" odkazu v horní části stránky
+- Klikněte na odkaz "**vyhledat stovky konektorů a aktivačních událostí**" v dolní části stránky
+- Hledání zadejte do pole "**opakování**" a vyberte "**plán – opakování**" naplánování spuštění úlohy doručování e-mailu ve výsledcích hledání.
+- V podokně opakování v poli Frekvence vyberte frekvenci, plánování, tento tok spustit, jako je odesílání automatizovaných e-mailové každou minutu, hodinu, dne, týdne, atd.
 
-Dalším krokem je přidání tři úlohy (vytvořit, výstup get a odesílání e-mailu) do nově vytvořené opakovaného toku. Aby bylo možné přidat požadované úlohy s tokem, postupujte takto:
+Dalším krokem je přidání tří úlohy (vytvoření, výstup get a odesílání e-mailu) do nově vytvořeného opakovaného toku. K provedení přidání požadované úlohy s tokem, postupujte podle těchto kroků:
 
-1. Vytvořit akci pro spuštění skriptu prostředí PowerShell k načtení vyladění doporučení
+1. Vytvoření akce pro spuštění skriptu prostředí PowerShell k načtení doporučení pro vyladění
 - Vyberte "**+ nový krok**", za nímž následují"**přidat akci**" v podokně toku opakování
-- V typu pole hledání "**automatizace**"a vyberte možnost"**Azure Automation – vytvořit úlohu**" ve výsledcích hledání
-- V podokně úlohy Vytvořit nakonfigurujte vlastnosti úlohy. Pro tuto konfiguraci budete potřebovat Podrobnosti předplatného Azure ID, skupinu prostředků a účet Automation **dříve zaznamenaných** na **účet Automation podokně**. Další informace o možnostech dostupných v této části najdete v tématu [Azure Automation – vytvoření úlohy](https://docs.microsoft.com/connectors/azureautomation/#Create_job).
-- Dokončení vytváření tuto akci kliknutím na "**uložit toku**"
+- Hledání zadejte do pole "**automatizace**"a vyberte"**Azure Automation – vytvořit úlohu**" ve výsledcích hledání
+- V podokně úlohy vytvoření konfigurace vlastností projektu. Pro tuto konfiguraci budete potřebovat podrobnosti ID, skupiny prostředků předplatného Azure a účet Automation **zaznamenaných** na **podokně účtu Automation**. Další informace o možnostech dostupných v této části najdete v tématu [Azure Automation – vytvoření úlohy](https://docs.microsoft.com/connectors/azureautomation/#Create_job).
+- Dokončení vytváření tuto akci kliknutím na "**uložit tok**"
 
-2. Vytvořit akce načíst výstup z spustit skript prostředí PowerShell
+2. Vytvoření akce načíst výstup z provedený skript prostředí PowerShell
 - Vyberte "**+ nový krok**", za nímž následují"**přidat akci**" v podokně toku opakování
-- V hledání selhala typu "**automatizace**"a vyberte možnost"**Azure Automation – výstup úlohy Get**" ve výsledcích hledání. Další informace o možnostech dostupných v této části najdete v tématu [Azure Automation – výstup úlohy Get](https://docs.microsoft.com/connectors/azureautomation/#Get_job_output).
-- Naplnění polí požadované (podobně jako na vytváření předchozí úlohy) – naplnění vašemu předplatnému Azure ID, skupinu prostředků a účet Automation (jak je zadáno v podokně účet Automation)
-- Klikněte do pole "**ID úlohy**" pro "**dynamický obsah**" nabídky objeví. V rámci této nabídky vyberte možnost "**ID úlohy**".
-- Dokončení vytváření tuto akci kliknutím na "**uložit toku**"
+- Hledání zaznamenaná typu "**automatizace**"a vyberte"**Azure Automation – získat výstup úlohy**" ve výsledcích hledání. Další informace o možnostech dostupných v této části najdete v tématu [Azure Automation – získat výstup úlohy](https://docs.microsoft.com/connectors/azureautomation/#Get_job_output).
+- Naplnit pole vyžaduje (podobné jako vytvoření předchozí úlohy) – naplnění vašeho předplatného Azure ID, skupinu prostředků a účet Automation (jak je zadáno v podokně účtu Automation)
+- Klikněte do pole "**ID úlohy**" pro "**dynamický obsah**" nabídky se zobrazí. V rámci této nabídky vyberte možnost "**ID úlohy**".
+- Dokončení vytváření tuto akci kliknutím na "**uložit tok**"
 
-3. Vytvořit akce k odeslání e-mailu pomocí integrace Office 365
+3. Vytvoření akce Odeslat e-mailu pomocí integrace Office 365
 - Vyberte "**+ nový krok**", za nímž následují"**přidat akci**" v podokně toku opakování
-- V hledání selhala typu "**e-mailovou zprávu**"a vyberte možnost"**Office 365 Outlook – e-mailu**" ve výsledcích hledání
-- V "**k**" pole typu v e-mailovou adresu, na kterou budete muset odeslat e-mailové oznámení
-- V "**subjektu**" v předmětu e-mailu, například "Automatické ladění doporučení e-mailová oznámení" typ pole
-- Klikněte do pole "**textu**" pro "**dynamický obsah**" nabídky objeví. Z v rámci této nabídky v části "**získat výstup úlohy**", vyberte možnost"**obsahu**" 
-- Dokončení vytváření tuto akci kliknutím na "**uložit toku**"
+- Hledání zaznamenaná typu "**odeslat e-mailu**"a vyberte"**Office 365 Outlook – odeslat e-mail**" ve výsledcích hledání
+- V "**k**" typ e-mailovou adresu, na který budete muset odeslat e-mail s oznámením pole
+- V "**subjektu**" v předmětu e-mailu, například "doporučení automatického ladění e-mailová oznámení" typ pole
+- Klikněte do pole "**tělo**" pro "**dynamický obsah**" nabídky se zobrazí. Z v rámci této nabídky v části "**získat výstup úlohy**", vyberte možnost"**obsahu**" 
+- Dokončení vytváření tuto akci kliknutím na "**uložit tok**"
 
 > [!TIP]
-> Chcete-li odesílání automatizovaných e-mailů jiný příjemce, vytvořte samostatné toky. V těchto dalších toky změňte příjemce e-mailovou adresu v poli "Na" a řádek předmětu e-mailu v poli "Subjekt". Vytvoření nové sady runbook ve službě Azure Automation se přizpůsobit skriptů prostředí PowerShell (například v změně ID předplatného Azure) umožňuje další přizpůsobení automatizované scénářů, například je třeba e-mailem na samostatné příjemce na automatické ladění doporučení pro samostatné předplatné.
+> K odesílání automatizovaných e-mailů různých příjemcům, vytvořte samostatné toky. V těchto dalších toků změňte příjemce e-mailovou adresu v poli "Do" a řádek předmětu e-mailu v poli "Subjekt". Vytvoření nové sady runbook ve službě Azure Automation s vlastní skripty prostředí PowerShell (například změny ID předplatného Azure) umožňuje další přizpůsobení automatizované scénářů, jako je například e-mailem žádají samostatné příjemce na automatické ladění doporučení pro samostatné předplatné.
 >
 
-Výše ukončí krocích potřebných ke konfiguraci pracovního postupu úlohy doručení e-mailu. Celého toku, který se skládá ze tří akcí, které jsou vytvořené je znázorněno na následujícím obrázku.
+Výše uvedené končí kroky potřebnými ke konfiguraci pracovního postupu úloh doručování e-mailu. Celý tok, který se skládá ze tří akcí, které jsou vytvořené je znázorněno na následujícím obrázku.
 
-![Zobrazení Automatické ladění e-mailu oznámení](./media/sql-database-automatic-tuning-email-notifications/howto-email-05.png)
+![Zobrazení automatického ladění toku e-mailových oznámení](./media/sql-database-automatic-tuning-email-notifications/howto-email-05.png)
 
-Chcete-li otestovat toku, klikněte na "**spustit nyní**" v pravém horním rohu v podokně toku.
+Pro testování tohoto toku, klikněte na "**Run Now**" v pravém horním rohu v podokně toku.
 
-Statistiky spouštění automatizovaných úloh, zobrazující úspěch e-mailová oznámení odeslaná, můžete zobrazit v podokně analytics toku.
+Statistiky spouštění automatizovaných úloh zobrazující úspěšnost e-mailové upozornění, můžete zobrazit z podokna analýza toku.
 
-![Spuštění toku automatické ladění e-mailových oznámení](./media/sql-database-automatic-tuning-email-notifications/howto-email-06.png)
+![Spuštění toku pro automatické ladění e-mailových oznámení](./media/sql-database-automatic-tuning-email-notifications/howto-email-06.png)
 
-Tok analytics je užitečné pro monitorování úspěchu při spuštění úlohy a v případě potřeby pro řešení potíží.  V případě řešení potíží, můžete také chtít vyhledejte v protokolu spuštění skriptu PowerShell přístupné prostřednictvím aplikace Azure Automation.
+Flow analytics je užitečné pro sledování úspěchu se prováděné úlohy a pokud je to nutné pro řešení potíží.  V případě s řešením problémů, můžete také chtít prozkoumat protokolu spuštění skriptu PowerShell přístupné prostřednictvím aplikace služby Azure Automation.
 
-Finální výstup automatizovaných e-mailu, vypadá podobně jako následující e-maily přijaté za vytváření a spouštění tohoto řešení:
+Finální výstup z automatizovaných e-mailu vypadá podobně jako na následující e-mailu až po sestavování a spouštění tohoto řešení:
 
-![Ukázkový výstup e-mailu z automatické ladění e-mailových oznámení](./media/sql-database-automatic-tuning-email-notifications/howto-email-07.png)
+![Ukázkový výstup e-mailu z automatického ladění e-mailových oznámení](./media/sql-database-automatic-tuning-email-notifications/howto-email-07.png)
 
-Úpravou skriptu prostředí PowerShell, můžete upravit výstup a formátování automatizovaných e-mailu vašim potřebám.
+Úpravou skript prostředí PowerShell můžete upravit výstup a formátování automatizovaných e-mailu podle vašich potřeb.
 
-K vytvoření e-mailových oznámení založené na konkrétní události ladění a několika příjemcům, pro víc předplatných nebo databáze, v závislosti na vlastní scénáře řešení může přizpůsobit. 
+Může být dále přizpůsobit řešení tak, aby sestavení e-mailová oznámení na základě konkrétní události ladění a několika příjemcům pro více předplatných nebo databáze, v závislosti na vaší vlastní scénáře. 
 
 ## <a name="next-steps"></a>Další postup
 
-- Zjistěte více v tom, jak automatické ladění můžete zvýšit výkon databáze, najdete v části [automatické ladění ve službě Azure SQL Database](sql-database-automatic-tuning.md).
-- Pokud chcete povolit automatické ladění v databázi SQL Azure ke správě velikosti pracovní zátěže, najdete v části [povolit automatické ladění](sql-database-automatic-tuning-enable.md).
-- Chcete-li ručně zkontrolovat a použít automatické ladění doporučení, přečtěte si téma [najít a použít výkonu doporučení](sql-database-advisor-portal.md).
+- Přečtěte si více o tom, jak automatického ladění vám může pomoct zlepšit výkon databáze, najdete v článku [automatického ladění ve službě Azure SQL Database](sql-database-automatic-tuning.md).
+- Pokud chcete povolit automatické ladění ve službě Azure SQL Database a spravovat vaše úlohy, naleznete v tématu [povolení automatického ladění](sql-database-automatic-tuning-enable.md).
+- Chcete-li ručně zkontrolovat a použít automatické optimalizace doporučení, najdete v článku [vyhledání a použití doporučení k výkonu](sql-database-advisor-portal.md).

@@ -7,12 +7,12 @@ author: bryanla
 ms.author: bryanla
 manager: mbaldwin
 ms.date: 09/25/2017
-ms.openlocfilehash: c8bde99e0247871212766a9915b9d07b7f392201
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: 776d5957ee2c11354c350523cbc8fde12fbcafaf
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465584"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498177"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Přehled obnovitelného odstranění služby Azure Key Vault
 
@@ -37,9 +37,16 @@ Trezory klíčů Azure jsou sledované prostředky spravovat pomocí Azure Resou
 
 ### <a name="soft-delete-behavior"></a>Chování obnovitelného odstranění
 
-Operace odstranění objektů služby key vault nebo služby key vault s touto funkcí je obnovitelné odstranění, účinně drží prostředky pro danou dobu uchování o, zároveň dává vzhled odstranění objektu. Další služby poskytuje mechanismus pro obnovení odstraněného objektu v podstatě vrácení odstranění. 
+Operace odstranění objektů služby key vault nebo služby key vault s touto funkcí je obnovitelné odstranění, účinně drží prostředky pro danou uchovávají (90 dnů), zároveň dává vzhled odstranění objektu. Další služby poskytuje mechanismus pro obnovení odstraněného objektu v podstatě vrácení odstranění. 
 
 Volitelné chování služby Key Vault se obnovitelného odstranění a je **není povolená ve výchozím nastavení** v této verzi. 
+
+### <a name="do-not-purge-flag"></a>Nelze vymazat příznak
+Uživatel, který chce Vynutit odstranění trezoru nebo objekt trezoru můžete udělat. To je, pokud uživatel, který má oprávnění k odstranění, trezor nebo objekt v rámci trezoru můžete vynutit vyprázdnění i v případě, že je zapnutá funkce obnovitelného odstranění pro tento trezor. Ale pokud chce uživatel chránit Vynutit odstranění trezoru nebo objekt trezoru mohou nastavit--enable--ochrany příznak na hodnotu true. Při vytváření trezoru můžete povolit příznak tímto způsobem. Předpokladem pro zapnutí ochrany se musí mít zapnuté obnovitelné odstranění. To je v Azure CLI 2 pomocí příkazu
+
+```
+az keyvault create --name "VaultName" --resource-group "ResourceGroupName" --location westus --enable-soft-delete true --enable-purge-protection true
+```
 
 ### <a name="key-vault-recovery"></a>Obnovení služby Key vault
 

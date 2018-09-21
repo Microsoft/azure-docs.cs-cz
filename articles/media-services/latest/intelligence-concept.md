@@ -1,6 +1,6 @@
 ---
-title: Azure media intelligence | Microsoft Docs
-description: Pokud používáte službu Azure Media Services, můžete analyzovat vaše audio a video contnet pomocí AudioAnalyzerPreset a VideoAnalyzerPreset.
+title: Inteligentní funkce médií Azure | Dokumentace Microsoftu
+description: Při použití služby Azure Media Services, můžete analyzovat vaše audio a video contnet pomocí AudioAnalyzerPreset a VideoAnalyzerPreset.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,48 +11,48 @@ ms.workload: ''
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: juliako
-ms.openlocfilehash: c488060b9db0ba482d12eee2394e5149b918950e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: a428f76f1239e7e67b99d05b96d26abd601e89c6
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36331516"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498687"
 ---
 # <a name="media-intelligence"></a>Inteligentní funkce médií
 
-Azure Media Services REST API v3 umožňuje analyzovat audio a video obsahu. K analýze obsahu, můžete vytvořit **transformace** a odesílání **úlohy** , používá jednu z těchto přednastavení: **AudioAnalyzerPreset** nebo **VideoAnalyzerPreset** . 
+Azure Media Services REST API v3 umožňuje analyzovat audio a video obsahu. K analýze obsahu, můžete vytvořit **transformace** a odeslat **úlohy** , který používá jednu z těchto předvolby: **AudioAnalyzerPreset** nebo **VideoAnalyzerPreset** . 
 
 ## <a name="audioanalyzerpreset"></a>AudioAnalyzerPreset
 
-**AudioAnalyzerPreset** umožňuje extrahovat více zvuk statistiky ze souboru zvuku a videa. Výstup obsahuje soubor JSON (s všechny statistiky) a soubor VTT pro zvuk přepis. Tato předvolba přijímá vlastnost, která určuje jazyk vstupní soubor ve formátu [BCP47](https://tools.ietf.org/html/bcp47) řetězec. Zvuk Statistika patří:
+**AudioAnalyzerPreset** umožňuje extrahovat více insights zvuk ze souboru zvuku nebo videa. Výstup obsahuje soubor JSON (všechny přehledy) a soubor VTT přepisu zvuku. Tato předvolba přijímá vlastnost, která určuje jazyk, který vstupního souboru ve formě [BCP47](https://tools.ietf.org/html/bcp47) řetězec. Zahrnout zvukové insights:
 
-* Zvuk přepis – přepis mluvené slovo časová razítka. Jsou podporovány více jazyků
-* Mluvčího indexování – mapování mluvčí a odpovídající mluvené slovo
-* Rozpoznávání řeči postojích analysis – výstup analýzy postojích provést na zvukové přepis
-* Klíčová slova – klíčová slova, které se extrahují z zvuk přepis.
+* Přepisování zvukového záznamu – přepis mluveného slova s časovými razítky. Podporuje více jazyků
+* Mluvčího indexování – mapování mluvčích a odpovídající mluveného slova
+* Provést analýzu subjektivního hodnocení řeči – výstup analýzy mínění na přepisování zvukového záznamu
+* Klíčová slova – klíčová slova, která se extrahují z přepisování zvukového záznamu.
 
 ## <a name="videoanalyzerpreset"></a>VideoAnalyzerPreset
 
-**VideoAnalyzerPreset** umožňuje extrahovat více Statistika audia a videa z videosouboru. Výstup obsahuje soubor JSON (s všechny statistiky), soubor VTT video přepis a kolekci miniatur. Tato předvolba také přijme [BCP47](https://tools.ietf.org/html/bcp47) řetězec (představující jazyk videa) jako vlastnost. Video Statistika zahrnují zvuk Statistika uvedených výše a následující další položky:
+**VideoAnalyzerPreset** umožňuje extrahovat více audio a video přehledy z videosouboru. Výstup obsahuje soubor JSON (s všechny přehledy), soubor VTT pro přepis videa a kolekce miniatur. Tato předvolba přijímá také [BCP47](https://tools.ietf.org/html/bcp47) string (představující jazyk videa) jako vlastnost. Poznatky z videí zahrnout všechny zvukové přehledy uvedených výše a navíc následující položky:
 
-* Čelí sledování – čas, během které se nacházejí ve videu řezy. Každý řez má id vzhled a odpovídající kolekci miniatur
-* Visual text – text, který je zjišťován pomocí optické rozpoznávání znaků. Text je na čase razítkem a také použitou k extrakci klíčová slova (kromě zvuk přepis)
-* Klíčové snímky – kolekce klíčových snímků, které se extrahují z přehrávání videa
-* Visual obsahu přerušování – část videa, která jsou opatření příznakem jako dospělého nebo zájem ve své podstatě
-* Poznámky – důsledkem zadávání poznámek k videa podle předem definované objektový model
+* Sledování pro rozpoznávání tváře – čas, během které tváře nacházejí ve videu. Každý obličej má id pro rozpoznávání tváře a odpovídající kolekci miniatur
+* Visual text – text, který je zjištěn prostřednictvím optické rozpoznávání znaků. Text je čas razítkem a také použít k extrahování klíčových slov (navíc k přepisu zvuku)
+* Klíčové snímky – kolekce klíčových snímků, které se extrahují z videa
+* Moderování obsahu Visual – část videa, která jsou opatření příznakem jako pro dospělé nebo pikantního ze své podstaty
+* Poznámka – výsledek přidávání poznámek videa podle předem daného objektový model
 
 ##  <a name="insightsjson-elements"></a>insights.JSON elementy
 
-Výstup obsahuje soubor JSON (insights.json) s všechny přehledy, které nebyly nalezeny video nebo ve zvukovém souboru. Json může obsahovat následující prvky:
+Výstup obsahuje všechny informace, které byly nalezeny v video nebo zvuk soubor JSON (insights.json). Ve formátu json může obsahovat následující prvky:
 
 ### <a name="transcript"></a>přepis
 
 |Název|Popis|
 |---|---|
-|id|Identifikátor řádku.|
-|text|Přepis, sám sebe.|
-|jazyk|Přepis jazyk. Určená pro podporu přepis, kde každý řádek může mít jiný jazyk.|
-|instance|Seznam časových rozsahů, kde se objevil tohoto řádku. Pokud je instance přepis, bude mít pouze 1 instancí.|
+|id|ID řádku.|
+|text|Přepis samotný.|
+|jazyk|Jazyk přepisu. Určené pro podporu přepisu, kde každý řádek může mít jiný jazyk.|
+|instance|Seznam časových rozsahů, ve kterém se tento řádek. Pokud je instance přepisu, bude mít jenom 1 instance.|
 
 Příklad:
 
@@ -83,15 +83,15 @@ Příklad:
 ] 
 ```
 
-### <a name="ocr"></a>rozpoznávání znaků
+### <a name="ocr"></a>optické rozpoznávání znaků
 
 |Název|Popis|
 |---|---|
-|id|ID rozpoznávání znaků řádku.|
-|text|Text rozpoznávání znaků.|
-|Spolehlivosti|Rozpoznávání spolehlivosti.|
-|jazyk|Jazyk rozpoznávání znaků.|
-|instance|Seznam časových rozsahů, kde se objevil tento rozpoznávání znaků (stejné rozpoznávání znaků může objevit vícekrát).|
+|id|ID OCR řádku.|
+|text|OCR textu.|
+|spolehlivosti|Rozpoznávání spolehlivosti.|
+|jazyk|OCR jazyk.|
+|instance|Seznam časových rozsahů, ve kterém se objevil tento OCR (stejné OCR může objevit více než jednou).|
 
 ```json
 "ocr": [
@@ -126,69 +126,21 @@ Příklad:
   ],
 ```
 
-### <a name="keywords"></a>klíčová slova
+### <a name="faces"></a>tváří
 
 |Název|Popis|
 |---|---|
-|id|ID – klíčové slovo|
-|text|Text – klíčové slovo.|
-|Spolehlivosti|– Klíčové slovo rozpoznávání spolehlivosti.|
-|jazyk|Jazyk – klíčové slovo (při překladu).|
-|instance|Seznam časových rozsahů, kde se toto klíčové slovo objevil (klíčové slovo může objevit vícekrát).|
-
-```json
-"keywords": [
-{
-    "id": 0,
-    "text": "office",
-    "confidence": 1.6666666666666667,
-    "language": "en-US",
-    "instances": [
-    {
-        "start": "00:00:00.5100000",
-        "end": "00:00:02.7200000"
-    },
-    {
-        "start": "00:00:03.9600000",
-        "end": "00:00:12.2700000"
-    }
-    ]
-},
-{
-    "id": 1,
-    "text": "icons",
-    "confidence": 1.4,
-    "language": "en-US",
-    "instances": [
-    {
-        "start": "00:00:03.9600000",
-        "end": "00:00:12.2700000"
-    },
-    {
-        "start": "00:00:13.9900000",
-        "end": "00:00:15.6100000"
-    }
-    ]
-}
-] 
-
-```
-
-### <a name="faces"></a>Řezy
-
-|Název|Popis|
-|---|---|
-|id|ID řez.|
-|jméno|Název řez. Může být "Neznámý #0", zjištěné celebrit nebo osoby vyškolení zákazníka.|
-|Spolehlivosti|Identifikace spolehlivosti řez.|
-|description|V případě celebrit, její popis. |
-|thumbnalId|Id miniaturu této řez.|
-|knownPersonId|V případě známé osoby, jeho interní ID.|
-|ID reference|V případě celebrit Bing, jeho ID Bing.|
-|referenceType.|Aktuálně právě Bing.|
-|název|V případě celebrit, její název (například "ředitel společnosti Microsoft").|
-|imageUrl|V případě celebrit, jeho adresa url obrázku.|
-|instance|Toto jsou instancí z kde tučné zobrazovaly v daném časovém rozsahu. Každá instance má také thumbnailsId. |
+|id|ID tváře.|
+|jméno|Název vzhledu. Může být "Neznámý #0", identifikovaný celebrit nebo trénovaného osoba zákazníka.|
+|spolehlivosti|Identifikace spolehlivosti pro rozpoznávání tváře.|
+|description|Popis celebrity. |
+|thumbnalId|ID miniatury této pro rozpoznávání tváře.|
+|knownPersonId|Pokud se jedná o známé osoba, jeho interní ID.|
+|referenceId|Pokud je celebrit Bing, jeho ID Bingu.|
+|Hodnota referenceType|Aktuálně jenom Bingu.|
+|název|Pokud se jedná celebrit, jeho název (například "CEO společnosti Microsoft").|
+|imageUrl|Pokud se jedná celebrit jeho adresa url obrázku.|
+|instance|Toto jsou instance z kde zobrazovaly plochu v daném časovém rozsahu. Každá instance má také thumbnailsId. |
 
 ```json
 "faces": [{
@@ -219,14 +171,119 @@ Příklad:
 }]
 ```
 
+### <a name="shots"></a>snímky
+
+|Název|Popis|
+|---|---|
+|id|Snímek ID.|
+|klíčové snímky|Seznam klíčových snímků v rámci snímku (každý má ID a seznam instancí časových rozsahů). Instance klíčové snímky mají thumbnailId pole s Miniatura na klíčový snímek ID.|
+|instance|Seznam časových rozsahů tento snímek (snímky mají jenom 1 instance).|
+
+```json
+"Shots": [
+    {
+      "id": 0,
+      "keyFrames": [
+        {
+          "id": 0,
+          "instances": [
+            {
+                "thumbnailId": "00000000-0000-0000-0000-000000000000",
+              "start": "00: 00: 00.1670000",
+              "end": "00: 00: 00.2000000"
+            }
+          ]
+        }
+      ],
+      "instances": [
+        {
+            "thumbnailId": "00000000-0000-0000-0000-000000000000",  
+          "start": "00: 00: 00.2000000",
+          "end": "00: 00: 05.0330000"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "keyFrames": [
+        {
+          "id": 1,
+          "instances": [
+            {
+                "thumbnailId": "00000000-0000-0000-0000-000000000000",      
+              "start": "00: 00: 05.2670000",
+              "end": "00: 00: 05.3000000"
+            }
+          ]
+        }
+      ],
+      "instances": [
+        {
+      "thumbnailId": "00000000-0000-0000-0000-000000000000",
+          "start": "00: 00: 05.2670000",
+          "end": "00: 00: 10.3000000"
+        }
+      ]
+    }
+  ]
+```
+
+### <a name="statistics"></a>statistiky
+
+|Název|Popis|
+|---|---|
+|CorrespondenceCount|Počet srovnávací ve videu.|
+|WordCount|Počet slov za mluvčího.|
+|SpeakerNumberOfFragments|Množství fragmenty mluvčího se ve videu.|
+|SpeakerLongestMonolog|Nejdelší monolog tohoto mluvčího. Pokud má mluvčího silences uvnitř protokolu monolog je zahrnuté. Na začátku a konci protokolu monolog nečinnosti se odstraní.| 
+|SpeakerTalkToListenRatio|Výpočet vychází čas strávený na mluvčího protokolu monolog (bez nečinnosti mezi) rozdělené podle celkové doby trvání videa. Čas se zaokrouhlí na třetí desetinné čárky.|
+
+
+### <a name="sentiments"></a>zabarvení
+
+Zabarvení se agregují podle jejich sentimentType pole (neutrální/kladné nebo záporné). Například 0 0.1, 0.2 0,1.
+
+|Název|Popis|
+|---|---|
+|id|ID mínění.|
+|Průměr |Průměr všech skóre všech instancí tohoto typu mínění – pozitivní nebo neutrální nebo negativní|
+|instance|Seznam časových rozsahů, ve kterém se objevil tento mínění.|
+|sentimentType |Typ může být "Pozitivní", 'Neutrální' nebo "Záporné".|
+
+```json
+"sentiments": [
+{
+    "id": 0,
+    "averageScore": 0.87,
+    "sentimentType": "Positive",
+    "instances": [
+    {
+        "start": "00:00:23",
+        "end": "00:00:41"
+    }
+    ]
+}, {
+    "id": 1,
+    "averageScore": 0.11,
+    "sentimentType": "Positive",
+    "instances": [
+    {
+        "start": "00:00:13",
+        "end": "00:00:21"
+    }
+    ]
+}
+]
+```
+
 ### <a name="labels"></a>popisky
 
 |Název|Popis|
 |---|---|
 |id|ID popisku.|
-|jméno|Název popisku (například "Počítač", 'TV').|
-|jazyk|Popisek názvu jazyk (při překladu). BCP 47|
-|instance|Seznam časových rozsahů, kde tento popisek zobrazovaly (štítek může objevit vícekrát). Každá instance obsahuje pole, spolehlivosti. |
+|jméno|Název popisku (například "Computer", "TV").|
+|jazyk|Popisek názvu jazyka (při překladu). BCP-47|
+|instance|Seznam časových rozsahů, ve kterém se tento popisek (popisek se může objevit více než jednou). Každá instance má pole jistotou. |
 
 
 ```json
@@ -278,94 +335,92 @@ Příklad:
   ] 
 ```
 
-### <a name="shots"></a>snímky
+### <a name="keywords"></a>klíčová slova
 
 |Název|Popis|
 |---|---|
-|id|Snímek ID.|
-|klíčových snímků|Seznam klíčových snímků v rámci snímek (každá má ID a seznam instancí časových rozsahů).|
-|instance|Seznam časových rozsahů tento snímek (snímky máte pouze 1 instancí).|
+|id|ID – klíčové slovo.|
+|text|Text – klíčové slovo.|
+|spolehlivosti|Klíčové slovo rozpoznávání spolehlivosti.|
+|jazyk|Jazyk – klíčové slovo (při překladu).|
+|instance|Seznam časových rozsahů, ve kterém se nacházela toto klíčové slovo (klíčové slovo může objevit více než jednou).|
 
 ```json
-"Shots": [
-    {
-      "id": 0,
-      "keyFrames": [
-        {
-          "id": 0,
-          "instances": [
-            {
-              "start": "00: 00: 00.1670000",
-              "end": "00: 00: 00.2000000"
-            }
-          ]
-        }
-      ],
-      "instances": [
-        {
-          "start": "00: 00: 00.2000000",
-          "end": "00: 00: 05.0330000"
-        }
-      ]
-    },
-    {
-      "id": 1,
-      "keyFrames": [
-        {
-          "id": 1,
-          "instances": [
-            {
-              "start": "00: 00: 05.2670000",
-              "end": "00: 00: 05.3000000"
-            }
-          ]
-        }
-      ],
-      "instances": [
-        {
-          "start": "00: 00: 05.2670000",
-          "end": "00: 00: 10.3000000"
-        }
-      ]
-    }
-  ]
-```
-
-
-### <a name="sentiments"></a>Chráněny
-
-Jsou chráněny agregován podle jejich sentimentType pole (neutrální/kladné nebo záporné). Například 0,1 0, 0,1 0,2.
-
-|Název|Popis|
-|---|---|
-|id|ID postojích.|
-|Průměr |Průměr všech skóre všechny instance tohoto typu postojích - neutrální/kladné nebo záporné|
-|instance|Seznam časových rozsahů, kde se toto postojích objevil.|
-
-```json
-"sentiments": [
+"keywords": [
 {
     "id": 0,
-    "averageScore": 0.87,
+    "text": "office",
+    "confidence": 1.6666666666666667,
+    "language": "en-US",
     "instances": [
     {
-        "start": "00:00:23",
-        "end": "00:00:41"
+        "start": "00:00:00.5100000",
+        "end": "00:00:02.7200000"
+    },
+    {
+        "start": "00:00:03.9600000",
+        "end": "00:00:12.2700000"
     }
     ]
-}, {
+},
+{
     "id": 1,
-    "averageScore": 0.11,
+    "text": "icons",
+    "confidence": 1.4,
+    "language": "en-US",
     "instances": [
     {
-        "start": "00:00:13",
-        "end": "00:00:21"
+        "start": "00:00:03.9600000",
+        "end": "00:00:12.2700000"
+    },
+    {
+        "start": "00:00:13.9900000",
+        "end": "00:00:15.6100000"
     }
     ]
 }
-]
+] 
 ```
 
+#### <a name="visualcontentmoderation"></a>visualContentModeration
+
+Blok visualContentModeration obsahuje časových rozsahů, které můžou mít obsah pro dospělé Video Indexer. Pokud visualContentModeration je prázdný, není žádný obsah pro dospělé, který byl identifikován.
+
+Videa, které se nacházejí na obsah pro dospělé nebo pikantního mohou být k dispozici pouze privátní zobrazení. Uživatelé mají možnost odeslat žádost pro lidskou kontrolu obsahu, ve kterém bude obsahovat případ atribut IsAdult výsledek kontrolu člověkem.
+
+|Název|Popis|
+|---|---|
+|id|ID visual moderování obsahu.|
+|adultScore|Hodnocení obsahu pro dospělé (z content moderatoru).|
+|racyScore|Hodnocení obsahu pro dospělé (z moderování obsahu).|
+|instance|Seznam časových rozsahů, ve kterém se objevil tento visual moderování obsahu.|
+
+```json
+"VisualContentModeration": [
+{
+    "id": 0,
+    "adultScore": 0.00069,
+    "racyScore": 0.91129,
+    "instances": [
+    {
+        "start": "00:00:25.4840000",
+        "end": "00:00:25.5260000"
+    }
+    ]
+},
+{
+    "id": 1,
+    "adultScore": 0.99231,
+    "racyScore": 0.99912,
+    "instances": [
+    {
+        "start": "00:00:35.5360000",
+        "end": "00:00:35.5780000"
+    }
+    ]
+}
+] 
+```
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]

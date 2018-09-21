@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 08/31/2018
-ms.openlocfilehash: 83d970cf41dde4141fcba84c39b9b750783e54e0
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: da39d4132190a7dea661779c507fa817758c3e17
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43667153"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46497922"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Postup konfigurace pro replikaci dat MySQL v Azure Database
 
@@ -158,6 +158,9 @@ Následující kroky připravte a nakonfigurujte MySQL server hostované místn�
    - master_log_pos: pozice binární protokol spuštění `show master status`
    - master_ssl_ca: certifikát certifikační Autority kontextu. Pokud nepoužíváte protokol SSL, se předá prázdný řetězec.
        - Je doporučeno předat tento parametr jako proměnnou. Podívejte se na následující příklady pro další informace.
+
+> [!NOTE]
+> Pokud hlavní server je hostovaný na Virtuálním počítači Azure, nastavení "Povolit přístup ke službám Azure" na "ON" Povolit servery master a repliky pro komunikaci mezi sebou. Toto nastavení můžete změnit z **zabezpečení připojení** možnosti. Odkazovat na [Správa pravidel brány firewall pomocí portálu](howto-manage-firewall-using-portal.md) Další informace.
 
    **Příklady**
 

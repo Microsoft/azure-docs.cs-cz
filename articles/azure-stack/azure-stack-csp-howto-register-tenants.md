@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2018
+ms.date: 09/19/2018
 ms.author: sethm
 ms.reviewer: alfredo
-ms.openlocfilehash: af28bff0a9826bb96451ae944a377ad0ee284d87
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: eef1a2f82dc73a1c53b89bb3c9d145f87212ffcc
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45633992"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498568"
 ---
 # <a name="add-tenant-for-usage-and-billing-to-azure-stack"></a>Přidání tenanta pro využití a fakturaci ke službě Azure Stack
 
@@ -69,9 +69,9 @@ Aktualizujte svou registraci předplatného nového zákazníka. Azure hlásí v
 ### <a name="new-azurermresource-powershell-parameters"></a>Parametry nového-AzureRmResource Powershellu
 | Parametr | Popis |
 | --- | --- | 
-|registrationSubscriptionID | Předplatné Azure, která byla použita pro počáteční registrace Azure Stack. |
-| customerSubscriptionID | Předplatné Azure (ne Azure Stack) patřící do zákazníků k registraci. Musí být vytvořen v nabídce zprostředkovatele kryptografických služeb; v praxi to znamená prostřednictvím partnerského centra. Pokud zákazník má více než jednoho tenanta Azure Active Directory, musí se vytvořit toto předplatné v tenantovi, který se použije k přihlášení do služby Azure Stack.
-| Skupina prostředků | Skupina prostředků v Azure, ve kterém je uložené registrace. 
+|registrationSubscriptionID | Předplatné Azure, která byla použita pro počáteční registrace Azure Stack.|
+| customerSubscriptionID | Předplatné Azure (ne Azure Stack) patřící do zákazníků k registraci. Musí být vytvořen v nabídce zprostředkovatele kryptografických služeb; v praxi to znamená prostřednictvím partnerského centra. Pokud zákazník má více než jednoho tenanta Azure Active Directory, musí se vytvořit toto předplatné v tenantovi, který se použije k přihlášení do služby Azure Stack. ID předplatného zákazníka musí používat malá písmena. |
+| Skupina prostředků | Skupina prostředků v Azure, ve kterém je uložené registrace. |
 | registrationName | Název registrace služby Azure Stack. Jde o objekt uložená v Azure. | 
 | Vlastnosti | Určuje vlastnosti pro prostředek. Tento parametr použijte k určení hodnoty vlastností, které jsou specifické pro daný typ prostředku.
 

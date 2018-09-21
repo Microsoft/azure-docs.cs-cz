@@ -12,21 +12,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 09/19/2018
 ms.author: terrylan
-ms.openlocfilehash: cbf6ac736db9935f5ec52fa4507dab1e56bcde43
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+Customer intent: As a IT Pro or decision maker I am trying to learn about identity mangement capabilities in Azure
+ms.openlocfilehash: f15846f3de7162c61edce8aaf5c493bb1444df36
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38611183"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498551"
 ---
 # <a name="azure-identity-management-security-overview"></a>Přehled zabezpečení správy identit Azure
-Microsoft identity a přístupu k řešení Nápověda pro funkci správy IT chránit přístup k aplikacím a prostředkům v podnikovém datovém centru a cloudu. Tento typ ochrany umožňuje další úrovně ověřování, jako je například Vícefaktorové ověřování a zásady podmíněného přístupu. Prostřednictvím rozšířeného zabezpečení vytváření sestav, auditování a upozornění, že pomáhá zmírnit potenciální potíže se zabezpečením monitorování podezřelou aktivitu. [Azure Active Directory Premium](../active-directory/active-directory-editions.md) poskytuje jednotné přihlašování (SSO) k tisícům cloudový software jako služba (SaaS) aplikací a přístup k webovým aplikacím, které běží místně.
 
+ Správa identit je proces ověřování a autorizace [objekty zabezpečení](https://docs.microsoft.com/windows/security/identity-protection/access-control/security-principals). Zahrnuje také řídicí informace o těchto objektech (identity). Objekty zabezpečení (identity) může zahrnovat služby, aplikace, uživatelů, skupin atd. Microsoft identity a přístupu k řešení Nápověda pro funkci správy IT chránit přístup k aplikacím a prostředkům v podnikovém datovém centru a cloudu. Tento typ ochrany umožňuje další úrovně ověřování, jako je například Vícefaktorové ověřování a zásady podmíněného přístupu. Prostřednictvím rozšířeného zabezpečení vytváření sestav, auditování a upozornění, že pomáhá zmírnit potenciální potíže se zabezpečením monitorování podezřelou aktivitu. [Azure Active Directory Premium](../active-directory/active-directory-editions.md) poskytuje jednotné přihlašování (SSO) k tisícům cloudový software jako služba (SaaS) aplikací a přístup k webovým aplikacím, které běží místně.
+ 
 S využitím výhod zabezpečení služby Azure Active Directory (Azure AD), můžete:
 
-* Vytvářejte a spravujte jedinou identitu pro každého uživatele ve vaší organizaci hybridní udržování synchronizace uživatele, skupiny a zařízení.
+* Vytvářejte a spravujte jedinou identitu pro každého uživatele ve vaší organizaci hybridní udržování synchronizace uživatele, skupiny a zařízení. 
 * Poskytuje přístup přes jednotné přihlašování k aplikacím, včetně tisíce předem integrovaných aplikací SaaS.
 * Povolit zabezpečení přístupu aplikací tím, že vynucuje založeného na pravidlech ověřování službou Multi-Factor Authentication v místním i cloudovým aplikacím.
 * Zřízení zabezpečený vzdálený přístup k místním webovým aplikacím prostřednictvím Proxy aplikací Azure AD.
@@ -38,14 +40,17 @@ Tento článek se zaměřuje na následující možnosti správy identit Azure c
 * Jednotné přihlašování
 * Reverzní proxy server
 * Multi-Factor Authentication
+* Řízení přístupu na základě role (RBAC)
 * Monitorování zabezpečení, oznámení a sestavy založené na učení počítače
 * Správa identit a přístupu zákazníků
 * Registrace zařízení
 * Privileged identity management.
 * Ochrana identit
-* Hybridní Správa identit
+* Hybridní identity management a Azure AD connect
+* Kontroly přístupu Azure AD
 
 ## <a name="single-sign-on"></a>Jednotné přihlašování
+
 Jednotné přihlašování znamená, že schopnost přistupovat ke všem aplikacím a prostředkům, které je potřeba udělat firmy, tak, že stačí, když pomocí jediného uživatelského účtu. Jakmile se přihlásíte, dostanete všechny aplikace, které potřebujete, aniž byste museli znovu ověřovat (třeba zadávat heslo) podruhé.
 
 Mnoho organizací spoléhat na aplikace SaaS, jako je například Salesforce, Office 365 a pole pro snížení produktivity uživatelů. V minulosti pracovníky technické potřeby jednotlivě vytvářet a aktualizovat uživatelské účty v jednotlivých aplikací SaaS a uživatelé museli Zapamatovat heslo pro každou aplikaci SaaS.
@@ -57,10 +62,11 @@ Nejen uživatele není potřeba spravovat víc kopií uživatelská jména a hes
 Další informace:
 
 * [Přehled jednotného přihlašování](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/)
-* [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../active-directory/manage-apps/what-is-single-sign-on.md)
+* [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](../active-directory/manage-apps/what-is-single-sign-on.md)
 * [Integrace Azure Active Directory jednotné přihlašování s aplikacemi SaaS](../active-directory/manage-apps/configure-single-sign-on-portal.md)
 
 ## <a name="reverse-proxy"></a>Reverzní proxy server
+
 Proxy aplikací Azure AD umožňuje publikování místních aplikací, jako například [SharePoint](https://support.office.com/article/What-is-SharePoint-97b915e6-651b-43b2-827d-fb25777f446f?ui=en-US&rs=en-US&ad=US) lokalit, [Outlook Web App](https://technet.microsoft.com/library/jj657718.aspx), a [IIS](http://www.iis.net/)– na základě aplikace v rámci vaší privátní sítě a poskytuje zabezpečený přístup uživatelům mimo vaši síť. Proxy aplikací poskytuje vzdálený přístup a jednotné přihlašování pro mnoho typů místních webových aplikací s nepřeberným množstvím aplikací SaaS, které podporuje Azure AD. Zaměstnanci můžou přihlásit k aplikacím z domácí na svá vlastní zařízení a ověřovat přes tento proxy server založený na cloudu.
 
 Další informace:
@@ -71,6 +77,7 @@ Další informace:
 * [Práce s podmíněným přístupem](../active-directory/manage-apps/application-proxy-integrate-with-sharepoint-server.md)
 
 ## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
+
 Azure Multi-Factor Authentication je metoda ověřování, který vyžaduje použití víc ověřovacích metod a přidá do uživatelská přihlášení a transakce velmi důležitou druhou vrstvu zabezpečení. Multi-Factor Authentication pomáhá chránit přístup k datům a aplikace a současně plní požadavky uživatelů na jednoduchý přihlašovací proces. Nabízí silné ověřování přes celou řadu možností ověřování: telefonních hovorů, textových zpráv nebo oznámení mobilní aplikace nebo ověřovací kódy a tokenů OAuth třetích stran.
 
 Další informace:
@@ -79,7 +86,17 @@ Další informace:
 * [Co je Azure Multi-Factor Authentication?](../active-directory/authentication/multi-factor-authentication.md)
 * [Jak funguje ověřování Azure Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md)
 
+## <a name="rbac"></a>RBAC
+
+RBAC je systém ověření integrované v Azure Resource Manageru, který poskytuje propracovanou správu přístupu prostředků v Azure. RBAC umožňuje podrobně řídit úroveň přístupu, které mají uživatelé. Například můžete omezit uživatele na spravovat pouze virtuální sítě a jiný uživatel spravovat všechny prostředky ve skupině prostředků. Azure obsahuje několik předdefinovaných rolí, které můžete použít. V následujícím seznamu najdete čtyři základní předdefinované role. První tři se vztahují ke všem typům prostředků.
+
+Další informace:
+
+* [Co je řízení přístupu na základě role (RBAC)?](../role-based-access-control/overview.md)
+* [Předdefinované role pro prostředky Azure](../role-based-access-control/built-in-roles.md)
+
 ## <a name="security-monitoring-alerts-and-machine-learning-based-reports"></a>Monitorování zabezpečení, oznámení a sestavy založené na učení počítače
+
 Monitorování zabezpečení, výstrah a machine learning sestav založených na, které rozpoznávají nekonzistentní vzorce přístupu můžete pomoct chránit vaši firmu. Můžete použít přístup služby Azure AD a sestavy využití na získat náhled do integrity a zabezpečení adresáři vaší organizace. Pomocí těchto informací správce adresáře může zjistit, kde můžou být potenciální bezpečnostní rizika, mohli odpovídajícím způsobem plánovat pro zmírnění rizika.
 
 Na webu Azure Portal sestavy spadají do následujících kategorií:
@@ -97,6 +114,7 @@ Další informace:
 * [Průvodce vytvářením sestav Azure Active Directory](../active-directory/active-directory-reporting-guide.md)
 
 ## <a name="consumer-identity-and-access-management"></a>Správa identit a přístupu zákazníků
+
 Azure AD B2C je vysoce dostupný, globální služba pro správu identit pro zákaznické aplikace s možností škálování na stovky milionů identit. Dá se integrovat do mobilních i webových platforem. Zákazníky můžete přihlásit ke všem vašim aplikacím přes přizpůsobitelné prostředí pomocí svých existujících účtů v sociálních sítích nebo pomocí nově vytvořených přihlašovacích údajů.
 
 V minulosti by vývojáři aplikací k podepisování zákazníci se těmito věcmi a přihlásí jej do svých aplikací napsali vlastní kód. A použili by místní databáze nebo systémy k ukládání uživatelských jmen a hesel. Azure AD B2C nabízí lepší způsob, jak integrovat správu identit uživatelů do aplikací pomocí zabezpečené, na standardech postavené platformy a velké škály rozšiřitelných zásad vaší organizace.
@@ -110,6 +128,7 @@ Další informace:
 * [Azure Active Directory B2C ve verzi Preview: Typy aplikací](../active-directory-b2c/active-directory-b2c-apps.md)
 
 ## <a name="device-registration"></a>Registrace zařízení
+
 Registrace zařízení služby Azure AD je základem pro na základě zařízení [podmíněného přístupu](../active-directory/active-directory-conditional-access-device-registration-overview.md) scénáře. Když je zařízení registrováno, registrace zařízení služby Azure AD nabízí zařízení s identitou, která se používá k ověření zařízení při přihlášení uživatele. Ověřené zařízení a atributy zařízení pak slouží k vynucení zásad podmíněného přístupu pro aplikace, které jsou hostované v cloudu i lokálně.
 
 V kombinaci s řešením pro správu mobilních zařízení, jako je například Intune, budou atributy zařízení ve službě Azure AD jsou aktualizovány o další informace o zařízení. Potom můžete vytvořit pravidla podmíněného přístupu, které vynucují přístup ze zařízení, která splňují vaše standardy zabezpečení a dodržování předpisů.
@@ -121,6 +140,7 @@ Další informace:
 * [Nastavte si Automatická registrace Windows zařízení připojených k doméně pomocí Azure AD](../active-directory/active-directory-conditional-access-automatic-device-registration-setup.md)
 
 ## <a name="privileged-identity-management"></a>Privileged identity management.
+
 S Azure AD Privileged Identity Management můžete spravovat, řídit a monitorovat privilegované identity a přístup k prostředkům v Azure AD a dalších online službách Microsoftu, jako je Office 365 a Microsoft Intune.
 
 Uživatelé někdy budou muset provádět privilegované operace prostředků Azure nebo Office 365, nebo v jiných aplikacích SaaS. Tyto potřeby často znamená, že organizace mají uživatelům poskytnout trvalé privilegovaný přístup v Azure AD. Takový přístup je rostoucí bezpečnostní riziko pro prostředky hostované v cloudu, protože organizace nemůže monitorovat dostatečně co uživatelé dělají s jejich oprávněními správce. Navíc pokud dojde k ohrožení uživatelský účet s privilegovaným přístupem, tento jeden porušení zabezpečení mohou ovlivnit celkové zabezpečení cloudu organizace. Azure AD Privileged Identity Management pomáhá zmírnit rizika.
@@ -139,6 +159,7 @@ Další informace:
 * [Azure AD Privileged Identity Management: Jak přidat nebo odebrat roli uživatele](../active-directory/privileged-identity-management/pim-how-to-add-role-to-user.md)
 
 ## <a name="identity-protection"></a>Ochrana identit
+
 Služba Azure AD Identity Protection je služba zabezpečení, která poskytuje umožní získat přehled o rizikových událostech a potenciálních chybách zabezpečení, které ovlivňují identity ve vaší organizaci. Identity Protection využívá stávající možnosti detekce anomálií služby Azure AD, které jsou k dispozici prostřednictvím sestav neobvyklých aktivit služby Azure AD. Identity Protection také zavádí nové typy rizikových událostí, které dokáží detekovat anomálie v reálném čase.
 
 Další informace:
@@ -146,11 +167,26 @@ Další informace:
 * [Azure AD Identity Protection](../active-directory/active-directory-identityprotection.md)
 * [Kanál 9: Azure AD a Identity Show: Identity Protection ve verzi Preview](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
-## <a name="hybrid-identity-management"></a>Hybridní Správa identit
-Přístup Microsoftu k identitě zahrnuje na místě i v cloudu, vytváření identity jednoho uživatele pro ověřování a autorizaci ke všem prostředkům, bez ohledu na umístění.
+## <a name="hybrid-identity-managementazure-ad-connect"></a>Hybridní identity management a Azure AD connect
+
+Řešení pro správu identit od Microsoftu pokrývá místní i cloudové funkce a vytvářejí jedinou identitu uživatele pro ověřování a autorizaci u všech prostředků bez ohledu na umístění. Tomu se říká hybridní identita. Azure AD Connect je nástroj Microsoft určený pro setkávání a dosáhnout cílů hybridní identity. To umožní poskytovat společnou identitu pro uživatele pro aplikace Office 365, Azure a SaaS integrované s Azure AD. Má následující funkce:
+
+* Synchronizace
+* Integrace služby AD FS a federation
+* Ověření průchodu
+* Monitorování stavu
 
 Další informace:
 
 * [Dokument white paper k hybridní identity](http://download.microsoft.com/download/D/B/A/DBA9E313-B833-48EE-998A-240AA799A8AB/Hybrid_Identity_White_Paper.pdf)
 * [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/)
 * [Blog týmu Azure AD](https://blogs.technet.microsoft.com/ad/)
+
+## <a name="azure-ad-access-reviews"></a>Kontroly přístupu Azure AD
+
+Kontroly přístupu Azure Active Directory (Azure AD) umožňují organizacím efektivně spravovat členství ve skupinách, přístup k podnikovým aplikacím a přiřazení privilegovaných rolí.
+
+Další informace:
+
+* [Kontroly přístupu Azure AD](../active-directory/governance/access-reviews-overview.md)
+* [Správa přístupu uživatelů pomocí kontrol přístupu Azure AD](../active-directory/governance/access-reviews-overview.md)

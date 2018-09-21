@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 57cfa44a0eb114503b89733b2c3e309b65d5b7e5
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 84b32cadbd7d574e01053b61ace1203d495983b4
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44023320"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498602"
 ---
 # <a name="use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Vytvoření instančního objektu s certifikátem pomocí Azure PowerShellu
 
@@ -29,7 +29,7 @@ Pokud máte aplikaci nebo skript, který potřebuje přístup k prostředkům, m
 * Při provádění bezobslužného skriptu použít k ověření certifikát.
 
 > [!IMPORTANT]
-> Místo vytvoření instančního objektu zvažte použití Identity spravované služby Azure AD (Azure AD MSI) pro identitu vaší aplikace. Azure AD MSI je funkce služby Azure Active Directory ve veřejné verzi Preview, která zjednodušuje vytváření identity pro kód. Pokud váš kód běží na službě, která podporuje Azure AD MSI a pracuje s prostředky, které podporují ověřování Azure Active Directory, je pro vás Azure AD MSI lepší volbou. Další informace o Azure AD MSI, včetně služeb, které ji aktuálně podporují, najdete v článku [Spravovaná identita služby pro prostředky Azure](../active-directory/managed-identities-azure-resources/overview.md).
+> Místo vytvoření instančního objektu, zvažte použití spravované identity pro prostředky Azure pro vaši identitu aplikace. Pokud váš kód běží na službu, která podporuje spravované identity a přístupy prostředky, které podporují ověřování pomocí Azure Active Directory, spravované identity jsou vhodnější pro vás. Další informace o spravovaných identit pro prostředky Azure, včetně služby, které aktuálně podporují, najdete v článku [co je spravované identity pro prostředky Azure?](../active-directory/managed-identities-azure-resources/overview.md).
 
 Tento článek vám ukazuje, jak vytvořit instanční objekt, který se ověřuje certifikátem. Pokud chcete nastavit instanční objekt s heslem, podívejte se na článek věnovaný [vytvoření instančního objektu Azure s použitím prostředí Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps).
 
@@ -207,9 +207,9 @@ Get-AzureRmADApplication -DisplayName exampleapp | New-AzureRmADAppCredential `
 
 Při vytváření instančního objektu může dojít k následujícím chybám:
 
-* **Ověřování_neautorizované** nebo **V kontextu se nenašlo žádné předplatné.** – Tato chyba se zobrazí, když váš účet v Azure Active Directory nemá [požadovaná oprávnění](#required-permissions) pro registraci aplikace. Obvykle se tato chyba zobrazí, když ve vašem Azure Active Directory můžou registrovat aplikace jenom uživatelé s rolí správce a váš účet nemá roli správce. Požádejte svého správce, aby vás přiřadil k roli správce nebo aby uživatelům umožnil registrovat aplikace.
+* **Ověřování_neautorizované** nebo **V kontextu se nenašlo žádné předplatné.** -Se zobrazí tato chyba, pokud váš účet nemá [požadovaná oprávnění](#required-permissions) v Azure Active Directory pro registraci aplikace. Obvykle se zobrazí tato chyba při jenom správci ve službě Azure Active Directory můžou registrovat aplikace, které váš účet není správce. Požádejte svého správce, aby vás přiřadil k roli správce nebo aby uživatelům umožnil registrovat aplikace.
 
-* Váš účet **nemá oprávnění k provedení akce Microsoft.Authorization/roleAssignments/write u rozsahu /subscriptions/{guid}.** – Tato chyba se zobrazí, pokud váš účet nemá dostatečná oprávnění k přiřazení role identitě. Požádejte správce předplatného, aby vás přidal do role Správce přístupu uživatelů.
+* Váš účet **"nemá oprávnění k provedení akce"Microsoft.Authorization/roleAssignments/write"rozsahu"/subscriptions/ {guid}"."**  – Se zobrazí tato chyba, pokud váš účet nemá dostatečná oprávnění k přiřazení role na identitu. Požádejte správce předplatného, aby vás přidal do role Správce přístupu uživatelů.
 
 ## <a name="next-steps"></a>Další postup
 * Pokud chcete nastavit instanční objekt s heslem, podívejte se na článek věnovaný [vytvoření instančního objektu Azure s použitím prostředí Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps).

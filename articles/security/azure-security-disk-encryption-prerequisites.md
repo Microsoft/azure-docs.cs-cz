@@ -7,12 +7,12 @@ ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
 ms.date: 09/14/2018
-ms.openlocfilehash: e025a1a625bded118ea7f3b3968502115b64d83a
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: ad8bf0217dcd07a7272a220f2d91ed6bc40523bc
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45734694"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498585"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Požadavky Azure Disk Encryption 
  Tento článek, požadované součásti služby Azure Disk Encryption, vysvětluje položky, které musí být na místě, abyste mohli používat Azure Disk Encryption. Azure Disk Encryption je integrovaná s [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/) ke správě šifrovacích klíčů. Můžete použít [prostředí Azure PowerShell](/powershell/azure/overview), [rozhraní příkazového řádku Azure](/cli/azure/), nebo [webu Azure portal](https://portal.azure.com) ke konfiguraci Azure Disk Encryption.
@@ -67,7 +67,7 @@ Příklad příkazy, které je možné připojit datové disky a vytvořte nezby
     - [Instalace a konfigurace Azure Powershellu pro Windows](/powershell/azure/install-azurerm-ps). 
         - Instalace modulu PowerShellGet, prostředí Azure PowerShell a načtení modulu AzureRM. 
     - [Instalace a konfigurace Azure Powershellu v systémech macOS a Linux](/powershell/azure/install-azurermps-maclinux).
-        -  Instalace Powershellu Core, Azure Powershellu pro .NET Core a načtení modulu AzureRM.Netcore.
+        -  Instalace Powershellu Core, Azure Powershellu pro .NET Core a načtení modulu Az.
 
 2. Ověření nainstalovanou verzí modulu AzureRM. V případě potřeby [aktualizace modulu Azure PowerShell](/powershell/azure/install-azurerm-ps#update-the-azure-powershell-module).
     -  Verze modulu AzureRM musí být 6.0.0 nebo novější.

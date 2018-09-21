@@ -1,6 +1,6 @@
 ---
 title: Spouštění analytických dotazů v databázích Azure SQL | Dokumentace Microsoftu
-description: Mezi tenanty analytických dotazů pomocí dat extrahovaných z několika databází Azure SQL Database.
+description: Mezi tenanty analytických dotazů pomocí dat extrahovaných z více databází Azure SQL Database v aplikaci s více tenanty.
 keywords: kurz k SQL
 services: sql-database
 author: stevestein
@@ -8,19 +8,19 @@ manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: conceptual
-ms.date: 09/14/2018
+ms.date: 09/19/2018
 ms.author: anjangsh
-ms.reviewer: billgib, genemi
-ms.openlocfilehash: d5ffc9ade54ea02f34d25e4b6b7a4c0027b7d7b7
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.reviewer: anjangsh; billgib, genemi
+ms.openlocfilehash: 546cf4fc9a1aec23071b4d1cc69ece34e014da49
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45733929"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498381"
 ---
-# <a name="cross-tenant-analytics-using-extracted-data"></a>Extrahovaná data pomocí analýzy napříč tenanty
-
-V tomto kurzu si projdete scénáři dokončení analýzy. Tento scénář předvádí, jak analytics můžete povolit firmám inteligentní rozhodování. Použití dat extrahovaných z horizontálně dělené databáze pomocí analytics získat přehled o chování klienta, včetně jejich použití ukázkové SaaS aplikace Wingtip Tickets aplikace. Tento scénář zahrnuje tři kroky: 
+# <a name="cross-tenant-analytics-using-extracted-data---multi-tenant-app"></a>Pomocí analýzy napříč tenanty extrahovaná data – aplikace s více tenanty
+ 
+V tomto kurzu si projdete dokončení analýzy scénář pro víceklientské implementaci. Tento scénář předvádí, jak analytics můžete povolit firmám inteligentní rozhodování. Použití dat extrahovaných z horizontálně dělené databáze pomocí analytics získat přehled o chování klienta, včetně jejich použití ukázkové SaaS aplikace Wingtip Tickets aplikace. Tento scénář zahrnuje tři kroky: 
 
 1.  **Extrahovat data** z všechny databáze tenantů do analýzy úložiště.
 2.  **Optimalizace extrahovaná data** pro zpracování analýzy.
@@ -240,5 +240,6 @@ Blahopřejeme!
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-<!-- - Additional [tutorials that build upon the Wingtip SaaS application](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials). -->
+Další [kurzy, které vycházejí z aplikace SaaS aplikace Wingtip](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials). 
 - [Elastické úlohy](sql-database-elastic-jobs-overview.md).
+- [Pomocí analýzy napříč tenanty extrahovaná data – aplikace s jedním tenantem](saas-tenancy-tenant-analytics.md) 

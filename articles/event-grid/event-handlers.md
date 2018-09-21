@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: 08658c42687626779dea0de7dd724d9431a296da
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 12cc5a918044e3bc74e34f2e05adc9773dee5421
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617137"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498653"
 ---
 # <a name="event-handlers-in-azure-event-grid"></a>Obslužné rutiny událostí ve službě Azure Event Grid
 
@@ -50,6 +50,7 @@ Event Hubs může fungovat jako zdroj událostí nebo obslužnou rutinu událost
 |Titul  |Popis  |
 |---------|---------|
 | [Rychlý start: směrování vlastních událostí do služby Azure Event Hubs pomocí rozhraní příkazového řádku Azure a služby Event Grid](custom-event-to-eventhub.md) | Odešle vlastní události do centra událostí pro zpracování aplikací. |
+| [Šablony Resource Manageru: vlastní témata a Event Hubs koncového bodu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-event-hubs-handler)| Šablony Resource Manageru, která vytvoří odběr vlastního tématu. Odesílá události do Azure Event Hubs. |
 
 Příklady služby Event Hubs jako zdroj, najdete v článku [zdroje služby Event Hubs](event-sources.md#event-hubs).
 

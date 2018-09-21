@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 790d192823867ee858a7fa6bf030721002a6bd94
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: b11883ae592999a49db363486fd47a566bdfd360
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296869"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498704"
 ---
 # <a name="profile-live-azure-web-apps-with-application-insights"></a>Profilování živých webových aplikací Azure pomocí Application Insights
 
-Tato funkce služby Azure Application Insights je všeobecně dostupné pro funkci Web Apps služby Azure App Service a je ve verzi preview pro výpočetní prostředky Azure. Informace týkající se [v místním prostředí pomocí profileru](https://docs.microsoft.com/azure/application-insights/enable-profiler-compute#enable-profiler-on-on-premises-servers).
+Tato funkce služby Azure Application Insights je všeobecně dostupné pro funkci Web Apps služby Azure App Service a výpočetní prostředky Azure. Informace týkající se [v místním prostředí pomocí profileru](https://docs.microsoft.com/azure/application-insights/enable-profiler-compute#enable-profiler-on-on-premises-servers).
 
 Tento článek popisuje množství času, který byl stráven v každé metodě živé webové aplikace při použití [Application Insights](app-insights-overview.md). Nástroj Application Insights Profiler zobrazuje podrobné profily živé požadavky, které byly vaše aplikace obsluhuje. Profiler zvýrazní *kritickou cestu* , která používá nejvíce času. Požadavky s různými doby odezvy mají profil na základě vzorkování. S využitím různých technik, můžete minimalizovat režii spojenou s aplikací.
 

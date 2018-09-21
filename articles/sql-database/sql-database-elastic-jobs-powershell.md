@@ -9,12 +9,12 @@ ms.custom: scale out apps
 ms.topic: conceptual
 ms.date: 06/14/2018
 ms.author: sstein
-ms.openlocfilehash: 6f72e0cbb4476e9ff22bd1a1ead8dbee24a7edf0
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 3efee2f9a4b205b87a65eb473271b0ab5e58046d
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35643590"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498415"
 ---
 # <a name="create-and-manage-sql-database-elastic-jobs-using-powershell-preview"></a>Vytvoření a správa elastických úloh SQL Database pomocí Powershellu (preview)
 
@@ -213,7 +213,7 @@ Osvědčené postupy zabezpečení pro úlohy elastické databáze patří:
 * Přihlašovací údaje by měl mít alespoň oprávnění potřebná k provedení úlohy.  Další informace můžete zobrazit v rámci této [autorizace a oprávnění](https://msdn.microsoft.com/library/bb669084.aspx) článku na webu MSDN SQL Server.
 
 ### <a name="to-create-an-encrypted-credential-for-job-execution-across-databases"></a>Chcete-li vytvořit šifrované přihlašovací údaje pro provádění úlohy napříč databázemi
-K vytvoření nových přihlašovacích údajů šifrované, [ **rutiny Get-Credential** ](https://technet.microsoft.com/library/hh849815.aspx) vyzve k zadání uživatelského jména a hesla, které mohou být předány [ **rutiny New-AzureSqlJobCredential** ](/powershell/module/elasticdatabasejobs/new-azuresqljobcredential).
+K vytvoření nových přihlašovacích údajů šifrované, [ **rutiny Get-Credential** ](/powershell/module/microsoft.powershell.security/get-credential) vyzve k zadání uživatelského jména a hesla, které mohou být předány [ **rutiny New-AzureSqlJobCredential** ](/powershell/module/elasticdatabasejobs/new-azuresqljobcredential).
 
     $credentialName = "{Credential Name}"
     $databaseCredential = Get-Credential

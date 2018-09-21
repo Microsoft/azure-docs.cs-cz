@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 08/29/2018
+ms.date: 09/18/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ddc27d9f5124000601a57b4ecd72c3d6021c109f
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 3e21cb90dbe76a648cbb23729cc5068e75e8e5f7
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45542629"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498534"
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení Update Management v Azure
 
@@ -35,7 +35,7 @@ Následující diagram znázorňuje konceptuální zobrazení chování a toku d
 
 ![Proces správy aktualizací](media/automation-update-management/update-mgmt-updateworkflow.png)
 
-Správa aktualizací umožňuje nativně připojit počítače v několika předplatných ve stejném tenantovi. Ke správě počítačů v jiném tenantovi, musíte připojit jako [počítače mimo Azure](automation-onboard-solutions-from-automation-account.md#onboard-a-non-azure-machine).
+Správa aktualizací umožňuje nativně připojit počítače v několika předplatných ve stejném tenantovi. Ke správě počítačů v jiném tenantovi, musíte připojit jako [počítače mimo Azure](automation-onboard-solutions-from-automation-account.md#onboard-a-non-azure-machine). 
 
 Jakmile počítač provede kontrolu kompatibility aktualizací, agent předává informace hromadné ke službě Azure Log Analytics. Na počítači s Windows se kontrola dodržování předpisů ve výchozím nastavení provádí každých 12 hodin.
 
@@ -55,6 +55,8 @@ Plánované nasazení definuje, které cílové počítače obdrží použiteln�
 Aktualizace se instalují podle runbooků ve službě Azure Automation. Nelze zobrazit tyto sady runbook a runbook nevyžadují žádnou konfiguraci. Při vytvoření nasazení aktualizace nasazení aktualizace vytvoří plán, který se spustí hlavní runbook aktualizace v zadanou dobu pro zahrnuté počítače. Hlavní runbook spouští podřízený runbook na každém agentovi provést instalaci požadovaných aktualizací.
 
 Datum a čas zadaný v nasazení aktualizací cílové počítače paralelně spustit nasazení. Před instalací se provádí kontrolu ověření, že se aktualizace stále vyžadují. U klientských počítačů služby WSUS Pokud nejsou aktualizace schválené ve službě WSUS, nasazení aktualizace se nezdaří.
+
+Máte na počítači registrován pro správu aktualizací v několika pracovní prostory Log Analytics (vícenásobné navádění) se nepodporuje.
 
 ## <a name="clients"></a>Klienti
 
@@ -190,7 +192,7 @@ Spustit hledání v protokolu, který vrací informace o počítači, aktualizac
 
 Po aktualizace se vyhodnocuje pro všechny systémy Linux a Windows počítače ve vašem pracovním prostoru, můžete nainstalovat požadované aktualizace vytvořením *nasazení aktualizací*. Nasazení aktualizací je plánovaná instalace požadovaných aktualizací pro jeden nebo více počítačů. Zadáte datum a čas pro nasazení a počítač nebo skupinu počítačů, které chcete zahrnout do oboru nasazení. Další informace o skupinách počítačů najdete v tématu [Skupiny počítačů v Log Analytics](../log-analytics/log-analytics-computer-groups.md).
 
- Když do svého nasazení aktualizací zahrnete skupiny počítačů, členství ve skupině se vyhodnotí jenom jednou, v době vytvoření plánu. Následné změny ve skupině se neprojeví. Chcete-li tento problém obejít, odstraňte naplánovaném nasazení aktualizací a znovu vytvořit.
+ Když do svého nasazení aktualizací zahrnete skupiny počítačů, členství ve skupině se vyhodnotí jenom jednou, v době vytvoření plánu. Následné změny ve skupině se neprojeví. K orientaci použijte [dynamických skupin](#using-dynamic-groups), tyto skupiny jsou vyřešené v době nasazení a jsou definované v dotazu.
 
 > [!NOTE]
 > Windows virtuálních počítačů nasazených z Azure Marketplace ve výchozím nastavení jsou nastaveny na přijímání automatických aktualizací ze služby Windows Update. Toto chování se při přidání tohoto řešení nebo přidat virtuální počítače Windows do pracovního prostoru nezmění. Pokud aktualizace není aktivně spravovat pomocí tohoto řešení, použije se výchozí chování (Automatické aktualizace).
@@ -198,6 +200,23 @@ Po aktualizace se vyhodnocuje pro všechny systémy Linux a Windows počítače 
 Vyhněte se aktualizace používaly mimo časové období údržby v Ubuntu, změňte konfiguraci balíčku Unattended-Upgrade tak, aby automatické aktualizace. Informace o tom, jak nakonfigurovat balíček najdete v tématu [téma automatické aktualizace v příručce k Ubuntu serveru](https://help.ubuntu.com/lts/serverguide/automatic-updates.html).
 
 Virtuální počítače vytvořené z imagí Red Hat Enterprise Linux (RHEL) na vyžádání, které jsou k dispozici na webu Azure Marketplace jsou registrované pro přístup [Red Hat Update Infrastructure (RHUI)](../virtual-machines/virtual-machines-linux-update-infrastructure-redhat.md) , která je nasazena v Azure. Všechny ostatní distribuce musí být aktualizované z úložiště online souborů distribuce podle podporované metody distribuce.
+
+Chcete-li vytvořit nové nasazení aktualizace, vyberte **naplánovat nasazení aktualizací**. **Nové nasazení aktualizace** se otevře podokno. Zadejte hodnoty vlastností popsaných v následující tabulce a potom klikněte na tlačítko **vytvořit**:
+
+| Vlastnost | Popis |
+| --- | --- |
+| Název |Jedinečný název pro identifikaci nasazení aktualizace. |
+|Operační systém| Linux nebo Windows|
+| Skupiny, které se aktualizace (preview)|Definování dotazu na základě kombinace předplatného, skupiny prostředků, míst a značky vytvářet dynamické skupiny virtuálních počítačů Azure má zahrnout do vašeho nasazení. Další informace najdete tady [dynamické skupiny](automation-update-management.md#using-dynamic-groups)|
+| Počítače k aktualizaci |Vyberte uložená hledání, importované skupiny, nebo vybrat počítač z rozevíracího seznamu a vyberte jednotlivé počítače. Pokud zvolíte možnost **Počítače**, ve sloupci **PŘIPRAVENOST AGENTA AKTUALIZACE** se zobrazí připravenost počítačů.</br> Další informace o různých způsobech vytváření skupin počítačů v Log Analytics najdete v tématu [Skupiny počítačů v Log Analytics](../log-analytics/log-analytics-computer-groups.md). |
+|Klasifikace aktualizací|Vyberte všechny klasifikace aktualizací, které potřebujete|
+|Zahrnout nebo vyloučit aktualizace|Tím se otevře **zahrnout/vyloučit** stránky. Aktualizace zahrnuty nebo vyloučeny jsou v samostatných kartách. Další informace o zpracování zařazení, naleznete v tématu [zahrnutí chování](automation-update-management.md#inclusion-behavior) |
+|Nastavení plánu|Vyberte čas spuštění a vyberte buď jednou nebo opakovaně pro opakování|
+| Předběžné skripty a pozálohovacích skriptů|Vyberte skripty spouštěné před a po nasazení|
+| Časové období údržby |Počet minut pro aktualizace. Hodnota nemůže být menší než 30 minut a maximálně 6 hodin |
+| Restartovat ovládacího prvku| Určuje, jak by měl být zpracována restartování počítače. Dostupné možnosti jsou:</br>Restartovat v případě potřeby (výchozí)</br>Vždy restartovat</br>Nikdy nerestartovat</br>Pouze restartovat – nenainstalují se aktualizace|
+
+Nasazení aktualizací můžete vytvořit také prostřednictvím kódu programu. Informace o vytvoření nasazení aktualizace pomocí rozhraní REST API najdete v tématu [vytvoření konfigurace aktualizace softwaru -](/rest/api/automation/softwareupdateconfigurations/create). Je také ukázkové sady runbook, který slouží k vytvoření týdenní aktualizace nasazení. Další informace o této sady runbook najdete v tématu [vytvořte týdenní nasazení aktualizací pro jeden nebo více virtuálních počítačů ve skupině prostředků](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1).
 
 ## <a name="view-missing-updates"></a>Zobrazit chybějící aktualizace
 
@@ -209,20 +228,7 @@ Vyberte **nasazení aktualizace** kartu, chcete-li zobrazit seznam existujícíc
 
 ![Přehled výsledků nasazení aktualizace](./media/automation-update-management/update-deployment-run.png)
 
-## <a name="create-or-edit-an-update-deployment"></a>Vytvořit nebo upravit nasazení aktualizace
-
-Chcete-li vytvořit nové nasazení aktualizace, vyberte **naplánovat nasazení aktualizací**. **Nové nasazení aktualizace** se otevře podokno. Zadejte hodnoty vlastností popsaných v následující tabulce a potom klikněte na tlačítko **vytvořit**:
-
-| Vlastnost | Popis |
-| --- | --- |
-| Název |Jedinečný název pro identifikaci nasazení aktualizace. |
-|Operační systém| Linux nebo Windows|
-| Počítače k aktualizaci |Vyberte uložená hledání, importované skupiny, nebo vybrat počítač z rozevíracího seznamu a vyberte jednotlivé počítače. Pokud zvolíte možnost **Počítače**, ve sloupci **PŘIPRAVENOST AGENTA AKTUALIZACE** se zobrazí připravenost počítačů.</br> Další informace o různých způsobech vytváření skupin počítačů v Log Analytics najdete v tématu [Skupiny počítačů v Log Analytics](../log-analytics/log-analytics-computer-groups.md). |
-|Klasifikace aktualizací|Vyberte všechny klasifikace aktualizací, které potřebujete|
-|Aktualizace k vyloučení|Zadejte aktualizace k vyloučení. Pro Windows zadejte KB bez předpony "KB". Pro Linux zadejte název balíčku nebo použít zástupný znak.  |
-|Nastavení plánu|Vyberte čas spuštění a vyberte buď jednou nebo opakovaně pro opakování|
-| Časové období údržby |Počet minut pro aktualizace. Hodnota nemůže být menší než 30 minut a maximálně 6 hodin |
-| Restartovat ovládacího prvku| Určuje, jak by měl být zpracována restartování počítače. Dostupné možnosti jsou:</br>Restartovat v případě potřeby (výchozí)</br>Vždy restartovat</br>Nikdy nerestartovat</br>Pouze restartovat – nenainstalují se aktualizace|
+Nasazení aktualizací z rozhraní REST API najdete v tématu [spuštění konfigurace aktualizace softwaru](/rest/api/automation/softwareupdateconfigurationruns).
 
 ## <a name="update-classifications"></a>Klasifikace aktualizací
 
@@ -484,11 +490,32 @@ Update
 | project-away ClassificationWeight, InformationId, InformationUrl
 ```
 
+## <a name="using-dynamic-groups"></a>Používat dynamické skupiny (preview)
+
+Správa aktualizací umožňuje cílit na dynamické skupiny virtuálních počítačů Azure pro nasazení aktualizací. Tyto skupiny jsou definované v dotazu po zahájení nasazení aktualizací, členové této skupiny jsou vyhodnocovány. Při definování dotazu následující položky lze použít společně a naplnit dynamickou skupinu
+
+* Předplatné
+* Skupiny prostředků
+* Umístění
+* Značky
+
+![Výběr skupin](./media/automation-update-management/select-groups.png)
+
+Zobrazení náhledu na výsledky dynamické skupiny, klikněte na tlačítko **ve verzi Preview** tlačítko. Tento náhled zobrazuje členství ve skupině v tuto chvíli v tomto příkladu jsme se hledaný pro počítače se značkou **Role** rovná **BackendServer**. Pokud se tato značka přidá mají další počítače, budou přidány pro všechny budoucí nasazení pro tuto skupinu.
+
+![skupiny ve verzi Preview](./media/automation-update-management/preview-groups.png)
+
 ## <a name="integrate-with-system-center-configuration-manager"></a>Integrace se System Center Configuration Managerem
 
 Zákazníci, kteří investovali do System Center Configuration Manager pro správu počítačů, serverů a mobilních zařízení také využívají sílu a další přednosti nástroje Configuration Manager k usnadnění správy aktualizací softwaru. Nástroj Configuration Manager je součástí jejich software cyklu správy aktualizací (SUM).
 
 Zjistěte, jak integrovat do řešení pro správu pomocí nástroje System Center Configuration Manager, najdete v článku [integrace System Center Configuration Manager s Update managementem](oms-solution-updatemgmt-sccmintegration.md).
+
+## <a name="inclusion-behavior"></a>Zahrnutí chování
+
+Zahrnutí aktualizací můžete zadat konkrétní aktualizace použít. Bez ohledu na to klasifikace vybrané pro nasazení jsou nainstalované opravy nebo balíčky, které jsou nastavené mají být zahrnuty.
+
+Pro počítače s Linuxem v případě, že balíček je součástí, ale má závislý balíček, který byl vyloučen, specifcally balíček není nainstalovaný.
 
 ## <a name="patch-linux-machines"></a>Počítače s Linuxem opravy
 
@@ -527,3 +554,5 @@ Pokračujte ke kurzu se naučíte spravovat aktualizace pro virtuální počíta
 
 * Použijte hledání v protokolu [Log Analytics](../log-analytics/log-analytics-log-searches.md) k zobrazení podrobných údajů o aktualizaci.
 * [Vytvořit upozornění](../log-analytics/log-analytics-alerts.md) při důležité aktualizace jsou rozpoznány jako chybějící z počítačů nebo pokud má počítač zakázané automatické aktualizace.
+
+* Zjistěte, jak pracovat s Update managementem přes rozhraní REST API, najdete v článku [konfigurace aktualizace softwaru](/rest/api/automation/softwareupdateconfigurations)

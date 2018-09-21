@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/17/2018
+ms.date: 09/19/2018
 ms.author: terrylan
-ms.openlocfilehash: ec8e4b1edfe815670664de83edf98a9e478101d2
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 309dddcea1022d9f14c1d4492f5564f2a4ad3b6f
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42056839"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498500"
 ---
 # <a name="azure-network-security-overview"></a>Přehled zabezpečení sítě Azure
 
-Azure obsahuje robustní síťovou infrastrukturu pro podporu aplikací a požadavky na připojení služby. Připojení k síti je možné mezi prostředky umístěné v Azure, mezi místním a hostované v Azure prostředky a do a z Internetu a z Azure.
+Zabezpečení sítě může být definován jako proces ochrany prostředků před neoprávněným přístupem nebo útok s použitím ovládacích prvků pro síťový provoz. Cílem je zajistit, že je povolený jenom legitimní provoz. Azure obsahuje robustní síťovou infrastrukturu pro podporu aplikací a požadavky na připojení služby. Připojení k síti je možné mezi prostředky umístěné v Azure, mezi místním a hostované v Azure prostředky a do a z Internetu a z Azure.
 
 Tento článek popisuje některé z možností, které Azure nabízí v oblasti zabezpečení sítě. Informace o:
 
@@ -77,7 +77,11 @@ Další informace:
 
 #### <a name="asc-just-in-time-vm-access"></a>ASC dočasný přístup virtuálních počítačů v
 
-[Azure security center](../security-center/security-center-just-in-time.md) můžete spravovat skupiny zabezpečení sítě na virtuálních počítačích a uzamčení přístupu k virtuálnímu počítači až do uživatele s ovládacím prvkem odpovídající přístup na základě rolí [RBAC](../role-based-access-control/overview.md) oprávnění požádá o přístup. Když se uživatel úspěšně provede autorizované ASC změny skupiny Nsg k povolení přístupu k vybrané porty po dobu uvedenou. Když čas vyprší platnost skupiny zabezpečení sítě budou obnoveny do jejich předchozího stavu zabezpečené.
+[Azure security center](../security-center/security-center-intro.md) můžete spravovat skupiny zabezpečení sítě na virtuálních počítačích a uzamčení přístupu k virtuálnímu počítači až do uživatele s ovládacím prvkem odpovídající přístup na základě rolí [RBAC](../role-based-access-control/overview.md) oprávnění požádá o přístup. Když se uživatel úspěšně provede autorizované ASC změny skupiny Nsg k povolení přístupu k vybrané porty po dobu uvedenou. Když čas vyprší platnost skupiny zabezpečení sítě budou obnoveny do jejich předchozího stavu zabezpečené.
+
+Další informace:
+
+* [Azure Security Center jenom v T](../security-center/security-center-just-in-time.md)
 
 #### <a name="service-endpoints"></a>Koncové body služby
 

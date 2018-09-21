@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: barclayn
-ms.openlocfilehash: 58bc3a582db23a48eedaaf67df7d20da9c42ded4
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: fa8605f4822ff0ee5ba25ee0baca4fb2fec83b17
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45603273"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46497599"
 ---
 # <a name="what-is-azure-key-vault"></a>Co je Azure Key Vault?
 
@@ -27,17 +27,25 @@ Azure Key Vault pomáhá řešit následující problémy
 - **Správa tajných kódů** -Azure Key Vault umožňuje bezpečně ukládat a důsledně řídit přístup k tokeny, hesla, certifikáty, klíče rozhraní API a dalších tajných kódů
 - **Správa klíčů** -Azure Key Vault slouží také jako řešení pro správu klíčů. Azure Key Vault usnadňuje vytváření a správu šifrovacích klíčů sloužících k šifrování dat. 
 - **Správa certifikátů** – Azure Key Vault je také služba, která umožňuje snadné zřizování, spravovat a nasazovat veřejné a privátní certifikáty Secure Sockets Layer/Transport Layer Security (SSL/TLS) pro použití s Azure a vaší interní připojení prostředky. 
-- **Moduly hardwarového zabezpečení** -klíčů nebo tajných kódů se dají chránit buď softwarové, nebo podle standardu FIPS 140-2 úrovně 2 ověří moduly hardwarového zabezpečení
+- **Store tajných kódů se opírá o modulech hardwarového zabezpečení** -klíčů nebo tajných kódů se dají chránit buď softwarové, nebo podle standardu FIPS 140-2 úrovně 2 ověří moduly hardwarového zabezpečení
 
 ## <a name="basic-concepts"></a>Základní koncepty
 
-Azure Key Vault je nástroj pro zabezpečené ukládání tajných klíčů a přístup k nim. Tajný klíč je cokoli, k čemu chcete pečlivě kontrolovat přístup, třeba klíče rozhraní API, hesla nebo certifikáty. A **trezor** je logická skupina tajných kódů tady jsou některé klíčové pojmy:
+Azure Key Vault je nástroj pro zabezpečené ukládání tajných klíčů a přístup k nim. Tajný klíč je cokoli, k čemu chcete pečlivě kontrolovat přístup, třeba klíče rozhraní API, hesla nebo certifikáty. A **trezor** je logická skupina tajných kódů. Teď provedete jakékoli operace se službou Key Vault musíte nejprve k ověření do něj. 
+
+V podstatě způsoby 3 k ověření do služby Key Vault
+
+1. **Pomocí [identita spravované služby](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview)**  (**doporučené a nejlepší výkon**): při nasazení aplikace na virtuálním počítači v Azure, identitu, která můžete přiřadit ke svému virtuálnímu počítači, který má přístup k trezoru klíčů. Můžete také přiřadit identity další prostředky azure, které jsou uvedeny [tady](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview). Výhodou tohoto přístupu je aplikace / služby není správu oběhu první tajného klíče. Azure automaticky otočí identitu. 
+2. **Pomocí instančního objektu a certifikát:** 2. možností je použití instančního objektu a přidružený certifikát, který má přístup do služby Key Vault. Břemeno otáčení certifikát se na vlastníka aplikace nebo pro vývojáře a proto se to nedoporučuje
+3. **Pomocí instančního objektu a tajného kódu:** ověření do služby Key Vault pomocí instančního objektu a tajného kódu je 3. možnost (ne upřednostňovanou možnost ověřování)
+
+Tady je několik klíčových pojmů:
 - **Tenant:** Tenant je organizace, která vlastní a spravuje konkrétní instanci cloudových služeb Microsoftu. Nejčastěji určitým způsobem odkazuje na sadu služeb Azure nebo Office 365 dané organizace.
 - **Vlastník trezoru:** Vlastník trezoru může vytvořit trezor klíčů a získat k němu úplný přístup a kontrolu. Vlastník trezoru může také nastavit auditování a protokolování toho, kdo získává přístup ke klíčům a tajným klíčům. Správci můžou řídit životní cyklus klíčů. Můžou přejít na novou verzi klíče, zálohovat ho a provádět související úlohy.
 - **Uživatel trezoru:** Uživatel trezoru může provádět akce s prostředky uvnitř trezoru, pokud mu vlastník trezoru udělí uživatelský přístup. Dostupné akce závisí na udělených oprávněních.
 - **Prostředek:** Prostředek je spravovatelná položka, která je k dispozici prostřednictvím Azure. Mezi běžné prostředky patří virtuální počítač, účet úložiště, webová aplikace, databáze nebo virtuální síť, ale existuje i mnoho dalších.
 - **Skupina prostředků:** Skupina prostředků je kontejner, který obsahuje související prostředky pro řešení Azure. Skupina prostředků může zahrnovat všechny prostředky pro řešení nebo pouze ty prostředky, které chcete spravovat jako skupinu. Na základě toho, co je pro vaši organizaci nejvhodnější, rozhodnete, jakým způsobem se mají prostředky přidělovat do skupin prostředků.
-- **Instanční objekt služby** -instančního objektu A mohli podívat, jako přihlašovacích údajů pro vaši aplikaci.
+- **Instanční objekt služby** – za účelem přístupu k prostředkům, které jsou zabezpečené pomocí tenanta služby Azure AD, entity, která vyžaduje přístup musí reprezentovat objekt zabezpečení. To platí pro uživatele (uživatel instančního objektu) a aplikací (instanční objekt). Objekt zabezpečení definuje zásady přístupu a oprávnění pro uživatele nebo aplikaci v tomto tenantovi. To umožňuje základní funkce, jako je ověřování uživatelů a aplikací při přihlášení a ověření při přístupu k prostředkům.
 - **[Azure Active Directory (Azure AD):](../active-directory/active-directory-whatis.md)** Azure AD je služba Active Directory pro tenanta. Každý adresář má jednu nebo víc domén. K jednomu adresáři se dá přidružit několik předplatných, ale jenom jeden tenant. 
 - **ID tenanta Azure:** ID tenanta představuje jedinečný způsob, jak identifikovat instanci služby Azure AD v rámci předplatného Azure.
 - **Spravované identity pro prostředky Azure**: Azure Key Vault poskytuje způsob, jak bezpečně ukládat přihlašovací údaje a další klíče a tajné klíče, ale váš kód potřebuje ověřit do služby Key Vault je načítat. Použití spravované identity je řešení tohoto problému jednodušší tím, že automaticky spravovanou identitu služby Azure ve službě Azure AD. Tuto identitu můžete použít k ověření ve službě Key Vault nebo jakékoli jiné službě, která podporuje ověřování Azure AD, aniž by váš kód obsahoval přihlašovací údaje. Další informace najdete v tématu na obrázku níže a [spravovaných identit pro prostředky Azure přehled](../active-directory/managed-identities-azure-resources/overview.md).

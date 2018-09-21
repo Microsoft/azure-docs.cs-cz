@@ -5,14 +5,14 @@ services: event-grid
 author: tfitzmac
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 08/21/2018
+ms.date: 09/19/2018
 ms.author: tomfitz
-ms.openlocfilehash: 15fe97e39fbc1c669762ddb7523cfd043638d3de
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: adef9d2f2d859c62d3b3b3a542536698fa668f9a
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43144225"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498296"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Zdroje událostí ve službě Azure Event Grid
 
@@ -58,7 +58,7 @@ Přihlásit k vlastní témata pro reakci na události aplikace.
 | [Prostředí PowerShell: přihlášení k odběru událostí vlastního tématu](./scripts/event-grid-powershell-subscribe-custom-topic.md)|Ukázkový skript vytvoří odběr vlastního tématu. Odesílá události do Webhooku.|
 | [Šablony Resource Manageru: vlastní témata a koncový bod Webhooku](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid) | Šablony Resource Manageru, který vytvoří vlastní téma a odběr tohoto vlastního tématu. Odesílá události do Webhooku. |
 |
-| [Šablony Resource Manageru: vlastní témata a Event Hubs koncového bodu](https://github.com/Azure/azure-docs-json-samples/blob/master/event-grid/subscribeCustomTopicToEventHub.json)| Šablony Resource Manageru, která vytvoří odběr vlastního tématu. Odesílá události do Azure Event Hubs. |
+| [Šablony Resource Manageru: vlastní témata a Event Hubs koncového bodu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-event-hubs-handler)| Šablony Resource Manageru, která vytvoří odběr vlastního tématu. Odesílá události do Azure Event Hubs. |
 | [Schéma událostí](event-schema.md) | Zobrazí pole ve vlastních událostí. |
 
 ## <a name="event-hubs"></a>Event Hubs
@@ -104,7 +104,7 @@ Přihlášení odběru událostí skupiny prostředků reakce na změny v prost�
 | [Azure CLI: přihlášení k odběru událostí skupiny prostředků a filtr pro určitý prostředek](./scripts/event-grid-cli-resource-group-filter.md) | Ukázkový skript, který odebírá události pro skupinu prostředků a vyfiltruje události pro jeden prostředek. |
 | [Prostředí PowerShell: přihlášení k odběru událostí skupiny prostředků](./scripts/event-grid-powershell-resource-group.md) | Ukázkový skript, který se přihlásí odběru událostí skupiny prostředků. Odesílá události do Webhooku. |
 | [Prostředí PowerShell: přihlášení k odběru událostí skupiny prostředků a filtr pro určitý prostředek](./scripts/event-grid-powershell-resource-group-filter.md) | Ukázkový skript, který odebírá události pro skupinu prostředků a vyfiltruje události pro jeden prostředek. |
-| [Šablony Resource Manageru: odběr skupiny prostředků](https://github.com/Azure/azure-docs-json-samples/blob/master/event-grid/subscribeResourceGroupToWebHook.json) | Přihlásí se k odběru událostí skupiny prostředků. Odesílá události do Webhooku. |
+| [Šablony Resource Manageru: prostředků předplatného](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-resource-events-to-webhook) | Se přihlásí k odběru událostí Azure předplatné nebo skupinu prostředků. Odesílá události do Webhooku. |
 | [Schéma událostí](event-schema-resource-groups.md) | Zobrazí pole v prostředku skupiny událostí. |
 
 ## <a name="service-bus"></a>Service Bus
@@ -128,7 +128,7 @@ Přihlášení k odběru úložiště objektů Blob událostí reagovat na udál
 | [Rychlý start: vytvoření a směrování událostí služby Blob storage pomocí webu Azure portal](blob-event-quickstart-portal.md) | Ukazuje, jak používat portál k odesílání událostí služby blob storage do Webhooku. |
 | [Azure CLI: přihlášení k odběru událostí účtu úložiště objektů Blob](./scripts/event-grid-cli-blob.md) | Ukázkový skript, který se přihlásí odběru událostí účtu úložiště objektů Blob. Odešle událost Webhooku. |
 | [Prostředí PowerShell: přihlášení k odběru událostí účtu úložiště objektů Blob](./scripts/event-grid-powershell-blob.md) | Ukázkový skript, který se přihlásí odběru událostí účtu úložiště objektů Blob. Odešle událost Webhooku. |
-| [Šablony Resource Manageru: vytvoření objektu Blob úložiště a odběru](https://github.com/Azure/azure-docs-json-samples/blob/master/event-grid/createBlobAndSubscribe.json) | Nasadí účet úložiště objektů blob v Azure a přihlásí se k odběru událostí tohoto účtu úložiště. Odesílá události do Webhooku. |
+| [Šablony Resource Manageru: vytvoření objektu Blob úložiště a odběru](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-subscription-and-storage) | Nasadí účet úložiště objektů blob v Azure a přihlásí se k odběru událostí tohoto účtu úložiště. Odesílá události do Webhooku. |
 | [Přehled: reakce na události služby Blob storage](../storage/blobs/storage-blob-event-overview.md) | Přehled integrace úložiště objektů Blob pomocí služby Event Grid. |
 | [Schéma událostí](event-schema-blob-storage.md) | Zobrazí pole v události služby Blob Storage. |
 

@@ -8,12 +8,12 @@ ms.technology: speech
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 7d5656d6599e1d8d2a3e85b9d41bcce6490e1511
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 8f01130d46bce1e3b3e0b37f26e25d552c6002e5
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124163"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498109"
 ---
 # <a name="speech-service-rest-apis"></a>Speech service rozhraní REST API
 
@@ -59,7 +59,7 @@ Zvuk se poslala v těle HTTP `PUT` žádosti a musí být ve formátu WAV 16 bit
 
 ### <a name="chunked-transfer"></a>Bloku
 
-Přenos rozdělený do bloků dat (`Transfer-Encoding: chunked`) může pomoct snížit latenci rozpoznávání, protože umožňuje Speech service se začne zpracovávat přenášejí zvukový soubor současně přitom ho. Rozhraní REST API neposkytuje částečné nebo dočasné výsledky; Tato možnost je určena výhradně pro zvýšení rychlosti odezvy.
+Přenos rozdělený do bloků dat (`Transfer-Encoding: chunked`) může pomoct snížit latenci rozpoznávání, protože umožňuje Speech service začala zpracovat zvukový soubor při přenosu je zašifrované. Rozhraní REST API neposkytuje částečné nebo dočasné výsledky; Tato možnost je určena výhradně pro zvýšení rychlosti odezvy.
 
 Následující kód ukazuje, jak posílat zvuk v blocích. `request` připojen objekt HTTPWebRequest na příslušný koncový bod REST. `audioFile` je cesta k zvukový soubor na disku.
 
@@ -137,7 +137,7 @@ Výsledky jsou vráceny ve formátu JSON. `simple` Formátu obsahuje pouze násl
 | `Error` | Rozpoznávání služby došlo k interní chybě a nemohl pokračovat. Zkuste to znovu Pokud je to možné. |
 
 > [!NOTE]
-> Pokud uživatel mluví pouze vulgárních výrazů a `profanity` parametr dotazu je nastaven na `remove`, služba nevrací výsledek řeči v režimu rozpoznávání `interactive`. V tomto případě služba vrátí výsledek řeči se `RecognitionStatus` z `NoMatch`. 
+> Pokud se zvuk skládá pouze z vulgárních výrazů a `profanity` parametr dotazu je nastaven na `remove`, služba nevrací výsledek řeči. 
 
 `detailed` Formátu obsahuje stejné pole, jako `simple` formátovat, spolu s `NBest` pole. `NBest` Seznam alternativních interpretace stejné řeči řazeny od nejpodezřelejších po nejpravděpodobněji nejméně pravděpodobně je pole. První položka je stejný jako výsledek hlavní rozpoznání. Každá položka obsahuje následující pole:
 
@@ -215,8 +215,6 @@ Následující pole se odesílají v hlavičce požadavku protokolu HTTP.
 |`Authorization`|Autorizační token předcházet slovo `Bearer`. Povinná hodnota. Zobrazit [ověřování](#authentication).|
 |`Content-Type`|Vstupní typ obsahu: `application/ssml+xml`.|
 |`X-Microsoft-OutputFormat`|Zvukový formát výstupu. Najdete v následující tabulce.|
-|`X-Search-AppId`|Pouze hexadecimální identifikátor GUID (pomlčky), který jednoznačně identifikuje klientskou aplikaci. To může být ID úložiště. FF není aplikace ze storu, můžete použít libovolný identifikátor GUID.|
-|`X-Search-ClientId`|Pouze hexadecimální identifikátor GUID (pomlčky), který jednoznačně identifikuje instance aplikace pro každou instalaci.|
 |`User-Agent`|Název aplikace. Nevyžaduje. musí obsahovat méně než 255 znaků.|
 
 K dispozici zvukové formáty výstupu (`X-Microsoft-OutputFormat`) začlenit s přenosovou rychlostí a kódování.
@@ -230,9 +228,12 @@ K dispozici zvukové formáty výstupu (`X-Microsoft-OutputFormat`) začlenit s 
 `riff-24khz-16bit-mono-pcm`        | `audio-24khz-160kbitrate-mono-mp3`
 `audio-24khz-96kbitrate-mono-mp3`  | `audio-24khz-48kbitrate-mono-mp3`
 
+> [!NOTE]
+> Pokud vybraný hlasový a výstupní formát různé přenosové rychlosti, zvuku poklesu podle potřeby. Ale 24khz hlasy nepodporují `audio-16khz-16kbps-mono-siren` a `riff-16khz-16kbps-mono-siren` formáty výstupu. 
+
 ### <a name="request-body"></a>Tělo požadavku
 
-Text, který má syntetizovat do mluvené řeči se odešle jako těla protokolu HTTP `POST` požadavku buď jako prostý text nebo [Markup Language syntézu řeči](speech-synthesis-markup.md) formátu (SSML) s kódováním UTF-8 text. Pokud chcete použít jiné než výchozí hlasové služby hlasový vstup je nutné použít SSML.
+Text, který má být převeden do mluvené řeči se odešle jako těla protokolu HTTP `POST` vyžádat buď jako prostý text (ASCII nebo UTF-8) nebo [Markup Language syntézu řeči](speech-synthesis-markup.md) (SSML) formát (UTF-8). Požadavky na prostý text použijte výchozí hlasové služby a jazyka. Odešlete SSML použít jiný hlas.
 
 ### <a name="sample-request"></a>Ukázková žádost
 
@@ -260,10 +261,10 @@ Stav protokolu HTTP odpovědi označuje úspěch nebo běžné chybové stavy.
 Kód HTTP|Význam|Možný důvod
 -|-|-|
 200|OK|Žádost byla úspěšná. text odpovědi je zvukový soubor.
-400|Nesprávná žádost|Požadované záhlaví pole chybí hodnota příliš dlouhý nebo neplatný dokument SSML.
-401|Neautorizováno|Klíč předplatného nebo autorizační token je neplatný. v zadané oblasti nebo neplatný koncový bod.
-403|Zakázáno|Chybí klíč předplatného nebo autorizační token.
-413|Příliš velká entita požadavku|Vstupní text je delší než 1 000 znaků.
+400 |Chybný požadavek |Povinný parametr nebyl nalezen, prázdný nebo null. Nebo hodnota předaná buď povinný nebo volitelný parametr není platný. Běžné potíže se hlavičku, která je příliš dlouhý.
+401|Neautorizováno |Požadavek není autorizovaný. Ověřte váš klíč předplatného nebo token je platný a v oblasti správné.
+413|Příliš velká entita požadavku|Vstup SSML je delší než 1024 znaků.
+|502|Chybná brána    | Problém sítě nebo na straně serveru. Může také znamenat neplatné záhlaví.
 
 Pokud je stav protokolu HTTP `200 OK`, tělo odpovědi obsahuje zvukový soubor v požadovanému formátu. Tento soubor lze přehrát, jak přenést nebo uložit do vyrovnávací paměti nebo později přehrát či jiné použití souboru.
 

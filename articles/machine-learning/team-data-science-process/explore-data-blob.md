@@ -1,6 +1,6 @@
 ---
-title: Zkoumání dat ve službě Azure blob storage pomocí knihovny Pandas | Dokumentace Microsoftu
-description: Popisuje, jak zkoumat data, která je uložená v kontejneru objektů blob v Azure pomocí Pandas.
+title: Zkoumání dat ve službě Azure blob storage pomocí knihovny pandas | Dokumentace Microsoftu
+description: Popisuje, jak zkoumat data, která je uložená v kontejneru objektů blob v Azure pomocí pandas.
 services: machine-learning,storage
 documentationcenter: ''
 author: deguhath
@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: deguhath
-ms.openlocfilehash: 61943da154483d8e815fa135fba30b136724b011
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: b80fcecf28eaaf05e7fc199a9c318fd4148b9212
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42055692"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46497854"
 ---
-# <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Zkoumání dat ve službě Azure Blob Storage pomocí knihovny Pandas
-Tento dokument popisuje, jak zkoumat data, která je uložená v kontejneru objektů blob v Azure pomocí [Pandas](http://pandas.pydata.org/) balíček Pythonu.
+# <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Zkoumání dat ve službě Azure blob storage pomocí knihovny pandas
+Tento dokument popisuje, jak zkoumat data, která je uložená v kontejneru objektů blob v Azure pomocí [pandas](http://pandas.pydata.org/) balíček Pythonu.
 
 Následující **nabídky** odkazy na témata, které popisují způsob použití nástroje pro zkoumání dat z různých prostředí úložiště. Tato úloha je nějaký krok [vědecké zpracování dat](overview.md).
 
@@ -35,8 +35,8 @@ Tento článek předpokládá, že máte:
 * Vytvoření účtu služby Azure storage. Pokud potřebujete pokyny, přečtěte si [vytvoření účtu služby Azure Storage](../../storage/common/storage-quickstart-create-account.md)
 * Vaše data uložená v účtu úložiště objektů blob v Azure. Pokud potřebujete pokyny, přečtěte si [přesun dat do a z Azure Storage](../../storage/common/storage-moving-data.md)
 
-## <a name="load-the-data-into-a-pandas-dataframe"></a>Načtení dat do struktury Pandas DataFrame
-K prozkoumání a manipulaci s datovou sadu, ho musíte nejprve stáhnout na zdroj objektu blob do místního souboru, který lze načíst v Pandas DataFrame. Tady jsou kroky pro tento postup:
+## <a name="load-the-data-into-a-pandas-dataframe"></a>Načtení dat do pandas DataFrame
+K prozkoumání a manipulaci s datovou sadu, ho musíte nejprve stáhnout na zdroj objektu blob do místního souboru, který lze načíst v pandas DataFrame. Tady jsou kroky pro tento postup:
 
 1. Stahování dat z Azure blob s následující vzorový kód Pythonu pomocí služby blob service. Nahraďte konkrétní hodnoty proměnné v následujícím kódu: 
    
@@ -55,15 +55,15 @@ K prozkoumání a manipulaci s datovou sadu, ho musíte nejprve stáhnout na zdr
         blob_service.get_blob_to_path(CONTAINERNAME,BLOBNAME,LOCALFILENAME)
         t2=time.time()
         print(("It takes %s seconds to download "+blobname) % (t2 - t1))
-2. Načtení dat do dat – rámec Pandas ze staženého souboru.
+2. Načtení dat do pandas DataFrame ze staženého souboru.
    
         #LOCALFILE is the file path    
         dataframe_blobdata = pd.read_csv(LOCALFILE)
 
 Nyní jste připraveni na zkoumání dat a generovat funkce pro tuto datovou sadu.
 
-## <a name="blob-dataexploration"></a>Příklady použití Pandasu zkoumání dat
-Tady je pár příkladů, jak zkoumat data pomocí Pandas:
+## <a name="blob-dataexploration"></a>Příklady použití pandasu zkoumání dat
+Tady je pár příkladů, jak zkoumat data pomocí pandas:
 
 1. Zkontrolujte **počet řádků a sloupců** 
    

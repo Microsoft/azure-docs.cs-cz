@@ -9,12 +9,12 @@ ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: c326232e0fc8f5f878241186eac8ae5ed23f0958
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 83a768b82172b8736ea06bfed012309ac92734b7
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46366756"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46497956"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Povolení správy aktualizací, Change Tracking a inventář řešení na několika virtuálních počítačích
 
@@ -51,9 +51,13 @@ Použijte ovládací prvky filtru pro výběr virtuálních počítačů z různ
 
 ![Začlenění řešení Update management](media/automation-onboard-solutions-from-browse/onboardsolutions.png)
 
-Projděte si možnosti pro pracovní prostor Log analytics a účet Automation. Ve výchozím nastavení jsou vybrány nový pracovní prostor a účet Automation. Pokud máte existující pracovní prostor Log Analytics a účet Automation, budete chtít použít, klikněte na tlačítko **změnit** vybírat z **konfigurace** stránky. Po dokončení klikněte na **Uložit**.
+Projděte si možnosti pro pracovní prostor Log analytics a účet Automation. Ve výchozím nastavení jsou vybrány existující pracovní prostor a účet Automation. Pokud chcete použít jiný pracovní prostor Log Analytics a účet Automation, klikněte na tlačítko **vlastní** vybírat z **vlastní konfigurace** stránky. Při výběru pracovního prostoru Log Analytics se provede kontrola k určení, pokud je propojený s účtem Automation. Pokud je nalezen propojeného účtu Automation, zobrazí se na následující obrazovce. Až budete hotovi, klikněte na tlačítko **OK**.
 
 ![Vyberte pracovní prostor a účet](media/automation-onboard-solutions-from-browse/selectworkspaceandaccount.png)
+
+Pokud vybraný pracovní prostor není propojený s účtem Automation, zobrazí se vám následující obrazovku. Vyberte účet Automation a klikněte na tlačítko **OK** po dokončení.
+
+![Žádný pracovní prostor](media/automation-onboard-solutions-from-browse/no-workspace.png)
 
 Zrušit zaškrtnutí políčka vedle libovolného virtuálního počítače, které nechcete povolit. Virtuálních počítačů, které není možné je už vybraná.
 

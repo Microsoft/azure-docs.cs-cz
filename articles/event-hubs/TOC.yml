@@ -89,6 +89,10 @@ items:
     href: event-hubs-python-get-started-send.md
   - name: Příjem událostí pomocí Pythonu
     href: event-hubs-python-get-started-receive.md
+  - name: Odesílání událostí pomocí Node.js
+    href: event-hubs-node-get-started-send.md
+  - name: Příjem událostí pomocí Node.js
+    href: event-hubs-node-get-started-receive.md
   - name: Event Hubs pro Apache Kafka
     items:
     - name: Vytvoření Event Hubs s podporou Apache Kafka
@@ -180,9 +184,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-eventhub
   - name: Videa
     href: https://azure.microsoft.com/documentation/videos/index/?services=event-hubs
-ms.openlocfilehash: 525274c16fbb1320d52a7e96b222021eee841155
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 4028907b3e6ef50189fb24936348e628a564e1a4
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43701878"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364835"

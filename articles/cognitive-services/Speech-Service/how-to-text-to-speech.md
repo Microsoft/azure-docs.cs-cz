@@ -9,16 +9,16 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: d19b71542f032111bbd3d9c7f3fe246110377b5d
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 2bcba37d5bf0e508c1f9aa1ad30ab1c039cff83f
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43127582"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46497752"
 ---
 # <a name="use-text-to-speech-in-speech-service"></a>Použití "Převod textu na řeč" v Speech service
 
-Speech service poskytuje funkce pro převod textu na řeč prostřednictvím jednoduché požadavku HTTP. Publikovat text, který se budou na příslušný koncový bod, a tato služba vrátí zvukový soubor (`.wav`) obsahující syntetizovat řeči. Aplikace může potom použít zvuková jako vlastní stavový objekt.
+Speech service poskytuje funkce pro převod textu na řeč prostřednictvím jednoduché požadavku HTTP. Můžete `POST` text, který se budou na příslušný koncový bod, a vrátí zvukový soubor (`.wav`) obsahující syntetizovat řeči. Aplikace může potom použít zvuková jako vlastní stavový objekt.
 
 Text příspěvku požadavku pro převod textu na řeč, může být prostý text (ASCII nebo UTF8) nebo [SSML](speech-synthesis-markup.md) dokumentu. Prostého textu žádosti se používá s hlasem výchozí. Ve většině případů budete chtít používat SSML text. Musí zahrnovat požadavek HTTP [autorizace](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#authentication) token. 
 
@@ -40,7 +40,7 @@ Pokud chcete nastavit hlas, použijte `<voice>` [SSML](speech-synthesis-markup.m
 
 Zobrazit [převod textu na řeč hlasy](supported-languages.md#text-to-speech) seznam dostupných hlasů a jejich názvy.
 
-## <a name="make-a-request"></a>Vytvořit žádost
+## <a name="make-a-request"></a>Vytvoření požadavku
 
 Žádost o převod textu na řeč HTTP se provádí v režimu POST s textem, budou v textu požadavku. Maximální délka obsahu žádosti HTTP je 1024 znaků. Žádost musí mít následující hlavičky: 
 

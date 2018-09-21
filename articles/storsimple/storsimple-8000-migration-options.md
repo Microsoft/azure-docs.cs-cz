@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/23/2018
+ms.date: 09/20/2018
 ms.author: alkohli
-ms.openlocfilehash: 8f34d5a38f09f015547f52cc4b44819b780932bb
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 5da67b5141eb61823d3e376b6f0e6b0b3895ca68
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818854"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498279"
 ---
 # <a name="options-to-migrate-data-from-storsimple-5000-7000-series"></a>Možnosti, jak migrovat data ze StorSimple řad 5000 – 7000 
 
@@ -75,13 +75,22 @@ A. Ano. Migrace na jiné řešení úložiště, pomocí kopie dat je podporovan
 
 A. Migrace z řad 5000 a 7000 je plně podporovaná operace. Ve skutečnosti společnost Microsoft doporučuje, obraťte se na podporu před zahájením migrace. Migrace se aktuálně operaci s asistencí. Pokud máte v úmyslu migrovat data ze StorSimple 5000 – 7000 series zařízení, [vytvořit lístek podpory](storsimple-8000-contact-microsoft-support.md).
 
-### <a name="q-how-does-the-cost-compare-for-the-two-listed-migrations-to-azure-hybrid-services"></a>Otázka: Jak náklady na porovnání pro dva uvedené migrace do služby Azure hybrid? 
+### <a name="q-what-is-the-pricing-model-for-both-the-migration-options"></a>Otázka: Co je cenový model pro možností migrace?
 
-A. Náklady na migraci se liší v závislosti na vámi zvolené možnosti. Při migraci samotného je zdarma, pokud se rozhodnete pro upgrade na řadu StorSimple 8000, bude existovat náklady na hardwarovém zařízení. Podobně při používání Azure File Sync, může použít předplatné poplatků za služby. V obou případech se zákazníci také mají platit náklady na průběžnou úložiště. Odkazovat na [Microsoft pomocí cenové kalkulačky pro příslušné služby](https://azure.microsoft.com/pricing/#product-picker) odhad.  
+A. Náklady na migraci se liší v závislosti na vámi zvolené možnosti. Při migraci samotného je zdarma, pokud se rozhodnete pro upgrade na řadu StorSimple 8000, bude existovat náklady na hardwarovém zařízení. 
+
+Podobně při používání Azure File Sync, může použít předplatné poplatků za služby. V obou případech se zákazníci také mají platit náklady na průběžnou úložiště. Podívejte se pro odhad následující: 
+- [Ceny za StorSimple](https://azure.microsoft.com/pricing/details/storsimple/)  
+- [Ceny AFS]( https://azure.microsoft.com/pricing/details/storage/files/)
 
 ### <a name="q--how-long-does-it-take-to-complete-a-migration"></a>Otázka:  Jak dlouho trvá dokončení migrace?
 
 A. Čas na migraci dat závisí na množství dat a možnost pro upgrade vybrali. 
+
+### <a name="q-what-is-the-end-of-support-date-for-storsimple-8000-series"></a>Otázka: Jaké je datum ukončení podpory pro StorSimple řady 8000?
+
+A. Datum ukončení podpory pro řadu StorSimple 8000 je publikování [tady](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimple%208000%20Series).
+
 
 ## <a name="next-steps"></a>Další postup
  - [Migrovat data z StorSimple řad 5000 – 7000 zařízení řady 8000](storsimple-8000-migrate-from-5000-7000.md).
