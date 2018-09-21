@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 1ef4467862f47a833e0592c94c662170ca2946d8
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 68d7df575e3d413780b8181c11dd59a22469708b
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43781445"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45578933"
 ---
 # <a name="route-to-a-point-of-interest-using-azure-maps"></a>Trasa k bodu zájmu s využitím Azure Maps
 
@@ -27,14 +27,15 @@ V tomto kurzu se dozvíte, jak pomocí účtu Azure Maps a sady SDK Route Servic
 
 ## <a name="prerequisites"></a>Požadavky
 
-Než budete pokračovat, podle postupu v předchozím kurzu [vytvořte účet Azure Maps](./tutorial-search-location.md#createaccount) a [získejte pro účet klíč předplatného](./tutorial-search-location.md#getkey). 
+Než budete pokračovat, podle postupu v předchozím kurzu [vytvořte účet Azure Maps](./tutorial-search-location.md#createaccount) a [získejte pro účet klíč předplatného](./tutorial-search-location.md#getkey).
 
 <a id="getcoordinates"></a>
 
-## <a name="create-a-new-map"></a>Vytvoření nové mapy 
-Následující kroky ukazují, jak vytvořit statickou stránku HTML s vloženým rozhraním API pro mapové ovládací prvky. 
+## <a name="create-a-new-map"></a>Vytvoření nové mapy
 
-1. Na místním počítači vytvořte nový soubor s názvem **MapRoute.html**. 
+Následující kroky ukazují, jak vytvořit statickou stránku HTML s vloženým rozhraním API pro mapové ovládací prvky.
+
+1. Na místním počítači vytvořte nový soubor s názvem **MapRoute.html**.
 2. Přidejte do souboru následující komponenty HTML:
 
     ```HTML
@@ -45,9 +46,9 @@ Následující kroky ukazují, jak vytvořit statickou stránku HTML s vložený
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, user-scalable=no" />
         <title>Map Route</title>
-        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=1" type="text/css"/> 
-        <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=1"></script> 
-        <script src="https://atlas.microsoft.com/sdk/js/atlas-service.min.js?api-version=1"></script> 
+        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=1" type="text/css"/>
+        <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=1"></script>
+        <script src="https://atlas.microsoft.com/sdk/js/atlas-service.min.js?api-version=1"></script>
         <style>
             html,
             body {
@@ -86,13 +87,13 @@ Následující kroky ukazují, jak vytvořit statickou stránku HTML s vložený
     ```
     Objekt **atlas.Map** umožňuje ovládání vizuální a interaktivní webové mapy a je součástí rozhraní API pro mapové ovládací prvky prostředí Azure.
 
-4. Uložte soubor a otevřete ho v prohlížeči. V tuto chvíli máte základní mapu, kterou můžete dále rozvíjet. 
+4. Uložte soubor a otevřete ho v prohlížeči. V tuto chvíli máte základní mapu, kterou můžete dále rozvíjet.
 
    ![Zobrazení základní mapy](./media/tutorial-route-location/basic-map.png)
 
 ## <a name="set-start-and-end-points"></a>Nastavení počátečního a koncového bodu
 
-Pro účely tohoto kurzu nastavte jako počáteční bod Microsoft a jako cílový bod čerpací stanici v Seattlu. 
+Pro účely tohoto kurzu nastavte jako počáteční bod Microsoft a jako cílový bod čerpací stanici v Seattlu.
 
 1. Do stejného bloku *script* v souboru **MapRoute.html** přidejte následující kód JavaScriptu, který vytvoří počáteční a koncový bod trasy:
 
@@ -110,7 +111,7 @@ Pro účely tohoto kurzu nastavte jako počáteční bod Microsoft a jako cílov
         icon: "pin-blue"
     });
     ```
-    Tento kód vytvoří dva [objekty GeoJSON](https://en.wikipedia.org/wiki/GeoJSON) představující počáteční a koncový bod trasy. 
+    Tento kód vytvoří dva [objekty GeoJSON](https://en.wikipedia.org/wiki/GeoJSON) představující počáteční a koncový bod trasy.
 
 2. Přidáním následujícího kódu jazyka JavaScript přidejte na mapu špendlíky pro počáteční a koncový bod:
 
@@ -131,10 +132,10 @@ Pro účely tohoto kurzu nastavte jako počáteční bod Microsoft a jako cílov
         textFont: "SegoeUi-Regular",
         textOffset: [0, -20]
     });
-    ``` 
+    ```
     **map.setCameraBounds** upraví okno mapy podle souřadnic počátečního a koncového bodu. Rozhraní API **map.addPins** přidá do mapového ovládacího prvku body jako vizuální součásti.
 
-7. Uložte soubor **MapRoute.html** a aktualizujte prohlížeč. Teď se ve středu mapy zobrazí Seattle a můžete si všimnou modrých špendlíků, které označují počáteční a koncový bod.
+3. Uložte soubor **MapRoute.html** a aktualizujte prohlížeč. Teď se ve středu mapy zobrazí Seattle a můžete si všimnou modrých špendlíků, které označují počáteční a koncový bod.
 
    ![Zobrazení mapy s označeným počátečním a koncovým bodem](./media/tutorial-route-location/map-pins.png)
 
@@ -143,7 +144,6 @@ Pro účely tohoto kurzu nastavte jako počáteční bod Microsoft a jako cílov
 ## <a name="get-directions"></a>Získání pokynů
 
 Tato část ukazuje způsob použití rozhraní API Maps Route Service k vyhledání trasy z daného počátečního bodu do cíle. Route Service poskytuje rozhraní API pro plánování *nejrychlejší*, *nejkratší*, *úsporné* nebo *vzrušující* trasy mezi dvěma místy. Umožňuje uživatelům také plánovat trasy v budoucnu s použitím rozsáhlé databáze Azure s historickými dopravními informacemi a předvídat dobu trvání trasy pro kterýkoli den a čas. Další informace najdete v tématu [Získání pokynů k trase](https://docs.microsoft.com/rest/api/maps/route/getroutedirections).
-
 
 1. Nejprve do mapy přidejte novou vrstvu, na které se zobrazí cesta trasy neboli *LineString*. Do bloku *script* přidejte následující kód jazyka JavaScript.
 
@@ -160,44 +160,44 @@ Tato část ukazuje způsob použití rozhraní API Maps Route Service k vyhled�
     });
     ```
 
-2.  Přidáním následujícího kódu JavaScriptu do bloku skriptu vytvořte instanci klientské služby.
+2. Přidáním následujícího kódu JavaScriptu do bloku skriptu vytvořte instanci klientské služby.
     ```JavaScript
-    var client = new atlas.service.Client(subscriptionKey);
+    var client = new atlas.service.Client(MapsAccountKey);
     ```
 
 3. Přidejte následující blok kódu a vytvořte řetězec dotazu trasy.
     ```JavaScript
-    // Construct the route query string 
-        var routeQuery = startPoint.coordinates[1] + 
-            "," + 
-            startPoint.coordinates[0] + 
-            ":" + 
-            destinationPoint.coordinates[1] + 
-            "," + 
-            destinationPoint.coordinates[0];     
+    // Construct the route query string
+    var routeQuery = startPoint.coordinates[1] +
+        "," +
+        startPoint.coordinates[0] +
+        ":" +
+        destinationPoint.coordinates[1] +
+        "," +
+        destinationPoint.coordinates[0];
     ```
 
 4. Abyste získali trasu, přidejte do skriptu následující blok kódu. Dotazuje se směrovací služby Azure Maps prostřednictvím metody [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/services.route?view=azure-iot-typescript-latest#getroutedirections) a potom analyzuje odpověď do formátu GeoJSON pomocí [getGeoJsonRoutes](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.geojson.geojsonroutedirectionsresponse?view=azure-iot-typescript-latest#getgeojsonroutes). Potom přidá všechny čáry odpovědi na mapu za účelem vykreslení mapy. Další informace získáte v části o [přidání čáry na mapu](./map-add-shape.md#addALine).
 
     ```JavaScript
     // Execute the query then add the route to the map once a response is received  
-    client.route.getRouteDirections(routeQuery).then(response => { 
-         // Parse the response into GeoJSON 
-         var geoJsonResponse = new atlas.service.geojson.GeoJsonRouteDirectionsResponse(response); 
- 
-         // Get the first in the array of routes and add it to the map 
-         map.addLinestrings([geoJsonResponse.getGeoJsonRoutes().features[0]], { 
-             name: routeLinesLayerName 
-         }); 
-    }); 
+    client.route.getRouteDirections(routeQuery).then(response => {
+         // Parse the response into GeoJSON
+         var geoJsonResponse = new atlas.service.geojson.GeoJsonRouteDirectionsResponse(response);
+
+         // Get the first in the array of routes and add it to the map
+         map.addLinestrings([geoJsonResponse.getGeoJsonRoutes().features[0]], {
+             name: routeLinesLayerName
+         });
+    });
     ```
 
 5. Uložte soubor **MapRoute.html** a aktualizujte webový prohlížeč. V případě úspěšného připojení s použitím rozhraní Maps API by se měla zobrazit mapa podobná následující.
 
     ![Ovládací prvek Mapa a Route Service v Azure](./media/tutorial-route-location/map-route.png)
 
-
 ## <a name="next-steps"></a>Další kroky
+
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
@@ -205,7 +205,7 @@ V tomto kurzu jste se naučili:
 > * Nastavit souřadnice pro adresu
 > * Zadat dotaz na službu Route Service ohledně trasy k bodu zájmu
 
-V dalším kurzu se dozvíte, jak vytvořit dotaz na trasu s omezeními, jako jsou režim dopravy nebo typ nákladu, a pak na stejné mapě zobrazit více tras. 
+V dalším kurzu se dozvíte, jak vytvořit dotaz na trasu s omezeními, jako jsou režim dopravy nebo typ nákladu, a pak na stejné mapě zobrazit více tras.
 
 > [!div class="nextstepaction"]
 > [Vyhledání tras pro různé režimy dopravy](./tutorial-prioritized-routes.md)

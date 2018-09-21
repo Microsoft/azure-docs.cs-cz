@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 7/11/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 84696b4135570168f8093b15f9a2deb4790eeebe
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: 05959143431a2cc11d79a4012f45eb565c1c91f2
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480879"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45575985"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Kurz: Nasazení a konfigurace brány Azure Firewall pomocí webu Azure Portal
 
@@ -58,7 +58,7 @@ Pro účely tohoto kurzu vytvořte jednu virtuální síť se třemi podsítěmi
 
 ![Kurz síťové infrastruktury](media/tutorial-firewall-rules-portal/Tutorial_network.png)
 
-Tento kurz používá kvůli snadnému nasazení zjednodušenou konfiguraci sítě. Pro nasazení v produkčním prostředí doporučujeme [hvězdicový model](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/hybrid-networking/hub-spoke), u kterého je brána firewall ve vlastní virtuální síti a servery úloh jsou v partnerských virtuálních sítích ve stejné oblasti s jednou nebo více podsítěmi.
+Tento kurz používá kvůli snadnému nasazení zjednodušenou konfiguraci sítě. Pro nasazení v produkčním prostředí doporučujeme [hvězdicový model](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke), u kterého je brána firewall ve vlastní virtuální síti a servery úloh jsou v partnerských virtuálních sítích ve stejné oblasti s jednou nebo více podsítěmi.
 
 
 
