@@ -7,18 +7,18 @@ ms.service: dns
 ms.topic: overview
 ms.date: 6/7/2018
 ms.author: victorh
-ms.openlocfilehash: e95617664ee30f1b9253f1892176fd39649ee2c2
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 0812f5e3e23fbf49afec91524b4de2ff0eb7cd9a
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39174628"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574177"
 ---
 # <a name="what-is-azure-dns"></a>Co je Azure DNS?
 
 Azure DNS je hostitelská služba určená pro domény DNS a zajišťuje překlad názvů s využitím infrastruktury Microsoft Azure. Pokud svoje domény hostujete v Azure, můžete spravovat svoje DNS záznamy pomocí stejných přihlašovacích údajů, rozhraní API a nástrojů a za stejných fakturačních podmínek jako u ostatních služeb Azure.
 
-Azure DNS nelze použít k nákupu názvu domény. Název domény si můžete za roční poplatek zakoupit pomocí [Azure Web Apps](https://docs.microsoft.com/en-us/azure/app-service/custom-dns-web-site-buydomains-web-app#buy-the-domain) nebo registrátora názvu domény třetí strany. Domény pak můžete hostovat v Azure DNS za účelem správy záznamů. Další informace najdete v tématu [Delegování zón DNS s využitím Azure DNS](dns-domain-delegation.md).
+Azure DNS nelze použít k nákupu názvu domény. Název domény si můžete za roční poplatek zakoupit pomocí [Azure Web Apps](https://docs.microsoft.com/azure/app-service/custom-dns-web-site-buydomains-web-app#buy-the-domain) nebo registrátora názvu domény třetí strany. Domény pak můžete hostovat v Azure DNS za účelem správy záznamů. Další informace najdete v tématu [Delegování zón DNS s využitím Azure DNS](dns-domain-delegation.md).
 
 Součástí Azure DNS jsou následující funkce:
 
@@ -30,11 +30,11 @@ DNS domény v Azure DNS jsou hostované na globální síti názvových serverů
 
 Služba Azure DNS je postavená na Azure Resource Manageru, takže získáte funkce jako například:
 
-* [řízení přístupu na základě role](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview#access-control) – abyste mohli určit, kdo má přístup ke konkrétním akcím v organizaci.
+* [řízení přístupu na základě role](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#access-control) – abyste mohli určit, kdo má přístup ke konkrétním akcím v organizaci.
 
-* [protokoly aktivit](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview#activity-logs) – abyste mohli monitorovat, jakým způsobem uživatel v organizaci upravil prostředek, nebo vyhledat chyby při řešení potíží.
+* [protokoly aktivit](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#activity-logs) – abyste mohli monitorovat, jakým způsobem uživatel v organizaci upravil prostředek, nebo vyhledat chyby při řešení potíží.
 
-* [uzamčení prostředku](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-lock-resources) – abyste mohli uzamknout předplatné, skupinu prostředků nebo prostředek a zabránit tak ostatním uživatelům v organizaci omylem odstranit nebo upravit důležité prostředky.
+* [uzamčení prostředku](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources) – abyste mohli uzamknout předplatné, skupinu prostředků nebo prostředek a zabránit tak ostatním uživatelům v organizaci omylem odstranit nebo upravit důležité prostředky.
 
 Další informace najdete v tématu o [ochraně záznamů a zón DNS](dns-protect-zones-recordsets.md). 
 

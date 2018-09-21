@@ -1,19 +1,21 @@
 ---
-title: Co je Vyhledávání na webu Bingu? | Microsoft Docs
-description: Rozhraní API Bingu pro vyhledávání na webu je služba RESTful, která vaší aplikaci umožní využívat možnosti vyhledávání na webu Bingu, včetně webových stránek, obrázků, videí, zpráv, entit, souvisejících vyhledávacích dotazů, oprav pravopisu, převodů jednotek, překladů a výpočtů.
+title: Co je Vyhledávání na webu Bingu?
+titleSuffix: Azure Cognitive Services
+description: Rozhraní API Bingu pro vyhledávání na webu je služba RESTful, která poskytuje okamžité odpovědi na dotazy uživatelů. Výsledky hledání je možné snadno nakonfigurovat tak, aby zahrnovaly webové stránky, obrázky, videa, zprávy, překlady a další. Výsledky jsou ve formátu JSON a vycházejí z relevance hledání a vašich předplatných rozhraní API Bingu pro vyhledávání na webu.
 services: cognitive-services
 author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: overview
 ms.date: 08/14/2018
 ms.author: erhopf
-ms.openlocfilehash: ad1069a836a3ff9291ca8094fe86e19979bf7e32
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 8482afae2889ccf2153e1864e4a65b635b6ab4c7
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42889306"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46125234"
 ---
 # <a name="what-is-bing-web-search"></a>Co je Vyhledávání na webu Bingu?
 

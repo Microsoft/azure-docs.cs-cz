@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 01/19/2018
 ms.author: mscurrell
 ms.custom: mvc
-ms.openlocfilehash: b784e64962569f22cba3bc52b6a4e9443a4587d5
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 36d37c2d18823273b5c0f82ecae0f9420e35768c
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30311987"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35621275"
 ---
 # <a name="what-is-azure-batch"></a>Co je Azure Batch?
 
@@ -61,7 +61,7 @@ Služba Azure Batch nabízí také funkce vyšší úrovně pro specifické úlo
 * Batch podporuje [úlohy vykreslování](batch-rendering-service.md) ve větším měřítku v nástrojích, jako jsou Autodesk Maya, 3ds Max, Arnold a V-Ray. 
 * Uživatelé jazyka R si můžou nainstalovat [balíček doAzureParallel jazyka R](https://github.com/Azure/doAzureParallel), který umožňuje snadné horizontální navýšení kapacity provádění algoritmů jazyka R ve fondech Batch.
 
-Úlohy služby Batch můžete také spouštět v rámci rozsáhlejšího pracovního postupu transformace dat v Azure spravovaného nástroji, jako je [Azure Data Factory](../data-factory/v1/data-factory-data-processing-using-batch.md).
+Úlohy služby Batch můžete také spouštět v rámci rozsáhlejšího pracovního postupu transformace dat v Azure spravovaného nástroji, jako je [Azure Data Factory](../data-factory/transform-data-using-dotnet-custom-activity.md).
 
 
 ## <a name="how-it-works"></a>Jak to funguje

@@ -13,11 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/25/2017
 ms.author: victorh
-ms.openlocfilehash: abe48c484a232eff6f7ec1cd68e7010353d488d5
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 1b9e0f4f5614cf1c4b7655ac26877efdaad43144
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35627791"
 ---
 # <a name="configure-app-service-web-apps-with-application-gateway"></a>Konfigurace funkce App Service Web Apps pomocí služby Application Gateway 
 
@@ -30,6 +31,9 @@ Následující příklad přidá webovou aplikaci jako člena fondu back-end do 
 ```powershell
 # FQDN of the web app
 $webappFQDN = "<enter your webapp FQDN i.e mywebsite.azurewebsites.net>"
+
+# Retrieve existing resource group
+$rg = Get-AzureRmResourceGroup -Name "<enter your application gateway resource group name here>"
 
 # Retrieve an existing application gateway
 $gw = Get-AzureRmApplicationGateway -Name ContosoAppGateway -ResourceGroupName $rg.ResourceGroupName

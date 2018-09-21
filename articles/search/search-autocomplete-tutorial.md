@@ -9,16 +9,16 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: mcarter
-ms.openlocfilehash: 7120080bfdc188c150c7065e1c0639ab8c04f173
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 63f4d9f72b9bf81ea772123d65db0659fd3ffa5c
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989671"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45578170"
 ---
 # <a name="tutorial-add-auto-complete-to-your-search-box-using-azure-search"></a>Kurz: Přidání automatického dokončování do vyhledávacího pole pomocí služby Azure Search
 
-V tomto kurzu zjistíte, jak pomocí [návrhů](https://docs.microsoft.com/rest/api/searchservice/suggestions), [automatického dokončování](https://docs.microsoft.com/en-us/rest/api/searchservice/autocomplete) a [omezujících vlastností](search-faceted-navigation.md) v sadě [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions?view=azure-dotnet) a rozhraní [REST API služby Azure Search](https://docs.microsoft.com/rest/api/searchservice/) vytvořit vyhledávací pole s bohatými funkcemi. *Návrhy* poskytují doporučení skutečných výsledků na základě toho, co uživatel zatím zadal. *Automatické dokončování* je [nová funkce Preview](search-api-preview.md) ve službě Azure Search, která pomocí termínů z indexu dokončuje zadávaný text uživatele. Porovnáme několik technik pro zvýšení produktivity uživatelů a rychle a snadno zjistíme, co hledají, díky tomu, že uživatelům přímo při psaní poskytneme bohaté funkce vyhledávání.
+V tomto kurzu zjistíte, jak pomocí [návrhů](https://docs.microsoft.com/rest/api/searchservice/suggestions), [automatického dokončování](https://docs.microsoft.com/rest/api/searchservice/autocomplete) a [omezujících vlastností](search-faceted-navigation.md) v sadě [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions?view=azure-dotnet) a rozhraní [REST API služby Azure Search](https://docs.microsoft.com/rest/api/searchservice/) vytvořit vyhledávací pole s bohatými funkcemi. *Návrhy* poskytují doporučení skutečných výsledků na základě toho, co uživatel zatím zadal. *Automatické dokončování* je [nová funkce Preview](search-api-preview.md) ve službě Azure Search, která pomocí termínů z indexu dokončuje zadávaný text uživatele. Porovnáme několik technik pro zvýšení produktivity uživatelů a rychle a snadno zjistíme, co hledají, díky tomu, že uživatelům přímo při psaní poskytneme bohaté funkce vyhledávání.
 
 Tento kurz vás provede aplikací založenou na ASP.NET MVC, která pomocí jazyka C# volá [klientské knihovny služby Azure Search pro .NET](https://aka.ms/search-sdk) a pomocí JavaScriptu volá přímo rozhraní REST API služby Azure Search. Cílem aplikace pro tento kurz je index naplněný ukázkovými daty [NYCJobs](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs). Můžete použít už nakonfigurovaný index v ukázce NYC Jobs nebo naplnit vlastní index pomocí nástroje pro načítání dat v ukázkovém řešení NYCJobs. V ukázce se k vytvoření vyhledávacího pole s podporou automatického dokončování používají javascriptové knihovny [jQuery UI](https://jqueryui.com/autocomplete/) a [XDSoft](https://xdsoft.net/jqplugins/autocomplete/). S využitím těchto komponent společně se službou Azure Search si ukážeme několik příkladů zajištění podpory automatického dokončování a našeptávání dotazů ve vyhledávacím poli.
 
@@ -214,7 +214,7 @@ Tento kurz ukazuje základní kroky při vytváření vyhledávacího pole s pod
 Integrujte do svého vyhledávání návrhy a automatické dokončování.  Zamyslete se nad tím, jak můžete zvýšit produktivitu uživatelů tím, že jim při psaní poskytnete výkon služby Azure Search pomocí sady .NET SDK nebo přímo rozhraní REST API.
 
 > [!div class="nextstepaction"]
-> [Rozhraní REST API pro automatické dokončování](https://docs.microsoft.com/en-us/rest/api/searchservice/autocomplete)
-> [Rozhraní REST API pro návrhy](https://docs.microsoft.com/en-us/rest/api/searchservice/suggestions)
-> [Atribut indexu s omezujícími vlastnostmi v rozhraní REST API pro vytváření indexu](https://docs.microsoft.com/en-us/rest/api/searchservice/create-index)
+> [Rozhraní REST API pro automatické dokončování](https://docs.microsoft.com/rest/api/searchservice/autocomplete)
+> [Rozhraní REST API pro návrhy](https://docs.microsoft.com/rest/api/searchservice/suggestions)
+> [Atribut indexu s omezujícími vlastnostmi v rozhraní REST API pro vytváření indexu](https://docs.microsoft.com/rest/api/searchservice/create-index)
 

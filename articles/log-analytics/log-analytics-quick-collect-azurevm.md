@@ -16,12 +16,12 @@ ms.date: 06/26/2018
 ms.author: magoedte
 ms.custom: mvc
 ms.component: na
-ms.openlocfilehash: a79679068b03103bd8ca63455dd2d1758751aa6f
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 617a2ab4f98155789ae882c4253f07d8712050d2
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131224"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985545"
 ---
 # <a name="collect-data-about-azure-virtual-machines"></a>Shromažďování dat o virtuálních počítačích Azure
 [Azure Log Analytics](log-analytics-overview.md) může shromažďovat data přímo z virtuálních počítačů Azure a dalších prostředků ve vašem prostředí do jednoho úložiště pro účely podrobných analýz a korelace.  Tento rychlý start ukazuje, jak v několik snadných krocích nakonfigurovat virtuální počítače Azure s Linuxem nebo Windows a shromažďovat z nich data.  
@@ -34,7 +34,7 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 ## <a name="create-a-workspace"></a>Vytvoření pracovního prostoru
 1. Na webu Azure Portal klikněte na **Všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics**.
 
-    ![Azure Portal](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br>  
+    ![portál Azure](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br>  
 
 2. Klikněte na **Vytvořit** a podle potřeby změňte hodnoty následujících položek:
 
@@ -78,7 +78,7 @@ Log Analytics může shromažďovat události z protokolů událostí Windows ne
 7. Výběrem **Data o výkonu systému Windows** povolte shromažďování čítačů výkonu na počítači s Windows. 
 8. Při první konfiguraci čítačů výkonu Windows pro nový pracovní prostor Log Analytics máte možnost rychle vytvořit několik běžných čítačů. Jsou zobrazené v seznamu a vedle každého je zaškrtávací políčko.
 
-    ![Vybrané výchozí čítače výkonu Windows](media/log-analytics-quick-collect-azurevm/windows-perfcounters-default.png).
+    ![Vybrané výchozí čítače výkonu Windows](media/log-analytics-quick-collect-azurevm/windows-perfcounters-default.png)
 
     Klikněte na **Přidat vybrané čítače výkonu**.  Čítače se přidají a přednastaví s použitím ukázkového desetisekundového intervalu shromažďování.
   
@@ -93,7 +93,7 @@ Log Analytics může shromažďovat události z protokolů událostí Windows ne
 5. Výběrem **Data o výkonu systému Linux** povolte shromažďování čítačů výkonu na počítači s Linuxem. 
 6. Při první konfiguraci linuxových čítačů výkonu pro nový pracovní prostor Log Analytics máte možnost rychle vytvořit několik běžných čítačů. Jsou zobrazené v seznamu a vedle každého je zaškrtávací políčko.
 
-    ![Vybrané výchozí čítače výkonu Windows](media/log-analytics-quick-collect-azurevm/linux-perfcounters-default.png).
+    ![Vybrané výchozí čítače výkonu Windows](media/log-analytics-quick-collect-azurevm/linux-perfcounters-default.png)
 
     Klikněte na **Přidat vybrané čítače výkonu**.  Čítače se přidají a přednastaví s použitím ukázkového desetisekundového intervalu shromažďování.  
 
