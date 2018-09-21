@@ -11,12 +11,12 @@ ms.topic: quickstart
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
 manager: douge
-ms.openlocfilehash: 671cf3d274f067354131777b9f69d75c6a9fc934
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 3067146b45e0b6b83cc49137a84282cf2ed4bf86
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190322"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721564"
 ---
 # <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-nodejs"></a>Rychlý start: Vytvoření vývojového prostoru Kubernetes pomocí služby Azure Dev Spaces (Node.js)
 
@@ -56,7 +56,10 @@ Podle těchto pokynů nastavte Azure Dev Spaces:
 1. Sestavte a spusťte kód v AKS. V okně terminálu ve **složce webfrontend** spusťte tento příkaz: `azds up`
 1. Ve výstupu konzoly vyhledejte informace o adrese URL, kterou vytvořil příkaz `up`. Bude v tomto tvaru: 
 
-   `Service 'webfrontend' port 'http' is available at <url>` 
+   ```output
+   (pending registration) Service 'webfrontend' port 'http' will be available at <url>
+   Service 'webfrontend' port 80 (TCP) is available at http://localhost:<port>
+   ```
 
    Tuto adresu URL otevřete v okně prohlížeče. Mělo by se zobrazit načítání webové aplikace. Během spouštění kontejneru se výstup `stdout` a `stderr` streamuje do okna terminálu.
    

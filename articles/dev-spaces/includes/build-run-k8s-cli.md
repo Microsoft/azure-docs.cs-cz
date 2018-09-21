@@ -10,12 +10,12 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: b18cfce173da562aa7cffa48f336ff623c868f21
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: dcca63cc86889ad9dc0e56f932dbed96153de7ed
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "40129227"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44754507"
 ---
 ## <a name="build-and-run-code-in-kubernetes"></a>Sestavení a spuštění kódu v Kubernetes
 Teď spustíme náš kód! V okně terminálu spusťte tento příkaz z **kořenové složky kódu** webfrontend:
@@ -37,7 +37,10 @@ Sledujte výstup příkazu. Během jeho zpracování si můžete všimnout něko
 ### <a name="test-the-web-app"></a>Test webové aplikace
 Ve výstupu konzoly vyhledejte informace o veřejné adrese URL, kterou vytvořil příkaz `up`. Bude v tomto tvaru: 
 
-`Service 'webfrontend' port 'http' is available at <url>` 
+```
+(pending registration) Service 'webfrontend' port 'http' will be available at <url>
+Service 'webfrontend' port 80 (TCP) is available at http://localhost:<port>
+```
 
 Tuto adresu URL otevřete v okně prohlížeče. Mělo by se zobrazit načítání webové aplikace. Během spouštění kontejneru se výstup `stdout` a `stderr` streamuje do okna terminálu.
 

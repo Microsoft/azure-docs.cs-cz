@@ -1,6 +1,7 @@
 ---
 title: 'Rychlý start: Použití sady SDK Bingu pro vyhledávání a webu pro jazyk Java'
-description: Zjistěte, jak používat sadu SDK Bingu pro vyhledávání na webu pro jazyk Java.
+titleSuffix: Azure Cognitive Services
+description: Sada SDK Bingu pro vyhledávání na webu usnadňuje integraci webového vyhledávání Bingu do vaší aplikace v jazyce Java. V tomto rychlém startu se naučíte poslat požadavek, přijmout odpověď JSON, filtrovat a parsovat výsledky.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
@@ -9,12 +10,12 @@ ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 08/22/2018
 ms.author: erhopf
-ms.openlocfilehash: cc7335b9f8b5596edef895ff5a42a1018b06a381
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 8db2f6a67f64216276ccdb0b16bbeb48565f6bc6
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43186723"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127597"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-java"></a>Rychlý start: Použití sady SDK Bingu pro vyhledávání a webu pro jazyk Java
 
@@ -26,7 +27,7 @@ Chcete se rovnou podívat na kód? [Ukázky sady SDK Bingu pro vyhledávání na
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tady je pár věcí, které budete potřebovat na začátku tohoto rychlého startu:
+Tady je pár věcí, které budete na začátku tohoto rychlého startu potřebovat:
 
 * [JDK 7 nebo 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 * [Apache Maven](https://maven.apache.org/download.cgi) nebo jiný oblíbený nástroj na automatické sestavení

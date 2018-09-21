@@ -1,6 +1,7 @@
 ---
 title: 'Rychlý start: Použití sady SDK Bingu pro vyhledávání na webu pro Node.js'
-description: Zjistěte, jak používat sadu SDK Bingu pro vyhledávání na webu pro Node.js.
+titleSuffix: Azure Cognitive Services
+description: Sada SDK Bingu pro vyhledávání na webu usnadňuje integraci webového vyhledávání Bingu do vaší aplikace Node.js. V tomto rychlém startu se dozvíte, jak vytvořit instanci klienta, odeslat požadavek a vytisknout odpověď.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
@@ -9,12 +10,12 @@ ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 08/16/2018
 ms.author: erhopf
-ms.openlocfilehash: 7c3003ab4ba40a9d0212e7c94b6dd3bfbc8f0ca2
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: b27c11a69c7d16f38c2448d380b611940078c501
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43186627"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46121898"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-nodejs"></a>Rychlý start: Použití sady SDK Bingu pro vyhledávání na webu pro Node.js
 

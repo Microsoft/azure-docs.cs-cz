@@ -9,12 +9,12 @@ ms.topic: hero-article
 ms.date: 06/13/2018
 ms.author: tamram
 ms.component: queues
-ms.openlocfilehash: 25efad05fd0c7dd613d7dfbd5704255f9761d174
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 11b43037a16072bcb2056b70305eeef9d3b5d4ce
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523076"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45729005"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>Začínáme s úložištěm Azure Queue pomocí rozhraní .NET
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -34,7 +34,7 @@ V tomto kurzu si ukážeme, jak napsat kód .NET pro některé běžné scéná�
 * [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
 * [Klientská knihovna Azure Storage pro .NET](https://www.nuget.org/packages/WindowsAzure.Storage/)
 * [Azure Configuration Manager for .NET](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/)
-* [Účet úložiště Azure](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#create-a-storage-account)
+* [Účet úložiště Azure](../common/storage-quickstart-create-account.md)
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 

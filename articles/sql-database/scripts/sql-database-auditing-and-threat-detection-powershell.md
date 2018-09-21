@@ -3,7 +3,7 @@ title: Příklad PowerShellu – Auditování a detekce hrozeb ve službě Azure
 description: Ukázkový skript Azure PowerShellu pro konfiguraci auditování a detekce hrozeb ve službě Azure SQL Database
 services: sql-database
 documentationcenter: sql-database
-author: CarlRabeler
+author: giladmit
 manager: craigg
 editor: carlrab
 tags: azure-service-management
@@ -15,13 +15,14 @@ ms.topic: sample
 ms.tgt_pltfrm: sql-database
 ms.workload: database
 ms.date: 09/07/2018
-ms.author: carlrab
-ms.openlocfilehash: 1be7f049435f39d164cdcb151dc948d55da1c740
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.author: giladm
+ms.reviewer: carlrab
+ms.openlocfilehash: bea62b9d7b884aca1d64db27cd09a115ebf0bdba
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44050702"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45633291"
 ---
 # <a name="use-powershell-to-configure-sql-database-auditing-and-threat-detection"></a>Konfigurace auditování a detekce hrozeb ve službě SQL Database pomocí PowerShellu
 

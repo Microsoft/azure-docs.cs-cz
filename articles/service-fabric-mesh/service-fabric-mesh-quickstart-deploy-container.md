@@ -9,12 +9,12 @@ ms.date: 08/24/2018
 ms.topic: quickstart
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: f5b834f92b2a126f68780a7647fda4d8b35dfe43
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: d50ebeef686de7e467e2a71b6bb33f207414bcc8
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42886440"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45541462"
 ---
 # <a name="quickstart-deploy-hello-world-to-service-fabric-mesh"></a>Rychlý start: Nasazení aplikace Hello World do služby Service Fabric Mesh
 
@@ -45,16 +45,10 @@ az group create --name myResourceGroup --location eastus
 ```
 
 ## <a name="deploy-the-application"></a>Nasazení aplikace
-Vytvořte aplikaci ve skupině prostředků pomocí příkazu `az mesh deployment create`.  Pokud používáte konzolu Bash, spusťte následující příkaz:
+Vytvořte aplikaci ve skupině prostředků pomocí příkazu `az mesh deployment create`.  Spusťte následující příkazy:
 
 ```azurecli-interactive
-az mesh deployment create --resource-group myResourceGroup --template-uri https://sfmeshsamples.blob.core.windows.net/templates/helloworld/mesh_rp.linux.json --parameters "{\"location\": {\"value\": \"eastus\"}}" 
-```
-
-Pokud používáte konzolu PowerShellu, spusťte následující příkaz:
-
-```azurecli-interactive
-az mesh deployment create --resource-group myResourceGroup --template-uri https://sfmeshsamples.blob.core.windows.net/templates/helloworld/mesh_rp.linux.json --parameters "{'location': {'value': 'eastus'}}"
+az mesh deployment create --resource-group myResourceGroup --template-uri https://sfmeshsamples.blob.core.windows.net/templates/helloworld/mesh_rp.linux.json --parameters "{'location': {'value': 'eastus'}}" 
 ```
 
 Předchozí příkaz nasadí aplikaci pro Linux pomocí [šablony mesh_rp.linux.json](https://sfmeshsamples.blob.core.windows.net/templates/helloworld/mesh_rp.linux.json). Pokud chcete nasadit aplikaci pro Windows, použijte [šablonu mesh_rp.windows.json](https://sfmeshsamples.blob.core.windows.net/templates/helloworld/mesh_rp.windows.json). Image kontejnerů Windows jsou větší než image kontejnerů Linuxu a jejich nasazení může trvat delší dobu.
