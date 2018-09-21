@@ -44,6 +44,7 @@
 ### [Vytvoření skupinového účtu spravované služby ve spravované doméně](active-directory-ds-create-gmsa.md)
 ### [Správa zásad skupiny ve spravované doméně](active-directory-ds-admin-guide-administer-group-policy.md)
 ### [Konfigurace zásad hesel ve spravované doméně](active-directory-ds-password-policy.md)
+### [Konfigurace synchronizace s vymezeným oborem z Azure AD do spravované domény](active-directory-ds-scoped-synchronization.md)
 ## [Výběr virtuální sítě](active-directory-ds-networking.md)
 ## Nasazení aplikací
 ### [Konfigurace podpory pro synchronizaci profilu pro SharePoint Server](active-directory-ds-enable-sharepoint-profile-sync.md)
