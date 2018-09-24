@@ -13,12 +13,12 @@ ms.topic: get-started-article
 ms.date: 07/03/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 91ba9b388566cc72f3024943005af499b7c3f3ec
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
-ms.translationtype: MT
+ms.openlocfilehash: 46bc043681bbba37a2dfb6476e1dd0784e1abf10
+ms.sourcegitcommit: b34df37d1ac36161b377ba56c2f7128ba7327f3f
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42139726"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46874018"
 ---
 # <a name="use-data-transfer-tools-for-azure-stack-storage"></a>Použití nástrojů pro přenos dat pro úložiště Azure Stack
 
@@ -246,7 +246,7 @@ Azure CLI je prostředí příkazového řádku Azure pro správu prostředků A
 
 Rozhraní příkazového řádku Azure je optimalizovaná pro správu prostředků Azure z příkazového řádku a pro vytváření skriptů pro automatizaci, které fungují s Azure Resource Managerem. Poskytuje řadu stejných funkcí najít na portálu Azure Stack, včetně velké množství dat přístup.
 
-Azure Stack vyžaduje použití Azure CLI verze 2.0. Další informace ohledně instalace a konfigurace Azure CLI s Azure Stackem najdete v tématu [instalace a konfigurace rozhraní příkazového řádku Azure Stack](azure-stack-version-profiles-azurecli2.md). Další informace o tom, jak pomocí rozhraní příkazového řádku Azure CLI 2.0 provádět několik úkolů práci s prostředky ve vašem účtu úložiště Azure Stack, najdete v části [s Azure storage pomocí Azure CLI 2.0](../../storage/storage-azure-cli.md)
+Azure Stack vyžaduje použití Azure CLI verze 2.0 nebo novější. Další informace ohledně instalace a konfigurace Azure CLI s Azure Stackem najdete v tématu [instalace a konfigurace rozhraní příkazového řádku Azure Stack](azure-stack-version-profiles-azurecli2.md). Další informace o tom, jak provést několik úloh, práci s prostředky ve vašem účtu úložiště Azure Stack pomocí Azure CLI najdete v tématu [pomocí Azure CLI s Azure storage](../../storage/storage-azure-cli.md)
 
 ### <a name="azure-cli-sample-script-for-azure-stack"></a>Ukázkový skript Azure CLI pro službu Azure Stack
 
