@@ -8,12 +8,12 @@ ms.service: container-instances
 ms.topic: overview
 ms.date: 04/24/2018
 ms.author: marsma
-ms.openlocfilehash: 2ab2a550e1e64f84613eb0fcda79cbd2b6164824
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 6107aee0a4d7497e90186e0ea4bda6cd2712820d
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37887636"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46979603"
 ---
 # <a name="monitor-container-resources-in-azure-container-instances"></a>Monitorování prostředků kontejneru ve službě Azure Container Instances
 
@@ -144,4 +144,4 @@ Další informace o monitorování Azure najdete v [přehledu monitorování Azu
 
 <!-- LINKS - Internal -->
 [azure-monitoring]: ../monitoring-and-diagnostics/monitoring-overview.md
-[monitor-dimension]: ../monitoring-and-diagnostics/monitoring-metric-charts.md#what-are-multi-dimensional-metrics
+[monitor-dimension]: ../monitoring/monitoring-data-collection.md#multi-dimensional-metrics

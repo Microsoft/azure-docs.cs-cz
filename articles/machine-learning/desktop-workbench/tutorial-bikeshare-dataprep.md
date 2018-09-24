@@ -12,14 +12,18 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 09/21/2017
-ms.openlocfilehash: 2a50350b9ba49d82a20b92804ffb92ec6906186d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ROBOTS: NOINDEX
+ms.openlocfilehash: cae80408a7440136b504647596c84a459a0d679c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39439896"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46971701"
 ---
 # <a name="tutorial-use-azure-machine-learning-workbench-for-advanced-data-preparation-bike-share-data"></a>Kurz: Použití aplikace Azure Machine Learning Workbench k pokročilé přípravě dat (data projektu BikeShare)
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
+
 Služba Azure Machine Learning (Preview) představuje integrované, komplexní řešení datové vědy a pokročilé analýzy pro profesionální datové vědce, které slouží k přípravě dat, vývoji experimentů a nasazování modelů na úrovni cloudu.
 
 V tomto kurzu se naučíte, jak pomocí služby Machine Learning (Preview) provést následující úlohy:
@@ -36,7 +40,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Místní instalace aplikace Azure Machine Learning Workbench. Další informace najdete ve [stručném průvodci instalací](../service/quickstart-installation.md).
+* Místní instalace aplikace Azure Machine Learning Workbench. Další informace najdete ve [stručném průvodci instalací](quickstart-installation.md).
 * Pokud nemáte nainstalované Azure CLI, postupujte podle pokynů pro [instalaci nejnovější verze Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 * [Cluster HDInsight Spark](how-to-create-dsvm-hdi.md#create-an-apache-spark-for-azure-hdinsight-cluster-in-azure-portal) vytvořený v Azure.
 * Účet úložiště Azure.

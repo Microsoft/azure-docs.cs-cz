@@ -14,11 +14,11 @@ ms.date: 07/03/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.openlocfilehash: 46bc043681bbba37a2dfb6476e1dd0784e1abf10
-ms.sourcegitcommit: b34df37d1ac36161b377ba56c2f7128ba7327f3f
-ms.translationtype: HT
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46874018"
+ms.locfileid: "46966681"
 ---
 # <a name="use-data-transfer-tools-for-azure-stack-storage"></a>Použití nástrojů pro přenos dat pro úložiště Azure Stack
 

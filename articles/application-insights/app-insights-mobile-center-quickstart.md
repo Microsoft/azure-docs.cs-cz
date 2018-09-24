@@ -1,5 +1,5 @@
 ---
-title: Rychlý start pro Azure Application Insights | Microsoft Docs
+title: Rychlý start pro Azure Application Insights | Dokumentace Microsoftu
 description: Pokyny pro rychlé nastavení mobilní aplikace pro monitorování s využitím Application Insights a App Center
 services: application-insights
 keywords: ''
@@ -11,12 +11,12 @@ ms.reviewer: daviste
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: e69cf8753fb0cc9326e047ec97cbe08ee6f26610
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 040e54b02161386dcc16b943956f39b86b264303
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43668457"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46950518"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>Začínáme s analýzou mobilní aplikace pomocí App Center a Application Insights
 
@@ -126,7 +126,7 @@ Nad rámec analytických nástrojů, které poskytuje App Center, může Applica
    1. Vyberte dotaz kliknutím na libovolnou část dotazu v textovém editoru.
    2. Pak dotaz spusťte kliknutím na **Přejít**. 
 
-   Další informace o [Application Insights Analytics](app-insights-analytics.md) a [dotazovacím jazyku Log Analytics](https://docs.loganalytics.io/docs/Language-Reference).
+   Další informace o [Application Insights Analytics](app-insights-analytics.md) a [dotazovacím jazyku Log Analytics](https://aka.ms/LogAnalyticsLanguageReference).
 
 
 2. **Segmentace a filtrování vlastní telemetrie událostí.** Na stránce **Přehled** Application Insights zvolte v obsahu **Uživatelé**.

@@ -5,20 +5,20 @@ services: azure-policy
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 05/17/2018
+ms.date: 09/18/2018
 ms.author: dacoulte
 ms.custom: include file
-ms.openlocfilehash: 388d6641fb77d09c1706623b84ec256573807747
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 841b95e3e1cff09a15b4158bc55d46f782d32d41
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34664471"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47003629"
 ---
 ### <a name="network-interfaces"></a>Síťová rozhraní
 
 |  |  |
 |---------|---------|
-| [NSG X ve všech síťových rozhraních](../articles/azure-policy/scripts/nsg-on-nic.md) | Vyžaduje, aby se ve všech virtuálních síťových rozhraních používala konkrétní skupina zabezpečení sítě. Zadejte ID skupiny zabezpečení sítě, která se má použít. |
-| [Použití schválené podsítě pro síťová rozhraní virtuálních počítačů](../articles/azure-policy/scripts/use-approved-subnet-vm-nics.md) | Vyžaduje, aby síťová rozhraní používala schválenou podsíť. Zadejte ID schválené podsítě. |
-| [Použití schválené virtuální sítě pro síťová rozhraní virtuálních počítačů](../articles/azure-policy/scripts/use-approved-vnet-vm-nics.md) | Vyžaduje, aby síťová rozhraní používala schválenou virtuální síť. Zadáte ID schválené virtuální sítě. |
+| [NSG X ve všech síťových rozhraních](../articles/governance/policy/samples/nsg-on-nic.md) | Vyžaduje, aby se ve všech virtuálních síťových rozhraních používala konkrétní skupina zabezpečení sítě. Zadejte ID skupiny zabezpečení sítě, která se má použít. |
+| [Použití schválené podsítě pro síťová rozhraní virtuálních počítačů](../articles/governance/policy/samples/use-approved-subnet-vm-nics.md) | Vyžaduje, aby síťová rozhraní používala schválenou podsíť. Zadejte ID schválené podsítě. |
+| [Použití schválené virtuální sítě pro síťová rozhraní virtuálních počítačů](../articles/governance/policy/samples/use-approved-vnet-vm-nics.md) | Vyžaduje, aby síťová rozhraní používala schválenou virtuální síť. Zadáte ID schválené virtuální sítě. |

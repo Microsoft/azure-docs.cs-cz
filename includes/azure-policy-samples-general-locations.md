@@ -5,18 +5,18 @@ services: azure-policy
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 05/17/2018
+ms.date: 09/18/2018
 ms.author: dacoulte
 ms.custom: include file
-ms.openlocfilehash: 56e10ec4cf07d4004e0e4dd739f061463eaf9127
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7007e3efc78d73f6302af99a4f54bc18da3e970c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34664458"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47003677"
 ---
 ### <a name="locations"></a>Umístění
 
 |  |  |
 |---------|---------|
-| [Povolená umístění](../articles/azure-policy/scripts/allowed-locs.md) | Vyžaduje, aby všechny prostředky byly nasazené do schválených umístění. Zadáte pole schválených umístění.  |
+| [Povolená umístění](../articles/governance/policy/samples/allowed-locs.md) | Vyžaduje, aby všechny prostředky byly nasazené do schválených umístění. Zadáte pole schválených umístění.  |

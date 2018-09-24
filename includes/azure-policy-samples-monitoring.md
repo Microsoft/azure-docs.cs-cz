@@ -5,18 +5,18 @@ services: azure-policy
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 05/17/2018
+ms.date: 09/18/2018
 ms.author: dacoulte
 ms.custom: include file
-ms.openlocfilehash: d86dfee0dc7b11d53a58a5063ebab779fb7ac6cd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1c37fee6e8c95d4a4536a2f1bdd86be1230baa24
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34664495"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47003683"
 ---
 ## <a name="monitoring"></a>Monitorování
 
 |  |  |
 |---------|---------|
-| [Auditování nastavení diagnostiky](../articles/azure-policy/scripts/audit-diag-setting.md) | Audituje, jestli pro zadané typy prostředků nejsou povolená nastavení diagnostiky. Zadáte pole typů prostředků, u kterých se zkontroluje, jestli jsou povolená nastavení diagnostiky. |
+| [Auditování nastavení diagnostiky](../articles/governance/policy/samples/audit-diag-setting.md) | Audituje, jestli pro zadané typy prostředků nejsou povolená nastavení diagnostiky. Zadáte pole typů prostředků, u kterých se zkontroluje, jestli jsou povolená nastavení diagnostiky. |

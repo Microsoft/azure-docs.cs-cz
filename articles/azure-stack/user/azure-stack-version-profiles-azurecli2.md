@@ -13,20 +13,20 @@ ms.topic: article
 ms.date: 09/08/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: ec3b1f43c7b89a545ee5bb26c4cc0d068a993021
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 59b637e6887a645430d902cd846cacda13b14cfe
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44295849"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46972806"
 ---
-# <a name="use-api-version-profiles-with-azure-cli-20-in-azure-stack"></a>Použití profilů verzí API pomocí Azure CLI 2.0 ve službě Azure Stack
+# <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>Použití profilů verzí API pomocí Azure CLI ve službě Azure Stack
 
 Provedením kroků v tomto článku se nastavit si rozhraní příkazového řádku Azure (CLI) ke správě prostředků Azure Stack Development Kit z klientských platformách Linux, Mac a Windows.
 
 ## <a name="install-cli"></a>Instalace rozhraní příkazového řádku
 
-Přihlaste se k vaší pracovní stanici a nainstalovat rozhraní příkazového řádku. Azure Stack vyžaduje verzi rozhraní příkazového řádku Azure 2.0. Který můžete nainstalovat pomocí kroků popsaných v [instalace Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) článku. Pokud chcete ověřit, jestli byla instalace úspěšná, otevřete okno příkazového řádku nebo terminálu a spusťte následující příkaz:
+Přihlaste se k vaší pracovní stanici a nainstalovat rozhraní příkazového řádku. Azure Stack vyžaduje verzi 2.0 nebo novější z rozhraní příkazového řádku Azure. Který můžete nainstalovat pomocí kroků popsaných v [instalace rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) článku. Pokud chcete ověřit, jestli byla instalace úspěšná, otevřete okno příkazového řádku nebo terminálu a spusťte následující příkaz:
 
 ```azurecli
 az --version

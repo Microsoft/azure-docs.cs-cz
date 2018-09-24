@@ -11,8 +11,7 @@
 # Začínáme
 ## [Pomocí webu Azure Portal](data-lake-store-get-started-portal.md)
 ## [Použití Azure PowerShellu](data-lake-store-get-started-powershell.md)
-## [Použití Azure CLI 2.0](data-lake-store-get-started-cli-2.0.md)
-
+## [Použití Azure CLI](data-lake-store-get-started-cli-2.0.md)
 
 # Postup
 ## Načtení a přesun dat

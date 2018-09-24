@@ -5,18 +5,18 @@ services: azure-policy
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 05/17/2018
+ms.date: 09/18/2018
 ms.author: dacoulte
 ms.custom: include file
-ms.openlocfilehash: dd91b3dde64d66fced5b4fed99105198bf3e2a11
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8541a37a328bb7e0f5aa22e6c130665bbf46c67c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34664477"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47003688"
 ---
 ### <a name="network-watchers"></a>Sledovací procesy sítě
 
 |  |  |
 |---------|---------|
-| [Provedení auditu, pokud oblast nemá povolenou službu Network Watcher](../articles/azure-policy/scripts/net-watch-not-enabled.md) | Provede audit, pokud pro zadanou oblast není povolený sledovací proces sítě. Zadejte název oblasti, pro kterou se zkontroluje, jestli je povolený sledovací proces sítě. |
+| [Provedení auditu, pokud oblast nemá povolenou službu Network Watcher](../articles/governance/policy/samples/net-watch-not-enabled.md) | Provede audit, pokud pro zadanou oblast není povolený sledovací proces sítě. Zadejte název oblasti, pro kterou se zkontroluje, jestli je povolený sledovací proces sítě. |
